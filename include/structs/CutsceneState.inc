@@ -12,7 +12,8 @@
 	u8 CutsceneScript2PauseTimer // loc=0xd
 	u8 CutsceneScript3PauseTimer // loc=0xe
 	u8 CutsceneScript4PauseTimer // loc=0xf
-	struct_org 0x12
+	u8 Unk_10 // loc=0x10
+	u8 Unk_11 // loc=0x11
 	u8 WhichCutsceneScript // loc=0x12
 	u8 CutsceneCameraScriptActive // loc=0x13
 	u16 CutsceneScript1LongPauseTimer // loc=0x14
@@ -33,12 +34,14 @@
 		struct_const CUTSCENE_FLAG_0x2c_SCRIPT_2_PAUSED_LONG, 0x5
 		struct_const CUTSCENE_FLAG_0x2c_SCRIPT_3_PAUSED_LONG, 0x6
 		struct_const CUTSCENE_FLAG_0x2c_SCRIPT_4_PAUSED_LONG, 0x7
-
-	ptr Unk_30 // loc=0x30
+		struct_const CUTSCENE_FLAG_0x2c_8, 0x8
+		struct_const CUTSCENE_FLAG_0x2c_9, 0x9
+	ptr TextArchivePtr // loc=0x30
 	ptr Unk_34 // loc=0x34
-	ptr UnkCutsceneScript_38 // loc=0x38
+	ptr CutsceneScriptAfterCutsceneSkip // loc=0x38
 	u32 Unk_3c // loc=0x3c
 	ptr originalCutsceneScriptPos_40 // loc=0x40
+	u32 Unk_44 // loc=0x44
 	struct_org 0x90
 	u0 Size // loc=0x90
 	restore_struct_label

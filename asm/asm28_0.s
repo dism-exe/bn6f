@@ -508,7 +508,7 @@ loc_8099D58:
 	tst r0, r0
 	beq loc_8099DA2
 	ldrb r0, [r7,#5]
-	bl sub_809E2AE
+	bl SetOWPlayerFacingDirection
 	mov r0, #8
 	mov r1, #0xa
 	mov r2, #0xc
@@ -518,7 +518,7 @@ loc_8099D58:
 	lsl r0, r0, #0x10
 	lsl r1, r1, #0x10
 	lsl r2, r2, #0x10
-	bl loc_809E1A4
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4
 	mov r0, #0
 	bl camera_80301B2
 	mov r0, #0xe
@@ -2236,12 +2236,12 @@ sub_809AF00:
 	ldr r0, [r7,#0x24]
 	ldr r1, [r7,#0x28]
 	mov r2, #0
-	bl loc_809E1A4
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4
 	ldr r0, [r7,#0x2c]
-	bl sub_809E2AE
+	bl SetOWPlayerFacingDirection
 	ldr r0, [r7,#0x2c]
 	bl sub_809E13C
-	bl sub_809E2FC
+	bl owPlayer_zeroS2000AA0Param0x5_809e2fc
 	bl sub_809E4F8
 	push {r4-r7}
 	mov r0, #0x2e
@@ -2301,12 +2301,12 @@ loc_809AF9A:
 	ldr r0, [r7,#4]
 	ldr r1, [r7,#8]
 	ldr r2, [r7,#0xc]
-	bl loc_809E1A4
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4
 	ldrb r0, [r7,#3]
-	bl sub_809E2AE
+	bl SetOWPlayerFacingDirection
 	ldrb r0, [r7,#3]
 	bl sub_809E13C
-	bl sub_809E2FC
+	bl owPlayer_zeroS2000AA0Param0x5_809e2fc
 	mov r0, #0
 	pop {r4-r7,pc}
 off_809AFBC: .word byte_809ADB4
@@ -2396,7 +2396,7 @@ loc_809B078:
 	push {r0-r3}
 	mov r0, #0xe1
 	bl PlaySoundEffect
-	bl sub_809E2FC
+	bl owPlayer_zeroS2000AA0Param0x5_809e2fc
 	pop {r0-r3}
 	b loc_809B0C4
 loc_809B098:
@@ -2418,7 +2418,7 @@ loc_809B0A2:
 	mov r0, #0xe2
 	bl PlaySoundEffect
 	mov r0, #4
-	bl loc_809E2FE
+	bl owPlayer_setS2000AA0Param0x5_809e2fe
 	pop {r0-r3}
 	b loc_809B0C4
 loc_809B0C4:
@@ -2664,7 +2664,7 @@ sub_809B7A4:
 	strb r0, [r5,#4]
 	ldrb r0, [r4,#1]
 	strb r0, [r5,#5]
-	bl sub_809E2AE
+	bl SetOWPlayerFacingDirection
 	ldrb r0, [r4,#2]
 	bl sub_809E13C
 	mov r4, r10
@@ -2682,7 +2682,7 @@ byte_809B7D4: .byte 0x32, 0x5, 0x1, 0xFF, 0xA, 0x5, 0x1, 0xFF, 0xFF, 0xFF, 0xFF
 	thumb_local_start
 sub_809B7EC:
 	push {r4-r7,lr}
-	bl sub_809E2B8
+	bl GetOWPlayerFacingDirection
 	add r0, #4
 	mov r1, #7
 	and r0, r1
@@ -3144,7 +3144,7 @@ loc_809BE52:
 	ldr r0, [r3,#0x24]
 	ldr r1, [r3,#0x28]
 	ldr r2, [r3,#0x2c]
-	bl loc_809E1A4
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4
 	mov r0, #0
 	pop {r4-r7,pc}
 off_809BE64: .word byte_809BA30
@@ -3543,7 +3543,7 @@ sub_809C7FC:
 	ldr r1, [r3,r1]
 	mov r2, #8
 	ldr r2, [r3,r2]
-	bl sub_809E188
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
 	mov r0, #0
 	pop {r4-r7,pc}
 	thumb_func_end sub_809C7FC
@@ -4429,7 +4429,7 @@ off_809D25C: .word sub_809D270+1
 	.word sub_809D348+1
 	.word sub_809D7F8+1
 off_809D268: .word byte_2000AA0
-	.word byte_200ACE0
+	.word eStruct200ace0
 	thumb_func_end sub_809D19C
 
 	thumb_local_start
@@ -4601,14 +4601,14 @@ loc_809D3E6:
 	beq loc_809D3FC
 	movflag EVENT_1718
 	bl ClearEventFlagFromImmediate
-	bl sub_809E0C8
-loc_809D3FC:
+	bl owPlayer_809E0C8
+loc_809D3FC: .align 1, 0
 	ldrb r0, [r5,#0x16]
 	tst r0, r0
 	bne loc_809D40A
 	mov r0, r5
-	add r0, #0x1c
-	bl sub_8035694
+	add r0, #oOWPlayerObject_Coords
+	bl applyLayerEffectToOWObject_8035694
 loc_809D40A:
 	bl sub_8002E14
 	bl sub_809DFA0
@@ -4782,7 +4782,7 @@ loc_809D572:
 loc_809D584:
 	pop {r0,r1,r3-r5}
 	ldr r7, [r7,r1]
-	ldr r6, off_809D8AC // =byte_200ACE0 
+	ldr r6, off_809D8AC // =eStruct200ace0 
 	ldr r1, [r6,#0x18] // (dword_200ACF8 - 0x200ace0)
 	tst r1, r1
 	beq loc_809D592
@@ -5014,7 +5014,7 @@ sub_809D75E:
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
-	ldr r7, off_809D8AC // =byte_200ACE0 
+	ldr r7, off_809D8AC // =eStruct200ace0 
 	ldrb r0, [r7,#0x1c] // (byte_200ACFC - 0x200ace0)
 	cmp r0, #0xff
 	beq loc_809D778
@@ -5101,19 +5101,19 @@ sub_809D7F8:
 	thumb_local_start
 sub_809D800:
 	push {lr}
-	ldr r7, off_809D8AC // =byte_200ACE0 
-	ldr r0, [r5,#0x1c]
-	ldr r1, [r5,#0x20]
-	ldr r2, [r5,#0x24]
-	str r0, [r5,#0x28]
-	str r1, [r5,#0x2c]
-	str r2, [r5,#0x30]
-	ldr r0, [r7,#0x8] // (dword_200ACE8 - 0x200ace0)
-	str r0, [r5,#0x1c]
-	ldr r0, [r7,#0xc] // (dword_200ACEC - 0x200ace0)
-	str r0, [r5,#0x20]
-	ldr r0, [r7,#0x10] // (dword_200ACF0 - 0x200ace0)
-	str r0, [r5,#0x24]
+	ldr r7, off_809D8AC // =eStruct200ace0 
+	ldr r0, [r5,#oOWPlayerObject_X]
+	ldr r1, [r5,#oOWPlayerObject_Y]
+	ldr r2, [r5,#oOWPlayerObject_Z]
+	str r0, [r5,#oOWPlayerObject_NextX]
+	str r1, [r5,#oOWPlayerObject_NextY]
+	str r2, [r5,#oOWPlayerObject_NextZ]
+	ldr r0, [r7,#oS200ace0_PlayerX] // (dword_200ACE8 - 0x200ace0)
+	str r0, [r5,#oOWPlayerObject_X]
+	ldr r0, [r7,#oS200ace0_PlayerY] // (dword_200ACEC - 0x200ace0)
+	str r0, [r5,#oOWPlayerObject_Y]
+	ldr r0, [r7,#oS200ace0_PlayerZ] // (dword_200ACF0 - 0x200ace0)
+	str r0, [r5,#oOWPlayerObject_Z]
 	ldrb r0, [r7,#0x15] // (byte_200ACF5 - 0x200ace0)
 	tst r0, r0
 	bne loc_809D828
@@ -5144,7 +5144,7 @@ loc_809D844:
 	add r0, r0, r5
 	bl sub_8030B6A
 loc_809D856:
-	ldr r7, off_809D8AC // =byte_200ACE0 
+	ldr r7, off_809D8AC // =eStruct200ace0 
 	ldr r0, [r5,#0x1c]
 	str r0, [r7,#0x8] // (dword_200ACE8 - 0x200ace0)
 	ldr r0, [r5,#0x20]
@@ -5171,14 +5171,14 @@ loc_809D886:
 	bne loc_809D894
 	mov r0, r5
 	add r0, #0x1c
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 loc_809D894:
 	bl sub_8002E14
 	pop {pc}
 	.balign 4, 0x00
 byte_809D89C: .byte 0x4, 0x0, 0x4, 0x0, 0x4, 0xC, 0x8, 0x0, 0x4, 0x0, 0x0, 0x0
 off_809D8A8: .word byte_809D89C
-off_809D8AC: .word byte_200ACE0
+off_809D8AC: .word eStruct200ace0
 off_809D8B0: .word sub_809D470+1
 	.word sub_809D4DC+1
 	.word sub_809D61A+1
@@ -5344,7 +5344,7 @@ sub_809D9E0:
 	push {lr}
 	sub sp, sp, #0xc
 	mov r8, sp
-	ldr r7, off_809DAF4 // =byte_200ACE0 
+	ldr r7, off_809DAF4 // =eStruct200ace0 
 	ldrb r0, [r7,#0x15] // (byte_200ACF5 - 0x200ace0)
 	tst r0, r0
 	bne loc_809DA98
@@ -5435,7 +5435,7 @@ loc_809DA98:
 	ldrb r0, [r5,#0x10]
 	strb r0, [r5,#0x11]
 	mov r0, #0
-	ldr r7, off_809DAF4 // =byte_200ACE0 
+	ldr r7, off_809DAF4 // =eStruct200ace0 
 	ldrh r1, [r7,#0x18] // (dword_200ACF8 - 0x200ace0)
 	ldrh r1, [r7,#0x1a] // (dword_200ACF8+2 - 0x200ace0)
 	mov r2, #0xf0
@@ -5470,7 +5470,7 @@ byte_809DAD8: .byte 0x0, 0x3, 0x7, 0x0, 0x1, 0x2, 0x8, 0x0, 0x5, 0x4, 0x6, 0x0, 
 	.byte 0x2, 0x0, 0x0
 off_809DAEC: .word byte_809DAD8
 	.word byte_2000AA0
-off_809DAF4: .word byte_200ACE0
+off_809DAF4: .word eStruct200ace0
 	thumb_func_end sub_809D9E0
 
 	thumb_local_start
@@ -5786,7 +5786,7 @@ locret_809DED2:
 sub_809DED4:
 	push {lr}
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne loc_809DEE4
 	bl IsCutsceneScriptNonNull // () -> zf
 	beq loc_809DEEA
@@ -5835,7 +5835,7 @@ loc_809DF24:
 	thumb_local_start
 sub_809DF28:
 	push {lr}
-	ldr r7, off_809DF40 // =byte_200ACE0 
+	ldr r7, off_809DF40 // =eStruct200ace0 
 	ldrb r0, [r5,#9]
 	cmp r0, #0x10
 	bne loc_809DF3A
@@ -5846,12 +5846,12 @@ sub_809DF28:
 	thumb_local_start
 sub_809DF36:
 	push {lr}
-	ldr r7, off_809DF40 // =byte_200ACE0 
+	ldr r7, off_809DF40 // =eStruct200ace0 
 loc_809DF3A:
 	ldrb r0, [r7]
 	pop {pc}
 	.byte 0, 0
-off_809DF40: .word byte_200ACE0
+off_809DF40: .word eStruct200ace0
 	thumb_func_end sub_809DF36
 
 	thumb_local_start
@@ -5948,7 +5948,7 @@ sub_809E004:
 loc_809E014:
 	strb r0, [r5,#9]
 	pop {pc}
-	.word byte_200ACE0
+	.word eStruct200ace0
 	thumb_func_end sub_809E004
 
 	thumb_local_start
@@ -6011,7 +6011,7 @@ sub_809E064:
 	str r1, [r5,#0x20]
 	ldr r1, [r6,#oGameState_Unk_2c]
 	str r1, [r5,#0x24]
-	ldr r1, [r6,#oGameState_Unk_30]
+	ldr r1, [r6,#oGameState_facingDirectionAfterWarp_30]
 	strb r1, [r5,#0x10]
 locret_809E088:
 	pop {r4,r6,r7,pc}
@@ -6027,39 +6027,39 @@ sub_809E08A:
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E08A
 
-	thumb_func_start setEventFlag_809E098
-setEventFlag_809E098:
+	thumb_func_start SetPlayerCanMoveEventFlag
+SetPlayerCanMoveEventFlag:
 	push {lr}
 	// flag 3 @ 0x2001c88[0x2e2] (=2001f6a)
 	movflag EVENT_PLAYER_CAN_MOVE
 	bl SetEventFlagFromImmediate
 	pop {pc}
-	thumb_func_end setEventFlag_809E098
+	thumb_func_end SetPlayerCanMoveEventFlag
 
 // () -> void
 	thumb_local_start
-clearEventFlag_809E0A4:
+ClearPlayerCanMoveEventFlag:
 	push {lr}
 	// clear flag 3 @ 0x2001c88[0x2e2] (=2001f6a)
 	movflag EVENT_PLAYER_CAN_MOVE
 	bl ClearEventFlagFromImmediate
 	pop {pc}
-	thumb_func_end clearEventFlag_809E0A4
+	thumb_func_end ClearPlayerCanMoveEventFlag
 
 // () -> void
-	thumb_func_start updateFlags_809E0B0
-updateFlags_809E0B0:
+	thumb_func_start owPlayer_lockPlayerForNonNPCDialogue_809E0B0
+owPlayer_lockPlayerForNonNPCDialogue_809E0B0:
 	// [break] pressing L, jacking in, and talking to objects but not NPCs
-	ldr r3, off_809E138 // =byte_200ACE0 
+	ldr r3, off_809E138 // =eStruct200ace0 
 	mov r0, #1
 	strb r0, [r3]
 	push {lr}
 	// if not set, map location changes after function call (also when jacking in)
 	movflag EVENT_1718
 	bl SetEventFlagFromImmediate
-	bl clearEventFlag_809E0A4 // () -> void
+	bl ClearPlayerCanMoveEventFlag // () -> void
 	pop {pc}
-	thumb_func_end updateFlags_809E0B0
+	thumb_func_end owPlayer_lockPlayerForNonNPCDialogue_809E0B0
 
 	thumb_local_start
 nullsub_26:
@@ -6067,18 +6067,18 @@ nullsub_26:
 	thumb_func_end nullsub_26
 
 	thumb_local_start
-sub_809E0C8:
+owPlayer_809E0C8:
 	push {lr}
-	ldr r3, off_809E138 // =byte_200ACE0 
+	ldr r3, off_809E138 // =eStruct200ace0 
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	ldr r1, [r1,#oGameState_OverworldPlayerObjectPtr]
-	ldr r0, [r1,#0x1c]
-	str r0, [r3,#0x8] // (dword_200ACE8 - 0x200ace0)
-	ldr r0, [r1,#0x20]
-	str r0, [r3,#0xc] // (dword_200ACEC - 0x200ace0)
-	ldr r0, [r1,#0x24]
-	str r0, [r3,#0x10] // (dword_200ACF0 - 0x200ace0)
+	ldr r0, [r1,#oOWPlayerObject_X]
+	str r0, [r3,#oS200ace0_PlayerX] // (dword_200ACE8 - 0x200ace0)
+	ldr r0, [r1,#oOWPlayerObject_Y]
+	str r0, [r3,#oS200ace0_PlayerY] // (dword_200ACEC - 0x200ace0)
+	ldr r0, [r1,#oOWPlayerObject_Z]
+	str r0, [r3,#oS200ace0_PlayerZ] // (dword_200ACF0 - 0x200ace0)
 	push {r3}
 	movflag EVENT_1719
 	bl TestEventFlagFromImmediate
@@ -6087,32 +6087,32 @@ sub_809E0C8:
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
 	ldr r2, [r2,#oGameState_OverworldPlayerObjectPtr]
-	ldrb r0, [r2,#0x10]
+	ldrb r0, [r2,#oOWPlayerObject_FacingDirection]
 	mov r1, #7
 	and r0, r1
-	strb r0, [r3,#2]
+	strb r0, [r3,#oS200ace0_Unk_02]
 locret_809E0FA:
 	pop {pc}
-	thumb_func_end sub_809E0C8
+	thumb_func_end owPlayer_809E0C8
 
-	thumb_func_start sub_809E0FC
-sub_809E0FC:
-	ldr r3, off_809E138 // =byte_200ACE0 
+	thumb_func_start owPlayer_809E0FC
+owPlayer_809E0FC:
+	ldr r3, off_809E138 // =eStruct200ace0 
 	mov r0, #1
-	strb r0, [r3,#0x15] // (byte_200ACF5 - 0x200ace0)
+	strb r0, [r3,#oS200ace0_Unk_15] // (byte_200ACF5 - 0x200ace0)
 	mov r0, #0
-	str r0, [r3,#0x18] // (dword_200ACF8 - 0x200ace0)
-	str r0, [r3,#0x20] // (dword_200AD00 - 0x200ace0)
+	str r0, [r3,#oS200ace0_Unk_18] // (dword_200ACF8 - 0x200ace0)
+	str r0, [r3,#oS200ace0_Unk_20] // (dword_200AD00 - 0x200ace0)
 	ldr r1, off_809E110 // =byte_809CF5C
-	str r1, [r3,#0x20] // (dword_200AD00 - 0x200ace0)
+	str r1, [r3,#oS200ace0_Unk_20] // (dword_200AD00 - 0x200ace0)
 	mov pc, lr
-	.byte 0, 0
+	.balign 4, 0
 off_809E110: .word byte_809CF5C
-	thumb_func_end sub_809E0FC
+	thumb_func_end owPlayer_809E0FC
 
 	thumb_func_start sub_809E114
 sub_809E114:
-	ldr r3, off_809E138 // =byte_200ACE0 
+	ldr r3, off_809E138 // =eStruct200ace0 
 	mov r0, #0
 	strb r0, [r3,#0x15] // (byte_200ACF5 - 0x200ace0)
 	mov r0, #0
@@ -6121,24 +6121,24 @@ sub_809E114:
 	mov pc, lr
 	thumb_func_end sub_809E114
 
-	thumb_func_start sub_809E122
-sub_809E122:
+	thumb_func_start owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
+owPlayer_unlockPlayerAfterNonNPCDialogue_809E122:
 	push {lr}
-	ldr r3, off_809E138 // =byte_200ACE0 
+	ldr r3, off_809E138 // =eStruct200ace0 
 	mov r0, #0
 	strb r0, [r3]
-	bl setEventFlag_809E098
+	bl SetPlayerCanMoveEventFlag
 	// flag 6 @ 0x2001c88[0x2e3] (=2001f6b)
 	movflag EVENT_1719
 	bl ClearEventFlagFromImmediate
 	pop {pc}
-off_809E138: .word byte_200ACE0
-	thumb_func_end sub_809E122
+off_809E138: .word eStruct200ace0
+	thumb_func_end owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
 
 	thumb_func_start sub_809E13C
 sub_809E13C:
 	push {lr}
-	ldr r3, off_809E184 // =byte_200ACE0 
+	ldr r3, off_809E184 // =eStruct200ace0 
 	strb r0, [r3,#2]
 	movflag EVENT_1719
 	bl SetEventFlagFromImmediate
@@ -6149,7 +6149,7 @@ sub_809E13C:
 sub_809E14C:
 	push {r4-r7,lr}
 	mov r4, r0
-	ldr r7, off_809E184 // =byte_200ACE0 
+	ldr r7, off_809E184 // =eStruct200ace0 
 	bl sub_809E462
 	bne loc_809E164
 	strb r4, [r7,#0x2] // (byte_200ACE2 - 0x200ace0)
@@ -6164,7 +6164,7 @@ loc_809E164:
 	thumb_local_start
 sub_809E168:
 	push {lr}
-	ldr r3, off_809E184 // =byte_200ACE0 
+	ldr r3, off_809E184 // =eStruct200ace0 
 	strb r0, [r3,#0x2] // (byte_200ACE2 - 0x200ace0)
 	mvn r0, r0
 	mov r3, r10
@@ -6175,32 +6175,35 @@ sub_809E168:
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	.balign 4, 0x00
-off_809E184: .word byte_200ACE0
+off_809E184: .word eStruct200ace0
 	thumb_func_end sub_809E168
 
-	thumb_func_start sub_809E188
-sub_809E188:
+	thumb_func_start owPlayer_indirectlySetPlayerCoordsMaybe_809e188
+owPlayer_indirectlySetPlayerCoordsMaybe_809e188:
 	push {r7}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
-	ldr r7, [r3,#0x1c]
-	str r7, [r3,#0x28]
-	ldr r7, [r3,#0x20]
-	str r7, [r3,#0x2c]
-	ldr r7, [r3,#0x24]
-	str r7, [r3,#0x30]
-	str r0, [r3,#0x1c]
-	str r1, [r3,#0x20]
-	str r2, [r3,#0x24]
+	ldr r7, [r3,#oOWPlayerObject_X]
+	str r7, [r3,#oOWPlayerObject_NextX]
+	ldr r7, [r3,#oOWPlayerObject_Y]
+	str r7, [r3,#oOWPlayerObject_NextY]
+	ldr r7, [r3,#oOWPlayerObject_Z]
+	str r7, [r3,#oOWPlayerObject_NextZ]
+	str r0, [r3,#oOWPlayerObject_X]
+	str r1, [r3,#oOWPlayerObject_Y]
+	str r2, [r3,#oOWPlayerObject_Z]
 	pop {r7}
-loc_809E1A4:
-	ldr r3, off_809E214 // =byte_200ACE0 
-	str r0, [r3,#0x8] // (dword_200ACE8 - 0x200ace0)
-	str r1, [r3,#0xc] // (dword_200ACEC - 0x200ace0)
-	str r2, [r3,#0x10] // (dword_200ACF0 - 0x200ace0)
+
+	thumb_func_start owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4
+owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4:
+	ldr r3, off_809E214 // =eStruct200ace0
+	str r0, [r3,#oS200ace0_PlayerX] // (dword_200ACE8 - 0x200ace0)
+	str r1, [r3,#oS200ace0_PlayerY] // (dword_200ACEC - 0x200ace0)
+	str r2, [r3,#oS200ace0_PlayerZ] // (dword_200ACF0 - 0x200ace0)
 	mov pc, lr
-	thumb_func_end sub_809E188
+	thumb_func_end owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4
+	thumb_func_end owPlayer_indirectlySetPlayerCoordsMaybe_809e188
 
 	thumb_func_start sub_809E1AE
 sub_809E1AE:
@@ -6235,62 +6238,65 @@ sub_809E1CA:
 	mov pc, lr
 	thumb_func_end sub_809E1CA
 
-	thumb_func_start sub_809E1D8
-sub_809E1D8:
+	thumb_func_start owPlayer_copyCoordsToNextCoordsThenAddOffsetToCoords_809e1d8
+owPlayer_copyCoordsToNextCoordsThenAddOffsetToCoords_809e1d8:
 	push {r7}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
-	ldr r3, [r7,#0x1c]
-	str r3, [r7,#0x28]
-	add r3, r3, r0
-	str r3, [r7,#0x1c]
-	ldr r3, [r7,#0x20]
-	str r3, [r7,#0x2c]
-	add r3, r3, r1
-	str r3, [r7,#0x20]
-	ldr r3, [r7,#0x24]
-	str r3, [r7,#0x30]
-	add r3, r3, r2
-	str r3, [r7,#0x24]
-	pop {r7}
-	thumb_func_end sub_809E1D8
 
-	thumb_func_start sub_809E1FA
-sub_809E1FA:
-	push {r7,lr}
-	ldr r7, off_809E214 // =byte_200ACE0 
-	ldr r3, [r7,#0x8] // (dword_200ACE8 - 0x200ace0)
+	ldr r3, [r7,#oOWPlayerObject_X]
+	str r3, [r7,#oOWPlayerObject_NextX]
 	add r3, r3, r0
-	str r3, [r7,#0x8] // (dword_200ACE8 - 0x200ace0)
-	ldr r3, [r7,#0xc] // (dword_200ACEC - 0x200ace0)
+	str r3, [r7,#oOWPlayerObject_X]
+
+	ldr r3, [r7,#oOWPlayerObject_Y]
+	str r3, [r7,#oOWPlayerObject_NextY]
 	add r3, r3, r1
-	str r3, [r7,#0xc] // (dword_200ACEC - 0x200ace0)
-	ldr r3, [r7,#0x10] // (dword_200ACF0 - 0x200ace0)
+	str r3, [r7,#oOWPlayerObject_Y]
+
+	ldr r3, [r7,#oOWPlayerObject_Z]
+	str r3, [r7,#oOWPlayerObject_NextZ]
 	add r3, r3, r2
-	str r3, [r7,#0x10] // (dword_200ACF0 - 0x200ace0)
+	str r3, [r7,#oOWPlayerObject_Z]
+	pop {r7}
+	thumb_func_end owPlayer_copyCoordsToNextCoordsThenAddOffsetToCoords_809e1d8
+
+	thumb_func_start owPlayer_offsetS200ace0Coords_809e1fa
+owPlayer_offsetS200ace0Coords_809e1fa:
+	push {r7,lr}
+	ldr r7, off_809E214 // =eStruct200ace0 
+	ldr r3, [r7,#oS200ace0_PlayerX] // (dword_200ACE8 - 0x200ace0)
+	add r3, r3, r0
+	str r3, [r7,#oS200ace0_PlayerX] // (dword_200ACE8 - 0x200ace0)
+	ldr r3, [r7,#oS200ace0_PlayerY] // (dword_200ACEC - 0x200ace0)
+	add r3, r3, r1
+	str r3, [r7,#oS200ace0_PlayerY] // (dword_200ACEC - 0x200ace0)
+	ldr r3, [r7,#oS200ace0_PlayerZ] // (dword_200ACF0 - 0x200ace0)
+	add r3, r3, r2
+	str r3, [r7,#oS200ace0_PlayerZ] // (dword_200ACF0 - 0x200ace0)
 	pop {r7,pc}
 	.balign 4, 0x00
-off_809E214: .word byte_200ACE0
-	thumb_func_end sub_809E1FA
+off_809E214: .word eStruct200ace0
+	thumb_func_end owPlayer_offsetS200ace0Coords_809e1fa
 
-	thumb_func_start sub_809E218
-sub_809E218:
-	ldr r3, off_809E224 // =byte_200ACE0 
-	ldrb r1, [r3,#0x15] // (byte_200ACF5 - 0x200ace0)
+	thumb_func_start owPlayer_809e218
+owPlayer_809e218:
+	ldr r3, =eStruct200ace0 
+	ldrb r1, [r3,#oS200ace0_Unk_15] // (byte_200ACF5 - 0x200ace0)
 	tst r1, r1
 	beq locret_809E222
-	strh r0, [r3,#0x1a] // (dword_200ACF8+2 - 0x200ace0)
+	strh r0, [r3,#oS200ace0_Unk_1a] // (dword_200ACF8+2 - 0x200ace0)
 locret_809E222:
 	mov pc, lr
-off_809E224: .word byte_200ACE0
-	thumb_func_end sub_809E218
+	.pool // 809E224
+	thumb_func_end owPlayer_809e218
 
 	thumb_func_start returnZero_809E228
 returnZero_809E228:
 	mov r0, #0
 	mov pc, lr
-	.word byte_200ACE0
+	.word eStruct200ace0
 	thumb_func_end returnZero_809E228
 
 	thumb_func_start sub_809E230
@@ -6333,14 +6339,14 @@ sub_809E254:
 	mov pc, lr
 	thumb_func_end sub_809E254
 
-	thumb_func_start sub_809E260
-sub_809E260:
+	thumb_func_start owPlayer_writeLayerIndexOverride_809e260
+owPlayer_writeLayerIndexOverride_809e260:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
-	strb r0, [r3,#0x16]
+	strb r0, [r3,#oOWPlayerObject_LayerIndexOverride]
 	mov pc, lr
-	thumb_func_end sub_809E260
+	thumb_func_end owPlayer_writeLayerIndexOverride_809e260
 
 	thumb_func_start sub_809E26A
 sub_809E26A:
@@ -6382,46 +6388,49 @@ sub_809E292:
 	pop {r5,pc}
 	thumb_func_end sub_809E292
 
-	thumb_func_start sub_809E2A0
-sub_809E2A0:
+	thumb_func_start owPlayer_setPalette_809e2a0
+owPlayer_setPalette_809e2a0:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sprite_setPalette // (int pallete) -> void
 	pop {r5,pc}
-	thumb_func_end sub_809E2A0
+	thumb_func_end owPlayer_setPalette_809e2a0
 
-	thumb_func_start sub_809E2AE
-sub_809E2AE:
+	thumb_func_start SetOWPlayerFacingDirection
+SetOWPlayerFacingDirection:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
-	strb r0, [r3,#0x10]
+	strb r0, [r3,#oOWPlayerObject_FacingDirection]
 	mov pc, lr
-	thumb_func_end sub_809E2AE
+	thumb_func_end SetOWPlayerFacingDirection
 
-	thumb_func_start sub_809E2B8
-sub_809E2B8:
+	thumb_func_start GetOWPlayerFacingDirection
+GetOWPlayerFacingDirection:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldr r0, [r0,#oGameState_OverworldPlayerObjectPtr]
-	ldrb r0, [r0,#0x10]
+	ldrb r0, [r0,#oOWPlayerObject_FacingDirection]
 	mov pc, lr
-	thumb_func_end sub_809E2B8
+	thumb_func_end GetOWPlayerFacingDirection
 
-	thumb_func_start sub_809E2C2
-sub_809E2C2:
+	thumb_func_start owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2
+owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2:
 	mov r0, #0x40 
 	mov r1, #0x40 
 	mov r2, #0
-loc_809E2C8:
+
+	thumb_func_start owPlayer_setS2000aa0_param0x0to0x2_809e2c8
+owPlayer_setS2000aa0_param0x0to0x2_809e2c8:
 	ldr r3, off_809E430 // =byte_2000AA0 
 	strb r0, [r3]
 	strb r1, [r3,#0x1] // (byte_2000AA1 - 0x2000aa0)
 	strb r2, [r3,#0x2] // (byte_2000AA2 - 0x2000aa0)
 	mov pc, lr
-	thumb_func_end sub_809E2C2
+	thumb_func_end owPlayer_setS2000aa0_param0x0to0x2_809e2c8
+	thumb_func_end owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2
 
 	thumb_local_start
 sub_809E2D2:
@@ -6432,8 +6441,8 @@ sub_809E2D2:
 	mov pc, lr
 	thumb_func_end sub_809E2D2
 
-	thumb_func_start sub_809E2DC
-sub_809E2DC:
+	thumb_func_start owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc
+owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc:
 	push {r4,lr}
 	ldr r3, off_809E430 // =byte_2000AA0 
 	ldrb r4, [r3]
@@ -6446,25 +6455,28 @@ sub_809E2DC:
 	add r4, r4, r2
 	strb r4, [r3,#0x2] // (byte_2000AA2 - 0x2000aa0)
 	pop {r4,pc}
-	thumb_func_end sub_809E2DC
+	thumb_func_end owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc
 
 	thumb_func_start sub_809E2F4
 sub_809E2F4:
 	mov r0, #0
 loc_809E2F6:
-	ldr r3, off_809E430 // =byte_2000AA0 
+	ldr r3, off_809E430 // =byte_2000AA0
 	strh r0, [r3,#0x6] // (word_2000AA6 - 0x2000aa0)
 	mov pc, lr
 	thumb_func_end sub_809E2F4
 
-	thumb_func_start sub_809E2FC
-sub_809E2FC:
+	thumb_func_start owPlayer_zeroS2000AA0Param0x5_809e2fc
+owPlayer_zeroS2000AA0Param0x5_809e2fc:
 	mov r0, #0
-loc_809E2FE:
-	ldr r3, off_809E430 // =byte_2000AA0 
+
+	thumb_func_start owPlayer_setS2000AA0Param0x5_809e2fe
+owPlayer_setS2000AA0Param0x5_809e2fe:
+	ldr r3, off_809E430 // =byte_2000AA0
 	strb r0, [r3,#0x5] // (byte_2000AA5 - 0x2000aa0)
 	mov pc, lr
-	thumb_func_end sub_809E2FC
+	thumb_func_end owPlayer_setS2000AA0Param0x5_809e2fe
+	thumb_func_end owPlayer_zeroS2000AA0Param0x5_809e2fc
 
 	thumb_func_start sub_809E304
 sub_809E304:
@@ -6482,14 +6494,17 @@ sub_809E30C:
 	mov pc, lr
 	thumb_func_end sub_809E30C
 
-	thumb_func_start sub_809E312
-sub_809E312:
+	thumb_func_start owPlayer_zeroS2000AA0Param0x4_809e312
+owPlayer_zeroS2000AA0Param0x4_809e312:
 	mov r0, #0
-loc_809E314:
+
+	thumb_func_start owPlayer_setS2000AA0Param0x4_809e314
+owPlayer_setS2000AA0Param0x4_809e314:
 	ldr r3, off_809E430 // =byte_2000AA0 
 	strb r0, [r3,#0x4] // (byte_2000AA4 - 0x2000aa0)
 	mov pc, lr
-	thumb_func_end sub_809E312
+	thumb_func_end owPlayer_setS2000AA0Param0x4_809e314
+	thumb_func_end owPlayer_zeroS2000AA0Param0x4_809e312
 
 	thumb_local_start
 sub_809E31A:
@@ -6713,23 +6728,24 @@ locret_809E494:
 	pop {r7,pc}
 	thumb_func_end sub_809E46E
 
-	thumb_func_start sub_809E496
-sub_809E496:
-	ldr r1, off_809E49C // =byte_200ACE0 
-	str r0, [r1,#0x20] // (dword_200AD00 - 0x200ace0)
+	thumb_func_start owPlayer_writeS200aec0_Unk20_809e496
+owPlayer_writeS200aec0_Unk20_809e496:
+	ldr r1, =eStruct200ace0 
+	str r0, [r1,#oS200ace0_Unk_20] // (dword_200AD00 - 0x200ace0)
 	mov pc, lr
-off_809E49C: .word byte_200ACE0
-	thumb_func_end sub_809E496
+	// 809E49C
+	.pool
+	thumb_func_end owPlayer_writeS200aec0_Unk20_809e496
 
-	thumb_func_start sub_809E4A0
-sub_809E4A0:
+	thumb_func_start owPlayer_setMosaicScalingParameters_8002c7a_809e4a0
+owPlayer_setMosaicScalingParameters_8002c7a_809e4a0:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
-	bl sub_8002C7A
+	bl sprite_setMosaicScalingParameters_8002c7a
 	pop {r5,pc}
-	thumb_func_end sub_809E4A0
+	thumb_func_end owPlayer_setMosaicScalingParameters_8002c7a_809e4a0
 
 	thumb_func_start sub_809E4AE
 sub_809E4AE:

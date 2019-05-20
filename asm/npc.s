@@ -137,7 +137,7 @@ loc_809E66E:
 	bne loc_809E690
 	mov r0, r5
 	add r0, #0x24 
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 loc_809E690:
 	bl sub_8002E14
 	ldr r0, [r5,#0x60]
@@ -1595,7 +1595,7 @@ sub_809F15A:
 	ldrb r0, [r6,#1]
 	tst r0, r0
 	beq loc_809F16A
-	bl sub_8002C7A
+	bl sprite_setMosaicScalingParameters_8002c7a
 loc_809F16A:
 	add r6, #2
 	pop {pc}

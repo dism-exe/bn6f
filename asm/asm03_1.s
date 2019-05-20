@@ -174,7 +174,7 @@ off_80339C8: .word byte_86C1F20
 sub_80339CC:
 	push {r4-r7,lr}
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne locret_8033A16
 	ldr r5, off_8033A78 // =unk_2011E30
 	mov r0, r10
@@ -2841,9 +2841,9 @@ off_8035688: .word byte_80525C0
 	.word 0xFFFFFFFF
 	thumb_func_end sub_80355EC
 
-	thumb_func_start sub_8035694
+	thumb_func_start applyLayerEffectToOWObject_8035694
 // r0 - coords
-sub_8035694:
+applyLayerEffectToOWObject_8035694:
 	push {r4-r7,lr}
 	mov r5, r0
 	ldr r7, =Struct8034460
@@ -2890,7 +2890,7 @@ sub_8035694:
 	bl sub_80318B0
 	pop {r4-r7,pc}
 	.pool // Struct8034460
-	thumb_func_end sub_8035694
+	thumb_func_end applyLayerEffectToOWObject_8035694
 
 	thumb_func_start sub_80356EC
 sub_80356EC:
@@ -3076,14 +3076,14 @@ ScriptCmds8035808:
 	.word MapScriptCmd_jump_if_mem_equals+1
 	.word MapScriptCmd_jump_if_unk_navicust_range+1
 	.word MapScriptCmd_jump_if_chip_count_in_range+1
-	.word sub_803793A+1
-	.word sub_803795C+1
+	.word MapScriptCmd_jump_if_eStruct200A008_unk01_equals+1
+	.word MapScriptCmd_jump_if_eStruct200A008_unk01_not_equal+1
 	.word MapScriptCmd_cmd_8035afa+1
 	.word MapScriptCmd_cmd_8035b44+1
 	.word MapScriptCmd_jump_if_game_state_0e_equals+1
 	.word MapScriptCmd_jump_if_game_state_0e_not_equals+1
-	.word sub_803797E+1
-	.word sub_80379A0+1
+	.word MapScriptCmd_jump_if_current_navi_equals+1
+	.word MapScriptCmd_jump_if_current_navi_not_equal+1
 	.word MapScriptCmd_jump_if_player_z_equals+1
 	.word MapScriptCmd_jump_if_player_z_not_equals+1
 	.word MapScriptCmd_jump_if_game_state_44_equals+1
@@ -3809,7 +3809,7 @@ MapScriptCmd_jump_if_in_pet_menu: // 8035D4E
 	mov r6, #1
 	bl ReadMapScriptWord
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne loc_8035D64
 	add r7, #5
 	mov r0, #1
@@ -5284,25 +5284,25 @@ init_s_02011C50_8036E90:
 	ldr r5, [r5,#oToolkit_CutsceneStatePtr]
 	push {r0,r1}
 	mov r0, r5
-	mov r1, #0x90
+	mov r1, #oCutsceneState_Size
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0,r1}
-	str r0, [r5,#0x1c] // s_02011C50.ptr_1C
-	str r0, [r5,#0x40] // s_02011C50.unk_40
-	str r1, [r5,#4]
+	str r0, [r5,#oCutsceneState_CutsceneScriptPos] // s_02011C50.ptr_1C
+	str r0, [r5,#oCutsceneState_originalCutsceneScriptPos_40] // s_02011C50.unk_40
+	str r1, [r5,#oCutsceneState_Unk_04]
 	ldr r0, off_8036F20 // =DummyCutsceneScript
-	str r0, [r5,#0x20] // s_02011C50.ptr_20
-	str r0, [r5,#0x24] // s_02011C50.ptr_24
-	str r0, [r5,#0x28] // s_02011C50.ptr_28
+	str r0, [r5,#oCutsceneState_CutsceneScriptPos2] // s_02011C50.ptr_20
+	str r0, [r5,#oCutsceneState_CutsceneScriptPos3] // s_02011C50.ptr_24
+	str r0, [r5,#oCutsceneState_CutsceneScriptPos4] // s_02011C50.ptr_28
 	ldr r0, off_8036EBC // =eTextScript202DA04
-	str r0, [r5,#0x30] // s_02011C50.ptr_30
+	str r0, [r5,#oCutsceneState_TextArchivePtr] // s_02011C50.ptr_30
 	ldr r0, off_8036EC0 // =off_8036EC4
-	str r0, [r5,#0x34] // s_02011C50.ptr_34
+	str r0, [r5,#oCutsceneState_Unk_34] // s_02011C50.ptr_34
 	pop {r5,pc}
 	.balign 4, 0x00
 off_8036EBC: .word eTextScript202DA04
 off_8036EC0: .word off_8036EC4
-off_8036EC4: .word LCDControl
+off_8036EC4: .word 0x4000000
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end init_s_02011C50_8036E90
 
@@ -5318,7 +5318,7 @@ cutscene_8036ED4:
 	str r0, [r1,#oCutsceneState_CutsceneScriptPos3] // s_02011C50.ptr_24
 	str r0, [r1,#oCutsceneState_CutsceneScriptPos4] // s_02011C50.ptr_28
 	mov r0, #0
-	str r0, [r1,#oCutsceneState_UnkCutsceneScript_38] // s_02011C50.unk_38
+	str r0, [r1,#oCutsceneState_CutsceneScriptAfterCutsceneSkip] // s_02011C50.unk_38
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
@@ -5341,7 +5341,7 @@ cutscene_8036EFE:
 	str r0, [r1,#oCutsceneState_CutsceneScriptPos3] // s_02011C50.ptr_24
 	str r0, [r1,#oCutsceneState_CutsceneScriptPos4] // s_02011C50.ptr_28
 	mov r0, #NULL
-	str r0, [r1,#oCutsceneState_UnkCutsceneScript_38] // s_02011C50.unk_38
+	str r0, [r1,#oCutsceneState_CutsceneScriptAfterCutsceneSkip] // s_02011C50.unk_38
 	movflag EVENT_1731
 	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
@@ -6148,22 +6148,22 @@ CutsceneCommandJumptable:
 	.word MapScriptCmd_pause+1
 	.word MapScriptCmd_long_pause+1
 	.word MapScriptCmd_wait_chatbox+1
-	.word MapScriptCmd_halt_if_player_sprite_cur_frame_not_equal_maybe+1
+	.word MapScriptCmd_wait_if_player_sprite_cur_frame_not_equal_maybe+1
 	.word MapScriptCmd_next_80377D0+1
 	.word MapScriptCmd_wait_screen_fade+1
 	.word MapScriptCmd_wait_camera_script+1
 	.word MapScriptCmd_wait_var_equal+1
 	.word MapScriptCmd_wait_cutscene_process+1
-	.word sub_8037840+1
-	.word sub_8037852+1
-	.word sub_8037866+1
-	.word sub_8037880+1
-	.word sub_803789A+1
-	.word sub_80378AC+1
-	.word sub_80378BE+1
-	.word sub_80378C2+1
-	.word sub_80378EE+1
-	.word sub_8037904+1
+	.word MapScriptCmd_wait_if_eStruct200a6a0_initialized+1
+	.word MapScriptCmd_wait_if_in_pet_menu+1
+	.word MapScriptCmd_wait_if_flag_clear+1
+	.word MapScriptCmd_wait_if_flag_set+1
+	.word MapScriptCmd_wait_if_eStruct2000780_initialized+1
+	.word MapScriptCmd_wait_if_eStruct2001010_initialized+1
+	.word MapScriptCmd_cutscene_end+1
+	.word MapScriptCmd_spawn_cutscene_process+1
+	.word MapScriptCmd_kill_cutscene_process+1
+	.word MapScriptCmd_set_post_execution_cutscene_script+1
 	.word MapScriptCmd_jump+1
 	.word MapScriptCmd_jump_if_progress_in_range+1
 	.word MapScriptCmd_jump_if_flag_set+1
@@ -6171,17 +6171,17 @@ CutsceneCommandJumptable:
 	.word MapScriptCmd_jump_if_flag_clear+1
 	.word MapScriptCmd_jump_if_flag_range_clear+1
 	.word MapScriptCmd_jump_if_mem_equals+1
-	.word sub_8037914+1
+	.word MapScriptCmd_jump_if_var_equal+1
 	.word MapScriptCmd_jump_if_unk_navicust_range+1
 	.word MapScriptCmd_jump_if_chip_count_in_range+1
-	.word sub_803793A+1
-	.word sub_803795C+1
+	.word MapScriptCmd_jump_if_eStruct200A008_unk01_equals+1
+	.word MapScriptCmd_jump_if_eStruct200A008_unk01_not_equal+1
 	.word MapScriptCmd_cmd_8035afa+1
 	.word MapScriptCmd_cmd_8035b44+1
-	.word sub_803797E+1
-	.word sub_80379A0+1
-	.word sub_80379C2+1
-	.word sub_80379E4+1
+	.word MapScriptCmd_jump_if_current_navi_equals+1
+	.word MapScriptCmd_jump_if_current_navi_not_equal+1
+	.word MapScriptCmd_jump_if_title_screen_icon_count_equals+1
+	.word MapScriptCmd_jump_if_title_screen_icon_count_not_equal+1
 	.word MapScriptCmd_set_screen_fade+1
 	.word MapScriptCmd_set_game_state_16_17+1
 	.word MapScriptCmd_set_event_flag+1
@@ -6195,24 +6195,24 @@ CutsceneCommandJumptable:
 	.word MapScriptCmd_write_word+1
 	.word MapScriptCmd_write_gamestate_byte+1
 	.word MapScriptCmd_write_eStruct2001c04_byte+1
-	.word sub_8037A06+1
-	.word sub_8037A2A+1
+	.word MapScriptCmd_write_byte_to_extended_var_plus_param+1
+	.word MapScriptCmd_set_var+1
 	.word MapScriptCmd_call_sub_8001B1C+1
 	.word MapScriptCmd_call_sub_8001B1C_multiple+1
 	.word MapScriptCmd_call_sub_8030A30_8035194+1
 	.word MapScriptCmd_cmd_8035F6A+1
-	.word sub_8037A42+1
-	.word sub_8037A70+1
-	.word sub_8037A7C+1
-	.word sub_8037AA0+1
-	.word sub_8037AB6+1
-	.word sub_8037B08+1
-	.word sub_8037B6C+1
-	.word sub_8037BB4+1
-	.word sub_8037C44+1
-	.word sub_8037CC4+1
-	.word sub_8037CE4+1
-	.word sub_8037CF8+1
+	.word MapScriptCmd_run_text_script+1
+	.word MapScriptCmd_chatbox_cmd_8037a70+1
+	.word MapScriptCmd_set_or_clear_chatbox_flags+1
+	.word MapScriptCmd_switch_case_from_chatbox_flags_bit0_to_2+1
+	.word MapScriptCmd_decomp_text_archive+1
+	.word MapScriptCmd_sprite_special_maybe_8037b08+1
+	.word MapScriptCmd_ow_player_sprite_8037b6c+1
+	.word MapScriptCmd_ow_player_coord_special_8037bb4+1
+	.word MapScriptCmd_move_player_in_facing_direction+1
+	.word MapScriptCmd_ow_player_8037cc4+1
+	.word MapScriptCmd_write_S200ace0_unk_20+1
+	.word MapScriptCmd_transform_player_navi_sprite+1
 	.word sub_8037D80+1
 	.word sub_8037DAC+1
 	.word sub_8037DE0+1
@@ -6230,7 +6230,7 @@ CutsceneCommandJumptable:
 	.word sub_803816A+1
 	.word sub_80381A0+1
 	.word sub_80381E0+1
-	.word 0x0
+	.word NULL
 	.word sub_80381FA+1
 	.word sub_803821E+1
 	.word sub_803822A+1
@@ -6243,21 +6243,21 @@ CutsceneCommandJumptable:
 	.word sub_803828E+1
 	.word sub_803829A+1
 	.word sub_80382AE+1
-	.word 0x0
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
+	.word NULL
 	.word sub_80382BA+1
 	.word sub_80382DE+1
 	.word sub_80382F2+1
 	.word sub_80382FE+1
 	.word sub_8038322+1
 	.word sub_8038346+1
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word sub_8038362+1
 	.word sub_8038386+1
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word sub_80383AA+1
 	.word sub_80383DE+1
 	.word sub_8038412+1
@@ -6419,7 +6419,7 @@ loc_80377B2:
 	thumb_func_end MapScriptCmd_wait_chatbox
 
 	thumb_local_start
-MapScriptCmd_halt_if_player_sprite_cur_frame_not_equal_maybe:
+MapScriptCmd_wait_if_player_sprite_cur_frame_not_equal_maybe:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -6432,7 +6432,7 @@ MapScriptCmd_halt_if_player_sprite_cur_frame_not_equal_maybe:
 loc_80377CC:
 	mov r0, #0
 	pop {pc}
-	thumb_func_end MapScriptCmd_halt_if_player_sprite_cur_frame_not_equal_maybe
+	thumb_func_end MapScriptCmd_wait_if_player_sprite_cur_frame_not_equal_maybe
 
 	thumb_local_start
 MapScriptCmd_next_80377D0:
@@ -6512,81 +6512,81 @@ MapScriptCmd_wait_cutscene_process:
 	thumb_func_end MapScriptCmd_wait_cutscene_process
 
 	thumb_local_start
-sub_8037840:
+MapScriptCmd_wait_if_eStruct200a6a0_initialized:
 	push {lr}
 	bl Is_eStruct200a6a0_Initialized
-	bne loc_803784E
+	bne .structInitialized
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-loc_803784E:
+.structInitialized
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_8037840
+	thumb_func_end MapScriptCmd_wait_if_eStruct200a6a0_initialized
 
 	thumb_local_start
-sub_8037852:
+MapScriptCmd_wait_if_in_pet_menu:
 	push {lr}
 	mov r0, #1
-	bl sub_811EBE0
-	bne loc_8037862
+	bl TestPETMenuDataFlag
+	bne .inPETMenu
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-loc_8037862:
+.inPETMenu
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_8037852
+	thumb_func_end MapScriptCmd_wait_if_in_pet_menu
 
 	thumb_local_start
-sub_8037866:
+MapScriptCmd_wait_if_flag_clear:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
-	beq loc_803787C
+	beq .flagClear
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-loc_803787C:
+.flagClear
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_8037866
+	thumb_func_end MapScriptCmd_wait_if_flag_clear
 
 	thumb_local_start
-sub_8037880:
+MapScriptCmd_wait_if_flag_set:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
-	bne loc_8037896
+	bne .flagSet
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-loc_8037896:
+.flagSet
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_8037880
+	thumb_func_end MapScriptCmd_wait_if_flag_set
 
 	thumb_local_start
-sub_803789A:
+MapScriptCmd_wait_if_eStruct2000780_initialized:
 	push {lr}
-	bl sub_80039CC
-	bne loc_80378A8
+	bl Is_eStruct2000780_Initialized
+	bne .structInitialized
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-loc_80378A8:
+.structInitialized
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_803789A
+	thumb_func_end MapScriptCmd_wait_if_eStruct2000780_initialized
 
 	thumb_local_start
-sub_80378AC:
+MapScriptCmd_wait_if_eStruct2001010_initialized:
 	push {lr}
-	bl sub_8003B1C
+	bl Is_eStruct2001010_Initialized
 	bne loc_80378BA
 	add r7, #1
 	mov r0, #1
@@ -6594,62 +6594,71 @@ sub_80378AC:
 loc_80378BA:
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_80378AC
+	thumb_func_end MapScriptCmd_wait_if_eStruct2001010_initialized
 
 	thumb_local_start
-sub_80378BE:
+MapScriptCmd_cutscene_end:
 	mov r0, #0
 	mov pc, lr
-	thumb_func_end sub_80378BE
+	thumb_func_end MapScriptCmd_cutscene_end
 
 	thumb_local_start
-sub_80378C2:
+MapScriptCmd_spawn_cutscene_process:
 	push {lr}
+	// read cutscene script pointer
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
+
+	// read cutscene script process offset
 	mov r6, #1
 	bl ReadMapScriptByte
 	str r0, [r5,r4]
-	sub r4, #0x1c
+
+	// get index of cutscene script
+	sub r4, #oCutsceneState_CutsceneScriptPos
 	lsr r4, r4, #2
 	mov r0, r4
-	add r0, #0
+
+	// clear timer flags
+	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED
 	bl cutscene_clearFlag0x2c_80385D0
 	mov r0, r4
-	add r0, #4
+	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED_LONG
 	bl cutscene_clearFlag0x2c_80385D0
+
+	// advance to next command
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80378C2
+	thumb_func_end MapScriptCmd_spawn_cutscene_process
 
 	thumb_local_start
-sub_80378EE:
+MapScriptCmd_kill_cutscene_process:
 	push {lr}
-	ldr r0, off_8037900 // =DummyCutsceneScript
+	ldr r0, =DummyCutsceneScript
 	mov r6, #1
 	bl ReadMapScriptByte
 	str r0, [r5,r4]
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-off_8037900: .word DummyCutsceneScript
-	thumb_func_end sub_80378EE
+	.pool // 8037900
+	thumb_func_end MapScriptCmd_kill_cutscene_process
 
 	thumb_local_start
-sub_8037904:
+MapScriptCmd_set_post_execution_cutscene_script:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
-	str r4, [r5,#0x38]
+	str r4, [r5,#oCutsceneState_CutsceneScriptAfterCutsceneSkip]
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037904
+	thumb_func_end MapScriptCmd_set_post_execution_cutscene_script
 
 	thumb_local_start
-sub_8037914:
+MapScriptCmd_jump_if_var_equal:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -6657,139 +6666,139 @@ sub_8037914:
 	mov r6, #2
 	bl ReadMapScriptByte
 	cmp r0, r4
-	bne loc_8037934
+	bne .notEqual
 	mov r6, #3
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8037934:
+.notEqual
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037914
+	thumb_func_end MapScriptCmd_jump_if_var_equal
 
 	thumb_local_start
-sub_803793A:
+MapScriptCmd_jump_if_eStruct200A008_unk01_equals:
+	push {lr}
+	mov r6, #1
+	bl ReadMapScriptByte
+	bl eStruct200A008_getUnk01 // possibly battle related
+	cmp r0, r4
+	bne .notEqual
+	mov r6, #2
+	bl ReadMapScriptWord
+	mov r7, r4
+	mov r0, #1
+	pop {pc}
+.notEqual
+	add r7, #6
+	mov r0, #1
+	pop {pc}
+	thumb_func_end MapScriptCmd_jump_if_eStruct200A008_unk01_equals
+
+	thumb_local_start
+MapScriptCmd_jump_if_eStruct200A008_unk01_not_equal:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	bl eStruct200A008_getUnk01
 	cmp r0, r4
-	bne loc_8037956
+	beq .isEqual
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8037956:
+.isEqual
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_803793A
+	thumb_func_end MapScriptCmd_jump_if_eStruct200A008_unk01_not_equal
 
 	thumb_local_start
-sub_803795C:
-	push {lr}
-	mov r6, #1
-	bl ReadMapScriptByte
-	bl eStruct200A008_getUnk01
-	cmp r0, r4
-	beq loc_8037978
-	mov r6, #2
-	bl ReadMapScriptWord
-	mov r7, r4
-	mov r0, #1
-	pop {pc}
-loc_8037978:
-	add r7, #6
-	mov r0, #1
-	pop {pc}
-	thumb_func_end sub_803795C
-
-	thumb_local_start
-sub_803797E:
+MapScriptCmd_jump_if_current_navi_equals:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	bl getPETNaviSelect // () -> u8
 	cmp r0, r4
-	bne loc_803799A
+	bne .currentNaviNotEqual
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_803799A:
+.currentNaviNotEqual
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_803797E
+	thumb_func_end MapScriptCmd_jump_if_current_navi_equals
 
 	thumb_local_start
-sub_80379A0:
+MapScriptCmd_jump_if_current_navi_not_equal:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	bl getPETNaviSelect // () -> u8
 	cmp r0, r4
-	beq loc_80379BC
+	beq .currentNaviEqual
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_80379BC:
+.currentNaviEqual
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80379A0
+	thumb_func_end MapScriptCmd_jump_if_current_navi_not_equal
 
 	thumb_local_start
-sub_80379C2:
+MapScriptCmd_jump_if_title_screen_icon_count_equals:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
-	bl sub_8000EE4
+	bl GetTitleScreenIconCount
 	cmp r0, r4
-	bne loc_80379DE
+	bne .countNotEqual
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_80379DE:
+.countNotEqual
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80379C2
+	thumb_func_end MapScriptCmd_jump_if_title_screen_icon_count_equals
 
 	thumb_local_start
-sub_80379E4:
+MapScriptCmd_jump_if_title_screen_icon_count_not_equal:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
-	bl sub_8000EE4
+	bl GetTitleScreenIconCount
 	cmp r0, r4
-	beq loc_8037A00
+	beq .countEqual
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8037A00:
+.countEqual
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80379E4
+	thumb_func_end MapScriptCmd_jump_if_title_screen_icon_count_not_equal
 
 	thumb_local_start
-sub_8037A06:
+MapScriptCmd_write_byte_to_extended_var_plus_param:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	lsl r0, r4, #2
-	add r0, #0x44
+	add r0, #oCutsceneState_Unk_44
 	mov r6, #2
 	bl ReadMapScriptByte
 	ldr r0, [r5,r0]
@@ -6800,10 +6809,10 @@ sub_8037A06:
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037A06
+	thumb_func_end MapScriptCmd_write_byte_to_extended_var_plus_param
 
 	thumb_local_start
-sub_8037A2A:
+MapScriptCmd_set_var:
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptByte
@@ -6814,43 +6823,44 @@ sub_8037A2A:
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037A2A
+	thumb_func_end MapScriptCmd_set_var
 
 	thumb_local_start
-sub_8037A42:
+MapScriptCmd_run_text_script:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq loc_8037A5C
-	ldr r0, [r5,#0x30]
+	beq .notFromMem
+	ldr r0, [r5,#oCutsceneState_TextArchivePtr]
 	ldrb r1, [r5,r4]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-loc_8037A5C:
+.notFromMem
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r1, r4
-	ldr r0, [r5,#0x30]
+	ldr r0, [r5,#oCutsceneState_TextArchivePtr]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037A42
+	thumb_func_end MapScriptCmd_run_text_script
 
 	thumb_local_start
-sub_8037A70:
+// ex. called after getting a chip from the numbertrader
+MapScriptCmd_chatbox_cmd_8037a70:
 	push {lr}
 	bl chatbox_8040818
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037A70
+	thumb_func_end MapScriptCmd_chatbox_cmd_8037a70
 
 	thumb_local_start
-sub_8037A7C:
+MapScriptCmd_set_or_clear_chatbox_flags:
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptByte
@@ -6858,19 +6868,19 @@ sub_8037A7C:
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #1
-	beq loc_8037A96
+	beq .clearChatboxFlags
 	bl chatbox_set_eFlags2009F38
-	b loc_8037A9A
-loc_8037A96:
+	b .done
+.clearChatboxFlags
 	bl chatbox_clear_eFlags2009F38 // (int a1) ->
-loc_8037A9A:
+.done
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037A7C
+	thumb_func_end MapScriptCmd_set_or_clear_chatbox_flags
 
 	thumb_local_start
-sub_8037AA0:
+MapScriptCmd_switch_case_from_chatbox_flags_bit0_to_2:
 	push {lr}
 	bl chatbox_8045F4C
 	lsl r0, r0, #2
@@ -6880,42 +6890,42 @@ sub_8037AA0:
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037AA0
+	thumb_func_end MapScriptCmd_switch_case_from_chatbox_flags_bit0_to_2
 
 	thumb_local_start
-sub_8037AB6:
+MapScriptCmd_decomp_text_archive:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
 	mov r0, r4
 	cmp r0, #0
-	bge loc_8037AC8
-	bl uncomp_8037AD0 // (void *a1) -> void*
-loc_8037AC8:
-	str r0, [r5,#0x30]
+	bge .uncompressedPtr
+	bl DecompressTextArchiveForCutscene // (void *a1) -> void*
+.uncompressedPtr
+	str r0, [r5,#oCutsceneState_TextArchivePtr]
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037AB6
+	thumb_func_end MapScriptCmd_decomp_text_archive
 
 // (void *a1) -> void*
 	thumb_local_start
-uncomp_8037AD0:
+DecompressTextArchiveForCutscene:
 	push {lr}
 	cmp r0, #0
-	bge locret_8037AE4
+	bge .uncompressedPtr
 	lsl r0, r0, #1
 	lsr r0, r0, #1
 	// dest
-	ldr r1, off_8037AE8 // =unk_2034A00
+	ldr r1, =unk_2034A00
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, off_8037AE8 // =unk_2034A00
+	ldr r0, =unk_2034A00
 	add r0, #4
-locret_8037AE4:
+.uncompressedPtr
 	pop {pc}
-	.balign 4, 0x00
-off_8037AE8: .word unk_2034A00
-	thumb_func_end uncomp_8037AD0
+	.balign 4, 0
+	.pool // 8037AE8
+	thumb_func_end DecompressTextArchiveForCutscene
 
 	thumb_func_start uncomp_8037AEC
 uncomp_8037AEC:
@@ -6931,27 +6941,27 @@ uncomp_8037AEC:
 	add r0, #4
 locret_8037B00:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8037B04: .word unk_2033400
 	thumb_func_end uncomp_8037AEC
 
 	thumb_local_start
-sub_8037B08:
+MapScriptCmd_sprite_special_maybe_8037b08:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
-	ldr r0, off_8037B20 // =off_8037B24
+	ldr r0, =off_8037B24
 	ldr r0, [r0,r4]
 	mov lr, pc
 	bx r0
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	.byte 0, 0
-off_8037B20: .word off_8037B24
-off_8037B24: .word updateFlags_809E0B0+1
-	.word sub_809E122+1
-	.word sub_809E0FC+1
+	.balign 4, 0
+	.pool // 8037B20
+off_8037B24: .word owPlayer_lockPlayerForNonNPCDialogue_809E0B0+1
+	.word owPlayer_unlockPlayerAfterNonNPCDialogue_809E122+1
+	.word owPlayer_809E0FC+1
 	.word sub_809E114+1
 	.word sub_809E230+1
 	.word sub_809E23C+1
@@ -6965,70 +6975,70 @@ off_8037B24: .word updateFlags_809E0B0+1
 	.word sub_809E452+1
 	.word sub_809E4AE+1
 	.word sub_809E4BC+1
-	.word sub_809E312+1
+	.word owPlayer_zeroS2000AA0Param0x4_809e312+1
 	.word sub_803CEB8+1
-	thumb_func_end sub_8037B08
+	thumb_func_end MapScriptCmd_sprite_special_maybe_8037b08
 
 	thumb_local_start
-sub_8037B6C:
+MapScriptCmd_ow_player_sprite_8037b6c:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
-	ldr r3, off_8037B98 // =off_8037B9C
+	ldr r3, =off_8037B9C
 	ldr r3, [r3,r4]
 	mov r6, #2
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq loc_8037B86
+	beq .readFromParam
 	ldrb r4, [r5,r4]
-	b loc_8037B8C
-loc_8037B86:
+	b .gotVar
+.readFromParam
 	mov r6, #3
 	bl ReadMapScriptByte
-loc_8037B8C:
+.gotVar
 	mov r0, r4
 	mov lr, pc
 	bx r3
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-off_8037B98: .word off_8037B9C
-off_8037B9C: .word sub_809E260+1
-	.word sub_809E2AE+1
-	.word sub_809E2A0+1
-	.word sub_809E4A0+1
-	.word loc_809E2FE+1
-	.word loc_809E314+1
-	thumb_func_end sub_8037B6C
+	.pool // 8037B98
+off_8037B9C: .word owPlayer_writeLayerIndexOverride_809e260+1
+	.word SetOWPlayerFacingDirection+1
+	.word owPlayer_setPalette_809e2a0+1
+	.word owPlayer_setMosaicScalingParameters_8002c7a_809e4a0+1
+	.word owPlayer_setS2000AA0Param0x5_809e2fe+1
+	.word owPlayer_setS2000AA0Param0x4_809e314+1
+	thumb_func_end MapScriptCmd_ow_player_sprite_8037b6c
 
 	thumb_local_start
-sub_8037BB4:
+MapScriptCmd_ow_player_coord_special_8037bb4:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #8
-	blt loc_8037BC6
-	ldrb r0, [r5,#0x12]
+	blt .lessThanEight
+	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
 	tst r0, r0
-	beq loc_8037C2A
-loc_8037BC6:
-	mov r0, #8
+	beq .waitCommand
+.lessThanEight
+	mov r0, #CUTSCENE_FLAG_0x2c_8
 	bl cutscene_testFlag0x2c_80385E0
-	bne loc_8037BEA
-	mov r0, #8
+	bne .flagAlreadySet
+	mov r0, #CUTSCENE_FLAG_0x2c_8
 	bl cutscene_setFlag0x2c_80385C0
 	mov r6, #2
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq loc_8037BE2
+	beq .immediateParam
 	ldrb r4, [r5,r4]
-	b loc_8037BE8
-loc_8037BE2:
+	b .gotParam
+.immediateParam
 	mov r6, #3
 	bl ReadMapScriptByte
-loc_8037BE8:
-	strb r4, [r5,#0x10]
-loc_8037BEA:
+.gotParam
+	strb r4, [r5,#oCutsceneState_Unk_10]
+.flagAlreadySet
 	mov r6, #4
 	bl ReadMapScriptSignedHalfword
 	mov r0, r4
@@ -7043,61 +7053,62 @@ loc_8037BEA:
 	lsl r2, r2, #0xc
 	mov r6, #1
 	bl ReadMapScriptByte
-	ldr r3, off_8037C30 // =off_8037C34
+	ldr r3, =off_8037C34
 	ldr r3, [r3,r4]
 	mov lr, pc
 	bx r3
-	ldrb r0, [r5,#0x10]
+	ldrb r0, [r5,#oCutsceneState_Unk_10]
 	sub r0, #1
-	strb r0, [r5,#0x10]
-	bgt loc_8037C2A
+	strb r0, [r5,#oCutsceneState_Unk_10]
+	bgt .waitCommand
 	mov r0, #8
 	bl cutscene_clearFlag0x2c_80385D0
 	add r7, #0xa
 	mov r0, #1
 	pop {pc}
-loc_8037C2A:
+.waitCommand
 	mov r0, #0
 	pop {pc}
-	.byte 0x0, 0x0
-off_8037C30: .word off_8037C34
-off_8037C34: .word loc_809E1A4+1
-	.word sub_809E188+1
-	.word sub_809E1FA+1
-	.word sub_809E1D8+1
-	thumb_func_end sub_8037BB4
+	.balign 4, 0
+	.pool // 8037C30
+off_8037C34: .word owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4+1
+	.word owPlayer_indirectlySetPlayerCoordsMaybe_809e188+1
+	.word owPlayer_offsetS200ace0Coords_809e1fa+1
+	.word owPlayer_copyCoordsToNextCoordsThenAddOffsetToCoords_809e1d8+1
+	thumb_func_end MapScriptCmd_ow_player_coord_special_8037bb4
 
 	thumb_local_start
-sub_8037C44:
+// paramType0 immediateParam1 movementSpeed2
+MapScriptCmd_move_player_in_facing_direction:
 	push {lr}
-	ldrb r0, [r5,#0x12]
+	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
 	tst r0, r0
-	beq loc_8037CAA
-	bl sub_809E2B8
+	beq .waitCommand
+	bl GetOWPlayerFacingDirection
 	mov r3, r0
-	mov r0, #8
+	mov r0, #CUTSCENE_FLAG_0x2c_8
 	bl cutscene_testFlag0x2c_80385E0
-	bne loc_8037C76
-	mov r0, #8
+	bne .flagAlreadySet
+	mov r0, #CUTSCENE_FLAG_0x2c_8
 	bl cutscene_setFlag0x2c_80385C0
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq loc_8037C6E
+	beq .immediateParam
 	ldrb r4, [r5,r4]
-	b loc_8037C74
-loc_8037C6E:
+	b .gotParam
+.immediateParam
 	mov r6, #2
 	bl ReadMapScriptByte
-loc_8037C74:
-	strb r4, [r5,#0x10]
-loc_8037C76:
+.gotParam
+	strb r4, [r5,#oCutsceneState_Unk_10]
+.flagAlreadySet
 	mov r6, #3
 	bl ReadMapScriptSignedHalfword
 	mov r0, r4
 	lsl r0, r0, #8
 	mov r1, r0
-	ldr r4, off_8037CB0 // =byte_8037CB4
+	ldr r4, =byte_8037CB4
 	lsl r3, r3, #1
 	ldrsb r2, [r4,r3]
 	mul r0, r2
@@ -7105,27 +7116,34 @@ loc_8037C76:
 	ldrsb r2, [r4,r3]
 	mul r1, r2
 	mov r2, #0
-	bl sub_809E1FA
-	ldrb r0, [r5,#0x10]
+	bl owPlayer_offsetS200ace0Coords_809e1fa
+	ldrb r0, [r5,#oCutsceneState_Unk_10]
 	sub r0, #1
-	strb r0, [r5,#0x10]
-	bgt loc_8037CAA
+	strb r0, [r5,#oCutsceneState_Unk_10]
+	bgt .waitCommand
 	mov r0, #8
 	bl cutscene_clearFlag0x2c_80385D0
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-loc_8037CAA:
+.waitCommand
 	mov r0, #0
 	pop {pc}
-	.hword 0x0
-off_8037CB0: .word byte_8037CB4
-byte_8037CB4: .byte 0x10, 0xF0, 0x10, 0x0, 0x8, 0x8, 0x0, 0x10, 0xF0, 0x10, 0xF0
-	.byte 0x0, 0xF8, 0xF8, 0x0, 0xF0
-	thumb_func_end sub_8037C44
+	.balign 4, 0
+	.pool // 8037CB0
+byte_8037CB4:
+	.byte 0x10, 0xF0
+	.byte 0x10, 0x0
+	.byte 0x8, 0x8
+	.byte 0x0, 0x10
+	.byte 0xF0, 0x10
+	.byte 0xF0, 0x0
+	.byte 0xF8, 0xF8
+	.byte 0x0, 0xF0
+	thumb_func_end MapScriptCmd_move_player_in_facing_direction
 
 	thumb_local_start
-sub_8037CC4:
+MapScriptCmd_ow_player_8037cc4:
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptByte
@@ -7133,38 +7151,38 @@ sub_8037CC4:
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq loc_8037CDA
+	beq .useImmediateParam
 	ldrb r0, [r5,r4]
-loc_8037CDA:
-	bl sub_809E218
+.useImmediateParam
+	bl owPlayer_809e218
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037CC4
+	thumb_func_end MapScriptCmd_ow_player_8037cc4
 
 	thumb_local_start
-sub_8037CE4:
+MapScriptCmd_write_S200ace0_unk_20:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl sub_809E496
+	bl owPlayer_writeS200aec0_Unk20_809e496
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037CE4
+	thumb_func_end MapScriptCmd_write_S200ace0_unk_20
 
 	thumb_local_start
-sub_8037CF8:
+MapScriptCmd_transform_player_navi_sprite:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0
-	beq loc_8037D0A
+	beq .subcmdZero
 	cmp r4, #1
-	beq loc_8037D2C
-	b loc_8037D36
-loc_8037D0A:
+	beq .subcmdOne
+	b .subcmdTwo
+.subcmdZero // set custom transform
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r0, r4
@@ -7174,25 +7192,25 @@ loc_8037D0A:
 	mov r6, #4
 	bl ReadMapScriptByte
 	mov r2, r4
-	bl loc_809E2C8
+	bl owPlayer_setS2000aa0_param0x0to0x2_809e2c8
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-loc_8037D2C:
-	bl sub_809E2C2
+.subcmdOne // set default transform
+	bl owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-loc_8037D36:
-	mov r0, #9
+.subcmdTwo // set transform offset
+	mov r0, #CUTSCENE_FLAG_0x2c_9
 	bl cutscene_testFlag0x2c_80385E0
-	bne loc_8037D4C
-	mov r0, #9
+	bne .flagAlreadySet
+	mov r0, #CUTSCENE_FLAG_0x2c_9
 	bl cutscene_setFlag0x2c_80385C0
 	mov r6, #2
 	bl ReadMapScriptByte
-	strb r4, [r5,#0x11]
-loc_8037D4C:
+	strb r4, [r5,#oCutsceneState_Unk_11]
+.flagAlreadySet
 	mov r6, #3
 	bl ReadMapScriptSignedByte
 	mov r0, r4
@@ -7202,20 +7220,20 @@ loc_8037D4C:
 	mov r6, #5
 	bl ReadMapScriptSignedByte
 	mov r2, r4
-	bl sub_809E2DC
-	ldrb r0, [r5,#0x11]
+	bl owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc
+	ldrb r0, [r5,#oCutsceneState_Unk_11]
 	sub r0, #1
-	strb r0, [r5,#0x11]
-	bgt loc_8037D7C
-	mov r0, #9
+	strb r0, [r5,#oCutsceneState_Unk_11]
+	bgt .timerStillActive
+	mov r0, #CUTSCENE_FLAG_0x2c_9
 	bl cutscene_clearFlag0x2c_80385D0
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-loc_8037D7C:
+.timerStillActive
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_8037CF8
+	thumb_func_end MapScriptCmd_transform_player_navi_sprite
 
 	thumb_local_start
 sub_8037D80:
@@ -7260,7 +7278,7 @@ loc_8037DC2:
 	cmp r4, #0
 	beq loc_8037DD6
 	mov r4, r0
-	bl sub_809E2B8
+	bl GetOWPlayerFacingDirection
 	add r0, r0, r4
 loc_8037DD6:
 	bl sub_809E13C
@@ -7281,13 +7299,13 @@ sub_8037DE0:
 	ldr r0, [r4,#0x24]
 	ldr r1, [r4,#0x28]
 	ldr r2, [r4,#0x2c]
-	bl loc_809E1A4
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4
 	ldrb r0, [r4,#0x14]
 	bl sub_809E13C
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r0, r4
-	bl sub_809E2AE
+	bl SetOWPlayerFacingDirection
 	add r7, #3
 	mov r0, #1
 	pop {pc}
@@ -8332,7 +8350,7 @@ runCutscene_803851C:
 .loc_803856A:
 	bl TryCutsceneSkip
 	beq .doneCutsceneIteration
-	ldr r0, [r5,#oCutsceneState_UnkCutsceneScript_38]
+	ldr r0, [r5,#oCutsceneState_CutsceneScriptAfterCutsceneSkip]
 	tst r0, r0
 	beq .doneCutsceneIteration
 
@@ -8340,25 +8358,25 @@ runCutscene_803851C:
 	str r0, [r5,#oCutsceneState_CutsceneScriptPos]
 
 	ldr r0, =DummyCutsceneScript
-	mov r0, #0
-	str r0, [r5,#oCutsceneState_UnkCutsceneScript_38]
+	mov r0, #NULL
+	str r0, [r5,#oCutsceneState_CutsceneScriptAfterCutsceneSkip]
 
 	// clear bits of some flag?
-	mov r0, #0
+	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED
 	bl cutscene_clearFlag0x2c_80385D0
-	mov r0, #1
+	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_2_PAUSED
 	bl cutscene_clearFlag0x2c_80385D0
-	mov r0, #2
+	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_3_PAUSED
 	bl cutscene_clearFlag0x2c_80385D0
-	mov r0, #3
+	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_4_PAUSED
 	bl cutscene_clearFlag0x2c_80385D0
-	mov r0, #4
+	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED_LONG
 	bl cutscene_clearFlag0x2c_80385D0
-	mov r0, #5
+	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_2_PAUSED_LONG
 	bl cutscene_clearFlag0x2c_80385D0
-	mov r0, #6
+	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_3_PAUSED_LONG
 	bl cutscene_clearFlag0x2c_80385D0
-	mov r0, #7
+	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_4_PAUSED_LONG
 	bl cutscene_clearFlag0x2c_80385D0
 .doneCutsceneIteration
 	pop {r4,r5}
@@ -8620,7 +8638,7 @@ byte_8038A84: .byte 0x8, 0x0, 0x0, 0x0, 0x50, 0x17, 0x0, 0x3, 0xC, 0x1, 0xC, 0xF
 	thumb_func_start sub_8038A9C
 sub_8038A9C:
 	push {lr}
-	bl sub_8000EE4
+	bl GetTitleScreenIconCount
 	ldr r2, dword_8038ACC // =0xf6
 	and r1, r2
 	cmp r1, r2

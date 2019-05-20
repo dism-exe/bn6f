@@ -275,10 +275,10 @@ loc_808C656:
 	ldrh r1, [r5,r4]
 	lsl r1, r1, #0x10
 	mov r2, #0
-	bl sub_809E188
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
 	add r4, #2
 	ldrh r0, [r5,r4]
-	bl sub_809E2AE
+	bl SetOWPlayerFacingDirection
 	add r4, #2
 	ldrh r0, [r5,r4]
 	bl sub_809E13C
@@ -485,7 +485,7 @@ sub_808CB0C:
 	bl sound_8000672
 loc_808CB3C:
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne locret_808CB96
 	ldrb r0, [r5,#0xc] // (byte_2000B4C - 0x2000b40)
 	cmp r0, #0
@@ -679,7 +679,7 @@ sub_808CC98:
 	thumb_local_start
 sub_808CCAC:
 	push {r4-r7,lr}
-	bl sub_809E2B8
+	bl GetOWPlayerFacingDirection
 	mov r4, r0
 	bl sub_809E1AE
 	asr r0, r0, #0x10

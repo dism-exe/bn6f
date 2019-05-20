@@ -17873,7 +17873,7 @@ startScreen_802F574:
 	bne loc_802F5BE
 	mov r0, #1
 	strb r0, [r5,#2]
-	bl sub_8000EE4
+	bl GetTitleScreenIconCount
 	strb r0, [r5,#0xc]
 	strh r1, [r5,#0xa]
 loc_802F5BE:
@@ -22437,20 +22437,32 @@ loc_8031906: .align 1, 0
 	pop {r4-r7,pc}
 off_8031910: .word dword_200F3D0
 off_8031914: .word dword_8031918
-dword_8031918: .word 0x0
+dword_8031918: .word NULL
 	.word sub_803199E+1
 	.word sub_80319B6+1
 	.word sub_80319CE+1
 	.word sub_80319E6+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word sub_80319FE+1
 	.word sub_8031A16+1
 	.word sub_8031A2E+1
 	.word sub_8031A46+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word sub_8031A5E+1
-	.word 0, 0, 0, 0, 0, 0, 0
-	.byte 0, 0, 0, 0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	thumb_func_end sub_80318B0
 
 	thumb_local_start

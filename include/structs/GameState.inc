@@ -38,7 +38,7 @@
 	u32 PlayerX // loc=0x24
 	u32 PlayerY // loc=0x28
 	u32 Unk_2c // loc=0x2c
-	u32 Unk_30 // loc=0x30
+	u32 facingDirectionAfterWarp_30 // loc=0x30
 	u32 Unk_34 // loc=0x34
 	u32 Unk_38 // loc=0x38
 	u32 Unk_3c // loc=0x3c

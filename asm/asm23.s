@@ -415,8 +415,8 @@ sub_808964C:
 	bl sub_814219C
 	bne loc_808966E
 	mov r0, #4
-	bl sub_809E2AE
-	bl sub_809E2B8
+	bl SetOWPlayerFacingDirection
+	bl GetOWPlayerFacingDirection
 	bl sub_809E13C
 	mov r0, #0
 	bl sub_8089CB0
@@ -429,8 +429,8 @@ loc_808966E:
 	bl sub_8142990
 	mov r1, r4
 	bl sub_8142896
-	bl sub_809E2AE
-	bl sub_809E2B8
+	bl SetOWPlayerFacingDirection
+	bl GetOWPlayerFacingDirection
 	ldr r1, off_80896A4 // =byte_80896A8 
 	ldrb r0, [r1,r0]
 	bl sub_809E13C
@@ -798,8 +798,8 @@ sub_808991C:
 	bl sub_8089CB4
 	beq loc_808994E
 	bl sub_8142B58
-	bl sub_809E2AE
-	bl sub_809E2B8
+	bl SetOWPlayerFacingDirection
+	bl GetOWPlayerFacingDirection
 	ldr r1, off_8089954 // =byte_8089958 
 	ldrb r0, [r1,r0]
 	bl sub_809E13C
@@ -1018,8 +1018,8 @@ sub_8089AE8:
 	mov r0, #0
 	strb r0, [r5,#0x13]
 	mov r0, #4
-	bl sub_809E2AE
-	bl sub_809E2B8
+	bl SetOWPlayerFacingDirection
+	bl GetOWPlayerFacingDirection
 	bl sub_809E13C
 	ldr r0, [r7,#0x10]
 	tst r0, r0
@@ -1068,8 +1068,8 @@ sub_8089B54:
 	bl sub_8089CB4
 	beq loc_8089B7A
 	mov r0, #4
-	bl sub_809E2AE
-	bl sub_809E2B8
+	bl SetOWPlayerFacingDirection
+	bl GetOWPlayerFacingDirection
 	bl sub_809E13C
 	bl reqBBS_clearFlag_8140A0C
 	mov r0, #0x18
@@ -1198,7 +1198,7 @@ loc_8089C3E:
 	strb r0, [r5]
 	b loc_8089C74
 loc_8089C4A:
-	bl sub_809E2B8
+	bl GetOWPlayerFacingDirection
 	bl sub_809E13C
 	mov r0, #0x1e
 	bl sub_8089CB0

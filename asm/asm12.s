@@ -4,7 +4,7 @@ sub_806D8F8:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_806D950 // =off_806D6B0 
-	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
+	ldr r1, [r7,#oToolkit_Warp2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4

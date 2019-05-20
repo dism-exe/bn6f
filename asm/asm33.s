@@ -1978,7 +1978,7 @@ sub_8124350:
 	tst r0, r1
 	beq loc_812437C
 	mov r0, #1
-	bl sub_811EBF4
+	bl ClearPETMenuDataFlag
 	bl sub_811F728
 	b locret_8124380
 loc_812437C:
@@ -8440,7 +8440,7 @@ loc_8127C9E:
 	tst r0, r1
 	beq loc_8127CB2
 	mov r0, #1
-	bl sub_811EBF4
+	bl ClearPETMenuDataFlag
 	bl sub_811F728
 	b locret_8127CB6
 loc_8127CB2:

@@ -11,6 +11,7 @@
 	u8_arr BuildString, 0x14 // loc=0x6c
 	struct_org 0x84
 	u0 Size // loc=0x84
+	restore_struct_label
 	.endm
 
 	def_struct_offsets s_2001c04_struct, oS2001c04

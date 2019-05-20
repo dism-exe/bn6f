@@ -1048,6 +1048,9 @@ dword_8003890: .word 0x200000
 	thumb_func_end sub_80037F4
 
 	thumb_local_start
+// performs this:
+// 	if (v2 * v2 + v3 * v3 >= v4 * v4)
+//      return 0;
 sub_8003894:
 	push {lr}
 	mov r6, #0
@@ -1105,20 +1108,20 @@ jt_80038E8: .word sub_8142248+1
 	thumb_func_end sub_8003894
 
 	thumb_local_start
-sub_8003908:
+Clear_eStruct2000780:
 	push {r4-r7,lr}
 	// memBlock
-	ldr r0, off_80039F0 // =byte_2000780
+	ldr r0, off_80039F0 // =eStruct2000780
 	// size
 	mov r1, #0x48
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4-r7,pc}
-	thumb_func_end sub_8003908
+	thumb_func_end Clear_eStruct2000780
 
 	thumb_func_start sub_8003914
 sub_8003914:
 	push {r4-r7,lr}
-	ldr r5, off_80039F0 // =byte_2000780
+	ldr r5, off_80039F0 // =eStruct2000780
 	push {r0}
 	// memBlock
 	mov r0, r5
@@ -1145,7 +1148,7 @@ sub_8003914:
 	thumb_func_start sub_8003940
 sub_8003940:
 	push {r4-r7,lr}
-	ldr r5, off_80039F0 // =byte_2000780
+	ldr r5, off_80039F0 // =eStruct2000780
 	ldr r7, off_80039F4 // =jt_80038E8
 	mov r1, #0x10
 	ldrb r0, [r5,#0x1] // (byte_2000781 - 0x2000780)
@@ -1168,7 +1171,7 @@ loc_8003958:
 	thumb_func_start sub_8003962
 sub_8003962:
 	push {r4-r7,lr}
-	ldr r5, off_80039F0 // =byte_2000780
+	ldr r5, off_80039F0 // =eStruct2000780
 	ldrb r0, [r5,#0x2] // (byte_2000782 - 0x2000780)
 	tst r0, r0
 	bne loc_8003974
@@ -1186,7 +1189,7 @@ loc_8003974:
 	thumb_local_start
 sub_800397A:
 	push {r4-r7,lr}
-	ldr r5, off_80039F0 // =byte_2000780
+	ldr r5, off_80039F0 // =eStruct2000780
 	mov r0, #1
 	strb r0, [r5,#0x3] // (byte_2000783 - 0x2000780)
 	pop {r4-r7,pc}
@@ -1195,7 +1198,7 @@ sub_800397A:
 	thumb_func_start sub_8003984
 sub_8003984:
 	push {r4-r7,lr}
-	ldr r5, off_80039F0 // =byte_2000780
+	ldr r5, off_80039F0 // =eStruct2000780
 	mov r0, #1
 	ldrb r0, [r5]
 	tst r0, r0
@@ -1211,7 +1214,7 @@ locret_8003998:
 	thumb_func_start sub_800399A
 sub_800399A:
 	push {r4-r7,lr}
-	ldr r5, off_80039F0 // =byte_2000780
+	ldr r5, off_80039F0 // =eStruct2000780
 	mov r0, #1
 	ldrb r0, [r5]
 	mov r1, #0x7f
@@ -1223,7 +1226,7 @@ sub_800399A:
 	thumb_local_start
 sub_80039AA:
 	push {r4-r7,lr}
-	ldr r5, off_80039F0 // =byte_2000780
+	ldr r5, off_80039F0 // =eStruct2000780
 	ldrb r0, [r5]
 	tst r0, r0
 	beq locret_80039CA
@@ -1242,22 +1245,22 @@ locret_80039CA:
 	pop {r4-r7,pc}
 	thumb_func_end sub_80039AA
 
-	thumb_func_start sub_80039CC
-sub_80039CC:
-	ldr r1, off_80039F0 // =byte_2000780
+	thumb_func_start Is_eStruct2000780_Initialized
+Is_eStruct2000780_Initialized:
+	ldr r1, off_80039F0 // =eStruct2000780
 	ldrb r0, [r1]
 	tst r0, r0
 	mov pc, lr
-	thumb_func_end sub_80039CC
+	thumb_func_end Is_eStruct2000780_Initialized
 
 	thumb_func_start sub_80039D4
 sub_80039D4:
 	push {r4-r7,lr}
 	mov r7, r0
 	mov r4, #0
-	bl sub_80039CC
+	bl Is_eStruct2000780_Initialized
 	beq loc_80039EA
-	ldr r0, off_80039F0 // =byte_2000780
+	ldr r0, off_80039F0 // =eStruct2000780
 	ldrb r0, [r0,#0x1] // (byte_2000781 - 0x2000780)
 	cmp r0, r7
 	bne loc_80039EA
@@ -1266,7 +1269,7 @@ loc_80039EA:
 	mov r0, r4
 	tst r0, r0
 	pop {r4-r7,pc}
-off_80039F0: .word byte_2000780
+off_80039F0: .word eStruct2000780
 off_80039F4: .word jt_80038E8
 off_80039F8: .word sub_81419A0+1
 	.word 0x0, 0x0
@@ -1286,7 +1289,7 @@ off_80039F8: .word sub_81419A0+1
 sub_8003A58:
 	push {r4-r7,lr}
 	// memBlock
-	ldr r0, off_8003B40 // =byte_2001010
+	ldr r0, off_8003B40 // =eStruct2001010
 	// size
 	mov r1, #0x48
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -1296,7 +1299,7 @@ sub_8003A58:
 	thumb_func_start sub_8003A64
 sub_8003A64:
 	push {r4-r7,lr}
-	ldr r5, off_8003B40 // =byte_2001010
+	ldr r5, off_8003B40 // =eStruct2001010
 	push {r0}
 	// memBlock
 	mov r0, r5
@@ -1323,7 +1326,7 @@ sub_8003A64:
 	thumb_func_start sub_8003A90
 sub_8003A90:
 	push {r4-r7,lr}
-	ldr r5, off_8003B40 // =byte_2001010
+	ldr r5, off_8003B40 // =eStruct2001010
 	ldr r7, off_8003B44 // =off_80039F8
 	mov r1, #0x10
 	ldrb r0, [r5,#0x1] // (byte_2001011 - 0x2001010)
@@ -1344,7 +1347,7 @@ loc_8003AA8:
 	thumb_func_start zeroFill_8003AB2
 zeroFill_8003AB2:
 	push {r4-r7,lr}
-	ldr r5, off_8003B40 // =byte_2001010
+	ldr r5, off_8003B40 // =eStruct2001010
 	ldrb r0, [r5,#0x2] // (byte_2001012 - 0x2001010)
 	tst r0, r0
 	bne loc_8003AC4
@@ -1362,7 +1365,7 @@ loc_8003AC4:
 	thumb_local_start
 sub_8003ACA:
 	push {r4-r7,lr}
-	ldr r5, off_8003B40 // =byte_2001010
+	ldr r5, off_8003B40 // =eStruct2001010
 	mov r0, #1
 	strb r0, [r5,#0x3] // (byte_2001013 - 0x2001010)
 	pop {r4-r7,pc}
@@ -1371,7 +1374,7 @@ sub_8003ACA:
 	thumb_func_start sub_8003AD4
 sub_8003AD4:
 	push {r4-r7,lr}
-	ldr r5, off_8003B40 // =byte_2001010
+	ldr r5, off_8003B40 // =eStruct2001010
 	mov r0, #1
 	ldrb r0, [r5]
 	tst r0, r0
@@ -1387,7 +1390,7 @@ locret_8003AE8:
 	thumb_func_start sub_8003AEA
 sub_8003AEA:
 	push {r4-r7,lr}
-	ldr r5, off_8003B40 // =byte_2001010
+	ldr r5, off_8003B40 // =eStruct2001010
 	mov r0, #1
 	ldrb r0, [r5]
 	mov r1, #0x7f
@@ -1399,7 +1402,7 @@ sub_8003AEA:
 	thumb_local_start
 sub_8003AFA:
 	push {r4-r7,lr}
-	ldr r5, off_8003B40 // =byte_2001010
+	ldr r5, off_8003B40 // =eStruct2001010
 	ldrb r0, [r5]
 	tst r0, r0
 	beq locret_8003B1A
@@ -1418,22 +1421,22 @@ locret_8003B1A:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8003AFA
 
-	thumb_func_start sub_8003B1C
-sub_8003B1C:
-	ldr r1, off_8003B40 // =byte_2001010
+	thumb_func_start Is_eStruct2001010_Initialized
+Is_eStruct2001010_Initialized:
+	ldr r1, off_8003B40 // =eStruct2001010
 	ldrb r0, [r1]
 	tst r0, r0
 	mov pc, lr
-	thumb_func_end sub_8003B1C
+	thumb_func_end Is_eStruct2001010_Initialized
 
 	thumb_local_start
 sub_8003B24:
 	push {r4-r7,lr}
 	mov r7, r0
 	mov r4, #0
-	bl sub_8003B1C
+	bl Is_eStruct2001010_Initialized
 	beq loc_8003B3A
-	ldr r0, off_8003B40 // =byte_2001010
+	ldr r0, off_8003B40 // =eStruct2001010
 	ldrb r0, [r0,#0x1] // (byte_2001011 - 0x2001010)
 	cmp r0, r7
 	bne loc_8003B3A
@@ -1442,7 +1445,7 @@ loc_8003B3A:
 	mov r0, r4
 	tst r0, r0
 	pop {r4-r7,pc}
-off_8003B40: .word byte_2001010
+off_8003B40: .word eStruct2001010
 off_8003B44: .word off_80039F8
 off_8003B48: .word sub_809D19C+1
 	thumb_func_end sub_8003B24
@@ -3388,14 +3391,14 @@ sub_8004D48:
 	strb r0, [r5,#oGameState_Unk_10]
 	ldr r1, off_8004DE4 // =byte_200F410
 	strb r0, [r1]
-	ldr r1, off_8004DE0 // =byte_200ACE0
+	ldr r1, off_8004DE0 // =eStruct200ace0
 	mov r0, #0
 	strb r0, [r1]
 	str r0, [r1,#0x18] // (dword_200ACF8 - 0x200ace0)
 	str r0, [r1,#0x20] // (dword_200AD00 - 0x200ace0)
 	mov r0, #0xff
 	strb r0, [r1,#0x1c] // (byte_200ACFC - 0x200ace0)
-	bl setEventFlag_809E098
+	bl SetPlayerCanMoveEventFlag
 	mov r0, #0
 	ldr r1, off_8004DE8 // =eCamera+76
 	strb r0, [r1]
@@ -3425,7 +3428,7 @@ sub_8004D48:
 loc_8004DDA:
 	bl sub_8048C98
 	pop {r4-r7,pc}
-off_8004DE0: .word byte_200ACE0
+off_8004DE0: .word eStruct200ace0
 off_8004DE4: .word byte_200F410
 off_8004DE8: .word eCamera+0x4C // eCamera.unk_4C
 off_8004DEC: .word dword_20096D0
@@ -3484,14 +3487,14 @@ reqBBS_init_8004DF0:
 	str r0, [r5,#0x78]
 	bl sub_802F2C8
 	bl sub_81284A4
-	bl sub_809E2C2
+	bl owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2
 	bl sub_809E2F4
 	bl sub_809E304
-	bl sub_809E2FC
-	bl sub_809E312
+	bl owPlayer_zeroS2000AA0Param0x5_809e2fc
+	bl owPlayer_zeroS2000AA0Param0x4_809e312
 	bl sub_809E3AA
 	bl sub_809E3B2
-	bl sub_8003908
+	bl Clear_eStruct2000780
 	bl sub_8003A58
 	bl zeroFill_e2004348
 	bl sub_809FAF4
@@ -3674,7 +3677,7 @@ reqBBS_init_8004DF0:
 	str r0, [r5,#oGameState_Unk_3c]
 	str r0, [r5,#0x50]
 	mov r0, #4
-	str r0, [r5,#oGameState_Unk_30]
+	str r0, [r5,#oGameState_facingDirectionAfterWarp_30]
 	str r0, [r5,#oGameState_Unk_40]
 	str r0, [r5,#0x54]
 	bl sub_803532C
@@ -3838,7 +3841,7 @@ loc_80051AA:
 	mov r0, #0x10
 	strb r0, [r5,#oGameState_Unk_17]
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2011bb0_Ptr]
+	ldr r0, [r0,#oToolkit_Warp2011bb0_Ptr]
 	mov r1, #0
 	strb r1, [r0,#0x10]
 	mov r0, #4
@@ -4442,7 +4445,7 @@ sub_80058D0:
 	bl sub_8005F28
 	bne locret_800593C
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne locret_800593C
 	bl IsScreenFadeActive // () -> zf
 	beq locret_800593C
@@ -4462,7 +4465,7 @@ sub_80058D0:
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne locret_800593C
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_Unk2011bb0_Ptr]
+	ldr r2, [r2,#oToolkit_Warp2011bb0_Ptr]
 	mov r0, #1
 	strb r0, [r2,#0x10]
 	strb r4, [r2,#0x11]
@@ -4648,7 +4651,7 @@ sub_8005A8C:
 	bl sub_8005F28
 	bne locret_8005AF2
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne locret_8005AF2
 	bl IsScreenFadeActive // () -> zf
 	beq locret_8005AF2
@@ -4687,7 +4690,7 @@ sub_8005AF4:
 	bl sub_8005F28
 	bne locret_8005B68
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne loc_8005B64
 	bl IsScreenFadeActive // () -> zf
 	beq locret_8005B68
@@ -4736,7 +4739,7 @@ sub_8005B6E:
 	bl sub_8005F28
 	bne locret_8005BC6
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne locret_8005BC6
 	bl IsScreenFadeActive // () -> zf
 	beq locret_8005BC6
@@ -4802,7 +4805,7 @@ sub_8005C04:
 	mov r0, #0x25 
 	bl FreeAllObjectsOfSpecifiedTypes
 	mov r5, r10
-	ldr r1, [r5,#oToolkit_Unk2011bb0_Ptr]
+	ldr r1, [r5,#oToolkit_Warp2011bb0_Ptr]
 	ldr r0, [r1,#0x14]
 	mov r2, #0x10
 	ldrb r3, [r1,#0x11]
@@ -4818,7 +4821,7 @@ sub_8005C04:
 	ldr r0, off_8005CE4 // =0x40
 	bl sRender_08_setRenderingState
 	mov r5, r10
-	ldr r7, [r5,#oToolkit_Unk2011bb0_Ptr]
+	ldr r7, [r5,#oToolkit_Warp2011bb0_Ptr]
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	movflag EVENT_171B
 	bl TestEventFlagFromImmediate
@@ -4885,7 +4888,7 @@ loc_8005CB8:
 	str r1, [r5,#oGameState_PlayerX]
 	str r2, [r5,#oGameState_PlayerY]
 	str r3, [r5,#oGameState_Unk_2c]
-	str r4, [r5,#oGameState_Unk_30]
+	str r4, [r5,#oGameState_facingDirectionAfterWarp_30]
 	lsr r7, r6, #8
 	mov r0, #0xff
 	and r6, r0
@@ -4982,7 +4985,7 @@ loc_8005D5C:
 	ldr r0, [r1,#0x24]
 	str r0, [r5,#oGameState_Unk_2c]
 	ldrb r0, [r1,#0x10]
-	str r0, [r5,#oGameState_Unk_30]
+	str r0, [r5,#oGameState_facingDirectionAfterWarp_30]
 	mov r1, #0x24
 	strb r1, [r5,#oGameState_SubsystemIndex]
 	mov r0, #0xc
@@ -5140,7 +5143,7 @@ subsystem_launchMail:
 	ldr r0, [r1,#0x24]
 	str r0, [r5,#oGameState_Unk_2c]
 	ldrb r0, [r1,#0x10]
-	str r0, [r5,#oGameState_Unk_30]
+	str r0, [r5,#oGameState_facingDirectionAfterWarp_30]
 	mov r1, #0x34
 	strb r1, [r5,#oGameState_SubsystemIndex]
 	mov r0, #0xc
@@ -5154,7 +5157,7 @@ subsystem_launchMail:
 sub_8005EEC:
 	push {r4-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Unk2011bb0_Ptr]
+	ldr r4, [r4,#oToolkit_Warp2011bb0_Ptr]
 	mov r3, #1
 	strb r3, [r4,#0x10]
 	add r3, r1, #1
@@ -5191,7 +5194,7 @@ sub_8005F14:
 	thumb_local_start
 sub_8005F28:
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2011bb0_Ptr]
+	ldr r0, [r0,#oToolkit_Warp2011bb0_Ptr]
 	ldrb r1, [r0,#0x10]
 	cmp r1, #0
 	mov pc, lr
@@ -5200,7 +5203,7 @@ sub_8005F28:
 	thumb_func_start sub_8005F32
 sub_8005F32:
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk2011bb0_Ptr]
+	ldr r3, [r3,#oToolkit_Warp2011bb0_Ptr]
 	ldr r0, [r3,#0x14]
 	ldrb r1, [r3,#0x11]
 	sub r1, #1

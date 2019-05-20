@@ -1429,8 +1429,8 @@ locret_8000EDC:
 dword_8000EE0: .word 0xFFFF
 	thumb_func_end sub_8000EB6
 
-	thumb_func_start sub_8000EE4
-sub_8000EE4:
+	thumb_func_start GetTitleScreenIconCount
+GetTitleScreenIconCount:
 	push {r4-r7,lr}
 	mov r4, #0
 	mov r7, #0
@@ -1512,7 +1512,7 @@ loc_8000F80:
 	mov r0, r4
 	mov r1, r7
 	pop {r4-r7,pc}
-	thumb_func_end sub_8000EE4
+	thumb_func_end GetTitleScreenIconCount
 
 	thumb_func_start sub_8000F86
 sub_8000F86:
@@ -1668,7 +1668,7 @@ updatePlayerGameState_800107A:
 	ldr r0, [r1,#0x24]
 	str r0, [r3,#oGameState_Unk_2c]
 	ldrb r0, [r1,#0x10]
-	str r0, [r3,#oGameState_Unk_30]
+	str r0, [r3,#oGameState_facingDirectionAfterWarp_30]
 	mov pc, lr
 	thumb_func_end updatePlayerGameState_800107A
 

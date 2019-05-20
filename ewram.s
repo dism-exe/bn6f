@@ -68,7 +68,7 @@ byte_2000670:: // 0x2000670
 	.space 256
 unk_2000770:: // 0x2000770
 	.space 16
-byte_2000780:: // 0x2000780
+eStruct2000780:: // 0x2000780
 	.space 1
 byte_2000781:: // 0x2000781
 	.space 1
@@ -212,7 +212,7 @@ byte_2000FE1:: // 0x2000fe1
 	.space 15
 unk_2000FF0:: // 0x2000ff0
 	.space 32
-byte_2001010:: // 0x2001010
+eStruct2001010:: // 0x2001010
 	.space 1
 byte_2001011:: // 0x2001011
 	.space 1
@@ -350,8 +350,11 @@ eGameState:: // 0x2001b80
 	game_state_struct eGameState
 eGameStateEnd::
 	.space 4
+
 eStruct2001c04:: // 0x2001c04
-	.space 132
+	s_2001c04_struct eStruct2001c04
+eStruct2001c04End:: // 0x2001c88
+
 // u8[1448]
 // continuous buffer of bit flags addressed with a u16 flag offset
 eEventFlags:: // 0x2001C88
@@ -863,26 +866,11 @@ dword_200ACCC:: // 0x200accc
 	.space 4
 dword_200ACD0:: // 0x200acd0
 	.space 16
-byte_200ACE0:: // 0x200ace0
-	.space 1
-byte_200ACE1:: // 0x200ace1
-	.space 1
-byte_200ACE2:: // 0x200ace2
-	.space 6
-dword_200ACE8:: // 0x200ace8
-	.space 4
-dword_200ACEC:: // 0x200acec
-	.space 4
-dword_200ACF0:: // 0x200acf0
-	.space 5
-byte_200ACF5:: // 0x200acf5
-	.space 3
-dword_200ACF8:: // 0x200acf8
-	.space 4
-byte_200ACFC:: // 0x200acfc
-	.space 4
-dword_200AD00:: // 0x200ad00
-	.space 4
+
+eStruct200ace0:: // 0x200ace0
+	s_200ace0_struct eStruct200ace0
+eStruct200ace0End::
+
 word_200AD04:: // 0x200ad04
 	.space 1
 byte_200AD05:: // 0x200ad05

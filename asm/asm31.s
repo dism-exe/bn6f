@@ -15595,7 +15595,7 @@ loc_80BF83C:
 	pop {pc}
 loc_80BF85E:
 	ldrh r0, [r5,#oBattleObject_Timer2]
-	bl sub_8002C7A
+	bl sprite_setMosaicScalingParameters_8002c7a
 	pop {pc}
 	thumb_func_end sub_80BF81C
 
@@ -16180,7 +16180,7 @@ loc_80BFC64:
 	pop {pc}
 loc_80BFC8C:
 	ldrh r0, [r5,#oBattleObject_Timer2]
-	bl sub_8002C7A
+	bl sprite_setMosaicScalingParameters_8002c7a
 	pop {pc}
 	thumb_func_end sub_80BFC44
 
@@ -17471,7 +17471,7 @@ loc_80C05DE:
 loc_80C0600:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	add r0, r0, r0
-	bl sub_8002C7A
+	bl sprite_setMosaicScalingParameters_8002c7a
 locret_80C0608:
 	pop {pc}
 	thumb_func_end sub_80C05C6
@@ -40491,7 +40491,7 @@ loc_80CBC00:
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer2]
-	bl sub_8002C7A
+	bl sprite_setMosaicScalingParameters_8002c7a
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -40567,7 +40567,7 @@ sub_80CBCB0:
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	add r0, #1
 	strh r0, [r5,#oBattleObject_Timer2]
-	bl sub_8002C7A
+	bl sprite_setMosaicScalingParameters_8002c7a
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
@@ -85057,7 +85057,7 @@ loc_80E1C84:
 loc_80E1CA6:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	add r0, r0, r0
-	bl sub_8002C7A
+	bl sprite_setMosaicScalingParameters_8002c7a
 locret_80E1CAE:
 	pop {pc}
 	thumb_func_end sub_80E1C66

@@ -10698,7 +10698,7 @@ sub_8135B54:
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	cmp r4, #0x28 
 	bne loc_8135B88
-	bl sub_809E122
+	bl owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
 	bl sub_811F728
 	b locret_8135B90
 loc_8135B88:
