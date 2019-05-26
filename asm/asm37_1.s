@@ -1525,7 +1525,7 @@ loc_81428F6:
 	mov r2, #1
 	bl sub_8142952
 	mov r7, r0
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	str r0, [sp]
 	str r1, [sp,#4]
 	mov r0, r6
@@ -1583,7 +1583,7 @@ byte_8142980: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0xFF, 0x0,
 	thumb_func_start sub_8142990
 sub_8142990:
 	push {r4-r7,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	bl sub_8142816
 	pop {r4-r7,pc}
 	thumb_func_end sub_8142990
@@ -1784,7 +1784,7 @@ sub_8142B28:
 	ldrb r0, [r5,#1]
 	cmp r0, #0xf
 	bne loc_8142B4C
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	ldr r0, [r5,#0x14]
 	cmp r0, r2
 	bne loc_8142B4C
@@ -1950,7 +1950,7 @@ loc_8142C58:
 	bl getPETNaviSelect // () -> u8
 	mov r1, r4
 	bl sub_80010EC
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r3, r2
 	mov r2, r1
 	mov r1, r0
@@ -3483,7 +3483,7 @@ sub_8143C62:
 	ldr r1, off_8143C7C // =off_8143C80 
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
-	bl sub_8030A60
+	bl npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
 	movflag EVENT_1721
 	bl SetEventFlagFromImmediate
 	pop {r4-r7,pc}
@@ -3689,7 +3689,7 @@ loc_8143E0C:
 	mov r2, #1
 	bl sub_8143E68
 	mov r7, r0
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	str r0, [sp]
 	str r1, [sp,#4]
 	mov r0, r6
@@ -3746,7 +3746,7 @@ byte_8143E94: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0xFF, 0x0,
 	thumb_func_start sub_8143EA4
 sub_8143EA4:
 	push {r4-r7,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	bl sub_8143D7A
 	pop {r4-r7,pc}
 	thumb_func_end sub_8143EA4

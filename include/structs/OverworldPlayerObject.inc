@@ -3,9 +3,17 @@
 	.macro overworld_player_object_struct, label=oOWPlayerObject, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
 	set_struct_label \struct_entry, \label
 	object_header_struct \label, \struct_entry, \set_struct_start_address
-	struct_org 0x10
+	struct_org 0x9
+	u8 JumptableIndex_09 // loc=0x9
+	u8 Unk_0a // loc=0xa
+	u8 Unk_0b // loc=0xb
+	struct_org 0xd
+	u8 Unk_0d // loc=0xd
+	u8 Unk_0e // loc=0xe
+	u8 Unk_0f // loc=0xf
 	u8 FacingDirection
-	struct_org 0x14
+	struct_org 0x13
+	u8 Unk_13 // loc=0x13
 	u8 AnimationSelect // loc=0x14
 	u8 AnimationSelectUpdate // loc=0x15
 	u8 LayerIndexOverride // loc=0x16
@@ -18,6 +26,9 @@
 	u32 NextX // loc=0x28
 	u32 NextY // loc=0x2c
 	u32 NextZ // loc=0x30
+	struct_org 0x38
+	u32 Unk_38 // loc=0x38
+	u32 Unk_3c // loc=0x3c
 	struct_org 0x90
 	object_sprite_struct \label\()_SpriteData, \struct_entry // loc=0x90
 	u0 Size // loc=0xc8

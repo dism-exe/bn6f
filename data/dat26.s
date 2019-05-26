@@ -284,14 +284,14 @@ sub_8092EC4::
 	push {r4-r7,lr}
 	bl sub_8143DEA
 	str r0, [r7]
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	push {r0,r1}
 	bl sub_8143EA4
 	bl sub_8143DBC
 	pop {r2,r3}
 	mov r4, #0x10
 	bl sub_809323A
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	push {r0,r1}
 	bl sub_8143EA4
 	bl sub_8143DBC
@@ -308,7 +308,7 @@ sub_8092EC4::
 	mov r1, #7
 	and r0, r1
 	add r0, #8
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	mov r0, #SOUND_MENU_SELECT
 	bl PlaySoundEffect
 	mov r0, #4
@@ -333,7 +333,7 @@ sub_8092F1E::
 	bl GetOWPlayerFacingDirection
 	ldr r1, off_8092F58 // =byte_8092F5C 
 	ldrb r0, [r1,r0]
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	mov r0, #8
 	strb r0, [r5]
 loc_8092F54::
@@ -455,7 +455,7 @@ sub_8093026::
 	bl GetOWPlayerFacingDirection
 	ldr r1, off_8093048 // =byte_809304C 
 	ldrb r0, [r1,r0]
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	mov r0, #0x3c 
 	bl sub_80931FA
 	mov r0, #0x20 
@@ -576,7 +576,7 @@ loc_809313A::
 	b loc_8093168
 loc_8093154::
 	bl GetOWPlayerFacingDirection
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	bl sub_809E248
 	mov r0, #0
 	strb r0, [r5,#8]
@@ -594,7 +594,7 @@ sub_809316C::
 	bl sub_8093202
 	beq loc_809318C
 	bl GetOWPlayerFacingDirection
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	bl sub_809E248
 	mov r0, #1
 	strb r0, [r5,#8]
@@ -636,7 +636,7 @@ sub_80931CA::
 	bl sub_8093202
 	beq loc_80931EA
 	bl GetOWPlayerFacingDirection
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	bl sub_809E248
 	mov r0, #1
 	strb r0, [r5,#8]
@@ -721,7 +721,7 @@ sub_809323A::
 	thumb_local_start
 sub_8093258::
 	push {r4-r7,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	ldr r3, [r7,#4]
 	add r0, r0, r3
 	ldr r3, [r7,#8]

@@ -41,7 +41,8 @@
 	ptr CutsceneScriptAfterCutsceneSkip // loc=0x38
 	u32 Unk_3c // loc=0x3c
 	ptr originalCutsceneScriptPos_40 // loc=0x40
-	u32 Unk_44 // loc=0x44
+	u8_arr owMapObjectPtrs_44, 0x2c // loc=0x44
+	u0 owMapObjectPtrsEnd_70 // loc=0x70
 	struct_org 0x90
 	u0 Size // loc=0x90
 	restore_struct_label

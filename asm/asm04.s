@@ -90,19 +90,17 @@ sub_804E720:
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_MapNumber]
 	lsl r0, r0, #2
-	ldr r1, off_804E734 // =off_804E738 
+	ldr r1, =off_804E738
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
-off_804E734: .word off_804E738
+	.pool // off_804E734
 off_804E738:
 	// <endpool>
 	.word byte_804E74C
-	thumb_func_end sub_804E720
-
 	.word byte_804E87C
 	.word dword_804E8D0
 	.word dword_804E8D4
-	// <endfile>
 	.word byte_804E8D8
+	thumb_func_end sub_804E720
 /*For debugging purposes, connect comment at any range!*/

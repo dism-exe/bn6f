@@ -142,7 +142,7 @@ loc_808C398:
 	mov r0, #1
 	str r0, [r7,#4]
 	push {r4-r7}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r4, #0x10
 	lsl r4, r4, #0x10
 	add r2, r2, r4
@@ -281,7 +281,7 @@ loc_808C656:
 	bl SetOWPlayerFacingDirection
 	add r4, #2
 	ldrh r0, [r5,r4]
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	mov r0, #0
 	pop {r4,r5,pc}
 	.byte 0, 0
@@ -490,7 +490,7 @@ loc_808CB3C:
 	ldrb r0, [r5,#0xc] // (byte_2000B4C - 0x2000b40)
 	cmp r0, #0
 	bne loc_808CB5A
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	asr r0, r0, #0x10
 	asr r1, r1, #0x10
 	strh r0, [r5,#0x1a] // (word_2000B5A - 0x2000b40)
@@ -653,7 +653,7 @@ off_808CC80: .word byte_808C930
 	thumb_local_start
 sub_808CC84:
 	push {lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	asr r0, r0, #0x10
 	asr r1, r1, #0x10
 	strh r0, [r5,#0x16]
@@ -666,7 +666,7 @@ sub_808CC84:
 	thumb_local_start
 sub_808CC98:
 	push {lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	asr r0, r0, #0x10
 	asr r1, r1, #0x10
 	strh r0, [r5,#0x1a]
@@ -681,7 +681,7 @@ sub_808CCAC:
 	push {r4-r7,lr}
 	bl GetOWPlayerFacingDirection
 	mov r4, r0
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	asr r0, r0, #0x10
 	asr r1, r1, #0x10
 	cmp r4, #0
@@ -1019,7 +1019,7 @@ sub_808CFB8:
 	ldr r5, off_808D030 // =dword_808CA44
 	ldr r5, [r5]
 	mov r4, #0
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	bl sub_808D034
 	strh r2, [r5,#0x12] // (word_2000B52 - 0x2000b40)
 	ldrh r3, [r5,#0x14] // (word_2000B54 - 0x2000b40)

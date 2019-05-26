@@ -20,6 +20,8 @@
 	.include "structs/ScreenFade.inc"
 	.include "structs/S2001c04.inc"
 	.include "structs/S200ace0.inc"
+	.include "structs/S2000aa0.inc"
+	.include "structs/Warp2011bb0.inc"
 
 /*
 rough notes for now
@@ -232,4 +234,15 @@ sub_8005C04 is a good function to start
 /*
 todo go document S2000aa0
 some ow player related struct
+*/
+
+/*
+lazy label - knowingly imperfect label name, use to signify to take this label name with a grain of salt, or that it is the best interpretation possible.
+	format: camelCase_address
+andOthers - more to this function than in the name. use for lazy labels
+*/
+
+/*
+todo:
+- subsystem index constants
 */

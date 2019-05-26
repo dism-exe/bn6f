@@ -417,7 +417,7 @@ sub_808964C:
 	mov r0, #4
 	bl SetOWPlayerFacingDirection
 	bl GetOWPlayerFacingDirection
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	mov r0, #0
 	bl sub_8089CB0
 	mov r0, #0x74 
@@ -433,7 +433,7 @@ loc_808966E:
 	bl GetOWPlayerFacingDirection
 	ldr r1, off_80896A4 // =byte_80896A8 
 	ldrb r0, [r1,r0]
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	bl sub_8089D26
 	mov r0, #0
 	bl sub_81421C8
@@ -802,7 +802,7 @@ sub_808991C:
 	bl GetOWPlayerFacingDirection
 	ldr r1, off_8089954 // =byte_8089958 
 	ldrb r0, [r1,r0]
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	bl sub_8089CDC
 	mov r0, #0x1e
 	bl sub_8089CB0
@@ -976,8 +976,8 @@ sub_8089A60:
 	mov r0, #0x65 
 	add r0, #0xff
 	bl PlaySoundEffect
-	bl sub_8036E44
-	bl sub_8036E78
+	bl playCertainMapMusicBasedOnEventByte_8036e44
+	bl PlayMapMusic
 loc_8089ABA:
 	mov r0, #0x1e
 	bl sub_8089CB0
@@ -1020,7 +1020,7 @@ sub_8089AE8:
 	mov r0, #4
 	bl SetOWPlayerFacingDirection
 	bl GetOWPlayerFacingDirection
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	ldr r0, [r7,#0x10]
 	tst r0, r0
 	bne loc_8089B20
@@ -1070,7 +1070,7 @@ sub_8089B54:
 	mov r0, #4
 	bl SetOWPlayerFacingDirection
 	bl GetOWPlayerFacingDirection
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	bl reqBBS_clearFlag_8140A0C
 	mov r0, #0x18
 	strb r0, [r5]
@@ -1190,7 +1190,7 @@ sub_8089C16:
 	cmp r0, #0
 	bne loc_8089C3E
 	mov r0, #0x3a 
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 loc_8089C3E:
 	mov r0, #0x1e
 	bl sub_8089CB0
@@ -1199,7 +1199,7 @@ loc_8089C3E:
 	b loc_8089C74
 loc_8089C4A:
 	bl GetOWPlayerFacingDirection
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	mov r0, #0x1e
 	bl sub_8089CB0
 	bl sub_814216E

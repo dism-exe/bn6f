@@ -28,9 +28,9 @@ PlaySoundEffect:
 	pop {r1-r7,pc}
 	thumb_func_end PlaySoundEffect
 
-	thumb_func_start PlaySong
+	thumb_func_start PlayMusic
 // (enum Song idx) -> void
-PlaySong:
+PlayMusic:
 	push {r1-r7,lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -46,7 +46,7 @@ loc_80005EC:
 	bl m4a_800061E // () -> void
 locret_80005F0:
 	pop {r1-r7,pc}
-	thumb_func_end PlaySong
+	thumb_func_end PlayMusic
 
 	thumb_func_start sub_80005F2
 sub_80005F2:

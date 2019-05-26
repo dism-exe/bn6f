@@ -615,14 +615,14 @@ sub_3006108:
 	add r0, r0, r1
 	ldrb r1, [r5,#4]
 	ldrb r2, [r5,#5]
-	add r1, r1, r2
-	lsl r1, r1, #5
+	add r1, r1, r2 // r1 = r1 + r2
+	lsl r1, r1, #5 // r1 = 32 * (r1 + r2)
 	add r0, r0, r1
 	ldrh r7, [r5,#6]
 	tst r7, r7
 	beq loc_3006140
 	ldr r7, off_300619C // =iPallete3001750
-	mov r2, #0x20 
+	mov r2, #0x20
 loc_3006128:
 	sub r2, #4
 	ldr r3, [r0,r2]

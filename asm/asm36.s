@@ -10216,7 +10216,7 @@ sub_81356F4:
 	ldr r0, off_81357C0 // =byte_8135628
 	bl sub_80465A0 // (void *a1) -> void
 	mov r0, #SONG_NAVI_CUSTOMIZER
-	bl PlaySong
+	bl PlayMusic
 	pop {pc}
 dword_81357BC: .word 0xDF40
 off_81357C0: .word byte_8135628
@@ -10704,7 +10704,7 @@ sub_8135B54:
 loc_8135B88:
 	mov r0, #0xc
 	strb r0, [r5]
-	bl sub_8036E78
+	bl PlayMapMusic
 locret_8135B90:
 	pop {r4,pc}
 	.balign 4, 0x00
@@ -15531,7 +15531,7 @@ playCreditsScene_81382D0:
 	bl sub_81207F8
 	strh r0, [r5,#0x12]
 	mov r0, #SONG_CREDITS
-	bl PlaySong
+	bl PlayMusic
 	mov r0, #0x78 
 	strh r0, [r5,#4]
 	mov r0, #4
@@ -15962,7 +15962,7 @@ loc_813863A:
 	bl uncompSprite_8002906
 	ldr r0, off_8138668 // =off_813866C 
 	ldr r0, [r0,r4]
-	bl sub_8030A60
+	bl npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
 	mov r0, #0x7c 
 	mov r1, #8
 	bl SetScreenFade // (int a1, int a2) -> void
@@ -16144,7 +16144,7 @@ sub_81387D8:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r1,#oGameState_Unk_20]
+	str r0, [r1,#oGameState_Ptr_20]
 	bl sub_800260C
 	bl sub_8005F40
 	bl sub_8005F6C

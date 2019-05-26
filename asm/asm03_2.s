@@ -10049,7 +10049,7 @@ sub_804CA90:
 	mov r2, #0x28 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r7, sp
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	str r0, [r7,#0x18]
 	str r1, [r7,#0x1c]
 	ldr r1, [r7,#0x20]

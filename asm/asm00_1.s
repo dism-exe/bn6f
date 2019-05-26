@@ -646,11 +646,11 @@ SpawnObjectsFromList:
 FreeAllObjectsOfSpecifiedTypes:
 	push {r4-r7,lr}
 	sub sp, sp, #0x18
-	ldr r1, off_8003618 // =FreeObjectJumptable 
-	ldr r2, off_800361C // =ObjectMemoryPointers 
-	ldr r3, off_8003620 // =ActiveObjectBitfieldPointers 
-	ldr r4, off_8003624 // =ObjectMemorySizes 
-	ldr r5, off_8003628 // =MaxAmountOfObjects 
+	ldr r1, off_8003618 // =FreeObjectJumptable
+	ldr r2, off_800361C // =ObjectMemoryPointers
+	ldr r3, off_8003620 // =ActiveObjectBitfieldPointers
+	ldr r4, off_8003624 // =ObjectMemorySizes
+	ldr r5, off_8003628 // =MaxAmountOfObjects
 .loop
 	str r0, [sp]
 	str r1, [sp,#oStack_FreeObjectJumptable]
@@ -2391,7 +2391,7 @@ loc_80045CE:
 	tst r2, r1
 	beq loc_80045DC
 	lsr r1, r1, #1
-	add r5, #0xd8
+	add r5, #oOverworldNPCObject_Size
 	cmp r5, r3
 	bge loc_80045FE
 	b loc_80045CE
@@ -2404,14 +2404,14 @@ loc_80045DC:
 	mov r1, #0x4e
 	lsl r1, r1, #1
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	mov r0, #9
+	mov r0, #(OBJECT_FLAG_ACTIVE | OBJECT_FLAG_STOP_SPRITE_UPDATE)
 	strb r0, [r5]
 	pop {r0-r4}
-	strb r0, [r5,#1]
-	str r1, [r5,#0x24]
-	str r2, [r5,#0x28]
-	str r3, [r5,#0x2c]
-	str r4, [r5,#4]
+	strb r0, [r5,#oOverworldNPCObject_Index]
+	str r1, [r5,#oOverworldNPCObject_X]
+	str r2, [r5,#oOverworldNPCObject_Y]
+	str r3, [r5,#oOverworldNPCObject_Z]
+	str r4, [r5,#oOverworldNPCObject_WalkingSpeed_WalkingTimer_Undetected_06_Unk_07]
 	pop {pc}
 loc_80045FE:
 	mov r5, #0
@@ -2637,35 +2637,35 @@ SpawnOverworldMapObject:
 	lsl r1, r1, #0x18
 	ldr r5, off_80049D4 // =eOverworldMapObjects
 	mov r6, #0
-loc_80047EA:
+.findFreeMapObjectLoop
 	ldr r0, off_80049D0 // =eActiveOverworldMapObjectsBitfield
 	lsr r3, r6, #5
 	lsl r3, r3, #2
 	ldr r2, [r0,r3]
 	tst r2, r1
-	beq loc_8004804
+	beq .foundFreeMapObject
 	mov r2, #1
 	ror r1, r2
-	add r5, #0x78
+	add r5, #oOverworldMapObject_Size
 	add r6, #1
-	cmp r6, #0x38
-	bge loc_800481E
-	b loc_80047EA
-loc_8004804:
+	cmp r6, #NUM_OVERWORLD_MAP_OBJECTS
+	bge .noFreeMapObjects
+	b .findFreeMapObjectLoop
+.foundFreeMapObject
 	orr r2, r1
 	str r2, [r0,r3]
 	mov r0, #9
 	strb r0, [r5]
 	pop {r0-r4,r6}
-	strb r0, [r5,#1]
-	str r1, [r5,#0xc]
-	str r2, [r5,#0x10]
-	str r3, [r5,#0x14]
-	str r4, [r5,#4]
+	strb r0, [r5,#oOverworldMapObject_Index]
+	str r1, [r5,#oOverworldMapObject_X]
+	str r2, [r5,#oOverworldMapObject_Y]
+	str r3, [r5,#oOverworldMapObject_Z]
+	str r4, [r5,#oOverworldMapObject_Unk_04]
 	mov r0, #0
-	str r0, [r5,#8]
+	str r0, [r5,#oOverworldMapObject_Unk_08]
 	pop {pc}
-loc_800481E:
+.noFreeMapObjects
 	mov r5, #0
 	pop {r0-r4,r6,pc}
 	thumb_func_end SpawnOverworldMapObject
@@ -2673,7 +2673,7 @@ loc_800481E:
 	thumb_func_start sub_8004822
 sub_8004822:
 	push {r0-r4,r6,lr}
-	ldr r5, off_80049DC // =byte_20138A8
+	ldr r5, off_80049DC // =eOverworldMapObject55
 	mov r6, #0x37
 loc_8004828:
 	mov r2, #0x1f
@@ -2761,7 +2761,7 @@ FreeOverworldMapObject:
 	push {lr}
 	mov r0, #0x80
 	lsl r0, r0, #0x18
-	ldrb r1, [r5,#3]
+	ldrb r1, [r5,#oOverworldMapObject_ListIndex]
 	ror r0, r1
 	ldr r2, off_80049D0 // =eActiveOverworldMapObjectsBitfield
 	lsr r1, r1, #5
@@ -2918,7 +2918,7 @@ loc_80049BE:
 off_80049D0: .word eActiveOverworldMapObjectsBitfield
 off_80049D4: .word eOverworldMapObjects
 off_80049D8: .word dword_2013920
-off_80049DC: .word byte_20138A8
+off_80049DC: .word eOverworldMapObject55
 	thumb_func_end sub_80049BA
 
 // END OF OBJECT CODE
@@ -3440,7 +3440,7 @@ reqBBS_init_8004DF0:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r5,#oGameState_Unk_20]
+	str r0, [r5,#oGameState_Ptr_20]
 	mvn r0, r0
 	strh r0, [r5,#oGameState_LastMapGroup]
 	mov r0, #0
@@ -3488,9 +3488,9 @@ reqBBS_init_8004DF0:
 	bl sub_802F2C8
 	bl sub_81284A4
 	bl owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2
-	bl sub_809E2F4
+	bl SetDefaultOWPlayerNaviColorShader
 	bl sub_809E304
-	bl owPlayer_zeroS2000AA0Param0x5_809e2fc
+	bl ZeroOWPlayerNaviPaletteIndex
 	bl owPlayer_zeroS2000AA0Param0x4_809e312
 	bl sub_809E3AA
 	bl sub_809E3B2
@@ -4801,7 +4801,7 @@ sub_8005C04:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r5,#oGameState_Unk_20]
+	str r0, [r5,#oGameState_Ptr_20]
 	mov r0, #0x25 
 	bl FreeAllObjectsOfSpecifiedTypes
 	mov r5, r10
@@ -5001,7 +5001,7 @@ sub_8005D88:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r5,#oGameState_Unk_20]
+	str r0, [r5,#oGameState_Ptr_20]
 	mov r0, #0x25 
 	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8005F40
@@ -5022,7 +5022,7 @@ sub_8005DBE:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r5,#oGameState_Unk_20]
+	str r0, [r5,#oGameState_Ptr_20]
 	mov r0, #0x25 
 	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8005F40
@@ -5042,7 +5042,7 @@ dead_8005DF0:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r5,#oGameState_Unk_20]
+	str r0, [r5,#oGameState_Ptr_20]
 	mov r0, #0x25 
 	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8005F40
@@ -5062,7 +5062,7 @@ dead_8005E22:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r5,#oGameState_Unk_20]
+	str r0, [r5,#oGameState_Ptr_20]
 	mov r0, #0x25 
 	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8005F40
@@ -5082,7 +5082,7 @@ dead_8005E54:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r5,#oGameState_Unk_20]
+	str r0, [r5,#oGameState_Ptr_20]
 	mov r0, #0x25 
 	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8005F40
@@ -5159,16 +5159,16 @@ sub_8005EEC:
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_Warp2011bb0_Ptr]
 	mov r3, #1
-	strb r3, [r4,#0x10]
+	strb r3, [r4,#oWarp2011bb0_Unk_10]
 	add r3, r1, #1
-	strb r3, [r4,#0x11]
-	str r0, [r4,#0x14]
-	strb r2, [r4,#0x12]
+	strb r3, [r4,#oWarp2011bb0_Unk_11]
+	str r0, [r4,#oWarp2011bb0_Ptr_14]
+	strb r2, [r4,#oWarp2011bb0_Unk_12]
 	pop {r4-r7,pc}
 	thumb_func_end sub_8005EEC
 
-	thumb_func_start sub_8005F00
-sub_8005F00:
+	thumb_func_start warp_setSubsystemIndexTo0x10AndOthers_8005f00
+warp_setSubsystemIndexTo0x10AndOthers_8005f00:
 	push {r4-r7,lr}
 	bl sub_8005EEC
 	mov r4, r10
@@ -5177,10 +5177,10 @@ sub_8005F00:
 	strb r0, [r4,#oGameState_SubsystemIndex]
 	bl sub_8035738
 	pop {r4-r7,pc}
-	thumb_func_end sub_8005F00
+	thumb_func_end warp_setSubsystemIndexTo0x10AndOthers_8005f00
 
-	thumb_func_start sub_8005F14
-sub_8005F14:
+	thumb_func_start warp_setSubsystemIndexTo0x14AndOthers_8005f14
+warp_setSubsystemIndexTo0x14AndOthers_8005f14:
 	push {r4-r7,lr}
 	bl sub_8005EEC
 	mov r4, r10
@@ -5189,27 +5189,27 @@ sub_8005F14:
 	strb r0, [r4,#oGameState_SubsystemIndex]
 	bl sub_8035738
 	pop {r4-r7,pc}
-	thumb_func_end sub_8005F14
+	thumb_func_end warp_setSubsystemIndexTo0x14AndOthers_8005f14
 
 	thumb_local_start
 sub_8005F28:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Warp2011bb0_Ptr]
-	ldrb r1, [r0,#0x10]
+	ldrb r1, [r0,#oWarp2011bb0_Unk_10]
 	cmp r1, #0
 	mov pc, lr
 	thumb_func_end sub_8005F28
 
-	thumb_func_start sub_8005F32
-sub_8005F32:
+	thumb_func_start warp_8005f32
+warp_8005f32:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_Warp2011bb0_Ptr]
-	ldr r0, [r3,#0x14]
-	ldrb r1, [r3,#0x11]
+	ldr r0, [r3,#oWarp2011bb0_Ptr_14]
+	ldrb r1, [r3,#oWarp2011bb0_Unk_11]
 	sub r1, #1
-	ldrb r2, [r3,#0x12]
+	ldrb r2, [r3,#oWarp2011bb0_Unk_12]
 	mov pc, lr
-	thumb_func_end sub_8005F32
+	thumb_func_end warp_8005f32
 
 	thumb_func_start sub_8005F40
 sub_8005F40:
@@ -6731,7 +6731,6 @@ ToolkitExtraPtrsOffsets: .word 0x0
 	.word 0x34B0
 	.word 0x34B8
 ToolkitExtraPtrsOffsetsEnd:
-
 
 	thumb_local_start
 sub_8006D00:
@@ -9409,7 +9408,7 @@ loc_80081F4:
 	mov r4, #0x66
 loc_8008206:
 	mov r0, r2
-	bl PlaySong
+	bl PlayMusic
 	strh r4, [r5,#8]
 	mov r6, #4
 	bl GetBattleEffects // () -> int
@@ -9470,7 +9469,7 @@ sub_800825A:
 	tst r0, r1
 	beq loc_800828A
 	mov r0, #SONG_LOSER
-	bl PlaySong
+	bl PlayMusic
 loc_800828A:
 	bl GetBattleEffects // () -> int
 	mov r1, #2
@@ -10028,7 +10027,7 @@ sub_8008688:
 	mov r2, #SONG_ACDC_TOWN
 .playSong:
 	mov r0, r2
-	bl PlaySong
+	bl PlayMusic
 	strh r4, [r5,#8]
 	mov r0, #0x14
 	bl sub_801E792
@@ -10139,7 +10138,7 @@ sub_8008764:
 	tst r0, r1
 	beq loc_8008794
 	mov r0, #SONG_LOSER
-	bl PlaySong
+	bl PlayMusic
 loc_8008794:
 	bl GetBattleEffects // () -> int
 	mov r1, #2
@@ -10561,7 +10560,7 @@ loc_8008AE0:
 	mov r2, #SONG_ACDC_TOWN
 loc_8008AE6:
 	mov r0, r2
-	bl PlaySong
+	bl PlayMusic
 	strh r4, [r5,#8]
 	mov r0, #0x14
 	bl sub_801E792
@@ -10672,7 +10671,7 @@ sub_8008B7C:
 	tst r0, r1
 	beq loc_8008BAC
 	mov r0, #SONG_LOSER
-	bl PlaySong
+	bl PlayMusic
 loc_8008BAC:
 	bl GetBattleEffects // () -> int
 	mov r1, #2
@@ -11090,7 +11089,7 @@ loc_8008EE0:
 	mov r2, #0x24
 loc_8008EE6:
 	mov r0, r2
-	bl PlaySong
+	bl PlayMusic
 	strh r4, [r5,#8]
 	mov r0, #0x14
 	bl sub_801E792
@@ -11201,7 +11200,7 @@ sub_8008F7C:
 	tst r0, r1
 	beq loc_8008FAC
 	mov r0, #SONG_LOSER
-	bl PlaySong
+	bl PlayMusic
 loc_8008FAC:
 	bl GetBattleEffects // () -> int
 	mov r1, #2
@@ -11536,7 +11535,7 @@ loc_800922E:
 loc_8009232:
 	cmp r0, #0x63
 	beq loc_800923A
-	bl PlaySong
+	bl PlayMusic
 loc_800923A:
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -12111,7 +12110,7 @@ loc_8009696:
 loc_800969A:
 	cmp r0, #0x63
 	beq loc_80096A2
-	bl PlaySong
+	bl PlayMusic
 loc_80096A2:
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -12578,7 +12577,7 @@ loc_8009A1E:
 loc_8009A22:
 	cmp r0, #0x63
 	beq loc_8009A2A
-	bl PlaySong
+	bl PlayMusic
 loc_8009A2A:
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -12966,7 +12965,7 @@ loc_8009D0E:
 loc_8009D12:
 	cmp r0, #0x63
 	beq loc_8009D1A
-	bl PlaySong
+	bl PlayMusic
 loc_8009D1A:
 	mov r0, #4
 	strb r0, [r5,#3]

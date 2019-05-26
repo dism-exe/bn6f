@@ -34,7 +34,7 @@
 	u8 Unk_17 // loc=0x17
 	ptr OverworldPlayerObjectPtr // loc=0x18
 	ptr CurBattleDataPtr // loc=0x1c
-	u32 Unk_20 // loc=0x20
+	ptr Ptr_20 // loc=0x20
 	u32 PlayerX // loc=0x24
 	u32 PlayerY // loc=0x28
 	u32 Unk_2c // loc=0x2c

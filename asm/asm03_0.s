@@ -20402,47 +20402,48 @@ map_8030A30:
 	.pool
 	thumb_func_end map_8030A30
 
-	thumb_func_start sub_8030A60
-sub_8030A60:
+	thumb_func_start npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
+npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20:
 	push {r4-r6,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
-	ldr r1, [r4,#oGameState_Unk_20]
+	ldr r1, [r4,#oGameState_Ptr_20]
 	cmp r0, r1
-	beq locret_8030A8A
-	str r0, [r4,#oGameState_Unk_20]
+	beq .done
+	str r0, [r4,#oGameState_Ptr_20]
 	push {r0}
-	mov r0, #4
+	mov r0, #OVERWORLD_NPC_OBJECT_F
 	bl FreeAllObjectsOfSpecifiedTypes
 	pop {r0}
 	mov r1, #0
-loc_8030A7A:
+.loop
 	ldr r2, [r0]
 	cmp r2, #0xff
-	beq locret_8030A8A
-	bl sub_8030A8C
+	beq .done
+	bl npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c
 	add r1, #1
 	add r0, #4
-	b loc_8030A7A
-locret_8030A8A:
+	b .loop
+.done
 	pop {r4-r6,pc}
-	thumb_func_end sub_8030A60
+	thumb_func_end npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
 
 	thumb_local_start
-sub_8030A8C:
+npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c:
 	push {lr}
 	push {r0-r2}
 	mov r0, #0
+	// writes garbage to xyz, unk_04 but is overwritten later by the npc script
 	bl SpawnOverworldNPCObject
 	pop {r0-r2}
 	tst r5, r5
-	beq locret_8030AA0
-	strb r1, [r5,#0x10]
-	str r2, [r5,#0x60]
-locret_8030AA0:
+	beq .objectSpawnFailed
+	strb r1, [r5,#oOverworldNPCObject_Unk_10]
+	str r2, [r5,#oOverworldNPCObject_UnkFlags_60] // this is actually temp storage for the animation script pointer
+.objectSpawnFailed
 	pop {pc}
 	.balign 4, 0x00
-	thumb_func_end sub_8030A8C
+	thumb_func_end npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c
 
 	thumb_func_start sub_8030AA4
 // coordinate effect 

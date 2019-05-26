@@ -278,7 +278,7 @@ sub_8087140:
 	thumb_func_start sub_8087150
 sub_8087150:
 	push {r4-r7,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r4, #0xa
 	mov r6, #0
 	mov r3, #0x10
@@ -330,7 +330,7 @@ loc_808718E:
 	add r6, #1
 	cmp r6, r7
 	blt loc_808718E
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r3, #0x10
 	str r0, [r5,r3]
 	add r3, #4

@@ -15312,7 +15312,7 @@ loc_812B6D8:
 	ldrb r0, [r5,#0x1a]
 	bl setPETNaviSelect
 	bl sub_813C3AC
-	bl sub_8036E78
+	bl PlayMapMusic
 	movflag EVENT_1722
 	bl ClearEventFlagFromImmediate
 	bl sub_803F798

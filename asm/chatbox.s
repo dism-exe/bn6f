@@ -4352,7 +4352,7 @@ loc_8041EC8:
 	cmp r0, #0
 	bne loc_8041EE2
 	bl GetOWPlayerFacingDirection
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	mov r0, #0
 	strb r0, [r5,#4]
 	add r4, #2
@@ -4869,7 +4869,7 @@ chatbox_80422E8:
 	ldrb r1, [r4,#3]
 	lsl r1, r1, #8
 	orr r0, r1
-	bl PlaySong
+	bl PlayMusic
 	add r4, #4
 	mov r0, #1
 	pop {pc}
@@ -4946,8 +4946,8 @@ chatbox_8042350:
 	thumb_local_start
 chatbox_8042360:
 	push {lr}
-	bl sub_8036E44
-	bl sub_8036E78
+	bl playCertainMapMusicBasedOnEventByte_8036e44
+	bl PlayMapMusic
 	add r4, #2
 	mov r0, #1
 	pop {pc}
@@ -7910,8 +7910,8 @@ jt_8043B00: .word sub_8033FC0+1
 	.word owPlayer_setS2000AA0Param0x4_809e314+1
 	.word sub_813FA24+1
 	.word sub_809FE5E+1
-	.word sub_80351B4+1
-	.word npc_getMapSpriteScriptOffsets+1
+	.word npc_freeAllObjectsIfDifferentMap_80351b4+1
+	.word npc_spawnOverworldNPCObjectsForMap+1
 	.word sub_8120DF0+1
 	.word sub_813C3AC+1
 	.word sub_803CEB8+1

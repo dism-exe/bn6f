@@ -1052,7 +1052,7 @@ sub_80341F8:
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #SONG_TRANSMISSION
-	bl PlaySong
+	bl PlayMusic
 	pop {pc}
 off_8034214: .word 0x40
 	thumb_func_end sub_80341F8
@@ -1372,30 +1372,30 @@ maps80_8034670: .word off_80665A4
 	.word off_8069304
 	.word off_806A260
 	.word off_806A26C
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word off_806AE08
 	.word off_806AE1C
-	.word 0x0
-	.word 0x0
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word off_806C7B0
 	.word off_806C7CC
-	.word 0x0
-	.word 0x0
-	.word 0x0
-	.word 0x0
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word off_806DFB0
 	.word off_806DFF0
 	.word off_807022C
 	.word off_807026C
-	.word 0x0
-	.word 0x0
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word off_8071EB0
 	.word off_8071EBC
 	.word off_80758A0
@@ -1629,10 +1629,10 @@ map_8034B4C:
 	// size
 	mov r1, #0x40
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	bl sub_8036E44
+	bl playCertainMapMusicBasedOnEventByte_8036e44
 	bl sub_8035028
 	bl npc_80350A8
-	bl npc_getMapSpriteScriptOffsets
+	bl npc_spawnOverworldNPCObjectsForMap
 	pop {r0,r1}
 	push {r0,r1}
 	bl sub_803537C
@@ -1654,7 +1654,7 @@ loc_8034B8A:
 	ldr r0, [r0,r3]
 	ldr r1, [r1,r3]
 	bl map_script_overworld_803600E
-	bl sub_8036E78
+	bl PlayMapMusic
 	pop {r2-r4}
 	mov r8, r2
 	mov r9, r3
@@ -2321,61 +2321,59 @@ off_803512C: .word byte_8099DC0
 off_8035130: .word byte_8099E04
 	thumb_func_end npc_80350BC
 
-	thumb_func_start npc_getMapSpriteScriptOffsets
-npc_getMapSpriteScriptOffsets:
+	thumb_func_start npc_spawnOverworldNPCObjectsForMap
+npc_spawnOverworldNPCObjectsForMap:
 	push {r4-r7,lr}
 	movflag EVENT_1721
 	bl TestEventFlagFromImmediate
-	bne locret_8035160
+	bne .flagSet
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldrb r0, [r3,#oGameState_MapGroup]
 	ldrb r1, [r3,#oGameState_MapNumber]
-	cmp r0, #0x80
-	bge loc_8035150
-	ldr r2, off_8035164 // =NPCList_maps00
-	b loc_8035154
-loc_8035150:
-	ldr r2, off_8035168 // =NPCList_maps80
-	sub r0, #0x80
-loc_8035154:
+	cmp r0, #INTERNET_MAP_GROUP_START
+	bge .internetMapGroup
+	ldr r2, =NPCList_maps00
+	b .realWorldMapGroup
+.internetMapGroup
+	ldr r2, =NPCList_maps80
+	sub r0, #INTERNET_MAP_GROUP_START
+.realWorldMapGroup
 	// area
 	lsl r0, r0, #2
 	// subarea
 	lsl r1, r1, #2
 	ldr r2, [r2,r0]
 	ldr r0, [r2,r1]
-	bl sub_8030A60
-locret_8035160:
+	bl npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
+.flagSet
 	pop {r4-r7,pc}
-	.balign 4, 0x00
-off_8035164: .word NPCList_maps00
-off_8035168: .word NPCList_maps80
-	thumb_func_end npc_getMapSpriteScriptOffsets
+	.balign 4, 0
+	.pool // 8035164
+	thumb_func_end npc_spawnOverworldNPCObjectsForMap
 
 	thumb_local_start
-npc_803516C:
+mapObject_spawnMapObjectsForMap:
 	push {r4-r7,lr}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldrb r0, [r3,#oGameState_MapGroup]
-	cmp r0, #0x80
-	bge loc_803517C
-	ldr r2, off_803518C // =off_8034654
-	b loc_8035180
-loc_803517C:
-	ldr r2, off_8035190 // =off_803483C
-	sub r0, #0x80
-loc_8035180:
+	cmp r0, #INTERNET_MAP_GROUP_START
+	bge .internetMapGroup
+	ldr r2, =off_8034654
+	b .realWorldMapGroup
+.internetMapGroup
+	ldr r2, =off_803483C
+	sub r0, #INTERNET_MAP_GROUP_START
+.realWorldMapGroup
 	lsl r0, r0, #2
 	ldr r2, [r2,r0]
 	mov lr, pc
 	bx r2
 	pop {r4-r7,pc}
-	.balign 4, 0x00
-off_803518C: .word off_8034654
-off_8035190: .word off_803483C
-	thumb_func_end npc_803516C
+	.balign 4, 0
+	.pool // 803518C
+	thumb_func_end mapObject_spawnMapObjectsForMap
 
 	thumb_local_start
 sub_8035194:
@@ -2387,7 +2385,7 @@ sub_8035194:
 	bge loc_80351A2
 	b locret_80351AE
 loc_80351A2:
-	ldr r2, off_80351B0 // =off_8034898
+	ldr r2, =off_8034898
 	sub r0, #INTERNET_MAP_GROUP_START
 	lsl r0, r0, #2
 	ldr r2, [r2,r0]
@@ -2395,19 +2393,19 @@ loc_80351A2:
 	bx r2
 locret_80351AE:
 	pop {r4-r7,pc}
-off_80351B0: .word off_8034898
+	.pool // 80351B0
 	thumb_func_end sub_8035194
 
-	thumb_func_start sub_80351B4
-sub_80351B4:
+	thumb_func_start npc_freeAllObjectsIfDifferentMap_80351b4
+npc_freeAllObjectsIfDifferentMap_80351b4:
 	push {r4-r7,lr}
-	ldr r0, off_80351C0 // =dword_80351C4
-	bl sub_8030A60
+	ldr r0, =dword_80351C4
+	bl npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
 	pop {r4-r7,pc}
-	.byte 0, 0
-off_80351C0: .word dword_80351C4
+	.balign 4, 0
+	.pool // 80351C0
 dword_80351C4: .word 0xFF
-	thumb_func_end sub_80351B4
+	thumb_func_end npc_freeAllObjectsIfDifferentMap_80351b4
 
 	thumb_local_start
 sub_80351C8:
@@ -3114,14 +3112,14 @@ ScriptCmds8035808:
 	.word MapScriptCmd_call_sub_8001B1C_multiple+1
 	.word MapScriptCmd_call_sub_8030A30_8035194+1
 	.word MapScriptCmd_cmd_8035F6A+1
-	.word sub_80380B4+1
-	.word sub_80380C8+1
+	.word MapScriptCmd_play_sound+1
+	.word MapScriptCmd_play_music+1
 	.word sub_80380EA+1
 	.word sub_803810E+1
 	.word sub_8038132+1
 	.word sub_803813E+1
 	.word MapScriptCmd_call_sub_8033FC0+1
-	.word 0x0
+	.word NULL
 	.word sub_80381FA+1
 	.word sub_803821E+1
 	.word MapScriptCmd_write_script_struct_10_word+1
@@ -3129,7 +3127,7 @@ ScriptCmds8035808:
 	.word sub_803828E+1
 	.word sub_803829A+1
 	.word sub_80382AE+1
-	.word 0x0
+	.word NULL
 	.word MapScriptCmd_spawn_or_free_objects+1
 	.word sub_80382BA+1
 	.word sub_8038322+1
@@ -4428,58 +4426,120 @@ ReadMapScriptWord: // 80360C8
 	pop {r7,pc}
 	thumb_func_end ReadMapScriptWord
 
-	.balign 4, 0x00
-off_80360E4: .word dword_80362A4
+	.balign 4, 0
+off_80360E4:
+	.word dword_80362A4
 	.word dword_80362EC
 	.word dword_80362A4
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word dword_8036334
 	.word dword_8036394
 	.word dword_8036334
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word dword_80363F4
 	.word dword_8036454
 	.word dword_80364B4
 	.word dword_8036514
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word dword_8036574
 	.word dword_80365FC
 	.word dword_8036684
 	.word dword_8036574
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word dword_803670C
 	.word dword_80367AC
 	.word dword_803670C
 	.word dword_803684C
 	.word dword_80368EC
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word dword_803698C
 	.word dword_8036A34
 	.word dword_8036ADC
 	.word dword_8036B84
 	.word dword_8036C2C
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word dword_8036CD4
 	.word dword_8036D8C
 	.word dword_8036CD4
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 dword_80362A4: .word 0xFFFFFF00
 	.word byte_804D0FC
 	.word 0xFFFFFF01
@@ -5225,16 +5285,16 @@ dword_8036D8C: .word 0xFFFFFF00
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
 
-	thumb_func_start sub_8036E44
-sub_8036E44:
+	thumb_func_start playCertainMapMusicBasedOnEventByte_8036e44
+playCertainMapMusicBasedOnEventByte_8036e44:
 	push {r4-r7,lr}
-	ldr r7, off_8036E74 // =off_80360E4
+	ldr r7, =off_80360E4
 	mov r0, r10
 	ldr r6, [r0,#oToolkit_GameStatePtr]
 	ldr r4, [r0,#oToolkit_S2001c04_Ptr]
-	ldrb r1, [r6,#4]
-	ldrb r2, [r6,#5]
-	ldrb r0, [r6,#7]
+	ldrb r1, [r6,#oGameState_MapGroup]
+	ldrb r2, [r6,#oGameState_MapNumber]
+	ldrb r0, [r6,#oGameState_Unk_07]
 	lsl r0, r0, #2
 	ldr r7, [r7,r0]
 loc_8036E58:
@@ -5252,28 +5312,28 @@ loc_8036E6A:
 	b loc_8036E58
 loc_8036E6E:
 	mov r0, #0x63
-	strb r0, [r4,#4]
+	strb r0, [r4,#oS2001c04_MapMusic]
 locret_8036E72:
 	pop {r4-r7,pc}
-off_8036E74: .word off_80360E4
-	thumb_func_end sub_8036E44
+	.pool // 8036E74
+	thumb_func_end playCertainMapMusicBasedOnEventByte_8036e44
 
-	thumb_func_start sub_8036E78
-sub_8036E78:
+	thumb_func_start PlayMapMusic
+PlayMapMusic:
 	push {r4-r7,lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
-	ldrb r0, [r0,#4]
-	bl PlaySong
+	ldrb r0, [r0,#oS2001c04_MapMusic]
+	bl PlayMusic
 	pop {r4-r7,pc}
-	thumb_func_end sub_8036E78
+	thumb_func_end PlayMapMusic
 
 	thumb_func_start sub_8036E86
 sub_8036E86:
 	push {r4-r7,lr}
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
-	strb r0, [r1,#4]
+	strb r0, [r1,#oS2001c04_MapMusic]
 	pop {r4-r7,pc}
 	thumb_func_end sub_8036E86
 
@@ -6061,7 +6121,7 @@ sub_803741C:
 	push {r1}
 	mov r0, #1
 	bl ReadCutsceneCameraScriptHalfword
-	bl PlaySong
+	bl PlayMusic
 	pop {r1}
 	mov r0, #1
 	add r1, #3
@@ -6213,15 +6273,15 @@ CutsceneCommandJumptable:
 	.word MapScriptCmd_ow_player_8037cc4+1
 	.word MapScriptCmd_write_S200ace0_unk_20+1
 	.word MapScriptCmd_transform_player_navi_sprite+1
-	.word sub_8037D80+1
-	.word sub_8037DAC+1
-	.word sub_8037DE0+1
-	.word sub_8037E18+1
-	.word sub_8037FB8+1
-	.word sub_8038028+1
-	.word sub_8038040+1
-	.word sub_80380B4+1
-	.word sub_80380C8+1
+	.word MapScriptCmd_set_ow_player_navi_color_shader+1
+	.word MapScriptCmd_write_or_offset_ow_player_fixed_anim_select_8037dac+1
+	.word MapScriptCmd_set_player_coords_anim_facing_as_npc+1
+	.word MapScriptCmd_spawn_free_ow_map_object_specials+1
+	.word MapScriptCmd_spawn_or_free_ow_map_or_npc_objects+1
+	.word MapScriptCmd_call_native_with_return_value+1
+	.word MapScriptCmd_warp_cmd_8038040+1
+	.word MapScriptCmd_play_sound+1
+	.word MapScriptCmd_play_music+1
 	.word sub_80380EA+1
 	.word sub_803810E+1
 	.word sub_8038132+1
@@ -6798,7 +6858,7 @@ MapScriptCmd_write_byte_to_extended_var_plus_param:
 	mov r6, #1
 	bl ReadMapScriptByte
 	lsl r0, r4, #2
-	add r0, #oCutsceneState_Unk_44
+	add r0, #oCutsceneState_owMapObjectPtrs_44
 	mov r6, #2
 	bl ReadMapScriptByte
 	ldr r0, [r5,r0]
@@ -7007,7 +7067,7 @@ off_8037B9C: .word owPlayer_writeLayerIndexOverride_809e260+1
 	.word SetOWPlayerFacingDirection+1
 	.word owPlayer_setPalette_809e2a0+1
 	.word owPlayer_setMosaicScalingParameters_8002c7a_809e4a0+1
-	.word owPlayer_setS2000AA0Param0x5_809e2fe+1
+	.word SetOWPlayerNaviPaletteIndex+1
 	.word owPlayer_setS2000AA0Param0x4_809e314+1
 	thumb_func_end MapScriptCmd_ow_player_sprite_8037b6c
 
@@ -7236,72 +7296,76 @@ MapScriptCmd_transform_player_navi_sprite:
 	thumb_func_end MapScriptCmd_transform_player_navi_sprite
 
 	thumb_local_start
-sub_8037D80:
+MapScriptCmd_set_ow_player_navi_color_shader:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0
-	beq loc_8037D90
+	beq .customOWPlayerNaviColorShader
 	cmp r4, #1
-	beq loc_8037DA2
-loc_8037D90:
+	beq .defaultOWPlayerNaviColorShader
+.customOWPlayerNaviColorShader
 	mov r6, #2
 	bl ReadMapScriptHalfword
 	mov r0, r4
-	bl loc_809E2F6
+	bl SetOWPlayerNaviColorShader
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-loc_8037DA2:
-	bl sub_809E2F4
+.defaultOWPlayerNaviColorShader
+	bl SetDefaultOWPlayerNaviColorShader
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037D80
+	thumb_func_end MapScriptCmd_set_ow_player_navi_color_shader
 
 	thumb_local_start
-sub_8037DAC:
+// two modes
+// 00 - write anim select
+// 01 - offset from current facing
+MapScriptCmd_write_or_offset_ow_player_fixed_anim_select_8037dac:
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq loc_8037DBC
+	beq .immediateParam
 	ldrb r4, [r5,r4]
-	b loc_8037DC2
-loc_8037DBC:
+	b .gotParam
+.immediateParam
 	mov r6, #3
 	bl ReadMapScriptByte
-loc_8037DC2:
+.gotParam
 	mov r0, r4
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0
-	beq loc_8037DD6
+	beq .writeAnimSelect
+	// offset anim select
 	mov r4, r0
 	bl GetOWPlayerFacingDirection
 	add r0, r0, r4
-loc_8037DD6:
-	bl sub_809E13C
+.writeAnimSelect
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037DAC
+	thumb_func_end MapScriptCmd_write_or_offset_ow_player_fixed_anim_select_8037dac
 
 	thumb_local_start
-sub_8037DE0:
+MapScriptCmd_set_player_coords_anim_facing_as_npc:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
-	mov r0, #0xd8
+	mov r0, #oOverworldNPCObject_Size
 	mul r4, r0
-	ldr r0, off_8037E14 // =eOverworldNPCObjects
+	ldr r0, =eOverworldNPCObjects
 	add r4, r4, r0
-	ldr r0, [r4,#0x24]
-	ldr r1, [r4,#0x28]
-	ldr r2, [r4,#0x2c]
+	ldr r0, [r4,#oOverworldNPCObject_X]
+	ldr r1, [r4,#oOverworldNPCObject_Y]
+	ldr r2, [r4,#oOverworldNPCObject_Z]
 	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4
-	ldrb r0, [r4,#0x14]
-	bl sub_809E13C
+	ldrb r0, [r4,#oOverworldNPCObject_AnimationSelect]
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r0, r4
@@ -7309,12 +7373,13 @@ sub_8037DE0:
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	.byte 0x0, 0x0
-off_8037E14: .word eOverworldNPCObjects
-	thumb_func_end sub_8037DE0
+	.balign 4, 0
+	// 8037E14
+	.pool
+	thumb_func_end MapScriptCmd_set_player_coords_anim_facing_as_npc
 
 	thumb_local_start
-sub_8037E18:
+MapScriptCmd_spawn_free_ow_map_object_specials:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -7322,29 +7387,29 @@ sub_8037E18:
 	mov r1, #0xf0
 	and r1, r4
 	lsr r2, r1, #2
-	ldr r3, off_8037E34 // =off_8037E38
+	ldr r3, =off_8037E38
 	ldr r3, [r3,r2]
 	mov lr, pc
 	bx r3
 	pop {pc}
-	.balign 4, 0x00
-off_8037E34: .word off_8037E38
-off_8037E38: .word sub_8037E4C+1
-	.word sub_8037E96+1
-	.word sub_8037EFA+1
-	.word sub_8037F6E+1
-	.word sub_8037F90+1
-	thumb_func_end sub_8037E18
+	.balign 4, 0
+	.pool // 8037E34
+off_8037E38: .word MapScriptSubCmd_spawn_ow_map_object+1
+	.word MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_player+1
+	.word MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_npc+1
+	.word MapScriptSubCmd_free_ow_map_object+1
+	.word MapScriptSubCmd_free_all_spawned_ow_map_objects+1
+	thumb_func_end MapScriptCmd_spawn_free_ow_map_object_specials
 
 	thumb_local_start
-sub_8037E4C:
+MapScriptSubCmd_spawn_ow_map_object:
 	push {lr}
 	mov r1, #0xf
 	and r4, r1
 	lsl r4, r4, #2
-	add r4, #0x44
+	add r4, #oCutsceneState_owMapObjectPtrs_44
 	push {r5}
-	add r5, r5, r4
+	add r5, r5, r4 // eCutsceneState_extendedVars_44 + wordparam
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r0, r4
@@ -7369,22 +7434,25 @@ sub_8037E4C:
 	add r7, #0xd
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037E4C
+	thumb_func_end MapScriptSubCmd_spawn_ow_map_object
 
 	thumb_local_start
-sub_8037E96:
+	.set oStack_OWPlayerObject_X, 0x0
+	.set oStack_OWPlayerObject_Y, 0x4
+	.set oStack_OWPlayerObject_Z, 0x8
+MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_player:
 	push {lr}
 	mov r1, #0xf
 	and r4, r1
 	lsl r4, r4, #2
-	add r4, #0x44
+	add r4, #oCutsceneState_owMapObjectPtrs_44
 	push {r5}
 	add r5, r5, r4
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	sub sp, sp, #0xc
-	str r0, [sp]
-	str r1, [sp,#4]
-	str r2, [sp,#8]
+	str r0, [sp,#oStack_OWPlayerObject_X]
+	str r1, [sp,#oStack_OWPlayerObject_Y]
+	str r2, [sp,#oStack_OWPlayerObject_Z]
 	mov r6, #3
 	bl ReadMapScriptHalfword
 	mov r1, r4
@@ -7397,11 +7465,11 @@ sub_8037E96:
 	lsl r1, r1, #0x10
 	lsl r2, r2, #0x10
 	lsl r3, r3, #0x10
-	ldr r4, [sp]
+	ldr r4, [sp,#oStack_OWPlayerObject_X]
 	add r1, r1, r4
-	ldr r4, [sp,#4]
+	ldr r4, [sp,#oStack_OWPlayerObject_Y]
 	add r2, r2, r4
-	ldr r4, [sp,#8]
+	ldr r4, [sp,#oStack_OWPlayerObject_Z]
 	add r3, r3, r4
 	add sp, sp, #0xc
 	mov r6, #2
@@ -7416,15 +7484,18 @@ sub_8037E96:
 	add r7, #0xd
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037E96
+	thumb_func_end MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_player
 
 	thumb_local_start
-sub_8037EFA:
+	.set oStack_OverworldNPCObject_X, 0x0
+	.set oStack_OverworldNPCObject_Y, 0x4
+	.set oStack_OverworldNPCObject_Z, 0x8
+MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_npc:
 	push {lr}
 	mov r1, #0xf
 	and r4, r1
 	lsl r4, r4, #2
-	add r4, #0x44
+	add r4, #oCutsceneState_owMapObjectPtrs_44
 	push {r5}
 	add r5, r5, r4
 	mov r6, #2
@@ -7433,13 +7504,13 @@ sub_8037EFA:
 	mul r1, r4
 	ldr r4, off_8037FB4 // =eOverworldNPCObjects
 	add r4, r4, r1
-	ldr r0, [r4,#0x24]
-	ldr r1, [r4,#0x28]
-	ldr r2, [r4,#0x2c]
+	ldr r0, [r4,#oOverworldNPCObject_X]
+	ldr r1, [r4,#oOverworldNPCObject_Y]
+	ldr r2, [r4,#oOverworldNPCObject_Z]
 	sub sp, sp, #0xc
-	str r0, [sp]
-	str r1, [sp,#4]
-	str r2, [sp,#8]
+	str r0, [sp,#oStack_OverworldNPCObject_X]
+	str r1, [sp,#oStack_OverworldNPCObject_Y]
+	str r2, [sp,#oStack_OverworldNPCObject_Z]
 	mov r6, #4
 	bl ReadMapScriptHalfword
 	mov r1, r4
@@ -7452,11 +7523,11 @@ sub_8037EFA:
 	lsl r1, r1, #0x10
 	lsl r2, r2, #0x10
 	lsl r3, r3, #0x10
-	ldr r4, [sp]
+	ldr r4, [sp,#oStack_OverworldNPCObject_X]
 	add r1, r1, r4
-	ldr r4, [sp,#4]
+	ldr r4, [sp,#oStack_OverworldNPCObject_Y]
 	add r2, r2, r4
-	ldr r4, [sp,#8]
+	ldr r4, [sp,#oStack_OverworldNPCObject_Z]
 	add r3, r3, r4
 	add sp, sp, #0xc
 	mov r6, #3
@@ -7471,68 +7542,69 @@ sub_8037EFA:
 	add r7, #0xe
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037EFA
+	thumb_func_end MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_npc
 
 	thumb_local_start
-sub_8037F6E:
+MapScriptSubCmd_free_ow_map_object:
 	push {lr}
 	mov r1, #0xf
 	and r4, r1
 	lsl r4, r4, #2
-	add r4, #0x44
+	add r4, #oCutsceneState_owMapObjectPtrs_44
 	push {r5}
 	ldr r5, [r5,r4]
 	tst r5, r5
-	beq loc_8037F88
+	beq .mapObjectNull
 	mov r0, #0
 	str r0, [r5,r4]
 	bl FreeOverworldMapObject
-loc_8037F88:
+.mapObjectNull
 	pop {r5}
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037F6E
+	thumb_func_end MapScriptSubCmd_free_ow_map_object
 
 	thumb_local_start
-sub_8037F90:
+MapScriptSubCmd_free_all_spawned_ow_map_objects:
 	push {lr}
-	mov r4, #0x44
-loc_8037F94:
+	mov r4, #oCutsceneState_owMapObjectPtrs_44
+.freeAllMapObjectsLoop
 	ldr r0, [r5,r4]
 	tst r0, r0
-	beq loc_8037FA8
+	beq .mapObjectNull
 	mov r1, #0
 	str r1, [r5,r4]
 	push {r5}
 	mov r5, r0
 	bl FreeOverworldMapObject
 	pop {r5}
-loc_8037FA8:
+.mapObjectNull
 	add r4, #4
-	cmp r4, #0x6c
-	ble loc_8037F94
+	cmp r4, #(oCutsceneState_owMapObjectPtrsEnd_70 - 4)
+	ble .freeAllMapObjectsLoop
 	add r7, #2
 	mov r0, #1
 	pop {pc}
 off_8037FB4: .word eOverworldNPCObjects
-	thumb_func_end sub_8037F90
+	thumb_func_end MapScriptSubCmd_free_all_spawned_ow_map_objects
 
 	thumb_local_start
-sub_8037FB8:
+MapScriptCmd_spawn_or_free_ow_map_or_npc_objects:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #1
-	beq loc_8037FE6
+	beq .freeAllObjectsOfSpecifiedTypes
 	cmp r4, #2
-	beq loc_8037FF8
+	beq .freeThenSpawnNPCObjects
 	cmp r4, #3
-	beq loc_803800A
+	beq .spawnNPCObjectsForMap
 	cmp r4, #4
-	beq loc_8038014
+	beq .spawnMapObjectsForMap
 	cmp r4, #5
-	beq loc_803801E
+	beq .freeNPCObjectsIfDifferentMap
+	// spawn objects from list
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
@@ -7540,7 +7612,7 @@ sub_8037FB8:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-loc_8037FE6:
+.freeAllObjectsOfSpecifiedTypes
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r0, r4
@@ -7548,106 +7620,106 @@ loc_8037FE6:
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-loc_8037FF8:
+.freeThenSpawnNPCObjects
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl sub_8030A60
+	bl npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-loc_803800A:
-	bl npc_getMapSpriteScriptOffsets
+.spawnNPCObjectsForMap
+	bl npc_spawnOverworldNPCObjectsForMap
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-loc_8038014:
-	bl npc_803516C
+.spawnMapObjectsForMap
+	bl mapObject_spawnMapObjectsForMap
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-loc_803801E:
-	bl sub_80351B4
+.freeNPCObjectsIfDifferentMap
+	bl npc_freeAllObjectsIfDifferentMap_80351b4
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037FB8
+	thumb_func_end MapScriptCmd_spawn_or_free_ow_map_or_npc_objects
 
 	thumb_local_start
-sub_8038028:
+MapScriptCmd_call_native_with_return_value:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
 	mov lr, pc
 	bx r4
-	bne loc_803803C
+	bne .halt
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-loc_803803C:
+.halt
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_8038028
+	thumb_func_end MapScriptCmd_call_native_with_return_value
 
 	thumb_local_start
-sub_8038040:
+MapScriptCmd_warp_cmd_8038040:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	mov r3, r4
 	mov r0, #0x40
 	tst r3, r0
-	bne loc_8038098
+	bne .subcmd0x40
 	mov r0, #0x20
 	tst r3, r0
-	bne loc_80380A6
+	bne .subcmd0x20
 	mov r6, #3
 	bl ReadMapScriptWord
 	mov r2, r4
 	mov r0, #0x80
 	tst r3, r0
-	beq loc_8038066
-	ldr r2, [r5,#0x34]
-loc_8038066:
+	beq .param0bit7clear
+	ldr r2, [r5,#oCutsceneState_Unk_34]
+.param0bit7clear
 	mov r0, #1
 	tst r3, r0
-	bne loc_8038082
+	bne .param0bit0set
 	mov r0, r2
 	mov r1, #0
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r2, r4
-	bl sub_8005F00
+	bl warp_setSubsystemIndexTo0x10AndOthers_8005f00
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-loc_8038082:
+.param0bit0set
 	mov r0, r2
 	mov r1, #0
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r2, r4
-	bl sub_8005F14
+	bl warp_setSubsystemIndexTo0x14AndOthers_8005f14
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-loc_8038098:
-	bl sub_8005F32
-	bl sub_8005F00
+.subcmd0x40
+	bl warp_8005f32
+	bl warp_setSubsystemIndexTo0x10AndOthers_8005f00
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-loc_80380A6:
+.subcmd0x20
 	mov r6, #2
 	bl ReadMapScriptWord
-	str r4, [r5,#0x34]
+	str r4, [r5,#oCutsceneState_Unk_34]
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8038040
+	thumb_func_end MapScriptCmd_warp_cmd_8038040
 
 	thumb_local_start
-sub_80380B4:
+MapScriptCmd_play_sound:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptHalfword
@@ -7656,26 +7728,26 @@ sub_80380B4:
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80380B4
+	thumb_func_end MapScriptCmd_play_sound
 
 	thumb_local_start
-sub_80380C8:
+MapScriptCmd_play_music:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptSignedHalfword
 	cmp r4, #0
-	bge loc_80380DE
-	bl sub_8036E44
-	bl sub_8036E78
-	b loc_80380E4
-loc_80380DE:
+	bge .regularPlayMusic
+	bl playCertainMapMusicBasedOnEventByte_8036e44
+	bl PlayMapMusic
+	b .done
+.regularPlayMusic
 	mov r0, r4
-	bl PlaySong
-loc_80380E4:
+	bl PlayMusic
+.done
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80380C8
+	thumb_func_end MapScriptCmd_play_music
 
 	thumb_local_start
 sub_80380EA:
@@ -21502,7 +21574,7 @@ playGameOver_803FB9C:
 	cmp r0, r1
 	bne locret_803FBC0
 	mov r0, #SONG_GAME_OVER
-	bl PlaySong
+	bl PlayMusic
 	b locret_803FBC0
 loc_803FBB4:
 	mov r0, #0xc

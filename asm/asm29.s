@@ -257,12 +257,12 @@ loc_80A4B7A:
 	pop {r4-r7,pc}
 dword_80A4B80: .word 0x140000
 off_80A4B84: .word off_80A4B88
-off_80A4B88: .word eOverworldNPCObjects+0x24
-	.word 0xD8
+off_80A4B88: .word eOverworldNPCObject0_Coords
+	.word oOverworldNPCObject_Size
 	.word eOWPlayerObject_Coords
-	.word 0xC8
-	.word dword_2011EEC
-	.word 0x78
+	.word oOWPlayerObject_Size
+	.word eOverworldMapObject0_Coords
+	.word oOverworldMapObject_Size
 off_80A4BA0: .word byte_80A4BA4
 byte_80A4BA4: .byte 0xF4, 0xFF, 0xF4, 0xFF, 0x8, 0x0, 0xF0, 0xFF, 0x0, 0x0, 0x8
 	.byte 0x0, 0xF4, 0xFF, 0xC, 0x0, 0x8, 0x0, 0x0, 0x0, 0xF0, 0xFF
@@ -1390,7 +1390,7 @@ sub_80A596C:
 	thumb_local_start
 sub_80A5974:
 	push {r4,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 loc_80A597A:
 	ldr r2, [r5,#0xc]
 	ldr r3, [r5,#0x10]
@@ -1483,7 +1483,7 @@ sub_80A5A1C:
 	str r1, [r5,#0x28]
 	str r2, [r5,#0x14]
 	str r2, [r5,#0x2c]
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r4, #0xc8 // (dword_2000F88 - 0x2000ec0)
 	ldr r2, [r7,r4]
 	add r4, #4
@@ -1774,7 +1774,7 @@ locret_80A5CE0:
 	thumb_local_start
 sub_80A5CE4:
 	push {r4-r7,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	bl sub_80A5E08
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A5CE4
@@ -1969,7 +1969,7 @@ byte_80A5E3C: .byte 0x2, 0x2, 0x0, 0x6, 0x4, 0x0, 0x0, 0x0
 	thumb_local_start
 sub_80A5E44:
 	push {r4,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r2, r0
 	mov r3, r1
 	ldr r0, [r5,#0xc]
@@ -1982,7 +1982,7 @@ sub_80A5E44:
 	mov r4, r0
 	ldr r0, off_80A5E74 // =byte_80A5E7C
 	ldrb r0, [r0,r4]
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	ldr r0, off_80A5E78 // =byte_80A5E84
 	ldrb r0, [r0,r4]
 	bl SetOWPlayerFacingDirection
@@ -2882,7 +2882,7 @@ sub_80A6CFC:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sub_8002E52
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	str r0, [r5,#0xc]
 	str r1, [r5,#0x10]
 	str r2, [r5,#0x14]
@@ -3404,7 +3404,7 @@ sub_80A70FC:
 	movflag EVENT_5F1
 	bl TestEventFlagFromImmediate
 	bne locret_80A715C
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	cmp r2, #0
 	bne loc_80A712E
 	mov r2, r0
@@ -3816,7 +3816,7 @@ locret_80A7452:
 	thumb_local_start
 sub_80A7454:
 	push {r4-r7,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	ldr r2, [r5,#0xc]
 	ldr r3, [r5,#0x10]
 	sub r0, r0, r2
@@ -3872,7 +3872,7 @@ sub_80A74A8:
 	ldrb r1, [r7,r2]
 	cmp r0, #0xff
 	bne loc_80A74FA
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	ldr r2, [r5,#0xc]
 	ldr r3, [r5,#0x10]
 	sub r0, r0, r2
@@ -4034,7 +4034,7 @@ sub_80A75DC:
 	movflag EVENT_5F1
 	bl TestEventFlagFromImmediate
 	bne locret_80A763C
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	cmp r2, #0
 	bne loc_80A760E
 	mov r2, r0
@@ -5774,7 +5774,7 @@ sub_80A84C4:
 	lsl r7, r7, #8
 	mul r4, r7
 	mul r6, r7
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	add r0, r0, r4
 	add r1, r1, r6
 	str r0, [r5,#0xc]
@@ -5946,7 +5946,7 @@ sub_80A860C:
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate
 	bne locret_80A8640
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r2, r0
 	mov r3, r1
 	ldr r0, [r5,#0xc]
@@ -6062,7 +6062,7 @@ loc_80A86EA:
 	bl sub_8142868
 	str r0, [r5,#0xc]
 	str r1, [r5,#0x10]
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	str r2, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
@@ -6123,7 +6123,7 @@ loc_80A8754:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	str r2, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
@@ -6610,7 +6610,7 @@ sub_80A8B4C:
 	ldr r0, [r5,#0x10]
 	sub r0, r0, r2
 	str r0, [r5,#0x10]
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r0, #0x14
 	lsl r0, r0, #0x10
 	add r0, r0, r2
@@ -6697,7 +6697,7 @@ sub_80A8C08:
 	ldr r0, [r5,#0x10]
 	add r0, r0, r2
 	str r0, [r5,#0x10]
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r0, #0x14
 	lsl r0, r0, #0x10
 	add r0, r0, r2
@@ -7393,7 +7393,7 @@ sub_80A91A4:
 	mov r1, #0xe4
 	bl TestEventFlagFromImmediate
 	beq locret_80A91D0
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r2, r0
 	mov r3, r1
 	ldr r0, [r5,#0xc]
@@ -7896,7 +7896,7 @@ off_80A9598: .word byte_8143724
 	thumb_local_start
 sub_80A95A8:
 	push {r4,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	ldr r3, [r5,#0x14]
 	cmp r2, r3
 	bne locret_80A95E6
@@ -7931,7 +7931,7 @@ sub_80A95EC:
 	ldrb r0, [r5,#7]
 	cmp r0, #0
 	beq locret_80A9610
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	cmp r2, #0
 	bne loc_80A9604
 	mov r0, #3
@@ -8157,7 +8157,7 @@ loc_80A97BC:
 	mov r1, #0xe4
 	bl TestEventFlagFromImmediate
 	beq locret_80A97F0
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r2, r0
 	mov r3, r1
 	ldr r0, [r5,#0xc]

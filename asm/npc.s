@@ -1928,7 +1928,7 @@ sub_809F36E:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
-	bl PlaySong
+	bl PlayMusic
 	add r6, #3
 	pop {pc}
 	thumb_func_end sub_809F36E
