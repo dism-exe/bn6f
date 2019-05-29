@@ -163,8 +163,8 @@ sub_800068A:
 	pop {r4-r7,pc}
 	thumb_func_end sub_800068A
 
-	thumb_func_start sub_80006A2
-sub_80006A2:
+	thumb_func_start sound_80006A2
+sound_80006A2:
 	push {r4-r7,lr}
 	cmp r0, #0x25
 	bgt loc_80006B0
@@ -240,7 +240,7 @@ off_8000704: .word byte_2010690
 	.word byte_2010A10
 	.word byte_2010590
 	.word off_2010890
-	thumb_func_end sub_80006A2
+	thumb_func_end sound_80006A2
 
 // () -> void
 	thumb_func_start musicGameState_8000784

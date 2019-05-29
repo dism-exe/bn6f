@@ -246,3 +246,26 @@ andOthers - more to this function than in the name. use for lazy labels
 todo:
 - subsystem index constants
 */
+
+/*
+encryption arrays?
+- byte_20004E0
+- unk_2004A8C
+
+- byte_20008A0
+- unk_2004C20
+
+- byte_2001600
+- unk_2004E24
+
+zenny:
+- dword_2000060
+- unk_2005028
+
+bugfrags:
+- dword_20018B8
+- unk_2005030
+
+- byte_2000670
+- unk_2005038
+*/

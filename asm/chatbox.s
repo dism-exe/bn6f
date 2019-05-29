@@ -4960,7 +4960,7 @@ chatbox_8042370:
 	ldrb r1, [r4,#3]
 	mov r2, #0x1f
 	push {r0}
-	bl sub_80006A2
+	bl sound_80006A2
 	pop {r0}
 	add r4, #4
 	mov r0, #1

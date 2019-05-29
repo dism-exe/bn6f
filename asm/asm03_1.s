@@ -3114,10 +3114,10 @@ ScriptCmds8035808:
 	.word MapScriptCmd_cmd_8035F6A+1
 	.word MapScriptCmd_play_sound+1
 	.word MapScriptCmd_play_music+1
-	.word sub_80380EA+1
-	.word sub_803810E+1
-	.word sub_8038132+1
-	.word sub_803813E+1
+	.word MapScriptCmd_sound_cmd_80380ea+1
+	.word MapScriptCmd_sound_cmd_803810e+1
+	.word MapScriptCmd_stop_sound+1
+	.word MapScriptCmd_navicust_maybe_803813e+1
 	.word MapScriptCmd_call_sub_8033FC0+1
 	.word NULL
 	.word sub_80381FA+1
@@ -5507,17 +5507,17 @@ cutsceneCamera_setCutsceneCameraScript_8036f98:
 	pop {pc}
 	thumb_func_end cutsceneCamera_setCutsceneCameraScript_8036f98
 
-	thumb_func_start sub_8036FAA
-sub_8036FAA:
+	thumb_func_start cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
+cutsceneCamera_focusCameraOnPlayerMaybe_8036faa:
 	push {lr}
 	mov r0, #1
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	ldr r1, [r1,#oGameState_OverworldPlayerObjectPtr]
-	add r1, #0x1c
+	add r1, #oOWPlayerObject_Coords
 	bl camera_80301B2
 	pop {pc}
-	thumb_func_end sub_8036FAA
+	thumb_func_end cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
 
 	thumb_local_start
 cutscene_cameraMaybe_8036FBC:
@@ -6282,12 +6282,12 @@ CutsceneCommandJumptable:
 	.word MapScriptCmd_warp_cmd_8038040+1
 	.word MapScriptCmd_play_sound+1
 	.word MapScriptCmd_play_music+1
-	.word sub_80380EA+1
-	.word sub_803810E+1
-	.word sub_8038132+1
-	.word sub_803813E+1
+	.word MapScriptCmd_sound_cmd_80380ea+1
+	.word MapScriptCmd_sound_cmd_803810e+1
+	.word MapScriptCmd_stop_sound+1
+	.word MapScriptCmd_navicust_maybe_803813e+1
 	.word MapScriptCmd_call_sub_8033FC0+1
-	.word sub_803816A+1
+	.word MapScriptCmd_run_or_stop_cutscene_camera_script+1
 	.word sub_80381A0+1
 	.word sub_80381E0+1
 	.word NULL
@@ -7750,7 +7750,7 @@ MapScriptCmd_play_music:
 	thumb_func_end MapScriptCmd_play_music
 
 	thumb_local_start
-sub_80380EA:
+MapScriptCmd_sound_cmd_80380ea:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptHalfword
@@ -7761,14 +7761,14 @@ sub_80380EA:
 	mov r6, #4
 	bl ReadMapScriptByte
 	mov r2, r4
-	bl sub_80006A2
+	bl sound_80006A2
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80380EA
+	thumb_func_end MapScriptCmd_sound_cmd_80380ea
 
 	thumb_local_start
-sub_803810E:
+MapScriptCmd_sound_cmd_803810e:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -7784,19 +7784,19 @@ sub_803810E:
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_803810E
+	thumb_func_end MapScriptCmd_sound_cmd_803810e
 
 	thumb_local_start
-sub_8038132:
+MapScriptCmd_stop_sound:
 	push {lr}
 	bl musicGameState_8000784 // () -> void
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8038132
+	thumb_func_end MapScriptCmd_stop_sound
 
 	thumb_local_start
-sub_803813E:
+MapScriptCmd_navicust_maybe_803813e:
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptByte
@@ -7816,35 +7816,35 @@ loc_8038164:
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_803813E
+	thumb_func_end MapScriptCmd_navicust_maybe_803813e
 
 	thumb_local_start
-sub_803816A:
+MapScriptCmd_run_or_stop_cutscene_camera_script:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0
-	bne loc_803818E
+	bne .resetCamera
 	mov r6, #2
 	bl ReadMapScriptWord
-	str r4, [r5,#0x3c]
+	str r4, [r5,#oCutsceneState_Unk_3c]
 	mov r0, r4
 	bl cutsceneCamera_setCutsceneCameraScript_8036f98
-	mov r0, #1
-	strb r0, [r5,#0x13]
+	mov r0, #TRUE
+	strb r0, [r5,#oCutsceneState_CutsceneCameraScriptActive]
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-loc_803818E:
-	mov r0, #0
-	str r0, [r5,#0x3c]
-	bl sub_8036FAA
-	mov r0, #0
-	strb r0, [r5,#0x13]
+.resetCamera
+	mov r0, #NULL
+	str r0, [r5,#oCutsceneState_Unk_3c]
+	bl cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
+	mov r0, #FALSE
+	strb r0, [r5,#oCutsceneState_CutsceneCameraScriptActive]
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_803816A
+	thumb_func_end MapScriptCmd_run_or_stop_cutscene_camera_script
 
 	thumb_local_start
 sub_80381A0:
@@ -7852,7 +7852,7 @@ sub_80381A0:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_MapGroup]
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_80381B4
 	bl sub_80141AC
 	bl sub_8015C32
@@ -8044,7 +8044,7 @@ sub_80382DE:
 	bl ReadMapScriptHalfword
 	// idx_2008A0
 	mov r0, r4
-	bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_2008A0) -> void
 	add r7, #3
 	mov r0, #1
 	pop {pc}
@@ -16266,7 +16266,7 @@ off_803CD94: .word 0x190
 sub_803CD98:
 	push {r4-r7,lr}
 	push {r0,r1}
-	bl load_8006E3C
+	bl encryption_8006e3c
 	pop {r0,r1}
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_Unk2003134_Ptr]
@@ -16351,7 +16351,7 @@ loc_803CE20:
 sub_803CE28:
 	push {lr}
 	push {r0}
-	bl sub_8006E50
+	bl encryption_navicustMaybe_8006e50
 	pop {r0}
 	bne loc_803CE3E
 	mov r1, r10
@@ -16587,7 +16587,7 @@ loc_803CFDE:
 	thumb_func_start sub_803CFF8
 sub_803CFF8:
 	push {r4-r7,lr}
-	bl sub_8006F78
+	bl encryption_zenny_8006f78
 	bne loc_803D024
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
@@ -16605,7 +16605,7 @@ sub_803CFF8:
 loc_803D01A:
 	str r1, [r2,#oGameState_ProtectedZenny]
 	mov r0, r3
-	bl sub_8006F54
+	bl encryption_zenny_8006f54
 	pop {r4-r7,pc}
 loc_803D024:
 	mov r0, #1
@@ -16616,12 +16616,12 @@ dword_803D028: .word 0xF423F
 	thumb_func_start sub_803D02C
 sub_803D02C:
 	push {lr}
-	bl sub_8006F78
+	bl encryption_zenny_8006f78
 	bne locret_803D03E
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	str r0, [r1,#oGameState_ProtectedZenny]
-	bl sub_8006F54
+	bl encryption_zenny_8006f54
 locret_803D03E:
 	pop {pc}
 	thumb_func_end sub_803D02C
@@ -16629,7 +16629,7 @@ locret_803D03E:
 	thumb_func_start sub_803D040
 sub_803D040:
 	push {lr}
-	bl sub_8006F78
+	bl encryption_zenny_8006f78
 	bne loc_803D068
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
@@ -16645,7 +16645,7 @@ sub_803D040:
 loc_803D05E:
 	str r1, [r2,#oGameState_ProtectedZenny]
 	mov r0, r3
-	bl sub_8006F54
+	bl encryption_zenny_8006f54
 	pop {pc}
 loc_803D068:
 	mov r0, #2
@@ -16655,7 +16655,7 @@ loc_803D068:
 	thumb_func_start sub_803D06C
 sub_803D06C:
 	push {lr}
-	bl sub_8006F78
+	bl encryption_zenny_8006f78
 	bne loc_803D07C
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
@@ -16669,7 +16669,7 @@ loc_803D07C:
 	thumb_func_start sub_803D080
 sub_803D080:
 	push {r4-r7,lr}
-	bl sub_8006FD0
+	bl encryption_bugfrags_8006fd0
 	bne loc_803D0AC
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
@@ -16687,7 +16687,7 @@ sub_803D080:
 loc_803D0A2:
 	str r1, [r2,#oGameState_ProtectedBugfrags]
 	mov r0, r3
-	bl sub_8006FAC
+	bl encryption_bugfrags_8006fac
 	pop {r4-r7,pc}
 loc_803D0AC:
 	mov r0, #1
@@ -16698,12 +16698,12 @@ dword_803D0B0: .word 0x270F
 	thumb_func_start sub_803D0B4
 sub_803D0B4:
 	push {lr}
-	bl sub_8006FD0
+	bl encryption_bugfrags_8006fd0
 	bne locret_803D0C6
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	str r0, [r1,#oGameState_ProtectedBugfrags]
-	bl sub_8006FAC
+	bl encryption_bugfrags_8006fac
 locret_803D0C6:
 	pop {pc}
 	thumb_func_end sub_803D0B4
@@ -16711,7 +16711,7 @@ locret_803D0C6:
 	thumb_func_start sub_803D0C8
 sub_803D0C8:
 	push {lr}
-	bl sub_8006FD0
+	bl encryption_bugfrags_8006fd0
 	bne loc_803D0F0
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
@@ -16727,7 +16727,7 @@ sub_803D0C8:
 loc_803D0E6:
 	str r1, [r2,#oGameState_ProtectedBugfrags]
 	mov r0, r3
-	bl sub_8006FAC
+	bl encryption_bugfrags_8006fac
 	pop {pc}
 loc_803D0F0:
 	mov r0, #2
@@ -16737,7 +16737,7 @@ loc_803D0F0:
 	thumb_func_start sub_803D0F4
 sub_803D0F4:
 	push {lr}
-	bl sub_8006FD0
+	bl encryption_bugfrags_8006fd0
 	bne loc_803D104
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
@@ -21066,13 +21066,13 @@ loc_803F7A2:
 	ldrb r0, [r7,#0x10]
 	str r0, [r6,#0x30]
 loc_803F7C2:
-	bl save_8006E26
+	bl encryption_8006e26
 	bl sub_803F8B2
 	bl sub_803F894
 	bl sub_803FB04
 	ldr r0, off_803F888 // =timer_2000000
 	ldr r1, dword_803F890 // =0x6710
-	bl sub_8006DF6
+	bl encryption_8006df6
 	mov r7, #0
 loc_803F7DC:
 	ldr r0, off_803F888 // =timer_2000000
@@ -21093,7 +21093,7 @@ loc_803F7DC:
 	push {r0-r2}
 	// size
 	mov r1, r2
-	bl save_memSetFlags_8006E0E // (u8 *mem, int size) -> void
+	bl encryption_save_memSetFlags_8006E0E // (u8 *mem, int size) -> void
 	pop {r0-r2}
 loc_803F808:
 	movflag EVENT_1704
@@ -21104,7 +21104,7 @@ loc_803F814:
 	push {r0-r2}
 	// size
 	mov r1, r2
-	bl save_memSetFlags_8006E0E // (u8 *mem, int size) -> void
+	bl encryption_save_memSetFlags_8006E0E // (u8 *mem, int size) -> void
 	pop {r0-r2}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_S2001c04_Ptr]
@@ -21132,7 +21132,7 @@ sub_803F838:
 	mov r0, r1
 	// size
 	mov r1, r2
-	bl save_memSetFlags_8006E0E // (u8 *mem, int size) -> void
+	bl encryption_save_memSetFlags_8006E0E // (u8 *mem, int size) -> void
 	pop {r0-r2}
 	bl SetExtraToolkitPointers
 	bl sub_803F8C4

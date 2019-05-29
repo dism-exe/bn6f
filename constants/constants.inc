@@ -40,6 +40,8 @@
 
 
 	.equiv NULL, 0
+	.equiv TRUE, 1
+	.equiv FALSE, 0
 	.equiv timer_2000000, 0x2000000
 
 

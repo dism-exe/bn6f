@@ -1014,7 +1014,7 @@ sub_8089AE8:
 	bne loc_8089B2A
 	bl sub_8089CB4
 	beq loc_8089B2A
-	bl sub_8036FAA
+	bl cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
 	mov r0, #0
 	strb r0, [r5,#0x13]
 	mov r0, #4
@@ -1224,7 +1224,7 @@ sub_8089C78:
 	push {r4-r7,lr}
 	bl sub_8089CB4
 	beq loc_8089C9A
-	bl sub_8036FAA
+	bl cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
 	mov r0, #0
 	strb r0, [r5,#0x13]
 	bl sub_81426CE

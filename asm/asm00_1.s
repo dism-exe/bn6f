@@ -3480,7 +3480,7 @@ reqBBS_init_8004DF0:
 	mov r0, #0xff
 	strb r0, [r5,#oGameState_Unk_12]
 	bl sub_802F0C4
-	bl sub_8006D00
+	bl encryption_8006d00
 	bl sub_803CD74
 	mov r0, #0
 	strb r0, [r5,#oGameState_Unk_13]
@@ -6733,7 +6733,7 @@ ToolkitExtraPtrsOffsets: .word 0x0
 ToolkitExtraPtrsOffsetsEnd:
 
 	thumb_local_start
-sub_8006D00:
+encryption_8006d00:
 	push {r4-r7,lr}
 	ldr r5, off_8006E38 // =eUnusedExtraToolkitPtrsOffset
 	ldr r4, [r5]
@@ -6748,7 +6748,7 @@ sub_8006D00:
 	bl GetRNG2 // () -> int
 	str r0, [r5,#0x4] // (dword_2001064 - 0x2001060)
 	mov r6, r10
-	mov r0, #0x78
+	mov r0, #oToolkit_Unk2004a8c_Ptr
 	ldr r6, [r6,r0]
 	ldr r4, off_8006DC4 // =byte_20004E0
 	ldr r7, off_8006DC8 // =0x200
@@ -6769,7 +6769,7 @@ loc_8006D28:
 	b loc_8006D24
 loc_8006D40:
 	mov r6, r10
-	mov r0, #0x7c
+	mov r0, #oToolkit_Unk2004c20_Ptr
 	ldr r6, [r6,r0]
 	ldr r4, off_8006DCC // =byte_20008A0
 	ldr r7, dword_8006DD0 // =0x200
@@ -6790,7 +6790,7 @@ loc_8006D4E:
 	b loc_8006D4A
 loc_8006D66:
 	mov r6, r10
-	mov r0, #0x80
+	mov r0, #oToolkit_Unk2004e24_Ptr
 	ldr r6, [r6,r0]
 	ldr r4, off_8006DD4 // =byte_2001600
 	ldr r7, dword_8006DD8 // =0x4
@@ -6820,7 +6820,7 @@ loc_8006D90:
 	tst r0, r0
 	beq loc_8006D90
 	str r0, [r4]
-	bl sub_8006F54
+	bl encryption_zenny_8006f54
 	ldr r4, off_8006DE4 // =dword_20018B8
 	ldr r6, off_8006DE8 // =loc_803ED90
 loc_8006DA8:
@@ -6831,8 +6831,8 @@ loc_8006DA8:
 	tst r0, r0
 	beq loc_8006DA8
 	str r0, [r4]
-	bl sub_8006FAC
-	bl sub_8007036
+	bl encryption_bugfrags_8006fac
+	bl encryption_8007036
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8006DC4: .word byte_20004E0
@@ -6845,7 +6845,7 @@ off_8006DDC: .word dword_2000060
 off_8006DE0: .word dword_802412C
 off_8006DE4: .word dword_20018B8
 off_8006DE8: .word loc_803ED90
-	thumb_func_end sub_8006D00
+	thumb_func_end encryption_8006d00
 
 	thumb_func_start sub_8006DEC
 sub_8006DEC:
@@ -6856,8 +6856,8 @@ sub_8006DEC:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8006DEC
 
-	thumb_func_start sub_8006DF6
-sub_8006DF6:
+	thumb_func_start encryption_8006df6
+encryption_8006df6:
 	push {r4-r7,lr}
 	ldr r7, off_8006E38 // =eUnusedExtraToolkitPtrsOffset
 	ldr r7, [r7,#0x4] // (dword_2001064 - 0x2001060)
@@ -6871,29 +6871,29 @@ loc_8006DFE:
 	ldr r0, off_8006E38 // =eUnusedExtraToolkitPtrsOffset
 	str r7, [r0,#0x4] // (dword_2001064 - 0x2001060)
 	pop {r4-r7,pc}
-	thumb_func_end sub_8006DF6
+	thumb_func_end encryption_8006df6
 
 // (u8 *mem, int size) -> void
-	thumb_func_start save_memSetFlags_8006E0E
-save_memSetFlags_8006E0E:
+	thumb_func_start encryption_save_memSetFlags_8006E0E
+encryption_save_memSetFlags_8006E0E:
 	push {r4-r7,lr}
 	ldr r7, off_8006E38 // =eUnusedExtraToolkitPtrsOffset
 	ldr r7, [r7,#4]
 	sub r1, #1
-memSetFlags_8006E16:
+.memSetFlags_8006E16
 	ldrb r3, [r0,r1]
 	eor r3, r7
 	strb r3, [r0,r1]
 	sub r1, #1
 	// while (a2_size >= 0);
-	bge memSetFlags_8006E16
+	bge .memSetFlags_8006E16
 	ldr r0, off_8006E38 // =eUnusedExtraToolkitPtrsOffset
 	str r7, [r0,#4]
 	pop {r4-r7,pc}
-	thumb_func_end save_memSetFlags_8006E0E
+	thumb_func_end encryption_save_memSetFlags_8006E0E
 
-	thumb_func_start save_8006E26
-save_8006E26:
+	thumb_func_start encryption_8006e26
+encryption_8006e26:
 	push {r4-r7,lr}
 	ldr r7, off_8006E38 // =eUnusedExtraToolkitPtrsOffset
 loc_8006E2A:
@@ -6904,24 +6904,24 @@ loc_8006E2A:
 	str r0, [r7,#0x4] // (dword_2001064 - 0x2001060)
 	pop {r4-r7,pc}
 off_8006E38: .word eUnusedExtraToolkitPtrsOffset
-	thumb_func_end save_8006E26
+	thumb_func_end encryption_8006e26
 
-	thumb_func_start load_8006E3C
-load_8006E3C:
+	thumb_func_start encryption_8006e3c
+encryption_8006e3c:
 	push {r1-r7,lr}
 	ldr r5, off_8006E6C // =byte_20004E0
 	mov r7, r10
-	mov r1, #0x78
+	mov r1, #oToolkit_Unk2004a8c_Ptr
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x6f
 	eor r1, r2
 	strb r1, [r7,r0]
 	pop {r1-r7,pc}
-	thumb_func_end load_8006E3C
+	thumb_func_end encryption_8006e3c
 
-	thumb_func_start sub_8006E50
-sub_8006E50:
+	thumb_func_start encryption_navicustMaybe_8006e50
+encryption_navicustMaybe_8006e50:
 	push {r1-r7,lr}
 	ldr r5, off_8006E6C // =byte_20004E0
 	mov r7, r10
@@ -6938,29 +6938,29 @@ locret_8006E68:
 	pop {r1-r7,pc}
 	.balign 4, 0x00
 off_8006E6C: .word byte_20004E0
-	thumb_func_end sub_8006E50
+	thumb_func_end encryption_navicustMaybe_8006e50
 
 // (int idx_2008A0) -> void
-	thumb_func_start modifyToolkit_unk7C_using_2008A0
-modifyToolkit_unk7C_using_2008A0:
+	thumb_func_start encryption_8006e70
+encryption_8006e70:
 	push {r1-r7,lr}
 	ldr r5, off_8006EA0 // =byte_20008A0
 	mov r7, r10
-	mov r1, #0x7c // Toolkit.unk_2004C20
+	mov r1, #oToolkit_Unk2004c20_Ptr // Toolkit.unk_2004C20
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x81
 	eor r1, r2
 	strb r1, [r7,r0]
 	pop {r1-r7,pc}
-	thumb_func_end modifyToolkit_unk7C_using_2008A0
+	thumb_func_end encryption_8006e70
 
-	thumb_func_start sub_8006E84
-sub_8006E84:
+	thumb_func_start encryption_8006e84
+encryption_8006e84:
 	push {r1-r7,lr}
 	ldr r5, off_8006EA0 // =byte_20008A0
 	mov r7, r10
-	mov r1, #0x7c
+	mov r1, #oToolkit_Unk2004c20_Ptr
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x81
@@ -6973,14 +6973,14 @@ locret_8006E9C:
 	pop {r1-r7,pc}
 	.balign 4, 0x00
 off_8006EA0: .word byte_20008A0
-	thumb_func_end sub_8006E84
+	thumb_func_end encryption_8006e84
 
 	thumb_func_start sub_8006EA4
 sub_8006EA4:
 	push {r1-r7,lr}
 	mov r7, r0
 	mov r4, r1
-	bl sub_8006E84
+	bl encryption_8006e84
 	bne loc_8006EE4
 	cmp r4, #0xff
 	beq loc_8006EE0
@@ -7022,7 +7022,7 @@ sub_8006EE8:
 	push {r1-r7,lr}
 	mov r7, r0
 	mov r4, r1
-	bl sub_8006E84
+	bl encryption_8006e84
 	bne loc_8006F1A
 	cmp r4, #0xff
 	beq loc_8006F16
@@ -7054,7 +7054,7 @@ sub_8006F1E:
 	push {r1-r7,lr}
 	mov r7, r0
 	mov r4, r1
-	bl sub_80070E6
+	bl encryption_80070e6
 	bne loc_8006F50
 	cmp r4, #0xff
 	beq loc_8006F4C
@@ -7081,8 +7081,8 @@ loc_8006F50:
 	pop {r1-r7,pc}
 	thumb_func_end sub_8006F1E
 
-	thumb_func_start sub_8006F54
-sub_8006F54:
+	thumb_func_start encryption_zenny_8006f54
+encryption_zenny_8006f54:
 	push {r0-r7,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
@@ -7098,14 +7098,14 @@ loc_8006F68:
 	ldr r1, [r1]
 	eor r0, r1
 	mov r1, r10
-	mov r2, #0x84
+	mov r2, #oToolkit_Unk2005028_Ptr
 	ldr r1, [r1,r2]
 	str r0, [r1]
 	pop {r0-r7,pc}
-	thumb_func_end sub_8006F54
+	thumb_func_end encryption_zenny_8006f54
 
-	thumb_func_start sub_8006F78
-sub_8006F78:
+	thumb_func_start encryption_zenny_8006f78
+encryption_zenny_8006f78:
 	push {r0-r7,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
@@ -7133,10 +7133,10 @@ locret_8006FA4:
 	pop {r0-r7,pc}
 	.balign 4, 0x00
 off_8006FA8: .word dword_2000060
-	thumb_func_end sub_8006F78
+	thumb_func_end encryption_zenny_8006f78
 
-	thumb_func_start sub_8006FAC
-sub_8006FAC:
+	thumb_func_start encryption_bugfrags_8006fac
+encryption_bugfrags_8006fac:
 	push {r0-r7,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
@@ -7152,14 +7152,14 @@ loc_8006FC0:
 	ldr r1, [r1]
 	eor r0, r1
 	mov r1, r10
-	mov r2, #0x88
+	mov r2, #oToolkit_Unk2005030_Ptr
 	ldr r1, [r1,r2]
 	str r0, [r1]
 	pop {r0-r7,pc}
-	thumb_func_end sub_8006FAC
+	thumb_func_end encryption_bugfrags_8006fac
 
-	thumb_func_start sub_8006FD0
-sub_8006FD0:
+	thumb_func_start encryption_bugfrags_8006fd0
+encryption_bugfrags_8006fd0:
 	push {r0-r7,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
@@ -7187,12 +7187,12 @@ locret_8006FFC:
 	pop {r0-r7,pc}
 	.balign 4, 0x00
 off_8007000: .word dword_20018B8
-	thumb_func_end sub_8006FD0
+	thumb_func_end encryption_bugfrags_8006fd0
 
 	thumb_local_start
-sub_8007004:
+encryption_8007004:
 	push {r1-r7,lr}
-	bl sub_800708C
+	bl encryption_800708c
 	ldr r5, off_8007088 // =byte_2000670
 	mov r7, r10
 	mov r1, #0x8c
@@ -7202,15 +7202,15 @@ sub_8007004:
 	eor r1, r2
 	strb r1, [r7,r0]
 	pop {r1-r7,pc}
-	thumb_func_end sub_8007004
+	thumb_func_end encryption_8007004
 
 	thumb_local_start
-sub_800701C:
+encryption_800701c:
 	push {r1-r7,lr}
-	bl sub_800708C
+	bl encryption_800708c
 	ldr r5, off_8007088 // =byte_2000670
 	mov r7, r10
-	mov r1, #0x8c
+	mov r1, #oToolkit_Unk2005038_Ptr
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x8d
@@ -7218,13 +7218,13 @@ sub_800701C:
 	mvn r1, r1
 	strb r1, [r7,r0]
 	pop {r1-r7,pc}
-	thumb_func_end sub_800701C
+	thumb_func_end encryption_800701c
 
 	thumb_local_start
-sub_8007036:
+encryption_8007036:
 	push {r1-r7,lr}
 	mov r6, r10
-	mov r0, #0x8c
+	mov r0, #oToolkit_Unk2005038_Ptr
 	ldr r6, [r6,r0]
 	ldr r4, off_8007060 // =byte_2000670
 	ldr r7, off_8007064 // =0x100
@@ -7247,15 +7247,15 @@ locret_800705E:
 	pop {r1-r7,pc}
 off_8007060: .word byte_2000670
 off_8007064: .word 0x100
-	thumb_func_end sub_8007036
+	thumb_func_end encryption_8007036
 
 	thumb_local_start
-sub_8007068:
+encryption_8007068:
 	push {r1-r7,lr}
-	bl sub_800708C
+	bl encryption_800708c
 	ldr r5, off_8007088 // =byte_2000670
 	mov r7, r10
-	mov r1, #0x8c
+	mov r1, #oToolkit_Unk2005038_Ptr
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x8d
@@ -7268,10 +7268,10 @@ locret_8007084:
 	pop {r1-r7,pc}
 	.balign 4, 0x00
 off_8007088: .word byte_2000670
-	thumb_func_end sub_8007068
+	thumb_func_end encryption_8007068
 
 	thumb_local_start
-sub_800708C:
+encryption_800708c:
 	push {r1-r7,lr}
 	ldr r7, off_80070A8 // =word_80070AC
 	mov r4, #0
@@ -7292,10 +7292,10 @@ loc_80070A2:
 off_80070A8: .word word_80070AC
 word_80070AC: .hword 0x1000
 Short_80070AE: .hword 0x0, 0x1010, 0x50, 0x1020, 0xDC, 0x1040, 0xE6
-	thumb_func_end sub_800708C
+	thumb_func_end encryption_800708c
 
-	thumb_func_start sub_80070BC
-sub_80070BC:
+	thumb_func_start encryption_80070bc
+encryption_80070bc:
 	push {r1-r7,lr}
 	ldr r5, off_8007170 // =byte_2001600
 	ldr r4, dword_8007174 // =0x2020
@@ -7306,7 +7306,7 @@ loc_80070C6:
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80070DC
 	mov r0, r10
-	mov r1, #0x80
+	mov r1, #oToolkit_Unk2004e24_Ptr
 	ldr r0, [r0,r1]
 	ldrb r1, [r5,r7]
 	mov r2, #0xfe
@@ -7318,18 +7318,18 @@ loc_80070DC:
 	cmp r7, r6
 	blt loc_80070C6
 	pop {r1-r7,pc}
-	thumb_func_end sub_80070BC
+	thumb_func_end encryption_80070bc
 
-	thumb_func_start sub_80070E6
-sub_80070E6:
+	thumb_func_start encryption_80070e6
+encryption_80070e6:
 	push {r1-r7,lr}
 	push {r0}
-	bl sub_8006E84
+	bl encryption_8006e84
 	pop {r0}
 	beq locret_8007108
 	ldr r5, off_8007170 // =byte_2001600
 	mov r7, r10
-	mov r1, #0x80
+	mov r1, #oToolkit_Unk2004e24_Ptr
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0xfe
@@ -7340,10 +7340,10 @@ sub_80070E6:
 	mov r0, #1
 locret_8007108:
 	pop {r1-r7,pc}
-	thumb_func_end sub_80070E6
+	thumb_func_end encryption_80070e6
 
-	thumb_func_start sub_800710A
-sub_800710A:
+	thumb_func_start encryption_800710a
+encryption_800710a:
 	push {r1-r7,lr}
 	ldr r4, dword_8007174 // =0x2020
 	ldr r6, off_8007178 // =0x200
@@ -7353,7 +7353,7 @@ loc_8007112:
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8007122
 	mov r0, r7
-	bl sub_80070E6
+	bl encryption_80070e6
 	bne loc_800716A
 loc_8007122:
 	add r4, #1
@@ -7368,7 +7368,7 @@ loc_8007130:
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8007140
 	mov r0, r7
-	bl sub_80070E6
+	bl encryption_80070e6
 	bne loc_800716A
 loc_8007140:
 	add r4, #1
@@ -7383,7 +7383,7 @@ loc_800714E:
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_800715E
 	mov r0, r7
-	bl sub_8006E84
+	bl encryption_8006e84
 	bne loc_800716A
 loc_800715E:
 	add r4, #1
@@ -7395,7 +7395,7 @@ loc_800715E:
 loc_800716A:
 	mov r0, #1
 	pop {r1-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8007170: .word byte_2001600
 dword_8007174: .word 0x2020
 off_8007178: .word 0x200
@@ -7403,7 +7403,9 @@ off_800717C: .word 0x2220
 off_8007180: .word 0x200
 dword_8007184: .word 0x1E20
 off_8007188: .word 0x200
-	thumb_func_end sub_800710A
+	thumb_func_end encryption_800710a
+// possible file boundary
+
 
 	thumb_local_start
 sub_800718C:
@@ -14588,7 +14590,7 @@ loc_800A7F0:
 	lsr r0, r0, #0x17
 	mov r2, #0
 	push {r0}
-	bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_2008A0) -> void
 	pop {r0}
 	add r4, #2
 	add r6, #1
@@ -15778,7 +15780,7 @@ loc_800B00C:
 	ldr r1, dword_800B104 // =0x19b
 	cmp r0, r1
 	bge loc_800B01C
-	bl sub_8006E84
+	bl encryption_8006e84
 	b loc_800B01E
 loc_800B01C:
 	cmp r0, r0
@@ -15921,7 +15923,7 @@ loc_800B114:
 	ldrh r0, [r4]
 	cmp r0, #0
 	beq locret_800B122
-	bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_2008A0) -> void
 	add r4, #2
 	b loc_800B114
 locret_800B122:

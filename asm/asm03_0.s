@@ -6273,7 +6273,7 @@ locret_802963A:
 	thumb_local_start
 sub_802963C:
 	push {r0-r3,lr}
-	bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_2008A0) -> void
 	ldr r1, off_802967C // =0x140 
 	sub r0, r0, r1
 	ldr r1, off_8029680 // =0x1f60 
@@ -15846,7 +15846,7 @@ loc_802E5CE:
 	add r0, r0, r1
 	mov r0, r0
 	bl SetEventFlag
-	bl sub_80070BC
+	bl encryption_80070bc
 loc_802E5F2:
 	mov r0, #1
 loc_802E5F4:
@@ -15904,7 +15904,7 @@ sub_802E62A:
 	add r0, r0, r1
 	mov r0, r0
 	bl SetEventFlag
-	bl sub_80070BC
+	bl encryption_80070bc
 loc_802E65A:
 	ldr r0, [sp]
 	bl sub_80103BC
