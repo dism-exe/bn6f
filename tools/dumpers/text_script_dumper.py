@@ -1,3 +1,7 @@
+# usage: text_script_dumper <address> [<rom_file>] [-i <ini_file>]
+# This will parse a textScript at the address specified, from the file specified.
+# if no file is specified, it will use the default ('../../bn6f.ign')
+# ini_file defaults to 'mmbn6.ini'
 import configparser
 
 def read_custom_ini(ini_path):
@@ -83,6 +87,59 @@ def get_cmd_macro(sects, cmd):
             name = name.replace(c, '_%c' % c.lower())
     return name
 
+
+class TextScript:
+    def __init__(self, rel_pointers, units, addr, size, sects):
+        self.rel_pointers = rel_pointers
+        self.units = units
+        self.addr = addr
+        self.size = size
+        self.sects = sects
+
+    @staticmethod
+    def compile():
+        pass # TODO
+
+    def build(self):
+        script = ['text_script_start unk_%X' % self.addr]
+        rel_pointer_ids = {}
+        last_pointer = 0
+        i = 0
+        for p in sorted(self.rel_pointers):
+            if p != last_pointer:
+                rel_pointer_ids[p] = i
+            last_pointer = p
+            i += 1
+        rel_pointers_macro = ''
+        for p in self.rel_pointers:
+            if rel_pointer_ids[p] % 16 == 0:
+                if rel_pointers_macro:
+                    rel_pointers_macro = rel_pointers_macro[:-2]
+                rel_pointers_macro += '\ntext_script_rel_pointers '
+            rel_pointers_macro += '%d, ' % rel_pointer_ids[p]
+        rel_pointers_macro = rel_pointers_macro[:-2]
+        script.append(rel_pointers_macro)
+        for unit in self.units:
+            # print(unit)
+            if type(unit) is bytes:
+                if len(unit) == 1 and unit[0] == 0xE6:
+                    s = '\t' + get_cmd_macro(self.sects, unit)
+                else:
+                    s = '\t.string "%s"' % bn6f_str(unit, get_tbl())
+                script.append(s)
+            elif type(unit) is tuple:
+                name = get_cmd_macro(self.sects, unit[0])
+                s = '\t%s ' % name
+                for param in unit[1]:
+                    s += '0x%X, ' % param
+                if unit[1]: s = s[:-2]
+                script.append(s)
+            elif type(unit) is int:
+                script.append('text_script %d, scr_%d' % (unit, unit))
+
+        return script, self.addr + self.size
+
+
 def parse_text_script(config_ini_path, bin_path, address):
     #type (str, str, int) -> str
     sects = read_custom_ini(config_ini_path)
@@ -93,8 +150,8 @@ def parse_text_script(config_ini_path, bin_path, address):
     with open(bin_path, 'rb') as bin_file:
         bin_file.seek(address)
         rel_pointers = read_relative_pointers(bin_file, address)
-        for p in rel_pointers: print(hex(p) + ' ', end='');
-        print('')
+        # for p in rel_pointers: print(hex(p) + ' ', end='');
+        # print('')
         last_script_pointer = max(rel_pointers)
         end_script = False
 
@@ -104,10 +161,12 @@ def parse_text_script(config_ini_path, bin_path, address):
                 # print(hex(script_cur), hex(bin_file.tell() - address))
                 units.append(script_cur)
                 script_cur += 1
+
+            #advance bytecode
             byte = bin_file.read(1)
             # read string
             string = b''
-            while byte and ord(byte) < 0xE5 or ord(byte) == 0xE6 or ord(byte) == 0xE9:
+            while byte and (ord(byte) < 0xE5 or ord(byte) == 0xE6 or ord(byte) == 0xE9):
                 # not a command, process string
                 string = string + byte
                 # separate strings by line
@@ -119,11 +178,13 @@ def parse_text_script(config_ini_path, bin_path, address):
                     end_script = bin_file.tell() > address+last_script_pointer
                     break # this string terminates
                 byte = bin_file.read(1)
+
             if string:
                 units.append(string)
             if byte == b'':
                 print('error: could not read byte')
                 break
+            # current bytecode command
             cmd = byte
             if ord(cmd) == 0xE6:
                 continue # accounted for in string
@@ -135,9 +196,11 @@ def parse_text_script(config_ini_path, bin_path, address):
                 units.append(script_cur)
                 script_cur += 1
 
+            # only end at the end of the very last segment
             if not end_script:
                 end_script = bin_file.tell() > address+last_script_pointer and ord(cmd) == 0xE6
-            # read command
+
+            # read command parameters
             num_params = 0
             for i in range(4): # max number of bytes per command base
                 num_params = get_param_count(sects, cmd)
@@ -153,49 +216,15 @@ def parse_text_script(config_ini_path, bin_path, address):
             units.append((cmd, params))
         end_addr = bin_file.tell()
 
-    # generate script
-    script = ['text_script_start unk_%X' % address]
-    rel_pointer_ids = {}
-    last_pointer = 0
-    i = 0
-    for p in sorted(rel_pointers):
-        if p != last_pointer:
-            rel_pointer_ids[p] = i
-        last_pointer = p
-        i+= 1
-    rel_pointers_macro = ''
-    for p in rel_pointers:
-        if rel_pointer_ids[p] % 16 == 0:
-            if rel_pointers_macro:
-                rel_pointers_macro = rel_pointers_macro[:-2]
-            rel_pointers_macro += '\ntext_script_rel_pointers '
-        rel_pointers_macro += '%d, ' % rel_pointer_ids[p]
-    rel_pointers_macro = rel_pointers_macro[:-2]
-    script.append(rel_pointers_macro)
-    for unit in units:
-        # print(unit)
-        if type(unit) is bytes:
-            if len(unit) == 1 and unit[0] == 0xE6:
-                s = '\t' + get_cmd_macro(sects, unit)
-            else:
-                s = '\t.string "%s"' % bn6f_str(unit, get_tbl())
-            script.append(s)
-        elif type(unit) is tuple:
-            name = get_cmd_macro(sects, unit[0])
-            s = '\t%s ' % name
-            for param in unit[1]:
-                s += '0x%X, ' % param
-            if unit[1]: s = s[:-2]
-            script.append(s)
-        elif type(unit) is int:
-            script.append('text_script %d, scr_%d' %(unit, unit))
+    # create Script object
+    return TextScript(rel_pointers, units, address, end_addr-address,sects)
 
-    return script, end_addr
 
-def read_script(ea, path=None):
-    if not path: path = '../../bn6f.ign'
-    script, end_addr = parse_text_script('mmbn6.ini', path, ea)
-    return script, end_addr
+def read_script(ea, path='../../bn6f.ign', ini_path='mmbn6.ini'):
+    # ensure ea is file relative
+    ea &= ~0x8000000
+    return parse_text_script(ini_path, path, ea).build()
+
 
 def gen_macros(config_ini_path):
     sects = read_custom_ini(config_ini_path)
@@ -230,19 +259,63 @@ def gen_macros(config_ini_path):
             macros += '.endm\n'
     return macros
 
-if __name__ == '__main__':
+def error_print_usage():
+    print('usage: text_script_dumper <address> [-i <rom_file>] [-d <ini_dir>]')
+    exit(0)
+
+def try_parse_int(s, b):
+    try:
+        return int(s, b)
+    except ValueError:
+        return None
+
+def parse_switch(argv, i, flag):
+    if argv[i] == flag:
+        if len(argv) > i+1:
+            return argv[i+1]
+        else:
+            error_print_usage()
+    else:
+        return None
+
+def main(argv):
     # print(gen_macros('mmbn6.ini'))
     # exit(0)
-    import sys
-    if len(sys.argv) < 2:
-        print('usage: text_script_dumper <address> [file]')
-        exit(0)
-    if len(sys.argv) > 2:
-        path = sys.argv[2]
-    else:
-        path = None
-    script, end_addr = read_script(int(sys.argv[1], 16), path)
+    if len(argv) < 2:
+        error_print_usage()
+
+    address = try_parse_int(argv[1], 16)
+    if address is None:
+        error_print_usage()
+
+    # parse optional arguments
+    path = ini_dir = ''
+    if len(argv) > 3:
+        for i in range(2,len(argv)):
+            arg = parse_switch(argv, i, '-i')
+            if arg:
+                print(arg)
+                path = arg
+                continue
+            arg = parse_switch(argv, i, '-d')
+            if arg:
+                ini_dir = arg
+                continue
+
+    # defaults
+    if not path: path = '../../bn6f.ign'
+
+    if ini_dir and ini_dir[-1] != '/':
+        ini_dir = ini_dir + '/'
+    ini_path = ini_dir + 'mmbn6.ini'
+
+    script, end_addr = read_script(int(sys.argv[1], 16), path, ini_path)
 
     for i in script:
         print('\t' + i)
     print(hex(end_addr))
+
+
+if __name__ == '__main__':
+    #import os; print(os.getcwd())
+    import sys; main(sys.argv)

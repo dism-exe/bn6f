@@ -5133,6 +5133,7 @@ TextScriptChipNames1::
 		ts_end
 	.balign 4, 0
 
+// 086eb8b8
 TextScriptChipDescriptions0::
 	text_script_start TextScriptChipDescriptions0
 

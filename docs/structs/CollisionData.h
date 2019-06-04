@@ -64,7 +64,7 @@ typedef struct {
 	u32 objectFlags;				   // loc=0x3C
 	u32 objectFlags2;				  // loc=0x40
   /*
-  TODO: [Investigate] Bit? This is a u32 though.
+  TODO: Bit? This is a u32 though.
   */
 	u32 collisionIndexBit;			 // loc=0x44
 	u32 unk_48;						// loc=0x48
