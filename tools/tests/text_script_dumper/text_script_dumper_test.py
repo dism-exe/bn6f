@@ -10,7 +10,7 @@ class BasicTests(unittest.TestCase):
     def assertTestFile(self, test_name):
         curdir = 'text_script_dumper/'
         script, end_addr = read_script(0, curdir + test_name + '.bin', '../dumpers/mmbn6.ini')
-        with open(curdir + test_name, 'r') as f:
+        with open(curdir + test_name + '.s', 'r') as f:
             lines = f.readlines()
             script = '\n'.join(script).split('\n')
             for line in script:
@@ -30,6 +30,9 @@ class BasicTests(unittest.TestCase):
 
     def test_TextScriptChipDescriptions0(self):
         self.assertTestFile('TextScriptChipDescriptions0_86eb8b8')
+
+    def test_TextScriptDialog87E30A0(self):
+        self.assertTestFile('TextScriptDialog87E30A0')
 
 if __name__ == '__main__':
     unittest.main()

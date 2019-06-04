@@ -102,23 +102,32 @@ class TextScript:
 
     def build(self):
         script = ['text_script_start unk_%X' % self.addr]
+
+        # assign unique ids to each pointer for reference
         rel_pointer_ids = {}
         last_pointer = 0
         i = 0
         for p in sorted(self.rel_pointers):
             if p != last_pointer:
                 rel_pointer_ids[p] = i
+                i += 1
             last_pointer = p
-            i += 1
+
+        # build rel. pointer macros
         rel_pointers_macro = ''
+        item_idx = 0
         for p in self.rel_pointers:
-            if rel_pointer_ids[p] % 16 == 0:
-                if rel_pointers_macro:
+            # new macro every 16 items
+            if item_idx % 16 == 0:
+                if len(rel_pointers_macro) > 2:
                     rel_pointers_macro = rel_pointers_macro[:-2]
-                rel_pointers_macro += '\ntext_script_rel_pointers '
+                rel_pointers_macro += '\n\ttext_script_rel_pointers '
             rel_pointers_macro += '%d, ' % rel_pointer_ids[p]
-        rel_pointers_macro = rel_pointers_macro[:-2]
+            item_idx += 1
+        rel_pointers_macro = rel_pointers_macro[:-2] # remove tail ', '
         script.append(rel_pointers_macro)
+
+        # build units
         for unit in self.units:
             # print(unit)
             if type(unit) is bytes:
@@ -149,7 +158,7 @@ def parse_text_script(config_ini_path, bin_path, address):
     with open(bin_path, 'rb') as bin_file:
         bin_file.seek(address)
         rel_pointers = read_relative_pointers(bin_file, address)
-        # for p in rel_pointers: print(hex(p) + ' ', end='');
+        # for p in rel_pointers: print('0x%02X' % p + ', ', end='');
         # print('')
         last_script_pointer = max(rel_pointers)
         end_script = False
