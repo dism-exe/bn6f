@@ -146,7 +146,6 @@ def parse_text_script(config_ini_path, bin_path, address):
     units = [] # text script discrete string/cmd units
     rel_pointers = []
     end_addr = 0
-    script_cur = 0
     with open(bin_path, 'rb') as bin_file:
         bin_file.seek(address)
         rel_pointers = read_relative_pointers(bin_file, address)
@@ -156,12 +155,6 @@ def parse_text_script(config_ini_path, bin_path, address):
         end_script = False
 
         while bin_file.tell() < address + last_script_pointer or not end_script:
-            # check script start
-            if bin_file.tell() - address in rel_pointers:
-                # print(hex(script_cur), hex(bin_file.tell() - address))
-                units.append(script_cur)
-                script_cur += 1
-
             #advance bytecode
             byte = bin_file.read(1)
             # read string
@@ -174,7 +167,7 @@ def parse_text_script(config_ini_path, bin_path, address):
                     units.append(string)
                     string = b''
                 if ord(byte) == 0xE6:
-                    # FIXME: skips last commands in last script if they don't end in e6
+                    # FIXME: skips last commands in last script if they don't end in e6?
                     end_script = bin_file.tell() > address+last_script_pointer
                     break # this string terminates
                 byte = bin_file.read(1)
@@ -190,12 +183,6 @@ def parse_text_script(config_ini_path, bin_path, address):
                 continue # accounted for in string
 
             # handle control commands
-            # check script start
-            if bin_file.tell() - address in rel_pointers:
-                print(hex(script_cur), hex(bin_file.tell() - address))
-                units.append(script_cur)
-                script_cur += 1
-
             # only end at the end of the very last segment
             if not end_script:
                 end_script = bin_file.tell() > address+last_script_pointer and ord(cmd) == 0xE6
@@ -211,19 +198,59 @@ def parse_text_script(config_ini_path, bin_path, address):
                 cmd = cmd + byte
             if num_params < 0:
                 print("error: could not find number of parameters for ", cmd)
-                break
+                units.append('***ERROR: %s***' % cmd)
+                continue  # break
             params = bin_file.read(num_params)
             units.append((cmd, params))
         end_addr = bin_file.tell()
 
+    # link relative pointers into units
+    cur_idx = 2*len(rel_pointers)
+    cur_id = 0
+    linked_units = []
+    for unit in units:
+        if cur_idx in rel_pointers:
+            linked_units.append(cur_id)
+            cur_id += 1
+        linked_units.append(unit)
+        if type(unit) is bytes:
+            cur_idx += len(unit)
+        elif type(unit) is tuple:
+            cur_idx += len(unit[0]) + len(unit[1])
+        else:
+            print('error: invalid unit detected: %s' % unit)
+    units = linked_units
+
     # create Script object
     return TextScript(rel_pointers, units, address, end_addr-address,sects)
+
+def get_unit_at(scr: TextScript, idx):
+    curr_idx = 2*len(scr.rel_pointers)
+    prev_idx = curr_idx
+    prev_unit = scr.units[0]
+    for unit in scr.units:
+        if type(unit) != int:
+            if prev_idx < idx < curr_idx:
+                return prev_unit, prev_idx
+            if idx == curr_idx:
+                return unit, curr_idx
+            prev_idx = curr_idx
+            prev_unit = unit
+            if type(unit) is bytes:
+                curr_idx += len(unit)
+            elif type(unit) is tuple:
+                curr_idx += len(unit[0]) + len(unit[1])
+            else:
+                print('error: invalid unit detected: %s' % unit)
+                return None
+    return None
 
 
 def read_script(ea, path='../../bn6f.ign', ini_path='mmbn6.ini'):
     # ensure ea is file relative
     ea &= ~0x8000000
-    return parse_text_script(ini_path, path, ea).build()
+    scr = parse_text_script(ini_path, path, ea)
+    return scr.build()
 
 
 def gen_macros(config_ini_path):
