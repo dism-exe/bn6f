@@ -4,90 +4,6 @@
 # ini_file defaults to 'mmbn6.ini'
 import configparser
 
-def read_custom_ini(ini_path):
-
-    # type: (str) -> list(dict(str, str))
-    sections = []
-    with open(ini_path, 'r') as ini_file:
-        for line in ini_file.readlines():
-            # section
-            if line.startswith('[') and ']' in line:
-                sections.append({})
-                sections[-1]['section'] = line[line.index('[')+1:line.index(']')]
-            elif '=' in line:
-                key = line[:line.index('=')].strip()
-                val = line[line.index('=')+1:].strip()
-                sections[-1][key] = val
-    return sections
-
-def get_tbl():
-    tbl = [' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-           'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '*',
-           'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-           'u', 'v', 'w', 'x', 'y', 'z', '[RV]', '[BX]', '[EX]', '[SP]', '[FZ]']
-    for i in range(len(tbl), 0xEA):
-        tbl.append('\\x%X' % i)
-    symbols = ['-', 'x', '=', ':', '%', '?', '+', '[]', '[bat]', '\\xA1', '!', '&', ',', '\\xA5',
-               '.', '\\xA7', ';', '\'', '"', '~', '/', '(', ')', '\\xAF', '\\xB0', '\\xB1', '_', '[z]',
-               '[L]', '[B]', '[R]', '[A]']
-    for i in range(0x98, 0xB8):
-        tbl[i] = symbols[i-0x98]
-    tbl[0xE6] = '$'
-    tbl[0xE9] = '\\n'
-    return tbl
-
-def bn6f_str(byte_arr, tbl):
-    out = ''
-    for byte in byte_arr:
-        # byte code
-        if byte > len(tbl):
-            break
-        out = out + tbl[byte]
-    return out
-
-def read_relative_pointers(bin_file, address):
-    def read_hword(bin_file):
-        bytes = bin_file.read(2)
-        return bytes[0] + (bytes[1] << 8)
-    # assuming first relative pointer is first script
-    size_rel_pointers = read_hword(bin_file)
-    rel_pointers = [size_rel_pointers]
-    while bin_file.tell() < address + size_rel_pointers:
-        rel_pointers.append(read_hword(bin_file))
-    return rel_pointers
-
-
-def get_param_count(sects, cmd):
-    cmd_bytes = []
-    num_bytes = -1
-    for b in cmd: cmd_bytes.append(b)
-    for sect in sects:
-        if sect['section'] in ['Command', 'Extension']:
-            base = []
-            for b in sect['base'].split(' '): base.append(int(b, 16))
-            if base == cmd_bytes:
-                return sect['mask'].split(' ').count('00')
-    return num_bytes
-
-
-def get_cmd_macro(sects, cmd):
-    name = ''
-    cmd_bytes = []
-    for c in cmd: cmd_bytes.append(c)
-    for sect in sects:
-        if sect['section'] in ['Command', 'Extension']:
-            base = []
-            for b in sect['base'].split(' '): base.append(int(b, 16))
-
-            if cmd_bytes == base:
-                name = 'ts_'  + sect['name']
-    # convert to snake case
-    for c in name:
-        if c.isupper():
-            name = name.replace(c, '_%c' % c.lower())
-    return name
-
-
 class TextScript:
     def __init__(self, rel_pointers, units, addr, size, sects):
         self.rel_pointers = rel_pointers
@@ -148,6 +64,152 @@ class TextScript:
 
         return script, self.addr + self.size
 
+def read_custom_ini(ini_path):
+
+    # type: (str) -> list(dict(str, str))
+    sections = []
+    with open(ini_path, 'r') as ini_file:
+        for line in ini_file.readlines():
+            # section
+            if line.startswith('[') and ']' in line:
+                sections.append({})
+                sections[-1]['section'] = line[line.index('[')+1:line.index(']')]
+            elif '=' in line:
+                key = line[:line.index('=')].strip()
+                val = line[line.index('=')+1:].strip()
+                sections[-1][key] = val
+    return sections
+
+def get_tbl():
+    tbl = [' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+           'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '*',
+           'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+           'u', 'v', 'w', 'x', 'y', 'z', '[RV]', '[BX]', '[EX]', '[SP]', '[FZ]']
+    for i in range(len(tbl), 0xEA):
+        tbl.append('\\x%X' % i)
+    symbols = ['-', 'x', '=', ':', '%', '?', '+', '[]', '[bat]', '\\xA1', '!', '&', ',', '\\xA5',
+               '.', '\\xA7', ';', '\'', '"', '~', '/', '(', ')', '\\xAF', '\\xB0', '\\xB1', '_', '[z]',
+               '[L]', '[B]', '[R]', '[A]']
+    for i in range(0x98, 0xB8):
+        tbl[i] = symbols[i-0x98]
+    tbl[0xE6] = '$'
+    tbl[0xE9] = '\\n'
+    return tbl
+
+def bn6f_str(byte_arr, tbl):
+    out = ''
+    for byte in byte_arr:
+        # byte code
+        if byte > len(tbl):
+            break
+        if tbl[byte] == '"':
+            out = out + '\\"'
+        else:
+            out = out + tbl[byte]
+    return out
+
+def read_relative_pointers(bin_file, address):
+    def read_hword(bin_file):
+        bytes = bin_file.read(2)
+        return bytes[0] + (bytes[1] << 8)
+    # assuming first relative pointer is first script
+    size_rel_pointers = read_hword(bin_file)
+    rel_pointers = [size_rel_pointers]
+    while bin_file.tell() < address + size_rel_pointers:
+        rel_pointers.append(read_hword(bin_file))
+    return rel_pointers
+
+
+def cmd_matches(cmd_bytes, sect):
+    if sect['section'] not in ['Command', 'Extension']: return False
+    mask = [int(b, 16) for b in sect['mask'].split(' ')]
+    base = [int(b, 16) for b in sect['base'].split(' ')]
+    # must contain enough information for the base
+    if len(cmd_bytes) < len(base): return False
+    # clear cmd_bytes by mask to remove parameters
+    for i in range(len(base)):
+        cmd_bytes[i] &= mask[i]
+    # confirm it matches with the base
+    return cmd_bytes[:len(base)] == base
+
+
+def get_param_count(sects, cmd):
+    """
+    mostly, the number of parameters is simply the number of unmasked bytes if the command
+    matches. This is not true for odd numbers of zero nibbles: bitfield paramters.
+    An assumption is made that the smallest field always comes first.
+    So 00 0F would be 2 fields, a 4-bit field x and 8-bit field y: xy yF
+    :raises NotImplemented: for multiple bitfield paramaters
+    """
+    num_bytes = -1
+    cmd_bytes = [b for b in cmd]
+    for sect in sects:
+        if sect['section'] in ['Command', 'Extension']:
+            base = [int(b, 16) for b in sect['base'].split(' ')]
+            if cmd_matches(cmd_bytes, sect):
+                nzeros = sect['mask'].count('0')
+                if nzeros % 2 == 0:
+                    return nzeros//2
+                elif nzeros == 3:
+                    # weird bitfield case... only 3 zeros are supported
+                    return 1.5
+                else:
+                    raise NotImplemented('multiple bitfield paramters are unsupported')
+    return num_bytes
+
+
+def get_cmd_macro(sects, cmd, altSects=None):
+    """
+    gets the command macro given a full description of the command (all bytes involving the set mask)
+    :param sects: array of dictionaries representing ini specs of commands
+    :param cmd: byte array that must contain at least
+    :param altSects: some commands differ based on the engine. altSect is the representation of
+                    the ini file of the said commands. The function will always look for a conflict
+                    and uses the definition from the altSects if found, otherwise it will use
+                    sects
+    :return: string representing the macro for the command
+    """
+    # TODO: implement altSects functionality
+    name = ''
+    cmd_bytes = [c for c in cmd]
+    for sect in sects:
+        if sect['section'] in ['Command', 'Extension']:
+            if cmd_matches(cmd_bytes, sect):
+                name = 'ts_'  + sect['name']
+    # convert to snake case
+    for c in name:
+        if c.isupper():
+            name = name.replace(c, '_%c' % c.lower())
+    return name
+
+
+def get_cmd_params(sects, cmd):
+    params = []
+    pass
+
+
+def parse_cmd(bin_file, cmd, sects):
+    num_params = 0
+    for i in range(4):  # max number of base bytes per command
+        cur_num_params = get_param_count(sects, cmd)
+        # print(cmd, num_params)
+        if cur_num_params >= 0:
+            num_params = cur_num_params
+            break
+        else:
+            byte = bin_file.read(1)
+            cmd = cmd + byte
+    # parse cmd and params
+    if num_params >= 0:
+        params = bin_file.read(num_params)
+    elif num_params == 1.5:
+        # params are already part of the command
+        # pattern: FF FF ... FF 00 0F
+        params = [cmd[-2] >> 4, cmd[-2] << 4 | cmd[-1] >> 4]
+    else:
+        return None
+    return cmd, params
+
 
 def parse_text_script(config_ini_path, bin_path, address):
     #type (str, str, int) -> str
@@ -197,20 +259,13 @@ def parse_text_script(config_ini_path, bin_path, address):
                 end_script = bin_file.tell() > address+last_script_pointer and ord(cmd) == 0xE6
 
             # read command parameters
-            num_params = 0
-            for i in range(4): # max number of bytes per command base
-                num_params = get_param_count(sects, cmd)
-                # print(cmd, num_params)
-                if num_params >= 0:
-                    break
-                byte = bin_file.read(1)
-                cmd = cmd + byte
-            if num_params < 0:
-                print("error: could not find number of parameters for ", cmd)
+            cmd_and_params = parse_cmd(bin_file, cmd, sects)
+            if not cmd_and_params:
+                print("error: could not parse ", cmd)
                 units.append('***ERROR: %s***' % cmd)
                 continue  # break
-            params = bin_file.read(num_params)
-            units.append((cmd, params))
+            else:
+                units.append(cmd_and_params)
         end_addr = bin_file.tell()
 
     # link relative pointers into units

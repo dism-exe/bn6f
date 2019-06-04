@@ -1,6 +1,5 @@
-TextScriptBattleTutFullSynchro::
-	text_script_start TextScriptBattleTutFullSynchro
-	// FIXME (TextScript): F0 00 and F0 00 00 are different, not shown here
+	text_script_start unk_0
+
 		text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
 		text_script 0, scr_0
 			ts_mugshot_show 0x37
@@ -168,5 +167,4 @@ TextScriptBattleTutFullSynchro::
 			.string "no time to run!"
 			ts_key_wait 0x0
 			ts_end
-
-		.balign 4, 0
+0x53b

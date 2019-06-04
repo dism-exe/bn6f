@@ -20,7 +20,7 @@ class BasicTests(unittest.TestCase):
                 if not line.strip():
                     lines.remove(line)
             self.assertEqual(int(lines[-1], 16), end_addr, 'end address mismatch')
-            self.assertEqual(len(script), len(lines) - 1, 'content length mismatch')
+            self.assertEqual(len(script), len(lines) - 1, 'content length /ismatch')
             for i in range(len(script)):
                 self.assertEqual(script[i].strip(), lines[i].strip(), 'item %d mismatch' % i)
 
@@ -29,10 +29,24 @@ class BasicTests(unittest.TestCase):
         self.assertTestFile('TextScriptFolderNames86cf4ac')
 
     def test_TextScriptChipDescriptions0(self):
+        # tests for maximum number of rel. pointers
         self.assertTestFile('TextScriptChipDescriptions0_86eb8b8')
 
     def test_TextScriptDialog87E30A0(self):
+        # tests for multiple repetitive rel. pointers
         self.assertTestFile('TextScriptDialog87E30A0')
+
+    def test_TextScriptBattleTutFullSynchro(self):
+        # tests for escaped double quotes
+        # tests for priority of ts_jump and ts_jump_random
+        self.assertTestFile('TextScriptBattleTutFullSynchro')
+
+class CommandParsingTests(unittest.TestCase):
+    pass
+    # def testBasicCase(self):
+    #     # mask: FF 00
+    #     pass
+
 
 if __name__ == '__main__':
     unittest.main()
