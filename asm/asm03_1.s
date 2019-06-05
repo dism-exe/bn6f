@@ -2457,8 +2457,7 @@ loc_8035246:
 locret_803524A:
 	pop {r4-r7,pc}
 off_803524C: .word word_8035250
-word_8035250: .hword 0x1
-word_8035252: .hword 0x21A
+word_8035250: .hword 0x1, 0x21A
 	.byte 0x2, 0x0, 0x1B, 0x2, 0x3, 0x0, 0x1C, 0x2, 0x4, 0x0, 0x1D, 0x2, 0x5, 0x0
 	.byte 0x1E, 0x2, 0x6, 0x0, 0x1F, 0x2, 0x7, 0x0, 0x20, 0x2, 0x8D, 0x0, 0x21, 0x2
 	.byte 0xFF, 0x0, 0xFF, 0x0
@@ -3381,7 +3380,7 @@ MapScriptCmd_jump_if_unk_navicust_range: // 8035A74
 //	 jump if byte2 < GetTotalChipCount(hword) < byte3
 // else:
 //	 jump if byte2 < GetChipCountOfCode(byte1, hword) < byte3
-//	 GetChipCountOfCode calls chip_8021C7C
+//	 GetChipCountOfCode calls getOffsetToQuantityOfChipCodeMaybe_8021c7c
 // related to chips
 //
 MapScriptCmd_jump_if_chip_count_in_range: // 8035AAA
@@ -16247,7 +16246,7 @@ sub_803CD74:
 	push {r4-r7,lr}
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#oToolkit_Unk2003134_Ptr]
+	ldr r0, [r0,#oToolkit_KeyItemsPtr]
 	// size
 	ldr r1, off_803CD94 // =0x190
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -16269,7 +16268,7 @@ sub_803CD98:
 	bl encryption_8006e3c
 	pop {r0,r1}
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_Unk2003134_Ptr]
+	ldr r2, [r2,#oToolkit_KeyItemsPtr]
 	mov r6, #0xff
 	cmp r0, #0x80
 	blt loc_803CDB6
@@ -16319,7 +16318,7 @@ loc_803CDE4:
 sub_803CDF8:
 	push {lr}
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_Unk2003134_Ptr]
+	ldr r2, [r2,#oToolkit_KeyItemsPtr]
 	mov r3, #0
 	strb r3, [r2,r0]
 	bl sub_803CD98
@@ -16330,7 +16329,7 @@ sub_803CDF8:
 sub_803CE08:
 	push {r4-r7,lr}
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_Unk2003134_Ptr]
+	ldr r2, [r2,#oToolkit_KeyItemsPtr]
 	ldrb r4, [r2,r0]
 	mov r3, #1
 	tst r4, r4
@@ -16355,7 +16354,7 @@ sub_803CE28:
 	pop {r0}
 	bne loc_803CE3E
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2003134_Ptr]
+	ldr r1, [r1,#oToolkit_KeyItemsPtr]
 	ldrb r0, [r1,r0]
 	tst r0, r0
 	pop {pc}
@@ -16552,7 +16551,7 @@ sub_803CFB0:
 	mov r0, #0
 	mov r4, r0
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk2003134_Ptr]
+	ldr r7, [r7,#oToolkit_KeyItemsPtr]
 	mov r6, #0x72
 	add r6, r6, r7
 	ldrb r0, [r6]

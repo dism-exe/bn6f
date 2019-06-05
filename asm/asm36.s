@@ -14091,8 +14091,8 @@ RunTextScriptNaviCustDialog:
 off_81376B4: .word TextScriptNaviCustDialog
 	thumb_func_end RunTextScriptNaviCustDialog
 
-	thumb_func_start sub_81376B8
-sub_81376B8:
+	thumb_func_start setUnkFieldOfChipCodeInChipPack_81376b8
+setUnkFieldOfChipCodeInChipPack_81376b8:
 	ldr r2, off_8137710 // =byte_20065B4 
 	ldrh r3, [r2]
 	sub r0, r0, r1
@@ -14103,7 +14103,7 @@ sub_81376B8:
 	strh r3, [r2]
 	mov pc, lr
 	.balign 4, 0x00
-	thumb_func_end sub_81376B8
+	thumb_func_end setUnkFieldOfChipCodeInChipPack_81376b8
 
 	thumb_func_start sub_81376CC
 sub_81376CC:

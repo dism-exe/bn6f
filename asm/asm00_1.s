@@ -7004,7 +7004,7 @@ loc_8006ED2:
 	mov r0, r7
 	// searchItem
 	mov r1, r4
-	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
+	bl getOffsetToQuantityOfChipCodeMaybe_8021c7c // (int chip_idx, int searchItem, int off) -> void*
 	ldrb r0, [r0]
 	tst r0, r0
 	beq loc_8006EE4
