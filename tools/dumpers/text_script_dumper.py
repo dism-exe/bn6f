@@ -17,7 +17,7 @@ class TextScript:
         pass # TODO
 
     def build(self):
-        script = ['text_script_start unk_%X' % self.addr]
+        script = ['\ttext_script_start unk_%X' % self.addr]
 
         # assign unique ids to each pointer for reference
         rel_pointer_ids = {}
@@ -48,19 +48,27 @@ class TextScript:
             # print(unit)
             if type(unit) is bytes:
                 if len(unit) == 1 and unit[0] == 0xE6:
-                    s = '\t' + get_cmd_macro(self.sects, unit)
+                    s = get_cmd_macro(self.sects, unit)
                 else:
-                    s = '\t.string "%s"' % bn6f_str(unit, get_tbl())
-                script.append(s)
+                    s = '.string "%s"' % bn6f_str(unit, get_tbl())
+                script.append('\t' + s)
             elif type(unit) is tuple:
                 name = get_cmd_macro(self.sects, unit[0])
-                s = '\t%s ' % name
-                for param in unit[1]:
-                    s += '0x%X, ' % param
+                s = '%s ' % name
+                for i in range(len(unit[1])):
+                    param = unit[1][i]
+                    # jump commands go to a linked script
+                    if 'jump' in name.lower() and i == 0:
+                        s += '%d, ' % param
+                    else:
+                        s += '0x%X, ' % param
                 if unit[1]: s = s[:-2]
-                script.append(s)
+                script.append('\t' + s)
             elif type(unit) is int:
-                script.append('text_script %d, scr_%d' % (unit, unit))
+                script.append('\n\ttext_script %d, scr_%d' % (unit, unit))
+
+        # text scripts are always aligned by 4
+        script.append('\n\t.balign 4, 0')
 
         return script, self.addr + self.size
 
@@ -80,21 +88,33 @@ def read_custom_ini(ini_path):
                 sections[-1][key] = val
     return sections
 
-def get_tbl():
-    tbl = [' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-           'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '*',
-           'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-           'u', 'v', 'w', 'x', 'y', 'z', '[RV]', '[BX]', '[EX]', '[SP]', '[FZ]']
+def get_tbl(path='../../constants/bn6-charmap.tbl'):
+    if 'tbl' in get_tbl.__dict__.keys():
+        return get_tbl.tbl
+    tbl = []
+    with open(path, 'r', encoding='utf-8') as f:
+        for line in f.readlines():
+            if '=' in line:
+                lhs = line[:line.index('=')].strip()
+                rhs = line[line.index('=')+1:].strip()
+                if rhs == '': rhs = ' ' # space would be filtered out
+                if len(lhs) == 2:
+                    tbl.append(rhs)
+                elif lhs == 'E400':
+                    tbl.append(' ')
+                    break
     for i in range(len(tbl), 0xEA):
         tbl.append('\\x%X' % i)
-    symbols = ['-', 'x', '=', ':', '%', '?', '+', '[]', '[bat]', '\\xA1', '!', '&', ',', '\\xA5',
-               '.', '\\xA7', ';', '\'', '"', '~', '/', '(', ')', '\\xAF', '\\xB0', '\\xB1', '_', '[z]',
-               '[L]', '[B]', '[R]', '[A]']
-    for i in range(0x98, 0xB8):
-        tbl[i] = symbols[i-0x98]
+
     tbl[0xE6] = '$'
     tbl[0xE9] = '\\n'
+    get_tbl.tbl = tbl
+
+    # for c in tbl: print(c);
+    # exit(0)
+
     return tbl
+
 
 def bn6f_str(byte_arr, tbl):
     out = ''
@@ -107,6 +127,7 @@ def bn6f_str(byte_arr, tbl):
         else:
             out = out + tbl[byte]
     return out
+
 
 def read_relative_pointers(bin_file, address):
     def read_hword(bin_file):
@@ -145,7 +166,6 @@ def get_param_count(sects, cmd):
     cmd_bytes = [b for b in cmd]
     for sect in sects:
         if sect['section'] in ['Command', 'Extension']:
-            base = [int(b, 16) for b in sect['base'].split(' ')]
             if cmd_matches(cmd_bytes, sect):
                 nzeros = sect['mask'].count('0')
                 if nzeros % 2 == 0:
@@ -176,38 +196,64 @@ def get_cmd_macro(sects, cmd, altSects=None):
         if sect['section'] in ['Command', 'Extension']:
             if cmd_matches(cmd_bytes, sect):
                 name = 'ts_'  + sect['name']
+                break
     # convert to snake case
     for c in name:
         if c.isupper():
             name = name.replace(c, '_%c' % c.lower())
+    if not name:
+        name = '.byte '
+        for b in cmd:
+            name += hex(b) + ', '
+        if name.endswith(', '):
+            name = name[:-2]
+        name += ' // ***ERROR***'
     return name
-
-
-def get_cmd_params(sects, cmd):
-    params = []
-    pass
 
 
 def parse_cmd(bin_file, cmd, sects):
     num_params = 0
+    # some commands are prioritized by their input (really just jump_random)
+    # so, automatically get the input to determine if it's really that command, or another one
+    # (like jump)
+    if cmd in [b'\xf0']:
+        cmd += bin_file.read(1)
     for i in range(4):  # max number of base bytes per command
-        cur_num_params = get_param_count(sects, cmd)
+        num_params = get_param_count(sects, cmd)
         # print(cmd, num_params)
-        if cur_num_params >= 0:
-            num_params = cur_num_params
+        if num_params >= 0:
             break
         else:
             byte = bin_file.read(1)
             cmd = cmd + byte
+
+    # no priority commands, go with default (jump_random)
+    if cmd[0] in [b'\xf0'] and num_params == 0:
+        params = [cmd[1]]
+        cmd = cmd[:1]
     # parse cmd and params
-    if num_params >= 0:
+    elif num_params >= 0:
         params = bin_file.read(num_params)
     elif num_params == 1.5:
         # params are already part of the command
         # pattern: FF FF ... FF 00 0F
         params = [cmd[-2] >> 4, cmd[-2] << 4 | cmd[-1] >> 4]
     else:
-        return None
+        params = []
+        print('error: invalid cmd detected %s' % cmd)
+
+    # edge case: select command is dynamic. assumed dynamic until it encounters a command or after
+    # 3 additional parameters. Values allowed are <E5 and FF
+    if cmd[0] in [0xED]:
+        for i in range(3):
+            byte = bin_file.read(1)
+            if byte != b'\xff' and byte >= b'\xe5':
+                # rewind, doesn't belong to this dynamic command
+                bin_file.seek(bin_file.tell()-1)
+                break
+            else:
+                params += byte
+
     return cmd, params
 
 
@@ -246,7 +292,7 @@ def parse_text_script(config_ini_path, bin_path, address):
             if string:
                 units.append(string)
             if byte == b'':
-                print('error: could not read byte')
+                print('error: reached end of file before script end')
                 break
             # current bytecode command
             cmd = byte
@@ -254,18 +300,12 @@ def parse_text_script(config_ini_path, bin_path, address):
                 continue # accounted for in string
 
             # handle control commands
-            # only end at the end of the very last segment
+            # only end script at the end of the very last segment
             if not end_script:
                 end_script = bin_file.tell() > address+last_script_pointer and ord(cmd) == 0xE6
 
             # read command parameters
-            cmd_and_params = parse_cmd(bin_file, cmd, sects)
-            if not cmd_and_params:
-                print("error: could not parse ", cmd)
-                units.append('***ERROR: %s***' % cmd)
-                continue  # break
-            else:
-                units.append(cmd_and_params)
+            units.append(parse_cmd(bin_file, cmd, sects))
         end_addr = bin_file.tell()
 
     # link relative pointers into units
@@ -319,6 +359,7 @@ def read_script(ea, path='../../bn6f.ign', ini_path='mmbn6.ini'):
 
 def gen_macros(config_ini_path):
     sects = read_custom_ini(config_ini_path)
+    # TODO: generate correct dynamic ts_select
     macros = ''
     for sect in sects:
         if sect['section'] in ['Command', 'Extension']:
@@ -402,8 +443,7 @@ def main(argv):
 
     script, end_addr = read_script(int(sys.argv[1], 16), path, ini_path)
 
-    for i in script:
-        print('\t' + i)
+    for i in script: print(i)
     print(hex(end_addr))
 
 

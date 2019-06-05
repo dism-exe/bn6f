@@ -14682,7 +14682,7 @@ int __fastcall sub_8119438(int a1, int a2, int a3, int a4)
             ZeroFillByEightWords(v23 + 560, byte_100);
         }
     }
-    v21 = dword_86EE0CC;
+    v21 = TextScriptChipDesc1;
     v22 = *(v4 + 14);
     if ( v22 <= 255 )
         v21 = TextScriptChipDescriptions0;
@@ -15503,7 +15503,7 @@ int __fastcall sub_8119EEC(int a1, int a2, int a3, int a4)
         5 * (*(v4 + 14) - dword_140) + *(v4 + 12),
         *(&off_8119FF0 + *(v4 + 5)),
         32 * *(&off_8119FD0)[*(v4 + 5)] + 100728832);
-    v7 = dword_86EE0CC;
+    v7 = TextScriptChipDesc1;
     v8 = *(v4 + 14);
     if ( v8 <= 255 )
         v7 = TextScriptChipDescriptions0;

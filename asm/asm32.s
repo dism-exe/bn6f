@@ -20798,7 +20798,7 @@ loc_8119550:
 	ldr r1, [sp]
 	bl sub_8119594
 loc_811955C:
-	ldr r0, off_8119690 // =dword_86EE0CC
+	ldr r0, off_8119690 // =TextScriptChipDesc1
 	ldrh r1, [r5,#0xe]
 	cmp r1, #0xff
 	bgt loc_8119566
@@ -20929,7 +20929,7 @@ dword_8119680: .word 0x8C0
 off_8119684: .word 0xC0
 off_8119688: .word dword_86A5D60
 off_811968C: .word TextScriptChipDescriptions0
-off_8119690: .word dword_86EE0CC
+off_8119690: .word TextScriptChipDesc1
 dword_8119694: .word 0xA00
 dword_8119698: .word 0x780
 off_811969C: .word sSubmenu
@@ -21998,7 +21998,7 @@ loc_8119F18:
 	mov r7, #0
 	bl renderTextGfx_8045F8C
 	pop {r5}
-	ldr r0, off_811A090 // =dword_86EE0CC
+	ldr r0, off_811A090 // =TextScriptChipDesc1
 	ldrh r1, [r5,#0xe]
 	cmp r1, #0xff
 	bgt loc_8119F5A
@@ -22108,7 +22108,7 @@ off_811A04C: .word vObjectTiles
 off_811A084: .word dword_86A5D60
 off_811A088: .word dword_86B7AE0
 off_811A08C: .word TextScriptChipDescriptions0
-off_811A090: .word dword_86EE0CC
+off_811A090: .word TextScriptChipDesc1
 off_811A094: .word unk_2028000
 dword_811A098: .word 0xA00
 dword_811A09C: .word 0x780

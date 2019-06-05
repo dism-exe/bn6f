@@ -266,8 +266,17 @@
 	.macro ts_space_px p0:req
 		.byte 0xEC, 0x1, \p0
 	.endm
-	.macro ts_select p0:req, p1:req
+	.macro ts_select p0:req, p1:req, p2=NULL, p3=NULL, p4=NULL
 		.byte 0xED, \p0, \p1
+		.if \p2 != NULL
+			.byte \p2
+		.endif
+		.if \p3 != NULL
+			.byte \p3
+		.endif
+		.if \p4 != NULL
+			.byte \p4
+		.endif
 	.endm
 	.macro ts_wait p0:req, p1:req
 		.byte 0xEE, 0x0, \p0, \p1

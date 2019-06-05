@@ -46,25 +46,37 @@ dword_86CF1A8::
 // 086cf4ac
 TextScriptFolderNames::
 	text_script_start TextScriptFolderNames
+
 	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 8
+
 	text_script 0, scr_0
-		.string "LanFldr$"
+	.string "LanFldr$"
+
 	text_script 1, scr_1
-		.string "ExpoFldr$"
+	.string "ExpoFldr$"
+
 	text_script 2, scr_2
-		.string "GiftFldr$"
+	.string "GiftFldr$"
+
 	text_script 3, scr_3
-		.string "ExptFldr$"
+	.string "ExptFldr$"
+
 	text_script 4, scr_4
-		.string "AprtcFld$"
+	.string "AprtcFld$"
+
 	text_script 5, scr_5
-		.string "SoulFldr$"
+	.string "SoulFldr$"
+
 	text_script 6, scr_6
-		.string "--$"
+	.string "--$"
+
 	text_script 7, scr_7
-		.string "RandFldr$"
+	.string "RandFldr$"
+
 	text_script 8, scr_8
-		.string "Pack$"
+	.string "Pack$"
+
+	.balign 4, 0
 comp_86CF508::
 	.incbin "data/scripts/comp_86CF508.lz"
 CompTextScriptNetworkPlyTmSave86CF618::

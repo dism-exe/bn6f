@@ -356,8 +356,8 @@ int __fastcall sub_8021D2A(int a1, int a2)
 void __fastcall sub_8021D36(int a1, int a2, int a3, int a4)
 {
     ZeroFillByHalfword(&unk_2000AF0, 0x40u, a3, a4);
-    CopyWords(script_8021D88, &unk_2001184, 8u);
-    CopyWords(script_8021D88, &unk_200119C, 8u);
+    CopyWords(TextScriptJap8021D88, &unk_2001184, 8u);
+    CopyWords(TextScriptJap8021D88, &unk_200119C, 8u);
     CopyWords(byte_8021D8A, byte_20007D6, 8u);
     CopyWords(byte_8021D8A, byte_200083A, 8u);
 }

@@ -10,6 +10,8 @@ class BasicTests(unittest.TestCase):
     def assertTestFile(self, test_name):
         curdir = 'text_script_dumper/'
         script, end_addr = read_script(0, curdir + test_name + '.bin', '../dumpers/mmbn6.ini')
+        # for i in script: print(i)
+        # print(hex(end_addr))
         with open(curdir + test_name + '.s', 'r') as f:
             lines = f.readlines()
             script = '\n'.join(script).split('\n')
@@ -26,10 +28,12 @@ class BasicTests(unittest.TestCase):
 
 
     def test_TestScriptFolderNames(self):
+        # tests for basic functionality
         self.assertTestFile('TextScriptFolderNames86cf4ac')
 
     def test_TextScriptChipDescriptions0(self):
         # tests for maximum number of rel. pointers
+        # tests for unicode occurance: ー
         self.assertTestFile('TextScriptChipDescriptions0_86eb8b8')
 
     def test_TextScriptDialog87E30A0(self):
@@ -38,8 +42,14 @@ class BasicTests(unittest.TestCase):
 
     def test_TextScriptBattleTutFullSynchro(self):
         # tests for escaped double quotes
-        # tests for priority of ts_jump and ts_jump_random
+        # tests for higher priority of ts_jump against ts_jump_random
         self.assertTestFile('TextScriptBattleTutFullSynchro')
+
+    def test_TextScriptWhoAmI(self):
+        # tests for dynamic ts_select parameters
+        # tests for higher priority of ts_jump against ts_jump_random
+        self.assertTestFile('TextScriptWhoAmI')
+
 
 class CommandParsingTests(unittest.TestCase):
     pass

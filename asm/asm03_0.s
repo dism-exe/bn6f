@@ -3021,7 +3021,7 @@ loc_8027D46:
 	.balign 4, 0x00
 off_8027D4C: .word off_8027D50
 off_8027D50: .word TextScriptChipDescriptions0
-off_8027D54: .word dword_86EE0CC
+off_8027D54: .word TextScriptChipDesc1
 	thumb_func_end chip_getScript_8027D34
 
 	thumb_local_start

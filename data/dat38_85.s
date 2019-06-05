@@ -5134,6 +5134,7 @@ TextScriptChipNames1::
 	.balign 4, 0
 
 // 086eb8b8
+// FIXME (TextScript): dumper doesn't generate ー, but escape codes.
 TextScriptChipDescriptions0::
 	text_script_start TextScriptChipDescriptions0
 
@@ -7433,8 +7434,8 @@ TextScriptChipDescriptions0::
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
 
-dword_86EE0CC::
-	text_script_start dword_86EE0CC
+TextScriptChipDesc1::
+	text_script_start TextScriptChipDesc1
 	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
 	text_script_rel_pointers 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
 	text_script_rel_pointers 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47
