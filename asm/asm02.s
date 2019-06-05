@@ -56,7 +56,7 @@ split9BitsFromBitfield_8021AE0: // 8021AE0
 sub_8021AEE:
 	push {r4,lr}
 	push {r0-r2}
-	bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_2008A0) -> void
 	pop {r0-r2}
 	tst r2, r2
 	bne loc_8021B00
@@ -85,7 +85,7 @@ loc_8021B00:
 sub_8021B2A:
 	push {lr}
 	push {r0-r2}
-	bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_2008A0) -> void
 	pop {r0-r2}
 	tst r2, r2
 	bne loc_8021B3C
@@ -135,7 +135,7 @@ sub_8021B78:
 	push {r0-r2}
 	tst r2, r2
 	beq loc_8021B84
-	bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_2008A0) -> void
 loc_8021B84:
 	pop {r0-r2}
 	push {r2}
@@ -194,7 +194,7 @@ loc_8021BD4:
 GetTotalChipCount:
 	push {r7,lr}
 	push {r0}
-	bl sub_8006E84
+	bl encryption_8006e84
 	pop {r0}
 	bne loc_8021BFE
 	mov r7, r10
@@ -329,7 +329,7 @@ loc_8021CB0:
 	pop {r2}
 	push {r0,r2}
 	mov r0, r2
-	bl sub_8006E84
+	bl encryption_8006e84
 	pop {r0,r2}
 	bne loc_8021CF4
 	mov r3, #0

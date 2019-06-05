@@ -677,7 +677,7 @@ off_812D87C: .word word_2023FA0
 	thumb_func_start sub_812D880
 sub_812D880:
 	push {lr}
-	bl sub_80062C8
+	bl screenFade_80062C8
 	cmp r0, #0xc
 	bne loc_812D892
 	mov r0, #8
@@ -923,7 +923,7 @@ sub_812DA4C:
 	thumb_func_start sub_812DA60
 sub_812DA60:
 	push {r0,lr}
-	bl sub_80062C8
+	bl screenFade_80062C8
 	cmp r0, #0xc
 	bne loc_812DA72
 	mov r0, #8

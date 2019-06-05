@@ -1978,7 +1978,7 @@ sub_8124350:
 	tst r0, r1
 	beq loc_812437C
 	mov r0, #1
-	bl sub_811EBF4
+	bl ClearPETMenuDataFlag
 	bl sub_811F728
 	b locret_8124380
 loc_812437C:
@@ -5551,7 +5551,7 @@ loc_81262AC:
 loc_81262B2:
 	push {r0-r3}
 	mov r0, r1
-	bl sub_80070E6
+	bl encryption_80070e6
 	pop {r0-r3}
 	beq loc_81262E6
 	push {r0-r3}
@@ -8440,7 +8440,7 @@ loc_8127C9E:
 	tst r0, r1
 	beq loc_8127CB2
 	mov r0, #1
-	bl sub_811EBF4
+	bl ClearPETMenuDataFlag
 	bl sub_811F728
 	b locret_8127CB6
 loc_8127CB2:
@@ -15312,7 +15312,7 @@ loc_812B6D8:
 	ldrb r0, [r5,#0x1a]
 	bl setPETNaviSelect
 	bl sub_813C3AC
-	bl sub_8036E78
+	bl PlayMapMusic
 	movflag EVENT_1722
 	bl ClearEventFlagFromImmediate
 	bl sub_803F798
@@ -16095,7 +16095,7 @@ loc_812BD08:
 	ldr r0, off_812BD30 // =0x200 
 	cmp r6, r0
 	blt loc_812BCF0
-	bl sub_80070BC
+	bl encryption_80070bc
 	ldrb r0, [r5,#0x10]
 	cmp r0, #0x11
 	beq locret_812BD1E
@@ -16619,7 +16619,7 @@ dword_812C190: .word 0x8888
 sub_812C194:
 	push {r4-r7,lr}
 	mov r7, r0
-	bl sub_800710A
+	bl encryption_800710a
 	beq loc_812C1AE
 	mov r0, r7
 	ldr r1, off_812C218 // =0x40 

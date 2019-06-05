@@ -8,7 +8,7 @@
 	ptr RenderInfoPtr // loc=0x8
 	ptr CameraPtr // loc=0xc
 	ptr CutsceneStatePtr // loc=0x10
-	ptr Unk2011bb0_Ptr // loc=0x14
+	ptr Warp2011bb0_Ptr // loc=0x14
 	ptr BattleStatePtr // loc=0x18
 	ptr Unk200f3a0_Ptr // loc=0x1c
 	ptr Unk2009740_Ptr // loc=0x20

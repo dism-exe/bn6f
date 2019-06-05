@@ -42,7 +42,7 @@ sub_80A49B0:
 	str r0, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	str r6, [r5,#0x14]
 loc_80A49E8:
 	bl sub_8002E14
@@ -257,12 +257,12 @@ loc_80A4B7A:
 	pop {r4-r7,pc}
 dword_80A4B80: .word 0x140000
 off_80A4B84: .word off_80A4B88
-off_80A4B88: .word eOverworldNPCObjects+0x24
-	.word 0xD8
+off_80A4B88: .word eOverworldNPCObject0_Coords
+	.word oOverworldNPCObject_Size
 	.word eOWPlayerObject_Coords
-	.word 0xC8
-	.word dword_2011EEC
-	.word 0x78
+	.word oOWPlayerObject_Size
+	.word eOverworldMapObject0_Coords
+	.word oOverworldMapObject_Size
 off_80A4BA0: .word byte_80A4BA4
 byte_80A4BA4: .byte 0xF4, 0xFF, 0xF4, 0xFF, 0x8, 0x0, 0xF0, 0xFF, 0x0, 0x0, 0x8
 	.byte 0x0, 0xF4, 0xFF, 0xC, 0x0, 0x8, 0x0, 0x0, 0x0, 0xF0, 0xFF
@@ -311,7 +311,7 @@ sub_80A4BFC:
 	str r0, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	str r6, [r5,#0x14]
 	bl sub_8002E14
 	ldrb r0, [r5,#4]
@@ -550,7 +550,7 @@ sub_80A5268:
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_80A52DA
-	bl sub_80062C8
+	bl screenFade_80062C8
 	lsr r0, r0, #2
 	mov r1, #1
 	tst r0, r1
@@ -829,7 +829,7 @@ loc_80A552A:
 	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	ldr r0, [r5,#0xc]
 	ldr r1, [r5,#0x10]
@@ -864,9 +864,9 @@ loc_80A557A:
 	thumb_local_start
 sub_80A5588:
 	push {lr}
-	bl s_2011C50_8036F40 // () -> zf
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F40 // () -> zf
 	bne locret_80A55CA
-	bl sub_8036F58
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F58
 	bne locret_80A55CA
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -1168,7 +1168,7 @@ sub_80A57D0:
 	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
@@ -1390,7 +1390,7 @@ sub_80A596C:
 	thumb_local_start
 sub_80A5974:
 	push {r4,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 loc_80A597A:
 	ldr r2, [r5,#0xc]
 	ldr r3, [r5,#0x10]
@@ -1483,7 +1483,7 @@ sub_80A5A1C:
 	str r1, [r5,#0x28]
 	str r2, [r5,#0x14]
 	str r2, [r5,#0x2c]
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r4, #0xc8 // (dword_2000F88 - 0x2000ec0)
 	ldr r2, [r7,r4]
 	add r4, #4
@@ -1571,7 +1571,7 @@ sub_80A5AF8:
 	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	ldrb r0, [r4,#7]
 	strb r0, [r5,#6]
@@ -1741,7 +1741,7 @@ sub_80A5C9C:
 	cmp r4, #0
 	bgt loc_80A5CBE
 	bl sub_80A5CE4
-	bl updateFlags_809E0B0 // () -> void
+	bl owPlayer_lockPlayerForNonNPCDialogue_809E0B0 // () -> void
 	bl sub_80A5E44
 	mov r0, #0
 	ldrb r1, [r5,#6]
@@ -1761,7 +1761,7 @@ loc_80A5CBE:
 loc_80A5CD2:
 	mov r1, #0
 	strb r1, [r5,#0xa]
-	bl sub_809E122
+	bl owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
 	mov r0, r4
 	b locret_80A5CE0
 loc_80A5CDE:
@@ -1774,7 +1774,7 @@ locret_80A5CE0:
 	thumb_local_start
 sub_80A5CE4:
 	push {r4-r7,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	bl sub_80A5E08
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A5CE4
@@ -1969,7 +1969,7 @@ byte_80A5E3C: .byte 0x2, 0x2, 0x0, 0x6, 0x4, 0x0, 0x0, 0x0
 	thumb_local_start
 sub_80A5E44:
 	push {r4,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r2, r0
 	mov r3, r1
 	ldr r0, [r5,#0xc]
@@ -1982,10 +1982,10 @@ sub_80A5E44:
 	mov r4, r0
 	ldr r0, off_80A5E74 // =byte_80A5E7C
 	ldrb r0, [r0,r4]
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	ldr r0, off_80A5E78 // =byte_80A5E84
 	ldrb r0, [r0,r4]
-	bl sub_809E2AE
+	bl SetOWPlayerFacingDirection
 locret_80A5E70:
 	pop {r4,pc}
 	.balign 4, 0x00
@@ -2577,7 +2577,7 @@ loc_80A6A94:
 	str r0, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	str r4, [r5,#0x14]
 	bl sub_8002E14
 	bl sprite_update
@@ -2882,7 +2882,7 @@ sub_80A6CFC:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sub_8002E52
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	str r0, [r5,#0xc]
 	str r1, [r5,#0x10]
 	str r2, [r5,#0x14]
@@ -2980,7 +2980,7 @@ sub_80A6DC6:
 	push {lr}
 	bl sub_80A6E78
 	ldrh r0, [r0,#2]
-	bl sub_8002C7A
+	bl sprite_setMosaicScalingParameters_8002c7a
 	mov r0, #4
 	bl sub_80A6E70
 	mov r0, #1
@@ -3132,7 +3132,7 @@ sub_80A6EBC:
 	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	mov r0, #1
 	bl sprite_setPalette // (int pallete) -> void
@@ -3169,9 +3169,9 @@ loc_80A6F20:
 	thumb_local_start
 sub_80A6F2C:
 	push {r4-r7,lr}
-	bl s_2011C50_8036F40 // () -> zf
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F40 // () -> zf
 	bne loc_80A6F66
-	bl sub_8036F58
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F58
 	bne loc_80A6F66
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -3404,7 +3404,7 @@ sub_80A70FC:
 	movflag EVENT_5F1
 	bl TestEventFlagFromImmediate
 	bne locret_80A715C
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	cmp r2, #0
 	bne loc_80A712E
 	mov r2, r0
@@ -3634,7 +3634,7 @@ sub_80A72D8:
 	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
@@ -3671,9 +3671,9 @@ loc_80A7342:
 	thumb_local_start
 sub_80A7354:
 	push {r4-r7,lr}
-	bl s_2011C50_8036F40 // () -> zf
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F40 // () -> zf
 	bne loc_80A738E
-	bl sub_8036F58
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F58
 	bne loc_80A738E
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -3816,7 +3816,7 @@ locret_80A7452:
 	thumb_local_start
 sub_80A7454:
 	push {r4-r7,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	ldr r2, [r5,#0xc]
 	ldr r3, [r5,#0x10]
 	sub r0, r0, r2
@@ -3872,7 +3872,7 @@ sub_80A74A8:
 	ldrb r1, [r7,r2]
 	cmp r0, #0xff
 	bne loc_80A74FA
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	ldr r2, [r5,#0xc]
 	ldr r3, [r5,#0x10]
 	sub r0, r0, r2
@@ -4034,7 +4034,7 @@ sub_80A75DC:
 	movflag EVENT_5F1
 	bl TestEventFlagFromImmediate
 	bne locret_80A763C
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	cmp r2, #0
 	bne loc_80A760E
 	mov r2, r0
@@ -4879,7 +4879,7 @@ sub_80A7C58:
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
 	bne loc_80A7C7E
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_80A7C7E
 	bl sub_809E462
 	bne loc_80A7C7E
@@ -4984,7 +4984,7 @@ sub_80A7CFE:
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
 	bne locret_80A7D70
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne locret_80A7D70
 	bl sub_809E462
 	bne locret_80A7D70
@@ -5066,7 +5066,7 @@ sub_80A7DB8:
 	str r0, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	mov r0, #4
 	strb r0, [r5,#8]
@@ -5135,7 +5135,7 @@ sub_80A7E6C:
 	mov r0, #0x1e
 	str r0, [r5,#0x24]
 	mov r6, #1
-	bl sub_809E2B8
+	bl GetOWPlayerFacingDirection
 	bl sub_80A8038
 	ldrb r1, [r7,#3]
 	cmp r0, r1
@@ -5658,7 +5658,7 @@ sub_80A83B8:
 	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	mov r0, #9
 	mov r1, #0xff
@@ -5701,7 +5701,7 @@ sub_80A8424:
 	strb r0, [r5,#7]
 	b loc_80A8478
 loc_80A843A:
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_80A8478
 	bl sub_809E462
 	bne loc_80A8478
@@ -5713,7 +5713,7 @@ loc_80A843A:
 	bl TestEventFlagFromImmediate
 	bne loc_80A8478
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne loc_80A8478
 	ldrb r4, [r5,#9]
 	cmp r4, #0
@@ -5736,7 +5736,7 @@ loc_80A8478:
 sub_80A8484:
 	push {lr}
 	ldr r0, off_80A84C0 // =byte_808C74C
-	bl sub_8036F70
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F70
 	bne locret_80A84BC
 	ldrb r0, [r5,#7]
 	sub r0, #1
@@ -5774,7 +5774,7 @@ sub_80A84C4:
 	lsl r7, r7, #8
 	mul r4, r7
 	mul r6, r7
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	add r0, r0, r4
 	add r1, r1, r6
 	str r0, [r5,#0xc]
@@ -5946,7 +5946,7 @@ sub_80A860C:
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate
 	bne locret_80A8640
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r2, r0
 	mov r3, r1
 	ldr r0, [r5,#0xc]
@@ -6062,11 +6062,11 @@ loc_80A86EA:
 	bl sub_8142868
 	str r0, [r5,#0xc]
 	str r1, [r5,#0x10]
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	str r2, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	ldr r2, [r5,#0x14]
 	mov r0, #0xc
@@ -6123,11 +6123,11 @@ loc_80A8754:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	str r2, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	ldr r0, [r5,#0x14]
 	ldrb r1, [r7,#3]
@@ -6205,7 +6205,7 @@ sub_80A8814:
 	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	mov r0, #4
 	strb r0, [r5,#8]
@@ -6271,7 +6271,7 @@ sub_80A8894:
 	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	mov r0, #0
 	str r0, [r5,#0x28]
@@ -6461,7 +6461,7 @@ sub_80A8A50:
 loc_80A8A62:
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	bl sprite_update
 	pop {r4-r7,pc}
@@ -6610,7 +6610,7 @@ sub_80A8B4C:
 	ldr r0, [r5,#0x10]
 	sub r0, r0, r2
 	str r0, [r5,#0x10]
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r0, #0x14
 	lsl r0, r0, #0x10
 	add r0, r0, r2
@@ -6697,7 +6697,7 @@ sub_80A8C08:
 	ldr r0, [r5,#0x10]
 	add r0, r0, r2
 	str r0, [r5,#0x10]
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r0, #0x14
 	lsl r0, r0, #0x10
 	add r0, r0, r2
@@ -6744,7 +6744,7 @@ sub_80A8C98:
 	str r0, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	str r4, [r5,#0x14]
 	bl sub_8002E14
 	pop {r4-r7,pc}
@@ -6926,9 +6926,9 @@ sub_80A8DF0:
 	bl chatbox_check_eFlags2009F38
 	bne loc_80A8E18
 	ldr r0, byte_80A8E20 // =0xf0
-	bl sub_8036F70
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F70
 	bne loc_80A8E0A
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_80A8E18
 loc_80A8E0A:
 	bl sub_809E462
@@ -6982,7 +6982,7 @@ sub_80A8E9C:
 	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	bl sub_80A90B0
 	mov r0, #0xb
@@ -7027,9 +7027,9 @@ sub_80A8F08:
 	bl sub_80A8FA0
 	b loc_80A8F3A
 loc_80A8F1E:
-	bl s_2011C50_8036F40 // () -> zf
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F40 // () -> zf
 	bne loc_80A8F3A
-	bl sub_8036F58
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F58
 	bne loc_80A8F3A
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -7393,7 +7393,7 @@ sub_80A91A4:
 	mov r1, #0xe4
 	bl TestEventFlagFromImmediate
 	beq locret_80A91D0
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r2, r0
 	mov r3, r1
 	ldr r0, [r5,#0xc]
@@ -7439,7 +7439,7 @@ sub_80A91F4:
 loc_80A9208:
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 locret_80A9214:
 	pop {pc}
@@ -7618,7 +7618,7 @@ sub_80A9360:
 	bl sub_80A937C
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	bl sprite_update
 	pop {r4-r7,pc}
@@ -7896,7 +7896,7 @@ off_80A9598: .word byte_8143724
 	thumb_local_start
 sub_80A95A8:
 	push {r4,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	ldr r3, [r5,#0x14]
 	cmp r2, r3
 	bne locret_80A95E6
@@ -7931,7 +7931,7 @@ sub_80A95EC:
 	ldrb r0, [r5,#7]
 	cmp r0, #0
 	beq locret_80A9610
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	cmp r2, #0
 	bne loc_80A9604
 	mov r0, #3
@@ -7940,7 +7940,7 @@ sub_80A95EC:
 loc_80A9604:
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 locret_80A9610:
 	pop {r4,pc}
@@ -8014,7 +8014,7 @@ sub_80A9680:
 	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	mov r0, #0
 	str r0, [r5,#0x24]
@@ -8157,7 +8157,7 @@ loc_80A97BC:
 	mov r1, #0xe4
 	bl TestEventFlagFromImmediate
 	beq locret_80A97F0
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r2, r0
 	mov r3, r1
 	ldr r0, [r5,#0xc]
@@ -8458,7 +8458,7 @@ sub_80A9A2C:
 	str r0, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	str r6, [r5,#0x14]
 	bl sub_8002E14
 	ldrb r0, [r5,#4]
@@ -8580,7 +8580,7 @@ loc_80A9BCE:
 	str r0, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	str r6, [r5,#0x14]
 loc_80A9BF6:
 	bl sub_8002E14
@@ -8755,7 +8755,7 @@ sub_80A9D30:
 	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	mov r0, #0
 	strh r0, [r5,#0x24]
@@ -8984,7 +8984,7 @@ sub_80A9EEC:
 	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	mov r0, #SOUND_LOG_OUT_76
 	bl PlaySoundEffect
@@ -9283,7 +9283,7 @@ sub_80AA160:
 	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	mov r0, #4
 	strb r0, [r5,#8]
@@ -9361,7 +9361,7 @@ sub_80AA204:
 	bl sprite_hasShadow
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	ldr r0, [r5,#0xc]
 	ldr r1, [r5,#0x10]
@@ -9495,10 +9495,10 @@ sub_80AA322:
 	bl sub_81279A8
 	bne loc_80AA33E
 	ldr r0, off_80AA364 // =byte_8088514
-	bl sub_8036F70
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F70
 	bne loc_80AA33E
 	ldr r0, off_80AA368 // =byte_8088708
-	bl sub_8036F70
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F70
 	bne loc_80AA33E
 	mov r4, #3
 loc_80AA33E:
@@ -9512,7 +9512,7 @@ loc_80AA33E:
 	str r2, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	bl sprite_update
 	pop {r4-r7,pc}
@@ -9593,7 +9593,7 @@ loc_80AA3E6:
 	bl sprite_hasShadow
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8035694
+	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	ldrb r1, [r4,#4]
 locret_80AA400:

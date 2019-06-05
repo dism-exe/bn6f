@@ -2,7 +2,7 @@
 	thumb_func_start sub_814187C
 sub_814187C:
 	push {r4-r7,lr}
-	ldr r5, off_8141B14 // =byte_2001010 
+	ldr r5, off_8141B14 // =eStruct2001010 
 	mov r0, r5
 	add r0, #8
 	mov r1, #0x10
@@ -19,7 +19,7 @@ sub_814187C:
 	thumb_local_start
 sub_814189A:
 	push {r4-r7,lr}
-	ldr r5, off_8141B14 // =byte_2001010 
+	ldr r5, off_8141B14 // =eStruct2001010 
 	bl sub_814187C
 	bl sub_81418F0
 	mov r0, #0
@@ -29,7 +29,7 @@ sub_814189A:
 	thumb_local_start
 sub_81418AA:
 	push {r4-r7,lr}
-	ldr r5, off_8141B14 // =byte_2001010 
+	ldr r5, off_8141B14 // =eStruct2001010 
 	mov r0, #1
 	strb r0, [r5,#0xd] // (dword_200101C+1 - 0x2001010)
 	mov r0, #0
@@ -39,7 +39,7 @@ sub_81418AA:
 	thumb_local_start
 sub_81418B6:
 	push {r4-r7,lr}
-	ldr r5, off_8141B14 // =byte_2001010 
+	ldr r5, off_8141B14 // =eStruct2001010 
 	mov r0, #0
 	strb r0, [r5,#0xd] // (dword_200101C+1 - 0x2001010)
 	mov r0, #0
@@ -49,7 +49,7 @@ sub_81418B6:
 	thumb_local_start
 sub_81418C2:
 	push {r4-r7,lr}
-	ldr r5, off_8141B14 // =byte_2001010 
+	ldr r5, off_8141B14 // =eStruct2001010 
 	mov r0, #0
 	strb r0, [r5,#0xe] // (dword_200101C+2 - 0x2001010)
 	mov r0, #0
@@ -59,7 +59,7 @@ sub_81418C2:
 	thumb_local_start
 sub_81418CE:
 	push {r4-r7,lr}
-	ldr r5, off_8141B14 // =byte_2001010 
+	ldr r5, off_8141B14 // =eStruct2001010 
 	mov r0, #1
 	strb r0, [r5,#0xe] // (dword_200101C+2 - 0x2001010)
 	mov r0, #0
@@ -69,7 +69,7 @@ sub_81418CE:
 	thumb_local_start
 sub_81418DA:
 	push {r4-r7,lr}
-	ldr r5, off_8141B14 // =byte_2001010 
+	ldr r5, off_8141B14 // =eStruct2001010 
 	strb r0, [r5,#0x14] // (dword_2001024 - 0x2001010)
 	strb r1, [r5,#0x15] // (dword_2001024+1 - 0x2001010)
 	pop {r4-r7,pc}
@@ -78,7 +78,7 @@ sub_81418DA:
 	thumb_func_start sub_81418E4
 sub_81418E4:
 	push {r4-r7,lr}
-	ldr r5, off_8141B14 // =byte_2001010 
+	ldr r5, off_8141B14 // =eStruct2001010 
 	ldrb r0, [r5,#0x16] // (dword_2001024+2 - 0x2001010)
 	ldrb r1, [r5,#0x15] // (dword_2001024+1 - 0x2001010)
 	ldrb r2, [r5,#0x14] // (dword_2001024 - 0x2001010)
@@ -88,7 +88,7 @@ sub_81418E4:
 	thumb_func_start sub_81418F0
 sub_81418F0:
 	push {r4-r7,lr}
-	ldr r5, off_8141B14 // =byte_2001010 
+	ldr r5, off_8141B14 // =eStruct2001010 
 	mov r0, #0
 	bl sub_81420C8
 	push {r0}
@@ -107,7 +107,7 @@ sub_81418F0:
 	thumb_local_start
 sub_8141914:
 	push {r4-r7,lr}
-	ldr r5, off_8141B14 // =byte_2001010 
+	ldr r5, off_8141B14 // =eStruct2001010 
 	ldr r4, off_8141954 // =byte_8141958 
 	lsl r6, r3, #3
 	add r4, r4, r6
@@ -150,7 +150,7 @@ byte_8141958: .byte 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0, 0x18, 0x
 	thumb_func_start sub_81419A0
 sub_81419A0:
 	push {r4-r7,lr}
-	ldr r5, off_8141B14 // =byte_2001010 
+	ldr r5, off_8141B14 // =eStruct2001010 
 	bl sub_8141AA8
 	bne loc_8141A0C
 	ldrb r0, [r5,#0x3] // (byte_2001013 - 0x2001010)
@@ -171,7 +171,7 @@ loc_81419CC:
 	bl sub_8046818
 	bl sub_8046854
 	bl sub_811E0BA
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_8141A0C
 	bl sub_809E462
 	bne loc_8141A0C
@@ -290,7 +290,7 @@ locret_8141AA6:
 sub_8141AA8:
 	push {r4-r7,lr}
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne loc_8141ACE
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -344,7 +344,7 @@ loc_8141B00:
 	pop {r4-r7,pc}
 off_8141B04: .word byte_8141B08
 byte_8141B08: .byte 0x91, 0x0, 0x91, 0x1, 0x91, 0x2, 0x88, 0x3, 0x0, 0x0, 0x0, 0x0
-off_8141B14: .word byte_2001010
+off_8141B14: .word eStruct2001010
 off_8141B18: .word off_8141B30
 	.word off_8141C9C
 	.word off_8141E1C
@@ -714,7 +714,7 @@ off_8142130: .word unk_2000BE0
 	thumb_func_start sub_8142134
 sub_8142134:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	mov r0, r5
 	add r0, #8
 	mov r1, #0x40 
@@ -729,7 +729,7 @@ sub_8142134:
 	thumb_local_start
 sub_814214E:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	mov r0, #0
 	strb r0, [r5,#0xd] // (byte_200078D - 0x2000780)
 	mov r0, #0
@@ -739,7 +739,7 @@ sub_814214E:
 	thumb_local_start
 sub_814215A:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	mov r0, #1
 	strb r0, [r5,#0xd] // (byte_200078D - 0x2000780)
 	mov r0, #0
@@ -749,7 +749,7 @@ sub_814215A:
 	thumb_local_start
 sub_8142166:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	strb r0, [r5,#0xe] // (byte_200078E - 0x2000780)
 	pop {r4-r7,pc}
 	thumb_func_end sub_8142166
@@ -757,7 +757,7 @@ sub_8142166:
 	thumb_func_start sub_814216E
 sub_814216E:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	ldrb r0, [r5,#0xe] // (byte_200078E - 0x2000780)
 	tst r0, r0
 	pop {r4-r7,pc}
@@ -766,7 +766,7 @@ sub_814216E:
 	thumb_local_start
 sub_8142178:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	ldrb r0, [r5,#0xe] // (byte_200078E - 0x2000780)
 	add r0, #1
 	strb r0, [r5,#0xe] // (byte_200078E - 0x2000780)
@@ -776,7 +776,7 @@ sub_8142178:
 	thumb_func_start sub_8142184
 sub_8142184:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	ldrb r0, [r5,#0xe] // (byte_200078E - 0x2000780)
 	sub r0, #1
 	strb r0, [r5,#0xe] // (byte_200078E - 0x2000780)
@@ -786,7 +786,7 @@ sub_8142184:
 	thumb_func_start sub_8142190
 sub_8142190:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	add r0, #0x10
 	ldrb r0, [r5,r0]
 	tst r0, r0
@@ -796,7 +796,7 @@ sub_8142190:
 	thumb_func_start sub_814219C
 sub_814219C:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	ldrb r0, [r5,#0x10] // (dword_2000790 - 0x2000780)
 	ldrb r1, [r5,#0x11] // (dword_2000790+1 - 0x2000780)
 	add r0, r0, r1
@@ -811,7 +811,7 @@ sub_814219C:
 	thumb_func_start sub_81421B2
 sub_81421B2:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	mov r1, r0
 	add r1, #0x10
 	ldrb r0, [r5,r1]
@@ -827,7 +827,7 @@ loc_81421C4:
 	thumb_func_start sub_81421C8
 sub_81421C8:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	strb r0, [r5,#0xb] // (byte_200078B - 0x2000780)
 	pop {r4-r7,pc}
 	thumb_func_end sub_81421C8
@@ -835,7 +835,7 @@ sub_81421C8:
 	thumb_func_start sub_81421D0
 sub_81421D0:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	ldrb r0, [r5,#0xb] // (byte_200078B - 0x2000780)
 	pop {r4-r7,pc}
 	thumb_func_end sub_81421D0
@@ -843,7 +843,7 @@ sub_81421D0:
 	thumb_func_start sub_81421D8
 sub_81421D8:
 	push {r4-r7,lr}
-	ldr r0, off_8142308 // =byte_2000780 
+	ldr r0, off_8142308 // =eStruct2000780 
 	add r0, #0x18
 	pop {r4-r7,pc}
 	thumb_func_end sub_81421D8
@@ -851,7 +851,7 @@ sub_81421D8:
 	thumb_func_start sub_81421E0
 sub_81421E0:
 	push {r4-r7,lr}
-	ldr r0, off_8142308 // =byte_2000780 
+	ldr r0, off_8142308 // =eStruct2000780 
 	ldr r0, [r0,#0x18] // (byte_2000798 - 0x2000780)
 	pop {r4-r7,pc}
 	thumb_func_end sub_81421E0
@@ -859,7 +859,7 @@ sub_81421E0:
 	thumb_local_start
 sub_81421E8:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	mov r4, #0
 loc_81421EE:
 	ldr r1, [r5,#0x18]
@@ -880,7 +880,7 @@ loc_81421FE:
 	thumb_func_start sub_8142204
 sub_8142204:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	ldr r1, [r5,#0x28] // (byte_20007A8 - 0x2000780)
 	add r2, r1, #1
 	str r2, [r5,#0x28] // (byte_20007A8 - 0x2000780)
@@ -898,7 +898,7 @@ dword_8142220: .word 0x1E140A00
 	thumb_func_start sub_8142224
 sub_8142224:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	mov r6, #0
 	ldr r4, [r5,#0x28] // (byte_20007A8 - 0x2000780)
 	sub r4, #1
@@ -916,7 +916,7 @@ loc_8142238:
 	thumb_func_start sub_814223E
 sub_814223E:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	mov r0, #0
 	str r0, [r5,#0x28] // (byte_20007A8 - 0x2000780)
 	pop {r4-r7,pc}
@@ -925,7 +925,7 @@ sub_814223E:
 	thumb_func_start sub_8142248
 sub_8142248:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	bl sub_81422BE
 	bne loc_8142272
 	ldrb r0, [r5,#0x3] // (byte_2000783 - 0x2000780)
@@ -950,7 +950,7 @@ loc_8142272:
 	thumb_func_start sub_814227A
 sub_814227A:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	bl sub_81426CE
 	ldr r1, off_8142290 // =byte_8142294 
 	lsl r0, r0, #2
@@ -967,7 +967,7 @@ byte_8142294: .byte 0x2, 0x2, 0x1, 0x1, 0x2, 0x2, 0x4, 0x1, 0x3, 0x4, 0x4, 0x2, 
 	thumb_func_start sub_81422B4
 sub_81422B4:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =byte_2000780 
+	ldr r5, off_8142308 // =eStruct2000780 
 	mov r0, #0
 	str r0, [r5,#0x10] // (dword_2000790 - 0x2000780)
 	pop {r4-r7,pc}
@@ -977,7 +977,7 @@ sub_81422B4:
 sub_81422BE:
 	push {r4-r7,lr}
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne loc_81422F0
 	bl sub_81426CE
 	mov r4, r0
@@ -1001,7 +1001,7 @@ loc_81422F0:
 off_81422F4: .word byte_81422F8
 byte_81422F8: .byte 0x86, 0x6, 0x87, 0x6, 0x88, 0x6, 0x89, 0x6, 0x8A, 0x6, 0x8B
 	.byte 0x6, 0x8C, 0x6, 0x8D, 0x6
-off_8142308: .word byte_2000780
+off_8142308: .word eStruct2000780
 off_814230C: .word byte_814232C
 	.word byte_814234C
 	.word byte_814237C
@@ -1500,7 +1500,7 @@ sub_81428D4:
 	sub sp, sp, #0x10
 	bl sub_8142990
 	mov r4, r0
-	bl sub_809E2B8
+	bl GetOWPlayerFacingDirection
 	mov r1, #1
 	tst r0, r1
 	beq loc_81428F6
@@ -1525,7 +1525,7 @@ loc_81428F6:
 	mov r2, #1
 	bl sub_8142952
 	mov r7, r0
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	str r0, [sp]
 	str r1, [sp,#4]
 	mov r0, r6
@@ -1583,7 +1583,7 @@ byte_8142980: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0xFF, 0x0,
 	thumb_func_start sub_8142990
 sub_8142990:
 	push {r4-r7,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	bl sub_8142816
 	pop {r4-r7,pc}
 	thumb_func_end sub_8142990
@@ -1632,7 +1632,7 @@ sub_81429CA:
 	ldr r7, off_8142A18 // =off_8142A1C 
 	lsl r0, r0, #2
 	ldr r7, [r7,r0]
-	bl sub_809E2B8
+	bl GetOWPlayerFacingDirection
 	lsr r0, r0, #1
 	lsl r0, r0, #1
 	add r7, r7, r0
@@ -1784,7 +1784,7 @@ sub_8142B28:
 	ldrb r0, [r5,#1]
 	cmp r0, #0xf
 	bne loc_8142B4C
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	ldr r0, [r5,#0x14]
 	cmp r0, r2
 	bne loc_8142B4C
@@ -1950,7 +1950,7 @@ loc_8142C58:
 	bl getPETNaviSelect // () -> u8
 	mov r1, r4
 	bl sub_80010EC
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r3, r2
 	mov r2, r1
 	mov r1, r0
@@ -2822,7 +2822,7 @@ sub_814339C:
 	push {r4-r7,lr}
 	mov r0, #2
 	bl sub_8003A64
-	ldr r5, off_81434E0 // =byte_2001010 
+	ldr r5, off_81434E0 // =eStruct2001010 
 	mov r0, r5
 	// memBlock
 	add r0, #8
@@ -2840,7 +2840,7 @@ sub_814339C:
 	thumb_local_start
 sub_81433C2:
 	push {r4-r7,lr}
-	ldr r5, off_81434E0 // =byte_2001010 
+	ldr r5, off_81434E0 // =eStruct2001010 
 	strb r0, [r5,#0x8] // (byte_2001018 - 0x2001010)
 	pop {r4-r7,pc}
 	thumb_func_end sub_81433C2
@@ -2848,7 +2848,7 @@ sub_81433C2:
 	thumb_local_start
 sub_81433CA:
 	push {r4-r7,lr}
-	ldr r5, off_81434E0 // =byte_2001010 
+	ldr r5, off_81434E0 // =eStruct2001010 
 	ldrb r0, [r5,#0x8] // (byte_2001018 - 0x2001010)
 	pop {r4-r7,pc}
 	thumb_func_end sub_81433CA
@@ -2856,7 +2856,7 @@ sub_81433CA:
 	thumb_local_start
 sub_81433D2:
 	push {r4-r7,lr}
-	ldr r5, off_81434E0 // =byte_2001010 
+	ldr r5, off_81434E0 // =eStruct2001010 
 	strb r0, [r5,#0x9] // (byte_2001019 - 0x2001010)
 	pop {r4-r7,pc}
 	thumb_func_end sub_81433D2
@@ -2864,7 +2864,7 @@ sub_81433D2:
 	thumb_func_start sub_81433DA
 sub_81433DA:
 	push {r4-r7,lr}
-	ldr r5, off_81434E0 // =byte_2001010 
+	ldr r5, off_81434E0 // =eStruct2001010 
 	ldrb r0, [r5,#0x9] // (byte_2001019 - 0x2001010)
 	tst r0, r0
 	pop {r4-r7,pc}
@@ -2873,7 +2873,7 @@ sub_81433DA:
 	thumb_func_start sub_81433E4
 sub_81433E4:
 	push {r4-r7,lr}
-	ldr r5, off_81434E0 // =byte_2001010 
+	ldr r5, off_81434E0 // =eStruct2001010 
 	ldrb r1, [r5,#0x9] // (byte_2001019 - 0x2001010)
 	add r1, r1, r0
 	cmp r1, #5
@@ -2887,7 +2887,7 @@ loc_81433F2:
 	thumb_local_start
 sub_81433F6:
 	push {r4-r7,lr}
-	ldr r5, off_81434E0 // =byte_2001010 
+	ldr r5, off_81434E0 // =eStruct2001010 
 	ldrb r1, [r5,#0x9] // (byte_2001019 - 0x2001010)
 	sub r1, r1, r0
 	bge loc_8143402
@@ -2900,7 +2900,7 @@ loc_8143402:
 	thumb_local_start
 sub_8143406:
 	push {r4-r7,lr}
-	ldr r5, off_81434E0 // =byte_2001010 
+	ldr r5, off_81434E0 // =eStruct2001010 
 	bl GetRNG2 // () -> int
 	mov r1, #3
 	and r0, r1
@@ -2909,7 +2909,7 @@ sub_8143406:
 	thumb_func_end sub_8143406
 
 	push {r4-r7,lr}
-	ldr r5, off_81434E0 // =byte_2001010 
+	ldr r5, off_81434E0 // =eStruct2001010 
 	sub sp, sp, #0x10
 	mov r0, sp
 	mov r1, #0x10
@@ -2927,7 +2927,7 @@ sub_8143406:
 	thumb_local_start
 sub_814343A:
 	push {r4-r7,lr}
-	ldr r5, off_81434E0 // =byte_2001010 
+	ldr r5, off_81434E0 // =eStruct2001010 
 	sub sp, sp, #0x10
 	// mem
 	mov r0, sp
@@ -2953,7 +2953,7 @@ byte_8143464: .byte 0x5, 0x0, 0x0, 0x0, 0x5, 0x0, 0x0, 0x0, 0x5, 0x0, 0x0, 0x0
 	thumb_local_start
 sub_8143470:
 	push {r4-r7,lr}
-	ldr r5, off_81434E0 // =byte_2001010 
+	ldr r5, off_81434E0 // =eStruct2001010 
 	ldr r0, [r5,#0xc] // (dword_200101C - 0x2001010)
 	sub r0, #1
 	bge loc_814347C
@@ -2967,7 +2967,7 @@ loc_814347C:
 	thumb_func_start sub_8143482
 sub_8143482:
 	push {r4-r7,lr}
-	ldr r5, off_81434E0 // =byte_2001010 
+	ldr r5, off_81434E0 // =eStruct2001010 
 	bl sub_81434BA
 	bne loc_81434B6
 	ldrb r0, [r5,#0x3] // (byte_2001013 - 0x2001010)
@@ -2996,7 +2996,7 @@ loc_81434B6:
 sub_81434BA:
 	push {r4-r7,lr}
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne loc_81434DC
 	bl sub_8143088
 	cmp r0, #0xff
@@ -3010,7 +3010,7 @@ sub_81434BA:
 loc_81434DC:
 	mov r0, #1
 	pop {r4-r7,pc}
-off_81434E0: .word byte_2001010
+off_81434E0: .word eStruct2001010
 byte_81434E4: .byte 0xCC, 0x0, 0x38, 0xFF, 0x5, 0x5, 0x2, 0x0, 0x8C, 0x0, 0xF2, 0x0
 	.byte 0x7, 0x7, 0x2, 0x0, 0x1C, 0x0, 0xBE, 0x0, 0x5, 0x5, 0x3, 0x0
 	.byte 0x42, 0xFF, 0x28, 0x0, 0x7, 0x7, 0x3, 0x0, 0xEC, 0xFE, 0x24, 0xFF
@@ -3483,7 +3483,7 @@ sub_8143C62:
 	ldr r1, off_8143C7C // =off_8143C80 
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
-	bl sub_8030A60
+	bl npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
 	movflag EVENT_1721
 	bl SetEventFlagFromImmediate
 	pop {r4-r7,pc}
@@ -3664,7 +3664,7 @@ sub_8143DEA:
 	sub sp, sp, #0x10
 	bl sub_8143EA4
 	mov r4, r0
-	bl sub_809E2B8
+	bl GetOWPlayerFacingDirection
 	mov r1, #1
 	tst r0, r1
 	beq loc_8143E0C
@@ -3689,7 +3689,7 @@ loc_8143E0C:
 	mov r2, #1
 	bl sub_8143E68
 	mov r7, r0
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	str r0, [sp]
 	str r1, [sp,#4]
 	mov r0, r6
@@ -3746,7 +3746,7 @@ byte_8143E94: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0xFF, 0x0,
 	thumb_func_start sub_8143EA4
 sub_8143EA4:
 	push {r4-r7,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	bl sub_8143D7A
 	pop {r4-r7,pc}
 	thumb_func_end sub_8143EA4
@@ -3820,7 +3820,7 @@ sub_8143F20:
 	push {r4-r7,lr}
 	mov r0, #5
 	bl sub_8003A64
-	ldr r5, off_81440D4 // =byte_2001010 
+	ldr r5, off_81440D4 // =eStruct2001010 
 	mov r0, r5
 	// memBlock
 	add r0, #8
@@ -3838,24 +3838,24 @@ sub_8143F38:
 	mov r0, #0
 loc_8143F3E:
 	push {r4-r7,lr}
-	ldr r5, off_81440D4 // =byte_2001010 
+	ldr r5, off_81440D4 // =eStruct2001010 
 	strb r0, [r5,#0x9] // (byte_2001019 - 0x2001010)
 	mov r0, #0
 	pop {r4-r7,pc}
 	thumb_func_end sub_8143F38
 
 	push {r4-r7,lr}
-	ldr r5, off_81440D4 // =byte_2001010 
+	ldr r5, off_81440D4 // =eStruct2001010 
 	strb r0, [r5,#0x8] // (byte_2001018 - 0x2001010)
 	pop {r4-r7,pc}
 	push {r4-r7,lr}
-	ldr r5, off_81440D4 // =byte_2001010 
+	ldr r5, off_81440D4 // =eStruct2001010 
 	ldrb r0, [r5,#0x8] // (byte_2001018 - 0x2001010)
 	pop {r4-r7,pc}
 	thumb_local_start
 sub_8143F58:
 	push {r4-r7,lr}
-	ldr r5, off_81440D4 // =byte_2001010 
+	ldr r5, off_81440D4 // =eStruct2001010 
 	str r0, [r5,#0x10] // (dword_2001020 - 0x2001010)
 	pop {r4-r7,pc}
 	thumb_func_end sub_8143F58
@@ -3863,7 +3863,7 @@ sub_8143F58:
 	thumb_local_start
 sub_8143F60:
 	push {r4-r7,lr}
-	ldr r5, off_81440D4 // =byte_2001010 
+	ldr r5, off_81440D4 // =eStruct2001010 
 	ldr r0, [r5,#0x10] // (dword_2001020 - 0x2001010)
 	pop {r4-r7,pc}
 	thumb_func_end sub_8143F60
@@ -3871,7 +3871,7 @@ sub_8143F60:
 	thumb_func_start sub_8143F68
 sub_8143F68:
 	push {r4-r7,lr}
-	ldr r5, off_81440D4 // =byte_2001010 
+	ldr r5, off_81440D4 // =eStruct2001010 
 	str r0, [r5,#0xc] // (dword_200101C - 0x2001010)
 	tst r0, r0
 	pop {r4-r7,pc}
@@ -3880,7 +3880,7 @@ sub_8143F68:
 	thumb_func_start sub_8143F72
 sub_8143F72:
 	push {r4-r7,lr}
-	ldr r5, off_81440D4 // =byte_2001010 
+	ldr r5, off_81440D4 // =eStruct2001010 
 	ldr r0, [r5,#0xc] // (dword_200101C - 0x2001010)
 	tst r0, r0
 	pop {r4-r7,pc}
@@ -3892,7 +3892,7 @@ sub_8143F7C:
 	ldrb r0, [r5,#9]
 	tst r0, r0
 	bne locret_8143F8E
-	ldr r5, off_81440D4 // =byte_2001010 
+	ldr r5, off_81440D4 // =eStruct2001010 
 	ldr r0, [r5,#0xc] // (dword_200101C - 0x2001010)
 	sub r0, #1
 	blt locret_8143F8E
@@ -3904,7 +3904,7 @@ locret_8143F8E:
 	thumb_func_start sub_8143F90
 sub_8143F90:
 	push {r4-r7,lr}
-	ldr r5, off_81440D4 // =byte_2001010 
+	ldr r5, off_81440D4 // =eStruct2001010 
 	bl sub_8143F72
 	mov r4, r0
 	bl sub_8143BFC
@@ -3919,7 +3919,7 @@ sub_8143F90:
 	thumb_func_start sub_8143FAA
 sub_8143FAA:
 	push {r4-r7,lr}
-	ldr r5, off_81440D4 // =byte_2001010 
+	ldr r5, off_81440D4 // =eStruct2001010 
 	mov r0, #0
 	str r0, [r5,#0x14] // (dword_2001024 - 0x2001010)
 	ldr r0, dword_8143FBC // =0x0 
@@ -3934,7 +3934,7 @@ dword_8143FC0: .word 0x2000
 	thumb_func_start sub_8143FC4
 sub_8143FC4:
 	push {r4-r7,lr}
-	ldr r5, off_81440D4 // =byte_2001010 
+	ldr r5, off_81440D4 // =eStruct2001010 
 	ldr r0, [r5,#0x14] // (dword_2001024 - 0x2001010)
 	cmp r0, #0
 	bne loc_8143FD6
@@ -3976,7 +3976,7 @@ loc_8143FFE:
 	thumb_func_start sub_8144010
 sub_8144010:
 	push {r4-r7,lr}
-	ldr r5, off_81440D4 // =byte_2001010 
+	ldr r5, off_81440D4 // =eStruct2001010 
 	ldr r0, [r5,#0x14] // (dword_2001024 - 0x2001010)
 	asr r0, r0, #0x10
 	cmp r0, #0
@@ -4008,7 +4008,7 @@ byte_8144040: .byte 0x1B, 0x35, 0x4A, 0x5A, 0x64, 0x0, 0x0, 0x0
 	thumb_func_start sub_8144048
 sub_8144048:
 	push {r4-r7,lr}
-	ldr r5, off_81440D4 // =byte_2001010 
+	ldr r5, off_81440D4 // =eStruct2001010 
 	bl sub_81440AE
 	bne loc_81440A6
 	ldrb r0, [r5,#0x3] // (byte_2001013 - 0x2001010)
@@ -4055,7 +4055,7 @@ loc_81440A6:
 sub_81440AE:
 	push {r4-r7,lr}
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne loc_81440D0
 	bl sub_8143B30
 	cmp r0, #0xff
@@ -4069,7 +4069,7 @@ sub_81440AE:
 loc_81440D0:
 	mov r0, #1
 	pop {r4-r7,pc}
-off_81440D4: .word byte_2001010
+off_81440D4: .word eStruct2001010
 	thumb_func_end sub_81440AE
 
 /*For debugging purposes, connect comment at any range!*/

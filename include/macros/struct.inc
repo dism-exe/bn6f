@@ -84,6 +84,9 @@
 		.purgem u8
 		.purgem u16
 		.purgem u32
+		.purgem s8
+		.purgem s16
+		.purgem s32
 		.purgem ptr
 		.purgem u8_arr
 		.purgem bool
@@ -104,6 +107,18 @@
 		.endm
 
 		.macro u32 field:req
+			struct_entry \label\()_\field, 4
+		.endm
+
+		.macro s8 field:req
+			struct_entry \label\()_\field, 1
+		.endm
+
+		.macro s16 field:req
+			struct_entry \label\()_\field, 2
+		.endm
+
+		.macro s32 field:req
 			struct_entry \label\()_\field, 4
 		.endm
 

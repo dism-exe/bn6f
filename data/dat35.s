@@ -35,7 +35,7 @@ sub_812F000::
 	thumb_func_start sub_812F014
 sub_812F014::
 	push {r0,lr}
-	bl sub_80062C8
+	bl screenFade_80062C8
 	cmp r0, #0xc
 	bne loc_812F026
 	mov r0, #8

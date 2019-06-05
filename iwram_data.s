@@ -84,7 +84,13 @@ byte_3001710:: // 0x3001710
 byte_3001730:: // 0x3001730
 	.space 32
 iPallete3001750:: // 0x3001750
-	.space 512
+	.space 0x120
+iPalette3001870:: // 0x3001870
+	.space 0x20
+iPalette3001890:: // 0x3001890
+	.space 0x60
+iPalette30018F0:: // 0x30018f0
+	.space 0x60
 byte_3001950:: // 0x3001950
 	.space 16
 byte_3001960:: // 0x3001960
@@ -128,7 +134,9 @@ word_3001B56:: // 0x3001b56
 word_3001B58:: // 0x3001b58
 	.space 8
 iPalette3001B60:: // 0x3001b60
-	.space 512
+	.space 0x120
+iPalette3001C80:: // 0x3001c80
+	.space 0xe0
 dword_3001D60:: // 0x3001d60
 	.space 16
 iObjectAttr3001D70:: // 0x3001d70

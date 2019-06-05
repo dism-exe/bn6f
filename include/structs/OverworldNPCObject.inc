@@ -3,10 +3,15 @@
 	set_struct_label \struct_entry, \label
 	object_header_struct \label, \struct_entry, \set_struct_start_address
 
+	union
 	u8 WalkingSpeed // loc=0x4
 	u8 WalkingTimer // loc=0x5
 	u8 Undetected_06 // loc=0x6
 	u8 Unk_07 // loc=0x7
+	nextu
+	u32 WalkingSpeed_WalkingTimer_Undetected_06_Unk_07 // loc=0x4
+	endu
+
 	u8 Unk_08_MainJumptableIndex // loc=0x8
 	u8 MovementFlag_09 // loc=0x9
 		struct_const MOVEMENT_FLAG_STOP,                      0x00
@@ -43,6 +48,7 @@
 	u8 TerminateScript_1f // loc=0x1f
 	u16 AnimationTimer // loc=0x20
 	u16 Timer_20 // loc=0x22
+	u0 Coords // loc=0x24
 	u32 X // loc=0x24
 	u32 Y // loc=0x28
 	u32 Z // loc=0x2c

@@ -123,7 +123,7 @@ off_8089154: .word sub_8089160+1
 sub_8089160:
 	push {r4-r7,lr}
 	mov r0, #0
-	bl sub_80301B2
+	bl camera_80301B2
 	mov r0, #0
 	bl sub_8033FC0
 	mov r0, #0
@@ -415,9 +415,9 @@ sub_808964C:
 	bl sub_814219C
 	bne loc_808966E
 	mov r0, #4
-	bl sub_809E2AE
-	bl sub_809E2B8
-	bl sub_809E13C
+	bl SetOWPlayerFacingDirection
+	bl GetOWPlayerFacingDirection
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	mov r0, #0
 	bl sub_8089CB0
 	mov r0, #0x74 
@@ -429,11 +429,11 @@ loc_808966E:
 	bl sub_8142990
 	mov r1, r4
 	bl sub_8142896
-	bl sub_809E2AE
-	bl sub_809E2B8
+	bl SetOWPlayerFacingDirection
+	bl GetOWPlayerFacingDirection
 	ldr r1, off_80896A4 // =byte_80896A8 
 	ldrb r0, [r1,r0]
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	bl sub_8089D26
 	mov r0, #0
 	bl sub_81421C8
@@ -798,11 +798,11 @@ sub_808991C:
 	bl sub_8089CB4
 	beq loc_808994E
 	bl sub_8142B58
-	bl sub_809E2AE
-	bl sub_809E2B8
+	bl SetOWPlayerFacingDirection
+	bl GetOWPlayerFacingDirection
 	ldr r1, off_8089954 // =byte_8089958 
 	ldrb r0, [r1,r0]
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	bl sub_8089CDC
 	mov r0, #0x1e
 	bl sub_8089CB0
@@ -922,7 +922,7 @@ sub_8089A10:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	str r0, [r5,#0x3c]
-	bl sub_8036F98
+	bl cutsceneCamera_setCutsceneCameraScript_8036f98
 	mov r0, #1
 	strb r0, [r5,#0x13]
 	mov r0, #0x3c 
@@ -976,8 +976,8 @@ sub_8089A60:
 	mov r0, #0x65 
 	add r0, #0xff
 	bl PlaySoundEffect
-	bl sub_8036E44
-	bl sub_8036E78
+	bl playCertainMapMusicBasedOnEventByte_8036e44
+	bl PlayMapMusic
 loc_8089ABA:
 	mov r0, #0x1e
 	bl sub_8089CB0
@@ -1014,13 +1014,13 @@ sub_8089AE8:
 	bne loc_8089B2A
 	bl sub_8089CB4
 	beq loc_8089B2A
-	bl sub_8036FAA
+	bl cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
 	mov r0, #0
 	strb r0, [r5,#0x13]
 	mov r0, #4
-	bl sub_809E2AE
-	bl sub_809E2B8
-	bl sub_809E13C
+	bl SetOWPlayerFacingDirection
+	bl GetOWPlayerFacingDirection
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	ldr r0, [r7,#0x10]
 	tst r0, r0
 	bne loc_8089B20
@@ -1068,9 +1068,9 @@ sub_8089B54:
 	bl sub_8089CB4
 	beq loc_8089B7A
 	mov r0, #4
-	bl sub_809E2AE
-	bl sub_809E2B8
-	bl sub_809E13C
+	bl SetOWPlayerFacingDirection
+	bl GetOWPlayerFacingDirection
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	bl reqBBS_clearFlag_8140A0C
 	mov r0, #0x18
 	strb r0, [r5]
@@ -1190,7 +1190,7 @@ sub_8089C16:
 	cmp r0, #0
 	bne loc_8089C3E
 	mov r0, #0x3a 
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 loc_8089C3E:
 	mov r0, #0x1e
 	bl sub_8089CB0
@@ -1198,8 +1198,8 @@ loc_8089C3E:
 	strb r0, [r5]
 	b loc_8089C74
 loc_8089C4A:
-	bl sub_809E2B8
-	bl sub_809E13C
+	bl GetOWPlayerFacingDirection
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	mov r0, #0x1e
 	bl sub_8089CB0
 	bl sub_814216E
@@ -1224,7 +1224,7 @@ sub_8089C78:
 	push {r4-r7,lr}
 	bl sub_8089CB4
 	beq loc_8089C9A
-	bl sub_8036FAA
+	bl cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
 	mov r0, #0
 	strb r0, [r5,#0x13]
 	bl sub_81426CE
@@ -1276,7 +1276,7 @@ sub_8089CC4:
 	bl sub_81429CA
 	ldr r0, off_8089CD8 // =byte_8089480
 	str r0, [r5,#0x3c]
-	bl sub_8036F98
+	bl cutsceneCamera_setCutsceneCameraScript_8036f98
 	mov r0, #1
 	strb r0, [r5,#0x13]
 	pop {r4-r7,pc}
@@ -1288,7 +1288,7 @@ sub_8089CDC:
 	push {r4-r7,lr}
 	ldr r0, off_8089CF4 // =byte_808948A
 	str r0, [r5,#0x3c]
-	bl sub_8036F98
+	bl cutsceneCamera_setCutsceneCameraScript_8036f98
 	mov r0, #1
 	strb r0, [r5,#0x13]
 	bl sub_8089D0E

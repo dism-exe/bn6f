@@ -28,9 +28,9 @@ PlaySoundEffect:
 	pop {r1-r7,pc}
 	thumb_func_end PlaySoundEffect
 
-	thumb_func_start PlaySong
+	thumb_func_start PlayMusic
 // (enum Song idx) -> void
-PlaySong:
+PlayMusic:
 	push {r1-r7,lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -46,7 +46,7 @@ loc_80005EC:
 	bl m4a_800061E // () -> void
 locret_80005F0:
 	pop {r1-r7,pc}
-	thumb_func_end PlaySong
+	thumb_func_end PlayMusic
 
 	thumb_func_start sub_80005F2
 sub_80005F2:
@@ -163,8 +163,8 @@ sub_800068A:
 	pop {r4-r7,pc}
 	thumb_func_end sub_800068A
 
-	thumb_func_start sub_80006A2
-sub_80006A2:
+	thumb_func_start sound_80006A2
+sound_80006A2:
 	push {r4-r7,lr}
 	cmp r0, #0x25
 	bgt loc_80006B0
@@ -240,7 +240,7 @@ off_8000704: .word byte_2010690
 	.word byte_2010A10
 	.word byte_2010590
 	.word off_2010890
-	thumb_func_end sub_80006A2
+	thumb_func_end sound_80006A2
 
 // () -> void
 	thumb_func_start musicGameState_8000784
@@ -1429,8 +1429,8 @@ locret_8000EDC:
 dword_8000EE0: .word 0xFFFF
 	thumb_func_end sub_8000EB6
 
-	thumb_func_start sub_8000EE4
-sub_8000EE4:
+	thumb_func_start GetTitleScreenIconCount
+GetTitleScreenIconCount:
 	push {r4-r7,lr}
 	mov r4, #0
 	mov r7, #0
@@ -1512,7 +1512,7 @@ loc_8000F80:
 	mov r0, r4
 	mov r1, r7
 	pop {r4-r7,pc}
-	thumb_func_end sub_8000EE4
+	thumb_func_end GetTitleScreenIconCount
 
 	thumb_func_start sub_8000F86
 sub_8000F86:
@@ -1668,7 +1668,7 @@ updatePlayerGameState_800107A:
 	ldr r0, [r1,#0x24]
 	str r0, [r3,#oGameState_Unk_2c]
 	ldrb r0, [r1,#0x10]
-	str r0, [r3,#oGameState_Unk_30]
+	str r0, [r3,#oGameState_facingDirectionAfterWarp_30]
 	mov pc, lr
 	thumb_func_end updatePlayerGameState_800107A
 

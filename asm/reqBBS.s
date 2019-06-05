@@ -166,7 +166,7 @@ reqBBS_draw_813E1C8:
 	ldr r1, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
 	ldr r1, [r1,#0x14] // reqBBS_GUI.pad_10+4
 	str r0, [r1]
-	bl sub_809E122
+	bl owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0
@@ -1979,7 +1979,7 @@ ExitReqBBSMenu813F590:
 	ldr r1, [r5,#0x28]
 	ldr r1, [r1,#0x20]
 	str r0, [r1]
-	bl sub_809E122
+	bl owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
 	mov r0, r10
 	ldr r0, [r0,#0x1c]
 	mov r1, #0

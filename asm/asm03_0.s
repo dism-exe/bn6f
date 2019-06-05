@@ -6273,7 +6273,7 @@ locret_802963A:
 	thumb_local_start
 sub_802963C:
 	push {r0-r3,lr}
-	bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_2008A0) -> void
 	ldr r1, off_802967C // =0x140 
 	sub r0, r0, r1
 	ldr r1, off_8029680 // =0x1f60 
@@ -7931,7 +7931,7 @@ sub_802A30C:
 	add r4, #2
 	strb r4, [r5,#0x13]
 	bl IsScreenFadeActive // () -> zf
-	bl loc_80062FC // () -> zf
+	bl isScreenFadeActive_80062FC // () -> zf
 	cmp r0, #0
 	bne locret_802A33C
 	mov r0, #8
@@ -7977,7 +7977,7 @@ sub_802A362:
 	add r4, #2
 	strb r4, [r5,#0x13]
 	bl IsScreenFadeActive // () -> zf
-	bl loc_80062FC // () -> zf
+	bl isScreenFadeActive_80062FC // () -> zf
 	cmp r0, #0
 	bne locret_802A392
 	mov r0, #0
@@ -12717,11 +12717,13 @@ off_802CCB4: .word sub_80E07E0+1
 	.word sub_80E81B4+1
 	.word sub_80E8BC0+1
 	.word sub_80E8ADC+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_80E91B8+1
 	.word sub_80E943E+1
 	.word sub_80E979C+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_80E92EE+1
 off_802CD5C: .word sub_80C0DD8+1
 	.word sub_80C2A4C+1
@@ -15844,7 +15846,7 @@ loc_802E5CE:
 	add r0, r0, r1
 	mov r0, r0
 	bl SetEventFlag
-	bl sub_80070BC
+	bl encryption_80070bc
 loc_802E5F2:
 	mov r0, #1
 loc_802E5F4:
@@ -15902,7 +15904,7 @@ sub_802E62A:
 	add r0, r0, r1
 	mov r0, r0
 	bl SetEventFlag
-	bl sub_80070BC
+	bl encryption_80070bc
 loc_802E65A:
 	ldr r0, [sp]
 	bl sub_80103BC
@@ -17871,7 +17873,7 @@ startScreen_802F574:
 	bne loc_802F5BE
 	mov r0, #1
 	strb r0, [r5,#2]
-	bl sub_8000EE4
+	bl GetTitleScreenIconCount
 	strb r0, [r5,#0xc]
 	strh r1, [r5,#0xa]
 loc_802F5BE:
@@ -19211,14 +19213,14 @@ sub_8030194:
 	mov pc, lr
 	thumb_func_end sub_8030194
 
-	thumb_func_start sub_80301B2
-sub_80301B2:
+	thumb_func_start camera_80301B2
+camera_80301B2:
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_CameraPtr]
 	strb r0, [r2,#3]
 	str r1, [r2,#0x14]
 	mov pc, lr
-	thumb_func_end sub_80301B2
+	thumb_func_end camera_80301B2
 
 	thumb_func_start sub_80301BC
 sub_80301BC:
@@ -20400,47 +20402,48 @@ map_8030A30:
 	.pool
 	thumb_func_end map_8030A30
 
-	thumb_func_start sub_8030A60
-sub_8030A60:
+	thumb_func_start npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
+npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20:
 	push {r4-r6,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
-	ldr r1, [r4,#oGameState_Unk_20]
+	ldr r1, [r4,#oGameState_Ptr_20]
 	cmp r0, r1
-	beq locret_8030A8A
-	str r0, [r4,#oGameState_Unk_20]
+	beq .done
+	str r0, [r4,#oGameState_Ptr_20]
 	push {r0}
-	mov r0, #4
+	mov r0, #OVERWORLD_NPC_OBJECT_F
 	bl FreeAllObjectsOfSpecifiedTypes
 	pop {r0}
 	mov r1, #0
-loc_8030A7A:
+.loop
 	ldr r2, [r0]
 	cmp r2, #0xff
-	beq locret_8030A8A
-	bl sub_8030A8C
+	beq .done
+	bl npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c
 	add r1, #1
 	add r0, #4
-	b loc_8030A7A
-locret_8030A8A:
+	b .loop
+.done
 	pop {r4-r6,pc}
-	thumb_func_end sub_8030A60
+	thumb_func_end npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
 
 	thumb_local_start
-sub_8030A8C:
+npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c:
 	push {lr}
 	push {r0-r2}
 	mov r0, #0
+	// writes garbage to xyz, unk_04 but is overwritten later by the npc script
 	bl SpawnOverworldNPCObject
 	pop {r0-r2}
 	tst r5, r5
-	beq locret_8030AA0
-	strb r1, [r5,#0x10]
-	str r2, [r5,#0x60]
-locret_8030AA0:
+	beq .objectSpawnFailed
+	strb r1, [r5,#oOverworldNPCObject_Unk_10]
+	str r2, [r5,#oOverworldNPCObject_UnkFlags_60] // this is actually temp storage for the animation script pointer
+.objectSpawnFailed
 	pop {pc}
 	.balign 4, 0x00
-	thumb_func_end sub_8030A8C
+	thumb_func_end npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c
 
 	thumb_func_start sub_8030AA4
 // coordinate effect 
@@ -22435,20 +22438,32 @@ loc_8031906: .align 1, 0
 	pop {r4-r7,pc}
 off_8031910: .word dword_200F3D0
 off_8031914: .word dword_8031918
-dword_8031918: .word 0x0
+dword_8031918: .word NULL
 	.word sub_803199E+1
 	.word sub_80319B6+1
 	.word sub_80319CE+1
 	.word sub_80319E6+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word sub_80319FE+1
 	.word sub_8031A16+1
 	.word sub_8031A2E+1
 	.word sub_8031A46+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word sub_8031A5E+1
-	.word 0, 0, 0, 0, 0, 0, 0
-	.byte 0, 0, 0, 0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	thumb_func_end sub_80318B0
 
 	thumb_local_start
