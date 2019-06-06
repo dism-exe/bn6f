@@ -1,73 +1,322 @@
 // FIXME (TextScript): Match decompile this
 decompressed_compScripts_credits_86C4B58::
-.byte 00 75
-.byte 05 00 DA 00 E3 00 ED 00 F7 00 00 01 0A 01 17 01 28 01
-.byte 34 01 41 01 49 01 5A 01 66 01 78 01 84 01 94 01 A1 01 A8 01
-.byte B0 01 BC 01 C5 01 D1 01 DD 01 E5 01 EE 01 FC 01 05 02 0D 02
-.byte 19 02 23 02 2B 02 32 02 3F 02 49 02 4F 02 57 02 64 02 70 02
-.byte 85 02 8F 02 99 02 A7 02 AE 02 B8 02 C5 02 D1 02 D9 02 E6 02
-.byte F8 02 03 03 15 03 1E 03 2D 03 39 03 41 03 4C 03 58 03 61 03
-.byte 6D 03 77 03 84 03 8F 03 9B 03 A8 03 B2 03 BF 03 CD 03 D6 03
-.byte E0 03 E7 03 F2 03 FF 03 09 04 16 04 21 04 2F 04 3D 04 4B 04
-.byte 5A 04 62 04 75 04 83 04 8C 04 97 04 A0 04 AA 04 AA 04 AA 04
-.byte AA 04 AA 04 AA 04 B7 04 C2 04 CE 04 DB 04 DB 04 DB 04 DB 04
-.byte DB 04 DB 04 DB 04 F2 04 07 05 1E 05 35 05 3D 05 4C 05 5B 05
-.byte 61 05 1A 31 26 33 33 2E 33 2C E6 00 17 A6 23 26 38 3A 32 26
-.byte E6 00 1D A6 15 34 29 26 32 26 E6 1D 28 2A 33 26 37 2E 34 E6
-.byte 00 17 A6 0F 2C 3A 28 2D 2E E6 00 1E A6 1D 2D 2E 32 34 2C 26
-.byte 3C 26 E6 0D 2D 26 37 26 28 39 2A 37 00 0E 2A 38 2E 2C 33 E6
-.byte 00 23 A6 13 38 2D 2E 2D 26 37 26 E6 00 1E A6 18 26 30 26 38
-.byte 2D 2E 32 26 E6 00 12 A6 15 26 2F 2E E6 0D 2E 37 28 3A 38 17
-.byte 26 33 00 0E 2A 38 2E 2C 33 E6 00 1E A6 12 26 32 26 33 26 2C
-.byte 26 E6 0F 31 2A 32 2A 33 39 17 26 33 00 0E 2A 38 2E 2C 33 E6
-.byte 00 1D A6 18 26 30 26 32 3A 37 26 E6 14 3A 29 2C 2A 17 26 33
-.byte 00 0E 2A 38 2E 2C 33 E6 00 15 A6 1E 26 30 26 2D 26 38 2D 2E
-.byte E6 19 27 2F 2A 28 39 E6 00 15 A6 1D 26 39 34 E6 00 13 A6 18
-.byte 26 30 26 3E 26 32 26 E6 00 17 A6 19 2E 38 2D 2E E6 00 15 A6
-.byte 10 3A 2F 2E 3C 26 37 26 E6 0C 26 28 30 2C 37 34 3A 33 29 38
-.byte E6 00 18 A6 1F 2A 29 26 E6 00 0D A6 1C 3E 3A 2C 34 E6 00 0B
-.byte A6 18 2E 38 2D 2E 39 38 3A 2F 2E E6 00 23 A6 17 26 2A 29 26
-.byte E6 1A 37 34 2C 37 26 32 E6 00 12 A6 1D 2D 2E 33 2C 26 30 2E
-.byte E6 00 17 A6 1D 26 30 26 33 34 E6 00 1E A6 0B 33 26 2E E6 00
-.byte 1D A6 13 39 34 E6 00 18 A6 18 2E 38 2D 2E 3E 26 32 26 E6 00
-.byte 1E A6 1E 26 2D 26 37 26 E6 17 3A 38 2E 28 E6 00 23 A6 0B 34
-.byte 30 2E E6 1D 34 3A 33 29 00 0F 2B 2B 2A 28 39 E6 00 1D A6 0B
-.byte 32 26 2C 2E 38 2D 2E E6 19 2B 2B 2E 28 26 31 00 13 31 31 3A
-.byte 38 39 37 26 39 2E 34 33 E6 00 1D A6 15 34 32 26 30 2E E6 00
-.byte 15 A6 17 2E 3F 3A 33 34 E6 0D 34 98 1A 37 34 29 3A 28 39 2E
-.byte 34 33 E6 15 19 18 0B 17 13 E6 00 12 A6 15 34 2F 2E 32 26 E6
-.byte 00 15 A6 23 34 38 2D 2E 39 34 32 2E E6 00 13 A6 18 26 30 26
-.byte 32 3A 37 26 E6 00 15 A6 15 26 33 34 E6 00 1D A6 15 34 27 26
-.byte 3E 26 38 2D 2E E6 17 26 33 3A 26 31 00 1A 37 34 29 3A 28 39
-.byte 2E 34 33 E6 00 0B A6 13 3C 26 38 26 30 2E E6 0E 2A 27 3A 2C
-.byte 00 1D 3A 35 2A 37 3B 2E 38 2E 34 33 E6 00 17 A6 18 26 33 27
-.byte 26 E6 1D 35 2A 28 2E 26 31 00 1E 2D 26 33 30 38 E6 00 1D A6
-.byte 15 3A 37 34 38 26 3C 26 E6 00 1D A6 1F 30 26 2E E6 00 15 A6
-.byte 17 26 39 38 3A 29 26 E6 00 12 A6 18 26 30 26 32 3A 37 26 E6
-.byte 00 15 A6 0D 2D 34 3E 26 E6 00 18 A6 17 2E 33 26 32 2E 29 2A
-.byte E6 00 15 A6 23 26 38 3A 29 26 E6 00 17 A6 15 26 3C 26 2C 3A
-.byte 28 2D 2E E6 00 0B A6 12 26 3E 26 38 2D 2E E6 00 15 A6 10 3A
-.byte 33 26 2D 26 37 26 E6 00 23 A6 15 34 27 26 3E 26 38 2D 2E E6
-.byte 00 14 A6 19 2E 3F 3A 32 2E E6 00 23 A6 1E 38 3A 2F 2E 32 34
-.byte 39 34 E6 00 15 A6 18 2E 38 2D 2E 2C 3A 28 2D 2E E6 00 12 A6
-.byte 19 2F 2E 32 26 E6 00 15 A6 23 34 33 2A 29 26 E6 00 1E A6 19
-.byte 33 34 E6 00 19 A6 15 3A 38 2D 2E 32 26 E6 00 1C A6 12 2E 2C
-.byte 3A 37 26 38 2D 2E E6 00 1E A6 23 26 32 26 29 26 E6 00 1D A6
-.byte 15 34 27 26 3E 26 38 2D 2E E6 00 17 A6 12 26 38 2D 2E 29 26
-.byte E6 00 16 34 28 26 31 2E 3F 26 39 2E 34 33 E6 00 1C 34 28 30
-.byte 17 26 33 00 0D 31 3A 27 E6 00 1D 26 37 3A 2C 26 30 3A 98 0D
-.byte 2D 34 E6 00 1A 37 34 29 3A 28 39 00 0E 2A 3B 00 03 E6 00 0D
-.byte 0B 1A 0D 19 17 E6 0B 38 38 2E 38 39 26 33 39 00 1A 37 34 29
-.byte 3A 28 2A 37 E6 00 1E A6 12 34 37 2E 33 34 3A 28 2D 2E E6 1A
-.byte 37 34 29 3A 28 2A 37 E6 00 15 A6 13 33 26 2B 3A 33 2A E6 0E
-.byte 2E 37 2A 28 39 34 37 E6 00 17 A6 23 26 38 3A 32 26 E6 16 34
-.byte 28 26 31 2E 3F 26 39 2E 34 33 E6 00 14 26 33 2A 39 00 12 38
-.byte 3A E6 00 14 1A 00 15 2A 31 31 26 32 38 E6 00 0C 37 26 33 29
-.byte 34 33 00 11 26 3E E6 0D 31 2A 26 37 00 1E 2E 32 2A 00 00 00
-.byte 00 00 F2 00 C2 9B F2 01 C2 E6 0E 26 39 26 00 16 2E 27 37 26
-.byte 37 3E 00 00 00 1D 00 F2 00 83 E6 00 00 00 00 00 00 00 00 00
-.byte 00 00 00 00 00 EC 01 02 17 00 F2 00 83 E6 00 00 00 00 00 00
-.byte 00 00 00 00 00 00 00 00 EC 01 02 11 00 F2 00 83 E6 17 2A 2C
-.byte 26 17 26 33 E6 0D 3E 27 2A 26 38 39 00 11 37 2A 2C 26 37 E6
-.byte 0D 3E 27 2A 26 38 39 00 10 26 31 3F 26 37 E6 1D 39 26 2B 2B
-.byte E6 0C 26 39 39 31 2A 00 18 2A 39 3C 34 37 30 07 E6
+.word 0x507500
+text_script_start unk_4
+
+text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+text_script_rel_pointers 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+text_script_rel_pointers 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47
+text_script_rel_pointers 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63
+text_script_rel_pointers 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79
+text_script_rel_pointers 80, 81, 82, 83, 84, 85, 85, 85, 85, 85, 85, 86, 87, 88, 89, 89
+text_script_rel_pointers 89, 89, 89, 89, 89, 90, 91, 92, 93, 94, 95, 96, 97
+
+text_script 0, scr_0
+.string "Planning$"
+
+text_script 1, scr_1
+.string " M.Yasuma$"
+
+text_script 2, scr_2
+.string " S.Kodama$"
+
+text_script 3, scr_3
+.string "Scenario$"
+
+text_script 4, scr_4
+.string " M.Eguchi$"
+
+text_script 5, scr_5
+.string " T.Shimogawa$"
+
+text_script 6, scr_6
+.string "Character Design$"
+
+text_script 7, scr_7
+.string " Y.Ishihara$"
+
+text_script 8, scr_8
+.string " T.Nakashima$"
+
+text_script 9, scr_9
+.string " H.Kaji$"
+
+text_script 10, scr_10
+.string "CircusMan Design$"
+
+text_script 11, scr_11
+.string " T.Hamanaga$"
+
+text_script 12, scr_12
+.string "ElementMan Design$"
+
+text_script 13, scr_13
+.string " S.Nakamura$"
+
+text_script 14, scr_14
+.string "JudgeMan Design$"
+
+text_script 15, scr_15
+.string " K.Takahashi$"
+
+text_script 16, scr_16
+.string "Object$"
+
+text_script 17, scr_17
+.string " K.Sato$"
+
+text_script 18, scr_18
+.string " I.Nakayama$"
+
+text_script 19, scr_19
+.string " M.Oishi$"
+
+text_script 20, scr_20
+.string " K.Fujiwara$"
+
+text_script 21, scr_21
+.string "Backgrounds$"
+
+text_script 22, scr_22
+.string " N.Ueda$"
+
+text_script 23, scr_23
+.string " C.Ryugo$"
+
+text_script 24, scr_24
+.string " A.Nishitsuji$"
+
+text_script 25, scr_25
+.string " Y.Maeda$"
+
+text_script 26, scr_26
+.string "Program$"
+
+text_script 27, scr_27
+.string " H.Shingaki$"
+
+text_script 28, scr_28
+.string " M.Sakano$"
+
+text_script 29, scr_29
+.string " T.Anai$"
+
+text_script 30, scr_30
+.string " S.Ito$"
+
+text_script 31, scr_31
+.string " N.Nishiyama$"
+
+text_script 32, scr_32
+.string " T.Tahara$"
+
+text_script 33, scr_33
+.string "Music$"
+
+text_script 34, scr_34
+.string " Y.Aoki$"
+
+text_script 35, scr_35
+.string "Sound Effect$"
+
+text_script 36, scr_36
+.string " S.Amagishi$"
+
+text_script 37, scr_37
+.string "Offical Illustration$"
+
+text_script 38, scr_38
+.string " S.Komaki$"
+
+text_script 39, scr_39
+.string " K.Mizuno$"
+
+text_script 40, scr_40
+.string "Co-Production$"
+
+text_script 41, scr_41
+.string "KONAMI$"
+
+text_script 42, scr_42
+.string " H.Kojima$"
+
+text_script 43, scr_43
+.string " K.Yoshitomi$"
+
+text_script 44, scr_44
+.string " I.Nakamura$"
+
+text_script 45, scr_45
+.string " K.Kano$"
+
+text_script 46, scr_46
+.string " S.Kobayashi$"
+
+text_script 47, scr_47
+.string "Manual Production$"
+
+text_script 48, scr_48
+.string " A.Iwasaki$"
+
+text_script 49, scr_49
+.string "Debug Supervision$"
+
+text_script 50, scr_50
+.string " M.Nanba$"
+
+text_script 51, scr_51
+.string "Special Thanks$"
+
+text_script 52, scr_52
+.string " S.Kurosawa$"
+
+text_script 53, scr_53
+.string " S.Ukai$"
+
+text_script 54, scr_54
+.string " K.Matsuda$"
+
+text_script 55, scr_55
+.string " H.Nakamura$"
+
+text_script 56, scr_56
+.string " K.Choya$"
+
+text_script 57, scr_57
+.string " N.Minamide$"
+
+text_script 58, scr_58
+.string " K.Yasuda$"
+
+text_script 59, scr_59
+.string " M.Kawaguchi$"
+
+text_script 60, scr_60
+.string " A.Hayashi$"
+
+text_script 61, scr_61
+.string " K.Funahara$"
+
+text_script 62, scr_62
+.string " Y.Kobayashi$"
+
+text_script 63, scr_63
+.string " J.Oizumi$"
+
+text_script 64, scr_64
+.string " Y.Tsujimoto$"
+
+text_script 65, scr_65
+.string " K.Nishiguchi$"
+
+text_script 66, scr_66
+.string " H.Ojima$"
+
+text_script 67, scr_67
+.string " K.Yoneda$"
+
+text_script 68, scr_68
+.string " T.Ono$"
+
+text_script 69, scr_69
+.string " O.Kushima$"
+
+text_script 70, scr_70
+.string " R.Higurashi$"
+
+text_script 71, scr_71
+.string " T.Yamada$"
+
+text_script 72, scr_72
+.string " S.Kobayashi$"
+
+text_script 73, scr_73
+.string " M.Hashida$"
+
+text_script 74, scr_74
+.string " Localization$"
+
+text_script 75, scr_75
+.string " RockMan Club$"
+
+text_script 76, scr_76
+.string " Sarugaku-Cho$"
+
+text_script 77, scr_77
+.string " Product Dev 2$"
+
+text_script 78, scr_78
+.string " CAPCOM$"
+
+text_script 79, scr_79
+.string "Assistant Producer$"
+
+text_script 80, scr_80
+.string " T.Horinouchi$"
+
+text_script 81, scr_81
+.string "Producer$"
+
+text_script 82, scr_82
+.string " K.Inafune$"
+
+text_script 83, scr_83
+.string "Director$"
+
+text_script 84, scr_84
+.string " M.Yasuma$"
+
+text_script 85, scr_85
+.string "Localization$"
+
+text_script 86, scr_86
+.string " Janet Hsu$"
+
+text_script 87, scr_87
+.string " JP Kellams$"
+
+text_script 88, scr_88
+.string " Brandon Gay$"
+
+text_script 89, scr_89
+.string "Clear Time     "
+ts_clear_msg
+.string " さ:"
+ts_clear_msg
+.string "0さ$"
+
+text_script 90, scr_90
+.string "Data Library   S "
+ts_clear_msg
+.string " ヂ$"
+
+text_script 91, scr_91
+.string "              "
+ts_space_px 0x2
+.string "M "
+ts_clear_msg
+.string " ヂ$"
+
+text_script 92, scr_92
+.string "              "
+ts_space_px 0x2
+.string "G "
+ts_clear_msg
+.string " ヂ$"
+
+text_script 93, scr_93
+.string "MegaMan$"
+
+text_script 94, scr_94
+.string "Cybeast Gregar$"
+
+text_script 95, scr_95
+.string "Cybeast Falzar$"
+
+text_script 96, scr_96
+.string "Staff$"
+
+text_script 97, scr_97
+.string "Battle Network6$"
+
+.balign 4, 0

@@ -231,13 +231,13 @@ def parse_cmd(bin_file, cmd, sects):
     if cmd[0] in [b'\xf0'] and num_params == 0:
         params = [cmd[1]]
         cmd = cmd[:1]
-    # parse cmd and params
-    elif num_params >= 0:
-        params = bin_file.read(num_params)
     elif num_params == 1.5:
         # params are already part of the command
         # pattern: FF FF ... FF 00 0F
         params = [cmd[-2] >> 4, cmd[-2] << 4 | cmd[-1] >> 4]
+    # parse cmd and params
+    elif num_params >= 0:
+        params = bin_file.read(num_params)
     else:
         params = []
         print('error: invalid cmd detected %s' % cmd)
@@ -304,12 +304,12 @@ def parse_text_script(config_ini_path, bin_path, address):
             if not end_script:
                 end_script = bin_file.tell() > address+last_script_pointer and ord(cmd) == 0xE6
 
-            # read command parameters
+            # read comm/and parameters
             units.append(parse_cmd(bin_file, cmd, sects))
         end_addr = bin_file.tell()
 
     # link relative pointers into units
-    cur_idx = 2*len(rel_pointers)
+    cur_idx = 2*len(re/l_pointers)
     cur_id = 0
     linked_units = []
     for unit in units:
@@ -442,11 +442,22 @@ def main(argv):
     ini_path = ini_dir + 'mmbn6.ini'
 
     script, end_addr = read_script(int(sys.argv[1], 16), path, ini_path)
-
-    for i in script: print(i)
+    for i in script:
+        print(i)
     print(hex(end_addr))
 
 
 if __name__ == '__main__':
     #import os; print(os.getcwd())
-    import sys; main(sys.argv)
+    import sys
+    import codecs
+
+    # in case the default encoding doesn't support utf8
+    sys.stdout = codecs.getwriter('utf8')(sys.stdout.buffer)
+
+    # sys.argv[3] = '../tests/text_script_dumper/TextScriptWhoAmI.bin'
+    # sys.argv[3] = '../tests/text_script_dumper/TextScriptChipDescriptions0_86eb8b8.bin'
+    # sys.argv[3] = '../tests/text_script_dumper/decompTextScriptCredits86C4B58.bin'
+    sys.argv[3] = '../tests/text_script_dumper/TextScriptChipTrader86C580C.bin'
+
+    main(sys.argv)

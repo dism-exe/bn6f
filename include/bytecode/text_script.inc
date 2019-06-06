@@ -123,8 +123,8 @@
 		.endm
 
 		// agbasm quirk? setting p to '' defaults to 33 or some other garbage for some reason
-		.macro data_def_rel_pointer p=NULL
-			.if \p != NULL
+		.macro data_def_rel_pointer p=DEFAULT
+			.if \p != DEFAULT // somehow setting this to NULL fails when text_script_rel_pointers is called on only 0???
 				.hword \label\()__\p
 			.endif
 		.endm

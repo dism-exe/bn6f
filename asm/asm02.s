@@ -428,6 +428,8 @@ sub_8021D36:
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
 	.balign 4, 0x00
+	thumb_func_end sub_8021D36
+
 off_8021D6C: .word unk_2000AF0
 off_8021D70: .word unk_2001184
 off_8021D74: .word unk_200119C
@@ -436,11 +438,13 @@ off_8021D7C: .word byte_200083A
 off_8021D80: .word TextScriptJap8021D88
 off_8021D84: .word byte_8021D8A
 TextScriptJap8021D88:
-	// <endpool>
-	.byte 0x2, 0x0
-	thumb_func_end sub_8021D36
-
-byte_8021D8A: .byte 0x7E, 0x7E, 0x7E, 0x7E, 0xE6, 0x0, 0x0, 0x0, 0x0, 0x0
+	text_script_start TextScriptJap8021D88
+	text_script_rel_pointers 0
+	text_script 0, scr_0
+byte_8021D8A:
+	.string "ザザザザ$"
+	.balign 4, 0
+	.word 0x0
 off_8021D94: .word unk_203A0A0
 off_8021D98: .word 0x2E0
 off_8021D9C: .word 0x170
