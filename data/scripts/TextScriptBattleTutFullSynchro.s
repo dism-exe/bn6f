@@ -9,14 +9,14 @@ TextScriptBattleTutFullSynchro::
 	.string "Synchro?"
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 1
+	ts_jump FullSynchroTutorialText_HuhWhatsThat_id
 
 	text_script FullSynchroTutorialText_HuhWhatsThat
 	ts_mugshot_show 0
 	.string "Huh? What's that?"
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 2
+	ts_jump FullSynchroTutorialText_LookAtEmotionWindow_id
 
 	text_script FullSynchroTutorialText_LookAtEmotionWindow
 	ts_mugshot_show 0x37
@@ -55,7 +55,7 @@ TextScriptBattleTutFullSynchro::
 	.string "you well?"
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 5
+	ts_jump FullSynchroTutorialText_YouHaveToCounter_id
 
 	text_script FullSynchroTutorialText_YouHaveToCounter
 	ts_mugshot_show 0x37
@@ -63,7 +63,7 @@ TextScriptBattleTutFullSynchro::
 	.string "Counter!"
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 6
+	ts_jump FullSynchroTutorialText_CounterUhhhWhat_id
 
 	text_script FullSynchroTutorialText_CounterUhhhWhat
 	ts_mugshot_show 0
@@ -71,7 +71,7 @@ TextScriptBattleTutFullSynchro::
 	.string "What was that again?"
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 7
+	ts_jump FullSynchroTutorialText_CounterMeans_id
 
 	text_script FullSynchroTutorialText_CounterMeans
 	ts_mugshot_show 0x37
@@ -89,7 +89,7 @@ TextScriptBattleTutFullSynchro::
 	.string "for a bit."
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 8
+	ts_jump FullSynchroTutorialText_IGetItSurprises_id
 
 	text_script FullSynchroTutorialText_IGetItSurprises
 	ts_mugshot_show 0
@@ -97,7 +97,7 @@ TextScriptBattleTutFullSynchro::
 	.string "It surprises them!"
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 9
+	ts_jump FullSynchroTutorialText_DuringFullSynchro_id
 
 	text_script FullSynchroTutorialText_DuringFullSynchro
 	ts_mugshot_show 0x37
@@ -161,7 +161,7 @@ TextScriptBattleTutFullSynchro::
 	.string "right time."
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 11
+	ts_jump FullSynchroTutorialText_RogerGonnaMasterCounterFullSynchro_id
 
 	text_script FullSynchroTutorialText_RogerGonnaMasterCounterFullSynchro
 	ts_mugshot_show 0
