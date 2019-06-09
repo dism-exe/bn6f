@@ -91,7 +91,7 @@ typedef struct{
 	// 02002230
 	void *unk_2002230;           // loc=0x4C
 	// 02003134
-	void *unk_2003134;                // loc=0x50
+	void *eKeyItems;                // loc=0x50
 	// 020032C8
 	void *unk_20032C8;                // loc=0x54
 	// 0200414C

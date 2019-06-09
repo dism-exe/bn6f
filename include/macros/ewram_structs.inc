@@ -207,6 +207,7 @@ look at:
 03 - charge+
 06 - fstbarr
 07 - b+left ability
+09 - regup
 0a - custom level
 0b - mega level
 0e - mood
@@ -216,6 +217,7 @@ look at:
 3e - max base HP
 40 - cur HP
 42 - HP+
+50 - chip recovery (hp value?)
 63 - turns until custbug activates
 
 */

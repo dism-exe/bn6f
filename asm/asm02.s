@@ -71,13 +71,13 @@ loc_8021B00:
 	bl SetEventFlag
 	pop {r0-r2}
 	push {r2}
-	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
+	bl getOffsetToQuantityOfChipCodeMaybe_8021c7c // (int chip_idx, int searchItem, int off) -> void*
 	mov r4, r3
 	pop {r2}
-	bl sub_8021B5A
+	bl addChipsToChipPackOffset_8021b5a
 	push {r3}
 	mov r1, r4
-	bl sub_81376B8
+	bl setUnkFieldOfChipCodeInChipPack_81376b8
 	pop {r3}
 	mov r0, r3
 	pop {r4,pc}
@@ -100,31 +100,31 @@ loc_8021B3C:
 	bl SetEventFlag
 	pop {r0-r2}
 	push {r2}
-	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
+	bl getOffsetToQuantityOfChipCodeMaybe_8021c7c // (int chip_idx, int searchItem, int off) -> void*
 	pop {r2}
-	bl sub_8021B5A
+	bl addChipsToChipPackOffset_8021b5a
 	mov r0, r3
 	pop {pc}
 	thumb_func_end sub_8021B2A
 
 	thumb_local_start
-sub_8021B5A:
+addChipsToChipPackOffset_8021b5a:
 	mov r3, #1
 	ldrb r1, [r0]
-	cmp r1, #0x63 
+	cmp r1, #99 
 	beq loc_8021B6E
 	mov r3, #0
 	add r1, r1, r2
-	cmp r1, #0x63 
+	cmp r1, #99
 	ble loc_8021B6E
-	mov r1, #0x63 
+	mov r1, #99
 	mov r3, #2
 loc_8021B6E:
 	strb r1, [r0]
 	mov pc, lr
-	.balign 4, 0x00
+	.balign 4, 0
 off_8021B74: .word 0x1E20
-	thumb_func_end sub_8021B5A
+	thumb_func_end addChipsToChipPackOffset_8021b5a
 
 // (int idx, int searchItem, int off) -> void*
 // [break (E7FE)]
@@ -139,7 +139,7 @@ sub_8021B78:
 loc_8021B84:
 	pop {r0-r2}
 	push {r2}
-	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
+	bl getOffsetToQuantityOfChipCodeMaybe_8021c7c // (int chip_idx, int searchItem, int off) -> void*
 	pop {r2}
 	strb r2, [r0]
 	// return itemRef
@@ -151,7 +151,7 @@ loc_8021B84:
 sub_8021B92:
 	push {r4,lr}
 	push {r2}
-	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
+	bl getOffsetToQuantityOfChipCodeMaybe_8021c7c // (int chip_idx, int searchItem, int off) -> void*
 	mov r4, r3
 	pop {r2}
 	mov r3, #1
@@ -182,7 +182,7 @@ GetChipCountOfCode:
 	bl sub_8006EA4
 	pop {r0,r1}
 	bne loc_8021BD4
-	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
+	bl getOffsetToQuantityOfChipCodeMaybe_8021c7c // (int chip_idx, int searchItem, int off) -> void*
 	ldrb r0, [r0]
 	pop {r4,pc}
 loc_8021BD4:
@@ -285,8 +285,8 @@ dword_8021C78: .word 0xF00
 	thumb_func_end zeroFill_e2002230
 
 // (int chip_idx, int searchItem, int off) -> void*
-	thumb_func_start chip_8021C7C
-chip_8021C7C:
+	thumb_func_start getOffsetToQuantityOfChipCodeMaybe_8021c7c
+getOffsetToQuantityOfChipCodeMaybe_8021c7c:
 	push {r4,r7,lr}
 	mov r2, r0
 	push {r1,r2}
@@ -313,7 +313,7 @@ loc_8021C9A:
 	add r0, r7, r3
 	// return Toolkit.unk_4C + (12*r2_off) + r3_itemIdx
 	pop {r4,r7,pc}
-	thumb_func_end chip_8021C7C
+	thumb_func_end getOffsetToQuantityOfChipCodeMaybe_8021c7c
 
 	thumb_func_start sub_8021CA8
 sub_8021CA8:

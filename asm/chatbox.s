@@ -5037,7 +5037,8 @@ chatbox_8042418:
 	ldrb r0, [r4,#2]
 	lsl r0, r0, #1
 	add r0, r0, r4
-	add r0, #3
+	// r0 = size * 2 + script ptr + 3
+	add r0, #3	
 	mov r2, #1
 	str r2, [r5,#0x54]
 	ldrb r1, [r0,#1]

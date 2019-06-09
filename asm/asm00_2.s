@@ -11346,7 +11346,7 @@ byte_80141A0: .byte 0x20, 0x40, 0x10, 0x40, 0x40, 0x20, 0x10, 0x20, 0x10
 sub_80141AC:
 	push {lr}
 	bl getPETNaviSelect // () -> u8
-	mov r1, #0x21 
+	mov r1, #0x21
 	mov r2, #3
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}

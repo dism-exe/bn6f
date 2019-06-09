@@ -198,3 +198,21 @@ print_expr_test_label:
 	.string "
 
 */
+/*
+	.macro output_value value:req
+	.print "\value"
+	.endm
+
+	__subsection_count = 1
+	.text __subsection_count
+_.L_1:
+	.word 0x66642069
+_.L_2:
+	.text 0
+Subsection0Label:
+	.rept __subsection_count
+	.word 0x12345678
+	.word _.L_2 - _.L_1
+	.endr
+	.balign 4, 0
+*/

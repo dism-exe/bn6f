@@ -32445,7 +32445,7 @@ loc_811FEB0:
 	beq loc_811FF2E
 	// idx
 	mov r0, r7
-	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
+	bl getOffsetToQuantityOfChipCodeMaybe_8021c7c // (int chip_idx, int searchItem, int off) -> void*
 	ldrb r1, [r0]
 	str r1, [sp,#4]
 	tst r1, r1
