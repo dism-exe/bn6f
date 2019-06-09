@@ -4245,920 +4245,878 @@ byte_86EA925:: .byte 0xFE, 0x0, 0x0, 0xF8, 0xF, 0x0, 0x0
 dword_86EA92C:: .word 0x7AA50000, 0x550475E6, 0xDBE3482, 0xCD8113C, 0x79E0C8E
 	.word 0x2212071C, 0x2929194A, 0x14841CC6
 TextScriptChipNames0::
-	text_script_start TextScriptChipNames0
-	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-	text_script_rel_pointers 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
-	text_script_rel_pointers 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47
-	text_script_rel_pointers 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63
-	text_script_rel_pointers 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79
-	text_script_rel_pointers 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95
-	text_script_rel_pointers 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111
-	text_script_rel_pointers 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127
-	text_script_rel_pointers 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143
-	text_script_rel_pointers 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159
-	text_script_rel_pointers 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175
-	text_script_rel_pointers 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191
-	text_script_rel_pointers 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207
-	text_script_rel_pointers 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223
-	text_script_rel_pointers 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239
-	text_script_rel_pointers 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255
+	text_archive_start
 
-	text_script 0, scr_0
+	// script-relative pointers exist here but are defined via macros
+
+	text_script // 0
 		.string "MegaBstr$"
-	text_script 1, scr_1
+	text_script // 1
 		.string "Cannon$"
-	text_script 2, scr_2
+	text_script // 2
 		.string "HiCannon$"
-	text_script 3, scr_3
+	text_script // 3
 		.string "M-Cannon$"
-	text_script 4, scr_4
+	text_script // 4
 		.string "AirShot$"
-	text_script 5, scr_5
+	text_script // 5
 		.string "Vulcan1$"
-	text_script 6, scr_6
+	text_script // 6
 		.string "Vulcan2$"
-	text_script 7, scr_7
+	text_script // 7
 		.string "Vulcan3$"
-	text_script 8, scr_8
+	text_script // 8
 		.string "SuprVulc$"
-	text_script 9, scr_9
+	text_script // 9
 		.string "Spreadr1$"
-	text_script 10, scr_10
+	text_script // 10
 		.string "Spreadr2$"
-	text_script 11, scr_11
+	text_script // 11
 		.string "Spreadr3$"
-	text_script 12, scr_12
+	text_script // 12
 		.string "TankCan1$"
-	text_script 13, scr_13
+	text_script // 13
 		.string "TankCan2$"
-	text_script 14, scr_14
+	text_script // 14
 		.string "TankCan3$"
-	text_script 15, scr_15
+	text_script // 15
 		.string "GunDelS1$"
-	text_script 16, scr_16
+	text_script // 16
 		.string "GunDelS2$"
-	text_script 17, scr_17
+	text_script // 17
 		.string "GunDelS3$"
-	text_script 18, scr_18
+	text_script // 18
 		.string "GunDelEX$"
-	text_script 19, scr_19
+	text_script // 19
 		.string "YoYo$"
-	text_script 20, scr_20
+	text_script // 20
 		.string "FireBrn1$"
-	text_script 21, scr_21
+	text_script // 21
 		.string "FireBrn2$"
-	text_script 22, scr_22
+	text_script // 22
 		.string "FireBrn3$"
-	text_script 23, scr_23
+	text_script // 23
 		.string "WideSht$"
-	text_script 24, scr_24
+	text_script // 24
 		.string "TrnArrw1$"
-	text_script 25, scr_25
+	text_script // 25
 		.string "TrnArrw2$"
-	text_script 26, scr_26
+	text_script // 26
 		.string "TrnArrw3$"
-	text_script 27, scr_27
+	text_script // 27
 		.string "BblStar1$"
-	text_script 28, scr_28
+	text_script // 28
 		.string "BblStar2$"
-	text_script 29, scr_29
+	text_script // 29
 		.string "BblStar3$"
-	text_script 30, scr_30
+	text_script // 30
 		.string "Thunder$"
-	text_script 31, scr_31
+	text_script // 31
 		.string "DolThdr1$"
-	text_script 32, scr_32
+	text_script // 32
 		.string "DolThdr2$"
-	text_script 33, scr_33
+	text_script // 33
 		.string "DolThdr3$"
-	text_script 34, scr_34
+	text_script // 34
 		.string "ElcPuls1$"
-	text_script 35, scr_35
+	text_script // 35
 		.string "ElcPuls2$"
-	text_script 36, scr_36
+	text_script // 36
 		.string "ElcPuls3$"
-	text_script 37, scr_37
+	text_script // 37
 		.string "RskyHny1$"
-	text_script 38, scr_38
+	text_script // 38
 		.string "RskyHny2$"
-	text_script 39, scr_39
+	text_script // 39
 		.string "RskyHny3$"
-	text_script 40, scr_40
+	text_script // 40
 		.string "RlngLog1$"
-	text_script 41, scr_41
+	text_script // 41
 		.string "RlngLog2$"
-	text_script 42, scr_42
+	text_script // 42
 		.string "RlngLog3$"
-	text_script 43, scr_43
+	text_script // 43
 		.string "MachGun1$"
-	text_script 44, scr_44
+	text_script // 44
 		.string "MachGun2$"
-	text_script 45, scr_45
+	text_script // 45
 		.string "MachGun3$"
-	text_script 46, scr_46
+	text_script // 46
 		.string "HeatDrgn$"
-	text_script 47, scr_47
+	text_script // 47
 		.string "ElecDrgn$"
-	text_script 48, scr_48
+	text_script // 48
 		.string "AquaDrgn$"
-	text_script 49, scr_49
+	text_script // 49
 		.string "WoodDrgn$"
-	text_script 50, scr_50
+	text_script // 50
 		.string "AirHocky$"
-	text_script 51, scr_51
+	text_script // 51
 		.string "DrilArm$"
-	text_script 52, scr_52
+	text_script // 52
 		.string "Tornado$"
-	text_script 53, scr_53
+	text_script // 53
 		.string "Static$"
-	text_script 54, scr_54
+	text_script // 54
 		.string "MiniBomb$"
-	text_script 55, scr_55
+	text_script // 55
 		.string "EnergBom$"
-	text_script 56, scr_56
+	text_script // 56
 		.string "MegEnBom$"
-	text_script 57, scr_57
+	text_script // 57
 		.string "FlshBom1$"
-	text_script 58, scr_58
+	text_script // 58
 		.string "FlshBom2$"
-	text_script 59, scr_59
+	text_script // 59
 		.string "FlshBom3$"
-	text_script 60, scr_60
+	text_script // 60
 		.string "BlkBomb$"
-	text_script 61, scr_61
+	text_script // 61
 		.string "AquaNdl1$"
-	text_script 62, scr_62
+	text_script // 62
 		.string "AquaNdl2$"
-	text_script 63, scr_63
+	text_script // 63
 		.string "AquaNdl3$"
-	text_script 64, scr_64
+	text_script // 64
 		.string "CornSht1$"
-	text_script 65, scr_65
+	text_script // 65
 		.string "CornSht2$"
-	text_script 66, scr_66
+	text_script // 66
 		.string "CornSht3$"
-	text_script 67, scr_67
+	text_script // 67
 		.string "BugBomb$"
-	text_script 68, scr_68
+	text_script // 68
 		.string "GrasSeed$"
-	text_script 69, scr_69
+	text_script // 69
 		.string "IceSeed$"
-	text_script 70, scr_70
+	text_script // 70
 		.string "PoisSeed$"
-	text_script 71, scr_71
+	text_script // 71
 		.string "Sword$"
-	text_script 72, scr_72
+	text_script // 72
 		.string "WideSwrd$"
-	text_script 73, scr_73
+	text_script // 73
 		.string "LongSwrd$"
-	text_script 74, scr_74
+	text_script // 74
 		.string "WideBlde$"
-	text_script 75, scr_75
+	text_script // 75
 		.string "LongBlde$"
-	text_script 76, scr_76
+	text_script // 76
 		.string "FireSwrd$"
-	text_script 77, scr_77
+	text_script // 77
 		.string "AquaSwrd$"
-	text_script 78, scr_78
+	text_script // 78
 		.string "ElecSwrd$"
-	text_script 79, scr_79
+	text_script // 79
 		.string "BambSwrd$"
-	text_script 80, scr_80
+	text_script // 80
 		.string "WindRack$"
-	text_script 81, scr_81
+	text_script // 81
 		.string "StepSwrd$"
-	text_script 82, scr_82
+	text_script // 82
 		.string "VarSwrd$"
-	text_script 83, scr_83
+	text_script // 83
 		.string "NeoVari$"
-	text_script 84, scr_84
+	text_script // 84
 		.string "MoonBld$"
-	text_script 85, scr_85
+	text_script // 85
 		.string "Muramasa$"
-	text_script 86, scr_86
+	text_script // 86
 		.string "MchnSwrd$"
-	text_script 87, scr_87
+	text_script // 87
 		.string "ElemSwrd$"
-	text_script 88, scr_88
+	text_script // 88
 		.string "AssnSwrd$"
-	text_script 89, scr_89
+	text_script // 89
 		.string "CrakShot$"
-	text_script 90, scr_90
+	text_script // 90
 		.string "DublShot$"
-	text_script 91, scr_91
+	text_script // 91
 		.string "TrplShot$"
-	text_script 92, scr_92
+	text_script // 92
 		.string "WaveArm1$"
-	text_script 93, scr_93
+	text_script // 93
 		.string "WaveArm2$"
-	text_script 94, scr_94
+	text_script // 94
 		.string "WaveArm3$"
-	text_script 95, scr_95
+	text_script // 95
 		.string "AuraHed1$"
-	text_script 96, scr_96
+	text_script // 96
 		.string "AuraHed2$"
-	text_script 97, scr_97
+	text_script // 97
 		.string "AuraHed3$"
-	text_script 98, scr_98
+	text_script // 98
 		.string "LilBolr1$"
-	text_script 99, scr_99
+	text_script // 99
 		.string "LilBolr2$"
-	text_script 100, scr_100
+	text_script // 100
 		.string "LilBolr3$"
-	text_script 101, scr_101
+	text_script // 101
 		.string "SandWrm1$"
-	text_script 102, scr_102
+	text_script // 102
 		.string "SandWrm2$"
-	text_script 103, scr_103
+	text_script // 103
 		.string "SandWrm3$"
-	text_script 104, scr_104
+	text_script // 104
 		.string "AirRaid1$"
-	text_script 105, scr_105
+	text_script // 105
 		.string "AirRaid2$"
-	text_script 106, scr_106
+	text_script // 106
 		.string "AirRaid3$"
-	text_script 107, scr_107
+	text_script // 107
 		.string "FireHit1$"
-	text_script 108, scr_108
+	text_script // 108
 		.string "FireHit2$"
-	text_script 109, scr_109
+	text_script // 109
 		.string "FireHit3$"
-	text_script 110, scr_110
+	text_script // 110
 		.string "BurnSqr1$"
-	text_script 111, scr_111
+	text_script // 111
 		.string "BurnSqr2$"
-	text_script 112, scr_112
+	text_script // 112
 		.string "BurnSqr3$"
-	text_script 113, scr_113
+	text_script // 113
 		.string "Sensor1$"
-	text_script 114, scr_114
+	text_script // 114
 		.string "Sensor2$"
-	text_script 115, scr_115
+	text_script // 115
 		.string "Sensor3$"
-	text_script 116, scr_116
+	text_script // 116
 		.string "Boomer$"
-	text_script 117, scr_117
+	text_script // 117
 		.string "HiBoomer$"
-	text_script 118, scr_118
+	text_script // 118
 		.string "M-Boomer$"
-	text_script 119, scr_119
+	text_script // 119
 		.string "Lance$"
-	text_script 120, scr_120
+	text_script // 120
 		.string "GolmHit1$"
-	text_script 121, scr_121
+	text_script // 121
 		.string "GolmHit2$"
-	text_script 122, scr_122
+	text_script // 122
 		.string "GolmHit3$"
-	text_script 123, scr_123
+	text_script // 123
 		.string "IronShl1$"
-	text_script 124, scr_124
+	text_script // 124
 		.string "IronShl2$"
-	text_script 125, scr_125
+	text_script // 125
 		.string "IronShl3$"
-	text_script 126, scr_126
+	text_script // 126
 		.string "AirSpin1$"
-	text_script 127, scr_127
+	text_script // 127
 		.string "AirSpin2$"
-	text_script 128, scr_128
+	text_script // 128
 		.string "AirSpin3$"
-	text_script 129, scr_129
+	text_script // 129
 		.string "Wind$"
-	text_script 130, scr_130
+	text_script // 130
 		.string "Fan$"
-	text_script 131, scr_131
+	text_script // 131
 		.string "Rflectr1$"
-	text_script 132, scr_132
+	text_script // 132
 		.string "Rflectr2$"
-	text_script 133, scr_133
+	text_script // 133
 		.string "Rflectr3$"
-	text_script 134, scr_134
+	text_script // 134
 		.string "Snake$"
-	text_script 135, scr_135
+	text_script // 135
 		.string "SumnBlk1$"
-	text_script 136, scr_136
+	text_script // 136
 		.string "SumnBlk2$"
-	text_script 137, scr_137
+	text_script // 137
 		.string "SumnBlk3$"
-	text_script 138, scr_138
+	text_script // 138
 		.string "NumbrBl$"
-	text_script 139, scr_139
+	text_script // 139
 		.string "Meteors$"
-	text_script 140, scr_140
+	text_script // 140
 		.string "JustcOne$"
-	text_script 141, scr_141
+	text_script // 141
 		.string "Magnum$"
-	text_script 142, scr_142
+	text_script // 142
 		.string "CircGun$"
-	text_script 143, scr_143
+	text_script // 143
 		.string "RockCube$"
-	text_script 144, scr_144
+	text_script // 144
 		.string "TimeBom1$"
-	text_script 145, scr_145
+	text_script // 145
 		.string "Mine$"
-	text_script 146, scr_146
+	text_script // 146
 		.string "Fanfare$"
-	text_script 147, scr_147
+	text_script // 147
 		.string "Discord$"
-	text_script 148, scr_148
+	text_script // 148
 		.string "Timpani$"
-	text_script 149, scr_149
+	text_script // 149
 		.string "Silence$"
-	text_script 150, scr_150
+	text_script // 150
 		.string "VDoll$"
-	text_script 151, scr_151
+	text_script // 151
 		.string "Guardian$"
-	text_script 152, scr_152
+	text_script // 152
 		.string "Anubis$"
-	text_script 153, scr_153
+	text_script // 153
 		.string "Otenko$"
-	text_script 154, scr_154
+	text_script // 154
 		.string "Recov10$"
-	text_script 155, scr_155
+	text_script // 155
 		.string "Recov30$"
-	text_script 156, scr_156
+	text_script // 156
 		.string "Recov50$"
-	text_script 157, scr_157
+	text_script // 157
 		.string "Recov80$"
-	text_script 158, scr_158
+	text_script // 158
 		.string "Recov120$"
-	text_script 159, scr_159
+	text_script // 159
 		.string "Recov150$"
-	text_script 160, scr_160
+	text_script // 160
 		.string "Recov200$"
-	text_script 161, scr_161
+	text_script // 161
 		.string "Recov300$"
-	text_script 162, scr_162
+	text_script // 162
 		.string "PanlGrab$"
-	text_script 163, scr_163
+	text_script // 163
 		.string "AreaGrab$"
-	text_script 164, scr_164
+	text_script // 164
 		.string "GrabBnsh$"
-	text_script 165, scr_165
+	text_script // 165
 		.string "GrabRvng$"
-	text_script 166, scr_166
+	text_script // 166
 		.string "PnlRetrn$"
-	text_script 167, scr_167
+	text_script // 167
 		.string "Geddon$"
-	text_script 168, scr_168
+	text_script // 168
 		.string "HolyPanl$"
-	text_script 169, scr_169
+	text_script // 169
 		.string "Snctuary$"
-	text_script 170, scr_170
+	text_script // 170
 		.string "ComingRd$"
-	text_script 171, scr_171
+	text_script // 171
 		.string "GoingRd$"
-	text_script 172, scr_172
+	text_script // 172
 		.string "SloGauge$"
-	text_script 173, scr_173
+	text_script // 173
 		.string "FstGauge$"
-	text_script 174, scr_174
+	text_script // 174
 		.string "FullCust$"
-	text_script 175, scr_175
+	text_script // 175
 		.string "BusterUp$"
-	text_script 176, scr_176
+	text_script // 176
 		.string "BugFix$"
-	text_script 177, scr_177
+	text_script // 177
 		.string "Invisibl$"
-	text_script 178, scr_178
+	text_script // 178
 		.string "Barrier$"
-	text_script 179, scr_179
+	text_script // 179
 		.string "Barr100$"
-	text_script 180, scr_180
+	text_script // 180
 		.string "Barr200$"
-	text_script 181, scr_181
+	text_script // 181
 		.string "BblWrap$"
-	text_script 182, scr_182
+	text_script // 182
 		.string "LifeAur$"
-	text_script 183, scr_183
+	text_script // 183
 		.string "MagCoil$"
-	text_script 184, scr_184
+	text_script // 184
 		.string "WhiCapsl$"
-	text_script 185, scr_185
+	text_script // 185
 		.string "Uninstll$"
-	text_script 186, scr_186
+	text_script // 186
 		.string "AntiNavi$"
-	text_script 187, scr_187
+	text_script // 187
 		.string "AntiDmg$"
-	text_script 188, scr_188
+	text_script // 188
 		.string "AntiSwrd$"
-	text_script 189, scr_189
+	text_script // 189
 		.string "AntiRecv$"
-	text_script 190, scr_190
+	text_script // 190
 		.string "CopyDmg$"
-	text_script 191, scr_191
+	text_script // 191
 		.string "LifeSync$"
-	text_script 192, scr_192
+	text_script // 192
 		.string "Atk+10$"
-	text_script 193, scr_193
+	text_script // 193
 		.string "Navi+20$"
-	text_script 194, scr_194
+	text_script // 194
 		.string "ColorPt$"
-	text_script 195, scr_195
+	text_script // 195
 		.string "Atk+30$"
-	text_script 196, scr_196
+	text_script // 196
 		.string "DblPoint$"
-	text_script 197, scr_197
+	text_script // 197
 		.string "ElemTrap$"
-	text_script 198, scr_198
+	text_script // 198
 		.string "ColArmy$"
-	text_script 199, scr_199
+	text_script // 199
 		.string "BlzrdBal$"
-	text_script 200, scr_200
+	text_script // 200
 		.string "TimeBom2$"
-	text_script 201, scr_201
+	text_script // 201
 		.string "TimeBom3$"
-	text_script 202, scr_202
+	text_script // 202
 		.string "BigBomb$"
-	text_script 203, scr_203
+	text_script // 203
 		ts_end
-	text_script 204, scr_204
+	text_script // 204
 		ts_end
-	text_script 205, scr_205
+	text_script // 205
 		ts_end
-	text_script 206, scr_206
+	text_script // 206
 		ts_end
-	text_script 207, scr_207
+	text_script // 207
 		ts_end
-	text_script 208, scr_208
+	text_script // 208
 		ts_end
-	text_script 209, scr_209
+	text_script // 209
 		ts_end
-	text_script 210, scr_210
+	text_script // 210
 		ts_end
-	text_script 211, scr_211
+	text_script // 211
 		ts_end
-	text_script 212, scr_212
+	text_script // 212
 		ts_end
-	text_script 213, scr_213
+	text_script // 213
 		ts_end
-	text_script 214, scr_214
+	text_script // 214
 		ts_end
-	text_script 215, scr_215
+	text_script // 215
 		ts_end
-	text_script 216, scr_216
+	text_script // 216
 		ts_end
-	text_script 217, scr_217
+	text_script // 217
 		ts_end
-	text_script 218, scr_218
+	text_script // 218
 		ts_end
-	text_script 219, scr_219
+	text_script // 219
 		ts_end
-	text_script 220, scr_220
+	text_script // 220
 		ts_end
-	text_script 221, scr_221
+	text_script // 221
 		.string "Roll$"
-	text_script 222, scr_222
+	text_script // 222
 		.string "Roll2$"
-	text_script 223, scr_223
+	text_script // 223
 		.string "Roll3$"
-	text_script 224, scr_224
+	text_script // 224
 		.string "ProtoMan$"
-	text_script 225, scr_225
+	text_script // 225
 		.string "ProtoMn[EX]$"
-	text_script 226, scr_226
+	text_script // 226
 		.string "ProtoMn[SP]$"
-	text_script 227, scr_227
+	text_script // 227
 		.string "HeatMan$"
-	text_script 228, scr_228
+	text_script // 228
 		.string "HeatMan[EX]$"
-	text_script 229, scr_229
+	text_script // 229
 		.string "HeatMan[SP]$"
-	text_script 230, scr_230
+	text_script // 230
 		.string "ElecMan$"
-	text_script 231, scr_231
+	text_script // 231
 		.string "ElecMan[EX]$"
-	text_script 232, scr_232
+	text_script // 232
 		.string "ElecMan[SP]$"
-	text_script 233, scr_233
+	text_script // 233
 		.string "SlashMan$"
-	text_script 234, scr_234
+	text_script // 234
 		.string "SlashMn[EX]$"
-	text_script 235, scr_235
+	text_script // 235
 		.string "SlashMn[SP]$"
-	text_script 236, scr_236
+	text_script // 236
 		.string "EraseMan$"
-	text_script 237, scr_237
+	text_script // 237
 		.string "EraseMn[EX]$"
-	text_script 238, scr_238
+	text_script // 238
 		.string "EraseMn[SP]$"
-	text_script 239, scr_239
+	text_script // 239
 		.string "ChrgeMan$"
-	text_script 240, scr_240
+	text_script // 240
 		.string "ChrgeMn[EX]$"
-	text_script 241, scr_241
+	text_script // 241
 		.string "ChrgeMn[SP]$"
-	text_script 242, scr_242
+	text_script // 242
 		.string "SpoutMan$"
-	text_script 243, scr_243
+	text_script // 243
 		.string "SpoutMn[EX]$"
-	text_script 244, scr_244
+	text_script // 244
 		.string "SpoutMn[SP]$"
-	text_script 245, scr_245
+	text_script // 245
 		.string "TmhkMan$"
-	text_script 246, scr_246
+	text_script // 246
 		.string "TmhkMan[EX]$"
-	text_script 247, scr_247
+	text_script // 247
 		.string "TmhkMan[SP]$"
-	text_script 248, scr_248
+	text_script // 248
 		.string "TenguMan$"
-	text_script 249, scr_249
+	text_script // 249
 		.string "TenguMn[EX]$"
-	text_script 250, scr_250
+	text_script // 250
 		.string "TenguMn[SP]$"
-	text_script 251, scr_251
+	text_script // 251
 		.string "GrndMan$"
-	text_script 252, scr_252
+	text_script // 252
 		.string "GrndMan[EX]$"
-	text_script 253, scr_253
+	text_script // 253
 		.string "GrndMan[SP]$"
-	text_script 254, scr_254
+	text_script // 254
 		.string "DustMan$"
-	text_script 255, scr_255
+	text_script // 255
 		.string "DustMan[EX]$"
 	.balign 4, 0
 TextScriptChipNames1::
-	text_script_start TextScriptChipNames1
-	// using absolute relative pointers due to error at script 28
-	.hword 0x150, 0x159, 0x162, 0x16B, 0x174, 0x17C, 0x185, 0x18E, 0x197, 0x1A0
-	.hword 0x1A9, 0x1B2, 0x1BB, 0x1C4, 0x1CD, 0x1D6, 0x1DF, 0x1E7, 0x1F0, 0x1F9
-	.hword 0x202, 0x20B, 0x214, 0x21B, 0x223, 0x22B, 0x234, 0x23D, 0x246, 0x24E
-	.hword 0x257, 0x260, 0x269, 0x272, 0x27B, 0x284, 0x285, 0x286, 0x287, 0x288
-	.hword 0x289, 0x28A, 0x28B, 0x28C, 0x28D, 0x28E, 0x293, 0x29B, 0x2A4, 0x2AD
-	.hword 0x2B6, 0x2BF, 0x2C8, 0x2D1, 0x2D9, 0x2E2, 0x2EB, 0x2F2, 0x2F9, 0x2FA
-	.hword 0x302, 0x30A, 0x312, 0x31A, 0x323, 0x32C, 0x335, 0x33E, 0x347, 0x350
-	.hword 0x359, 0x362, 0x36B, 0x374, 0x37D, 0x386, 0x38F, 0x398, 0x3A0, 0x3A9
-	.hword 0x3B2, 0x3BB, 0x3C3, 0x3CB, 0x3D3, 0x3DB, 0x3E4, 0x3ED, 0x3F5, 0x3FD
-	.hword 0x406, 0x40F, 0x417, 0x420, 0x429, 0x42A, 0x42B, 0x42C, 0x42D, 0x42E
-	.hword 0x42F, 0x430, 0x431, 0x432, 0x433, 0x434, 0x435, 0x436, 0x437, 0x438
-	.hword 0x439, 0x43A, 0x43B, 0x43C, 0x441, 0x44A, 0x453, 0x459, 0x462, 0x46B
-	.hword 0x474, 0x47D, 0x482, 0x487, 0x48D, 0x495, 0x49D, 0x4A6, 0x4AF, 0x4B8
-	.hword 0x4C1, 0x4C9, 0x4D2, 0x4DA, 0x4DB, 0x4E4, 0x4ED, 0x4EE, 0x4EF, 0x4F0
-	.hword 0x4F1, 0x4F2, 0x4F3, 0x4F4, 0x4F5, 0x4FE, 0x507, 0x50E, 0x517, 0x520
-	.hword 0x529, 0x532, 0x53B, 0x544, 0x54C, 0x555, 0x556, 0x557, 0x558, 0x559
-	.hword 0x55A, 0x55B, 0x55C, 0x55D, 0x55E, 0x55F, 0x560, 0x561
+	text_archive_start
 
-	text_script 0, scr_0
+	// script-relative pointers exist here but are defined via macros
+
+	text_script
 		.string "DustMan[SP]$"
-	text_script 1, scr_1
+	text_script
 		.string "BlastMan$"
-	text_script 2, scr_2
+	text_script
 		.string "BlastMn[EX]$"
-	text_script 3, scr_3
+	text_script
 		.string "BlastMn[SP]$"
-	text_script 4, scr_4
+	text_script
 		.string "DiveMan$"
-	text_script 5, scr_5
+	text_script
 		.string "DiveMan[EX]$"
-	text_script 6, scr_6
+	text_script
 		.string "DiveMan[SP]$"
-	text_script 7, scr_7
+	text_script
 		.string "CrcusMan$"
-	text_script 8, scr_8
+	text_script
 		.string "CrcusMn[EX]$"
-	text_script 9, scr_9
+	text_script
 		.string "CrcusMn[SP]$"
-	text_script 10, scr_10
+	text_script
 		.string "JudgeMan$"
-	text_script 11, scr_11
+	text_script
 		.string "JudgeMn[EX]$"
-	text_script 12, scr_12
+	text_script
 		.string "JudgeMn[SP]$"
-	text_script 13, scr_13
+	text_script
 		.string "ElmntMan$"
-	text_script 14, scr_14
+	text_script
 		.string "ElmntMn[EX]$"
-	text_script 15, scr_15
+	text_script
 		.string "ElmntMn[SP]$"
-	text_script 16, scr_16
+	text_script
 		.string "Colonel$"
-	text_script 17, scr_17
+	text_script
 		.string "Colonel[EX]$"
-	text_script 18, scr_18
+	text_script
 		.string "Colonel[SP]$"
-	text_script 19, scr_19
+	text_script
 		.string "HackJack$"
-	text_script 20, scr_20
+	text_script
 		.string "HackJck[EX]$"
-	text_script 21, scr_21
+	text_script
 		.string "HackJck[SP]$"
-	text_script 22, scr_22
+	text_script
 		.string "Django$"
-	text_script 23, scr_23
+	text_script
 		.string "Django2$"
-	text_script 24, scr_24
+	text_script
 		.string "Django3$"
-	text_script 25, scr_25
+	text_script
 		.string "PunchArm$"
-	text_script 26, scr_26
+	text_script
 		.string "NeedlArm$"
-	text_script 27, scr_27
+	text_script
 		.string "PuzzlArm$"
-	text_script 28, scr_28
-		.string "BoomrArmSyncTrgr$"
-	text_script 29, scr_29
+	text_script
+		.string "BoomrArm"
+	text_script
+		.string "SyncTrgr$"
+	text_script
 		.string "DrkSword$"
-	text_script 30, scr_30
+	text_script
 		.string "DarkThnd$"
-	text_script 31, scr_31
+	text_script
 		.string "DrkRecov$"
-	text_script 32, scr_32
+	text_script
 		.string "DarkInvs$"
-	text_script 33, scr_33
+	text_script
 		.string "DarkPlus$"
-	text_script 34, scr_34
+	text_script
 		ts_end
-	text_script 35, scr_35
+	text_script
 		ts_end
-	text_script 36, scr_36
+	text_script
 		ts_end
-	text_script 37, scr_37
+	text_script
 		ts_end
-	text_script 38, scr_38
+	text_script
 		ts_end
-	text_script 39, scr_39
+	text_script
 		ts_end
-	text_script 40, scr_40
+	text_script
 		ts_end
-	text_script 41, scr_41
+	text_script
 		ts_end
-	text_script 42, scr_42
+	text_script
 		ts_end
-	text_script 43, scr_43
+	text_script
 		ts_end
-	text_script 44, scr_44
+	text_script
 		.string "Bass$"
-	text_script 45, scr_45
+	text_script
 		.string "BigHook$"
-	text_script 46, scr_46
+	text_script
 		.string "DeltaRay$"
-	text_script 47, scr_47
+	text_script
 		.string "ColForce$"
-	text_script 48, scr_48
+	text_script
 		.string "BugRSwrd$"
-	text_script 49, scr_49
+	text_script
 		.string "BassAnly$"
-	text_script 50, scr_50
+	text_script
 		.string "MetrKnuk$"
-	text_script 51, scr_51
+	text_script
 		.string "CrossDiv$"
-	text_script 52, scr_52
+	text_script
 		.string "HubBatc$"
-	text_script 53, scr_53
+	text_script
 		.string "BgDthThd$"
-	text_script 54, scr_54
+	text_script
 		.string "DblBeast$"
-	text_script 55, scr_55
+	text_script
 		.string "Gregar$"
-	text_script 56, scr_56
+	text_script
 		.string "Falzar$"
-	text_script 57, scr_57
+	text_script
 		ts_end
-	text_script 58, scr_58
+	text_script
 		.string "BatCan1$"
-	text_script 59, scr_59
+	text_script
 		.string "BatCan2$"
-	text_script 60, scr_60
+	text_script
 		.string "BatCan3$"
-	text_script 61, scr_61
+	text_script
 		.string "BatCan4$"
-	text_script 62, scr_62
+	text_script
 		.string "BeastOut$"
-	text_script 63, scr_63
+	text_script
 		.string "GigaCan1$"
-	text_script 64, scr_64
+	text_script
 		.string "GigaCan2$"
-	text_script 65, scr_65
+	text_script
 		.string "GigaCan3$"
-	text_script 66, scr_66
+	text_script
 		.string "WideBrn1$"
-	text_script 67, scr_67
+	text_script
 		.string "WideBrn2$"
-	text_script 68, scr_68
+	text_script
 		.string "WideBrn3$"
-	text_script 69, scr_69
+	text_script
 		.string "FlmHook1$"
-	text_script 70, scr_70
+	text_script
 		.string "FlmHook2$"
-	text_script 71, scr_71
+	text_script
 		.string "FlmHook3$"
-	text_script 72, scr_72
+	text_script
 		.string "PwrWave1$"
-	text_script 73, scr_73
+	text_script
 		.string "PwrWave2$"
-	text_script 74, scr_74
+	text_script
 		.string "PwrWave3$"
-	text_script 75, scr_75
+	text_script
 		.string "CornFsta$"
-	text_script 76, scr_76
+	text_script
 		.string "ParaShl$"
-	text_script 77, scr_77
+	text_script
 		.string "DestPuls$"
-	text_script 78, scr_78
+	text_script
 		.string "TimeBom+$"
-	text_script 79, scr_79
+	text_script
 		.string "StreamHd$"
-	text_script 80, scr_80
+	text_script
 		.string "SuprSpr$"
-	text_script 81, scr_81
+	text_script
 		.string "H-Burst$"
-	text_script 82, scr_82
+	text_script
 		.string "LifeSrd$"
-	text_script 83, scr_83
+	text_script
 		.string "GreatYo$"
-	text_script 84, scr_84
+	text_script
 		.string "PitHocky$"
-	text_script 85, scr_85
+	text_script
 		.string "PoisPhar$"
-	text_script 86, scr_86
+	text_script
 		.string "BodyGrd$"
-	text_script 87, scr_87
+	text_script
 		.string "DblHero$"
-	text_script 88, scr_88
+	text_script
 		.string "Darkness$"
-	text_script 89, scr_89
+	text_script
 		.string "MstrCros$"
-	text_script 90, scr_90
+	text_script
 		.string "SunMoon$"
-	text_script 91, scr_91
+	text_script
 		.string "TwinLdrs$"
-	text_script 92, scr_92
+	text_script
 		.string "CrosOver$"
-	text_script 93, scr_93
+	text_script
 		ts_end
-	text_script 94, scr_94
+	text_script
 		ts_end
-	text_script 95, scr_95
+	text_script
 		ts_end
-	text_script 96, scr_96
+	text_script
 		ts_end
-	text_script 97, scr_97
+	text_script
 		ts_end
-	text_script 98, scr_98
+	text_script
 		ts_end
-	text_script 99, scr_99
+	text_script
 		ts_end
-	text_script 100, scr_100
+	text_script
 		ts_end
-	text_script 101, scr_101
+	text_script
 		ts_end
-	text_script 102, scr_102
+	text_script
 		ts_end
-	text_script 103, scr_103
+	text_script
 		ts_end
-	text_script 104, scr_104
+	text_script
 		ts_end
-	text_script 105, scr_105
+	text_script
 		ts_end
-	text_script 106, scr_106
+	text_script
 		ts_end
-	text_script 107, scr_107
+	text_script
 		ts_end
-	text_script 108, scr_108
+	text_script
 		ts_end
-	text_script 109, scr_109
+	text_script
 		ts_end
-	text_script 110, scr_110
+	text_script
 		ts_end
-	text_script 111, scr_111
+	text_script
 		ts_end
-	text_script 112, scr_112
+	text_script
 		.string "????$"
-	text_script 113, scr_113
+	text_script
 		.string "FtrSword$"
-	text_script 114, scr_114
+	text_script
 		.string "SonicBom$"
-	text_script 115, scr_115
+	text_script
 		.string "Curse$"
-	text_script 116, scr_116
+	text_script
 		.string "Punisher$"
-	text_script 117, scr_117
+	text_script
 		.string "CrosSwrd$"
-	text_script 118, scr_118
+	text_script
 		.string "SprSonic$"
-	text_script 119, scr_119
+	text_script
 		.string "DblDream$"
-	text_script 120, scr_120
+	text_script
 		.string "Rush$"
-	text_script 121, scr_121
+	text_script
 		.string "Beat$"
-	text_script 122, scr_122
+	text_script
 		.string "Tango$"
-	text_script 123, scr_123
+	text_script
 		.string "IceCube$"
-	text_script 124, scr_124
+	text_script
 		.string "Z Saver$"
-	text_script 125, scr_125
+	text_script
 		.string "WhiCapsl$"
-	text_script 126, scr_126
+	text_script
 		.string "PrpCapsl$"
-	text_script 127, scr_127
+	text_script
 		.string "PnkCapsl$"
-	text_script 128, scr_128
+	text_script
 		.string "HealBall$"
-	text_script 129, scr_129
+	text_script
 		.string "MagPanl$"
-	text_script 130, scr_130
+	text_script
 		.string "FinalGun$"
-	text_script 131, scr_131
+	text_script
 		.string "NumTrap$"
-	text_script 132, scr_132
+	text_script
 		ts_end
-	text_script 133, scr_133
+	text_script
 		.string "BeastOut$"
-	text_script 134, scr_134
+	text_script
 		.string "BeastOut$"
-	text_script 135, scr_135
+	text_script
 		ts_end
-	text_script 136, scr_136
+	text_script
 		ts_end
-	text_script 137, scr_137
+	text_script
 		ts_end
-	text_script 138, scr_138
+	text_script
 		ts_end
-	text_script 139, scr_139
+	text_script
 		ts_end
-	text_script 140, scr_140
+	text_script
 		ts_end
-	text_script 141, scr_141
+	text_script
 		ts_end
-	text_script 142, scr_142
+	text_script
 		ts_end
-	text_script 143, scr_143
+	text_script
 		.string "HeatPres$"
-	text_script 144, scr_144
+	text_script
 		.string "DElecSwd$"
-	text_script 145, scr_145
+	text_script
 		.string "RSlash$"
-	text_script 146, scr_146
+	text_script
 		.string "EDeletBm$"
-	text_script 147, scr_147
+	text_script
 		.string "VolcChrg$"
-	text_script 148, scr_148
+	text_script
 		.string "DripShwr$"
-	text_script 149, scr_149
+	text_script
 		.string "ETomahwk$"
-	text_script 150, scr_150
+	text_script
 		.string "FTornado$"
-	text_script 151, scr_151
+	text_script
 		.string "RC Brakr$"
-	text_script 152, scr_152
+	text_script
 		.string "DustBrk$"
-	text_script 153, scr_153
+	text_script
 		.string "StepSwrd$"
-	text_script 154, scr_154
+	text_script
 		ts_end
-	text_script 155, scr_155
+	text_script
 		ts_end
-	text_script 156, scr_156
+	text_script
 		ts_end
-	text_script 157, scr_157
+	text_script
 		ts_end
-	text_script 158, scr_158
+	text_script
 		ts_end
-	text_script 159, scr_159
+	text_script
 		ts_end
-	text_script 160, scr_160
+	text_script
 		ts_end
-	text_script 161, scr_161
+	text_script
 		ts_end
-	text_script 162, scr_162
+	text_script
 		ts_end
-	text_script 163, scr_163
+	text_script
 		ts_end
-	text_script 164, scr_164
+	text_script
 		ts_end
-	text_script 165, scr_165
+	text_script
 		ts_end
-	text_script 166, scr_166
+	text_script
 		ts_end
 	.balign 4, 0
 
 TextScriptChipDescriptions0::
-	text_script_start TextScriptChipDescriptions0
+	text_archive_start
 
-	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-	text_script_rel_pointers 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
-	text_script_rel_pointers 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47
-	text_script_rel_pointers 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63
-	text_script_rel_pointers 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79
-	text_script_rel_pointers 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95
-	text_script_rel_pointers 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111
-	text_script_rel_pointers 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127
-	text_script_rel_pointers 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143
-	text_script_rel_pointers 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159
-	text_script_rel_pointers 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175
-	text_script_rel_pointers 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191
-	text_script_rel_pointers 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207
-	text_script_rel_pointers 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223
-	text_script_rel_pointers 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239
-	text_script_rel_pointers 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255
-	text_script 0, scr_0
+	// script-relative pointers exist here but are defined via macros
+
+	text_script // 0
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 1, scr_1
+	text_script // 1
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cannon to\n"
@@ -5167,7 +5125,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 2, scr_2
+	text_script // 2
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cannon to\n"
@@ -5176,7 +5134,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 3, scr_3
+	text_script // 3
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cannon to\n"
@@ -5185,7 +5143,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 4, scr_4
+	text_script // 4
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Knock\n"
@@ -5194,7 +5152,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 5, scr_5
+	text_script // 5
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "3-shot to\n"
@@ -5203,7 +5161,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 6, scr_6
+	text_script // 6
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "4-shot to\n"
@@ -5212,7 +5170,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 7, scr_7
+	text_script // 7
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "5-shot to\n"
@@ -5221,7 +5179,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 8, scr_8
+	text_script // 8
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "10-shot\n"
@@ -5230,7 +5188,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 9, scr_9
+	text_script // 9
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Spreads \n"
@@ -5239,7 +5197,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 10, scr_10
+	text_script // 10
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Spreads \n"
@@ -5248,7 +5206,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 11, scr_11
+	text_script // 11
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Spreads \n"
@@ -5257,7 +5215,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 12, scr_12
+	text_script // 12
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "3sqr blst\n"
@@ -5266,7 +5224,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 13, scr_13
+	text_script // 13
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "3sqr blst\n"
@@ -5275,7 +5233,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 14, scr_14
+	text_script // 14
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "3sqr blst\n"
@@ -5284,7 +5242,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 15, scr_15
+	text_script // 15
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hits row\n"
@@ -5293,7 +5251,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 16, scr_16
+	text_script // 16
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hits row\n"
@@ -5302,7 +5260,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 17, scr_17
+	text_script // 17
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hits row\n"
@@ -5311,7 +5269,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 18, scr_18
+	text_script // 18
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fires a\n"
@@ -5320,7 +5278,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 19, scr_19
+	text_script // 19
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "YoYo atk\n"
@@ -5329,7 +5287,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 20, scr_20
+	text_script // 20
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Crcks 3\n"
@@ -5338,7 +5296,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 21, scr_21
+	text_script // 21
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Crcks 3\n"
@@ -5347,7 +5305,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 22, scr_22
+	text_script // 22
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Crcks 3\n"
@@ -5356,7 +5314,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 23, scr_23
+	text_script // 23
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fires 3sq\n"
@@ -5365,7 +5323,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 24, scr_24
+	text_script // 24
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hits enmy\n"
@@ -5374,7 +5332,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 25, scr_25
+	text_script // 25
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hits enmy\n"
@@ -5383,7 +5341,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 26, scr_26
+	text_script // 26
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hits enmy\n"
@@ -5392,7 +5350,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 27, scr_27
+	text_script // 27
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Seals an \n"
@@ -5401,7 +5359,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 28, scr_28
+	text_script // 28
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Seals an \n"
@@ -5410,7 +5368,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 29, scr_29
+	text_script // 29
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Seals an \n"
@@ -5419,7 +5377,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 30, scr_30
+	text_script // 30
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Pralyzing\n"
@@ -5428,7 +5386,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 31, scr_31
+	text_script // 31
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "A piercng\n"
@@ -5437,7 +5395,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 32, scr_32
+	text_script // 32
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "A piercng\n"
@@ -5446,7 +5404,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 33, scr_33
+	text_script // 33
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "A piercng\n"
@@ -5455,7 +5413,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 34, scr_34
+	text_script // 34
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Sprd elec\n"
@@ -5464,7 +5422,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 35, scr_35
+	text_script // 35
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Sprd elec\n"
@@ -5473,7 +5431,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 36, scr_36
+	text_script // 36
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Sprd elec\n"
@@ -5482,7 +5440,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 37, scr_37
+	text_script // 37
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Bees attk\n"
@@ -5491,7 +5449,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 38, scr_38
+	text_script // 38
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Bees attk\n"
@@ -5500,7 +5458,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 39, scr_39
+	text_script // 39
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Bees attk\n"
@@ -5509,7 +5467,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 40, scr_40
+	text_script // 40
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Send out\n"
@@ -5518,7 +5476,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 41, scr_41
+	text_script // 41
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Send out\n"
@@ -5527,7 +5485,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 42, scr_42
+	text_script // 42
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Send out\n"
@@ -5536,7 +5494,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 43, scr_43
+	text_script // 43
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fire 9sts\n"
@@ -5545,7 +5503,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 44, scr_44
+	text_script // 44
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fire 9sts\n"
@@ -5554,7 +5512,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 45, scr_45
+	text_script // 45
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fire 9sts\n"
@@ -5563,7 +5521,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 46, scr_46
+	text_script // 46
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Drgn near\n"
@@ -5572,7 +5530,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 47, scr_47
+	text_script // 47
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Drgn near\n"
@@ -5581,7 +5539,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 48, scr_48
+	text_script // 48
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Drgn near\n"
@@ -5590,7 +5548,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 49, scr_49
+	text_script // 49
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Drgn near\n"
@@ -5599,7 +5557,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 50, scr_50
+	text_script // 50
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Bounce \n"
@@ -5608,7 +5566,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 51, scr_51
+	text_script // 51
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Knocks\n"
@@ -5617,7 +5575,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 52, scr_52
+	text_script // 52
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "8hit strm\n"
@@ -5626,7 +5584,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 53, scr_53
+	text_script // 53
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "A static\n"
@@ -5635,7 +5593,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 54, scr_54
+	text_script // 54
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Throws a\n"
@@ -5644,7 +5602,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 55, scr_55
+	text_script // 55
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Throws a\n"
@@ -5653,7 +5611,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 56, scr_56
+	text_script // 56
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Throws a\n"
@@ -5662,7 +5620,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 57, scr_57
+	text_script // 57
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Thrw dlyd\n"
@@ -5671,7 +5629,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 58, scr_58
+	text_script // 58
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Thrw dlyd\n"
@@ -5680,7 +5638,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 59, scr_59
+	text_script // 59
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Thrw dlyd\n"
@@ -5689,7 +5647,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 60, scr_60
+	text_script // 60
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Thrw shel\n"
@@ -5698,7 +5656,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 61, scr_61
+	text_script // 61
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Target 3\n"
@@ -5707,7 +5665,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 62, scr_62
+	text_script // 62
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Target 3\n"
@@ -5716,7 +5674,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 63, scr_63
+	text_script // 63
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Target 3\n"
@@ -5725,7 +5683,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 64, scr_64
+	text_script // 64
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Damages\n"
@@ -5734,7 +5692,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 65, scr_65
+	text_script // 65
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Damages\n"
@@ -5743,7 +5701,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 66, scr_66
+	text_script // 66
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Damages\n"
@@ -5752,7 +5710,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 67, scr_67
+	text_script // 67
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Throws a\n"
@@ -5761,7 +5719,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 68, scr_68
+	text_script // 68
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Makes 9sq\n"
@@ -5770,7 +5728,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 69, scr_69
+	text_script // 69
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Makes 9sq\n"
@@ -5779,7 +5737,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 70, scr_70
+	text_script // 70
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Makes 9sq\n"
@@ -5788,7 +5746,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 71, scr_71
+	text_script // 71
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cuts enmy\n"
@@ -5797,7 +5755,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 72, scr_72
+	text_script // 72
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cuts enmy\n"
@@ -5806,7 +5764,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 73, scr_73
+	text_script // 73
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cuts enmy\n"
@@ -5815,7 +5773,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 74, scr_74
+	text_script // 74
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cuts enmy\n"
@@ -5824,7 +5782,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 75, scr_75
+	text_script // 75
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cuts enmy\n"
@@ -5833,7 +5791,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 76, scr_76
+	text_script // 76
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cut enmy\n"
@@ -5842,7 +5800,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 77, scr_77
+	text_script // 77
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cut enmy\n"
@@ -5851,7 +5809,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 78, scr_78
+	text_script // 78
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cut enmy\n"
@@ -5860,7 +5818,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 79, scr_79
+	text_script // 79
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cut enmy\n"
@@ -5869,7 +5827,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 80, scr_80
+	text_script // 80
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Blow enmy\n"
@@ -5878,7 +5836,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 81, scr_81
+	text_script // 81
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Use\n"
@@ -5887,7 +5845,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 82, scr_82
+	text_script // 82
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "A magical\n"
@@ -5896,7 +5854,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 83, scr_83
+	text_script // 83
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "A magical\n"
@@ -5905,7 +5863,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 84, scr_84
+	text_script // 84
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Slices\n"
@@ -5914,7 +5872,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 85, scr_85
+	text_script // 85
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Atk power\n"
@@ -5923,7 +5881,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 86, scr_86
+	text_script // 86
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Search &\n"
@@ -5932,7 +5890,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 87, scr_87
+	text_script // 87
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cut enmy\n"
@@ -5941,7 +5899,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 88, scr_88
+	text_script // 88
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "When plyz\n"
@@ -5950,7 +5908,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 89, scr_89
+	text_script // 89
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Shoot a\n"
@@ -5959,7 +5917,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 90, scr_90
+	text_script // 90
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Shoot 2\n"
@@ -5968,7 +5926,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 91, scr_91
+	text_script // 91
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Shoot 3\n"
@@ -5977,7 +5935,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 92, scr_92
+	text_script // 92
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fllw enmy\n"
@@ -5986,7 +5944,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 93, scr_93
+	text_script // 93
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fllw enmy\n"
@@ -5995,7 +5953,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 94, scr_94
+	text_script // 94
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fllw enmy\n"
@@ -6004,7 +5962,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 95, scr_95
+	text_script // 95
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "A flying\n"
@@ -6013,7 +5971,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 96, scr_96
+	text_script // 96
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "A flying\n"
@@ -6022,7 +5980,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 97, scr_97
+	text_script // 97
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "A flying\n"
@@ -6031,7 +5989,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 98, scr_98
+	text_script // 98
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "3pnl fwd\n"
@@ -6040,7 +5998,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 99, scr_99
+	text_script // 99
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "3pnl fwd\n"
@@ -6049,7 +6007,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 100, scr_100
+	text_script // 100
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "3pnl fwd\n"
@@ -6058,7 +6016,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 101, scr_101
+	text_script // 101
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk enmy\n"
@@ -6067,7 +6025,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 102, scr_102
+	text_script // 102
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk enmy\n"
@@ -6076,7 +6034,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 103, scr_103
+	text_script // 103
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk enmy\n"
@@ -6085,7 +6043,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 104, scr_104
+	text_script // 104
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk enmy\n"
@@ -6094,7 +6052,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 105, scr_105
+	text_script // 105
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk enmy\n"
@@ -6103,7 +6061,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 106, scr_106
+	text_script // 106
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk enmy\n"
@@ -6112,7 +6070,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 107, scr_107
+	text_script // 107
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Slams\n"
@@ -6121,7 +6079,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 108, scr_108
+	text_script // 108
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Slams\n"
@@ -6130,7 +6088,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 109, scr_109
+	text_script // 109
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Slams\n"
@@ -6139,7 +6097,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 110, scr_110
+	text_script // 110
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Press [A]\n"
@@ -6148,7 +6106,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 111, scr_111
+	text_script // 111
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Press [A]\n"
@@ -6157,7 +6115,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 112, scr_112
+	text_script // 112
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Press [A]\n"
@@ -6166,7 +6124,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 113, scr_113
+	text_script // 113
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hits enmy\n"
@@ -6175,7 +6133,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 114, scr_114
+	text_script // 114
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hits enmy\n"
@@ -6184,7 +6142,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 115, scr_115
+	text_script // 115
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hits enmy\n"
@@ -6193,7 +6151,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 116, scr_116
+	text_script // 116
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Boomerang\n"
@@ -6202,7 +6160,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 117, scr_117
+	text_script // 117
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Boomerang\n"
@@ -6211,7 +6169,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 118, scr_118
+	text_script // 118
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Boomerang\n"
@@ -6220,7 +6178,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 119, scr_119
+	text_script // 119
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Lance\n"
@@ -6229,7 +6187,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 120, scr_120
+	text_script // 120
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hit 3panl\n"
@@ -6238,7 +6196,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 121, scr_121
+	text_script // 121
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hit 3panl\n"
@@ -6247,7 +6205,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 122, scr_122
+	text_script // 122
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hit 3panl\n"
@@ -6256,7 +6214,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 123, scr_123
+	text_script // 123
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fire off\n"
@@ -6265,7 +6223,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 124, scr_124
+	text_script // 124
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fire off\n"
@@ -6274,7 +6232,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 125, scr_125
+	text_script // 125
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fire off\n"
@@ -6283,7 +6241,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 126, scr_126
+	text_script // 126
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Spits out\n"
@@ -6292,7 +6250,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 127, scr_127
+	text_script // 127
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Spits out\n"
@@ -6301,7 +6259,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 128, scr_128
+	text_script // 128
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Spits out\n"
@@ -6310,7 +6268,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 129, scr_129
+	text_script // 129
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "WindBox \n"
@@ -6319,7 +6277,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 130, scr_130
+	text_script // 130
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "VacuumFn\n"
@@ -6328,7 +6286,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 131, scr_131
+	text_script // 131
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Bounce an\n"
@@ -6337,7 +6295,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 132, scr_132
+	text_script // 132
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Bounce an\n"
@@ -6346,7 +6304,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 133, scr_133
+	text_script // 133
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Bounce an\n"
@@ -6355,7 +6313,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 134, scr_134
+	text_script // 134
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Call snke\n"
@@ -6364,7 +6322,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 135, scr_135
+	text_script // 135
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Summon a\n"
@@ -6373,7 +6331,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 136, scr_136
+	text_script // 136
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Summon a\n"
@@ -6382,7 +6340,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 137, scr_137
+	text_script // 137
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Summon a\n"
@@ -6391,7 +6349,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 138, scr_138
+	text_script // 138
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Last 2\n"
@@ -6400,7 +6358,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 139, scr_139
+	text_script // 139
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Drop many\n"
@@ -6409,7 +6367,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 140, scr_140
+	text_script // 140
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fist Atk\n"
@@ -6418,7 +6376,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 141, scr_141
+	text_script // 141
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cursor \n"
@@ -6427,7 +6385,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 142, scr_142
+	text_script // 142
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Stop sght\n"
@@ -6436,7 +6394,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 143, scr_143
+	text_script // 143
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Place a\n"
@@ -6445,7 +6403,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 144, scr_144
+	text_script // 144
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Explodes\n"
@@ -6454,7 +6412,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 145, scr_145
+	text_script // 145
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Place a\n"
@@ -6463,7 +6421,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 146, scr_146
+	text_script // 146
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Take no\n"
@@ -6472,7 +6430,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 147, scr_147
+	text_script // 147
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Confuses \n"
@@ -6481,7 +6439,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 148, scr_148
+	text_script // 148
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Stop enmy\n"
@@ -6490,7 +6448,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 149, scr_149
+	text_script // 149
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Blinds\n"
@@ -6499,7 +6457,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 150, scr_150
+	text_script // 150
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Throws\n"
@@ -6508,7 +6466,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 151, scr_151
+	text_script // 151
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Statue\n"
@@ -6517,7 +6475,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 152, scr_152
+	text_script // 152
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Anubis\n"
@@ -6526,7 +6484,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 153, scr_153
+	text_script // 153
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Put Otnko\n"
@@ -6535,7 +6493,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 154, scr_154
+	text_script // 154
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Recovers\n"
@@ -6543,7 +6501,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 155, scr_155
+	text_script // 155
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Recovers\n"
@@ -6551,7 +6509,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 156, scr_156
+	text_script // 156
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Recovers\n"
@@ -6559,7 +6517,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 157, scr_157
+	text_script // 157
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Recovers\n"
@@ -6567,7 +6525,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 158, scr_158
+	text_script // 158
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Recovers\n"
@@ -6575,7 +6533,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 159, scr_159
+	text_script // 159
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Recovers\n"
@@ -6583,7 +6541,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 160, scr_160
+	text_script // 160
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Recovers\n"
@@ -6591,7 +6549,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 161, scr_161
+	text_script // 161
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Recovers\n"
@@ -6599,7 +6557,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 162, scr_162
+	text_script // 162
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Steals 1\n"
@@ -6608,7 +6566,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 163, scr_163
+	text_script // 163
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Steals\n"
@@ -6617,7 +6575,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 164, scr_164
+	text_script // 164
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "20 damage\n"
@@ -6626,7 +6584,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 165, scr_165
+	text_script // 165
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "40 damage\n"
@@ -6635,7 +6593,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 166, scr_166
+	text_script // 166
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fix your\n"
@@ -6644,7 +6602,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 167, scr_167
+	text_script // 167
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Breaks\n"
@@ -6653,7 +6611,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 168, scr_168
+	text_script // 168
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Creates a\n"
@@ -6662,7 +6620,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 169, scr_169
+	text_script // 169
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Chng all\n"
@@ -6671,7 +6629,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 170, scr_170
+	text_script // 170
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Pull an\n"
@@ -6680,7 +6638,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 171, scr_171
+	text_script // 171
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Push an\n"
@@ -6689,7 +6647,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 172, scr_172
+	text_script // 172
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "CustGauge\n"
@@ -6697,7 +6655,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 173, scr_173
+	text_script // 173
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "CustGauge\n"
@@ -6705,7 +6663,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 174, scr_174
+	text_script // 174
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "CustGauge\n"
@@ -6714,7 +6672,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 175, scr_175
+	text_script // 175
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Power \n"
@@ -6723,7 +6681,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 176, scr_176
+	text_script // 176
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Repairs &\n"
@@ -6732,7 +6690,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 177, scr_177
+	text_script // 177
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Invisible\n"
@@ -6741,7 +6699,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 178, scr_178
+	text_script // 178
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Nullifies\n"
@@ -6750,7 +6708,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 179, scr_179
+	text_script // 179
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Nullifies\n"
@@ -6761,7 +6719,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 180, scr_180
+	text_script // 180
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Nullifies\n"
@@ -6772,7 +6730,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 181, scr_181
+	text_script // 181
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Weak\n"
@@ -6781,7 +6739,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 182, scr_182
+	text_script // 182
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Repel all\n"
@@ -6790,7 +6748,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 183, scr_183
+	text_script // 183
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Draw in\n"
@@ -6799,7 +6757,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 184, scr_184
+	text_script // 184
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Add an\n"
@@ -6808,7 +6766,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 185, scr_185
+	text_script // 185
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attach to\n"
@@ -6817,7 +6775,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 186, scr_186
+	text_script // 186
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Takes the\n"
@@ -6826,7 +6784,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 187, scr_187
+	text_script // 187
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Sets trap\n"
@@ -6835,7 +6793,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 188, scr_188
+	text_script // 188
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Retaliate\n"
@@ -6844,7 +6802,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 189, scr_189
+	text_script // 189
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Damages\n"
@@ -6853,7 +6811,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 190, scr_190
+	text_script // 190
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Duplicate\n"
@@ -6862,7 +6820,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 191, scr_191
+	text_script // 191
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Makes HP\n"
@@ -6873,7 +6831,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 192, scr_192
+	text_script // 192
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "+10 for\n"
@@ -6882,7 +6840,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 193, scr_193
+	text_script // 193
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "+20 for\n"
@@ -6891,7 +6849,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 194, scr_194
+	text_script // 194
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "+10 for\n"
@@ -6900,7 +6858,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 195, scr_195
+	text_script // 195
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "+30 for\n"
@@ -6909,7 +6867,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 196, scr_196
+	text_script // 196
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "+20 for\n"
@@ -6918,7 +6876,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 197, scr_197
+	text_script // 197
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Trap enmy\n"
@@ -6927,7 +6885,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 198, scr_198
+	text_script // 198
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Launch an\n"
@@ -6936,7 +6894,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 199, scr_199
+	text_script // 199
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Launch a\n"
@@ -6945,7 +6903,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 200, scr_200
+	text_script // 200
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Explodes\n"
@@ -6954,7 +6912,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 201, scr_201
+	text_script // 201
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Explodes\n"
@@ -6963,7 +6921,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 202, scr_202
+	text_script // 202
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Throw a 9\n"
@@ -6972,7 +6930,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 203, scr_203
+	text_script // 203
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -6980,7 +6938,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 204, scr_204
+	text_script // 204
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -6988,7 +6946,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 205, scr_205
+	text_script // 205
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -6996,7 +6954,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 206, scr_206
+	text_script // 206
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7004,7 +6962,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 207, scr_207
+	text_script // 207
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7012,7 +6970,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 208, scr_208
+	text_script // 208
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7020,7 +6978,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 209, scr_209
+	text_script // 209
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7028,7 +6986,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 210, scr_210
+	text_script // 210
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7036,7 +6994,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 211, scr_211
+	text_script // 211
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7044,7 +7002,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 212, scr_212
+	text_script // 212
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7052,7 +7010,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 213, scr_213
+	text_script // 213
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7060,7 +7018,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 214, scr_214
+	text_script // 214
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7068,7 +7026,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 215, scr_215
+	text_script // 215
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7076,7 +7034,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 216, scr_216
+	text_script // 216
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7084,7 +7042,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 217, scr_217
+	text_script // 217
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7092,7 +7050,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 218, scr_218
+	text_script // 218
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7100,7 +7058,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 219, scr_219
+	text_script // 219
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7108,7 +7066,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 220, scr_220
+	text_script // 220
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7116,7 +7074,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 221, scr_221
+	text_script // 221
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attacks\n"
@@ -7125,7 +7083,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 222, scr_222
+	text_script // 222
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attacks\n"
@@ -7134,7 +7092,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 223, scr_223
+	text_script // 223
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attacks\n"
@@ -7143,7 +7101,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 224, scr_224
+	text_script // 224
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Move in\n"
@@ -7152,7 +7110,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 225, scr_225
+	text_script // 225
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Move in\n"
@@ -7161,7 +7119,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 226, scr_226
+	text_script // 226
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Move in\n"
@@ -7170,7 +7128,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 227, scr_227
+	text_script // 227
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Burn with\n"
@@ -7179,7 +7137,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 228, scr_228
+	text_script // 228
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Burn with\n"
@@ -7188,7 +7146,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 229, scr_229
+	text_script // 229
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Burn with\n"
@@ -7197,7 +7155,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 230, scr_230
+	text_script // 230
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk your\n"
@@ -7206,7 +7164,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 231, scr_231
+	text_script // 231
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk your\n"
@@ -7215,7 +7173,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 232, scr_232
+	text_script // 232
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk your\n"
@@ -7224,7 +7182,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 233, scr_233
+	text_script // 233
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Slash an\n"
@@ -7233,7 +7191,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 234, scr_234
+	text_script // 234
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Slash an\n"
@@ -7242,7 +7200,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 235, scr_235
+	text_script // 235
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Slash an\n"
@@ -7251,7 +7209,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 236, scr_236
+	text_script // 236
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Press [A]\n"
@@ -7260,7 +7218,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 237, scr_237
+	text_script // 237
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Press [A]\n"
@@ -7269,7 +7227,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 238, scr_238
+	text_script // 238
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Press [A]\n"
@@ -7278,7 +7236,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 239, scr_239
+	text_script // 239
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Rush fwd!\n"
@@ -7287,7 +7245,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 240, scr_240
+	text_script // 240
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Rush fwd!\n"
@@ -7296,7 +7254,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 241, scr_241
+	text_script // 241
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Rush fwd!\n"
@@ -7305,7 +7263,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 242, scr_242
+	text_script // 242
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Watr atk!\n"
@@ -7314,7 +7272,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 243, scr_243
+	text_script // 243
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Watr atk!\n"
@@ -7323,7 +7281,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 244, scr_244
+	text_script // 244
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Watr atk!\n"
@@ -7332,7 +7290,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 245, scr_245
+	text_script // 245
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Slice 2sq\n"
@@ -7341,7 +7299,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 246, scr_246
+	text_script // 246
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Slice 2sq\n"
@@ -7350,7 +7308,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 247, scr_247
+	text_script // 247
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Slice 2sq\n"
@@ -7359,7 +7317,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 248, scr_248
+	text_script // 248
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk 2row\n"
@@ -7368,7 +7326,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 249, scr_249
+	text_script // 249
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk 2row\n"
@@ -7377,7 +7335,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 250, scr_250
+	text_script // 250
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk 2row\n"
@@ -7386,7 +7344,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 251, scr_251
+	text_script // 251
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Move fwrd\n"
@@ -7395,7 +7353,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 252, scr_252
+	text_script // 252
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Move fwrd\n"
@@ -7404,7 +7362,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 253, scr_253
+	text_script // 253
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Move fwrd\n"
@@ -7413,7 +7371,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 254, scr_254
+	text_script // 254
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk ahd.\n"
@@ -7422,7 +7380,7 @@ TextScriptChipDescriptions0::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 255, scr_255
+	text_script // 255
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk ahd.\n"
@@ -7433,19 +7391,11 @@ TextScriptChipDescriptions0::
 		ts_msg_close_quick_ext 0x1, 0x1
 
 dword_86EE0CC::
-	text_script_start dword_86EE0CC
-	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-	text_script_rel_pointers 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
-	text_script_rel_pointers 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47
-	text_script_rel_pointers 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63
-	text_script_rel_pointers 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79
-	text_script_rel_pointers 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95
-	text_script_rel_pointers 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111
-	text_script_rel_pointers 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127
-	text_script_rel_pointers 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143
-	text_script_rel_pointers 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159
-	text_script_rel_pointers 160, 161, 162, 163, 164, 165, 166, 167
-	text_script 0, scr_0
+	text_archive_start
+
+	// script-relative pointers exist here but are defined via macros
+
+	text_script // 0
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk ahd.\n"
@@ -7454,7 +7404,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 1, scr_1
+	text_script // 1
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Head fwd\n"
@@ -7463,7 +7413,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 2, scr_2
+	text_script // 2
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Head fwd\n"
@@ -7472,7 +7422,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 3, scr_3
+	text_script // 3
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Head fwd\n"
@@ -7481,7 +7431,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 4, scr_4
+	text_script // 4
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Snd giant\n"
@@ -7490,7 +7440,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 5, scr_5
+	text_script // 5
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Snd giant\n"
@@ -7499,7 +7449,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 6, scr_6
+	text_script // 6
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Snd giant\n"
@@ -7508,7 +7458,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 7, scr_7
+	text_script // 7
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Capture\n"
@@ -7517,7 +7467,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 8, scr_8
+	text_script // 8
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Capture\n"
@@ -7526,7 +7476,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 9, scr_9
+	text_script // 9
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Capture\n"
@@ -7535,7 +7485,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 10, scr_10
+	text_script // 10
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Whip 3\n"
@@ -7544,7 +7494,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 11, scr_11
+	text_script // 11
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Whip 3\n"
@@ -7553,7 +7503,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 12, scr_12
+	text_script // 12
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Whip 3\n"
@@ -7562,7 +7512,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 13, scr_13
+	text_script // 13
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hit [A] whn\n"
@@ -7571,7 +7521,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 14, scr_14
+	text_script // 14
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hit [A] whn\n"
@@ -7580,7 +7530,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 15, scr_15
+	text_script // 15
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hit [A] whn\n"
@@ -7589,7 +7539,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 16, scr_16
+	text_script // 16
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cut enmy\n"
@@ -7598,7 +7548,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 17, scr_17
+	text_script // 17
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cut enmy\n"
@@ -7607,7 +7557,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 18, scr_18
+	text_script // 18
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cut enmy\n"
@@ -7616,7 +7566,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 19, scr_19
+	text_script // 19
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Rain on\n"
@@ -7625,7 +7575,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 20, scr_20
+	text_script // 20
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Rain on\n"
@@ -7634,7 +7584,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 21, scr_21
+	text_script // 21
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Rain on\n"
@@ -7643,7 +7593,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 22, scr_22
+	text_script // 22
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hit enmy\n"
@@ -7652,7 +7602,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 23, scr_23
+	text_script // 23
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hit enmy\n"
@@ -7661,7 +7611,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 24, scr_24
+	text_script // 24
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hit enmy\n"
@@ -7670,7 +7620,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 25, scr_25
+	text_script // 25
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7678,7 +7628,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 26, scr_26
+	text_script // 26
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7686,7 +7636,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 27, scr_27
+	text_script // 27
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7694,7 +7644,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 28, scr_28
+	text_script // 28
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7702,7 +7652,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 29, scr_29
+	text_script // 29
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7710,7 +7660,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 30, scr_30
+	text_script // 30
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7718,7 +7668,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 31, scr_31
+	text_script // 31
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7726,7 +7676,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 32, scr_32
+	text_script // 32
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7734,7 +7684,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 33, scr_33
+	text_script // 33
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7742,7 +7692,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 34, scr_34
+	text_script // 34
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7750,7 +7700,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 35, scr_35
+	text_script // 35
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7758,7 +7708,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 36, scr_36
+	text_script // 36
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7766,7 +7716,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 37, scr_37
+	text_script // 37
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7774,7 +7724,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 38, scr_38
+	text_script // 38
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7782,7 +7732,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 39, scr_39
+	text_script // 39
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7790,7 +7740,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 40, scr_40
+	text_script // 40
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7798,7 +7748,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 41, scr_41
+	text_script // 41
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7806,7 +7756,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 42, scr_42
+	text_script // 42
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7814,7 +7764,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 43, scr_43
+	text_script // 43
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7822,7 +7772,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 44, scr_44
+	text_script // 44
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7830,7 +7780,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 45, scr_45
+	text_script // 45
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Buster\n"
@@ -7839,7 +7789,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 46, scr_46
+	text_script // 46
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Hook\n"
@@ -7848,7 +7798,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 47, scr_47
+	text_script // 47
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "A Button\n"
@@ -7857,7 +7807,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 48, scr_48
+	text_script // 48
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Smmn Col.\n"
@@ -7866,7 +7816,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 49, scr_49
+	text_script // 49
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Use Bug\n"
@@ -7875,7 +7825,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 50, scr_50
+	text_script // 50
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "A ring\n"
@@ -7884,7 +7834,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 51, scr_51
+	text_script // 51
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Meteors\n"
@@ -7893,7 +7843,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 52, scr_52
+	text_script // 52
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cross-\n"
@@ -7901,7 +7851,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 53, scr_53
+	text_script // 53
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Blend Hub\n"
@@ -7910,7 +7860,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 54, scr_54
+	text_script // 54
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Use Bug\n"
@@ -7919,28 +7869,28 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 55, scr_55
+	text_script // 55
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		ts_ereader_desc01 0x0
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 56, scr_56
+	text_script // 56
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		ts_ereader_desc01 0x1
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 57, scr_57
+	text_script // 57
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		ts_ereader_desc01 0x1
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 58, scr_58
+	text_script // 58
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "\n"
@@ -7948,7 +7898,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 59, scr_59
+	text_script // 59
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "MegaBstr\n"
@@ -7957,7 +7907,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 60, scr_60
+	text_script // 60
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ZapRing\n"
@@ -7966,7 +7916,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 61, scr_61
+	text_script // 61
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "LifeSrd\n"
@@ -7975,7 +7925,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 62, scr_62
+	text_script // 62
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Snd all 3\n"
@@ -7984,7 +7934,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 63, scr_63
+	text_script // 63
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "If Beast\n"
@@ -7993,7 +7943,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 64, scr_64
+	text_script // 64
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Giga lvl\n"
@@ -8002,7 +7952,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 65, scr_65
+	text_script // 65
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Giga lvl\n"
@@ -8011,7 +7961,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 66, scr_66
+	text_script // 66
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Giga lvl\n"
@@ -8020,7 +7970,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 67, scr_67
+	text_script // 67
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "An expnd\n"
@@ -8029,7 +7979,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 68, scr_68
+	text_script // 68
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "An expnd\n"
@@ -8038,7 +7988,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 69, scr_69
+	text_script // 69
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "An expnd\n"
@@ -8047,7 +7997,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 70, scr_70
+	text_script // 70
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Launch 2\n"
@@ -8056,7 +8006,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 71, scr_71
+	text_script // 71
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Launch 2\n"
@@ -8065,7 +8015,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 72, scr_72
+	text_script // 72
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Launch 2\n"
@@ -8074,7 +8024,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 73, scr_73
+	text_script // 73
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Send a\n"
@@ -8083,7 +8033,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 74, scr_74
+	text_script // 74
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Send a\n"
@@ -8092,7 +8042,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 75, scr_75
+	text_script // 75
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Send a\n"
@@ -8101,7 +8051,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 76, scr_76
+	text_script // 76
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Explosive\n"
@@ -8110,7 +8060,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 77, scr_77
+	text_script // 77
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Shell atk\n"
@@ -8119,7 +8069,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 78, scr_78
+	text_script // 78
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fire puls\n"
@@ -8128,7 +8078,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 79, scr_79
+	text_script // 79
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Set TmBm+\n"
@@ -8137,7 +8087,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 80, scr_80
+	text_script // 80
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fire a\n"
@@ -8146,7 +8096,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 81, scr_81
+	text_script // 81
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Fire 3\n"
@@ -8155,7 +8105,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 82, scr_82
+	text_script // 82
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Secondary\n"
@@ -8164,7 +8114,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 83, scr_83
+	text_script // 83
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Slices\n"
@@ -8173,7 +8123,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 84, scr_84
+	text_script // 84
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Moves 3sq\n"
@@ -8181,7 +8131,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 85, scr_85
+	text_script // 85
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Reflect\n"
@@ -8190,7 +8140,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 86, scr_86
+	text_script // 86
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Places a\n"
@@ -8199,7 +8149,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 87, scr_87
+	text_script // 87
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Trap enmy\n"
@@ -8208,7 +8158,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 88, scr_88
+	text_script // 88
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk with\n"
@@ -8217,7 +8167,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 89, scr_89
+	text_script // 89
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "BtlNwk2's\n"
@@ -8226,7 +8176,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 90, scr_90
+	text_script // 90
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk with\n"
@@ -8235,7 +8185,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 91, scr_91
+	text_script // 91
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk 3pnl\n"
@@ -8244,7 +8194,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 92, scr_92
+	text_script // 92
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Dbl attk\n"
@@ -8253,7 +8203,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 93, scr_93
+	text_script // 93
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Cllbrate!\n"
@@ -8262,217 +8212,217 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 94, scr_94
+	text_script // 94
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 95, scr_95
+	text_script // 95
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 96, scr_96
+	text_script // 96
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 97, scr_97
+	text_script // 97
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 98, scr_98
+	text_script // 98
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 99, scr_99
+	text_script // 99
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 100, scr_100
+	text_script // 100
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 101, scr_101
+	text_script // 101
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 102, scr_102
+	text_script // 102
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 103, scr_103
+	text_script // 103
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 104, scr_104
+	text_script // 104
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 105, scr_105
+	text_script // 105
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 106, scr_106
+	text_script // 106
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 107, scr_107
+	text_script // 107
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 108, scr_108
+	text_script // 108
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 109, scr_109
+	text_script // 109
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 110, scr_110
+	text_script // 110
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 111, scr_111
+	text_script // 111
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 112, scr_112
+	text_script // 112
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 113, scr_113
+	text_script // 113
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 114, scr_114
+	text_script // 114
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 115, scr_115
+	text_script // 115
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 116, scr_116
+	text_script // 116
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 117, scr_117
+	text_script // 117
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 118, scr_118
+	text_script // 118
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 119, scr_119
+	text_script // 119
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 120, scr_120
+	text_script // 120
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 121, scr_121
+	text_script // 121
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 122, scr_122
+	text_script // 122
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 123, scr_123
+	text_script // 123
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 124, scr_124
+	text_script // 124
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Add an\n"
@@ -8481,7 +8431,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 125, scr_125
+	text_script // 125
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Add an\n"
@@ -8490,7 +8440,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 126, scr_126
+	text_script // 126
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Add an\n"
@@ -8499,7 +8449,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 127, scr_127
+	text_script // 127
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Add an\n"
@@ -8508,7 +8458,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 128, scr_128
+	text_script // 128
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Add an\n"
@@ -8517,111 +8467,111 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 129, scr_129
+	text_script // 129
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 130, scr_130
+	text_script // 130
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 131, scr_131
+	text_script // 131
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 132, scr_132
+	text_script // 132
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 133, scr_133
+	text_script // 133
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 134, scr_134
-		ts_msg_open_quick_ext 0x1, 0x1
-		ts_text_speed 0x0
-		.string "ミテイ"
-		ts_key_wait 0x1
-		ts_end
-		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 135, scr_135
+	text_script // 134
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 136, scr_136
+	text_script // 135
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 137, scr_137
+	text_script // 136
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 138, scr_138
+	text_script // 137
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 139, scr_139
+	text_script // 138
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 140, scr_140
+	text_script // 139
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 141, scr_141
+	text_script // 140
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 142, scr_142
+	text_script // 141
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 143, scr_143
+	text_script // 142
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 144, scr_144
+	text_script // 143
+		ts_msg_open_quick_ext 0x1, 0x1
+		ts_text_speed 0x0
+		.string "ミテイ"
+		ts_key_wait 0x1
+		ts_end
+		ts_msg_close_quick_ext 0x1, 0x1
+	text_script // 144
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Sprd fire\n"
@@ -8630,7 +8580,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 145, scr_145
+	text_script // 145
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Dash fwd\n"
@@ -8639,7 +8589,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 146, scr_146
+	text_script // 146
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Slash an\n"
@@ -8648,7 +8598,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 147, scr_147
+	text_script // 147
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Pierce\n"
@@ -8657,7 +8607,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 148, scr_148
+	text_script // 148
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Snd coal\n"
@@ -8666,7 +8616,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 149, scr_149
+	text_script // 149
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Send rvlv\n"
@@ -8675,7 +8625,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 150, scr_150
+	text_script // 150
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Unleash\n"
@@ -8684,7 +8634,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 151, scr_151
+	text_script // 151
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Attk enmy\n"
@@ -8693,7 +8643,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 152, scr_152
+	text_script // 152
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "DrillAtk.\n"
@@ -8702,7 +8652,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 153, scr_153
+	text_script // 153
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Draw enmy\n"
@@ -8711,7 +8661,7 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 154, scr_154
+	text_script // 154
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "Use\n"
@@ -8720,91 +8670,91 @@ dword_86EE0CC::
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 155, scr_155
+	text_script // 155
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 156, scr_156
+	text_script // 156
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 157, scr_157
+	text_script // 157
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 158, scr_158
+	text_script // 158
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 159, scr_159
+	text_script // 159
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 160, scr_160
+	text_script // 160
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 161, scr_161
+	text_script // 161
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 162, scr_162
+	text_script // 162
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 163, scr_163
+	text_script // 163
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 164, scr_164
+	text_script // 164
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 165, scr_165
+	text_script // 165
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 166, scr_166
+	text_script // 166
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
 		ts_key_wait 0x1
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
-	text_script 167, scr_167
+	text_script // 167
 		ts_msg_open_quick_ext 0x1, 0x1
 		ts_text_speed 0x0
 		.string "ミテイ"
