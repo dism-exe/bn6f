@@ -10,7 +10,8 @@ class RegressionTests(unittest.TestCase):
     def assertTestFile(self, test_name):
         curdir = 'text_script_dumper/'
 
-        script, end_addr = read_script(0, curdir + test_name + '.bin', '../dumpers/mmbn6.ini')
+        with open(curdir + test_name + '.bin', 'rb') as bin_file:
+            script, end_addr = read_script(0, bin_file, '../dumpers/').build()
         # for i in script: print(i)
         # print(hex(end_addr))
         with open(curdir + test_name + '.s', 'r', encoding='utf-8') as f:
@@ -22,13 +23,13 @@ class RegressionTests(unittest.TestCase):
             for line in lines:
                 if not line.strip():
                     lines.remove(line)
-            self.assertEqual(len(script), len(lines) - 1, 'content length /ismatch')
             cur_script_idx = -1
             for i in range(len(script)):
                 if script[i].strip().startswith('text_script '):
                     cur_script_idx += 1
                 self.assertEqual(script[i].strip(), lines[i].strip(), 'mismatch in script %d' % cur_script_idx)
             self.assertEqual(int(lines[-1], 16), end_addr, 'end address mismatch')
+            self.assertEqual(len(script), len(lines) - 1, 'content length mismatch')
 
 
     def test_TestScriptFolderNames(self):
@@ -61,6 +62,9 @@ class RegressionTests(unittest.TestCase):
         # self.assertTestFile('TextScriptChipTrader86C580C')
         pass
 
+    def test_TextScriptChipNames1(self):
+        # tests for a relative label inside a string. Likely the devs' fault.
+        pass
 
 class CommandParsingTests(unittest.TestCase):
     pass
