@@ -1,7 +1,7 @@
 # searches for all text script within the ROM, identifies if they're compressed or not,
 # and identifies how they segment together
 import argparse
-import tools.dumpers.text_script_dumper as dumper
+import tools.text_script_dumper.text_script_dumper as dumper
 import tools.decompress as decomp
 
 def main():
