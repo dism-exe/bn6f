@@ -556,40 +556,40 @@
 	.byte 0xF9, 0x1, \p0, \p1
 	.endm
 	.macro ts_print_item p0:req, p1:req
-	.byte 0xFA, 0x0, \p0<<4 | \p1>>4, \p1>>4 | 0x0
+	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x0
 	.endm
 	.macro ts_print_chip1 p0:req, p1:req
-	.byte 0xFA, 0x0, \p0<<4 | \p1>>4, \p1>>4 | 0x1
+	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x1
 	.endm
 	.macro ts_print_chip2 p0:req, p1:req
-	.byte 0xFA, 0x0, \p0<<4 | \p1>>4, \p1>>4 | 0x2
+	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x2
 	.endm
 	.macro ts_print_code p0:req, p1:req
-	.byte 0xFA, 0x0, \p0<<4 | \p1>>4, \p1>>4 | 0x3
+	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x3
 	.endm
 	.macro ts_print_folder_name p0:req, p1:req
-	.byte 0xFA, 0x0, \p0<<4 | \p1>>4, \p1>>4 | 0x4
+	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x4
 	.endm
 	.macro ts_print_navi_cust_program5 p0:req, p1:req
-	.byte 0xFA, 0x0, \p0<<4 | \p1>>4, \p1>>4 | 0x5
+	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x5
 	.endm
 	.macro ts_print_navi_cust_program6 p0:req, p1:req
-	.byte 0xFA, 0x0, \p0<<4 | \p1>>4, \p1>>4 | 0x6
+	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x6
 	.endm
 	.macro ts_print_chip7 p0:req, p1:req
-	.byte 0xFA, 0x0, \p0<<4 | \p1>>4, \p1>>4 | 0x7
+	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x7
 	.endm
 	.macro ts_print_navi p0:req, p1:req
-	.byte 0xFA, 0x0, \p0<<4 | \p1>>4, \p1>>4 | 0x8
+	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x8
 	.endm
 	.macro ts_print_request p0:req, p1:req
-	.byte 0xFA, 0x0, \p0<<4 | \p1>>4, \p1>>4 | 0x9
+	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x9
 	.endm
-	.macro ts_print_current_navi p0:req
-	.byte 0xFA, 0x1, 0x0, \p0
+	.macro ts_print_current_navi
+	.byte 0xFA, 0x1, 0x0
 	.endm
-	.macro ts_print_current_navi_o_w p0:req
-	.byte 0xFA, 0x1, 0x4, \p0
+	.macro ts_print_current_navi_ow
+	.byte 0xFA, 0x1, 0x4
 	.endm
 	.macro ts_print_zenny3 p0:req
 	.byte 0xFA, 0x3, 0x0, 0x0, \p0
@@ -823,6 +823,10 @@
 	/* secondary interpreter commands */
 	.macro ts_print_mod_buffer p0:req, p1:req
 	.byte 0xFA, 0x02, \p0, \p1
+	.endm
+	// _s because this name conflicts with ts_print_link_buffer
+	.macro ts_print_link_buffer_s p0:req
+	.byte 0xFA, 0x01, \p0
 	.endm
 	/*
 	.macro ts_space_px p0:req

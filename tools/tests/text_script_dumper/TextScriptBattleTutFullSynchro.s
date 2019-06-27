@@ -1,4 +1,4 @@
-	text_script_start unk_0
+	text_script_start unk_0 // TODO: change this if label is named different
 
 	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
 

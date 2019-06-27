@@ -68,17 +68,16 @@ PRIORITY_CMDS = [b'\xf0']
 CONFLICT_CMDS = [b'\xef', b'\xfa', b'\xf2']
 
 # each family carries different masking
-BITFIELD_CMDS = [b'\xfa', b'\xf2']
+BITFIELD_CMDS = [b'\xfa\x00', b'\xf2']
 
 class TextScript:
-    def __init__(self, rel_pointers, units, addr, size, sects, sects_s, prioritize_s):
+    def __init__(self, rel_pointers, units, addr, size, sects, sects_s):
         self.rel_pointers = rel_pointers
         self.units = units # int (link ids), tuple (command), str (bytes)
         self.addr = addr
         self.size = size
         self.sects = sects
         self.sects_s = sects_s
-        self.prioritize_s = prioritize_s
 
     def compile(self) -> bytes:
         out = b''
@@ -96,19 +95,20 @@ class TextScript:
             elif type(unit) == tuple:
                 cmd, params, from_sect_s = unit
                 # command
-                if unit[0][0:1] == '\xfa':
+                if cmd[0:2] == b'\xfa\x00':
                     # have to put the params back into the command
                     cmd_bytes = list(cmd)
                     param_bytes = list(params)
                     cmd_bytes[2] |= param_bytes[0] << 4
                     cmd_bytes[2] |= param_bytes[1] >> 4
-                    cmd_bytes[3] |= param_bytes[1] & 0xF
+                    cmd_bytes[3] |= (param_bytes[1] & 0xF) << 4
                     compiled_cmd = bytes(cmd_bytes)
                 else:
                     compiled_cmd = bytes(cmd) + bytes(params)
 
-                if not len(compiled_cmd) == get_cmd_len(cmd, params, from_sect_s):
-                    raise TextScriptException('compiled command failed due to length check failure')
+                if len(compiled_cmd) != get_cmd_len(cmd, params, from_sect_s):
+                    raise TextScriptException(
+                        'compiling command failed due to its length not matching: %s' % (compiled_cmd))
                 out += compiled_cmd
             elif type(unit) == int:
                 # link id, not needed
@@ -117,8 +117,12 @@ class TextScript:
                 raise TextScriptException('invalid unit type')
         return out
 
-    def build(self):
-        script = ['\ttext_script_start unk_%X' % self.addr]
+    def build(self) -> (list, int):
+        """
+        creates the script textual output
+        :return: the text output in a list of lines, and the end address
+        """
+        script = ['\ttext_script_start unk_%X // TODO: change this if label is named different' % self.addr]
 
         # assign unique ids to each pointer for reference
         rel_pointer_ids = {}
@@ -146,25 +150,29 @@ class TextScript:
 
         # build units
         for unit in self.units:
-            # log(unit)
             if type(unit) is bytes:
                 if len(unit) == 1 and unit[0] == 0xE6:
-                    s = get_cmd_macro(unit, b'', self.sects, self.sects_s, self.prioritize_s)
+                    s = get_cmd_macro(unit, b'', self.sects, self.sects_s, False)
                 else:
                     s = '.string "%s"' % bn6f_str(unit, get_tbl())
+                if s == '':
+                    raise TextScriptException('invalid string output for %s' % unit)
                 script.append('\t' + s)
             elif type(unit) is tuple:
-                name = get_cmd_macro(unit[0], unit[1], self.sects, self.sects_s, self.prioritize_s)
+                cmd, params, from_sect_s = unit
+                name = get_cmd_macro(cmd, params, self.sects, self.sects_s, from_sect_s)
                 s = '%s ' % name
-                for i in range(len(unit[1])):
-                    param = unit[1][i]
+                for i in range(len(params)):
                     # jump commands go to a linked script
                     if 'jump' in name.lower() and i == 0:
-                        s += '%d, ' % param
+                        s += '%d, ' % params[i]
                     else:
-                        s += '0x%X, ' % param
-                if unit[1]: s = s[:-2]
-                script.append('\t' + s.rstrip())
+                        s += '0x%X, ' % params[i]
+                if params: s = s[:-2]
+                s = s.rstrip()
+                if s == '':
+                    raise TextScriptException('invalid string output for %s' % unit)
+                script.append('\t' + s)
             elif type(unit) is int:
                 script.append('\n\ttext_script %d, scr_%d' % (unit, unit))
             else:
@@ -242,35 +250,39 @@ def read_relative_pointers(bin_file, address):
     return rel_pointers
 
 
-def valid_cmd_base(cmd_bytes, sect):
+def valid_cmd_base(cmd, sect):
     if sect['section'] not in ['Command', 'Extension']:
         return False
+    cmd_bytes = list(cmd)
     mask = [int(b, 16) for b in sect['mask'].split(' ')]
     base = [int(b, 16) for b in sect['base'].split(' ')]
     # must contain enough information for the base
     if len(cmd_bytes) < len(base):
         return False
-    cmd_bytes = cmd_bytes.copy()
     # clear cmd_bytes by mask to remove parameters
     for i in range(len(base)):
         cmd_bytes[i] &= mask[i]
+
+    # if it's a priority command, then it can have more bytes than base
+    if cmd_bytes[0] == 0xF0:
+        return cmd_bytes[:len(base)] == base
     # confirm it matches with the base
-    return cmd_bytes[:len(base)] == base
+    return len(cmd_bytes) == len(base) and cmd_bytes[:len(base)] == base
 
 
-def find_valid_cmd_base(cmd_bytes, sects):
+def find_valid_cmd_base(cmd, sects):
     for sect in sects:
-        if valid_cmd_base(cmd_bytes, sect):
+        if valid_cmd_base(cmd, sect):
             return True, sect
     return False, None
 
 def get_param_count(cmd, sect):
     if sect['section'] in ['Command', 'Extension']:
-        if valid_cmd_base(list(cmd), sect):
+        if valid_cmd_base(cmd, sect):
             nzeros = sect['mask'].count('0')
             if nzeros % 2 == 0:
                 return nzeros // 2
-            elif cmd[0] == 0xFA and nzeros == 3:
+            elif len(cmd) > 2 and cmd[0:2] == b'\xfa\x00' and nzeros == 3:
                 # weird bitfield case... only 3 zeros are supported
                 return 1.5
             else:
@@ -296,7 +308,7 @@ def valid_cmd(cmd, params, sect):
     if sect['section'] in ['Command', 'Extension']:
         # ensure parameters match, unless it's a command with dynamic parameters
         valid_params = lambda: bytes(cmd) in DYNAMIC_CMDS or len(params) == get_param_count(cmd, sect) or get_param_count(cmd, sect) == 1.5
-        if valid_cmd_base(list(cmd), sect) and valid_params():
+        if valid_cmd_base(cmd, sect) and valid_params():
             return True
     return False
 
@@ -311,13 +323,21 @@ def find_cmd(cmd, params, sects):
 
 def get_cmd_len(cmd, params, from_sect_s):
     # 0xFA bitfield commands span have parameters in base length
-    if cmd[0:1] == b'\xfa' and len(cmd) == 4 and not from_sect_s:
+    if cmd[0:1] == b'\xfa' and cmd[0:2] == b'\xfa\x00' and len(cmd) == 4 and not from_sect_s:
         return len(cmd)
     else:
         return len(cmd) + len(params)
 
 
-def get_cmd_macro(cmd, params, sects, sects_s, prioritize_s=True):
+def convert_cmd_name(name: str) -> str:
+    name = 'ts_' + name
+    # convert to snake case
+    for c in name:
+        if c.isupper():
+            name = name.replace(c, '_%c' % c.lower())
+    return name
+
+def get_cmd_macro(cmd, params, sects, sects_s, prioritize_s):
     """
     gets the command macro given a full description of the command (all bytes involving the set mask)
     :param sects: array of dictionaries representing ini specs of commands
@@ -333,12 +353,7 @@ def get_cmd_macro(cmd, params, sects, sects_s, prioritize_s=True):
         error(InvalidTextScriptCommandException,
               'could not find command %s %s' % (str(cmd), str(params)),
               critical=False)
-    name = 'ts_' + sect['name']
-
-    # convert to snake case
-    for c in name:
-        if c.isupper():
-            name = name.replace(c, '_%c' % c.lower())
+    name = convert_cmd_name(sect['name']) # converts to snake case and add ts_
     if not name:
         error(InvalidTextScriptCommandException,
               'no name exists for the cmd ' + str(cmd) + ' ' + str(params),
@@ -416,7 +431,7 @@ def read_cmd_from_sects(bin_file, cmd, sects):
         return None
 
 
-def read_cmd(bin_file, cmd, sects, sects_s, prioritize_s=True):
+def read_cmd(bin_file, cmd, sects, sects_s, prioritize_s):
     """
     attempts to read the command on both interpreters, given priority
     """
@@ -432,7 +447,7 @@ def read_cmd(bin_file, cmd, sects, sects_s, prioritize_s=True):
     return out[0], out[1], interpreter_used
 
 
-def parse_text_script(address, bin_file, sects, sects_s, prioritize_s=True):
+def parse_text_script(address, bin_file, sects, sects_s):
     #type (str, str, int) -> str
 
     units = [] # text script discrete string/cmd units
@@ -506,7 +521,7 @@ def parse_text_script(address, bin_file, sects, sects_s, prioritize_s=True):
                         error(TextScriptException,
                               'found rel. pointer %d (%xh<%xh<%xh) in element %s %s'
                               % (i, prev_idx, unique_rel_pointers[i], cur_idx,
-                                 get_cmd_macro(prev_unit[0], prev_unit[1], sects, sects_s),
+                                 get_cmd_macro(prev_unit[0], prev_unit[1], sects, sects_s, prev_unit[2]),
                                  str(prev_unit)),
                               critical=False)
                     elif type(prev_unit) == bytes:
@@ -543,7 +558,7 @@ def parse_text_script(address, bin_file, sects, sects_s, prioritize_s=True):
               critical=False)
 
     # create Script object
-    return TextScript(rel_pointers, units, address, end_addr-address,sects, sects_s, prioritize_s)
+    return TextScript(rel_pointers, units, address, end_addr-address,sects, sects_s)
 
 def get_unit_at(scr: TextScript, idx):
     curr_idx = 2*len(scr.rel_pointers)
@@ -576,7 +591,7 @@ def read_script(ea: int, bin_file, ini_path='./', fault=False) -> TextScript:
     error.list = []
     sects = read_custom_ini(ini_path + 'mmbn6.ini')
     sects_s = read_custom_ini(ini_path + 'mmbn6s.ini')
-    scr = parse_text_script(ea, bin_file, sects, sects_s, prioritize_s=True)
+    scr = parse_text_script(ea, bin_file, sects, sects_s)
     return scr
 
 

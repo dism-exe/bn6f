@@ -14,10 +14,17 @@ class RegressionTests(unittest.TestCase):
 
         data = textScript.compile()
         for i in range(0, textScript.size):
-            self.assertEqual(byte_stream.read(1), data[i:i+1],
+            expected_byte = byte_stream.read(1)
+            # if i in textScript.rel_pointers: print('text_script %d (0x%x)' % (sorted(list(set(textScript.rel_pointers))).index(i), i))
+            # print('0x%x: %s, %s' % (i, expected_byte, data[i:i+1]))
+            if i < 2*len(textScript.rel_pointers): continue
+            # if i < 0x4af+1: continue
+            # if i < 0x4c0: continue
+            self.assertEqual(expected_byte, data[i:i+1],
                              'compilation data mismatch at byte 0x%0x' % i)
 
         byte_stream.seek(prev_addr)
+
 
     def assertTestFile(self, test_name):
         curdir = 'text_script_dumper/'
@@ -74,12 +81,20 @@ class RegressionTests(unittest.TestCase):
         # tests for printing commands and partial parameter masks
         # tests for alternative commands (requires mmbn6s.ini)
         # tests for dynamic ts_select parameters
-        # self.assertTestFile('TextScriptChipTrader86C580C')
+        self.assertTestFile('TextScriptChipTrader86C580C')
         pass
 
     def test_TextScriptChipNames1(self):
         # tests for a relative label inside a string. Likely the devs' fault.
         pass
+
+    def testAgbasmOutput(self):
+        # update agbasm_output.s to test validity of the macro system in some instances
+        with open('text_script_dumper/TextScriptChipTrader86C580C' + '.bin', 'rb') as bin_file:
+            textScript = read_script(0, bin_file, '../dumpers/')
+            with open('../../bn6f.gba', 'rb') as gba_file:
+                self.assertCompilation(textScript, gba_file, 0x6C580C)
+
 
 class CommandIdentificationTess(unittest.TestCase):
     def setUp(self):
@@ -141,6 +156,9 @@ class CommandParsingTests(unittest.TestCase):
         if not sect:
             self.fail('%s: could not find commad section: %s %s' % (cmdName, cmd, params))
         self.assertEqual(sect['name'], cmdName, 'invalid command found')
+        self.assertEqual(convert_cmd_name(sect['name']),
+                          get_cmd_macro(cmd, params, self.sects, self.sects_s, prioritize_s),
+                          '%s: failed to convert the command to the correct name' % (cmdName))
         # print(sect['name'])
         self.assertEqual(byteStream.tell(), startAddr + get_cmd_len(*out),
                           '%s: read additional bytes from stream' % cmdName)
@@ -171,6 +189,12 @@ class CommandParsingTests(unittest.TestCase):
                                  'msgCloseExt', prioritize_s=False)
         bytes = self.addTestData(bytes, cmds, b'\xfa\x04\x00\x01', b'\xfa\x04', b'\x00\x01',
                                  'printBuffer04', prioritize_s=False)
+        # a basic command in second interpreter, but also a bitfield conflict in first interpreter
+        bytes = self.addTestData(bytes, cmds, b'\xfa\x01\xff', b'\xfa\x01', b'\xff',
+                                 'printLinkBuffer_s', prioritize_s=True)
+        bytes = self.addTestData(bytes, cmds, b'\xfa\x01\x04', b'\xfa\x01\x04', b'',
+                                 'printCurrentNaviOw', prioritize_s=False)
+
         self.runTestData(bytes, cmds)
 
     def  testConflictedCommands(self):
@@ -212,8 +236,11 @@ class CommandParsingTests(unittest.TestCase):
                                  'printItem', prioritize_s=False)
         bytes = self.addTestData(bytes, cmds, b'\xfa\x00\x1f\xf1', b'\xfa\x00\x00\x01', b'\x01\xff',
                                  'printChip1', prioritize_s=False)
+        bytes = self.addTestData(bytes, cmds, b'\xfa\x00\x00\x11', b'\xfa\x00\x00\x01', b'\x00\x01',
+                                 'printChip1', prioritize_s=False)
         bytes = self.addTestData(bytes, cmds, b'\xfa\x00\x1f\xf6', b'\xfa\x00\x00\x06', b'\x01\xff',
                                  'printNaviCustProgram6', prioritize_s=False)
+
         self.runTestData(bytes, cmds)
 
     def testDynamicCommands(self):

@@ -1,4 +1,4 @@
-	text_script_start unk_0
+	text_script_start unk_0 // TODO: change this if label is named different
 
 	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 14
 	text_script_rel_pointers 15, 16, 17, 17, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28
@@ -234,8 +234,8 @@
 
 	text_script 14, scr_14
 	ts_msg_open_quick
-	ts_print_link_buffer 0x0
-	.string "handed over\n"
+	ts_print_current_navi_ow
+	.string " handed over\n"
 	.string "the BugFrags!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -251,8 +251,8 @@
 	ts_flag_set 0xF5, 0x0
 	ts_position_text 0x5B, 0x6C, 0x3
 	ts_position_arrow 0xE2, 0x8D
-	ts_print_link_buffer 0x0
-	.string "got:\n"
+	ts_print_current_navi_ow
+	.string " got:\n"
 	.string "\""
 	ts_print_chip1 0x0, 0x1
 	.string " "
@@ -598,7 +598,7 @@
 	ts_call_disable_mugshot_brighten
 	ts_mugshot_show 0x35
 	ts_msg_open_quick
-	ts_print_mod_buffer 0x82, 0x1
+	ts_print_buffer03 0x82, 0x1
 	.string " points?\n"
 	ts_position_option_horizontal 0x7
 	ts_option 0x0, 0x11, 0x0
@@ -630,8 +630,8 @@
 	ts_flag_set 0xF5, 0x0
 	ts_position_text 0x5B, 0x6C, 0x3
 	ts_position_arrow 0xE2, 0x8D
-	ts_print_link_buffer 0x0
-	.string "got:\n"
+	ts_print_current_navi_ow
+	.string " got:\n"
 	.string "\""
 	ts_print_chip1 0x0, 0x1
 	.string " "
@@ -663,8 +663,8 @@
 	ts_control_unlock
 	ts_player_animate_scene 0x18
 	ts_sound_play00 0x73, 0x0
-	ts_print_link_buffer 0x0
-	.string "got:\n"
+	ts_print_current_navi_ow
+	.string " got:\n"
 	.string "\""
 	ts_print_chip1 0x0, 0x1
 	.string " "
@@ -694,9 +694,9 @@
 	ts_control_unlock
 	ts_player_animate_scene 0x18
 	ts_sound_play00 0x73, 0x0
-	ts_print_link_buffer 0x0
-	.string "got:\n"
-	ts_print_mod_buffer 0x0, 0x3
+	ts_print_current_navi_ow
+	.string " got:\n"
+	ts_print_buffer03 0x0, 0x3
 	.string " BugFrags!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -788,7 +788,7 @@
 	ts_player_animate_scene 0x18
 	ts_sound_play00 0x73, 0x0
 	.string "ProtoMan got:\n"
-	ts_print_mod_buffer 0x81, 0x1
+	ts_print_buffer03 0x81, 0x1
 	.string " BugFrags!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -880,7 +880,7 @@
 	ts_player_animate_scene 0x18
 	ts_sound_play00 0x73, 0x0
 	.string "Colonel got:\n"
-	ts_print_mod_buffer 0x81, 0x1
+	ts_print_buffer03 0x81, 0x1
 	.string " BugFrags!!"
 	ts_key_wait 0x0
 	ts_player_finish
