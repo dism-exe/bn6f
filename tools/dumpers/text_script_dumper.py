@@ -442,7 +442,7 @@ def read_cmd(bin_file, cmd, sects, sects_s, prioritize_s):
         out = read_cmd_from_sects(bin_file, cmd, select_sects(not prioritize_s))
         interpreter_used = not prioritize_s
     if not out:
-        error(InvalidTextScriptCommandException,
+        raise InvalidTextScriptCommandException(
               'invalid cmd %s detected at 0x%x' % (cmd, bin_file.tell()))
     return out[0], out[1], interpreter_used
 
@@ -457,6 +457,7 @@ def parse_text_script(address, bin_file, sects, sects_s):
     end_script = False
 
     while bin_file.tell() < address + last_script_pointer or not end_script:
+        if bin_file.tell() == 0x6c6b30: break
         #advance bytecode
         byte = bin_file.read(1)
         # read string
@@ -629,25 +630,26 @@ def gen_macros(config_ini_path):
             macros += '.endm\n'
     return macros
 
-def main(argv):
-    def error_print_usage():
-        print('usage: text_script_dumper <address> [-i <rom_file>] [-d <ini_dir>]')
-        exit(0)
+def error_print_usage():
+    print('usage: text_script_dumper <address> [-i <rom_file>] [-d <ini_dir>]')
+    exit(0)
 
-    def try_parse_int(s, b):
-        try:
-            return int(s, b)
-        except ValueError:
-            return None
+def try_parse_int(s, b):
+    try:
+        return int(s, b)
+    except ValueError:
+        return None
 
-    def parse_switch(argv, i, flag):
-        if argv[i] == flag:
-            if len(argv) > i + 1:
-                return argv[i + 1]
-            else:
-                error_print_usage()
+def parse_switch(argv, i, flag):
+    if argv[i] == flag:
+        if len(argv) > i + 1:
+            return argv[i + 1]
         else:
-            return None
+            error_print_usage()
+    else:
+        return None
+
+def main(argv):
 
     # print(gen_macros('mmbn6.ini'))
     # exit(0)
@@ -697,9 +699,7 @@ if __name__ == '__main__':
     # in case the default encoding doesn't support utf8
     sys.stdout = codecs.getwriter('utf8')(sys.stdout.buffer)
 
-    # sys.argv[3] = '../tests/text_script_dumper/TextScriptWhoAmI.bin'
-    # sys.argv[3] = '../tests/text_script_dumper/TextScriptChipDescriptions0_86eb8b8.bin'
-    # sys.argv[3] = '../tests/text_script_dumper/decompTextScriptCredits86C4B58.bin'
-    sys.argv[3] = '../tests/text_script_dumper/TextScriptChipTrader86C580C.bin'
+    # sys.argv[1] = '6C580C' # TextScriptChipTrader86C580C
+    sys.argv[1] = '6C67E4' # TextScriptLottery86C67E4
 
     main(sys.argv)
