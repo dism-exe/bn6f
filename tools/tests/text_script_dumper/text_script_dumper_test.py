@@ -30,7 +30,7 @@ class RegressionTests(unittest.TestCase):
         curdir = 'text_script_dumper/'
 
         with open(curdir + test_name + '.bin', 'rb') as bin_file:
-            textScript = read_script(0, bin_file, '../dumpers/')
+            textScript = TextScript.read_script(0, bin_file, '../dumpers/')
             script, end_addr = textScript.build()
 
             # for i in script: print(i)
@@ -91,7 +91,7 @@ class RegressionTests(unittest.TestCase):
     def testAgbasmOutput(self):
         # update agbasm_output.s to test validity of the macro system in some instances
         with open('text_script_dumper/TextScriptChipTrader86C580C' + '.bin', 'rb') as bin_file:
-            textScript = read_script(0, bin_file, '../dumpers/')
+            textScript = TextScript.read_script(0, bin_file, '../dumpers/')
             with open('../../bn6f.gba', 'rb') as gba_file:
                 self.assertCompilation(textScript, gba_file, 0x6C580C)
 
@@ -109,11 +109,11 @@ class CommandIdentificationTess(unittest.TestCase):
             sects = self.sects
             interpreterMsg = '(primary interpreter)'
 
-        status, sect = find_valid_cmd_base(list(cmd), sects)
+        status, sect = TextScriptCommand.find_valid_cmd_base(list(cmd), sects)
         self.assertTrue(status, 'failed to match on %s command %s' % (cmdName, interpreterMsg))
         self.assertTrue('name' in sect, 'invalid section returned')
         self.assertEqual(cmdName, sect['name'])
-        num_params, sect_p = find_param_count(cmd, sects)
+        num_params, sect_p = TextScriptCommand.find_param_count(cmd, sects)
         self.assertEqual(num_params, len(params), 'invalid number of params for command %s' % cmdName)
         self.assertEqual(sect, sect_p, 'identified sect mismmatch')
 
@@ -147,20 +147,20 @@ class CommandParsingTests(unittest.TestCase):
 
     def assertCommandparsed(self, byteStream, cmd, params, cmdName, prioritize_s):
         startAddr = byteStream.tell()
-        out = read_cmd(byteStream,byteStream.read(1), self.sects, self.sects_s, prioritize_s)
+        out = TextScriptCommand.read_cmd(byteStream,byteStream.read(1), self.sects, self.sects_s, prioritize_s)
         if not out:
             self.fail('%s: could not read commad: %s %s' % (cmdName, cmd, params))
-        self.assertEqual(out[0], cmd, '%s: invalid command read' % cmdName)
-        self.assertEqual(out[1], params, '%s: invalid parameters read' % cmdName)
-        sect = find_cmd(cmd, params, self.select_sect(out[2]))
+        self.assertEqual(out.cmd, cmd, '%s: invalid command read' % cmdName)
+        self.assertEqual(out.params, params, '%s: invalid parameters read' % cmdName)
+        sect = TextScriptCommand.find_cmd(cmd, params, self.select_sect(out.with_interpreter_s))
         if not sect:
             self.fail('%s: could not find commad section: %s %s' % (cmdName, cmd, params))
         self.assertEqual(sect['name'], cmdName, 'invalid command found')
-        self.assertEqual(convert_cmd_name(sect['name']),
-                          get_cmd_macro(cmd, params, self.sects, self.sects_s, prioritize_s),
+        self.assertEqual(TextScriptCommand.convert_cmd_name(sect['name']),
+                          TextScriptCommand.get_cmd_macro(cmd, params, self.sects, self.sects_s, prioritize_s),
                           '%s: failed to convert the command to the correct name' % (cmdName))
         # print(sect['name'])
-        self.assertEqual(byteStream.tell(), startAddr + get_cmd_len(*out),
+        self.assertEqual(byteStream.tell(), startAddr + out.size,
                           '%s: read additional bytes from stream' % cmdName)
 
     def addTestData(self, bytes, cmds, data, cmd, param, name, prioritize_s, nop=0):

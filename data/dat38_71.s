@@ -45,38 +45,31 @@ dword_86CF1A8::
 	.balign 4, 0x00
 // 086cf4ac
 TextScriptFolderNames::
-	text_script_start TextScriptFolderNames
+	text_archive_start
 
-	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 8
+	// script-relative pointers exist here but are defined via macros
 
-	text_script 0, scr_0
-	.string "LanFldr$"
+	def_text_script FolderNamesText_LanFldr
+		.string "LanFldr$"
+	def_text_script FolderNamesText_ExpoFldr
+		.string "ExpoFldr$"
+	def_text_script FolderNamesText_GiftFldr
+		.string "GiftFldr$"
+	def_text_script FolderNamesText_ExptFldr
+		.string "ExptFldr$"
+	def_text_script FolderNamesText_AprtcFld
+		.string "AprtcFld$"
+	def_text_script FolderNamesText_SoulFldr
+		.string "SoulFldr$"
+	def_text_script FolderNamesText_TwoDashes
+		.string "--$"
+	def_text_script FolderNamesText_RandFldr
+		.string "RandFldr$"
+	def_text_script FolderNamesText_Unk8
+	def_text_script FolderNamesText_Unk9
+	def_text_script FolderNamesText_Pack
+		.string "Pack$"
 
-	text_script 1, scr_1
-	.string "ExpoFldr$"
-
-	text_script 2, scr_2
-	.string "GiftFldr$"
-
-	text_script 3, scr_3
-	.string "ExptFldr$"
-
-	text_script 4, scr_4
-	.string "AprtcFld$"
-
-	text_script 5, scr_5
-	.string "SoulFldr$"
-
-	text_script 6, scr_6
-	.string "--$"
-
-	text_script 7, scr_7
-	.string "RandFldr$"
-
-	text_script 8, scr_8
-	.string "Pack$"
-
-	.balign 4, 0
 comp_86CF508::
 	.incbin "data/scripts/comp_86CF508.lz"
 CompTextScriptNetworkPlyTmSave86CF618::

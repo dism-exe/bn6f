@@ -1,8 +1,7 @@
 TextScriptBattleTutFullSynchro::
-	text_script_start TextScriptBattleTutFullSynchro
-	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+	text_archive_start
 
-	text_script 0, scr_0
+	def_text_script FullSynchroTutorialText_DoYouRemember
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,do you remember\n"
@@ -10,16 +9,16 @@ TextScriptBattleTutFullSynchro::
 	.string "Synchro?"
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 1
+	ts_jump FullSynchroTutorialText_HuhWhatsThat_id
 
-	text_script 1, scr_1
+	def_text_script FullSynchroTutorialText_HuhWhatsThat
 	ts_mugshot_show 0
 	.string "Huh? What's that?"
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 2
+	ts_jump FullSynchroTutorialText_LookAtEmotionWindow_id
 
-	text_script 2, scr_2
+	def_text_script FullSynchroTutorialText_LookAtEmotionWindow
 	ts_mugshot_show 0x37
 	.string "Well... Take a look\n"
 	.string "at the \"Emotion\n"
@@ -27,7 +26,7 @@ TextScriptBattleTutFullSynchro::
 	ts_key_wait 0
 	ts_end
 
-	text_script 3, scr_3
+	def_text_script FullSynchroTutorialText_FullSynchroExplanation
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "It shows my\n"
@@ -49,32 +48,32 @@ TextScriptBattleTutFullSynchro::
 	ts_key_wait 0
 	ts_end
 
-	text_script 4, scr_4
+	def_text_script FullSynchroTutorialText_HowDoIOperateYouWell
 	ts_mugshot_show 0
 	ts_msg_open
 	.string "How do I operate\n"
 	.string "you well?"
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 5
+	ts_jump FullSynchroTutorialText_YouHaveToCounter_id
 
-	text_script 5, scr_5
+	def_text_script FullSynchroTutorialText_YouHaveToCounter
 	ts_mugshot_show 0x37
 	.string "You have to\n"
 	.string "Counter!"
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 6
+	ts_jump FullSynchroTutorialText_CounterUhhhWhat_id
 
-	text_script 6, scr_6
+	def_text_script FullSynchroTutorialText_CounterUhhhWhat
 	ts_mugshot_show 0
 	.string "Counter? Uhhh...\n"
 	.string "What was that again?"
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 7
+	ts_jump FullSynchroTutorialText_CounterMeans_id
 
-	text_script 7, scr_7
+	def_text_script FullSynchroTutorialText_CounterMeans
 	ts_mugshot_show 0x37
 	.string "Counter means\n"
 	.string "using a chip attack"
@@ -90,17 +89,17 @@ TextScriptBattleTutFullSynchro::
 	.string "for a bit."
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 8
+	ts_jump FullSynchroTutorialText_IGetItSurprises_id
 
-	text_script 8, scr_8
+	def_text_script FullSynchroTutorialText_IGetItSurprises
 	ts_mugshot_show 0
 	.string "I get it.\n"
 	.string "It surprises them!"
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 9
+	ts_jump FullSynchroTutorialText_DuringFullSynchro_id
 
-	text_script 9, scr_9
+	def_text_script FullSynchroTutorialText_DuringFullSynchro
 	ts_mugshot_show 0x37
 	.string "During Full Synchro,\n"
 	.string "the next chip's\n"
@@ -136,7 +135,7 @@ TextScriptBattleTutFullSynchro::
 	ts_key_wait 0
 	ts_end
 
-	text_script 10, scr_10
+	def_text_script FullSynchroTutorialText_WellDoneLan
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Well done,Lan."
@@ -162,9 +161,9 @@ TextScriptBattleTutFullSynchro::
 	.string "right time."
 	ts_key_wait 0
 	ts_clear_msg
-	ts_jump 11
+	ts_jump FullSynchroTutorialText_RogerGonnaMasterCounterFullSynchro_id
 
-	text_script 11, scr_11
+	def_text_script FullSynchroTutorialText_RogerGonnaMasterCounterFullSynchro
 	ts_mugshot_show 0
 	.string "Roger! I'm gonna\n"
 	.string "master Counter\n"
@@ -172,7 +171,7 @@ TextScriptBattleTutFullSynchro::
 	ts_key_wait 0
 	ts_end
 
-	text_script 12, scr_12
+	def_text_script FullSynchroTutorialText_BustVirusesNoTimeToRun
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,you have to bust\n"

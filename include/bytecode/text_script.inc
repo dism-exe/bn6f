@@ -111,56 +111,131 @@
 	enum FE_NUMBERINPUT
 	enum FF_COPYTEXT
 
-	.macro text_script_start label:req
-		// define text_script macro based on label
-		.purgem text_script
-		.purgem data_def_rel_pointer
-		.purgem text_script_rel_pointers
 
-		.macro text_script id:req, name:req
-			.equiv \label\()__\id, . - \label
-			.equiv \label\()_\name, \id
-		.endm
+    /* impl. with rel. pointers till dependency is removed */
+    .macro text_script_start label:req
+        // define text_script macro based on label
+        .purgem text_script
+        .purgem data_def_rel_pointer
+        .purgem text_script_rel_pointers
 
-		// agbasm quirk? setting p to '' defaults to 33 or some other garbage for some reason
-		.macro data_def_rel_pointer p=DEFAULT
-			.if \p != DEFAULT // somehow setting this to NULL fails when text_script_rel_pointers is called on only 0???
-				.hword \label\()__\p
-			.endif
-		.endm
+        .macro text_script id:req, name:req
+            .equiv \label\()__\id, . - \label
+            .equiv \label\()_\name, \id
+        .endm
 
-		// pass script ids, this is to allow variable args up to size 16
-		// this is so relative pointers are used by passing script ids instead of labels
-		.macro text_script_rel_pointers p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15
-			data_def_rel_pointer \p0
-			data_def_rel_pointer \p1
-			data_def_rel_pointer \p2
-			data_def_rel_pointer \p3
-			data_def_rel_pointer \p4
-			data_def_rel_pointer \p5
-			data_def_rel_pointer \p6
-			data_def_rel_pointer \p7
-			data_def_rel_pointer \p8
-			data_def_rel_pointer \p9
-			data_def_rel_pointer \p10
-			data_def_rel_pointer \p11
-			data_def_rel_pointer \p12
-			data_def_rel_pointer \p13
-			data_def_rel_pointer \p14
-			data_def_rel_pointer \p15
-		.endm
+        // agbasm quirk? setting p to '' defaults to 33 or some other garbage for some reason
+        .macro data_def_rel_pointer p=DEFAULT
+            .if \p != DEFAULT // somehow setting this to NULL fails when text_script_rel_pointers is called on only 0???
+                .hword \label\()__\p
+            .endif
+        .endm
+
+        // pass script ids, this is to allow variable args up to size 16
+        // this is so relative pointers are used by passing script ids instead of labels
+        .macro text_script_rel_pointers p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15
+            data_def_rel_pointer \p0
+            data_def_rel_pointer \p1
+            data_def_rel_pointer \p2
+            data_def_rel_pointer \p3
+            data_def_rel_pointer \p4
+            data_def_rel_pointer \p5
+            data_def_rel_pointer \p6
+            data_def_rel_pointer \p7
+            data_def_rel_pointer \p8
+            data_def_rel_pointer \p9
+            data_def_rel_pointer \p10
+            data_def_rel_pointer \p11
+            data_def_rel_pointer \p12
+            data_def_rel_pointer \p13
+            data_def_rel_pointer \p14
+            data_def_rel_pointer \p15
+        .endm
+    .endm
+
+    // just to remove purge warning
+    .macro text_script
+    .endm
+    .macro text_script_rel_pointers
+    .endm
+    .macro data_def_rel_pointer
+    .endm
+    .macro text_script_rel_pointers_auto
+    .endm
+
+    /* --- */
+
+	__subsection_id = 0
+	__cur_text_script_id = 0
+
+
+	.macro text_archive_start
+	/* increment subsection id before anything because
+	   text scripts go after relative offsets */
+	__subsection_id = __subsection_id + 1
+
+	/* define the base pointer of the relative offsets */
+	.data __subsection_id - 1
+	__text_script_rel_pointers_base = .
+	/* switch back to the subsection where text scripts are defined */
+	.data __subsection_id
+
+	/* reset the current text script id */
+	__cur_text_script_id = 0
 	.endm
 
-	// just to remove purge warning
-	.macro text_script
-	.endm
-	.macro text_script_rel_pointers
-	.endm
-	.macro data_def_rel_pointer
-	.endm
-	.macro text_script_rel_pointers_auto
+
+	/* use this if not all text scripts of a text archive are dumped */
+	.macro incomplete_text_archive_start
+	/* reset the current text script id */
+	__cur_text_script_id = 0
 	.endm
 
+	.macro __set_text_script_id label:req
+	/* if specified... */
+	.if \label != NULL
+	/* ...define the label of this text script */
+\label\():
+	/* set the label id */
+	.equiv \label\()_id, __cur_text_script_id
+	.endif
+
+	/* increment the current text script id */
+	__cur_text_script_id = __cur_text_script_id + 1
+	.endm
+
+
+	/* use when starting a new text script of a text archive */
+	.macro def_text_script label=NULL // TODO: remove _start once dependency on rel. pointers is removed
+	/* define a relative offset */
+
+	/* must calculate the offset here so that the program counter symbol (.)
+	   represents the program counter of the text data subsection */
+	.equ __text_script_relative_offset_temp, . - __text_script_rel_pointers_base
+	.data __subsection_id - 1
+	.hword __text_script_relative_offset_temp
+	/* switch back to the text script subsection */
+	.data __subsection_id
+
+	/* set text script id info */
+	__set_text_script_id \label
+	.endm
+
+
+	/* use this macro if not all text scripts of a text archive are dumped */
+	.macro incomplete_text_script label=NULL
+	__set_text_script_id \label
+	.endm
+
+
+	.macro switch_to_text_script_relative_offset_subsection
+	.data __subsection_id - 1
+	.endm
+
+
+	.macro switch_to_text_script_text_data_subsection
+	.data __subsection_id
+	.endm
 
 
 	/* bytecode macros */

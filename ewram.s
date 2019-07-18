@@ -68,7 +68,7 @@ byte_2000670:: // 0x2000670
 	.space 256
 unk_2000770:: // 0x2000770
 	.space 16
-byte_2000780:: // 0x2000780
+eStruct2000780:: // 0x2000780
 	.space 1
 byte_2000781:: // 0x2000781
 	.space 1
@@ -96,32 +96,12 @@ byte_200083A:: // 0x200083a
 	.space 102
 byte_20008A0:: // 0x20008a0
 	.space 512
-byte_2000AA0:: // 0x2000aa0
-	.space 1
-byte_2000AA1:: // 0x2000aa1
-	.space 1
-byte_2000AA2:: // 0x2000aa2
-	.space 1
-byte_2000AA3:: // 0x2000aa3
-	.space 1
-byte_2000AA4:: // 0x2000aa4
-	.space 1
-byte_2000AA5:: // 0x2000aa5
-	.space 1
-word_2000AA6:: // 0x2000aa6
-	.space 2
-byte_2000AA8:: // 0x2000aa8
-	.space 3
-byte_2000AAB:: // 0x2000aab
-	.space 1
-dword_2000AAC:: // 0x2000aac
+
+eStruct2000aa0:: // 0x2000aa0
+	s_2000aa0_struct eStruct2000aa0
+eStruct2000aa0End:: // 0x2000abc
+
 	.space 4
-dword_2000AB0:: // 0x2000ab0
-	.space 4
-dword_2000AB4:: // 0x2000ab4
-	.space 4
-dword_2000AB8:: // 0x2000ab8
-	.space 8
 unk_2000AC0:: // 0x2000ac0
 	.space 15
 byte_2000ACF:: // 0x2000acf
@@ -212,7 +192,7 @@ byte_2000FE1:: // 0x2000fe1
 	.space 15
 unk_2000FF0:: // 0x2000ff0
 	.space 32
-byte_2001010:: // 0x2001010
+eStruct2001010:: // 0x2001010
 	.space 1
 byte_2001011:: // 0x2001011
 	.space 1
@@ -350,8 +330,11 @@ eGameState:: // 0x2001b80
 	game_state_struct eGameState
 eGameStateEnd::
 	.space 4
+
 eStruct2001c04:: // 0x2001c04
-	.space 132
+	s_2001c04_struct eStruct2001c04
+eStruct2001c04End:: // 0x2001c88
+
 // u8[1448]
 // continuous buffer of bit flags addressed with a u16 flag offset
 eEventFlags:: // 0x2001C88
@@ -360,7 +343,7 @@ unk_2002230:: // 0x2002230
 	.space 236
 unk_200231C:: // 0x200231c
 	.space 3608
-unk_2003134:: // 0x2003134
+eKeyItems:: // 0x2003134
 	.space 404
 unk_20032C8:: // 0x20032c8
 	.space 108
@@ -782,28 +765,15 @@ unk_200A400:: // 0x200a400
 	.space 32
 unk_200A420:: // 0x200a420
 	.space 32
-fadeInfo_200A440:: // 0x200a440
-	.space 1
-byte_200A441:: // 0x200a441
-	.space 1
-byte_200A442:: // 0x200a442
-	.space 1
-byte_200A443:: // 0x200a443
-	.space 1
-word_200A444:: // 0x200a444
-	.space 4
-word_200A448:: // 0x200a448
-	.space 2
-word_200A44A:: // 0x200a44a
-	.space 6
-off_200A450:: // 0x200a450
-	.space 4
-off_200A454:: // 0x200a454
-	.space 4
-word_200A458:: // 0x200a458
-	.space 4
-word_200A45C:: // 0x200a45c
-	.space 36
+
+eScreenFade:: // 0x200a440
+	screen_fade_struct eScreenFade
+eScreenFadeEnd:: // 0x200a460
+
+eScreenFade2:: // 0x200a460
+	screen_fade_struct eScreenFade2
+eScreenFade2End:: // 0x200a480
+
 i_joGameSubsysSel:: // 0x200a480
 	.space 16
 dword_200A490:: // 0x200a490
@@ -876,26 +846,11 @@ dword_200ACCC:: // 0x200accc
 	.space 4
 dword_200ACD0:: // 0x200acd0
 	.space 16
-byte_200ACE0:: // 0x200ace0
-	.space 1
-byte_200ACE1:: // 0x200ace1
-	.space 1
-byte_200ACE2:: // 0x200ace2
-	.space 6
-dword_200ACE8:: // 0x200ace8
-	.space 4
-dword_200ACEC:: // 0x200acec
-	.space 4
-dword_200ACF0:: // 0x200acf0
-	.space 5
-byte_200ACF5:: // 0x200acf5
-	.space 3
-dword_200ACF8:: // 0x200acf8
-	.space 4
-byte_200ACFC:: // 0x200acfc
-	.space 4
-dword_200AD00:: // 0x200ad00
-	.space 4
+
+eStruct200ace0:: // 0x200ace0
+	s_200ace0_struct eStruct200ace0
+eStruct200ace0End::
+
 word_200AD04:: // 0x200ad04
 	.space 1
 byte_200AD05:: // 0x200ad05
@@ -1637,7 +1592,7 @@ byte_2011B30:: // 0x2011b30
 	.space 128
 byte_2011BB0:: // 0x2011bb0
 	.space 32
-dword_2011BD0:: // 0x2011bd0
+cutsceneCameraInfo_2011bd0:: // 0x2011bd0
 	.space 4
 dword_2011BD4:: // 0x2011bd4
 	.space 60
@@ -1713,6 +1668,64 @@ unk_2011EA0:: // 0x2011ea0
 unk_2011EA4:: // 0x2011ea4
 	.space 60
 eOverworldMapObjects:: // 0x2011ee0
+	overworld_map_object_struct eOverworldMapObject0
+	overworld_map_object_struct eOverworldMapObject1
+	overworld_map_object_struct eOverworldMapObject2
+	overworld_map_object_struct eOverworldMapObject3
+	overworld_map_object_struct eOverworldMapObject4
+	overworld_map_object_struct eOverworldMapObject5
+	overworld_map_object_struct eOverworldMapObject6
+	overworld_map_object_struct eOverworldMapObject7
+	overworld_map_object_struct eOverworldMapObject8
+	overworld_map_object_struct eOverworldMapObject9
+	overworld_map_object_struct eOverworldMapObject10
+	overworld_map_object_struct eOverworldMapObject11
+	overworld_map_object_struct eOverworldMapObject12
+	overworld_map_object_struct eOverworldMapObject13
+	overworld_map_object_struct eOverworldMapObject14
+	overworld_map_object_struct eOverworldMapObject15
+	overworld_map_object_struct eOverworldMapObject16
+	overworld_map_object_struct eOverworldMapObject17
+	overworld_map_object_struct eOverworldMapObject18
+	overworld_map_object_struct eOverworldMapObject19
+	overworld_map_object_struct eOverworldMapObject20
+	overworld_map_object_struct eOverworldMapObject21
+	overworld_map_object_struct eOverworldMapObject22
+	overworld_map_object_struct eOverworldMapObject23
+	overworld_map_object_struct eOverworldMapObject24
+	overworld_map_object_struct eOverworldMapObject25
+	overworld_map_object_struct eOverworldMapObject26
+	overworld_map_object_struct eOverworldMapObject27
+	overworld_map_object_struct eOverworldMapObject28
+	overworld_map_object_struct eOverworldMapObject29
+	overworld_map_object_struct eOverworldMapObject30
+	overworld_map_object_struct eOverworldMapObject31
+	overworld_map_object_struct eOverworldMapObject32
+	overworld_map_object_struct eOverworldMapObject33
+	overworld_map_object_struct eOverworldMapObject34
+	overworld_map_object_struct eOverworldMapObject35
+	overworld_map_object_struct eOverworldMapObject36
+	overworld_map_object_struct eOverworldMapObject37
+	overworld_map_object_struct eOverworldMapObject38
+	overworld_map_object_struct eOverworldMapObject39
+	overworld_map_object_struct eOverworldMapObject40
+	overworld_map_object_struct eOverworldMapObject41
+	overworld_map_object_struct eOverworldMapObject42
+	overworld_map_object_struct eOverworldMapObject43
+	overworld_map_object_struct eOverworldMapObject44
+	overworld_map_object_struct eOverworldMapObject45
+	overworld_map_object_struct eOverworldMapObject46
+	overworld_map_object_struct eOverworldMapObject47
+	overworld_map_object_struct eOverworldMapObject48
+	overworld_map_object_struct eOverworldMapObject49
+	overworld_map_object_struct eOverworldMapObject50
+	overworld_map_object_struct eOverworldMapObject51
+	overworld_map_object_struct eOverworldMapObject52
+	overworld_map_object_struct eOverworldMapObject53
+	overworld_map_object_struct eOverworldMapObject54
+	overworld_map_object_struct eOverworldMapObject55
+eOverworldMapObjectsEnd::
+/*
 	.space 1
 byte_2011EE1:: // 0x2011ee1
 	.space 3
@@ -1730,8 +1743,9 @@ unk_201211C:: // 0x201211c
 	.space 256
 unk_201221C:: // 0x201221c
 	.space 5772
-byte_20138A8:: // 0x20138a8
+eOverworldMapObject55:: // 0x20138a8
 	.space 120
+*/
 dword_2013920:: // 0x2013920
 	.space 4
 word_2013924:: // 0x2013924

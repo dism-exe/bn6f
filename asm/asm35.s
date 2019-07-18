@@ -379,7 +379,7 @@ off_812ED54: .word word_2023FA0
 	thumb_func_start sub_812ED58
 sub_812ED58:
 	push {lr}
-	bl sub_80062C8
+	bl screenFade_80062C8
 	cmp r0, #0xc
 	bne loc_812ED6A
 	mov r0, #8

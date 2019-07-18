@@ -1647,7 +1647,7 @@ loc_8046E6E:
 	mov r0, r1
 	bl sub_803D02C
 loc_8046E74:
-	bl sub_809E122
+	bl owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
 	bl sub_8005F84
 	mov r0, #1
 	pop {pc}
@@ -6765,7 +6765,7 @@ sub_804A460:
 	bl IsScreenFadeActive // () -> zf
 	beq loc_804A4CC
 	bl sub_8046664 // () -> void
-	bl sub_809E122
+	bl owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
 	bl sub_811F728
 	bl sub_8120AB8
 	ldrb r0, [r5]
@@ -9101,11 +9101,11 @@ dword_804C118: .word 0x1E09
 sub_804C11C:
 	push {r4-r7,lr}
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne locret_804C142
-	bl s_2011C50_8036F40 // () -> zf
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F40 // () -> zf
 	bne locret_804C142
-	bl sub_8036F58
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F58
 	bne locret_804C142
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -10049,7 +10049,7 @@ sub_804CA90:
 	mov r2, #0x28 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r7, sp
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	str r0, [r7,#0x18]
 	str r1, [r7,#0x1c]
 	ldr r1, [r7,#0x20]
@@ -10525,7 +10525,7 @@ sub_804CE90:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_804CEEC // =off_804CE68 
-	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
+	ldr r1, [r7,#oToolkit_Warp2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4

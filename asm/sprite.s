@@ -804,7 +804,7 @@ DebugStrSprite_8002BFC: .ascii "COMP\n"
 sprite_setScaleParameters:
 	push {r5,lr}
 	push {r0-r2}
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
@@ -812,11 +812,11 @@ sprite_setScaleParameters:
 	push {r5,lr}
 	push {r0-r2}
 loc_8002C36:
-	ldrb r0, [r5,#0x11]
+	ldrb r0, [r5,#oObjectSprite_Unk_11]
 	mov r1, #3
 	tst r0, r1
 	beq loc_8002C4E
-	ldrb r3, [r5,#0x13]
+	ldrb r3, [r5,#oObjectSprite_Unk_13]
 	mov r1, #0x3e
 	and r3, r1
 	lsr r3, r3, #1
@@ -856,10 +856,12 @@ sub_8002C68:
 	mov pc, lr
 	thumb_func_end sub_8002C68
 
-	thumb_func_start sub_8002C7A
-sub_8002C7A:
+	thumb_func_start sprite_setMosaicScalingParameters_8002c7a
+sprite_setMosaicScalingParameters_8002c7a:
 	mov r2, #4
 	b sprite_setMosaicScalingParameters
+
+	thumb_func_start sprite_setMosaicScalingParameters
 sprite_setMosaicScalingParameters:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
@@ -889,7 +891,8 @@ sprite_setMosaicScalingParameters:
 	mov r0, #0x3f
 	strb r0, [r3,#1]
 	mov pc, lr
-	thumb_func_end sub_8002C7A
+	thumb_func_end sprite_setMosaicScalingParameters
+	thumb_func_end sprite_setMosaicScalingParameters_8002c7a
 
 	thumb_local_start
 sub_8002CB6:

@@ -8,7 +8,7 @@
 	ptr RenderInfoPtr // loc=0x8
 	ptr CameraPtr // loc=0xc
 	ptr CutsceneStatePtr // loc=0x10
-	ptr Unk2011bb0_Ptr // loc=0x14
+	ptr Warp2011bb0_Ptr // loc=0x14
 	ptr BattleStatePtr // loc=0x18
 	ptr Unk200f3a0_Ptr // loc=0x1c
 	ptr Unk2009740_Ptr // loc=0x20
@@ -23,7 +23,7 @@
 	ptr EventFlagsPtr // loc=0x44
 	ptr S_Chip_2002178_Ptr // loc=0x48
 	ptr Unk2002230_Ptr // loc=0x4c
-	ptr Unk2003134_Ptr // loc=0x50
+	ptr KeyItemsPtr // loc=0x50
 	ptr Unk20032c8_Ptr // loc=0x54
 	ptr Unk200414c_Ptr // loc=0x58
 	ptr Unk2004190_Ptr // loc=0x5c

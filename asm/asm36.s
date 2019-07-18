@@ -477,7 +477,7 @@ sub_813040C:
 	thumb_func_start sub_8130424
 sub_8130424:
 	push {lr}
-	bl sub_80062C8
+	bl screenFade_80062C8
 	cmp r0, #0xc
 	bne loc_8130436
 	mov r0, #8
@@ -2369,7 +2369,7 @@ byte_81313B0: .byte 0x0, 0x8, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x1, 0x0, 0x1, 0x0, 
 	thumb_local_start
 sub_81313C0:
 	push {lr}
-	bl sub_80062C8
+	bl screenFade_80062C8
 	cmp r0, #0xc
 	bne loc_81313D2
 	mov r0, #8
@@ -10216,7 +10216,7 @@ sub_81356F4:
 	ldr r0, off_81357C0 // =byte_8135628
 	bl sub_80465A0 // (void *a1) -> void
 	mov r0, #SONG_NAVI_CUSTOMIZER
-	bl PlaySong
+	bl PlayMusic
 	pop {pc}
 dword_81357BC: .word 0xDF40
 off_81357C0: .word byte_8135628
@@ -10698,13 +10698,13 @@ sub_8135B54:
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	cmp r4, #0x28 
 	bne loc_8135B88
-	bl sub_809E122
+	bl owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
 	bl sub_811F728
 	b locret_8135B90
 loc_8135B88:
 	mov r0, #0xc
 	strb r0, [r5]
-	bl sub_8036E78
+	bl PlayMapMusic
 locret_8135B90:
 	pop {r4,pc}
 	.balign 4, 0x00
@@ -14091,8 +14091,8 @@ RunTextScriptNaviCustDialog:
 off_81376B4: .word TextScriptNaviCustDialog
 	thumb_func_end RunTextScriptNaviCustDialog
 
-	thumb_func_start sub_81376B8
-sub_81376B8:
+	thumb_func_start setUnkFieldOfChipCodeInChipPack_81376b8
+setUnkFieldOfChipCodeInChipPack_81376b8:
 	ldr r2, off_8137710 // =byte_20065B4 
 	ldrh r3, [r2]
 	sub r0, r0, r1
@@ -14103,7 +14103,7 @@ sub_81376B8:
 	strh r3, [r2]
 	mov pc, lr
 	.balign 4, 0x00
-	thumb_func_end sub_81376B8
+	thumb_func_end setUnkFieldOfChipCodeInChipPack_81376b8
 
 	thumb_func_start sub_81376CC
 sub_81376CC:
@@ -15531,7 +15531,7 @@ playCreditsScene_81382D0:
 	bl sub_81207F8
 	strh r0, [r5,#0x12]
 	mov r0, #SONG_CREDITS
-	bl PlaySong
+	bl PlayMusic
 	mov r0, #0x78 
 	strh r0, [r5,#4]
 	mov r0, #4
@@ -15962,7 +15962,7 @@ loc_813863A:
 	bl uncompSprite_8002906
 	ldr r0, off_8138668 // =off_813866C 
 	ldr r0, [r0,r4]
-	bl sub_8030A60
+	bl npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
 	mov r0, #0x7c 
 	mov r1, #8
 	bl SetScreenFade // (int a1, int a2) -> void
@@ -16144,7 +16144,7 @@ sub_81387D8:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r1,#oGameState_Unk_20]
+	str r0, [r1,#oGameState_Ptr_20]
 	bl sub_800260C
 	bl sub_8005F40
 	bl sub_8005F6C
@@ -16161,7 +16161,7 @@ sub_81387D8:
 	mov r4, #0
 	bl camera_802FF4C
 	mov r0, #0
-	bl sub_80301B2
+	bl camera_80301B2
 	mov r0, #0
 	mov r1, #0
 	mov r2, #0
@@ -16171,8 +16171,8 @@ sub_81387D8:
 	bl zeroFill_8003AB2
 	bl sub_802F0D8
 	bl sub_802F0F4
-	bl sub_8036EFE
-	bl sub_8036F24
+	bl cutscene_8036EFE
+	bl clearCutsceneScriptPosIfMagicValue0x1_8036F24
 	bl sub_809F90C
 	mov r0, #0x25 
 	bl FreeAllObjectsOfSpecifiedTypes

@@ -11346,7 +11346,7 @@ byte_80141A0: .byte 0x20, 0x40, 0x10, 0x40, 0x40, 0x20, 0x10, 0x20, 0x10
 sub_80141AC:
 	push {lr}
 	bl getPETNaviSelect // () -> u8
-	mov r1, #0x21 
+	mov r1, #0x21
 	mov r2, #3
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
@@ -15504,7 +15504,7 @@ loc_80163E2:
 	mov r0, #0x10
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0
-	bl sub_8002C7A
+	bl sprite_setMosaicScalingParameters_8002c7a
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurPhase]
 	pop {pc}
@@ -15536,7 +15536,7 @@ sub_801641A:
 	pop {r0}
 	sub r0, #0x10
 	neg r0, r0
-	bl sub_8002C7A
+	bl sprite_setMosaicScalingParameters_8002c7a
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -17524,7 +17524,7 @@ sub_80174BE:
 	pop {r0}
 	sub r0, #0x10
 	neg r0, r0
-	bl sub_8002C7A
+	bl sprite_setMosaicScalingParameters_8002c7a
 	pop {pc}
 loc_80174E0:
 	bl sub_8002F2C

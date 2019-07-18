@@ -28,11 +28,11 @@ loc_808F830:
 	lsl r1, r1, #0x10
 	mov r2, #0x40 
 	lsl r2, r2, #0x10
-	bl sub_809E188
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
 	ldrb r0, [r5,#0xf] // (byte_200031F - 0x2000310)
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	ldrb r0, [r5,#0x10] // (byte_2000320 - 0x2000310)
-	bl sub_809E2AE
+	bl SetOWPlayerFacingDirection
 	bl sub_808F8AC
 	mov r0, #0xb
 	mov r1, #0xe4
@@ -55,11 +55,11 @@ loc_808F878:
 	lsl r1, r1, #0x10
 	mov r2, #0x40 
 	lsl r2, r2, #0x10
-	bl sub_809E188
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
 	ldrb r0, [r5,#0xf] // (byte_200031F - 0x2000310)
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	ldrb r0, [r5,#0x10] // (byte_2000320 - 0x2000310)
-	bl sub_809E2AE
+	bl SetOWPlayerFacingDirection
 	bl sub_808FD64
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -73,7 +73,7 @@ loc_808F8A6:
 sub_808F8AC:
 	push {r5,lr}
 	mov r0, #3
-	bl loc_809E314
+	bl owPlayer_setS2000AA0Param0x4_809e314
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
@@ -89,11 +89,11 @@ sub_808F8AC:
 	ldr r1, off_808F8FC // =off_808F5D4 
 	ldr r1, [r1]
 	ldrb r0, [r1,#0x1c] // (byte_200032C - 0x2000310)
-	bl loc_809E2FE
-	bl sub_809E1AE
+	bl SetOWPlayerNaviPaletteIndex
+	bl ReadOWPlayerObjectCoords
 	mov r2, #0x40 
 	lsl r2, r2, #0x10
-	bl sub_809E188
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
 	bl sub_809E23C
 	mov r0, #4
 	bl loc_809E306
@@ -134,7 +134,7 @@ loc_808F93A:
 	cmp r4, #2
 	bgt loc_808F954
 	bl sub_808FA84
-	bl sub_809E2FC
+	bl ZeroOWPlayerNaviPaletteIndex
 	bl sub_808FF9C
 	bl sub_808F990
 	add r4, #1
@@ -153,11 +153,11 @@ loc_808F954:
 	lsl r1, r1, #0x10
 	mov r2, #0x40 
 	lsl r2, r2, #0x10
-	bl sub_809E188
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
 	ldrb r0, [r5,#0xf] // (byte_200031F - 0x2000310)
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	ldrb r0, [r5,#0x10] // (byte_2000320 - 0x2000310)
-	bl sub_809E2AE
+	bl SetOWPlayerFacingDirection
 	bl reqBBS_clearFlag_8140A0C
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -172,7 +172,7 @@ sub_808F990:
 	push {r5,lr}
 	bl sub_809E230
 	bl sub_809E304
-	bl sub_809E312
+	bl owPlayer_zeroS2000AA0Param0x4_809e312
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
@@ -196,7 +196,7 @@ sub_808F9C4:
 	ldr r5, [r5]
 	mov r4, #0
 	bl sub_808FA38
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r6, r0
 	mov r7, r1
 	ldr r2, dword_808FA34 // =0x10000 
@@ -246,7 +246,7 @@ loc_808FA22:
 	mov r1, r7
 	mov r2, #0x40 
 	lsl r2, r2, #0x10
-	bl sub_809E188
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
 	mov r0, r4
 	tst r0, r0
 	pop {r4-r7,pc}
@@ -258,7 +258,7 @@ sub_808FA38:
 	push {r4,r5,lr}
 	ldr r5, off_808FB48 // =off_808F5D4 
 	ldr r5, [r5]
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r2, r0
 	mov r3, r1
 	ldrh r0, [r5,#0x12] // (word_2000322 - 0x2000310)
@@ -277,7 +277,7 @@ sub_808FA38:
 	ldrb r1, [r5,#0x11] // (byte_2000321 - 0x2000310)
 	cmp r0, r1
 	beq locret_808FA6E
-	bl sub_809E13C
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	strb r4, [r5,#0x11] // (byte_2000321 - 0x2000310)
 locret_808FA6E:
 	pop {r4,r5,pc}
@@ -378,7 +378,7 @@ sub_808FB18:
 	mov r1, #0xe5
 	bl ClearEventFlagFromImmediate
 	bl sub_808FBA0
-	bl sub_809E2FC
+	bl ZeroOWPlayerNaviPaletteIndex
 	bl sub_808F990
 	bl sub_809E23C
 	ldr r1, off_808FB48 // =off_808F5D4 
@@ -411,14 +411,14 @@ loc_808FB64:
 	thumb_local_start
 sub_808FB68:
 	push {lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r3, #4
 	lsl r3, r3, #0x10
 	sub r2, r2, r3
 	cmp r2, #0
 	bgt loc_808FB94
 	mov r2, #0
-	bl sub_809E188
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
 	bl sub_809E230
 	bl reqBBS_clearFlag_8140A0C
 	bl sub_809E3B2
@@ -427,7 +427,7 @@ sub_808FB68:
 	mov r0, #0
 	pop {pc}
 loc_808FB94:
-	bl sub_809E188
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
 	mov r0, #1
 	pop {pc}
 dword_808FB9C: .word 0x1AE
@@ -436,11 +436,11 @@ dword_808FB9C: .word 0x1AE
 	thumb_local_start
 sub_808FBA0:
 	push {lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r3, r2
 	mov r2, r1
 	mov r1, r0
-	bl sub_809E2B8
+	bl GetOWPlayerFacingDirection
 	mov r4, r0
 	push {r5}
 	mov r0, #0x1b
@@ -456,7 +456,7 @@ sub_808FBC0:
 	ldr r5, off_808FCE0 // =off_808F5D4 
 	ldr r5, [r5]
 	mov r0, #0
-	bl sub_80301B2
+	bl camera_80301B2
 	ldrb r3, [r5,#0xc] // (byte_200031C - 0x2000310)
 	lsl r3, r3, #1
 	mov r1, #0x40 
@@ -480,7 +480,7 @@ sub_808FBEC:
 	ldr r5, off_808FCE0 // =off_808F5D4 
 	ldr r5, [r5]
 	mov r0, #0
-	bl sub_80301B2
+	bl camera_80301B2
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r1, [r0,#oGameState_MapGroup]
@@ -543,7 +543,7 @@ sub_808FCF0:
 	push {r5,lr}
 	ldr r5, off_808FD60 // =off_808F5D4 
 	ldr r5, [r5]
-	bl sub_809E2B8
+	bl GetOWPlayerFacingDirection
 	ldr r1, off_808FD10 // =byte_808FD14
 	ldrb r0, [r1,r0]
 	strb r0, [r5,#0x18] // (byte_2000328 - 0x2000310)
@@ -569,7 +569,7 @@ sub_808FD1C:
 	beq loc_808FD58
 	mov r4, #8
 	lsl r4, r4, #0x10
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	ldrb r2, [r5,#0x18] // (byte_2000328 - 0x2000310)
 	cmp r2, #1
 	bne loc_808FD3C
@@ -590,7 +590,7 @@ loc_808FD4C:
 loc_808FD4E:
 	mov r2, #0x40 
 	lsl r2, r2, #0x10
-	bl sub_809E188
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
 	b loc_808FD5C
 loc_808FD58:
 	mov r0, #0
@@ -845,7 +845,7 @@ sub_808FF30:
 sub_808FF44:
 	push {lr}
 	mov r0, #1
-	bl sub_811EBE0
+	bl TestPETMenuDataFlag
 	bne loc_808FF68
 	ldrb r0, [r5,#5]
 	tst r0, r0
@@ -1060,7 +1060,7 @@ loc_80900C2:
 	thumb_local_start
 sub_80900C8:
 	push {lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	sub r2, #0x20 
 	sub r1, #0x20 
 	add r0, #0x20 
@@ -1122,7 +1122,7 @@ loc_8090138:
 	sub r1, r1, r0
 	mov r0, r1
 	strb r0, [r5,#0x1c]
-	bl loc_809E2FE
+	bl SetOWPlayerNaviPaletteIndex
 	ldr r4, off_8090198 // =byte_808F6EC 
 	b loc_809017C
 loc_809015A:
@@ -1359,7 +1359,7 @@ byte_8090300: .byte 0xE1, 0xB, 0xE2, 0xB, 0xE3, 0xB, 0xD2, 0xF
 	thumb_local_start
 sub_8090308:
 	push {r4,lr}
-	bl sub_809E1AE
+	bl ReadOWPlayerObjectCoords
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
 	ldr r4, [r4,#oGameState_OverworldPlayerObjectPtr]

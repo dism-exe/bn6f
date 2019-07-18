@@ -4,7 +4,7 @@ sub_8069038:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_8069090 // =off_8068CCC 
-	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
+	ldr r1, [r7,#oToolkit_Warp2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -931,7 +931,7 @@ sub_8069FE8:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_806A040 // =off_80698DC 
-	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
+	ldr r1, [r7,#oToolkit_Warp2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -1569,7 +1569,7 @@ sub_806AA00:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_806AA58 // =off_806A7AC 
-	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
+	ldr r1, [r7,#oToolkit_Warp2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -2831,7 +2831,7 @@ sub_806C23C:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_806C294 // =off_806BFF8 
-	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
+	ldr r1, [r7,#oToolkit_Warp2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
