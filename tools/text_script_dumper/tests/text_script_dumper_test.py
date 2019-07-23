@@ -1,9 +1,12 @@
 import unittest
 import io
-from tools.dumpers.text_script_dumper import *
+from text_script_dumper import *
 
 class RegressionTests(unittest.TestCase):
     def setUp(self):
+        self.test_data_dir = 'test-data/'
+        self.ini_dir = ModuleState.INI_DIR
+        self.rom_path = ModuleState.ROM_PATH
         pass
     def tearDown(self):
         pass
@@ -27,15 +30,16 @@ class RegressionTests(unittest.TestCase):
 
 
     def assertTestFile(self, test_name):
-        curdir = 'text_script_dumper/'
-
-        with open(curdir + test_name + '.bin', 'rb') as bin_file:
-            textScript = TextScript.read_script(0, bin_file, '../dumpers/')
+        with open(self.test_data_dir + test_name + '.bin', 'rb') as bin_file:
+            textScript = TextScript.read_script(0, bin_file, self.ini_dir)
             script, end_addr = textScript.build()
 
-            # for i in script: print(i)
-            # print(hex(end_addr))
-            with open(curdir + test_name + '.s', 'r', encoding='utf-8') as f:
+            def print_script(script, end_addr):
+                for i in script: print(i)
+                print(hex(end_addr))
+            # print_script(script, end_addr)
+
+            with open(self.test_data_dir + test_name + '.s', 'r', encoding='utf-8') as f:
                 lines = f.readlines()
                 script = '\n'.join(script).split('\n')
                 for line in script:
@@ -81,6 +85,7 @@ class RegressionTests(unittest.TestCase):
         # tests for printing commands and partial parameter masks
         # tests for alternative commands (requires mmbn6s.ini)
         # tests for dynamic ts_select parameters
+        # tests for
         self.assertTestFile('TextScriptChipTrader86C580C')
         pass
 
@@ -90,16 +95,17 @@ class RegressionTests(unittest.TestCase):
 
     def testAgbasmOutput(self):
         # update agbasm_output.s to test validity of the macro system in some instances
-        with open('text_script_dumper/TextScriptChipTrader86C580C' + '.bin', 'rb') as bin_file:
-            textScript = TextScript.read_script(0, bin_file, '../dumpers/')
-            with open('../../bn6f.gba', 'rb') as gba_file:
-                self.assertCompilation(textScript, gba_file, 0x6C580C)
+        with open(self.test_data_dir + 'TextScriptChipTrader86C580C' + '.bin', 'rb') as bin_file:
+            text_script = TextScript.read_script(ea=0, bin_file=bin_file, ini_path=self.ini_dir)
+            with open(self.rom_path, 'rb') as gba_file:
+                self.assertCompilation(text_script, gba_file, 0x6C580C)
 
 
 class CommandIdentificationTess(unittest.TestCase):
     def setUp(self):
-        self.sects = read_custom_ini('../dumpers/' + 'mmbn6.ini')
-        self.sects_s = read_custom_ini('../dumpers/' + 'mmbn6s.ini')
+        self.ini_dir = ModuleState.INI_DIR
+        self.sects = read_custom_ini(self.ini_dir + 'mmbn6.ini')
+        self.sects_s = read_custom_ini(self.ini_dir + 'mmbn6s.ini')
 
     def assertCommandIdentified(self, cmd, params, cmdName, useSecondary):
         if useSecondary:
@@ -141,8 +147,8 @@ class CommandIdentificationTess(unittest.TestCase):
 
 class CommandParsingTests(unittest.TestCase):
     def setUp(self):
-        self.sects = read_custom_ini('../dumpers/' + 'mmbn6.ini')
-        self.sects_s = read_custom_ini('../dumpers/' + 'mmbn6s.ini')
+        self.sects = read_custom_ini('../' + 'mmbn6.ini')
+        self.sects_s = read_custom_ini('../' + 'mmbn6s.ini')
         self.select_sect = lambda sel: [self.sects, self.sects_s][sel]
 
     def assertCommandparsed(self, byteStream, cmd, params, cmdName, prioritize_s):

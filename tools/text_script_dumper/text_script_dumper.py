@@ -2,23 +2,47 @@
 # This will parse a textScript at the address specified, from the file specified.
 # if no file is specified, it will use the default ('../../bn6f.ign')
 # ini_file defaults to 'mmbn6.ini'
-import configparser
-import sys
 from dataclasses import dataclass
+from os import path
+import sys
+import configparser
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+config.read('../config.ini') # in case of testing
+
+class ModuleState:
+    if path.exists('config.ini'):
+        CUR_DIR = ''
+    else:
+        CUR_DIR = '../'
+    PROJ_PATH = CUR_DIR + config['Paths']['DissassemblyProjectPath']
+    TBL_PATH = PROJ_PATH + config['Paths']['GameStringTblPath']
+    INI_DIR = CUR_DIR + config['Paths']['CommandDatabaseIniDirPath']
+    ROM_PATH = PROJ_PATH + config['Paths']['RomPath']
+    LOG = True
+    LOG_FILE = sys.__stdout__
+    RAISE_ALL = False
+
+    # the select command is dynamic unlike any other command, so it's its own category
+    DYNAMIC_CMDS = [b'\xed']
+
+    # priority commands are prioritized by their input, ie. their bases are in conflict but are
+    # respolved with priority. this only applies to jump.
+    PRIORITY_CMDS = [b'\xf0']
+
+    # commands that are parsed correctly with the secondary interpreter, when they can be primary
+    # 0xef: this is the case in ts_check_game_version and ts_check_global, the way to know if it's
+    # ts_check_global is if ts_check_game_version fails
+    # 0xfa: print commands also have conflicts between the interpreters
+    # TODO 0xf2: clearMsg conflicting with printBuffer
+    CONFLICT_CMDS = [b'\xef', b'\xfa', b'\xf2']
+
+    # each family carries different masking
+    BITFIELD_CMDS = [b'\xfa\x00', b'\xf2']
 
 
-# configure module state
-def config(**kwargs):
-    def set_configuration(key):
-        if key in kwargs:
-            config.dict[key] = kwargs[key]
-    for key in config.dict:
-        set_configuration(key)
-config.dict = {
-    'log': True,
-    'log_file': sys.__stdout__,
-    'raise_all': False,
-}
+ModuleState.config = config
 
 def printlocals(locals, halt=False):
     s = ''
@@ -30,7 +54,7 @@ def printlocals(locals, halt=False):
         print(s)
 
 def log(*args, **kwargs):
-    if config.dict['log']:
+    if ModuleState.LOG:
         print(*args, **kwargs)
 
 
@@ -49,28 +73,14 @@ def error(exception, msg, critical=True):
     """
     if 'list' not in error.__dict__:
         error.list = []
-    if critical or config.dict['raise_all']:
+    if critical or ModuleState.RAISE_ALL:
         raise exception(msg)
     error.list.append(msg)
 
+
 error.list = []
 
-# the select command is dynamic unlike any other command, so it's its own category
-DYNAMIC_CMDS = [b'\xed']
 
-# priority commands are prioritized by their input, ie. their bases are in conflict but are
-# respolved with priority. this only applies to jump.
-PRIORITY_CMDS = [b'\xf0']
-
-# commands that are parsed correctly with the secondary interpreter, when they can be primary
-# 0xef: this is the case in ts_check_game_version and ts_check_global, the way to know if it's
-# ts_check_global is if ts_check_game_version fails
-# 0xfa: print commands also have conflicts between the interpreters
-# TODO 0xf2: clearMsg conflicting with printBuffer
-CONFLICT_CMDS = [b'\xef', b'\xfa', b'\xf2']
-
-# each family carries different masking
-BITFIELD_CMDS = [b'\xfa\x00', b'\xf2']
 
 @dataclass
 class TextScript:
@@ -204,7 +214,7 @@ class TextScript:
         return rel_pointers
 
     @staticmethod
-    def parse_text_script(address: int, bin_file, sects, sects_s) -> 'TextScript':
+    def parse_text_script(address: int, bin_file, sects, sects_s, size=-1) -> 'TextScript':
 
         units = []  # text script discrete string/cmd units
         bin_file.seek(address)
@@ -212,7 +222,17 @@ class TextScript:
         last_script_pointer = max(rel_pointers)
         end_script = False
 
-        while bin_file.tell() < address + last_script_pointer or not end_script:
+        reached_kwnown_size_end = lambda base, cur: size < 0 #and cur < base + size
+        def before_last_script(bin_file, address, last_script_pointer, end_script):
+            # checks that we reached the last text_script in the archive
+            return bin_file.tell() < address + last_script_pointer or not end_script
+
+        def before_known_script_size(base, cur, size):
+            if size < 0: return True # size not specified, can't know
+            return cur < base + size
+
+        while before_last_script(bin_file, address, last_script_pointer, end_script) and \
+                before_known_script_size(address, bin_file.tell(), size):
             # advance bytecode
             byte = bin_file.read(1)
             # read string
@@ -307,7 +327,7 @@ class TextScript:
 
 
     @staticmethod
-    def read_script(ea: int, bin_file, ini_path='./') -> 'TextScript':
+    def read_script(ea: int, bin_file, ini_path, size=-1) -> 'TextScript':
         # ensure ea is file relative
         ea &= ~0x8000000
 
@@ -317,7 +337,7 @@ class TextScript:
         error.list = []
         sects = read_custom_ini(ini_path + 'mmbn6.ini')
         sects_s = read_custom_ini(ini_path + 'mmbn6s.ini')
-        scr = TextScript.parse_text_script(ea, bin_file, sects, sects_s)
+        scr = TextScript.parse_text_script(ea, bin_file, sects, sects_s, size)
         return scr
 
 
@@ -377,7 +397,7 @@ class TextScriptCommand:
     @staticmethod
     def guess_interpreter(bin_file, cmd: bytes) -> bool:
         # read command, this can be using either interpreters, but sometimes it can lead to conflicts
-        if cmd in CONFLICT_CMDS:
+        if cmd in ModuleState.CONFLICT_CMDS:
             # check if there's a 0xFF in the hypothetical parameters of the command, this is a way
             # to tell if this a ts_check_global or ts_check_game_version
             if cmd == b'\xef':
@@ -451,7 +471,7 @@ class TextScriptCommand:
     def valid_cmd(cmd: bytes, params: bytes, sect) -> bool:
         if sect['section'] in ['Command', 'Extension']:
             # ensure parameters match, unless it's a command with dynamic parameters
-            valid_params = lambda: bytes(cmd) in DYNAMIC_CMDS or len(params) == TextScriptCommand.get_param_count(cmd, sect) \
+            valid_params = lambda: bytes(cmd) in ModuleState.DYNAMIC_CMDS or len(params) == TextScriptCommand.get_param_count(cmd, sect) \
                                    or TextScriptCommand.get_param_count(cmd, sect) == 1.5
             if TextScriptCommand.valid_cmd_base(cmd, sect) and valid_params():
                 return True
@@ -526,7 +546,7 @@ class TextScriptCommand:
         # some commands are prioritized by their input (really just jump_random)
         # so, automatically get the input to determine if it's really that command, or another one
         # (like jump)
-        if cmd in PRIORITY_CMDS:
+        if cmd in ModuleState.PRIORITY_CMDS:
             cmd += bin_file.read(1)
         for i in range(4):  # max number of base bytes per command
             num_params, sect = TextScriptCommand.find_param_count(cmd, sects)
@@ -540,7 +560,7 @@ class TextScriptCommand:
         # valid command found
         if num_params >= 0:
             # no priority commands, go with default (jump_random)
-            if cmd[0:1] in PRIORITY_CMDS and cmd[1] >= 3:
+            if cmd[0:1] in ModuleState.PRIORITY_CMDS and cmd[1] >= 3:
                 params = cmd[1:2]
                 cmd = cmd[:1]
             # bitfield commands, prints
@@ -559,7 +579,7 @@ class TextScriptCommand:
 
             # edge case: select command is dynamic. assumed dynamic until it encounters a command or after
             # 3 additional parameters. Values allowed are <E5 and FF
-            if cmd[0:1] in DYNAMIC_CMDS:
+            if cmd[0:1] in ModuleState.DYNAMIC_CMDS:
                 for i in range(3):
                     byte = bin_file.read(1)
                     if byte != b'\xff' and byte >= b'\xe5':
@@ -577,7 +597,7 @@ class TextScriptCommand:
 
 
 class GameString:
-    def __init__(self, byte_data, tbl_path='../../constants/bn6-charmap.tbl'):
+    def __init__(self, byte_data, tbl_path=ModuleState.TBL_PATH):
         self.data = byte_data
         self.tbl_path = tbl_path
 
@@ -732,8 +752,6 @@ def main(argv):
 
 
 if __name__ == '__main__':
-    #import os; print(os.getcwd())
-    import sys
     import codecs
 
     # in case the default encoding doesn't support utf8
