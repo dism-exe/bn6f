@@ -1,16 +1,11 @@
-
+import analyze_source
 import parser
 
-syms = {}
-scanned_files = {}
+def main():
+    syms, scanned_files = analyze_source.read_source_and_syms()
+    count_functions(syms, scanned_files)
 
-def set_syms_and_scanned_files(_syms, _scanned_files):
-    global syms
-    global scanned_files
-    syms = _syms
-    scanned_files = _scanned_files
-
-def count_functions():
+def count_functions(syms, scanned_files):
     branch_opcodes = set(("beq", "bne", "bcs", "bcc", "bmi", "bpl", "bvs", "bvc", "bhi", "bls", "bge", "blt", "bgt", "ble", "b", "bl"))
 
     function_counts = {}
@@ -45,3 +40,6 @@ def count_functions():
 
     with open("function_counts.txt", "w+") as f:
         f.write(output)
+
+if __name__ == "__main__":
+    main()
