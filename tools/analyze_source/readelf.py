@@ -3,6 +3,7 @@ import subprocess
 from collections import namedtuple
 import sys
 import os
+import argparse
 
 from analyze_source import debug_print
 
@@ -29,6 +30,7 @@ class SymInfo:
             self.line_num = None
 
 sym_line_regex = re.compile(r"^([0-9a-f]{8}) (.).{4}(.)(.) ([^\t]+)\t[^ ]+ (\S+)$")
+
 def make_and_read_syms():
     nproc_value = subprocess.check_output(["nproc"]).decode("utf-8").strip()
     subprocess.check_call(["make", "-j" + nproc_value])
@@ -58,8 +60,21 @@ def read_syms():
     return syms
 
 if __name__ == "__main__":
-    os.chdir("../..")
-    syms = read_syms()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-m", "--make", dest="make", action="store_true")
+    ap.add_argument("-p", "--path", dest="input_path")
+    args = ap.parse_args()
+
+    if args.input_path is None and os.path.basename(os.getcwd()) == "analyze_source":
+        os.chdir("../..")
+    elif args.input_path is not None:
+        os.chdir(args.input_path)
+
+    if args.make:
+        syms = make_and_read_syms()
+    else:
+        syms = read_syms()
+
     debug_print("Size: %s" % sys.getsizeof(syms))
     sym_dump_output = ""
     cfg_output = ""

@@ -77,9 +77,6 @@ import parser
 import readelf
 import scanner
 import multiprocessing
-import sandbox
-
-#from datatypes import DataType
 
 def read_source_and_syms():
     # argument parser

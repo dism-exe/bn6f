@@ -17455,7 +17455,7 @@ ClearEventFlagRange:
    preserves: r4,r5,lr
    clobbers: r0-r3
    ignores: r6-r9,r11,r12*/
-	thumb_func_start ToggleEventFlagRangeFromImmediate
+	thumb_local_start
 ToggleEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
@@ -17469,7 +17469,7 @@ ToggleEventFlagRangeFromImmediate:
    preserves: r4,r5
    clobbers: r0-r3
    ignores: r6-r9,r11,r12*/
-	thumb_func_start ToggleEventFlagRange
+	thumb_local_start
 ToggleEventFlagRange:
 	push {r4,r5,lr}
 	mov r4, r10

@@ -42,7 +42,7 @@ nullsub_38:
 	bx lr
 	thumb_func_end nullsub_38
 
-	thumb_func_start sub_3005CDA
+	thumb_local_start
 sub_3005CDA:
 	push {lr}
 	ldr r0, off_3005D20 // =eStruct200BC30_getJumpOffset00_pushpop+1

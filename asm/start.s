@@ -1,5 +1,5 @@
 
-	arm_func_start GameEntryPoint
+	arm_local_start
 GameEntryPoint:
 	b _GameEntryPoint
 GameHeader: .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B2411
@@ -90,7 +90,7 @@ _GameEntryPoint:
 	arm_func_end GameEntryPoint
 
 // (void *mem, int size) -> void
-	arm_func_start start_clearMemory
+	arm_local_start
 start_clearMemory:
 	mov r2, #0
 loc_80001C8:
@@ -101,7 +101,7 @@ loc_80001C8:
 	arm_func_end start_clearMemory
 
 // (void *src, void *dest, int size) -> void
-	arm_func_start start_copyMemory
+	arm_local_start
 start_copyMemory:
 	// size
 	subs r2, r2, #4

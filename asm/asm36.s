@@ -4884,7 +4884,7 @@ dword_8132A98: .word 0x80005000
 dword_8132A9C: .hword 0x0400
 	thumb_func_end sub_8132A50
 
-	thumb_local_start
+	thumb_func_start sub_8132A9E
 sub_8132A9E:
 	push {r4-r7,lr}
 	lsl r0, r0, #0x10

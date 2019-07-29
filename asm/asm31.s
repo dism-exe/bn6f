@@ -734,7 +734,7 @@ locret_80B87A4:
 	pop {pc}
 	thumb_func_end sub_80B8786
 
-	thumb_local_start
+	thumb_func_start sub_80B87A6
 sub_80B87A6:
 	mov r1, #8
 	str r1, [r0,#8]

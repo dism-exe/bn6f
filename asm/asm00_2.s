@@ -29205,7 +29205,7 @@ locret_801E790:
 	mov pc, lr
 	thumb_func_end sub_801E780
 
-	thumb_local_start
+	thumb_func_start sub_801E792
 sub_801E792:
 	push {r4-r7,lr}
 	sub sp, sp, #0xc
