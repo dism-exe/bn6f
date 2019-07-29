@@ -16,7 +16,7 @@ def main():
     time_start = time.time()
     update_function_scope()
     time_end = time.time()
-    print("Time taken: %s" % (time_end - time_start))
+    debug_print("Time taken: %s" % (time_end - time_start))
 
 TAB_THUMB_LOCAL_START_LEN = len("\tthumb_local_start")
 TAB_THUMB_FUNC_START_SPACE_LEN = len("\tthumb_func_start ")
@@ -116,9 +116,9 @@ def update_function_scope():
         src_file.line_num = 0
         debug_print(src_file.filename)
         for line in src_file:
-            if line.strip() == "":
+            if line.isspace() or line == "":
                 continue
-            words = parser.safe_parse_word_directives(src_file)
+            words = parser.for_loop_parse_word_directives(src_file)
             if len(words) == 0:
                 # check for opcode
                 line = line.strip()

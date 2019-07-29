@@ -104,6 +104,13 @@ def safe_parse_word_directives(src_file, max_words=None, must_be_words=False):
     src_file.line_num = saved_line_num
     return words
 
+def for_loop_parse_word_directives(src_file):
+    saved_line_num = src_file.line_num
+    words = parse_word_directives(src_file)
+    if src_file.line_num != saved_line_num:
+        src_file.line_num -= 1
+    return words
+
 def try_parse_word_directives_from_sym(sym):
     src_file = scanned_files[sym.filename]
     saved_line_num = src_file.line_num
