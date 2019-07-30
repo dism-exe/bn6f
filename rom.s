@@ -38,7 +38,7 @@ asm03_0:
 SpritePointersList:
 	.include "data/SpritePointersList.s"
 asm03_1:
-	.include "asm/asm03_1.s"
+	.include "asm/asm03_1_0.s"
 map_script_cutscene:
 	.include "asm/map_script_cutscene.s"
 asm03_1_1:
