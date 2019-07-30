@@ -39,6 +39,10 @@ SpritePointersList:
 	.include "data/SpritePointersList.s"
 asm03_1:
 	.include "asm/asm03_1.s"
+map_script_cutscene:
+	.include "asm/map_script_cutscene.s"
+asm03_1_1:
+	.include "asm/asm03_1_1.s"
 chatbox:
 	.include "asm/chatbox.s"
 asm03_2:
