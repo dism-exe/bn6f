@@ -1204,7 +1204,7 @@ loc_8035FFC:
 	pop {pc}
 	thumb_func_end MapScriptCmd_spawn_or_free_objects
 
-	thumb_local_start
+	thumb_func_start map_script_overworld_803600E
 map_script_overworld_803600E:
 	push {r4-r7,lr}
 	mov r4, r12
@@ -1235,7 +1235,7 @@ loc_803602C:
 	pop {r4-r7,pc}
 	thumb_func_end map_script_overworld_803600E
 
-	thumb_local_start
+	thumb_func_start sub_8036040
 sub_8036040:
 	push {r4-r7,lr}
 	mov r4, r12
@@ -1258,7 +1258,7 @@ loc_8036050:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8036040
 
-	thumb_local_start
+	thumb_func_start map_script_overworld_8036064
 map_script_overworld_8036064:
 	push {r4-r7,lr}
 	mov r4, r12
@@ -5295,7 +5295,7 @@ loc_8038510:
 	pop {pc}
 	thumb_func_end sub_80384F8
 
-	thumb_local_start
+	thumb_func_start runCutscene_803851C
 runCutscene_803851C:
 	push {r4-r7,lr}
 	mov r4, r8

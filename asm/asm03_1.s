@@ -935,7 +935,7 @@ locret_80340F4:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8033FDC
 
-	thumb_local_start
+	thumb_func_start sub_80340F6
 sub_80340F6:
 	push {r4-r7,lr}
 	mov r3, r10
@@ -2352,7 +2352,7 @@ npc_spawnOverworldNPCObjectsForMap:
 	.pool // 8035164
 	thumb_func_end npc_spawnOverworldNPCObjectsForMap
 
-	thumb_local_start
+	thumb_func_start mapObject_spawnMapObjectsForMap
 mapObject_spawnMapObjectsForMap:
 	push {r4-r7,lr}
 	mov r3, r10
@@ -2375,7 +2375,7 @@ mapObject_spawnMapObjectsForMap:
 	.pool // 803518C
 	thumb_func_end mapObject_spawnMapObjectsForMap
 
-	thumb_local_start
+	thumb_func_start sub_8035194
 sub_8035194:
 	push {r4-r7,lr}
 	mov r3, r10
@@ -2549,7 +2549,7 @@ loc_8035334:
 off_8035350: .word byte_8037694
 	thumb_func_end sub_803532C
 
-	thumb_local_start
+	thumb_func_start sub_8035354
 sub_8035354:
 	push {r4-r7,lr}
 	ldr r6, off_8035378 // =byte_20010F0
@@ -2692,7 +2692,7 @@ byte_80354D4: .byte 0x5, 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 
 	.byte 0x0, 0x0
 	thumb_func_end sub_8035424
 
-	thumb_local_start
+	thumb_func_start sub_803553C
 sub_803553C:
 	push {r4-r7,lr}
 	bl sub_80355A8
@@ -2900,7 +2900,7 @@ sub_80356EC:
 	pop {r4-r7,pc}
 	thumb_func_end sub_80356EC
 
-	thumb_local_start
+	thumb_func_start sub_80356F8
 sub_80356F8:
 	push {r4-r7,lr}
 	ldr r5, off_8035784 // =dword_2000DC0
