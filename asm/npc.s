@@ -765,7 +765,7 @@ loc_809EB76:
 	cmp r0, #0x70 
 	bne loc_809EB98
 	push {r0,r1,r3-r7}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r2, r0
 	pop {r0,r1,r3-r7}
 	cmp r2, #0
@@ -1390,7 +1390,7 @@ dword_809EFF8: .word 0x100
 	thumb_local_start
 npc_809EFFC:
 	push {lr}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	ldr r1, off_809F018 // =byte_809D328
 	ldrb r0, [r1,r0]
 	strh r0, [r5,#0x3c]

@@ -5832,7 +5832,7 @@ int sub_80079D0()
     if ( result )
     {
         sub_800B460();
-        sub_800B2D8();
+        battle_copyStructsIncludingBattleStats_800b2d8();
         result = 12;
         *(v0 + 2) = 12;
     }
@@ -6194,7 +6194,7 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
                 sub_8015B54(*(v3 + 13));
             v27 = v26;
             v28 = getPETNaviSelect();
-            navicust_801379E(v28, 14, v27);
+            SetCurPETNaviStatsByte(v28, 14, v27);
             v29 = sub_802D246();
             v30 = 3;
             if ( !(v29 & 0x400000) )
@@ -6207,7 +6207,7 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
             }
             v31 = v30;
             v32 = getPETNaviSelect();
-            navicust_801379E(v32, 33, v31);
+            SetCurPETNaviStatsByte(v32, 33, v31);
             if ( sub_800A832() == 1 )
                 sub_802C9B8();
             *(v5 + 18) = 0;
@@ -6226,13 +6226,13 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
             {
                 v35 = v33;
                 v36 = getPETNaviSelect();
-                navicust_801379E(v36, 33, 3);
+                SetCurPETNaviStatsByte(v36, 33, 3);
                 v33 = v35;
             }
             if ( v33 & 0x40000 )
             {
                 v37 = getPETNaviSelect();
-                navicust_801379E(v37, 14, 128);
+                SetCurPETNaviStatsByte(v37, 14, 128);
             }
         }
         if ( sub_802D246() & 0x10 )
@@ -10873,9 +10873,9 @@ int __fastcall sub_800A540(int a1, int a2)
     v3 = a2;
     v4 = sub_802D246();
     if ( v4 & 0x200000 )
-        result = sub_8013884(v4, v3);
+        result = GetNaviStats203CCE0Byte(v4, v3);
     else
-        result = sub_80137B6(v2);
+        result = GetCurPETNaviStatsByte(v2);
     return result;
 }
 
@@ -12330,7 +12330,7 @@ int sub_800B144()
     *byte_203CBE8 = *(*(v0 + oToolkit_S2034880_Ptr) + 60);
     if ( sub_802D246() & 0x200000 )
     {
-        v9 = sub_8013854(0);
+        v9 = GetNaviStats203CCE0Addr(0);
         CopyWords(v9, &byte_203CBE8[4], 0x64u);
         v10 = byte_203CC50;
         v11 = 20;
@@ -12362,11 +12362,11 @@ int sub_800B144()
             case 2:
             case 3:
             case 4:
-                initStruct_8013438(&byte_203CBE8[4], v2, v3, v4);
+                initNaviStats_WithDefaultStatsMaybe_8013438(&byte_203CBE8[4], v2, v3, v4);
                 break;
             case 5:
             case 8:
-                initStruct_8013438(&byte_203CBE8[4], v2, v3, v4);
+                initNaviStats_WithDefaultStatsMaybe_8013438(&byte_203CBE8[4], v2, v3, v4);
                 v14 = sub_801401E(0);
                 word_203CC2A = *(v14 + 62);
                 *byte_203CC2C = (*(v14 + 64) >> 16 << 16) | (*(v14 + 64) >> 16);
@@ -12420,20 +12420,20 @@ int sub_800B144()
 
 
 // 0x800b2d8
-int sub_800B2D8()
+int battle_copyStructsIncludingBattleStats_800b2d8()
 {
     int result; // r0
 
-    CopyWords(byte_203F4AC, byte_203CE00, 0x64u);
-    CopyWords(byte_203F4AC, byte_203CB10, 0x64u);
-    CopyWords(byte_203F4AC, &unk_2034A60, 0x64u);
-    CopyWords(byte_203F4AC, byte_203C9E4, 0x64u);
+    CopyWords(eBattleNaviStats203F4AC, byte_203CE00, 0x64u);
+    CopyWords(eBattleNaviStats203F4AC, eBattleNaviStats203CB10, 0x64u);
+    CopyWords(eBattleNaviStats203F4AC, &eBattleNaviStats2034A60, 0x64u);
+    CopyWords(eBattleNaviStats203F4AC, eBattleNaviStats203C9E4, 0x64u);
     if ( sub_802D246() & 8 )
     {
         CopyWords(byte_203F5AC, byte_203CE64, 0x64u);
-        CopyWords(byte_203F5AC, byte_203CB74, 0x64u);
-        CopyWords(byte_203F5AC, &unk_2034AC4, 0x64u);
-        CopyWords(byte_203F5AC, byte_203C980, 0x64u);
+        CopyWords(byte_203F5AC, eBattleNaviStats203CB74, 0x64u);
+        CopyWords(byte_203F5AC, &eBattleNaviStats2034AC4, 0x64u);
+        CopyWords(byte_203F5AC, eBattleNaviStats203C980, 0x64u);
     }
     eRngSeed20013F0 = *byte_203F4A4;
     CopyWords(byte_203F510, byte_203EB00, 0x28u);

@@ -1941,13 +1941,13 @@ loc_8142C38:
 sub_8142C46:
 	push {r4-r7,lr}
 	mov r4, r0
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	bl sub_80010D4
 	sub r4, r0, r4
 	bge loc_8142C58
 	mov r4, #0
 loc_8142C58:
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, r4
 	bl sub_80010EC
 	bl ReadOWPlayerObjectCoords

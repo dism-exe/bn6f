@@ -367,9 +367,9 @@ unk_2004338:: // 0x2004338
 	.space 16
 unk_2004348:: // 0x2004348
 	.space 1156
-unk_20047CC:: // 0x20047cc
-    s_20047cc_struct eS20047CC_0
-    s_20047cc_struct eS20047CC_1
+eNaviStats:: // 0x20047cc
+    navi_stats_struct eNaviStats0
+    navi_stats_struct eNaviStats1
 	.space 504
 unk_2004A8C:: // 0x2004a8c
 	.space 404
@@ -2594,10 +2594,9 @@ eTextScript2034A04:: // 0x2034a04
 	.space 12
 byte_2034A10:: // 0x2034a10
 	.space 80
-unk_2034A60:: // 0x2034a60
-	.space 100
-unk_2034AC4:: // 0x2034ac4
-	.space 108
+	navi_stats_struct eBattleNaviStats2034A60 // 0x2034a60
+	navi_stats_struct eBattleNaviStats2034AC4 // 0x2034ac4
+	.space 8
 unk_2034B30:: // 0x2034b30
 	.space 60
 unk_2034B6C:: // 0x2034b6c
@@ -3099,10 +3098,8 @@ dword_203C978:: // 0x203c978
 	.space 4
 dword_203C97C:: // 0x203c97c
 	.space 4
-byte_203C980:: // 0x203c980
-	.space 100
-byte_203C9E4:: // 0x203c9e4
-	.space 100
+	navi_stats_struct eBattleNaviStats203C980 // 0x203c980
+	navi_stats_struct eBattleNaviStats203C9E4 // 0x203c9e4
 dword_203CA48:: // 0x203ca48
 	.space 4
 dword_203CA4C:: // 0x203ca4c
@@ -3123,10 +3120,9 @@ byte_203CA80:: // 0x203ca80
 	.space 132
 byte_203CB04:: // 0x203cb04
 	.space 12
-byte_203CB10:: // 0x203cb10
-	.space 100
-byte_203CB74:: // 0x203cb74
-	.space 108
+	navi_stats_struct eBattleNaviStats203CB10 // 0x203cb10
+	navi_stats_struct eBattleNaviStats203CB74 // 0x203cb74
+	.space 8
 dword_203CBE0:: // 0x203cbe0
 	.space 4
 dword_203CBE4:: // 0x203cbe4
@@ -3163,7 +3159,7 @@ byte_203CCAB:: // 0x203ccab
 	.space 41
 byte_203CCD4:: // 0x203ccd4
 	.space 12
-byte_203CCE0:: // 0x203cce0
+eNaviStats203CCE0:: // 0x203cce0
 	.space 200
 byte_203CDA8:: // 0x203cda8
 	.space 8
@@ -3177,10 +3173,12 @@ dword_203CDF0:: // 0x203cdf0
 	.space 4
 byte_203CDF4:: // 0x203cdf4
 	.space 12
-ePlayerBattleVars:: // 0x203ce00
-	.space 100
-byte_203CE64:: // 0x203ce64
-	.space 108
+
+eBattleNaviStats:: // 0x203ce00
+	navi_stats_struct eBattleNaviStats0 // 0x203ce00
+	navi_stats_struct eBattleNaviStats1 // 0x203ce64
+
+	.space 8
 byte_203CED0:: // 0x203ced0
 	.space 1
 byte_203CED1:: // 0x203ced1
@@ -3289,7 +3287,7 @@ dword_203F4A0:: // 0x203f4a0
 	.space 4
 byte_203F4A4:: // 0x203f4a4
 	.space 8
-byte_203F4AC:: // 0x203f4ac
+eBattleNaviStats203F4AC:: // 0x203f4ac
 	.space 72
 byte_203F4F4:: // 0x203f4f4
 	.space 28

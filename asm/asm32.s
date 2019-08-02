@@ -15739,7 +15739,7 @@ loc_8116B0C:
 	ldrb r4, [r5,#4]
 	cmp r4, #3
 	bne loc_8116B24
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
 	beq loc_8116B24
 	mov r4, #8
@@ -21553,7 +21553,7 @@ sub_8119AEC:
 	push {r4,lr}
 	mov r4, #0x23
 	strb r4, [r5]
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	tst r0, r0
 	beq loc_8119B02
 	lsl r0, r0, #2
@@ -21563,7 +21563,7 @@ sub_8119AEC:
 loc_8119B02:
 	mov r0, #0
 	mov r1, #0x17
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r4, r0
 	bl notZero_eByte200AD04
 	beq loc_8119B22
@@ -21654,7 +21654,7 @@ sub_8119C08:
 	push {r4-r7,lr}
 	mov r4, #0
 	mov r7, #0
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	tst r0, r0
 	bne loc_8119C44
 	bl notZero_eByte200AD04
@@ -21664,7 +21664,7 @@ sub_8119C08:
 loc_8119C20:
 	mov r0, #0
 	mov r1, #0x10
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r6, r0
 	tst r6, r6
 	beq loc_8119C36
@@ -21696,9 +21696,9 @@ off_8119C54: .word byte_80203EA
 sub_8119C58:
 	push {r7,lr}
 	mov r7, r0
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0xe
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	cmp r0, #0xff
 	beq loc_8119C6E
 	mov r0, r7
@@ -21734,12 +21734,12 @@ loc_8119C8E:
 	thumb_func_start sub_8119C94
 sub_8119C94:
 	push {r4,lr}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	tst r0, r0
 	bne loc_8119CB8
 	mov r0, #0
 	mov r1, #0x17
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r4, r0
 	movflag EVENT_163
 	bl TestEventFlagFromImmediate
@@ -25583,12 +25583,12 @@ sub_811BD88:
 	push {r4,lr}
 	mov r0, #1
 	strb r0, [r5]
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	tst r0, r0
 	bne loc_811BDB8
 	mov r0, #0
 	mov r1, #0x17
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r4, r0
 	bl notZero_eByte200AD04
 	beq loc_811BDB4
@@ -25683,9 +25683,9 @@ sub_811BE1C:
 	ldrb r1, [r5,#0xc]
 	cmp r1, #0x17
 	bne loc_811BE60
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0xe
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	cmp r0, #0xff
 	bne loc_811BE5E
 	mov r0, #0xc
@@ -30628,7 +30628,7 @@ sub_811EED0:
 	movflag EVENT_163
 	bl TestEventFlagFromImmediate
 	beq loc_811EEF8
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
 	bne loc_811EEF8
 loc_811EEF8:
@@ -30734,14 +30734,14 @@ sub_811EFB8:
 	str r0, [r6,#0xc]
 	b loc_811EFE6
 loc_811EFCE:
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	mov r1, #0x40
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	str r0, [r6,#8]
 	mov r0, r4
 	mov r1, #0x42
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	str r0, [r6,#0xc]
 loc_811EFE6:
 	ldr r0, off_811F0C0 // =byte_86CB360
@@ -31198,7 +31198,7 @@ CopyBackgroundTiles_onNaviSelect_811F54C:
 	sub sp, sp, #8
 	mov r0, #0
 	str r0, [sp,#4]
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
 	beq loc_811F560
 	// if (naviSelect != 0)
@@ -34090,9 +34090,9 @@ sub_8120AE8:
 	push {r4-r7,lr}
 	sub sp, sp, #4
 	str r0, [sp]
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x2d
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r1, #0x3c
 	mul r0, r1
 	mov r4, r10
@@ -34207,45 +34207,45 @@ sub_8120BE4:
 	sub sp, sp, #0x14
 	mov r0, #0
 	mov r1, #9
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	str r0, [sp]
 	mov r0, #0
 	mov r1, #0x2d
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	str r0, [sp,#4]
 	mov r0, #0
 	mov r1, #0x2e
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	str r0, [sp,#8]
 	mov r0, #0
 	mov r1, #0x2f
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	str r0, [sp,#0xc]
 	mov r0, #0
 	mov r1, #0x30
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	str r0, [sp,#0x10]
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r6, r0
 	mov r1, #9
 	ldr r2, [sp]
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	mov r0, r6
 	mov r1, #0x2d
 	ldr r2, [sp,#4]
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	mov r0, r6
 	mov r1, #0x2e
 	ldr r2, [sp,#8]
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	mov r0, r6
 	mov r1, #0x2f
 	ldr r2, [sp,#0xc]
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	mov r0, r6
 	mov r1, #0x30
 	ldr r2, [sp,#0x10]
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	add sp, sp, #0x14
 	pop {r6,r7,pc}
 	thumb_func_end sub_8120BE4
@@ -34328,7 +34328,7 @@ locret_8120CD6:
 	mov r6, #0
 	mov r0, #0
 	mov r1, #0xb
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r4, r0
 	mov r0, #1
 	bl sub_8120AE8
@@ -34336,7 +34336,7 @@ locret_8120CD6:
 	bgt loc_8120D08
 	mov r0, #0
 	mov r1, #0xc
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r4, r0
 	mov r0, #2
 	bl sub_8120AE8
@@ -34353,12 +34353,12 @@ sub_8120D10:
 	push {r4-r7,lr}
 	sub sp, sp, #8
 	str r0, [sp]
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	str r0, [sp,#4]
 	mov r6, #0
 	ldr r0, [sp,#4]
 	mov r1, #0xb
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r4, r0
 	mov r0, #1
 	bl sub_8120AE8
@@ -34366,7 +34366,7 @@ sub_8120D10:
 	bgt loc_8120D46
 	ldr r0, [sp,#4]
 	mov r1, #0xc
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r4, r0
 	mov r0, #2
 	bl sub_8120AE8
@@ -34416,7 +34416,7 @@ loc_8120D8C:
 loc_8120D9A:
 	ldr r0, [sp,#4]
 	mov r1, #0x2d
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 loc_8120DA2:
 	add sp, sp, #8
 	mov r1, r6
@@ -34431,10 +34431,10 @@ sub_8120DAC:
 	sub sp, sp, #4
 	mov r4, r0
 	mov r7, #1
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	str r0, [sp]
 	mov r1, #0xb
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r6, r0
 	mov r0, #1
 	mov r1, r4
@@ -34443,7 +34443,7 @@ sub_8120DAC:
 	bgt loc_8120DE6
 	ldr r0, [sp]
 	mov r1, #0xc
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r6, r0
 	mov r0, #2
 	mov r1, r4
@@ -34478,17 +34478,17 @@ loc_8120DFA:
 	cmp r1, #0x40
 	bne loc_8120E16
 	mov r1, #0x40
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	b loc_8120E1A
 loc_8120E16:
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 loc_8120E1A:
 	str r0, [r7]
 	add r7, #4
 	add r6, #4
 	b loc_8120DFA
 loc_8120E22:
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r7, r0
 	cmp r7, #0
 	bne loc_8120E56
@@ -34507,27 +34507,27 @@ loc_8120E3A:
 	beq loc_8120F3C
 	ldr r2, [r7]
 	mov r0, #0
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 loc_8120E50:
 	add r7, #4
 	add r6, #4
 	b loc_8120E3A
 loc_8120E56:
 	mov r0, r7
-	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
+	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
 	mov r1, r7
 	bl init_8013B4E // (bool a1, int a2) -> void
 	mov r7, r4
 	mov r6, #0
 loc_8120E66:
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	ldr r1, off_81210C4 // =byte_81210C8
 	ldr r1, [r1,r6]
 	ldr r2, dword_8121104 // =0xffffffff
 	cmp r1, #0x40
 	bne loc_8120E7C
 	ldr r2, [r7]
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	b loc_8120EA0
 loc_8120E7C:
 	cmp r1, r2
@@ -34546,7 +34546,7 @@ loc_8120E8C:
 	bne loc_8120EA0
 loc_8120E9A:
 	ldr r2, [r7]
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 loc_8120EA0:
 	add r7, #4
 	add r6, #4
@@ -34555,7 +34555,7 @@ loc_8120EA6:
 	movflag EVENT_163
 	bl TestEventFlagFromImmediate
 	bne loc_8120EF2
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
 	beq loc_8120F3C
 	mov r4, r0
@@ -34568,11 +34568,11 @@ loc_8120EA6:
 	mov r6, r2
 	mov r0, r4
 	mov r1, #0x42
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	mov r0, r4
 	mov r1, #0x3e
 	mov r2, r6
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r0, [r7,#oGameState_MapGroup]
@@ -34581,10 +34581,10 @@ loc_8120EA6:
 	mov r2, r6
 	mov r0, r4
 	mov r1, #0x40
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	b loc_8120F3C
 loc_8120EF2:
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	lsl r0, r0, #2
 	ldr r1, off_8120F40 // =off_8120F44
@@ -34595,15 +34595,15 @@ loc_8120EF2:
 	mov r6, r2
 	mov r0, r4
 	mov r1, #0x42
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	mov r0, r4
 	mov r1, #0x3e
 	mov r2, r6
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	bl sub_8121154
 	mov r0, r4
 	mov r1, #0x42
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	mov r6, r0
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -34613,7 +34613,7 @@ loc_8120EF2:
 	mov r2, r6
 	mov r0, r4
 	mov r1, #0x40
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 loc_8120F3C:
 	add sp, sp, #0x40
 	pop {r4-r7,pc}
@@ -34760,7 +34760,7 @@ sub_8121154:
 	mov r1, r10
 	ldr r1, [r1,#0x40]
 	ldr r4, [r1,#0x30]
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r2, r0
 	lsl r0, r0, #1
 	ldr r1, off_81211B0 // =byte_81211B4
@@ -34796,7 +34796,7 @@ sub_8121198:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldr r4, [r1,#0x30]
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	lsl r0, r0, #1
 	ldr r1, off_81211B0 // =byte_81211B4
 	ldrh r1, [r1,r0]

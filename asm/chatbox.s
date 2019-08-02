@@ -3644,7 +3644,7 @@ off_80419B0: .word off_8043C64
 	thumb_local_start
 chatbox_80419B4:
 	push {lr}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	add r0, #2
 	ldrb r1, [r4,r0]
 	cmp r1, #0xff
@@ -3685,9 +3685,9 @@ loc_80419F2:
 	thumb_local_start
 chatbox_80419F8:
 	push {lr}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x3e
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	ldrb r1, [r4,#2]
 	ldrb r2, [r4,#3]
 	lsl r2, r2, #8
@@ -4586,7 +4586,7 @@ chatbox_80420BC:
 	ldrb r0, [r5,#5]
 	add r0, #1
 	strb r0, [r5,#5]
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, r0
 	ldr r0, off_8042114 // =off_8042118
 	ldrb r2, [r4,#2]
@@ -5196,7 +5196,7 @@ chatbox_804252C:
 	ldrb r0, [r4,#3]
 	lsl r0, r0, #8
 	orr r7, r0
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r6, r0
 	bl sub_80010D4
 	add r1, r0, r7
@@ -5441,7 +5441,7 @@ chatbox_80426F4:
 	mov r2, #0
 	mov r0, #0
 	mov r1, #0x22
-	bl sub_8013704
+	bl GetNaviStatsByte
 	cmp r0, #1
 	beq loc_8042706
 	mov r2, #1
@@ -5508,7 +5508,7 @@ chatbox_sprite_8042770:
 	push {r3}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	strb r2, [r3,#oGameState_PETNaviIndex]
+	strb r2, [r3,#oGameState_CurPETNavi]
 	pop {r3}
 	ldr r3, off_80427AC // =dword_80427B0
 	ldrb r2, [r3,r2]

@@ -3363,7 +3363,7 @@ signed int chatbox_80426F4()
     signed int v2; // r2
     int v3; // r1
 
-    v1 = sub_8013704(0, 34);
+    v1 = GetNaviStatsByte(0, 34);
     if ( v1 != 1 )
         v2 = 1;
     v3 = *(v0 + v2 + 2);

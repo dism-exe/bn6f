@@ -14,4 +14,9 @@
 	inc __enum__
 	.endm
 
+	.macro flag_enum constant
+	.equiv \constant, (1 << __enum__)
+	inc __enum__
+	.endm
+
 	.endif // GUARD_MACROS_ENUM_INC

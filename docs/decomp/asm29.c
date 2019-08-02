@@ -7340,7 +7340,7 @@ unsigned int sub_80AA4C0()
             {
                 v6 = byte_8020CE4[16 * v5 + *(v1 + oGameState_MapNumber)];
                 v7 = getPETNaviSelect();
-                if ( sub_80137B6(v7) )
+                if ( GetCurPETNaviStatsByte(v7) )
                     v6 = 0;
                 v8 = *(v2 + 18) >> 6;
                 if ( (v8 - 17) >= 0 )
@@ -7364,7 +7364,7 @@ unsigned int sub_80AA4C0()
                             GetPositiveSignedRNG2();
                             __asm { SVC         6 }
                             v17 = getPETNaviSelect();
-                            v18 = sub_80137B6(v17);
+                            v18 = GetCurPETNaviStatsByte(v17);
                             result = sub_80AA5F4(v18, v19, v18);
                             if ( !result )
                                 result = sub_80AA5F4(0, v20, 31);
@@ -7374,7 +7374,7 @@ unsigned int sub_80AA4C0()
                             HIWORD(dword_2000B30) = 1;
                         }
                         *(v1 + oGameState_CurBattleDataPtr) = result;
-                        if ( *(v2 + 36) || (v21 = result, v22 = getPETNaviSelect(), _ZF = sub_80137B6(v22) == 0, result = v21, !_ZF) )
+                        if ( *(v2 + 36) || (v21 = result, v22 = getPETNaviSelect(), _ZF = GetCurPETNaviStatsByte(v22) == 0, result = v21, !_ZF) )
                         {
                             v23 = result;
                             v24 = sub_802D266(result);

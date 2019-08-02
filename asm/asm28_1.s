@@ -841,9 +841,9 @@ sub_809FC96:
 	push {r4}
 	mov r6, r0
 	mov r5, #1
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x33 
-	bl sub_8013704
+	bl GetNaviStatsByte
 	cmp r0, #1
 	beq loc_809FCB0
 	mov r5, #0

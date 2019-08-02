@@ -7879,7 +7879,7 @@ sub_803CE44:
 	mov r4, r0
 	mov r4, r0
 	mov r1, #0x3e
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	mov r7, r0
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_Unk2004334_Ptr]
@@ -7889,30 +7889,30 @@ sub_803CE44:
 	mov r0, #0
 	mov r1, #0x42
 	mov r2, r7
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	movflag EVENT_PET_NAVI_ACTIVE
 	bl TestEventFlagFromImmediate
 	beq locret_803CEB4
 	mov r0, #0
 	mov r1, #0x40
 	mov r2, r7
-	bl SetField16ToSelectedS20047CCStruct
-	bl getPETNaviSelect // () -> u8
+	bl SetCurPETNaviStatsHword
+	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
 	beq locret_803CEB4
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	mov r1, #0x3e
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	mov r7, r0
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x42
 	mov r2, r7
-	bl SetField16ToSelectedS20047CCStruct
-	bl getPETNaviSelect // () -> u8
+	bl SetCurPETNaviStatsHword
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x40
 	mov r2, r7
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 locret_803CEB4:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -7921,14 +7921,14 @@ locret_803CEB4:
 	thumb_func_start sub_803CEB8
 sub_803CEB8:
 	push {r4-r7,lr}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	mov r1, #0x42
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	mov r2, r0
 	mov r0, r4
 	mov r1, #0x40
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	mov r0, #0
 	pop {r4-r7,pc}
 	thumb_func_end sub_803CEB8
@@ -7936,10 +7936,10 @@ sub_803CEB8:
 	thumb_func_start sub_803CED4
 sub_803CED4:
 	push {r4,r6,r7,lr}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	mov r1, #0x3e
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	mov r7, r0
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_Unk2004334_Ptr]
@@ -7948,7 +7948,7 @@ sub_803CED4:
 	mov r7, r2
 	mov r0, r4
 	mov r1, #0x42
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_803CED4
 
@@ -7957,11 +7957,11 @@ sub_803CEF8:
 	push {r4-r7,lr}
 	mov r4, r0
 	mov r1, #0x42
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	mov r2, r0
 	mov r0, r4
 	mov r1, #0x40
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	pop {r4-r7,pc}
 	.byte 0, 0
 	thumb_func_end sub_803CEF8
@@ -7969,10 +7969,10 @@ sub_803CEF8:
 	thumb_local_start
 sub_803CF10:
 	push {r4,r6,r7,lr}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	mov r1, #0x3e
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	mov r7, r0
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_Unk2004334_Ptr]
@@ -7986,7 +7986,7 @@ loc_803CF30:
 	mov r0, r4
 	mov r1, #0x42
 	mov r2, r7
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_803CF10
 
@@ -8000,7 +8000,7 @@ sub_803CF3C:
 	mov r0, #0
 	mov r4, r0
 	mov r1, #0x3e
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	add r0, r0, r7
 	ldr r1, off_803CF70 // =0x3e8
 	cmp r0, r1
@@ -8011,7 +8011,7 @@ loc_803CF5A:
 	mov r6, r2
 	mov r0, r4
 	mov r1, #0x3e
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	mov r0, r6
 	mov r1, r7
 	bl sub_803CF74
@@ -8024,26 +8024,26 @@ sub_803CF74:
 	push {r4-r7,lr}
 	mov r6, r0
 	mov r7, r1
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	bl sub_813C3AC
 	mov r0, r4
 	mov r1, #0x40
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	add r7, r7, r0
 	mov r0, r4
 	mov r1, #0x40
 	mov r2, r7
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	mov r0, r4
 	mov r1, #0x42
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	cmp r0, r7
 	bge locret_803CFAE
 	mov r2, r0
 	mov r0, r4
 	mov r1, #0x40
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 locret_803CFAE:
 	pop {r4-r7,pc}
 	thumb_func_end sub_803CF74
@@ -8078,11 +8078,11 @@ loc_803CFDE:
 	mov r6, r2
 	mov r0, r4
 	mov r1, #9
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
-	bl getPETNaviSelect // () -> u8
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
+	bl GetCurPETNavi // () -> u8
 	mov r2, r6
 	mov r1, #9
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {r4-r7,pc}
 	thumb_func_end sub_803CFB0
 

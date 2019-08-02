@@ -5655,7 +5655,7 @@ int sub_8029EF8()
     do
     {
         TestEventFlag(*&byte_8029F4C[4 * v1]);
-        if ( !v3 && !(dword_20349A0 & 32 * (1 << v1)) && sub_80137B6(0) != v1 + 6 )
+        if ( !v3 && !(dword_20349A0 & 32 * (1 << v1)) && GetCurPETNaviStatsByte(0) != v1 + 6 )
         {
             *(&word_50 + v2 + v0) = v1;
             *(v0 + v2++ + 85) = 0;
@@ -10334,22 +10334,22 @@ signed int __fastcall __noreturn sub_802D7A0(int a1)
     sub_8011384(v3);
     sub_8011020();
     sub_80143A6();
-    v4 = sub_801382E(v1->Alliance, 41);
+    v4 = GetBattleNaviStats2034A60Byte(v1->Alliance, 41);
     v5 = v4;
     v6 = sub_8013774(v4, 41);
     if ( v6 == v5 )
     {
         sub_8013764(v6, 64, v1->HP);
         v7 = sub_8013682(v1->Alliance);
-        CopyWords(v7, &unk_2034A60 + 100 * v1->Alliance, 0x64u);
+        CopyWords(v7, &eBattleNaviStats2034A60 + 100 * v1->Alliance, 0x64u);
     }
     v8 = v1->ai;
-    v9 = sub_801382E(v1->Alliance, 41);
+    v9 = GetBattleNaviStats2034A60Byte(v1->Alliance, 41);
     v10 = sub_802DCCC(v1->Alliance);
     if ( v10 == v9 )
     {
         v11 = sub_8013682(v1->Alliance);
-        CopyWords(&unk_2034A60 + 100 * v1->Alliance, v11, 0x64u);
+        CopyWords(&eBattleNaviStats2034A60 + 100 * v1->Alliance, v11, 0x64u);
     }
     else
     {
@@ -10523,7 +10523,7 @@ signed int __noreturn sub_802D9B0()
 
     sub_8011020();
     v2 = sub_8013682(v0->Alliance);
-    CopyWords(&unk_2034A60 + 100 * v0->Alliance, v2, 0x64u);
+    CopyWords(&eBattleNaviStats2034A60 + 100 * v0->Alliance, v2, 0x64u);
     v3 = v0->ai;
     v4 = sub_80136CC(v0->Alliance, 41);
     v3->AI_index = v4;
@@ -10716,7 +10716,7 @@ signed int __noreturn sub_802DB80()
 
     sub_8011020();
     v2 = sub_8013682(v0->Alliance);
-    CopyWords(&unk_2034A60 + 100 * v0->Alliance, v2, 0x64u);
+    CopyWords(&eBattleNaviStats2034A60 + 100 * v0->Alliance, v2, 0x64u);
     v3 = v0->ai;
     v4 = sub_80136CC(v0->Alliance, 41);
     v3->AI_index = v4;
@@ -12114,7 +12114,7 @@ __int64 sub_802EBE4()
     char *v2; // r0
     int v3; // r6
 
-    v1 = sub_8013816(*(v0 + 22), 2);
+    v1 = GetBattleNaviStats203CB10Byte(*(v0 + 22), 2);
     v2 = sub_8013754(v1, 2, v1);
     v3 = *(v0 + 88) + 160;
     return sub_802ECFE(v2);

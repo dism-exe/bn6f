@@ -3275,7 +3275,7 @@ loc_8047BD4:
 	pop {r0-r3}
 	bne loc_8047C1A
 	push {r0-r3}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
 	pop {r0-r3}
 	beq loc_8047BFA
@@ -3845,7 +3845,7 @@ loc_8048C3A:
 	tst r3, r3
 	beq loc_8048C5C
 	push {r0-r3}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
 	pop {r0-r3}
 	beq loc_8048C58

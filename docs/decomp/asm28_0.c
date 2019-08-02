@@ -43,7 +43,7 @@ int RunLMessageTextScript()
             goto LABEL_12;
     }
     v2 = getPETNaviSelect();
-    if ( sub_8013704(v2, 37) == 1 )
+    if ( GetNaviStatsByte(v2, 37) == 1 )
     {
         v3 = uncomp_8037AEC(-2005693660);
         chatbox_runScript(v3, 0);
@@ -51,7 +51,7 @@ int RunLMessageTextScript()
     else
     {
         v4 = getPETNaviSelect();
-        if ( sub_8013704(v4, 95) != 1 )
+        if ( GetNaviStatsByte(v4, 95) != 1 )
         {
 LABEL_12:
             chatbox_uncomp_803FD3C();
@@ -2418,14 +2418,14 @@ signed int sub_809CE40()
 
     v1 = *(*(v0 + 64) + 7);
     for ( i = 0; *&byte_809CE84[i] != -1; i += 4 )
-        *(&v6 + i) = sub_80137B6(v1);
+        *(&v6 + i) = GetCurPETNaviStatsByte(v1);
     for ( j = 0; ; j += 4 )
     {
         v4 = *&byte_809CE84[j];
         result = -1;
         if ( v4 == -1 )
             break;
-        navicust_801379E(0, v4, *(&v6 + j));
+        SetCurPETNaviStatsByte(0, v4, *(&v6 + j));
     }
     return result;
 }
@@ -2464,7 +2464,7 @@ void sub_809D19C()
     if ( v2 )
     {
         v3 = getPETNaviSelect();
-        if ( sub_80137B6(v3) )
+        if ( GetCurPETNaviStatsByte(v3) )
         {
             if ( *(*(v1 + oToolkit_GameStatePtr) + oGameState_MapGroup) >= 128 )
                 SetEventFlagFromImmediate(23, 22);

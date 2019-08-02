@@ -201,7 +201,7 @@ CutsceneScript_80991F4: .byte 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17, 0x47, 0x0,
 	thumb_local_start
 RunLMessageTextScript:
 	push {r4-r7,lr}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
 	bne loc_8099282
 	mov r0, r10
@@ -219,9 +219,9 @@ RunLMessageTextScript:
 	bl TestEventFlagFromImmediate
 	bne loc_8099282
 loc_809924A:
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x25 
-	bl sub_8013704
+	bl GetNaviStatsByte
 	cmp r0, #1
 	bne loc_8099266
 	ldr r0, dword_8099294 // =0x88738b24 
@@ -230,9 +230,9 @@ loc_809924A:
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	b loc_8099290
 loc_8099266:
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x5f 
-	bl sub_8013704
+	bl GetNaviStatsByte
 	cmp r0, #1
 	bne loc_8099282
 	ldr r0, dword_8099298 // =0x8873a528 
@@ -3273,7 +3273,7 @@ loc_809C042:
 loc_809C050:
 	bl sub_80010C6
 	ldrb r0, [r7,#0x14]
-	bl setPETNaviSelect
+	bl SetCurPETNavi
 	bl sub_8120DF0
 	bl sub_8033FDC
 	mov r0, #0
@@ -3910,7 +3910,7 @@ loc_809CBAA:
 	beq loc_809CBCC
 	bl sub_80010C6
 	mov r0, #0
-	bl setPETNaviSelect
+	bl SetCurPETNavi
 	mov r0, #0
 	str r0, [r5,#0x70]
 	b loc_809CBE8
@@ -4029,7 +4029,7 @@ loc_809CC7E:
 	ldr r2, [r2,#0x2c]
 	ldr r0, [r5,#0x78]
 	str r0, [r2,#0x4c]
-	bl setPETNaviSelect
+	bl SetCurPETNavi
 	mov r0, #0x8d
 	bl PlaySoundEffect
 	ldr r0, byte_809CEAC+4 // =0x4
@@ -4159,7 +4159,7 @@ sub_809CDC4:
 	thumb_local_start
 sub_809CDD4:
 	push {lr}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	tst r0, r0
 	bne loc_809CDE4
 	bl sub_809CE40
@@ -4231,7 +4231,7 @@ loc_809CE50:
 	cmp r1, r0
 	beq loc_809CE64
 	mov r0, r4
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	str r0, [r7,r5]
 	add r5, #4
 	b loc_809CE50
@@ -4244,7 +4244,7 @@ loc_809CE66:
 	beq loc_809CE7A
 	ldr r2, [r7,r5]
 	mov r0, #0
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	add r5, #4
 	b loc_809CE66
 loc_809CE7A:
@@ -4346,9 +4346,9 @@ sub_809D19C:
 	mov r1, #0xe4
 	bl TestEventFlagFromImmediate
 	bne loc_809D1D2
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x35 
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	tst r0, r0
 	beq loc_809D1D2
 	mov r7, r10
@@ -4437,7 +4437,7 @@ sub_809D270:
 	push {r4,lr}
 	mov r0, #3
 	strb r0, [r5]
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	ldr r4, off_809D324 // =byte_809D328
 	ldrb r4, [r4,r0]
 	mov r6, #0x18
@@ -6810,7 +6810,7 @@ sub_809E520:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r0, [r0,#oGameState_PETNaviIndex]
+	ldrb r0, [r0,#oGameState_CurPETNavi]
 	cmp r0, #6
 	ble locret_809E52E
 	sub r0, #5

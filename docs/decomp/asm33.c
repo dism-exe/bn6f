@@ -15,36 +15,36 @@ int sub_8123208()
     v1 = v0;
     v2 = GetField16FromSelectedS20047CCStruct(v0);
     SetField16ToSelectedS20047CCStruct(v1, 66, word_200DCF0 + v2);
-    v3 = word_200DCF2 + sub_80137B6(v1);
+    v3 = word_200DCF2 + GetCurPETNaviStatsByte(v1);
     if ( v3 > 4 )
         LOBYTE(v3) = 4;
-    navicust_801379E(v1, 1, v3);
-    v4 = word_200DCF8 + sub_80137B6(v1);
+    SetCurPETNaviStatsByte(v1, 1, v3);
+    v4 = word_200DCF8 + GetCurPETNaviStatsByte(v1);
     if ( v4 > 4 )
         LOBYTE(v4) = 4;
-    navicust_801379E(v1, 2, v4);
-    v5 = word_200DCFA + sub_80137B6(v1);
+    SetCurPETNaviStatsByte(v1, 2, v4);
+    v5 = word_200DCFA + GetCurPETNaviStatsByte(v1);
     if ( v5 > 4 )
         LOBYTE(v5) = 4;
-    navicust_801379E(v1, 3, v5);
-    v6 = word_200DCF4 + sub_80137B6(v1);
+    SetCurPETNaviStatsByte(v1, 3, v5);
+    v6 = word_200DCF4 + GetCurPETNaviStatsByte(v1);
     if ( v6 > 10 )
         LOBYTE(v6) = 10;
-    navicust_801379E(v1, 11, v6);
-    v7 = word_200DCF6 + sub_80137B6(v1);
+    SetCurPETNaviStatsByte(v1, 11, v6);
+    v7 = word_200DCF6 + GetCurPETNaviStatsByte(v1);
     if ( v7 > 8 )
         LOBYTE(v7) = 8;
-    result = navicust_801379E(v1, 10, v7);
+    result = SetCurPETNaviStatsByte(v1, 10, v7);
     if ( word_200DCFC )
-        result = navicust_801379E(v1, 7, 48);
+        result = SetCurPETNaviStatsByte(v1, 7, 48);
     if ( word_200DCFE )
-        result = navicust_801379E(v1, 28, 1);
+        result = SetCurPETNaviStatsByte(v1, 28, 1);
     if ( word_200DD00 )
-        result = navicust_801379E(v1, 27, 1);
+        result = SetCurPETNaviStatsByte(v1, 27, 1);
     if ( word_200DD02 )
-        result = navicust_801379E(v1, 35, 1);
+        result = SetCurPETNaviStatsByte(v1, 35, 1);
     if ( word_200DD04 )
-        result = navicust_801379E(v1, 7, 52);
+        result = SetCurPETNaviStatsByte(v1, 7, 52);
     return result;
 }
 
@@ -368,8 +368,8 @@ int sub_812368C()
         v13 = engine_setScreeneffect(12, 16);
         return sub_8123D70(v13);
     }
-    v9 = sub_80137B6(*(v0 + 20));
-    navicust_801379E(*(v0 + 20), 45, *(v0 + 12));
+    v9 = GetCurPETNaviStatsByte(*(v0 + 20));
+    SetCurPETNaviStatsByte(*(v0 + 20), 45, *(v0 + 12));
     sub_8120D10(1);
     if ( v2 )
     {
@@ -380,7 +380,7 @@ int sub_812368C()
     }
     else
     {
-        navicust_801379E(*(v0 + 20), 45, v9);
+        SetCurPETNaviStatsByte(*(v0 + 20), 45, v9);
         v10 = 8;
         if ( (sub_8137884(*(v0 + 12)) >> 4) >= 2 )
             v10 = 9;
@@ -486,7 +486,7 @@ int __fastcall sub_81237E0(int a1, int a2)
     {
         zeroFillVRAM();
         ZeroFill_byte_3001960(v7, v8, v9, v10);
-        *(v2 + 12) = sub_80137B6(*(v2 + 20));
+        *(v2 + 12) = GetCurPETNaviStatsByte(*(v2 + 20));
     }
     ZeroFillGFX30025c0();
     sub_80015FC(16);
@@ -572,8 +572,8 @@ int sub_8123A80()
 
     sub_811FCB8(*(v0 + 12), &unk_201D220, 1, byte_20343E0);
     v1 = 2 * *(v0 + 12) + 86;
-    v2 = sub_80137B6(*(v0 + 20));
-    result = sub_80137B6(*(v0 + 20)) + v2;
+    v2 = GetCurPETNaviStatsByte(*(v0 + 20));
+    result = GetCurPETNaviStatsByte(*(v0 + 20)) + v2;
     *(v0 + 100) = result;
     return result;
 }
@@ -638,7 +638,7 @@ int __fastcall sub_8123C20(int a1, int a2, void *a3, int a4)
     v12 = a3;
     v13 = a4;
     v7 = *(a1 + *(v5 + 12));
-    v8 = sub_80137B6(*(v5 + 20));
+    v8 = GetCurPETNaviStatsByte(*(v5 + 20));
     if ( v8 == 255 )
     {
         result = v11;
@@ -674,7 +674,7 @@ signed int sub_8123C98()
     v1 = sub_8137884(*(v0 + 12));
     sub_8120348(v1 >> 4, word_20347D8, 11, 1);
     CopyBackgroundTiles(11, 6, 2, word_20347D8, 15, &byte_0[2]);
-    v2 = sub_80137B6(*(v0 + 20));
+    v2 = GetCurPETNaviStatsByte(*(v0 + 20));
     return sub_812053C(v2, 33120, 12189751);
 }
 
@@ -818,7 +818,7 @@ int sub_8123E58()
     int v1; // r6
     int result; // r0
 
-    v1 = 4 * sub_80137B6(v0[20]);
+    v1 = 4 * GetCurPETNaviStatsByte(v0[20]);
     if ( v0[17] )
     {
         sub_811FAF4(*&byte_8123F00[v1], 0x20005u, 0, &dword_81233C4);
@@ -4029,11 +4029,11 @@ void __fastcall __noreturn sub_8126B6C(int a1, int a2, int a3, int a4)
     *(v4 + 52) = GetField16FromSelectedS20047CCStruct(v14);
     *(v4 + 54) = GetField16FromSelectedS20047CCStruct(v14);
     v15 = getPETNaviSelect();
-    *(v4 + 20) = sub_80137B6(v15);
+    *(v4 + 20) = GetCurPETNaviStatsByte(v15);
     v16 = getPETNaviSelect();
-    *(v4 + 21) = sub_80137B6(v16);
+    *(v4 + 21) = GetCurPETNaviStatsByte(v16);
     v17 = getPETNaviSelect();
-    *(v4 + 22) = sub_80137B6(v17);
+    *(v4 + 22) = GetCurPETNaviStatsByte(v17);
     if ( !getPETNaviSelect() && (TestEventFlagFromImmediate(1, 99), v18) )
         *(v4 + 15) = 2;
     else
@@ -4083,7 +4083,7 @@ void sub_8126CC0()
     sub_811B46C(8 * *(v0 + 13) + *(v0 + 64), *(v0 + 68), 1);
     v3 = 0;
     v4 = getPETNaviSelect();
-    if ( sub_80137B6(v4) == 255 )
+    if ( GetCurPETNaviStatsByte(v4) == 255 )
         v3 = 1;
     if ( getPETNaviSelect() )
     {
@@ -4580,7 +4580,7 @@ void __noreturn sub_812741C()
 
     v1 = *(v0 + oToolkit_Unk200a220_Ptr);
     v2 = getPETNaviSelect();
-    *(v1 + 8) = sub_80137B6(v2) + 1;
+    *(v1 + 8) = GetCurPETNaviStatsByte(v2) + 1;
     sub_8127578();
 }
 

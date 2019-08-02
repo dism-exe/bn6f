@@ -1740,10 +1740,10 @@ int sub_80355EC()
     while ( *v1 != 255 )
     {
         if ( *v1 == v3 )
-            return SetField8ToSelectedS20047CCStruct(0, 34, 1);
+            return SetNaviStatsByte(0, 34, 1);
         ++v1;
     }
-    return SetField8ToSelectedS20047CCStruct(0, 34, 0);
+    return SetNaviStatsByte(0, 34, 0);
 }
 
 
@@ -2296,7 +2296,7 @@ signed int MapScript_cmd_8035ca0()
     int v1; // r0
     signed int result; // r0
 
-    v1 = sub_8013704(0, 76);
+    v1 = GetNaviStatsByte(0, 76);
     if ( v1 == 1 )
     {
         ReadMapScriptWord(5, v0);
@@ -11342,9 +11342,9 @@ int sub_803CFB0()
     if ( v1 > 99 )
         LOBYTE(v1) = 99;
     v2 = v1;
-    navicust_801379E(0, 9, v1);
+    SetCurPETNaviStatsByte(0, 9, v1);
     v3 = getPETNaviSelect();
-    return navicust_801379E(v3, 9, v2);
+    return SetCurPETNaviStatsByte(v3, 9, v2);
 }
 
 

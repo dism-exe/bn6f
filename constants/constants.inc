@@ -3,6 +3,7 @@
 	.include "constants/SoundOffsets.inc"
 	.include "constants/ewram_flags.inc"
 	.include "constants/iwram_end_locations.inc" // will be removed later
+	.include "constants/battle_constants.inc"
 
 	enum_start
 	enum OVERWORLD_PLAYER_OBJECT
@@ -37,26 +38,7 @@
 	enum GREEN_MYSTERY_DATA  // 5
 	enum UNK_MYSTERY_DATA_6  // 6
 
-
-
 	.equiv NULL, 0
 	.equiv TRUE, 1
 	.equiv FALSE, 0
 	.equiv timer_2000000, 0x2000000
-
-
-	.equiv BATTLE_ACTORS_PER_SIDE, 4
-
-	enum_start
-	enum BATTLE_MODE_NORMAL // 0
-	enum BATTLE_MODE_CROSSOVER // 1
-	enum BATTLE_MODE_TUTORIAL_1 // 2
-	enum BATTLE_MODE_TUTORIAL_2 // 3
-	enum BATTLE_MODE_TUTORIAL_3 // 4
-	enum BATTLE_MODE_BEAST_OUT_TUTORIAL // 5
-	enum BATTLE_MODE_VIRUS_BATTLER // 6
-	enum BATTLE_MODE_TOMAHAWKMAN_MINI_GAME // 7
-	enum BATTLE_MODE_CROSS_TUTORIAL // 8
-	enum BATTLE_MODE_DUSTMAN_MINI_GAME // 9
-	enum BATTLE_MODE_HAKUSHAKU_INVINCIBLE_MODE // 10
-	enum BATTLE_MODE_HAKUSHAKU_DEFEAT // 11

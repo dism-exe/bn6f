@@ -630,7 +630,7 @@ MapScriptCmd_cmd_8035ca0: // 8035CA0
 	push {lr}
 	mov r0, #0
 	mov r1, #0x4c
-	bl sub_8013704
+	bl GetNaviStatsByte
 	cmp r0, #1
 	beq loc_8035CBE
 	cmp r0, #2
@@ -3718,7 +3718,7 @@ MapScriptCmd_jump_if_current_navi_equals:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	cmp r0, r4
 	bne .currentNaviNotEqual
 	mov r6, #2
@@ -3737,7 +3737,7 @@ MapScriptCmd_jump_if_current_navi_not_equal:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	cmp r0, r4
 	beq .currentNaviEqual
 	mov r6, #2
@@ -5003,7 +5003,7 @@ sub_80382FE:
 	mov r6, #1
 	bl ReadMapScriptByte
 	mov r0, r4
-	bl setPETNaviSelect
+	bl SetCurPETNavi
 	bl sub_8120DF0
 	bl sub_813C3AC
 	bl sub_803CEB8

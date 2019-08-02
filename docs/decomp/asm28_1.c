@@ -607,7 +607,7 @@ signed int __fastcall sub_809FC96(int a1)
     v2 = a1;
     v3 = 1;
     v4 = getPETNaviSelect();
-    if ( sub_8013704(v4, 51) != 1 )
+    if ( GetNaviStatsByte(v4, 51) != 1 )
         v3 = 0;
     v5 = *(v1 + oToolkit_GameStatePtr);
     v6 = *(v5 + oGameState_MapGroup);

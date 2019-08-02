@@ -15215,7 +15215,7 @@ void __noreturn sub_8119AEC()
     }
     else
     {
-        v3 = sub_80137B6(0);
+        v3 = GetCurPETNaviStatsByte(0);
         notZero_eByte200AD04();
         if ( !v4 && (TestEventFlagFromImmediate(1, 99), v4) )
             v5 = v3 + 12;
@@ -15286,7 +15286,7 @@ int sub_8119C08()
     notZero_eByte200AD04();
     if ( v0 )
     {
-        v2 = sub_80137B6(0);
+        v2 = GetCurPETNaviStatsByte(0);
         if ( v2 )
             v1 = 5 * v2 + 18;
         else
@@ -15309,7 +15309,7 @@ int __fastcall sub_8119C58(int a1)
 
     v1 = a1;
     v2 = getPETNaviSelect();
-    if ( sub_80137B6(v2) == 255 )
+    if ( GetCurPETNaviStatsByte(v2) == 255 )
         result = v1 + 4;
     else
         result = v1;
@@ -15355,7 +15355,7 @@ int sub_8119C94()
     }
     else
     {
-        v1 = sub_80137B6(0);
+        v1 = GetCurPETNaviStatsByte(0);
         TestEventFlagFromImmediate(1, 99);
         if ( !v2 )
             v1 += 23;
@@ -17836,7 +17836,7 @@ void sub_811BD88()
     }
     else
     {
-        v2 = sub_80137B6(0);
+        v2 = GetCurPETNaviStatsByte(0);
         notZero_eByte200AD04();
         if ( !v3 )
         {
@@ -17920,7 +17920,7 @@ int __fastcall sub_811BE1C(int a1)
         if ( v3 == 23 )
         {
             v4 = getPETNaviSelect();
-            if ( sub_80137B6(v4) == 255 )
+            if ( GetCurPETNaviStatsByte(v4) == 255 )
             {
                 v5 = 12;
 LABEL_7:
@@ -23703,7 +23703,7 @@ int __fastcall sub_8120AE8(int a1)
 
     v8 = a1;
     v2 = getPETNaviSelect();
-    v3 = *(v1 + oToolkit_S_Chip_2002178_Ptr) + 60 * sub_80137B6(v2);
+    v3 = *(v1 + oToolkit_S_Chip_2002178_Ptr) + 60 * GetCurPETNaviStatsByte(v2);
     v4 = 0;
     v5 = 0;
     do
@@ -23789,17 +23789,17 @@ int sub_8120BE4()
     char v4; // ST10_1
     int v5; // r6
 
-    v0 = sub_80137B6(0);
-    v1 = sub_80137B6(0);
-    v2 = sub_80137B6(0);
-    v3 = sub_80137B6(0);
-    v4 = sub_80137B6(0);
+    v0 = GetCurPETNaviStatsByte(0);
+    v1 = GetCurPETNaviStatsByte(0);
+    v2 = GetCurPETNaviStatsByte(0);
+    v3 = GetCurPETNaviStatsByte(0);
+    v4 = GetCurPETNaviStatsByte(0);
     v5 = getPETNaviSelect();
-    navicust_801379E(v5, 9, v0);
-    navicust_801379E(v5, 45, v1);
-    navicust_801379E(v5, 46, v2);
-    navicust_801379E(v5, 47, v3);
-    return navicust_801379E(v5, 48, v4);
+    SetCurPETNaviStatsByte(v5, 9, v0);
+    SetCurPETNaviStatsByte(v5, 45, v1);
+    SetCurPETNaviStatsByte(v5, 46, v2);
+    SetCurPETNaviStatsByte(v5, 47, v3);
+    return SetCurPETNaviStatsByte(v5, 48, v4);
 }
 
 
@@ -23879,8 +23879,8 @@ int __fastcall sub_8120D10(int a1)
 
     v9 = a1;
     v10 = getPETNaviSelect();
-    v2 = sub_80137B6(v10);
-    if ( sub_8120AE8(1) > v2 || (v3 = sub_80137B6(v10), result = sub_8120AE8(2), result > v3) )
+    v2 = GetCurPETNaviStatsByte(v10);
+    if ( sub_8120AE8(1) > v2 || (v3 = GetCurPETNaviStatsByte(v10), result = sub_8120AE8(2), result > v3) )
     {
         if ( *(*(v1 + oToolkit_Unk2001c04_Ptr) + 5) == 1 )
         {
@@ -23896,7 +23896,7 @@ int __fastcall sub_8120D10(int a1)
                 LOBYTE(v5) = *(*(v1 + oToolkit_Unk2001c04_Ptr) + 5) - 1;
             }
         }
-        result = navicust_801379E(v10, 45, v5);
+        result = SetCurPETNaviStatsByte(v10, 45, v5);
     }
     return result;
 }
@@ -23914,10 +23914,10 @@ signed int __fastcall sub_8120DAC(int a1)
     v1 = a1;
     v2 = 1;
     v6 = getPETNaviSelect();
-    v3 = sub_80137B6(v6);
+    v3 = GetCurPETNaviStatsByte(v6);
     if ( sub_8120B28(1, v1) <= v3 )
     {
-        v4 = sub_80137B6(v6);
+        v4 = GetCurPETNaviStatsByte(v6);
         if ( sub_8120B28(2, v1) <= v4 )
             v2 = 0;
     }
@@ -23973,7 +23973,7 @@ int sub_8120DF0()
         if ( v3 == 64 )
             v5 = GetField16FromSelectedS20047CCStruct(v4);
         else
-            v5 = sub_80137B6(v4);
+            v5 = GetCurPETNaviStatsByte(v4);
         *v1 = v5;
         ++v1;
     }
@@ -23991,7 +23991,7 @@ int sub_8120DF0()
                 {
                     if ( v11 == -1 )
                         return result;
-                    result = navicust_801379E(0, v11, *v9);
+                    result = SetCurPETNaviStatsByte(0, v11, *v9);
                 }
                 ++v9;
             }
@@ -24014,7 +24014,7 @@ int sub_8120DF0()
         if ( v15 != 11 && v15 != 12 && v15 != 10
             || (v16 = v14, v17 = *&byte_81210C8[k], TestEventFlagFromImmediate(1, 99), v14 = v16, v15 = v17, v8) )
         {
-            navicust_801379E(v14, v15, *v12);
+            SetCurPETNaviStatsByte(v14, v15, *v12);
         }
 LABEL_25:
         ++v12;

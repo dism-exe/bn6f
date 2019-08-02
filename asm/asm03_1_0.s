@@ -124,7 +124,7 @@ sub_8033948:
 	strb r7, [r5,#0x4] // (byte_2011E34 - 0x2011e30)
 	b loc_8033972
 loc_8033964:
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	bl sub_80010D4
 	strh r0, [r5,#0x8] // (word_2011E38 - 0x2011e30)
 	mov r0, #1
@@ -416,7 +416,7 @@ byte_8033BB8: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 
 	thumb_local_start
 sub_8033BE8:
 	push {lr}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	movflag EVENT_163
 	bl TestEventFlagFromImmediate
@@ -588,7 +588,7 @@ locret_8033D9E:
 sub_8033DA0:
 	push {r4-r7,lr}
 	mov r6, r0
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	movflag EVENT_163
 	bl TestEventFlagFromImmediate
@@ -629,7 +629,7 @@ sub_8033E0C:
 	movflag EVENT_1732
 	bl TestEventFlagFromImmediate
 	bne loc_8033E6A
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	bl sub_80010D4
 	mov r1, r0
 	ldrh r0, [r5,#8]
@@ -651,7 +651,7 @@ loc_8033E38:
 	mov r0, r1
 loc_8033E42:
 	strh r0, [r5,#8]
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	bl sub_80010D4
 	lsr r1, r1, #2
 	tst r6, r6
@@ -951,7 +951,7 @@ loc_8034108:
 	bne loc_803412A
 	bl sub_80010C6
 	mov r0, #0
-	bl setPETNaviSelect
+	bl SetCurPETNavi
 	bl sub_8120DF0
 	bl sub_813C3AC
 	bl sub_80010C6
@@ -2802,13 +2802,13 @@ loc_803560E:
 	mov r0, #0
 	mov r1, #0x22
 	mov r2, #1
-	bl SetField8ToSelectedS20047CCStruct
+	bl SetNaviStatsByte
 	pop {r4-r7,pc}
 loc_803561A:
 	mov r0, #0
 	mov r1, #0x22
 	mov r2, #0
-	bl SetField8ToSelectedS20047CCStruct
+	bl SetNaviStatsByte
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8035628: .word word_803562C

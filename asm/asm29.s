@@ -2872,7 +2872,7 @@ sub_80A6CD4:
 sub_80A6CFC:
 	push {lr}
 	push {r0}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	ldr r2, dword_80A6D34 // =byte_809D328
 	ldrb r2, [r2,r0]
 	mov r0, #0x80
@@ -9678,9 +9678,9 @@ loc_80AA4D4:
 	beq loc_80AA5DC
 	push {r0}
 	mov r4, r2
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x28 
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	tst r0, r0
 	beq loc_80AA506
 	mov r4, #0
@@ -9747,9 +9747,9 @@ loc_80AA56E:
 	tst r0, r0
 	bne loc_80AA59E
 loc_80AA584:
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x27 
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r2, r0
 	bl sub_80AA5F4
 	tst r0, r0
@@ -9762,9 +9762,9 @@ loc_80AA59E:
 	tst r1, r1
 	bne loc_80AA5B8
 	push {r0}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x1e
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	tst r0, r0
 	pop {r0}
 	beq loc_80AA5DC
@@ -9772,9 +9772,9 @@ loc_80AA5B8:
 	push {r0}
 	bl GetBattleSettingsUnk01FromBattleSettings
 	mov r4, r0
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x3e 
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	add r0, #4
 	mov r1, #5
 	svc 6
@@ -10269,7 +10269,7 @@ sub_80AA910:
 	str r5, [sp,#0x14]
 	ldr r0, [sp,#0x14]
 	mov r1, #0x26 
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	mov r1, #1
 	tst r0, r1
 	beq loc_80AA946

@@ -3,7 +3,7 @@
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
 	u8 SubsystemIndex // loc=0x0
-	u8 PETNaviIndex // loc=0x1
+	u8 CurPETNavi // loc=0x1
 	u8 Unk_02 // loc=0x2
 	u8 Unk_03 // loc=0x3
 	union

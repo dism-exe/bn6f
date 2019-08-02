@@ -1699,26 +1699,26 @@ sub_80010A4:
 	thumb_func_end sub_80010A4
 
 // () -> u8
-	thumb_func_start getPETNaviSelect
-getPETNaviSelect:
+	thumb_func_start GetCurPETNavi
+GetCurPETNavi:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldrb r0, [r3,#oGameState_PETNaviIndex]
+	ldrb r0, [r3,#oGameState_CurPETNavi]
 	mov pc, lr
-	thumb_func_end getPETNaviSelect
+	thumb_func_end GetCurPETNavi
 
-	thumb_func_start setPETNaviSelect
-setPETNaviSelect:
+	thumb_func_start SetCurPETNavi
+SetCurPETNavi:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	strb r0, [r3,#oGameState_PETNaviIndex]
+	strb r0, [r3,#oGameState_CurPETNavi]
 	mov pc, lr
-	thumb_func_end setPETNaviSelect
+	thumb_func_end SetCurPETNavi
 
 	thumb_func_start sub_80010C6
 sub_80010C6:
 	push {lr}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_S2001c04_Ptr]
 	strb r0, [r3,#7]
@@ -1730,11 +1730,11 @@ sub_80010D4:
 	push {r4-r7,lr}
 	mov r4, r0
 	mov r1, #0x42
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	mov r6, r0
 	mov r0, r4
 	mov r1, #0x40
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	mov r1, r6
 	pop {r4-r7,pc}
 	thumb_func_end sub_80010D4
@@ -1745,7 +1745,7 @@ sub_80010EC:
 	mov r4, r0
 	mov r6, r1
 	mov r1, #0x42
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	cmp r6, r0
 	ble loc_80010FE
 	mov r6, r0
@@ -1753,7 +1753,7 @@ loc_80010FE:
 	mov r0, r4
 	mov r1, #0x40
 	mov r2, r6
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	pop {r4-r7,pc}
 	thumb_func_end sub_80010EC
 

@@ -4328,7 +4328,7 @@ reqBBS_81408F0:
 	movflag EVENT_PET_NAVI_ACTIVE
 	bl TestEventFlagFromImmediate
 	beq loc_814095A
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
 	bne loc_814095A
 	// flag 5 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)

@@ -869,7 +869,7 @@ loc_80899B2:
 	strb r0, [r5]
 	b loc_80899D4
 loc_80899C2:
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	bl sub_80010D4
 	tst r0, r0
 	beq loc_80899B2
@@ -1181,12 +1181,12 @@ sub_8089C16:
 	bne loc_8089C74
 	mov r0, #1
 	strb r0, [r5,#8]
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	bl sub_80010D4
 	tst r0, r0
 	bne loc_8089C4A
 	strb r0, [r5,#8]
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
 	bne loc_8089C3E
 	mov r0, #0x3a 

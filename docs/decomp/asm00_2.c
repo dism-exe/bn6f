@@ -7036,13 +7036,13 @@ void sub_80133EC()
 // 0x8013422
 int __fastcall sub_8013422(int a1, int a2, int a3, int a4)
 {
-    return initStruct_8013438(&byte_203CE00[100 * a1], 100, byte_203CE00, a4);
+    return initNaviStats_WithDefaultStatsMaybe_8013438(&byte_203CE00[100 * a1], 100, byte_203CE00, a4);
 }
 
 
 // 0x8013438
 // (void *struc) -> void
-signed int __fastcall initStruct_8013438(int a1, int a2, int a3, int a4)
+signed int __fastcall initNaviStats_WithDefaultStatsMaybe_8013438(int a1, int a2, int a3, int a4)
 {
     int v4; // r4
     signed int v5; // r1
@@ -7153,7 +7153,7 @@ signed int __fastcall sub_8013554(int a1, int a2, int a3, int a4)
     *(v4 + 39) = 31;
     *(v4 + 40) = 0;
     *(v4 + 14) = -103;
-    v5 = sub_8013740(1, 66);
+    v5 = GetNaviStatsHword(1, 66);
     *(v4 + 64) = v5;
     *(v4 + 66) = v5;
     *(v4 + 62) = v5;
@@ -7201,7 +7201,7 @@ signed int __fastcall sub_80135E8(int a1, int a2, int a3, int a4)
     *(v4 + 39) = 31;
     *(v4 + 40) = 0;
     *(v4 + 14) = -103;
-    v5 = sub_8013740(1, 66);
+    v5 = GetNaviStatsHword(1, 66);
     *(v4 + 64) = v5;
     *(v4 + 66) = v5;
     *(v4 + 62) = v5;
@@ -7230,16 +7230,16 @@ char *__fastcall sub_8013682(int a1)
 
 
 // 0x8013690
-char *__fastcall sub_8013690(int a1)
+char *__fastcall GetBattleNaviStats203CB10Addr(int a1)
 {
-    return &byte_203CB10[100 * a1];
+    return &eBattleNaviStats203CB10[100 * a1];
 }
 
 
 // 0x80136a0
-char *__fastcall sub_80136A0(int a1)
+char *__fastcall GetBattleNaviStats2034A60Addr(int a1)
 {
-    return &unk_2034A60 + 100 * a1;
+    return &eBattleNaviStats2034A60 + 100 * a1;
 }
 
 
@@ -7295,7 +7295,7 @@ int __fastcall sub_80136E4(int a1, int a2)
 
 
 // 0x80136f0
-int __fastcall SetField8ToSelectedS20047CCStruct(int a1, int a2, char a3)
+int __fastcall SetNaviStatsByte(int a1, int a2, char a3)
 {
     int v3; // r10
     int result; // r0
@@ -7307,7 +7307,7 @@ int __fastcall SetField8ToSelectedS20047CCStruct(int a1, int a2, char a3)
 
 
 // 0x8013704
-int __fastcall sub_8013704(int a1, int a2)
+int __fastcall GetNaviStatsByte(int a1, int a2)
 {
     int v2; // r10
 
@@ -7316,7 +7316,7 @@ int __fastcall sub_8013704(int a1, int a2)
 
 
 // 0x8013718
-int __fastcall sub_8013718(int a1, int a2)
+int __fastcall GetNaviStatsByte_8013718(int a1, int a2)
 {
     int v2; // r10
 
@@ -7325,7 +7325,7 @@ int __fastcall sub_8013718(int a1, int a2)
 
 
 // 0x801372c
-int __fastcall sub_801372C(int a1, int a2, __int16 a3)
+int __fastcall SetNaviStatsHword(int a1, int a2, __int16 a3)
 {
     int v3; // r10
     int result; // r0
@@ -7337,7 +7337,7 @@ int __fastcall sub_801372C(int a1, int a2, __int16 a3)
 
 
 // 0x8013740
-int __fastcall sub_8013740(int a1, int a2)
+int __fastcall GetNaviStatsHword(int a1, int a2)
 {
     int v2; // r10
 
@@ -7387,7 +7387,7 @@ int __fastcall sub_8013774(int a1, int a2)
 
 
 // 0x8013782
-int __fastcall sub_8013782(int a1, int a2)
+int __fastcall GetBattleNaviStatsByte_AllianceFromBattleObject_8013782(int a1, int a2)
 {
     int v2; // r5
 
@@ -7406,7 +7406,7 @@ int __fastcall sub_8013790(int a1, int a2)
 
 // 0x801379e
 // (int a1, int a2, int a3) -> void
-int __fastcall navicust_801379E(int a1, int a2, char a3)
+int __fastcall SetCurPETNaviStatsByte(int a1, int a2, char a3)
 {
     int v3; // r10
     char v4; // ST04_1
@@ -7422,7 +7422,7 @@ int __fastcall navicust_801379E(int a1, int a2, char a3)
 
 // 0x80137b6
 // (int a1, int a2) -> u8
-int __fastcall sub_80137B6(int a1)
+int __fastcall GetCurPETNaviStatsByte(int a1)
 {
     int v1; // r10
     int v3; // [sp+0h] [bp-8h]
@@ -7432,7 +7432,7 @@ int __fastcall sub_80137B6(int a1)
 
 
 // 0x80137ce
-int __fastcall sub_80137CE(int a1)
+int __fastcall GetCurPetNaviStatsSignedByte(int a1)
 {
     int v1; // r10
     int v3; // [sp+0h] [bp-8h]
@@ -7467,55 +7467,55 @@ int __fastcall GetField16FromSelectedS20047CCStruct(int a1)
 
 
 // 0x8013816
-int __fastcall sub_8013816(int a1, int a2)
+int __fastcall GetBattleNaviStats203CB10Byte(int a1, int a2)
 {
-    return sub_8013690(a1)[a2];
+    return GetBattleNaviStats203CB10Addr(a1)[a2];
 }
 
 
 // 0x8013822
-int __fastcall sub_8013822(int a1, int a2)
+int __fastcall GetBattleNaviStats203CB10Hword(int a1, int a2)
 {
-    return *&sub_8013690(a1)[a2];
+    return *&GetBattleNaviStats203CB10Addr(a1)[a2];
 }
 
 
 // 0x801382e
-int __fastcall sub_801382E(int a1, int a2)
+int __fastcall GetBattleNaviStats2034A60Byte(int a1, int a2)
 {
-    return sub_80136A0(a1)[a2];
+    return GetBattleNaviStats2034A60Addr(a1)[a2];
 }
 
 
 // 0x801383a
-int __fastcall sub_801383A(int a1, int a2)
+int __fastcall GetBattleNaviStats2034A60Hword(int a1, int a2)
 {
-    return *&sub_80136A0(a1)[a2];
+    return *&GetBattleNaviStats2034A60Addr(a1)[a2];
 }
 
 
 // 0x8013846
-signed int sub_8013846()
+signed int initNaviStats203CCE0_8013846()
 {
     char *v0; // r0
     int v1; // r1
     int v2; // r2
     int v3; // r3
 
-    v0 = sub_8013854(0);
-    return initStruct_8013438(v0, v1, v2, v3);
+    v0 = GetNaviStats203CCE0Addr(0);
+    return initNaviStats_WithDefaultStatsMaybe_8013438(v0, v1, v2, v3);
 }
 
 
 // 0x8013854
-char *__fastcall sub_8013854(int a1)
+char *__fastcall GetNaviStats203CCE0Addr(int a1)
 {
-    return &byte_203CCE0[100 * a1];
+    return &eNaviStats203CCE0[100 * a1];
 }
 
 
 // 0x8013864
-char *__fastcall sub_8013864(int a1, int a2, char a3)
+char *__fastcall SetNaviStats203CCE0Byte(int a1, int a2, char a3)
 {
     int v3; // r6
     char v4; // r7
@@ -7523,14 +7523,14 @@ char *__fastcall sub_8013864(int a1, int a2, char a3)
 
     v3 = a2;
     v4 = a3;
-    result = sub_8013854(0);
+    result = GetNaviStats203CCE0Addr(0);
     result[v3] = v4;
     return result;
 }
 
 
 // 0x8013874
-char *__fastcall sub_8013874(int a1, int a2, __int16 a3)
+char *__fastcall SetNaviStats203CCE0Hword(int a1, int a2, __int16 a3)
 {
     int v3; // r6
     __int16 v4; // r7
@@ -7538,16 +7538,16 @@ char *__fastcall sub_8013874(int a1, int a2, __int16 a3)
 
     v3 = a2;
     v4 = a3;
-    result = sub_8013854(0);
+    result = GetNaviStats203CCE0Addr(0);
     *&result[v3] = v4;
     return result;
 }
 
 
 // 0x8013884
-int __fastcall sub_8013884(int a1, int a2)
+int __fastcall GetNaviStats203CCE0Byte(int a1, int a2)
 {
-    return sub_8013854(0)[a2];
+    return GetNaviStats203CCE0Addr(0)[a2];
 }
 
 
@@ -7859,7 +7859,7 @@ int __fastcall init_8013B64(int a1, int a2)
 
     v2 = a2;
     v3 = sub_8013682(a1);
-    initStruct_8013438(v3, v4, v5, v6);
+    initNaviStats_WithDefaultStatsMaybe_8013438(v3, v4, v5, v6);
     v7 = &byte_80210DD[16 * v2];
     v3[41] = v2;
     v8 = 2 * *v7;
@@ -7897,7 +7897,7 @@ int __fastcall sub_8013BDA(int a1, int a2, int a3, int a4)
 
     v4 = a1;
     v5 = a2;
-    initStruct_8013438(a1, a2, a3, a4);
+    initNaviStats_WithDefaultStatsMaybe_8013438(a1, a2, a3, a4);
     v6 = &byte_80210DD[16 * v5];
     *(v4 + 41) = v5;
     v7 = *&byte_802F0A8[2 * v5];
@@ -8474,11 +8474,11 @@ signed int sub_8014150()
 
     v0 = 2;
     v1 = getPETNaviSelect();
-    if ( !sub_80137B6(v1) )
+    if ( !GetCurPETNaviStatsByte(v1) )
     {
         v0 = 1;
         v2 = getPETNaviSelect();
-        if ( !sub_80137B6(v2) )
+        if ( !GetCurPETNaviStatsByte(v2) )
             v0 = 0;
     }
     return v0;
@@ -8503,7 +8503,7 @@ int sub_80141AC()
     int v0; // r0
 
     v0 = getPETNaviSelect();
-    return navicust_801379E(v0, 33, 3);
+    return SetCurPETNaviStatsByte(v0, 33, 3);
 }
 
 
@@ -11214,7 +11214,7 @@ signed int __fastcall sub_8015BA8(int a1)
     int v6; // r3
 
     v1 = a1;
-    v2 = sub_80136A0(a1);
+    v2 = GetBattleNaviStats2034A60Addr(a1);
     v3 = *(sub_80103BC(v1) + 88);
     v4 = v2[44];
     result = 5;
@@ -11303,7 +11303,7 @@ int sub_8015C32()
 
     v0 = 0;
     do
-        result = SetField8ToSelectedS20047CCStruct(v0++, 14, 0);
+        result = SetNaviStatsByte(v0++, 14, 0);
     while ( v0 < 7 );
     return result;
 }

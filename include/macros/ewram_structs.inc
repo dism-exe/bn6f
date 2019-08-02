@@ -14,9 +14,8 @@
 	.include "structs/Chatbox.inc"
 	.include "structs/StartScreen.inc"
 	.include "structs/ReqBBSGui.inc"
-	.include "structs/PlayerBattleVars.inc"
+	.include "structs/NaviStats.inc"
 	.include "structs/CutsceneState.inc"
-	.include "structs/S20047CC.inc"
 	.include "structs/ScreenFade.inc"
 	.include "structs/S2001c04.inc"
 	.include "structs/S200ace0.inc"
@@ -167,7 +166,7 @@ known offsets from https://pastebin.com/grDF80Vp
 0x8 - num counter hits
 0xb - was cross used
 
-what is ePlayerBattleVars? field 0e is karma
+what is eBattleNaviStats0? field 0e is karma
 
 sub_801BCF4 = animate battle sprite?
 */
@@ -216,7 +215,7 @@ look at:
 31 - processing bug
 3e - max base HP
 40 - cur HP
-42 - HP+
+42 - max HP
 50 - chip recovery (hp value?)
 63 - turns until custbug activates
 
