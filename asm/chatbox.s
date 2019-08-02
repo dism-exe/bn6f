@@ -2541,7 +2541,7 @@ off_8041184: .word chatbox_80411B0+1
 	.word chatbox_80411C8+1
 	.word chatbox_80411E8+1
 	.word chatbox_8041200+1
-	.word 0x0
+	.word NULL
 	.word chatbox_8041218+1
 	.word chatbox_80411D4+1
 	.word chatbox_80411E0+1
@@ -2579,7 +2579,7 @@ chatbox_80411C8:
 	thumb_local_start
 chatbox_80411D4:
 	push {lr}
-	bl sub_802F238
+	bl addMail_802f238
 	add r4, #4
 	pop {pc}
 	.byte 0, 0
@@ -2640,7 +2640,7 @@ chatbox_8041218:
 	thumb_local_start
 chatbox_804122C:
 	push {lr}
-	bl reqBBS_813E5DC
+	bl reqBBS_addBBSMessage_813e5dc
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
@@ -2649,7 +2649,7 @@ chatbox_804122C:
 	thumb_local_start
 chatbox_8041238:
 	push {lr}
-	bl reqBBS_813F9A0
+	bl reqBBS_addRequest_813F9A0
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
@@ -3379,7 +3379,7 @@ chatbox_80417E4:
 	push {lr}
 	push {r4,r5}
 	ldrb r0, [r4,#2]
-	bl sub_803CE28
+	bl CheckKeyItem
 	pop {r4,r5}
 	ldrb r1, [r4,#3]
 	mov r2, #0
@@ -3514,7 +3514,7 @@ loc_80418D4:
 	ldrb r0, [r4,#2]
 	add r0, r0, r3
 	push {r2-r5}
-	bl sub_803CE28
+	bl CheckKeyItem
 	pop {r2-r5}
 	tst r0, r0
 	bne loc_80418EE
@@ -3549,7 +3549,7 @@ loc_804190E:
 	ldrb r0, [r4,#2]
 	add r0, r0, r3
 	push {r2-r5}
-	bl sub_803CE28
+	bl CheckKeyItem
 	pop {r2-r5}
 	add r3, #1
 	tst r0, r0
@@ -3795,7 +3795,7 @@ byte_8041AB4: .byte 0x0, 0x1, 0x2, 0x4, 0x5, 0x6, 0x0, 0x0
 	thumb_local_start
 chatbox_8041ABC:
 	push {lr}
-	bl reqBBS_getTotalPointsIndex // () -> u8
+	bl reqBBS_getRequestBBSRank // () -> u8
 	mov r1, #2
 	add r0, r0, r1
 	ldrb r1, [r4,r0]
@@ -4274,7 +4274,7 @@ loc_8041E2A:
 	ldr r1, [r5,#0x58]
 loc_8041E32:
 	ldrb r2, [r4,#5]
-	bl sub_8021AEE
+	bl GiveChips
 	pop {r4,r5}
 	add r4, #6
 	mov r0, #1
@@ -4287,7 +4287,7 @@ loc_8041E40:
 	orr r0, r1
 	ldrb r1, [r4,#4]
 	ldrb r2, [r4,#5]
-	bl sub_8021B92 // (int idx, int searchItem, int off) -> void*
+	bl TakeChips // (int idx, int searchItem, int off) -> void*
 	pop {r4,r5}
 	add r4, #6
 	mov r0, #1
@@ -5018,7 +5018,7 @@ chatbox_80423DC:
 	orr r2, r1
 	mov r0, r2
 	str r0, [r5,#0x4c]
-	bl sub_803CFF8
+	bl GiveZenny
 	ldrb r0, [r4,#2]
 	add r0, #1
 	lsl r0, r0, #2
@@ -5046,7 +5046,7 @@ chatbox_8042418:
 	ldrb r0, [r0]
 	str r0, [r5,#0x4c]
 	push {r4}
-	bl sub_8021AEE
+	bl GiveChips
 	pop {r4}
 	ldrb r0, [r4,#2]
 	add r0, #1
@@ -5337,21 +5337,24 @@ chatbox_FC_interface:
 	pop {pc}
 off_8042620: .word off_8042624
 off_8042624: .word chatbox_8042678+1
-	.word 0
-	.byte 0, 0, 0, 0
+	.word NULL
+	.word NULL
 	.word chatbox_80426A8+1
 	.word chatbox_80426C4+1
 	.word chatbox_80426D4+1
 	.word chatbox_80426E0+1
-	.word 0x0
+	.word NULL
 	.word chatbox_80426F4+1
 	.word chatbox_804271C+1
-	.word 0, 0, 0, 0
-	.byte 0, 0, 0, 0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word chatbox_sprite_8042770+1
 	.word chatbox_80427B4+1
 	.word chatbox_80427E4+1
-	.word 0x0
+	.word NULL
 	.word chatbox_8042804+1
 	.word chatbox_8042820+1
 	thumb_func_end chatbox_FC_interface
@@ -5814,7 +5817,7 @@ loc_8042B02:
 loc_8042B08:
 	push {r4,r5}
 	ldrb r0, [r4,#2]
-	bl sub_803CE28
+	bl CheckKeyItem
 	pop {r4,r5}
 	ldrb r1, [r4,#3]
 	mov r2, #0
@@ -5869,7 +5872,7 @@ loc_8042B4C:
 	ldr r0, [r5,#0x54]
 loc_8042B6A:
 	str r0, [r5,#0x54]
-	bl sub_803CFF8
+	bl GiveZenny
 	pop {r4,r5}
 	push {r0}
 	mov r0, #SOUND_UNK_73
@@ -5890,7 +5893,7 @@ loc_8042B82:
 	orr r0, r1
 	orr r0, r2
 	orr r0, r3
-	bl sub_803D040
+	bl TakeZenny
 	pop {r4,r5}
 	add r0, #6
 	ldrb r1, [r4,r0]
@@ -5985,7 +5988,7 @@ loc_8042C2C:
 	ldr r0, [r5,#0x54]
 loc_8042C4A:
 	str r0, [r5,#0x54]
-	bl sub_803D080
+	bl GiveBugfrags
 	pop {r4,r5}
 	push {r0}
 	mov r0, #SOUND_UNK_73
@@ -6006,7 +6009,7 @@ loc_8042C62:
 	orr r0, r1
 	orr r0, r2
 	orr r0, r3
-	bl sub_803D0C8
+	bl TakeBugfrags
 	pop {r4,r5}
 	add r0, #6
 	ldrb r1, [r4,r0]
@@ -7840,7 +7843,7 @@ loc_8043A82:
 loc_8043A8A:
 	ldrb r2, [r4,#3]
 	add r0, #0x90
-	bl sub_803D108
+	bl GiveNaviCustPrograms
 	pop {r4,r5}
 	add r4, #5
 	mov r0, #1
@@ -7851,7 +7854,7 @@ loc_8043A9A:
 	ldrb r1, [r4,#4]
 	ldrb r2, [r4,#3]
 	add r0, #0x90
-	bl sub_803D128
+	bl TakeNaviCustPrograms
 	pop {r4,r5}
 	add r4, #5
 	mov r0, #1
@@ -7897,10 +7900,10 @@ loc_8043AFA:
 	mov r0, #1
 	pop {pc}
 jt_8043B00: .word sub_8033FC0+1
-	.word 0x0
-	.word sub_8003A64+1
+	.word NULL
+	.word initMinigameEffect_8003a64+1
 	.word sub_8001154+1
-	.word sub_8003914+1
+	.word initScenarioEffect_8003914+1
 	.word sub_814187C+1
 	.word sub_8142134+1
 	.word sub_8048F88+1
@@ -7913,9 +7916,9 @@ jt_8043B00: .word sub_8033FC0+1
 	.word sub_809FE5E+1
 	.word npc_freeAllObjectsIfDifferentMap_80351b4+1
 	.word npc_spawnOverworldNPCObjectsForMap+1
-	.word sub_8120DF0+1
-	.word sub_813C3AC+1
-	.word sub_803CEB8+1
+	.word reloadCurNaviBaseStats_8120df0+1
+	.word reloadCurNaviStatBoosts_813c3ac+1
+	.word setCurNaviHPToFull_803ceb8+1
 	.word sub_80AA86E+1
 byte_8043B54:: .byte 0xE0, 0xA2, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0, 0x40, 0xA3, 0x0, 0x2
 	.byte 0x20, 0x0, 0x0, 0x0, 0x0, 0xA3, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0

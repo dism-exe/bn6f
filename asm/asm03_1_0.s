@@ -829,7 +829,7 @@ off_8033FD8: .word unk_2011E30
 	thumb_func_start sub_8033FDC
 sub_8033FDC:
 	push {r4-r7,lr}
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	movflag EVENT_PET_NAVI_ACTIVE
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_1703
@@ -840,7 +840,7 @@ sub_8033FDC:
 	movflag EVENT_1721
 	bl ClearEventFlagFromImmediate
 	bl sub_809F9DC
-	bl sub_803CEB8
+	bl setCurNaviHPToFull_803ceb8
 	movflag EVENT_1724
 	bl SetEventFlagFromImmediate
 	mov r0, #5
@@ -877,8 +877,8 @@ loc_803405A:
 	mov r2, #9
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 loc_8034064:
-	bl sub_80141AC
-	bl sub_8015C32
+	bl SetBeastOutCounterTo3
+	bl ZeroAllNaviStatsMood
 	bl sub_800A908
 	movflag EVENT_1700
 	bl ClearEventFlagFromImmediate
@@ -935,8 +935,8 @@ locret_80340F4:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8033FDC
 
-	thumb_func_start sub_80340F6
-sub_80340F6:
+	thumb_func_start navi_80340F6
+navi_80340F6:
 	push {r4-r7,lr}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
@@ -944,20 +944,20 @@ sub_80340F6:
 	cmp r0, #0x80
 	bne loc_8034108
 	mov r0, #0
-	bl sub_8035354
+	bl loadGameProgressFromGameProgressBuffer_8035354
 loc_8034108:
 	movflag EVENT_163
 	bl TestEventFlagFromImmediate
 	bne loc_803412A
-	bl sub_80010C6
+	bl writeCurPETNaviToS2001c04_Unk07_80010c6
 	mov r0, #0
 	bl SetCurPETNavi
-	bl sub_8120DF0
-	bl sub_813C3AC
-	bl sub_80010C6
+	bl reloadCurNaviBaseStats_8120df0
+	bl reloadCurNaviStatBoosts_813c3ac
+	bl writeCurPETNaviToS2001c04_Unk07_80010c6
 	b loc_803412E
 loc_803412A:
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 loc_803412E:
 	movflag EVENT_172A
 	bl TestEventFlagFromImmediate
@@ -965,7 +965,7 @@ loc_803412E:
 	movflag EVENT_PET_NAVI_ACTIVE
 	bl SetEventFlagFromImmediate
 loc_8034140:
-	bl sub_803CEB8
+	bl setCurNaviHPToFull_803ceb8
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	mov r2, #0
@@ -977,13 +977,11 @@ loc_8034140:
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_1709
 	bl ClearEventFlagFromImmediate
-	mov r0, #4
-	mov r1, #0xe9
+	movflag EVENT_4E9
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_5F2
 	bl ClearEventFlagFromImmediate
-	mov r0, #5
-	mov r1, #0xdf
+	movflag EVENT_5DF
 	bl SetEventFlagFromImmediate
 	bl sub_80351C8
 	movflag EVENT_1721
@@ -995,11 +993,11 @@ loc_8034140:
 	mov r0, #0
 	strh r0, [r7,#0x12]
 	strh r0, [r7,#0x14]
-	bl sub_80141AC
-	bl sub_8015C32
+	bl SetBeastOutCounterTo3
+	bl ZeroAllNaviStatsMood
 	bl sub_800A908
 	pop {r4-r7,pc}
-	thumb_func_end sub_80340F6
+	thumb_func_end navi_80340F6
 
 	thumb_func_start sub_80341AA
 sub_80341AA:
@@ -1187,7 +1185,7 @@ sub_80342EC:
 	mov r1, #0x10
 	strb r1, [r0,#0x17]
 	bl sub_8005C04
-	bl sub_80340F6
+	bl navi_80340F6
 	pop {pc}
 	thumb_func_end sub_80342EC
 
@@ -2458,9 +2456,22 @@ locret_803524A:
 	pop {r4-r7,pc}
 off_803524C: .word word_8035250
 word_8035250: .hword 0x1, 0x21A
-	.byte 0x2, 0x0, 0x1B, 0x2, 0x3, 0x0, 0x1C, 0x2, 0x4, 0x0, 0x1D, 0x2, 0x5, 0x0
-	.byte 0x1E, 0x2, 0x6, 0x0, 0x1F, 0x2, 0x7, 0x0, 0x20, 0x2, 0x8D, 0x0, 0x21, 0x2
-	.byte 0xFF, 0x0, 0xFF, 0x0
+	.hword 0x2
+	.hword 0x21b
+	.hword 0x3
+	.hword 0x21c
+	.hword 0x4
+	.hword 0x21d
+	.hword 0x5
+	.hword 0x21e
+	.hword 0x6
+	.hword 0x21f
+	.hword 0x7
+	.hword 0x220
+	.hword 0x8d
+	.hword 0x221
+	.hword 0xff
+	.hword 0xff
 	thumb_func_end sub_803522E
 
 	thumb_local_start
@@ -2525,11 +2536,11 @@ byte_803530C: .byte 0x1, 0x0, 0xFF, 0x1, 0x2, 0x0, 0xFF, 0x1, 0x3, 0x0, 0xFF, 0x
 off_8035328: .word byte_80990B8
 	thumb_func_end sub_8035274
 
-	thumb_func_start sub_803532C
-sub_803532C:
+	thumb_func_start initGameProgressBuffer_803532c
+initGameProgressBuffer_803532c:
 	push {r4-r7,lr}
 	ldr r6, off_8035350 // =byte_8037694
-	ldr r7, off_8035378 // =byte_20010F0
+	ldr r7, off_8035378 // =gameProgressBuffer_20010f0
 	mov r3, #0
 loc_8035334:
 	ldrb r0, [r6]
@@ -2547,24 +2558,24 @@ loc_8035334:
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_8035350: .word byte_8037694
-	thumb_func_end sub_803532C
+	thumb_func_end initGameProgressBuffer_803532c
 
-	thumb_func_start sub_8035354
-sub_8035354:
+	thumb_func_start loadGameProgressFromGameProgressBuffer_8035354
+loadGameProgressFromGameProgressBuffer_8035354:
 	push {r4-r7,lr}
-	ldr r6, off_8035378 // =byte_20010F0
+	ldr r6, off_8035378 // =gameProgressBuffer_20010f0
 	add r6, r6, r0
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r0, [r6]
 	strb r0, [r7,#oGameState_GameProgress]
 	pop {r4-r7,pc}
-	thumb_func_end sub_8035354
+	thumb_func_end loadGameProgressFromGameProgressBuffer_8035354
 
-	thumb_func_start sub_8035364
-sub_8035364:
+	thumb_func_start storeGameProgressToGameProgressBuffer_8035364
+storeGameProgressToGameProgressBuffer_8035364:
 	push {r4-r7,lr}
-	ldr r6, off_8035378 // =byte_20010F0
+	ldr r6, off_8035378 // =gameProgressBuffer_20010f0
 	add r6, r6, r0
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -2573,8 +2584,8 @@ sub_8035364:
 	mov r0, #0xff
 	strb r0, [r7,#oGameState_GameProgress]
 	pop {r4-r7,pc}
-off_8035378: .word byte_20010F0
-	thumb_func_end sub_8035364
+off_8035378: .word gameProgressBuffer_20010f0
+	thumb_func_end storeGameProgressToGameProgressBuffer_8035364
 
 	thumb_func_start sub_803537C
 sub_803537C:
@@ -2692,10 +2703,10 @@ byte_80354D4: .byte 0x5, 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 
 	.byte 0x0, 0x0
 	thumb_func_end sub_8035424
 
-	thumb_func_start sub_803553C
-sub_803553C:
+	thumb_func_start testSetClearFlags_803553c
+testSetClearFlags_803553c:
 	push {r4-r7,lr}
-	bl sub_80355A8
+	bl clearSetFlags_80355a8
 	mov r0, #6
 	mov r1, #0x7b
 	bl TestEventFlagFromImmediate
@@ -2741,10 +2752,10 @@ loc_803559C:
 	bl ClearEventFlagFromImmediate
 	mov r0, #0
 	pop {r4-r7,pc}
-	thumb_func_end sub_803553C
+	thumb_func_end testSetClearFlags_803553c
 
-	thumb_func_start sub_80355A8
-sub_80355A8:
+	thumb_func_start clearSetFlags_80355a8
+clearSetFlags_80355a8:
 	push {r4-r7,lr}
 	mov r0, #6
 	mov r1, #0x82
@@ -2766,7 +2777,7 @@ sub_80355A8:
 	bl SetEventFlagFromImmediate
 	mov r0, #0
 	pop {r4-r7,pc}
-	thumb_func_end sub_80355A8
+	thumb_func_end clearSetFlags_80355a8
 
 	thumb_func_start sub_80355DE
 sub_80355DE:
@@ -3047,7 +3058,7 @@ loc_80357CA:
 	bl sub_809CA40
 	bne loc_80357E8
 	mov r0, #0x2c
-	bl sub_803CE28
+	bl CheckKeyItem
 	tst r0, r0
 	beq loc_80357E8
 loc_80357E4:

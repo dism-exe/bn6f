@@ -1397,7 +1397,7 @@ sub_812CDAC::
 	lsl r1, r1, #0x11
 	lsr r1, r1, #0x1a
 	mov r2, #1
-	bl sub_8021B92 // (int idx, int searchItem, int off) -> void*
+	bl TakeChips // (int idx, int searchItem, int off) -> void*
 loc_812CDC4::
 	ldrh r0, [r5,#0x2c]
 	mov r1, r0
@@ -1408,7 +1408,7 @@ loc_812CDC4::
 	lsl r1, r1, #0x11
 	lsr r1, r1, #0x1a
 	mov r2, #1
-	bl sub_8021AEE
+	bl GiveChips
 loc_812CDDA::
 	bl sub_8120AB8
 	bl sub_803F798

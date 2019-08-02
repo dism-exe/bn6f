@@ -1272,7 +1272,7 @@ signed int sub_812FC50()
             do
             {
                 v5 = split9BitsFromBitfield_8021AE0(*(v3 + v4));
-                v7 = sub_8021B92(v5, v6, 1);
+                v7 = TakeChips(v5, v6, 1);
                 v4 += 2;
             }
             while ( v4 < 60 );
@@ -1287,7 +1287,7 @@ signed int sub_812FC50()
         do
         {
             v11 = split9BitsFromBitfield_8021AE0(*(v3 + v10));
-            sub_8021AEE(v11, v12, 1);
+            GiveChips(v11, v12, 1);
             v10 += 2;
         }
         while ( v10 < 60 );

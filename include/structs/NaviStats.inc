@@ -16,6 +16,8 @@
 	u8 GigaLevel // loc=0xc
 	struct_org 0xe
 	u8 Mood // loc=0xe
+	struct_org 0x21
+	u8 BeastOutCounter // loc=0x21
 	struct_org 0x23
 	u8 SuperArmor // loc=0x23
 	struct_org 0x2c

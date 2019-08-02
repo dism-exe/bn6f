@@ -6695,7 +6695,7 @@ void __fastcall __noreturn sub_81356F4(int a1, int a2, int a3, int a4)
     *(v4 + 48) = 0;
     *(v4 + 50) = 0;
     *(v4 + 16) = sub_813B920(0);
-    v12 = sub_803CE28(113);
+    v12 = CheckKeyItem(113);
     *(v4 + 15) = v12;
     *(v4 + 68) = sub_813B9E0(v12);
     sub_8135B94();
@@ -7249,7 +7249,7 @@ int *sub_8135E18()
     v1 = 145;
     do
     {
-        v2 = sub_803CE28(v1);
+        v2 = CheckKeyItem(v1);
         if ( v2 )
         {
             v3 = 0;
@@ -7295,7 +7295,7 @@ unsigned __int16 *sub_8135E6C()
     do
     {
         v7 = *(&off_8135EDC + v1);
-        result = sub_803CE28(*(&off_8135EDC + v1));
+        result = CheckKeyItem(*(&off_8135EDC + v1));
         v3 = result;
         if ( result )
         {
@@ -7757,7 +7757,7 @@ int sub_8136364()
 
     v1 = sub_8136290(*(v0 + 58) + *(v0 + 56));
     v2 = sub_813B780(*v1 - 144);
-    return sub_803CE28(*(v2 + 3) + 79);
+    return CheckKeyItem(*(v2 + 3) + 79);
 }
 
 
@@ -8347,7 +8347,7 @@ int sub_81369D0()
     *(v0 + 18) = v1;
     if ( v1 >= 80 )
     {
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         *(v0 + 28) = 11;
         sub_8046696(11);
         sub_80465A0(byte_813683C);
@@ -9808,7 +9808,7 @@ signed int __fastcall sub_813781C(unsigned int a1)
             do
             {
                 v7 = split9BitsFromBitfield_8021AE0(*(v5 + v6));
-                result = sub_8021B92(v7, v8, 1);
+                result = TakeChips(v7, v8, 1);
                 v6 += 2;
             }
             while ( v6 < 60 );

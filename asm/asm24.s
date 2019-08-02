@@ -182,7 +182,7 @@ loc_808C3EE:
 loc_808C3F2:
 	mov r0, #0
 	mov r1, #1
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	ldr r0, [r7]
 	tst r0, r0
 	pop {r4-r7,pc}

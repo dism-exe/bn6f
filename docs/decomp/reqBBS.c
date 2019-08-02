@@ -417,7 +417,7 @@ void __usercall reqBBS_uncomp_813E5A0(reqBBS_GUI *gui@<R5>)
 
 
 // 0x813e5dc
-int __fastcall reqBBS_813E5DC(unsigned int a1)
+int __fastcall reqBBS_addBBSMessage_813e5dc(unsigned int a1)
 {
     unsigned int v1; // r7
     unsigned int v2; // r7
@@ -484,7 +484,7 @@ unsigned int reqBBS_813E660()
             v8 = v3;
             v5 = v2;
             v6 = v0;
-            reqBBS_813E5DC(v4);
+            reqBBS_addBBSMessage_813e5dc(v4);
             result = v4;
             v3 = v8;
             v0 = v6;
@@ -1390,7 +1390,7 @@ void reqBBS_copyTextDataToRAM()
 
 
 // 0x813f9a0
-int __fastcall reqBBS_813F9A0(unsigned int a1)
+int __fastcall reqBBS_addRequest_813F9A0(unsigned int a1)
 {
     unsigned int v1; // r7
     unsigned int v2; // r7
@@ -1457,7 +1457,7 @@ unsigned int sub_813FA24()
             v8 = v3;
             v5 = v2;
             v6 = v0;
-            reqBBS_813F9A0(v4);
+            reqBBS_addRequest_813F9A0(v4);
             result = v4;
             v3 = v8;
             v0 = v6;
@@ -2144,7 +2144,7 @@ int __noreturn reqBBS_setChatboxHeaderBasedOn_0F()
 // 0x8140554
 void reqBBS_changeChatboxHeader()
 {
-    reqBBS_getTotalPointsIndex();
+    reqBBS_getRequestBBSRank();
     sub_8045FC6();
 }
 
@@ -2329,7 +2329,7 @@ int reqBBS_81406FC()
 
 // 0x8140798
 // () -> u8
-int reqBBS_getTotalPointsIndex()
+int reqBBS_getRequestBBSRank()
 {
     return eReqBBSGui.totalPointsIndex;
 }
@@ -2409,7 +2409,7 @@ signed int __fastcall reqBBS_8140868(int a1)
 // 0x8140884
 BOOL __fastcall reqBBS_8140884(int a1)
 {
-    return reqBBS_getTotalPointsIndex() < byte_813F380[a1];
+    return reqBBS_getRequestBBSRank() < byte_813F380[a1];
 }
 
 

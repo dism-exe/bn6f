@@ -1589,7 +1589,7 @@ int sub_809F392()
     __int16 v1; // r0
 
     v1 = ReadNPCScriptHalfword((v0 + 2));
-    return sub_80302A8(*(v0 + 1), v1);
+    return setCameraUnk0e_Unk0c_80302a8(*(v0 + 1), v1);
 }
 
 

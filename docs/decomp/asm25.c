@@ -356,7 +356,7 @@ int __fastcall sub_808FBEC(int a1, int a2)
 // 0x808fce4
 int __fastcall sub_808FCE4(int a1, int a2, int a3, int a4)
 {
-    sub_8003940(1, a2, a3, a4);
+    endScenarioEffectMaybe_8003940(1, a2, a3, a4);
     return 0;
 }
 
@@ -460,7 +460,7 @@ int sub_808FDC0()
     sub_808FF9C();
     sub_808FF30();
     sub_808FF70();
-    sub_8003914(1u, v9, v10, v11);
+    initScenarioEffect_8003914(1u, v9, v10, v11);
     sub_809003C();
     return 0;
 }
@@ -1044,7 +1044,7 @@ int sub_809032C()
 
     sub_80039D4(1);
     if ( !v3 )
-        sub_8003940(1, v0, v1, v2);
+        endScenarioEffectMaybe_8003940(1, v0, v1, v2);
     return 0;
 }
 

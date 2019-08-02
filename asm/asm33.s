@@ -1999,7 +1999,7 @@ sub_8124384:
 	mov r3, #0
 loc_8124394:
 	mov r0, r7
-	bl sub_803CE28
+	bl CheckKeyItem
 	mov r1, #0x80
 	strb r7, [r4,r3]
 	add r3, #1
@@ -9809,7 +9809,7 @@ sub_81289C4:
 loc_81289D2:
 	ldr r7, off_8128A24 // =eTextScript201BF00
 	mov r0, r4
-	bl sub_803CE28
+	bl CheckKeyItem
 	beq loc_81289EC
 	mov r1, #2
 	ldr r2, off_8128A2C // =byte_81286C4
@@ -10066,7 +10066,7 @@ loc_8128BB8:
 	cmp r0, #0x2c 
 	bne loc_8128BDC
 	push {r0}
-	bl sub_803CE28
+	bl CheckKeyItem
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_ChatboxPtr]
 	str r0, [r1,#0x4c]
@@ -15311,7 +15311,7 @@ loc_812B6D8:
 	strb r0, [r5,#2]
 	ldrb r0, [r5,#0x1a]
 	bl SetCurPETNavi
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	bl PlayMapMusic
 	movflag EVENT_1722
 	bl ClearEventFlagFromImmediate

@@ -1579,7 +1579,7 @@ loc_812FC7C::
 	ldrh r0, [r7,r6]
 	bl split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
 	mov r2, #1
-	bl sub_8021B92 // (int idx, int searchItem, int off) -> void*
+	bl TakeChips // (int idx, int searchItem, int off) -> void*
 	add r6, #2
 	cmp r6, #0x3c 
 	blt loc_812FC7C
@@ -1606,7 +1606,7 @@ loc_812FCB8::
 	ldrh r0, [r7,r6]
 	bl split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
 	mov r2, #1
-	bl sub_8021AEE
+	bl GiveChips
 	add r6, #2
 	cmp r6, #0x3c 
 	blt loc_812FCB8

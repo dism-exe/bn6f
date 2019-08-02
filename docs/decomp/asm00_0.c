@@ -1186,7 +1186,7 @@ int __fastcall sub_8000FE6(int a1, int a2)
     {
         result = TestEventFlag(v2);
         if ( v5 )
-            result = reqBBS_813E5DC(v2);
+            result = reqBBS_addBBSMessage_813e5dc(v2);
         ++v2;
         v6 = __OFSUB__(v3--, 1);
     }
@@ -1217,7 +1217,7 @@ int __fastcall sub_8001014(int a1, int a2)
     {
         result = TestEventFlag(v2);
         if ( v5 )
-            result = reqBBS_813F9A0(v2);
+            result = reqBBS_addRequest_813F9A0(v2);
         ++v2;
         v6 = __OFSUB__(v3--, 1);
     }
@@ -1319,7 +1319,7 @@ int __fastcall sub_80010BE(int result)
 
 
 // 0x80010c6
-int sub_80010C6()
+int writeCurPETNaviToS2001c04_Unk07_80010c6()
 {
     int v0; // r10
     int result; // r0
@@ -2899,7 +2899,7 @@ signed int __fastcall Initialize_eStruct200a6a0(int a1, int a2, int a3, int a4)
 
 
 // 0x8002484
-void __fastcall sub_8002484(int a1, int a2, int a3, int a4)
+void __fastcall run_eStruct200a6a0_Callback_8002484(int a1, int a2, int a3, int a4)
 {
     if ( eStruct200a6a0 && dword_200A6A8 )
         (dword_200A6A8)();

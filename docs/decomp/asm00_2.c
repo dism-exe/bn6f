@@ -722,7 +722,7 @@ void __fastcall sub_800F4B2(int a1)
 
     dword_203F7E0[*(v1 + 22)] -= a1;
     if ( !battle_networkInvert(*(v1 + 22)) )
-        sub_803D0C8();
+        TakeBugfrags();
 }
 
 
@@ -6365,7 +6365,7 @@ int sub_8012CB2()
             --v6;
         }
         while ( v6 );
-        result = sub_80302A8(2, 20);
+        result = setCameraUnk0e_Unk0c_80302a8(2, 20);
     }
     return result;
 }
@@ -8498,7 +8498,7 @@ int sub_8014178()
 
 
 // 0x80141ac
-int sub_80141AC()
+int SetBeastOutCounterTo3()
 {
     int v0; // r0
 
@@ -11296,7 +11296,7 @@ signed int sub_8015C2C()
 
 
 // 0x8015c32
-int sub_8015C32()
+int ZeroAllNaviStatsMood()
 {
     int v0; // r4
     int result; // r0

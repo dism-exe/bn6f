@@ -6273,7 +6273,7 @@ locret_802963A:
 	thumb_local_start
 sub_802963C:
 	push {r0-r3,lr}
-	bl encryption_8006e70 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_20008A0) -> void
 	ldr r1, off_802967C // =0x140 
 	sub r0, r0, r1
 	ldr r1, off_8029680 // =0x1f60 
@@ -12420,17 +12420,17 @@ sub_802CAA6:
 	pop {pc}
 loc_802CACE:
 	pop {r0-r2}
-	bl sub_8021AEE
+	bl GiveChips
 	pop {pc}
 loc_802CAD6:
 	pop {r0-r2}
-	bl sub_8021B92 // (int idx, int searchItem, int off) -> void*
+	bl TakeChips // (int idx, int searchItem, int off) -> void*
 	pop {pc}
 loc_802CADE:
 	cmp r0, #1
 	bne loc_802CAEA
 	mov r0, r1
-	bl sub_803CFF8
+	bl GiveZenny
 	pop {pc}
 loc_802CAEA:
 	cmp r0, #2
@@ -12440,7 +12440,7 @@ loc_802CAF0:
 	cmp r0, #3
 	bne locret_802CAFA
 	mov r0, r1
-	bl sub_803D080
+	bl GiveBugfrags
 locret_802CAFA:
 	pop {pc}
 off_802CAFC: .word dword_2036820
@@ -17581,8 +17581,8 @@ TestEventFlagRange:
 // file boundary?
 	.balign 4, 0x00
 
-	thumb_func_start sub_802F238
-sub_802F238:
+	thumb_func_start addMail_802f238
+addMail_802f238:
 	push {r4,r6,r7,lr}
 	mov r7, r0
 	mov r0, r0
@@ -17611,7 +17611,7 @@ loc_802F268:
 	add r4, #1
 	str r4, [r6]
 	pop {r4,r6,r7,pc}
-	thumb_func_end sub_802F238
+	thumb_func_end addMail_802f238
 
 	thumb_local_start
 sub_802F270:
@@ -19340,15 +19340,15 @@ byte_8030284: .byte 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x3, 0x0, 0x0, 0x0, 
 	.byte 0x0, 0x21
 	thumb_func_end sub_80301E8
 
-	thumb_func_start sub_80302A8
-sub_80302A8:
+	thumb_func_start setCameraUnk0e_Unk0c_80302a8
+setCameraUnk0e_Unk0c_80302a8:
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_CameraPtr]
-	strh r0, [r2,#0xe]
-	strh r1, [r2,#0xc]
+	strh r0, [r2,#oCamera_Unk_0e]
+	strh r1, [r2,#oCamera_Unk_0c]
 	mov pc, lr
 	.word 0x21002000
-	thumb_func_end sub_80302A8
+	thumb_func_end setCameraUnk0e_Unk0c_80302a8
 
 	thumb_func_start sub_80302B6
 sub_80302B6:

@@ -1212,7 +1212,7 @@ int sub_8124384()
     v0 = 128;
     do
     {
-        result = sub_803CE28(v0);
+        result = CheckKeyItem(v0);
         byte_201C400[v2] = v0;
         byte_201C400[v2 + 1] = result;
         ++v0;
@@ -5967,7 +5967,7 @@ signed int sub_81289C4()
     v2 = 0;
     do
     {
-        v3 = sub_803CE28(v2);
+        v3 = CheckKeyItem(v2);
         if ( !v4 )
         {
             v5 = &eTextScript201BF00[2 * byte_81286C4[v2]];
@@ -6152,7 +6152,7 @@ void sub_8128B98()
         v2 = eTextScript201BF00[2 * (2 * (*(v0 + 36) + *(v0 + 32)) + *(v0 + 13))];
         if ( v2 == 44 )
         {
-            *(*(v1 + oToolkit_ChatboxPtr) + 76) = sub_803CE28(44);
+            *(*(v1 + oToolkit_ChatboxPtr) + 76) = CheckKeyItem(44);
             v2 = 44;
         }
         chatbox_runScript_803FD78(&unk_201C1B0, v2);
@@ -10037,7 +10037,7 @@ void sub_812B698()
         zeroFill_8003AB2();
         *(v0 + 2) = 12;
         sub_80010BE(*(v0 + 26));
-        v5 = sub_813C3AC();
+        v5 = reloadCurNaviStatBoosts_813c3ac();
         sub_8036E78(v5, v6, v7);
         ClearEventFlagFromImmediate(23, 34);
         sub_803F798();

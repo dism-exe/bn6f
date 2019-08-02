@@ -681,8 +681,8 @@ off_813E5D4: .word dword_87EE1AC
 off_813E5D8: .word unk_2033A00
 	thumb_func_end reqBBS_uncomp_813E5A0
 
-	thumb_func_start reqBBS_813E5DC
-reqBBS_813E5DC:
+	thumb_func_start reqBBS_addBBSMessage_813e5dc
+reqBBS_addBBSMessage_813e5dc:
 	push {r3,r7,lr}
 	mov r7, r0
 	mov r1, #2
@@ -710,7 +710,7 @@ reqBBS_813E5DC:
 	add r0, #1
 	str r0, [r1,r3]
 	pop {r3,r7,pc}
-	thumb_func_end reqBBS_813E5DC
+	thumb_func_end reqBBS_addBBSMessage_813e5dc
 
 	thumb_func_start reqBBS_813E616
 reqBBS_813E616:
@@ -777,7 +777,7 @@ loc_813E66A:
 	ldr r0, [r3,r1]
 	add r0, r0, r2
 	push {r0-r3}
-	bl reqBBS_813E5DC
+	bl reqBBS_addBBSMessage_813e5dc
 	pop {r0-r3}
 	add r2, #1
 	cmp r2, #0x1f
@@ -2490,8 +2490,8 @@ off_813F998: .word byte_87EFE14
 off_813F99C: .word unk_2033A00
 	thumb_func_end reqBBS_copyTextDataToRAM
 
-	thumb_func_start reqBBS_813F9A0
-reqBBS_813F9A0:
+	thumb_func_start reqBBS_addRequest_813F9A0
+reqBBS_addRequest_813F9A0:
 	push {r3,r7,lr}
 	mov r7, r0
 	mov r1, #2
@@ -2519,7 +2519,7 @@ reqBBS_813F9A0:
 	add r0, #1
 	str r0, [r1,r3]
 	pop {r3,r7,pc}
-	thumb_func_end reqBBS_813F9A0
+	thumb_func_end reqBBS_addRequest_813F9A0
 
 	thumb_func_start reqBBS_initMemory_813F9DA
 reqBBS_initMemory_813F9DA:
@@ -2586,7 +2586,7 @@ loc_813FA2E:
 	ldr r0, [r3,r1]
 	add r0, r0, r2
 	push {r0-r3}
-	bl reqBBS_813F9A0
+	bl reqBBS_addRequest_813F9A0
 	pop {r0-r3}
 	add r2, #1
 	cmp r2, #0x30 
@@ -3798,7 +3798,7 @@ off_8140550: .word eReqBBSGui
 	thumb_local_start
 reqBBS_changeChatboxHeader:
 	push {r4-r7,lr}
-	bl reqBBS_getTotalPointsIndex // () -> u8
+	bl reqBBS_getRequestBBSRank // () -> u8
 	mov r1, #8
 	add r1, r1, r0
 	ldr r0, off_8140574 // =reqBBS_eTextScript
@@ -4111,8 +4111,8 @@ off_8140794: .word eStructArr2008450
 	thumb_func_end reqBBS_81406FC
 
 // () -> u8
-	thumb_func_start reqBBS_getTotalPointsIndex
-reqBBS_getTotalPointsIndex:
+	thumb_func_start reqBBS_getRequestBBSRank
+reqBBS_getRequestBBSRank:
 	push {r4-r7,lr}
 	ldr r0, off_81409A4 // =eReqBBSGui
 	ldr r1, dword_81407A4 // =0xe 
@@ -4120,7 +4120,7 @@ reqBBS_getTotalPointsIndex:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 dword_81407A4: .word 0xE
-	thumb_func_end reqBBS_getTotalPointsIndex
+	thumb_func_end reqBBS_getRequestBBSRank
 
 	thumb_local_start
 reqBBS_81407A8:
@@ -4237,7 +4237,7 @@ off_8140880: .word reqBBS_textualPointers
 reqBBS_8140884:
 	push {r4-r7,lr}
 	push {r0}
-	bl reqBBS_getTotalPointsIndex // () -> u8
+	bl reqBBS_getRequestBBSRank // () -> u8
 	pop {r2}
 	ldr r1, off_81409C0 // =byte_813F380 
 	ldrb r1, [r1,r2]

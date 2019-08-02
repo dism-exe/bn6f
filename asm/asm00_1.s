@@ -1111,17 +1111,17 @@ jt_80038E8: .word sub_8142248+1
 Clear_eStruct2000780:
 	push {r4-r7,lr}
 	// memBlock
-	ldr r0, off_80039F0 // =eStruct2000780
+	ldr r0, off_80039F0 // =eScenarioEffectState2000780
 	// size
 	mov r1, #0x48
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4-r7,pc}
 	thumb_func_end Clear_eStruct2000780
 
-	thumb_func_start sub_8003914
-sub_8003914:
+	thumb_func_start initScenarioEffect_8003914
+initScenarioEffect_8003914:
 	push {r4-r7,lr}
-	ldr r5, off_80039F0 // =eStruct2000780
+	ldr r5, off_80039F0 // =eScenarioEffectState2000780
 	push {r0}
 	// memBlock
 	mov r0, r5
@@ -1143,12 +1143,12 @@ sub_8003914:
 	strb r0, [r5]
 	strb r0, [r5,#0x3] // (byte_2000783 - 0x2000780)
 	pop {r4-r7,pc}
-	thumb_func_end sub_8003914
+	thumb_func_end initScenarioEffect_8003914
 
-	thumb_func_start sub_8003940
-sub_8003940:
+	thumb_func_start endScenarioEffectMaybe_8003940
+endScenarioEffectMaybe_8003940:
 	push {r4-r7,lr}
-	ldr r5, off_80039F0 // =eStruct2000780
+	ldr r5, off_80039F0 // =eScenarioEffectState2000780
 	ldr r7, off_80039F4 // =jt_80038E8
 	mov r1, #0x10
 	ldrb r0, [r5,#0x1] // (byte_2000781 - 0x2000780)
@@ -1156,22 +1156,22 @@ sub_8003940:
 	add r7, r7, r0
 	ldr r0, [r7,#4]
 	tst r0, r0
-	beq loc_8003958
+	beq .noCustomEndFunction
 	mov lr, pc
 	bx r0
-loc_8003958:
+.noCustomEndFunction
 	// memBlock
 	mov r0, r5
 	// size
 	mov r1, #0x48
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4-r7,pc}
-	thumb_func_end sub_8003940
+	thumb_func_end endScenarioEffectMaybe_8003940
 
 	thumb_func_start sub_8003962
 sub_8003962:
 	push {r4-r7,lr}
-	ldr r5, off_80039F0 // =eStruct2000780
+	ldr r5, off_80039F0 // =eScenarioEffectState2000780
 	ldrb r0, [r5,#0x2] // (byte_2000782 - 0x2000780)
 	tst r0, r0
 	bne loc_8003974
@@ -1189,7 +1189,7 @@ loc_8003974:
 	thumb_local_start
 sub_800397A:
 	push {r4-r7,lr}
-	ldr r5, off_80039F0 // =eStruct2000780
+	ldr r5, off_80039F0 // =eScenarioEffectState2000780
 	mov r0, #1
 	strb r0, [r5,#0x3] // (byte_2000783 - 0x2000780)
 	pop {r4-r7,pc}
@@ -1198,7 +1198,7 @@ sub_800397A:
 	thumb_func_start sub_8003984
 sub_8003984:
 	push {r4-r7,lr}
-	ldr r5, off_80039F0 // =eStruct2000780
+	ldr r5, off_80039F0 // =eScenarioEffectState2000780
 	mov r0, #1
 	ldrb r0, [r5]
 	tst r0, r0
@@ -1214,7 +1214,7 @@ locret_8003998:
 	thumb_func_start sub_800399A
 sub_800399A:
 	push {r4-r7,lr}
-	ldr r5, off_80039F0 // =eStruct2000780
+	ldr r5, off_80039F0 // =eScenarioEffectState2000780
 	mov r0, #1
 	ldrb r0, [r5]
 	mov r1, #0x7f
@@ -1226,7 +1226,7 @@ sub_800399A:
 	thumb_local_start
 sub_80039AA:
 	push {r4-r7,lr}
-	ldr r5, off_80039F0 // =eStruct2000780
+	ldr r5, off_80039F0 // =eScenarioEffectState2000780
 	ldrb r0, [r5]
 	tst r0, r0
 	beq locret_80039CA
@@ -1247,7 +1247,7 @@ locret_80039CA:
 
 	thumb_func_start Is_eStruct2000780_Initialized
 Is_eStruct2000780_Initialized:
-	ldr r1, off_80039F0 // =eStruct2000780
+	ldr r1, off_80039F0 // =eScenarioEffectState2000780
 	ldrb r0, [r1]
 	tst r0, r0
 	mov pc, lr
@@ -1260,7 +1260,7 @@ sub_80039D4:
 	mov r4, #0
 	bl Is_eStruct2000780_Initialized
 	beq loc_80039EA
-	ldr r0, off_80039F0 // =eStruct2000780
+	ldr r0, off_80039F0 // =eScenarioEffectState2000780
 	ldrb r0, [r0,#0x1] // (byte_2000781 - 0x2000780)
 	cmp r0, r7
 	bne loc_80039EA
@@ -1269,7 +1269,7 @@ loc_80039EA:
 	mov r0, r4
 	tst r0, r0
 	pop {r4-r7,pc}
-off_80039F0: .word eStruct2000780
+off_80039F0: .word eScenarioEffectState2000780
 off_80039F4: .word jt_80038E8
 off_80039F8: .word sub_81419A0+1
 	.word 0x0, 0x0
@@ -1296,8 +1296,8 @@ sub_8003A58:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8003A58
 
-	thumb_func_start sub_8003A64
-sub_8003A64:
+	thumb_func_start initMinigameEffect_8003a64
+initMinigameEffect_8003a64:
 	push {r4-r7,lr}
 	ldr r5, off_8003B40 // =eStruct2001010
 	push {r0}
@@ -1321,10 +1321,10 @@ sub_8003A64:
 	strb r0, [r5]
 	strb r0, [r5,#0x3] // (byte_2001013 - 0x2001010)
 	pop {r4-r7,pc}
-	thumb_func_end sub_8003A64
+	thumb_func_end initMinigameEffect_8003a64
 
-	thumb_func_start sub_8003A90
-sub_8003A90:
+	thumb_func_start endMinigameEffectMaybe_8003a90
+endMinigameEffectMaybe_8003a90:
 	push {r4-r7,lr}
 	ldr r5, off_8003B40 // =eStruct2001010
 	ldr r7, off_8003B44 // =off_80039F8
@@ -1334,15 +1334,15 @@ sub_8003A90:
 	add r7, r7, r0
 	ldr r0, [r7,#4]
 	tst r0, r0
-	beq loc_8003AA8
+	beq .noCustomEndFunction
 	mov lr, pc
 	bx r0
-loc_8003AA8:
+.noCustomEndFunction
 	mov r0, r5
 	mov r1, #0x48
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4-r7,pc}
-	thumb_func_end sub_8003A90
+	thumb_func_end endMinigameEffectMaybe_8003a90
 
 	thumb_func_start zeroFill_8003AB2
 zeroFill_8003AB2:
@@ -3642,7 +3642,7 @@ reqBBS_init_8004DF0:
 	mov r0, #0
 	mov r1, #0x85
 	bl SetEventFlagFromImmediate
-	bl sub_80355A8
+	bl clearSetFlags_80355a8
 	mov r0, #0
 	mov r1, #0x38
 	bl SetEventFlagFromImmediate
@@ -3680,7 +3680,7 @@ reqBBS_init_8004DF0:
 	str r0, [r5,#oGameState_facingDirectionAfterWarp_30]
 	str r0, [r5,#oGameState_Unk_40]
 	str r0, [r5,#0x54]
-	bl sub_803532C
+	bl initGameProgressBuffer_803532c
 	bl sub_8021D36
 	mov r0, r10
 	// memBlock
@@ -3783,7 +3783,7 @@ loc_8005152:
 	movflag EVENT_1741
 	bl TestEventFlagFromImmediate
 	bne loc_80051AA
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 loc_80051AA:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -4025,7 +4025,7 @@ sub_80053E4:
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r0, word_8005460 // =0x40
@@ -4125,7 +4125,7 @@ sub_8005524:
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]
 	mov r1, #0x28
@@ -4161,7 +4161,7 @@ sub_800555A:
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r7, r10
@@ -4200,7 +4200,7 @@ sub_80055CE:
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r7, r10
@@ -4239,7 +4239,7 @@ sub_8005642:
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r7, r10
@@ -4279,7 +4279,7 @@ sub_80056B8:
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r7, r10
@@ -4318,7 +4318,7 @@ sub_800572C:
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r7, r10
@@ -4357,7 +4357,7 @@ sub_80057A0:
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r7, r10
@@ -4420,7 +4420,7 @@ sub_800585A:
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r7, r10
@@ -5012,7 +5012,7 @@ sub_8005D88:
 	bl zeroFill_8003AB2
 	bl sub_80385F0
 	bl RandomizeExtraToolkitPointers
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	pop {r4-r7,pc}
 	thumb_func_end sub_8005D88
 
@@ -5032,7 +5032,7 @@ sub_8005DBE:
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl sub_803FB28
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	pop {r4-r7,pc}
 	thumb_func_end sub_8005DBE
 
@@ -5052,7 +5052,7 @@ dead_8005DF0:
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl sub_8138294
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	pop {r4-r7,pc}
 	thumb_func_end dead_8005DF0
 
@@ -5072,7 +5072,7 @@ dead_8005E22:
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl sub_8038A9C
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	pop {r4-r7,pc}
 	thumb_func_end dead_8005E22
 
@@ -5092,7 +5092,7 @@ dead_8005E54:
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl loc_803D1AC // () -> void
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	pop {r4-r7,pc}
 	thumb_func_end dead_8005E54
 
@@ -6940,7 +6940,7 @@ locret_8006E68:
 off_8006E6C: .word byte_20004E0
 	thumb_func_end encryption_navicustMaybe_8006e50
 
-// (int idx_2008A0) -> void
+// (int idx_20008A0) -> void
 	thumb_func_start encryption_8006e70
 encryption_8006e70:
 	push {r1-r7,lr}
@@ -8937,7 +8937,7 @@ loc_8007DE4:
 	tst r0, r1
 	beq loc_8007DFE
 	push {r0}
-	bl sub_803CEB8
+	bl setCurNaviHPToFull_803ceb8
 	pop {r0}
 loc_8007DFE:
 	ldr r1, off_8008000 // =0x1000
@@ -8962,7 +8962,7 @@ loc_8007E26:
 	mov r1, #0x10
 	tst r0, r1
 	beq loc_8007E34
-	bl sub_803CEB8
+	bl setCurNaviHPToFull_803ceb8
 loc_8007E34:
 	bl sub_802CA82
 loc_8007E38:
@@ -14590,7 +14590,7 @@ loc_800A7F0:
 	lsr r0, r0, #0x17
 	mov r2, #0
 	push {r0}
-	bl encryption_8006e70 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_20008A0) -> void
 	pop {r0}
 	add r4, #2
 	add r6, #1
@@ -15919,11 +15919,11 @@ sub_800B110:
 	push {r4,lr}
 	ldr r4, off_800B124 // =word_800B128
 loc_800B114:
-	// idx_2008A0
+	// idx_20008A0
 	ldrh r0, [r4]
 	cmp r0, #0
 	beq locret_800B122
-	bl encryption_8006e70 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_20008A0) -> void
 	add r4, #2
 	b loc_800B114
 locret_800B122:

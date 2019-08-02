@@ -738,7 +738,7 @@ void __fastcall sub_8003908()
 
 
 // 0x8003914
-signed int __fastcall sub_8003914(unsigned __int8 a1, int a2, int a3, int a4)
+signed int __fastcall initScenarioEffect_8003914(unsigned __int8 a1, int a2, int a3, int a4)
 {
 	unsigned __int8 v4; // ST00_1
 	int v5; // r0
@@ -758,7 +758,7 @@ signed int __fastcall sub_8003914(unsigned __int8 a1, int a2, int a3, int a4)
 
 
 // 0x8003940
-void __fastcall sub_8003940(int a1, int a2, int a3, int a4)
+void __fastcall endScenarioEffectMaybe_8003940(int a1, int a2, int a3, int a4)
 {
 	void (*v4)(void); // r0
 
@@ -861,7 +861,7 @@ void __fastcall sub_8003A58()
 
 
 // 0x8003a64
-signed int __fastcall sub_8003A64(unsigned __int8 a1, int a2, int a3, int a4)
+signed int __fastcall initMinigameEffect_8003a64(unsigned __int8 a1, int a2, int a3, int a4)
 {
 	unsigned __int8 v4; // ST00_1
 	int v5; // r0
@@ -881,7 +881,7 @@ signed int __fastcall sub_8003A64(unsigned __int8 a1, int a2, int a3, int a4)
 
 
 // 0x8003a90
-void __fastcall sub_8003A90(int a1, int a2, int a3, int a4)
+void __fastcall endMinigameEffectMaybe_8003a90(int a1, int a2, int a3, int a4)
 {
 	void (*v4)(void); // r0
 
@@ -2168,7 +2168,7 @@ void __cdecl reqBBS_init_8004DF0()
     ClearEventFlagFromImmediate(6, 143);
     SetEventFlagRangeFromImmediate(0, 130, 2);
     SetEventFlagFromImmediate(0, 133);
-    sub_80355A8();
+    clearSetFlags_80355a8();
     SetEventFlagFromImmediate(0, 56);
     SetEventFlagFromImmediate(0, 57);
     SetEventFlagFromImmediate(0, 17);
@@ -2194,7 +2194,7 @@ void __cdecl reqBBS_init_8004DF0()
     gs->unk_30 = 4;
     gs->unk_40 = 4;
     *&gs->pad_48[oGameState_LastMapGroup] = 4;
-    v13 = sub_803532C();
+    v13 = initGameProgressBuffer_803532c();
     sub_8021D36(v13, v14, v15, v16);
     ZeroFillByWord(*(v2 + oToolkit_S_Chip_2002178_Ptr), 180);
     zeroFill_e2002230();
@@ -2285,7 +2285,7 @@ int __fastcall EnterMap(int a1)
         RandomizeExtraToolkitPointers();
         TestEventFlagFromImmediate(23, 65);
         if ( notScreeneffectAimating )
-            sub_813C3AC();
+            reloadCurNaviStatBoosts_813c3ac();
         gs = tk->gamestate;
         sub_8000FAC();
         sub_80355EC();
@@ -2524,7 +2524,7 @@ int __fastcall sub_80053E4(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v11 = *(v1 + oToolkit_GameStatePtr);
         result = sRender_08_setRenderingState(-1249902528);
     }
@@ -2617,7 +2617,7 @@ _BYTE *sub_8005524()
     sub_8003962();
     zeroFill_8003AB2();
     RandomizeExtraToolkitPointers();
-    sub_813C3AC();
+    reloadCurNaviStatBoosts_813c3ac();
     result = *v0;
     **v0 = 40;
     return result;
@@ -2661,7 +2661,7 @@ _BYTE *__fastcall sub_800555A(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v8 = *(v1 + oToolkit_GameStatePtr);
         result = *v1;
         **v1 = 36;
@@ -2707,7 +2707,7 @@ _BYTE *__fastcall sub_80055CE(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v8 = *(v1 + oToolkit_GameStatePtr);
         result = *v1;
         **v1 = 68;
@@ -2753,7 +2753,7 @@ _BYTE *__fastcall sub_8005642(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v8 = *(v1 + oToolkit_GameStatePtr);
         result = *v1;
         **v1 = 44;
@@ -2799,7 +2799,7 @@ _BYTE *__fastcall sub_80056B8(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v8 = *(v1 + oToolkit_GameStatePtr);
         result = *v1;
         **v1 = 52;
@@ -2845,7 +2845,7 @@ _BYTE *__fastcall sub_800572C(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v8 = *(v1 + oToolkit_GameStatePtr);
         result = *v1;
         **v1 = 60;
@@ -2891,7 +2891,7 @@ _BYTE *__fastcall sub_80057A0(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v8 = *(v1 + oToolkit_GameStatePtr);
         result = *v1;
         **v1 = 64;
@@ -2970,7 +2970,7 @@ _BYTE *__fastcall sub_800585A(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v8 = *(v1 + oToolkit_GameStatePtr);
         result = *v1;
         **v1 = 80;
@@ -3554,7 +3554,7 @@ int sub_8005D88()
     zeroFill_8003AB2();
     sub_80385F0(v5, v6, v7, v8);
     RandomizeExtraToolkitPointers();
-    return sub_813C3AC();
+    return reloadCurNaviStatBoosts_813c3ac();
 }
 
 
@@ -3580,7 +3580,7 @@ int __noreturn sub_8005DBE()
     sub_8003962();
     zeroFill_8003AB2();
     sub_803FB28(v5, v6, v7, v8);
-    return sub_813C3AC();
+    return reloadCurNaviStatBoosts_813c3ac();
 }
 
 
@@ -3602,7 +3602,7 @@ int __noreturn dead_8005DF0()
     sub_8003962();
     zeroFill_8003AB2();
     sub_8138294();
-    return sub_813C3AC();
+    return reloadCurNaviStatBoosts_813c3ac();
 }
 
 
@@ -3624,7 +3624,7 @@ int __noreturn dead_8005E22()
     sub_8003962();
     zeroFill_8003AB2();
     sub_8038A9C();
-    return sub_813C3AC();
+    return reloadCurNaviStatBoosts_813c3ac();
 }
 
 
@@ -3646,7 +3646,7 @@ int __noreturn dead_8005E54()
     sub_8003962();
     zeroFill_8003AB2();
     (loc_803D1AC)();
-    return sub_813C3AC();
+    return reloadCurNaviStatBoosts_813c3ac();
 }
 
 
@@ -4664,7 +4664,7 @@ signed int __fastcall sub_8006E50(signed int result)
 
 
 // 0x8006e70
-// (int idx_2008A0) -> void
+// (int idx_20008A0) -> void
 int __fastcall modifyToolkit_unk7C_using_2008A0(int result)
 {
     int v1; // r10
@@ -6219,7 +6219,7 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
             if ( v33 & 0x800000 )
             {
                 v34 = v33;
-                sub_803CEB8();
+                setCurNaviHPToFull_803ceb8();
                 v33 = v34;
             }
             if ( v33 & &loc_1000 )
@@ -6236,7 +6236,7 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
             }
         }
         if ( sub_802D246() & 0x10 )
-            sub_803CEB8();
+            setCurNaviHPToFull_803ceb8();
         sub_802CA82();
     }
     *(v7 + oGameState_Unk_0a) = 0;

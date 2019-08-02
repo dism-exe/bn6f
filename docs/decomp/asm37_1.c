@@ -1404,7 +1404,7 @@ int __fastcall sub_8142C46(int a1)
     sub_80010EC(v6, v5);
     v7 = sub_809E1AE();
     sub_8004822(19, v7, SHIDWORD(v7), v8);
-    sub_80302A8(1, 20);
+    setCameraUnk0e_Unk0c_80302a8(1, 20);
     PlaySoundEffect(107, v9, v10);
     return PlaySoundEffect(268, v11, v12);
 }
@@ -1986,7 +1986,7 @@ int sub_8143314()
 // 0x814339c
 int __fastcall sub_814339C(int a1, int a2, int a3, int a4)
 {
-    sub_8003A64(2u, a2, a3, a4);
+    initMinigameEffect_8003a64(2u, a2, a3, a4);
     ZeroFillByWord(&byte_2001018, 64);
     sub_81433D2(5);
     sub_8143406();
@@ -2601,7 +2601,7 @@ void sub_8143F1C()
 // 0x8143f20
 int __fastcall sub_8143F20(int a1, int a2, int a3, int a4)
 {
-    sub_8003A64(5u, a2, a3, a4);
+    initMinigameEffect_8003a64(5u, a2, a3, a4);
     ZeroFillByWord(&byte_2001018, 64);
     return 0;
 }

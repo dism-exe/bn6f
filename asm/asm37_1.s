@@ -714,7 +714,7 @@ off_8142130: .word unk_2000BE0
 	thumb_func_start sub_8142134
 sub_8142134:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	mov r0, r5
 	add r0, #8
 	mov r1, #0x40 
@@ -729,7 +729,7 @@ sub_8142134:
 	thumb_local_start
 sub_814214E:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	mov r0, #0
 	strb r0, [r5,#0xd] // (byte_200078D - 0x2000780)
 	mov r0, #0
@@ -739,7 +739,7 @@ sub_814214E:
 	thumb_local_start
 sub_814215A:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	mov r0, #1
 	strb r0, [r5,#0xd] // (byte_200078D - 0x2000780)
 	mov r0, #0
@@ -749,7 +749,7 @@ sub_814215A:
 	thumb_local_start
 sub_8142166:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	strb r0, [r5,#0xe] // (byte_200078E - 0x2000780)
 	pop {r4-r7,pc}
 	thumb_func_end sub_8142166
@@ -757,7 +757,7 @@ sub_8142166:
 	thumb_func_start sub_814216E
 sub_814216E:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	ldrb r0, [r5,#0xe] // (byte_200078E - 0x2000780)
 	tst r0, r0
 	pop {r4-r7,pc}
@@ -766,7 +766,7 @@ sub_814216E:
 	thumb_local_start
 sub_8142178:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	ldrb r0, [r5,#0xe] // (byte_200078E - 0x2000780)
 	add r0, #1
 	strb r0, [r5,#0xe] // (byte_200078E - 0x2000780)
@@ -776,7 +776,7 @@ sub_8142178:
 	thumb_func_start sub_8142184
 sub_8142184:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	ldrb r0, [r5,#0xe] // (byte_200078E - 0x2000780)
 	sub r0, #1
 	strb r0, [r5,#0xe] // (byte_200078E - 0x2000780)
@@ -786,7 +786,7 @@ sub_8142184:
 	thumb_func_start sub_8142190
 sub_8142190:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	add r0, #0x10
 	ldrb r0, [r5,r0]
 	tst r0, r0
@@ -796,7 +796,7 @@ sub_8142190:
 	thumb_func_start sub_814219C
 sub_814219C:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	ldrb r0, [r5,#0x10] // (dword_2000790 - 0x2000780)
 	ldrb r1, [r5,#0x11] // (dword_2000790+1 - 0x2000780)
 	add r0, r0, r1
@@ -811,7 +811,7 @@ sub_814219C:
 	thumb_func_start sub_81421B2
 sub_81421B2:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	mov r1, r0
 	add r1, #0x10
 	ldrb r0, [r5,r1]
@@ -827,7 +827,7 @@ loc_81421C4:
 	thumb_func_start sub_81421C8
 sub_81421C8:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	strb r0, [r5,#0xb] // (byte_200078B - 0x2000780)
 	pop {r4-r7,pc}
 	thumb_func_end sub_81421C8
@@ -835,7 +835,7 @@ sub_81421C8:
 	thumb_func_start sub_81421D0
 sub_81421D0:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	ldrb r0, [r5,#0xb] // (byte_200078B - 0x2000780)
 	pop {r4-r7,pc}
 	thumb_func_end sub_81421D0
@@ -843,7 +843,7 @@ sub_81421D0:
 	thumb_func_start sub_81421D8
 sub_81421D8:
 	push {r4-r7,lr}
-	ldr r0, off_8142308 // =eStruct2000780 
+	ldr r0, off_8142308 // =eScenarioEffectState2000780 
 	add r0, #0x18
 	pop {r4-r7,pc}
 	thumb_func_end sub_81421D8
@@ -851,7 +851,7 @@ sub_81421D8:
 	thumb_func_start sub_81421E0
 sub_81421E0:
 	push {r4-r7,lr}
-	ldr r0, off_8142308 // =eStruct2000780 
+	ldr r0, off_8142308 // =eScenarioEffectState2000780 
 	ldr r0, [r0,#0x18] // (byte_2000798 - 0x2000780)
 	pop {r4-r7,pc}
 	thumb_func_end sub_81421E0
@@ -859,7 +859,7 @@ sub_81421E0:
 	thumb_local_start
 sub_81421E8:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	mov r4, #0
 loc_81421EE:
 	ldr r1, [r5,#0x18]
@@ -880,7 +880,7 @@ loc_81421FE:
 	thumb_func_start sub_8142204
 sub_8142204:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	ldr r1, [r5,#0x28] // (byte_20007A8 - 0x2000780)
 	add r2, r1, #1
 	str r2, [r5,#0x28] // (byte_20007A8 - 0x2000780)
@@ -898,7 +898,7 @@ dword_8142220: .word 0x1E140A00
 	thumb_func_start sub_8142224
 sub_8142224:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	mov r6, #0
 	ldr r4, [r5,#0x28] // (byte_20007A8 - 0x2000780)
 	sub r4, #1
@@ -916,7 +916,7 @@ loc_8142238:
 	thumb_func_start sub_814223E
 sub_814223E:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	mov r0, #0
 	str r0, [r5,#0x28] // (byte_20007A8 - 0x2000780)
 	pop {r4-r7,pc}
@@ -925,7 +925,7 @@ sub_814223E:
 	thumb_func_start sub_8142248
 sub_8142248:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	bl sub_81422BE
 	bne loc_8142272
 	ldrb r0, [r5,#0x3] // (byte_2000783 - 0x2000780)
@@ -950,7 +950,7 @@ loc_8142272:
 	thumb_func_start sub_814227A
 sub_814227A:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	bl sub_81426CE
 	ldr r1, off_8142290 // =byte_8142294 
 	lsl r0, r0, #2
@@ -967,7 +967,7 @@ byte_8142294: .byte 0x2, 0x2, 0x1, 0x1, 0x2, 0x2, 0x4, 0x1, 0x3, 0x4, 0x4, 0x2, 
 	thumb_func_start sub_81422B4
 sub_81422B4:
 	push {r4-r7,lr}
-	ldr r5, off_8142308 // =eStruct2000780 
+	ldr r5, off_8142308 // =eScenarioEffectState2000780 
 	mov r0, #0
 	str r0, [r5,#0x10] // (dword_2000790 - 0x2000780)
 	pop {r4-r7,pc}
@@ -1001,7 +1001,7 @@ loc_81422F0:
 off_81422F4: .word byte_81422F8
 byte_81422F8: .byte 0x86, 0x6, 0x87, 0x6, 0x88, 0x6, 0x89, 0x6, 0x8A, 0x6, 0x8B
 	.byte 0x6, 0x8C, 0x6, 0x8D, 0x6
-off_8142308: .word eStruct2000780
+off_8142308: .word eScenarioEffectState2000780
 off_814230C: .word byte_814232C
 	.word byte_814234C
 	.word byte_814237C
@@ -1959,7 +1959,7 @@ loc_8142C58:
 	bl sub_8004822
 	mov r0, #1
 	mov r1, #0x14
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #SOUND_HIT_6B
 	bl PlaySoundEffect
 	mov r0, #0xd
@@ -2821,7 +2821,7 @@ off_8143398: .word byte_2000D20
 sub_814339C:
 	push {r4-r7,lr}
 	mov r0, #2
-	bl sub_8003A64
+	bl initMinigameEffect_8003a64
 	ldr r5, off_81434E0 // =eStruct2001010 
 	mov r0, r5
 	// memBlock
@@ -3819,7 +3819,7 @@ sub_8143F1C:
 sub_8143F20:
 	push {r4-r7,lr}
 	mov r0, #5
-	bl sub_8003A64
+	bl initMinigameEffect_8003a64
 	ldr r5, off_81440D4 // =eStruct2001010 
 	mov r0, r5
 	// memBlock

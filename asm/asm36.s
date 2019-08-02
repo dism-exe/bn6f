@@ -10197,7 +10197,7 @@ sub_81356F4:
 	bl sub_813B920
 	strb r0, [r5,#0x10]
 	mov r0, #0x71 
-	bl sub_803CE28
+	bl CheckKeyItem
 	strb r0, [r5,#0xf]
 	bl sub_813B9E0
 	str r0, [r5,#0x44]
@@ -10967,7 +10967,7 @@ sub_8135E18:
 	mov r4, #0x91
 loc_8135E20:
 	mov r0, r4
-	bl sub_803CE28
+	bl CheckKeyItem
 	mov r7, r0
 	beq loc_8135E5E
 	mov r6, #0
@@ -11017,7 +11017,7 @@ loc_8135E76:
 	ldr r1, off_8135ED8 // =off_8135EDC 
 	ldr r0, [r1,r4]
 	str r0, [sp,#4]
-	bl sub_803CE28
+	bl CheckKeyItem
 	mov r7, r0
 	beq loc_8135EBE
 	mov r6, #0
@@ -11658,7 +11658,7 @@ sub_8136364:
 	bl sub_813B780
 	ldrb r0, [r0,#3]
 	add r0, #0x4f 
-	bl sub_803CE28
+	bl CheckKeyItem
 	tst r0, r0
 	pop {pc}
 	thumb_func_end sub_8136364
@@ -12446,7 +12446,7 @@ sub_81369D0:
 	strb r0, [r5,#0x12]
 	cmp r0, #0x50 
 	blt loc_81369FE
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	mov r0, #0xb
 	strh r0, [r5,#0x1c]
 	mov r0, #0xb
@@ -14317,7 +14317,7 @@ loc_8137842:
 	ldrh r0, [r7,r6]
 	bl split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
 	mov r2, #1
-	bl sub_8021B92 // (int idx, int searchItem, int off) -> void*
+	bl TakeChips // (int idx, int searchItem, int off) -> void*
 	add r6, #2
 	cmp r6, #0x3c 
 	blt loc_8137842

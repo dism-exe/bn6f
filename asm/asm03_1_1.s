@@ -7805,7 +7805,7 @@ loc_803CDD8:
 	push {r0-r3}
 	cmp r0, #0x71
 	bne loc_803CDE4
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 loc_803CDE4:
 	pop {r0-r3}
 	mov r4, r0
@@ -7849,8 +7849,8 @@ loc_803CE20:
 	.balign 4, 0x00
 	thumb_func_end sub_803CE08
 
-	thumb_func_start sub_803CE28
-sub_803CE28:
+	thumb_func_start CheckKeyItem
+CheckKeyItem:
 	push {lr}
 	push {r0}
 	bl encryption_navicustMaybe_8006e50
@@ -7865,7 +7865,7 @@ loc_803CE3E:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-	thumb_func_end sub_803CE28
+	thumb_func_end CheckKeyItem
 
 	thumb_func_start sub_803CE44
 sub_803CE44:
@@ -7918,8 +7918,8 @@ locret_803CEB4:
 	.balign 4, 0x00
 	thumb_func_end sub_803CE44
 
-	thumb_func_start sub_803CEB8
-sub_803CEB8:
+	thumb_func_start setCurNaviHPToFull_803ceb8
+setCurNaviHPToFull_803ceb8:
 	push {r4-r7,lr}
 	bl GetCurPETNavi // () -> u8
 	mov r4, r0
@@ -7931,7 +7931,7 @@ sub_803CEB8:
 	bl SetCurPETNaviStatsHword
 	mov r0, #0
 	pop {r4-r7,pc}
-	thumb_func_end sub_803CEB8
+	thumb_func_end setCurNaviHPToFull_803ceb8
 
 	thumb_func_start sub_803CED4
 sub_803CED4:
@@ -8026,7 +8026,7 @@ sub_803CF74:
 	mov r7, r1
 	bl GetCurPETNavi // () -> u8
 	mov r4, r0
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	mov r0, r4
 	mov r1, #0x40
 	bl GetCurPETNaviStatsHword
@@ -8086,8 +8086,8 @@ loc_803CFDE:
 	pop {r4-r7,pc}
 	thumb_func_end sub_803CFB0
 
-	thumb_func_start sub_803CFF8
-sub_803CFF8:
+	thumb_func_start GiveZenny
+GiveZenny:
 	push {r4-r7,lr}
 	bl encryption_zenny_8006f78
 	bne loc_803D024
@@ -8113,7 +8113,7 @@ loc_803D024:
 	mov r0, #1
 	pop {r4-r7,pc}
 dword_803D028: .word 0xF423F
-	thumb_func_end sub_803CFF8
+	thumb_func_end GiveZenny
 
 	thumb_func_start sub_803D02C
 sub_803D02C:
@@ -8128,8 +8128,8 @@ locret_803D03E:
 	pop {pc}
 	thumb_func_end sub_803D02C
 
-	thumb_func_start sub_803D040
-sub_803D040:
+	thumb_func_start TakeZenny
+TakeZenny:
 	push {lr}
 	bl encryption_zenny_8006f78
 	bne loc_803D068
@@ -8152,7 +8152,7 @@ loc_803D05E:
 loc_803D068:
 	mov r0, #2
 	pop {pc}
-	thumb_func_end sub_803D040
+	thumb_func_end TakeZenny
 
 	thumb_func_start sub_803D06C
 sub_803D06C:
@@ -8168,8 +8168,8 @@ loc_803D07C:
 	pop {pc}
 	thumb_func_end sub_803D06C
 
-	thumb_func_start sub_803D080
-sub_803D080:
+	thumb_func_start GiveBugfrags
+GiveBugfrags:
 	push {r4-r7,lr}
 	bl encryption_bugfrags_8006fd0
 	bne loc_803D0AC
@@ -8195,7 +8195,7 @@ loc_803D0AC:
 	mov r0, #1
 	pop {r4-r7,pc}
 dword_803D0B0: .word 0x270F
-	thumb_func_end sub_803D080
+	thumb_func_end GiveBugfrags
 
 	thumb_func_start sub_803D0B4
 sub_803D0B4:
@@ -8210,8 +8210,8 @@ locret_803D0C6:
 	pop {pc}
 	thumb_func_end sub_803D0B4
 
-	thumb_func_start sub_803D0C8
-sub_803D0C8:
+	thumb_func_start TakeBugfrags
+TakeBugfrags:
 	push {lr}
 	bl encryption_bugfrags_8006fd0
 	bne loc_803D0F0
@@ -8234,7 +8234,7 @@ loc_803D0E6:
 loc_803D0F0:
 	mov r0, #2
 	pop {pc}
-	thumb_func_end sub_803D0C8
+	thumb_func_end TakeBugfrags
 
 	thumb_func_start sub_803D0F4
 sub_803D0F4:
@@ -8250,15 +8250,15 @@ loc_803D104:
 	pop {pc}
 	thumb_func_end sub_803D0F4
 
-	thumb_func_start sub_803D108
-sub_803D108:
+	thumb_func_start GiveNaviCustPrograms
+GiveNaviCustPrograms:
 	push {r4,lr}
 	mov r4, r2
 	bl sub_803D148
 	mov r1, r4
 	bl sub_803CD98
 	pop {r4,pc}
-	thumb_func_end sub_803D108
+	thumb_func_end GiveNaviCustPrograms
 
 	thumb_func_start sub_803D118
 sub_803D118:
@@ -8270,22 +8270,22 @@ sub_803D118:
 	pop {r4,pc}
 	thumb_func_end sub_803D118
 
-	thumb_func_start sub_803D128
-sub_803D128:
+	thumb_func_start TakeNaviCustPrograms
+TakeNaviCustPrograms:
 	push {r4,lr}
 	mov r4, r2
 	bl sub_803D148
 	mov r1, r4
 	bl sub_803CE08
 	pop {r4,pc}
-	thumb_func_end sub_803D128
+	thumb_func_end TakeNaviCustPrograms
 
 	thumb_func_start sub_803D138
 sub_803D138:
 	push {r4,lr}
 	mov r4, r2
 	bl sub_803D148
-	bl sub_803CE28
+	bl CheckKeyItem
 	pop {r4,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_803D138
@@ -8321,7 +8321,7 @@ sub_803D170:
 	push {r4,lr}
 	mov r4, r2
 	bl sub_803D180
-	bl sub_803CE28
+	bl CheckKeyItem
 	pop {r4,pc}
 	.byte 0, 0
 	thumb_func_end sub_803D170

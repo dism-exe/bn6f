@@ -57,20 +57,20 @@ ScriptCmds8035808:
 	.word MapScriptCmd_navicust_maybe_803813e+1
 	.word MapScriptCmd_call_sub_8033FC0+1
 	.word NULL
-	.word sub_80381FA+1
-	.word sub_803821E+1
+	.word MapScriptCmd_init_eStruct200a6a0+1
+	.word MapScriptCmd_run_eStruct200a6a0_callback+1
 	.word MapScriptCmd_write_script_struct_10_word+1
-	.word sub_803827A+1
-	.word sub_803828E+1
-	.word sub_803829A+1
-	.word sub_80382AE+1
+	.word MapScriptCmd_init_scenario_effect+1
+	.word MapScriptCmd_end_scenario_effect+1
+	.word MapScriptCmd_init_minigame_effect+1
+	.word MapScriptCmd_end_minigame_effect+1
 	.word NULL
 	.word MapScriptCmd_spawn_or_free_objects+1
-	.word sub_80382BA+1
-	.word sub_8038322+1
-	.word sub_8038346+1
-	.word sub_8038484+1
-	.word sub_80384A8+1
+	.word MapScriptCmd_add_bbs_message_range+1
+	.word MapScriptCmd_add_mail_range+1
+	.word MapScriptCmd_cmd_8038346+1
+	.word MapScriptCmd_add_request_range+1
+	.word MapScriptCmd_rush_food_80384A8+1
 	thumb_func_end sub_80357AE
 
 	thumb_local_start
@@ -285,13 +285,13 @@ MapScriptCmd_jump_if_mem_equals: // 8035A1A
 
 	thumb_local_start
 // 0x08 byte1 byte2 byte3 destination
-// jump if byte2 < sub_803CE28(byte1) < byte3
+// jump if byte2 < CheckKeyItem(byte1) < byte3
 MapScriptCmd_jump_if_unk_navicust_range: // 8035A74
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	mov r0, r4
-	bl sub_803CE28
+	bl CheckKeyItem
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r1, r4
@@ -760,7 +760,7 @@ loc_8035D64:
 // if byte1 == 0xff:
 //     SetScreenFade(byte2, byte3)
 // else:
-//     SetScreenFade([eUnkMapScriptState_2011e60 + byte1], [eUnkMapScriptState_2011e60 + byte1 + 1])
+//     SetScreenFade([eMapScriptState + byte1], [eUnkMapScriptState_2011e60 + byte1 + 1])
 MapScriptCmd_set_screen_fade: // 8035D6A
 	push {lr}
 	mov r6, #1
@@ -1205,20 +1205,21 @@ loc_8035FFC:
 	thumb_func_end MapScriptCmd_spawn_or_free_objects
 
 	thumb_func_start map_script_overworld_803600E
+// called once
 map_script_overworld_803600E:
 	push {r4-r7,lr}
 	mov r4, r12
 	push {r4}
 	mov r4, r0
 	mov r6, r1
-	ldr r5, off_8036090 // =eUnkMapScriptState_2011e60
+	ldr r5, off_8036090 // =eMapScriptState
 	// memBlock
 	mov r0, r5
 	// size
 	mov r1, #0x14
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	str r4, [r5,#oUnkMapScriptState_2011e60_UnkScriptPtr1_08] // (dword_2011E68 - 0x2011e60)
-	str r6, [r5,#oUnkMapScriptState_2011e60_UnkScriptPtr2_0c] // (dword_2011E6C - 0x2011e60)
+	str r4, [r5,#oMapScriptState_OnInitMapScriptPtr] // (dword_2011E68 - 0x2011e60)
+	str r6, [r5,#oMapScriptState_ContinuousMapScriptPtr] // (dword_2011E6C - 0x2011e60)
 	ldr r6, off_803608C // =ScriptCmds8035808
 	mov r12, r6
 	mov r7, r4
@@ -1236,12 +1237,13 @@ loc_803602C:
 	thumb_func_end map_script_overworld_803600E
 
 	thumb_func_start sub_8036040
+// called every frame
 sub_8036040:
 	push {r4-r7,lr}
 	mov r4, r12
 	push {r4}
-	ldr r5, off_8036090 // =eUnkMapScriptState_2011e60
-	ldr r0, [r5,#oUnkMapScriptState_2011e60_UnkScriptPtr2_0c] // (dword_2011E6C - 0x2011e60)
+	ldr r5, off_8036090 // =eMapScriptState
+	ldr r0, [r5,#oMapScriptState_ContinuousMapScriptPtr] // (dword_2011E6C - 0x2011e60)
 	ldr r6, off_803608C // =ScriptCmds8035808
 	mov r12, r6
 	mov r7, r0
@@ -1259,12 +1261,13 @@ loc_8036050:
 	thumb_func_end sub_8036040
 
 	thumb_func_start map_script_overworld_8036064
+// called every frame
 map_script_overworld_8036064:
 	push {r4-r7,lr}
 	mov r4, r12
 	push {r4}
-	ldr r5, off_8036090 // =eUnkMapScriptState_2011e60
-	ldr r0, [r5,#oUnkMapScriptState_2011e60_UnkScriptPtr3_10] // (dword_2011E70 - 0x2011e60)
+	ldr r5, off_8036090 // =eMapScriptState
+	ldr r0, [r5,#oMapScriptState_SecondaryContinuousMapScriptPtr] // (dword_2011E70 - 0x2011e60)
 	tst r0, r0
 	beq loc_8036086
 	ldr r6, off_803608C // =ScriptCmds8035808
@@ -1283,7 +1286,7 @@ loc_8036086:
 	mov r12, r4
 	pop {r4-r7,pc}
 off_803608C: .word ScriptCmds8035808
-off_8036090: .word eUnkMapScriptState_2011e60
+off_8036090: .word eMapScriptState
 	thumb_func_end map_script_overworld_8036064
 
 	thumb_local_start
@@ -2509,9 +2512,9 @@ cutsceneCamera_setCameraPosition_8037030:
 	lsl r4, r0, #0xc
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_CameraPtr]
-	str r2, [r6,#0x30]
-	str r3, [r6,#0x34]
-	str r4, [r6,#0x38]
+	str r2, [r6,#oCamera_X]
+	str r3, [r6,#oCamera_Y]
+	str r4, [r6,#oCamera_Z]
 	mov r0, #1
 	add r1, #7
 	pop {pc}
@@ -2534,21 +2537,21 @@ loc_803706E:
 	mov r0, #3
 	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #8
-	ldr r3, [r6,#0x30]
+	ldr r3, [r6,#oCamera_X]
 	add r0, r0, r3
-	str r0, [r6,#0x30]
+	str r0, [r6,#oCamera_X]
 	mov r0, #5
 	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #8
-	ldr r3, [r6,#0x34]
+	ldr r3, [r6,#oCamera_Y]
 	add r0, r0, r3
-	str r0, [r6,#0x34]
+	str r0, [r6,#oCamera_Y]
 	mov r0, #7
 	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #8
-	ldr r3, [r6,#0x38]
+	ldr r3, [r6,#oCamera_Z]
 	add r0, r0, r3
-	str r0, [r6,#0x38]
+	str r0, [r6,#oCamera_Z]
 	ldrh r0, [r5,#4]
 	sub r0, #1
 	strh r0, [r5,#4]
@@ -2607,7 +2610,7 @@ sub_80370E4:
 	mov r0, #1
 	bl ReadCutsceneCameraScriptByte
 	mov r1, r4
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	pop {r1}
 	mov r0, #1
 	add r1, #3
@@ -3139,6 +3142,7 @@ ReadCutsceneCameraScriptWord:
 	orr r0, r2
 	pop {r1-r3,pc}
 	.balign 4, 0
+// 803844c in JP
 CutsceneCommandJumptable:
 	.word MapScriptCmd_end_for_map_reload_maybe_8037c64+1
 	.word MapScriptCmd_end_for_map_reload_maybe_80376dc+1
@@ -3225,49 +3229,48 @@ CutsceneCommandJumptable:
 	.word MapScriptCmd_navicust_maybe_803813e+1
 	.word MapScriptCmd_call_sub_8033FC0+1
 	.word MapScriptCmd_run_or_stop_cutscene_camera_script+1
-	.word sub_80381A0+1
-	.word sub_80381E0+1
+	.word MapScriptCmd_start_fixed_battle+1
+	.word MapScriptCmd_start_random_battle+1
 	.word NULL
-	.word sub_80381FA+1
-	.word sub_803821E+1
-	.word sub_803822A+1
-	.word sub_8038246+1
-	.word sub_8038256+1
-	.word sub_803825E+1
-	.word sub_8038266+1
-	.word sub_803826E+1
-	.word sub_803827A+1
-	.word sub_803828E+1
-	.word sub_803829A+1
-	.word sub_80382AE+1
-	.word NULL
-	.word NULL
-	.word NULL
-	.word sub_80382BA+1
-	.word sub_80382DE+1
-	.word sub_80382F2+1
-	.word sub_80382FE+1
-	.word sub_8038322+1
-	.word sub_8038346+1
+	.word MapScriptCmd_init_eStruct200a6a0+1
+	.word MapScriptCmd_run_eStruct200a6a0_callback+1
+	.word MapScriptCmd_set_camera_unk0e_unk0c+1
+	.word MapScriptCmd_nop_8038246+1
+	.word MapScriptCmd_nop_8038256+1
+	.word MapScriptCmd_nop_803825e+1
+	.word MapScriptCmd_nop_8038266+1
+	.word MapScriptCmd_call_sub_8001974+1
+	.word MapScriptCmd_init_scenario_effect+1
+	.word MapScriptCmd_end_scenario_effect+1
+	.word MapScriptCmd_init_minigame_effect+1
+	.word MapScriptCmd_end_minigame_effect+1
 	.word NULL
 	.word NULL
-	.word sub_8038362+1
-	.word sub_8038386+1
+	.word NULL
+	.word MapScriptCmd_add_bbs_message_range+1
+	.word MapScriptCmd_encryption_cmd_80382de+1
+	.word MapScriptCmd_navi_cmd_80340f6+1
+	.word MapScriptCmd_change_navi_maybe_80382fe+1
+	.word MapScriptCmd_add_mail_range+1
+	.word MapScriptCmd_cmd_8038346+1
 	.word NULL
 	.word NULL
-	.word sub_80383AA+1
-	.word sub_80383DE+1
-	.word sub_8038412+1
-	.word sub_803843C+1
-	.word sub_8038466+1
-	.word sub_8038484+1
-	.word sub_80384A8+1
-	.word sub_80384D0+1
-	.word sub_80384DC+1
-	.word sub_80384F8+1
+	.word MapScriptCmd_give_or_take_zenny+1
+	.word MapScriptCmd_give_or_take_bugfrags+1
+	.word NULL
+	.word NULL
+	.word MapScriptCmd_give_or_take_chips+1
+	.word MapScriptCmd_give_or_take_navicust_programs+1
+	.word MapScriptCmd_run_or_end_continuous_secondary_map_script+1
+	.word MapScriptCmd_store_or_load_game_progress_buffer_maybe_803843c+1
+	.word MapScriptCmd_flag_8038466+1
+	.word MapScriptCmd_add_request_range+1
+	.word MapScriptCmd_rush_food_80384A8+1
+	.word MapScriptCmd_set_beast_out_counter_to_3+1
+	.word MapScriptCmd_jump_if_req_bbs_master_rank+1
+	.word MapScriptCmd_if_in_real_world_jump_else_jump+1
 DummyCutsceneScript: .word 0x11
-byte_8037694: .byte 0x0
-byte_8037695: .byte 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
+byte_8037694: .byte 0x0, 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
 	.byte 0x57, 0xFF, 0xFF, 0xFF, 0x4B, 0xFF, 0x35, 0xFF, 0x56
 	.byte 0xFF, 0x55, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
@@ -3282,7 +3285,7 @@ MapScriptCmd_end_for_map_reload_maybe_8037c64:
 	movflag EVENT_1741
 	bl TestEventFlagFromImmediate
 	bne .eventActive
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 .eventActive
 	bl cutscene_8036EFE
 	mov r0, #0
@@ -3295,7 +3298,7 @@ MapScriptCmd_end_for_map_reload_maybe_80376dc:
 	movflag EVENT_1741
 	bl TestEventFlagFromImmediate
 	bne .eventActive
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 .eventActive
 	bl cutscene_8036ED4
 	mov r0, #0
@@ -3973,7 +3976,7 @@ off_8037B24: .word owPlayer_lockPlayerForNonNPCDialogue_809E0B0+1
 	.word sub_809E4AE+1
 	.word sub_809E4BC+1
 	.word owPlayer_zeroS2000AA0Param0x4_809e312+1
-	.word sub_803CEB8+1
+	.word setCurNaviHPToFull_803ceb8+1
 	thumb_func_end MapScriptCmd_sprite_special_maybe_8037b08
 
 	thumb_local_start
@@ -4784,16 +4787,16 @@ MapScriptCmd_run_or_stop_cutscene_camera_script:
 	thumb_func_end MapScriptCmd_run_or_stop_cutscene_camera_script
 
 	thumb_local_start
-sub_80381A0:
+MapScriptCmd_start_fixed_battle:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_MapGroup]
 	cmp r0, #INTERNET_MAP_GROUP_START
-	bge loc_80381B4
-	bl sub_80141AC
-	bl sub_8015C32
-loc_80381B4:
+	bge .inInternetMap
+	bl SetBeastOutCounterTo3
+	bl ZeroAllNaviStatsMood
+.inInternetMap
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
@@ -4810,12 +4813,12 @@ loc_80381B4:
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80381A0
+	thumb_func_end MapScriptCmd_start_fixed_battle
 
 	thumb_local_start
-sub_80381E0:
+MapScriptCmd_start_random_battle:
 	push {lr}
-	bl sub_80AA5E4
+	bl chooseRandomEncounterMaybe_80aa5e4
 	mov r1, #1
 	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 	mov r0, #0x2c
@@ -4824,10 +4827,10 @@ sub_80381E0:
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80381E0
+	thumb_func_end MapScriptCmd_start_random_battle
 
 	thumb_local_start
-sub_80381FA:
+MapScriptCmd_init_eStruct200a6a0:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -4842,19 +4845,19 @@ sub_80381FA:
 	add r7, #0xd
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80381FA
+	thumb_func_end MapScriptCmd_init_eStruct200a6a0
 
 	thumb_local_start
-sub_803821E:
+MapScriptCmd_run_eStruct200a6a0_callback:
 	push {lr}
-	bl sub_8002484
+	bl run_eStruct200a6a0_Callback_8002484
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_803821E
+	thumb_func_end MapScriptCmd_run_eStruct200a6a0_callback
 
 	thumb_local_start
-sub_803822A:
+MapScriptCmd_set_camera_unk0e_unk0c:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4862,14 +4865,14 @@ sub_803822A:
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r1, r4
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_803822A
+	thumb_func_end MapScriptCmd_set_camera_unk0e_unk0c
 
 	thumb_local_start
-sub_8038246:
+MapScriptCmd_nop_8038246:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4877,85 +4880,85 @@ sub_8038246:
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8038246
+	thumb_func_end MapScriptCmd_nop_8038246
 
 	thumb_local_start
-sub_8038256:
+MapScriptCmd_nop_8038256:
 	push {lr}
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8038256
+	thumb_func_end MapScriptCmd_nop_8038256
 
 	thumb_local_start
-sub_803825E:
+MapScriptCmd_nop_803825e:
 	push {lr}
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_803825E
+	thumb_func_end MapScriptCmd_nop_803825e
 
 	thumb_local_start
-sub_8038266:
+MapScriptCmd_nop_8038266:
 	push {lr}
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8038266
+	thumb_func_end MapScriptCmd_nop_8038266
 
 	thumb_local_start
-sub_803826E:
+MapScriptCmd_call_sub_8001974:
 	push {lr}
 	bl sub_8001974
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_803826E
+	thumb_func_end MapScriptCmd_call_sub_8001974
 
 	thumb_local_start
-sub_803827A:
+MapScriptCmd_init_scenario_effect:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	mov r0, r4
-	bl sub_8003914
+	bl initScenarioEffect_8003914
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_803827A
+	thumb_func_end MapScriptCmd_init_scenario_effect
 
 	thumb_local_start
-sub_803828E:
+MapScriptCmd_end_scenario_effect:
 	push {lr}
-	bl sub_8003940
+	bl endScenarioEffectMaybe_8003940
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_803828E
+	thumb_func_end MapScriptCmd_end_scenario_effect
 
 	thumb_local_start
-sub_803829A:
+MapScriptCmd_init_minigame_effect:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	mov r0, r4
-	bl sub_8003A64
+	bl initMinigameEffect_8003a64
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_803829A
+	thumb_func_end MapScriptCmd_init_minigame_effect
 
 	thumb_local_start
-sub_80382AE:
+MapScriptCmd_end_minigame_effect:
 	push {lr}
-	bl sub_8003A90
+	bl endMinigameEffectMaybe_8003a90
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80382AE
+	thumb_func_end MapScriptCmd_end_minigame_effect
 
 	thumb_local_start
-sub_80382BA:
+MapScriptCmd_add_bbs_message_range:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptHalfword
@@ -4963,57 +4966,57 @@ sub_80382BA:
 	mov r6, #3
 	bl ReadMapScriptByte
 	mov r6, r0
-loc_80382CC:
+.addBBSMessageLoop
 	mov r0, r6
-	bl reqBBS_813E5DC
+	bl reqBBS_addBBSMessage_813e5dc
 	add r6, #1
 	sub r4, #1
-	bgt loc_80382CC
+	bgt .addBBSMessageLoop
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80382BA
+	thumb_func_end MapScriptCmd_add_bbs_message_range
 
 	thumb_local_start
-sub_80382DE:
+MapScriptCmd_encryption_cmd_80382de:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptHalfword
-	// idx_2008A0
+	// idx_20008A0
 	mov r0, r4
-	bl encryption_8006e70 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_20008A0) -> void
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80382DE
+	thumb_func_end MapScriptCmd_encryption_cmd_80382de
 
 	thumb_local_start
-sub_80382F2:
+MapScriptCmd_navi_cmd_80340f6:
 	push {lr}
-	bl sub_80340F6
+	bl navi_80340F6
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80382F2
+	thumb_func_end MapScriptCmd_navi_cmd_80340f6
 
 	thumb_local_start
-sub_80382FE:
+MapScriptCmd_change_navi_maybe_80382fe:
 	push {lr}
-	bl sub_80010C6
+	bl writeCurPETNaviToS2001c04_Unk07_80010c6
 	mov r6, #1
 	bl ReadMapScriptByte
 	mov r0, r4
 	bl SetCurPETNavi
-	bl sub_8120DF0
-	bl sub_813C3AC
-	bl sub_803CEB8
+	bl reloadCurNaviBaseStats_8120df0
+	bl reloadCurNaviStatBoosts_813c3ac
+	bl setCurNaviHPToFull_803ceb8
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80382FE
+	thumb_func_end MapScriptCmd_change_navi_maybe_80382fe
 
 	thumb_local_start
-sub_8038322:
+MapScriptCmd_add_mail_range:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptHalfword
@@ -5021,19 +5024,19 @@ sub_8038322:
 	mov r6, #3
 	bl ReadMapScriptByte
 	mov r6, r0
-loc_8038334:
+.addMailLoop
 	mov r0, r6
-	bl sub_802F238
+	bl addMail_802f238
 	add r6, #1
 	sub r4, #1
-	bgt loc_8038334
+	bgt .addMailLoop
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8038322
+	thumb_func_end MapScriptCmd_add_mail_range
 
 	thumb_local_start
-sub_8038346:
+MapScriptCmd_cmd_8038346:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -5045,10 +5048,10 @@ sub_8038346:
 	add r7, #9
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8038346
+	thumb_func_end MapScriptCmd_cmd_8038346
 
 	thumb_local_start
-sub_8038362:
+MapScriptCmd_give_or_take_zenny:
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptHalfword
@@ -5056,19 +5059,19 @@ sub_8038362:
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #1
-	beq loc_803837C
-	bl sub_803CFF8
-	b loc_8038380
-loc_803837C:
-	bl sub_803D040
-loc_8038380:
+	beq .takeZenny
+	bl GiveZenny
+	b .done
+.takeZenny
+	bl TakeZenny
+.done
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8038362
+	thumb_func_end MapScriptCmd_give_or_take_zenny
 
 	thumb_local_start
-sub_8038386:
+MapScriptCmd_give_or_take_bugfrags:
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptHalfword
@@ -5076,19 +5079,19 @@ sub_8038386:
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #1
-	beq loc_80383A0
-	bl sub_803D080
-	b loc_80383A4
-loc_80383A0:
-	bl sub_803D0C8
-loc_80383A4:
+	beq .takeBugfrags
+	bl GiveBugfrags
+	b .done
+.takeBugfrags
+	bl TakeBugfrags
+.done
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8038386
+	thumb_func_end MapScriptCmd_give_or_take_bugfrags
 
 	thumb_local_start
-sub_80383AA:
+MapScriptCmd_give_or_take_chips:
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptHalfword
@@ -5102,19 +5105,19 @@ sub_80383AA:
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #1
-	beq loc_80383D4
-	bl sub_8021AEE
-	b loc_80383D8
-loc_80383D4:
-	bl sub_8021B92 // (int idx, int searchItem, int off) -> void*
-loc_80383D8:
+	beq .takeChip
+	bl GiveChips
+	b .done
+.takeChip
+	bl TakeChips // (int idx, int searchItem, int off) -> void*
+.done
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80383AA
+	thumb_func_end MapScriptCmd_give_or_take_chips
 
 	thumb_local_start
-sub_80383DE:
+MapScriptCmd_give_or_take_navicust_programs:
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptHalfword
@@ -5128,42 +5131,43 @@ sub_80383DE:
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #1
-	beq loc_8038408
-	bl sub_803D108
-	b loc_803840C
-loc_8038408:
-	bl sub_803D128
-loc_803840C:
+	beq .takeNaviCustProgram
+	bl GiveNaviCustPrograms
+	b .done
+.takeNaviCustProgram
+	bl TakeNaviCustPrograms
+.done
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80383DE
+	thumb_func_end MapScriptCmd_give_or_take_navicust_programs
 
 	thumb_local_start
-sub_8038412:
+MapScriptCmd_run_or_end_continuous_secondary_map_script:
 	push {lr}
-	ldr r3, off_8038438 // =eUnkMapScriptState_2011e60
+	ldr r3, =eMapScriptState
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #1
-	beq loc_803842E
+	beq .endContinuousMapScript2
 	mov r6, #2
 	bl ReadMapScriptWord
-	str r4, [r3,#oUnkMapScriptState_2011e60_UnkScriptPtr3_10]
+	str r4, [r3,#oMapScriptState_SecondaryContinuousMapScriptPtr]
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-loc_803842E:
-	mov r0, #0
-	str r0, [r3,#oUnkMapScriptState_2011e60_UnkScriptPtr3_10]
+.endContinuousMapScript2
+	mov r0, #NULL
+	str r0, [r3,#oMapScriptState_SecondaryContinuousMapScriptPtr]
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-off_8038438: .word eUnkMapScriptState_2011e60
-	thumb_func_end sub_8038412
+	// 8038438
+	.pool
+	thumb_func_end MapScriptCmd_run_or_end_continuous_secondary_map_script
 
 	thumb_local_start
-sub_803843C:
+MapScriptCmd_store_or_load_game_progress_buffer_maybe_803843c:
 	push {lr}
 	mov r3, r10
 	ldr r2, [r3,#oToolkit_GameStatePtr]
@@ -5173,40 +5177,40 @@ sub_803843C:
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0
-	beq loc_8038456
-	b loc_803845C
-loc_8038456:
-	bl sub_8035364
-	b loc_8038460
-loc_803845C:
-	bl sub_8035354
-loc_8038460:
+	beq .store
+	b .load
+.store
+	bl storeGameProgressToGameProgressBuffer_8035364
+	b .done
+.load
+	bl loadGameProgressFromGameProgressBuffer_8035354
+.done
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_803843C
+	thumb_func_end MapScriptCmd_store_or_load_game_progress_buffer_maybe_803843c
 
 	thumb_local_start
-sub_8038466:
+MapScriptCmd_flag_8038466:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0
-	beq loc_8038474
-	b loc_803847A
-loc_8038474:
-	bl sub_803553C
-	b loc_803847E
-loc_803847A:
-	bl sub_80355A8
-loc_803847E:
+	beq .loc_8038474
+	b .loc_803847A
+.loc_8038474:
+	bl testSetClearFlags_803553c
+	b .loc_803847E
+.loc_803847A:
+	bl clearSetFlags_80355a8
+.loc_803847E:
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8038466
+	thumb_func_end MapScriptCmd_flag_8038466
 
 	thumb_local_start
-sub_8038484:
+MapScriptCmd_add_request_range:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptHalfword
@@ -5214,86 +5218,88 @@ sub_8038484:
 	mov r6, #3
 	bl ReadMapScriptByte
 	mov r6, r0
-loc_8038496:
+.addRequestLoop
 	mov r0, r6
-	bl reqBBS_813F9A0
+	bl reqBBS_addRequest_813F9A0
 	add r6, #1
 	sub r4, #1
-	bgt loc_8038496
+	bgt .addRequestLoop
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8038484
+	thumb_func_end MapScriptCmd_add_request_range
 
 	thumb_local_start
-sub_80384A8:
+// isn't triggered when using a piece of rush food, maybe unused?
+MapScriptCmd_rush_food_80384A8:
 	push {lr}
-	mov r0, #0x2c
-	bl sub_803CE28
-	beq loc_80384CA
+	mov r0, #0x2c // rush food
+	bl CheckKeyItem
+	beq .done
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#oJoypad_Pressed]
-	mov r1, #1
+	mov r1, #JOYPAD_A
 	tst r0, r1
-	beq loc_80384CA
+	beq .done
 	mov r6, #4
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_80384CA:
+.done
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80384A8
+	thumb_func_end MapScriptCmd_rush_food_80384A8
 
 	thumb_local_start
-sub_80384D0:
+MapScriptCmd_set_beast_out_counter_to_3:
 	push {lr}
-	bl sub_80141AC
+	bl SetBeastOutCounterTo3
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80384D0
+	thumb_func_end MapScriptCmd_set_beast_out_counter_to_3
 
 	thumb_local_start
-sub_80384DC:
+MapScriptCmd_jump_if_req_bbs_master_rank:
 	push {lr}
-	bl reqBBS_getTotalPointsIndex // () -> u8
+	bl reqBBS_getRequestBBSRank // () -> u8
 	cmp r0, #4
-	bne loc_80384F2
+	bne .notMasterRank
 	mov r6, #4
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_80384F2:
+.notMasterRank
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80384DC
+	thumb_func_end MapScriptCmd_jump_if_req_bbs_master_rank
 
 	thumb_local_start
-sub_80384F8:
+MapScriptCmd_if_in_real_world_jump_else_jump:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_MapGroup]
-	cmp r0, #0x80
-	bge loc_8038510
+	cmp r0, #INTERNET_MAP_GROUP_START
+	bge .inInternet
+	// in real world
 	mov r6, #4
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8038510:
+.inInternet
 	mov r6, #8
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80384F8
+	thumb_func_end MapScriptCmd_if_in_real_world_jump_else_jump
 
 	thumb_func_start runCutscene_803851C
 runCutscene_803851C:

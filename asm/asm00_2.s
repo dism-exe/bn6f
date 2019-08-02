@@ -1028,7 +1028,7 @@ sub_800F4B2:
 	cmp r0, #0
 	pop {r0}
 	bne locret_800F4D2
-	bl sub_803D0C8
+	bl TakeBugfrags
 locret_800F4D2:
 	pop {pc}
 off_800F4D4: .word byte_8021220
@@ -8524,7 +8524,7 @@ loc_8012CEC:
 	bne loc_8012CEC
 	mov r0, #2
 	mov r1, #0x14
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 loc_8012D20:
 	add sp, sp, #0x14
 	pop {r4,r6,r7,pc}
@@ -11345,18 +11345,18 @@ byte_80141A0: .byte 0x20, 0x40, 0x10, 0x40, 0x40, 0x20, 0x10, 0x20, 0x10
 	.byte 0x0, 0x0, 0x0
 	thumb_func_end sub_8014178
 
-	thumb_func_start sub_80141AC
-sub_80141AC:
+	thumb_func_start SetBeastOutCounterTo3
+SetBeastOutCounterTo3:
 	push {lr}
 	bl GetCurPETNavi // () -> u8
-	mov r1, #0x21
+	mov r1, #oNaviStats_BeastOutCounter
 	mov r2, #3
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 off_80141BC: .word 0x12C
 off_80141C0: .word 0x258
 off_80141C4: .word 0x104
-	thumb_func_end sub_80141AC
+	thumb_func_end SetBeastOutCounterTo3
 
 	thumb_local_start
 sub_80141C8:
@@ -14688,20 +14688,20 @@ sub_8015C2C:
 	pop {pc}
 	thumb_func_end sub_8015C2C
 
-	thumb_func_start sub_8015C32
-sub_8015C32:
+	thumb_func_start ZeroAllNaviStatsMood
+ZeroAllNaviStatsMood:
 	push {r4,lr}
 	mov r4, #0
-loc_8015C36:
+.setNaviMoodLoop
 	mov r0, r4
-	mov r1, #0xe
+	mov r1, #oNaviStats_Mood
 	mov r2, #0
 	bl SetNaviStatsByte
 	add r4, #1
 	cmp r4, #7
-	blt loc_8015C36
+	blt .setNaviMoodLoop
 	pop {r4,pc}
-	thumb_func_end sub_8015C32
+	thumb_func_end ZeroAllNaviStatsMood
 
 	thumb_func_start sub_8015C48
 sub_8015C48:

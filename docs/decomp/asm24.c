@@ -56,7 +56,7 @@ int sub_808C378()
         sub_8143294();
     else
         v1[2] = v8;
-    sub_80302A8(0, 1);
+    setCameraUnk0e_Unk0c_80302a8(0, 1);
     return *v1;
 }
 

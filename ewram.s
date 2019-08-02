@@ -68,7 +68,7 @@ byte_2000670:: // 0x2000670
 	.space 256
 unk_2000770:: // 0x2000770
 	.space 16
-eStruct2000780:: // 0x2000780
+eScenarioEffectState2000780:: // 0x2000780
 	.space 1
 byte_2000781:: // 0x2000781
 	.space 1
@@ -236,7 +236,7 @@ dword_2001064:: // 0x2001064
 	.space 124
 eActiveOverworldNPCObjectsBitfield:: // 0x20010e0
 	.space 16
-byte_20010F0:: // 0x20010f0
+gameProgressBuffer_20010f0:: // 0x20010f0
 	.space 48
 rngSeed_2001120:: // 0x2001120
 	.space 16
@@ -639,8 +639,12 @@ dword_2009930:: // 0x2009930
 	.space 16
 byte_2009940:: // 0x2009940
 	.space 64
+
 eCamera:: // 0x2009980
-	.space 144
+	camera_struct eCamera
+eCameraEnd:: // 0x20099d0
+
+	.space 64
 dword_2009A10:: // 0x2009a10
 	.space 8
 dword_2009A18:: // 0x2009a18
@@ -1659,9 +1663,10 @@ eActiveOverworldMapObjectsBitfield:: // 0x2011e50
 	.space 8
 
 // some sort of state for some map script (bytecode)
-eUnkMapScriptState_2011e60:: // 0x2011e60
-	unk_map_script_state_2011e60_struct eUnkMapScriptState_2011e60
-eUnkMapScriptState_2011e60End::
+eMapScriptState:: // 0x2011e60
+	map_script_state_struct eMapScriptState
+eMapScriptStateEnd::
+
 	.space 44
 unk_2011EA0:: // 0x2011ea0
 	.space 4

@@ -1318,7 +1318,7 @@ loc_813C042:
 	cmp r1, #0
 	beq loc_813C050
 	mov r2, #9
-	bl sub_803D108
+	bl GiveNaviCustPrograms
 loc_813C050:
 	add r4, #0x10
 	cmp r4, #0x40 
@@ -1651,8 +1651,8 @@ dword_813C3A0: .word 0x2660
 byte_813C3A4: .byte 0x0, 0x2, 0x0, 0x1, 0x1, 0x0, 0x2, 0x0
 	thumb_func_end sub_813C334
 
-	thumb_func_start sub_813C3AC
-sub_813C3AC:
+	thumb_func_start reloadCurNaviStatBoosts_813c3ac
+reloadCurNaviStatBoosts_813c3ac:
 	push {r4-r7,lr}
 	bl GetCurPETNavi // () -> u8
 	tst r0, r0
@@ -1725,7 +1725,7 @@ sub_813C3AC:
 .ret:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-	thumb_func_end sub_813C3AC
+	thumb_func_end reloadCurNaviStatBoosts_813c3ac
 
 	thumb_local_start
 sub_813C458:
@@ -1768,7 +1768,7 @@ loc_813C4A2:
 sub_813C4A8:
 	push {lr}
 	mov r0, #0x71 
-	bl sub_803CE28
+	bl CheckKeyItem
 	ldr r1, off_813C4B8 // =pt_813C4BC 
 	lsl r0, r0, #2
 	ldr r1, [r1,r0]
@@ -1783,7 +1783,7 @@ pt_813C4BC: .word byte_813B3AE+225
 sub_813C4C8:
 	push {lr}
 	mov r0, #0x71 
-	bl sub_803CE28
+	bl CheckKeyItem
 	ldr r1, off_813C4D8 // =off_813C4DC 
 	lsl r0, r0, #2
 	ldr r1, [r1,r0]
@@ -1829,7 +1829,7 @@ loc_813C59E:
 	mov r6, #0
 loc_813C5A0:
 	mov r0, #0x71 
-	bl sub_803CE28
+	bl CheckKeyItem
 	bl sub_813B9E0
 	mov r1, #0xf
 	add r2, r7, #5

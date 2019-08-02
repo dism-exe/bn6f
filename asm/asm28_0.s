@@ -7,7 +7,7 @@ sub_8098BE8:
 	cmp r1, #0xff
 	beq loc_8098C16
 	add r0, r0, r1
-	bl sub_802F238
+	bl addMail_802f238
 	ldrb r0, [r5,#7]
 	tst r0, r0
 	beq loc_8098C16
@@ -703,9 +703,9 @@ sub_809A078:
 	strh r0, [r7,#0x4] // (word_200AC84 - 0x200ac80)
 	strh r1, [r7,#0x6] // (word_200AC86 - 0x200ac80)
 	mov r2, #1
-	bl sub_8021AEE
+	bl GiveChips
 	mov r0, #0xa
-	bl sub_803D0C8
+	bl TakeBugfrags
 	mov r3, r10
 	ldr r3, [r3,#0x3c]
 	ldrh r0, [r3,#4]
@@ -1251,7 +1251,7 @@ sub_809A520:
 	mov r0, r2
 	mov r1, r3
 	mov r2, #1
-	bl sub_8021AEE
+	bl GiveChips
 	mov r0, #0x37 
 	mov r1, #0x8c
 	str r0, [r5,r1]
@@ -1286,7 +1286,7 @@ loc_809A5A6:
 	ldr r1, [r1,#oToolkit_ChatboxPtr]
 	str r2, [r1,#0x4c]
 	mov r0, r2
-	bl sub_803D080
+	bl GiveBugfrags
 	mov r0, #0x39 
 	mov r1, #0x8c
 	str r0, [r5,r1]
@@ -1954,7 +1954,7 @@ loc_809AB92:
 	mov r0, r2
 	mov r1, r3
 	mov r2, #1
-	bl sub_8021AEE
+	bl GiveChips
 	// initRefs
 	ldr r0, off_809AC28 // =dword_809AC2C 
 	bl decompAndCopyData // (u32 *initRefs) -> void
@@ -1989,7 +1989,7 @@ loc_809ABF4:
 	mov r0, r2
 	mov r1, r3
 	mov r2, #1
-	bl sub_803D108
+	bl GiveNaviCustPrograms
 	mov r0, #0x13
 	mov r1, #3
 loc_809AC06:
@@ -3258,7 +3258,7 @@ sub_809C01C:
 	bl TestEventFlagFromImmediate
 	beq loc_809C042
 	mov r0, #0
-	bl sub_8035364
+	bl storeGameProgressToGameProgressBuffer_8035364
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	mov r0, #0x80
@@ -3271,10 +3271,10 @@ loc_809C042:
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 loc_809C050:
-	bl sub_80010C6
+	bl writeCurPETNaviToS2001c04_Unk07_80010c6
 	ldrb r0, [r7,#0x14]
 	bl SetCurPETNavi
-	bl sub_8120DF0
+	bl reloadCurNaviBaseStats_8120df0
 	bl sub_8033FDC
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -3296,7 +3296,7 @@ sub_809C09C:
 	ldrb r1, [r5,#6]
 	add r0, r0, r1
 	add r0, r0, r2
-	bl sub_802F238
+	bl addMail_802f238
 	ldrb r0, [r5,#7]
 	tst r0, r0
 	beq loc_809C0DE
@@ -3750,7 +3750,7 @@ loc_809C9CA:
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_809CA26
 	mov r0, #0x2c 
-	bl sub_803CE28
+	bl CheckKeyItem
 	ldrb r1, [r4,#0xd]
 	add r1, #1
 	cmp r0, r1
@@ -3908,7 +3908,7 @@ loc_809CBAA:
 	movflag EVENT_163
 	bl TestEventFlagFromImmediate
 	beq loc_809CBCC
-	bl sub_80010C6
+	bl writeCurPETNaviToS2001c04_Unk07_80010c6
 	mov r0, #0
 	bl SetCurPETNavi
 	mov r0, #0
@@ -4024,7 +4024,7 @@ loc_809CC7E:
 	str r0, [r5,#0x78]
 	movflag EVENT_163
 	bl SetEventFlagFromImmediate
-	bl sub_80010C6
+	bl writeCurPETNaviToS2001c04_Unk07_80010c6
 	mov r2, r10
 	ldr r2, [r2,#0x2c]
 	ldr r0, [r5,#0x78]
@@ -4048,7 +4048,7 @@ loc_809CCC0:
 	beq loc_809CCF0
 	mov r0, #SOUND_UNSELECT_68
 	bl PlaySoundEffect
-	bl sub_80010C6
+	bl writeCurPETNaviToS2001c04_Unk07_80010c6
 	ldr r0, byte_809CEAC+4 // =0x4
 	mov r1, #0x20
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -4165,9 +4165,9 @@ sub_809CDD4:
 	bl sub_809CE40
 	b loc_809CDE8
 loc_809CDE4:
-	bl sub_8120DF0
+	bl reloadCurNaviBaseStats_8120df0
 loc_809CDE8:
-	bl sub_813C3AC
+	bl reloadCurNaviStatBoosts_813c3ac
 	mov r0, #0
 	bl sub_8120D10
 	beq loc_809CE0E

@@ -533,7 +533,7 @@ off_808FCE0: .word off_808F5D4
 sub_808FCE4:
 	push {lr}
 	mov r0, #1
-	bl sub_8003940
+	bl endScenarioEffectMaybe_8003940
 	mov r0, #0
 	pop {pc}
 	thumb_func_end sub_808FCE4
@@ -682,7 +682,7 @@ loc_808FE10:
 	bl sub_808FF30
 	bl sub_808FF70
 	mov r0, #1
-	bl sub_8003914
+	bl initScenarioEffect_8003914
 	bl sub_809003C
 	mov r0, #0
 	pop {r5,pc}
@@ -1385,7 +1385,7 @@ sub_809032C:
 	bl sub_80039D4
 	beq loc_809033C
 	mov r0, #1
-	bl sub_8003940
+	bl endScenarioEffectMaybe_8003940
 loc_809033C:
 	mov r0, #0
 	// <endpool> <endfile>

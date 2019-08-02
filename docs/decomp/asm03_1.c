@@ -443,13 +443,13 @@ int __fastcall sub_8033FDC(int a1)
     int v3; // r7
     int result; // r0
 
-    sub_813C3AC();
+    reloadCurNaviStatBoosts_813c3ac();
     ClearEventFlagFromImmediate(23, 29);
     ClearEventFlagFromImmediate(23, 3);
     ClearEventFlagFromImmediate(1, 39);
     ClearEventFlagFromImmediate(23, 33);
     sub_809F9DC();
-    sub_803CEB8();
+    setCurNaviHPToFull_803ceb8();
     SetEventFlagFromImmediate(23, 36);
     ClearEventFlagFromImmediate(5, 223);
     SetEventFlagFromImmediate(6, 142);
@@ -466,8 +466,8 @@ int __fastcall sub_8033FDC(int a1)
     {
         SetEventFlagRangeFromImmediate(1, 142, 9);
     }
-    sub_80141AC();
-    sub_8015C32();
+    SetBeastOutCounterTo3();
+    ZeroAllNaviStatsMood();
     sub_800A908();
     ClearEventFlagFromImmediate(23, 0);
     v3 = *(v1 + oToolkit_Unk2001c04_Ptr);
@@ -494,7 +494,7 @@ int __fastcall sub_8033FDC(int a1)
 
 
 // 0x80340f6
-int sub_80340F6()
+int navi_80340F6()
 {
     int v0; // r10
     char v1; // zf
@@ -502,24 +502,24 @@ int sub_80340F6()
     int v3; // r7
 
     if ( *(*(v0 + oToolkit_GameStatePtr) + oGameState_GameProgress) == 128 )
-        sub_8035354(0);
+        loadGameProgressFromGameProgressBuffer_8035354(0);
     TestEventFlagFromImmediate(1, 99);
     if ( v1 )
     {
-        sub_80010C6();
+        writeCurPETNaviToS2001c04_Unk07_80010c6();
         sub_80010BE(0);
-        sub_8120DF0();
-        sub_813C3AC();
-        sub_80010C6();
+        reloadCurNaviBaseStats_8120df0();
+        reloadCurNaviStatBoosts_813c3ac();
+        writeCurPETNaviToS2001c04_Unk07_80010c6();
     }
     else
     {
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
     }
     TestEventFlagFromImmediate(23, 42);
     if ( v1 )
         SetEventFlagFromImmediate(23, 29);
-    sub_803CEB8();
+    setCurNaviHPToFull_803ceb8();
     v2 = *(v0 + oToolkit_Unk2001c04_Ptr);
     *(v2 + 36) = 0;
     *(v2 + 40) = 0;
@@ -535,8 +535,8 @@ int sub_80340F6()
     v3 = *(v0 + oToolkit_Unk2001c04_Ptr);
     *(v3 + 18) = 0;
     *(v3 + 20) = 0;
-    sub_80141AC();
-    sub_8015C32();
+    SetBeastOutCounterTo3();
+    ZeroAllNaviStatsMood();
     return sub_800A908();
 }
 
@@ -708,7 +708,7 @@ int __fastcall sub_80342EC(int a1, int a2, int a3, int a4)
     *(v5 + 22) = 0;
     *(v5 + 23) = 16;
     sub_8005C04();
-    return sub_80340F6();
+    return navi_80340F6();
 }
 
 
@@ -1558,7 +1558,7 @@ int sub_8035274()
 
 
 // 0x803532c
-int sub_803532C()
+int initGameProgressBuffer_803532c()
 {
     int v0; // r10
     char *v1; // r6
@@ -1568,7 +1568,7 @@ int sub_803532C()
     int result; // r0
 
     v1 = &byte_8037694;
-    v2 = byte_20010F0;
+    v2 = gameProgressBuffer_20010f0;
     v3 = 0;
     do
     {
@@ -1586,26 +1586,26 @@ int sub_803532C()
 
 
 // 0x8035354
-int __fastcall sub_8035354(int a1)
+int __fastcall loadGameProgressFromGameProgressBuffer_8035354(int a1)
 {
     int v1; // r10
     int result; // r0
 
-    result = byte_20010F0[a1];
+    result = gameProgressBuffer_20010f0[a1];
     *(*(v1 + oToolkit_GameStatePtr) + oGameState_GameProgress) = result;
     return result;
 }
 
 
 // 0x8035364
-signed int __fastcall sub_8035364(int a1)
+signed int __fastcall storeGameProgressToGameProgressBuffer_8035364(int a1)
 {
     int v1; // r10
     int v2; // r7
     signed int result; // r0
 
     v2 = *(v1 + oToolkit_GameStatePtr);
-    byte_20010F0[a1] = *(v2 + oGameState_GameProgress);
+    gameProgressBuffer_20010f0[a1] = *(v2 + oGameState_GameProgress);
     result = 255;
     *(v2 + oGameState_GameProgress) = -1;
     return result;
@@ -1679,11 +1679,11 @@ int sub_8035424()
 
 
 // 0x803553c
-int __fastcall sub_803553C(int a1)
+int __fastcall testSetClearFlags_803553c(int a1)
 {
     char v1; // zf
 
-    sub_80355A8();
+    clearSetFlags_80355a8();
     TestEventFlagFromImmediate(6, 123);
     if ( !v1 )
         SetEventFlagFromImmediate(6, 130);
@@ -1705,7 +1705,7 @@ int __fastcall sub_803553C(int a1)
 
 
 // 0x80355a8
-int sub_80355A8()
+int clearSetFlags_80355a8()
 {
     ClearEventFlagFromImmediate(6, 130);
     ClearEventFlagFromImmediate(8, 95);
@@ -1919,7 +1919,7 @@ signed int sub_80357AE()
         if ( *i == v1 )
             goto LABEL_12;
     }
-    if ( v1 < 48 || v1 > 51 || (sub_809CA40(*(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_0e)), v3) && sub_803CE28(44) )
+    if ( v1 < 48 || v1 > 51 || (sub_809CA40(*(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_0e)), v3) && CheckKeyItem(44) )
         result = 1;
     else
 LABEL_12:
@@ -2082,7 +2082,7 @@ signed int __fastcall MapScript_jump_if_unk_navicust_range(int a1)
     int v5; // r1
 
     v2 = ReadMapScriptByte(1, v1);
-    sub_803CE28(v2);
+    CheckKeyItem(v2);
     ReadMapScriptByte(2, v1);
     v4 = ReadMapScriptByte(3, v1);
     if ( v3 < v5 || v3 > v4 )
@@ -3132,7 +3132,7 @@ signed int __fastcall sub_80370E4(int a1, int a2)
 
     v2 = sub_803744C(2, a2);
     v4 = sub_803744C(1, v3);
-    sub_80302A8(v4, v2);
+    setCameraUnk0e_Unk0c_80302a8(v4, v2);
     return 1;
 }
 
@@ -3475,7 +3475,7 @@ int sub_80376C4()
 
     TestEventFlagFromImmediate(23, 65);
     if ( v0 )
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
     sub_8036EFE();
     return 0;
 }
@@ -3488,7 +3488,7 @@ int sub_80376DC()
 
     TestEventFlagFromImmediate(23, 65);
     if ( v0 )
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
     sub_8036ED4();
     return 0;
 }
@@ -4656,7 +4656,7 @@ signed int sub_803816A()
 
 
 // 0x80381a0
-signed int sub_80381A0()
+signed int MapScriptCmd_start_fixed_battle()
 {
     int v0; // r7
     int v1; // r10
@@ -4666,8 +4666,8 @@ signed int sub_80381A0()
 
     if ( *(*(v1 + oToolkit_GameStatePtr) + oGameState_MapGroup) < 128 )
     {
-        sub_80141AC();
-        sub_8015C32();
+        SetBeastOutCounterTo3();
+        ZeroAllNaviStatsMood();
     }
     v2 = ReadMapScriptHalfword(1, v0);
     v3 = getBattleSettingsFromList0(v2);
@@ -4680,11 +4680,11 @@ signed int sub_80381A0()
 
 
 // 0x80381e0
-signed int __fastcall sub_80381E0(int a1, int a2)
+signed int __fastcall MapScriptCmd_start_random_battle(int a1, int a2)
 {
     int v2; // r0
 
-    v2 = sub_80AA5E4(a1, a2);
+    v2 = chooseRandomEncounterMaybe_80aa5e4(a1, a2);
     gameState_8005BC8(v2, 1);
     engine_setScreeneffect(44, 16);
     return 1;
@@ -4692,7 +4692,7 @@ signed int __fastcall sub_80381E0(int a1, int a2)
 
 
 // 0x80381fa
-signed int sub_80381FA()
+signed int MapScriptCmd_init_eStruct200a6a0()
 {
     int v0; // r7
     int v1; // r4
@@ -4709,15 +4709,15 @@ signed int sub_80381FA()
 
 
 // 0x803821e
-signed int __fastcall sub_803821E(int a1, int a2, int a3, int a4)
+signed int __fastcall MapScriptCmd_run_eStruct200a6a0_callback(int a1, int a2, int a3, int a4)
 {
-    sub_8002484(a1, a2, a3, a4);
+    run_eStruct200a6a0_Callback_8002484(a1, a2, a3, a4);
     return 1;
 }
 
 
 // 0x803822a
-signed int sub_803822A()
+signed int MapScriptCmd_set_camera_unk0e_unk0c()
 {
     void *v0; // r7
     __int16 v1; // r4
@@ -4725,13 +4725,13 @@ signed int sub_803822A()
 
     ReadMapScriptByte(1, v0);
     v1 = ReadMapScriptByte(2, v0);
-    sub_80302A8(v2, v1);
+    setCameraUnk0e_Unk0c_80302a8(v2, v1);
     return 1;
 }
 
 
 // 0x8038246
-signed int sub_8038246()
+signed int MapScriptCmd_nop_8038246()
 {
     void *v0; // r7
 
@@ -4741,28 +4741,28 @@ signed int sub_8038246()
 
 
 // 0x8038256
-signed int sub_8038256()
+signed int MapScriptCmd_nop_8038256()
 {
     return 1;
 }
 
 
 // 0x803825e
-signed int sub_803825E()
+signed int MapScriptCmd_nop_803825e()
 {
     return 1;
 }
 
 
 // 0x8038266
-signed int sub_8038266()
+signed int MapScriptCmd_nop_8038266()
 {
     return 1;
 }
 
 
 // 0x803826e
-signed int __noreturn sub_803826E()
+signed int __noreturn MapScriptCmd_call_sub_8001974()
 {
     sub_8001974();
     return 1;
@@ -4770,7 +4770,7 @@ signed int __noreturn sub_803826E()
 
 
 // 0x803827a
-signed int sub_803827A()
+signed int MapScriptCmd_init_scenario_effect()
 {
     void *v0; // r7
     unsigned __int8 v1; // r4
@@ -4779,21 +4779,21 @@ signed int sub_803827A()
     int v4; // r3
 
     v1 = ReadMapScriptByte(1, v0);
-    sub_8003914(v1, v2, v3, v4);
+    initScenarioEffect_8003914(v1, v2, v3, v4);
     return 1;
 }
 
 
 // 0x803828e
-signed int __fastcall sub_803828E(int a1, int a2, int a3, int a4)
+signed int __fastcall MapScriptCmd_end_scenario_effect(int a1, int a2, int a3, int a4)
 {
-    sub_8003940(a1, a2, a3, a4);
+    endScenarioEffectMaybe_8003940(a1, a2, a3, a4);
     return 1;
 }
 
 
 // 0x803829a
-signed int sub_803829A()
+signed int MapScriptCmd_init_minigame_effect()
 {
     void *v0; // r7
     unsigned __int8 v1; // r4
@@ -4802,21 +4802,21 @@ signed int sub_803829A()
     int v4; // r3
 
     v1 = ReadMapScriptByte(1, v0);
-    sub_8003A64(v1, v2, v3, v4);
+    initMinigameEffect_8003a64(v1, v2, v3, v4);
     return 1;
 }
 
 
 // 0x80382ae
-signed int __fastcall sub_80382AE(int a1, int a2, int a3, int a4)
+signed int __fastcall MapScriptCmd_end_minigame_effect(int a1, int a2, int a3, int a4)
 {
-    sub_8003A90(a1, a2, a3, a4);
+    endMinigameEffectMaybe_8003a90(a1, a2, a3, a4);
     return 1;
 }
 
 
 // 0x80382ba
-signed int sub_80382BA()
+signed int MapScriptCmd_add_bbs_message_range()
 {
     void *v0; // r7
     int v1; // r4
@@ -4829,7 +4829,7 @@ signed int sub_80382BA()
     v3 = v2;
     do
     {
-        reqBBS_813E5DC(v3++);
+        reqBBS_addBBSMessage_813e5dc(v3++);
         v4 = __OFSUB__(v1--, 1);
     }
     while ( !(((v1 < 0) ^ v4) | (v1 == 0)) );
@@ -4838,7 +4838,7 @@ signed int sub_80382BA()
 
 
 // 0x80382de
-signed int sub_80382DE()
+signed int MapScriptCmd_encryption_cmd_80382de()
 {
     int v0; // r7
     int v1; // r4
@@ -4850,31 +4850,31 @@ signed int sub_80382DE()
 
 
 // 0x80382f2
-signed int sub_80382F2()
+signed int MapScriptCmd_navi_cmd_80340f6()
 {
-    sub_80340F6();
+    navi_80340F6();
     return 1;
 }
 
 
 // 0x80382fe
-signed int sub_80382FE()
+signed int MapScriptCmd_change_navi_maybe_80382fe()
 {
     void *v0; // r7
     int v1; // r4
 
-    sub_80010C6();
+    writeCurPETNaviToS2001c04_Unk07_80010c6();
     v1 = ReadMapScriptByte(1, v0);
     sub_80010BE(v1);
-    sub_8120DF0();
-    sub_813C3AC();
-    sub_803CEB8();
+    reloadCurNaviBaseStats_8120df0();
+    reloadCurNaviStatBoosts_813c3ac();
+    setCurNaviHPToFull_803ceb8();
     return 1;
 }
 
 
 // 0x8038322
-signed int sub_8038322()
+signed int MapScriptCmd_add_mail_range()
 {
     void *v0; // r7
     int v1; // r4
@@ -4887,7 +4887,7 @@ signed int sub_8038322()
     v3 = v2;
     do
     {
-        sub_802F238(v3++);
+        addMail_802f238(v3++);
         v4 = __OFSUB__(v1--, 1);
     }
     while ( !(((v1 < 0) ^ v4) | (v1 == 0)) );
@@ -4896,7 +4896,7 @@ signed int sub_8038322()
 
 
 // 0x8038346
-signed int sub_8038346()
+signed int MapScriptCmd_cmd_8038346()
 {
     int v0; // r7
     int v1; // r4
@@ -4910,35 +4910,35 @@ signed int sub_8038346()
 
 
 // 0x8038362
-signed int sub_8038362()
+signed int MapScriptCmd_give_or_take_zenny()
 {
     void *v0; // r7
 
     ReadMapScriptHalfword(2, v0);
     if ( ReadMapScriptByte(1, v0) == 1 )
-        sub_803D040();
+        TakeZenny();
     else
-        sub_803CFF8();
+        GiveZenny();
     return 1;
 }
 
 
 // 0x8038386
-signed int sub_8038386()
+signed int MapScriptCmd_give_or_take_bugfrags()
 {
     void *v0; // r7
 
     ReadMapScriptHalfword(2, v0);
     if ( ReadMapScriptByte(1, v0) == 1 )
-        sub_803D0C8();
+        TakeBugfrags();
     else
-        sub_803D080();
+        GiveBugfrags();
     return 1;
 }
 
 
 // 0x80383aa
-signed int sub_80383AA()
+signed int MapScriptCmd_give_or_take_chips()
 {
     void *v0; // r7
     int v1; // r0
@@ -4949,15 +4949,15 @@ signed int sub_80383AA()
     ReadMapScriptByte(4, v0);
     ReadMapScriptByte(5, v0);
     if ( ReadMapScriptByte(1, v0) == 1 )
-        sub_8021B92(v1, v2, v3);
+        TakeChips(v1, v2, v3);
     else
-        sub_8021AEE(v1, v2, v3);
+        GiveChips(v1, v2, v3);
     return 1;
 }
 
 
 // 0x80383de
-signed int sub_80383DE()
+signed int MapScriptCmd_give_or_take_navicust_programs()
 {
     void *v0; // r7
     int v1; // r0
@@ -4968,15 +4968,15 @@ signed int sub_80383DE()
     ReadMapScriptByte(4, v0);
     ReadMapScriptByte(5, v0);
     if ( ReadMapScriptByte(1, v0) == 1 )
-        sub_803D128(v1, v2, v3);
+        TakeNaviCustPrograms(v1, v2, v3);
     else
-        sub_803D108(v1, v2, v3);
+        GiveNaviCustPrograms(v1, v2, v3);
     return 1;
 }
 
 
 // 0x8038412
-signed int sub_8038412()
+signed int MapScriptCmd_run_or_end_continuous_secondary_map_script()
 {
     void *v0; // r7
     int v1; // r3
@@ -4997,7 +4997,7 @@ signed int sub_8038412()
 
 
 // 0x803843c
-signed int sub_803843C()
+signed int MapScriptCmd_store_or_load_game_progress_buffer_maybe_803843c()
 {
     void *v0; // r7
     int v1; // r10
@@ -5007,29 +5007,29 @@ signed int sub_803843C()
     v2 = *(v1 + oToolkit_GameStatePtr);
     ReadMapScriptByte(2, v0);
     if ( ReadMapScriptByte(1, v0) )
-        sub_8035354(v3);
+        loadGameProgressFromGameProgressBuffer_8035354(v3);
     else
-        sub_8035364(v3);
+        storeGameProgressToGameProgressBuffer_8035364(v3);
     return 1;
 }
 
 
 // 0x8038466
-signed int sub_8038466()
+signed int MapScriptCmd_flag_8038466()
 {
     void *v0; // r7
     int v1; // r0
 
     if ( ReadMapScriptByte(1, v0) )
-        sub_80355A8();
+        clearSetFlags_80355a8();
     else
-        sub_803553C(v1);
+        testSetClearFlags_803553c(v1);
     return 1;
 }
 
 
 // 0x8038484
-signed int sub_8038484()
+signed int MapScriptCmd_add_request_range()
 {
     void *v0; // r7
     int v1; // r4
@@ -5042,7 +5042,7 @@ signed int sub_8038484()
     v3 = v2;
     do
     {
-        reqBBS_813F9A0(v3++);
+        reqBBS_addRequest_813F9A0(v3++);
         v4 = __OFSUB__(v1--, 1);
     }
     while ( !(((v1 < 0) ^ v4) | (v1 == 0)) );
@@ -5051,13 +5051,13 @@ signed int sub_8038484()
 
 
 // 0x80384a8
-signed int sub_80384A8()
+signed int MapScriptCmd_rush_food_80384A8()
 {
     int v0; // r7
     int v1; // r10
     char v2; // zf
 
-    sub_803CE28(44);
+    CheckKeyItem(44);
     if ( v2 || !(*(*(v1 + oToolkit_JoypadPtr) + 2) & 1) )
         return 1;
     ReadMapScriptWord(4, v0);
@@ -5066,26 +5066,26 @@ signed int sub_80384A8()
 
 
 // 0x80384d0
-signed int sub_80384D0()
+signed int MapScriptCmd_set_beast_out_counter_to_3()
 {
-    sub_80141AC();
+    SetBeastOutCounterTo3();
     return 1;
 }
 
 
 // 0x80384dc
-signed int sub_80384DC()
+signed int MapScriptCmd_jump_if_req_bbs_master_rank()
 {
     int v0; // r7
 
-    if ( reqBBS_getTotalPointsIndex() == 4 )
+    if ( reqBBS_getRequestBBSRank() == 4 )
         ReadMapScriptWord(4, v0);
     return 1;
 }
 
 
 // 0x80384f8
-signed int sub_80384F8()
+signed int MapScriptCmd_if_in_real_world_jump_else_jump()
 {
     int v0; // r7
     int v1; // r10
@@ -11130,7 +11130,7 @@ signed int __fastcall sub_803CD98(signed int a1, int a2)
     v8 = v10;
     v11 = v6;
     if ( v9 == 113 )
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
     sub_803CF3C(v11, v8);
     sub_803CFB0();
     return v11;
@@ -11176,7 +11176,7 @@ signed int __fastcall sub_803CE08(int a1, int a2)
 
 
 // 0x803ce28
-int __fastcall sub_803CE28(signed int a1)
+int __fastcall CheckKeyItem(signed int a1)
 {
     int v1; // r10
     char v2; // zf
@@ -11231,7 +11231,7 @@ int sub_803CE44()
 
 
 // 0x803ceb8
-int sub_803CEB8()
+int setCurNaviHPToFull_803ceb8()
 {
     int v0; // r0
     int v1; // r4
@@ -11317,7 +11317,7 @@ int __fastcall sub_803CF74(int a1, int a2)
 
     v2 = a2;
     v3 = getPETNaviSelect();
-    sub_813C3AC();
+    reloadCurNaviStatBoosts_813c3ac();
     v4 = v2 + GetField16FromSelectedS20047CCStruct(v3);
     SetField16ToSelectedS20047CCStruct(v3, 64, v4);
     result = GetField16FromSelectedS20047CCStruct(v3);
@@ -11349,7 +11349,7 @@ int sub_803CFB0()
 
 
 // 0x803cff8
-void sub_803CFF8()
+void GiveZenny()
 {
     int v0; // r10
     int v1; // r0
@@ -11391,7 +11391,7 @@ void sub_803D02C()
 
 
 // 0x803d040
-void sub_803D040()
+void TakeZenny()
 {
     int v0; // r10
     int v1; // r0
@@ -11435,7 +11435,7 @@ int sub_803D06C()
 
 
 // 0x803d080
-void sub_803D080()
+void GiveBugfrags()
 {
     int v0; // r10
     int v1; // r0
@@ -11477,7 +11477,7 @@ void sub_803D0B4()
 
 
 // 0x803d0c8
-void sub_803D0C8()
+void TakeBugfrags()
 {
     int v0; // r10
     int v1; // r0
@@ -11521,7 +11521,7 @@ int sub_803D0F4()
 
 
 // 0x803d108
-signed int __fastcall sub_803D108(int a1, int a2, int a3)
+signed int __fastcall GiveNaviCustPrograms(int a1, int a2, int a3)
 {
     int v3; // r4
     int v4; // r0
@@ -11545,7 +11545,7 @@ signed int __fastcall sub_803D118(int a1, int a2, int a3)
 
 
 // 0x803d128
-signed int __fastcall sub_803D128(int a1, int a2, int a3)
+signed int __fastcall TakeNaviCustPrograms(int a1, int a2, int a3)
 {
     int v3; // r4
     int v4; // r0
@@ -11562,7 +11562,7 @@ int __fastcall sub_803D138(int a1, int a2)
     int v2; // r0
 
     v2 = sub_803D148(a1, a2);
-    return sub_803CE28(v2);
+    return CheckKeyItem(v2);
 }
 
 
@@ -11591,7 +11591,7 @@ int __fastcall sub_803D170(int a1)
     int v1; // r0
 
     v1 = sub_803D180(a1);
-    return sub_803CE28(v1);
+    return CheckKeyItem(v1);
 }
 
 

@@ -7,7 +7,7 @@ int sub_8098BE8()
     v1 = *(v0 + 6);
     if ( v1 != 255 )
     {
-        sub_802F238(v1 + 7328);
+        addMail_802f238(v1 + 7328);
         if ( *(v0 + 7) )
         {
             ClearEventFlag(*(v0 + 6) + 7456);
@@ -198,8 +198,8 @@ signed int sub_809A078()
             sub_804BD00();
             word_200AC84 = v6;
             word_200AC86 = v7;
-            sub_8021AEE(v6, v7, 1);
-            sub_803D0C8();
+            GiveChips(v6, v7, 1);
+            TakeBugfrags();
             *(*(v1 + 60) + 12) = *(*(v1 + 60) + 4);
             sub_803F798();
             v8 = *(v1 + 44);
@@ -618,7 +618,7 @@ signed int sub_809A520()
             else if ( v4 == 2 )
             {
                 *(*(v1 + oToolkit_ChatboxPtr) + 76) = v5;
-                sub_803D080();
+                GiveBugfrags();
                 *(v0 + 140) = 57;
             }
             else
@@ -628,7 +628,7 @@ signed int sub_809A520()
                 v7 = *(v1 + oToolkit_ChatboxPtr);
                 *(v7 + 76) = v5;
                 *(v7 + 80) = v6;
-                sub_8021AEE(v5, v6, 1);
+                GiveChips(v5, v6, 1);
                 *(v0 + 140) = 55;
             }
             *(*(v1 + oToolkit_GameStatePtr) + oGameState_LastMapGroup) = *(*(v1 + oToolkit_GameStatePtr) + oGameState_MapGroup);
@@ -1126,7 +1126,7 @@ signed int sub_809AB20()
                 if ( v8 == 3 )
                 {
                     *(v11 + 76) = v9;
-                    sub_803D108(v9, v10, 1);
+                    GiveNaviCustPrograms(v9, v10, 1);
                     v12 = 19;
                 }
                 else
@@ -1135,7 +1135,7 @@ signed int sub_809AB20()
                     *(v1 + 128) = v10;
                     *(v1 + 6) = 0;
                     *(v1 + 5) = 0;
-                    sub_8021AEE(v9, v10, 1);
+                    GiveChips(v9, v10, 1);
                     decompAndCopyData(&dword_809AC2C);
                     v12 = 15;
                 }
@@ -1880,16 +1880,16 @@ int sub_809C01C()
         TestEventFlagFromImmediate(1, 32);
         if ( !v2 )
         {
-            sub_8035364(0);
+            storeGameProgressToGameProgressBuffer_8035364(0);
             *(*(v1 + oToolkit_GameStatePtr) + oGameState_GameProgress) = -128;
         }
     }
     v3 = *(v0 + 52);
     if ( *(v3 + 24) )
         ClearEventFlag(*(v3 + 24));
-    sub_80010C6();
+    writeCurPETNaviToS2001c04_Unk07_80010c6();
     sub_80010BE(*(v3 + 20));
-    v4 = sub_8120DF0();
+    v4 = reloadCurNaviBaseStats_8120df0();
     sub_8033FDC(v4);
     return 0;
 }
@@ -1904,7 +1904,7 @@ int sub_809C09C()
     int v3; // r0
 
     v1 = reqBBS_8140974();
-    sub_802F238(*(v0 + 6) + 7328 + v1);
+    addMail_802f238(*(v0 + 6) + 7328 + v1);
     if ( *(v0 + 7) )
     {
         v2 = reqBBS_8140974();
@@ -2071,7 +2071,7 @@ LABEL_23:
                 TestEventFlag(*(v6 + 16));
                 if ( v4 )
                 {
-                    v7 = sub_803CE28(44);
+                    v7 = CheckKeyItem(44);
                     v10 = *(v6 + 13) + 1;
                     if ( v7 < v10 )
                         PlaySoundEffect(105, v10, v8);
@@ -2172,7 +2172,7 @@ signed int sub_809CB88()
             TestEventFlagFromImmediate(1, 99);
             if ( !v1 )
             {
-                sub_80010C6();
+                writeCurPETNaviToS2001c04_Unk07_80010c6();
                 sub_80010BE(0);
                 *(v0 + 112) = 0;
 LABEL_10:
@@ -2262,7 +2262,7 @@ LABEL_12:
                     *(v1[16] + 48) = *(v0 + 116);
                     *(v0 + 120) = *&byte_809CD18[v5];
                     SetEventFlagFromImmediate(1, 99);
-                    sub_80010C6();
+                    writeCurPETNaviToS2001c04_Unk07_80010c6();
                     v7 = *(v0 + 120);
                     *(v1[11] + 76) = v7;
                     sub_80010BE(v7);
@@ -2276,7 +2276,7 @@ LABEL_12:
             if ( !(*(v1[1] + 2) & 2) )
                 goto LABEL_12;
             PlaySoundEffect(104, 2, byte_809CCF8);
-            sub_80010C6();
+            writeCurPETNaviToS2001c04_Unk07_80010c6();
             chatbox_runScript(&eTextScript2033404, 32);
 LABEL_11:
             sub_81440D8();
@@ -2364,10 +2364,10 @@ int sub_809CDD4()
     int v2; // r0
 
     if ( getPETNaviSelect() )
-        sub_8120DF0();
+        reloadCurNaviBaseStats_8120df0();
     else
         sub_809CE40();
-    sub_813C3AC();
+    reloadCurNaviStatBoosts_813c3ac();
     sub_8120D10(0);
     if ( v1 )
         return 0;

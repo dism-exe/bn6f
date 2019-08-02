@@ -10,7 +10,7 @@
 	.include "structs/OverworldPlayerObject.inc"
 	.include "structs/OverworldNPCObject.inc"
 	.include "structs/OverworldMapObject.inc"
-	.include "structs/UnkMapScriptState_2011e60.inc"
+	.include "structs/MapScriptState.inc"
 	.include "structs/Chatbox.inc"
 	.include "structs/StartScreen.inc"
 	.include "structs/ReqBBSGui.inc"
@@ -21,6 +21,7 @@
 	.include "structs/S200ace0.inc"
 	.include "structs/S2000aa0.inc"
 	.include "structs/Warp2011bb0.inc"
+	.include "structs/Camera.inc"
 
 /*
 rough notes for now
@@ -223,7 +224,7 @@ look at:
 
 /*
 this weird set of boilerplate functions revolving around structs in asm00_1.s
-- eStruct2000780
+- eScenarioEffectState2000780
 - eStruct2001010
 */
 

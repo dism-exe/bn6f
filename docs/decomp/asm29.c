@@ -7009,7 +7009,7 @@ void __noreturn sub_80AA194()
     {
         sprite_setAnimation(v0, 1u);
         sprite_loadAnimationData(v0);
-        sub_80302A8(2, 20);
+        setCameraUnk0e_Unk0c_80302a8(2, 20);
         PlaySoundEffect(379, v3, v4);
         *(v0 + 8) = 8;
     }
@@ -7083,7 +7083,7 @@ void __noreturn sub_80AA248()
         *(v0 + 20) = 0;
         sprite_setAnimation(v0, 1u);
         sprite_loadAnimationData(v0);
-        sub_80302A8(1, 10);
+        setCameraUnk0e_Unk0c_80302a8(1, 10);
         PlaySoundEffect(218, v3, v4);
         PlaySoundEffect(192, v5, v6);
         *(v0 + 8) = 8;
@@ -7402,7 +7402,7 @@ unsigned int sub_80AA4C0()
 
 
 // 0x80aa5e4
-int __fastcall sub_80AA5E4(int a1, int a2)
+int __fastcall chooseRandomEncounterMaybe_80aa5e4(int a1, int a2)
 {
     int v2; // r10
     int v3; // r7
@@ -8366,7 +8366,7 @@ signed int sub_80AADA6()
     v2 = 30 * *(v0[oToolkit_S2011c50_Ptr] + 5);
     do
     {
-        sub_8021B92(*v1 & 0x1FF, *v1 / 0x200u, 1);
+        TakeChips(*v1 & 0x1FF, *v1 / 0x200u, 1);
         ++v1;
         --v2;
     }

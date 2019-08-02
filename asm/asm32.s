@@ -17206,7 +17206,7 @@ loc_8117764:
 sub_8117768:
 	push {lr}
 	mov r0, #0x75
-	bl sub_803CE28
+	bl CheckKeyItem
 	cmp r0, #4
 	bge loc_8117778
 	mov r0, #4
@@ -17532,7 +17532,7 @@ sub_81179E0:
 sub_81179E4:
 	push {r4-r7,lr}
 	ldrh r0, [r4,#2]
-	bl sub_803CE28
+	bl CheckKeyItem
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_Unk200a220_Ptr]
 	str r0, [r2,#8]
@@ -29268,7 +29268,7 @@ dword_811E240: .word 0x1FFFFFF8
 	thumb_func_start sub_811E248
 sub_811E248:
 	push {lr}
-	ldr r6, off_811E268 // =eStruct2000780
+	ldr r6, off_811E268 // =eScenarioEffectState2000780
 	ldr r0, off_811E258 // =off_811E25C
 	ldrb r1, [r5,#8]
 	ldr r0, [r0,r1]
@@ -29279,7 +29279,7 @@ off_811E258: .word off_811E25C
 off_811E25C: .word sub_811E26C+1
 	.word sub_811E2B4+1
 	.word sub_811E30C+1
-off_811E268: .word eStruct2000780
+off_811E268: .word eScenarioEffectState2000780
 	thumb_func_end sub_811E248
 
 	thumb_local_start
@@ -29394,13 +29394,13 @@ sub_811E314:
 	bl sub_8002FA6
 	pop {r4-r7,pc}
 dword_811E358: .word 0xFFFFFFF
-	.word eStruct2000780
+	.word eScenarioEffectState2000780
 	thumb_func_end sub_811E314
 
 	thumb_func_start sub_811E360
 sub_811E360:
 	push {lr}
-	ldr r6, off_811E380 // =eStruct2000780
+	ldr r6, off_811E380 // =eScenarioEffectState2000780
 	ldr r0, off_811E370 // =off_811E374
 	ldrb r1, [r5,#8]
 	ldr r0, [r0,r1]
@@ -29411,7 +29411,7 @@ off_811E370: .word off_811E374
 off_811E374: .word sub_811E384+1
 	.word sub_811E3CC+1
 	.word sub_811E40C+1
-off_811E380: .word eStruct2000780
+off_811E380: .word eScenarioEffectState2000780
 	thumb_func_end sub_811E360
 
 	thumb_local_start
@@ -29482,7 +29482,7 @@ sub_811E40C:
 	push {lr}
 	bl sub_80468E0
 	pop {pc}
-	.word eStruct2000780
+	.word eScenarioEffectState2000780
 	thumb_func_end sub_811E40C
 
 	thumb_func_start sub_811E418
@@ -32211,7 +32211,7 @@ loc_811FD12:
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
 	mov r2, #1
-	bl sub_8021B92 // (int idx, int searchItem, int off) -> void*
+	bl TakeChips // (int idx, int searchItem, int off) -> void*
 loc_811FD22:
 	ldrh r0, [r6,#0x1c]
 	lsl r2, r0, #7
@@ -32337,7 +32337,7 @@ loc_811FE06:
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
 	mov r2, #1
-	bl sub_8021B92 // (int idx, int searchItem, int off) -> void*
+	bl TakeChips // (int idx, int searchItem, int off) -> void*
 	add r7, #2
 	ldr r0, off_811FE44 // =0x3c
 	ldr r1, [sp,#8]
@@ -32604,7 +32604,7 @@ loc_811FFE8:
 	cmp r1, #0xff
 	beq loc_811FFF6
 	mov r2, #0x5a
-	bl sub_8021AEE
+	bl GiveChips
 loc_811FFF6:
 	sub r6, #1
 	cmp r6, #0
@@ -33535,7 +33535,7 @@ loc_81206D8:
 	beq loc_81206EE
 	lsl r1, r1, #9
 	lsr r1, r1, #0x19
-	bl sub_8021AEE
+	bl GiveChips
 loc_81206EE:
 	sub r7, #0x20
 	add r4, #1
@@ -34047,7 +34047,7 @@ loc_8120A9E:
 	ldrh r0, [r7,r6]
 	bl split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
 	mov r2, #1
-	bl sub_8021B92 // (int idx, int searchItem, int off) -> void*
+	bl TakeChips // (int idx, int searchItem, int off) -> void*
 	add r6, #2
 	cmp r6, #0x3c
 	blt loc_8120A9E
@@ -34459,8 +34459,8 @@ loc_8120DE6:
 	.byte 0, 0
 	thumb_func_end sub_8120DAC
 
-	thumb_func_start sub_8120DF0
-sub_8120DF0:
+	thumb_func_start reloadCurNaviBaseStats_8120df0
+reloadCurNaviBaseStats_8120df0:
 	push {r4-r7,lr}
 	sub sp, sp, #0x40
 	mov r7, sp
@@ -34474,7 +34474,7 @@ loc_8120DFA:
 	beq loc_8120E22
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
-	ldrb r0, [r0,#7]
+	ldrb r0, [r0,#oS2001c04_Unk_07]
 	cmp r1, #0x40
 	bne loc_8120E16
 	mov r1, #0x40
@@ -34716,7 +34716,7 @@ byte_81210C8: .byte 0x2D, 0x0, 0x0, 0x0, 0x2E, 0x0, 0x0, 0x0, 0x2F, 0x0, 0x0, 0x
 	.byte 0x0, 0x5B, 0x0, 0x0, 0x0, 0xB, 0x0, 0x0, 0x0, 0xC, 0x0, 0x0, 0x0
 	.byte 0xA, 0x0, 0x0, 0x0, 0x40, 0x0, 0x0, 0x0
 dword_8121104: .word 0xFFFFFFFF
-	thumb_func_end sub_8120DF0
+	thumb_func_end reloadCurNaviBaseStats_8120df0
 
 	thumb_local_start
 sub_8121108:

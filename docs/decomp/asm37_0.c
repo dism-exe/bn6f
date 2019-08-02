@@ -1143,7 +1143,7 @@ void __cdecl sub_813C030()
         do
         {
             if ( v2[v3] )
-                sub_803D108(v0, v2[v3], 9);
+                GiveNaviCustPrograms(v0, v2[v3], 9);
             v3 += 16;
         }
         while ( v3 < 64 );
@@ -1381,7 +1381,7 @@ int __fastcall sub_813C334(unsigned int a1, int a2)
 
 
 // 0x813c3ac
-int sub_813C3AC()
+int reloadCurNaviStatBoosts_813c3ac()
 {
     int v0; // r10
     int v1; // r0
@@ -1475,7 +1475,7 @@ int sub_813C4A8()
     int result; // r0
     void *v1; // r1
 
-    result = sub_803CE28(113);
+    result = CheckKeyItem(113);
     v1 = pt_813C4BC[result];
     return result * 4;
 }
@@ -1487,7 +1487,7 @@ int sub_813C4C8()
     int result; // r0
     char (*v1)[52]; // r1
 
-    result = sub_803CE28(113);
+    result = CheckKeyItem(113);
     v1 = off_813C4DC[result];
     return result * 4;
 }
@@ -1521,7 +1521,7 @@ int __fastcall sub_813C584(int a1)
         v3 = 0;
         do
         {
-            v4 = sub_803CE28(113);
+            v4 = CheckKeyItem(113);
             if ( (*sub_813B9E0(v4))[15 * (v1 + 5) + 5 + v3] == 3 )
             {
                 v5 = sub_813B9B4(v3, v1);

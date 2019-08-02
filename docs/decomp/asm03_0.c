@@ -8971,11 +8971,11 @@ void __fastcall sub_802CAA6(signed int result, int a2, int a3)
     {
         if ( result == 1 )
         {
-            sub_803CFF8();
+            GiveZenny();
         }
         else if ( result != 2 && result == 3 )
         {
-            sub_803D080();
+            GiveBugfrags();
         }
     }
     else
@@ -8985,11 +8985,11 @@ void __fastcall sub_802CAA6(signed int result, int a2, int a3)
         if ( sub_802D246() & 8 && (v3 = sub_800A832(), v3 != 1) )
         {
             if ( v3 == 2 )
-                sub_8021B92(v4, v5, 1);
+                TakeChips(v4, v5, 1);
         }
         else
         {
-            sub_8021AEE(v4, v5, 1);
+            GiveChips(v4, v5, 1);
         }
     }
 }
@@ -12755,7 +12755,7 @@ signed int __fastcall TestEventFlagRangeFromImmediate(int a1, int a2, int a3)
 
 
 // 0x802f238
-int __fastcall sub_802F238(unsigned int a1)
+int __fastcall addMail_802f238(unsigned int a1)
 {
     unsigned int v1; // r7
     int v2; // r7
@@ -13983,7 +13983,7 @@ int sub_80301E8()
 
 
 // 0x80302a8
-int __fastcall sub_80302A8(int result, __int16 a2)
+int __fastcall setCameraUnk0e_Unk0c_80302a8(int result, __int16 a2)
 {
     int v2; // r10
     int v3; // r2

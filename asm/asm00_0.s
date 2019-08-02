@@ -1578,7 +1578,7 @@ loc_8000FEC:
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8000FFA
 	mov r0, r6
-	bl reqBBS_813E5DC
+	bl reqBBS_addBBSMessage_813e5dc
 loc_8000FFA:
 	add r6, #1
 	sub r4, #1
@@ -1607,7 +1607,7 @@ loc_800101A:
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8001028
 	mov r0, r6
-	bl reqBBS_813F9A0
+	bl reqBBS_addRequest_813F9A0
 loc_8001028:
 	add r6, #1
 	sub r4, #1
@@ -1715,15 +1715,15 @@ SetCurPETNavi:
 	mov pc, lr
 	thumb_func_end SetCurPETNavi
 
-	thumb_func_start sub_80010C6
-sub_80010C6:
+	thumb_func_start writeCurPETNaviToS2001c04_Unk07_80010c6
+writeCurPETNaviToS2001c04_Unk07_80010c6:
 	push {lr}
 	bl GetCurPETNavi // () -> u8
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_S2001c04_Ptr]
-	strb r0, [r3,#7]
+	strb r0, [r3,#oS2001c04_Unk_07]
 	pop {pc}
-	thumb_func_end sub_80010C6
+	thumb_func_end writeCurPETNaviToS2001c04_Unk07_80010c6
 
 	thumb_func_start sub_80010D4
 sub_80010D4:
@@ -4429,8 +4429,8 @@ Initialize_eStruct200a6a0:
 	pop {r4-r7,pc}
 	thumb_func_end Initialize_eStruct200a6a0
 
-	thumb_func_start sub_8002484
-sub_8002484:
+	thumb_func_start run_eStruct200a6a0_Callback_8002484
+run_eStruct200a6a0_Callback_8002484:
 	push {r4-r7,lr}
 	ldr r5, off_80024C8 // =eStruct200a6a0
 	ldrb r0, [r5]
@@ -4448,7 +4448,7 @@ loc_8002498:
 	mov r1, #0x50
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4-r7,pc}
-	thumb_func_end sub_8002484
+	thumb_func_end run_eStruct200a6a0_Callback_8002484
 
 	thumb_func_start zeroFill_80024A2
 zeroFill_80024A2:

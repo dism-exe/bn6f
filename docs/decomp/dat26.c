@@ -356,7 +356,7 @@ LABEL_7:
         }
         goto LABEL_7;
     }
-    sub_80302A8(2, 20);
+    setCameraUnk0e_Unk0c_80302a8(2, 20);
     sub_80931FA(30);
     PlaySoundEffect(192, v19, v20);
     *v1 = 44;

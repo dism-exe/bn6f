@@ -9304,7 +9304,7 @@ sub_80AA194:
 	bl sprite_loadAnimationData // () -> void
 	mov r0, #2
 	mov r1, #0x14
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0x7c 
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -9393,7 +9393,7 @@ sub_80AA248:
 	bl sprite_loadAnimationData // () -> void
 	mov r0, #1
 	mov r1, #0xa
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xda
 	bl PlaySoundEffect
 	mov r0, #0xc0
@@ -9790,8 +9790,8 @@ loc_80AA5DC:
 	.word byte_8020CE4
 	thumb_func_end sub_80AA4C0
 
-	thumb_func_start sub_80AA5E4
-sub_80AA5E4:
+	thumb_func_start chooseRandomEncounterMaybe_80aa5e4
+chooseRandomEncounterMaybe_80aa5e4:
 	push {r7,lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -9799,29 +9799,26 @@ sub_80AA5E4:
 	bl sub_80AA5F4
 	str r0, [r7,#oGameState_CurBattleDataPtr]
 	pop {r7,pc}
-	thumb_func_end sub_80AA5E4
+	thumb_func_end chooseRandomEncounterMaybe_80aa5e4
 
 	thumb_func_start sub_80AA5F4
 sub_80AA5F4:
 	push {r4-r7,lr}
 	sub sp, sp, #0xec
 	str r2, [sp,#0xe8]
-	mov r0, #6
-	mov r1, #0x7f
+	movflag EVENT_67F
 	bl TestEventFlagFromImmediate
 	beq loc_80AA608
 	ldr r3, off_80AA698 // =off_8020178 
 	b loc_80AA626
 loc_80AA608:
-	mov r0, #6
-	mov r1, #0x80
+	movflag EVENT_680
 	bl TestEventFlagFromImmediate
 	beq loc_80AA616
 	ldr r3, off_80AA69C // =off_8020180 
 	b loc_80AA626
 loc_80AA616:
-	mov r0, #6
-	mov r1, #0x81
+	movflag EVENT_681
 	bl TestEventFlagFromImmediate
 	beq loc_80AA624
 	ldr r3, off_80AA6A0 // =off_8020188 
@@ -10918,7 +10915,7 @@ loc_80AADB6:
 	lsl r0, r0, #0x17
 	lsr r0, r0, #0x17
 	mov r2, #1
-	bl sub_8021B92 // (int idx, int searchItem, int off) -> void*
+	bl TakeChips // (int idx, int searchItem, int off) -> void*
 	add r7, #2
 	sub r4, #1
 	bne loc_80AADB6

@@ -12178,7 +12178,7 @@ int sub_8117768()
 {
     int result; // r0
 
-    result = sub_803CE28(117);
+    result = CheckKeyItem(117);
     if ( result < 4 )
         return 4;
     if ( result > 8 )
@@ -12424,7 +12424,7 @@ int __noreturn sub_81179E4()
     int v1; // r7
     int v2; // r10
 
-    *(*(v2 + oToolkit_Unk200a220_Ptr) + 8) = sub_803CE28(*(v0 + 2));
+    *(*(v2 + oToolkit_Unk200a220_Ptr) + 8) = CheckKeyItem(*(v0 + 2));
     return renderTextGfx_8045F8C(*(v1 + 36), 18, &unk_2016200, 100742432);
 }
 
@@ -22313,7 +22313,7 @@ signed int __fastcall sub_811FCB8(int a1, int *a2, int a3, int a4)
                 return 1;
         }
         if ( !v22 )
-            sub_8021B92(v18, v19, 1);
+            TakeChips(v18, v19, 1);
         v11 = *(v9 + 14);
         v12 = v19 | (v11 << 7);
         *v5 = (v11 << 16) | v12;
@@ -22390,7 +22390,7 @@ LABEL_11:
             if ( ++v9 > 3 )
                 return 1;
         }
-        sub_8021B92(v12, v13, 1);
+        TakeChips(v12, v13, 1);
         ++v5;
         if ( v5 >= &word_3C[30 * v4] + v14 )
             goto LABEL_11;
@@ -22566,7 +22566,7 @@ __int16 *sub_811FFC0()
             {
                 v5 = v3[v4];
                 if ( v5 != 255 )
-                    sub_8021AEE(v1, v5, 90);
+                    GiveChips(v1, v5, 90);
                 --v4;
             }
             while ( v4 >= 0 );
@@ -23278,7 +23278,7 @@ int __fastcall sub_81206C4(int result)
         {
             result = *(v4 + 28) << 16 >> 23;
             if ( result )
-                result = sub_8021AEE(result, *(v4 + 28) & 0x7F, *(v4 + 20) >> 16);
+                result = GiveChips(result, *(v4 + 28) & 0x7F, *(v4 + 20) >> 16);
             v4 -= 32;
             ++v2;
         }
@@ -23648,7 +23648,7 @@ signed int sub_8120A88()
         do
         {
             v4 = split9BitsFromBitfield_8021AE0(*(v2 + v3));
-            result = sub_8021B92(v4, v5, 1);
+            result = TakeChips(v4, v5, 1);
             v3 += 2;
         }
         while ( v3 < 60 );
@@ -23926,7 +23926,7 @@ signed int __fastcall sub_8120DAC(int a1)
 
 
 // 0x8120df0
-int sub_8120DF0()
+int reloadCurNaviBaseStats_8120df0()
 {
     int v0; // r10
     int *v1; // r7

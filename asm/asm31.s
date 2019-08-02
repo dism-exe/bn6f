@@ -264,7 +264,7 @@ loc_80B83E8:
 loc_80B83EC:
 	mov r0, #3
 	mov r1, #0x23 
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 loc_80B83F4:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -685,7 +685,7 @@ loc_80B8748:
 	bl sub_80B8844
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_crackPanel
@@ -3022,7 +3022,7 @@ loc_80B991A:
 	bl PlaySoundEffect
 	mov r0, #1
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 locret_80B9966:
 	pop {r4,r6,r7,pc}
 dword_80B9968: .word 0x700FF11
@@ -3218,7 +3218,7 @@ sub_80B9ABA:
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0
 	ldrh r1, [r5,#oBattleObject_Timer]
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	b locret_80B9AE8
 loc_80B9AD8:
 	ldrh r0, [r5,#oBattleObject_Timer]
@@ -3265,7 +3265,7 @@ loc_80B9B04:
 loc_80B9B20:
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	b locret_80B9B2E
 loc_80B9B2A:
 	mov r0, #0
@@ -6816,7 +6816,7 @@ loc_80BB588:
 	bl PlaySoundEffect
 	mov r0, #1
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80BB52E
 
@@ -7872,7 +7872,7 @@ sub_80BBD60:
 	bl PlaySoundEffect
 	mov r0, #2
 	ldrh r1, [r5,#oBattleObject_Timer]
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 loc_80BBD88:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -11202,7 +11202,7 @@ loc_80BD6E6:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #1
 	mov r1, #0xa
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	ldr r4, dword_80BD9F4 // =0x10a00 
 	bl sub_80E11E0
 loc_80BD734:
@@ -11497,7 +11497,7 @@ sub_80BD8BC:
 	bl PlaySoundEffect
 	mov r0, #3
 	mov r1, #0x23 
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	ldr r4, dword_80BDA04 // =0x12800 
 	bl sub_80E11E0
 	mov r0, #0x1e
@@ -12445,7 +12445,7 @@ loc_80BE032:
 	bl sub_80C53A6
 	ldr r0, [sp,#8]
 	ldr r1, [sp,#0xc]
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	ldr r4, [sp,#0x10]
 	bl sub_80E11E0
 loc_80BE086:
@@ -14577,7 +14577,7 @@ loc_80BF08E:
 	strb r1, [r0]
 	mov r0, #3
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	ldr r4, dword_80BF254 // =0x12300 
 	bl sub_80E11E0
 	mov r0, #0xc3
@@ -15245,7 +15245,7 @@ sub_80BF588:
 	bne loc_80BF5A0
 	mov r0, #1
 	mov r1, #0xa
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xa
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -15313,7 +15313,7 @@ loc_80BF614:
 	bl PlaySoundEffect
 	mov r0, #3
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #0
@@ -15681,7 +15681,7 @@ sub_80BF8DA:
 	bl sub_80B8E70
 	mov r0, #2
 	mov r1, #0x6a 
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80BF8FC:
@@ -16085,7 +16085,7 @@ loc_80BFB98:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #2
 	mov r1, #0x28 
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	ldr r4, dword_80BFC24 // =0x11e00 
 	bl sub_80E11E0
 loc_80BFBEA:
@@ -20716,7 +20716,7 @@ sub_80C1DC4:
 	mov r0, #2
 	ldrh r1, [r5,#oBattleObject_Timer]
 	add r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	b locret_80C1E78
 loc_80C1E26:
 	ldrb r0, [r5,#oBattleObject_Param3]
@@ -26948,7 +26948,7 @@ sub_80C5014:
 	push {r4,r6,r7,lr}
 	mov r0, #3
 	mov r1, #0x28 
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xc3
 	bl PlaySoundEffect
 	bl object_getFrontDirection // () -> int
@@ -26977,7 +26977,7 @@ sub_80C5050:
 	push {r4,r6,r7,lr}
 	mov r0, #3
 	mov r1, #0x28 
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xc3
 	bl PlaySoundEffect
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -39969,7 +39969,7 @@ loc_80CB7CE:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #3
 	mov r1, #0x28 
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xc3
 	bl PlaySoundEffect
 	bl object_getFrontDirection // () -> int
@@ -40673,7 +40673,7 @@ sub_80CBD32:
 	bl sub_80E2FE8
 	mov r0, #1
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	b loc_80CBDC2
 loc_80CBD98:
 	ldr r4, dword_80CC038 // =0x405ff0f 
@@ -40958,7 +40958,7 @@ sub_80CBFAE:
 	bl sub_80E2FE8
 	mov r0, #1
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	b loc_80CC002
 	mov r4, r0
 	mov r7, sp
@@ -43829,7 +43829,7 @@ loc_80CD688:
 	mov r0, #1
 	mov r1, #0xf
 	push {r5}
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	pop {r5}
 loc_80CD6BC:
 	mov r0, #1
@@ -44006,7 +44006,7 @@ sub_80CD7D0:
 	mov r0, #1
 	mov r1, #0x3c 
 	push {r5}
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	pop {r5}
 	mov r0, #0xc3
 	bl PlaySoundEffect
@@ -44604,7 +44604,7 @@ sub_80CDCBC:
 	bl sub_80E2FE8
 	mov r0, #1
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xc3
 	bl PlaySoundEffect
 	ldrb r0, [r5,#oBattleObject_Param1]
@@ -44613,7 +44613,7 @@ sub_80CDCBC:
 	mov r0, #3
 	mov r1, #0x3c 
 	push {r5}
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	pop {r5}
 locret_80CDD28:
 	pop {r4,r6,r7,pc}
@@ -47303,7 +47303,7 @@ sub_80CF250:
 	mov r0, #2
 	mov r1, #0x1e
 	push {r5}
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	pop {r5}
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -47620,7 +47620,7 @@ sub_80CF4E6:
 	tst r0, r0
 	beq loc_80CF526
 	mov r1, #0xf
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 loc_80CF526:
 	mov r0, #1
 	bl object_setCollisionRegion
@@ -48340,7 +48340,7 @@ loc_80CFADC:
 loc_80CFAFE:
 	mov r0, #1
 	mov r1, #0x14
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0
 	str r0, [r5,#oBattleObject_Z]
 	mov r0, #1
@@ -54574,7 +54574,7 @@ loc_80D2B42:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #0
 	mov r1, #0xc
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 loc_80D2B56:
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	sub r0, #1
@@ -57762,7 +57762,7 @@ sub_80D43C0:
 	bl object_spawnCollisionRegion
 	mov r0, #2
 	mov r1, #4
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	pop {r4,r6,r7,pc}
 	.balign 4, 0x00
 dword_80D43E4: .word 0x3205FF83
@@ -59119,7 +59119,7 @@ sub_80D4E64:
 	mov r0, #1
 	mov r1, #0x3c 
 	push {r5}
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	pop {r5}
 	mov r0, #0x2f 
 	add r0, #0xff
@@ -60529,7 +60529,7 @@ loc_80D59BE:
 	beq locret_80D59E0
 	mov r0, #2
 	mov r1, #0x14
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xc0
 	bl PlaySoundEffect
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -63929,7 +63929,7 @@ sub_80D74DC:
 	str r0, [r5,#oBattleObject_TimerAndTimer2]
 	mov r0, #1
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #1
 	str r0, [r5,#oBattleObject_ExtraVars+4]
 loc_80D7512:
@@ -64294,7 +64294,7 @@ loc_80D7802:
 	mov r0, #1
 	mov r1, #0xf
 	push {r5}
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	pop {r5}
 	mov r0, #1
 	bl object_setCollisionRegion
@@ -68303,7 +68303,7 @@ sub_80D9788:
 loc_80D97CE:
 	mov r0, #2
 	mov r1, #0x18
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 loc_80D97D6:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -69205,7 +69205,7 @@ loc_80D9F3C:
 	bl sub_801BD3C
 	mov r0, #1
 	mov r1, #0xf
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	ldrb r0, [r5,#oObjectHeader_Flags]
@@ -70175,7 +70175,7 @@ loc_80DA6C2:
 	bl sub_80DA7EC
 	mov r0, #1
 	mov r1, #0xf
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 loc_80DA6FC:
 	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
@@ -70696,7 +70696,7 @@ loc_80DAAF4:
 	strb r1, [r0,#oObjectHeader_Flags]
 	mov r0, #1
 	mov r1, #0x14
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -70752,7 +70752,7 @@ loc_80DAB78:
 	str r1, [r5,#oBattleObject_ExtraVars+0x10]
 	mov r0, #1
 	mov r1, #0x14
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	b locret_80DAB88
 loc_80DAB84:
 	mov r0, #CUR_STATE_DESTROY
@@ -71967,7 +71967,7 @@ sub_80DB4CE:
 	push {r4,r6,r7,lr}
 	mov r0, #3
 	mov r1, #0x2d 
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #0
@@ -72348,7 +72348,7 @@ loc_80DB7DC:
 	beq locret_80DB7FE
 	mov r0, #2
 	mov r1, #0x14
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xc0
 	bl PlaySoundEffect
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -73130,7 +73130,7 @@ loc_80DBE2A:
 	beq loc_80DBE3A
 	mov r0, #1
 	mov r1, #5
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 loc_80DBE3A:
 	mov r1, #0
 loc_80DBE3C:
@@ -73399,7 +73399,7 @@ sub_80DC018:
 	beq loc_80DC05A
 	mov r0, #1
 	mov r1, #0xf
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 loc_80DC05A:
 	ldrb r0, [r7,#5]
 	tst r0, r0
@@ -74935,7 +74935,7 @@ loc_80DCBFC:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #2
 	mov r1, #0xf
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80DCC44
@@ -77090,7 +77090,7 @@ sub_80DDD30:
 	bl PlaySoundEffect
 	mov r0, #1
 	mov r1, #0xf
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_crackPanel
@@ -91714,7 +91714,7 @@ loc_80E4F66:
 	bl sub_80E5050
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xc0
 	bl PlaySoundEffect
 	mov r0, #0xe
@@ -99388,7 +99388,7 @@ sub_80E88C0:
 	strb r0, [r5,#oBattleObject_Param2]
 	mov r0, #2
 	mov r1, #0xc
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E88D8
@@ -102249,7 +102249,7 @@ sub_80E9E2C:
 	pop {r5}
 	mov r0, #3
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xab
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -104314,7 +104314,7 @@ loc_80EB370:
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #2
 	mov r1, #0xf
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xc0
 	bl PlaySoundEffect
 	mov r0, #3
@@ -107205,7 +107205,7 @@ loc_80ECB4A:
 	bne loc_80ECB74
 	mov r0, #1
 	mov r1, #0x14
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1
@@ -117239,7 +117239,7 @@ loc_80F1922:
 loc_80F1936:
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xd
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -117768,7 +117768,7 @@ sub_80F1D30:
 	bl sub_80F1E98
 	mov r0, #1
 	mov r1, #0x14
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0x14
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_80F1D6A
@@ -120020,7 +120020,7 @@ sub_80F32BC:
 	beq loc_80F330C
 	mov r0, #2
 	mov r1, #0x14
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	ldrb r2, [r7,#oAIAttackVars_Unk_02]
 	ldrb r3, [r7,#oAIAttackVars_Unk_0d]
 	lsl r3, r3, #8
@@ -130838,7 +130838,7 @@ loc_80F8CA8:
 loc_80F8CBC:
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	bl sub_80F8E48
 locret_80F8CC8:
 	pop {r4,r6,pc}
@@ -134201,7 +134201,7 @@ sub_80FA8F0:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #1
 	mov r1, #0xa
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_80FA912:
@@ -134212,7 +134212,7 @@ loc_80FA912:
 	bgt loc_80FA928
 	mov r0, #1
 	mov r1, #0xa
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_80FA928:
@@ -135431,7 +135431,7 @@ loc_80FB3B4:
 	bl sub_80FB81E
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 locret_80FB3C8:
 	pop {r4,pc}
 	thumb_func_end sub_80FB366
@@ -141223,7 +141223,7 @@ sub_80FE394:
 	strb r0, [r7,#oAIAttackVars_Unk_0d]
 	mov r0, #0
 	mov r1, #0xa
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	b locret_80FE3EA
@@ -141235,7 +141235,7 @@ loc_80FE3BA:
 	bgt loc_80FE3D0
 	mov r0, #0
 	mov r1, #0xa
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_80FE3D0:
@@ -141289,7 +141289,7 @@ loc_80FE41E:
 loc_80FE424:
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 locret_80FE42C:
 	pop {pc}
 	thumb_func_end sub_80FE3EC
@@ -149283,7 +149283,7 @@ loc_8102600:
 	bne loc_8102626
 	mov r0, #1
 	mov r1, #0x14
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1
@@ -149827,7 +149827,7 @@ sub_81029CE:
 	bl PlaySoundEffect
 	mov r0, #0
 	mov r1, #0x3c 
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 loc_81029FE:
@@ -149940,7 +149940,7 @@ loc_8102ABA:
 loc_8102AC0:
 	mov r0, #2
 	mov r1, #3
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	ldrb r0, [r7,#oAIAttackVars_Unk_03]
 	cmp r0, #0
 	bne loc_8102ADE
@@ -150933,7 +150933,7 @@ sub_8103286:
 	bl sub_81039A4
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0x1e
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_81032CE
@@ -152884,7 +152884,7 @@ sub_8104290:
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xc9
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -153086,7 +153086,7 @@ sub_8104420:
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xc9
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -153374,7 +153374,7 @@ sub_8104640:
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xc9
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -153799,7 +153799,7 @@ sub_8104998:
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	mov r0, #2
 	mov r1, #0x14
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0x14
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_81049BE
@@ -154139,7 +154139,7 @@ sub_8104C18:
 	bl PlaySoundEffect
 	mov r0, #2
 	ldrh r1, [r7,#oAIAttackVars_Unk_10]
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0x3c 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0x10
@@ -154322,7 +154322,7 @@ sub_8104D5E:
 	pop {r4,r6,r7}
 	mov r0, #2
 	mov r1, #0xa
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	b locret_8104DC6
@@ -154334,7 +154334,7 @@ loc_8104DA4:
 	bgt loc_8104DBA
 	mov r0, #2
 	mov r1, #0xa
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_8104DBA:
@@ -154416,7 +154416,7 @@ sub_8104E36:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #2
 	mov r1, #0xa
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xa
 	strb r0, [r7,#oAIAttackVars_Unk_0e]
 	mov r0, #0xe4
@@ -154432,7 +154432,7 @@ loc_8104E62:
 	bgt loc_8104E78
 	mov r0, #2
 	mov r1, #0xa
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xa
 	strb r0, [r7,#oAIAttackVars_Unk_0e]
 loc_8104E78:
@@ -156304,7 +156304,7 @@ sub_8105DE6:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #2
 	mov r1, #0xa
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	b locret_8105E3A
@@ -156316,7 +156316,7 @@ loc_8105E18:
 	bgt loc_8105E2E
 	mov r0, #2
 	mov r1, #0xa
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_8105E2E:
@@ -156735,7 +156735,7 @@ sub_810610A:
 	strb r1, [r7,#oAIAttackVars_Unk_17]
 	mov r0, #1
 	mov r1, #5
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #5
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_8106158
@@ -157005,7 +157005,7 @@ sub_81062F8:
 	bl sub_81067D0
 	mov r0, #3
 	ldrh r1, [r7,#oAIAttackVars_Unk_10]
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	mov r0, #0xc8
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -167833,7 +167833,7 @@ sub_810C0E4:
 	cmp r1, #0
 	beq loc_810C120
 	mov r0, #2
-	bl sub_80302A8
+	bl setCameraUnk0e_Unk0c_80302a8
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1
