@@ -620,7 +620,7 @@ byte_8099F75: .byte 0x2, 0xFF, 0x1, 0x4, 0x8, 0x4B, 0x4D, 0xA4, 0x9, 0x8, 0x1C, 
 sub_8099FFC:
 	push {r4-r7,lr}
 	mov r0, #0
-	bl sub_8033FC0
+	bl doPETEffect_8033fc0
 	bl byte_809A284
 	strb r1, [r5,#8]
 	strb r1, [r5,#4]
@@ -920,7 +920,7 @@ dword_809A25C: .word 0xFFFFFFD0
 sub_809A260:
 	push {r4-r7,lr}
 	mov r0, #1
-	bl sub_8033FC0
+	bl doPETEffect_8033fc0
 	bl copyMemory_8001850
 	bl sub_8033978
 	bl sub_8003962
@@ -1205,7 +1205,7 @@ sub_809A4EC:
 	movflag EVENT_1725
 	bl ClearEventFlagFromImmediate
 	mov r0, #1
-	bl sub_8033FC0
+	bl doPETEffect_8033fc0
 	bl copyMemory_8001850
 	bl sub_8033978
 	bl sub_8003962
@@ -1666,7 +1666,7 @@ byte_809A8A8: .byte 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17, 0x47, 0x1, 0xFF
 sub_809A8E4:
 	push {r4-r7,lr}
 	mov r0, #0
-	bl sub_8033FC0
+	bl doPETEffect_8033fc0
 	ldr r7, off_809AA20 // =eS200AC80
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_ChatboxPtr]
@@ -1805,7 +1805,7 @@ sub_809AA04:
 	bl sub_800399A
 	bl sub_8003AEA
 	mov r0, #1
-	bl sub_8033FC0
+	bl doPETEffect_8033fc0
 	mov r0, #0
 	pop {r4-r7,pc}
 off_809AA20: .word eS200AC80
@@ -1834,7 +1834,7 @@ byte_809AA87: .byte 0x4, 0x88, 0x4B, 0x89, 0xAC, 0x9, 0x8, 0x1C, 0x8, 0x0, 0x50
 sub_809AAB8:
 	push {r4-r7,lr}
 	mov r0, #0
-	bl sub_8033FC0
+	bl doPETEffect_8033fc0
 	bl sub_8003984
 	bl sub_8003AD4
 	ldr r0, off_809AD78 // =eTextScript2033404
@@ -2173,7 +2173,7 @@ sub_809AD4C:
 	movflag EVENT_1725
 	bl ClearEventFlagFromImmediate
 	mov r0, #1
-	bl sub_8033FC0
+	bl doPETEffect_8033fc0
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl sub_800399A
@@ -3873,7 +3873,7 @@ byte_809CB40: .byte 0x3B, 0x4B, 0x45, 0xCD, 0x9, 0x8, 0x3F, 0x4, 0x0, 0x4B, 0xC5
 sub_809CB68:
 	push {r4-r7,lr}
 	mov r0, #0
-	bl sub_8033FC0
+	bl doPETEffect_8033fc0
 	bl sub_8003984
 	bl sub_8003AD4
 	ldr r0, byte_809CEAC+4 // =0x4
@@ -4086,7 +4086,7 @@ sub_809CD34:
 sub_809CD44:
 	push {r4-r7,lr}
 	mov r0, #1
-	bl sub_8033FC0
+	bl doPETEffect_8033fc0
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl sub_800399A

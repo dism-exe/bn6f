@@ -809,8 +809,8 @@ byte_8033FB4: .byte 0x6, 0x0, 0x24, 0x40, 0x0, 0x0, 0x30, 0x40
 dword_8033FBC: .word 0xC7AC
 	thumb_func_end sub_8033F80
 
-	thumb_func_start sub_8033FC0
-sub_8033FC0:
+	thumb_func_start doPETEffect_8033fc0
+doPETEffect_8033fc0:
 	push {r5,lr}
 	ldr r5, off_8033FD8 // =unk_2011E30
 	mov r1, #0
@@ -824,7 +824,7 @@ locret_8033FD4:
 	pop {r5,pc}
 	.balign 4, 0x00
 off_8033FD8: .word unk_2011E30
-	thumb_func_end sub_8033FC0
+	thumb_func_end doPETEffect_8033fc0
 
 	thumb_func_start sub_8033FDC
 sub_8033FDC:

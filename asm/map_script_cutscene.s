@@ -11,10 +11,10 @@ ScriptCmds8035808:
 	.word MapScriptCmd_jump_if_mem_equals+1
 	.word MapScriptCmd_jump_if_unk_navicust_range+1
 	.word MapScriptCmd_jump_if_chip_count_in_range+1
-	.word MapScriptCmd_jump_if_eStruct200A008_unk01_equals+1
-	.word MapScriptCmd_jump_if_eStruct200A008_unk01_not_equal+1
-	.word MapScriptCmd_cmd_8035afa+1
-	.word MapScriptCmd_cmd_8035b44+1
+	.word MapScriptCmd_jump_if_battle_result_equals+1
+	.word MapScriptCmd_jump_if_battle_result_not_equal+1
+	.word MapScriptCmd_coordinate_trigger_equals_cmd_8035afa+1
+	.word MapScriptCmd_coordinate_trigger_not_equal_cmd_8035b44+1
 	.word MapScriptCmd_jump_if_game_state_0e_equals+1
 	.word MapScriptCmd_jump_if_game_state_0e_not_equals+1
 	.word MapScriptCmd_jump_if_current_navi_equals+1
@@ -24,7 +24,7 @@ ScriptCmds8035808:
 	.word MapScriptCmd_jump_if_game_state_44_equals+1
 	.word MapScriptCmd_jump_if_game_state_44_not_equals+1
 	.word MapScriptCmd_jump_if_map_group_compare_last_map_group+1
-	.word MapScriptCmd_cmd_8035ca0+1
+	.word MapScriptCmd_switch_case_from_navi_stats_4c+1
 	.word MapScriptCmd_cmd_8035cd6+1
 	.word MapScriptCmd_cmd_8035cf8+1
 	.word MapScriptCmd_jump_if_fade_active+1
@@ -55,11 +55,11 @@ ScriptCmds8035808:
 	.word MapScriptCmd_sound_cmd_803810e+1
 	.word MapScriptCmd_stop_sound+1
 	.word MapScriptCmd_navicust_maybe_803813e+1
-	.word MapScriptCmd_call_sub_8033FC0+1
+	.word MapScriptCmd_do_pet_effect+1
 	.word NULL
 	.word MapScriptCmd_init_eStruct200a6a0+1
 	.word MapScriptCmd_run_eStruct200a6a0_callback+1
-	.word MapScriptCmd_write_script_struct_10_word+1
+	.word MapScriptCmd_run_or_end_continuous_secondary_map_script+1
 	.word MapScriptCmd_init_scenario_effect+1
 	.word MapScriptCmd_end_scenario_effect+1
 	.word MapScriptCmd_init_minigame_effect+1
@@ -364,16 +364,16 @@ MapScriptCmd_jump_if_chip_count_in_range: // 8035AAA
 // 0x0c byte1 signedbyte2 destination
 // sub_8031A7A(complex) returns r0, r1. if r0 == 0, r1 is used in comparison
 // jump if byte1 == compByte
-MapScriptCmd_cmd_8035afa: // 8035afa
+MapScriptCmd_coordinate_trigger_equals_cmd_8035afa: // 8035afa
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptSignedByte
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
-	ldr r0, [r3,#0x1c]
-	ldr r1, [r3,#0x20]
-	ldr r2, [r3,#0x24]
+	ldr r0, [r3,#oOWPlayerObject_X]
+	ldr r1, [r3,#oOWPlayerObject_Y]
+	ldr r2, [r3,#oOWPlayerObject_Z]
 	lsl r4, r4, #0x10
 	add r2, r2, r4
 	sub sp, sp, #0xc
@@ -400,12 +400,12 @@ loc_8035B3E:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_cmd_8035afa
+	thumb_func_end MapScriptCmd_coordinate_trigger_equals_cmd_8035afa
 
 	thumb_local_start
 // 0x0d byte1 signedbyte2 destination
 // like 0x0c except jumps if not equal
-MapScriptCmd_cmd_8035b44: // 8035b44
+MapScriptCmd_coordinate_trigger_not_equal_cmd_8035b44: // 8035b44
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptSignedByte
@@ -441,7 +441,7 @@ loc_8035B88:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_cmd_8035b44
+	thumb_func_end MapScriptCmd_coordinate_trigger_not_equal_cmd_8035b44
 
 	thumb_local_start
 // 0x0e byte1 destination
@@ -623,13 +623,12 @@ MapScriptCmd_jump_if_map_group_compare_last_map_group: // 8035C6E
 
 	thumb_local_start
 // 0x17 destination1 destination5 destination9
-// jumptable, using [[eToolkit_S20047CC_Ptrs] + 0x4c] as the base index
+// jumptable, using [eNaviStats + 0x4c] as the base index
 // default is destination1
-// eToolkit_S20047CC_Ptrs
-MapScriptCmd_cmd_8035ca0: // 8035CA0
+MapScriptCmd_switch_case_from_navi_stats_4c: // 8035CA0
 	push {lr}
 	mov r0, #0
-	mov r1, #0x4c
+	mov r1, #oNaviStats_Unk_4c
 	bl GetNaviStatsByte
 	cmp r0, #1
 	beq loc_8035CBE
@@ -652,7 +651,7 @@ loc_8035CCA:
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_cmd_8035ca0
+	thumb_func_end MapScriptCmd_switch_case_from_navi_stats_4c
 
 	thumb_local_start
 // 0x18 byte1 destination2
@@ -1129,51 +1128,51 @@ loc_8035F8E:
 
 	thumb_local_start
 // 0x36 byte1 byte2
-// call sub_8033FC0
+// call doPETEffect_8033fc0
 // arg is either from mem or byte2
-MapScriptCmd_call_sub_8033FC0: // 8035F98
+MapScriptCmd_do_pet_effect: // 8035F98
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq loc_8035FA8
+	beq .notFromMem
 	ldrb r0, [r5,r4]
-	b loc_8035FB0
-loc_8035FA8:
+	b .gotParam
+.notFromMem
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r0, r4
-loc_8035FB0:
-	bl sub_8033FC0
+.gotParam
+	bl doPETEffect_8033fc0
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_call_sub_8033FC0
+	thumb_func_end MapScriptCmd_do_pet_effect
 
 	thumb_local_start
 // 0x3a  0x01
 // store 0x0 at the script struct + 0x10
 // 0x3a !0x01 word2
 // store word2 at the script struct + 0x10
-MapScriptCmd_write_script_struct_10_word: // 8035FBA
+MapScriptCmd_run_or_end_continuous_secondary_map_script: // 8035FBA
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #1
-	beq loc_8035FD4
+	beq .endContinuousMapScript2
 	mov r6, #2
 	bl ReadMapScriptWord
-	str r4, [r5,#0x10]
+	str r4, [r5,#oMapScriptState_SecondaryContinuousMapScriptPtr]
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-loc_8035FD4:
-	mov r0, #0
-	str r0, [r5,#0x10]
+.endContinuousMapScript2
+	mov r0, #NULL
+	str r0, [r5,#oMapScriptState_SecondaryContinuousMapScriptPtr]
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_write_script_struct_10_word
+	thumb_func_end MapScriptCmd_run_or_end_continuous_secondary_map_script
 
 	thumb_local_start
 // 0x40 0x01 byte2
@@ -2438,7 +2437,7 @@ TryCutsceneSkip:
 	thumb_func_start cutsceneCamera_setCutsceneCameraScript_8036f98
 cutsceneCamera_setCutsceneCameraScript_8036f98:
 	push {lr}
-	ldr r1, off_8036FD4 // =cutsceneCameraInfo_2011bd0
+	ldr r1, off_8036FD4 // =eCutsceneCameraInfo
 	str r0, [r1]
 	mov r0, #0
 	str r0, [r1,#0x4] // (dword_2011BD4 - 0x2011bd0)
@@ -2462,7 +2461,7 @@ cutsceneCamera_focusCameraOnPlayerMaybe_8036faa:
 	thumb_local_start
 cutscene_cameraMaybe_8036FBC:
 	push {r4-r7,lr}
-	ldr r5, off_8036FD4 // =cutsceneCameraInfo_2011bd0
+	ldr r5, off_8036FD4 // =eCutsceneCameraInfo
 	ldr r1, [r5]
 	ldrb r2, [r1]
 	ldr r0, off_8036FD8 // =off_8036FDC
@@ -2473,7 +2472,7 @@ cutscene_cameraMaybe_8036FBC:
 	str r1, [r5]
 	tst r0, r0
 	pop {r4-r7,pc}
-off_8036FD4: .word cutsceneCameraInfo_2011bd0
+off_8036FD4: .word eCutsceneCameraInfo
 off_8036FD8: .word off_8036FDC
 off_8036FDC: .word cutsceneCamera_setCameraPosition_8037030+1
 	.word cutsceneCamera_scrollCamera_803705a+1
@@ -3150,7 +3149,7 @@ CutsceneCommandJumptable:
 	.word MapScriptCmd_long_pause+1
 	.word MapScriptCmd_wait_chatbox+1
 	.word MapScriptCmd_wait_if_player_sprite_cur_frame_not_equal_maybe+1
-	.word MapScriptCmd_next_80377D0+1
+	.word MapScriptCmd_nop_80377d0+1
 	.word MapScriptCmd_wait_screen_fade+1
 	.word MapScriptCmd_wait_camera_script+1
 	.word MapScriptCmd_wait_var_equal+1
@@ -3175,10 +3174,10 @@ CutsceneCommandJumptable:
 	.word MapScriptCmd_jump_if_var_equal+1
 	.word MapScriptCmd_jump_if_unk_navicust_range+1
 	.word MapScriptCmd_jump_if_chip_count_in_range+1
-	.word MapScriptCmd_jump_if_eStruct200A008_unk01_equals+1
-	.word MapScriptCmd_jump_if_eStruct200A008_unk01_not_equal+1
-	.word MapScriptCmd_cmd_8035afa+1
-	.word MapScriptCmd_cmd_8035b44+1
+	.word MapScriptCmd_jump_if_battle_result_equals+1
+	.word MapScriptCmd_jump_if_battle_result_not_equal+1
+	.word MapScriptCmd_coordinate_trigger_equals_cmd_8035afa+1
+	.word MapScriptCmd_coordinate_trigger_not_equal_cmd_8035b44+1
 	.word MapScriptCmd_jump_if_current_navi_equals+1
 	.word MapScriptCmd_jump_if_current_navi_not_equal+1
 	.word MapScriptCmd_jump_if_title_screen_icon_count_equals+1
@@ -3227,7 +3226,7 @@ CutsceneCommandJumptable:
 	.word MapScriptCmd_sound_cmd_803810e+1
 	.word MapScriptCmd_stop_sound+1
 	.word MapScriptCmd_navicust_maybe_803813e+1
-	.word MapScriptCmd_call_sub_8033FC0+1
+	.word MapScriptCmd_do_pet_effect+1
 	.word MapScriptCmd_run_or_stop_cutscene_camera_script+1
 	.word MapScriptCmd_start_fixed_battle+1
 	.word MapScriptCmd_start_random_battle+1
@@ -3261,7 +3260,7 @@ CutsceneCommandJumptable:
 	.word NULL
 	.word MapScriptCmd_give_or_take_chips+1
 	.word MapScriptCmd_give_or_take_navicust_programs+1
-	.word MapScriptCmd_run_or_end_continuous_secondary_map_script+1
+	.word MapScriptCmd_run_or_end_continuous_secondary_map_script_from_cutscene_script+1
 	.word MapScriptCmd_store_or_load_game_progress_buffer_maybe_803843c+1
 	.word MapScriptCmd_flag_8038466+1
 	.word MapScriptCmd_add_request_range+1
@@ -3435,7 +3434,7 @@ loc_80377CC:
 	thumb_func_end MapScriptCmd_wait_if_player_sprite_cur_frame_not_equal_maybe
 
 	thumb_local_start
-MapScriptCmd_next_80377D0:
+MapScriptCmd_nop_80377d0:
 	push {lr}
 	// always returns zero
 	bl returnZero_809E228
@@ -3447,7 +3446,7 @@ MapScriptCmd_next_80377D0:
 .haltScript
 	mov r0, #0
 	pop {pc}
-	thumb_func_end MapScriptCmd_next_80377D0
+	thumb_func_end MapScriptCmd_nop_80377d0
 
 	thumb_local_start
 MapScriptCmd_wait_screen_fade:
@@ -3679,11 +3678,11 @@ MapScriptCmd_jump_if_var_equal:
 	thumb_func_end MapScriptCmd_jump_if_var_equal
 
 	thumb_local_start
-MapScriptCmd_jump_if_eStruct200A008_unk01_equals:
+MapScriptCmd_jump_if_battle_result_equals:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
-	bl eStruct200A008_getUnk01 // possibly battle related
+	bl eStruct200A008_getBattleResult // possibly battle related
 	cmp r0, r4
 	bne .notEqual
 	mov r6, #2
@@ -3695,14 +3694,14 @@ MapScriptCmd_jump_if_eStruct200A008_unk01_equals:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_jump_if_eStruct200A008_unk01_equals
+	thumb_func_end MapScriptCmd_jump_if_battle_result_equals
 
 	thumb_local_start
-MapScriptCmd_jump_if_eStruct200A008_unk01_not_equal:
+MapScriptCmd_jump_if_battle_result_not_equal:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
-	bl eStruct200A008_getUnk01
+	bl eStruct200A008_getBattleResult
 	cmp r0, r4
 	beq .isEqual
 	mov r6, #2
@@ -3714,7 +3713,7 @@ MapScriptCmd_jump_if_eStruct200A008_unk01_not_equal:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_jump_if_eStruct200A008_unk01_not_equal
+	thumb_func_end MapScriptCmd_jump_if_battle_result_not_equal
 
 	thumb_local_start
 MapScriptCmd_jump_if_current_navi_equals:
@@ -5143,7 +5142,7 @@ MapScriptCmd_give_or_take_navicust_programs:
 	thumb_func_end MapScriptCmd_give_or_take_navicust_programs
 
 	thumb_local_start
-MapScriptCmd_run_or_end_continuous_secondary_map_script:
+MapScriptCmd_run_or_end_continuous_secondary_map_script_from_cutscene_script:
 	push {lr}
 	ldr r3, =eMapScriptState
 	mov r6, #1
@@ -5164,7 +5163,7 @@ MapScriptCmd_run_or_end_continuous_secondary_map_script:
 	pop {pc}
 	// 8038438
 	.pool
-	thumb_func_end MapScriptCmd_run_or_end_continuous_secondary_map_script
+	thumb_func_end MapScriptCmd_run_or_end_continuous_secondary_map_script_from_cutscene_script
 
 	thumb_local_start
 MapScriptCmd_store_or_load_game_progress_buffer_maybe_803843c:

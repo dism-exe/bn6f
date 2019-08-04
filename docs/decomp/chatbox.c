@@ -2132,7 +2132,7 @@ signed int chatbox_8041944()
     int v1; // r0
     int v2; // r1
 
-    v1 = eStruct200A008_getUnk01();
+    v1 = eStruct200A008_getBattleResult();
     v2 = *(v0 + v1 + 1);
     if ( v2 != 255 )
         chatbox_config_80408D0(v1, v2);

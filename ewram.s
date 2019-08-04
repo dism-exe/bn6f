@@ -1596,10 +1596,11 @@ byte_2011B30:: // 0x2011b30
 	.space 128
 byte_2011BB0:: // 0x2011bb0
 	.space 32
-cutsceneCameraInfo_2011bd0:: // 0x2011bd0
-	.space 4
-dword_2011BD4:: // 0x2011bd4
-	.space 60
+
+eCutsceneCameraInfo:: // 0x2011bd0
+	cutscene_camera_info_struct eCutsceneCameraInfo
+eCutsceneCameraInfoEnd::
+
 byte_2011C10:: // 0x2011c10
 	.space 4
 byte_2011C14:: // 0x2011c14

@@ -14640,7 +14640,7 @@ setTwoStructs_800A840:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	strb r0, [r1,#0x1f]
-	bl eStruct200A008_setUnk01
+	bl eStruct200A008_setBattleResult
 	pop {pc}
 	thumb_func_end setTwoStructs_800A840
 
@@ -16559,18 +16559,18 @@ sub_800B694:
 	thumb_func_end sub_800B694
 
 	thumb_local_start
-eStruct200A008_setUnk01:
+eStruct200A008_setBattleResult:
 	ldr r1, off_800B830 // =eOWPlayerObjectEnd
 	strb r0, [r1,#0x1] // (byte_200A009 - 0x200a008)
 	mov pc, lr
-	thumb_func_end eStruct200A008_setUnk01
+	thumb_func_end eStruct200A008_setBattleResult
 
-	thumb_func_start eStruct200A008_getUnk01
-eStruct200A008_getUnk01:
+	thumb_func_start eStruct200A008_getBattleResult
+eStruct200A008_getBattleResult:
 	ldr r1, off_800B834 // =eOWPlayerObjectEnd
 	ldrb r0, [r1,#0x1] // (byte_200A009 - 0x200a008)
 	mov pc, lr
-	thumb_func_end eStruct200A008_getUnk01
+	thumb_func_end eStruct200A008_getBattleResult
 
 	thumb_local_start
 eStruct200A008_setUnk00:

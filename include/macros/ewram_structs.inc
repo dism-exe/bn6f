@@ -22,6 +22,7 @@
 	.include "structs/S2000aa0.inc"
 	.include "structs/Warp2011bb0.inc"
 	.include "structs/Camera.inc"
+	.include "structs/CutsceneCameraInfo.inc"
 
 /*
 rough notes for now

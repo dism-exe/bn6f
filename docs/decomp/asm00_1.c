@@ -11278,7 +11278,7 @@ int __fastcall setTwoStructs_800A840(int a1)
     int v1; // r10
 
     *(*(v1 + oToolkit_S2034880_Ptr) + 31) = a1;
-    return eStruct200A008_setUnk01(a1);
+    return eStruct200A008_setBattleResult(a1);
 }
 
 
@@ -12656,7 +12656,7 @@ int sub_800B694()
 
 // 0x800b6aa
 // (u8 unk01) -> void
-int __fastcall eStruct200A008_setUnk01(int result)
+int __fastcall eStruct200A008_setBattleResult(int result)
 {
     byte_200A009 = result;
     return result;
@@ -12665,7 +12665,7 @@ int __fastcall eStruct200A008_setUnk01(int result)
 
 // 0x800b6b0
 // () -> u8
-int eStruct200A008_getUnk01()
+int eStruct200A008_getBattleResult()
 {
     return byte_200A009;
 }

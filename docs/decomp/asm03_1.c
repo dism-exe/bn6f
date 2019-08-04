@@ -425,7 +425,7 @@ signed int __fastcall sub_8033F80(int a1)
 
 
 // 0x8033fc0
-int __fastcall sub_8033FC0(int result, int a2, int a3)
+int __fastcall doPETEffect_8033fc0(int result, int a2, int a3)
 {
     byte_2011E37 = 0;
     byte_2011E34 = result;
@@ -2705,7 +2705,7 @@ signed int __fastcall sub_8035F98(int a1)
         v6 = ReadMapScriptByte(2, v2);
     else
         v6 = *(v1 + v5);
-    sub_8033FC0(v6, v3, v4);
+    doPETEffect_8033fc0(v6, v3, v4);
     return 1;
 }
 
@@ -3819,7 +3819,7 @@ signed int sub_803793A()
     int v1; // r4
 
     v1 = ReadMapScriptByte(1, v0);
-    if ( eStruct200A008_getUnk01() == v1 )
+    if ( eStruct200A008_getBattleResult() == v1 )
         ReadMapScriptWord(2, v0);
     return 1;
 }
@@ -3832,7 +3832,7 @@ signed int sub_803795C()
     int v1; // r4
 
     v1 = ReadMapScriptByte(1, v0);
-    if ( eStruct200A008_getUnk01() != v1 )
+    if ( eStruct200A008_getBattleResult() != v1 )
         ReadMapScriptWord(2, v0);
     return 1;
 }
@@ -4976,7 +4976,7 @@ signed int MapScriptCmd_give_or_take_navicust_programs()
 
 
 // 0x8038412
-signed int MapScriptCmd_run_or_end_continuous_secondary_map_script()
+signed int MapScriptCmd_run_or_end_continuous_secondary_map_script_from_cutscene_script()
 {
     void *v0; // r7
     int v1; // r3

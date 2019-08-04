@@ -31,6 +31,8 @@
 	u16 MaxBaseHP // loc=0x3e
 	u16 CurHP // loc=0x40
 	u16 MaxHP // loc=0x42
+	struct_org 0x4c
+	u8 Unk_4c // loc=0x4c
 	struct_org 0x50
 	u16 ChipRecovery // loc=0x50
 	struct_org 0x56

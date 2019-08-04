@@ -14,7 +14,7 @@ signed int __fastcall sub_8089160(int a1, int a2)
     int v4; // r2
 
     sub_80301B2(0, a2);
-    sub_8033FC0(0, v3, v4);
+    doPETEffect_8033fc0(0, v3, v4);
     sub_8089244(0);
     *v2 = 4;
     return 1;
@@ -80,7 +80,7 @@ int sub_8089234()
     int v1; // r2
 
     sub_80301BC();
-    sub_8033FC0(1, v0, v1);
+    doPETEffect_8033fc0(1, v0, v1);
     return 0;
 }
 

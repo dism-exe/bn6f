@@ -106,7 +106,7 @@ int __fastcall sub_8099FFC(int a1, int a2, int a3)
     char v5; // r1
     int v6; // r0
 
-    v4 = sub_8033FC0(0, a2, a3);
+    v4 = doPETEffect_8033fc0(0, a2, a3);
     (*byte_809A284)(v4);
     *(v3 + 8) = v5;
     *(v3 + 4) = v5;
@@ -362,7 +362,7 @@ signed int sub_809A1FC()
 // 0x809a260
 int __fastcall sub_809A260(int a1, int a2, int a3)
 {
-    sub_8033FC0(1, a2, a3);
+    doPETEffect_8033fc0(1, a2, a3);
     copyMemory_8001850();
     sub_8033978();
     sub_8003962();
@@ -551,7 +551,7 @@ int sub_809A4EC()
 
     ClearEventFlagFromImmediate(0, 245);
     ClearEventFlagFromImmediate(23, 37);
-    sub_8033FC0(1, v0, v1);
+    doPETEffect_8033fc0(1, v0, v1);
     copyMemory_8001850();
     sub_8033978();
     sub_8003962();
@@ -898,7 +898,7 @@ int __fastcall sub_809A8E4(int a1, int a2, int a3)
     int v7; // r2
     char v8; // r1
 
-    sub_8033FC0(0, a2, a3);
+    doPETEffect_8033fc0(0, a2, a3);
     v5 = *(v4 + oToolkit_ChatboxPtr);
     v6 = word_200AC84;
     *(v5 + 76) = word_200AC84;
@@ -1005,7 +1005,7 @@ int __fastcall sub_809AA04(int a1, int a2, int a3, int a4)
     zeroFill_8003AB2();
     sub_800399A();
     sub_8003AEA();
-    sub_8033FC0(1, v4, v5);
+    doPETEffect_8033fc0(1, v4, v5);
     return 0;
 }
 
@@ -1016,7 +1016,7 @@ int __fastcall sub_809AAB8(int a1, int a2, int a3)
     int v3; // r5
     int result; // r0
 
-    sub_8033FC0(0, a2, a3);
+    doPETEffect_8033fc0(0, a2, a3);
     sub_8003984();
     sub_8003AD4();
     chatbox_runScript(&eTextScript2033404, 10);
@@ -1285,7 +1285,7 @@ int sub_809AD4C()
 
     ClearEventFlagFromImmediate(0, 245);
     ClearEventFlagFromImmediate(23, 37);
-    sub_8033FC0(1, v0, v1);
+    doPETEffect_8033fc0(1, v0, v1);
     sub_8003962();
     zeroFill_8003AB2();
     sub_800399A();
@@ -2133,7 +2133,7 @@ int __fastcall sub_809CB68(int a1, int a2, int a3)
     void *v3; // r5
     int result; // r0
 
-    sub_8033FC0(0, a2, a3);
+    doPETEffect_8033fc0(0, a2, a3);
     sub_8003984();
     sub_8003AD4();
     chatbox_runScript(&eTextScript2033404, 30);
@@ -2304,7 +2304,7 @@ int sub_809CD34()
 // 0x809cd44
 int __fastcall sub_809CD44(int a1, int a2, int a3)
 {
-    sub_8033FC0(1, a2, a3);
+    doPETEffect_8033fc0(1, a2, a3);
     sub_8003962();
     zeroFill_8003AB2();
     sub_800399A();

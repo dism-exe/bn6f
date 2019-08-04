@@ -3577,7 +3577,7 @@ loc_804193E:
 	thumb_local_start
 chatbox_8041944:
 	push {r6,r7,lr}
-	bl eStruct200A008_getUnk01
+	bl eStruct200A008_getBattleResult
 	mov r2, r0
 	add r2, #1
 	ldrb r1, [r4,r2]
@@ -7899,7 +7899,7 @@ loc_8043AFA:
 	add r4, #8
 	mov r0, #1
 	pop {pc}
-jt_8043B00: .word sub_8033FC0+1
+jt_8043B00: .word doPETEffect_8033fc0+1
 	.word NULL
 	.word initMinigameEffect_8003a64+1
 	.word sub_8001154+1

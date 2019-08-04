@@ -125,7 +125,7 @@ sub_8089160:
 	mov r0, #0
 	bl camera_80301B2
 	mov r0, #0
-	bl sub_8033FC0
+	bl doPETEffect_8033fc0
 	mov r0, #0
 	bl sub_8089244
 	mov r0, #4
@@ -220,7 +220,7 @@ sub_8089234:
 	push {r4-r7,lr}
 	bl sub_80301BC
 	mov r0, #1
-	bl sub_8033FC0
+	bl doPETEffect_8033fc0
 	mov r0, #0
 	pop {r4-r7,pc}
 	thumb_func_end sub_8089234
