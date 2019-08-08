@@ -123,7 +123,7 @@ off_8089154: .word sub_8089160+1
 sub_8089160:
 	push {r4-r7,lr}
 	mov r0, #0
-	bl camera_80301B2
+	bl camera_writeUnk03_14_80301b2
 	mov r0, #0
 	bl doPETEffect_8033fc0
 	mov r0, #0
@@ -164,7 +164,7 @@ loc_80891A4:
 	beq loc_80891AE
 	mov r7, #0x10
 loc_80891AE:
-	bl sub_80301D0
+	bl GetCameraXYZ
 	sub sp, sp, #0xc
 	ldr r3, off_8089210 // =off_8089214
 	lsl r6, r4, #1
@@ -187,7 +187,7 @@ loc_80891AE:
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
 	ldr r2, [sp,#8]
-	bl sub_80301DC
+	bl SetCameraXYZ
 	b loc_80891EC
 loc_80891E6:
 	mov r0, r4
@@ -917,7 +917,7 @@ sub_8089A10:
 	push {r4-r7,lr}
 	bl sub_8089CB4
 	beq loc_8089A36
-	bl sub_81426CE
+	bl GetSoulWeaponsMapIndex
 	ldr r1, off_8089A3C // =off_8089A40 
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
@@ -969,7 +969,7 @@ sub_8089A60:
 	mov r1, #0x28
 	bl TestEventFlagFromImmediate
 	bne loc_8089ABA
-	bl sub_81426CE
+	bl GetSoulWeaponsMapIndex
 	cmp r0, #6
 	bge loc_8089ABA
 	bl sub_8035408
@@ -1227,7 +1227,7 @@ sub_8089C78:
 	bl cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
 	mov r0, #0
 	strb r0, [r5,#0x13]
-	bl sub_81426CE
+	bl GetSoulWeaponsMapIndex
 	ldr r1, off_8089CA0 // =byte_80894D4
 	mov r2, #0x10
 	mul r2, r0

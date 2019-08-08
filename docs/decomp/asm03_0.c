@@ -13008,7 +13008,7 @@ int sub_802F6B2()
         if ( v3 == byte_12C )
         {
             v4 = v3;
-            sub_800068A(31, 16);
+            sound_800068A(31, 16);
             result = v4;
         }
         else
@@ -13684,7 +13684,7 @@ void __fastcall camera_802FF4C(int x, int y, int a3, int mapGroup)
         v15 = *(v14[v13] + v18);
     }
     pCamera->pad_02[0] = v15;
-    sub_80301E8();
+    camera_doShakeEffect_80301e8();
     sub_8030054();
     sub_80302D0();
     sub_803011A();
@@ -13700,7 +13700,7 @@ int sub_802FFF4()
 
     v2 = *(v1 + oToolkit_CameraPtr);
     (*(&off_8030034 + *(v2 + 3)))();
-    sub_80301E8();
+    camera_doShakeEffect_80301e8();
     sub_8030054();
     (*(&JumpTable8030040 + *(v2 + 2)))();
     sub_803011A();
@@ -13909,7 +13909,7 @@ signed int sub_80301BC()
 
 
 // 0x80301d0
-__int64 sub_80301D0()
+__int64 GetCameraXYZ()
 {
     int v0; // r10
     int v1; // r3
@@ -13924,7 +13924,7 @@ __int64 sub_80301D0()
 
 
 // 0x80301dc
-int __fastcall sub_80301DC(int result, int a2, int a3)
+int __fastcall SetCameraXYZ(int result, int a2, int a3)
 {
     int v3; // r10
     _DWORD *v4; // r3
@@ -13938,7 +13938,7 @@ int __fastcall sub_80301DC(int result, int a2, int a3)
 
 
 // 0x80301e8
-int sub_80301E8()
+int camera_doShakeEffect_80301e8()
 {
     int v0; // r5
     char v1; // zf
@@ -13948,7 +13948,7 @@ int sub_80301E8()
     int v5; // r0
     int v6; // r0
 
-    if ( (sub_80269D0() || (sub_800A7D0(), v1) || sub_800A0A4()) && *(v0 + 12) )
+    if ( (sub_80269D0() || (sub_800A7D0(), v1) || battle_isTimeStopPauseOrBattleFlags0x20_800a0a4()) && *(v0 + 12) )
     {
         v2 = &byte_8030284[8 * *(v0 + 14)];
         --*(v0 + 12);
@@ -13983,7 +13983,7 @@ int sub_80301E8()
 
 
 // 0x80302a8
-int __fastcall setCameraUnk0e_Unk0c_80302a8(int result, __int16 a2)
+int __fastcall camera_initShakeEffect_80302a8(int result, __int16 a2)
 {
     int v2; // r10
     int v3; // r2

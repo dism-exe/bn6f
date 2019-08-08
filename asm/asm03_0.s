@@ -18018,7 +18018,7 @@ loc_802F6C8:
 	push {r0,r5}
 	mov r0, #0x1f
 	mov r1, #0x10
-	bl sub_800068A
+	bl sound_800068A
 	pop {r0,r5}
 	b locret_802F6FA
 loc_802F6E0:
@@ -18942,7 +18942,7 @@ loc_802FFC4:
 	ldr r0, [r3,r1]
 loc_802FFCA:
 	strb r0, [r5,#2]
-	bl sub_80301E8
+	bl camera_doShakeEffect_80301e8
 	bl sub_8030054
 	bl sub_80302D0
 	bl sub_803011A
@@ -18972,7 +18972,7 @@ sub_802FFF4:
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-	bl sub_80301E8
+	bl camera_doShakeEffect_80301e8
 	bl sub_8030054
 	ldr r0, off_803003C // =off_8030040
 	ldrb r1, [r5,#2]
@@ -19213,14 +19213,14 @@ sub_8030194:
 	mov pc, lr
 	thumb_func_end sub_8030194
 
-	thumb_func_start camera_80301B2
-camera_80301B2:
+	thumb_func_start camera_writeUnk03_14_80301b2
+camera_writeUnk03_14_80301b2:
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_CameraPtr]
-	strb r0, [r2,#3]
-	str r1, [r2,#0x14]
+	strb r0, [r2,#oCamera_Unk_03]
+	str r1, [r2,#oCamera_Unk_14]
 	mov pc, lr
-	thumb_func_end camera_80301B2
+	thumb_func_end camera_writeUnk03_14_80301b2
 
 	thumb_func_start sub_80301BC
 sub_80301BC:
@@ -19236,59 +19236,59 @@ sub_80301BC:
 	mov pc, lr
 	thumb_func_end sub_80301BC
 
-	thumb_func_start sub_80301D0
-sub_80301D0:
+	thumb_func_start GetCameraXYZ
+GetCameraXYZ:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_CameraPtr]
-	ldr r0, [r3,#0x30]
-	ldr r1, [r3,#0x34]
-	ldr r2, [r3,#0x38]
+	ldr r0, [r3,#oCamera_X]
+	ldr r1, [r3,#oCamera_Y]
+	ldr r2, [r3,#oCamera_Z]
 	mov pc, lr
-	thumb_func_end sub_80301D0
+	thumb_func_end GetCameraXYZ
 
-	thumb_func_start sub_80301DC
-sub_80301DC:
+	thumb_func_start SetCameraXYZ
+SetCameraXYZ:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_CameraPtr]
 	str r0, [r3,#0x30]
 	str r1, [r3,#0x34]
 	str r2, [r3,#0x38]
 	mov pc, lr
-	thumb_func_end sub_80301DC
+	thumb_func_end SetCameraXYZ
 
 	thumb_local_start
-sub_80301E8:
+camera_doShakeEffect_80301e8:
 	push {lr}
 	bl sub_80269D0
 	tst r0, r0
 	bne loc_8030200
 	bl sub_800A7D0 // () -> (zf, int)
 	beq loc_8030200
-	bl sub_800A0A4
+	bl battle_isTimeStopPauseOrBattleFlags0x20_800a0a4
 	tst r0, r0
 	beq loc_8030214
 loc_8030200:
-	ldrh r0, [r5,#0xc]
+	ldrh r0, [r5,#oCamera_Unk_0c]
 loc_8030202:
 	cmp r0, #0
 	beq loc_8030214
-	ldrh r6, [r5,#0xe]
+	ldrh r6, [r5,#oCamera_Unk_0e]
 	lsl r6, r6, #3
 	ldr r7, off_8030280 // =byte_8030284
 	add r7, r7, r6
 	sub r1, r0, #1
-	strh r1, [r5,#0xc]
+	strh r1, [r5,#oCamera_Unk_0c]
 	b loc_8030226
 loc_8030214:
-	ldrh r0, [r5,#0x10]
+	ldrh r0, [r5,#oCamera_Unk_10]
 	cmp r0, #0
 	beq loc_8030266
-	ldrh r6, [r5,#0x12]
+	ldrh r6, [r5,#oCamera_Unk_12]
 	lsl r6, r6, #3
 	ldr r7, off_8030280 // =byte_8030284
 	add r7, r7, r6
 	sub r1, r0, #1
-	strh r1, [r5,#0x10]
+	strh r1, [r5,#oCamera_Unk_10]
 loc_8030226:
 	bl GetRNG1 // () -> void
 	ldr r2, [r7]
@@ -19296,18 +19296,18 @@ loc_8030226:
 	lsl r0, r0, #0x10
 	ldr r2, [r7,#4]
 	sub r0, r0, r2
-	ldr r2, [r5,#0x30]
+	ldr r2, [r5,#oCamera_X]
 	add r2, r2, r0
-	str r2, [r5,#0x3c]
+	str r2, [r5,#oCamera_nextX_3c]
 	mov r4, #0
-	str r4, [r5,#0x48]
+	str r4, [r5,#oCamera_Unk_48]
 	ldr r4, off_803027C // =eCamera+76 
 	ldrb r4, [r4]
 	tst r4, r4
 	beq loc_803024C
 	neg r0, r0
 	lsl r0, r0, #1
-	str r0, [r5,#0x48]
+	str r0, [r5,#oCamera_Unk_48]
 loc_803024C:
 	bl GetRNG1 // () -> void
 	ldr r2, [r7]
@@ -19315,40 +19315,44 @@ loc_803024C:
 	lsl r0, r0, #0x10
 	ldr r2, [r7,#4]
 	sub r0, r0, r2
-	ldr r2, [r5,#0x34]
+	ldr r2, [r5,#oCamera_Y]
 	add r2, r2, r0
-	str r2, [r5,#0x40]
-	ldr r2, [r5,#0x38]
-	str r2, [r5,#0x44]
+	str r2, [r5,#oCamera_nextY_40]
+	ldr r2, [r5,#oCamera_Z]
+	str r2, [r5,#oCamera_nextZ_44]
 	pop {pc}
 loc_8030266:
 	mov r2, #0
-	strh r2, [r5,#0xe]
-	ldr r2, [r5,#0x30]
-	str r2, [r5,#0x3c]
-	ldr r2, [r5,#0x34]
-	str r2, [r5,#0x40]
-	ldr r2, [r5,#0x38]
-	str r2, [r5,#0x44]
+	strh r2, [r5,#oCamera_Unk_0e]
+	ldr r2, [r5,#oCamera_X]
+	str r2, [r5,#oCamera_nextX_3c]
+	ldr r2, [r5,#oCamera_Y]
+	str r2, [r5,#oCamera_nextY_40]
+	ldr r2, [r5,#oCamera_Z]
+	str r2, [r5,#oCamera_nextZ_44]
 	mov r2, #0
-	str r2, [r5,#0x48]
+	str r2, [r5,#oCamera_Unk_48]
 	pop {pc}
 off_803027C: .word eCamera+0x4C // eCamera.unk_4C
 off_8030280: .word byte_8030284
-byte_8030284: .byte 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x2, 0x0, 0x7
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x4, 0x0, 0xF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x20
-	.byte 0x0, 0x21
-	thumb_func_end sub_80301E8
+byte_8030284:
+	.word 0x1, 0x10000
+	.word 0x3, 0x20000
+	.word 0x7, 0x40000
+	.word 0xf, 0x80000
 
-	thumb_func_start setCameraUnk0e_Unk0c_80302a8
-setCameraUnk0e_Unk0c_80302a8:
+	.word 0x21002000 // ???
+	thumb_func_end camera_doShakeEffect_80301e8
+
+	thumb_func_start camera_initShakeEffect_80302a8
+camera_initShakeEffect_80302a8:
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_CameraPtr]
 	strh r0, [r2,#oCamera_Unk_0e]
 	strh r1, [r2,#oCamera_Unk_0c]
 	mov pc, lr
 	.word 0x21002000
-	thumb_func_end setCameraUnk0e_Unk0c_80302a8
+	thumb_func_end camera_initShakeEffect_80302a8
 
 	thumb_func_start sub_80302B6
 sub_80302B6:

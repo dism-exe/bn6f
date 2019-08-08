@@ -5053,7 +5053,7 @@ sub_80A7DB8:
 	bl sprite_noShadow // () -> void
 	bl sub_80A8020
 	ldrh r0, [r7,#4]
-	bl sub_8142868
+	bl GetSoulWeaponCursorCameraCoords
 	str r0, [r5,#0xc]
 	str r1, [r5,#0x10]
 	mov r2, #0xfa
@@ -6059,7 +6059,7 @@ sub_80A86B4:
 loc_80A86EA:
 	strb r4, [r5]
 	mov r0, r6
-	bl sub_8142868
+	bl GetSoulWeaponCursorCameraCoords
 	str r0, [r5,#0xc]
 	str r1, [r5,#0x10]
 	bl ReadOWPlayerObjectCoords
@@ -9304,7 +9304,7 @@ sub_80AA194:
 	bl sprite_loadAnimationData // () -> void
 	mov r0, #2
 	mov r1, #0x14
-	bl setCameraUnk0e_Unk0c_80302a8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0x7c 
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -9393,7 +9393,7 @@ sub_80AA248:
 	bl sprite_loadAnimationData // () -> void
 	mov r0, #1
 	mov r1, #0xa
-	bl setCameraUnk0e_Unk0c_80302a8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xda
 	bl PlaySoundEffect
 	mov r0, #0xc0

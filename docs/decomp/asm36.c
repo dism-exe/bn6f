@@ -10978,7 +10978,7 @@ int sub_8138700()
         if ( *(*(v1 + oToolkit_JoypadPtr) + 2) )
         {
             engine_setScreeneffect(12, 8);
-            sub_800068A(31, 14);
+            sound_800068A(31, 14);
             *(v0 + 4) = 224;
             *v0 = 8;
             result = 0;
@@ -11081,7 +11081,7 @@ unsigned int __fastcall __noreturn sub_81387D8(int a1, int a2, int a3, int a4)
     sub_8030AA4(0, 2);
     camera_802FF4C(0, 0, 0, 208);
     sub_80301B2(0, v9);
-    sub_80301DC(0, 0, 0);
+    SetCameraXYZ(0, 0, 0);
     zeroFill_80024A2();
     sub_8003962();
     zeroFill_8003AB2();

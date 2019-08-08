@@ -10342,7 +10342,7 @@ int battle_isTimeStop()
 
 
 // 0x800a0a4
-BOOL sub_800A0A4()
+BOOL battle_isTimeStopPauseOrBattleFlags0x20_800a0a4()
 {
     char v0; // zf
 

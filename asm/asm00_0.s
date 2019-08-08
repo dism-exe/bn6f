@@ -148,8 +148,8 @@ sound_8000672:
 	pop {r4-r7,pc}
 	thumb_func_end sound_8000672
 
-	thumb_func_start sub_800068A
-sub_800068A:
+	thumb_func_start sound_800068A
+sound_800068A:
 	push {r4-r7,lr}
 	ldr r7, off_8000700 // =off_8000704
 	lsl r0, r0, #2
@@ -161,7 +161,7 @@ sub_800068A:
 	pop {r2}
 	mov r10, r2
 	pop {r4-r7,pc}
-	thumb_func_end sub_800068A
+	thumb_func_end sound_800068A
 
 	thumb_func_start sound_80006A2
 sound_80006A2:

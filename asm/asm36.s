@@ -16059,7 +16059,7 @@ sub_8138700:
 	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x1f
 	mov r1, #0xe
-	bl sub_800068A
+	bl sound_800068A
 	mov r0, #0xe0
 	strh r0, [r5,#4]
 	mov r4, #8
@@ -16161,11 +16161,11 @@ sub_81387D8:
 	mov r4, #0
 	bl camera_802FF4C
 	mov r0, #0
-	bl camera_80301B2
+	bl camera_writeUnk03_14_80301b2
 	mov r0, #0
 	mov r1, #0
 	mov r2, #0
-	bl sub_80301DC
+	bl SetCameraXYZ
 	bl zeroFill_80024A2
 	bl sub_8003962
 	bl zeroFill_8003AB2

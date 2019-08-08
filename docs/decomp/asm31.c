@@ -196,7 +196,7 @@ int __fastcall sub_80B83C0(int a1, int a2, int a3)
             sub_80B8564();
         else
             sub_80B8512();
-        setCameraUnk0e_Unk0c_80302a8(3, 35);
+        camera_initShakeEffect_80302a8(3, 35);
     }
     v4 = *(v3 + 32);
     v5 = __OFSUB__(v4, 1);
@@ -2585,7 +2585,7 @@ int sub_80B98EC()
             v6 = object_getCoordinatesForPanels(v4 + *(v0 + 18));
             SpawnT4BattleObjectWithId0(v0, v6, v6, v7, 0x100000);
             PlaySoundEffect(266, v8, v9);
-            result = setCameraUnk0e_Unk0c_80302a8(1, 30);
+            result = camera_initShakeEffect_80302a8(1, 30);
         }
         else if ( result < 0 )
         {
@@ -2806,7 +2806,7 @@ int sub_80B9ABA()
         *(v0 + 10) = 4;
         *(v0 + 16) = 4;
         *(v0 + 32) = 30;
-        result = setCameraUnk0e_Unk0c_80302a8(0, *(v0 + 32));
+        result = camera_initShakeEffect_80302a8(0, *(v0 + 32));
     }
     return result;
 }
@@ -2827,7 +2827,7 @@ int sub_80B9AEA()
     result = *(v0 + 32) - 1;
     *(v0 + 32) = result;
     if ( result == 30 )
-        return setCameraUnk0e_Unk0c_80302a8(2, 30);
+        return camera_initShakeEffect_80302a8(2, 30);
     if ( result == 20 )
     {
         result = 0;
@@ -5930,7 +5930,7 @@ int sub_80BB52E()
         object_breakPanel_dup2(v8, v9);
     }
     PlaySoundEffect(271, v3, v1);
-    return setCameraUnk0e_Unk0c_80302a8(1, 30);
+    return camera_initShakeEffect_80302a8(1, 30);
 }
 
 
@@ -6876,7 +6876,7 @@ int __fastcall sub_80BBD60(int a1, int a2, int a3)
         *(v3 + 100) = 0;
         *(v3 + 104) = 0;
         PlaySoundEffect(229, 4, a3);
-        setCameraUnk0e_Unk0c_80302a8(2, *(v3 + 32));
+        camera_initShakeEffect_80302a8(2, *(v3 + 32));
     }
     v4 = *(v3 + 32);
     v5 = __OFSUB__(v4--, 1);
@@ -9667,7 +9667,7 @@ int sub_80BD6B6()
             object_getFlip(v0);
             v6 = object_getCoordinatesForPanels(v4);
             SpawnT4BattleObjectWithId0(v0, v6, v6, v7, 0x100000);
-            v8 = setCameraUnk0e_Unk0c_80302a8(1, 10);
+            v8 = camera_initShakeEffect_80302a8(1, 10);
             sub_80E11E0(v8, v9, v10, v11);
         }
         v12 = *(v0 + 32);
@@ -9966,7 +9966,7 @@ int sub_80BD8BC()
             v9 = (*(v0 + 22) << 8) | 0x37;
             SpawnT4BattleObjectWithId0(v0, 55, v8, v10, 0);
             PlaySoundEffect(199, SHIDWORD(v2), v11);
-            v12 = setCameraUnk0e_Unk0c_80302a8(3, 35);
+            v12 = camera_initShakeEffect_80302a8(3, 35);
             sub_80E11E0(v12, v13, v14, v15);
             result = 30;
             *(v0 + 32) = 30;
@@ -10702,7 +10702,7 @@ int __fastcall sub_80BDFA6(int a1, int a2, int a3)
         v18 = object_getFrontDirection(v3);
         v19 = *(v3 + 44);
         sub_80C53A6(v18 + *(v3 + 18), *(v3 + 19), *(v3 + 14), 0);
-        v20 = setCameraUnk0e_Unk0c_80302a8(v12, v13);
+        v20 = camera_initShakeEffect_80302a8(v12, v13);
         sub_80E11E0(v20, v21, v22, v23);
     }
     result = *(v3 + 32) + 1;
@@ -12395,7 +12395,7 @@ int sub_80BF07A()
         sub_80C53A6(*(v0 + 18), *(v0 + 19), *(v0 + 14), *(v0 + 60));
         v4 = sub_80E2FE8(v2, 2, v3, 0);
         *v4 |= 0x10u;
-        v5 = setCameraUnk0e_Unk0c_80302a8(3, 30);
+        v5 = camera_initShakeEffect_80302a8(3, 30);
         sub_80E11E0(v5, v6, v7, v8);
         PlaySoundEffect(195, v9, v10);
     }
@@ -12937,7 +12937,7 @@ int sub_80BF588()
 
     if ( !*(v0 + 11) )
     {
-        setCameraUnk0e_Unk0c_80302a8(1, 10);
+        camera_initShakeEffect_80302a8(1, 10);
         *(v0 + 32) = 10;
         *(v0 + 11) = 4;
     }
@@ -12995,7 +12995,7 @@ signed int sub_80BF5E0()
         if ( object_getPanelParameters(*(v0 + 18), *(v0 + 19)) & 0xF800010 )
         {
             PlaySoundEffect(195, 260046864, v2);
-            setCameraUnk0e_Unk0c_80302a8(3, 30);
+            camera_initShakeEffect_80302a8(3, 30);
             v3 = *(v0 + 44);
             sub_80C53A6(*(v0 + 18), *(v0 + 19), 0, 0);
             sub_80DB48A(*(v0 + 18), *(v0 + 19), v4, 15);
@@ -13292,7 +13292,7 @@ int __fastcall sub_80BF8DA(int a1, int a2, int a3)
         *(v3 + 32) = 0;
         *(v3 + 34) = 0;
         sub_80B8E70(*(v3 + 96), 2);
-        setCameraUnk0e_Unk0c_80302a8(2, 106);
+        camera_initShakeEffect_80302a8(2, 106);
         *(v3 + 11) = 4;
     }
     if ( !*(v3 + 34) )
@@ -13604,7 +13604,7 @@ int sub_80BFB74()
         v7 = v6;
         v9 = object_getFlip(v0);
         SpawnT4BattleObjectWithId0(v0, v9, v8, v7, 0x100000);
-        v10 = setCameraUnk0e_Unk0c_80302a8(2, 40);
+        v10 = camera_initShakeEffect_80302a8(2, 40);
         sub_80E11E0(v10, v11, v12, v13);
     }
     result = *(v0 + 32) + 1;
@@ -17659,7 +17659,7 @@ void sub_80C1DC4()
         sub_80C2000(3);
         sub_80C2082(0);
         PlaySoundEffect(199, v7, v8);
-        setCameraUnk0e_Unk0c_80302a8(2, *(v0 + 32) + 30);
+        camera_initShakeEffect_80302a8(2, *(v0 + 32) + 30);
     }
     else
     {
@@ -22845,7 +22845,7 @@ int sub_80C5014()
     int v5; // r4
     int v6; // r6
 
-    setCameraUnk0e_Unk0c_80302a8(3, 40);
+    camera_initShakeEffect_80302a8(3, 40);
     PlaySoundEffect(195, v1, v2);
     v3 = *(v0 + 18) - 2 * object_getFrontDirection(v0);
     v4 = *(v0 + 19);
@@ -22867,7 +22867,7 @@ int sub_80C5050()
     int v5; // r4
     int v6; // r6
 
-    setCameraUnk0e_Unk0c_80302a8(3, 40);
+    camera_initShakeEffect_80302a8(3, 40);
     PlaySoundEffect(195, v1, v2);
     v3 = *(v0 + 18);
     v4 = *(v0 + 19);
@@ -33223,7 +33223,7 @@ int sub_80CB7BC()
             if ( !result )
             {
                 object_clearCollisionRegion();
-                setCameraUnk0e_Unk0c_80302a8(3, 40);
+                camera_initShakeEffect_80302a8(3, 40);
                 PlaySoundEffect(195, v4, v5);
                 v6 = object_getFrontDirection(v0);
                 v7 = ((*(v0 + 22) ^ *(v0 + 23)) << 8) + 96;
@@ -33780,7 +33780,7 @@ signed int sub_80CBD32()
         v6 = *&byte_80CBDD8[4 * v4];
         object_spawnCollisionRegion(*(v0 + 18), *(v0 + 19), 0, *(v0 + 60));
         sub_80E2FE8(v6, 2, v7, 0);
-        v8 = setCameraUnk0e_Unk0c_80302a8(1, 30);
+        v8 = camera_initShakeEffect_80302a8(1, 30);
     }
     sub_802EF5C(v8);
     sub_800F656();
@@ -33988,7 +33988,7 @@ int sub_80CBF8C()
 int __fastcall sub_80CBFAE(int a1, int a2, int a3)
 {
     sub_80E2FE8(129, 2, a3, 0);
-    return setCameraUnk0e_Unk0c_80302a8(1, 30);
+    return camera_initShakeEffect_80302a8(1, 30);
 }
 
 
@@ -36376,7 +36376,7 @@ int sub_80CD7D0()
         v4 = *&byte_80CD828[4 * v2];
         object_spawnCollisionRegion(*(v0 + 18), *(v0 + 19), 1, *(v0 + 60));
         sub_80E2FE8(v4, 2, v5, 0);
-        setCameraUnk0e_Unk0c_80302a8(1, 60);
+        camera_initShakeEffect_80302a8(1, 60);
         result = PlaySoundEffect(195, v6, v7);
     }
     return result;
@@ -36857,11 +36857,11 @@ signed int sub_80CDCBC()
         v4 = *&byte_80CDD30[4 * v2];
         object_spawnCollisionRegion(*(v0 + 18), *(v0 + 19), *(v0 + 14), *(v0 + 60));
         sub_80E2FE8(v4, 2, v5, 0);
-        setCameraUnk0e_Unk0c_80302a8(1, 30);
+        camera_initShakeEffect_80302a8(1, 30);
         PlaySoundEffect(195, v6, v7);
         result = *(v0 + 4);
         if ( result == 1 )
-            result = setCameraUnk0e_Unk0c_80302a8(3, 60);
+            result = camera_initShakeEffect_80302a8(3, 60);
     }
     return result;
 }
@@ -39261,7 +39261,7 @@ int sub_80CF4E6()
             PlaySoundEffect(112, v2, v3);
             v4 = *(v0 + 96);
             if ( *(v4 + 4) )
-                setCameraUnk0e_Unk0c_80302a8(*(v4 + 4), 15);
+                camera_initShakeEffect_80302a8(*(v4 + 4), 15);
             object_setCollisionRegion(1);
         }
         *(v0 + 9) = 8;
@@ -44816,7 +44816,7 @@ void __noreturn sub_80D2B2C()
     if ( *(*(v0 + 84) + 112) )
     {
         object_clearCollisionRegion();
-        setCameraUnk0e_Unk0c_80302a8(0, 12);
+        camera_initShakeEffect_80302a8(0, 12);
     }
     v2 = *(v0 + 34);
     v3 = __OFSUB__(v2--, 1);
@@ -47416,7 +47416,7 @@ int sub_80D43C0()
     int v0; // r5
 
     object_spawnCollisionRegion(*(v0 + 18), *(v0 + 19), 5, 0);
-    return setCameraUnk0e_Unk0c_80302a8(2, 4);
+    return camera_initShakeEffect_80302a8(2, 4);
 }
 
 
@@ -48449,7 +48449,7 @@ signed int sub_80D4E64()
         sub_80C53A6(*(v0 + 18), v3, v4, 0);
         v6 = *(v0 + 22);
         sub_801BD3C(v3, v4, 69, v5);
-        setCameraUnk0e_Unk0c_80302a8(1, 60);
+        camera_initShakeEffect_80302a8(1, 60);
         PlaySoundEffect(302, v7, v8);
         *(v0 + 16) = 1;
         result = 8;
@@ -52344,7 +52344,7 @@ void __noreturn sub_80D74DC()
             v1 = *(v0 + 68);
             __asm { SVC         6 }
             *(v0 + 32) = 2621442;
-            setCameraUnk0e_Unk0c_80302a8(1, 30);
+            camera_initShakeEffect_80302a8(1, 30);
             *(v0 + 100) = 1;
         }
     }
@@ -55819,7 +55819,7 @@ int sub_80D9788()
         *(v0 + 10) = 0;
         if ( object_getPanelParameters(*(v0 + 18), *(v0 + 19)) & 0x10 )
         {
-            setCameraUnk0e_Unk0c_80302a8(2, 24);
+            camera_initShakeEffect_80302a8(2, 24);
         }
         else
         {
@@ -56459,7 +56459,7 @@ int sub_80D9F2C()
         sub_801A082(v4, 4, 5, 0);
         v5 = *(v0 + 22);
         sub_801BD3C(*(v0 + 18), *(v0 + 19), 74, 15);
-        setCameraUnk0e_Unk0c_80302a8(1, 15);
+        camera_initShakeEffect_80302a8(1, 15);
         PlaySoundEffect(112, v6, v7);
         *v0 &= 0xFDu;
         *(v0 + 9) = 8;
@@ -57247,7 +57247,7 @@ void __fastcall sub_80DA68C(int a1, int a2, int a3, int a4, int a5)
         {
             SpawnT4BattleObjectWithId0(v5, v9, *(v5 + 52), *(v5 + 56), 0x40000);
             sub_80DA7EC();
-            setCameraUnk0e_Unk0c_80302a8(1, 15);
+            camera_initShakeEffect_80302a8(1, 15);
         }
         *(v5 + 8) = 8;
     }
@@ -57641,7 +57641,7 @@ LABEL_9:
         v2 = *(v0 + 44);
         v3 = sub_80C67D8(*(v0 + 18), *(v0 + 19), *(v0 + 14), 0);
         *v3 |= 0x10u;
-        setCameraUnk0e_Unk0c_80302a8(1, 20);
+        camera_initShakeEffect_80302a8(1, 20);
         object_clearCollisionRegion();
         *(v0 + 9) = 4;
         result = 0;
@@ -57689,7 +57689,7 @@ int sub_80DAB22()
             if ( v9 >= 3 )
                 v9 = 0;
             *(v0 + 112) = v9;
-            result = setCameraUnk0e_Unk0c_80302a8(1, 20);
+            result = camera_initShakeEffect_80302a8(1, 20);
         }
     }
     return result;
@@ -58601,7 +58601,7 @@ void sub_80DB4CE()
     int v8; // r0
     int v9; // r1
 
-    setCameraUnk0e_Unk0c_80302a8(3, 45);
+    camera_initShakeEffect_80302a8(3, 45);
     v1 = (*(v0 + 44) & 0xFFFFF000) + 100;
     sub_80C53A6(*(v0 + 18), *(v0 + 19), 0, 0);
     v2 = (*(v0 + 44) & 0xFFFFF000) + 100;
@@ -59481,7 +59481,7 @@ int sub_80DBDBC()
             object_crackPanel(*(v0 + 18), *(v0 + 19));
         result = v10;
         if ( v10 & 0x10 )
-            result = setCameraUnk0e_Unk0c_80302a8(1, 5);
+            result = camera_initShakeEffect_80302a8(1, 5);
         v2 = 0;
     }
     *(v0 + 60) = v2;
@@ -59707,7 +59707,7 @@ signed int sub_80DC018()
         PlaySoundEffect(112, v2, v3);
         v4 = *(v0 + 96);
         if ( *(v4 + 4) )
-            setCameraUnk0e_Unk0c_80302a8(1, 15);
+            camera_initShakeEffect_80302a8(1, 15);
         if ( *(v4 + 5) )
         {
             if ( *(v4 + 5) == 1 )
@@ -60894,7 +60894,7 @@ char *__fastcall sub_80DCBCC(int a1, int a2, int a3)
         {
             sub_80DCC96();
             SpawnT4BattleObjectWithId0(v3, v3 + 64, *(v3 + 52), *(v3 + 56), *(v3 + 60));
-            setCameraUnk0e_Unk0c_80302a8(2, 15);
+            camera_initShakeEffect_80302a8(2, 15);
             result = &dword_8;
             *(v3 + 8) = 8;
             return result;
@@ -62602,7 +62602,7 @@ char *sub_80DDD30()
         {
             SpawnT4BattleObjectWithId0(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60));
             PlaySoundEffect(112, v2, v3);
-            setCameraUnk0e_Unk0c_80302a8(1, 15);
+            camera_initShakeEffect_80302a8(1, 15);
             object_crackPanel(*(v0 + 18), *(v0 + 19));
         }
         *(v0 + 9) = 4;
@@ -80592,7 +80592,7 @@ int sub_80E88C0()
     int v0; // r5
 
     *(v0 + 5) = 3;
-    setCameraUnk0e_Unk0c_80302a8(2, 12);
+    camera_initShakeEffect_80302a8(2, 12);
     *(v0 + 8) = 4;
     return sub_80E88D8();
 }
@@ -83056,7 +83056,7 @@ int sub_80E9E2C()
         {
             *(*(v0 + 76) + 16) = 15;
             object_updateSpriteTimestop();
-            setCameraUnk0e_Unk0c_80302a8(3, 30);
+            camera_initShakeEffect_80302a8(3, 30);
             PlaySoundEffect(426, v4, v5);
             result = 46;
             *(v0 + 32) = 46;
@@ -84361,7 +84361,7 @@ LABEL_4:
             v0->z = 0;
             object_setCollisionRegion(1);
             object_clearFlag(32);
-            setCameraUnk0e_Unk0c_80302a8(2, 15);
+            camera_initShakeEffect_80302a8(2, 15);
             PlaySoundEffect(192, v7, v8);
             object_setAnimation(v0);
             *(v1 + 16) = 0;
@@ -86457,7 +86457,7 @@ int sub_80ECB28()
     {
         if ( *(v1 + 16) == 5 )
         {
-            setCameraUnk0e_Unk0c_80302a8(1, 20);
+            camera_initShakeEffect_80302a8(1, 20);
             v3 = object_getFrontDirection(v0);
             v4 = *(v1 + 12);
             v5 = *(v1 + 8) + *(v1 + 6);
@@ -94952,7 +94952,7 @@ int sub_80F1902()
         *(v1 + 16) = result;
         if ( result == 20 )
         {
-            setCameraUnk0e_Unk0c_80302a8(2, 30);
+            camera_initShakeEffect_80302a8(2, 30);
             PlaySoundEffect(268, v4, v5);
             result = sub_80F197A();
         }
@@ -105463,7 +105463,7 @@ int sub_80F8C7A()
         *(v1 + 16) = result;
         if ( result == 20 )
         {
-            setCameraUnk0e_Unk0c_80302a8(2, 30);
+            camera_initShakeEffect_80302a8(2, 30);
             result = sub_80F8E48();
         }
         else if ( result <= 0 )
@@ -108149,14 +108149,14 @@ int sub_80FA8F0()
         *(v1 + 1) = 4;
         sub_80FAC34();
         *(v1 + 16) = *(v1 + 12) + 20;
-        setCameraUnk0e_Unk0c_80302a8(1, 10);
+        camera_initShakeEffect_80302a8(1, 10);
         *(v1 + 18) = 10;
     }
     v2 = *(v1 + 18) - 1;
     *(v1 + 18) = v2;
     if ( v2 <= 0 )
     {
-        setCameraUnk0e_Unk0c_80302a8(1, 10);
+        camera_initShakeEffect_80302a8(1, 10);
         *(v1 + 18) = 10;
     }
     if ( *&byte_80FA960[4 * *(v0 + 22)] & *(*(v0 + 84) + 112) )
@@ -109062,7 +109062,7 @@ int __fastcall sub_80FB366(int a1, int a2, int a3, int a4)
         {
             PlaySoundEffect(379, a2, a3);
             sub_80FB81E();
-            result = setCameraUnk0e_Unk0c_80302a8(2, 30);
+            result = camera_initShakeEffect_80302a8(2, 30);
         }
         else if ( result <= 0 )
         {
@@ -113736,7 +113736,7 @@ int sub_80FE394()
         *(v1 + 18) = v3;
         if ( v3 <= 0 )
         {
-            setCameraUnk0e_Unk0c_80302a8(0, 10);
+            camera_initShakeEffect_80302a8(0, 10);
             *(v1 + 18) = 10;
         }
         v4 = *(v1 + 13) + 1;
@@ -113759,7 +113759,7 @@ int sub_80FE394()
         *(v0 + 16) = 4;
         *(v1 + 16) = *(v1 + 12);
         *(v1 + 13) = 0;
-        setCameraUnk0e_Unk0c_80302a8(0, 10);
+        camera_initShakeEffect_80302a8(0, 10);
         result = 10;
         *(v1 + 18) = 10;
     }
@@ -113781,7 +113781,7 @@ int sub_80FE3EC()
     result = *(v0 + 16) - 1;
     *(v0 + 16) = result;
     if ( result == 10 )
-        return setCameraUnk0e_Unk0c_80302a8(2, 30);
+        return camera_initShakeEffect_80302a8(2, 30);
     if ( result <= 0 )
     {
         result = 12;
@@ -119968,7 +119968,7 @@ int sub_81025DA()
     {
         if ( *(v1 + 16) == 5 )
         {
-            setCameraUnk0e_Unk0c_80302a8(1, 20);
+            camera_initShakeEffect_80302a8(1, 20);
             v3 = object_getFrontDirection(v0);
             v4 = *(v1 + 12);
             v5 = *(v1 + 8);
@@ -120461,7 +120461,7 @@ int __fastcall sub_81029CE(int a1, int a2, int a3)
         v4 = v5;
         *(v5 + 16) = 0;
         PlaySoundEffect(253, v7, v8);
-        setCameraUnk0e_Unk0c_80302a8(0, 60);
+        camera_initShakeEffect_80302a8(0, 60);
         *(v5 + 1) = 4;
     }
     if ( !(*(v4 + 16) & 0xF) )
@@ -120545,7 +120545,7 @@ int sub_8102A6E()
     v4 = 0;
     if ( !*(v1 + 16) || (v4 = 1, v3 == 8) || (v4 = 2, v3 == 16) )
         sub_8102B84(v4, *(v1 + 56));
-    setCameraUnk0e_Unk0c_80302a8(2, 3);
+    camera_initShakeEffect_80302a8(2, 3);
     if ( !*(v1 + 3) && !(*(v1 + 16) & 0xF) )
         PlaySoundEffect(299, 15, v5);
     result = *(v1 + 16) + 1;
@@ -121310,7 +121310,7 @@ int __fastcall sub_8103286(int a1, int a2, int a3, int a4)
         object_setCounterTime(12);
         sub_8103966(*(v5 + 12));
         sub_81039A4(*(v5 + 12));
-        setCameraUnk0e_Unk0c_80302a8(2, 30);
+        camera_initShakeEffect_80302a8(2, 30);
         result = 30;
         *(v5 + 16) = 30;
     }
@@ -122968,7 +122968,7 @@ int sub_8104290()
         sub_801DC7C(0, 0);
         object_clearFlag(64);
         object_setFlag1(0x80000);
-        setCameraUnk0e_Unk0c_80302a8(2, 30);
+        camera_initShakeEffect_80302a8(2, 30);
         v4 = PlaySoundEffect(456, v2, v3);
         v5 = v1;
         v6 = 2 * *(v1 + 13) | (*(v1 + 13) << 8) | (*(v1 + 14) << 16);
@@ -123162,7 +123162,7 @@ int sub_8104420()
         sub_801DC7C(0, 0);
         object_clearFlag(64);
         object_setFlag1(0x80000);
-        setCameraUnk0e_Unk0c_80302a8(2, 30);
+        camera_initShakeEffect_80302a8(2, 30);
         PlaySoundEffect(456, v2, v3);
         result = 10;
         *(v1 + 16) = 10;
@@ -123470,7 +123470,7 @@ int sub_8104640()
         sub_801DC7C(0, 0);
         object_clearFlag(64);
         object_setFlag1(0x80000);
-        setCameraUnk0e_Unk0c_80302a8(2, 30);
+        camera_initShakeEffect_80302a8(2, 30);
         PlaySoundEffect(456, v2, v3);
         result = 10;
         *(v1 + 16) = 10;
@@ -123887,7 +123887,7 @@ int sub_8104998()
     else
     {
         *(v0 + 1) = 4;
-        setCameraUnk0e_Unk0c_80302a8(2, 20);
+        camera_initShakeEffect_80302a8(2, 20);
         result = 20;
         *(v0 + 16) = 20;
     }
@@ -124208,7 +124208,7 @@ int __fastcall sub_8104C18(int a1, int a2, int a3)
         v3[16] = 75;
         PlaySoundEffect(401, v5, a3);
         PlaySoundEffect(227, v6, v7);
-        setCameraUnk0e_Unk0c_80302a8(2, *(v4 + 16));
+        camera_initShakeEffect_80302a8(2, *(v4 + 16));
         *(v4 + 16) = 60;
         result = 16;
         *(v4 + 18) = 16;
@@ -124364,7 +124364,7 @@ int __fastcall sub_8104D5E(int a1, int a2, int a3)
         *(v3 + 18) = v12;
         if ( v12 <= 0 )
         {
-            setCameraUnk0e_Unk0c_80302a8(2, 10);
+            camera_initShakeEffect_80302a8(2, 10);
             *(v3 + 18) = 10;
         }
         v13 = *(v3 + 16);
@@ -124388,7 +124388,7 @@ int __fastcall sub_8104D5E(int a1, int a2, int a3)
         v8 = *(v3 + 8);
         v9 = *(v3 + 44);
         sub_80E9D0C(v4, v10, v6, 0x1000000);
-        setCameraUnk0e_Unk0c_80302a8(2, 10);
+        camera_initShakeEffect_80302a8(2, 10);
         result = 10;
         *(v5 + 18) = 10;
     }
@@ -124466,7 +124466,7 @@ int __fastcall sub_8104E36(int a1, int a2, int a3)
         *(v4 + 14) = v8;
         if ( v8 <= 0 )
         {
-            setCameraUnk0e_Unk0c_80302a8(2, 10);
+            camera_initShakeEffect_80302a8(2, 10);
             *(v4 + 14) = 10;
         }
         v9 = *(v4 + 18);
@@ -124489,7 +124489,7 @@ int __fastcall sub_8104E36(int a1, int a2, int a3)
         *(v4 + 1) = 4;
         *(v3 + 16) = 64;
         *(v4 + 16) = 150;
-        setCameraUnk0e_Unk0c_80302a8(2, 10);
+        camera_initShakeEffect_80302a8(2, 10);
         *(v4 + 14) = 10;
         PlaySoundEffect(228, v5, v6);
         result = 32;
@@ -125958,7 +125958,7 @@ int __fastcall sub_8105DE6(int a1, int a2, int a3)
         *(v4 + 18) = v6;
         if ( v6 <= 0 )
         {
-            setCameraUnk0e_Unk0c_80302a8(2, 10);
+            camera_initShakeEffect_80302a8(2, 10);
             *(v4 + 18) = 10;
         }
         v7 = *(v4 + 16);
@@ -125979,7 +125979,7 @@ int __fastcall sub_8105DE6(int a1, int a2, int a3)
         object_setCounterTime(6);
         sub_8106690();
         *(v4 + 16) = *(v4 + 12);
-        setCameraUnk0e_Unk0c_80302a8(2, 10);
+        camera_initShakeEffect_80302a8(2, 10);
         result = 10;
         *(v4 + 18) = 10;
     }
@@ -126455,7 +126455,7 @@ int __fastcall sub_810610A(int a1, int a2, int a3, int a4)
         *(v4 + 16) = byte_8106160[*(v5 + 13) & 1];
         *(v5 + 22) = sub_81065A8();
         *(v5 + 23) = v6;
-        setCameraUnk0e_Unk0c_80302a8(1, 5);
+        camera_initShakeEffect_80302a8(1, 5);
         result = 5;
         *(v5 + 16) = 5;
     }
@@ -126752,7 +126752,7 @@ int sub_81062F8()
         v0->z = 0;
         sub_8106774(*(v1 + 13));
         sub_81067D0();
-        setCameraUnk0e_Unk0c_80302a8(3, *(v1 + 16));
+        camera_initShakeEffect_80302a8(3, *(v1 + 16));
         PlaySoundEffect(455, v2, v3);
         result = *(v1 + 13);
         if ( *(v1 + 13) )
@@ -135459,7 +135459,7 @@ int __fastcall sub_810C0E4(int a1, int a2, int a3)
         PlaySoundEffect(192, a2, a3);
         if ( *(v4 + 13) )
         {
-            setCameraUnk0e_Unk0c_80302a8(2, *(v4 + 13));
+            camera_initShakeEffect_80302a8(2, *(v4 + 13));
             v6 = object_getFrontDirection(v3);
             v7 = *(v4 + 3);
             v8 = *(v4 + 8);

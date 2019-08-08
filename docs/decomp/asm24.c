@@ -56,7 +56,7 @@ int sub_808C378()
         sub_8143294();
     else
         v1[2] = v8;
-    setCameraUnk0e_Unk0c_80302a8(0, 1);
+    camera_initShakeEffect_80302a8(0, 1);
     return *v1;
 }
 

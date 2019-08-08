@@ -8524,7 +8524,7 @@ loc_8012CEC:
 	bne loc_8012CEC
 	mov r0, #2
 	mov r1, #0x14
-	bl setCameraUnk0e_Unk0c_80302a8
+	bl camera_initShakeEffect_80302a8
 loc_8012D20:
 	add sp, sp, #0x14
 	pop {r4,r6,r7,pc}

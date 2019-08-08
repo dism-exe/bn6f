@@ -110,7 +110,7 @@ int __fastcall sound_8000672(int a1, int a2, int a3)
 
 
 // 0x800068a
-int __fastcall sub_800068A(int a1, int a2)
+int __fastcall sound_800068A(int a1, int a2)
 {
     int v2; // r10
 

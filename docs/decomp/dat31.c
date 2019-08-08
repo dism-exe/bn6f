@@ -1084,7 +1084,7 @@ int __fastcall sub_810D41E(int a1, int a2, int a3, int a4)
     *(v4 + 18) = v5;
     if ( v5 == 1 )
     {
-        setCameraUnk0e_Unk0c_80302a8(3, 18);
+        camera_initShakeEffect_80302a8(3, 18);
     }
     else if ( v5 >= 22 )
     {

@@ -3730,7 +3730,7 @@ void __noreturn sub_80A7DB8()
     sprite_noShadow(v0);
     sub_80A8020();
     v2 = *(v1 + 4);
-    *(v0 + 12) = sub_8142868();
+    *(v0 + 12) = GetSoulWeaponCursorCameraCoords();
     *(v0 + 16) = v3;
     *(v0 + 20) = 16384000;
     *(v0 + 20) = sub_8031612(v0 + 12) << 16;
@@ -4574,7 +4574,7 @@ void sub_80A86B4()
         }
     }
     *v0 = v1;
-    *(v0 + 12) = sub_8142868();
+    *(v0 + 12) = GetSoulWeaponCursorCameraCoords();
     *(v0 + 16) = v7;
     sub_809E1AE();
     *(v0 + 20) = v8;
@@ -7009,7 +7009,7 @@ void __noreturn sub_80AA194()
     {
         sprite_setAnimation(v0, 1u);
         sprite_loadAnimationData(v0);
-        setCameraUnk0e_Unk0c_80302a8(2, 20);
+        camera_initShakeEffect_80302a8(2, 20);
         PlaySoundEffect(379, v3, v4);
         *(v0 + 8) = 8;
     }
@@ -7083,7 +7083,7 @@ void __noreturn sub_80AA248()
         *(v0 + 20) = 0;
         sprite_setAnimation(v0, 1u);
         sprite_loadAnimationData(v0);
-        setCameraUnk0e_Unk0c_80302a8(1, 10);
+        camera_initShakeEffect_80302a8(1, 10);
         PlaySoundEffect(218, v3, v4);
         PlaySoundEffect(192, v5, v6);
         *(v0 + 8) = 8;

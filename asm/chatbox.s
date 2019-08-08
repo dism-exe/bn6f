@@ -4911,7 +4911,7 @@ chatbox_8042328:
 	push {lr}
 	ldrb r0, [r4,#2]
 	ldrb r1, [r4,#3]
-	bl sub_800068A
+	bl sound_800068A
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #0x63

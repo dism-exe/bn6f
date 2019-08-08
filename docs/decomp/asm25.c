@@ -330,7 +330,7 @@ int __fastcall sub_808FBA0(int a1)
 int __fastcall sub_808FBC0(int a1, int a2)
 {
     sub_80301B2(0, a2);
-    sub_80301DC(*(&unk_2000310 + byte_200031C + 32) << 16, *(&unk_2000310 + byte_200031C + 35) << 16, 0x400000);
+    SetCameraXYZ(*(&unk_2000310 + byte_200031C + 32) << 16, *(&unk_2000310 + byte_200031C + 35) << 16, 0x400000);
     return 0;
 }
 
@@ -348,7 +348,7 @@ int __fastcall sub_808FBEC(int a1, int a2)
         v4 = 3;
     else
         v4 = *(v3 + oGameState_MapNumber);
-    sub_80301DC(*&byte_808FC24[4 * v4] << 16, *&byte_808FC24[4 * v4 + 2] << 16, 0);
+    SetCameraXYZ(*&byte_808FC24[4 * v4] << 16, *&byte_808FC24[4 * v4 + 2] << 16, 0);
     return 0;
 }
 

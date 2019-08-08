@@ -3042,7 +3042,7 @@ int sub_8036FBC()
     int result; // r0
     int v1; // r1
 
-    result = (*(&off_8036FDC + *dword_2011BD0))();
+    result = (*(&CutsceneCameraCommandJumptable + *dword_2011BD0))();
     dword_2011BD0 = v1;
     return result;
 }
@@ -3105,7 +3105,7 @@ int sub_80370B4()
 
 
 // 0x80370b8
-signed int __fastcall sub_80370B8(int a1, int a2)
+signed int __fastcall CutsceneCameraCmd_wait(int a1, int a2)
 {
     int v2; // r5
     int v3; // r2
@@ -3124,7 +3124,7 @@ signed int __fastcall sub_80370B8(int a1, int a2)
 
 
 // 0x80370e4
-signed int __fastcall sub_80370E4(int a1, int a2)
+signed int __fastcall CutsceneCameraCmd_init_shake_effect(int a1, int a2)
 {
     __int16 v2; // r4
     int v3; // r1
@@ -3132,13 +3132,13 @@ signed int __fastcall sub_80370E4(int a1, int a2)
 
     v2 = sub_803744C(2, a2);
     v4 = sub_803744C(1, v3);
-    setCameraUnk0e_Unk0c_80302a8(v4, v2);
+    camera_initShakeEffect_80302a8(v4, v2);
     return 1;
 }
 
 
 // 0x8037104
-signed int __fastcall sub_8037104(int a1, int a2)
+signed int __fastcall CutsceneCameraCmd_auto_scroll_to_player(int a1, int a2)
 {
     int v2; // r5
     int v3; // r10
@@ -3157,11 +3157,11 @@ signed int __fastcall sub_8037104(int a1, int a2)
 
     v4 = *(v3 + oToolkit_CameraPtr);
     v5 = *(*(v3 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    v6 = sub_8037162(a1, a2, v4[12], v5[7] - v4[12]);
+    v6 = CutsceneCamera_GetAutoScrollDeltaForCoord(a1, a2, v4[12], v5[7] - v4[12]);
     v4[12] = v8 + v7;
-    v10 = sub_8037162(v6, v9, v4[13], v5[8] - v4[13]);
+    v10 = CutsceneCamera_GetAutoScrollDeltaForCoord(v6, v9, v4[13], v5[8] - v4[13]);
     v4[13] = v12 + v11;
-    sub_8037162(v10, v13, v4[14], v5[9] - v4[14]);
+    CutsceneCamera_GetAutoScrollDeltaForCoord(v10, v13, v4[14], v5[9] - v4[14]);
     v4[14] = v15 + v14;
     if ( v4[12] != v5[7] || v4[13] != v5[8] || v4[14] != v5[9] )
         return 1;
@@ -3172,7 +3172,7 @@ signed int __fastcall sub_8037104(int a1, int a2)
 
 
 // 0x8037162
-int __fastcall sub_8037162(int a1, int a2, int a3, int a4)
+int __fastcall CutsceneCamera_GetAutoScrollDeltaForCoord(int a1, int a2, int a3, int a4)
 {
     int result; // r0
 
@@ -3185,7 +3185,7 @@ int __fastcall sub_8037162(int a1, int a2, int a3, int a4)
 
 
 // 0x8037196
-signed int __fastcall sub_8037196(int a1, int a2)
+signed int __fastcall CutsceneCameraCmd_smooth_auto_scroll_to_pos(int a1, int a2)
 {
     int v2; // r5
     int v3; // r1
@@ -3209,7 +3209,7 @@ signed int __fastcall sub_8037196(int a1, int a2)
         __asm { SVC         6 }
         *(v2 + 32) = 0x4000;
         *(v2 + 4) = 0x4000 - v6;
-        *(v2 + 8) = sub_80301D0();
+        *(v2 + 8) = GetCameraXYZ();
         *(v2 + 16) = v11;
     }
     v12 = *(v2 + 4);
@@ -3218,7 +3218,7 @@ signed int __fastcall sub_8037196(int a1, int a2)
     v14 = v12 - v13;
     if ( ((v14 < 0) ^ _VF) | (v14 == 0) )
     {
-        sub_80301DC(*(v2 + 20), *(v2 + 24), *(v2 + 28));
+        SetCameraXYZ(*(v2 + 20), *(v2 + 24), *(v2 + 28));
         *(v2 + 6) = 0;
         *(v2 + 4) = 0;
     }
@@ -3226,7 +3226,7 @@ signed int __fastcall sub_8037196(int a1, int a2)
     {
         *(v2 + 4) = v14;
         v15 = *&math_sinTable[2 * (64 - (v14 >> 8))];
-        sub_80301DC(
+        SetCameraXYZ(
             ((*(v2 + 20) - *(v2 + 8)) >> 8) * v15 + *(v2 + 8),
             ((*(v2 + 24) - *(v2 + 12)) >> 8) * v15 + *(v2 + 12),
             ((*(v2 + 28) - *(v2 + 16)) >> 8) * v15 + *(v2 + 16));
@@ -3236,7 +3236,7 @@ signed int __fastcall sub_8037196(int a1, int a2)
 
 
 // 0x8037260
-void __fastcall sub_8037260(int a1, int a2)
+void __fastcall CutsceneCameraCmd_smooth_auto_scroll_to_pos_relative_to_ow_player(int a1, int a2)
 {
     int v2; // r5
     int v3; // r10
@@ -3251,14 +3251,14 @@ void __fastcall sub_8037260(int a1, int a2)
         *(v2 + 20) = (sub_803746E(1, a2) << 16) + v4[7];
         *(v2 + 24) = (sub_803746E(3, v5) << 16) + v4[8];
         *(v2 + 28) = (sub_803746E(5, v6) << 16) + v4[9];
-        JUMPOUT(&loc_80371C2);
+        JUMPOUT(&CutsceneCamera_InitializeSmoothAutoScroll);
     }
-    JUMPOUT(&loc_80371E8);
+    JUMPOUT(&CutsceneCamera_UpdateSmoothAutoScroll);
 }
 
 
 // 0x80372a2
-void sub_80372A2()
+void CutsceneCameraCmd_smooth_auto_scroll_to_soul_weapons_cursor()
 {
     int v0; // r5
     int v1; // r10
@@ -3269,20 +3269,20 @@ void sub_80372A2()
     {
         *(v0 + 6) = 1;
         v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-        sub_81421E0();
-        *(v0 + 20) = sub_8142868();
+        getField0x18OfScenarioEffectState2000780_81421e0();
+        *(v0 + 20) = GetSoulWeaponCursorCameraCoords();
         *(v0 + 24) = v3;
         *(v0 + 28) = *(v2 + 36);
-        JUMPOUT(&loc_80371C2);
+        JUMPOUT(&CutsceneCamera_InitializeSmoothAutoScroll);
     }
     if ( *(v0 + 20) == *(v0 + 8) && *(v0 + 24) == *(v0 + 12) && *(v0 + 28) == *(v0 + 16) )
-        JUMPOUT(&loc_8037242);
-    JUMPOUT(&loc_80371E8);
+        JUMPOUT(&CutsceneCamera_DoneSmoothAutoScroll);
+    JUMPOUT(&CutsceneCamera_UpdateSmoothAutoScroll);
 }
 
 
 // 0x80372ec
-void sub_80372EC()
+void CutsceneCameraCmd_smooth_auto_scroll_cmd_80372ec()
 {
     int v0; // r5
     int v1; // r10
@@ -3299,16 +3299,16 @@ void sub_80372EC()
         *(v0 + 20) = v2[3];
         *(v0 + 24) = v3;
         *(v0 + 28) = v4;
-        JUMPOUT(&loc_80371C2);
+        JUMPOUT(&CutsceneCamera_InitializeSmoothAutoScroll);
     }
     if ( *(v0 + 20) == *(v0 + 8) && *(v0 + 24) == *(v0 + 12) && *(v0 + 28) == *(v0 + 16) )
-        JUMPOUT(&loc_8037242);
-    JUMPOUT(&loc_80371E8);
+        JUMPOUT(&CutsceneCamera_DoneSmoothAutoScroll);
+    JUMPOUT(&CutsceneCamera_UpdateSmoothAutoScroll);
 }
 
 
 // 0x8037332
-signed int __fastcall sub_8037332(int a1, int a2)
+signed int __fastcall CutsceneCameraCmd_run_text_script(int a1, int a2)
 {
     int v2; // r4
     int v3; // r1
@@ -3322,7 +3322,7 @@ signed int __fastcall sub_8037332(int a1, int a2)
 
 
 // 0x8037352
-signed int sub_8037352()
+signed int CutsceneCameraCmd_wait_chatbox()
 {
     chatbox_check_eFlags2009F38(128);
     return 1;
@@ -3330,7 +3330,7 @@ signed int sub_8037352()
 
 
 // 0x803736a
-signed int __fastcall sub_803736A(int a1, int a2)
+signed int __fastcall CutsceneCameraCmd_call_sub_8001B1C(int a1, int a2)
 {
     int v2; // r0
 
@@ -3341,7 +3341,7 @@ signed int __fastcall sub_803736A(int a1, int a2)
 
 
 // 0x8037380
-signed int __fastcall sub_8037380(int a1, int a2)
+signed int __fastcall CutsceneCameraCmd_call_sub_8001B6C(int a1, int a2)
 {
     int v2; // r0
 
@@ -3352,7 +3352,7 @@ signed int __fastcall sub_8037380(int a1, int a2)
 
 
 // 0x8037396
-signed int __fastcall sub_8037396(int a1, int a2)
+signed int __fastcall CutsceneCameraCmd_set_screen_fade(int a1, int a2)
 {
     int v2; // r4
     int v3; // r1
@@ -3366,7 +3366,7 @@ signed int __fastcall sub_8037396(int a1, int a2)
 
 
 // 0x80373b6
-signed int sub_80373B6()
+signed int CutsceneCameraCmd_wait_screen_fade()
 {
     IsPaletteFadeActive();
     return 1;
@@ -3374,7 +3374,7 @@ signed int sub_80373B6()
 
 
 // 0x80373cc
-signed int __fastcall sub_80373CC(int a1, int a2)
+signed int __fastcall CutsceneCameraCmd_set_event_flag(int a1, int a2)
 {
     int v2; // r0
 
@@ -3385,7 +3385,7 @@ signed int __fastcall sub_80373CC(int a1, int a2)
 
 
 // 0x80373e4
-signed int __fastcall sub_80373E4(int a1, int a2)
+signed int __fastcall CutsceneCameraCmd_clear_event_flag(int a1, int a2)
 {
     int v2; // r0
 
@@ -3396,7 +3396,7 @@ signed int __fastcall sub_80373E4(int a1, int a2)
 
 
 // 0x80373fc
-signed int __fastcall sub_80373FC(int a1, int a2)
+signed int __fastcall CutsceneCameraCmd_sound_cmd_80373fc(int a1, int a2)
 {
     int v2; // r4
     int v3; // r1
@@ -3404,13 +3404,13 @@ signed int __fastcall sub_80373FC(int a1, int a2)
 
     v2 = sub_803744C(2, a2);
     v4 = sub_803744C(1, v3);
-    sub_800068A(v4, v2);
+    sound_800068A(v4, v2);
     return 1;
 }
 
 
 // 0x803741c
-signed int __fastcall sub_803741C(int a1, int a2)
+signed int __fastcall CutsceneCameraCmd_play_music(int a1, int a2)
 {
     int v2; // r0
     int v3; // r1
@@ -3423,7 +3423,7 @@ signed int __fastcall sub_803741C(int a1, int a2)
 
 
 // 0x8037432
-signed int __fastcall sub_8037432(int a1, int a2)
+signed int __fastcall CutsceneCameraCmd_write_camera_field_03_14(int a1, int a2)
 {
     int v2; // r0
 
@@ -4600,7 +4600,7 @@ signed int sub_803810E()
 
     ReadMapScriptByte(1, v0);
     v2 = ReadMapScriptByte(2, v0);
-    sub_800068A(v2, v3);
+    sound_800068A(v2, v3);
     *(*(v1 + oToolkit_GameStatePtr) + oGameState_BGMusicIndicator) = 99;
     return 1;
 }
@@ -4717,7 +4717,7 @@ signed int __fastcall MapScriptCmd_run_eStruct200a6a0_callback(int a1, int a2, i
 
 
 // 0x803822a
-signed int MapScriptCmd_set_camera_unk0e_unk0c()
+signed int MapScriptCmd_do_camera_shake()
 {
     void *v0; // r7
     __int16 v1; // r4
@@ -4725,7 +4725,7 @@ signed int MapScriptCmd_set_camera_unk0e_unk0c()
 
     ReadMapScriptByte(1, v0);
     v1 = ReadMapScriptByte(2, v0);
-    setCameraUnk0e_Unk0c_80302a8(v2, v1);
+    camera_initShakeEffect_80302a8(v2, v1);
     return 1;
 }
 

@@ -1956,7 +1956,7 @@ sub_809F392:
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r1, r0
 	ldrb r0, [r6,#1]
-	bl setCameraUnk0e_Unk0c_80302a8
+	bl camera_initShakeEffect_80302a8
 	add r6, #4
 	pop {pc}
 	thumb_func_end sub_809F392

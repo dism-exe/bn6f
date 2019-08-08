@@ -759,7 +759,7 @@ loc_8035D64:
 // if byte1 == 0xff:
 //     SetScreenFade(byte2, byte3)
 // else:
-//     SetScreenFade([eMapScriptState + byte1], [eUnkMapScriptState_2011e60 + byte1 + 1])
+//     SetScreenFade([eMapScriptState + byte1], [eMapScriptState + byte1 + 1])
 MapScriptCmd_set_screen_fade: // 8035D6A
 	push {lr}
 	mov r6, #1
@@ -2437,12 +2437,12 @@ TryCutsceneSkip:
 	thumb_func_start cutsceneCamera_setCutsceneCameraScript_8036f98
 cutsceneCamera_setCutsceneCameraScript_8036f98:
 	push {lr}
-	ldr r1, off_8036FD4 // =eCutsceneCameraInfo
-	str r0, [r1]
+	ldr r1, =eCutsceneCameraInfo
+	str r0, [r1,#oCutsceneCameraInfo_CutsceneCameraScriptPtr]
 	mov r0, #0
-	str r0, [r1,#0x4] // (dword_2011BD4 - 0x2011bd0)
+	str r0, [r1,#oCutsceneCameraInfo_Timer_CommandInitialized] // (dword_2011BD4 - 0x2011bd0)
 	mov r0, #0
-	bl camera_80301B2
+	bl camera_writeUnk03_14_80301b2
 	pop {pc}
 	thumb_func_end cutsceneCamera_setCutsceneCameraScript_8036f98
 
@@ -2454,51 +2454,56 @@ cutsceneCamera_focusCameraOnPlayerMaybe_8036faa:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	ldr r1, [r1,#oGameState_OverworldPlayerObjectPtr]
 	add r1, #oOWPlayerObject_Coords
-	bl camera_80301B2
+	bl camera_writeUnk03_14_80301b2
 	pop {pc}
 	thumb_func_end cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
 
 	thumb_local_start
-cutscene_cameraMaybe_8036FBC:
+RunCutsceneCameraCommand:
 	push {r4-r7,lr}
-	ldr r5, off_8036FD4 // =eCutsceneCameraInfo
-	ldr r1, [r5]
+	ldr r5, =eCutsceneCameraInfo
+	ldr r1, [r5,#oCutsceneCameraInfo_CutsceneCameraScriptPtr]
 	ldrb r2, [r1]
-	ldr r0, off_8036FD8 // =off_8036FDC
+	ldr r0, =CutsceneCameraCommandJumptable
 	add r0, r0, r2
 	ldr r0, [r0]
 	mov lr, pc
 	bx r0
-	str r1, [r5]
+	str r1, [r5,#oCutsceneCameraInfo_CutsceneCameraScriptPtr]
 	tst r0, r0
 	pop {r4-r7,pc}
-off_8036FD4: .word eCutsceneCameraInfo
-off_8036FD8: .word off_8036FDC
-off_8036FDC: .word cutsceneCamera_setCameraPosition_8037030+1
-	.word cutsceneCamera_scrollCamera_803705a+1
-	.word cutsceneCamera_end_80370b4+1
-	.word sub_80370B8+1
-	.word sub_80370E4+1
-	.word sub_8037104+1
-	.word sub_8037196+1
-	.word sub_8037260+1
-	.word sub_80372A2+1
-	.word sub_80372EC+1
-	.word sub_8037332+1
-	.word sub_8037352+1
-	.word sub_803736A+1
-	.word sub_8037380+1
-	.word sub_8037396+1
-	.word sub_80373B6+1
-	.word sub_80373CC+1
-	.word sub_80373E4+1
-	.word sub_80373FC+1
-	.word sub_803741C+1
-	.word sub_8037432+1
-	thumb_func_end cutscene_cameraMaybe_8036FBC
+	.balign 4, 0
+	.pool // off_8036FD4
+CutsceneCameraCommandJumptable: .word CutsceneCameraCmd_set_camera_pos+1
+	.word CutsceneCameraCmd_simple_scroll+1
+	.word CutsceneCameraCmd_end+1
+	.word CutsceneCameraCmd_wait+1
+	.word CutsceneCameraCmd_init_shake_effect+1
+	.word CutsceneCameraCmd_auto_scroll_to_player+1
+	.word CutsceneCameraCmd_smooth_auto_scroll_to_pos+1
+	.word CutsceneCameraCmd_smooth_auto_scroll_to_pos_relative_to_ow_player+1
+	.word CutsceneCameraCmd_smooth_auto_scroll_to_soul_weapons_cursor+1
+	.word CutsceneCameraCmd_smooth_auto_scroll_cmd_80372ec+1
+	.word CutsceneCameraCmd_run_text_script+1
+	.word CutsceneCameraCmd_wait_chatbox+1
+	.word CutsceneCameraCmd_call_sub_8001B1C+1
+	.word CutsceneCameraCmd_call_sub_8001B6C+1
+	.word CutsceneCameraCmd_set_screen_fade+1
+	.word CutsceneCameraCmd_wait_screen_fade+1
+	.word CutsceneCameraCmd_set_event_flag+1
+	.word CutsceneCameraCmd_clear_event_flag+1
+	.word CutsceneCameraCmd_sound_cmd_80373fc+1
+	.word CutsceneCameraCmd_play_music+1
+	.word CutsceneCameraCmd_write_camera_field_03_14+1
+	thumb_func_end RunCutsceneCameraCommand
 
 	thumb_local_start
-cutsceneCamera_setCameraPosition_8037030:
+// 0x0 hword1 hword3 hword5
+// set the camera position
+// hword1 - x coord
+// hword3 - y coord
+// hword5 - z coord
+CutsceneCameraCmd_set_camera_pos:
 	push {lr}
 	mov r0, #1
 	bl ReadCutsceneCameraScriptSignedHalfword
@@ -2517,20 +2522,26 @@ cutsceneCamera_setCameraPosition_8037030:
 	mov r0, #1
 	add r1, #7
 	pop {pc}
-	thumb_func_end cutsceneCamera_setCameraPosition_8037030
+	thumb_func_end CutsceneCameraCmd_set_camera_pos
 
 	thumb_local_start
-cutsceneCamera_scrollCamera_803705a:
+// 0x4 hword1 hword3 hword5 hword7
+// scroll the camera
+// hword1 - scroll duration
+// hword3 - x offset
+// hword5 - y offset
+// hword7 - z offset
+CutsceneCameraCmd_simple_scroll:
 	push {lr}
-	ldrb r0, [r5,#6]
+	ldrb r0, [r5,#oCutsceneCameraInfo_CommandInitialized]
 	cmp r0, #0
-	bne loc_803706E
-	mov r0, #1
-	strb r0, [r5,#6]
+	bne .commandAlreadyInitialized
+	mov r0, #TRUE
+	strb r0, [r5,#oCutsceneCameraInfo_CommandInitialized]
 	mov r0, #1
 	bl ReadCutsceneCameraScriptHalfword
-	strh r0, [r5,#4]
-loc_803706E:
+	strh r0, [r5,#oCutsceneCameraInfo_Timer]
+.commandAlreadyInitialized
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_CameraPtr]
 	mov r0, #3
@@ -2551,56 +2562,65 @@ loc_803706E:
 	ldr r3, [r6,#oCamera_Z]
 	add r0, r0, r3
 	str r0, [r6,#oCamera_Z]
-	ldrh r0, [r5,#4]
+	ldrh r0, [r5,#oCutsceneCameraInfo_Timer]
 	sub r0, #1
-	strh r0, [r5,#4]
+	strh r0, [r5,#oCutsceneCameraInfo_Timer]
 	cmp r0, #0
-	bgt loc_80370B0
-	mov r0, #0
-	strb r0, [r5,#6]
+	bgt .commandNotDone
+	mov r0, #FALSE
+	strb r0, [r5,#oCutsceneCameraInfo_CommandInitialized]
 	mov r0, #1
 	add r1, #9
 	pop {pc}
-loc_80370B0:
+.commandNotDone
 	mov r0, #1
 	pop {pc}
-	thumb_func_end cutsceneCamera_scrollCamera_803705a
+	thumb_func_end CutsceneCameraCmd_simple_scroll
 
 	thumb_local_start
-cutsceneCamera_end_80370b4:
+// 0x8
+// end cutscene camera script
+CutsceneCameraCmd_end:
 	mov r0, #0
 	mov pc, lr
-	thumb_func_end cutsceneCamera_end_80370b4
+	thumb_func_end CutsceneCameraCmd_end
 
 	thumb_local_start
-sub_80370B8:
+// 0xc hword1
+// wait a certain amount of frames
+// hword1 - number of frames to wait
+CutsceneCameraCmd_wait:
 	push {lr}
-	ldrb r2, [r5,#6]
+	ldrb r2, [r5,#oCutsceneCameraInfo_CommandInitialized]
 	cmp r2, #0
-	bne loc_80370CC
-	mov r2, #1
-	strb r2, [r5,#6]
+	bne .commandAlreadyInitialized
+	mov r2, #TRUE
+	strb r2, [r5,#oCutsceneCameraInfo_CommandInitialized]
 	mov r0, #1
 	bl ReadCutsceneCameraScriptHalfword
-	strh r0, [r5,#4]
-loc_80370CC:
-	ldrh r2, [r5,#4]
+	strh r0, [r5,#oCutsceneCameraInfo_Timer]
+.commandAlreadyInitialized
+	ldrh r2, [r5,#oCutsceneCameraInfo_Timer]
 	sub r2, #1
-	strh r2, [r5,#4]
+	strh r2, [r5,#oCutsceneCameraInfo_Timer]
 	cmp r2, #0
-	bge loc_80370E0
+	bge .commandNotDone
 	mov r2, #0
-	strb r2, [r5,#6]
+	strb r2, [r5,#oCutsceneCameraInfo_CommandInitialized]
 	mov r0, #1
 	add r1, #3
 	pop {pc}
-loc_80370E0:
+.commandNotDone
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80370B8
+	thumb_func_end CutsceneCameraCmd_wait
 
 	thumb_local_start
-sub_80370E4:
+// 0x10 byte1 byte2
+// shake the screen
+// byte1 = shake duration
+// byte2 = shake intensity
+CutsceneCameraCmd_init_shake_effect:
 	push {lr}
 	push {r1}
 	mov r0, #2
@@ -2609,317 +2629,411 @@ sub_80370E4:
 	mov r0, #1
 	bl ReadCutsceneCameraScriptByte
 	mov r1, r4
-	bl setCameraUnk0e_Unk0c_80302a8
+	bl camera_initShakeEffect_80302a8
 	pop {r1}
 	mov r0, #1
 	add r1, #3
 	pop {pc}
-	thumb_func_end sub_80370E4
+	thumb_func_end CutsceneCameraCmd_init_shake_effect
 
 	thumb_local_start
-sub_8037104:
+// 0x14
+// scroll the camera to the player automatically
+// the scroll starts off fast, then progressively deaccelerates
+// see CutsceneCamera_GetAutoScrollDeltaForCoord for how the scroll works
+CutsceneCameraCmd_auto_scroll_to_player:
 	push {lr}
 	mov r7, r10
 	ldr r6, [r7,#oToolkit_CameraPtr]
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
-	ldr r2, [r6,#0x30]
-	ldr r3, [r7,#0x1c]
+
+	ldr r2, [r6,#oCamera_X]
+	ldr r3, [r7,#oOWPlayerObject_X]
 	sub r3, r3, r2
-	bl sub_8037162
+	bl CutsceneCamera_GetAutoScrollDeltaForCoord
 	add r3, r3, r2
-	str r3, [r6,#0x30]
-	ldr r2, [r6,#0x34]
-	ldr r3, [r7,#0x20]
+	str r3, [r6,#oCamera_X]
+
+	ldr r2, [r6,#oCamera_Y]
+	ldr r3, [r7,#oOWPlayerObject_Y]
 	sub r3, r3, r2
-	bl sub_8037162
+	bl CutsceneCamera_GetAutoScrollDeltaForCoord
 	add r3, r3, r2
-	str r3, [r6,#0x34]
-	ldr r2, [r6,#0x38]
-	ldr r3, [r7,#0x24]
+	str r3, [r6,#oCamera_Y]
+
+	ldr r2, [r6,#oCamera_Z]
+	ldr r3, [r7,#oOWPlayerObject_Z]
 	sub r3, r3, r2
-	bl sub_8037162
+	bl CutsceneCamera_GetAutoScrollDeltaForCoord
 	add r3, r3, r2
-	str r3, [r6,#0x38]
-	ldr r0, [r6,#0x30]
-	ldr r2, [r7,#0x1c]
+	str r3, [r6,#oCamera_Z]
+
+	ldr r0, [r6,#oCamera_X]
+	ldr r2, [r7,#oOWPlayerObject_X]
 	cmp r0, r2
-	bne loc_8037152
-	ldr r0, [r6,#0x34]
-	ldr r2, [r7,#0x20]
+	bne .coordsNotEqual
+	ldr r0, [r6,#oCamera_Y]
+	ldr r2, [r7,#oOWPlayerObject_Y]
 	cmp r0, r2
-	bne loc_8037152
-	ldr r0, [r6,#0x38]
-	ldr r2, [r7,#0x24]
+	bne .coordsNotEqual
+	ldr r0, [r6,#oCamera_Z]
+	ldr r2, [r7,#oOWPlayerObject_Z]
 	cmp r0, r2
-	bne loc_8037152
-	b loc_8037156
-loc_8037152:
+	bne .coordsNotEqual
+	b .done
+.coordsNotEqual
 	mov r0, #1
 	pop {pc}
-loc_8037156:
+.done
 	mov r2, #0
 	strb r2, [r5,#6]
 	strh r2, [r5,#4]
 	mov r0, #1
 	add r1, #1
 	pop {pc}
-	thumb_func_end sub_8037104
+	thumb_func_end CutsceneCameraCmd_auto_scroll_to_player
 
 	thumb_local_start
-sub_8037162:
+// input is camera coord - player coord
+// i.e. delta
+// take absolute value of delta (coordinate)
+// delta = delta >> 4
+// delta = min(delta, 0x100000)
+// delta = max(delta, 0x800)
+// restore delta sign and return
+CutsceneCamera_GetAutoScrollDeltaForCoord:
 	mov r4, #0x10
 	lsl r4, r4, #0x10
 	cmp r3, #0
-	bge loc_8037182
+	bge .deltaIsPositive
 	neg r3, r3
 	mov r0, r3
 	lsr r3, r3, #4
 	cmp r3, r4
-	ble loc_8037176
+	ble .deltaLessThan0x1000000
 	mov r3, r4
-loc_8037176:
+.deltaLessThan0x1000000
 	lsr r4, r4, #9
 	cmp r3, r4
-	bge loc_803717E
+	bge .deltaGreaterThan0x8000
 	mov r3, r0
-loc_803717E:
+.deltaGreaterThan0x8000
 	neg r3, r3
 	mov pc, lr
-loc_8037182:
+
+.deltaIsPositive
 	mov r0, r3
 	lsr r3, r3, #4
 	cmp r3, r4
-	ble loc_803718C
+	ble .deltaLessThan0x1000000_2
 	mov r3, r4
-loc_803718C:
+.deltaLessThan0x1000000_2
 	lsr r4, r4, #9
 	cmp r3, r4
-	bge locret_8037194
+	bge .deltaGreaterThan0x8000_2
 	mov r3, r0
-locret_8037194:
+.deltaGreaterThan0x8000_2
 	mov pc, lr
-	thumb_func_end sub_8037162
+	thumb_func_end CutsceneCamera_GetAutoScrollDeltaForCoord
 
 	thumb_local_start
-sub_8037196:
+// 0x18 hword1 hword3 hword5 hword7
+// perform a smooth automatic scroll to the given camera position
+// hword1 - new X coordinate
+// hword3 - new Y coordinate
+// hword5 - new Z coordinate
+// hword7 - scroll time
+CutsceneCameraCmd_smooth_auto_scroll_to_pos:
 	push {lr}
-	ldrb r2, [r5,#6]
-	cmp r2, #0
-	bne loc_80371E8
+	ldrb r2, [r5,#oCutsceneCameraInfo_CommandInitialized]
+	cmp r2, #FALSE
+	bne CutsceneCamera_UpdateSmoothAutoScroll
 	push {r0-r3}
-	mov r2, #1
-	strb r2, [r5,#6]
+	mov r2, #TRUE
+	strb r2, [r5,#oCutsceneCameraInfo_CommandInitialized]
 	mov r0, #1
 	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #0x10
-	str r0, [r5,#0x14]
+	str r0, [r5,#oCutsceneCameraInfo_NewX]
 	mov r0, #3
 	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #0x10
-	str r0, [r5,#0x18]
+	str r0, [r5,#oCutsceneCameraInfo_NewY]
 	mov r0, #5
 	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #0x10
-	str r0, [r5,#0x1c]
-loc_80371C2:
+	str r0, [r5,#oCutsceneCameraInfo_NewZ]
+
+// fallthrough
+
+// the smooth auto scroll will multiply the distance between the old and new coordinates
+// using a sin table, add the partial value to the original camera cooord, then store the
+// new camera coord to produce a smooth scroll effect
+CutsceneCamera_InitializeSmoothAutoScroll:
+	// read the timer value
 	mov r0, #7
 	bl ReadCutsceneCameraScriptHalfword
 	mov r1, r0
-	strh r1, [r5,#4]
+	strh r1, [r5,#oCutsceneCameraInfo_Timer] // useless store
+
+	// get and store the delta amount by dividing 0x4000 (the max scroll time) with the timer value
 	mov r0, #0x40
-	lsl r0, r0, #8
+	lsl r0, r0, #8 // r0 = 0x4000
 	svc 6
-	str r0, [r5,#0x20]
+	str r0, [r5,#oCutsceneCameraInfo_SmoothAutoScrollDelta]
+
+	// round down the timer so that the delta divides the timer value with no remainder
 	mov r0, #0x40
-	lsl r0, r0, #8
-	sub r0, r0, r1
-	strh r0, [r5,#4]
-	bl sub_80301D0
-	str r0, [r5,#8]
-	str r1, [r5,#0xc]
-	str r2, [r5,#0x10]
+	lsl r0, r0, #8 // r0 = 0x4000
+	sub r0, r0, r1 // subtract remainder
+	strh r0, [r5,#oCutsceneCameraInfo_Timer]
+
+	// save the original camera coordinates
+	bl GetCameraXYZ
+	str r0, [r5,#oCutsceneCameraInfo_OldX]
+	str r1, [r5,#oCutsceneCameraInfo_OldY]
+	str r2, [r5,#oCutsceneCameraInfo_OldZ]
 	pop {r0-r3}
-loc_80371E8:
+
+// fallthrough
+CutsceneCamera_UpdateSmoothAutoScroll:
 	push {r0-r3}
-	ldr r7, off_803725C // =math_sinTable
-	ldrh r3, [r5,#4]
-	ldr r4, [r5,#0x20]
+	ldr r7, =math_sinTable // useless load
+
+	// subtract delta from timer, and end if the timer is <= 0
+	ldrh r3, [r5,#oCutsceneCameraInfo_Timer]
+	ldr r4, [r5,#oCutsceneCameraInfo_SmoothAutoScrollDelta]
 	sub r4, r3, r4
-	ble loc_8037242
-	strh r4, [r5,#4]
+	ble CutsceneCamera_DoneSmoothAutoScroll
+
+	// store new timer value
+	strh r4, [r5,#oCutsceneCameraInfo_Timer]
+
+	// scale timer value to the length of the sin table
 	lsr r4, r4, #8
+
+	// as the timer counts down, do a reverse subtract so that we read from the sin table going forwards
 	mov r3, #0x40
 	sub r4, r3, r4
-	lsl r4, r4, #1
-	ldr r0, off_803725C // =math_sinTable
+	lsl r4, r4, #1 // hword read
+	ldr r0, =math_sinTable
 	ldrsh r4, [r0,r4]
-	ldr r0, [r5,#0x14]
-	ldr r1, [r5,#8]
+
+	// calculate the distance between the old and new coordinates
+	ldr r0, [r5,#oCutsceneCameraInfo_NewX]
+	ldr r1, [r5,#oCutsceneCameraInfo_OldX]
+	sub r0, r0, r1
+
+	// divide by 0x100, then multiply by the sin value (which caps at 0xff)
+	asr r0, r0, #8
+	mul r0, r4
+	// save intermediate offset
+	push {r0}
+
+	// do the same for the Y and Z coordinates
+	ldr r0, [r5,#oCutsceneCameraInfo_NewY]
+	ldr r1, [r5,#oCutsceneCameraInfo_OldY]
 	sub r0, r0, r1
 	asr r0, r0, #8
 	mul r0, r4
 	push {r0}
-	ldr r0, [r5,#0x18]
-	ldr r1, [r5,#0xc]
+
+	ldr r0, [r5,#oCutsceneCameraInfo_NewZ]
+	ldr r1, [r5,#oCutsceneCameraInfo_OldZ]
 	sub r0, r0, r1
 	asr r0, r0, #8
 	mul r0, r4
 	push {r0}
-	ldr r0, [r5,#0x1c]
-	ldr r1, [r5,#0x10]
-	sub r0, r0, r1
-	asr r0, r0, #8
-	mul r0, r4
-	push {r0}
+
+	// restore Z intermediate offset and add it to the original
+	// Z value to get the intermediate coordinate value
 	pop {r2}
-	ldr r3, [r5,#0x10]
+	ldr r3, [r5,#oCutsceneCameraInfo_OldZ]
 	add r2, r2, r3
+
+	// do the same for Y and X coordinates
 	pop {r1}
-	ldr r3, [r5,#0xc]
+	ldr r3, [r5,#oCutsceneCameraInfo_OldY]
 	add r1, r1, r3
+
 	pop {r0}
-	ldr r3, [r5,#8]
+	ldr r3, [r5,#oCutsceneCameraInfo_OldX]
 	add r0, r0, r3
-	bl sub_80301DC
+
+	// set the camera coordinates
+	bl SetCameraXYZ
 	pop {r0-r3}
 	mov r0, #1
 	pop {pc}
-loc_8037242:
-	ldr r0, [r5,#0x14]
-	ldr r1, [r5,#0x18]
-	ldr r2, [r5,#0x1c]
-	bl sub_80301DC
+
+CutsceneCamera_DoneSmoothAutoScroll:
+	// get the new camera coordinates
+	ldr r0, [r5,#oCutsceneCameraInfo_NewX]
+	ldr r1, [r5,#oCutsceneCameraInfo_NewY]
+	ldr r2, [r5,#oCutsceneCameraInfo_NewZ]
+	
+	// set the camera coordinates
+	bl SetCameraXYZ
 	pop {r0-r3}
-	mov r2, #0
-	strb r2, [r5,#6]
-	strh r2, [r5,#4]
+
+	// de-initialize command
+	mov r2, #FALSE
+	strb r2, [r5,#oCutsceneCameraInfo_CommandInitialized]
+	strh r2, [r5,#oCutsceneCameraInfo_Timer]
 	mov r0, #1
 	add r1, #9
 	pop {pc}
 	.balign 4, 0x00
-off_803725C: .word math_sinTable
-	thumb_func_end sub_8037196
+	// 803725C
+	.pool
+	thumb_func_end CutsceneCameraCmd_smooth_auto_scroll_to_pos
 
 	thumb_local_start
-sub_8037260:
+// 0x1c hword1 hword3 hword5 hword7
+// perform a smooth automatic scroll to a location relative to the player
+// hword1 - relative X coordinate offset to the player
+// hword3 - relative Y coordinate offset to the player
+// hword5 - relative Z coordinate offset to the player
+// hword7 - scroll time
+CutsceneCameraCmd_smooth_auto_scroll_to_pos_relative_to_ow_player:
 	push {lr}
-	ldrb r2, [r5,#6]
-	cmp r2, #0
-	bne loc_80372A0
+	ldrb r2, [r5,#oCutsceneCameraInfo_CommandInitialized]
+	cmp r2, #FALSE
+	bne .updateSmoothAutoScroll
 	push {r0-r3}
-	mov r2, #1
-	strb r2, [r5,#6]
+	mov r2, #TRUE
+	strb r2, [r5,#oCutsceneCameraInfo_CommandInitialized]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #1
 	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #0x10
-	ldr r3, [r7,#0x1c]
+	ldr r3, [r7,#oOWPlayerObject_X]
 	add r0, r0, r3
-	str r0, [r5,#0x14]
+	str r0, [r5,#oCutsceneCameraInfo_NewX]
 	mov r0, #3
 	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #0x10
-	ldr r3, [r7,#0x20]
+	ldr r3, [r7,#oOWPlayerObject_Y]
 	add r0, r0, r3
-	str r0, [r5,#0x18]
+	str r0, [r5,#oCutsceneCameraInfo_NewY]
 	mov r0, #5
 	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #0x10
-	ldr r3, [r7,#0x24]
+	ldr r3, [r7,#oOWPlayerObject_Z]
 	add r0, r0, r3
-	str r0, [r5,#0x1c]
-	b loc_80371C2
-loc_80372A0:
-	b loc_80371E8
-	thumb_func_end sub_8037260
+	str r0, [r5,#oCutsceneCameraInfo_NewZ]
+	b CutsceneCamera_InitializeSmoothAutoScroll
+.updateSmoothAutoScroll
+	b CutsceneCamera_UpdateSmoothAutoScroll
+	thumb_func_end CutsceneCameraCmd_smooth_auto_scroll_to_pos_relative_to_ow_player
 
 	thumb_local_start
-sub_80372A2:
+// 0x20 unused1to6 hword7
+// perform a smooth automatic scroll to the soul weapon's cursor
+// unused1to6 - unused
+// hword7 - timer
+CutsceneCameraCmd_smooth_auto_scroll_to_soul_weapons_cursor:
 	push {lr}
-	ldrb r2, [r5,#6]
-	cmp r2, #0
-	bne loc_80372CC
+	ldrb r2, [r5,#oCutsceneCameraInfo_CommandInitialized]
+	cmp r2, #FALSE
+	bne .commandAlreadyInitialized
 	push {r0-r3}
 	mov r2, #1
-	strb r2, [r5,#6]
+	strb r2, [r5,#oCutsceneCameraInfo_CommandInitialized]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
 	push {r0-r3}
-	bl sub_81421E0
-	bl sub_8142868
-	str r0, [r5,#0x14]
-	str r1, [r5,#0x18]
-	ldr r2, [r7,#0x24]
-	str r2, [r5,#0x1c]
+	bl getField0x18OfScenarioEffectState2000780_81421e0
+	bl GetSoulWeaponCursorCameraCoords
+	str r0, [r5,#oCutsceneCameraInfo_NewX]
+	str r1, [r5,#oCutsceneCameraInfo_NewY]
+	ldr r2, [r7,#oCutsceneCameraInfo_Unk_24]
+	str r2, [r5,#oCutsceneCameraInfo_NewZ]
 	pop {r0-r3}
-	b loc_80371C2
-loc_80372CC:
+	b CutsceneCamera_InitializeSmoothAutoScroll
+.commandAlreadyInitialized
 	push {r0-r3}
-	ldr r0, [r5,#0x14]
-	ldr r1, [r5,#8]
+
+	ldr r0, [r5,#oCutsceneCameraInfo_NewX]
+	ldr r1, [r5,#oCutsceneCameraInfo_OldX]
 	cmp r0, r1
-	bne loc_80372E8
-	ldr r0, [r5,#0x18]
-	ldr r1, [r5,#0xc]
+	bne .updateSmoothAutoScroll
+
+	ldr r0, [r5,#oCutsceneCameraInfo_NewY]
+	ldr r1, [r5,#oCutsceneCameraInfo_OldY]
 	cmp r0, r1
-	bne loc_80372E8
-	ldr r0, [r5,#0x1c]
-	ldr r1, [r5,#0x10]
+	bne .updateSmoothAutoScroll
+
+	ldr r0, [r5,#oCutsceneCameraInfo_NewZ]
+	ldr r1, [r5,#oCutsceneCameraInfo_OldZ]
 	cmp r0, r1
-	bne loc_80372E8
-	b loc_8037242
-loc_80372E8:
+	bne .updateSmoothAutoScroll
+
+	b CutsceneCamera_DoneSmoothAutoScroll
+.updateSmoothAutoScroll
 	pop {r0-r3}
-	b loc_80371E8
-	thumb_func_end sub_80372A2
+	b CutsceneCamera_UpdateSmoothAutoScroll
+	thumb_func_end CutsceneCameraCmd_smooth_auto_scroll_to_soul_weapons_cursor
 
 	thumb_local_start
-sub_80372EC:
+// 0x24 unused1to6 hword7
+// perform a smooth automatic scroll to the coords at [eCutsceneState_Unk_04]+0xc
+// unused1to6 - unused
+// hword7 - timer
+CutsceneCameraCmd_smooth_auto_scroll_cmd_80372ec:
 	push {lr}
-	ldrb r2, [r5,#6]
-	cmp r2, #0
-	bne loc_8037312
+	ldrb r2, [r5,#oCutsceneCameraInfo_CommandInitialized]
+	cmp r2, #FALSE
+	bne .commandAlreadyInitialized
 	push {r0-r3}
-	mov r2, #1
-	strb r2, [r5,#6]
+	mov r2, #TRUE
+	strb r2, [r5,#oCutsceneCameraInfo_CommandInitialized]
 	push {r0-r3}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_CutsceneStatePtr]
-	ldr r7, [r7,#4]
+	ldr r7, [r7,#oCutsceneState_Unk_04]
 	ldr r0, [r7,#0xc]
 	ldr r1, [r7,#0x10]
 	ldr r2, [r7,#0x14]
-	str r0, [r5,#0x14]
-	str r1, [r5,#0x18]
-	str r2, [r5,#0x1c]
+	str r0, [r5,#oCutsceneCameraInfo_NewX]
+	str r1, [r5,#oCutsceneCameraInfo_NewY]
+	str r2, [r5,#oCutsceneCameraInfo_NewZ]
 	pop {r0-r3}
-	b loc_80371C2
-loc_8037312:
+	b CutsceneCamera_InitializeSmoothAutoScroll
+.commandAlreadyInitialized
 	push {r0-r3}
-	ldr r0, [r5,#0x14]
-	ldr r1, [r5,#8]
+
+	ldr r0, [r5,#oCutsceneCameraInfo_NewX]
+	ldr r1, [r5,#oCutsceneCameraInfo_OldX]
 	cmp r0, r1
-	bne loc_803732E
-	ldr r0, [r5,#0x18]
-	ldr r1, [r5,#0xc]
+	bne .updateSmoothAutoScroll
+
+	ldr r0, [r5,#oCutsceneCameraInfo_NewY]
+	ldr r1, [r5,#oCutsceneCameraInfo_OldY]
 	cmp r0, r1
-	bne loc_803732E
-	ldr r0, [r5,#0x1c]
-	ldr r1, [r5,#0x10]
+	bne .updateSmoothAutoScroll
+
+	ldr r0, [r5,#oCutsceneCameraInfo_NewZ]
+	ldr r1, [r5,#oCutsceneCameraInfo_OldZ]
 	cmp r0, r1
-	bne loc_803732E
-	b loc_8037242
-loc_803732E:
+	bne .updateSmoothAutoScroll
+
+	b CutsceneCamera_DoneSmoothAutoScroll
+.updateSmoothAutoScroll
 	pop {r0-r3}
-	b loc_80371E8
-	thumb_func_end sub_80372EC
+	b CutsceneCamera_UpdateSmoothAutoScroll
+	thumb_func_end CutsceneCameraCmd_smooth_auto_scroll_cmd_80372ec
 
 	thumb_local_start
-sub_8037332:
+// 0x28 byte1 word2
+// run the text script given the arguments
+// byte1 - script index
+// word2 - text archive
+CutsceneCameraCmd_run_text_script:
 	push {lr}
 	push {r1}
 	mov r0, #1
@@ -2933,26 +3047,30 @@ sub_8037332:
 	mov r0, #1
 	add r1, #6
 	pop {pc}
-	thumb_func_end sub_8037332
+	thumb_func_end CutsceneCameraCmd_run_text_script
 
 	thumb_local_start
-sub_8037352:
+// 0x2c
+// wait for the textbox to be cleared
+CutsceneCameraCmd_wait_chatbox:
 	push {lr}
 	push {r1}
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
 	pop {r1}
-	bne loc_8037366
+	bne .textboxStillUp
 	mov r0, #1
 	add r1, #1
 	pop {pc}
-loc_8037366:
+.textboxStillUp
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8037352
+	thumb_func_end CutsceneCameraCmd_wait_chatbox
 
 	thumb_local_start
-sub_803736A:
+// 0x30 word1
+// call sub_8001B1C with r0=word1
+CutsceneCameraCmd_call_sub_8001B1C:
 	push {lr}
 	push {r1}
 	mov r0, #1
@@ -2962,10 +3080,12 @@ sub_803736A:
 	mov r0, #1
 	add r1, #5
 	pop {pc}
-	thumb_func_end sub_803736A
+	thumb_func_end CutsceneCameraCmd_call_sub_8001B1C
 
 	thumb_local_start
-sub_8037380:
+// 0x34 word1
+// call sub_8001B6C with r0=word1
+CutsceneCameraCmd_call_sub_8001B6C:
 	push {lr}
 	push {r1}
 	mov r0, #1
@@ -2975,10 +3095,12 @@ sub_8037380:
 	mov r0, #1
 	add r1, #2
 	pop {pc}
-	thumb_func_end sub_8037380
+	thumb_func_end CutsceneCameraCmd_call_sub_8001B6C
 
 	thumb_local_start
-sub_8037396:
+// 0x38 byte1 byte2
+// set screen fade with r0=byte1 and r1=byte2
+CutsceneCameraCmd_set_screen_fade:
 	push {lr}
 	push {r1}
 	mov r0, #2
@@ -2992,25 +3114,30 @@ sub_8037396:
 	mov r0, #1
 	add r1, #3
 	pop {pc}
-	thumb_func_end sub_8037396
+	thumb_func_end CutsceneCameraCmd_set_screen_fade
 
 	thumb_local_start
-sub_80373B6:
+// 0x3c
+// wait for the screen to finish fading
+CutsceneCameraCmd_wait_screen_fade:
 	push {lr}
 	push {r1}
 	bl IsScreenFadeActive // () -> zf
 	pop {r1}
-	beq loc_80373C8
+	beq .screenFadeActive
 	mov r0, #1
 	add r1, #1
 	pop {pc}
-loc_80373C8:
+.screenFadeActive
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80373B6
+	thumb_func_end CutsceneCameraCmd_wait_screen_fade
 
 	thumb_local_start
-sub_80373CC:
+// 0x40 hword1
+// set event flag
+// hword1 - event flag to set
+CutsceneCameraCmd_set_event_flag:
 	push {lr}
 	push {r1,r5}
 	mov r0, #1
@@ -3021,10 +3148,13 @@ sub_80373CC:
 	mov r0, #1
 	add r1, #3
 	pop {pc}
-	thumb_func_end sub_80373CC
+	thumb_func_end CutsceneCameraCmd_set_event_flag
 
 	thumb_local_start
-sub_80373E4:
+// 0x44 hword1
+// clear event flag
+// hword1 - event flag to clear
+CutsceneCameraCmd_clear_event_flag:
 	push {lr}
 	push {r1}
 	mov r0, #1
@@ -3035,10 +3165,12 @@ sub_80373E4:
 	mov r0, #1
 	add r1, #3
 	pop {pc}
-	thumb_func_end sub_80373E4
+	thumb_func_end CutsceneCameraCmd_clear_event_flag
 
 	thumb_local_start
-sub_80373FC:
+// 0x48 byte1 byte2
+// call sound_800068A with r0=byte1 and r1=byte2
+CutsceneCameraCmd_sound_cmd_80373fc:
 	push {lr}
 	push {r1}
 	mov r0, #2
@@ -3047,15 +3179,18 @@ sub_80373FC:
 	mov r0, #1
 	bl ReadCutsceneCameraScriptByte
 	mov r1, r4
-	bl sub_800068A
+	bl sound_800068A
 	pop {r1}
 	mov r0, #1
 	add r1, #3
 	pop {pc}
-	thumb_func_end sub_80373FC
+	thumb_func_end CutsceneCameraCmd_sound_cmd_80373fc
 
 	thumb_local_start
-sub_803741C:
+// 0x4c hword1
+// play music
+// hword1 - music to play
+CutsceneCameraCmd_play_music:
 	push {lr}
 	push {r1}
 	mov r0, #1
@@ -3065,22 +3200,24 @@ sub_803741C:
 	mov r0, #1
 	add r1, #3
 	pop {pc}
-	thumb_func_end sub_803741C
+	thumb_func_end CutsceneCameraCmd_play_music
 
 	thumb_local_start
-sub_8037432:
+// 0x50 word1
+// call camera_writeUnk03_14_80301b2 with r0=1 and r1=word1
+CutsceneCameraCmd_write_camera_field_03_14:
 	push {lr}
 	push {r1}
 	mov r0, #1
 	bl ReadCutsceneCameraScriptWord
 	mov r1, r0
 	mov r0, #1
-	bl camera_80301B2
+	bl camera_writeUnk03_14_80301b2
 	pop {r1}
 	mov r0, #1
 	add r1, #5
 	pop {pc}
-	thumb_func_end sub_8037432
+	thumb_func_end CutsceneCameraCmd_write_camera_field_03_14
 
 	thumb_local_start
 ReadCutsceneCameraScriptByte:
@@ -3233,7 +3370,7 @@ CutsceneCommandJumptable:
 	.word NULL
 	.word MapScriptCmd_init_eStruct200a6a0+1
 	.word MapScriptCmd_run_eStruct200a6a0_callback+1
-	.word MapScriptCmd_set_camera_unk0e_unk0c+1
+	.word MapScriptCmd_do_camera_shake+1
 	.word MapScriptCmd_nop_8038246+1
 	.word MapScriptCmd_nop_8038256+1
 	.word MapScriptCmd_nop_803825e+1
@@ -4715,7 +4852,7 @@ MapScriptCmd_sound_cmd_803810e:
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r0, r4
-	bl sub_800068A
+	bl sound_800068A
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #0x63
@@ -4856,7 +4993,7 @@ MapScriptCmd_run_eStruct200a6a0_callback:
 	thumb_func_end MapScriptCmd_run_eStruct200a6a0_callback
 
 	thumb_local_start
-MapScriptCmd_set_camera_unk0e_unk0c:
+MapScriptCmd_do_camera_shake:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4864,11 +5001,11 @@ MapScriptCmd_set_camera_unk0e_unk0c:
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r1, r4
-	bl setCameraUnk0e_Unk0c_80302a8
+	bl camera_initShakeEffect_80302a8
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_set_camera_unk0e_unk0c
+	thumb_func_end MapScriptCmd_do_camera_shake
 
 	thumb_local_start
 MapScriptCmd_nop_8038246:
@@ -5359,7 +5496,7 @@ runCutscene_803851C:
 	ldr r0, [r5,#oCutsceneState_Unk_3c]
 	tst r0, r0
 	beq .loc_803856A
-	bl cutscene_cameraMaybe_8036FBC
+	bl RunCutsceneCameraCommand
 	strb r0, [r5,#oCutsceneState_CutsceneCameraScriptActive]
 .loc_803856A:
 	bl TryCutsceneSkip

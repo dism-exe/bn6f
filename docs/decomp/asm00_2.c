@@ -6365,7 +6365,7 @@ int sub_8012CB2()
             --v6;
         }
         while ( v6 );
-        result = setCameraUnk0e_Unk0c_80302a8(2, 20);
+        result = camera_initShakeEffect_80302a8(2, 20);
     }
     return result;
 }

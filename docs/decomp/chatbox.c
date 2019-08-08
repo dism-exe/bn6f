@@ -2980,7 +2980,7 @@ signed int chatbox_8042328()
     int v0; // r4
     int v1; // r10
 
-    sub_800068A(*(v0 + 2), *(v0 + 3));
+    sound_800068A(*(v0 + 2), *(v0 + 3));
     *(*(v1 + oToolkit_GameStatePtr) + oGameState_BGMusicIndicator) = 99;
     return 1;
 }

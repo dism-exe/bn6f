@@ -520,7 +520,7 @@ loc_8099D58:
 	lsl r2, r2, #0x10
 	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4
 	mov r0, #0
-	bl camera_80301B2
+	bl camera_writeUnk03_14_80301b2
 	mov r0, #0xe
 	mov r1, #0x10
 	mov r2, #0x12
@@ -530,7 +530,7 @@ loc_8099D58:
 	lsl r0, r0, #0x10
 	lsl r1, r1, #0x10
 	lsl r2, r2, #0x10
-	bl sub_80301DC
+	bl SetCameraXYZ
 	movflag EVENT_EVENT_CUR_DIR_LOCKED
 	bl ClearEventFlagFromImmediate
 loc_8099DA2:
@@ -548,7 +548,7 @@ sub_8099DAC:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	ldr r1, [r1,#oGameState_OverworldPlayerObjectPtr]
 	add r1, #0x1c
-	bl camera_80301B2
+	bl camera_writeUnk03_14_80301b2
 	mov r0, #0
 	pop {r4-r7,pc}
 byte_8099DC0: .byte 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17, 0x3E, 0xE0, 0xB9
@@ -2265,7 +2265,7 @@ loc_809AF4C:
 loc_809AF5A:
 	strb r4, [r5,#4]
 	mov r0, #0
-	bl camera_80301B2
+	bl camera_writeUnk03_14_80301b2
 	ldr r0, [r7,#0x24]
 	ldr r1, [r7,#0x28]
 	ldr r3, [r7,#0x30]
@@ -2275,7 +2275,7 @@ loc_809AF5A:
 	asr r0, r0, #1
 	asr r1, r1, #1
 	mov r2, #0
-	bl sub_80301DC
+	bl SetCameraXYZ
 	mov r0, #0
 	pop {r4-r7,pc}
 	thumb_func_end sub_809AF00
@@ -2864,7 +2864,7 @@ loc_809B960:
 	strb r0, [r5,#9]
 	mov r0, #1
 	mov r1, r6
-	bl camera_80301B2
+	bl camera_writeUnk03_14_80301b2
 	mov r0, #0
 	pop {r4-r7,pc}
 	.word byte_809B174
@@ -3137,7 +3137,7 @@ loc_809BDE6:
 loc_809BE4A:
 	mov r0, #1
 	mov r1, r6
-	bl camera_80301B2
+	bl camera_writeUnk03_14_80301b2
 loc_809BE52:
 	mov r3, r10
 	ldr r3, [r3,#0x3c]

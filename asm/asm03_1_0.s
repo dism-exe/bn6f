@@ -2261,7 +2261,7 @@ npc_80350A8:
 	mov r0, #1
 	mov r1, r5
 	add r1, #0x1c
-	bl camera_80301B2
+	bl camera_writeUnk03_14_80301b2
 	pop {r5,pc}
 	.balign 4, 0x00
 	thumb_func_end npc_80350A8

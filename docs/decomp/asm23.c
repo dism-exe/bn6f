@@ -56,7 +56,7 @@ signed int __fastcall sub_808917C(int a1, int a2, int a3)
         v8 = 0;
         if ( v6 & 2 )
             v8 = 16;
-        v9 = sub_80301D0();
+        v9 = GetCameraXYZ();
         v10 = &off_8089214 + 2 * v7 + v8;
         HIDWORD(v9) += v10[1] << 16;
         v14 = v9 + (*v10 << 16);
@@ -65,7 +65,7 @@ signed int __fastcall sub_808917C(int a1, int a2, int a3)
         sub_80303FC(&v14);
         if ( !v12 )
             sub_8089370(v7);
-        sub_80301DC(v14, v15, v16);
+        SetCameraXYZ(v14, v15, v16);
 LABEL_12:
         sub_8089280();
     }
@@ -658,7 +658,7 @@ signed int __fastcall sub_8089A10(int a1)
     sub_8089CB4();
     if ( !v2 )
     {
-        v3 = off_8089A40[sub_81426CE()];
+        v3 = off_8089A40[GetSoulWeaponsMapIndex()];
         *(v1 + 60) = v3;
         sub_8036F98(v3);
         *(v1 + 19) = 1;
@@ -694,7 +694,7 @@ signed int __fastcall sub_8089A60(int a1)
         ClearEventFlagFromImmediate(2, 37);
         *(*(v3 + oToolkit_GameStatePtr) + oGameState_Unk_15) = 0;
         TestEventFlagFromImmediate(0, 40);
-        if ( v4 && sub_81426CE() < 6 )
+        if ( v4 && GetSoulWeaponsMapIndex() < 6 )
         {
             sub_8035408();
             PlaySoundEffect(356, v6, v7);
@@ -952,7 +952,7 @@ signed int __fastcall sub_8089C78(int a1)
         return 1;
     sub_8036FAA();
     *(v1 + 19) = 0;
-    *(v1 + 52) = &byte_80894D4[16 * sub_81426CE()];
+    *(v1 + 52) = &byte_80894D4[16 * GetSoulWeaponsMapIndex()];
     return 0;
 }
 

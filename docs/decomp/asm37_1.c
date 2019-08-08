@@ -578,7 +578,7 @@ char *sub_81421D8()
 
 
 // 0x81421e0
-int sub_81421E0()
+int getField0x18OfScenarioEffectState2000780_81421e0()
 {
     return *byte_2000798;
 }
@@ -672,7 +672,7 @@ int sub_8142248()
 // 0x814227a
 int __fastcall sub_814227A(int a1)
 {
-    dword_2000790 = *&byte_8142294[4 * sub_81426CE()];
+    dword_2000790 = *&byte_8142294[4 * GetSoulWeaponsMapIndex()];
     return 0;
 }
 
@@ -700,7 +700,7 @@ BOOL sub_81422BE()
     result = 1;
     if ( v0 )
     {
-        v1 = sub_81426CE();
+        v1 = GetSoulWeaponsMapIndex();
         if ( v1 != 255 )
         {
             v2 = sub_81427CE();
@@ -749,7 +749,7 @@ int sub_8142510()
             sub_8142734();
         }
         sub_8142166(0);
-        v5 = *(&off_814230C + sub_81426CE());
+        v5 = *(&off_814230C + GetSoulWeaponsMapIndex());
         v6 = byte_2006670;
         v7 = 0;
         while ( *v5 )
@@ -775,9 +775,9 @@ int sub_8142510()
         reqBBS_setFlag_e17b0f7_8140A00();
         sub_8036E86(33);
         TestEventFlagFromImmediate(0, 40);
-        if ( v3 && sub_81426CE() < 6 )
+        if ( v3 && GetSoulWeaponsMapIndex() < 6 )
             (loc_80353EA)();
-        *(*(v0 + 60) + 21) = byte_8142610[sub_81426CE()];
+        *(*(v0 + 60) + 21) = byte_8142610[GetSoulWeaponsMapIndex()];
         TestEventFlagFromImmediate(7, 68);
         if ( !v3 )
             init_s_02011C50_8036E90(byte_8089448, 0, v12, v13);
@@ -849,14 +849,14 @@ void nullsub_37()
 
 
 // 0x81426ce
-unsigned int sub_81426CE()
+unsigned int GetSoulWeaponsMapIndex()
 {
     int v0; // r10
     unsigned int i; // r6
 
-    for ( i = 0; *&byte_81426F8[i]; i += 2 )
+    for ( i = 0; *&SoulWeaponsMaps[i]; i += 2 )
     {
-        if ( *&byte_81426F8[i] == *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) )
+        if ( *&SoulWeaponsMaps[i] == *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) )
             return i >> 1;
     }
     return 255;
@@ -872,7 +872,7 @@ int sub_814270A()
     unsigned __int8 v3; // vf
     char v4; // zf
 
-    v0 = *&byte_8142774[2 * sub_81426CE()];
+    v0 = *&byte_8142774[2 * GetSoulWeaponsMapIndex()];
     v1 = sub_814278C();
     v2 = 0;
     while ( 1 )
@@ -898,7 +898,7 @@ int sub_8142734()
     int result; // r0
     char v5; // zf
 
-    v0 = *&byte_8142774[2 * sub_81426CE()];
+    v0 = *&byte_8142774[2 * GetSoulWeaponsMapIndex()];
     for ( i = sub_814278C(); ; ClearEventFlag(v0 + i) )
     {
         v2 = __OFSUB__(i--, 1);
@@ -917,28 +917,28 @@ int sub_8142734()
 // 0x814278c
 int sub_814278C()
 {
-    return byte_814279C[sub_81426CE()];
+    return byte_814279C[GetSoulWeaponsMapIndex()];
 }
 
 
 // 0x81427a4
 int __fastcall sub_81427A4(int a1)
 {
-    return *&byte_81427BC[2 * sub_81426CE()] + a1;
+    return *&byte_81427BC[2 * GetSoulWeaponsMapIndex()] + a1;
 }
 
 
 // 0x81427ce
 int sub_81427CE()
 {
-    return *&byte_81427E0[2 * sub_81426CE()];
+    return *&byte_81427E0[2 * GetSoulWeaponsMapIndex()];
 }
 
 
 // 0x81427f2
 int sub_81427F2()
 {
-    return *&byte_8142804[2 * sub_81426CE()];
+    return *&byte_8142804[2 * GetSoulWeaponsMapIndex()];
 }
 
 
@@ -952,19 +952,19 @@ int __fastcall sub_8142816(int a1, int a2)
 
     v2 = a1;
     v3 = a2;
-    v4 = sub_814283C();
+    v4 = GetSoulWeaponCursorCameraOffsetForMap();
     return ((v4 + (v2 >> 16)) >> 5) + 128 + ((((v5 + (v3 >> 16)) >> 5) + 128) << 8);
 }
 
 
 // 0x814283c
-int sub_814283C()
+int GetSoulWeaponCursorCameraOffsetForMap()
 {
     char *v0; // r3
     int result; // r0
     int v2; // r1
 
-    v0 = &byte_8142858[2 * sub_81426CE()];
+    v0 = &GetSoulWeaponCursorCameraOffsetForMap[2 * GetSoulWeaponsMapIndex()];
     result = *v0;
     v2 = v0[1];
     return result;
@@ -972,10 +972,10 @@ int sub_814283C()
 
 
 // 0x8142868
-int sub_8142868()
+int GetSoulWeaponCursorCameraCoords()
 {
     __asm { SVC         6 }
-    return (4112 - sub_814283C()) << 16;
+    return (4112 - GetSoulWeaponCursorCameraOffsetForMap()) << 16;
 }
 
 
@@ -988,9 +988,9 @@ unsigned int sub_8142896()
     int v3; // r0
     int v4; // r1
 
-    v1 = sub_8142868();
+    v1 = GetSoulWeaponCursorCameraCoords();
     v2 = v0;
-    v3 = sub_8142868();
+    v3 = GetSoulWeaponCursorCameraCoords();
     return (((((calcAngle_800117C(v3 - v1, v2 - v4) + 16) >> 4) & 0xF) >> 1) - 1) & 7;
 }
 
@@ -1025,9 +1025,9 @@ unsigned int __fastcall sub_81428D4(int a1)
     v5 = sub_8142952(v1, (v2 - 1) & 7, 1);
     v6 = sub_8142952(v1, v4, 1);
     v7 = sub_809E1AE();
-    v8 = sub_8142868();
+    v8 = GetSoulWeaponCursorCameraCoords();
     v10 = sub_80014D4(v8 - v7, v9 - HIDWORD(v7));
-    v11 = sub_8142868();
+    v11 = GetSoulWeaponCursorCameraCoords();
     if ( sub_80014D4(v11 - v7, v12 - HIDWORD(v7)) > v10 )
         v6 = v5;
     return v6;
@@ -1137,7 +1137,7 @@ signed int sub_8142AB0()
     int v3; // r6
 
     v0 = byte_2006670;
-    v1 = sub_81421E0();
+    v1 = getField0x18OfScenarioEffectState2000780_81421e0();
     v2 = 0;
     v3 = 0;
     while ( !*(v0 + 2) || *(v0 + 2) != v1 )
@@ -1245,7 +1245,7 @@ unsigned int sub_8142B58()
     v2 = 255;
     do
     {
-        if ( *(v0 + 2) && sub_81421E0() == *(v0 + 2) )
+        if ( *(v0 + 2) && getField0x18OfScenarioEffectState2000780_81421e0() == *(v0 + 2) )
         {
             sub_8142990();
             v3 = *(v0 + 2);
@@ -1306,7 +1306,7 @@ int sub_8142BB6()
                 v6 = v3;
                 v7 = v4;
                 v8 = *(v0 + 2);
-                v9 = sub_8142868();
+                v9 = GetSoulWeaponCursorCameraCoords();
                 sub_8004822(19, v9, v10, v11);
                 result = PlaySoundEffect(109, v6, v7);
             }
@@ -1404,7 +1404,7 @@ int __fastcall sub_8142C46(int a1)
     sub_80010EC(v6, v5);
     v7 = sub_809E1AE();
     sub_8004822(19, v7, SHIDWORD(v7), v8);
-    setCameraUnk0e_Unk0c_80302a8(1, 20);
+    camera_initShakeEffect_80302a8(1, 20);
     PlaySoundEffect(107, v9, v10);
     return PlaySoundEffect(268, v11, v12);
 }

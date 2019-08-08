@@ -848,13 +848,13 @@ sub_81421D8:
 	pop {r4-r7,pc}
 	thumb_func_end sub_81421D8
 
-	thumb_func_start sub_81421E0
-sub_81421E0:
+	thumb_func_start getField0x18OfScenarioEffectState2000780_81421e0
+getField0x18OfScenarioEffectState2000780_81421e0:
 	push {r4-r7,lr}
 	ldr r0, off_8142308 // =eScenarioEffectState2000780 
 	ldr r0, [r0,#0x18] // (byte_2000798 - 0x2000780)
 	pop {r4-r7,pc}
-	thumb_func_end sub_81421E0
+	thumb_func_end getField0x18OfScenarioEffectState2000780_81421e0
 
 	thumb_local_start
 sub_81421E8:
@@ -951,7 +951,7 @@ loc_8142272:
 sub_814227A:
 	push {r4-r7,lr}
 	ldr r5, off_8142308 // =eScenarioEffectState2000780 
-	bl sub_81426CE
+	bl GetSoulWeaponsMapIndex
 	ldr r1, off_8142290 // =byte_8142294 
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
@@ -979,7 +979,7 @@ sub_81422BE:
 	mov r0, #1
 	bl TestPETMenuDataFlag
 	bne loc_81422F0
-	bl sub_81426CE
+	bl GetSoulWeaponsMapIndex
 	mov r4, r0
 	cmp r4, #0xff
 	beq loc_81422F0
@@ -1082,7 +1082,7 @@ sub_8142510:
 loc_814253E:
 	mov r0, #0
 	bl sub_8142166
-	bl sub_81426CE
+	bl GetSoulWeaponsMapIndex
 	ldr r7, off_8142600 // =off_814230C 
 	lsl r0, r0, #2
 	ldr r7, [r7,r0]
@@ -1127,12 +1127,12 @@ loc_8142594:
 	mov r1, #0x28 
 	bl TestEventFlagFromImmediate
 	bne loc_81425B4
-	bl sub_81426CE
+	bl GetSoulWeaponsMapIndex
 	cmp r0, #6
 	bge loc_81425B4
 	bl loc_80353EA
 loc_81425B4:
-	bl sub_81426CE
+	bl GetSoulWeaponsMapIndex
 	ldr r1, off_814260C // =byte_8142610 
 	ldrb r1, [r1,r0]
 	mov r0, r10
@@ -1253,39 +1253,39 @@ nullsub_37:
 	mov pc, lr
 	thumb_func_end nullsub_37
 
-	thumb_func_start sub_81426CE
-sub_81426CE:
+	thumb_func_start GetSoulWeaponsMapIndex
+GetSoulWeaponsMapIndex:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrh r7, [r7,#oGameState_MapGroup]
+	ldrh r7, [r7,#oGameState_MapId]
 	mov r6, #0
-	ldr r4, off_81426F4 // =byte_81426F8 
-loc_81426DA:
+	ldr r4, =SoulWeaponsMaps 
+.loop
 	ldrh r0, [r4,r6]
 	tst r0, r0
-	beq loc_81426EE
+	beq .mapNotFound
 	cmp r0, r7
-	beq loc_81426E8
+	beq .mapFound
 	add r6, #2
-	b loc_81426DA
-loc_81426E8:
+	b .loop
+.mapFound
 	lsr r0, r6, #1
 	tst r0, r0
 	pop {r4-r7,pc}
-loc_81426EE:
+.mapNotFound
 	mov r0, #0xff
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_81426F4: .word byte_81426F8
-byte_81426F8: .byte 0x90, 0x0, 0x90, 0x1, 0x90, 0x2, 0x91, 0x0, 0x91, 0x1, 0x91
+	.pool // 81426F4
+SoulWeaponsMaps: .byte 0x90, 0x0, 0x90, 0x1, 0x90, 0x2, 0x91, 0x0, 0x91, 0x1, 0x91
 	.byte 0x2, 0x93, 0x0, 0x93, 0x1, 0x0, 0x0
-	thumb_func_end sub_81426CE
+	thumb_func_end GetSoulWeaponsMapIndex
 
 	thumb_local_start
 sub_814270A:
 	push {r4-r7,lr}
-	bl sub_81426CE
+	bl GetSoulWeaponsMapIndex
 	ldr r7, off_8142770 // =byte_8142774 
 	lsl r0, r0, #1
 	ldrh r7, [r7,r0]
@@ -1309,7 +1309,7 @@ loc_8142730:
 	thumb_local_start
 sub_8142734:
 	push {r4-r7,lr}
-	bl sub_81426CE
+	bl GetSoulWeaponsMapIndex
 	ldr r7, off_8142770 // =byte_8142774 
 	lsl r0, r0, #1
 	ldrh r7, [r7,r0]
@@ -1343,7 +1343,7 @@ byte_8142774: .byte 0x50, 0x7, 0x64, 0x7, 0x78, 0x7, 0x8C, 0x7, 0xA0, 0x7, 0xB4
 	thumb_local_start
 sub_814278C:
 	push {r4-r7,lr}
-	bl sub_81426CE
+	bl GetSoulWeaponsMapIndex
 	ldr r7, off_8142798 // =byte_814279C 
 	ldrb r0, [r7,r0]
 	pop {r4-r7,pc}
@@ -1355,7 +1355,7 @@ byte_814279C: .byte 0x7, 0xB, 0xC, 0xD, 0xE, 0x10, 0x14, 0x14
 sub_81427A4:
 	push {r4-r7,lr}
 	mov r4, r0
-	bl sub_81426CE
+	bl GetSoulWeaponsMapIndex
 	ldr r1, off_81427B8 // =byte_81427BC 
 	lsl r0, r0, #1
 	ldrh r0, [r1,r0]
@@ -1370,7 +1370,7 @@ byte_81427BC: .byte 0x50, 0x7, 0x64, 0x7, 0x78, 0x7, 0x8C, 0x7, 0xA0, 0x7, 0xB4
 	thumb_func_start sub_81427CE
 sub_81427CE:
 	push {r4-r7,lr}
-	bl sub_81426CE
+	bl GetSoulWeaponsMapIndex
 	ldr r1, off_81427DC // =byte_81427E0 
 	lsl r0, r0, #1
 	ldrh r0, [r1,r0]
@@ -1383,7 +1383,7 @@ byte_81427E0: .byte 0xF0, 0x7, 0xF1, 0x7, 0xF2, 0x7, 0xF3, 0x7, 0xF4, 0x7, 0xF5
 	thumb_local_start
 sub_81427F2:
 	push {r4-r7,lr}
-	bl sub_81426CE
+	bl GetSoulWeaponsMapIndex
 	ldr r1, off_8142800 // =byte_8142804 
 	lsl r0, r0, #1
 	ldrh r0, [r1,r0]
@@ -1398,7 +1398,7 @@ sub_8142816:
 	push {r4-r7,lr}
 	ldr r5, off_81428D0 // =byte_2006670 
 	push {r0,r1}
-	bl sub_814283C
+	bl GetSoulWeaponCursorCameraOffsetForMap
 	pop {r3,r4}
 	asr r3, r3, #0x10
 	asr r4, r4, #0x10
@@ -1416,10 +1416,12 @@ sub_8142816:
 	thumb_func_end sub_8142816
 
 	thumb_local_start
-sub_814283C:
+// probably needed since the "grid" where
+// the evil spirits can exist depends on the map
+GetSoulWeaponCursorCameraOffsetForMap:
 	push {r4-r7,lr}
-	bl sub_81426CE
-	ldr r3, off_8142854 // =byte_8142858 
+	bl GetSoulWeaponsMapIndex
+	ldr r3, =SoulWeaponMapBasedCameraOffsets
 	lsl r0, r0, #1
 	add r3, r3, r0
 	mov r0, #0
@@ -1428,16 +1430,20 @@ sub_814283C:
 	ldrsb r1, [r3,r1]
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8142854: .word byte_8142858
-byte_8142858: .byte 0x0, 0x0, 0x8, 0xF8, 0xF8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x10, 0x0, 0xC, 0x4
-	.byte 0x4, 0xFC
-	thumb_func_end sub_814283C
+	.pool // 8142854
+SoulWeaponMapBasedCameraOffsets:
+	.byte 0x0, 0x0, 0x8, -0x8
+	.byte -0x8, 0x8, 0x8, 0x8
+	.byte 0x8, 0x8, 0x10, 0x0
+	.byte 0xC, 0x4, 0x4, -0x4
+	thumb_func_end GetSoulWeaponCursorCameraOffsetForMap
 
-	thumb_func_start sub_8142868
-sub_8142868:
+	thumb_func_start GetSoulWeaponCursorCameraCoords
+// get camera coords for when using a soul weapon
+GetSoulWeaponCursorCameraCoords:
 	push {r4-r7,lr}
 	mov r1, #0x80
-	lsl r1, r1, #1
+	lsl r1, r1, #1 // r1 = 0x100
 	svc 6
 	mov r2, r0
 	mov r0, r1
@@ -1447,7 +1453,7 @@ sub_8142868:
 	lsl r0, r0, #5
 	lsl r1, r1, #5
 	push {r0,r1}
-	bl sub_814283C
+	bl GetSoulWeaponCursorCameraOffsetForMap
 	pop {r3,r4}
 	sub r0, r3, r0
 	sub r1, r4, r1
@@ -1457,16 +1463,16 @@ sub_8142868:
 	lsl r1, r1, #0x10
 	mov r2, #0
 	pop {r4-r7,pc}
-	thumb_func_end sub_8142868
+	thumb_func_end GetSoulWeaponCursorCameraCoords
 
 	thumb_func_start sub_8142896
 sub_8142896:
 	push {r4-r7,lr}
 	mov r4, r1
-	bl sub_8142868
+	bl GetSoulWeaponCursorCameraCoords
 	push {r0,r1}
 	mov r0, r4
-	bl sub_8142868
+	bl GetSoulWeaponCursorCameraCoords
 	pop {r2,r3}
 	sub r0, r0, r2
 	sub r1, r3, r1
@@ -1529,7 +1535,7 @@ loc_81428F6:
 	str r0, [sp]
 	str r1, [sp,#4]
 	mov r0, r6
-	bl sub_8142868
+	bl GetSoulWeaponCursorCameraCoords
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	sub r0, r0, r2
@@ -1537,7 +1543,7 @@ loc_81428F6:
 	bl sub_80014D4
 	str r0, [sp,#8]
 	mov r0, r7
-	bl sub_8142868
+	bl GetSoulWeaponCursorCameraCoords
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	sub r0, r0, r2
@@ -1702,7 +1708,7 @@ off_8142AAC: .word eOverworldMapObjects
 sub_8142AB0:
 	push {r4-r7,lr}
 	ldr r5, off_8142C8C // =byte_2006670 
-	bl sub_81421E0
+	bl getField0x18OfScenarioEffectState2000780_81421e0
 	mov r7, r0
 	mov r4, #0
 	mov r6, #0
@@ -1809,7 +1815,7 @@ loc_8142B60:
 	ldrh r0, [r5,#4]
 	tst r0, r0
 	beq loc_8142B7E
-	bl sub_81421E0
+	bl getField0x18OfScenarioEffectState2000780_81421e0
 	ldrh r1, [r5,#4]
 	cmp r0, r1
 	bne loc_8142B7E
@@ -1863,7 +1869,7 @@ loc_8142BBC:
 	strb r0, [r5,#6]
 	push {r0-r7}
 	ldrh r0, [r5,#4]
-	bl sub_8142868
+	bl GetSoulWeaponCursorCameraCoords
 	mov r3, r2
 	mov r2, r1
 	mov r1, r0
@@ -1959,7 +1965,7 @@ loc_8142C58:
 	bl sub_8004822
 	mov r0, #1
 	mov r1, #0x14
-	bl setCameraUnk0e_Unk0c_80302a8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #SOUND_HIT_6B
 	bl PlaySoundEffect
 	mov r0, #0xd

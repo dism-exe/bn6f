@@ -566,7 +566,7 @@ loc_8093100::
 loc_809313A::
 	mov r0, #2
 	mov r1, #0x14
-	bl setCameraUnk0e_Unk0c_80302a8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0x1e
 	bl sub_80931FA
 	mov r0, #0xc0
