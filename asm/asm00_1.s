@@ -5301,12 +5301,6 @@ off_8005FB4: .word sub_8006366+1
 	.word sub_800647C+1
 	thumb_func_end sub_8005F84
 
-	.macro fade_params_struct unk_00_ptr:req, unk_04_ptr:req, unused_08:req, byte_0c:req, byte_0d:req, byte_0e:req, byte_0f:req
-	.word \unk_00_ptr, \unk_04_ptr
-	.word \unused_08
-	.byte \byte_0c, \byte_0d, \byte_0e, \byte_0f
-	.endm
-
 off_8006040:
 	fade_params_struct [
 		unk_00_ptr: iPalette3001B60,
@@ -5645,17 +5639,17 @@ loc_8006276:
 	ldr r2, off_80062C4 // =off_8006040
 	lsl r0, r0, #2
 	add r2, r2, r0
-	ldr r0, [r2]
+	ldr r0, [r2,#oFadeParams_Ptr_00]
 	str r0, [r5,#0x10]
-	ldr r0, [r2,#4]
+	ldr r0, [r2,#oFadeParams_Ptr_04]
 	str r0, [r5,#0x14]
-	ldrb r0, [r2,#0xc]
+	ldrb r0, [r2,#oFadeParams_Unk_0c]
 	strh r0, [r5,#0x18]
-	ldrb r0, [r2,#0xd]
+	ldrb r0, [r2,#oFadeParams_Unk_0d]
 	strh r0, [r5,#0x1c]
-	ldrb r0, [r2,#0xe]
+	ldrb r0, [r2,#oFadeParams_Unk_0e]
 	strh r0, [r5,#8]
-	ldrb r0, [r2,#0xf]
+	ldrb r0, [r2,#oFadeParams_Unk_0f]
 	lsl r0, r0, #4
 	strh r0, [r5,#0xa]
 	mov r0, #1

@@ -4,6 +4,7 @@
 	.include "include/macros/enum.inc"
 	.include "include/macros/ewram_structs.inc"
 	.include "include/macros/function.inc"
+	.include "include/macros/rom_structs.inc"
 
 	.macro nybble high:req, low:req
 	.byte (\high << 4) | \low
@@ -13,7 +14,7 @@
 		mov r0, #\flag16 >> 8
 		mov r1, #\flag16 & 0xFF
 	.endm
-
+	
 // some macros illustrating quirks of the gnu assembler macro system
 /*
 	.macro arg_contents_test arg1=1
@@ -215,4 +216,42 @@ Subsection0Label:
 	.word _.L_2 - _.L_1
 	.endr
 	.balign 4, 0
+
+	.macro empty_arg_test arg1
+	.ifb \arg1
+		.print "arg1 empty"
+	.endif
+	.endm
+
+	empty_arg_test
+
+	.macro req_nested_macro_test req_test=":req", arg1:req
+	.macro __req_nested arg2\req_test
+	.print "\arg2"
+	.endm
+	__req_nested \arg1
+	.endm
+
+	req_nested_macro_test req_test="=0", arg1=2
+	
+	.macro blank_req_test2 arg1:req
+	.ifb \arg1
+		.print "arg1 blank"
+	.endif
+	.endm
+
+	.macro blank_req_test1 arg1
+	blank_req_test2 \arg1
+	.endm
+
+	blank_req_test1
+	
+	.macro implicit_explicit_arg_test arg1:req, arg2:req, arg3:req
+	.byte \arg1, \arg2, \arg3
+	.endm
+
+	implicit_explicit_arg_test arg1=2, 3, 4
 */
+
+
+
