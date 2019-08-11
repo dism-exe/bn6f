@@ -1,12 +1,34 @@
 
 	.set __defining_rom_struct_offsets, 0
+	.set __return_value, 0
 
-	.macro init_rom_struct label
+	.macro set_last_rom_struct rom_struct:req
+	.purgem check_last_rom_struct
+
+	.macro check_last_rom_struct cur_rom_struct:req
+		.if \rom_struct == \cur_rom_struct
+			.set __return_value, 1
+		.else
+			.set __return_value, 0
+		.endif
+	.endm
+	.endm
+
+	.macro check_last_rom_struct
+	.endm
+
+	set_last_rom_struct __dummy
+
+	.macro init_rom_struct rom_struct:req, label
 	.ifeq __defining_rom_struct_offsets
 		.ifnb \label
 			add_rom_struct_label \label, rom_offset_struct_entry
 		.else
-			add_rom_struct_label \label, rom_data_struct_entry
+			check_last_rom_struct \rom_struct
+			.if __return_value == 0
+				add_rom_struct_label \label, rom_data_struct_entry
+			.endif
+			set_last_rom_struct \rom_struct
 		.endif
 	.endif
 	.endm
@@ -32,7 +54,7 @@
 
 	.macro def_rom_struct_offsets macro:req, label:req
 	.struct 0
-	init_rom_struct \label
+	init_rom_struct \macro, \label
 	.set __defining_rom_struct_offsets, 1
 	\macro
 	.set __defining_rom_struct_offsets, 0
@@ -101,7 +123,7 @@
 	.endm
 
 	.macro fade_params_struct unk_00_ptr, unk_04_ptr, unused_08, byte_0c, byte_0d, byte_0e, byte_0f
-	init_rom_struct
+	init_rom_struct fade_params_struct
 	u32 Ptr_00, \unk_00_ptr
 	u32 Ptr_04, \unk_04_ptr
 	u32 Unused_08, \unused_08

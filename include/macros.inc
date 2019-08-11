@@ -251,7 +251,23 @@ Subsection0Label:
 	.endm
 
 	implicit_explicit_arg_test arg1=2, 3, 4
+
+	.rept 3
+	.byte 0
+	.byte 0
+	.endr
+
+	.macro multiline_line_num_test arg1:req
+	.endm
+
+
+
+
+	multiline_line_num_test [arg1: 0x0,]
+	multiline_line_num_test [
+		arg1: 0x0
+	]
+
+s
+	.warning "multiline_line_num_test"
 */
-
-
-
