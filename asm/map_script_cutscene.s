@@ -2,8 +2,8 @@
 // possible file boundary
 ScriptCmds8035808:
 	.word MapScriptCmd_end+1
-	.word MapScriptCmd_jump+1
-	.word MapScriptCmd_jump_if_progress_in_range+1
+	.word MapScriptCutsceneCmd_jump+1
+	.word MapScriptCutsceneCmd_jump_if_progress_in_range+1
 	.word MapScriptCmd_jump_if_flag_set+1
 	.word MapScriptCmd_jump_if_flag_range_set+1
 	.word MapScriptCmd_jump_if_flag_clear+1
@@ -54,7 +54,7 @@ ScriptCmds8035808:
 	.word MapScriptCmd_sound_cmd_80380ea+1
 	.word MapScriptCmd_sound_cmd_803810e+1
 	.word MapScriptCmd_stop_sound+1
-	.word MapScriptCmd_navicust_maybe_803813e+1
+	.word MapScriptCmd_give_or_take_item+1
 	.word MapScriptCmd_do_pet_effect+1
 	.word NULL
 	.word MapScriptCmd_init_eStruct200a6a0+1
@@ -82,21 +82,25 @@ MapScriptCmd_end: // 8035920
 	thumb_func_end MapScriptCmd_end
 
 	thumb_local_start
-// 0x01 destination
-// jump
-MapScriptCmd_jump: // 8035924
+// 0x01/0x15 destination1
+// jump to another script
+// destination1 - script to jump to
+MapScriptCutsceneCmd_jump: // 8035924
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_jump
+	thumb_func_end MapScriptCutsceneCmd_jump
 
 	thumb_local_start
-// 0x02 byte1 byte2 destination
+// 0x02/0x16 byte1 byte2 destination3
 // jump if byte1 <= progress byte <= byte2
-MapScriptCmd_jump_if_progress_in_range: // 8035932
+// byte1 - lower bound for progress byte
+// byte2 - upper bound for progress byte
+// destination3 - script to jump to
+MapScriptCutsceneCmd_jump_if_progress_in_range: // 8035932
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -119,11 +123,14 @@ MapScriptCmd_jump_if_progress_in_range: // 8035932
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_jump_if_progress_in_range
+	thumb_func_end MapScriptCutsceneCmd_jump_if_progress_in_range
 
 	thumb_local_start
-// 0x03 byte flag destination
+// 0x03/0x17 byte1 hword2 destination4
 // jump if event flag in mem or immediate is set
+// byte1 - memory param
+// hword2 - flag to test
+// destination4 - script to jump to
 MapScriptCmd_jump_if_flag_set: // 8035962
 	push {lr}
 	mov r6, #1
@@ -152,8 +159,11 @@ MapScriptCmd_jump_if_flag_set: // 8035962
 	thumb_func_end MapScriptCmd_jump_if_flag_set
 
 	thumb_local_start
-// 0x04 byte flag destination
+// 0x04/0x18 byte1 hword2 destination4
 // jump if (all) event flags in the event flag range are set
+// byte1 - number of flags to test
+// hword2 - starting flag to test
+// destination4 - script to jump to
 MapScriptCmd_jump_if_flag_range_set: // 8035992
 	push {lr}
 	mov r6, #1
@@ -177,8 +187,11 @@ MapScriptCmd_jump_if_flag_range_set: // 8035992
 	thumb_func_end MapScriptCmd_jump_if_flag_range_set
 
 	thumb_local_start
-// 0x05 byte flag destination
+// 0x05/0x19 byte1 hword2 destination4
 // jump if event flag in mem or immediate is clear
+// byte1 - memory param
+// hword2 - flag to test
+// destination4 - script to jump to
 MapScriptCmd_jump_if_flag_clear: // 80359BE
 	push {lr}
 	mov r6, #1
@@ -933,7 +946,7 @@ loc_8035E6E:
 
 	thumb_local_start
 // 0x25 word1 word5
-// call the asm function word1 with word2 in r0
+// call the asm function word1 with word5 in r0
 MapScriptCmd_call_native_function: // 8035E74
 	push {lr}
 	mov r6, #5
@@ -2434,8 +2447,8 @@ TryCutsceneSkip:
 	pop {r4-r7,pc}
 	thumb_func_end TryCutsceneSkip
 
-	thumb_func_start cutsceneCamera_setCutsceneCameraScript_8036f98
-cutsceneCamera_setCutsceneCameraScript_8036f98:
+	thumb_func_start SetCutsceneCameraScript
+SetCutsceneCameraScript:
 	push {lr}
 	ldr r1, =eCutsceneCameraInfo
 	str r0, [r1,#oCutsceneCameraInfo_CutsceneCameraScriptPtr]
@@ -2444,7 +2457,7 @@ cutsceneCamera_setCutsceneCameraScript_8036f98:
 	mov r0, #0
 	bl camera_writeUnk03_14_80301b2
 	pop {pc}
-	thumb_func_end cutsceneCamera_setCutsceneCameraScript_8036f98
+	thumb_func_end SetCutsceneCameraScript
 
 	thumb_func_start cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
 cutsceneCamera_focusCameraOnPlayerMaybe_8036faa:
@@ -3051,7 +3064,7 @@ CutsceneCameraCmd_run_text_script:
 
 	thumb_local_start
 // 0x2c
-// wait for the textbox to be cleared
+// wait for the chatbox to be cleared
 CutsceneCameraCmd_wait_chatbox:
 	push {lr}
 	push {r1}
@@ -3295,14 +3308,14 @@ CutsceneCommandJumptable:
 	.word MapScriptCmd_wait_if_in_pet_menu+1
 	.word MapScriptCmd_wait_if_flag_clear+1
 	.word MapScriptCmd_wait_if_flag_set+1
-	.word MapScriptCmd_wait_if_eStruct2000780_initialized+1
+	.word MapScriptCmd_wait_if_scenario_effect_state_initialized+1
 	.word MapScriptCmd_wait_if_eStruct2001010_initialized+1
 	.word MapScriptCmd_cutscene_end+1
 	.word MapScriptCmd_spawn_cutscene_process+1
 	.word MapScriptCmd_kill_cutscene_process+1
-	.word MapScriptCmd_set_post_execution_cutscene_script+1
-	.word MapScriptCmd_jump+1
-	.word MapScriptCmd_jump_if_progress_in_range+1
+	.word MapScriptCmd_set_cutscene_skip_script+1
+	.word MapScriptCutsceneCmd_jump+1
+	.word MapScriptCutsceneCmd_jump_if_progress_in_range+1
 	.word MapScriptCmd_jump_if_flag_set+1
 	.word MapScriptCmd_jump_if_flag_range_set+1
 	.word MapScriptCmd_jump_if_flag_clear+1
@@ -3343,9 +3356,9 @@ CutsceneCommandJumptable:
 	.word MapScriptCmd_set_or_clear_chatbox_flags+1
 	.word MapScriptCmd_switch_case_from_chatbox_flags_bit0_to_2+1
 	.word MapScriptCmd_decomp_text_archive+1
-	.word MapScriptCmd_sprite_special_maybe_8037b08+1
-	.word MapScriptCmd_ow_player_sprite_8037b6c+1
-	.word MapScriptCmd_ow_player_coord_special_8037bb4+1
+	.word MapScriptCmd_ow_player_sprite_special+1
+	.word MapScriptCmd_ow_player_sprite_special_with_arg+1
+	.word MapScriptCmd_ow_player_coord_special+1
 	.word MapScriptCmd_move_player_in_facing_direction+1
 	.word MapScriptCmd_ow_player_8037cc4+1
 	.word MapScriptCmd_write_S200ace0_unk_20+1
@@ -3362,7 +3375,7 @@ CutsceneCommandJumptable:
 	.word MapScriptCmd_sound_cmd_80380ea+1
 	.word MapScriptCmd_sound_cmd_803810e+1
 	.word MapScriptCmd_stop_sound+1
-	.word MapScriptCmd_navicust_maybe_803813e+1
+	.word MapScriptCmd_give_or_take_item+1
 	.word MapScriptCmd_do_pet_effect+1
 	.word MapScriptCmd_run_or_stop_cutscene_camera_script+1
 	.word MapScriptCmd_start_fixed_battle+1
@@ -3416,6 +3429,7 @@ byte_8037694: .byte 0x0, 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
 
 	thumb_local_start
 // 0x00
+// end script for map reload?
 MapScriptCmd_end_for_map_reload_maybe_8037c64:
 	push {lr}
 	movflag EVENT_1741
@@ -3429,6 +3443,8 @@ MapScriptCmd_end_for_map_reload_maybe_8037c64:
 	thumb_func_end MapScriptCmd_end_for_map_reload_maybe_8037c64
 
 	thumb_local_start
+// 0x01
+// end script for map reload?
 MapScriptCmd_end_for_map_reload_maybe_80376dc:
 	push {lr}
 	movflag EVENT_1741
@@ -3442,16 +3458,20 @@ MapScriptCmd_end_for_map_reload_maybe_80376dc:
 	thumb_func_end MapScriptCmd_end_for_map_reload_maybe_80376dc
 
 	thumb_local_start
+// 0x02 byte1 byte2
+// pause the current cutscene script for a given number of frames (up to 255)
+// byte1 - memory param
+// byte2 or mem - number of frames to pause
 MapScriptCmd_pause:
 	push {lr}
 	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
-	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED
-	bl cutscene_testFlag0x2c_80385E0
+	add r0, #CUTSCENE_FLAG_SCRIPT_1_PAUSED
+	bl TestCutsceneFlag
 	bne .scriptPauseAlreadyInitialized
 
 	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
-	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED
-	bl cutscene_setFlag0x2c_80385C0
+	add r0, #CUTSCENE_FLAG_SCRIPT_1_PAUSED
+	bl SetCutsceneFlag
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0xff
@@ -3478,8 +3498,8 @@ MapScriptCmd_pause:
 
 	// clear pause flag
 	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
-	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED
-	bl cutscene_clearFlag0x2c_80385D0
+	add r0, #CUTSCENE_FLAG_SCRIPT_1_PAUSED
+	bl ClearCutsceneFlag
 	// advance to the next command
 	add r7, #3
 	mov r0, #1
@@ -3490,15 +3510,20 @@ MapScriptCmd_pause:
 	thumb_func_end MapScriptCmd_pause
 
 	thumb_local_start
+// 0x03 byte1 hword2
+// pause the current cutscene script for a given number of frames (up to 65535)
+// unlike pause, this supports a longer pause time
+// byte1 - memory param
+// hword2 or mem - number of frames to pause
 MapScriptCmd_long_pause:
 	push {lr}
 	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
-	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED_LONG
-	bl cutscene_testFlag0x2c_80385E0
+	add r0, #CUTSCENE_FLAG_SCRIPT_1_PAUSED_LONG
+	bl TestCutsceneFlag
 	bne .scriptPauseAlreadyInitialized
 	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
-	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED_LONG
-	bl cutscene_setFlag0x2c_80385C0
+	add r0, #CUTSCENE_FLAG_SCRIPT_1_PAUSED_LONG
+	bl SetCutsceneFlag
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0xff
@@ -3522,8 +3547,8 @@ MapScriptCmd_long_pause:
 	strh r0, [r5,r1]
 	bge .timerStillActive
 	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
-	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED_LONG
-	bl cutscene_clearFlag0x2c_80385D0
+	add r0, #CUTSCENE_FLAG_SCRIPT_1_PAUSED_LONG
+	bl ClearCutsceneFlag
 	add r7, #4
 	mov r0, #1
 	pop {pc}
@@ -3533,6 +3558,9 @@ MapScriptCmd_long_pause:
 	thumb_func_end MapScriptCmd_long_pause
 
 	thumb_local_start
+// 0x04 byte1
+// wait for the chatbox to be cleared
+// byte1 - mask for unknown chatbox flags
 MapScriptCmd_wait_chatbox:
 	push {lr}
 	mov r6, #1
@@ -3555,22 +3583,27 @@ loc_80377B2:
 	thumb_func_end MapScriptCmd_wait_chatbox
 
 	thumb_local_start
+// 0x05 byte1
+// wait script if the player sprite's current frame doesn't equal byte1
+// byte1 - anim frame to compare
 MapScriptCmd_wait_if_player_sprite_cur_frame_not_equal_maybe:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	bl getOWPlayerSpriteFrameParameters_809E434 // sprite_getFrameParameters
 	cmp r0, r4
-	bne loc_80377CC
+	bne .curFrameNotEqual
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-loc_80377CC:
+.curFrameNotEqual
 	mov r0, #0
 	pop {pc}
 	thumb_func_end MapScriptCmd_wait_if_player_sprite_cur_frame_not_equal_maybe
 
 	thumb_local_start
+// 0x06
+// functions as a nop
 MapScriptCmd_nop_80377d0:
 	push {lr}
 	// always returns zero
@@ -3586,6 +3619,8 @@ MapScriptCmd_nop_80377d0:
 	thumb_func_end MapScriptCmd_nop_80377d0
 
 	thumb_local_start
+// 0x07
+// wait for screen to fade
 MapScriptCmd_wait_screen_fade:
 	push {lr}
 	bl IsScreenFadeActive // () -> zf
@@ -3599,6 +3634,8 @@ MapScriptCmd_wait_screen_fade:
 	thumb_func_end MapScriptCmd_wait_screen_fade
 
 	thumb_local_start
+// 0x08
+// wait for cutscene camera script to finish
 MapScriptCmd_wait_camera_script:
 	push {lr}
 	ldrb r0, [r5,#oCutsceneState_CutsceneCameraScriptActive]
@@ -3613,6 +3650,10 @@ MapScriptCmd_wait_camera_script:
 	thumb_func_end MapScriptCmd_wait_camera_script
 
 	thumb_local_start
+// 0x09 byte1 byte2
+// wait for cutscene variable to be equal to byte2
+// byte1 - cutscene variable to read from
+// byte2 - value to compare cutscene variable with
 MapScriptCmd_wait_var_equal:
 	push {lr}
 	mov r6, #1
@@ -3631,6 +3672,9 @@ MapScriptCmd_wait_var_equal:
 	thumb_func_end MapScriptCmd_wait_var_equal
 
 	thumb_local_start
+// 0x0a byte1
+// wait for cutscene process to end
+// byte1 - offset to cutscene script in cutscene state (which cutscene process)
 MapScriptCmd_wait_cutscene_process:
 	push {lr}
 	mov r6, #1
@@ -3648,6 +3692,8 @@ MapScriptCmd_wait_cutscene_process:
 	thumb_func_end MapScriptCmd_wait_cutscene_process
 
 	thumb_local_start
+// 0x0b
+// wait if eStruct200a6a0 is initialized
 MapScriptCmd_wait_if_eStruct200a6a0_initialized:
 	push {lr}
 	bl Is_eStruct200a6a0_Initialized
@@ -3661,6 +3707,8 @@ MapScriptCmd_wait_if_eStruct200a6a0_initialized:
 	thumb_func_end MapScriptCmd_wait_if_eStruct200a6a0_initialized
 
 	thumb_local_start
+// 0x0c
+// wait if in the PET menu
 MapScriptCmd_wait_if_in_pet_menu:
 	push {lr}
 	mov r0, #1
@@ -3675,6 +3723,9 @@ MapScriptCmd_wait_if_in_pet_menu:
 	thumb_func_end MapScriptCmd_wait_if_in_pet_menu
 
 	thumb_local_start
+// 0x0d hword1
+// wait if the given event flag is clear
+// hword1 - flag to test
 MapScriptCmd_wait_if_flag_clear:
 	push {lr}
 	mov r6, #1
@@ -3691,6 +3742,9 @@ MapScriptCmd_wait_if_flag_clear:
 	thumb_func_end MapScriptCmd_wait_if_flag_clear
 
 	thumb_local_start
+// 0x0e hword1
+// wait if the given event flag is set
+// hword1 - flag to test
 MapScriptCmd_wait_if_flag_set:
 	push {lr}
 	mov r6, #1
@@ -3707,9 +3761,12 @@ MapScriptCmd_wait_if_flag_set:
 	thumb_func_end MapScriptCmd_wait_if_flag_set
 
 	thumb_local_start
-MapScriptCmd_wait_if_eStruct2000780_initialized:
+// 0xf
+// wait if the scenario effect state is initialized
+// scenario effects are the soul weapons counter and the mr. weather comp rainbow gauge
+MapScriptCmd_wait_if_scenario_effect_state_initialized:
 	push {lr}
-	bl Is_eStruct2000780_Initialized
+	bl Is_eScenarioEffectState2000780_Initialized
 	bne .structInitialized
 	add r7, #1
 	mov r0, #1
@@ -3717,28 +3774,37 @@ MapScriptCmd_wait_if_eStruct2000780_initialized:
 .structInitialized
 	mov r0, #0
 	pop {pc}
-	thumb_func_end MapScriptCmd_wait_if_eStruct2000780_initialized
+	thumb_func_end MapScriptCmd_wait_if_scenario_effect_state_initialized
 
 	thumb_local_start
+// 0x10
+// wait if eStruct2001010 is initialized
+// literal interpretation: [eStruct2001010]
 MapScriptCmd_wait_if_eStruct2001010_initialized:
 	push {lr}
 	bl Is_eStruct2001010_Initialized
-	bne loc_80378BA
+	bne .structInitialized
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-loc_80378BA:
+.structInitialized
 	mov r0, #0
 	pop {pc}
 	thumb_func_end MapScriptCmd_wait_if_eStruct2001010_initialized
 
 	thumb_local_start
+// 0x11
+// end cutscene script
 MapScriptCmd_cutscene_end:
 	mov r0, #0
 	mov pc, lr
 	thumb_func_end MapScriptCmd_cutscene_end
 
 	thumb_local_start
+// 0x12 byte1 word2
+// spawn a new cutscene process
+// byte1 - which cutscene process to spawn (cutscene state struct offset to the cutscene script pointer, e.g. oCutsceneState_CutsceneScriptPos2)
+// word2 - cutscene script of the cutscene process
 MapScriptCmd_spawn_cutscene_process:
 	push {lr}
 	// read cutscene script pointer
@@ -3757,11 +3823,11 @@ MapScriptCmd_spawn_cutscene_process:
 	mov r0, r4
 
 	// clear timer flags
-	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED
-	bl cutscene_clearFlag0x2c_80385D0
+	add r0, #CUTSCENE_FLAG_SCRIPT_1_PAUSED
+	bl ClearCutsceneFlag
 	mov r0, r4
-	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED_LONG
-	bl cutscene_clearFlag0x2c_80385D0
+	add r0, #CUTSCENE_FLAG_SCRIPT_1_PAUSED_LONG
+	bl ClearCutsceneFlag
 
 	// advance to next command
 	add r7, #6
@@ -3770,6 +3836,9 @@ MapScriptCmd_spawn_cutscene_process:
 	thumb_func_end MapScriptCmd_spawn_cutscene_process
 
 	thumb_local_start
+// 0x13 byte1
+// kill a cutscene process
+// byte1 - cutscene script ptr struct offset to write to (which cutscene process to kill)
 MapScriptCmd_kill_cutscene_process:
 	push {lr}
 	ldr r0, =DummyCutsceneScript
@@ -3783,7 +3852,10 @@ MapScriptCmd_kill_cutscene_process:
 	thumb_func_end MapScriptCmd_kill_cutscene_process
 
 	thumb_local_start
-MapScriptCmd_set_post_execution_cutscene_script:
+// 0x14 word1
+// set the script to execute for when a cutscene is skipped
+// word1 - script to execute
+MapScriptCmd_set_cutscene_skip_script:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -3791,9 +3863,13 @@ MapScriptCmd_set_post_execution_cutscene_script:
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_set_post_execution_cutscene_script
+	thumb_func_end MapScriptCmd_set_cutscene_skip_script
 
 	thumb_local_start
+// 0x1c byte1 byte2 destination3
+// jump if cutscene variable equals byte2
+// byte1 - cutscene variable to read from
+// byte2 - value to compare cutscene variable with
 MapScriptCmd_jump_if_var_equal:
 	push {lr}
 	mov r6, #1
@@ -3815,6 +3891,10 @@ MapScriptCmd_jump_if_var_equal:
 	thumb_func_end MapScriptCmd_jump_if_var_equal
 
 	thumb_local_start
+// 0x0a/0x1f byte1 destination2
+// jump if battle result equals byte1
+// byte1 - value to compare battle result with (0=won, 1=lost, 2=tie, 3=escaped)
+// destination2 - script to jump to
 MapScriptCmd_jump_if_battle_result_equals:
 	push {lr}
 	mov r6, #1
@@ -3834,6 +3914,10 @@ MapScriptCmd_jump_if_battle_result_equals:
 	thumb_func_end MapScriptCmd_jump_if_battle_result_equals
 
 	thumb_local_start
+// 0xb/0x20 byte1 destination2
+// jump if battle result doesn't equal byte1
+// byte1 - value to compare battle result with (0=won, 1=lost, 2=tie, 3=escaped)
+// destination2 - script to jump to
 MapScriptCmd_jump_if_battle_result_not_equal:
 	push {lr}
 	mov r6, #1
@@ -3853,6 +3937,10 @@ MapScriptCmd_jump_if_battle_result_not_equal:
 	thumb_func_end MapScriptCmd_jump_if_battle_result_not_equal
 
 	thumb_local_start
+// 0x10/0x23 byte1 destination2
+// jump if the player's current navi equals byte1
+// byte1 - navi to compare the current navi with
+// destination2 - script to jump to
 MapScriptCmd_jump_if_current_navi_equals:
 	push {lr}
 	mov r6, #1
@@ -3872,6 +3960,10 @@ MapScriptCmd_jump_if_current_navi_equals:
 	thumb_func_end MapScriptCmd_jump_if_current_navi_equals
 
 	thumb_local_start
+// 0x11/0x24 byte1 destination2
+// jump if the player's current navi doesn't equal byte1
+// byte1 - navi to compare the current navi with
+// destination2 - script to jump to
 MapScriptCmd_jump_if_current_navi_not_equal:
 	push {lr}
 	mov r6, #1
@@ -3891,6 +3983,10 @@ MapScriptCmd_jump_if_current_navi_not_equal:
 	thumb_func_end MapScriptCmd_jump_if_current_navi_not_equal
 
 	thumb_local_start
+// 0x25 byte1 destination2
+// jump if the title screen icon count equals byte1
+// byte1 - value to compare the title screen icon count with
+// destination2 - script to jump to
 MapScriptCmd_jump_if_title_screen_icon_count_equals:
 	push {lr}
 	mov r6, #1
@@ -3910,6 +4006,10 @@ MapScriptCmd_jump_if_title_screen_icon_count_equals:
 	thumb_func_end MapScriptCmd_jump_if_title_screen_icon_count_equals
 
 	thumb_local_start
+// 0x26 byte1 destination2
+// jump if the title screen icon count doesn't equal byte1
+// byte1 - value to compare the title screen icon count with
+// destination2 - script to jump to
 MapScriptCmd_jump_if_title_screen_icon_count_not_equal:
 	push {lr}
 	mov r6, #1
@@ -3929,6 +4029,10 @@ MapScriptCmd_jump_if_title_screen_icon_count_not_equal:
 	thumb_func_end MapScriptCmd_jump_if_title_screen_icon_count_not_equal
 
 	thumb_local_start
+// 0x34 byte1 byte2 byte3
+// literal interpretation:
+// [[eCutsceneState_owMapObjectPtrs_44+byte1*4]+byte2] = byte3
+// may not actually be ow map object ptrs, but not sure
 MapScriptCmd_write_byte_to_extended_var_plus_param:
 	push {lr}
 	mov r6, #1
@@ -3948,6 +4052,11 @@ MapScriptCmd_write_byte_to_extended_var_plus_param:
 	thumb_func_end MapScriptCmd_write_byte_to_extended_var_plus_param
 
 	thumb_local_start
+// 0x35 byte1 byte2
+// set a cutscene variable with a given value
+// literal interpretation: [eCutsceneState+byte1] = byte2
+// byte1 - variable to modify
+// byte2 - new value of variable
 MapScriptCmd_set_var:
 	push {lr}
 	mov r6, #2
@@ -3962,6 +4071,11 @@ MapScriptCmd_set_var:
 	thumb_func_end MapScriptCmd_set_var
 
 	thumb_local_start
+// 0x3a byte1 byte2
+// run text script from pre-loaded text archive with the given index
+// byte1 - memory param
+// byte2 or mem - text script to run
+// the length of the command is 2 if from mem, otherwise 3
 MapScriptCmd_run_text_script:
 	push {lr}
 	mov r6, #1
@@ -3986,6 +4100,8 @@ MapScriptCmd_run_text_script:
 	thumb_func_end MapScriptCmd_run_text_script
 
 	thumb_local_start
+// 0x3b
+// unknown chatbox command
 // ex. called after getting a chip from the numbertrader
 MapScriptCmd_chatbox_cmd_8037a70:
 	push {lr}
@@ -3996,6 +4112,10 @@ MapScriptCmd_chatbox_cmd_8037a70:
 	thumb_func_end MapScriptCmd_chatbox_cmd_8037a70
 
 	thumb_local_start
+// 0x3c byte1 byte2
+// set or clear chatbox flags
+// byte1 - operation type (0 = set, 1 = clear)
+// byte2 - flags to set or clear
 MapScriptCmd_set_or_clear_chatbox_flags:
 	push {lr}
 	mov r6, #2
@@ -4016,6 +4136,11 @@ MapScriptCmd_set_or_clear_chatbox_flags:
 	thumb_func_end MapScriptCmd_set_or_clear_chatbox_flags
 
 	thumb_local_start
+// 0x3d destination1 destination5 destination9 ... (up to 8 destinations)
+// perform a switch case depending on the value of chatbox flags (eFlags2009F38)
+// 0 jumps to destination1, 1 jumps to destination5, 2 jumps to destination9...
+// destinationX - script to jump to
+// the length of this command is unknown, but the max length should be 33
 MapScriptCmd_switch_case_from_chatbox_flags_bit0_to_2:
 	push {lr}
 	bl chatbox_8045F4C
@@ -4029,6 +4154,10 @@ MapScriptCmd_switch_case_from_chatbox_flags_bit0_to_2:
 	thumb_func_end MapScriptCmd_switch_case_from_chatbox_flags_bit0_to_2
 
 	thumb_local_start
+// 0x3e word1
+// store text archive pointer
+// the text archive may be compressed
+// word1 - text archive pointer. bit 31 indicates if it is compressed
 MapScriptCmd_decomp_text_archive:
 	push {lr}
 	mov r6, #1
@@ -4082,7 +4211,10 @@ off_8037B04: .word unk_2033400
 	thumb_func_end uncomp_8037AEC
 
 	thumb_local_start
-MapScriptCmd_sprite_special_maybe_8037b08:
+// 0x3f byte1
+// call sprite related special
+// byte1 - special to call (multiple of 4)
+MapScriptCmd_ow_player_sprite_special:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4098,25 +4230,30 @@ MapScriptCmd_sprite_special_maybe_8037b08:
 off_8037B24: .word owPlayer_lockPlayerForNonNPCDialogue_809E0B0+1
 	.word owPlayer_unlockPlayerAfterNonNPCDialogue_809E122+1
 	.word owPlayer_809E0FC+1
-	.word sub_809E114+1
-	.word sub_809E230+1
-	.word sub_809E23C+1
-	.word sub_809E248+1
-	.word sub_809E254+1
-	.word sub_809E26A+1
-	.word sub_809E276+1
-	.word sub_809E284+1
-	.word sub_809E292+1
-	.word sub_809E442+1
-	.word sub_809E452+1
-	.word sub_809E4AE+1
-	.word sub_809E4BC+1
+	.word owPlayer_809E114+1
+	.word owPlayer_setInteractionLocked_809e230+1
+	.word owPlayer_clearInteractionLocked_809e23c+1
+	.word owPlayer_enableWallCollision_809e248+1
+	.word owPlayer_disableWallCollision_809e254+1
+	.word owPlayer_clearLayerIndexOverride_809e26a+1
+	.word owPlayer_call_sprite_noShadow_809e276+1
+	.word owPlayer_call_sprite_hasShadow_809e284+1
+	.word owPlayer_removeShadow_809e292+1
+	.word owPlayer_makeVisible_809e442+1
+	.word owPlayer_makeInvisible_809e452+1
+	.word owPlayer_809E4AE+1
+	.word owPlayer_toggleUsingCopybot_809e4bc+1
 	.word owPlayer_zeroS2000AA0Param0x4_809e312+1
 	.word setCurNaviHPToFull_803ceb8+1
-	thumb_func_end MapScriptCmd_sprite_special_maybe_8037b08
+	thumb_func_end MapScriptCmd_ow_player_sprite_special
 
 	thumb_local_start
-MapScriptCmd_ow_player_sprite_8037b6c:
+// 0x40 byte1 byte2 byte3
+// call sprite related special with one parameter
+// byte1 - special to call (multiple of 4)
+// byte2 - memory param
+// byte3 or mem - argument to special
+MapScriptCmd_ow_player_sprite_special_with_arg:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4145,10 +4282,23 @@ off_8037B9C: .word owPlayer_writeLayerIndexOverride_809e260+1
 	.word owPlayer_setMosaicScalingParameters_8002c7a_809e4a0+1
 	.word SetOWPlayerNaviPaletteIndex+1
 	.word owPlayer_setS2000AA0Param0x4_809e314+1
-	thumb_func_end MapScriptCmd_ow_player_sprite_8037b6c
+	thumb_func_end MapScriptCmd_ow_player_sprite_special_with_arg
 
 	thumb_local_start
-MapScriptCmd_ow_player_coord_special_8037bb4:
+// 0x41 byte1 byte2 byte3 hword4 hword6 hword8
+// run ow player coordinate related special for a given number of frames
+// byte1 - special to run (multiple of 4). if this special is 8 or higher, then the cutscene script process number must not be 0
+// byte2 - memory param
+// byte3 or mem - number of frames to run the special
+// hword4 - x coordinate related param
+// hword6 - y coordinate related param
+// hword8 - z coordinate related param
+// specials (full extent of what they do is unknown). coordinate writes to eStruct200ace0 are copied to player coordinates in another function:
+// 0x0 - indirectly set player coords through eStruct200ace0
+// 0x4 - copy player coords to player next coords, write hword params to player coords, then indirectly set player coords through eStruct200ace0
+// 0x8 - add hword params to the player coords at eStruct200ace0
+// 0xc - copy player coords to player next coords, offset player coords by hword params, then add hword params to the player coords at eStruct200ace0
+MapScriptCmd_ow_player_coord_special:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4158,11 +4308,11 @@ MapScriptCmd_ow_player_coord_special_8037bb4:
 	tst r0, r0
 	beq .waitCommand
 .lessThanEight
-	mov r0, #CUTSCENE_FLAG_0x2c_8
-	bl cutscene_testFlag0x2c_80385E0
+	mov r0, #CUTSCENE_FLAG_8
+	bl TestCutsceneFlag
 	bne .flagAlreadySet
-	mov r0, #CUTSCENE_FLAG_0x2c_8
-	bl cutscene_setFlag0x2c_80385C0
+	mov r0, #CUTSCENE_FLAG_8
+	bl SetCutsceneFlag
 	mov r6, #2
 	bl ReadMapScriptByte
 	cmp r4, #0xff
@@ -4173,7 +4323,7 @@ MapScriptCmd_ow_player_coord_special_8037bb4:
 	mov r6, #3
 	bl ReadMapScriptByte
 .gotParam
-	strb r4, [r5,#oCutsceneState_Unk_10]
+	strb r4, [r5,#oCutsceneState_OWPlayerCoordSpecialTimer]
 .flagAlreadySet
 	mov r6, #4
 	bl ReadMapScriptSignedHalfword
@@ -4193,12 +4343,12 @@ MapScriptCmd_ow_player_coord_special_8037bb4:
 	ldr r3, [r3,r4]
 	mov lr, pc
 	bx r3
-	ldrb r0, [r5,#oCutsceneState_Unk_10]
+	ldrb r0, [r5,#oCutsceneState_OWPlayerCoordSpecialTimer]
 	sub r0, #1
-	strb r0, [r5,#oCutsceneState_Unk_10]
+	strb r0, [r5,#oCutsceneState_OWPlayerCoordSpecialTimer]
 	bgt .waitCommand
-	mov r0, #8
-	bl cutscene_clearFlag0x2c_80385D0
+	mov r0, #CUTSCENE_FLAG_8
+	bl ClearCutsceneFlag
 	add r7, #0xa
 	mov r0, #1
 	pop {pc}
@@ -4208,13 +4358,19 @@ MapScriptCmd_ow_player_coord_special_8037bb4:
 	.balign 4, 0
 	.pool // 8037C30
 off_8037C34: .word owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4+1
-	.word owPlayer_indirectlySetPlayerCoordsMaybe_809e188+1
+	.word owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188+1
 	.word owPlayer_offsetS200ace0Coords_809e1fa+1
-	.word owPlayer_copyCoordsToNextCoordsThenAddOffsetToCoords_809e1d8+1
-	thumb_func_end MapScriptCmd_ow_player_coord_special_8037bb4
+	.word owPlayer_copyCoordsToNextCoordsAddOffsetToCoordsThenOffsetS200ace0Coords_809e1d8+1
+	thumb_func_end MapScriptCmd_ow_player_coord_special
 
 	thumb_local_start
-// paramType0 immediateParam1 movementSpeed2
+// 0x42 byte1 byte2 hword3
+// move player in facing direction
+// the movement is done as if the player was moving the player character themselves
+// does not work if the cutscene process number is 0
+// byte1 - memory param
+// byte2 or mem - number of frames to move player
+// hword3 - movement speed of player
 MapScriptCmd_move_player_in_facing_direction:
 	push {lr}
 	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
@@ -4222,11 +4378,11 @@ MapScriptCmd_move_player_in_facing_direction:
 	beq .waitCommand
 	bl GetOWPlayerFacingDirection
 	mov r3, r0
-	mov r0, #CUTSCENE_FLAG_0x2c_8
-	bl cutscene_testFlag0x2c_80385E0
+	mov r0, #CUTSCENE_FLAG_8
+	bl TestCutsceneFlag
 	bne .flagAlreadySet
-	mov r0, #CUTSCENE_FLAG_0x2c_8
-	bl cutscene_setFlag0x2c_80385C0
+	mov r0, #CUTSCENE_FLAG_8
+	bl SetCutsceneFlag
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0xff
@@ -4237,7 +4393,7 @@ MapScriptCmd_move_player_in_facing_direction:
 	mov r6, #2
 	bl ReadMapScriptByte
 .gotParam
-	strb r4, [r5,#oCutsceneState_Unk_10]
+	strb r4, [r5,#oCutsceneState_OWPlayerCoordSpecialTimer]
 .flagAlreadySet
 	mov r6, #3
 	bl ReadMapScriptSignedHalfword
@@ -4253,12 +4409,12 @@ MapScriptCmd_move_player_in_facing_direction:
 	mul r1, r2
 	mov r2, #0
 	bl owPlayer_offsetS200ace0Coords_809e1fa
-	ldrb r0, [r5,#oCutsceneState_Unk_10]
+	ldrb r0, [r5,#oCutsceneState_OWPlayerCoordSpecialTimer]
 	sub r0, #1
-	strb r0, [r5,#oCutsceneState_Unk_10]
+	strb r0, [r5,#oCutsceneState_OWPlayerCoordSpecialTimer]
 	bgt .waitCommand
 	mov r0, #8
-	bl cutscene_clearFlag0x2c_80385D0
+	bl ClearCutsceneFlag
 	add r7, #5
 	mov r0, #1
 	pop {pc}
@@ -4279,6 +4435,11 @@ byte_8037CB4:
 	thumb_func_end MapScriptCmd_move_player_in_facing_direction
 
 	thumb_local_start
+// 0x43 byte1 byte2
+// unknown ow player related command
+// literal interpretation: write byte2 or mem to eStruct200ace0_Unk_1a if eStruct200ace0_fixOWPlayerAnim_15 is nonzero
+// byte1 - memory param
+// byte2 or mem - loaded to r0 when owPlayer_809e218 is called
 MapScriptCmd_ow_player_8037cc4:
 	push {lr}
 	mov r6, #2
@@ -4297,6 +4458,8 @@ MapScriptCmd_ow_player_8037cc4:
 	thumb_func_end MapScriptCmd_ow_player_8037cc4
 
 	thumb_local_start
+// 0x44 word1
+// literal interpretation: [eStruct200ace0_Unk_20] = word1
 MapScriptCmd_write_S200ace0_unk_20:
 	push {lr}
 	mov r6, #1
@@ -4309,6 +4472,21 @@ MapScriptCmd_write_S200ace0_unk_20:
 	thumb_func_end MapScriptCmd_write_S200ace0_unk_20
 
 	thumb_local_start
+// 0x45 0x0 byte2 byte3 byte4
+// set a custom transform to the player navi sprite
+// byte2 - horizontal compress value
+// byte3 - vertical compress value
+// byte4 - rotation value
+
+// 0x45 0x1
+// set the default transform (0x40, 0x40, 0x0) to the player navi sprite
+
+// 0x45 0x2 byte2 byte3 byte4 byte5
+// add offsets to player navi sprite transform values for a given number of frames
+// byte2 - number of frames
+// byte3 - horizontal compress offset
+// byte4 - vertical compress offset
+// byte5 - rotation offset
 MapScriptCmd_transform_player_navi_sprite:
 	push {lr}
 	mov r6, #1
@@ -4338,14 +4516,14 @@ MapScriptCmd_transform_player_navi_sprite:
 	mov r0, #1
 	pop {pc}
 .subcmdTwo // set transform offset
-	mov r0, #CUTSCENE_FLAG_0x2c_9
-	bl cutscene_testFlag0x2c_80385E0
+	mov r0, #CUTSCENE_FLAG_9
+	bl TestCutsceneFlag
 	bne .flagAlreadySet
-	mov r0, #CUTSCENE_FLAG_0x2c_9
-	bl cutscene_setFlag0x2c_80385C0
+	mov r0, #CUTSCENE_FLAG_9
+	bl SetCutsceneFlag
 	mov r6, #2
 	bl ReadMapScriptByte
-	strb r4, [r5,#oCutsceneState_Unk_11]
+	strb r4, [r5,#oCutsceneState_TransformPlayerNaviSpriteTimer]
 .flagAlreadySet
 	mov r6, #3
 	bl ReadMapScriptSignedByte
@@ -4357,12 +4535,12 @@ MapScriptCmd_transform_player_navi_sprite:
 	bl ReadMapScriptSignedByte
 	mov r2, r4
 	bl owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc
-	ldrb r0, [r5,#oCutsceneState_Unk_11]
+	ldrb r0, [r5,#oCutsceneState_TransformPlayerNaviSpriteTimer]
 	sub r0, #1
-	strb r0, [r5,#oCutsceneState_Unk_11]
+	strb r0, [r5,#oCutsceneState_TransformPlayerNaviSpriteTimer]
 	bgt .timerStillActive
-	mov r0, #CUTSCENE_FLAG_0x2c_9
-	bl cutscene_clearFlag0x2c_80385D0
+	mov r0, #CUTSCENE_FLAG_9
+	bl ClearCutsceneFlag
 	add r7, #6
 	mov r0, #1
 	pop {pc}
@@ -4372,6 +4550,12 @@ MapScriptCmd_transform_player_navi_sprite:
 	thumb_func_end MapScriptCmd_transform_player_navi_sprite
 
 	thumb_local_start
+// 0x46 0x0 hword2
+// set a custom overworld player navi color shader
+// hword2 - new color shader as 15bit RGB
+
+// 0x46 0x1
+// set the default overworld player navi color shader (0)
 MapScriptCmd_set_ow_player_navi_color_shader:
 	push {lr}
 	mov r6, #1
@@ -4396,9 +4580,11 @@ MapScriptCmd_set_ow_player_navi_color_shader:
 	thumb_func_end MapScriptCmd_set_ow_player_navi_color_shader
 
 	thumb_local_start
-// two modes
-// 00 - write anim select
-// 01 - offset from current facing
+// 0x47 byte1 byte2 byte3
+// modify the overworld player's animation
+// byte1 - modify type. 0=write, 1=add anim to facing direction and write
+// byte2 - memory param
+// byte3 or mem - base overworld player anim
 MapScriptCmd_write_or_offset_ow_player_fixed_anim_select_8037dac:
 	push {lr}
 	mov r6, #2
@@ -4428,6 +4614,10 @@ MapScriptCmd_write_or_offset_ow_player_fixed_anim_select_8037dac:
 	thumb_func_end MapScriptCmd_write_or_offset_ow_player_fixed_anim_select_8037dac
 
 	thumb_local_start
+// 0x48 byte1 byte2
+// set the player coordinates and animation to the given npc, and set the player facing direction
+// byte1 - index of the npc to copy coords and anim from
+// byte2 - new facing direction of the player
 MapScriptCmd_set_player_coords_anim_facing_as_npc:
 	push {lr}
 	mov r6, #1
@@ -4455,6 +4645,11 @@ MapScriptCmd_set_player_coords_anim_facing_as_npc:
 	thumb_func_end MapScriptCmd_set_player_coords_anim_facing_as_npc
 
 	thumb_local_start
+// 0x49 byte1 ...
+// run special related to spawning or freeing OW map objects
+// subcommands documented below
+// byte1 - upper nybble is subcommand to run (multiple of 1)
+//       - lower nybble is index of array of map objects spawned by these subcommands
 MapScriptCmd_spawn_free_ow_map_object_specials:
 	push {lr}
 	mov r6, #1
@@ -4478,6 +4673,14 @@ off_8037E38: .word MapScriptSubCmd_spawn_ow_map_object+1
 	thumb_func_end MapScriptCmd_spawn_free_ow_map_object_specials
 
 	thumb_local_start
+// 0x49 0x0X byte2 hword3 hword5 hword7 word9
+// spawn overworld map object
+// byte1 lower nybble - index of cutscene state map object ptrs to store the new map object
+// byte2 - overworld map object index
+// hword3 - map object x coordinate
+// hword5 - map object y coordinate
+// hword7 - map object z coordinate
+// word9 - unknown param (written to field oOverworldMapObject_Unk_04)
 MapScriptSubCmd_spawn_ow_map_object:
 	push {lr}
 	mov r1, #0xf
@@ -4485,7 +4688,7 @@ MapScriptSubCmd_spawn_ow_map_object:
 	lsl r4, r4, #2
 	add r4, #oCutsceneState_owMapObjectPtrs_44
 	push {r5}
-	add r5, r5, r4 // eCutsceneState_extendedVars_44 + wordparam
+	add r5, r5, r4 // eCutsceneState_owMapObjectPtrs_44 + wordparam
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r0, r4
@@ -4516,6 +4719,14 @@ MapScriptSubCmd_spawn_ow_map_object:
 	.set oStack_OWPlayerObject_X, 0x0
 	.set oStack_OWPlayerObject_Y, 0x4
 	.set oStack_OWPlayerObject_Z, 0x8
+// 0x49 0x1X byte2 hword3 hword5 hword7 word9
+// spawn overworld map object relative to overworld player
+// byte1 lower nybble - index of cutscene state map object ptrs to store the new map object
+// byte2 - overworld map object index
+// hword3 - map object x coordinate
+// hword5 - map object y coordinate
+// hword7 - map object z coordinate
+// word9 - unknown param (written to field oOverworldMapObject_Unk_04)
 MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_player:
 	push {lr}
 	mov r1, #0xf
@@ -4566,6 +4777,15 @@ MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_player:
 	.set oStack_OverworldNPCObject_X, 0x0
 	.set oStack_OverworldNPCObject_Y, 0x4
 	.set oStack_OverworldNPCObject_Z, 0x8
+// 0x49 0x2X byte2 byte3 hword4 hword6 hword8 word10
+// spawn overworld map object relative to overworld npc
+// byte1 lower nybble - index of cutscene state map object ptrs to store the new map object
+// byte2 - overworld npc object to read coordinates from
+// byte3 - overworld map object index
+// hword4 - map object x coordinate offset to npc
+// hword6 - map object y coordinate offset to npc
+// hword8 - map object z coordinate offset to npc
+// word10 - unknown param (written to field oOverworldMapObject_Unk_04)
 MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_npc:
 	push {lr}
 	mov r1, #0xf
@@ -4576,7 +4796,7 @@ MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_npc:
 	add r5, r5, r4
 	mov r6, #2
 	bl ReadMapScriptByte
-	mov r1, #0xd8
+	mov r1, #oOverworldNPCObject_Size
 	mul r1, r4
 	ldr r4, off_8037FB4 // =eOverworldNPCObjects
 	add r4, r4, r1
@@ -4621,6 +4841,9 @@ MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_npc:
 	thumb_func_end MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_npc
 
 	thumb_local_start
+// 0x49 0x3X
+// free overworld map object created via a cutscene
+// byte1 lower nybble - which map object to free, from the list of cutscene state map object ptrs
 MapScriptSubCmd_free_ow_map_object:
 	push {lr}
 	mov r1, #0xf
@@ -4631,7 +4854,7 @@ MapScriptSubCmd_free_ow_map_object:
 	ldr r5, [r5,r4]
 	tst r5, r5
 	beq .mapObjectNull
-	mov r0, #0
+	mov r0, #NULL
 	str r0, [r5,r4]
 	bl FreeOverworldMapObject
 .mapObjectNull
@@ -4642,6 +4865,8 @@ MapScriptSubCmd_free_ow_map_object:
 	thumb_func_end MapScriptSubCmd_free_ow_map_object
 
 	thumb_local_start
+// 0x49 0x3X
+// free all overworld map objects created via a cutscene
 MapScriptSubCmd_free_all_spawned_ow_map_objects:
 	push {lr}
 	mov r4, #oCutsceneState_owMapObjectPtrs_44
@@ -4666,6 +4891,36 @@ off_8037FB4: .word eOverworldNPCObjects
 	thumb_func_end MapScriptSubCmd_free_all_spawned_ow_map_objects
 
 	thumb_local_start
+// 0x4a 0x0 word2
+// spawn objects from list
+// word2 - list of structs corresponding to which objects to spawn and params
+// list terminated by 0xff
+// struct format: byte0 byte1 word4 word8 word0xc word0x10
+// byte0 - object type
+// byte1 - object index
+// word4 - x coordinate
+// word8 - y coordinate
+// word0xc - z coordinate
+// word0x10 - param (written to field 0x4)
+
+// 0x4a 0x1 byte2
+// free all objects of specified types
+// byte2 - bitfield of objects to free
+// see constants/constants.inc for object type flags
+
+// 0x4a 0x2 word2
+// free all npc objects, then spawn npc objects from a list. terminated by 0xff
+// struct format: word0
+// word0 - animation script pointer
+
+// 0x4a 0x3
+// spawn npc objects for the current map
+
+// 0x4a 0x4
+// spawn map objects for the current map
+
+// 0x4a 0x5
+// free npc objects if the last map npc objects were spawned is different than the current map
 MapScriptCmd_spawn_or_free_ow_map_or_npc_objects:
 	push {lr}
 	mov r6, #1
@@ -4700,7 +4955,7 @@ MapScriptCmd_spawn_or_free_ow_map_or_npc_objects:
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
+	bl npc_freeAllObjectsThenSpawnObjectsFromList
 	add r7, #6
 	mov r0, #1
 	pop {pc}
@@ -4722,6 +4977,9 @@ MapScriptCmd_spawn_or_free_ow_map_or_npc_objects:
 	thumb_func_end MapScriptCmd_spawn_or_free_ow_map_or_npc_objects
 
 	thumb_local_start
+// 0x4b word1
+// call native function. if the return flags are nonzero, then wait
+// word1 - native function to call
 MapScriptCmd_call_native_with_return_value:
 	push {lr}
 	mov r6, #1
@@ -4738,6 +4996,21 @@ MapScriptCmd_call_native_with_return_value:
 	thumb_func_end MapScriptCmd_call_native_with_return_value
 
 	thumb_local_start
+// the following commands are related to warping
+// 0x4c &0x40
+// literal interpretation: call warp_8005f32 and warp_setSubsystemIndexTo0x10AndOthers_8005f00
+
+// 0x4c &0x20 word2
+// literal interpretation: [eCutsceneState_Unk_34] = word2
+// word2 - warp related pointer
+
+// 0x4c !&0x60 byte2 word3
+// literal interpretation:
+// if bit7 of byte1 is set, word3 = [eCutsceneState_Unk_34]
+// if bit0 of byte1 is set:
+// call warp_setSubsystemIndexTo0x10AndOthers_8005f00 with r0=word3, r1=0, r2=byte2
+// else:
+// call warp_setSubsystemIndexTo0x14AndOthers_8005f14 with r0=word3, r1=0, r2=byte2
 MapScriptCmd_warp_cmd_8038040:
 	push {lr}
 	mov r6, #1
@@ -4795,6 +5068,9 @@ MapScriptCmd_warp_cmd_8038040:
 	thumb_func_end MapScriptCmd_warp_cmd_8038040
 
 	thumb_local_start
+// 0x30/0x4d hword1
+// play sound
+// hword1 - sound to play
 MapScriptCmd_play_sound:
 	push {lr}
 	mov r6, #1
@@ -4807,6 +5083,9 @@ MapScriptCmd_play_sound:
 	thumb_func_end MapScriptCmd_play_sound
 
 	thumb_local_start
+// 0x31/0x4e hword1
+// play music
+// hword1 - music to play. if this is negative, then play the current map music
 MapScriptCmd_play_music:
 	push {lr}
 	mov r6, #1
@@ -4826,6 +5105,8 @@ MapScriptCmd_play_music:
 	thumb_func_end MapScriptCmd_play_music
 
 	thumb_local_start
+// 0x32/0x4f hword1 byte3 byte4
+// call sound_80006A2 with r0=hword1, r1=byte3, r2=byte4
 MapScriptCmd_sound_cmd_80380ea:
 	push {lr}
 	mov r6, #1
@@ -4844,6 +5125,8 @@ MapScriptCmd_sound_cmd_80380ea:
 	thumb_func_end MapScriptCmd_sound_cmd_80380ea
 
 	thumb_local_start
+// 0x33/0x50 byte1 byte2
+// call sound_800068A with r0=byte1, r1=byte2 then do [eGameState_BGMusicIndicator] = 0x63
 MapScriptCmd_sound_cmd_803810e:
 	push {lr}
 	mov r6, #1
@@ -4863,6 +5146,8 @@ MapScriptCmd_sound_cmd_803810e:
 	thumb_func_end MapScriptCmd_sound_cmd_803810e
 
 	thumb_local_start
+// 0x34/0x51
+// stop any sounds
 MapScriptCmd_stop_sound:
 	push {lr}
 	bl musicGameState_8000784 // () -> void
@@ -4872,7 +5157,12 @@ MapScriptCmd_stop_sound:
 	thumb_func_end MapScriptCmd_stop_sound
 
 	thumb_local_start
-MapScriptCmd_navicust_maybe_803813e:
+// 0x35/0x52 byte1 byte2 byte3
+// give or take an item
+// byte1 - operation type (0=give, 1=take)
+// byte2 - item to give or take
+// byte3 - quantity of item
+MapScriptCmd_give_or_take_item:
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptByte
@@ -4883,18 +5173,24 @@ MapScriptCmd_navicust_maybe_803813e:
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #1
-	beq loc_8038160
-	bl sub_803CD98
-	b loc_8038164
-loc_8038160:
-	bl sub_803CE08
-loc_8038164:
+	beq .takeItem
+	bl GiveItem
+	b .done
+.takeItem
+	bl TakeItem
+.done
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_navicust_maybe_803813e
+	thumb_func_end MapScriptCmd_give_or_take_item
 
 	thumb_local_start
+// 0x54 0x0 word1
+// set cutscene camera script
+// word1 - cutscene camera script pointer
+
+// 0x54 0x1
+// stop cutscene camera script
 MapScriptCmd_run_or_stop_cutscene_camera_script:
 	push {lr}
 	mov r6, #1
@@ -4903,9 +5199,9 @@ MapScriptCmd_run_or_stop_cutscene_camera_script:
 	bne .resetCamera
 	mov r6, #2
 	bl ReadMapScriptWord
-	str r4, [r5,#oCutsceneState_Unk_3c]
+	str r4, [r5,#oCutsceneState_CutsceneCameraScriptPtr]
 	mov r0, r4
-	bl cutsceneCamera_setCutsceneCameraScript_8036f98
+	bl SetCutsceneCameraScript
 	mov r0, #TRUE
 	strb r0, [r5,#oCutsceneState_CutsceneCameraScriptActive]
 	add r7, #6
@@ -4913,7 +5209,7 @@ MapScriptCmd_run_or_stop_cutscene_camera_script:
 	pop {pc}
 .resetCamera
 	mov r0, #NULL
-	str r0, [r5,#oCutsceneState_Unk_3c]
+	str r0, [r5,#oCutsceneState_CutsceneCameraScriptPtr]
 	bl cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
 	mov r0, #FALSE
 	strb r0, [r5,#oCutsceneState_CutsceneCameraScriptActive]
@@ -4923,6 +5219,9 @@ MapScriptCmd_run_or_stop_cutscene_camera_script:
 	thumb_func_end MapScriptCmd_run_or_stop_cutscene_camera_script
 
 	thumb_local_start
+// 0x55 hword1
+// start a fixed battle (i.e. a non-random encounter battle)
+// hword1 - battle index
 MapScriptCmd_start_fixed_battle:
 	push {lr}
 	mov r0, r10
@@ -4952,6 +5251,8 @@ MapScriptCmd_start_fixed_battle:
 	thumb_func_end MapScriptCmd_start_fixed_battle
 
 	thumb_local_start
+// 0x56
+// start a random battle
 MapScriptCmd_start_random_battle:
 	push {lr}
 	bl chooseRandomEncounterMaybe_80aa5e4
@@ -4966,6 +5267,8 @@ MapScriptCmd_start_random_battle:
 	thumb_func_end MapScriptCmd_start_random_battle
 
 	thumb_local_start
+// 0x38/0x58 word1 word5 word9
+// call Initialize_eStruct200a6a0 with r0=word1, r1=word5, r2=word9
 MapScriptCmd_init_eStruct200a6a0:
 	push {lr}
 	mov r6, #1
@@ -4984,6 +5287,8 @@ MapScriptCmd_init_eStruct200a6a0:
 	thumb_func_end MapScriptCmd_init_eStruct200a6a0
 
 	thumb_local_start
+// 0x39/0x59
+// call run_eStruct200a6a0_Callback_8002484
 MapScriptCmd_run_eStruct200a6a0_callback:
 	push {lr}
 	bl run_eStruct200a6a0_Callback_8002484
@@ -4993,6 +5298,11 @@ MapScriptCmd_run_eStruct200a6a0_callback:
 	thumb_func_end MapScriptCmd_run_eStruct200a6a0_callback
 
 	thumb_local_start
+// 0x5a byte1 byte2 byte3
+// do a camera shake effect
+// byte1 - shake type
+// byte2 - shake timer
+// byte3 - unused
 MapScriptCmd_do_camera_shake:
 	push {lr}
 	mov r6, #1
@@ -5008,6 +5318,9 @@ MapScriptCmd_do_camera_shake:
 	thumb_func_end MapScriptCmd_do_camera_shake
 
 	thumb_local_start
+// 0x5b byte1
+// functions as a nop
+// byte1 - unused
 MapScriptCmd_nop_8038246:
 	push {lr}
 	mov r6, #1
@@ -5019,6 +5332,8 @@ MapScriptCmd_nop_8038246:
 	thumb_func_end MapScriptCmd_nop_8038246
 
 	thumb_local_start
+// 0x5c
+// functions as a nop
 MapScriptCmd_nop_8038256:
 	push {lr}
 	add r7, #1
@@ -5027,6 +5342,8 @@ MapScriptCmd_nop_8038256:
 	thumb_func_end MapScriptCmd_nop_8038256
 
 	thumb_local_start
+// 0x5d
+// functions as a nop
 MapScriptCmd_nop_803825e:
 	push {lr}
 	add r7, #1
@@ -5035,6 +5352,8 @@ MapScriptCmd_nop_803825e:
 	thumb_func_end MapScriptCmd_nop_803825e
 
 	thumb_local_start
+// 0x5e
+// functions as a nop
 MapScriptCmd_nop_8038266:
 	push {lr}
 	add r7, #1
@@ -5043,6 +5362,8 @@ MapScriptCmd_nop_8038266:
 	thumb_func_end MapScriptCmd_nop_8038266
 
 	thumb_local_start
+// 0x5f
+// call sub_8001974
 MapScriptCmd_call_sub_8001974:
 	push {lr}
 	bl sub_8001974
@@ -5052,6 +5373,9 @@ MapScriptCmd_call_sub_8001974:
 	thumb_func_end MapScriptCmd_call_sub_8001974
 
 	thumb_local_start
+// 0x3b/0x60 byte1
+// init scenario effect
+// byte1 - scenario effect to initialize (0=soul weapons counter, 1=mr. weather comp rainbow gauge)
 MapScriptCmd_init_scenario_effect:
 	push {lr}
 	mov r6, #1
@@ -5064,6 +5388,8 @@ MapScriptCmd_init_scenario_effect:
 	thumb_func_end MapScriptCmd_init_scenario_effect
 
 	thumb_local_start
+// 0x3c/0x61
+// end scenario effect
 MapScriptCmd_end_scenario_effect:
 	push {lr}
 	bl endScenarioEffectMaybe_8003940
@@ -5073,6 +5399,9 @@ MapScriptCmd_end_scenario_effect:
 	thumb_func_end MapScriptCmd_end_scenario_effect
 
 	thumb_local_start
+// 0x3d/0x62 byte1
+// init minigame effect
+// byte1 - minigame effect to initialize (0=AquaMan, 1=SlashMan, 2=TenguMan, 3=ElecMan, 4=EraseMan, 5=GroundMan).
 MapScriptCmd_init_minigame_effect:
 	push {lr}
 	mov r6, #1
@@ -5085,6 +5414,8 @@ MapScriptCmd_init_minigame_effect:
 	thumb_func_end MapScriptCmd_init_minigame_effect
 
 	thumb_local_start
+// 0x3e/0x63
+// end minigame effect
 MapScriptCmd_end_minigame_effect:
 	push {lr}
 	bl endMinigameEffectMaybe_8003a90
@@ -5094,6 +5425,11 @@ MapScriptCmd_end_minigame_effect:
 	thumb_func_end MapScriptCmd_end_minigame_effect
 
 	thumb_local_start
+// 0x41/0x67 hword1 byte3
+// add the range of bbs messages specified by hword1 and byte3
+// i.e. [hword1, hword1+byte3) (interval notation)
+// hword1 - starting bbs message flag
+// byte3 - number of bbs messages to add
 MapScriptCmd_add_bbs_message_range:
 	push {lr}
 	mov r6, #1
@@ -5114,6 +5450,8 @@ MapScriptCmd_add_bbs_message_range:
 	thumb_func_end MapScriptCmd_add_bbs_message_range
 
 	thumb_local_start
+// 0x68 hword1
+// call encryption_8006e70 with r0=hword1
 MapScriptCmd_encryption_cmd_80382de:
 	push {lr}
 	mov r6, #1
@@ -5127,6 +5465,8 @@ MapScriptCmd_encryption_cmd_80382de:
 	thumb_func_end MapScriptCmd_encryption_cmd_80382de
 
 	thumb_local_start
+// 0x69
+// call navi_80340F6
 MapScriptCmd_navi_cmd_80340f6:
 	push {lr}
 	bl navi_80340F6
@@ -5136,6 +5476,9 @@ MapScriptCmd_navi_cmd_80340f6:
 	thumb_func_end MapScriptCmd_navi_cmd_80340f6
 
 	thumb_local_start
+// 0x6a byte1
+// change the player navi?
+// byte1 - navi to switch to
 MapScriptCmd_change_navi_maybe_80382fe:
 	push {lr}
 	bl writeCurPETNaviToS2001c04_Unk07_80010c6
@@ -5152,6 +5495,11 @@ MapScriptCmd_change_navi_maybe_80382fe:
 	thumb_func_end MapScriptCmd_change_navi_maybe_80382fe
 
 	thumb_local_start
+// 0x42/0x6b hword1 byte3
+// add the range of mails specified by hword1 and byte3
+// i.e. [hword1, hword1+byte3) (interval notation)
+// hword1 - starting mail flag
+// byte3 - number of mails to add
 MapScriptCmd_add_mail_range:
 	push {lr}
 	mov r6, #1
@@ -5172,6 +5520,8 @@ MapScriptCmd_add_mail_range:
 	thumb_func_end MapScriptCmd_add_mail_range
 
 	thumb_local_start
+// 0x43/0x6c word1 word5
+// call sub_80356F8 with r0=word1 and r1=word5
 MapScriptCmd_cmd_8038346:
 	push {lr}
 	mov r6, #1
@@ -5187,6 +5537,10 @@ MapScriptCmd_cmd_8038346:
 	thumb_func_end MapScriptCmd_cmd_8038346
 
 	thumb_local_start
+// 0x6f byte1 hword2
+// give or take zenny
+// byte1 - operation type (0=give, 1=take)
+// hword2 - amount to give or take
 MapScriptCmd_give_or_take_zenny:
 	push {lr}
 	mov r6, #2
@@ -5207,6 +5561,10 @@ MapScriptCmd_give_or_take_zenny:
 	thumb_func_end MapScriptCmd_give_or_take_zenny
 
 	thumb_local_start
+// 0x70 byte1 hword2
+// give or take bugfrags
+// byte1 - operation type (0=give, 1=take)
+// hword2 - amount to give or take
 MapScriptCmd_give_or_take_bugfrags:
 	push {lr}
 	mov r6, #2
@@ -5227,6 +5585,12 @@ MapScriptCmd_give_or_take_bugfrags:
 	thumb_func_end MapScriptCmd_give_or_take_bugfrags
 
 	thumb_local_start
+// 0x73 byte1 hword2 byte4 byte5
+// give or take chips
+// byte1 - operation type (give=0, take=1)
+// hword2 - chip to give or take
+// byte4 - chip code
+// byte5 - quantity of chips
 MapScriptCmd_give_or_take_chips:
 	push {lr}
 	mov r6, #2
@@ -5253,6 +5617,12 @@ MapScriptCmd_give_or_take_chips:
 	thumb_func_end MapScriptCmd_give_or_take_chips
 
 	thumb_local_start
+// 0x74 byte1 hword2 byte4 byte5
+// give or take navicust programs
+// byte1 - operation type (0=give, 1=take)
+// hword2 - navicust program to give or take
+// byte4 - color of the navicust program
+// byte5 - quantity of the navicust program
 MapScriptCmd_give_or_take_navicust_programs:
 	push {lr}
 	mov r6, #2
@@ -5279,6 +5649,12 @@ MapScriptCmd_give_or_take_navicust_programs:
 	thumb_func_end MapScriptCmd_give_or_take_navicust_programs
 
 	thumb_local_start
+// 0x75 0x0 word2
+// set the secondary continuous map script pointer
+// word2 - map script pointer to set the secondary continuous map script pointer to
+
+// 0x75 0x1
+// end the secondary continuous map script pointer
 MapScriptCmd_run_or_end_continuous_secondary_map_script_from_cutscene_script:
 	push {lr}
 	ldr r3, =eMapScriptState
@@ -5298,11 +5674,15 @@ MapScriptCmd_run_or_end_continuous_secondary_map_script_from_cutscene_script:
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	// 8038438
-	.pool
+	.balign 4, 0
+	.pool // 8038438
 	thumb_func_end MapScriptCmd_run_or_end_continuous_secondary_map_script_from_cutscene_script
 
 	thumb_local_start
+// 0x76 byte1 byte2
+// store or load the current game progress to or from a buffer
+// byte1 - operation type (0=store, 1=load)
+// byte2 - index of the buffer to use
 MapScriptCmd_store_or_load_game_progress_buffer_maybe_803843c:
 	push {lr}
 	mov r3, r10
@@ -5327,6 +5707,12 @@ MapScriptCmd_store_or_load_game_progress_buffer_maybe_803843c:
 	thumb_func_end MapScriptCmd_store_or_load_game_progress_buffer_maybe_803843c
 
 	thumb_local_start
+// 0x77 byte1
+// literal interpretation:
+// if byte1 == 0:
+// call testSetClearFlags_803553c
+// else:
+// call clearSetFlags_80355a8
 MapScriptCmd_flag_8038466:
 	push {lr}
 	mov r6, #1
@@ -5346,6 +5732,11 @@ MapScriptCmd_flag_8038466:
 	thumb_func_end MapScriptCmd_flag_8038466
 
 	thumb_local_start
+// 0x44/0x78
+// add the range of bbs requests specified by hword1 and byte3
+// i.e. [hword1, hword1+byte3) (interval notation)
+// hword1 - starting bbs request flag
+// byte3 - number of bbs requests to add
 MapScriptCmd_add_request_range:
 	push {lr}
 	mov r6, #1
@@ -5366,7 +5757,11 @@ MapScriptCmd_add_request_range:
 	thumb_func_end MapScriptCmd_add_request_range
 
 	thumb_local_start
-// isn't triggered when using a piece of rush food, maybe unused?
+// 0x45/0x79 unused1to3 destination4
+// appears to be "jump_if_has_rush_food_and_a_pressed"
+// but it isn't triggered when using a piece of rush food
+// unused1to3 - unused
+// destination4 - script to jump to
 MapScriptCmd_rush_food_80384A8:
 	push {lr}
 	mov r0, #0x2c // rush food
@@ -5390,6 +5785,8 @@ MapScriptCmd_rush_food_80384A8:
 	thumb_func_end MapScriptCmd_rush_food_80384A8
 
 	thumb_local_start
+// 0x7a
+// set beast out counter to 3
 MapScriptCmd_set_beast_out_counter_to_3:
 	push {lr}
 	bl SetBeastOutCounterTo3
@@ -5399,6 +5796,10 @@ MapScriptCmd_set_beast_out_counter_to_3:
 	thumb_func_end MapScriptCmd_set_beast_out_counter_to_3
 
 	thumb_local_start
+// 0x7b unused1to3 destination4
+// jump if the player is master rank for the request bbs
+// unused1to3 - unused
+// destination4 - script to jump to
 MapScriptCmd_jump_if_req_bbs_master_rank:
 	push {lr}
 	bl reqBBS_getRequestBBSRank // () -> u8
@@ -5416,6 +5817,11 @@ MapScriptCmd_jump_if_req_bbs_master_rank:
 	thumb_func_end MapScriptCmd_jump_if_req_bbs_master_rank
 
 	thumb_local_start
+// 0x7c unused1to3 destination4 destination8
+// jump to another script depending on whether the player is in the real world or on the internet
+// unused1to3 - unused
+// destination4 - script to jump to if in the real world
+// destination8 - script to jump to if on the internet
 MapScriptCmd_if_in_real_world_jump_else_jump:
 	push {lr}
 	mov r0, r10
@@ -5493,12 +5899,12 @@ runCutscene_803851C:
 	// loop if we haven't executed all scripts
 	cmp r0, #oCutsceneState_CutsceneScriptPos4
 	ble .executeCutsceneScriptsLoop
-	ldr r0, [r5,#oCutsceneState_Unk_3c]
+	ldr r0, [r5,#oCutsceneState_CutsceneCameraScriptPtr]
 	tst r0, r0
-	beq .loc_803856A
+	beq .cutsceneCameraScriptNull
 	bl RunCutsceneCameraCommand
 	strb r0, [r5,#oCutsceneState_CutsceneCameraScriptActive]
-.loc_803856A:
+.cutsceneCameraScriptNull
 	bl TryCutsceneSkip
 	beq .doneCutsceneIteration
 	ldr r0, [r5,#oCutsceneState_CutsceneScriptAfterCutsceneSkip]
@@ -5513,22 +5919,22 @@ runCutscene_803851C:
 	str r0, [r5,#oCutsceneState_CutsceneScriptAfterCutsceneSkip]
 
 	// clear bits of some flag?
-	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED
-	bl cutscene_clearFlag0x2c_80385D0
-	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_2_PAUSED
-	bl cutscene_clearFlag0x2c_80385D0
-	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_3_PAUSED
-	bl cutscene_clearFlag0x2c_80385D0
-	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_4_PAUSED
-	bl cutscene_clearFlag0x2c_80385D0
-	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED_LONG
-	bl cutscene_clearFlag0x2c_80385D0
-	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_2_PAUSED_LONG
-	bl cutscene_clearFlag0x2c_80385D0
-	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_3_PAUSED_LONG
-	bl cutscene_clearFlag0x2c_80385D0
-	mov r0, #CUTSCENE_FLAG_0x2c_SCRIPT_4_PAUSED_LONG
-	bl cutscene_clearFlag0x2c_80385D0
+	mov r0, #CUTSCENE_FLAG_SCRIPT_1_PAUSED
+	bl ClearCutsceneFlag
+	mov r0, #CUTSCENE_FLAG_SCRIPT_2_PAUSED
+	bl ClearCutsceneFlag
+	mov r0, #CUTSCENE_FLAG_SCRIPT_3_PAUSED
+	bl ClearCutsceneFlag
+	mov r0, #CUTSCENE_FLAG_SCRIPT_4_PAUSED
+	bl ClearCutsceneFlag
+	mov r0, #CUTSCENE_FLAG_SCRIPT_1_PAUSED_LONG
+	bl ClearCutsceneFlag
+	mov r0, #CUTSCENE_FLAG_SCRIPT_2_PAUSED_LONG
+	bl ClearCutsceneFlag
+	mov r0, #CUTSCENE_FLAG_SCRIPT_3_PAUSED_LONG
+	bl ClearCutsceneFlag
+	mov r0, #CUTSCENE_FLAG_SCRIPT_4_PAUSED_LONG
+	bl ClearCutsceneFlag
 .doneCutsceneIteration
 	pop {r4,r5}
 	mov r8, r4
@@ -5540,38 +5946,38 @@ runCutscene_803851C:
 	thumb_func_end runCutscene_803851C
 
 	thumb_local_start
-cutscene_setFlag0x2c_80385C0:
+SetCutsceneFlag:
 	push {r1}
 	mov r1, #1
 	lsl r1, r0
-	ldr r0, [r5,#oCutsceneState_Flag_2c]
+	ldr r0, [r5,#oCutsceneState_CutsceneFlags]
 	orr r0, r1
-	str r0, [r5,#oCutsceneState_Flag_2c]
+	str r0, [r5,#oCutsceneState_CutsceneFlags]
 	pop {r1}
 	mov pc, lr
-	thumb_func_end cutscene_setFlag0x2c_80385C0
+	thumb_func_end SetCutsceneFlag
 
 	thumb_local_start
-cutscene_clearFlag0x2c_80385D0:
+ClearCutsceneFlag:
 	push {r1}
 	mov r1, #1
 	lsl r1, r0
-	ldr r0, [r5,#oCutsceneState_Flag_2c]
+	ldr r0, [r5,#oCutsceneState_CutsceneFlags]
 	bic r0, r1
-	str r0, [r5,#oCutsceneState_Flag_2c]
+	str r0, [r5,#oCutsceneState_CutsceneFlags]
 	pop {r1}
 	mov pc, lr
-	thumb_func_end cutscene_clearFlag0x2c_80385D0
+	thumb_func_end ClearCutsceneFlag
 
 	thumb_local_start
-cutscene_testFlag0x2c_80385E0:
+TestCutsceneFlag:
 	push {r1}
 	mov r1, #1
 	lsl r1, r0
-	ldr r0, [r5,#oCutsceneState_Flag_2c]
+	ldr r0, [r5,#oCutsceneState_CutsceneFlags]
 	tst r0, r1
 	pop {r1}
 	mov pc, lr
 	// file boundary?
 	.byte 0, 0
-	thumb_func_end cutscene_testFlag0x2c_80385E0
+	thumb_func_end TestCutsceneFlag

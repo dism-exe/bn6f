@@ -15962,7 +15962,7 @@ loc_813863A:
 	bl uncompSprite_8002906
 	ldr r0, off_8138668 // =off_813866C 
 	ldr r0, [r0,r4]
-	bl npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
+	bl npc_freeAllObjectsThenSpawnObjectsFromList
 	mov r0, #0x7c 
 	mov r1, #8
 	bl SetScreenFade // (int a1, int a2) -> void

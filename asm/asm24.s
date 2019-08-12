@@ -275,7 +275,7 @@ loc_808C656:
 	ldrh r1, [r5,r4]
 	lsl r1, r1, #0x10
 	mov r2, #0
-	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
+	bl owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
 	add r4, #2
 	ldrh r0, [r5,r4]
 	bl SetOWPlayerFacingDirection

@@ -20406,8 +20406,8 @@ map_8030A30:
 	.pool
 	thumb_func_end map_8030A30
 
-	thumb_func_start npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
-npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20:
+	thumb_func_start npc_freeAllObjectsThenSpawnObjectsFromList
+npc_freeAllObjectsThenSpawnObjectsFromList:
 	push {r4-r6,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
@@ -20430,7 +20430,7 @@ npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20:
 	b .loop
 .done
 	pop {r4-r6,pc}
-	thumb_func_end npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
+	thumb_func_end npc_freeAllObjectsThenSpawnObjectsFromList
 
 	thumb_local_start
 npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c:

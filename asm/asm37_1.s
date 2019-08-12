@@ -3489,7 +3489,7 @@ sub_8143C62:
 	ldr r1, off_8143C7C // =off_8143C80 
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
-	bl npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
+	bl npc_freeAllObjectsThenSpawnObjectsFromList
 	movflag EVENT_1721
 	bl SetEventFlagFromImmediate
 	pop {r4-r7,pc}

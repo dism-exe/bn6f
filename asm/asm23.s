@@ -922,7 +922,7 @@ sub_8089A10:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	str r0, [r5,#0x3c]
-	bl cutsceneCamera_setCutsceneCameraScript_8036f98
+	bl SetCutsceneCameraScript
 	mov r0, #1
 	strb r0, [r5,#0x13]
 	mov r0, #0x3c 
@@ -1276,7 +1276,7 @@ sub_8089CC4:
 	bl sub_81429CA
 	ldr r0, off_8089CD8 // =byte_8089480
 	str r0, [r5,#0x3c]
-	bl cutsceneCamera_setCutsceneCameraScript_8036f98
+	bl SetCutsceneCameraScript
 	mov r0, #1
 	strb r0, [r5,#0x13]
 	pop {r4-r7,pc}
@@ -1288,7 +1288,7 @@ sub_8089CDC:
 	push {r4-r7,lr}
 	ldr r0, off_8089CF4 // =byte_808948A
 	str r0, [r5,#0x3c]
-	bl cutsceneCamera_setCutsceneCameraScript_8036f98
+	bl SetCutsceneCameraScript
 	mov r0, #1
 	strb r0, [r5,#0x13]
 	bl sub_8089D0E

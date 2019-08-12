@@ -833,7 +833,7 @@ int sprite_hasShadow()
 
 
 // 0x8002e52
-int sub_8002E52()
+int sprite_removeShadow()
 {
     int v0; // r5
     unsigned int v1; // r3

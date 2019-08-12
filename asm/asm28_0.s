@@ -1269,13 +1269,13 @@ loc_809A586:
 	cmp r0, #0xff
 	beq loc_809A59E
 	mov r1, #1
-	bl sub_803CD98
+	bl GiveItem
 	add r6, #1
 	b loc_809A586
 loc_809A596:
 	mov r0, r2
 	mov r1, #1
-	bl sub_803CD98
+	bl GiveItem
 loc_809A59E:
 	mov r0, #0x38 
 	mov r1, #0x8c
@@ -1965,7 +1965,7 @@ loc_809ABC8:
 	push {r2}
 	mov r0, r2
 	mov r1, #1
-	bl sub_803CD98
+	bl GiveItem
 	pop {r0}
 	bl sub_809AC48
 	mov r1, #3
@@ -1973,7 +1973,7 @@ loc_809ABC8:
 loc_809ABDC:
 	mov r0, r2
 	mov r1, #1
-	bl sub_803CD98
+	bl GiveItem
 	tst r0, r0
 	bne loc_809ABEE
 	mov r0, #0x11
@@ -3526,7 +3526,7 @@ sub_809C7A0:
 	strb r2, [r5,#0x13]
 	str r1, [r5,#0x3c]
 	mov r0, r1
-	bl cutsceneCamera_setCutsceneCameraScript_8036f98
+	bl SetCutsceneCameraScript
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -3543,7 +3543,7 @@ sub_809C7FC:
 	ldr r1, [r3,r1]
 	mov r2, #8
 	ldr r2, [r3,r2]
-	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
+	bl owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
 	mov r0, #0
 	pop {r4-r7,pc}
 	thumb_func_end sub_809C7FC
@@ -4555,11 +4555,11 @@ sub_809D348:
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
-	ldrb r0, [r5,#0xc]
+	ldrb r0, [r5,#oOWPlayerObject_wallCollision_0c]
 	tst r0, r0
 	beq loc_809D3BC
 	bl sub_809E3D6
-	mov r0, #0x1c
+	mov r0, #oOWPlayerObject_Coords
 	add r0, r0, r5
 	bl sub_8030B6A
 	tst r0, r0
@@ -4768,7 +4768,7 @@ sub_809D560:
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_GameStatePtr]
 	ldrb r0, [r6,#oGameState_MapGroup]
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	blt loc_809D572
 	ldrb r1, [r7,#oS2000aa0_Unk_03] // (byte_2000AA3 - 0x2000aa0)
 loc_809D572:
@@ -4799,7 +4799,7 @@ loc_809D592:
 	ldrb r0, [r7]
 	strb r0, [r5,#oOWPlayerObject_AnimationSelect]
 	mov r0, #4
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oOWPlayerObject_Unk_0a]
 	pop {pc}
 off_809D5AC: .word off_809D5B0
 off_809D5B0: .word byte_809CF5C
@@ -6098,10 +6098,10 @@ locret_809E0FA:
 	thumb_func_start owPlayer_809E0FC
 owPlayer_809E0FC:
 	ldr r3, off_809E138 // =eStruct200ace0 
-	mov r0, #1
+	mov r0, #TRUE
 	strb r0, [r3,#oS200ace0_fixOWPlayerAnim_15] // (byte_200ACF5 - 0x200ace0)
 	mov r0, #0
-	str r0, [r3,#oS200ace0_Unk_18] // (dword_200ACF8 - 0x200ace0)
+	str r0, [r3,#oS200ace0_Unk_18_1a] // (dword_200ACF8 - 0x200ace0)
 	str r0, [r3,#oS200ace0_Unk_20] // (dword_200AD00 - 0x200ace0)
 	ldr r1, off_809E110 // =byte_809CF5C
 	str r1, [r3,#oS200ace0_Unk_20] // (dword_200AD00 - 0x200ace0)
@@ -6110,16 +6110,16 @@ owPlayer_809E0FC:
 off_809E110: .word byte_809CF5C
 	thumb_func_end owPlayer_809E0FC
 
-	thumb_func_start sub_809E114
-sub_809E114:
+	thumb_func_start owPlayer_809E114
+owPlayer_809E114:
 	ldr r3, off_809E138 // =eStruct200ace0 
+	mov r0, #FALSE
+	strb r0, [r3,#oS200ace0_fixOWPlayerAnim_15] // (byte_200ACF5 - 0x200ace0)
 	mov r0, #0
-	strb r0, [r3,#0x15] // (byte_200ACF5 - 0x200ace0)
-	mov r0, #0
-	str r0, [r3,#0x18] // (dword_200ACF8 - 0x200ace0)
-	str r0, [r3,#0x20] // (dword_200AD00 - 0x200ace0)
+	str r0, [r3,#oS200ace0_Unk_18_1a] // (dword_200ACF8 - 0x200ace0)
+	str r0, [r3,#oS200ace0_Unk_20] // (dword_200AD00 - 0x200ace0)
 	mov pc, lr
-	thumb_func_end sub_809E114
+	thumb_func_end owPlayer_809E114
 
 	thumb_func_start owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
 owPlayer_unlockPlayerAfterNonNPCDialogue_809E122:
@@ -6178,8 +6178,8 @@ sub_809E168:
 off_809E184: .word eStruct200ace0
 	thumb_func_end sub_809E168
 
-	thumb_func_start owPlayer_indirectlySetPlayerCoordsMaybe_809e188
-owPlayer_indirectlySetPlayerCoordsMaybe_809e188:
+	thumb_func_start owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
+owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188:
 	push {r7}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
@@ -6203,7 +6203,7 @@ owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4:
 	str r2, [r3,#oS200ace0_PlayerZ] // (dword_200ACF0 - 0x200ace0)
 	mov pc, lr
 	thumb_func_end owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4
-	thumb_func_end owPlayer_indirectlySetPlayerCoordsMaybe_809e188
+	thumb_func_end owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
 
 	thumb_func_start ReadOWPlayerObjectCoords
 ReadOWPlayerObjectCoords:
@@ -6238,8 +6238,8 @@ sub_809E1CA:
 	mov pc, lr
 	thumb_func_end sub_809E1CA
 
-	thumb_func_start owPlayer_copyCoordsToNextCoordsThenAddOffsetToCoords_809e1d8
-owPlayer_copyCoordsToNextCoordsThenAddOffsetToCoords_809e1d8:
+	thumb_func_start owPlayer_copyCoordsToNextCoordsAddOffsetToCoordsThenOffsetS200ace0Coords_809e1d8
+owPlayer_copyCoordsToNextCoordsAddOffsetToCoordsThenOffsetS200ace0Coords_809e1d8:
 	push {r7}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -6260,7 +6260,7 @@ owPlayer_copyCoordsToNextCoordsThenAddOffsetToCoords_809e1d8:
 	add r3, r3, r2
 	str r3, [r7,#oOWPlayerObject_Z]
 	pop {r7}
-	thumb_func_end owPlayer_copyCoordsToNextCoordsThenAddOffsetToCoords_809e1d8
+	thumb_func_end owPlayer_copyCoordsToNextCoordsAddOffsetToCoordsThenOffsetS200ace0Coords_809e1d8
 
 	thumb_func_start owPlayer_offsetS200ace0Coords_809e1fa
 owPlayer_offsetS200ace0Coords_809e1fa:
@@ -6299,45 +6299,45 @@ returnZero_809E228:
 	.word eStruct200ace0
 	thumb_func_end returnZero_809E228
 
-	thumb_func_start sub_809E230
-sub_809E230:
+	thumb_func_start owPlayer_setInteractionLocked_809e230
+owPlayer_setInteractionLocked_809e230:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
-	mov r0, #1
-	strb r0, [r3,#0x17]
+	mov r0, #TRUE
+	strb r0, [r3,#oOWPlayerObject_InteractionLocked]
 	mov pc, lr
-	thumb_func_end sub_809E230
+	thumb_func_end owPlayer_setInteractionLocked_809e230
 
-	thumb_func_start sub_809E23C
-sub_809E23C:
+	thumb_func_start owPlayer_clearInteractionLocked_809e23c
+owPlayer_clearInteractionLocked_809e23c:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
-	mov r0, #0
-	strb r0, [r3,#0x17]
+	mov r0, #FALSE
+	strb r0, [r3,#oOWPlayerObject_InteractionLocked]
 	mov pc, lr
-	thumb_func_end sub_809E23C
+	thumb_func_end owPlayer_clearInteractionLocked_809e23c
 
-	thumb_func_start sub_809E248
-sub_809E248:
+	thumb_func_start owPlayer_enableWallCollision_809e248
+owPlayer_enableWallCollision_809e248:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
-	mov r0, #1
-	strb r0, [r3,#0xc]
+	mov r0, #TRUE
+	strb r0, [r3,#oOWPlayerObject_wallCollision_0c]
 	mov pc, lr
-	thumb_func_end sub_809E248
+	thumb_func_end owPlayer_enableWallCollision_809e248
 
-	thumb_func_start sub_809E254
-sub_809E254:
+	thumb_func_start owPlayer_disableWallCollision_809e254
+owPlayer_disableWallCollision_809e254:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
-	mov r0, #0
-	strb r0, [r3,#0xc]
+	mov r0, #FALSE
+	strb r0, [r3,#oOWPlayerObject_wallCollision_0c]
 	mov pc, lr
-	thumb_func_end sub_809E254
+	thumb_func_end owPlayer_disableWallCollision_809e254
 
 	thumb_func_start owPlayer_writeLayerIndexOverride_809e260
 owPlayer_writeLayerIndexOverride_809e260:
@@ -6348,45 +6348,45 @@ owPlayer_writeLayerIndexOverride_809e260:
 	mov pc, lr
 	thumb_func_end owPlayer_writeLayerIndexOverride_809e260
 
-	thumb_func_start sub_809E26A
-sub_809E26A:
+	thumb_func_start owPlayer_clearLayerIndexOverride_809e26a
+owPlayer_clearLayerIndexOverride_809e26a:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #0
-	strb r0, [r3,#0x16]
+	strb r0, [r3,#oOWPlayerObject_LayerIndexOverride]
 	mov pc, lr
-	thumb_func_end sub_809E26A
+	thumb_func_end owPlayer_clearLayerIndexOverride_809e26a
 
-	thumb_func_start sub_809E276
-sub_809E276:
+	thumb_func_start owPlayer_call_sprite_noShadow_809e276
+owPlayer_call_sprite_noShadow_809e276:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sprite_noShadow // () -> void
 	pop {r5,pc}
-	thumb_func_end sub_809E276
+	thumb_func_end owPlayer_call_sprite_noShadow_809e276
 
-	thumb_func_start sub_809E284
-sub_809E284:
+	thumb_func_start owPlayer_call_sprite_hasShadow_809e284
+owPlayer_call_sprite_hasShadow_809e284:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sprite_hasShadow
 	pop {r5,pc}
-	thumb_func_end sub_809E284
+	thumb_func_end owPlayer_call_sprite_hasShadow_809e284
 
-	thumb_func_start sub_809E292
-sub_809E292:
+	thumb_func_start owPlayer_removeShadow_809e292
+owPlayer_removeShadow_809e292:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
-	bl sub_8002E52
+	bl sprite_removeShadow
 	pop {r5,pc}
-	thumb_func_end sub_809E292
+	thumb_func_end owPlayer_removeShadow_809e292
 
 	thumb_func_start owPlayer_setPalette_809e2a0
 owPlayer_setPalette_809e2a0:
@@ -6675,29 +6675,29 @@ getOWPlayerSpriteFrameParameters_809E434:
 	pop {r5,pc}
 	thumb_func_end getOWPlayerSpriteFrameParameters_809E434
 
-	thumb_func_start sub_809E442
-sub_809E442:
+	thumb_func_start owPlayer_makeVisible_809e442
+owPlayer_makeVisible_809e442:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
-	ldrb r0, [r3]
-	mov r1, #2
+	ldrb r0, [r3,#oOWPlayerObject_Flags]
+	mov r1, #OBJECT_FLAG_VISABLE
 	orr r0, r1
-	strb r0, [r3]
+	strb r0, [r3,#oOWPlayerObject_Flags]
 	mov pc, lr
-	thumb_func_end sub_809E442
+	thumb_func_end owPlayer_makeVisible_809e442
 
-	thumb_func_start sub_809E452
-sub_809E452:
+	thumb_func_start owPlayer_makeInvisible_809e452
+owPlayer_makeInvisible_809e452:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	ldrb r0, [r3]
-	mov r1, #2
+	mov r1, #OBJECT_FLAG_VISABLE
 	bic r0, r1
 	strb r0, [r3]
 	mov pc, lr
-	thumb_func_end sub_809E452
+	thumb_func_end owPlayer_makeInvisible_809e452
 
 	thumb_func_start sub_809E462
 sub_809E462:
@@ -6750,18 +6750,18 @@ owPlayer_setMosaicScalingParameters_8002c7a_809e4a0:
 	pop {r5,pc}
 	thumb_func_end owPlayer_setMosaicScalingParameters_8002c7a_809e4a0
 
-	thumb_func_start sub_809E4AE
-sub_809E4AE:
+	thumb_func_start owPlayer_809E4AE
+owPlayer_809E4AE:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sub_8002CCE
 	pop {r5,pc}
-	thumb_func_end sub_809E4AE
+	thumb_func_end owPlayer_809E4AE
 
-	thumb_func_start sub_809E4BC
-sub_809E4BC:
+	thumb_func_start owPlayer_toggleUsingCopybot_809e4bc
+owPlayer_toggleUsingCopybot_809e4bc:
 	push {r4-r7,lr}
 	movflag EVENT_COPYBOT_ACTIVE
 	bl ToggleEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -6778,13 +6778,13 @@ loc_809E4DA:
 	mov r1, #0x18
 	mov r2, r4
 	bl sprite_load // (int a1, int a2, int a3) ->
-	ldrb r0, [r5,#0x14]
+	ldrb r0, [r5,#oOWPlayerObject_AnimationSelect]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
 	bl sprite_update
 	pop {r4-r7,pc}
-	thumb_func_end sub_809E4BC
+	thumb_func_end owPlayer_toggleUsingCopybot_809e4bc
 
 	thumb_local_start
 sub_809E4F8:

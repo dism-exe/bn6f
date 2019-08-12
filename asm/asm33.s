@@ -1908,7 +1908,7 @@ sub_81242D8:
 	strb r0, [r5,#2]
 	ldrh r0, [r5,#0x10]
 	mov r1, #1
-	bl sub_803CE08
+	bl TakeItem
 	bl sub_8124384
 	ldrb r0, [r5,#0xc]
 	sub r0, #1
@@ -1930,7 +1930,7 @@ sub_8124308:
 	bne locret_812433E
 	ldrh r0, [r5,#0x10]
 	mov r1, #1
-	bl sub_803CE08
+	bl TakeItem
 	bl sub_8124384
 	ldrb r0, [r5,#0xc]
 	sub r0, #1

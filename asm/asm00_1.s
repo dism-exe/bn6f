@@ -1245,20 +1245,20 @@ locret_80039CA:
 	pop {r4-r7,pc}
 	thumb_func_end sub_80039AA
 
-	thumb_func_start Is_eStruct2000780_Initialized
-Is_eStruct2000780_Initialized:
+	thumb_func_start Is_eScenarioEffectState2000780_Initialized
+Is_eScenarioEffectState2000780_Initialized:
 	ldr r1, off_80039F0 // =eScenarioEffectState2000780
 	ldrb r0, [r1]
 	tst r0, r0
 	mov pc, lr
-	thumb_func_end Is_eStruct2000780_Initialized
+	thumb_func_end Is_eScenarioEffectState2000780_Initialized
 
 	thumb_func_start sub_80039D4
 sub_80039D4:
 	push {r4-r7,lr}
 	mov r7, r0
 	mov r4, #0
-	bl Is_eStruct2000780_Initialized
+	bl Is_eScenarioEffectState2000780_Initialized
 	beq loc_80039EA
 	ldr r0, off_80039F0 // =eScenarioEffectState2000780
 	ldrb r0, [r0,#0x1] // (byte_2000781 - 0x2000780)

@@ -4624,9 +4624,9 @@ signed int sub_803813E()
     ReadMapScriptByte(2, v0);
     ReadMapScriptByte(3, v0);
     if ( ReadMapScriptByte(1, v0) == 1 )
-        sub_803CE08(v1, v2);
+        TakeItem(v1, v2);
     else
-        sub_803CD98(v1, v2);
+        GiveItem(v1, v2);
     return 1;
 }
 
@@ -11082,7 +11082,7 @@ int __fastcall sub_803CD74(int a1, int a2, int a3, int a4)
 
 
 // 0x803cd98
-signed int __fastcall sub_803CD98(signed int a1, int a2)
+signed int __fastcall GiveItem(signed int a1, int a2)
 {
     Toolkit *toolkit; // r10
     _BYTE *v3; // r2
@@ -11143,12 +11143,12 @@ signed int __fastcall sub_803CDF8(signed int a1, int a2)
     int v2; // r10
 
     *(*(v2 + oToolkit_Unk2003134_Ptr) + a1) = 0;
-    return sub_803CD98(a1, a2);
+    return GiveItem(a1, a2);
 }
 
 
 // 0x803ce08
-signed int __fastcall sub_803CE08(int a1, int a2)
+signed int __fastcall TakeItem(int a1, int a2)
 {
     int v2; // r10
     int v3; // r2
@@ -11528,7 +11528,7 @@ signed int __fastcall GiveNaviCustPrograms(int a1, int a2, int a3)
 
     v3 = a3;
     v4 = sub_803D148(a1, a2);
-    return sub_803CD98(v4, v3);
+    return GiveItem(v4, v3);
 }
 
 
@@ -11552,7 +11552,7 @@ signed int __fastcall TakeNaviCustPrograms(int a1, int a2, int a3)
 
     v3 = a3;
     v4 = sub_803D148(a1, a2);
-    return sub_803CE08(v4, v3);
+    return TakeItem(v4, v3);
 }
 
 

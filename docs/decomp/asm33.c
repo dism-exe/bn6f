@@ -1121,7 +1121,7 @@ void __noreturn sub_81242D8()
     if ( !chatbox_check_eFlags2009F38(128) )
     {
         *(v0 + 2) = 4;
-        sub_803CE08(*(v0 + 16), 1);
+        TakeItem(*(v0 + 16), 1);
         sub_8124384();
         v1 = *(v0 + 12) - 1;
         if ( v1 < *(v0 + 20) )
@@ -1142,7 +1142,7 @@ int sub_8124308()
     result = chatbox_check_eFlags2009F38(128);
     if ( v2 )
     {
-        sub_803CE08(*(v0 + 16), 1);
+        TakeItem(*(v0 + 16), 1);
         sub_8124384();
         v3 = *(v0 + 12) - 1;
         if ( v3 < *(v0 + 20) )

@@ -2343,7 +2343,7 @@ npc_spawnOverworldNPCObjectsForMap:
 	lsl r1, r1, #2
 	ldr r2, [r2,r0]
 	ldr r0, [r2,r1]
-	bl npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
+	bl npc_freeAllObjectsThenSpawnObjectsFromList
 .flagSet
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -2398,7 +2398,7 @@ locret_80351AE:
 npc_freeAllObjectsIfDifferentMap_80351b4:
 	push {r4-r7,lr}
 	ldr r0, =dword_80351C4
-	bl npc_freeAllObjectsThenSpawnObjectsFromGameStatePtr20
+	bl npc_freeAllObjectsThenSpawnObjectsFromList
 	pop {r4-r7,pc}
 	.balign 4, 0
 	.pool // 80351C0

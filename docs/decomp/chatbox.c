@@ -2496,7 +2496,7 @@ signed int __fastcall chatbox_F4_unk(int a1, int a2, int a3, int a4)
         case 0u:
             goto LABEL_13;
         case 1u:
-            sub_803CE08(v4[2], v4[3]);
+            TakeItem(v4[2], v4[3]);
             return 1;
         case 2u:
             PlaySoundEffect(115, v7, a3);
@@ -2512,7 +2512,7 @@ LABEL_13:
                 v8 = *(v5 + 84);
                 *(v5 + 76) = v8 - 113;
             }
-            sub_803CD98(v8, v4[3]);
+            GiveItem(v8, v4[3]);
             result = 1;
             break;
     }
@@ -3202,7 +3202,7 @@ signed int __fastcall sub_8042554(int a1, int a2, int a3)
     GetRNG2();
     v6 = *((*(v3 + 2) & v5) + v3 + 3);
     *(v4 + 76) = v6;
-    sub_803CD98(v6, 1);
+    GiveItem(v6, 1);
     v7 = v3 + *(v3 + 2) + 1 + 3;
     return 1;
 }
@@ -3552,7 +3552,7 @@ signed int chatbox_8042A9C()
         v3 = v0[2];
         if ( v3 == 255 )
             v3 = *(v1 + 84);
-        v4 = sub_803CD98(v3, v0[3]);
+        v4 = GiveItem(v3, v0[3]);
         if ( v4 != 1 )
         {
             v7 = v4;
@@ -3565,7 +3565,7 @@ signed int chatbox_8042A9C()
     }
     if ( v2 == 1 )
     {
-        v12 = sub_803CE08(v0[2], v0[3]) + 4;
+        v12 = TakeItem(v0[2], v0[3]) + 4;
         v8 = v0[v12];
 LABEL_18:
         if ( v8 != 255 )

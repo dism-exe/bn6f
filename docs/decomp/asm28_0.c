@@ -606,12 +606,12 @@ signed int sub_809A520()
                         v9 = byte_809A628[i];
                         if ( v9 == 255 )
                             break;
-                        sub_803CD98(v9, 1);
+                        GiveItem(v9, 1);
                     }
                 }
                 else
                 {
-                    sub_803CD98(v5, 1);
+                    GiveItem(v5, 1);
                 }
                 *(v0 + 140) = 56;
             }
@@ -1104,13 +1104,13 @@ signed int sub_809AB20()
             if ( v8 == 1 )
             {
                 v16 = v9;
-                sub_803CD98(v9, 1);
+                GiveItem(v9, 1);
                 v12 = sub_809AC48(v16);
                 v13 = 3;
             }
             else if ( v8 == 2 )
             {
-                if ( sub_803CD98(v9, 1) )
+                if ( GiveItem(v9, 1) )
                 {
                     v12 = 18;
                     v13 = 0;
@@ -3717,7 +3717,7 @@ int sub_809E0FC()
 
 
 // 0x809e114
-int sub_809E114()
+int owPlayer_809E114()
 {
     int result; // r0
 
@@ -3897,7 +3897,7 @@ int sub_809E228()
 
 
 // 0x809e230
-signed int sub_809E230()
+signed int owPlayer_setInteractionLocked_809e230()
 {
     int v0; // r10
     signed int result; // r0
@@ -3909,7 +3909,7 @@ signed int sub_809E230()
 
 
 // 0x809e23c
-int sub_809E23C()
+int owPlayer_clearInteractionLocked_809e23c()
 {
     int v0; // r10
     int result; // r0
@@ -3921,7 +3921,7 @@ int sub_809E23C()
 
 
 // 0x809e248
-signed int sub_809E248()
+signed int owPlayer_enableWallCollision_809e248()
 {
     int v0; // r10
     signed int result; // r0
@@ -3933,7 +3933,7 @@ signed int sub_809E248()
 
 
 // 0x809e254
-int sub_809E254()
+int owPlayer_disableWallCollision_809e254()
 {
     int v0; // r10
     int result; // r0
@@ -3955,7 +3955,7 @@ int __fastcall sub_809E260(int result)
 
 
 // 0x809e26a
-int sub_809E26A()
+int owPlayer_clearLayerIndexOverride_809e26a()
 {
     int v0; // r10
     int result; // r0
@@ -3967,7 +3967,7 @@ int sub_809E26A()
 
 
 // 0x809e276
-int sub_809E276()
+int owPlayer_call_sprite_noShadow_809e276()
 {
     int v0; // r10
 
@@ -3976,7 +3976,7 @@ int sub_809E276()
 
 
 // 0x809e284
-int sub_809E284()
+int owPlayer_call_sprite_hasShadow_809e284()
 {
     int v0; // r10
     int v1; // r5
@@ -3987,13 +3987,13 @@ int sub_809E284()
 
 
 // 0x809e292
-int sub_809E292()
+int owPlayer_removeShadow_809e292()
 {
     int v0; // r10
     int v1; // r5
 
     v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    return sub_8002E52();
+    return sprite_removeShadow();
 }
 
 
@@ -4260,7 +4260,7 @@ int sub_809E434()
 
 
 // 0x809e442
-int sub_809E442()
+int owPlayer_makeVisible_809e442()
 {
     int v0; // r10
     _BYTE *v1; // r3
@@ -4274,7 +4274,7 @@ int sub_809E442()
 
 
 // 0x809e452
-int sub_809E452()
+int owPlayer_makeInvisible_809e452()
 {
     int v0; // r10
     _BYTE *v1; // r3
@@ -4334,7 +4334,7 @@ signed int __fastcall sub_809E4A0(char a1)
 
 
 // 0x809e4ae
-signed int sub_809E4AE()
+signed int owPlayer_809E4AE()
 {
     int v0; // r10
     int v1; // r5
@@ -4345,7 +4345,7 @@ signed int sub_809E4AE()
 
 
 // 0x809e4bc
-void __noreturn sub_809E4BC()
+void __noreturn owPlayer_toggleUsingCopybot_809e4bc()
 {
     int v0; // r10
     Battle *v1; // r5

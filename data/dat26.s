@@ -473,7 +473,7 @@ sub_8093054::
 	bl sub_8093202
 	beq loc_8093070
 	bl sub_8093074
-	bl sub_809E254
+	bl owPlayer_disableWallCollision_809e254
 	mov r0, #0xc8
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -536,11 +536,11 @@ loc_80930DC::
 	strb r0, [r5,#9]
 	ble loc_8093100
 	bl sub_8093074
-	bl sub_809E254
+	bl owPlayer_disableWallCollision_809e254
 	ldr r0, [r7]
 	bl sub_8143EDC
 	bne loc_8093168
-	bl sub_809E248
+	bl owPlayer_enableWallCollision_809e248
 	b loc_8093168
 loc_8093100::
 	bl sub_8143EA4
@@ -559,7 +559,7 @@ loc_8093100::
 	bl sub_809323A
 	mov r0, #0x10
 	bl sub_80931FA
-	bl sub_809E248
+	bl owPlayer_enableWallCollision_809e248
 	mov r0, #0x28 
 	strb r0, [r5]
 	b loc_8093168
@@ -577,7 +577,7 @@ loc_809313A::
 loc_8093154::
 	bl GetOWPlayerFacingDirection
 	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
-	bl sub_809E248
+	bl owPlayer_enableWallCollision_809e248
 	mov r0, #0
 	strb r0, [r5,#8]
 	mov r0, #0
@@ -595,7 +595,7 @@ sub_809316C::
 	beq loc_809318C
 	bl GetOWPlayerFacingDirection
 	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
-	bl sub_809E248
+	bl owPlayer_enableWallCollision_809e248
 	mov r0, #1
 	strb r0, [r5,#8]
 	mov r0, #0
@@ -637,7 +637,7 @@ sub_80931CA::
 	beq loc_80931EA
 	bl GetOWPlayerFacingDirection
 	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
-	bl sub_809E248
+	bl owPlayer_enableWallCollision_809e248
 	mov r0, #1
 	strb r0, [r5,#8]
 	mov r0, #0

@@ -5,8 +5,8 @@
 	struct_org 0x3
 	u8 Unk_03 // loc=0x3
 	struct_org 0xc
-	u16 Unk_0c // loc=0xc
-	u16 Unk_0e // loc=0xe
+	u16 Unk_0c // shake timer // loc=0xc
+	u16 Unk_0e // shake type // loc=0xe
 	u16 Unk_10 // loc=0x10
 	u16 Unk_12 // loc=0x12
 	u32 Unk_14 // loc=0x14

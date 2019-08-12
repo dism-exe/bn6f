@@ -2881,7 +2881,7 @@ sub_80A6CFC:
 	mov r0, #1
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E52
+	bl sprite_removeShadow
 	bl ReadOWPlayerObjectCoords
 	str r0, [r5,#0xc]
 	str r1, [r5,#0x10]
@@ -6371,7 +6371,7 @@ sub_80A8988:
 	ldrb r0, [r5,#5]
 	tst r0, r0
 	bne loc_80A89B4
-	bl sub_8002E52
+	bl sprite_removeShadow
 	mov r0, #8
 	strb r0, [r5,#8]
 	mov r0, #SOUND_UNK_73
@@ -6382,7 +6382,7 @@ sub_80A8988:
 	bl SetEventFlag
 	b locret_80A89D6
 loc_80A89B4:
-	bl sub_8002E52
+	bl sprite_removeShadow
 	mov r0, #8
 	strb r0, [r5,#8]
 	mov r0, #0xa5
@@ -7915,7 +7915,7 @@ sub_80A95A8:
 	ldrb r0, [r5,#4]
 	strb r0, [r6,#4]
 	bl sub_80A9614
-	bl sub_8002E52
+	bl sprite_removeShadow
 	mov r0, #8
 	strb r0, [r5,#8]
 	ldr r0, off_80A95E8 // =0x1a4 
@@ -9165,7 +9165,7 @@ sub_80AA078:
 	ldrb r0, [r5,#6]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E52
+	bl sprite_removeShadow
 	ldrb r0, [r5,#7]
 	bl sub_8002E14
 	mov r0, #0

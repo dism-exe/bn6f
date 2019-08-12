@@ -964,7 +964,7 @@ off_8002D10: .word sub_30061E8+1
 	thumb_func_start sprite_makeScalable
 sprite_makeScalable:
 	push {r5,lr}
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_SpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
@@ -975,24 +975,24 @@ sprite_makeScalable:
 sub_8002D20:
 	push {r5,lr}
 loc_8002D22:
-	ldrb r0, [r5,#0x11]
+	ldrb r0, [r5,#oObjectSprite_Unk_11]
 	mov r1, #3
 	tst r1, r0
 	bne loc_8002D4E
 	bl sub_802FE48
 	cmp r0, #0xff
 	beq loc_8002D4E
-	ldrb r2, [r5,#0x11]
+	ldrb r2, [r5,#oObjectSprite_Unk_11]
 	mov r1, #3
 	orr r2, r1
-	strb r2, [r5,#0x11]
+	strb r2, [r5,#oObjectSprite_Unk_11]
 	push {r7}
-	ldrb r7, [r5,#0x13]
+	ldrb r7, [r5,#oObjectSprite_Unk_13]
 	mov r1, #0x3e
 	bic r7, r1
 	lsl r0, r0, #1
 	orr r7, r0
-	strb r7, [r5,#0x13]
+	strb r7, [r5,#oObjectSprite_Unk_13]
 	pop {r7}
 	mov r0, #1
 	pop {r5,pc}
@@ -1186,8 +1186,8 @@ sprite_hasShadow:
 	mov pc, lr
 	thumb_func_end sprite_hasShadow
 
-	thumb_func_start sub_8002E52
-sub_8002E52:
+	thumb_func_start sprite_removeShadow
+sprite_removeShadow:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1199,7 +1199,7 @@ sub_8002E52:
 	bic r0, r1
 	strb r0, [r3,#oObjectSprite_Unk_03]
 	mov pc, lr
-	thumb_func_end sub_8002E52
+	thumb_func_end sprite_removeShadow
 
 	thumb_local_start
 sub_8002E68:
@@ -1402,6 +1402,7 @@ sprite_getFlip:
 
 // () -> void
 	thumb_func_start sprite_noShadow
+// doesn't actually remove shadow
 sprite_noShadow:
 	ldrb r3, [r5,#oObjectHeader_SpriteOffset]
 	lsr r3, r3, #4

@@ -7764,8 +7764,8 @@ sub_803CD74:
 off_803CD94: .word 0x190
 	thumb_func_end sub_803CD74
 
-	thumb_func_start sub_803CD98
-sub_803CD98:
+	thumb_func_start GiveItem
+GiveItem:
 	push {r4-r7,lr}
 	push {r0,r1}
 	bl encryption_8006e3c
@@ -7815,7 +7815,7 @@ loc_803CDE4:
 	bl sub_803CFB0
 	pop {r0}
 	pop {r4-r7,pc}
-	thumb_func_end sub_803CD98
+	thumb_func_end GiveItem
 
 	thumb_func_start sub_803CDF8
 sub_803CDF8:
@@ -7824,12 +7824,12 @@ sub_803CDF8:
 	ldr r2, [r2,#oToolkit_KeyItemsPtr]
 	mov r3, #0
 	strb r3, [r2,r0]
-	bl sub_803CD98
+	bl GiveItem
 	pop {pc}
 	thumb_func_end sub_803CDF8
 
-	thumb_func_start sub_803CE08
-sub_803CE08:
+	thumb_func_start TakeItem
+TakeItem:
 	push {r4-r7,lr}
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_KeyItemsPtr]
@@ -7847,7 +7847,7 @@ loc_803CE20:
 	mov r0, r3
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-	thumb_func_end sub_803CE08
+	thumb_func_end TakeItem
 
 	thumb_func_start CheckKeyItem
 CheckKeyItem:
@@ -8256,7 +8256,7 @@ GiveNaviCustPrograms:
 	mov r4, r2
 	bl sub_803D148
 	mov r1, r4
-	bl sub_803CD98
+	bl GiveItem
 	pop {r4,pc}
 	thumb_func_end GiveNaviCustPrograms
 
@@ -8276,7 +8276,7 @@ TakeNaviCustPrograms:
 	mov r4, r2
 	bl sub_803D148
 	mov r1, r4
-	bl sub_803CE08
+	bl TakeItem
 	pop {r4,pc}
 	thumb_func_end TakeNaviCustPrograms
 

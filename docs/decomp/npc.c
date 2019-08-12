@@ -71,7 +71,7 @@ void npc_809E5E2()
                 if ( *(v0 + 96) & byte_100 )
                     sprite_hasShadow();
                 else
-                    sub_8002E52();
+                    sprite_removeShadow();
             }
             else
             {
@@ -1078,7 +1078,7 @@ int npc_809EFD8()
 
     *(v0 + 96) |= 0x80u;
     *(v0 + 96) &= 0xFFFFFEFF;
-    return sub_8002E52();
+    return sprite_removeShadow();
 }
 
 
@@ -1578,7 +1578,7 @@ int sub_809F37E()
 // 0x809f388
 int sub_809F388()
 {
-    return sub_8002E52();
+    return sprite_removeShadow();
 }
 
 

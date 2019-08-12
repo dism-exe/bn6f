@@ -1906,7 +1906,7 @@ signed int __noreturn sub_80A6CFC()
     sprite_load(v0, 128, 24, *(v1 + 134861608));
     sprite_setAnimation(v0, 1u);
     sprite_loadAnimationData(v0);
-    sub_8002E52();
+    sprite_removeShadow();
     *(v0 + 12) = sub_809E1AE();
     *(v0 + 20) = v2;
     sub_80A6E70(2);
@@ -4791,7 +4791,7 @@ unsigned int sub_80A8988()
     {
         if ( *(v0 + 5) )
         {
-            sub_8002E52();
+            sprite_removeShadow();
             *(v0 + 8) = 8;
             PlaySoundEffect(420, v5, v6);
             sub_81430B6(*(v0 + 4));
@@ -4800,7 +4800,7 @@ unsigned int sub_80A8988()
         }
         else
         {
-            sub_8002E52();
+            sprite_removeShadow();
             *(v0 + 8) = 8;
             PlaySoundEffect(115, v2, v3);
             v4 = sub_81430B6(*(v0 + 4));
@@ -6015,7 +6015,7 @@ int sub_80A95A8()
             SetEventFlagFromImmediate(11, 252);
             *(v1 + 4) = *(v0 + 4);
             sub_80A9614();
-            sub_8002E52();
+            sprite_removeShadow();
             *(v0 + 8) = 8;
             LODWORD(v2) = PlaySoundEffect(&loc_1A4, v4, v5);
         }
@@ -6907,7 +6907,7 @@ void __noreturn sub_80AA078()
     sprite_load(v0, 128, 28, *(v0 + 5));
     sprite_setAnimation(v0, *(v0 + 6));
     sprite_loadAnimationData(v0);
-    sub_8002E52();
+    sprite_removeShadow();
     sub_8002E14(*(v0 + 7));
     sprite_setPallete(0);
     *(v0 + 20) = sub_80AA134(*(v0 + 4));

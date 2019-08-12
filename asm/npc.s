@@ -102,7 +102,7 @@ loc_809E632:
 	bl sprite_hasShadow
 	b loc_809E644
 loc_809E640:
-	bl sub_8002E52
+	bl sprite_removeShadow
 loc_809E644:
 	mov r0, #0xff
 	strb r0, [r5,#0x15]
@@ -1379,7 +1379,7 @@ npc_809EFD8:
 	ldr r1, dword_809EFF8 // =0x100
 	bic r0, r1
 	str r0, [r5,#0x60]
-	bl sub_8002E52
+	bl sprite_removeShadow
 	add r6, #1
 	pop {pc}
 	.balign 4, 0x00
@@ -1944,7 +1944,7 @@ sub_809F37E:
 	thumb_local_start
 sub_809F388:
 	push {lr}
-	bl sub_8002E52
+	bl sprite_removeShadow
 	add r6, #1
 	pop {pc}
 	thumb_func_end sub_809F388

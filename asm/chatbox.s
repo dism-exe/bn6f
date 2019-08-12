@@ -4076,7 +4076,7 @@ loc_8041CA0:
 	str r1, [r5,#0x4c]
 loc_8041CB8:
 	ldrb r1, [r4,#3]
-	bl sub_803CD98
+	bl GiveItem
 	pop {r4,r5}
 	add r4, #4
 	mov r0, #1
@@ -4085,7 +4085,7 @@ loc_8041CC6:
 	push {r4,r5}
 	ldrb r0, [r4,#2]
 	ldrb r1, [r4,#3]
-	bl sub_803CE08
+	bl TakeItem
 	pop {r4,r5}
 	add r4, #4
 	mov r0, #1
@@ -5220,7 +5220,7 @@ sub_8042554:
 	ldrb r0, [r0]
 	str r0, [r5,#0x4c]
 	mov r1, #1
-	bl sub_803CD98
+	bl GiveItem
 	ldrb r0, [r4,#2]
 	add r0, #1
 	add r4, r4, r0
@@ -5777,7 +5777,7 @@ loc_8042AB0:
 	ldr r0, [r5,#0x54]
 loc_8042ABA:
 	ldrb r1, [r4,#3]
-	bl sub_803CD98
+	bl GiveItem
 	pop {r4,r5}
 	cmp r0, #1
 	beq loc_8042AD0
@@ -5793,7 +5793,7 @@ loc_8042AD6:
 	push {r4,r5}
 	ldrb r0, [r4,#2]
 	ldrb r1, [r4,#3]
-	bl sub_803CE08
+	bl TakeItem
 	pop {r4,r5}
 	add r0, #4
 	ldrb r1, [r4,r0]

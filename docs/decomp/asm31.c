@@ -7405,7 +7405,7 @@ void __noreturn sub_80BC19C()
 
     sprite_load(v0, 128, 4, 3);
     sprite_loadAnimationData(v0);
-    sub_8002E52();
+    sprite_removeShadow();
     v1 = sprite_getPallete(*(v0 + 76));
     sprite_setPallete(v1);
     *(v0 + 16) = 3;
@@ -7926,7 +7926,7 @@ signed int __noreturn sub_80BC670()
     sub_800FC9E(*(v0 + 4), 0);
     sprite_load(v0, 128, v1, v2);
     sprite_loadAnimationData(v0);
-    sub_8002E52();
+    sprite_removeShadow();
     *v0 |= 2u;
     *(v0 + 16) = 0;
     *(v0 + 17) = 0;
@@ -11222,7 +11222,7 @@ void __noreturn sub_80BE4F8()
     sprite_load(v0, 128, 4, 26);
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
-    sub_8002E52();
+    sprite_removeShadow();
     v1 = sprite_getPallete(*(v0 + 76));
     sprite_setPallete(v1);
     v2 = *off_80BE54C[*(v0 + 98)];
@@ -14650,7 +14650,7 @@ void __noreturn sub_80C04CC()
     sprite_load(v0, 128, 8, 11);
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
-    sub_8002E52();
+    sprite_removeShadow();
     *(v0 + 16) = 0;
     *(v0 + 17) = 0;
     sprite_setAnimation(v0, 0);
@@ -64109,7 +64109,7 @@ int __noreturn sub_80DEE8C()
     int v2; // r0
 
     sprite_load(v0, 128, 4, 26);
-    sub_8002E52();
+    sprite_removeShadow();
     *v0 &= 0xFDu;
     v1 = *(&dword_80DEEE4 + *(v0 + 110));
     *(v0 + 16) = v1;
@@ -68487,7 +68487,7 @@ void __noreturn sub_80E1B68()
     sprite_load(v0, 128, 8, *(v0 + 4));
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
-    sub_8002E52();
+    sprite_removeShadow();
     *(v0 + 16) = 0;
     *(v0 + 17) = 0;
     sprite_setAnimation(v0, 0);
@@ -71137,7 +71137,7 @@ void __noreturn sub_80E32D8()
     {
         sprite_hasShadow();
         if ( !*(v0 + 103) )
-            sub_8002E52();
+            sprite_removeShadow();
     }
     else
     {

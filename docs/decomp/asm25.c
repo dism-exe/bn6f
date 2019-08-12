@@ -11,7 +11,7 @@ signed int __fastcall sub_808F810(int a1)
     {
         byte_2000321 = -1;
         sub_808FA7C();
-        v1 = sub_809E254();
+        v1 = owPlayer_disableWallCollision_809e254();
         byte_2000312 = ++v2;
     }
     if ( v2 > 1 )
@@ -37,7 +37,7 @@ signed int __fastcall sub_808F810(int a1)
         sub_808F9C4(v1);
         if ( v3 )
         {
-            sub_809E248();
+            owPlayer_enableWallCollision_809e248();
             byte_2000312 = v2 + 1;
             sub_809E188(word_2000322 << 16, dword_2000324 << 16, 0x400000);
             sub_809E13C(byte_200031F);
@@ -66,7 +66,7 @@ void __noreturn sub_808F8AC()
     (loc_809E2FE)(byte_200032C);
     v2 = sub_809E1AE();
     sub_809E188(v2, SHIDWORD(v2), 0x400000);
-    sub_809E23C();
+    owPlayer_clearInteractionLocked_809e23c();
     (loc_809E306)(4);
 }
 
@@ -84,7 +84,7 @@ signed int __fastcall sub_808F900(int a1)
         ClearEventFlagFromImmediate(11, 228);
         ClearEventFlagFromImmediate(11, 229);
         sub_808FA7C();
-        a1 = sub_809E254();
+        a1 = owPlayer_disableWallCollision_809e254();
         byte_2000312 = ++v1;
     }
     if ( v1 <= 1 )
@@ -104,7 +104,7 @@ signed int __fastcall sub_808F900(int a1)
     sub_808F9C4(a1);
     if ( v2 )
     {
-        sub_809E248();
+        owPlayer_enableWallCollision_809e248();
         byte_2000312 = 0;
         sub_809E3B2();
         sub_809E188(word_2000322 << 16, dword_2000324 << 16, 0x400000);
@@ -123,7 +123,7 @@ void __noreturn sub_808F990()
     int v0; // r10
     Battle *v1; // r5
 
-    sub_809E230();
+    owPlayer_setInteractionLocked_809e230();
     sub_809E304();
     sub_809E312();
     v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
@@ -303,7 +303,7 @@ signed int __fastcall sub_808FB68(int a1)
     else
     {
         sub_809E188(v1, SHIDWORD(v1), 0);
-        sub_809E230();
+        owPlayer_setInteractionLocked_809e230();
         reqBBS_clearFlag_8140A0C();
         sub_809E3B2();
         PlaySoundEffect(430, v4, v5);

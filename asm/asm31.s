@@ -8439,7 +8439,7 @@ sub_80BC19C:
 	mov r2, #3
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E52
+	bl sprite_removeShadow
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getPalette
 	bl sprite_setPalette // (int pallete) -> void
@@ -9082,7 +9082,7 @@ sub_80BC670:
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E52
+	bl sprite_removeShadow
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -13073,7 +13073,7 @@ sub_80BE4F8:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
-	bl sub_8002E52
+	bl sprite_removeShadow
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getPalette
 	bl sprite_setPalette // (int pallete) -> void
@@ -17321,7 +17321,7 @@ sub_80C04CC:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_hasShadow
-	bl sub_8002E52
+	bl sprite_removeShadow
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurAnim]
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
@@ -17545,7 +17545,7 @@ sub_80C0680:
 	push {lr}
 	ldr r0, dword_80C07B0 // =0x1000000 
 	bl sub_801BE2A
-	bl sub_8002E52
+	bl sprite_removeShadow
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -79228,7 +79228,7 @@ sub_80DEE8C:
 	mov r1, #4
 	mov r2, #0x1a
 	bl sprite_load // (int a1, int a2, int a3) ->
-	bl sub_8002E52
+	bl sprite_removeShadow
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
@@ -84903,7 +84903,7 @@ sub_80E1B68:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_hasShadow
-	bl sub_8002E52
+	bl sprite_removeShadow
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurAnim]
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
@@ -87935,7 +87935,7 @@ loc_80E3340:
 	ldrb r0, [r7,#3]
 	tst r0, r0
 	bne loc_80E334E
-	bl sub_8002E52
+	bl sprite_removeShadow
 loc_80E334E:
 	ldr r0, [r5,#oBattleObject_ExtraVars+0x10]
 	bl sprite_setPalette // (int pallete) -> void

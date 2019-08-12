@@ -7,7 +7,7 @@
 	u8 JumptableIndex_09 // loc=0x9
 	u8 Unk_0a // loc=0xa
 	u8 Unk_0b // loc=0xb
-	struct_org 0xd
+	u8 wallCollision_0c // loc=0xc
 	u8 Unk_0d // loc=0xd
 	u8 Unk_0e // loc=0xe
 	u8 Unk_0f // loc=0xf

@@ -1789,7 +1789,7 @@ loc_8046F84:
 	bl sub_8047384
 	bne loc_8047000
 	mov r1, #1
-	bl sub_803CD98
+	bl GiveItem
 	mov r1, #9
 	cmp r0, #0
 	bne loc_804700E

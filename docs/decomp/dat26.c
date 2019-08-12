@@ -243,7 +243,7 @@ signed int __fastcall sub_8093054(int a1)
     if ( !v3 )
     {
         sub_8093074(v2);
-        sub_809E254();
+        owPlayer_disableWallCollision_809e254();
         PlaySoundEffect(455, v4, v5);
         *v1 = 36;
     }
@@ -321,16 +321,16 @@ LABEL_7:
                 v17 = sub_8143DBC();
                 sub_809323A(v17, v18, v13, v14);
                 sub_80931FA(16);
-                sub_809E248();
+                owPlayer_enableWallCollision_809e248();
                 *v1 = 40;
             }
             else
             {
                 sub_8093074(v11);
-                sub_809E254();
+                owPlayer_disableWallCollision_809e254();
                 sub_8143EDC(*v2);
                 if ( v4 )
-                    sub_809E248();
+                    owPlayer_enableWallCollision_809e248();
             }
         }
         return 1;
@@ -342,7 +342,7 @@ LABEL_7:
         {
             v21 = sub_809E2B8();
             sub_809E13C(v21);
-            sub_809E248();
+            owPlayer_enableWallCollision_809e248();
             v1[8] = 0;
             return 0;
         }
@@ -377,7 +377,7 @@ signed int __fastcall sub_809316C(int a1)
         return 1;
     v3 = sub_809E2B8();
     sub_809E13C(v3);
-    sub_809E248();
+    owPlayer_enableWallCollision_809e248();
     *(v1 + 8) = 1;
     return 0;
 }
@@ -425,7 +425,7 @@ signed int __fastcall sub_80931CA(int a1)
         return 1;
     v3 = sub_809E2B8();
     sub_809E13C(v3);
-    sub_809E248();
+    owPlayer_enableWallCollision_809e248();
     *(v1 + 8) = 1;
     return 0;
 }
