@@ -4656,7 +4656,7 @@ signed int sub_803816A()
 
 
 // 0x80381a0
-signed int MapScriptCmd_start_fixed_battle()
+signed int CutsceneCmd_start_fixed_battle()
 {
     int v0; // r7
     int v1; // r10
@@ -4680,7 +4680,7 @@ signed int MapScriptCmd_start_fixed_battle()
 
 
 // 0x80381e0
-signed int __fastcall MapScriptCmd_start_random_battle(int a1, int a2)
+signed int __fastcall CutsceneCmd_start_random_battle(int a1, int a2)
 {
     int v2; // r0
 
@@ -4692,7 +4692,7 @@ signed int __fastcall MapScriptCmd_start_random_battle(int a1, int a2)
 
 
 // 0x80381fa
-signed int MapScriptCmd_init_eStruct200a6a0()
+signed int MapScriptCutsceneCmd_init_eStruct200a6a0()
 {
     int v0; // r7
     int v1; // r4
@@ -4709,7 +4709,7 @@ signed int MapScriptCmd_init_eStruct200a6a0()
 
 
 // 0x803821e
-signed int __fastcall MapScriptCmd_run_eStruct200a6a0_callback(int a1, int a2, int a3, int a4)
+signed int __fastcall MapScriptCutsceneCmd_run_eStruct200a6a0_callback(int a1, int a2, int a3, int a4)
 {
     run_eStruct200a6a0_Callback_8002484(a1, a2, a3, a4);
     return 1;
@@ -4717,7 +4717,7 @@ signed int __fastcall MapScriptCmd_run_eStruct200a6a0_callback(int a1, int a2, i
 
 
 // 0x803822a
-signed int MapScriptCmd_do_camera_shake()
+signed int CutsceneCmd_do_camera_shake()
 {
     void *v0; // r7
     __int16 v1; // r4
@@ -4731,7 +4731,7 @@ signed int MapScriptCmd_do_camera_shake()
 
 
 // 0x8038246
-signed int MapScriptCmd_nop_8038246()
+signed int CutsceneCmd_nop_8038246()
 {
     void *v0; // r7
 
@@ -4741,28 +4741,28 @@ signed int MapScriptCmd_nop_8038246()
 
 
 // 0x8038256
-signed int MapScriptCmd_nop_8038256()
+signed int CutsceneCmd_nop_8038256()
 {
     return 1;
 }
 
 
 // 0x803825e
-signed int MapScriptCmd_nop_803825e()
+signed int CutsceneCmd_nop_803825e()
 {
     return 1;
 }
 
 
 // 0x8038266
-signed int MapScriptCmd_nop_8038266()
+signed int CutsceneCmd_nop_8038266()
 {
     return 1;
 }
 
 
 // 0x803826e
-signed int __noreturn MapScriptCmd_call_sub_8001974()
+signed int __noreturn CutsceneCmd_call_sub_8001974()
 {
     sub_8001974();
     return 1;
@@ -4770,7 +4770,7 @@ signed int __noreturn MapScriptCmd_call_sub_8001974()
 
 
 // 0x803827a
-signed int MapScriptCmd_init_scenario_effect()
+signed int MapScriptCutsceneCmd_init_scenario_effect()
 {
     void *v0; // r7
     unsigned __int8 v1; // r4
@@ -4785,7 +4785,7 @@ signed int MapScriptCmd_init_scenario_effect()
 
 
 // 0x803828e
-signed int __fastcall MapScriptCmd_end_scenario_effect(int a1, int a2, int a3, int a4)
+signed int __fastcall MapScriptCutsceneCmd_end_scenario_effect(int a1, int a2, int a3, int a4)
 {
     endScenarioEffectMaybe_8003940(a1, a2, a3, a4);
     return 1;
@@ -4793,7 +4793,7 @@ signed int __fastcall MapScriptCmd_end_scenario_effect(int a1, int a2, int a3, i
 
 
 // 0x803829a
-signed int MapScriptCmd_init_minigame_effect()
+signed int MapScriptCutsceneCmd_init_minigame_effect()
 {
     void *v0; // r7
     unsigned __int8 v1; // r4
@@ -4808,7 +4808,7 @@ signed int MapScriptCmd_init_minigame_effect()
 
 
 // 0x80382ae
-signed int __fastcall MapScriptCmd_end_minigame_effect(int a1, int a2, int a3, int a4)
+signed int __fastcall MapScriptCutsceneCmd_end_minigame_effect(int a1, int a2, int a3, int a4)
 {
     endMinigameEffectMaybe_8003a90(a1, a2, a3, a4);
     return 1;
@@ -4816,7 +4816,7 @@ signed int __fastcall MapScriptCmd_end_minigame_effect(int a1, int a2, int a3, i
 
 
 // 0x80382ba
-signed int MapScriptCmd_add_bbs_message_range()
+signed int MapScriptCutsceneCmd_add_bbs_message_range()
 {
     void *v0; // r7
     int v1; // r4
@@ -4838,7 +4838,7 @@ signed int MapScriptCmd_add_bbs_message_range()
 
 
 // 0x80382de
-signed int MapScriptCmd_encryption_cmd_80382de()
+signed int CutsceneCmd_encryption_cmd_80382de()
 {
     int v0; // r7
     int v1; // r4
@@ -4850,7 +4850,7 @@ signed int MapScriptCmd_encryption_cmd_80382de()
 
 
 // 0x80382f2
-signed int MapScriptCmd_navi_cmd_80340f6()
+signed int CutsceneCmd_navi_cmd_80340f6()
 {
     navi_80340F6();
     return 1;
@@ -4858,7 +4858,7 @@ signed int MapScriptCmd_navi_cmd_80340f6()
 
 
 // 0x80382fe
-signed int MapScriptCmd_change_navi_maybe_80382fe()
+signed int CutsceneCmd_change_navi_maybe_80382fe()
 {
     void *v0; // r7
     int v1; // r4
@@ -4874,7 +4874,7 @@ signed int MapScriptCmd_change_navi_maybe_80382fe()
 
 
 // 0x8038322
-signed int MapScriptCmd_add_mail_range()
+signed int MapScriptCutsceneCmd_add_mail_range()
 {
     void *v0; // r7
     int v1; // r4
@@ -4896,7 +4896,7 @@ signed int MapScriptCmd_add_mail_range()
 
 
 // 0x8038346
-signed int MapScriptCmd_cmd_8038346()
+signed int MapScriptCutsceneCmd_cmd_8038346()
 {
     int v0; // r7
     int v1; // r4
@@ -4910,7 +4910,7 @@ signed int MapScriptCmd_cmd_8038346()
 
 
 // 0x8038362
-signed int MapScriptCmd_give_or_take_zenny()
+signed int CutsceneCmd_give_or_take_zenny()
 {
     void *v0; // r7
 
@@ -4924,7 +4924,7 @@ signed int MapScriptCmd_give_or_take_zenny()
 
 
 // 0x8038386
-signed int MapScriptCmd_give_or_take_bugfrags()
+signed int CutsceneCmd_give_or_take_bugfrags()
 {
     void *v0; // r7
 
@@ -4938,7 +4938,7 @@ signed int MapScriptCmd_give_or_take_bugfrags()
 
 
 // 0x80383aa
-signed int MapScriptCmd_give_or_take_chips()
+signed int CutsceneCmd_give_or_take_chips()
 {
     void *v0; // r7
     int v1; // r0
@@ -4957,7 +4957,7 @@ signed int MapScriptCmd_give_or_take_chips()
 
 
 // 0x80383de
-signed int MapScriptCmd_give_or_take_navicust_programs()
+signed int CutsceneCmd_give_or_take_navicust_programs()
 {
     void *v0; // r7
     int v1; // r0
@@ -4976,7 +4976,7 @@ signed int MapScriptCmd_give_or_take_navicust_programs()
 
 
 // 0x8038412
-signed int MapScriptCmd_run_or_end_continuous_secondary_map_script_from_cutscene_script()
+signed int CutsceneCmd_cutscene_run_or_end_secondary_continuous_map_script()
 {
     void *v0; // r7
     int v1; // r3
@@ -4997,7 +4997,7 @@ signed int MapScriptCmd_run_or_end_continuous_secondary_map_script_from_cutscene
 
 
 // 0x803843c
-signed int MapScriptCmd_store_or_load_game_progress_buffer_maybe_803843c()
+signed int CutsceneCmd_store_or_load_game_progress_buffer_maybe_803843c()
 {
     void *v0; // r7
     int v1; // r10
@@ -5015,7 +5015,7 @@ signed int MapScriptCmd_store_or_load_game_progress_buffer_maybe_803843c()
 
 
 // 0x8038466
-signed int MapScriptCmd_flag_8038466()
+signed int CutsceneCmd_flag_cmd_8038466()
 {
     void *v0; // r7
     int v1; // r0
@@ -5029,7 +5029,7 @@ signed int MapScriptCmd_flag_8038466()
 
 
 // 0x8038484
-signed int MapScriptCmd_add_request_range()
+signed int MapScriptCutsceneCmd_add_request_range()
 {
     void *v0; // r7
     int v1; // r4
@@ -5051,7 +5051,7 @@ signed int MapScriptCmd_add_request_range()
 
 
 // 0x80384a8
-signed int MapScriptCmd_rush_food_80384A8()
+signed int MapScriptCutsceneCmd_rush_food_cmd_80384A8()
 {
     int v0; // r7
     int v1; // r10
@@ -5066,7 +5066,7 @@ signed int MapScriptCmd_rush_food_80384A8()
 
 
 // 0x80384d0
-signed int MapScriptCmd_set_beast_out_counter_to_3()
+signed int CutsceneCmd_set_beast_out_counter_to_3()
 {
     SetBeastOutCounterTo3();
     return 1;
@@ -5074,7 +5074,7 @@ signed int MapScriptCmd_set_beast_out_counter_to_3()
 
 
 // 0x80384dc
-signed int MapScriptCmd_jump_if_req_bbs_master_rank()
+signed int CutsceneCmd_jump_if_req_bbs_master_rank()
 {
     int v0; // r7
 
@@ -5085,7 +5085,7 @@ signed int MapScriptCmd_jump_if_req_bbs_master_rank()
 
 
 // 0x80384f8
-signed int MapScriptCmd_if_in_real_world_jump_else_jump()
+signed int CutsceneCmd_if_in_real_world_jump_else_jump()
 {
     int v0; // r7
     int v1; // r10
