@@ -512,7 +512,7 @@ void *sub_808FE74()
         }
         result = sub_8090104();
         if ( result )
-            result = init_s_02011C50_8036E90(result, v3, v4, v5);
+            result = StartCutscene(result, v3, v4, v5);
     }
     return result;
 }

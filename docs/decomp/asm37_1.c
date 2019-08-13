@@ -213,7 +213,7 @@ int __fastcall sub_8141A10(int a1, int a2, int a3, int a4)
                     JUMPOUT(&loc_8141ACA);
                 v10 = 7;
             }
-            result = init_s_02011C50_8036E90(byte_808A128, v10, a3, a4);
+            result = StartCutscene(byte_808A128, v10, a3, a4);
             if ( !v11 )
                 JUMPOUT(&loc_8141ABC);
         }
@@ -363,7 +363,7 @@ unsigned int sub_8141F7C()
     TestEventFlagFromImmediate(7, 2);
     if ( !v2 )
     {
-        init_s_02011C50_8036E90(byte_8089DF4, 0, v15, v16);
+        StartCutscene(byte_8089DF4, 0, v15, v16);
         ClearEventFlagFromImmediate(7, 2);
     }
     sub_809E3A2();
@@ -780,7 +780,7 @@ int sub_8142510()
         *(*(v0 + 60) + 21) = byte_8142610[GetSoulWeaponsMapIndex()];
         TestEventFlagFromImmediate(7, 68);
         if ( !v3 )
-            init_s_02011C50_8036E90(byte_8089448, 0, v12, v13);
+            StartCutscene(byte_8089448, 0, v12, v13);
         ClearEventFlagFromImmediate(7, 64);
         ClearEventFlagFromImmediate(7, 66);
         ClearEventFlagFromImmediate(7, 67);
@@ -824,7 +824,7 @@ LABEL_13:
         }
         sub_80357AE();
         if ( v3 )
-            init_s_02011C50_8036E90(byte_8089554, 0, v4, v5);
+            StartCutscene(byte_8089554, 0, v4, v5);
         goto LABEL_13;
     }
     if ( *(*(v0 + 60) + 17) )
@@ -832,10 +832,10 @@ LABEL_13:
 LABEL_14:
     TestEventFlagFromImmediate(7, 70);
     if ( !v2 )
-        init_s_02011C50_8036E90(byte_80893CC, 0, v6, v7);
+        StartCutscene(byte_80893CC, 0, v6, v7);
     TestEventFlagFromImmediate(7, 71);
     if ( !v2 )
-        init_s_02011C50_8036E90(&dword_8089128, 0, v8, v9);
+        StartCutscene(&dword_8089128, 0, v8, v9);
     ClearEventFlagFromImmediate(7, 70);
     return ClearEventFlagFromImmediate(7, 71);
 }
@@ -1652,7 +1652,7 @@ int sub_8142FC8()
             sub_80357AE();
             if ( v5 )
             {
-                init_s_02011C50_8036E90(byte_808C2F0, 0, v6, v7);
+                StartCutscene(byte_808C2F0, 0, v6, v7);
                 sub_81433F6(1);
             }
             ClearEventFlagFromImmediate(9, 98);
@@ -1663,7 +1663,7 @@ int sub_8142FC8()
     if ( v4 )
     {
         v8 = sub_8143088();
-        init_s_02011C50_8036E90(*(&off_8143078 + v8), 0, v9, v10);
+        StartCutscene(*(&off_8143078 + v8), 0, v9, v10);
 LABEL_20:
         ClearEventFlagFromImmediate(9, 98);
         ClearEventFlagFromImmediate(9, 99);
@@ -2192,7 +2192,7 @@ int sub_8143978()
         TestEventFlagFromImmediate(13, 54);
         if ( !v2 )
         {
-            init_s_02011C50_8036E90(byte_8093358, 0, v13, v14);
+            StartCutscene(byte_8093358, 0, v13, v14);
             sub_8143F38();
             ClearEventFlagFromImmediate(13, 54);
         }
@@ -2257,9 +2257,9 @@ int sub_8143A54()
                     v7 = sub_8143EA4();
                     sub_8143BB0(v7);
                     if ( v3 )
-                        init_s_02011C50_8036E90(byte_8092DE8, 0, v8, v9);
+                        StartCutscene(byte_8092DE8, 0, v8, v9);
                     else
-                        init_s_02011C50_8036E90(byte_80933B8, 0, v8, v9);
+                        StartCutscene(byte_80933B8, 0, v8, v9);
                 }
             }
             ClearEventFlagFromImmediate(13, 52);
@@ -2269,7 +2269,7 @@ int sub_8143A54()
     if ( sub_8143D4C() == v2 )
     {
         v10 = sub_8143B30();
-        init_s_02011C50_8036E90(dword_8143B1C[v10], 0, v11, v12);
+        StartCutscene(dword_8143B1C[v10], 0, v11, v12);
         if ( !v3 )
             goto LABEL_24;
     }
@@ -2277,7 +2277,7 @@ int sub_8143A54()
     if ( v3 )
     {
         v14 = sub_8143B30();
-        init_s_02011C50_8036E90(byte_809326C, v14, v15, v16);
+        StartCutscene(byte_809326C, v14, v15, v16);
 LABEL_24:
         ClearEventFlagFromImmediate(13, 52);
         result = ClearEventFlagFromImmediate(13, 53);

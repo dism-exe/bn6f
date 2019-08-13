@@ -3070,7 +3070,7 @@ void *sub_80059B4()
 
     ClearEventFlagFromImmediate(23, 3);
     SetEventFlagFromImmediate(23, 56);
-    return init_s_02011C50_8036E90(byte_8098A02, 0, v0, v1);
+    return StartCutscene(byte_8098A02, 0, v0, v1);
 }
 
 
@@ -3082,7 +3082,7 @@ void *sub_80059D0()
 
     SetEventFlagFromImmediate(23, 3);
     SetEventFlagFromImmediate(23, 56);
-    return init_s_02011C50_8036E90(byte_8098A78, 0, v0, v1);
+    return StartCutscene(byte_8098A78, 0, v0, v1);
 }
 
 
@@ -3093,14 +3093,14 @@ void *sub_80059EC()
     int v1; // r3
 
     ClearEventFlagFromImmediate(23, 3);
-    return init_s_02011C50_8036E90(byte_8098A2E, 0, v0, v1);
+    return StartCutscene(byte_8098A2E, 0, v0, v1);
 }
 
 
 // 0x8005a00
 void *__fastcall sub_8005A00(int a1, int a2, int a3, int a4)
 {
-    return init_s_02011C50_8036E90(byte_809B5AD, 0, a3, a4);
+    return StartCutscene(byte_809B5AD, 0, a3, a4);
 }
 
 
@@ -3112,7 +3112,7 @@ void *sub_8005A0C()
 
     ClearEventFlagFromImmediate(23, 3);
     SetEventFlagFromImmediate(23, 56);
-    return init_s_02011C50_8036E90(byte_8098B1C, 0, v0, v1);
+    return StartCutscene(byte_8098B1C, 0, v0, v1);
 }
 
 

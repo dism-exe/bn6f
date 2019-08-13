@@ -1505,9 +1505,9 @@ int sub_809B130()
     {
         TestEventFlagFromImmediate(23, 41);
         if ( v6 )
-            init_s_02011C50_8036E90(134841220, 134283266, v4, v5);
+            StartCutscene(134841220, 134283266, v4, v5);
         else
-            init_s_02011C50_8036E90(byte_809AFC0, 0, v4, v5);
+            StartCutscene(byte_809AFC0, 0, v4, v5);
     }
     return 0;
 }
@@ -2076,7 +2076,7 @@ LABEL_23:
                     if ( v7 < v10 )
                         PlaySoundEffect(105, v10, v8);
                     else
-                        init_s_02011C50_8036E90(byte_809C354, v6, v8, v9);
+                        StartCutscene(byte_809C354, v6, v8, v9);
                 }
             }
         }
@@ -2443,7 +2443,7 @@ void *sub_809CF2C()
     {
         result = reqBBS_81407D8();
         if ( result )
-            result = init_s_02011C50_8036E90(byte_809CEB4, eReqBBSGui.totalPointsIndex + 49, 14, v2);
+            result = StartCutscene(byte_809CEB4, eReqBBSGui.totalPointsIndex + 49, 14, v2);
     }
     return result;
 }

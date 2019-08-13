@@ -3548,7 +3548,7 @@ void *sub_80A7BC0()
                         {
                             SetEventFlagFromImmediate(23, 49);
                             v17 = sub_8142080();
-                            result = init_s_02011C50_8036E90(byte_8089DD8, v17, v18, v19);
+                            result = StartCutscene(byte_8089DD8, v17, v18, v19);
                         }
                     }
                 }
@@ -3685,13 +3685,13 @@ void *sub_80A7CFE()
                                 v13 = v2[9];
                                 if ( v0[5] == v13 )
                                 {
-                                    result = init_s_02011C50_8036E90(byte_8089E44, v0, v11, v12);
+                                    result = StartCutscene(byte_8089E44, v0, v11, v12);
                                 }
                                 else
                                 {
                                     result = sub_81420B0();
                                     if ( result == v13 )
-                                        result = init_s_02011C50_8036E90(byte_8089FD8, v0, v14, v15);
+                                        result = StartCutscene(byte_8089FD8, v0, v14, v15);
                                 }
                             }
                         }
@@ -5216,7 +5216,7 @@ int sub_80A8DB0()
         if ( result & 0x10000 )
         {
             v3 = sub_8143088();
-            init_s_02011C50_8036E90(134791957, v3, v4, v5);
+            StartCutscene(134791957, v3, v4, v5);
             PlaySoundEffect(290, v6, v7);
             sub_8143204(*(v0 + 4));
             result = sub_8143220(*(v0 + 4));

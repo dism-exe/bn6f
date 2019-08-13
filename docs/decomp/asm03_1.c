@@ -963,7 +963,7 @@ signed int sub_8034CB6()
                 v5 = *(v0 + oToolkit_GameStatePtr);
                 if ( *(v5 + oGameState_MapGroup) >= 128 )
                 {
-                    init_s_02011C50_8036E90(byte_80988E4, v2, v3, v4);
+                    StartCutscene(byte_80988E4, v2, v3, v4);
                 }
                 else
                 {
@@ -996,7 +996,7 @@ signed int sub_8034CB6()
                             v12 = *(*(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_64) + v16);
                             if ( v12 != 255 )
                             {
-                                init_s_02011C50_8036E90(byte_8098824, v12 | (v16 << 8), v13, v17);
+                                StartCutscene(byte_8098824, v12 | (v16 << 8), v13, v17);
                                 return 0;
                             }
                         }
@@ -1027,7 +1027,7 @@ signed int sub_8034D7C()
     TestEventFlagFromImmediate(23, 40);
     if ( !v1 )
         return 1;
-    init_s_02011C50_8036E90(byte_80991F4, v2, v3, v4);
+    StartCutscene(byte_80991F4, v2, v3, v4);
     return 0;
 }
 
@@ -1058,7 +1058,7 @@ signed int sub_8034DB0()
         return 1;
     if ( word_200AC84 )
     {
-        init_s_02011C50_8036E90(byte_809A8A8, v1, v2, v3);
+        StartCutscene(byte_809A8A8, v1, v2, v3);
         return 0;
     }
     if ( !tk->gamestate->unk_0E )
@@ -1069,7 +1069,7 @@ signed int sub_8034DB0()
         v6 = sub_8034E88(v6, 0);
         if ( zf )
         {
-            init_s_02011C50_8036E90(byte_8099EA0, v7, v8, v9);
+            StartCutscene(byte_8099EA0, v7, v8, v9);
             return 0;
         }
     }
@@ -1079,7 +1079,7 @@ signed int sub_8034DB0()
         v10 = sub_8034E88(v10, 1);
         if ( zf )
         {
-            init_s_02011C50_8036E90(byte_809AA34, v11, v12, v13);
+            StartCutscene(byte_809AA34, v11, v12, v13);
             return 0;
         }
     }
@@ -1089,7 +1089,7 @@ signed int sub_8034DB0()
     sub_8034E88(v14, 2);
     if ( !zf )
         return 1;
-    init_s_02011C50_8036E90(byte_809CAD8, v15, v16, v17);
+    StartCutscene(byte_809CAD8, v15, v16, v17);
     return 0;
 }
 
@@ -1190,7 +1190,7 @@ LABEL_14:
 LABEL_15:
                     v12 = (*(*v11[v7])[v8])[v9];
                     if ( v12 != 255 )
-                        result = init_s_02011C50_8036E90(byte_8098358, v12, v2, v3);
+                        result = StartCutscene(byte_8098358, v12, v2, v3);
                     return result;
                 }
             }
@@ -1224,7 +1224,7 @@ signed int __fastcall sub_8034F68(int a1)
                 v7 = &dword_2011EA0[v5];
                 result = *v7;
                 if ( *v7 )
-                    result = init_s_02011C50_8036E90(byte_8098384, *v7, v6, v7);
+                    result = StartCutscene(byte_8098384, *v7, v6, v7);
             }
         }
     }
@@ -1254,7 +1254,7 @@ unsigned int sub_8034FB8()
         TestEventFlagFromImmediate(1, 39);
         if ( !v2 )
             v3 = byte_80989C1;
-        init_s_02011C50_8036E90(v3, v4, v5, v6);
+        StartCutscene(v3, v4, v5, v6);
         ClearEventFlagFromImmediate(23, 3);
         result = ClearEventFlagFromImmediate(1, 39);
     }
@@ -1310,7 +1310,7 @@ signed int sub_8035054()
     TestEventFlagFromImmediate(23, 26);
     if ( v1 )
         return 1;
-    init_s_02011C50_8036E90(byte_809AE68, v2, v3, v4);
+    StartCutscene(byte_809AE68, v2, v3, v4);
     return 0;
 }
 
@@ -1329,7 +1329,7 @@ signed int sub_8035084()
     v1 = sub_8035756();
     if ( v0 )
         return 1;
-    init_s_02011C50_8036E90(byte_8098BB8, v1, v2, v3);
+    StartCutscene(byte_8098BB8, v1, v2, v3);
     return 0;
 }
 
@@ -1365,7 +1365,7 @@ signed int npc_80350BC()
             TestEventFlagFromImmediate(23, 8);
             if ( !v1 )
             {
-                init_s_02011C50_8036E90(byte_8099E04, v2, v3, v4);
+                StartCutscene(byte_8099E04, v2, v3, v4);
                 return 0;
             }
             v6 = *(v0 + oToolkit_Unk2001c04_Ptr);
@@ -1375,7 +1375,7 @@ signed int npc_80350BC()
                 ClearEventFlagFromImmediate(23, 10);
                 v9 = 1;
 LABEL_11:
-                init_s_02011C50_8036E90(byte_8099DC0, v9, v7, v8);
+                StartCutscene(byte_8099DC0, v9, v7, v8);
                 return 0;
             }
             TestEventFlagFromImmediate(23, 11);
@@ -1544,7 +1544,7 @@ int sub_8035274()
                             {
                                 TestEventFlag(v5[2]);
                                 if ( v2 )
-                                    return init_s_02011C50_8036E90(byte_80990B8, *i, v7, v8);
+                                    return StartCutscene(byte_80990B8, *i, v7, v8);
                             }
                         }
                         v5 += 3;
@@ -2542,7 +2542,7 @@ signed int __fastcall sub_8035E8E(int a1)
 
     ReadMapScriptWord(5, v1);
     v2 = ReadMapScriptWord(1, v1);
-    init_s_02011C50_8036E90(v2, v3, v4, v5);
+    StartCutscene(v2, v3, v4, v5);
     return 1;
 }
 
@@ -2887,7 +2887,7 @@ int __fastcall sub_8036E86(int result)
 
 
 // 0x8036e90
-void *__fastcall init_s_02011C50_8036E90(int a1, int a2, int a3, int a4)
+void *__fastcall StartCutscene(int a1, int a2, int a3, int a4)
 {
     int v4; // r10
     _DWORD *v5; // r5

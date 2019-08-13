@@ -742,7 +742,7 @@ loc_808FE90:
 	bl sub_8090104
 	cmp r0, #0
 	beq locret_808FE9C
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 locret_808FE9C:
 	pop {r4-r7,pc}
 	.balign 4, 0x00

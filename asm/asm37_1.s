@@ -244,7 +244,7 @@ loc_8141A5C:
 	mov r1, #7
 loc_8141A62:
 	ldr r0, off_8141A6C // =byte_808A128 
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	bne loc_8141ABC
 locret_8141A6A:
 	pop {r4-r7,pc}
@@ -552,7 +552,7 @@ loc_8141FE4:
 	beq loc_814201A
 	ldr r0, off_8142048 // =byte_8089DF4 
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	mov r0, #7
 	mov r1, #2
 	bl ClearEventFlagFromImmediate
@@ -1144,7 +1144,7 @@ loc_81425B4:
 	beq loc_81425D4
 	ldr r0, off_8142608 // =byte_8089448 
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 loc_81425D4:
 	mov r0, #7
 	mov r1, #0x40 
@@ -1207,7 +1207,7 @@ loc_814265E:
 	bne loc_814266C
 	ldr r0, off_81426B8 // =byte_8089554 
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 loc_814266C:
 	mov r0, #7
 	mov r1, #0x42 
@@ -1222,7 +1222,7 @@ loc_814267C:
 	beq loc_8142690
 	ldr r0, off_81426BC // =byte_80893CC 
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	beq loc_8142690
 loc_8142690:
 	mov r0, #7
@@ -1231,7 +1231,7 @@ loc_8142690:
 	beq loc_81426A4
 	ldr r0, off_81426C0 // =dword_8089128 
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	beq loc_81426A4
 loc_81426A4:
 	mov r0, #7
@@ -2379,7 +2379,7 @@ loc_8143024:
 	bne loc_8143038
 	ldr r0, off_8143080 // =byte_808C2F0 
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	mov r0, #1
 	bl sub_81433F6
 loc_8143038:
@@ -2397,7 +2397,7 @@ loc_8143048:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 loc_814305E:
 	mov r0, #9
 	mov r1, #0x62 
@@ -3212,7 +3212,7 @@ loc_8143A02:
 	beq loc_8143A2E
 	ldr r0, off_8143A50 // =byte_8093358 
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	bl sub_8143F38
 	mov r0, #0xd
 	mov r1, #0x36 
@@ -3277,12 +3277,12 @@ loc_8143A9A:
 	bne loc_8143ABE
 	ldr r0, off_8143B24 // =byte_8092DE8 
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	b loc_8143AC6
 loc_8143ABE:
 	ldr r0, off_8143B2C // =byte_80933B8 
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 loc_8143AC6:
 	mov r0, #0xd
 	mov r1, #0x34 
@@ -3299,7 +3299,7 @@ loc_8143AD6:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	bne loc_8143B04
 loc_8143AF0:
 	bl sub_8143F72
@@ -3307,7 +3307,7 @@ loc_8143AF0:
 	bl sub_8143B30
 	mov r1, r0
 	ldr r0, off_8143B28 // =byte_809326C 
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	bne loc_8143B04
 loc_8143B04:
 	mov r0, #0xd

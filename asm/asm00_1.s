@@ -4538,7 +4538,7 @@ sub_80059B4:
 	bl SetEventFlagFromImmediate
 	ldr r0, off_8005A78 // =byte_8098A02
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	pop {pc}
 	thumb_func_end sub_80059B4
 
@@ -4551,7 +4551,7 @@ sub_80059D0:
 	bl SetEventFlagFromImmediate
 	ldr r0, off_8005A80 // =byte_8098A78
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	pop {pc}
 	thumb_func_end sub_80059D0
 
@@ -4562,7 +4562,7 @@ sub_80059EC:
 	bl ClearEventFlagFromImmediate
 	ldr r0, off_8005A7C // =byte_8098A2E
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	pop {pc}
 	thumb_func_end sub_80059EC
 
@@ -4571,7 +4571,7 @@ sub_8005A00:
 	push {lr}
 	ldr r0, off_8005A84 // =byte_809B5AD
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	pop {pc}
 	thumb_func_end sub_8005A00
 
@@ -4584,7 +4584,7 @@ sub_8005A0C:
 	bl SetEventFlagFromImmediate
 	ldr r0, off_8005A88 // =byte_8098B1C
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	pop {pc}
 	thumb_func_end sub_8005A0C
 

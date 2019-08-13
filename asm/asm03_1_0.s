@@ -1841,7 +1841,7 @@ loc_8034CF6:
 	lsl r4, r4, #8
 	orr r1, r4
 	ldr r0, off_8034D60 // =byte_8098824
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034D44:
@@ -1850,7 +1850,7 @@ loc_8034D44:
 	b loc_8034D52
 loc_8034D4C:
 	ldr r0, off_8034D64 // =CutsceneScript_80988E4
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 loc_8034D52:
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -1879,7 +1879,7 @@ sub_8034D7C:
 	bl TestEventFlagFromImmediate
 	bne loc_8034DA4
 	ldr r0, off_8034DAC // =CutsceneScript_80991F4
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034DA4:
@@ -1899,7 +1899,7 @@ sub_8034DB0:
 	cmp r0, #0
 	beq loc_8034DCA
 	ldr r0, off_8034E30 // =byte_809A8A8
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034DCA:
@@ -1915,7 +1915,7 @@ loc_8034DCA:
 	bl sub_8034E88
 	bne loc_8034DEE
 	ldr r0, off_8034E2C // =byte_8099EA0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034DEE:
@@ -1926,7 +1926,7 @@ loc_8034DEE:
 	bl sub_8034E88
 	bne loc_8034E08
 	ldr r0, off_8034E34 // =byte_809AA34
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034E08:
@@ -1937,7 +1937,7 @@ loc_8034E08:
 	bl sub_8034E88
 	bne loc_8034E22
 	ldr r0, off_8034E38 // =byte_809CAD8
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034E22:
@@ -2090,7 +2090,7 @@ loc_8034F42:
 	cmp r1, #0xff
 	beq locret_8034F56
 	ldr r0, off_8034F64 // =byte_8098358
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 locret_8034F56:
 	pop {r4-r7,pc}
 off_8034F58: .word 0x16C0
@@ -2128,7 +2128,7 @@ sub_8034F68:
 	beq locret_8034FA8
 	ldr r0, off_8034FB0 // =byte_8098384
 	ldr r1, [r3]
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 locret_8034FA8:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -2164,7 +2164,7 @@ loc_8034FCE:
 	ldr r4, off_8035024 // =byte_80989C1
 loc_8034FEC:
 	mov r0, r4
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	movflag EVENT_1703
 	bl ClearEventFlagFromImmediate
 	mov r0, #1
@@ -2225,7 +2225,7 @@ sub_8035054:
 	bl TestEventFlagFromImmediate
 	beq loc_803507A
 	ldr r0, off_8035080 // =byte_809AE68
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_803507A:
@@ -2244,7 +2244,7 @@ sub_8035084:
 	beq loc_803509E
 	mov r1, r0
 	ldr r0, off_80350A4 // =byte_8098BB8
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_803509E:
@@ -2280,7 +2280,7 @@ npc_80350BC:
 	bl TestEventFlagFromImmediate
 	beq loc_80350E2
 	ldr r0, off_8035130 // =byte_8099E04
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	mov r0, #0
 	pop {r4,pc}
 loc_80350E2:
@@ -2308,7 +2308,7 @@ loc_8035102:
 	mov r1, #0
 loc_803511C:
 	ldr r0, off_803512C // =byte_8099DC0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	mov r0, #0
 	pop {r4,pc}
 loc_8035126:
@@ -2513,7 +2513,7 @@ loc_80352A6:
 	bne loc_80352CE
 	ldr r0, off_8035328 // =byte_80990B8
 	ldr r1, [r5]
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	b locret_80352D4
 loc_80352CE:
 	add r4, #6

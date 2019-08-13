@@ -3157,6 +3157,7 @@ off_8001B18: .word off_8001AB8
 	thumb_func_end sub_8001B0C
 
 	thumb_func_start sub_8001B1C
+// r0 struct format: word0 word4 word8 byte9 (multiple fields depending on command)
 sub_8001B1C:
 	push {r4-r7,lr}
 	mov r1, r8

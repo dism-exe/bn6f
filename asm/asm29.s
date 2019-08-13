@@ -4860,7 +4860,7 @@ sub_80A7BC0:
 	bl sub_8142080
 	mov r1, r0
 	ldr r0, off_80A7C54 // =byte_8089DD8
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 locret_80A7C3C:
 	pop {r4-r7,pc}
 	.byte 0, 0
@@ -4998,7 +4998,7 @@ sub_80A7CFE:
 	bne loc_80A7D60
 	ldr r0, off_80A7D88 // =byte_8089E44
 	mov r1, r5
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	b locret_80A7D70
 loc_80A7D60:
 	bl sub_81420B0
@@ -5006,7 +5006,7 @@ loc_80A7D60:
 	bne locret_80A7D70
 	ldr r0, off_80A7D8C // =byte_8089FD8
 	mov r1, r5
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 locret_80A7D70:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -6904,7 +6904,7 @@ sub_80A8DB0:
 	bl sub_8143088
 	mov r1, r0
 	ldr r0, dword_80A8DEC // =byte_808C2F0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	mov r0, #0x23 
 	add r0, #0xff
 	bl PlaySoundEffect

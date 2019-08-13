@@ -2498,12 +2498,12 @@ sub_809B130:
 	bne loc_809B15A
 	ldr r0, byte_809B16C // =0x84
 	ldr r1, byte_809B16C+4 // =0x2
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	b loc_809B162
 loc_809B15A:
 	ldr r0, off_809B168 // =byte_809AFC0
 	mov r1, #0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 loc_809B162:
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -3757,7 +3757,7 @@ loc_809C9CA:
 	blt loc_809CA20
 	ldr r0, off_809CA3C // =byte_809C354
 	mov r1, r4
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	b loc_809CA26
 locret_809CA1E:
 	pop {r4-r7,pc}
@@ -4284,7 +4284,7 @@ sub_809CF2C:
 	ldrb r1, [r1,r2]
 	sub r1, #1
 	add r1, #0x32 
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	b locret_809CF4E
 locret_809CF4E:
 	pop {r4-r7,pc}

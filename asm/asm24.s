@@ -522,7 +522,7 @@ loc_808CB8A:
 	bl sub_808CC34
 	cmp r0, #0
 	beq locret_808CB96
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 locret_808CB96:
 	pop {r4-r7,pc}
 dword_808CB98: .word 0x13B

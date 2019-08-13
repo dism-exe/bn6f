@@ -9,7 +9,7 @@ ScriptCmds8035808:
 	.word MapScriptCmd_jump_if_flag_clear+1
 	.word MapScriptCmd_jump_if_flag_range_clear+1
 	.word MapScriptCmd_jump_if_mem_equals+1
-	.word MapScriptCmd_jump_if_unk_navicust_range+1
+	.word MapScriptCmd_jump_if_key_item_in_range+1
 	.word MapScriptCmd_jump_if_chip_count_in_range+1
 	.word MapScriptCmd_jump_if_battle_result_equals+1
 	.word MapScriptCmd_jump_if_battle_result_not_equal+1
@@ -39,7 +39,7 @@ ScriptCmds8035808:
 	.word MapScriptCmd_set_event_flag_list+1
 	.word MapScriptCmd_clear_event_flag_list+1
 	.word MapScriptCmd_call_native_function+1
-	.word MapScriptCmd_run_cutscene_maybe+1
+	.word MapScriptCmd_start_cutscene+1
 	.word MapScriptCmd_write_byte+1
 	.word MapScriptCmd_write_hword+1
 	.word MapScriptCmd_write_word+1
@@ -219,8 +219,11 @@ MapScriptCmd_jump_if_flag_clear: // 80359BE
 	thumb_func_end MapScriptCmd_jump_if_flag_clear
 
 	thumb_local_start
-// 0x06 byte flag destination
+// 0x06/0x1a byte1 hword2 destination4
 // jump if not all event flags in the event flag range are set
+// byte1 - number of flags to test
+// hword2 - starting flag to test
+// destination4 - script to jump to
 MapScriptCmd_jump_if_flag_range_clear: // 80359EE
 	push {lr}
 	mov r6, #1
@@ -244,11 +247,23 @@ MapScriptCmd_jump_if_flag_range_clear: // 80359EE
 	thumb_func_end MapScriptCmd_jump_if_flag_range_clear
 
 	thumb_local_start
-// 0x07 0x00 word destination byte
-// 0x07 0x01 word destination hword
-// 0x07 0x02 word destination word
-// jump if [word] == param
-// this command is variable length
+// 0x07/0x1b 0x00 word2 destination6 byte10
+// jump if [word2] == byte10
+// word2 - pointer to read from
+// destination6 - script to jump to
+// byte10 - value to compare [word2] with
+
+// 0x07/0x1b 0x01 word2 destination6 hword10
+// jump if [word2] == hword10
+// word2 - pointer to read from
+// destination6 - script to jump to
+// hword10 - value to compare [word2] with
+
+// 0x07/0x1b 0x01 word2 destination6 word10
+// jump if [word2] == word10
+// word2 - pointer to read from
+// destination6 - script to jump to
+// word10 - value to compare [word2] with
 MapScriptCmd_jump_if_mem_equals: // 8035A1A
 	push {lr}
 	mov r6, #2
@@ -297,9 +312,9 @@ MapScriptCmd_jump_if_mem_equals: // 8035A1A
 	thumb_func_end MapScriptCmd_jump_if_mem_equals
 
 	thumb_local_start
-// 0x08 byte1 byte2 byte3 destination
-// jump if byte2 < CheckKeyItem(byte1) < byte3
-MapScriptCmd_jump_if_unk_navicust_range: // 8035A74
+// 0x08/0x1d byte1 byte2 byte3 destination
+// jump if byte2 <= CheckKeyItem(byte1) <= byte3
+MapScriptCmd_jump_if_key_item_in_range: // 8035A74
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -311,29 +326,28 @@ MapScriptCmd_jump_if_unk_navicust_range: // 8035A74
 	mov r6, #3
 	bl ReadMapScriptByte
 	cmp r0, r1
-	blt .unkByteOutOfRange
+	blt .keyItemOutOfRange
 	cmp r0, r4
-	bgt .unkByteOutOfRange
+	bgt .keyItemOutOfRange
 	mov r6, #4
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-.unkByteOutOfRange
+.keyItemOutOfRange
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_jump_if_unk_navicust_range
+	thumb_func_end MapScriptCmd_jump_if_key_item_in_range
 
 	thumb_local_start
-// 0x09 hword byte1 byte2 byte3 destination
-// if byte1 == 0xff:
-//	 jump if byte2 < GetTotalChipCount(hword) < byte3
-// else:
-//	 jump if byte2 < GetChipCountOfCode(byte1, hword) < byte3
-//	 GetChipCountOfCode calls getOffsetToQuantityOfChipCodeMaybe_8021c7c
-// related to chips
-//
+// 0x09/0x1e hword1 byte3 byte4 byte5 destination6
+// jump if the number of the specified chip with optional code is in the given range
+// hword1 - chip to count
+// byte3 - code of chip to be counted, or 0xff to ignore code
+// byte4 - lower bound of chip count, inclusive
+// byte5 - upper bound of chip count, inclusive
+// destination6 - script to jump to
 MapScriptCmd_jump_if_chip_count_in_range: // 8035AAA
 	push {lr}
 	mov r6, #3
@@ -374,9 +388,12 @@ MapScriptCmd_jump_if_chip_count_in_range: // 8035AAA
 	thumb_func_end MapScriptCmd_jump_if_chip_count_in_range
 
 	thumb_local_start
-// 0x0c byte1 signedbyte2 destination
-// sub_8031A7A(complex) returns r0, r1. if r0 == 0, r1 is used in comparison
-// jump if byte1 == compByte
+// 0x0c/0x21 byte1 signedbyte2 destination3
+// jump if the return value of the coordinate trigger function (sub_8031A7A) equals byte1
+// sub_8031A7A returns r0, r1. if r0 == 0, r1 is used in comparison
+// byte1 - byte to compare return value of sub_8031A7A
+// signedbyte2 - signed offset to overworld player object coordinates
+// destination3 - script to jump to
 MapScriptCmd_coordinate_trigger_equals_cmd_8035afa: // 8035afa
 	push {lr}
 	mov r6, #2
@@ -416,8 +433,12 @@ loc_8035B3E:
 	thumb_func_end MapScriptCmd_coordinate_trigger_equals_cmd_8035afa
 
 	thumb_local_start
-// 0x0d byte1 signedbyte2 destination
-// like 0x0c except jumps if not equal
+// 0x0d/0x22 byte1 signedbyte2 destination3
+// jump if the return value of the coordinate trigger function (sub_8031A7A) doesn't equal byte1
+// sub_8031A7A returns r0, r1. if r0 == 0, r1 is used in comparison
+// byte1 - byte to compare return value of sub_8031A7A
+// signedbyte2 - signed offset to overworld player object coordinates
+// destination3 - script to jump to
 MapScriptCmd_coordinate_trigger_not_equal_cmd_8035b44: // 8035b44
 	push {lr}
 	mov r6, #2
@@ -457,8 +478,10 @@ loc_8035B88:
 	thumb_func_end MapScriptCmd_coordinate_trigger_not_equal_cmd_8035b44
 
 	thumb_local_start
-// 0x0e byte1 destination
-// jump if byte1 == eGameState_Unk_0e
+// 0x0e byte1 destination2
+// jump if byte1 == [eGameState_Unk_0e]
+// byte1 - byte to compare [eGameState_Unk_0e] with
+// destination2 - script to jump to
 MapScriptCmd_jump_if_game_state_0e_equals: // 8035b8e
 	push {lr}
 	mov r0, r10
@@ -480,8 +503,10 @@ MapScriptCmd_jump_if_game_state_0e_equals: // 8035b8e
 	thumb_func_end MapScriptCmd_jump_if_game_state_0e_equals
 
 	thumb_local_start
-// 0x0f byte1 destination
-// jump if byte1 != eGameStateUnk_0e
+// 0x0f byte1 destination2
+// jump if byte1 != [eGameStateUnk_0e]
+// byte1 - byte to compare [eGameState_Unk_0e] with
+// destination2 - script to jump to
 MapScriptCmd_jump_if_game_state_0e_not_equals: // 8035BB2
 	push {lr}
 	mov r0, r10
@@ -503,8 +528,10 @@ loc_8035BD0:
 	thumb_func_end MapScriptCmd_jump_if_game_state_0e_not_equals
 
 	thumb_local_start
-// 0x12 signedhword1 destination
-// jump if (eOWPlayerObject_Z >> 0x10) == signedhword1
+// 0x12 signedhword1 destination2
+// jump if the the player's z coordinate equals signedhword1
+// signedhword1 - z coordinate to compare the player's z coordinate with
+// destination2 - script to jump to
 MapScriptCmd_jump_if_player_z_equals: // 8035BD6
 	push {lr}
 	mov r0, r10
@@ -528,9 +555,10 @@ MapScriptCmd_jump_if_player_z_equals: // 8035BD6
 	thumb_func_end MapScriptCmd_jump_if_player_z_equals
 
 	thumb_local_start
-// 0x13 signedhword1 destination
-// jump if (eOWPlayerObjectUnk_24 >> 0x10) != signedhword1
-// eOWPlayerObjectUnk_24 is signed
+// 0x13 signedhword1 destination2
+// jump if the the player's z coordinate does not equal signedhword1
+// signedhword1 - z coordinate to compare the player's z coordinate with
+// destination2 - script to jump to
 MapScriptCmd_jump_if_player_z_not_equals: // 8035BFE
 	push {lr}
 	mov r0, r10
@@ -554,8 +582,10 @@ loc_8035C20:
 	thumb_func_end MapScriptCmd_jump_if_player_z_not_equals
 
 	thumb_local_start
-// 0x14 hword1 destination
-// jump if hword1 == eGameStateUnk_44
+// 0x14 hword1 destination2
+// jump if hword1 equals eGameState_Unk_44
+// hword1 - value to compare eGameState_Unk_44 with
+// destination2 - script to jump to
 MapScriptCmd_jump_if_game_state_44_equals: // 8035C26
 	push {lr}
 	mov r0, r10
@@ -564,20 +594,20 @@ MapScriptCmd_jump_if_game_state_44_equals: // 8035C26
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	cmp r0, r4
-	bne loc_8035C44
+	bne .notEqual
 	mov r6, #3
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8035C44:
+.notEqual
 	add r7, #7
 	mov r0, #1
 	pop {pc}
 	thumb_func_end MapScriptCmd_jump_if_game_state_44_equals
 
 	thumb_local_start
-// 0x15 hword1 destination
+// 0x15 hword1 destination2
 // jump if hword1 != eGameStateUnk_44
 MapScriptCmd_jump_if_game_state_44_not_equals: // 8035C4A
 	push {lr}
@@ -601,9 +631,10 @@ loc_8035C68:
 
 	thumb_local_start
 // 0x16 0x01 destination
-// jump if eGameStateMapGroup == eGameStateLastMapGroup
+// jump if the current map group equals the last map group
+
 // 0x16 !0x01 destination
-// jump if eGameStateMapGroup != eGameStateLastMapGroup
+// jump if the current map group does not equal the last map group
 MapScriptCmd_jump_if_map_group_compare_last_map_group: // 8035C6E
 	push {lr}
 	mov r6, #1
@@ -638,6 +669,9 @@ MapScriptCmd_jump_if_map_group_compare_last_map_group: // 8035C6E
 // 0x17 destination1 destination5 destination9
 // jumptable, using [eNaviStats + 0x4c] as the base index
 // default is destination1
+// destination1 - script to jump to if [eNaviStats + 0x4c] is not 1 or 2
+// destination5 - script to jump to if [eNaviStats + 0x4c] is 1
+// destination9 - script to jump to if [eNaviStats + 0x4c] is 2
 MapScriptCmd_switch_case_from_navi_stats_4c: // 8035CA0
 	push {lr}
 	mov r0, #0
@@ -670,9 +704,11 @@ loc_8035CCA:
 // 0x18 byte1 destination2
 // jump if byte1 == sub_800B734()
 // sub_800B734 performs a summation on the 12 halfwords at word_2000FA0
-// returns 0 if the summation is greater than 0x2a30
-// returns 1 if 0x1c20 < summation <= 0x2a30
-// else returns 2
+//  returns 0 if the summation is greater than 0x2a30
+//  returns 1 if 0x1c20 < summation <= 0x2a30
+//  else returns 2
+// byte1 - value to compare the return value of sub_800B734 with
+// destination2 - script to jump to
 MapScriptCmd_cmd_8035cd6: // 8035cd6
 	push {lr}
 	bl sub_800B734
@@ -693,7 +729,13 @@ loc_8035CF2:
 
 	thumb_local_start
 // 0x19 byte1 destination2
-// same as above but performs !=
+// jump if byte1 != sub_800B734()
+// sub_800B734 performs a summation on the 12 halfwords at word_2000FA0
+//  returns 0 if the summation is greater than 0x2a30
+//  returns 1 if 0x1c20 < summation <= 0x2a30
+//  else returns 2
+// byte1 - value to compare the return value of sub_800B734 with
+// destination2 - script to jump to
 MapScriptCmd_cmd_8035cf8:
 	push {lr}
 	bl sub_800B734
@@ -714,17 +756,18 @@ loc_8035D14:
 
 	thumb_local_start
 // 0x1a destination1
-// jump if palette fade is active
+// jump if the screen is fading
+// destination1 - script to jump to
 MapScriptCmd_jump_if_fade_active: // 8035D1A
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
 	bl IsScreenFadeActive // () -> zf
-	beq loc_8035D2E
+	beq .screenFading
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-loc_8035D2E:
+.screenFading
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -733,16 +776,17 @@ loc_8035D2E:
 	thumb_local_start
 // 0x1b destination1
 // jump if [eStruct200a6a0] != 0
+// destination1 - script to jump to
 MapScriptCmd_jump_if_eStruct200a6a0_initialized: // 8035D34
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
 	bl Is_eStruct200a6a0_Initialized
-	bne loc_8035D48
+	bne .structInitialized
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-loc_8035D48:
+.structInitialized
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -757,40 +801,40 @@ MapScriptCmd_jump_if_in_pet_menu: // 8035D4E
 	bl ReadMapScriptWord
 	mov r0, #1
 	bl TestPETMenuDataFlag
-	bne loc_8035D64
+	bne .PETMenuOpen
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-loc_8035D64:
+.PETMenuOpen
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
 	thumb_func_end MapScriptCmd_jump_if_in_pet_menu
 
 	thumb_local_start
-// 0x1d byte1 byte2 byte3
-// if byte1 == 0xff:
-//     SetScreenFade(byte2, byte3)
-// else:
-//     SetScreenFade([eMapScriptState + byte1], [eMapScriptState + byte1 + 1])
+// 0x1d/0x27 byte1 byte2 byte3
+// set screen fade
+// byte1 - memory param (base index, memory for byte3 is [eMapScriptState + byte1 + 1])
+// byte2 or mem1 - argument 1 for screen fade
+// byte3 or mem2 - argument 2 for screen fade
 MapScriptCmd_set_screen_fade: // 8035D6A
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq loc_8035D7E
+	beq .immediateParam
 	ldrb r0, [r5,r4]
 	add r4, #1
 	ldrb r1, [r5,r4]
-	b loc_8035D8E
-loc_8035D7E:
+	b .gotParam
+.immediateParam
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r0, r4
 	mov r6, #3
 	bl ReadMapScriptByte
 	mov r1, r4
-loc_8035D8E:
+.gotParam
 	bl SetScreenFade // (int a1, int a2) -> void
 	add r7, #4
 	mov r0, #1
@@ -798,8 +842,10 @@ loc_8035D8E:
 	thumb_func_end MapScriptCmd_set_screen_fade
 
 	thumb_local_start
-// 0x1e byte1 byte2
+// 0x1e/0x28 byte1 byte2
 // store byte1 and byte2 in eGameState_Unk_16 and eGameState_Unk_17 respectively
+// byte1 - value to store to eGameState_Unk_16
+// byte2 - value to store to eGameState_Unk_17
 MapScriptCmd_set_game_state_16_17: // 8035D98
 	push {lr}
 	mov r1, r10
@@ -816,22 +862,22 @@ MapScriptCmd_set_game_state_16_17: // 8035D98
 	thumb_func_end MapScriptCmd_set_game_state_16_17
 
 	thumb_local_start
-// 0x1f byte1 hword2
+// 0x1f/0x29 byte1 hword2
 // set event flag
-// byte1 == 0xff: event flag is hword2
-// byte1 != 0xff: event flag is the word in script mem with byte1 as offset
+// byte1 - memory param
+// hword2 or mem - event flag to set
 MapScriptCmd_set_event_flag: // 8035DB4
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq loc_8035DC4
+	beq .immediateParam
 	ldrh r4, [r5,r4]
-	b loc_8035DCA
-loc_8035DC4:
+	b .gotParam
+.immediateParam
 	mov r6, #2
 	bl ReadMapScriptHalfword
-loc_8035DCA:
+.gotParam
 	// bitfield
 	mov r0, r4
 	bl SetEventFlag
@@ -841,22 +887,22 @@ loc_8035DCA:
 	thumb_func_end MapScriptCmd_set_event_flag
 
 	thumb_local_start
-// 0x20 byte1 hword2
+// 0x20/0x2a byte1 hword2
 // clear event flag
-// byte1 == 0xff: event flag is hword2
-// byte1 != 0xff: event flag is the word in script mem with byte1 as offset
+// byte1 - memory param
+// hword2 or mem - event flag to clear
 MapScriptCmd_clear_event_flag: // 8035DD6
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq loc_8035DE6
+	beq .immediateParam
 	ldrh r4, [r5,r4]
-	b loc_8035DEC
-loc_8035DE6:
+	b .gotParam
+.immediateParam
 	mov r6, #2
 	bl ReadMapScriptHalfword
-loc_8035DEC:
+.gotParam
 	mov r0, r4
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	add r7, #4
@@ -865,8 +911,11 @@ loc_8035DEC:
 	thumb_func_end MapScriptCmd_clear_event_flag
 
 	thumb_local_start
-// 0x21 byte1 hword2
+// 0x21/0x2b byte1 hword2
 // set byte1 event flags starting at the event flag hword2
+// event flags set are in the range [hword2, hword2+byte1) (interval notation)
+// byte1 - number of event flags to set
+// hword2 - starting event flag
 MapScriptCmd_set_event_flag_range: // 8035DF8
 	push {lr}
 	mov r6, #1
@@ -883,8 +932,11 @@ MapScriptCmd_set_event_flag_range: // 8035DF8
 	thumb_func_end MapScriptCmd_set_event_flag_range
 
 	thumb_local_start
-// 0x22 byte1 hword2
+// 0x22/0x2c byte1 hword2
 // clear byte1 event flags starting at the event flag hword2
+// event flags cleared are in the range [hword2, hword2+byte1) (interval notation)
+// byte1 - number of event flags to clear
+// hword2 - starting event flag
 MapScriptCmd_clear_event_flag_range: // 8035E16
 	push {lr}
 	mov r6, #1
@@ -901,44 +953,46 @@ MapScriptCmd_clear_event_flag_range: // 8035E16
 	thumb_func_end MapScriptCmd_clear_event_flag_range
 
 	thumb_local_start
-// 0x23 word1
+// 0x23/0x2d word1
 // set the list of event flags at word1, terminated by (presumably) -1
+// word1 - list of event flags to set, terminated by a negative number (presumably -1)
 MapScriptCmd_set_event_flag_list: // 8035E34
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
-loc_8035E3C:
+.setEventFlagLoop
 	mov r1, #0
 	ldrsh r0, [r4,r1]
 	cmp r0, #0
-	blt loc_8035E4E
+	blt .doneSettingFlags
 	mov r0, r0
 	bl SetEventFlag
 	add r4, #2
-	b loc_8035E3C
-loc_8035E4E:
+	b .setEventFlagLoop
+.doneSettingFlags
 	add r7, #5
 	mov r0, #1
 	pop {pc}
 	thumb_func_end MapScriptCmd_set_event_flag_list
 
 	thumb_local_start
-// 0x24 word1
+// 0x24/0x2e word1
 // clear the list of event flags at word1, terminated by (presumably) -1
+// word1 - list of event flags to clear, terminated by a negative number (presumably -1)
 MapScriptCmd_clear_event_flag_list: // 8035E54
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
-loc_8035E5C:
+.clearEventFlagLoop
 	mov r1, #0
 	ldrsh r0, [r4,r1]
 	cmp r0, #0
-	blt loc_8035E6E
+	blt .doneClearingFlags
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #2
-	b loc_8035E5C
-loc_8035E6E:
+	b .clearEventFlagLoop
+.doneClearingFlags
 	add r7, #5
 	mov r0, #1
 	pop {pc}
@@ -946,7 +1000,9 @@ loc_8035E6E:
 
 	thumb_local_start
 // 0x25 word1 word5
-// call the asm function word1 with word5 in r0
+// call the native function word1 with word5 in r0
+// word1 - native function to call
+// word5 - parameter to native function
 MapScriptCmd_call_native_function: // 8035E74
 	push {lr}
 	mov r6, #5
@@ -963,9 +1019,10 @@ MapScriptCmd_call_native_function: // 8035E74
 
 	thumb_local_start
 // 0x26 word1 word5
-// call init_s_02011C50_8036E90 with r0=word1 and r1=word5
-// important script function
-MapScriptCmd_run_cutscene_maybe: // 8035E8E
+// start a cutscene
+// word1 - cutscene script to start
+// word5 - cutscene parameter
+MapScriptCmd_start_cutscene: // 8035E8E
 	push {lr}
 	mov r6, #5
 	bl ReadMapScriptWord
@@ -973,15 +1030,18 @@ MapScriptCmd_run_cutscene_maybe: // 8035E8E
 	mov r6, #1
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	add r7, #9
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_run_cutscene_maybe
+	thumb_func_end MapScriptCmd_start_cutscene
 
 	thumb_local_start
-// 0x27 word1 byte5
+// 0x27/0x2f word1 byte5
+// write byte5 to the memory at word1
 // [word1] = byte5
+// word1 - pointer to write to
+// byte5 - value to write
 MapScriptCmd_write_byte: // 8035EAA
 	push {lr}
 	mov r6, #1
@@ -996,8 +1056,11 @@ MapScriptCmd_write_byte: // 8035EAA
 	thumb_func_end MapScriptCmd_write_byte
 
 	thumb_local_start
-// 0x28 word1 hword5
+// 0x28/0x30 word1 hword5
+// write hword5 to the memory at word1
 // [word1] = hword5
+// word1 - pointer to write to
+// hword5 - value to write
 MapScriptCmd_write_hword: // 8035EC2
 	push {lr}
 	mov r6, #1
@@ -1012,8 +1075,11 @@ MapScriptCmd_write_hword: // 8035EC2
 	thumb_func_end MapScriptCmd_write_hword
 
 	thumb_local_start
-// 0x29 word1 word5
+// 0x29/0x31 word1 word5
+// write word5 to the memory at word1
 // [word1] = word5
+// word1 - pointer to write to
+// word5 - value to write
 MapScriptCmd_write_word: // 8035EDA
 	push {lr}
 	mov r6, #1
@@ -1028,8 +1094,11 @@ MapScriptCmd_write_word: // 8035EDA
 	thumb_func_end MapScriptCmd_write_word
 
 	thumb_local_start
-// 0x2a byte1 byte2
-// [eGameState[byte1]] = byte2
+// 0x2a/0x32 byte1 byte2
+// write byte2 to the eGameState field byte1
+// [eGameState + byte1] = byte2
+// byte1 - eGameState field to write to
+// byte2 - value to write
 MapScriptCmd_write_gamestate_byte: // 8035EF2
 	push {lr}
 	mov r0, r10
@@ -1046,8 +1115,11 @@ MapScriptCmd_write_gamestate_byte: // 8035EF2
 	thumb_func_end MapScriptCmd_write_gamestate_byte
 
 	thumb_local_start
-// 0x2b byte1 byte2
-// [eStruct2001c04[byte1]] = byte2
+// 0x2b/0x33 byte1 byte2
+// write byte2 to the eStruct2001c04 field byte1
+// [eStruct2001c04 + byte1] = byte2
+// byte1 - eStruct2001c04 field to write to
+// byte2 - value to write
 MapScriptCmd_write_eStruct2001c04_byte: // 8035F0E
 	push {lr}
 	mov r0, r10
@@ -1064,8 +1136,9 @@ MapScriptCmd_write_eStruct2001c04_byte: // 8035F0E
 	thumb_func_end MapScriptCmd_write_eStruct2001c04_byte
 
 	thumb_local_start
-// 0x2c word1
-// do sub_8001B1C(r0=word1)
+// 0x2c/0x36 word1
+// call sub_8001B1C(r0=word1)
+// word1 - argument to sub_8001B1C
 MapScriptCmd_call_sub_8001B1C: // 8035F2A
 	push {lr}
 	mov r6, #1
@@ -1078,9 +1151,9 @@ MapScriptCmd_call_sub_8001B1C: // 8035F2A
 	thumb_func_end MapScriptCmd_call_sub_8001B1C
 
 	thumb_local_start
-// 0x2d word1
+// 0x2d/0x37 word1
 // do sub_8002354(r0=word1)
-// r0 is a list of arguments for r1, terminated by negative
+// r0 is a list of pointers for sub_8001B1C, terminated by negative
 MapScriptCmd_call_sub_8001B1C_multiple: // 8035F3E
 	push {lr}
 	mov r6, #1
@@ -1093,7 +1166,7 @@ MapScriptCmd_call_sub_8001B1C_multiple: // 8035F3E
 	thumb_func_end MapScriptCmd_call_sub_8001B1C_multiple
 
 	thumb_local_start
-// 0x2e
+// 0x2e/0x38
 // call sub_8030A30, then sub_8035194
 // uses map group/number as args
 MapScriptCmd_call_sub_8030A30_8035194: // 8035F52
@@ -1110,7 +1183,7 @@ MapScriptCmd_call_sub_8030A30_8035194: // 8035F52
 	thumb_func_end MapScriptCmd_call_sub_8030A30_8035194
 
 	thumb_local_start
-// 0x2f byte1
+// 0x2f/0x39 byte1
 // if byte1 == 0xff, call sub_8001B6C with r0 as 0x0 to 0x11
 // else, call sub_8001B6C with r0=byte1
 MapScriptCmd_cmd_8035F6A: // 8035F6A
@@ -1140,9 +1213,10 @@ loc_8035F8E:
 	thumb_func_end MapScriptCmd_cmd_8035F6A
 
 	thumb_local_start
-// 0x36 byte1 byte2
-// call doPETEffect_8033fc0
-// arg is either from mem or byte2
+// 0x36/0x53 byte1 byte2
+// trigger a PET overworld effect
+// byte1 - memory param
+// byte2 or mem - PET overworld effect to trigger
 MapScriptCmd_do_pet_effect: // 8035F98
 	push {lr}
 	mov r6, #1
@@ -1163,10 +1237,12 @@ MapScriptCmd_do_pet_effect: // 8035F98
 	thumb_func_end MapScriptCmd_do_pet_effect
 
 	thumb_local_start
-// 0x3a  0x01
-// store 0x0 at the script struct + 0x10
-// 0x3a !0x01 word2
-// store word2 at the script struct + 0x10
+// 0x3a 0x0 word2
+// set the secondary continuous map script pointer
+// word2 - map script pointer to set the secondary continuous map script pointer to
+
+// 0x3a 0x1
+// end execution of the secondary continuous map script pointer
 MapScriptCmd_run_or_end_continuous_secondary_map_script: // 8035FBA
 	push {lr}
 	mov r6, #1
@@ -1188,17 +1264,28 @@ MapScriptCmd_run_or_end_continuous_secondary_map_script: // 8035FBA
 	thumb_func_end MapScriptCmd_run_or_end_continuous_secondary_map_script
 
 	thumb_local_start
+// 0x40 0x0 word2
+// spawn objects from list
+// word2 - list of structs corresponding to which objects to spawn and params
+// list terminated by 0xff
+// struct format: byte0 byte1 word4 word8 word0xc word0x10
+// byte0 - object type
+// byte1 - object index
+// word4 - x coordinate
+// word8 - y coordinate
+// word0xc - z coordinate
+// word0x10 - param (written to field 0x4)
+
 // 0x40 0x01 byte2
-// call FreeAllObjectsOfSpecifiedTypes(r0=byte2)
-// 0x40 !0x01 word2
-// call SpawnObjectsFromList(r0=word2)
-// both functions are relaed to object initialization
+// free all objects of specified types
+// byte2 - bitfield of objects to free
+// see constants/constants.inc for object type flags
 MapScriptCmd_spawn_or_free_objects: // 8035FDE
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #1
-	beq loc_8035FFC
+	beq .freeObjectsOfSpecifiedTypes
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
@@ -1206,7 +1293,7 @@ MapScriptCmd_spawn_or_free_objects: // 8035FDE
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-loc_8035FFC:
+.freeObjectsOfSpecifiedTypes
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r0, r4
@@ -2289,8 +2376,10 @@ sub_8036E86:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8036E86
 
-	thumb_func_start init_s_02011C50_8036E90
-init_s_02011C50_8036E90:
+	thumb_func_start StartCutscene
+// r0 - cutscene script to run
+// r1 - parameter
+StartCutscene:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_CutsceneStatePtr]
@@ -2306,17 +2395,16 @@ init_s_02011C50_8036E90:
 	str r0, [r5,#oCutsceneState_CutsceneScriptPos2] // s_02011C50.ptr_20
 	str r0, [r5,#oCutsceneState_CutsceneScriptPos3] // s_02011C50.ptr_24
 	str r0, [r5,#oCutsceneState_CutsceneScriptPos4] // s_02011C50.ptr_28
-	ldr r0, off_8036EBC // =eTextScript202DA04
+	ldr r0, =eTextScript202DA04
 	str r0, [r5,#oCutsceneState_TextArchivePtr] // s_02011C50.ptr_30
-	ldr r0, off_8036EC0 // =off_8036EC4
+	ldr r0, =off_8036EC4
 	str r0, [r5,#oCutsceneState_Unk_34] // s_02011C50.ptr_34
 	pop {r5,pc}
 	.balign 4, 0x00
-off_8036EBC: .word eTextScript202DA04
-off_8036EC0: .word off_8036EC4
+	.pool // 8036EBC
 off_8036EC4: .word 0x4000000
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	thumb_func_end init_s_02011C50_8036E90
+	thumb_func_end StartCutscene
 
 	thumb_func_start cutscene_8036ED4
 cutscene_8036ED4:
@@ -3322,7 +3410,7 @@ CutsceneCommandJumptable:
 	.word MapScriptCmd_jump_if_flag_range_clear+1
 	.word MapScriptCmd_jump_if_mem_equals+1
 	.word MapScriptCmd_jump_if_var_equal+1
-	.word MapScriptCmd_jump_if_unk_navicust_range+1
+	.word MapScriptCmd_jump_if_key_item_in_range+1
 	.word MapScriptCmd_jump_if_chip_count_in_range+1
 	.word MapScriptCmd_jump_if_battle_result_equals+1
 	.word MapScriptCmd_jump_if_battle_result_not_equal+1
@@ -5654,7 +5742,7 @@ MapScriptCmd_give_or_take_navicust_programs:
 // word2 - map script pointer to set the secondary continuous map script pointer to
 
 // 0x75 0x1
-// end the secondary continuous map script pointer
+// end execution of the secondary continuous map script pointer
 MapScriptCmd_run_or_end_continuous_secondary_map_script_from_cutscene_script:
 	push {lr}
 	ldr r3, =eMapScriptState
