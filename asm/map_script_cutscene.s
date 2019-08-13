@@ -259,7 +259,7 @@ MapScriptCutsceneCmd_jump_if_flag_range_clear: // 80359EE
 // destination6 - script to jump to
 // hword10 - value to compare [word2] with
 
-// 0x07/0x1b 0x01 word2 destination6 word10
+// 0x07/0x1b 0x02 word2 destination6 word10
 // jump if [word2] == word10
 // word2 - pointer to read from
 // destination6 - script to jump to
@@ -312,8 +312,13 @@ MapScriptCutsceneCmd_jump_if_mem_equals: // 8035A1A
 	thumb_func_end MapScriptCutsceneCmd_jump_if_mem_equals
 
 	thumb_local_start
-// 0x08/0x1d byte1 byte2 byte3 destination
-// jump if byte2 <= CheckKeyItem(byte1) <= byte3
+// 0x08/0x1d byte1 byte2 byte3 destination4
+// jump if the specified key item is in the given range
+// i.e. byte2 <= CheckKeyItem(byte1) <= byte3
+// byte1 - key item to check
+// byte2 - lower bound of key item range, inclusive
+// byte3 - upper bound of key item range, inclusive
+// destination4 - script to jump to
 MapScriptCutsceneCmd_jump_if_key_item_in_range: // 8035A74
 	push {lr}
 	mov r6, #1
@@ -608,7 +613,9 @@ MapScriptCmd_jump_if_game_state_44_equals: // 8035C26
 
 	thumb_local_start
 // 0x15 hword1 destination2
-// jump if hword1 != eGameStateUnk_44
+// jump if hword1 doesn't equal eGameState_Unk_44
+// hword1 - value to compare eGameState_Unk_44 with
+// destination2 - script to jump to
 MapScriptCmd_jump_if_game_state_44_not_equals: // 8035C4A
 	push {lr}
 	mov r0, r10
@@ -617,24 +624,26 @@ MapScriptCmd_jump_if_game_state_44_not_equals: // 8035C4A
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	cmp r0, r4
-	beq loc_8035C68
+	beq .equals
 	mov r6, #3
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8035C68:
+.equals
 	add r7, #7
 	mov r0, #1
 	pop {pc}
 	thumb_func_end MapScriptCmd_jump_if_game_state_44_not_equals
 
 	thumb_local_start
-// 0x16 0x01 destination
-// jump if the current map group equals the last map group
-
-// 0x16 !0x01 destination
+// 0x16 0x00 destination2
 // jump if the current map group does not equal the last map group
+// destination2 - script to jump to
+
+// 0x16 0x01 destination2
+// jump if the current map group equals the last map group
+// destination2 - script to jump to
 MapScriptCmd_jump_if_map_group_compare_last_map_group: // 8035C6E
 	push {lr}
 	mov r6, #1
@@ -795,6 +804,7 @@ MapScriptCmd_jump_if_eStruct200a6a0_initialized: // 8035D34
 	thumb_local_start
 // 0x1c destination1
 // jump if the PET menu or a submenu is open (ePETMenuData+5)
+// destination1 - script to jump to
 MapScriptCmd_jump_if_in_pet_menu: // 8035D4E
 	push {lr}
 	mov r6, #1
@@ -4373,14 +4383,14 @@ off_8037B9C: .word owPlayer_writeLayerIndexOverride_809e260+1
 	thumb_func_end CutsceneCmd_ow_player_sprite_special_with_arg
 
 	thumb_local_start
-// 0x41 byte1 byte2 byte3 hword4 hword6 hword8
+// 0x41 byte1 byte2 byte3 signedhword4 signedhword6 signedhword8
 // run ow player coordinate related special for a given number of frames
 // byte1 - special to run (multiple of 4). if this special is 8 or higher, then the cutscene script process number must not be 0
 // byte2 - memory param
 // byte3 or mem - number of frames to run the special
-// hword4 - x coordinate related param
-// hword6 - y coordinate related param
-// hword8 - z coordinate related param
+// signedhword4 - x coordinate related param
+// signedhword6 - y coordinate related param
+// signedhword8 - z coordinate related param
 // specials (full extent of what they do is unknown). coordinate writes to eStruct200ace0 are copied to player coordinates in another function:
 // 0x0 - indirectly set player coords through eStruct200ace0
 // 0x4 - copy player coords to player next coords, write hword params to player coords, then indirectly set player coords through eStruct200ace0
@@ -4452,13 +4462,13 @@ off_8037C34: .word owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4+1
 	thumb_func_end CutsceneCmd_ow_player_coord_special
 
 	thumb_local_start
-// 0x42 byte1 byte2 hword3
+// 0x42 byte1 byte2 signedhword3
 // move player in facing direction
 // the movement is done as if the player was moving the player character themselves
 // does not work if the cutscene process number is 0
 // byte1 - memory param
 // byte2 or mem - number of frames to move player
-// hword3 - movement speed of player
+// signedhword3 - movement speed of player
 CutsceneCmd_move_player_in_facing_direction:
 	push {lr}
 	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
@@ -4569,12 +4579,12 @@ CutsceneCmd_write_S200ace0_unk_20:
 // 0x45 0x1
 // set the default transform (0x40, 0x40, 0x0) to the player navi sprite
 
-// 0x45 0x2 byte2 byte3 byte4 byte5
+// 0x45 0x2 byte2 signedbyte3 signedbyte4 signedbyte5
 // add offsets to player navi sprite transform values for a given number of frames
 // byte2 - number of frames
-// byte3 - horizontal compress offset
-// byte4 - vertical compress offset
-// byte5 - rotation offset
+// signedbyte3 - horizontal compress offset
+// signedbyte4 - vertical compress offset
+// signedbyte5 - rotation offset
 CutsceneCmd_transform_player_navi_sprite:
 	push {lr}
 	mov r6, #1

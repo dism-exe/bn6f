@@ -5,6 +5,7 @@
 	.include "include/macros/ewram_structs.inc"
 	.include "include/macros/function.inc"
 	.include "include/macros/rom_structs.inc"
+	.include "include/bytecode/map_script.inc"
 
 	.macro nybble high:req, low:req
 	.byte (\high << 4) | \low
