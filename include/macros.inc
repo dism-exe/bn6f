@@ -17,7 +17,8 @@
 	.include "include/macros/rom_structs.inc"
 	.include "include/bytecode/map_script.inc"
 	.include "include/bytecode/cutscene_script.inc"
-	
+	.include "include/bytecode/cutscene_camera_script.inc"
+
 // some macros illustrating quirks of the gnu assembler macro system
 /*
 	.macro arg_contents_test arg1=1
