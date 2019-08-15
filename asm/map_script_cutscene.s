@@ -1,6 +1,6 @@
 
 // possible file boundary
-ScriptCmds8035808:
+MapScriptCommandJumptable:
 	.word MapScriptCmd_end+1
 	.word MapScriptCutsceneCmd_jump+1
 	.word MapScriptCutsceneCmd_jump_if_progress_in_range+1
@@ -1313,9 +1313,9 @@ MapScriptCmd_spawn_or_free_objects: // 8035FDE
 	pop {pc}
 	thumb_func_end MapScriptCmd_spawn_or_free_objects
 
-	thumb_func_start map_script_overworld_803600E
+	thumb_func_start StoreMapScriptsThenRunOnInitMapScript
 // called once
-map_script_overworld_803600E:
+StoreMapScriptsThenRunOnInitMapScript:
 	push {r4-r7,lr}
 	mov r4, r12
 	push {r4}
@@ -1329,49 +1329,49 @@ map_script_overworld_803600E:
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	str r4, [r5,#oMapScriptState_OnInitMapScriptPtr] // (dword_2011E68 - 0x2011e60)
 	str r6, [r5,#oMapScriptState_ContinuousMapScriptPtr] // (dword_2011E6C - 0x2011e60)
-	ldr r6, off_803608C // =ScriptCmds8035808
+	ldr r6, off_803608C // =MapScriptCommandJumptable
 	mov r12, r6
 	mov r7, r4
-loc_803602C:
+.mapScriptCommandLoop
 	mov r6, r12
 	ldrb r0, [r7]
 	lsl r0, r0, #2
 	ldr r0, [r6,r0]
 	mov lr, pc
 	bx r0
-	bne loc_803602C
+	bne .mapScriptCommandLoop
 	pop {r4}
 	mov r12, r4
 	pop {r4-r7,pc}
-	thumb_func_end map_script_overworld_803600E
+	thumb_func_end StoreMapScriptsThenRunOnInitMapScript
 
-	thumb_func_start sub_8036040
+	thumb_func_start RunContinuousMapScript
 // called every frame
-sub_8036040:
+RunContinuousMapScript:
 	push {r4-r7,lr}
 	mov r4, r12
 	push {r4}
 	ldr r5, off_8036090 // =eMapScriptState
 	ldr r0, [r5,#oMapScriptState_ContinuousMapScriptPtr] // (dword_2011E6C - 0x2011e60)
-	ldr r6, off_803608C // =ScriptCmds8035808
+	ldr r6, off_803608C // =MapScriptCommandJumptable
 	mov r12, r6
 	mov r7, r0
-loc_8036050:
+.mapScriptCommandLoop
 	mov r6, r12
 	ldrb r0, [r7]
 	lsl r0, r0, #2
 	ldr r0, [r6,r0]
 	mov lr, pc
 	bx r0
-	bne loc_8036050
+	bne .mapScriptCommandLoop
 	pop {r4}
 	mov r12, r4
 	pop {r4-r7,pc}
-	thumb_func_end sub_8036040
+	thumb_func_end RunContinuousMapScript
 
-	thumb_func_start map_script_overworld_8036064
+	thumb_func_start RunSecondaryContinuousMapScript
 // called every frame
-map_script_overworld_8036064:
+RunSecondaryContinuousMapScript:
 	push {r4-r7,lr}
 	mov r4, r12
 	push {r4}
@@ -1379,7 +1379,7 @@ map_script_overworld_8036064:
 	ldr r0, [r5,#oMapScriptState_SecondaryContinuousMapScriptPtr] // (dword_2011E70 - 0x2011e60)
 	tst r0, r0
 	beq loc_8036086
-	ldr r6, off_803608C // =ScriptCmds8035808
+	ldr r6, off_803608C // =MapScriptCommandJumptable
 	mov r12, r6
 	mov r7, r0
 loc_8036078:
@@ -1394,9 +1394,9 @@ loc_8036086:
 	pop {r4}
 	mov r12, r4
 	pop {r4-r7,pc}
-off_803608C: .word ScriptCmds8035808
+off_803608C: .word MapScriptCommandJumptable
 off_8036090: .word eMapScriptState
-	thumb_func_end map_script_overworld_8036064
+	thumb_func_end RunSecondaryContinuousMapScript
 
 	thumb_local_start
 /* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:u8 result
@@ -5941,8 +5941,8 @@ CutsceneCmd_if_in_real_world_jump_else_jump:
 	pop {pc}
 	thumb_func_end CutsceneCmd_if_in_real_world_jump_else_jump
 
-	thumb_func_start runCutscene_803851C
-runCutscene_803851C:
+	thumb_func_start RunCutscene
+RunCutscene:
 	push {r4-r7,lr}
 	mov r4, r8
 	mov r5, r12
@@ -6041,7 +6041,7 @@ runCutscene_803851C:
 	.balign 4, 0
 // 0x80385B8
 	.pool
-	thumb_func_end runCutscene_803851C
+	thumb_func_end RunCutscene
 
 	thumb_local_start
 SetCutsceneFlag:

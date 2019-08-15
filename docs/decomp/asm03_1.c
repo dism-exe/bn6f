@@ -799,7 +799,7 @@ int __fastcall map_8034B4C(int mapGroup, int mapNumber)
     {
         v7 = &maps00_80345E4;
     }
-    v8 = map_script_overworld_803600E(v7[2 * vRelMapGroup][vMapNumber], v7[2 * vRelMapGroup + 1][vMapNumber]);
+    v8 = StoreMapScriptsThenRunOnInitMapScript(v7[2 * vRelMapGroup][vMapNumber], v7[2 * vRelMapGroup + 1][vMapNumber]);
     return sub_8036E78(v8, v9, v10);
 }
 
@@ -814,7 +814,7 @@ int __fastcall sub_8034BB8(int a1)
     s_2011C50_ptr_1C_isNull();
     if ( zf )
     {
-        sub_8036040();
+        RunContinuousMapScript();
         sub_809C968();
         sub_8034C6E();
         if ( !zf )
@@ -831,7 +831,7 @@ int __fastcall sub_8034BB8(int a1)
             sub_809CF2C();
         }
     }
-    map_script_overworld_8036064();
+    RunSecondaryContinuousMapScript();
     result = s_2011C50_ptr_1C_isNull();
     if ( !zf )
     {
@@ -2746,7 +2746,7 @@ signed int __fastcall sub_8035FDE(int a1)
 
 
 // 0x803600e
-int __fastcall map_script_overworld_803600E(u8 *mapScript, u8 *otherMapScript)
+int __fastcall StoreMapScriptsThenRunOnInitMapScript(u8 *mapScript, u8 *otherMapScript)
 {
     u8 *vMapScript; // r4
     u8 *vOtherMapScript; // r6
@@ -2759,7 +2759,7 @@ int __fastcall map_script_overworld_803600E(u8 *mapScript, u8 *otherMapScript)
     ZeroFillByWord(&eActiveOverworldMapObjectsBitfield[4], 20);
     eActiveOverworldMapObjectsBitfield[6] = vMapScript;
     eActiveOverworldMapObjectsBitfield[7] = vOtherMapScript;
-    cmds = &ScriptCmds8035808;
+    cmds = &MapScriptCommandJumptable;
     do
         result = (cmds[*vMapScript])();                         // takes r7=mapScript
     while ( !zf );
@@ -2768,14 +2768,14 @@ int __fastcall map_script_overworld_803600E(u8 *mapScript, u8 *otherMapScript)
 
 
 // 0x8036040
-int sub_8036040()
+int RunContinuousMapScript()
 {
     void **v0; // r12
     unsigned __int8 *v1; // r7
     int result; // r0
     char v3; // zf
 
-    v0 = &ScriptCmds8035808;
+    v0 = &MapScriptCommandJumptable;
     v1 = eActiveOverworldMapObjectsBitfield[7];
     do
         result = (v0[*v1])();
@@ -2785,7 +2785,7 @@ int sub_8036040()
 
 
 // 0x8036064
-void __cdecl map_script_overworld_8036064()
+void __cdecl RunSecondaryContinuousMapScript()
 {
     void **scriptCmds; // r12
     unsigned __int8 *bf; // r7
@@ -2793,7 +2793,7 @@ void __cdecl map_script_overworld_8036064()
 
     if ( eActiveOverworldMapObjectsBitfield[8] )
     {
-        scriptCmds = &ScriptCmds8035808;
+        scriptCmds = &MapScriptCommandJumptable;
         bf = eActiveOverworldMapObjectsBitfield[8];
         do
             (scriptCmds[*bf])();

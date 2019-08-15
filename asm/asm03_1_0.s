@@ -1651,7 +1651,7 @@ loc_8034B8A:
 	ldr r1, [r4,#4]
 	ldr r0, [r0,r3]
 	ldr r1, [r1,r3]
-	bl map_script_overworld_803600E
+	bl StoreMapScriptsThenRunOnInitMapScript
 	bl PlayMapMusic
 	pop {r2-r4}
 	mov r8, r2
@@ -1673,7 +1673,7 @@ sub_8034BB8:
 	push {r2-r4}
 	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_8034BFE
-	bl sub_8036040
+	bl RunContinuousMapScript
 	bl sub_809C968
 	bl sub_8034C6E
 	beq loc_8034BFE
@@ -1688,10 +1688,10 @@ sub_8034BB8:
 	bl sub_8035084
 	bl sub_809CF2C
 loc_8034BFE:
-	bl map_script_overworld_8036064
+	bl RunSecondaryContinuousMapScript
 	bl IsCutsceneScriptNonNull // () -> zf
 	beq loc_8034C2C
-	bl runCutscene_803851C // () -> void
+	bl RunCutscene // () -> void
 	mov r0, #7
 	mov r1, #0x42
 	bl ClearEventFlagFromImmediate
