@@ -28,3 +28,5 @@ Makefile text eol=lf
 
 structs/.memAccessScanner export-ignore
 structs/.memo export-ignore
+
+*.inc linguist-language=Unix Assembly
