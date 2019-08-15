@@ -8,8 +8,8 @@
 	.byte ms_end_cmd
 	.endm
 
-	enum ms_jump_cmd // 0x01
 // shared command
+	enum ms_jump_cmd // 0x01
 // 0x01/0x15 destination1
 // jump to another script
 // destination1 - script to jump to
@@ -18,8 +18,8 @@
 	.word \destination1
 	.endm
 
-	enum ms_jump_if_progress_in_range_cmd // 0x02
 // shared command
+	enum ms_jump_if_progress_in_range_cmd // 0x02
 // 0x02/0x16 byte1 byte2 destination3
 // jump if byte1 <= progress byte <= byte2
 // byte1 - lower bound for progress byte
@@ -31,8 +31,8 @@
 	.word \destination3
 	.endm
 
-	enum ms_jump_if_flag_set_cmd // 0x03
 // shared command
+	enum ms_jump_if_flag_set_cmd // 0x03
 // 0x03/0x17 byte1 hword2 destination4
 // jump if event flag in mem or immediate is set
 // byte1 - memory param
@@ -45,8 +45,8 @@
 	.word \destination4
 	.endm
 
-	enum ms_jump_if_flag_range_set_cmd // 0x04
 // shared command
+	enum ms_jump_if_flag_range_set_cmd // 0x04
 // 0x04/0x18 byte1 hword2 destination4
 // jump if (all) event flags in the event flag range are set
 // byte1 - number of flags to test
@@ -59,8 +59,8 @@
 	.word \destination4
 	.endm
 
-	enum ms_jump_if_flag_clear_cmd // 0x05
 // shared command
+	enum ms_jump_if_flag_clear_cmd // 0x05
 // 0x05/0x19 byte1 hword2 destination4
 // jump if event flag in mem or immediate is clear
 // byte1 - memory param
@@ -73,8 +73,8 @@
 	.word \destination4
 	.endm
 
-	enum ms_jump_if_flag_range_clear_cmd // 0x06
 // shared command
+	enum ms_jump_if_flag_range_clear_cmd // 0x06
 // 0x06/0x1a byte1 hword2 destination4
 // jump if not all event flags in the event flag range are set
 // byte1 - number of flags to test
@@ -133,8 +133,8 @@
 	.word \word10
 	.endm
 
-	enum ms_jump_if_key_item_in_range_cmd // 0x08
 // shared command
+	enum ms_jump_if_key_item_in_range_cmd // 0x08
 // 0x08/0x1d byte1 byte2 byte3 destination
 // jump if the specified key item is in the given range
 // i.e. byte2 <= CheckKeyItem(byte1) <= byte3
@@ -150,8 +150,8 @@
 	.word \destination4
 	.endm
 
-	enum ms_jump_if_chip_count_in_range_cmd // 0x09
 // shared command
+	enum ms_jump_if_chip_count_in_range_cmd // 0x09
 // 0x09/0x1e hword1 byte3 byte4 byte5 destination6
 // jump if the number of the specified chip with optional code is in the given range
 // hword1 - chip to count
@@ -167,8 +167,8 @@
 	.word \destination6
 	.endm
 
-	enum ms_jump_if_battle_result_equals_cmd // 0x0a
 // shared command
+	enum ms_jump_if_battle_result_equals_cmd // 0x0a
 // 0x0a/0x1f byte1 destination2
 // jump if battle result equals byte1
 // byte1 - value to compare battle result with (0=won, 1=lost, 2=tie, 3=escaped)
@@ -179,8 +179,8 @@
 	.word \destination2
 	.endm
 
-	enum ms_jump_if_battle_result_not_equal_cmd // 0x0b
 // shared command
+	enum ms_jump_if_battle_result_not_equal_cmd // 0x0b
 // 0xb/0x20 byte1 destination2
 // jump if battle result doesn't equal byte1
 // byte1 - value to compare battle result with (0=won, 1=lost, 2=tie, 3=escaped)
@@ -191,8 +191,8 @@
 	.word \destination2
 	.endm
 
-	enum ms_coordinate_trigger_equals_cmd_8035afa_cmd // 0x0c
 // shared command
+	enum ms_coordinate_trigger_equals_cmd_8035afa_cmd // 0x0c
 // 0x0c/0x21 byte1 signedbyte2 destination3
 // jump if the return value of the coordinate trigger function (sub_8031A7A) equals byte1
 // sub_8031A7A returns r0, r1. if r0 == 0, r1 is used in comparison
@@ -206,8 +206,8 @@
 	.word \destination3
 	.endm
 
-	enum ms_coordinate_trigger_not_equal_cmd_8035b44_cmd // 0x0d
 // shared command
+	enum ms_coordinate_trigger_not_equal_cmd_8035b44_cmd // 0x0d
 // 0x0d/0x22 byte1 signedbyte2 destination3
 // jump if the return value of the coordinate trigger function (sub_8031A7A) doesn't equal byte1
 // sub_8031A7A returns r0, r1. if r0 == 0, r1 is used in comparison
@@ -243,8 +243,8 @@
 	.word \destination2
 	.endm
 
-	enum ms_jump_if_current_navi_equals_cmd // 0x10
 // shared command
+	enum ms_jump_if_current_navi_equals_cmd // 0x10
 // 0x10/0x23 byte1 destination2
 // jump if the player's current navi equals byte1
 // byte1 - navi to compare the current navi with
@@ -255,8 +255,8 @@
 	.word \destination2
 	.endm
 
-	enum ms_jump_if_current_navi_not_equal_cmd // 0x11
 // shared command
+	enum ms_jump_if_current_navi_not_equal_cmd // 0x11
 // 0x11/0x24 byte1 destination2
 // jump if the player's current navi doesn't equal byte1
 // byte1 - navi to compare the current navi with
@@ -679,25 +679,29 @@
 // shared command
 	enum ms_give_or_take_item_cmd // 0x35
 	subenum_start
+
+	subenum ms_give_item_subcmd // 0x0
+// 0x35/0x52 0x0 byte2 byte3
+// give or take an item
+// byte1 - operation type (0=give, 1=take)
+// byte2 - item to give or take
+// byte3 - quantity of item
+	.macro ms_give_item byte2:req byte3:req
+	.byte ms_give_or_take_item_cmd
+	.byte ms_give_item_subcmd
+	.byte \byte2
+	.byte \byte3
+	.endm
+
+	subenum ms_take_item_subcmd // 0x1
 // 0x35/0x52 byte1 byte2 byte3
 // give or take an item
 // byte1 - operation type (0=give, 1=take)
 // byte2 - item to give or take
 // byte3 - quantity of item
-
-	subenum ms_give_item_subcmd // 0x0
-	.macro ms_give_item byte2:req byte3:req
-	ms_give_or_take_item ms_give_item_subcmd, \byte2, \byte3
-	.endm
-
-	subenum ms_take_item_subcmd // 0x1
 	.macro ms_take_item byte2:req byte3:req
-	ms_give_or_take_item ms_take_item_subcmd, \byte2, \byte3
-	.endm
-
-	.macro ms_give_or_take_item byte1:req byte2:req byte3:req
 	.byte ms_give_or_take_item_cmd
-	.byte \byte1
+	.byte ms_take_item_subcmd
 	.byte \byte2
 	.byte \byte3
 	.endm

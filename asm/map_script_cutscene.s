@@ -4821,9 +4821,9 @@ MapScriptSubCmd_spawn_ow_map_object:
 // spawn overworld map object relative to overworld player
 // byte1 lower nybble - index of cutscene state map object ptrs to store the new map object
 // byte2 - overworld map object index
-// hword3 - map object x coordinate
-// hword5 - map object y coordinate
-// hword7 - map object z coordinate
+// hword3 - map object x coordinate offset to player
+// hword5 - map object y coordinate offset to player
+// hword7 - map object z coordinate offset to player
 // word9 - unknown param (written to field oOverworldMapObject_Unk_04)
 MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_player:
 	push {lr}
@@ -4963,7 +4963,7 @@ MapScriptSubCmd_free_ow_map_object:
 	thumb_func_end MapScriptSubCmd_free_ow_map_object
 
 	thumb_local_start
-// 0x49 0x3X
+// 0x49 0x4X
 // free all overworld map objects created via a cutscene
 MapScriptSubCmd_free_all_spawned_ow_map_objects:
 	push {lr}
@@ -5256,7 +5256,7 @@ MapScriptCutsceneCmd_stop_sound:
 
 	thumb_local_start
 // 0x35/0x52 byte1 byte2 byte3
-// give or take an item
+// give or take items
 // byte1 - operation type (0=give, 1=take)
 // byte2 - item to give or take
 // byte3 - quantity of item
