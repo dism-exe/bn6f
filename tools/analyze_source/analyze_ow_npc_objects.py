@@ -3,6 +3,7 @@ import analyzer
 import time
 from analyze_source import *
 import os
+import shutil
 
 def main():
     start_time = time.time()
@@ -49,6 +50,9 @@ def print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, s
     #     pickle.dump(analyzer.function_trackers, f)
 
     if True:
+        if os.path.exists("temp/"):
+            shutil.rmtree("temp/")
+        os.makedirs("temp/")
         for filename, src_file in scanned_files.items():
             os.makedirs("temp/" + os.path.dirname(filename), exist_ok=True)
             with open("temp/" + filename, "w+") as f:

@@ -830,7 +830,7 @@ loc_8002C4E:
 
 	thumb_func_start sub_8002C52
 sub_8002C52:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
@@ -845,7 +845,7 @@ sub_8002C52:
 
 	thumb_func_start sub_8002C68
 sub_8002C68:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
