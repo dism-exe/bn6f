@@ -99,7 +99,24 @@ def evaluate_data(data, fileline):
                 split_data = data.split("+")
                 if len(split_data) == 2:
                     return datatypes.RAMPointer(int(split_data[1], 0), syms[split_data[0]]).wrap()
+            elif "|" in data:
+                split_data = data.split("|")
+                value = 0
+                for data_part in split_data:
+                    try:
+                        value |= int(data_part, 0)
+                    except ValueError:
+                        try:
+                            data_part = data_part.strip()
+                            sym = syms[data_part]
+                        except KeyError:
+                            fileline_error("Could not evaluate undefined symbol \"%s\" in | operation!" % data_part, fileline)
+                        if sym.section != "*ABS*":
+                            fileline_error("Tried | operation against non-absolute symbol \"%s\"!" % data_part, fileline)
+                            value |= sym.value
+                return datatypes.Primitive(Size.UNKNOWN, value).wrap()
             fileline_error("Could not evaluate undefined symbol \"%s\"!" % data, fileline)
+            
         if sym.type == "F":
             # technically asm38.s routines are not in ROM
             # but they are read-only so they are functionally equivalent
@@ -122,6 +139,7 @@ def evaluate_sym_or_num_error_if_undefined(sym_or_num, fileline):
     return sym_value
 
 plus_or_minus_regex = re.compile(r" *\+ *| *- *")
+bitwise_or_regex = re.compile(r" *\| *")
 
 def evaluate_sym_or_num(sym_or_num):
     global syms    
@@ -134,8 +152,11 @@ def evaluate_sym_or_num(sym_or_num):
         # allow simple + or - operations
             split_sym_or_num = plus_or_minus_regex.split(sym_or_num)
             if len(split_sym_or_num) != 2:
-                debug_print("Failed recursive plus or minus sym split: %s" % split_sym_or_num)
-                raise KeyError
+                split_sym_or_num = bitwise_or_regex.split(sym_or_num)
+                if len(split_sym_or_num) != 2:
+                    debug_print("Failed recursive plus, minus, or bitwise or sym split: %s" % split_sym_or_num)
+                    raise KeyError
+                return evaluate_sym_or_num(split_sym_or_num[0]) | evaluate_sym_or_num(split_sym_or_num[1])
             return evaluate_sym_or_num(split_sym_or_num[0]) + evaluate_sym_or_num(split_sym_or_num[1])
 
 def order_datatypes(datatype1, datatype2):

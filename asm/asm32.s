@@ -34811,17 +34811,17 @@ byte_81211B4: .byte 0x41, 0x1, 0x50, 0x1, 0x5F, 0x1, 0x6E, 0x1, 0x7D, 0x1, 0x8C
 	.byte 0x1, 0x9B, 0x1, 0xAA, 0x1, 0xB9, 0x1, 0xC8, 0x1, 0xD7, 0x1
 	.byte 0xE6, 0x1
 off_81211CC: .word off_81211D0
-off_81211D0: .word byte_8123199
-	.word byte_81231A5
-	.word byte_81231B1
-	.word byte_81231BD
-	.word byte_81231C9
-	.word byte_81231D5
-	.word byte_81231E1
-	.word byte_81231E9
-	.word byte_81231F1
-	.word byte_81231F9
-	.word byte_8123201
+off_81211D0: .word sub_8123198
+	.word sub_81231A4
+	.word sub_81231B0
+	.word sub_81231BC
+	.word sub_81231C8
+	.word sub_81231D4
+	.word sub_81231E0
+	.word sub_81231E8
+	.word sub_81231F0
+	.word sub_81231F8
+	.word sub_8123200
 
 off_81211FC: .word pt_8121200
 pt_8121200: .word off_8121230

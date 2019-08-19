@@ -533,6 +533,9 @@ def set_template_functions():
             ReturnValue("r1", datatypes.Primitive.new_byte),
             ReturnValue("r2", datatypes.Primitive.new_byte),
         ),
+        "sub_8048C24": (
+            ReturnValue("r0", datatypes.Primitive.new_byte),
+        ),
     }
 
 def check_stored_functions(opcode_params, funcstate, src_file, fileline):
@@ -836,6 +839,52 @@ def read_ow_player_object_function():
     debug_print("function: %s" % function_name)
     run_analyzer_from_label(function_name, registers, time.time())
 
+def chatbox_8041964_skip_flag_call(opcode_params, funcstate, src_file, fileline):
+    if opcode_params == "TestEventFlagRange":
+        funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(datatypes.Primitive().wrap(), fileline))
+    return True
+
+def chatbox_F4_unk_fix_bl_8041DF4(opcode_params, funcstate, src_file, fileline):
+    if opcode_params == "chatbox_8041DF4":
+        opcodes.b_opcode_function(opcode_params, funcstate, src_file, fileline)
+        return False
+    return True
+
+chatbox_specific_callbacks = {
+    0x8041964: (FunctionSpecificCallback(opcodes.bl_opcode, chatbox_8041964_skip_flag_call),), # chatbox_8041964
+    0x8041c84: (FunctionSpecificCallback(opcodes.bl_opcode, chatbox_F4_unk_fix_bl_8041DF4),), # chatbox_F4_unk
+}
+
+def read_chatbox_function():
+    registers = RegisterState()
+    fileline = default_fileline
+
+    global function_specific_callbacks
+    function_specific_callbacks.update(chatbox_specific_callbacks)
+
+    opcodes.bl_opcode.append_callback(check_stored_functions)
+    set_template_functions()
+
+    for function_name in ("chatbox_runScript", "chatbox_onUpdate"):
+        registers["r0"].default_initialize(fileline)
+        registers["r1"].default_initialize(fileline)
+        registers["r2"].default_initialize(fileline)
+        registers["r3"].default_initialize(fileline)
+        registers["r4"].default_initialize(fileline)
+        registers["r5"].default_initialize(fileline)
+        registers["r6"].default_initialize(fileline)
+        registers["r7"].default_initialize(fileline)
+        registers["r8"].default_initialize(fileline)
+        registers["r9"].default_initialize(fileline)
+        registers["r10"].initialize(RegisterInfo(datatypes.Toolkit().wrap(), fileline))
+        registers["r12"].default_initialize(fileline)
+        registers["lr"].initialize(RegisterInfo(datatypes.ProgramCounter("dummy_file", 0).wrap(), fileline))
+        registers["sp"].initialize(RegisterInfo(datatypes.Stack().wrap(), fileline))
+        registers["pc"].default_initialize(fileline)
+        datatypes.Stack.datatypes = {}
+        debug_print("function: %s" % function_name)
+        run_analyzer_from_label(function_name, registers, time.time())
+
 def run_function_main(function, dump_temp):
     start_time = time.time()
     try:
@@ -873,6 +922,8 @@ def print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, s
         function_tracker = function_name_and_count[1]
         post_output += "%s: time: %s, count: %s, avg: %s\n" % (function_name_and_count[0], function_tracker.time, function_tracker.count, function_tracker.time / function_tracker.count)
         function_time_sum += function_tracker.time
+
+    post_output += "\n" + datatypes.output_discovered_struct_fields() + "\n"
 
     #with open("trace_path.txt", "w+") as f:
     #    recursive_print_function_tree(f, analyzer.global_function_tree)

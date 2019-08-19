@@ -1,10 +1,115 @@
 
+	thumb_local_start
+sub_8123198:
+	ldr r2, =word_200DCF0
+	ldrh r1, [r2]
+	add r1, r1, r0
+	strh r1, [r2]
+	mov pc, lr
+	thumb_func_end sub_8123198
+	.balign 4, 0
+
+	thumb_local_start
+sub_81231A4:
+	ldr r2, =word_200DCF0
+	ldrh r1, [r2,#2]
+	add r1, r1, r0
+	strh r1, [r2,#2]
+	mov pc, lr
+	thumb_func_end sub_81231A4
+	.balign 4, 0
+
+	thumb_local_start
+sub_81231B0:
+	ldr r2, =word_200DCF0
+	ldrh r1, [r2,#4]
+	add r1, r1, r0
+	strh r1, [r2,#4]
+	mov pc, lr
+	thumb_func_end sub_81231B0
+	.balign 4, 0
+
+	thumb_local_start
+sub_81231BC:
+	ldr r2, =word_200DCF0
+	ldrh r1, [r2,#6]
+	add r1, r1, r0
+	strh r1, [r2,#6]
+	mov pc, lr
+	thumb_func_end sub_81231BC
+	.balign 4, 0
+
+	thumb_local_start
+sub_81231C8:
+	ldr r2, =word_200DCF0
+	ldrh r1, [r2,#8]
+	add r1, r1, r0
+	strh r1, [r2,#8]
+	mov pc, lr
+	thumb_func_end sub_81231C8
+	.balign 4, 0
+
+	thumb_local_start
+sub_81231D4:
+	ldr r2, =word_200DCF0
+	ldrh r1, [r2,#0xa]
+	add r1, r1, r0
+	strh r1, [r2,#0xa]
+	mov pc, lr
+	thumb_func_end sub_81231D4
+	.balign 4, 0
+
+	thumb_local_start
+sub_81231E0:
+	ldr r2, =word_200DCF0
+	mov r1, #1
+	strh r1, [r2,#0xc]
+	mov pc, lr
+	thumb_func_end sub_81231E0
+	.balign 4, 0
+
+	thumb_local_start
+sub_81231E8:
+	ldr r2, =word_200DCF0
+	mov r1, #1
+	strh r1, [r2,#0xe]
+	mov pc, lr
+	thumb_func_end sub_81231E8
+	.balign 4, 0
+
+	thumb_local_start
+sub_81231F0:
+	ldr r2, =word_200DCF0
+	mov r1, #1
+	strh r1, [r2,#0x10]
+	mov pc, lr
+	thumb_func_end sub_81231F0
+	.balign 4, 0
+
+	thumb_local_start
+sub_81231F8:
+	ldr r2, =word_200DCF0
+	mov r1, #1
+	strh r1, [r2,#0x12]
+	mov pc, lr
+	thumb_func_end sub_81231F8
+	.balign 4, 0
+
+	thumb_local_start
+sub_8123200:
+	ldr r2, =word_200DCF0
+	mov r1, #1
+	strh r1, [r2,#0x14]
+	mov pc, lr
+	thumb_func_end sub_8123200
+	.balign 4, 0
+
 	thumb_func_start sub_8123208
 sub_8123208:
 	push {r4-r7,lr}
 	bl GetCurPETNavi // () -> u8
 	mov r7, r0
-	ldr r4, off_81232FC // =word_200DCF0 
+	ldr r4, =word_200DCF0 
 	mov r1, #0x42 
 	mov r0, r7
 	bl GetCurPETNaviStatsHword
@@ -114,8 +219,8 @@ loc_81232E8:
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 locret_81232F8:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
-off_81232FC: .word word_200DCF0
+	.balign 4, 0
+	.pool // 81232FC
 	thumb_func_end sub_8123208
 
 	thumb_func_start sub_8123300
