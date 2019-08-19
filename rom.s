@@ -147,6 +147,8 @@ dat27:
 	.include "data/dat27.s"
 asm28_0:
 	.include "asm/asm28_0.s"
+ow_player:
+	.include "asm/ow_player.s"
 npc:
 	.include "asm/npc.s"
 asm28_1:
