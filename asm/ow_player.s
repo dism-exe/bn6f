@@ -2458,7 +2458,7 @@ loc_809E4DA:
 	pop {r4-r7,pc}
 	thumb_func_end owPlayer_toggleUsingCopybot_809e4bc
 
-	thumb_local_start
+	thumb_func_start sub_809E4F8
 sub_809E4F8:
 	push {r4-r7,lr}
 	mov r5, r10

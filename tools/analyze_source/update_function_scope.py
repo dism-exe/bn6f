@@ -5,6 +5,7 @@ import time
 import parser
 import re
 import os
+import shutil
 from analyze_source import debug_print
 
 syms = None
@@ -142,6 +143,10 @@ def update_function_scope():
     # functions that are confirmed local
     for function in functions.keys():
         change_function_to_thumb_local_start(syms[function])
+
+    if os.path.exists("temp/"):
+        shutil.rmtree("temp/")
+    os.makedirs("temp/")
 
     for filename, src_file in scanned_files.items():
         os.makedirs("temp/" + os.path.dirname(filename), exist_ok=True)

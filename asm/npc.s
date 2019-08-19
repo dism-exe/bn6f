@@ -2181,7 +2181,7 @@ npc_809F51E:
 	pop {pc}
 	thumb_func_end npc_809F51E
 
-	thumb_func_start sub_809F526
+	thumb_local_start
 sub_809F526:
 	push {r7,lr}
 	ldr r7, [r5, #oOverworldNPCObject_UnkFlags_60]
@@ -2252,7 +2252,7 @@ dword_809F5A8: .word 0x400000
 dword_809F5AC: .word 0xA00000
 	thumb_func_end sub_809F526
 
-	thumb_func_start sub_809F5B0
+	thumb_local_start
 sub_809F5B0:
 	push {lr}
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -2291,7 +2291,7 @@ dword_809F5F4: .word 0x80000
 dword_809F5F8: .word 0x50000
 	thumb_func_end sub_809F5B0
 
-	thumb_func_start sub_809F5FC
+	thumb_local_start
 sub_809F5FC:
 	push {lr}
 	ldrb r0, [r5,#oOverworldNPCObject_CurAction]
@@ -2306,7 +2306,7 @@ sub_809F5FC:
 	pop {pc}
 	thumb_func_end sub_809F5FC
 
-	thumb_func_start sub_809F612
+	thumb_local_start
 sub_809F612:
 	push {lr}
 	mov r0, #4
@@ -2328,7 +2328,7 @@ loc_809F632:
 	pop {pc}
 	thumb_func_end sub_809F612
 
-	thumb_func_start sub_809F638
+	thumb_local_start
 sub_809F638:
 	push {lr}
 	mov r0, #0
@@ -2343,7 +2343,7 @@ dword_809F648: .word 0x50000
 	thumb_func_end sub_809F638
 
 // (u8 bitfield_arr[2]) -> u16
-	thumb_func_start ReadNPCScriptHalfword
+	thumb_local_start
 ReadNPCScriptHalfword:
 	ldrb r1, [r0]
 	ldrb r0, [r0,#1]
@@ -2353,7 +2353,7 @@ ReadNPCScriptHalfword:
 	thumb_func_end ReadNPCScriptHalfword
 
 // (void* a1) -> int
-	thumb_func_start ReadNPCScriptWord
+	thumb_local_start
 ReadNPCScriptWord:
 	ldrb r1, [r0]
 	ldrb r2, [r0,#1]
@@ -2497,7 +2497,7 @@ locret_809F920:
 	pop {pc}
 	thumb_func_end sub_809F90C
 
-	thumb_func_start sub_809F922
+	thumb_local_start
 sub_809F922:
 	push {r4,r6,r7,lr}
 	movflag EVENT_1708
