@@ -149,7 +149,7 @@ locret_809E6A0:
 	pop {pc}
 	.balign 4, 0x00
 off_809E6A4: .word sub_809E6C8+1
-jt_809E6A8: .word npc_809E6DC+1
+	.word npc_809E6DC+1
 	.word npc_809E8CC+1
 	.word npc_809EA3C+1
 	.word sub_809EA74+1

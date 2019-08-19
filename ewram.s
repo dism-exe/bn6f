@@ -566,15 +566,27 @@ byte_2009470:: // 0x2009470
 unk_2009480:: // 0x2009480
 	.space 64
 byte_20094C0:: // 0x20094c0
-	.space 2
-word_20094C2:: // 0x20094c2
-	.space 2
-dword_20094C4:: // 0x20094c4
-	.space 4
-dword_20094C8:: // 0x20094c8
-	.space 12
-byte_20094D4:: // 0x20094d4
-	.space 444
+	s_20094c0_struct eS20094c0_0
+	s_20094c0_struct eS20094c0_1
+	s_20094c0_struct eS20094c0_2
+	s_20094c0_struct eS20094c0_3
+	s_20094c0_struct eS20094c0_4
+	s_20094c0_struct eS20094c0_5
+	s_20094c0_struct eS20094c0_6
+	s_20094c0_struct eS20094c0_7
+	s_20094c0_struct eS20094c0_8
+	s_20094c0_struct eS20094c0_9
+	s_20094c0_struct eS20094c0_10
+	s_20094c0_struct eS20094c0_11
+	s_20094c0_struct eS20094c0_12
+	s_20094c0_struct eS20094c0_13
+	s_20094c0_struct eS20094c0_14
+	s_20094c0_struct eS20094c0_15
+	s_20094c0_struct eS20094c0_16
+	s_20094c0_struct eS20094c0_17
+
+	.space 32
+
 dword_2009690:: // 0x2009690
 	.space 4
 dword_2009694:: // 0x2009694

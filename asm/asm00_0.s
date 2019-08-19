@@ -3165,30 +3165,30 @@ sub_8001B1C:
 	mov r3, r12
 	push {r1-r3}
 	ldr r7, off_8001C40 // =byte_20094C0
-	ldrb r1, [r0,#9]
-	mov r2, #0x18
+	ldrb r1, [r0,#oS8001b1c_Unk_09]
+	mov r2, #oS20094c0_Size
 	mul r2, r1
 	add r7, r7, r2
-	strb r1, [r7,#1]
-	ldr r1, [r0]
-	str r1, [r7,#0xc]
-	ldr r2, [r0,#4]
-	str r2, [r7,#0x10]
-	ldr r3, [r0,#8]
-	str r3, [r7,#0x14]
-	add r0, #0xc
+	strb r1, [r7,#oS20094c0_Unk_01]
+	ldr r1, [r0,#oS8001b1c_Unk_00]
+	str r1, [r7,#oS20094c0_Unk_0c]
+	ldr r2, [r0,#oS8001b1c_Unk_04]
+	str r2, [r7,#oS20094c0_Unk_10]
+	ldr r3, [r0,#oS8001b1c_Unk_08]
+	str r3, [r7,#oS20094c0_Unk_14]
+	add r0, #oS8001b1c_Unk_0c
 	mov r6, #1
 	cmp r3, #8
 	beq loc_8001B48
-	ldr r6, [r0,#4]
+	ldr r6, [r0,#oS8001b1c_Unk_10 - oS8001b1c_Unk_0c]
 loc_8001B48:
-	strh r6, [r7,#2]
+	strh r6, [r7,#oS20094c0_Unk_02]
 	mov r6, #1
-	strb r6, [r7]
-	str r0, [r7,#4]
-	str r0, [r7,#8]
+	strb r6, [r7,#oS20094c0_Unk_00]
+	str r0, [r7,#oS20094c0_Unk_04]
+	str r0, [r7,#oS20094c0_Unk_08]
 	ldr r6, off_8001B68 // =off_8001C24
-	ldrb r1, [r7,#0x14]
+	ldrb r1, [r7,#oS20094c0_Unk_14]
 	ldr r6, [r6,r1]
 	mov lr, pc
 	bx r6
@@ -3308,9 +3308,9 @@ off_8001C40: .word byte_20094C0
 	thumb_local_start
 sub_8001C44:
 	push {lr}
-	ldr r0, [r0]
-	ldr r1, [r7,#0xc]
-	ldr r2, [r7,#0x10]
+	ldr r0, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
+	ldr r1, [r7,#oS20094c0_Unk_0c]
+	ldr r2, [r7,#oS20094c0_Unk_10]
 	bl QueueEightWordAlignedGFXTransfer
 	pop {pc}
 	thumb_func_end sub_8001C44

@@ -23,6 +23,7 @@
 	.include "structs/Warp2011bb0.inc"
 	.include "structs/Camera.inc"
 	.include "structs/CutsceneCameraInfo.inc"
+	.include "structs/S20094c0.inc"
 
 /*
 rough notes for now
