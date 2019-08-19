@@ -24,10 +24,20 @@
 	0x08 - Stop
 	0x0C - Stop, with a weird location transformation for a moment.
 	*/
-	u8 MovementFlag_0a // loc=0xa
-	u8 Unk_0b // loc=0xb
-	u8 Volume // loc=0xc
-	u8 Unk_0d // loc=0xd
+	union
+		u8 MovementFlag_0a // loc=0xa
+		u8 Unk_0b // loc=0xb
+	nextu
+		u16 MovementFlag_0a_Unk_0b // loc=0xa
+	endu
+	
+	union
+		u8 Volume // loc=0xc
+		u8 Unk_0d // loc=0xd
+	nextu
+		u16 Volume_Unk_0d // loc=0xc
+	endu
+
 	u8 Unk_0e // loc=0xe
 	u8 Unk_0f // loc=0xf
 	u8 Unk_10 // loc=0x10
@@ -49,9 +59,12 @@
 	u16 AnimationTimer // loc=0x20
 	u16 Timer_20 // loc=0x22
 	u0 Coords // loc=0x24
-	u32 X // loc=0x24
-	u32 Y // loc=0x28
-	u32 Z // loc=0x2c
+	u16 X // loc=0x24 size 4
+	u16 X16 // loc=0x26
+	u16 Y // loc=0x28 size 4
+	u16 Y16 // loc=0x2a
+	u16 Z // loc=0x2c size 4
+	u16 Z16 // loc=0x2e
 	u32 NextX // loc=0x30
 	u32 NextY // loc=0x34
 	u32 NextZ // loc=0x38
