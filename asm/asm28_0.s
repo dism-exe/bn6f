@@ -4361,15 +4361,15 @@ sub_809D19C:
 	bl SetEventFlagFromImmediate
 loc_809D1D2:
 	ldr r0, off_809D258 // =off_809D25C 
-	ldrb r1, [r5,#8]
+	ldrb r1, [r5,#oOWPlayerObject_Unk_08]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-	ldrb r0, [r5,#0x14]
-	ldrb r1, [r5,#0x15]
+	ldrb r0, [r5,#oOWPlayerObject_AnimationSelect]
+	ldrb r1, [r5,#oOWPlayerObject_AnimationSelectUpdate]
 	cmp r0, r1
 	beq loc_809D1EE
-	strb r0, [r5,#0x15]
+	strb r0, [r5,#oOWPlayerObject_AnimationSelectUpdate]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 loc_809D1EE:
@@ -4436,7 +4436,7 @@ off_809D268: .word eStruct2000aa0
 sub_809D270:
 	push {r4,lr}
 	mov r0, #3
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 	bl GetCurPETNavi // () -> u8
 	ldr r4, off_809D324 // =byte_809D328
 	ldrb r4, [r4,r0]
@@ -4471,15 +4471,15 @@ sub_809D270:
 	mov r2, r4
 	bl sprite_load // (int a1, int a2, int a3) ->
 	mov r0, #0
-	strb r0, [r5,#0x14]
+	strb r0, [r5,#oOWPlayerObject_AnimationSelect]
 	mov r0, #0xff
-	strb r0, [r5,#0x15]
+	strb r0, [r5,#oOWPlayerObject_AnimationSelectUpdate]
 	bl sprite_noShadow // () -> void
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	str r5, [r0,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #4
-	strb r0, [r5,#8]
+	strb r0, [r5,#oOWPlayerObject_Unk_08]
 	mov r0, #0x48 
 	// memBlock
 	add r0, r0, r5
@@ -4487,38 +4487,38 @@ sub_809D270:
 	mov r1, #0x20 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #1
-	strb r0, [r5,#0x17]
-	strb r0, [r5,#0xc]
+	strb r0, [r5,#oOWPlayerObject_InteractionLocked]
+	strb r0, [r5,#oOWPlayerObject_wallCollision_0c]
 	mov r0, #0
-	strb r0, [r5,#0x16]
-	ldrb r0, [r5,#0x10]
+	strb r0, [r5,#oOWPlayerObject_LayerIndexOverride]
+	ldrb r0, [r5,#oOWPlayerObject_FacingDirection]
 	mov r1, #7
 	and r0, r1
-	strb r0, [r5,#0x10]
+	strb r0, [r5,#oOWPlayerObject_FacingDirection]
 	mov r0, #0xff
-	strb r0, [r5,#0x11]
+	strb r0, [r5,#oOWPlayerObject_Unk_11]
 	mov r0, #0
 	mov r3, #0x4c 
 	strh r0, [r5,r3]
 	mov r3, #0x4e 
 	strh r0, [r5,r3]
-	str r0, [r5,#0x38]
-	str r0, [r5,#0x3c]
-	str r0, [r5,#0x40]
-	str r0, [r5,#0x44]
-	strb r0, [r5,#0xd]
-	strb r0, [r5,#0xe]
-	strb r0, [r5,#0xf]
-	strh r0, [r5,#0x18]
+	str r0, [r5,#oOWPlayerObject_Unk_38]
+	str r0, [r5,#oOWPlayerObject_Unk_3c]
+	str r0, [r5,#oOWPlayerObject_Unk_40]
+	str r0, [r5,#oOWPlayerObject_Unk_44]
+	strb r0, [r5,#oOWPlayerObject_Unk_0d]
+	strb r0, [r5,#oOWPlayerObject_Unk_0e]
+	strb r0, [r5,#oOWPlayerObject_Unk_0f]
+	strh r0, [r5,#oOWPlayerObject_Unk_18]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	strb r0, [r7,#oGameState_Unk_10]
-	ldr r0, [r5,#0x1c]
-	ldr r1, [r5,#0x20]
-	ldr r2, [r5,#0x24]
-	str r0, [r5,#0x28]
-	str r1, [r5,#0x2c]
-	str r2, [r5,#0x30]
+	ldr r0, [r5,#oOWPlayerObject_X]
+	ldr r1, [r5,#oOWPlayerObject_Y]
+	ldr r2, [r5,#oOWPlayerObject_Z]
+	str r0, [r5,#oOWPlayerObject_NextX]
+	str r1, [r5,#oOWPlayerObject_NextY]
+	str r2, [r5,#oOWPlayerObject_NextZ]
 	bl sub_809D348
 	pop {r4,pc}
 off_809D324: .word byte_809D328
@@ -4583,7 +4583,7 @@ loc_809D3BC:
 	bl sub_809DB60
 	bl sub_809E3A2
 	bne loc_809D3E6
-	ldrb r0, [r5,#0x17]
+	ldrb r0, [r5,#oOWPlayerObject_InteractionLocked]
 	tst r0, r0
 	beq loc_809D3E6
 	mov r0, #0xb
@@ -4603,7 +4603,7 @@ loc_809D3E6:
 	bl ClearEventFlagFromImmediate
 	bl owPlayer_809E0C8
 loc_809D3FC: .align 1, 0
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oOWPlayerObject_LayerIndexOverride]
 	tst r0, r0
 	bne loc_809D40A
 	mov r0, r5
@@ -4617,7 +4617,7 @@ loc_809D40A:
 	bl IsCutsceneScriptNonNull // () -> zf
 	tst r0, r0
 	bne loc_809D446
-	ldrb r1, [r5,#0x13]
+	ldrb r1, [r5,#oOWPlayerObject_Unk_13]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
 	ldrh r0, [r7,#0x12]
@@ -4658,13 +4658,13 @@ off_809D468: .word off_809D450
 sub_809D470:
 	push {r4,lr}
 	bl sub_809D9E0
-	ldrb r0, [r5,#0xa]
+	ldrb r0, [r5,#oOWPlayerObject_Unk_0a]
 	tst r0, r0
 	bne loc_809D484
-	ldrb r0, [r5,#0x10]
-	strb r0, [r5,#0x14]
+	ldrb r0, [r5,#oOWPlayerObject_FacingDirection]
+	strb r0, [r5,#oOWPlayerObject_AnimationSelect]
 	mov r0, #4
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oOWPlayerObject_Unk_0a]
 loc_809D484:
 	bl sub_809DB50
 	beq loc_809D492
@@ -4712,15 +4712,15 @@ sub_809D4DC:
 	bl sub_809D9E0
 	tst r0, r0
 	beq loc_809D4FC
-	ldrb r0, [r5,#0x10]
-	ldrb r1, [r5,#0x11]
+	ldrb r0, [r5,#oOWPlayerObject_FacingDirection]
+	ldrb r1, [r5,#oOWPlayerObject_Unk_11]
 	cmp r0, r1
 	beq loc_809D4F2
 	mov r0, #0
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oOWPlayerObject_Unk_0a]
 loc_809D4F2:
 	ldr r7, off_809D55C // =off_809D554 
-	ldrb r0, [r5,#0xa]
+	ldrb r0, [r5,#oOWPlayerObject_Unk_0a]
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
@@ -4761,8 +4761,8 @@ loc_809D53E:
 	bl owPlayer_setJumptableIndex09AndOthers_809e004
 	b locret_809D552
 loc_809D54E:
-	ldrb r0, [r5,#0x13]
-	strb r0, [r5,#0x13]
+	ldrb r0, [r5,#oOWPlayerObject_Unk_13]
+	strb r0, [r5,#oOWPlayerObject_Unk_13]
 locret_809D552:
 	pop {pc}
 off_809D554: .word sub_809D560+1
@@ -4842,25 +4842,25 @@ sub_809D5C4:
 	mov r2, #0
 	mov r3, #1
 loc_809D5F4:
-	strb r3, [r5,#0x13]
-	ldr r0, [r5,#0x38]
+	strb r3, [r5,#oOWPlayerObject_Unk_13]
+	ldr r0, [r5,#oOWPlayerObject_Unk_38]
 	lsl r0, r2
-	ldr r1, [r5,#0x1c]
+	ldr r1, [r5,#oOWPlayerObject_X]
 	add r1, r1, r0
-	str r1, [r5,#0x1c]
-	ldr r0, [r5,#0x3c]
+	str r1, [r5,#oOWPlayerObject_X]
+	ldr r0, [r5,#oOWPlayerObject_Unk_3c]
 	lsl r0, r2
-	ldr r1, [r5,#0x20]
+	ldr r1, [r5,#oOWPlayerObject_Y]
 	add r1, r1, r0
-	str r1, [r5,#0x20]
+	str r1, [r5,#oOWPlayerObject_Y]
 	pop {pc}
 loc_809D60C:
-	ldr r0, [r5,#0x28]
-	ldr r1, [r5,#0x2c]
-	ldr r2, [r5,#0x30]
-	str r0, [r5,#0x1c]
-	str r1, [r5,#0x20]
-	str r2, [r5,#0x24]
+	ldr r0, [r5,#oOWPlayerObject_NextX]
+	ldr r1, [r5,#oOWPlayerObject_NextY]
+	ldr r2, [r5,#oOWPlayerObject_NextZ]
+	str r0, [r5,#oOWPlayerObject_X]
+	str r1, [r5,#oOWPlayerObject_Y]
+	str r2, [r5,#oOWPlayerObject_Z]
 	pop {pc}
 	thumb_func_end sub_809D5C4
 
@@ -4877,16 +4877,16 @@ loc_809D630:
 	bl sub_809D9E0
 	tst r0, r0
 	beq loc_809D650
-	ldrb r0, [r5,#0x10]
-	ldrb r1, [r5,#0x11]
+	ldrb r0, [r5,#oOWPlayerObject_FacingDirection]
+	ldrb r1, [r5,#oOWPlayerObject_Unk_11]
 	cmp r0, r1
 	beq loc_809D646
 	mov r0, #0
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oOWPlayerObject_Unk_0a]
 	b loc_809D646
 loc_809D646:
 	ldr r7, off_809D6B8 // =off_809D6B0 
-	ldrb r0, [r5,#0xa]
+	ldrb r0, [r5,#oOWPlayerObject_Unk_0a]
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
@@ -4971,13 +4971,13 @@ sub_809D6BC:
 	add r0, r0, r1 // r0 = map group * 10
 	add r7, r7, r0
 	ldr r0, [r7,#4]
-	str r0, [r5,#0x38]
+	str r0, [r5,#oOWPlayerObject_Unk_38]
 	ldr r0, [r7,#8]
-	str r0, [r5,#0x3c]
+	str r0, [r5,#oOWPlayerObject_Unk_3c]
 	ldrb r0, [r7]
-	strb r0, [r5,#0x14]
+	strb r0, [r5,#oOWPlayerObject_AnimationSelect]
 	mov r0, #4
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oOWPlayerObject_Unk_0a]
 	pop {pc}
 	.balign 4, 0
 off_809D714: .word eStruct2000aa0
@@ -4995,24 +4995,24 @@ sub_809D730:
 	bl sub_809DDCC
 	tst r0, r0
 	beq loc_809D750
-	ldr r0, [r5,#0x38]
-	ldr r1, [r5,#0x1c]
+	ldr r0, [r5,#oOWPlayerObject_Unk_38]
+	ldr r1, [r5,#oOWPlayerObject_X]
 	add r1, r1, r0
-	str r1, [r5,#0x1c]
-	ldr r0, [r5,#0x3c]
-	ldr r1, [r5,#0x20]
+	str r1, [r5,#oOWPlayerObject_X]
+	ldr r0, [r5,#oOWPlayerObject_Unk_3c]
+	ldr r1, [r5,#oOWPlayerObject_Y]
 	add r1, r1, r0
-	str r1, [r5,#0x20]
+	str r1, [r5,#oOWPlayerObject_Y]
 	mov r0, #2
-	strb r0, [r5,#0x13]
+	strb r0, [r5,#oOWPlayerObject_Unk_13]
 	pop {pc}
 loc_809D750:
-	ldr r0, [r5,#0x28]
-	ldr r1, [r5,#0x2c]
-	ldr r2, [r5,#0x30]
-	str r0, [r5,#0x1c]
-	str r1, [r5,#0x20]
-	str r2, [r5,#0x24]
+	ldr r0, [r5,#oOWPlayerObject_NextX]
+	ldr r1, [r5,#oOWPlayerObject_NextY]
+	ldr r2, [r5,#oOWPlayerObject_NextZ]
+	str r0, [r5,#oOWPlayerObject_X]
+	str r1, [r5,#oOWPlayerObject_Y]
+	str r2, [r5,#oOWPlayerObject_Z]
 	pop {pc}
 	thumb_func_end sub_809D730
 
@@ -5020,7 +5020,7 @@ loc_809D750:
 sub_809D75E:
 	push {lr}
 	ldr r7, off_809D7A4 // =off_809D798 
-	ldrb r0, [r5,#0xa]
+	ldrb r0, [r5,#oOWPlayerObject_Unk_0a]
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
@@ -5028,7 +5028,7 @@ sub_809D75E:
 	ldrb r0, [r7,#0x1c] // (byte_200ACFC - 0x200ace0)
 	cmp r0, #0xff
 	beq loc_809D778
-	strb r0, [r5,#0x14]
+	strb r0, [r5,#oOWPlayerObject_AnimationSelect]
 	mov r0, #0xff
 	strb r0, [r7,#0x1c] // (byte_200ACFC - 0x200ace0)
 loc_809D778:
@@ -5042,7 +5042,7 @@ loc_809D778:
 	mov r0, #0
 	strb r0, [r7,#oGameState_Unk_10]
 	mov r0, #0
-	strb r0, [r5,#7]
+	strb r0, [r5,#oOWPlayerObject_Unk_07]
 	mov r0, #0x10
 	bl owPlayer_setJumptableIndex09AndOthers_809e004
 locret_809D796:
@@ -5059,26 +5059,26 @@ sub_809D7A8:
 	bl IsCutsceneScriptNonNull // () -> zf
 	tst r0, r0
 	bne loc_809D7E2
-	ldrb r0, [r5,#0x10]
-	strb r0, [r5,#0x14]
-	ldr r7, [r5,#0x58]
+	ldrb r0, [r5,#oOWPlayerObject_FacingDirection]
+	strb r0, [r5,#oOWPlayerObject_AnimationSelect]
+	ldr r7, [r5,#oOWPlayerObject_Unk_58]
 	ldrb r0, [r7,#0x17]
 	tst r0, r0
 	bne locret_809D7C6
 	mov r0, #1
 	strb r0, [r7,#0x18]
 	mov r0, #4
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oOWPlayerObject_Unk_0a]
 locret_809D7C6:
 	pop {pc}
 loc_809D7C8:
 	push {lr}
-	ldr r7, [r5,#0x58]
+	ldr r7, [r5,#oOWPlayerObject_Unk_58]
 	ldrb r0, [r7,#0xa]
 	cmp r0, #4
 	bne locret_809D7D6
 	mov r0, #8
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oOWPlayerObject_Unk_0a]
 locret_809D7D6:
 	pop {pc}
 loc_809D7D8:
@@ -5092,11 +5092,11 @@ loc_809D7E2:
 	mov r0, #0
 	strb r0, [r7,#oGameState_Unk_10]
 	mov r0, #0
-	strb r0, [r5,#7]
+	strb r0, [r5,#oOWPlayerObject_Unk_07]
 	mov r0, #0
-	strb r0, [r5,#9]
+	strb r0, [r5,#oOWPlayerObject_JumptableIndex_09]
 	mov r0, #0
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oOWPlayerObject_Unk_0a]
 locret_809D7F6:
 	pop {pc}
 	thumb_func_end sub_809D7A8
@@ -5144,9 +5144,9 @@ loc_809D832:
 	ldrb r0, [r7,#0x1] // (byte_200ACE1 - 0x200ace0)
 	lsl r0, r0, #2
 	ldr r0, [r6,r0]
-	str r0, [r5,#8]
+	str r0, [r5,#oOWPlayerObject_Unk_08]
 loc_809D844:
-	ldrb r0, [r5,#0xc]
+	ldrb r0, [r5,#oOWPlayerObject_wallCollision_0c]
 	tst r0, r0
 	beq loc_809D856
 	bl sub_809E3D6
@@ -5155,15 +5155,15 @@ loc_809D844:
 	bl sub_8030B6A
 loc_809D856:
 	ldr r7, off_809D8AC // =eStruct200ace0 
-	ldr r0, [r5,#0x1c]
+	ldr r0, [r5,#oOWPlayerObject_X]
 	str r0, [r7,#0x8] // (dword_200ACE8 - 0x200ace0)
-	ldr r0, [r5,#0x20]
+	ldr r0, [r5,#oOWPlayerObject_Y]
 	str r0, [r7,#0xc] // (dword_200ACEC - 0x200ace0)
-	ldr r0, [r5,#0x24]
+	ldr r0, [r5,#oOWPlayerObject_Z]
 	str r0, [r7,#0x10] // (dword_200ACF0 - 0x200ace0)
 	bl sub_809E3A2
 	bne loc_809D886
-	ldrb r0, [r5,#0x17]
+	ldrb r0, [r5,#oOWPlayerObject_InteractionLocked]
 	tst r0, r0
 	beq loc_809D886
 	mov r0, #0xb
@@ -5174,9 +5174,9 @@ loc_809D856:
 	add r0, r0, r5
 	bl sub_8031612
 	lsl r0, r0, #0x10
-	str r0, [r5,#0x24]
+	str r0, [r5,#oOWPlayerObject_Z]
 loc_809D886:
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oOWPlayerObject_LayerIndexOverride]
 	tst r0, r0
 	bne loc_809D894
 	mov r0, r5
@@ -5227,7 +5227,7 @@ locret_809D8F0:
 sub_809D8F4:
 	push {lr}
 	ldr r7, off_809D928 // =off_809D91C 
-	ldrb r0, [r5,#0xa]
+	ldrb r0, [r5,#oOWPlayerObject_Unk_0a]
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
@@ -5266,15 +5266,15 @@ loc_809D938:
 	add r0, r0, r1
 	add r7, r7, r0
 	ldr r0, [r7,#4]
-	str r0, [r5,#0x38]
+	str r0, [r5,#oOWPlayerObject_Unk_38]
 	ldr r0, [r7,#8]
-	str r0, [r5,#0x3c]
+	str r0, [r5,#oOWPlayerObject_Unk_3c]
 	ldrb r0, [r7]
-	strb r0, [r5,#0x14]
-	strb r0, [r5,#0x10]
-	strb r0, [r5,#0x11]
+	strb r0, [r5,#oOWPlayerObject_AnimationSelect]
+	strb r0, [r5,#oOWPlayerObject_FacingDirection]
+	strb r0, [r5,#oOWPlayerObject_Unk_11]
 	mov r0, #4
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oOWPlayerObject_Unk_0a]
 	mov r0, #1
 	mov r1, #0x5c 
 	strb r0, [r5,r1]
@@ -5303,16 +5303,16 @@ loc_809D97E:
 	cmp r0, r3
 	bne loc_809D98E
 	mov r0, #8
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oOWPlayerObject_Unk_0a]
 loc_809D98E:
-	ldr r0, [r5,#0x38]
-	ldr r1, [r5,#0x1c]
+	ldr r0, [r5,#oOWPlayerObject_Unk_38]
+	ldr r1, [r5,#oOWPlayerObject_X]
 	add r1, r1, r0
-	str r1, [r5,#0x1c]
-	ldr r0, [r5,#0x3c]
-	ldr r1, [r5,#0x20]
+	str r1, [r5,#oOWPlayerObject_X]
+	ldr r0, [r5,#oOWPlayerObject_Unk_3c]
+	ldr r1, [r5,#oOWPlayerObject_Y]
 	add r1, r1, r0
-	str r1, [r5,#0x20]
+	str r1, [r5,#oOWPlayerObject_Y]
 	pop {pc}
 	thumb_func_end sub_809D964
 
@@ -5326,23 +5326,23 @@ sub_809D9A0:
 	blt loc_809D9C4
 	cmp r0, #0x4f 
 	bgt loc_809D9C4
-	ldr r0, [r5,#0x38]
-	ldr r1, [r5,#0x1c]
+	ldr r0, [r5,#oOWPlayerObject_Unk_38]
+	ldr r1, [r5,#oOWPlayerObject_X]
 	add r1, r1, r0
-	str r1, [r5,#0x1c]
-	ldr r0, [r5,#0x3c]
-	ldr r1, [r5,#0x20]
+	str r1, [r5,#oOWPlayerObject_X]
+	ldr r0, [r5,#oOWPlayerObject_Unk_3c]
+	ldr r1, [r5,#oOWPlayerObject_Y]
 	add r1, r1, r0
-	str r1, [r5,#0x20]
+	str r1, [r5,#oOWPlayerObject_Y]
 	b locret_809D9D6
 loc_809D9C4:
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl ClearEventFlagFromImmediate
 	mov r0, #0
-	strb r0, [r5,#9]
+	strb r0, [r5,#oOWPlayerObject_JumptableIndex_09]
 	mov r0, #0
-	strb r0, [r5,#0xa]
-	strb r0, [r5,#0xb]
+	strb r0, [r5,#oOWPlayerObject_Unk_0a]
+	strb r0, [r5,#oOWPlayerObject_Unk_0b]
 locret_809D9D6:
 	pop {pc}
 off_809D9D8: .word off_809D9DC
@@ -5370,12 +5370,12 @@ sub_809D9E0:
 	bne loc_809DA94
 	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_809DA94
-	ldrb r0, [r5,#0x10]
-	strb r0, [r5,#0x11]
+	ldrb r0, [r5,#oOWPlayerObject_FacingDirection]
+	strb r0, [r5,#oOWPlayerObject_Unk_11]
 	mov r0, #0
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_JoypadPtr]
-	ldrh r1, [r7,#2]
+	ldrh r1, [r7,#oJoypad_Pressed]
 	mov r2, #8
 	tst r2, r1
 	bne loc_809DA82
@@ -5383,27 +5383,27 @@ sub_809D9E0:
 	tst r2, r1
 	beq loc_809DA62
 	push {r0,r1,r7}
-	ldrb r0, [r5,#0x10]
+	ldrb r0, [r5,#oOWPlayerObject_FacingDirection]
 	lsl r0, r0, #2
 	ldr r7, off_809DBBC // =off_809DC0C 
 	ldr r7, [r7,r0]
 	mov r6, r8
-	ldr r0, [r5,#0x1c]
+	ldr r0, [r5,#oOWPlayerObject_X]
 	ldr r1, [r7]
 	add r0, r0, r1
 	str r0, [r6]
-	ldr r0, [r5,#0x20]
+	ldr r0, [r5,#oOWPlayerObject_Y]
 	ldr r1, [r7,#4]
 	add r0, r0, r1
 	str r0, [r6,#4]
-	ldr r0, [r5,#0x24]
+	ldr r0, [r5,#oOWPlayerObject_Z]
 	ldr r1, [r7,#8]
 	add r0, r0, r1
 	str r0, [r6,#8]
 	mov r0, r6
 	bl sub_8031A7A
 	mov r2, r0
-	strb r2, [r5,#0xd]
+	strb r2, [r5,#oOWPlayerObject_Unk_0d]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	mov r2, #1
@@ -5434,7 +5434,7 @@ loc_809DA82:
 	and r1, r0
 	beq loc_809DA90
 	sub r1, #1
-	strb r1, [r5,#0x10]
+	strb r1, [r5,#oOWPlayerObject_FacingDirection]
 loc_809DA90:
 	add sp, sp, #0xc
 	pop {pc}
@@ -5442,8 +5442,8 @@ loc_809DA94:
 	mov r0, #0
 	b loc_809DA82
 loc_809DA98:
-	ldrb r0, [r5,#0x10]
-	strb r0, [r5,#0x11]
+	ldrb r0, [r5,#oOWPlayerObject_FacingDirection]
+	strb r0, [r5,#oOWPlayerObject_Unk_11]
 	mov r0, #0
 	ldr r7, off_809DAF4 // =eStruct200ace0 
 	ldrh r1, [r7,#0x18] // (dword_200ACF8 - 0x200ace0)
@@ -5471,7 +5471,7 @@ loc_809DAC2:
 	and r1, r0
 	beq loc_809DAD0
 	sub r1, #1
-	strb r1, [r5,#0x10]
+	strb r1, [r5,#oOWPlayerObject_FacingDirection]
 loc_809DAD0:
 	add sp, sp, #0xc
 	pop {pc}
@@ -5553,7 +5553,7 @@ sub_809DB60:
 	tst r0, r1
 	beq loc_809DB92
 loc_809DB82:
-	ldrb r0, [r5,#0x10]
+	ldrb r0, [r5,#oOWPlayerObject_FacingDirection]
 	lsl r0, r0, #2
 	ldr r7, off_809DBC0 // =off_809DCEC 
 	ldr r0, [r7,r0]
@@ -5566,7 +5566,7 @@ loc_809DB92:
 	ldrb r0, [r7,#oGameState_Unk_11]
 	tst r0, r0
 	beq loc_809DBAC
-	ldrb r0, [r5,#0x10]
+	ldrb r0, [r5,#oOWPlayerObject_FacingDirection]
 	lsl r0, r0, #2
 	ldr r7, off_809DBBC // =off_809DC0C 
 	ldr r0, [r7,r0]
@@ -5593,13 +5593,13 @@ sub_809DBC4:
 	mov r2, #0
 	str r2, [r1]
 	push {r1}
-	ldr r3, [r5,#0x1c]
+	ldr r3, [r5,#oOWPlayerObject_X]
 	ldr r0, [r7]
 	add r0, r0, r3
-	ldr r3, [r5,#0x20]
+	ldr r3, [r5,#oOWPlayerObject_Y]
 	ldr r1, [r7,#4]
 	add r1, r1, r3
-	ldr r3, [r5,#0x24]
+	ldr r3, [r5,#oOWPlayerObject_Z]
 	ldr r2, [r7,#8]
 	add r2, r2, r3
 	ldr r3, [r7,#0xc]
@@ -5672,15 +5672,15 @@ byte_809DDB4: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xFC, 0xFF, 0x0, 0x0, 0x0, 0x0
 sub_809DDCC:
 	push {lr}
 	mov r0, #0
-	ldrh r1, [r5,#0x18]
+	ldrh r1, [r5,#oOWPlayerObject_Unk_18]
 	tst r1, r1
 	beq loc_809DDDE
 	sub r1, #1
-	strh r1, [r5,#0x18]
+	strh r1, [r5,#oOWPlayerObject_Unk_18]
 	mov r0, #1
 	b locret_809DDE8
 loc_809DDDE:
-	ldr r1, [r5,#0x50]
+	ldr r1, [r5,#oOWPlayerObject_Unk_50]
 	ldr r2, dword_809DDEC // =0xc00000 
 	tst r2, r1
 	bne locret_809DDE8
@@ -5700,7 +5700,7 @@ sub_809DDF0:
 	movflag EVENT_173D
 	bl TestEventFlagFromImmediate
 	beq locret_809DE2A
-	ldr r1, [r5,#0x50]
+	ldr r1, [r5,#oOWPlayerObject_Unk_50]
 	ldr r2, dword_809DE2C // =0xc00000 
 	tst r2, r1
 	beq locret_809DE2A
@@ -5748,7 +5748,7 @@ sub_809DE60:
 	blt loc_809DE72
 	ldrb r1, [r7,#0x3] // (byte_2000AA3 - 0x2000aa0)
 loc_809DE72:
-	ldrb r0, [r5,#0x10]
+	ldrb r0, [r5,#oOWPlayerObject_FacingDirection]
 	ldr r7, off_809DE8C // =off_809DE90 
 	ldr r7, [r7,r1]
 	lsl r1, r0, #3
@@ -5756,9 +5756,9 @@ loc_809DE72:
 	add r0, r0, r1
 	add r7, r7, r0
 	ldr r0, [r7,#4]
-	str r0, [r5,#0x38]
+	str r0, [r5,#oOWPlayerObject_Unk_38]
 	ldr r0, [r7,#8]
-	str r0, [r5,#0x3c]
+	str r0, [r5,#oOWPlayerObject_Unk_3c]
 	pop {pc}
 	.balign 4, 0x00
 off_809DE8C: .word off_809DE90
@@ -5802,10 +5802,10 @@ sub_809DED4:
 	beq loc_809DEEA
 loc_809DEE4:
 	mov r0, #0
-	strb r0, [r5,#7]
+	strb r0, [r5,#oOWPlayerObject_Unk_07]
 	b locret_809DEF6
 loc_809DEEA:
-	ldrb r0, [r5,#7]
+	ldrb r0, [r5,#oOWPlayerObject_Unk_07]
 	lsl r0, r0, #2
 	ldr r7, off_809DEFC // =off_809DEF8 
 	ldr r7, [r7,r0]
@@ -5830,7 +5830,7 @@ sub_809DF00:
 	mov r0, #1
 	pop {pc}
 loc_809DF16:
-	ldrb r0, [r5,#0xf]
+	ldrb r0, [r5,#oOWPlayerObject_Unk_0f]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	strb r0, [r7,#oGameState_Unk_0e]
@@ -5846,7 +5846,7 @@ loc_809DF24:
 sub_809DF28:
 	push {lr}
 	ldr r7, off_809DF40 // =eStruct200ace0 
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oOWPlayerObject_JumptableIndex_09]
 	cmp r0, #0x10
 	bne loc_809DF3A
 	mov r0, #0
@@ -5891,16 +5891,16 @@ off_809DF9C: .word off_809DF9C
 sub_809DFA0:
 	push {lr}
 	mov r0, #1
-	ldr r1, [r5,#0x1c]
-	ldr r2, [r5,#0x28]
+	ldr r1, [r5,#oOWPlayerObject_X]
+	ldr r2, [r5,#oOWPlayerObject_NextX]
 	cmp r1, r2
 	bne locret_809DFBE
-	ldr r1, [r5,#0x20]
-	ldr r2, [r5,#0x2c]
+	ldr r1, [r5,#oOWPlayerObject_Y]
+	ldr r2, [r5,#oOWPlayerObject_NextY]
 	cmp r1, r2
 	bne locret_809DFBE
-	ldr r1, [r5,#0x24]
-	ldr r2, [r5,#0x30]
+	ldr r1, [r5,#oOWPlayerObject_Z]
+	ldr r2, [r5,#oOWPlayerObject_NextZ]
 	cmp r1, r2
 	bne locret_809DFBE
 	mov r0, #0
@@ -5911,7 +5911,7 @@ locret_809DFBE:
 	thumb_local_start
 sub_809DFC0:
 	push {lr}
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oOWPlayerObject_JumptableIndex_09]
 	cmp r0, #4
 	beq loc_809DFCC
 	cmp r0, #8
@@ -5928,7 +5928,7 @@ loc_809DFD4:
 loc_809DFDC:
 	mov r3, #0x56 
 	ldrb r0, [r5,r3]
-	ldrb r2, [r5,#0x10]
+	ldrb r2, [r5,#oOWPlayerObject_FacingDirection]
 	ldr r7, off_809DFF8 // =byte_809DFFC 
 	ldrb r1, [r7,r2]
 	orr r0, r1
@@ -5936,7 +5936,7 @@ loc_809DFDC:
 	cmp r0, #0xf
 	bne locret_809DFF6
 	mov r0, #0xa
-	strh r0, [r5,#0x18]
+	strh r0, [r5,#oOWPlayerObject_Unk_18]
 	mov r0, #0
 	strb r0, [r5,r3]
 locret_809DFF6:
@@ -5976,7 +5976,7 @@ loc_809E024:
 	mov r1, #1
 	tst r0, r1
 	bne locret_809E042
-	str r7, [r5,#0x58]
+	str r7, [r5,#oOWPlayerObject_Unk_58]
 	mov r0, #0
 	b locret_809E042
 loc_809E03A:

@@ -796,7 +796,7 @@ class OWPlayerObject(Struct):
             0x3c: {Size.WORD: StructField("_Unk_3c", UnkPrimitiveMemory())},
         }
 
-    _unk_field_offset_ranges = (0x4, 0xc8)
+    _unk_field_offset_ranges = (0x0, 0x90, 0x90, 0xc8)
     @property
     def unk_field_offset_ranges(self):
         return OWPlayerObject._unk_field_offset_ranges
@@ -806,7 +806,7 @@ class OWPlayerObject(Struct):
         return "OWPlayerObject"
 
     def get_prefix(self, offset):
-        if offset < 0 or 0x4 <= offset < 0xa0:
+        if offset < 0 or 0x4 <= offset < 0x90:
             return "oOWPlayerObject"
         elif 0 <= offset < 0x4:
             return "oObjectHeader"
