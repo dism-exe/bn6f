@@ -695,6 +695,20 @@ def bl_opcode_function(opcode_params, funcstate, src_file, fileline):
     funcstate.regs["pc"].set_new_reg(analyzer.RegisterInfo(bl_reg, fileline))
     return True
 
+def movflag_pseudo_opcode_function(opcode_params, funcstate, src_file, fileline):
+    try:
+        imm_value = syms[opcode_params].value
+    except KeyError:
+        fileline_error("Could not find sym of movflag operand \"%s\"!" % opcode_params, fileline)
+
+    r0_value = imm_value >> 8
+    r1_value = imm_value & 0xff
+    new_r0_reg = datatypes.Primitive(Size.BYTE, r0_value).wrap()
+    new_r1_reg = datatypes.Primitive(Size.BYTE, r1_value).wrap()
+    funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(new_r0_reg, fileline))
+    funcstate.regs["r1"].set_new_reg(analyzer.RegisterInfo(new_r1_reg, fileline))
+    return True
+
 class Opcode:
     def __init__(self, regex, function):
         self.regex = regex
@@ -794,6 +808,7 @@ ble_opcode = Opcode(label_or_imm_regex, ble_opcode_function)
 swi_opcode = Opcode(label_or_imm_regex, swi_opcode_function)
 b_opcode = Opcode(label_or_imm_regex, b_opcode_function)
 bl_opcode = Opcode(label_or_imm_regex, bl_opcode_function)
+movflag_pseudo_opcode = Opcode(label_or_imm_regex, movflag_pseudo_opcode_function)
 
 opcodes = {
     "lsl": (
@@ -972,6 +987,9 @@ opcodes = {
     ),
     "bl": (
         bl_opcode,
+    ),
+    "movflag": (
+        movflag_pseudo_opcode,
     )
 }
 

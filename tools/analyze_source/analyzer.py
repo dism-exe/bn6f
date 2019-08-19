@@ -352,7 +352,7 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
             else:
                 stripped_line = line.strip()
                 if stripped_line.startswith("thumb_func") or stripped_line.startswith(".align 1, 0"):
-                    continue
+                    continue                    
                 fileline_error("Unknown directive \"%s\"!" % stripped_line, fileline)
         else:
             global_fileline_error("Reached end of file while parsing!")
@@ -763,3 +763,88 @@ def read_battle_object_jumptables():
                 function_name = parser.strip_plus1(word)
                 debug_print("function: %s" % function_name)
                 run_analyzer_from_label(function_name, registers, time.time())
+
+def read_ow_npc_object_function():
+    """
+    Returns a jumptable's entries in a list specified by the given label.
+    
+    Parameters
+    ----------
+    jumptable : str
+        The label of the jumptable.
+
+    Raises
+    ------
+    RuntimeError
+        Thrown if the jumptable was not found.
+    """
+
+    registers = RegisterState()
+    fileline = default_fileline
+    opcodes.bl_opcode.append_callback(check_stored_functions)
+    opcodes.bl_opcode.append_callback(opcodes.check_spawn_battle_object)
+
+    global function_specific_callbacks
+    function_specific_callbacks.update({
+        0x800EA22: (FunctionSpecificCallback(opcodes.bne_opcode, check_loc_800EA38),), # sub_800EA22
+        0x810ab8c: (FunctionSpecificCallback(opcodes.ldrb_rb_imm_opcode, check_sub_810AB8C),), # sub_810AB8C
+        0x80127c0: (FunctionSpecificCallback(opcodes.and_opcode, check_sub_80127C0),), # sub_80127C0
+        0x800fc30: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, check_sub_800FC30),), # sub_800FC30
+        0x802EF74: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, check_sub_802EF74_ldr), # sub_802EF74
+                    FunctionSpecificCallback(opcodes.tst_opcode, check_sub_802EF74_tst)),
+        0x8013892: (FunctionSpecificCallback(opcodes.push_opcode, check_sub_8013892_push_r7),), # sub_8013892
+        0x8002b30: (FunctionSpecificCallback(opcodes.lsl_imm_opcode, check_pointer_shift), # sprite_decompress
+                    FunctionSpecificCallback(opcodes.lsr_imm_opcode, check_pointer_shift)),
+        0x8000B8E: (FunctionSpecificCallback(opcodes.lsl_imm_opcode, check_pointer_shift), # decomp_initGfx_8000B8E
+                    FunctionSpecificCallback(opcodes.lsr_imm_opcode, check_pointer_shift)),
+        0x80EE406: (FunctionSpecificCallback(opcodes.ble_opcode, check_loc_80EE4F0),), # sub_80EE406
+        0x8107E66: (FunctionSpecificCallback(opcodes.tst_opcode, sub_8107E66_hack_push_lr),), # sub_8107E66
+        0x80F0700: (FunctionSpecificCallback(opcodes.pop_opcode, sub_80F0700_hack_pop_balance),), # sub_80F0700
+        0x80103F8: (FunctionSpecificCallback(opcodes.mov_imm_opcode, sub_80103F8_hack_battle_obj_null),), # sub_80103F8
+        0x8109D08: (FunctionSpecificCallback(opcodes.bx_opcode, sub_8109D08_bx_callback_fix),), # sub_8109D08
+        0x810A94C: (FunctionSpecificCallback(opcodes.bl_opcode, check_bl_sub_80BC3B8),),
+        0x800ebd4: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, hack_battle_state_field_0x80_object_read),), # object_getEnemyByNameRange
+        0x800d3fe: (FunctionSpecificCallback(opcodes.add_sp_opcode, object_get_panel_region_set_correct_return_value),), # object_getPanelRegion
+        0x80BC670: (FunctionSpecificCallback(opcodes.bne_opcode, sub_80BC670_set_r0_battle_object),), # sub_80BC670
+        0x80BDB3C: (FunctionSpecificCallback(opcodes.push_opcode, sub_80BDB3C_sub_80DA68C_fix_misaligned_push),), # sub_80BDB3C
+        0x80C51CC: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80C51CC
+        0x80C57F4: (FunctionSpecificCallback(opcodes.pop_opcode, sub_80C57F4_fix_misaligned_pop),), # sub_80C57F4
+        0x80C7A58: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, sub_80C7A58_sub_80CAC44_ignore_cmp),), # sub_80C7A58
+        0x80CAC44: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, sub_80C7A58_sub_80CAC44_ignore_cmp),), # sub_80CAC44
+        0x80CBB76: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80CBB76
+        0x80CF3DC: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80CF3DC
+        0x80DA68C: (FunctionSpecificCallback(opcodes.push_opcode, sub_80BDB3C_sub_80DA68C_fix_misaligned_push),), # sub_80DA68C
+        0x80DBF04: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80DBF04
+        0x80DCA38: (FunctionSpecificCallback(opcodes.mov_reg_opcode, sub_80DCA38_fix_uninitialized_stack_read),), # sub_80DCA38
+        0x80DDC30: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80DDC30
+        0x80E1566: (FunctionSpecificCallback(opcodes.mov_reg_opcode, sub_80E1566_fix_sub_80E1670_return_value),), # sub_80E1566
+        0x80E72C8: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, sub_80E72C8_fix_extra_vars_0x74_read),
+                    FunctionSpecificCallback(opcodes.add_sp_opcode, sub_80E72C8_fix_misaligned_stack)), # sub_80E72C8
+        0x81023C0: (FunctionSpecificCallback(opcodes.bl_opcode, sub_81023C0_sub_8102428_skip_bl_sub_8102CF8),), # sub_81023C0
+        0x8102428: (FunctionSpecificCallback(opcodes.bl_opcode, sub_81023C0_sub_8102428_skip_bl_sub_8102CF8),), # sub_8102428
+        
+    })
+
+    #global global_function_tree
+    #global_function_tree = run_analyzer_from_label(parser.strip_plus1(words[0]), registers, time.time())[1]
+    set_template_functions()
+    registers["r0"].default_initialize(fileline)
+    registers["r1"].default_initialize(fileline)
+    registers["r2"].default_initialize(fileline)
+    registers["r3"].default_initialize(fileline)
+    registers["r4"].default_initialize(fileline)
+    registers["r5"].initialize(RegisterInfo(datatypes.OWNPCObject().wrap(), fileline))
+    registers["r6"].default_initialize(fileline)
+    registers["r7"].default_initialize(fileline)
+    registers["r8"].default_initialize(fileline)
+    registers["r9"].default_initialize(fileline)
+    registers["r10"].initialize(RegisterInfo(datatypes.Toolkit().wrap(), fileline))
+    registers["r12"].default_initialize(fileline)
+    registers["lr"].initialize(RegisterInfo(datatypes.ProgramCounter("asm00_1.s", 2479).wrap(), fileline))
+    registers["sp"].initialize(RegisterInfo(datatypes.Stack().wrap(), fileline))
+    registers["pc"].default_initialize(fileline)
+    datatypes.Stack.datatypes = {}
+    function_name = "npc_809E570"
+    debug_print("function: %s" % function_name)
+    run_analyzer_from_label(function_name, registers, time.time())
+ 

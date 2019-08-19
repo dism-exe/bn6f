@@ -657,6 +657,110 @@ class BattleState(Struct):
     def unk_field_offset_ranges(self):
         return BattleState._unk_field_offset_ranges
 
+class OWNPCObject(Struct):
+    def __init__(self):
+        super().__init__()
+
+    def generate_basic_struct_fields(self):
+        return {
+            0x0: {Size.BYTE: StructField("_Flags", UnkPrimitiveMemory()),
+                  Size.WORD: StructField("_ObjectHeader", UnkPrimitiveMemory())},
+            0x1: {Size.BYTE: StructField("_Index", UnkPrimitiveMemory())},
+            0x2: {Size.BYTE: StructField("_TypeAndSpriteOffset", AnonMemory(functools.partial(Primitive, Size.BYTE, 0xa2)))},
+            0x3: {Size.BYTE: StructField("_ListIndex", UnkPrimitiveMemory())},
+            0x4: {Size.WORD: StructField("_WalkingSpeed_WalkingTimer_Undetected_06_Unk_07", UnkPrimitiveMemory()),
+                  Size.DEFAULT: StructField("_WalkingSpeed", UnkPrimitiveMemory())},
+            0x5: {Size.BYTE: StructField("_WalkingTimer", UnkPrimitiveMemory())},
+            0x6: {Size.DEFAULT: StructField("_Undetected_06", UnkPrimitiveMemory())},
+            0x7: {Size.BYTE: StructField("_Unk_07", UnkPrimitiveMemory())},
+            0x8: {Size.BYTE: StructField("Unk_08_MainJumptableIndex", UnkPrimitiveMemory())},
+            0x9: {Size.BYTE: StructField("MovementFlag_09", UnkPrimitiveMemory())},
+            0xa: {Size.BYTE: StructField("MovementFlag_0a", UnkPrimitiveMemory())},
+            0xb: {Size.BYTE: StructField("_Unk_0b", UnkPrimitiveMemory())},
+            0xc: {Size.BYTE: StructField("_Volume", UnkPrimitiveMemory())},
+            0xd: {Size.BYTE: StructField("_Unk_0d", UnkPrimitiveMemory())},
+            0xe: {Size.BYTE: StructField("_Unk_0e", UnkPrimitiveMemory())},
+            0xf: {Size.BYTE: StructField("_Unk_0f", UnkPrimitiveMemory())},
+            0x10: {Size.BYTE: StructField("_Unk_10", UnkPrimitiveMemory())},
+            0x11: {Size.BYTE: StructField("_Unk_11", UnkPrimitiveMemory())},
+            0x12: {Size.BYTE: StructField("_Unk_12", UnkPrimitiveMemory())},
+            0x13: {Size.BYTE: StructField("_Unk_13", UnkPrimitiveMemory())},
+            0x14: {Size.BYTE: StructField("_AnimationSelect", UnkPrimitiveMemory())},
+            0x15: {Size.BYTE: StructField("_AnimationSelectUpdate", UnkPrimitiveMemory())},
+            0x16: {Size.BYTE: StructField("_PaletteIndex", UnkPrimitiveMemory())},
+            0x17: {Size.BYTE: StructField("_InteractionLocked", UnkPrimitiveMemory())},
+            0x18: {Size.BYTE: StructField("_ChatTriggered", UnkPrimitiveMemory())},
+            0x19: {Size.BYTE: StructField("_TerminateScript_19", UnkPrimitiveMemory())},
+            0x1a: {Size.BYTE: StructField("_Undetected_1a", UnkPrimitiveMemory())},
+            0x1b: {Size.BYTE: StructField("_Undetected_1b", UnkPrimitiveMemory())},
+            0x1c: {Size.BYTE: StructField("_TextScriptIndex", UnkPrimitiveMemory())},
+            0x1d: {Size.BYTE: StructField("_Unk_1d", UnkPrimitiveMemory())},
+            0x1e: {Size.BYTE: StructField("_Unk_1e", UnkPrimitiveMemory())},
+            0x1f: {Size.BYTE: StructField("_TerminateScript_1f", UnkPrimitiveMemory())},
+            0x20: {Size.HWORD: StructField("_AnimationTimer", UnkPrimitiveMemory())},
+            0x22: {Size.HWORD: StructField("_Timer_20", UnkPrimitiveMemory())},
+            0x24: {Size.WORD: StructField("_X", UnkPrimitiveMemory())},
+            0x26: {Size.HWORD: StructField("_X16", UnkPrimitiveMemory())},
+            0x28: {Size.WORD: StructField("_Y", UnkPrimitiveMemory())},
+            0x2a: {Size.HWORD: StructField("_Y16", UnkPrimitiveMemory())},
+            0x2c: {Size.WORD: StructField("_Z", UnkPrimitiveMemory())},
+            0x2e: {Size.HWORD: StructField("_Z16", UnkPrimitiveMemory())},
+            0x30: {Size.WORD: StructField("_NextX", UnkPrimitiveMemory())},
+            0x34: {Size.WORD: StructField("_NextY", UnkPrimitiveMemory())},
+            0x38: {Size.WORD: StructField("_NextZ", UnkPrimitiveMemory())},
+            0x3c: {Size.HWORD: StructField("_NPCSprite", UnkPrimitiveMemory())},
+            0x3e: {Size.HWORD: StructField("_NPCSpriteUpdate", UnkPrimitiveMemory())},
+            0x40: {Size.WORD: StructField("_DeltaX", UnkPrimitiveMemory())},
+            0x44: {Size.WORD: StructField("_DeltaY", UnkPrimitiveMemory())},
+            0x48: {Size.WORD: StructField("_DeltaZ", UnkPrimitiveMemory())},
+            0x4c: {Size.WORD: StructField("_AnimationScriptPtr", UnkMemory())},
+            0x50: {Size.WORD: StructField("_Unk_50", UnkMemory())},
+            0x54: {Size.WORD: StructField("_Unk_54", UnkMemory())},
+            0x58: {Size.WORD: StructField("_Unk_58", UnkMemory())},
+            0x5c: {Size.WORD: StructField("_UnkNPCScriptPtr_5c", UnkMemory())},
+            0x60: {Size.WORD: StructField("_UnkFlags_60", UnkPrimitiveMemory())},
+            0x64: {Size.WORD: StructField("_Unk_64", UnkMemory())},
+            0x68: {Size.WORD: StructField("_Flags_68", UnkPrimitiveMemory())},
+            0x6c: {Size.WORD: StructField("_Flags_68_Update", UnkPrimitiveMemory())},
+            0x70: {Size.WORD: StructField("_Unk_70", UnkMemory())},
+            0x74: {Size.WORD: StructField("_Unk_74", UnkMemory())},
+            0x78: {Size.WORD: StructField("_Unk_78", UnkMemory())},
+            0x7c: {Size.WORD: StructField("_Undetected_7c", UnkMemory())},
+            0x80: {Size.BYTE: StructField("_Unk_80", UnkPrimitiveMemory()),
+                   Size.WORD: StructField("_Unk_80_Word", UnkPrimitiveMemory())},
+            0x81: {Size.BYTE: StructField("_Unk_81", UnkPrimitiveMemory())},
+            0x82: {Size.BYTE: StructField("_WalkingSpeedReload", UnkPrimitiveMemory())},
+            0x83: {Size.BYTE: StructField("_WalkingTimerReload", UnkPrimitiveMemory())},
+            0x84: {Size.WORD: StructField("_Unk_84", UnkMemory())},
+            0x88: {Size.WORD: StructField("_Undetected_88", UnkMemory())},
+            0x8c: {Size.WORD: StructField("_Undetected_8c", UnkMemory())},
+            0x90: {Size.WORD: StructField("_Chatbox_90", UnkMemory())},
+            0x94: {Size.WORD: StructField("_TextScriptPtr", UnkMemory())}
+        }
+
+    _unk_field_offset_ranges = (0xa0, 0xd8)
+    @property
+    def unk_field_offset_ranges(self):
+        return OWNPCObject._unk_field_offset_ranges
+
+    @property
+    def struct_name(self):
+        return "OWNPCObject"
+
+    def get_prefix(self, offset):
+        if offset < 0 or 0x4 <= offset < 0xa0:
+            return "oOverworldNPCObject"
+        elif 0 <= offset < 0x4:
+            return "oObjectHeader"
+        elif 0xa0 <= offset < 0xd8:
+            return "oObjectSprite"
+        else:
+            global_fileline_error("Struct offset \"%s\" does not have prefix!" % offset)
+
+    def on_nan_struct_offset(self, fileline, offset):
+        fileline_msg("OWNPCObjectNanOffsetWarning: Offset is NaN!", fileline)
+        return Struct.barebones_struct_field
+
 class BattleObject(Struct):
     def __init__(self, offset=0):
         super().__init__(offset)

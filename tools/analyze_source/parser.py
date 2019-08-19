@@ -37,6 +37,8 @@ def get_ldr_label_contents(label, src_file):
         for line in src_file:
             if line.startswith(label):
                 break
+    elif label.startswith("="):
+        return label[1:]
     else:
         src_file.line_num = syms[label].line_num
         #debug_print("ldr contents line num: %s" % (src_file.line_num + 1))
