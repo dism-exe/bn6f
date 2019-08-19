@@ -3,7 +3,7 @@
 npc_809E570:
 	push {lr}
 	ldr r7, off_809E58C // =jt_809E580 
-	ldrb r0, [r5,#oOverworldNPCObject_Unk_08_MainJumptableIndex]
+	ldrb r0, [r5,#oOverworldNPCObject_CurState]
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
@@ -42,7 +42,7 @@ npc_809E590:
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelect]
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelectUpdate]
 	mov r0, #4
-	strb r0, [r5,#oOverworldNPCObject_Unk_08_MainJumptableIndex]
+	strb r0, [r5,#oOverworldNPCObject_CurState]
 	mov r0, #4
 	strb r0, [r5,#oOverworldNPCObject_Volume]
 	mov r0, #8
@@ -67,7 +67,7 @@ npc_809E5E2:
 loc_809E5F0:
 	bl npc_809EBDC
 	ldr r7, off_809E6C0 // =off_809E6A4 
-	ldrb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	ldrb r0, [r5,#oOverworldNPCObject_CurAction]
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
@@ -685,7 +685,7 @@ loc_809EAD4:
 npc_809EADA:
 	push {lr}
 	ldr r7, off_809EB00 // =off_809EAFC 
-	ldrb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	ldrb r0, [r5,#oOverworldNPCObject_CurAction]
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
@@ -1121,7 +1121,7 @@ npc_809EE62:
 npc_809EE6C:
 	push {lr}
 	mov r0, #0
-	strb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	ldrb r0, [r6,#1]
@@ -1139,7 +1139,7 @@ npc_809EE82:
 	ldrb r0, [r6,#2]
 	strb r0, [r5,#oOverworldNPCObject_WalkingTimer]
 	mov r0, #8
-	strb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	bl npc_809F51E
@@ -1197,7 +1197,7 @@ npc_809EEDA:
 	ldrb r2, [r6,#3]
 	strb r2, [r5,#oOverworldNPCObject_WalkingTimer]
 	mov r0, #4
-	strb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	bl npc_809F51E
@@ -1524,7 +1524,7 @@ sub_809F0EC:
 	mov r7, #0x80
 	str r0, [r5,r7]
 	mov r0, #0xc
-	strb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	bl npc_809F51E
@@ -1643,7 +1643,7 @@ sub_809F198:
 	bl ReadNPCScriptWord // (void* a1) -> int
 	str r0, [r5,#oOverworldNPCObject_Undetected_7c]
 	mov r0, #0x10
-	strb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	mov r2, #0x8c
@@ -1690,7 +1690,7 @@ sub_809F1D8:
 	bl ReadNPCScriptWord // (void* a1) -> int
 	str r0, [r5,#oOverworldNPCObject_Undetected_7c]
 	mov r0, #0x10
-	strb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	mov r2, #0x8c
@@ -1745,7 +1745,7 @@ sub_809F23E:
 	ldrb r2, [r5,r4]
 	strb r2, [r5,#oOverworldNPCObject_WalkingTimer]
 	mov r0, #4
-	strb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	bl npc_809F51E
@@ -1836,7 +1836,7 @@ loc_809F2DA:
 sub_809F2DE:
 	push {r7,lr}
 	mov r0, #0x14
-	strb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	ldrb r0, [r6,#1]
@@ -1895,7 +1895,7 @@ sub_809F31C:
 sub_809F338:
 	push {r7,lr}
 	mov r0, #0x18
-	strb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	add r0, r6, #1
@@ -2021,7 +2021,7 @@ sub_809F3F6:
 	ldrb r0, [r6,#4]
 	strb r0, [r5,#oOverworldNPCObject_Unk_07]
 	mov r0, #8
-	strb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #8
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	bl npc_809F51E
@@ -2039,7 +2039,7 @@ sub_809F418:
 	ldrb r2, [r6,#3]
 	strb r2, [r5,#oOverworldNPCObject_Undetected_06]
 	mov r0, #4
-	strb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #8
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	bl npc_809F51E
@@ -2060,7 +2060,7 @@ sub_809F438:
 	ldrb r0, [r6,#4]
 	strb r0, [r5,#oOverworldNPCObject_Unk_07]
 	mov r0, #8
-	strb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0x10
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	bl npc_809F51E
@@ -2181,7 +2181,6 @@ npc_809F51E:
 	pop {pc}
 	thumb_func_end npc_809F51E
 
-
 	thumb_func_start sub_809F526
 sub_809F526:
 	push {r7,lr}
@@ -2295,14 +2294,14 @@ dword_809F5F8: .word 0x50000
 	thumb_func_start sub_809F5FC
 sub_809F5FC:
 	push {lr}
-	ldrb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	ldrb r0, [r5,#oOverworldNPCObject_CurAction]
 	strb r0, [r5,#oOverworldNPCObject_Unk_1d]
 	ldrb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
 	strb r0, [r5,#oOverworldNPCObject_Unk_1e]
 	mov r0, #8
-	strb r0, [r5,#oOverworldNPCObject_Unk_08_MainJumptableIndex]
+	strb r0, [r5,#oOverworldNPCObject_CurState]
 	mov r0, #0
-	strb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	pop {pc}
 	thumb_func_end sub_809F5FC
@@ -2311,9 +2310,9 @@ sub_809F5FC:
 sub_809F612:
 	push {lr}
 	mov r0, #4
-	strb r0, [r5,#oOverworldNPCObject_Unk_08_MainJumptableIndex]
+	strb r0, [r5,#oOverworldNPCObject_CurState]
 	ldrb r0, [r5,#oOverworldNPCObject_Unk_1d]
-	strb r0, [r5,#oOverworldNPCObject_MovementFlag_09]
+	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	ldrb r0, [r5,#oOverworldNPCObject_Unk_1e]
 	strb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]

@@ -1491,14 +1491,14 @@ FreeOWPlayerObject:
 	push {lr}
 	mov r0, #0x80
 	lsl r0, r0, #0x18
-	ldrb r1, [r5,#3]
+	ldrb r1, [r5,#oObjectHeader_ListIndex]
 	lsr r0, r1
 	ldr r1, off_8003C90 // =eActiveOWPlayerObjectBitfield
 	ldr r2, [r1]
 	bic r2, r0
 	str r2, [r1]
 	mov r1, #0
-	strb r1, [r5]
+	strb r1, [r5,#oObjectHeader_Flags]
 	bl sprite_makeUnscalable
 	pop {pc}
 	thumb_func_end FreeOWPlayerObject

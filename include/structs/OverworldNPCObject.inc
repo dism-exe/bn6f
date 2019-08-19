@@ -12,8 +12,11 @@
 	u32 WalkingSpeed_WalkingTimer_Undetected_06_Unk_07 // loc=0x4
 	endu
 
-	u8 Unk_08_MainJumptableIndex // loc=0x8
-	u8 MovementFlag_09 // loc=0x9
+	u8 CurState // loc=0x8
+	// 0x0 - init
+	// 0x4 - standard
+	// 0x8 - stationary? activated when ChatTriggered is true
+	u8 CurAction // loc=0x9
 		struct_const MOVEMENT_FLAG_STOP,                      0x00
 		struct_const MOVEMENT_FLAG_DEFAULT_MOVING,            0x04
 		struct_const MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES,  0x08

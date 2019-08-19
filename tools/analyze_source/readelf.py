@@ -79,7 +79,8 @@ if __name__ == "__main__":
     sym_dump_output = ""
     cfg_output = ""
     highest_sym_value = 0
-    for sym, sym_info in syms.items():
+    sorted_syms = sorted(syms.items(), key=lambda kv: kv[1].value)
+    for sym, sym_info in sorted_syms:
         sym_dump_output += "{}: value=0x{:x}, scope=\"{}\", debug=\"{}\", type=\"{}\", section=\"{}\"\n".format(sym, sym_info.value, sym_info.scope, sym_info.debug, sym_info.type, sym_info.section)
         if sym_info.type == "F" and sym_info.value >= 0x8000000:
             cfg_output += "{} 0x{:x} {}\n".format("thumb_func", sym_info.value, sym)

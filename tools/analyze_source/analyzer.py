@@ -17,6 +17,8 @@ import time
 import collections
 import analyzer
 import functools
+import os
+import shutil
 
 syms = {}
 scanned_files = {}
@@ -526,6 +528,11 @@ def set_template_functions():
         "sub_80E7486": (
             ReturnValue("r0", datatypes.BattleObject),
         ),
+        "sub_8031A7A": (
+            ReturnValue("r0", datatypes.Primitive.new_byte),
+            ReturnValue("r1", datatypes.Primitive.new_byte),
+            ReturnValue("r2", datatypes.Primitive.new_byte),
+        ),
     }
 
 def check_stored_functions(opcode_params, funcstate, src_file, fileline):
@@ -673,6 +680,45 @@ def sub_81023C0_sub_8102428_skip_bl_sub_8102CF8(opcode_params, funcstate, src_fi
         return False
     return True
 
+battle_object_specific_callbacks = {
+    0x800EA22: (FunctionSpecificCallback(opcodes.bne_opcode, check_loc_800EA38),), # sub_800EA22
+    0x810ab8c: (FunctionSpecificCallback(opcodes.ldrb_rb_imm_opcode, check_sub_810AB8C),), # sub_810AB8C
+    0x80127c0: (FunctionSpecificCallback(opcodes.and_opcode, check_sub_80127C0),), # sub_80127C0
+    0x800fc30: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, check_sub_800FC30),), # sub_800FC30
+    0x802EF74: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, check_sub_802EF74_ldr), # sub_802EF74
+                FunctionSpecificCallback(opcodes.tst_opcode, check_sub_802EF74_tst)),
+    0x8013892: (FunctionSpecificCallback(opcodes.push_opcode, check_sub_8013892_push_r7),), # sub_8013892
+    0x8002b30: (FunctionSpecificCallback(opcodes.lsl_imm_opcode, check_pointer_shift), # sprite_decompress
+                FunctionSpecificCallback(opcodes.lsr_imm_opcode, check_pointer_shift)),
+    0x8000B8E: (FunctionSpecificCallback(opcodes.lsl_imm_opcode, check_pointer_shift), # decomp_initGfx_8000B8E
+                FunctionSpecificCallback(opcodes.lsr_imm_opcode, check_pointer_shift)),
+    0x80EE406: (FunctionSpecificCallback(opcodes.ble_opcode, check_loc_80EE4F0),), # sub_80EE406
+    0x8107E66: (FunctionSpecificCallback(opcodes.tst_opcode, sub_8107E66_hack_push_lr),), # sub_8107E66
+    0x80F0700: (FunctionSpecificCallback(opcodes.pop_opcode, sub_80F0700_hack_pop_balance),), # sub_80F0700
+    0x80103F8: (FunctionSpecificCallback(opcodes.mov_imm_opcode, sub_80103F8_hack_battle_obj_null),), # sub_80103F8
+    0x8109D08: (FunctionSpecificCallback(opcodes.bx_opcode, sub_8109D08_bx_callback_fix),), # sub_8109D08
+    0x810A94C: (FunctionSpecificCallback(opcodes.bl_opcode, check_bl_sub_80BC3B8),),
+    0x800ebd4: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, hack_battle_state_field_0x80_object_read),), # object_getEnemyByNameRange
+    0x800d3fe: (FunctionSpecificCallback(opcodes.add_sp_opcode, object_get_panel_region_set_correct_return_value),), # object_getPanelRegion
+    0x80BC670: (FunctionSpecificCallback(opcodes.bne_opcode, sub_80BC670_set_r0_battle_object),), # sub_80BC670
+    0x80BDB3C: (FunctionSpecificCallback(opcodes.push_opcode, sub_80BDB3C_sub_80DA68C_fix_misaligned_push),), # sub_80BDB3C
+    0x80C51CC: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80C51CC
+    0x80C57F4: (FunctionSpecificCallback(opcodes.pop_opcode, sub_80C57F4_fix_misaligned_pop),), # sub_80C57F4
+    0x80C7A58: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, sub_80C7A58_sub_80CAC44_ignore_cmp),), # sub_80C7A58
+    0x80CAC44: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, sub_80C7A58_sub_80CAC44_ignore_cmp),), # sub_80CAC44
+    0x80CBB76: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80CBB76
+    0x80CF3DC: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80CF3DC
+    0x80DA68C: (FunctionSpecificCallback(opcodes.push_opcode, sub_80BDB3C_sub_80DA68C_fix_misaligned_push),), # sub_80DA68C
+    0x80DBF04: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80DBF04
+    0x80DCA38: (FunctionSpecificCallback(opcodes.mov_reg_opcode, sub_80DCA38_fix_uninitialized_stack_read),), # sub_80DCA38
+    0x80DDC30: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80DDC30
+    0x80E1566: (FunctionSpecificCallback(opcodes.mov_reg_opcode, sub_80E1566_fix_sub_80E1670_return_value),), # sub_80E1566
+    0x80E72C8: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, sub_80E72C8_fix_extra_vars_0x74_read),
+                FunctionSpecificCallback(opcodes.add_sp_opcode, sub_80E72C8_fix_misaligned_stack)), # sub_80E72C8
+    0x81023C0: (FunctionSpecificCallback(opcodes.bl_opcode, sub_81023C0_sub_8102428_skip_bl_sub_8102CF8),), # sub_81023C0
+    0x8102428: (FunctionSpecificCallback(opcodes.bl_opcode, sub_81023C0_sub_8102428_skip_bl_sub_8102CF8),), # sub_8102428
+}
+
 def read_battle_object_jumptables():
     """
     Returns a jumptable's entries in a list specified by the given label.
@@ -696,45 +742,7 @@ def read_battle_object_jumptables():
     opcodes.bl_opcode.append_callback(opcodes.check_spawn_battle_object)
 
     global function_specific_callbacks
-    function_specific_callbacks.update({
-        0x800EA22: (FunctionSpecificCallback(opcodes.bne_opcode, check_loc_800EA38),), # sub_800EA22
-        0x810ab8c: (FunctionSpecificCallback(opcodes.ldrb_rb_imm_opcode, check_sub_810AB8C),), # sub_810AB8C
-        0x80127c0: (FunctionSpecificCallback(opcodes.and_opcode, check_sub_80127C0),), # sub_80127C0
-        0x800fc30: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, check_sub_800FC30),), # sub_800FC30
-        0x802EF74: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, check_sub_802EF74_ldr), # sub_802EF74
-                    FunctionSpecificCallback(opcodes.tst_opcode, check_sub_802EF74_tst)),
-        0x8013892: (FunctionSpecificCallback(opcodes.push_opcode, check_sub_8013892_push_r7),), # sub_8013892
-        0x8002b30: (FunctionSpecificCallback(opcodes.lsl_imm_opcode, check_pointer_shift), # sprite_decompress
-                    FunctionSpecificCallback(opcodes.lsr_imm_opcode, check_pointer_shift)),
-        0x8000B8E: (FunctionSpecificCallback(opcodes.lsl_imm_opcode, check_pointer_shift), # decomp_initGfx_8000B8E
-                    FunctionSpecificCallback(opcodes.lsr_imm_opcode, check_pointer_shift)),
-        0x80EE406: (FunctionSpecificCallback(opcodes.ble_opcode, check_loc_80EE4F0),), # sub_80EE406
-        0x8107E66: (FunctionSpecificCallback(opcodes.tst_opcode, sub_8107E66_hack_push_lr),), # sub_8107E66
-        0x80F0700: (FunctionSpecificCallback(opcodes.pop_opcode, sub_80F0700_hack_pop_balance),), # sub_80F0700
-        0x80103F8: (FunctionSpecificCallback(opcodes.mov_imm_opcode, sub_80103F8_hack_battle_obj_null),), # sub_80103F8
-        0x8109D08: (FunctionSpecificCallback(opcodes.bx_opcode, sub_8109D08_bx_callback_fix),), # sub_8109D08
-        0x810A94C: (FunctionSpecificCallback(opcodes.bl_opcode, check_bl_sub_80BC3B8),),
-        0x800ebd4: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, hack_battle_state_field_0x80_object_read),), # object_getEnemyByNameRange
-        0x800d3fe: (FunctionSpecificCallback(opcodes.add_sp_opcode, object_get_panel_region_set_correct_return_value),), # object_getPanelRegion
-        0x80BC670: (FunctionSpecificCallback(opcodes.bne_opcode, sub_80BC670_set_r0_battle_object),), # sub_80BC670
-        0x80BDB3C: (FunctionSpecificCallback(opcodes.push_opcode, sub_80BDB3C_sub_80DA68C_fix_misaligned_push),), # sub_80BDB3C
-        0x80C51CC: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80C51CC
-        0x80C57F4: (FunctionSpecificCallback(opcodes.pop_opcode, sub_80C57F4_fix_misaligned_pop),), # sub_80C57F4
-        0x80C7A58: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, sub_80C7A58_sub_80CAC44_ignore_cmp),), # sub_80C7A58
-        0x80CAC44: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, sub_80C7A58_sub_80CAC44_ignore_cmp),), # sub_80CAC44
-        0x80CBB76: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80CBB76
-        0x80CF3DC: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80CF3DC
-        0x80DA68C: (FunctionSpecificCallback(opcodes.push_opcode, sub_80BDB3C_sub_80DA68C_fix_misaligned_push),), # sub_80DA68C
-        0x80DBF04: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80DBF04
-        0x80DCA38: (FunctionSpecificCallback(opcodes.mov_reg_opcode, sub_80DCA38_fix_uninitialized_stack_read),), # sub_80DCA38
-        0x80DDC30: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80DDC30
-        0x80E1566: (FunctionSpecificCallback(opcodes.mov_reg_opcode, sub_80E1566_fix_sub_80E1670_return_value),), # sub_80E1566
-        0x80E72C8: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, sub_80E72C8_fix_extra_vars_0x74_read),
-                    FunctionSpecificCallback(opcodes.add_sp_opcode, sub_80E72C8_fix_misaligned_stack)), # sub_80E72C8
-        0x81023C0: (FunctionSpecificCallback(opcodes.bl_opcode, sub_81023C0_sub_8102428_skip_bl_sub_8102CF8),), # sub_81023C0
-        0x8102428: (FunctionSpecificCallback(opcodes.bl_opcode, sub_81023C0_sub_8102428_skip_bl_sub_8102CF8),), # sub_8102428
-        
-    })
+    function_specific_callbacks.update(battle_object_specific_callbacks)
 
     #global global_function_tree
     #global_function_tree = run_analyzer_from_label(parser.strip_plus1(words[0]), registers, time.time())[1]
@@ -765,65 +773,13 @@ def read_battle_object_jumptables():
                 run_analyzer_from_label(function_name, registers, time.time())
 
 def read_ow_npc_object_function():
-    """
-    Returns a jumptable's entries in a list specified by the given label.
-    
-    Parameters
-    ----------
-    jumptable : str
-        The label of the jumptable.
-
-    Raises
-    ------
-    RuntimeError
-        Thrown if the jumptable was not found.
-    """
-
     registers = RegisterState()
     fileline = default_fileline
     opcodes.bl_opcode.append_callback(check_stored_functions)
     opcodes.bl_opcode.append_callback(opcodes.check_spawn_battle_object)
 
     global function_specific_callbacks
-    function_specific_callbacks.update({
-        0x800EA22: (FunctionSpecificCallback(opcodes.bne_opcode, check_loc_800EA38),), # sub_800EA22
-        0x810ab8c: (FunctionSpecificCallback(opcodes.ldrb_rb_imm_opcode, check_sub_810AB8C),), # sub_810AB8C
-        0x80127c0: (FunctionSpecificCallback(opcodes.and_opcode, check_sub_80127C0),), # sub_80127C0
-        0x800fc30: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, check_sub_800FC30),), # sub_800FC30
-        0x802EF74: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, check_sub_802EF74_ldr), # sub_802EF74
-                    FunctionSpecificCallback(opcodes.tst_opcode, check_sub_802EF74_tst)),
-        0x8013892: (FunctionSpecificCallback(opcodes.push_opcode, check_sub_8013892_push_r7),), # sub_8013892
-        0x8002b30: (FunctionSpecificCallback(opcodes.lsl_imm_opcode, check_pointer_shift), # sprite_decompress
-                    FunctionSpecificCallback(opcodes.lsr_imm_opcode, check_pointer_shift)),
-        0x8000B8E: (FunctionSpecificCallback(opcodes.lsl_imm_opcode, check_pointer_shift), # decomp_initGfx_8000B8E
-                    FunctionSpecificCallback(opcodes.lsr_imm_opcode, check_pointer_shift)),
-        0x80EE406: (FunctionSpecificCallback(opcodes.ble_opcode, check_loc_80EE4F0),), # sub_80EE406
-        0x8107E66: (FunctionSpecificCallback(opcodes.tst_opcode, sub_8107E66_hack_push_lr),), # sub_8107E66
-        0x80F0700: (FunctionSpecificCallback(opcodes.pop_opcode, sub_80F0700_hack_pop_balance),), # sub_80F0700
-        0x80103F8: (FunctionSpecificCallback(opcodes.mov_imm_opcode, sub_80103F8_hack_battle_obj_null),), # sub_80103F8
-        0x8109D08: (FunctionSpecificCallback(opcodes.bx_opcode, sub_8109D08_bx_callback_fix),), # sub_8109D08
-        0x810A94C: (FunctionSpecificCallback(opcodes.bl_opcode, check_bl_sub_80BC3B8),),
-        0x800ebd4: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, hack_battle_state_field_0x80_object_read),), # object_getEnemyByNameRange
-        0x800d3fe: (FunctionSpecificCallback(opcodes.add_sp_opcode, object_get_panel_region_set_correct_return_value),), # object_getPanelRegion
-        0x80BC670: (FunctionSpecificCallback(opcodes.bne_opcode, sub_80BC670_set_r0_battle_object),), # sub_80BC670
-        0x80BDB3C: (FunctionSpecificCallback(opcodes.push_opcode, sub_80BDB3C_sub_80DA68C_fix_misaligned_push),), # sub_80BDB3C
-        0x80C51CC: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80C51CC
-        0x80C57F4: (FunctionSpecificCallback(opcodes.pop_opcode, sub_80C57F4_fix_misaligned_pop),), # sub_80C57F4
-        0x80C7A58: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, sub_80C7A58_sub_80CAC44_ignore_cmp),), # sub_80C7A58
-        0x80CAC44: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, sub_80C7A58_sub_80CAC44_ignore_cmp),), # sub_80CAC44
-        0x80CBB76: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80CBB76
-        0x80CF3DC: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80CF3DC
-        0x80DA68C: (FunctionSpecificCallback(opcodes.push_opcode, sub_80BDB3C_sub_80DA68C_fix_misaligned_push),), # sub_80DA68C
-        0x80DBF04: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80DBF04
-        0x80DCA38: (FunctionSpecificCallback(opcodes.mov_reg_opcode, sub_80DCA38_fix_uninitialized_stack_read),), # sub_80DCA38
-        0x80DDC30: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80DDC30
-        0x80E1566: (FunctionSpecificCallback(opcodes.mov_reg_opcode, sub_80E1566_fix_sub_80E1670_return_value),), # sub_80E1566
-        0x80E72C8: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, sub_80E72C8_fix_extra_vars_0x74_read),
-                    FunctionSpecificCallback(opcodes.add_sp_opcode, sub_80E72C8_fix_misaligned_stack)), # sub_80E72C8
-        0x81023C0: (FunctionSpecificCallback(opcodes.bl_opcode, sub_81023C0_sub_8102428_skip_bl_sub_8102CF8),), # sub_81023C0
-        0x8102428: (FunctionSpecificCallback(opcodes.bl_opcode, sub_81023C0_sub_8102428_skip_bl_sub_8102CF8),), # sub_8102428
-        
-    })
+    function_specific_callbacks.update(battle_object_specific_callbacks)
 
     #global global_function_tree
     #global_function_tree = run_analyzer_from_label(parser.strip_plus1(words[0]), registers, time.time())[1]
@@ -847,4 +803,93 @@ def read_ow_npc_object_function():
     function_name = "npc_809E570"
     debug_print("function: %s" % function_name)
     run_analyzer_from_label(function_name, registers, time.time())
- 
+
+def read_ow_player_object_function():
+    registers = RegisterState()
+    fileline = default_fileline
+    opcodes.bl_opcode.append_callback(check_stored_functions)
+    opcodes.bl_opcode.append_callback(opcodes.check_spawn_battle_object)
+
+    global function_specific_callbacks
+    function_specific_callbacks.update(battle_object_specific_callbacks)
+
+    #global global_function_tree
+    #global_function_tree = run_analyzer_from_label(parser.strip_plus1(words[0]), registers, time.time())[1]
+    set_template_functions()
+    registers["r0"].default_initialize(fileline)
+    registers["r1"].default_initialize(fileline)
+    registers["r2"].default_initialize(fileline)
+    registers["r3"].default_initialize(fileline)
+    registers["r4"].default_initialize(fileline)
+    registers["r5"].initialize(RegisterInfo(datatypes.OWPlayerObject().wrap(), fileline))
+    registers["r6"].default_initialize(fileline)
+    registers["r7"].default_initialize(fileline)
+    registers["r8"].default_initialize(fileline)
+    registers["r9"].default_initialize(fileline)
+    registers["r10"].initialize(RegisterInfo(datatypes.Toolkit().wrap(), fileline))
+    registers["r12"].default_initialize(fileline)
+    registers["lr"].initialize(RegisterInfo(datatypes.ProgramCounter("asm00_1.s", 1540).wrap(), fileline))
+    registers["sp"].initialize(RegisterInfo(datatypes.Stack().wrap(), fileline))
+    registers["pc"].default_initialize(fileline)
+    datatypes.Stack.datatypes = {}
+    function_name = "sub_809D19C"
+    debug_print("function: %s" % function_name)
+    run_analyzer_from_label(function_name, registers, time.time())
+
+def run_function_main(function, dump_temp):
+    start_time = time.time()
+    try:
+        syms, scanned_files = analyze_source.read_source_and_syms()
+        analyzer_start_time = time.time()
+        function()
+    except:
+        analyzer_end_time = time.time()
+        for i in range(5):
+            print('\a')
+            time.sleep(0.4)
+        print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, syms, scanned_files, dump_temp)
+        print("%s:%s: Error!" % (analyze_source.global_fileline.filename, analyze_source.global_fileline.line_num))
+        global_fileline_error("Error!")
+
+    analyzer_end_time = time.time()
+    for i in range(5):
+        print('\a')
+        time.sleep(0.4)
+    print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, syms, scanned_files, dump_temp)
+
+def recursive_print_function_tree(f, function_tree, indentation_level=0):
+    for function, subtree in function_tree.items():
+        f.write((" " * indentation_level) + "- " + function + "\n")
+        if subtree:
+            recursive_print_function_tree(f, subtree, indentation_level + 2)
+
+def print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, syms, scanned_files, dump_temp):
+    analyzer_execution_time = analyzer_end_time - analyzer_start_time
+    post_output = ""
+
+    sorted_function_counts = sorted(analyzer.function_trackers.items(), key=lambda x: x[1].time, reverse=True)
+    function_time_sum = 0
+    for function_name_and_count in sorted_function_counts:
+        function_tracker = function_name_and_count[1]
+        post_output += "%s: time: %s, count: %s, avg: %s\n" % (function_name_and_count[0], function_tracker.time, function_tracker.count, function_tracker.time / function_tracker.count)
+        function_time_sum += function_tracker.time
+
+    #with open("trace_path.txt", "w+") as f:
+    #    recursive_print_function_tree(f, analyzer.global_function_tree)
+
+    # with open("function_tracker_output.pickle", "wb+") as f:
+    #     pickle.dump(analyzer.function_trackers, f)
+
+    if dump_temp:
+        if os.path.exists("temp/"):
+            shutil.rmtree("temp/")
+        os.makedirs("temp/")
+        for filename, src_file in scanned_files.items():
+            os.makedirs("temp/" + os.path.dirname(filename), exist_ok=True)
+            with open("temp/" + filename, "w+") as f:
+                f.writelines(line + "\n" for line in src_file.commented_lines)
+
+    execution_time = time.time() - start_time
+    post_output += "Full execution time: %s, Analyzer execution time: %s, Function time sum: %s, Full - Analyzer difference: %s, Full - Function difference: %s, Analyzer - Function difference: %s" % (execution_time, analyzer_execution_time, function_time_sum, execution_time - analyzer_execution_time, execution_time - function_time_sum, analyzer_execution_time - function_time_sum)
+    debug_print(post_output)
+    analyze_source.close_debug_file()

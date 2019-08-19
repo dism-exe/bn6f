@@ -4743,13 +4743,23 @@ loc_809D510:
 loc_809D520:
 	bl sub_809DB02
 	tst r0, r0
-	beq byte_809D530
+	beq loc_809D530
 	mov r0, #8
 	bl owPlayer_setJumptableIndex09AndOthers_809e004
 	b loc_809D54E
-byte_809D530: .byte 0x0, 0xF0, 0xE, 0xFB, 0x3, 0xD0, 0x14, 0x20, 0x0, 0xF0, 0x64
-	.byte 0xFD, 0x9, 0xE0, 0x0, 0xF0, 0xDB, 0xFA, 0x0, 0x42, 0x3, 0xD1
-	.byte 0x0, 0x20, 0x0, 0xF0, 0x5C, 0xFD, 0x1, 0xE0
+loc_809D530:
+	bl sub_809DB50
+	beq loc_809D53E
+	mov r0, #0x14
+	bl owPlayer_setJumptableIndex09AndOthers_809e004
+	b locret_809D552
+loc_809D53E:
+	bl sub_809DAF8
+	tst r0, r0
+	bne loc_809D54E
+	mov r0, #0
+	bl owPlayer_setJumptableIndex09AndOthers_809e004
+	b locret_809D552
 loc_809D54E:
 	ldrb r0, [r5,#0x13]
 	strb r0, [r5,#0x13]

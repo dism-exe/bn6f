@@ -20574,7 +20574,7 @@ sub_8030B1E:
 	pop {pc}
 .loc_8030B66:
 	.align 1, 0
-	mov r2, #0
+	mov r2, #NULL
 	pop {pc}
 	thumb_func_end sub_8030B1E
 
@@ -22631,7 +22631,7 @@ sub_8031A7A:
 	str r0, [r2]
 	bl sub_80316F8
 	bl sub_8030B1E
-	cmp r2, #0
+	cmp r2, #NULL
 	beq loc_8031AF6
 loc_8031A96:
 	.align 1, 0

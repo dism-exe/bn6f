@@ -761,6 +761,64 @@ class OWNPCObject(Struct):
         fileline_msg("OWNPCObjectNanOffsetWarning: Offset is NaN!", fileline)
         return Struct.barebones_struct_field
 
+class OWPlayerObject(Struct):
+    def __init__(self):
+        super().__init__()
+
+    def generate_basic_struct_fields(self):
+        return {
+            0x0: {Size.BYTE: StructField("_Flags", UnkPrimitiveMemory()),
+                  Size.WORD: StructField("_ObjectHeader", UnkPrimitiveMemory())},
+            0x1: {Size.BYTE: StructField("_Index", UnkPrimitiveMemory())},
+            0x2: {Size.BYTE: StructField("_TypeAndSpriteOffset", AnonMemory(functools.partial(Primitive, Size.BYTE, 0x90)))},
+            0x3: {Size.BYTE: StructField("_ListIndex", UnkPrimitiveMemory())},
+            0x9: {Size.BYTE: StructField("_JumptableIndex_09", UnkPrimitiveMemory())},
+            0xa: {Size.BYTE: StructField("_Unk_0a", UnkPrimitiveMemory())},
+            0xb: {Size.BYTE: StructField("_Unk_0b", UnkPrimitiveMemory())},
+            0xc: {Size.BYTE: StructField("_wallCollision_0c", UnkPrimitiveMemory())},
+            0xd: {Size.BYTE: StructField("_Unk_0d", UnkPrimitiveMemory())},
+            0xe: {Size.BYTE: StructField("_Unk_0e", UnkPrimitiveMemory())},
+            0xf: {Size.BYTE: StructField("_Unk_0f", UnkPrimitiveMemory())},
+            0x10: {Size.BYTE: StructField("_FacingDirection", UnkPrimitiveMemory())},
+            0x13: {Size.BYTE: StructField("_Unk_13", UnkPrimitiveMemory())},
+            0x14: {Size.BYTE: StructField("_AnimationSelect", UnkPrimitiveMemory())},
+            0x15: {Size.BYTE: StructField("_AnimationSelectUpdate", UnkPrimitiveMemory())},
+            0x16: {Size.BYTE: StructField("_LayerIndexOverride", UnkPrimitiveMemory())},
+            0x17: {Size.BYTE: StructField("_InteractionLocked", UnkPrimitiveMemory())},
+            0x1c: {Size.WORD: StructField("_Coords", UnkPrimitiveMemory())},
+            0x1c: {Size.WORD: StructField("_X", UnkPrimitiveMemory())},
+            0x20: {Size.WORD: StructField("_Y", UnkPrimitiveMemory())},
+            0x24: {Size.WORD: StructField("_Z", UnkPrimitiveMemory())},
+            0x28: {Size.WORD: StructField("_NextX", UnkPrimitiveMemory())},
+            0x2c: {Size.WORD: StructField("_NextY", UnkPrimitiveMemory())},
+            0x30: {Size.WORD: StructField("_NextZ", UnkPrimitiveMemory())},
+            0x38: {Size.WORD: StructField("_Unk_38", UnkPrimitiveMemory())},
+            0x3c: {Size.WORD: StructField("_Unk_3c", UnkPrimitiveMemory())},
+        }
+
+    _unk_field_offset_ranges = (0x4, 0xc8)
+    @property
+    def unk_field_offset_ranges(self):
+        return OWPlayerObject._unk_field_offset_ranges
+
+    @property
+    def struct_name(self):
+        return "OWPlayerObject"
+
+    def get_prefix(self, offset):
+        if offset < 0 or 0x4 <= offset < 0xa0:
+            return "oOWPlayerObject"
+        elif 0 <= offset < 0x4:
+            return "oObjectHeader"
+        elif 0x90 <= offset < 0xc8:
+            return "oObjectSprite"
+        else:
+            global_fileline_error("Struct offset \"%s\" does not have prefix!" % offset)
+
+    def on_nan_struct_offset(self, fileline, offset):
+        fileline_msg("OWNPCObjectNanOffsetWarning: Offset is NaN!", fileline)
+        return Struct.barebones_struct_field
+
 class BattleObject(Struct):
     def __init__(self, offset=0):
         super().__init__(offset)
