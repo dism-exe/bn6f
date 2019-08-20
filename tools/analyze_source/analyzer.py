@@ -536,6 +536,12 @@ def set_template_functions():
         "sub_8048C24": (
             ReturnValue("r0", datatypes.Primitive.new_byte),
         ),
+        "sub_814D9C4": (
+            ReturnValue("r0", datatypes.Primitive.new_byte),
+        ),
+        "sub_8048CCC": (
+            ReturnValue("r0", datatypes.Primitive.new_byte),
+        )
     }
 
 def check_stored_functions(opcode_params, funcstate, src_file, fileline):
@@ -850,9 +856,13 @@ def chatbox_F4_unk_fix_bl_8041DF4(opcode_params, funcstate, src_file, fileline):
         return False
     return True
 
+def sub_814D9C4_ignore_bic(opcode_params, funcstate, src_file, fileline):
+    return False
+
 chatbox_specific_callbacks = {
     0x8041964: (FunctionSpecificCallback(opcodes.bl_opcode, chatbox_8041964_skip_flag_call),), # chatbox_8041964
     0x8041c84: (FunctionSpecificCallback(opcodes.bl_opcode, chatbox_F4_unk_fix_bl_8041DF4),), # chatbox_F4_unk
+    0x814d9c4: (FunctionSpecificCallback(opcodes.bic_opcode, sub_814D9C4_ignore_bic),), # sub_814D9C4
 }
 
 def read_chatbox_function():

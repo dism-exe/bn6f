@@ -142,13 +142,18 @@ plus_or_minus_regex = re.compile(r" *\+ *| *- *")
 bitwise_or_regex = re.compile(r" *\| *")
 
 def evaluate_sym_or_num(sym_or_num):
-    global syms    
+    global syms
+    sym_or_num = sym_or_num.strip()
     try:
         return int(sym_or_num, 0)
     except ValueError:
         try:
             return syms[sym_or_num].value
         except KeyError:
+            if sym_or_num[0] == "(":
+                sym_or_num = sym_or_num[1:]
+            if sym_or_num[-1] == ")":
+                sym_or_num = sym_or_num[:-1]
         # allow simple + or - operations
             split_sym_or_num = plus_or_minus_regex.split(sym_or_num)
             if len(split_sym_or_num) != 2:
@@ -1053,6 +1058,10 @@ def do_store_operation(funcstate, dest_reg, source_reg, operand_reg_or_imm, size
 def load_from_datatypes(source_datatype, operand_datatype, size, funcstate, fileline):
     datatype_weak, datatype_strong = order_datatypes(source_datatype, operand_datatype)
 
+    if funcstate.function.name == "chatbox_EA_flag":
+        r2_type_name = type(funcstate.regs["r2"].data.ref).__name__
+        debug_print("r2_type_name: %s" % r2_type_name)
+        
     if datatype_weak.type == DataType.UNKNOWN:
         if datatype_strong.type == DataType.UNKNOWN:
             return datatypes.new_unk_datatype_from_size(size)

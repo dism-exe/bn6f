@@ -258,6 +258,8 @@ class ROMPointer(Pointer):
             # so we only check one non-ambiguous element here
             for word in words:
                 word = parser.strip_plus1(word)
+                if word == "NULL":
+                    continue
                 if word in syms:
                     if syms[word].section == "*ABS*":
                         return new_unk_datatype_from_size(size)
