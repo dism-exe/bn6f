@@ -1,5 +1,5 @@
 
-	thumb_local_start
+	thumb_func_start sub_8123198
 sub_8123198:
 	ldr r2, =word_200DCF0
 	ldrh r1, [r2]
@@ -9,7 +9,7 @@ sub_8123198:
 	thumb_func_end sub_8123198
 	.balign 4, 0
 
-	thumb_local_start
+	thumb_func_start sub_81231A4
 sub_81231A4:
 	ldr r2, =word_200DCF0
 	ldrh r1, [r2,#2]
@@ -19,7 +19,7 @@ sub_81231A4:
 	thumb_func_end sub_81231A4
 	.balign 4, 0
 
-	thumb_local_start
+	thumb_func_start sub_81231B0
 sub_81231B0:
 	ldr r2, =word_200DCF0
 	ldrh r1, [r2,#4]
@@ -29,7 +29,7 @@ sub_81231B0:
 	thumb_func_end sub_81231B0
 	.balign 4, 0
 
-	thumb_local_start
+	thumb_func_start sub_81231BC
 sub_81231BC:
 	ldr r2, =word_200DCF0
 	ldrh r1, [r2,#6]
@@ -39,7 +39,7 @@ sub_81231BC:
 	thumb_func_end sub_81231BC
 	.balign 4, 0
 
-	thumb_local_start
+	thumb_func_start sub_81231C8
 sub_81231C8:
 	ldr r2, =word_200DCF0
 	ldrh r1, [r2,#8]
@@ -49,7 +49,7 @@ sub_81231C8:
 	thumb_func_end sub_81231C8
 	.balign 4, 0
 
-	thumb_local_start
+	thumb_func_start sub_81231D4
 sub_81231D4:
 	ldr r2, =word_200DCF0
 	ldrh r1, [r2,#0xa]
@@ -59,7 +59,7 @@ sub_81231D4:
 	thumb_func_end sub_81231D4
 	.balign 4, 0
 
-	thumb_local_start
+	thumb_func_start sub_81231E0
 sub_81231E0:
 	ldr r2, =word_200DCF0
 	mov r1, #1
@@ -68,7 +68,7 @@ sub_81231E0:
 	thumb_func_end sub_81231E0
 	.balign 4, 0
 
-	thumb_local_start
+	thumb_func_start sub_81231E8
 sub_81231E8:
 	ldr r2, =word_200DCF0
 	mov r1, #1
@@ -77,7 +77,7 @@ sub_81231E8:
 	thumb_func_end sub_81231E8
 	.balign 4, 0
 
-	thumb_local_start
+	thumb_func_start sub_81231F0
 sub_81231F0:
 	ldr r2, =word_200DCF0
 	mov r1, #1
@@ -86,7 +86,7 @@ sub_81231F0:
 	thumb_func_end sub_81231F0
 	.balign 4, 0
 
-	thumb_local_start
+	thumb_func_start sub_81231F8
 sub_81231F8:
 	ldr r2, =word_200DCF0
 	mov r1, #1
@@ -95,7 +95,7 @@ sub_81231F8:
 	thumb_func_end sub_81231F8
 	.balign 4, 0
 
-	thumb_local_start
+	thumb_func_start sub_8123200
 sub_8123200:
 	ldr r2, =word_200DCF0
 	mov r1, #1

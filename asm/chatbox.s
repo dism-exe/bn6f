@@ -5628,7 +5628,7 @@ off_8042844:
 	.word sub_80429D8
 	thumb_func_end chatbox_F7_move
 
-	thumb_func_start sub_804286C
+	thumb_local_start
 sub_804286C: // 0x804286C
 	ldr r0, off_804289C // =off_80428A0
 	ldrb r3, [r4,#4]
@@ -5661,7 +5661,7 @@ off_80428A0:
 	.byte 0x1E, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00
 	thumb_func_end sub_804286C
 
-	thumb_func_start sub_80428B8
+	thumb_local_start
 sub_80428B8: // 0x80428B8
 	add r4, #2
 	mov r0, #1
@@ -5669,7 +5669,7 @@ sub_80428B8: // 0x80428B8
 	thumb_func_end sub_80428B8
 	.balign 4, 0
 
-	thumb_func_start sub_80428C0
+	thumb_local_start
 sub_80428C0: // 0x80428C0
 	ldrb r1, [r4,#2]
 	strb r1, [r5,#oChatbox_TextScriptCharIdx]
@@ -5691,7 +5691,7 @@ sub_80428C0: // 0x80428C0
 	mov pc, lr
 	thumb_func_end sub_80428C0
 
-	thumb_func_start sub_80428E4
+	thumb_local_start
 sub_80428E4: // 0x80428E4
 	add r4, #2
 	mov r0, #1
@@ -5699,7 +5699,7 @@ sub_80428E4: // 0x80428E4
 	thumb_func_end sub_80428E4
 	.balign 4, 0
 
-	thumb_func_start sub_80428EC
+	thumb_local_start
 sub_80428EC: // 0x80428EC
 	ldrb r1, [r4,#2]
 	strb r1, [r5,#oChatbox_CursorIdx]
@@ -5711,7 +5711,7 @@ sub_80428EC: // 0x80428EC
 	thumb_func_end sub_80428EC
 	.balign 4, 0
 
-	thumb_func_start sub_80428FC
+	thumb_local_start
 sub_80428FC: // 0x80428FC
 	ldrb r1, [r4,#2]
 	mov r0, #0x84
@@ -5725,7 +5725,7 @@ sub_80428FC: // 0x80428FC
 	thumb_func_end sub_80428FC
 	.balign 4, 0
 
-	thumb_func_start sub_8042910
+	thumb_local_start
 sub_8042910: // 0x8042910
 	ldrb r1, [r4,#2]
 	mov r0, #0xb
@@ -5751,7 +5751,7 @@ sub_8042910: // 0x8042910
 	thumb_func_end sub_8042910
 	.balign 4, 0
 
-	thumb_func_start sub_804293C
+	thumb_local_start
 sub_804293C: // 0x804293C
 	push {r6,r7,lr}
 	mov r6, #0xf0
@@ -5797,7 +5797,7 @@ loc_8042972:
 	thumb_func_end sub_804293C
 	.balign 4, 0
 
-	thumb_func_start sub_8042990
+	thumb_local_start
 sub_8042990: // 0x8042990
 	push {r6,r7,lr}
 	mov r6, #0xf0
@@ -5837,7 +5837,7 @@ loc_80429BE:
 	thumb_func_end sub_8042990
 	.balign 4, 0
 
-	thumb_func_start sub_80429D8
+	thumb_local_start
 sub_80429D8: // 0x80429D8
 	push {r6,r7,lr}
 	mov r7, #0x79
