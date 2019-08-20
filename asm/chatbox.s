@@ -6284,24 +6284,32 @@ jt_8042D0C: .word sub_804312C+1
 	.word chatbox_804330C+1
 	.word chatbox_80436B0+1
 	.word chatbox_80436E8+1
-	.word 0x0
-	.word 0x0
-	.word 0x0
-	.word 0x0
-	.word 0x0
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
+	.word NULL
 	.word chatbox_80432C8+1
 	.word chatbox_8042F84+1
-	.word 0x0
+	.word NULL
 	.word chatbox_80434E0+1
 	.word chatbox_80438B4+1
 	.word chatbox_80438EC+1
-	.word 0x304C78A0
-	.word 0x54292100
-	.word 0x20013403
-	.word 0x46F7
 	thumb_func_end chatbox_FE_numberinput
+
+	thumb_local_start
+sub_8042D58:
+	ldrb r0, [r4,#2]
+	add r0, #0x4c
+	mov r1, #0
+	strb r1, [r5,r0]
+	add r4, #3
+	mov r0, #1
+	mov pc, lr
+	thumb_func_end sub_8042D58
+	.balign 4, 0
 
 	thumb_local_start
 chatbox_8042D68:
