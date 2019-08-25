@@ -3175,7 +3175,7 @@ sub_8001B1C:
 	ldr r2, [r0,#oS8001b1c_Unk_04]
 	str r2, [r7,#oS20094c0_Unk_10]
 	ldr r3, [r0,#oS8001b1c_Unk_08]
-	str r3, [r7,#oS20094c0_Unk_14]
+	str r3, [r7,#oS20094c0_Unk_14_Word]
 	add r0, #oS8001b1c_Unk_0c
 	mov r6, #1
 	cmp r3, #8
@@ -3354,12 +3354,12 @@ off_8001C90: .word eStruct200BE70
 	thumb_local_start
 sub_8001C94:
 	push {r4,r7,lr}
-	ldr r6, [r0]
+	ldr r6, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
 	ldr r5, off_8001CE4 // =off_8001AB8
-	ldrb r4, [r7,#0x17]
+	ldrb r4, [r7,#oS20094c0_Unk_17]
 	lsl r4, r4, #2
 	ldr r5, [r5,r4]
-	ldr r4, [r7,#0xc]
+	ldr r4, [r7,#oS20094c0_Unk_0c]
 	mov r1, #0
 	push {r0}
 loc_8001CA6:
@@ -3378,17 +3378,17 @@ loc_8001CA6:
 	pop {r4,r6}
 	add r5, #0x20
 	add r1, #2
-	ldrb r2, [r7,#0x16]
+	ldrb r2, [r7,#oS20094c0_Unk_16]
 	lsl r2, r2, #1
 	cmp r1, r2
 	blt loc_8001CA6
 	pop {r0}
 	ldr r0, off_8001CE4 // =off_8001AB8
-	ldrb r1, [r7,#0x17]
+	ldrb r1, [r7,#oS20094c0_Unk_17]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
-	ldr r1, [r7,#0x10]
-	ldrb r2, [r7,#0x16]
+	ldr r1, [r7,#oS20094c0_Unk_10]
+	ldrb r2, [r7,#oS20094c0_Unk_16]
 	lsl r2, r2, #5
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4,r7,pc}
@@ -4210,13 +4210,13 @@ sub_80021CE:
 sub_8002310:
 	push {lr}
 	push {r4,r7}
-	ldr r1, [r0]
+	ldr r1, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
 	lsl r1, r1, #1
 	lsr r1, r1, #1
-	ldrb r0, [r7,#0xc]
-	ldrb r2, [r7,#0x16]
-	ldrb r3, [r7,#1]
-	ldr r4, [r7,#0x10]
+	ldrb r0, [r7,#oS20094c0_Unk_0c]
+	ldrb r2, [r7,#oS20094c0_Unk_16]
+	ldrb r3, [r7,#oS20094c0_Unk_01]
+	ldr r4, [r7,#oS20094c0_Unk_10]
 	bl sub_8002378
 	pop {r4,r7}
 	pop {pc}
@@ -4405,8 +4405,11 @@ off_8002440: .word iPalette3001B60
 off_8002444: .word byte_3001550
 off_8002448: .word iPallete3001750
 off_800244C: .word byte_8002450
-byte_8002450: .byte 0xF1, 0x5E, 0x0, 0x3, 0xF1, 0x5E, 0x0, 0x3, 0x79, 0x5F, 0x0
-	.byte 0x3, 0x79, 0x5F, 0x0, 0x3
+byte_8002450:
+	.word sub_3005EF0
+	.word sub_3005EF0
+	.word sub_3005F78
+	.word sub_3005F78
 off_8002460: .word 0x108
 off_8002464: .word byte_20097A0
 	thumb_func_end getPalleteAndTransition_80023E0

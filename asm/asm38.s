@@ -447,7 +447,7 @@ sub_3005F56:
 	mov pc, lr
 	thumb_func_end sub_3005F56
 
-	thumb_local_start
+	thumb_func_start sub_3005F78
 sub_3005F78:
 	push {r5,lr}
 	cmp r6, #0
