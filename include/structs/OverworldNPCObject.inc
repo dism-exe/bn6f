@@ -44,9 +44,9 @@
 	u8 MovementDirection // loc=0xe
 	u8 Unk_0f // loc=0xf
 	u8 Unk_10 // loc=0x10
-	u8 Unk_11 // loc=0x11
-	u8 Unk_12 // loc=0x12
-	u8 Unk_13 // loc=0x13
+	u8 CenterOffsetX // loc=0x11
+	u8 CenterOffsetY // loc=0x12
+	u8 CenterOffsetZ // loc=0x13
 	u8 AnimationSelect // loc=0x14
 	u8 AnimationSelectUpdate // loc=0x15
 	u8 PaletteIndex // loc=0x16
@@ -84,7 +84,7 @@
 	u32 UnkFlags_60 // loc=0x60
 		struct_const OW_NPC_UNK_FLAGS_60_DISABLE_INTERACTION, 0x1
 		struct_const OW_NPC_UNK_FLAGS_60_0x2, 0x2
-		struct_const OW_NPC_UNK_FLAGS_60_0x4, 0x4
+		struct_const OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION, 0x4
 		struct_const OW_NPC_UNK_FLAGS_60_0x8, 0x8
 		struct_const OW_NPC_UNK_FLAGS_60_0x10, 0x10
 		struct_const OW_NPC_UNK_FLAGS_60_0x20, 0x20

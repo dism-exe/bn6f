@@ -910,127 +910,144 @@ off_8003788: .word byte_2036830
 sub_800378C:
 	push {lr}
 	// memBlock
-	ldr r0, off_80037A0 // =dword_20081D0
+	ldr r0, off_80037A0 // =eOWObjectInteractionAreas
 	// size
 	ldr r1, off_80037A4 // =0x280
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	ldr r0, off_80037A8 // =dword_200AC18
+	ldr r0, off_80037A8 // =eNumOWObjectInteractionAreas
 	mov r1, #0
 	str r1, [r0]
 	pop {pc}
 	.balign 4, 0x00
-off_80037A0: .word dword_20081D0
+off_80037A0: .word eOWObjectInteractionAreas
 off_80037A4: .word 0x280
-off_80037A8: .word dword_200AC18
+off_80037A8: .word eNumOWObjectInteractionAreas
 	thumb_func_end sub_800378C
 
-	thumb_func_start npc_80037AC
+	thumb_func_start createOWObjectInteractionArea_80037ac
 // something to do with interacting with npcs? maybe other objects too
-npc_80037AC:
+// r0 - x coordinate
+// r1 - y coordinate
+// r2 - z coordinate
+// r3 - radius, z coordinate reach?
+// r4 - flags?
+// r5 - flags?
+// r6 - memory address to write success value
+createOWObjectInteractionArea_80037ac:
 	push {r7,lr}
+
 	mov r7, #0x80
-	lsl r7, r7, #8
+	lsl r7, r7, #8 // r7 = 0x8000
+
 	add r0, r0, r7
 	lsr r0, r0, #0x10
+
 	add r1, r1, r7
 	lsr r1, r1, #0x10
+
 	lsl r1, r1, #0x10
 	orr r1, r0
+
 	add r2, r2, r7
 	lsr r2, r2, #0x10
+
 	lsl r3, r3, #0x10
 	orr r2, r3
-	ldr r7, off_80037EC // =dword_200AC18
+
+	ldr r7, =eNumOWObjectInteractionAreas
 	ldr r0, [r7]
 	cmp r0, #0x20
-	blt loc_80037D0
+	blt .notFull
 	pop {r7,pc}
-loc_80037D0:
-	mov r7, #0x14
+.notFull
+	mov r7, #oOWObjectInteractionArea_Size
 	mul r7, r0
-	ldr r0, off_80037F0 // =dword_20081D0
+	ldr r0, =eOWObjectInteractionAreas
 	add r7, r7, r0
-	str r1, [r7]
-	str r2, [r7,#4]
-	str r4, [r7,#8]
-	str r5, [r7,#0xc]
-	str r6, [r7,#0x10]
-	ldr r7, off_80037EC // =dword_200AC18
+	str r1, [r7,#oOWObjectInteractionArea_xyPacked_00]
+	str r2, [r7,#oOWObjectInteractionArea_Z_Radius_ZReachAmount]
+	str r4, [r7,#oOWObjectInteractionArea_Unk_08]
+	str r5, [r7,#oOWObjectInteractionArea_Unk_0c]
+	str r6, [r7,#oOWObjectInteractionArea_Unk_10]
+	ldr r7, =eNumOWObjectInteractionAreas
 	ldr r0, [r7]
 	add r0, #1
 	str r0, [r7]
 	pop {r7,pc}
-off_80037EC: .word dword_200AC18
-off_80037F0: .word dword_20081D0
-	thumb_func_end npc_80037AC
+	.balign 4, 0
+	.pool // 80037EC
+	thumb_func_end createOWObjectInteractionArea_80037ac
 
-	thumb_func_start sub_80037F4
+	thumb_func_start checkOWObjectInteractions_80037f4
 // something to do with interacting with npcs? maybe other objects too
-sub_80037F4:
+checkOWObjectInteractions_80037f4:
 	push {r5,lr}
-	ldr r0, off_8003884 // =dword_200AC18
+	ldr r0, off_8003884 // =eNumOWObjectInteractionAreas
 	ldr r0, [r0]
 	cmp r0, #1
 	ble loc_800387C
-	ldr r5, off_8003888 // =dword_20081D0
+	ldr r5, off_8003888 // =eOWObjectInteractionAreas
+	// let r6 = i
 	mov r6, #0
 loc_8003802:
-	mov r0, #0x14
+	mov r0, #oOWObjectInteractionArea_Size
 	mul r0, r6
+	// r3 = &eOWObjectInteractionAreas[i]
 	add r3, r5, r0
+	// let r7 = j
 	mov r7, #0
 loc_800380A:
 	cmp r6, r7
 	beq loc_800386A
-	mov r0, #0x14
+	mov r0, #oOWObjectInteractionArea_Size
 	mul r0, r7
 	add r4, r5, r0
-	ldr r0, [r3,#0xc]
-	ldr r1, [r4,#8]
+	ldr r0, [r3,#oOWObjectInteractionArea_Unk_0c]
+	ldr r1, [r4,#oOWObjectInteractionArea_Unk_08]
 	tst r0, r1
 	beq loc_800386A
 	mov r0, r3
 	mov r1, r4
 	push {r3-r7}
-	bl sub_8003894
+	bl checkOWObjectInteractionAreasOverlap_8003894
 	pop {r3-r7}
 	tst r0, r0
 	beq loc_800386A
 	push {r7}
-	ldr r0, [r3,#0xc]
-	ldr r1, [r4,#8]
+	ldr r0, [r3,#oOWObjectInteractionArea_Unk_0c]
+	ldr r1, [r4,#oOWObjectInteractionArea_Unk_08]
 	and r0, r1
-	ldr r7, [r3,#0x10]
+	ldr r7, [r3,#oOWObjectInteractionArea_Unk_10]
 	ldr r1, [r7]
 	orr r0, r1
 	str r0, [r7]
-	ldr r0, [r3,#8]
+	ldr r0, [r3,#oOWObjectInteractionArea_Unk_08]
 	ldr r1, dword_8003890 // =0x200000
 	tst r0, r1
 	beq loc_800385C
 	push {r0-r2}
 	ldr r0, off_800388C // =eOWPlayerObject
-	ldrh r1, [r4]
-	mov r2, #0x72 // (word_2009FB2 - 0x2009f40)
+	ldrh r1, [r4,#oOWObjectInteractionArea_X]
+	mov r2, #oOWPlayerObject_Unk_72 // (word_2009FB2 - 0x2009f40)
 	strh r1, [r0,r2]
-	ldrh r1, [r4,#2]
-	mov r2, #0x74 // (word_2009FB4 - 0x2009f40)
+	ldrh r1, [r4,#oOWObjectInteractionArea_Y]
+	mov r2, #oOWPlayerObject_Unk_74 // (word_2009FB4 - 0x2009f40)
 	strh r1, [r0,r2]
-	ldrh r1, [r4,#4]
-	mov r2, #0x76 // (word_2009FB6 - 0x2009f40)
+	ldrh r1, [r4,#oOWObjectInteractionArea_Z]
+	mov r2, #oOWPlayerObject_Unk_76 // (word_2009FB6 - 0x2009f40)
 	strh r1, [r0,r2]
 	pop {r0-r2}
 loc_800385C:
-	ldr r1, [r4,#0xc]
+	ldr r1, [r4,#oOWObjectInteractionArea_Unk_0c]
 	and r0, r1
-	ldr r7, [r4,#0x10]
+	ldr r7, [r4,#oOWObjectInteractionArea_Unk_10]
 	ldr r1, [r7]
 	orr r0, r1
 	str r0, [r7]
 	pop {r7}
 loc_800386A:
 	add r7, #1
-	ldr r0, off_8003884 // =dword_200AC18
+	ldr r0, off_8003884 // =eNumOWObjectInteractionAreas
 	ldr r0, [r0]
 	cmp r0, r7
 	bgt loc_800380A
@@ -1038,65 +1055,89 @@ loc_800386A:
 	cmp r0, r6
 	beq loc_800387C
 	b loc_8003802
-loc_800387C:
+loc_800387C
 	mov r0, #0
-	ldr r1, off_8003884 // =dword_200AC18
+	ldr r1, off_8003884 // =eNumOWObjectInteractionAreas
 	str r0, [r1]
 	pop {r5,pc}
-off_8003884: .word dword_200AC18
-off_8003888: .word dword_20081D0
+off_8003884: .word eNumOWObjectInteractionAreas
+off_8003888: .word eOWObjectInteractionAreas
 off_800388C: .word eOWPlayerObject
 dword_8003890: .word 0x200000
-	thumb_func_end sub_80037F4
+	thumb_func_end checkOWObjectInteractions_80037f4
 
 	thumb_local_start
-// performs this:
-// 	if (v2 * v2 + v3 * v3 >= v4 * v4)
-//      return 0;
-sub_8003894:
+// check if two objects' interaction areas overlap?
+checkOWObjectInteractionAreasOverlap_8003894:
 	push {lr}
-	mov r6, #0
+	// r2 = aX - bX
+	mov r6, #oOWObjectInteractionArea_X
 	ldrsh r2, [r0,r6]
 	ldrsh r3, [r1,r6]
 	sub r2, r2, r3
-	mov r6, #2
+
+	// r3 = aY - bY
+	mov r6, #oOWObjectInteractionArea_Y
 	ldrsh r3, [r0,r6]
 	ldrsh r4, [r1,r6]
 	sub r3, r3, r4
+
+	// r2 = r2 ** 2
 	mov r5, r2
 	mul r2, r5
+
+	// r3 = r3 ** 2
 	mov r5, r3
 	mul r3, r5
+
+	// r2 = r2 + r3
 	add r2, r2, r3
-	ldrb r3, [r0,#6]
-	ldrb r4, [r1,#6]
+
+	// r3 = (a6 + b6) ** 2
+	ldrb r3, [r0,#oOWObjectInteractionArea_Radius]
+	ldrb r4, [r1,#oOWObjectInteractionArea_Radius]
 	add r3, r3, r4
 	mov r4, r3
 	mul r3, r4
+
+	// if ((aX - bX)**2 + (aY - bY)**2 >= (a6 + b6) ** 2)
+	//     return 0;
+	// possibly checking whether object 1's interaction area intersects object 2's interaction area?
 	cmp r2, r3
-	blt loc_80038C2
+	blt .twoObjectsClose
 	mov r0, #0
 	pop {pc}
-loc_80038C2:
-	mov r6, #4
+.twoObjectsClose
+	mov r6, #oOWObjectInteractionArea_Z
 	ldrsh r2, [r0,r6]
 	ldrsh r3, [r1,r6]
+	// compare A and B's Z coordinates
 	cmp r2, r3
-	blt loc_80038D8
-	ldrb r4, [r1,#7]
+	blt .aZLessThanbZ
+	// B is looking towards A
+
+	// add Z reach amount
+	ldrb r4, [r1,#oOWObjectInteractionArea_ZReachAmount]
 	add r3, r3, r4
+
+	// now try again
 	cmp r2, r3
-	ble loc_80038E4
+	ble .interactionSuccessful
 	mov r0, #0
 	pop {pc}
-loc_80038D8:
-	ldrb r4, [r0,#7]
+.aZLessThanbZ
+	// A is looking towards B
+
+	// add Z reach amount
+	ldrb r4, [r0,#oOWObjectInteractionArea_ZReachAmount]
 	add r2, r2, r4
+
+	// now check if A can reach B, given the reach amount
 	cmp r3, r2
-	ble loc_80038E4
+	ble .interactionSuccessful
 	mov r0, #0
 	pop {pc}
-loc_80038E4:
+.interactionSuccessful
 	mov r0, #1
 	pop {pc}
 jt_80038E8: .word sub_8142248+1
@@ -1107,7 +1148,7 @@ jt_80038E8: .word sub_8142248+1
 	.word 0x0
 	.word 0x0
 	.word 0x1
-	thumb_func_end sub_8003894
+	thumb_func_end checkOWObjectInteractionAreasOverlap_8003894
 
 	thumb_local_start
 Clear_eStruct2000780:
@@ -3867,7 +3908,7 @@ gamestate_8005268:
 	bl sub_80339CC
 	bl sub_80039AA
 	bl sub_8003AFA
-	bl sub_80037F4
+	bl checkOWObjectInteractions_80037f4
 	bl sub_802FFF4
 	bl sub_8030580
 	bl sub_80027B4

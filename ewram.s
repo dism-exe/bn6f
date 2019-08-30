@@ -523,8 +523,40 @@ dword_20081BC:: // 0x20081bc
 	.space 4
 dword_20081C0:: // 0x20081c0
 	.space 16
-dword_20081D0:: // 0x20081d0
-	.space 640
+eOWObjectInteractionAreas:: // 0x20081d0
+	ow_object_interaction_area_struct eOWObjectInteractionArea_0
+	ow_object_interaction_area_struct eOWObjectInteractionArea_1
+	ow_object_interaction_area_struct eOWObjectInteractionArea_2
+	ow_object_interaction_area_struct eOWObjectInteractionArea_3
+	ow_object_interaction_area_struct eOWObjectInteractionArea_4
+	ow_object_interaction_area_struct eOWObjectInteractionArea_5
+	ow_object_interaction_area_struct eOWObjectInteractionArea_6
+	ow_object_interaction_area_struct eOWObjectInteractionArea_7
+	ow_object_interaction_area_struct eOWObjectInteractionArea_8
+	ow_object_interaction_area_struct eOWObjectInteractionArea_9
+	ow_object_interaction_area_struct eOWObjectInteractionArea_10
+	ow_object_interaction_area_struct eOWObjectInteractionArea_11
+	ow_object_interaction_area_struct eOWObjectInteractionArea_12
+	ow_object_interaction_area_struct eOWObjectInteractionArea_13
+	ow_object_interaction_area_struct eOWObjectInteractionArea_14
+	ow_object_interaction_area_struct eOWObjectInteractionArea_15
+	ow_object_interaction_area_struct eOWObjectInteractionArea_16
+	ow_object_interaction_area_struct eOWObjectInteractionArea_17
+	ow_object_interaction_area_struct eOWObjectInteractionArea_18
+	ow_object_interaction_area_struct eOWObjectInteractionArea_19
+	ow_object_interaction_area_struct eOWObjectInteractionArea_20
+	ow_object_interaction_area_struct eOWObjectInteractionArea_21
+	ow_object_interaction_area_struct eOWObjectInteractionArea_22
+	ow_object_interaction_area_struct eOWObjectInteractionArea_23
+	ow_object_interaction_area_struct eOWObjectInteractionArea_24
+	ow_object_interaction_area_struct eOWObjectInteractionArea_25
+	ow_object_interaction_area_struct eOWObjectInteractionArea_26
+	ow_object_interaction_area_struct eOWObjectInteractionArea_27
+	ow_object_interaction_area_struct eOWObjectInteractionArea_28
+	ow_object_interaction_area_struct eOWObjectInteractionArea_29
+	ow_object_interaction_area_struct eOWObjectInteractionArea_30
+	ow_object_interaction_area_struct eOWObjectInteractionArea_31
+eOWObjectInteractionAreasEnd:: // 0x2008450
 // looks dynamic
 eStructArr2008450:: // 0x2008453
 	.space 1320
@@ -816,7 +848,7 @@ dword_200A894:: // 0x200a894
 	.space 516
 unk_200AA98:: // 0x200aa98
 	.space 384
-dword_200AC18:: // 0x200ac18
+eNumOWObjectInteractionAreas:: // 0x200ac18
 	.space 4
 dword_200AC1C:: // 0x200ac1c
 	.space 4

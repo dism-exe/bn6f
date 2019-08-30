@@ -1209,7 +1209,7 @@ locret_809DB5E:
 sub_809DB60:
 	push {lr}
 	ldr r0, off_809DBF0 // =byte_809DBF4
-	mov r1, #0x34 
+	mov r1, #oOWPlayerObject_Unk_34
 	add r1, r1, r5
 	bl sub_809DBC4
 	movflag EVENT_173D
@@ -1226,7 +1226,7 @@ loc_809DB82:
 	lsl r0, r0, #2
 	ldr r7, off_809DBC0 // =off_809DCEC 
 	ldr r0, [r7,r0]
-	mov r1, #0x50
+	mov r1, #oOWPlayerObject_Unk_50
 	add r1, r1, r5
 	bl sub_809DBC4
 loc_809DB92:
@@ -1239,16 +1239,16 @@ loc_809DB92:
 	lsl r0, r0, #2
 	ldr r7, off_809DBBC // =off_809DC0C 
 	ldr r0, [r7,r0]
-	mov r1, #0x48 
+	mov r1, #oOWPlayerObject_Unk_48
 	add r1, r1, r5
 	bl sub_809DBC4
 loc_809DBAC:
 	mov r0, #0
-	mov r3, #0x34 
+	mov r3, #oOWPlayerObject_Unk_34
 	str r0, [r5,r3]
-	mov r3, #0x48 
+	mov r3, #oOWPlayerObject_Unk_48
 	str r0, [r5,r3]
-	mov r3, #0x50 
+	mov r3, #oOWPlayerObject_Unk_50
 	str r0, [r5,r3]
 	pop {pc}
 off_809DBBC: .word off_809DC0C
@@ -1263,24 +1263,32 @@ sub_809DBC4:
 	str r2, [r1]
 	push {r1}
 	ldr r3, [r5,#oOWPlayerObject_X]
-	ldr r0, [r7]
+	ldr r0, [r7,#oOWPlayerInteractionArea_XOffset]
 	add r0, r0, r3
 	ldr r3, [r5,#oOWPlayerObject_Y]
-	ldr r1, [r7,#4]
+	ldr r1, [r7,#oOWPlayerInteractionArea_YOffset]
 	add r1, r1, r3
 	ldr r3, [r5,#oOWPlayerObject_Z]
-	ldr r2, [r7,#8]
+	ldr r2, [r7,#oOWPlayerInteractionArea_ZOffset]
 	add r2, r2, r3
-	ldr r3, [r7,#0xc]
-	ldr r4, [r7,#0x10]
-	ldr r5, [r7,#0x14]
+	ldr r3, [r7,#oOWPlayerInteractionArea_Radius_ZReachAmount]
+	ldr r4, [r7,#oOWPlayerInteractionArea_Flags_10]
+	ldr r5, [r7,#oOWPlayerInteractionArea_Flags_14]
 	pop {r6}
-	bl npc_80037AC
+	bl createOWObjectInteractionArea_80037ac
 	pop {r5,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_809DBF0: .word byte_809DBF4
-byte_809DBF4: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x4, 0x8, 0x0, 0x0, 0x0
-	.byte 0x0, 0x1, 0x0, 0x0, 0x0, 0x18, 0x0
+byte_809DBF4:
+	ow_player_interaction_area_struct [
+		x_offset: 0,
+		y_offset: 0,
+		z_offset: 0,
+		radius: 4,
+		z_reach_amount: 8,
+		flags_10: 0x10000,
+		flags_14: 0x180000
+	]
 off_809DC0C: .word byte_809DC2C
 	.word byte_809DC44
 	.word byte_809DC5C

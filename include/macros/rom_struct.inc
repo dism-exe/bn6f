@@ -76,7 +76,7 @@
 
 		/* struct data macros */
 		.macro u0 field:req, value
-			.ifb \label
+			.ifnb \label
 				\struct_entry \label\()_\field, 0, \value
 			.endif
 		.endm

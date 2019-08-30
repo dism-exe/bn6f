@@ -610,15 +610,15 @@ int *__fastcall sub_800378C(int a1, int a2, int a3, int a4)
 {
 	int *result; // r0
 
-	ZeroFillByWord(dword_20081D0, dword_280);
-	result = &dword_200AC18;
-	dword_200AC18 = 0;
+	ZeroFillByWord(eOWObjectInteractionAreas, dword_280);
+	result = &eNumOWObjectInteractionAreas;
+	eNumOWObjectInteractionAreas = 0;
 	return result;
 }
 
 
 // 0x80037ac
-int __fastcall npc_80037AC(int a1, int a2, int a3, int a4)
+int __fastcall createOWObjectInteractionArea_80037ac(int a1, int a2, int a3, int a4)
 {
 	unsigned int v4; // r4
 	unsigned int v5; // r5
@@ -630,23 +630,23 @@ int __fastcall npc_80037AC(int a1, int a2, int a3, int a4)
 
 	v7 = ((a2 + 0x8000) >> 16 << 16) | ((a1 + 0x8000) >> 16);
 	v8 = ((a3 + 0x8000) >> 16) | (a4 << 16);
-	result = dword_200AC18;
-	if ( dword_200AC18 < 32 )
+	result = eNumOWObjectInteractionAreas;
+	if ( eNumOWObjectInteractionAreas < 32 )
 	{
-		v10 = &dword_20081D0[5 * dword_200AC18];
+		v10 = &eOWObjectInteractionAreas[5 * eNumOWObjectInteractionAreas];
 		*v10 = v7;
 		v10[1] = v8;
 		v10[2] = v4;
 		v10[3] = v5;
 		v10[4] = v6;
-		result = dword_200AC18++ + 1;
+		result = eNumOWObjectInteractionAreas++ + 1;
 	}
 	return result;
 }
 
 
 // 0x80037f4
-int sub_80037F4()
+int checkOWObjectInteractions_80037f4()
 {
 	int v0; // r6
 	signed __int16 *v1; // r3
@@ -657,26 +657,26 @@ int sub_80037F4()
 	int result; // r0
 	signed __int16 *v7; // [sp-14h] [bp-1Ch]
 
-	if ( dword_200AC18 > 1 )
+	if ( eNumOWObjectInteractionAreas > 1 )
 	{
 		v0 = 0;
 		do
 		{
-			v1 = &dword_20081D0[5 * v0];
+			v1 = &eOWObjectInteractionAreas[5 * v0];
 			v2 = 0;
 			do
 			{
 				if ( v0 != v2 )
 				{
-					if ( *(v1 + 3) & dword_20081D0[5 * v2 + 2] )
+					if ( *(v1 + 3) & eOWObjectInteractionAreas[5 * v2 + 2] )
 					{
 						v7 = v1;
-						v3 = sub_8003894(v1, &dword_20081D0[5 * v2]);
+						v3 = checkOWObjectInteractionAreasOverlap_8003894(v1, &eOWObjectInteractionAreas[5 * v2]);
 						v1 = v7;
-						v4 = &dword_20081D0[5 * v2];
+						v4 = &eOWObjectInteractionAreas[5 * v2];
 						if ( v3 )
 						{
-							**(v7 + 4) |= *(v7 + 3) & dword_20081D0[5 * v2 + 2];
+							**(v7 + 4) |= *(v7 + 3) & eOWObjectInteractionAreas[5 * v2 + 2];
 							v5 = *(v7 + 2);
 							if ( v5 & 0x200000 )
 							{
@@ -690,19 +690,19 @@ int sub_80037F4()
 				}
 				++v2;
 			}
-			while ( dword_200AC18 > v2 );
+			while ( eNumOWObjectInteractionAreas > v2 );
 			++v0;
 		}
-		while ( dword_200AC18 != v0 );
+		while ( eNumOWObjectInteractionAreas != v0 );
 	}
 	result = 0;
-	dword_200AC18 = 0;
+	eNumOWObjectInteractionAreas = 0;
 	return result;
 }
 
 
 // 0x8003894
-signed int __fastcall sub_8003894(signed __int16 *a1, signed __int16 *a2)
+signed int __fastcall checkOWObjectInteractionAreasOverlap_8003894(signed __int16 *a1, signed __int16 *a2)
 {
 	int v2; // r2
 	int v3; // r5
@@ -2342,7 +2342,7 @@ void __usercall gamestate_8005268(GameState *gs@<R5>, int a1@<R0>)
     sub_80339CC();
     sub_80039AA();
     sub_8003AFA();
-    sub_80037F4();
+    checkOWObjectInteractions_80037f4();
     sub_802FFF4();
     sub_8030580();
     sub_80027B4();

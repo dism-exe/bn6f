@@ -16186,7 +16186,7 @@ sub_8138848:
 	bl sub_8003BA2
 	bl npc_800461E
 	bl sub_80048D2
-	bl sub_80037F4
+	bl checkOWObjectInteractions_80037f4
 	bl sub_802FFF4
 	bl sub_80027B4
 	bl sub_800286C

@@ -23,6 +23,7 @@
 	.include "structs/Warp2011bb0.inc"
 	.include "structs/Camera.inc"
 	.include "structs/CutsceneCameraInfo.inc"
+	.include "structs/OWObjectInteractionArea.inc"
 
 /*
 rough notes for now

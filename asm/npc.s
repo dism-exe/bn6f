@@ -33,9 +33,9 @@ npc_809E590:
 	str r0, [r5,#oOverworldNPCObject_Unk_50]
 	str r0, [r5,#oOverworldNPCObject_Unk_54]
 	str r0, [r5,#oOverworldNPCObject_Unk_58]
-	strb r0, [r5,#oOverworldNPCObject_Unk_11]
-	strb r0, [r5,#oOverworldNPCObject_Unk_12]
-	strb r0, [r5,#oOverworldNPCObject_Unk_13]
+	strb r0, [r5,#oOverworldNPCObject_CenterOffsetX]
+	strb r0, [r5,#oOverworldNPCObject_CenterOffsetY]
+	strb r0, [r5,#oOverworldNPCObject_CenterOffsetZ]
 	mov r0, #0xff
 	strh r0, [r5,#oOverworldNPCObject_NPCSprite]
 	strh r0, [r5,#oOverworldNPCObject_NPCSpriteUpdate]
@@ -193,61 +193,114 @@ off_809E700: .word jt_809E6F0
 	thumb_local_start
 // movement seems to be done in values of 8?
 // speed to timer calculation:
-// timer = ((0x80000 / speed) + 0xfff) / 0x10000
+// timer = ((0x80000 / speed) + 0xfff) / 0x1000
 npc_movement_809E704:
 	push {lr}
+
+	// load delta table
 	ldr r7, off_809E7C4 // =NPCMovementIterationDeltas
+
+	// get direction
 	ldrb r0, [r5,#oOverworldNPCObject_MovementDirection]
+
+	// r7 = &NPCMovementIterationDeltas[direction]
 	lsl r0, r0, #2
 	add r7, r7, r0
+
+	// read x coordinate
 	ldr r0, [r5,#oOverworldNPCObject_X]
+
+	// get x movement delta
 	mov r3, #0
 	ldrsh r1, [r7,r3]
+
+	// convert from whole value to 16.16 fixed point
 	lsl r1, r1, #0x10
+
+	// add to x coordinate
 	add r0, r0, r1
+
+	// store in the new x coordinate for this iteration
 	str r0, [r5,#oOverworldNPCObject_Unk_70]
+
+	// do the same for y coordinate
 	ldr r0, [r5,#oOverworldNPCObject_Y]
 	mov r3, #2
 	ldrsh r1, [r7,r3]
 	lsl r1, r1, #0x10
 	add r0, r0, r1
 	str r0, [r5,#oOverworldNPCObject_Unk_74]
+
+	// calculate the amount of frames this iteration should take
+	// timer = ((0x80000 / speed) + 0xfff) / 0x1000
 	ldr r0, dword_809E7C8 // =0x80000
 	ldrb r1, [r5,#oOverworldNPCObject_MovementSpeed]
 	push {r5}
 	bl SWI_Div
 	pop {r5}
+
+	// + 0xfff
 	ldr r1, dword_809E7D4 // =0xfff 
 	add r0, r0, r1
+
+	// / 0x1000
 	lsr r0, r0, #0xc
+
+	// store
 	strh r0, [r5,#oOverworldNPCObject_Timer]
+
+	// load sub delta table
 	ldr r7, off_809E7C0 // =NPCMovementSubiterationDeltas
+
+	// get direction
 	ldrb r0, [r5,#oOverworldNPCObject_MovementDirection]
+
+	// r7 = &NPCMovementSubiterationDeltas[direction]
 	add r0, r0, r0
 	add r7, r7, r0
+
+	// get movement speed
 	ldrb r4, [r5,#oOverworldNPCObject_MovementSpeed]
+	
+	// get x movement sub delta
 	mov r3, #0
 	ldrsb r1, [r7,r3]
+
+	// multiply subdelta with speed to get adjusted delta
 	mul r1, r4
-	lsl r1, r1, #0xc
+
+	// scale and store
+	lsl r1, r1, #0xc // r1 * 0x1000
 	str r1, [r5,#oOverworldNPCObject_DeltaX]
+
+	// do the same for delta y
 	mov r3, #1
 	ldrsb r1, [r7,r3]
 	mul r1, r4
 	lsl r1, r1, #0xc
 	str r1, [r5,#oOverworldNPCObject_DeltaY]
+
+	// no delta for z coordinate
 	mov r0, #0
 	str r0, [r5,#oOverworldNPCObject_DeltaZ]
+
+	// store next jumptable function
 	mov r0, #4
 	strb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
+
+	// nextX = x + deltaX
 	ldr r1, [r5,#oOverworldNPCObject_DeltaX]
 	ldr r0, [r5,#oOverworldNPCObject_X]
 	add r0, r0, r1
 	str r0, [r5,#oOverworldNPCObject_NextX]
+
+	// nextY = y + deltaY
 	ldr r1, [r5,#oOverworldNPCObject_DeltaY]
 	ldr r0, [r5,#oOverworldNPCObject_Y]
 	add r0, r0, r1
 	str r0, [r5,#oOverworldNPCObject_NextY]
+
+	// nextZ = z + deltaZ
 	ldr r1, [r5,#oOverworldNPCObject_DeltaZ]
 	ldr r0, [r5,#oOverworldNPCObject_Z]
 	add r0, r0, r1
@@ -255,23 +308,23 @@ npc_movement_809E704:
 	bl sub_809F5B0
 	pop {pc}
 NPCMovementIterationDeltas:
-	.hword 0x0, 0x0
-	.hword 0x8, 0x0
-	.hword 0x0, 0x0
-	.hword 0x0, 0x8
-	.hword 0x0, 0x0
-	.hword -0x8, 0x0
-	.hword 0x0, 0x0
-	.hword 0x0, -0x8
+	.hword  0,  0
+	.hword  8,  0
+	.hword  0,  0
+	.hword  0,  8
+	.hword  0,  0
+	.hword -8,  0
+	.hword  0,  0
+	.hword  0, -8
 NPCMovementSubiterationDeltas:
-	.byte 0x0, 0x0
-	.byte 0x1, 0x0
-	.byte 0x0, 0x0
-	.byte 0x0, 0x1
-	.byte 0x0, 0x0
-	.byte 0xFF, 0x0
-	.byte 0x0, 0x0
-	.byte 0x0, 0xFF
+	.byte  0,  0
+	.byte  1,  0
+	.byte  0,  0
+	.byte  0,  1
+	.byte  0,  0
+	.byte -1,  0
+	.byte  0,  0
+	.byte  0, -1
 byte_809E7AE: .byte 0x0, 0x9, 0x0, 0xB, 0x0, 0xD, 0x0, 0xF
 byte_809E7B6: .byte 0x0, 0x1, 0x0, 0x3, 0x0, 0x5, 0x0, 0x7, 0x0, 0x0
 off_809E7C0: .word NPCMovementSubiterationDeltas
@@ -1138,13 +1191,13 @@ NPCCommand_set_unk_0d:
 NPCCommand_shift_center:
 	mov r1, #1
 	ldrsb r0, [r6,r1]
-	strb r0, [r5,#oOverworldNPCObject_Unk_11]
+	strb r0, [r5,#oOverworldNPCObject_CenterOffsetX]
 	mov r1, #2
 	ldrsb r0, [r6,r1]
-	strb r0, [r5,#oOverworldNPCObject_Unk_12]
+	strb r0, [r5,#oOverworldNPCObject_CenterOffsetY]
 	mov r1, #3
 	ldrsb r0, [r6,r1]
-	strb r0, [r5,#oOverworldNPCObject_Unk_13]
+	strb r0, [r5,#oOverworldNPCObject_CenterOffsetZ]
 	add r6, #4
 	mov pc, lr
 	thumb_func_end NPCCommand_shift_center
@@ -1398,7 +1451,7 @@ npc_809EF82:
 
 	thumb_local_start
 npc_809EF9A:
-	mov r0, #OW_NPC_UNK_FLAGS_60_0x4
+	mov r0, #OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -1408,7 +1461,7 @@ npc_809EF9A:
 
 	thumb_local_start
 npc_809EFA6:
-	mov r0, #OW_NPC_UNK_FLAGS_60_0x4
+	mov r0, #OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION
 	mvn r0, r0
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	and r1, r0
@@ -1569,10 +1622,10 @@ npc_809F058:
 	mov r0, #4
 	strb r0, [r5,#oOverworldNPCObject_CollisionRadius]
 	mov r0, #2
-	strb r0, [r5,#oOverworldNPCObject_Unk_11]
+	strb r0, [r5,#oOverworldNPCObject_CenterOffsetX]
 	mov r0, #2
 	neg r0, r0
-	strb r0, [r5,#oOverworldNPCObject_Unk_12]
+	strb r0, [r5,#oOverworldNPCObject_CenterOffsetY]
 	add r6, #3
 	pop {pc}
 loc_809F0BE:
@@ -2302,18 +2355,18 @@ sub_809F526:
 	beq loc_809F598
 	push {r5}
 	ldr r4, dword_809F5A0 // =0x20000 
-	mov r1, #OW_NPC_UNK_FLAGS_60_0x4
+	mov r1, #OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION
 	tst r7, r1
 	beq loc_809F53E
 	mov r4, #0
 loc_809F53E:
 	ldr r0, [r5,#oOverworldNPCObject_X]
-	mov r6, #oOverworldNPCObject_Unk_11
+	mov r6, #oOverworldNPCObject_CenterOffsetX
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r0, r0, r6
 	ldr r1, [r5,#oOverworldNPCObject_Y]
-	mov r6, #oOverworldNPCObject_Unk_12
+	mov r6, #oOverworldNPCObject_CenterOffsetY
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r1, r1, r6
@@ -2331,7 +2384,7 @@ loc_809F53E:
 loc_809F56A:
 	ldr r2, [r5,#oOverworldNPCObject_Z]
 loc_809F56C:
-	mov r6, #oOverworldNPCObject_Unk_13
+	mov r6, #oOverworldNPCObject_CenterOffsetZ
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r2, r2, r6
@@ -2340,7 +2393,7 @@ loc_809F56C:
 	ldrh r3, [r5,#oOverworldNPCObject_CollisionRadius_Unk_0d]
 	push {r0-r5}
 	ldr r5, dword_809F5A4 // =0x50001 
-	bl npc_80037AC
+	bl createOWObjectInteractionArea_80037ac
 	mov r1, #0x14
 	tst r7, r1
 	pop {r0-r5}
@@ -2349,7 +2402,7 @@ loc_809F56C:
 	add r6, r6, r5
 	ldr r4, dword_809F5A8 // =0x400000 
 	ldr r5, dword_809F5AC // =0xa00000 
-	bl npc_80037AC
+	bl createOWObjectInteractionArea_80037ac
 loc_809F596:
 	pop {r5}
 loc_809F598:
@@ -2364,34 +2417,39 @@ dword_809F5AC: .word 0xA00000
 	thumb_func_end sub_809F526
 
 	thumb_local_start
+// movement/interaction related
 sub_809F5B0:
 	push {lr}
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #OW_NPC_UNK_FLAGS_60_0x4
+	mov r1, #OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION
 	tst r0, r1
 	bne loc_809F5EA
 	push {r5}
+
 	ldr r0, [r5,#oOverworldNPCObject_NextX]
-	mov r6, #oOverworldNPCObject_Unk_11
+	mov r6, #oOverworldNPCObject_CenterOffsetX
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r0, r0, r6
+
 	ldr r1, [r5,#oOverworldNPCObject_NextY]
-	mov r6, #oOverworldNPCObject_Unk_12
+	mov r6, #oOverworldNPCObject_CenterOffsetY
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r1, r1, r6
+
 	ldr r2, [r5,#oOverworldNPCObject_NextZ]
-	mov r6, #oOverworldNPCObject_Unk_13
+	mov r6, #oOverworldNPCObject_CenterOffsetZ
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r2, r2, r6
+
 	mov r6, #oOverworldNPCObject_Unk_54
 	add r6, r6, r5
 	ldr r3, dword_809F5F0 // =0x804 
 	ldr r4, dword_809F5F4 // =0x80000 
 	ldr r5, dword_809F5F8 // =0x50000 
-	bl npc_80037AC
+	bl createOWObjectInteractionArea_80037ac
 	pop {r5}
 loc_809F5EA:
 	mov r0, #0

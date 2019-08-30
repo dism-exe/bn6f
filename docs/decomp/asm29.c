@@ -4738,7 +4738,7 @@ void __noreturn sub_80A88E2()
     int v0; // r5
 
     sub_80A8988();
-    npc_80037AC(*(v0 + 12), *(v0 + 16), *(v0 + 20), 2058);
+    createOWObjectInteractionArea_80037ac(*(v0 + 12), *(v0 + 16), *(v0 + 20), 2058);
     *(v0 + 40) = 0;
     sprite_update(v0);
 }
@@ -5187,7 +5187,7 @@ int sub_80A8D7C()
     int result; // r0
     int v2; // [sp+4h] [bp-20h]
 
-    npc_80037AC(v0[3], v0[4], v0[5] - 1310720, 2056);
+    createOWObjectInteractionArea_80037ac(v0[3], v0[4], v0[5] - 1310720, 2056);
     result = 0;
     *(v2 + 36) = 0;
     return result;

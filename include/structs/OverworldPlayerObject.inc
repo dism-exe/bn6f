@@ -31,15 +31,20 @@
 	u32 NextX // loc=0x28
 	u32 NextY // loc=0x2c
 	u32 NextZ // loc=0x30
-	struct_org 0x38
+	u32 Unk_34 // loc=0x34
 	u32 Unk_38 // loc=0x38
 	u32 Unk_3c // loc=0x3c
 	u32 Unk_40 // loc=0x40
 	u32 Unk_44 // loc=0x44
+	u32 Unk_48 // loc=0x48
 	struct_org 0x50
 	u32 Unk_50 // loc=0x50
 	struct_org 0x58
 	u32 interactedNPCObject_58 // loc=0x58
+	struct_org 0x72
+	u16 Unk_72 // loc=0x72
+	u16 Unk_74 // loc=0x74
+	u16 Unk_76 // loc=0x76
 	struct_org 0x90
 	object_sprite_struct \label\()_SpriteData, \struct_entry // loc=0x90
 	u0 Size // loc=0xc8

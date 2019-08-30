@@ -11101,7 +11101,7 @@ int __fastcall sub_8138848(int a1, int a2, int a3, int a4)
     sub_8003BA2();
     npc_800461E();
     sub_80048D2();
-    sub_80037F4();
+    checkOWObjectInteractions_80037f4();
     sub_802FFF4();
     sub_80027B4();
     sub_800286C();
