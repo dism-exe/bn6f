@@ -6302,7 +6302,7 @@ sub_80A88E2:
 	ldr r3, dword_80A890C // =0x80a 
 	ldr r4, dword_80A8910 // =0x40000 
 	ldr r5, dword_80A8914 // =0x10000 
-	bl sub_80037AC
+	bl npc_80037AC
 	pop {r4-r7}
 	mov r0, #0
 	str r0, [r5,#0x28]
@@ -6879,7 +6879,7 @@ sub_80A8D7C:
 	ldr r3, dword_80A8DA4 // =0x808 
 	ldr r4, dword_80A8DA8 // =0x40000 
 	ldr r5, dword_80A8DAC // =0x10000 
-	bl sub_80037AC
+	bl npc_80037AC
 	pop {r4-r7}
 	mov r0, #0
 	str r0, [r5,#0x24]

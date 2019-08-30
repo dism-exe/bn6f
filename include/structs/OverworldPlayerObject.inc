@@ -39,7 +39,7 @@
 	struct_org 0x50
 	u32 Unk_50 // loc=0x50
 	struct_org 0x58
-	u32 Unk_58 // loc=0x58
+	u32 interactedNPCObject_58 // loc=0x58
 	struct_org 0x90
 	object_sprite_struct \label\()_SpriteData, \struct_entry // loc=0x90
 	u0 Size // loc=0xc8

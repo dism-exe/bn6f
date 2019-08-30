@@ -23,7 +23,7 @@ npc_809E590:
 	mov r0, #0
 	str r0, [r5,#oOverworldNPCObject_Flags_68]
 	str r0, [r5,#oOverworldNPCObject_Flags_68_Update]
-	strb r0, [r5,#oOverworldNPCObject_Unk_0e]
+	strb r0, [r5,#oOverworldNPCObject_MovementDirection]
 	strb r0, [r5,#oOverworldNPCObject_Unk_0f]
 	strb r0, [r5,#oOverworldNPCObject_InteractionLocked]
 	strb r0, [r5,#oOverworldNPCObject_Unk_07]
@@ -44,7 +44,7 @@ npc_809E590:
 	mov r0, #4
 	strb r0, [r5,#oOverworldNPCObject_CurState]
 	mov r0, #4
-	strb r0, [r5,#oOverworldNPCObject_Volume]
+	strb r0, [r5,#oOverworldNPCObject_CollisionRadius]
 	mov r0, #8
 	strb r0, [r5,#oOverworldNPCObject_Unk_0d]
 	mov r0, #0x80
@@ -65,7 +65,7 @@ npc_809E5E2:
 	bl sub_809F5FC
 	b loc_809E658
 loc_809E5F0:
-	bl npc_809EBDC
+	bl npc_runPrimaryScript_809ebdc
 	ldr r7, off_809E6C0 // =off_809E6A4 
 	ldrb r0, [r5,#oOverworldNPCObject_CurAction]
 	ldr r7, [r7,r0]
@@ -73,7 +73,7 @@ loc_809E5F0:
 	bx r7
 	mov r0, #0
 	ldr r2, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #8
+	mov r1, #OW_NPC_UNK_FLAGS_60_0x8
 	tst r2, r1
 	beq loc_809E60A
 	mov r0, #1
@@ -89,14 +89,14 @@ loc_809E60A:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #0x80
+	mov r1, #OW_NPC_UNK_FLAGS_60_0x80
 	tst r0, r1
 	bne loc_809E632
 	bl sprite_noShadow // () -> void
 	b loc_809E644
 loc_809E632:
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	ldr r1, off_809E6C4 // =0x100 
+	ldr r1, off_809E6C4 // =OW_NPC_UNK_FLAGS_60_0x100
 	tst r0, r1
 	beq loc_809E640
 	bl sprite_hasShadow
@@ -123,7 +123,7 @@ loc_809E658:
 	beq loc_809E66E
 	bl sub_8002FA6
 loc_809E66E:
-	ldrb r0, [r5,#oOverworldNPCObject_Unk_0e]
+	ldrb r0, [r5,#oOverworldNPCObject_MovementDirection]
 	strb r0, [r5,#oOverworldNPCObject_Unk_0f]
 	ldrb r0, [r5,#oOverworldNPCObject_AnimationSelect]
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelectUpdate]
@@ -141,7 +141,7 @@ loc_809E66E:
 loc_809E690:
 	bl sub_8002E14
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #0x40 
+	mov r1, #OW_NPC_UNK_FLAGS_60_0x40
 	tst r0, r1
 	beq locret_809E6A0
 	bl sub_809F922
@@ -153,22 +153,22 @@ off_809E6A4: .word sub_809E6C8+1
 	.word npc_809E8CC+1
 	.word npc_809EA3C+1
 	.word sub_809EA74+1
-	.word sub_809EA82+1
+	.word npc_waitCutsceneVar_809ea82+1
 	.word npc_809EAA0+1
 off_809E6C0: .word off_809E6A4
-off_809E6C4: .word 0x100
+off_809E6C4: .word OW_NPC_UNK_FLAGS_60_0x100
 	thumb_func_end npc_809E5E2
 
 	thumb_local_start
 sub_809E6C8:
 	push {lr}
-	ldrh r0, [r5,#oOverworldNPCObject_AnimationTimer]
+	ldrh r0, [r5,#oOverworldNPCObject_Timer]
 	sub r0, #1
-	strh r0, [r5,#oOverworldNPCObject_AnimationTimer]
+	strh r0, [r5,#oOverworldNPCObject_Timer]
 	bne loc_809E6D6
-	bl sub_809F516
+	bl npc_enableScript0x19_809f516
 loc_809E6D6:
-	bl npc_809EBF8
+	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {pc}
 	thumb_func_end sub_809E6C8
 
@@ -180,10 +180,10 @@ npc_809E6DC:
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
-	bl npc_809EBF8
+	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {pc}
 	.byte 0, 0
-jt_809E6F0: .word npc_809E704+1
+jt_809E6F0: .word npc_movement_809E704+1
 	.word npc_809E7D8+1
 	.word npc_809E84E+1
 	.word npc_809E878+1
@@ -191,10 +191,13 @@ off_809E700: .word jt_809E6F0
 	thumb_func_end npc_809E6DC
 
 	thumb_local_start
-npc_809E704:
+// movement seems to be done in values of 8?
+// speed to timer calculation:
+// timer = ((0x80000 / speed) + 0xfff) / 0x10000
+npc_movement_809E704:
 	push {lr}
-	ldr r7, off_809E7C4 // =byte_809E77E
-	ldrb r0, [r5,#oOverworldNPCObject_Unk_0e]
+	ldr r7, off_809E7C4 // =NPCMovementIterationDeltas
+	ldrb r0, [r5,#oOverworldNPCObject_MovementDirection]
 	lsl r0, r0, #2
 	add r7, r7, r0
 	ldr r0, [r5,#oOverworldNPCObject_X]
@@ -210,19 +213,19 @@ npc_809E704:
 	add r0, r0, r1
 	str r0, [r5,#oOverworldNPCObject_Unk_74]
 	ldr r0, dword_809E7C8 // =0x80000
-	ldrb r1, [r5,#oOverworldNPCObject_WalkingSpeed]
+	ldrb r1, [r5,#oOverworldNPCObject_MovementSpeed]
 	push {r5}
 	bl SWI_Div
 	pop {r5}
 	ldr r1, dword_809E7D4 // =0xfff 
 	add r0, r0, r1
 	lsr r0, r0, #0xc
-	strh r0, [r5,#oOverworldNPCObject_AnimationTimer]
-	ldr r7, off_809E7C0 // =byte_809E79E
-	ldrb r0, [r5,#oOverworldNPCObject_Unk_0e]
+	strh r0, [r5,#oOverworldNPCObject_Timer]
+	ldr r7, off_809E7C0 // =NPCMovementSubiterationDeltas
+	ldrb r0, [r5,#oOverworldNPCObject_MovementDirection]
 	add r0, r0, r0
 	add r7, r7, r0
-	ldrb r4, [r5,#oOverworldNPCObject_WalkingSpeed]
+	ldrb r4, [r5,#oOverworldNPCObject_MovementSpeed]
 	mov r3, #0
 	ldrsb r1, [r7,r3]
 	mul r1, r4
@@ -251,24 +254,39 @@ npc_809E704:
 	str r0, [r5,#oOverworldNPCObject_NextZ]
 	bl sub_809F5B0
 	pop {pc}
-byte_809E77E: .byte 0x0, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0xF8, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xF8, 0xFF
-byte_809E79E: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0, 0x0, 0xFF
+NPCMovementIterationDeltas:
+	.hword 0x0, 0x0
+	.hword 0x8, 0x0
+	.hword 0x0, 0x0
+	.hword 0x0, 0x8
+	.hword 0x0, 0x0
+	.hword -0x8, 0x0
+	.hword 0x0, 0x0
+	.hword 0x0, -0x8
+NPCMovementSubiterationDeltas:
+	.byte 0x0, 0x0
+	.byte 0x1, 0x0
+	.byte 0x0, 0x0
+	.byte 0x0, 0x1
+	.byte 0x0, 0x0
+	.byte 0xFF, 0x0
+	.byte 0x0, 0x0
+	.byte 0x0, 0xFF
 byte_809E7AE: .byte 0x0, 0x9, 0x0, 0xB, 0x0, 0xD, 0x0, 0xF
 byte_809E7B6: .byte 0x0, 0x1, 0x0, 0x3, 0x0, 0x5, 0x0, 0x7, 0x0, 0x0
-off_809E7C0: .word byte_809E79E
-off_809E7C4: .word byte_809E77E
+off_809E7C0: .word NPCMovementSubiterationDeltas
+off_809E7C4: .word NPCMovementIterationDeltas
 dword_809E7C8: .word 0x80000
 	.word byte_809E7AE
 	.word byte_809E7B6
 dword_809E7D4: .word 0xFFF
-	thumb_func_end npc_809E704
+	thumb_func_end npc_movement_809E704
 
 	thumb_local_start
 npc_809E7D8:
 	push {lr}
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #0x10
+	mov r1, #OW_NPC_UNK_FLAGS_60_0x10
 	tst r0, r1
 	bne loc_809E7EA
 	bl sub_809F638
@@ -281,22 +299,22 @@ loc_809E7EA:
 	str r0, [r5,#oOverworldNPCObject_Y]
 	ldr r0, [r5,#oOverworldNPCObject_NextZ]
 	str r0, [r5,#oOverworldNPCObject_Z]
-	ldrh r0, [r5,#oOverworldNPCObject_AnimationTimer]
+	ldrh r0, [r5,#oOverworldNPCObject_Timer]
 	sub r0, #1
-	strh r0, [r5,#oOverworldNPCObject_AnimationTimer]
+	strh r0, [r5,#oOverworldNPCObject_Timer]
 	bne loc_809E81A
 	ldr r0, [r5,#oOverworldNPCObject_Unk_70]
 	str r0, [r5,#oOverworldNPCObject_X]
 	ldr r0, [r5,#oOverworldNPCObject_Unk_74]
 	str r0, [r5,#oOverworldNPCObject_Y]
-	ldrb r0, [r5,#oOverworldNPCObject_WalkingTimer]
+	ldrb r0, [r5,#oOverworldNPCObject_MovementTimer]
 	sub r0, #1
-	strb r0, [r5,#oOverworldNPCObject_WalkingTimer]
+	strb r0, [r5,#oOverworldNPCObject_MovementTimer]
 	bne loc_809E814
-	bl sub_809F516
+	bl npc_enableScript0x19_809f516
 	pop {pc}
 loc_809E814:
-	bl npc_809E704
+	bl npc_movement_809E704
 	pop {pc}
 loc_809E81A:
 	ldr r1, [r5,#oOverworldNPCObject_DeltaX]
@@ -308,7 +326,7 @@ loc_809E81A:
 	add r0, r0, r1
 	str r0, [r5,#oOverworldNPCObject_NextY]
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #0x20 
+	mov r1, #OW_NPC_UNK_FLAGS_60_0x20
 	lsl r1, r1, #4
 	tst r0, r1
 	bne loc_809E842
@@ -329,13 +347,13 @@ loc_809E848:
 	thumb_local_start
 npc_809E84E:
 	push {lr}
-	ldrb r0, [r5,#oOverworldNPCObject_WalkingSpeed]
-	ldrb r1, [r5,#oOverworldNPCObject_WalkingTimer]
+	ldrb r0, [r5,#oOverworldNPCObject_MovementSpeed]
+	ldrb r1, [r5,#oOverworldNPCObject_MovementTimer]
 	ldrb r2, [r5,#oOverworldNPCObject_Undetected_06]
 	tst r0, r0
 	beq loc_809E872
 	sub r0, #1
-	strb r0, [r5,#oOverworldNPCObject_WalkingSpeed]
+	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	tst r1, r1
 	bne loc_809E86A
 	ldrh r1, [r5,#oOverworldNPCObject_Z16]
@@ -349,18 +367,18 @@ loc_809E86A:
 locret_809E870:
 	pop {pc}
 loc_809E872:
-	bl sub_809F516
+	bl npc_enableScript0x19_809f516
 	pop {pc}
 	thumb_func_end npc_809E84E
 
 	thumb_local_start
 npc_809E878:
 	push {lr}
-	ldrb r0, [r5,#oOverworldNPCObject_WalkingSpeed]
+	ldrb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	tst r0, r0
 	beq loc_809E8BA
 	sub r0, #1
-	strb r0, [r5,#oOverworldNPCObject_WalkingSpeed]
+	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldr r0, off_809E8C0 // =byte_809E8C4
 	ldrb r1, [r5,#oOverworldNPCObject_Undetected_06]
 	lsl r1, r1, #1
@@ -379,7 +397,7 @@ loc_809E89E:
 	sub r1, r1, r0
 	strh r1, [r5,r2]
 loc_809E8A4:
-	ldrb r1, [r5,#oOverworldNPCObject_WalkingTimer]
+	ldrb r1, [r5,#oOverworldNPCObject_MovementTimer]
 	tst r1, r1
 	bne loc_809E8B2
 	ldrh r1, [r5,#oOverworldNPCObject_Z16]
@@ -393,7 +411,7 @@ loc_809E8B2:
 locret_809E8B8:
 	pop {pc}
 loc_809E8BA:
-	bl sub_809F516
+	bl npc_enableScript0x19_809f516
 	pop {pc}
 off_809E8C0: .word byte_809E8C4
 byte_809E8C4: .byte 0x26, 0x0, 0x2A, 0x0, 0x26, 0x1, 0x2A, 0x1
@@ -407,7 +425,7 @@ npc_809E8CC:
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
-	bl npc_809EBF8
+	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {pc}
 	.byte 0, 0
 jt_809E8E0: .word npc_809E8FC+1
@@ -422,7 +440,7 @@ off_809E8F8: .word jt_809E8E0
 	thumb_local_start
 npc_809E8FC:
 	push {lr}
-	ldrb r0, [r5,#oOverworldNPCObject_WalkingSpeed]
+	ldrb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	lsl r0, r0, #0xc
 	str r0, [r5,#oOverworldNPCObject_DeltaZ]
 	mov r3, #5
@@ -455,7 +473,7 @@ npc_809E916:
 	str r2, [r5,#oOverworldNPCObject_Z]
 	mov r0, #0
 	strb r0, [r5,#oOverworldNPCObject_InteractionLocked]
-	bl sub_809F516
+	bl npc_enableScript0x19_809f516
 	pop {pc}
 loc_809E940:
 	str r0, [r5,#oOverworldNPCObject_Z]
@@ -465,7 +483,7 @@ loc_809E940:
 	thumb_local_start
 npc_809E944:
 	push {lr}
-	ldrb r0, [r5,#oOverworldNPCObject_WalkingSpeed]
+	ldrb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	lsl r0, r0, #0xc
 	str r0, [r5,#oOverworldNPCObject_DeltaZ]
 	mov r3, #5
@@ -520,7 +538,7 @@ loc_809E992:
 	str r2, [r5,#oOverworldNPCObject_Z]
 	mov r0, #0
 	strb r0, [r5,#oOverworldNPCObject_InteractionLocked]
-	bl sub_809F516
+	bl npc_enableScript0x19_809f516
 	pop {pc}
 loc_809E9B0:
 	str r0, [r5,#oOverworldNPCObject_Z]
@@ -532,7 +550,7 @@ byte_809E9B8: .byte 0x26, 0x0, 0x2A, 0x0, 0x26, 0x1, 0x2A, 0x1
 	thumb_local_start
 npc_809E9C0:
 	push {lr}
-	ldrb r0, [r5,#oOverworldNPCObject_WalkingSpeed]
+	ldrb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	lsl r0, r0, #0xc
 	str r0, [r5,#oOverworldNPCObject_DeltaZ]
 	mov r3, #5
@@ -584,7 +602,7 @@ loc_809EA0E:
 	bgt loc_809EA26
 	mov r0, #0
 	strb r0, [r5,#oOverworldNPCObject_InteractionLocked]
-	bl sub_809F516
+	bl npc_enableScript0x19_809f516
 	pop {pc}
 loc_809EA26:
 	ldr r1, [r5,#oOverworldNPCObject_Z]
@@ -614,15 +632,15 @@ loc_809EA4A:
 	bl sprite_getFrameParameters
 	tst r0, r7
 	beq loc_809EA6E
-	bl sub_809F516
+	bl npc_enableScript0x19_809f516
 	b loc_809EA6E
 loc_809EA62:
 	bl sprite_getFrameParameters
 	cmp r0, r7
 	bne loc_809EA6E
-	bl sub_809F516
+	bl npc_enableScript0x19_809f516
 loc_809EA6E:
-	bl npc_809EBF8
+	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {pc}
 	thumb_func_end npc_809EA3C
 
@@ -632,42 +650,44 @@ sub_809EA74:
 	ldr r7, [r5,#oOverworldNPCObject_Undetected_7c]
 	mov lr, pc
 	bx r7
-	bl npc_809EBF8
+	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {pc}
 	thumb_func_end sub_809EA74
 
 	thumb_local_start
-sub_809EA82:
+// wait for the value of a cutscene var to equal the given value
+// set in a npc command earlier
+npc_waitCutsceneVar_809ea82:
 	push {r4,r7,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_CutsceneStatePtr]
-	mov r7, #0x80
+	mov r7, #oOverworldNPCObject_CutsceneVarIndexToWaitFor
 	ldr r0, [r5,r7]
-	mov r7, #0x84
+	mov r7, #oOverworldNPCObject_CutsceneVarValueToWaitFor
 	ldr r1, [r5,r7]
 	ldrb r0, [r4,r0]
 	cmp r0, r1
-	bne loc_809EA9A
-	bl sub_809F516
-loc_809EA9A:
-	bl npc_809EBF8
+	bne .varNotEqual
+	bl npc_enableScript0x19_809f516
+.varNotEqual
+	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {r4,r7,pc}
-	thumb_func_end sub_809EA82
+	thumb_func_end npc_waitCutsceneVar_809ea82
 
 	thumb_local_start
 npc_809EAA0:
 	push {r4,r7,lr}
-	mov r7, #0x80
+	mov r7, #oOverworldNPCObject_Unk_80_Flag
 	ldr r0, [r5,r7]
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_809EAD4
-	bl sub_809F516
-	mov r0, #1
+	bl npc_enableScript0x19_809f516
+	mov r0, #OW_NPC_UNK_FLAGS_60_DISABLE_INTERACTION
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r0, #1
+	mov r0, #OBJECT_FLAG_ACTIVE
 	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0x80
 	mov r1, #0x1c
@@ -675,9 +695,9 @@ npc_809EAA0:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
 	bl FreeOverworldNPCObject
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 loc_809EAD4:
-	bl npc_809EBF8
+	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {r4,r7,pc}
 	thumb_func_end npc_809EAA0
 
@@ -692,7 +712,7 @@ npc_809EADA:
 	bl sprite_update
 	bl sub_809F526
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #0x40 
+	mov r1, #OW_NPC_UNK_FLAGS_60_0x40 
 	tst r0, r1
 	beq locret_809EAFA
 	bl sub_809F922
@@ -721,7 +741,7 @@ off_809EB1C: .word off_809EB14
 npc_809EB20:
 	push {lr}
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #2
+	mov r1, #OW_NPC_UNK_FLAGS_60_0x2
 	tst r0, r1
 	bne loc_809EB54
 	mov r7, r10
@@ -744,10 +764,10 @@ npc_809EB20:
 	bl sprite_loadAnimationData // () -> void
 loc_809EB54:
 	ldr r2, [r5,#oOverworldNPCObject_UnkFlags_60]
-	ldr r1, off_809EBB4 // =0x400 
+	ldr r1, off_809EBB4 // =OW_NPC_UNK_FLAGS_60_0x400
 	tst r2, r1
 	beq loc_809EBA4
-	ldr r1, dword_809EBB8 // =0x800 
+	ldr r1, dword_809EBB8 // =OW_NPC_UNK_FLAGS_60_0x800
 	tst r2, r1
 	beq loc_809EB76
 	mov r7, r10
@@ -789,8 +809,8 @@ loc_809EBAA:
 	strb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
 	bl npc_809EBBC
 	pop {pc}
-off_809EBB4: .word 0x400
-dword_809EBB8: .word 0x800
+off_809EBB4: .word OW_NPC_UNK_FLAGS_60_0x400
+dword_809EBB8: .word OW_NPC_UNK_FLAGS_60_0x800
 	thumb_func_end npc_809EB20
 
 	thumb_local_start
@@ -812,12 +832,12 @@ locret_809EBDA:
 	thumb_func_end npc_809EBBC
 
 	thumb_local_start
-npc_809EBDC:
+npc_runPrimaryScript_809ebdc:
 	push {lr}
-loc_809EBDE:
+.runScriptCommandLoop
 	ldrb r0, [r5,#oOverworldNPCObject_TerminateScript_19]
 	tst r0, r0
-	bne locret_809EBF6
+	bne .done
 	ldr r6, [r5,#oOverworldNPCObject_AnimationScriptPtr]
 	ldrb r0, [r6]
 	lsl r0, r0, #2
@@ -826,21 +846,21 @@ loc_809EBDE:
 	mov lr, pc
 	bx r7
 	str r6, [r5,#oOverworldNPCObject_AnimationScriptPtr]
-	b loc_809EBDE
-locret_809EBF6:
+	b .runScriptCommandLoop
+.done
 	pop {pc}
-	thumb_func_end npc_809EBDC
+	thumb_func_end npc_runPrimaryScript_809ebdc
 
 	thumb_local_start
-npc_809EBF8:
+npc_runSecondaryScriptMaybe_809ebf8:
 	push {lr}
-loc_809EBFA:
+.runScriptCommandLoop
 	ldrb r0, [r5,#oOverworldNPCObject_TerminateScript_1f]
 	tst r0, r0
-	bne loc_809EC16
+	bne .checkTimer
 	ldr r6, [r5,#oOverworldNPCObject_UnkNPCScriptPtr_5c]
 	tst r6, r6
-	beq locret_809EC1A
+	beq .noSecondaryScript
 	ldrb r0, [r6]
 	lsl r0, r0, #2
 	ldr r7, off_809EC2C // =npc_jt_commands 
@@ -848,42 +868,42 @@ loc_809EBFA:
 	mov lr, pc
 	bx r7
 	str r6, [r5,#oOverworldNPCObject_UnkNPCScriptPtr_5c]
-	b loc_809EBFA
-loc_809EC16:
-	bl npc_809EC1C
-locret_809EC1A:
+	b .runScriptCommandLoop
+.checkTimer
+	bl npc_decrementSecondaryTimer_809ec1c
+.noSecondaryScript
 	pop {pc}
-	thumb_func_end npc_809EBF8
+	thumb_func_end npc_runSecondaryScriptMaybe_809ebf8
 
 	thumb_local_start
-npc_809EC1C:
+npc_decrementSecondaryTimer_809ec1c:
 	push {lr}
-	ldrh r0, [r5,#oOverworldNPCObject_Timer_20]
+	ldrh r0, [r5,#oOverworldNPCObject_Timer_22]
 	sub r0, #1
-	strh r0, [r5,#oOverworldNPCObject_Timer_20]
-	bne locret_809EC2A
+	strh r0, [r5,#oOverworldNPCObject_Timer_22]
+	bne .timerNotZero
 	mov r0, #0
 	strb r0, [r5,#oOverworldNPCObject_TerminateScript_1f]
-locret_809EC2A:
+.timerNotZero
 	pop {pc}
 off_809EC2C: .word npc_jt_commands
-npc_jt_commands: .word npc_00_terminateScript+1
-	.word 0x0
-	.word npc_809ED88+1
-	.word npc_809ED94+1
-	.word npc_809EDB2+1
-	.word npc_809EDD0+1
-	.word npc_809EDEE+1
-	.word npc_809EE00+1
-	.word npc_809EE12+1
-	.word npc_809EE1A+1
-	.word npc_809EE22+1
-	.word npc_809EE2A+1
-	.word npc_809EE32+1
-	.word npc_809EE48+1
-	.word npc_809EE56+1
-	.word npc_809EE62+1
-	.word npc_809EE6C+1
+npc_jt_commands: .word NPCCommand_end+1
+	.word NULL
+	.word NPCCommand_jump+1
+	.word NPCCommand_free_and_end+1
+	.word NPCCommand_jump_if_flag_set+1
+	.word NPCCommand_jump_if_flag_clear+1
+	.word NPCCommand_set_event_flag+1
+	.word NPCCommand_clear_event_flag+1
+	.word NPCCommand_set_active_and_visible+1
+	.word NPCCommand_set_active_and_invisible+1
+	.word NPCCommand_set_collision_radius+1
+	.word NPCCommand_set_unk_0d+1
+	.word NPCCommand_shift_center+1
+	.word NPCCommand_enable_npc_interaction+1
+	.word NPCCommand_disable_npc_interaction+1
+	.word NPCCommand_set_npc_palette_index+1
+	.word NPCCommand_pause+1
 	.word npc_809EE82+1
 	.word npc_809EE9C+1
 	.word npc_809EEAA+1
@@ -923,8 +943,8 @@ npc_jt_commands: .word npc_00_terminateScript+1
 	.word sub_809F198+1
 	.word sub_809F1C6+1
 	.word sub_809F1D8+1
-	.word sub_809F218+1
-	.word sub_809F23E+1
+	.word NPCCommand_init_movement+1
+	.word NPCCommand_change_movement_direction+1
 	.word sub_809F26A+1
 	.word sub_809F270+1
 	.word sub_809F292+1
@@ -951,28 +971,35 @@ npc_jt_commands: .word npc_00_terminateScript+1
 	.word sub_809F45A+1
 	.word sub_809F4B8+1
 	.word npc_809F4EE+1
-	thumb_func_end npc_809EC1C
+	thumb_func_end npc_decrementSecondaryTimer_809ec1c
 
 	thumb_local_start
-npc_00_terminateScript:
+// 0x00
+// end npc script
+NPCCommand_end:
 	push {lr}
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	pop {pc}
-	thumb_func_end npc_00_terminateScript
+	thumb_func_end NPCCommand_end
 
 	thumb_local_start
-npc_809ED88:
+// 0x02 destination1
+// jump to another script
+// destination1 - script to jump to
+NPCCommand_jump:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
-	thumb_func_end npc_809ED88
+	thumb_func_end NPCCommand_jump
 
 	thumb_local_start
-npc_809ED94:
+// 0x03
+// free current npc
+NPCCommand_free_and_end:
 	push {lr}
-	mov r0, #1
+	mov r0, #OBJECT_FLAG_ACTIVE
 	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0x80
 	mov r1, #0x1c
@@ -980,46 +1007,57 @@ npc_809ED94:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
 	bl FreeOverworldNPCObject
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	pop {pc}
-	thumb_func_end npc_809ED94
+	thumb_func_end NPCCommand_free_and_end
 
 	thumb_local_start
-npc_809EDB2:
+// 0x04 hword1 destination3
+// jump if the given event flag is set
+// hword1 - event flag to test
+// destination3 - script to jump to
+NPCCommand_jump_if_flag_set:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
-	beq loc_809EDCC
+	beq .flagNotSet
 	add r0, r6, #3
 	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
-loc_809EDCC:
+.flagNotSet
 	add r6, #7
 	pop {pc}
-	thumb_func_end npc_809EDB2
+	thumb_func_end NPCCommand_jump_if_flag_set
 
 	thumb_local_start
-npc_809EDD0:
+// 0x05 hword1 destination3
+// jump if the given event flag is clear
+// hword1 - event flag to test
+// destination3 - script to jump to
+NPCCommand_jump_if_flag_clear:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
-	bne loc_809EDEA
+	bne .flagNotClear
 	add r0, r6, #3
 	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
-loc_809EDEA:
+.flagNotClear
 	add r6, #7
 	pop {pc}
-	thumb_func_end npc_809EDD0
+	thumb_func_end NPCCommand_jump_if_flag_clear
 
 	thumb_local_start
-npc_809EDEE:
+// 0x06 hword1
+// set event flag
+// hword1 - event flag to set
+NPCCommand_set_event_flag:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
@@ -1027,10 +1065,13 @@ npc_809EDEE:
 	bl SetEventFlag
 	add r6, #3
 	pop {pc}
-	thumb_func_end npc_809EDEE
+	thumb_func_end NPCCommand_set_event_flag
 
 	thumb_local_start
-npc_809EE00:
+// 0x07 hword1
+// clear event flag
+// hword1 - event flag to clear
+NPCCommand_clear_event_flag:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
@@ -1038,42 +1079,63 @@ npc_809EE00:
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	add r6, #3
 	pop {pc}
-	thumb_func_end npc_809EE00
+	thumb_func_end NPCCommand_clear_event_flag
 
 	thumb_local_start
-npc_809EE12:
-	mov r0, #3
+// 0x08
+// set the npc to be active and visible
+NPCCommand_set_active_and_visible:
+	mov r0, #(OBJECT_FLAG_ACTIVE | OBJECT_FLAG_VISIBLE)
 	strb r0, [r5,#oObjectHeader_Flags]
 	add r6, #1
 	mov pc, lr
-	thumb_func_end npc_809EE12
+	thumb_func_end NPCCommand_set_active_and_visible
 
 	thumb_local_start
-npc_809EE1A:
-	mov r0, #1
+// 0x09
+// set the npc to be active and invisible
+NPCCommand_set_active_and_invisible:
+	mov r0, #OBJECT_FLAG_ACTIVE
 	strb r0, [r5,#oObjectHeader_Flags]
 	add r6, #1
 	mov pc, lr
-	thumb_func_end npc_809EE1A
+	thumb_func_end NPCCommand_set_active_and_invisible
 
 	thumb_local_start
-npc_809EE22:
+// 0x0a byte1
+// set npc collision radius
+// byte1 - new value of collision radius
+NPCCommand_set_collision_radius:
 	ldrb r0, [r6,#1]
-	strb r0, [r5,#oOverworldNPCObject_Volume]
+	strb r0, [r5,#oOverworldNPCObject_CollisionRadius]
 	add r6, #2
 	mov pc, lr
-	thumb_func_end npc_809EE22
+	thumb_func_end NPCCommand_set_collision_radius
 
 	thumb_local_start
-npc_809EE2A:
+// 0x0b byte1
+// set struct field 0xd of the current overworld npc struct
+// byte1 - new value of struct field 0xd
+NPCCommand_set_unk_0d:
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_Unk_0d]
 	add r6, #2
 	mov pc, lr
-	thumb_func_end npc_809EE2A
+	thumb_func_end NPCCommand_set_unk_0d
 
 	thumb_local_start
-npc_809EE32:
+// 0x0c signedbyte1 signedbyte2 signedbyte3
+// shift the center of the npc given the three args
+// not exactly sure what this is for
+// npc collision is shifted, as well as the interaction area
+// but the npc sprite is not shifted
+// and the interaction area without the center shift still exists
+// and interacting to the npc via the original interaction area
+// will cause the sprite to move
+// signedbyte1 - x offset for npc center
+// signedbyte2 - y offset for npc center
+// signedbyte3 - z offset for npc center
+NPCCommand_shift_center:
 	mov r1, #1
 	ldrsb r0, [r6,r1]
 	strb r0, [r5,#oOverworldNPCObject_Unk_11]
@@ -1085,71 +1147,82 @@ npc_809EE32:
 	strb r0, [r5,#oOverworldNPCObject_Unk_13]
 	add r6, #4
 	mov pc, lr
-	thumb_func_end npc_809EE32
+	thumb_func_end NPCCommand_shift_center
 
 	thumb_local_start
-npc_809EE48:
-	mov r0, #1
+// 0x0d
+// enable NPC interaction (talking to the NPC)
+NPCCommand_enable_npc_interaction:
+	mov r0, #OW_NPC_UNK_FLAGS_60_DISABLE_INTERACTION
 	mvn r0, r0
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	and r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #1
 	mov pc, lr
-	thumb_func_end npc_809EE48
+	thumb_func_end NPCCommand_enable_npc_interaction
 
 	thumb_local_start
-npc_809EE56:
-	mov r0, #1
+// 0x0e
+// disable NPC interaction (talking to the NPC)
+NPCCommand_disable_npc_interaction:
+	mov r0, #OW_NPC_UNK_FLAGS_60_DISABLE_INTERACTION
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #1
 	mov pc, lr
-	thumb_func_end npc_809EE56
+	thumb_func_end NPCCommand_disable_npc_interaction
 
 	thumb_local_start
-npc_809EE62:
+// 0x0f byte1
+// set npc palette index
+// byte1 - value to set npc's palette index to
+NPCCommand_set_npc_palette_index:
 	push {lr}
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_PaletteIndex]
 	add r6, #2
 	pop {pc}
-	thumb_func_end npc_809EE62
+	thumb_func_end NPCCommand_set_npc_palette_index
 
 	thumb_local_start
-npc_809EE6C:
+// 0x10 byte1
+// wait a given number of frames for this npc's script
+// byte1 - number of frames to wait
+NPCCommand_pause:
 	push {lr}
-	mov r0, #0
+	mov r0, #MOVEMENT_FLAG_STOP
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	ldrb r0, [r6,#1]
-	strh r0, [r5,#oOverworldNPCObject_AnimationTimer]
-	bl npc_809F51E
+	strh r0, [r5,#oOverworldNPCObject_Timer]
+	bl npc_disableScript0x19_809f51e
 	add r6, #2
 	pop {pc}
-	thumb_func_end npc_809EE6C
+	thumb_func_end NPCCommand_pause
 
 	thumb_local_start
+// 0x11 
 npc_809EE82:
 	push {lr}
 	ldrb r0, [r6,#1]
-	strb r0, [r5,#oOverworldNPCObject_WalkingSpeed]
+	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldrb r0, [r6,#2]
-	strb r0, [r5,#oOverworldNPCObject_WalkingTimer]
+	strb r0, [r5,#oOverworldNPCObject_MovementTimer]
 	mov r0, #8
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	add r6, #3
 	pop {pc}
 	thumb_func_end npc_809EE82
 
 	thumb_local_start
 npc_809EE9C:
-	mov r0, #2
+	mov r0, #OW_NPC_UNK_FLAGS_60_0x2
 	mvn r0, r0
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	and r1, r0
@@ -1160,7 +1233,7 @@ npc_809EE9C:
 
 	thumb_local_start
 npc_809EEAA:
-	mov r0, #2
+	mov r0, #OW_NPC_UNK_FLAGS_60_0x2
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -1191,16 +1264,16 @@ npc_809EEB6:
 npc_809EEDA:
 	push {lr}
 	ldrb r2, [r6,#1]
-	strb r2, [r5,#oOverworldNPCObject_Unk_0e]
+	strb r2, [r5,#oOverworldNPCObject_MovementDirection]
 	ldrb r2, [r6,#2]
-	strb r2, [r5,#oOverworldNPCObject_WalkingSpeed]
+	strb r2, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldrb r2, [r6,#3]
-	strb r2, [r5,#oOverworldNPCObject_WalkingTimer]
+	strb r2, [r5,#oOverworldNPCObject_MovementTimer]
 	mov r0, #4
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	add r6, #4
 	pop {pc}
 	thumb_func_end npc_809EEDA
@@ -1242,7 +1315,7 @@ loc_809EF2A:
 	mov r0, #0x18
 	str r0, [r5,#oOverworldNPCObject_Unk_78]
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #0x80
+	mov r1, #OW_NPC_UNK_FLAGS_60_0x80
 	bic r0, r1
 	str r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #2
@@ -1325,7 +1398,7 @@ npc_809EF82:
 
 	thumb_local_start
 npc_809EF9A:
-	mov r0, #4
+	mov r0, #OW_NPC_UNK_FLAGS_60_0x4
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -1335,7 +1408,7 @@ npc_809EF9A:
 
 	thumb_local_start
 npc_809EFA6:
-	mov r0, #4
+	mov r0, #OW_NPC_UNK_FLAGS_60_0x4
 	mvn r0, r0
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	and r1, r0
@@ -1348,7 +1421,7 @@ npc_809EFA6:
 npc_809EFB4:
 	push {lr}
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #0x80
+	mov r1, #OW_NPC_UNK_FLAGS_60_0x80
 	bic r0, r1
 	str r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	bl sprite_noShadow // () -> void
@@ -1359,7 +1432,7 @@ npc_809EFB4:
 	thumb_local_start
 npc_809EFC6:
 	push {lr}
-	ldr r0, dword_809EFF4 // =0x180
+	ldr r0, =(OW_NPC_UNK_FLAGS_60_0x100 | OW_NPC_UNK_FLAGS_60_0x80)
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -1371,20 +1444,19 @@ npc_809EFC6:
 	thumb_local_start
 npc_809EFD8:
 	push {lr}
-	mov r0, #0x80
+	mov r0, #OW_NPC_UNK_FLAGS_60_0x80
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	ldr r1, dword_809EFF8 // =0x100
+	ldr r1, =OW_NPC_UNK_FLAGS_60_0x100
 	bic r0, r1
 	str r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	bl sprite_removeShadow
 	add r6, #1
 	pop {pc}
-	.balign 4, 0x00
-dword_809EFF4: .word 0x180
-dword_809EFF8: .word 0x100
+	.balign 4, 0
+	.pool // 809EFF4
 	thumb_func_end npc_809EFD8
 
 	thumb_local_start
@@ -1397,7 +1469,7 @@ npc_809EFFC:
 	mov r0, #0x18
 	str r0, [r5,#oOverworldNPCObject_Unk_78]
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #0x80
+	mov r1, #OW_NPC_UNK_FLAGS_60_0x80
 	bic r0, r1
 	str r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #1
@@ -1412,7 +1484,7 @@ npc_809F01C:
 	ldrb r0, [r6,#2]
 	str r0, [r5,#oOverworldNPCObject_Unk_78]
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #0x80
+	mov r1, #OW_NPC_UNK_FLAGS_60_0x80
 	bic r0, r1
 	str r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #3
@@ -1421,7 +1493,7 @@ npc_809F01C:
 
 	thumb_local_start
 npc_809F030:
-	mov r0, #8
+	mov r0, #OW_NPC_UNK_FLAGS_60_0x8
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	eor r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -1431,7 +1503,7 @@ npc_809F030:
 
 	thumb_local_start
 npc_809F03C:
-	mov r0, #0x10
+	mov r0, #OW_NPC_UNK_FLAGS_60_0x10
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -1452,9 +1524,9 @@ npc_809F048:
 	thumb_local_start
 npc_809F058:
 	push {lr}
-	mov r0, #0xc0
+	mov r0, #((OW_NPC_UNK_FLAGS_60_0x400 | OW_NPC_UNK_FLAGS_60_0x800) >> 4)
 	lsl r0, r0, #4
-	mov r1, #2
+	mov r1, #OW_NPC_UNK_FLAGS_60_0x2
 	orr r0, r1
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
@@ -1469,7 +1541,10 @@ npc_809F058:
 	ldr r4, off_809F0E0 // =byte_809F0E4
 	ldrb r4, [r4,r0]
 	strb r4, [r5,#oOverworldNPCObject_PaletteIndex]
-	mov r4, #0x40 
+	mov r4, #0x40
+	// multiplying a flag?
+	// r1 is modified in sub_809FC1C (mystery data function)
+	// seems to get its value from a field that's always 0
 	mul r4, r1
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r4
@@ -1492,7 +1567,7 @@ npc_809F058:
 	lsl r0, r0, #0x10
 	str r0, [r5,#oOverworldNPCObject_Z]
 	mov r0, #4
-	strb r0, [r5,#oOverworldNPCObject_Volume]
+	strb r0, [r5,#oOverworldNPCObject_CollisionRadius]
 	mov r0, #2
 	strb r0, [r5,#oOverworldNPCObject_Unk_11]
 	mov r0, #2
@@ -1509,7 +1584,7 @@ loc_809F0BE:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
 	bl FreeOverworldNPCObject
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	pop {pc}
 	.balign 4, 0x00
 off_809F0DC: .word dword_873D108
@@ -1527,7 +1602,7 @@ sub_809F0EC:
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	add r6, #2
 	pop {pc}
 	thumb_func_end sub_809F0EC
@@ -1617,7 +1692,7 @@ sub_809F17C:
 	mov r0, #0
 	strb r0, [r5,#oOverworldNPCObject_Unk_0b]
 	ldrb r0, [r6,#1]
-	strh r0, [r5,#oOverworldNPCObject_Timer_20]
+	strh r0, [r5,#oOverworldNPCObject_Timer_22]
 	mov r0, #1
 	strb r0, [r5,#oOverworldNPCObject_TerminateScript_1f]
 	add r6, #2
@@ -1628,7 +1703,7 @@ sub_809F17C:
 sub_809F18E:
 	mov r0, #0
 	str r0, [r5,#oOverworldNPCObject_UnkNPCScriptPtr_5c]
-	strh r0, [r5,#oOverworldNPCObject_Timer_20]
+	strh r0, [r5,#oOverworldNPCObject_Timer_22]
 	mov r6, #0
 	mov pc, lr
 	thumb_func_end sub_809F18E
@@ -1654,7 +1729,7 @@ loc_809F1B6:
 	add r1, #4
 	cmp r1, r2
 	ble loc_809F1B6
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	add r6, #5
 	pop {pc}
 	thumb_func_end sub_809F198
@@ -1679,13 +1754,13 @@ sub_809F1D8:
 	add r0, r6, r1
 	str r0, [r5,r4]
 	ldrb r2, [r6,#1]
-	strb r2, [r5,#oOverworldNPCObject_Unk_0e]
+	strb r2, [r5,#oOverworldNPCObject_MovementDirection]
 	ldrb r2, [r6,#2]
-	strb r2, [r5,#oOverworldNPCObject_WalkingSpeed]
+	strb r2, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldrb r2, [r6,#3]
-	strb r2, [r5,#oOverworldNPCObject_WalkingTimer]
+	strb r2, [r5,#oOverworldNPCObject_MovementTimer]
 	ldrb r2, [r6,#4]
-	strh r2, [r5,#oOverworldNPCObject_AnimationTimer]
+	strh r2, [r5,#oOverworldNPCObject_Timer]
 	add r0, r6, #5
 	bl ReadNPCScriptWord // (void* a1) -> int
 	str r0, [r5,#oOverworldNPCObject_Undetected_7c]
@@ -1701,57 +1776,93 @@ loc_809F208:
 	add r1, #4
 	cmp r1, r2
 	ble loc_809F208
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	add r6, #9
 	pop {pc}
 	thumb_func_end sub_809F1D8
 
 	thumb_local_start
-sub_809F218:
+// 0x38 byte1 byte2 byte3 destination4
+// initialize NPC movement
+// byte1 - direction to move in
+// byte2 - speed of movement
+// byte3 - amount of movement iterations to do (8 pixels each)
+// destination4 - movement handler to call
+NPCCommand_init_movement:
 	push {lr}
-	mov r4, #0x8c
+	mov r4, #oOverworldNPCObject_Unk_8c
 	mov r1, #8
 	add r0, r6, r1
 	str r0, [r5,r4]
 	ldrb r2, [r6,#1]
-	mov r4, #0x81
+	mov r4, #oOverworldNPCObject_MovementDirectionReload
 	strb r2, [r5,r4]
 	ldrb r2, [r6,#2]
-	mov r4, #0x82
+	mov r4, #oOverworldNPCObject_MovementSpeedReload
 	strb r2, [r5,r4]
 	ldrb r2, [r6,#3]
-	mov r4, #0x83
+	mov r4, #oOverworldNPCObject_MovementTimerReload
 	strb r2, [r5,r4]
 	add r0, r6, #4
 	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
-	thumb_func_end sub_809F218
+	thumb_func_end NPCCommand_init_movement
 
 	thumb_local_start
-sub_809F23E:
+// 0x39 byte1
+// move in a new direction, relative to the old direction
+// byte1 - new movement direction, relative to the old movement direction
+// possible values are:
+// 0x0 - turn 0 degrees
+// 0x2 - turn 90 degrees
+// 0x4 - turn 180 degrees
+// 0x6 - turn 270 degrees
+NPCCommand_change_movement_direction:
 	push {lr}
+	// read new direction to move in
+	// relative to the current direction moving in
+	// 0x0 - turn 0 degrees
+	// 0x2 - turn 90 degrees
+	// 0x4 - turn 180 degrees
+	// 0x6 - turn 270 degrees
 	ldrb r0, [r6,#1]
-	mov r4, #0x81
+	mov r4, #oOverworldNPCObject_MovementDirectionReload
+
+	// read current direction moving in
 	ldrb r2, [r5,r4]
+
+	// add current direction and turn amount to get the new direction
+	// note that directions 0, 2, 4, 6 (up, right, down, left) do not
+	// actually move the NPC, as for some reason movement offsets are
+	// not defined for those directions
 	add r2, r2, r0
+
+	// 8 directions, so mod 8 the new value
 	mov r0, #7
 	and r2, r0
-	strb r2, [r5,#oOverworldNPCObject_Unk_0e]
-	mov r4, #0x82
+
+	// store new movement direction
+	strb r2, [r5,#oOverworldNPCObject_MovementDirection]
+
+	// transfer movement speed and timer reload values
+	mov r4, #oOverworldNPCObject_MovementSpeedReload
 	ldrb r2, [r5,r4]
-	strb r2, [r5,#oOverworldNPCObject_WalkingSpeed]
-	mov r4, #0x83
+	strb r2, [r5,#oOverworldNPCObject_MovementSpeed]
+
+	mov r4, #oOverworldNPCObject_MovementTimerReload
 	ldrb r2, [r5,r4]
-	strb r2, [r5,#oOverworldNPCObject_WalkingTimer]
-	mov r0, #4
+	strb r2, [r5,#oOverworldNPCObject_MovementTimer]
+
+	// set some jumptable indices
+	mov r0, #MOVEMENT_FLAG_DEFAULT_MOVING
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	add r6, #2
 	pop {pc}
-	thumb_func_end sub_809F23E
+	thumb_func_end NPCCommand_change_movement_direction
 
 	thumb_local_start
 sub_809F26A:
@@ -1845,7 +1956,7 @@ sub_809F2DE:
 	ldrb r0, [r6,#2]
 	mov r7, #0x84
 	str r0, [r5,r7]
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	add r6, #3
 	pop {r7,pc}
 	thumb_func_end sub_809F2DE
@@ -1853,7 +1964,7 @@ sub_809F2DE:
 	thumb_local_start
 sub_809F2FC:
 	push {lr}
-	mov r0, #0x20 
+	mov r0, #(OW_NPC_UNK_FLAGS_60_0x200 >> 4)
 	lsl r0, r0, #4
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	bic r1, r0
@@ -1865,7 +1976,7 @@ sub_809F2FC:
 	thumb_local_start
 sub_809F30C:
 	push {lr}
-	mov r0, #0x20 
+	mov r0, #(OW_NPC_UNK_FLAGS_60_0x200 >> 4)
 	lsl r0, r0, #4
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
@@ -1879,7 +1990,7 @@ sub_809F31C:
 	push {lr}
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_TextScriptIndex]
-	ldr r0, off_809F6AC // =0x400 
+	ldr r0, off_809F6AC // =OW_NPC_UNK_FLAGS_60_0x400 
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -1902,7 +2013,7 @@ sub_809F338:
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r7, #0x80
 	str r0, [r5,r7]
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	add r6, #3
 	pop {r7,pc}
 	thumb_func_end sub_809F338
@@ -1983,7 +2094,7 @@ sub_809F3C0:
 	push {lr}
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_TextScriptIndex]
-	ldr r0, off_809F6AC // =0x400 
+	ldr r0, off_809F6AC // =OW_NPC_UNK_FLAGS_60_0x400
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -2013,9 +2124,9 @@ locret_809F3F4:
 sub_809F3F6:
 	push {lr}
 	ldrb r0, [r6,#1]
-	strb r0, [r5,#oOverworldNPCObject_WalkingSpeed]
+	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldrb r0, [r6,#2]
-	strb r0, [r5,#oOverworldNPCObject_WalkingTimer]
+	strb r0, [r5,#oOverworldNPCObject_MovementTimer]
 	ldrb r0, [r6,#3]
 	strb r0, [r5,#oOverworldNPCObject_Undetected_06]
 	ldrb r0, [r6,#4]
@@ -2024,7 +2135,7 @@ sub_809F3F6:
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #8
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	add r6, #5
 	pop {pc}
 	thumb_func_end sub_809F3F6
@@ -2033,16 +2144,16 @@ sub_809F3F6:
 sub_809F418:
 	push {lr}
 	ldrb r2, [r6,#1]
-	strb r2, [r5,#oOverworldNPCObject_WalkingSpeed]
+	strb r2, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldrb r2, [r6,#2]
-	strb r2, [r5,#oOverworldNPCObject_WalkingTimer]
+	strb r2, [r5,#oOverworldNPCObject_MovementTimer]
 	ldrb r2, [r6,#3]
 	strb r2, [r5,#oOverworldNPCObject_Undetected_06]
 	mov r0, #4
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #8
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	add r6, #4
 	pop {pc}
 	.balign 4, 0x00
@@ -2052,9 +2163,9 @@ sub_809F418:
 sub_809F438:
 	push {lr}
 	ldrb r0, [r6,#1]
-	strb r0, [r5,#oOverworldNPCObject_WalkingSpeed]
+	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldrb r0, [r6,#2]
-	strb r0, [r5,#oOverworldNPCObject_WalkingTimer]
+	strb r0, [r5,#oOverworldNPCObject_MovementTimer]
 	ldrb r0, [r6,#3]
 	strb r0, [r5,#oOverworldNPCObject_Undetected_06]
 	ldrb r0, [r6,#4]
@@ -2063,7 +2174,7 @@ sub_809F438:
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0x10
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	add r6, #5
 	pop {pc}
 	thumb_func_end sub_809F438
@@ -2091,7 +2202,7 @@ sub_809F45A:
 	str r1, [r5,#oOverworldNPCObject_Y]
 	str r2, [r5,#oOverworldNPCObject_Z]
 	add r6, #3
-	ldr r0, dword_809F6B0 // =0x1400 
+	ldr r0, dword_809F6B0 // =(OW_NPC_UNK_FLAGS_60_0x1000 | OW_NPC_UNK_FLAGS_60_0x400)
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -2105,7 +2216,7 @@ loc_809F498:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
 	bl FreeOverworldNPCObject
-	bl npc_809F51E
+	bl npc_disableScript0x19_809f51e
 	pop {pc}
 TextScriptDialog87E30A0_p: .word TextScriptDialog87E30A0
 	thumb_func_end sub_809F45A
@@ -2120,7 +2231,7 @@ sub_809F4B8:
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelect]
 	mvn r0, r0
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelectUpdate]
-	mov r0, #0x11
+	mov r0, #(OW_NPC_UNK_FLAGS_60_DISABLE_INTERACTION | OW_NPC_UNK_FLAGS_60_0x10)
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -2166,43 +2277,43 @@ sub_809F506:
 	thumb_func_end sub_809F506
 
 	thumb_local_start
-sub_809F516:
+npc_enableScript0x19_809f516:
 	push {lr}
 	mov r0, #0
 	strb r0, [r5,#oOverworldNPCObject_TerminateScript_19]
 	pop {pc}
-	thumb_func_end sub_809F516
+	thumb_func_end npc_enableScript0x19_809f516
 
 	thumb_local_start
-npc_809F51E:
+npc_disableScript0x19_809f51e:
 	push {lr}
 	mov r0, #1
 	strb r0, [r5,#oOverworldNPCObject_TerminateScript_19]
 	pop {pc}
-	thumb_func_end npc_809F51E
+	thumb_func_end npc_disableScript0x19_809f51e
 
 	thumb_local_start
 sub_809F526:
 	push {r7,lr}
 	ldr r7, [r5, #oOverworldNPCObject_UnkFlags_60]
 	ldrb r0, [r5,#oOverworldNPCObject_ObjectHeader]
-	mov r1, #1
+	mov r1, #OBJECT_FLAG_ACTIVE
 	tst r0, r1
 	beq loc_809F598
 	push {r5}
 	ldr r4, dword_809F5A0 // =0x20000 
-	mov r1, #4
+	mov r1, #OW_NPC_UNK_FLAGS_60_0x4
 	tst r7, r1
 	beq loc_809F53E
 	mov r4, #0
 loc_809F53E:
 	ldr r0, [r5,#oOverworldNPCObject_X]
-	mov r6, #0x11
+	mov r6, #oOverworldNPCObject_Unk_11
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r0, r0, r6
 	ldr r1, [r5,#oOverworldNPCObject_Y]
-	mov r6, #0x12
+	mov r6, #oOverworldNPCObject_Unk_12
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r1, r1, r6
@@ -2220,25 +2331,25 @@ loc_809F53E:
 loc_809F56A:
 	ldr r2, [r5,#oOverworldNPCObject_Z]
 loc_809F56C:
-	mov r6, #0x13
+	mov r6, #oOverworldNPCObject_Unk_13
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r2, r2, r6
-	mov r6, #0x50 
+	mov r6, #oOverworldNPCObject_Unk_50
 	add r6, r6, r5
-	ldrh r3, [r5,#oOverworldNPCObject_Volume_Unk_0d]
+	ldrh r3, [r5,#oOverworldNPCObject_CollisionRadius_Unk_0d]
 	push {r0-r5}
 	ldr r5, dword_809F5A4 // =0x50001 
-	bl sub_80037AC
+	bl npc_80037AC
 	mov r1, #0x14
 	tst r7, r1
 	pop {r0-r5}
 	bne loc_809F596
-	mov r6, #0x58 
+	mov r6, #oOverworldNPCObject_Unk_58 
 	add r6, r6, r5
 	ldr r4, dword_809F5A8 // =0x400000 
 	ldr r5, dword_809F5AC // =0xa00000 
-	bl sub_80037AC
+	bl npc_80037AC
 loc_809F596:
 	pop {r5}
 loc_809F598:
@@ -2256,31 +2367,31 @@ dword_809F5AC: .word 0xA00000
 sub_809F5B0:
 	push {lr}
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #4
+	mov r1, #OW_NPC_UNK_FLAGS_60_0x4
 	tst r0, r1
 	bne loc_809F5EA
 	push {r5}
 	ldr r0, [r5,#oOverworldNPCObject_NextX]
-	mov r6, #0x11
+	mov r6, #oOverworldNPCObject_Unk_11
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r0, r0, r6
 	ldr r1, [r5,#oOverworldNPCObject_NextY]
-	mov r6, #0x12
+	mov r6, #oOverworldNPCObject_Unk_12
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r1, r1, r6
 	ldr r2, [r5,#oOverworldNPCObject_NextZ]
-	mov r6, #0x13
+	mov r6, #oOverworldNPCObject_Unk_13
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r2, r2, r6
-	mov r6, #0x54 
+	mov r6, #oOverworldNPCObject_Unk_54
 	add r6, r6, r5
 	ldr r3, dword_809F5F0 // =0x804 
 	ldr r4, dword_809F5F4 // =0x80000 
 	ldr r5, dword_809F5F8 // =0x50000 
-	bl sub_80037AC
+	bl npc_80037AC
 	pop {r5}
 loc_809F5EA:
 	mov r0, #0
@@ -2316,7 +2427,7 @@ sub_809F612:
 	ldrb r0, [r5,#oOverworldNPCObject_Unk_1e]
 	strb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	ldr r1, dword_809F6B4 // =0x1002 
+	ldr r1, dword_809F6B4 // =(OW_NPC_UNK_FLAGS_60_0x1000 | OW_NPC_UNK_FLAGS_60_0x2)
 	tst r0, r1
 	bne loc_809F632
 	ldrb r0, [r5,#oOverworldNPCObject_AnimationSelect]
@@ -2406,9 +2517,9 @@ loc_809F694:
 	pop {pc}
 off_809F6A4: .word eOverworldNPCObjects
 off_809F6A8: .word 0xD80
-off_809F6AC: .word 0x400
-dword_809F6B0: .word 0x1400
-dword_809F6B4: .word 0x1002
+off_809F6AC: .word OW_NPC_UNK_FLAGS_60_0x400
+dword_809F6B0: .word (OW_NPC_UNK_FLAGS_60_0x1000 | OW_NPC_UNK_FLAGS_60_0x400)
+dword_809F6B4: .word (OW_NPC_UNK_FLAGS_60_0x1000 | OW_NPC_UNK_FLAGS_60_0x2)
 byte_809F6B8: .byte 0x22, 0x11, 0x9E, 0xDC, 0x21, 0x10, 0xF, 0x22, 0x11
 	.byte 0x9E, 0xDC, 0x21, 0x10, 0x78, 0x2, 0xB8, 0xF6, 0x9
 	.byte 0x8, 0x0

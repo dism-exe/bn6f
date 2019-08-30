@@ -618,7 +618,7 @@ int *__fastcall sub_800378C(int a1, int a2, int a3, int a4)
 
 
 // 0x80037ac
-int __fastcall sub_80037AC(int a1, int a2, int a3, int a4)
+int __fastcall npc_80037AC(int a1, int a2, int a3, int a4)
 {
 	unsigned int v4; // r4
 	unsigned int v5; // r5

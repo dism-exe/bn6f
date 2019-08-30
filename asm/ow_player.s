@@ -710,12 +710,13 @@ loc_809D778:
 locret_809D796:
 	pop {pc}
 off_809D798: .word sub_809D7A8+1
-	.word loc_809D7C8+1
-	.word loc_809D7D8+1
+	.word sub_809D7C8+1
+	.word sub_809D7D8+1
 off_809D7A4: .word off_809D798
 	thumb_func_end sub_809D75E
 
 	thumb_local_start
+// chat triggered
 sub_809D7A8:
 	push {lr}
 	bl IsCutsceneScriptNonNull // () -> zf
@@ -723,27 +724,33 @@ sub_809D7A8:
 	bne loc_809D7E2
 	ldrb r0, [r5,#oOWPlayerObject_FacingDirection]
 	strb r0, [r5,#oOWPlayerObject_AnimationSelect]
-	ldr r7, [r5,#oOWPlayerObject_Unk_58]
-	ldrb r0, [r7,#0x17]
+	ldr r7, [r5,#oOWPlayerObject_interactedNPCObject_58]
+	ldrb r0, [r7,#oOverworldNPCObject_InteractionLocked]
 	tst r0, r0
 	bne locret_809D7C6
-	mov r0, #1
-	strb r0, [r7,#0x18]
+	mov r0, #TRUE
+	strb r0, [r7,#oOverworldNPCObject_ChatTriggered]
 	mov r0, #4
 	strb r0, [r5,#oOWPlayerObject_Unk_0a]
 locret_809D7C6:
 	pop {pc}
-loc_809D7C8:
+	thumb_func_end sub_809D7A8
+
+	thumb_local_start
+sub_809D7C8:
 	push {lr}
-	ldr r7, [r5,#oOWPlayerObject_Unk_58]
-	ldrb r0, [r7,#0xa]
+	ldr r7, [r5,#oOWPlayerObject_interactedNPCObject_58]
+	ldrb r0, [r7,#oOverworldNPCObject_MovementFlag_0a]
 	cmp r0, #4
 	bne locret_809D7D6
 	mov r0, #8
 	strb r0, [r5,#oOWPlayerObject_Unk_0a]
 locret_809D7D6:
 	pop {pc}
-loc_809D7D8:
+	thumb_func_end sub_809D7C8
+
+	thumb_local_start
+sub_809D7D8:
 	push {lr}
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -761,7 +768,7 @@ loc_809D7E2:
 	strb r0, [r5,#oOWPlayerObject_Unk_0a]
 locret_809D7F6:
 	pop {pc}
-	thumb_func_end sub_809D7A8
+	thumb_func_end sub_809D7D8
 
 	thumb_local_start
 sub_809D7F8:
@@ -1268,7 +1275,7 @@ sub_809DBC4:
 	ldr r4, [r7,#0x10]
 	ldr r5, [r7,#0x14]
 	pop {r6}
-	bl sub_80037AC
+	bl npc_80037AC
 	pop {r5,pc}
 	.byte 0, 0
 off_809DBF0: .word byte_809DBF4
@@ -1630,15 +1637,15 @@ sub_809E01C:
 	ldr r2, dword_809E048 // =0xd80 
 	add r2, r2, r7
 loc_809E024:
-	ldr r0, [r7,#0x50]
+	ldr r0, [r7,#oOverworldNPCObject_Unk_50]
 	mov r1, #1
 	tst r0, r1
 	beq loc_809E03A
-	ldr r0, [r7,#0x60]
-	mov r1, #1
+	ldr r0, [r7,#oOverworldNPCObject_UnkFlags_60]
+	mov r1, #OW_NPC_UNK_FLAGS_60_DISABLE_INTERACTION
 	tst r0, r1
 	bne locret_809E042
-	str r7, [r5,#oOWPlayerObject_Unk_58]
+	str r7, [r5,#oOWPlayerObject_interactedNPCObject_58]
 	mov r0, #0
 	b locret_809E042
 loc_809E03A:
@@ -2353,7 +2360,7 @@ owPlayer_makeVisible_809e442:
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	ldrb r0, [r3,#oOWPlayerObject_Flags]
-	mov r1, #OBJECT_FLAG_VISABLE
+	mov r1, #OBJECT_FLAG_VISIBLE
 	orr r0, r1
 	strb r0, [r3,#oOWPlayerObject_Flags]
 	mov pc, lr
@@ -2365,7 +2372,7 @@ owPlayer_makeInvisible_809e452:
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	ldrb r0, [r3]
-	mov r1, #OBJECT_FLAG_VISABLE
+	mov r1, #OBJECT_FLAG_VISIBLE
 	bic r0, r1
 	strb r0, [r3]
 	mov pc, lr

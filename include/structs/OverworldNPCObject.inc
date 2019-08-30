@@ -4,12 +4,12 @@
 	object_header_struct \label, \struct_entry, \set_struct_start_address
 
 	union
-	u8 WalkingSpeed // loc=0x4
-	u8 WalkingTimer // loc=0x5
+	u8 MovementSpeed // loc=0x4
+	u8 MovementTimer // loc=0x5
 	u8 Undetected_06 // loc=0x6
 	u8 Unk_07 // loc=0x7
 	nextu
-	u32 WalkingSpeed_WalkingTimer_Undetected_06_Unk_07 // loc=0x4
+	u32 MovementSpeed_MovementTimer_Undetected_06_Unk_07 // loc=0x4
 	endu
 
 	u8 CurState // loc=0x8
@@ -35,13 +35,13 @@
 	endu
 	
 	union
-		u8 Volume // loc=0xc
+		u8 CollisionRadius // loc=0xc
 		u8 Unk_0d // loc=0xd
 	nextu
-		u16 Volume_Unk_0d // loc=0xc
+		u16 CollisionRadius_Unk_0d // loc=0xc
 	endu
 
-	u8 Unk_0e // loc=0xe
+	u8 MovementDirection // loc=0xe
 	u8 Unk_0f // loc=0xf
 	u8 Unk_10 // loc=0x10
 	u8 Unk_11 // loc=0x11
@@ -59,8 +59,8 @@
 	u8 Unk_1d // loc=0x1d
 	u8 Unk_1e // loc=0x1e
 	u8 TerminateScript_1f // loc=0x1f
-	u16 AnimationTimer // loc=0x20
-	u16 Timer_20 // loc=0x22
+	u16 Timer // loc=0x20
+	u16 Timer_22 // loc=0x22
 	u0 Coords // loc=0x24
 	u16 X // loc=0x24 size 4
 	u16 X16 // loc=0x26
@@ -82,6 +82,19 @@
 	u32 Unk_58 // loc=0x58
 	ptr UnkNPCScriptPtr_5c // loc=0x5c
 	u32 UnkFlags_60 // loc=0x60
+		struct_const OW_NPC_UNK_FLAGS_60_DISABLE_INTERACTION, 0x1
+		struct_const OW_NPC_UNK_FLAGS_60_0x2, 0x2
+		struct_const OW_NPC_UNK_FLAGS_60_0x4, 0x4
+		struct_const OW_NPC_UNK_FLAGS_60_0x8, 0x8
+		struct_const OW_NPC_UNK_FLAGS_60_0x10, 0x10
+		struct_const OW_NPC_UNK_FLAGS_60_0x20, 0x20
+		struct_const OW_NPC_UNK_FLAGS_60_0x40, 0x40
+		struct_const OW_NPC_UNK_FLAGS_60_0x80, 0x80
+		struct_const OW_NPC_UNK_FLAGS_60_0x100, 0x100
+		struct_const OW_NPC_UNK_FLAGS_60_0x200, 0x200
+		struct_const OW_NPC_UNK_FLAGS_60_0x400, 0x400
+		struct_const OW_NPC_UNK_FLAGS_60_0x800, 0x800
+		struct_const OW_NPC_UNK_FLAGS_60_0x1000, 0x1000
 
 	u32 Unk_64 // loc=0x64
 	u32 Flags_68 // loc=0x68
@@ -90,13 +103,19 @@
 	u32 Unk_74 // loc=0x74
 	u32 Unk_78 // loc=0x78
 	u32 Undetected_7c // loc=0x7c
-	u8 Unk_80 // loc=0x80 read internally as u32
-	u8 Unk_81 // loc=0x81
-	u8 WalkingSpeedReload // loc=0x82
-	u8 WalkingTimerReload // loc=0x83
-	u32 Unk_84 // loc=0x84
+	union
+		u8 Unk_80 // loc=0x80 read internally as u32
+		u8 MovementDirectionReload // loc=0x81
+		u8 MovementSpeedReload // loc=0x82
+		u8 MovementTimerReload // loc=0x83
+	nextu
+		u32 CutsceneVarIndexToWaitFor // loc=0x80
+	nextu
+		u32 Unk_80_Flag // loc=0x80
+	endu
+	u32 CutsceneVarValueToWaitFor // loc=0x84
 	u32 Undetected_88 // loc=0x88
-	u32 Undetected_8c // loc=0x8c
+	u32 Unk_8c // loc=0x8c
 	ptr Chatbox_90 // loc=0x90
 	ptr TextScriptPtr // loc=0x94
 	// loc=0x98

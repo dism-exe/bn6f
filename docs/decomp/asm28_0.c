@@ -3338,7 +3338,7 @@ int __fastcall sub_809DBC4(_DWORD *a1, _DWORD *a2)
     v6 = v3[2] + v2[9];
     v7 = v3[4];
     v8 = v3[5];
-    return sub_80037AC(v4, v5, v6, v3[3]);
+    return npc_80037AC(v4, v5, v6, v3[3]);
 }
 
 

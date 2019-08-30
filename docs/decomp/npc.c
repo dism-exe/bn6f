@@ -56,7 +56,7 @@ void npc_809E5E2()
     }
     else
     {
-        npc_809EBDC();
+        npc_runPrimaryScript_809ebdc();
         (*(&off_809E6A4 + *(v0 + 9)))();
         v1 = 0;
         if ( *(v0 + 96) & 8 )
@@ -114,8 +114,8 @@ int sub_809E6C8()
     v1 = *(v0 + 32) - 1;
     *(v0 + 32) = v1;
     if ( !v1 )
-        sub_809F516();
-    return npc_809EBF8();
+        npc_enableScript0x19_809f516();
+    return npc_runSecondaryScriptMaybe_809ebf8();
 }
 
 
@@ -125,12 +125,12 @@ int npc_809E6DC()
     int v0; // r5
 
     (*(&jt_809E6F0 + *(v0 + 10)))();
-    return npc_809EBF8();
+    return npc_runSecondaryScriptMaybe_809ebf8();
 }
 
 
 // 0x809e704
-int npc_809E704()
+int npc_movement_809E704()
 {
     int v0; // r5
     char *v1; // r7
@@ -140,13 +140,13 @@ int npc_809E704()
     int v5; // r4
     int v7; // [sp+0h] [bp-8h]
 
-    v1 = &byte_809E77E[4 * *(v0 + 14)];
+    v1 = &NPCMovementIterationDeltas[4 * *(v0 + 14)];
     *(v0 + 112) = *(v0 + 36) + (*v1 << 16);
     *(v0 + 116) = *(v0 + 40) + (*(v1 + 1) << 16);
     v2 = SWI_Div(0x80000, *(v0 + 4));
     v3 = v7;
     *(v7 + 32) = (v2 + 4095) >> 12;
-    v4 = &byte_809E79E[2 * *(v7 + 14)];
+    v4 = &NPCMovementSubiterationDeltas[2 * *(v7 + 14)];
     v5 = *(v7 + 4);
     *(v7 + 64) = *v4 * v5 << 12;
     *(v7 + 68) = v4[1] * v5 << 12;
@@ -194,9 +194,9 @@ int npc_809E7D8()
         v2 = *(v0 + 5) - 1;
         *(v0 + 5) = v2;
         if ( v2 )
-            result = npc_809E704();
+            result = npc_movement_809E704();
         else
-            result = sub_809F516();
+            result = npc_enableScript0x19_809f516();
     }
     return result;
 }
@@ -213,7 +213,7 @@ int npc_809E84E()
     v1 = *(v0 + 5);
     v2 = *(v0 + 6);
     if ( !*(v0 + 4) )
-        return sub_809F516();
+        return npc_enableScript0x19_809f516();
     result = *(v0 + 4) - 1;
     *(v0 + 4) = result;
     if ( v1 )
@@ -233,7 +233,7 @@ int npc_809E878()
     int result; // r0
 
     if ( !*(v0 + 4) )
-        return sub_809F516();
+        return npc_enableScript0x19_809f516();
     --*(v0 + 4);
     v1 = 2 * *(v0 + 6);
     v2 = byte_809E8C4[v1];
@@ -256,7 +256,7 @@ int npc_809E8CC()
     int v0; // r5
 
     (*(&jt_809E8E0 + *(v0 + 10)))();
-    return npc_809EBF8();
+    return npc_runSecondaryScriptMaybe_809ebf8();
 }
 
 
@@ -295,7 +295,7 @@ int npc_809E916()
     {
         *(v0 + 44) = v1;
         *(v0 + 23) = 0;
-        result = sub_809F516();
+        result = npc_enableScript0x19_809f516();
     }
     return result;
 }
@@ -346,7 +346,7 @@ int npc_809E95E()
     {
         *(v0 + 44) = v6;
         *(v0 + 23) = 0;
-        result = sub_809F516();
+        result = npc_enableScript0x19_809f516();
     }
     return result;
 }
@@ -396,7 +396,7 @@ int npc_809E9DA()
     else
     {
         *(v0 + 23) = 0;
-        result = sub_809F516();
+        result = npc_enableScript0x19_809f516();
     }
     return result;
 }
@@ -414,18 +414,18 @@ int npc_809EA3C()
         if ( v1 & 0xC0 )
         {
             if ( sprite_getFrameParameters() & v1 )
-                sub_809F516();
+                npc_enableScript0x19_809f516();
         }
         else if ( sprite_getFrameParameters() == v1 )
         {
-            sub_809F516();
+            npc_enableScript0x19_809f516();
         }
     }
     else
     {
         *(v0 + 10) = 4;
     }
-    return npc_809EBF8();
+    return npc_runSecondaryScriptMaybe_809ebf8();
 }
 
 
@@ -435,19 +435,19 @@ int sub_809EA74()
     int v0; // r5
 
     (*(v0 + 124))();
-    return npc_809EBF8();
+    return npc_runSecondaryScriptMaybe_809ebf8();
 }
 
 
 // 0x809ea82
-int sub_809EA82()
+int npc_waitCutsceneVar_809ea82()
 {
     int v0; // r5
     int v1; // r10
 
     if ( *(*(v1 + oToolkit_S2011c50_Ptr) + *(v0 + 128)) == *(v0 + 132) )
-        sub_809F516();
-    return npc_809EBF8();
+        npc_enableScript0x19_809f516();
+    return npc_runSecondaryScriptMaybe_809ebf8();
 }
 
 
@@ -460,15 +460,15 @@ int npc_809EAA0()
     TestEventFlag(*(v0 + 128));
     if ( !v1 )
     {
-        sub_809F516();
+        npc_enableScript0x19_809f516();
         *(v0 + 96) |= 1u;
         *v0 = 1;
         sprite_load(v0, 128, 28, 160);
         sprite_loadAnimationData(v0);
         FreeOverworldNPCObject();
-        npc_809F51E();
+        npc_disableScript0x19_809f51e();
     }
-    return npc_809EBF8();
+    return npc_runSecondaryScriptMaybe_809ebf8();
 }
 
 
@@ -566,7 +566,7 @@ int npc_809EBBC()
 
 
 // 0x809ebdc
-int npc_809EBDC()
+int npc_runPrimaryScript_809ebdc()
 {
     int v0; // r5
     int result; // r0
@@ -586,7 +586,7 @@ int npc_809EBDC()
 
 
 // 0x809ebf8
-int npc_809EBF8()
+int npc_runSecondaryScriptMaybe_809ebf8()
 {
     int v0; // r5
     int result; // r0
@@ -603,12 +603,12 @@ int npc_809EBF8()
         (npc_jt_commands[*v2])();
         *(v0 + 92) = v2;
     }
-    return npc_809EC1C();
+    return npc_decrementSecondaryTimer_809ec1c();
 }
 
 
 // 0x809ec1c
-int npc_809EC1C()
+int npc_decrementSecondaryTimer_809ec1c()
 {
     int v0; // r5
     int result; // r0
@@ -625,14 +625,14 @@ int npc_809EC1C()
 
 
 // 0x809ed80
-int __fastcall npc_00_terminateScript(int a1)
+int __fastcall NPCCommand_end(int a1)
 {
-    return npc_809F51E();
+    return npc_disableScript0x19_809f51e();
 }
 
 
 // 0x809ed88
-int npc_809ED88()
+int NPCCommand_jump()
 {
     int v0; // r6
 
@@ -641,7 +641,7 @@ int npc_809ED88()
 
 
 // 0x809ed94
-int __noreturn npc_809ED94()
+int __noreturn NPCCommand_free_and_end()
 {
     Battle *v0; // r5
 
@@ -649,12 +649,12 @@ int __noreturn npc_809ED94()
     sprite_load(v0, 128, 28, 160);
     sprite_loadAnimationData(v0);
     FreeOverworldNPCObject();
-    return npc_809F51E();
+    return npc_disableScript0x19_809f51e();
 }
 
 
 // 0x809edb2
-int npc_809EDB2()
+int NPCCommand_jump_if_flag_set()
 {
     int v0; // r6
     int v1; // r0
@@ -670,7 +670,7 @@ int npc_809EDB2()
 
 
 // 0x809edd0
-int npc_809EDD0()
+int NPCCommand_jump_if_flag_clear()
 {
     int v0; // r6
     int v1; // r0
@@ -686,7 +686,7 @@ int npc_809EDD0()
 
 
 // 0x809edee
-unsigned int npc_809EDEE()
+unsigned int NPCCommand_set_event_flag()
 {
     int v0; // r6
     int v1; // r0
@@ -697,7 +697,7 @@ unsigned int npc_809EDEE()
 
 
 // 0x809ee00
-unsigned int npc_809EE00()
+unsigned int NPCCommand_clear_event_flag()
 {
     int v0; // r6
     int v1; // r0
@@ -708,7 +708,7 @@ unsigned int npc_809EE00()
 
 
 // 0x809ee12
-signed int npc_809EE12()
+signed int NPCCommand_set_active_and_visible()
 {
     _BYTE *v0; // r5
     signed int result; // r0
@@ -720,7 +720,7 @@ signed int npc_809EE12()
 
 
 // 0x809ee1a
-signed int npc_809EE1A()
+signed int NPCCommand_set_active_and_invisible()
 {
     _BYTE *v0; // r5
     signed int result; // r0
@@ -732,7 +732,7 @@ signed int npc_809EE1A()
 
 
 // 0x809ee22
-int npc_809EE22()
+int NPCCommand_set_collision_radius()
 {
     int v0; // r5
     int v1; // r6
@@ -745,7 +745,7 @@ int npc_809EE22()
 
 
 // 0x809ee2a
-int npc_809EE2A()
+int NPCCommand_set_unk_0d()
 {
     int v0; // r5
     int v1; // r6
@@ -758,7 +758,7 @@ int npc_809EE2A()
 
 
 // 0x809ee32
-int npc_809EE32()
+int NPCCommand_shift_center()
 {
     _BYTE *v0; // r5
     _BYTE *v1; // r6
@@ -773,7 +773,7 @@ int npc_809EE32()
 
 
 // 0x809ee48
-signed int npc_809EE48()
+signed int NPCCommand_enable_npc_interaction()
 {
     int v0; // r5
     signed int result; // r0
@@ -785,7 +785,7 @@ signed int npc_809EE48()
 
 
 // 0x809ee56
-signed int npc_809EE56()
+signed int NPCCommand_disable_npc_interaction()
 {
     int v0; // r5
     signed int result; // r0
@@ -797,7 +797,7 @@ signed int npc_809EE56()
 
 
 // 0x809ee62
-int npc_809EE62()
+int NPCCommand_set_npc_palette_index()
 {
     int v0; // r5
     int v1; // r6
@@ -810,7 +810,7 @@ int npc_809EE62()
 
 
 // 0x809ee6c
-int npc_809EE6C()
+int NPCCommand_pause()
 {
     int v0; // r5
     int v1; // r6
@@ -818,7 +818,7 @@ int npc_809EE6C()
     *(v0 + 9) = 0;
     *(v0 + 10) = 0;
     *(v0 + 32) = *(v1 + 1);
-    return npc_809F51E();
+    return npc_disableScript0x19_809f51e();
 }
 
 
@@ -832,7 +832,7 @@ int npc_809EE82()
     *(v0 + 5) = *(v1 + 2);
     *(v0 + 9) = 8;
     *(v0 + 10) = 0;
-    return npc_809F51E();
+    return npc_disableScript0x19_809f51e();
 }
 
 
@@ -886,7 +886,7 @@ int npc_809EEDA()
     *(v0 + 5) = v1[3];
     *(v0 + 9) = 4;
     *(v0 + 10) = 0;
-    return npc_809F51E();
+    return npc_disableScript0x19_809f51e();
 }
 
 
@@ -1183,7 +1183,7 @@ int npc_809F058()
         sprite_load(v0, 128, 28, 160);
         sprite_loadAnimationData(v0);
         FreeOverworldNPCObject();
-        result = npc_809F51E();
+        result = npc_disableScript0x19_809f51e();
     }
     return result;
 }
@@ -1198,7 +1198,7 @@ int sub_809F0EC()
     *(v0 + 128) = *(v1 + 1);
     *(v0 + 9) = 12;
     *(v0 + 10) = 0;
-    return npc_809F51E();
+    return npc_disableScript0x19_809f51e();
 }
 
 
@@ -1337,7 +1337,7 @@ int sub_809F198()
         v2 += 4;
     }
     while ( v2 <= 140 );
-    return npc_809F51E();
+    return npc_disableScript0x19_809f51e();
 }
 
 
@@ -1374,12 +1374,12 @@ int sub_809F1D8()
         v2 += 4;
     }
     while ( v2 <= 140 );
-    return npc_809F51E();
+    return npc_disableScript0x19_809f51e();
 }
 
 
 // 0x809f218
-int sub_809F218()
+int NPCCommand_init_movement()
 {
     int v0; // r5
     _BYTE *v1; // r6
@@ -1393,7 +1393,7 @@ int sub_809F218()
 
 
 // 0x809f23e
-int sub_809F23E()
+int NPCCommand_change_movement_direction()
 {
     int v0; // r5
     int v1; // r6
@@ -1403,7 +1403,7 @@ int sub_809F23E()
     *(v0 + 5) = *(v0 + 131);
     *(v0 + 9) = 4;
     *(v0 + 10) = 0;
-    return npc_809F51E();
+    return npc_disableScript0x19_809f51e();
 }
 
 
@@ -1482,7 +1482,7 @@ int sub_809F2DE()
     *(v0 + 10) = 0;
     *(v0 + 128) = *(v1 + 1);
     *(v0 + 132) = *(v1 + 2);
-    return npc_809F51E();
+    return npc_disableScript0x19_809f51e();
 }
 
 
@@ -1534,7 +1534,7 @@ int sub_809F338()
     *(v0 + 9) = 24;
     *(v0 + 10) = 0;
     *(v0 + 128) = ReadNPCScriptHalfword((v1 + 1));
-    return npc_809F51E();
+    return npc_disableScript0x19_809f51e();
 }
 
 
@@ -1643,7 +1643,7 @@ int sub_809F3F6()
     *(v0 + 7) = v1[4];
     *(v0 + 9) = 8;
     *(v0 + 10) = 8;
-    return npc_809F51E();
+    return npc_disableScript0x19_809f51e();
 }
 
 
@@ -1658,7 +1658,7 @@ int sub_809F418()
     *(v0 + 6) = v1[3];
     *(v0 + 9) = 4;
     *(v0 + 10) = 8;
-    return npc_809F51E();
+    return npc_disableScript0x19_809f51e();
 }
 
 
@@ -1674,7 +1674,7 @@ int sub_809F438()
     *(v0 + 7) = v1[4];
     *(v0 + 9) = 8;
     *(v0 + 10) = 16;
-    return npc_809F51E();
+    return npc_disableScript0x19_809f51e();
 }
 
 
@@ -1710,7 +1710,7 @@ int sub_809F45A()
         sprite_load(v0, 128, 28, 160);
         sprite_loadAnimationData(v0);
         FreeOverworldNPCObject();
-        result = npc_809F51E();
+        result = npc_disableScript0x19_809f51e();
     }
     return result;
 }
@@ -1766,7 +1766,7 @@ int __fastcall sub_809F506(int a1)
 
 
 // 0x809f516
-int sub_809F516()
+int npc_enableScript0x19_809f516()
 {
     int v0; // r5
     int result; // r0
@@ -1778,7 +1778,7 @@ int sub_809F516()
 
 
 // 0x809f51e
-signed int npc_809F51E()
+signed int npc_disableScript0x19_809f51e()
 {
     int v0; // r5
     signed int result; // r0

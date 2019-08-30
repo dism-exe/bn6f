@@ -924,8 +924,9 @@ off_80037A4: .word 0x280
 off_80037A8: .word dword_200AC18
 	thumb_func_end sub_800378C
 
-	thumb_func_start sub_80037AC
-sub_80037AC:
+	thumb_func_start npc_80037AC
+// something to do with interacting with npcs? maybe other objects too
+npc_80037AC:
 	push {r7,lr}
 	mov r7, #0x80
 	lsl r7, r7, #8
@@ -961,9 +962,10 @@ loc_80037D0:
 	pop {r7,pc}
 off_80037EC: .word dword_200AC18
 off_80037F0: .word dword_20081D0
-	thumb_func_end sub_80037AC
+	thumb_func_end npc_80037AC
 
 	thumb_func_start sub_80037F4
+// something to do with interacting with npcs? maybe other objects too
 sub_80037F4:
 	push {r5,lr}
 	ldr r0, off_8003884 // =dword_200AC18
@@ -2411,7 +2413,7 @@ loc_80045DC:
 	str r1, [r5,#oOverworldNPCObject_X]
 	str r2, [r5,#oOverworldNPCObject_Y]
 	str r3, [r5,#oOverworldNPCObject_Z]
-	str r4, [r5,#oOverworldNPCObject_WalkingSpeed_WalkingTimer_Undetected_06_Unk_07]
+	str r4, [r5,#oOverworldNPCObject_MovementSpeed_MovementTimer_Undetected_06_Unk_07]
 	pop {pc}
 loc_80045FE:
 	mov r5, #0
@@ -2455,8 +2457,8 @@ npc_800461E:
 	str r0, [sp]
 	str r1, [sp,#4]
 loc_800463E:
-	mov r1, #1
-	ldrb r0, [r5]
+	mov r1, #OBJECT_FLAG_ACTIVE
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	tst r0, r1
 	beq loc_8004662
 	mov r7, r10
