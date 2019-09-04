@@ -360,9 +360,9 @@ loc_809E7EA:
 	str r0, [r5,#oOverworldNPCObject_X]
 	ldr r0, [r5,#oOverworldNPCObject_Unk_74]
 	str r0, [r5,#oOverworldNPCObject_Y]
-	ldrb r0, [r5,#oOverworldNPCObject_MovementTimer]
+	ldrb r0, [r5,#oOverworldNPCObject_MovementDistance]
 	sub r0, #1
-	strb r0, [r5,#oOverworldNPCObject_MovementTimer]
+	strb r0, [r5,#oOverworldNPCObject_MovementDistance]
 	bne loc_809E814
 	bl npc_enableScript0x19_809f516
 	pop {pc}
@@ -401,7 +401,7 @@ loc_809E848:
 npc_809E84E:
 	push {lr}
 	ldrb r0, [r5,#oOverworldNPCObject_MovementSpeed]
-	ldrb r1, [r5,#oOverworldNPCObject_MovementTimer]
+	ldrb r1, [r5,#oOverworldNPCObject_MovementDistance]
 	ldrb r2, [r5,#oOverworldNPCObject_Undetected_06]
 	tst r0, r0
 	beq loc_809E872
@@ -450,7 +450,7 @@ loc_809E89E:
 	sub r1, r1, r0
 	strh r1, [r5,r2]
 loc_809E8A4:
-	ldrb r1, [r5,#oOverworldNPCObject_MovementTimer]
+	ldrb r1, [r5,#oOverworldNPCObject_MovementDistance]
 	tst r1, r1
 	bne loc_809E8B2
 	ldrh r1, [r5,#oOverworldNPCObject_Z16]
@@ -1257,14 +1257,17 @@ NPCCommand_pause:
 	thumb_func_end NPCCommand_pause
 
 	thumb_local_start
-// 0x11 
+// 0x11 byte1 byte2
+// set npc movement speed and distance
+// byte1 - speed
+// byte2 - distance
 npc_809EE82:
 	push {lr}
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldrb r0, [r6,#2]
-	strb r0, [r5,#oOverworldNPCObject_MovementTimer]
-	mov r0, #8
+	strb r0, [r5,#oOverworldNPCObject_MovementDistance]
+	mov r0, #MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
@@ -1321,7 +1324,7 @@ npc_809EEDA:
 	ldrb r2, [r6,#2]
 	strb r2, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldrb r2, [r6,#3]
-	strb r2, [r5,#oOverworldNPCObject_MovementTimer]
+	strb r2, [r5,#oOverworldNPCObject_MovementDistance]
 	mov r0, #4
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
@@ -1811,7 +1814,7 @@ sub_809F1D8:
 	ldrb r2, [r6,#2]
 	strb r2, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldrb r2, [r6,#3]
-	strb r2, [r5,#oOverworldNPCObject_MovementTimer]
+	strb r2, [r5,#oOverworldNPCObject_MovementDistance]
 	ldrb r2, [r6,#4]
 	strh r2, [r5,#oOverworldNPCObject_Timer]
 	add r0, r6, #5
@@ -1854,7 +1857,7 @@ NPCCommand_init_movement:
 	mov r4, #oOverworldNPCObject_MovementSpeedReload
 	strb r2, [r5,r4]
 	ldrb r2, [r6,#3]
-	mov r4, #oOverworldNPCObject_MovementTimerReload
+	mov r4, #oOverworldNPCObject_MovementDistanceReload
 	strb r2, [r5,r4]
 	add r0, r6, #4
 	bl ReadNPCScriptWord // (void* a1) -> int
@@ -1903,9 +1906,9 @@ NPCCommand_change_movement_direction:
 	ldrb r2, [r5,r4]
 	strb r2, [r5,#oOverworldNPCObject_MovementSpeed]
 
-	mov r4, #oOverworldNPCObject_MovementTimerReload
+	mov r4, #oOverworldNPCObject_MovementDistanceReload
 	ldrb r2, [r5,r4]
-	strb r2, [r5,#oOverworldNPCObject_MovementTimer]
+	strb r2, [r5,#oOverworldNPCObject_MovementDistance]
 
 	// set some jumptable indices
 	mov r0, #MOVEMENT_FLAG_DEFAULT_MOVING
@@ -2179,7 +2182,7 @@ sub_809F3F6:
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldrb r0, [r6,#2]
-	strb r0, [r5,#oOverworldNPCObject_MovementTimer]
+	strb r0, [r5,#oOverworldNPCObject_MovementDistance]
 	ldrb r0, [r6,#3]
 	strb r0, [r5,#oOverworldNPCObject_Undetected_06]
 	ldrb r0, [r6,#4]
@@ -2199,7 +2202,7 @@ sub_809F418:
 	ldrb r2, [r6,#1]
 	strb r2, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldrb r2, [r6,#2]
-	strb r2, [r5,#oOverworldNPCObject_MovementTimer]
+	strb r2, [r5,#oOverworldNPCObject_MovementDistance]
 	ldrb r2, [r6,#3]
 	strb r2, [r5,#oOverworldNPCObject_Undetected_06]
 	mov r0, #4
@@ -2218,7 +2221,7 @@ sub_809F438:
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldrb r0, [r6,#2]
-	strb r0, [r5,#oOverworldNPCObject_MovementTimer]
+	strb r0, [r5,#oOverworldNPCObject_MovementDistance]
 	ldrb r0, [r6,#3]
 	strb r0, [r5,#oOverworldNPCObject_Undetected_06]
 	ldrb r0, [r6,#4]

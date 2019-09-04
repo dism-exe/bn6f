@@ -5,7 +5,7 @@
 
 	union
 	u8 MovementSpeed // loc=0x4
-	u8 MovementTimer // loc=0x5
+	u8 MovementDistance // loc=0x5
 	u8 Undetected_06 // loc=0x6
 	u8 Unk_07 // loc=0x7
 	nextu
@@ -107,7 +107,7 @@
 		u8 Unk_80 // loc=0x80 read internally as u32
 		u8 MovementDirectionReload // loc=0x81
 		u8 MovementSpeedReload // loc=0x82
-		u8 MovementTimerReload // loc=0x83
+		u8 MovementDistanceReload // loc=0x83
 	nextu
 		u32 CutsceneVarIndexToWaitFor // loc=0x80
 	nextu
