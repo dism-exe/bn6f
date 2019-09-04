@@ -41,7 +41,7 @@ npc_809E590:
 	strh r0, [r5,#oOverworldNPCObject_NPCSpriteUpdate]
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelect]
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelectUpdate]
-	mov r0, #4
+	mov r0, #NPC_CUR_STATE_STANDARD
 	strb r0, [r5,#oOverworldNPCObject_CurState]
 	mov r0, #4
 	strb r0, [r5,#oOverworldNPCObject_CollisionRadius]
@@ -800,10 +800,10 @@ npc_809EB20:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
-	ldr r0, [r7,#0x20]
+	ldr r0, [r7,#oOWPlayerObject_Y]
 	ldr r2, [r5,#oOverworldNPCObject_Y]
 	sub r0, r0, r2
-	ldr r1, [r7,#0x1c]
+	ldr r1, [r7,#oOWPlayerObject_X]
 	ldr r2, [r5,#oOverworldNPCObject_X]
 	sub r1, r1, r2
 	bl calcAngle_800117C
@@ -957,11 +957,11 @@ npc_jt_commands: .word NPCCommand_end+1
 	.word NPCCommand_disable_npc_interaction+1
 	.word NPCCommand_set_npc_palette_index+1
 	.word NPCCommand_pause+1
-	.word npc_809EE82+1
-	.word npc_809EE9C+1
-	.word npc_809EEAA+1
-	.word npc_809EEB6+1
-	.word npc_809EEDA+1
+	.word NPCCommand_move_in_cur_direction+1
+	.word NPCCommand_face_player_when_interacted+1
+	.word NPCCommand_do_not_face_player_when_interacted+1
+	.word NPCCommand_set_coords+1
+	.word NPCCommand_move_in_direction+1
 	.word npc_809EEF8+1
 	.word npc_809EF00+1
 	.word npc_809EF40+1
@@ -1258,10 +1258,10 @@ NPCCommand_pause:
 
 	thumb_local_start
 // 0x11 byte1 byte2
-// set npc movement speed and distance
-// byte1 - speed
-// byte2 - distance
-npc_809EE82:
+// move npc in current direction
+// byte1 - speed of movement
+// byte2 - distance of movement
+NPCCommand_move_in_cur_direction:
 	push {lr}
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
@@ -1274,10 +1274,12 @@ npc_809EE82:
 	bl npc_disableScript0x19_809f51e
 	add r6, #3
 	pop {pc}
-	thumb_func_end npc_809EE82
+	thumb_func_end NPCCommand_move_in_cur_direction
 
 	thumb_local_start
-npc_809EE9C:
+// 0x12
+// npc faces the player when the player interacts with this NPC
+NPCCommand_face_player_when_interacted:
 	mov r0, #OW_NPC_UNK_FLAGS_60_0x2
 	mvn r0, r0
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -1285,54 +1287,75 @@ npc_809EE9C:
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #1
 	mov pc, lr
-	thumb_func_end npc_809EE9C
+	thumb_func_end NPCCommand_face_player_when_interacted
 
 	thumb_local_start
-npc_809EEAA:
+// 0x13
+// npc does not face the player when the player interacts with this NPC
+NPCCommand_do_not_face_player_when_interacted:
 	mov r0, #OW_NPC_UNK_FLAGS_60_0x2
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #1
 	mov pc, lr
-	thumb_func_end npc_809EEAA
+	thumb_func_end NPCCommand_do_not_face_player_when_interacted
 
 	thumb_local_start
-npc_809EEB6:
+// 0x14 hword1 hword3 hword5
+// set npc coordinates
+// hword1 - x coordinate
+// hword3 - y coordinate
+// hword5 - z coordinate
+NPCCommand_set_coords:
 	push {lr}
+
 	add r0, r6, #1
-	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword
 	lsl r0, r0, #0x10
 	str r0, [r5,#oOverworldNPCObject_X]
+
 	add r0, r6, #3
-	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword
 	lsl r0, r0, #0x10
 	str r0, [r5,#oOverworldNPCObject_Y]
+
 	add r0, r6, #5
-	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword
 	lsl r0, r0, #0x10
 	str r0, [r5,#oOverworldNPCObject_Z]
+
 	add r6, #7
 	pop {pc}
-	thumb_func_end npc_809EEB6
+	thumb_func_end NPCCommand_set_coords
 
 	thumb_local_start
-npc_809EEDA:
+// 0x15	byte1 byte2 byte3
+// move npc in the given direction
+// byte1 - direction to move npc in
+// byte2 - speed of movement
+// byte3 - distance of movement
+NPCCommand_move_in_direction:
 	push {lr}
+
 	ldrb r2, [r6,#1]
 	strb r2, [r5,#oOverworldNPCObject_MovementDirection]
+
 	ldrb r2, [r6,#2]
 	strb r2, [r5,#oOverworldNPCObject_MovementSpeed]
+
 	ldrb r2, [r6,#3]
 	strb r2, [r5,#oOverworldNPCObject_MovementDistance]
-	mov r0, #4
+
+	mov r0, #MOVEMENT_FLAG_DEFAULT_MOVING
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
+
 	bl npc_disableScript0x19_809f51e
 	add r6, #4
 	pop {pc}
-	thumb_func_end npc_809EEDA
+	thumb_func_end NPCCommand_move_in_direction
 
 	thumb_local_start
 npc_809EEF8:
@@ -2470,7 +2493,7 @@ sub_809F5FC:
 	strb r0, [r5,#oOverworldNPCObject_Unk_1d]
 	ldrb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
 	strb r0, [r5,#oOverworldNPCObject_Unk_1e]
-	mov r0, #8
+	mov r0, #NPC_CUR_STATE_IN_CHATBOX
 	strb r0, [r5,#oOverworldNPCObject_CurState]
 	mov r0, #0
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
@@ -2481,7 +2504,7 @@ sub_809F5FC:
 	thumb_local_start
 sub_809F612:
 	push {lr}
-	mov r0, #4
+	mov r0, #NPC_CUR_STATE_STANDARD
 	strb r0, [r5,#oOverworldNPCObject_CurState]
 	ldrb r0, [r5,#oOverworldNPCObject_Unk_1d]
 	strb r0, [r5,#oOverworldNPCObject_CurAction]

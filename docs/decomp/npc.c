@@ -823,7 +823,7 @@ int NPCCommand_pause()
 
 
 // 0x809ee82
-int npc_809EE82()
+int NPCCommand_move_in_cur_direction()
 {
     int v0; // r5
     int v1; // r6
@@ -837,7 +837,7 @@ int npc_809EE82()
 
 
 // 0x809ee9c
-signed int npc_809EE9C()
+signed int NPCCommand_face_player_when_interacted()
 {
     int v0; // r5
     signed int result; // r0
@@ -849,7 +849,7 @@ signed int npc_809EE9C()
 
 
 // 0x809eeaa
-signed int npc_809EEAA()
+signed int NPCCommand_do_not_face_player_when_interacted()
 {
     int v0; // r5
     signed int result; // r0
@@ -861,7 +861,7 @@ signed int npc_809EEAA()
 
 
 // 0x809eeb6
-int npc_809EEB6()
+int NPCCommand_set_coords()
 {
     _DWORD *v0; // r5
     unsigned __int8 *v1; // r6
@@ -876,7 +876,7 @@ int npc_809EEB6()
 
 
 // 0x809eeda
-int npc_809EEDA()
+int NPCCommand_move_in_direction()
 {
     int v0; // r5
     _BYTE *v1; // r6

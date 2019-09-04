@@ -13,6 +13,10 @@
 	endu
 
 	u8 CurState // loc=0x8
+		struct_const NPC_CUR_STATE_INIT,       0x0
+		struct_const NPC_CUR_STATE_STANDARD,   0x4
+		struct_const NPC_CUR_STATE_IN_CHATBOX, 0x8
+
 	// 0x0 - init
 	// 0x4 - standard
 	// 0x8 - stationary? activated when ChatTriggered is true
