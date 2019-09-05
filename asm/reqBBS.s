@@ -1623,7 +1623,7 @@ loc_813EECE:
 	lsl r3, r1
 	eor r0, r3
 	ldr r5, off_813EEF0 // =eStructArr2008450 
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	pop {r5,pc}
 dword_813EEEC: .word 0x3FFFFFFF
 off_813EEF0: .word eStructArr2008450
@@ -4104,7 +4104,7 @@ loc_8140772:
 	lsl r3, r1
 	eor r0, r3
 	ldr r5, off_8140794 // =eStructArr2008450 
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	pop {r5,pc}
 dword_8140790: .word 0x3FFFFFFF
 off_8140794: .word eStructArr2008450

@@ -44340,7 +44340,7 @@ loc_80CDB0A:
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80CDB26
 	ldr r0, dword_80CDB28 // =0x34000000 
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0xc1
@@ -44360,7 +44360,7 @@ sub_80CDB2C:
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80CDB4A
 	ldr r0, dword_80CDB4C // =0x2c000000 
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0xc1
@@ -44380,7 +44380,7 @@ sub_80CDB50:
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80CDB78
 	ldr r0, dword_80CDB7C // =0x1c000000 
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 	ldr r0, [r5,#oBattleObject_ExtraVars]
@@ -70361,7 +70361,7 @@ sub_80DA834:
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
 	ldr r0, dword_80DAA20 // =0xff80000 
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl battle_getFlags
@@ -70536,7 +70536,7 @@ sub_80DA9A2:
 	lsl r3, r3, #2
 	ldr r0, off_80DA9B4 // =byte_80DA9B8 
 	ldr r0, [r0,r3]
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	pop {pc}
 off_80DA9B4: .word byte_80DA9B8
 byte_80DA9B8: .byte 0x0, 0x0, 0xF8, 0x7, 0x0, 0x0, 0xF8, 0xB, 0x0, 0x0, 0xF8, 0xD, 0x0
@@ -82655,7 +82655,7 @@ sub_80E0B08:
 loc_80E0B6A:
 	ldr r0, off_80E0DDC // =timer_2000000 
 loc_80E0B6C:
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	bl sub_8002EAC
 	mov r0, #0x89
 	ldrb r1, [r5,#oBattleObject_Param1]
@@ -101508,7 +101508,7 @@ sub_80E9810:
 	cmp r0, #2
 	bne loc_80E985C
 	ldr r0, [r5,#oBattleObject_ExtraVars+8]
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 loc_80E985C:
 	ldrb r0, [r5,#oBattleObject_Param2]
 	bl sub_80103BC
@@ -102707,7 +102707,7 @@ sub_80EA170:
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
 	ldr r0, [r4,#4]
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80EA1BC

@@ -1402,7 +1402,7 @@ sprite_getFlip:
 
 // () -> void
 	thumb_func_start sprite_noShadow
-// doesn't actually remove shadow
+// shadow moves with sprite's Z
 sprite_noShadow:
 	ldrb r3, [r5,#oObjectHeader_SpriteOffset]
 	lsr r3, r3, #4
@@ -1417,25 +1417,25 @@ sprite_noShadow:
 	mov pc, lr
 	thumb_func_end sprite_noShadow
 
-	thumb_func_start sub_8002FA6
-sub_8002FA6:
+	thumb_func_start sprite_setUnk0x2c
+sprite_setUnk0x2c:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
 	str r0, [r3,#oObjectSprite_Unk_2c]
 	mov pc, lr
-	thumb_func_end sub_8002FA6
+	thumb_func_end sprite_setUnk0x2c
 
-	thumb_func_start sub_8002FB2
-sub_8002FB2:
+	thumb_func_start sprite_getUnk0x2c
+sprite_getUnk0x2c:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
 	ldr r0, [r3,#oObjectSprite_Unk_2c]
 	mov pc, lr
-	thumb_func_end sub_8002FB2
+	thumb_func_end sprite_getUnk0x2c
 
 	thumb_local_start
 sub_8002FBE:

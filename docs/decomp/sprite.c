@@ -1012,7 +1012,7 @@ int __usercall sprite_noShadow@<R0>(Battle *obj@<R5>)
 
 
 // 0x8002fa6
-int __fastcall sub_8002FA6(int result)
+int __fastcall sprite_setUnk0x2c(int result)
 {
     int v1; // r5
 
@@ -1022,7 +1022,7 @@ int __fastcall sub_8002FA6(int result)
 
 
 // 0x8002fb2
-int sub_8002FB2()
+int sprite_getUnk0x2c()
 {
     int v0; // r5
 

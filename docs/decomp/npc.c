@@ -90,7 +90,7 @@ void npc_809E5E2()
     sprite_setPallete(*(v0 + 22));
     v3 = *(v0 + 104);
     if ( v3 != *(v0 + 108) )
-        sub_8002FA6(v3);
+        sprite_setUnk0x2c(v3);
     *(v0 + 15) = *(v0 + 14);
     *(v0 + 21) = *(v0 + 20);
     *(v0 + 62) = *(v0 + 60);
@@ -106,7 +106,7 @@ void npc_809E5E2()
 
 
 // 0x809e6c8
-int sub_809E6C8()
+int npc_waitTimer_809e6c8()
 {
     int v0; // r5
     int v1; // r0
@@ -120,7 +120,7 @@ int sub_809E6C8()
 
 
 // 0x809e6dc
-int npc_809E6DC()
+int npc_doNonCutsceneMovement_809E6DC()
 {
     int v0; // r5
 
@@ -130,7 +130,7 @@ int npc_809E6DC()
 
 
 // 0x809e704
-int npc_movement_809E704()
+int npc_nonCutsceneMovementInit_809E704()
 {
     int v0; // r5
     char *v1; // r7
@@ -160,7 +160,7 @@ int npc_movement_809E704()
 
 
 // 0x809e7d8
-int npc_809E7D8()
+int npc_nonCutsceneMovementUpdate_809E7D8()
 {
     int v0; // r5
     int v1; // r0
@@ -194,7 +194,7 @@ int npc_809E7D8()
         v2 = *(v0 + 5) - 1;
         *(v0 + 5) = v2;
         if ( v2 )
-            result = npc_movement_809E704();
+            result = npc_nonCutsceneMovementInit_809E704();
         else
             result = npc_enableScript0x19_809f516();
     }
@@ -251,7 +251,7 @@ int npc_809E878()
 
 
 // 0x809e8cc
-int npc_809E8CC()
+int npc_doHopMovement_809e8cc()
 {
     int v0; // r5
 
@@ -261,7 +261,7 @@ int npc_809E8CC()
 
 
 // 0x809e8fc
-signed int npc_809E8FC()
+signed int npc_initHopMovement_809e8fc()
 {
     int v0; // r5
     signed int result; // r0
@@ -276,7 +276,7 @@ signed int npc_809E8FC()
 
 
 // 0x809e916
-int npc_809E916()
+int npc_updateHopMovement_809e916()
 {
     int v0; // r5
     int v1; // r2
@@ -745,7 +745,7 @@ int NPCCommand_set_collision_radius()
 
 
 // 0x809ee2a
-int NPCCommand_set_unk_0d()
+int NPCCommand_set_z_reach()
 {
     int v0; // r5
     int v1; // r6
@@ -823,7 +823,7 @@ int NPCCommand_pause()
 
 
 // 0x809ee82
-int NPCCommand_move_in_cur_direction()
+int NPCCommand_hop()
 {
     int v0; // r5
     int v1; // r6
@@ -891,7 +891,7 @@ int NPCCommand_move_in_direction()
 
 
 // 0x809eef8
-int npc_809EEF8()
+int NPCCommand_set_animation()
 {
     int v0; // r5
     int v1; // r6
@@ -904,7 +904,7 @@ int npc_809EEF8()
 
 
 // 0x809ef00
-unsigned int npc_809EF00()
+unsigned int NPCCommand_set_sprite()
 {
     int v0; // r5
     int v1; // r6
@@ -920,15 +920,15 @@ unsigned int npc_809EF00()
     *(v0 + 104) = 0;
     for ( i = 0; ; i += 3 )
     {
-        v4 = byte_809E530[i];
+        v4 = OverworldNPCSpriteVariations[i];
         if ( v4 == v2 )
             break;
         if ( v4 == 255 )
             goto LABEL_6;
     }
     v5 = i + 1;
-    *(v0 + 104) = byte_809E530[v5] << 24;
-    *(v0 + 22) = byte_809E530[v5 + 1];
+    *(v0 + 104) = OverworldNPCSpriteVariations[v5] << 24;
+    *(v0 + 22) = OverworldNPCSpriteVariations[v5 + 1];
 LABEL_6:
     *(v0 + 120) = 24;
     result = *(v0 + 96) & 0xFFFFFF7F;
@@ -938,7 +938,7 @@ LABEL_6:
 
 
 // 0x809ef40
-int npc_809EF40()
+int NPCCommand_set_text_script_index()
 {
     int v0; // r5
     int v1; // r6
@@ -951,7 +951,7 @@ int npc_809EF40()
 
 
 // 0x809ef48
-int npc_809EF48()
+int NPCCommand_disable_layer_priority_override()
 {
     int v0; // r5
     int result; // r0
@@ -963,7 +963,7 @@ int npc_809EF48()
 
 
 // 0x809ef50
-signed int npc_809EF50()
+signed int NPCCommand_set_layer_priority_override_to_2()
 {
     int v0; // r5
     signed int result; // r0
@@ -975,7 +975,7 @@ signed int npc_809EF50()
 
 
 // 0x809ef58
-signed int npc_809EF58()
+signed int NPCCommand_set_layer_priority_override_to_3()
 {
     int v0; // r5
     signed int result; // r0
@@ -987,7 +987,7 @@ signed int npc_809EF58()
 
 
 // 0x809ef60
-int npc_809EF60()
+int NPCCommand_write_hidden_oam_pieces()
 {
     int v0; // r5
     int v1; // r6
@@ -1000,7 +1000,7 @@ int npc_809EF60()
 
 
 // 0x809ef6e
-unsigned int npc_809EF6E()
+unsigned int NPCCommand_set_individual_hidden_oam_piece()
 {
     int v0; // r5
     int v1; // r6
@@ -1013,7 +1013,7 @@ unsigned int npc_809EF6E()
 
 
 // 0x809ef82
-unsigned int npc_809EF82()
+unsigned int NPCCommand_clear_individual_hidden_oam_piece()
 {
     int v0; // r5
     int v1; // r6
@@ -1028,7 +1028,7 @@ unsigned int npc_809EF82()
 
 
 // 0x809ef9a
-signed int npc_809EF9A()
+signed int NPCCommand_disable_collision()
 {
     int v0; // r5
     signed int result; // r0
@@ -1040,7 +1040,7 @@ signed int npc_809EF9A()
 
 
 // 0x809efa6
-signed int npc_809EFA6()
+signed int NPCCommand_enable_collision()
 {
     int v0; // r5
     signed int result; // r0

@@ -1595,7 +1595,7 @@ loc_800F922:
 	bl sprite_getPalette
 	lsl r0, r0, #0x18
 	orr r4, r0
-	bl sub_8002FB2
+	bl sprite_getUnk0x2c
 	mov r6, #0x34 
 	add r6, r6, r5
 	ldmia r6!, {r1-r3}

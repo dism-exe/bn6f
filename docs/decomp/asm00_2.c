@@ -1184,7 +1184,7 @@ int __fastcall sub_800F90E(int a1)
         v2 |= 0x100u;
     v3 = v2 | (*(v1 + 16) << 16);
     sprite_getPallete(v1);
-    v4 = sub_8002FB2();
+    v4 = sprite_getUnk0x2c();
     return sub_80E996E(v4, *(v1 + 52), *(v1 + 56), *(v1 + 60));
 }
 

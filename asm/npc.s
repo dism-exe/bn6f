@@ -21,15 +21,15 @@ npc_809E590:
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	bl sub_809F506
 	mov r0, #0
-	str r0, [r5,#oOverworldNPCObject_Flags_68]
-	str r0, [r5,#oOverworldNPCObject_Flags_68_Update]
+	str r0, [r5,#oOverworldNPCObject_HiddenOAMPieces]
+	str r0, [r5,#oOverworldNPCObject_HiddenOAMPiecesUpdate]
 	strb r0, [r5,#oOverworldNPCObject_MovementDirection]
 	strb r0, [r5,#oOverworldNPCObject_Unk_0f]
 	strb r0, [r5,#oOverworldNPCObject_InteractionLocked]
 	strb r0, [r5,#oOverworldNPCObject_Unk_07]
 	strb r0, [r5,#oOverworldNPCObject_PaletteIndex]
 	str r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	str r0, [r5,#oOverworldNPCObject_Unk_64]
+	str r0, [r5,#oOverworldNPCObject_LayerPriorityOverride]
 	str r0, [r5,#oOverworldNPCObject_Unk_50]
 	str r0, [r5,#oOverworldNPCObject_Unk_54]
 	str r0, [r5,#oOverworldNPCObject_Unk_58]
@@ -46,7 +46,7 @@ npc_809E590:
 	mov r0, #4
 	strb r0, [r5,#oOverworldNPCObject_CollisionRadius]
 	mov r0, #8
-	strb r0, [r5,#oOverworldNPCObject_Unk_0d]
+	strb r0, [r5,#oOverworldNPCObject_ZReach]
 	mov r0, #0x80
 	mov r1, #0x1c
 	mov r2, #0xa0
@@ -85,7 +85,7 @@ loc_809E60A:
 	beq loc_809E648
 	mov r2, r0
 	mov r0, #0x80
-	ldr r1, [r5,#oOverworldNPCObject_Unk_78]
+	ldr r1, [r5,#oOverworldNPCObject_NPCSpriteCategory]
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -117,26 +117,26 @@ loc_809E658:
 	bl sprite_update
 	ldrb r0, [r5,#oOverworldNPCObject_PaletteIndex]
 	bl sprite_setPalette // (int pallete) -> void
-	ldr r0, [r5,#oOverworldNPCObject_Flags_68]
-	ldr r1, [r5,#oOverworldNPCObject_Flags_68_Update]
+	ldr r0, [r5,#oOverworldNPCObject_HiddenOAMPieces]
+	ldr r1, [r5,#oOverworldNPCObject_HiddenOAMPiecesUpdate]
 	cmp r0, r1
 	beq loc_809E66E
-	bl sub_8002FA6
-loc_809E66E:
+	bl sprite_setUnk0x2c
+loc_809E66E: .align 1, 0
 	ldrb r0, [r5,#oOverworldNPCObject_MovementDirection]
 	strb r0, [r5,#oOverworldNPCObject_Unk_0f]
 	ldrb r0, [r5,#oOverworldNPCObject_AnimationSelect]
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelectUpdate]
 	ldrh r0, [r5,#oOverworldNPCObject_NPCSprite]
 	strh r0, [r5,#oOverworldNPCObject_NPCSpriteUpdate]
-	ldr r0, [r5,#oOverworldNPCObject_Flags_68]
-	str r0, [r5,#oOverworldNPCObject_Flags_68_Update]
+	ldr r0, [r5,#oOverworldNPCObject_HiddenOAMPieces]
+	str r0, [r5,#oOverworldNPCObject_HiddenOAMPiecesUpdate]
 	bl sub_809F526
-	ldr r0, [r5,#oOverworldNPCObject_Unk_64]
+	ldr r0, [r5,#oOverworldNPCObject_LayerPriorityOverride]
 	tst r0, r0
 	bne loc_809E690
 	mov r0, r5
-	add r0, #0x24 
+	add r0, #oOverworldNPCObject_Coords
 	bl applyLayerEffectToOWObject_8035694
 loc_809E690:
 	bl sub_8002E14
@@ -148,9 +148,9 @@ loc_809E690:
 locret_809E6A0:
 	pop {pc}
 	.balign 4, 0x00
-off_809E6A4: .word sub_809E6C8+1
-	.word npc_809E6DC+1
-	.word npc_809E8CC+1
+off_809E6A4: .word npc_waitTimer_809e6c8+1
+	.word npc_doNonCutsceneMovement_809E6DC+1
+	.word npc_doHopMovement_809e8cc+1
 	.word npc_809EA3C+1
 	.word sub_809EA74+1
 	.word npc_waitCutsceneVar_809ea82+1
@@ -160,20 +160,20 @@ off_809E6C4: .word OW_NPC_UNK_FLAGS_60_0x100
 	thumb_func_end npc_809E5E2
 
 	thumb_local_start
-sub_809E6C8:
+npc_waitTimer_809e6c8:
 	push {lr}
 	ldrh r0, [r5,#oOverworldNPCObject_Timer]
 	sub r0, #1
 	strh r0, [r5,#oOverworldNPCObject_Timer]
-	bne loc_809E6D6
+	bne .timerNotZero
 	bl npc_enableScript0x19_809f516
-loc_809E6D6:
+.timerNotZero
 	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {pc}
-	thumb_func_end sub_809E6C8
+	thumb_func_end npc_waitTimer_809e6c8
 
 	thumb_local_start
-npc_809E6DC:
+npc_doNonCutsceneMovement_809E6DC:
 	push {lr}
 	ldr r7, off_809E700 // =jt_809E6F0 
 	ldrb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
@@ -183,18 +183,18 @@ npc_809E6DC:
 	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {pc}
 	.byte 0, 0
-jt_809E6F0: .word npc_movement_809E704+1
-	.word npc_809E7D8+1
+jt_809E6F0: .word npc_nonCutsceneMovementInit_809E704+1
+	.word npc_nonCutsceneMovementUpdate_809E7D8+1
 	.word npc_809E84E+1
 	.word npc_809E878+1
 off_809E700: .word jt_809E6F0
-	thumb_func_end npc_809E6DC
+	thumb_func_end npc_doNonCutsceneMovement_809E6DC
 
 	thumb_local_start
 // movement seems to be done in values of 8?
 // speed to timer calculation:
 // timer = ((0x80000 / speed) + 0xfff) / 0x1000
-npc_movement_809E704:
+npc_nonCutsceneMovementInit_809E704:
 	push {lr}
 
 	// load delta table
@@ -333,10 +333,10 @@ dword_809E7C8: .word 0x80000
 	.word byte_809E7AE
 	.word byte_809E7B6
 dword_809E7D4: .word 0xFFF
-	thumb_func_end npc_movement_809E704
+	thumb_func_end npc_nonCutsceneMovementInit_809E704
 
 	thumb_local_start
-npc_809E7D8:
+npc_nonCutsceneMovementUpdate_809E7D8:
 	push {lr}
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	mov r1, #OW_NPC_UNK_FLAGS_60_0x10
@@ -367,7 +367,7 @@ loc_809E7EA:
 	bl npc_enableScript0x19_809f516
 	pop {pc}
 loc_809E814:
-	bl npc_movement_809E704
+	bl npc_nonCutsceneMovementInit_809E704
 	pop {pc}
 loc_809E81A:
 	ldr r1, [r5,#oOverworldNPCObject_DeltaX]
@@ -395,7 +395,7 @@ loc_809E842:
 loc_809E848:
 	bl sub_809F5B0
 	pop {pc}
-	thumb_func_end npc_809E7D8
+	thumb_func_end npc_nonCutsceneMovementUpdate_809E7D8
 
 	thumb_local_start
 npc_809E84E:
@@ -471,7 +471,7 @@ byte_809E8C4: .byte 0x26, 0x0, 0x2A, 0x0, 0x26, 0x1, 0x2A, 0x1
 	thumb_func_end npc_809E878
 
 	thumb_local_start
-npc_809E8CC:
+npc_doHopMovement_809e8cc:
 	push {lr}
 	ldr r7, off_809E8F8 // =jt_809E8E0 
 	ldrb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
@@ -481,57 +481,66 @@ npc_809E8CC:
 	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {pc}
 	.byte 0, 0
-jt_809E8E0: .word npc_809E8FC+1
-	.word npc_809E916+1
+jt_809E8E0: .word npc_initHopMovement_809e8fc+1
+	.word npc_updateHopMovement_809e916+1
 	.word npc_809E944+1
 	.word npc_809E95E+1
 	.word npc_809E9C0+1
 	.word npc_809E9DA+1
 off_809E8F8: .word jt_809E8E0
-	thumb_func_end npc_809E8CC
+	thumb_func_end npc_doHopMovement_809e8cc
 
 	thumb_local_start
-npc_809E8FC:
+npc_initHopMovement_809e8fc:
 	push {lr}
 	ldrb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	lsl r0, r0, #0xc
-	str r0, [r5,#oOverworldNPCObject_DeltaZ]
+	str r0, [r5,#oOverworldNPCObject_HopDeltaCompounded]
 	mov r3, #5
 	ldrsb r0, [r5,r3]
 	lsl r0, r0, #0xc
-	str r0, [r5,#oOverworldNPCObject_DeltaY]
+	str r0, [r5,#oOverworldNPCObject_HopDelta]
 	mov r0, #1
 	strb r0, [r5,#oOverworldNPCObject_InteractionLocked]
 	mov r0, #4
 	strb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
 	pop {pc}
-	thumb_func_end npc_809E8FC
+	thumb_func_end npc_initHopMovement_809e8fc
 
 	thumb_local_start
-npc_809E916:
+npc_updateHopMovement_809e916:
 	push {lr}
-	mov r0, #0x24 
+	mov r0, #oOverworldNPCObject_Coords
 	add r0, r0, r5
-	bl sub_8031612
+	bl sub_8031612 // get Z coordinate of current position
 	mov r2, r0
 	lsl r2, r2, #0x10
-	ldr r0, [r5,#oOverworldNPCObject_DeltaZ]
-	ldr r1, [r5,#oOverworldNPCObject_DeltaY]
+
+	// hopDeltaCompounded += hopDelta
+	ldr r0, [r5,#oOverworldNPCObject_HopDeltaCompounded]
+	ldr r1, [r5,#oOverworldNPCObject_HopDelta]
 	add r0, r0, r1
-	str r0, [r5,#oOverworldNPCObject_DeltaZ]
+	str r0, [r5,#oOverworldNPCObject_HopDeltaCompounded]
+
+	// z += hopDeltaCompounded
 	ldr r1, [r5,#oOverworldNPCObject_Z]
 	add r0, r0, r1
+
+	// is z negative?
 	cmp r0, r2
-	bpl loc_809E940
+	bpl .hopNotFinished
+
+	// if so, set the z coordinate to the default
 	str r2, [r5,#oOverworldNPCObject_Z]
 	mov r0, #0
 	strb r0, [r5,#oOverworldNPCObject_InteractionLocked]
 	bl npc_enableScript0x19_809f516
 	pop {pc}
-loc_809E940:
+.hopNotFinished
+	// if not, store the z value for the hop movement
 	str r0, [r5,#oOverworldNPCObject_Z]
 	pop {pc}
-	thumb_func_end npc_809E916
+	thumb_func_end npc_updateHopMovement_809e916
 
 	thumb_local_start
 npc_809E944:
@@ -951,28 +960,28 @@ npc_jt_commands: .word NPCCommand_end+1
 	.word NPCCommand_set_active_and_visible+1
 	.word NPCCommand_set_active_and_invisible+1
 	.word NPCCommand_set_collision_radius+1
-	.word NPCCommand_set_unk_0d+1
+	.word NPCCommand_set_z_reach+1
 	.word NPCCommand_shift_center+1
 	.word NPCCommand_enable_npc_interaction+1
 	.word NPCCommand_disable_npc_interaction+1
 	.word NPCCommand_set_npc_palette_index+1
 	.word NPCCommand_pause+1
-	.word NPCCommand_move_in_cur_direction+1
+	.word NPCCommand_hop+1
 	.word NPCCommand_face_player_when_interacted+1
 	.word NPCCommand_do_not_face_player_when_interacted+1
 	.word NPCCommand_set_coords+1
 	.word NPCCommand_move_in_direction+1
-	.word npc_809EEF8+1
-	.word npc_809EF00+1
-	.word npc_809EF40+1
-	.word npc_809EF48+1
-	.word npc_809EF50+1
-	.word npc_809EF58+1
-	.word npc_809EF60+1
-	.word npc_809EF6E+1
-	.word npc_809EF82+1
-	.word npc_809EF9A+1
-	.word npc_809EFA6+1
+	.word NPCCommand_set_animation+1
+	.word NPCCommand_set_sprite+1
+	.word NPCCommand_set_text_script_index+1
+	.word NPCCommand_disable_layer_priority_override+1
+	.word NPCCommand_set_layer_priority_override_to_2+1
+	.word NPCCommand_set_layer_priority_override_to_3+1
+	.word NPCCommand_write_hidden_oam_pieces+1
+	.word NPCCommand_set_individual_hidden_oam_piece+1
+	.word NPCCommand_clear_individual_hidden_oam_piece+1
+	.word NPCCommand_disable_collision+1
+	.word NPCCommand_enable_collision+1
 	.word npc_809EFB4+1
 	.word npc_809EFC6+1
 	.word npc_809EFD8+1
@@ -1167,14 +1176,17 @@ NPCCommand_set_collision_radius:
 
 	thumb_local_start
 // 0x0b byte1
-// set struct field 0xd of the current overworld npc struct
-// byte1 - new value of struct field 0xd
-NPCCommand_set_unk_0d:
+// set the z reach value for the current npc
+// z reach being the maximum difference of z coordinates
+// between two objects for them to interact
+// e.g. talking to an NPC on a slope
+// byte1 - new z reach value
+NPCCommand_set_z_reach:
 	ldrb r0, [r6,#1]
-	strb r0, [r5,#oOverworldNPCObject_Unk_0d]
+	strb r0, [r5,#oOverworldNPCObject_ZReach]
 	add r6, #2
 	mov pc, lr
-	thumb_func_end NPCCommand_set_unk_0d
+	thumb_func_end NPCCommand_set_z_reach
 
 	thumb_local_start
 // 0x0c signedbyte1 signedbyte2 signedbyte3
@@ -1258,10 +1270,23 @@ NPCCommand_pause:
 
 	thumb_local_start
 // 0x11 byte1 byte2
-// move npc in current direction
-// byte1 - speed of movement
-// byte2 - distance of movement
-NPCCommand_move_in_cur_direction:
+// npc performs a hop
+// given that the npc starts at z=0
+// the z values of the hop are given
+// by the quadratic z = (byte2/2)x^2 + (byte2/2 + byte1)x
+// starting at x=1, until z becomes negative, at which z is
+// set to the default value (depending on position)
+// e.g. if byte1 = 96 and byte2 = -36, the equation would be:
+// z = -18x^2 + 78x
+
+// alternatively, the z values can be mapped as follows:
+// byte1 += byte2
+// z += byte1
+// until z becomes negative
+
+// byte1 - hop param base
+// byte2 - hop param delta
+NPCCommand_hop:
 	push {lr}
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
@@ -1274,7 +1299,7 @@ NPCCommand_move_in_cur_direction:
 	bl npc_disableScript0x19_809f51e
 	add r6, #3
 	pop {pc}
-	thumb_func_end NPCCommand_move_in_cur_direction
+	thumb_func_end NPCCommand_hop
 
 	thumb_local_start
 // 0x12
@@ -1358,109 +1383,143 @@ NPCCommand_move_in_direction:
 	thumb_func_end NPCCommand_move_in_direction
 
 	thumb_local_start
-npc_809EEF8:
+// 0x16 byte1
+// set npc animation
+// byte1 - animation to set
+NPCCommand_set_animation:
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelect]
 	add r6, #2
 	mov pc, lr
-	thumb_func_end npc_809EEF8
+	thumb_func_end NPCCommand_set_animation
 
 	thumb_local_start
-npc_809EF00:
+// 0x17 byte1
+// set NPC sprite for sprite category 0x18 (NPCs)
+// certain sprites also set the palette index and hide some OAM pieces
+// e.g. Dad and Generic SciLab NPC share the same sprite, but have certain
+// OAM pieces hidden and use a different palette index
+// byte1 - new sprite id of NPC
+NPCCommand_set_sprite:
 	ldrb r0, [r6,#1]
 	strh r0, [r5,#oOverworldNPCObject_NPCSprite]
 	mov r1, #0
 	strb r1, [r5,#oOverworldNPCObject_PaletteIndex]
-	str r1, [r5,#oOverworldNPCObject_Flags_68]
-	ldr r1, off_809EF3C // =byte_809E530
-	mov r3, #0
-loc_809EF0E:
+	str r1, [r5,#oOverworldNPCObject_HiddenOAMPieces]
+	ldr r1, =OverworldNPCSpriteVariations
+	mov r3, #oOverworldNPCSpriteVariations_SpriteId
+.loop
 	ldrb r2, [r1,r3]
 	cmp r2, r0
-	beq loc_809EF1C
+	beq .foundSprite
 	cmp r2, #0xff
-	beq loc_809EF2A
-	add r3, #3
-	b loc_809EF0E
-loc_809EF1C:
-	add r3, #1
+	beq .spriteNotSpecial
+	add r3, #oOverworldNPCSpriteVariations_Size
+	b .loop
+.foundSprite
+	add r3, #oOverworldNPCSpriteVariations_HiddenOAMPieces
 	ldrb r0, [r1,r3]
 	lsl r0, r0, #0x18
-	str r0, [r5,#oOverworldNPCObject_Flags_68]
-	add r3, #1
+	str r0, [r5,#oOverworldNPCObject_HiddenOAMPieces]
+	add r3, #(oOverworldNPCSpriteVariations_PaletteIndex - oOverworldNPCSpriteVariations_HiddenOAMPieces)
 	ldrb r0, [r1,r3]
 	strb r0, [r5,#oOverworldNPCObject_PaletteIndex]
-loc_809EF2A:
+.spriteNotSpecial
 	mov r0, #0x18
-	str r0, [r5,#oOverworldNPCObject_Unk_78]
+	str r0, [r5,#oOverworldNPCObject_NPCSpriteCategory]
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	mov r1, #OW_NPC_UNK_FLAGS_60_0x80
 	bic r0, r1
 	str r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #2
 	mov pc, lr
-	.balign 4, 0x00
-off_809EF3C: .word byte_809E530
-	thumb_func_end npc_809EF00
+	.balign 4, 0
+	.pool // 809EF3C
+	thumb_func_end NPCCommand_set_sprite
 
 	thumb_local_start
-npc_809EF40:
+// 0x18 byte1
+// set text script index
+// byte1 - new text script index of NPC
+NPCCommand_set_text_script_index:
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_TextScriptIndex]
 	add r6, #2
 	mov pc, lr
-	thumb_func_end npc_809EF40
+	thumb_func_end NPCCommand_set_text_script_index
 
 	thumb_local_start
-npc_809EF48:
+// 0x19
+// disable layer priority override
+// layer priority being which sprites are shown first when overlapped
+// as well as the background layer which the sprite is on
+NPCCommand_disable_layer_priority_override:
 	mov r0, #0
-	str r0, [r5,#oOverworldNPCObject_Unk_64]
+	str r0, [r5,#oOverworldNPCObject_LayerPriorityOverride]
 	add r6, #1
 	mov pc, lr
-	thumb_func_end npc_809EF48
+	thumb_func_end NPCCommand_disable_layer_priority_override
 
 	thumb_local_start
-npc_809EF50:
+// 0x1a
+// override the current NPC's layer priority to 2
+NPCCommand_set_layer_priority_override_to_2:
 	mov r0, #2
-	str r0, [r5,#oOverworldNPCObject_Unk_64]
+	str r0, [r5,#oOverworldNPCObject_LayerPriorityOverride]
 	add r6, #1
 	mov pc, lr
-	thumb_func_end npc_809EF50
+	thumb_func_end NPCCommand_set_layer_priority_override_to_2
 
 	thumb_local_start
-npc_809EF58:
+// 0x1b
+// override the current NPC's layer priority to 3
+NPCCommand_set_layer_priority_override_to_3:
 	mov r0, #3
-	str r0, [r5,#oOverworldNPCObject_Unk_64]
+	str r0, [r5,#oOverworldNPCObject_LayerPriorityOverride]
 	add r6, #1
 	mov pc, lr
-	thumb_func_end npc_809EF58
+	thumb_func_end NPCCommand_set_layer_priority_override_to_3
 
 	thumb_local_start
-npc_809EF60:
+// 0x1c word1
+// set the current NPC's hidden OAM pieces
+// used for NPC sprites which use the same sprite pointer
+// but have overlapping OAMs which can be removed to
+// show a different resulting sprite
+// word1 - bitfield of OAM pieces indicating which OAM pieces to show and hide
+NPCCommand_write_hidden_oam_pieces:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptWord // (void* a1) -> int
-	str r0, [r5,#oOverworldNPCObject_Flags_68]
+	str r0, [r5,#oOverworldNPCObject_HiddenOAMPieces]
 	add r6, #5
 	pop {pc}
-	thumb_func_end npc_809EF60
+	thumb_func_end NPCCommand_write_hidden_oam_pieces
 
 	thumb_local_start
-npc_809EF6E:
+// 0x1d byte1
+// set a single individual hidden OAM piece for the current NPC
+// this command can only set one bit for the hidden OAM piece bitfield
+// byte1 - the OAM piece to hide
+NPCCommand_set_individual_hidden_oam_piece:
 	push {lr}
 	ldrb r0, [r6,#1]
 	mov r1, #0x80
 	lsl r1, r1, #0x18
 	lsr r1, r0
-	ldr r0, [r5,#oOverworldNPCObject_Flags_68]
+	ldr r0, [r5,#oOverworldNPCObject_HiddenOAMPieces]
 	orr r0, r1
-	str r0, [r5,#oOverworldNPCObject_Flags_68]
+	str r0, [r5,#oOverworldNPCObject_HiddenOAMPieces]
 	add r6, #2
 	pop {pc}
-	thumb_func_end npc_809EF6E
+	thumb_func_end NPCCommand_set_individual_hidden_oam_piece
 
 	thumb_local_start
-npc_809EF82:
+// 0x1e byte1
+// clear a single individual hidden OAM piece for the current NPC
+// this command can only clear one bit for the hidden OAM piece bitfield
+// byte1 - the OAM piece to hide
+NPCCommand_clear_individual_hidden_oam_piece:
 	push {lr}
 	ldrb r0, [r6,#1]
 	ldrb r0, [r6,#1]
@@ -1468,25 +1527,29 @@ npc_809EF82:
 	lsl r1, r1, #0x18
 	lsr r1, r0
 	mvn r1, r1
-	ldr r0, [r5,#oOverworldNPCObject_Flags_68]
+	ldr r0, [r5,#oOverworldNPCObject_HiddenOAMPieces]
 	and r0, r1
-	str r0, [r5,#oOverworldNPCObject_Flags_68]
+	str r0, [r5,#oOverworldNPCObject_HiddenOAMPieces]
 	add r6, #2
 	pop {pc}
-	thumb_func_end npc_809EF82
+	thumb_func_end NPCCommand_clear_individual_hidden_oam_piece
 
 	thumb_local_start
-npc_809EF9A:
+// 0x1f
+// disable the current NPC's collision (NPC becomes passable)
+NPCCommand_disable_collision:
 	mov r0, #OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #1
 	mov pc, lr
-	thumb_func_end npc_809EF9A
+	thumb_func_end NPCCommand_disable_collision
 
 	thumb_local_start
-npc_809EFA6:
+// 0x20
+// enable the current NPC's collision (NPC becomes impassable)
+NPCCommand_enable_collision:
 	mov r0, #OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION
 	mvn r0, r0
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -1494,7 +1557,7 @@ npc_809EFA6:
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #1
 	mov pc, lr
-	thumb_func_end npc_809EFA6
+	thumb_func_end NPCCommand_enable_collision
 
 	thumb_local_start
 npc_809EFB4:
@@ -1546,7 +1609,7 @@ npc_809EFFC:
 	ldrb r0, [r1,r0]
 	strh r0, [r5,#oOverworldNPCObject_NPCSprite]
 	mov r0, #0x18
-	str r0, [r5,#oOverworldNPCObject_Unk_78]
+	str r0, [r5,#oOverworldNPCObject_NPCSpriteCategory]
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	mov r1, #OW_NPC_UNK_FLAGS_60_0x80
 	bic r0, r1
@@ -1561,7 +1624,7 @@ npc_809F01C:
 	ldrb r0, [r6,#1]
 	strh r0, [r5,#oOverworldNPCObject_NPCSprite]
 	ldrb r0, [r6,#2]
-	str r0, [r5,#oOverworldNPCObject_Unk_78]
+	str r0, [r5,#oOverworldNPCObject_NPCSpriteCategory]
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	mov r1, #OW_NPC_UNK_FLAGS_60_0x80
 	bic r0, r1
@@ -2416,7 +2479,7 @@ loc_809F56C:
 	add r2, r2, r6
 	mov r6, #oOverworldNPCObject_Unk_50
 	add r6, r6, r5
-	ldrh r3, [r5,#oOverworldNPCObject_CollisionRadius_Unk_0d]
+	ldrh r3, [r5,#oOverworldNPCObject_CollisionRadius_ZReach]
 	push {r0-r5}
 	ldr r5, dword_809F5A4 // =0x50001 
 	bl createOWObjectInteractionArea_80037ac

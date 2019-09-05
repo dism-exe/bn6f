@@ -971,7 +971,7 @@ int reqBBS_813EE58()
         v6 = 40;
         v7 = 25;
     }
-    return sub_8002FA6(v4 ^ (1 << v7) ^ (1 << (24 - (*(v0 + 5) - v6))));
+    return sprite_setUnk0x2c(v4 ^ (1 << v7) ^ (1 << (24 - (*(v0 + 5) - v6))));
 }
 
 
@@ -2323,7 +2323,7 @@ int reqBBS_81406FC()
         v6 = 40;
         v7 = 25;
     }
-    return sub_8002FA6(v4 ^ (1 << v7) ^ (1 << (24 - (*(v0 + 5) - v6))));
+    return sprite_setUnk0x2c(v4 ^ (1 << v7) ^ (1 << (24 - (*(v0 + 5) - v6))));
 }
 
 

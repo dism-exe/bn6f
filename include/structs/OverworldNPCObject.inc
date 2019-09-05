@@ -40,9 +40,9 @@
 	
 	union
 		u8 CollisionRadius // loc=0xc
-		u8 Unk_0d // loc=0xd
+		u8 ZReach // loc=0xd
 	nextu
-		u16 CollisionRadius_Unk_0d // loc=0xc
+		u16 CollisionRadius_ZReach // loc=0xc
 	endu
 
 	u8 MovementDirection // loc=0xe
@@ -78,8 +78,13 @@
 	u16 NPCSprite // loc=0x3c
 	u16 NPCSpriteUpdate // loc=0x3e
 	u32 DeltaX // loc=0x40
-	u32 DeltaY // loc=0x44
-	u32 DeltaZ // loc=0x48
+	union
+		u32 DeltaY // loc=0x44
+		u32 DeltaZ // loc=0x48
+	nextu
+		u32 HopDelta // loc=0x44
+		u32 HopDeltaCompounded // loc=0x48
+	endu
 	ptr AnimationScriptPtr // loc=0x4c
 	u32 Unk_50 // loc=0x50
 	u32 Unk_54 // loc=0x54
@@ -100,12 +105,12 @@
 		struct_const OW_NPC_UNK_FLAGS_60_0x800, 0x800
 		struct_const OW_NPC_UNK_FLAGS_60_0x1000, 0x1000
 
-	u32 Unk_64 // loc=0x64
-	u32 Flags_68 // loc=0x68
-	u32 Flags_68_Update // loc=0x6c
+	u32 LayerPriorityOverride // loc=0x64
+	u32 HiddenOAMPieces // loc=0x68
+	u32 HiddenOAMPiecesUpdate // loc=0x6c
 	u32 Unk_70 // loc=0x70
 	u32 Unk_74 // loc=0x74
-	u32 Unk_78 // loc=0x78
+	u32 NPCSpriteCategory // loc=0x78
 	u32 Undetected_7c // loc=0x7c
 	union
 		u8 Unk_80 // loc=0x80 read internally as u32

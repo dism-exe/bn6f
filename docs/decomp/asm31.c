@@ -36633,7 +36633,7 @@ int sub_80CDAFC()
     *(v0 + 32) = result;
     if ( !result )
     {
-        sub_8002FA6(872415232);
+        sprite_setUnk0x2c(872415232);
         *(v0 + 32) = 60;
         PlaySoundEffect(193, v3, v4);
         result = 4;
@@ -36655,7 +36655,7 @@ int sub_80CDB2C()
     *(v0 + 32) = result;
     if ( !result )
     {
-        sub_8002FA6(738197504);
+        sprite_setUnk0x2c(738197504);
         *(v0 + 32) = 60;
         PlaySoundEffect(193, v2, v3);
         result = 8;
@@ -36676,7 +36676,7 @@ int sub_80CDB50()
     *(v0 + 32) = result;
     if ( !result )
     {
-        sub_8002FA6(469762048);
+        sprite_setUnk0x2c(469762048);
         *(v0 + 32) = 30;
         if ( !(*(*(v0 + 96) + 4) & 1) )
             PlaySoundEffect(194, 1, v2);
@@ -57524,7 +57524,7 @@ int sub_80DA9A2()
     int v0; // r3
 
     sub_8000DE0();
-    return sub_8002FA6(*&byte_80DA9B8[4 * v0]);
+    return sprite_setUnk0x2c(*&byte_80DA9B8[4 * v0]);
 }
 
 
@@ -66708,7 +66708,7 @@ void __noreturn sub_80E0B08()
         if ( *v4 != 2 || v4[1] || (v3 = battle_networkInvert(*(v0 + 22))) != 0 )
             v3 = &timer_2000000;
     }
-    sub_8002FA6(v3);
+    sprite_setUnk0x2c(v3);
     sub_8002EAC();
     v6 = (&loc_88 + 1);
     v7 = *(v0 + 4);
@@ -82437,7 +82437,7 @@ void __noreturn sub_80E9810()
     v2 = object_getFlip(v0);
     sprite_setFlip(v0, v2);
     if ( *(v0 + 4) == 2 )
-        sub_8002FA6(*(v0 + 104));
+        sprite_setUnk0x2c(*(v0 + 104));
     v3 = sub_80103BC(*(v0 + 5));
     *(v0 + 76) = v3;
     *(v0 + 96) = *(v3 + 52);
@@ -83430,7 +83430,7 @@ void __noreturn sub_80EA170()
     sprite_setPallete(0);
     v2 = object_getFlip(v1);
     sprite_setFlip(v1, v2);
-    sub_8002FA6(*(v0 + 4));
+    sprite_setUnk0x2c(*(v0 + 4));
     *(v1 + 8) = 4;
     sub_80EA1BC();
 }

@@ -47,7 +47,7 @@ sub_80A49B0:
 loc_80A49E8:
 	bl sub_8002E14
 	ldr r0, [r7,#4]
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	ldrb r0, [r7,#8]
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
@@ -517,7 +517,7 @@ sub_80A51F8:
 	bl sprite_noShadow // () -> void
 	ldrb r0, [r7,#0xa]
 	lsl r0, r0, #0x18
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	ldrb r0, [r7,#0xb]
 	bl sprite_setPalette // (int pallete) -> void
 	ldrh r0, [r7,#2]
@@ -7673,7 +7673,7 @@ sub_80A93D0:
 sub_80A93D8:
 	push {lr}
 	ldr r0, dword_80A93E4 // =0xe000000 
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	pop {pc}
 	.balign 4, 0x00
 dword_80A93E4: .word 0xE000000
@@ -8590,7 +8590,7 @@ loc_80A9BF6:
 	bl sprite_noShadow // () -> void
 	ldrb r0, [r7,#0xa]
 	lsl r0, r0, #0x18
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	ldrb r0, [r7,#0xb]
 	bl sprite_setPalette // (int pallete) -> void
 	ldrb r0, [r7,#0xd]

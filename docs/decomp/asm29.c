@@ -30,7 +30,7 @@ void sub_80A49B0()
         *(v0 + 20) = v3;
     }
     sub_8002E14(v2);
-    sub_8002FA6(*(v1 + 1));
+    sprite_setUnk0x2c(*(v1 + 1));
     sprite_setPallete(v1[8]);
     *(v0 + 8) = 4;
     *(v0 + 6) = 0;
@@ -242,7 +242,7 @@ int sub_80A51F8()
         sprite_setAnimation(v0, *(v1 + 8));
         sprite_loadAnimationData(v0);
         sprite_noShadow(v0);
-        sub_8002FA6(*(v1 + 10) << 24);
+        sprite_setUnk0x2c(*(v1 + 10) << 24);
         sprite_setPallete(*(v1 + 11));
         ClearEventFlag(v1[1]);
         ClearEventFlag(v1[2]);
@@ -5835,7 +5835,7 @@ int sub_80A93D0()
 // 0x80a93d8
 int sub_80A93D8()
 {
-    return sub_8002FA6(234881024);
+    return sprite_setUnk0x2c(234881024);
 }
 
 
@@ -6483,7 +6483,7 @@ void sub_80A9B9C()
     sprite_setAnimation(v0, *(v1 + 8));
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
-    sub_8002FA6(*(v1 + 10) << 24);
+    sprite_setUnk0x2c(*(v1 + 10) << 24);
     sprite_setPallete(*(v1 + 11));
     sprite_setFlip(v0, *(v1 + 13));
     *(v0 + 8) = 4;
