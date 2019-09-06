@@ -1302,6 +1302,8 @@ sub_8002EE8:
 	thumb_func_end sub_8002EE8
 
 	thumb_func_start sprite_setMosaicSize
+// r0 - mosaic width
+// r1 - mosaic height
 sprite_setMosaicSize:
 	lsl r1, r1, #4
 	orr r0, r1
@@ -1311,10 +1313,10 @@ sprite_setMosaicSize:
 	b loc_8002F06
 loc_8002F02:
 	tst r2, r2
-	beq sub_8002F2C
+	beq sprite_clearMosaic
 loc_8002F06:
 	tst r0, r0
-	beq sub_8002F2C
+	beq sprite_clearMosaic
 	lsl r0, r0, #8
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
@@ -1334,8 +1336,8 @@ loc_8002F06:
 	mov pc, lr
 	thumb_func_end sprite_setMosaicSize
 
-	thumb_func_start sub_8002F2C
-sub_8002F2C:
+	thumb_func_start sprite_clearMosaic
+sprite_clearMosaic:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1345,7 +1347,7 @@ sub_8002F2C:
 	bic r1, r0
 	strb r1, [r3,#oObjectSprite_Unk_11]
 	mov pc, lr
-	thumb_func_end sub_8002F2C
+	thumb_func_end sprite_clearMosaic
 
 	thumb_func_start sub_8002F3E
 sub_8002F3E:

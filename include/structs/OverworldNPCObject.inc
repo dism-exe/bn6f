@@ -24,6 +24,7 @@
 		struct_const MOVEMENT_FLAG_STOP,                      0x00
 		struct_const MOVEMENT_FLAG_DEFAULT_MOVING,            0x04
 		struct_const MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES,  0x08
+		struct_const MOVEMENT_FLAG_WAIT_ANIM_FRAME,           0x0c
 	/*
 	Those might not be flags, since 0x0C behaves unpredictably by 0x04 and 0x08
 	0x00 - No effect, it keeps setting to 0x04

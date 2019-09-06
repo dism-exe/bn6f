@@ -3047,7 +3047,7 @@ sub_80A6E22:
 	thumb_local_start
 sub_80A6E3A:
 	push {lr}
-	bl sub_8002F2C
+	bl sprite_clearMosaic
 	mov r0, #2
 	bl sub_80A6E70
 	mov r0, #1

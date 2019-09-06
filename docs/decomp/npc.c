@@ -403,7 +403,7 @@ int npc_809E9DA()
 
 
 // 0x809ea3c
-int npc_809EA3C()
+int npc_waitAnimFrame_809ea3c()
 {
     int v0; // r5
     int v1; // r7
@@ -1190,7 +1190,7 @@ int NPCCommand_init_mystery_data()
 
 
 // 0x809f0ec
-int sub_809F0EC()
+int NPCCommand_wait_anim_frame()
 {
     int v0; // r5
     int v1; // r6
@@ -1203,7 +1203,7 @@ int sub_809F0EC()
 
 
 // 0x809f104
-int sub_809F104()
+int NPCCommand_set_color_shader()
 {
     Battle *v0; // r5
     int v1; // r6
@@ -1215,13 +1215,13 @@ int sub_809F104()
 
 
 // 0x809f114
-int sub_809F114()
+int NPCCommand_set_mosaic()
 {
     int v0; // r6
     int result; // r0
     int v2; // r1
 
-    sub_8002F2C();
+    sprite_clearMosaic();
     result = *(v0 + 1);
     v2 = *(v0 + 2);
     if ( result + v2 )
@@ -1231,7 +1231,7 @@ int sub_809F114()
 
 
 // 0x809f12c
-int sub_809F12C()
+int NPCCommand_set_animation_force_update()
 {
     int v0; // r5
     int v1; // r6
@@ -1247,7 +1247,7 @@ int sub_809F12C()
 
 
 // 0x809f138
-int sub_809F138()
+int NPCCommand_set_transform()
 {
     unsigned __int8 *v0; // r6
 

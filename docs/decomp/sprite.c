@@ -940,7 +940,7 @@ int __fastcall sprite_setMosaicSize(int a1, int a2)
 
     v4 = a1 | 16 * a2;
     if ( !v4 )
-        return sub_8002F2C();
+        return sprite_clearMosaic();
     result = v4 << 8;
     v6 = 16 * (*(v2 + 2) >> 4);
     *(v6 + v2 + 17) |= 0x10u;
@@ -950,7 +950,7 @@ int __fastcall sprite_setMosaicSize(int a1, int a2)
 
 
 // 0x8002f2c
-signed int sub_8002F2C()
+signed int sprite_clearMosaic()
 {
     int v0; // r5
     unsigned int v1; // r3

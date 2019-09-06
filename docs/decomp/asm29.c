@@ -2059,7 +2059,7 @@ signed int __fastcall sub_80A6E22(int a1)
 // 0x80a6e3a
 signed int sub_80A6E3A()
 {
-    sub_8002F2C();
+    sprite_clearMosaic();
     sub_80A6E70(2);
     return 1;
 }

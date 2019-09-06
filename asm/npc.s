@@ -154,7 +154,7 @@ locret_809E6A0:
 off_809E6A4: .word npc_waitTimer_809e6c8+1
 	.word npc_doNonCutsceneMovement_809E6DC+1
 	.word npc_doHopMovement_809e8cc+1
-	.word npc_809EA3C+1
+	.word npc_waitAnimFrame_809ea3c+1
 	.word sub_809EA74+1
 	.word npc_waitCutsceneVar_809ea82+1
 	.word npc_809EAA0+1
@@ -680,34 +680,35 @@ byte_809EA34: .byte 0x26, 0x0, 0x2A, 0x0, 0x26, 0x1, 0x2A, 0x1
 	thumb_func_end npc_809E9DA
 
 	thumb_local_start
-npc_809EA3C:
+npc_waitAnimFrame_809ea3c:
 	push {lr}
 	ldrb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
 	tst r0, r0
-	bne loc_809EA4A
+	bne .initialized
 	mov r0, #4
 	strb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
-	b loc_809EA6E
-loc_809EA4A:
-	mov r7, #0x80
+	b .done
+.initialized
+	mov r7, #oOverworldNPCObject_Unk_80
 	ldr r7, [r5,r7]
 	mov r1, #0xc0
 	tst r7, r1
-	beq loc_809EA62
+	beq .checkFrameNumber
 	bl sprite_getFrameParameters
+	// check frame bits?
 	tst r0, r7
-	beq loc_809EA6E
+	beq .done
 	bl npc_enableScript0x19_809f516
-	b loc_809EA6E
-loc_809EA62:
+	b .done
+.checkFrameNumber
 	bl sprite_getFrameParameters
 	cmp r0, r7
-	bne loc_809EA6E
+	bne .done
 	bl npc_enableScript0x19_809f516
-loc_809EA6E:
+.done
 	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {pc}
-	thumb_func_end npc_809EA3C
+	thumb_func_end npc_waitAnimFrame_809ea3c
 
 	thumb_local_start
 sub_809EA74:
@@ -1006,12 +1007,12 @@ npc_jt_commands: .word NPCCommand_end+1
 	.word NPCCommand_disable_collision_alternate+1
 	.word NPCCommand_play_sound+1
 	.word NPCCommand_init_mystery_data+1
-	.word sub_809F0EC+1
-	.word sub_809F104+1
+	.word NPCCommand_wait_anim_frame+1
+	.word NPCCommand_set_color_shader+1
 	.word NULL
-	.word sub_809F114+1
-	.word sub_809F12C+1
-	.word sub_809F138+1
+	.word NPCCommand_set_mosaic+1
+	.word NPCCommand_set_animation_force_update+1
+	.word NPCCommand_set_transform+1
 	.word sub_809F150+1
 	.word sub_809F15A+1
 	.word sub_809F16E+1
@@ -1798,57 +1799,86 @@ byte_809F0E4: .byte 0xFF, 0x0, 0x0, 0x2, 0x2, 0x1, 0x3, 0xFF
 	thumb_func_end NPCCommand_init_mystery_data
 
 	thumb_local_start
-sub_809F0EC:
+// 0x2a byte1
+// wait for the current npc's animation to equal the specified frame
+// if bit 7 or bit 6 of byte1 is set, test for the specified bits instead
+// byte1 - frame of the current npc's animation to wait for
+NPCCommand_wait_anim_frame:
 	push {lr}
+
 	ldrb r0, [r6,#1]
-	mov r7, #0x80
+	mov r7, #oOverworldNPCObject_Unk_80
 	str r0, [r5,r7]
-	mov r0, #0xc
+
+	mov r0, #MOVEMENT_FLAG_WAIT_ANIM_FRAME
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
+
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
+
 	bl npc_disableScript0x19_809f51e
 	add r6, #2
 	pop {pc}
-	thumb_func_end sub_809F0EC
+	thumb_func_end NPCCommand_wait_anim_frame
 
 	thumb_local_start
-sub_809F104:
+// 0x2b hword1
+// set current npc's color shader (mixes with current palette)
+// hword1 - new color shader as 15bit RGB
+NPCCommand_set_color_shader:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	bl sprite_setColorShader
 	add r6, #3
 	pop {pc}
-	thumb_func_end sub_809F104
+	thumb_func_end NPCCommand_set_color_shader
 
 	thumb_local_start
-sub_809F114:
+// 0x2d byte1 byte2
+// give a mosaic effect to the current npc
+// mosaic effect being the "blur" effect when viruses spawn in a battle
+// if byte1 + byte2 == 0, then remove the mosaic effect, if there is one
+// byte1 - mosaic width
+// byte2 - mosaic height
+NPCCommand_set_mosaic:
 	push {lr}
-	bl sub_8002F2C
+	bl sprite_clearMosaic
 	ldrb r0, [r6,#1]
 	ldrb r1, [r6,#2]
 	add r2, r0, r1
 	tst r2, r2
-	beq loc_809F128
+	beq .noMosaic
 	bl sprite_setMosaicSize
-loc_809F128:
+.noMosaic
 	add r6, #3
 	pop {pc}
-	thumb_func_end sub_809F114
+	thumb_func_end NPCCommand_set_mosaic
 
 	thumb_local_start
-sub_809F12C:
+// 0x2e byte1
+// set npc animation and force it to update
+// so that it updates even if the current animation is the same
+// byte1 - animation to set
+NPCCommand_set_animation_force_update:
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelect]
 	mvn r0, r0
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelectUpdate]
 	add r6, #2
 	mov pc, lr
-	thumb_func_end sub_809F12C
+	thumb_func_end NPCCommand_set_animation_force_update
 
 	thumb_local_start
-sub_809F138:
+// 0x2f byte1 byte2 byte3
+// set transform for the current npc
+// the way the transform works seems buggy
+// as certain facing directions don't scale correctly
+// and show rectangles instead
+// byte1 - horizontal compress value
+// byte2 - vertical compress value
+// byte3 - rotation value
+NPCCommand_set_transform:
 	push {lr}
 	bl sprite_makeUnscalable
 	bl sprite_makeScalable
@@ -1858,7 +1888,7 @@ sub_809F138:
 	bl sprite_setScaleParameters
 	add r6, #4
 	pop {pc}
-	thumb_func_end sub_809F138
+	thumb_func_end NPCCommand_set_transform
 
 	thumb_local_start
 sub_809F150:

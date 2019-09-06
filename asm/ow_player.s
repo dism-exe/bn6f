@@ -42,14 +42,14 @@ loc_809D1EE:
 	cmp r0, #0x80
 	blt loc_809D222
 	bl sprite_makeScalable
-	ldrb r0, [r7,#0x2] // (byte_2000AA2 - 0x2000aa0)
-	ldrb r1, [r7]
-	ldrb r2, [r7,#0x1] // (byte_2000AA1 - 0x2000aa0)
-	cmp r0, #0
+	ldrb r0, [r7,#oS2000aa0_OWPlayerNaviRotation] // (byte_2000AA2 - 0x2000aa0)
+	ldrb r1, [r7,#oS2000aa0_OWPlayerNaviHorizontalCompress]
+	ldrb r2, [r7,#oS2000aa0_OWPlayerNaviVerticalCompress] // (byte_2000AA1 - 0x2000aa0)
+	cmp r0, #DEFAULT_OW_PLAYER_NAVI_ROTATION
 	bne loc_809D212
-	cmp r1, #0x40 
+	cmp r1, #DEFAULT_OW_PLAYER_NAVI_HORIZONTAL_COMPRESS
 	bne loc_809D212
-	cmp r2, #0x40 
+	cmp r2, #DEFAULT_OW_PLAYER_NAVI_VERTICAL_COMPRESS
 	bne loc_809D212
 	b loc_809D218
 loc_809D212:

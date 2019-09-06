@@ -6649,7 +6649,8 @@ SetPrimaryToolkitPointers:
 	bx r0
 .eToolkit_p: .word eToolkit
 .ToolkitPointers_p: .word ToolkitPointers
-ToolkitPointers: .word i_joGameSubsysSel
+ToolkitPointers:
+	.word i_joGameSubsysSel
 	.word eJoypad
 	.word unk_200AC40
 	.word eCamera

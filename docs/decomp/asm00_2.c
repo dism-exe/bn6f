@@ -11913,7 +11913,7 @@ int sub_801641A()
         else
         {
             sub_8002CCE();
-            sub_8002F2C();
+            sprite_clearMosaic();
             sub_800AA40(0);
             result = 8;
             *(v0 + 5) = 8;
@@ -13516,7 +13516,7 @@ signed int sub_80174BE()
     *(v0 + 32) = v1;
     if ( v1 == 32 )
     {
-        sub_8002F2C();
+        sprite_clearMosaic();
         sub_8002CCE();
         sub_802CDD0();
         *v0 &= 0xFDu;

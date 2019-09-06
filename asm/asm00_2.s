@@ -15547,7 +15547,7 @@ sub_801641A:
 	b locret_801645E
 loc_801644C:
 	bl sub_8002CCE
-	bl sub_8002F2C
+	bl sprite_clearMosaic
 	mov r0, #0
 	bl sub_800AA40
 	mov r0, #8
@@ -17530,7 +17530,7 @@ sub_80174BE:
 	bl sprite_setMosaicScalingParameters_8002c7a
 	pop {pc}
 loc_80174E0:
-	bl sub_8002F2C
+	bl sprite_clearMosaic
 	bl sub_8002CCE
 	bl sub_802CDD0
 	ldrb r0, [r5,#oObjectHeader_Flags]
