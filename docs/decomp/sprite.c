@@ -546,7 +546,7 @@ int __fastcall sprite_setScaleParameters(int result, int a2, int a3)
 
 
 // 0x8002c52
-signed int sub_8002C52()
+signed int sprite_setObjWindowMode()
 {
     int v0; // r5
     unsigned int v1; // r3
@@ -560,7 +560,7 @@ signed int sub_8002C52()
 
 
 // 0x8002c68
-signed int sub_8002C68()
+signed int sprite_disableObjWindowMode()
 {
     int v0; // r5
     unsigned int v1; // r3
@@ -1081,7 +1081,7 @@ int sub_8002FF8()
 
 
 // 0x8003006
-int sub_8003006()
+int sprite_setField0x3Bit5()
 {
     int v0; // r5
     unsigned int v1; // r3

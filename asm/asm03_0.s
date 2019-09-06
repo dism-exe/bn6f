@@ -12743,7 +12743,8 @@ off_802CD5C: .word sub_80C0DD8+1
 	.word sub_80BA920+1
 	.word sub_80BAE16+1
 	.word sub_80B84EC+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word NULL
+	.word NULL
 	.word sub_80BD9A2+1
 	.word sub_80BE3E8+1
 	.word sub_80BF160+1

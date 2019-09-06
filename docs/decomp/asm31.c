@@ -14481,7 +14481,7 @@ signed int __noreturn sub_80C0358()
     sprite_setAnimation(v0, v1);
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
-    sub_8003006();
+    sprite_setField0x3Bit5();
     v2 = sprite_getPallete(*(v0 + 76));
     sprite_setPallete(v2);
     sprite_setColorShader(v0, *(v0 + 96));
@@ -74050,7 +74050,7 @@ void __noreturn sub_80E4CDC()
     sprite_load(v0, 128, 12, 0);
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
-    sub_8003006();
+    sprite_setField0x3Bit5();
     sub_800302A(1);
     *(v0 + 16) = 0;
     *(v0 + 17) = 0;

@@ -452,7 +452,7 @@ int npc_waitCutsceneVar_809ea82()
 
 
 // 0x809eaa0
-int npc_809EAA0()
+int npc_waitMysteryDataTaken_809eaa0()
 {
     int v0; // r5
     char v1; // zf
@@ -1526,7 +1526,7 @@ int NPCCommand_set_text_script_index_and_ptr()
 
 
 // 0x809f338
-int sub_809F338()
+int NPCCommand_wait_mystery_data_taken()
 {
     int v0; // r5
     int v1; // r6
@@ -1539,7 +1539,7 @@ int sub_809F338()
 
 
 // 0x809f354
-signed int sub_809F354()
+signed int NPCCommand_set_obj_window_mode()
 {
     int v0; // r6
     int v1; // r10
@@ -1547,16 +1547,16 @@ signed int sub_809F354()
     signed int result; // r0
 
     v2 = *(v1 + oToolkit_Unk200f3a0_Ptr);
-    sub_8002C68();
+    sprite_disableObjWindowMode();
     result = *(v0 + 1);
     if ( !*(v0 + 1) )
-        result = sub_8002C52();
+        result = sprite_setObjWindowMode();
     return result;
 }
 
 
 // 0x809f36e
-int sub_809F36E()
+int NPCCommand_play_music()
 {
     int v0; // r6
     int v1; // r0
@@ -1569,21 +1569,21 @@ int sub_809F36E()
 
 
 // 0x809f37e
-int sub_809F37E()
+int NPCCommand_set_sprite_0x3_bit5()
 {
-    return sub_8003006();
+    return sprite_setField0x3Bit5();
 }
 
 
 // 0x809f388
-int sub_809F388()
+int NPCCommand_remove_shadow_ignore_flags()
 {
     return sprite_removeShadow();
 }
 
 
 // 0x809f392
-int sub_809F392()
+int NPCCommand_do_camera_shake()
 {
     int v0; // r6
     __int16 v1; // r0
@@ -1594,7 +1594,7 @@ int sub_809F392()
 
 
 // 0x809f3a6
-int sub_809F3A6()
+int NPCCommand_jump_if_anim_not_equal()
 {
     int v0; // r5
     int v1; // r6
@@ -1608,7 +1608,7 @@ int sub_809F3A6()
 
 
 // 0x809f3c0
-char *sub_809F3C0()
+char *NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer()
 {
     int v0; // r5
     int v1; // r6
@@ -1623,7 +1623,7 @@ char *sub_809F3C0()
 
 
 // 0x809f3e8
-int sub_809F3E8()
+int NPCCommand_jump_alt()
 {
     int v0; // r6
 

@@ -20180,7 +20180,7 @@ sub_8118EA8:
 	bl sub_800304A
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
-	bl sub_8002C52
+	bl sprite_setObjWindowMode
 	mov r0, #4
 	strb r0, [r5,#8]
 	ldr r2, off_8118F08 // =byte_8118F0C

@@ -828,33 +828,33 @@ loc_8002C4E:
 	pop {r5,pc}
 	thumb_func_end sprite_setScaleParameters
 
-	thumb_func_start sub_8002C52
-sub_8002C52:
+	thumb_func_start sprite_setObjWindowMode
+sprite_setObjWindowMode:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r1, [r3,#0x11]
+	ldrb r1, [r3,#oObjectSprite_Unk_11]
 	mov r0, #0xc
 	bic r1, r0
 	mov r0, #8
 	orr r1, r0
-	strb r1, [r3,#0x11]
+	strb r1, [r3,#oObjectSprite_Unk_11]
 	mov pc, lr
-	thumb_func_end sub_8002C52
+	thumb_func_end sprite_setObjWindowMode
 
-	thumb_func_start sub_8002C68
-sub_8002C68:
+	thumb_func_start sprite_disableObjWindowMode
+sprite_disableObjWindowMode:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r1, [r3,#0x11]
+	ldrb r1, [r3,#oObjectSprite_Unk_11]
 	mov r0, #0xc
 	bic r1, r0
-	strb r1, [r3,#0x11]
+	strb r1, [r3,#oObjectSprite_Unk_11]
 	mov pc, lr
-	thumb_func_end sub_8002C68
+	thumb_func_end sprite_disableObjWindowMode
 
 	thumb_func_start sprite_setAlpha_8002c7a
 // presumably to have a sprite blend in with the background (alpha blending)
@@ -1496,8 +1496,8 @@ sub_8002FF8:
 	mov pc, lr
 	thumb_func_end sub_8002FF8
 
-	thumb_func_start sub_8003006
-sub_8003006:
+	thumb_func_start sprite_setField0x3Bit5
+sprite_setField0x3Bit5:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1507,7 +1507,7 @@ sub_8003006:
 	orr r0, r1
 	strb r0, [r3,#oObjectSprite_Unk_03]
 	mov pc, lr
-	thumb_func_end sub_8003006
+	thumb_func_end sprite_setField0x3Bit5
 
 	thumb_local_start
 sub_8003018:

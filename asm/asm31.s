@@ -17112,7 +17112,7 @@ sub_80C0358:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_hasShadow
-	bl sub_8003006
+	bl sprite_setField0x3Bit5
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getPalette
 	bl sprite_setPalette // (int pallete) -> void
@@ -91410,7 +91410,7 @@ sub_80E4CDC:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_hasShadow
-	bl sub_8003006
+	bl sprite_setField0x3Bit5
 	mov r0, #1
 	bl sub_800302A
 	mov r0, #0

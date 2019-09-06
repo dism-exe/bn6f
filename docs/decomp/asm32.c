@@ -14372,7 +14372,7 @@ void __noreturn sub_8118EA8()
     sub_8003060(4);
     sub_800304A(4);
     sprite_setPallete(0);
-    sub_8002C52();
+    sprite_setObjWindowMode();
     v0->currState = 4;
     sprite_setCoordinates(byte_8118F0C[2 * *(v1 + 15)], byte_8118F0C[2 * *(v1 + 15) + 1]);
     sub_8118F14();

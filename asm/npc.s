@@ -157,7 +157,7 @@ off_809E6A4: .word npc_waitTimer_809e6c8+1
 	.word npc_waitAnimFrame_809ea3c+1
 	.word sub_809EA74+1
 	.word npc_waitCutsceneVar_809ea82+1
-	.word npc_809EAA0+1
+	.word npc_waitMysteryDataTaken_809eaa0+1
 off_809E6C0: .word off_809E6A4
 off_809E6C4: .word OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x100
 	thumb_func_end npc_standard_809E5E2
@@ -741,20 +741,25 @@ npc_waitCutsceneVar_809ea82:
 	thumb_func_end npc_waitCutsceneVar_809ea82
 
 	thumb_local_start
-npc_809EAA0:
+npc_waitMysteryDataTaken_809eaa0:
 	push {r4,r7,lr}
-	mov r7, #oOverworldNPCObject_Unk_80_Flag
+
+	mov r7, #oOverworldNPCObject_MysteryDataId
 	ldr r0, [r5,r7]
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
-	beq loc_809EAD4
+	beq .mysteryDataStillExists
+
 	bl npc_enableScript0x19_809f516
+
 	mov r0, #OW_NPC_UNK_FLAGS_60_DISABLE_INTERACTION
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
+
 	mov r0, #OBJECT_FLAG_ACTIVE
 	strb r0, [r5,#oObjectHeader_Flags]
+
 	mov r0, #0x80
 	mov r1, #0x1c
 	mov r2, #0xa0
@@ -762,10 +767,11 @@ npc_809EAA0:
 	bl sprite_loadAnimationData // () -> void
 	bl FreeOverworldNPCObject
 	bl npc_disableScript0x19_809f51e
-loc_809EAD4:
+
+.mysteryDataStillExists
 	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {r4,r7,pc}
-	thumb_func_end npc_809EAA0
+	thumb_func_end npc_waitMysteryDataTaken_809eaa0
 
 	thumb_local_start
 npc_inChatbox_809EADA:
@@ -1034,15 +1040,15 @@ npc_jt_commands: .word NPCCommand_end+1
 	.word NULL
 	.word NULL
 	.word NPCCommand_set_text_script_index_and_ptr+1
-	.word sub_809F338+1
-	.word sub_809F354+1
-	.word sub_809F36E+1
-	.word sub_809F37E+1
-	.word sub_809F388+1
-	.word sub_809F392+1
-	.word sub_809F3A6+1
-	.word sub_809F3C0+1
-	.word sub_809F3E8+1
+	.word NPCCommand_wait_mystery_data_taken+1
+	.word NPCCommand_set_obj_window_mode+1
+	.word NPCCommand_play_music+1
+	.word NPCCommand_set_sprite_0x3_bit5+1
+	.word NPCCommand_remove_shadow_ignore_flags+1
+	.word NPCCommand_do_camera_shake+1
+	.word NPCCommand_jump_if_anim_not_equal+1
+	.word NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer+1
+	.word NPCCommand_jump_alt+1
 	.word sub_809F3F6+1
 	.word sub_809F418+1
 	.word sub_809F438+1
@@ -2314,65 +2320,93 @@ NPCCommand_set_text_script_index_and_ptr:
 	thumb_func_end NPCCommand_set_text_script_index_and_ptr
 
 	thumb_local_start
-sub_809F338:
+// 0x45 hword1
+// wait for the npc (being a mystery data) to be taken
+// hword1 - mystery data id
+NPCCommand_wait_mystery_data_taken:
 	push {r7,lr}
-	mov r0, #0x18
+
+	mov r0, #MOVEMENT_FLAG_WAIT_MYSTERY_DATA_TAKEN
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
+
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
+
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
-	mov r7, #0x80
+	mov r7, #oOverworldNPCObject_MysteryDataId
 	str r0, [r5,r7]
+
 	bl npc_disableScript0x19_809f51e
 	add r6, #3
 	pop {r7,pc}
-	thumb_func_end sub_809F338
+	thumb_func_end NPCCommand_wait_mystery_data_taken
 
 	thumb_local_start
-sub_809F354:
+// 0x46 byte1
+// if byte1 == 0, turn on obj window mode for the current npc's sprite
+// otherwise, disable object window mode
+NPCCommand_set_obj_window_mode:
 	push {lr}
+
+	// useless toolkit read, maybe dummied out code?
 	mov r7, r10
 	ldr r4, [r7,#oToolkit_Unk200f3a0_Ptr]
+	// ??? corresponds to some groundman text (groundman scenario maybe?)
 	ldr r7, TextScriptDialog87E30A0_p // =TextScriptDialog87E30A0
-	bl sub_8002C68
+
+	bl sprite_disableObjWindowMode
 	ldrb r0, [r6,#1]
 	tst r0, r0
-	bne loc_809F36A
-	bl sub_8002C52
-loc_809F36A:
+	bne .doNotEnableObjWindowMode
+	bl sprite_setObjWindowMode
+.doNotEnableObjWindowMode
 	add r6, #2
 	pop {pc}
-	thumb_func_end sub_809F354
+	thumb_func_end NPCCommand_set_obj_window_mode
 
 	thumb_local_start
-sub_809F36E:
+// 0x47 hword1
+// play music
+// hword1 - music to play
+NPCCommand_play_music:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	bl PlayMusic
 	add r6, #3
 	pop {pc}
-	thumb_func_end sub_809F36E
+	thumb_func_end NPCCommand_play_music
 
 	thumb_local_start
-sub_809F37E:
+// 0x48
+// set bit 5 of sprite field 0x3 for the current NPC
+// the function sprite_setField0x3Bit5 in question seems to go unused
+// (all other calls to it are dead)
+NPCCommand_set_sprite_0x3_bit5:
 	push {lr}
-	bl sub_8003006
+	bl sprite_setField0x3Bit5
 	add r6, #1
 	pop {pc}
-	thumb_func_end sub_809F37E
+	thumb_func_end NPCCommand_set_sprite_0x3_bit5
 
 	thumb_local_start
-sub_809F388:
+// 0x49
+// remove the current NPC's shadow, but don't set flags
+// that keep the shadow removed if the current NPC's sprite changes
+NPCCommand_remove_shadow_ignore_flags:
 	push {lr}
 	bl sprite_removeShadow
 	add r6, #1
 	pop {pc}
-	thumb_func_end sub_809F388
+	thumb_func_end NPCCommand_remove_shadow_ignore_flags
 
 	thumb_local_start
-sub_809F392:
+// 0x4a byte1 hword2
+// do a camera shake effect
+// byte1 - shake type
+// hword2 - shake timer
+NPCCommand_do_camera_shake:
 	push {lr}
 	add r0, r6, #2
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
@@ -2381,36 +2415,45 @@ sub_809F392:
 	bl camera_initShakeEffect_80302a8
 	add r6, #4
 	pop {pc}
-	thumb_func_end sub_809F392
+	thumb_func_end NPCCommand_do_camera_shake
 
 	thumb_local_start
-sub_809F3A6:
+// 0x4b byte1
+// jump if the current npc's animation does not equal the given animation
+// byte1 - animation to compare the current npc's animation with
+NPCCommand_jump_if_anim_not_equal:
 	push {lr}
 	ldrb r0, [r6,#1]
 	ldrb r1, [r5,#oOverworldNPCObject_AnimationSelect]
 	cmp r1, r0
-	bne loc_809F3B4
+	bne .animNotEqual
 	add r6, #6
 	pop {pc}
-loc_809F3B4:
+.animNotEqual
 	add r6, #2
 	mov r0, r6
 	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
-	thumb_func_end sub_809F3A6
+	thumb_func_end NPCCommand_jump_if_anim_not_equal
 
 	thumb_local_start
-sub_809F3C0:
+// 0x4c byte1
+// set text script pointer to a hardcoded buffer and index to the given value for the current npc
+// byte1 - new text script index
+NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer:
 	push {lr}
+
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_TextScriptIndex]
+
 	ldr r0, off_809F6AC // =OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
+
 	ldr r3, off_809F3D8 // =byte_202FA04 
-	mov r1, #0x94
+	mov r1, #oOverworldNPCObject_TextScriptPtr
 	str r3, [r5,r1]
 	add r6, #2
 	pop {pc}
@@ -2418,20 +2461,26 @@ off_809F3D8: .word byte_202FA04
 	.word off_809F3E0
 off_809F3E0: .word off_8044470
 	.word off_80444C4
-	thumb_func_end sub_809F3C0
+	thumb_func_end NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer
 
 	thumb_local_start
-sub_809F3E8:
+// 0x4d unused1to4 destination5
+// jump to another script
+// the code suggests something was removed
+// unused1to4 - unused
+// destination5 - script to jump to
+NPCCommand_jump_alt:
 	push {lr}
 	add r0, r6, #5
 	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
-	b locret_809F3F4
-locret_809F3F4:
+	b .dummy
+.dummy
 	pop {pc}
-	thumb_func_end sub_809F3E8
+	thumb_func_end NPCCommand_jump_alt
 
 	thumb_local_start
+// 0x4e byte1 byte2 byte3 byte4
 sub_809F3F6:
 	push {lr}
 	ldrb r0, [r6,#1]
@@ -2442,7 +2491,7 @@ sub_809F3F6:
 	strb r0, [r5,#oOverworldNPCObject_Undetected_06]
 	ldrb r0, [r6,#4]
 	strb r0, [r5,#oOverworldNPCObject_Unk_07]
-	mov r0, #8
+	mov r0, #MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #8
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
@@ -2460,7 +2509,7 @@ sub_809F418:
 	strb r2, [r5,#oOverworldNPCObject_MovementDistance]
 	ldrb r2, [r6,#3]
 	strb r2, [r5,#oOverworldNPCObject_Undetected_06]
-	mov r0, #4
+	mov r0, #MOVEMENT_FLAG_DEFAULT_MOVING
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #8
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]

@@ -27,6 +27,7 @@
 		struct_const MOVEMENT_FLAG_WAIT_ANIM_FRAME,           0x0c
 		struct_const MOVEMENT_FLAG_CALL_NATIVE_FUNCTION,      0x10
 		struct_const MOVEMENT_FLAG_WAIT_CUTSCENE_VAR,         0x14
+		struct_const MOVEMENT_FLAG_WAIT_MYSTERY_DATA_TAKEN,   0x18
 	/*
 	Those might not be flags, since 0x0C behaves unpredictably by 0x04 and 0x08
 	0x00 - No effect, it keeps setting to 0x04
@@ -124,7 +125,7 @@
 		u32 CutsceneVarIndexToWaitFor // loc=0x80
 		u32 CutsceneVarValueToWaitFor // loc=0x84
 	nextu
-		u32 Unk_80_Flag // loc=0x80
+		u32 MysteryDataId // loc=0x80
 	nextu
 		u8_arr NativeFunctionVars, 12 // loc=0x80
 	endu
