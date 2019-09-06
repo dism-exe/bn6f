@@ -584,7 +584,7 @@ sub_80B863A:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r1, off_80B8694 // =off_80B8698 
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	ldr r1, [r1,r0]
@@ -1002,7 +1002,7 @@ sub_80B8932:
 loc_80B89B4:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	bl battle_isTimeStop
 	bne locret_80B89DA
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
@@ -1434,7 +1434,7 @@ sub_80B8DA6:
 	bl sprite_setFinalPalette
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getFlip
 	bl sprite_setFlip
@@ -8503,7 +8503,7 @@ loc_80BC1FE:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r1, off_80BC254 // =off_80BC258 
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	ldr r1, [r1,r0]
@@ -9003,7 +9003,7 @@ loc_80BC5BA:
 	bl loc_8002F02
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	pop {r4,pc}
 	thumb_func_end sub_80BC58C
 
@@ -9575,7 +9575,7 @@ sub_80BCA72:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r1, off_80BCACC // =off_80BCAD0 
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	ldr r1, [r1,r0]
@@ -13122,7 +13122,7 @@ sub_80BE55C:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	bl battle_isTimeStop
 	bne loc_80BE5A4
 	ldr r1, off_80BE5BC // =off_80BE5C0 
@@ -13747,7 +13747,7 @@ loc_80BEAA0:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt loc_80BEAB2
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {pc}
@@ -15589,13 +15589,13 @@ loc_80BF83C:
 	strh r0, [r5,#oBattleObject_Timer2]
 	cmp r0, #0xf
 	ble loc_80BF85E
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {pc}
 loc_80BF85E:
 	ldrh r0, [r5,#oBattleObject_Timer2]
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	pop {pc}
 	thumb_func_end sub_80BF81C
 
@@ -15924,7 +15924,7 @@ loc_80BFA96:
 	cmp r0, #0xa
 	blt locret_80BFAAC
 	bl object_setCoordinatesFromPanels // () -> void
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BFAAC:
@@ -16174,13 +16174,13 @@ loc_80BFC64:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {pc}
 loc_80BFC8C:
 	ldrh r0, [r5,#oBattleObject_Timer2]
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	pop {pc}
 	thumb_func_end sub_80BFC44
 
@@ -16481,7 +16481,7 @@ sub_80BFE8C:
 	bl loc_8002F02
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	pop {r4,pc}
 	thumb_func_end sub_80BFE8C
 
@@ -16626,7 +16626,7 @@ sub_80BFFC0:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r1, off_80C0018 // =off_80C001C 
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	ldr r1, [r1,r0]
@@ -16916,7 +16916,7 @@ sub_80C01D8:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r1, off_80C0230 // =off_80C0234 
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	ldr r1, [r1,r0]
@@ -17457,7 +17457,7 @@ loc_80C05DE:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge loc_80C0600
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
@@ -17471,7 +17471,7 @@ loc_80C05DE:
 loc_80C0600:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	add r0, r0, r0
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 locret_80C0608:
 	pop {pc}
 	thumb_func_end sub_80C05C6
@@ -18867,7 +18867,7 @@ loc_80C1014:
 	ldr r0, [r0,#oBattleObject_ExtraVars+0x10]
 	tst r0, r0
 	beq loc_80C1024
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	bl sprite_clearFinalPalette
 	b loc_80C105A
 loc_80C1024:
@@ -18887,7 +18887,7 @@ loc_80C1024:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 loc_80C105A:
 	ldr r1, off_80C1068 // =off_80C106C 
 	ldrb r0, [r5,#oBattleObject_CurAction]
@@ -19145,7 +19145,7 @@ sub_80C1204:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r1, off_80C1250 // =off_80C1254 
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	ldr r1, [r1,r0]
@@ -25138,7 +25138,7 @@ loc_80C3FC8:
 loc_80C3FF0:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_ExtraVars+0x10]
 	tst r0, r0
 	beq loc_80C4004
@@ -25361,7 +25361,7 @@ sub_80C4146:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	tst r0, r0
 	bne loc_80C41C0
@@ -25617,7 +25617,7 @@ sub_80C4484:
 	push {lr}
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldrb r0, [r5,#oBattleObject_Param3]
 	tst r0, r0
 	bne loc_80C44A2
@@ -25844,7 +25844,7 @@ sub_80C461C:
 	push {lr}
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	bl sub_800139A
 	lsr r0, r0, #2
 	bcc locret_80C464A
@@ -25870,7 +25870,7 @@ sub_80C464C:
 	push {lr}
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_ExtraVars+0xc]
 	cmp r0, #0
 	beq loc_80C466A
@@ -26064,7 +26064,7 @@ sub_80C4766:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrb r0, [r0,#oBattleObject_CurAnim]
 	ldrb r1, [r5,#oBattleObject_Param2]
@@ -40491,7 +40491,7 @@ loc_80CBC00:
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer2]
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -40567,12 +40567,12 @@ sub_80CBCB0:
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	add r0, #1
 	strh r0, [r5,#oBattleObject_Timer2]
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge locret_80CBCF0
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -85043,7 +85043,7 @@ loc_80E1C84:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge loc_80E1CA6
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
@@ -85057,7 +85057,7 @@ loc_80E1C84:
 loc_80E1CA6:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	add r0, r0, r0
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 locret_80E1CAE:
 	pop {pc}
 	thumb_func_end sub_80E1C66
@@ -89701,7 +89701,7 @@ sub_80E403E:
 	bl loc_8002F02
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	bl battle_isBattleOver
 	tst r0, r0
 	bne loc_80E40AC
@@ -91117,7 +91117,7 @@ sub_80E4AAE:
 	bl loc_8002F02
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	bl object_setPanelsFromCoordinates
 	bl object_isCurrentPanelValid
 	bne loc_80E4AFE
@@ -97179,7 +97179,7 @@ sub_80E7816:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldrb r0, [r5,#oBattleObject_Param1]
 	tst r0, r0
 	bne locret_80E7894
@@ -97393,7 +97393,7 @@ sub_80E79CE:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r1, off_80E7A44 // =off_80E7A48 
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	ldr r1, [r1,r0]
@@ -97604,7 +97604,7 @@ loc_80E7B62:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldrb r0, [r5,#oBattleObject_Param1]
 	tst r0, r0
 	bne locret_80E7BD6
@@ -99194,7 +99194,7 @@ sub_80E86F6:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrb r0, [r0,#oBattleObject_CurAction]
 	ldrb r1, [r5,#oBattleObject_Param1]
@@ -99325,7 +99325,7 @@ sub_80E8802:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrb r0, [r0,#oBattleObject_CurAction]
 	ldrb r1, [r5,#oBattleObject_Param2]
@@ -99546,7 +99546,7 @@ sub_80E89BA:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrb r0, [r0,#oBattleObject_CurAction]
 	ldrb r1, [r5,#oBattleObject_Param2]
@@ -101900,7 +101900,7 @@ sub_80E9B56:
 	bl loc_8002F02
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	bl object_setPanelsFromCoordinates
 	bl object_isCurrentPanelValid
 	bne loc_80E9BA6

@@ -4377,7 +4377,7 @@ CutsceneCmd_ow_player_sprite_special_with_arg:
 off_8037B9C: .word owPlayer_writeLayerIndexOverride_809e260+1
 	.word SetOWPlayerFacingDirection+1
 	.word owPlayer_setPalette_809e2a0+1
-	.word owPlayer_setMosaicScalingParameters_8002c7a_809e4a0+1
+	.word owPlayer_setAlpha_8002c7a_809e4a0+1
 	.word SetOWPlayerNaviPaletteIndex+1
 	.word owPlayer_setS2000AA0Param0x4_809e314+1
 	thumb_func_end CutsceneCmd_ow_player_sprite_special_with_arg

@@ -11912,7 +11912,7 @@ int sub_801641A()
         }
         else
         {
-            sub_8002CCE();
+            sprite_disableAlpha();
             sprite_clearMosaic();
             sub_800AA40(0);
             result = 8;
@@ -12029,7 +12029,7 @@ LABEL_5:
     *(v0 + 17) = v4;
     if ( v4 )
         goto LABEL_5;
-    sub_8002EE8();
+    sprite_zeroColorShader();
     result = 8;
     *(v0 + 5) = 8;
     return result;
@@ -13517,7 +13517,7 @@ signed int sub_80174BE()
     if ( v1 == 32 )
     {
         sprite_clearMosaic();
-        sub_8002CCE();
+        sprite_disableAlpha();
         sub_802CDD0();
         *v0 &= 0xFDu;
         sub_8011020();
@@ -16862,7 +16862,7 @@ void __fastcall sub_801AF44(int a1)
         object_setFlag1(256);
         object_setAttack0();
 LABEL_42:
-        sub_8002EE8();
+        sprite_zeroColorShader();
         object_clearFlag2(0x4000);
         v11 = sub_80143E4();
         v12 = sub_801690A(v11);
@@ -17107,7 +17107,7 @@ LABEL_40:
             }
         }
     }
-    sub_8002EE8();
+    sprite_zeroColorShader();
     v13 = object_clearFlag2(0x4000);
     v14 = sub_801690A(v13);
     v15 = sub_8016860(v14);
@@ -17210,7 +17210,7 @@ LABEL_8:
         }
     }
 LABEL_29:
-    sub_8002EE8();
+    sprite_zeroColorShader();
     sub_80181F6();
     return (*(v10 + 4 * *(v1 + 9)))();
 }
@@ -17291,7 +17291,7 @@ int __fastcall sub_801B4D4(int a1)
         return sub_801823C();
     }
 LABEL_28:
-    sub_8002EE8();
+    sprite_zeroColorShader();
     sub_80181F6();
     return (*(v10 + 4 * *(v1 + 9)))();
 }
@@ -17384,7 +17384,7 @@ LABEL_8:
         }
     }
 LABEL_29:
-    sub_8002EE8();
+    sprite_zeroColorShader();
     sub_80181F6();
     return (*(v10 + 4 * *(v1 + 9)))();
 }
@@ -17472,7 +17472,7 @@ LABEL_8:
         }
     }
 LABEL_28:
-    sub_8002EE8();
+    sprite_zeroColorShader();
     sub_80181F6();
     return (*(v10 + 4 * *(v1 + 9)))();
 }
@@ -17565,7 +17565,7 @@ LABEL_9:
         }
     }
 LABEL_30:
-    sub_8002EE8();
+    sprite_zeroColorShader();
     sub_80181F6();
     return (*(v10 + 4 * *(v1 + 9)))();
 }

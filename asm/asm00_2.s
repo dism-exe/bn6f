@@ -15507,7 +15507,7 @@ loc_80163E2:
 	mov r0, #0x10
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurPhase]
 	pop {pc}
@@ -15539,14 +15539,14 @@ sub_801641A:
 	pop {r0}
 	sub r0, #0x10
 	neg r0, r0
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	b locret_801645E
 loc_801644C:
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	bl sprite_clearMosaic
 	mov r0, #0
 	bl sub_800AA40
@@ -15698,7 +15698,7 @@ loc_801655A:
 	strb r0, [r5,#oObjectHeader_Flags]
 	b locret_801657C
 loc_8016574:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_801657C:
@@ -17527,11 +17527,11 @@ sub_80174BE:
 	pop {r0}
 	sub r0, #0x10
 	neg r0, r0
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	pop {pc}
 loc_80174E0:
 	bl sprite_clearMosaic
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	bl sub_802CDD0
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -22289,7 +22289,7 @@ loc_801B126:
 	bl sub_8014498
 	bl sub_802E1D8
 loc_801B142:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	mov r0, #1
 	lsl r0, r0, #0xe
 	bl object_clearFlag2
@@ -22504,7 +22504,7 @@ loc_801B32C:
 loc_801B334:
 	bl sub_800E730
 loc_801B338:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	mov r0, #1
 	lsl r0, r0, #0xe
 	bl object_clearFlag2
@@ -22671,7 +22671,7 @@ loc_801B49E:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B4A2:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	bl sub_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2
@@ -22822,7 +22822,7 @@ loc_801B5DA:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B5DE:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	bl sub_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2
@@ -22975,7 +22975,7 @@ loc_801B71A:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B71E:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	bl sub_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2
@@ -23125,7 +23125,7 @@ loc_801B854:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B858:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	bl sub_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2
@@ -23276,7 +23276,7 @@ loc_801B988:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B98C:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	bl sub_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2

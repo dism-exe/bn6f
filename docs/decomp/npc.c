@@ -1258,19 +1258,19 @@ int NPCCommand_set_transform()
 
 
 // 0x809f150
-int sub_809F150()
+int NPCCommand_remove_transform()
 {
     return sprite_makeUnscalable();
 }
 
 
 // 0x809f15a
-signed int sub_809F15A()
+signed int NPCCommand_set_alpha()
 {
     int v0; // r6
     signed int result; // r0
 
-    sub_8002CCE();
+    sprite_disableAlpha();
     result = *(v0 + 1);
     if ( *(v0 + 1) )
         result = sub_8002C7A(result);
@@ -1279,7 +1279,7 @@ signed int sub_809F15A()
 
 
 // 0x809f16e
-int sub_809F16E()
+int NPCCommand_run_secondary_script()
 {
     int v0; // r5
     int v1; // r6
@@ -1292,7 +1292,7 @@ int sub_809F16E()
 
 
 // 0x809f17c
-signed int sub_809F17C()
+signed int NPCCommand_pause_secondary_script()
 {
     int v0; // r5
     int v1; // r6
@@ -1307,7 +1307,7 @@ signed int sub_809F17C()
 
 
 // 0x809f18e
-int sub_809F18E()
+int NPCCommand_end_secondary_script()
 {
     int v0; // r5
     int result; // r0
@@ -1320,7 +1320,7 @@ int sub_809F18E()
 
 
 // 0x809f198
-int sub_809F198()
+int NPCCommand_init_native_call()
 {
     int v0; // r5
     int v1; // r6
@@ -1342,7 +1342,7 @@ int sub_809F198()
 
 
 // 0x809f1c6
-int sub_809F1C6()
+int NPCCommand_jump_with_link()
 {
     int v0; // r5
     int v1; // r6
@@ -1353,7 +1353,7 @@ int sub_809F1C6()
 
 
 // 0x809f1d8
-int sub_809F1D8()
+int NPCCommand_init_native_call_with_args()
 {
     int v0; // r5
     _BYTE *v1; // r6
@@ -1408,7 +1408,7 @@ int NPCCommand_change_movement_direction()
 
 
 // 0x809f26a
-void sub_809F26A()
+void NPCCommand_return_to_link()
 {
     int v0; // r5
     int v1; // r6
@@ -1418,7 +1418,7 @@ void sub_809F26A()
 
 
 // 0x809f270
-signed int sub_809F270()
+signed int NPCCommand_jump_if_progress_in_range()
 {
     unsigned __int8 *v0; // r6
     int v1; // r10
@@ -1432,7 +1432,7 @@ signed int sub_809F270()
 
 
 // 0x809f292
-int sub_809F292()
+int NPCCommand_write_cutscene_var()
 {
     int v0; // r6
     int v1; // r10
@@ -1445,7 +1445,7 @@ int sub_809F292()
 
 
 // 0x809f2a2
-int sub_809F2A2()
+int NPCCommand_jump_if_cutscene_var_equals()
 {
     unsigned __int8 *v0; // r6
     int v1; // r10
@@ -1459,7 +1459,7 @@ int sub_809F2A2()
 
 
 // 0x809f2c0
-int sub_809F2C0()
+int NPCCommand_jump_if_cutscene_var_not_equal()
 {
     unsigned __int8 *v0; // r6
     int v1; // r10
@@ -1473,7 +1473,7 @@ int sub_809F2C0()
 
 
 // 0x809f2de
-int sub_809F2DE()
+int NPCCommand_wait_cutscene_var()
 {
     int v0; // r5
     int v1; // r6
@@ -1487,7 +1487,7 @@ int sub_809F2DE()
 
 
 // 0x809f2fc
-signed int sub_809F2FC()
+signed int NPCCommand_set_unk_flags_60_flag_0x200()
 {
     int v0; // r5
     signed int result; // r0
@@ -1499,7 +1499,7 @@ signed int sub_809F2FC()
 
 
 // 0x809f30c
-signed int sub_809F30C()
+signed int NPCCommand_clear_unk_flags_60_flag_0x200()
 {
     int v0; // r5
     signed int result; // r0
@@ -1511,7 +1511,7 @@ signed int sub_809F30C()
 
 
 // 0x809f31c
-int sub_809F31C()
+int NPCCommand_set_text_script_index_and_ptr()
 {
     int v0; // r5
     int v1; // r6

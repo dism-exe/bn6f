@@ -2489,7 +2489,7 @@ void sub_809D19C()
         if ( word_2000AA6 )
             goto LABEL_17;
     }
-    sub_8002EE8();
+    sprite_zeroColorShader();
     if ( sub_8031A7A(&v0->unk_1C) == 60 )
     {
         v5 = 41224;
@@ -4340,7 +4340,7 @@ signed int owPlayer_809E4AE()
     int v1; // r5
 
     v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    return sub_8002CCE();
+    return sprite_disableAlpha();
 }
 
 

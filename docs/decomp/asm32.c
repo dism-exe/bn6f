@@ -13314,8 +13314,8 @@ int sub_811842C()
     *v0 = v2;
     v0[12] = 4;
     sprite_setCoordinates(230, 18 * *(v1 + 32) + 27);
-    sub_8002CCE();
-    sub_8002EE8();
+    sprite_disableAlpha();
+    sprite_zeroColorShader();
     sub_81185E4();
     return sub_8118604();
 }
@@ -13375,7 +13375,7 @@ int sub_81184C0()
     *v0 = v1;
     v0[12] = 0;
     sub_8002C7A(10);
-    sub_8002EE8();
+    sprite_zeroColorShader();
     sub_81186A8();
     sub_81185E4();
     return sub_8118658();
@@ -13390,7 +13390,7 @@ int sub_81184EC()
     v0[12] = 0;
     *v0 = 35;
     sub_8002C7A(10);
-    sub_8002EE8();
+    sprite_zeroColorShader();
     sub_81186A8();
     sub_81185E4();
     return sub_8118658();
@@ -13448,7 +13448,7 @@ int sub_8118550()
     *v0 = v1;
     v0[12] = 0;
     sub_8002C7A(10);
-    sub_8002EE8();
+    sprite_zeroColorShader();
     sub_811870C();
     sub_81185E4();
     return sub_8118658();
@@ -13469,7 +13469,7 @@ int sub_811857C()
     v0[12] = 0;
     *v0 = v1;
     sub_8002C7A(10);
-    sub_8002EE8();
+    sprite_zeroColorShader();
     sub_81186A8();
     sub_81185E4();
     return sub_8118658();
@@ -15419,7 +15419,7 @@ void __noreturn sub_8119DE8()
         v3 = 1;
     v0->objFlags = v3;
     v5 = sprite_getMosaicScalingParameters(v2);
-    (sprite_setMosaicScalingParameters)(v5);
+    (sprite_setAlpha)(v5);
     v6 = sub_8002F3E(v2);
     (loc_8002F02)(v6);
     sprite_update(v0);
@@ -17385,7 +17385,7 @@ int sub_811B8C8()
     int v1; // r10
     int result; // r0
 
-    sub_8002EE8();
+    sprite_zeroColorShader();
     if ( *&eT4BattleObjects[3904] + 2 == *(v0 + 4) )
         result = sprite_setColorShader(v0, *&byte_811B904[2 * ((**(v1 + oToolkit_CurFramePtr) & 0xFu) >> 1)]);
     else
@@ -17548,8 +17548,8 @@ int sub_811BA88()
     }
     *v0 = v2;
     v0[12] = 6;
-    sub_8002CCE();
-    sub_8002EE8();
+    sprite_disableAlpha();
+    sprite_zeroColorShader();
     sub_811BB30();
     return sub_811BB64();
 }
@@ -18831,7 +18831,7 @@ int __fastcall sub_811CDC8(int a1, int a2, int a3)
     if ( !result )
     {
         v3[9] = 4;
-        sub_8002EE8();
+        sprite_zeroColorShader();
         result = 32;
         v3[12] = 32;
     }
@@ -18906,7 +18906,7 @@ int sub_811CE64()
     if ( !result )
     {
         *(v0 + 9) = 16;
-        sub_8002EE8();
+        sprite_zeroColorShader();
         *(v0 + 12) = 20;
         result = PlaySoundEffect(byte_100, v2, v3);
     }

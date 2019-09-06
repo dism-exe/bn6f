@@ -1013,27 +1013,27 @@ npc_jt_commands: .word NPCCommand_end+1
 	.word NPCCommand_set_mosaic+1
 	.word NPCCommand_set_animation_force_update+1
 	.word NPCCommand_set_transform+1
-	.word sub_809F150+1
-	.word sub_809F15A+1
-	.word sub_809F16E+1
-	.word sub_809F17C+1
-	.word sub_809F18E+1
-	.word sub_809F198+1
-	.word sub_809F1C6+1
-	.word sub_809F1D8+1
+	.word NPCCommand_remove_transform+1
+	.word NPCCommand_set_alpha+1
+	.word NPCCommand_run_secondary_script+1
+	.word NPCCommand_pause_secondary_script+1
+	.word NPCCommand_end_secondary_script+1
+	.word NPCCommand_init_native_call+1
+	.word NPCCommand_jump_with_link+1
+	.word NPCCommand_init_native_call_with_args+1
 	.word NPCCommand_init_movement+1
 	.word NPCCommand_change_movement_direction+1
-	.word sub_809F26A+1
-	.word sub_809F270+1
-	.word sub_809F292+1
-	.word sub_809F2A2+1
-	.word sub_809F2C0+1
-	.word sub_809F2DE+1
-	.word sub_809F2FC+1
-	.word sub_809F30C+1
+	.word NPCCommand_return_to_link+1
+	.word NPCCommand_jump_if_progress_in_range+1
+	.word NPCCommand_write_cutscene_var+1
+	.word NPCCommand_jump_if_cutscene_var_equals+1
+	.word NPCCommand_jump_if_cutscene_var_not_equal+1
+	.word NPCCommand_wait_cutscene_var+1
+	.word NPCCommand_set_unk_flags_60_flag_0x200+1
+	.word NPCCommand_clear_unk_flags_60_flag_0x200+1
 	.word NULL
 	.word NULL
-	.word sub_809F31C+1
+	.word NPCCommand_set_text_script_index_and_ptr+1
 	.word sub_809F338+1
 	.word sub_809F354+1
 	.word sub_809F36E+1
@@ -1891,100 +1891,134 @@ NPCCommand_set_transform:
 	thumb_func_end NPCCommand_set_transform
 
 	thumb_local_start
-sub_809F150:
+// 0x30
+// remove transform for the current npc
+NPCCommand_remove_transform:
 	push {lr}
 	bl sprite_makeUnscalable
 	add r6, #1
 	pop {pc}
-	thumb_func_end sub_809F150
+	thumb_func_end NPCCommand_remove_transform
 
 	thumb_local_start
-sub_809F15A:
+// 0x31 byte1
+// set the alpha for the current npc's sprite
+// but doesn't actually work (inherent to sprite_setAlpha_8002c7a)
+// byte1 - alpha to set (range 0-15). if byte1 is zero, then disable alpha
+NPCCommand_set_alpha:
 	push {lr}
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	ldrb r0, [r6,#1]
 	tst r0, r0
-	beq loc_809F16A
-	bl sprite_setMosaicScalingParameters_8002c7a
-loc_809F16A:
+	beq .alphaIsZero
+	bl sprite_setAlpha_8002c7a
+.alphaIsZero
 	add r6, #2
 	pop {pc}
-	thumb_func_end sub_809F15A
+	thumb_func_end NPCCommand_set_alpha
 
 	thumb_local_start
-sub_809F16E:
+// 0x32 word1
+// run a secondary NPC script
+// called separately from the primary NPC script
+// word1 - script to run
+NPCCommand_run_secondary_script:
 	push {lr}
 	add r0, r6, #1
-	bl ReadNPCScriptWord // (void* a1) -> int
+	bl ReadNPCScriptWord
 	str r0, [r5,#oOverworldNPCObject_UnkNPCScriptPtr_5c]
 	add r6, #5
 	pop {pc}
-	thumb_func_end sub_809F16E
+	thumb_func_end NPCCommand_run_secondary_script
 
 	thumb_local_start
-sub_809F17C:
+// 0x33 byte1
+// wait a given number of frames for the current npc's secondary script
+// byte1 - number of frames to wait
+NPCCommand_pause_secondary_script:
 	push {lr}
+
 	mov r0, #0
 	strb r0, [r5,#oOverworldNPCObject_Unk_0b]
+
 	ldrb r0, [r6,#1]
 	strh r0, [r5,#oOverworldNPCObject_Timer_22]
+
 	mov r0, #1
 	strb r0, [r5,#oOverworldNPCObject_TerminateScript_1f]
+
 	add r6, #2
 	pop {pc}
-	thumb_func_end sub_809F17C
+	thumb_func_end NPCCommand_pause_secondary_script
 
 	thumb_local_start
-sub_809F18E:
-	mov r0, #0
+// 0x34
+// end the current npc's secondary script
+NPCCommand_end_secondary_script:
+	mov r0, #NULL
 	str r0, [r5,#oOverworldNPCObject_UnkNPCScriptPtr_5c]
 	strh r0, [r5,#oOverworldNPCObject_Timer_22]
 	mov r6, #0
 	mov pc, lr
-	thumb_func_end sub_809F18E
+	thumb_func_end NPCCommand_end_secondary_script
 
 	thumb_local_start
-sub_809F198:
+// 0x35 word1
+// initialize a native callback for the current npc
+// also writes to the link register field (of the current npc)
+// word1 - native function to set as callback
+NPCCommand_init_native_call:
 	push {lr}
-	mov r4, #0x8c
+	mov r4, #oOverworldNPCObject_LinkRegister
 	add r0, r6, #5
 	str r0, [r5,r4]
 	add r0, r6, #1
 	bl ReadNPCScriptWord // (void* a1) -> int
 	str r0, [r5,#oOverworldNPCObject_Undetected_7c]
-	mov r0, #0x10
+	mov r0, #MOVEMENT_FLAG_CALL_NATIVE_FUNCTION
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
-	mov r2, #0x8c
-	mov r1, #0x80
+	mov r2, #oOverworldNPCObject_LinkRegister
+	mov r1, #oOverworldNPCObject_NativeFunctionVars
 	mov r0, #0
-loc_809F1B6:
+.clearNativeVarsLoop
 	str r0, [r5,r1]
 	add r1, #4
 	cmp r1, r2
-	ble loc_809F1B6
+	ble .clearNativeVarsLoop
 	bl npc_disableScript0x19_809f51e
 	add r6, #5
 	pop {pc}
-	thumb_func_end sub_809F198
+	thumb_func_end NPCCommand_init_native_call
 
 	thumb_local_start
-sub_809F1C6:
+// 0x36 destination1
+// set the npc link register, and jump to another script
+// destination1 - script to jump to
+NPCCommand_jump_with_link:
 	push {lr}
-	mov r4, #0x8c
+	mov r4, #oOverworldNPCObject_LinkRegister
 	add r0, r6, #5
 	str r0, [r5,r4]
 	add r0, r6, #1
 	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
-	thumb_func_end sub_809F1C6
+	thumb_func_end NPCCommand_jump_with_link
 
 	thumb_local_start
-sub_809F1D8:
+// 0x37 byte1 byte2 byte3 byte4 word5
+// initialize a native callback for the current npc, with four byte arguments
+// also writes to the link register field (of the current npc)
+// byte1 - first param for native callback
+// byte2 - second param for native callback
+// byte3 - third param for native callback
+// byte4 - fourth param for native callback
+// word5 - native function to set as callback
+NPCCommand_init_native_call_with_args:
 	push {lr}
-	mov r4, #0x8c
+	mov r4, #oOverworldNPCObject_LinkRegister
 	mov r1, #9
 	add r0, r6, r1
 	str r0, [r5,r4]
@@ -1999,22 +2033,22 @@ sub_809F1D8:
 	add r0, r6, #5
 	bl ReadNPCScriptWord // (void* a1) -> int
 	str r0, [r5,#oOverworldNPCObject_Undetected_7c]
-	mov r0, #0x10
+	mov r0, #MOVEMENT_FLAG_CALL_NATIVE_FUNCTION
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
-	mov r2, #0x8c
-	mov r1, #0x80
+	mov r2, #oOverworldNPCObject_LinkRegister
+	mov r1, #oOverworldNPCObject_NativeFunctionVars
 	mov r0, #0
-loc_809F208:
+.clearNativeVarsLoop
 	str r0, [r5,r1]
 	add r1, #4
 	cmp r1, r2
-	ble loc_809F208
+	ble .clearNativeVarsLoop
 	bl npc_disableScript0x19_809f51e
 	add r6, #9
 	pop {pc}
-	thumb_func_end sub_809F1D8
+	thumb_func_end NPCCommand_init_native_call_with_args
 
 	thumb_local_start
 // 0x38 byte1 byte2 byte3 destination4
@@ -2025,7 +2059,7 @@ loc_809F208:
 // destination4 - movement handler to call
 NPCCommand_init_movement:
 	push {lr}
-	mov r4, #oOverworldNPCObject_Unk_8c
+	mov r4, #oOverworldNPCObject_LinkRegister
 	mov r1, #8
 	add r0, r6, r1
 	str r0, [r5,r4]
@@ -2100,36 +2134,47 @@ NPCCommand_change_movement_direction:
 	thumb_func_end NPCCommand_change_movement_direction
 
 	thumb_local_start
-sub_809F26A:
-	mov r4, #0x8c
+// 0x3a
+// return to the current npc's linked routine
+NPCCommand_return_to_link:
+	mov r4, #oOverworldNPCObject_LinkRegister
 	ldr r6, [r5,r4]
 	mov pc, lr
-	thumb_func_end sub_809F26A
+	thumb_func_end NPCCommand_return_to_link
 
 	thumb_local_start
-sub_809F270:
+// 0x3b byte1 byte2 destination3
+// jump if byte1 <= progress byte <= byte2
+// byte1 - lower bound for progress byte
+// byte2 - upper bound for progress byte
+// destination3 - script to jump to
+NPCCommand_jump_if_progress_in_range:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_GameProgress]
 	ldrb r1, [r6,#1]
 	cmp r0, r1
-	blt loc_809F28E
+	blt .progressByteOutOfRange
 	ldrb r2, [r6,#2]
 	cmp r0, r2
-	bgt loc_809F28E
+	bgt .progressByteOutOfRange
 	add r0, r6, #3
 	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
-	b locret_809F290
-loc_809F28E:
+	b .done
+.progressByteOutOfRange
 	add r6, #7
-locret_809F290:
+.done
 	pop {pc}
-	thumb_func_end sub_809F270
+	thumb_func_end NPCCommand_jump_if_progress_in_range
 
 	thumb_local_start
-sub_809F292:
+// 0x3c byte1 byte2
+// write a value to a cutscene variable
+// byte1 - cutscene variable to write to
+// byte2 - value to write to cutscene variable
+NPCCommand_write_cutscene_var:
 	push {lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_CutsceneStatePtr]
@@ -2138,10 +2183,15 @@ sub_809F292:
 	strb r1, [r4,r0]
 	add r6, #3
 	pop {pc}
-	thumb_func_end sub_809F292
+	thumb_func_end NPCCommand_write_cutscene_var
 
 	thumb_local_start
-sub_809F2A2:
+// 0x3d byte1 byte2 destination3
+// jump if a cutscene variable equals the given value
+// byte1 - cutscene variable to compare
+// byte2 - value to compare with the cutscene variable
+// destination3 - script to jump to
+NPCCommand_jump_if_cutscene_var_equals:
 	push {lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_CutsceneStatePtr]
@@ -2149,18 +2199,23 @@ sub_809F2A2:
 	ldrb r1, [r6,#2]
 	ldrb r0, [r4,r0]
 	cmp r0, r1
-	bne loc_809F2BC
+	bne .cutsceneVarNotEqual
 	add r0, r6, #3
 	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
-loc_809F2BC:
+.cutsceneVarNotEqual
 	add r6, #7
 	pop {pc}
-	thumb_func_end sub_809F2A2
+	thumb_func_end NPCCommand_jump_if_cutscene_var_equals
 
 	thumb_local_start
-sub_809F2C0:
+// 0x3e byte1 byte2 destination3
+// jump if a cutscene variable does not equal the given value
+// byte1 - cutscene variable to compare
+// byte2 - value to compare with the cutscene variable
+// destination3 - script to jump to
+NPCCommand_jump_if_cutscene_var_not_equal:
 	push {lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_CutsceneStatePtr]
@@ -2168,36 +2223,47 @@ sub_809F2C0:
 	ldrb r1, [r6,#2]
 	ldrb r0, [r4,r0]
 	cmp r0, r1
-	beq loc_809F2DA
+	beq .cutsceneVarEquals
 	add r0, r6, #3
 	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
-loc_809F2DA:
+.cutsceneVarEquals
 	add r6, #7
 	pop {pc}
-	thumb_func_end sub_809F2C0
+	thumb_func_end NPCCommand_jump_if_cutscene_var_not_equal
 
 	thumb_local_start
-sub_809F2DE:
+// 0x3f byte1 byte2
+// wait for a cutscene variable to equal a given value
+// byte1 - cutscene variable to compare
+// byte2 - value to compare with the cutscene variable
+NPCCommand_wait_cutscene_var:
 	push {r7,lr}
-	mov r0, #0x14
+
+	mov r0, #MOVEMENT_FLAG_WAIT_CUTSCENE_VAR
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
+
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
+
 	ldrb r0, [r6,#1]
-	mov r7, #0x80
+	mov r7, #oOverworldNPCObject_CutsceneVarIndexToWaitFor
 	str r0, [r5,r7]
+
 	ldrb r0, [r6,#2]
-	mov r7, #0x84
+	mov r7, #oOverworldNPCObject_CutsceneVarValueToWaitFor
 	str r0, [r5,r7]
+
 	bl npc_disableScript0x19_809f51e
 	add r6, #3
 	pop {r7,pc}
-	thumb_func_end sub_809F2DE
+	thumb_func_end NPCCommand_wait_cutscene_var
 
 	thumb_local_start
-sub_809F2FC:
+// 0x41
+// set the flag OW_NPC_UNK_FLAGS_60_0x200 to the current npc's flags
+NPCCommand_set_unk_flags_60_flag_0x200:
 	push {lr}
 	mov r0, #(OW_NPC_UNK_FLAGS_60_0x200 >> 4)
 	lsl r0, r0, #4
@@ -2206,10 +2272,12 @@ sub_809F2FC:
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #1
 	pop {pc}
-	thumb_func_end sub_809F2FC
+	thumb_func_end NPCCommand_set_unk_flags_60_flag_0x200
 
 	thumb_local_start
-sub_809F30C:
+// 0x42
+// clear the flag OW_NPC_UNK_FLAGS_60_0x200 from the current npc's flags
+NPCCommand_clear_unk_flags_60_flag_0x200:
 	push {lr}
 	mov r0, #(OW_NPC_UNK_FLAGS_60_0x200 >> 4)
 	lsl r0, r0, #4
@@ -2218,24 +2286,32 @@ sub_809F30C:
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #1
 	pop {pc}
-	thumb_func_end sub_809F30C
+	thumb_func_end NPCCommand_clear_unk_flags_60_flag_0x200
 
 	thumb_local_start
-sub_809F31C:
+// 0x44 byte1 word2
+// set text script pointer and index for the current npc
+// byte1 - new text script index
+// word2 - new text script pointer
+NPCCommand_set_text_script_index_and_ptr:
 	push {lr}
+
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_TextScriptIndex]
+
 	ldr r0, off_809F6AC // =OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400 
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
+
 	add r0, r6, #2
 	bl ReadNPCScriptWord // (void* a1) -> int
-	mov r1, #0x94
+	mov r1, #oOverworldNPCObject_TextScriptPtr
 	str r0, [r5,r1]
+
 	add r6, #6
 	pop {pc}
-	thumb_func_end sub_809F31C
+	thumb_func_end NPCCommand_set_text_script_index_and_ptr
 
 	thumb_local_start
 sub_809F338:

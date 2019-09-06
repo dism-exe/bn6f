@@ -457,7 +457,7 @@ int sub_80B863A()
     v4 = object_getFlip(v0);
     sprite_setFlip(v0, v4);
     v5 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v5);
+    (sprite_setAlpha)(v5);
     return (*(&off_80B8698 + *(v0 + 9)))();
 }
 
@@ -787,7 +787,7 @@ void sub_80B8932()
         sprite_setFlip(v0, v10);
     }
     v11 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v11);
+    (sprite_setAlpha)(v11);
     battle_isTimeStop();
     if ( v12 )
     {
@@ -1132,7 +1132,7 @@ void sub_80B8DA6()
     v7 = sprite_getFinalPalette(*(v0 + 76));
     (sprite_setFinalPalette)(v7);
     v8 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v8);
+    (sprite_setAlpha)(v8);
     v9 = sprite_getFlip(*(v0 + 76));
     sprite_setFlip(v0, v9);
     if ( **(v0 + 96) )
@@ -7442,7 +7442,7 @@ int sub_80BC1DA()
     v5 = object_getFlip(v0);
     sprite_setFlip(v0, v5);
     v6 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v6);
+    (sprite_setAlpha)(v6);
     return (*(&off_80BC258 + *(v0 + 9)))();
 }
 
@@ -7847,7 +7847,7 @@ int sub_80BC58C()
     v9 = sub_8002F3E(*(v0 + 76));
     (loc_8002F02)(v9);
     v10 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    return (sprite_setMosaicScalingParameters)(v10);
+    return (sprite_setAlpha)(v10);
 }
 
 
@@ -8302,7 +8302,7 @@ int sub_80BCA72()
     v4 = object_getFlip(v0);
     sprite_setFlip(v0, v4);
     v5 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v5);
+    (sprite_setAlpha)(v5);
     return (*(&off_80BCAD0 + *(v0 + 9)))();
 }
 
@@ -11259,7 +11259,7 @@ int sub_80BE55C()
     v4 = object_getFlip(v0);
     sprite_setFlip(v0, v4);
     v5 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v5);
+    (sprite_setAlpha)(v5);
     battle_isTimeStop();
     if ( v6 )
         (*(&off_80BE5C0 + *(v0 + 9)))();
@@ -11702,7 +11702,7 @@ signed int __fastcall sub_80BEA78(int a1, int a2, int a3)
     *(v3 + 32) = v4;
     if ( ((v4 < 0) ^ v5) | (v4 == 0) )
     {
-        sub_8002EE8();
+        sprite_zeroColorShader();
         result = 4;
         *(v3 + 10) = 4;
     }
@@ -13192,7 +13192,7 @@ signed int __fastcall sub_80BF81C(int a1, int a2, int a3)
             *(v3 + 34) = v5;
             if ( v5 > 15 )
             {
-                sub_8002CCE();
+                sprite_disableAlpha();
                 result = 4;
                 *(v3 + 10) = 4;
                 return result;
@@ -13477,7 +13477,7 @@ int __fastcall sub_80BFA38(int a1, int a2, int a3)
     if ( result >= 10 )
     {
         object_setCoordinatesFromPanels(v3);
-        sub_8002CCE();
+        sprite_disableAlpha();
         result = 4;
         *(v3 + 10) = 4;
     }
@@ -13676,7 +13676,7 @@ signed int sub_80BFC44()
             if ( ((v2 < 0) ^ v3) | (v2 == 0) )
             {
                 *v0 &= 0xFDu;
-                sub_8002CCE();
+                sprite_disableAlpha();
                 result = 4;
                 *(v0 + 10) = 4;
                 return result;
@@ -13891,7 +13891,7 @@ int sub_80BFE8C()
     v8 = sub_8002F3E(*(v0 + 76));
     (loc_8002F02)(v8);
     v9 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    return (sprite_setMosaicScalingParameters)(v9);
+    return (sprite_setAlpha)(v9);
 }
 
 
@@ -14018,7 +14018,7 @@ int sub_80BFFC0()
     v4 = object_getFlip(v0);
     sprite_setFlip(v0, v4);
     v5 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v5);
+    (sprite_setAlpha)(v5);
     return (*(&off_80C001C + *(v0 + 9)))();
 }
 
@@ -14292,7 +14292,7 @@ int sub_80C01D8()
     v4 = object_getFlip(v0);
     sprite_setFlip(v0, v4);
     v5 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v5);
+    (sprite_setAlpha)(v5);
     return (*(&off_80C0234 + *(v0 + 9)))();
 }
 
@@ -14767,7 +14767,7 @@ signed int sub_80C05C6()
     *(v0 + 32) = v1;
     if ( !((v1 < 0) ^ v2) )
         return sub_8002C7A(2 * *(v0 + 32));
-    sub_8002CCE();
+    sprite_disableAlpha();
     *v0 &= 0xFDu;
     sub_8011044(1, *(v0 + 4));
     result = 8;
@@ -15973,7 +15973,7 @@ int sub_80C0FE8()
         *v0 &= 0xFBu;
     if ( *(v0 + 9) != 8 && *(*(v0 + 76) + 112) )
     {
-        sub_8002EE8();
+        sprite_zeroColorShader();
         sprite_clearFinalPalette();
     }
     else
@@ -15988,7 +15988,7 @@ int sub_80C0FE8()
         v5 = object_getFlip(v0);
         sprite_setFlip(v0, v5);
         v6 = sprite_getMosaicScalingParameters(*(v0 + 76));
-        (sprite_setMosaicScalingParameters)(v6);
+        (sprite_setAlpha)(v6);
     }
     return (*(&off_80C106C + *(v0 + 9)))();
 }
@@ -16230,7 +16230,7 @@ int __usercall sub_80C1204@<R0>(Battle *obj@<R5>)
     v5 = object_getFlip(obj);
     sprite_setFlip(obj, v5);
     v6 = sprite_getMosaicScalingParameters(obj->parent);
-    (sprite_setMosaicScalingParameters)(v6);
+    (sprite_setAlpha)(v6);
     (*(&off_80C1254 + obj->currAction))();
     return sub_80169BE();
 }
@@ -21388,7 +21388,7 @@ void sub_80C3F52()
         sprite_setFlip(v0, v9);
     }
     v10 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v10);
+    (sprite_setAlpha)(v10);
     if ( *(v0 + 112) )
         sub_80C409C();
     battle_isTimeStop();
@@ -21571,7 +21571,7 @@ void sub_80C4146()
     v9 = object_getFlip(v0);
     sprite_setFlip(v0, v9);
     v10 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v10);
+    (sprite_setAlpha)(v10);
     if ( !*(v0 + 96) )
     {
         v11 = 0;
@@ -21721,7 +21721,7 @@ void sub_80C4484()
     char v2; // zf
 
     v1 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v1);
+    (sprite_setAlpha)(v1);
     if ( *(v0 + 6) )
     {
         sub_801BCD0();
@@ -21920,7 +21920,7 @@ void sub_80C461C()
     int v1; // r0
 
     v1 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v1);
+    (sprite_setAlpha)(v1);
     if ( __CFSHR__(sub_800139A(), 2) )
     {
         if ( !*(v0 + 6) )
@@ -21941,7 +21941,7 @@ void sub_80C464C()
     char v3; // zf
 
     v1 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v1);
+    (sprite_setAlpha)(v1);
     if ( !*(v0 + 108) || !(*(*(*(v0 + 76) + 84) + 60) & 0x100800) )
     {
         v2 = *(v0 + 6);
@@ -22114,7 +22114,7 @@ void sub_80C4766()
     v9 = object_getFlip(v0);
     sprite_setFlip(v0, v9);
     v10 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v10);
+    (sprite_setAlpha)(v10);
     if ( *(*(v0 + 76) + 16) == *(v0 + 5) )
     {
         battle_isTimeStop();
@@ -33700,7 +33700,7 @@ int sub_80CBCB0()
     *(v0 + 32) = result;
     if ( (result < 0) ^ v3 )
     {
-        sub_8002CCE();
+        sprite_disableAlpha();
         *(v0 + 9) = 8;
         HIWORD(dword_8) = 0;
         sub_80CC006(0, v5, v6);
@@ -68605,7 +68605,7 @@ signed int sub_80E1C66()
     *(v0 + 32) = v1;
     if ( !((v1 < 0) ^ v2) )
         return sub_8002C7A(2 * *(v0 + 32));
-    sub_8002CCE();
+    sprite_disableAlpha();
     *v0 &= 0xFDu;
     sub_8011044(1, *(v0 + 4));
     result = 8;
@@ -72664,7 +72664,7 @@ signed int sub_80E403E()
     v7 = sub_8002F3E(*(v0 + 76));
     (loc_8002F02)(v7);
     v8 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v8);
+    (sprite_setAlpha)(v8);
     if ( battle_isBattleOver() || *(*(v0 + 76) + 9) != byte_80E40C0[*(v0 + 4)] )
         goto LABEL_12;
     result = *(v0 + 9);
@@ -73811,7 +73811,7 @@ int sub_80E4AAE()
     v9 = sub_8002F3E(*(v0 + 76));
     (loc_8002F02)(v9);
     v10 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v10);
+    (sprite_setAlpha)(v10);
     object_setPanelsFromCoordinates(v0);
     object_isCurrentPanelValid();
     if ( v11 )
@@ -78700,7 +78700,7 @@ signed int sub_80E7816()
     v8 = object_getFlip(v0);
     sprite_setFlip(v0, v8);
     v9 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v9);
+    (sprite_setAlpha)(v9);
     result = *(v0 + 4);
     if ( !*(v0 + 4) )
     {
@@ -78894,7 +78894,7 @@ int sub_80E79CE()
         v5 = object_getFlip(v0);
         sprite_setFlip(v0, v5);
         v6 = sprite_getMosaicScalingParameters(*(v0 + 76));
-        (sprite_setMosaicScalingParameters)(v6);
+        (sprite_setAlpha)(v6);
         result = (*(&off_80E7A48 + *(v0 + 9)))();
     }
     return result;
@@ -79086,7 +79086,7 @@ signed int sub_80E7B4A()
     v10 = object_getFlip(v0);
     sprite_setFlip(v0, v10);
     v11 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v11);
+    (sprite_setAlpha)(v11);
     result = *(v0 + 4);
     if ( !*(v0 + 4) )
     {
@@ -80418,7 +80418,7 @@ signed int sub_80E86F6()
     v8 = object_getFlip(v0);
     sprite_setFlip(v0, v8);
     v9 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v9);
+    (sprite_setAlpha)(v9);
     result = *(*(v0 + 76) + 9);
     if ( result != *(v0 + 4) )
     {
@@ -80538,7 +80538,7 @@ signed int sub_80E8802()
     v8 = object_getFlip(v0);
     sprite_setFlip(v0, v8);
     v9 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v9);
+    (sprite_setAlpha)(v9);
     result = *(*(v0 + 76) + 9);
     if ( result != *(v0 + 5) )
     {
@@ -80739,7 +80739,7 @@ signed int sub_80E89BA()
     v6 = object_getFlip(v0);
     sprite_setFlip(v0, v6);
     v7 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v7);
+    (sprite_setAlpha)(v7);
     result = *(*(v0 + 76) + 9);
     if ( result != *(v0 + 5) )
     {
@@ -82754,7 +82754,7 @@ int sub_80E9B56()
     v9 = sub_8002F3E(*(v0 + 76));
     (loc_8002F02)(v9);
     v10 = sprite_getMosaicScalingParameters(*(v0 + 76));
-    (sprite_setMosaicScalingParameters)(v10);
+    (sprite_setAlpha)(v10);
     object_setPanelsFromCoordinates(v0);
     object_isCurrentPanelValid();
     if ( v11 )

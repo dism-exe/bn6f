@@ -2980,7 +2980,7 @@ sub_80A6DC6:
 	push {lr}
 	bl sub_80A6E78
 	ldrh r0, [r0,#2]
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	mov r0, #4
 	bl sub_80A6E70
 	mov r0, #1
@@ -2990,7 +2990,7 @@ sub_80A6DC6:
 	thumb_local_start
 sub_80A6DDC:
 	push {lr}
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	mov r0, #2
 	bl sub_80A6E70
 	mov r0, #1
@@ -4379,7 +4379,7 @@ sub_80A786C:
 loc_80A7888:
 	mov r4, #1
 loc_80A788A:
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 loc_80A788E:
 	strb r4, [r5]
 	mov r0, #2

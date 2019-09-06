@@ -62,7 +62,7 @@ loc_809D21C:
 	cmp r0, #0
 	bne loc_809D234
 loc_809D222:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	mov r0, #oOWPlayerObject_Coords
 	add r0, r0, r5
 	bl sub_8031A7A
@@ -2553,15 +2553,15 @@ owPlayer_writeS200aec0_Unk20_809e496:
 	.pool
 	thumb_func_end owPlayer_writeS200aec0_Unk20_809e496
 
-	thumb_func_start owPlayer_setMosaicScalingParameters_8002c7a_809e4a0
-owPlayer_setMosaicScalingParameters_8002c7a_809e4a0:
+	thumb_func_start owPlayer_setAlpha_8002c7a_809e4a0
+owPlayer_setAlpha_8002c7a_809e4a0:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	pop {r5,pc}
-	thumb_func_end owPlayer_setMosaicScalingParameters_8002c7a_809e4a0
+	thumb_func_end owPlayer_setAlpha_8002c7a_809e4a0
 
 	thumb_func_start owPlayer_809E4AE
 owPlayer_809E4AE:
@@ -2569,7 +2569,7 @@ owPlayer_809E4AE:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	pop {r5,pc}
 	thumb_func_end owPlayer_809E4AE
 

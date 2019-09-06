@@ -18809,8 +18809,8 @@ loc_8118454:
 	mul r2, r3
 	add r1, r1, r2
 	bl sprite_setCoordinates
-	bl sub_8002CCE
-	bl sub_8002EE8
+	bl sprite_disableAlpha
+	bl sprite_zeroColorShader
 	bl sub_81185E4
 	bl sub_8118604
 	pop {r4-r7,pc}
@@ -18866,8 +18866,8 @@ loc_81184CE:
 	mov r0, #0
 	strb r0, [r5,#0xc]
 	mov r0, #0xa
-	bl sprite_setMosaicScalingParameters_8002c7a
-	bl sub_8002EE8
+	bl sprite_setAlpha_8002c7a
+	bl sprite_zeroColorShader
 	bl sub_81186A8
 	bl sub_81185E4
 	bl sub_8118658
@@ -18882,8 +18882,8 @@ sub_81184EC:
 	strb r1, [r5,#0xc]
 	strb r4, [r5]
 	mov r0, #0xa
-	bl sprite_setMosaicScalingParameters_8002c7a
-	bl sub_8002EE8
+	bl sprite_setAlpha_8002c7a
+	bl sprite_zeroColorShader
 	bl sub_81186A8
 	bl sub_81185E4
 	bl sub_8118658
@@ -18940,8 +18940,8 @@ loc_811855E:
 	mov r0, #0
 	strb r0, [r5,#0xc]
 	mov r0, #0xa
-	bl sprite_setMosaicScalingParameters_8002c7a
-	bl sub_8002EE8
+	bl sprite_setAlpha_8002c7a
+	bl sprite_zeroColorShader
 	bl sub_811870C
 	bl sub_81185E4
 	bl sub_8118658
@@ -18961,8 +18961,8 @@ loc_811858A:
 	strb r1, [r5,#0xc]
 	strb r4, [r5]
 	mov r0, #0xa
-	bl sprite_setMosaicScalingParameters_8002c7a
-	bl sub_8002EE8
+	bl sprite_setAlpha_8002c7a
+	bl sprite_zeroColorShader
 	bl sub_81186A8
 	bl sub_81185E4
 	bl sub_8118658
@@ -21850,7 +21850,7 @@ loc_8119E1A:
 	strb r4, [r5]
 	mov r0, r6
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	mov r0, r6
 	bl sub_8002F3E
 	bl loc_8002F02
@@ -24973,7 +24973,7 @@ byte_811B8A4: .byte 0x80, 0x50, 0x1, 0x6, 0x80, 0x47, 0x1, 0x6, 0x80, 0x3E, 0x1
 	thumb_local_start
 sub_811B8C8:
 	push {r4-r7,lr}
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	ldr r4, off_811B980 // =unk_2037780
 	ldrh r0, [r4,#0x20] // (word_20377A0 - 0x2037780)
 	add r0, #2
@@ -25208,8 +25208,8 @@ loc_811BAAC:
 	strb r4, [r5]
 	mov r0, #6
 	strb r0, [r5,#0xc]
-	bl sub_8002CCE
-	bl sub_8002EE8
+	bl sprite_disableAlpha
+	bl sprite_zeroColorShader
 	bl sub_811BB30
 	bl sub_811BB64
 	pop {r4-r7,pc}
@@ -27106,7 +27106,7 @@ loc_811CDE0:
 	bne locret_811CDF2
 	mov r0, #4
 	strb r0, [r5,#9]
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	mov r0, #0x20
 	strb r0, [r5,#0xc]
 locret_811CDF2:
@@ -27185,7 +27185,7 @@ sub_811CE64:
 	bne locret_811CE80
 	mov r0, #0x10
 	strb r0, [r5,#9]
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	mov r0, #0x14
 	strb r0, [r5,#0xc]
 	ldr r0, off_811CE84 // =0x100

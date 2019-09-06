@@ -856,13 +856,18 @@ sub_8002C68:
 	mov pc, lr
 	thumb_func_end sub_8002C68
 
-	thumb_func_start sprite_setMosaicScalingParameters_8002c7a
-sprite_setMosaicScalingParameters_8002c7a:
+	thumb_func_start sprite_setAlpha_8002c7a
+// presumably to have a sprite blend in with the background (alpha blending)
+// but the bit to enable alpha blending is not set
+// and thus this call does nothing
+// original name: sprite_setMosaicScalingParameters_8002c7a
+sprite_setAlpha_8002c7a:
 	mov r2, #4
-	b sprite_setMosaicScalingParameters
+	b sprite_setAlpha
 
-	thumb_func_start sprite_setMosaicScalingParameters
-sprite_setMosaicScalingParameters:
+	thumb_func_start sprite_setAlpha
+// original name: sprite_setMosaicScalingParameters
+sprite_setAlpha:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -891,8 +896,8 @@ sprite_setMosaicScalingParameters:
 	mov r0, #0x3f
 	strb r0, [r3,#1]
 	mov pc, lr
-	thumb_func_end sprite_setMosaicScalingParameters
-	thumb_func_end sprite_setMosaicScalingParameters_8002c7a
+	thumb_func_end sprite_setAlpha
+	thumb_func_end sprite_setAlpha_8002c7a
 
 	thumb_local_start
 sub_8002CB6:
@@ -911,8 +916,8 @@ loc_8002CBA:
 	mov pc, lr
 	thumb_func_end sub_8002CB6
 
-	thumb_func_start sub_8002CCE
-sub_8002CCE:
+	thumb_func_start sprite_disableAlpha
+sprite_disableAlpha:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -922,7 +927,7 @@ sub_8002CCE:
 	bic r1, r0
 	strb r1, [r3,#oObjectSprite_Unk_11]
 	mov pc, lr
-	thumb_func_end sub_8002CCE
+	thumb_func_end sprite_disableAlpha
 
 	thumb_func_start sprite_getMosaicScalingParameters
 sprite_getMosaicScalingParameters:
@@ -1290,8 +1295,8 @@ sprite_getColorShader:
 	mov pc, lr
 	thumb_func_end sprite_getColorShader
 
-	thumb_func_start sub_8002EE8
-sub_8002EE8:
+	thumb_func_start sprite_zeroColorShader
+sprite_zeroColorShader:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1299,7 +1304,7 @@ sub_8002EE8:
 	mov r0, #0
 	strh r0, [r3,#oObjectSprite_Unk_06]
 	mov pc, lr
-	thumb_func_end sub_8002EE8
+	thumb_func_end sprite_zeroColorShader
 
 	thumb_func_start sprite_setMosaicSize
 // r0 - mosaic width

@@ -610,7 +610,7 @@ signed int sub_8002CB6()
 
 
 // 0x8002cce
-signed int sub_8002CCE()
+signed int sprite_disableAlpha()
 {
     int v0; // r5
     unsigned int v1; // r3
@@ -918,7 +918,7 @@ int __fastcall sprite_getColorShader(int a1)
 
 
 // 0x8002ee8
-int sub_8002EE8()
+int sprite_zeroColorShader()
 {
     int v0; // r5
     int result; // r0

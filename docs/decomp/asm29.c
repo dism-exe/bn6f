@@ -2002,7 +2002,7 @@ signed int __fastcall sub_80A6DC6(int a1)
 // 0x80a6ddc
 signed int sub_80A6DDC()
 {
-    sub_8002CCE();
+    sprite_disableAlpha();
     sub_80A6E70(2);
     return 1;
 }
@@ -3133,7 +3133,7 @@ void __noreturn sub_80A786C()
     v5 = 3;
     if ( v4 == 16 )
 LABEL_5:
-        sub_8002CCE();
+        sprite_disableAlpha();
     *v1 = v5;
     sub_8002E14(2);
     v6 = *(v1 + 4);

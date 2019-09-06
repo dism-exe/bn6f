@@ -25,6 +25,8 @@
 		struct_const MOVEMENT_FLAG_DEFAULT_MOVING,            0x04
 		struct_const MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES,  0x08
 		struct_const MOVEMENT_FLAG_WAIT_ANIM_FRAME,           0x0c
+		struct_const MOVEMENT_FLAG_CALL_NATIVE_FUNCTION,      0x10
+		struct_const MOVEMENT_FLAG_WAIT_CUTSCENE_VAR,         0x14
 	/*
 	Those might not be flags, since 0x0C behaves unpredictably by 0x04 and 0x08
 	0x00 - No effect, it keeps setting to 0x04
@@ -120,12 +122,13 @@
 		u8 MovementDistanceReload // loc=0x83
 	nextu
 		u32 CutsceneVarIndexToWaitFor // loc=0x80
+		u32 CutsceneVarValueToWaitFor // loc=0x84
 	nextu
 		u32 Unk_80_Flag // loc=0x80
+	nextu
+		u8_arr NativeFunctionVars, 12 // loc=0x80
 	endu
-	u32 CutsceneVarValueToWaitFor // loc=0x84
-	u32 Undetected_88 // loc=0x88
-	u32 Unk_8c // loc=0x8c
+	ptr LinkRegister // loc=0x8c
 	ptr Chatbox_90 // loc=0x90
 	ptr TextScriptPtr // loc=0x94
 	// loc=0x98
