@@ -9,14 +9,14 @@ npc_809E570:
 	bx r7
 	pop {pc}
 	.byte 0, 0
-jt_809E580: .word npc_809E590+1
-	.word npc_809E5E2+1
-	.word npc_809EADA+1
+jt_809E580: .word npc_init_809E590+1
+	.word npc_standard_809E5E2+1
+	.word npc_inChatbox_809EADA+1
 off_809E58C: .word jt_809E580
 	thumb_func_end npc_809E570
 
 	thumb_local_start
-npc_809E590:
+npc_init_809E590:
 	push {lr}
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	bl sub_809F506
@@ -52,12 +52,12 @@ npc_809E590:
 	mov r2, #0xa0
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl npc_809E5E2
+	bl npc_standard_809E5E2
 	pop {pc}
-	thumb_func_end npc_809E590
+	thumb_func_end npc_init_809E590
 
 	thumb_local_start
-npc_809E5E2:
+npc_standard_809E5E2:
 	push {lr}
 	ldrb r0, [r5,#oOverworldNPCObject_ChatTriggered]
 	tst r0, r0
@@ -73,7 +73,7 @@ loc_809E5F0:
 	bx r7
 	mov r0, #0
 	ldr r2, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #OW_NPC_UNK_FLAGS_60_0x8
+	mov r1, #OW_NPC_UNK_FLAGS_60_SPRITE_MIRRORED
 	tst r2, r1
 	beq loc_809E60A
 	mov r0, #1
@@ -88,15 +88,18 @@ loc_809E60A:
 	ldr r1, [r5,#oOverworldNPCObject_NPCSpriteCategory]
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
+	// OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x80 clear: sprite's shadow is attached to the sprite
+	// OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x80 set, OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x100 clear: sprite's shadow won't move with Z
+	// OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x80 set, OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x100 set: sprite has no shadow
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #OW_NPC_UNK_FLAGS_60_0x80
+	mov r1, #OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x80
 	tst r0, r1
 	bne loc_809E632
 	bl sprite_noShadow // () -> void
 	b loc_809E644
 loc_809E632:
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	ldr r1, off_809E6C4 // =OW_NPC_UNK_FLAGS_60_0x100
+	ldr r1, off_809E6C4 // =OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x100
 	tst r0, r1
 	beq loc_809E640
 	bl sprite_hasShadow
@@ -156,8 +159,8 @@ off_809E6A4: .word npc_waitTimer_809e6c8+1
 	.word npc_waitCutsceneVar_809ea82+1
 	.word npc_809EAA0+1
 off_809E6C0: .word off_809E6A4
-off_809E6C4: .word OW_NPC_UNK_FLAGS_60_0x100
-	thumb_func_end npc_809E5E2
+off_809E6C4: .word OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x100
+	thumb_func_end npc_standard_809E5E2
 
 	thumb_local_start
 npc_waitTimer_809e6c8:
@@ -339,7 +342,7 @@ dword_809E7D4: .word 0xFFF
 npc_nonCutsceneMovementUpdate_809E7D8:
 	push {lr}
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #OW_NPC_UNK_FLAGS_60_0x10
+	mov r1, #OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION_0x10
 	tst r0, r1
 	bne loc_809E7EA
 	bl sub_809F638
@@ -764,7 +767,7 @@ loc_809EAD4:
 	thumb_func_end npc_809EAA0
 
 	thumb_local_start
-npc_809EADA:
+npc_inChatbox_809EADA:
 	push {lr}
 	ldr r7, off_809EB00 // =off_809EAFC 
 	ldrb r0, [r5,#oOverworldNPCObject_CurAction]
@@ -780,12 +783,12 @@ npc_809EADA:
 	bl sub_809F922
 locret_809EAFA:
 	pop {pc}
-off_809EAFC: .word sub_809EB04+1
+off_809EAFC: .word npc_inChatbox_curAction_809EB04+1
 off_809EB00: .word off_809EAFC
-	thumb_func_end npc_809EADA
+	thumb_func_end npc_inChatbox_809EADA
 
 	thumb_local_start
-sub_809EB04:
+npc_inChatbox_curAction_809EB04:
 	push {lr}
 	ldr r7, off_809EB1C // =off_809EB14
 	ldrb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
@@ -794,18 +797,18 @@ sub_809EB04:
 	bx r7
 	pop {pc}
 	.balign 4, 0x00
-off_809EB14: .word npc_809EB20+1
-	.word npc_809EBBC+1
+off_809EB14: .word npc_inChatbox_curAction_init_809EB20+1
+	.word npc_inChatbox_curAction_waitClose_809EBBC+1
 off_809EB1C: .word off_809EB14
-	thumb_func_end sub_809EB04
+	thumb_func_end npc_inChatbox_curAction_809EB04
 
 	thumb_local_start
-npc_809EB20:
+npc_inChatbox_curAction_init_809EB20:
 	push {lr}
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #OW_NPC_UNK_FLAGS_60_0x2
+	mov r1, #OW_NPC_UNK_FLAGS_60_FACE_PLAYER_WHEN_INTERACTED
 	tst r0, r1
-	bne loc_809EB54
+	bne .doNotFacePlayer
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
@@ -824,59 +827,71 @@ npc_809EB20:
 	add r0, #1
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-loc_809EB54:
+.doNotFacePlayer
 	ldr r2, [r5,#oOverworldNPCObject_UnkFlags_60]
-	ldr r1, off_809EBB4 // =OW_NPC_UNK_FLAGS_60_0x400
+	// OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400 clear: run text script at 202da04
+	// OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400 set, OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x800 clear: run text script with text script ptr from npc memory
+	// OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400 set, OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x800 set: run mystery data text script
+	ldr r1, off_809EBB4 // =OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400
 	tst r2, r1
-	beq loc_809EBA4
-	ldr r1, dword_809EBB8 // =OW_NPC_UNK_FLAGS_60_0x800
+	beq .runMapLoadedTextScript
+	ldr r1, dword_809EBB8 // =OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x800
 	tst r2, r1
-	beq loc_809EB76
+	// bug: this label is likely misplaced, as the location of the label
+	// uses r3, but the last place r3 is set is sprite_loadAnimationData
+	// which does not return r3
+	beq .notMysteryDataTextScript
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_ChatboxPtr]
-	mov r1, #0x90
+	mov r1, #oOverworldNPCObject_Chatbox_90
 	ldr r0, [r5,r1]
-	str r0, [r7,#0x4c]
+	str r0, [r7,#oChatbox_Unk_4C]
 	bl sub_809FC96
 	str r0, [r7,#0x54]
 	str r1, [r7,#0x58]
 	strb r2, [r5,#oOverworldNPCObject_TextScriptIndex]
-loc_809EB76:
+.notMysteryDataTextScript
+	// check if we're picking up an HP memory
+	// also checks ToolPrgm, but that doesn't make sense for this to be checked
 	cmp r3, #8
-	bne loc_809EB98
+	bne .notLinkNaviPickingUpHPMemry
 	cmp r0, #0x70 
-	bne loc_809EB98
+	bne .notLinkNaviPickingUpHPMemry
+
+	// check if we aren't controlling megaman
 	push {r0,r1,r3-r7}
 	bl GetCurPETNavi // () -> u8
 	mov r2, r0
 	pop {r0,r1,r3-r7}
 	cmp r2, #0
-	beq loc_809EB98
-	mov r2, #0x94 // NPC.scriptArray
+	beq .notLinkNaviPickingUpHPMemry
+
+	// run the "navi has no use for this item..." script
+	mov r2, #oOverworldNPCObject_TextScriptPtr // NPC.scriptArray
 	ldr r0, [r5,r2]
 	mov r1, #0x78 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-	b loc_809EBAA
-loc_809EB98:
-	mov r2, #0x94
+	b .done
+.notLinkNaviPickingUpHPMemry
+	mov r2, #oOverworldNPCObject_TextScriptPtr
 	ldr r0, [r5,r2]
 	ldrb r1, [r5,#oOverworldNPCObject_TextScriptIndex]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-	b loc_809EBAA
-loc_809EBA4:
+	b .done
+.runMapLoadedTextScript
 	ldrb r0, [r5,#oOverworldNPCObject_TextScriptIndex]
 	bl chatbox_runScript_202da04 // (u8 scriptID) -> void
-loc_809EBAA:
+.done
 	mov r0, #4
 	strb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
-	bl npc_809EBBC
+	bl npc_inChatbox_curAction_waitClose_809EBBC
 	pop {pc}
-off_809EBB4: .word OW_NPC_UNK_FLAGS_60_0x400
-dword_809EBB8: .word OW_NPC_UNK_FLAGS_60_0x800
-	thumb_func_end npc_809EB20
+off_809EBB4: .word OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400
+dword_809EBB8: .word OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x800
+	thumb_func_end npc_inChatbox_curAction_init_809EB20
 
 	thumb_local_start
-npc_809EBBC:
+npc_inChatbox_curAction_waitClose_809EBBC:
 	push {lr}
 	movflag EVENT_EVENT_CUR_DIR_LOCKED
 	bl TestEventFlagFromImmediate
@@ -891,7 +906,7 @@ npc_809EBBC:
 	bl sub_809F612
 locret_809EBDA:
 	pop {pc}
-	thumb_func_end npc_809EBBC
+	thumb_func_end npc_inChatbox_curAction_waitClose_809EBBC
 
 	thumb_local_start
 npc_runPrimaryScript_809ebdc:
@@ -982,18 +997,18 @@ npc_jt_commands: .word NPCCommand_end+1
 	.word NPCCommand_clear_individual_hidden_oam_piece+1
 	.word NPCCommand_disable_collision+1
 	.word NPCCommand_enable_collision+1
-	.word npc_809EFB4+1
-	.word npc_809EFC6+1
-	.word npc_809EFD8+1
-	.word npc_809EFFC+1
-	.word npc_809F01C+1
-	.word npc_809F030+1
-	.word npc_809F03C+1
-	.word npc_809F048+1
-	.word npc_809F058+1
+	.word NPCCommand_give_attached_shadow+1
+	.word NPCCommand_give_detatched_shadow+1
+	.word NPCCommand_remove_shadow+1
+	.word NPCCommand_set_sprite_to_cur_pet_navi+1
+	.word NPCCommand_set_sprite_with_category+1
+	.word NPCCommand_toggle_sprite_mirror+1
+	.word NPCCommand_disable_collision_alternate+1
+	.word NPCCommand_play_sound+1
+	.word NPCCommand_init_mystery_data+1
 	.word sub_809F0EC+1
 	.word sub_809F104+1
-	.word 0x0
+	.word NULL
 	.word sub_809F114+1
 	.word sub_809F12C+1
 	.word sub_809F138+1
@@ -1015,8 +1030,8 @@ npc_jt_commands: .word NPCCommand_end+1
 	.word sub_809F2DE+1
 	.word sub_809F2FC+1
 	.word sub_809F30C+1
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word sub_809F31C+1
 	.word sub_809F338+1
 	.word sub_809F354+1
@@ -1305,7 +1320,7 @@ NPCCommand_hop:
 // 0x12
 // npc faces the player when the player interacts with this NPC
 NPCCommand_face_player_when_interacted:
-	mov r0, #OW_NPC_UNK_FLAGS_60_0x2
+	mov r0, #OW_NPC_UNK_FLAGS_60_FACE_PLAYER_WHEN_INTERACTED
 	mvn r0, r0
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	and r1, r0
@@ -1318,7 +1333,7 @@ NPCCommand_face_player_when_interacted:
 // 0x13
 // npc does not face the player when the player interacts with this NPC
 NPCCommand_do_not_face_player_when_interacted:
-	mov r0, #OW_NPC_UNK_FLAGS_60_0x2
+	mov r0, #OW_NPC_UNK_FLAGS_60_FACE_PLAYER_WHEN_INTERACTED
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -1428,7 +1443,7 @@ NPCCommand_set_sprite:
 	mov r0, #0x18
 	str r0, [r5,#oOverworldNPCObject_NPCSpriteCategory]
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #OW_NPC_UNK_FLAGS_60_0x80
+	mov r1, #OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x80
 	bic r0, r1
 	str r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #2
@@ -1560,38 +1575,46 @@ NPCCommand_enable_collision:
 	thumb_func_end NPCCommand_enable_collision
 
 	thumb_local_start
-npc_809EFB4:
+// 0x21
+// attach shadow to the current NPC
+// so that the shadow moves with the NPC's z coordinate
+NPCCommand_give_attached_shadow:
 	push {lr}
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #OW_NPC_UNK_FLAGS_60_0x80
+	mov r1, #OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x80
 	bic r0, r1
 	str r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	bl sprite_noShadow // () -> void
 	add r6, #1
 	pop {pc}
-	thumb_func_end npc_809EFB4
+	thumb_func_end NPCCommand_give_attached_shadow
 
 	thumb_local_start
-npc_809EFC6:
+// 0x22
+// give a shadow for the current NPC, but do not attach it
+// so that the shadow does not move with the NPC's z coordinate
+NPCCommand_give_detatched_shadow:
 	push {lr}
-	ldr r0, =(OW_NPC_UNK_FLAGS_60_0x100 | OW_NPC_UNK_FLAGS_60_0x80)
+	ldr r0, =(OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x100 | OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x80)
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	bl sprite_hasShadow
 	add r6, #1
 	pop {pc}
-	thumb_func_end npc_809EFC6
+	thumb_func_end NPCCommand_give_detatched_shadow
 
 	thumb_local_start
-npc_809EFD8:
+// 0x23
+// remove the current NPC's shadow
+NPCCommand_remove_shadow:
 	push {lr}
-	mov r0, #OW_NPC_UNK_FLAGS_60_0x80
+	mov r0, #OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x80
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	ldr r1, =OW_NPC_UNK_FLAGS_60_0x100
+	ldr r1, =OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x100
 	bic r0, r1
 	str r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	bl sprite_removeShadow
@@ -1599,90 +1622,124 @@ npc_809EFD8:
 	pop {pc}
 	.balign 4, 0
 	.pool // 809EFF4
-	thumb_func_end npc_809EFD8
+	thumb_func_end NPCCommand_remove_shadow
 
 	thumb_local_start
-npc_809EFFC:
+// 0x24
+// set the current npc's sprite to the current PET navi's sprite
+NPCCommand_set_sprite_to_cur_pet_navi:
 	push {lr}
 	bl GetCurPETNavi // () -> u8
-	ldr r1, off_809F018 // =byte_809D328
+	ldr r1, =PETNaviToNPCSpriteTable
 	ldrb r0, [r1,r0]
 	strh r0, [r5,#oOverworldNPCObject_NPCSprite]
 	mov r0, #0x18
 	str r0, [r5,#oOverworldNPCObject_NPCSpriteCategory]
+
+	// attach shadow to NPC
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #OW_NPC_UNK_FLAGS_60_0x80
+	mov r1, #OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x80
 	bic r0, r1
 	str r0, [r5,#oOverworldNPCObject_UnkFlags_60]
+
 	add r6, #1
 	pop {pc}
-off_809F018: .word byte_809D328
-	thumb_func_end npc_809EFFC
+	.balign 4, 0
+	.pool // 809F018
+	thumb_func_end NPCCommand_set_sprite_to_cur_pet_navi
 
 	thumb_local_start
-npc_809F01C:
+// 0x25 byte1 byte2
+// set the current npc's sprite to a sprite from any sprite category
+// byte1 - sprite id
+// byte2 - sprite category
+NPCCommand_set_sprite_with_category:
 	ldrb r0, [r6,#1]
 	strh r0, [r5,#oOverworldNPCObject_NPCSprite]
+
 	ldrb r0, [r6,#2]
 	str r0, [r5,#oOverworldNPCObject_NPCSpriteCategory]
+
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	mov r1, #OW_NPC_UNK_FLAGS_60_0x80
+	mov r1, #OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x80
 	bic r0, r1
 	str r0, [r5,#oOverworldNPCObject_UnkFlags_60]
+
 	add r6, #3
 	mov pc, lr
-	thumb_func_end npc_809F01C
+	thumb_func_end NPCCommand_set_sprite_with_category
 
 	thumb_local_start
-npc_809F030:
-	mov r0, #OW_NPC_UNK_FLAGS_60_0x8
+// 0x26
+// toggle whether the current npc's sprite is mirrored
+// if the current npc's sprite is mirrored, it stays so
+// even when interacted with
+NPCCommand_toggle_sprite_mirror:
+	mov r0, #OW_NPC_UNK_FLAGS_60_SPRITE_MIRRORED
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	eor r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #1
 	mov pc, lr
-	thumb_func_end npc_809F030
+	thumb_func_end NPCCommand_toggle_sprite_mirror
 
 	thumb_local_start
-npc_809F03C:
-	mov r0, #OW_NPC_UNK_FLAGS_60_0x10
+// 0x27
+// disable collision for current NPC
+// functionally different than the other disable collision command
+// but the differences are unknown
+NPCCommand_disable_collision_alternate:
+	mov r0, #OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION_0x10
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r6, #1
 	mov pc, lr
-	thumb_func_end npc_809F03C
+	thumb_func_end NPCCommand_disable_collision_alternate
 
 	thumb_local_start
-npc_809F048:
+// 0x28 hword1
+// play sound effect
+// hword1 - sound effect to play
+NPCCommand_play_sound:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	bl PlaySoundEffect
 	add r6, #3
 	pop {pc}
-	thumb_func_end npc_809F048
+	thumb_func_end NPCCommand_play_sound
 
 	thumb_local_start
-npc_809F058:
+// 0x29 hword1
+// initialize mystery data
+// does the following:
+// - sets internal flags indicating this is a mystery data
+// - sets mystery data palette
+// - sets mystery data text archive ptr
+// - sets mystery data coordinates
+// - sets collision radius to 4, center offset x to 2, and center offset y to -2
+// hword1 - mystery data ID
+NPCCommand_init_mystery_data:
 	push {lr}
-	mov r0, #((OW_NPC_UNK_FLAGS_60_0x400 | OW_NPC_UNK_FLAGS_60_0x800) >> 4)
+	mov r0, #((OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400 | OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x800) >> 4)
 	lsl r0, r0, #4
-	mov r1, #OW_NPC_UNK_FLAGS_60_0x2
+	mov r1, #OW_NPC_UNK_FLAGS_60_FACE_PLAYER_WHEN_INTERACTED
 	orr r0, r1
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
-	mov r1, #0x90
+	mov r1, #oOverworldNPCObject_Chatbox_90
 	str r0, [r5,r1]
 	bl sub_809FC1C
 	tst r0, r0
-	beq loc_809F0BE
+	beq .mysteryDataCollected
 	ldr r4, off_809F0E0 // =byte_809F0E4
 	ldrb r4, [r4,r0]
 	strb r4, [r5,#oOverworldNPCObject_PaletteIndex]
+
 	mov r4, #0x40
 	// multiplying a flag?
 	// r1 is modified in sub_809FC1C (mystery data function)
@@ -1691,23 +1748,28 @@ npc_809F058:
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r4
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
+
 	mov r3, #0xff
 	strb r3, [r5,#oOverworldNPCObject_TextScriptIndex]
 	ldr r0, off_809F0DC // =dword_873D108 
-	mov r1, #0x94
+	mov r1, #oOverworldNPCObject_TextScriptPtr
 	str r0, [r5,r1]
+
 	mov r1, #0
 	ldrsh r0, [r2,r1]
 	lsl r0, r0, #0x10
 	str r0, [r5,#oOverworldNPCObject_X]
+
 	mov r1, #2
 	ldrsh r0, [r2,r1]
 	lsl r0, r0, #0x10
 	str r0, [r5,#oOverworldNPCObject_Y]
+
 	mov r1, #4
 	ldrsh r0, [r2,r1]
 	lsl r0, r0, #0x10
 	str r0, [r5,#oOverworldNPCObject_Z]
+
 	mov r0, #4
 	strb r0, [r5,#oOverworldNPCObject_CollisionRadius]
 	mov r0, #2
@@ -1715,10 +1777,11 @@ npc_809F058:
 	mov r0, #2
 	neg r0, r0
 	strb r0, [r5,#oOverworldNPCObject_CenterOffsetY]
+
 	add r6, #3
 	pop {pc}
-loc_809F0BE:
-	mov r0, #1
+.mysteryDataCollected
+	mov r0, #OBJECT_FLAG_ACTIVE
 	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0x80
 	mov r1, #0x1c
@@ -1732,7 +1795,7 @@ loc_809F0BE:
 off_809F0DC: .word dword_873D108
 off_809F0E0: .word byte_809F0E4
 byte_809F0E4: .byte 0xFF, 0x0, 0x0, 0x2, 0x2, 0x1, 0x3, 0xFF
-	thumb_func_end npc_809F058
+	thumb_func_end NPCCommand_init_mystery_data
 
 	thumb_local_start
 sub_809F0EC:
@@ -2132,7 +2195,7 @@ sub_809F31C:
 	push {lr}
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_TextScriptIndex]
-	ldr r0, off_809F6AC // =OW_NPC_UNK_FLAGS_60_0x400 
+	ldr r0, off_809F6AC // =OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400 
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -2236,7 +2299,7 @@ sub_809F3C0:
 	push {lr}
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_TextScriptIndex]
-	ldr r0, off_809F6AC // =OW_NPC_UNK_FLAGS_60_0x400
+	ldr r0, off_809F6AC // =OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -2336,7 +2399,7 @@ sub_809F45A:
 	beq loc_809F498
 	strb r2, [r5,#oOverworldNPCObject_TextScriptIndex]
 	ldr r3, TextScriptDialog87E30A0_p // =TextScriptDialog87E30A0
-	mov r2, #0x94
+	mov r2, #oOverworldNPCObject_TextScriptPtr
 	str r3, [r5,r2]
 	mov r0, r1
 	bl sub_8143DBC
@@ -2344,7 +2407,7 @@ sub_809F45A:
 	str r1, [r5,#oOverworldNPCObject_Y]
 	str r2, [r5,#oOverworldNPCObject_Z]
 	add r6, #3
-	ldr r0, dword_809F6B0 // =(OW_NPC_UNK_FLAGS_60_0x1000 | OW_NPC_UNK_FLAGS_60_0x400)
+	ldr r0, dword_809F6B0 // =(OW_NPC_UNK_FLAGS_60_0x1000 | OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400)
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -2373,7 +2436,7 @@ sub_809F4B8:
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelect]
 	mvn r0, r0
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelectUpdate]
-	mov r0, #(OW_NPC_UNK_FLAGS_60_DISABLE_INTERACTION | OW_NPC_UNK_FLAGS_60_0x10)
+	mov r0, #(OW_NPC_UNK_FLAGS_60_DISABLE_INTERACTION | OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION_0x10)
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
@@ -2437,33 +2500,38 @@ npc_disableScript0x19_809f51e:
 	thumb_local_start
 sub_809F526:
 	push {r7,lr}
+
 	ldr r7, [r5, #oOverworldNPCObject_UnkFlags_60]
 	ldrb r0, [r5,#oOverworldNPCObject_ObjectHeader]
 	mov r1, #OBJECT_FLAG_ACTIVE
 	tst r0, r1
 	beq loc_809F598
+
 	push {r5}
-	ldr r4, dword_809F5A0 // =0x20000 
+	ldr r4, dword_809F5A0 // =OW_OBJECT_INTERACTION_AREA_FLAG_0x20000
 	mov r1, #OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION
 	tst r7, r1
 	beq loc_809F53E
 	mov r4, #0
 loc_809F53E:
+
 	ldr r0, [r5,#oOverworldNPCObject_X]
 	mov r6, #oOverworldNPCObject_CenterOffsetX
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r0, r0, r6
+
 	ldr r1, [r5,#oOverworldNPCObject_Y]
 	mov r6, #oOverworldNPCObject_CenterOffsetY
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r1, r1, r6
+
 	ldrb r2, [r5,#oOverworldNPCObject_InteractionLocked]
 	cmp r2, #0
 	beq loc_809F56A
 	push {r0,r1,r3-r5}
-	mov r0, #0x24 
+	mov r0, #oOverworldNPCObject_Coords
 	add r0, r0, r5
 	bl sub_8031612
 	mov r2, r0
@@ -2473,24 +2541,26 @@ loc_809F53E:
 loc_809F56A:
 	ldr r2, [r5,#oOverworldNPCObject_Z]
 loc_809F56C:
+
 	mov r6, #oOverworldNPCObject_CenterOffsetZ
 	ldrsb r6, [r5,r6]
 	lsl r6, r6, #0x10
 	add r2, r2, r6
+
 	mov r6, #oOverworldNPCObject_Unk_50
 	add r6, r6, r5
 	ldrh r3, [r5,#oOverworldNPCObject_CollisionRadius_ZReach]
 	push {r0-r5}
-	ldr r5, dword_809F5A4 // =0x50001 
+	ldr r5, dword_809F5A4 // =(OW_OBJECT_INTERACTION_AREA_FLAG_0x1 | OW_OBJECT_INTERACTION_AREA_FLAG_0x10000 | OW_OBJECT_INTERACTION_AREA_FLAG_0x40000)
 	bl createOWObjectInteractionArea_80037ac
-	mov r1, #0x14
+	mov r1, #(OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION | OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION_0x10)
 	tst r7, r1
 	pop {r0-r5}
 	bne loc_809F596
 	mov r6, #oOverworldNPCObject_Unk_58 
 	add r6, r6, r5
-	ldr r4, dword_809F5A8 // =0x400000 
-	ldr r5, dword_809F5AC // =0xa00000 
+	ldr r4, dword_809F5A8 // =OW_OBJECT_INTERACTION_AREA_FLAG_0x400000
+	ldr r5, dword_809F5AC // =(OW_OBJECT_INTERACTION_AREA_FLAG_0x200000 | OW_OBJECT_INTERACTION_AREA_FLAG_0x800000)
 	bl createOWObjectInteractionArea_80037ac
 loc_809F596:
 	pop {r5}
@@ -2499,10 +2569,10 @@ loc_809F598:
 	str r0, [r5,#oOverworldNPCObject_Unk_50]
 	str r0, [r5,#oOverworldNPCObject_Unk_58]
 	pop {r7,pc}
-dword_809F5A0: .word 0x20000
-dword_809F5A4: .word 0x50001
-dword_809F5A8: .word 0x400000
-dword_809F5AC: .word 0xA00000
+dword_809F5A0: .word OW_OBJECT_INTERACTION_AREA_FLAG_0x20000
+dword_809F5A4: .word (OW_OBJECT_INTERACTION_AREA_FLAG_0x1 | OW_OBJECT_INTERACTION_AREA_FLAG_0x10000 | OW_OBJECT_INTERACTION_AREA_FLAG_0x40000)
+dword_809F5A8: .word OW_OBJECT_INTERACTION_AREA_FLAG_0x400000
+dword_809F5AC: .word (OW_OBJECT_INTERACTION_AREA_FLAG_0x200000 | OW_OBJECT_INTERACTION_AREA_FLAG_0x800000)
 	thumb_func_end sub_809F526
 
 	thumb_local_start
@@ -2536,8 +2606,8 @@ sub_809F5B0:
 	mov r6, #oOverworldNPCObject_Unk_54
 	add r6, r6, r5
 	ldr r3, dword_809F5F0 // =0x804 
-	ldr r4, dword_809F5F4 // =0x80000 
-	ldr r5, dword_809F5F8 // =0x50000 
+	ldr r4, dword_809F5F4 // =OW_OBJECT_INTERACTION_AREA_FLAG_0x80000
+	ldr r5, dword_809F5F8 // =(OW_OBJECT_INTERACTION_AREA_FLAG_0x10000 | OW_OBJECT_INTERACTION_AREA_FLAG_0x40000)
 	bl createOWObjectInteractionArea_80037ac
 	pop {r5}
 loc_809F5EA:
@@ -2545,8 +2615,8 @@ loc_809F5EA:
 	str r0, [r5,#oOverworldNPCObject_Unk_54]
 	pop {pc}
 dword_809F5F0: .word 0x804
-dword_809F5F4: .word 0x80000
-dword_809F5F8: .word 0x50000
+dword_809F5F4: .word OW_OBJECT_INTERACTION_AREA_FLAG_0x80000
+dword_809F5F8: .word (OW_OBJECT_INTERACTION_AREA_FLAG_0x10000 | OW_OBJECT_INTERACTION_AREA_FLAG_0x40000)
 	thumb_func_end sub_809F5B0
 
 	thumb_local_start
@@ -2574,7 +2644,7 @@ sub_809F612:
 	ldrb r0, [r5,#oOverworldNPCObject_Unk_1e]
 	strb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	ldr r1, dword_809F6B4 // =(OW_NPC_UNK_FLAGS_60_0x1000 | OW_NPC_UNK_FLAGS_60_0x2)
+	ldr r1, dword_809F6B4 // =(OW_NPC_UNK_FLAGS_60_0x1000 | OW_NPC_UNK_FLAGS_60_FACE_PLAYER_WHEN_INTERACTED)
 	tst r0, r1
 	bne loc_809F632
 	ldrb r0, [r5,#oOverworldNPCObject_AnimationSelect]
@@ -2651,22 +2721,22 @@ off_809F688: .word eOverworldNPCObjects
 sub_809F68C:
 	push {lr}
 	ldr r3, off_809F6A4 // =eOverworldNPCObjects 
-	ldr r2, off_809F6A8 // =0xd80 
+	ldr r2, off_809F6A8 // =NUM_OVERWORLD_NPC_OBJECTS * oOverworldNPCObject_Size 
 	add r2, r2, r3
 loc_809F694:
-	ldr r0, [r3,#0x50]
+	ldr r0, [r3,#oOverworldNPCObject_Unk_50]
 	mov r1, #1
 	bic r0, r1
-	str r0, [r3,#0x50]
-	add r3, #0xd8
+	str r0, [r3,#oOverworldNPCObject_Unk_50]
+	add r3, #oOverworldNPCObject_Size 
 	cmp r3, r2
 	blt loc_809F694
 	pop {pc}
 off_809F6A4: .word eOverworldNPCObjects
-off_809F6A8: .word 0xD80
-off_809F6AC: .word OW_NPC_UNK_FLAGS_60_0x400
-dword_809F6B0: .word (OW_NPC_UNK_FLAGS_60_0x1000 | OW_NPC_UNK_FLAGS_60_0x400)
-dword_809F6B4: .word (OW_NPC_UNK_FLAGS_60_0x1000 | OW_NPC_UNK_FLAGS_60_0x2)
+off_809F6A8: .word NUM_OVERWORLD_NPC_OBJECTS * oOverworldNPCObject_Size
+off_809F6AC: .word OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400
+dword_809F6B0: .word (OW_NPC_UNK_FLAGS_60_0x1000 | OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400)
+dword_809F6B4: .word (OW_NPC_UNK_FLAGS_60_0x1000 | OW_NPC_UNK_FLAGS_60_FACE_PLAYER_WHEN_INTERACTED)
 byte_809F6B8: .byte 0x22, 0x11, 0x9E, 0xDC, 0x21, 0x10, 0xF, 0x22, 0x11
 	.byte 0x9E, 0xDC, 0x21, 0x10, 0x78, 0x2, 0xB8, 0xF6, 0x9
 	.byte 0x8, 0x0

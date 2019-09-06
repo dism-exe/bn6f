@@ -8,7 +8,7 @@ int npc_809E570()
 
 
 // 0x809e590
-void npc_809E590()
+void npc_init_809E590()
 {
     int v0; // r5
 
@@ -37,12 +37,12 @@ void npc_809E590()
     *(v0 + 13) = 8;
     sprite_load(v0, 128, 28, 160);
     sprite_loadAnimationData(v0);
-    npc_809E5E2();
+    npc_standard_809E5E2();
 }
 
 
 // 0x809e5e2
-void npc_809E5E2()
+void npc_standard_809E5E2()
 {
     int v0; // r5
     int v1; // r0
@@ -473,7 +473,7 @@ int npc_809EAA0()
 
 
 // 0x809eada
-void npc_809EADA()
+void npc_inChatbox_809EADA()
 {
     int v0; // r5
 
@@ -486,7 +486,7 @@ void npc_809EADA()
 
 
 // 0x809eb04
-int sub_809EB04()
+int npc_inChatbox_curAction_809EB04()
 {
     int v0; // r5
 
@@ -495,7 +495,7 @@ int sub_809EB04()
 
 
 // 0x809eb20
-int __fastcall npc_809EB20(int a1, int a2, int a3, int a4)
+int __fastcall npc_inChatbox_curAction_init_809EB20(int a1, int a2, int a3, int a4)
 {
     NPC *npc; // r5
     Toolkit *tk; // r10
@@ -537,12 +537,12 @@ int __fastcall npc_809EB20(int a1, int a2, int a3, int a4)
         chatbox_runScript_202da04(npc->scriptArrayOffset);
     }
     npc->walkingFlag_0A = 4;
-    return npc_809EBBC();
+    return npc_inChatbox_curAction_waitClose_809EBBC();
 }
 
 
 // 0x809ebbc
-int npc_809EBBC()
+int npc_inChatbox_curAction_waitClose_809EBBC()
 {
     int v0; // r5
     int v1; // r10
@@ -1052,7 +1052,7 @@ signed int NPCCommand_enable_collision()
 
 
 // 0x809efb4
-int npc_809EFB4()
+int NPCCommand_give_attached_shadow()
 {
     int v0; // r5
 
@@ -1062,7 +1062,7 @@ int npc_809EFB4()
 
 
 // 0x809efc6
-int npc_809EFC6()
+int NPCCommand_give_detatched_shadow()
 {
     int v0; // r5
 
@@ -1072,7 +1072,7 @@ int npc_809EFC6()
 
 
 // 0x809efd8
-int npc_809EFD8()
+int NPCCommand_remove_shadow()
 {
     int v0; // r5
 
@@ -1083,12 +1083,12 @@ int npc_809EFD8()
 
 
 // 0x809effc
-unsigned int npc_809EFFC()
+unsigned int NPCCommand_set_sprite_to_cur_pet_navi()
 {
     int v0; // r5
     unsigned int result; // r0
 
-    *(v0 + 60) = byte_809D328[getPETNaviSelect()];
+    *(v0 + 60) = PETNaviToNPCSpriteTable[getPETNaviSelect()];
     *(v0 + 120) = 24;
     result = *(v0 + 96) & 0xFFFFFF7F;
     *(v0 + 96) = result;
@@ -1097,7 +1097,7 @@ unsigned int npc_809EFFC()
 
 
 // 0x809f01c
-unsigned int npc_809F01C()
+unsigned int NPCCommand_set_sprite_with_category()
 {
     int v0; // r5
     int v1; // r6
@@ -1112,7 +1112,7 @@ unsigned int npc_809F01C()
 
 
 // 0x809f030
-signed int npc_809F030()
+signed int NPCCommand_toggle_sprite_mirror()
 {
     int v0; // r5
     signed int result; // r0
@@ -1124,7 +1124,7 @@ signed int npc_809F030()
 
 
 // 0x809f03c
-signed int npc_809F03C()
+signed int NPCCommand_disable_collision_alternate()
 {
     int v0; // r5
     signed int result; // r0
@@ -1136,7 +1136,7 @@ signed int npc_809F03C()
 
 
 // 0x809f048
-int npc_809F048()
+int NPCCommand_play_sound()
 {
     int v0; // r6
     int v1; // r0
@@ -1149,7 +1149,7 @@ int npc_809F048()
 
 
 // 0x809f058
-int npc_809F058()
+int NPCCommand_init_mystery_data()
 {
     int v0; // r5
     int v1; // r6

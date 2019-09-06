@@ -980,6 +980,11 @@ createOWObjectInteractionArea_80037ac:
 
 	thumb_func_start checkOWObjectInteractions_80037f4
 // something to do with interacting with npcs? maybe other objects too
+
+// 1, 2, 3
+// a, b, c
+
+// 1 a = 1 unk0c, a unk08
 checkOWObjectInteractions_80037f4:
 	push {r5,lr}
 	ldr r0, off_8003884 // =eNumOWObjectInteractionAreas
@@ -999,6 +1004,8 @@ loc_8003802:
 loc_800380A:
 	cmp r6, r7
 	beq loc_800386A
+	// r3 = outer ow object
+	// r4 = inner ow object
 	mov r0, #oOWObjectInteractionArea_Size
 	mul r0, r7
 	add r4, r5, r0
@@ -1022,7 +1029,7 @@ loc_800380A:
 	orr r0, r1
 	str r0, [r7]
 	ldr r0, [r3,#oOWObjectInteractionArea_Unk_08]
-	ldr r1, dword_8003890 // =0x200000
+	ldr r1, dword_8003890 // =OW_OBJECT_INTERACTION_AREA_FLAG_0x200000
 	tst r0, r1
 	beq loc_800385C
 	push {r0-r2}
@@ -1063,7 +1070,7 @@ loc_800387C
 off_8003884: .word eNumOWObjectInteractionAreas
 off_8003888: .word eOWObjectInteractionAreas
 off_800388C: .word eOWPlayerObject
-dword_8003890: .word 0x200000
+dword_8003890: .word OW_OBJECT_INTERACTION_AREA_FLAG_0x200000
 	thumb_func_end checkOWObjectInteractions_80037f4
 
 	thumb_local_start

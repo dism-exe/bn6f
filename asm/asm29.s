@@ -2873,7 +2873,7 @@ sub_80A6CFC:
 	push {lr}
 	push {r0}
 	bl GetCurPETNavi // () -> u8
-	ldr r2, dword_80A6D34 // =byte_809D328
+	ldr r2, dword_80A6D34 // =PETNaviToNPCSpriteTable
 	ldrb r2, [r2,r0]
 	mov r0, #0x80
 	mov r1, #0x18
@@ -6299,19 +6299,17 @@ sub_80A88E2:
 	ldr r0, [r5,#0xc]
 	ldr r1, [r5,#0x10]
 	ldr r2, [r5,#0x14]
-	ldr r3, dword_80A890C // =0x80a 
-	ldr r4, dword_80A8910 // =0x40000 
-	ldr r5, dword_80A8914 // =0x10000 
+	ldr r3, =0x80a 
+	ldr r4, =OW_OBJECT_INTERACTION_AREA_FLAG_0x40000
+	ldr r5, =OW_OBJECT_INTERACTION_AREA_FLAG_0x10000
 	bl createOWObjectInteractionArea_80037ac
 	pop {r4-r7}
 	mov r0, #0
 	str r0, [r5,#0x28]
 	bl sprite_update
 	pop {r4-r7,pc}
-	.balign 4, 0x00
-dword_80A890C: .word 0x80A
-dword_80A8910: .word 0x40000
-dword_80A8914: .word 0x10000
+	.balign 4, 0
+	.pool // 80A890C
 	thumb_func_end sub_80A88E2
 
 	thumb_local_start
@@ -6876,18 +6874,16 @@ sub_80A8D7C:
 	mov r3, #0x14
 	lsl r3, r3, #0x10
 	sub r2, r2, r3
-	ldr r3, dword_80A8DA4 // =0x808 
-	ldr r4, dword_80A8DA8 // =0x40000 
-	ldr r5, dword_80A8DAC // =0x10000 
+	ldr r3, =0x808 
+	ldr r4, =OW_OBJECT_INTERACTION_AREA_FLAG_0x40000
+	ldr r5, =OW_OBJECT_INTERACTION_AREA_FLAG_0x10000
 	bl createOWObjectInteractionArea_80037ac
 	pop {r4-r7}
 	mov r0, #0
 	str r0, [r5,#0x24]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
-dword_80A8DA4: .word 0x808
-dword_80A8DA8: .word 0x40000
-dword_80A8DAC: .word 0x10000
+	.balign 4, 0
+	.pool // 80A8DA4
 	thumb_func_end sub_80A8D7C
 
 	thumb_local_start

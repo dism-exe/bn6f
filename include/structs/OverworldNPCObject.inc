@@ -92,17 +92,17 @@
 	ptr UnkNPCScriptPtr_5c // loc=0x5c
 	u32 UnkFlags_60 // loc=0x60
 		struct_const OW_NPC_UNK_FLAGS_60_DISABLE_INTERACTION, 0x1
-		struct_const OW_NPC_UNK_FLAGS_60_0x2, 0x2
+		struct_const OW_NPC_UNK_FLAGS_60_FACE_PLAYER_WHEN_INTERACTED, 0x2
 		struct_const OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION, 0x4
-		struct_const OW_NPC_UNK_FLAGS_60_0x8, 0x8
-		struct_const OW_NPC_UNK_FLAGS_60_0x10, 0x10
+		struct_const OW_NPC_UNK_FLAGS_60_SPRITE_MIRRORED, 0x8
+		struct_const OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION_0x10, 0x10
 		struct_const OW_NPC_UNK_FLAGS_60_0x20, 0x20
 		struct_const OW_NPC_UNK_FLAGS_60_0x40, 0x40
-		struct_const OW_NPC_UNK_FLAGS_60_0x80, 0x80
-		struct_const OW_NPC_UNK_FLAGS_60_0x100, 0x100
+		struct_const OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x80, 0x80
+		struct_const OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x100, 0x100
 		struct_const OW_NPC_UNK_FLAGS_60_0x200, 0x200
-		struct_const OW_NPC_UNK_FLAGS_60_0x400, 0x400
-		struct_const OW_NPC_UNK_FLAGS_60_0x800, 0x800
+		struct_const OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400, 0x400
+		struct_const OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x800, 0x800
 		struct_const OW_NPC_UNK_FLAGS_60_0x1000, 0x1000
 
 	u32 LayerPriorityOverride // loc=0x64

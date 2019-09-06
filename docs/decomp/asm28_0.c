@@ -2516,7 +2516,7 @@ unsigned int sub_809D270()
     int v7; // r2
 
     *v0 = 3;
-    v2 = byte_809D328[getPETNaviSelect()];
+    v2 = PETNaviToNPCSpriteTable[getPETNaviSelect()];
     v3 = 24;
     if ( *(*(v1 + oToolkit_GameStatePtr) + oGameState_MapGroup) < 128 && (v2 = 55, TestEventFlagFromImmediate(23, 41), v4) )
     {
