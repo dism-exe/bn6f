@@ -57,7 +57,7 @@ void npc_standard_809E5E2()
     else
     {
         npc_runPrimaryScript_809ebdc();
-        (*(&off_809E6A4 + *(v0 + 9)))();
+        (*(&NPCCurActionJumptable + *(v0 + 9)))();
         v1 = 0;
         if ( *(v0 + 96) & 8 )
             v1 = 1;
@@ -203,7 +203,7 @@ int npc_nonCutsceneMovementUpdate_809E7D8()
 
 
 // 0x809e84e
-int npc_809E84E()
+int npc_doVerticalMovement_809e84e()
 {
     int v0; // r5
     int v1; // r1
@@ -302,7 +302,7 @@ int npc_updateHopMovement_809e916()
 
 
 // 0x809e944
-signed int npc_809E944()
+signed int npc_initLeapMovement_809e944()
 {
     int v0; // r5
     signed int result; // r0
@@ -317,7 +317,7 @@ signed int npc_809E944()
 
 
 // 0x809e95e
-int npc_809E95E()
+int npc_updateLeapMovement_809e95e()
 {
     int v0; // r5
     int v1; // r3
@@ -329,9 +329,9 @@ int npc_809E95E()
 
     v6 = sub_8031612(v0 + 36) << 16;
     v1 = 2 * *(v0 + 6);
-    v2 = byte_809E9B8[v1];
+    v2 = NPCLeapDirectionTable[v1];
     v3 = *(v0 + 7);
-    if ( byte_809E9B8[v1 + 1] )
+    if ( NPCLeapDirectionTable[v1 + 1] )
         *(v0 + v2) -= v3;
     else
         *(v0 + v2) += v3;
@@ -430,7 +430,7 @@ int npc_waitAnimFrame_809ea3c()
 
 
 // 0x809ea74
-int sub_809EA74()
+int npc_runNativeCallback_809ea74()
 {
     int v0; // r5
 
@@ -1632,7 +1632,7 @@ int NPCCommand_jump_alt()
 
 
 // 0x809f3f6
-int sub_809F3F6()
+int NPCCommand_leap()
 {
     int v0; // r5
     _BYTE *v1; // r6
@@ -1648,7 +1648,7 @@ int sub_809F3F6()
 
 
 // 0x809f418
-int sub_809F418()
+int NPCCommand_init_vertical_movement()
 {
     int v0; // r5
     _BYTE *v1; // r6
@@ -1663,7 +1663,7 @@ int sub_809F418()
 
 
 // 0x809f438
-int sub_809F438()
+int NPCCommand_init_diagonal_leap()
 {
     int v0; // r5
     _BYTE *v1; // r6
@@ -1679,7 +1679,7 @@ int sub_809F438()
 
 
 // 0x809f45a
-int sub_809F45A()
+int NPCCommand_init_groundman_minigame_prog()
 {
     int v0; // r5
     int v1; // r6
@@ -1694,11 +1694,11 @@ int sub_809F45A()
 
     v2 = ReadNPCScriptHalfword((v1 + 1));
     TestEventFlag(v2);
-    if ( v3 && (v4 = ReadNPCScriptHalfword((v1 + 1)), sub_8143B88(v4), v6) )
+    if ( v3 && (v4 = ReadNPCScriptHalfword((v1 + 1)), GetGroundmanMinigameProgGridCoordsAndTextScriptIndex(v4), v6) )
     {
         *(v0 + 28) = v5;
-        *(v0 + 148) = TextScriptDialog87E30A0;
-        *(v0 + 36) = sub_8143DBC();
+        *(v0 + 148) = TextScriptGroundmanMinigame;
+        *(v0 + 36) = ConvertGroundmanMinigameGridCoordsToMapCoords();
         *(v0 + 40) = v7;
         *(v0 + 44) = v8;
         result = 5120;
@@ -1717,7 +1717,7 @@ int sub_809F45A()
 
 
 // 0x809f4b8
-int sub_809F4B8()
+int NPCCommand_jack_out()
 {
     int v0; // r5
     char v1; // r2
@@ -1736,7 +1736,7 @@ int sub_809F4B8()
 
 
 // 0x809f4ee
-int npc_809F4EE()
+int NPCCommand_jump_if_screen_fade_active()
 {
     int v0; // r6
     int result; // r0

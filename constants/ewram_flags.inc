@@ -72,6 +72,12 @@
 	enum EVENT_680
 	enum EVENT_681
 
+		enum_start 0xd98
+	enum EVENT_D98
+
+		enum_start 0xda2
+	enum EVENT_DA2
+
 		enum_start 0x1700 // [0x2E0] = 0x2001f68
 	enum EVENT_1700
 	// disables object animation/translation and collisions

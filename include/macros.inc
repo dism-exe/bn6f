@@ -16,6 +16,7 @@
 	.include "include/macros/ewram_structs.inc"
 	.include "include/macros/rom_structs.inc"
 	.include "include/macros/function.inc"
+	.include "include/macros/map.inc"
 	.include "include/bytecode/map_script.inc"
 	.include "include/bytecode/cutscene_script.inc"
 	.include "include/bytecode/cutscene_camera_script.inc"

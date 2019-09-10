@@ -2169,7 +2169,7 @@ int sub_8143978()
         TestEventFlagFromImmediate(13, 48);
         if ( !v2 || v18 != v19 || v16 != v17 )
             sub_8143C30(v16, v17, v18, v19);
-        v4 = *(&off_8143804 + sub_8143B30());
+        v4 = *(&off_8143804 + GetGroundmanMinigameMapIndex());
         v5 = 0;
         while ( *v4 != 255 )
         {
@@ -2180,7 +2180,7 @@ int sub_8143978()
             {
                 ClearEventFlag(v8);
                 v9 = *(v4 + 1);
-                v10 = sub_8143DBC();
+                v10 = ConvertGroundmanMinigameGridCoordsToMapCoords();
                 SpawnOverworldMapObject(43, v10, v11, v12);
             }
             ++v5;
@@ -2268,7 +2268,7 @@ int sub_8143A54()
     }
     if ( sub_8143D4C() == v2 )
     {
-        v10 = sub_8143B30();
+        v10 = GetGroundmanMinigameMapIndex();
         StartCutscene(dword_8143B1C[v10], 0, v11, v12);
         if ( !v3 )
             goto LABEL_24;
@@ -2276,7 +2276,7 @@ int sub_8143A54()
     result = sub_8143F72();
     if ( v3 )
     {
-        v14 = sub_8143B30();
+        v14 = GetGroundmanMinigameMapIndex();
         StartCutscene(byte_809326C, v14, v15, v16);
 LABEL_24:
         ClearEventFlagFromImmediate(13, 52);
@@ -2287,14 +2287,14 @@ LABEL_24:
 
 
 // 0x8143b30
-unsigned int sub_8143B30()
+unsigned int GetGroundmanMinigameMapIndex()
 {
     int v0; // r10
     unsigned int i; // r6
 
-    for ( i = 0; *&byte_8143B58[i]; i += 2 )
+    for ( i = 0; *&GroundmanMinigameMaps[i]; i += 2 )
     {
-        if ( *&byte_8143B58[i] == *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) )
+        if ( *&GroundmanMinigameMaps[i] == *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) )
             return i >> 1;
     }
     return 255;
@@ -2310,7 +2310,7 @@ int __fastcall sub_8143B5E(int a1)
     int v4; // r1
 
     v1 = a1;
-    v2 = 2 * sub_8143B30();
+    v2 = 2 * GetGroundmanMinigameMapIndex();
     result = *(&dword_8143B7C + v2) + v1;
     v4 = *(&dword_8143B84 + v2) + v1;
     return result;
@@ -2318,15 +2318,15 @@ int __fastcall sub_8143B5E(int a1)
 
 
 // 0x8143b88
-int __fastcall sub_8143B88(int a1)
+int __fastcall GetGroundmanMinigameProgGridCoordsAndTextScriptIndex(int a1)
 {
     int v1; // r4
     unsigned int v2; // r0
     int v3; // r1
 
     v1 = a1;
-    v2 = sub_8143B30();
-    v3 = *&(*off_814380C[v2])[2 * (v1 - *&byte_8143BF0[4 * v2])];
+    v2 = GetGroundmanMinigameMapIndex();
+    v3 = *&(*off_814380C[v2])[2 * (v1 - *&groundmanMinigameMapActiveFlags_8143bf0[4 * v2])];
     return v1;
 }
 
@@ -2342,9 +2342,9 @@ signed int __fastcall sub_8143BB0(int a1)
     char v6; // zf
 
     v1 = a1;
-    v2 = sub_8143B30();
+    v2 = GetGroundmanMinigameMapIndex();
     v3 = off_814380C[v2];
-    v4 = *&byte_8143BF0[v2 * 4];
+    v4 = *&groundmanMinigameMapActiveFlags_8143bf0[v2 * 4];
     while ( 1 )
     {
         v5 = *v3;
@@ -2367,14 +2367,14 @@ signed int __fastcall sub_8143BB0(int a1)
 // 0x8143bfc
 int sub_8143BFC()
 {
-    return *&byte_8143C10[4 * sub_8143B30()];
+    return *&byte_8143C10[4 * GetGroundmanMinigameMapIndex()];
 }
 
 
 // 0x8143c18
 int sub_8143C18()
 {
-    return *(&dword_8143C2C + sub_8143B30());
+    return *(&dword_8143C2C + GetGroundmanMinigameMapIndex());
 }
 
 
@@ -2400,7 +2400,7 @@ unsigned int sub_8143C62()
 {
     unsigned int v0; // r0
 
-    v0 = sub_8143B30();
+    v0 = GetGroundmanMinigameMapIndex();
     sub_8030A60(*(&off_8143C80 + v0));
     return SetEventFlagFromImmediate(23, 33);
 }
@@ -2413,7 +2413,7 @@ int sub_8143C88()
 
     reqBBS_setFlag_e17b0f7_8140A00();
     SetEventFlagFromImmediate(1, 187);
-    for ( i = *(&off_8143D0C + sub_8143B30()); *i; i += 8 )
+    for ( i = *(&off_8143D0C + GetGroundmanMinigameMapIndex()); *i; i += 8 )
     {
         dword_2011EA0[*i] = *(i + 1);
         SetEventFlag(*i + 5872);
@@ -2429,7 +2429,7 @@ int sub_8143CC8()
 
     reqBBS_clearFlag_8140A0C();
     ClearEventFlagFromImmediate(1, 187);
-    for ( i = *(&off_8143D0C + sub_8143B30()); *i; i += 8 )
+    for ( i = *(&off_8143D0C + GetGroundmanMinigameMapIndex()); *i; i += 8 )
     {
         dword_2011EA0[*i] = 0;
         ClearEventFlag(*i + 5872);
@@ -2474,19 +2474,19 @@ int __fastcall sub_8143D7A(int a1, int a2)
 
     v2 = a1;
     v3 = a2;
-    v4 = sub_8143D9E();
+    v4 = GetGroundmanMinigameGridOffsetsForMap();
     return ((v4 + (v2 >> 16)) >> 5) + 128 + ((((v5 + (v3 >> 16)) >> 5) + 128) << 8);
 }
 
 
 // 0x8143d9e
-int sub_8143D9E()
+int GetGroundmanMinigameGridOffsetsForMap()
 {
     char *v0; // r3
     int result; // r0
     int v2; // r1
 
-    v0 = &dword_8143DB8 + 2 * sub_8143B30();
+    v0 = &GroundmanMinigameMapBasedGridOffsets + 2 * GetGroundmanMinigameMapIndex();
     result = *v0;
     v2 = v0[1];
     return result;
@@ -2494,10 +2494,10 @@ int sub_8143D9E()
 
 
 // 0x8143dbc
-int sub_8143DBC()
+int ConvertGroundmanMinigameGridCoordsToMapCoords()
 {
     __asm { SVC         6 }
-    return (4112 - sub_8143D9E()) << 16;
+    return (4112 - GetGroundmanMinigameGridOffsetsForMap()) << 16;
 }
 
 
@@ -2524,9 +2524,9 @@ unsigned int __fastcall sub_8143DEA(int a1)
     v5 = sub_8143E68(v1, (v2 - 1) & 7, 1);
     v6 = sub_8143E68(v1, v4, 1);
     v7 = sub_809E1AE();
-    v8 = sub_8143DBC();
+    v8 = ConvertGroundmanMinigameGridCoordsToMapCoords();
     v10 = sub_80014D4(v8 - v7, v9 - HIDWORD(v7));
-    v11 = sub_8143DBC();
+    v11 = ConvertGroundmanMinigameGridCoordsToMapCoords();
     if ( sub_80014D4(v11 - v7, v12 - HIDWORD(v7)) > v10 )
         v6 = v5;
     return v6;
@@ -2559,9 +2559,9 @@ unsigned int sub_8143EB0()
     int v3; // r0
     int v4; // r1
 
-    v1 = sub_8143DBC();
+    v1 = ConvertGroundmanMinigameGridCoordsToMapCoords();
     v2 = v0;
-    v3 = sub_8143DBC();
+    v3 = ConvertGroundmanMinigameGridCoordsToMapCoords();
     return (((((calcAngle_800117C(v3 - v1, v2 - v4) + 16) >> 4) & 0xF) >> 1) - 1) & 7;
 }
 
@@ -2576,7 +2576,7 @@ signed int __fastcall sub_8143EDC(int a1)
     char v5; // zf
 
     v1 = a1;
-    v2 = *(&off_8143804 + sub_8143B30());
+    v2 = *(&off_8143804 + GetGroundmanMinigameMapIndex());
     v3 = 0;
     while ( *v2 != 255 )
     {
@@ -2786,7 +2786,7 @@ BOOL sub_81440AE()
     result = 1;
     if ( v0 )
     {
-        if ( sub_8143B30() != 255 )
+        if ( GetGroundmanMinigameMapIndex() != 255 )
         {
             v1 = sub_8143C18();
             TestEventFlag(v1);

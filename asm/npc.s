@@ -66,7 +66,7 @@ npc_standard_809E5E2:
 	b loc_809E658
 loc_809E5F0:
 	bl npc_runPrimaryScript_809ebdc
-	ldr r7, off_809E6C0 // =off_809E6A4 
+	ldr r7, off_809E6C0 // =NPCCurActionJumptable 
 	ldrb r0, [r5,#oOverworldNPCObject_CurAction]
 	ldr r7, [r7,r0]
 	mov lr, pc
@@ -151,14 +151,14 @@ loc_809E690:
 locret_809E6A0:
 	pop {pc}
 	.balign 4, 0x00
-off_809E6A4: .word npc_waitTimer_809e6c8+1
+NPCCurActionJumptable: .word npc_waitTimer_809e6c8+1
 	.word npc_doNonCutsceneMovement_809E6DC+1
 	.word npc_doHopMovement_809e8cc+1
 	.word npc_waitAnimFrame_809ea3c+1
-	.word sub_809EA74+1
+	.word npc_runNativeCallback_809ea74+1
 	.word npc_waitCutsceneVar_809ea82+1
 	.word npc_waitMysteryDataTaken_809eaa0+1
-off_809E6C0: .word off_809E6A4
+off_809E6C0: .word NPCCurActionJumptable
 off_809E6C4: .word OW_NPC_UNK_FLAGS_60_SHADOW_FLAG_0x100
 	thumb_func_end npc_standard_809E5E2
 
@@ -188,7 +188,7 @@ npc_doNonCutsceneMovement_809E6DC:
 	.byte 0, 0
 jt_809E6F0: .word npc_nonCutsceneMovementInit_809E704+1
 	.word npc_nonCutsceneMovementUpdate_809E7D8+1
-	.word npc_809E84E+1
+	.word npc_doVerticalMovement_809e84e+1
 	.word npc_809E878+1
 off_809E700: .word jt_809E6F0
 	thumb_func_end npc_doNonCutsceneMovement_809E6DC
@@ -386,7 +386,7 @@ loc_809E81A:
 	lsl r1, r1, #4
 	tst r0, r1
 	bne loc_809E842
-	mov r0, #0x24 
+	mov r0, #oOverworldNPCObject_Coords
 	add r0, r0, r5
 	bl sub_8031612
 	lsl r0, r0, #0x10
@@ -401,49 +401,70 @@ loc_809E848:
 	thumb_func_end npc_nonCutsceneMovementUpdate_809E7D8
 
 	thumb_local_start
-npc_809E84E:
+npc_doVerticalMovement_809e84e:
 	push {lr}
+
 	ldrb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldrb r1, [r5,#oOverworldNPCObject_MovementDistance]
 	ldrb r2, [r5,#oOverworldNPCObject_Undetected_06]
+
 	tst r0, r0
-	beq loc_809E872
+	beq .doneMovement
 	sub r0, #1
 	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
+
 	tst r1, r1
-	bne loc_809E86A
+	bne .decreaseZCoord
+	// increase z coord
 	ldrh r1, [r5,#oOverworldNPCObject_Z16]
 	add r1, r1, r2
 	strh r1, [r5,#oOverworldNPCObject_Z16]
-	b locret_809E870
-loc_809E86A:
+	b .doneIteration
+.decreaseZCoord
 	ldrh r1, [r5,#oOverworldNPCObject_Z16]
 	sub r1, r1, r2
 	strh r1, [r5,#oOverworldNPCObject_Z16]
-locret_809E870:
+
+.doneIteration
 	pop {pc}
-loc_809E872:
+
+.doneMovement
 	bl npc_enableScript0x19_809f516
 	pop {pc}
-	thumb_func_end npc_809E84E
+	thumb_func_end npc_doVerticalMovement_809e84e
 
 	thumb_local_start
+// ?? byte1 byte2 byte3 byte4
+// initialize simple diagonal movement
+// npc moves for a given number of frames in the given horizontal direction for a given horizontal velocity and the given vertical direction for a fixed vertical velocity of 1
+// byte1 - number of frames to wait
+// byte2 - vertical direction (0 = upwards, 1 = downwards)
+// byte3 - horizontal direction of movement
+// 00 - up right
+// 01 - up left
+// 02 - down left
+// 03 - down right
+// byte4 - velocity of horizontal movement
 npc_809E878:
 	push {lr}
+
 	ldrb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	tst r0, r0
 	beq loc_809E8BA
 	sub r0, #1
 	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
-	ldr r0, off_809E8C0 // =byte_809E8C4
+
+	ldr r0, =byte_809E8C4
 	ldrb r1, [r5,#oOverworldNPCObject_Undetected_06]
 	lsl r1, r1, #1
 	ldrb r2, [r0,r1]
 	add r1, #1
 	ldrb r1, [r0,r1]
+
 	ldrb r0, [r5,#oOverworldNPCObject_Unk_07]
 	tst r1, r1
 	bne loc_809E89E
+
 	ldrh r1, [r5,r2]
 	add r1, r1, r0
 	strh r1, [r5,r2]
@@ -469,8 +490,13 @@ locret_809E8B8:
 loc_809E8BA:
 	bl npc_enableScript0x19_809f516
 	pop {pc}
-off_809E8C0: .word byte_809E8C4
-byte_809E8C4: .byte 0x26, 0x0, 0x2A, 0x0, 0x26, 0x1, 0x2A, 0x1
+	.balign 4, 0
+	.pool // 809E8C0
+byte_809E8C4
+	.byte oOverworldNPCObject_X16, 0
+	.byte oOverworldNPCObject_Y16, 0
+	.byte oOverworldNPCObject_X16, 1
+	.byte oOverworldNPCObject_Y16, 1
 	thumb_func_end npc_809E878
 
 	thumb_local_start
@@ -486,8 +512,8 @@ npc_doHopMovement_809e8cc:
 	.byte 0, 0
 jt_809E8E0: .word npc_initHopMovement_809e8fc+1
 	.word npc_updateHopMovement_809e916+1
-	.word npc_809E944+1
-	.word npc_809E95E+1
+	.word npc_initLeapMovement_809e944+1
+	.word npc_updateLeapMovement_809e95e+1
 	.word npc_809E9C0+1
 	.word npc_809E9DA+1
 off_809E8F8: .word jt_809E8E0
@@ -540,129 +566,166 @@ npc_updateHopMovement_809e916:
 	bl npc_enableScript0x19_809f516
 	pop {pc}
 .hopNotFinished
-	// if not, store the z value for the hop movement
+	// if not, store the z value for the current iteration of the hop movement
 	str r0, [r5,#oOverworldNPCObject_Z]
 	pop {pc}
 	thumb_func_end npc_updateHopMovement_809e916
 
 	thumb_local_start
-npc_809E944:
+npc_initLeapMovement_809e944:
 	push {lr}
+
 	ldrb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	lsl r0, r0, #0xc
-	str r0, [r5,#oOverworldNPCObject_DeltaZ]
-	mov r3, #5
+	str r0, [r5,#oOverworldNPCObject_HopDeltaCompounded]
+
+	mov r3, #oOverworldNPCObject_MovementDistance
 	ldrsb r0, [r5,r3]
 	lsl r0, r0, #0xc
-	str r0, [r5,#oOverworldNPCObject_DeltaY]
+	str r0, [r5,#oOverworldNPCObject_HopDelta]
+
 	mov r0, #1
 	strb r0, [r5,#oOverworldNPCObject_InteractionLocked]
+
 	mov r0, #0xc
 	strb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
+
 	pop {pc}
-	thumb_func_end npc_809E944
+	thumb_func_end npc_initLeapMovement_809e944
 
 	thumb_local_start
-npc_809E95E:
+npc_updateLeapMovement_809e95e:
 	push {lr}
-	mov r0, #0x24 
+
+	mov r0, #oOverworldNPCObject_Coords
 	add r0, r0, r5
 	bl sub_8031612
 	mov r2, r0
 	lsl r2, r2, #0x10
 	push {r2}
-	mov r3, #6
+
+	mov r3, #oOverworldNPCObject_Undetected_06
 	ldrb r3, [r5,r3]
 	lsl r3, r3, #1
-	ldr r2, off_809E9B4 // =byte_809E9B8
+	ldr r2, =NPCLeapDirectionTable
 	ldrb r0, [r2,r3]
 	add r3, #1
 	ldrb r1, [r2,r3]
-	mov r3, #7
+
+	mov r3, #oOverworldNPCObject_Unk_07
 	ldrb r2, [r5,r3]
 	tst r1, r1
-	beq loc_809E98C
+	beq .increaseCoord
+
 	ldrh r1, [r5,r0]
 	sub r1, r1, r2
 	strh r1, [r5,r0]
-	b loc_809E992
-loc_809E98C:
+	b .calcHopDeltas
+
+.increaseCoord
 	ldrh r1, [r5,r0]
 	add r1, r1, r2
 	strh r1, [r5,r0]
-loc_809E992:
+
+.calcHopDeltas
 	pop {r2}
-	ldr r0, [r5,#oOverworldNPCObject_DeltaZ]
-	ldr r1, [r5,#oOverworldNPCObject_DeltaY]
+
+	// hopDeltaCompounded += hopDelta
+	ldr r0, [r5,#oOverworldNPCObject_HopDeltaCompounded]
+	ldr r1, [r5,#oOverworldNPCObject_HopDelta]
 	add r0, r0, r1
-	str r0, [r5,#oOverworldNPCObject_DeltaZ]
+	str r0, [r5,#oOverworldNPCObject_HopDeltaCompounded]
+
+	// z += hopDeltaCompounded
 	ldr r1, [r5,#oOverworldNPCObject_Z]
 	add r0, r0, r1
+
+	// is z negative?
 	cmp r0, r2
-	bpl loc_809E9B0
+	bpl .hopNotFinished
+
+	// if so, set the z coordinate to the default
 	str r2, [r5,#oOverworldNPCObject_Z]
 	mov r0, #0
 	strb r0, [r5,#oOverworldNPCObject_InteractionLocked]
 	bl npc_enableScript0x19_809f516
 	pop {pc}
-loc_809E9B0:
+
+.hopNotFinished
+	// if not, store the z value for the current iteration of the hop movement
 	str r0, [r5,#oOverworldNPCObject_Z]
 	pop {pc}
-off_809E9B4: .word byte_809E9B8
-byte_809E9B8: .byte 0x26, 0x0, 0x2A, 0x0, 0x26, 0x1, 0x2A, 0x1
-	thumb_func_end npc_809E95E
+	.balign 4, 0
+	.pool // 809E9B4
+NPCLeapDirectionTable:
+	.byte oOverworldNPCObject_X16, 0
+	.byte oOverworldNPCObject_Y16, 0
+	.byte oOverworldNPCObject_X16, 1
+	.byte oOverworldNPCObject_Y16, 1
+	thumb_func_end npc_updateLeapMovement_809e95e
 
 	thumb_local_start
 npc_809E9C0:
 	push {lr}
+
 	ldrb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	lsl r0, r0, #0xc
 	str r0, [r5,#oOverworldNPCObject_DeltaZ]
-	mov r3, #5
+
+	mov r3, #oOverworldNPCObject_MovementDistance
 	ldrsb r0, [r5,r3]
 	lsl r0, r0, #0xc
 	str r0, [r5,#oOverworldNPCObject_DeltaY]
-	mov r0, #1
+
+	mov r0, #TRUE
 	strb r0, [r5,#oOverworldNPCObject_InteractionLocked]
+
 	mov r0, #0x14
 	strb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
+
 	pop {pc}
 	thumb_func_end npc_809E9C0
 
 	thumb_local_start
 npc_809E9DA:
 	push {lr}
-	mov r0, #0x24 
+
+	mov r0, #oOverworldNPCObject_Coords
 	add r0, r0, r5
 	bl sub_8031612
 	mov r2, r0
 	lsl r2, r2, #0x10
 	push {r2}
-	mov r3, #6
+
+	mov r3, #oOverworldNPCObject_Undetected_06
 	ldrb r3, [r5,r3]
 	lsl r3, r3, #1
-	ldr r2, off_809EA30 // =byte_809EA34 
+	ldr r2, =byte_809EA34 
 	ldrb r0, [r2,r3]
 	add r3, #1
 	ldrb r1, [r2,r3]
-	mov r3, #7
+
+	mov r3, #oOverworldNPCObject_Unk_07
 	ldrb r2, [r5,r3]
 	tst r1, r1
-	beq loc_809EA08
+	beq .increaseCoord
+
 	ldrh r1, [r5,r0]
 	sub r1, r1, r2
 	strh r1, [r5,r0]
-	b loc_809EA0E
-loc_809EA08:
+	b .calcHopDeltas
+
+.increaseCoord
 	ldrh r1, [r5,r0]
 	add r1, r1, r2
 	strh r1, [r5,r0]
-loc_809EA0E:
+
+.calcHopDeltas
 	pop {r2}
-	ldr r0, [r5,#oOverworldNPCObject_DeltaZ]
-	ldr r1, [r5,#oOverworldNPCObject_DeltaY]
+	ldr r0, [r5,#oOverworldNPCObject_HopDeltaCompounded]
+	ldr r1, [r5,#oOverworldNPCObject_HopDelta]
 	add r0, r0, r1
-	str r0, [r5,#oOverworldNPCObject_DeltaZ]
+	str r0, [r5,#oOverworldNPCObject_HopDeltaCompounded]
 	cmp r0, #0
 	bgt loc_809EA26
 	mov r0, #0
@@ -674,9 +737,13 @@ loc_809EA26:
 	add r0, r0, r1
 	str r0, [r5,#oOverworldNPCObject_Z]
 	pop {pc}
-	.byte 0, 0
-off_809EA30: .word byte_809EA34
-byte_809EA34: .byte 0x26, 0x0, 0x2A, 0x0, 0x26, 0x1, 0x2A, 0x1
+	.balign 4, 0
+	.pool // 809EA30
+byte_809EA34:
+	.byte oOverworldNPCObject_X16, 0
+	.byte oOverworldNPCObject_Y16, 0
+	.byte oOverworldNPCObject_X16, 1
+	.byte oOverworldNPCObject_Y16, 1
 	thumb_func_end npc_809E9DA
 
 	thumb_local_start
@@ -711,14 +778,14 @@ npc_waitAnimFrame_809ea3c:
 	thumb_func_end npc_waitAnimFrame_809ea3c
 
 	thumb_local_start
-sub_809EA74:
+npc_runNativeCallback_809ea74:
 	push {lr}
 	ldr r7, [r5,#oOverworldNPCObject_Undetected_7c]
 	mov lr, pc
 	bx r7
 	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {pc}
-	thumb_func_end sub_809EA74
+	thumb_func_end npc_runNativeCallback_809ea74
 
 	thumb_local_start
 // wait for the value of a cutscene var to equal the given value
@@ -1049,12 +1116,12 @@ npc_jt_commands: .word NPCCommand_end+1
 	.word NPCCommand_jump_if_anim_not_equal+1
 	.word NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer+1
 	.word NPCCommand_jump_alt+1
-	.word sub_809F3F6+1
-	.word sub_809F418+1
-	.word sub_809F438+1
-	.word sub_809F45A+1
-	.word sub_809F4B8+1
-	.word npc_809F4EE+1
+	.word NPCCommand_leap+1
+	.word NPCCommand_init_vertical_movement+1
+	.word NPCCommand_init_diagonal_leap+1
+	.word NPCCommand_init_groundman_minigame_prog+1
+	.word NPCCommand_jack_out+1
+	.word NPCCommand_jump_if_screen_fade_active+1
 	thumb_func_end npc_decrementSecondaryTimer_809ec1c
 
 	thumb_local_start
@@ -1294,17 +1361,20 @@ NPCCommand_pause:
 // 0x11 byte1 byte2
 // npc performs a hop
 // given that the npc starts at z=0
-// the z values of the hop are given
-// by the quadratic z = (byte2/2)x^2 + (byte2/2 + byte1)x
+// the z values of the hop are given (in decimal)
+// by the quadratic z = ((byte2/2)x^2 + (byte2/2 + byte1)x)/16
 // starting at x=1, until z becomes negative, at which z is
 // set to the default value (depending on position)
 // e.g. if byte1 = 96 and byte2 = -36, the equation would be:
-// z = -18x^2 + 78x
+// z = (-18x^2 + 78x)/16
 
-// alternatively, the z values can be mapped as follows:
+// alternatively, the z values can be mapped as follows (in 16.16 fixed point):
+// byte1 *= 4096
+// byte2 *= 4096
+// start loop
 // byte1 += byte2
 // z += byte1
-// until z becomes negative
+// end loop when z becomes negative
 
 // byte1 - hop param base
 // byte2 - hop param delta
@@ -2353,7 +2423,7 @@ NPCCommand_set_obj_window_mode:
 	mov r7, r10
 	ldr r4, [r7,#oToolkit_Unk200f3a0_Ptr]
 	// ??? corresponds to some groundman text (groundman scenario maybe?)
-	ldr r7, TextScriptDialog87E30A0_p // =TextScriptDialog87E30A0
+	ldr r7, TextScriptGroundmanMinigame_p // =TextScriptGroundmanMinigame
 
 	bl sprite_disableObjWindowMode
 	ldrb r0, [r6,#1]
@@ -2481,16 +2551,49 @@ NPCCommand_jump_alt:
 
 	thumb_local_start
 // 0x4e byte1 byte2 byte3 byte4
-sub_809F3F6:
+// npc performs a leap
+// i.e. a hop except an xy coordinate is offset for each iteration
+
+// hop mechanics copied from the hop command:
+// given that the npc starts at z=0
+// the z values of the hop are given (in decimal)
+// by the quadratic z = ((byte2/2)x^2 + (byte2/2 + byte1)x)/16
+// starting at x=1, until z becomes negative, at which z is
+// set to the default value (depending on position)
+// e.g. if byte1 = 96 and byte2 = -36, the equation would be:
+// z = (-18x^2 + 78x)/16
+
+// alternatively, the z values can be mapped as follows (in 16.16 fixed point):
+// byte1 *= 4096
+// byte2 *= 4096
+// start loop
+// byte1 += byte2
+// z += byte1
+// end loop when z becomes negative
+
+// byte1 - hop param base
+// byte2 - hop param delta
+// byte3 - direction of leap
+// 00 - up right
+// 01 - up left
+// 02 - down left
+// 03 - down right
+// byte4 - velocity of leap, in whole pixels
+NPCCommand_leap:
 	push {lr}
+
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
+
 	ldrb r0, [r6,#2]
 	strb r0, [r5,#oOverworldNPCObject_MovementDistance]
+
 	ldrb r0, [r6,#3]
 	strb r0, [r5,#oOverworldNPCObject_Undetected_06]
+
 	ldrb r0, [r6,#4]
 	strb r0, [r5,#oOverworldNPCObject_Unk_07]
+
 	mov r0, #MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #8
@@ -2498,77 +2601,133 @@ sub_809F3F6:
 	bl npc_disableScript0x19_809f51e
 	add r6, #5
 	pop {pc}
-	thumb_func_end sub_809F3F6
+	thumb_func_end NPCCommand_leap
 
 	thumb_local_start
-sub_809F418:
+// 0x4f byte1 byte2 byte3
+// increase or decrease the current npc's z coordinate by a given offset for a given number of frames
+// i.e. init vertical movement
+// byte1 - number of frames to wait
+// byte2 - direction (0 = upwards, 1 = downwards)
+// byte3 - velocity of vertical movement
+NPCCommand_init_vertical_movement:
 	push {lr}
+
 	ldrb r2, [r6,#1]
 	strb r2, [r5,#oOverworldNPCObject_MovementSpeed]
+
 	ldrb r2, [r6,#2]
 	strb r2, [r5,#oOverworldNPCObject_MovementDistance]
+
 	ldrb r2, [r6,#3]
 	strb r2, [r5,#oOverworldNPCObject_Undetected_06]
+
 	mov r0, #MOVEMENT_FLAG_DEFAULT_MOVING
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
+
 	mov r0, #8
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
+
 	bl npc_disableScript0x19_809f51e
 	add r6, #4
 	pop {pc}
-	.balign 4, 0x00
-	thumb_func_end sub_809F418
+	.balign 4, 0
+	thumb_func_end NPCCommand_init_vertical_movement
 
 	thumb_local_start
-sub_809F438:
+// 0x50 byte1 byte2 byte3 byte4
+// npc performs a diagonal leap
+// i.e. same as a leap, except the leap stops at the peak
+// in other words, the vertex of the parabola
+
+// hop mechanics partially copied from the hop command:
+// given that the npc starts at z=0
+// the z values of the hop are given (in decimal)
+// by the quadratic z = ((byte2/2)x^2 + (byte2/2 + byte1)x)/16
+// starting at x=1, until z is the vertex of the quadratic, at which z is
+// set to the z at the vertex
+// e.g. if byte1 = 96 and byte2 = -36, the equation would be:
+// z = (-18x^2 + 78x)/16
+
+// alternatively, the z values can be mapped as follows (in 16.16 fixed point):
+// byte1 *= 4096
+// byte2 *= 4096
+// start loop
+// byte1 += byte2
+// stop if byte1 is zero or less
+// z += byte1
+// end loop
+NPCCommand_init_diagonal_leap:
 	push {lr}
+
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
+
 	ldrb r0, [r6,#2]
 	strb r0, [r5,#oOverworldNPCObject_MovementDistance]
+
 	ldrb r0, [r6,#3]
 	strb r0, [r5,#oOverworldNPCObject_Undetected_06]
+
 	ldrb r0, [r6,#4]
 	strb r0, [r5,#oOverworldNPCObject_Unk_07]
-	mov r0, #8
+
+	mov r0, #MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
+
 	mov r0, #0x10
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
+
 	bl npc_disableScript0x19_809f51e
 	add r6, #5
 	pop {pc}
-	thumb_func_end sub_809F438
+	thumb_func_end NPCCommand_init_diagonal_leap
 
 	thumb_local_start
-sub_809F45A:
+// 0x51 hword1
+// initialize prog npc for the groundman minigame
+// the npc's text script index and coordinates are set based on the input event flag
+// and the text script ptr is set to the text archive for the groundman minigame
+// hword1 - event flag of prog
+NPCCommand_init_groundman_minigame_prog:
 	push {lr}
+
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
-	bne loc_809F498
+	bne .progPickedUpOrDoesNotExist
+
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
-	bl sub_8143B88
+	bl GetGroundmanMinigameProgGridCoordsAndTextScriptIndex
+	// test if this prog actually exists
+	// there appears to be 10 prog entries for each groundman map
+	// looking at the grid coord table and the groundman minigame
+	// text archive, but only 6 grid coord pairs are defined in
+	// the grid coord table
 	tst r1, r1
-	beq loc_809F498
+	beq .progPickedUpOrDoesNotExist
+
 	strb r2, [r5,#oOverworldNPCObject_TextScriptIndex]
-	ldr r3, TextScriptDialog87E30A0_p // =TextScriptDialog87E30A0
+	ldr r3, TextScriptGroundmanMinigame_p // =TextScriptGroundmanMinigame
 	mov r2, #oOverworldNPCObject_TextScriptPtr
 	str r3, [r5,r2]
 	mov r0, r1
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
+
 	str r0, [r5,#oOverworldNPCObject_X]
 	str r1, [r5,#oOverworldNPCObject_Y]
 	str r2, [r5,#oOverworldNPCObject_Z]
+
 	add r6, #3
 	ldr r0, dword_809F6B0 // =(OW_NPC_UNK_FLAGS_60_0x1000 | OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400)
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	pop {pc}
-loc_809F498:
-	mov r0, #1
+.progPickedUpOrDoesNotExist
+	mov r0, #OBJECT_FLAG_ACTIVE
 	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0x80
 	mov r1, #0x1c
@@ -2578,23 +2737,35 @@ loc_809F498:
 	bl FreeOverworldNPCObject
 	bl npc_disableScript0x19_809f51e
 	pop {pc}
-TextScriptDialog87E30A0_p: .word TextScriptDialog87E30A0
-	thumb_func_end sub_809F45A
+TextScriptGroundmanMinigame_p: .word TextScriptGroundmanMinigame
+	thumb_func_end NPCCommand_init_groundman_minigame_prog
 
 	thumb_local_start
-sub_809F4B8:
+// 0x52
+// have the current npc do a "jack out" effect
+// npc cannot be interacted with and has no collision once this command is run
+NPCCommand_jack_out:
 	push {lr}
+
+	// get the anim of the current NPC
 	bl sprite_getFrameParameters
+	// extract facing direction
 	mov r0, #7
 	and r0, r2
-	add r0, #0x21 
+	// add base offset for npc jack out animation (palette fades to clear)
+	add r0, #0x21
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelect]
+	// force animation update
 	mvn r0, r0
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelectUpdate]
+
+	// disable interaction and collision
 	mov r0, #(OW_NPC_UNK_FLAGS_60_DISABLE_INTERACTION | OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION_0x10)
 	ldr r1, [r5,#oOverworldNPCObject_UnkFlags_60]
 	orr r1, r0
 	str r1, [r5,#oOverworldNPCObject_UnkFlags_60]
+
+	// spawn jack out animation
 	push {r5}
 	mov r0, #0
 	ldr r1, [r5,#oOverworldNPCObject_X]
@@ -2603,26 +2774,32 @@ sub_809F4B8:
 	mov r4, #1
 	bl SpawnOverworldMapObject
 	pop {r5}
+
+	// play jack out sound
 	mov r0, #SOUND_LOG_OUT_76
 	bl PlaySoundEffect
+
 	add r6, #1
 	pop {pc}
-	thumb_func_end sub_809F4B8
+	thumb_func_end NPCCommand_jack_out
 
 	thumb_local_start
-npc_809F4EE:
+// 0x53 destination1
+// jump if the screen is fading
+// destination1 - script to jump to
+NPCCommand_jump_if_screen_fade_active:
 	push {lr}
 	bl screenFade_80062C8
 	cmp r1, #0
-	beq loc_809F502
+	beq .screenFadeNotActive
 	add r0, r6, #1
 	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
-loc_809F502:
+.screenFadeNotActive
 	add r6, #5
 	pop {pc}
-	thumb_func_end npc_809F4EE
+	thumb_func_end NPCCommand_jump_if_screen_fade_active
 
 	thumb_local_start
 sub_809F506:

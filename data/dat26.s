@@ -287,14 +287,14 @@ sub_8092EC4::
 	bl ReadOWPlayerObjectCoords
 	push {r0,r1}
 	bl sub_8143EA4
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	pop {r2,r3}
 	mov r4, #0x10
 	bl sub_809323A
 	bl ReadOWPlayerObjectCoords
 	push {r0,r1}
 	bl sub_8143EA4
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	pop {r2,r3}
 	sub r0, r0, r2
 	sub r1, r3, r1
@@ -324,7 +324,7 @@ sub_8092F1E::
 	bl sub_8093202
 	beq loc_8092F54
 	bl sub_8143EA4
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4
 	bl sub_8143EA4
 	ldr r1, [r7]
@@ -413,10 +413,10 @@ sub_8092FD2::
 	beq loc_809300E
 	bl sub_809322A
 	ldr r0, [r7]
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	push {r0,r1}
 	bl sub_8143EA4
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	pop {r2,r3}
 	mov r4, #0x40 
 	bl sub_809323A
@@ -488,7 +488,7 @@ loc_8093070::
 sub_8093074::
 	push {r4-r7,lr}
 	bl sub_8143EA4
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	push {r0,r1}
 	bl sub_8143EA4
 	mov r4, r0
@@ -498,7 +498,7 @@ sub_8093074::
 	mov r2, #1
 	bl sub_8143E68
 	str r0, [r7]
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	pop {r2,r3}
 	mov r4, #0xa
 	bl sub_809323A
@@ -544,7 +544,7 @@ loc_80930DC::
 	b loc_8093168
 loc_8093100::
 	bl sub_8143EA4
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	push {r0,r1}
 	bl sub_8143EA4
 	mov r4, r0
@@ -553,7 +553,7 @@ loc_8093100::
 	mov r0, r4
 	mov r2, #1
 	bl sub_8143E68
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	pop {r2,r3}
 	mov r4, #0x40 
 	bl sub_809323A
@@ -613,10 +613,10 @@ sub_809319C::
 	bl sub_8093202
 	beq loc_80931C6
 	ldr r0, [r7]
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	push {r0,r1}
 	bl sub_8143EA4
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	pop {r2,r3}
 	mov r4, #0x40 
 	bl sub_809323A

@@ -1261,14 +1261,14 @@ GetSoulWeaponsMapIndex:
 	ldrh r7, [r7,#oGameState_MapId]
 	mov r6, #0
 	ldr r4, =SoulWeaponsMaps 
-.loop
+.findMapLoop
 	ldrh r0, [r4,r6]
 	tst r0, r0
 	beq .mapNotFound
 	cmp r0, r7
 	beq .mapFound
 	add r6, #2
-	b .loop
+	b .findMapLoop
 .mapFound
 	lsr r0, r6, #1
 	tst r0, r0
@@ -1276,10 +1276,18 @@ GetSoulWeaponsMapIndex:
 .mapNotFound
 	mov r0, #0xff
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.pool // 81426F4
-SoulWeaponsMaps: .byte 0x90, 0x0, 0x90, 0x1, 0x90, 0x2, 0x91, 0x0, 0x91, 0x1, 0x91
-	.byte 0x2, 0x93, 0x0, 0x93, 0x1, 0x0, 0x0
+SoulWeaponsMaps:
+	map_id CENTRAL_AREA1
+	map_id CENTRAL_AREA2
+	map_id CENTRAL_AREA3
+	map_id SEASIDE_AREA1
+	map_id SEASIDE_AREA2
+	map_id SEASIDE_AREA3
+	map_id UNDERGROUND1
+	map_id UNDERGROUND2
+	.hword 0
 	thumb_func_end GetSoulWeaponsMapIndex
 
 	thumb_local_start
@@ -3114,9 +3122,19 @@ byte_8143814: .byte 0x0, 0xFF, 0x78, 0x7B, 0x1, 0xFF, 0x78, 0x7C, 0x2, 0xFF
 	.byte 0x23, 0xFF, 0x83, 0x77, 0x24, 0xFF, 0x7F, 0x79, 0x25, 0xFF
 	.byte 0x7F, 0x7A, 0x26, 0xFF, 0x7B, 0x76, 0x27, 0xFF, 0x7C, 0x76
 	.byte 0xFF, 0x28, 0x0, 0x0
-byte_81438B8: .byte 0x86, 0x84, 0x86, 0x79, 0x80, 0x77, 0x7E, 0x84, 0x76
-	.byte 0x86, 0x75, 0x82, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0xFF, 0xFF, 0x0, 0x0
+byte_81438B8:
+	.byte 0x86, 0x84
+	.byte 0x86, 0x79
+	.byte 0x80, 0x77
+	.byte 0x7E, 0x84
+	.byte 0x76, 0x86
+	.byte 0x75, 0x82
+	.byte 0x0, 0x0
+	.byte 0x0, 0x0
+	.byte 0x0, 0x0
+	.byte 0x0, 0x0
+	.byte 0xFF, 0xFF
+	.byte 0x0, 0x0
 byte_81438D0: .byte 0x0, 0xFF, 0x74, 0x87, 0x1, 0xFF, 0x75, 0x87, 0x2, 0xFF
 	.byte 0x7A, 0x80, 0x3, 0xFF, 0x7B, 0x80, 0x4, 0xFF, 0x7C, 0x80
 	.byte 0x5, 0xFF, 0x7D, 0x80, 0x6, 0xFF, 0x7D, 0x81, 0x7, 0xFF
@@ -3132,9 +3150,19 @@ byte_81438D0: .byte 0x0, 0xFF, 0x74, 0x87, 0x1, 0xFF, 0x75, 0x87, 0x2, 0xFF
 	.byte 0x1E, 0xFF, 0x82, 0x77, 0x1F, 0xFF, 0x84, 0x79, 0x20, 0xFF
 	.byte 0x85, 0x79, 0x21, 0xFF, 0x86, 0x79, 0x22, 0xFF, 0x83, 0x79
 	.byte 0xFF, 0x23, 0x0, 0x0
-byte_8143960: .byte 0x7D, 0x7F, 0x79, 0x80, 0x7D, 0x83, 0x7F, 0x80, 0x7F
-	.byte 0x83, 0x84, 0x7F, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0xFF, 0xFF, 0x0, 0x0
+byte_8143960:
+	.byte 0x7D, 0x7F
+	.byte 0x79, 0x80
+	.byte 0x7D, 0x83
+	.byte 0x7F, 0x80
+	.byte 0x7F, 0x83
+	.byte 0x84, 0x7F
+	.byte 0x0, 0x0
+	.byte 0x0, 0x0
+	.byte 0x0, 0x0
+	.byte 0x0, 0x0
+	.byte 0xFF, 0xFF
+	.byte 0x0, 0x0
 	thumb_func_end sub_81434BA
 
 	thumb_local_start
@@ -3171,7 +3199,7 @@ loc_81439B6:
 	bl sub_8143C30
 	pop {r0-r7}
 loc_81439BE:
-	bl sub_8143B30
+	bl GetGroundmanMinigameMapIndex
 	lsl r0, r0, #2
 	ldr r7, off_8143A4C // =off_8143804 
 	ldr r7, [r7,r0]
@@ -3190,7 +3218,7 @@ loc_81439CA:
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	push {r4-r7}
 	ldrh r0, [r7,#2]
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	mov r3, r2
 	mov r2, r1
 	mov r1, r0
@@ -3294,7 +3322,7 @@ loc_8143AD6:
 	bl sub_8143D4C
 	cmp r0, r1
 	bne loc_8143AF0
-	bl sub_8143B30
+	bl GetGroundmanMinigameMapIndex
 	ldr r1, off_8143B18 // =dword_8143B1C 
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
@@ -3304,7 +3332,7 @@ loc_8143AD6:
 loc_8143AF0:
 	bl sub_8143F72
 	bne locret_8143B14
-	bl sub_8143B30
+	bl GetGroundmanMinigameMapIndex
 	mov r1, r0
 	ldr r0, off_8143B28 // =byte_809326C 
 	bl StartCutscene
@@ -3328,37 +3356,41 @@ off_8143B2C: .word byte_80933B8
 	thumb_func_end sub_8143A54
 
 	thumb_local_start
-sub_8143B30:
+GetGroundmanMinigameMapIndex:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrh r7, [r7,#oGameState_MapGroup]
 	mov r6, #0
-	ldr r4, off_8143B54 // =byte_8143B58 
-loc_8143B3C:
+	ldr r4, =GroundmanMinigameMaps 
+.findMapLoop
 	ldrh r0, [r4,r6]
 	tst r0, r0
-	beq loc_8143B50
+	beq .mapNotFound
 	cmp r0, r7
-	beq loc_8143B4A
+	beq .mapFound
 	add r6, #2
-	b loc_8143B3C
-loc_8143B4A:
+	b .findMapLoop
+.mapFound
 	lsr r0, r6, #1
 	tst r0, r0
 	pop {r4-r7,pc}
-loc_8143B50:
+.mapNotFound
 	mov r0, #0xff
 	pop {r4-r7,pc}
-off_8143B54: .word byte_8143B58
-byte_8143B58: .byte 0x90, 0x0, 0x90, 0x1, 0x0, 0x0
-	thumb_func_end sub_8143B30
+	.balign 4, 0
+	.pool // 8143B54
+GroundmanMinigameMaps:
+	map_id CENTRAL_AREA1
+	map_id CENTRAL_AREA2
+	.hword 0
+	thumb_func_end GetGroundmanMinigameMapIndex
 
 	thumb_func_start sub_8143B5E
 sub_8143B5E:
 	push {r4-r7,lr}
 	mov r4, r0
-	bl sub_8143B30
+	bl GetGroundmanMinigameMapIndex
 	lsl r3, r0, #1
 	ldr r0, off_8143B78 // =dword_8143B7C 
 	ldrh r0, [r0,r3]
@@ -3374,37 +3406,39 @@ off_8143B80: .word dword_8143B84
 dword_8143B84: .word 0x16701670
 	thumb_func_end sub_8143B5E
 
-	thumb_func_start sub_8143B88
-sub_8143B88:
+	thumb_func_start GetGroundmanMinigameProgGridCoordsAndTextScriptIndex
+GetGroundmanMinigameProgGridCoordsAndTextScriptIndex:
 	push {r4-r7,lr}
 	mov r4, r0
-	bl sub_8143B30
+	bl GetGroundmanMinigameMapIndex
 	lsl r0, r0, #2
-	ldr r3, off_8143BEC // =byte_8143BF0 
+	ldr r3, off_8143BEC // =groundmanMinigameMapActiveFlags_8143bf0 
 	ldr r3, [r3,r0]
 	sub r2, r4, r3
+
 	ldr r7, off_8143BAC // =off_814380C 
 	ldr r7, [r7,r0]
 	lsl r1, r2, #1
 	ldrh r1, [r7,r1]
-	ldr r7, byte_8143BF0 // =0x98 
+
+	ldr r7, groundmanMinigameMapActiveFlags_8143bf0 // =EVENT_D98
 	sub r2, r4, r7
 	add r2, #0x14
 	mov r0, r4
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8143BAC: .word off_814380C
-	thumb_func_end sub_8143B88
+	thumb_func_end GetGroundmanMinigameProgGridCoordsAndTextScriptIndex
 
 	thumb_func_start sub_8143BB0
 sub_8143BB0:
 	push {r4-r7,lr}
 	mov r4, r0
-	bl sub_8143B30
+	bl GetGroundmanMinigameMapIndex
 	lsl r0, r0, #2
 	ldr r7, off_8143BF8 // =off_814380C 
 	ldr r7, [r7,r0]
-	ldr r5, off_8143BEC // =byte_8143BF0 
+	ldr r5, off_8143BEC // =groundmanMinigameMapActiveFlags_8143bf0 
 	ldr r5, [r5,r0]
 	mov r6, #0
 	mvn r6, r6
@@ -3429,15 +3463,16 @@ loc_8143BE2:
 loc_8143BE8:
 	mov r0, #0
 	pop {r4-r7,pc}
-off_8143BEC: .word byte_8143BF0
-byte_8143BF0: .byte 0x98, 0xD, 0x0, 0x0, 0xA2, 0xD, 0x0, 0x0
+off_8143BEC: .word groundmanMinigameMapActiveFlags_8143bf0
+groundmanMinigameMapActiveFlags_8143bf0:
+	.word EVENT_D98, EVENT_DA2
 off_8143BF8: .word off_814380C
 	thumb_func_end sub_8143BB0
 
 	thumb_local_start
 sub_8143BFC:
 	push {r4-r7,lr}
-	bl sub_8143B30
+	bl GetGroundmanMinigameMapIndex
 	ldr r1, off_8143C0C // =byte_8143C10 
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
@@ -3450,7 +3485,7 @@ byte_8143C10: .byte 0x78, 0x1E, 0x0, 0x0, 0x4C, 0x1D, 0x0, 0x0
 	thumb_local_start
 sub_8143C18:
 	push {r4-r7,lr}
-	bl sub_8143B30
+	bl GetGroundmanMinigameMapIndex
 	ldr r1, off_8143C28 // =dword_8143C2C 
 	lsl r0, r0, #1
 	ldrh r0, [r1,r0]
@@ -3485,7 +3520,7 @@ sub_8143C30:
 	thumb_local_start
 sub_8143C62:
 	push {r4-r7,lr}
-	bl sub_8143B30
+	bl GetGroundmanMinigameMapIndex
 	ldr r1, off_8143C7C // =off_8143C80 
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
@@ -3505,7 +3540,7 @@ sub_8143C88:
 	mov r0, #1
 	mov r1, #0xbb
 	bl SetEventFlagFromImmediate
-	bl sub_8143B30
+	bl GetGroundmanMinigameMapIndex
 	ldr r4, off_8143D08 // =off_8143D0C 
 	lsl r0, r0, #2
 	ldr r4, [r4,r0]
@@ -3539,7 +3574,7 @@ sub_8143CC8:
 	mov r0, #1
 	mov r1, #0xbb
 	bl ClearEventFlagFromImmediate
-	bl sub_8143B30
+	bl GetGroundmanMinigameMapIndex
 	ldr r4, off_8143D08 // =off_8143D0C 
 	lsl r0, r0, #2
 	ldr r4, [r4,r0]
@@ -3605,7 +3640,7 @@ loc_8143D68:
 sub_8143D7A:
 	push {r4-r7,lr}
 	push {r0,r1}
-	bl sub_8143D9E
+	bl GetGroundmanMinigameGridOffsetsForMap
 	pop {r3,r4}
 	asr r3, r3, #0x10
 	asr r4, r4, #0x10
@@ -3623,10 +3658,13 @@ sub_8143D7A:
 	thumb_func_end sub_8143D7A
 
 	thumb_local_start
-sub_8143D9E:
+// get the map coordinate grid offsets of the current map
+// offsets that are added to scaled grid coordinates
+// to align with the map grid visually
+GetGroundmanMinigameGridOffsetsForMap:
 	push {r4-r7,lr}
-	bl sub_8143B30
-	ldr r3, off_8143DB4 // =dword_8143DB8 
+	bl GetGroundmanMinigameMapIndex
+	ldr r3, =GroundmanMinigameMapBasedGridOffsets 
 	lsl r0, r0, #1
 	add r3, r3, r0
 	mov r0, #0
@@ -3634,15 +3672,19 @@ sub_8143D9E:
 	mov r1, #1
 	ldrsb r1, [r3,r1]
 	pop {r4-r7,pc}
-off_8143DB4: .word dword_8143DB8
-dword_8143DB8: .word 0xF8080000
-	thumb_func_end sub_8143D9E
+	.balign 4, 0
+	.pool // 8143DB4
+GroundmanMinigameMapBasedGridOffsets:
+	.byte 0, 0
+	.byte 8, -8
+	thumb_func_end GetGroundmanMinigameGridOffsetsForMap
 
-	thumb_func_start sub_8143DBC
-sub_8143DBC:
+	thumb_func_start ConvertGroundmanMinigameGridCoordsToMapCoords
+// convert groundman minigame grid coordinates to map coordinates
+ConvertGroundmanMinigameGridCoordsToMapCoords:
 	push {r4-r7,lr}
 	mov r1, #0x80
-	lsl r1, r1, #1
+	lsl r1, r1, #1 // r1 = 0x100
 	svc 6
 	mov r2, r0
 	mov r0, r1
@@ -3652,7 +3694,7 @@ sub_8143DBC:
 	lsl r0, r0, #5
 	lsl r1, r1, #5
 	push {r0,r1}
-	bl sub_8143D9E
+	bl GetGroundmanMinigameGridOffsetsForMap
 	pop {r3,r4}
 	sub r0, r3, r0
 	sub r1, r4, r1
@@ -3662,7 +3704,7 @@ sub_8143DBC:
 	lsl r1, r1, #0x10
 	mov r2, #0
 	pop {r4-r7,pc}
-	thumb_func_end sub_8143DBC
+	thumb_func_end ConvertGroundmanMinigameGridCoordsToMapCoords
 
 	thumb_func_start sub_8143DEA
 sub_8143DEA:
@@ -3699,7 +3741,7 @@ loc_8143E0C:
 	str r0, [sp]
 	str r1, [sp,#4]
 	mov r0, r6
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	sub r0, r0, r2
@@ -3707,7 +3749,7 @@ loc_8143E0C:
 	bl sub_80014D4
 	str r0, [sp,#8]
 	mov r0, r7
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	sub r0, r0, r2
@@ -3761,10 +3803,10 @@ sub_8143EA4:
 sub_8143EB0:
 	push {r4-r7,lr}
 	mov r4, r1
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	push {r0,r1}
 	mov r0, r4
-	bl sub_8143DBC
+	bl ConvertGroundmanMinigameGridCoordsToMapCoords
 	pop {r2,r3}
 	sub r0, r0, r2
 	sub r1, r3, r1
@@ -3784,7 +3826,7 @@ sub_8143EB0:
 sub_8143EDC:
 	push {r4-r7,lr}
 	mov r6, r0
-	bl sub_8143B30
+	bl GetGroundmanMinigameMapIndex
 	lsl r0, r0, #2
 	ldr r7, off_8143F18 // =off_8143804 
 	ldr r7, [r7,r0]
@@ -4063,7 +4105,7 @@ sub_81440AE:
 	mov r0, #1
 	bl TestPETMenuDataFlag
 	bne loc_81440D0
-	bl sub_8143B30
+	bl GetGroundmanMinigameMapIndex
 	cmp r0, #0xff
 	beq loc_81440D0
 	bl sub_8143C18
