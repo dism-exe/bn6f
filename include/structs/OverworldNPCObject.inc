@@ -23,7 +23,7 @@
 	u8 CurAction // loc=0x9
 		struct_const MOVEMENT_FLAG_STOP,                      0x00
 		struct_const MOVEMENT_FLAG_DEFAULT_MOVING,            0x04
-		struct_const MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES,  0x08
+		struct_const MOVEMENT_FLAG_HOP_OR_LEAP,               0x08
 		struct_const MOVEMENT_FLAG_WAIT_ANIM_FRAME,           0x0c
 		struct_const MOVEMENT_FLAG_CALL_NATIVE_FUNCTION,      0x10
 		struct_const MOVEMENT_FLAG_WAIT_CUTSCENE_VAR,         0x14

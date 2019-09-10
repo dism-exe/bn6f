@@ -353,7 +353,7 @@ int npc_updateLeapMovement_809e95e()
 
 
 // 0x809e9c0
-signed int npc_809E9C0()
+signed int npc_initDiagonalLeapMovement_809e9c0()
 {
     int v0; // r5
     signed int result; // r0
@@ -368,7 +368,7 @@ signed int npc_809E9C0()
 
 
 // 0x809e9da
-int npc_809E9DA()
+int npc_updateDiagonalLeapMovement_809e9da()
 {
     int v0; // r5
     int v1; // ST00_4
@@ -578,7 +578,7 @@ int npc_runPrimaryScript_809ebdc()
         if ( *(v0 + 25) )
             break;
         v2 = *(v0 + 76);
-        (npc_jt_commands[*v2])();
+        (NPCCommandsJumptable[*v2])();
         *(v0 + 76) = v2;
     }
     return result;
@@ -600,7 +600,7 @@ int npc_runSecondaryScriptMaybe_809ebf8()
         v2 = *(v0 + 92);
         if ( !v2 )
             return result;
-        (npc_jt_commands[*v2])();
+        (NPCCommandsJumptable[*v2])();
         *(v0 + 92) = v2;
     }
     return npc_decrementSecondaryTimer_809ec1c();
@@ -823,7 +823,7 @@ int NPCCommand_pause()
 
 
 // 0x809ee82
-int NPCCommand_hop()
+int NPCCommand_init_hop()
 {
     int v0; // r5
     int v1; // r6
@@ -1320,7 +1320,7 @@ int NPCCommand_end_secondary_script()
 
 
 // 0x809f198
-int NPCCommand_init_native_call()
+int NPCCommand_init_native_callback()
 {
     int v0; // r5
     int v1; // r6
@@ -1353,7 +1353,7 @@ int NPCCommand_jump_with_link()
 
 
 // 0x809f1d8
-int NPCCommand_init_native_call_with_args()
+int NPCCommand_init_native_callback_with_args()
 {
     int v0; // r5
     _BYTE *v1; // r6
@@ -1632,7 +1632,7 @@ int NPCCommand_jump_alt()
 
 
 // 0x809f3f6
-int NPCCommand_leap()
+int NPCCommand_init_leap()
 {
     int v0; // r5
     _BYTE *v1; // r6

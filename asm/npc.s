@@ -8,7 +8,7 @@ npc_809E570:
 	mov lr, pc
 	bx r7
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 jt_809E580: .word npc_init_809E590+1
 	.word npc_standard_809E5E2+1
 	.word npc_inChatbox_809EADA+1
@@ -514,8 +514,8 @@ jt_809E8E0: .word npc_initHopMovement_809e8fc+1
 	.word npc_updateHopMovement_809e916+1
 	.word npc_initLeapMovement_809e944+1
 	.word npc_updateLeapMovement_809e95e+1
-	.word npc_809E9C0+1
-	.word npc_809E9DA+1
+	.word npc_initDiagonalLeapMovement_809e9c0+1
+	.word npc_updateDiagonalLeapMovement_809e9da+1
 off_809E8F8: .word jt_809E8E0
 	thumb_func_end npc_doHopMovement_809e8cc
 
@@ -665,7 +665,7 @@ NPCLeapDirectionTable:
 	thumb_func_end npc_updateLeapMovement_809e95e
 
 	thumb_local_start
-npc_809E9C0:
+npc_initDiagonalLeapMovement_809e9c0:
 	push {lr}
 
 	ldrb r0, [r5,#oOverworldNPCObject_MovementSpeed]
@@ -684,10 +684,10 @@ npc_809E9C0:
 	strb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
 
 	pop {pc}
-	thumb_func_end npc_809E9C0
+	thumb_func_end npc_initDiagonalLeapMovement_809e9c0
 
 	thumb_local_start
-npc_809E9DA:
+npc_updateDiagonalLeapMovement_809e9da:
 	push {lr}
 
 	mov r0, #oOverworldNPCObject_Coords
@@ -744,7 +744,7 @@ byte_809EA34:
 	.byte oOverworldNPCObject_Y16, 0
 	.byte oOverworldNPCObject_X16, 1
 	.byte oOverworldNPCObject_Y16, 1
-	thumb_func_end npc_809E9DA
+	thumb_func_end npc_updateDiagonalLeapMovement_809e9da
 
 	thumb_local_start
 npc_waitAnimFrame_809ea3c:
@@ -960,6 +960,7 @@ npc_inChatbox_curAction_init_809EB20:
 	strb r0, [r5,#oOverworldNPCObject_MovementFlag_0a]
 	bl npc_inChatbox_curAction_waitClose_809EBBC
 	pop {pc}
+	.balign 4, 0
 off_809EBB4: .word OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400
 dword_809EBB8: .word OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x800
 	thumb_func_end npc_inChatbox_curAction_init_809EB20
@@ -992,7 +993,7 @@ npc_runPrimaryScript_809ebdc:
 	ldr r6, [r5,#oOverworldNPCObject_AnimationScriptPtr]
 	ldrb r0, [r6]
 	lsl r0, r0, #2
-	ldr r7, off_809EC2C // =npc_jt_commands 
+	ldr r7, =NPCCommandsJumptable 
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
@@ -1014,7 +1015,7 @@ npc_runSecondaryScriptMaybe_809ebf8:
 	beq .noSecondaryScript
 	ldrb r0, [r6]
 	lsl r0, r0, #2
-	ldr r7, off_809EC2C // =npc_jt_commands 
+	ldr r7, =NPCCommandsJumptable 
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
@@ -1037,8 +1038,10 @@ npc_decrementSecondaryTimer_809ec1c:
 	strb r0, [r5,#oOverworldNPCObject_TerminateScript_1f]
 .timerNotZero
 	pop {pc}
-off_809EC2C: .word npc_jt_commands
-npc_jt_commands: .word NPCCommand_end+1
+	.balign 4, 0
+	.pool // 809EC2C
+NPCCommandsJumptable:
+	.word NPCCommand_end+1
 	.word NULL
 	.word NPCCommand_jump+1
 	.word NPCCommand_free_and_end+1
@@ -1055,7 +1058,7 @@ npc_jt_commands: .word NPCCommand_end+1
 	.word NPCCommand_disable_npc_interaction+1
 	.word NPCCommand_set_npc_palette_index+1
 	.word NPCCommand_pause+1
-	.word NPCCommand_hop+1
+	.word NPCCommand_init_hop+1
 	.word NPCCommand_face_player_when_interacted+1
 	.word NPCCommand_do_not_face_player_when_interacted+1
 	.word NPCCommand_set_coords+1
@@ -1091,9 +1094,9 @@ npc_jt_commands: .word NPCCommand_end+1
 	.word NPCCommand_run_secondary_script+1
 	.word NPCCommand_pause_secondary_script+1
 	.word NPCCommand_end_secondary_script+1
-	.word NPCCommand_init_native_call+1
+	.word NPCCommand_init_native_callback+1
 	.word NPCCommand_jump_with_link+1
-	.word NPCCommand_init_native_call_with_args+1
+	.word NPCCommand_init_native_callback_with_args+1
 	.word NPCCommand_init_movement+1
 	.word NPCCommand_change_movement_direction+1
 	.word NPCCommand_return_to_link+1
@@ -1116,7 +1119,7 @@ npc_jt_commands: .word NPCCommand_end+1
 	.word NPCCommand_jump_if_anim_not_equal+1
 	.word NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer+1
 	.word NPCCommand_jump_alt+1
-	.word NPCCommand_leap+1
+	.word NPCCommand_init_leap+1
 	.word NPCCommand_init_vertical_movement+1
 	.word NPCCommand_init_diagonal_leap+1
 	.word NPCCommand_init_groundman_minigame_prog+1
@@ -1378,20 +1381,20 @@ NPCCommand_pause:
 
 // byte1 - hop param base
 // byte2 - hop param delta
-NPCCommand_hop:
+NPCCommand_init_hop:
 	push {lr}
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#oOverworldNPCObject_MovementSpeed]
 	ldrb r0, [r6,#2]
 	strb r0, [r5,#oOverworldNPCObject_MovementDistance]
-	mov r0, #MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES
+	mov r0, #MOVEMENT_FLAG_HOP_OR_LEAP
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	bl npc_disableScript0x19_809f51e
 	add r6, #3
 	pop {pc}
-	thumb_func_end NPCCommand_hop
+	thumb_func_end NPCCommand_init_hop
 
 	thumb_local_start
 // 0x12
@@ -2043,7 +2046,7 @@ NPCCommand_end_secondary_script:
 // initialize a native callback for the current npc
 // also writes to the link register field (of the current npc)
 // word1 - native function to set as callback
-NPCCommand_init_native_call:
+NPCCommand_init_native_callback:
 	push {lr}
 	mov r4, #oOverworldNPCObject_LinkRegister
 	add r0, r6, #5
@@ -2066,7 +2069,7 @@ NPCCommand_init_native_call:
 	bl npc_disableScript0x19_809f51e
 	add r6, #5
 	pop {pc}
-	thumb_func_end NPCCommand_init_native_call
+	thumb_func_end NPCCommand_init_native_callback
 
 	thumb_local_start
 // 0x36 destination1
@@ -2092,7 +2095,7 @@ NPCCommand_jump_with_link:
 // byte3 - third param for native callback
 // byte4 - fourth param for native callback
 // word5 - native function to set as callback
-NPCCommand_init_native_call_with_args:
+NPCCommand_init_native_callback_with_args:
 	push {lr}
 	mov r4, #oOverworldNPCObject_LinkRegister
 	mov r1, #9
@@ -2124,7 +2127,7 @@ NPCCommand_init_native_call_with_args:
 	bl npc_disableScript0x19_809f51e
 	add r6, #9
 	pop {pc}
-	thumb_func_end NPCCommand_init_native_call_with_args
+	thumb_func_end NPCCommand_init_native_callback_with_args
 
 	thumb_local_start
 // 0x38 byte1 byte2 byte3 destination4
@@ -2579,7 +2582,7 @@ NPCCommand_jump_alt:
 // 02 - down left
 // 03 - down right
 // byte4 - velocity of leap, in whole pixels
-NPCCommand_leap:
+NPCCommand_init_leap:
 	push {lr}
 
 	ldrb r0, [r6,#1]
@@ -2594,14 +2597,14 @@ NPCCommand_leap:
 	ldrb r0, [r6,#4]
 	strb r0, [r5,#oOverworldNPCObject_Unk_07]
 
-	mov r0, #MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES
+	mov r0, #MOVEMENT_FLAG_HOP_OR_LEAP
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 	mov r0, #8
 	strh r0, [r5,#oOverworldNPCObject_MovementFlag_0a_Unk_0b]
 	bl npc_disableScript0x19_809f51e
 	add r6, #5
 	pop {pc}
-	thumb_func_end NPCCommand_leap
+	thumb_func_end NPCCommand_init_leap
 
 	thumb_local_start
 // 0x4f byte1 byte2 byte3
@@ -2672,7 +2675,7 @@ NPCCommand_init_diagonal_leap:
 	ldrb r0, [r6,#4]
 	strb r0, [r5,#oOverworldNPCObject_Unk_07]
 
-	mov r0, #MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES
+	mov r0, #MOVEMENT_FLAG_HOP_OR_LEAP
 	strb r0, [r5,#oOverworldNPCObject_CurAction]
 
 	mov r0, #0x10
