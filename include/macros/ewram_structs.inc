@@ -24,6 +24,7 @@
 	.include "structs/Camera.inc"
 	.include "structs/CutsceneCameraInfo.inc"
 	.include "structs/OWObjectInteractionArea.inc"
+	.include "structs/S20094c0.inc"
 
 /*
 rough notes for now
