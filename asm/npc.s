@@ -993,7 +993,7 @@ npc_runPrimaryScript_809ebdc:
 	ldr r6, [r5,#oOverworldNPCObject_AnimationScriptPtr]
 	ldrb r0, [r6]
 	lsl r0, r0, #2
-	ldr r7, =NPCCommandsJumptable 
+	ldr r7, =NPCCommandsJumptable
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
@@ -2340,7 +2340,7 @@ NPCCommand_wait_cutscene_var:
 	thumb_func_end NPCCommand_wait_cutscene_var
 
 	thumb_local_start
-// 0x41
+// 0x40
 // set the flag OW_NPC_UNK_FLAGS_60_0x200 to the current npc's flags
 NPCCommand_set_unk_flags_60_flag_0x200:
 	push {lr}
@@ -2354,7 +2354,7 @@ NPCCommand_set_unk_flags_60_flag_0x200:
 	thumb_func_end NPCCommand_set_unk_flags_60_flag_0x200
 
 	thumb_local_start
-// 0x42
+// 0x41
 // clear the flag OW_NPC_UNK_FLAGS_60_0x200 from the current npc's flags
 NPCCommand_clear_unk_flags_60_flag_0x200:
 	push {lr}

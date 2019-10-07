@@ -179,6 +179,14 @@
 	.word \word1
 	.endm
 
+// helper macro
+// 0x14 word=0x0
+// clear the script that is run when a cutscene is skipped
+// effectively disabling cutscene skip
+	.macro cs_disable_cutscene_skip_script
+	.byte cs_set_cutscene_skip_script_cmd
+	.endm
+
 // shared command
 	enum cs_jump_cmd // 0x15
 // 0x01/0x15 destination1
@@ -697,13 +705,26 @@
 	.endm
 
 	enum cs_set_or_clear_chatbox_flags_cmd // 0x3c
-// 0x3c byte1 byte2
+	subenum_start
+
+	subenum cs_set_chatbox_flags_subcmd // 0x0
+// 0x3c 0x0 byte2
+// set chatbox flags
+// byte2 - flags to set or clear
+	.macro cs_set_chatbox_flags byte2:req
+	.byte cs_set_or_clear_chatbox_flags_cmd
+	.byte cs_set_chatbox_flags_subcmd
+	.byte \byte2
+	.endm
+
+	subenum cs_clear_chatbox_flags_subcmd // 0x0
+// 0x3c 0x1 byte2
 // set or clear chatbox flags
 // byte1 - operation type (0 = set, 1 = clear)
 // byte2 - flags to set or clear
-	.macro cs_set_or_clear_chatbox_flags byte1:req byte2:req
+	.macro cs_clear_chatbox_flags byte2:req
 	.byte cs_set_or_clear_chatbox_flags_cmd
-	.byte \byte1
+	.byte cs_clear_chatbox_flags_subcmd
 	.byte \byte2
 	.endm
 
@@ -941,13 +962,13 @@
 	.endm
 
 	subenum cs_spawn_ow_map_object_rel_to_ow_player_subcmd // 0x1
-// 0x49 0x1X byte2 hword3 hword5 hword7 word9
+// 0x49 0x1X byte2 signedhword3 signedhword5 signedhword7 word9
 // spawn overworld map object relative to overworld player
 // byte1 lower nybble - index of cutscene state map object ptrs to store the new map object
 // byte2 - overworld map object index
-// hword3 - map object x coordinate offset to player
-// hword5 - map object y coordinate offset to player
-// hword7 - map object z coordinate offset to player
+// signedhword3 - map object x coordinate offset to player
+// signedhword5 - map object y coordinate offset to player
+// signedhword7 - map object z coordinate offset to player
 // word9 - unknown param (written to field oOverworldMapObject_Unk_04)
 	.macro cs_spawn_ow_map_object_rel_to_ow_player nybble1:req byte2:req hword3:req hword5:req hword7:req word9:req
 	.byte cs_spawn_free_ow_map_object_specials_cmd
@@ -960,14 +981,14 @@
 	.endm
 
 	subenum cs_spawn_ow_map_object_rel_to_ow_npc_subcmd // 0x2
-// 0x49 0x2X byte2 byte3 hword4 hword6 hword8 word10
+// 0x49 0x2X byte2 byte3 signedhword4 signedhword6 signedhword8 word10
 // spawn overworld map object relative to overworld npc
 // byte1 lower nybble - index of cutscene state map object ptrs to store the new map object
 // byte2 - overworld npc object to read coordinates from
 // byte3 - overworld map object index
-// hword4 - map object x coordinate offset to npc
-// hword6 - map object y coordinate offset to npc
-// hword8 - map object z coordinate offset to npc
+// signedhword4 - map object x coordinate offset to npc
+// signedhword6 - map object y coordinate offset to npc
+// signedhword8 - map object z coordinate offset to npc
 // word10 - unknown param (written to field oOverworldMapObject_Unk_04)
 	.macro cs_spawn_ow_map_object_rel_to_ow_npc nybble1:req byte2:req byte3:req hword4:req hword6:req hword8:req word10:req
 	.byte cs_spawn_free_ow_map_object_specials_cmd
