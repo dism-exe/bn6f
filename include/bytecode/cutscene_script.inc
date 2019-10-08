@@ -180,11 +180,12 @@
 	.endm
 
 // helper macro
-// 0x14 word=0x0
+// 0x14 word1=0x0
 // clear the script that is run when a cutscene is skipped
 // effectively disabling cutscene skip
 	.macro cs_disable_cutscene_skip_script
 	.byte cs_set_cutscene_skip_script_cmd
+	.word 0x0
 	.endm
 
 // shared command
