@@ -2609,7 +2609,7 @@ CutsceneCameraCommandJumptable: .word CutsceneCameraCmd_set_camera_pos+1
 	thumb_func_end RunCutsceneCameraCommand
 
 	thumb_local_start
-// 0x0 hword1 hword3 hword5
+// 0x00 hword1 hword3 hword5
 // set the camera position
 // hword1 - x coord
 // hword3 - y coord
@@ -2636,12 +2636,12 @@ CutsceneCameraCmd_set_camera_pos:
 	thumb_func_end CutsceneCameraCmd_set_camera_pos
 
 	thumb_local_start
-// 0x4 hword1 hword3 hword5 hword7
+// 0x04 hword1 hword3 hword5 hword7
 // scroll the camera
 // hword1 - scroll duration
-// hword3 - x offset
-// hword5 - y offset
-// hword7 - z offset
+// signedhword3 - x offset
+// signedhword5 - y offset
+// signedhword7 - z offset
 CutsceneCameraCmd_simple_scroll:
 	push {lr}
 	ldrb r0, [r5,#oCutsceneCameraInfo_CommandInitialized]
@@ -2689,7 +2689,7 @@ CutsceneCameraCmd_simple_scroll:
 	thumb_func_end CutsceneCameraCmd_simple_scroll
 
 	thumb_local_start
-// 0x8
+// 0x08
 // end cutscene camera script
 CutsceneCameraCmd_end:
 	mov r0, #0
@@ -2697,7 +2697,7 @@ CutsceneCameraCmd_end:
 	thumb_func_end CutsceneCameraCmd_end
 
 	thumb_local_start
-// 0xc hword1
+// 0x0c hword1
 // wait a certain amount of frames
 // hword1 - number of frames to wait
 CutsceneCameraCmd_wait:
@@ -4013,7 +4013,7 @@ MapScriptCutsceneCmd_jump_if_battle_result_equals:
 	thumb_func_end MapScriptCutsceneCmd_jump_if_battle_result_equals
 
 	thumb_local_start
-// 0xb/0x20 byte1 destination2
+// 0x0b/0x20 byte1 destination2
 // jump if battle result doesn't equal byte1
 // byte1 - value to compare battle result with (0=won, 1=lost, 2=tie, 3=escaped)
 // destination2 - script to jump to
@@ -4818,13 +4818,13 @@ MapScriptSubCmd_spawn_ow_map_object:
 	.set oStack_OWPlayerObject_X, 0x0
 	.set oStack_OWPlayerObject_Y, 0x4
 	.set oStack_OWPlayerObject_Z, 0x8
-// 0x49 0x1X byte2 hword3 hword5 hword7 word9
+// 0x49 0x1X byte2 signedhword3 signedhword5 signedhword7 word9
 // spawn overworld map object relative to overworld player
 // byte1 lower nybble - index of cutscene state map object ptrs to store the new map object
 // byte2 - overworld map object index
-// hword3 - map object x coordinate offset to player
-// hword5 - map object y coordinate offset to player
-// hword7 - map object z coordinate offset to player
+// signedhword3 - map object x coordinate offset to player
+// signedhword5 - map object y coordinate offset to player
+// signedhword7 - map object z coordinate offset to player
 // word9 - unknown param (written to field oOverworldMapObject_Unk_04)
 MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_player:
 	push {lr}
@@ -4876,14 +4876,14 @@ MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_player:
 	.set oStack_OverworldNPCObject_X, 0x0
 	.set oStack_OverworldNPCObject_Y, 0x4
 	.set oStack_OverworldNPCObject_Z, 0x8
-// 0x49 0x2X byte2 byte3 hword4 hword6 hword8 word10
+// 0x49 0x2X byte2 byte3 signedhword4 signedhword6 signedhword8 word10
 // spawn overworld map object relative to overworld npc
 // byte1 lower nybble - index of cutscene state map object ptrs to store the new map object
 // byte2 - overworld npc object to read coordinates from
 // byte3 - overworld map object index
-// hword4 - map object x coordinate offset to npc
-// hword6 - map object y coordinate offset to npc
-// hword8 - map object z coordinate offset to npc
+// signedhword4 - map object x coordinate offset to npc
+// signedhword6 - map object y coordinate offset to npc
+// signedhword8 - map object z coordinate offset to npc
 // word10 - unknown param (written to field oOverworldMapObject_Unk_04)
 MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_npc:
 	push {lr}
