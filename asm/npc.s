@@ -1041,90 +1041,90 @@ npc_decrementSecondaryTimer_809ec1c:
 	.balign 4, 0
 	.pool // 809EC2C
 NPCCommandsJumptable:
-	.word NPCCommand_end+1
-	.word NULL
-	.word NPCCommand_jump+1
-	.word NPCCommand_free_and_end+1
-	.word NPCCommand_jump_if_flag_set+1
-	.word NPCCommand_jump_if_flag_clear+1
-	.word NPCCommand_set_event_flag+1
-	.word NPCCommand_clear_event_flag+1
-	.word NPCCommand_set_active_and_visible+1
-	.word NPCCommand_set_active_and_invisible+1
-	.word NPCCommand_set_collision_radius+1
-	.word NPCCommand_set_z_reach+1
-	.word NPCCommand_shift_center+1
-	.word NPCCommand_enable_npc_interaction+1
-	.word NPCCommand_disable_npc_interaction+1
-	.word NPCCommand_set_npc_palette_index+1
-	.word NPCCommand_pause+1
-	.word NPCCommand_init_hop+1
-	.word NPCCommand_face_player_when_interacted+1
-	.word NPCCommand_do_not_face_player_when_interacted+1
-	.word NPCCommand_set_coords+1
-	.word NPCCommand_move_in_direction+1
-	.word NPCCommand_set_animation+1
-	.word NPCCommand_set_sprite+1
-	.word NPCCommand_set_text_script_index+1
-	.word NPCCommand_disable_layer_priority_override+1
-	.word NPCCommand_set_layer_priority_override_to_2+1
-	.word NPCCommand_set_layer_priority_override_to_3+1
-	.word NPCCommand_write_hidden_oam_pieces+1
-	.word NPCCommand_set_individual_hidden_oam_piece+1
-	.word NPCCommand_clear_individual_hidden_oam_piece+1
-	.word NPCCommand_disable_collision+1
-	.word NPCCommand_enable_collision+1
-	.word NPCCommand_give_attached_shadow+1
-	.word NPCCommand_give_detatched_shadow+1
-	.word NPCCommand_remove_shadow+1
-	.word NPCCommand_set_sprite_to_cur_pet_navi+1
-	.word NPCCommand_set_sprite_with_category+1
-	.word NPCCommand_toggle_sprite_mirror+1
-	.word NPCCommand_disable_collision_alternate+1
-	.word NPCCommand_play_sound+1
-	.word NPCCommand_init_mystery_data+1
-	.word NPCCommand_wait_anim_frame+1
-	.word NPCCommand_set_color_shader+1
-	.word NULL
-	.word NPCCommand_set_mosaic+1
-	.word NPCCommand_set_animation_force_update+1
-	.word NPCCommand_set_transform+1
-	.word NPCCommand_remove_transform+1
-	.word NPCCommand_set_alpha+1
-	.word NPCCommand_run_secondary_script+1
-	.word NPCCommand_pause_secondary_script+1
-	.word NPCCommand_end_secondary_script+1
-	.word NPCCommand_init_native_callback+1
-	.word NPCCommand_jump_with_link+1
-	.word NPCCommand_init_native_callback_with_args+1
-	.word NPCCommand_init_movement+1
-	.word NPCCommand_change_movement_direction+1
-	.word NPCCommand_return_to_link+1
-	.word NPCCommand_jump_if_progress_in_range+1
-	.word NPCCommand_write_cutscene_var+1
-	.word NPCCommand_jump_if_cutscene_var_equals+1
-	.word NPCCommand_jump_if_cutscene_var_not_equal+1
-	.word NPCCommand_wait_cutscene_var+1
-	.word NPCCommand_set_unk_flags_60_flag_0x200+1
-	.word NPCCommand_clear_unk_flags_60_flag_0x200+1
-	.word NULL
-	.word NULL
-	.word NPCCommand_set_text_script_index_and_ptr+1
-	.word NPCCommand_wait_mystery_data_taken+1
-	.word NPCCommand_set_obj_window_mode+1
-	.word NPCCommand_play_music+1
-	.word NPCCommand_set_sprite_0x3_bit5+1
-	.word NPCCommand_remove_shadow_ignore_flags+1
-	.word NPCCommand_do_camera_shake+1
-	.word NPCCommand_jump_if_anim_not_equal+1
-	.word NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer+1
-	.word NPCCommand_jump_alt+1
-	.word NPCCommand_init_leap+1
-	.word NPCCommand_init_vertical_movement+1
-	.word NPCCommand_init_diagonal_leap+1
-	.word NPCCommand_init_groundman_minigame_prog+1
-	.word NPCCommand_jack_out+1
-	.word NPCCommand_jump_if_screen_fade_active+1
+	.word NPCCommand_end+1                                            // 0x0
+	.word NULL                                                        // 0x1
+	.word NPCCommand_jump+1                                           // 0x2
+	.word NPCCommand_free_and_end+1                                   // 0x3
+	.word NPCCommand_jump_if_flag_set+1                               // 0x4
+	.word NPCCommand_jump_if_flag_clear+1                             // 0x5
+	.word NPCCommand_set_event_flag+1                                 // 0x6
+	.word NPCCommand_clear_event_flag+1                               // 0x7
+	.word NPCCommand_set_active_and_visible+1                         // 0x8
+	.word NPCCommand_set_active_and_invisible+1                       // 0x9
+	.word NPCCommand_set_collision_radius+1                           // 0xa
+	.word NPCCommand_set_z_reach+1                                    // 0xb
+	.word NPCCommand_shift_center+1                                   // 0xc
+	.word NPCCommand_enable_npc_interaction+1                         // 0xd
+	.word NPCCommand_disable_npc_interaction+1                        // 0xe
+	.word NPCCommand_set_npc_palette_index+1                          // 0xf
+	.word NPCCommand_pause+1                                          // 0x10
+	.word NPCCommand_init_hop+1                                       // 0x11
+	.word NPCCommand_face_player_when_interacted+1                    // 0x12
+	.word NPCCommand_do_not_face_player_when_interacted+1             // 0x13
+	.word NPCCommand_set_coords+1                                     // 0x14
+	.word NPCCommand_move_in_direction+1                              // 0x15
+	.word NPCCommand_set_animation+1                                  // 0x16
+	.word NPCCommand_set_sprite+1                                     // 0x17
+	.word NPCCommand_set_text_script_index+1                          // 0x18
+	.word NPCCommand_disable_layer_priority_override+1                // 0x19
+	.word NPCCommand_set_layer_priority_override_to_2+1               // 0x1a
+	.word NPCCommand_set_layer_priority_override_to_3+1               // 0x1b
+	.word NPCCommand_write_hidden_oam_pieces+1                        // 0x1c
+	.word NPCCommand_set_individual_hidden_oam_piece+1                // 0x1d
+	.word NPCCommand_clear_individual_hidden_oam_piece+1              // 0x1e
+	.word NPCCommand_disable_collision+1                              // 0x1f
+	.word NPCCommand_enable_collision+1                               // 0x20
+	.word NPCCommand_give_attached_shadow+1                           // 0x21
+	.word NPCCommand_give_detatched_shadow+1                          // 0x22
+	.word NPCCommand_remove_shadow+1                                  // 0x23
+	.word NPCCommand_set_sprite_to_cur_pet_navi+1                     // 0x24
+	.word NPCCommand_set_sprite_with_category+1                       // 0x25
+	.word NPCCommand_toggle_sprite_mirror+1                           // 0x26
+	.word NPCCommand_disable_collision_alternate+1                    // 0x27
+	.word NPCCommand_play_sound+1                                     // 0x28
+	.word NPCCommand_init_mystery_data+1                              // 0x29
+	.word NPCCommand_wait_anim_frame+1                                // 0x2a
+	.word NPCCommand_set_color_shader+1                               // 0x2b
+	.word NULL                                                        // 0x2c
+	.word NPCCommand_set_mosaic+1                                     // 0x2d
+	.word NPCCommand_set_animation_force_update+1                     // 0x2e
+	.word NPCCommand_set_transform+1                                  // 0x2f
+	.word NPCCommand_remove_transform+1                               // 0x30
+	.word NPCCommand_set_alpha+1                                      // 0x31
+	.word NPCCommand_run_secondary_script+1                           // 0x32
+	.word NPCCommand_pause_secondary_script+1                         // 0x33
+	.word NPCCommand_end_secondary_script+1                           // 0x34
+	.word NPCCommand_init_native_callback+1                           // 0x35
+	.word NPCCommand_jump_with_link+1                                 // 0x36
+	.word NPCCommand_init_native_callback_with_args+1                 // 0x37
+	.word NPCCommand_init_movement+1                                  // 0x38
+	.word NPCCommand_change_movement_direction+1                      // 0x39
+	.word NPCCommand_return_to_link+1                                 // 0x3a
+	.word NPCCommand_jump_if_progress_in_range+1                      // 0x3b
+	.word NPCCommand_write_cutscene_var+1                             // 0x3c
+	.word NPCCommand_jump_if_cutscene_var_equals+1                    // 0x3d
+	.word NPCCommand_jump_if_cutscene_var_not_equal+1                 // 0x3e
+	.word NPCCommand_wait_cutscene_var+1                              // 0x3f
+	.word NPCCommand_set_unk_flags_60_flag_0x200+1                    // 0x40
+	.word NPCCommand_clear_unk_flags_60_flag_0x200+1                  // 0x41
+	.word NULL                                                        // 0x42
+	.word NULL                                                        // 0x43
+	.word NPCCommand_set_text_script_index_and_ptr+1                  // 0x44
+	.word NPCCommand_wait_mystery_data_taken+1                        // 0x45
+	.word NPCCommand_set_obj_window_mode+1                            // 0x46
+	.word NPCCommand_play_music+1                                     // 0x47
+	.word NPCCommand_set_sprite_0x3_bit5+1                            // 0x48
+	.word NPCCommand_remove_shadow_ignore_flags+1                     // 0x49
+	.word NPCCommand_do_camera_shake+1                                // 0x4a
+	.word NPCCommand_jump_if_anim_not_equal+1                         // 0x4b
+	.word NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer+1 // 0x4c
+	.word NPCCommand_jump_alt+1                                       // 0x4d
+	.word NPCCommand_init_leap+1                                      // 0x4e
+	.word NPCCommand_init_vertical_movement+1                         // 0x4f
+	.word NPCCommand_init_diagonal_leap+1                             // 0x50
+	.word NPCCommand_init_groundman_minigame_prog+1                   // 0x51
+	.word NPCCommand_jack_out+1                                       // 0x52
+	.word NPCCommand_jump_if_screen_fade_active+1                     // 0x53
 	thumb_func_end npc_decrementSecondaryTimer_809ec1c
 
 	thumb_local_start
@@ -1492,7 +1492,7 @@ NPCCommand_set_animation:
 // 0x17 byte1
 // set NPC sprite for sprite category 0x18 (NPCs)
 // certain sprites also set the palette index and hide some OAM pieces
-// e.g. Dad and Generic SciLab NPC share the same sprite, but have certain
+// e.g. Yuichiro and Generic SciLab NPC share the same sprite, but have certain
 // OAM pieces hidden and use a different palette index
 // byte1 - new sprite id of NPC
 NPCCommand_set_sprite:

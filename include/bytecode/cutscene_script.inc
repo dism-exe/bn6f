@@ -309,6 +309,7 @@
 // jump if cutscene variable equals byte2
 // byte1 - cutscene variable to read from
 // byte2 - value to compare cutscene variable with
+// destination3 - script to jump to
 	.macro cs_jump_if_var_equal byte1:req byte2:req destination3:req
 	.byte cs_jump_if_var_equal_cmd
 	.byte \byte1

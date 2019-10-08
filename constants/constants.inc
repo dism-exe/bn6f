@@ -38,3 +38,27 @@
 	.equiv TRUE, 1
 	.equiv FALSE, 0
 	.equiv timer_2000000, 0x2000000
+
+	enum_start
+	enum OW_UP // 0
+	enum OW_UP_RIGHT // 1
+	enum OW_RIGHT // 2
+	enum OW_DOWN_RIGHT // 3
+	enum OW_DOWN // 4
+	enum OW_DOWN_LEFT // 5
+	enum OW_LEFT // 6
+	enum OW_UP_LEFT // 7
+
+	enum_start
+	enum NAVI_MEGAMAN // 0
+	enum NAVI_HEATMAN // 1
+	enum NAVI_ELECMAN // 2
+	enum NAVI_SLASHMAN // 3
+	enum NAVI_ERASEMAN // 4
+	enum NAVI_CHARGEMAN // 5
+	enum NAVI_SPOUTMAN // 6
+	enum NAVI_TOMAHAWKMAN // 7
+	enum NAVI_TENGUMAN // 8
+	enum NAVI_GROUNDMAN // 9
+	enum NAVI_DUSTMAN // 10
+	enum NAVI_PROTOMAN // 11

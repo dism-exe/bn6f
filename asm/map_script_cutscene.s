@@ -3968,6 +3968,7 @@ CutsceneCmd_set_cutscene_skip_script:
 // jump if cutscene variable equals byte2
 // byte1 - cutscene variable to read from
 // byte2 - value to compare cutscene variable with
+// destination3 - script to jump to
 CutsceneCmd_jump_if_var_equal:
 	push {lr}
 	mov r6, #1
