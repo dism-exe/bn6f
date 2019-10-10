@@ -3164,18 +3164,23 @@ sub_8001B1C:
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
+
 	ldr r7, off_8001C40 // =byte_20094C0
 	ldrb r1, [r0,#oS8001b1c_Unk_09]
 	mov r2, #oS20094c0_Size
 	mul r2, r1
 	add r7, r7, r2
 	strb r1, [r7,#oS20094c0_Unk_01]
+
 	ldr r1, [r0,#oS8001b1c_Unk_00]
 	str r1, [r7,#oS20094c0_Unk_0c]
+
 	ldr r2, [r0,#oS8001b1c_Unk_04]
 	str r2, [r7,#oS20094c0_Unk_10]
+
 	ldr r3, [r0,#oS8001b1c_Unk_08]
 	str r3, [r7,#oS20094c0_Unk_14_Word]
+
 	add r0, #oS8001b1c_Unk_0c
 	mov r6, #1
 	cmp r3, #8
