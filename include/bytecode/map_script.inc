@@ -223,8 +223,8 @@
 
 	enum ms_jump_if_game_state_0e_equals_cmd // 0x0e
 // 0x0e byte1 destination2
-// jump if byte1 == [eGameState_Unk_0e]
-// byte1 - byte to compare [eGameState_Unk_0e] with
+// jump if byte1 == [eGameState_CoordInteractionValue]
+// byte1 - byte to compare [eGameState_CoordInteractionValue] with
 // destination2 - script to jump to
 	.macro ms_jump_if_game_state_0e_equals byte1:req destination2:req
 	.byte ms_jump_if_game_state_0e_equals_cmd
@@ -235,7 +235,7 @@
 	enum ms_jump_if_game_state_0e_not_equals_cmd // 0x0f
 // 0x0f byte1 destination2
 // jump if byte1 != [eGameStateUnk_0e]
-// byte1 - byte to compare [eGameState_Unk_0e] with
+// byte1 - byte to compare [eGameState_CoordInteractionValue] with
 // destination2 - script to jump to
 	.macro ms_jump_if_game_state_0e_not_equals byte1:req destination2:req
 	.byte ms_jump_if_game_state_0e_not_equals_cmd

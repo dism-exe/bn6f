@@ -484,14 +484,14 @@ loc_8035B88:
 
 	thumb_local_start
 // 0x0e byte1 destination2
-// jump if byte1 == [eGameState_Unk_0e]
-// byte1 - byte to compare [eGameState_Unk_0e] with
+// jump if byte1 == [eGameState_CoordInteractionValue]
+// byte1 - byte to compare [eGameState_CoordInteractionValue] with
 // destination2 - script to jump to
 MapScriptCmd_jump_if_game_state_0e_equals: // 8035b8e
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r0, [r0,#oGameState_Unk_0e]
+	ldrb r0, [r0,#oGameState_CoordInteractionValue]
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r0, r4
@@ -510,13 +510,13 @@ MapScriptCmd_jump_if_game_state_0e_equals: // 8035b8e
 	thumb_local_start
 // 0x0f byte1 destination2
 // jump if byte1 != [eGameStateUnk_0e]
-// byte1 - byte to compare [eGameState_Unk_0e] with
+// byte1 - byte to compare [eGameState_CoordInteractionValue] with
 // destination2 - script to jump to
 MapScriptCmd_jump_if_game_state_0e_not_equals: // 8035BB2
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r0, [r0,#oGameState_Unk_0e]
+	ldrb r0, [r0,#oGameState_CoordInteractionValue]
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r0, r4

@@ -1045,10 +1045,10 @@ sub_809D9E0:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_JoypadPtr]
 	ldrh r1, [r7,#oJoypad_Pressed]
-	mov r2, #8
+	mov r2, #JOYPAD_START
 	tst r2, r1
 	bne loc_809DA82
-	mov r2, #1
+	mov r2, #JOYPAD_A
 	tst r2, r1
 	beq loc_809DA62
 	push {r0,r1,r7}
@@ -1636,7 +1636,7 @@ loc_809DF16:
 	ldrb r0, [r5,#oOWPlayerObject_Unk_0f]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	strb r0, [r7,#oGameState_Unk_0e]
+	strb r0, [r7,#oGameState_CoordInteractionValue]
 	tst r0, r0
 	beq loc_809DF24
 	strb r0, [r7,#oGameState_Unk_03]

@@ -797,7 +797,7 @@ int __fastcall map_8034B4C(int mapGroup, int mapNumber)
     }
     else
     {
-        v7 = &maps00_80345E4;
+        v7 = &RealWorldMapScriptPointers;
     }
     v8 = StoreMapScriptsThenRunOnInitMapScript(v7[2 * vRelMapGroup][vMapNumber], v7[2 * vRelMapGroup + 1][vMapNumber]);
     return sub_8036E78(v8, v9, v10);
@@ -819,7 +819,7 @@ int __fastcall sub_8034BB8(int a1)
         sub_8034C6E();
         if ( !zf )
         {
-            v2 = sub_8034EF0();
+            v2 = HandleCoordinateInteractionCutscene();
             sub_8034F68(v2);
             npc_80350BC();
             sub_8034DB0();
@@ -910,7 +910,7 @@ BOOL sub_8034C6E()
 
 
 // 0x8034c9c
-BOOL sub_8034C9C()
+BOOL isFlag173DClearAndCutsceneScriptNull_8034c9c()
 {
     char v0; // zf
     BOOL result; // r0
@@ -952,7 +952,7 @@ signed int sub_8034CB6()
     int v20; // [sp-8h] [bp-1Ch]
     int v21; // [sp-4h] [bp-18h]
 
-    sub_8034C9C();
+    isFlag173DClearAndCutsceneScriptNull_8034c9c();
     if ( !v1 )
     {
         if ( byte_100 & *(*(v0 + oToolkit_JoypadPtr) + 2) )
@@ -1019,7 +1019,7 @@ signed int sub_8034D7C()
     int v3; // r2
     int v4; // r3
 
-    sub_8034C9C();
+    isFlag173DClearAndCutsceneScriptNull_8034c9c();
     if ( v1 )
         return 1;
     if ( !(byte_200 & *(*(v0 + oToolkit_JoypadPtr) + 2)) )
@@ -1053,7 +1053,7 @@ signed int sub_8034DB0()
     int v16; // r2
     int v17; // r3
 
-    sub_8034C9C();
+    isFlag173DClearAndCutsceneScriptNull_8034c9c();
     if ( zf )
         return 1;
     if ( word_200AC84 )
@@ -1137,7 +1137,7 @@ unsigned int __fastcall sub_8034E88(unsigned int result, int a2)
 
 
 // 0x8034ef0
-void *sub_8034EF0()
+void *HandleCoordinateInteractionCutscene()
 {
     int v0; // r10
     void *result; // r0
@@ -1153,11 +1153,11 @@ void *sub_8034EF0()
     char (*(**v11)[2])[16]; // r1
     int v12; // r1
 
-    result = sub_8034C9C();
+    result = isFlag173DClearAndCutsceneScriptNull_8034c9c();
     if ( !v4 )
     {
-        v5 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_0e);
-        if ( *(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_0e) )
+        v5 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_CoordInteractionValue);
+        if ( *(*(v0 + oToolkit_GameStatePtr) + oGameState_CoordInteractionValue) )
         {
             v6 = *(v0 + oToolkit_GameStatePtr);
             v7 = *(v6 + oGameState_MapGroup);
@@ -1302,7 +1302,7 @@ signed int sub_8035054()
     int v3; // r2
     int v4; // r3
 
-    sub_8034C9C();
+    isFlag173DClearAndCutsceneScriptNull_8034c9c();
     if ( v1 )
         return 1;
     if ( *(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_12) == 255 )
@@ -1323,7 +1323,7 @@ signed int sub_8035084()
     int v2; // r2
     int v3; // r3
 
-    sub_8034C9C();
+    isFlag173DClearAndCutsceneScriptNull_8034c9c();
     if ( v0 )
         return 1;
     v1 = sub_8035756();
@@ -1359,7 +1359,7 @@ signed int npc_80350BC()
 
     if ( *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) >= 128 )
     {
-        sub_8034C9C();
+        isFlag173DClearAndCutsceneScriptNull_8034c9c();
         if ( !v1 )
         {
             TestEventFlagFromImmediate(23, 8);
@@ -1517,7 +1517,7 @@ int sub_8035274()
     int v7; // r2
     int v8; // r3
 
-    result = sub_8034C9C();
+    result = isFlag173DClearAndCutsceneScriptNull_8034c9c();
     if ( !v2 )
     {
         result = TestEventFlagFromImmediate(23, 0);
@@ -1911,15 +1911,15 @@ signed int sub_80357AE()
     char v3; // zf
     signed int result; // r0
 
-    v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_0e);
-    if ( !*(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_0e) )
+    v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_CoordInteractionValue);
+    if ( !*(*(v0 + oToolkit_GameStatePtr) + oGameState_CoordInteractionValue) )
         goto LABEL_12;
     for ( i = byte_80357F0; *i; ++i )
     {
         if ( *i == v1 )
             goto LABEL_12;
     }
-    if ( v1 < 48 || v1 > 51 || (sub_809CA40(*(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_0e)), v3) && CheckKeyItem(44) )
+    if ( v1 < 48 || v1 > 51 || (sub_809CA40(*(*(v0 + oToolkit_GameStatePtr) + oGameState_CoordInteractionValue)), v3) && CheckKeyItem(44) )
         result = 1;
     else
 LABEL_12:
@@ -2184,7 +2184,7 @@ signed int MapScript_jump_if_game_state_0e_equals()
     int v1; // r10
     int v2; // r0
 
-    v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_0e);
+    v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_CoordInteractionValue);
     if ( v2 == ReadMapScriptByte(1, v0) )
         ReadMapScriptWord(2, v0);
     return 1;
@@ -2198,7 +2198,7 @@ signed int MapScript_jump_if_game_state_0e_not_equals()
     int v1; // r10
     int v2; // r0
 
-    v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_0e);
+    v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_CoordInteractionValue);
     if ( v2 != ReadMapScriptByte(1, v0) )
         ReadMapScriptWord(2, v0);
     return 1;

@@ -22,7 +22,7 @@
 
 	u8 LastMapGroup // loc=0xc
 	u8 LastMapNumber // loc=0xd
-	u8 Unk_0e // loc=0xe
+	u8 CoordInteractionValue // loc=0xe
 	u8 BGMusicIndicator // loc=0xf
 	u8 Unk_10 // loc=0x10
 	u8 Unk_11 // loc=0x11

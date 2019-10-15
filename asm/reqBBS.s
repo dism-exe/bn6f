@@ -4429,7 +4429,7 @@ reqBBS_81409F4:
 	push {lr}
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	ldrb r0, [r1,#oGameState_Unk_0e]
+	ldrb r0, [r1,#oGameState_CoordInteractionValue]
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end reqBBS_81409F4

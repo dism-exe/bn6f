@@ -3696,7 +3696,7 @@ sub_809C968:
 	bne loc_809CA26
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r0, [r7,#oGameState_Unk_0e]
+	ldrb r0, [r7,#oGameState_CoordInteractionValue]
 	tst r0, r0
 	beq loc_809CA26
 	cmp r0, #0x30 
@@ -3722,7 +3722,7 @@ loc_809C9B6:
 loc_809C9CA:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldrb r0, [r3,#oGameState_Unk_0e]
+	ldrb r0, [r3,#oGameState_CoordInteractionValue]
 	tst r0, r0
 	bne loc_809CA26
 	ldr r0, off_809CAC0 // =eOWPlayerObject 

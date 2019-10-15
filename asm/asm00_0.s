@@ -3242,54 +3242,63 @@ PET_onUpdate_8001B94:
 	push {r1-r3}
 	ldr r7, off_8001C40 // =byte_20094C0
 	mov r4, #0
-loc_8001BA2:
-	ldrb r1, [r7]
+.loopStruct
+	ldrb r1, [r7,#oS20094c0_Unk_00]
 	tst r1, r1
-	bne loc_8001BB2
-loc_8001BA8:
-	add r7, #0x18
+	bne .structIsActive
+.doneThisStruct
+	add r7, #oS20094c0_Size
 	add r4, #1
-	cmp r4, #0x12
-	bge loc_8001BF4
-	b loc_8001BA2
-loc_8001BB2:
-	ldrh r1, [r7,#2]
+	cmp r4, #NUM_S20094C0_STRUCTS // 0x12
+	bge .doneAllStructs
+	b .loopStruct
+.structIsActive
+
+	ldrh r1, [r7,#oS20094c0_Unk_02]
 	sub r1, #1
-	strh r1, [r7,#2]
+	strh r1, [r7,#oS20094c0_Unk_02]
 	cmp r1, #0
-	bgt loc_8001BA8
-	ldr r0, [r7,#8]
+	bgt .doneThisStruct
+
+	ldr r0, [r7,#oS20094c0_Unk_08] // extended data start pointer (S8001b1c + 0xc)
 	ldr r1, off_8001C00 // =byte_8001C08
-	ldrb r2, [r7,#0x14]
+	ldrb r2, [r7,#oS20094c0_Unk_14] // read sub_8001B1C type
 	ldr r1, [r1,r2]
 	add r0, r0, r1
+
 	ldr r1, [r0]
 	cmp r1, #0
-	beq loc_8001BEE
+	beq .noMoreEntries
+
 	cmp r1, #2
-	beq loc_8001BD8
+	beq .loc_8001BD8
+
 	cmp r1, #1
-	bne loc_8001BDC
-	ldr r0, [r7,#4]
-	b loc_8001BDC
-loc_8001BD8:
+	bne .loc_8001BDC
+
+	ldr r0, [r7,#oS20094c0_Unk_04]
+	b .loc_8001BDC
+
+.loc_8001BD8:
 	ldr r0, [r0,#4]
-	str r0, [r7,#4]
-loc_8001BDC:
-	str r0, [r7,#8]
+	str r0, [r7,#oS20094c0_Unk_04]
+.loc_8001BDC:
+	str r0, [r7,#oS20094c0_Unk_08]
 	ldr r1, [r0,#4]
-	strh r1, [r7,#2]
+	strh r1, [r7,#oS20094c0_Unk_02]
+
 	ldr r6, off_8001C04 // =off_8001C24
-	ldrb r1, [r7,#0x14]
+	ldrb r1, [r7,#oS20094c0_Unk_14]
 	ldr r6, [r6,r1]
 	mov lr, pc
 	bx r6
-	b loc_8001BA8
-loc_8001BEE:
+
+	b .doneThisStruct
+.noMoreEntries
 	mov r1, #0
 	strb r1, [r7]
-	b loc_8001BA8
-loc_8001BF4:
+	b .doneThisStruct
+.doneAllStructs
 	pop {r1-r3}
 	mov r8, r1
 	mov r9, r2
@@ -3298,15 +3307,22 @@ loc_8001BF4:
 	.byte 0, 0
 off_8001C00: .word byte_8001C08
 off_8001C04: .word off_8001C24
-byte_8001C08: .byte 0x8, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x8
-	.byte 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0
-off_8001C24: .word sub_8001C44+1
-	.word sub_8001C94+1
-	.word sub_8001C52+1
-	.word sub_8002310+1
-	.word sub_800232A+1
-	.word sub_8002338+1
-	.word sub_8001CFC+1
+byte_8001C08:
+	.word 0x8
+	.word 0x8
+	.word 0x8
+	.word 0x8
+	.word 0x8
+	.word 0x8
+	.word 0x8
+off_8001C24:
+	.word sub_8001C44+1 // 0x0
+	.word sub_8001C94+1 // 0x4
+	.word sub_8001C52+1 // 0x8
+	.word sub_8002310+1 // 0xc
+	.word sub_800232A+1 // 0x10
+	.word sub_8002338+1 // 0x14
+	.word sub_8001CFC+1 // 0x18
 off_8001C40: .word byte_20094C0
 	thumb_func_end PET_onUpdate_8001B94
 
@@ -3409,22 +3425,38 @@ off_8001CEC: .word sub_8001D64+1
 	thumb_local_start
 sub_8001CFC:
 	push {r4,r7,lr}
-	ldr r6, [r0]
+
+	// read pointer
+	ldr r6, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
+
+	// get some ewram address?
 	ldr r5, off_8001D4C // =off_8001AB8
-	ldrb r4, [r7,#0x17]
+	ldrb r4, [r7,#oS20094c0_Unk_17]
 	lsl r4, r4, #2
 	ldr r5, [r5,r4]
-	ldr r4, [r7,#0xc]
+
+	// read pointer
+	ldr r4, [r7,#oS20094c0_Unk_0c]
 	mov r1, #0
 	push {r0}
+
 loc_8001D0E:
+	// read from memory
 	ldrh r2, [r6,r1]
+	// & 0x3ff
 	lsl r3, r2, #0x16
 	lsr r3, r3, #0x16
+	// r3 has mask 0xffc0
 	lsl r3, r3, #6
 	push {r4,r6}
+	// add r3 as offset to r4 pointer
 	add r4, r4, r3
+	// jumptable
 	ldr r0, off_8001D50 // =off_8001D54
+	// use these bits of r2 for jumptable index
+	//    ||
+	//    vv
+	// 0b 1111 1111 1111
 	lsr r2, r2, #0xa
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
@@ -3433,17 +3465,25 @@ loc_8001D0E:
 	pop {r4,r6}
 	add r5, #0x40
 	add r1, #2
-	ldrb r2, [r7,#0x16]
+
+	// upper limit
+	ldrb r2, [r7,#oS20094c0_Unk_16]
 	lsl r2, r2, #1
 	cmp r1, r2
 	blt loc_8001D0E
 	pop {r0}
+
+	// read same ewram address again
 	ldr r0, off_8001D4C // =off_8001AB8
-	ldrb r1, [r7,#0x17]
+	ldrb r1, [r7,#oS20094c0_Unk_17]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
-	ldr r1, [r7,#0x10]
-	ldrb r2, [r7,#0x16]
+
+	// dest pointer
+	ldr r1, [r7,#oS20094c0_Unk_10]
+
+	// size
+	ldrb r2, [r7,#oS20094c0_Unk_16]
 	lsl r2, r2, #6
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4,r7,pc}

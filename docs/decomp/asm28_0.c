@@ -2043,8 +2043,8 @@ unsigned int sub_809C968()
             if ( v4 )
             {
                 v1 = *(v0 + oToolkit_GameStatePtr);
-                v2 = *(v1 + oGameState_Unk_0e);
-                if ( *(v1 + oGameState_Unk_0e) )
+                v2 = *(v1 + oGameState_CoordInteractionValue);
+                if ( *(v1 + oGameState_CoordInteractionValue) )
                 {
                     if ( v2 >= 48 && v2 <= 51 )
                     {
@@ -2061,7 +2061,7 @@ LABEL_23:
     TestEventFlagFromImmediate(1, 186);
     if ( !v4 )
     {
-        if ( !*(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_0e) )
+        if ( !*(*(v0 + oToolkit_GameStatePtr) + oGameState_CoordInteractionValue) )
         {
             v5 = (&off_809C0F0)[*(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) - 144][*(*(v0 + oToolkit_GameStatePtr)
                                                                                                                                                                                 + oGameState_MapNumber)];
@@ -3484,7 +3484,7 @@ signed int sub_809DF00()
     {
         v3 = *(v0 + 15);
         v4 = *(v1 + oToolkit_GameStatePtr);
-        *(v4 + oGameState_Unk_0e) = v3;
+        *(v4 + oGameState_CoordInteractionValue) = v3;
         if ( v3 )
             *(v4 + oGameState_Unk_03) = v3;
         result = 0;

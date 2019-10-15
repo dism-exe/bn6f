@@ -118,7 +118,7 @@ off_8066500: .word off_8610B04
 	thumb_func_end sub_806649C
 
 	thumb_func_start sub_806651C
-sub_806651C:
+sub_806651C: // JP 0x8067f94
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -130,6 +130,7 @@ sub_806651C:
 	bx r7
 	pop {r4-r7,pc}
 off_8066530: .word off_8066534
+// JP 0x8067fac
 off_8066534: .word nullsub_29+1
 	.word nullsub_30+1
 	thumb_func_end sub_806651C

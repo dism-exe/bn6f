@@ -20283,21 +20283,24 @@ loc_80308FA:
 	blt loc_80308A0
 	add sp, sp, #8
 	pop {r4-r7,pc}
-EnterMap_RealWorldMapGroupJumptable: .word sub_804CE90+1
-off_8030908: .word sub_804E62C+1
+EnterMap_RealWorldMapGroupJumptable:
+	.word sub_804CE90+1
+	.word sub_804E62C+1
 	.word sub_8052688+1
 	.word sub_80595B8+1
 	.word sub_805DF08+1
 	.word sub_806036C+1
 	.word sub_8062AB0+1
-UnkRealWorldMapGroupJumptable_8030920: .word sub_804CF32+1
+UnkRealWorldMapGroupJumptable_8030920:
+	.word sub_804CF32+1
 	.word sub_804E6D0+1
 	.word sub_8052764+1
 	.word sub_8059664+1
 	.word sub_805DFA2+1
 	.word sub_8060406+1
 	.word sub_8062B64+1
-EnterMap_InternetMapGroupJumptable: .word sub_80663D0+1
+EnterMap_InternetMapGroupJumptable:
+	.word sub_80663D0+1
 	.word sub_8067B5C+1
 	.word sub_8069038+1
 	.word sub_8069FE8+1
@@ -20320,7 +20323,8 @@ EnterMap_InternetMapGroupJumptable: .word sub_80663D0+1
 	.word sub_807A8E0+1
 	.word sub_807CDEC+1
 	.word sub_807ECD0+1
-UnkInternetMapGroupJumptable_8030998: .word sub_8066450+1
+UnkInternetMapGroupJumptable_8030998:
+	.word sub_8066450+1
 	.word sub_8067BE4+1
 	.word sub_80690C2+1
 	.word sub_806A070+1

@@ -2533,7 +2533,7 @@ int reqBBS_81409F4()
 {
     int v0; // r10
 
-    return *(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_0e);
+    return *(*(v0 + oToolkit_GameStatePtr) + oGameState_CoordInteractionValue);
 }
 
 

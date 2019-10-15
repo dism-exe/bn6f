@@ -1273,7 +1273,7 @@ int __fastcall sub_8001092(int result, int a2, int a3, int a4)
 
     v6 = *(v5 + oToolkit_GameStatePtr);
     v6[oGameState_LastMapNumber] = result;
-    v6[oGameState_Unk_0e] = a2;
+    v6[oGameState_CoordInteractionValue] = a2;
     v6[oGameState_BGMusicIndicator] = a3;
     v6[oGameState_Unk_10] = a4;
     v6[oGameState_Unk_11] = v4;

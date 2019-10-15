@@ -3429,7 +3429,7 @@ sub_8004D48:
 	mov r0, #0x10
 	strb r0, [r5,#oGameState_Unk_17]
 	mov r0, #0
-	strb r0, [r5,#oGameState_Unk_0e]
+	strb r0, [r5,#oGameState_CoordInteractionValue]
 	strb r0, [r5,#oGameState_Unk_03]
 	strb r0, [r5,#oGameState_Unk_15]
 	strb r0, [r5,#oGameState_BattlePaused]
@@ -3805,7 +3805,7 @@ GameStateJumptable: .word EnterMap+1
 	thumb_func_end cbGameState_80050EC
 
 	thumb_local_start
-EnterMap:
+EnterMap: // JP 0x8005118
 	push {lr}
 	bl IsScreenFadeActive // () -> zf
 	bne loc_8005152
@@ -3843,7 +3843,7 @@ loc_80051AA:
 	bl sub_8001172
 	mov r0, #0
 	strb r0, [r5,#oGameState_Unk_15]
-	strb r0, [r5,#oGameState_Unk_0e]
+	strb r0, [r5,#oGameState_CoordInteractionValue]
 	strb r0, [r5,#oGameState_Unk_03]
 	str r0, [r5,#oGameState_Unk_68]
 	movflag EVENT_1719

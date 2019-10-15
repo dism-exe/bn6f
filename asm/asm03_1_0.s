@@ -1326,7 +1326,7 @@ Struct8034460:
 	.word 0x0285, 0x0, 0x0, 0x3, 0xfe840000, 0x640000, 0xffba0000, 0x3c0000
 	.word 0x0285, 0x0, 0x0, 0x3, 0xfe840000, 0x1540000, 0x3c0000, 0x1ae0000
 	.word 0xffffffff
-maps00_80345E4:
+RealWorldMapScriptPointers:
 	.word map00_ACDC_804D0A4
 	.word off_804D0AC
 	.word off_804E92C
@@ -1362,6 +1362,7 @@ off_8034654: .word sub_804CF84+1
 	.word sub_805DFF0+1
 	.word sub_806044C+1
 	.word sub_8062BCC+1
+
 maps80_8034670: .word off_80665A4
 	.word off_80665AC
 	.word off_8067DC8
@@ -1431,6 +1432,7 @@ off_8034728: .word off_80665BC
 	.word off_807AE10
 	.word off_807D320
 	.word off_807F21C
+// JP 0x8035740
 off_8034784: .word sub_806651C+1
 	.word sub_8067D1C+1
 	.word sub_80691D4+1
@@ -1615,7 +1617,7 @@ byte_8034AFC: .byte 0x4, 0x0, 0x0, 0x0, 0x60, 0x1B, 0x0, 0x3, 0xC, 0x8, 0x1, 0xF
 
 	thumb_func_start map_8034B4C
 	// (int mapGroup, int mapNumber) -> int
-map_8034B4C:
+map_8034B4C: // JP 0x8035b08
 	push {r4-r7,lr}
 	mov r2, r8
 	mov r3, r9
@@ -1638,7 +1640,7 @@ map_8034B4C:
 	pop {r0,r1}
 	cmp r0, #0x80
 	bge loc_8034B86
-	ldr r4, off_8034BAC // =maps00_80345E4
+	ldr r4, off_8034BAC // =RealWorldMapScriptPointers
 	b loc_8034B8A
 loc_8034B86:
 	ldr r4, off_8034BB0 // =maps80_8034670
@@ -1659,7 +1661,7 @@ loc_8034B8A:
 	mov r12, r4
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8034BAC: .word maps00_80345E4
+off_8034BAC: .word RealWorldMapScriptPointers
 off_8034BB0: .word maps80_8034670
 off_8034BB4: .word unk_2011EA0
 	thumb_func_end map_8034B4C
@@ -1677,7 +1679,7 @@ sub_8034BB8:
 	bl sub_809C968
 	bl sub_8034C6E
 	beq loc_8034BFE
-	bl sub_8034EF0
+	bl HandleCoordinateInteractionCutscene
 	bl sub_8034F68
 	bl npc_80350BC
 	bl sub_8034DB0
@@ -1760,24 +1762,24 @@ loc_8034C98:
 	thumb_func_end sub_8034C6E
 
 	thumb_local_start
-sub_8034C9C:
+isFlag173DClearAndCutsceneScriptNull_8034c9c:
 	push {r4-r7,lr}
 	movflag EVENT_173D
 	bl TestEventFlagFromImmediate
-	bne loc_8034CB2
+	bne .returnFalse
 	bl IsCutsceneScriptNonNull // () -> zf
-	bne loc_8034CB2
-	mov r0, #1
+	bne .returnFalse
+	mov r0, #TRUE
 	pop {r4-r7,pc}
-loc_8034CB2:
-	mov r0, #0
+.returnFalse
+	mov r0, #FALSE
 	pop {r4-r7,pc}
-	thumb_func_end sub_8034C9C
+	thumb_func_end isFlag173DClearAndCutsceneScriptNull_8034c9c
 
 	thumb_local_start
 sub_8034CB6:
 	push {r4-r7,lr}
-	bl sub_8034C9C
+	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
 	beq loc_8034D52
 	mov r7, r10
 	ldr r2, [r7,#oToolkit_JoypadPtr]
@@ -1867,7 +1869,7 @@ byte_8034D70: .byte 0x0, 0x0, 0xC, 0x0, 0xFF, 0x0, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0
 	thumb_local_start
 sub_8034D7C:
 	push {r4-r7,lr}
-	bl sub_8034C9C
+	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
 	beq loc_8034DA4
 	mov r7, r10
 	ldr r2, [r7,#oToolkit_JoypadPtr]
@@ -1892,7 +1894,7 @@ off_8034DAC: .word CutsceneScript_80991F4
 	thumb_local_start
 sub_8034DB0:
 	push {r4-r7,lr}
-	bl sub_8034C9C
+	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
 	beq loc_8034E22
 	ldr r7, off_8034E28 // =eS200AC80
 	ldrh r0, [r7,#0x4] // (word_200AC84 - 0x200ac80)
@@ -1905,7 +1907,7 @@ sub_8034DB0:
 loc_8034DCA:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r4, [r7,#oGameState_Unk_0e]
+	ldrb r4, [r7,#oGameState_CoordInteractionValue]
 	tst r4, r4
 	beq loc_8034E22
 	mov r1, #0
@@ -2039,65 +2041,66 @@ byte_8034EEF: .byte 0xF8
 	thumb_func_end sub_8034E88
 
 	thumb_local_start
-sub_8034EF0:
+HandleCoordinateInteractionCutscene:
 	push {r4-r7,lr}
-	bl sub_8034C9C
-	beq locret_8034F56
+	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
+	beq .done
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
-	ldrb r4, [r4,#oGameState_Unk_0e]
+	ldrb r4, [r4,#oGameState_CoordInteractionValue]
 	tst r4, r4
-	beq locret_8034F56
+	beq .done
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r6, [r7,#oGameState_MapGroup]
 	ldrb r7, [r7,#oGameState_MapNumber]
-	cmp r6, #0x96
-	bne loc_8034F22
-	cmp r7, #1
-	bne loc_8034F22
+	cmp r6, #GROUP_GRAVEYARD_IMMORTAL_AREA
+	bne .notGraveyard2SpecialInteraction
+	cmp r7, #MAP_GRAVEYARD2
+	bne .notGraveyard2SpecialInteraction
 	mov r0, r4
 	sub r0, #0x60
-	blt loc_8034F22
+	blt .notGraveyard2SpecialInteraction
 	cmp r0, #0x10
-	bge loc_8034F22
+	bge .notGraveyard2SpecialInteraction
+	// graveyard 2 has 16 extra possible coordinate interactions
 	add r0, #0x10
 	mov r4, r0
-	b loc_8034F3E
-loc_8034F22:
+	b .internetMapGroup
+.notGraveyard2SpecialInteraction
 	sub r4, #0xf0
-	blt locret_8034F56
+	blt .done
 	cmp r4, #0x10
-	bge locret_8034F56
-	ldr r0, off_8034F58 // =0x16c0
+	bge .done
+	ldr r0, off_8034F58 // =EVENT_16C0
 	add r0, r0, r4
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
-	bne locret_8034F56
-	cmp r6, #0x80
-	bge loc_8034F3E
+	bne .done
+	cmp r6, #INTERNET_MAP_GROUP_START
+	bge .internetMapGroup
 	ldr r1, off_8034F5C // =off_803461C
-	b loc_8034F42
-loc_8034F3E:
+	b .gotCutscenePointers
+.internetMapGroup
 	ldr r1, off_8034F60 // =off_8034728
-	sub r6, #0x80
-loc_8034F42:
+	sub r6, #INTERNET_MAP_GROUP_START
+.gotCutscenePointers
 	lsl r6, r6, #2
 	lsl r7, r7, #2
 	ldr r1, [r1,r6]
 	ldr r1, [r1,r7]
 	ldrb r1, [r1,r4]
 	cmp r1, #0xff
-	beq locret_8034F56
+	beq .done
 	ldr r0, off_8034F64 // =byte_8098358
 	bl StartCutscene
-locret_8034F56:
+.done
 	pop {r4-r7,pc}
-off_8034F58: .word 0x16C0
+off_8034F58: .word EVENT_16C0
 off_8034F5C: .word off_803461C
 off_8034F60: .word off_8034728
 off_8034F64: .word byte_8098358
-	thumb_func_end sub_8034EF0
+	thumb_func_end HandleCoordinateInteractionCutscene
 
 	thumb_local_start
 sub_8034F68:
@@ -2186,7 +2189,7 @@ off_8035024: .word byte_80989C1
 	thumb_func_end sub_8034FB8
 
 	thumb_local_start
-sub_8035028:
+sub_8035028: // JP 0x8035fd8
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -2214,7 +2217,7 @@ off_8035050: .word off_8034784
 	thumb_local_start
 sub_8035054:
 	push {r4-r7,lr}
-	bl sub_8034C9C
+	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
 	beq loc_803507A
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -2238,7 +2241,7 @@ off_8035080: .word byte_809AE68
 	thumb_local_start
 sub_8035084:
 	push {r4-r7,lr}
-	bl sub_8034C9C
+	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
 	beq loc_803509E
 	bl sub_8035756
 	beq loc_803509E
@@ -2274,7 +2277,7 @@ npc_80350BC:
 	ldrb r0, [r0,#oGameState_MapGroup]
 	cmp r0, #0x80
 	blt loc_8035126
-	bl sub_8034C9C
+	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
 	beq loc_8035126
 	movflag EVENT_1708
 	bl TestEventFlagFromImmediate
@@ -2477,7 +2480,7 @@ word_8035250: .hword 0x1, 0x21A
 	thumb_local_start
 sub_8035274:
 	push {r4-r7,lr}
-	bl sub_8034C9C
+	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
 	beq locret_80352D4
 	movflag EVENT_1700
 	bl TestEventFlagFromImmediate
@@ -3037,7 +3040,7 @@ sub_80357AE:
 	push {r4-r7,lr}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldrb r3, [r3,#oGameState_Unk_0e]
+	ldrb r3, [r3,#oGameState_CoordInteractionValue]
 	tst r3, r3
 	beq loc_80357E8
 	ldr r7, off_80357EC // =byte_80357F0
