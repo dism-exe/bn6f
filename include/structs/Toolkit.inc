@@ -32,7 +32,7 @@
 	ptr Unk2004334_Ptr // loc=0x68
 	ptr Unk2004338_Ptr // loc=0x6c
 	ptr Unk2004348_Ptr // loc=0x70
-	ptr S20047CC_Ptrs // loc=0x74
+	ptr NaviStatsPtr   // loc=0x74
 	ptr Unk2004a8c_Ptr // loc=0x78
 	ptr Unk2004c20_Ptr // loc=0x7c
 	ptr Unk2004e24_Ptr // loc=0x80

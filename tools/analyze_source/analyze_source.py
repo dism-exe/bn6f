@@ -77,11 +77,8 @@ import parser
 import readelf
 import scanner
 import multiprocessing
-import sandbox
 
-#from datatypes import DataType
-
-def main():
+def read_source_and_syms():
     # argument parser
     ap = argparse.ArgumentParser()
     ap.add_argument("-l", "--load-from-file", dest="load_from_file")
@@ -130,109 +127,12 @@ def main():
 
         os.chdir(cur_path)
 
-    #test_output = ""
-    #scanned_files["asm/asm03_0.s"].line_type = LineType.UNCOMMENTED
-    #test_output = "".join(line for line in scanned_files["asm/asm03_0.s"])
-    #
-    #with open("scanned_out_test.txt", "w+") as f:
-    #    f.write(test_output)
-
     parser.set_syms_and_scanned_files(syms, scanned_files)
     analyzer.set_syms_and_scanned_files(syms, scanned_files)
     opcodes.set_syms_and_scanned_files(syms, scanned_files)
     datatypes.set_syms_and_scanned_files(syms, scanned_files)
-    sandbox.set_syms_and_scanned_files(syms, scanned_files)
-    global analyzer_start_time
-    analyzer_start_time = time.time()
-    sandbox.count_functions()
-    #debug_print("evaluate vObjectTiles: %s" % type(opcodes.evaluate_data("vObjectTiles", global_fileline).ref).__name__)
-    #analyzer.read_battle_object_jumptables()
-    #analyze_source.benchmark_line_iterator(scanned_files)
+    return syms, scanned_files
 
-def benchmark_line_iterator(scanned_files):
-    if random.random() < 0.5:
-        benchmark_list_iterator(scanned_files)
-        benchmark_src_file_iterator(scanned_files)
-    else:
-        benchmark_src_file_iterator(scanned_files)
-        benchmark_list_iterator(scanned_files)
-
-def benchmark_list_iterator(scanned_files):
-    list_iterator_start_time = time.time()
-    for src_file in scanned_files.values():
-        src_file.line_num = 0
-        output = ""
-        for line in src_file._uncommented_lines:
-            output += line
-
-    list_iterator_total_time = time.time() - list_iterator_start_time
-    debug_print("list_iterator_total_time: %s" % list_iterator_total_time)
-
-def benchmark_src_file_iterator(scanned_files):
-    src_file_iterator_start_time = time.time()
-
-    for src_file in scanned_files.values():
-        src_file.line_num = 0
-        output = ""
-        for line in src_file:
-            output += line
-
-    src_file_iterator_total_time = time.time() - src_file_iterator_start_time
-    debug_print("src_file_iterator_total_time: %s" % src_file_iterator_total_time)
-
-def recursive_print_function_tree(f, function_tree, indentation_level=0):
-    for function, subtree in function_tree.items():
-        f.write((" " * indentation_level) + "- " + function + "\n")
-        if subtree:
-            recursive_print_function_tree(f, subtree, indentation_level + 2)
-
-def print_post_output_info(start_time, analyzer_end_time):
-    global analyzer_start_time
-    analyzer_execution_time = analyzer_end_time - analyzer_start_time
-    post_output = ""
-
-    sorted_function_counts = sorted(analyzer.function_trackers.items(), key=lambda x: x[1].time, reverse=True)
-    function_time_sum = 0
-    for function_name_and_count in sorted_function_counts:
-        function_tracker = function_name_and_count[1]
-        post_output += "%s: time: %s, count: %s, avg: %s\n" % (function_name_and_count[0], function_tracker.time, function_tracker.count, function_tracker.time / function_tracker.count)
-        function_time_sum += function_tracker.time
-
-    #with open("trace_path.txt", "w+") as f:
-    #    recursive_print_function_tree(f, analyzer.global_function_tree)
-
-    # with open("function_tracker_output.pickle", "wb+") as f:
-    #     pickle.dump(analyzer.function_trackers, f)
-
-    if True:
-        for filename, src_file in scanned_files.items():
-            os.makedirs("temp/" + os.path.dirname(filename), exist_ok=True)
-            with open("temp/" + filename, "w+") as f:
-                f.writelines(line + "\n" for line in src_file.commented_lines)
-
-    execution_time = time.time() - start_time
-    post_output += "Full execution time: %s, Analyzer execution time: %s, Function time sum: %s, Full - Analyzer difference: %s, Full - Function difference: %s, Analyzer - Function difference: %s" % (execution_time, analyzer_execution_time, function_time_sum, execution_time - analyzer_execution_time, execution_time - function_time_sum, analyzer_execution_time - function_time_sum)
-    debug_print(post_output)
+def close_debug_file():
     if analyze_source.debug_file is not None:
         analyze_source.debug_file.close()
-
-if __name__ == "__main__":
-    start_time = time.time()
-    #multiprocessing.set_start_method("spawn") 
-    try:
-        main()
-    except:
-        analyzer_end_time = time.time()
-        for i in range(5):
-            print('\a')
-            time.sleep(0.4)
-        #print_post_output_info(start_time, analyzer_end_time)
-        #print("%s:%s: Error!" % (global_fileline.filename, global_fileline.line_num))
-        global_fileline_error("Error!")
-
-    if False:
-        analyzer_end_time = time.time()
-        for i in range(5):
-            print('\a')
-            time.sleep(0.4)
-        print_post_output_info(start_time, analyzer_end_time)

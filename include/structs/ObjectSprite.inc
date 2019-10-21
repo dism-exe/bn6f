@@ -13,7 +13,12 @@
 	u16 Unk_0a // loc=0xa
 	.space 0x4
 	u8 Unk_10 // loc=0x12 // also size 2
+
+	// this might be written to bits 8-15 for obj attribute 0
+	// set this to 0x10 to give this sprite a mosaic
+	// but the mosaic size is at unk_200AC40+2
 	u8 Unk_11 // loc=0x11
+
 	u8 Unk_12 // loc=0x12 // also size 2
 	u8 Unk_13 // loc=0x13
 	u8 Unk_14 // loc=0x14

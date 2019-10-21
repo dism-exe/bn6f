@@ -213,7 +213,7 @@ int __fastcall sub_8141A10(int a1, int a2, int a3, int a4)
                     JUMPOUT(&loc_8141ACA);
                 v10 = 7;
             }
-            result = init_s_02011C50_8036E90(byte_808A128, v10, a3, a4);
+            result = StartCutscene(byte_808A128, v10, a3, a4);
             if ( !v11 )
                 JUMPOUT(&loc_8141ABC);
         }
@@ -363,7 +363,7 @@ unsigned int sub_8141F7C()
     TestEventFlagFromImmediate(7, 2);
     if ( !v2 )
     {
-        init_s_02011C50_8036E90(byte_8089DF4, 0, v15, v16);
+        StartCutscene(byte_8089DF4, 0, v15, v16);
         ClearEventFlagFromImmediate(7, 2);
     }
     sub_809E3A2();
@@ -578,7 +578,7 @@ char *sub_81421D8()
 
 
 // 0x81421e0
-int sub_81421E0()
+int getField0x18OfScenarioEffectState2000780_81421e0()
 {
     return *byte_2000798;
 }
@@ -672,7 +672,7 @@ int sub_8142248()
 // 0x814227a
 int __fastcall sub_814227A(int a1)
 {
-    dword_2000790 = *&byte_8142294[4 * sub_81426CE()];
+    dword_2000790 = *&byte_8142294[4 * GetSoulWeaponsMapIndex()];
     return 0;
 }
 
@@ -700,7 +700,7 @@ BOOL sub_81422BE()
     result = 1;
     if ( v0 )
     {
-        v1 = sub_81426CE();
+        v1 = GetSoulWeaponsMapIndex();
         if ( v1 != 255 )
         {
             v2 = sub_81427CE();
@@ -749,7 +749,7 @@ int sub_8142510()
             sub_8142734();
         }
         sub_8142166(0);
-        v5 = *(&off_814230C + sub_81426CE());
+        v5 = *(&off_814230C + GetSoulWeaponsMapIndex());
         v6 = byte_2006670;
         v7 = 0;
         while ( *v5 )
@@ -775,12 +775,12 @@ int sub_8142510()
         reqBBS_setFlag_e17b0f7_8140A00();
         sub_8036E86(33);
         TestEventFlagFromImmediate(0, 40);
-        if ( v3 && sub_81426CE() < 6 )
+        if ( v3 && GetSoulWeaponsMapIndex() < 6 )
             (loc_80353EA)();
-        *(*(v0 + 60) + 21) = byte_8142610[sub_81426CE()];
+        *(*(v0 + 60) + 21) = byte_8142610[GetSoulWeaponsMapIndex()];
         TestEventFlagFromImmediate(7, 68);
         if ( !v3 )
-            init_s_02011C50_8036E90(byte_8089448, 0, v12, v13);
+            StartCutscene(byte_8089448, 0, v12, v13);
         ClearEventFlagFromImmediate(7, 64);
         ClearEventFlagFromImmediate(7, 66);
         ClearEventFlagFromImmediate(7, 67);
@@ -824,7 +824,7 @@ LABEL_13:
         }
         sub_80357AE();
         if ( v3 )
-            init_s_02011C50_8036E90(byte_8089554, 0, v4, v5);
+            StartCutscene(byte_8089554, 0, v4, v5);
         goto LABEL_13;
     }
     if ( *(*(v0 + 60) + 17) )
@@ -832,10 +832,10 @@ LABEL_13:
 LABEL_14:
     TestEventFlagFromImmediate(7, 70);
     if ( !v2 )
-        init_s_02011C50_8036E90(byte_80893CC, 0, v6, v7);
+        StartCutscene(byte_80893CC, 0, v6, v7);
     TestEventFlagFromImmediate(7, 71);
     if ( !v2 )
-        init_s_02011C50_8036E90(&dword_8089128, 0, v8, v9);
+        StartCutscene(&dword_8089128, 0, v8, v9);
     ClearEventFlagFromImmediate(7, 70);
     return ClearEventFlagFromImmediate(7, 71);
 }
@@ -849,14 +849,14 @@ void nullsub_37()
 
 
 // 0x81426ce
-unsigned int sub_81426CE()
+unsigned int GetSoulWeaponsMapIndex()
 {
     int v0; // r10
     unsigned int i; // r6
 
-    for ( i = 0; *&byte_81426F8[i]; i += 2 )
+    for ( i = 0; *&SoulWeaponsMaps[i]; i += 2 )
     {
-        if ( *&byte_81426F8[i] == *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) )
+        if ( *&SoulWeaponsMaps[i] == *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) )
             return i >> 1;
     }
     return 255;
@@ -872,7 +872,7 @@ int sub_814270A()
     unsigned __int8 v3; // vf
     char v4; // zf
 
-    v0 = *&byte_8142774[2 * sub_81426CE()];
+    v0 = *&byte_8142774[2 * GetSoulWeaponsMapIndex()];
     v1 = sub_814278C();
     v2 = 0;
     while ( 1 )
@@ -898,7 +898,7 @@ int sub_8142734()
     int result; // r0
     char v5; // zf
 
-    v0 = *&byte_8142774[2 * sub_81426CE()];
+    v0 = *&byte_8142774[2 * GetSoulWeaponsMapIndex()];
     for ( i = sub_814278C(); ; ClearEventFlag(v0 + i) )
     {
         v2 = __OFSUB__(i--, 1);
@@ -917,28 +917,28 @@ int sub_8142734()
 // 0x814278c
 int sub_814278C()
 {
-    return byte_814279C[sub_81426CE()];
+    return byte_814279C[GetSoulWeaponsMapIndex()];
 }
 
 
 // 0x81427a4
 int __fastcall sub_81427A4(int a1)
 {
-    return *&byte_81427BC[2 * sub_81426CE()] + a1;
+    return *&byte_81427BC[2 * GetSoulWeaponsMapIndex()] + a1;
 }
 
 
 // 0x81427ce
 int sub_81427CE()
 {
-    return *&byte_81427E0[2 * sub_81426CE()];
+    return *&byte_81427E0[2 * GetSoulWeaponsMapIndex()];
 }
 
 
 // 0x81427f2
 int sub_81427F2()
 {
-    return *&byte_8142804[2 * sub_81426CE()];
+    return *&byte_8142804[2 * GetSoulWeaponsMapIndex()];
 }
 
 
@@ -952,19 +952,19 @@ int __fastcall sub_8142816(int a1, int a2)
 
     v2 = a1;
     v3 = a2;
-    v4 = sub_814283C();
+    v4 = GetSoulWeaponCursorCameraOffsetForMap();
     return ((v4 + (v2 >> 16)) >> 5) + 128 + ((((v5 + (v3 >> 16)) >> 5) + 128) << 8);
 }
 
 
 // 0x814283c
-int sub_814283C()
+int GetSoulWeaponCursorCameraOffsetForMap()
 {
     char *v0; // r3
     int result; // r0
     int v2; // r1
 
-    v0 = &byte_8142858[2 * sub_81426CE()];
+    v0 = &GetSoulWeaponCursorCameraOffsetForMap[2 * GetSoulWeaponsMapIndex()];
     result = *v0;
     v2 = v0[1];
     return result;
@@ -972,10 +972,10 @@ int sub_814283C()
 
 
 // 0x8142868
-int sub_8142868()
+int GetSoulWeaponCursorCameraCoords()
 {
     __asm { SVC         6 }
-    return (4112 - sub_814283C()) << 16;
+    return (4112 - GetSoulWeaponCursorCameraOffsetForMap()) << 16;
 }
 
 
@@ -988,9 +988,9 @@ unsigned int sub_8142896()
     int v3; // r0
     int v4; // r1
 
-    v1 = sub_8142868();
+    v1 = GetSoulWeaponCursorCameraCoords();
     v2 = v0;
-    v3 = sub_8142868();
+    v3 = GetSoulWeaponCursorCameraCoords();
     return (((((calcAngle_800117C(v3 - v1, v2 - v4) + 16) >> 4) & 0xF) >> 1) - 1) & 7;
 }
 
@@ -1025,9 +1025,9 @@ unsigned int __fastcall sub_81428D4(int a1)
     v5 = sub_8142952(v1, (v2 - 1) & 7, 1);
     v6 = sub_8142952(v1, v4, 1);
     v7 = sub_809E1AE();
-    v8 = sub_8142868();
+    v8 = GetSoulWeaponCursorCameraCoords();
     v10 = sub_80014D4(v8 - v7, v9 - HIDWORD(v7));
-    v11 = sub_8142868();
+    v11 = GetSoulWeaponCursorCameraCoords();
     if ( sub_80014D4(v11 - v7, v12 - HIDWORD(v7)) > v10 )
         v6 = v5;
     return v6;
@@ -1137,7 +1137,7 @@ signed int sub_8142AB0()
     int v3; // r6
 
     v0 = byte_2006670;
-    v1 = sub_81421E0();
+    v1 = getField0x18OfScenarioEffectState2000780_81421e0();
     v2 = 0;
     v3 = 0;
     while ( !*(v0 + 2) || *(v0 + 2) != v1 )
@@ -1245,7 +1245,7 @@ unsigned int sub_8142B58()
     v2 = 255;
     do
     {
-        if ( *(v0 + 2) && sub_81421E0() == *(v0 + 2) )
+        if ( *(v0 + 2) && getField0x18OfScenarioEffectState2000780_81421e0() == *(v0 + 2) )
         {
             sub_8142990();
             v3 = *(v0 + 2);
@@ -1306,7 +1306,7 @@ int sub_8142BB6()
                 v6 = v3;
                 v7 = v4;
                 v8 = *(v0 + 2);
-                v9 = sub_8142868();
+                v9 = GetSoulWeaponCursorCameraCoords();
                 sub_8004822(19, v9, v10, v11);
                 result = PlaySoundEffect(109, v6, v7);
             }
@@ -1404,7 +1404,7 @@ int __fastcall sub_8142C46(int a1)
     sub_80010EC(v6, v5);
     v7 = sub_809E1AE();
     sub_8004822(19, v7, SHIDWORD(v7), v8);
-    sub_80302A8(1, 20);
+    camera_initShakeEffect_80302a8(1, 20);
     PlaySoundEffect(107, v9, v10);
     return PlaySoundEffect(268, v11, v12);
 }
@@ -1652,7 +1652,7 @@ int sub_8142FC8()
             sub_80357AE();
             if ( v5 )
             {
-                init_s_02011C50_8036E90(byte_808C2F0, 0, v6, v7);
+                StartCutscene(byte_808C2F0, 0, v6, v7);
                 sub_81433F6(1);
             }
             ClearEventFlagFromImmediate(9, 98);
@@ -1663,7 +1663,7 @@ int sub_8142FC8()
     if ( v4 )
     {
         v8 = sub_8143088();
-        init_s_02011C50_8036E90(*(&off_8143078 + v8), 0, v9, v10);
+        StartCutscene(*(&off_8143078 + v8), 0, v9, v10);
 LABEL_20:
         ClearEventFlagFromImmediate(9, 98);
         ClearEventFlagFromImmediate(9, 99);
@@ -1986,7 +1986,7 @@ int sub_8143314()
 // 0x814339c
 int __fastcall sub_814339C(int a1, int a2, int a3, int a4)
 {
-    sub_8003A64(2u, a2, a3, a4);
+    initMinigameEffect_8003a64(2u, a2, a3, a4);
     ZeroFillByWord(&byte_2001018, 64);
     sub_81433D2(5);
     sub_8143406();
@@ -2169,7 +2169,7 @@ int sub_8143978()
         TestEventFlagFromImmediate(13, 48);
         if ( !v2 || v18 != v19 || v16 != v17 )
             sub_8143C30(v16, v17, v18, v19);
-        v4 = *(&off_8143804 + sub_8143B30());
+        v4 = *(&off_8143804 + GetGroundmanMinigameMapIndex());
         v5 = 0;
         while ( *v4 != 255 )
         {
@@ -2180,7 +2180,7 @@ int sub_8143978()
             {
                 ClearEventFlag(v8);
                 v9 = *(v4 + 1);
-                v10 = sub_8143DBC();
+                v10 = ConvertGroundmanMinigameGridCoordsToMapCoords();
                 SpawnOverworldMapObject(43, v10, v11, v12);
             }
             ++v5;
@@ -2192,7 +2192,7 @@ int sub_8143978()
         TestEventFlagFromImmediate(13, 54);
         if ( !v2 )
         {
-            init_s_02011C50_8036E90(byte_8093358, 0, v13, v14);
+            StartCutscene(byte_8093358, 0, v13, v14);
             sub_8143F38();
             ClearEventFlagFromImmediate(13, 54);
         }
@@ -2257,9 +2257,9 @@ int sub_8143A54()
                     v7 = sub_8143EA4();
                     sub_8143BB0(v7);
                     if ( v3 )
-                        init_s_02011C50_8036E90(byte_8092DE8, 0, v8, v9);
+                        StartCutscene(byte_8092DE8, 0, v8, v9);
                     else
-                        init_s_02011C50_8036E90(byte_80933B8, 0, v8, v9);
+                        StartCutscene(byte_80933B8, 0, v8, v9);
                 }
             }
             ClearEventFlagFromImmediate(13, 52);
@@ -2268,16 +2268,16 @@ int sub_8143A54()
     }
     if ( sub_8143D4C() == v2 )
     {
-        v10 = sub_8143B30();
-        init_s_02011C50_8036E90(dword_8143B1C[v10], 0, v11, v12);
+        v10 = GetGroundmanMinigameMapIndex();
+        StartCutscene(dword_8143B1C[v10], 0, v11, v12);
         if ( !v3 )
             goto LABEL_24;
     }
     result = sub_8143F72();
     if ( v3 )
     {
-        v14 = sub_8143B30();
-        init_s_02011C50_8036E90(byte_809326C, v14, v15, v16);
+        v14 = GetGroundmanMinigameMapIndex();
+        StartCutscene(byte_809326C, v14, v15, v16);
 LABEL_24:
         ClearEventFlagFromImmediate(13, 52);
         result = ClearEventFlagFromImmediate(13, 53);
@@ -2287,14 +2287,14 @@ LABEL_24:
 
 
 // 0x8143b30
-unsigned int sub_8143B30()
+unsigned int GetGroundmanMinigameMapIndex()
 {
     int v0; // r10
     unsigned int i; // r6
 
-    for ( i = 0; *&byte_8143B58[i]; i += 2 )
+    for ( i = 0; *&GroundmanMinigameMaps[i]; i += 2 )
     {
-        if ( *&byte_8143B58[i] == *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) )
+        if ( *&GroundmanMinigameMaps[i] == *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) )
             return i >> 1;
     }
     return 255;
@@ -2310,7 +2310,7 @@ int __fastcall sub_8143B5E(int a1)
     int v4; // r1
 
     v1 = a1;
-    v2 = 2 * sub_8143B30();
+    v2 = 2 * GetGroundmanMinigameMapIndex();
     result = *(&dword_8143B7C + v2) + v1;
     v4 = *(&dword_8143B84 + v2) + v1;
     return result;
@@ -2318,15 +2318,15 @@ int __fastcall sub_8143B5E(int a1)
 
 
 // 0x8143b88
-int __fastcall sub_8143B88(int a1)
+int __fastcall GetGroundmanMinigameProgGridCoordsAndTextScriptIndex(int a1)
 {
     int v1; // r4
     unsigned int v2; // r0
     int v3; // r1
 
     v1 = a1;
-    v2 = sub_8143B30();
-    v3 = *&(*off_814380C[v2])[2 * (v1 - *&byte_8143BF0[4 * v2])];
+    v2 = GetGroundmanMinigameMapIndex();
+    v3 = *&(*off_814380C[v2])[2 * (v1 - *&groundmanMinigameMapActiveFlags_8143bf0[4 * v2])];
     return v1;
 }
 
@@ -2342,9 +2342,9 @@ signed int __fastcall sub_8143BB0(int a1)
     char v6; // zf
 
     v1 = a1;
-    v2 = sub_8143B30();
+    v2 = GetGroundmanMinigameMapIndex();
     v3 = off_814380C[v2];
-    v4 = *&byte_8143BF0[v2 * 4];
+    v4 = *&groundmanMinigameMapActiveFlags_8143bf0[v2 * 4];
     while ( 1 )
     {
         v5 = *v3;
@@ -2367,14 +2367,14 @@ signed int __fastcall sub_8143BB0(int a1)
 // 0x8143bfc
 int sub_8143BFC()
 {
-    return *&byte_8143C10[4 * sub_8143B30()];
+    return *&byte_8143C10[4 * GetGroundmanMinigameMapIndex()];
 }
 
 
 // 0x8143c18
 int sub_8143C18()
 {
-    return *(&dword_8143C2C + sub_8143B30());
+    return *(&dword_8143C2C + GetGroundmanMinigameMapIndex());
 }
 
 
@@ -2400,7 +2400,7 @@ unsigned int sub_8143C62()
 {
     unsigned int v0; // r0
 
-    v0 = sub_8143B30();
+    v0 = GetGroundmanMinigameMapIndex();
     sub_8030A60(*(&off_8143C80 + v0));
     return SetEventFlagFromImmediate(23, 33);
 }
@@ -2413,7 +2413,7 @@ int sub_8143C88()
 
     reqBBS_setFlag_e17b0f7_8140A00();
     SetEventFlagFromImmediate(1, 187);
-    for ( i = *(&off_8143D0C + sub_8143B30()); *i; i += 8 )
+    for ( i = *(&off_8143D0C + GetGroundmanMinigameMapIndex()); *i; i += 8 )
     {
         dword_2011EA0[*i] = *(i + 1);
         SetEventFlag(*i + 5872);
@@ -2429,7 +2429,7 @@ int sub_8143CC8()
 
     reqBBS_clearFlag_8140A0C();
     ClearEventFlagFromImmediate(1, 187);
-    for ( i = *(&off_8143D0C + sub_8143B30()); *i; i += 8 )
+    for ( i = *(&off_8143D0C + GetGroundmanMinigameMapIndex()); *i; i += 8 )
     {
         dword_2011EA0[*i] = 0;
         ClearEventFlag(*i + 5872);
@@ -2474,19 +2474,19 @@ int __fastcall sub_8143D7A(int a1, int a2)
 
     v2 = a1;
     v3 = a2;
-    v4 = sub_8143D9E();
+    v4 = GetGroundmanMinigameGridOffsetsForMap();
     return ((v4 + (v2 >> 16)) >> 5) + 128 + ((((v5 + (v3 >> 16)) >> 5) + 128) << 8);
 }
 
 
 // 0x8143d9e
-int sub_8143D9E()
+int GetGroundmanMinigameGridOffsetsForMap()
 {
     char *v0; // r3
     int result; // r0
     int v2; // r1
 
-    v0 = &dword_8143DB8 + 2 * sub_8143B30();
+    v0 = &GroundmanMinigameMapBasedGridOffsets + 2 * GetGroundmanMinigameMapIndex();
     result = *v0;
     v2 = v0[1];
     return result;
@@ -2494,10 +2494,10 @@ int sub_8143D9E()
 
 
 // 0x8143dbc
-int sub_8143DBC()
+int ConvertGroundmanMinigameGridCoordsToMapCoords()
 {
     __asm { SVC         6 }
-    return (4112 - sub_8143D9E()) << 16;
+    return (4112 - GetGroundmanMinigameGridOffsetsForMap()) << 16;
 }
 
 
@@ -2524,9 +2524,9 @@ unsigned int __fastcall sub_8143DEA(int a1)
     v5 = sub_8143E68(v1, (v2 - 1) & 7, 1);
     v6 = sub_8143E68(v1, v4, 1);
     v7 = sub_809E1AE();
-    v8 = sub_8143DBC();
+    v8 = ConvertGroundmanMinigameGridCoordsToMapCoords();
     v10 = sub_80014D4(v8 - v7, v9 - HIDWORD(v7));
-    v11 = sub_8143DBC();
+    v11 = ConvertGroundmanMinigameGridCoordsToMapCoords();
     if ( sub_80014D4(v11 - v7, v12 - HIDWORD(v7)) > v10 )
         v6 = v5;
     return v6;
@@ -2559,9 +2559,9 @@ unsigned int sub_8143EB0()
     int v3; // r0
     int v4; // r1
 
-    v1 = sub_8143DBC();
+    v1 = ConvertGroundmanMinigameGridCoordsToMapCoords();
     v2 = v0;
-    v3 = sub_8143DBC();
+    v3 = ConvertGroundmanMinigameGridCoordsToMapCoords();
     return (((((calcAngle_800117C(v3 - v1, v2 - v4) + 16) >> 4) & 0xF) >> 1) - 1) & 7;
 }
 
@@ -2576,7 +2576,7 @@ signed int __fastcall sub_8143EDC(int a1)
     char v5; // zf
 
     v1 = a1;
-    v2 = *(&off_8143804 + sub_8143B30());
+    v2 = *(&off_8143804 + GetGroundmanMinigameMapIndex());
     v3 = 0;
     while ( *v2 != 255 )
     {
@@ -2601,7 +2601,7 @@ void sub_8143F1C()
 // 0x8143f20
 int __fastcall sub_8143F20(int a1, int a2, int a3, int a4)
 {
-    sub_8003A64(5u, a2, a3, a4);
+    initMinigameEffect_8003a64(5u, a2, a3, a4);
     ZeroFillByWord(&byte_2001018, 64);
     return 0;
 }
@@ -2786,7 +2786,7 @@ BOOL sub_81440AE()
     result = 1;
     if ( v0 )
     {
-        if ( sub_8143B30() != 255 )
+        if ( GetGroundmanMinigameMapIndex() != 255 )
         {
             v1 = sub_8143C18();
             TestEventFlag(v1);

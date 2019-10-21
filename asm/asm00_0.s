@@ -148,8 +148,8 @@ sound_8000672:
 	pop {r4-r7,pc}
 	thumb_func_end sound_8000672
 
-	thumb_func_start sub_800068A
-sub_800068A:
+	thumb_func_start sound_800068A
+sound_800068A:
 	push {r4-r7,lr}
 	ldr r7, off_8000700 // =off_8000704
 	lsl r0, r0, #2
@@ -161,7 +161,7 @@ sub_800068A:
 	pop {r2}
 	mov r10, r2
 	pop {r4-r7,pc}
-	thumb_func_end sub_800068A
+	thumb_func_end sound_800068A
 
 	thumb_func_start sound_80006A2
 sound_80006A2:
@@ -1578,7 +1578,7 @@ loc_8000FEC:
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8000FFA
 	mov r0, r6
-	bl reqBBS_813E5DC
+	bl reqBBS_addBBSMessage_813e5dc
 loc_8000FFA:
 	add r6, #1
 	sub r4, #1
@@ -1607,7 +1607,7 @@ loc_800101A:
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8001028
 	mov r0, r6
-	bl reqBBS_813F9A0
+	bl reqBBS_addRequest_813F9A0
 loc_8001028:
 	add r6, #1
 	sub r4, #1
@@ -1699,42 +1699,42 @@ sub_80010A4:
 	thumb_func_end sub_80010A4
 
 // () -> u8
-	thumb_func_start getPETNaviSelect
-getPETNaviSelect:
+	thumb_func_start GetCurPETNavi
+GetCurPETNavi:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldrb r0, [r3,#oGameState_PETNaviIndex]
+	ldrb r0, [r3,#oGameState_CurPETNavi]
 	mov pc, lr
-	thumb_func_end getPETNaviSelect
+	thumb_func_end GetCurPETNavi
 
-	thumb_func_start setPETNaviSelect
-setPETNaviSelect:
+	thumb_func_start SetCurPETNavi
+SetCurPETNavi:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	strb r0, [r3,#oGameState_PETNaviIndex]
+	strb r0, [r3,#oGameState_CurPETNavi]
 	mov pc, lr
-	thumb_func_end setPETNaviSelect
+	thumb_func_end SetCurPETNavi
 
-	thumb_func_start sub_80010C6
-sub_80010C6:
+	thumb_func_start writeCurPETNaviToS2001c04_Unk07_80010c6
+writeCurPETNaviToS2001c04_Unk07_80010c6:
 	push {lr}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_S2001c04_Ptr]
-	strb r0, [r3,#7]
+	strb r0, [r3,#oS2001c04_Unk_07]
 	pop {pc}
-	thumb_func_end sub_80010C6
+	thumb_func_end writeCurPETNaviToS2001c04_Unk07_80010c6
 
 	thumb_func_start sub_80010D4
 sub_80010D4:
 	push {r4-r7,lr}
 	mov r4, r0
 	mov r1, #0x42
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	mov r6, r0
 	mov r0, r4
 	mov r1, #0x40
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	mov r1, r6
 	pop {r4-r7,pc}
 	thumb_func_end sub_80010D4
@@ -1745,7 +1745,7 @@ sub_80010EC:
 	mov r4, r0
 	mov r6, r1
 	mov r1, #0x42
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	cmp r6, r0
 	ble loc_80010FE
 	mov r6, r0
@@ -1753,7 +1753,7 @@ loc_80010FE:
 	mov r0, r4
 	mov r1, #0x40
 	mov r2, r6
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	pop {r4-r7,pc}
 	thumb_func_end sub_80010EC
 
@@ -3157,37 +3157,43 @@ off_8001B18: .word off_8001AB8
 	thumb_func_end sub_8001B0C
 
 	thumb_func_start sub_8001B1C
+// r0 struct format: word0 word4 word8 byte9 (multiple fields depending on command)
 sub_8001B1C:
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
+
 	ldr r7, off_8001C40 // =byte_20094C0
-	ldrb r1, [r0,#9]
-	mov r2, #0x18
+	ldrb r1, [r0,#oS8001b1c_Unk_09]
+	mov r2, #oS20094c0_Size
 	mul r2, r1
 	add r7, r7, r2
-	strb r1, [r7,#1]
-	ldr r1, [r0]
-	str r1, [r7,#0xc]
-	ldr r2, [r0,#4]
-	str r2, [r7,#0x10]
-	ldr r3, [r0,#8]
-	str r3, [r7,#0x14]
-	add r0, #0xc
+	strb r1, [r7,#oS20094c0_Unk_01]
+
+	ldr r1, [r0,#oS8001b1c_Unk_00]
+	str r1, [r7,#oS20094c0_Unk_0c]
+
+	ldr r2, [r0,#oS8001b1c_Unk_04]
+	str r2, [r7,#oS20094c0_Unk_10]
+
+	ldr r3, [r0,#oS8001b1c_Unk_08]
+	str r3, [r7,#oS20094c0_Unk_14_Word]
+
+	add r0, #oS8001b1c_Unk_0c
 	mov r6, #1
 	cmp r3, #8
 	beq loc_8001B48
-	ldr r6, [r0,#4]
+	ldr r6, [r0,#oS8001b1c_Unk_10 - oS8001b1c_Unk_0c]
 loc_8001B48:
-	strh r6, [r7,#2]
+	strh r6, [r7,#oS20094c0_Unk_02]
 	mov r6, #1
-	strb r6, [r7]
-	str r0, [r7,#4]
-	str r0, [r7,#8]
+	strb r6, [r7,#oS20094c0_Unk_00]
+	str r0, [r7,#oS20094c0_Unk_04]
+	str r0, [r7,#oS20094c0_Unk_08]
 	ldr r6, off_8001B68 // =off_8001C24
-	ldrb r1, [r7,#0x14]
+	ldrb r1, [r7,#oS20094c0_Unk_14]
 	ldr r6, [r6,r1]
 	mov lr, pc
 	bx r6
@@ -3236,54 +3242,63 @@ PET_onUpdate_8001B94:
 	push {r1-r3}
 	ldr r7, off_8001C40 // =byte_20094C0
 	mov r4, #0
-loc_8001BA2:
-	ldrb r1, [r7]
+.loopStruct
+	ldrb r1, [r7,#oS20094c0_Unk_00]
 	tst r1, r1
-	bne loc_8001BB2
-loc_8001BA8:
-	add r7, #0x18
+	bne .structIsActive
+.doneThisStruct
+	add r7, #oS20094c0_Size
 	add r4, #1
-	cmp r4, #0x12
-	bge loc_8001BF4
-	b loc_8001BA2
-loc_8001BB2:
-	ldrh r1, [r7,#2]
+	cmp r4, #NUM_S20094C0_STRUCTS // 0x12
+	bge .doneAllStructs
+	b .loopStruct
+.structIsActive
+
+	ldrh r1, [r7,#oS20094c0_Unk_02]
 	sub r1, #1
-	strh r1, [r7,#2]
+	strh r1, [r7,#oS20094c0_Unk_02]
 	cmp r1, #0
-	bgt loc_8001BA8
-	ldr r0, [r7,#8]
+	bgt .doneThisStruct
+
+	ldr r0, [r7,#oS20094c0_Unk_08] // extended data start pointer (S8001b1c + 0xc)
 	ldr r1, off_8001C00 // =byte_8001C08
-	ldrb r2, [r7,#0x14]
+	ldrb r2, [r7,#oS20094c0_Unk_14] // read sub_8001B1C type
 	ldr r1, [r1,r2]
 	add r0, r0, r1
+
 	ldr r1, [r0]
 	cmp r1, #0
-	beq loc_8001BEE
+	beq .noMoreEntries
+
 	cmp r1, #2
-	beq loc_8001BD8
+	beq .loc_8001BD8
+
 	cmp r1, #1
-	bne loc_8001BDC
-	ldr r0, [r7,#4]
-	b loc_8001BDC
-loc_8001BD8:
+	bne .loc_8001BDC
+
+	ldr r0, [r7,#oS20094c0_Unk_04]
+	b .loc_8001BDC
+
+.loc_8001BD8:
 	ldr r0, [r0,#4]
-	str r0, [r7,#4]
-loc_8001BDC:
-	str r0, [r7,#8]
+	str r0, [r7,#oS20094c0_Unk_04]
+.loc_8001BDC:
+	str r0, [r7,#oS20094c0_Unk_08]
 	ldr r1, [r0,#4]
-	strh r1, [r7,#2]
+	strh r1, [r7,#oS20094c0_Unk_02]
+
 	ldr r6, off_8001C04 // =off_8001C24
-	ldrb r1, [r7,#0x14]
+	ldrb r1, [r7,#oS20094c0_Unk_14]
 	ldr r6, [r6,r1]
 	mov lr, pc
 	bx r6
-	b loc_8001BA8
-loc_8001BEE:
+
+	b .doneThisStruct
+.noMoreEntries
 	mov r1, #0
 	strb r1, [r7]
-	b loc_8001BA8
-loc_8001BF4:
+	b .doneThisStruct
+.doneAllStructs
 	pop {r1-r3}
 	mov r8, r1
 	mov r9, r2
@@ -3292,24 +3307,31 @@ loc_8001BF4:
 	.byte 0, 0
 off_8001C00: .word byte_8001C08
 off_8001C04: .word off_8001C24
-byte_8001C08: .byte 0x8, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x8
-	.byte 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0
-off_8001C24: .word sub_8001C44+1
-	.word sub_8001C94+1
-	.word sub_8001C52+1
-	.word sub_8002310+1
-	.word sub_800232A+1
-	.word sub_8002338+1
-	.word sub_8001CFC+1
+byte_8001C08:
+	.word 0x8
+	.word 0x8
+	.word 0x8
+	.word 0x8
+	.word 0x8
+	.word 0x8
+	.word 0x8
+off_8001C24:
+	.word sub_8001C44+1 // 0x0
+	.word sub_8001C94+1 // 0x4
+	.word sub_8001C52+1 // 0x8
+	.word sub_8002310+1 // 0xc
+	.word sub_800232A+1 // 0x10
+	.word sub_8002338+1 // 0x14
+	.word sub_8001CFC+1 // 0x18
 off_8001C40: .word byte_20094C0
 	thumb_func_end PET_onUpdate_8001B94
 
 	thumb_local_start
 sub_8001C44:
 	push {lr}
-	ldr r0, [r0]
-	ldr r1, [r7,#0xc]
-	ldr r2, [r7,#0x10]
+	ldr r0, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
+	ldr r1, [r7,#oS20094c0_Unk_0c]
+	ldr r2, [r7,#oS20094c0_Unk_10]
 	bl QueueEightWordAlignedGFXTransfer
 	pop {pc}
 	thumb_func_end sub_8001C44
@@ -3353,12 +3375,12 @@ off_8001C90: .word eStruct200BE70
 	thumb_local_start
 sub_8001C94:
 	push {r4,r7,lr}
-	ldr r6, [r0]
+	ldr r6, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
 	ldr r5, off_8001CE4 // =off_8001AB8
-	ldrb r4, [r7,#0x17]
+	ldrb r4, [r7,#oS20094c0_Unk_17]
 	lsl r4, r4, #2
 	ldr r5, [r5,r4]
-	ldr r4, [r7,#0xc]
+	ldr r4, [r7,#oS20094c0_Unk_0c]
 	mov r1, #0
 	push {r0}
 loc_8001CA6:
@@ -3377,17 +3399,17 @@ loc_8001CA6:
 	pop {r4,r6}
 	add r5, #0x20
 	add r1, #2
-	ldrb r2, [r7,#0x16]
+	ldrb r2, [r7,#oS20094c0_Unk_16]
 	lsl r2, r2, #1
 	cmp r1, r2
 	blt loc_8001CA6
 	pop {r0}
 	ldr r0, off_8001CE4 // =off_8001AB8
-	ldrb r1, [r7,#0x17]
+	ldrb r1, [r7,#oS20094c0_Unk_17]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
-	ldr r1, [r7,#0x10]
-	ldrb r2, [r7,#0x16]
+	ldr r1, [r7,#oS20094c0_Unk_10]
+	ldrb r2, [r7,#oS20094c0_Unk_16]
 	lsl r2, r2, #5
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4,r7,pc}
@@ -3403,22 +3425,38 @@ off_8001CEC: .word sub_8001D64+1
 	thumb_local_start
 sub_8001CFC:
 	push {r4,r7,lr}
-	ldr r6, [r0]
+
+	// read pointer
+	ldr r6, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
+
+	// get some ewram address?
 	ldr r5, off_8001D4C // =off_8001AB8
-	ldrb r4, [r7,#0x17]
+	ldrb r4, [r7,#oS20094c0_Unk_17]
 	lsl r4, r4, #2
 	ldr r5, [r5,r4]
-	ldr r4, [r7,#0xc]
+
+	// read pointer
+	ldr r4, [r7,#oS20094c0_Unk_0c]
 	mov r1, #0
 	push {r0}
+
 loc_8001D0E:
+	// read from memory
 	ldrh r2, [r6,r1]
+	// & 0x3ff
 	lsl r3, r2, #0x16
 	lsr r3, r3, #0x16
+	// r3 has mask 0xffc0
 	lsl r3, r3, #6
 	push {r4,r6}
+	// add r3 as offset to r4 pointer
 	add r4, r4, r3
+	// jumptable
 	ldr r0, off_8001D50 // =off_8001D54
+	// use these bits of r2 for jumptable index
+	//    ||
+	//    vv
+	// 0b 1111 1111 1111
 	lsr r2, r2, #0xa
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
@@ -3427,17 +3465,25 @@ loc_8001D0E:
 	pop {r4,r6}
 	add r5, #0x40
 	add r1, #2
-	ldrb r2, [r7,#0x16]
+
+	// upper limit
+	ldrb r2, [r7,#oS20094c0_Unk_16]
 	lsl r2, r2, #1
 	cmp r1, r2
 	blt loc_8001D0E
 	pop {r0}
+
+	// read same ewram address again
 	ldr r0, off_8001D4C // =off_8001AB8
-	ldrb r1, [r7,#0x17]
+	ldrb r1, [r7,#oS20094c0_Unk_17]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
-	ldr r1, [r7,#0x10]
-	ldrb r2, [r7,#0x16]
+
+	// dest pointer
+	ldr r1, [r7,#oS20094c0_Unk_10]
+
+	// size
+	ldrb r2, [r7,#oS20094c0_Unk_16]
 	lsl r2, r2, #6
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4,r7,pc}
@@ -4209,13 +4255,13 @@ sub_80021CE:
 sub_8002310:
 	push {lr}
 	push {r4,r7}
-	ldr r1, [r0]
+	ldr r1, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
 	lsl r1, r1, #1
 	lsr r1, r1, #1
-	ldrb r0, [r7,#0xc]
-	ldrb r2, [r7,#0x16]
-	ldrb r3, [r7,#1]
-	ldr r4, [r7,#0x10]
+	ldrb r0, [r7,#oS20094c0_Unk_0c]
+	ldrb r2, [r7,#oS20094c0_Unk_16]
+	ldrb r3, [r7,#oS20094c0_Unk_01]
+	ldr r4, [r7,#oS20094c0_Unk_10]
 	bl sub_8002378
 	pop {r4,r7}
 	pop {pc}
@@ -4404,8 +4450,11 @@ off_8002440: .word iPalette3001B60
 off_8002444: .word byte_3001550
 off_8002448: .word iPallete3001750
 off_800244C: .word byte_8002450
-byte_8002450: .byte 0xF1, 0x5E, 0x0, 0x3, 0xF1, 0x5E, 0x0, 0x3, 0x79, 0x5F, 0x0
-	.byte 0x3, 0x79, 0x5F, 0x0, 0x3
+byte_8002450:
+	.word sub_3005EF0
+	.word sub_3005EF0
+	.word sub_3005F78
+	.word sub_3005F78
 off_8002460: .word 0x108
 off_8002464: .word byte_20097A0
 	thumb_func_end getPalleteAndTransition_80023E0
@@ -4429,8 +4478,8 @@ Initialize_eStruct200a6a0:
 	pop {r4-r7,pc}
 	thumb_func_end Initialize_eStruct200a6a0
 
-	thumb_func_start sub_8002484
-sub_8002484:
+	thumb_func_start run_eStruct200a6a0_Callback_8002484
+run_eStruct200a6a0_Callback_8002484:
 	push {r4-r7,lr}
 	ldr r5, off_80024C8 // =eStruct200a6a0
 	ldrb r0, [r5]
@@ -4448,7 +4497,7 @@ loc_8002498:
 	mov r1, #0x50
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4-r7,pc}
-	thumb_func_end sub_8002484
+	thumb_func_end run_eStruct200a6a0_Callback_8002484
 
 	thumb_func_start zeroFill_80024A2
 zeroFill_80024A2:

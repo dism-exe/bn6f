@@ -68,7 +68,7 @@ byte_2000670:: // 0x2000670
 	.space 256
 unk_2000770:: // 0x2000770
 	.space 16
-eStruct2000780:: // 0x2000780
+eScenarioEffectState2000780:: // 0x2000780
 	.space 1
 byte_2000781:: // 0x2000781
 	.space 1
@@ -236,7 +236,7 @@ dword_2001064:: // 0x2001064
 	.space 124
 eActiveOverworldNPCObjectsBitfield:: // 0x20010e0
 	.space 16
-byte_20010F0:: // 0x20010f0
+gameProgressBuffer_20010f0:: // 0x20010f0
 	.space 48
 rngSeed_2001120:: // 0x2001120
 	.space 16
@@ -367,9 +367,9 @@ unk_2004338:: // 0x2004338
 	.space 16
 unk_2004348:: // 0x2004348
 	.space 1156
-unk_20047CC:: // 0x20047cc
-    s_20047cc_struct eS20047CC_0
-    s_20047cc_struct eS20047CC_1
+eNaviStats:: // 0x20047cc
+    navi_stats_struct eNaviStats0
+    navi_stats_struct eNaviStats1
 	.space 504
 unk_2004A8C:: // 0x2004a8c
 	.space 404
@@ -523,8 +523,40 @@ dword_20081BC:: // 0x20081bc
 	.space 4
 dword_20081C0:: // 0x20081c0
 	.space 16
-dword_20081D0:: // 0x20081d0
-	.space 640
+eOWObjectInteractionAreas:: // 0x20081d0
+	ow_object_interaction_area_struct eOWObjectInteractionArea_0
+	ow_object_interaction_area_struct eOWObjectInteractionArea_1
+	ow_object_interaction_area_struct eOWObjectInteractionArea_2
+	ow_object_interaction_area_struct eOWObjectInteractionArea_3
+	ow_object_interaction_area_struct eOWObjectInteractionArea_4
+	ow_object_interaction_area_struct eOWObjectInteractionArea_5
+	ow_object_interaction_area_struct eOWObjectInteractionArea_6
+	ow_object_interaction_area_struct eOWObjectInteractionArea_7
+	ow_object_interaction_area_struct eOWObjectInteractionArea_8
+	ow_object_interaction_area_struct eOWObjectInteractionArea_9
+	ow_object_interaction_area_struct eOWObjectInteractionArea_10
+	ow_object_interaction_area_struct eOWObjectInteractionArea_11
+	ow_object_interaction_area_struct eOWObjectInteractionArea_12
+	ow_object_interaction_area_struct eOWObjectInteractionArea_13
+	ow_object_interaction_area_struct eOWObjectInteractionArea_14
+	ow_object_interaction_area_struct eOWObjectInteractionArea_15
+	ow_object_interaction_area_struct eOWObjectInteractionArea_16
+	ow_object_interaction_area_struct eOWObjectInteractionArea_17
+	ow_object_interaction_area_struct eOWObjectInteractionArea_18
+	ow_object_interaction_area_struct eOWObjectInteractionArea_19
+	ow_object_interaction_area_struct eOWObjectInteractionArea_20
+	ow_object_interaction_area_struct eOWObjectInteractionArea_21
+	ow_object_interaction_area_struct eOWObjectInteractionArea_22
+	ow_object_interaction_area_struct eOWObjectInteractionArea_23
+	ow_object_interaction_area_struct eOWObjectInteractionArea_24
+	ow_object_interaction_area_struct eOWObjectInteractionArea_25
+	ow_object_interaction_area_struct eOWObjectInteractionArea_26
+	ow_object_interaction_area_struct eOWObjectInteractionArea_27
+	ow_object_interaction_area_struct eOWObjectInteractionArea_28
+	ow_object_interaction_area_struct eOWObjectInteractionArea_29
+	ow_object_interaction_area_struct eOWObjectInteractionArea_30
+	ow_object_interaction_area_struct eOWObjectInteractionArea_31
+eOWObjectInteractionAreasEnd:: // 0x2008450
 // looks dynamic
 eStructArr2008450:: // 0x2008453
 	.space 1320
@@ -566,15 +598,27 @@ byte_2009470:: // 0x2009470
 unk_2009480:: // 0x2009480
 	.space 64
 byte_20094C0:: // 0x20094c0
-	.space 2
-word_20094C2:: // 0x20094c2
-	.space 2
-dword_20094C4:: // 0x20094c4
-	.space 4
-dword_20094C8:: // 0x20094c8
-	.space 12
-byte_20094D4:: // 0x20094d4
-	.space 444
+	s_20094c0_struct eS20094c0_0
+	s_20094c0_struct eS20094c0_1
+	s_20094c0_struct eS20094c0_2
+	s_20094c0_struct eS20094c0_3
+	s_20094c0_struct eS20094c0_4
+	s_20094c0_struct eS20094c0_5
+	s_20094c0_struct eS20094c0_6
+	s_20094c0_struct eS20094c0_7
+	s_20094c0_struct eS20094c0_8
+	s_20094c0_struct eS20094c0_9
+	s_20094c0_struct eS20094c0_10
+	s_20094c0_struct eS20094c0_11
+	s_20094c0_struct eS20094c0_12
+	s_20094c0_struct eS20094c0_13
+	s_20094c0_struct eS20094c0_14
+	s_20094c0_struct eS20094c0_15
+	s_20094c0_struct eS20094c0_16
+	s_20094c0_struct eS20094c0_17
+
+	.space 32
+
 dword_2009690:: // 0x2009690
 	.space 4
 dword_2009694:: // 0x2009694
@@ -639,8 +683,12 @@ dword_2009930:: // 0x2009930
 	.space 16
 byte_2009940:: // 0x2009940
 	.space 64
+
 eCamera:: // 0x2009980
-	.space 144
+	camera_struct eCamera
+eCameraEnd:: // 0x20099d0
+
+	.space 64
 dword_2009A10:: // 0x2009a10
 	.space 8
 dword_2009A18:: // 0x2009a18
@@ -812,7 +860,7 @@ dword_200A894:: // 0x200a894
 	.space 516
 unk_200AA98:: // 0x200aa98
 	.space 384
-dword_200AC18:: // 0x200ac18
+eNumOWObjectInteractionAreas:: // 0x200ac18
 	.space 4
 dword_200AC1C:: // 0x200ac1c
 	.space 4
@@ -1592,10 +1640,11 @@ byte_2011B30:: // 0x2011b30
 	.space 128
 byte_2011BB0:: // 0x2011bb0
 	.space 32
-cutsceneCameraInfo_2011bd0:: // 0x2011bd0
-	.space 4
-dword_2011BD4:: // 0x2011bd4
-	.space 60
+
+eCutsceneCameraInfo:: // 0x2011bd0
+	cutscene_camera_info_struct eCutsceneCameraInfo
+eCutsceneCameraInfoEnd::
+
 byte_2011C10:: // 0x2011c10
 	.space 4
 byte_2011C14:: // 0x2011c14
@@ -1659,9 +1708,10 @@ eActiveOverworldMapObjectsBitfield:: // 0x2011e50
 	.space 8
 
 // some sort of state for some map script (bytecode)
-eUnkMapScriptState_2011e60:: // 0x2011e60
-	unk_map_script_state_2011e60_struct eUnkMapScriptState_2011e60
-eUnkMapScriptState_2011e60End::
+eMapScriptState:: // 0x2011e60
+	map_script_state_struct eMapScriptState
+eMapScriptStateEnd::
+
 	.space 44
 unk_2011EA0:: // 0x2011ea0
 	.space 4
@@ -2594,10 +2644,9 @@ eTextScript2034A04:: // 0x2034a04
 	.space 12
 byte_2034A10:: // 0x2034a10
 	.space 80
-unk_2034A60:: // 0x2034a60
-	.space 100
-unk_2034AC4:: // 0x2034ac4
-	.space 108
+	navi_stats_struct eBattleNaviStats2034A60 // 0x2034a60
+	navi_stats_struct eBattleNaviStats2034AC4 // 0x2034ac4
+	.space 8
 unk_2034B30:: // 0x2034b30
 	.space 60
 unk_2034B6C:: // 0x2034b6c
@@ -3099,10 +3148,8 @@ dword_203C978:: // 0x203c978
 	.space 4
 dword_203C97C:: // 0x203c97c
 	.space 4
-byte_203C980:: // 0x203c980
-	.space 100
-byte_203C9E4:: // 0x203c9e4
-	.space 100
+	navi_stats_struct eBattleNaviStats203C980 // 0x203c980
+	navi_stats_struct eBattleNaviStats203C9E4 // 0x203c9e4
 dword_203CA48:: // 0x203ca48
 	.space 4
 dword_203CA4C:: // 0x203ca4c
@@ -3123,10 +3170,9 @@ byte_203CA80:: // 0x203ca80
 	.space 132
 byte_203CB04:: // 0x203cb04
 	.space 12
-byte_203CB10:: // 0x203cb10
-	.space 100
-byte_203CB74:: // 0x203cb74
-	.space 108
+	navi_stats_struct eBattleNaviStats203CB10 // 0x203cb10
+	navi_stats_struct eBattleNaviStats203CB74 // 0x203cb74
+	.space 8
 dword_203CBE0:: // 0x203cbe0
 	.space 4
 dword_203CBE4:: // 0x203cbe4
@@ -3163,7 +3209,7 @@ byte_203CCAB:: // 0x203ccab
 	.space 41
 byte_203CCD4:: // 0x203ccd4
 	.space 12
-byte_203CCE0:: // 0x203cce0
+eNaviStats203CCE0:: // 0x203cce0
 	.space 200
 byte_203CDA8:: // 0x203cda8
 	.space 8
@@ -3177,10 +3223,12 @@ dword_203CDF0:: // 0x203cdf0
 	.space 4
 byte_203CDF4:: // 0x203cdf4
 	.space 12
-ePlayerBattleVars:: // 0x203ce00
-	.space 100
-byte_203CE64:: // 0x203ce64
-	.space 108
+
+eBattleNaviStats:: // 0x203ce00
+	navi_stats_struct eBattleNaviStats0 // 0x203ce00
+	navi_stats_struct eBattleNaviStats1 // 0x203ce64
+
+	.space 8
 byte_203CED0:: // 0x203ced0
 	.space 1
 byte_203CED1:: // 0x203ced1
@@ -3289,7 +3337,7 @@ dword_203F4A0:: // 0x203f4a0
 	.space 4
 byte_203F4A4:: // 0x203f4a4
 	.space 8
-byte_203F4AC:: // 0x203f4ac
+eBattleNaviStats203F4AC:: // 0x203f4ac
 	.space 72
 byte_203F4F4:: // 0x203f4f4
 	.space 28

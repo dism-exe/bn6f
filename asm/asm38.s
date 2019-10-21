@@ -42,7 +42,7 @@ nullsub_38:
 	bx lr
 	thumb_func_end nullsub_38
 
-	thumb_func_start sub_3005CDA
+	thumb_local_start
 sub_3005CDA:
 	push {lr}
 	ldr r0, off_3005D20 // =eStruct200BC30_getJumpOffset00_pushpop+1
@@ -447,7 +447,7 @@ sub_3005F56:
 	mov pc, lr
 	thumb_func_end sub_3005F56
 
-	thumb_local_start
+	thumb_func_start sub_3005F78
 sub_3005F78:
 	push {r5,lr}
 	cmp r6, #0
@@ -2590,13 +2590,13 @@ sub_3006F8C:
 	ldrb r4, [r4,r1]
 	push {r4}
 	push {r6}
-	ldr r6, [r5,#0x70]
+	ldr r6, [r5,#oChatbox_Unk_70]
 	add r6, r6, r4
-	str r6, [r5,#0x70]
+	str r6, [r5,#oChatbox_Unk_70]
 	pop {r6}
 	lsl r4, r4, #2
 	add r6, r6, r4
-	str r6, [r5,#0x7c]
+	str r6, [r5,#oChatbox_Unk_7C]
 	sub r4, #0x40
 	neg r4, r4
 	ldr r6, off_3007034 // =0x1d0
@@ -2867,7 +2867,7 @@ loc_30071BE:
 	mov lr, pc
 	bx r3
 	mov r5, r10
-	ldr r5, [r5,#0x2c]
+	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	ldr r0, Flags3007200 // =FLAGS_3E_UNK_0400
 	ldr r3, off_3007204 // =chatbox_maskFlags_3e+1
 	mov lr, pc

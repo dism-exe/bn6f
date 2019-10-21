@@ -264,7 +264,7 @@ loc_80B83E8:
 loc_80B83EC:
 	mov r0, #3
 	mov r1, #0x23 
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 loc_80B83F4:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -584,7 +584,7 @@ sub_80B863A:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r1, off_80B8694 // =off_80B8698 
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	ldr r1, [r1,r0]
@@ -685,7 +685,7 @@ loc_80B8748:
 	bl sub_80B8844
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_crackPanel
@@ -734,7 +734,7 @@ locret_80B87A4:
 	pop {pc}
 	thumb_func_end sub_80B8786
 
-	thumb_local_start
+	thumb_func_start sub_80B87A6
 sub_80B87A6:
 	mov r1, #8
 	str r1, [r0,#8]
@@ -1002,7 +1002,7 @@ sub_80B8932:
 loc_80B89B4:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	bl battle_isTimeStop
 	bne locret_80B89DA
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
@@ -1084,10 +1084,10 @@ sub_80B8A3C:
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	pop {r5}
 	bl sub_800FC9E
@@ -1335,7 +1335,7 @@ sub_80B8CF8:
 	bgt loc_80B8D36
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	tst r0, r0
 	beq loc_80B8D36
 	mov r0, #0xf8
@@ -1434,7 +1434,7 @@ sub_80B8DA6:
 	bl sprite_setFinalPalette
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getFlip
 	bl sprite_setFlip
@@ -3022,7 +3022,7 @@ loc_80B991A:
 	bl PlaySoundEffect
 	mov r0, #1
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 locret_80B9966:
 	pop {r4,r6,r7,pc}
 dword_80B9968: .word 0x700FF11
@@ -3218,7 +3218,7 @@ sub_80B9ABA:
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0
 	ldrh r1, [r5,#oBattleObject_Timer]
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	b locret_80B9AE8
 loc_80B9AD8:
 	ldrh r0, [r5,#oBattleObject_Timer]
@@ -3265,7 +3265,7 @@ loc_80B9B04:
 loc_80B9B20:
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	b locret_80B9B2E
 loc_80B9B2A:
 	mov r0, #0
@@ -6024,10 +6024,10 @@ sub_80BAF74:
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	pop {r5}
 	bl sub_800FC9E
@@ -6457,10 +6457,10 @@ sub_80BB2C4:
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	pop {r5}
 	bl sub_800FC9E
@@ -6816,7 +6816,7 @@ loc_80BB588:
 	bl PlaySoundEffect
 	mov r0, #1
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80BB52E
 
@@ -7872,7 +7872,7 @@ sub_80BBD60:
 	bl PlaySoundEffect
 	mov r0, #2
 	ldrh r1, [r5,#oBattleObject_Timer]
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 loc_80BBD88:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -8439,7 +8439,7 @@ sub_80BC19C:
 	mov r2, #3
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E52
+	bl sprite_removeShadow
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getPalette
 	bl sprite_setPalette // (int pallete) -> void
@@ -8503,7 +8503,7 @@ loc_80BC1FE:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r1, off_80BC254 // =off_80BC258 
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	ldr r1, [r1,r0]
@@ -9003,7 +9003,7 @@ loc_80BC5BA:
 	bl loc_8002F02
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	pop {r4,pc}
 	thumb_func_end sub_80BC58C
 
@@ -9082,7 +9082,7 @@ sub_80BC670:
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E52
+	bl sprite_removeShadow
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -9575,7 +9575,7 @@ sub_80BCA72:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r1, off_80BCACC // =off_80BCAD0 
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	ldr r1, [r1,r0]
@@ -9687,10 +9687,10 @@ sub_80BCB74:
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	pop {r5}
 	bl sub_800FC9E
@@ -9934,10 +9934,10 @@ loc_80BCD5E:
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	pop {r5}
 	bl sub_800FC9E
@@ -11202,7 +11202,7 @@ loc_80BD6E6:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #1
 	mov r1, #0xa
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	ldr r4, dword_80BD9F4 // =0x10a00 
 	bl sub_80E11E0
 loc_80BD734:
@@ -11497,7 +11497,7 @@ sub_80BD8BC:
 	bl PlaySoundEffect
 	mov r0, #3
 	mov r1, #0x23 
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	ldr r4, dword_80BDA04 // =0x12800 
 	bl sub_80E11E0
 	mov r0, #0x1e
@@ -11875,10 +11875,10 @@ loc_80BDC00:
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	pop {r5}
 	bl sub_800FC9E
@@ -11939,7 +11939,7 @@ loc_80BDC98:
 	bne loc_80BDCAE
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	ldr r1, off_80BDCF8 // =byte_80203EA
 	ldrb r0, [r1,r0]
 	bl sprite_setPalette // (int pallete) -> void
@@ -12445,7 +12445,7 @@ loc_80BE032:
 	bl sub_80C53A6
 	ldr r0, [sp,#8]
 	ldr r1, [sp,#0xc]
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	ldr r4, [sp,#0x10]
 	bl sub_80E11E0
 loc_80BE086:
@@ -13073,7 +13073,7 @@ sub_80BE4F8:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
-	bl sub_8002E52
+	bl sprite_removeShadow
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getPalette
 	bl sprite_setPalette // (int pallete) -> void
@@ -13122,7 +13122,7 @@ sub_80BE55C:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	bl battle_isTimeStop
 	bne loc_80BE5A4
 	ldr r1, off_80BE5BC // =off_80BE5C0 
@@ -13528,7 +13528,7 @@ sub_80BE8AE:
 	push {r4,r6,r7,lr}
 	ldr r7, off_80BEA40 // =byte_80BE91C
 	mov r1, #0x20 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	tst r0, r0
 	beq loc_80BE8BE
 	ldr r7, off_80BEA44 // =byte_80BE936
@@ -13617,7 +13617,7 @@ sub_80BE97A:
 	push {r4,r6,r7,lr}
 	ldr r7, off_80BEA48 // =byte_80BE9D8
 	mov r1, #0x20 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	tst r0, r0
 	beq loc_80BE98A
 	ldr r7, off_80BEA4C // =byte_80BE9F3
@@ -13747,7 +13747,7 @@ loc_80BEAA0:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt loc_80BEAB2
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {pc}
@@ -14577,7 +14577,7 @@ loc_80BF08E:
 	strb r1, [r0]
 	mov r0, #3
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	ldr r4, dword_80BF254 // =0x12300 
 	bl sub_80E11E0
 	mov r0, #0xc3
@@ -15245,7 +15245,7 @@ sub_80BF588:
 	bne loc_80BF5A0
 	mov r0, #1
 	mov r1, #0xa
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xa
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -15313,7 +15313,7 @@ loc_80BF614:
 	bl PlaySoundEffect
 	mov r0, #3
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #0
@@ -15589,13 +15589,13 @@ loc_80BF83C:
 	strh r0, [r5,#oBattleObject_Timer2]
 	cmp r0, #0xf
 	ble loc_80BF85E
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {pc}
 loc_80BF85E:
 	ldrh r0, [r5,#oBattleObject_Timer2]
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	pop {pc}
 	thumb_func_end sub_80BF81C
 
@@ -15681,7 +15681,7 @@ sub_80BF8DA:
 	bl sub_80B8E70
 	mov r0, #2
 	mov r1, #0x6a 
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80BF8FC:
@@ -15924,7 +15924,7 @@ loc_80BFA96:
 	cmp r0, #0xa
 	blt locret_80BFAAC
 	bl object_setCoordinatesFromPanels // () -> void
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BFAAC:
@@ -16085,7 +16085,7 @@ loc_80BFB98:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #2
 	mov r1, #0x28 
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	ldr r4, dword_80BFC24 // =0x11e00 
 	bl sub_80E11E0
 loc_80BFBEA:
@@ -16174,13 +16174,13 @@ loc_80BFC64:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {pc}
 loc_80BFC8C:
 	ldrh r0, [r5,#oBattleObject_Timer2]
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	pop {pc}
 	thumb_func_end sub_80BFC44
 
@@ -16481,7 +16481,7 @@ sub_80BFE8C:
 	bl loc_8002F02
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	pop {r4,pc}
 	thumb_func_end sub_80BFE8C
 
@@ -16626,7 +16626,7 @@ sub_80BFFC0:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r1, off_80C0018 // =off_80C001C 
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	ldr r1, [r1,r0]
@@ -16916,7 +16916,7 @@ sub_80C01D8:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r1, off_80C0230 // =off_80C0234 
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	ldr r1, [r1,r0]
@@ -17112,7 +17112,7 @@ sub_80C0358:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_hasShadow
-	bl sub_8003006
+	bl sprite_setField0x3Bit5
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getPalette
 	bl sprite_setPalette // (int pallete) -> void
@@ -17321,7 +17321,7 @@ sub_80C04CC:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_hasShadow
-	bl sub_8002E52
+	bl sprite_removeShadow
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurAnim]
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
@@ -17457,7 +17457,7 @@ loc_80C05DE:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge loc_80C0600
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
@@ -17471,7 +17471,7 @@ loc_80C05DE:
 loc_80C0600:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	add r0, r0, r0
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 locret_80C0608:
 	pop {pc}
 	thumb_func_end sub_80C05C6
@@ -17545,7 +17545,7 @@ sub_80C0680:
 	push {lr}
 	ldr r0, dword_80C07B0 // =0x1000000 
 	bl sub_801BE2A
-	bl sub_8002E52
+	bl sprite_removeShadow
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -18633,10 +18633,10 @@ sub_80C0E24:
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	pop {r5}
 	bl sub_800FC9E
@@ -18666,10 +18666,10 @@ sub_80C0E24:
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	pop {r5}
 	mov r2, #1
@@ -18677,7 +18677,7 @@ sub_80C0E24:
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r5}
 	cmp r0, #0
 	beq loc_80C0EC4
@@ -18867,7 +18867,7 @@ loc_80C1014:
 	ldr r0, [r0,#oBattleObject_ExtraVars+0x10]
 	tst r0, r0
 	beq loc_80C1024
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	bl sprite_clearFinalPalette
 	b loc_80C105A
 loc_80C1024:
@@ -18887,7 +18887,7 @@ loc_80C1024:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 loc_80C105A:
 	ldr r1, off_80C1068 // =off_80C106C 
 	ldrb r0, [r5,#oBattleObject_CurAction]
@@ -19145,7 +19145,7 @@ sub_80C1204:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r1, off_80C1250 // =off_80C1254 
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	ldr r1, [r1,r0]
@@ -20716,7 +20716,7 @@ sub_80C1DC4:
 	mov r0, #2
 	ldrh r1, [r5,#oBattleObject_Timer]
 	add r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	b locret_80C1E78
 loc_80C1E26:
 	ldrb r0, [r5,#oBattleObject_Param3]
@@ -23029,10 +23029,10 @@ sub_80C3024:
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	pop {r5}
 	bl sub_800FC9E
@@ -25138,7 +25138,7 @@ loc_80C3FC8:
 loc_80C3FF0:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_ExtraVars+0x10]
 	tst r0, r0
 	beq loc_80C4004
@@ -25361,7 +25361,7 @@ sub_80C4146:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	tst r0, r0
 	bne loc_80C41C0
@@ -25617,7 +25617,7 @@ sub_80C4484:
 	push {lr}
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldrb r0, [r5,#oBattleObject_Param3]
 	tst r0, r0
 	bne loc_80C44A2
@@ -25844,7 +25844,7 @@ sub_80C461C:
 	push {lr}
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	bl sub_800139A
 	lsr r0, r0, #2
 	bcc locret_80C464A
@@ -25870,7 +25870,7 @@ sub_80C464C:
 	push {lr}
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_ExtraVars+0xc]
 	cmp r0, #0
 	beq loc_80C466A
@@ -25967,7 +25967,7 @@ loc_80C46DC:
 	beq locret_80C46F2
 	mov r4, r0
 	mov r1, #0xe
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xff
 	bne loc_80C46F0
 	mov r4, #0xc
@@ -26064,7 +26064,7 @@ sub_80C4766:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrb r0, [r0,#oBattleObject_CurAnim]
 	ldrb r1, [r5,#oBattleObject_Param2]
@@ -26148,10 +26148,10 @@ sub_80C4848:
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	pop {r5}
 	bl sub_800FC9E
@@ -26948,7 +26948,7 @@ sub_80C5014:
 	push {r4,r6,r7,lr}
 	mov r0, #3
 	mov r1, #0x28 
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xc3
 	bl PlaySoundEffect
 	bl object_getFrontDirection // () -> int
@@ -26977,7 +26977,7 @@ sub_80C5050:
 	push {r4,r6,r7,lr}
 	mov r0, #3
 	mov r1, #0x28 
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xc3
 	bl PlaySoundEffect
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -39969,7 +39969,7 @@ loc_80CB7CE:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #3
 	mov r1, #0x28 
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xc3
 	bl PlaySoundEffect
 	bl object_getFrontDirection // () -> int
@@ -40491,7 +40491,7 @@ loc_80CBC00:
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer2]
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -40567,12 +40567,12 @@ sub_80CBCB0:
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	add r0, #1
 	strh r0, [r5,#oBattleObject_Timer2]
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge locret_80CBCF0
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -40673,7 +40673,7 @@ sub_80CBD32:
 	bl sub_80E2FE8
 	mov r0, #1
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	b loc_80CBDC2
 loc_80CBD98:
 	ldr r4, dword_80CC038 // =0x405ff0f 
@@ -40958,7 +40958,7 @@ sub_80CBFAE:
 	bl sub_80E2FE8
 	mov r0, #1
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	b loc_80CC002
 	mov r4, r0
 	mov r7, sp
@@ -43829,7 +43829,7 @@ loc_80CD688:
 	mov r0, #1
 	mov r1, #0xf
 	push {r5}
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	pop {r5}
 loc_80CD6BC:
 	mov r0, #1
@@ -44006,7 +44006,7 @@ sub_80CD7D0:
 	mov r0, #1
 	mov r1, #0x3c 
 	push {r5}
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	pop {r5}
 	mov r0, #0xc3
 	bl PlaySoundEffect
@@ -44340,7 +44340,7 @@ loc_80CDB0A:
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80CDB26
 	ldr r0, dword_80CDB28 // =0x34000000 
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0xc1
@@ -44360,7 +44360,7 @@ sub_80CDB2C:
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80CDB4A
 	ldr r0, dword_80CDB4C // =0x2c000000 
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0xc1
@@ -44380,7 +44380,7 @@ sub_80CDB50:
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80CDB78
 	ldr r0, dword_80CDB7C // =0x1c000000 
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 	ldr r0, [r5,#oBattleObject_ExtraVars]
@@ -44604,7 +44604,7 @@ sub_80CDCBC:
 	bl sub_80E2FE8
 	mov r0, #1
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xc3
 	bl PlaySoundEffect
 	ldrb r0, [r5,#oBattleObject_Param1]
@@ -44613,7 +44613,7 @@ sub_80CDCBC:
 	mov r0, #3
 	mov r1, #0x3c 
 	push {r5}
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	pop {r5}
 locret_80CDD28:
 	pop {r4,r6,r7,pc}
@@ -47303,7 +47303,7 @@ sub_80CF250:
 	mov r0, #2
 	mov r1, #0x1e
 	push {r5}
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	pop {r5}
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -47620,7 +47620,7 @@ sub_80CF4E6:
 	tst r0, r0
 	beq loc_80CF526
 	mov r1, #0xf
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 loc_80CF526:
 	mov r0, #1
 	bl object_setCollisionRegion
@@ -48340,7 +48340,7 @@ loc_80CFADC:
 loc_80CFAFE:
 	mov r0, #1
 	mov r1, #0x14
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0
 	str r0, [r5,#oBattleObject_Z]
 	mov r0, #1
@@ -54574,7 +54574,7 @@ loc_80D2B42:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #0
 	mov r1, #0xc
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 loc_80D2B56:
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	sub r0, #1
@@ -57710,7 +57710,7 @@ loc_80D436E:
 	tst r5, r5
 	beq loc_80D4388
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0x17
 	beq loc_80D4388
 	cmp r0, #0x18
@@ -57762,7 +57762,7 @@ sub_80D43C0:
 	bl object_spawnCollisionRegion
 	mov r0, #2
 	mov r1, #4
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	pop {r4,r6,r7,pc}
 	.balign 4, 0x00
 dword_80D43E4: .word 0x3205FF83
@@ -59119,7 +59119,7 @@ sub_80D4E64:
 	mov r0, #1
 	mov r1, #0x3c 
 	push {r5}
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	pop {r5}
 	mov r0, #0x2f 
 	add r0, #0xff
@@ -60529,7 +60529,7 @@ loc_80D59BE:
 	beq locret_80D59E0
 	mov r0, #2
 	mov r1, #0x14
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xc0
 	bl PlaySoundEffect
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -63929,7 +63929,7 @@ sub_80D74DC:
 	str r0, [r5,#oBattleObject_TimerAndTimer2]
 	mov r0, #1
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #1
 	str r0, [r5,#oBattleObject_ExtraVars+4]
 loc_80D7512:
@@ -64294,7 +64294,7 @@ loc_80D7802:
 	mov r0, #1
 	mov r1, #0xf
 	push {r5}
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	pop {r5}
 	mov r0, #1
 	bl object_setCollisionRegion
@@ -68303,7 +68303,7 @@ sub_80D9788:
 loc_80D97CE:
 	mov r0, #2
 	mov r1, #0x18
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 loc_80D97D6:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -69205,7 +69205,7 @@ loc_80D9F3C:
 	bl sub_801BD3C
 	mov r0, #1
 	mov r1, #0xf
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	ldrb r0, [r5,#oObjectHeader_Flags]
@@ -69269,7 +69269,7 @@ sub_80D9FC2:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	ldrb r1, [r0,#0x18]
 	tst r1, r1
 	bne loc_80D9FE0
@@ -70175,7 +70175,7 @@ loc_80DA6C2:
 	bl sub_80DA7EC
 	mov r0, #1
 	mov r1, #0xf
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 loc_80DA6FC:
 	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
@@ -70361,7 +70361,7 @@ sub_80DA834:
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
 	ldr r0, dword_80DAA20 // =0xff80000 
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl battle_getFlags
@@ -70536,7 +70536,7 @@ sub_80DA9A2:
 	lsl r3, r3, #2
 	ldr r0, off_80DA9B4 // =byte_80DA9B8 
 	ldr r0, [r0,r3]
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	pop {pc}
 off_80DA9B4: .word byte_80DA9B8
 byte_80DA9B8: .byte 0x0, 0x0, 0xF8, 0x7, 0x0, 0x0, 0xF8, 0xB, 0x0, 0x0, 0xF8, 0xD, 0x0
@@ -70696,7 +70696,7 @@ loc_80DAAF4:
 	strb r1, [r0,#oObjectHeader_Flags]
 	mov r0, #1
 	mov r1, #0x14
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -70752,7 +70752,7 @@ loc_80DAB78:
 	str r1, [r5,#oBattleObject_ExtraVars+0x10]
 	mov r0, #1
 	mov r1, #0x14
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	b locret_80DAB88
 loc_80DAB84:
 	mov r0, #CUR_STATE_DESTROY
@@ -71967,7 +71967,7 @@ sub_80DB4CE:
 	push {r4,r6,r7,lr}
 	mov r0, #3
 	mov r1, #0x2d 
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #0
@@ -72348,7 +72348,7 @@ loc_80DB7DC:
 	beq locret_80DB7FE
 	mov r0, #2
 	mov r1, #0x14
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xc0
 	bl PlaySoundEffect
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -73130,7 +73130,7 @@ loc_80DBE2A:
 	beq loc_80DBE3A
 	mov r0, #1
 	mov r1, #5
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 loc_80DBE3A:
 	mov r1, #0
 loc_80DBE3C:
@@ -73399,7 +73399,7 @@ sub_80DC018:
 	beq loc_80DC05A
 	mov r0, #1
 	mov r1, #0xf
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 loc_80DC05A:
 	ldrb r0, [r7,#5]
 	tst r0, r0
@@ -74935,7 +74935,7 @@ loc_80DCBFC:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #2
 	mov r1, #0xf
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80DCC44
@@ -77090,7 +77090,7 @@ sub_80DDD30:
 	bl PlaySoundEffect
 	mov r0, #1
 	mov r1, #0xf
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_crackPanel
@@ -79228,7 +79228,7 @@ sub_80DEE8C:
 	mov r1, #4
 	mov r2, #0x1a
 	bl sprite_load // (int a1, int a2, int a3) ->
-	bl sub_8002E52
+	bl sprite_removeShadow
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
@@ -82655,7 +82655,7 @@ sub_80E0B08:
 loc_80E0B6A:
 	ldr r0, off_80E0DDC // =timer_2000000 
 loc_80E0B6C:
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	bl sub_8002EAC
 	mov r0, #0x89
 	ldrb r1, [r5,#oBattleObject_Param1]
@@ -83590,10 +83590,10 @@ sub_80E121C:
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	pop {r5}
 	bl sub_800FC9E
@@ -83624,10 +83624,10 @@ sub_80E121C:
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	pop {r5}
 	mov r2, #1
@@ -84021,11 +84021,11 @@ sub_80E1566:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne loc_80E159A
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
 	blt loc_80E159A
 	cmp r0, #0x18
@@ -84903,7 +84903,7 @@ sub_80E1B68:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_hasShadow
-	bl sub_8002E52
+	bl sprite_removeShadow
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurAnim]
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
@@ -85043,7 +85043,7 @@ loc_80E1C84:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge loc_80E1CA6
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
@@ -85057,7 +85057,7 @@ loc_80E1C84:
 loc_80E1CA6:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	add r0, r0, r0
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 locret_80E1CAE:
 	pop {pc}
 	thumb_func_end sub_80E1C66
@@ -87935,7 +87935,7 @@ loc_80E3340:
 	ldrb r0, [r7,#3]
 	tst r0, r0
 	bne loc_80E334E
-	bl sub_8002E52
+	bl sprite_removeShadow
 loc_80E334E:
 	ldr r0, [r5,#oBattleObject_ExtraVars+0x10]
 	bl sprite_setPalette // (int pallete) -> void
@@ -87959,7 +87959,7 @@ sub_80E336E:
 	bne loc_80E3386
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	cmp r0, #0xb
 	blt loc_80E33A4
 	cmp r0, #0x18
@@ -89701,7 +89701,7 @@ sub_80E403E:
 	bl loc_8002F02
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	bl battle_isBattleOver
 	tst r0, r0
 	bne loc_80E40AC
@@ -90934,7 +90934,7 @@ sub_80E4954:
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0x21 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_80E4984
 	bl sub_8014446
@@ -90986,34 +90986,34 @@ sub_80E49C4:
 	mov r5, r0
 	mov r1, #0x31 
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x13
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x14
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x16
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x54 
 	mov r2, #0
-	bl SetPlayerBattleVarHword_AllianceFromBattleObject
+	bl SetBattleNaviStatsHword_AllianceFromBattleObject
 	mov r1, #0x24 
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x19
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x18
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x1a
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x63 
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r5,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_80E49C4
@@ -91117,7 +91117,7 @@ sub_80E4AAE:
 	bl loc_8002F02
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	bl object_setPanelsFromCoordinates
 	bl object_isCurrentPanelValid
 	bne loc_80E4AFE
@@ -91410,7 +91410,7 @@ sub_80E4CDC:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_hasShadow
-	bl sub_8003006
+	bl sprite_setField0x3Bit5
 	mov r0, #1
 	bl sub_800302A
 	mov r0, #0
@@ -91714,7 +91714,7 @@ loc_80E4F66:
 	bl sub_80E5050
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xc0
 	bl PlaySoundEffect
 	mov r0, #0xe
@@ -97179,7 +97179,7 @@ sub_80E7816:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldrb r0, [r5,#oBattleObject_Param1]
 	tst r0, r0
 	bne locret_80E7894
@@ -97393,7 +97393,7 @@ sub_80E79CE:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r1, off_80E7A44 // =off_80E7A48 
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	ldr r1, [r1,r0]
@@ -97604,7 +97604,7 @@ loc_80E7B62:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldrb r0, [r5,#oBattleObject_Param1]
 	tst r0, r0
 	bne locret_80E7BD6
@@ -99194,7 +99194,7 @@ sub_80E86F6:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrb r0, [r0,#oBattleObject_CurAction]
 	ldrb r1, [r5,#oBattleObject_Param1]
@@ -99325,7 +99325,7 @@ sub_80E8802:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrb r0, [r0,#oBattleObject_CurAction]
 	ldrb r1, [r5,#oBattleObject_Param2]
@@ -99388,7 +99388,7 @@ sub_80E88C0:
 	strb r0, [r5,#oBattleObject_Param2]
 	mov r0, #2
 	mov r1, #0xc
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E88D8
@@ -99546,7 +99546,7 @@ sub_80E89BA:
 	bl sprite_setFlip
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrb r0, [r0,#oBattleObject_CurAction]
 	ldrb r1, [r5,#oBattleObject_Param2]
@@ -101234,23 +101234,23 @@ sub_80E95D8:
 	mov r4, #5
 	sub r4, r4, r0
 	mov r1, #1
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	add r2, r0, r4
 	mov r1, #1
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 loc_80E9634:
 	mov r1, #2
 	mov r2, #4
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #3
 	mov r2, #4
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0xa
 	mov r2, #8
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x63 
 	push {r1}
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	pop {r1}
 	beq loc_80E966A
@@ -101260,24 +101260,24 @@ loc_80E9634:
 	cmp r2, r0
 	blt loc_80E966A
 	add r2, #1
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 loc_80E966A:
 	mov r1, #7
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xff
 	bne loc_80E9686
 	mov r2, #0x3b 
 	mov r1, #7
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	mov r1, #0x3b 
 	strb r1, [r0,#7]
 loc_80E9686:
 	ldr r0, dword_80E97E0 // =0x40030 
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	mov r1, #1
 	strb r1, [r0,#0x1b]
 	strb r1, [r0,#0x1c]
@@ -101327,9 +101327,9 @@ sub_80E96C6:
 	bl PlaySoundEffect
 	ldrb r2, [r5,#oBattleObject_Param2]
 	mov r1, #5
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	ldrb r1, [r5,#oBattleObject_Param2]
 	strb r1, [r0,#5]
 	bl sub_80E97BE
@@ -101378,9 +101378,9 @@ sub_80E9714:
 	bl SpawnT4BattleObjectWithId0
 	ldrb r2, [r5,#oBattleObject_Param2]
 	mov r1, #5
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	ldrb r1, [r5,#oBattleObject_Param2]
 	strb r1, [r0,#5]
 	bl sub_80E97BE
@@ -101508,7 +101508,7 @@ sub_80E9810:
 	cmp r0, #2
 	bne loc_80E985C
 	ldr r0, [r5,#oBattleObject_ExtraVars+8]
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 loc_80E985C:
 	ldrb r0, [r5,#oBattleObject_Param2]
 	bl sub_80103BC
@@ -101900,7 +101900,7 @@ sub_80E9B56:
 	bl loc_8002F02
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sprite_getMosaicScalingParameters
-	bl sprite_setMosaicScalingParameters
+	bl sprite_setAlpha
 	bl object_setPanelsFromCoordinates
 	bl object_isCurrentPanelValid
 	bne loc_80E9BA6
@@ -102249,7 +102249,7 @@ sub_80E9E2C:
 	pop {r5}
 	mov r0, #3
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xab
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -102707,7 +102707,7 @@ sub_80EA170:
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
 	ldr r0, [r4,#4]
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80EA1BC
@@ -103665,7 +103665,7 @@ loc_80EAE4C:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl sub_8013CC4
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0x17
 	beq loc_80EAE78
 	cmp r0, #0x18
@@ -103874,7 +103874,7 @@ loc_80EAFDE:
 	mov r4, r0
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	cmp r0, #0xb
 	blt loc_80EB012
 	cmp r0, #0x18
@@ -104314,7 +104314,7 @@ loc_80EB370:
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #2
 	mov r1, #0xf
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xc0
 	bl PlaySoundEffect
 	mov r0, #3
@@ -104579,7 +104579,7 @@ sub_80EB572:
 	bne loc_80EB5D6
 	mov r4, #6
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_80EB5E6
 	mov r1, #0xe
@@ -104628,7 +104628,7 @@ loc_80EB5E6:
 	b loc_80EB606
 loc_80EB5F6:
 	mov r1, #0x10
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_80EB606
 	mov r6, #0x14
@@ -104826,7 +104826,7 @@ sub_80EB79C:
 	cmp r0, #0
 	bne loc_80EB7D6
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
 	blt loc_80EB7BC
 	cmp r0, #0x18
@@ -105153,7 +105153,7 @@ loc_80EBB10:
 	b loc_80EBB30
 loc_80EBB14:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r7, #0
 	cmp r0, #0xb
 	blt loc_80EBB30
@@ -105226,7 +105226,7 @@ loc_80EBB94:
 sub_80EBB98:
 	push {lr}
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
 	blt loc_80EBBA8
 	cmp r0, #0x18
@@ -106457,7 +106457,7 @@ sub_80EC556:
 	bne loc_80EC594
 loc_80EC570:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0x17
 	beq loc_80EC5A2
 	bl GetAIData_Unk_44_Flag
@@ -106612,7 +106612,7 @@ loc_80EC68E:
 	bne loc_80EC6C6
 loc_80EC6A2:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0x18
 	beq loc_80EC6D0
 	bl GetAIData_Unk_44_Flag
@@ -106669,7 +106669,7 @@ sub_80EC710:
 	mov r6, r1
 	mov r7, r3
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	sub r0, #0xb
 	ldr r1, off_80EC780 // =byte_80EC784
 	ldrb r0, [r1,r0]
@@ -107205,7 +107205,7 @@ loc_80ECB4A:
 	bne loc_80ECB74
 	mov r0, #1
 	mov r1, #0x14
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1
@@ -108832,7 +108832,7 @@ sub_80ED7A2:
 	tst r0, r0
 	bne loc_80ED7C0
 	mov r1, #2
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r2, r0
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -109322,7 +109322,7 @@ loc_80EDB50:
 	add r1, #1
 	strb r1, [r0,#0x10]
 	mov r1, #0x22 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0
 	cmp r0, #0
 	beq loc_80EDB7C
@@ -109373,7 +109373,7 @@ loc_80EDBD6:
 	blt loc_80EDC5E
 	mov r6, #2
 	mov r1, #0x22 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_80EDBEC
 	mov r6, #4
@@ -112873,7 +112873,7 @@ byte_80EF6F2: .byte 0x11, 0x0, 0x3, 0x0, 0x21, 0x0, 0x3, 0x0, 0x0, 0x0
 sub_80EF6FC:
 	push {r4,lr}
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0x17
 	beq loc_80EF712
 	cmp r0, #0x18
@@ -112903,14 +112903,14 @@ loc_80EF722:
 	bne loc_80EF75E
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, r0
 	pop {r0}
 	cmp r1, #0xb
 	beq locret_80EF772
 	push {r0}
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, r0
 	pop {r0}
 	cmp r1, #3
@@ -112957,11 +112957,11 @@ loc_80EF788:
 	cmp r0, #0
 	bne loc_80EF7CE
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
 	beq locret_80EF7D2
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	ldrh r1, [r7,#oAIAttackVars_Unk_14]
 	ldr r2, dword_80EF968 // =0x173 
 	cmp r1, r2
@@ -113042,7 +113042,7 @@ byte_80EF86E: .byte 0x41, 0x0, 0x3, 0x0, 0x81, 0x0, 0x3, 0x0, 0x41, 0x0, 0x3, 0x
 sub_80EF87C:
 	push {r4,lr}
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0x17
 	beq loc_80EF892
 	cmp r0, #0x18
@@ -113072,14 +113072,14 @@ loc_80EF8A2:
 	bne loc_80EF8DE
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, r0
 	pop {r0}
 	cmp r1, #0xb
 	beq locret_80EF8F2
 	push {r0}
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, r0
 	pop {r0}
 	cmp r1, #3
@@ -113126,11 +113126,11 @@ loc_80EF908:
 	cmp r0, #0
 	bne loc_80EF94E
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
 	beq locret_80EF952
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	ldrh r1, [r7,#oAIAttackVars_Unk_14]
 	ldr r2, dword_80EF96C // =0x177 
 	cmp r1, r2
@@ -113604,7 +113604,7 @@ sub_80EFCD8:
 	tst r0, r0
 	bne loc_80EFD48
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r4, r0
 	mov r0, #0x17
 	cmp r4, #0x16
@@ -113780,14 +113780,14 @@ loc_80EFE2C:
 	bl sub_800EB08
 	bl sub_801A66C
 	mov r1, #0x18
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	add r2, r0, #4
 	cmp r2, #7
 	ble loc_80EFE5E
 	mov r2, #7
 loc_80EFE5E:
 	mov r1, #0x18
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	bl object_exitAttackState
 locret_80EFE68:
 	pop {r4,r6,r7,pc}
@@ -114408,7 +114408,7 @@ loc_80F03A0:
 	b loc_80F03AE
 loc_80F03AE:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0x17
 	blt loc_80F03D2
 	bl sub_802D322
@@ -114693,7 +114693,7 @@ sub_80F0608:
 	bne loc_80F068C
 	mov r6, #0x64 
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #5
 	bne loc_80F0632
 	bl sub_800F49E
@@ -114708,7 +114708,7 @@ sub_80F0608:
 	b loc_80F0640
 loc_80F0632:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #5
 	beq loc_80F0640
 	cmp r0, #0x11
@@ -114753,11 +114753,11 @@ loc_80F068A:
 	strh r1, [r4]
 loc_80F068C:
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne locret_80F06BA
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0x18
 	beq loc_80F06B6
 	ldrb r0, [r5,#oBattleObject_CurAction]
@@ -114779,7 +114779,7 @@ locret_80F06BA:
 
 	push {r7,lr}
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq locret_80F06CC
 	bl sub_80144C0
@@ -117239,7 +117239,7 @@ loc_80F1922:
 loc_80F1936:
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xd
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -117768,7 +117768,7 @@ sub_80F1D30:
 	bl sub_80F1E98
 	mov r0, #1
 	mov r1, #0x14
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0x14
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_80F1D6A
@@ -120020,7 +120020,7 @@ sub_80F32BC:
 	beq loc_80F330C
 	mov r0, #2
 	mov r1, #0x14
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	ldrb r2, [r7,#oAIAttackVars_Unk_02]
 	ldrb r3, [r7,#oAIAttackVars_Unk_0d]
 	lsl r3, r3, #8
@@ -130838,7 +130838,7 @@ loc_80F8CA8:
 loc_80F8CBC:
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	bl sub_80F8E48
 locret_80F8CC8:
 	pop {r4,r6,pc}
@@ -134201,7 +134201,7 @@ sub_80FA8F0:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #1
 	mov r1, #0xa
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_80FA912:
@@ -134212,7 +134212,7 @@ loc_80FA912:
 	bgt loc_80FA928
 	mov r0, #1
 	mov r1, #0xa
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_80FA928:
@@ -135431,7 +135431,7 @@ loc_80FB3B4:
 	bl sub_80FB81E
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 locret_80FB3C8:
 	pop {r4,pc}
 	thumb_func_end sub_80FB366
@@ -141223,7 +141223,7 @@ sub_80FE394:
 	strb r0, [r7,#oAIAttackVars_Unk_0d]
 	mov r0, #0
 	mov r1, #0xa
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	b locret_80FE3EA
@@ -141235,7 +141235,7 @@ loc_80FE3BA:
 	bgt loc_80FE3D0
 	mov r0, #0
 	mov r1, #0xa
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_80FE3D0:
@@ -141289,7 +141289,7 @@ loc_80FE41E:
 loc_80FE424:
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 locret_80FE42C:
 	pop {pc}
 	thumb_func_end sub_80FE3EC
@@ -148793,7 +148793,7 @@ sub_8102280:
 	mov r1, #1
 	eor r0, r1
 	mov r1, #0x20 
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	pop {r4,pc}
 	thumb_func_end sub_8102280
 
@@ -149283,7 +149283,7 @@ loc_8102600:
 	bne loc_8102626
 	mov r0, #1
 	mov r1, #0x14
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1
@@ -149827,7 +149827,7 @@ sub_81029CE:
 	bl PlaySoundEffect
 	mov r0, #0
 	mov r1, #0x3c 
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 loc_81029FE:
@@ -149940,7 +149940,7 @@ loc_8102ABA:
 loc_8102AC0:
 	mov r0, #2
 	mov r1, #3
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	ldrb r0, [r7,#oAIAttackVars_Unk_03]
 	cmp r0, #0
 	bne loc_8102ADE
@@ -150933,7 +150933,7 @@ sub_8103286:
 	bl sub_81039A4
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0x1e
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_81032CE
@@ -152884,7 +152884,7 @@ sub_8104290:
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xc9
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -153086,7 +153086,7 @@ sub_8104420:
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xc9
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -153374,7 +153374,7 @@ sub_8104640:
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	mov r1, #0x1e
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xc9
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -153799,7 +153799,7 @@ sub_8104998:
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	mov r0, #2
 	mov r1, #0x14
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0x14
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_81049BE
@@ -154139,7 +154139,7 @@ sub_8104C18:
 	bl PlaySoundEffect
 	mov r0, #2
 	ldrh r1, [r7,#oAIAttackVars_Unk_10]
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0x3c 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0x10
@@ -154322,7 +154322,7 @@ sub_8104D5E:
 	pop {r4,r6,r7}
 	mov r0, #2
 	mov r1, #0xa
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	b locret_8104DC6
@@ -154334,7 +154334,7 @@ loc_8104DA4:
 	bgt loc_8104DBA
 	mov r0, #2
 	mov r1, #0xa
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_8104DBA:
@@ -154416,7 +154416,7 @@ sub_8104E36:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #2
 	mov r1, #0xa
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xa
 	strb r0, [r7,#oAIAttackVars_Unk_0e]
 	mov r0, #0xe4
@@ -154432,7 +154432,7 @@ loc_8104E62:
 	bgt loc_8104E78
 	mov r0, #2
 	mov r1, #0xa
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xa
 	strb r0, [r7,#oAIAttackVars_Unk_0e]
 loc_8104E78:
@@ -156304,7 +156304,7 @@ sub_8105DE6:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #2
 	mov r1, #0xa
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	b locret_8105E3A
@@ -156316,7 +156316,7 @@ loc_8105E18:
 	bgt loc_8105E2E
 	mov r0, #2
 	mov r1, #0xa
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_8105E2E:
@@ -156735,7 +156735,7 @@ sub_810610A:
 	strb r1, [r7,#oAIAttackVars_Unk_17]
 	mov r0, #1
 	mov r1, #5
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #5
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_8106158
@@ -157005,7 +157005,7 @@ sub_81062F8:
 	bl sub_81067D0
 	mov r0, #3
 	ldrh r1, [r7,#oAIAttackVars_Unk_10]
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xc8
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -167833,7 +167833,7 @@ sub_810C0E4:
 	cmp r1, #0
 	beq loc_810C120
 	mov r0, #2
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1

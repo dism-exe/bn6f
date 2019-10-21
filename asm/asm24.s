@@ -182,7 +182,7 @@ loc_808C3EE:
 loc_808C3F2:
 	mov r0, #0
 	mov r1, #1
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	ldr r0, [r7]
 	tst r0, r0
 	pop {r4-r7,pc}
@@ -275,7 +275,7 @@ loc_808C656:
 	ldrh r1, [r5,r4]
 	lsl r1, r1, #0x10
 	mov r2, #0
-	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
+	bl owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
 	add r4, #2
 	ldrh r0, [r5,r4]
 	bl SetOWPlayerFacingDirection
@@ -522,7 +522,7 @@ loc_808CB8A:
 	bl sub_808CC34
 	cmp r0, #0
 	beq locret_808CB96
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 locret_808CB96:
 	pop {r4-r7,pc}
 dword_808CB98: .word 0x13B

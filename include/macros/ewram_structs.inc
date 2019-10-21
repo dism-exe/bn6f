@@ -10,18 +10,21 @@
 	.include "structs/OverworldPlayerObject.inc"
 	.include "structs/OverworldNPCObject.inc"
 	.include "structs/OverworldMapObject.inc"
-	.include "structs/UnkMapScriptState_2011e60.inc"
+	.include "structs/MapScriptState.inc"
 	.include "structs/Chatbox.inc"
 	.include "structs/StartScreen.inc"
 	.include "structs/ReqBBSGui.inc"
-	.include "structs/PlayerBattleVars.inc"
+	.include "structs/NaviStats.inc"
 	.include "structs/CutsceneState.inc"
-	.include "structs/S20047CC.inc"
 	.include "structs/ScreenFade.inc"
 	.include "structs/S2001c04.inc"
 	.include "structs/S200ace0.inc"
 	.include "structs/S2000aa0.inc"
 	.include "structs/Warp2011bb0.inc"
+	.include "structs/Camera.inc"
+	.include "structs/CutsceneCameraInfo.inc"
+	.include "structs/OWObjectInteractionArea.inc"
+	.include "structs/S20094c0.inc"
 
 /*
 rough notes for now
@@ -167,7 +170,7 @@ known offsets from https://pastebin.com/grDF80Vp
 0x8 - num counter hits
 0xb - was cross used
 
-what is ePlayerBattleVars? field 0e is karma
+what is eBattleNaviStats0? field 0e is karma
 
 sub_801BCF4 = animate battle sprite?
 */
@@ -216,7 +219,7 @@ look at:
 31 - processing bug
 3e - max base HP
 40 - cur HP
-42 - HP+
+42 - max HP
 50 - chip recovery (hp value?)
 63 - turns until custbug activates
 
@@ -224,7 +227,7 @@ look at:
 
 /*
 this weird set of boilerplate functions revolving around structs in asm00_1.s
-- eStruct2000780
+- eScenarioEffectState2000780
 - eStruct2001010
 */
 

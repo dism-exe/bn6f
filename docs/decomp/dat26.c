@@ -60,11 +60,11 @@ signed int __fastcall sub_8092EC4(int a1)
     *v2 = sub_8143DEA(a1);
     v3 = sub_809E1AE();
     sub_8143EA4();
-    v4 = sub_8143DBC();
+    v4 = ConvertGroundmanMinigameGridCoordsToMapCoords();
     sub_809323A(v4, v5, v3, SHIDWORD(v3));
     v6 = sub_809E1AE();
     sub_8143EA4();
-    v7 = sub_8143DBC();
+    v7 = ConvertGroundmanMinigameGridCoordsToMapCoords();
     v9 = calcAngle_800117C(v7 - v6, HIDWORD(v6) - v8);
     sub_809E13C(((((((v9 + 16) >> 4) & 0xF) >> 1) - 1) & 7) + 8);
     PlaySoundEffect(129, v10, v11);
@@ -89,7 +89,7 @@ signed int __fastcall sub_8092F1E(int a1)
     if ( !v3 )
     {
         sub_8143EA4();
-        v4 = sub_8143DBC();
+        v4 = ConvertGroundmanMinigameGridCoordsToMapCoords();
         (loc_809E1A4)(v4);
         sub_8143EA4();
         v5 = *v2;
@@ -182,10 +182,10 @@ signed int __fastcall sub_8092FD2(int a1)
     {
         sub_809322A();
         v4 = *v2;
-        v6 = sub_8143DBC();
+        v6 = ConvertGroundmanMinigameGridCoordsToMapCoords();
         v7 = v5;
         sub_8143EA4();
-        v8 = sub_8143DBC();
+        v8 = ConvertGroundmanMinigameGridCoordsToMapCoords();
         sub_809323A(v8, v9, v6, v7);
         sub_80931FA(8);
         sub_8144010();
@@ -243,7 +243,7 @@ signed int __fastcall sub_8093054(int a1)
     if ( !v3 )
     {
         sub_8093074(v2);
-        sub_809E254();
+        owPlayer_disableWallCollision_809e254();
         PlaySoundEffect(455, v4, v5);
         *v1 = 36;
     }
@@ -264,12 +264,12 @@ int __fastcall sub_8093074(int a1)
     int v8; // r1
 
     sub_8143EA4();
-    v3 = sub_8143DBC();
+    v3 = ConvertGroundmanMinigameGridCoordsToMapCoords();
     v4 = v2;
     v5 = sub_8143EA4();
     v6 = sub_809E2B8();
     *v1 = sub_8143E68(v5, v6, 1);
-    v7 = sub_8143DBC();
+    v7 = ConvertGroundmanMinigameGridCoordsToMapCoords();
     return sub_809323A(v7, v8, v3, v4);
 }
 
@@ -313,24 +313,24 @@ LABEL_7:
             if ( ((v11 < 0) ^ v10) | (v11 == 0) )
             {
                 sub_8143EA4();
-                v13 = sub_8143DBC();
+                v13 = ConvertGroundmanMinigameGridCoordsToMapCoords();
                 v14 = v12;
                 v15 = sub_8143EA4();
                 v16 = sub_809E2B8();
                 sub_8143E68(v15, v16, 1);
-                v17 = sub_8143DBC();
+                v17 = ConvertGroundmanMinigameGridCoordsToMapCoords();
                 sub_809323A(v17, v18, v13, v14);
                 sub_80931FA(16);
-                sub_809E248();
+                owPlayer_enableWallCollision_809e248();
                 *v1 = 40;
             }
             else
             {
                 sub_8093074(v11);
-                sub_809E254();
+                owPlayer_disableWallCollision_809e254();
                 sub_8143EDC(*v2);
                 if ( v4 )
-                    sub_809E248();
+                    owPlayer_enableWallCollision_809e248();
             }
         }
         return 1;
@@ -342,7 +342,7 @@ LABEL_7:
         {
             v21 = sub_809E2B8();
             sub_809E13C(v21);
-            sub_809E248();
+            owPlayer_enableWallCollision_809e248();
             v1[8] = 0;
             return 0;
         }
@@ -356,7 +356,7 @@ LABEL_7:
         }
         goto LABEL_7;
     }
-    sub_80302A8(2, 20);
+    camera_initShakeEffect_80302a8(2, 20);
     sub_80931FA(30);
     PlaySoundEffect(192, v19, v20);
     *v1 = 44;
@@ -377,7 +377,7 @@ signed int __fastcall sub_809316C(int a1)
         return 1;
     v3 = sub_809E2B8();
     sub_809E13C(v3);
-    sub_809E248();
+    owPlayer_enableWallCollision_809e248();
     *(v1 + 8) = 1;
     return 0;
 }
@@ -400,10 +400,10 @@ signed int __fastcall sub_809319C(int a1)
     if ( !v3 )
     {
         v4 = *v2;
-        v6 = sub_8143DBC();
+        v6 = ConvertGroundmanMinigameGridCoordsToMapCoords();
         v7 = v5;
         sub_8143EA4();
-        v8 = sub_8143DBC();
+        v8 = ConvertGroundmanMinigameGridCoordsToMapCoords();
         sub_809323A(v8, v9, v6, v7);
         sub_80931FA(16);
         *v1 = 48;
@@ -425,7 +425,7 @@ signed int __fastcall sub_80931CA(int a1)
         return 1;
     v3 = sub_809E2B8();
     sub_809E13C(v3);
-    sub_809E248();
+    owPlayer_enableWallCollision_809e248();
     *(v1 + 8) = 1;
     return 0;
 }

@@ -34,9 +34,9 @@ int __usercall sub_809F526@<R0>(OverworldNPCObject *obj@<R5>)
         v9 = v3;
         v10 = v6 + (*(obj + 19) << 16);
         v11 = *(obj + 12);
-        sub_80037AC(v2, v3, v10, v11);
+        createOWObjectInteractionArea_80037ac(v2, v3, v10, v11);
         if ( !(v1 & 0x14) )
-            sub_80037AC(v8, v9, v10, v11);
+            createOWObjectInteractionArea_80037ac(v8, v9, v10, v11);
     }
     result = 0;
     *(obj + 80) = 0;
@@ -52,7 +52,7 @@ int sub_809F5B0()
     int result; // r0
 
     if ( !(*(v0 + 96) & 4) )
-        sub_80037AC(*(v0 + 48) + (*(v0 + 17) << 16), *(v0 + 52) + (*(v0 + 18) << 16), *(v0 + 56) + (*(v0 + 19) << 16), 2052);
+        createOWObjectInteractionArea_80037ac(*(v0 + 48) + (*(v0 + 17) << 16), *(v0 + 52) + (*(v0 + 18) << 16), *(v0 + 56) + (*(v0 + 19) << 16), 2052);
     result = 0;
     *(v0 + 84) = 0;
     return result;
@@ -607,7 +607,7 @@ signed int __fastcall sub_809FC96(int a1)
     v2 = a1;
     v3 = 1;
     v4 = getPETNaviSelect();
-    if ( sub_8013704(v4, 51) != 1 )
+    if ( GetNaviStatsByte(v4, 51) != 1 )
         v3 = 0;
     v5 = *(v1 + oToolkit_GameStatePtr);
     v6 = *(v5 + oGameState_MapGroup);

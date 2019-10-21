@@ -1,5 +1,5 @@
 
-	thumb_func_start sub_800B884
+	thumb_local_start
 sub_800B884:
 	push {lr}
 	push {r1}
@@ -9,7 +9,7 @@ sub_800B884:
 	pop {pc}
 	thumb_func_end sub_800B884
 
-	thumb_func_start sub_800B892
+	thumb_local_start
 sub_800B892:
 	push {lr}
 	bl sub_800BF5C
@@ -17,7 +17,7 @@ sub_800B892:
 	pop {pc}
 	thumb_func_end sub_800B892
 
-	thumb_func_start sub_800B89C
+	thumb_local_start
 sub_800B89C:
 	push {lr}
 	bl sub_800BF5C
@@ -28,7 +28,7 @@ sub_800B89C:
 	pop {pc}
 	thumb_func_end sub_800B89C
 
-	thumb_func_start sub_800B8AC
+	thumb_local_start
 sub_800B8AC:
 	push {r4,lr}
 	mov r4, r0
@@ -56,7 +56,7 @@ locret_800B8D6:
 	pop {pc}
 	thumb_func_end sub_800B8C2
 
-	thumb_func_start sub_800B8D8
+	thumb_local_start
 sub_800B8D8:
 	push {lr}
 	push {r0}

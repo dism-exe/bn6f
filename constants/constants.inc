@@ -3,14 +3,15 @@
 	.include "constants/SoundOffsets.inc"
 	.include "constants/ewram_flags.inc"
 	.include "constants/iwram_end_locations.inc" // will be removed later
+	.include "constants/battle_constants.inc"
 
 	enum_start
-	enum OVERWORLD_PLAYER_OBJECT
-	enum T1_BATTLE_OBJECT
-	enum OVERWORLD_NPC_OBJECT
-	enum T3_BATTLE_OBJECT
-	enum T4_BATTLE_OBJECT
-	enum OVERWORLD_MAP_OBJECT
+	enum OVERWORLD_PLAYER_OBJECT // 0x0
+	enum T1_BATTLE_OBJECT // 0x1
+	enum OVERWORLD_NPC_OBJECT // 0x2
+	enum T3_BATTLE_OBJECT // 0x3
+	enum T4_BATTLE_OBJECT // 0x4
+	enum OVERWORLD_MAP_OBJECT // 0x5
 
 	.equiv OVERWORLD_PLAYER_OBJECT_F, 1 << OVERWORLD_PLAYER_OBJECT
 	.equiv T1_BATTLE_OBJECT_F, 1 << T1_BATTLE_OBJECT
@@ -25,9 +26,7 @@
 	.equiv NUM_T4_BATTLE_OBJECTS, 0x20
 	.equiv NUM_OVERWORLD_MAP_OBJECTS, 0x38
 
-	.equiv REAL_WORLD_MAP_GROUP_START, 0x00
-	.equiv INTERNET_MAP_GROUP_START, 0x80
-	.equiv UNKNOWN_MAP_GROUP_START, 0xf0
+	.equiv NUM_S20094C0_STRUCTS, 0x12
 
 	enum_start 1
 	enum BLUE_MYSTERY_DATA   // 1
@@ -37,26 +36,31 @@
 	enum GREEN_MYSTERY_DATA  // 5
 	enum UNK_MYSTERY_DATA_6  // 6
 
-
-
 	.equiv NULL, 0
 	.equiv TRUE, 1
 	.equiv FALSE, 0
 	.equiv timer_2000000, 0x2000000
 
-
-	.equiv BATTLE_ACTORS_PER_SIDE, 4
+	enum_start
+	enum OW_UP // 0
+	enum OW_UP_RIGHT // 1
+	enum OW_RIGHT // 2
+	enum OW_DOWN_RIGHT // 3
+	enum OW_DOWN // 4
+	enum OW_DOWN_LEFT // 5
+	enum OW_LEFT // 6
+	enum OW_UP_LEFT // 7
 
 	enum_start
-	enum BATTLE_MODE_NORMAL // 0
-	enum BATTLE_MODE_CROSSOVER // 1
-	enum BATTLE_MODE_TUTORIAL_1 // 2
-	enum BATTLE_MODE_TUTORIAL_2 // 3
-	enum BATTLE_MODE_TUTORIAL_3 // 4
-	enum BATTLE_MODE_BEAST_OUT_TUTORIAL // 5
-	enum BATTLE_MODE_VIRUS_BATTLER // 6
-	enum BATTLE_MODE_TOMAHAWKMAN_MINI_GAME // 7
-	enum BATTLE_MODE_CROSS_TUTORIAL // 8
-	enum BATTLE_MODE_DUSTMAN_MINI_GAME // 9
-	enum BATTLE_MODE_HAKUSHAKU_INVINCIBLE_MODE // 10
-	enum BATTLE_MODE_HAKUSHAKU_DEFEAT // 11
+	enum NAVI_MEGAMAN // 0
+	enum NAVI_HEATMAN // 1
+	enum NAVI_ELECMAN // 2
+	enum NAVI_SLASHMAN // 3
+	enum NAVI_ERASEMAN // 4
+	enum NAVI_CHARGEMAN // 5
+	enum NAVI_SPOUTMAN // 6
+	enum NAVI_TOMAHAWKMAN // 7
+	enum NAVI_TENGUMAN // 8
+	enum NAVI_GROUNDMAN // 9
+	enum NAVI_DUSTMAN // 10
+	enum NAVI_PROTOMAN // 11

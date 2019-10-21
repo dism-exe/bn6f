@@ -26,7 +26,7 @@ int sub_812EAC4()
     v1 = 145;
     do
     {
-        v2 = sub_803CE28(v1);
+        v2 = CheckKeyItem(v1);
         if ( v2 )
         {
             v3 = 0;

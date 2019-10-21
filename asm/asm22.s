@@ -228,7 +228,7 @@ loc_80870E8:
 	bl sub_8086F5C
 	b locret_80870F6
 loc_80870F2:
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 locret_80870F6:
 	pop {r4-r7,pc}
 off_80870F8: .word off_8086D1C+4
@@ -256,7 +256,7 @@ loc_808712A:
 	beq loc_8087130
 	ldr r0, off_808713C // =byte_8086678+32 
 loc_8087130:
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	pop {pc}
 	.balign 4, 0x00
 off_8087138: .word byte_80868C8+0x20

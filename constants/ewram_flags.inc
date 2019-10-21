@@ -32,7 +32,11 @@
 	enum EVENT_166
 	enum EVENT_167
 
-		enum_start 0x5e0 // 0xBC
+		enum_start 0x4e9
+	enum EVENT_4E9
+
+		enum_start 0x5df // 0xBC
+	enum EVENT_5DF
 	enum EVENT_5E0
 	enum EVENT_5E1
 	enum EVENT_5E2
@@ -61,6 +65,21 @@
 	enum EVENT_5FD
 	enum EVENT_5FE
 	enum EVENT_5FF
+
+
+		enum_start 0x67f
+	enum EVENT_67F
+	enum EVENT_680
+	enum EVENT_681
+
+		enum_start 0xd98
+	enum EVENT_D98
+
+		enum_start 0xda2
+	enum EVENT_DA2
+
+		enum_start 0x16c0
+	enum EVENT_16C0
 
 		enum_start 0x1700 // [0x2E0] = 0x2001f68
 	enum EVENT_1700

@@ -38,7 +38,7 @@ unsigned int __fastcall split9BitsFromBitfield_8021AE0(int a1)
 
 
 // 0x8021aee
-int __fastcall sub_8021AEE(int a1, int a2, int a3)
+int __fastcall GiveChips(int a1, int a2, int a3)
 {
     char *v4; // r0
     int v5; // r3
@@ -130,7 +130,7 @@ void *__cdecl sub_8021B78(int idx, int searchItem, int off)
 
 // 0x8021b92
 // (int idx, int searchItem, int off) -> void*
-signed int __fastcall sub_8021B92(int a1, int a2, int a3)
+signed int __fastcall TakeChips(int a1, int a2, int a3)
 {
     char *v3; // r0
     signed int v4; // r3

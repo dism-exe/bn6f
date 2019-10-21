@@ -11,7 +11,7 @@ sub_808F810:
 	mov r0, #0xff
 	strb r0, [r5,#0x11] // (byte_2000321 - 0x2000310)
 	bl sub_808FA7C
-	bl sub_809E254
+	bl owPlayer_disableWallCollision_809e254
 	add r4, #1
 	strb r4, [r5,#0x2] // (byte_2000312 - 0x2000310)
 loc_808F830:
@@ -19,7 +19,7 @@ loc_808F830:
 	bgt loc_808F86C
 	bl sub_808F9C4
 	bne loc_808F8A6
-	bl sub_809E248
+	bl owPlayer_enableWallCollision_809e248
 	add r4, #1
 	strb r4, [r5,#0x2] // (byte_2000312 - 0x2000310)
 	ldrh r0, [r5,#0x12] // (word_2000322 - 0x2000310)
@@ -28,7 +28,7 @@ loc_808F830:
 	lsl r1, r1, #0x10
 	mov r2, #0x40 
 	lsl r2, r2, #0x10
-	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
+	bl owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
 	ldrb r0, [r5,#0xf] // (byte_200031F - 0x2000310)
 	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	ldrb r0, [r5,#0x10] // (byte_2000320 - 0x2000310)
@@ -55,7 +55,7 @@ loc_808F878:
 	lsl r1, r1, #0x10
 	mov r2, #0x40 
 	lsl r2, r2, #0x10
-	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
+	bl owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
 	ldrb r0, [r5,#0xf] // (byte_200031F - 0x2000310)
 	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	ldrb r0, [r5,#0x10] // (byte_2000320 - 0x2000310)
@@ -93,8 +93,8 @@ sub_808F8AC:
 	bl ReadOWPlayerObjectCoords
 	mov r2, #0x40 
 	lsl r2, r2, #0x10
-	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
-	bl sub_809E23C
+	bl owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
+	bl owPlayer_clearInteractionLocked_809e23c
 	mov r0, #4
 	bl loc_809E306
 	mov r0, #0
@@ -120,7 +120,7 @@ sub_808F900:
 	mov r1, #0xe5
 	bl ClearEventFlagFromImmediate
 	bl sub_808FA7C
-	bl sub_809E254
+	bl owPlayer_disableWallCollision_809e254
 	add r4, #1
 	strb r4, [r5,#0x2] // (byte_2000312 - 0x2000310)
 loc_808F92C:
@@ -143,7 +143,7 @@ loc_808F93A:
 loc_808F954:
 	bl sub_808F9C4
 	bne loc_808F98A
-	bl sub_809E248
+	bl owPlayer_enableWallCollision_809e248
 	mov r4, #0
 	strb r4, [r5,#0x2] // (byte_2000312 - 0x2000310)
 	bl sub_809E3B2
@@ -153,7 +153,7 @@ loc_808F954:
 	lsl r1, r1, #0x10
 	mov r2, #0x40 
 	lsl r2, r2, #0x10
-	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
+	bl owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
 	ldrb r0, [r5,#0xf] // (byte_200031F - 0x2000310)
 	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	ldrb r0, [r5,#0x10] // (byte_2000320 - 0x2000310)
@@ -170,7 +170,7 @@ loc_808F98A:
 	thumb_local_start
 sub_808F990:
 	push {r5,lr}
-	bl sub_809E230
+	bl owPlayer_setInteractionLocked_809e230
 	bl sub_809E304
 	bl owPlayer_zeroS2000AA0Param0x4_809e312
 	mov r5, r10
@@ -246,7 +246,7 @@ loc_808FA22:
 	mov r1, r7
 	mov r2, #0x40 
 	lsl r2, r2, #0x10
-	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
+	bl owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
 	mov r0, r4
 	tst r0, r0
 	pop {r4-r7,pc}
@@ -380,7 +380,7 @@ sub_808FB18:
 	bl sub_808FBA0
 	bl ZeroOWPlayerNaviPaletteIndex
 	bl sub_808F990
-	bl sub_809E23C
+	bl owPlayer_clearInteractionLocked_809e23c
 	ldr r1, off_808FB48 // =off_808F5D4 
 	ldr r1, [r1]
 	mov r0, #0
@@ -418,8 +418,8 @@ sub_808FB68:
 	cmp r2, #0
 	bgt loc_808FB94
 	mov r2, #0
-	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
-	bl sub_809E230
+	bl owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
+	bl owPlayer_setInteractionLocked_809e230
 	bl reqBBS_clearFlag_8140A0C
 	bl sub_809E3B2
 	ldr r0, dword_808FB9C // =0x1ae 
@@ -427,7 +427,7 @@ sub_808FB68:
 	mov r0, #0
 	pop {pc}
 loc_808FB94:
-	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
+	bl owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
 	mov r0, #1
 	pop {pc}
 dword_808FB9C: .word 0x1AE
@@ -456,7 +456,7 @@ sub_808FBC0:
 	ldr r5, off_808FCE0 // =off_808F5D4 
 	ldr r5, [r5]
 	mov r0, #0
-	bl camera_80301B2
+	bl camera_writeUnk03_14_80301b2
 	ldrb r3, [r5,#0xc] // (byte_200031C - 0x2000310)
 	lsl r3, r3, #1
 	mov r1, #0x40 
@@ -469,7 +469,7 @@ sub_808FBC0:
 	lsl r1, r1, #0x10
 	mov r2, #0x40 
 	lsl r2, r2, #0x10
-	bl sub_80301DC
+	bl SetCameraXYZ
 	mov r0, #0
 	pop {r5,pc}
 	thumb_func_end sub_808FBC0
@@ -480,7 +480,7 @@ sub_808FBEC:
 	ldr r5, off_808FCE0 // =off_808F5D4 
 	ldr r5, [r5]
 	mov r0, #0
-	bl camera_80301B2
+	bl camera_writeUnk03_14_80301b2
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r1, [r0,#oGameState_MapGroup]
@@ -499,7 +499,7 @@ loc_808FC08:
 	ldrh r1, [r2,r1]
 	lsl r1, r1, #0x10
 	mov r2, #0
-	bl sub_80301DC
+	bl SetCameraXYZ
 	mov r0, #0
 	pop {r5,pc}
 off_808FC20: .word byte_808FC24
@@ -533,7 +533,7 @@ off_808FCE0: .word off_808F5D4
 sub_808FCE4:
 	push {lr}
 	mov r0, #1
-	bl sub_8003940
+	bl endScenarioEffectMaybe_8003940
 	mov r0, #0
 	pop {pc}
 	thumb_func_end sub_808FCE4
@@ -590,7 +590,7 @@ loc_808FD4C:
 loc_808FD4E:
 	mov r2, #0x40 
 	lsl r2, r2, #0x10
-	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e188
+	bl owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
 	b loc_808FD5C
 loc_808FD58:
 	mov r0, #0
@@ -682,7 +682,7 @@ loc_808FE10:
 	bl sub_808FF30
 	bl sub_808FF70
 	mov r0, #1
-	bl sub_8003914
+	bl initScenarioEffect_8003914
 	bl sub_809003C
 	mov r0, #0
 	pop {r5,pc}
@@ -742,7 +742,7 @@ loc_808FE90:
 	bl sub_8090104
 	cmp r0, #0
 	beq locret_808FE9C
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 locret_808FE9C:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -1385,7 +1385,7 @@ sub_809032C:
 	bl sub_80039D4
 	beq loc_809033C
 	mov r0, #1
-	bl sub_8003940
+	bl endScenarioEffectMaybe_8003940
 loc_809033C:
 	mov r0, #0
 	// <endpool> <endfile>

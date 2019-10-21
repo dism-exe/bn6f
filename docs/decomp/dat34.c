@@ -1075,7 +1075,7 @@ signed int sub_812E5A8()
         __asm { SVC         6 }
         v6 = 4 * v1;
         v7 = sub_813B780(4 * v1 - 144);
-        sub_803D128(v6, *(v7 + 67), 1);
+        TakeNaviCustPrograms(v6, *(v7 + 67), 1);
     }
     v8 = *(v0 + 44) & 0x7FFF;
     if ( v8 != 144 )
@@ -1083,7 +1083,7 @@ signed int sub_812E5A8()
         __asm { SVC         6 }
         v9 = 4 * v8;
         v10 = sub_813B780(4 * v8 - 144);
-        sub_803D108(v9, *(v10 + 67), 1);
+        GiveNaviCustPrograms(v9, *(v10 + 67), 1);
     }
     sub_803F798();
     chatbox_runScript_803FD9C_on_eTextScript201BA20(61);

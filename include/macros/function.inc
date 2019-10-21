@@ -1,3 +1,9 @@
+
+	.macro arm_local_start
+	.align 2, 0
+	.arm
+	.endm
+
 	.macro arm_func_start name:req
 	.align 2, 0
 	.global \name
@@ -7,6 +13,7 @@
 
 	.macro arm_func_end name:req
 	.size \name, .-\name
+	.type \name, function
 	.endm
 
 	.macro thumb_func_start name:req, align_amount=1
