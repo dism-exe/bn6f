@@ -21,6 +21,10 @@ __pycache__/
 # clion settings
 .idea/
 
+# vim files
+*.swp
+*.swo
+
 # intentionally ignore those junk/temp files
 *.ign
 
