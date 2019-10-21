@@ -24,6 +24,7 @@ __pycache__/
 # vim files
 *.swp
 *.swo
+tags
 
 # intentionally ignore those junk/temp files
 *.ign
