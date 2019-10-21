@@ -30,7 +30,7 @@ void sub_80A49B0()
         *(v0 + 20) = v3;
     }
     sub_8002E14(v2);
-    sub_8002FA6(*(v1 + 1));
+    sprite_setUnk0x2c(*(v1 + 1));
     sprite_setPallete(v1[8]);
     *(v0 + 8) = 4;
     *(v0 + 6) = 0;
@@ -242,7 +242,7 @@ int sub_80A51F8()
         sprite_setAnimation(v0, *(v1 + 8));
         sprite_loadAnimationData(v0);
         sprite_noShadow(v0);
-        sub_8002FA6(*(v1 + 10) << 24);
+        sprite_setUnk0x2c(*(v1 + 10) << 24);
         sprite_setPallete(*(v1 + 11));
         ClearEventFlag(v1[1]);
         ClearEventFlag(v1[2]);
@@ -1906,7 +1906,7 @@ signed int __noreturn sub_80A6CFC()
     sprite_load(v0, 128, 24, *(v1 + 134861608));
     sprite_setAnimation(v0, 1u);
     sprite_loadAnimationData(v0);
-    sub_8002E52();
+    sprite_removeShadow();
     *(v0 + 12) = sub_809E1AE();
     *(v0 + 20) = v2;
     sub_80A6E70(2);
@@ -2002,7 +2002,7 @@ signed int __fastcall sub_80A6DC6(int a1)
 // 0x80a6ddc
 signed int sub_80A6DDC()
 {
-    sub_8002CCE();
+    sprite_disableAlpha();
     sub_80A6E70(2);
     return 1;
 }
@@ -2059,7 +2059,7 @@ signed int __fastcall sub_80A6E22(int a1)
 // 0x80a6e3a
 signed int sub_80A6E3A()
 {
-    sub_8002F2C();
+    sprite_clearMosaic();
     sub_80A6E70(2);
     return 1;
 }
@@ -3133,7 +3133,7 @@ void __noreturn sub_80A786C()
     v5 = 3;
     if ( v4 == 16 )
 LABEL_5:
-        sub_8002CCE();
+        sprite_disableAlpha();
     *v1 = v5;
     sub_8002E14(2);
     v6 = *(v1 + 4);
@@ -3548,7 +3548,7 @@ void *sub_80A7BC0()
                         {
                             SetEventFlagFromImmediate(23, 49);
                             v17 = sub_8142080();
-                            result = init_s_02011C50_8036E90(byte_8089DD8, v17, v18, v19);
+                            result = StartCutscene(byte_8089DD8, v17, v18, v19);
                         }
                     }
                 }
@@ -3685,13 +3685,13 @@ void *sub_80A7CFE()
                                 v13 = v2[9];
                                 if ( v0[5] == v13 )
                                 {
-                                    result = init_s_02011C50_8036E90(byte_8089E44, v0, v11, v12);
+                                    result = StartCutscene(byte_8089E44, v0, v11, v12);
                                 }
                                 else
                                 {
                                     result = sub_81420B0();
                                     if ( result == v13 )
-                                        result = init_s_02011C50_8036E90(byte_8089FD8, v0, v14, v15);
+                                        result = StartCutscene(byte_8089FD8, v0, v14, v15);
                                 }
                             }
                         }
@@ -3730,7 +3730,7 @@ void __noreturn sub_80A7DB8()
     sprite_noShadow(v0);
     sub_80A8020();
     v2 = *(v1 + 4);
-    *(v0 + 12) = sub_8142868();
+    *(v0 + 12) = GetSoulWeaponCursorCameraCoords();
     *(v0 + 16) = v3;
     *(v0 + 20) = 16384000;
     *(v0 + 20) = sub_8031612(v0 + 12) << 16;
@@ -4574,7 +4574,7 @@ void sub_80A86B4()
         }
     }
     *v0 = v1;
-    *(v0 + 12) = sub_8142868();
+    *(v0 + 12) = GetSoulWeaponCursorCameraCoords();
     *(v0 + 16) = v7;
     sub_809E1AE();
     *(v0 + 20) = v8;
@@ -4738,7 +4738,7 @@ void __noreturn sub_80A88E2()
     int v0; // r5
 
     sub_80A8988();
-    sub_80037AC(*(v0 + 12), *(v0 + 16), *(v0 + 20), 2058);
+    createOWObjectInteractionArea_80037ac(*(v0 + 12), *(v0 + 16), *(v0 + 20), 2058);
     *(v0 + 40) = 0;
     sprite_update(v0);
 }
@@ -4791,7 +4791,7 @@ unsigned int sub_80A8988()
     {
         if ( *(v0 + 5) )
         {
-            sub_8002E52();
+            sprite_removeShadow();
             *(v0 + 8) = 8;
             PlaySoundEffect(420, v5, v6);
             sub_81430B6(*(v0 + 4));
@@ -4800,7 +4800,7 @@ unsigned int sub_80A8988()
         }
         else
         {
-            sub_8002E52();
+            sprite_removeShadow();
             *(v0 + 8) = 8;
             PlaySoundEffect(115, v2, v3);
             v4 = sub_81430B6(*(v0 + 4));
@@ -5187,7 +5187,7 @@ int sub_80A8D7C()
     int result; // r0
     int v2; // [sp+4h] [bp-20h]
 
-    sub_80037AC(v0[3], v0[4], v0[5] - 1310720, 2056);
+    createOWObjectInteractionArea_80037ac(v0[3], v0[4], v0[5] - 1310720, 2056);
     result = 0;
     *(v2 + 36) = 0;
     return result;
@@ -5216,7 +5216,7 @@ int sub_80A8DB0()
         if ( result & 0x10000 )
         {
             v3 = sub_8143088();
-            init_s_02011C50_8036E90(134791957, v3, v4, v5);
+            StartCutscene(134791957, v3, v4, v5);
             PlaySoundEffect(290, v6, v7);
             sub_8143204(*(v0 + 4));
             result = sub_8143220(*(v0 + 4));
@@ -5835,7 +5835,7 @@ int sub_80A93D0()
 // 0x80a93d8
 int sub_80A93D8()
 {
-    return sub_8002FA6(234881024);
+    return sprite_setUnk0x2c(234881024);
 }
 
 
@@ -6015,7 +6015,7 @@ int sub_80A95A8()
             SetEventFlagFromImmediate(11, 252);
             *(v1 + 4) = *(v0 + 4);
             sub_80A9614();
-            sub_8002E52();
+            sprite_removeShadow();
             *(v0 + 8) = 8;
             LODWORD(v2) = PlaySoundEffect(&loc_1A4, v4, v5);
         }
@@ -6483,7 +6483,7 @@ void sub_80A9B9C()
     sprite_setAnimation(v0, *(v1 + 8));
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
-    sub_8002FA6(*(v1 + 10) << 24);
+    sprite_setUnk0x2c(*(v1 + 10) << 24);
     sprite_setPallete(*(v1 + 11));
     sprite_setFlip(v0, *(v1 + 13));
     *(v0 + 8) = 4;
@@ -6907,7 +6907,7 @@ void __noreturn sub_80AA078()
     sprite_load(v0, 128, 28, *(v0 + 5));
     sprite_setAnimation(v0, *(v0 + 6));
     sprite_loadAnimationData(v0);
-    sub_8002E52();
+    sprite_removeShadow();
     sub_8002E14(*(v0 + 7));
     sprite_setPallete(0);
     *(v0 + 20) = sub_80AA134(*(v0 + 4));
@@ -7009,7 +7009,7 @@ void __noreturn sub_80AA194()
     {
         sprite_setAnimation(v0, 1u);
         sprite_loadAnimationData(v0);
-        sub_80302A8(2, 20);
+        camera_initShakeEffect_80302a8(2, 20);
         PlaySoundEffect(379, v3, v4);
         *(v0 + 8) = 8;
     }
@@ -7083,7 +7083,7 @@ void __noreturn sub_80AA248()
         *(v0 + 20) = 0;
         sprite_setAnimation(v0, 1u);
         sprite_loadAnimationData(v0);
-        sub_80302A8(1, 10);
+        camera_initShakeEffect_80302a8(1, 10);
         PlaySoundEffect(218, v3, v4);
         PlaySoundEffect(192, v5, v6);
         *(v0 + 8) = 8;
@@ -7340,7 +7340,7 @@ unsigned int sub_80AA4C0()
             {
                 v6 = byte_8020CE4[16 * v5 + *(v1 + oGameState_MapNumber)];
                 v7 = getPETNaviSelect();
-                if ( sub_80137B6(v7) )
+                if ( GetCurPETNaviStatsByte(v7) )
                     v6 = 0;
                 v8 = *(v2 + 18) >> 6;
                 if ( (v8 - 17) >= 0 )
@@ -7364,7 +7364,7 @@ unsigned int sub_80AA4C0()
                             GetPositiveSignedRNG2();
                             __asm { SVC         6 }
                             v17 = getPETNaviSelect();
-                            v18 = sub_80137B6(v17);
+                            v18 = GetCurPETNaviStatsByte(v17);
                             result = sub_80AA5F4(v18, v19, v18);
                             if ( !result )
                                 result = sub_80AA5F4(0, v20, 31);
@@ -7374,7 +7374,7 @@ unsigned int sub_80AA4C0()
                             HIWORD(dword_2000B30) = 1;
                         }
                         *(v1 + oGameState_CurBattleDataPtr) = result;
-                        if ( *(v2 + 36) || (v21 = result, v22 = getPETNaviSelect(), _ZF = sub_80137B6(v22) == 0, result = v21, !_ZF) )
+                        if ( *(v2 + 36) || (v21 = result, v22 = getPETNaviSelect(), _ZF = GetCurPETNaviStatsByte(v22) == 0, result = v21, !_ZF) )
                         {
                             v23 = result;
                             v24 = sub_802D266(result);
@@ -7402,7 +7402,7 @@ unsigned int sub_80AA4C0()
 
 
 // 0x80aa5e4
-int __fastcall sub_80AA5E4(int a1, int a2)
+int __fastcall chooseRandomEncounterMaybe_80aa5e4(int a1, int a2)
 {
     int v2; // r10
     int v3; // r7
@@ -8366,7 +8366,7 @@ signed int sub_80AADA6()
     v2 = 30 * *(v0[oToolkit_S2011c50_Ptr] + 5);
     do
     {
-        sub_8021B92(*v1 & 0x1FF, *v1 / 0x200u, 1);
+        TakeChips(*v1 & 0x1FF, *v1 / 0x200u, 1);
         ++v1;
         --v2;
     }

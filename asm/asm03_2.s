@@ -1765,7 +1765,7 @@ loc_8046F42:
 	bl sub_8047384
 	bne loc_8047000
 	mov r2, #1
-	bl sub_8021AEE
+	bl GiveChips
 	mov r1, #9
 	cmp r0, #0
 	bne loc_804700E
@@ -1789,7 +1789,7 @@ loc_8046F84:
 	bl sub_8047384
 	bne loc_8047000
 	mov r1, #1
-	bl sub_803CD98
+	bl GiveItem
 	mov r1, #9
 	cmp r0, #0
 	bne loc_804700E
@@ -1802,7 +1802,7 @@ loc_8046FA2:
 	bne loc_8047000
 	add r0, #0x90
 	mov r2, #1
-	bl sub_803D108
+	bl GiveNaviCustPrograms
 	mov r1, #9
 	cmp r0, #0
 	bne loc_804700E
@@ -1937,7 +1937,7 @@ sub_804709C:
 	bl sub_8047384
 	bne loc_804710A
 	mov r2, #1
-	bl sub_8021AEE
+	bl GiveChips
 	mov r1, #9
 	cmp r0, #0
 	bne loc_8047118
@@ -3275,7 +3275,7 @@ loc_8047BD4:
 	pop {r0-r3}
 	bne loc_8047C1A
 	push {r0-r3}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
 	pop {r0-r3}
 	beq loc_8047BFA
@@ -3845,7 +3845,7 @@ loc_8048C3A:
 	tst r3, r3
 	beq loc_8048C5C
 	push {r0-r3}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
 	pop {r0-r3}
 	beq loc_8048C58
@@ -6786,7 +6786,7 @@ loc_804A4AA:
 	strh r0, [r7,#0x4] // (word_200AC84 - 0x200ac80)
 	strh r1, [r7,#0x6] // (word_200AC86 - 0x200ac80)
 	mov r2, #1
-	bl sub_8021AEE
+	bl GiveChips
 	bl sub_803F798
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -7351,7 +7351,7 @@ loc_804A978:
 	and r1, r2
 	lsr r0, r0, #0x17
 	mov r2, #1
-	bl sub_8021B92 // (int idx, int searchItem, int off) -> void*
+	bl TakeChips // (int idx, int searchItem, int off) -> void*
 	mov r0, #9
 	ldrh r1, [r7]
 	bl sub_8048D60
@@ -9779,7 +9779,7 @@ sub_804C694:
 	ldrb r0, [r5,#0xd]
 	tst r0, r0
 	bne locret_804C6A6
-	bl sub_8002484
+	bl run_eStruct200a6a0_Callback_8002484
 locret_804C6A6:
 	pop {r4-r7,pc}
 off_804C6A8: .word off_804C6AC
@@ -9945,7 +9945,7 @@ sub_804C7EC:
 	ldrb r0, [r5,#0xd]
 	tst r0, r0
 	bne locret_804C7FE
-	bl sub_8002484
+	bl run_eStruct200a6a0_Callback_8002484
 locret_804C7FE:
 	pop {r4-r7,pc}
 off_804C800: .word off_804C804

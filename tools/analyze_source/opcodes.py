@@ -99,7 +99,24 @@ def evaluate_data(data, fileline):
                 split_data = data.split("+")
                 if len(split_data) == 2:
                     return datatypes.RAMPointer(int(split_data[1], 0), syms[split_data[0]]).wrap()
+            elif "|" in data:
+                split_data = data.split("|")
+                value = 0
+                for data_part in split_data:
+                    try:
+                        value |= int(data_part, 0)
+                    except ValueError:
+                        try:
+                            data_part = data_part.strip()
+                            sym = syms[data_part]
+                        except KeyError:
+                            fileline_error("Could not evaluate undefined symbol \"%s\" in | operation!" % data_part, fileline)
+                        if sym.section != "*ABS*":
+                            fileline_error("Tried | operation against non-absolute symbol \"%s\"!" % data_part, fileline)
+                            value |= sym.value
+                return datatypes.Primitive(Size.UNKNOWN, value).wrap()
             fileline_error("Could not evaluate undefined symbol \"%s\"!" % data, fileline)
+            
         if sym.type == "F":
             # technically asm38.s routines are not in ROM
             # but they are read-only so they are functionally equivalent
@@ -122,20 +139,29 @@ def evaluate_sym_or_num_error_if_undefined(sym_or_num, fileline):
     return sym_value
 
 plus_or_minus_regex = re.compile(r" *\+ *| *- *")
+bitwise_or_regex = re.compile(r" *\| *")
 
 def evaluate_sym_or_num(sym_or_num):
-    global syms    
+    global syms
+    sym_or_num = sym_or_num.strip()
     try:
         return int(sym_or_num, 0)
     except ValueError:
         try:
             return syms[sym_or_num].value
         except KeyError:
+            if sym_or_num[0] == "(":
+                sym_or_num = sym_or_num[1:]
+            if sym_or_num[-1] == ")":
+                sym_or_num = sym_or_num[:-1]
         # allow simple + or - operations
             split_sym_or_num = plus_or_minus_regex.split(sym_or_num)
             if len(split_sym_or_num) != 2:
-                debug_print("Failed recursive plus or minus sym split: %s" % split_sym_or_num)
-                raise KeyError
+                split_sym_or_num = bitwise_or_regex.split(sym_or_num)
+                if len(split_sym_or_num) != 2:
+                    debug_print("Failed recursive plus, minus, or bitwise or sym split: %s" % split_sym_or_num)
+                    raise KeyError
+                return evaluate_sym_or_num(split_sym_or_num[0]) | evaluate_sym_or_num(split_sym_or_num[1])
             return evaluate_sym_or_num(split_sym_or_num[0]) + evaluate_sym_or_num(split_sym_or_num[1])
 
 def order_datatypes(datatype1, datatype2):
@@ -695,6 +721,20 @@ def bl_opcode_function(opcode_params, funcstate, src_file, fileline):
     funcstate.regs["pc"].set_new_reg(analyzer.RegisterInfo(bl_reg, fileline))
     return True
 
+def movflag_pseudo_opcode_function(opcode_params, funcstate, src_file, fileline):
+    try:
+        imm_value = syms[opcode_params].value
+    except KeyError:
+        fileline_error("Could not find sym of movflag operand \"%s\"!" % opcode_params, fileline)
+
+    r0_value = imm_value >> 8
+    r1_value = imm_value & 0xff
+    new_r0_reg = datatypes.Primitive(Size.BYTE, r0_value).wrap()
+    new_r1_reg = datatypes.Primitive(Size.BYTE, r1_value).wrap()
+    funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(new_r0_reg, fileline))
+    funcstate.regs["r1"].set_new_reg(analyzer.RegisterInfo(new_r1_reg, fileline))
+    return True
+
 class Opcode:
     def __init__(self, regex, function):
         self.regex = regex
@@ -794,6 +834,7 @@ ble_opcode = Opcode(label_or_imm_regex, ble_opcode_function)
 swi_opcode = Opcode(label_or_imm_regex, swi_opcode_function)
 b_opcode = Opcode(label_or_imm_regex, b_opcode_function)
 bl_opcode = Opcode(label_or_imm_regex, bl_opcode_function)
+movflag_pseudo_opcode = Opcode(label_or_imm_regex, movflag_pseudo_opcode_function)
 
 opcodes = {
     "lsl": (
@@ -972,6 +1013,9 @@ opcodes = {
     ),
     "bl": (
         bl_opcode,
+    ),
+    "movflag": (
+        movflag_pseudo_opcode,
     )
 }
 
@@ -1014,6 +1058,10 @@ def do_store_operation(funcstate, dest_reg, source_reg, operand_reg_or_imm, size
 def load_from_datatypes(source_datatype, operand_datatype, size, funcstate, fileline):
     datatype_weak, datatype_strong = order_datatypes(source_datatype, operand_datatype)
 
+    if funcstate.function.name == "chatbox_EA_flag":
+        r2_type_name = type(funcstate.regs["r2"].data.ref).__name__
+        debug_print("r2_type_name: %s" % r2_type_name)
+        
     if datatype_weak.type == DataType.UNKNOWN:
         if datatype_strong.type == DataType.UNKNOWN:
             return datatypes.new_unk_datatype_from_size(size)

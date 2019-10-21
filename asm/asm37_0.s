@@ -1318,7 +1318,7 @@ loc_813C042:
 	cmp r1, #0
 	beq loc_813C050
 	mov r2, #9
-	bl sub_803D108
+	bl GiveNaviCustPrograms
 loc_813C050:
 	add r4, #0x10
 	cmp r4, #0x40 
@@ -1651,10 +1651,10 @@ dword_813C3A0: .word 0x2660
 byte_813C3A4: .byte 0x0, 0x2, 0x0, 0x1, 0x1, 0x0, 0x2, 0x0
 	thumb_func_end sub_813C334
 
-	thumb_func_start sub_813C3AC
-sub_813C3AC:
+	thumb_func_start reloadCurNaviStatBoosts_813c3ac
+reloadCurNaviStatBoosts_813c3ac:
 	push {r4-r7,lr}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	tst r0, r0
 	beq .IfNoNaviSelected
 	b .loc_813C3CC
@@ -1678,71 +1678,71 @@ sub_813C3AC:
 	beq .ret
     // if (EVENT_PET_NAVI_ACTIVE)
 	mov r0, #0
-	mov r1, #oS20047CC_NaviHPUpdate
-	bl GetField16FromSelectedS20047CCStruct
+	mov r1, #oNaviStats_MaxHP
+	bl GetCurPETNaviStatsHword
 	mov r7, r0
 	mov r0, #0
-	mov r1, #oS20047CC_NaviHP
+	mov r1, #oNaviStats_CurHP
 	mov r2, r7
-	bl SetField16ToSelectedS20047CCStruct
-	bl getPETNaviSelect // () -> u8
-	mov r1, #oS20047CC_NaviHPUpdate
-	bl GetField16FromSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
+	bl GetCurPETNavi // () -> u8
+	mov r1, #oNaviStats_MaxHP
+	bl GetCurPETNaviStatsHword
 	mov r7, r0
-	bl getPETNaviSelect // () -> u8
-	mov r1, #oS20047CC_NaviHP
+	bl GetCurPETNavi // () -> u8
+	mov r1, #oNaviStats_CurHP
 	mov r2, r7
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	b .ret
 .IfInternetMap:
 	mov r0, #0
-	mov r1, #oS20047CC_NaviHPUpdate
-	bl GetField16FromSelectedS20047CCStruct
+	mov r1, #oNaviStats_MaxHP
+	bl GetCurPETNaviStatsHword
 	mov r4, r0
 	mov r0, #0
-	mov r1, #oS20047CC_NaviHP
-	bl GetField16FromSelectedS20047CCStruct
+	mov r1, #oNaviStats_CurHP
+	bl GetCurPETNaviStatsHword
 	cmp r0, r4
 	ble .loc_813C42E
 	mov r0, #0
-	mov r1, #oS20047CC_NaviHP
+	mov r1, #oNaviStats_CurHP
 	mov r2, r4
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 .loc_813C42E:
-	bl getPETNaviSelect // () -> u8
-	mov r1, #oS20047CC_NaviHPUpdate
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNavi // () -> u8
+	mov r1, #oNaviStats_MaxHP
+	bl GetCurPETNaviStatsHword
 	mov r4, r0
-	bl getPETNaviSelect // () -> u8
-	mov r1, #oS20047CC_NaviHP
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNavi // () -> u8
+	mov r1, #oNaviStats_CurHP
+	bl GetCurPETNaviStatsHword
 	cmp r0, r4
 	ble .ret
-	bl getPETNaviSelect // () -> u8
-	mov r1, #oS20047CC_NaviHP
+	bl GetCurPETNavi // () -> u8
+	mov r1, #oNaviStats_CurHP
 	mov r2, r4
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 .ret:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-	thumb_func_end sub_813C3AC
+	thumb_func_end reloadCurNaviStatBoosts_813c3ac
 
 	thumb_local_start
 sub_813C458:
 	push {r4,lr}
 	bl sub_813BBD4
 	bl sub_8136C24
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	mov r0, #0
-	bl setPETNaviSelect
+	bl SetCurPETNavi
 	bl sub_813C678
 	movflag EVENT_170D
 	bl ClearEventFlagFromImmediate
 	bl sub_813C684
 	bl sub_813CBCC
 	mov r0, r4
-	bl setPETNaviSelect
+	bl SetCurPETNavi
 	bl sub_803CE44
 	pop {r4,pc}
 	.byte 0, 0
@@ -1754,7 +1754,7 @@ sub_813C490:
 	mov r4, #0
 	mov r0, #0
 	mov r1, #0x1f
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	cmp r0, #1
 	bne loc_813C4A2
 	mov r4, #1
@@ -1768,7 +1768,7 @@ loc_813C4A2:
 sub_813C4A8:
 	push {lr}
 	mov r0, #0x71 
-	bl sub_803CE28
+	bl CheckKeyItem
 	ldr r1, off_813C4B8 // =pt_813C4BC 
 	lsl r0, r0, #2
 	ldr r1, [r1,r0]
@@ -1783,7 +1783,7 @@ pt_813C4BC: .word byte_813B3AE+225
 sub_813C4C8:
 	push {lr}
 	mov r0, #0x71 
-	bl sub_803CE28
+	bl CheckKeyItem
 	ldr r1, off_813C4D8 // =off_813C4DC 
 	lsl r0, r0, #2
 	ldr r1, [r1,r0]
@@ -1829,7 +1829,7 @@ loc_813C59E:
 	mov r6, #0
 loc_813C5A0:
 	mov r0, #0x71 
-	bl sub_803CE28
+	bl CheckKeyItem
 	bl sub_813B9E0
 	mov r1, #0xf
 	add r2, r7, #5
@@ -2090,7 +2090,7 @@ navicust_NCP_SuperArmor:
 	// NCP category
 	mov r1, #0x23 
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end navicust_NCP_SuperArmor
@@ -2100,7 +2100,7 @@ navicust_NCP_Custom1:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xa
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	add r2, r0, #1
 	cmp r2, #8
 	ble loc_813C82E
@@ -2108,7 +2108,7 @@ navicust_NCP_Custom1:
 loc_813C82E:
 	mov r0, #0
 	mov r1, #0xa
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	thumb_func_end navicust_NCP_Custom1
 
@@ -2117,7 +2117,7 @@ navicust_NCP_Custom2:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xa
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	add r2, r0, #2
 	cmp r2, #8
 	ble loc_813C84A
@@ -2125,7 +2125,7 @@ navicust_NCP_Custom2:
 loc_813C84A:
 	mov r0, #0
 	mov r1, #0xa
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	thumb_func_end navicust_NCP_Custom2
 
@@ -2134,7 +2134,7 @@ navicust_NCP_MegFldr1:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xb
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	add r2, r0, #1
 	cmp r2, #0xa
 	ble loc_813C866
@@ -2142,7 +2142,7 @@ navicust_NCP_MegFldr1:
 loc_813C866:
 	mov r0, #0
 	mov r1, #0xb
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	thumb_func_end navicust_NCP_MegFldr1
 
@@ -2151,7 +2151,7 @@ navicust_NCP_MegFldr2:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xb
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	add r2, r0, #2
 	cmp r2, #0xa
 	ble loc_813C882
@@ -2159,7 +2159,7 @@ navicust_NCP_MegFldr2:
 loc_813C882:
 	mov r0, #0
 	mov r1, #0xb
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	thumb_func_end navicust_NCP_MegFldr2
 
@@ -2168,7 +2168,7 @@ navicust_GigFldr1:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xc
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	add r2, r0, #1
 	cmp r2, #0xa
 	ble loc_813C89E
@@ -2176,7 +2176,7 @@ navicust_GigFldr1:
 loc_813C89E:
 	mov r0, #0
 	mov r1, #0xc
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	thumb_func_end navicust_GigFldr1
 
@@ -2186,7 +2186,7 @@ navicust_NCP_FstBarr:
 	mov r0, #0
 	mov r1, #6
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end navicust_NCP_FstBarr
@@ -2197,7 +2197,7 @@ navicust_NCP_Shield:
 	mov r0, #0
 	mov r1, #7
 	mov r2, #0x3b 
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end navicust_NCP_Shield
@@ -2208,7 +2208,7 @@ navicust_NCP_Reflect:
 	mov r0, #0
 	mov r1, #7
 	mov r2, #0x8b
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end navicust_NCP_Reflect
@@ -2219,7 +2219,7 @@ navicust_NCP_AntiDmg:
 	mov r0, #0
 	mov r1, #7
 	mov r2, #0x3d 
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end navicust_NCP_AntiDmg
@@ -2230,7 +2230,7 @@ navicust_NCP_FlotShoe:
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end navicust_NCP_FlotShoe
@@ -2241,7 +2241,7 @@ navicust_NCP_AirShoes:
 	mov r0, #0
 	mov r1, #0x1c
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end navicust_NCP_AirShoes
@@ -2252,7 +2252,7 @@ navicust_NCP_UnderSht:
 	mov r0, #0
 	mov r1, #0x1d
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end navicust_NCP_UnderSht
@@ -2263,7 +2263,7 @@ navicust_NCP_ChpShufl:
 	mov r0, #0
 	mov r1, #0x60 
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end navicust_NCP_ChpShufl
@@ -2274,7 +2274,7 @@ navicust_NCP_NumbrOpn:
 	mov r0, #0
 	mov r1, #0x61 
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end navicust_NCP_NumbrOpn
@@ -2285,7 +2285,7 @@ navicust_NCP_SneakRun:
 	mov r0, #0
 	mov r1, #0x1e
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end navicust_NCP_SneakRun
@@ -2296,7 +2296,7 @@ navicust_NCP_OilBody:
 	mov r0, #0
 	mov r1, #0x27 
 	ldr r2, dword_813C958 // =0x2 
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 dword_813C958: .word 0x2
@@ -2308,7 +2308,7 @@ navicust_NCP_Fish:
 	mov r0, #0
 	mov r1, #0x27 
 	ldr r2, dword_813C96C // =0x4 
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 dword_813C96C: .word 0x4
@@ -2320,7 +2320,7 @@ navicust_NCP_Battery:
 	mov r0, #0
 	mov r1, #0x27 
 	ldr r2, dword_813C980 // =0x8 
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
 dword_813C980: .word 0x8
@@ -2332,7 +2332,7 @@ navicust_NCP_Jungle:
 	mov r0, #0
 	mov r1, #0x27 
 	ldr r2, dword_813C994 // =0x10 
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 dword_813C994: .word 0x10
@@ -2343,12 +2343,12 @@ navicust_NCP_Collect:
 	push {lr}
 	mov r0, #0
 	mov r1, #0x26 
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r2, #2
 	orr r2, r0
 	mov r0, #0
 	mov r1, #0x26 
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	thumb_func_end navicust_NCP_Collect
 
@@ -2358,7 +2358,7 @@ navicust_NCP_Millions:
 	mov r0, #0
 	mov r1, #0x33 
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end navicust_NCP_Millions
@@ -2369,7 +2369,7 @@ navicust_NCP_Humor:
 	mov r0, #0
 	mov r1, #0x25 
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end navicust_NCP_Humor
@@ -2380,7 +2380,7 @@ navicust_NCP_Poem:
 	mov r0, #0
 	mov r1, #0x5f 
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end navicust_NCP_Poem
@@ -2391,7 +2391,7 @@ navicust_NCP_SlipRunr:
 	mov r0, #0
 	mov r1, #0x35 
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end navicust_NCP_SlipRunr
@@ -2402,7 +2402,7 @@ navicust_NCP_AutoHeal:
 	mov r0, #0
 	mov r1, #0x36 
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end navicust_NCP_AutoHeal
@@ -2412,7 +2412,7 @@ navicust_NCP_BustPack:
 	push {lr}
 	mov r0, #0
 	mov r1, #1
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	add r2, r0, #3
 	cmp r2, #4
 	ble loc_813CA12
@@ -2420,10 +2420,10 @@ navicust_NCP_BustPack:
 loc_813CA12:
 	mov r0, #0
 	mov r1, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	mov r0, #0
 	mov r1, #2
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	add r2, r0, #3
 	cmp r2, #4
 	ble loc_813CA2A
@@ -2431,10 +2431,10 @@ loc_813CA12:
 loc_813CA2A:
 	mov r0, #0
 	mov r1, #2
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	mov r0, #0
 	mov r1, #3
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	add r2, r0, #3
 	cmp r2, #4
 	ble loc_813CA42
@@ -2442,7 +2442,7 @@ loc_813CA2A:
 loc_813CA42:
 	mov r0, #0
 	mov r1, #3
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	thumb_func_end navicust_NCP_BustPack
 
@@ -2478,7 +2478,7 @@ navicust_NCP_BugStop:
 	mov r0, #0
 	mov r1, #0x1f
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end navicust_NCP_BugStop
@@ -2488,13 +2488,13 @@ navicust_NCP_Rush:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xd
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r3, r0
 	mov r0, #0
 	mov r1, #0xd
 	mov r2, #1
 	orr r2, r3
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end navicust_NCP_Rush
@@ -2504,13 +2504,13 @@ navicust_NCP_Beat:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xd
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r3, r0
 	mov r0, #0
 	mov r1, #0xd
 	mov r2, #2
 	orr r2, r3
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end navicust_NCP_Beat
@@ -2520,13 +2520,13 @@ navicust_NCP_Tango:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xd
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r3, r0
 	mov r0, #0
 	mov r1, #0xd
 	mov r2, #4
 	orr r2, r3
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end navicust_NCP_Tango
@@ -2536,7 +2536,7 @@ navicust_NCP_AttackPlus1:
 	push {lr}
 	mov r0, #0
 	mov r1, #1
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	add r2, r0, #1
 	cmp r2, #4
 	ble loc_813CAEE
@@ -2544,7 +2544,7 @@ navicust_NCP_AttackPlus1:
 loc_813CAEE:
 	mov r0, #0
 	mov r1, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	thumb_func_end navicust_NCP_AttackPlus1
 
@@ -2553,7 +2553,7 @@ navicust_NCP_SpeedPlus1:
 	push {lr}
 	mov r0, #0
 	mov r1, #2
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	add r2, r0, #1
 	cmp r2, #4
 	ble loc_813CB0A
@@ -2561,7 +2561,7 @@ navicust_NCP_SpeedPlus1:
 loc_813CB0A:
 	mov r0, #0
 	mov r1, #2
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	thumb_func_end navicust_NCP_SpeedPlus1
 
@@ -2570,7 +2570,7 @@ navicust_NCP_ChargePlus1:
 	push {lr}
 	mov r0, #0
 	mov r1, #3
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	add r2, r0, #1
 	cmp r2, #4
 	ble loc_813CB26
@@ -2578,7 +2578,7 @@ navicust_NCP_ChargePlus1:
 loc_813CB26:
 	mov r0, #0
 	mov r1, #3
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	thumb_func_end navicust_NCP_ChargePlus1
 
@@ -2588,7 +2588,7 @@ navicust_NCP_AttckMAX:
 	mov r0, #0
 	mov r1, #1
 	mov r2, #4
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end navicust_NCP_AttckMAX
@@ -2599,7 +2599,7 @@ navicust_NCP_SpeedMAX:
 	mov r0, #0
 	mov r1, #2
 	mov r2, #4
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end navicust_NCP_SpeedMAX
@@ -2610,7 +2610,7 @@ navicust_NCP_ChargMAX:
 	mov r0, #0
 	mov r1, #3
 	mov r2, #4
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end navicust_NCP_ChargMAX
@@ -2789,7 +2789,7 @@ sub_813CCEC:
 	mov r0, #0
 	mov r1, #0x31 
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813CCEC
@@ -2806,7 +2806,7 @@ sub_813CD00:
 	mov r0, #0
 	mov r1, #0x24 
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end sub_813CD00
@@ -2850,7 +2850,7 @@ sub_813CD3E:
 	mov r0, #0
 	mov r1, #0x12
 	mov r2, #3
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	thumb_func_end sub_813CD3E
 
@@ -2859,7 +2859,7 @@ sub_813CD4C:
 	push {lr}
 	mov r0, #0
 	mov r1, #0x13
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	thumb_func_end sub_813CD4C
 
@@ -2898,7 +2898,7 @@ sub_813CD7A:
 	push {lr}
 	mov r0, #0
 	mov r1, #0x63 
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813CD7A
@@ -2915,7 +2915,7 @@ sub_813CD8C:
 	mov r0, #0
 	mov r1, #0x28 
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813CD8C
@@ -2932,7 +2932,7 @@ sub_813CDA0:
 	mov r0, #0
 	mov r1, #0x26 
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end sub_813CDA0
@@ -2976,11 +2976,11 @@ sub_813CDD8:
 	mov r0, #0
 	mov r1, #0x14
 	mov r2, r4
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	mov r0, #0
 	mov r1, #0x15
 	mov r2, r6
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {r4-r7,pc}
 	thumb_func_end sub_813CDD8
 
@@ -2996,7 +2996,7 @@ sub_813CDF4:
 	mov r0, #0
 	mov r1, #0xd
 	mov r2, #0xff
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813CDF4
@@ -3036,15 +3036,15 @@ sub_813CE26:
 	push {lr}
 	mov r0, #0
 	mov r1, #0x18
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	add r2, r0, r4
 	mov r0, #0
 	mov r1, #0x18
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	mov r0, #0
 	mov r1, #0x16
 	mov r2, #3
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813CE26
@@ -3084,7 +3084,7 @@ sub_813CE6A:
 	push {lr}
 	mov r0, #0
 	mov r1, #0x62 
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813CE6A
@@ -3101,7 +3101,7 @@ sub_813CE7C:
 	mov r0, #0
 	mov r1, #0x1a
 	mov r2, #9
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813CE7C
@@ -3118,7 +3118,7 @@ sub_813CE90:
 	mov r0, #0
 	mov r1, #0x1a
 	mov r2, #0xa
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end sub_813CE90
@@ -3130,17 +3130,17 @@ sub_813CEA0:
 	sub sp, sp, #4
 	mov r0, #0
 	mov r1, #9
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r7, r0
 	mov r0, #0
 	mov r1, #0x2d 
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	str r0, [sp]
 	mov r1, r0
 	add r1, #0x2e 
 	mov r6, r1
 	mov r0, #0
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	cmp r0, #0xff
 	beq loc_813CEF2
 	ldr r1, [sp]
@@ -3160,7 +3160,7 @@ sub_813CEA0:
 	mov r0, #0
 	mov r1, r6
 	mov r2, #0xff
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 loc_813CEF2:
 	add sp, sp, #4
 	pop {r4-r7,pc}
@@ -3175,7 +3175,7 @@ sub_813CEF8:
 	mov r0, #0
 	mov r1, #0x12
 	mov r2, #3
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	mov r2, r4
 	bl sub_813CD4C
 	pop {r4,pc}
@@ -3196,7 +3196,7 @@ sub_813CF1C:
 	mov r2, r0
 	mov r0, #0
 	mov r1, #0x16
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813CF1C
@@ -3207,7 +3207,7 @@ sub_813CF2C:
 	mov r2, r0
 	mov r0, #0
 	mov r1, #0x54 
-	bl SetField16ToSelectedS20047CCStruct
+	bl SetCurPETNaviStatsHword
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813CF2C
@@ -3218,7 +3218,7 @@ sub_813CF3C:
 	mov r0, #0
 	mov r1, #0x24 
 	mov r2, #1
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813CF3C
@@ -3229,7 +3229,7 @@ sub_813CF4C:
 	mov r4, r0
 	mov r0, #0
 	mov r1, #0x18
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r3, r0
 	mov r0, #0
 	mov r1, #0x18
@@ -3238,7 +3238,7 @@ sub_813CF4C:
 	ble loc_813CF66
 	mov r2, #7
 loc_813CF66:
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {r4,pc}
 	thumb_func_end sub_813CF4C
 
@@ -3248,7 +3248,7 @@ sub_813CF6C:
 	mov r4, r0
 	mov r0, #0
 	mov r1, #0x19
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r3, r0
 	mov r0, #0
 	mov r1, #0x19
@@ -3257,7 +3257,7 @@ sub_813CF6C:
 	ble loc_813CF86
 	mov r2, #7
 loc_813CF86:
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {r4,pc}
 	thumb_func_end sub_813CF6C
 
@@ -3267,7 +3267,7 @@ sub_813CF8C:
 	mov r2, r0
 	mov r0, #0
 	mov r1, #0x1a
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
 byte_813CF9C: .byte 0x2

@@ -828,41 +828,46 @@ loc_8002C4E:
 	pop {r5,pc}
 	thumb_func_end sprite_setScaleParameters
 
-	thumb_func_start sub_8002C52
-sub_8002C52:
-	ldrb r3, [r5,#2]
+	thumb_func_start sprite_setObjWindowMode
+sprite_setObjWindowMode:
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r1, [r3,#0x11]
+	ldrb r1, [r3,#oObjectSprite_Unk_11]
 	mov r0, #0xc
 	bic r1, r0
 	mov r0, #8
 	orr r1, r0
-	strb r1, [r3,#0x11]
+	strb r1, [r3,#oObjectSprite_Unk_11]
 	mov pc, lr
-	thumb_func_end sub_8002C52
+	thumb_func_end sprite_setObjWindowMode
 
-	thumb_func_start sub_8002C68
-sub_8002C68:
-	ldrb r3, [r5,#2]
+	thumb_func_start sprite_disableObjWindowMode
+sprite_disableObjWindowMode:
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r1, [r3,#0x11]
+	ldrb r1, [r3,#oObjectSprite_Unk_11]
 	mov r0, #0xc
 	bic r1, r0
-	strb r1, [r3,#0x11]
+	strb r1, [r3,#oObjectSprite_Unk_11]
 	mov pc, lr
-	thumb_func_end sub_8002C68
+	thumb_func_end sprite_disableObjWindowMode
 
-	thumb_func_start sprite_setMosaicScalingParameters_8002c7a
-sprite_setMosaicScalingParameters_8002c7a:
+	thumb_func_start sprite_setAlpha_8002c7a
+// presumably to have a sprite blend in with the background (alpha blending)
+// but the bit to enable alpha blending is not set
+// and thus this call does nothing
+// original name: sprite_setMosaicScalingParameters_8002c7a
+sprite_setAlpha_8002c7a:
 	mov r2, #4
-	b sprite_setMosaicScalingParameters
+	b sprite_setAlpha
 
-	thumb_func_start sprite_setMosaicScalingParameters
-sprite_setMosaicScalingParameters:
+	thumb_func_start sprite_setAlpha
+// original name: sprite_setMosaicScalingParameters
+sprite_setAlpha:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -891,8 +896,8 @@ sprite_setMosaicScalingParameters:
 	mov r0, #0x3f
 	strb r0, [r3,#1]
 	mov pc, lr
-	thumb_func_end sprite_setMosaicScalingParameters
-	thumb_func_end sprite_setMosaicScalingParameters_8002c7a
+	thumb_func_end sprite_setAlpha
+	thumb_func_end sprite_setAlpha_8002c7a
 
 	thumb_local_start
 sub_8002CB6:
@@ -911,8 +916,8 @@ loc_8002CBA:
 	mov pc, lr
 	thumb_func_end sub_8002CB6
 
-	thumb_func_start sub_8002CCE
-sub_8002CCE:
+	thumb_func_start sprite_disableAlpha
+sprite_disableAlpha:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -922,7 +927,7 @@ sub_8002CCE:
 	bic r1, r0
 	strb r1, [r3,#oObjectSprite_Unk_11]
 	mov pc, lr
-	thumb_func_end sub_8002CCE
+	thumb_func_end sprite_disableAlpha
 
 	thumb_func_start sprite_getMosaicScalingParameters
 sprite_getMosaicScalingParameters:
@@ -964,7 +969,7 @@ off_8002D10: .word sub_30061E8+1
 	thumb_func_start sprite_makeScalable
 sprite_makeScalable:
 	push {r5,lr}
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_SpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
@@ -975,24 +980,24 @@ sprite_makeScalable:
 sub_8002D20:
 	push {r5,lr}
 loc_8002D22:
-	ldrb r0, [r5,#0x11]
+	ldrb r0, [r5,#oObjectSprite_Unk_11]
 	mov r1, #3
 	tst r1, r0
 	bne loc_8002D4E
 	bl sub_802FE48
 	cmp r0, #0xff
 	beq loc_8002D4E
-	ldrb r2, [r5,#0x11]
+	ldrb r2, [r5,#oObjectSprite_Unk_11]
 	mov r1, #3
 	orr r2, r1
-	strb r2, [r5,#0x11]
+	strb r2, [r5,#oObjectSprite_Unk_11]
 	push {r7}
-	ldrb r7, [r5,#0x13]
+	ldrb r7, [r5,#oObjectSprite_Unk_13]
 	mov r1, #0x3e
 	bic r7, r1
 	lsl r0, r0, #1
 	orr r7, r0
-	strb r7, [r5,#0x13]
+	strb r7, [r5,#oObjectSprite_Unk_13]
 	pop {r7}
 	mov r0, #1
 	pop {r5,pc}
@@ -1186,8 +1191,8 @@ sprite_hasShadow:
 	mov pc, lr
 	thumb_func_end sprite_hasShadow
 
-	thumb_func_start sub_8002E52
-sub_8002E52:
+	thumb_func_start sprite_removeShadow
+sprite_removeShadow:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1199,7 +1204,7 @@ sub_8002E52:
 	bic r0, r1
 	strb r0, [r3,#oObjectSprite_Unk_03]
 	mov pc, lr
-	thumb_func_end sub_8002E52
+	thumb_func_end sprite_removeShadow
 
 	thumb_local_start
 sub_8002E68:
@@ -1290,8 +1295,8 @@ sprite_getColorShader:
 	mov pc, lr
 	thumb_func_end sprite_getColorShader
 
-	thumb_func_start sub_8002EE8
-sub_8002EE8:
+	thumb_func_start sprite_zeroColorShader
+sprite_zeroColorShader:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1299,9 +1304,11 @@ sub_8002EE8:
 	mov r0, #0
 	strh r0, [r3,#oObjectSprite_Unk_06]
 	mov pc, lr
-	thumb_func_end sub_8002EE8
+	thumb_func_end sprite_zeroColorShader
 
 	thumb_func_start sprite_setMosaicSize
+// r0 - mosaic width
+// r1 - mosaic height
 sprite_setMosaicSize:
 	lsl r1, r1, #4
 	orr r0, r1
@@ -1311,10 +1318,10 @@ sprite_setMosaicSize:
 	b loc_8002F06
 loc_8002F02:
 	tst r2, r2
-	beq sub_8002F2C
+	beq sprite_clearMosaic
 loc_8002F06:
 	tst r0, r0
-	beq sub_8002F2C
+	beq sprite_clearMosaic
 	lsl r0, r0, #8
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
@@ -1334,8 +1341,8 @@ loc_8002F06:
 	mov pc, lr
 	thumb_func_end sprite_setMosaicSize
 
-	thumb_func_start sub_8002F2C
-sub_8002F2C:
+	thumb_func_start sprite_clearMosaic
+sprite_clearMosaic:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1345,7 +1352,7 @@ sub_8002F2C:
 	bic r1, r0
 	strb r1, [r3,#oObjectSprite_Unk_11]
 	mov pc, lr
-	thumb_func_end sub_8002F2C
+	thumb_func_end sprite_clearMosaic
 
 	thumb_func_start sub_8002F3E
 sub_8002F3E:
@@ -1402,6 +1409,7 @@ sprite_getFlip:
 
 // () -> void
 	thumb_func_start sprite_noShadow
+// shadow moves with sprite's Z
 sprite_noShadow:
 	ldrb r3, [r5,#oObjectHeader_SpriteOffset]
 	lsr r3, r3, #4
@@ -1416,25 +1424,25 @@ sprite_noShadow:
 	mov pc, lr
 	thumb_func_end sprite_noShadow
 
-	thumb_func_start sub_8002FA6
-sub_8002FA6:
+	thumb_func_start sprite_setUnk0x2c
+sprite_setUnk0x2c:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
 	str r0, [r3,#oObjectSprite_Unk_2c]
 	mov pc, lr
-	thumb_func_end sub_8002FA6
+	thumb_func_end sprite_setUnk0x2c
 
-	thumb_func_start sub_8002FB2
-sub_8002FB2:
+	thumb_func_start sprite_getUnk0x2c
+sprite_getUnk0x2c:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
 	ldr r0, [r3,#oObjectSprite_Unk_2c]
 	mov pc, lr
-	thumb_func_end sub_8002FB2
+	thumb_func_end sprite_getUnk0x2c
 
 	thumb_local_start
 sub_8002FBE:
@@ -1488,8 +1496,8 @@ sub_8002FF8:
 	mov pc, lr
 	thumb_func_end sub_8002FF8
 
-	thumb_func_start sub_8003006
-sub_8003006:
+	thumb_func_start sprite_setField0x3Bit5
+sprite_setField0x3Bit5:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1499,7 +1507,7 @@ sub_8003006:
 	orr r0, r1
 	strb r0, [r3,#oObjectSprite_Unk_03]
 	mov pc, lr
-	thumb_func_end sub_8003006
+	thumb_func_end sprite_setField0x3Bit5
 
 	thumb_local_start
 sub_8003018:

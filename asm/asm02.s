@@ -52,11 +52,11 @@ split9BitsFromBitfield_8021AE0: // 8021AE0
 .Mask9Bits: .hword 0x01FF
 	thumb_func_end split9BitsFromBitfield_8021AE0
 
-	thumb_func_start sub_8021AEE
-sub_8021AEE:
+	thumb_func_start GiveChips
+GiveChips:
 	push {r4,lr}
 	push {r0-r2}
-	bl encryption_8006e70 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_20008A0) -> void
 	pop {r0-r2}
 	tst r2, r2
 	bne loc_8021B00
@@ -85,7 +85,7 @@ loc_8021B00:
 sub_8021B2A:
 	push {lr}
 	push {r0-r2}
-	bl encryption_8006e70 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_20008A0) -> void
 	pop {r0-r2}
 	tst r2, r2
 	bne loc_8021B3C
@@ -135,7 +135,7 @@ sub_8021B78:
 	push {r0-r2}
 	tst r2, r2
 	beq loc_8021B84
-	bl encryption_8006e70 // (int idx_2008A0) -> void
+	bl encryption_8006e70 // (int idx_20008A0) -> void
 loc_8021B84:
 	pop {r0-r2}
 	push {r2}
@@ -147,8 +147,8 @@ loc_8021B84:
 	thumb_func_end sub_8021B78
 
 // (int idx, int searchItem, int off) -> void*
-	thumb_func_start sub_8021B92
-sub_8021B92:
+	thumb_func_start TakeChips
+TakeChips:
 	push {r4,lr}
 	push {r2}
 	bl getOffsetToQuantityOfChipCodeMaybe_8021c7c // (int chip_idx, int searchItem, int off) -> void*
@@ -173,7 +173,7 @@ loc_8021BB0:
 loc_8021BBC:
 	mov r0, r3
 	pop {r4,pc}
-	thumb_func_end sub_8021B92
+	thumb_func_end TakeChips
 
 	thumb_func_start GetChipCountOfCode
 GetChipCountOfCode:

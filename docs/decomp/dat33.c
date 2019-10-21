@@ -1084,12 +1084,12 @@ signed int sub_812CDAC()
     v2 = v1;
     v3 = v1 & 0x1FF;
     if ( v3 )
-        sub_8021B92(v3, (v2 << 17) >> 26, 1);
+        TakeChips(v3, (v2 << 17) >> 26, 1);
     v4 = *(v0 + 44);
     v5 = v4;
     v6 = v4 & 0x1FF;
     if ( v6 )
-        sub_8021AEE(v6, (v5 << 17) >> 26, 1);
+        GiveChips(v6, (v5 << 17) >> 26, 1);
     sub_8120AB8();
     sub_803F798();
     chatbox_runScript_803FD9C_on_eTextScript201BA20(61);

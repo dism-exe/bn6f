@@ -56,7 +56,7 @@ int sub_808C378()
         sub_8143294();
     else
         v1[2] = v8;
-    sub_80302A8(0, 1);
+    camera_initShakeEffect_80302a8(0, 1);
     return *v1;
 }
 
@@ -187,7 +187,7 @@ void sub_808CB0C()
         }
         v6 = sub_808CC34();
         if ( v6 )
-            init_s_02011C50_8036E90(v6, v7, v8, v9);
+            StartCutscene(v6, v7, v8, v9);
     }
 }
 

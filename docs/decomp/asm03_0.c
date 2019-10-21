@@ -5655,7 +5655,7 @@ int sub_8029EF8()
     do
     {
         TestEventFlag(*&byte_8029F4C[4 * v1]);
-        if ( !v3 && !(dword_20349A0 & 32 * (1 << v1)) && sub_80137B6(0) != v1 + 6 )
+        if ( !v3 && !(dword_20349A0 & 32 * (1 << v1)) && GetCurPETNaviStatsByte(0) != v1 + 6 )
         {
             *(&word_50 + v2 + v0) = v1;
             *(v0 + v2++ + 85) = 0;
@@ -8971,11 +8971,11 @@ void __fastcall sub_802CAA6(signed int result, int a2, int a3)
     {
         if ( result == 1 )
         {
-            sub_803CFF8();
+            GiveZenny();
         }
         else if ( result != 2 && result == 3 )
         {
-            sub_803D080();
+            GiveBugfrags();
         }
     }
     else
@@ -8985,11 +8985,11 @@ void __fastcall sub_802CAA6(signed int result, int a2, int a3)
         if ( sub_802D246() & 8 && (v3 = sub_800A832(), v3 != 1) )
         {
             if ( v3 == 2 )
-                sub_8021B92(v4, v5, 1);
+                TakeChips(v4, v5, 1);
         }
         else
         {
-            sub_8021AEE(v4, v5, 1);
+            GiveChips(v4, v5, 1);
         }
     }
 }
@@ -10334,22 +10334,22 @@ signed int __fastcall __noreturn sub_802D7A0(int a1)
     sub_8011384(v3);
     sub_8011020();
     sub_80143A6();
-    v4 = sub_801382E(v1->Alliance, 41);
+    v4 = GetBattleNaviStats2034A60Byte(v1->Alliance, 41);
     v5 = v4;
     v6 = sub_8013774(v4, 41);
     if ( v6 == v5 )
     {
         sub_8013764(v6, 64, v1->HP);
         v7 = sub_8013682(v1->Alliance);
-        CopyWords(v7, &unk_2034A60 + 100 * v1->Alliance, 0x64u);
+        CopyWords(v7, &eBattleNaviStats2034A60 + 100 * v1->Alliance, 0x64u);
     }
     v8 = v1->ai;
-    v9 = sub_801382E(v1->Alliance, 41);
+    v9 = GetBattleNaviStats2034A60Byte(v1->Alliance, 41);
     v10 = sub_802DCCC(v1->Alliance);
     if ( v10 == v9 )
     {
         v11 = sub_8013682(v1->Alliance);
-        CopyWords(&unk_2034A60 + 100 * v1->Alliance, v11, 0x64u);
+        CopyWords(&eBattleNaviStats2034A60 + 100 * v1->Alliance, v11, 0x64u);
     }
     else
     {
@@ -10523,7 +10523,7 @@ signed int __noreturn sub_802D9B0()
 
     sub_8011020();
     v2 = sub_8013682(v0->Alliance);
-    CopyWords(&unk_2034A60 + 100 * v0->Alliance, v2, 0x64u);
+    CopyWords(&eBattleNaviStats2034A60 + 100 * v0->Alliance, v2, 0x64u);
     v3 = v0->ai;
     v4 = sub_80136CC(v0->Alliance, 41);
     v3->AI_index = v4;
@@ -10716,7 +10716,7 @@ signed int __noreturn sub_802DB80()
 
     sub_8011020();
     v2 = sub_8013682(v0->Alliance);
-    CopyWords(&unk_2034A60 + 100 * v0->Alliance, v2, 0x64u);
+    CopyWords(&eBattleNaviStats2034A60 + 100 * v0->Alliance, v2, 0x64u);
     v3 = v0->ai;
     v4 = sub_80136CC(v0->Alliance, 41);
     v3->AI_index = v4;
@@ -12114,7 +12114,7 @@ __int64 sub_802EBE4()
     char *v2; // r0
     int v3; // r6
 
-    v1 = sub_8013816(*(v0 + 22), 2);
+    v1 = GetBattleNaviStats203CB10Byte(*(v0 + 22), 2);
     v2 = sub_8013754(v1, 2, v1);
     v3 = *(v0 + 88) + 160;
     return sub_802ECFE(v2);
@@ -12755,7 +12755,7 @@ signed int __fastcall TestEventFlagRangeFromImmediate(int a1, int a2, int a3)
 
 
 // 0x802f238
-int __fastcall sub_802F238(unsigned int a1)
+int __fastcall addMail_802f238(unsigned int a1)
 {
     unsigned int v1; // r7
     int v2; // r7
@@ -13008,7 +13008,7 @@ int sub_802F6B2()
         if ( v3 == byte_12C )
         {
             v4 = v3;
-            sub_800068A(31, 16);
+            sound_800068A(31, 16);
             result = v4;
         }
         else
@@ -13684,7 +13684,7 @@ void __fastcall camera_802FF4C(int x, int y, int a3, int mapGroup)
         v15 = *(v14[v13] + v18);
     }
     pCamera->pad_02[0] = v15;
-    sub_80301E8();
+    camera_doShakeEffect_80301e8();
     sub_8030054();
     sub_80302D0();
     sub_803011A();
@@ -13700,7 +13700,7 @@ int sub_802FFF4()
 
     v2 = *(v1 + oToolkit_CameraPtr);
     (*(&off_8030034 + *(v2 + 3)))();
-    sub_80301E8();
+    camera_doShakeEffect_80301e8();
     sub_8030054();
     (*(&JumpTable8030040 + *(v2 + 2)))();
     sub_803011A();
@@ -13909,7 +13909,7 @@ signed int sub_80301BC()
 
 
 // 0x80301d0
-__int64 sub_80301D0()
+__int64 GetCameraXYZ()
 {
     int v0; // r10
     int v1; // r3
@@ -13924,7 +13924,7 @@ __int64 sub_80301D0()
 
 
 // 0x80301dc
-int __fastcall sub_80301DC(int result, int a2, int a3)
+int __fastcall SetCameraXYZ(int result, int a2, int a3)
 {
     int v3; // r10
     _DWORD *v4; // r3
@@ -13938,7 +13938,7 @@ int __fastcall sub_80301DC(int result, int a2, int a3)
 
 
 // 0x80301e8
-int sub_80301E8()
+int camera_doShakeEffect_80301e8()
 {
     int v0; // r5
     char v1; // zf
@@ -13948,7 +13948,7 @@ int sub_80301E8()
     int v5; // r0
     int v6; // r0
 
-    if ( (sub_80269D0() || (sub_800A7D0(), v1) || sub_800A0A4()) && *(v0 + 12) )
+    if ( (sub_80269D0() || (sub_800A7D0(), v1) || battle_isTimeStopPauseOrBattleFlags0x20_800a0a4()) && *(v0 + 12) )
     {
         v2 = &byte_8030284[8 * *(v0 + 14)];
         --*(v0 + 12);
@@ -13983,7 +13983,7 @@ int sub_80301E8()
 
 
 // 0x80302a8
-int __fastcall sub_80302A8(int result, __int16 a2)
+int __fastcall camera_initShakeEffect_80302a8(int result, __int16 a2)
 {
     int v2; // r10
     int v3; // r2

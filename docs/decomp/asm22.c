@@ -142,7 +142,7 @@ void *sub_8086FD8()
                 v6 = byte_8086D74;
             }
         }
-        return init_s_02011C50_8036E90(v6, v4, v8, v9);
+        return StartCutscene(v6, v4, v8, v9);
     }
     v0[1] = 0;
     v10 = *(v1 + oToolkit_GameStatePtr);
@@ -153,7 +153,7 @@ void *sub_8086FD8()
             goto LABEL_31;
         SetEventFlagFromImmediate(15, 192);
         v6 = &byte_8086460[8];
-        return init_s_02011C50_8036E90(v6, v4, v8, v9);
+        return StartCutscene(v6, v4, v8, v9);
     }
     v11 = *(v10 + oGameState_MapNumber);
     if ( v11 )
@@ -174,14 +174,14 @@ void *sub_8086FD8()
             SetEventFlagFromImmediate(5, 227);
             v6 = &byte_8086340[188];
         }
-        return init_s_02011C50_8036E90(v6, v4, v8, v9);
+        return StartCutscene(v6, v4, v8, v9);
     }
     TestEventFlagFromImmediate(5, 225);
     if ( v7 )
     {
         SetEventFlagFromImmediate(5, 225);
         v6 = &byte_8086340[20];
-        return init_s_02011C50_8036E90(v6, v4, v8, v9);
+        return StartCutscene(v6, v4, v8, v9);
     }
 LABEL_31:
     if ( *(*(v1 + oToolkit_GameStatePtr) + oGameState_MapGroup) == 129 )
@@ -206,7 +206,7 @@ void *__fastcall sub_808711C(int a1, int a2, int a3, int a4)
         v7 -= 40;
     if ( v6 != v7 )
         v5 = &byte_8086678[32];
-    return init_s_02011C50_8036E90(v5, v6, v7, a4);
+    return StartCutscene(v5, v6, v7, a4);
 }
 
 

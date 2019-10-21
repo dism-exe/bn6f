@@ -1706,7 +1706,7 @@ sub_810D41E::
 	bne loc_810D434
 	mov r0, #3
 	mov r1, #0x12
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	b loc_810D43C
 loc_810D434::
 	cmp r0, #0x16

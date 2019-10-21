@@ -11654,7 +11654,7 @@ int __fastcall sub_81170C0(char a1)
         SVC         6
         SVC         6
     }
-    return sub_8002FA6(~(0x80000000 >> a1) & 0x7FFFFE00);
+    return sprite_setUnk0x2c(~(0x80000000 >> a1) & 0x7FFFFE00);
 }
 
 
@@ -12178,7 +12178,7 @@ int sub_8117768()
 {
     int result; // r0
 
-    result = sub_803CE28(117);
+    result = CheckKeyItem(117);
     if ( result < 4 )
         return 4;
     if ( result > 8 )
@@ -12255,7 +12255,7 @@ int sub_8117820()
 
     v0 = sub_81178AC();
     if ( !v0 )
-        return sub_8002FA6(-1);
+        return sprite_setUnk0x2c(-1);
     v1 = sub_813B7A0(v0 - 144, 0) + 8;
     v2 = 0;
     v3 = 0xFFFFFFF;
@@ -12275,7 +12275,7 @@ int sub_8117820()
         ++v2;
     }
     while ( v2 < 25 );
-    return sub_8002FA6(v3);
+    return sprite_setUnk0x2c(v3);
 }
 
 
@@ -12424,7 +12424,7 @@ int __noreturn sub_81179E4()
     int v1; // r7
     int v2; // r10
 
-    *(*(v2 + oToolkit_Unk200a220_Ptr) + 8) = sub_803CE28(*(v0 + 2));
+    *(*(v2 + oToolkit_Unk200a220_Ptr) + 8) = CheckKeyItem(*(v0 + 2));
     return renderTextGfx_8045F8C(*(v1 + 36), 18, &unk_2016200, 100742432);
 }
 
@@ -13108,7 +13108,7 @@ int sub_81181DC()
     v2 = __OFSUB__(v1, 2);
     result = v1 - 2;
     if ( !((result < 0) ^ v2) && result < *&sSubmenu.unk_1E )
-        result = sub_8002FA6(*&byte_811820C[4 * word_201DA80[2 * result + 1]]);
+        result = sprite_setUnk0x2c(*&byte_811820C[4 * word_201DA80[2 * result + 1]]);
     return result;
 }
 
@@ -13190,7 +13190,7 @@ MenuControl *__fastcall sub_81182A4(int a1)
                 sprite_makeScalable();
                 *(v1 + 18) = 64;
                 sprite_setScaleParameters(0, 64, 64);
-                result = sub_8002FA6(0x3FFFFFF);
+                result = sprite_setUnk0x2c(0x3FFFFFF);
                 v3 = 12;
             }
             else
@@ -13314,8 +13314,8 @@ int sub_811842C()
     *v0 = v2;
     v0[12] = 4;
     sprite_setCoordinates(230, 18 * *(v1 + 32) + 27);
-    sub_8002CCE();
-    sub_8002EE8();
+    sprite_disableAlpha();
+    sprite_zeroColorShader();
     sub_81185E4();
     return sub_8118604();
 }
@@ -13375,7 +13375,7 @@ int sub_81184C0()
     *v0 = v1;
     v0[12] = 0;
     sub_8002C7A(10);
-    sub_8002EE8();
+    sprite_zeroColorShader();
     sub_81186A8();
     sub_81185E4();
     return sub_8118658();
@@ -13390,7 +13390,7 @@ int sub_81184EC()
     v0[12] = 0;
     *v0 = 35;
     sub_8002C7A(10);
-    sub_8002EE8();
+    sprite_zeroColorShader();
     sub_81186A8();
     sub_81185E4();
     return sub_8118658();
@@ -13448,7 +13448,7 @@ int sub_8118550()
     *v0 = v1;
     v0[12] = 0;
     sub_8002C7A(10);
-    sub_8002EE8();
+    sprite_zeroColorShader();
     sub_811870C();
     sub_81185E4();
     return sub_8118658();
@@ -13469,7 +13469,7 @@ int sub_811857C()
     v0[12] = 0;
     *v0 = v1;
     sub_8002C7A(10);
-    sub_8002EE8();
+    sprite_zeroColorShader();
     sub_81186A8();
     sub_81185E4();
     return sub_8118658();
@@ -13557,7 +13557,7 @@ int sub_8118604()
         ++v2;
     }
     while ( v2 < 49 );
-    return sub_8002FA6(v4);
+    return sprite_setUnk0x2c(v4);
 }
 
 
@@ -13591,7 +13591,7 @@ int sub_8118658()
         ++v2;
     }
     while ( v2 < 49 );
-    return sub_8002FA6(v4);
+    return sprite_setUnk0x2c(v4);
 }
 
 
@@ -14293,7 +14293,7 @@ int sub_8118DFC()
     int v0; // r6
 
     sub_8118E24();
-    return sub_8002FA6(*(&off_8118E14 + *(v0 + 48)));
+    return sprite_setUnk0x2c(*(&off_8118E14 + *(v0 + 48)));
 }
 
 
@@ -14372,7 +14372,7 @@ void __noreturn sub_8118EA8()
     sub_8003060(4);
     sub_800304A(4);
     sprite_setPallete(0);
-    sub_8002C52();
+    sprite_setObjWindowMode();
     v0->currState = 4;
     sprite_setCoordinates(byte_8118F0C[2 * *(v1 + 15)], byte_8118F0C[2 * *(v1 + 15) + 1]);
     sub_8118F14();
@@ -15046,7 +15046,7 @@ int sub_81198E8()
     v1 = 0;
     if ( *(v0 + 12) == 255 )
         v1 = 0x40000000;
-    return sub_8002FA6(v1);
+    return sprite_setUnk0x2c(v1);
 }
 
 
@@ -15215,7 +15215,7 @@ void __noreturn sub_8119AEC()
     }
     else
     {
-        v3 = sub_80137B6(0);
+        v3 = GetCurPETNaviStatsByte(0);
         notZero_eByte200AD04();
         if ( !v4 && (TestEventFlagFromImmediate(1, 99), v4) )
             v5 = v3 + 12;
@@ -15286,7 +15286,7 @@ int sub_8119C08()
     notZero_eByte200AD04();
     if ( v0 )
     {
-        v2 = sub_80137B6(0);
+        v2 = GetCurPETNaviStatsByte(0);
         if ( v2 )
             v1 = 5 * v2 + 18;
         else
@@ -15309,7 +15309,7 @@ int __fastcall sub_8119C58(int a1)
 
     v1 = a1;
     v2 = getPETNaviSelect();
-    if ( sub_80137B6(v2) == 255 )
+    if ( GetCurPETNaviStatsByte(v2) == 255 )
         result = v1 + 4;
     else
         result = v1;
@@ -15355,7 +15355,7 @@ int sub_8119C94()
     }
     else
     {
-        v1 = sub_80137B6(0);
+        v1 = GetCurPETNaviStatsByte(0);
         TestEventFlagFromImmediate(1, 99);
         if ( !v2 )
             v1 += 23;
@@ -15419,7 +15419,7 @@ void __noreturn sub_8119DE8()
         v3 = 1;
     v0->objFlags = v3;
     v5 = sprite_getMosaicScalingParameters(v2);
-    (sprite_setMosaicScalingParameters)(v5);
+    (sprite_setAlpha)(v5);
     v6 = sub_8002F3E(v2);
     (loc_8002F02)(v6);
     sprite_update(v0);
@@ -15778,13 +15778,13 @@ int sub_811A29C()
     if ( v0 && (v2 || !v1) )
     {
         v3 = byte_8124B1C[v0 - dword_140];
-        v4 = sub_8002FB2();
-        result = sub_8002FA6((v4 | 0x7E) & ~(0x40u >> v3));
+        v4 = sprite_getUnk0x2c();
+        result = sprite_setUnk0x2c((v4 | 0x7E) & ~(0x40u >> v3));
     }
     else
     {
-        v6 = sub_8002FB2();
-        result = sub_8002FA6(v6 & 0xFFFFFF81 | 0x3E);
+        v6 = sprite_getUnk0x2c();
+        result = sprite_setUnk0x2c(v6 & 0xFFFFFF81 | 0x3E);
     }
     return result;
 }
@@ -15803,13 +15803,13 @@ int sub_811A2EC()
     if ( sub_811A268() && (v1 || !v0) )
     {
         v2 = v1 + 1;
-        v3 = sub_8002FB2();
-        result = sub_8002FA6((v3 | 0x1FC0) & ~(0x1000u >> v2));
+        v3 = sprite_getUnk0x2c();
+        result = sprite_setUnk0x2c((v3 | 0x1FC0) & ~(0x1000u >> v2));
     }
     else
     {
-        v5 = sub_8002FB2();
-        result = sub_8002FA6(v5 & 0xFFFFE03F | 0xF80);
+        v5 = sprite_getUnk0x2c();
+        result = sprite_setUnk0x2c(v5 & 0xFFFFE03F | 0xF80);
     }
     return result;
 }
@@ -16289,7 +16289,7 @@ int __fastcall sub_811A914(int a1, int a2)
     v2 = a1;
     getStructFrom2008450(a2);
     v4 = v3;
-    sub_8002FA6(*&byte_811A938[4 * v2]);
+    sprite_setUnk0x2c(*&byte_811A938[4 * v2]);
     return *v4;
 }
 
@@ -16309,7 +16309,7 @@ int __fastcall __noreturn sub_811A940(int a1, int a2)
     sprite_loadAnimationData(v4);
     result = sprite_noShadow(v4);
     if ( v2 == 1 )
-        result = sub_8002FA6(0);
+        result = sprite_setUnk0x2c(0);
     return result;
 }
 
@@ -17025,7 +17025,7 @@ int sub_811B3CC()
 {
     int v0; // r6
 
-    return sub_8002FA6(*&byte_811B3E0[4 * *(v0 + 38)]);
+    return sprite_setUnk0x2c(*&byte_811B3E0[4 * *(v0 + 38)]);
 }
 
 
@@ -17361,12 +17361,12 @@ int sub_811B814()
         if ( v4 )
         {
             v6 = v4;
-            sub_8002FA6(0);
+            sprite_setUnk0x2c(0);
             v5 = v6;
         }
         else
         {
-            sub_8002FA6(0x100000);
+            sprite_setUnk0x2c(0x100000);
             v5 = 0;
         }
         v7 = sub_813B780(v5);
@@ -17385,7 +17385,7 @@ int sub_811B8C8()
     int v1; // r10
     int result; // r0
 
-    sub_8002EE8();
+    sprite_zeroColorShader();
     if ( *&eT4BattleObjects[3904] + 2 == *(v0 + 4) )
         result = sprite_setColorShader(v0, *&byte_811B904[2 * ((**(v1 + oToolkit_CurFramePtr) & 0xFu) >> 1)]);
     else
@@ -17427,7 +17427,7 @@ int __fastcall sub_811B914(int a1)
                 sprite_makeScalable();
                 *(v1 + 18) = 64;
                 sprite_setScaleParameters(0, 64, 64);
-                result = sub_8002FA6(0x3FFFFFF);
+                result = sprite_setUnk0x2c(0x3FFFFFF);
                 v3 = 12;
             }
             else
@@ -17548,8 +17548,8 @@ int sub_811BA88()
     }
     *v0 = v2;
     v0[12] = 6;
-    sub_8002CCE();
-    sub_8002EE8();
+    sprite_disableAlpha();
+    sprite_zeroColorShader();
     sub_811BB30();
     return sub_811BB64();
 }
@@ -17664,7 +17664,7 @@ int sub_811BB64()
         ++v2;
     }
     while ( v2 < 49 );
-    return sub_8002FA6(v4);
+    return sprite_setUnk0x2c(v4);
 }
 
 
@@ -17698,7 +17698,7 @@ int sub_811BBB8()
         ++v2;
     }
     while ( v2 < 49 );
-    return sub_8002FA6(v4);
+    return sprite_setUnk0x2c(v4);
 }
 
 
@@ -17836,7 +17836,7 @@ void sub_811BD88()
     }
     else
     {
-        v2 = sub_80137B6(0);
+        v2 = GetCurPETNaviStatsByte(0);
         notZero_eByte200AD04();
         if ( !v3 )
         {
@@ -17920,7 +17920,7 @@ int __fastcall sub_811BE1C(int a1)
         if ( v3 == 23 )
         {
             v4 = getPETNaviSelect();
-            if ( sub_80137B6(v4) == 255 )
+            if ( GetCurPETNaviStatsByte(v4) == 255 )
             {
                 v5 = 12;
 LABEL_7:
@@ -18831,7 +18831,7 @@ int __fastcall sub_811CDC8(int a1, int a2, int a3)
     if ( !result )
     {
         v3[9] = 4;
-        sub_8002EE8();
+        sprite_zeroColorShader();
         result = 32;
         v3[12] = 32;
     }
@@ -18906,7 +18906,7 @@ int sub_811CE64()
     if ( !result )
     {
         *(v0 + 9) = 16;
-        sub_8002EE8();
+        sprite_zeroColorShader();
         *(v0 + 12) = 20;
         result = PlaySoundEffect(byte_100, v2, v3);
     }
@@ -20116,13 +20116,13 @@ int sub_811DFD4()
     if ( v1 == 255 )
     {
         *(v0 + 32) = 1065353216;
-        result = sub_8002FA6(1065353216);
+        result = sprite_setUnk0x2c(1065353216);
     }
     else
     {
         v3 = *(v0 + 32) & ~(1 << (29 - v1));
         *(v0 + 32) = v3;
-        result = sub_8002FA6(v3);
+        result = sprite_setUnk0x2c(v3);
     }
     return result;
 }
@@ -20139,7 +20139,7 @@ int sub_811E000()
     if ( v1 <= 0 )
     {
         v0->currAction = v1 + 1;
-        sub_8002FA6(1);
+        sprite_setUnk0x2c(1);
         sprite_setAnimation(v0, 1u);
         sprite_loadAnimationData(v0);
         result = sprite_noShadow(v0);
@@ -20342,7 +20342,7 @@ int __fastcall sub_811E202(int a1)
         SVC         6
         SVC         6
     }
-    return sub_8002FA6(~(0x10000000u >> v1) & 0x1FFF7FF8 & ~(0x8000u >> v6) & 0xFFFFFFFB);
+    return sprite_setUnk0x2c(~(0x10000000u >> v1) & 0x1FFF7FF8 & ~(0x8000u >> v6) & 0xFFFFFFFB);
 }
 
 
@@ -20439,7 +20439,7 @@ int sub_811E314()
     v1 = v0 & ~(0x100000u >> sub_8142190(1));
     v2 = v1 & ~(0x2000u >> sub_8142190(2));
     v3 = sub_8142190(3);
-    return sub_8002FA6(v2 & ~(0x40u >> v3));
+    return sprite_setUnk0x2c(v2 & ~(0x40u >> v3));
 }
 
 
@@ -20701,7 +20701,7 @@ int sub_811E600()
     char v0; // r0
 
     v0 = sub_8143198();
-    return sub_8002FA6(~(0x20000000u >> v0) & 0x3FF00000);
+    return sprite_setUnk0x2c(~(0x20000000u >> v0) & 0x3FF00000);
 }
 
 
@@ -20758,7 +20758,7 @@ int sub_811E6A0()
     int v0; // r0
 
     v0 = sub_81433DA();
-    return sub_8002FA6(byte_811E6B8[v0] << 24);
+    return sprite_setUnk0x2c(byte_811E6B8[v0] << 24);
 }
 
 
@@ -20945,7 +20945,7 @@ int sub_811E8E0()
 
     v0 = sub_8143F90();
     __asm { SVC         6 }
-    return sub_8002FA6(*&byte_811E8FC[4 * (v0 >> 16)]);
+    return sprite_setUnk0x2c(*&byte_811E8FC[4 * (v0 >> 16)]);
 }
 
 
@@ -21056,7 +21056,7 @@ int sub_811EA28()
         SVC         6
         SVC         6
     }
-    return sub_8002FA6(~(0x10000000u >> v0) & 0x1FFFDFFF & ~(0x2000u >> v5));
+    return sprite_setUnk0x2c(~(0x10000000u >> v0) & 0x1FFFDFFF & ~(0x2000u >> v5));
 }
 
 
@@ -22313,7 +22313,7 @@ signed int __fastcall sub_811FCB8(int a1, int *a2, int a3, int a4)
                 return 1;
         }
         if ( !v22 )
-            sub_8021B92(v18, v19, 1);
+            TakeChips(v18, v19, 1);
         v11 = *(v9 + 14);
         v12 = v19 | (v11 << 7);
         *v5 = (v11 << 16) | v12;
@@ -22390,7 +22390,7 @@ LABEL_11:
             if ( ++v9 > 3 )
                 return 1;
         }
-        sub_8021B92(v12, v13, 1);
+        TakeChips(v12, v13, 1);
         ++v5;
         if ( v5 >= &word_3C[30 * v4] + v14 )
             goto LABEL_11;
@@ -22566,7 +22566,7 @@ __int16 *sub_811FFC0()
             {
                 v5 = v3[v4];
                 if ( v5 != 255 )
-                    sub_8021AEE(v1, v5, 90);
+                    GiveChips(v1, v5, 90);
                 --v4;
             }
             while ( v4 >= 0 );
@@ -23278,7 +23278,7 @@ int __fastcall sub_81206C4(int result)
         {
             result = *(v4 + 28) << 16 >> 23;
             if ( result )
-                result = sub_8021AEE(result, *(v4 + 28) & 0x7F, *(v4 + 20) >> 16);
+                result = GiveChips(result, *(v4 + 28) & 0x7F, *(v4 + 20) >> 16);
             v4 -= 32;
             ++v2;
         }
@@ -23648,7 +23648,7 @@ signed int sub_8120A88()
         do
         {
             v4 = split9BitsFromBitfield_8021AE0(*(v2 + v3));
-            result = sub_8021B92(v4, v5, 1);
+            result = TakeChips(v4, v5, 1);
             v3 += 2;
         }
         while ( v3 < 60 );
@@ -23703,7 +23703,7 @@ int __fastcall sub_8120AE8(int a1)
 
     v8 = a1;
     v2 = getPETNaviSelect();
-    v3 = *(v1 + oToolkit_S_Chip_2002178_Ptr) + 60 * sub_80137B6(v2);
+    v3 = *(v1 + oToolkit_S_Chip_2002178_Ptr) + 60 * GetCurPETNaviStatsByte(v2);
     v4 = 0;
     v5 = 0;
     do
@@ -23789,17 +23789,17 @@ int sub_8120BE4()
     char v4; // ST10_1
     int v5; // r6
 
-    v0 = sub_80137B6(0);
-    v1 = sub_80137B6(0);
-    v2 = sub_80137B6(0);
-    v3 = sub_80137B6(0);
-    v4 = sub_80137B6(0);
+    v0 = GetCurPETNaviStatsByte(0);
+    v1 = GetCurPETNaviStatsByte(0);
+    v2 = GetCurPETNaviStatsByte(0);
+    v3 = GetCurPETNaviStatsByte(0);
+    v4 = GetCurPETNaviStatsByte(0);
     v5 = getPETNaviSelect();
-    navicust_801379E(v5, 9, v0);
-    navicust_801379E(v5, 45, v1);
-    navicust_801379E(v5, 46, v2);
-    navicust_801379E(v5, 47, v3);
-    return navicust_801379E(v5, 48, v4);
+    SetCurPETNaviStatsByte(v5, 9, v0);
+    SetCurPETNaviStatsByte(v5, 45, v1);
+    SetCurPETNaviStatsByte(v5, 46, v2);
+    SetCurPETNaviStatsByte(v5, 47, v3);
+    return SetCurPETNaviStatsByte(v5, 48, v4);
 }
 
 
@@ -23879,8 +23879,8 @@ int __fastcall sub_8120D10(int a1)
 
     v9 = a1;
     v10 = getPETNaviSelect();
-    v2 = sub_80137B6(v10);
-    if ( sub_8120AE8(1) > v2 || (v3 = sub_80137B6(v10), result = sub_8120AE8(2), result > v3) )
+    v2 = GetCurPETNaviStatsByte(v10);
+    if ( sub_8120AE8(1) > v2 || (v3 = GetCurPETNaviStatsByte(v10), result = sub_8120AE8(2), result > v3) )
     {
         if ( *(*(v1 + oToolkit_Unk2001c04_Ptr) + 5) == 1 )
         {
@@ -23896,7 +23896,7 @@ int __fastcall sub_8120D10(int a1)
                 LOBYTE(v5) = *(*(v1 + oToolkit_Unk2001c04_Ptr) + 5) - 1;
             }
         }
-        result = navicust_801379E(v10, 45, v5);
+        result = SetCurPETNaviStatsByte(v10, 45, v5);
     }
     return result;
 }
@@ -23914,10 +23914,10 @@ signed int __fastcall sub_8120DAC(int a1)
     v1 = a1;
     v2 = 1;
     v6 = getPETNaviSelect();
-    v3 = sub_80137B6(v6);
+    v3 = GetCurPETNaviStatsByte(v6);
     if ( sub_8120B28(1, v1) <= v3 )
     {
-        v4 = sub_80137B6(v6);
+        v4 = GetCurPETNaviStatsByte(v6);
         if ( sub_8120B28(2, v1) <= v4 )
             v2 = 0;
     }
@@ -23926,7 +23926,7 @@ signed int __fastcall sub_8120DAC(int a1)
 
 
 // 0x8120df0
-int sub_8120DF0()
+int reloadCurNaviBaseStats_8120df0()
 {
     int v0; // r10
     int *v1; // r7
@@ -23973,7 +23973,7 @@ int sub_8120DF0()
         if ( v3 == 64 )
             v5 = GetField16FromSelectedS20047CCStruct(v4);
         else
-            v5 = sub_80137B6(v4);
+            v5 = GetCurPETNaviStatsByte(v4);
         *v1 = v5;
         ++v1;
     }
@@ -23991,7 +23991,7 @@ int sub_8120DF0()
                 {
                     if ( v11 == -1 )
                         return result;
-                    result = navicust_801379E(0, v11, *v9);
+                    result = SetCurPETNaviStatsByte(0, v11, *v9);
                 }
                 ++v9;
             }
@@ -24014,7 +24014,7 @@ int sub_8120DF0()
         if ( v15 != 11 && v15 != 12 && v15 != 10
             || (v16 = v14, v17 = *&byte_81210C8[k], TestEventFlagFromImmediate(1, 99), v14 = v16, v15 = v17, v8) )
         {
-            navicust_801379E(v14, v15, *v12);
+            SetCurPETNaviStatsByte(v14, v15, *v12);
         }
 LABEL_25:
         ++v12;

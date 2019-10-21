@@ -1477,7 +1477,7 @@ unsigned int __fastcall chatbox_80411C8(unsigned int a1)
 // 0x80411d4
 int __fastcall chatbox_80411D4(unsigned int a1)
 {
-    return sub_802F238(a1);
+    return addMail_802f238(a1);
 }
 
 
@@ -1519,14 +1519,14 @@ unsigned int chatbox_8041218()
 // 0x804122c
 int __fastcall chatbox_804122C(int a1)
 {
-    return reqBBS_813E5DC(a1);
+    return reqBBS_addBBSMessage_813e5dc(a1);
 }
 
 
 // 0x8041238
 int __fastcall chatbox_8041238(int a1)
 {
-    return reqBBS_813F9A0(a1);
+    return reqBBS_addRequest_813F9A0(a1);
 }
 
 
@@ -1977,7 +1977,7 @@ signed int chatbox_80417E4()
     int v4; // r1
     int v6; // [sp+0h] [bp-Ch]
 
-    v1 = sub_803CE28(*(v0 + 2));
+    v1 = CheckKeyItem(*(v0 + 2));
     v2 = *(v6 + 3);
     v3 = 0;
     if ( v1 != v2 )
@@ -2075,7 +2075,7 @@ signed int __fastcall chatbox_80418CC(int a1)
     {
         v5 = v4;
         v8 = v3;
-        a1 = sub_803CE28(*(v1 + 2) + v3);
+        a1 = CheckKeyItem(*(v1 + 2) + v3);
         v4 = v5;
         if ( a1 )
             goto LABEL_6;
@@ -2110,7 +2110,7 @@ signed int __fastcall chatbox_8041904(int a1)
     {
         v6 = v5;
         v7 = v4;
-        a1 = sub_803CE28(*(v1 + 2) + v4);
+        a1 = CheckKeyItem(*(v1 + 2) + v4);
         v5 = v6;
         v4 = v7 + 1;
         if ( a1 )
@@ -2132,7 +2132,7 @@ signed int chatbox_8041944()
     int v1; // r0
     int v2; // r1
 
-    v1 = eStruct200A008_getUnk01();
+    v1 = eStruct200A008_getBattleResult();
     v2 = *(v0 + v1 + 1);
     if ( v2 != 255 )
         chatbox_config_80408D0(v1, v2);
@@ -2295,7 +2295,7 @@ signed int chatbox_8041ABC()
     int v1; // r0
     int v2; // r1
 
-    v1 = reqBBS_getTotalPointsIndex() + 2;
+    v1 = reqBBS_getRequestBBSRank() + 2;
     v2 = *(v0 + v1);
     if ( v2 != 255 )
         chatbox_config_80408D0(v1, v2);
@@ -2496,7 +2496,7 @@ signed int __fastcall chatbox_F4_unk(int a1, int a2, int a3, int a4)
         case 0u:
             goto LABEL_13;
         case 1u:
-            sub_803CE08(v4[2], v4[3]);
+            TakeItem(v4[2], v4[3]);
             return 1;
         case 2u:
             PlaySoundEffect(115, v7, a3);
@@ -2512,7 +2512,7 @@ LABEL_13:
                 v8 = *(v5 + 84);
                 *(v5 + 76) = v8 - 113;
             }
-            sub_803CD98(v8, v4[3]);
+            GiveItem(v8, v4[3]);
             result = 1;
             break;
     }
@@ -2634,7 +2634,7 @@ int __fastcall chatbox_8041DF4(int a1, int a2, int a3, int a4, int (__fastcall *
     {
         if ( v7 == 1 )
         {
-            sub_8021B92(v5[2] | (v5[3] << 8), v5[4], v5[5]);
+            TakeChips(v5[2] | (v5[3] << 8), v5[4], v5[5]);
             result = a5(1);
         }
         else
@@ -2661,7 +2661,7 @@ int __fastcall chatbox_8041DF4(int a1, int a2, int a3, int a4, int (__fastcall *
         v10 = v5[4];
         if ( v10 == 255 )
             v10 = *(v6 + 88);
-        sub_8021AEE(v9, v10, v5[5]);
+        GiveChips(v9, v10, v5[5]);
         result = a5(1);
     }
     return result;
@@ -2980,7 +2980,7 @@ signed int chatbox_8042328()
     int v0; // r4
     int v1; // r10
 
-    sub_800068A(*(v0 + 2), *(v0 + 3));
+    sound_800068A(*(v0 + 2), *(v0 + 3));
     *(*(v1 + oToolkit_GameStatePtr) + oGameState_BGMusicIndicator) = 99;
     return 1;
 }
@@ -3043,7 +3043,7 @@ signed int __fastcall chatbox_80423DC(int a1, int a2, int a3)
 
     PlaySoundEffect(115, a2, a3);
     *(v4 + 76) = *(4 * *(v3 + 2) + v3 + 3) | (*(4 * *(v3 + 2) + v3 + 4) << 8) | (*(4 * *(v3 + 2) + v3 + 5) << 16) | (*(4 * *(v3 + 2) + v3 + 6) << 24);
-    sub_803CFF8();
+    GiveZenny();
     v5 = v3 + 4 * (*(v3 + 2) + 1) + 3;
     return 1;
 }
@@ -3066,7 +3066,7 @@ signed int __fastcall chatbox_8042418(int a1, int a2, int a3)
     v4[20] = v6;
     v7 = *v5;
     v4[19] = v7;
-    sub_8021AEE(v7, v6, 1);
+    GiveChips(v7, v6, 1);
     v8 = v3 + 2 * (*(v3 + 2) + 1) + 3;
     return 1;
 }
@@ -3202,7 +3202,7 @@ signed int __fastcall sub_8042554(int a1, int a2, int a3)
     GetRNG2();
     v6 = *((*(v3 + 2) & v5) + v3 + 3);
     *(v4 + 76) = v6;
-    sub_803CD98(v6, 1);
+    GiveItem(v6, 1);
     v7 = v3 + *(v3 + 2) + 1 + 3;
     return 1;
 }
@@ -3363,7 +3363,7 @@ signed int chatbox_80426F4()
     signed int v2; // r2
     int v3; // r1
 
-    v1 = sub_8013704(0, 34);
+    v1 = GetNaviStatsByte(0, 34);
     if ( v1 != 1 )
         v2 = 1;
     v3 = *(v0 + v2 + 2);
@@ -3552,7 +3552,7 @@ signed int chatbox_8042A9C()
         v3 = v0[2];
         if ( v3 == 255 )
             v3 = *(v1 + 84);
-        v4 = sub_803CD98(v3, v0[3]);
+        v4 = GiveItem(v3, v0[3]);
         if ( v4 != 1 )
         {
             v7 = v4;
@@ -3565,7 +3565,7 @@ signed int chatbox_8042A9C()
     }
     if ( v2 == 1 )
     {
-        v12 = sub_803CE08(v0[2], v0[3]) + 4;
+        v12 = TakeItem(v0[2], v0[3]) + 4;
         v8 = v0[v12];
 LABEL_18:
         if ( v8 != 255 )
@@ -3574,7 +3574,7 @@ LABEL_18:
     }
     if ( v2 != 2 )
     {
-        v12 = sub_803CE28(v0[2]);
+        v12 = CheckKeyItem(v0[2]);
         v13 = v0[3];
         v14 = 0;
         if ( v12 != v13 )
@@ -3621,7 +3621,7 @@ signed int chatbox_8042B38()
         if ( v3 == -1 )
             v3 = *(v1 + 84);
         *(v1 + 84) = v3;
-        sub_803CFF8();
+        GiveZenny();
         v5 = v4;
         PlaySoundEffect(115, v6, v7);
         v8 = v5 + 6;
@@ -3630,7 +3630,7 @@ signed int chatbox_8042B38()
     else if ( v2 == 1 )
     {
         v10 = v0[2] | (v0[3] << 8) | (v0[4] << 16) | (v0[5] << 24);
-        sub_803D040();
+        TakeZenny();
         v8 = v11 + 6;
         v9 = v0[v8];
     }
@@ -3690,7 +3690,7 @@ signed int chatbox_8042C18()
         if ( v3 == -1 )
             v3 = *(v1 + 84);
         *(v1 + 84) = v3;
-        sub_803D080();
+        GiveBugfrags();
         v5 = v4;
         PlaySoundEffect(115, v6, v7);
         v8 = v5 + 6;
@@ -3699,7 +3699,7 @@ signed int chatbox_8042C18()
     else if ( v2 == 1 )
     {
         v10 = v0[2] | (v0[3] << 8) | (v0[4] << 16) | (v0[5] << 24);
-        sub_803D0C8();
+        TakeBugfrags();
         v8 = v11 + 6;
         v9 = v0[v8];
     }
@@ -4862,12 +4862,12 @@ signed int __fastcall chatbox_8043A5C(int a1, int a2, int a3)
         v7 = v3[4];
         if ( v7 == 255 )
             v7 = *(v4 + 88);
-        sub_803D108(v6 + 144, v7, v3[3]);
+        GiveNaviCustPrograms(v6 + 144, v7, v3[3]);
         result = 1;
     }
     else if ( v5 == 1 )
     {
-        sub_803D128(v3[2] + 144, v3[4], v3[3]);
+        TakeNaviCustPrograms(v3[2] + 144, v3[4], v3[3]);
         result = 1;
     }
     else if ( v5 == 2 )

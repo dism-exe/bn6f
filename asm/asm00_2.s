@@ -233,7 +233,7 @@ sub_800EF34:
 	mov r6, #0
 	mov r7, #0
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_800EF54
 	mov r0, r4
@@ -247,7 +247,7 @@ loc_800EF54:
 	b loc_800F090
 loc_800EF5C:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #1
 	beq loc_800EF6A
 	cmp r0, #0xd
@@ -385,7 +385,7 @@ loc_800F036:
 	b loc_800F090
 loc_800F058:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
 	blt loc_800F090
 	cmp r0, #0x16
@@ -432,7 +432,7 @@ sub_800F09E:
 	cmp r0, r4
 	beq loc_800F0DE
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #1
 	bne loc_800F0E0
 	// idx
@@ -1028,7 +1028,7 @@ sub_800F4B2:
 	cmp r0, #0
 	pop {r0}
 	bne locret_800F4D2
-	bl sub_803D0C8
+	bl TakeBugfrags
 locret_800F4D2:
 	pop {pc}
 off_800F4D4: .word byte_8021220
@@ -1595,7 +1595,7 @@ loc_800F922:
 	bl sprite_getPalette
 	lsl r0, r0, #0x18
 	orr r4, r0
-	bl sub_8002FB2
+	bl sprite_getUnk0x2c
 	mov r6, #0x34 
 	add r6, r6, r5
 	ldmia r6!, {r1-r3}
@@ -1789,7 +1789,7 @@ sub_800FAAC:
 	bl sub_80C4FFE
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #2
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	mov r2, r0
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
@@ -1926,7 +1926,7 @@ loc_800FB9C:
 	cmp r0, #0x41 
 	bne loc_800FC18
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xf
 	bne loc_800FC18
 loc_800FBE0:
@@ -1945,7 +1945,7 @@ loc_800FBEE:
 	cmp r0, #0
 	bne loc_800FC0C
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0
 	cmp r0, #0xb
 	blt loc_800FC18
@@ -2058,10 +2058,10 @@ byte_800FCD5: .byte 0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xA, 0xB, 
 sub_800FCE4:
 	push {lr}
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	bl sub_800FC9E
 	pop {pc}
@@ -2083,7 +2083,7 @@ sub_800FD0A:
 	push {r4,r7,lr}
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	ldr r1, off_800FEE0 // =byte_80212BB 
 	ldrb r7, [r1,r0]
 	ldrb r0, [r5,#oBattleObject_Alliance]
@@ -2115,7 +2115,7 @@ loc_800FD40:
 sub_800FD44:
 	push {lr}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	ldr r1, off_800FEE8 // =byte_80212BB 
 	ldrb r0, [r1,r0]
 	mov r1, #1
@@ -2133,7 +2133,7 @@ sub_800FD64:
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	mov r1, #0x29
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	add r0, r0, r0
 	ldr r2, off_800FD84 // =byte_800FD88
 	add r2, r2, r0
@@ -2261,61 +2261,61 @@ sub_800FE52:
 	push {r4,lr}
 	mov r4, #0
 	mov r1, #0x31 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #1
 	bne loc_800FE62
 	add r4, #1
 loc_800FE62:
 	mov r1, #0x13
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_800FE6E
 	add r4, #1
 loc_800FE6E:
 	mov r1, #0x14
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_800FE7A
 	add r4, #1
 loc_800FE7A:
 	mov r1, #0x16
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_800FE86
 	add r4, #1
 loc_800FE86:
 	mov r1, #0x54 
-	bl GetPlayerBattleVarHword_AllianceFromBattleObject
+	bl GetBattleNaviStatsHword_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_800FE92
 	add r4, #1
 loc_800FE92:
 	mov r1, #0x24 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_800FE9E
 	add r4, #1
 loc_800FE9E:
 	mov r1, #0x18
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_800FEAA
 	add r4, #1
 loc_800FEAA:
 	mov r1, #0x19
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_800FEB6
 	add r4, #1
 loc_800FEB6:
 	mov r1, #0x1a
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_800FEC2
 	add r4, #1
 loc_800FEC2:
 	mov r1, #0x63 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_800FECE
 	add r4, #1
@@ -2336,30 +2336,30 @@ sub_800FEEC:
 	push {r4,lr}
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne loc_800FF36
 	bl GetBattleMode
 	cmp r0, #9
 	bne loc_800FF0A
 	mov r1, #0x44 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	b loc_800FF0C
 loc_800FF0A:
 	mov r0, #0xff
 loc_800FF0C:
 	strb r0, [r4,#oAIData_Unk_04]
 	mov r1, #4
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	strb r0, [r4,#oAIData_Unk_06]
 	mov r1, #5
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	bl sub_800FFAA
 	mov r1, #0x39 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	strb r0, [r4,#oAIData_Unk_05]
 	mov r1, #7
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	strb r0, [r4,#oAIData_Unk_08]
 	mov r0, #0xff
 	strb r0, [r4,#oAIData_Unk_11]
@@ -2391,30 +2391,30 @@ sub_800FF5E:
 	push {r4,lr}
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne locret_800FFA8
 	bl GetBattleMode
 	cmp r0, #9
 	bne loc_800FF7C
 	mov r1, #0x44 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	b loc_800FF7E
 loc_800FF7C:
 	mov r0, #0xff
 loc_800FF7E:
 	strb r0, [r4,#oAIData_Unk_04]
 	mov r1, #4
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	strb r0, [r4,#oAIData_Unk_06]
 	mov r1, #5
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	bl sub_800FFAA
 	mov r1, #0x39 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	strb r0, [r4,#oAIData_Unk_05]
 	mov r1, #7
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	strb r0, [r4,#oAIData_Unk_08]
 	mov r0, #0xff
 	strb r0, [r4,#oAIData_Unk_11]
@@ -2531,7 +2531,7 @@ sub_801002C:
 	cmp r0, #2
 	bne loc_801009C
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne loc_8010096
 	mov r4, #2
@@ -2543,7 +2543,7 @@ sub_801002C:
 	b loc_8010082
 loc_8010050:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r4, #0
 	cmp r0, #0
 	beq loc_801006A
@@ -2556,19 +2556,19 @@ loc_8010050:
 	b loc_801009E
 loc_801006A:
 	mov r1, #0xe
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r4, #4
 	cmp r0, #0xff
 	beq loc_8010078
 	mov r4, #0
 loc_8010078:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne loc_801009E
 loc_8010082:
 	mov r1, #0x10
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_8010092
 	mov r1, #5
@@ -2599,7 +2599,7 @@ byte_80100A8: .byte 0x0, 0x5, 0x14, 0xA, 0xF, 0x0, 0x0, 0x0, 0x10, 0xB5, 0x4, 0x
 sub_80100EC:
 	push {lr}
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0x17
 	blt loc_8010102
 	cmp r0, #0x18
@@ -2741,7 +2741,7 @@ sub_80101D4:
 	push {r4,lr}
 	mov r4, r0
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xc
 	beq loc_80101EE
 	cmp r0, #0x12
@@ -2762,7 +2762,7 @@ locret_80101F6:
 	thumb_func_start sub_80101F8
 sub_80101F8:
 	push {r4,lr}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	cmp r4, #0
 	bne loc_8010216
@@ -2795,7 +2795,7 @@ sub_8010230:
 	cmp r0, #1
 	ble locret_8010268
 	mov r1, #0x18
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	ldr r1, off_80102A0 // =byte_80102A4 
 	ldrb r0, [r1,r0]
 	tst r0, r0
@@ -2856,7 +2856,7 @@ sub_80102AC:
 	beq locret_80102F0
 	mov r0, r4
 	mov r1, #0x19
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	ldr r1, off_80102F4 // =byte_80102F8 
 	ldrb r6, [r1,r0]
 	tst r6, r6
@@ -2940,7 +2940,7 @@ sub_8010332:
 	b locret_8010360
 loc_8010340:
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne loc_8010350
 	mov r1, #4
@@ -2950,7 +2950,7 @@ loc_8010350:
 	mov r4, #0xb
 	mul r4, r0
 	mov r1, #0x2b 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	ldr r1, off_8010364 // =byte_8020FE0 
 	add r1, r1, r4
 	ldrb r0, [r1,r0]
@@ -2986,7 +2986,7 @@ byte_8010388: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0
 sub_80103A8:
 	push {lr}
 	mov r1, #0x31 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0
 	tst r0, r0
 	beq loc_80103B8
@@ -3370,7 +3370,7 @@ sub_8010660:
 	tst r0, r1
 	beq loc_80106B8
 	mov r1, #0xd
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xff
 	beq loc_80106B8
 	mov r2, #4
@@ -3382,12 +3382,12 @@ sub_8010660:
 	cmp r0, r1
 	bcc loc_80106B8
 	mov r1, #0xd
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r2, #4
 	bic r0, r2
 	mov r2, r0
 	mov r1, #0xd
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #0
@@ -3421,7 +3421,7 @@ sub_80106C0:
 	eor r0, r1
 	mov r6, r0
 	mov r1, #0xd
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	cmp r0, #0xff
 	beq loc_8010738
 	mov r2, #2
@@ -3438,13 +3438,13 @@ sub_80106C0:
 loc_80106F6:
 	mov r0, r6
 	mov r1, #0xd
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	mov r2, #2
 	bic r0, r2
 	mov r2, r0
 	mov r1, #0xd
 	mov r0, r6
-	bl SetPlayerBattleVarByte
+	bl SetBattleNaviStatsByte
 	mov r0, r6
 	bl sub_80103BC
 	push {r5}
@@ -3483,7 +3483,7 @@ sub_8010740:
 	eor r0, r1
 	mov r6, r0
 	mov r1, #0xd
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	cmp r0, #0xff
 	beq loc_80107B6
 	mov r2, #1
@@ -3498,13 +3498,13 @@ sub_8010740:
 	beq loc_80107B6
 	mov r0, r6
 	mov r1, #0xd
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	mov r2, #1
 	bic r0, r2
 	mov r2, r0
 	mov r1, #0xd
 	mov r0, r6
-	bl SetPlayerBattleVarByte
+	bl SetBattleNaviStatsByte
 	mov r0, r6
 	bl sub_80103BC
 	push {r5}
@@ -3597,7 +3597,7 @@ sub_8010820:
 	and r4, r0
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	add r2, r0, r4
 	cmp r2, #0xa
 	blt loc_8010836
@@ -3605,7 +3605,7 @@ sub_8010820:
 loc_8010836:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
-	bl SetPlayerBattleVarByte
+	bl SetBattleNaviStatsByte
 loc_801083E:
 	mov r0, #0x34 
 	add r0, r0, r5
@@ -3634,18 +3634,18 @@ sub_801086C:
 	push {r4,lr}
 	ldr r4, off_80108B0 // =byte_80108B8 
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne loc_8010890
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_8010888
 	ldrb r0, [r4,r0]
 	b loc_8010892
 loc_8010888:
 	mov r1, #0x10
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	b loc_8010892
 loc_8010890:
 	ldrb r0, [r4,r0]
@@ -3653,11 +3653,11 @@ loc_8010892:
 	bl sub_8019F8C
 	ldr r4, off_80108B4 // =byte_80108D1 
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne loc_80108A8
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 loc_80108A8:
 	ldrb r0, [r4,r0]
 	bl sub_8019F9E
@@ -5710,7 +5710,7 @@ loc_8011A44:
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
 	strb r0, [r7,#oAIAttackVars_Unk_05]
 	mov r1, #0x4d 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r4, r0
 	cmp r4, #0
 	beq loc_8011A74
@@ -5735,7 +5735,7 @@ loc_8011A74:
 sub_8011A7E:
 	push {r4,lr}
 	mov r1, #1
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	add r0, #1
 	push {r0}
 	ldrb r0, [r5,#oBattleObject_Alliance]
@@ -5749,7 +5749,7 @@ loc_8011A98:
 	mul r0, r1
 	strh r0, [r7,#oAIAttackVars_Unk_08]
 	mov r1, #0x4f 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r4, r0
 	tst r4, r4
 	beq loc_8011AC2
@@ -5815,7 +5815,7 @@ loc_8011AFE:
 	strh r0, [r7,#oAIAttackVars_Unk_06]
 	strb r0, [r7,#oAIAttackVars_Unk_05]
 	mov r1, #0x4d 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	str r0, [r7,#oAIAttackVars_Unk_0c]
 	mov r1, #0
 	strb r1, [r7,#oAIAttackVars_Unk_03]
@@ -5828,7 +5828,7 @@ loc_8011AFE:
 	beq loc_8011B38
 loc_8011B2C:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0
 	cmp r0, #0x18
 	bne loc_8011B3E
@@ -5862,7 +5862,7 @@ loc_8011B56:
 	strh r0, [r7,#oAIAttackVars_Unk_06]
 	strb r0, [r7,#oAIAttackVars_Unk_05]
 	mov r1, #0x4d 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	str r0, [r7,#oAIAttackVars_Unk_0c]
 	mov r1, #0
 	strb r1, [r7,#oAIAttackVars_Unk_03]
@@ -5875,7 +5875,7 @@ loc_8011B56:
 	beq loc_8011B90
 loc_8011B84:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0
 	cmp r0, #0x17
 	bne loc_8011B96
@@ -6108,7 +6108,7 @@ sub_8011CF8:
 	mov r0, #0x94
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0
 	cmp r0, #4
 	beq loc_8011D16
@@ -6577,7 +6577,7 @@ sub_8012018:
 	strh r0, [r7,#oAIAttackVars_Unk_06]
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
 	mov r1, #0x48 
-	bl GetPlayerBattleVarHword_AllianceFromBattleObject
+	bl GetBattleNaviStatsHword_AllianceFromBattleObject
 	strh r0, [r7,#oAIAttackVars_Unk_08]
 	ldr r0, off_8012040 // =0x114 
 	str r0, [r7,#oAIAttackVars_Unk_0c]
@@ -6724,7 +6724,7 @@ off_8012120: .word 0x114
 sub_8012124:
 	push {lr}
 	mov r1, #1
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	add r0, #1
 	mov r1, #5
 	mul r0, r1
@@ -6743,7 +6743,7 @@ sub_8012124:
 sub_8012144:
 	push {lr}
 	mov r1, #1
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	add r0, #1
 	mov r1, #0xa
 	mul r0, r1
@@ -7540,7 +7540,7 @@ off_80125CC: .word 0x214
 sub_80125D0:
 	push {lr}
 	mov r1, #1
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	add r0, #1
 	mov r1, #0xa
 	mul r0, r1
@@ -7556,7 +7556,7 @@ sub_80125D0:
 	mov r0, #0
 	str r0, [r7,#oAIAttackVars_Unk_0c]
 	mov r1, #0x4f 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #6
 	tst r0, r0
 	beq loc_8012602
@@ -7634,10 +7634,10 @@ loc_8012652:
 sub_801265A:
 	push {lr}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #1
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	ldr r2, off_801269C // =byte_80126A4
 	ldrb r1, [r2,r1]
@@ -7652,7 +7652,7 @@ sub_801265A:
 	b loc_8012692
 loc_8012684:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	ldr r1, off_80126A0 // =off_80126B0 
 	ldrb r1, [r1,r0]
 	pop {r0}
@@ -7897,7 +7897,7 @@ loc_8012880:
 	bl sub_8012C4A
 	strh r0, [r7,#oAIAttackVars_Unk_08]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #6
 	beq loc_80128A2
 	cmp r0, #0x12
@@ -7911,7 +7911,7 @@ loc_80128A2:
 	tst r0, r1
 	bne loc_80128C0
 	mov r1, #0x3e 
-	bl GetPlayerBattleVarHword_AllianceFromBattleObject
+	bl GetBattleNaviStatsHword_AllianceFromBattleObject
 	add r0, #0x13
 	mov r1, #0x14
 	svc 6
@@ -7922,7 +7922,7 @@ loc_80128C0:
 loc_80128C2:
 	push {r2}
 	mov r1, #0x50 
-	bl GetPlayerBattleVarHword_AllianceFromBattleObject
+	bl GetBattleNaviStatsHword_AllianceFromBattleObject
 	pop {r2}
 	add r0, r0, r2
 	beq loc_80128D6
@@ -7964,7 +7964,7 @@ sub_80128FC:
 	cmp r1, #6
 	bne loc_8012998
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #7
 	beq loc_8012928
 	cmp r0, #0x13
@@ -8191,7 +8191,7 @@ sub_8012ABC:
 	cmp r0, #1
 	beq loc_8012AF6
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0x17
 	blt loc_8012AF6
 	cmp r0, #0x18
@@ -8223,11 +8223,11 @@ sub_8012AFA:
 	mov r7, #0
 	mov r4, r1
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #7
 	beq loc_8012B1A
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #7
 	beq loc_8012B1A
 	cmp r0, #0x13
@@ -8270,11 +8270,11 @@ sub_8012B4E:
 	mov r7, #0
 	mov r4, r1
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #6
 	beq loc_8012B6E
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #6
 	beq loc_8012B6E
 	cmp r0, #0x12
@@ -8317,7 +8317,7 @@ sub_8012BA2:
 	mov r7, #0
 	mov r4, r1
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
 	bne loc_8012BE4
 	mov r7, #0
@@ -8360,7 +8360,7 @@ sub_8012BE8:
 	cmp r0, #1
 	beq loc_8012C30
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
 	blt loc_8012C30
 	cmp r0, #0x16
@@ -8424,7 +8424,7 @@ sub_8012C4A:
 	cmp r1, #0xa
 	bne loc_8012C78
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #4
 	beq loc_8012C74
 	cmp r0, #0x10
@@ -8442,7 +8442,7 @@ sub_8012C7C:
 	push {r4,lr}
 	mov r4, r0
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #2
 	beq loc_8012C8E
 	cmp r0, #0xe
@@ -8524,7 +8524,7 @@ loc_8012CEC:
 	bne loc_8012CEC
 	mov r0, #2
 	mov r1, #0x14
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 loc_8012D20:
 	add sp, sp, #0x14
 	pop {r4,r6,r7,pc}
@@ -8652,7 +8652,7 @@ sub_8012DFC:
 	bne loc_8012E64
 	mov r0, r7
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	cmp r0, #0x17
 	blt loc_8012E1E
 	cmp r0, #0x18
@@ -8849,7 +8849,7 @@ sub_8012F62:
 	beq loc_8012F90
 	mov r7, #5
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
 	blt loc_8012F90
 	cmp r0, #0x18
@@ -8864,7 +8864,7 @@ sub_8012F62:
 	mov r7, #0x11
 loc_8012F90:
 	mov r1, #3
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	lsl r3, r0, #1
 	mov r0, #0xff
 	ldrb r1, [r4,r7]
@@ -9106,7 +9106,7 @@ loc_8013176:
 	bne loc_80131B4
 loc_801318E:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0x14
 	beq loc_801319C
 	cmp r0, #0x16
@@ -9206,7 +9206,7 @@ loc_8013244:
 	mov r7, r0
 	ldrb r4, [r7,#6]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r6, r0
 	ldrb r1, [r7,#9]
 	cmp r6, #2
@@ -9328,7 +9328,7 @@ loc_801330C:
 	tst r0, r1
 	bne loc_8013360
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	ldrb r3, [r7,#6]
 	cmp r0, #5
 	bne loc_8013338
@@ -9451,19 +9451,19 @@ byte_801341B: .byte 0x0, 0x6, 0x7, 0x8, 0x9, 0xA, 0xB
 	thumb_func_start sub_8013422
 sub_8013422:
 	push {lr}
-	ldr r2, off_8013434 // =ePlayerBattleVars
+	ldr r2, off_8013434 // =eBattleNaviStats0
 	mov r1, #0x64 
 	mul r0, r1
 	add r0, r0, r2
-	bl initStruct_8013438 // (void *struct) -> void
+	bl initNaviStats_WithDefaultStatsMaybe_8013438 // (void *struct) -> void
 	pop {pc}
 	.balign 4, 0x00
-off_8013434: .word ePlayerBattleVars
+off_8013434: .word eBattleNaviStats0
 	thumb_func_end sub_8013422
 
 // (void *struct) -> void
-	thumb_func_start initStruct_8013438
-initStruct_8013438:
+	thumb_func_start initNaviStats_WithDefaultStatsMaybe_8013438
+initNaviStats_WithDefaultStatsMaybe_8013438:
 	push {r4,lr}
 	mov r4, r0
 	// memBlock
@@ -9539,7 +9539,7 @@ loc_80134B8:
 	mov r1, #0x21 
 	strb r0, [r4,r1]
 	pop {r4,pc}
-	thumb_func_end initStruct_8013438
+	thumb_func_end initNaviStats_WithDefaultStatsMaybe_8013438
 
 	thumb_func_start sub_80134C8
 sub_80134C8:
@@ -9662,7 +9662,7 @@ sub_8013554:
 	strb r0, [r4,r1]
 	mov r0, #1
 	mov r1, #0x42 
-	bl sub_8013740
+	bl GetNaviStatsHword
 	mov r1, #0x40 
 	strh r0, [r4,r1]
 	mov r1, #0x42 
@@ -9745,7 +9745,7 @@ sub_80135E8:
 	strb r0, [r4,r1]
 	mov r0, #1
 	mov r1, #0x42 
-	bl sub_8013740
+	bl GetNaviStatsHword
 	mov r1, #0x40 
 	strh r0, [r4,r1]
 	mov r1, #0x42 
@@ -9779,391 +9779,391 @@ loc_8013678:
 	thumb_func_end sub_80135E8
 
 // (int idx) -> void*
-	thumb_func_start GetPlayerBattleVarsAddr
-GetPlayerBattleVarsAddr:
-	mov r1, #0x64 
+	thumb_func_start GetBattleNaviStatsAddr
+GetBattleNaviStatsAddr:
+	mov r1, #oNaviStats_Size
 	mul r0, r1
-	ldr r1, =ePlayerBattleVars
+	ldr r1, =eBattleNaviStats0
 	add r0, r0, r1
 	mov pc, lr
 // 801368C
 	.pool
-	thumb_func_end GetPlayerBattleVarsAddr
+	thumb_func_end GetBattleNaviStatsAddr
 
 	thumb_local_start
-sub_8013690:
-	mov r1, #0x64 
+GetBattleNaviStats203CB10Addr:
+	mov r1, #oNaviStats_Size
 	mul r0, r1
-	ldr r1, off_801369C // =byte_203CB10 
+	ldr r1, off_801369C // =eBattleNaviStats203CB10 
 	add r0, r0, r1
 	mov pc, lr
 	.balign 4, 0x00
-off_801369C: .word byte_203CB10
-	thumb_func_end sub_8013690
+off_801369C: .word eBattleNaviStats203CB10
+	thumb_func_end GetBattleNaviStats203CB10Addr
 
 	thumb_local_start
-sub_80136A0:
-	mov r1, #0x64 
+GetBattleNaviStats2034A60Addr:
+	mov r1, #oNaviStats_Size
 	mul r0, r1
-	ldr r1, off_80136AC // =unk_2034A60 
+	ldr r1, off_80136AC // =eBattleNaviStats2034A60 
 	add r0, r0, r1
 	mov pc, lr
 	.balign 4, 0x00
-off_80136AC: .word unk_2034A60
-	thumb_func_end sub_80136A0
+off_80136AC: .word eBattleNaviStats2034A60
+	thumb_func_end GetBattleNaviStats2034A60Addr
 
 	thumb_local_start
-SetPlayerBattleVarByte:
+SetBattleNaviStatsByte:
 	push {r6,r7,lr}
 	mov r6, r1
 	mov r7, r2
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	strb r7, [r0,r6]
 	pop {r6,r7,pc}
-	thumb_func_end SetPlayerBattleVarByte
+	thumb_func_end SetBattleNaviStatsByte
 
 	thumb_local_start
-SetPlayerBattleVarHword:
+SetBattleNaviStatsHword:
 	push {r6,r7,lr}
 	mov r6, r1
 	mov r7, r2
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	strh r7, [r0,r6]
 	pop {r6,r7,pc}
-	thumb_func_end SetPlayerBattleVarHword
+	thumb_func_end SetBattleNaviStatsHword
 
-	thumb_func_start GetPlayerBattleVarByte
-GetPlayerBattleVarByte:
+	thumb_func_start GetBattleNaviStatsByte
+GetBattleNaviStatsByte:
 	push {r6,lr}
 	mov r6, r1
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	ldrb r0, [r0,r6]
 	pop {r6,pc}
-	thumb_func_end GetPlayerBattleVarByte
+	thumb_func_end GetBattleNaviStatsByte
 
-	thumb_func_start GetPlayerBattleVarSignedByte
-GetPlayerBattleVarSignedByte:
+	thumb_func_start GetBattleNaviStatsSignedByte
+GetBattleNaviStatsSignedByte:
 	push {r6,lr}
 	mov r6, r1
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	ldrsb r0, [r0,r6]
 	pop {r6,pc}
-	thumb_func_end GetPlayerBattleVarSignedByte
+	thumb_func_end GetBattleNaviStatsSignedByte
 
-	thumb_func_start GetPlayerBattleVarHword
-GetPlayerBattleVarHword:
+	thumb_func_start GetBattleNaviStatsHword
+GetBattleNaviStatsHword:
 	push {r6,lr}
 	mov r6, r1
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	ldrh r0, [r0,r6]
 	pop {r6,pc}
-	thumb_func_end GetPlayerBattleVarHword
+	thumb_func_end GetBattleNaviStatsHword
 
-	thumb_func_start SetField8ToSelectedS20047CCStruct
+	thumb_func_start SetNaviStatsByte
 // (bool structSel, int a2, u8 a3) -> void
-SetField8ToSelectedS20047CCStruct:
+SetNaviStatsByte:
     // type safety, ensure bool (0, 1)
 	cmp r0, #0
 	beq loc_80136F6
 	mov r0, #1
 loc_80136F6:
     // Toolkit->S20047CC_Ptrs[oS20047CC*a1 + a2] = a3
-	mov r3, #oS20047CC_Size
+	mov r3, #oNaviStats_Size
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
+	ldr r3, [r3,#oToolkit_NaviStatsPtr]
 	add r3, r3, r0
 	strb r2, [r3,r1]
 	mov pc, lr
-	thumb_func_end SetField8ToSelectedS20047CCStruct
+	thumb_func_end SetNaviStatsByte
 
-	thumb_func_start sub_8013704
-sub_8013704:
+	thumb_func_start GetNaviStatsByte
+GetNaviStatsByte:
 	cmp r0, #0
 	beq loc_801370A
 	mov r0, #1
 loc_801370A:
-	mov r3, #0x64 
+	mov r3, #oNaviStats_Size
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
+	ldr r3, [r3,#oToolkit_NaviStatsPtr]
 	add r3, r3, r0
 	ldrb r0, [r3,r1]
 	mov pc, lr
-	thumb_func_end sub_8013704
+	thumb_func_end GetNaviStatsByte
 
 	thumb_local_start
-sub_8013718:
+GetNaviStatsByte_8013718:
 	cmp r0, #0
 	beq loc_801371E
 	mov r0, #1
 loc_801371E:
-	mov r3, #0x64 
+	mov r3, #oNaviStats_Size
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
+	ldr r3, [r3,#oToolkit_NaviStatsPtr]
 	add r3, r3, r0
 	ldrb r0, [r3,r1]
 	mov pc, lr
-	thumb_func_end sub_8013718
+	thumb_func_end GetNaviStatsByte_8013718
 
 	thumb_local_start
-sub_801372C:
+SetNaviStatsHword:
 	cmp r0, #0
 	beq loc_8013732
 	mov r0, #1
 loc_8013732:
-	mov r3, #0x64 
+	mov r3, #oNaviStats_Size
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
+	ldr r3, [r3,#oToolkit_NaviStatsPtr]
 	add r3, r3, r0
 	strh r2, [r3,r1]
 	mov pc, lr
-	thumb_func_end sub_801372C
+	thumb_func_end SetNaviStatsHword
 
 	thumb_local_start
-sub_8013740:
+GetNaviStatsHword:
 	cmp r0, #0
 	beq loc_8013746
 	mov r0, #1
 loc_8013746:
-	mov r3, #0x64 
+	mov r3, #oNaviStats_Size
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
+	ldr r3, [r3,#oToolkit_NaviStatsPtr]
 	add r3, r3, r0
 	ldrh r0, [r3,r1]
 	mov pc, lr
-	thumb_func_end sub_8013740
+	thumb_func_end GetNaviStatsHword
 
 // FIX THESE NAMES
-	thumb_func_start SetPlayerBattleVarByte_AllianceFromBattleObject
-SetPlayerBattleVarByte_AllianceFromBattleObject:
+	thumb_func_start SetBattleNaviStatsByte_AllianceFromBattleObject
+SetBattleNaviStatsByte_AllianceFromBattleObject:
 	push {r6,r7,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r6, r1
 	mov r7, r2
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	strb r7, [r0,r6]
 	pop {r6,r7,pc}
-	thumb_func_end SetPlayerBattleVarByte_AllianceFromBattleObject
+	thumb_func_end SetBattleNaviStatsByte_AllianceFromBattleObject
 
-	thumb_func_start SetPlayerBattleVarHword_AllianceFromBattleObject
-SetPlayerBattleVarHword_AllianceFromBattleObject:
+	thumb_func_start SetBattleNaviStatsHword_AllianceFromBattleObject
+SetBattleNaviStatsHword_AllianceFromBattleObject:
 	push {r6,r7,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r6, r1
 	mov r7, r2
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	strh r7, [r0,r6]
 	pop {r6,r7,pc}
-	thumb_func_end SetPlayerBattleVarHword_AllianceFromBattleObject
+	thumb_func_end SetBattleNaviStatsHword_AllianceFromBattleObject
 
-	thumb_func_start GetPlayerBattleVarByte_AllianceFromBattleObject
-GetPlayerBattleVarByte_AllianceFromBattleObject:
+	thumb_func_start GetBattleNaviStatsByte_AllianceFromBattleObject
+GetBattleNaviStatsByte_AllianceFromBattleObject:
 	push {r6,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r6, r1
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	ldrb r0, [r0,r6]
 	pop {r6,pc}
-	thumb_func_end GetPlayerBattleVarByte_AllianceFromBattleObject
+	thumb_func_end GetBattleNaviStatsByte_AllianceFromBattleObject
 
 	thumb_local_start
-sub_8013782:
+GetBattleNaviStatsByte_AllianceFromBattleObject_8013782:
 	push {r6,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r6, r1
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	ldrb r0, [r0,r6]
 	pop {r6,pc}
-	thumb_func_end sub_8013782
+	thumb_func_end GetBattleNaviStatsByte_AllianceFromBattleObject_8013782
 
-	thumb_func_start GetPlayerBattleVarHword_AllianceFromBattleObject
-GetPlayerBattleVarHword_AllianceFromBattleObject:
+	thumb_func_start GetBattleNaviStatsHword_AllianceFromBattleObject
+GetBattleNaviStatsHword_AllianceFromBattleObject:
 	push {r6,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r6, r1
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	ldrh r0, [r0,r6]
 	pop {r6,pc}
-	thumb_func_end GetPlayerBattleVarHword_AllianceFromBattleObject
+	thumb_func_end GetBattleNaviStatsHword_AllianceFromBattleObject
 
 // (int a1, int a2, int a3) -> void
-	thumb_func_start navicust_801379E
-navicust_801379E:
+	thumb_func_start SetCurPETNaviStatsByte
+SetCurPETNaviStatsByte:
 	push {lr}
 	push {r1,r2}
-	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
+	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
 	pop {r1,r2}
-	mov r3, #0x64 
+	mov r3, #oNaviStats_Size
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
+	ldr r3, [r3,#oToolkit_NaviStatsPtr]
 	add r3, r3, r0
 	strb r2, [r3,r1]
 	pop {pc}
-	thumb_func_end navicust_801379E
+	thumb_func_end SetCurPETNaviStatsByte
 
 // (int a1, int a2) -> u8
-	thumb_func_start sub_80137B6
-sub_80137B6:
+	thumb_func_start GetCurPETNaviStatsByte
+GetCurPETNaviStatsByte:
 	push {lr}
 	push {r1}
-	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
+	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
 	pop {r1}
-	mov r3, #100
+	mov r3, #oNaviStats_Size
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
+	ldr r3, [r3,#oToolkit_NaviStatsPtr]
 	add r3, r3, r0
 	ldrb r0, [r3,r1]
 	pop {pc}
-	thumb_func_end sub_80137B6
+	thumb_func_end GetCurPETNaviStatsByte
 
 	thumb_local_start
-sub_80137CE:
+GetCurPetNaviStatsSignedByte:
 	push {lr}
 	push {r1}
-	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
+	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
 	pop {r1}
-	mov r3, #0x64 
+	mov r3, #oNaviStats_Size
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
+	ldr r3, [r3,#oToolkit_NaviStatsPtr]
 	add r3, r3, r0
 	ldrsb r0, [r3,r1]
 	pop {pc}
-	thumb_func_end sub_80137CE
+	thumb_func_end GetCurPetNaviStatsSignedByte
 
-	thumb_func_start SetField16ToSelectedS20047CCStruct
+	thumb_func_start SetCurPETNaviStatsHword
 // (int structSelectIdx, int structOffset, u16 val) -> void
-SetField16ToSelectedS20047CCStruct:
+SetCurPETNaviStatsHword:
 	push {lr}
-	// Toolkit->S20047CC_Ptrs[oS20047CC_Size*SelectS20047CCStruct8014018(a1)+a2] = a3
+	// Toolkit->NaviStatsPtr[oNaviStats_Size*GetNaviStatsIndexFromCurPETNavi(a1)+a2] = a3
 	push {r1,r2}
-	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
+	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
 	pop {r1,r2}
-	mov r3, #oS20047CC_Size
+	mov r3, #oNaviStats_Size
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
+	ldr r3, [r3,#oToolkit_NaviStatsPtr]
 	add r3, r3, r0
 	strh r2, [r3,r1]
 	pop {pc}
-	thumb_func_end SetField16ToSelectedS20047CCStruct
+	thumb_func_end SetCurPETNaviStatsHword
 
-	thumb_func_start GetField16FromSelectedS20047CCStruct
+	thumb_func_start GetCurPETNaviStatsHword
 // (int structSelectIdx, int structOffset) -> u16
-GetField16FromSelectedS20047CCStruct:
+GetCurPETNaviStatsHword:
 	push {lr}
-	// return Toolkit->S20047CC_Ptrs[100*SelectS20047CCStruct8014018(a1)+a2]
+	// return Toolkit->S20047CC_Ptrs[100*GetNaviStatsIndexFromCurPETNavi(a1)+a2]
 	push {r1}
-	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
+	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
 	pop {r1}
-	mov r3, #0x64 
+	mov r3, #oNaviStats_Size
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
+	ldr r3, [r3,#oToolkit_NaviStatsPtr]
 	add r3, r3, r0
 	ldrh r0, [r3,r1]
 	pop {pc}
-	thumb_func_end GetField16FromSelectedS20047CCStruct
+	thumb_func_end GetCurPETNaviStatsHword
 
-	thumb_func_start sub_8013816
-sub_8013816:
+	thumb_func_start GetBattleNaviStats203CB10Byte
+GetBattleNaviStats203CB10Byte:
 	push {r4,lr}
 	mov r4, r1
-	bl sub_8013690
+	bl GetBattleNaviStats203CB10Addr
 	ldrb r0, [r0,r4]
 	pop {r4,pc}
-	thumb_func_end sub_8013816
+	thumb_func_end GetBattleNaviStats203CB10Byte
 
 	thumb_local_start
-sub_8013822:
+GetBattleNaviStats203CB10Hword:
 	push {r4,lr}
 	mov r4, r1
-	bl sub_8013690
+	bl GetBattleNaviStats203CB10Addr
 	ldrh r0, [r0,r4]
 	pop {r4,pc}
-	thumb_func_end sub_8013822
+	thumb_func_end GetBattleNaviStats203CB10Hword
 
-	thumb_func_start sub_801382E
-sub_801382E:
+	thumb_func_start GetBattleNaviStats2034A60Byte
+GetBattleNaviStats2034A60Byte:
 	push {r6,lr}
 	mov r6, r1
-	bl sub_80136A0
+	bl GetBattleNaviStats2034A60Addr
 	ldrb r0, [r0,r6]
 	pop {r6,pc}
-	thumb_func_end sub_801382E
+	thumb_func_end GetBattleNaviStats2034A60Byte
 
 	thumb_local_start
-sub_801383A:
+GetBattleNaviStats2034A60Hword:
 	push {r6,lr}
 	mov r6, r1
-	bl sub_80136A0
+	bl GetBattleNaviStats2034A60Addr
 	ldrh r0, [r0,r6]
 	pop {r6,pc}
-	thumb_func_end sub_801383A
+	thumb_func_end GetBattleNaviStats2034A60Hword
 
-	thumb_func_start sub_8013846
-sub_8013846:
+	thumb_func_start initNaviStats203CCE0_8013846
+initNaviStats203CCE0_8013846:
 	push {r4,lr}
 	mov r0, #0
-	bl sub_8013854
-	bl initStruct_8013438 // (void *struct) -> void
+	bl GetNaviStats203CCE0Addr
+	bl initNaviStats_WithDefaultStatsMaybe_8013438 // (void *struct) -> void
 	pop {r4,pc}
-	thumb_func_end sub_8013846
+	thumb_func_end initNaviStats203CCE0_8013846
 
-	thumb_func_start sub_8013854
-sub_8013854:
-	mov r1, #0x64 
+	thumb_func_start GetNaviStats203CCE0Addr
+GetNaviStats203CCE0Addr:
+	mov r1, #oNaviStats_Size
 	mul r0, r1
-	ldr r1, off_8013860 // =byte_203CCE0 
+	ldr r1, off_8013860 // =eNaviStats203CCE0
 	add r0, r0, r1
 	mov pc, lr
 	.byte 0, 0
-off_8013860: .word byte_203CCE0
-	thumb_func_end sub_8013854
+off_8013860: .word eNaviStats203CCE0
+	thumb_func_end GetNaviStats203CCE0Addr
 
-	thumb_func_start sub_8013864
-sub_8013864:
+	thumb_func_start SetNaviStats203CCE0Byte
+SetNaviStats203CCE0Byte:
 	push {r6,r7,lr}
 	mov r0, #0
 	mov r6, r1
 	mov r7, r2
-	bl sub_8013854
+	bl GetNaviStats203CCE0Addr
 	strb r7, [r0,r6]
 	pop {r6,r7,pc}
-	thumb_func_end sub_8013864
+	thumb_func_end SetNaviStats203CCE0Byte
 
-	thumb_func_start sub_8013874
-sub_8013874:
+	thumb_func_start SetNaviStats203CCE0Hword
+SetNaviStats203CCE0Hword:
 	push {r6,r7,lr}
 	mov r0, #0
 	mov r6, r1
 	mov r7, r2
-	bl sub_8013854
+	bl GetNaviStats203CCE0Addr
 	strh r7, [r0,r6]
 	pop {r6,r7,pc}
-	thumb_func_end sub_8013874
+	thumb_func_end SetNaviStats203CCE0Hword
 
-	thumb_func_start sub_8013884
-sub_8013884:
+	thumb_func_start GetNaviStats203CCE0Byte
+GetNaviStats203CCE0Byte:
 	push {r6,lr}
 	mov r0, #0
 	mov r6, r1
-	bl sub_8013854
+	bl GetNaviStats203CCE0Addr
 	ldrb r0, [r0,r6]
 	pop {r6,pc}
-	thumb_func_end sub_8013884
+	thumb_func_end GetNaviStats203CCE0Byte
 
 	thumb_local_start
 sub_8013892:
 	push {r6,r7,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	mov r6, r0
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	mov r0, #0xa
@@ -10176,21 +10176,21 @@ sub_8013892:
 	tst r0, r1
 	bne loc_80138BC
 	mov r1, #0xe
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xff
 	beq loc_80138D2
 loc_80138BC:
 	mov r1, #0xf
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, r0
 	mov r1, #0
 	bl sub_8015C2C
 	mov r1, #0xe
 	mov r2, r0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 loc_80138D2:
 	mov r1, #6
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_80138F2
 	push {r0}
@@ -10204,7 +10204,7 @@ loc_80138D2:
 	pop {r7}
 loc_80138F2:
 	mov r1, #0x21 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne loc_8013900
 	bl sub_801443C
@@ -10219,7 +10219,7 @@ dword_8013908: .word 0x10000
 sub_801390C:
 	push {r6,r7,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	mov r6, r0
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 loc_8013918:
@@ -10244,7 +10244,7 @@ loc_8013938:
 sub_801393A:
 	push {r6,r7,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	mov r6, r0
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	mov r1, #0x2c 
@@ -10356,7 +10356,7 @@ loc_8013A08:
 	cmp r1, #0x19
 	bne loc_8013A26
 loc_8013A16:
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	ldr r2, [sp,#4]
 	add r2, r2, r0
 	cmp r2, #7
@@ -10366,7 +10366,7 @@ loc_8013A16:
 loc_8013A26:
 	cmp r1, #0x54 
 	bne loc_8013A34
-	bl GetPlayerBattleVarHword_AllianceFromBattleObject
+	bl GetBattleNaviStatsHword_AllianceFromBattleObject
 	ldr r2, [sp,#4]
 	add r2, r2, r0
 	b loc_8013ACA
@@ -10375,7 +10375,7 @@ loc_8013A34:
 	bne loc_8013A48
 	mov r1, #0x14
 	str r1, [sp]
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	add r2, r0, #4
 	ble loc_8013A46
 	mov r2, #4
@@ -10386,10 +10386,10 @@ loc_8013A48:
 	bne loc_8013A5E
 	mov r1, #0x12
 	mov r2, #4
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x13
 	mov r2, #4
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	b loc_8013ADC
 loc_8013A5E:
 	cmp r1, #0xfb
@@ -10401,20 +10401,20 @@ loc_8013A68:
 	bne loc_8013A7E
 	mov r1, #0x12
 	mov r2, #4
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x13
 	mov r2, #2
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	b loc_8013ADC
 loc_8013A7E:
 	cmp r1, #0xf9
 	bne loc_8013A94
 	mov r1, #0x12
 	mov r2, #4
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x13
 	mov r2, #1
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	b loc_8013ADC
 loc_8013A94:
 	cmp r1, #0xf8
@@ -10435,16 +10435,16 @@ loc_8013AB4:
 	bne loc_8013ACA
 	mov r1, #0x12
 	mov r2, #3
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x13
 	mov r2, #1
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	b loc_8013ADC
 loc_8013ACA:
 	ldr r1, [sp]
 	cmp r1, #0x64 
 	bge loc_8013ADC
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	bl sub_801393A
 	bl sub_801469C
 loc_8013ADC:
@@ -10471,7 +10471,7 @@ sub_8013AE4:
 	cmp r1, #0x19
 	bne loc_8013B1C
 loc_8013B02:
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	ldr r2, [sp,#4]
 	add r2, r2, r0
 	cmp r2, #7
@@ -10482,7 +10482,7 @@ loc_8013B12:
 	ldr r1, [sp]
 	cmp r1, #0x64 
 	bge loc_8013B1C
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 loc_8013B1C:
 	add sp, sp, #8
 	pop {pc}
@@ -10527,7 +10527,7 @@ init_8013B4E:
 loc_8013B56:
 	mov r4, r1
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_S20047CC_Ptrs]
+	ldr r7, [r7,#oToolkit_NaviStatsPtr]
 	mov r2, #0x64 
 	mul r0, r2
 	add r7, r7, r0
@@ -10539,11 +10539,11 @@ loc_8013B56:
 init_8013B64:
 	push {r4,r6,r7,lr}
 	mov r4, r1
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	mov r7, r0
 loc_8013B6E:
 	mov r0, r7
-	bl initStruct_8013438 // (void *struct) -> void
+	bl initNaviStats_WithDefaultStatsMaybe_8013438 // (void *struct) -> void
 	mov r0, #0x10
 	mul r0, r4
 	ldr r6, off_8013CB4 // =byte_80210DD 
@@ -10603,7 +10603,7 @@ sub_8013BDA:
 	mov r7, r0
 	mov r4, r1
 	mov r0, r7
-	bl initStruct_8013438 // (void *struct) -> void
+	bl initNaviStats_WithDefaultStatsMaybe_8013438 // (void *struct) -> void
 	mov r0, #0x10
 	mul r0, r4
 	ldr r6, off_8013CB8 // =byte_80210DD 
@@ -10664,7 +10664,7 @@ sub_8013C4E:
 	ldr r0, dword_8013CC0 // =0x20000 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r6, r0
 	lsl r6, r6, #2
 	ldr r1, off_8013C6C // =off_8013C70 
@@ -10712,7 +10712,7 @@ sub_8013CC4:
 	cmp r1, #2
 	bne locret_8013D3C
 	mov r1, #0x13
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r4, r0
 	beq locret_8013D3C
 	bl GetPositiveSignedRNG2
@@ -10722,7 +10722,7 @@ sub_8013CC4:
 	cmp r0, r4
 	bgt locret_8013D3C
 	mov r1, #0x12
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r4, r0
 	mov r0, r6
 	mov r1, r7
@@ -10777,7 +10777,7 @@ sub_8013D5E:
 	str r4, [sp,#8]
 	str r4, [sp,#0xc]
 	mov r1, #0x14
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #1
 loc_8013D76:
 	sub r0, #1
@@ -10787,7 +10787,7 @@ loc_8013D76:
 	b loc_8013D76
 loc_8013D80:
 	mov r1, #0x15
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #2
 loc_8013D88:
 	sub r0, #1
@@ -10811,15 +10811,15 @@ sub_8013DA0:
 	bl battle_isPaused
 	bne loc_8013E38
 	mov r1, #0x24 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	tst r0, r0
 	beq loc_8013E38
 	mov r1, #0x21 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	tst r0, r0
 	beq loc_8013E38
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_8013DD2
 	bl sub_80143A6
@@ -10896,7 +10896,7 @@ sub_8013E58:
 	beq loc_8013E6C
 loc_8013E6C:
 	mov r1, #0x1a
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r4, #0
 	cmp r0, #9
 	beq loc_8013E7E
@@ -11039,7 +11039,7 @@ loc_8013F4E:
 	strb r1, [r0,#oAIData_Unk_1c]
 loc_8013F58:
 	mov r1, #0x16
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	lsl r0, r0, #2
 	ldr r1, off_8013F6C // =off_8013F70 
 	ldr r0, [r1,r0]
@@ -11080,13 +11080,13 @@ sub_8013F8C:
 sub_8013F96:
 	push {lr}
 	mov r1, #0x18
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	add r0, #1
 	cmp r0, #7
 	bgt locret_8013FAC
 	mov r2, r0
 	mov r1, #0x18
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 locret_8013FAC:
 	pop {pc}
 	thumb_func_end sub_8013F96
@@ -11095,7 +11095,7 @@ locret_8013FAC:
 sub_8013FAE:
 	push {r4,lr}
 	mov r1, #0x11
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r4, r0
 	beq locret_8013FCE
 	bl GetRNG2 // () -> int
@@ -11119,7 +11119,7 @@ sub_8013FD0:
 	mov r5, r0
 	beq locret_8013FF6
 	mov r1, #0x54 
-	bl GetPlayerBattleVarHword_AllianceFromBattleObject
+	bl GetBattleNaviStatsHword_AllianceFromBattleObject
 	tst r0, r0
 	beq locret_8013FF6
 	ldrh r1, [r5,#0x24]
@@ -11138,7 +11138,7 @@ locret_8013FF6:
 sub_8013FF8:
 	push {lr}
 	mov r1, #0x3d 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	tst r0, r0
 	beq locret_8014016
 	sub r2, r0, #1
@@ -11154,29 +11154,32 @@ locret_8014016:
 	pop {pc}
 	thumb_func_end sub_8013FF8
 
-	thumb_func_start SelectS20047CCStruct8014018
+	thumb_func_start GetNaviStatsIndexFromCurPETNavi
 // (int idx) -> bool8
-SelectS20047CCStruct8014018:
-    // return byte_8014034[a1]
-	ldr r1, off_8014030 // =byte_8014034 
+GetNaviStatsIndexFromCurPETNavi:
+    // return CurPETNaviToNaviStatsIndexTable[a1]
+	// maps Megaman to use index 0, and all other navis
+	// to use index 1
+	ldr r1, =CurPETNaviToNaviStatsIndexTable
 	ldrb r0, [r1,r0]
 	mov pc, lr
-	thumb_func_end SelectS20047CCStruct8014018
+	thumb_func_end GetNaviStatsIndexFromCurPETNavi
 
 	thumb_func_start sub_801401E
 // (int a1) -> void*
 sub_801401E:
 	push {lr}
-	// return &Toolkit->S20047CC_Ptrs[100*SelectS20047CCStruct8014018(a1)]
-	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
+	// return &Toolkit->S20047CC_Ptrs[100*GetNaviStatsIndexFromCurPETNavi(a1)]
+	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
 	mov r1, #0x64 
 	mul r0, r1
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S20047CC_Ptrs]
+	ldr r1, [r1,#oToolkit_NaviStatsPtr]
 	add r0, r0, r1
 	pop {pc}
-off_8014030: .word byte_8014034
-byte_8014034: .byte 0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1
+	// 8014030
+	.pool
+CurPETNaviToNaviStatsIndexTable: .byte 0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1
 	thumb_func_end sub_801401E
 
 	thumb_func_start sub_8014040
@@ -11189,11 +11192,11 @@ sub_8014040:
 	tst r0, r1
 	bne locret_801407E
 	mov r1, #0x36 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #1
 	bne locret_801407E
 	mov r1, #0x3e 
-	bl GetPlayerBattleVarHword_AllianceFromBattleObject
+	bl GetBattleNaviStatsHword_AllianceFromBattleObject
 	add r0, #9
 	mov r1, #0xa
 	svc 6
@@ -11213,7 +11216,7 @@ locret_801407E:
 sub_8014080:
 	push {lr}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne locret_80140EC
 	mov r0, #1
@@ -11221,7 +11224,7 @@ sub_8014080:
 	bl object_clearFlag // (int bitfield) -> void
 	mov r1, #0x23 
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r0, #0x20 
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_80107C0
@@ -11230,23 +11233,23 @@ sub_8014080:
 	bl sub_801A082
 	mov r1, #0x1b
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r0, #1
 	lsl r0, r0, #0x12
 	bl object_clearFlag // (int bitfield) -> void
 	mov r1, #0x1d
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r0, #0x10
 	bl object_clearFlag // (int bitfield) -> void
 	mov r1, #0x1c
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #7
 	mov r2, #0xff
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne locret_80140EC
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
@@ -11260,7 +11263,7 @@ locret_80140EC:
 sub_80140EE:
 	push {lr}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne locret_801414E
 	mov r0, #1
@@ -11268,7 +11271,7 @@ sub_80140EE:
 	bl object_clearFlag // (int bitfield) -> void
 	mov r1, #0x23 
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r0, #0x20 
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_80107C0
@@ -11277,17 +11280,17 @@ sub_80140EE:
 	bl sub_801A082
 	mov r1, #0x1b
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r0, #0x10
 	bl object_clearFlag // (int bitfield) -> void
 	mov r1, #0x1c
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #7
 	mov r2, #0xff
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne loc_801414A
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
@@ -11303,15 +11306,15 @@ locret_801414E:
 sub_8014150:
 	push {r4,lr}
 	mov r4, #2
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x38 
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	tst r0, r0
 	bne loc_8014174
 	mov r4, #1
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x37 
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	tst r0, r0
 	bne loc_8014174
 	mov r4, #0
@@ -11325,11 +11328,11 @@ sub_8014178:
 	push {r4,lr}
 	mov r0, #0
 	mov r1, #8
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	mov r4, r0
 	mov r0, #1
 	mov r1, #8
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	mov r1, #3
 	mul r0, r1
 	add r0, r0, r4
@@ -11342,24 +11345,24 @@ byte_80141A0: .byte 0x20, 0x40, 0x10, 0x40, 0x40, 0x20, 0x10, 0x20, 0x10
 	.byte 0x0, 0x0, 0x0
 	thumb_func_end sub_8014178
 
-	thumb_func_start sub_80141AC
-sub_80141AC:
+	thumb_func_start SetBeastOutCounterTo3
+SetBeastOutCounterTo3:
 	push {lr}
-	bl getPETNaviSelect // () -> u8
-	mov r1, #0x21
+	bl GetCurPETNavi // () -> u8
+	mov r1, #oNaviStats_BeastOutCounter
 	mov r2, #3
-	bl navicust_801379E // (int a1, int a2, int a3) -> void
+	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
 off_80141BC: .word 0x12C
 off_80141C0: .word 0x258
 off_80141C4: .word 0x104
-	thumb_func_end sub_80141AC
+	thumb_func_end SetBeastOutCounterTo3
 
 	thumb_local_start
 sub_80141C8:
 	push {lr}
 	mov r1, #0x42 
-	bl GetPlayerBattleVarHword_AllianceFromBattleObject
+	bl GetBattleNaviStatsHword_AllianceFromBattleObject
 	strh r0, [r5,#oBattleObject_HP]
 	strh r0, [r5,#oBattleObject_MaxHP]
 	bl GetBattleEffects // () -> int
@@ -11367,7 +11370,7 @@ sub_80141C8:
 	tst r0, r1
 	bne loc_80141E6
 	mov r1, #0x40 
-	bl GetPlayerBattleVarHword_AllianceFromBattleObject
+	bl GetBattleNaviStatsHword_AllianceFromBattleObject
 	strh r0, [r5,#oBattleObject_HP]
 loc_80141E6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
@@ -11427,7 +11430,7 @@ loc_8014254:
 	pop {r5}
 loc_8014256:
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	lsl r0, r0, #2
 	ldr r1, off_8014268 // =off_801426C 
 	ldr r0, [r1,r0]
@@ -11505,11 +11508,11 @@ sub_80142DC:
 	cmp r0, #1
 	beq locret_8014324
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne locret_8014324
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne locret_8014324
 	bl object_getFlag // () -> int
@@ -11600,7 +11603,7 @@ locret_80143A4:
 sub_80143A6:
 	push {lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	mov r1, #0x80
 	strb r1, [r0,#0xe]
 	b loc_80143B6
@@ -11854,7 +11857,7 @@ sub_8014536:
 	push {r6,lr}
 	ldr r6, [r5,#oBattleObject_AIDataPtr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	lsl r0, r0, #2
 	ldr r1, off_801454C // =JumpTable8014550
 	ldr r0, [r1,r0]
@@ -12063,7 +12066,7 @@ sub_801469C:
 	push {r6,lr}
 	ldr r6, [r5,#oBattleObject_CollisionDataPtr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	lsl r0, r0, #2
 	ldr r1, off_80146B4 // =off_80146B8 
 	ldr r0, [r1,r0]
@@ -12577,7 +12580,7 @@ loc_8014A58:
 	cmp r0, #0xd
 	blt loc_8014A72
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xa
 	bgt loc_8014A8E
 	ldr r1, off_8014AD8 // =off_8014ADC 
@@ -12672,7 +12675,7 @@ sub_8014B18:
 	mov r0, #6
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #9
 	bne loc_8014B8A
 	ldrb r0, [r5,#oBattleObject_CurAnim]
@@ -12763,13 +12766,13 @@ sub_8014BEE:
 	ldr r1, [r5,#oBattleObject_AIDataPtr]
 	str r0, [r1,#oAIData_Unk_68]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	bl sub_8011384
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_801595E
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	bl sub_800FC9E
 	mov r0, #0x80
@@ -12791,9 +12794,9 @@ sub_8014BEE:
 	bl sub_801595E
 	mov r1, #0x2c 
 	mov r2, r0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #1
 	blt loc_8014C72
 	cmp r0, #0x18
@@ -12801,7 +12804,7 @@ sub_8014BEE:
 	bl sub_8015B22
 loc_8014C72:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r2, #0
 	push {r0}
 	bl sub_8011268
@@ -12994,13 +12997,13 @@ sub_8014E08:
 	tst r0, r0
 	bne loc_8014EB8
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	bl sub_8011384
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_801595E
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	bl sub_800FC9E
 	mov r0, #0x80
@@ -13022,14 +13025,14 @@ sub_8014E08:
 	bl sub_801595E
 	mov r1, #0x2c 
 	mov r2, r0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	ldr r4, dword_8014F00 // =0x30e00 
 	bl sub_80E11E0
 	mov r0, #1
 	add r0, #0xff
 	bl PlaySoundEffect
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #1
 	blt loc_8014E92
 	cmp r0, #0x18
@@ -13037,7 +13040,7 @@ sub_8014E08:
 	bl sub_8015B22
 loc_8014E92:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r2, #0
 	bl sub_8011268
 	ldr r0, [r5,#oBattleObject_RelatedObject2Ptr]
@@ -13247,13 +13250,13 @@ sub_8015040:
 	tst r0, r0
 	bne loc_8015100
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	bl sub_8011384
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_801595E
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	bl sub_800FC9E
 	mov r0, #0x80
@@ -13275,14 +13278,14 @@ sub_8015040:
 	bl sub_801595E
 	mov r1, #0x2c 
 	mov r2, r0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	ldr r4, dword_8015124 // =0x30e00 
 	bl sub_80E11E0
 	mov r0, #1
 	add r0, #0xff
 	bl PlaySoundEffect
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #1
 	blt loc_80150CA
 	cmp r0, #0x18
@@ -13290,7 +13293,7 @@ sub_8015040:
 	bl sub_8015B22
 loc_80150CA:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r2, #0
 	push {r0}
 	bl sub_8011268
@@ -13532,13 +13535,13 @@ sub_80152C8:
 	tst r0, r0
 	bne loc_801537C
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	bl sub_8011384
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_801595E
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	bl sub_800FC9E
 	mov r0, #0x80
@@ -13561,14 +13564,14 @@ sub_80152C8:
 	bl sub_801595E
 	mov r1, #0x2c 
 	mov r2, r0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	ldr r4, dword_80153AC // =0x30e00 
 	bl sub_80E11E0
 	mov r0, #1
 	add r0, #0xff
 	bl PlaySoundEffect
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #1
 	blt loc_8015356
 	cmp r0, #0x18
@@ -13576,7 +13579,7 @@ sub_80152C8:
 	bl sub_8015B22
 loc_8015356:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r2, #0
 	bl sub_8011268
 	ldr r0, [r5,#oBattleObject_RelatedObject2Ptr]
@@ -13770,7 +13773,7 @@ sub_80154C8:
 	strb r1, [r0,#oObjectHeader_Flags]
 loc_80154E2:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	bl sub_8011384
 	mov r0, #0
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
@@ -13780,7 +13783,7 @@ loc_80154E2:
 	bl sub_801595E
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	bl sub_800FC9E
 	mov r0, #0x80
@@ -13802,9 +13805,9 @@ loc_80154E2:
 	bl sub_801595E
 	mov r1, #0x2c 
 	mov r2, r0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #1
 	blt loc_801555A
 	cmp r0, #0x18
@@ -13812,7 +13815,7 @@ loc_80154E2:
 	bl sub_8015B22
 loc_801555A:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r2, #0
 	push {r0}
 	bl sub_8011268
@@ -13973,7 +13976,7 @@ loc_801565E:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Unk_1f]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	bl sub_8011384
 	mov r0, #0
 	mov r1, #0
@@ -13997,14 +14000,14 @@ loc_80156DC:
 	bl sub_80158CC
 	mov r1, #0x2c 
 	mov r2, #0
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r0, #0
 	bl sub_8015B22
 	bl sub_80144C0
 	bl sub_80143B4
 	bl sub_800EB08
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r2, #0
 	bl sub_8011268
 	mov r0, #3
@@ -14105,7 +14108,7 @@ loc_801577C:
 	strb r1, [r0,#oObjectHeader_Flags]
 loc_80157EE:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	str r0, [sp]
 	bl sub_8011384
 	mov r1, #0
@@ -14134,7 +14137,7 @@ loc_801580A:
 	bl sprite_forceWhitePalette
 	mov r1, #0x2c 
 	ldr r2, [sp]
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	ldr r0, [sp]
 	bl sub_8015B22
 	ldrb r0, [r5,#oBattleObject_Alliance]
@@ -14143,7 +14146,7 @@ loc_801580A:
 	bl sub_80144C0
 	bl sub_80143B4
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r2, #0
 	bl sub_8011268
 	ldr r0, [r5,#oBattleObject_RelatedObject2Ptr]
@@ -14200,14 +14203,14 @@ loc_80158C6:
 sub_80158CC:
 	push {lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	mov r1, #0x80
 	strb r1, [r0,#0xe]
 	bl GetBattleMode
 	cmp r0, #1
 	beq locret_80158F8
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
 	blt locret_80158F8
 	cmp r0, #0x16
@@ -14359,13 +14362,13 @@ sub_80159C6:
 	mov r1, #2
 	strb r1, [r0,#0xf]
 	mov r1, #0x21 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne loc_8015A12
 	bl sub_801443C
 loc_80159F0:
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
 	blt loc_8015A12
 	cmp r0, #0x18
@@ -14374,7 +14377,7 @@ loc_80159F0:
 	cmp r0, #1
 	beq loc_8015A10
 	mov r1, #0x21 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne loc_8015A12
 loc_8015A10:
@@ -14390,7 +14393,7 @@ sub_8015A16:
 	mov r5, r0
 	beq locret_8015A36
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne locret_8015A36
 	ldr r1, [r5,#0x58]
@@ -14412,17 +14415,17 @@ sub_8015A38:
 	mov r5, r0
 	beq loc_8015A7C
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne loc_8015A7C
 	mov r1, #0x17
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
 	beq loc_8015A7C
 	cmp r0, #0xc
 	beq loc_8015A7C
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
 	blt loc_8015A66
 	cmp r0, #0x18
@@ -14431,13 +14434,13 @@ loc_8015A66:
 	b loc_8015A7C
 loc_8015A68:
 	mov r1, #0x21 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_8015A7C
 	sub r0, #1
 	mov r2, r0
 	mov r1, #0x21 
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 loc_8015A7C:
 	mov r0, r7
 	pop {r5,r7,pc}
@@ -14448,19 +14451,19 @@ sub_8015A80:
 	push {r5,lr}
 	mov r5, r0
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
 	blt loc_8015A92
 	cmp r0, #0x18
 	ble locret_8015AA4
 loc_8015A92:
 	mov r1, #0x21 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #3
 	bge locret_8015AA4
 	add r2, r0, #1
 	mov r1, #0x21 
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 locret_8015AA4:
 	pop {r5,pc}
 	thumb_func_end sub_8015A80
@@ -14570,7 +14573,7 @@ sub_8015B5C:
 sub_8015B64:
 	push {r4-r6,lr}
 	mov r4, r0
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	mov r6, r0
 	mov r0, r4
 	bl sub_80103BC
@@ -14607,7 +14610,7 @@ loc_8015BA2:
 sub_8015BA8:
 	push {r4-r6,lr}
 	mov r4, r0
-	bl sub_80136A0
+	bl GetBattleNaviStats2034A60Addr
 	mov r6, r0
 	mov r0, r4
 	bl sub_80103BC
@@ -14654,7 +14657,7 @@ sub_8015BEC:
 	bl sub_8014490
 	bne locret_8015C10
 	mov r0, r6
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	strb r4, [r0,#0xe]
 locret_8015C10:
 	pop {r4-r6,pc}
@@ -14664,7 +14667,7 @@ locret_8015C10:
 sub_8015C12:
 	push {r4,lr}
 	mov r4, r1
-	bl GetPlayerBattleVarsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	ldrb r1, [r0,#0xe]
 	tst r1, r1
 	beq locret_8015C2A
@@ -14685,20 +14688,20 @@ sub_8015C2C:
 	pop {pc}
 	thumb_func_end sub_8015C2C
 
-	thumb_func_start sub_8015C32
-sub_8015C32:
+	thumb_func_start ZeroAllNaviStatsMood
+ZeroAllNaviStatsMood:
 	push {r4,lr}
 	mov r4, #0
-loc_8015C36:
+.setNaviMoodLoop
 	mov r0, r4
-	mov r1, #0xe
+	mov r1, #oNaviStats_Mood
 	mov r2, #0
-	bl SetField8ToSelectedS20047CCStruct
+	bl SetNaviStatsByte
 	add r4, #1
 	cmp r4, #7
-	blt loc_8015C36
+	blt .setNaviMoodLoop
 	pop {r4,pc}
-	thumb_func_end sub_8015C32
+	thumb_func_end ZeroAllNaviStatsMood
 
 	thumb_func_start sub_8015C48
 sub_8015C48:
@@ -15504,7 +15507,7 @@ loc_80163E2:
 	mov r0, #0x10
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurPhase]
 	pop {pc}
@@ -15536,15 +15539,15 @@ sub_801641A:
 	pop {r0}
 	sub r0, #0x10
 	neg r0, r0
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	b locret_801645E
 loc_801644C:
-	bl sub_8002CCE
-	bl sub_8002F2C
+	bl sprite_disableAlpha
+	bl sprite_clearMosaic
 	mov r0, #0
 	bl sub_800AA40
 	mov r0, #8
@@ -15695,7 +15698,7 @@ loc_801655A:
 	strb r0, [r5,#oObjectHeader_Flags]
 	b locret_801657C
 loc_8016574:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_801657C:
@@ -16080,7 +16083,7 @@ loc_801685C:
 sub_8016860:
 	push {r4,lr}
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0x17
 	blt loc_8016870
 	cmp r0, #0x18
@@ -17025,7 +17028,7 @@ loc_8017064:
 	mov r1, #1
 	eor r0, r1
 	mov r1, #0x3e 
-	bl GetPlayerBattleVarHword
+	bl GetBattleNaviStatsHword
 	mov r1, #0x64 
 	svc 6
 	cmp r0, #0xa
@@ -17319,16 +17322,16 @@ sub_80172F0:
 	bl sub_800F35C
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x17
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	mov r2, r0
 	mov r1, #0x2c 
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	bl sub_800FC9E
 	mov r0, #0x80
@@ -17361,16 +17364,16 @@ loc_801735A:
 	bl sub_8013892
 	bl sub_801086C
 	mov r1, #0x29
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne loc_801738A
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	bl sub_8015B22
 loc_801738A:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x2c
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	bl sub_8011268
 	bl sub_80144C0
 	bl sub_8013E58
@@ -17396,7 +17399,7 @@ loc_80173C6: .align 1, 0
 	bl sub_800F378
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	cmp r0, #0
 	bne loc_80173E6
 	bl sub_8010DD0
@@ -17524,11 +17527,11 @@ sub_80174BE:
 	pop {r0}
 	sub r0, #0x10
 	neg r0, r0
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	pop {pc}
 loc_80174E0:
-	bl sub_8002F2C
-	bl sub_8002CCE
+	bl sprite_clearMosaic
+	bl sprite_disableAlpha
 	bl sub_802CDD0
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -19297,10 +19300,10 @@ sub_8018856:
 	push {lr}
 	push {r0}
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {r1}
 	bl sub_800FC9E
 	mov r0, r1
@@ -20394,7 +20397,7 @@ sub_801A200:
 	eor r0, r2
 	mov r6, r0
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	mov r2, r0
 	cmp r2, #0
 	beq loc_801A236
@@ -21062,14 +21065,14 @@ sub_801A6B4:
 	cmp r0, #0
 	beq locret_801A6D4
 	mov r1, #0x18
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	add r2, r0, #1
 	cmp r2, #7
 	ble loc_801A6CE
 	mov r2, #7
 loc_801A6CE:
 	mov r1, #0x18
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 locret_801A6D4:
 	pop {r4,pc}
 	thumb_func_end sub_801A6B4
@@ -21131,23 +21134,23 @@ sub_801A720:
 	cmp r1, #0xf6
 	bne locret_801A758
 	mov r1, #0x18
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	add r2, r0, #2
 	cmp r2, #7
 	ble loc_801A73A
 	mov r2, #7
 loc_801A73A:
 	mov r1, #0x18
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r1, #0x19
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	add r2, r0, #2
 	cmp r2, #7
 	ble loc_801A74E
 	mov r2, #7
 loc_801A74E:
 	mov r1, #0x19
-	bl SetPlayerBattleVarByte_AllianceFromBattleObject
+	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	bl sub_801A77A
 locret_801A758:
 	pop {r4,pc}
@@ -21773,17 +21776,17 @@ sub_801AC6C:
 	bl sub_800EB26
 	bl sub_8013F1E
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #7
 	beq loc_801ACEC
 	mov r1, #0x2c 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #7
 	beq loc_801ACEC
 	cmp r0, #0x13
 	beq loc_801ACEC
 	mov r1, #0x52 
-	bl GetPlayerBattleVarByte_AllianceFromBattleObject
+	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	tst r0, r0
 	bne loc_801ACEC
 	bl sub_801A554
@@ -22286,7 +22289,7 @@ loc_801B126:
 	bl sub_8014498
 	bl sub_802E1D8
 loc_801B142:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	mov r0, #1
 	lsl r0, r0, #0xe
 	bl object_clearFlag2
@@ -22501,7 +22504,7 @@ loc_801B32C:
 loc_801B334:
 	bl sub_800E730
 loc_801B338:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	mov r0, #1
 	lsl r0, r0, #0xe
 	bl object_clearFlag2
@@ -22668,7 +22671,7 @@ loc_801B49E:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B4A2:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	bl sub_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2
@@ -22819,7 +22822,7 @@ loc_801B5DA:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B5DE:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	bl sub_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2
@@ -22972,7 +22975,7 @@ loc_801B71A:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B71E:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	bl sub_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2
@@ -23122,7 +23125,7 @@ loc_801B854:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B858:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	bl sub_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2
@@ -23273,7 +23276,7 @@ loc_801B988:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B98C:
-	bl sub_8002EE8
+	bl sprite_zeroColorShader
 	bl sub_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2
@@ -25619,7 +25622,7 @@ sub_801CADC:
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 loc_801CAF0:
 	ldrb r1, [r5,#0x14]
 	cmp r1, #0
@@ -27062,7 +27065,7 @@ sub_801D6D8:
 	ldr r0, [r5,#0x48]
 	ldrb r0, [r0,#0x16]
 	mov r1, #0x29 
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	add r0, r0, r0
 	ldr r3, off_801D6FC // =dword_801D700
 	add r3, r3, r0
@@ -29205,7 +29208,7 @@ locret_801E790:
 	mov pc, lr
 	thumb_func_end sub_801E780
 
-	thumb_local_start
+	thumb_func_start sub_801E792
 sub_801E792:
 	push {r4-r7,lr}
 	sub sp, sp, #0xc

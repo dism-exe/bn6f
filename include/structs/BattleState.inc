@@ -1,5 +1,5 @@
 
-	.macro battle_state_struct, label=oBattleState, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+	.macro battle_state_struct label=oBattleState, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
 	struct_org 0x1
@@ -11,7 +11,7 @@
 	u8 Unk_07 // loc=0x7
 	struct_org 0xb
 	u8 Unk_0b // loc=0xb
-	.space 0x1
+	struct_org 0xd
 	u8 Unk_0d // loc=0xd
 	u8 Unk_0e // loc=0xe
 	struct_org 0x12

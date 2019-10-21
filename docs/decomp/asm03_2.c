@@ -4496,7 +4496,7 @@ int sub_804A970()
     v3 = 0;
     do
     {
-        sub_8021B92(*(v1 + 7) << 16 >> 23, *(v1 + 7) & 0x7F, 1);
+        TakeChips(*(v1 + 7) << 16 >> 23, *(v1 + 7) & 0x7F, 1);
         result = sub_8048D60(9, *v1);
         v1 += 16;
         ++v3;
@@ -6078,7 +6078,7 @@ void sub_804C694()
 
     sub_804C6C4(off_804C6AC);
     if ( !*(v0 + 13) )
-        sub_8002484(*(v0 + 13), v1, v2, v3);
+        run_eStruct200a6a0_Callback_8002484(*(v0 + 13), v1, v2, v3);
 }
 
 
@@ -6187,7 +6187,7 @@ void sub_804C7EC()
 
     sub_804C6C4(&off_804C804);
     if ( !*(v0 + 13) )
-        sub_8002484(*(v0 + 13), v1, v2, v3);
+        run_eStruct200a6a0_Callback_8002484(*(v0 + 13), v1, v2, v3);
 }
 
 

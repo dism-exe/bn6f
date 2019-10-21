@@ -145,7 +145,11 @@ def recursive_scan_includes(filepath, scanned_files, syms=None, callbacks=None):
             if not in_block_comment and "/*" not in line:
                 slash_line_comment_index = line.find("//") * -1
                 at_line_comment_index = line.find("@") * -1
-                line_comment_index = min(slash_line_comment_index, at_line_comment_index) * -1
+                if at_line_comment_index == 1 or slash_line_comment_index == 1:
+                    line_comment_index = min(slash_line_comment_index, at_line_comment_index) * -1
+                else:
+                    line_comment_index = max(slash_line_comment_index, at_line_comment_index) * -1
+
                 if line_comment_index == -1:
                     uncommented_line = line
                 else:

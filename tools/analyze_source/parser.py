@@ -37,6 +37,8 @@ def get_ldr_label_contents(label, src_file):
         for line in src_file:
             if line.startswith(label):
                 break
+    elif label.startswith("="):
+        return label[1:]
     else:
         src_file.line_num = syms[label].line_num
         #debug_print("ldr contents line num: %s" % (src_file.line_num + 1))
@@ -97,6 +99,19 @@ def find_colon_label_in_files(label, input_file=None):
             raise RuntimeError("Could not find label \"%s\" in file \"%s\"!" % (label, input_file))
 
     return src_file
+
+def safe_parse_word_directives(src_file, max_words=None, must_be_words=False):
+    saved_line_num = src_file.line_num
+    words = parse_word_directives(src_file, max_words, must_be_words)
+    src_file.line_num = saved_line_num
+    return words
+
+def for_loop_parse_word_directives(src_file):
+    saved_line_num = src_file.line_num
+    words = parse_word_directives(src_file)
+    if src_file.line_num != saved_line_num:
+        src_file.line_num -= 1
+    return words
 
 def try_parse_word_directives_from_sym(sym):
     src_file = scanned_files[sym.filename]

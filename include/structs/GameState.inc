@@ -3,7 +3,7 @@
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
 	u8 SubsystemIndex // loc=0x0
-	u8 PETNaviIndex // loc=0x1
+	u8 CurPETNavi // loc=0x1
 	u8 Unk_02 // loc=0x2
 	u8 Unk_03 // loc=0x3
 	union
@@ -22,7 +22,7 @@
 
 	u8 LastMapGroup // loc=0xc
 	u8 LastMapNumber // loc=0xd
-	u8 Unk_0e // loc=0xe
+	u8 CoordInteractionValue // loc=0xe
 	u8 BGMusicIndicator // loc=0xf
 	u8 Unk_10 // loc=0x10
 	u8 Unk_11 // loc=0x11

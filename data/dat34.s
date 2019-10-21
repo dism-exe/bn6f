@@ -1385,7 +1385,7 @@ sub_812E5A8::
 	add r1, r1, r7
 	ldrb r1, [r1,#3]
 	mov r2, #1
-	bl sub_803D128
+	bl TakeNaviCustPrograms
 loc_812E5D8::
 	ldrh r0, [r5,#0x2c]
 	mov r1, r0
@@ -1407,7 +1407,7 @@ loc_812E5D8::
 	add r1, r1, r7
 	ldrb r1, [r1,#3]
 	mov r2, #1
-	bl sub_803D108
+	bl GiveNaviCustPrograms
 loc_812E606::
 	bl sub_803F798
 	mov r0, #0x3d 

@@ -19030,7 +19030,7 @@ loc_814DBEA:
 	pop {pc}
 	thumb_func_end __umodsi3
 
-	thumb_func_start umul3232H32, 2
+	thumb_local_start 2
 umul3232H32:
 	adr r2, .umul3232H32arm
 	bx r2
@@ -19119,7 +19119,7 @@ SoundMainRAM:
 	bx r1
 	thumb_func_end SoundMainRAM
 
-	arm_func_start sub_814DC94
+	arm_local_start
 sub_814DC94:
 	cmp r4, #2
 	addeq r7, r0, #0x350
@@ -19322,7 +19322,7 @@ loc_814DE14:
 	.byte 0, 0
 	thumb_func_end sub_814DCE8
 
-	arm_func_start sub_814DE20
+	arm_local_start
 sub_814DE20:
 	str r8, [sp]
 	ldrb r10, [r4,#0xa]
@@ -19859,7 +19859,7 @@ sub_814E248:
 off_814E25C: .word Channel1Sweepregister_NR10_
 	thumb_func_end sub_814E248
 
-	thumb_func_start sub_814E260
+	thumb_local_start
 sub_814E260:
 	ldr r2, dword_814E4D8 // =0x68736d53 
 	ldr r3, [r0,#0x34]
@@ -23394,7 +23394,7 @@ loc_814FBE8:
 dword_814FBF8: .word 0x68736D53
 	thumb_func_end sub_814FB88
 
-	thumb_func_start sub_814FBFC
+	thumb_local_start
 sub_814FBFC:
 	push {r4-r6,lr}
 	mov r4, r0
@@ -23575,7 +23575,7 @@ def_814FC28:
 	bx r0
 	thumb_func_end sub_814FBFC
 
-	thumb_func_start sub_814FD54
+	thumb_local_start
 sub_814FD54:
 	push {lr}
 	ldr r2, [r1,#0x40]

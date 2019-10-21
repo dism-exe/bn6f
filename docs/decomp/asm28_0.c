@@ -7,7 +7,7 @@ int sub_8098BE8()
     v1 = *(v0 + 6);
     if ( v1 != 255 )
     {
-        sub_802F238(v1 + 7328);
+        addMail_802f238(v1 + 7328);
         if ( *(v0 + 7) )
         {
             ClearEventFlag(*(v0 + 6) + 7456);
@@ -43,7 +43,7 @@ int RunLMessageTextScript()
             goto LABEL_12;
     }
     v2 = getPETNaviSelect();
-    if ( sub_8013704(v2, 37) == 1 )
+    if ( GetNaviStatsByte(v2, 37) == 1 )
     {
         v3 = uncomp_8037AEC(-2005693660);
         chatbox_runScript(v3, 0);
@@ -51,7 +51,7 @@ int RunLMessageTextScript()
     else
     {
         v4 = getPETNaviSelect();
-        if ( sub_8013704(v4, 95) != 1 )
+        if ( GetNaviStatsByte(v4, 95) != 1 )
         {
 LABEL_12:
             chatbox_uncomp_803FD3C();
@@ -81,7 +81,7 @@ int sub_8099D44()
         sub_809E2AE(v1[5]);
         (loc_809E1A4)(*(v1 + 4) << 16, *(v1 + 5) << 16, *(v1 + 6) << 16);
         sub_80301B2(0, v2);
-        sub_80301DC(*(v1 + 7) << 16, *(v1 + 8) << 16, *(v1 + 9) << 16);
+        SetCameraXYZ(*(v1 + 7) << 16, *(v1 + 8) << 16, *(v1 + 9) << 16);
         ClearEventFlagFromImmediate(23, 21);
     }
     return 0;
@@ -106,7 +106,7 @@ int __fastcall sub_8099FFC(int a1, int a2, int a3)
     char v5; // r1
     int v6; // r0
 
-    v4 = sub_8033FC0(0, a2, a3);
+    v4 = doPETEffect_8033fc0(0, a2, a3);
     (*byte_809A284)(v4);
     *(v3 + 8) = v5;
     *(v3 + 4) = v5;
@@ -198,8 +198,8 @@ signed int sub_809A078()
             sub_804BD00();
             word_200AC84 = v6;
             word_200AC86 = v7;
-            sub_8021AEE(v6, v7, 1);
-            sub_803D0C8();
+            GiveChips(v6, v7, 1);
+            TakeBugfrags();
             *(*(v1 + 60) + 12) = *(*(v1 + 60) + 4);
             sub_803F798();
             v8 = *(v1 + 44);
@@ -362,7 +362,7 @@ signed int sub_809A1FC()
 // 0x809a260
 int __fastcall sub_809A260(int a1, int a2, int a3)
 {
-    sub_8033FC0(1, a2, a3);
+    doPETEffect_8033fc0(1, a2, a3);
     copyMemory_8001850();
     sub_8033978();
     sub_8003962();
@@ -551,7 +551,7 @@ int sub_809A4EC()
 
     ClearEventFlagFromImmediate(0, 245);
     ClearEventFlagFromImmediate(23, 37);
-    sub_8033FC0(1, v0, v1);
+    doPETEffect_8033fc0(1, v0, v1);
     copyMemory_8001850();
     sub_8033978();
     sub_8003962();
@@ -606,19 +606,19 @@ signed int sub_809A520()
                         v9 = byte_809A628[i];
                         if ( v9 == 255 )
                             break;
-                        sub_803CD98(v9, 1);
+                        GiveItem(v9, 1);
                     }
                 }
                 else
                 {
-                    sub_803CD98(v5, 1);
+                    GiveItem(v5, 1);
                 }
                 *(v0 + 140) = 56;
             }
             else if ( v4 == 2 )
             {
                 *(*(v1 + oToolkit_ChatboxPtr) + 76) = v5;
-                sub_803D080();
+                GiveBugfrags();
                 *(v0 + 140) = 57;
             }
             else
@@ -628,7 +628,7 @@ signed int sub_809A520()
                 v7 = *(v1 + oToolkit_ChatboxPtr);
                 *(v7 + 76) = v5;
                 *(v7 + 80) = v6;
-                sub_8021AEE(v5, v6, 1);
+                GiveChips(v5, v6, 1);
                 *(v0 + 140) = 55;
             }
             *(*(v1 + oToolkit_GameStatePtr) + oGameState_LastMapGroup) = *(*(v1 + oToolkit_GameStatePtr) + oGameState_MapGroup);
@@ -898,7 +898,7 @@ int __fastcall sub_809A8E4(int a1, int a2, int a3)
     int v7; // r2
     char v8; // r1
 
-    sub_8033FC0(0, a2, a3);
+    doPETEffect_8033fc0(0, a2, a3);
     v5 = *(v4 + oToolkit_ChatboxPtr);
     v6 = word_200AC84;
     *(v5 + 76) = word_200AC84;
@@ -1005,7 +1005,7 @@ int __fastcall sub_809AA04(int a1, int a2, int a3, int a4)
     zeroFill_8003AB2();
     sub_800399A();
     sub_8003AEA();
-    sub_8033FC0(1, v4, v5);
+    doPETEffect_8033fc0(1, v4, v5);
     return 0;
 }
 
@@ -1016,7 +1016,7 @@ int __fastcall sub_809AAB8(int a1, int a2, int a3)
     int v3; // r5
     int result; // r0
 
-    sub_8033FC0(0, a2, a3);
+    doPETEffect_8033fc0(0, a2, a3);
     sub_8003984();
     sub_8003AD4();
     chatbox_runScript(&eTextScript2033404, 10);
@@ -1104,13 +1104,13 @@ signed int sub_809AB20()
             if ( v8 == 1 )
             {
                 v16 = v9;
-                sub_803CD98(v9, 1);
+                GiveItem(v9, 1);
                 v12 = sub_809AC48(v16);
                 v13 = 3;
             }
             else if ( v8 == 2 )
             {
-                if ( sub_803CD98(v9, 1) )
+                if ( GiveItem(v9, 1) )
                 {
                     v12 = 18;
                     v13 = 0;
@@ -1126,7 +1126,7 @@ signed int sub_809AB20()
                 if ( v8 == 3 )
                 {
                     *(v11 + 76) = v9;
-                    sub_803D108(v9, v10, 1);
+                    GiveNaviCustPrograms(v9, v10, 1);
                     v12 = 19;
                 }
                 else
@@ -1135,7 +1135,7 @@ signed int sub_809AB20()
                     *(v1 + 128) = v10;
                     *(v1 + 6) = 0;
                     *(v1 + 5) = 0;
-                    sub_8021AEE(v9, v10, 1);
+                    GiveChips(v9, v10, 1);
                     decompAndCopyData(&dword_809AC2C);
                     v12 = 15;
                 }
@@ -1285,7 +1285,7 @@ int sub_809AD4C()
 
     ClearEventFlagFromImmediate(0, 245);
     ClearEventFlagFromImmediate(23, 37);
-    sub_8033FC0(1, v0, v1);
+    doPETEffect_8033fc0(1, v0, v1);
     sub_8003962();
     zeroFill_8003AB2();
     sub_800399A();
@@ -1331,7 +1331,7 @@ int sub_809AF00()
         v5 = 46;
     *(v0 + 4) = v5;
     sub_80301B2(0, v6);
-    sub_80301DC((*(v2 + 9) + *(v2 + 12)) >> 1, (*(v2 + 10) + *(v2 + 13)) >> 1, 0);
+    SetCameraXYZ((*(v2 + 9) + *(v2 + 12)) >> 1, (*(v2 + 10) + *(v2 + 13)) >> 1, 0);
     return 0;
 }
 
@@ -1505,9 +1505,9 @@ int sub_809B130()
     {
         TestEventFlagFromImmediate(23, 41);
         if ( v6 )
-            init_s_02011C50_8036E90(134841220, 134283266, v4, v5);
+            StartCutscene(134841220, 134283266, v4, v5);
         else
-            init_s_02011C50_8036E90(byte_809AFC0, 0, v4, v5);
+            StartCutscene(byte_809AFC0, 0, v4, v5);
     }
     return 0;
 }
@@ -1880,16 +1880,16 @@ int sub_809C01C()
         TestEventFlagFromImmediate(1, 32);
         if ( !v2 )
         {
-            sub_8035364(0);
+            storeGameProgressToGameProgressBuffer_8035364(0);
             *(*(v1 + oToolkit_GameStatePtr) + oGameState_GameProgress) = -128;
         }
     }
     v3 = *(v0 + 52);
     if ( *(v3 + 24) )
         ClearEventFlag(*(v3 + 24));
-    sub_80010C6();
+    writeCurPETNaviToS2001c04_Unk07_80010c6();
     sub_80010BE(*(v3 + 20));
-    v4 = sub_8120DF0();
+    v4 = reloadCurNaviBaseStats_8120df0();
     sub_8033FDC(v4);
     return 0;
 }
@@ -1904,7 +1904,7 @@ int sub_809C09C()
     int v3; // r0
 
     v1 = reqBBS_8140974();
-    sub_802F238(*(v0 + 6) + 7328 + v1);
+    addMail_802f238(*(v0 + 6) + 7328 + v1);
     if ( *(v0 + 7) )
     {
         v2 = reqBBS_8140974();
@@ -2043,8 +2043,8 @@ unsigned int sub_809C968()
             if ( v4 )
             {
                 v1 = *(v0 + oToolkit_GameStatePtr);
-                v2 = *(v1 + oGameState_Unk_0e);
-                if ( *(v1 + oGameState_Unk_0e) )
+                v2 = *(v1 + oGameState_CoordInteractionValue);
+                if ( *(v1 + oGameState_CoordInteractionValue) )
                 {
                     if ( v2 >= 48 && v2 <= 51 )
                     {
@@ -2061,7 +2061,7 @@ LABEL_23:
     TestEventFlagFromImmediate(1, 186);
     if ( !v4 )
     {
-        if ( !*(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_0e) )
+        if ( !*(*(v0 + oToolkit_GameStatePtr) + oGameState_CoordInteractionValue) )
         {
             v5 = (&off_809C0F0)[*(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) - 144][*(*(v0 + oToolkit_GameStatePtr)
                                                                                                                                                                                 + oGameState_MapNumber)];
@@ -2071,12 +2071,12 @@ LABEL_23:
                 TestEventFlag(*(v6 + 16));
                 if ( v4 )
                 {
-                    v7 = sub_803CE28(44);
+                    v7 = CheckKeyItem(44);
                     v10 = *(v6 + 13) + 1;
                     if ( v7 < v10 )
                         PlaySoundEffect(105, v10, v8);
                     else
-                        init_s_02011C50_8036E90(byte_809C354, v6, v8, v9);
+                        StartCutscene(byte_809C354, v6, v8, v9);
                 }
             }
         }
@@ -2133,7 +2133,7 @@ int __fastcall sub_809CB68(int a1, int a2, int a3)
     void *v3; // r5
     int result; // r0
 
-    sub_8033FC0(0, a2, a3);
+    doPETEffect_8033fc0(0, a2, a3);
     sub_8003984();
     sub_8003AD4();
     chatbox_runScript(&eTextScript2033404, 30);
@@ -2172,7 +2172,7 @@ signed int sub_809CB88()
             TestEventFlagFromImmediate(1, 99);
             if ( !v1 )
             {
-                sub_80010C6();
+                writeCurPETNaviToS2001c04_Unk07_80010c6();
                 sub_80010BE(0);
                 *(v0 + 112) = 0;
 LABEL_10:
@@ -2262,7 +2262,7 @@ LABEL_12:
                     *(v1[16] + 48) = *(v0 + 116);
                     *(v0 + 120) = *&byte_809CD18[v5];
                     SetEventFlagFromImmediate(1, 99);
-                    sub_80010C6();
+                    writeCurPETNaviToS2001c04_Unk07_80010c6();
                     v7 = *(v0 + 120);
                     *(v1[11] + 76) = v7;
                     sub_80010BE(v7);
@@ -2276,7 +2276,7 @@ LABEL_12:
             if ( !(*(v1[1] + 2) & 2) )
                 goto LABEL_12;
             PlaySoundEffect(104, 2, byte_809CCF8);
-            sub_80010C6();
+            writeCurPETNaviToS2001c04_Unk07_80010c6();
             chatbox_runScript(&eTextScript2033404, 32);
 LABEL_11:
             sub_81440D8();
@@ -2304,7 +2304,7 @@ int sub_809CD34()
 // 0x809cd44
 int __fastcall sub_809CD44(int a1, int a2, int a3)
 {
-    sub_8033FC0(1, a2, a3);
+    doPETEffect_8033fc0(1, a2, a3);
     sub_8003962();
     zeroFill_8003AB2();
     sub_800399A();
@@ -2364,10 +2364,10 @@ int sub_809CDD4()
     int v2; // r0
 
     if ( getPETNaviSelect() )
-        sub_8120DF0();
+        reloadCurNaviBaseStats_8120df0();
     else
         sub_809CE40();
-    sub_813C3AC();
+    reloadCurNaviStatBoosts_813c3ac();
     sub_8120D10(0);
     if ( v1 )
         return 0;
@@ -2418,14 +2418,14 @@ signed int sub_809CE40()
 
     v1 = *(*(v0 + 64) + 7);
     for ( i = 0; *&byte_809CE84[i] != -1; i += 4 )
-        *(&v6 + i) = sub_80137B6(v1);
+        *(&v6 + i) = GetCurPETNaviStatsByte(v1);
     for ( j = 0; ; j += 4 )
     {
         v4 = *&byte_809CE84[j];
         result = -1;
         if ( v4 == -1 )
             break;
-        navicust_801379E(0, v4, *(&v6 + j));
+        SetCurPETNaviStatsByte(0, v4, *(&v6 + j));
     }
     return result;
 }
@@ -2443,7 +2443,7 @@ void *sub_809CF2C()
     {
         result = reqBBS_81407D8();
         if ( result )
-            result = init_s_02011C50_8036E90(byte_809CEB4, eReqBBSGui.totalPointsIndex + 49, 14, v2);
+            result = StartCutscene(byte_809CEB4, eReqBBSGui.totalPointsIndex + 49, 14, v2);
     }
     return result;
 }
@@ -2464,7 +2464,7 @@ void sub_809D19C()
     if ( v2 )
     {
         v3 = getPETNaviSelect();
-        if ( sub_80137B6(v3) )
+        if ( GetCurPETNaviStatsByte(v3) )
         {
             if ( *(*(v1 + oToolkit_GameStatePtr) + oGameState_MapGroup) >= 128 )
                 SetEventFlagFromImmediate(23, 22);
@@ -2489,7 +2489,7 @@ void sub_809D19C()
         if ( word_2000AA6 )
             goto LABEL_17;
     }
-    sub_8002EE8();
+    sprite_zeroColorShader();
     if ( sub_8031A7A(&v0->unk_1C) == 60 )
     {
         v5 = 41224;
@@ -2516,7 +2516,7 @@ unsigned int sub_809D270()
     int v7; // r2
 
     *v0 = 3;
-    v2 = byte_809D328[getPETNaviSelect()];
+    v2 = PETNaviToNPCSpriteTable[getPETNaviSelect()];
     v3 = 24;
     if ( *(*(v1 + oToolkit_GameStatePtr) + oGameState_MapGroup) < 128 && (v2 = 55, TestEventFlagFromImmediate(23, 41), v4) )
     {
@@ -3338,7 +3338,7 @@ int __fastcall sub_809DBC4(_DWORD *a1, _DWORD *a2)
     v6 = v3[2] + v2[9];
     v7 = v3[4];
     v8 = v3[5];
-    return sub_80037AC(v4, v5, v6, v3[3]);
+    return createOWObjectInteractionArea_80037ac(v4, v5, v6, v3[3]);
 }
 
 
@@ -3484,7 +3484,7 @@ signed int sub_809DF00()
     {
         v3 = *(v0 + 15);
         v4 = *(v1 + oToolkit_GameStatePtr);
-        *(v4 + oGameState_Unk_0e) = v3;
+        *(v4 + oGameState_CoordInteractionValue) = v3;
         if ( v3 )
             *(v4 + oGameState_Unk_03) = v3;
         result = 0;
@@ -3717,7 +3717,7 @@ int sub_809E0FC()
 
 
 // 0x809e114
-int sub_809E114()
+int owPlayer_809E114()
 {
     int result; // r0
 
@@ -3897,7 +3897,7 @@ int sub_809E228()
 
 
 // 0x809e230
-signed int sub_809E230()
+signed int owPlayer_setInteractionLocked_809e230()
 {
     int v0; // r10
     signed int result; // r0
@@ -3909,7 +3909,7 @@ signed int sub_809E230()
 
 
 // 0x809e23c
-int sub_809E23C()
+int owPlayer_clearInteractionLocked_809e23c()
 {
     int v0; // r10
     int result; // r0
@@ -3921,7 +3921,7 @@ int sub_809E23C()
 
 
 // 0x809e248
-signed int sub_809E248()
+signed int owPlayer_enableWallCollision_809e248()
 {
     int v0; // r10
     signed int result; // r0
@@ -3933,7 +3933,7 @@ signed int sub_809E248()
 
 
 // 0x809e254
-int sub_809E254()
+int owPlayer_disableWallCollision_809e254()
 {
     int v0; // r10
     int result; // r0
@@ -3955,7 +3955,7 @@ int __fastcall sub_809E260(int result)
 
 
 // 0x809e26a
-int sub_809E26A()
+int owPlayer_clearLayerIndexOverride_809e26a()
 {
     int v0; // r10
     int result; // r0
@@ -3967,7 +3967,7 @@ int sub_809E26A()
 
 
 // 0x809e276
-int sub_809E276()
+int owPlayer_call_sprite_noShadow_809e276()
 {
     int v0; // r10
 
@@ -3976,7 +3976,7 @@ int sub_809E276()
 
 
 // 0x809e284
-int sub_809E284()
+int owPlayer_call_sprite_hasShadow_809e284()
 {
     int v0; // r10
     int v1; // r5
@@ -3987,13 +3987,13 @@ int sub_809E284()
 
 
 // 0x809e292
-int sub_809E292()
+int owPlayer_removeShadow_809e292()
 {
     int v0; // r10
     int v1; // r5
 
     v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    return sub_8002E52();
+    return sprite_removeShadow();
 }
 
 
@@ -4260,7 +4260,7 @@ int sub_809E434()
 
 
 // 0x809e442
-int sub_809E442()
+int owPlayer_makeVisible_809e442()
 {
     int v0; // r10
     _BYTE *v1; // r3
@@ -4274,7 +4274,7 @@ int sub_809E442()
 
 
 // 0x809e452
-int sub_809E452()
+int owPlayer_makeInvisible_809e452()
 {
     int v0; // r10
     _BYTE *v1; // r3
@@ -4334,18 +4334,18 @@ signed int __fastcall sub_809E4A0(char a1)
 
 
 // 0x809e4ae
-signed int sub_809E4AE()
+signed int owPlayer_809E4AE()
 {
     int v0; // r10
     int v1; // r5
 
     v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    return sub_8002CCE();
+    return sprite_disableAlpha();
 }
 
 
 // 0x809e4bc
-void __noreturn sub_809E4BC()
+void __noreturn owPlayer_toggleUsingCopybot_809e4bc()
 {
     int v0; // r10
     Battle *v1; // r5

@@ -1772,19 +1772,19 @@ int sub_8131588()
     int result; // r0
 
     getPETNaviSelect();
-    sub_8013846();
+    initNaviStats203CCE0_8013846();
     if ( *&eT4BattleObjects[3772] != 0xFFFF )
     {
         v0 = eT4BattleObjects[3772];
         v1 = getPETNaviSelect();
-        sub_8013864(v1, 46, v0);
+        SetNaviStats203CCE0Byte(v1, 46, v0);
     }
     if ( *&eT4BattleObjects[3836] != 0xFFFF )
     {
         v2 = eT4BattleObjects[3836];
         v3 = getPETNaviSelect();
-        sub_8013864(v3, 86, v2);
-        sub_8013864(v3, 87, eT4BattleObjects[3840]);
+        SetNaviStats203CCE0Byte(v3, 86, v2);
+        SetNaviStats203CCE0Byte(v3, 87, eT4BattleObjects[3840]);
     }
     v4 = off_8131600[sub_81312EC()[12]];
     v5 = 0;
@@ -1804,7 +1804,7 @@ char *sub_8131664()
     int v0; // r0
 
     v0 = getPETNaviSelect();
-    return sub_8013864(v0, 35, 1);
+    return SetNaviStats203CCE0Byte(v0, 35, 1);
 }
 
 
@@ -1814,7 +1814,7 @@ char *sub_8131674()
     int v0; // r0
 
     v0 = getPETNaviSelect();
-    return sub_8013864(v0, 10, 6);
+    return SetNaviStats203CCE0Byte(v0, 10, 6);
 }
 
 
@@ -1824,7 +1824,7 @@ char *sub_8131684()
     int v0; // r0
 
     v0 = getPETNaviSelect();
-    return sub_8013864(v0, 10, 7);
+    return SetNaviStats203CCE0Byte(v0, 10, 7);
 }
 
 
@@ -1834,7 +1834,7 @@ char *sub_8131694()
     int v0; // r0
 
     v0 = getPETNaviSelect();
-    return sub_8013864(v0, 7, 59);
+    return SetNaviStats203CCE0Byte(v0, 7, 59);
 }
 
 
@@ -1844,7 +1844,7 @@ char *sub_81316A4()
     int v0; // r0
 
     v0 = getPETNaviSelect();
-    return sub_8013864(v0, 28, 1);
+    return SetNaviStats203CCE0Byte(v0, 28, 1);
 }
 
 
@@ -1854,7 +1854,7 @@ char *sub_81316B4()
     int v0; // r0
 
     v0 = getPETNaviSelect();
-    return sub_8013864(v0, 29, 1);
+    return SetNaviStats203CCE0Byte(v0, 29, 1);
 }
 
 
@@ -1864,28 +1864,28 @@ char *sub_81316C4()
     int v0; // r0
 
     v0 = getPETNaviSelect();
-    return sub_8013864(v0, 96, 1);
+    return SetNaviStats203CCE0Byte(v0, 96, 1);
 }
 
 
 // 0x81316d4
 char *sub_81316D4()
 {
-    return sub_8013864(0, 1, 1);
+    return SetNaviStats203CCE0Byte(0, 1, 1);
 }
 
 
 // 0x81316ec
 char *sub_81316EC()
 {
-    return sub_8013864(0, 2, 1);
+    return SetNaviStats203CCE0Byte(0, 2, 1);
 }
 
 
 // 0x8131704
 char *sub_8131704()
 {
-    return sub_8013864(0, 3, 1);
+    return SetNaviStats203CCE0Byte(0, 3, 1);
 }
 
 
@@ -1896,9 +1896,9 @@ char *sub_813171C()
     int v1; // r0
 
     v0 = getPETNaviSelect();
-    sub_8013874(v0, 66, &byte_320);
+    SetNaviStats203CCE0Hword(v0, 66, &byte_320);
     v1 = getPETNaviSelect();
-    return sub_8013874(v1, 64, &byte_320);
+    return SetNaviStats203CCE0Hword(v1, 64, &byte_320);
 }
 
 
@@ -4439,12 +4439,12 @@ int __fastcall sub_81339BC(int a1)
         sub_81206F8(word_202A020, *(v1 + 12));
         if ( !*(v1 + 2) )
         {
-            navicust_801379E(*(v1 + 20), *(v1 + 12) + 46, *(v1 + 28));
+            SetCurPETNaviStatsByte(*(v1 + 20), *(v1 + 12) + 46, *(v1 + 28));
             v4 = 92;
             v5 = 86;
             do
             {
-                navicust_801379E(*(v1 + 20), 2 * *(v1 + 12) + v5++, *(v1 + v4));
+                SetCurPETNaviStatsByte(*(v1 + 20), 2 * *(v1 + 12) + v5++, *(v1 + v4));
                 v4 += 4;
             }
             while ( v4 <= 96 );
@@ -6131,7 +6131,7 @@ int __fastcall sub_8135080(int a1, int a2, int a3, int a4)
         if ( v18 && *(getChip8021DA8(v18) + 7) == 1 )
             --v8;
         v9 = getPETNaviSelect();
-        if ( v8 >= sub_80137B6(v9) )
+        if ( v8 >= GetCurPETNaviStatsByte(v9) )
             return v5;
 LABEL_20:
         v5 = 1;
@@ -6154,7 +6154,7 @@ LABEL_20:
     if ( v18 && *(getChip8021DA8(v18) + 7) == 2 )
         --v10;
     v11 = getPETNaviSelect();
-    if ( v10 < sub_80137B6(v11) )
+    if ( v10 < GetCurPETNaviStatsByte(v11) )
         goto LABEL_20;
     return v5;
 }
@@ -6342,13 +6342,13 @@ int __fastcall sub_81352A0(int a1, void *a2, int a3, int a4)
     v17 = v4;
     v7 = *(&dword_8135310 + *(v5 + 12));
     v8 = getPETNaviSelect();
-    result = sub_80137B6(v8);
+    result = GetCurPETNaviStatsByte(v8);
     v10 = result;
     if ( result != 255 )
     {
         v11 = *(32 * result + v13 + 24) >> 16;
         v12 = getPETNaviSelect();
-        if ( v11 <= sub_80137B6(v12) )
+        if ( v11 <= GetCurPETNaviStatsByte(v12) )
         {
             sub_80465A0(v14);
             *(v5 + 28) = v10;
@@ -6358,7 +6358,7 @@ int __fastcall sub_81352A0(int a1, void *a2, int a3, int a4)
         }
         else
         {
-            result = navicust_801379E(*(v5 + 20), v6, 255);
+            result = SetCurPETNaviStatsByte(*(v5 + 20), v6, 255);
         }
     }
     return result;
@@ -6395,7 +6395,7 @@ int __fastcall sub_8135314(int a1, int a2, int a3, int a4)
     {
         v7 = *(&dword_81353B4 + *(v5 + 12)) + v6;
         v8 = getPETNaviSelect();
-        v9 = sub_80137B6(v8);
+        v9 = GetCurPETNaviStatsByte(v8);
         v10 = v9;
         if ( v9 != 255 )
         {
@@ -6695,7 +6695,7 @@ void __fastcall __noreturn sub_81356F4(int a1, int a2, int a3, int a4)
     *(v4 + 48) = 0;
     *(v4 + 50) = 0;
     *(v4 + 16) = sub_813B920(0);
-    v12 = sub_803CE28(113);
+    v12 = CheckKeyItem(113);
     *(v4 + 15) = v12;
     *(v4 + 68) = sub_813B9E0(v12);
     sub_8135B94();
@@ -7249,7 +7249,7 @@ int *sub_8135E18()
     v1 = 145;
     do
     {
-        v2 = sub_803CE28(v1);
+        v2 = CheckKeyItem(v1);
         if ( v2 )
         {
             v3 = 0;
@@ -7295,7 +7295,7 @@ unsigned __int16 *sub_8135E6C()
     do
     {
         v7 = *(&off_8135EDC + v1);
-        result = sub_803CE28(*(&off_8135EDC + v1));
+        result = CheckKeyItem(*(&off_8135EDC + v1));
         v3 = result;
         if ( result )
         {
@@ -7757,7 +7757,7 @@ int sub_8136364()
 
     v1 = sub_8136290(*(v0 + 58) + *(v0 + 56));
     v2 = sub_813B780(*v1 - 144);
-    return sub_803CE28(*(v2 + 3) + 79);
+    return CheckKeyItem(*(v2 + 3) + 79);
 }
 
 
@@ -8347,7 +8347,7 @@ int sub_81369D0()
     *(v0 + 18) = v1;
     if ( v1 >= 80 )
     {
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         *(v0 + 28) = 11;
         sub_8046696(11);
         sub_80465A0(byte_813683C);
@@ -8583,42 +8583,42 @@ int sub_8136C24()
     char v15; // ST40_1
     char v16; // ST44_1
 
-    v0 = sub_80137B6(0);
-    v1 = sub_80137B6(0);
-    v2 = sub_80137B6(0);
+    v0 = GetCurPETNaviStatsByte(0);
+    v1 = GetCurPETNaviStatsByte(0);
+    v2 = GetCurPETNaviStatsByte(0);
     v3 = GetField16FromSelectedS20047CCStruct(0);
-    v4 = sub_80137B6(0);
-    v5 = sub_80137B6(0);
-    v6 = sub_80137B6(0);
-    v7 = sub_80137B6(0);
-    v8 = sub_80137B6(0);
-    v9 = sub_80137B6(0);
+    v4 = GetCurPETNaviStatsByte(0);
+    v5 = GetCurPETNaviStatsByte(0);
+    v6 = GetCurPETNaviStatsByte(0);
+    v7 = GetCurPETNaviStatsByte(0);
+    v8 = GetCurPETNaviStatsByte(0);
+    v9 = GetCurPETNaviStatsByte(0);
     v10 = GetField16FromSelectedS20047CCStruct(0);
-    v11 = sub_80137B6(0);
-    v12 = sub_80137B6(0);
-    v13 = sub_80137B6(0);
-    v14 = sub_80137B6(0);
-    v15 = sub_80137B6(0);
-    v16 = sub_80137B6(0);
+    v11 = GetCurPETNaviStatsByte(0);
+    v12 = GetCurPETNaviStatsByte(0);
+    v13 = GetCurPETNaviStatsByte(0);
+    v14 = GetCurPETNaviStatsByte(0);
+    v15 = GetCurPETNaviStatsByte(0);
+    v16 = GetCurPETNaviStatsByte(0);
     SelectS20047CCStruct8014018(0);
     init_8013B4E();
-    navicust_801379E(0, 14, v0);
-    navicust_801379E(0, 33, v1);
-    navicust_801379E(0, 34, v2);
+    SetCurPETNaviStatsByte(0, 14, v0);
+    SetCurPETNaviStatsByte(0, 33, v1);
+    SetCurPETNaviStatsByte(0, 34, v2);
     SetField16ToSelectedS20047CCStruct(0, 62, v3);
-    navicust_801379E(0, 44, v4);
-    navicust_801379E(0, 45, v5);
-    navicust_801379E(0, 46, v6);
-    navicust_801379E(0, 47, v7);
-    navicust_801379E(0, 48, v8);
-    navicust_801379E(0, 9, v9);
+    SetCurPETNaviStatsByte(0, 44, v4);
+    SetCurPETNaviStatsByte(0, 45, v5);
+    SetCurPETNaviStatsByte(0, 46, v6);
+    SetCurPETNaviStatsByte(0, 47, v7);
+    SetCurPETNaviStatsByte(0, 48, v8);
+    SetCurPETNaviStatsByte(0, 9, v9);
     SetField16ToSelectedS20047CCStruct(0, 64, v10);
-    navicust_801379E(0, 86, v11);
-    navicust_801379E(0, 87, v12);
-    navicust_801379E(0, 88, v13);
-    navicust_801379E(0, 89, v14);
-    navicust_801379E(0, 90, v15);
-    return navicust_801379E(0, 91, v16);
+    SetCurPETNaviStatsByte(0, 86, v11);
+    SetCurPETNaviStatsByte(0, 87, v12);
+    SetCurPETNaviStatsByte(0, 88, v13);
+    SetCurPETNaviStatsByte(0, 89, v14);
+    SetCurPETNaviStatsByte(0, 90, v15);
+    return SetCurPETNaviStatsByte(0, 91, v16);
 }
 
 
@@ -9745,8 +9745,8 @@ signed int sub_8137790()
         byte_20018EE = v3;
         CopyWords(*(v1 + oToolkit_S_Chip_2002178_Ptr) + 60, *(v1 + oToolkit_S_Chip_2002178_Ptr) + 120, 0x3Cu);
         sub_8021AB4(v0, 1);
-        if ( sub_80137B6(0) == 1 )
-            navicust_801379E(0, 45, 2);
+        if ( GetCurPETNaviStatsByte(0) == 1 )
+            SetCurPETNaviStatsByte(0, 45, 2);
     }
     return v2;
 }
@@ -9808,7 +9808,7 @@ signed int __fastcall sub_813781C(unsigned int a1)
             do
             {
                 v7 = split9BitsFromBitfield_8021AE0(*(v5 + v6));
-                result = sub_8021B92(v7, v8, 1);
+                result = TakeChips(v7, v8, 1);
                 v6 += 2;
             }
             while ( v6 < 60 );
@@ -10978,7 +10978,7 @@ int sub_8138700()
         if ( *(*(v1 + oToolkit_JoypadPtr) + 2) )
         {
             engine_setScreeneffect(12, 8);
-            sub_800068A(31, 14);
+            sound_800068A(31, 14);
             *(v0 + 4) = 224;
             *v0 = 8;
             result = 0;
@@ -11081,7 +11081,7 @@ unsigned int __fastcall __noreturn sub_81387D8(int a1, int a2, int a3, int a4)
     sub_8030AA4(0, 2);
     camera_802FF4C(0, 0, 0, 208);
     sub_80301B2(0, v9);
-    sub_80301DC(0, 0, 0);
+    SetCameraXYZ(0, 0, 0);
     zeroFill_80024A2();
     sub_8003962();
     zeroFill_8003AB2();
@@ -11101,7 +11101,7 @@ int __fastcall sub_8138848(int a1, int a2, int a3, int a4)
     sub_8003BA2();
     npc_800461E();
     sub_80048D2();
-    sub_80037F4();
+    checkOWObjectInteractions_80037f4();
     sub_802FFF4();
     sub_80027B4();
     sub_800286C();

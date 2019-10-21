@@ -38,7 +38,7 @@ sub_812EAC4:
 	mov r4, #0x91
 loc_812EAEA:
 	mov r0, r4
-	bl sub_803CE28
+	bl CheckKeyItem
 	mov r7, r0
 	beq loc_812EB28
 	mov r6, #0

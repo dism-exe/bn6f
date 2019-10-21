@@ -96,6 +96,8 @@
 	u32 Und_8C // loc=0x8C
 	u32 Unk_90 // loc=0x90
 	u8 Unk_94 // loc=0x94
+	struct_org 0x9c
+	u8 Unk_9c // loc=0x9c
 	// finish scanning fields? Is this struct really that big?
 	struct_org 0x230
 	// size guessed as 0x230 from ZeroFillByWord(tk->ChatboxPtr, 0x230)

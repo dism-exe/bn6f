@@ -546,7 +546,7 @@ int __fastcall sprite_setScaleParameters(int result, int a2, int a3)
 
 
 // 0x8002c52
-signed int sub_8002C52()
+signed int sprite_setObjWindowMode()
 {
     int v0; // r5
     unsigned int v1; // r3
@@ -560,7 +560,7 @@ signed int sub_8002C52()
 
 
 // 0x8002c68
-signed int sub_8002C68()
+signed int sprite_disableObjWindowMode()
 {
     int v0; // r5
     unsigned int v1; // r3
@@ -610,7 +610,7 @@ signed int sub_8002CB6()
 
 
 // 0x8002cce
-signed int sub_8002CCE()
+signed int sprite_disableAlpha()
 {
     int v0; // r5
     unsigned int v1; // r3
@@ -833,7 +833,7 @@ int sprite_hasShadow()
 
 
 // 0x8002e52
-int sub_8002E52()
+int sprite_removeShadow()
 {
     int v0; // r5
     unsigned int v1; // r3
@@ -918,7 +918,7 @@ int __fastcall sprite_getColorShader(int a1)
 
 
 // 0x8002ee8
-int sub_8002EE8()
+int sprite_zeroColorShader()
 {
     int v0; // r5
     int result; // r0
@@ -940,7 +940,7 @@ int __fastcall sprite_setMosaicSize(int a1, int a2)
 
     v4 = a1 | 16 * a2;
     if ( !v4 )
-        return sub_8002F2C();
+        return sprite_clearMosaic();
     result = v4 << 8;
     v6 = 16 * (*(v2 + 2) >> 4);
     *(v6 + v2 + 17) |= 0x10u;
@@ -950,7 +950,7 @@ int __fastcall sprite_setMosaicSize(int a1, int a2)
 
 
 // 0x8002f2c
-signed int sub_8002F2C()
+signed int sprite_clearMosaic()
 {
     int v0; // r5
     unsigned int v1; // r3
@@ -1012,7 +1012,7 @@ int __usercall sprite_noShadow@<R0>(Battle *obj@<R5>)
 
 
 // 0x8002fa6
-int __fastcall sub_8002FA6(int result)
+int __fastcall sprite_setUnk0x2c(int result)
 {
     int v1; // r5
 
@@ -1022,7 +1022,7 @@ int __fastcall sub_8002FA6(int result)
 
 
 // 0x8002fb2
-int sub_8002FB2()
+int sprite_getUnk0x2c()
 {
     int v0; // r5
 
@@ -1081,7 +1081,7 @@ int sub_8002FF8()
 
 
 // 0x8003006
-int sub_8003006()
+int sprite_setField0x3Bit5()
 {
     int v0; // r5
     unsigned int v1; // r3

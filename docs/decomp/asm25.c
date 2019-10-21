@@ -11,7 +11,7 @@ signed int __fastcall sub_808F810(int a1)
     {
         byte_2000321 = -1;
         sub_808FA7C();
-        v1 = sub_809E254();
+        v1 = owPlayer_disableWallCollision_809e254();
         byte_2000312 = ++v2;
     }
     if ( v2 > 1 )
@@ -37,7 +37,7 @@ signed int __fastcall sub_808F810(int a1)
         sub_808F9C4(v1);
         if ( v3 )
         {
-            sub_809E248();
+            owPlayer_enableWallCollision_809e248();
             byte_2000312 = v2 + 1;
             sub_809E188(word_2000322 << 16, dword_2000324 << 16, 0x400000);
             sub_809E13C(byte_200031F);
@@ -66,7 +66,7 @@ void __noreturn sub_808F8AC()
     (loc_809E2FE)(byte_200032C);
     v2 = sub_809E1AE();
     sub_809E188(v2, SHIDWORD(v2), 0x400000);
-    sub_809E23C();
+    owPlayer_clearInteractionLocked_809e23c();
     (loc_809E306)(4);
 }
 
@@ -84,7 +84,7 @@ signed int __fastcall sub_808F900(int a1)
         ClearEventFlagFromImmediate(11, 228);
         ClearEventFlagFromImmediate(11, 229);
         sub_808FA7C();
-        a1 = sub_809E254();
+        a1 = owPlayer_disableWallCollision_809e254();
         byte_2000312 = ++v1;
     }
     if ( v1 <= 1 )
@@ -104,7 +104,7 @@ signed int __fastcall sub_808F900(int a1)
     sub_808F9C4(a1);
     if ( v2 )
     {
-        sub_809E248();
+        owPlayer_enableWallCollision_809e248();
         byte_2000312 = 0;
         sub_809E3B2();
         sub_809E188(word_2000322 << 16, dword_2000324 << 16, 0x400000);
@@ -123,7 +123,7 @@ void __noreturn sub_808F990()
     int v0; // r10
     Battle *v1; // r5
 
-    sub_809E230();
+    owPlayer_setInteractionLocked_809e230();
     sub_809E304();
     sub_809E312();
     v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
@@ -303,7 +303,7 @@ signed int __fastcall sub_808FB68(int a1)
     else
     {
         sub_809E188(v1, SHIDWORD(v1), 0);
-        sub_809E230();
+        owPlayer_setInteractionLocked_809e230();
         reqBBS_clearFlag_8140A0C();
         sub_809E3B2();
         PlaySoundEffect(430, v4, v5);
@@ -330,7 +330,7 @@ int __fastcall sub_808FBA0(int a1)
 int __fastcall sub_808FBC0(int a1, int a2)
 {
     sub_80301B2(0, a2);
-    sub_80301DC(*(&unk_2000310 + byte_200031C + 32) << 16, *(&unk_2000310 + byte_200031C + 35) << 16, 0x400000);
+    SetCameraXYZ(*(&unk_2000310 + byte_200031C + 32) << 16, *(&unk_2000310 + byte_200031C + 35) << 16, 0x400000);
     return 0;
 }
 
@@ -348,7 +348,7 @@ int __fastcall sub_808FBEC(int a1, int a2)
         v4 = 3;
     else
         v4 = *(v3 + oGameState_MapNumber);
-    sub_80301DC(*&byte_808FC24[4 * v4] << 16, *&byte_808FC24[4 * v4 + 2] << 16, 0);
+    SetCameraXYZ(*&byte_808FC24[4 * v4] << 16, *&byte_808FC24[4 * v4 + 2] << 16, 0);
     return 0;
 }
 
@@ -356,7 +356,7 @@ int __fastcall sub_808FBEC(int a1, int a2)
 // 0x808fce4
 int __fastcall sub_808FCE4(int a1, int a2, int a3, int a4)
 {
-    sub_8003940(1, a2, a3, a4);
+    endScenarioEffectMaybe_8003940(1, a2, a3, a4);
     return 0;
 }
 
@@ -460,7 +460,7 @@ int sub_808FDC0()
     sub_808FF9C();
     sub_808FF30();
     sub_808FF70();
-    sub_8003914(1u, v9, v10, v11);
+    initScenarioEffect_8003914(1u, v9, v10, v11);
     sub_809003C();
     return 0;
 }
@@ -512,7 +512,7 @@ void *sub_808FE74()
         }
         result = sub_8090104();
         if ( result )
-            result = init_s_02011C50_8036E90(result, v3, v4, v5);
+            result = StartCutscene(result, v3, v4, v5);
     }
     return result;
 }
@@ -1044,7 +1044,7 @@ int sub_809032C()
 
     sub_80039D4(1);
     if ( !v3 )
-        sub_8003940(1, v0, v1, v2);
+        endScenarioEffectMaybe_8003940(1, v0, v1, v2);
     return 0;
 }
 

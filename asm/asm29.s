@@ -47,7 +47,7 @@ sub_80A49B0:
 loc_80A49E8:
 	bl sub_8002E14
 	ldr r0, [r7,#4]
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	ldrb r0, [r7,#8]
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
@@ -517,7 +517,7 @@ sub_80A51F8:
 	bl sprite_noShadow // () -> void
 	ldrb r0, [r7,#0xa]
 	lsl r0, r0, #0x18
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	ldrb r0, [r7,#0xb]
 	bl sprite_setPalette // (int pallete) -> void
 	ldrh r0, [r7,#2]
@@ -2872,8 +2872,8 @@ sub_80A6CD4:
 sub_80A6CFC:
 	push {lr}
 	push {r0}
-	bl getPETNaviSelect // () -> u8
-	ldr r2, dword_80A6D34 // =byte_809D328
+	bl GetCurPETNavi // () -> u8
+	ldr r2, dword_80A6D34 // =PETNaviToNPCSpriteTable
 	ldrb r2, [r2,r0]
 	mov r0, #0x80
 	mov r1, #0x18
@@ -2881,7 +2881,7 @@ sub_80A6CFC:
 	mov r0, #1
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E52
+	bl sprite_removeShadow
 	bl ReadOWPlayerObjectCoords
 	str r0, [r5,#0xc]
 	str r1, [r5,#0x10]
@@ -2980,7 +2980,7 @@ sub_80A6DC6:
 	push {lr}
 	bl sub_80A6E78
 	ldrh r0, [r0,#2]
-	bl sprite_setMosaicScalingParameters_8002c7a
+	bl sprite_setAlpha_8002c7a
 	mov r0, #4
 	bl sub_80A6E70
 	mov r0, #1
@@ -2990,7 +2990,7 @@ sub_80A6DC6:
 	thumb_local_start
 sub_80A6DDC:
 	push {lr}
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 	mov r0, #2
 	bl sub_80A6E70
 	mov r0, #1
@@ -3047,7 +3047,7 @@ sub_80A6E22:
 	thumb_local_start
 sub_80A6E3A:
 	push {lr}
-	bl sub_8002F2C
+	bl sprite_clearMosaic
 	mov r0, #2
 	bl sub_80A6E70
 	mov r0, #1
@@ -4379,7 +4379,7 @@ sub_80A786C:
 loc_80A7888:
 	mov r4, #1
 loc_80A788A:
-	bl sub_8002CCE
+	bl sprite_disableAlpha
 loc_80A788E:
 	strb r4, [r5]
 	mov r0, #2
@@ -4860,7 +4860,7 @@ sub_80A7BC0:
 	bl sub_8142080
 	mov r1, r0
 	ldr r0, off_80A7C54 // =byte_8089DD8
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 locret_80A7C3C:
 	pop {r4-r7,pc}
 	.byte 0, 0
@@ -4998,7 +4998,7 @@ sub_80A7CFE:
 	bne loc_80A7D60
 	ldr r0, off_80A7D88 // =byte_8089E44
 	mov r1, r5
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	b locret_80A7D70
 loc_80A7D60:
 	bl sub_81420B0
@@ -5006,7 +5006,7 @@ loc_80A7D60:
 	bne locret_80A7D70
 	ldr r0, off_80A7D8C // =byte_8089FD8
 	mov r1, r5
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 locret_80A7D70:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -5053,7 +5053,7 @@ sub_80A7DB8:
 	bl sprite_noShadow // () -> void
 	bl sub_80A8020
 	ldrh r0, [r7,#4]
-	bl sub_8142868
+	bl GetSoulWeaponCursorCameraCoords
 	str r0, [r5,#0xc]
 	str r1, [r5,#0x10]
 	mov r2, #0xfa
@@ -6059,7 +6059,7 @@ sub_80A86B4:
 loc_80A86EA:
 	strb r4, [r5]
 	mov r0, r6
-	bl sub_8142868
+	bl GetSoulWeaponCursorCameraCoords
 	str r0, [r5,#0xc]
 	str r1, [r5,#0x10]
 	bl ReadOWPlayerObjectCoords
@@ -6299,19 +6299,17 @@ sub_80A88E2:
 	ldr r0, [r5,#0xc]
 	ldr r1, [r5,#0x10]
 	ldr r2, [r5,#0x14]
-	ldr r3, dword_80A890C // =0x80a 
-	ldr r4, dword_80A8910 // =0x40000 
-	ldr r5, dword_80A8914 // =0x10000 
-	bl sub_80037AC
+	ldr r3, =0x80a 
+	ldr r4, =OW_OBJECT_INTERACTION_AREA_FLAG_0x40000
+	ldr r5, =OW_OBJECT_INTERACTION_AREA_FLAG_0x10000
+	bl createOWObjectInteractionArea_80037ac
 	pop {r4-r7}
 	mov r0, #0
 	str r0, [r5,#0x28]
 	bl sprite_update
 	pop {r4-r7,pc}
-	.balign 4, 0x00
-dword_80A890C: .word 0x80A
-dword_80A8910: .word 0x40000
-dword_80A8914: .word 0x10000
+	.balign 4, 0
+	.pool // 80A890C
 	thumb_func_end sub_80A88E2
 
 	thumb_local_start
@@ -6371,7 +6369,7 @@ sub_80A8988:
 	ldrb r0, [r5,#5]
 	tst r0, r0
 	bne loc_80A89B4
-	bl sub_8002E52
+	bl sprite_removeShadow
 	mov r0, #8
 	strb r0, [r5,#8]
 	mov r0, #SOUND_UNK_73
@@ -6382,7 +6380,7 @@ sub_80A8988:
 	bl SetEventFlag
 	b locret_80A89D6
 loc_80A89B4:
-	bl sub_8002E52
+	bl sprite_removeShadow
 	mov r0, #8
 	strb r0, [r5,#8]
 	mov r0, #0xa5
@@ -6876,18 +6874,16 @@ sub_80A8D7C:
 	mov r3, #0x14
 	lsl r3, r3, #0x10
 	sub r2, r2, r3
-	ldr r3, dword_80A8DA4 // =0x808 
-	ldr r4, dword_80A8DA8 // =0x40000 
-	ldr r5, dword_80A8DAC // =0x10000 
-	bl sub_80037AC
+	ldr r3, =0x808 
+	ldr r4, =OW_OBJECT_INTERACTION_AREA_FLAG_0x40000
+	ldr r5, =OW_OBJECT_INTERACTION_AREA_FLAG_0x10000
+	bl createOWObjectInteractionArea_80037ac
 	pop {r4-r7}
 	mov r0, #0
 	str r0, [r5,#0x24]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
-dword_80A8DA4: .word 0x808
-dword_80A8DA8: .word 0x40000
-dword_80A8DAC: .word 0x10000
+	.balign 4, 0
+	.pool // 80A8DA4
 	thumb_func_end sub_80A8D7C
 
 	thumb_local_start
@@ -6904,7 +6900,7 @@ sub_80A8DB0:
 	bl sub_8143088
 	mov r1, r0
 	ldr r0, dword_80A8DEC // =byte_808C2F0
-	bl init_s_02011C50_8036E90
+	bl StartCutscene
 	mov r0, #0x23 
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -7673,7 +7669,7 @@ sub_80A93D0:
 sub_80A93D8:
 	push {lr}
 	ldr r0, dword_80A93E4 // =0xe000000 
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	pop {pc}
 	.balign 4, 0x00
 dword_80A93E4: .word 0xE000000
@@ -7915,7 +7911,7 @@ sub_80A95A8:
 	ldrb r0, [r5,#4]
 	strb r0, [r6,#4]
 	bl sub_80A9614
-	bl sub_8002E52
+	bl sprite_removeShadow
 	mov r0, #8
 	strb r0, [r5,#8]
 	ldr r0, off_80A95E8 // =0x1a4 
@@ -8590,7 +8586,7 @@ loc_80A9BF6:
 	bl sprite_noShadow // () -> void
 	ldrb r0, [r7,#0xa]
 	lsl r0, r0, #0x18
-	bl sub_8002FA6
+	bl sprite_setUnk0x2c
 	ldrb r0, [r7,#0xb]
 	bl sprite_setPalette // (int pallete) -> void
 	ldrb r0, [r7,#0xd]
@@ -9165,7 +9161,7 @@ sub_80AA078:
 	ldrb r0, [r5,#6]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E52
+	bl sprite_removeShadow
 	ldrb r0, [r5,#7]
 	bl sub_8002E14
 	mov r0, #0
@@ -9304,7 +9300,7 @@ sub_80AA194:
 	bl sprite_loadAnimationData // () -> void
 	mov r0, #2
 	mov r1, #0x14
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0x7c 
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -9393,7 +9389,7 @@ sub_80AA248:
 	bl sprite_loadAnimationData // () -> void
 	mov r0, #1
 	mov r1, #0xa
-	bl sub_80302A8
+	bl camera_initShakeEffect_80302a8
 	mov r0, #0xda
 	bl PlaySoundEffect
 	mov r0, #0xc0
@@ -9678,9 +9674,9 @@ loc_80AA4D4:
 	beq loc_80AA5DC
 	push {r0}
 	mov r4, r2
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x28 
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	tst r0, r0
 	beq loc_80AA506
 	mov r4, #0
@@ -9747,9 +9743,9 @@ loc_80AA56E:
 	tst r0, r0
 	bne loc_80AA59E
 loc_80AA584:
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x27 
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r2, r0
 	bl sub_80AA5F4
 	tst r0, r0
@@ -9762,9 +9758,9 @@ loc_80AA59E:
 	tst r1, r1
 	bne loc_80AA5B8
 	push {r0}
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x1e
-	bl sub_80137B6 // (int a1, int a2) -> u8
+	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	tst r0, r0
 	pop {r0}
 	beq loc_80AA5DC
@@ -9772,9 +9768,9 @@ loc_80AA5B8:
 	push {r0}
 	bl GetBattleSettingsUnk01FromBattleSettings
 	mov r4, r0
-	bl getPETNaviSelect // () -> u8
+	bl GetCurPETNavi // () -> u8
 	mov r1, #0x3e 
-	bl GetField16FromSelectedS20047CCStruct
+	bl GetCurPETNaviStatsHword
 	add r0, #4
 	mov r1, #5
 	svc 6
@@ -9790,8 +9786,8 @@ loc_80AA5DC:
 	.word byte_8020CE4
 	thumb_func_end sub_80AA4C0
 
-	thumb_func_start sub_80AA5E4
-sub_80AA5E4:
+	thumb_func_start chooseRandomEncounterMaybe_80aa5e4
+chooseRandomEncounterMaybe_80aa5e4:
 	push {r7,lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -9799,29 +9795,26 @@ sub_80AA5E4:
 	bl sub_80AA5F4
 	str r0, [r7,#oGameState_CurBattleDataPtr]
 	pop {r7,pc}
-	thumb_func_end sub_80AA5E4
+	thumb_func_end chooseRandomEncounterMaybe_80aa5e4
 
 	thumb_func_start sub_80AA5F4
 sub_80AA5F4:
 	push {r4-r7,lr}
 	sub sp, sp, #0xec
 	str r2, [sp,#0xe8]
-	mov r0, #6
-	mov r1, #0x7f
+	movflag EVENT_67F
 	bl TestEventFlagFromImmediate
 	beq loc_80AA608
 	ldr r3, off_80AA698 // =off_8020178 
 	b loc_80AA626
 loc_80AA608:
-	mov r0, #6
-	mov r1, #0x80
+	movflag EVENT_680
 	bl TestEventFlagFromImmediate
 	beq loc_80AA616
 	ldr r3, off_80AA69C // =off_8020180 
 	b loc_80AA626
 loc_80AA616:
-	mov r0, #6
-	mov r1, #0x81
+	movflag EVENT_681
 	bl TestEventFlagFromImmediate
 	beq loc_80AA624
 	ldr r3, off_80AA6A0 // =off_8020188 
@@ -10269,7 +10262,7 @@ sub_80AA910:
 	str r5, [sp,#0x14]
 	ldr r0, [sp,#0x14]
 	mov r1, #0x26 
-	bl GetPlayerBattleVarByte
+	bl GetBattleNaviStatsByte
 	mov r1, #1
 	tst r0, r1
 	beq loc_80AA946
@@ -10918,7 +10911,7 @@ loc_80AADB6:
 	lsl r0, r0, #0x17
 	lsr r0, r0, #0x17
 	mov r2, #1
-	bl sub_8021B92 // (int idx, int searchItem, int off) -> void*
+	bl TakeChips // (int idx, int searchItem, int off) -> void*
 	add r7, #2
 	sub r4, #1
 	bne loc_80AADB6

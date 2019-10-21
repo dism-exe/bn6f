@@ -27,7 +27,8 @@ dword_809FEE4::
 
 	//mystery_data_entry_struct md_type=BLUE_MYSTERY_DATA, event_flag=0x14e0, placements_ptr=byte_809FF18, contents_ptr=byte_809FF48
 
-	.byte 0x01, 0x00, 0xE0, 0x14	
+	.byte 0x01, 0x00
+	.hword 0x14e0	
 	.word byte_809FF18
 	.word byte_809FF48
 

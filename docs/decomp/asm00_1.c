@@ -610,15 +610,15 @@ int *__fastcall sub_800378C(int a1, int a2, int a3, int a4)
 {
 	int *result; // r0
 
-	ZeroFillByWord(dword_20081D0, dword_280);
-	result = &dword_200AC18;
-	dword_200AC18 = 0;
+	ZeroFillByWord(eOWObjectInteractionAreas, dword_280);
+	result = &eNumOWObjectInteractionAreas;
+	eNumOWObjectInteractionAreas = 0;
 	return result;
 }
 
 
 // 0x80037ac
-int __fastcall sub_80037AC(int a1, int a2, int a3, int a4)
+int __fastcall createOWObjectInteractionArea_80037ac(int a1, int a2, int a3, int a4)
 {
 	unsigned int v4; // r4
 	unsigned int v5; // r5
@@ -630,23 +630,23 @@ int __fastcall sub_80037AC(int a1, int a2, int a3, int a4)
 
 	v7 = ((a2 + 0x8000) >> 16 << 16) | ((a1 + 0x8000) >> 16);
 	v8 = ((a3 + 0x8000) >> 16) | (a4 << 16);
-	result = dword_200AC18;
-	if ( dword_200AC18 < 32 )
+	result = eNumOWObjectInteractionAreas;
+	if ( eNumOWObjectInteractionAreas < 32 )
 	{
-		v10 = &dword_20081D0[5 * dword_200AC18];
+		v10 = &eOWObjectInteractionAreas[5 * eNumOWObjectInteractionAreas];
 		*v10 = v7;
 		v10[1] = v8;
 		v10[2] = v4;
 		v10[3] = v5;
 		v10[4] = v6;
-		result = dword_200AC18++ + 1;
+		result = eNumOWObjectInteractionAreas++ + 1;
 	}
 	return result;
 }
 
 
 // 0x80037f4
-int sub_80037F4()
+int checkOWObjectInteractions_80037f4()
 {
 	int v0; // r6
 	signed __int16 *v1; // r3
@@ -657,26 +657,26 @@ int sub_80037F4()
 	int result; // r0
 	signed __int16 *v7; // [sp-14h] [bp-1Ch]
 
-	if ( dword_200AC18 > 1 )
+	if ( eNumOWObjectInteractionAreas > 1 )
 	{
 		v0 = 0;
 		do
 		{
-			v1 = &dword_20081D0[5 * v0];
+			v1 = &eOWObjectInteractionAreas[5 * v0];
 			v2 = 0;
 			do
 			{
 				if ( v0 != v2 )
 				{
-					if ( *(v1 + 3) & dword_20081D0[5 * v2 + 2] )
+					if ( *(v1 + 3) & eOWObjectInteractionAreas[5 * v2 + 2] )
 					{
 						v7 = v1;
-						v3 = sub_8003894(v1, &dword_20081D0[5 * v2]);
+						v3 = checkOWObjectInteractionAreasOverlap_8003894(v1, &eOWObjectInteractionAreas[5 * v2]);
 						v1 = v7;
-						v4 = &dword_20081D0[5 * v2];
+						v4 = &eOWObjectInteractionAreas[5 * v2];
 						if ( v3 )
 						{
-							**(v7 + 4) |= *(v7 + 3) & dword_20081D0[5 * v2 + 2];
+							**(v7 + 4) |= *(v7 + 3) & eOWObjectInteractionAreas[5 * v2 + 2];
 							v5 = *(v7 + 2);
 							if ( v5 & 0x200000 )
 							{
@@ -690,19 +690,19 @@ int sub_80037F4()
 				}
 				++v2;
 			}
-			while ( dword_200AC18 > v2 );
+			while ( eNumOWObjectInteractionAreas > v2 );
 			++v0;
 		}
-		while ( dword_200AC18 != v0 );
+		while ( eNumOWObjectInteractionAreas != v0 );
 	}
 	result = 0;
-	dword_200AC18 = 0;
+	eNumOWObjectInteractionAreas = 0;
 	return result;
 }
 
 
 // 0x8003894
-signed int __fastcall sub_8003894(signed __int16 *a1, signed __int16 *a2)
+signed int __fastcall checkOWObjectInteractionAreasOverlap_8003894(signed __int16 *a1, signed __int16 *a2)
 {
 	int v2; // r2
 	int v3; // r5
@@ -738,7 +738,7 @@ void __fastcall sub_8003908()
 
 
 // 0x8003914
-signed int __fastcall sub_8003914(unsigned __int8 a1, int a2, int a3, int a4)
+signed int __fastcall initScenarioEffect_8003914(unsigned __int8 a1, int a2, int a3, int a4)
 {
 	unsigned __int8 v4; // ST00_1
 	int v5; // r0
@@ -758,7 +758,7 @@ signed int __fastcall sub_8003914(unsigned __int8 a1, int a2, int a3, int a4)
 
 
 // 0x8003940
-void __fastcall sub_8003940(int a1, int a2, int a3, int a4)
+void __fastcall endScenarioEffectMaybe_8003940(int a1, int a2, int a3, int a4)
 {
 	void (*v4)(void); // r0
 
@@ -861,7 +861,7 @@ void __fastcall sub_8003A58()
 
 
 // 0x8003a64
-signed int __fastcall sub_8003A64(unsigned __int8 a1, int a2, int a3, int a4)
+signed int __fastcall initMinigameEffect_8003a64(unsigned __int8 a1, int a2, int a3, int a4)
 {
 	unsigned __int8 v4; // ST00_1
 	int v5; // r0
@@ -881,7 +881,7 @@ signed int __fastcall sub_8003A64(unsigned __int8 a1, int a2, int a3, int a4)
 
 
 // 0x8003a90
-void __fastcall sub_8003A90(int a1, int a2, int a3, int a4)
+void __fastcall endMinigameEffectMaybe_8003a90(int a1, int a2, int a3, int a4)
 {
 	void (*v4)(void); // r0
 
@@ -2168,7 +2168,7 @@ void __cdecl reqBBS_init_8004DF0()
     ClearEventFlagFromImmediate(6, 143);
     SetEventFlagRangeFromImmediate(0, 130, 2);
     SetEventFlagFromImmediate(0, 133);
-    sub_80355A8();
+    clearSetFlags_80355a8();
     SetEventFlagFromImmediate(0, 56);
     SetEventFlagFromImmediate(0, 57);
     SetEventFlagFromImmediate(0, 17);
@@ -2194,7 +2194,7 @@ void __cdecl reqBBS_init_8004DF0()
     gs->unk_30 = 4;
     gs->unk_40 = 4;
     *&gs->pad_48[oGameState_LastMapGroup] = 4;
-    v13 = sub_803532C();
+    v13 = initGameProgressBuffer_803532c();
     sub_8021D36(v13, v14, v15, v16);
     ZeroFillByWord(*(v2 + oToolkit_S_Chip_2002178_Ptr), 180);
     zeroFill_e2002230();
@@ -2285,7 +2285,7 @@ int __fastcall EnterMap(int a1)
         RandomizeExtraToolkitPointers();
         TestEventFlagFromImmediate(23, 65);
         if ( notScreeneffectAimating )
-            sub_813C3AC();
+            reloadCurNaviStatBoosts_813c3ac();
         gs = tk->gamestate;
         sub_8000FAC();
         sub_80355EC();
@@ -2342,7 +2342,7 @@ void __usercall gamestate_8005268(GameState *gs@<R5>, int a1@<R0>)
     sub_80339CC();
     sub_80039AA();
     sub_8003AFA();
-    sub_80037F4();
+    checkOWObjectInteractions_80037f4();
     sub_802FFF4();
     sub_8030580();
     sub_80027B4();
@@ -2524,7 +2524,7 @@ int __fastcall sub_80053E4(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v11 = *(v1 + oToolkit_GameStatePtr);
         result = sRender_08_setRenderingState(-1249902528);
     }
@@ -2617,7 +2617,7 @@ _BYTE *sub_8005524()
     sub_8003962();
     zeroFill_8003AB2();
     RandomizeExtraToolkitPointers();
-    sub_813C3AC();
+    reloadCurNaviStatBoosts_813c3ac();
     result = *v0;
     **v0 = 40;
     return result;
@@ -2661,7 +2661,7 @@ _BYTE *__fastcall sub_800555A(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v8 = *(v1 + oToolkit_GameStatePtr);
         result = *v1;
         **v1 = 36;
@@ -2707,7 +2707,7 @@ _BYTE *__fastcall sub_80055CE(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v8 = *(v1 + oToolkit_GameStatePtr);
         result = *v1;
         **v1 = 68;
@@ -2753,7 +2753,7 @@ _BYTE *__fastcall sub_8005642(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v8 = *(v1 + oToolkit_GameStatePtr);
         result = *v1;
         **v1 = 44;
@@ -2799,7 +2799,7 @@ _BYTE *__fastcall sub_80056B8(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v8 = *(v1 + oToolkit_GameStatePtr);
         result = *v1;
         **v1 = 52;
@@ -2845,7 +2845,7 @@ _BYTE *__fastcall sub_800572C(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v8 = *(v1 + oToolkit_GameStatePtr);
         result = *v1;
         **v1 = 60;
@@ -2891,7 +2891,7 @@ _BYTE *__fastcall sub_80057A0(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v8 = *(v1 + oToolkit_GameStatePtr);
         result = *v1;
         **v1 = 64;
@@ -2970,7 +2970,7 @@ _BYTE *__fastcall sub_800585A(int a1)
         sub_8003962();
         zeroFill_8003AB2();
         RandomizeExtraToolkitPointers();
-        sub_813C3AC();
+        reloadCurNaviStatBoosts_813c3ac();
         v8 = *(v1 + oToolkit_GameStatePtr);
         result = *v1;
         **v1 = 80;
@@ -3070,7 +3070,7 @@ void *sub_80059B4()
 
     ClearEventFlagFromImmediate(23, 3);
     SetEventFlagFromImmediate(23, 56);
-    return init_s_02011C50_8036E90(byte_8098A02, 0, v0, v1);
+    return StartCutscene(byte_8098A02, 0, v0, v1);
 }
 
 
@@ -3082,7 +3082,7 @@ void *sub_80059D0()
 
     SetEventFlagFromImmediate(23, 3);
     SetEventFlagFromImmediate(23, 56);
-    return init_s_02011C50_8036E90(byte_8098A78, 0, v0, v1);
+    return StartCutscene(byte_8098A78, 0, v0, v1);
 }
 
 
@@ -3093,14 +3093,14 @@ void *sub_80059EC()
     int v1; // r3
 
     ClearEventFlagFromImmediate(23, 3);
-    return init_s_02011C50_8036E90(byte_8098A2E, 0, v0, v1);
+    return StartCutscene(byte_8098A2E, 0, v0, v1);
 }
 
 
 // 0x8005a00
 void *__fastcall sub_8005A00(int a1, int a2, int a3, int a4)
 {
-    return init_s_02011C50_8036E90(byte_809B5AD, 0, a3, a4);
+    return StartCutscene(byte_809B5AD, 0, a3, a4);
 }
 
 
@@ -3112,7 +3112,7 @@ void *sub_8005A0C()
 
     ClearEventFlagFromImmediate(23, 3);
     SetEventFlagFromImmediate(23, 56);
-    return init_s_02011C50_8036E90(byte_8098B1C, 0, v0, v1);
+    return StartCutscene(byte_8098B1C, 0, v0, v1);
 }
 
 
@@ -3554,7 +3554,7 @@ int sub_8005D88()
     zeroFill_8003AB2();
     sub_80385F0(v5, v6, v7, v8);
     RandomizeExtraToolkitPointers();
-    return sub_813C3AC();
+    return reloadCurNaviStatBoosts_813c3ac();
 }
 
 
@@ -3580,7 +3580,7 @@ int __noreturn sub_8005DBE()
     sub_8003962();
     zeroFill_8003AB2();
     sub_803FB28(v5, v6, v7, v8);
-    return sub_813C3AC();
+    return reloadCurNaviStatBoosts_813c3ac();
 }
 
 
@@ -3602,7 +3602,7 @@ int __noreturn dead_8005DF0()
     sub_8003962();
     zeroFill_8003AB2();
     sub_8138294();
-    return sub_813C3AC();
+    return reloadCurNaviStatBoosts_813c3ac();
 }
 
 
@@ -3624,7 +3624,7 @@ int __noreturn dead_8005E22()
     sub_8003962();
     zeroFill_8003AB2();
     sub_8038A9C();
-    return sub_813C3AC();
+    return reloadCurNaviStatBoosts_813c3ac();
 }
 
 
@@ -3646,7 +3646,7 @@ int __noreturn dead_8005E54()
     sub_8003962();
     zeroFill_8003AB2();
     (loc_803D1AC)();
-    return sub_813C3AC();
+    return reloadCurNaviStatBoosts_813c3ac();
 }
 
 
@@ -4664,7 +4664,7 @@ signed int __fastcall sub_8006E50(signed int result)
 
 
 // 0x8006e70
-// (int idx_2008A0) -> void
+// (int idx_20008A0) -> void
 int __fastcall modifyToolkit_unk7C_using_2008A0(int result)
 {
     int v1; // r10
@@ -5832,7 +5832,7 @@ int sub_80079D0()
     if ( result )
     {
         sub_800B460();
-        sub_800B2D8();
+        battle_copyStructsIncludingBattleStats_800b2d8();
         result = 12;
         *(v0 + 2) = 12;
     }
@@ -6194,7 +6194,7 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
                 sub_8015B54(*(v3 + 13));
             v27 = v26;
             v28 = getPETNaviSelect();
-            navicust_801379E(v28, 14, v27);
+            SetCurPETNaviStatsByte(v28, 14, v27);
             v29 = sub_802D246();
             v30 = 3;
             if ( !(v29 & 0x400000) )
@@ -6207,7 +6207,7 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
             }
             v31 = v30;
             v32 = getPETNaviSelect();
-            navicust_801379E(v32, 33, v31);
+            SetCurPETNaviStatsByte(v32, 33, v31);
             if ( sub_800A832() == 1 )
                 sub_802C9B8();
             *(v5 + 18) = 0;
@@ -6219,24 +6219,24 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
             if ( v33 & 0x800000 )
             {
                 v34 = v33;
-                sub_803CEB8();
+                setCurNaviHPToFull_803ceb8();
                 v33 = v34;
             }
             if ( v33 & &loc_1000 )
             {
                 v35 = v33;
                 v36 = getPETNaviSelect();
-                navicust_801379E(v36, 33, 3);
+                SetCurPETNaviStatsByte(v36, 33, 3);
                 v33 = v35;
             }
             if ( v33 & 0x40000 )
             {
                 v37 = getPETNaviSelect();
-                navicust_801379E(v37, 14, 128);
+                SetCurPETNaviStatsByte(v37, 14, 128);
             }
         }
         if ( sub_802D246() & 0x10 )
-            sub_803CEB8();
+            setCurNaviHPToFull_803ceb8();
         sub_802CA82();
     }
     *(v7 + oGameState_Unk_0a) = 0;
@@ -10342,7 +10342,7 @@ int battle_isTimeStop()
 
 
 // 0x800a0a4
-BOOL sub_800A0A4()
+BOOL battle_isTimeStopPauseOrBattleFlags0x20_800a0a4()
 {
     char v0; // zf
 
@@ -10873,9 +10873,9 @@ int __fastcall sub_800A540(int a1, int a2)
     v3 = a2;
     v4 = sub_802D246();
     if ( v4 & 0x200000 )
-        result = sub_8013884(v4, v3);
+        result = GetNaviStats203CCE0Byte(v4, v3);
     else
-        result = sub_80137B6(v2);
+        result = GetCurPETNaviStatsByte(v2);
     return result;
 }
 
@@ -11278,7 +11278,7 @@ int __fastcall setTwoStructs_800A840(int a1)
     int v1; // r10
 
     *(*(v1 + oToolkit_S2034880_Ptr) + 31) = a1;
-    return eStruct200A008_setUnk01(a1);
+    return eStruct200A008_setBattleResult(a1);
 }
 
 
@@ -12330,7 +12330,7 @@ int sub_800B144()
     *byte_203CBE8 = *(*(v0 + oToolkit_S2034880_Ptr) + 60);
     if ( sub_802D246() & 0x200000 )
     {
-        v9 = sub_8013854(0);
+        v9 = GetNaviStats203CCE0Addr(0);
         CopyWords(v9, &byte_203CBE8[4], 0x64u);
         v10 = byte_203CC50;
         v11 = 20;
@@ -12362,11 +12362,11 @@ int sub_800B144()
             case 2:
             case 3:
             case 4:
-                initStruct_8013438(&byte_203CBE8[4], v2, v3, v4);
+                initNaviStats_WithDefaultStatsMaybe_8013438(&byte_203CBE8[4], v2, v3, v4);
                 break;
             case 5:
             case 8:
-                initStruct_8013438(&byte_203CBE8[4], v2, v3, v4);
+                initNaviStats_WithDefaultStatsMaybe_8013438(&byte_203CBE8[4], v2, v3, v4);
                 v14 = sub_801401E(0);
                 word_203CC2A = *(v14 + 62);
                 *byte_203CC2C = (*(v14 + 64) >> 16 << 16) | (*(v14 + 64) >> 16);
@@ -12420,20 +12420,20 @@ int sub_800B144()
 
 
 // 0x800b2d8
-int sub_800B2D8()
+int battle_copyStructsIncludingBattleStats_800b2d8()
 {
     int result; // r0
 
-    CopyWords(byte_203F4AC, byte_203CE00, 0x64u);
-    CopyWords(byte_203F4AC, byte_203CB10, 0x64u);
-    CopyWords(byte_203F4AC, &unk_2034A60, 0x64u);
-    CopyWords(byte_203F4AC, byte_203C9E4, 0x64u);
+    CopyWords(eBattleNaviStats203F4AC, byte_203CE00, 0x64u);
+    CopyWords(eBattleNaviStats203F4AC, eBattleNaviStats203CB10, 0x64u);
+    CopyWords(eBattleNaviStats203F4AC, &eBattleNaviStats2034A60, 0x64u);
+    CopyWords(eBattleNaviStats203F4AC, eBattleNaviStats203C9E4, 0x64u);
     if ( sub_802D246() & 8 )
     {
         CopyWords(byte_203F5AC, byte_203CE64, 0x64u);
-        CopyWords(byte_203F5AC, byte_203CB74, 0x64u);
-        CopyWords(byte_203F5AC, &unk_2034AC4, 0x64u);
-        CopyWords(byte_203F5AC, byte_203C980, 0x64u);
+        CopyWords(byte_203F5AC, eBattleNaviStats203CB74, 0x64u);
+        CopyWords(byte_203F5AC, &eBattleNaviStats2034AC4, 0x64u);
+        CopyWords(byte_203F5AC, eBattleNaviStats203C980, 0x64u);
     }
     eRngSeed20013F0 = *byte_203F4A4;
     CopyWords(byte_203F510, byte_203EB00, 0x28u);
@@ -12656,7 +12656,7 @@ int sub_800B694()
 
 // 0x800b6aa
 // (u8 unk01) -> void
-int __fastcall eStruct200A008_setUnk01(int result)
+int __fastcall eStruct200A008_setBattleResult(int result)
 {
     byte_200A009 = result;
     return result;
@@ -12665,7 +12665,7 @@ int __fastcall eStruct200A008_setUnk01(int result)
 
 // 0x800b6b0
 // () -> u8
-int eStruct200A008_getUnk01()
+int eStruct200A008_getBattleResult()
 {
     return byte_200A009;
 }
