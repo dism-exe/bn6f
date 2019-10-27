@@ -6586,7 +6586,7 @@ char (*ACDCTown_EnterMapGroup())[8]
     sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(off_804CEFC[gs->MapSubOffset]);
     chatbox_uncompBasedOnMap_803FD08();
-    sub_804CF84();
+    ACDCTown_SpawnMapObjectsForMap();
     result = off_804D0E4[gs->MapSubOffset];
     gs->unk_64 = result;
     return result;
@@ -6594,14 +6594,14 @@ char (*ACDCTown_EnterMapGroup())[8]
 
 
 // 0x804cf32
-int __fastcall sub_804CF32(int a1, int a2)
+int __fastcall ACDCTown_sub_8002354_804cf32(int a1, int a2)
 {
     return sub_8002354(off_804CF44[a2]);
 }
 
 
 // 0x804cf84
-int sub_804CF84()
+int ACDCTown_SpawnMapObjectsForMap()
 {
     int v0; // r10
 

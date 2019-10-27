@@ -1,6 +1,6 @@
 
-	thumb_func_start sub_805DF08
-sub_805DF08:
+	thumb_func_start GreenTown_EnterMapGroup
+GreenTown_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_805DF64 // =off_805DD24 
@@ -31,7 +31,7 @@ sub_805DF08:
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
 	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_805DFF0
+	bl GreenTown_SpawnMapObjectsForMap
 	ldr r0, off_805DF6C // =off_805E1FC 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
@@ -53,10 +53,10 @@ dword_805DF90: .word 0xFFFF591C
 byte_805DF94: .byte 0x1C, 0x5A, 0x1C, 0x60, 0xFF, 0xFF
 byte_805DF9A: .byte 0x1C, 0x5D, 0x1C, 0x62, 0xFF, 0xFF
 byte_805DFA0: .byte 0xFF, 0xFF
-	thumb_func_end sub_805DF08
+	thumb_func_end GreenTown_EnterMapGroup
 
-	thumb_func_start sub_805DFA2
-sub_805DFA2:
+	thumb_func_start GreenTown_sub_8002354_805dfa2
+GreenTown_sub_8002354_805dfa2:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_805DFB0 // =off_805DFB4 
@@ -79,10 +79,10 @@ off_805DFE0: .word byte_805DEA8
 	.word 0xFFFFFFFF
 off_805DFE8: .word byte_805DED8
 	.word 0xFFFFFFFF
-	thumb_func_end sub_805DFA2
+	thumb_func_end GreenTown_sub_8002354_805dfa2
 
-	thumb_func_start sub_805DFF0
-sub_805DFF0:
+	thumb_func_start GreenTown_SpawnMapObjectsForMap
+GreenTown_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -100,6 +100,6 @@ pt_805E008:
 	.word byte_805E09C
 	.word byte_805E118
 	.word dword_805E158
-	thumb_func_end sub_805DFF0
+	thumb_func_end GreenTown_SpawnMapObjectsForMap
 
 /*For debugging purposes, connect comment at any range!*/

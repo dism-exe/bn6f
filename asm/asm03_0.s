@@ -20285,20 +20285,20 @@ loc_80308FA:
 	pop {r4-r7,pc}
 EnterMap_RealWorldMapGroupJumptable:
 	.word ACDCTown_EnterMapGroup+1
-	.word sub_804E62C+1
-	.word sub_8052688+1
-	.word sub_80595B8+1
-	.word sub_805DF08+1
-	.word sub_806036C+1
-	.word sub_8062AB0+1
+	.word CentralTown_EnterMapGroup+1
+	.word CyberAcademy_EnterMapGroup+1
+	.word SeasideTown_EnterMapGroup+1
+	.word GreenTown_EnterMapGroup+1
+	.word SkyTown_EnterMapGroup+1
+	.word ExpoSite_EnterMapGroup+1
 UnkRealWorldMapGroupJumptable_8030920:
-	.word sub_804CF32+1
-	.word sub_804E6D0+1
-	.word sub_8052764+1
-	.word sub_8059664+1
-	.word sub_805DFA2+1
-	.word sub_8060406+1
-	.word sub_8062B64+1
+	.word ACDCTown_sub_8002354_804cf32+1
+	.word CentralTown_sub_8002354_804e6d0+1
+	.word CyberAcademy_sub_8002354_8052764+1
+	.word SeasideTown_sub_8002354_8059664+1
+	.word GreenTown_sub_8002354_805dfa2+1
+	.word SkyTown_sub_8002354_8060406+1
+	.word ExpoSite_sub_8002354_8062b64+1
 EnterMap_InternetMapGroupJumptable:
 	.word sub_80663D0+1
 	.word sub_8067B5C+1

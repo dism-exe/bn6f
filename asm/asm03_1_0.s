@@ -1355,13 +1355,14 @@ NPCList_maps00: .word npc_map00_ACDC_804D0B4
 	.word off_805E184
 	.word off_806065C
 	.word off_8062F78
-RealWorldSpawnMapObjectJumptable: .word sub_804CF84+1
-	.word sub_804E720+1
-	.word sub_80527F0+1
-	.word sub_80596C8+1
-	.word sub_805DFF0+1
-	.word sub_806044C+1
-	.word sub_8062BCC+1
+RealWorldSpawnMapObjectJumptable:
+	.word ACDCTown_SpawnMapObjectsForMap+1
+	.word CentralTown_SpawnMapObjectsForMap+1
+	.word CyberAcademy_SpawnMapObjectsForMap+1
+	.word SeasideTown_SpawnMapObjectsForMap+1
+	.word GreenTown_SpawnMapObjectsForMap+1
+	.word SkyTown_SpawnMapObjectsForMap+1
+	.word ExpoSite_SpawnMapObjectsForMap+1
 
 InternetMapScriptPointers: .word off_80665A4
 	.word off_80665AC

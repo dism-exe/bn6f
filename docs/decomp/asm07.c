@@ -1,5 +1,5 @@
 // 0x805df08
-char (*sub_805DF08())[8]
+char (*GreenTown_EnterMapGroup())[8]
 {
 	int v0; // r5
 	int v1; // r10
@@ -18,7 +18,7 @@ char (*sub_805DF08())[8]
 	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(*(&off_805DF74 + *(v0 + 5)));
 	chatbox_uncompBasedOnMap_803FD08();
-	sub_805DFF0();
+	GreenTown_SpawnMapObjectsForMap();
 	result = off_805E1FC[*(v0 + 5)];
 	*(v0 + 100) = result;
 	return result;
@@ -26,14 +26,14 @@ char (*sub_805DF08())[8]
 
 
 // 0x805dfa2
-int __fastcall sub_805DFA2(int a1, int a2)
+int __fastcall GreenTown_sub_8002354_805dfa2(int a1, int a2)
 {
 	return sub_8002354((&off_805DFB4)[a2]);
 }
 
 
 // 0x805dff0
-int sub_805DFF0()
+int GreenTown_SpawnMapObjectsForMap()
 {
 	int v0; // r10
 

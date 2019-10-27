@@ -1,6 +1,6 @@
 
-	thumb_func_start sub_80595B8
-sub_80595B8:
+	thumb_func_start SeasideTown_EnterMapGroup
+SeasideTown_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_8059614 // =off_8059294 
@@ -31,7 +31,7 @@ sub_80595B8:
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
 	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_80596C8
+	bl SeasideTown_SpawnMapObjectsForMap
 	ldr r0, off_805961C // =off_8059DE8 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
@@ -55,10 +55,10 @@ byte_805964E: .byte 0x1C, 0x35, 0x1C, 0x4D, 0x1C, 0x2F, 0x18, 0x25, 0x18
 	.byte 0x1C, 0xFF, 0xFF
 byte_805965A: .byte 0x1C, 0x35, 0x1C, 0x40, 0x1C, 0x48, 0xFF, 0xFF
 byte_8059662: .byte 0xFF, 0xFF
-	thumb_func_end sub_80595B8
+	thumb_func_end SeasideTown_EnterMapGroup
 
-	thumb_func_start sub_8059664
-sub_8059664:
+	thumb_func_start SeasideTown_sub_8002354_8059664
+SeasideTown_sub_8002354_8059664:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_8059674 // =off_8059678 
@@ -87,10 +87,10 @@ off_80596B4: .word byte_8059528
 off_80596BC: .word byte_8059558
 	.word byte_8059588
 	.word 0xFFFFFFFF
-	thumb_func_end sub_8059664
+	thumb_func_end SeasideTown_sub_8002354_8059664
 
-	thumb_func_start sub_80596C8
-sub_80596C8:
+	thumb_func_start SeasideTown_SpawnMapObjectsForMap
+SeasideTown_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -108,6 +108,6 @@ off_80596E0:
 	.word byte_8059A58
 	.word byte_8059C00
 	.word byte_8059D30
-	thumb_func_end sub_80596C8
+	thumb_func_end SeasideTown_SpawnMapObjectsForMap
 
 /*For debugging purposes, connect comment at any range!*/

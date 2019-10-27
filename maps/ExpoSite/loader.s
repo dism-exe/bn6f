@@ -1,6 +1,6 @@
 
-	thumb_func_start sub_8062AB0
-sub_8062AB0:
+	thumb_func_start ExpoSite_EnterMapGroup
+ExpoSite_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_8062B0C // =off_8062728 
@@ -31,7 +31,7 @@ sub_8062AB0:
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
 	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_8062BCC
+	bl ExpoSite_SpawnMapObjectsForMap
 	ldr r0, off_8062B14 // =off_8063008 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
@@ -58,10 +58,10 @@ dword_8062B4E: .word 0xFFFF7B1C
 byte_8062B52: .byte 0x1C, 0x65, 0x1C, 0x20, 0xFF, 0xFF
 byte_8062B58: .byte 0x1C, 0x85, 0x1C, 0x83, 0x1C, 0x84, 0x1C, 0x94, 0x1C
 	.byte 0x97, 0xFF, 0xFF
-	thumb_func_end sub_8062AB0
+	thumb_func_end ExpoSite_EnterMapGroup
 
-	thumb_func_start sub_8062B64
-sub_8062B64:
+	thumb_func_start ExpoSite_sub_8002354_8062b64
+ExpoSite_sub_8002354_8062b64:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_8062B74 // =off_8062B78 
@@ -91,10 +91,10 @@ off_8062BB8: .word byte_80629F0
 	.word 0xFFFFFFFF
 off_8062BC4: .word byte_8062A70
 	.word 0xFFFFFFFF
-	thumb_func_end sub_8062B64
+	thumb_func_end ExpoSite_sub_8002354_8062b64
 
-	thumb_func_start sub_8062BCC
-sub_8062BCC:
+	thumb_func_start ExpoSite_SpawnMapObjectsForMap
+ExpoSite_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -113,6 +113,6 @@ pt_8062BE4:
 	.word byte_8062E88
 	.word byte_8062EB4
 	.word byte_8062F1C
-	thumb_func_end sub_8062BCC
+	thumb_func_end ExpoSite_SpawnMapObjectsForMap
 
 /*For debugging purposes, connect comment at any range!*/

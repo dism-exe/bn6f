@@ -1,6 +1,6 @@
 
-	thumb_func_start sub_8052688
-sub_8052688:
+	thumb_func_start CyberAcademy_EnterMapGroup
+CyberAcademy_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_80526E4 // =off_8052244 
@@ -31,7 +31,7 @@ sub_8052688:
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
 	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_80527F0
+	bl CyberAcademy_SpawnMapObjectsForMap
 	ldr r0, off_80526EC // =off_8052EE8 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
@@ -67,10 +67,10 @@ off_8052748: .word off_81C241C
 byte_8052754: .byte 0x1C, 0x43, 0x1C, 0x7A, 0x18, 0x1C, 0xFF, 0xFF
 dword_805275C: .word 0xFFFF1F18
 dword_8052760: .word 0xFFFF2418
-	thumb_func_end sub_8052688
+	thumb_func_end CyberAcademy_EnterMapGroup
 
-	thumb_func_start sub_8052764
-sub_8052764:
+	thumb_func_start CyberAcademy_sub_8002354_8052764
+CyberAcademy_sub_8002354_8052764:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_8052774 // =off_8052778 
@@ -109,10 +109,10 @@ off_80527DC: .word byte_8052538
 dword_80527E4: .word 0xFFFFFFFF
 dword_80527E8: .word 0xFFFFFFFF
 dword_80527EC: .word 0xFFFFFFFF
-	thumb_func_end sub_8052764
+	thumb_func_end CyberAcademy_sub_8002354_8052764
 
-	thumb_func_start sub_80527F0
-sub_80527F0:
+	thumb_func_start CyberAcademy_SpawnMapObjectsForMap
+CyberAcademy_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -135,6 +135,6 @@ off_8052808: .word byte_8052834
 	.word dword_8052D80
 	// <endpool> <endfile>
 	.word dword_8052D84
-	thumb_func_end sub_80527F0
+	thumb_func_end CyberAcademy_SpawnMapObjectsForMap
 
 /*For debugging purposes, connect comment at any range!*/

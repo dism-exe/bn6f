@@ -48,32 +48,25 @@ chatbox:
 asm03_2:
 	.include "asm/asm03_2.s"
 	.include "maps/ACDCTown/loader.s"
-dat03:
-	.include "data/dat03.s"
+	.include "maps/ACDCTown/data.s"
 asm04:
-	.include "asm/asm04.s"
-dat04:
-	.include "data/dat04.s"
+	.include "maps/CentralTown/loader.s"
+	.include "maps/CentralTown/data.s"
 asm05:
-	.include "asm/asm05.s"
-dat05:
-	.include "data/dat05.s"
+	.include "maps/CyberAcademy/loader.s"
+	.include "maps/CyberAcademy/data.s"
 asm06:
-	.include "asm/asm06.s"
-dat06:
-	.include "data/dat06.s"
+	.include "maps/SeasideTown/loader.s"
+	.include "maps/SeasideTown/data.s"
 asm07:
-	.include "asm/asm07.s"
-dat07:
-	.include "data/dat07.s"
+	.include "maps/GreenTown/loader.s"
+	.include "maps/GreenTown/data.s"
 asm08:
-	.include "asm/asm08.s"
-dat08:
-	.include "data/dat08.s"
+	.include "maps/SkyTown/loader.s"
+	.include "maps/SkyTown/data.s"
 asm09:
-	.include "asm/asm09.s"
-dat09:
-	.include "data/dat09.s"
+	.include "maps/ExpoSite/loader.s"
+	.include "maps/ExpoSite/data.s"
 asm10:
 	.include "asm/asm10.s"
 dat10:

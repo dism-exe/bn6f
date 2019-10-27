@@ -1,5 +1,5 @@
 // 0x806036c
-char (*sub_806036C())[8]
+char (*SkyTown_EnterMapGroup())[8]
 {
     int v0; // r5
     int v1; // r10
@@ -18,7 +18,7 @@ char (*sub_806036C())[8]
     sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(*(&off_80603D8 + *(v0 + 5)));
     chatbox_uncompBasedOnMap_803FD08();
-    sub_806044C();
+    SkyTown_SpawnMapObjectsForMap();
     result = off_80606BC[*(v0 + 5)];
     *(v0 + 100) = result;
     return result;
@@ -26,14 +26,14 @@ char (*sub_806036C())[8]
 
 
 // 0x8060406
-int __fastcall sub_8060406(int a1, int a2)
+int __fastcall SkyTown_sub_8002354_8060406(int a1, int a2)
 {
     return sub_8002354((&off_8060418)[a2]);
 }
 
 
 // 0x806044c
-int sub_806044C()
+int SkyTown_SpawnMapObjectsForMap()
 {
     int v0; // r10
 

@@ -31,7 +31,7 @@ ACDCTown_EnterMapGroup:
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
 	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_804CF84
+	bl ACDCTown_SpawnMapObjectsForMap
 	ldr r0, off_804CEF4 // =off_804D0E4 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
@@ -61,8 +61,8 @@ byte_804CF2E: .byte 0xFF, 0xFF
 byte_804CF30: .byte 0xFF, 0xFF
 	thumb_func_end ACDCTown_EnterMapGroup
 
-	thumb_func_start sub_804CF32
-sub_804CF32:
+	thumb_func_start ACDCTown_sub_8002354_804cf32
+ACDCTown_sub_8002354_804cf32:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_804CF40 // =off_804CF44 
@@ -86,10 +86,10 @@ dword_804CF74: .word 0xFFFFFFFF
 dword_804CF78: .word 0xFFFFFFFF
 dword_804CF7C: .word 0xFFFFFFFF
 dword_804CF80: .word 0xFFFFFFFF
-	thumb_func_end sub_804CF32
+	thumb_func_end ACDCTown_sub_8002354_804cf32
 
-	thumb_func_start sub_804CF84
-sub_804CF84:
+	thumb_func_start ACDCTown_SpawnMapObjectsForMap
+ACDCTown_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -110,4 +110,4 @@ off_804CF9C:
 	.word dword_804D098
 	.word dword_804D09C
 	.word dword_804D0A0
-	thumb_func_end sub_804CF84
+	thumb_func_end ACDCTown_SpawnMapObjectsForMap

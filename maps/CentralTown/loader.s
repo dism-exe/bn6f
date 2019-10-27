@@ -1,6 +1,6 @@
 
-	thumb_func_start sub_804E62C
-sub_804E62C:
+	thumb_func_start CentralTown_EnterMapGroup
+CentralTown_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_804E688 // =off_804E38C 
@@ -31,7 +31,7 @@ sub_804E62C:
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
 	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_804E720
+	bl CentralTown_SpawnMapObjectsForMap
 	ldr r0, off_804E690 // =off_804E9CC 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
@@ -54,10 +54,10 @@ dword_804E6BE: .word 0xFFFF071C
 dword_804E6C2: .word 0xFFFF141C
 byte_804E6C6: .byte 0xFF, 0xFF
 byte_804E6C8: .byte 0x1C, 0x96, 0x1C, 0x9D, 0x18, 0x1C, 0xFF, 0xFF
-	thumb_func_end sub_804E62C
+	thumb_func_end CentralTown_EnterMapGroup
 
-	thumb_func_start sub_804E6D0
-sub_804E6D0:
+	thumb_func_start CentralTown_sub_8002354_804e6d0
+CentralTown_sub_8002354_804e6d0:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_804E6E0 // =off_804E6E4 
@@ -81,10 +81,10 @@ off_804E70C: .word byte_804E5D4
 dword_804E714: .word 0xFFFFFFFF
 off_804E718: .word byte_804E604
 	.word 0xFFFFFFFF
-	thumb_func_end sub_804E6D0
+	thumb_func_end CentralTown_sub_8002354_804e6d0
 
-	thumb_func_start sub_804E720
-sub_804E720:
+	thumb_func_start CentralTown_SpawnMapObjectsForMap
+CentralTown_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -102,5 +102,5 @@ off_804E738:
 	.word dword_804E8D0
 	.word dword_804E8D4
 	.word byte_804E8D8
-	thumb_func_end sub_804E720
+	thumb_func_end CentralTown_SpawnMapObjectsForMap
 /*For debugging purposes, connect comment at any range!*/

@@ -1,6 +1,6 @@
 
-	thumb_func_start sub_806036C
-sub_806036C:
+	thumb_func_start SkyTown_EnterMapGroup
+SkyTown_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_80603C8 // =off_8060184 
@@ -31,7 +31,7 @@ sub_806036C:
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
 	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_806044C
+	bl SkyTown_SpawnMapObjectsForMap
 	ldr r0, off_80603D0 // =off_80606BC 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
@@ -52,10 +52,10 @@ byte_80603EE: .byte 0x1C, 0x6E, 0x1C, 0x58, 0x1C, 0x41, 0x1C, 0x90, 0x1C
 	.byte 0x91, 0x1C, 0x4B, 0xFF, 0xFF
 byte_80603FC: .byte 0xFF, 0xFF
 byte_80603FE: .byte 0x1C, 0x65, 0x18, 0x24, 0x18, 0x25, 0xFF, 0xFF
-	thumb_func_end sub_806036C
+	thumb_func_end SkyTown_EnterMapGroup
 
-	thumb_func_start sub_8060406
-sub_8060406:
+	thumb_func_start SkyTown_sub_8002354_8060406
+SkyTown_sub_8002354_8060406:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_8060414 // =off_8060418 
@@ -81,10 +81,10 @@ off_806043C:
 off_8060444:
 	.word byte_806032C
 	.word 0xFFFFFFFF
-	thumb_func_end sub_8060406
+	thumb_func_end SkyTown_sub_8002354_8060406
 
-	thumb_func_start sub_806044C
-sub_806044C:
+	thumb_func_start SkyTown_SpawnMapObjectsForMap
+SkyTown_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -101,6 +101,6 @@ pt_8060464:
 	.word byte_80604A0
 	.word dword_80605E4
 	.word byte_80605E8
-	thumb_func_end sub_806044C
+	thumb_func_end SkyTown_SpawnMapObjectsForMap
 
 /*For debugging purposes, connect comment at any range!*/
