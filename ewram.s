@@ -882,8 +882,11 @@ byte_200AC34:: // 0x200ac34
 	.space 1
 byte_200AC35:: // 0x200ac35
 	.space 11
-unk_200AC40:: // 0x200ac40
-	.space 64
+
+eRenderInfo:: // 0x200ac40
+	render_info_struct eRenderInfo
+eRenderInfoEnd::
+
 eS200AC80:: // 0x200ac80
 	.space 4
 word_200AC84:: // 0x200ac84

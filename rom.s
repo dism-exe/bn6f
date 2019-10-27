@@ -47,6 +47,7 @@ chatbox:
 	.include "asm/chatbox.s"
 asm03_2:
 	.include "asm/asm03_2.s"
+	.include "maps/ACDCTown/loader.s"
 dat03:
 	.include "data/dat03.s"
 asm04:

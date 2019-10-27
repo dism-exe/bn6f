@@ -2523,13 +2523,13 @@ byte_8001618: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x8, 0x3C, 0x0, 0x0,
 	thumb_func_start map_8001708
 map_8001708:
 	push {lr}
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_8001712
 	ldr r3, off_8001724 // =off_803385C
 	b loc_8001716
 loc_8001712:
 	ldr r3, off_8001728 // =off_8033878
-	sub r0, #0x80
+	sub r0, #INTERNET_MAP_GROUP_START
 loc_8001716:
 	lsl r0, r0, #2
 	ldr r3, [r3,r0]

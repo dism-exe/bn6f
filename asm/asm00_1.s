@@ -6652,7 +6652,7 @@ SetPrimaryToolkitPointers:
 ToolkitPointers:
 	.word i_joGameSubsysSel
 	.word eJoypad
-	.word unk_200AC40
+	.word eRenderInfo
 	.word eCamera
 	.word eCutsceneState
 	.word byte_2011BB0

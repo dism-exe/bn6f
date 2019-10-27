@@ -6567,7 +6567,7 @@ int sub_804CE3C()
 
 
 // 0x804ce90
-char (*sub_804CE90())[8]
+char (*ACDCTown_EnterMapGroup())[8]
 {
     GameState *gs; // r5
     Toolkit *tk; // r10

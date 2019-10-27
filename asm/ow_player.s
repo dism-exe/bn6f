@@ -1807,8 +1807,8 @@ off_809E05C: .word eOWPlayerObject
 off_809E060: .word eStruct2000aa0
 	thumb_func_end sub_809E04C
 
-	thumb_func_start sub_809E064
-sub_809E064:
+	thumb_func_start spawnOWPlayerObjectForEnterMap_809e064
+spawnOWPlayerObjectForEnterMap_809e064:
 	push {r4,r6,r7,lr}
 	mov r0, #0
 	mov r4, #0
@@ -1828,7 +1828,7 @@ sub_809E064:
 	strb r1, [r5,#oOWPlayerObject_FacingDirection]
 locret_809E088:
 	pop {r4,r6,r7,pc}
-	thumb_func_end sub_809E064
+	thumb_func_end spawnOWPlayerObjectForEnterMap_809e064
 
 	thumb_local_start
 sub_809E08A:

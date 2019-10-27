@@ -20284,7 +20284,7 @@ loc_80308FA:
 	add sp, sp, #8
 	pop {r4-r7,pc}
 EnterMap_RealWorldMapGroupJumptable:
-	.word sub_804CE90+1
+	.word ACDCTown_EnterMapGroup+1
 	.word sub_804E62C+1
 	.word sub_8052688+1
 	.word sub_80595B8+1

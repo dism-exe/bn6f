@@ -785,14 +785,14 @@ int __fastcall map_8034B4C(int mapGroup, int mapNumber)
     ZeroFillByWord(dword_2011EA0, 64);
     sub_8036E44();
     v2 = sub_8035028();
-    npc_80350A8(v2, v3, v4, v5);
+    owPlayer_80350a8(v2, v3, v4, v5);
     npc_getMapSpriteScriptOffsets();
     sub_803537C();
     sub_80353DA();
     vRelMapGroup = vMapGroup;
     if ( vMapGroup >= 0x80 )
     {
-        v7 = &maps80_8034670;
+        v7 = &InternetMapScriptPointers;
         vRelMapGroup = vMapGroup - 0x80;
     }
     else
@@ -1335,11 +1335,11 @@ signed int sub_8035084()
 
 
 // 0x80350a8
-int __fastcall npc_80350A8(int a1, int a2, int a3, int a4)
+int __fastcall owPlayer_80350a8(int a1, int a2, int a3, int a4)
 {
     int v4; // r5
 
-    sub_809E064(a1, a2, a3, a4);
+    spawnOWPlayerObjectForEnterMap_809e064(a1, a2, a3, a4);
     return sub_80301B2(1, v4 + 28);
 }
 
@@ -1431,12 +1431,12 @@ int npc_803516C()
     v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup);
     if ( v1 >= 128 )
     {
-        v2 = &off_803483C;
+        v2 = &InternetSpawnMapObjectJumptable;
         v1 -= 128;
     }
     else
     {
-        v2 = &off_8034654;
+        v2 = &RealWorldSpawnMapObjectJumptable;
     }
     return (v2[v1])();
 }

@@ -79,6 +79,11 @@ def evaluate_imm_sym_or_num_error_if_undefined(imm_sym_or_num, fileline):
     
     return evaluate_sym_or_num_error_if_undefined(imm_sym_or_num[1:], fileline)
 
+enter_map_gfx_something_structs = (
+    0x806DA90, 0x806FD8C, 0x8071C68,
+    0x8075568, 
+)
+
 # todo: figure out a way to implement known struct detection
 def evaluate_data(data, fileline):
     global syms
@@ -128,6 +133,8 @@ def evaluate_data(data, fileline):
                 return datatypes.Primitive(Size.UNKNOWN, sym.value).wrap()
         elif sym.section in RAM_SECTIONS_SYMBOLS:
             return datatypes.RAMPointer(0, sym).wrap()
+        elif sym.value in enter_map_gfx_something_structs:
+            return datatypes.Struct806DA90().wrap()
         else:
             return datatypes.ROMPointer(sym).wrap()
 
