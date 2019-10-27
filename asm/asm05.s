@@ -5,27 +5,27 @@ sub_8052688:
 	mov r7, r10
 	ldr r0, off_80526E4 // =off_8052244 
 	ldr r1, [r7,#oToolkit_Warp2011bb0_Ptr]
-	ldrb r2, [r5,#5]
+	ldrb r2, [r5,#oGameState_MapNumber]
 	lsl r4, r2, #2
 	add r0, r0, r4
 	ldr r0, [r0]
-	str r0, [r1,#0x14]
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	str r0, [r1,#oWarp2011bb0_Ptr_14]
+	ldrb r0, [r5,#oGameState_MapGroup]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	bl sub_803037C
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldrb r0, [r5,#oGameState_MapGroup]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	bl sub_8030AA4
-	ldr r0, [r5,#0x24]
-	ldr r1, [r5,#0x28]
-	ldr r2, [r5,#0x2c]
-	ldrb r3, [r5,#4]
-	ldrb r4, [r5,#5]
+	ldr r0, [r5,#oGameState_PlayerX]
+	ldr r1, [r5,#oGameState_PlayerY]
+	ldr r2, [r5,#oGameState_Unk_2c]
+	ldrb r3, [r5,#oGameState_MapGroup]
+	ldrb r4, [r5,#oGameState_MapNumber]
 	bl camera_802FF4C
 	bl sub_8030472
 	ldr r0, off_80526E8 // =unk_2037800 
 	bl sub_80028D4
-	ldrb r1, [r5,#5]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, off_80526F0 // =off_80526F4 
 	ldr r0, [r0,r1]
@@ -33,10 +33,10 @@ sub_8052688:
 	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
 	bl sub_80527F0
 	ldr r0, off_80526EC // =off_8052EE8 
-	ldrb r1, [r5,#5]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
-	str r0, [r5,#0x64]
+	str r0, [r5,#oGameState_Unk_64]
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_80526E4: .word off_8052244

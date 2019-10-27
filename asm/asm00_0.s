@@ -2583,7 +2583,7 @@ off_8001774: .word ColorSpecialEffectsSelection
 sRender_08_setRenderingState:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r0, [r1]
+	strh r0, [r1,#oRenderInfo_Unk_00]
 	mov pc, lr
 	thumb_func_end sRender_08_setRenderingState
 
@@ -2591,7 +2591,7 @@ sRender_08_setRenderingState:
 sub_8001780:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	ldrh r0, [r1]
+	ldrh r0, [r1,#oRenderInfo_Unk_00]
 	mov pc, lr
 	thumb_func_end sub_8001780
 

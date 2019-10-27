@@ -18884,8 +18884,8 @@ camera_802FF4C:
 	push {r0-r2}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_CameraPtr]
-	ldrb r0, [r5,#3]
-	ldr r1, [r5,#0x14]
+	ldrb r0, [r5,#oCamera_Unk_03]
+	ldr r1, [r5,#oCamera_Unk_14]
 	push {r0,r1,r5}
 	mov r0, r10
 	// memBlock
@@ -18894,28 +18894,28 @@ camera_802FF4C:
 	mov r1, #0x4c 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0,r1,r5}
-	strb r0, [r5,#3]
-	str r1, [r5,#0x14]
+	strb r0, [r5,#oCamera_Unk_03]
+	str r1, [r5,#oCamera_Unk_14]
 	ldr r0, off_802FFF0 // =eStruct200BE70
 	ldrb r3, [r0]
 	sub r3, #0x1e
 	lsl r3, r3, #0x12
-	str r3, [r5,#0x1c]
+	str r3, [r5,#oCamera_Unk_1c]
 	neg r3, r3
-	str r3, [r5,#0x18]
+	str r3, [r5,#oCamera_Unk_18]
 	ldrb r3, [r0,#0x1] // (byte_200BE71 - 0x200be70)
 	sub r3, #0x14
 	lsl r3, r3, #0x12
-	str r3, [r5,#0x20]
+	str r3, [r5,#oCamera_Unk_20]
 	neg r3, r3
-	str r3, [r5,#0x24]
+	str r3, [r5,#oCamera_Unk_24]
 	pop {r1-r3}
-	str r1, [r5,#0x30]
-	str r2, [r5,#0x34]
-	str r3, [r5,#0x38]
+	str r1, [r5,#oCamera_X]
+	str r2, [r5,#oCamera_Y]
+	str r3, [r5,#oCamera_Z]
 	mov r1, #0
-	strh r1, [r5,#4]
-	strh r1, [r5,#6]
+	strh r1, [r5,#oCamera_Unk_04]
+	strh r1, [r5,#oCamera_Unk_06]
 	pop {r0,r1}
 	cmp r0, #0xf0
 	bge loc_802FFB8
@@ -18945,7 +18945,7 @@ loc_802FFC4:
 	ldr r3, [r3,r0]
 	ldr r0, [r3,r1]
 loc_802FFCA:
-	strb r0, [r5,#2]
+	strb r0, [r5,#oCamera_Unk_02]
 	bl camera_doShakeEffect_80301e8
 	bl sub_8030054
 	bl sub_80302D0
@@ -19005,7 +19005,7 @@ off_8030040: .word sub_8030136+1
 sub_8030054:
 	push {lr}
 	ldr r0, off_8030064 // =off_8030068
-	ldrb r1, [r5,#2]
+	ldrb r1, [r5,#oCamera_Unk_02]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
@@ -19022,107 +19022,107 @@ off_8030068: .word sub_803007C+1
 	thumb_local_start
 sub_803007C:
 	mov r1, #0x0 // byte_0
-	ldr r4, [r5,#0x3c]
+	ldr r4, [r5,#oCamera_nextX_3c]
 	sub r1, r1, r4
 	mov r6, #0
-	ldr r4, [r5,#0x40]
+	ldr r4, [r5,#oCamera_nextY_40]
 	sub r6, r6, r4
 	mov r7, r6
 	mov r8, r1
 	add r1, r1, r6
 	asr r1, r1, #0x10
 	neg r1, r1
-	strh r1, [r5,#4]
+	strh r1, [r5,#oCamera_Unk_04]
 	mov r6, r7
 	mov r2, r8
 	sub r6, r6, r2
 	asr r6, r6, #1
 	mov r4, #0
 	sub r6, r6, r4
-	ldr r2, [r5,#0x44]
+	ldr r2, [r5,#oCamera_nextZ_44]
 	add r6, r6, r2
 	asr r6, r6, #0x10
 	neg r6, r6
-	strh r6, [r5,#6]
+	strh r6, [r5,#oCamera_Unk_06]
 	mov pc, lr
 	thumb_func_end sub_803007C
 
 	thumb_local_start
 sub_80300AC:
-	ldr r1, [r5,#0x3c]
-	ldr r2, [r5,#0x18]
+	ldr r1, [r5,#oCamera_nextX_3c]
+	ldr r2, [r5,#oCamera_Unk_18]
 	cmp r1, r2
 	bge loc_80300B6
 	mov r1, r2
 loc_80300B6:
-	ldr r2, [r5,#0x1c]
+	ldr r2, [r5,#oCamera_Unk_1c]
 	cmp r1, r2
 	ble loc_80300BE
 	mov r1, r2
 loc_80300BE:
-	str r1, [r5,#0x3c]
+	str r1, [r5,#oCamera_nextX_3c]
 	asr r1, r1, #0x10
-	strh r1, [r5,#4]
-	ldr r6, [r5,#0x44]
-	ldr r4, [r5,#0x40]
-	ldr r2, [r5,#0x24]
+	strh r1, [r5,#oCamera_Unk_04]
+	ldr r6, [r5,#oCamera_nextZ_44]
+	ldr r4, [r5,#oCamera_nextY_40]
+	ldr r2, [r5,#oCamera_Unk_24]
 	add r2, r2, r6
 	cmp r4, r2
 	bge loc_80300D2
 	mov r4, r2
 loc_80300D2:
-	ldr r2, [r5,#0x20]
+	ldr r2, [r5,#oCamera_Unk_20]
 	add r2, r2, r6
 	cmp r4, r2
 	ble loc_80300DC
 	mov r4, r2
 loc_80300DC:
-	str r4, [r5,#0x40]
+	str r4, [r5,#oCamera_nextY_40]
 	mov r6, r4
-	ldr r4, [r5,#0x44]
-	ldr r2, [r5,#0x24]
+	ldr r4, [r5,#oCamera_nextZ_44]
+	ldr r2, [r5,#oCamera_Unk_24]
 	add r2, r2, r6
-	str r2, [r5,#0x2c]
+	str r2, [r5,#oCamera_Unk_2c]
 	cmp r4, r2
 	bge loc_80300EE
 	mov r4, r2
 loc_80300EE:
-	ldr r2, [r5,#0x20]
+	ldr r2, [r5,#oCamera_Unk_20]
 	add r2, r2, r6
-	str r2, [r5,#0x28]
+	str r2, [r5,#oCamera_Unk_28]
 	cmp r4, r2
 	ble loc_80300FA
 	mov r4, r2
 loc_80300FA:
-	str r4, [r5,#0x44]
+	str r4, [r5,#oCamera_nextZ_44]
 	sub r6, r6, r4
 	asr r6, r6, #0x10
-	strh r6, [r5,#6]
+	strh r6, [r5,#oCamera_Unk_06]
 locret_8030102:
 	mov pc, lr
 	thumb_func_end sub_80300AC
 
 	thumb_local_start
 sub_8030104:
-	ldr r4, [r5,#0x3c]
+	ldr r4, [r5,#oCamera_nextX_3c]
 	asr r4, r4, #0x10
 	add r4, #0x80
 	add r4, #8
-	strh r4, [r5,#4]
-	ldr r4, [r5,#0x40]
+	strh r4, [r5,#oCamera_Unk_04]
+	ldr r4, [r5,#oCamera_nextY_40]
 	asr r4, r4, #0x10
 	add r4, #0x80
 	add r4, #0x30 
-	strh r4, [r5,#6]
+	strh r4, [r5,#oCamera_Unk_06]
 	mov pc, lr
 	thumb_func_end sub_8030104
 
 	thumb_local_start
 sub_803011A:
-	ldrh r1, [r5,#4]
-	strh r1, [r5,#8]
-	ldrh r1, [r5,#6]
-	strh r1, [r5,#0xa]
+	ldrh r1, [r5,#oCamera_Unk_04]
+	strh r1, [r5,#oCamera_Unk_08]
+	ldrh r1, [r5,#oCamera_Unk_06]
+	strh r1, [r5,#oCamera_Unk_0a]
 	mov pc, lr
 	thumb_func_end sub_803011A
 
@@ -19384,7 +19384,7 @@ locret_80302CE:
 sub_80302D0:
 	push {lr}
 	ldr r0, off_80302E0 // =off_80302E4
-	ldrb r1, [r5,#2]
+	ldrb r1, [r5,#oCamera_Unk_02]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
@@ -19402,18 +19402,18 @@ off_80302E4: .word sub_80302F8+1
 sub_80302F8:
 	mov r7, r10
 	ldr r5, [r7,#oToolkit_CameraPtr]
-	ldrh r1, [r5,#4]
-	ldrh r2, [r5,#6]
+	ldrh r1, [r5,#oCamera_Unk_04]
+	ldrh r2, [r5,#oCamera_Unk_06]
 	ldr r3, [r7,#oToolkit_RenderInfoPtr]
 	mov r4, #0xff
 	and r1, r4
-	strh r1, [r3,#0x10]
-	strh r1, [r3,#0x14]
-	strh r1, [r3,#0x18]
+	strh r1, [r3,#oRenderInfo_Unk_10]
+	strh r1, [r3,#oRenderInfo_Unk_14]
+	strh r1, [r3,#oRenderInfo_Unk_18]
 	and r2, r4
-	strh r2, [r3,#0x12]
-	strh r2, [r3,#0x16]
-	strh r2, [r3,#0x1a]
+	strh r2, [r3,#oRenderInfo_Unk_12]
+	strh r2, [r3,#oRenderInfo_Unk_16]
+	strh r2, [r3,#oRenderInfo_Unk_1a]
 	mov pc, lr
 	thumb_func_end sub_80302F8
 
@@ -19421,19 +19421,19 @@ sub_80302F8:
 sub_8030316:
 	mov r7, r10
 	ldr r5, [r7,#oToolkit_CameraPtr]
-	ldrh r1, [r5,#4]
-	ldrh r2, [r5,#6]
+	ldrh r1, [r5,#oCamera_Unk_04]
+	ldrh r2, [r5,#oCamera_Unk_06]
 	ldr r3, [r7,#oToolkit_RenderInfoPtr]
 	mov r4, #0xff
 	and r1, r4
-	strh r1, [r3,#0x10]
-	strh r1, [r3,#0x14]
+	strh r1, [r3,#oRenderInfo_Unk_10]
+	strh r1, [r3,#oRenderInfo_Unk_14]
 	and r2, r4
-	strh r2, [r3,#0x12]
-	strh r2, [r3,#0x16]
+	strh r2, [r3,#oRenderInfo_Unk_12]
+	strh r2, [r3,#oRenderInfo_Unk_16]
 	mov r1, #0
-	strh r1, [r3,#0x18]
-	strh r1, [r3,#0x1a]
+	strh r1, [r3,#oRenderInfo_Unk_18]
+	strh r1, [r3,#oRenderInfo_Unk_1a]
 	mov pc, lr
 	thumb_func_end sub_8030316
 
@@ -19441,23 +19441,23 @@ sub_8030316:
 sub_8030336:
 	mov r7, r10
 	ldr r5, [r7,#oToolkit_CameraPtr]
-	ldrh r1, [r5,#4]
-	ldrh r2, [r5,#6]
+	ldrh r1, [r5,#oCamera_Unk_04]
+	ldrh r2, [r5,#oCamera_Unk_06]
 	ldr r3, [r7,#oToolkit_RenderInfoPtr]
 	mov r4, #0xff
 	and r1, r4
-	strh r1, [r3,#0x10]
-	strh r1, [r3,#0x14]
-	strh r1, [r3,#0x18]
+	strh r1, [r3,#oRenderInfo_Unk_10]
+	strh r1, [r3,#oRenderInfo_Unk_14]
+	strh r1, [r3,#oRenderInfo_Unk_18]
 	and r2, r4
-	strh r2, [r3,#0x12]
-	strh r2, [r3,#0x16]
-	strh r2, [r3,#0x1a]
+	strh r2, [r3,#oRenderInfo_Unk_12]
+	strh r2, [r3,#oRenderInfo_Unk_16]
+	strh r2, [r3,#oRenderInfo_Unk_1a]
 	mov r1, #0
-	strh r1, [r3,#0x10]
-	strh r1, [r3,#0x12]
-	strh r1, [r3,#0x18]
-	strh r1, [r3,#0x1a]
+	strh r1, [r3,#oRenderInfo_Unk_10]
+	strh r1, [r3,#oRenderInfo_Unk_12]
+	strh r1, [r3,#oRenderInfo_Unk_18]
+	strh r1, [r3,#oRenderInfo_Unk_1a]
 	mov pc, lr
 	thumb_func_end sub_8030336
 
@@ -19465,17 +19465,17 @@ sub_8030336:
 sub_803035E:
 	mov r7, r10
 	ldr r5, [r7,#oToolkit_CameraPtr]
-	ldrh r1, [r5,#4]
-	ldrh r2, [r5,#6]
+	ldrh r1, [r5,#oCamera_Unk_04]
+	ldrh r2, [r5,#oCamera_Unk_06]
 	ldr r3, [r7,#oToolkit_RenderInfoPtr]
 	mov r4, #0xff
 	lsl r4, r4, #1
 	add r4, #1
 	and r1, r4
-	strh r1, [r3,#0x10]
+	strh r1, [r3,#oRenderInfo_Unk_10]
 	sub r2, #8
 	and r2, r4
-	strh r2, [r3,#0x12]
+	strh r2, [r3,#oRenderInfo_Unk_12]
 	mov pc, lr
 	thumb_func_end sub_803035E
 

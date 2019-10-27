@@ -17,6 +17,7 @@
 	struct_org 0x12
 	u8 Unk_12 // loc=0x12
 	u8 Unk_13 // loc=0x13
+	u8 Unk_14 // loc=0x14
 	struct_org 0x16
 	u8 Unk_16 // loc=0x16
 	struct_org 0x1a
