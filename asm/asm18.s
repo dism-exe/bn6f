@@ -90,16 +90,16 @@ sub_807A9CC:
 	ldr r0, [r7]
 	ldr r1, [r7,#4]
 	ldr r2, [r7,#8]
-	bl sub_800195C
-	bl sub_8001780
+	bl SetBGScrollCallbacks
+	bl GetRenderInfoLCDControl
 	ldr r1, [r7,#0xc]
 	orr r0, r1
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	ldr r0, off_807AA64 // =off_807AA68 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
-	bl sub_80304E8
+	bl LoadBGAnimData
 	pop {r4-r7,pc}
 	thumb_func_end sub_807A9CC
 
@@ -115,11 +115,11 @@ sub_807A9FE:
 	ldr r0, [r7]
 	ldr r1, [r7,#4]
 	ldr r2, [r7,#8]
-	bl sub_800195C
-	bl sub_8001780
+	bl SetBGScrollCallbacks
+	bl GetRenderInfoLCDControl
 	ldr r1, [r7,#0xc]
 	orr r0, r1
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	ldr r0, off_807AA64 // =off_807AA68 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
@@ -128,15 +128,15 @@ sub_807A9FE:
 	pop {r4-r7,pc}
 off_807AA30: .word off_807AA34
 off_807AA34: .word nullsub_39+1
-	.word sub_80019D0+1
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
 	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
 	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
 	.word 0x800
 off_807AA64: .word off_807AA68
@@ -148,14 +148,14 @@ off_807AA74: .word off_8617068
 	.word dword_8617190
 	.word 0x1800
 	.word dword_8618AB4
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 off_807AA90: .word off_8617068
 	.word 0x6008020
 	.word dword_8617190
 	.word 0x1800
 	.word dword_8618C58
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	thumb_func_end sub_807A9FE
 

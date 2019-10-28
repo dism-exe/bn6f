@@ -12875,7 +12875,7 @@ int __usercall startScreen_802F574@<R0>(StartScreen *scr@<R5>)
     int result; // r0
 
     sub_80015FC(11);
-    sRender_08_setRenderingState(&loc_1140);
+    SetRenderInfoLCDControl(&loc_1140);
     renderInfo_8001788();
     renderInfo_80017A0();
     startScreen_initGfx_802FCC0(v1, v2, v3, v4);
@@ -12934,7 +12934,7 @@ int sub_802F624()
     _BYTE *v0; // r5
     int result; // r0
 
-    sRender_08_setRenderingState(5953);
+    SetRenderInfoLCDControl(5953);
     *v0 = 8;
     result = 0;
     v0[1] = 0;
@@ -12963,7 +12963,7 @@ void __fastcall __noreturn sub_802F668(int a1, int a2, int a3)
     *(v3 + 4) = 2630;
     sub_80005F2(1, a2, a3);
     sub_80015FC(10);
-    sRender_08_setRenderingState(&loc_1340);
+    SetRenderInfoLCDControl(&loc_1340);
     *(v3 + 6) = 0;
     sub_802FD3C();
 }
@@ -13100,7 +13100,7 @@ int sub_802F756()
     int v10; // r3
 
     **v1 = 4;
-    sRender_08_setRenderingState(&loc_1140);
+    SetRenderInfoLCDControl(&loc_1140);
     sub_813D960();
     if ( *(v0 + 8) )
     {
@@ -14211,7 +14211,7 @@ int sub_8030472()
     int v3; // ST00_4
     int v4; // ST00_4
 
-    CopyByEightWords(dword_200BE80 + 4, byte_3001960, 0x1A0u);
+    CopyByEightWords(dword_200BE80 + 4, palette_3001960, 0x1A0u);
     v0 = 0;
     v1 = dword_200BE84;
     v2 = dword_200BE84;
@@ -14232,7 +14232,7 @@ int sub_8030472()
 
 
 // 0x80304e8
-void __fastcall sub_80304E8(int a1)
+void __fastcall LoadBGAnimData(int a1)
 {
     int v1; // r10
     int v2; // r5

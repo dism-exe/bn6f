@@ -1535,7 +1535,7 @@ sub_8046D4C:
 	mov r1, #0
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	ldr r0, dword_8046DD4 // =0x1f40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x18
@@ -2385,7 +2385,7 @@ copyData_804747C:
 	.byte 0, 0
 off_8047490: .word off_8047494
 off_8047494: .word byte_87F0340
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word comp_87F006C + 1<<31
 	.word 0x6000020
@@ -4404,7 +4404,7 @@ sub_804900C:
 	push {r4-r7,lr}
 	bl chatbox_8040818
 	ldr r0, off_8049054 // =0x40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x11
@@ -4444,7 +4444,7 @@ sub_8049058:
 	bl copyMemory_8001850
 	bl chatbox_8040818
 	ldr r0, off_804907C // =0x40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl sub_811F758
 locret_804907A:
 	pop {r4-r7,pc}
@@ -4496,7 +4496,7 @@ off_8049098: .word sub_8049104+1
 sub_8049104:
 	push {r4-r7,lr}
 	ldr r0, dword_8049154 // =0x1f40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x12
@@ -5286,7 +5286,7 @@ off_8049730: .word sub_8049770+1
 sub_8049770:
 	push {r4-r7,lr}
 	ldr r0, dword_80497CC // =0x1f40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x13
@@ -5608,7 +5608,7 @@ loc_80499E0:
 	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	ldr r0, off_8049A14 // =0x40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl chatbox_8040818
 	bl sub_811F758
 	b locret_8049A12
@@ -6058,7 +6058,7 @@ sub_8049E28:
 	push {r4-r7,lr}
 	bl chatbox_8040818
 	ldr r0, off_8049E58 // =0x40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x11
@@ -6084,7 +6084,7 @@ sub_8049E5C:
 	bl copyMemory_8001850
 	bl chatbox_8040818
 	ldr r0, off_8049E80 // =0x40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl sub_8123408
 locret_8049E7E:
 	pop {r4-r7,pc}
@@ -6117,7 +6117,7 @@ off_8049E98: .word sub_8049EBC+1
 sub_8049EBC:
 	push {r4-r7,lr}
 	ldr r0, dword_8049F1C // =0x1f40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x13
@@ -6342,7 +6342,7 @@ sub_804A078:
 	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	ldr r0, off_804A0A8 // =0x40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl chatbox_8040818
 	bl sub_8123408
 	b locret_804A0A6
@@ -7046,7 +7046,7 @@ loc_804A63C:
 off_804A698: .word off_804A69C
 off_804A69C: .word dword_86C9108
 	.word 0x2
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word dword_86C9B54
 	.word 0x2
@@ -9639,7 +9639,7 @@ sub_804C53C:
 	ldr r1, [r4,#oToolkit_RenderInfoPtr]
 	ldr r0, dword_804C5B4 // =0x1f09 
 	strh r0, [r1,#0xa]
-	bl sub_8001974
+	bl SetDummyBGScrollCallbacks
 	ldrb r0, [r5,#0xc]
 	tst r0, r0
 	beq loc_804C57C
@@ -10219,7 +10219,7 @@ sub_804CBDC:
 	strb r0, [r1]
 	mov r0, #0x37 
 	strb r0, [r1,#1]
-	bl sub_8001974
+	bl SetDummyBGScrollCallbacks
 	ldr r0, off_804CC3C // =off_804CC40 
 	ldrb r1, [r5,#0xc]
 	lsl r1, r1, #2
@@ -10412,7 +10412,7 @@ sub_804CD5C:
 	strb r0, [r5,#0x11]
 	mov r0, #2
 	strb r0, [r5,#0x15]
-	bl sub_8001974
+	bl SetDummyBGScrollCallbacks
 	bl sub_804CDD4
 	mov r0, #4
 	strb r0, [r5,#0x10]

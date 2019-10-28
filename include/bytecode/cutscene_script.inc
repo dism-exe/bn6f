@@ -1320,7 +1320,7 @@
 
 	enum cs_call_sub_8001974_cmd // 0x5f
 // 0x5f
-// call sub_8001974
+// call SetDummyBGScrollCallbacks
 	.macro cs_call_sub_8001974
 	.byte cs_call_sub_8001974_cmd
 	.endm

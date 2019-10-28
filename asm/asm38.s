@@ -175,20 +175,27 @@ off_3005DCC: .word off_3005CA0
 dword_3005DD0: .word 0x2005
 	thumb_func_end sub_3005DA0
 
-	thumb_func_start sub_3005DD4
-sub_3005DD4:
+	thumb_func_start _SetInterruptCallback
+// set the callback for interrupt r0/4 to callback r1
+_SetInterruptCallback:
 	push {r4,lr}
+
+	// save old IME state and temporarily disable
 	ldr r3, off_3005E54 // =InterruptMasterEnableRegister
 	ldrh r4, [r3]
 	mov r2, #0
 	strh r2, [r3]
+
+	// write new interrupt callback
 	ldr r2, off_3005DE8 // =off_3000E70
 	str r1, [r2,r0]
+
+	// restore IME state
 	strh r4, [r3]
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_3005DE8: .word off_3000E70
-	thumb_func_end sub_3005DD4
+	thumb_func_end _SetInterruptCallback
 
 	thumb_func_start sub_3005DEC
 sub_3005DEC:
@@ -247,10 +254,10 @@ sub_3005E2C:
 	push {r3}
 	mov r0, #0x18
 	ldr r1, off_3005E78 // =sub_814469C+1
-	bl sub_3005DD4
+	bl _SetInterruptCallback
 	mov r0, #0x1c
 	ldr r1, off_3005E7C // =sub_81446AC+1
-	bl sub_3005DD4
+	bl _SetInterruptCallback
 	pop {r3}
 	strh r4, [r3]
 	pop {r4,pc}

@@ -56,11 +56,11 @@ void __noreturn start_800023C()
 
 
 // 0x800024c
-int __fastcall start_800024C(int a1, void *a2)
+int __fastcall SetInterruptCallback(int a1, void *a2)
 {
     int v3; // [sp+0h] [bp-4h]
 
-    sub_3005DD4(a1, a2);
+    _SetInterruptCallback(a1, a2);
     return v3;
 }
 

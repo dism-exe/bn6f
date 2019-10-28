@@ -1046,7 +1046,7 @@ sub_80341F8:
 	mov r0, #4
 	strb r0, [r5]
 	ldr r0, off_8034214 // =0x40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #SONG_TRANSMISSION
@@ -1104,7 +1104,7 @@ sub_8034268:
 	bl ZeroFillGFX30025c0
 	bl decompJackInAnimationGfx_8034314 // () -> void
 	ldr r0, dword_803429C // =0x1341
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	ldr r0, off_80342A0 // =0x50
 	strh r0, [r5,#4]
 	mov r0, #0
@@ -1255,7 +1255,7 @@ loc_80343D0:
 	strh r1, [r5,#6]
 	mov r7, r3
 	ldr r0, [r7,#4]
-	ldr r1, off_8034458 // =byte_3001960 
+	ldr r1, off_8034458 // =palette_3001960 
 	mov r2, #0x20 
 	bl QueueWordAlignedGFXTransfer
 	// j
@@ -1296,7 +1296,7 @@ dword_8034408: .word 0x2
 	.word byte_86C2380
 	.word 0x2
 	.word 0x0
-off_8034458: .word byte_3001960
+off_8034458: .word palette_3001960
 off_803445C: .word eTileIds2017A04
 Struct8034460:
 	// seaside 1
@@ -1414,18 +1414,18 @@ off_8034728: .word off_80665BC
 	.word pt_8067DEC
 	.word off_806931C
 	.word off_806A284
-	.word 0x0
+	.word NULL
 	.word off_806AE44
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word off_806C804
-	.word 0x0
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
+	.word NULL
 	.word off_806E070
 	.word off_80702EC
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word off_8071ED4
 	.word off_80758C4
 	.word off_807811C
@@ -1434,7 +1434,7 @@ off_8034728: .word off_80665BC
 	.word off_807D320
 	.word off_807F21C
 // JP 0x8035740
-off_8034784: .word sub_806651C+1
+UnkInternetMapGroupJumptable_8034784: .word RobotControlComp_UnkFunction_806651c+1
 	.word sub_8067D1C+1
 	.word sub_80691D4+1
 	.word sub_806A1B4+1
@@ -1480,7 +1480,7 @@ NPCList_maps80: .word off_80665B4
 	.word off_807AE04
 	.word off_807D310
 	.word dword_807F210
-InternetSpawnMapObjectJumptable: .word sub_8066540+1
+InternetSpawnMapObjectJumptable: .word RobotControlComp_SpawnMapObjectsForMap+1
 	.word sub_8067D46+1
 	.word sub_80691FE+1
 	.word sub_806A1DE+1
@@ -1503,7 +1503,7 @@ InternetSpawnMapObjectJumptable: .word sub_8066540+1
 	.word sub_807AAD6+1
 	.word sub_807CFFC+1
 	.word sub_807EE92+1
-off_8034898: .word sub_806649C+1
+off_8034898: .word RobotControlComp_LoadBGAnim+1
 	.word sub_8067C88+1
 	.word sub_8069140+1
 	.word sub_806A120+1
@@ -2081,11 +2081,11 @@ HandleCoordinateInteractionCutscene:
 	cmp r6, #INTERNET_MAP_GROUP_START
 	bge .internetMapGroup
 	ldr r1, off_8034F5C // =off_803461C
-	b .gotCutscenePointers
+	b .gotCoordInteractionTextIndices
 .internetMapGroup
 	ldr r1, off_8034F60 // =off_8034728
 	sub r6, #INTERNET_MAP_GROUP_START
-.gotCutscenePointers
+.gotCoordInteractionTextIndices
 	lsl r6, r6, #2
 	lsl r7, r7, #2
 	ldr r1, [r1,r6]
@@ -2203,7 +2203,7 @@ sub_8035028: // JP 0x8035fd8
 	blt locret_803504C
 	sub r7, #INTERNET_MAP_GROUP_START
 	lsl r7, r7, #2
-	ldr r6, off_8035050 // =off_8034784
+	ldr r6, off_8035050 // =UnkInternetMapGroupJumptable_8034784
 	ldr r6, [r6,r7]
 	tst r6, r6
 	beq locret_803504C
@@ -2212,7 +2212,7 @@ sub_8035028: // JP 0x8035fd8
 locret_803504C:
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8035050: .word off_8034784
+off_8035050: .word UnkInternetMapGroupJumptable_8034784
 	thumb_func_end sub_8035028
 
 	thumb_local_start

@@ -67,6 +67,10 @@ asm08:
 asm09:
 	.include "maps/ExpoSite/loader.s"
 	.include "maps/ExpoSite/data.s"
+	
+	.include "maps/RobotControlComp/loader.s"
+	.include "maps/RobotControlComp/data.s"
+
 asm10:
 	.include "asm/asm10.s"
 dat10:

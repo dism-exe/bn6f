@@ -83,16 +83,16 @@ sub_80793E8:
 	ldr r0, [r7]
 	ldr r1, [r7,#4]
 	ldr r2, [r7,#8]
-	bl sub_800195C
-	bl sub_8001780
+	bl SetBGScrollCallbacks
+	bl GetRenderInfoLCDControl
 	ldr r1, [r7,#0xc]
 	orr r0, r1
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	ldr r0, off_8079440 // =off_8079444 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
-	bl sub_80304E8
+	bl LoadBGAnimData
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_807941C: .word off_8079420
@@ -112,7 +112,7 @@ off_807944C: .word dword_8618DFC
 	.word byte_8618E40
 	.word 0x1800
 	.word dword_8618910
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	thumb_func_end sub_80793E8
 

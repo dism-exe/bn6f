@@ -71,7 +71,7 @@ void __usercall reqBBS_draw_813E188(reqBBS_GUI *gui@<R5>)
     int v6; // r2
     char v7; // zf
 
-    sRender_08_setRenderingState(8000);
+    SetRenderInfoLCDControl(8000);
     v2 = tk->unk_2009740;
     v3 = v2[6];
     if ( v3 > 0 )
@@ -1066,7 +1066,7 @@ void __noreturn UpdateReqBBSMenu813F550()
     int v6; // r2
     char v7; // zf
 
-    sRender_08_setRenderingState(8000);
+    SetRenderInfoLCDControl(8000);
     v2 = *(v1 + oToolkit_Unk2009740_Ptr);
     v3 = *(v2 + 6);
     if ( v3 > 0 )

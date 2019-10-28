@@ -17858,7 +17858,7 @@ startScreen_802F574:
 	mov r0, #0xb
 	bl sub_80015FC
 	ldr r0, off_802F7E4 // =0x1140 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	bl startScreen_initGfx_802FCC0
@@ -17932,7 +17932,7 @@ off_802F620: .word sub_802F624+1
 sub_802F624:
 	push {lr}
 	ldr r0, dword_802F638 // =0x1741 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	mov r0, #8
 	strb r0, [r5]
 	mov r0, #0
@@ -17976,7 +17976,7 @@ sub_802F668:
 	mov r0, #0xa
 	bl sub_80015FC
 	ldr r0, off_802F6A0 // =0x1340 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	mov r0, #0
 	strb r0, [r5,#6]
 	bl sub_802FD3C
@@ -18088,7 +18088,7 @@ sub_802F756:
 	mov r1, #4
 	strb r1, [r0]
 	ldr r0, off_802F7E4 // =0x1140 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl sub_813D960
 	ldrb r0, [r5,#8]
 	cmp r0, #0
@@ -18591,7 +18591,7 @@ initRefs_802FCD8: .word comp_87F36A0 + 1<<31
 	.word 0x6000000
 	.word eDecompBuffer2013A00
 	.word dword_87F4194
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x1C0
 	.word byte_86A48C0
 	.word 0x6012800
@@ -19638,7 +19638,7 @@ sub_8030472:
 	mov r2, #0xd
 	lsl r2, r2, #5
 	add r0, #4
-	ldr r1, off_80304E0 // =byte_3001960 
+	ldr r1, off_80304E0 // =palette_3001960 
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	mov r0, #0
 	ldr r7, [r5,#0x14] // (dword_200BE84 - 0x200be70)
@@ -19683,57 +19683,71 @@ loc_8030492:
 	mov r9, r2
 	mov r12, r3
 	pop {r4-r7,pc}
-off_80304E0: .word byte_3001960
+off_80304E0: .word palette_3001960
 dword_80304E4: .word 0x6000000
 	thumb_func_end sub_8030472
 
-	thumb_func_start sub_80304E8
-sub_80304E8:
+	thumb_func_start LoadBGAnimData
+LoadBGAnimData:
 	push {r4-r7,lr}
 	mov r5, r0
-	ldr r0, [r5,#0x10]
+	ldr r0, [r5,#oBGAnimData_PaletteSrc]
 	tst r0, r0
-	beq loc_80304FC
+	beq .noPalette
 	add r0, #4
-	ldr r1, [r5,#0x14]
-	ldr r2, [r5,#0x18]
+	ldr r1, [r5,#oBGAnimData_PaletteDest]
+	ldr r2, [r5,#oBGAnimData_PaletteSize]
 	bl QueueEightWordAlignedGFXTransfer
-loc_80304FC:
-	ldr r7, [r5]
+.noPalette
+	ldr r7, [r5,#oBGAnimData_GFXSrc]
 	tst r7, r7
-	beq locret_803053A
+	beq .noGFX
+
+	// read offset to gfx
 	ldr r0, [r7,#4]
 	// src
 	add r0, r0, r7
 	// dest
-	ldr r1, src // =unk_2034A00 
+	ldr r1, =unk_2034A00 
+	// decompress gfx to buffer
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, src // =unk_2034A00 
-	ldr r1, [r5,#4]
+
+	ldr r0, =unk_2034A00 
+	ldr r1, [r5,#oBGAnimData_GFXDest]
+	// read decompressed gfx size
 	ldr r2, [r7]
 	lsl r2, r2, #2
+	// copy gfx to vram
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
-	ldr r0, [r5,#8]
+
+	// read tilemap source
+	ldr r0, [r5,#oBGAnimData_TilemapSrc]
 	// dest
-	ldr r1, src // =unk_2034A00 
-	// src
+	ldr r1, =unk_2034A00 
+	// add offset to compressed tilemap
 	add r0, #0xc
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, src // =unk_2034A00 
-	ldr r1, [r5,#0xc]
+
+	ldr r0, =unk_2034A00 
+	ldr r1, [r5,#oBGAnimData_TilemapDestOffset]
 	mov r2, r10
+	// add tilemap dest offset to base BG tilemap ptr
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
-	ldr r3, [r5,#8]
+	ldr r3, [r5,#oBGAnimData_TilemapSrc]
+	// get tilemap dimensions
 	ldrb r2, [r3]
 	ldrb r3, [r3,#1]
+	// multiply to get total size divided by 2
 	mul r2, r3
 	lsl r2, r2, #1
+	// copy to BG tilemap
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
-locret_803053A:
+.noGFX
 	pop {r4-r7,pc}
-src: .word unk_2034A00
-	thumb_func_end sub_80304E8
+	.balign 4, 0
+	.pool
+	thumb_func_end LoadBGAnimData
 
 	thumb_func_start sub_8030540
 sub_8030540:
@@ -20300,7 +20314,7 @@ UnkRealWorldMapGroupJumptable_8030920:
 	.word SkyTown_sub_8002354_8060406+1
 	.word ExpoSite_sub_8002354_8062b64+1
 EnterMap_InternetMapGroupJumptable:
-	.word sub_80663D0+1
+	.word RobotControlComp_EnterMapGroup+1
 	.word sub_8067B5C+1
 	.word sub_8069038+1
 	.word sub_8069FE8+1
@@ -20324,7 +20338,7 @@ EnterMap_InternetMapGroupJumptable:
 	.word sub_807CDEC+1
 	.word sub_807ECD0+1
 UnkInternetMapGroupJumptable_8030998:
-	.word sub_8066450+1
+	.word RobotControlComp_sub_8002354_8066450+1
 	.word sub_8067BE4+1
 	.word sub_80690C2+1
 	.word sub_806A070+1

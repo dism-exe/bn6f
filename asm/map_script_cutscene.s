@@ -5462,10 +5462,10 @@ CutsceneCmd_nop_8038266:
 
 	thumb_local_start
 // 0x5f
-// call sub_8001974
+// call SetDummyBGScrollCallbacks
 CutsceneCmd_call_sub_8001974:
 	push {lr}
-	bl sub_8001974
+	bl SetDummyBGScrollCallbacks
 	add r7, #1
 	mov r0, #1
 	pop {pc}

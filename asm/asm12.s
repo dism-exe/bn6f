@@ -115,67 +115,83 @@ sub_806DA58:
 	ldr r0, [r7]
 	ldr r1, [r7,#4]
 	ldr r2, [r7,#8]
-	bl sub_800195C
-	bl sub_8001780
+	bl SetBGScrollCallbacks
+	bl GetRenderInfoLCDControl
 	ldr r1, [r7,#0xc]
 	orr r0, r1
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	ldr r0, off_806DB90 // =off_806DB94 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
-	bl sub_80304E8
+	bl LoadBGAnimData
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_806DA8C: .word off_806DA90
 off_806DA90: .word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 	.word nullsub_39+1
-	.word sub_80019D0+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
 off_806DB90: .word off_806DB94
 off_806DB94: .word off_806DBD4
 	.word off_806DBF0

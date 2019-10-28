@@ -40,10 +40,10 @@ void sub_807A9CC()
 
     v1 = *(v0 + oToolkit_GameStatePtr);
     v2 = &off_807AA34 + 4 * *(v1 + oGameState_MapNumber);
-    sub_800195C(*v2, v2[1], v2[2]);
-    v3 = sub_8001780();
-    sRender_08_setRenderingState(v3 | v2[3]);
-    sub_80304E8(off_807AA68[*(v1 + oGameState_MapNumber)]);
+    SetBGScrollCallbacks(*v2, v2[1], v2[2]);
+    v3 = GetRenderInfoLCDControl();
+    SetRenderInfoLCDControl(v3 | v2[3]);
+    LoadBGAnimData(off_807AA68[*(v1 + oGameState_MapNumber)]);
 }
 
 
@@ -57,9 +57,9 @@ int sub_807A9FE()
 
     v1 = *(v0 + oToolkit_GameStatePtr);
     v2 = &off_807AA34 + 4 * *(v1 + oGameState_MapNumber);
-    sub_800195C(*v2, v2[1], v2[2]);
-    v3 = sub_8001780();
-    sRender_08_setRenderingState(v3 | v2[3]);
+    SetBGScrollCallbacks(*v2, v2[1], v2[2]);
+    v3 = GetRenderInfoLCDControl();
+    SetRenderInfoLCDControl(v3 | v2[3]);
     return sub_8030540(off_807AA68[*(v1 + oGameState_MapNumber)]);
 }
 

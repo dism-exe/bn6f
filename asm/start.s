@@ -143,16 +143,17 @@ start_800023C:
 off_8000248: .word sub_3005DA0+1
 	thumb_func_end start_800023C
 
-	thumb_func_start start_800024C
-start_800024C:
+	thumb_func_start SetInterruptCallback
+// set the callback for interrupt r0/4 to callback r1
+SetInterruptCallback:
 	push {lr}
-	ldr r2, off_8000258 // =sub_3005DD4+1 
+	ldr r2, off_8000258 // =_SetInterruptCallback+1 
 	mov lr, pc
 	bx r2
 	pop {r0}
 	bx r0
-off_8000258: .word sub_3005DD4+1
-	thumb_func_end start_800024C
+off_8000258: .word _SetInterruptCallback+1
+	thumb_func_end SetInterruptCallback
 
 	thumb_local_start
 start_dead_800025C:

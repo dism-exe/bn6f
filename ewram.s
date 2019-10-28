@@ -619,10 +619,12 @@ byte_20094C0:: // 0x20094c0
 
 	.space 32
 
-dword_2009690:: // 0x2009690
-	.space 4
-dword_2009694:: // 0x2009694
-	.space 12
+eBGScrollCBCounters:: // 0x2009690
+	bg_scroll_cb_counters_struct eBGScrollCBCounters
+eBGScrollCBCountersEnd:: // 0x2009698
+
+	.space 8
+
 unk_20096A0:: // 0x20096a0
 	.space 3
 byte_20096A3:: // 0x20096a3
@@ -848,12 +850,13 @@ word_200A6F6:: // 0x200a6f6
 	.space 378
 dword_200A870:: // 0x200a870
 	.space 16
-doff_200A880:: // 0x200a880
+
+eBGScrollCallbacks:: // 0x200a880
+	bg_scroll_callbacks_struct eBGScrollCallbacks
+eBGScrollCallbacksEnd:: // 0x200a88c
+
 	.space 4
-doff_200A884:: // 0x200a884
-	.space 4
-off_200A888:: // 0x200a888
-	.space 8
+
 dword_200A890:: // 0x200a890
 	.space 4
 dword_200A894:: // 0x200a894

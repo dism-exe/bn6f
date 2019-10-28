@@ -2453,7 +2453,7 @@ int sub_804900C()
     int result; // r0
 
     chatbox_8040818();
-    sRender_08_setRenderingState(&byte_40);
+    SetRenderInfoLCDControl(&byte_40);
     renderInfo_8001788();
     renderInfo_80017A0();
     v1 = sub_80015FC(17);
@@ -2490,7 +2490,7 @@ int sub_8049058()
         ZeroFillGFX30025c0();
         copyMemory_8001850();
         chatbox_8040818();
-        sRender_08_setRenderingState(&byte_40);
+        SetRenderInfoLCDControl(&byte_40);
         sub_811F758();
     }
     return result;
@@ -2517,7 +2517,7 @@ signed int sub_8049104()
     int v4; // r3
     signed int result; // r0
 
-    sRender_08_setRenderingState(8000);
+    SetRenderInfoLCDControl(8000);
     renderInfo_8001788();
     renderInfo_80017A0();
     sub_80015FC(18);
@@ -3285,7 +3285,7 @@ void __noreturn sub_8049770()
     int v7; // r2
     int v8; // r3
 
-    sRender_08_setRenderingState(8000);
+    SetRenderInfoLCDControl(8000);
     renderInfo_8001788();
     renderInfo_80017A0();
     sub_80015FC(19);
@@ -3570,7 +3570,7 @@ void __noreturn sub_80499CE()
         zeroFillVRAM();
         ZeroFillGFX30025c0();
         copyMemory_8001850();
-        sRender_08_setRenderingState(&byte_40);
+        SetRenderInfoLCDControl(&byte_40);
         chatbox_8040818();
         sub_811F758();
     }
@@ -3792,7 +3792,7 @@ int __noreturn sub_8049E28()
     int result; // r0
 
     chatbox_8040818();
-    sRender_08_setRenderingState(&byte_40);
+    SetRenderInfoLCDControl(&byte_40);
     renderInfo_8001788();
     renderInfo_80017A0();
     v1 = sub_80015FC(17);
@@ -3819,7 +3819,7 @@ int sub_8049E5C()
         ZeroFillGFX30025c0();
         copyMemory_8001850();
         chatbox_8040818();
-        sRender_08_setRenderingState(&byte_40);
+        SetRenderInfoLCDControl(&byte_40);
         result = sub_8123408();
     }
     return result;
@@ -3848,7 +3848,7 @@ void __noreturn sub_8049EBC()
     int v7; // r2
     int v8; // r3
 
-    sRender_08_setRenderingState(8000);
+    SetRenderInfoLCDControl(8000);
     renderInfo_8001788();
     renderInfo_80017A0();
     sub_80015FC(19);
@@ -4049,7 +4049,7 @@ int sub_804A078()
     zeroFillVRAM();
     ZeroFillGFX30025c0();
     copyMemory_8001850();
-    sRender_08_setRenderingState(&byte_40);
+    SetRenderInfoLCDControl(&byte_40);
     chatbox_8040818();
     return sub_8123408();
 }
@@ -5991,7 +5991,7 @@ void sub_804C53C()
     (loc_8000AC8)(*(off_804C58C + *(v0 + 12)), 100716352, *&byte_804C59C[*(v0 + 12)]);
     (loc_8000AC8)(*(off_804C5A8 + *(v0 + 12)), byte_3001B00, 32);
     *(*(v1 + oToolkit_RenderInfoPtr) + 10) = 7945;
-    sub_8001974();
+    SetDummyBGScrollCallbacks();
     if ( *(v0 + 12) )
     {
         sub_8001B1C(&dword_804C4B0);
@@ -6351,7 +6351,7 @@ int sub_804CBDC()
     v2 = *(v1 + oToolkit_Unk2009740_Ptr);
     *v2 = 72;
     v2[1] = 55;
-    sub_8001974();
+    SetDummyBGScrollCallbacks();
     (*(&off_804CC40 + *(v0 + 12)))();
     sub_804CCF0();
     *(v0 + 16) = 4;
@@ -6482,7 +6482,7 @@ int sub_804CD5C()
     v0[20] = 0;
     v0[17] = 0;
     v0[21] = 2;
-    sub_8001974();
+    SetDummyBGScrollCallbacks();
     sub_804CDD4();
     v0[16] = 4;
     return sub_804CDCC(4);

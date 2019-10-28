@@ -2,6 +2,8 @@
 	.macro render_info_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
+	// look at render_800172C for how data is transferred
+	// todo document rest of struct fields
 	u16 Unk_00 // loc=0x0
 	struct_org 0x10
 	u16 Unk_10 // loc=0x10

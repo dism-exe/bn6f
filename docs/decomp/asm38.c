@@ -108,7 +108,7 @@ signed int sub_3005DA0()
 
 
 // 0x3005dd4
-int __fastcall sub_3005DD4(int result, void *a2)
+int __fastcall _SetInterruptCallback(int result, void *a2)
 {
     __int16 *v2; // r3
     __int16 v3; // r4
@@ -182,8 +182,8 @@ int sub_3005E2C()
     *off_3005E54[0] = 0;
     *off_3005E5C[0] = 1;
     v2 = v0;
-    sub_3005DD4(24, off_3005E78);
-    result = sub_3005DD4(28, off_3005E7C);
+    _SetInterruptCallback(24, off_3005E78);
+    result = _SetInterruptCallback(28, off_3005E7C);
     *v2 = v1;
     return result;
 }

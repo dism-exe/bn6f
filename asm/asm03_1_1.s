@@ -41,7 +41,7 @@ sub_8038630:
 	mov r0, #0xd
 	bl sub_80015FC
 	ldr r0, dword_8038670 // =0x1340
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	bl sub_8005F40
@@ -105,7 +105,7 @@ sub_80386B2:
 	bl IsScreenFadeActive // () -> zf
 	beq locret_80386C4
 	ldr r0, off_80386C8 // =0x40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl loc_803D1AC // () -> void
 locret_80386C4:
 	pop {r4-r7,pc}
@@ -229,7 +229,7 @@ sub_8038A9C:
 	b locret_8038AC6
 loc_8038ABC:
 	ldr r0, off_8038AC8 // =0x40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl loc_803D1AC // () -> void
 locret_8038AC6:
 	pop {pc}
@@ -267,7 +267,7 @@ sub_8038B04:
 	mov r0, #0x14
 	bl sub_80015FC
 	ldr r0, dword_8038B5C // =0x1f40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	bl sub_8005F40
@@ -766,7 +766,7 @@ sub_8038F0C:
 	bl clear_e200AD04 // () -> void
 	bl sub_803E900
 	ldr r0, off_8038F2C // =0x40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 locret_8038F2A:
 	pop {pc}
 off_8038F2C: .word 0x40
@@ -1188,7 +1188,7 @@ sub_80395E4:
 	bl sub_803FA42
 	bl chatbox_8040818
 	ldr r0, off_803962C // =0x40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x11
@@ -1223,7 +1223,7 @@ sub_8039630:
 	bl chatbox_8040818
 	bl sub_802F530
 	ldr r0, off_8039654 // =0x40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 locret_8039652:
 	pop {r4-r7,pc}
 off_8039654: .word 0x40
@@ -1258,7 +1258,7 @@ sub_8039694:
 	bl sub_8005F40
 	bl ZeroFillGFX30025c0
 	ldr r0, dword_8039708 // =0x1f40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	bl cleareMemory_802FF2C
@@ -1485,7 +1485,7 @@ off_8039858: .word sub_8039864+1
 sub_8039864:
 	push {r4-r7,lr}
 	ldr r0, dword_8039880 // =0x1240
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	mov r0, #1
 	strb r0, [r5,#0x17]
 	mov r0, #0
@@ -1526,7 +1526,7 @@ locret_80398AE:
 sub_80398B0:
 	push {r4-r7,lr}
 	ldr r0, dword_80398D8 // =0x1f40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	ldrb r0, [r5,#4]
 	bl sub_803BB2C
 	bl sub_8046664 // () -> void
@@ -1725,7 +1725,7 @@ off_80399E8: .word sub_8039A58+1
 sub_8039A58:
 	push {r4-r7,lr}
 	ldr r0, dword_8039AB0 // =0x1f40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x12
@@ -2732,7 +2732,7 @@ sub_803A25C:
 	mov r0, #0
 	strb r0, [r5,#0x18]
 	ldr r0, dword_803A298 // =0x1f40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	mov r0, #0
 	bl sub_8001B6C
 	mov r0, #1
@@ -2782,7 +2782,7 @@ sub_803A2CC:
 	bl chatbox_check_eFlags2009F38
 	bne loc_803A31C
 	ldr r0, dword_803A324 // =0x7f40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_Unk200f3a0_Ptr]
 	mov r0, #0
@@ -2810,7 +2810,7 @@ sub_803A2CC:
 	bl sub_8001B1C
 	ldr r0, off_803A32C // =word_87E672E
 	ldrh r0, [r0]
-	ldr r1, off_803A330 // =byte_3001960
+	ldr r1, off_803A330 // =palette_3001960
 	strh r0, [r1]
 	mov r0, #4
 	strb r0, [r5,#2]
@@ -2821,7 +2821,7 @@ loc_803A31C:
 dword_803A324: .word 0x7F40
 off_803A328: .word byte_80392A8
 off_803A32C: .word word_87E672E
-off_803A330: .word byte_3001960
+off_803A330: .word palette_3001960
 	thumb_func_end sub_803A2CC
 
 	thumb_local_start
@@ -2918,7 +2918,7 @@ sub_803A3C4:
 	cmp r0, #0x91
 	bne loc_803A3FC
 	ldr r0, dword_803A404 // =0x1f40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	ldr r0, off_803A408 // =off_8039308
 	bl sub_8001B1C
 	ldr r0, off_803A40C // =byte_8039350
@@ -3298,7 +3298,7 @@ off_803A6A4: .word sub_803A6E4+1
 sub_803A6E4:
 	push {r4-r7,lr}
 	ldr r0, dword_803A73C // =0x1f40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x13
@@ -4581,7 +4581,7 @@ off_803B174: .word sub_803B184+1
 sub_803B184:
 	push {r4-r7,lr}
 	ldr r0, dword_803B1C0 // =0x1f40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x14
@@ -4689,7 +4689,7 @@ initRefs_803B244: .word comp_87E4500 + 1<<31
 	.word unk_30019A0
 	.word 0x40
 	.word spriteWhiteDot
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x40
 	.word compSpriteWhiteDot_84E0C4C + 1<<31
 	.word 0x6011000
@@ -7541,7 +7541,7 @@ sub_803CBD0:
 	mov r0, #0x15
 	bl sub_80015FC
 	ldr r0, dword_803CC10 // =0x1f40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	bl sub_8005F40
@@ -7595,7 +7595,7 @@ sub_803CC40:
 	beq locret_803CC58
 	bl chatbox_8040818
 	ldr r0, off_803CC5C // =0x40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	ldr r0, [r5,#4]
 	mov lr, pc
 	bx r0
@@ -7633,7 +7633,7 @@ initRefs803CC88: .byte 0x80, 0x69, 0x7E, 0x88, 0x20, 0x0, 0x0, 0x6
 	.word 0x0
 off_803CC9C: .word byte_2017A00
 	.word byte_87E6BDC
-	.word byte_3001960
+	.word palette_3001960
 	.byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end copyData_803CC60
 
@@ -7688,7 +7688,7 @@ sub_803CCFC:
 	mov r0, #0x16
 	bl sub_80015FC
 	ldr r0, dword_803CD3C // =0x1f40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	bl sub_8005F40
@@ -8411,7 +8411,7 @@ sub_803D1FC:
 	mov r4, #4
 	ldr r0, off_803D248 // =0xc0
 loc_803D212:
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, r4
@@ -8435,7 +8435,7 @@ off_803D248: .word 0xC0
 sub_803D24C:
 	push {lr}
 	ldr r0, dword_803D270 // =0x1f40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	mov r0, #8
 	ldrb r1, [r5,#5]
 	tst r1, r1
@@ -8488,7 +8488,7 @@ locret_803D2A4:
 sub_803D2A6:
 	push {lr}
 	ldr r0, off_803D2B4 // =0x40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl sub_802F530
 	pop {pc}
 off_803D2B4: .word 0x40
@@ -8533,7 +8533,7 @@ initRefs803D2F0: .byte 0x28, 0x35, 0x6C, 0x88, 0x20, 0x0, 0x0, 0x6
 	.word 0x0
 off_803D304: .word eDecompBuffer2013A00
 	.word byte_86C3C94
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word byte_86C3FD4
 	.word 0x6001000
@@ -13050,7 +13050,7 @@ sub_803FB64:
 	bl sub_80015FC
 	bl copyTileData_803FC64
 	ldr r0, dword_803FB98 // =0x1f40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	bl sub_803FBE8
@@ -13098,7 +13098,7 @@ sub_803FBC2:
 	bl clear_e200AD04 // () -> void
 	bl sub_803E914
 	ldr r0, off_803FBE4 // =0x40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 locret_803FBE0:
 	pop {pc}
 	.balign 4, 0x00
@@ -13204,7 +13204,7 @@ off_803FCA0: .word initRefs803FCA4
 initRefs803FCA4: .byte 0xD0, 0x41, 0x6C, 0x88, 0x0, 0x0, 0x0, 0x6
 	.word eDecompBuffer2013A00
 	.word dword_86C4660
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word comp_86C4490 + 1<<31
 	.word 0x0

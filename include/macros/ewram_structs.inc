@@ -26,6 +26,8 @@
 	.include "structs/OWObjectInteractionArea.inc"
 	.include "structs/S20094c0.inc"
 	.include "structs/RenderInfo.inc"
+	.include "structs/BGScrollCallbacks.inc"
+	.include "structs/BGScrollCallbackCounters.inc"
 
 /*
 rough notes for now

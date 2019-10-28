@@ -94,29 +94,29 @@ sub_807EDD4:
 	ldr r0, [r7]
 	ldr r1, [r7,#4]
 	ldr r2, [r7,#8]
-	bl sub_800195C
-	bl sub_8001780
+	bl SetBGScrollCallbacks
+	bl GetRenderInfoLCDControl
 	ldr r1, [r7,#0xc]
 	orr r0, r1
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	ldr r0, off_807EE3C // =off_807EE40 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
-	bl sub_80304E8
+	bl LoadBGAnimData
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_807EE08: .word off_807EE0C
 off_807EE0C: .word nullsub_39+1
-	.word sub_8001A46+1
+	.word BGScrollCB_BG3SlowRightScroll+1
 	.word nullsub_38+1
 	.word 0x800
 	.word nullsub_39+1
-	.word sub_8001A46+1
+	.word BGScrollCB_BG3SlowRightScroll+1
 	.word nullsub_38+1
 	.word 0x800
 	.word nullsub_39+1
-	.word sub_8001A46+1
+	.word BGScrollCB_BG3SlowRightScroll+1
 	.word nullsub_38+1
 	.word 0x800
 off_807EE3C: .word off_807EE40

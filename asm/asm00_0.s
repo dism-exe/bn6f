@@ -2579,21 +2579,21 @@ off_8001770: .word Window0HorizontalDimensions
 off_8001774: .word ColorSpecialEffectsSelection
 	thumb_func_end render_800172C
 
-	thumb_func_start sRender_08_setRenderingState
-sRender_08_setRenderingState:
+	thumb_func_start SetRenderInfoLCDControl
+SetRenderInfoLCDControl:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	strh r0, [r1,#oRenderInfo_Unk_00]
 	mov pc, lr
-	thumb_func_end sRender_08_setRenderingState
+	thumb_func_end SetRenderInfoLCDControl
 
-	thumb_func_start sub_8001780
-sub_8001780:
+	thumb_func_start GetRenderInfoLCDControl
+GetRenderInfoLCDControl:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	ldrh r0, [r1,#oRenderInfo_Unk_00]
 	mov pc, lr
-	thumb_func_end sub_8001780
+	thumb_func_end GetRenderInfoLCDControl
 
 	thumb_func_start renderInfo_8001788
 renderInfo_8001788:
@@ -2646,7 +2646,7 @@ dword_80017DC: .word 0x600C000
 	thumb_func_start ZeroFill_byte_3001960
 ZeroFill_byte_3001960:
 	push {lr}
-	ldr r0, off_8001800 // =byte_3001960
+	ldr r0, off_8001800 // =palette_3001960
 	mov r1, #2
 	bl ZeroFillByHalfword
 	pop {pc}
@@ -2655,14 +2655,14 @@ ZeroFill_byte_3001960:
 	thumb_func_start main_zeroFill_80017EC
 main_zeroFill_80017EC:
 	push {lr}
-	ldr r0, off_8001800 // =byte_3001960
+	ldr r0, off_8001800 // =palette_3001960
 	mov r1, #2
 	bl ZeroFillByHalfword
 	ldr r0, dword_8001804 // =0x5000000
 	mov r1, #2
 	bl ZeroFillByHalfword
 	pop {pc}
-off_8001800: .word byte_3001960
+off_8001800: .word palette_3001960
 dword_8001804: .word 0x5000000
 	thumb_func_end main_zeroFill_80017EC
 
@@ -2874,59 +2874,70 @@ loc_800193A:
 	.balign 4, 0x00
 	thumb_func_end sub_8001930
 
-	thumb_func_start sub_800195C
-sub_800195C:
+	thumb_func_start SetBGScrollCallbacks
+// set the bg scroll callback
+// is actually just an arbitrary callback
+// but all calls to this function pass
+// a callback that modifies BG scroll
+// registers (modifies eRenderInfo_Unk_10 to
+// eRenderInfo_Unk_1a, which are copied to the
+// bg scroll registers)
+// r0 - callback 0
+// r1 - callback 1
+// r2 - hblank interrupt callback
+SetBGScrollCallbacks:
 	push {lr}
 	tst r0, r0
-	beq locret_8001972
-	ldr r3, off_80019AC // =doff_200A880
-	str r0, [r3]
-	str r1, [r3,#0x8] // (off_200A888 - 0x200a880)
-	str r2, [r3,#0x4] // (doff_200A884 - 0x200a880)
-	mov r0, #4
+	beq .callbackZeroNotSet
+	ldr r3, off_80019AC // =eBGScrollCallbacks
+	str r0, [r3,#oBGScrollCallbacks_Callback0]
+	str r1, [r3,#oBGScrollCallbacks_Callback1] // (off_200A888 - 0x200a880)
+	str r2, [r3,#oBGScrollCallbacks_HBlankCallback] // (doff_200A884 - 0x200a880)
+	mov r0, #4 // hblank
 	mov r1, r2
-	bl start_800024C
-locret_8001972:
+	bl SetInterruptCallback
+.callbackZeroNotSet
 	pop {pc}
-	thumb_func_end sub_800195C
+	thumb_func_end SetBGScrollCallbacks
 
-	thumb_func_start sub_8001974
-sub_8001974:
+	thumb_func_start SetDummyBGScrollCallbacks
+// set all bg callbacks to nullsubs
+SetDummyBGScrollCallbacks:
 	push {lr}
-	ldr r2, off_80019AC // =doff_200A880
+	ldr r2, off_80019AC // =eBGScrollCallbacks
 	ldr r0, off_800198C // =nullsub_39+1
-	str r0, [r2]
-	str r0, [r2,#0x8] // (off_200A888 - 0x200a880)
-	ldr r1, dword_8001990 // =nullsub_38
-	str r1, [r2,#0x4] // (doff_200A884 - 0x200a880)
-	mov r0, #4
-	bl start_800024C
+	str r0, [r2,#oBGScrollCallbacks_Callback0]
+	str r0, [r2,#oBGScrollCallbacks_Callback1] // (off_200A888 - 0x200a880)
+	ldr r1, dword_8001990 // =nullsub_38+1
+	str r1, [r2,#oBGScrollCallbacks_HBlankCallback] // (doff_200A884 - 0x200a880)
+	mov r0, #4 // hblank
+	bl SetInterruptCallback
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800198C: .word nullsub_39+1
-dword_8001990: .word 0x3005CD9
-	thumb_func_end sub_8001974
+dword_8001990: .word nullsub_38+1
+	thumb_func_end SetDummyBGScrollCallbacks
 
-	thumb_func_start cb_call_200A880
-cb_call_200A880:
+	thumb_func_start CallBGScrollCallback0
+CallBGScrollCallback0:
 	push {lr}
-	ldr r1, off_80019AC // =doff_200A880
-	ldr r0, [r1]
+	ldr r1, off_80019AC // =eBGScrollCallbacks
+	ldr r0, [r1,#oBGScrollCallbacks_Callback0]
 	mov lr, pc
 	bx r0
 	pop {pc}
-	thumb_func_end cb_call_200A880
+	thumb_func_end CallBGScrollCallback0
 
-	thumb_func_start sub_80019A0
-sub_80019A0:
+	thumb_func_start CallBGScrollCallback1
+CallBGScrollCallback1:
 	push {lr}
-	ldr r1, off_80019AC // =doff_200A880
-	ldr r0, [r1,#0x8] // (off_200A888 - 0x200a880)
+	ldr r1, off_80019AC // =eBGScrollCallbacks
+	ldr r0, [r1,#oBGScrollCallbacks_Callback1] // (off_200A888 - 0x200a880)
 	mov lr, pc
 	bx r0
 	pop {pc}
-off_80019AC: .word doff_200A880
-	thumb_func_end sub_80019A0
+off_80019AC: .word eBGScrollCallbacks
+	thumb_func_end CallBGScrollCallback1
 
 	thumb_func_start nullsub_35
 nullsub_35:
@@ -2938,155 +2949,155 @@ nullsub_36:
 	mov pc, lr
 	thumb_func_end nullsub_36
 
-	thumb_func_start sub_80019B4
-sub_80019B4:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG1Diagonal3to2Scroll
+BGScrollCB_BG1Diagonal3to2Scroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	sub r2, #8
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
-	ldr r3, [r1,#0x4] // (dword_2009694 - 0x2009690)
+	ldr r3, [r1,#oBGScrollCBCounters_Counter1] // (dword_2009694 - 0x2009690)
 	sub r3, #4
-	str r3, [r1,#0x4] // (dword_2009694 - 0x2009690)
+	str r3, [r1,#oBGScrollCBCounters_Counter1] // (dword_2009694 - 0x2009690)
 	lsr r3, r3, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x10]
-	strh r3, [r1,#0x12]
+	strh r2, [r1,#oRenderInfo_Unk_10]
+	strh r3, [r1,#oRenderInfo_Unk_12]
 	mov pc, lr
-	thumb_func_end sub_80019B4
+	thumb_func_end BGScrollCB_BG1Diagonal3to2Scroll
 
-	thumb_func_start sub_80019D0
-sub_80019D0:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG3Diagonal3to2Scroll
+BGScrollCB_BG3Diagonal3to2Scroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	sub r2, #8
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
-	ldr r3, [r1,#0x4] // (dword_2009694 - 0x2009690)
+	ldr r3, [r1,#oBGScrollCBCounters_Counter1] // (dword_2009694 - 0x2009690)
 	sub r3, #4
-	str r3, [r1,#0x4] // (dword_2009694 - 0x2009690)
+	str r3, [r1,#oBGScrollCBCounters_Counter1] // (dword_2009694 - 0x2009690)
 	lsr r3, r3, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x18]
-	strh r3, [r1,#0x1a]
+	strh r2, [r1,#oRenderInfo_Unk_18]
+	strh r3, [r1,#oRenderInfo_Unk_1a]
 	mov pc, lr
-	thumb_func_end sub_80019D0
+	thumb_func_end BGScrollCB_BG3Diagonal3to2Scroll
 
-	thumb_func_start sub_80019EC
-sub_80019EC:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r3, [r1]
+	thumb_func_start BGScrollCB_BG1UpScroll
+BGScrollCB_BG1UpScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r3, [r1,#oBGScrollCBCounters_Counter0]
 	sub r3, #4
-	str r3, [r1]
+	str r3, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r3, r3, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r3, [r1,#0x12]
+	strh r3, [r1,#oRenderInfo_Unk_12]
 	mov pc, lr
-	thumb_func_end sub_80019EC
+	thumb_func_end BGScrollCB_BG1UpScroll
 
-	thumb_func_start sub_80019FE
-sub_80019FE:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r3, [r1]
+	thumb_func_start BGScrollCB_BG3UpScroll
+BGScrollCB_BG3UpScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r3, [r1,#oBGScrollCBCounters_Counter0]
 	sub r3, #4
-	str r3, [r1]
+	str r3, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r3, r3, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r3, [r1,#0x1a]
+	strh r3, [r1,#oRenderInfo_Unk_1a]
 	mov pc, lr
-	thumb_func_end sub_80019FE
+	thumb_func_end BGScrollCB_BG3UpScroll
 
-	thumb_func_start sub_8001A10
-sub_8001A10:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG1DownScroll
+BGScrollCB_BG1DownScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	add r2, #4
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x12]
+	strh r2, [r1,#oRenderInfo_Unk_12]
 	mov pc, lr
-	thumb_func_end sub_8001A10
+	thumb_func_end BGScrollCB_BG1DownScroll
 
-	thumb_func_start sub_8001A22
-sub_8001A22:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG3DownScroll
+BGScrollCB_BG3DownScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	add r2, #4
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x1a]
+	strh r2, [r1,#oRenderInfo_Unk_1a]
 	mov pc, lr
-	thumb_func_end sub_8001A22
+	thumb_func_end BGScrollCB_BG3DownScroll
 
-	thumb_func_start sub_8001A34
-sub_8001A34:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG1SlowRightScroll
+BGScrollCB_BG1SlowRightScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	add r2, #1
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x10]
+	strh r2, [r1,#oRenderInfo_Unk_10]
 	mov pc, lr
-	thumb_func_end sub_8001A34
+	thumb_func_end BGScrollCB_BG1SlowRightScroll
 
-	thumb_func_start sub_8001A46
-sub_8001A46:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG3SlowRightScroll
+BGScrollCB_BG3SlowRightScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	add r2, #1
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x18]
+	strh r2, [r1,#oRenderInfo_Unk_18]
 	mov pc, lr
-	thumb_func_end sub_8001A46
+	thumb_func_end BGScrollCB_BG3SlowRightScroll
 
-	thumb_func_start sub_8001A58
-sub_8001A58:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG1FastLeftScroll
+BGScrollCB_BG1FastLeftScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	sub r2, #8
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x10]
+	strh r2, [r1,#oRenderInfo_Unk_10]
 	mov pc, lr
-	thumb_func_end sub_8001A58
+	thumb_func_end BGScrollCB_BG1FastLeftScroll
 
-	thumb_func_start sub_8001A6A
-sub_8001A6A:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG3FastLeftScroll
+BGScrollCB_BG3FastLeftScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	sub r2, #8
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x18]
+	strh r2, [r1,#oRenderInfo_Unk_18]
 	mov pc, lr
-	thumb_func_end sub_8001A6A
+	thumb_func_end BGScrollCB_BG3FastLeftScroll
 
 	thumb_local_start
-sub_8001A7C:
+BGScrollCB_BG1AccelToVeryFastDownScroll:
 	push {lr}
 	bl sub_800139A
 	mov r1, #0x10
 	tst r0, r1
 	beq locret_8001AAC
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	mov r3, #1
 	lsl r3, r3, #0xa
 	sub r2, r2, r3
@@ -3097,18 +3108,18 @@ sub_8001A7C:
 	bge loc_8001A9E
 	mov r2, r3
 loc_8001A9E:
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	asr r2, r2, #0x10
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	ldrh r3, [r1,#0x12]
+	ldrh r3, [r1,#oRenderInfo_Unk_12]
 	sub r3, r3, r2
-	strh r3, [r1,#0x12]
+	strh r3, [r1,#oRenderInfo_Unk_12]
 locret_8001AAC:
 	pop {pc}
-	.byte 0, 0
-off_8001AB0: .word dword_2009690
-	thumb_func_end sub_8001A7C
+	.balign 4, 0
+off_8001AB0: .word eBGScrollCBCounters
+	thumb_func_end BGScrollCB_BG1AccelToVeryFastDownScroll
 
 	thumb_func_start nullsub_39
 nullsub_39:
@@ -4400,7 +4411,7 @@ off_80023DC: .word 0x108
 	thumb_func_start getPalleteAndTransition_80023E0
 getPalleteAndTransition_80023E0:
 	push {r5-r7,lr}
-	ldr r0, off_800243C // =byte_3001960
+	ldr r0, off_800243C // =palette_3001960
 	ldr r1, off_8002440 // =iPalette3001B60
 	mov r2, #0x20
 	lsl r2, r2, #4
@@ -4445,7 +4456,7 @@ loc_8002428:
 	pop {r5-r7,pc}
 	.balign 4, 0x00
 off_8002438: .word unk_200F388
-off_800243C: .word byte_3001960
+off_800243C: .word palette_3001960
 off_8002440: .word iPalette3001B60
 off_8002444: .word byte_3001550
 off_8002448: .word iPallete3001750
