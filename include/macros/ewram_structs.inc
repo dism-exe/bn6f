@@ -28,6 +28,7 @@
 	.include "structs/RenderInfo.inc"
 	.include "structs/BGScrollCallbacks.inc"
 	.include "structs/BGScrollCallbackCounters.inc"
+	.include "structs/Palette20097a0.inc"
 
 /*
 rough notes for now

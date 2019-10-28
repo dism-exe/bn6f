@@ -2770,7 +2770,7 @@ int __fastcall sub_8002354(int *a1)
 // 0x8002368
 void __cdecl zeroFill_e20097A0()
 {
-    ZeroFillByWord(byte_20097A0, &byte_108);
+    ZeroFillByWord(ePalette20097a0, &byte_108);
 }
 
 
@@ -2781,7 +2781,7 @@ int __fastcall sub_8002378(int result, int a2, int a3, int a4)
     char *v5; // r7
     char v6; // r3
 
-    v5 = &byte_20097A0[12 * a4];
+    v5 = &ePalette20097a0[12 * a4];
     v6 = 0;
     if ( a2 && a3 )
     {
@@ -2802,7 +2802,7 @@ int __fastcall sub_800239A(int a1)
     char *v1; // r2
     int result; // r0
 
-    v1 = &byte_20097A0[12 * a1];
+    v1 = &ePalette20097a0[12 * a1];
     result = 0;
     *v1 = 0;
     return result;
@@ -2812,14 +2812,14 @@ int __fastcall sub_800239A(int a1)
 // 0x80023a8
 void __fastcall sub_80023A8(int a1, int a2, int a3, int a4)
 {
-    ZeroFillByWord(byte_20097A0, &loc_D8);
+    ZeroFillByWord(ePalette20097a0, &loc_D8);
 }
 
 
 // 0x80023b8
 int __fastcall sub_80023B8(int a1)
 {
-    return byte_20097A0[12 * a1];
+    return ePalette20097a0[12 * a1];
 }
 
 
@@ -2829,7 +2829,7 @@ int sub_80023C6()
     char *v0; // r2
     int result; // r0
 
-    v0 = byte_20097A0;
+    v0 = ePalette20097a0;
     while ( 1 )
     {
         result = *v0;
@@ -2856,7 +2856,7 @@ void __cdecl getPalleteAndTransition_80023E0()
 
     CopyByEightWords(palette_3001960, iPalette3001B60, 0x200u);
     CopyByEightWords(byte_3001550, iPallete3001750, 0x200u);
-    v1 = byte_20097A0;
+    v1 = ePalette20097a0;
     do
     {
         if ( *v1 )

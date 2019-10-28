@@ -3386,22 +3386,38 @@ off_8001C90: .word eStruct200BE70
 	thumb_local_start
 sub_8001C94:
 	push {r4,r7,lr}
+
+	// read pointer
 	ldr r6, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
+
+	// get some ewram address?
 	ldr r5, off_8001CE4 // =off_8001AB8
 	ldrb r4, [r7,#oS20094c0_Unk_17]
 	lsl r4, r4, #2
 	ldr r5, [r5,r4]
+
+	// read pointer
 	ldr r4, [r7,#oS20094c0_Unk_0c]
 	mov r1, #0
 	push {r0}
+
 loc_8001CA6:
+	// read from memory
 	ldrh r2, [r6,r1]
+	// & 0x3ff
 	lsl r3, r2, #0x16
 	lsr r3, r3, #0x16
+	// r3 has mask 0xffc0
 	lsl r3, r3, #5
 	push {r4,r6}
+	// add r3 as offset to r4 pointer
 	add r4, r4, r3
+	// jumptable
 	ldr r0, off_8001CE8 // =off_8001CEC
+	// use these bits of r2 for jumptable index
+	//    ||
+	//    vv
+	// 0b 1111 1111 1111
 	lsr r2, r2, #0xa
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
@@ -3410,16 +3426,24 @@ loc_8001CA6:
 	pop {r4,r6}
 	add r5, #0x20
 	add r1, #2
+
+	// upper limit
 	ldrb r2, [r7,#oS20094c0_Unk_16]
 	lsl r2, r2, #1
 	cmp r1, r2
 	blt loc_8001CA6
 	pop {r0}
+
+	// read same ewram address again
 	ldr r0, off_8001CE4 // =off_8001AB8
 	ldrb r1, [r7,#oS20094c0_Unk_17]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
+
+	// dest pointer
 	ldr r1, [r7,#oS20094c0_Unk_10]
+
+	// size
 	ldrb r2, [r7,#oS20094c0_Unk_16]
 	lsl r2, r2, #5
 	bl QueueEightWordAlignedGFXTransfer
@@ -4326,7 +4350,7 @@ locret_8002366:
 zeroFill_e20097A0:
 	push {lr}
 	// memBlock
-	ldr r0, off_8002464 // =byte_20097A0
+	ldr r0, off_8002464 // =ePalette20097a0
 	// size
 	ldr r1, off_8002374 // =0x108
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -4337,8 +4361,8 @@ off_8002374: .word 0x108
 	thumb_func_start sub_8002378
 sub_8002378:
 	push {r5-r7,lr}
-	ldr r7, off_8002464 // =byte_20097A0
-	mov r6, #0xc
+	ldr r7, off_8002464 // =ePalette20097a0
+	mov r6, #oPalette20097a0_Size
 	mul r3, r6
 	add r7, r7, r3
 	mov r3, #0
@@ -4346,24 +4370,24 @@ sub_8002378:
 	beq loc_8002396
 	tst r2, r2
 	beq loc_8002396
-	strb r0, [r7,#1]
-	str r1, [r7,#4]
-	strb r2, [r7,#2]
+	strb r0, [r7,#oPalette20097a0_Unk_01]
+	str r1, [r7,#oPalette20097a0_Unk_04]
+	strb r2, [r7,#oPalette20097a0_Unk_02]
 	mov r3, #1
-	str r4, [r7,#8]
+	str r4, [r7,#oPalette20097a0_Unk_08]
 loc_8002396:
-	strb r3, [r7]
+	strb r3, [r7,#oPalette20097a0_Unk_00]
 	pop {r5-r7,pc}
 	thumb_func_end sub_8002378
 
 	thumb_func_start sub_800239A
 sub_800239A:
-	ldr r2, off_8002464 // =byte_20097A0
-	mov r1, #0xc
+	ldr r2, off_8002464 // =ePalette20097a0
+	mov r1, #oPalette20097a0_Size
 	mul r0, r1
 	add r2, r2, r0
 	mov r0, #0
-	strb r0, [r2]
+	strb r0, [r2,#oPalette20097a0_Unk_00]
 	mov pc, lr
 	thumb_func_end sub_800239A
 
@@ -4371,34 +4395,34 @@ sub_800239A:
 sub_80023A8:
 	push {lr}
 	// memBlock
-	ldr r0, off_8002464 // =byte_20097A0
+	ldr r0, off_8002464 // =ePalette20097a0
 	// size
 	ldr r1, off_80023B4 // =0xd8
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
-off_80023B4: .word 0xD8
+off_80023B4: .word 0xd8
 	thumb_func_end sub_80023A8
 
 	thumb_local_start
 sub_80023B8:
-	ldr r2, off_8002464 // =byte_20097A0
-	mov r1, #0xc
+	ldr r2, off_8002464 // =ePalette20097a0
+	mov r1, #oPalette20097a0_Size
 	mul r1, r0
 	add r2, r2, r1
-	ldrb r0, [r2]
+	ldrb r0, [r2,#oPalette20097a0_Unk_00]
 	tst r0, r0
 	mov pc, lr
 	thumb_func_end sub_80023B8
 
 	thumb_local_start
 sub_80023C6:
-	ldr r2, off_8002464 // =byte_20097A0
+	ldr r2, off_8002464 // =ePalette20097a0
 	ldr r3, off_80023DC // =0x108
 loc_80023CA:
 	ldrb r0, [r2]
 	tst r0, r0
 	bne locret_80023D8
-	add r2, #0xc
+	add r2, #oPalette20097a0_Size
 	cmp r2, r3
 	blt loc_80023CA
 	mov r0, #0
@@ -4421,7 +4445,7 @@ getPalleteAndTransition_80023E0:
 	mov r2, #0x20
 	lsl r2, r2, #4
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
-	ldr r5, off_8002464 // =byte_20097A0
+	ldr r5, off_8002464 // =ePalette20097a0
 loc_80023FC:
 	ldrb r0, [r5]
 	tst r0, r0
@@ -4448,7 +4472,7 @@ loc_800241E:
 	bx r3
 loc_8002428:
 	add r5, #0xc
-	ldr r6, off_8002464 // =byte_20097A0
+	ldr r6, off_8002464 // =ePalette20097a0
 	ldr r0, off_8002460 // =0x108
 	add r6, r6, r0
 	cmp r5, r6
@@ -4467,7 +4491,7 @@ byte_8002450:
 	.word sub_3005F78
 	.word sub_3005F78
 off_8002460: .word 0x108
-off_8002464: .word byte_20097A0
+off_8002464: .word ePalette20097a0
 	thumb_func_end getPalleteAndTransition_80023E0
 
 	thumb_func_start Initialize_eStruct200a6a0

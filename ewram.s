@@ -663,16 +663,32 @@ unk_2009750:: // 0x2009750
 	.space 64
 byte_2009790:: // 0x2009790
 	.space 16
-byte_20097A0:: // 0x20097a0
-	.space 1
-byte_20097A1:: // 0x20097a1
-	.space 1
-byte_20097A2:: // 0x20097a2
-	.space 2
-dword_20097A4:: // 0x20097a4
-	.space 4
-dword_20097A8:: // 0x20097a8
-	.space 256
+
+ePalette20097a0:: // 0x20097a0
+	palette_20097a0_struct ePalette20097a0_0
+	palette_20097a0_struct ePalette20097a0_1
+	palette_20097a0_struct ePalette20097a0_2
+	palette_20097a0_struct ePalette20097a0_3
+	palette_20097a0_struct ePalette20097a0_4
+	palette_20097a0_struct ePalette20097a0_5
+	palette_20097a0_struct ePalette20097a0_6
+	palette_20097a0_struct ePalette20097a0_7
+	palette_20097a0_struct ePalette20097a0_8
+	palette_20097a0_struct ePalette20097a0_9
+	palette_20097a0_struct ePalette20097a0_10
+	palette_20097a0_struct ePalette20097a0_11
+	palette_20097a0_struct ePalette20097a0_12
+	palette_20097a0_struct ePalette20097a0_13
+	palette_20097a0_struct ePalette20097a0_14
+	palette_20097a0_struct ePalette20097a0_15
+	palette_20097a0_struct ePalette20097a0_16
+	palette_20097a0_struct ePalette20097a0_17
+	palette_20097a0_struct ePalette20097a0_18
+	palette_20097a0_struct ePalette20097a0_19
+	palette_20097a0_struct ePalette20097a0_20
+	palette_20097a0_struct ePalette20097a0_21
+ePalette20097a0End:: // 0x20098a8
+
 byte_20098A8:: // 0x20098a8
 	.space 1
 byte_20098A9:: // 0x20098a9
