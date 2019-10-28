@@ -379,6 +379,9 @@ loc_3005EDE:
 	thumb_func_end sub_3005EBA
 
 	thumb_func_start sub_3005EF0
+// r0 - some param
+// r2 - jumptable index
+// r6 - num palettes
 sub_3005EF0:
 	push {r5,lr}
 	cmp r6, #0

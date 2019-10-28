@@ -3327,13 +3327,13 @@ byte_8001C08:
 	.word 0x8
 	.word 0x8
 off_8001C24:
-	.word sub_8001C44+1 // 0x0
-	.word sub_8001C94+1 // 0x4
-	.word sub_8001C52+1 // 0x8
-	.word sub_8002310+1 // 0xc
-	.word sub_800232A+1 // 0x10
-	.word sub_8002338+1 // 0x14
-	.word sub_8001CFC+1 // 0x18
+	.word sub_8001C44+1 // 0x0 copy palette
+	.word sub_8001C94+1 // 0x4 copy 0x20 sized tiles
+	.word sub_8001C52+1 // 0x8 ???
+	.word sub_8002310+1 // 0xc manual palette transform
+	.word sub_800232A+1 // 0x10 play sound effect
+	.word sub_8002338+1 // 0x14 set or clear event flag
+	.word sub_8001CFC+1 // 0x18 copy 0x40 sized tiles
 off_8001C40: .word byte_20094C0
 	thumb_func_end PET_onUpdate_8001B94
 
@@ -4287,6 +4287,11 @@ sub_80021CE:
 	thumb_func_end sub_80021CE
 
 	thumb_local_start
+// r0 = [o8001b1c_Unk_00_Word] - jumptable index
+// r1 = [o8001b1c_Unk_0c_Word] - param
+// r2 = [o8001b1c_Unk_0a_Byte] - num palettes
+// r3 = [o8001b1c_Unk_09_Byte] - S20094c0 index
+// r4 = [o8001b1c_Unk_04_Word] - dest?
 sub_8002310:
 	push {lr}
 	push {r4,r7}
@@ -4447,13 +4452,13 @@ getPalleteAndTransition_80023E0:
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r5, off_8002464 // =ePalette20097a0
 loc_80023FC:
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oPalette20097a0_Unk_00]
 	tst r0, r0
 	beq loc_8002428
-	ldr r0, [r5,#0x4] // (dword_20097A4 - 0x20097a0)
-	ldrb r2, [r5,#0x1] // (byte_20097A1 - 0x20097a0)
-	ldrb r6, [r5,#0x2] // (byte_20097A2 - 0x20097a0)
-	ldr r7, [r5,#0x8] // (dword_20097A8 - 0x20097a0)
+	ldr r0, [r5,#oPalette20097a0_Unk_04] // (dword_20097A4 - 0x20097a0)
+	ldrb r2, [r5,#oPalette20097a0_Unk_01] // (byte_20097A1 - 0x20097a0)
+	ldrb r6, [r5,#oPalette20097a0_Unk_02] // (byte_20097A2 - 0x20097a0)
+	ldr r7, [r5,#oPalette20097a0_Unk_08] // (dword_20097A8 - 0x20097a0)
 	cmp r7, #6
 	bge loc_800241E
 	ldr r6, off_8002438 // =unk_200F388
@@ -4471,7 +4476,7 @@ loc_800241E:
 	mov lr, pc
 	bx r3
 loc_8002428:
-	add r5, #0xc
+	add r5, #oPalette20097a0_Size
 	ldr r6, off_8002464 // =ePalette20097a0
 	ldr r0, off_8002460 // =0x108
 	add r6, r6, r0
@@ -4486,10 +4491,10 @@ off_8002444: .word byte_3001550
 off_8002448: .word iPallete3001750
 off_800244C: .word byte_8002450
 byte_8002450:
-	.word sub_3005EF0
-	.word sub_3005EF0
-	.word sub_3005F78
-	.word sub_3005F78
+	.word sub_3005EF0+1
+	.word sub_3005EF0+1
+	.word sub_3005F78+1
+	.word sub_3005F78+1
 off_8002460: .word 0x108
 off_8002464: .word ePalette20097a0
 	thumb_func_end getPalleteAndTransition_80023E0
