@@ -15,6 +15,10 @@ INC = include
 # project files
 SFILES = rom.s data.s ewram.s iwram.s
 
+# to keep track of compressed files and to build decompressed versions into them
+# imports LZ77_SFILES, which contains assets to build then compress to .lz77, which is binincluded in the source
+include lz77.mk
+
 OFILES = $(addprefix $(OBJ),$(SFILES:.s=.o))
 BUILD_NAME = bn6f
 ROM = $(BUILD_NAME).gba
@@ -45,6 +49,13 @@ $(ROM): %.elf
 
 %.o: %.s
 	$(AS) $(ASFLAGS) $< -o $@
+
+assets: $(LZ77_FILES)
+	# build
+	LZ77_OFILES = $(AS) $(ASFLAGS) $< -o 
+	echo $(LZ77_OFILES)
+
+	# compress
 
 checksum:
 	@$(SHA1SUM) -c $(BUILD_NAME).sha1
