@@ -12028,7 +12028,7 @@ sub_802C75C:
 	mov r4, #2
 	bl sub_802C4B6
 	pop {r0,r1,r6}
-	ldr r0, off_802C7D8 // =byte_86EF71C 
+	ldr r0, off_802C7D8 // =TextScript86EF71C 
 	ldr r2, off_802C7E4 // =unk_2035520 
 	ldr r3, dword_802C7DC // =0x600bc80 
 	mov r4, #1
@@ -12044,7 +12044,7 @@ off_802C7C4: .word TextScriptChipNames0
 off_802C7CC: .word unk_2035320
 dword_802C7D0: .word 0x600BA80
 off_802C7D4: .word dword_86B7AE0
-off_802C7D8: .word byte_86EF71C
+off_802C7D8: .word TextScript86EF71C
 dword_802C7DC: .word 0x600BC80
 dword_802C7E0: .word 0x91E4
 off_802C7E4: .word unk_2035520

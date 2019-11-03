@@ -8680,7 +8680,7 @@ int __fastcall __noreturn sub_802C75C(unsigned int a1, int a2)
     *v4 = -28188;
     v4[1] = -28187;
     sub_802C4B6(11, 12, v4, 1);
-    return renderTextGfx_8045F8C(byte_86EF71C, v2, &unk_2035520, 100711552);
+    return renderTextGfx_8045F8C(TextScript86EF71C, v2, &unk_2035520, 100711552);
 }
 
 

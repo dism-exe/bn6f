@@ -4567,7 +4567,7 @@ off_8042060: .word off_8042064
 off_8042064: .word byte_873D9FC
 	.word TextScriptChipNames0
 	.word TextScriptChipNames1
-	.word byte_86EF71C
+	.word TextScript86EF71C
 	.word TextScriptFolderNames
 	.word byte_873EA50
 	.word byte_873EA50

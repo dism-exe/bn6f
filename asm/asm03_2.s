@@ -2617,7 +2617,7 @@ loc_8047698:
 	bne loc_80476C4
 	mov r3, #0x1b
 loc_80476C4:
-	ldr r0, off_80476F4 // =byte_86EF71C 
+	ldr r0, off_80476F4 // =TextScript86EF71C 
 	mov r1, r3
 	ldr r2, off_80476F8 // =unk_2013C00 
 	ldr r3, dword_80476FC // =0x6008600 
@@ -2635,7 +2635,7 @@ off_80476E4: .word TextScriptChipNames0
 	.word TextScriptChipNames1
 off_80476EC: .word eDecompBuffer2013A00
 dword_80476F0: .word 0x6008400
-off_80476F4: .word byte_86EF71C
+off_80476F4: .word TextScript86EF71C
 off_80476F8: .word unk_2013C00
 dword_80476FC: .word 0x6008600
 off_8047700: .word dword_86A5D60

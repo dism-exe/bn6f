@@ -1372,7 +1372,7 @@ void __fastcall __noreturn sub_8047664(int a1, unsigned int a2, int a3, int a4)
     {
         v5 = 27;
     }
-    renderTextGfx_8045F8C(byte_86EF71C, v5, &unk_2013C00 + v9, v9 + 100697600);
+    renderTextGfx_8045F8C(TextScript86EF71C, v5, &unk_2013C00 + v9, v9 + 100697600);
 }
 
 
