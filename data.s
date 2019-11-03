@@ -808,11 +808,7 @@ comp_86DDB7C::
 	.incbin "data/compressed/comp_86DDB7C.lz77"
 dat38_85::
 	.include "data/dat38_85.s"
-	.include "data/scripts/TextScriptBattleTutFullSynchro.s"
-TextScriptDadCybeastTut::
-	.incbin "data/scripts/TextScriptDadCybeastTut.bin"
-TextScriptShukoCrossTut::
-	.incbin "data/scripts/TextScriptShukoCrossTut.bin"
+	.include "data/textscript/text_battle_tutorials_86f2e60.s"
 dat38_86::
 	.include "data/dat38_86.s"
 TextScriptCommError87370C0::
