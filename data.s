@@ -615,7 +615,7 @@ comp_86C45A8::
 dat38_63::
 	.include "data/dat38_63.s"
 compScripts_credits_86C4B58::
-	.incbin "data/scripts/compScripts_credits_86C4B58.lz77"
+	.incbin "data/scripts/compScripts_credits_86C4B58.lz"
 dat38_64::
 	.include "data/dat38_64.s"
 comp_86C5190::
