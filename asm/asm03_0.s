@@ -9799,7 +9799,7 @@ loc_802B3A4:
 	lsl r0, r0, #1
 	ldr r1, off_802B3F4 // =byte_802B3F8
 	ldrh r1, [r1,r0]
-	ldr r0, off_802B3F0 // =dword_86F047C 
+	ldr r0, off_802B3F0 // =TextScriptVirusChipNames 
 loc_802B3AC:
 	ldr r6, [sp]
 	mov r2, #0x28 
@@ -9828,7 +9828,7 @@ dword_802B3E0: .word 0xFFFF
 off_802B3E4: .word dword_86B7AE0
 dword_802B3E8: .word 0x6008E00
 	.word decomp_2032000
-off_802B3F0: .word dword_86F047C
+off_802B3F0: .word TextScriptVirusChipNames
 off_802B3F4: .word byte_802B3F8
 byte_802B3F8: .byte 0x0, 0x0, 0x1, 0x0, 0x7, 0x0, 0xD, 0x0, 0x13, 0x0, 0x19, 0x0, 0x1F, 0x0
 	.byte 0x25, 0x0, 0x2B, 0x0, 0x31, 0x0, 0x37, 0x0, 0x3D, 0x0, 0x43, 0x0, 0x49, 0x0
@@ -10305,7 +10305,7 @@ sub_802B80C:
 	cmp r2, r1
 	bge loc_802B86A
 	lsr r1, r0, #9
-	ldr r0, off_802B9AC // =byte_86F0300 
+	ldr r0, off_802B9AC // =TextScript86F0300 
 	ldr r2, off_802B990 // =0x48 
 	mul r2, r3
 	ldr r3, dword_802B9B4 // =0x6009760 
@@ -10475,7 +10475,7 @@ off_802B99C: .word 0x160
 off_802B9A0: .word byte_203C4E0
 dword_802B9A4: .word 0x6009560
 off_802B9A8: .word dword_86B7AE0
-off_802B9AC: .word byte_86F0300
+off_802B9AC: .word TextScript86F0300
 off_802B9B0: .word byte_203C6E0
 dword_802B9B4: .word 0x6009760
 	thumb_func_end sub_802B920

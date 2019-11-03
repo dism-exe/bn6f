@@ -14821,7 +14821,7 @@ sub_8137D50:
 	mov r4, #0
 loc_8137D66:
 	ldr r6, [sp]
-	ldr r0, off_8137D94 // =dword_86F0D7C 
+	ldr r0, off_8137D94 // =TextScriptNaviChipNames 
 	ldrb r1, [r5]
 	tst r1, r1
 	beq loc_8137D82
@@ -14843,7 +14843,7 @@ loc_8137D82:
 	add sp, sp, #4
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8137D94: .word dword_86F0D7C
+off_8137D94: .word TextScriptNaviChipNames
 	.word off_8137D9C
 off_8137D9C: .word eTextScript201BF00
 off_8137DA0: .word 0x200

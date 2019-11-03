@@ -3738,9 +3738,9 @@ signed __int64 __fastcall sub_800EC56(signed int a1)
 {
     int *v1; // r2
 
-    v1 = dword_86F047C;
+    v1 = TextScriptVirusChipNames;
     if ( a1 > 255 )
-        v1 = dword_86F0D7C;
+        v1 = TextScriptNaviChipNames;
     return __PAIR__(a1, v1) & 0xFFFFFFFFFFLL;
 }
 

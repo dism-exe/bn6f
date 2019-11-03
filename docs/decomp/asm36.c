@@ -10101,9 +10101,9 @@ int *__fastcall sub_8137D50(int a1, int a2, _WORD *a3)
     v5 = 0;
     do
     {
-        result = dword_86F0D7C;
+        result = TextScriptNaviChipNames;
         if ( *v3 )
-            result = sub_81202B4(dword_86F0D7C + *(dword_86F0D7C + *v3), *(dword_86F0D7C + *v3), a3, v4);
+            result = sub_81202B4(TextScriptNaviChipNames + *(dword_86F0D7C + *v3), *(dword_86F0D7C + *v3), a3, v4);
         v3 += 2;
         a3 += 8;
         v4 += 8;

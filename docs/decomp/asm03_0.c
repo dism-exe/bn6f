@@ -7245,7 +7245,7 @@ int __fastcall __noreturn sub_802B358(int a1, int a2)
             *&byte_802B5FC[8 * v8 + 4];
             *(v2 + 18);
             v9 = *&byte_802B3F8[2 * v8];
-            v10 = dword_86F047C;
+            v10 = TextScriptVirusChipNames;
         }
         result = renderTextGfx_8045F8C(v10, v9, v13 + 640 * v12, 640 * v12 + 100699648);
         v4 = v12 + 1;
@@ -7614,7 +7614,7 @@ int sub_802B80C()
         renderTextGfx_8045F8C(v2, v4, byte_203C4E0, &byte_48 * v3 + 100701536);
         v5 = v13 & 0x1FF;
         if ( v5 < dword_160 )
-            renderTextGfx_8045F8C(byte_86F0300, v13 >> 9, byte_203C6E0, &byte_48 * v14 + 100702048);
+            renderTextGfx_8045F8C(TextScript86F0300, v13 >> 9, byte_203C6E0, &byte_48 * v14 + 100702048);
         v6 = v14;
         v7 = *(v0 + 16) >> 3;
         v8 = *(v0 + 6);
