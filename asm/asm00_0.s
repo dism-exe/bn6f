@@ -3148,7 +3148,7 @@ off_8001AB8: .word unk_200DF40
 zeroFill_e20094C0:
 	push {lr}
 	// memBlock
-	ldr r0, off_8001C40 // =byte_20094C0
+	ldr r0, off_8001C40 // =eGFXAnimStates
 	// size
 	ldr r1, off_8001B08 // =0x1b0
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -3167,44 +3167,44 @@ sub_8001B0C:
 off_8001B18: .word off_8001AB8
 	thumb_func_end sub_8001B0C
 
-	thumb_func_start sub_8001B1C
+	thumb_func_start LoadGFXAnim
 // r0 struct format: word0 word4 word8 byte9 (multiple fields depending on command)
-sub_8001B1C:
+LoadGFXAnim:
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
 
-	ldr r7, off_8001C40 // =byte_20094C0
-	ldrb r1, [r0,#oS8001b1c_Unk_09]
-	mov r2, #oS20094c0_Size
+	ldr r7, off_8001C40 // =eGFXAnimStates
+	ldrb r1, [r0,#oGFXAnimData_Index]
+	mov r2, #oGFXAnimState_Size
 	mul r2, r1
 	add r7, r7, r2
-	strb r1, [r7,#oS20094c0_Unk_01]
+	strb r1, [r7,#oGFXAnimState_Index]
 
-	ldr r1, [r0,#oS8001b1c_Unk_00]
-	str r1, [r7,#oS20094c0_Unk_0c]
+	ldr r1, [r0,#oGFXAnimData_Param0]
+	str r1, [r7,#oGFXAnimState_Param0]
 
-	ldr r2, [r0,#oS8001b1c_Unk_04]
-	str r2, [r7,#oS20094c0_Unk_10]
+	ldr r2, [r0,#oGFXAnimData_Param1]
+	str r2, [r7,#oGFXAnimState_Param1]
 
-	ldr r3, [r0,#oS8001b1c_Unk_08]
-	str r3, [r7,#oS20094c0_Unk_14_Word]
+	ldr r3, [r0,#oGFXAnimData_Command]
+	str r3, [r7,#oGFXAnimState_Command_Param2to3]
 
-	add r0, #oS8001b1c_Unk_0c
+	add r0, #oGFXAnimData_ParamNext
 	mov r6, #1
 	cmp r3, #8
 	beq loc_8001B48
-	ldr r6, [r0,#oS8001b1c_Unk_10 - oS8001b1c_Unk_0c]
+	ldr r6, [r0,#oGFXAnimData_Delay - oGFXAnimData_ParamNext]
 loc_8001B48:
-	strh r6, [r7,#oS20094c0_Unk_02]
+	strh r6, [r7,#oGFXAnimState_Timer]
 	mov r6, #1
-	strb r6, [r7,#oS20094c0_Unk_00]
-	str r0, [r7,#oS20094c0_Unk_04]
-	str r0, [r7,#oS20094c0_Unk_08]
+	strb r6, [r7,#oGFXAnimState_IsActive]
+	str r0, [r7,#oGFXAnimState_LoopAddress]
+	str r0, [r7,#oGFXAnimState_CommandPos]
 	ldr r6, off_8001B68 // =off_8001C24
-	ldrb r1, [r7,#oS20094c0_Unk_14]
+	ldrb r1, [r7,#oGFXAnimState_Command]
 	ldr r6, [r6,r1]
 	mov lr, pc
 	bx r6
@@ -3215,65 +3215,65 @@ loc_8001B48:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8001B68: .word off_8001C24
-	thumb_func_end sub_8001B1C
+	thumb_func_end LoadGFXAnim
 
-	thumb_func_start sub_8001B6C
-sub_8001B6C:
+	thumb_func_start TerminateGFXAnim
+TerminateGFXAnim:
 	push {r4-r7,lr}
 	push {r0}
-	ldr r7, off_8001C40 // =byte_20094C0
-	mov r1, #0x18
+	ldr r7, off_8001C40 // =eGFXAnimStates
+	mov r1, #oGFXAnimState_Size
 	mul r1, r0
 	add r7, r7, r1
 	mov r0, #0
 	strb r0, [r7]
 	pop {r0}
-	bl sub_800239A
+	bl Terminate_ePalette20097a0_Transform
 	pop {r4-r7,pc}
-	thumb_func_end sub_8001B6C
+	thumb_func_end TerminateGFXAnim
 
-	thumb_func_start sub_8001B84
-sub_8001B84:
+	thumb_func_start IsGFXAnimActive
+IsGFXAnimActive:
 	push {r4-r7,lr}
-	ldr r7, off_8001C40 // =byte_20094C0
-	mov r1, #0x18
+	ldr r7, off_8001C40 // =eGFXAnimStates
+	mov r1, #oGFXAnimState_Size
 	mul r1, r0
 	add r7, r7, r1
 	ldrb r0, [r7]
 	tst r0, r0
 	pop {r4-r7,pc}
-	thumb_func_end sub_8001B84
+	thumb_func_end IsGFXAnimActive
 
-	thumb_func_start PET_onUpdate_8001B94
-PET_onUpdate_8001B94:
+	thumb_func_start ProcessGFXAnims
+ProcessGFXAnims:
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
-	ldr r7, off_8001C40 // =byte_20094C0
+	ldr r7, off_8001C40 // =eGFXAnimStates
 	mov r4, #0
 .loopStruct
-	ldrb r1, [r7,#oS20094c0_Unk_00]
+	ldrb r1, [r7,#oGFXAnimState_IsActive]
 	tst r1, r1
 	bne .structIsActive
 .doneThisStruct
-	add r7, #oS20094c0_Size
+	add r7, #oGFXAnimState_Size
 	add r4, #1
 	cmp r4, #NUM_S20094C0_STRUCTS // 0x12
 	bge .doneAllStructs
 	b .loopStruct
 .structIsActive
 
-	ldrh r1, [r7,#oS20094c0_Unk_02]
+	ldrh r1, [r7,#oGFXAnimState_Timer]
 	sub r1, #1
-	strh r1, [r7,#oS20094c0_Unk_02]
+	strh r1, [r7,#oGFXAnimState_Timer]
 	cmp r1, #0
 	bgt .doneThisStruct
 
-	ldr r0, [r7,#oS20094c0_Unk_08] // extended data start pointer (S8001b1c + 0xc)
+	ldr r0, [r7,#oGFXAnimState_CommandPos] // extended data start pointer (S8001b1c + 0xc)
 	ldr r1, off_8001C00 // =byte_8001C08
-	ldrb r2, [r7,#oS20094c0_Unk_14] // read sub_8001B1C type
+	ldrb r2, [r7,#oGFXAnimState_Command] // read LoadGFXAnim type
 	ldr r1, [r1,r2]
 	add r0, r0, r1
 
@@ -3282,24 +3282,24 @@ PET_onUpdate_8001B94:
 	beq .noMoreEntries
 
 	cmp r1, #2
-	beq .loc_8001BD8
+	beq .setLoopAddressAndJump
 
 	cmp r1, #1
-	bne .loc_8001BDC
+	bne .gotGFXAnimCommandPos
 
-	ldr r0, [r7,#oS20094c0_Unk_04]
-	b .loc_8001BDC
+	ldr r0, [r7,#oGFXAnimState_LoopAddress]
+	b .gotGFXAnimCommandPos
 
-.loc_8001BD8:
+.setLoopAddressAndJump
 	ldr r0, [r0,#4]
-	str r0, [r7,#oS20094c0_Unk_04]
-.loc_8001BDC:
-	str r0, [r7,#oS20094c0_Unk_08]
+	str r0, [r7,#oGFXAnimState_LoopAddress]
+.gotGFXAnimCommandPos
+	str r0, [r7,#oGFXAnimState_CommandPos]
 	ldr r1, [r0,#4]
-	strh r1, [r7,#oS20094c0_Unk_02]
+	strh r1, [r7,#oGFXAnimState_Timer]
 
 	ldr r6, off_8001C04 // =off_8001C24
-	ldrb r1, [r7,#oS20094c0_Unk_14]
+	ldrb r1, [r7,#oGFXAnimState_Command]
 	ldr r6, [r6,r1]
 	mov lr, pc
 	bx r6
@@ -3315,7 +3315,7 @@ PET_onUpdate_8001B94:
 	mov r9, r2
 	mov r12, r3
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8001C00: .word byte_8001C08
 off_8001C04: .word off_8001C24
 byte_8001C08:
@@ -3334,15 +3334,15 @@ off_8001C24:
 	.word sub_800232A+1 // 0x10 play sound effect
 	.word sub_8002338+1 // 0x14 set or clear event flag
 	.word sub_8001CFC+1 // 0x18 copy 0x40 sized tiles
-off_8001C40: .word byte_20094C0
-	thumb_func_end PET_onUpdate_8001B94
+off_8001C40: .word eGFXAnimStates
+	thumb_func_end ProcessGFXAnims
 
 	thumb_local_start
 sub_8001C44:
 	push {lr}
-	ldr r0, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
-	ldr r1, [r7,#oS20094c0_Unk_0c]
-	ldr r2, [r7,#oS20094c0_Unk_10]
+	ldr r0, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
+	ldr r1, [r7,#oGFXAnimState_Param0]
+	ldr r2, [r7,#oGFXAnimState_Param1]
 	bl QueueEightWordAlignedGFXTransfer
 	pop {pc}
 	thumb_func_end sub_8001C44
@@ -3352,18 +3352,18 @@ sub_8001C52:
 	push {lr}
 	ldr r5, off_8001C90 // =eStruct200BE70
 	ldr r5, [r5,#0xc] // (dword_200BE7C - 0x200be70)
-	ldrb r2, [r7,#0x17]
+	ldrb r2, [r7,#oGFXAnimState_Param3]
 	lsl r2, r2, #2
 	add r2, #4
 	ldr r2, [r5,r2]
 	add r5, r5, r2
 	mov r6, #0xf0
 	lsl r6, r6, #8
-	ldrb r2, [r7,#0x16]
+	ldrb r2, [r7,#oGFXAnimState_Param2]
 	mov r8, r7
 loc_8001C6A:
-	ldr r1, [r0]
-	ldr r7, [r0,#4]
+	ldr r1, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
+	ldr r7, [r0,#oGFXAnimData_Delay - oGFXAnimData_ParamNext]
 	ldrh r3, [r5,r1]
 	and r3, r6
 	orr r3, r7
@@ -3377,7 +3377,7 @@ loc_8001C6A:
 	bl sub_8030808
 	pop {r4,r7}
 	mov r0, #0
-	strb r0, [r7]
+	strb r0, [r7,#oGFXAnimState_IsActive]
 	pop {pc}
 	.byte 0, 0
 off_8001C90: .word eStruct200BE70
@@ -3388,16 +3388,16 @@ sub_8001C94:
 	push {r4,r7,lr}
 
 	// read pointer
-	ldr r6, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
+	ldr r6, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
 
 	// get some ewram address?
 	ldr r5, off_8001CE4 // =off_8001AB8
-	ldrb r4, [r7,#oS20094c0_Unk_17]
+	ldrb r4, [r7,#oGFXAnimState_Param3]
 	lsl r4, r4, #2
 	ldr r5, [r5,r4]
 
 	// read pointer
-	ldr r4, [r7,#oS20094c0_Unk_0c]
+	ldr r4, [r7,#oGFXAnimState_Param0]
 	mov r1, #0
 	push {r0}
 
@@ -3428,7 +3428,7 @@ loc_8001CA6:
 	add r1, #2
 
 	// upper limit
-	ldrb r2, [r7,#oS20094c0_Unk_16]
+	ldrb r2, [r7,#oGFXAnimState_Param2]
 	lsl r2, r2, #1
 	cmp r1, r2
 	blt loc_8001CA6
@@ -3436,15 +3436,15 @@ loc_8001CA6:
 
 	// read same ewram address again
 	ldr r0, off_8001CE4 // =off_8001AB8
-	ldrb r1, [r7,#oS20094c0_Unk_17]
+	ldrb r1, [r7,#oGFXAnimState_Param3]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 
 	// dest pointer
-	ldr r1, [r7,#oS20094c0_Unk_10]
+	ldr r1, [r7,#oGFXAnimState_Param1]
 
 	// size
-	ldrb r2, [r7,#oS20094c0_Unk_16]
+	ldrb r2, [r7,#oGFXAnimState_Param2]
 	lsl r2, r2, #5
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4,r7,pc}
@@ -3462,16 +3462,16 @@ sub_8001CFC:
 	push {r4,r7,lr}
 
 	// read pointer
-	ldr r6, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
+	ldr r6, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
 
 	// get some ewram address?
 	ldr r5, off_8001D4C // =off_8001AB8
-	ldrb r4, [r7,#oS20094c0_Unk_17]
+	ldrb r4, [r7,#oGFXAnimState_Param3]
 	lsl r4, r4, #2
 	ldr r5, [r5,r4]
 
 	// read pointer
-	ldr r4, [r7,#oS20094c0_Unk_0c]
+	ldr r4, [r7,#oGFXAnimState_Param0]
 	mov r1, #0
 	push {r0}
 
@@ -3502,7 +3502,7 @@ loc_8001D0E:
 	add r1, #2
 
 	// upper limit
-	ldrb r2, [r7,#oS20094c0_Unk_16]
+	ldrb r2, [r7,#oGFXAnimState_Param2]
 	lsl r2, r2, #1
 	cmp r1, r2
 	blt loc_8001D0E
@@ -3510,15 +3510,15 @@ loc_8001D0E:
 
 	// read same ewram address again
 	ldr r0, off_8001D4C // =off_8001AB8
-	ldrb r1, [r7,#oS20094c0_Unk_17]
+	ldrb r1, [r7,#oGFXAnimState_Param3]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 
 	// dest pointer
-	ldr r1, [r7,#oS20094c0_Unk_10]
+	ldr r1, [r7,#oGFXAnimState_Param1]
 
 	// size
-	ldrb r2, [r7,#oS20094c0_Unk_16]
+	ldrb r2, [r7,#oGFXAnimState_Param2]
 	lsl r2, r2, #6
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4,r7,pc}
@@ -4287,21 +4287,21 @@ sub_80021CE:
 	thumb_func_end sub_80021CE
 
 	thumb_local_start
-// r0 = [o8001b1c_Unk_00_Word] - jumptable index
-// r1 = [o8001b1c_Unk_0c_Word] - param
-// r2 = [o8001b1c_Unk_0a_Byte] - num palettes
-// r3 = [o8001b1c_Unk_09_Byte] - S20094c0 index
-// r4 = [o8001b1c_Unk_04_Word] - dest?
+// r0 = [oGFXAnimData_Param0] - jumptable index
+// r1 = [oGFXAnimData_ParamNext] - param
+// r2 = [oGFXAnimData_Param2] - num palettes
+// r3 = [oGFXAnimData_Index] - S20094c0 index
+// r4 = [oGFXAnimData_Param1] - dest?
 sub_8002310:
 	push {lr}
 	push {r4,r7}
-	ldr r1, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
+	ldr r1, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
 	lsl r1, r1, #1
 	lsr r1, r1, #1
-	ldrb r0, [r7,#oS20094c0_Unk_0c]
-	ldrb r2, [r7,#oS20094c0_Unk_16]
-	ldrb r3, [r7,#oS20094c0_Unk_01]
-	ldr r4, [r7,#oS20094c0_Unk_10]
+	ldrb r0, [r7,#oGFXAnimState_Param0]
+	ldrb r2, [r7,#oGFXAnimState_Param2]
+	ldrb r3, [r7,#oGFXAnimState_Index]
+	ldr r4, [r7,#oGFXAnimState_Param1]
 	bl sub_8002378
 	pop {r4,r7}
 	pop {pc}
@@ -4310,11 +4310,11 @@ sub_8002310:
 	thumb_local_start
 sub_800232A:
 	push {lr}
-	ldr r0, [r0]
+	ldr r0, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
 	cmp r0, #0
-	blt locret_8002336
+	blt .noSound
 	bl PlaySoundEffect
-locret_8002336:
+.noSound
 	pop {pc}
 	thumb_func_end sub_800232A
 
@@ -4323,33 +4323,33 @@ sub_8002338:
 	push {lr}
 	ldr r0, [r0]
 	cmp r0, #0
-	blt loc_8002348
+	blt .clearEventFlag
 	mov r0, r0
 	bl SetEventFlag
-	b locret_8002352
-loc_8002348:
+	b .done
+.clearEventFlag
 	lsl r0, r0, #1
 	lsr r0, r0, #1
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
-locret_8002352:
+.done
 	pop {pc}
 	thumb_func_end sub_8002338
 
-	thumb_func_start sub_8002354
-sub_8002354:
+	thumb_func_start LoadGFXAnims
+LoadGFXAnims:
 	push {r5,lr}
 	mov r5, r0
-loc_8002358:
+.loadGFXAnimLoop
 	ldr r0, [r5]
 	cmp r0, #0
-	blt locret_8002366
-	bl sub_8001B1C
+	blt .done
+	bl LoadGFXAnim
 	add r5, #4
-	b loc_8002358
-locret_8002366:
+	b .loadGFXAnimLoop
+.done
 	pop {r5,pc}
-	thumb_func_end sub_8002354
+	thumb_func_end LoadGFXAnims
 
 	thumb_func_start zeroFill_e20097A0
 zeroFill_e20097A0:
@@ -4385,8 +4385,8 @@ loc_8002396:
 	pop {r5-r7,pc}
 	thumb_func_end sub_8002378
 
-	thumb_func_start sub_800239A
-sub_800239A:
+	thumb_func_start Terminate_ePalette20097a0_Transform
+Terminate_ePalette20097a0_Transform:
 	ldr r2, off_8002464 // =ePalette20097a0
 	mov r1, #oPalette20097a0_Size
 	mul r0, r1
@@ -4394,7 +4394,7 @@ sub_800239A:
 	mov r0, #0
 	strb r0, [r2,#oPalette20097a0_Unk_00]
 	mov pc, lr
-	thumb_func_end sub_800239A
+	thumb_func_end Terminate_ePalette20097a0_Transform
 
 	thumb_func_start sub_80023A8
 sub_80023A8:

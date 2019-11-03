@@ -28,7 +28,7 @@ char (*ExpoSite_EnterMapGroup())[8]
 // 0x8062b64
 int __fastcall ExpoSite_sub_8002354_8062b64(int a1, int a2)
 {
-	return sub_8002354(*(&off_8062B78 + a2));
+	return LoadGFXAnims(*(&off_8062B78 + a2));
 }
 
 

@@ -57,7 +57,7 @@ sub_807CE90:
 	lsl r1, r1, #2
 	ldr r0, off_807CEA0 // =off_807CEA4 
 	ldr r0, [r0,r1]
-	bl sub_8002354
+	bl LoadGFXAnims
 	pop {pc}
 	.byte 0, 0
 off_807CEA0: .word off_807CEA4

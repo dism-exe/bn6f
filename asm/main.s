@@ -39,7 +39,7 @@ main_gameRoutine:
 loc_800032A:
 	bl chatbox_onUpdate
 	bl CallBGScrollCallback0
-	bl PET_onUpdate_8001B94
+	bl ProcessGFXAnims
 	ldr r0, off_8000344 // =sub_3006814+1
 	mov lr, pc
 	bx r0

@@ -83464,7 +83464,7 @@ loc_80E111E:
 	b locret_80E1136
 loc_80E112C:
 	mov r0, #0x14
-	bl sub_800239A
+	bl Terminate_ePalette20097a0_Transform
 	bl object_freeMemory
 locret_80E1136:
 	pop {pc}
@@ -83533,9 +83533,9 @@ loc_80E119A:
 	b locret_80E11D0
 loc_80E11C0:
 	mov r0, #0x14
-	bl sub_800239A
+	bl Terminate_ePalette20097a0_Transform
 	mov r0, #0x15
-	bl sub_800239A
+	bl Terminate_ePalette20097a0_Transform
 	bl object_freeMemory
 locret_80E11D0:
 	pop {pc}

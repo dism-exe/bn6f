@@ -53,7 +53,7 @@ sub_80690C2:
 	lsl r1, r1, #2
 	ldr r0, off_80690D0 // =off_80690D4 
 	ldr r0, [r0,r1]
-	bl sub_8002354
+	bl LoadGFXAnims
 	pop {pc}
 off_80690D0: .word off_80690D4
 off_80690D4: .word off_80690E0
@@ -979,7 +979,7 @@ sub_806A070:
 	lsl r1, r1, #2
 	ldr r0, off_806A080 // =off_806A084 
 	ldr r0, [r0,r1]
-	bl sub_8002354
+	bl LoadGFXAnims
 	pop {pc}
 	.byte 0, 0
 off_806A080: .word off_806A084
@@ -1625,7 +1625,7 @@ sub_806AAAA:
 	lsl r1, r1, #2
 	ldr r0, off_806AAB8 // =off_806AABC 
 	ldr r0, [r0,r1]
-	bl sub_8002354
+	bl LoadGFXAnims
 	pop {pc}
 off_806AAB8: .word off_806AABC
 off_806AABC: .word off_806AAD0
@@ -2886,7 +2886,7 @@ sub_806C2E2:
 	lsl r1, r1, #2
 	ldr r0, off_806C2F0 // =off_806C2F4 
 	ldr r0, [r0,r1]
-	bl sub_8002354
+	bl LoadGFXAnims
 	pop {pc}
 off_806C2F0: .word off_806C2F4
 off_806C2F4: .word off_806C310
@@ -3055,7 +3055,7 @@ sub_806C4F8:
 	pop {pc}
 loc_806C504:
 	ldr r0, off_806C598 // =off_806C1C4 
-	bl sub_8001B1C
+	bl LoadGFXAnim
 	mov r0, #0x16
 	mov r1, #0xf1
 	bl SetEventFlagFromImmediate

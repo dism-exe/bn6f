@@ -591,8 +591,8 @@
 // shared command
 	enum ms_call_sub_8001B1C_cmd // 0x2c
 // 0x2c/0x36 word1
-// call sub_8001B1C(r0=word1)
-// word1 - argument to sub_8001B1C
+// call LoadGFXAnim(r0=word1)
+// word1 - argument to LoadGFXAnim
 	.macro ms_call_sub_8001B1C word1:req
 	.byte ms_call_sub_8001B1C_cmd
 	.word \word1
@@ -601,8 +601,8 @@
 // shared command
 	enum ms_call_sub_8001B1C_multiple_cmd // 0x2d
 // 0x2d/0x37 word1
-// do sub_8002354(r0=word1)
-// r0 is a list of pointers for sub_8001B1C, terminated by negative
+// do LoadGFXAnims(r0=word1)
+// r0 is a list of pointers for LoadGFXAnim, terminated by negative
 	.macro ms_call_sub_8001B1C_multiple word1:req
 	.byte ms_call_sub_8001B1C_multiple_cmd
 	.word \word1
@@ -620,8 +620,8 @@
 // shared command
 	enum ms_cmd_8035F6A_cmd // 0x2f
 // 0x2f/0x39 byte1
-// if byte1 == 0xff, call sub_8001B6C with r0 as 0x0 to 0x11
-// else, call sub_8001B6C with r0=byte1
+// if byte1 == 0xff, call TerminateGFXAnim with r0 as 0x0 to 0x11
+// else, call TerminateGFXAnim with r0=byte1
 	.macro ms_cmd_8035F6A byte1:req
 	.byte ms_cmd_8035F6A_cmd
 	.byte \byte1

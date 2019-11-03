@@ -36,7 +36,7 @@ void __noreturn main_()
             subsystem_triggerTransition_800630A();
         chatbox_onUpdate();
         CallBGScrollCallback0();
-        PET_onUpdate_8001B94();
+        ProcessGFXAnims();
         sub_3006814();
         main_static_8000454();
     }

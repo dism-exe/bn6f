@@ -54,7 +54,7 @@ sub_8071BE4:
 	lsl r1, r1, #2
 	ldr r0, off_8071BF4 // =off_8071BF8 
 	ldr r0, [r0,r1]
-	bl sub_8002354
+	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0x00
 off_8071BF4: .word off_8071BF8

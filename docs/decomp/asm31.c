@@ -67309,7 +67309,7 @@ int sub_80E10C0()
     *(v0 + 34) = v3;
     if ( (v3 < 0) ^ v4 )
     {
-        sub_800239A(20);
+        Terminate_ePalette20097a0_Transform(20);
         result = object_freeMemory();
     }
     else
@@ -67347,8 +67347,8 @@ int sub_80E114C()
         *(v0 + 34) = v3;
         if ( (v3 < 0) ^ v4 )
         {
-            sub_800239A(20);
-            sub_800239A(21);
+            Terminate_ePalette20097a0_Transform(20);
+            Terminate_ePalette20097a0_Transform(21);
             result = object_freeMemory();
         }
         else

@@ -26,7 +26,7 @@ unsigned int sub_8071B50()
 // 0x8071be4
 int __fastcall sub_8071BE4(int a1, int a2)
 {
-    return sub_8002354(off_8071BF8[a2]);
+    return LoadGFXAnims(off_8071BF8[a2]);
 }
 
 

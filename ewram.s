@@ -597,25 +597,27 @@ byte_2009470:: // 0x2009470
 	.space 16
 unk_2009480:: // 0x2009480
 	.space 64
-byte_20094C0:: // 0x20094c0
-	s_20094c0_struct eS20094c0_0
-	s_20094c0_struct eS20094c0_1
-	s_20094c0_struct eS20094c0_2
-	s_20094c0_struct eS20094c0_3
-	s_20094c0_struct eS20094c0_4
-	s_20094c0_struct eS20094c0_5
-	s_20094c0_struct eS20094c0_6
-	s_20094c0_struct eS20094c0_7
-	s_20094c0_struct eS20094c0_8
-	s_20094c0_struct eS20094c0_9
-	s_20094c0_struct eS20094c0_10
-	s_20094c0_struct eS20094c0_11
-	s_20094c0_struct eS20094c0_12
-	s_20094c0_struct eS20094c0_13
-	s_20094c0_struct eS20094c0_14
-	s_20094c0_struct eS20094c0_15
-	s_20094c0_struct eS20094c0_16
-	s_20094c0_struct eS20094c0_17
+
+eGFXAnimStates:: // 0x20094c0
+	gfx_anim_state_struct eGFXAnimState0
+	gfx_anim_state_struct eGFXAnimState1
+	gfx_anim_state_struct eGFXAnimState2
+	gfx_anim_state_struct eGFXAnimState3
+	gfx_anim_state_struct eGFXAnimState4
+	gfx_anim_state_struct eGFXAnimState5
+	gfx_anim_state_struct eGFXAnimState6
+	gfx_anim_state_struct eGFXAnimState7
+	gfx_anim_state_struct eGFXAnimState8
+	gfx_anim_state_struct eGFXAnimState9
+	gfx_anim_state_struct eGFXAnimState10
+	gfx_anim_state_struct eGFXAnimState11
+	gfx_anim_state_struct eGFXAnimState12
+	gfx_anim_state_struct eGFXAnimState13
+	gfx_anim_state_struct eGFXAnimState14
+	gfx_anim_state_struct eGFXAnimState15
+	gfx_anim_state_struct eGFXAnimState16
+	gfx_anim_state_struct eGFXAnimState17
+eGFXAnimStatesEnd::
 
 	.space 32
 

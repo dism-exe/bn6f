@@ -79,7 +79,7 @@ sub_806D9FC:
 	lsl r1, r1, #2
 	ldr r0, off_806DA0C // =off_806DA10 
 	ldr r0, [r0,r1]
-	bl sub_8002354
+	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0x00
 off_806DA0C: .word off_806DA10

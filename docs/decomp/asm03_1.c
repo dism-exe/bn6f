@@ -1648,7 +1648,7 @@ int sub_80353DA()
 
     TestEventFlagFromImmediate(0, 40);
     if ( !v0 )
-        sub_8002354(off_80353FC);
+        LoadGFXAnims(off_80353FC);
     return 0;
 }
 
@@ -1656,7 +1656,7 @@ int sub_80353DA()
 // 0x8035408
 int sub_8035408()
 {
-    sub_8002354(&off_8035418);
+    LoadGFXAnims(&off_8035418);
     return 0;
 }
 
@@ -1672,7 +1672,7 @@ int sub_8035424()
     {
         result = sub_802D246();
         if ( !(result & 8) )
-            result = sub_8002354(&off_8035448);
+            result = LoadGFXAnims(&off_8035448);
     }
     return result;
 }
@@ -2630,7 +2630,7 @@ signed int __fastcall sub_8035F2A(int a1)
     int v2; // r4
 
     v2 = ReadMapScriptWord(1, v1);
-    sub_8001B1C(v2);
+    LoadGFXAnim(v2);
     return 1;
 }
 
@@ -2642,7 +2642,7 @@ signed int __fastcall sub_8035F3E(int a1)
     int *v2; // r4
 
     v2 = ReadMapScriptWord(1, v1);
-    sub_8002354(v2);
+    LoadGFXAnims(v2);
     return 1;
 }
 
@@ -2677,13 +2677,13 @@ signed int __fastcall sub_8035F6A(int a1)
     {
         v3 = 0;
         do
-            sub_8001B6C(v3++);
+            TerminateGFXAnim(v3++);
         while ( v3 < 18 );
         result = 1;
     }
     else
     {
-        sub_8001B6C(v2);
+        TerminateGFXAnim(v2);
         result = 1;
     }
     return result;
@@ -3335,7 +3335,7 @@ signed int __fastcall CutsceneCameraCmd_call_sub_8001B1C(int a1, int a2)
     int v2; // r0
 
     v2 = sub_8037480(1, a2);
-    sub_8001B1C(v2);
+    LoadGFXAnim(v2);
     return 1;
 }
 
@@ -3346,7 +3346,7 @@ signed int __fastcall CutsceneCameraCmd_call_sub_8001B6C(int a1, int a2)
     int v2; // r0
 
     v2 = sub_803744C(1, a2);
-    sub_8001B6C(v2);
+    TerminateGFXAnim(v2);
     return 1;
 }
 
@@ -5471,7 +5471,7 @@ int sub_8038C10()
     {
         *(v0 + 2) = 8;
         sub_8039074();
-        sub_8001B1C(byte_803875C);
+        LoadGFXAnim(byte_803875C);
         result = 4;
         *(v0 + 4) = 4;
     }
@@ -5653,8 +5653,8 @@ int __fastcall sub_8038DE0(int a1, int a2, int a3)
     if ( !result )
     {
         PlaySoundEffect(byte_100, a2, a3);
-        sub_8001B1C(byte_803891C);
-        sub_8001B1C(byte_80389AC);
+        LoadGFXAnim(byte_803891C);
+        LoadGFXAnim(byte_80389AC);
         *(v3 + 4) = 46;
         result = 36;
         *(v3 + 2) = 36;
@@ -5673,8 +5673,8 @@ int sub_8038E14()
     *(v0 + 4) = result;
     if ( !result )
     {
-        sub_8001B1C(byte_80387FC);
-        sub_8001B1C(byte_803888C);
+        LoadGFXAnim(byte_80387FC);
+        LoadGFXAnim(byte_803888C);
         sub_8046664();
         sub_80390D8();
         *(v0 + 2) = 40;
@@ -7338,8 +7338,8 @@ void sub_803A25C()
 
     *(v0 + 24) = 0;
     SetRenderInfoLCDControl(8000);
-    sub_8001B6C(0);
-    sub_8001B6C(1);
+    TerminateGFXAnim(0);
+    TerminateGFXAnim(1);
     sub_803B91C(4);
     sub_803B91C(5);
     v2 = *(v1 + oToolkit_RenderInfoPtr);
@@ -7382,7 +7382,7 @@ void __noreturn sub_803A2CC()
         v3[8] = 31;
         v3[9] = 31;
         v3[10] = 17;
-        sub_8001B1C(byte_80392A8);
+        LoadGFXAnim(byte_80392A8);
         *palette_3001960 = 10374;
         *(v0 + 2) = 4;
     }
@@ -7432,7 +7432,7 @@ int sub_803A39C()
     *(v0 + 26) = v1;
     if ( ((v1 < 0) ^ v2) | (v1 == 0) )
     {
-        sub_8001B1C(byte_80392D8);
+        LoadGFXAnim(byte_80392D8);
         PlaySoundEffect(183, v3, v4);
         *(v0 + 2) = 12;
     }
@@ -7458,8 +7458,8 @@ int sub_803A3C4()
     if ( v3 == 145 )
     {
         SetRenderInfoLCDControl(8000);
-        sub_8001B1C(&off_8039308);
-        sub_8001B1C(byte_8039350);
+        LoadGFXAnim(&off_8039308);
+        LoadGFXAnim(byte_8039350);
         *(v0 + 2) = 16;
     }
     sub_803A422();
@@ -10228,7 +10228,7 @@ signed int sub_803C530()
     sub_803CB18();
     if ( !v1 )
     {
-        sub_8001B1C(&off_8039370);
+        LoadGFXAnim(&off_8039370);
         v0 = 1;
     }
     return v0;

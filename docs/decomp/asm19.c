@@ -26,7 +26,7 @@ unsigned int sub_807CDEC()
 // 0x807ce90
 int __fastcall sub_807CE90(int a1, int a2)
 {
-    return sub_8002354(off_807CEA4[a2]);
+    return LoadGFXAnims(off_807CEA4[a2]);
 }
 
 

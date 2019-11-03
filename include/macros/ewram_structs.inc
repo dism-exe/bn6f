@@ -24,7 +24,7 @@
 	.include "structs/Camera.inc"
 	.include "structs/CutsceneCameraInfo.inc"
 	.include "structs/OWObjectInteractionArea.inc"
-	.include "structs/S20094c0.inc"
+	.include "structs/GFXAnimState.inc"
 	.include "structs/RenderInfo.inc"
 	.include "structs/BGScrollCallbacks.inc"
 	.include "structs/BGScrollCallbackCounters.inc"
@@ -204,7 +204,7 @@ s16 0x10 - x tile offset of where to draw these screen tiles (menu items, PET ti
 
 /*
 look at:
-- sub_8001B1C
+- LoadGFXAnim
 */
 
 /*

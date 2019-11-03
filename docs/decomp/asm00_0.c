@@ -2301,7 +2301,7 @@ void nullsub_39()
 // 0x8001afc
 void __cdecl zeroFill_e20094C0()
 {
-    ZeroFillByWord(byte_20094C0, &loc_1B0);
+    ZeroFillByWord(eGFXAnimStates, &loc_1B0);
 }
 
 
@@ -2313,7 +2313,7 @@ int __fastcall sub_8001B0C(int a1)
 
 
 // 0x8001b1c
-int __fastcall sub_8001B1C(int a1)
+int __fastcall LoadGFXAnim(int a1)
 {
     int v1; // r1
     char *v2; // r7
@@ -2322,7 +2322,7 @@ int __fastcall sub_8001B1C(int a1)
     int v5; // r6
 
     v1 = *(a1 + 9);
-    v2 = &byte_20094C0[24 * v1];
+    v2 = &eGFXAnimStates[24 * v1];
     v2[1] = v1;
     *(v2 + 3) = *a1;
     *(v2 + 4) = *(a1 + 4);
@@ -2341,22 +2341,22 @@ int __fastcall sub_8001B1C(int a1)
 
 
 // 0x8001b6c
-int __fastcall sub_8001B6C(int a1)
+int __fastcall TerminateGFXAnim(int a1)
 {
-    byte_20094C0[24 * a1] = 0;
-    return sub_800239A(a1);
+    eGFXAnimStates[24 * a1] = 0;
+    return Terminate_ePalette20097a0_Transform(a1);
 }
 
 
 // 0x8001b84
-int __fastcall sub_8001B84(int a1)
+int __fastcall IsGFXAnimActive(int a1)
 {
-    return byte_20094C0[24 * a1];
+    return eGFXAnimStates[24 * a1];
 }
 
 
 // 0x8001b94
-void __cdecl PET_onUpdate_8001B94()
+void __cdecl ProcessGFXAnims()
 {
     char *v0; // r7
     signed int v1; // r4
@@ -2364,7 +2364,7 @@ void __cdecl PET_onUpdate_8001B94()
     int *v3; // r0
     int v4; // r1
 
-    v0 = byte_20094C0;
+    v0 = eGFXAnimStates;
     v1 = 0;
     do
     {
@@ -2751,7 +2751,7 @@ unsigned int __fastcall sub_8002338(int *a1)
 
 
 // 0x8002354
-int __fastcall sub_8002354(int *a1)
+int __fastcall LoadGFXAnims(int *a1)
 {
     int *i; // r5
     int result; // r0
@@ -2761,7 +2761,7 @@ int __fastcall sub_8002354(int *a1)
         result = *i;
         if ( *i < 0 )
             break;
-        sub_8001B1C(result);
+        LoadGFXAnim(result);
     }
     return result;
 }
@@ -2797,7 +2797,7 @@ int __fastcall sub_8002378(int result, int a2, int a3, int a4)
 
 
 // 0x800239a
-int __fastcall sub_800239A(int a1)
+int __fastcall Terminate_ePalette20097a0_Transform(int a1)
 {
     char *v1; // r2
     int result; // r0

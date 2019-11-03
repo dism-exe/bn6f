@@ -26,7 +26,7 @@ unsigned int RobotControlComp_EnterMapGroup()
 // 0x8066450
 int __fastcall RobotControlComp_sub_8002354_8066450(int a1, int a2)
 {
-    return sub_8002354(off_8066464[a2]);
+    return LoadGFXAnims(off_8066464[a2]);
 }
 
 
@@ -107,7 +107,7 @@ unsigned int sub_8067B5C()
 // 0x8067be4
 int __fastcall sub_8067BE4(int a1, int a2)
 {
-    return sub_8002354(off_8067BF8[a2]);
+    return LoadGFXAnims(off_8067BF8[a2]);
 }
 
 

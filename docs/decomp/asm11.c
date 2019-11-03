@@ -26,7 +26,7 @@ unsigned int sub_8069038()
 // 0x80690c2
 int __fastcall sub_80690C2(int a1, int a2)
 {
-	return sub_8002354(off_80690D4[a2]);
+	return LoadGFXAnims(off_80690D4[a2]);
 }
 
 
@@ -114,7 +114,7 @@ unsigned int sub_8069FE8()
 // 0x806a070
 int __fastcall sub_806A070(int a1, int a2)
 {
-	return sub_8002354(off_806A084[a2]);
+	return LoadGFXAnims(off_806A084[a2]);
 }
 
 
@@ -202,7 +202,7 @@ unsigned int sub_806AA00()
 // 0x806aaaa
 int __fastcall sub_806AAAA(int a1, int a2)
 {
-	return sub_8002354((&off_806AABC)[a2]);
+	return LoadGFXAnims((&off_806AABC)[a2]);
 }
 
 
@@ -304,7 +304,7 @@ unsigned int sub_806C23C()
 // 0x806c2e2
 int __fastcall sub_806C2E2(int a1, int a2)
 {
-	return sub_8002354(off_806C2F4[a2]);
+	return LoadGFXAnims(off_806C2F4[a2]);
 }
 
 
@@ -345,7 +345,7 @@ int __fastcall sub_806C4F8(int result, int a2)
 {
 	if ( result != 1 || a2 != 2 )
 	{
-		sub_8001B1C(&off_806C1C4);
+		LoadGFXAnim(&off_806C1C4);
 		result = SetEventFlagFromImmediate(22, 241);
 	}
 	return result;

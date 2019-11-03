@@ -28,7 +28,7 @@ char (*SkyTown_EnterMapGroup())[8]
 // 0x8060406
 int __fastcall SkyTown_sub_8002354_8060406(int a1, int a2)
 {
-    return sub_8002354((&off_8060418)[a2]);
+    return LoadGFXAnims((&off_8060418)[a2]);
 }
 
 

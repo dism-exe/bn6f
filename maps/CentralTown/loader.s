@@ -62,7 +62,7 @@ CentralTown_sub_8002354_804e6d0:
 	lsl r1, r1, #2
 	ldr r0, off_804E6E0 // =off_804E6E4 
 	ldr r0, [r0,r1]
-	bl sub_8002354
+	bl LoadGFXAnims
 	pop {pc}
 	.byte 0, 0
 off_804E6E0: .word off_804E6E4

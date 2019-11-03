@@ -21,7 +21,7 @@ int sub_8080DA0()
     v3 = GetRenderInfoLCDControl();
     SetRenderInfoLCDControl(v3 | v2[3]);
     LoadBGAnimData((&off_8080F98)[v1]);
-    sub_8002354(off_8081220[v1]);
+    LoadGFXAnims(off_8081220[v1]);
     result = sub_802D234();
     if ( result != 1 )
     {
@@ -47,7 +47,7 @@ int __fastcall sub_8080DEA(int a1, signed int a2)
     v5 = GetRenderInfoLCDControl();
     SetRenderInfoLCDControl(v5 | v4[3]);
     LoadBGAnimData((&off_8080F98)[v3]);
-    sub_8002354(off_8081220[v3]);
+    LoadGFXAnims(off_8081220[v3]);
     sub_803537C();
     return sub_8035424();
 }

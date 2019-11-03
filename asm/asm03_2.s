@@ -9644,9 +9644,9 @@ sub_804C53C:
 	tst r0, r0
 	beq loc_804C57C
 	ldr r0, off_804C5B8 // =dword_804C4B0 
-	bl sub_8001B1C
+	bl LoadGFXAnim
 	ldr r0, off_804C5BC // =dword_804C4E0 
-	bl sub_8001B1C
+	bl LoadGFXAnim
 loc_804C57C:
 	mov r0, #4
 	strb r0, [r5,#0x10]
@@ -10251,7 +10251,7 @@ off_804CC40: .word sub_804CC58+1
 sub_804CC58:
 	push {r4-r7,lr}
 	mov r0, #3
-	bl sub_8001B6C
+	bl TerminateGFXAnim
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xc

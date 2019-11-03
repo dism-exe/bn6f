@@ -4122,7 +4122,7 @@ loc_8005474:
 	bl sub_811F6C0
 	bl sub_8005524
 	mov r0, #0x11
-	bl sub_8001B6C
+	bl TerminateGFXAnim
 	bl sub_8046664 // () -> void
 	bl chatbox_8040818
 	b locret_800551C
@@ -5809,10 +5809,10 @@ sub_8006330:
 	bl sub_800634C
 	ldrb r0, [r5,#0xc]
 	add r0, #0x12
-	bl sub_800239A
+	bl Terminate_ePalette20097a0_Transform
 	ldrb r0, [r5,#0xc]
 	add r0, #0x13
-	bl sub_800239A
+	bl Terminate_ePalette20097a0_Transform
 	pop {r5,pc}
 	thumb_func_end sub_8006330
 
@@ -6117,9 +6117,9 @@ loc_8006552:
 sub_8006580:
 	push {r4-r7,lr}
 	mov r0, #0x14
-	bl sub_800239A
+	bl Terminate_ePalette20097a0_Transform
 	mov r0, #0x15
-	bl sub_800239A
+	bl Terminate_ePalette20097a0_Transform
 	ldr r0, off_80065B4 // =dword_20096D0
 	mov r1, #0
 	str r1, [r0]

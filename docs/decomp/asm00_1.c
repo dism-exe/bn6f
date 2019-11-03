@@ -2590,7 +2590,7 @@ int sub_8005462()
         zeroFill_e200F3A0();
         sub_811F6C0(v2, v3, v4, v5);
         sub_8005524();
-        sub_8001B6C(17);
+        TerminateGFXAnim(17);
         sub_8046664();
         result = chatbox_8040818();
     }
@@ -3931,8 +3931,8 @@ int __fastcall sub_8006330(int a1)
 
     v1 = &byte_200A440[a1];
     sub_800634C(a1);
-    sub_800239A(v1[12] + 18);
-    return sub_800239A(v1[12] + 19);
+    Terminate_ePalette20097a0_Transform(v1[12] + 18);
+    return Terminate_ePalette20097a0_Transform(v1[12] + 19);
 }
 
 
@@ -4140,8 +4140,8 @@ _WORD *sub_8006580()
     int v1; // r10
     _WORD *result; // r0
 
-    sub_800239A(20);
-    sub_800239A(21);
+    Terminate_ePalette20097a0_Transform(20);
+    Terminate_ePalette20097a0_Transform(21);
     dword_20096D0 = 0;
     *(v0 + 13) = 0;
     result = *(v1 + oToolkit_RenderInfoPtr);

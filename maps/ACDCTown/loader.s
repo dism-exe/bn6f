@@ -67,7 +67,7 @@ ACDCTown_sub_8002354_804cf32:
 	lsl r1, r1, #2
 	ldr r0, off_804CF40 // =off_804CF44 
 	ldr r0, [r0,r1]
-	bl sub_8002354
+	bl LoadGFXAnims
 	pop {pc}
 off_804CF40: .word off_804CF44
 off_804CF44: .word dword_804CF64

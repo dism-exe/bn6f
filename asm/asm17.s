@@ -51,7 +51,7 @@ sub_807939A:
 	lsl r1, r1, #2
 	ldr r0, off_80793A8 // =off_80793AC 
 	ldr r0, [r0,r1]
-	bl sub_8002354
+	bl LoadGFXAnims
 	pop {pc}
 off_80793A8: .word off_80793AC
 off_80793AC: .word off_80793B4

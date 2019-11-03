@@ -5994,8 +5994,8 @@ void sub_804C53C()
     SetDummyBGScrollCallbacks();
     if ( *(v0 + 12) )
     {
-        sub_8001B1C(&dword_804C4B0);
-        sub_8001B1C(&dword_804C4E0);
+        LoadGFXAnim(&dword_804C4B0);
+        LoadGFXAnim(&dword_804C4E0);
     }
     *(v0 + 16) = 4;
     sub_804C5C0();
@@ -6366,7 +6366,7 @@ signed int sub_804CC58()
     int v1; // r1
     signed int result; // r0
 
-    sub_8001B6C(3);
+    TerminateGFXAnim(3);
     v1 = *(v0 + oToolkit_Unk2009740_Ptr);
     *(v1 + 2) = 12;
     result = 16;
@@ -6596,7 +6596,7 @@ char (*ACDCTown_EnterMapGroup())[8]
 // 0x804cf32
 int __fastcall ACDCTown_sub_8002354_804cf32(int a1, int a2)
 {
-    return sub_8002354(off_804CF44[a2]);
+    return LoadGFXAnims(off_804CF44[a2]);
 }
 
 

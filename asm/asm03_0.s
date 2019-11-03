@@ -17867,7 +17867,7 @@ startScreen_802F574:
 	bl SetScreenFade // (int a1, int a2) -> void
 	bl musicGameState_8000784 // () -> void
 	ldr r0, off_802F5EC // =pt_802F5F0 
-	bl sub_8002354
+	bl LoadGFXAnims
 	mov r0, #4
 	strb r0, [r5]
 	mov r0, #0
@@ -18154,9 +18154,9 @@ sub_802F7E8:
 	mov r0, #SOUND_SELECT_67
 	bl PlaySoundEffect
 	ldr r0, off_802F814 // =byte_802F2E4 
-	bl sub_8001B1C
+	bl LoadGFXAnim
 	ldr r0, off_802F818 // =dword_802F334 
-	bl sub_8001B1C
+	bl LoadGFXAnim
 locret_802F810:
 	pop {pc}
 	.balign 4, 0x00

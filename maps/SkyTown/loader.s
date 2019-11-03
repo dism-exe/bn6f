@@ -60,7 +60,7 @@ SkyTown_sub_8002354_8060406:
 	lsl r1, r1, #2
 	ldr r0, off_8060414 // =off_8060418 
 	ldr r0, [r0,r1]
-	bl sub_8002354
+	bl LoadGFXAnims
 	pop {pc}
 off_8060414: .word off_8060418
 off_8060418:

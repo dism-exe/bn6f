@@ -61,7 +61,7 @@ GreenTown_sub_8002354_805dfa2:
 	lsl r1, r1, #2
 	ldr r0, off_805DFB0 // =off_805DFB4 
 	ldr r0, [r0,r1]
-	bl sub_8002354
+	bl LoadGFXAnims
 	pop {pc}
 off_805DFB0: .word off_805DFB4
 off_805DFB4: .word off_805DFC8

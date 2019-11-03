@@ -52,7 +52,7 @@ RobotControlComp_sub_8002354_8066450:
 	lsl r1, r1, #2
 	ldr r0, off_8066460 // =off_8066464 
 	ldr r0, [r0,r1]
-	bl sub_8002354
+	bl LoadGFXAnims
 	pop {pc}
 	.byte 0, 0
 off_8066460: .word off_8066464

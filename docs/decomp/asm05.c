@@ -28,7 +28,7 @@ char (*CyberAcademy_EnterMapGroup())[8]
 // 0x8052764
 int __fastcall CyberAcademy_sub_8002354_8052764(int a1, int a2)
 {
-	return sub_8002354(off_8052778[a2]);
+	return LoadGFXAnims(off_8052778[a2]);
 }
 
 

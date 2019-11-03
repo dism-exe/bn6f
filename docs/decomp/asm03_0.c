@@ -12881,7 +12881,7 @@ int __usercall startScreen_802F574@<R0>(StartScreen *scr@<R5>)
     startScreen_initGfx_802FCC0(v1, v2, v3, v4);
     v5 = engine_setScreeneffect(12, 255);
     musicGameState_8000784(v5, v6, v7);
-    sub_8002354(pt_802F5F0);
+    LoadGFXAnims(pt_802F5F0);
     scr->jo_00 = 4;
     scr->unk_02 = 0;
     sub_803FA42();
@@ -13153,8 +13153,8 @@ int __fastcall sub_802F7E8(int a1, int a2, int a3, int a4)
         sub_813D960();
         *(v4 + 1) = 12;
         PlaySoundEffect(103, v7, v8);
-        sub_8001B1C(byte_802F2E4);
-        result = sub_8001B1C(&dword_802F334);
+        LoadGFXAnim(byte_802F2E4);
+        result = LoadGFXAnim(&dword_802F334);
     }
     return result;
 }
