@@ -16153,7 +16153,7 @@ sub_81387D8:
 	bl sub_80303F2
 	mov r0, #0
 	mov r1, #2
-	bl sub_8030AA4
+	bl decompressCoordEventData_8030aa4
 	mov r0, #0
 	mov r1, #0
 	mov r2, #0

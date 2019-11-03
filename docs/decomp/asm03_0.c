@@ -14774,7 +14774,7 @@ void __fastcall sub_8030A8C(int a1, int a2, int a3, int a4)
 
 
 // 0x8030aa4
-int __fastcall sub_8030AA4(signed int mapGroup, int mapNumber)
+int __fastcall decompressCoordEventData_8030aa4(signed int mapGroup, int mapNumber)
 {
     char (***mapPtrs)[4532]; // r3
     char (*v3)[4532]; // ST00_4

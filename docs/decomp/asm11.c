@@ -11,7 +11,7 @@ unsigned int sub_8069038()
 	*(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_8068CCC + *(v0 + 5));
 	sub_8069140();
 	sub_803037C(*(v0 + 4), *(v0 + 5));
-	sub_8030AA4(*(v0 + 4), *(v0 + 5));
+	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
 	camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
 	sub_8030472();
@@ -99,7 +99,7 @@ unsigned int sub_8069FE8()
 	*(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_80698DC + *(v0 + 5));
 	sub_806A120();
 	sub_803037C(*(v0 + 4), *(v0 + 5));
-	sub_8030AA4(*(v0 + 4), *(v0 + 5));
+	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
 	camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
 	sub_8030472();
@@ -187,7 +187,7 @@ unsigned int sub_806AA00()
 	*(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_806A7AC + *(v0 + 5));
 	sub_806AB94();
 	sub_803037C(*(v0 + 4), *(v0 + 5));
-	sub_8030AA4(*(v0 + 4), *(v0 + 5));
+	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
 	camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
 	sub_8030472();
@@ -289,7 +289,7 @@ unsigned int sub_806C23C()
 	*(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = off_806BFF8[*(v0 + 5)];
 	sub_806C35C();
 	sub_803037C(*(v0 + 4), *(v0 + 5));
-	sub_8030AA4(*(v0 + 4), *(v0 + 5));
+	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
 	camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
 	sub_8030472();

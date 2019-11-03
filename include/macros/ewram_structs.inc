@@ -119,7 +119,7 @@ dword_2013940 -> sub_80318B0
 - coordinate triggers (warps, cutscenes, jack-in region, map object)
 dword_2013920 -> sub_8031A7A
 
-important function: sub_8030AA4
+important function: decompressCoordEventData_8030aa4
 can find all the struct labels of collision/tile data there through the calls after the decompression
 
 todo figure out what to call this (collision, tile effects?)

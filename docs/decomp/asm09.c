@@ -11,7 +11,7 @@ char (*ExpoSite_EnterMapGroup())[8]
 
 	*(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_8062728 + *(v0 + 5));
 	sub_803037C(*(v0 + 4), *(v0 + 5));
-	sub_8030AA4(*(v0 + 4), *(v0 + 5));
+	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
 	camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
 	sub_8030472();

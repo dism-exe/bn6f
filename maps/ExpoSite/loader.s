@@ -15,7 +15,7 @@ ExpoSite_EnterMapGroup:
 	bl sub_803037C
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl sub_8030AA4
+	bl decompressCoordEventData_8030aa4
 	ldr r0, [r5,#oGameState_PlayerX]
 	ldr r1, [r5,#oGameState_PlayerY]
 	ldr r2, [r5,#oGameState_Unk_2c]

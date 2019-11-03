@@ -20471,9 +20471,9 @@ npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c:
 	.balign 4, 0x00
 	thumb_func_end npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c
 
-	thumb_func_start sub_8030AA4
+	thumb_func_start decompressCoordEventData_8030aa4
 // coordinate effect 
-sub_8030AA4: // JP 0x8031A60
+decompressCoordEventData_8030aa4: // JP 0x8031A60
 	push {r4-r7,lr}
 	mov r2, r8
 	mov r3, r9
@@ -20522,7 +20522,7 @@ loc_8030ABA:
 off_8030B00: .word pt_8033530 // JP Falzar 0x80344ec
 off_8030B04: .word pt_803354C // JP Falzar 0x8034508
 off_8030B08: .word unk_2027A00
-	thumb_func_end sub_8030AA4
+	thumb_func_end decompressCoordEventData_8030aa4
 
 	thumb_local_start
 sub_8030B0C:

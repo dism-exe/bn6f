@@ -11,7 +11,7 @@ unsigned int RobotControlComp_EnterMapGroup()
     *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = off_8066020[*(v0 + 5)];
     RobotControlComp_LoadBGAnim();
     sub_803037C(*(v0 + 4), *(v0 + 5));
-    sub_8030AA4(*(v0 + 4), *(v0 + 5));
+    decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
     sub_8030472();
@@ -92,7 +92,7 @@ unsigned int sub_8067B5C()
     *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_80676E8 + *(v0 + 5));
     sub_8067C88();
     sub_803037C(*(v0 + 4), *(v0 + 5));
-    sub_8030AA4(*(v0 + 4), *(v0 + 5));
+    decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
     sub_8030472();

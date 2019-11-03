@@ -6579,7 +6579,7 @@ char (*ACDCTown_EnterMapGroup())[8]
 
     *(tk->unk_2011BB0 + 5) = off_804CE68[gs->MapSubOffset];
     sub_803037C(gs->MapSelect, gs->MapSubOffset);
-    sub_8030AA4(gs->MapSelect, gs->MapSubOffset);
+    decompressCoordEventData_8030aa4(gs->MapSelect, gs->MapSubOffset);
     v2 = gs->MapSubOffset;
     camera_802FF4C(gs->player_x, gs->player_y, gs->unk_2C, gs->MapSelect);
     sub_8030472();
