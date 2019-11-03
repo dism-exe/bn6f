@@ -8765,48 +8765,202 @@ TextScriptChipDesc1::
 		ts_end
 		ts_msg_close_quick_ext 0x1, 0x1
 
-TextScriptChipDesc86EF4D4:: .word 0x460014, 0xBA0080, 0x12C00F3, 0x19E0164, 0x20D01D4
-	.word 0x10106E8, 0x100000F1, 0x2A372E, 0x352E2D0D, 0x39390B00
-	.word 0x69EE930, 0xC00A201, 0x2A39383A, 0xBE90037, 0x303939
-	.word 0xE7A2029E, 0x7E8E601, 0x6E80101, 0xF10101, 0x2A310F00
-	.word 0x2D0D0028, 0xB00352E, 0xE9303939, 0xA201069E, 0x372D0D00
-	.word 0x310F002C, 0x33E99832, 0x382A3139, 0x1A009B38, 0x3E313726
-	.word 0xE601E73F, 0x10107E8, 0x10106E8, 0x1D0000F1, 0x29373C
-	.word 0x352E2D0D, 0x39390B00, 0x69EE930, 0xD00A201, 0x2C372D
-	.word 0x29373C1D, 0x2E2D0DE9, 0x21009B35, 0xB2A3B26, 0xE7303939
-	.word 0x7E8E601, 0x6E80101, 0xF10101, 0x2B1300, 0x2E290005
-	.word 0x392E2C, 0xFE91A12, 0x33322A31, 0x382A3139, 0x390E9B38
-	.word 0x3A0DE92D, 0x2D0D3837, 0x390B352E, 0x1049E30, 0xE8E601E7
-	.word 0xE8010107, 0xF1010106, 0x2D0D0000, 0x10002C37, 0xD2A372E
-	.word 0xE9352E2D, 0x30390B, 0x13A2351F, 0x3A390033, 0x38E93337
-	.word 0x392831, 0x2A373432, 0x2E2D2800, 0xE601E735, 0x10107E8
-	.word 0x10106E8, 0xD0000F1, 0x2C372D, 0x37392621, 0x352E2D0D
-	.word 0x390BE99B, 0x33D0030, 0x262100A2, 0xDE93739, 0x352E2D
-	.word 0x1A12009A, 0x3B281C00, 0xE601E737, 0x10107E8, 0x10106E8
-	.word 0xD0000F1, 0x2C372D, 0x29343421, 0x352E2D0D, 0x390BE99B
-	.word 0x33D0030, 0x391D00A2, 0x383A3926, 0x263A11E9, 0x189B2937
-	.word 0x33270B34, 0xE7323734, 0x7E8E601, 0x6E80101, 0xF10101
-	.word 0x332E2100, 0x2E2D0D29, 0x390B0035, 0x29EE930, 0x2E0BA201
-	.word 0x382D1D37, 0xE9A23319, 0x2A169EB5, 0x1D9B392B, 0x1330283A
-	.word 0xE601E733, 0x10107E8, 0x10106E8, 0xC0000F1, 0x2D0D3037
-	.word 0xB00352E, 0x29E3039, 0x2D0DE901, 0xC002C37, 0x109B3037
-	.word 0xE9313126, 0xA230281C, 0x37353A1D, 0x3732370B, 0x1E73319
-	.word 0x107E8E6, 0x106E801, 0xF101, 0x39383A0D, 0x3337281D
-	.word 0x28380E9B, 0xDE92937, 0xA6352E2D, 0x2A169EB5, 0xE99B392B
-	.word 0x30283A1D, 0xB5003313, 0x372E109B, 0x1E7A22A, 0x107E8E6
-	.word 0x1
-byte_86EF71C:: .byte 0x38, 0x0, 0x3A, 0x0, 0x3C, 0x0, 0x3E, 0x0, 0x40, 0x0, 0x42
-	.byte 0x0, 0x44, 0x0, 0x46, 0x0, 0x48, 0x0, 0x4A, 0x0, 0x4C, 0x0
-	.byte 0x4E, 0x0, 0x50, 0x0, 0x52, 0x0, 0x54, 0x0, 0x56, 0x0, 0x58
-	.byte 0x0, 0x5A, 0x0, 0x5C, 0x0, 0x5E, 0x0, 0x60, 0x0, 0x62, 0x0
-	.byte 0x64, 0x0, 0x66, 0x0, 0x68, 0x0, 0x6A, 0x0, 0x6C, 0x0, 0x6E
-	.byte 0x0, 0xB, 0xE6, 0xC, 0xE6, 0xD, 0xE6, 0xE, 0xE6, 0xF, 0xE6
-	.byte 0x10, 0xE6, 0x11, 0xE6, 0x12, 0xE6, 0x13, 0xE6, 0x14, 0xE6, 0x15
-	.byte 0xE6, 0x16, 0xE6, 0x17, 0xE6, 0x18, 0xE6, 0x19, 0xE6, 0x1A, 0xE6
-	.byte 0x1B, 0xE6, 0x1C, 0xE6, 0x1D, 0xE6, 0x1E, 0xE6, 0x1F, 0xE6, 0x20
-	.byte 0xE6, 0x21, 0xE6, 0x22, 0xE6, 0x23, 0xE6, 0x24, 0xE6, 0x25, 0xE6
-	.byte 0x0, 0xE6
-TextScriptBattleRunDialog:: .hword 0x7C, 0xC1, 0xFA, 0x143, 0x179, 0x1B0, 0x1DB, 0x216
+TextScriptChipDesc86EF4D4:: 
+	text_archive_start
+
+	def_text_script TextScriptChipDesc86EF4D4_unk0
+	ts_msg_open_quick_ext 0x1, 0x1
+	ts_text_speed 0x0
+	.string "Fire Chip Attk\n"
+	.string "+50! Buster \n"
+	.string "Attk +1!"
+	ts_key_wait 0x1
+	ts_end
+	ts_msg_close_quick_ext 0x1, 0x1
+
+	def_text_script TextScriptChipDesc86EF4D4_unk1
+	ts_msg_open_quick_ext 0x1, 0x1
+	ts_text_speed 0x0
+	.string "Elec Chip Attk\n"
+	.string "+50! Chrg Elm-\n"
+	.string "ntless: Parlyz"
+	ts_key_wait 0x1
+	ts_end
+	ts_msg_close_quick_ext 0x1, 0x1
+
+	def_text_script TextScriptChipDesc86EF4D4_unk2
+	ts_msg_open_quick_ext 0x1, 0x1
+	ts_text_speed 0x0
+	.string "Swrd Chip Attk\n"
+	.string "+50! Chrg Swrd\n"
+	.string "Chip: WaveAttk"
+	ts_key_wait 0x1
+	ts_end
+	ts_msg_close_quick_ext 0x1, 0x1
+
+	def_text_script TextScriptChipDesc86EF4D4_unk3
+	ts_msg_open_quick_ext 0x1, 0x1
+	ts_text_speed 0x0
+	.string "If 4 digit HP\n"
+	.string "Elemntless:Dth\n"
+	.string "CursChipAtk+30"
+	ts_key_wait 0x1
+	ts_end
+	ts_msg_close_quick_ext 0x1, 0x1
+
+	def_text_script TextScriptChipDesc86EF4D4_unk4
+	ts_msg_open_quick_ext 0x1, 0x1
+	ts_text_speed 0x0
+	.string "Chrg FireChip\n"
+	.string "Atk Up!In turn\n"
+	.string "slct more chip"
+	ts_key_wait 0x1
+	ts_end
+	ts_msg_close_quick_ext 0x1, 0x1
+
+	def_text_script TextScriptChipDesc86EF4D4_unk5
+	ts_msg_open_quick_ext 0x1, 0x1
+	ts_text_speed 0x0
+	.string "Chrg WatrChip:\n"
+	.string "Atk x2! Watr\n"
+	.string "Chip = HP Rcvr"
+	ts_key_wait 0x1
+	ts_end
+	ts_msg_close_quick_ext 0x1, 0x1
+
+	def_text_script TextScriptChipDesc86EF4D4_unk6
+	ts_msg_open_quick_ext 0x1, 0x1
+	ts_text_speed 0x0
+	.string "Chrg WoodChip:\n"
+	.string "Atk x2! Status\n"
+	.string "Guard:NoAbnorm"
+	ts_key_wait 0x1
+	ts_end
+	ts_msg_close_quick_ext 0x1, 0x1
+
+	def_text_script TextScriptChipDesc86EF4D4_unk7
+	ts_msg_open_quick_ext 0x1, 0x1
+	ts_text_speed 0x0
+	.string "WindChip Atk\n"
+	.string "+10!AirShsOn!\n"
+	.string "[B]+Left:SuckIn"
+	ts_key_wait 0x1
+	ts_end
+	ts_msg_close_quick_ext 0x1, 0x1
+
+	def_text_script TextScriptChipDesc86EF4D4_unk8
+	ts_msg_open_quick_ext 0x1, 0x1
+	ts_text_speed 0x0
+	.string "BrkChip Atk+10\n"
+	.string "Chrg Brk:Fall\n"
+	.string "Rck!SuprArmrOn"
+	ts_key_wait 0x1
+	ts_end
+	ts_msg_close_quick_ext 0x1, 0x1
+
+	def_text_script TextScriptChipDesc86EF4D4_unk9
+	ts_msg_open_quick_ext 0x1, 0x1
+	ts_text_speed 0x0
+	.string "CustScrn:Dscrd\n"
+	.string "Chip.[B]+Left:\n"
+	.string "SuckIn [B]:Fire!"
+	ts_key_wait 0x1
+	ts_end
+	ts_msg_close_quick_ext 0x1, 0x1
+
+	.balign 4, 0
+
+byte_86EF71C:: 
+	text_archive_start
+
+	def_text_script TextScript6EF754_unk0
+	.string "A$"
+
+	def_text_script TextScript6EF756_unk1
+	.string "B$"
+
+	def_text_script TextScript6EF758_unk2
+	.string "C$"
+
+	def_text_script TextScript6EF75A_unk3
+	.string "D$"
+
+	def_text_script TextScript6EF75C_unk4
+	.string "E$"
+
+	def_text_script TextScript6EF75E_unk5
+	.string "F$"
+
+	def_text_script TextScript6EF760_unk6
+	.string "G$"
+
+	def_text_script TextScript6EF762_unk7
+	.string "H$"
+
+	def_text_script TextScript6EF764_unk8
+	.string "I$"
+
+	def_text_script TextScript6EF766_unk9
+	.string "J$"
+
+	def_text_script TextScript6EF768_unk10
+	.string "K$"
+
+	def_text_script TextScript6EF76A_unk11
+	.string "L$"
+
+	def_text_script TextScript6EF76C_unk12
+	.string "M$"
+
+	def_text_script TextScript6EF76E_unk13
+	.string "N$"
+
+	def_text_script TextScript6EF770_unk14
+	.string "O$"
+
+	def_text_script TextScript6EF772_unk15
+	.string "P$"
+
+	def_text_script TextScript6EF774_unk16
+	.string "Q$"
+
+	def_text_script TextScript6EF776_unk17
+	.string "R$"
+
+	def_text_script TextScript6EF778_unk18
+	.string "S$"
+
+	def_text_script TextScript6EF77A_unk19
+	.string "T$"
+
+	def_text_script TextScript6EF77C_unk20
+	.string "U$"
+
+	def_text_script TextScript6EF77E_unk21
+	.string "V$"
+
+	def_text_script TextScript6EF780_unk22
+	.string "W$"
+
+	def_text_script TextScript6EF782_unk23
+	.string "X$"
+
+	def_text_script TextScript6EF784_unk24
+	.string "Y$"
+
+	def_text_script TextScript6EF786_unk25
+	.string "Z$"
+
+	def_text_script TextScript6EF788_unk26
+	.string "*$"
+
+	def_text_script TextScript6EF78A_unk27
+	.string " $"
+
+	.balign 4, 0
+
+TextScriptBattleRunDialog:: 
+	.hword 0x7C, 0xC1, 0xFA, 0x143, 0x179, 0x1B0, 0x1DB, 0x216
 	.hword 0x23E, 0x23E, 0x23E, 0x23E, 0x23E, 0x23E, 0x23E, 0x23E
 	.hword 0x23E, 0x23E, 0x284, 0x2B0, 0x2E4, 0x323, 0x351, 0x385
 	.hword 0x3B1, 0x3CD, 0x407, 0x446, 0x47D, 0x49E, 0x4C5, 0x4E4
