@@ -1,8 +1,8 @@
-LZ_SFILES = compScripts_credits_86C4B58.lz77.s
+LZ_SFILES = data/textscript/compressed/text_credits_86C4B58.lz.s
 
-LZ_OFILES = $(LZ77_SFILES:.lz.s:.lz.o)
-LZ_BINFILES = $(LZ77_OFILES:.lz.o:.lz.bin)
-LZ_FILES = $(LZ77_BINFILES:.lz.bin:.lz)
+LZ_OFILES = $(LZ_SFILES:.lz.s=.lz.o)
+LZ_BINFILES = $(LZ_OFILES:.lz.o=.lz.bin)
+LZ_FILES = $(LZ_BINFILES:.lz.bin=.lz)
 
 # build
 %.lz.o: %.lz.s
@@ -10,8 +10,7 @@ LZ_FILES = $(LZ77_BINFILES:.lz.bin:.lz)
 
 # strip to binaries and remove the object files
 %.lz.bin: %.lz.o
-	$(OBJCOPY) -O binary $< -o $@
-	rm $<
+	$(OBJCOPY) -O binary $< $@
 
 # compress to .lz files which are .incbin included
 %.lz: %.lz.bin

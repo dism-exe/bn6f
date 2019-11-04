@@ -51,7 +51,7 @@ $(ROM): %.elf
 %.o: %.s
 	$(AS) $(ASFLAGS) $< -o $@
 
-assets: $(LZ_FILES) all
+assets: $(LZ_FILES)
 	
 
 checksum:
