@@ -7,7 +7,7 @@ def main():
     parser = argparse.ArgumentParser(description='GBA decompression helper util', usage=usage)
     parser.add_argument('address',
                         help='address into input file to process compressed data from')
-    parser.add_argument('-i', '--input', nargs=1, metavar='input_file',
+    parser.add_argument('-i', '--input',type=str, metavar='input_file',
                         help='default being baserom.gba')
     parser.add_argument('-s', '--size', action='store_true',
                         help='outputs size of compressed data and decompressed size')

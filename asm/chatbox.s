@@ -8575,7 +8575,7 @@ off_8044878: .word dword_8759EF8
 	.word byte_875B30C
 off_804488C: .word dword_87428D4
 	.word dword_8742D64
-	.word dword_87433BC
+	.word TextScriptLevBus87433BC
 	.word dword_87439D8
 off_804489C: .word off_80448B0
 	.word off_80448C4
