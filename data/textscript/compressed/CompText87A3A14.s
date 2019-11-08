@@ -1,0 +1,46 @@
+	.include "charmap.inc"
+	.include "include/macros/enum.inc"
+	.include "include/bytecode/text_script.inc"
+
+	.data
+
+CompText87A3A14::
+	.word 0xF100
+
+	text_archive_start
+
+	def_text_script CompText87A3A14_unk0
+	ts_check_flag 0x63, 0x1, 0x1, 0xFF
+	ts_mugshot_show 0x3C
+	ts_msg_open
+	.string "AHHHH!!\n"
+	.string "YOU'RE MEGAMAN!!"
+	ts_key_wait 0x0
+	ts_clear_msg
+	.string "DO YOU REMEMBER ME!?\n"
+	.string "I'M THE DOG HOUSE\n"
+	.string "PROGRAM!!"
+	ts_key_wait 0x0
+	ts_clear_msg
+	.string "...*SNIFFLE*..."
+	ts_key_wait 0x0
+	ts_clear_msg
+	.string "SORRY... MY NOSE IS\n"
+	.string "RUNNY..."
+	ts_key_wait 0x0
+	ts_end
+
+	def_text_script CompText87A3A14_unk1
+	ts_mugshot_show 0x3C
+	ts_msg_open
+	.string "THIS IS THE DOG\n"
+	.string "HOUSE COMP...."
+	ts_key_wait 0x0
+	ts_clear_msg
+	.string "SINCE THE OWNER\n"
+	.string "LEFT,IT'S BEEN A\n"
+	.string "LONELY PLACE..."
+	ts_key_wait 0x0
+	ts_end
+
+	
