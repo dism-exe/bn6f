@@ -7185,7 +7185,7 @@ loc_8133EDC:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8133F2C: .word off_8133F30
-off_8133F30: .word dword_86CEE84
+off_8133F30: .word CompText86CEE84
 	.word dword_86CF1A8
 	.word dword_86CF1A8
 	.word dword_86CF1A8
@@ -7196,7 +7196,7 @@ off_8133F30: .word dword_86CEE84
 	.word dword_86CF1A8
 	.word dword_86CF1A8
 	.word dword_86CF1A8
-	.word dword_86CEE84
+	.word CompText86CEE84
 	.word dword_86CF1A8
 off_8133F64: .word eTextScript2028A20
 off_8133F68: .word eDecompBuffer2013A00
@@ -14662,7 +14662,7 @@ loc_8137AE8:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8137B28: .word off_8137B2C
-off_8137B2C: .word dword_86D8FA4
+off_8137B2C: .word CompText86D8FA4
 	.word dword_86D9068
 	.word dword_86D9068
 	.word dword_86D9068
@@ -14673,7 +14673,7 @@ off_8137B2C: .word dword_86D8FA4
 	.word dword_86D9068
 	.word dword_86D9068
 	.word dword_86D9068
-	.word dword_86D8FA4
+	.word CompText86D8FA4
 	.word dword_86D9068
 off_8137B60: .word eTextScript201BF00
 off_8137B64: .word eDecompBuffer2013A00

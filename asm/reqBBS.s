@@ -669,7 +669,7 @@ reqBBS_uncomp_813E5A0:
 	ldr r1, off_813E5D0 // =unk_2029A00 
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	// src
-	ldr r0, off_813E5D4 // =dword_87EE1AC 
+	ldr r0, off_813E5D4 // =CompText87EE1AC 
 	// dest
 	ldr r1, off_813E5D8 // =unk_2033A00 
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
@@ -677,7 +677,7 @@ reqBBS_uncomp_813E5A0:
 off_813E5C8: .word off_813E04C
 off_813E5CC: .word unk_2025A00
 off_813E5D0: .word unk_2029A00
-off_813E5D4: .word dword_87EE1AC
+off_813E5D4: .word CompText87EE1AC
 off_813E5D8: .word unk_2033A00
 	thumb_func_end reqBBS_uncomp_813E5A0
 
@@ -1753,8 +1753,8 @@ dword_813F364: .word 0x1C60
 	.word unk_2000770
 	.word reqBBS_requestEntriesList
 	.word reqBBS_tile_data
-off_813F378: .word dword_87EE2F0
-	.word dword_87EE5B0
+off_813F378: .word CompText87EE2F0
+	.word CompText87EE5B0
 byte_813F380: .byte 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x1, 0x1, 0x0, 0x0, 0x0, 0x1, 0x2, 0x0, 0x0, 0x1, 0x2
 	.byte 0x1, 0x1, 0x1, 0x2, 0x3, 0x3, 0x3, 0x3, 0x1, 0x2, 0x2, 0x1, 0x1, 0x0, 0x1, 0x2, 0x2
 	.byte 0x2, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0

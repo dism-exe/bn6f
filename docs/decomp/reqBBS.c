@@ -412,7 +412,7 @@ void __usercall reqBBS_uncomp_813E5A0(reqBBS_GUI *gui@<R5>)
     v1 = (&off_813E04C + 2 * gui->unk_04);
     SWI_LZ77UnCompReadNormalWrite8bit(*v1, &unk_2025A00);
     SWI_LZ77UnCompReadNormalWrite8bit(v1[1], &unk_2029A00);
-    SWI_LZ77UnCompReadNormalWrite8bit(dword_87EE1AC, &unk_2033A00);
+    SWI_LZ77UnCompReadNormalWrite8bit(CompText87EE1AC, &unk_2033A00);
 }
 
 
