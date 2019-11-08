@@ -5,6 +5,13 @@ by different tools.
 """
 
 import logging
+import os
+from typing import List
+
+class SourceReadException(Exception): pass
+
+# path to this project
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 MAIN_FILES = ['rom.s', 'data.s', 'ewram.s', 'iwram.s']
 
@@ -83,16 +90,26 @@ class AsmFile:
                 return AsmFile.Unit(AsmFile.UNITS.DIRECTIVE, self.lines[line_num], self.file_path, line_num)
         if self._is_function(line_num):
             func_end = self._find_function_end(line_num)
-            return AsmFile.Unit(AsmFile.UNITS.FUNCTION, ''.join(self.lines[line_num:func_end]), self.file_path, line_num)
+            content = ''.join(self.lines[line_num:func_end])
+            return AsmFile.Unit(AsmFile.UNITS.FUNCTION, content, self.file_path, line_num)
         if self._is_data(line_num):
             data_end = self._find_data_end(line_num)
-            return AsmFile.Unit(AsmFile.UNITS.DATA, ''.join(self.lines[line_num:data_end]), self.file_path, line_num)
+            content = ''.join(self.lines[line_num:data_end])
+            return AsmFile.Unit(AsmFile.UNITS.DATA, content, self.file_path, line_num)
         if self._is_code(line_num):
             code_end = self._find_code_end(line_num)
-            return AsmFile.Unit(AsmFile.UNITS.CODE, ''.join(self.lines[line_num:code_end]), self.file_path, line_num)
+            content = ''.join(self.lines[line_num:code_end])
+            return AsmFile.Unit(AsmFile.UNITS.CODE, content, self.file_path, line_num)
+
         if has_label(line):
             label_end = self._find_label_end(line_num)
-            return AsmFile.Unit(AsmFile.UNITS.LABEL, ''.join(self.lines[line_num:label_end]), self.file_path, line_num)
+            content = ''.join(self.lines[line_num:label_end])
+            if '.include' in content:
+                return AsmFile.Unit(AsmFile.UNITS.DIRECTIVE_INCLUDE, content, self.file_path, line_num)
+
+
+            return AsmFile.Unit(AsmFile.UNITS.LABEL, content, self.file_path, line_num)
+
         logging.error('unknown unit at %s:%d' % (self.file_path, line_num))
         return AsmFile.Unit(AsmFile.UNITS.ERROR, self.lines[line_num], self.file_path, line_num)
 
@@ -113,7 +130,7 @@ class AsmFile:
         return unit
 
 
-    def _advance_line(self, line_number):
+    def _advance_line(self, line_number: int) -> int:
         """
         Moves past comments and empty lines
         :return: new line number
@@ -290,14 +307,12 @@ def get_label(line):
     return line.strip()
 
 
-def read_file(file_path):
+def read_file(file_path: str) -> List[AsmFile.Unit]:
     """
     reads an asm fle and returns its content as a list of functional units.
     This reads includes recursively.
     :return: list of AsmFile.Unit objects
     """
-    #type: (str) -> list[AsmFile.Unit]
-    import os.path
     file = AsmFile(file_path)
 
     output = []
@@ -308,15 +323,22 @@ def read_file(file_path):
         if not unit: break
         # print("UNIT %s (%s:%d)\n%s" % (unit_types[unit.id], unit.file_path, unit.line_number, unit.content))
         output.append(unit)
+
+        # recusrive include scan
         if unit.id == AsmFile.UNITS.DIRECTIVE_INCLUDE:
             file_path = unit.content[unit.content.index('"')+1:]
             file_path = file_path[:file_path.index('"')]
 
+            # TODO: still not handling inc files
             if '.inc' in file_path:
                 continue
 
             if not os.path.isfile(file_path):
                 file_path = 'include/' + file_path
+
+            if not os.path.isfile(file_path):
+                raise SourceReadException('could not find {file_path}'.format(**vars()))
+
             output += read_file(file_path)
 
     return output
@@ -336,7 +358,10 @@ def get_sym_table(elf_path):
 
     tmp_stdout = '%s_stdout.tmp' % FILE_NAME
     tmp_stderr = '%s_stderr.tmp' % FILE_NAME
-    os.system('arm-none-eabi-objdump -t %s 1> %s 2> %s' % (elf_path, tmp_stdout, tmp_stderr))
+
+    repo_path = os.path.join(ROOT_DIR, '..', '..')
+    objdump_bin = os.path.join(repo_path, 'tools', 'binutils', 'bin', 'arm-none-eabi-objdump')
+    os.system('{objdump_bin} -t {elf_path} 1> {tmp_stdout} 2> {tmp_stderr}'.format(**vars()))
 
     stdout_file = open(tmp_stdout, 'r')
 
@@ -351,6 +376,10 @@ def get_sym_table(elf_path):
     # delete temporary files
     os.remove(tmp_stdout)
     os.remove(tmp_stderr)
+
+    if sym_table == {}:
+        raise ValueError('could not process elf file')
+
     return sym_table
 
 
@@ -515,7 +544,11 @@ def process_function(unit, sym_table, function_types, dict_out=False):
             # process local labels
             if label.startswith('.'):
                 label = function_name + label
-            out['local'].append((sym_table[label], label))
+            # FIXME remove this try
+            try:
+                out['local'].append((sym_table[label], label))
+            except KeyError:
+                pass
         out['xrefs_from'] = []
         for label in xrefs_from:
             offset = 0
@@ -720,7 +753,10 @@ def process_label(unit, sym_table, function_label='', dict_out=False):
     label = get_label(lines[0]).replace(':', '')
     if label.startswith('.'):
         label = function_label + label
-    ea = sym_table[label]
+    try:
+        ea = sym_table[label]
+    except KeyError as e:
+        ea = None
 
 # construct output
     if dict_out:
@@ -784,7 +820,7 @@ def read_repo(proj_path, elf_path, file_paths, info=False):
     import os
     cwd = os.getcwd()
     os.chdir(proj_path)
-    print(os.getcwd())
+
     try:
         units = []
         for path in file_paths:
@@ -812,6 +848,8 @@ def read_repo(proj_path, elf_path, file_paths, info=False):
                 out.append(process_label(unit, sym_table, dict_out=True))
             else:
                 logging.warning('could not process: ' + unit.content)
+
+        print('UNITS', len(units))
         return out
     finally:
         os.chdir(cwd)
@@ -849,9 +887,11 @@ def build_rsync():
 
     print("> Source Reading Complete!")
 
+def main(info=True):
+    repo_path = os.path.join(ROOT_DIR, '..', '..')
+    units  = read_repo(repo_path, "bn6f.elf", ["rom.s", "data.s", "ewram.s", "iwram.s"], info=info)
+    return units
 
-def execs():
-    exec(open('source_read.py', 'r').read())
 
 if __name__ == '__main__':
-    units  = read_repo("../..", "bn6f.elf", ["rom.s", "data.s", "ewram.s", "iwram.s"], info=True)
+    main()
