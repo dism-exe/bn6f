@@ -2090,21 +2090,21 @@ uncomp_80471F8:
 	ldr r1, off_8047218 // =unk_2029A00 
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	// src
-	ldr r0, off_804721C // =comp_873DE4C 
+	ldr r0, off_804721C // =CompText873DE4C 
 	// dest
 	ldr r1, off_8047220 // =eDecomp202BA00 
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	// src
-	ldr r0, off_8047224 // =comp_873ECC8 
+	ldr r0, off_8047224 // =CompText873ECC8 
 	// dest
 	ldr r1, off_8047228 // =byte_202DA00 
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8047218: .word unk_2029A00
-off_804721C: .word comp_873DE4C
+off_804721C: .word CompText873DE4C
 off_8047220: .word eDecomp202BA00
-off_8047224: .word comp_873ECC8
+off_8047224: .word CompText873ECC8
 off_8047228: .word byte_202DA00
 	thumb_func_end uncomp_80471F8
 

@@ -1093,8 +1093,8 @@ void uncomp_80471F8()
     int v0; // r5
 
     SWI_LZ77UnCompReadNormalWrite8bit(*(*(v0 + 28) + 4), &unk_2029A00);
-    SWI_LZ77UnCompReadNormalWrite8bit(comp_873DE4C, eDecomp202BA00);
-    SWI_LZ77UnCompReadNormalWrite8bit(comp_873ECC8, &byte_202DA00);
+    SWI_LZ77UnCompReadNormalWrite8bit(CompText873DE4C, eDecomp202BA00);
+    SWI_LZ77UnCompReadNormalWrite8bit(CompText873ECC8, &byte_202DA00);
 }
 
 
