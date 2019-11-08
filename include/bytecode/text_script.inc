@@ -342,7 +342,7 @@
 	.macro ts_space_px p0:req
 	.byte 0xEC, 0x1, \p0
 	.endm
-	.macro ts_select p0:req, p1:req, p2=NULL, p3=NULL, p4=NULL
+	.macro ts_select p0:req, p1:req, p2=NULL, p3=NULL, p4=NULL, p5=NULL
 	.byte 0xED, \p0, \p1
 	.if \p2 != NULL
 	.byte \p2
@@ -353,6 +353,9 @@
 	.if \p4 != NULL
 	.byte \p4
 	.endif
+    .if \p5 != NULL
+    .byte \p5
+    .endif
 	.endm
 	.macro ts_wait p0:req, p1:req
 	.byte 0xEE, 0x0, \p0, \p1
@@ -489,55 +492,82 @@
 	.macro ts_check_library p0:req, p1:req, p2:req, p3:req, p4:req
 	.byte 0xEF, 0x33, \p0, \p1, \p2, \p3, \p4
 	.endm
-	.macro ts_check_library_standard p0:req, p1:req, p2:req, p3:req
+	
+    .macro ts_check_library_standard p0:req, p1:req, p2:req, p3:req
 	.byte 0xEF, 0x34, \p0, \p1, \p2, \p3
 	.endm
-	.macro ts_check_library_mega p0:req, p1:req, p2:req, p3:req
+	
+    .macro ts_check_library_mega p0:req, p1:req, p2:req, p3:req
 	.byte 0xEF, 0x35, \p0, \p1, \p2, \p3
 	.endm
-	.macro ts_check_library_giga p0:req, p1:req, p2:req, p3:req
+	
+    .macro ts_check_library_giga p0:req, p1:req, p2:req, p3:req
 	.byte 0xEF, 0x36, \p0, \p1, \p2, \p3
 	.endm
-	.macro ts_check_library_p_a p0:req, p1:req, p2:req, p3:req
+	
+    .macro ts_check_library_p_a p0:req, p1:req, p2:req, p3:req
 	.byte 0xEF, 0x37, \p0, \p1, \p2, \p3
 	.endm
-	.macro ts_check_library_secret p0:req, p1:req, p2:req, p3:req
+	
+    .macro ts_check_library_secret p0:req, p1:req, p2:req, p3:req
 	.byte 0xEF, 0x38, \p0, \p1, \p2, \p3
 	.endm
-	.macro ts_check_library_dark p0:req, p1:req, p2:req, p3:req
+	
+    .macro ts_check_library_dark p0:req, p1:req, p2:req, p3:req
 	.byte 0xEF, 0x39, \p0, \p1, \p2, \p3
 	.endm
-	.macro ts_check_request_b_b_s_rank p0:req, p1:req, p2:req, p3:req, p4:req
+	
+    .macro ts_check_request_b_b_s_rank p0:req, p1:req, p2:req, p3:req, p4:req
 	.byte 0xEF, 0x3B, \p0, \p1, \p2, \p3, \p4
 	.endm
 	.macro ts_jump_buffer
 	.byte 0xF0, 0x1
 	.endm
-	.macro ts_jump_buffer_set p0:req
+	
+    .macro ts_jump_buffer_set p0:req
 	.byte 0xF0, 0x2, \p0
 	.endm
 	.macro ts_jump p0:req
 	.byte 0xF0, 0x0, \p0
 	.endm
-	.macro ts_jump_random p0:req
+	
+    .macro ts_jump_random p0:req, p1=NULL, p2=NULL, p3=NULL, p4=NULL
 	.byte 0xF0, \p0
+	.if \p1 != NULL
+	.byte \p1
+	.endif
+	.if \p2 != NULL
+	.byte \p2
+	.endif
+	.if \p3 != NULL
+	.byte \p3
+	.endif
+	.if \p4 != NULL
+	.byte \p4
+	.endif
 	.endm
-	.macro ts_text_speed p0:req
+	
+    .macro ts_text_speed p0:req
 	.byte 0xF1, 0x0, \p0
 	.endm
-	.macro ts_clear_msg
+	
+    .macro ts_clear_msg
 	.byte 0xF2
 	.endm
-	.macro ts_control_lock
+	
+    .macro ts_control_lock
 	.byte 0xF3, 0x0
 	.endm
-	.macro ts_control_unlock
+	
+    .macro ts_control_unlock
 	.byte 0xF3, 0x1
 	.endm
-	.macro ts_control_set p0:req
+	
+    .macro ts_control_set p0:req
 	.byte 0xF3, 0x2, \p0
 	.endm
-	.macro ts_item_give p0:req, p1:req
+	
+    .macro ts_item_give p0:req, p1:req
 	.byte 0xF4, 0x0, \p0, \p1
 	.endm
 	.macro ts_item_take p0:req, p1:req
