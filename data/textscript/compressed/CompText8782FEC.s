@@ -1041,4 +1041,308 @@ CompText8782FEC::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8782FEC_unk103
+
+	def_text_script CompText8782FEC_unk104
+
+	def_text_script CompText8782FEC_unk105
+
+	def_text_script CompText8782FEC_unk106
+
+	def_text_script CompText8782FEC_unk107
+
+	def_text_script CompText8782FEC_unk108
+
+	def_text_script CompText8782FEC_unk109
+
+	def_text_script CompText8782FEC_unk110
+
+	def_text_script CompText8782FEC_unk111
+
+	def_text_script CompText8782FEC_unk112
+
+	def_text_script CompText8782FEC_unk113
+
+	def_text_script CompText8782FEC_unk114
+
+	def_text_script CompText8782FEC_unk115
+
+	def_text_script CompText8782FEC_unk116
+
+	def_text_script CompText8782FEC_unk117
+
+	def_text_script CompText8782FEC_unk118
+
+	def_text_script CompText8782FEC_unk119
+
+	def_text_script CompText8782FEC_unk120
+
+	def_text_script CompText8782FEC_unk121
+
+	def_text_script CompText8782FEC_unk122
+
+	def_text_script CompText8782FEC_unk123
+
+	def_text_script CompText8782FEC_unk124
+
+	def_text_script CompText8782FEC_unk125
+
+	def_text_script CompText8782FEC_unk126
+
+	def_text_script CompText8782FEC_unk127
+
+	def_text_script CompText8782FEC_unk128
+
+	def_text_script CompText8782FEC_unk129
+
+	def_text_script CompText8782FEC_unk130
+
+	def_text_script CompText8782FEC_unk131
+
+	def_text_script CompText8782FEC_unk132
+
+	def_text_script CompText8782FEC_unk133
+
+	def_text_script CompText8782FEC_unk134
+
+	def_text_script CompText8782FEC_unk135
+
+	def_text_script CompText8782FEC_unk136
+
+	def_text_script CompText8782FEC_unk137
+
+	def_text_script CompText8782FEC_unk138
+
+	def_text_script CompText8782FEC_unk139
+
+	def_text_script CompText8782FEC_unk140
+
+	def_text_script CompText8782FEC_unk141
+
+	def_text_script CompText8782FEC_unk142
+
+	def_text_script CompText8782FEC_unk143
+
+	def_text_script CompText8782FEC_unk144
+
+	def_text_script CompText8782FEC_unk145
+
+	def_text_script CompText8782FEC_unk146
+
+	def_text_script CompText8782FEC_unk147
+
+	def_text_script CompText8782FEC_unk148
+
+	def_text_script CompText8782FEC_unk149
+
+	def_text_script CompText8782FEC_unk150
+
+	def_text_script CompText8782FEC_unk151
+
+	def_text_script CompText8782FEC_unk152
+
+	def_text_script CompText8782FEC_unk153
+
+	def_text_script CompText8782FEC_unk154
+
+	def_text_script CompText8782FEC_unk155
+
+	def_text_script CompText8782FEC_unk156
+
+	def_text_script CompText8782FEC_unk157
+
+	def_text_script CompText8782FEC_unk158
+
+	def_text_script CompText8782FEC_unk159
+
+	def_text_script CompText8782FEC_unk160
+
+	def_text_script CompText8782FEC_unk161
+
+	def_text_script CompText8782FEC_unk162
+
+	def_text_script CompText8782FEC_unk163
+
+	def_text_script CompText8782FEC_unk164
+
+	def_text_script CompText8782FEC_unk165
+
+	def_text_script CompText8782FEC_unk166
+
+	def_text_script CompText8782FEC_unk167
+
+	def_text_script CompText8782FEC_unk168
+
+	def_text_script CompText8782FEC_unk169
+
+	def_text_script CompText8782FEC_unk170
+
+	def_text_script CompText8782FEC_unk171
+
+	def_text_script CompText8782FEC_unk172
+
+	def_text_script CompText8782FEC_unk173
+
+	def_text_script CompText8782FEC_unk174
+
+	def_text_script CompText8782FEC_unk175
+
+	def_text_script CompText8782FEC_unk176
+
+	def_text_script CompText8782FEC_unk177
+
+	def_text_script CompText8782FEC_unk178
+
+	def_text_script CompText8782FEC_unk179
+
+	def_text_script CompText8782FEC_unk180
+
+	def_text_script CompText8782FEC_unk181
+
+	def_text_script CompText8782FEC_unk182
+
+	def_text_script CompText8782FEC_unk183
+
+	def_text_script CompText8782FEC_unk184
+
+	def_text_script CompText8782FEC_unk185
+
+	def_text_script CompText8782FEC_unk186
+
+	def_text_script CompText8782FEC_unk187
+
+	def_text_script CompText8782FEC_unk188
+
+	def_text_script CompText8782FEC_unk189
+
+	def_text_script CompText8782FEC_unk190
+
+	def_text_script CompText8782FEC_unk191
+
+	def_text_script CompText8782FEC_unk192
+
+	def_text_script CompText8782FEC_unk193
+
+	def_text_script CompText8782FEC_unk194
+
+	def_text_script CompText8782FEC_unk195
+
+	def_text_script CompText8782FEC_unk196
+
+	def_text_script CompText8782FEC_unk197
+
+	def_text_script CompText8782FEC_unk198
+
+	def_text_script CompText8782FEC_unk199
+
+	def_text_script CompText8782FEC_unk200
+
+	def_text_script CompText8782FEC_unk201
+
+	def_text_script CompText8782FEC_unk202
+
+	def_text_script CompText8782FEC_unk203
+
+	def_text_script CompText8782FEC_unk204
+
+	def_text_script CompText8782FEC_unk205
+
+	def_text_script CompText8782FEC_unk206
+
+	def_text_script CompText8782FEC_unk207
+
+	def_text_script CompText8782FEC_unk208
+
+	def_text_script CompText8782FEC_unk209
+
+	def_text_script CompText8782FEC_unk210
+
+	def_text_script CompText8782FEC_unk211
+
+	def_text_script CompText8782FEC_unk212
+
+	def_text_script CompText8782FEC_unk213
+
+	def_text_script CompText8782FEC_unk214
+
+	def_text_script CompText8782FEC_unk215
+
+	def_text_script CompText8782FEC_unk216
+
+	def_text_script CompText8782FEC_unk217
+
+	def_text_script CompText8782FEC_unk218
+
+	def_text_script CompText8782FEC_unk219
+
+	def_text_script CompText8782FEC_unk220
+
+	def_text_script CompText8782FEC_unk221
+
+	def_text_script CompText8782FEC_unk222
+
+	def_text_script CompText8782FEC_unk223
+
+	def_text_script CompText8782FEC_unk224
+
+	def_text_script CompText8782FEC_unk225
+
+	def_text_script CompText8782FEC_unk226
+
+	def_text_script CompText8782FEC_unk227
+
+	def_text_script CompText8782FEC_unk228
+
+	def_text_script CompText8782FEC_unk229
+
+	def_text_script CompText8782FEC_unk230
+
+	def_text_script CompText8782FEC_unk231
+
+	def_text_script CompText8782FEC_unk232
+
+	def_text_script CompText8782FEC_unk233
+
+	def_text_script CompText8782FEC_unk234
+
+	def_text_script CompText8782FEC_unk235
+
+	def_text_script CompText8782FEC_unk236
+
+	def_text_script CompText8782FEC_unk237
+
+	def_text_script CompText8782FEC_unk238
+
+	def_text_script CompText8782FEC_unk239
+
+	def_text_script CompText8782FEC_unk240
+
+	def_text_script CompText8782FEC_unk241
+
+	def_text_script CompText8782FEC_unk242
+
+	def_text_script CompText8782FEC_unk243
+
+	def_text_script CompText8782FEC_unk244
+
+	def_text_script CompText8782FEC_unk245
+
+	def_text_script CompText8782FEC_unk246
+
+	def_text_script CompText8782FEC_unk247
+
+	def_text_script CompText8782FEC_unk248
+
+	def_text_script CompText8782FEC_unk249
+
+	def_text_script CompText8782FEC_unk250
+
+	def_text_script CompText8782FEC_unk251
+
+	def_text_script CompText8782FEC_unk252
+
+	def_text_script CompText8782FEC_unk253
+
+	def_text_script CompText8782FEC_unk254
+
 	

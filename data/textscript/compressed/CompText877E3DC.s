@@ -73,4 +73,10 @@ CompText877E3DC::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText877E3DC_unk7
+
+	def_text_script CompText877E3DC_unk8
+
+	def_text_script CompText877E3DC_unk9
+
 	

@@ -293,4 +293,12 @@ CompText87F1BA8::
 	ts_key_wait 0x0
 	ts_wait_hold 0x0, 0x0
 
+	def_text_script CompText87F1BA8_unk26
+
+	def_text_script CompText87F1BA8_unk27
+
+	def_text_script CompText87F1BA8_unk28
+
+	def_text_script CompText87F1BA8_unk29
+
 	

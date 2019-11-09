@@ -130,4 +130,44 @@ CompText876B5A4::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876B5A4_unk21
+
+	def_text_script CompText876B5A4_unk22
+
+	def_text_script CompText876B5A4_unk23
+
+	def_text_script CompText876B5A4_unk24
+
+	def_text_script CompText876B5A4_unk25
+
+	def_text_script CompText876B5A4_unk26
+
+	def_text_script CompText876B5A4_unk27
+
+	def_text_script CompText876B5A4_unk28
+
+	def_text_script CompText876B5A4_unk29
+
+	def_text_script CompText876B5A4_unk30
+
+	def_text_script CompText876B5A4_unk31
+
+	def_text_script CompText876B5A4_unk32
+
+	def_text_script CompText876B5A4_unk33
+
+	def_text_script CompText876B5A4_unk34
+
+	def_text_script CompText876B5A4_unk35
+
+	def_text_script CompText876B5A4_unk36
+
+	def_text_script CompText876B5A4_unk37
+
+	def_text_script CompText876B5A4_unk38
+
+	def_text_script CompText876B5A4_unk39
+
+	def_text_script CompText876B5A4_unk40
+
 	

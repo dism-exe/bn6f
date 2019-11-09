@@ -149,4 +149,42 @@ CompText877A4A8::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText877A4A8_unk11
+
+	def_text_script CompText877A4A8_unk12
+
+	def_text_script CompText877A4A8_unk13
+
+	def_text_script CompText877A4A8_unk14
+
+	def_text_script CompText877A4A8_unk15
+
+	def_text_script CompText877A4A8_unk16
+
+	def_text_script CompText877A4A8_unk17
+
+	def_text_script CompText877A4A8_unk18
+
+	def_text_script CompText877A4A8_unk19
+
+	def_text_script CompText877A4A8_unk20
+
+	def_text_script CompText877A4A8_unk21
+
+	def_text_script CompText877A4A8_unk22
+
+	def_text_script CompText877A4A8_unk23
+
+	def_text_script CompText877A4A8_unk24
+
+	def_text_script CompText877A4A8_unk25
+
+	def_text_script CompText877A4A8_unk26
+
+	def_text_script CompText877A4A8_unk27
+
+	def_text_script CompText877A4A8_unk28
+
+	def_text_script CompText877A4A8_unk29
+
 	

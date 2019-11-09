@@ -203,4 +203,12 @@ CompText87956C4::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText87956C4_unk26
+
+	def_text_script CompText87956C4_unk27
+
+	def_text_script CompText87956C4_unk28
+
+	def_text_script CompText87956C4_unk29
+
 	

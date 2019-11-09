@@ -463,4 +463,226 @@ CompText873F048::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText873F048_unk144
+
+	def_text_script CompText873F048_unk145
+
+	def_text_script CompText873F048_unk146
+
+	def_text_script CompText873F048_unk147
+
+	def_text_script CompText873F048_unk148
+
+	def_text_script CompText873F048_unk149
+
+	def_text_script CompText873F048_unk150
+
+	def_text_script CompText873F048_unk151
+
+	def_text_script CompText873F048_unk152
+
+	def_text_script CompText873F048_unk153
+
+	def_text_script CompText873F048_unk154
+
+	def_text_script CompText873F048_unk155
+
+	def_text_script CompText873F048_unk156
+
+	def_text_script CompText873F048_unk157
+
+	def_text_script CompText873F048_unk158
+
+	def_text_script CompText873F048_unk159
+
+	def_text_script CompText873F048_unk160
+
+	def_text_script CompText873F048_unk161
+
+	def_text_script CompText873F048_unk162
+
+	def_text_script CompText873F048_unk163
+
+	def_text_script CompText873F048_unk164
+
+	def_text_script CompText873F048_unk165
+
+	def_text_script CompText873F048_unk166
+
+	def_text_script CompText873F048_unk167
+
+	def_text_script CompText873F048_unk168
+
+	def_text_script CompText873F048_unk169
+
+	def_text_script CompText873F048_unk170
+
+	def_text_script CompText873F048_unk171
+
+	def_text_script CompText873F048_unk172
+
+	def_text_script CompText873F048_unk173
+
+	def_text_script CompText873F048_unk174
+
+	def_text_script CompText873F048_unk175
+
+	def_text_script CompText873F048_unk176
+
+	def_text_script CompText873F048_unk177
+
+	def_text_script CompText873F048_unk178
+
+	def_text_script CompText873F048_unk179
+
+	def_text_script CompText873F048_unk180
+
+	def_text_script CompText873F048_unk181
+
+	def_text_script CompText873F048_unk182
+
+	def_text_script CompText873F048_unk183
+
+	def_text_script CompText873F048_unk184
+
+	def_text_script CompText873F048_unk185
+
+	def_text_script CompText873F048_unk186
+
+	def_text_script CompText873F048_unk187
+
+	def_text_script CompText873F048_unk188
+
+	def_text_script CompText873F048_unk189
+
+	def_text_script CompText873F048_unk190
+
+	def_text_script CompText873F048_unk191
+
+	def_text_script CompText873F048_unk192
+
+	def_text_script CompText873F048_unk193
+
+	def_text_script CompText873F048_unk194
+
+	def_text_script CompText873F048_unk195
+
+	def_text_script CompText873F048_unk196
+
+	def_text_script CompText873F048_unk197
+
+	def_text_script CompText873F048_unk198
+
+	def_text_script CompText873F048_unk199
+
+	def_text_script CompText873F048_unk200
+
+	def_text_script CompText873F048_unk201
+
+	def_text_script CompText873F048_unk202
+
+	def_text_script CompText873F048_unk203
+
+	def_text_script CompText873F048_unk204
+
+	def_text_script CompText873F048_unk205
+
+	def_text_script CompText873F048_unk206
+
+	def_text_script CompText873F048_unk207
+
+	def_text_script CompText873F048_unk208
+
+	def_text_script CompText873F048_unk209
+
+	def_text_script CompText873F048_unk210
+
+	def_text_script CompText873F048_unk211
+
+	def_text_script CompText873F048_unk212
+
+	def_text_script CompText873F048_unk213
+
+	def_text_script CompText873F048_unk214
+
+	def_text_script CompText873F048_unk215
+
+	def_text_script CompText873F048_unk216
+
+	def_text_script CompText873F048_unk217
+
+	def_text_script CompText873F048_unk218
+
+	def_text_script CompText873F048_unk219
+
+	def_text_script CompText873F048_unk220
+
+	def_text_script CompText873F048_unk221
+
+	def_text_script CompText873F048_unk222
+
+	def_text_script CompText873F048_unk223
+
+	def_text_script CompText873F048_unk224
+
+	def_text_script CompText873F048_unk225
+
+	def_text_script CompText873F048_unk226
+
+	def_text_script CompText873F048_unk227
+
+	def_text_script CompText873F048_unk228
+
+	def_text_script CompText873F048_unk229
+
+	def_text_script CompText873F048_unk230
+
+	def_text_script CompText873F048_unk231
+
+	def_text_script CompText873F048_unk232
+
+	def_text_script CompText873F048_unk233
+
+	def_text_script CompText873F048_unk234
+
+	def_text_script CompText873F048_unk235
+
+	def_text_script CompText873F048_unk236
+
+	def_text_script CompText873F048_unk237
+
+	def_text_script CompText873F048_unk238
+
+	def_text_script CompText873F048_unk239
+
+	def_text_script CompText873F048_unk240
+
+	def_text_script CompText873F048_unk241
+
+	def_text_script CompText873F048_unk242
+
+	def_text_script CompText873F048_unk243
+
+	def_text_script CompText873F048_unk244
+
+	def_text_script CompText873F048_unk245
+
+	def_text_script CompText873F048_unk246
+
+	def_text_script CompText873F048_unk247
+
+	def_text_script CompText873F048_unk248
+
+	def_text_script CompText873F048_unk249
+
+	def_text_script CompText873F048_unk250
+
+	def_text_script CompText873F048_unk251
+
+	def_text_script CompText873F048_unk252
+
+	def_text_script CompText873F048_unk253
+
+	def_text_script CompText873F048_unk254
+
 	

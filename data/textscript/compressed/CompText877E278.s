@@ -68,4 +68,22 @@ CompText877E278::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText877E278_unk11
+
+	def_text_script CompText877E278_unk12
+
+	def_text_script CompText877E278_unk13
+
+	def_text_script CompText877E278_unk14
+
+	def_text_script CompText877E278_unk15
+
+	def_text_script CompText877E278_unk16
+
+	def_text_script CompText877E278_unk17
+
+	def_text_script CompText877E278_unk18
+
+	def_text_script CompText877E278_unk19
+
 	

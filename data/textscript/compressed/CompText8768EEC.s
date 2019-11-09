@@ -136,4 +136,10 @@ CompText8768EEC::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8768EEC_unk13
+
+	def_text_script CompText8768EEC_unk14
+
+	def_text_script CompText8768EEC_unk15
+
 	

@@ -285,4 +285,20 @@ CompText87892BC::
 	def_text_script CompText87892BC_unk21
 	ts_end
 
+	def_text_script CompText87892BC_unk22
+
+	def_text_script CompText87892BC_unk23
+
+	def_text_script CompText87892BC_unk24
+
+	def_text_script CompText87892BC_unk25
+
+	def_text_script CompText87892BC_unk26
+
+	def_text_script CompText87892BC_unk27
+
+	def_text_script CompText87892BC_unk28
+
+	def_text_script CompText87892BC_unk29
+
 	

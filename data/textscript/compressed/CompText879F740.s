@@ -184,4 +184,22 @@ CompText879F740::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText879F740_unk11
+
+	def_text_script CompText879F740_unk12
+
+	def_text_script CompText879F740_unk13
+
+	def_text_script CompText879F740_unk14
+
+	def_text_script CompText879F740_unk15
+
+	def_text_script CompText879F740_unk16
+
+	def_text_script CompText879F740_unk17
+
+	def_text_script CompText879F740_unk18
+
+	def_text_script CompText879F740_unk19
+
 	

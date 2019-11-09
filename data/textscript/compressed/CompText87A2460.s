@@ -354,4 +354,14 @@ CompText87A2460::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText87A2460_unk16
+
+	def_text_script CompText87A2460_unk17
+
+	def_text_script CompText87A2460_unk18
+
+	def_text_script CompText87A2460_unk19
+
+	def_text_script CompText87A2460_unk20
+
 	

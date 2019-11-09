@@ -219,4 +219,14 @@ CompText875F424::
 	ts_flag_clear 0x73, 0x1
 	ts_end
 
+	def_text_script CompText875F424_unk16
+
+	def_text_script CompText875F424_unk17
+
+	def_text_script CompText875F424_unk18
+
+	def_text_script CompText875F424_unk19
+
+	def_text_script CompText875F424_unk20
+
 	

@@ -501,4 +501,320 @@ CompText8740E90::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8740E90_unk97
+
+	def_text_script CompText8740E90_unk98
+
+	def_text_script CompText8740E90_unk99
+
+	def_text_script CompText8740E90_unk100
+
+	def_text_script CompText8740E90_unk101
+
+	def_text_script CompText8740E90_unk102
+
+	def_text_script CompText8740E90_unk103
+
+	def_text_script CompText8740E90_unk104
+
+	def_text_script CompText8740E90_unk105
+
+	def_text_script CompText8740E90_unk106
+
+	def_text_script CompText8740E90_unk107
+
+	def_text_script CompText8740E90_unk108
+
+	def_text_script CompText8740E90_unk109
+
+	def_text_script CompText8740E90_unk110
+
+	def_text_script CompText8740E90_unk111
+
+	def_text_script CompText8740E90_unk112
+
+	def_text_script CompText8740E90_unk113
+
+	def_text_script CompText8740E90_unk114
+
+	def_text_script CompText8740E90_unk115
+
+	def_text_script CompText8740E90_unk116
+
+	def_text_script CompText8740E90_unk117
+
+	def_text_script CompText8740E90_unk118
+
+	def_text_script CompText8740E90_unk119
+
+	def_text_script CompText8740E90_unk120
+
+	def_text_script CompText8740E90_unk121
+
+	def_text_script CompText8740E90_unk122
+
+	def_text_script CompText8740E90_unk123
+
+	def_text_script CompText8740E90_unk124
+
+	def_text_script CompText8740E90_unk125
+
+	def_text_script CompText8740E90_unk126
+
+	def_text_script CompText8740E90_unk127
+
+	def_text_script CompText8740E90_unk128
+
+	def_text_script CompText8740E90_unk129
+
+	def_text_script CompText8740E90_unk130
+
+	def_text_script CompText8740E90_unk131
+
+	def_text_script CompText8740E90_unk132
+
+	def_text_script CompText8740E90_unk133
+
+	def_text_script CompText8740E90_unk134
+
+	def_text_script CompText8740E90_unk135
+
+	def_text_script CompText8740E90_unk136
+
+	def_text_script CompText8740E90_unk137
+
+	def_text_script CompText8740E90_unk138
+
+	def_text_script CompText8740E90_unk139
+
+	def_text_script CompText8740E90_unk140
+
+	def_text_script CompText8740E90_unk141
+
+	def_text_script CompText8740E90_unk142
+
+	def_text_script CompText8740E90_unk143
+
+	def_text_script CompText8740E90_unk144
+
+	def_text_script CompText8740E90_unk145
+
+	def_text_script CompText8740E90_unk146
+
+	def_text_script CompText8740E90_unk147
+
+	def_text_script CompText8740E90_unk148
+
+	def_text_script CompText8740E90_unk149
+
+	def_text_script CompText8740E90_unk150
+
+	def_text_script CompText8740E90_unk151
+
+	def_text_script CompText8740E90_unk152
+
+	def_text_script CompText8740E90_unk153
+
+	def_text_script CompText8740E90_unk154
+
+	def_text_script CompText8740E90_unk155
+
+	def_text_script CompText8740E90_unk156
+
+	def_text_script CompText8740E90_unk157
+
+	def_text_script CompText8740E90_unk158
+
+	def_text_script CompText8740E90_unk159
+
+	def_text_script CompText8740E90_unk160
+
+	def_text_script CompText8740E90_unk161
+
+	def_text_script CompText8740E90_unk162
+
+	def_text_script CompText8740E90_unk163
+
+	def_text_script CompText8740E90_unk164
+
+	def_text_script CompText8740E90_unk165
+
+	def_text_script CompText8740E90_unk166
+
+	def_text_script CompText8740E90_unk167
+
+	def_text_script CompText8740E90_unk168
+
+	def_text_script CompText8740E90_unk169
+
+	def_text_script CompText8740E90_unk170
+
+	def_text_script CompText8740E90_unk171
+
+	def_text_script CompText8740E90_unk172
+
+	def_text_script CompText8740E90_unk173
+
+	def_text_script CompText8740E90_unk174
+
+	def_text_script CompText8740E90_unk175
+
+	def_text_script CompText8740E90_unk176
+
+	def_text_script CompText8740E90_unk177
+
+	def_text_script CompText8740E90_unk178
+
+	def_text_script CompText8740E90_unk179
+
+	def_text_script CompText8740E90_unk180
+
+	def_text_script CompText8740E90_unk181
+
+	def_text_script CompText8740E90_unk182
+
+	def_text_script CompText8740E90_unk183
+
+	def_text_script CompText8740E90_unk184
+
+	def_text_script CompText8740E90_unk185
+
+	def_text_script CompText8740E90_unk186
+
+	def_text_script CompText8740E90_unk187
+
+	def_text_script CompText8740E90_unk188
+
+	def_text_script CompText8740E90_unk189
+
+	def_text_script CompText8740E90_unk190
+
+	def_text_script CompText8740E90_unk191
+
+	def_text_script CompText8740E90_unk192
+
+	def_text_script CompText8740E90_unk193
+
+	def_text_script CompText8740E90_unk194
+
+	def_text_script CompText8740E90_unk195
+
+	def_text_script CompText8740E90_unk196
+
+	def_text_script CompText8740E90_unk197
+
+	def_text_script CompText8740E90_unk198
+
+	def_text_script CompText8740E90_unk199
+
+	def_text_script CompText8740E90_unk200
+
+	def_text_script CompText8740E90_unk201
+
+	def_text_script CompText8740E90_unk202
+
+	def_text_script CompText8740E90_unk203
+
+	def_text_script CompText8740E90_unk204
+
+	def_text_script CompText8740E90_unk205
+
+	def_text_script CompText8740E90_unk206
+
+	def_text_script CompText8740E90_unk207
+
+	def_text_script CompText8740E90_unk208
+
+	def_text_script CompText8740E90_unk209
+
+	def_text_script CompText8740E90_unk210
+
+	def_text_script CompText8740E90_unk211
+
+	def_text_script CompText8740E90_unk212
+
+	def_text_script CompText8740E90_unk213
+
+	def_text_script CompText8740E90_unk214
+
+	def_text_script CompText8740E90_unk215
+
+	def_text_script CompText8740E90_unk216
+
+	def_text_script CompText8740E90_unk217
+
+	def_text_script CompText8740E90_unk218
+
+	def_text_script CompText8740E90_unk219
+
+	def_text_script CompText8740E90_unk220
+
+	def_text_script CompText8740E90_unk221
+
+	def_text_script CompText8740E90_unk222
+
+	def_text_script CompText8740E90_unk223
+
+	def_text_script CompText8740E90_unk224
+
+	def_text_script CompText8740E90_unk225
+
+	def_text_script CompText8740E90_unk226
+
+	def_text_script CompText8740E90_unk227
+
+	def_text_script CompText8740E90_unk228
+
+	def_text_script CompText8740E90_unk229
+
+	def_text_script CompText8740E90_unk230
+
+	def_text_script CompText8740E90_unk231
+
+	def_text_script CompText8740E90_unk232
+
+	def_text_script CompText8740E90_unk233
+
+	def_text_script CompText8740E90_unk234
+
+	def_text_script CompText8740E90_unk235
+
+	def_text_script CompText8740E90_unk236
+
+	def_text_script CompText8740E90_unk237
+
+	def_text_script CompText8740E90_unk238
+
+	def_text_script CompText8740E90_unk239
+
+	def_text_script CompText8740E90_unk240
+
+	def_text_script CompText8740E90_unk241
+
+	def_text_script CompText8740E90_unk242
+
+	def_text_script CompText8740E90_unk243
+
+	def_text_script CompText8740E90_unk244
+
+	def_text_script CompText8740E90_unk245
+
+	def_text_script CompText8740E90_unk246
+
+	def_text_script CompText8740E90_unk247
+
+	def_text_script CompText8740E90_unk248
+
+	def_text_script CompText8740E90_unk249
+
+	def_text_script CompText8740E90_unk250
+
+	def_text_script CompText8740E90_unk251
+
+	def_text_script CompText8740E90_unk252
+
+	def_text_script CompText8740E90_unk253
+
+	def_text_script CompText8740E90_unk254
+
 	

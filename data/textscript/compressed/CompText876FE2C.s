@@ -200,4 +200,10 @@ CompText876FE2C::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876FE2C_unk17
+
+	def_text_script CompText876FE2C_unk18
+
+	def_text_script CompText876FE2C_unk19
+
 	

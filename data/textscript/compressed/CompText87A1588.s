@@ -11,4 +11,12 @@ CompText87A1588::
 
 	def_text_script CompText87A1588_unk0
 
+	def_text_script CompText87A1588_unk1
+
+	def_text_script CompText87A1588_unk2
+
+	def_text_script CompText87A1588_unk3
+
+	def_text_script CompText87A1588_unk4
+
 	

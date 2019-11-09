@@ -11,4 +11,12 @@ CompText875E5C4::
 
 	def_text_script CompText875E5C4_unk0
 
+	def_text_script CompText875E5C4_unk1
+
+	def_text_script CompText875E5C4_unk2
+
+	def_text_script CompText875E5C4_unk3
+
+	def_text_script CompText875E5C4_unk4
+
 	

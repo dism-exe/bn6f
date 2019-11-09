@@ -73,4 +73,20 @@ CompText876CD18::
 	ts_flag_set 0x15, 0x17
 	ts_end
 
+	def_text_script CompText876CD18_unk12
+
+	def_text_script CompText876CD18_unk13
+
+	def_text_script CompText876CD18_unk14
+
+	def_text_script CompText876CD18_unk15
+
+	def_text_script CompText876CD18_unk16
+
+	def_text_script CompText876CD18_unk17
+
+	def_text_script CompText876CD18_unk18
+
+	def_text_script CompText876CD18_unk19
+
 	

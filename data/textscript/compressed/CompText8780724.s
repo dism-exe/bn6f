@@ -118,4 +118,6 @@ CompText8780724::
 	ts_flag_set 0x15, 0x17
 	ts_end
 
+	def_text_script CompText8780724_unk19
+
 	

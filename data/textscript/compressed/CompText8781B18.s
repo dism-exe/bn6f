@@ -117,4 +117,26 @@ CompText8781B18::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8781B18_unk19
+
+	def_text_script CompText8781B18_unk20
+
+	def_text_script CompText8781B18_unk21
+
+	def_text_script CompText8781B18_unk22
+
+	def_text_script CompText8781B18_unk23
+
+	def_text_script CompText8781B18_unk24
+
+	def_text_script CompText8781B18_unk25
+
+	def_text_script CompText8781B18_unk26
+
+	def_text_script CompText8781B18_unk27
+
+	def_text_script CompText8781B18_unk28
+
+	def_text_script CompText8781B18_unk29
+
 	

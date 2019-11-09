@@ -18,4 +18,12 @@ CompText8754620::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8754620_unk1
+
+	def_text_script CompText8754620_unk2
+
+	def_text_script CompText8754620_unk3
+
+	def_text_script CompText8754620_unk4
+
 	

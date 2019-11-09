@@ -56,4 +56,10 @@ CompText8791A28::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8791A28_unk2
+
+	def_text_script CompText8791A28_unk3
+
+	def_text_script CompText8791A28_unk4
+
 	

@@ -107,4 +107,62 @@ CompText8769BA8::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8769BA8_unk12
+
+	def_text_script CompText8769BA8_unk13
+
+	def_text_script CompText8769BA8_unk14
+
+	def_text_script CompText8769BA8_unk15
+
+	def_text_script CompText8769BA8_unk16
+
+	def_text_script CompText8769BA8_unk17
+
+	def_text_script CompText8769BA8_unk18
+
+	def_text_script CompText8769BA8_unk19
+
+	def_text_script CompText8769BA8_unk20
+
+	def_text_script CompText8769BA8_unk21
+
+	def_text_script CompText8769BA8_unk22
+
+	def_text_script CompText8769BA8_unk23
+
+	def_text_script CompText8769BA8_unk24
+
+	def_text_script CompText8769BA8_unk25
+
+	def_text_script CompText8769BA8_unk26
+
+	def_text_script CompText8769BA8_unk27
+
+	def_text_script CompText8769BA8_unk28
+
+	def_text_script CompText8769BA8_unk29
+
+	def_text_script CompText8769BA8_unk30
+
+	def_text_script CompText8769BA8_unk31
+
+	def_text_script CompText8769BA8_unk32
+
+	def_text_script CompText8769BA8_unk33
+
+	def_text_script CompText8769BA8_unk34
+
+	def_text_script CompText8769BA8_unk35
+
+	def_text_script CompText8769BA8_unk36
+
+	def_text_script CompText8769BA8_unk37
+
+	def_text_script CompText8769BA8_unk38
+
+	def_text_script CompText8769BA8_unk39
+
+	def_text_script CompText8769BA8_unk40
+
 	

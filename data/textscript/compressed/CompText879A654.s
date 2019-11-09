@@ -11,4 +11,12 @@ CompText879A654::
 
 	def_text_script CompText879A654_unk0
 
+	def_text_script CompText879A654_unk1
+
+	def_text_script CompText879A654_unk2
+
+	def_text_script CompText879A654_unk3
+
+	def_text_script CompText879A654_unk4
+
 	

@@ -632,4 +632,20 @@ CompText878DE08::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText878DE08_unk32
+
+	def_text_script CompText878DE08_unk33
+
+	def_text_script CompText878DE08_unk34
+
+	def_text_script CompText878DE08_unk35
+
+	def_text_script CompText878DE08_unk36
+
+	def_text_script CompText878DE08_unk37
+
+	def_text_script CompText878DE08_unk38
+
+	def_text_script CompText878DE08_unk39
+
 	

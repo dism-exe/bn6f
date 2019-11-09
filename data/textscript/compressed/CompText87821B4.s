@@ -74,4 +74,40 @@ CompText87821B4::
 	ts_flag_set 0x15, 0x17
 	ts_end
 
+	def_text_script CompText87821B4_unk12
+
+	def_text_script CompText87821B4_unk13
+
+	def_text_script CompText87821B4_unk14
+
+	def_text_script CompText87821B4_unk15
+
+	def_text_script CompText87821B4_unk16
+
+	def_text_script CompText87821B4_unk17
+
+	def_text_script CompText87821B4_unk18
+
+	def_text_script CompText87821B4_unk19
+
+	def_text_script CompText87821B4_unk20
+
+	def_text_script CompText87821B4_unk21
+
+	def_text_script CompText87821B4_unk22
+
+	def_text_script CompText87821B4_unk23
+
+	def_text_script CompText87821B4_unk24
+
+	def_text_script CompText87821B4_unk25
+
+	def_text_script CompText87821B4_unk26
+
+	def_text_script CompText87821B4_unk27
+
+	def_text_script CompText87821B4_unk28
+
+	def_text_script CompText87821B4_unk29
+
 	

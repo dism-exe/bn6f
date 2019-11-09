@@ -100,4 +100,30 @@ CompText878CE18::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText878CE18_unk8
+
+	def_text_script CompText878CE18_unk9
+
+	def_text_script CompText878CE18_unk10
+
+	def_text_script CompText878CE18_unk11
+
+	def_text_script CompText878CE18_unk12
+
+	def_text_script CompText878CE18_unk13
+
+	def_text_script CompText878CE18_unk14
+
+	def_text_script CompText878CE18_unk15
+
+	def_text_script CompText878CE18_unk16
+
+	def_text_script CompText878CE18_unk17
+
+	def_text_script CompText878CE18_unk18
+
+	def_text_script CompText878CE18_unk19
+
+	def_text_script CompText878CE18_unk20
+
 	

@@ -51,4 +51,12 @@ CompText876E078::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876E078_unk7
+
+	def_text_script CompText876E078_unk8
+
+	def_text_script CompText876E078_unk9
+
+	def_text_script CompText876E078_unk10
+
 	

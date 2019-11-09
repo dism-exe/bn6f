@@ -47,4 +47,10 @@ CompText875E414::
 	ts_flag_set 0x6F, 0xA
 	ts_end
 
+	def_text_script CompText875E414_unk7
+
+	def_text_script CompText875E414_unk8
+
+	def_text_script CompText875E414_unk9
+
 	

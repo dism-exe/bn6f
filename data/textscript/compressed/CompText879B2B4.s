@@ -874,4 +874,6 @@ CompText879B2B4::
 	ts_flag_set 0xE4, 0x1
 	ts_end
 
+	def_text_script CompText879B2B4_unk42
+
 	

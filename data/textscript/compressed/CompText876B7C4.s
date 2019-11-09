@@ -111,4 +111,16 @@ CompText876B7C4::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876B7C4_unk14
+
+	def_text_script CompText876B7C4_unk15
+
+	def_text_script CompText876B7C4_unk16
+
+	def_text_script CompText876B7C4_unk17
+
+	def_text_script CompText876B7C4_unk18
+
+	def_text_script CompText876B7C4_unk19
+
 	

@@ -11,4 +11,12 @@ CompText8798990::
 
 	def_text_script CompText8798990_unk0
 
+	def_text_script CompText8798990_unk1
+
+	def_text_script CompText8798990_unk2
+
+	def_text_script CompText8798990_unk3
+
+	def_text_script CompText8798990_unk4
+
 	

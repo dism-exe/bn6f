@@ -40,4 +40,20 @@ CompText87693E0::
 	def_text_script CompText87693E0_unk1
 	ts_end
 
+	def_text_script CompText87693E0_unk2
+
+	def_text_script CompText87693E0_unk3
+
+	def_text_script CompText87693E0_unk4
+
+	def_text_script CompText87693E0_unk5
+
+	def_text_script CompText87693E0_unk6
+
+	def_text_script CompText87693E0_unk7
+
+	def_text_script CompText87693E0_unk8
+
+	def_text_script CompText87693E0_unk9
+
 	

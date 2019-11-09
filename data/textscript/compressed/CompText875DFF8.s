@@ -60,4 +60,10 @@ CompText875DFF8::
 	ts_flag_set 0x6B, 0xA
 	ts_end
 
+	def_text_script CompText875DFF8_unk7
+
+	def_text_script CompText875DFF8_unk8
+
+	def_text_script CompText875DFF8_unk9
+
 	

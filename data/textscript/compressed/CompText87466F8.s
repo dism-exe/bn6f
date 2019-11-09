@@ -322,4 +322,10 @@ CompText87466F8::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText87466F8_unk97
+
+	def_text_script CompText87466F8_unk98
+
+	def_text_script CompText87466F8_unk99
+
 	

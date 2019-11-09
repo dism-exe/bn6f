@@ -235,4 +235,30 @@ CompText87694C0::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText87694C0_unk37
+
+	def_text_script CompText87694C0_unk38
+
+	def_text_script CompText87694C0_unk39
+
+	def_text_script CompText87694C0_unk40
+
+	def_text_script CompText87694C0_unk41
+
+	def_text_script CompText87694C0_unk42
+
+	def_text_script CompText87694C0_unk43
+
+	def_text_script CompText87694C0_unk44
+
+	def_text_script CompText87694C0_unk45
+
+	def_text_script CompText87694C0_unk46
+
+	def_text_script CompText87694C0_unk47
+
+	def_text_script CompText87694C0_unk48
+
+	def_text_script CompText87694C0_unk49
+
 	

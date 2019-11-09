@@ -455,4 +455,70 @@ CompText8789A10::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8789A10_unk67
+
+	def_text_script CompText8789A10_unk68
+
+	def_text_script CompText8789A10_unk69
+
+	def_text_script CompText8789A10_unk70
+
+	def_text_script CompText8789A10_unk71
+
+	def_text_script CompText8789A10_unk72
+
+	def_text_script CompText8789A10_unk73
+
+	def_text_script CompText8789A10_unk74
+
+	def_text_script CompText8789A10_unk75
+
+	def_text_script CompText8789A10_unk76
+
+	def_text_script CompText8789A10_unk77
+
+	def_text_script CompText8789A10_unk78
+
+	def_text_script CompText8789A10_unk79
+
+	def_text_script CompText8789A10_unk80
+
+	def_text_script CompText8789A10_unk81
+
+	def_text_script CompText8789A10_unk82
+
+	def_text_script CompText8789A10_unk83
+
+	def_text_script CompText8789A10_unk84
+
+	def_text_script CompText8789A10_unk85
+
+	def_text_script CompText8789A10_unk86
+
+	def_text_script CompText8789A10_unk87
+
+	def_text_script CompText8789A10_unk88
+
+	def_text_script CompText8789A10_unk89
+
+	def_text_script CompText8789A10_unk90
+
+	def_text_script CompText8789A10_unk91
+
+	def_text_script CompText8789A10_unk92
+
+	def_text_script CompText8789A10_unk93
+
+	def_text_script CompText8789A10_unk94
+
+	def_text_script CompText8789A10_unk95
+
+	def_text_script CompText8789A10_unk96
+
+	def_text_script CompText8789A10_unk97
+
+	def_text_script CompText8789A10_unk98
+
+	def_text_script CompText8789A10_unk99
+
 	

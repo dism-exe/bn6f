@@ -134,4 +134,108 @@ CompText878F110::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText878F110_unk18
+
+	def_text_script CompText878F110_unk19
+
+	def_text_script CompText878F110_unk20
+
+	def_text_script CompText878F110_unk21
+
+	def_text_script CompText878F110_unk22
+
+	def_text_script CompText878F110_unk23
+
+	def_text_script CompText878F110_unk24
+
+	def_text_script CompText878F110_unk25
+
+	def_text_script CompText878F110_unk26
+
+	def_text_script CompText878F110_unk27
+
+	def_text_script CompText878F110_unk28
+
+	def_text_script CompText878F110_unk29
+
+	def_text_script CompText878F110_unk30
+
+	def_text_script CompText878F110_unk31
+
+	def_text_script CompText878F110_unk32
+
+	def_text_script CompText878F110_unk33
+
+	def_text_script CompText878F110_unk34
+
+	def_text_script CompText878F110_unk35
+
+	def_text_script CompText878F110_unk36
+
+	def_text_script CompText878F110_unk37
+
+	def_text_script CompText878F110_unk38
+
+	def_text_script CompText878F110_unk39
+
+	def_text_script CompText878F110_unk40
+
+	def_text_script CompText878F110_unk41
+
+	def_text_script CompText878F110_unk42
+
+	def_text_script CompText878F110_unk43
+
+	def_text_script CompText878F110_unk44
+
+	def_text_script CompText878F110_unk45
+
+	def_text_script CompText878F110_unk46
+
+	def_text_script CompText878F110_unk47
+
+	def_text_script CompText878F110_unk48
+
+	def_text_script CompText878F110_unk49
+
+	def_text_script CompText878F110_unk50
+
+	def_text_script CompText878F110_unk51
+
+	def_text_script CompText878F110_unk52
+
+	def_text_script CompText878F110_unk53
+
+	def_text_script CompText878F110_unk54
+
+	def_text_script CompText878F110_unk55
+
+	def_text_script CompText878F110_unk56
+
+	def_text_script CompText878F110_unk57
+
+	def_text_script CompText878F110_unk58
+
+	def_text_script CompText878F110_unk59
+
+	def_text_script CompText878F110_unk60
+
+	def_text_script CompText878F110_unk61
+
+	def_text_script CompText878F110_unk62
+
+	def_text_script CompText878F110_unk63
+
+	def_text_script CompText878F110_unk64
+
+	def_text_script CompText878F110_unk65
+
+	def_text_script CompText878F110_unk66
+
+	def_text_script CompText878F110_unk67
+
+	def_text_script CompText878F110_unk68
+
+	def_text_script CompText878F110_unk69
+
 	

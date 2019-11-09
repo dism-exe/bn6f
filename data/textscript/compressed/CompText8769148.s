@@ -46,4 +46,14 @@ CompText8769148::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8769148_unk5
+
+	def_text_script CompText8769148_unk6
+
+	def_text_script CompText8769148_unk7
+
+	def_text_script CompText8769148_unk8
+
+	def_text_script CompText8769148_unk9
+
 	

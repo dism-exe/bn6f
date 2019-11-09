@@ -1,7 +1,6 @@
 COMPRESSED_TEXT_ARCHIVES_DIR = data/textscript/compressed
 LZ_SFILES = data/textscript/compressed/text_credits_86C4B58.s \
-	data/textscript/compressed/CompText878EA40.s \
-#	data/textscript/compressed/CompText87A2B38.s \
+	data/textscript/compressed/CompText87A2B38.s \
 #	data/textscript/compressed/CompText879F5FC.s \
 #	data/textscript/compressed/CompText879A704.s \
 #	data/textscript/compressed/CompText875E5D0.s \

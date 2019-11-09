@@ -762,4 +762,50 @@ CompText8750B80::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8750B80_unk232
+
+	def_text_script CompText8750B80_unk233
+
+	def_text_script CompText8750B80_unk234
+
+	def_text_script CompText8750B80_unk235
+
+	def_text_script CompText8750B80_unk236
+
+	def_text_script CompText8750B80_unk237
+
+	def_text_script CompText8750B80_unk238
+
+	def_text_script CompText8750B80_unk239
+
+	def_text_script CompText8750B80_unk240
+
+	def_text_script CompText8750B80_unk241
+
+	def_text_script CompText8750B80_unk242
+
+	def_text_script CompText8750B80_unk243
+
+	def_text_script CompText8750B80_unk244
+
+	def_text_script CompText8750B80_unk245
+
+	def_text_script CompText8750B80_unk246
+
+	def_text_script CompText8750B80_unk247
+
+	def_text_script CompText8750B80_unk248
+
+	def_text_script CompText8750B80_unk249
+
+	def_text_script CompText8750B80_unk250
+
+	def_text_script CompText8750B80_unk251
+
+	def_text_script CompText8750B80_unk252
+
+	def_text_script CompText8750B80_unk253
+
+	def_text_script CompText8750B80_unk254
+
 	

@@ -43,4 +43,10 @@ CompText875E52C::
 	ts_flag_set 0x73, 0xA
 	ts_end
 
+	def_text_script CompText875E52C_unk7
+
+	def_text_script CompText875E52C_unk8
+
+	def_text_script CompText875E52C_unk9
+
 	

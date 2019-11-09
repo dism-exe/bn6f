@@ -16,4 +16,6 @@ CompText875DC48::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText875DC48_unk1
+
 	

@@ -343,4 +343,78 @@ CompText878D544::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText878D544_unk61
+
+	def_text_script CompText878D544_unk62
+
+	def_text_script CompText878D544_unk63
+
+	def_text_script CompText878D544_unk64
+
+	def_text_script CompText878D544_unk65
+
+	def_text_script CompText878D544_unk66
+
+	def_text_script CompText878D544_unk67
+
+	def_text_script CompText878D544_unk68
+
+	def_text_script CompText878D544_unk69
+
+	def_text_script CompText878D544_unk70
+
+	def_text_script CompText878D544_unk71
+
+	def_text_script CompText878D544_unk72
+
+	def_text_script CompText878D544_unk73
+
+	def_text_script CompText878D544_unk74
+
+	def_text_script CompText878D544_unk75
+
+	def_text_script CompText878D544_unk76
+
+	def_text_script CompText878D544_unk77
+
+	def_text_script CompText878D544_unk78
+
+	def_text_script CompText878D544_unk79
+
+	def_text_script CompText878D544_unk80
+
+	def_text_script CompText878D544_unk81
+
+	def_text_script CompText878D544_unk82
+
+	def_text_script CompText878D544_unk83
+
+	def_text_script CompText878D544_unk84
+
+	def_text_script CompText878D544_unk85
+
+	def_text_script CompText878D544_unk86
+
+	def_text_script CompText878D544_unk87
+
+	def_text_script CompText878D544_unk88
+
+	def_text_script CompText878D544_unk89
+
+	def_text_script CompText878D544_unk90
+
+	def_text_script CompText878D544_unk91
+
+	def_text_script CompText878D544_unk92
+
+	def_text_script CompText878D544_unk93
+
+	def_text_script CompText878D544_unk94
+
+	def_text_script CompText878D544_unk95
+
+	def_text_script CompText878D544_unk96
+
+	def_text_script CompText878D544_unk97
+
 	

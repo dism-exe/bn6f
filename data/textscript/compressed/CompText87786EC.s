@@ -76,4 +76,64 @@ CompText87786EC::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText87786EC_unk11
+
+	def_text_script CompText87786EC_unk12
+
+	def_text_script CompText87786EC_unk13
+
+	def_text_script CompText87786EC_unk14
+
+	def_text_script CompText87786EC_unk15
+
+	def_text_script CompText87786EC_unk16
+
+	def_text_script CompText87786EC_unk17
+
+	def_text_script CompText87786EC_unk18
+
+	def_text_script CompText87786EC_unk19
+
+	def_text_script CompText87786EC_unk20
+
+	def_text_script CompText87786EC_unk21
+
+	def_text_script CompText87786EC_unk22
+
+	def_text_script CompText87786EC_unk23
+
+	def_text_script CompText87786EC_unk24
+
+	def_text_script CompText87786EC_unk25
+
+	def_text_script CompText87786EC_unk26
+
+	def_text_script CompText87786EC_unk27
+
+	def_text_script CompText87786EC_unk28
+
+	def_text_script CompText87786EC_unk29
+
+	def_text_script CompText87786EC_unk30
+
+	def_text_script CompText87786EC_unk31
+
+	def_text_script CompText87786EC_unk32
+
+	def_text_script CompText87786EC_unk33
+
+	def_text_script CompText87786EC_unk34
+
+	def_text_script CompText87786EC_unk35
+
+	def_text_script CompText87786EC_unk36
+
+	def_text_script CompText87786EC_unk37
+
+	def_text_script CompText87786EC_unk38
+
+	def_text_script CompText87786EC_unk39
+
+	def_text_script CompText87786EC_unk40
+
 	

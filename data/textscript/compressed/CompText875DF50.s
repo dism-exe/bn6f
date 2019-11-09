@@ -16,4 +16,12 @@ CompText875DF50::
 	ts_start_b_b_s 0x1
 	ts_end
 
+	def_text_script CompText875DF50_unk1
+
+	def_text_script CompText875DF50_unk2
+
+	def_text_script CompText875DF50_unk3
+
+	def_text_script CompText875DF50_unk4
+
 	

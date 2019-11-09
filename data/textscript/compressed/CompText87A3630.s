@@ -11,4 +11,12 @@ CompText87A3630::
 
 	def_text_script CompText87A3630_unk0
 
+	def_text_script CompText87A3630_unk1
+
+	def_text_script CompText87A3630_unk2
+
+	def_text_script CompText87A3630_unk3
+
+	def_text_script CompText87A3630_unk4
+
 	

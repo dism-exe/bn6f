@@ -97,4 +97,30 @@ CompText877C7A4::
 	ts_flag_set 0x15, 0x17
 	ts_end
 
+	def_text_script CompText877C7A4_unk17
+
+	def_text_script CompText877C7A4_unk18
+
+	def_text_script CompText877C7A4_unk19
+
+	def_text_script CompText877C7A4_unk20
+
+	def_text_script CompText877C7A4_unk21
+
+	def_text_script CompText877C7A4_unk22
+
+	def_text_script CompText877C7A4_unk23
+
+	def_text_script CompText877C7A4_unk24
+
+	def_text_script CompText877C7A4_unk25
+
+	def_text_script CompText877C7A4_unk26
+
+	def_text_script CompText877C7A4_unk27
+
+	def_text_script CompText877C7A4_unk28
+
+	def_text_script CompText877C7A4_unk29
+
 	

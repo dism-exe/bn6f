@@ -965,4 +965,50 @@ CompText8747D30::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8747D30_unk232
+
+	def_text_script CompText8747D30_unk233
+
+	def_text_script CompText8747D30_unk234
+
+	def_text_script CompText8747D30_unk235
+
+	def_text_script CompText8747D30_unk236
+
+	def_text_script CompText8747D30_unk237
+
+	def_text_script CompText8747D30_unk238
+
+	def_text_script CompText8747D30_unk239
+
+	def_text_script CompText8747D30_unk240
+
+	def_text_script CompText8747D30_unk241
+
+	def_text_script CompText8747D30_unk242
+
+	def_text_script CompText8747D30_unk243
+
+	def_text_script CompText8747D30_unk244
+
+	def_text_script CompText8747D30_unk245
+
+	def_text_script CompText8747D30_unk246
+
+	def_text_script CompText8747D30_unk247
+
+	def_text_script CompText8747D30_unk248
+
+	def_text_script CompText8747D30_unk249
+
+	def_text_script CompText8747D30_unk250
+
+	def_text_script CompText8747D30_unk251
+
+	def_text_script CompText8747D30_unk252
+
+	def_text_script CompText8747D30_unk253
+
+	def_text_script CompText8747D30_unk254
+
 	

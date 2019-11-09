@@ -41,4 +41,38 @@ CompText879E4C4::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText879E4C4_unk3
+
+	def_text_script CompText879E4C4_unk4
+
+	def_text_script CompText879E4C4_unk5
+
+	def_text_script CompText879E4C4_unk6
+
+	def_text_script CompText879E4C4_unk7
+
+	def_text_script CompText879E4C4_unk8
+
+	def_text_script CompText879E4C4_unk9
+
+	def_text_script CompText879E4C4_unk10
+
+	def_text_script CompText879E4C4_unk11
+
+	def_text_script CompText879E4C4_unk12
+
+	def_text_script CompText879E4C4_unk13
+
+	def_text_script CompText879E4C4_unk14
+
+	def_text_script CompText879E4C4_unk15
+
+	def_text_script CompText879E4C4_unk16
+
+	def_text_script CompText879E4C4_unk17
+
+	def_text_script CompText879E4C4_unk18
+
+	def_text_script CompText879E4C4_unk19
+
 	

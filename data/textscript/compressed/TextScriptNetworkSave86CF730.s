@@ -101,4 +101,6 @@ TextScriptNetworkSave86CF730::
 	ts_key_wait 0x0
 	ts_wait_hold 0x0, 0x0
 
+	def_text_script TextScriptNetworkSave86CF730_unk14
+
 	

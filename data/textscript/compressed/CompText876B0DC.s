@@ -171,4 +171,18 @@ CompText876B0DC::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876B0DC_unk43
+
+	def_text_script CompText876B0DC_unk44
+
+	def_text_script CompText876B0DC_unk45
+
+	def_text_script CompText876B0DC_unk46
+
+	def_text_script CompText876B0DC_unk47
+
+	def_text_script CompText876B0DC_unk48
+
+	def_text_script CompText876B0DC_unk49
+
 	

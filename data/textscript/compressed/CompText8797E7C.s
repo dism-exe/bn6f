@@ -11,4 +11,12 @@ CompText8797E7C::
 
 	def_text_script CompText8797E7C_unk0
 
+	def_text_script CompText8797E7C_unk1
+
+	def_text_script CompText8797E7C_unk2
+
+	def_text_script CompText8797E7C_unk3
+
+	def_text_script CompText8797E7C_unk4
+
 	

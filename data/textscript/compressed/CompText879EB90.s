@@ -11,4 +11,12 @@ CompText879EB90::
 
 	def_text_script CompText879EB90_unk0
 
+	def_text_script CompText879EB90_unk1
+
+	def_text_script CompText879EB90_unk2
+
+	def_text_script CompText879EB90_unk3
+
+	def_text_script CompText879EB90_unk4
+
 	

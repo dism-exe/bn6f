@@ -808,4 +808,50 @@ CompText8753F78::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8753F78_unk232
+
+	def_text_script CompText8753F78_unk233
+
+	def_text_script CompText8753F78_unk234
+
+	def_text_script CompText8753F78_unk235
+
+	def_text_script CompText8753F78_unk236
+
+	def_text_script CompText8753F78_unk237
+
+	def_text_script CompText8753F78_unk238
+
+	def_text_script CompText8753F78_unk239
+
+	def_text_script CompText8753F78_unk240
+
+	def_text_script CompText8753F78_unk241
+
+	def_text_script CompText8753F78_unk242
+
+	def_text_script CompText8753F78_unk243
+
+	def_text_script CompText8753F78_unk244
+
+	def_text_script CompText8753F78_unk245
+
+	def_text_script CompText8753F78_unk246
+
+	def_text_script CompText8753F78_unk247
+
+	def_text_script CompText8753F78_unk248
+
+	def_text_script CompText8753F78_unk249
+
+	def_text_script CompText8753F78_unk250
+
+	def_text_script CompText8753F78_unk251
+
+	def_text_script CompText8753F78_unk252
+
+	def_text_script CompText8753F78_unk253
+
+	def_text_script CompText8753F78_unk254
+
 	

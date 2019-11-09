@@ -139,4 +139,22 @@ CompText877D7D4::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText877D7D4_unk51
+
+	def_text_script CompText877D7D4_unk52
+
+	def_text_script CompText877D7D4_unk53
+
+	def_text_script CompText877D7D4_unk54
+
+	def_text_script CompText877D7D4_unk55
+
+	def_text_script CompText877D7D4_unk56
+
+	def_text_script CompText877D7D4_unk57
+
+	def_text_script CompText877D7D4_unk58
+
+	def_text_script CompText877D7D4_unk59
+
 	

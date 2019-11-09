@@ -212,4 +212,150 @@ CompText8795A44::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8795A44_unk27
+
+	def_text_script CompText8795A44_unk28
+
+	def_text_script CompText8795A44_unk29
+
+	def_text_script CompText8795A44_unk30
+
+	def_text_script CompText8795A44_unk31
+
+	def_text_script CompText8795A44_unk32
+
+	def_text_script CompText8795A44_unk33
+
+	def_text_script CompText8795A44_unk34
+
+	def_text_script CompText8795A44_unk35
+
+	def_text_script CompText8795A44_unk36
+
+	def_text_script CompText8795A44_unk37
+
+	def_text_script CompText8795A44_unk38
+
+	def_text_script CompText8795A44_unk39
+
+	def_text_script CompText8795A44_unk40
+
+	def_text_script CompText8795A44_unk41
+
+	def_text_script CompText8795A44_unk42
+
+	def_text_script CompText8795A44_unk43
+
+	def_text_script CompText8795A44_unk44
+
+	def_text_script CompText8795A44_unk45
+
+	def_text_script CompText8795A44_unk46
+
+	def_text_script CompText8795A44_unk47
+
+	def_text_script CompText8795A44_unk48
+
+	def_text_script CompText8795A44_unk49
+
+	def_text_script CompText8795A44_unk50
+
+	def_text_script CompText8795A44_unk51
+
+	def_text_script CompText8795A44_unk52
+
+	def_text_script CompText8795A44_unk53
+
+	def_text_script CompText8795A44_unk54
+
+	def_text_script CompText8795A44_unk55
+
+	def_text_script CompText8795A44_unk56
+
+	def_text_script CompText8795A44_unk57
+
+	def_text_script CompText8795A44_unk58
+
+	def_text_script CompText8795A44_unk59
+
+	def_text_script CompText8795A44_unk60
+
+	def_text_script CompText8795A44_unk61
+
+	def_text_script CompText8795A44_unk62
+
+	def_text_script CompText8795A44_unk63
+
+	def_text_script CompText8795A44_unk64
+
+	def_text_script CompText8795A44_unk65
+
+	def_text_script CompText8795A44_unk66
+
+	def_text_script CompText8795A44_unk67
+
+	def_text_script CompText8795A44_unk68
+
+	def_text_script CompText8795A44_unk69
+
+	def_text_script CompText8795A44_unk70
+
+	def_text_script CompText8795A44_unk71
+
+	def_text_script CompText8795A44_unk72
+
+	def_text_script CompText8795A44_unk73
+
+	def_text_script CompText8795A44_unk74
+
+	def_text_script CompText8795A44_unk75
+
+	def_text_script CompText8795A44_unk76
+
+	def_text_script CompText8795A44_unk77
+
+	def_text_script CompText8795A44_unk78
+
+	def_text_script CompText8795A44_unk79
+
+	def_text_script CompText8795A44_unk80
+
+	def_text_script CompText8795A44_unk81
+
+	def_text_script CompText8795A44_unk82
+
+	def_text_script CompText8795A44_unk83
+
+	def_text_script CompText8795A44_unk84
+
+	def_text_script CompText8795A44_unk85
+
+	def_text_script CompText8795A44_unk86
+
+	def_text_script CompText8795A44_unk87
+
+	def_text_script CompText8795A44_unk88
+
+	def_text_script CompText8795A44_unk89
+
+	def_text_script CompText8795A44_unk90
+
+	def_text_script CompText8795A44_unk91
+
+	def_text_script CompText8795A44_unk92
+
+	def_text_script CompText8795A44_unk93
+
+	def_text_script CompText8795A44_unk94
+
+	def_text_script CompText8795A44_unk95
+
+	def_text_script CompText8795A44_unk96
+
+	def_text_script CompText8795A44_unk97
+
+	def_text_script CompText8795A44_unk98
+
+	def_text_script CompText8795A44_unk99
+
 	

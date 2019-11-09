@@ -62,4 +62,6 @@ CompText8797220::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8797220_unk5
+
 	

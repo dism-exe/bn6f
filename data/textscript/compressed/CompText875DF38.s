@@ -11,4 +11,12 @@ CompText875DF38::
 
 	def_text_script CompText875DF38_unk0
 
+	def_text_script CompText875DF38_unk1
+
+	def_text_script CompText875DF38_unk2
+
+	def_text_script CompText875DF38_unk3
+
+	def_text_script CompText875DF38_unk4
+
 	

@@ -352,4 +352,20 @@ CompText87666B4::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText87666B4_unk39
+
+	def_text_script CompText87666B4_unk40
+
+	def_text_script CompText87666B4_unk41
+
+	def_text_script CompText87666B4_unk42
+
+	def_text_script CompText87666B4_unk43
+
+	def_text_script CompText87666B4_unk44
+
+	def_text_script CompText87666B4_unk45
+
+	def_text_script CompText87666B4_unk46
+
 	

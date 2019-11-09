@@ -269,4 +269,42 @@ CompText8795234::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8795234_unk22
+
+	def_text_script CompText8795234_unk23
+
+	def_text_script CompText8795234_unk24
+
+	def_text_script CompText8795234_unk25
+
+	def_text_script CompText8795234_unk26
+
+	def_text_script CompText8795234_unk27
+
+	def_text_script CompText8795234_unk28
+
+	def_text_script CompText8795234_unk29
+
+	def_text_script CompText8795234_unk30
+
+	def_text_script CompText8795234_unk31
+
+	def_text_script CompText8795234_unk32
+
+	def_text_script CompText8795234_unk33
+
+	def_text_script CompText8795234_unk34
+
+	def_text_script CompText8795234_unk35
+
+	def_text_script CompText8795234_unk36
+
+	def_text_script CompText8795234_unk37
+
+	def_text_script CompText8795234_unk38
+
+	def_text_script CompText8795234_unk39
+
+	def_text_script CompText8795234_unk40
+
 	

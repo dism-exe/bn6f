@@ -11,4 +11,12 @@ CompText87A0440::
 
 	def_text_script CompText87A0440_unk0
 
+	def_text_script CompText87A0440_unk1
+
+	def_text_script CompText87A0440_unk2
+
+	def_text_script CompText87A0440_unk3
+
+	def_text_script CompText87A0440_unk4
+
 	

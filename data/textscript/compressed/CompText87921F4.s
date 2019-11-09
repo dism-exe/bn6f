@@ -134,4 +134,110 @@ CompText87921F4::
 	ts_flag_set 0x15, 0x17
 	ts_end
 
+	def_text_script CompText87921F4_unk17
+
+	def_text_script CompText87921F4_unk18
+
+	def_text_script CompText87921F4_unk19
+
+	def_text_script CompText87921F4_unk20
+
+	def_text_script CompText87921F4_unk21
+
+	def_text_script CompText87921F4_unk22
+
+	def_text_script CompText87921F4_unk23
+
+	def_text_script CompText87921F4_unk24
+
+	def_text_script CompText87921F4_unk25
+
+	def_text_script CompText87921F4_unk26
+
+	def_text_script CompText87921F4_unk27
+
+	def_text_script CompText87921F4_unk28
+
+	def_text_script CompText87921F4_unk29
+
+	def_text_script CompText87921F4_unk30
+
+	def_text_script CompText87921F4_unk31
+
+	def_text_script CompText87921F4_unk32
+
+	def_text_script CompText87921F4_unk33
+
+	def_text_script CompText87921F4_unk34
+
+	def_text_script CompText87921F4_unk35
+
+	def_text_script CompText87921F4_unk36
+
+	def_text_script CompText87921F4_unk37
+
+	def_text_script CompText87921F4_unk38
+
+	def_text_script CompText87921F4_unk39
+
+	def_text_script CompText87921F4_unk40
+
+	def_text_script CompText87921F4_unk41
+
+	def_text_script CompText87921F4_unk42
+
+	def_text_script CompText87921F4_unk43
+
+	def_text_script CompText87921F4_unk44
+
+	def_text_script CompText87921F4_unk45
+
+	def_text_script CompText87921F4_unk46
+
+	def_text_script CompText87921F4_unk47
+
+	def_text_script CompText87921F4_unk48
+
+	def_text_script CompText87921F4_unk49
+
+	def_text_script CompText87921F4_unk50
+
+	def_text_script CompText87921F4_unk51
+
+	def_text_script CompText87921F4_unk52
+
+	def_text_script CompText87921F4_unk53
+
+	def_text_script CompText87921F4_unk54
+
+	def_text_script CompText87921F4_unk55
+
+	def_text_script CompText87921F4_unk56
+
+	def_text_script CompText87921F4_unk57
+
+	def_text_script CompText87921F4_unk58
+
+	def_text_script CompText87921F4_unk59
+
+	def_text_script CompText87921F4_unk60
+
+	def_text_script CompText87921F4_unk61
+
+	def_text_script CompText87921F4_unk62
+
+	def_text_script CompText87921F4_unk63
+
+	def_text_script CompText87921F4_unk64
+
+	def_text_script CompText87921F4_unk65
+
+	def_text_script CompText87921F4_unk66
+
+	def_text_script CompText87921F4_unk67
+
+	def_text_script CompText87921F4_unk68
+
+	def_text_script CompText87921F4_unk69
+
 	

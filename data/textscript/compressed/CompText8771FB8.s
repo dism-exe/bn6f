@@ -11,4 +11,12 @@ CompText8771FB8::
 
 	def_text_script CompText8771FB8_unk0
 
+	def_text_script CompText8771FB8_unk1
+
+	def_text_script CompText8771FB8_unk2
+
+	def_text_script CompText8771FB8_unk3
+
+	def_text_script CompText8771FB8_unk4
+
 	

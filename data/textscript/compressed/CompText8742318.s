@@ -634,4 +634,18 @@ CompText8742318::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8742318_unk183
+
+	def_text_script CompText8742318_unk184
+
+	def_text_script CompText8742318_unk185
+
+	def_text_script CompText8742318_unk186
+
+	def_text_script CompText8742318_unk187
+
+	def_text_script CompText8742318_unk188
+
+	def_text_script CompText8742318_unk189
+
 	

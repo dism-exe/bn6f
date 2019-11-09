@@ -690,4 +690,10 @@ CompText879DA74::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText879DA74_unk58
+
+	def_text_script CompText879DA74_unk59
+
+	def_text_script CompText879DA74_unk60
+
 	

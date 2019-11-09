@@ -17,4 +17,10 @@ CompText877129C::
 	def_text_script CompText877129C_unk1
 	ts_end
 
+	def_text_script CompText877129C_unk2
+
+	def_text_script CompText877129C_unk3
+
+	def_text_script CompText877129C_unk4
+
 	

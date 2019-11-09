@@ -163,4 +163,6 @@ CompText8799708::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8799708_unk4
+
 	

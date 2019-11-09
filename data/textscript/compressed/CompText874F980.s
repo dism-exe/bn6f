@@ -979,4 +979,50 @@ CompText874F980::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText874F980_unk232
+
+	def_text_script CompText874F980_unk233
+
+	def_text_script CompText874F980_unk234
+
+	def_text_script CompText874F980_unk235
+
+	def_text_script CompText874F980_unk236
+
+	def_text_script CompText874F980_unk237
+
+	def_text_script CompText874F980_unk238
+
+	def_text_script CompText874F980_unk239
+
+	def_text_script CompText874F980_unk240
+
+	def_text_script CompText874F980_unk241
+
+	def_text_script CompText874F980_unk242
+
+	def_text_script CompText874F980_unk243
+
+	def_text_script CompText874F980_unk244
+
+	def_text_script CompText874F980_unk245
+
+	def_text_script CompText874F980_unk246
+
+	def_text_script CompText874F980_unk247
+
+	def_text_script CompText874F980_unk248
+
+	def_text_script CompText874F980_unk249
+
+	def_text_script CompText874F980_unk250
+
+	def_text_script CompText874F980_unk251
+
+	def_text_script CompText874F980_unk252
+
+	def_text_script CompText874F980_unk253
+
+	def_text_script CompText874F980_unk254
+
 	

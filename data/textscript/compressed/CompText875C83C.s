@@ -162,4 +162,18 @@ CompText875C83C::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText875C83C_unk14
+
+	def_text_script CompText875C83C_unk15
+
+	def_text_script CompText875C83C_unk16
+
+	def_text_script CompText875C83C_unk17
+
+	def_text_script CompText875C83C_unk18
+
+	def_text_script CompText875C83C_unk19
+
+	def_text_script CompText875C83C_unk20
+
 	

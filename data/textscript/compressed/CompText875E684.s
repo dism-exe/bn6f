@@ -11,4 +11,12 @@ CompText875E684::
 
 	def_text_script CompText875E684_unk0
 
+	def_text_script CompText875E684_unk1
+
+	def_text_script CompText875E684_unk2
+
+	def_text_script CompText875E684_unk3
+
+	def_text_script CompText875E684_unk4
+
 	

@@ -1000,4 +1000,50 @@ CompText8748650::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8748650_unk232
+
+	def_text_script CompText8748650_unk233
+
+	def_text_script CompText8748650_unk234
+
+	def_text_script CompText8748650_unk235
+
+	def_text_script CompText8748650_unk236
+
+	def_text_script CompText8748650_unk237
+
+	def_text_script CompText8748650_unk238
+
+	def_text_script CompText8748650_unk239
+
+	def_text_script CompText8748650_unk240
+
+	def_text_script CompText8748650_unk241
+
+	def_text_script CompText8748650_unk242
+
+	def_text_script CompText8748650_unk243
+
+	def_text_script CompText8748650_unk244
+
+	def_text_script CompText8748650_unk245
+
+	def_text_script CompText8748650_unk246
+
+	def_text_script CompText8748650_unk247
+
+	def_text_script CompText8748650_unk248
+
+	def_text_script CompText8748650_unk249
+
+	def_text_script CompText8748650_unk250
+
+	def_text_script CompText8748650_unk251
+
+	def_text_script CompText8748650_unk252
+
+	def_text_script CompText8748650_unk253
+
+	def_text_script CompText8748650_unk254
+
 	

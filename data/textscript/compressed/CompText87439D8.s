@@ -659,4 +659,18 @@ CompText87439D8::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText87439D8_unk193
+
+	def_text_script CompText87439D8_unk194
+
+	def_text_script CompText87439D8_unk195
+
+	def_text_script CompText87439D8_unk196
+
+	def_text_script CompText87439D8_unk197
+
+	def_text_script CompText87439D8_unk198
+
+	def_text_script CompText87439D8_unk199
+
 	

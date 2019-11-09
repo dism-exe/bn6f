@@ -42,4 +42,6 @@ CompText879694C::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText879694C_unk4
+
 	

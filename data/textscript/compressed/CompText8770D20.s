@@ -88,4 +88,18 @@ CompText8770D20::
 	ts_flag_set 0x15, 0x17
 	ts_end
 
+	def_text_script CompText8770D20_unk13
+
+	def_text_script CompText8770D20_unk14
+
+	def_text_script CompText8770D20_unk15
+
+	def_text_script CompText8770D20_unk16
+
+	def_text_script CompText8770D20_unk17
+
+	def_text_script CompText8770D20_unk18
+
+	def_text_script CompText8770D20_unk19
+
 	

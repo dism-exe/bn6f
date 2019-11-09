@@ -415,4 +415,22 @@ CompText878EA40::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText878EA40_unk61
+
+	def_text_script CompText878EA40_unk62
+
+	def_text_script CompText878EA40_unk63
+
+	def_text_script CompText878EA40_unk64
+
+	def_text_script CompText878EA40_unk65
+
+	def_text_script CompText878EA40_unk66
+
+	def_text_script CompText878EA40_unk67
+
+	def_text_script CompText878EA40_unk68
+
+	def_text_script CompText878EA40_unk69
+
 	

@@ -183,4 +183,32 @@ CompText877C534::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText877C534_unk46
+
+	def_text_script CompText877C534_unk47
+
+	def_text_script CompText877C534_unk48
+
+	def_text_script CompText877C534_unk49
+
+	def_text_script CompText877C534_unk50
+
+	def_text_script CompText877C534_unk51
+
+	def_text_script CompText877C534_unk52
+
+	def_text_script CompText877C534_unk53
+
+	def_text_script CompText877C534_unk54
+
+	def_text_script CompText877C534_unk55
+
+	def_text_script CompText877C534_unk56
+
+	def_text_script CompText877C534_unk57
+
+	def_text_script CompText877C534_unk58
+
+	def_text_script CompText877C534_unk59
+
 	

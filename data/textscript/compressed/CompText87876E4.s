@@ -345,4 +345,82 @@ CompText87876E4::
 	ts_flag_set 0x15, 0x17
 	ts_end
 
+	def_text_script CompText87876E4_unk61
+
+	def_text_script CompText87876E4_unk62
+
+	def_text_script CompText87876E4_unk63
+
+	def_text_script CompText87876E4_unk64
+
+	def_text_script CompText87876E4_unk65
+
+	def_text_script CompText87876E4_unk66
+
+	def_text_script CompText87876E4_unk67
+
+	def_text_script CompText87876E4_unk68
+
+	def_text_script CompText87876E4_unk69
+
+	def_text_script CompText87876E4_unk70
+
+	def_text_script CompText87876E4_unk71
+
+	def_text_script CompText87876E4_unk72
+
+	def_text_script CompText87876E4_unk73
+
+	def_text_script CompText87876E4_unk74
+
+	def_text_script CompText87876E4_unk75
+
+	def_text_script CompText87876E4_unk76
+
+	def_text_script CompText87876E4_unk77
+
+	def_text_script CompText87876E4_unk78
+
+	def_text_script CompText87876E4_unk79
+
+	def_text_script CompText87876E4_unk80
+
+	def_text_script CompText87876E4_unk81
+
+	def_text_script CompText87876E4_unk82
+
+	def_text_script CompText87876E4_unk83
+
+	def_text_script CompText87876E4_unk84
+
+	def_text_script CompText87876E4_unk85
+
+	def_text_script CompText87876E4_unk86
+
+	def_text_script CompText87876E4_unk87
+
+	def_text_script CompText87876E4_unk88
+
+	def_text_script CompText87876E4_unk89
+
+	def_text_script CompText87876E4_unk90
+
+	def_text_script CompText87876E4_unk91
+
+	def_text_script CompText87876E4_unk92
+
+	def_text_script CompText87876E4_unk93
+
+	def_text_script CompText87876E4_unk94
+
+	def_text_script CompText87876E4_unk95
+
+	def_text_script CompText87876E4_unk96
+
+	def_text_script CompText87876E4_unk97
+
+	def_text_script CompText87876E4_unk98
+
+	def_text_script CompText87876E4_unk99
+
 	

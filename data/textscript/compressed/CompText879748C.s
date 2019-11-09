@@ -11,4 +11,12 @@ CompText879748C::
 
 	def_text_script CompText879748C_unk0
 
+	def_text_script CompText879748C_unk1
+
+	def_text_script CompText879748C_unk2
+
+	def_text_script CompText879748C_unk3
+
+	def_text_script CompText879748C_unk4
+
 	

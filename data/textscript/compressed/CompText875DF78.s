@@ -20,4 +20,10 @@ CompText875DF78::
 	ts_start_b_b_s 0x2
 	ts_end
 
+	def_text_script CompText875DF78_unk2
+
+	def_text_script CompText875DF78_unk3
+
+	def_text_script CompText875DF78_unk4
+
 	

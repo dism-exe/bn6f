@@ -221,4 +221,48 @@ CompText87709CC::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText87709CC_unk48
+
+	def_text_script CompText87709CC_unk49
+
+	def_text_script CompText87709CC_unk50
+
+	def_text_script CompText87709CC_unk51
+
+	def_text_script CompText87709CC_unk52
+
+	def_text_script CompText87709CC_unk53
+
+	def_text_script CompText87709CC_unk54
+
+	def_text_script CompText87709CC_unk55
+
+	def_text_script CompText87709CC_unk56
+
+	def_text_script CompText87709CC_unk57
+
+	def_text_script CompText87709CC_unk58
+
+	def_text_script CompText87709CC_unk59
+
+	def_text_script CompText87709CC_unk60
+
+	def_text_script CompText87709CC_unk61
+
+	def_text_script CompText87709CC_unk62
+
+	def_text_script CompText87709CC_unk63
+
+	def_text_script CompText87709CC_unk64
+
+	def_text_script CompText87709CC_unk65
+
+	def_text_script CompText87709CC_unk66
+
+	def_text_script CompText87709CC_unk67
+
+	def_text_script CompText87709CC_unk68
+
+	def_text_script CompText87709CC_unk69
+
 	

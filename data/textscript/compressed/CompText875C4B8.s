@@ -170,4 +170,10 @@ CompText875C4B8::
 	def_text_script CompText875C4B8_unk12
 	ts_end
 
+	def_text_script CompText875C4B8_unk13
+
+	def_text_script CompText875C4B8_unk14
+
+	def_text_script CompText875C4B8_unk15
+
 	

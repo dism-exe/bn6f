@@ -11,4 +11,12 @@ CompText8795A38::
 
 	def_text_script CompText8795A38_unk0
 
+	def_text_script CompText8795A38_unk1
+
+	def_text_script CompText8795A38_unk2
+
+	def_text_script CompText8795A38_unk3
+
+	def_text_script CompText8795A38_unk4
+
 	

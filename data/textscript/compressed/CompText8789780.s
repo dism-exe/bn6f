@@ -122,4 +122,30 @@ CompText8789780::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8789780_unk8
+
+	def_text_script CompText8789780_unk9
+
+	def_text_script CompText8789780_unk10
+
+	def_text_script CompText8789780_unk11
+
+	def_text_script CompText8789780_unk12
+
+	def_text_script CompText8789780_unk13
+
+	def_text_script CompText8789780_unk14
+
+	def_text_script CompText8789780_unk15
+
+	def_text_script CompText8789780_unk16
+
+	def_text_script CompText8789780_unk17
+
+	def_text_script CompText8789780_unk18
+
+	def_text_script CompText8789780_unk19
+
+	def_text_script CompText8789780_unk20
+
 	

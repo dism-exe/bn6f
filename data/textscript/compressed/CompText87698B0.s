@@ -169,4 +169,50 @@ CompText87698B0::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText87698B0_unk18
+
+	def_text_script CompText87698B0_unk19
+
+	def_text_script CompText87698B0_unk20
+
+	def_text_script CompText87698B0_unk21
+
+	def_text_script CompText87698B0_unk22
+
+	def_text_script CompText87698B0_unk23
+
+	def_text_script CompText87698B0_unk24
+
+	def_text_script CompText87698B0_unk25
+
+	def_text_script CompText87698B0_unk26
+
+	def_text_script CompText87698B0_unk27
+
+	def_text_script CompText87698B0_unk28
+
+	def_text_script CompText87698B0_unk29
+
+	def_text_script CompText87698B0_unk30
+
+	def_text_script CompText87698B0_unk31
+
+	def_text_script CompText87698B0_unk32
+
+	def_text_script CompText87698B0_unk33
+
+	def_text_script CompText87698B0_unk34
+
+	def_text_script CompText87698B0_unk35
+
+	def_text_script CompText87698B0_unk36
+
+	def_text_script CompText87698B0_unk37
+
+	def_text_script CompText87698B0_unk38
+
+	def_text_script CompText87698B0_unk39
+
+	def_text_script CompText87698B0_unk40
+
 	

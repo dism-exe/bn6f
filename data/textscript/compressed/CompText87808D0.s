@@ -549,4 +549,10 @@ CompText87808D0::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText87808D0_unk32
+
+	def_text_script CompText87808D0_unk33
+
+	def_text_script CompText87808D0_unk34
+
 	

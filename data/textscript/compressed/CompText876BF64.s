@@ -137,4 +137,62 @@ CompText876BF64::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876BF64_unk41
+
+	def_text_script CompText876BF64_unk42
+
+	def_text_script CompText876BF64_unk43
+
+	def_text_script CompText876BF64_unk44
+
+	def_text_script CompText876BF64_unk45
+
+	def_text_script CompText876BF64_unk46
+
+	def_text_script CompText876BF64_unk47
+
+	def_text_script CompText876BF64_unk48
+
+	def_text_script CompText876BF64_unk49
+
+	def_text_script CompText876BF64_unk50
+
+	def_text_script CompText876BF64_unk51
+
+	def_text_script CompText876BF64_unk52
+
+	def_text_script CompText876BF64_unk53
+
+	def_text_script CompText876BF64_unk54
+
+	def_text_script CompText876BF64_unk55
+
+	def_text_script CompText876BF64_unk56
+
+	def_text_script CompText876BF64_unk57
+
+	def_text_script CompText876BF64_unk58
+
+	def_text_script CompText876BF64_unk59
+
+	def_text_script CompText876BF64_unk60
+
+	def_text_script CompText876BF64_unk61
+
+	def_text_script CompText876BF64_unk62
+
+	def_text_script CompText876BF64_unk63
+
+	def_text_script CompText876BF64_unk64
+
+	def_text_script CompText876BF64_unk65
+
+	def_text_script CompText876BF64_unk66
+
+	def_text_script CompText876BF64_unk67
+
+	def_text_script CompText876BF64_unk68
+
+	def_text_script CompText876BF64_unk69
+
 	

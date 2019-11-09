@@ -31,4 +31,10 @@ CompText876D580::
 	ts_flag_set 0x15, 0x17
 	ts_end
 
+	def_text_script CompText876D580_unk2
+
+	def_text_script CompText876D580_unk3
+
+	def_text_script CompText876D580_unk4
+
 	

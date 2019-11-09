@@ -26,4 +26,8 @@ CompText879A228::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText879A228_unk3
+
+	def_text_script CompText879A228_unk4
+
 	

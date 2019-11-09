@@ -123,4 +123,42 @@ CompText876E73C::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876E73C_unk41
+
+	def_text_script CompText876E73C_unk42
+
+	def_text_script CompText876E73C_unk43
+
+	def_text_script CompText876E73C_unk44
+
+	def_text_script CompText876E73C_unk45
+
+	def_text_script CompText876E73C_unk46
+
+	def_text_script CompText876E73C_unk47
+
+	def_text_script CompText876E73C_unk48
+
+	def_text_script CompText876E73C_unk49
+
+	def_text_script CompText876E73C_unk50
+
+	def_text_script CompText876E73C_unk51
+
+	def_text_script CompText876E73C_unk52
+
+	def_text_script CompText876E73C_unk53
+
+	def_text_script CompText876E73C_unk54
+
+	def_text_script CompText876E73C_unk55
+
+	def_text_script CompText876E73C_unk56
+
+	def_text_script CompText876E73C_unk57
+
+	def_text_script CompText876E73C_unk58
+
+	def_text_script CompText876E73C_unk59
+
 	

@@ -21,4 +21,22 @@ CompText8781FE4::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8781FE4_unk1
+
+	def_text_script CompText8781FE4_unk2
+
+	def_text_script CompText8781FE4_unk3
+
+	def_text_script CompText8781FE4_unk4
+
+	def_text_script CompText8781FE4_unk5
+
+	def_text_script CompText8781FE4_unk6
+
+	def_text_script CompText8781FE4_unk7
+
+	def_text_script CompText8781FE4_unk8
+
+	def_text_script CompText8781FE4_unk9
+
 	

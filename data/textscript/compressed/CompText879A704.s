@@ -31,4 +31,10 @@ CompText879A704::
 	ts_start_mailbox 0x1
 	ts_end
 
+	def_text_script CompText879A704_unk2
+
+	def_text_script CompText879A704_unk3
+
+	def_text_script CompText879A704_unk4
+
 	

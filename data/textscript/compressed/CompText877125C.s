@@ -11,4 +11,12 @@ CompText877125C::
 
 	def_text_script CompText877125C_unk0
 
+	def_text_script CompText877125C_unk1
+
+	def_text_script CompText877125C_unk2
+
+	def_text_script CompText877125C_unk3
+
+	def_text_script CompText877125C_unk4
+
 	

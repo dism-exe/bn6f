@@ -121,4 +121,20 @@ CompText8781CB4::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8781CB4_unk12
+
+	def_text_script CompText8781CB4_unk13
+
+	def_text_script CompText8781CB4_unk14
+
+	def_text_script CompText8781CB4_unk15
+
+	def_text_script CompText8781CB4_unk16
+
+	def_text_script CompText8781CB4_unk17
+
+	def_text_script CompText8781CB4_unk18
+
+	def_text_script CompText8781CB4_unk19
+
 	

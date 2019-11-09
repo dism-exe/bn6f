@@ -304,4 +304,98 @@ CompText876EE64::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876EE64_unk53
+
+	def_text_script CompText876EE64_unk54
+
+	def_text_script CompText876EE64_unk55
+
+	def_text_script CompText876EE64_unk56
+
+	def_text_script CompText876EE64_unk57
+
+	def_text_script CompText876EE64_unk58
+
+	def_text_script CompText876EE64_unk59
+
+	def_text_script CompText876EE64_unk60
+
+	def_text_script CompText876EE64_unk61
+
+	def_text_script CompText876EE64_unk62
+
+	def_text_script CompText876EE64_unk63
+
+	def_text_script CompText876EE64_unk64
+
+	def_text_script CompText876EE64_unk65
+
+	def_text_script CompText876EE64_unk66
+
+	def_text_script CompText876EE64_unk67
+
+	def_text_script CompText876EE64_unk68
+
+	def_text_script CompText876EE64_unk69
+
+	def_text_script CompText876EE64_unk70
+
+	def_text_script CompText876EE64_unk71
+
+	def_text_script CompText876EE64_unk72
+
+	def_text_script CompText876EE64_unk73
+
+	def_text_script CompText876EE64_unk74
+
+	def_text_script CompText876EE64_unk75
+
+	def_text_script CompText876EE64_unk76
+
+	def_text_script CompText876EE64_unk77
+
+	def_text_script CompText876EE64_unk78
+
+	def_text_script CompText876EE64_unk79
+
+	def_text_script CompText876EE64_unk80
+
+	def_text_script CompText876EE64_unk81
+
+	def_text_script CompText876EE64_unk82
+
+	def_text_script CompText876EE64_unk83
+
+	def_text_script CompText876EE64_unk84
+
+	def_text_script CompText876EE64_unk85
+
+	def_text_script CompText876EE64_unk86
+
+	def_text_script CompText876EE64_unk87
+
+	def_text_script CompText876EE64_unk88
+
+	def_text_script CompText876EE64_unk89
+
+	def_text_script CompText876EE64_unk90
+
+	def_text_script CompText876EE64_unk91
+
+	def_text_script CompText876EE64_unk92
+
+	def_text_script CompText876EE64_unk93
+
+	def_text_script CompText876EE64_unk94
+
+	def_text_script CompText876EE64_unk95
+
+	def_text_script CompText876EE64_unk96
+
+	def_text_script CompText876EE64_unk97
+
+	def_text_script CompText876EE64_unk98
+
+	def_text_script CompText876EE64_unk99
+
 	

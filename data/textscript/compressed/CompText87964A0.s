@@ -11,4 +11,12 @@ CompText87964A0::
 
 	def_text_script CompText87964A0_unk0
 
+	def_text_script CompText87964A0_unk1
+
+	def_text_script CompText87964A0_unk2
+
+	def_text_script CompText87964A0_unk3
+
+	def_text_script CompText87964A0_unk4
+
 	

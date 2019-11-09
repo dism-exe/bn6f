@@ -25,4 +25,12 @@ CompText875D780::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText875D780_unk1
+
+	def_text_script CompText875D780_unk2
+
+	def_text_script CompText875D780_unk3
+
+	def_text_script CompText875D780_unk4
+
 	

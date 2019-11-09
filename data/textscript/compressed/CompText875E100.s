@@ -136,4 +136,10 @@ CompText875E100::
 	ts_flag_set 0x5B, 0x8
 	ts_end
 
+	def_text_script CompText875E100_unk7
+
+	def_text_script CompText875E100_unk8
+
+	def_text_script CompText875E100_unk9
+
 	

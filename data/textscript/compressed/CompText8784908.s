@@ -1330,4 +1330,22 @@ CompText8784908::
 	ts_start_heal 0xA, 0x0
 	ts_jump 122
 
+	def_text_script CompText8784908_unk141
+
+	def_text_script CompText8784908_unk142
+
+	def_text_script CompText8784908_unk143
+
+	def_text_script CompText8784908_unk144
+
+	def_text_script CompText8784908_unk145
+
+	def_text_script CompText8784908_unk146
+
+	def_text_script CompText8784908_unk147
+
+	def_text_script CompText8784908_unk148
+
+	def_text_script CompText8784908_unk149
+
 	

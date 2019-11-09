@@ -154,4 +154,18 @@ CompText876D618::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876D618_unk13
+
+	def_text_script CompText876D618_unk14
+
+	def_text_script CompText876D618_unk15
+
+	def_text_script CompText876D618_unk16
+
+	def_text_script CompText876D618_unk17
+
+	def_text_script CompText876D618_unk18
+
+	def_text_script CompText876D618_unk19
+
 	

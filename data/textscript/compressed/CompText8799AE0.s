@@ -140,4 +140,8 @@ CompText8799AE0::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8799AE0_unk3
+
+	def_text_script CompText8799AE0_unk4
+
 	

@@ -328,4 +328,20 @@ CompText8786694::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8786694_unk61
+
+	def_text_script CompText8786694_unk62
+
+	def_text_script CompText8786694_unk63
+
+	def_text_script CompText8786694_unk64
+
+	def_text_script CompText8786694_unk65
+
+	def_text_script CompText8786694_unk66
+
+	def_text_script CompText8786694_unk67
+
+	def_text_script CompText8786694_unk68
+
 	

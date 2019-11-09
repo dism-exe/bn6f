@@ -183,4 +183,28 @@ CompText879FDB4::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText879FDB4_unk9
+
+	def_text_script CompText879FDB4_unk10
+
+	def_text_script CompText879FDB4_unk11
+
+	def_text_script CompText879FDB4_unk12
+
+	def_text_script CompText879FDB4_unk13
+
+	def_text_script CompText879FDB4_unk14
+
+	def_text_script CompText879FDB4_unk15
+
+	def_text_script CompText879FDB4_unk16
+
+	def_text_script CompText879FDB4_unk17
+
+	def_text_script CompText879FDB4_unk18
+
+	def_text_script CompText879FDB4_unk19
+
+	def_text_script CompText879FDB4_unk20
+
 	

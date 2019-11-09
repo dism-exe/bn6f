@@ -93,4 +93,44 @@ CompText8778810::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8778810_unk11
+
+	def_text_script CompText8778810_unk12
+
+	def_text_script CompText8778810_unk13
+
+	def_text_script CompText8778810_unk14
+
+	def_text_script CompText8778810_unk15
+
+	def_text_script CompText8778810_unk16
+
+	def_text_script CompText8778810_unk17
+
+	def_text_script CompText8778810_unk18
+
+	def_text_script CompText8778810_unk19
+
+	def_text_script CompText8778810_unk20
+
+	def_text_script CompText8778810_unk21
+
+	def_text_script CompText8778810_unk22
+
+	def_text_script CompText8778810_unk23
+
+	def_text_script CompText8778810_unk24
+
+	def_text_script CompText8778810_unk25
+
+	def_text_script CompText8778810_unk26
+
+	def_text_script CompText8778810_unk27
+
+	def_text_script CompText8778810_unk28
+
+	def_text_script CompText8778810_unk29
+
+	def_text_script CompText8778810_unk30
+
 	

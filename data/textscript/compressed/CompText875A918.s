@@ -496,4 +496,6 @@ CompText875A918::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText875A918_unk29
+
 	

@@ -11,4 +11,12 @@ CompText87A243C::
 
 	def_text_script CompText87A243C_unk0
 
+	def_text_script CompText87A243C_unk1
+
+	def_text_script CompText87A243C_unk2
+
+	def_text_script CompText87A243C_unk3
+
+	def_text_script CompText87A243C_unk4
+
 	

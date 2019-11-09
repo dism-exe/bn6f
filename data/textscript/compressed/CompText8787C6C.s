@@ -558,4 +558,30 @@ CompText8787C6C::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8787C6C_unk67
+
+	def_text_script CompText8787C6C_unk68
+
+	def_text_script CompText8787C6C_unk69
+
+	def_text_script CompText8787C6C_unk70
+
+	def_text_script CompText8787C6C_unk71
+
+	def_text_script CompText8787C6C_unk72
+
+	def_text_script CompText8787C6C_unk73
+
+	def_text_script CompText8787C6C_unk74
+
+	def_text_script CompText8787C6C_unk75
+
+	def_text_script CompText8787C6C_unk76
+
+	def_text_script CompText8787C6C_unk77
+
+	def_text_script CompText8787C6C_unk78
+
+	def_text_script CompText8787C6C_unk79
+
 	

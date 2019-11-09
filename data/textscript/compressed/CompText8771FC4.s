@@ -11,4 +11,12 @@ CompText8771FC4::
 
 	def_text_script CompText8771FC4_unk0
 
+	def_text_script CompText8771FC4_unk1
+
+	def_text_script CompText8771FC4_unk2
+
+	def_text_script CompText8771FC4_unk3
+
+	def_text_script CompText8771FC4_unk4
+
 	

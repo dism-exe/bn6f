@@ -117,4 +117,6 @@ CompText86CF994::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText86CF994_unk14
+
 	

@@ -1153,4 +1153,38 @@ CompText878A898::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText878A898_unk63
+
+	def_text_script CompText878A898_unk64
+
+	def_text_script CompText878A898_unk65
+
+	def_text_script CompText878A898_unk66
+
+	def_text_script CompText878A898_unk67
+
+	def_text_script CompText878A898_unk68
+
+	def_text_script CompText878A898_unk69
+
+	def_text_script CompText878A898_unk70
+
+	def_text_script CompText878A898_unk71
+
+	def_text_script CompText878A898_unk72
+
+	def_text_script CompText878A898_unk73
+
+	def_text_script CompText878A898_unk74
+
+	def_text_script CompText878A898_unk75
+
+	def_text_script CompText878A898_unk76
+
+	def_text_script CompText878A898_unk77
+
+	def_text_script CompText878A898_unk78
+
+	def_text_script CompText878A898_unk79
+
 	

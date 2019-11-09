@@ -287,4 +287,12 @@ CompText87F0DA0::
 	ts_key_wait 0x0
 	ts_wait_hold 0x0, 0x0
 
+	def_text_script CompText87F0DA0_unk26
+
+	def_text_script CompText87F0DA0_unk27
+
+	def_text_script CompText87F0DA0_unk28
+
+	def_text_script CompText87F0DA0_unk29
+
 	

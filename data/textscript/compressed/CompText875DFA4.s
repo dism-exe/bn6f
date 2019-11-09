@@ -11,4 +11,12 @@ CompText875DFA4::
 
 	def_text_script CompText875DFA4_unk0
 
+	def_text_script CompText875DFA4_unk1
+
+	def_text_script CompText875DFA4_unk2
+
+	def_text_script CompText875DFA4_unk3
+
+	def_text_script CompText875DFA4_unk4
+
 	

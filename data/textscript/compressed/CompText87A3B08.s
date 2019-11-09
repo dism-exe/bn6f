@@ -23,4 +23,12 @@ CompText87A3B08::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText87A3B08_unk1
+
+	def_text_script CompText87A3B08_unk2
+
+	def_text_script CompText87A3B08_unk3
+
+	def_text_script CompText87A3B08_unk4
+
 	

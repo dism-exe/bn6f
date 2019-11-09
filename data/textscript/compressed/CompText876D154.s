@@ -118,4 +118,56 @@ CompText876D154::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876D154_unk14
+
+	def_text_script CompText876D154_unk15
+
+	def_text_script CompText876D154_unk16
+
+	def_text_script CompText876D154_unk17
+
+	def_text_script CompText876D154_unk18
+
+	def_text_script CompText876D154_unk19
+
+	def_text_script CompText876D154_unk20
+
+	def_text_script CompText876D154_unk21
+
+	def_text_script CompText876D154_unk22
+
+	def_text_script CompText876D154_unk23
+
+	def_text_script CompText876D154_unk24
+
+	def_text_script CompText876D154_unk25
+
+	def_text_script CompText876D154_unk26
+
+	def_text_script CompText876D154_unk27
+
+	def_text_script CompText876D154_unk28
+
+	def_text_script CompText876D154_unk29
+
+	def_text_script CompText876D154_unk30
+
+	def_text_script CompText876D154_unk31
+
+	def_text_script CompText876D154_unk32
+
+	def_text_script CompText876D154_unk33
+
+	def_text_script CompText876D154_unk34
+
+	def_text_script CompText876D154_unk35
+
+	def_text_script CompText876D154_unk36
+
+	def_text_script CompText876D154_unk37
+
+	def_text_script CompText876D154_unk38
+
+	def_text_script CompText876D154_unk39
+
 	

@@ -11,4 +11,12 @@ CompText879E3DC::
 
 	def_text_script CompText879E3DC_unk0
 
+	def_text_script CompText879E3DC_unk1
+
+	def_text_script CompText879E3DC_unk2
+
+	def_text_script CompText879E3DC_unk3
+
+	def_text_script CompText879E3DC_unk4
+
 	

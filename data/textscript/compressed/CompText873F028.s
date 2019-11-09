@@ -15,4 +15,12 @@ CompText873F028::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText873F028_unk1
+
+	def_text_script CompText873F028_unk2
+
+	def_text_script CompText873F028_unk3
+
+	def_text_script CompText873F028_unk4
+
 	

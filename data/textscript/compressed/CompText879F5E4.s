@@ -11,4 +11,12 @@ CompText879F5E4::
 
 	def_text_script CompText879F5E4_unk0
 
+	def_text_script CompText879F5E4_unk1
+
+	def_text_script CompText879F5E4_unk2
+
+	def_text_script CompText879F5E4_unk3
+
+	def_text_script CompText879F5E4_unk4
+
 	

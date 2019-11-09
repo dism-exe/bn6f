@@ -225,4 +225,32 @@ CompText876B29C::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876B29C_unk46
+
+	def_text_script CompText876B29C_unk47
+
+	def_text_script CompText876B29C_unk48
+
+	def_text_script CompText876B29C_unk49
+
+	def_text_script CompText876B29C_unk50
+
+	def_text_script CompText876B29C_unk51
+
+	def_text_script CompText876B29C_unk52
+
+	def_text_script CompText876B29C_unk53
+
+	def_text_script CompText876B29C_unk54
+
+	def_text_script CompText876B29C_unk55
+
+	def_text_script CompText876B29C_unk56
+
+	def_text_script CompText876B29C_unk57
+
+	def_text_script CompText876B29C_unk58
+
+	def_text_script CompText876B29C_unk59
+
 	

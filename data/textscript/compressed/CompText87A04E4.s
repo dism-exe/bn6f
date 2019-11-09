@@ -56,4 +56,10 @@ CompText87A04E4::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText87A04E4_unk7
+
+	def_text_script CompText87A04E4_unk8
+
+	def_text_script CompText87A04E4_unk9
+
 	

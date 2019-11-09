@@ -67,4 +67,40 @@ CompText876D48C::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876D48C_unk12
+
+	def_text_script CompText876D48C_unk13
+
+	def_text_script CompText876D48C_unk14
+
+	def_text_script CompText876D48C_unk15
+
+	def_text_script CompText876D48C_unk16
+
+	def_text_script CompText876D48C_unk17
+
+	def_text_script CompText876D48C_unk18
+
+	def_text_script CompText876D48C_unk19
+
+	def_text_script CompText876D48C_unk20
+
+	def_text_script CompText876D48C_unk21
+
+	def_text_script CompText876D48C_unk22
+
+	def_text_script CompText876D48C_unk23
+
+	def_text_script CompText876D48C_unk24
+
+	def_text_script CompText876D48C_unk25
+
+	def_text_script CompText876D48C_unk26
+
+	def_text_script CompText876D48C_unk27
+
+	def_text_script CompText876D48C_unk28
+
+	def_text_script CompText876D48C_unk29
+
 	

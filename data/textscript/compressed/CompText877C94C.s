@@ -352,4 +352,14 @@ CompText877C94C::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText877C94C_unk55
+
+	def_text_script CompText877C94C_unk56
+
+	def_text_script CompText877C94C_unk57
+
+	def_text_script CompText877C94C_unk58
+
+	def_text_script CompText877C94C_unk59
+
 	

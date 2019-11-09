@@ -601,4 +601,392 @@ CompText8793DCC::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8793DCC_unk61
+
+	def_text_script CompText8793DCC_unk62
+
+	def_text_script CompText8793DCC_unk63
+
+	def_text_script CompText8793DCC_unk64
+
+	def_text_script CompText8793DCC_unk65
+
+	def_text_script CompText8793DCC_unk66
+
+	def_text_script CompText8793DCC_unk67
+
+	def_text_script CompText8793DCC_unk68
+
+	def_text_script CompText8793DCC_unk69
+
+	def_text_script CompText8793DCC_unk70
+
+	def_text_script CompText8793DCC_unk71
+
+	def_text_script CompText8793DCC_unk72
+
+	def_text_script CompText8793DCC_unk73
+
+	def_text_script CompText8793DCC_unk74
+
+	def_text_script CompText8793DCC_unk75
+
+	def_text_script CompText8793DCC_unk76
+
+	def_text_script CompText8793DCC_unk77
+
+	def_text_script CompText8793DCC_unk78
+
+	def_text_script CompText8793DCC_unk79
+
+	def_text_script CompText8793DCC_unk80
+
+	def_text_script CompText8793DCC_unk81
+
+	def_text_script CompText8793DCC_unk82
+
+	def_text_script CompText8793DCC_unk83
+
+	def_text_script CompText8793DCC_unk84
+
+	def_text_script CompText8793DCC_unk85
+
+	def_text_script CompText8793DCC_unk86
+
+	def_text_script CompText8793DCC_unk87
+
+	def_text_script CompText8793DCC_unk88
+
+	def_text_script CompText8793DCC_unk89
+
+	def_text_script CompText8793DCC_unk90
+
+	def_text_script CompText8793DCC_unk91
+
+	def_text_script CompText8793DCC_unk92
+
+	def_text_script CompText8793DCC_unk93
+
+	def_text_script CompText8793DCC_unk94
+
+	def_text_script CompText8793DCC_unk95
+
+	def_text_script CompText8793DCC_unk96
+
+	def_text_script CompText8793DCC_unk97
+
+	def_text_script CompText8793DCC_unk98
+
+	def_text_script CompText8793DCC_unk99
+
+	def_text_script CompText8793DCC_unk100
+
+	def_text_script CompText8793DCC_unk101
+
+	def_text_script CompText8793DCC_unk102
+
+	def_text_script CompText8793DCC_unk103
+
+	def_text_script CompText8793DCC_unk104
+
+	def_text_script CompText8793DCC_unk105
+
+	def_text_script CompText8793DCC_unk106
+
+	def_text_script CompText8793DCC_unk107
+
+	def_text_script CompText8793DCC_unk108
+
+	def_text_script CompText8793DCC_unk109
+
+	def_text_script CompText8793DCC_unk110
+
+	def_text_script CompText8793DCC_unk111
+
+	def_text_script CompText8793DCC_unk112
+
+	def_text_script CompText8793DCC_unk113
+
+	def_text_script CompText8793DCC_unk114
+
+	def_text_script CompText8793DCC_unk115
+
+	def_text_script CompText8793DCC_unk116
+
+	def_text_script CompText8793DCC_unk117
+
+	def_text_script CompText8793DCC_unk118
+
+	def_text_script CompText8793DCC_unk119
+
+	def_text_script CompText8793DCC_unk120
+
+	def_text_script CompText8793DCC_unk121
+
+	def_text_script CompText8793DCC_unk122
+
+	def_text_script CompText8793DCC_unk123
+
+	def_text_script CompText8793DCC_unk124
+
+	def_text_script CompText8793DCC_unk125
+
+	def_text_script CompText8793DCC_unk126
+
+	def_text_script CompText8793DCC_unk127
+
+	def_text_script CompText8793DCC_unk128
+
+	def_text_script CompText8793DCC_unk129
+
+	def_text_script CompText8793DCC_unk130
+
+	def_text_script CompText8793DCC_unk131
+
+	def_text_script CompText8793DCC_unk132
+
+	def_text_script CompText8793DCC_unk133
+
+	def_text_script CompText8793DCC_unk134
+
+	def_text_script CompText8793DCC_unk135
+
+	def_text_script CompText8793DCC_unk136
+
+	def_text_script CompText8793DCC_unk137
+
+	def_text_script CompText8793DCC_unk138
+
+	def_text_script CompText8793DCC_unk139
+
+	def_text_script CompText8793DCC_unk140
+
+	def_text_script CompText8793DCC_unk141
+
+	def_text_script CompText8793DCC_unk142
+
+	def_text_script CompText8793DCC_unk143
+
+	def_text_script CompText8793DCC_unk144
+
+	def_text_script CompText8793DCC_unk145
+
+	def_text_script CompText8793DCC_unk146
+
+	def_text_script CompText8793DCC_unk147
+
+	def_text_script CompText8793DCC_unk148
+
+	def_text_script CompText8793DCC_unk149
+
+	def_text_script CompText8793DCC_unk150
+
+	def_text_script CompText8793DCC_unk151
+
+	def_text_script CompText8793DCC_unk152
+
+	def_text_script CompText8793DCC_unk153
+
+	def_text_script CompText8793DCC_unk154
+
+	def_text_script CompText8793DCC_unk155
+
+	def_text_script CompText8793DCC_unk156
+
+	def_text_script CompText8793DCC_unk157
+
+	def_text_script CompText8793DCC_unk158
+
+	def_text_script CompText8793DCC_unk159
+
+	def_text_script CompText8793DCC_unk160
+
+	def_text_script CompText8793DCC_unk161
+
+	def_text_script CompText8793DCC_unk162
+
+	def_text_script CompText8793DCC_unk163
+
+	def_text_script CompText8793DCC_unk164
+
+	def_text_script CompText8793DCC_unk165
+
+	def_text_script CompText8793DCC_unk166
+
+	def_text_script CompText8793DCC_unk167
+
+	def_text_script CompText8793DCC_unk168
+
+	def_text_script CompText8793DCC_unk169
+
+	def_text_script CompText8793DCC_unk170
+
+	def_text_script CompText8793DCC_unk171
+
+	def_text_script CompText8793DCC_unk172
+
+	def_text_script CompText8793DCC_unk173
+
+	def_text_script CompText8793DCC_unk174
+
+	def_text_script CompText8793DCC_unk175
+
+	def_text_script CompText8793DCC_unk176
+
+	def_text_script CompText8793DCC_unk177
+
+	def_text_script CompText8793DCC_unk178
+
+	def_text_script CompText8793DCC_unk179
+
+	def_text_script CompText8793DCC_unk180
+
+	def_text_script CompText8793DCC_unk181
+
+	def_text_script CompText8793DCC_unk182
+
+	def_text_script CompText8793DCC_unk183
+
+	def_text_script CompText8793DCC_unk184
+
+	def_text_script CompText8793DCC_unk185
+
+	def_text_script CompText8793DCC_unk186
+
+	def_text_script CompText8793DCC_unk187
+
+	def_text_script CompText8793DCC_unk188
+
+	def_text_script CompText8793DCC_unk189
+
+	def_text_script CompText8793DCC_unk190
+
+	def_text_script CompText8793DCC_unk191
+
+	def_text_script CompText8793DCC_unk192
+
+	def_text_script CompText8793DCC_unk193
+
+	def_text_script CompText8793DCC_unk194
+
+	def_text_script CompText8793DCC_unk195
+
+	def_text_script CompText8793DCC_unk196
+
+	def_text_script CompText8793DCC_unk197
+
+	def_text_script CompText8793DCC_unk198
+
+	def_text_script CompText8793DCC_unk199
+
+	def_text_script CompText8793DCC_unk200
+
+	def_text_script CompText8793DCC_unk201
+
+	def_text_script CompText8793DCC_unk202
+
+	def_text_script CompText8793DCC_unk203
+
+	def_text_script CompText8793DCC_unk204
+
+	def_text_script CompText8793DCC_unk205
+
+	def_text_script CompText8793DCC_unk206
+
+	def_text_script CompText8793DCC_unk207
+
+	def_text_script CompText8793DCC_unk208
+
+	def_text_script CompText8793DCC_unk209
+
+	def_text_script CompText8793DCC_unk210
+
+	def_text_script CompText8793DCC_unk211
+
+	def_text_script CompText8793DCC_unk212
+
+	def_text_script CompText8793DCC_unk213
+
+	def_text_script CompText8793DCC_unk214
+
+	def_text_script CompText8793DCC_unk215
+
+	def_text_script CompText8793DCC_unk216
+
+	def_text_script CompText8793DCC_unk217
+
+	def_text_script CompText8793DCC_unk218
+
+	def_text_script CompText8793DCC_unk219
+
+	def_text_script CompText8793DCC_unk220
+
+	def_text_script CompText8793DCC_unk221
+
+	def_text_script CompText8793DCC_unk222
+
+	def_text_script CompText8793DCC_unk223
+
+	def_text_script CompText8793DCC_unk224
+
+	def_text_script CompText8793DCC_unk225
+
+	def_text_script CompText8793DCC_unk226
+
+	def_text_script CompText8793DCC_unk227
+
+	def_text_script CompText8793DCC_unk228
+
+	def_text_script CompText8793DCC_unk229
+
+	def_text_script CompText8793DCC_unk230
+
+	def_text_script CompText8793DCC_unk231
+
+	def_text_script CompText8793DCC_unk232
+
+	def_text_script CompText8793DCC_unk233
+
+	def_text_script CompText8793DCC_unk234
+
+	def_text_script CompText8793DCC_unk235
+
+	def_text_script CompText8793DCC_unk236
+
+	def_text_script CompText8793DCC_unk237
+
+	def_text_script CompText8793DCC_unk238
+
+	def_text_script CompText8793DCC_unk239
+
+	def_text_script CompText8793DCC_unk240
+
+	def_text_script CompText8793DCC_unk241
+
+	def_text_script CompText8793DCC_unk242
+
+	def_text_script CompText8793DCC_unk243
+
+	def_text_script CompText8793DCC_unk244
+
+	def_text_script CompText8793DCC_unk245
+
+	def_text_script CompText8793DCC_unk246
+
+	def_text_script CompText8793DCC_unk247
+
+	def_text_script CompText8793DCC_unk248
+
+	def_text_script CompText8793DCC_unk249
+
+	def_text_script CompText8793DCC_unk250
+
+	def_text_script CompText8793DCC_unk251
+
+	def_text_script CompText8793DCC_unk252
+
+	def_text_script CompText8793DCC_unk253
+
+	def_text_script CompText8793DCC_unk254
+
 	

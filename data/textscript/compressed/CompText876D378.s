@@ -73,4 +73,32 @@ CompText876D378::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876D378_unk7
+
+	def_text_script CompText876D378_unk8
+
+	def_text_script CompText876D378_unk9
+
+	def_text_script CompText876D378_unk10
+
+	def_text_script CompText876D378_unk11
+
+	def_text_script CompText876D378_unk12
+
+	def_text_script CompText876D378_unk13
+
+	def_text_script CompText876D378_unk14
+
+	def_text_script CompText876D378_unk15
+
+	def_text_script CompText876D378_unk16
+
+	def_text_script CompText876D378_unk17
+
+	def_text_script CompText876D378_unk18
+
+	def_text_script CompText876D378_unk19
+
+	def_text_script CompText876D378_unk20
+
 	

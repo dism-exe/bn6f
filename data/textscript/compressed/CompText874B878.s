@@ -400,4 +400,10 @@ CompText874B878::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText874B878_unk97
+
+	def_text_script CompText874B878_unk98
+
+	def_text_script CompText874B878_unk99
+
 	

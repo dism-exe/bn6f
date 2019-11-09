@@ -56,4 +56,22 @@ CompText876E874::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876E874_unk11
+
+	def_text_script CompText876E874_unk12
+
+	def_text_script CompText876E874_unk13
+
+	def_text_script CompText876E874_unk14
+
+	def_text_script CompText876E874_unk15
+
+	def_text_script CompText876E874_unk16
+
+	def_text_script CompText876E874_unk17
+
+	def_text_script CompText876E874_unk18
+
+	def_text_script CompText876E874_unk19
+
 	

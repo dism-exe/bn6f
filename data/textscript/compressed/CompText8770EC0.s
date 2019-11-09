@@ -215,4 +215,24 @@ CompText8770EC0::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8770EC0_unk14
+
+	def_text_script CompText8770EC0_unk15
+
+	def_text_script CompText8770EC0_unk16
+
+	def_text_script CompText8770EC0_unk17
+
+	def_text_script CompText8770EC0_unk18
+
+	def_text_script CompText8770EC0_unk19
+
+	def_text_script CompText8770EC0_unk20
+
+	def_text_script CompText8770EC0_unk21
+
+	def_text_script CompText8770EC0_unk22
+
+	def_text_script CompText8770EC0_unk23
+
 	

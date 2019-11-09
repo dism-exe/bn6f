@@ -310,4 +310,20 @@ CompText877DAB4::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText877DAB4_unk26
+
+	def_text_script CompText877DAB4_unk27
+
+	def_text_script CompText877DAB4_unk28
+
+	def_text_script CompText877DAB4_unk29
+
+	def_text_script CompText877DAB4_unk30
+
+	def_text_script CompText877DAB4_unk31
+
+	def_text_script CompText877DAB4_unk32
+
+	def_text_script CompText877DAB4_unk33
+
 	

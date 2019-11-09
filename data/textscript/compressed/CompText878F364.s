@@ -414,4 +414,12 @@ CompText878F364::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText878F364_unk36
+
+	def_text_script CompText878F364_unk37
+
+	def_text_script CompText878F364_unk38
+
+	def_text_script CompText878F364_unk39
+
 	

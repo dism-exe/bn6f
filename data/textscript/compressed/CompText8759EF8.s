@@ -201,4 +201,18 @@ CompText8759EF8::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText8759EF8_unk14
+
+	def_text_script CompText8759EF8_unk15
+
+	def_text_script CompText8759EF8_unk16
+
+	def_text_script CompText8759EF8_unk17
+
+	def_text_script CompText8759EF8_unk18
+
+	def_text_script CompText8759EF8_unk19
+
+	def_text_script CompText8759EF8_unk20
+
 	

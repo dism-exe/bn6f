@@ -39,4 +39,60 @@ CompText8795D58::
 	ts_flag_set 0x15, 0x17
 	ts_end
 
+	def_text_script CompText8795D58_unk2
+
+	def_text_script CompText8795D58_unk3
+
+	def_text_script CompText8795D58_unk4
+
+	def_text_script CompText8795D58_unk5
+
+	def_text_script CompText8795D58_unk6
+
+	def_text_script CompText8795D58_unk7
+
+	def_text_script CompText8795D58_unk8
+
+	def_text_script CompText8795D58_unk9
+
+	def_text_script CompText8795D58_unk10
+
+	def_text_script CompText8795D58_unk11
+
+	def_text_script CompText8795D58_unk12
+
+	def_text_script CompText8795D58_unk13
+
+	def_text_script CompText8795D58_unk14
+
+	def_text_script CompText8795D58_unk15
+
+	def_text_script CompText8795D58_unk16
+
+	def_text_script CompText8795D58_unk17
+
+	def_text_script CompText8795D58_unk18
+
+	def_text_script CompText8795D58_unk19
+
+	def_text_script CompText8795D58_unk20
+
+	def_text_script CompText8795D58_unk21
+
+	def_text_script CompText8795D58_unk22
+
+	def_text_script CompText8795D58_unk23
+
+	def_text_script CompText8795D58_unk24
+
+	def_text_script CompText8795D58_unk25
+
+	def_text_script CompText8795D58_unk26
+
+	def_text_script CompText8795D58_unk27
+
+	def_text_script CompText8795D58_unk28
+
+	def_text_script CompText8795D58_unk29
+
 	

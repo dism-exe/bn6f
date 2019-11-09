@@ -212,4 +212,20 @@ CompText876D7E0::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText876D7E0_unk22
+
+	def_text_script CompText876D7E0_unk23
+
+	def_text_script CompText876D7E0_unk24
+
+	def_text_script CompText876D7E0_unk25
+
+	def_text_script CompText876D7E0_unk26
+
+	def_text_script CompText876D7E0_unk27
+
+	def_text_script CompText876D7E0_unk28
+
+	def_text_script CompText876D7E0_unk29
+
 	

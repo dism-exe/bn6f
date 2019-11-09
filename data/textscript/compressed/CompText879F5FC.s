@@ -27,4 +27,22 @@ CompText879F5FC::
 	ts_key_wait 0x0
 	ts_end
 
+	def_text_script CompText879F5FC_unk1
+
+	def_text_script CompText879F5FC_unk2
+
+	def_text_script CompText879F5FC_unk3
+
+	def_text_script CompText879F5FC_unk4
+
+	def_text_script CompText879F5FC_unk5
+
+	def_text_script CompText879F5FC_unk6
+
+	def_text_script CompText879F5FC_unk7
+
+	def_text_script CompText879F5FC_unk8
+
+	def_text_script CompText879F5FC_unk9
+
 	
