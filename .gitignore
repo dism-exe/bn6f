@@ -11,6 +11,9 @@
 *.sg?
 *.SNA
 
+# backup directory in case of text archive build falure
+data/textscript/compressed/backup_lz/
+
 # atom-specific settings
 .atom*
 *.json
