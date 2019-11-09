@@ -342,22 +342,42 @@
 	.macro ts_space_px p0:req
 	.byte 0xEC, 0x1, \p0
 	.endm
-	.macro ts_select p0:req, p1:req, p2=NULL, p3=NULL, p4=NULL, p5=NULL
-	.byte 0xED, \p0, \p1
-	.if \p2 != NULL
-	.byte \p2
-	.endif
-	.if \p3 != NULL
-	.byte \p3
-	.endif
-	.if \p4 != NULL
-	.byte \p4
-	.endif
-    .if \p5 != NULL
-    .byte \p5
-    .endif
+
+    // TODO: update this to be similar to ts_jump_random, since it's dynamic
+	.macro ts_select p0:req, p1:req, p2=NULL, p3=NULL, p4=NULL, p5=NULL, p6=NULL, p7=NULL, p8=NULL
+        .byte 0xED, \p0, \p1
+        
+        .if \p2 != NULL
+        .byte \p2
+        .endif
+        
+        .if \p3 != NULL
+        .byte \p3
+        .endif
+        
+        .if \p4 != NULL
+        .byte \p4
+        .endif
+
+        .if \p5 != NULL
+        .byte \p5
+        .endif
+
+        
+        .if \p6 != NULL
+        .byte \p6
+        .endif
+        
+        .if \p7 != NULL
+        .byte \p7
+        .endif
+        
+        .if \p8 != NULL
+        .byte \p8
+        .endif
 	.endm
-	.macro ts_wait p0:req, p1:req
+	
+    .macro ts_wait p0:req, p1:req
 	.byte 0xEE, 0x0, \p0, \p1
 	.endm
 	.macro ts_wait_skip p0:req, p1:req
@@ -530,21 +550,69 @@
 	.macro ts_jump p0:req
 	.byte 0xF0, 0x0, \p0
 	.endm
-	
-    .macro ts_jump_random p0:req, p1=NULL, p2=NULL, p3=NULL, p4=NULL
-	.byte 0xF0, \p0
-	.if \p1 != NULL
-	.byte \p1
-	.endif
-	.if \p2 != NULL
-	.byte \p2
-	.endif
-	.if \p3 != NULL
-	.byte \p3
-	.endif
-	.if \p4 != NULL
-	.byte \p4
-	.endif
+
+    // TODO: update with appropriate macro -- this is just for testing with dumping
+    .macro ts_jump_random p0:req, p1=NULL, p2=NULL, p3=NULL, p4=NULL, p5=NULL, p6=NULL, p7=NULL, p8=NULL, p9=NULL, p10=NULL, p11=NULL, p12=NULL, p13=NULL, p14=NULL, p15=NULL
+        .byte 0xF0, \p0
+        .if \p1 != NULL
+        .byte \p1
+        .endif
+
+        .if \p2 != NULL
+        .byte \p2
+        .endif
+        
+        .if \p3 != NULL
+        .byte \p3
+        .endif
+        
+        .if \p4 != NULL
+        .byte \p4
+        .endif
+        
+        .if \p5 != NULL
+        .byte \p5
+        .endif
+        
+        .if \p6 != NULL
+        .byte \p6
+        .endif
+        
+        .if \p7 != NULL
+        .byte \p7
+        .endif
+        
+        .if \p8 != NULL
+        .byte \p8
+        .endif
+        
+        .if \p9 != NULL
+        .byte \p9
+        .endif
+        
+        .if \p10 != NULL
+        .byte \p10
+        .endif
+        
+        .if \p11 != NULL
+        .byte \p11
+        .endif
+        
+        .if \p12 != NULL
+        .byte \p12
+        .endif
+        
+        .if \p13 != NULL
+        .byte \p13
+        .endif
+        
+        .if \p14 != NULL
+        .byte \p14
+        .endif
+        
+        .if \p15 != NULL
+        .byte \p15
+        .endif
 	.endm
 	
     .macro ts_text_speed p0:req
