@@ -552,7 +552,7 @@
 	.endm
 
     // TODO: update with appropriate macro -- this is just for testing with dumping
-    .macro ts_jump_random p0:req, p1=NULL, p2=NULL, p3=NULL, p4=NULL, p5=NULL, p6=NULL, p7=NULL, p8=NULL, p9=NULL, p10=NULL, p11=NULL, p12=NULL, p13=NULL, p14=NULL, p15=NULL
+    .macro ts_jump_random p0:req, p1=NULL, p2=NULL, p3=NULL, p4=NULL, p5=NULL, p6=NULL, p7=NULL, p8=NULL, p9=NULL, p10=NULL, p11=NULL, p12=NULL, p13=NULL, p14=NULL, p15=NULL, p16=NULL
         .byte 0xF0, \p0
         .if \p1 != NULL
         .byte \p1
@@ -612,6 +612,10 @@
         
         .if \p15 != NULL
         .byte \p15
+        .endif
+
+        .if \p16 != NULL
+        .byte \p16
         .endif
 	.endm
 	
