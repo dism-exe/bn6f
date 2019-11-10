@@ -280,7 +280,7 @@ CompText877E620::
 	.string "question 5!!"
 	ts_key_wait 0x0
 	ts_clear_msg
-	.string "1+3 g4+2-3=?"
+	.string "1+3[cross]4+2-3=?"
 	ts_key_wait 0x0
 	ts_clear_msg
 	ts_mugshot_hide

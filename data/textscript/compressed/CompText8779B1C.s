@@ -51,7 +51,7 @@ CompText8779B1C::
 	.string "their beauty,but\n"
 	.string "also their scent!"
 	ts_key_wait 0x0
-	ts_end
+	.string "$!"
 
 	def_text_script CompText8779B1C_unk3
 	ts_mugshot_show 0xD
@@ -198,5 +198,65 @@ CompText8779B1C::
 	.string "I'm scared..."
 	ts_key_wait 0x0
 	ts_end
+
+	def_text_script CompText8779B1C_unk20
+
+	def_text_script CompText8779B1C_unk21
+
+	def_text_script CompText8779B1C_unk22
+
+	def_text_script CompText8779B1C_unk23
+
+	def_text_script CompText8779B1C_unk24
+
+	def_text_script CompText8779B1C_unk25
+
+	def_text_script CompText8779B1C_unk26
+
+	def_text_script CompText8779B1C_unk27
+
+	def_text_script CompText8779B1C_unk28
+
+	def_text_script CompText8779B1C_unk29
+
+	def_text_script CompText8779B1C_unk30
+
+	def_text_script CompText8779B1C_unk31
+
+	def_text_script CompText8779B1C_unk32
+
+	def_text_script CompText8779B1C_unk33
+
+	def_text_script CompText8779B1C_unk34
+
+	def_text_script CompText8779B1C_unk35
+
+	def_text_script CompText8779B1C_unk36
+
+	def_text_script CompText8779B1C_unk37
+
+	def_text_script CompText8779B1C_unk38
+
+	def_text_script CompText8779B1C_unk39
+
+	def_text_script CompText8779B1C_unk40
+
+	def_text_script CompText8779B1C_unk41
+
+	def_text_script CompText8779B1C_unk42
+
+	def_text_script CompText8779B1C_unk43
+
+	def_text_script CompText8779B1C_unk44
+
+	def_text_script CompText8779B1C_unk45
+
+	def_text_script CompText8779B1C_unk46
+
+	def_text_script CompText8779B1C_unk47
+
+	def_text_script CompText8779B1C_unk48
+
+	def_text_script CompText8779B1C_unk49
 
 	
