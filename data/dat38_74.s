@@ -1,5 +1,5 @@
-comp_86D55C8::
-	.incbin "data/scripts/comp_86D55C8.lz"
+CompText86D55C8::
+	.incbin "data/textscript/compressed/CompText86D55C8.s.lz"
 
 // 6D5708
 TextScriptNaviCustDialog:: .word 0x1600050, 0x2A40192, 0x34C034C, 0x34C034C, 0x34C034C

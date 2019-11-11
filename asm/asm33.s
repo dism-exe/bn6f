@@ -899,19 +899,19 @@ loc_8123888:
 off_81238D8: .word eTextScript201C220
 off_81238DC: .word eDecompBuffer2013A00
 off_81238E0: .word off_81238E4
-off_81238E4: .word comp_86CE724
-	.word comp_86CE77C
-	.word comp_86CE77C
-	.word comp_86CE77C
-	.word comp_86CE77C
-	.word comp_86CE77C
-	.word comp_86CE77C
-	.word comp_86CE77C
-	.word comp_86CE77C
-	.word comp_86CE77C
-	.word comp_86CE77C
-	.word comp_86CE724
-	.word comp_86CE77C
+off_81238E4: .word CompText86CE724
+	.word CompText86CE77C
+	.word CompText86CE77C
+	.word CompText86CE77C
+	.word CompText86CE77C
+	.word CompText86CE77C
+	.word CompText86CE77C
+	.word CompText86CE77C
+	.word CompText86CE77C
+	.word CompText86CE77C
+	.word CompText86CE77C
+	.word CompText86CE724
+	.word CompText86CE77C
 off_8123918: .word off_812391C
 off_812391C: .word dword_86C9108
 	.word 0x2
@@ -3791,13 +3791,13 @@ off_8125384: .word eTextScript201BF20
 	.word comp_86C6FD0 + 1<<31
 	.word unk_2026C00
 	.word eDecompBuffer2013A00
-	.word comp_86D6F30 + 1<<31
+	.word CompText86D6F30 + 1<<31
 	.word unk_2028000
 	.word eDecompBuffer2013A00
 	.word dword_86C9BB4
 	.word byte_30016B0
 	.word 0x20
-	.word comp_86D6EE4 + 1<<31
+	.word CompText86D6EE4 + 1<<31
 	.word unk_201CC20
 	.word eDecompBuffer2013A00
 	.word 0x0
@@ -7285,7 +7285,7 @@ off_8127120: .word CompTextScript86D7578
 	.word CompTextScriptNaviCustAndFolders86D82C4
 	.word CompTextScript86D860C
 	.word CompTextScript86D7578
-	.word byte_86D894C
+	.word CompText86D894C
 off_8127154: .word eTextScript201BF20
 off_8127158: .word eDecompBuffer2013A00
 off_812715C: .word off_8127160
@@ -14622,19 +14622,19 @@ sub_812AFC8:
 	bl sub_812B430
 	pop {r4-r7,pc}
 off_812AFE0: .word off_812AFE4
-off_812AFE4: .word comp_86DA1B8
-	.word comp_86DA1B8
-	.word comp_86DA1B8
-	.word comp_86DA1B8
-	.word comp_86DA1B8
-	.word comp_86DA1B8
-	.word comp_86DA1B8
-	.word comp_86DA1B8
-	.word comp_86DA1B8
-	.word comp_86DA1B8
-	.word comp_86DA1B8
-	.word comp_86DA1B8
-	.word comp_86DA1B8
+off_812AFE4: .word CompText86DA1B8
+	.word CompText86DA1B8
+	.word CompText86DA1B8
+	.word CompText86DA1B8
+	.word CompText86DA1B8
+	.word CompText86DA1B8
+	.word CompText86DA1B8
+	.word CompText86DA1B8
+	.word CompText86DA1B8
+	.word CompText86DA1B8
+	.word CompText86DA1B8
+	.word CompText86DA1B8
+	.word CompText86DA1B8
 off_812B018: .word eTextScript201BA20
 off_812B01C: .word eDecompBuffer2013A00
 off_812B020: .word off_812B024

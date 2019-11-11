@@ -9521,7 +9521,7 @@ off_802B08C: .word unk_2035000
 	.word comp_86DDB7C + 1<<31
 	.word 0x6016E80
 	.word decomp_2032000
-	.word comp_86D6974 + 1<<31
+	.word CompText86D6974 + 1<<31
 	.word eTextScript2030860
 	.word decomp_2032000
 	.word 0x0

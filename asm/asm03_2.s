@@ -7098,7 +7098,7 @@ initRefs_804A6E4: .word comp_86C8054 + 1<<31
 	.word comp_86C980C + 1<<31
 	.word 0x6006B80
 	.word 0x2013A00
-	.word comp_86DA1B8 + 1<<31
+	.word CompText86DA1B8 + 1<<31
 	.word 0x2028A20
 	.word 0x2013A00
 	.word comp_86C7980 + 1<<31
