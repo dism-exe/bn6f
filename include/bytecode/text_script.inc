@@ -998,21 +998,26 @@
 	.endm
 
 	/* secondary interpreter commands */
-	.macro ts_print_mod_buffer p0:req, p1:req
+	
+    .macro ts_print_mod_buffer p0:req, p1:req
 	.byte 0xFA, 0x02, \p0, \p1
 	.endm
-	// _s because this name conflicts with ts_print_link_buffer
+	
+    // _s because this name conflicts with ts_print_link_buffer
 	.macro ts_print_link_buffer_s p0:req
 	.byte 0xFA, 0x01, \p0
 	.endm
-	/*
+	
+    /*
 	.macro ts_space_px p0:req
 	.byte 0xEC, 0x01, \p0
 	.endm
-	.macro ts_check_game_version p0:req, p1:req
+    */
+
+    // naming conflict, adding _s
+	.macro ts_check_game_version_s p0:req, p1:req
 	.byte 0xEF, \p0, \p1
 	.endm
-	*/
 
 
 	.endif // TEXT_SCRIPT_INC

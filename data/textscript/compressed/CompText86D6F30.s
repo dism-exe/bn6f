@@ -461,7 +461,7 @@ CompText86D6F30::
 	ts_end
 
 	def_text_script CompText86D6F30_unk125
-	ts_check_game_version 0xFF, 0x7E
+	ts_check_game_version_s 0xFF, 0x7E
 	.string "VDoll   F\n"
 	.string "VDoll   F\n"
 	.string "Bass    F\n"
