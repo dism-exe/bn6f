@@ -4245,7 +4245,19 @@ byte_86EA925:: .byte 0xFE, 0x0, 0x0, 0xF8, 0xF, 0x0, 0x0
 dword_86EA92C:: .word 0x7AA50000, 0x550475E6, 0xDBE3482, 0xCD8113C, 0x79E0C8E
 	.word 0x2212071C, 0x2929194A, 0x14841CC6
 
-	.include "data/textscript/text_chip_names_86ea94c.s"
+
+text_archives_86ea94c:
+	.include "data/textscript/TextScriptChipNames0.s"
+	.include "data/textscript/TextScriptChipNames1.s"
+	.include "data/textscript/TextScriptChipDescriptions0.s"
+	.include "data/textscript/TextScriptChipDesc1.s"
+	.include "data/textscript/TextScriptChipDesc86EF4D4.s"
+	.include "data/textscript/TextScript86EF71C.s"
+	.include "data/textscript/TextScriptBattleRunDialog.s"
+	.include "data/textscript/TextScript86F0300.s"
+	.include "data/textscript/TextScript86F0374.s"
+	.include "data/textscript/TextScriptVirusChipNames.s"
+	.include "data/textscript/TextScriptNaviChipNames.s"
 
 dword_86F1340:: .word 0x0
 	.word 0x66666000, 0x68886600, 0x68888663, 0x67767766, 0x67766776
