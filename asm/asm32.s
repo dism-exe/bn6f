@@ -32137,10 +32137,10 @@ off_811FC84: .word 0x886D3CF4
 	.word 0xFFFFFFFF
 off_811FC8C: .word off_811FC90
 off_811FC90: .word 0x886D3CF4
-off_811FC94: .word dword_86DAC40
+off_811FC94: .word byte_86DAC40
 	.word 0xFFFFFFFF
 off_811FC9C: .word off_811FCA0
-off_811FCA0: .word dword_86DAC40
+off_811FCA0: .word byte_86DAC40
 	thumb_func_end sub_811FB84
 
 	thumb_func_start sub_811FCA4
