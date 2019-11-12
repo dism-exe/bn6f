@@ -1385,7 +1385,7 @@ void reqBBS_copyTextDataToRAM()
     v1 = (&off_813F378 + 2 * *(v0 + 4));
     SWI_LZ77UnCompReadNormalWrite8bit(*v1, &unk_2025A00);
     SWI_LZ77UnCompReadNormalWrite8bit(v1[1], &unk_2029A00);
-    SWI_LZ77UnCompReadNormalWrite8bit(byte_87EFE14, &unk_2033A00);
+    SWI_LZ77UnCompReadNormalWrite8bit(CompText87EFE14, &unk_2033A00);
 }
 
 

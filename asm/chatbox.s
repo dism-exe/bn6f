@@ -8425,7 +8425,7 @@ off_8044620: .word off_8044634
 	.word off_8044684
 off_8044634: .word CompText87643E4
 	.word CompText8764FAC
-	.word byte_87658F0
+	.word CompText87658F0
 	.word CompText87666B4
 	.word CompText8766BFC
 off_8044648: .word CompText87680AC
@@ -8450,7 +8450,7 @@ off_8044684: .word EmptyCompText87694B4
 	.word CompText8769DE8
 off_8044698: .word CompText8755C18
 	.word CompText8756124
-	.word byte_87565E8
+	.word CompText87565E8
 	.word CompText8756AA4
 	.word CompText8756C9C
 off_80446AC: .word CompText873F908
@@ -8497,7 +8497,7 @@ off_804474C: .word CompText876E538
 	.word CompText876E698
 	.word CompText876E73C
 	.word CompText876E874
-	.word dword_876E900
+	.word CompText876E900
 off_8044760: .word CompText876EE64
 	.word CompText876F2EC
 	.word CompText876F7E4
@@ -8543,22 +8543,22 @@ off_8044800: .word off_8044814
 	.word off_804483C
 	.word off_8044850
 	.word off_8044864
-off_8044814: .word byte_8772974
-	.word byte_8773068
-	.word byte_8773730
-	.word byte_877416C
-	.word byte_8774530
-off_8044828: .word byte_8774F48
-	.word byte_8775208
-	.word byte_877567C
-	.word byte_8775B60
-	.word byte_8775E00
-off_804483C: .word byte_8776A20
-	.word byte_8776C50
-	.word byte_8777078
-	.word byte_8777428
-	.word byte_877767C
-off_8044850: .word byte_8778400
+off_8044814: .word CompText8772974
+	.word CompText8773068
+	.word CompText8773730
+	.word CompText877416C
+	.word CompText8774530
+off_8044828: .word CompText8774F48
+	.word CompText8775208
+	.word CompText877567C
+	.word CompText8775B60
+	.word CompText8775E00
+off_804483C: .word CompText8776A20
+	.word CompText8776C50
+	.word CompText8777078
+	.word CompText8777428
+	.word CompText877767C
+off_8044850: .word CompText8778400
 	.word CompText87786EC
 	.word CompText8778810
 	.word CompText87789F4
@@ -8572,7 +8572,7 @@ off_8044878: .word CompText8759EF8
 	.word CompText875A2C4
 	.word CompText875A918
 	.word CompText875B064
-	.word byte_875B30C
+	.word CompText875B30C
 off_804488C: .word CompText87428D4
 	.word CompText8742D64
 	.word TextScriptLevBus87433BC
@@ -8595,7 +8595,7 @@ off_80448C4: .word CompText877C0FC
 off_80448D8: .word CompText877CD94
 	.word CompText877CD94
 	.word CompText877D7D4
-	.word byte_877D8CC
+	.word CompText877D8CC
 	.word CompText877DAB4
 off_80448EC: .word CompText877DF6C
 	.word CompText877DF6C
@@ -8607,23 +8607,23 @@ off_8044900: .word EmptyCompText877E554
 	.word EmptyCompText877E560
 	.word CompText877E56C
 	.word CompText877E620
-off_8044914: .word byte_875B4B0
-	.word byte_875B934
-	.word byte_875BCB4
-	.word byte_875BE5C
-	.word byte_875BF80
-off_8044928: .word byte_8743F6C
-	.word byte_8743F6C
-	.word byte_87444C8
-	.word byte_8744B38
+off_8044914: .word CompText875B4B0
+	.word CompText875B934
+	.word CompText875BCB4
+	.word CompText875BE5C
+	.word CompText875BF80
+off_8044928: .word CompText8743F6C
+	.word CompText8743F6C
+	.word CompText87444C8
+	.word CompText8744B38
 off_8044938: .word off_8044948
 	.word off_804495C
 	.word off_8044970
 	.word off_8044984
-off_8044948: .word byte_877EDD8
-	.word byte_877EDD8
-	.word byte_877EDD8
-	.word byte_877F460
+off_8044948: .word CompText877EDD8
+	.word CompText877EDD8
+	.word CompText877EDD8
+	.word CompText877F460
 	.word CompText877F594
 off_804495C: .word CompText8780104
 	.word CompText8780104
@@ -8641,7 +8641,7 @@ off_8044984: .word CompText8781784
 	.word CompText8781B18
 	.word CompText8781CB4
 off_8044998: .word CompText875BFD8
-	.word byte_875C22C
+	.word CompText875C22C
 	.word CompText875C4B8
 	.word CompText875C83C
 off_80449A8: .word CompText8745100
@@ -8709,7 +8709,7 @@ off_8044A8C: .word CompText87979CC
 off_8044AA0: .word CompText875D780
 	.word CompText875D800
 off_8044AA8: .word CompText87461A0
-	.word byte_87462D0
+	.word CompText87462D0
 	.word CompText87463F4
 	.word CompText87464AC
 off_8044AB8: .word off_8044AC4
@@ -8865,7 +8865,7 @@ off_8044D00: .word CompText875DF2C
 	.word 0x0
 	.word CompText875DF50
 	.word CompText875DF78
-off_8044D1C: .word byte_87477F4
+off_8044D1C: .word CompText87477F4
 	.word CompText8747D30
 	.word CompText8748650
 	.word CompText8748F44
@@ -9134,11 +9134,11 @@ off_804513C: .word CompText8789780
 	.word CompText878A004
 	.word CompText878A4E0
 	.word CompText878A898
-off_8045150: .word byte_878B46C
-	.word byte_878B690
-	.word byte_878BC64
-	.word byte_878C214
-	.word byte_878C5C8
+off_8045150: .word CompText878B46C
+	.word CompText878B690
+	.word CompText878BC64
+	.word CompText878C214
+	.word CompText878C5C8
 off_8045164: .word CompText878CE18
 	.word CompText878D038
 	.word CompText878D544
@@ -9220,7 +9220,7 @@ off_8045298: .word CompText8795A38
 	.word CompText8795A38
 	.word CompText8795A44
 	.word CompText8795D58
-	.word byte_8795E14
+	.word CompText8795E14
 off_80452AC: .word CompText8796494
 	.word CompText8796494
 	.word CompText87964A0
@@ -9231,15 +9231,15 @@ off_80452C0: .word CompText8796940
 	.word CompText879694C
 	.word CompText87969DC
 	.word CompText8796AE4
-off_80452D4: .word byte_87A3B84
-	.word byte_87A3B84
-	.word byte_87A3B84
-	.word byte_87A3B84
-	.word byte_87A3B84
+off_80452D4: .word CompText87A3B84
+	.word CompText87A3B84
+	.word CompText87A3B84
+	.word CompText87A3B84
+	.word CompText87A3B84
 off_80452E8: .word CompText8761698
 	.word CompText87618C0
 	.word CompText876210C
-	.word byte_87A3B84
+	.word CompText87A3B84
 off_80452F8: .word CompText8754620
 	.word CompText8754620
 	.word CompText8754674
@@ -9247,24 +9247,24 @@ off_80452F8: .word CompText8754620
 off_8045308: .word off_8045314
 	.word off_8045328
 	.word off_804533C
-off_8045314: .word byte_87A3B84
-	.word byte_87A3B84
-	.word byte_87A3B84
-	.word byte_87A3B84
-	.word byte_87A3B84
+off_8045314: .word CompText87A3B84
+	.word CompText87A3B84
+	.word CompText87A3B84
+	.word CompText87A3B84
+	.word CompText87A3B84
 off_8045328: .word CompText8797208
 	.word CompText8797208
 	.word CompText8797208
 	.word CompText8797214
 	.word CompText8797220
-off_804533C: .word byte_87A3B84
-	.word byte_87A3B84
-	.word byte_87A3B84
-	.word byte_87A3B84
-	.word byte_87A3B84
-off_8045350: .word byte_87A3B84
+off_804533C: .word CompText87A3B84
+	.word CompText87A3B84
+	.word CompText87A3B84
+	.word CompText87A3B84
+	.word CompText87A3B84
+off_8045350: .word CompText87A3B84
 	.word CompText8762434
-	.word byte_87A3B84
+	.word CompText87A3B84
 off_804535C: .word CompText87557A8
 	.word CompText87557A8
 	.word CompText87557A8

@@ -2478,7 +2478,7 @@ reqBBS_copyTextDataToRAM:
 	ldr r1, off_813F994 // =unk_2029A00 
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	// src
-	ldr r0, off_813F998 // =byte_87EFE14 
+	ldr r0, off_813F998 // =CompText87EFE14 
 	// dest
 	ldr r1, off_813F99C // =unk_2033A00 
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
@@ -2486,7 +2486,7 @@ reqBBS_copyTextDataToRAM:
 off_813F98C: .word off_813F378
 off_813F990: .word unk_2025A00
 off_813F994: .word unk_2029A00
-off_813F998: .word byte_87EFE14
+off_813F998: .word CompText87EFE14
 off_813F99C: .word unk_2033A00
 	thumb_func_end reqBBS_copyTextDataToRAM
 
