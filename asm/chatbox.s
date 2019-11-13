@@ -4564,13 +4564,13 @@ loc_8042014:
 	mov r0, #1
 	pop {pc}
 off_8042060: .word off_8042064
-off_8042064: .word byte_873D9FC
+off_8042064: .word TextScript873D9FC
 	.word TextScriptChipNames0
 	.word TextScriptChipNames1
 	.word TextScript86EF71C
 	.word TextScriptFolderNames
-	.word byte_873EA50
-	.word byte_873EA50
+	.word TextScript873EA50
+	.word TextScript873EA50
 	.word TextScriptChipNames0
 	.word TextScriptNaviNames0
 	.word reqBBS_requestNames_textualData

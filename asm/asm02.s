@@ -437,14 +437,10 @@ off_8021D78: .word byte_20007D6
 off_8021D7C: .word byte_200083A
 off_8021D80: .word TextScriptJap8021D88
 off_8021D84: .word byte_8021D8A
-TextScriptJap8021D88:
-	text_script_start TextScriptJap8021D88
-	text_script_rel_pointers 0
-	text_script 0, scr_0
-byte_8021D8A:
-	.string "ザザザザ$"
-	.balign 4, 0
-	.word 0x0
+
+text_8021D88:
+	.include "data/textscript/TextScriptJap8021D88.s"
+
 off_8021D94: .word unk_203A0A0
 off_8021D98: .word 0x2E0
 off_8021D9C: .word 0x170

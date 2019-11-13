@@ -1333,7 +1333,7 @@ void __fastcall __noreturn sub_804760E(int a1, int a2)
     int v2; // [sp+0h] [bp-18h]
     int v3; // [sp+4h] [bp-14h]
 
-    renderTextGfx_8045F8C(byte_873D9FC, a2, &eDecompBuffer2013A00[512 * a1], (a1 << 10) + 100697088);
+    renderTextGfx_8045F8C(TextScript873D9FC, a2, &eDecompBuffer2013A00[512 * a1], (a1 << 10) + 100697088);
     renderTextGfx_8045F8C(*(v3 + 36), 16, &unk_2013C00 + v2, v2 + 100697600);
 }
 
@@ -1382,7 +1382,7 @@ void __fastcall __noreturn sub_8047708(int a1, unsigned int a2)
     int v2; // [sp+0h] [bp-18h]
     int v3; // [sp+4h] [bp-14h]
 
-    renderTextGfx_8045F8C(byte_873EA50, a2 >> 2, &eDecompBuffer2013A00[512 * a1], (a1 << 10) + 100697088);
+    renderTextGfx_8045F8C(TextScript873EA50, a2 >> 2, &eDecompBuffer2013A00[512 * a1], (a1 << 10) + 100697088);
     renderTextGfx_8045F8C(*(v3 + 36), 16, &unk_2013C00 + v2, v2 + 100697600);
 }
 

@@ -2648,7 +2648,7 @@ loc_81247F4:
 	ldr r1, off_8124860 // =byte_8124864 
 	lsl r0, r4, #1
 	ldrh r1, [r1,r0]
-	ldr r0, off_8124820 // =byte_873D9FC 
+	ldr r0, off_8124820 // =TextScript873D9FC 
 	lsl r4, r4, #2
 	ldr r2, off_8124828 // =off_812482C 
 	ldr r2, [r2,r4]
@@ -2666,7 +2666,7 @@ loc_81247F4:
 	blt loc_81247F4
 	add sp, sp, #4
 	pop {r4-r7,pc}
-off_8124820: .word byte_873D9FC
+off_8124820: .word TextScript873D9FC
 off_8124824: .word dword_86B7AE0
 off_8124828: .word off_812482C
 off_812482C: .word unk_201C4DC
@@ -7940,7 +7940,7 @@ loc_8127724:
 	bl sub_8127760
 loc_8127730:
 	ldr r2, dword_812774C // =0x600a000 
-	ldr r3, off_8127750 // =byte_873EA50 
+	ldr r3, off_8127750 // =TextScript873EA50 
 	ldr r4, off_8127754 // =byte_2019A00 
 	mov r1, r6
 	bl sub_8127580
@@ -7954,7 +7954,7 @@ loc_8127730:
 locret_812774A:
 	pop {r4-r7,pc}
 dword_812774C: .word 0x600A000
-off_8127750: .word byte_873EA50
+off_8127750: .word TextScript873EA50
 off_8127754: .word byte_2019A00
 off_8127758: .word byte_201D74C
 off_812775C: .word 0x600
@@ -8010,7 +8010,7 @@ loc_8127794:
 	str r1, [r3,r2]
 loc_81277B0:
 	ldr r2, dword_81277CC // =0x600a000 
-	ldr r3, off_81277D0 // =byte_873EA50 
+	ldr r3, off_81277D0 // =TextScript873EA50 
 	ldr r4, off_81277D4 // =byte_2019A00 
 	mov r1, r6
 	bl sub_8127580
@@ -8024,7 +8024,7 @@ loc_81277B0:
 locret_81277CA:
 	pop {r4-r7,pc}
 dword_81277CC: .word 0x600A000
-off_81277D0: .word byte_873EA50
+off_81277D0: .word TextScript873EA50
 off_81277D4: .word byte_2019A00
 off_81277D8: .word byte_201D74C
 off_81277DC: .word 0x600
@@ -9997,7 +9997,7 @@ loc_8128A60:
 	mov r4, #0xa
 	mov r5, #1
 	ldr r6, off_8128AA4 // =dword_86A5D60 
-	ldr r0, off_8128A94 // =byte_873D9FC 
+	ldr r0, off_8128A94 // =TextScript873D9FC 
 	mov r7, #0
 	bl renderTextGfx_8045F8C
 	pop {r4-r7}
@@ -10008,7 +10008,7 @@ loc_8128A60:
 locret_8128A8E:
 	pop {r4-r7,pc}
 off_8128A90: .word eTextScript201BF00
-off_8128A94: .word byte_873D9FC
+off_8128A94: .word TextScript873D9FC
 off_8128A98: .word byte_2017A00
 off_8128A9C: .word 0x280
 dword_8128AA0: .word 0x6004020

@@ -811,14 +811,13 @@ dat38_85::
     .include "data/textscript/TextScriptBattleTut1.s"
     .include "data/textscript/TextScriptBattleTutAreaGrab.s"
     .include "data/textscript/TextScriptBattleTutFullSynchro.s"  
-TextScriptDadCybeastTut::
-	.incbin "data/scripts/TextScriptDadCybeastTut.bin"
-TextScriptShukoCrossTut::
-	.incbin "data/scripts/TextScriptShukoCrossTut.bin"
+text_86f4498:
+	.include "data/textscript/TextScriptDadCybeastTut.s"
+	.include "data/textscript/TextScriptShukoCrossTut.s"
 dat38_86::
 	.include "data/dat38_86.s"
-TextScriptCommError87370C0::
-	.incbin "data/scripts/TextScriptCommError87370C0.bin"
+text_87370C0:
+	.include "data/textscript/TextScriptCommError87370C0.s"
 dat38_87::
 	.include "data/dat38_87.s"
 comp_87E4500::

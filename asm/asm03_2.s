@@ -2536,7 +2536,7 @@ sub_804760E:
 	lsl r4, r4, #4
 	mul r4, r0
 	push {r4,r5}
-	ldr r0, off_804764C // =byte_873D9FC 
+	ldr r0, off_804764C // =TextScript873D9FC 
 	ldr r2, off_8047650 // =eDecompBuffer2013A00
 	ldr r3, dword_8047654 // =0x6008400 
 	add r2, r2, r4
@@ -2560,7 +2560,7 @@ sub_804760E:
 	bl renderTextGfx_8045F8C
 	pop {r0,r5,r7,pc}
 	.balign 4, 0x00
-off_804764C: .word byte_873D9FC
+off_804764C: .word TextScript873D9FC
 off_8047650: .word eDecompBuffer2013A00
 dword_8047654: .word 0x6008400
 off_8047658: .word unk_2013C00
@@ -2649,7 +2649,7 @@ sub_8047708:
 	lsl r4, r4, #4
 	mul r4, r0
 	push {r4,r5}
-	ldr r0, off_8047748 // =byte_873EA50 
+	ldr r0, off_8047748 // =TextScript873EA50 
 	lsr r1, r1, #2
 	ldr r2, off_804774C // =eDecompBuffer2013A00
 	ldr r3, dword_8047750 // =0x6008400 
@@ -2674,7 +2674,7 @@ sub_8047708:
 	bl renderTextGfx_8045F8C
 	pop {r0,r5,r7,pc}
 	.balign 4, 0x00
-off_8047748: .word byte_873EA50
+off_8047748: .word TextScript873EA50
 off_804774C: .word eDecompBuffer2013A00
 dword_8047750: .word 0x6008400
 off_8047754: .word unk_2013C00

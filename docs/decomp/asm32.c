@@ -13087,7 +13087,7 @@ int sub_8118134()
         *(v0 + 14) = v6;
         *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = v7;
         result = renderTextGfx_8045F8C(
-                             byte_873EA50,
+                             TextScript873EA50,
                              (*v5 - 144) >> 2,
                              (&off_811819C)[*(v0 + 4)],
                              *&byte_81181C0[4 * *(v0 + 4)]);
@@ -14185,7 +14185,7 @@ int sub_8118C8C()
         if ( v7 != v0[13] )
         {
             v0[12] = v7;
-            v0[14] = renderTextGfx_8045F8C(byte_873EA50, v7, byte_2017A00, 100744192);
+            v0[14] = renderTextGfx_8045F8C(TextScript873EA50, v7, byte_2017A00, 100744192);
         }
     }
     return sub_8118CF4();
@@ -15112,7 +15112,7 @@ int __noreturn sub_81199E4()
     if ( *(v0 + 4) )
         v2 = *(v1 + 28);
     renderTextGfx_8045F8C(&eTextScript201D280, v2, byte_201B200, 100710400);
-    *(v4 + 20) = renderTextGfx_8045F8C(byte_873EA50, *(v5 + 28), byte_201B480, 100711040);
+    *(v4 + 20) = renderTextGfx_8045F8C(TextScript873EA50, *(v5 + 28), byte_201B480, 100711040);
     result = 0;
     *(v4 + 24) = 0;
     return result;
@@ -17310,7 +17310,7 @@ int sub_811B71C()
         *(v0 + 14) = v6;
         *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = v7;
         result = renderTextGfx_8045F8C(
-                             byte_873EA50,
+                             TextScript873EA50,
                              (*v5 - 144) >> 2,
                              (&off_811B784)[*(v0 + 4)],
                              *&byte_811B7B0[4 * *(v0 + 4)]);
@@ -21394,7 +21394,7 @@ int __noreturn sub_811EFB8()
         *(v1 + 8) = 0;
         *(v1 + 12) = 0;
     }
-    renderTextGfx_8045F8C(byte_86CB360, 240, &unk_200BEA0, 0);
+    renderTextGfx_8045F8C(TextScript86CB360, 240, &unk_200BEA0, 0);
     return sub_811F5DC(&unk_200BEA0, byte_200CC20, 100749312, 9);
 }
 
@@ -21405,7 +21405,7 @@ int __noreturn sub_811F014()
     int v0; // r10
 
     *(*(v0 + oToolkit_Unk200a220_Ptr) + 8) = sub_803D06C();
-    renderTextGfx_8045F8C(byte_86CB360, 241, &unk_200C0E0, 0);
+    renderTextGfx_8045F8C(TextScript86CB360, 241, &unk_200C0E0, 0);
     return sub_811F5DC(&unk_200C0E0, byte_200CF20, 100749888, 7);
 }
 
@@ -21416,7 +21416,7 @@ int __noreturn sub_811F050()
     int v0; // r10
 
     *(*(v0 + oToolkit_Unk200a220_Ptr) + 8) = sub_803D0F4();
-    renderTextGfx_8045F8C(byte_86CB360, 242, &unk_200C2A0, 0);
+    renderTextGfx_8045F8C(TextScript86CB360, 242, &unk_200C2A0, 0);
     return sub_811F5DC(&unk_200C2A0, byte_200D220, 100750336, 6);
 }
 
@@ -21427,7 +21427,7 @@ int __fastcall __noreturn sub_811F08C(int a1)
     int v1; // r0
 
     v1 = sub_811F290();
-    renderTextGfx_8045F8C(byte_86CB360, v1, byte_200C620, 0);
+    renderTextGfx_8045F8C(TextScript86CB360, v1, byte_200C620, 0);
     return sub_811F5DC(byte_200C620, byte_200C920, 100751232, 12);
 }
 
@@ -22805,7 +22805,7 @@ int __fastcall sub_8120280(int a1, int a2, _WORD *a3)
 {
     int v3; // r4
 
-    return sub_81202B4(&byte_873EA50[*&byte_873EA50[2 * v3]], *&byte_873EA50[2 * v3], a3, a3 + 8);
+    return sub_81202B4(&TextScript873EA50[*&byte_873EA50[2 * v3]], *&byte_873EA50[2 * v3], a3, a3 + 8);
 }
 
 

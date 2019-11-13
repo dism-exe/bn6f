@@ -2525,7 +2525,7 @@ sub_81314E4:
 loc_81314FC:
 	ldr r4, [sp]
 	lsl r4, r4, #1
-	ldr r0, off_8131538 // =byte_873EA50 
+	ldr r0, off_8131538 // =TextScript873EA50 
 	ldr r1, [sp,#4]
 	ldrh r1, [r1,r4]
 	mov r2, #0x90
@@ -2554,7 +2554,7 @@ loc_81314FC:
 	add sp, sp, #8
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8131538: .word byte_873EA50
+off_8131538: .word TextScript873EA50
 off_813153C: .word byte_2019A00
 dword_8131540: .word 0x600A000
 off_8131544: .word dword_86A5D60

@@ -9052,7 +9052,7 @@ loc_802ACF2:
 	cmp r0, #2
 	blt loc_802AD1C
 loc_802AD0A:
-	ldr r0, off_802AD78 // =byte_8736D74
+	ldr r0, off_802AD78 // =TextScript8736D74
 	mov r1, #0x28 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0x14
@@ -9104,7 +9104,7 @@ loc_802AD48:
 dword_802AD6C: .word 0xF800000
 dword_802AD70: .word 0x10
 off_802AD74: .word unk_2031000
-off_802AD78: .word byte_8736D74
+off_802AD78: .word TextScript8736D74
 	.word 0x0
 dword_802AD80: .word 0x2A0000
 	thumb_func_end sub_802AC6E
@@ -9782,7 +9782,7 @@ loc_802B380:
 	cmp r0, r1
 	bne loc_802B392
 	mov r1, #0x29 
-	ldr r0, off_802B3DC // =byte_8736D74
+	ldr r0, off_802B3DC // =TextScript8736D74
 	mov r7, #0xc
 	b loc_802B3AC
 loc_802B392:
@@ -9823,7 +9823,7 @@ loc_802B3AC:
 	add sp, sp, #8
 	pop {r4-r7,pc}
 off_802B3D8: .word byte_802B5FC
-off_802B3DC: .word byte_8736D74
+off_802B3DC: .word TextScript8736D74
 dword_802B3E0: .word 0xFFFF
 off_802B3E4: .word dword_86B7AE0
 dword_802B3E8: .word 0x6008E00
@@ -11799,7 +11799,7 @@ sub_802C5B0:
 	ldr r7, [r7,#oToolkit_Unk200a220_Ptr]
 	str r0, [r7,#8]
 	push {r6}
-	ldr r0, off_802C6AC // =byte_8736D74
+	ldr r0, off_802C6AC // =TextScript8736D74
 	mov r1, #5
 	ldr r2, off_802C6A8 // =unk_2035320 
 	ldr r3, dword_802C6B4 // =0x600ba80 
@@ -11837,7 +11837,7 @@ loc_802C5F4:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk200a220_Ptr]
 	str r0, [r7,#8]
-	ldr r0, off_802C6AC // =byte_8736D74
+	ldr r0, off_802C6AC // =TextScript8736D74
 	mov r1, #6
 	ldr r2, off_802C6BC // =unk_20354E0 
 	ldr r3, dword_802C6B8 // =0x600bc40 
@@ -11856,7 +11856,7 @@ loc_802C61C:
 	mov r5, #1
 	ldr r6, off_802C6B0 // =dword_86B7AE0 
 	mov r7, #8
-	ldr r0, off_802C6AC // =byte_8736D74
+	ldr r0, off_802C6AC // =TextScript8736D74
 	bl renderTextGfx_8045F8C
 	mov r0, #2
 	mov r1, #0xc
@@ -11886,7 +11886,7 @@ loc_802C654:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk200a220_Ptr]
 	str r0, [r7,#8]
-	ldr r0, off_802C6AC // =byte_8736D74
+	ldr r0, off_802C6AC // =TextScript8736D74
 	mov r1, #6
 	ldr r2, off_802C6BC // =unk_20354E0 
 	ldr r3, dword_802C6B8 // =0x600bc40 
@@ -11905,7 +11905,7 @@ loc_802C67C:
 	mov r5, #1
 	ldr r6, off_802C6B0 // =dword_86B7AE0 
 	mov r7, #8
-	ldr r0, off_802C6AC // =byte_8736D74
+	ldr r0, off_802C6AC // =TextScript8736D74
 	bl renderTextGfx_8045F8C
 	mov r0, #2
 	mov r1, #0xc
@@ -11917,7 +11917,7 @@ loc_802C67C:
 	pop {r5,pc}
 	.balign 4, 0x00
 off_802C6A8: .word unk_2035320
-off_802C6AC: .word byte_8736D74
+off_802C6AC: .word TextScript8736D74
 off_802C6B0: .word dword_86B7AE0
 dword_802C6B4: .word 0x600BA80
 dword_802C6B8: .word 0x600BC40

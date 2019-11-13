@@ -1747,7 +1747,7 @@ void __noreturn sub_81314E4()
     char (*v0)[8]; // ST04_4
 
     v0 = off_813154C[sub_81312EC()[12]];
-    renderTextGfx_8045F8C(byte_873EA50, (*v0 - 144) >> 2, byte_2019A00, 100704256);
+    renderTextGfx_8045F8C(TextScript873EA50, (*v0 - 144) >> 2, byte_2019A00, 100704256);
     JUMPOUT(loc_8131528);
 }
 

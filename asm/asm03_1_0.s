@@ -740,7 +740,7 @@ sub_8033EE8:
 loc_8033EFC:
 	bl sub_811F290
 	mov r1, r0
-	ldr r0, off_8033F34 // =byte_86CB360
+	ldr r0, off_8033F34 // =TextScript86CB360
 	ldr r2, off_8033F38 // =unk_2027400
 	ldr r3, dword_8033F3C // =0x600d000
 	mov r4, #0xb
@@ -767,7 +767,7 @@ loc_8033EFC:
 	bl CopyBackgroundTiles
 locret_8033F32:
 	pop {r4-r7,pc}
-off_8033F34: .word byte_86CB360
+off_8033F34: .word TextScript86CB360
 off_8033F38: .word unk_2027400
 dword_8033F3C: .word 0x600D000
 off_8033F40: .word dword_86B7AE0
