@@ -1,10 +1,7 @@
-// 87DBE98
 TextScript87DBE98::
-	text_script_start TextScript87DBE98
+	text_archive_start
 
-	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6
-
-	text_script 0, scr_0
+	def_text_script TextScript87DBE98_unk0
 	ts_msg_open
 	ts_sound_disable_text_sfx
 	ts_sound_play00 0xCD, 0x0
@@ -27,7 +24,7 @@ TextScript87DBE98::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 1, scr_1
+	def_text_script TextScript87DBE98_unk1
 	ts_msg_open
 	.string "The culprit is\n"
 	.string "present!"
@@ -38,7 +35,7 @@ TextScript87DBE98::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 2, scr_2
+	def_text_script TextScript87DBE98_unk2
 	ts_msg_open
 	.string "You,the defendant..."
 	ts_key_wait 0x0
@@ -73,7 +70,7 @@ TextScript87DBE98::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 3, scr_3
+	def_text_script TextScript87DBE98_unk3
 	ts_msg_open
 	.string "You will be bopped\n"
 	.string "on the head in a\n"
@@ -81,15 +78,15 @@ TextScript87DBE98::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 4, scr_4
+	def_text_script TextScript87DBE98_unk4
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "Are you OK,MegaMan!?"
 	ts_key_wait 0x0
 	ts_clear_msg
-	ts_jump 0x5
+	ts_jump 5
 
-	text_script 5, scr_5
+	def_text_script TextScript87DBE98_unk5
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Y-Yeah...\n"
@@ -102,12 +99,11 @@ TextScript87DBE98::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 6, scr_6
+	def_text_script TextScript87DBE98_unk6
 	ts_msg_open
 	.string "The security door\n"
 	.string "has been unlocked!!"
 	ts_key_wait 0x0
-	ts_end
+	.string "$  "
 
-	.balign 4,0
-
+	.balign 4, 0

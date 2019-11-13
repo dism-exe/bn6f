@@ -1,14 +1,7 @@
-// 087dac90
-// FIXME (TextScript): ts_select, rel id misalignment
 TextScriptWhoAmI::
-	text_script_start TextScriptWhoAmI
+	text_archive_start
 
-	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-	text_script_rel_pointers 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
-	text_script_rel_pointers 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47
-	text_script_rel_pointers 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63
-
-	text_script 0, scr_0
+	def_text_script TextScriptWhoAmI_unk0
 	ts_mugshot_show 0x3C
 	ts_msg_open
 	.string "I CAN'T REMEMBER...\n"
@@ -22,7 +15,7 @@ TextScriptWhoAmI::
 	ts_clear_msg
 	ts_jump 10
 
-	text_script 1, scr_1
+	def_text_script TextScriptWhoAmI_unk1
 	ts_mugshot_show 0x3C
 	ts_msg_open
 	.string "WHAT AM I AGAIN...?"
@@ -35,7 +28,7 @@ TextScriptWhoAmI::
 	ts_clear_msg
 	ts_jump 10
 
-	text_script 2, scr_2
+	def_text_script TextScriptWhoAmI_unk2
 	ts_mugshot_show 0x3C
 	ts_msg_open
 	.string "MAN,I WISH I KNEW\n"
@@ -49,7 +42,7 @@ TextScriptWhoAmI::
 	ts_clear_msg
 	ts_jump 10
 
-	text_script 3, scr_3
+	def_text_script TextScriptWhoAmI_unk3
 	ts_mugshot_show 0x3C
 	ts_msg_open
 	.string "AH,MONSIEUR! I CAN\n"
@@ -63,7 +56,7 @@ TextScriptWhoAmI::
 	ts_clear_msg
 	ts_jump 10
 
-	text_script 4, scr_4
+	def_text_script TextScriptWhoAmI_unk4
 	ts_mugshot_show 0x3C
 	ts_msg_open
 	.string "HMM,I SEEM TO HAVE\n"
@@ -78,7 +71,7 @@ TextScriptWhoAmI::
 	ts_clear_msg
 	ts_jump 10
 
-	text_script 5, scr_5
+	def_text_script TextScriptWhoAmI_unk5
 	ts_mugshot_show 0x3C
 	ts_msg_open
 	.string "MY MEMORY IS A BIT\n"
@@ -91,7 +84,7 @@ TextScriptWhoAmI::
 	ts_clear_msg
 	ts_jump 10
 
-	text_script 6, scr_6
+	def_text_script TextScriptWhoAmI_unk6
 	ts_mugshot_show 0x3C
 	ts_msg_open
 	.string "I DON'T REMEMBER\n"
@@ -105,7 +98,7 @@ TextScriptWhoAmI::
 	ts_clear_msg
 	ts_jump 10
 
-	text_script 7, scr_7
+	def_text_script TextScriptWhoAmI_unk7
 	ts_mugshot_show 0x3C
 	ts_msg_open
 	.string "I'M A WHALE..."
@@ -117,7 +110,7 @@ TextScriptWhoAmI::
 	ts_clear_msg
 	ts_jump 10
 
-	text_script 8, scr_8
+	def_text_script TextScriptWhoAmI_unk8
 	ts_mugshot_show 0x3C
 	ts_msg_open
 	.string "IT'S STRANGE THAT\n"
@@ -133,7 +126,7 @@ TextScriptWhoAmI::
 	ts_clear_msg
 	ts_jump 10
 
-	text_script 9, scr_9
+	def_text_script TextScriptWhoAmI_unk9
 	ts_mugshot_show 0x3C
 	ts_msg_open
 	.string "I CAN FLY\n"
@@ -143,7 +136,7 @@ TextScriptWhoAmI::
 	ts_clear_msg
 	ts_jump 10
 
-	text_script 10, scr_10
+	def_text_script TextScriptWhoAmI_unk10
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Bring this Program?\n"
@@ -157,14 +150,14 @@ TextScriptWhoAmI::
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
 
-	text_script 11, scr_11
+	def_text_script TextScriptWhoAmI_unk11
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Sunfish CompTank\""
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 12, scr_12
+	def_text_script TextScriptWhoAmI_unk12
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Tropical Fish\n"
@@ -172,49 +165,49 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 13, scr_13
+	def_text_script TextScriptWhoAmI_unk13
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Piranha CompTank\""
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 14, scr_14
+	def_text_script TextScriptWhoAmI_unk14
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Nautilus CompTank\""
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 15, scr_15
+	def_text_script TextScriptWhoAmI_unk15
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"King Crab CompTank\""
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 16, scr_16
+	def_text_script TextScriptWhoAmI_unk16
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Turtle CompTank\""
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 17, scr_17
+	def_text_script TextScriptWhoAmI_unk17
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Alligator CompTank\""
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 18, scr_18
+	def_text_script TextScriptWhoAmI_unk18
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Dolphin CompTank\""
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 19, scr_19
+	def_text_script TextScriptWhoAmI_unk19
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Elephant Seal\n"
@@ -222,14 +215,14 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 20, scr_20
+	def_text_script TextScriptWhoAmI_unk20
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Penguin CompTank\""
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 21, scr_21
+	def_text_script TextScriptWhoAmI_unk21
 	ts_msg_open
 	.string "... OH! I REMEMBER!"
 	ts_key_wait 0x0
@@ -238,13 +231,13 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 22, scr_22
+	def_text_script TextScriptWhoAmI_unk22
 	ts_msg_open
 	.string "... A... I FORGET..."
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 23, scr_23
+	def_text_script TextScriptWhoAmI_unk23
 	ts_msg_open
 	ts_sound_disable_text_sfx
 	.string "*BEEP!*"
@@ -261,7 +254,7 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 24, scr_24
+	def_text_script TextScriptWhoAmI_unk24
 	ts_flag_set 0xF5, 0x5
 	ts_msg_open
 	.string "A SUNFISH! YES,\n"
@@ -269,7 +262,7 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 25, scr_25
+	def_text_script TextScriptWhoAmI_unk25
 	ts_flag_set 0xF6, 0x5
 	ts_msg_open
 	.string "A TROPICAL FISH!\n"
@@ -277,7 +270,7 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 26, scr_26
+	def_text_script TextScriptWhoAmI_unk26
 	ts_flag_set 0xF7, 0x5
 	ts_msg_open
 	.string "A PIRANHA! MAN,\n"
@@ -286,14 +279,14 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 27, scr_27
+	def_text_script TextScriptWhoAmI_unk27
 	ts_flag_set 0xF8, 0x5
 	ts_msg_open
 	.string "A NAUTILUS! OUI,OUI!"
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 28, scr_28
+	def_text_script TextScriptWhoAmI_unk28
 	ts_flag_set 0xF9, 0x5
 	ts_msg_open
 	.string "A KING CRAB! THANK\n"
@@ -302,7 +295,7 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 29, scr_29
+	def_text_script TextScriptWhoAmI_unk29
 	ts_flag_set 0xFA, 0x5
 	ts_msg_open
 	.string "A TURTLE! AH,MY\n"
@@ -311,7 +304,7 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 30, scr_30
+	def_text_script TextScriptWhoAmI_unk30
 	ts_flag_set 0xFB, 0x5
 	ts_msg_open
 	.string "OH,SNAP,\n"
@@ -324,7 +317,7 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 31, scr_31
+	def_text_script TextScriptWhoAmI_unk31
 	ts_flag_set 0xFC, 0x5
 	ts_msg_open
 	.string "A DOLPHIN!\n"
@@ -336,7 +329,7 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 32, scr_32
+	def_text_script TextScriptWhoAmI_unk32
 	ts_flag_set 0xFD, 0x5
 	ts_msg_open
 	.string "AN ELEPHANT SEAL!\n"
@@ -345,7 +338,7 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 33, scr_33
+	def_text_script TextScriptWhoAmI_unk33
 	ts_flag_set 0xFE, 0x5
 	ts_msg_open
 	.string "A PENGUIN!\n"
@@ -361,7 +354,7 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 34, scr_34
+	def_text_script TextScriptWhoAmI_unk34
 	ts_mugshot_show 0x3C
 	ts_msg_open
 	.string "IS THIS MY COMPTANK?\n"
@@ -375,7 +368,7 @@ TextScriptWhoAmI::
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
 
-	text_script 35, scr_35
+	def_text_script TextScriptWhoAmI_unk35
 	ts_check_global 0x0, 0x0, 0xB, 0xFF
 	ts_check_global 0x0, 0x1, 0xC, 0xFF
 	ts_check_global 0x0, 0x2, 0xD, 0xFF
@@ -391,7 +384,7 @@ TextScriptWhoAmI::
 	ts_check_global 0x0, 0xC, 0x37, 0xFF
 	ts_end
 
-	text_script 36, scr_36
+	def_text_script TextScriptWhoAmI_unk36
 	ts_check_global 0x0, 0x0, 0x18, 0xFF
 	ts_check_global 0x0, 0x1, 0x19, 0xFF
 	ts_check_global 0x0, 0x2, 0x1A, 0xFF
@@ -407,7 +400,7 @@ TextScriptWhoAmI::
 	ts_check_global 0x0, 0xC, 0x3D, 0xFF
 	ts_end
 
-	text_script 37, scr_37
+	def_text_script TextScriptWhoAmI_unk37
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Sunfish CompTank\""
@@ -425,7 +418,7 @@ TextScriptWhoAmI::
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
 
-	text_script 38, scr_38
+	def_text_script TextScriptWhoAmI_unk38
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Tropical Fish\n"
@@ -444,7 +437,7 @@ TextScriptWhoAmI::
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
 
-	text_script 39, scr_39
+	def_text_script TextScriptWhoAmI_unk39
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Piranha CompTank\""
@@ -462,7 +455,7 @@ TextScriptWhoAmI::
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
 
-	text_script 40, scr_40
+	def_text_script TextScriptWhoAmI_unk40
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Nautilus CompTank\""
@@ -480,7 +473,7 @@ TextScriptWhoAmI::
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
 
-	text_script 41, scr_41
+	def_text_script TextScriptWhoAmI_unk41
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"King Crab CompTank\""
@@ -498,7 +491,7 @@ TextScriptWhoAmI::
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
 
-	text_script 42, scr_42
+	def_text_script TextScriptWhoAmI_unk42
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Turtle CompTank\""
@@ -516,7 +509,7 @@ TextScriptWhoAmI::
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
 
-	text_script 43, scr_43
+	def_text_script TextScriptWhoAmI_unk43
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Alligator CompTank\""
@@ -534,7 +527,7 @@ TextScriptWhoAmI::
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
 
-	text_script 44, scr_44
+	def_text_script TextScriptWhoAmI_unk44
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Dolphin CompTank\""
@@ -552,7 +545,7 @@ TextScriptWhoAmI::
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
 
-	text_script 45, scr_45
+	def_text_script TextScriptWhoAmI_unk45
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Elephant Seal\n"
@@ -571,7 +564,7 @@ TextScriptWhoAmI::
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
 
-	text_script 46, scr_46
+	def_text_script TextScriptWhoAmI_unk46
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Penguin CompTank\""
@@ -589,28 +582,28 @@ TextScriptWhoAmI::
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
 
-	text_script 47, scr_47
+	def_text_script TextScriptWhoAmI_unk47
 	ts_msg_open
 	ts_mugshot_show 0x3C
 	.string "WAAAAAH!"
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 48, scr_48
+	def_text_script TextScriptWhoAmI_unk48
 	ts_msg_open
 	ts_mugshot_show 0x3C
 	.string "N-NOOOOOOO!"
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 49, scr_49
+	def_text_script TextScriptWhoAmI_unk49
 	ts_msg_open
 	ts_mugshot_show 0x3C
 	.string "EEEEEEEE!"
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 50, scr_50
+	def_text_script TextScriptWhoAmI_unk50
 	ts_mugshot_show 0x3C
 	ts_msg_open
 	.string "GOLLY,I WISH I\n"
@@ -628,7 +621,7 @@ TextScriptWhoAmI::
 	ts_clear_msg
 	ts_jump 10
 
-	text_script 51, scr_51
+	def_text_script TextScriptWhoAmI_unk51
 	ts_mugshot_show 0x3C
 	ts_msg_open
 	.string "HEY...\n"
@@ -654,7 +647,7 @@ TextScriptWhoAmI::
 	ts_clear_msg
 	ts_jump 10
 
-	text_script 52, scr_52
+	def_text_script TextScriptWhoAmI_unk52
 	ts_mugshot_show 0x3C
 	ts_msg_open
 	.string "OH DEAR,OH MY...\n"
@@ -673,7 +666,7 @@ TextScriptWhoAmI::
 	ts_clear_msg
 	ts_jump 10
 
-	text_script 53, scr_53
+	def_text_script TextScriptWhoAmI_unk53
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Clown Fish\n"
@@ -681,14 +674,14 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 54, scr_54
+	def_text_script TextScriptWhoAmI_unk54
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Shark CompTank\""
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 55, scr_55
+	def_text_script TextScriptWhoAmI_unk55
 	ts_msg_open
 	.string "The nameplate is\n"
 	.string "broken..."
@@ -700,7 +693,7 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 56, scr_56
+	def_text_script TextScriptWhoAmI_unk56
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Clown Fish\n"
@@ -710,7 +703,7 @@ TextScriptWhoAmI::
 	ts_jump 34
 	ts_end
 
-	text_script 57, scr_57
+	def_text_script TextScriptWhoAmI_unk57
 	ts_msg_open
 	.string "It's labeled:\n"
 	.string "\"Shark CompTank\""
@@ -719,7 +712,7 @@ TextScriptWhoAmI::
 	ts_jump 34
 	ts_end
 
-	text_script 58, scr_58
+	def_text_script TextScriptWhoAmI_unk58
 	ts_msg_open
 	.string "The nameplate is\n"
 	.string "broken..."
@@ -733,7 +726,7 @@ TextScriptWhoAmI::
 	ts_jump 34
 	ts_end
 
-	text_script 59, scr_59
+	def_text_script TextScriptWhoAmI_unk59
 	ts_msg_open
 	ts_flag_set 0xC2, 0xF
 	.string "A CLOWN FISH!\n"
@@ -751,7 +744,7 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 60, scr_60
+	def_text_script TextScriptWhoAmI_unk60
 	ts_msg_open
 	ts_flag_set 0xC3, 0xF
 	.string "A SHARK! MMMM..."
@@ -766,7 +759,7 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 61, scr_61
+	def_text_script TextScriptWhoAmI_unk61
 	ts_msg_open
 	ts_flag_set 0xC4, 0xF
 	.string "AN AQUARIUM\n"
@@ -789,7 +782,7 @@ TextScriptWhoAmI::
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 62, scr_62
+	def_text_script TextScriptWhoAmI_unk62
 	ts_check_global 0x0, 0x0, 0x25, 0xFF
 	ts_check_global 0x0, 0x1, 0x26, 0xFF
 	ts_check_global 0x0, 0x2, 0x27, 0xFF
@@ -805,8 +798,7 @@ TextScriptWhoAmI::
 	ts_check_global 0x0, 0xC, 0x3A, 0xFF
 	ts_end
 
-	text_script 63, scr_63
+	def_text_script TextScriptWhoAmI_unk63
 	ts_end
 
 	.balign 4, 0
-

@@ -1,8 +1,7 @@
-// 86f2e60
-TextScriptBattleTut1:: 
+TextScriptBattleTut1::
 	text_archive_start
 
-	def_text_script TextScript6F2E60_unk0
+	def_text_script TextScriptBattleTut1_unk0
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,\n"
@@ -15,7 +14,7 @@ TextScriptBattleTut1::
 	ts_clear_msg
 	ts_jump 1
 
-	def_text_script TextScript6F2E60_unk1
+	def_text_script TextScriptBattleTut1_unk1
 	ts_mugshot_show 0x0
 	.string "Leave it to me.\n"
 	.string "Let's go,MegaMan!!!"
@@ -36,7 +35,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk2
+	def_text_script TextScriptBattleTut1_unk2
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "Here are the chips\n"
@@ -50,7 +49,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk3
+	def_text_script TextScriptBattleTut1_unk3
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "I see the currently\n"
@@ -59,14 +58,14 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk4
+	def_text_script TextScriptBattleTut1_unk4
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "This is its Attack."
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk5
+	def_text_script TextScriptBattleTut1_unk5
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "I'm ready now!"
@@ -78,7 +77,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk6
+	def_text_script TextScriptBattleTut1_unk6
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "HP shows how much\n"
@@ -88,7 +87,7 @@ TextScriptBattleTut1::
 	ts_clear_msg
 	ts_jump 7
 
-	def_text_script TextScript6F2E60_unk7
+	def_text_script TextScriptBattleTut1_unk7
 	ts_mugshot_show 0x37
 	.string "Got it,Lan? You\n"
 	.string "can only send data\n"
@@ -105,7 +104,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk8
+	def_text_script TextScriptBattleTut1_unk8
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "That's a no-brainer!\n"
@@ -133,7 +132,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk9
+	def_text_script TextScriptBattleTut1_unk9
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "There are 2 Cannons,\n"
@@ -146,7 +145,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk10
+	def_text_script TextScriptBattleTut1_unk10
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,you don't have\n"
@@ -155,7 +154,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk11
+	def_text_script TextScriptBattleTut1_unk11
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,\n"
@@ -167,7 +166,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk12
+	def_text_script TextScriptBattleTut1_unk12
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan! You haven't\n"
@@ -186,7 +185,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk13
+	def_text_script TextScriptBattleTut1_unk13
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,you have to bust\n"
@@ -195,7 +194,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk14
+	def_text_script TextScriptBattleTut1_unk14
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "Now that I've\n"
@@ -207,7 +206,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk15
+	def_text_script TextScriptBattleTut1_unk15
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "The chips you've\n"
@@ -219,7 +218,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk16
+	def_text_script TextScriptBattleTut1_unk16
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "MegaMan,I sent the\n"
@@ -228,7 +227,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk17
+	def_text_script TextScriptBattleTut1_unk17
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,\n"
@@ -253,7 +252,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk18
+	def_text_script TextScriptBattleTut1_unk18
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Here are my HP!"
@@ -264,7 +263,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk19
+	def_text_script TextScriptBattleTut1_unk19
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "The Chip Data you\n"
@@ -288,14 +287,14 @@ TextScriptBattleTut1::
 	ts_clear_msg
 	ts_jump 20
 
-	def_text_script TextScript6F2E60_unk20
+	def_text_script TextScriptBattleTut1_unk20
 	ts_mugshot_show 0x0
 	.string "I know,I know! The\n"
 	.string "CustGauge,right?"
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk21
+	def_text_script TextScriptBattleTut1_unk21
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "The CustGauge\n"
@@ -321,7 +320,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk22
+	def_text_script TextScriptBattleTut1_unk22
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Come on,Lan! Let's\n"
@@ -333,7 +332,7 @@ TextScriptBattleTut1::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F2E60_unk23
+	def_text_script TextScriptBattleTut1_unk23
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Come on,Lan! Let's\n"
@@ -343,6 +342,6 @@ TextScriptBattleTut1::
 	.string "Cancel with the B\n"
 	.string "Button and reselect!"
 	ts_key_wait 0x0
-	ts_end
+	.string "$  "
 
 	.balign 4, 0

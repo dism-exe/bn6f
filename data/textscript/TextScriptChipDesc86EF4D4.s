@@ -1,4 +1,4 @@
-TextScriptChipDesc86EF4D4:: 
+TextScriptChipDesc86EF4D4::
 	text_archive_start
 
 	def_text_script TextScriptChipDesc86EF4D4_unk0
@@ -100,6 +100,6 @@ TextScriptChipDesc86EF4D4::
 	ts_key_wait 0x1
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
+	.string "   "
 
 	.balign 4, 0
-

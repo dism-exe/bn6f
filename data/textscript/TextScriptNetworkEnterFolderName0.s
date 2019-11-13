@@ -1,14 +1,98 @@
-TextScriptNetworkEnterFolderName0:: .word 0x3C003C, 0x3C003C, 0x3C003C, 0x3C003C, 0x3C003C
-	.word 0x3C003C, 0x3C003C, 0x3C003C, 0x3C003C, 0x3C003C
-	.word 0x5A003C
-	.byte 0x5A, 0x0
-	.hword 0x87
-	.word 0xC90087, 0xCC00C9, 0xD400CC, 0x311A08E8, 0x2A38262A
-	.word 0x39332A00, 0x2BE9372A, 0x2A293134, 0x26330037, 0xE7A62A32
-	.word 0x8E8E600, 0x20CFAAA, 0x1519E9AA, 0x7F7E99D, 0x1100EB07
-	.word 0x100EC00, 0x382A2300, 0xEB0000, 0xEC1100, 0x34180001
-	.word 0xFF8006ED, 0xE8E6FFFF, 0x2E3A1B08, 0x332A0039, 0x3E3739
-	.word 0xE9293326, 0x3A392A37, 0x39003337, 0x2A320034, 0xE99D3A33
-	.word 0xEB0707F7, 0xEC001100, 0x23000100, 0x382A, 0x110000EB
-	.word 0x100EC, 0x6ED3418, 0xFFFFFF80, 0x1800F0E6, 0x6C3302F7
-	.word 0x1400F003
+TextScriptNetworkEnterFolderName0::
+	text_archive_start
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk0
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk1
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk2
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk3
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk4
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk5
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk6
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk7
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk8
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk9
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk10
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk11
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk12
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk13
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk14
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk15
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk16
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk17
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk18
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk19
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk20
+	ts_msg_open_menu
+	.string "Please enter\n"
+	.string "folder name."
+	ts_key_wait 0x0
+	ts_end
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk21
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk22
+	ts_msg_open_menu
+	.string "\""
+	ts_print_link_buffer 0x2
+	.string "\"\n"
+	.string "OK?\n"
+	ts_position_option_horizontal 0x7
+	ts_option 0x0, 0x11, 0x0
+	ts_space 0x1
+	.string " Yes  "
+	ts_option 0x0, 0x0, 0x11
+	ts_space 0x1
+	.string " No"
+	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
+	ts_end
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk23
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk24
+	ts_msg_open_menu
+	.string "Quit entry and\n"
+	.string "return to menu?\n"
+	ts_position_option_horizontal 0x7
+	ts_option 0x0, 0x11, 0x0
+	ts_space 0x1
+	.string " Yes  "
+	ts_option 0x0, 0x0, 0x11
+	ts_space 0x1
+	.string " No"
+	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
+	ts_end
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk25
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk26
+	ts_jump 24
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk27
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk28
+	ts_position_text 0x33, 0x6C, 0x3
+	ts_jump 20
+
+	def_text_script TextScriptNetworkEnterFolderName0_unk29
+
+	.balign 4, 0

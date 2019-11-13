@@ -1,4 +1,4 @@
-TextScriptNaviChipNames:: 
+TextScriptNaviChipNames::
 	text_archive_start
 
 	def_text_script TextScriptNaviChipNames_unk0
@@ -526,6 +526,6 @@ TextScriptNaviChipNames::
 	.string "GBeast$"
 
 	def_text_script TextScriptNaviChipNames_unk183
-	.string "FBeast$"
+	.string "FBeast$ "
 
 	.balign 4, 0

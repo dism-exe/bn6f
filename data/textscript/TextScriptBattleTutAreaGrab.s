@@ -1,8 +1,7 @@
-// 6f3868
-TextScriptBattleTutAreaGrab:: 
+TextScriptBattleTutAreaGrab::
 	text_archive_start
 
-	def_text_script TextScript6F3868_unk0
+	def_text_script TextScriptBattleTutAreaGrab_unk0
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,"
@@ -22,7 +21,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk1
+	def_text_script TextScriptBattleTutAreaGrab_unk1
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Using AreaGrab with\n"
@@ -31,7 +30,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk2
+	def_text_script TextScriptBattleTutAreaGrab_unk2
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "Huh? I thought you\n"
@@ -41,7 +40,7 @@ TextScriptBattleTutAreaGrab::
 	ts_clear_msg
 	ts_jump 3
 
-	def_text_script TextScript6F3868_unk3
+	def_text_script TextScriptBattleTutAreaGrab_unk3
 	ts_mugshot_show 0x37
 	.string "Come on,Lan!\n"
 	.string "You forget,already?\n"
@@ -49,7 +48,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk4
+	def_text_script TextScriptBattleTutAreaGrab_unk4
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "Whoops! I completely\n"
@@ -94,7 +93,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk5
+	def_text_script TextScriptBattleTutAreaGrab_unk5
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "That's AreaGrab!\n"
@@ -102,7 +101,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk6
+	def_text_script TextScriptBattleTutAreaGrab_unk6
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,select AreaGrab\n"
@@ -111,7 +110,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk7
+	def_text_script TextScriptBattleTutAreaGrab_unk7
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Select AreaGrab,Lan!\n"
@@ -120,7 +119,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk8
+	def_text_script TextScriptBattleTutAreaGrab_unk8
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "You've selected a\n"
@@ -133,7 +132,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk9
+	def_text_script TextScriptBattleTutAreaGrab_unk9
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,you got the\n"
@@ -145,7 +144,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk10
+	def_text_script TextScriptBattleTutAreaGrab_unk10
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "OK! Now I just\n"
@@ -154,7 +153,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk11
+	def_text_script TextScriptBattleTutAreaGrab_unk11
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,there's no\n"
@@ -162,7 +161,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk12
+	def_text_script TextScriptBattleTutAreaGrab_unk12
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,there's no need\n"
@@ -171,7 +170,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk13
+	def_text_script TextScriptBattleTutAreaGrab_unk13
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "This time,send\n"
@@ -180,7 +179,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk14
+	def_text_script TextScriptBattleTutAreaGrab_unk14
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,you have to bust\n"
@@ -189,7 +188,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk15
+	def_text_script TextScriptBattleTutAreaGrab_unk15
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "MegaMan,\n"
@@ -200,7 +199,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk16
+	def_text_script TextScriptBattleTutAreaGrab_unk16
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "OK! Time for\n"
@@ -220,7 +219,7 @@ TextScriptBattleTutAreaGrab::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6F3868_unk17
+	def_text_script TextScriptBattleTutAreaGrab_unk17
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Now we can move up\n"
@@ -238,6 +237,6 @@ TextScriptBattleTutAreaGrab::
 	ts_clear_msg
 	.string "Let's give it a try!"
 	ts_key_wait 0x0
-	ts_end
+	.string "$   "
 
 	.balign 4, 0

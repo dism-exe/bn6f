@@ -1,7 +1,7 @@
 TextScriptChipTrader86C580C::
 	text_archive_start
 
-	def_text_script TextScript6C580C_unk0
+	def_text_script TextScriptChipTrader86C580C_unk0
 	ts_msg_open
 	.string "It's a Chip Trader.\n"
 	.string "Insert 3 BtlChips?\n"
@@ -17,7 +17,7 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk1
+	def_text_script TextScriptChipTrader86C580C_unk1
 	ts_check_flag 0x1D, 0x17, 0xFF, 0x14
 	ts_check_navi_all 0xFF, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0xFF
 	ts_msg_open
@@ -28,7 +28,7 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk2
+	def_text_script TextScriptChipTrader86C580C_unk2
 	ts_check_flag 0x1D, 0x17, 0xFF, 0x1E
 	ts_check_navi_all 0xFF, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0xFF
 	ts_msg_open
@@ -45,7 +45,7 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0xFF, 0xFF
 	ts_end
 
-	def_text_script TextScript6C580C_unk3
+	def_text_script TextScriptChipTrader86C580C_unk3
 	ts_msg_open
 	.string "OK!\n"
 	ts_sound_disable_text_sfx
@@ -85,7 +85,7 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk4
+	def_text_script TextScriptChipTrader86C580C_unk4
 	ts_check_flag 0x1D, 0x17, 0xFF, 0x15
 	ts_check_navi_all 0xFF, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15, 0xFF
 	ts_clear_msg
@@ -97,10 +97,10 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk5
+	def_text_script TextScriptChipTrader86C580C_unk5
 	ts_end
 
-	def_text_script TextScript6C580C_unk6
+	def_text_script TextScriptChipTrader86C580C_unk6
 	ts_msg_open
 	.string "Chip Trader Special!\n"
 	.string "Insert 10 BtlChips?\n"
@@ -116,7 +116,7 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk7
+	def_text_script TextScriptChipTrader86C580C_unk7
 	ts_check_flag 0x1D, 0x17, 0xFF, 0x16
 	ts_check_navi_all 0xFF, 0x16, 0x16, 0x16, 0x16, 0x16, 0x16, 0x16, 0x16, 0x16, 0x16, 0xFF
 	ts_mugshot_show 0x37
@@ -127,7 +127,7 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk8
+	def_text_script TextScriptChipTrader86C580C_unk8
 	ts_check_flag 0x1D, 0x17, 0xFF, 0x1F
 	ts_check_navi_all 0xFF, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0xFF
 	ts_msg_open
@@ -145,7 +145,7 @@ TextScriptChipTrader86C580C::
 	ts_msg_close_quick
 	ts_end
 
-	def_text_script TextScript6C580C_unk9
+	def_text_script TextScriptChipTrader86C580C_unk9
 	ts_msg_open
 	.string "OK!\n"
 	ts_sound_disable_text_sfx
@@ -185,7 +185,7 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk10
+	def_text_script TextScriptChipTrader86C580C_unk10
 	ts_check_flag 0x1D, 0x17, 0xFF, 0x17
 	ts_check_navi_all 0xFF, 0x17, 0x17, 0x17, 0x17, 0x17, 0x17, 0x17, 0x17, 0x17, 0x17, 0xFF
 	ts_clear_msg
@@ -197,10 +197,10 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk11
+	def_text_script TextScriptChipTrader86C580C_unk11
 	ts_end
 
-	def_text_script TextScript6C580C_unk12
+	def_text_script TextScriptChipTrader86C580C_unk12
 	ts_msg_open
 	.string "A BugFrag Trader."
 	ts_key_wait 0x0
@@ -217,7 +217,7 @@ TextScriptChipTrader86C580C::
 	ts_start_chip_trader 0x1, 0xD
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk13
+	def_text_script TextScriptChipTrader86C580C_unk13
 	ts_check_flag 0x1D, 0x17, 0xFF, 0x18
 	ts_check_navi_all 0xFF, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0xFF
 	ts_mugshot_show 0x37
@@ -227,9 +227,9 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk14
+	def_text_script TextScriptChipTrader86C580C_unk14
 
-	def_text_script TextScript6C580C_unk15
+	def_text_script TextScriptChipTrader86C580C_unk15
 	ts_msg_open_quick
 	ts_print_current_navi_ow
 	.string " handed over\n"
@@ -274,7 +274,7 @@ TextScriptChipTrader86C580C::
 	ts_start_chip_trader 0x1, 0x10
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk16
+	def_text_script TextScriptChipTrader86C580C_unk16
 	ts_check_flag 0x1D, 0x17, 0xFF, 0x19
 	ts_check_navi_all 0xFF, 0x19, 0x19, 0x19, 0x19, 0x19, 0x19, 0x19, 0x19, 0x19, 0x19, 0xFF
 	ts_clear_msg
@@ -287,22 +287,22 @@ TextScriptChipTrader86C580C::
 	ts_msg_close
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk17
+	def_text_script TextScriptChipTrader86C580C_unk17
 	ts_msg_close
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk18
+	def_text_script TextScriptChipTrader86C580C_unk18
 
-	def_text_script TextScript6C580C_unk19
+	def_text_script TextScriptChipTrader86C580C_unk19
 
-	def_text_script TextScript6C580C_unk20
+	def_text_script TextScriptChipTrader86C580C_unk20
 	ts_msg_open
 	.string "You don't have 3\n"
 	.string "chips in your Pack."
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk21
+	def_text_script TextScriptChipTrader86C580C_unk21
 	ts_clear_msg
 	ts_msg_open
 	.string "You don't have 3\n"
@@ -310,14 +310,14 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk22
+	def_text_script TextScriptChipTrader86C580C_unk22
 	ts_msg_open
 	.string "You don't have 10\n"
 	.string "chips in your Pack."
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk23
+	def_text_script TextScriptChipTrader86C580C_unk23
 	ts_clear_msg
 	ts_msg_open
 	.string "You don't have 10\n"
@@ -325,14 +325,14 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk24
+	def_text_script TextScriptChipTrader86C580C_unk24
 	ts_msg_open
 	.string "We don't have 10\n"
 	.string "BugFrags!"
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk25
+	def_text_script TextScriptChipTrader86C580C_unk25
 	ts_clear_msg
 	ts_msg_open
 	.string "We don't have 10\n"
@@ -340,28 +340,28 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk26
+	def_text_script TextScriptChipTrader86C580C_unk26
 	ts_msg_open
 	.string "You don't have 3\n"
 	.string "chips in your Pack."
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk27
+	def_text_script TextScriptChipTrader86C580C_unk27
 	ts_msg_open
 	.string "You don't have 3\n"
 	.string "chips in your Pack."
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk28
+	def_text_script TextScriptChipTrader86C580C_unk28
 	ts_msg_open
 	.string "We don't have 10\n"
 	.string "BugFrags!"
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk29
+	def_text_script TextScriptChipTrader86C580C_unk29
 	ts_clear_msg
 	ts_msg_open
 	.string "We don't have 10\n"
@@ -369,7 +369,7 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk30
+	def_text_script TextScriptChipTrader86C580C_unk30
 	ts_msg_open
 	ts_text_speed 0x0
 	.string "Add these 3?\n"
@@ -384,7 +384,7 @@ TextScriptChipTrader86C580C::
 	ts_msg_close_quick
 	ts_end
 
-	def_text_script TextScript6C580C_unk31
+	def_text_script TextScriptChipTrader86C580C_unk31
 	ts_msg_open
 	ts_text_speed 0x0
 	.string "Add these 10?\n"
@@ -399,7 +399,7 @@ TextScriptChipTrader86C580C::
 	ts_msg_close_quick
 	ts_end
 
-	def_text_script TextScript6C580C_unk32
+	def_text_script TextScriptChipTrader86C580C_unk32
 	ts_msg_open
 	ts_text_speed 0x0
 	.string "Add these 3?\n"
@@ -414,7 +414,7 @@ TextScriptChipTrader86C580C::
 	ts_msg_close_quick
 	ts_end
 
-	def_text_script TextScript6C580C_unk33
+	def_text_script TextScriptChipTrader86C580C_unk33
 	ts_msg_open
 	ts_text_speed 0x0
 	.string "Add these 3?\n"
@@ -429,7 +429,7 @@ TextScriptChipTrader86C580C::
 	ts_msg_close_quick
 	ts_end
 
-	def_text_script TextScript6C580C_unk34
+	def_text_script TextScriptChipTrader86C580C_unk34
 	ts_clear_msg
 	ts_msg_open
 	.string "Too bad,Lan. You\n"
@@ -438,7 +438,7 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk35
+	def_text_script TextScriptChipTrader86C580C_unk35
 	ts_clear_msg
 	ts_msg_open
 	.string "Too bad,Lan. You\n"
@@ -447,7 +447,7 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk36
+	def_text_script TextScriptChipTrader86C580C_unk36
 	ts_msg_open
 	ts_text_speed 0x0
 	.string "Add these 10?\n"
@@ -462,7 +462,7 @@ TextScriptChipTrader86C580C::
 	ts_msg_close_quick
 	ts_end
 
-	def_text_script TextScript6C580C_unk37
+	def_text_script TextScriptChipTrader86C580C_unk37
 	ts_msg_open
 	ts_text_speed 0x0
 	.string "Add these 10?\n"
@@ -477,7 +477,7 @@ TextScriptChipTrader86C580C::
 	ts_msg_close_quick
 	ts_end
 
-	def_text_script TextScript6C580C_unk38
+	def_text_script TextScriptChipTrader86C580C_unk38
 	ts_clear_msg
 	ts_msg_open
 	.string "Too bad,Lan. You\n"
@@ -486,7 +486,7 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk39
+	def_text_script TextScriptChipTrader86C580C_unk39
 	ts_clear_msg
 	ts_msg_open
 	.string "Too bad,Lan. You\n"
@@ -495,21 +495,21 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk40
+	def_text_script TextScriptChipTrader86C580C_unk40
 	ts_msg_open
 	.string "We don't have 10\n"
 	.string "BugFrags!"
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk41
+	def_text_script TextScriptChipTrader86C580C_unk41
 	ts_msg_open
 	.string "We don't have 10\n"
 	.string "BugFrags!"
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk42
+	def_text_script TextScriptChipTrader86C580C_unk42
 	ts_clear_msg
 	ts_msg_open
 	.string "We don't have 10\n"
@@ -517,7 +517,7 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk43
+	def_text_script TextScriptChipTrader86C580C_unk43
 	ts_clear_msg
 	ts_msg_open
 	.string "We don't have 10\n"
@@ -525,29 +525,29 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk44
+	def_text_script TextScriptChipTrader86C580C_unk44
 	ts_msg_open
 	.string "You don't have 10\n"
 	.string "chips in your Pack."
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk45
+	def_text_script TextScriptChipTrader86C580C_unk45
 	ts_msg_open
 	.string "You don't have 10\n"
 	.string "chips in your Pack."
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk46
+	def_text_script TextScriptChipTrader86C580C_unk46
 
-	def_text_script TextScript6C580C_unk47
+	def_text_script TextScriptChipTrader86C580C_unk47
 
-	def_text_script TextScript6C580C_unk48
+	def_text_script TextScriptChipTrader86C580C_unk48
 
-	def_text_script TextScript6C580C_unk49
+	def_text_script TextScriptChipTrader86C580C_unk49
 
-	def_text_script TextScript6C580C_unk50
+	def_text_script TextScriptChipTrader86C580C_unk50
 	ts_mugshot_show 0x35
 	ts_msg_open
 	.string "I am Otenko."
@@ -572,7 +572,7 @@ TextScriptChipTrader86C580C::
 	.string " No"
 	ts_select 0x6, 0x0, 0xFF, 0x34, 0xFF
 
-	def_text_script TextScript6C580C_unk51
+	def_text_script TextScriptChipTrader86C580C_unk51
 	ts_call_disable_mugshot_brighten
 	ts_mugshot_show 0x35
 	ts_msg_open_quick
@@ -590,7 +590,7 @@ TextScriptChipTrader86C580C::
 	ts_menu_select_crossover_trader
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk52
+	def_text_script TextScriptChipTrader86C580C_unk52
 	ts_call_disable_mugshot_brighten
 	ts_mugshot_show 0x35
 	ts_msg_open_quick
@@ -603,7 +603,7 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk53
+	def_text_script TextScriptChipTrader86C580C_unk53
 	ts_call_disable_mugshot_brighten
 	ts_mugshot_show 0x35
 	ts_msg_open_quick
@@ -619,7 +619,7 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0x34, 0xFF
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk54
+	def_text_script TextScriptChipTrader86C580C_unk54
 	ts_call_disable_mugshot_brighten
 	ts_mugshot_show 0x35
 	ts_msg_open_quick
@@ -628,7 +628,7 @@ TextScriptChipTrader86C580C::
 	ts_key_wait 0x0
 	ts_end
 
-	def_text_script TextScript6C580C_unk55
+	def_text_script TextScriptChipTrader86C580C_unk55
 	ts_msg_open_quick
 	ts_flag_set 0xF6, 0x0
 	ts_control_lock
@@ -665,7 +665,7 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0x34, 0xFF
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk56
+	def_text_script TextScriptChipTrader86C580C_unk56
 	ts_msg_open_quick
 	ts_control_lock
 	ts_wait 0x3C, 0x0
@@ -696,7 +696,7 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0x34, 0xFF
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk57
+	def_text_script TextScriptChipTrader86C580C_unk57
 	ts_msg_open_quick
 	ts_control_lock
 	ts_wait 0x3C, 0x0
@@ -724,7 +724,7 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0x34, 0xFF
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk58
+	def_text_script TextScriptChipTrader86C580C_unk58
 	ts_msg_open_quick
 	ts_flag_set 0xF6, 0x0
 	ts_control_lock
@@ -760,7 +760,7 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0x34, 0xFF
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk59
+	def_text_script TextScriptChipTrader86C580C_unk59
 	ts_msg_open_quick
 	ts_control_lock
 	ts_wait 0x3C, 0x0
@@ -789,7 +789,7 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0x34, 0xFF
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk60
+	def_text_script TextScriptChipTrader86C580C_unk60
 	ts_msg_open_quick
 	ts_control_lock
 	ts_wait 0x3C, 0x0
@@ -816,7 +816,7 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0x34, 0xFF
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk61
+	def_text_script TextScriptChipTrader86C580C_unk61
 	ts_msg_open_quick
 	ts_flag_set 0xF6, 0x0
 	ts_control_lock
@@ -852,7 +852,7 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0x34, 0xFF
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk62
+	def_text_script TextScriptChipTrader86C580C_unk62
 	ts_msg_open_quick
 	ts_control_lock
 	ts_wait 0x3C, 0x0
@@ -881,7 +881,7 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0x34, 0xFF
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk63
+	def_text_script TextScriptChipTrader86C580C_unk63
 	ts_msg_open_quick
 	ts_control_lock
 	ts_wait 0x3C, 0x0
@@ -908,9 +908,9 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0x34, 0xFF
 	ts_wait_hold 0x0, 0x0
 
-	def_text_script TextScript6C580C_unk64
+	def_text_script TextScriptChipTrader86C580C_unk64
 	.string " "
 	ts_clear_msg
-	.string " ボ$"
+	.string " ボ$  "
 
 	.balign 4, 0

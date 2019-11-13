@@ -37,4 +37,6 @@ TextScriptNaviNames0_inc:
 	.include "data/textscript/TextScriptNaviNames0.s"
 TextScriptNaviNames1_inc:
 	.include "data/textscript/TextScriptNaviNames1.s"
+TextScriptDustManUndernetTut_inc:
+	.include "data/textscript/TextScriptDustManUndernetTut.s"
 /*For debugging purposes, connect comment at any range!*/

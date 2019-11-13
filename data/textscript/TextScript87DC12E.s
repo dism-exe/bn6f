@@ -1,9 +1,7 @@
-// 87DC12E
 TextScript87DC12E::
-	text_script_start TextScript87DC12E
-	text_script_rel_pointers 0, 1
+	text_archive_start
 
-	text_script 0, scr_0
+	def_text_script TextScript87DC12E_unk0
 	ts_msg_open
 	ts_store_timer 0x0, 0x80
 	ts_mugshot_show 0x37
@@ -16,11 +14,11 @@ TextScript87DC12E::
 	ts_store_timer 0x0, 0x82
 	ts_end
 
-	text_script 1, scr_1
+	def_text_script TextScript87DC12E_unk1
 	ts_msg_open
 	.string "The darkness is\n"
 	.string "disappearing!!"
 	ts_key_wait 0x0
-	ts_end
+	.string "$ "
 
 	.balign 4, 0
