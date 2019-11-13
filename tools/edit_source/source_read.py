@@ -103,11 +103,14 @@ class AsmFile:
 
         if has_label(line):
             label_end = self._find_label_end(line_num)
+
+            # check if we;re at an include directive
+            for i, line in enumerate(self.lines[line_num:label_end]):
+                if '.include' in line:
+                    content = ''.join(self.lines[line_num:line_num + i + 1])
+                    return AsmFile.Unit(AsmFile.UNITS.DIRECTIVE_INCLUDE, content, self.file_path, line_num)
+
             content = ''.join(self.lines[line_num:label_end])
-            if '.include' in content:
-                return AsmFile.Unit(AsmFile.UNITS.DIRECTIVE_INCLUDE, content, self.file_path, line_num)
-
-
             return AsmFile.Unit(AsmFile.UNITS.LABEL, content, self.file_path, line_num)
 
         logging.error('unknown unit at %s:%d' % (self.file_path, line_num))
