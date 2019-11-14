@@ -2019,8 +2019,8 @@ signed int __fastcall sub_3007218(int a1, int a2)
                     v13 = *(v3 + 18);
                     if ( v13 )
                         *(v2 + 164) = v13;
-                    v14 = sub_3007432(*(v2 + 2), *(v3 + 2)) + 1;
-                    v15 = v14 + sub_30074E2(*(v2 + 24), *(v3 + 25));
+                    v14 = getPrimaryElementWeaknessMultipler_3007432(*(v2 + 2), *(v3 + 2)) + 1;
+                    v15 = v14 + getSecondaryElementWeaknessMultipler_30074e2(*(v2 + 24), *(v3 + 25));
                     *(v2 + 117) = v15 - 1;
                     v16 = v15 + sub_30074BA();
                     v17 = v16 + sub_30074A2();
@@ -2030,7 +2030,7 @@ signed int __fastcall sub_3007218(int a1, int a2)
                     if ( v19 == 3 )
                         *(v2 + 120) += v18;
                     *(v2 + 2 * v19 + 130) += v18 * v17;
-                    result = sub_300766C(v2, v3);
+                    result = applyHeatOnGrassDamage_300766c(v2, v3);
                     *(v2 + 130) += result;
                     *(v2 + 160) += *(v3 + 100);
                 }
@@ -2055,7 +2055,7 @@ signed int __fastcall sub_3007218(int a1, int a2)
 
 
 // 0x3007432
-int __fastcall sub_3007432(int a1, int a2)
+int __fastcall getPrimaryElementWeaknessMultipler_3007432(int a1, int a2)
 {
     return *(*byte_3007440 + 5 * a1 + a2);
 }
@@ -2133,7 +2133,7 @@ signed int sub_30074BA()
 
 
 // 0x30074e2
-signed int __fastcall sub_30074E2(int a1, int a2)
+signed int __fastcall getSecondaryElementWeaknessMultipler_30074e2(int a1, int a2)
 {
     int v2; // r7
     signed int v3; // r2
@@ -2287,7 +2287,7 @@ int __fastcall sub_3007650(int result, int a2)
 
 
 // 0x300766c
-int __fastcall sub_300766C(int a1, int a2)
+int __fastcall applyHeatOnGrassDamage_300766c(int a1, int a2)
 {
     int v2; // r4
     int v3; // r0
@@ -2326,7 +2326,7 @@ int __fastcall sub_3007692(int a1, int a2)
             *(v2 + 119) |= *(v3 + 25);
             v7 = 2 * *(v3 + 2) + 148;
             *(v2 + v7) += *(v3 + 46);
-            result = sub_300766C(v2, v3);
+            result = applyHeatOnGrassDamage_300766c(v2, v3);
             *(v2 + 148) += result;
         }
     }

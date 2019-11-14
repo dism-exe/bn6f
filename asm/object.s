@@ -4677,7 +4677,7 @@ object_calculateFinalDamage1:
 	mov r4, #0
 	mov r6, #0
 	ldrb r1, [r0,#2]
-	cmp r1, #5
+	cmp r1, #5 // holy panel?
 	bne loc_800E3F6
 	add r4, #1
 loc_800E3F6:
@@ -4685,7 +4685,7 @@ loc_800E3F6:
 	lsl r6, r4
 	sub r6, #1
 	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
-	add r3, #0x82
+	add r3, #oCollisionData_PanelDamage1
 	mov r1, #5
 	mov r0, #0
 loc_800E404:
@@ -4699,7 +4699,7 @@ loc_800E404:
 	bgt loc_800E404
 	bl sub_802CE10
 	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
-	add r3, #0x80
+	add r3, #oCollisionData_FinalDamage
 	strh r0, [r3]
 	pop {r4,r6,pc}
 	thumb_func_end object_calculateFinalDamage1

@@ -604,7 +604,7 @@ sub_800F1DC:
 	bgt locret_800F204
 loc_800F1EC:
 	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
-	ldrb r2, [r3,#oCollisionData_Unk_06]
+	ldrb r2, [r3,#oCollisionData_Barrier]
 	cmp r2, #0
 	beq locret_800F204
 	cmp r2, #0x10
@@ -11017,11 +11017,12 @@ sub_8013F1E:
 	ldr r0, [r1,#oCollisionData_FlagsFromCollision]
 	cmp r0, #0
 	beq locret_8013F68
-	add r1, #0x82
-	ldr r0, [r1]
-	ldr r2, [r1,#4]
+	// misaligned word reads, base is 0x82
+	add r1, #oCollisionData_PanelDamage1
+	ldr r0, [r1,#oCollisionData_PanelDamage1and2 - oCollisionData_PanelDamage1]
+	ldr r2, [r1,#oCollisionData_PanelDamage3and4 - oCollisionData_PanelDamage1]
 	add r0, r0, r2
-	ldr r2, [r1,#8]
+	ldr r2, [r1,#oCollisionData_PanelDamage5and6 - oCollisionData_PanelDamage1]
 	add r0, r0, r2
 	cmp r0, #0
 	beq locret_8013F68
@@ -14668,7 +14669,7 @@ sub_8015C12:
 	push {r4,lr}
 	mov r4, r1
 	bl GetBattleNaviStatsAddr // (int idx) -> void*
-	ldrb r1, [r0,#0xe]
+	ldrb r1, [r0,#oNaviStats_Mood]
 	tst r1, r1
 	beq locret_8015C2A
 	sub r1, r1, r4
@@ -14676,7 +14677,7 @@ sub_8015C12:
 	bge loc_8015C28
 	mov r1, #1
 loc_8015C28:
-	strb r1, [r0,#0xe]
+	strb r1, [r0,#oNaviStats_Mood]
 locret_8015C2A:
 	pop {r4,pc}
 	thumb_func_end sub_8015C12
@@ -20396,7 +20397,7 @@ sub_801A200:
 	mov r2, #1
 	eor r0, r2
 	mov r6, r0
-	mov r1, #0x2c 
+	mov r1, #oNaviStats_Transformation
 	bl GetBattleNaviStatsByte
 	mov r2, r0
 	cmp r2, #0
@@ -21219,7 +21220,7 @@ off_801A7C8: .word 0x4B0
 	thumb_func_start sub_801A7CC
 sub_801A7CC:
 	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
-	strb r0, [r3,#oCollisionData_Unk_06]
+	strb r0, [r3,#oCollisionData_Barrier]
 	ldr r1, off_801A7F0 // =byte_8020B8C 
 	ldrb r1, [r1,r0]
 	strb r1, [r3,#oCollisionData_Unk_14]
@@ -21245,7 +21246,7 @@ sub_801A7F4:
 	str r0, [r1,#oAIData_Unk_60]
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
 	mov r1, #0
-	strb r1, [r0,#oCollisionData_Unk_06]
+	strb r1, [r0,#oCollisionData_Barrier]
 	mov pc, lr
 	thumb_func_end sub_801A7F4
 
@@ -21257,7 +21258,7 @@ sub_801A802:
 	pop {r4,r6,pc}
 loc_801A80C:
 	ldr r4, [r5,#oBattleObject_CollisionDataPtr]
-	ldrb r6, [r4,#oCollisionData_Unk_06]
+	ldrb r6, [r4,#oCollisionData_Barrier]
 	cmp r6, #0
 	bne loc_801A816
 	b locret_801A9A2
@@ -21299,7 +21300,7 @@ loc_801A84A:
 	beq loc_801A860
 loc_801A854:
 	mov r6, #0x10
-	strb r6, [r4,#oCollisionData_Unk_06]
+	strb r6, [r4,#oCollisionData_Barrier]
 	mov r0, #0
 	strh r0, [r4,#oCollisionData_Unk_16]
 	ldrb r0, [r4,#oCollisionData_HitModifierFinal]
@@ -21309,7 +21310,7 @@ loc_801A860:
 	beq loc_801A888
 	cmp r6, #0xa
 	beq loc_801A8AE
-	ldrb r0, [r4,#oCollisionData_Unk_06]
+	ldrb r0, [r4,#oCollisionData_Barrier]
 	cmp r0, #0x10
 	beq loc_801A874
 	bl battle_isTimeStop
@@ -21323,7 +21324,7 @@ loc_801A874:
 	strh r0, [r4,#oCollisionData_Unk_1a_1b]
 	bgt loc_801A8E0
 	mov r0, #0
-	strb r0, [r4,#oCollisionData_Unk_06]
+	strb r0, [r4,#oCollisionData_Barrier]
 	b loc_801A8E0
 loc_801A888:
 	ldrh r1, [r4,#oCollisionData_Unk_16]
@@ -21397,7 +21398,7 @@ loc_801A8FA:
 	beq loc_801A916
 loc_801A90A:
 	mov r0, #0
-	strb r0, [r4,#oCollisionData_Unk_06]
+	strb r0, [r4,#oCollisionData_Barrier]
 	mov r0, #0
 	strh r0, [r4,#oCollisionData_Unk_1a_1b]
 	strb r0, [r4,#oCollisionData_Unk_16]
@@ -21439,11 +21440,11 @@ loc_801A948:
 	beq loc_801A968
 	cmp r6, #0xa
 	beq loc_801A968
-	ldrb r0, [r4,#oCollisionData_Unk_06]
+	ldrb r0, [r4,#oCollisionData_Barrier]
 	cmp r0, #0x10
 	beq loc_801A968
 	mov r0, #0
-	strb r0, [r4,#oCollisionData_Unk_06]
+	strb r0, [r4,#oCollisionData_Barrier]
 loc_801A968:
 	mov r0, #0
 	strh r0, [r4,#oCollisionData_Unk_1a_1b]
@@ -22087,7 +22088,7 @@ loc_801AF5E:
 	bl sub_801A4A6
 	bl sub_801A45C
 	bl sub_801A506
-	bl sub_801BA12
+	bl applyDamageToPlayer_801ba12
 	bl sub_801BADE
 	bl object_getFlag // () -> int
 	mov r1, #1
@@ -23348,9 +23349,9 @@ locret_801BA10:
 	thumb_func_end sub_801B9E6
 
 	thumb_local_start
-sub_801BA12:
+applyDamageToPlayer_801ba12:
 	push {r4,lr}
-	mov r0, #0x80
+	mov r0, #oCollisionData_FinalDamage
 	ldrh r4, [r6,r0]
 	tst r4, r4
 	beq loc_801BA68
@@ -23359,6 +23360,7 @@ sub_801BA12:
 	ldrh r1, [r5,#oBattleObject_HP]
 	cmp r1, #1
 	ble loc_801BA3A
+	// undershirt?
 	bl object_getFlag // () -> int
 	ldr r1, dword_801BB14 // =0x40000 
 	tst r0, r1
@@ -23407,7 +23409,7 @@ loc_801BA86:
 loc_801BA8C:
 	bl sub_801A200
 	pop {r4,pc}
-	thumb_func_end sub_801BA12
+	thumb_func_end applyDamageToPlayer_801ba12
 
 	thumb_local_start
 sub_801BA92:

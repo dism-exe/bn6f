@@ -82793,7 +82793,7 @@ sub_80E0C74:
 	beq loc_80E0C92
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldr r3, [r0,#oBattleObject_CollisionDataPtr]
-	ldrb r0, [r3,#oCollisionData_Unk_06]
+	ldrb r0, [r3,#oCollisionData_Barrier]
 	cmp r0, #0
 	beq loc_80E0C92
 	cmp r0, #0x10
@@ -82839,7 +82839,7 @@ loc_80E0CC6:
 loc_80E0CCA:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldr r3, [r0,#oBattleObject_CollisionDataPtr]
-	ldrb r0, [r3,#oCollisionData_Unk_06]
+	ldrb r0, [r3,#oCollisionData_Barrier]
 	cmp r0, #0
 	beq loc_80E0D1C
 	ldrb r0, [r3,#oCollisionData_Unk_16]
@@ -102754,7 +102754,7 @@ loc_80EA1D8:
 	tst r0, r0
 	beq loc_80EA220
 	ldr r3, [r4,#oBattleObject_CollisionDataPtr]
-	ldrb r0, [r3,#oCollisionData_Unk_06]
+	ldrb r0, [r3,#oCollisionData_Barrier]
 	cmp r0, #0
 	beq loc_80EA220
 	ldrh r0, [r3,#oCollisionData_Unk_16]
@@ -165423,7 +165423,7 @@ sub_810AB8C:
 sub_810ABD0:
 	push {r4,lr}
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
-	ldrb r0, [r0,#oCollisionData_Unk_06]
+	ldrb r0, [r0,#oCollisionData_Barrier]
 	tst r0, r0
 	bne locret_810ABF4
 	mov r0, #0x7e 

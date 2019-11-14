@@ -16852,7 +16852,7 @@ void __fastcall sub_801AF44(int a1)
     v4 = sub_801A4A6();
     sub_801A45C(v4);
     sub_801A506();
-    sub_801BA12();
+    applyDamageToPlayer_801ba12();
     sub_801BADE();
     if ( object_getFlag() & 0x100 )
         goto LABEL_42;
@@ -17603,7 +17603,7 @@ int __fastcall sub_801B9E6(void **a1)
 
 
 // 0x801ba12
-char *sub_801BA12()
+char *applyDamageToPlayer_801ba12()
 {
     Battle *v0; // r5
     int v1; // r6
