@@ -1,3 +1,6 @@
+	.ifndef CONSTANTS_INC
+	.set CONSTANTS_INC, 0
+
 	.include "constants/gba_constants.inc"
 	.include "constants/GameAreas.inc"
 	.include "constants/SoundOffsets.inc"
@@ -64,3 +67,5 @@
 	enum NAVI_GROUNDMAN // 9
 	enum NAVI_DUSTMAN // 10
 	enum NAVI_PROTOMAN // 11
+
+	.endif // CONSTANTS_INC

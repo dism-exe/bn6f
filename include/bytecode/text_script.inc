@@ -1,8 +1,11 @@
 	.ifndef TEXT_SCRIPT_INC
 	.set TEXT_SCRIPT_INC, 0
 
+    .include "constants/constants.inc"
+
 	__subsection_id = 0
 	__cur_text_script_id = 0
+
 
 
 	.macro text_archive_start

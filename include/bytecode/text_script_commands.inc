@@ -10,8 +10,10 @@
 	.byte 0xE6
 	.endm
 	
-    .macro ts_key_wait p0:req
-	.byte 0xE7, \p0
+	// Pauses script execution until a button is pressed.
+	// :param any: If true, any button can be pressed; otherwise, only A and B will have an effect.
+    .macro ts_key_wait any:req
+	.byte 0xE7, \any
 	.endm
 	
     .macro ts_msg_open
