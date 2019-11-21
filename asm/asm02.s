@@ -440,6 +440,7 @@ off_8021D84: .word byte_8021D8A
 
 text_8021D88:
 	.include "data/textscript/TextScriptJap8021D88.s"
+	.word 0x0
 
 off_8021D94: .word unk_203A0A0
 off_8021D98: .word 0x2E0
