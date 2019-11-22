@@ -44,7 +44,7 @@ CompText86D0544::
 
 	def_text_script CompText86D0544_unk3
 	ts_clear_msg
-	.string " さ$"
+	.string " さ@"
 
 	def_text_script CompText86D0544_unk4
 
@@ -105,7 +105,7 @@ CompText86D0544::
 
 	def_text_script CompText86D0544_unk13
 	ts_clear_msg
-	.string " さ$"
+	.string " さ@"
 
 	def_text_script CompText86D0544_unk14
 

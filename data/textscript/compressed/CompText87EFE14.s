@@ -206,19 +206,19 @@ CompText87EFE14::
 	]
 
 	def_text_script CompText87EFE14_unk8
-	.string "Rank:C Rank$"
+	.string "Rank:C Rank@"
 
 	def_text_script CompText87EFE14_unk9
-	.string "Rank:B Rank$"
+	.string "Rank:B Rank@"
 
 	def_text_script CompText87EFE14_unk10
-	.string "Rank:A Rank$"
+	.string "Rank:A Rank@"
 
 	def_text_script CompText87EFE14_unk11
-	.string "Rank:S Rank$"
+	.string "Rank:S Rank@"
 
 	def_text_script CompText87EFE14_unk12
-	.string "Rank:Master$"
+	.string "Rank:Master@"
 
 	def_text_script CompText87EFE14_unk13
 	ts_check_flag [
@@ -468,7 +468,7 @@ CompText87EFE14::
 	]
 
 	def_text_script CompText87EFE14_unk18
-	.string "RqustBBS$"
+	.string "RqustBBS@"
 
 	def_text_script CompText87EFE14_unk19
 

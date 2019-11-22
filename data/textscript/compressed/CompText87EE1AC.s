@@ -233,19 +233,19 @@ CompText87EE1AC::
 	]
 
 	def_text_script CompText87EE1AC_unk6
-	.string "EndlsSmmrBBS$"
+	.string "EndlsSmmrBBS@"
 
 	def_text_script CompText87EE1AC_unk7
-	.string "GreenBBS    $"
+	.string "GreenBBS    @"
 
 	def_text_script CompText87EE1AC_unk8
-	.string "BlueSkyBBS  $"
+	.string "BlueSkyBBS  @"
 
 	def_text_script CompText87EE1AC_unk9
-	.string "OasisBBS    $"
+	.string "OasisBBS    @"
 
 	def_text_script CompText87EE1AC_unk10
-	.string "UnderBBS    $"
+	.string "UnderBBS    @"
 
 	def_text_script CompText87EE1AC_unk11
 	ts_position_text [

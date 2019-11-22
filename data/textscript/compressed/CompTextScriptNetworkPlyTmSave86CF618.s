@@ -10,39 +10,39 @@ CompTextScriptNetworkPlyTmSave86CF618::
 	text_archive_start
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk0
-	.string "PlyTm$"
+	.string "PlyTm@"
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk1
-	.string "Libry$"
+	.string "Libry@"
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk2
-	.string "Chips$"
+	.string "Chips@"
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk3
-	.string "Crdts$"
+	.string "Crdts@"
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk4
 	.string "  "
 	ts_clear_msg
 	.string " さ:"
 	ts_clear_msg
-	.string "0さ$"
+	.string "0さ@"
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk5
-	.string "S/M/G$"
+	.string "S/M/G@"
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk6
 	ts_clear_msg
-	.string " ボ[z]$"
+	.string " ボ[z]@"
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk7
 	ts_clear_msg
-	.string " 2$"
+	.string " 2@"
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk8
 	.string " "
 	ts_clear_msg
-	.string " ボ$"
+	.string " ボ@"
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk9
 

@@ -11,31 +11,31 @@ CompText86CFAF8::
 
 	def_text_script CompText86CFAF8_unk0
 	.string "Recovers\n"
-	.string "50HP!$"
+	.string "50HP!@"
 
 	def_text_script CompText86CFAF8_unk1
 	.string "Recovers\n"
-	.string "max HP!$"
+	.string "max HP!@"
 
 	def_text_script CompText86CFAF8_unk2
 	.string "No weak\n"
 	.string "viruses for\n"
-	.string "a while.$"
+	.string "a while.@"
 
 	def_text_script CompText86CFAF8_unk3
 	.string "Remove trap\n"
 	.string "on mystery\n"
-	.string "data.$"
+	.string "data.@"
 
 	def_text_script CompText86CFAF8_unk4
 	.string "More likely\n"
 	.string "to meet\n"
-	.string "last enemy.$"
+	.string "last enemy.@"
 
 	def_text_script CompText86CFAF8_unk5
 	.string "Unlocks\n"
 	.string "mystery\n"
-	.string "data.$"
+	.string "data.@"
 
 	def_text_script CompText86CFAF8_unk6
 	ts_msg_open_menu

@@ -5,7 +5,7 @@ TextScript8736D74::
 	ts_end
 
 	def_text_script TextScript8736D74_unk1
-	.string "BugFrags$"
+	.string "BugFrags@"
 
 	def_text_script TextScript8736D74_unk2
 
@@ -15,23 +15,23 @@ TextScript8736D74::
 
 	def_text_script TextScript8736D74_unk5
 	ts_clear_msg
-	.string " ブ [z]$"
+	.string " ブ [z]@"
 
 	def_text_script TextScript8736D74_unk6
 	ts_clear_msg
-	.string " ヂ$"
+	.string " ヂ@"
 
 	def_text_script TextScript8736D74_unk7
-	.string "      HP+$"
+	.string "      HP+@"
 
 	def_text_script TextScript8736D74_unk8
-	.string "     HP+$"
+	.string "     HP+@"
 
 	def_text_script TextScript8736D74_unk9
-	.string "    HP+$"
+	.string "    HP+@"
 
 	def_text_script TextScript8736D74_unk10
-	.string "    HP MAX$"
+	.string "    HP MAX@"
 
 	def_text_script TextScript8736D74_unk11
 	ts_mugshot_show [
@@ -321,6 +321,6 @@ TextScript8736D74::
 	]
 
 	def_text_script TextScript8736D74_unk41
-	.string "--------$  "
+	.string "--------@  "
 
 	.balign 4, 0

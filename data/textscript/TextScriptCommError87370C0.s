@@ -689,7 +689,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$I'll put an end to\n"
+	.string "@I'll put an end to\n"
 	.string "this battle!\n"
 	.string "Make sure to save!"
 	ts_key_wait [
@@ -841,7 +841,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$You can't use the\n"
+	.string "@You can't use the\n"
 	.string "Chip Gate here!\n"
 	.string "Battle routine,set!"
 	ts_key_wait [
@@ -1057,7 +1057,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk93
 	ts_mugshot_show [
@@ -1069,7 +1069,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk94
 	ts_mugshot_show [
@@ -1081,7 +1081,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk95
 	ts_mugshot_show [
@@ -1093,7 +1093,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk96
 	ts_mugshot_show [
@@ -1105,7 +1105,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk97
 	ts_mugshot_show [
@@ -1117,7 +1117,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk98
 	ts_mugshot_show [
@@ -1129,7 +1129,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk99
 	ts_mugshot_show [
@@ -1141,7 +1141,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk100
 	ts_mugshot_show [
@@ -1153,7 +1153,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk101
 	ts_mugshot_show [
@@ -1165,7 +1165,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk102
 	ts_mugshot_show [
@@ -1177,7 +1177,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk103
 	ts_mugshot_show [
@@ -1189,7 +1189,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk104
 
@@ -1223,7 +1223,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk116
 	ts_mugshot_show [
@@ -1235,7 +1235,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk117
 	ts_mugshot_show [
@@ -1247,7 +1247,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk118
 	ts_mugshot_show [
@@ -1259,7 +1259,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk119
 	ts_mugshot_show [
@@ -1271,7 +1271,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk120
 	ts_mugshot_show [
@@ -1283,7 +1283,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk121
 	ts_mugshot_show [
@@ -1295,7 +1295,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk122
 	ts_mugshot_show [
@@ -1307,7 +1307,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk123
 	ts_mugshot_show [
@@ -1319,7 +1319,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk124
 	ts_mugshot_show [
@@ -1331,7 +1331,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk125
 	ts_mugshot_show [
@@ -1343,7 +1343,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk126
 	ts_mugshot_show [
@@ -1355,7 +1355,7 @@ TextScriptCommError87370C0::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$4"
+	.string "@4"
 
 	def_text_script TextScriptCommError87370C0_unk127
 

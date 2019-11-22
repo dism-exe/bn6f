@@ -192,38 +192,38 @@ CompTextScript86D78C0::
 	def_text_script CompTextScript86D78C0_unk5
 	.string "Attack LV"
 	ts_clear_msg
-	.string " ダ$"
+	.string " ダ@"
 
 	def_text_script CompTextScript86D78C0_unk6
 	.string "Speed  LV"
 	ts_clear_msg
-	.string " ダ$"
+	.string " ダ@"
 
 	def_text_script CompTextScript86D78C0_unk7
 	.string "Charge LV"
 	ts_clear_msg
-	.string " ダ$"
+	.string " ダ@"
 
 	def_text_script CompTextScript86D78C0_unk8
 	.string "Reg.Mem "
 	ts_clear_msg
-	.string " ダ[MB]$"
+	.string " ダ[MB]@"
 
 	def_text_script CompTextScript86D78C0_unk9
 	.string "MegaChip "
 	ts_clear_msg
-	.string " ダ$"
+	.string " ダ@"
 
 	def_text_script CompTextScript86D78C0_unk10
 	.string "GigaChip "
 	ts_clear_msg
-	.string " ダ$"
+	.string " ダ@"
 
 	def_text_script CompTextScript86D78C0_unk11
-	.string "Pwr ChargeS$"
+	.string "Pwr ChargeS@"
 
 	def_text_script CompTextScript86D78C0_unk12
-	.string "Pwr Custom$"
+	.string "Pwr Custom@"
 
 	def_text_script CompTextScript86D78C0_unk13
 	ts_msg_open_menu_quick
@@ -274,7 +274,7 @@ CompTextScript86D78C0::
 	def_text_script CompTextScript86D78C0_unk14
 	.string "DarkChip "
 	ts_clear_msg
-	.string " ダ$"
+	.string " ダ@"
 
 	def_text_script CompTextScript86D78C0_unk15
 	ts_msg_open_menu_quick
@@ -398,10 +398,10 @@ CompTextScript86D78C0::
 	def_text_script CompTextScript86D78C0_unk18
 	.string "V"
 	ts_clear_msg
-	.string "01$"
+	.string "01@"
 
 	def_text_script CompTextScript86D78C0_unk19
-	.string "SP $"
+	.string "SP @"
 
 	def_text_script CompTextScript86D78C0_unk20
 
@@ -671,43 +671,43 @@ CompTextScript86D78C0::
 	def_text_script CompTextScript86D78C0_unk69
 
 	def_text_script CompTextScript86D78C0_unk70
-	.string "Pwr HeatArm$"
+	.string "Pwr HeatArm@"
 
 	def_text_script CompTextScript86D78C0_unk71
-	.string "Pwr SpoutHs$"
+	.string "Pwr SpoutHs@"
 
 	def_text_script CompTextScript86D78C0_unk72
-	.string "Pwr ThrustT$"
+	.string "Pwr ThrustT@"
 
 	def_text_script CompTextScript86D78C0_unk73
-	.string "Pwr   TEdge$"
+	.string "Pwr   TEdge@"
 
 	def_text_script CompTextScript86D78C0_unk74
-	.string "Pwr   TBolt$"
+	.string "Pwr   TBolt@"
 
 	def_text_script CompTextScript86D78C0_unk75
-	.string "Pwr  TSwing$"
+	.string "Pwr  TSwing@"
 
 	def_text_script CompTextScript86D78C0_unk76
-	.string "Pwr  TSwing$"
+	.string "Pwr  TSwing@"
 
 	def_text_script CompTextScript86D78C0_unk77
-	.string "Pwr HSickle$"
+	.string "Pwr HSickle@"
 
 	def_text_script CompTextScript86D78C0_unk78
-	.string "Pwr  CrazyL$"
+	.string "Pwr  CrazyL@"
 
 	def_text_script CompTextScript86D78C0_unk79
-	.string "Pwr SReborn$"
+	.string "Pwr SReborn@"
 
 	def_text_script CompTextScript86D78C0_unk80
-	.string "Pwr  DAttkr$"
+	.string "Pwr  DAttkr@"
 
 	def_text_script CompTextScript86D78C0_unk81
-	.string "Pwr    None$"
+	.string "Pwr    None@"
 
 	def_text_script CompTextScript86D78C0_unk82
-	.string "Pwr WideSwd$"
+	.string "Pwr WideSwd@"
 
 	def_text_script CompTextScript86D78C0_unk83
 

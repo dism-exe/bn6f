@@ -340,9 +340,9 @@ CompText86D55C8::
 	def_text_script CompText86D55C8_unk9
 
 	def_text_script CompText86D55C8_unk10
-	.string "RUN...$"
+	.string "RUN...@"
 
 	def_text_script CompText86D55C8_unk11
-	.string "OK$"
+	.string "OK@"
 
 	

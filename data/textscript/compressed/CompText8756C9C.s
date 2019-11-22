@@ -454,7 +454,7 @@ CompText8756C9C::
 
 	def_text_script CompText8756C9C_unk25
 	ts_clear_msg
-	.string " ボ$"
+	.string " ボ@"
 
 	def_text_script CompText8756C9C_unk26
 

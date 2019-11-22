@@ -594,6 +594,6 @@ CompText873ECC8::
 	ts_end
 
 	def_text_script CompText873ECC8_unk47
-	.string "RUN?$"
+	.string "RUN?@"
 
 	

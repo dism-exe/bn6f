@@ -2,46 +2,46 @@ TextScriptNaviNames0::
 	text_archive_start
 
 	def_text_script TextScriptNaviNames0_unk0
-	.string "MegaMan$"
+	.string "MegaMan@"
 
 	def_text_script TextScriptNaviNames0_unk1
-	.string "HeatMan$"
+	.string "HeatMan@"
 
 	def_text_script TextScriptNaviNames0_unk2
-	.string "ElecMan$"
+	.string "ElecMan@"
 
 	def_text_script TextScriptNaviNames0_unk3
-	.string "SlashMan$"
+	.string "SlashMan@"
 
 	def_text_script TextScriptNaviNames0_unk4
-	.string "EraseMan$"
+	.string "EraseMan@"
 
 	def_text_script TextScriptNaviNames0_unk5
-	.string "ChargeMan$"
+	.string "ChargeMan@"
 
 	def_text_script TextScriptNaviNames0_unk6
-	.string "SpoutMan$"
+	.string "SpoutMan@"
 
 	def_text_script TextScriptNaviNames0_unk7
-	.string "TmhkMan$"
+	.string "TmhkMan@"
 
 	def_text_script TextScriptNaviNames0_unk8
-	.string "TenguMan$"
+	.string "TenguMan@"
 
 	def_text_script TextScriptNaviNames0_unk9
-	.string "GroundMan$"
+	.string "GroundMan@"
 
 	def_text_script TextScriptNaviNames0_unk10
-	.string "DustMan$"
+	.string "DustMan@"
 
 	def_text_script TextScriptNaviNames0_unk11
-	.string "ProtoMan$"
+	.string "ProtoMan@"
 
 	def_text_script TextScriptNaviNames0_unk12
-	.string "BlastMan$"
+	.string "BlastMan@"
 
 	def_text_script TextScriptNaviNames0_unk13
-	.string "DiveMan$"
+	.string "DiveMan@"
 
 	def_text_script TextScriptNaviNames0_unk14
 

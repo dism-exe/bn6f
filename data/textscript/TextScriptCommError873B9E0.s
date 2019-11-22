@@ -366,7 +366,7 @@ TextScriptCommError873B9E0::
 	def_text_script TextScriptCommError873B9E0_unk39
 
 	def_text_script TextScriptCommError873B9E0_unk40
-	.string "THANK YOU FOR PLAYING!!$"
+	.string "THANK YOU FOR PLAYING!!@"
 
 	def_text_script TextScriptCommError873B9E0_unk41
 

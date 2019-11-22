@@ -3,7 +3,7 @@ TextScriptJap8021D88:
 	// rel. pointer
 	.hword 0x2
 byte_8021D8A:
-	.string "ザザザザ$"
+	.string "ザザザザ@"
 	.balign 4, 0
 
 

@@ -152,7 +152,7 @@ CompText875F038::
 
 	def_text_script CompText875F038_unk6
 	ts_clear_msg
-	.string " ボ$"
+	.string " ボ@"
 
 	def_text_script CompText875F038_unk7
 	ts_check_navi_all [

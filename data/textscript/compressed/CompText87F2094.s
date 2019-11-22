@@ -380,21 +380,21 @@ CompText87F2094::
 
 	def_text_script CompText87F2094_unk13
 	ts_clear_msg
-	.string " ボ$"
+	.string " ボ@"
 
 	def_text_script CompText87F2094_unk14
 	ts_clear_msg
-	.string " ボ[z]$"
+	.string " ボ[z]@"
 
 	def_text_script CompText87F2094_unk15
 	ts_clear_msg
-	.string " ボ[z]$"
+	.string " ボ[z]@"
 
 	def_text_script CompText87F2094_unk16
 	ts_end
 
 	def_text_script CompText87F2094_unk17
-	.string "-------$"
+	.string "-------@"
 
 	def_text_script CompText87F2094_unk18
 	ts_call_disable_mugshot_brighten

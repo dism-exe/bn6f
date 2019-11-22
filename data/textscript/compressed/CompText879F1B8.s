@@ -300,7 +300,7 @@ CompText879F1B8::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$Thank you for\n"
+	.string "@Thank you for\n"
 	.string "your business!"
 	ts_key_wait [
 		any: 0x0,
@@ -390,7 +390,7 @@ CompText879F1B8::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$Thank you for\n"
+	.string "@Thank you for\n"
 	.string "your business!"
 	ts_key_wait [
 		any: 0x0,

@@ -81,7 +81,7 @@ CompText8779B1C::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$!"
+	.string "@!"
 
 	def_text_script CompText8779B1C_unk3
 	ts_mugshot_show [

@@ -1272,6 +1272,6 @@ TextScript873D108::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$ "
+	.string "@ "
 
 	.balign 4, 0

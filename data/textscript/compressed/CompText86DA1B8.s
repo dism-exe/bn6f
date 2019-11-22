@@ -381,53 +381,53 @@ CompText86DA1B8::
 	]
 
 	def_text_script CompText86DA1B8_unk19
-	.string "NetBattle$"
+	.string "NetBattle@"
 
 	def_text_script CompText86DA1B8_unk20
-	.string "Compare$"
+	.string "Compare@"
 
 	def_text_script CompText86DA1B8_unk21
-	.string "Trade$"
+	.string "Trade@"
 
 	def_text_script CompText86DA1B8_unk22
-	.string "SnglBattl$"
+	.string "SnglBattl@"
 
 	def_text_script CompText86DA1B8_unk23
-	.string "TrplBattl$"
+	.string "TrplBattl@"
 
 	def_text_script CompText86DA1B8_unk24
-	.string "RandBattl$"
+	.string "RandBattl@"
 
 	def_text_script CompText86DA1B8_unk25
-	.string "Practice$"
+	.string "Practice@"
 
 	def_text_script CompText86DA1B8_unk26
-	.string "Battle$"
+	.string "Battle@"
 
 	def_text_script CompText86DA1B8_unk27
-	.string "CompLibry$"
+	.string "CompLibry@"
 
 	def_text_script CompText86DA1B8_unk28
-	.string "CompRecrd$"
+	.string "CompRecrd@"
 
 	def_text_script CompText86DA1B8_unk29
-	.string "BattlChps$"
+	.string "BattlChps@"
 
 	def_text_script CompText86DA1B8_unk30
-	.string "Program$"
+	.string "Program@"
 
 	def_text_script CompText86DA1B8_unk31
-	.string "Folder$"
+	.string "Folder@"
 
 	def_text_script CompText86DA1B8_unk32
-	.string "NetBattle Results$"
+	.string "NetBattle Results@"
 
 	def_text_script CompText86DA1B8_unk33
 	.string "  "
 	ts_clear_msg
 	.string " ヂB"
 	ts_clear_msg
-	.string "0ヂW$"
+	.string "0ヂW@"
 
 	def_text_script CompText86DA1B8_unk34
 
@@ -732,7 +732,7 @@ CompText86DA1B8::
 	]
 
 	def_text_script CompText86DA1B8_unk49
-	.string "None$"
+	.string "None@"
 
 	def_text_script CompText86DA1B8_unk50
 	ts_msg_open_menu_quick
@@ -1181,13 +1181,13 @@ CompText86DA1B8::
 	def_text_script CompText86DA1B8_unk99
 
 	def_text_script CompText86DA1B8_unk100
-	.string "Rank 1$"
+	.string "Rank 1@"
 
 	def_text_script CompText86DA1B8_unk101
-	.string "Rank 2$"
+	.string "Rank 2@"
 
 	def_text_script CompText86DA1B8_unk102
-	.string "Rank 3$"
+	.string "Rank 3@"
 
 	def_text_script CompText86DA1B8_unk103
 	ts_msg_open_menu_quick

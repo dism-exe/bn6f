@@ -2,90 +2,90 @@ TextScript86F0300::
 	text_archive_start
 
 	def_text_script TextScript86F0300_unk0
-	.string "A$"
+	.string "A@"
 
 	def_text_script TextScript86F0300_unk1
-	.string "B$"
+	.string "B@"
 
 	def_text_script TextScript86F0300_unk2
-	.string "C$"
+	.string "C@"
 
 	def_text_script TextScript86F0300_unk3
-	.string "D$"
+	.string "D@"
 
 	def_text_script TextScript86F0300_unk4
-	.string "E$"
+	.string "E@"
 
 	def_text_script TextScript86F0300_unk5
-	.string "F$"
+	.string "F@"
 
 	def_text_script TextScript86F0300_unk6
-	.string "G$"
+	.string "G@"
 
 	def_text_script TextScript86F0300_unk7
-	.string "H$"
+	.string "H@"
 
 	def_text_script TextScript86F0300_unk8
-	.string "I$"
+	.string "I@"
 
 	def_text_script TextScript86F0300_unk9
-	.string "J$"
+	.string "J@"
 
 	def_text_script TextScript86F0300_unk10
-	.string "K$"
+	.string "K@"
 
 	def_text_script TextScript86F0300_unk11
-	.string "L$"
+	.string "L@"
 
 	def_text_script TextScript86F0300_unk12
-	.string "M$"
+	.string "M@"
 
 	def_text_script TextScript86F0300_unk13
-	.string "N$"
+	.string "N@"
 
 	def_text_script TextScript86F0300_unk14
-	.string "O$"
+	.string "O@"
 
 	def_text_script TextScript86F0300_unk15
-	.string "P$"
+	.string "P@"
 
 	def_text_script TextScript86F0300_unk16
-	.string "Q$"
+	.string "Q@"
 
 	def_text_script TextScript86F0300_unk17
-	.string "R$"
+	.string "R@"
 
 	def_text_script TextScript86F0300_unk18
-	.string "S$"
+	.string "S@"
 
 	def_text_script TextScript86F0300_unk19
-	.string "T$"
+	.string "T@"
 
 	def_text_script TextScript86F0300_unk20
-	.string "U$"
+	.string "U@"
 
 	def_text_script TextScript86F0300_unk21
-	.string "V$"
+	.string "V@"
 
 	def_text_script TextScript86F0300_unk22
-	.string "W$"
+	.string "W@"
 
 	def_text_script TextScript86F0300_unk23
-	.string "X$"
+	.string "X@"
 
 	def_text_script TextScript86F0300_unk24
-	.string "Y$"
+	.string "Y@"
 
 	def_text_script TextScript86F0300_unk25
-	.string "Z$"
+	.string "Z@"
 
 	def_text_script TextScript86F0300_unk26
-	.string "*$"
+	.string "*@"
 
 	def_text_script TextScript86F0300_unk27
-	.string "-$"
+	.string "-@"
 
 	def_text_script TextScript86F0300_unk28
-	.string " $"
+	.string " @"
 
 	.balign 4, 0

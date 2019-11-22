@@ -456,25 +456,25 @@ CompText87F0DA0::
 
 	def_text_script CompText87F0DA0_unk13
 	ts_clear_msg
-	.string " ボ$"
+	.string " ボ@"
 
 	def_text_script CompText87F0DA0_unk14
 	ts_clear_msg
-	.string " ボ[z]$"
+	.string " ボ[z]@"
 
 	def_text_script CompText87F0DA0_unk15
 	ts_clear_msg
-	.string " ボ[z]$"
+	.string " ボ[z]@"
 
 	def_text_script CompText87F0DA0_unk16
 	ts_end
 
 	def_text_script CompText87F0DA0_unk17
-	.string "-------$"
+	.string "-------@"
 
 	def_text_script CompText87F0DA0_unk18
 	ts_clear_msg
-	.string " ダ$"
+	.string " ダ@"
 
 	def_text_script CompText87F0DA0_unk19
 

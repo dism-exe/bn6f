@@ -2013,6 +2013,6 @@ TextScriptChipTrader86C580C::
 	def_text_script TextScriptChipTrader86C580C_unk64
 	.string " "
 	ts_clear_msg
-	.string " ボ$  "
+	.string " ボ@  "
 
 	.balign 4, 0

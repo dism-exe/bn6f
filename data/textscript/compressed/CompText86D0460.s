@@ -56,7 +56,7 @@ CompText86D0460::
 
 	def_text_script CompText86D0460_unk3
 	ts_clear_msg
-	.string " さ$"
+	.string " さ@"
 
 	def_text_script CompText86D0460_unk4
 
@@ -116,7 +116,7 @@ CompText86D0460::
 
 	def_text_script CompText86D0460_unk13
 	ts_clear_msg
-	.string " さ$"
+	.string " さ@"
 
 	def_text_script CompText86D0460_unk14
 

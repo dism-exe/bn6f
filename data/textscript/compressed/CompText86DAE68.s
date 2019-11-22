@@ -204,12 +204,12 @@ CompText86DAE68::
 	def_text_script CompText86DAE68_unk9
 
 	def_text_script CompText86DAE68_unk10
-	.string "Bob$"
+	.string "Bob@"
 
 	def_text_script CompText86DAE68_unk11
-	.string "Mike$"
+	.string "Mike@"
 
 	def_text_script CompText86DAE68_unk12
-	.string "Let's play!$"
+	.string "Let's play!@"
 
 	

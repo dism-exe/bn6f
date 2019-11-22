@@ -49,7 +49,7 @@ CompText8789780::
 	ts_key_wait [
 		any: 0x0,
 	]
-	.string "$shaped like a\n"
+	.string "@shaped like a\n"
 	.string "vortex!"
 	ts_key_wait [
 		any: 0x0,

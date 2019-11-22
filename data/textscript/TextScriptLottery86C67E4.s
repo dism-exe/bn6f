@@ -315,7 +315,7 @@ TextScriptLottery86C67E4::
 
 	def_text_script TextScriptLottery86C67E4_unk25
 	ts_clear_msg
-	.string " ボ$"
+	.string " ボ@"
 
 	def_text_script TextScriptLottery86C67E4_unk26
 
