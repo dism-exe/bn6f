@@ -267,8 +267,6 @@
 		.hword \flag
 	.endm
 
-// FIXME: redump archives and fix implementation
-/*
 	// Creates a cursor menu option at the current text position.
 	// :param brackets[1:0:8]: If true, uses a brackets cursor instead of the standard arrow cursor. (However, this is overriden by the selection command.)
 	// :param right[2:0:4]: Which option to go to when Right is pressed.
@@ -277,10 +275,6 @@
 	// :param up[3:4:4]: Which option to go to when Up is pressed.
 	.macro ts_option brackets:req, right:req, left:req, down:req, up:req
 		.byte 0xEB, \brackets, (\left << 4) | \right, (\up << 4) | \down
-	.endm
-*/
-	.macro ts_option p0:req, p1:req, p2:req
-		.byte 0xEB, \p0, \p1, \p2
 	.endm
 
 	
@@ -375,8 +369,9 @@
 	
 	// Pauses script execution indefinitely.
 	// unused params
-	.macro ts_wait_hold p0:req, p1:req
-		.byte 0xEE, 0xFF, \p0, \p1
+	.macro ts_wait_hold unused:req
+		.byte 0xEE, 0xFF
+		.hword \unused
 	.endm
 
 	// Checks the specified flag, and jumps to a different script depending on if it is true or false.
