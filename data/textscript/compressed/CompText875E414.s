@@ -10,8 +10,15 @@ CompText875E414::
 	text_archive_start
 
 	def_text_script CompText875E414_unk0
-	ts_check_chapter 0x44, 0x44, 0x6, 0xFF
-	ts_jump 5
+	ts_check_chapter [
+		lower: 0x44,
+		upper: 0x44,
+		jumpIfInRange: 0x6,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_jump [
+		target: 5,
+	]
 
 	def_text_script CompText875E414_unk1
 
@@ -26,25 +33,47 @@ CompText875E414::
 	.string "The control panel\n"
 	.string "is operating\n"
 	.string "normally."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875E414_unk6
-	ts_check_flag 0x1E, 0xA, 0x5, 0xFF
-	ts_check_flag 0x1D, 0xA, 0xFF, 0x5
-	ts_mugshot_show 0x37
+	ts_check_flag [
+		flag: 0xA1E,
+		jumpIfTrue: 0x5,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xA1D,
+		jumpIfTrue: 0xFF,
+		jumpIfFalse: 0x5,
+	]
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "Lan,let's normalize\n"
 	.string "this control panel!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Let's go!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	.string "OK!!"
-	ts_key_wait 0x0
-	ts_flag_set 0x6F, 0xA
+	ts_key_wait [
+		any: 0x0,
+	]
+	ts_flag_set [
+		flag: 0xA6F,
+	]
 	ts_end
 
 	def_text_script CompText875E414_unk7

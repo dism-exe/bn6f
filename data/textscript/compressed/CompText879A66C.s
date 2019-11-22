@@ -70,16 +70,28 @@ CompText879A66C::
 	def_text_script CompText879A66C_unk29
 
 	def_text_script CompText879A66C_unk30
-	ts_check_flag 0x20, 0x6, 0x1F, 0xFF
-	ts_mugshot_show 0x37
+	ts_check_flag [
+		flag: 0x620,
+		jumpIfTrue: 0x1F,
+		jumpIfFalse: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "WOOOO!!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText879A66C_unk31
-	ts_flag_set 0x35, 0x6
-	ts_flag_set 0x15, 0x17
+	ts_flag_set [
+		flag: 0x635,
+	]
+	ts_flag_set [
+		flag: 0x1715,
+	]
 	ts_end
 
 	def_text_script CompText879A66C_unk32

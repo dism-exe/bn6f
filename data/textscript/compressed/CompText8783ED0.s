@@ -10,59 +10,98 @@ CompText8783ED0::
 	text_archive_start
 
 	def_text_script CompText8783ED0_unk0
-	ts_check_chapter 0x42, 0x42, 0x5, 0xFF
-	ts_mugshot_show 0x3C
+	ts_check_chapter [
+		lower: 0x42,
+		upper: 0x42,
+		jumpIfInRange: 0x5,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "*HUFF*\n"
 	.string "PHEW..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "CLEANING THE NET\n"
 	.string "SURE IS A TOUGH\n"
 	.string "JOB."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "I MEAN,THE NET IS\n"
 	.string "REALLY LARGE..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk1
-	ts_check_chapter 0x42, 0x42, 0x6, 0xFF
-	ts_mugshot_show 0x45
+	ts_check_chapter [
+		lower: 0x42,
+		upper: 0x42,
+		jumpIfInRange: 0x6,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x45,
+	]
 	ts_msg_open
 	.string "Something bad\n"
 	.string "happened in Green\n"
 	.string "Town recently."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "If something like\n"
 	.string "that can happen\n"
 	.string "there,"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "then it can happen\n"
 	.string "anywhere..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk2
-	ts_check_chapter 0x42, 0x42, 0x7, 0xFF
-	ts_mugshot_show 0x3E
+	ts_check_chapter [
+		lower: 0x42,
+		upper: 0x42,
+		jumpIfInRange: 0x7,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x3E,
+	]
 	ts_msg_open
 	.string "The Navis on the Net\n"
 	.string "haven't been up to\n"
 	.string "anything lately,but"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "still,it's an uneasy\n"
 	.string "sort of quiet..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "I wonder if they can\n"
 	.string "really open the Expo\n"
 	.string "like this?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk3
@@ -70,49 +109,71 @@ CompText8783ED0::
 	def_text_script CompText8783ED0_unk4
 
 	def_text_script CompText8783ED0_unk5
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "*HUFF,HUFF...*"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "PLEASE DON'T...\n"
 	.string "... TALK... TO\n"
 	.string "ME... NOW..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk6
-	ts_mugshot_show 0x45
+	ts_mugshot_show [
+		mugshot: 0x45,
+	]
 	ts_msg_open
 	.string "What!?\n"
 	.string "You're going to the\n"
 	.string "Undernet...?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Don't throw your\n"
 	.string "life away!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "It doesn't matter\n"
 	.string "how many lives you\n"
 	.string "have,"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "that place will take\n"
 	.string "them all!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk7
-	ts_mugshot_show 0x3E
+	ts_mugshot_show [
+		mugshot: 0x3E,
+	]
 	ts_msg_open
 	.string "Man,I woulda been\n"
 	.string "nice if I passed"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "that last Operator\n"
 	.string "Navi test too..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk8
@@ -120,35 +181,49 @@ CompText8783ED0::
 	def_text_script CompText8783ED0_unk9
 
 	def_text_script CompText8783ED0_unk10
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "JUST A LITTLE MORE\n"
 	.string "AND I'M DONE WITH\n"
 	.string "TODAY'S CLEANING..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "PHEEEEW...\n"
 	.string "HAVE TO TAKE A\n"
 	.string "BREATHER!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk11
-	ts_mugshot_show 0x3E
+	ts_mugshot_show [
+		mugshot: 0x3E,
+	]
 	ts_msg_open
 	.string "I guess it was true\n"
 	.string "that the weather\n"
 	.string "went nuts..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Not that it affects\n"
 	.string "the Cyberworld,but"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "you worry about your\n"
 	.string "operator,you know\n"
 	.string "what I mean?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk12
@@ -208,59 +283,85 @@ CompText8783ED0::
 	def_text_script CompText8783ED0_unk39
 
 	def_text_script CompText8783ED0_unk40
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "DID YOU PARTICIPATE\n"
 	.string "IN THE FINAL ROUND"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "OF THE OPERATOR NAVI\n"
 	.string "SELECTION TEST?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "THAT'S AWESOME THAT\n"
 	.string "YOU COULD GET SO\n"
 	.string "FAR!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk41
-	ts_mugshot_show 0x45
+	ts_mugshot_show [
+		mugshot: 0x45,
+	]
 	ts_msg_open
 	.string "I'm in love with\n"
 	.string "that SubChip seller\n"
 	.string "behind that counter!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "He's a bit quiet but\n"
 	.string "he handles work\n"
 	.string "really well."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Don't you think\n"
 	.string "that's so dreamy?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "... I'm a little\n"
 	.string "lost..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk42
-	ts_mugshot_show 0x3E
+	ts_mugshot_show [
+		mugshot: 0x3E,
+	]
 	ts_msg_open
 	.string "It's like you're not\n"
 	.string "allowed to be super\n"
 	.string "patient in this"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "world we live in..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "You need to treasure\n"
 	.string "even leisurely\n"
 	.string "moments,like me!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk43
@@ -268,58 +369,104 @@ CompText8783ED0::
 	def_text_script CompText8783ED0_unk44
 
 	def_text_script CompText8783ED0_unk45
-	ts_check_flag 0x20, 0xC, 0x3C, 0xFF
-	ts_check_flag 0x1E, 0xC, 0x37, 0xFF
-	ts_check_flag 0x1A, 0xC, 0x32, 0xFF
-	ts_mugshot_show 0x3C
+	ts_check_flag [
+		flag: 0xC20,
+		jumpIfTrue: 0x3C,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xC1E,
+		jumpIfTrue: 0x37,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xC1A,
+		jumpIfTrue: 0x32,
+		jumpIfFalse: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "Y-YOU'RE THE\n"
 	.string "OPERATOR NAVI...!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "YOU'RE THE ONE IN\n"
 	.string "THE COMMERCIAL! WOW!\n"
 	.string "YOU'RE MY IDOL!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk46
-	ts_check_flag 0x20, 0xC, 0x3D, 0xFF
-	ts_check_flag 0x1E, 0xC, 0x38, 0xFF
-	ts_check_flag 0x1A, 0xC, 0x33, 0xFF
-	ts_mugshot_show 0x45
+	ts_check_flag [
+		flag: 0xC20,
+		jumpIfTrue: 0x3D,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xC1E,
+		jumpIfTrue: 0x38,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xC1A,
+		jumpIfTrue: 0x33,
+		jumpIfFalse: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x45,
+	]
 	ts_msg_open
 	.string "U-Um... Are you the\n"
 	.string "one in the Expo\n"
 	.string "commercial?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "I thought you were\n"
 	.string "the real deal!\n"
 	.string "Aaaah! Aaaah!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Please,may I have\n"
 	.string "your autograph!?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk47
-	ts_mugshot_show 0x3E
+	ts_mugshot_show [
+		mugshot: 0x3E,
+	]
 	ts_msg_open
 	.string "Everyone is much too\n"
 	.string "excited because of\n"
 	.string "that commercial."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "People should be\n"
 	.string "more like me..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "calmly watching the\n"
 	.string "world as the days\n"
 	.string "go by..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk48
@@ -327,32 +474,46 @@ CompText8783ED0::
 	def_text_script CompText8783ED0_unk49
 
 	def_text_script CompText8783ED0_unk50
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "SOUNDS LIKE THE EXPO\n"
 	.string "COMMERCIAL HAS\n"
 	.string "STARTED!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "HAVE YOU SEEN IT\n"
 	.string "YET?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk51
-	ts_mugshot_show 0x45
+	ts_mugshot_show [
+		mugshot: 0x45,
+	]
 	ts_msg_open
 	.string "Hey,don't you get a\n"
 	.string "good feeling from\n"
 	.string "that Navi in the"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Expo commercial?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "I think I may be\n"
 	.string "falling for him..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk52
@@ -362,24 +523,34 @@ CompText8783ED0::
 	def_text_script CompText8783ED0_unk54
 
 	def_text_script CompText8783ED0_unk55
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "IT SEEMS LIKE SOME-\n"
 	.string "THING IS HAPPENING\n"
 	.string "IN THE REAL WORLD..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "I'M A BIT WORRIED..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk56
-	ts_mugshot_show 0x45
+	ts_mugshot_show [
+		mugshot: 0x45,
+	]
 	ts_msg_open
 	.string "It sounds like\n"
 	.string "something is going\n"
 	.string "on in some town..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk57
@@ -389,33 +560,47 @@ CompText8783ED0::
 	def_text_script CompText8783ED0_unk59
 
 	def_text_script CompText8783ED0_unk60
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "IT SEEMS LIKE SOME-\n"
 	.string "THING BIG HAPPENED\n"
 	.string "IN SEASIDE TOWN..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "I WONDER WHAT'S\n"
 	.string "CAUSING THE TROUBLE?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk61
-	ts_mugshot_show 0x45
+	ts_mugshot_show [
+		mugshot: 0x45,
+	]
 	ts_msg_open
 	.string "Seems like something\n"
 	.string "happened...though I\n"
 	.string "don't know where..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "I heard a Navi was\n"
 	.string "going around acting\n"
 	.string "crazy."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Scary stuff..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8783ED0_unk62

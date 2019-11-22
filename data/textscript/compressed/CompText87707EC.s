@@ -10,8 +10,12 @@ CompText87707EC::
 	text_archive_start
 
 	def_text_script CompText87707EC_unk0
-	ts_flag_set 0x30, 0x6
-	ts_flag_set 0x15, 0x17
+	ts_flag_set [
+		flag: 0x630,
+	]
+	ts_flag_set [
+		flag: 0x1715,
+	]
 	ts_end
 
 	def_text_script CompText87707EC_unk1
@@ -93,31 +97,43 @@ CompText87707EC::
 	def_text_script CompText87707EC_unk39
 
 	def_text_script CompText87707EC_unk40
-	ts_mugshot_show 0x16
+	ts_mugshot_show [
+		mugshot: 0x16,
+	]
 	ts_msg_open
 	.string "I'm working overtime\n"
 	.string "again today on\n"
 	.string "this paperwork..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "*huff!*...\n"
 	.string "It's destroying my\n"
 	.string "good mood!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87707EC_unk41
-	ts_mugshot_show 0x10
+	ts_mugshot_show [
+		mugshot: 0x10,
+	]
 	ts_msg_open
 	.string "I hope I can\n"
 	.string "finish up work\n"
 	.string "early,"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "and do something\n"
 	.string "nice for my family\n"
 	.string "for a change..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87707EC_unk42
@@ -127,34 +143,48 @@ CompText87707EC::
 	def_text_script CompText87707EC_unk44
 
 	def_text_script CompText87707EC_unk45
-	ts_mugshot_show 0x16
+	ts_mugshot_show [
+		mugshot: 0x16,
+	]
 	ts_msg_open
 	.string "Well,I've got all my\n"
 	.string "work in order,so\n"
 	.string "now I can go home!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "The soap opera I\n"
 	.string "love to watch will\n"
 	.string "be on TV soon!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87707EC_unk46
-	ts_mugshot_show 0x10
+	ts_mugshot_show [
+		mugshot: 0x10,
+	]
 	ts_msg_open
 	.string "Working overtime\n"
 	.string "again today..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "...Oh yes... I've\n"
 	.string "got to hurry up and\n"
 	.string "call home..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Otherwise I'm going\n"
 	.string "to get yelled at!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87707EC_unk47

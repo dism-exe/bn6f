@@ -13,7 +13,9 @@ CompText875DBD8::
 	ts_msg_open
 	.string "A cybercloud is\n"
 	.string "blocking the way."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	

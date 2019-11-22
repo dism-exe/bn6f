@@ -11,24 +11,36 @@ CompText86D0544::
 
 	def_text_script CompText86D0544_unk0
 	ts_msg_open_menu_quick
-	ts_text_speed 0x0
+	ts_text_speed [
+		delay: 0x0,
+	]
 	.string "You've got new\n"
 	.string "mail."
-	ts_wait_hold 0x0, 0x0
+	ts_wait_hold [
+		unused: 0x0,
+	]
 
 	def_text_script CompText86D0544_unk1
 	ts_msg_open_menu_quick
-	ts_text_speed 0x0
+	ts_text_speed [
+		delay: 0x0,
+	]
 	.string "Which mail would\n"
 	.string "you like to read?"
-	ts_wait_hold 0x0, 0x0
+	ts_wait_hold [
+		unused: 0x0,
+	]
 
 	def_text_script CompText86D0544_unk2
 	ts_msg_open_menu_quick
-	ts_text_speed 0x0
+	ts_text_speed [
+		delay: 0x0,
+	]
 	.string "You have no new\n"
 	.string "mail."
-	ts_wait_hold 0x0, 0x0
+	ts_wait_hold [
+		unused: 0x0,
+	]
 
 	def_text_script CompText86D0544_unk3
 	ts_clear_msg
@@ -49,29 +61,47 @@ CompText86D0544::
 	def_text_script CompText86D0544_unk10
 	ts_msg_open_menu_quick
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show 0x3C
-	ts_text_speed 0x0
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
+	ts_text_speed [
+		delay: 0x0,
+	]
 	.string "YOU'VE GOT NEW\n"
 	.string "MAIL."
-	ts_wait_hold 0x0, 0x0
+	ts_wait_hold [
+		unused: 0x0,
+	]
 
 	def_text_script CompText86D0544_unk11
 	ts_msg_open_menu_quick
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show 0x3C
-	ts_text_speed 0x0
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
+	ts_text_speed [
+		delay: 0x0,
+	]
 	.string "WHICH MAIL WOULD\n"
 	.string "YOU LIKE TO READ?"
-	ts_wait_hold 0x0, 0x0
+	ts_wait_hold [
+		unused: 0x0,
+	]
 
 	def_text_script CompText86D0544_unk12
 	ts_msg_open_menu_quick
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show 0x3C
-	ts_text_speed 0x0
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
+	ts_text_speed [
+		delay: 0x0,
+	]
 	.string "YOU HAVE NO NEW\n"
 	.string "MAIL."
-	ts_wait_hold 0x0, 0x0
+	ts_wait_hold [
+		unused: 0x0,
+	]
 
 	def_text_script CompText86D0544_unk13
 	ts_clear_msg

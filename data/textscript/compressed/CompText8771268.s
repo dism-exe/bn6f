@@ -30,10 +30,14 @@ CompText8771268::
 	def_text_script CompText8771268_unk9
 
 	def_text_script CompText8771268_unk10
-	ts_mugshot_show 0x4
+	ts_mugshot_show [
+		mugshot: 0x4,
+	]
 	ts_msg_open
 	.string "... Stay alert,Lan."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8771268_unk11

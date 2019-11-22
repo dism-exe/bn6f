@@ -10,11 +10,23 @@ CompText874713C::
 	text_archive_start
 
 	def_text_script CompText874713C_unk0
-	ts_check_chapter 0x50, 0x53, 0x5, 0xFF
-	ts_check_chapter 0x43, 0x46, 0xF, 0xFF
+	ts_check_chapter [
+		lower: 0x50,
+		upper: 0x53,
+		jumpIfInRange: 0x5,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_chapter [
+		lower: 0x43,
+		upper: 0x46,
+		jumpIfInRange: 0xF,
+		jumpIfOutOfRange: 0xFF,
+	]
 	ts_msg_open
 	.string "Dummy text"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874713C_unk1
@@ -26,12 +38,16 @@ CompText874713C::
 	def_text_script CompText874713C_unk4
 
 	def_text_script CompText874713C_unk5
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Things don't look\n"
 	.string "too damaged from the\n"
 	.string "ElementMan incident."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874713C_unk6
@@ -53,7 +69,11 @@ CompText874713C::
 	def_text_script CompText874713C_unk14
 
 	def_text_script CompText874713C_unk15
-	ts_check_flag 0x2E, 0xA, 0x1B, 0xFF
+	ts_check_flag [
+		flag: 0xA2E,
+		jumpIfTrue: 0x1B,
+		jumpIfFalse: 0xFF,
+	]
 	ts_end
 
 	def_text_script CompText874713C_unk16
@@ -79,11 +99,15 @@ CompText874713C::
 	def_text_script CompText874713C_unk26
 
 	def_text_script CompText874713C_unk27
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "We've gotta fix\n"
 	.string "Mr.Weather,MegaMan!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874713C_unk28

@@ -10,11 +10,31 @@ CompText8745DEC::
 	text_archive_start
 
 	def_text_script CompText8745DEC_unk0
-	ts_check_navi_all 0xFF, 0x5B, 0x5C, 0x5D, 0x5E, 0x5F, 0x60, 0x61, 0x62, 0x63, 0x64, 0x65
-	ts_check_chapter 0x62, 0x64, 0xF, 0xFF
+	ts_check_navi_all [
+		jumpIfMegaMan: 0xFF,
+		jumpIfHeatMan: 0x5B,
+		jumpIfElecMan: 0x5C,
+		jumpIfSlashMan: 0x5D,
+		jumpIfEraseMan: 0x5E,
+		jumpIfChargeMan: 0x5F,
+		jumpIfSpoutMan: 0x60,
+		jumpIfTomahawkMan: 0x61,
+		jumpIfTenguMan: 0x62,
+		jumpIfGroundMan: 0x63,
+		jumpIfDustMan: 0x64,
+		jumpIfProtoMan: 0x65,
+	]
+	ts_check_chapter [
+		lower: 0x62,
+		upper: 0x64,
+		jumpIfInRange: 0xF,
+		jumpIfOutOfRange: 0xFF,
+	]
 	ts_msg_open
 	.string "Dummy text"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk1
@@ -46,16 +66,56 @@ CompText8745DEC::
 	def_text_script CompText8745DEC_unk14
 
 	def_text_script CompText8745DEC_unk15
-	ts_check_flag 0x44, 0xE, 0x1D, 0xFF
-	ts_check_flag 0x3E, 0xE, 0x1C, 0xFF
-	ts_check_flag 0x3C, 0xE, 0x1B, 0xFF
-	ts_check_flag 0x36, 0xE, 0x1A, 0xFF
-	ts_check_flag 0x34, 0xE, 0x19, 0xFF
-	ts_check_flag 0x2E, 0xE, 0x18, 0xFF
-	ts_check_flag 0x2C, 0xE, 0x17, 0xFF
-	ts_check_flag 0x2A, 0xE, 0x16, 0xFF
-	ts_check_flag 0x26, 0xE, 0x15, 0xFF
-	ts_check_flag 0x16, 0xE, 0x12, 0xFF
+	ts_check_flag [
+		flag: 0xE44,
+		jumpIfTrue: 0x1D,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE3E,
+		jumpIfTrue: 0x1C,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE3C,
+		jumpIfTrue: 0x1B,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE36,
+		jumpIfTrue: 0x1A,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE34,
+		jumpIfTrue: 0x19,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE2E,
+		jumpIfTrue: 0x18,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE2C,
+		jumpIfTrue: 0x17,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE2A,
+		jumpIfTrue: 0x16,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE26,
+		jumpIfTrue: 0x15,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE16,
+		jumpIfTrue: 0x12,
+		jumpIfFalse: 0xFF,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk16
@@ -63,15 +123,31 @@ CompText8745DEC::
 	def_text_script CompText8745DEC_unk17
 
 	def_text_script CompText8745DEC_unk18
-	ts_check_flag 0x65, 0xE, 0xFF, 0x1E
-	ts_check_flag 0x64, 0xE, 0xFF, 0x1E
-	ts_check_flag 0x63, 0xE, 0xFF, 0x1E
-	ts_mugshot_show 0x37
+	ts_check_flag [
+		flag: 0xE65,
+		jumpIfTrue: 0xFF,
+		jumpIfFalse: 0x1E,
+	]
+	ts_check_flag [
+		flag: 0xE64,
+		jumpIfTrue: 0xFF,
+		jumpIfFalse: 0x1E,
+	]
+	ts_check_flag [
+		flag: 0xE63,
+		jumpIfTrue: 0xFF,
+		jumpIfFalse: 0x1E,
+	]
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "You got all the\n"
 	.string "stamps! Now,off to\n"
 	.string "Central Pavilion!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk19
@@ -82,60 +158,103 @@ CompText8745DEC::
 	ts_end
 
 	def_text_script CompText8745DEC_unk22
-	ts_mugshot_show 0x37
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "Jack me in,Lan! We\n"
 	.string "have to beat the\n"
 	.string "ex-WWW members!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk23
-	ts_mugshot_show 0x37
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "After them! The\n"
 	.string "ex-WWW members\n"
 	.string "are getting away!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk24
-	ts_check_sub_area 0x3, 0x3, 0xFF, 0x17
-	ts_jump 22
+	ts_check_sub_area [
+		lower: 0x3,
+		upper: 0x3,
+		jumpIfInRange: 0xFF,
+		jumpIfOutOfRange: 0x17,
+	]
+	ts_jump [
+		target: 22,
+	]
 
 	def_text_script CompText8745DEC_unk25
-	ts_jump 23
+	ts_jump [
+		target: 23,
+	]
 
 	def_text_script CompText8745DEC_unk26
-	ts_check_sub_area 0x4, 0x4, 0x16, 0xFF
-	ts_jump 23
+	ts_check_sub_area [
+		lower: 0x4,
+		upper: 0x4,
+		jumpIfInRange: 0x16,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_jump [
+		target: 23,
+	]
 
 	def_text_script CompText8745DEC_unk27
-	ts_jump 23
+	ts_jump [
+		target: 23,
+	]
 
 	def_text_script CompText8745DEC_unk28
-	ts_check_sub_area 0x1, 0x1, 0xFF, 0x17
-	ts_jump 22
+	ts_check_sub_area [
+		lower: 0x1,
+		upper: 0x1,
+		jumpIfInRange: 0xFF,
+		jumpIfOutOfRange: 0x17,
+	]
+	ts_jump [
+		target: 22,
+	]
 
 	def_text_script CompText8745DEC_unk29
-	ts_mugshot_show 0x37
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "This is it,the final\n"
 	.string "battle,Lan!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Time to find Dr.Wily\n"
 	.string "and finish this!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk30
-	ts_mugshot_show 0x37
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "Let's go see all the\n"
 	.string "pavilions and get\n"
 	.string "all the stamps!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk31
@@ -260,101 +379,145 @@ CompText8745DEC::
 	ts_end
 
 	def_text_script CompText8745DEC_unk91
-	ts_mugshot_show 0x47
+	ts_mugshot_show [
+		mugshot: 0x47,
+	]
 	ts_msg_open
 	.string "Let me at 'em,Lan!\n"
 	.string "I'm burning for one\n"
 	.string "hot battle!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk92
-	ts_mugshot_show 0x49
+	ts_mugshot_show [
+		mugshot: 0x49,
+	]
 	ts_msg_open
 	.string "Your operating\n"
 	.string "sparks a surge of\n"
 	.string "power within me..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk93
-	ts_mugshot_show 0x4B
+	ts_mugshot_show [
+		mugshot: 0x4B,
+	]
 	ts_msg_open
 	.string "Slash! Any virus in\n"
 	.string "my way is asking for\n"
 	.string "a slicing!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk94
-	ts_mugshot_show 0x50
+	ts_mugshot_show [
+		mugshot: 0x50,
+	]
 	ts_msg_open
 	.string "My scythe cries...\n"
 	.string "It wants to delete!!\n"
 	.string "Hyahahahahaha!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk95
-	ts_mugshot_show 0x4F
+	ts_mugshot_show [
+		mugshot: 0x4F,
+	]
 	ts_msg_open
 	.string "Is it departure\n"
 	.string "time!? I want to be\n"
 	.string "on time! Choo,choo!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk96
-	ts_mugshot_show 0x48
+	ts_mugshot_show [
+		mugshot: 0x48,
+	]
 	ts_msg_open
 	.string "I don't fight a lot,\n"
 	.string "drip! Real battles\n"
 	.string "scare me... drip!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk97
-	ts_mugshot_show 0x4A
+	ts_mugshot_show [
+		mugshot: 0x4A,
+	]
 	ts_msg_open
 	.string "Lan,your operating\n"
 	.string "gives me such an\n"
 	.string "awesome feeling!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk98
-	ts_mugshot_show 0x4C
+	ts_mugshot_show [
+		mugshot: 0x4C,
+	]
 	ts_msg_open
 	.string "I can feel\n"
 	.string "the wind..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk99
-	ts_mugshot_show 0x4D
+	ts_mugshot_show [
+		mugshot: 0x4D,
+	]
 	ts_msg_open
 	.string "Whiiiiiir!\n"
 	.string "C'mon! Let's go\n"
 	.string "break some viruses!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk100
-	ts_mugshot_show 0x4E
+	ts_mugshot_show [
+		mugshot: 0x4E,
+	]
 	ts_msg_open
 	.string "Gahahahaha!!\n"
 	.string "Let's go clean up\n"
 	.string "some cybertrash!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8745DEC_unk101
-	ts_mugshot_show 0x3B
+	ts_mugshot_show [
+		mugshot: 0x3B,
+	]
 	ts_msg_open
 	.string "Only you and Chaud\n"
 	.string "can operate me well.\n"
 	.string "Don't let me down..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	

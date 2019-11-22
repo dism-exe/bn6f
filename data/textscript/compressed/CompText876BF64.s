@@ -30,25 +30,39 @@ CompText876BF64::
 	def_text_script CompText876BF64_unk9
 
 	def_text_script CompText876BF64_unk10
-	ts_check_flag 0x10, 0xA, 0xF, 0xFF
-	ts_mugshot_show 0x8
+	ts_check_flag [
+		flag: 0xA10,
+		jumpIfTrue: 0xF,
+		jumpIfFalse: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x8,
+	]
 	ts_msg_open
 	.string "Ah... I'm really\n"
 	.string "hungry!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "My stomach and my\n"
 	.string "back are both\n"
 	.string "killing me!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "... You can't tell\n"
 	.string "at all?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "It's always a big\n"
 	.string "problem for me!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText876BF64_unk11
@@ -60,16 +74,22 @@ CompText876BF64::
 	def_text_script CompText876BF64_unk14
 
 	def_text_script CompText876BF64_unk15
-	ts_mugshot_show 0x8
+	ts_mugshot_show [
+		mugshot: 0x8,
+	]
 	ts_msg_open
 	.string "I want to go home\n"
 	.string "fast,but if I go\n"
 	.string "outside..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Well,it's a little\n"
 	.string "scary..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText876BF64_unk16
@@ -121,20 +141,28 @@ CompText876BF64::
 	def_text_script CompText876BF64_unk39
 
 	def_text_script CompText876BF64_unk40
-	ts_mugshot_show 0xA
+	ts_mugshot_show [
+		mugshot: 0xA,
+	]
 	ts_msg_open
 	.string "I'm in charge of\n"
 	.string "clean-up today."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "*sigh*...\n"
 	.string "What a bummer."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "That means I'm\n"
 	.string "going to miss my\n"
 	.string "favorite cartoon."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText876BF64_unk41

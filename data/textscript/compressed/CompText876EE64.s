@@ -30,16 +30,22 @@ CompText876EE64::
 	def_text_script CompText876EE64_unk9
 
 	def_text_script CompText876EE64_unk10
-	ts_mugshot_show 0xA
+	ts_mugshot_show [
+		mugshot: 0xA,
+	]
 	ts_msg_open
 	.string "Ahhh! No way!\n"
 	.string "My Student ID is\n"
 	.string "gone!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Now I can't get\n"
 	.string "through the gate..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText876EE64_unk11
@@ -47,22 +53,30 @@ CompText876EE64::
 	def_text_script CompText876EE64_unk12
 
 	def_text_script CompText876EE64_unk13
-	ts_mugshot_show 0x19
+	ts_mugshot_show [
+		mugshot: 0x19,
+	]
 	ts_msg_open
 	.string "Today's a holiday,\n"
 	.string "so there aren't many\n"
 	.string "people inside of"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "the school.\n"
 	.string "Huh? Me?\n"
 	.string "I'm the janitor."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "The janitor has to\n"
 	.string "come to school,even\n"
 	.string "on holidays."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText876EE64_unk14
@@ -138,170 +152,272 @@ CompText876EE64::
 	def_text_script CompText876EE64_unk49
 
 	def_text_script CompText876EE64_unk50
-	ts_check_flag 0x43, 0x5, 0x33, 0xFF
-	ts_flag_set 0x43, 0x5
-	ts_mugshot_show 0x14
+	ts_check_flag [
+		flag: 0x543,
+		jumpIfTrue: 0x33,
+		jumpIfFalse: 0xFF,
+	]
+	ts_flag_set [
+		flag: 0x543,
+	]
+	ts_mugshot_show [
+		mugshot: 0x14,
+	]
 	ts_msg_open
 	.string "Hey! Hey!\n"
 	.string "Do something!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "This penguin's been\n"
 	.string "following me around!\n"
 	.string "Even to the toilet!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "What is this crazy\n"
 	.string "bird doing...? Can't\n"
 	.string "he fly off!?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "By the way...\n"
 	.string "What happened with\n"
 	.string "the BBS?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	.string "Huh...? Oh that..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x14
+	ts_mugshot_show [
+		mugshot: 0x14,
+	]
 	.string "...Hmmm..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "So this penguin\n"
 	.string "escaped from the\n"
 	.string "Aquarium,huh..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	.string "Hey,have you ever\n"
 	.string "been to Seaside\n"
 	.string "Town?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x14
+	ts_mugshot_show [
+		mugshot: 0x14,
+	]
 	ts_msg_open
 	.string "I've been there a\n"
 	.string "few times!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Did you know that\n"
 	.string "each area in Cyber\n"
 	.string "City is doing its"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "own special themed\n"
 	.string "experiments?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "For example,Central\n"
 	.string "Town's is Next-Gen\n"
 	.string "Net society!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "And Seaside Town's\n"
 	.string "theme is..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Ummm..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "I guess its theme\n"
 	.string "is waterworks..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	.string "Waterworks?\n"
 	.string "What's that?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x14
+	ts_mugshot_show [
+		mugshot: 0x14,
+	]
 	.string "It's gotta be about\n"
 	.string "making something\n"
 	.string "work with water..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x57
+	ts_mugshot_show [
+		mugshot: 0x57,
+	]
 	.string "Hey Mick..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x14
+	ts_mugshot_show [
+		mugshot: 0x14,
+	]
 	.string "What?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x57
+	ts_mugshot_show [
+		mugshot: 0x57,
+	]
 	.string "Seaside Town's theme\n"
 	.string "is treating water\n"
 	.string "with chemicals!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "They research how to\n"
 	.string "keep water clean in\n"
 	.string "Seaside Town!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x14
+	ts_mugshot_show [
+		mugshot: 0x14,
+	]
 	.string "......"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Don't you think\n"
 	.string "people who've been\n"
 	.string "there would know!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	.string "OK,then let's go\n"
 	.string "there together!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "If you go by\n"
 	.string "yourself it's a\n"
 	.string "recipe for disaster!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x14
+	ts_mugshot_show [
+		mugshot: 0x14,
+	]
 	.string "Fine then. You head\n"
 	.string "to the LevBus\n"
 	.string "station first,OK!?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Walking with this\n"
 	.string "slowpoke will take\n"
 	.string "forever,so"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "I'll catch up with\n"
 	.string "you later..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Gotcha!\n"
 	.string "In front of the\n"
 	.string "LevBus station!!"
-	ts_key_wait 0x0
-	ts_sound_play_bgm 0x5, 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
+	ts_sound_play_bgm [
+		track: 0x5,
+	]
 	ts_end
 
 	def_text_script CompText876EE64_unk51
-	ts_mugshot_show 0x14
+	ts_mugshot_show [
+		mugshot: 0x14,
+	]
 	ts_msg_open
 	.string "Fine then. You head\n"
 	.string "to the LevBus\n"
 	.string "station first,OK!?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Walking with this\n"
 	.string "slowpoke will take\n"
 	.string "forever,so..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText876EE64_unk52
 	ts_msg_open
 	.string "*Squawk! Squawk!*"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText876EE64_unk53

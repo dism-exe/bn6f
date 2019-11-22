@@ -12,18 +12,24 @@ CompText8776A20::
 	def_text_script CompText8776A20_unk0
 	ts_msg_open
 	.string "*Squawk!*"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8776A20_unk1
 	ts_msg_open
 	.string "When a turtle comes\n"
 	.string "out of the water,"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "it looks like\n"
 	.string "a rock..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8776A20_unk2
@@ -33,86 +39,134 @@ CompText8776A20::
 	def_text_script CompText8776A20_unk4
 
 	def_text_script CompText8776A20_unk5
-	ts_mugshot_show 0xA
+	ts_mugshot_show [
+		mugshot: 0xA,
+	]
 	ts_msg_open
 	.string "Hey Grandpa!\n"
 	.string "I wanna pet\n"
 	.string "dolphin!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_mugshot_show 0x19
+	ts_mugshot_show [
+		mugshot: 0x19,
+	]
 	.string "Hahaha! Don't be\n"
 	.string "silly..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8776A20_unk6
-	ts_mugshot_show 0x16
+	ts_mugshot_show [
+		mugshot: 0x16,
+	]
 	ts_msg_open
 	.string "This is the area\n"
 	.string "we use to breed"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "large animals that\n"
 	.string "live in the water."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "It's filled with\n"
 	.string "rarely seen animals!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8776A20_unk7
-	ts_mugshot_show 0xD
+	ts_mugshot_show [
+		mugshot: 0xD,
+	]
 	ts_msg_open
 	.string "That seal looks like\n"
 	.string "it weighs two tons!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "It's big... Too big!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8776A20_unk8
-	ts_check_flag 0x16, 0x5, 0x9, 0xFF
-	ts_check_flag 0x54, 0x5, 0xA, 0xFF
-	ts_mugshot_show 0x15
+	ts_check_flag [
+		flag: 0x516,
+		jumpIfTrue: 0x9,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0x554,
+		jumpIfTrue: 0xA,
+		jumpIfFalse: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x15,
+	]
 	ts_msg_open
 	.string "This is the\n"
 	.string "auditorium for the\n"
 	.string "show..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Actually,we are\n"
 	.string "still getting ready\n"
 	.string "for the show."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "If you don't mind\n"
 	.string "waiting,it will\n"
 	.string "be starting soon..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8776A20_unk9
-	ts_mugshot_show 0x15
+	ts_mugshot_show [
+		mugshot: 0x15,
+	]
 	ts_msg_open
 	.string "This is the\n"
 	.string "auditorium for the\n"
 	.string "show..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Today's show\n"
 	.string "just finished."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8776A20_unk10
-	ts_mugshot_show 0x15
+	ts_mugshot_show [
+		mugshot: 0x15,
+	]
 	ts_msg_open
 	.string "The show is about\n"
 	.string "to begin! Enjoy!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8776A20_unk11

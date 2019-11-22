@@ -30,20 +30,28 @@ CompText879E598::
 	def_text_script CompText879E598_unk9
 
 	def_text_script CompText879E598_unk10
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "THIS IS THE CLASS\n"
 	.string "6-1 COMP,MAINLY"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "USED FOR VIRUS\n"
 	.string "BUSTING CLASS!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "WE'VE NURTURED MANY\n"
 	.string "GREAT NETBATTLERS\n"
 	.string "HERE!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText879E598_unk11

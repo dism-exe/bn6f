@@ -12,7 +12,9 @@ CompText875BF80::
 	def_text_script CompText875BF80_unk0
 	ts_msg_open
 	.string "The JudgeTree..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875BF80_unk1
@@ -20,7 +22,9 @@ CompText875BF80::
 	.string "A computer that\n"
 	.string "stops the JudgeTree\n"
 	.string "from withering..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	

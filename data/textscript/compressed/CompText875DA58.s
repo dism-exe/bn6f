@@ -14,13 +14,19 @@ CompText875DA58::
 	.string "If you don't hit the\n"
 	.string "release button,this\n"
 	.string "door will not open."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875DA58_unk1
-	ts_jump 0
+	ts_jump [
+		target: 0,
+	]
 
 	def_text_script CompText875DA58_unk2
-	ts_jump 0
+	ts_jump [
+		target: 0,
+	]
 
 	

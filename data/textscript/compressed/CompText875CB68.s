@@ -14,12 +14,16 @@ CompText875CB68::
 	.string "The two Expo\n"
 	.string "mascots,CopyBoy\n"
 	.string "and CopyGirl..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Not much thought\n"
 	.string "went into the\n"
 	.string "design,it seems..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875CB68_unk1
@@ -27,11 +31,15 @@ CompText875CB68::
 	.string "The Seaside Pavilion\n"
 	.string "summary... It looks\n"
 	.string "like their theme is"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "\"The Harmony of Man\n"
 	.string " and Water\"..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875CB68_unk2
@@ -39,16 +47,22 @@ CompText875CB68::
 	.string "The Green Pavilion\n"
 	.string "summary... It looks\n"
 	.string "like their theme is"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "\"The Benefits of\n"
 	.string " Nature to Man,and"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string " the Effects of\n"
 	.string " Environmental\n"
 	.string " Destruction\"."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875CB68_unk3
@@ -56,12 +70,16 @@ CompText875CB68::
 	.string "The Central Pavilion\n"
 	.string "summary... It looks\n"
 	.string "like their theme is"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "\"Next-Gen Net\n"
 	.string " Society:Man and\n"
 	.string " CopyBots,Together\"."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875CB68_unk4
@@ -69,12 +87,16 @@ CompText875CB68::
 	.string "The Sky Pavilion\n"
 	.string "summary... It looks\n"
 	.string "like their theme is"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "\"Improving Man's\n"
 	.string " Life Through\n"
 	.string " Weather Control\"."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875CB68_unk5
@@ -82,11 +104,15 @@ CompText875CB68::
 	.string "The Sky Pavilion's\n"
 	.string "mascots,SunnyMan and\n"
 	.string "RainyMan..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Their design is kind\n"
 	.string "of boring too..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875CB68_unk6
@@ -94,15 +120,21 @@ CompText875CB68::
 	.string "Once the Expo opens,\n"
 	.string "you can eat foods\n"
 	.string "from all over the"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "world under these\n"
 	.string "tents."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "But no one is here\n"
 	.string "right now."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875CB68_unk7
@@ -110,16 +142,22 @@ CompText875CB68::
 	.string "There is a short\n"
 	.string "movie about various\n"
 	.string "sights at the Expo"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "playing on the\n"
 	.string "monitor."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "\"You may jack in\" is\n"
 	.string "written on the edge\n"
 	.string "of the monitor."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	

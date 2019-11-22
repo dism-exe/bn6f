@@ -13,12 +13,18 @@ CompText875FF70::
 	ts_msg_open
 	.string "It's a Net\n"
 	.string "information board."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "It has a map of\n"
 	.string "Green Area2 on it."
-	ts_key_wait 0x0
-	ts_start_map 0x7
+	ts_key_wait [
+		any: 0x0,
+	]
+	ts_start_map [
+		map: 0x7,
+	]
 	ts_end
 
 	def_text_script CompText875FF70_unk1
@@ -26,7 +32,9 @@ CompText875FF70::
 	.string "\"Welcome\n"
 	.string "       to the\n"
 	.string "            NetCafe\""
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875FF70_unk2
@@ -37,12 +45,16 @@ CompText875FF70::
 	.string "A giant cybertree\n"
 	.string "created in the image\n"
 	.string "of the \"JudgeTree\"."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "It has a very\n"
 	.string "serious air about\n"
 	.string "it..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875FF70_unk4
@@ -50,19 +62,34 @@ CompText875FF70::
 	.string "A cybertree...\n"
 	.string "It's taken the place\n"
 	.string "of normal signposts."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875FF70_unk5
-	ts_check_item07 0x44, 0x1, 0xFF, 0xFF, 0xA
+	ts_check_item07 [
+		item: 0x44,
+		amount: 0x1,
+		jumpIfEqual: 0xFF,
+		jumpIfGreater: 0xFF,
+		jumpIfLess: 0xA,
+	]
 	ts_msg_open
 	ts_print_current_navi_ow
 	.string " used:\n"
 	.string "\""
-	ts_print_item 0x44, 0x0
+	ts_print_item [
+		item: 0x44,
+		buffer: 0x0,
+	]
 	.string "\"!!"
-	ts_key_wait 0x0
-	ts_flag_clear 0x76, 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
+	ts_flag_clear [
+		flag: 0x76,
+	]
 	ts_end
 
 	def_text_script CompText875FF70_unk6
@@ -70,43 +97,93 @@ CompText875FF70::
 	.string "A large pit... It\n"
 	.string "looks like it goes\n"
 	.string "somewhere..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Jump into the pit?\n"
-	ts_position_option_horizontal 0x8
-	ts_option 0x0, 0x11, 0x0
-	ts_space 0x1
+	ts_position_option_horizontal [
+		width: 0x8,
+	]
+	ts_option [
+		brackets: 0x0,
+		right: 0x1,
+		left: 0x1,
+		down: 0x0,
+		up: 0x0,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " Yes  "
-	ts_option 0x0, 0x0, 0x11
-	ts_space 0x1
+	ts_option [
+		brackets: 0x0,
+		right: 0x0,
+		left: 0x0,
+		down: 0x1,
+		up: 0x1,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " No\n"
 	ts_select 0x6, 0x80, 0x7, 0xFF, 0xFF
 	ts_end
 
 	def_text_script CompText875FF70_unk7
-	ts_check_chapter 0x57, 0x57, 0xB, 0xFF
-	ts_check_chapter 0x56, 0x56, 0xC, 0xFF
-	ts_check_chapter 0x34, 0x34, 0x8, 0xFF
-	ts_check_chapter 0x35, 0x35, 0x9, 0xFF
-	ts_flag_clear 0xF4, 0x16
+	ts_check_chapter [
+		lower: 0x57,
+		upper: 0x57,
+		jumpIfInRange: 0xB,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_chapter [
+		lower: 0x56,
+		upper: 0x56,
+		jumpIfInRange: 0xC,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_chapter [
+		lower: 0x34,
+		upper: 0x34,
+		jumpIfInRange: 0x8,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_chapter [
+		lower: 0x35,
+		upper: 0x35,
+		jumpIfInRange: 0x9,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_flag_clear [
+		flag: 0x16F4,
+	]
 	ts_end
 
 	def_text_script CompText875FF70_unk8
-	ts_mugshot_show 0x4B
+	ts_mugshot_show [
+		mugshot: 0x4B,
+	]
 	ts_msg_open
 	.string "Where are you\n"
 	.string "going!? We're\n"
 	.string "still in class!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875FF70_unk9
-	ts_mugshot_show 0x4C
+	ts_mugshot_show [
+		mugshot: 0x4C,
+	]
 	ts_msg_open
 	.string "Hmph. Where are you\n"
 	.string "headed!? We are in\n"
 	.string "class!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875FF70_unk10
@@ -114,25 +191,35 @@ CompText875FF70::
 	.string "The door is sealed\n"
 	.string "tight. You can't get\n"
 	.string "through it!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875FF70_unk11
-	ts_mugshot_show 0x4F
+	ts_mugshot_show [
+		mugshot: 0x4F,
+	]
 	ts_msg_open
 	.string "Where are we\n"
 	.string "charging off to!?\n"
 	.string "Class,Lan! Class!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875FF70_unk12
-	ts_mugshot_show 0x4D
+	ts_mugshot_show [
+		mugshot: 0x4D,
+	]
 	ts_msg_open
 	.string "Where do you think\n"
 	.string "you're going!?\n"
 	.string "Class is still on!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	

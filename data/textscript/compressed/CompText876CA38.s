@@ -10,18 +10,29 @@ CompText876CA38::
 	text_archive_start
 
 	def_text_script CompText876CA38_unk0
-	ts_check_chapter 0x21, 0x21, 0x5, 0xFF
-	ts_mugshot_show 0xA
+	ts_check_chapter [
+		lower: 0x21,
+		upper: 0x21,
+		jumpIfInRange: 0x5,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0xA,
+	]
 	ts_msg_open
 	.string "I like to look at\n"
 	.string "flowers inside of\n"
 	.string "empty classrooms."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "I get this feeling\n"
 	.string "that the flowers\n"
 	.string "will talk to me!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText876CA38_unk1
@@ -33,11 +44,15 @@ CompText876CA38::
 	def_text_script CompText876CA38_unk4
 
 	def_text_script CompText876CA38_unk5
-	ts_mugshot_show 0xA
+	ts_mugshot_show [
+		mugshot: 0xA,
+	]
 	ts_msg_open
 	.string "It's about time to\n"
 	.string "go home,huh...?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText876CA38_unk6
@@ -109,21 +124,29 @@ CompText876CA38::
 	def_text_script CompText876CA38_unk39
 
 	def_text_script CompText876CA38_unk40
-	ts_mugshot_show 0xA
+	ts_mugshot_show [
+		mugshot: 0xA,
+	]
 	ts_msg_open
 	.string "I heard there was\n"
 	.string "a huge riot on the\n"
 	.string "Net recently."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "I'm definitely not\n"
 	.string "going to use the\n"
 	.string "Net now!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "It's too scary!!\n"
 	.string "Way too scary!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText876CA38_unk41
@@ -135,21 +158,29 @@ CompText876CA38::
 	def_text_script CompText876CA38_unk44
 
 	def_text_script CompText876CA38_unk45
-	ts_mugshot_show 0xA
+	ts_mugshot_show [
+		mugshot: 0xA,
+	]
 	ts_msg_open
 	.string "You went to\n"
 	.string "Green Town?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "When I grow up,\n"
 	.string "I really would like\n"
 	.string "to become a lawyer!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "That's why you\n"
 	.string "should take me to\n"
 	.string "Green Town sometime!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText876CA38_unk46

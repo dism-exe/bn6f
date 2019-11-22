@@ -48,58 +48,140 @@ TextScriptNetworkSave86CF730::
 
 	def_text_script TextScriptNetworkSave86CF730_unk10
 	ts_msg_open_menu_quick
-	ts_text_speed 0x0
+	ts_text_speed [
+		delay: 0x0,
+	]
 	.string "Save?\n"
-	ts_position_option_horizontal 0x8
-	ts_option 0x0, 0x11, 0x0
-	ts_space 0x1
+	ts_position_option_horizontal [
+		width: 0x8,
+	]
+	ts_option [
+		brackets: 0x0,
+		right: 0x1,
+		left: 0x1,
+		down: 0x0,
+		up: 0x0,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " Yes  "
-	ts_option 0x0, 0x0, 0x11
-	ts_space 0x1
+	ts_option [
+		brackets: 0x0,
+		right: 0x0,
+		left: 0x0,
+		down: 0x1,
+		up: 0x1,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " No"
 	ts_select 0x6, 0x0, 0xB, 0xFF, 0xFF
-	ts_wait_hold 0x0, 0x0
+	ts_wait_hold [
+		unused: 0x0,
+	]
 
 	def_text_script TextScriptNetworkSave86CF730_unk11
-	ts_check_flag 0x4, 0x17, 0xFF, 0xC
-	ts_text_speed 0x0
+	ts_check_flag [
+		flag: 0x1704,
+		jumpIfTrue: 0xFF,
+		jumpIfFalse: 0xC,
+	]
+	ts_text_speed [
+		delay: 0x0,
+	]
 	ts_clear_msg
 	.string "Overwrite previous\n"
 	.string "save data?\n"
-	ts_position_option_horizontal 0x8
-	ts_option 0x0, 0x11, 0x0
-	ts_space 0x1
+	ts_position_option_horizontal [
+		width: 0x8,
+	]
+	ts_option [
+		brackets: 0x0,
+		right: 0x1,
+		left: 0x1,
+		down: 0x0,
+		up: 0x0,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " Yes  "
-	ts_option 0x0, 0x0, 0x11
-	ts_space 0x1
+	ts_option [
+		brackets: 0x0,
+		right: 0x0,
+		left: 0x0,
+		down: 0x1,
+		up: 0x1,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " No"
 	ts_select 0x6, 0x0, 0xC, 0xFF, 0xFF
-	ts_wait_hold 0x0, 0x0
+	ts_wait_hold [
+		unused: 0x0,
+	]
 
 	def_text_script TextScriptNetworkSave86CF730_unk12
-	ts_call_save 0xD, 0xFF, 0x0
-	ts_text_speed 0x0
+	ts_call_save [
+		jumpIfSuccessful: 0xD,
+		jumpIfFailed: 0xFF,
+		jumpUnused: 0x0,
+	]
+	ts_text_speed [
+		delay: 0x0,
+	]
 	ts_clear_msg
 	.string "Save Failed."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Try again?\n"
-	ts_position_option_horizontal 0x8
-	ts_option 0x0, 0x11, 0x0
-	ts_space 0x1
+	ts_position_option_horizontal [
+		width: 0x8,
+	]
+	ts_option [
+		brackets: 0x0,
+		right: 0x1,
+		left: 0x1,
+		down: 0x0,
+		up: 0x0,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " Yes  "
-	ts_option 0x0, 0x0, 0x11
-	ts_space 0x1
+	ts_option [
+		brackets: 0x0,
+		right: 0x0,
+		left: 0x0,
+		down: 0x1,
+		up: 0x1,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " No"
 	ts_select 0x6, 0x0, 0xA, 0xFF, 0xFF
-	ts_wait_hold 0x0, 0x0
+	ts_wait_hold [
+		unused: 0x0,
+	]
 
 	def_text_script TextScriptNetworkSave86CF730_unk13
-	ts_text_speed 0x0
+	ts_text_speed [
+		delay: 0x0,
+	]
 	ts_clear_msg
 	.string "Save completed."
-	ts_key_wait 0x0
-	ts_wait_hold 0x0, 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
+	ts_wait_hold [
+		unused: 0x0,
+	]
 
 	def_text_script TextScriptNetworkSave86CF730_unk14
 

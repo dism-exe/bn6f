@@ -10,64 +10,120 @@ CompText878BC64::
 	text_archive_start
 
 	def_text_script CompText878BC64_unk0
-	ts_check_chapter 0x43, 0x46, 0xA, 0xFF
-	ts_check_chapter 0x42, 0x42, 0x5, 0xFF
-	ts_mugshot_show 0x3C
+	ts_check_chapter [
+		lower: 0x43,
+		upper: 0x46,
+		jumpIfInRange: 0xA,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_chapter [
+		lower: 0x42,
+		upper: 0x42,
+		jumpIfInRange: 0x5,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "TO PREVENT ANOTHER\n"
 	.string "INCIDENT LIKE THE\n"
 	.string "ONE IN GREEN TOWN,"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "WE,THE GUARDIANS OF\n"
 	.string "THIS AREA,TO\n"
 	.string "STRENGTHEN SECURITY,"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "ARE VOLUNTARILY\n"
 	.string "PATROLLING THIS\n"
 	.string "AREA!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk1
-	ts_check_chapter 0x43, 0x46, 0xB, 0xFF
-	ts_check_chapter 0x42, 0x42, 0x6, 0xFF
-	ts_mugshot_show 0x3C
+	ts_check_chapter [
+		lower: 0x43,
+		upper: 0x46,
+		jumpIfInRange: 0xB,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_chapter [
+		lower: 0x42,
+		upper: 0x42,
+		jumpIfInRange: 0x6,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "STAY ALERT!!\n"
 	.string "STAY ALERT!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "IF YOU SEE ANY\n"
 	.string "SUSPICIOUS PEOPLE,"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "DON'T TRY TO TAKE\n"
 	.string "THEM ON,AND CALL FOR\n"
 	.string "HELP!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk2
-	ts_check_chapter 0x43, 0x46, 0xC, 0xFF
-	ts_check_chapter 0x42, 0x42, 0x7, 0xFF
-	ts_mugshot_show 0x3C
+	ts_check_chapter [
+		lower: 0x43,
+		upper: 0x46,
+		jumpIfInRange: 0xC,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_chapter [
+		lower: 0x42,
+		upper: 0x42,
+		jumpIfInRange: 0x7,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "HELP!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "HELP!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "THIS IS ONLY A TEST,\n"
 	.string "THIS IS ONLY A TEST."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "BE SURE TO PRACTICE\n"
 	.string "YOUR SCREAM FOR\n"
 	.string "HELP!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk3
@@ -75,48 +131,70 @@ CompText878BC64::
 	def_text_script CompText878BC64_unk4
 
 	def_text_script CompText878BC64_unk5
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "THERE ISN'T ANYTHING\n"
 	.string "WRONG IN THIS AREA."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "WHAT? THE UNDERNET?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "I DON'T WANT TO GET\n"
 	.string "TO KNOW THAT CREEPY\n"
 	.string "DEMONS' AREA!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk6
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "A-AAAAAAAAAH!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "UH... DON'T BE\n"
 	.string "THREATENED..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "I JUST REMEMBERED\n"
 	.string "THAT WHILE I WAS\n"
 	.string "FROZEN..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk7
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "... I'M ALL...\n"
 	.string "HOARSE..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "PRACTICED...\n"
 	.string "... SCREAMING...\n"
 	.string "TOO MUCH..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk8
@@ -124,43 +202,61 @@ CompText878BC64::
 	def_text_script CompText878BC64_unk9
 
 	def_text_script CompText878BC64_unk10
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "SOMETHING HAPPENED\n"
 	.string "IN THE REAL WORLD\n"
 	.string "AGAIN!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "WHICH MEANS WE HAVE\n"
 	.string "TO STRENGTHEN THE\n"
 	.string "NET BARRIER!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk11
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "... *SHIVER,SHIVER*"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "SOMETHING HAPPENED\n"
 	.string "IN THE REAL WORLD,\n"
 	.string "DIDN'T IT...?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "W-WHAT SHOULD I DO\n"
 	.string "IF STRANGE PEOPLE\n"
 	.string "SHOW UP ON THE NET?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk12
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "... MY THROAT...\n"
 	.string "TOTALLY... GONE...\n"
 	.string "HURTS... OWWWW..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk13
@@ -218,34 +314,48 @@ CompText878BC64::
 	def_text_script CompText878BC64_unk39
 
 	def_text_script CompText878BC64_unk40
-	ts_mugshot_show 0x41
+	ts_mugshot_show [
+		mugshot: 0x41,
+	]
 	ts_msg_open
 	.string "How about it?\n"
 	.string "Can't you feel the\n"
 	.string "cool,slick guy vibes"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "coming from my\n"
 	.string "awesome self?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "What? No?\n"
 	.string "Oh,come on!\n"
 	.string "You're not trying!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk41
-	ts_mugshot_show 0x45
+	ts_mugshot_show [
+		mugshot: 0x45,
+	]
 	ts_msg_open
 	.string "You were in the\n"
 	.string "Operator Navi Se-\n"
 	.string "lection Test finals?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Wow!! That is sooooo\n"
 	.string "cool!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk42
@@ -255,41 +365,69 @@ CompText878BC64::
 	def_text_script CompText878BC64_unk44
 
 	def_text_script CompText878BC64_unk45
-	ts_check_flag 0x20, 0xC, 0x3C, 0xFF
-	ts_check_flag 0x1E, 0xC, 0x37, 0xFF
-	ts_check_flag 0x1A, 0xC, 0x32, 0xFF
-	ts_mugshot_show 0x41
+	ts_check_flag [
+		flag: 0xC20,
+		jumpIfTrue: 0x3C,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xC1E,
+		jumpIfTrue: 0x37,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xC1A,
+		jumpIfTrue: 0x32,
+		jumpIfFalse: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x41,
+	]
 	ts_msg_open
 	.string "\"Let's go,Lan!\""
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Hehe,that was me\n"
 	.string "imitating that\n"
 	.string "commercial on TV."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Wait a sec! You look\n"
 	.string "just like the Navi\n"
 	.string "in the commercial..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "You could imitate\n"
 	.string "him better than I\n"
 	.string "can,I bet!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk46
-	ts_mugshot_show 0x45
+	ts_mugshot_show [
+		mugshot: 0x45,
+	]
 	ts_msg_open
 	.string "Cyber City's Mayor\n"
 	.string "Cain is so\n"
 	.string "dashing..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Ah,Mayor Cain!!\n"
 	.string "*swoon*"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk47
@@ -299,20 +437,28 @@ CompText878BC64::
 	def_text_script CompText878BC64_unk49
 
 	def_text_script CompText878BC64_unk50
-	ts_mugshot_show 0x41
+	ts_mugshot_show [
+		mugshot: 0x41,
+	]
 	ts_msg_open
 	.string "\"Let's go,Lan!\""
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Hehe,that was me\n"
 	.string "imitating the\n"
 	.string "commercial on TV."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "What do you think?\n"
 	.string "Don't I sound like\n"
 	.string "the real guy!?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk51
@@ -324,15 +470,21 @@ CompText878BC64::
 	def_text_script CompText878BC64_unk54
 
 	def_text_script CompText878BC64_unk55
-	ts_mugshot_show 0x41
+	ts_mugshot_show [
+		mugshot: 0x41,
+	]
 	ts_msg_open
 	.string "Wawawawa...\n"
 	.string "Seaside Town is in\n"
 	.string "huge trouble!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Wawawawa..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk56
@@ -344,19 +496,27 @@ CompText878BC64::
 	def_text_script CompText878BC64_unk59
 
 	def_text_script CompText878BC64_unk60
-	ts_mugshot_show 0x41
+	ts_mugshot_show [
+		mugshot: 0x41,
+	]
 	ts_msg_open
 	.string "It sounds like no\n"
 	.string "one was hurt badly\n"
 	.string "during the Seaside"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Town incident..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "That's such a\n"
 	.string "relief..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText878BC64_unk61

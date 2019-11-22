@@ -10,33 +10,65 @@ CompText87956C4::
 	text_archive_start
 
 	def_text_script CompText87956C4_unk0
-	ts_check_shop_stock 0x5, 0xFF, 0x2
-	ts_mugshot_show 0x3E
+	ts_check_shop_stock [
+		shop: 0x5,
+		jumpIfStocked: 0xFF,
+		jumpIfSoldOut: 0x2,
+	]
+	ts_mugshot_show [
+		mugshot: 0x3E,
+	]
 	ts_msg_open
 	.string "I'm a NetMerchant...\n"
 	.string "See what I've got?\n"
-	ts_position_option_horizontal 0xB
-	ts_option 0x0, 0x11, 0x0
-	ts_space 0x1
+	ts_position_option_horizontal [
+		width: 0xB,
+	]
+	ts_option [
+		brackets: 0x0,
+		right: 0x1,
+		left: 0x1,
+		down: 0x0,
+		up: 0x0,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " Look "
-	ts_option 0x0, 0x0, 0x11
-	ts_space 0x1
+	ts_option [
+		brackets: 0x0,
+		right: 0x0,
+		left: 0x0,
+		down: 0x1,
+		up: 0x1,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " Don't look "
 	ts_select 0x6, 0x0, 0xFF, 0x1, 0xFF
-	ts_start_shop 0x5
+	ts_start_shop [
+		shop: 0x5,
+	]
 
 	def_text_script CompText87956C4_unk1
 	ts_clear_msg
 	.string "Come back soon!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87956C4_unk2
-	ts_mugshot_show 0x3E
+	ts_mugshot_show [
+		mugshot: 0x3E,
+	]
 	ts_msg_open
 	.string "Sorry,but we're all\n"
 	.string "sold out..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87956C4_unk3
@@ -44,107 +76,165 @@ CompText87956C4::
 	def_text_script CompText87956C4_unk4
 
 	def_text_script CompText87956C4_unk5
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "THIS IS MAYL'S\n"
 	.string "PERSONAL SPACE!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "THE PINK FLOOR IS\n"
 	.string "TOTALLY CUTE!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87956C4_unk6
-	ts_check_flag 0xD3, 0xC, 0x9, 0xFF
-	ts_check_flag 0xD1, 0xC, 0x8, 0xFF
-	ts_jump 9
+	ts_check_flag [
+		flag: 0xCD3,
+		jumpIfTrue: 0x9,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xCD1,
+		jumpIfTrue: 0x8,
+		jumpIfFalse: 0xFF,
+	]
+	ts_jump [
+		target: 9,
+	]
 
 	def_text_script CompText87956C4_unk7
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "THIS IS YAI'S\n"
 	.string "PERSONAL SPACE!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "IT'S NOTABLE FOR\n"
 	.string "ITS SIZE! CLEARLY\n"
 	.string "SUITABLE FOR YAI!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87956C4_unk8
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "THIS SPACE IS\n"
 	.string "DEX'S PERSONAL\n"
 	.string "SPACE!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "HUH? YOU DON'T\n"
 	.string "KNOW ABOUT THE\n"
 	.string "DOOR KEY?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "NO WAY...\n"
 	.string "SPEAKING OF WHICH,"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "MR.GUTSMAN IS\n"
 	.string "HIDING SOMETHING\n"
 	.string "IN THE CHESSPIECES."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "UNBELIEVABLE..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87956C4_unk9
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "THIS IS DEX'S\n"
 	.string "PERSONAL SPACE."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "DEX IS REALLY GOOD\n"
 	.string "AT CHESS!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "HOW ABOUT A MATCH?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87956C4_unk10
-	ts_mugshot_show 0x41
+	ts_mugshot_show [
+		mugshot: 0x41,
+	]
 	ts_msg_open
 	.string "I came here from\n"
 	.string "CentralArea to\n"
 	.string "hang out a bit..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "This area is great!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "It isn't new,but\n"
 	.string "no matter where you\n"
 	.string "go,"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "it's always a good\n"
 	.string "time."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87956C4_unk11
-	ts_mugshot_show 0x3C
+	ts_mugshot_show [
+		mugshot: 0x3C,
+	]
 	ts_msg_open
 	.string "WELCOME TO ACDC\n"
 	.string "AREA!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "ITS INTERNET RIVALS\n"
 	.string "EVEN CYBER CITY'S!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87956C4_unk12
@@ -164,30 +254,50 @@ CompText87956C4::
 	def_text_script CompText87956C4_unk19
 
 	def_text_script CompText87956C4_unk20
-	ts_check_flag 0xD4, 0xC, 0x15, 0xFF
-	ts_check_flag 0xD3, 0xC, 0x16, 0xFF
-	ts_mugshot_show 0x37
+	ts_check_flag [
+		flag: 0xCD4,
+		jumpIfTrue: 0x15,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xCD3,
+		jumpIfTrue: 0x16,
+		jumpIfFalse: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "Talk to the\n"
 	.string "Mr.Prog!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87956C4_unk21
-	ts_mugshot_show 0x37
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "Lan,let's go with\n"
 	.string "everyone to the\n"
 	.string "meeting place!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87956C4_unk22
-	ts_mugshot_show 0x37
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "Lan,let's go over\n"
 	.string "to Roll's place?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87956C4_unk23
@@ -195,12 +305,16 @@ CompText87956C4::
 	def_text_script CompText87956C4_unk24
 
 	def_text_script CompText87956C4_unk25
-	ts_mugshot_show 0x4D
+	ts_mugshot_show [
+		mugshot: 0x4D,
+	]
 	ts_msg_open
 	.string "Hey! Where you goin?\n"
 	.string "You got nothin' to\n"
 	.string "do over there!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87956C4_unk26

@@ -312,14 +312,18 @@ TextScriptCredits86C4B58::
 
 	def_text_script TextScriptCredits86C4B58_unk102
 	.string "              "
-	ts_space_px 0x2
+	ts_space_px [
+		count: 0x2,
+	]
 	.string "M "
 	ts_clear_msg
 	.string " ヂ$"
 
 	def_text_script TextScriptCredits86C4B58_unk103
 	.string "              "
-	ts_space_px 0x2
+	ts_space_px [
+		count: 0x2,
+	]
 	.string "G "
 	ts_clear_msg
 	.string " ヂ$"

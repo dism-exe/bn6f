@@ -10,21 +10,72 @@ CompText874D038::
 	text_archive_start
 
 	def_text_script CompText874D038_unk0
-	ts_check_chapter 0x57, 0x57, 0xBE, 0xFF
-	ts_check_chapter 0x56, 0x56, 0xB4, 0xFF
-	ts_check_chapter 0x55, 0x55, 0x9B, 0xFF
-	ts_check_chapter 0x54, 0x54, 0x96, 0xFF
-	ts_check_navi_all 0xFF, 0xDD, 0xDE, 0xDF, 0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7
-	ts_check_flag 0x63, 0x1, 0xDC, 0xFF
-	ts_jump 1
+	ts_check_chapter [
+		lower: 0x57,
+		upper: 0x57,
+		jumpIfInRange: 0xBE,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_chapter [
+		lower: 0x56,
+		upper: 0x56,
+		jumpIfInRange: 0xB4,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_chapter [
+		lower: 0x55,
+		upper: 0x55,
+		jumpIfInRange: 0x9B,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_chapter [
+		lower: 0x54,
+		upper: 0x54,
+		jumpIfInRange: 0x96,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_navi_all [
+		jumpIfMegaMan: 0xFF,
+		jumpIfHeatMan: 0xDD,
+		jumpIfElecMan: 0xDE,
+		jumpIfSlashMan: 0xDF,
+		jumpIfEraseMan: 0xE0,
+		jumpIfChargeMan: 0xE1,
+		jumpIfSpoutMan: 0xE2,
+		jumpIfTomahawkMan: 0xE3,
+		jumpIfTenguMan: 0xE4,
+		jumpIfGroundMan: 0xE5,
+		jumpIfDustMan: 0xE6,
+		jumpIfProtoMan: 0xE7,
+	]
+	ts_check_flag [
+		flag: 0x163,
+		jumpIfTrue: 0xDC,
+		jumpIfFalse: 0xFF,
+	]
+	ts_jump [
+		target: 1,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk1
-	ts_check_chapter 0x62, 0x64, 0xF, 0xFF
-	ts_check_chapter 0x60, 0x61, 0x5, 0xFF
+	ts_check_chapter [
+		lower: 0x62,
+		upper: 0x64,
+		jumpIfInRange: 0xF,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_chapter [
+		lower: 0x60,
+		upper: 0x61,
+		jumpIfInRange: 0x5,
+		jumpIfOutOfRange: 0xFF,
+	]
 	ts_msg_open
 	.string "Dummy text"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk2
@@ -34,71 +85,121 @@ CompText874D038::
 	def_text_script CompText874D038_unk4
 
 	def_text_script CompText874D038_unk5
-	ts_check_flag 0x10, 0xE, 0xA, 0xFF
-	ts_check_flag 0xE, 0xE, 0x9, 0xFF
-	ts_check_flag 0xA, 0xE, 0x8, 0xFF
-	ts_check_flag 0x8, 0xE, 0x7, 0xFF
-	ts_check_flag 0x5A, 0xE, 0x6, 0xFF
-	ts_mugshot_show 0x0
+	ts_check_flag [
+		flag: 0xE10,
+		jumpIfTrue: 0xA,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE0E,
+		jumpIfTrue: 0x9,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE0A,
+		jumpIfTrue: 0x8,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE08,
+		jumpIfTrue: 0x7,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE5A,
+		jumpIfTrue: 0x6,
+		jumpIfFalse: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "We've got to check\n"
 	.string "the Undernet BBS!!\n"
 	.string "Let's go!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk6
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Jack out and head\n"
 	.string "for the Sky Town\n"
 	.string "Admin Building!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk7
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Phew...\n"
 	.string "I'm glad everyone's\n"
 	.string "safe..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "OK,time to jack out!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk8
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "It's about time to\n"
 	.string "jack out,MegaMan."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk9
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "So,we're inviting\n"
 	.string "Mick,Iris,Tab,"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "and all our friends\n"
 	.string "from ACDC Town!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Oh,and Chaud too,if\n"
 	.string "he's around!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk10
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Time to jack out!\n"
 	.string "I can't wait for\n"
 	.string "the Gala!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk11
@@ -110,124 +211,252 @@ CompText874D038::
 	def_text_script CompText874D038_unk14
 
 	def_text_script CompText874D038_unk15
-	ts_check_flag 0x44, 0xE, 0x1D, 0xFF
-	ts_check_flag 0x3E, 0xE, 0x1C, 0xFF
-	ts_check_flag 0x3C, 0xE, 0x1B, 0xFF
-	ts_check_flag 0x36, 0xE, 0x1A, 0xFF
-	ts_check_flag 0x34, 0xE, 0x19, 0xFF
-	ts_check_flag 0x2E, 0xE, 0x18, 0xFF
-	ts_check_flag 0x2C, 0xE, 0x17, 0xFF
-	ts_check_flag 0x2A, 0xE, 0x16, 0xFF
-	ts_check_flag 0x26, 0xE, 0x15, 0xFF
-	ts_check_flag 0x22, 0xE, 0x14, 0xFF
-	ts_check_flag 0x20, 0xE, 0x13, 0xFF
-	ts_check_flag 0x16, 0xE, 0x12, 0xFF
-	ts_check_flag 0x14, 0xE, 0x11, 0xFF
-	ts_check_flag 0x62, 0xE, 0x10, 0xFF
-	ts_mugshot_show 0x0
+	ts_check_flag [
+		flag: 0xE44,
+		jumpIfTrue: 0x1D,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE3E,
+		jumpIfTrue: 0x1C,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE3C,
+		jumpIfTrue: 0x1B,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE36,
+		jumpIfTrue: 0x1A,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE34,
+		jumpIfTrue: 0x19,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE2E,
+		jumpIfTrue: 0x18,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE2C,
+		jumpIfTrue: 0x17,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE2A,
+		jumpIfTrue: 0x16,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE26,
+		jumpIfTrue: 0x15,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE22,
+		jumpIfTrue: 0x14,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE20,
+		jumpIfTrue: 0x13,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE16,
+		jumpIfTrue: 0x12,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE14,
+		jumpIfTrue: 0x11,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xE62,
+		jumpIfTrue: 0x10,
+		jumpIfFalse: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Jack out,MegaMan!\n"
 	.string "Let's get going to\n"
 	.string "the meeting point!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk16
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Jack out,MegaMan!\n"
 	.string "Everyone's waiting\n"
 	.string "for us at the park!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk17
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Let's go to the Expo\n"
 	.string "Site,MegaMan!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk18
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Jack out,MegaMan!\n"
 	.string "There are still\n"
 	.string "stamps to collect!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk19
-	ts_check_sub_area 0xB, 0xB, 0x1E, 0xFF
-	ts_mugshot_show 0x0
+	ts_check_sub_area [
+		lower: 0xB,
+		upper: 0xB,
+		jumpIfInRange: 0x1E,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Head for the\n"
 	.string "Principal's Office,\n"
 	.string "MegaMan!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk20
-	ts_check_sub_area 0xB, 0xB, 0x1E, 0xFF
-	ts_mugshot_show 0x0
+	ts_check_sub_area [
+		lower: 0xB,
+		upper: 0xB,
+		jumpIfInRange: 0x1E,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Let's go to the\n"
 	.string "Principal's Office,\n"
 	.string "MegaMan!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk21
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Jack out,MegaMan!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Let's see where in\n"
 	.string "the Expo Site that\n"
 	.string "passageway leads..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk22
-	ts_check_sub_area 0xF, 0xF, 0x1E, 0xFF
-	ts_check_sub_area 0xC, 0xC, 0x1E, 0xFF
-	ts_mugshot_show 0x0
+	ts_check_sub_area [
+		lower: 0xF,
+		upper: 0xF,
+		jumpIfInRange: 0x1E,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_sub_area [
+		lower: 0xC,
+		upper: 0xC,
+		jumpIfInRange: 0x1E,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Let's get back to\n"
 	.string "the Expo Site!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk23
-	ts_jump 22
+	ts_jump [
+		target: 22,
+	]
 
 	def_text_script CompText874D038_unk24
-	ts_jump 22
+	ts_jump [
+		target: 22,
+	]
 
 	def_text_script CompText874D038_unk25
-	ts_jump 22
+	ts_jump [
+		target: 22,
+	]
 
 	def_text_script CompText874D038_unk26
-	ts_jump 22
+	ts_jump [
+		target: 22,
+	]
 
 	def_text_script CompText874D038_unk27
-	ts_jump 22
+	ts_jump [
+		target: 22,
+	]
 
 	def_text_script CompText874D038_unk28
-	ts_jump 22
+	ts_jump [
+		target: 22,
+	]
 
 	def_text_script CompText874D038_unk29
-	ts_jump 22
+	ts_jump [
+		target: 22,
+	]
 
 	def_text_script CompText874D038_unk30
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Jack out,MegaMan!!\n"
 	.string "This is no time to\n"
 	.string "dilly-dally!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk31
@@ -469,29 +698,47 @@ CompText874D038::
 	def_text_script CompText874D038_unk149
 
 	def_text_script CompText874D038_unk150
-	ts_check_flag 0x49, 0xC, 0x98, 0xFF
-	ts_check_flag 0x43, 0xC, 0x97, 0xFF
+	ts_check_flag [
+		flag: 0xC49,
+		jumpIfTrue: 0x98,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xC43,
+		jumpIfTrue: 0x97,
+		jumpIfFalse: 0xFF,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk151
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Let's see... Our\n"
 	.string "targets are the gang\n"
 	.string "members who are"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "hanging around..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk152
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Jack out...\n"
 	.string "It's time to face\n"
 	.string "Dark Scyth's final!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk153
@@ -499,76 +746,135 @@ CompText874D038::
 	def_text_script CompText874D038_unk154
 
 	def_text_script CompText874D038_unk155
-	ts_check_flag 0xA5, 0xC, 0x9F, 0xFF
-	ts_check_flag 0xB3, 0xC, 0x9E, 0xFF
-	ts_check_flag 0xB2, 0xC, 0x9D, 0xFF
-	ts_check_flag 0xA3, 0xC, 0x9C, 0xFF
+	ts_check_flag [
+		flag: 0xCA5,
+		jumpIfTrue: 0x9F,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xCB3,
+		jumpIfTrue: 0x9E,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xCB2,
+		jumpIfTrue: 0x9D,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xCA3,
+		jumpIfTrue: 0x9C,
+		jumpIfFalse: 0xFF,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk156
-	ts_check_sub_area 0x2, 0x2, 0xA0, 0xFF
-	ts_mugshot_show 0x0
+	ts_check_sub_area [
+		lower: 0x2,
+		upper: 0x2,
+		jumpIfInRange: 0xA0,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "First,we've gotta\n"
 	.string "find the junk trader\n"
 	.string "in Undernet2..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk157
-	ts_check_sub_area 0x2, 0x2, 0xA1, 0xFF
-	ts_mugshot_show 0x0
+	ts_check_sub_area [
+		lower: 0x2,
+		upper: 0x2,
+		jumpIfInRange: 0xA1,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "There's one more\n"
 	.string "junk trader in\n"
 	.string "Undernet2..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk158
-	ts_check_sub_area 0x0, 0x0, 0xA1, 0xFF
-	ts_mugshot_show 0x0
+	ts_check_sub_area [
+		lower: 0x0,
+		upper: 0x0,
+		jumpIfInRange: 0xA1,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Next,we've gotta\n"
 	.string "find the junk trader\n"
 	.string "in Undernet1."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk159
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Jack out... and\n"
 	.string "good luck on\n"
 	.string "Mr.Press's final!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk160
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "First,we've gotta\n"
 	.string "find the junk trader\n"
 	.string "in this area..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk161
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "There's one more\n"
 	.string "junk trader here in\n"
 	.string "this area..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk162
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Next,we've gotta\n"
 	.string "find the junk trader\n"
 	.string "in this area..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk163
@@ -606,37 +912,61 @@ CompText874D038::
 	def_text_script CompText874D038_unk179
 
 	def_text_script CompText874D038_unk180
-	ts_check_flag 0x32, 0xD, 0xB7, 0xFF
-	ts_check_flag 0x33, 0xD, 0xB6, 0xFF
-	ts_check_flag 0x63, 0xC, 0xB5, 0xFF
+	ts_check_flag [
+		flag: 0xD32,
+		jumpIfTrue: 0xB7,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xD33,
+		jumpIfTrue: 0xB6,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xC63,
+		jumpIfTrue: 0xB5,
+		jumpIfFalse: 0xFF,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk181
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Let's go to\n"
 	.string "CentralArea2!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk182
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Let's go to\n"
 	.string "CentralArea1!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk183
 	ts_end
 
 	def_text_script CompText874D038_unk184
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "We're gonna turn all\n"
 	.string "the rocks in this\n"
 	.string "area into pebbles!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk185
@@ -650,55 +980,91 @@ CompText874D038::
 	def_text_script CompText874D038_unk189
 
 	def_text_script CompText874D038_unk190
-	ts_check_flag 0x8F, 0xC, 0xC2, 0xFF
-	ts_check_flag 0x8B, 0xC, 0xC1, 0xFF
-	ts_check_flag 0x87, 0xC, 0xC0, 0xFF
-	ts_check_flag 0x83, 0xC, 0xBF, 0xFF
+	ts_check_flag [
+		flag: 0xC8F,
+		jumpIfTrue: 0xC2,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xC8B,
+		jumpIfTrue: 0xC1,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xC87,
+		jumpIfTrue: 0xC0,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xC83,
+		jumpIfTrue: 0xBF,
+		jumpIfFalse: 0xFF,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk191
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Let's go to the\n"
 	.string "cyberstation in\n"
 	.string "Undernet2!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk192
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Let's go to the\n"
 	.string "cyberstation in\n"
 	.string "Sky Area2!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk193
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Let's go to the\n"
 	.string "cyberstation in\n"
 	.string "CentralArea3!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk194
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Time for the final\n"
 	.string "exam! Jack out,\n"
 	.string "ChargeMan!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk195
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Let's look for the\n"
 	.string "cyberstation in this\n"
 	.string "area!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk196
@@ -750,106 +1116,152 @@ CompText874D038::
 	def_text_script CompText874D038_unk219
 
 	def_text_script CompText874D038_unk220
-	ts_jump 1
+	ts_jump [
+		target: 1,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk221
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Operating HeatMan...\n"
 	.string "It lights my soul on\n"
 	.string "fire!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk222
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Operating ElecMan...\n"
 	.string "I feel a surge of\n"
 	.string "power coming on!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk223
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Operating SlashMan\n"
 	.string "is like sharpening\n"
 	.string "my mind to a point!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk224
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Operating EraseMan\n"
 	.string "brings out my dark\n"
 	.string "side... Mwahahaha!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk225
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Operating ChargeMan\n"
 	.string "makes me want to\n"
 	.string "plow ahead!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk226
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Operating SpoutMan\n"
 	.string "makes me feel like\n"
 	.string "a little fish..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk227
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Operating\n"
 	.string "TomahawkMan is an\n"
 	.string "awesome feeling!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk228
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Operating TenguMan\n"
 	.string "brings a sense of\n"
 	.string "peace to my heart..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk229
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Operating GroundMan\n"
 	.string "lets me drill\n"
 	.string "through anything!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk230
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Operating DustMan...\n"
 	.string "There's no virus we\n"
 	.string "can't scrap!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk231
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "ProtoMan helping out\n"
 	.string "during battle... He\n"
 	.string "sure is trustworthy!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText874D038_unk232

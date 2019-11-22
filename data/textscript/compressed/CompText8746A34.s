@@ -10,11 +10,23 @@ CompText8746A34::
 	text_archive_start
 
 	def_text_script CompText8746A34_unk0
-	ts_check_chapter 0x50, 0x53, 0x5, 0xFF
-	ts_check_chapter 0x40, 0x46, 0x5, 0xFF
+	ts_check_chapter [
+		lower: 0x50,
+		upper: 0x53,
+		jumpIfInRange: 0x5,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_chapter [
+		lower: 0x40,
+		upper: 0x46,
+		jumpIfInRange: 0x5,
+		jumpIfOutOfRange: 0xFF,
+	]
 	ts_msg_open
 	.string "Dummy text"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8746A34_unk1
@@ -26,12 +38,16 @@ CompText8746A34::
 	def_text_script CompText8746A34_unk4
 
 	def_text_script CompText8746A34_unk5
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Things don't look\n"
 	.string "too damaged from the\n"
 	.string "DiveMan incident..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText8746A34_unk6

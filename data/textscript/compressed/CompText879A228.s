@@ -10,10 +10,14 @@ CompText879A228::
 	text_archive_start
 
 	def_text_script CompText879A228_unk0
-	ts_mugshot_show 0x37
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "It's a dead-end!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText879A228_unk1
@@ -23,7 +27,9 @@ CompText879A228::
 	.string "The cloud seems to\n"
 	.string "be undergoing\n"
 	.string "maintenance."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText879A228_unk3

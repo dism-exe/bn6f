@@ -10,59 +10,91 @@ CompText87CC3AC::
 	text_archive_start
 
 	def_text_script CompText87CC3AC_unk0
-	ts_mugshot_show 0x26
+	ts_mugshot_show [
+		mugshot: 0x26,
+	]
 	ts_msg_open
 	.string "... Now then,let's\n"
 	.string "begin our class."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "... Today,you will\n"
 	.string "be working at my\n"
 	.string "railroad company."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_jump 1
+	ts_jump [
+		target: 1,
+	]
 
 	def_text_script CompText87CC3AC_unk1
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Railroad...?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "But I can't drive\n"
 	.string "a train!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_jump 2
+	ts_jump [
+		target: 2,
+	]
 
 	def_text_script CompText87CC3AC_unk2
-	ts_mugshot_show 0x26
+	ts_mugshot_show [
+		mugshot: 0x26,
+	]
 	ts_msg_open
 	.string "... It's alright,\n"
 	.string "little guy."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "The railroad I'm\n"
 	.string "talking about is\n"
 	.string "on the Net..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "You'll be operating\n"
 	.string "my Navi,ChargeMan."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "... Now if you just\n"
 	.string "step over to the\n"
 	.string "vending machine..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
-	ts_jump 3
+	ts_jump [
+		target: 3,
+	]
 
 	def_text_script CompText87CC3AC_unk3
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "OK."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	

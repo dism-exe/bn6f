@@ -14,11 +14,15 @@ CompText875BFD8::
 	.string "The elevator's core.\n"
 	.string "For maintenance\n"
 	.string "reasons,"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "there is a port for\n"
 	.string "jacking in."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875BFD8_unk1
@@ -26,7 +30,9 @@ CompText875BFD8::
 	.string "You can almost see\n"
 	.string "what is inside\n"
 	.string "through this window."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875BFD8_unk2
@@ -34,14 +40,18 @@ CompText875BFD8::
 	.string "It's locked...\n"
 	.string "No unauthorized\n"
 	.string "personnel allowed."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875BFD8_unk3
 	ts_msg_open
 	.string "A control panel for\n"
 	.string "the helipad."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875BFD8_unk4
@@ -77,121 +87,266 @@ CompText875BFD8::
 	def_text_script CompText875BFD8_unk19
 
 	def_text_script CompText875BFD8_unk20
-	ts_check_flag 0x63, 0x1, 0x3, 0xFF
-	ts_check_flag 0x1F, 0x1, 0x1B, 0xFF
-	ts_check_flag 0xBA, 0xA, 0xFF, 0x18
-	ts_check_flag 0xBD, 0xA, 0x15, 0xFF
-	ts_flag_set 0xBD, 0xA
-	ts_jump 22
+	ts_check_flag [
+		flag: 0x163,
+		jumpIfTrue: 0x3,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0x11F,
+		jumpIfTrue: 0x1B,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xABA,
+		jumpIfTrue: 0xFF,
+		jumpIfFalse: 0x18,
+	]
+	ts_check_flag [
+		flag: 0xABD,
+		jumpIfTrue: 0x15,
+		jumpIfFalse: 0xFF,
+	]
+	ts_flag_set [
+		flag: 0xABD,
+	]
+	ts_jump [
+		target: 22,
+	]
 
 	def_text_script CompText875BFD8_unk21
-	ts_check_flag 0x1D, 0x17, 0xFF, 0x19
-	ts_check_game_version 0xFF, 0x17
-	ts_mugshot_show 0x37
+	ts_check_flag [
+		flag: 0x171D,
+		jumpIfTrue: 0xFF,
+		jumpIfFalse: 0x19,
+	]
+	ts_check_game_version [
+		jumpIfCybeastGregar: 0xFF,
+		jumpIfCybeastFalzar: 0x17,
+	]
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "Operate ElecMan from\n"
 	.string "this control panel?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_position_option_horizontal 0x7
-	ts_option 0x0, 0x11, 0x0
-	ts_space 0x1
+	ts_position_option_horizontal [
+		width: 0x7,
+	]
+	ts_option [
+		brackets: 0x0,
+		right: 0x1,
+		left: 0x1,
+		down: 0x0,
+		up: 0x0,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " Yes  "
-	ts_option 0x0, 0x0, 0x11
-	ts_space 0x1
+	ts_option [
+		brackets: 0x0,
+		right: 0x0,
+		left: 0x0,
+		down: 0x1,
+		up: 0x1,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " No\n"
 	ts_select 0x6, 0x80, 0x16, 0xFF, 0xFF
 	ts_end
 
 	def_text_script CompText875BFD8_unk22
-	ts_flag_set 0xBC, 0xA
+	ts_flag_set [
+		flag: 0xABC,
+	]
 	ts_end
 
 	def_text_script CompText875BFD8_unk23
-	ts_mugshot_show 0x37
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "Operate TomahawkMan\n"
 	.string "from this control\n"
 	.string "panel?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_position_option_horizontal 0x7
-	ts_option 0x0, 0x11, 0x0
-	ts_space 0x1
+	ts_position_option_horizontal [
+		width: 0x7,
+	]
+	ts_option [
+		brackets: 0x0,
+		right: 0x1,
+		left: 0x1,
+		down: 0x0,
+		up: 0x0,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " Yes  "
-	ts_option 0x0, 0x0, 0x11
-	ts_space 0x1
+	ts_option [
+		brackets: 0x0,
+		right: 0x0,
+		left: 0x0,
+		down: 0x1,
+		up: 0x1,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " No\n"
 	ts_select 0x6, 0x80, 0x16, 0xFF, 0xFF
 	ts_end
 
 	def_text_script CompText875BFD8_unk24
-	ts_check_flag 0x20, 0x1, 0xFF, 0x3
-	ts_check_flag 0xBB, 0xA, 0x15, 0xFF
-	ts_jump 3
+	ts_check_flag [
+		flag: 0x120,
+		jumpIfTrue: 0xFF,
+		jumpIfFalse: 0x3,
+	]
+	ts_check_flag [
+		flag: 0xABB,
+		jumpIfTrue: 0x15,
+		jumpIfFalse: 0xFF,
+	]
+	ts_jump [
+		target: 3,
+	]
 
 	def_text_script CompText875BFD8_unk25
-	ts_check_game_version 0xFF, 0x1A
-	ts_mugshot_show 0x49
+	ts_check_game_version [
+		jumpIfCybeastGregar: 0xFF,
+		jumpIfCybeastFalzar: 0x1A,
+	]
+	ts_mugshot_show [
+		mugshot: 0x49,
+	]
 	ts_msg_open
 	.string "... What? Are you\n"
 	.string "going to operate me?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_position_option_horizontal 0x7
-	ts_option 0x0, 0x11, 0x0
-	ts_space 0x1
+	ts_position_option_horizontal [
+		width: 0x7,
+	]
+	ts_option [
+		brackets: 0x0,
+		right: 0x1,
+		left: 0x1,
+		down: 0x0,
+		up: 0x0,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " Yes  "
-	ts_option 0x0, 0x0, 0x11
-	ts_space 0x1
+	ts_option [
+		brackets: 0x0,
+		right: 0x0,
+		left: 0x0,
+		down: 0x1,
+		up: 0x1,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " No\n"
 	ts_select 0x6, 0x80, 0x16, 0xFF, 0xFF
 	ts_end
 
 	def_text_script CompText875BFD8_unk26
-	ts_mugshot_show 0x4A
+	ts_mugshot_show [
+		mugshot: 0x4A,
+	]
 	ts_msg_open
 	.string "Yo,Lan!\n"
 	.string "Do you need my help?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_position_option_horizontal 0x7
-	ts_option 0x0, 0x11, 0x0
-	ts_space 0x1
+	ts_position_option_horizontal [
+		width: 0x7,
+	]
+	ts_option [
+		brackets: 0x0,
+		right: 0x1,
+		left: 0x1,
+		down: 0x0,
+		up: 0x0,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " Yes  "
-	ts_option 0x0, 0x0, 0x11
-	ts_space 0x1
+	ts_option [
+		brackets: 0x0,
+		right: 0x0,
+		left: 0x0,
+		down: 0x1,
+		up: 0x1,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " No\n"
 	ts_select 0x6, 0x80, 0x16, 0xFF, 0xFF
 	ts_end
 
 	def_text_script CompText875BFD8_unk27
-	ts_check_game_version 0xFF, 0x1C
-	ts_mugshot_show 0x37
+	ts_check_game_version [
+		jumpIfCybeastGregar: 0xFF,
+		jumpIfCybeastFalzar: 0x1C,
+	]
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "What are you doing,\n"
 	.string "Lan!?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Ms.Zap's final exam\n"
 	.string "is waiting!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875BFD8_unk28
-	ts_mugshot_show 0x37
+	ts_mugshot_show [
+		mugshot: 0x37,
+	]
 	ts_msg_open
 	.string "What are you doing,\n"
 	.string "Lan!?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Dingo's final exam\n"
 	.string "is waiting!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875BFD8_unk29

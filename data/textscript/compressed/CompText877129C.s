@@ -10,8 +10,14 @@ CompText877129C::
 	text_archive_start
 
 	def_text_script CompText877129C_unk0
-	ts_check_flag 0x66, 0xE, 0x1, 0xFF
-	ts_flag_set 0x66, 0xE
+	ts_check_flag [
+		flag: 0xE66,
+		jumpIfTrue: 0x1,
+		jumpIfFalse: 0xFF,
+	]
+	ts_flag_set [
+		flag: 0xE66,
+	]
 	ts_end
 
 	def_text_script CompText877129C_unk1

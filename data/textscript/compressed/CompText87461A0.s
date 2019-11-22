@@ -10,12 +10,29 @@ CompText87461A0::
 	text_archive_start
 
 	def_text_script CompText87461A0_unk0
-	ts_check_chapter 0x10, 0x16, 0x23, 0xFF
-	ts_check_chapter 0x5, 0x5, 0x23, 0xFF
-	ts_check_chapter 0x3, 0x4, 0x19, 0xFF
+	ts_check_chapter [
+		lower: 0x10,
+		upper: 0x16,
+		jumpIfInRange: 0x23,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_chapter [
+		lower: 0x5,
+		upper: 0x5,
+		jumpIfInRange: 0x23,
+		jumpIfOutOfRange: 0xFF,
+	]
+	ts_check_chapter [
+		lower: 0x3,
+		upper: 0x4,
+		jumpIfInRange: 0x19,
+		jumpIfOutOfRange: 0xFF,
+	]
 	ts_msg_open
 	.string "Dummy text"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87461A0_unk1
@@ -67,10 +84,26 @@ CompText87461A0::
 	def_text_script CompText87461A0_unk24
 
 	def_text_script CompText87461A0_unk25
-	ts_check_flag 0x3A, 0x4, 0x20, 0xFF
-	ts_check_flag 0x36, 0x4, 0x1F, 0xFF
-	ts_check_flag 0x34, 0x4, 0x1D, 0xFF
-	ts_check_flag 0x32, 0x4, 0x1D, 0xFF
+	ts_check_flag [
+		flag: 0x43A,
+		jumpIfTrue: 0x20,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0x436,
+		jumpIfTrue: 0x1F,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0x434,
+		jumpIfTrue: 0x1D,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0x432,
+		jumpIfTrue: 0x1D,
+		jumpIfFalse: 0xFF,
+	]
 	ts_end
 
 	def_text_script CompText87461A0_unk26
@@ -80,12 +113,16 @@ CompText87461A0::
 	def_text_script CompText87461A0_unk28
 
 	def_text_script CompText87461A0_unk29
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "MegaMan,it's up to\n"
 	.string "you to fix the\n"
 	.string "control system!!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87461A0_unk30
@@ -93,11 +130,15 @@ CompText87461A0::
 	def_text_script CompText87461A0_unk31
 
 	def_text_script CompText87461A0_unk32
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Let's show BlastMan\n"
 	.string "what you've got!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87461A0_unk33
@@ -105,12 +146,16 @@ CompText87461A0::
 	def_text_script CompText87461A0_unk34
 
 	def_text_script CompText87461A0_unk35
-	ts_mugshot_show 0x0
+	ts_mugshot_show [
+		mugshot: 0x0,
+	]
 	ts_msg_open
 	.string "Things don't look\n"
 	.string "too damaged from the\n"
 	.string "BlastMan incident..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87461A0_unk36

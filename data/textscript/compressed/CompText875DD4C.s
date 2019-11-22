@@ -14,28 +14,40 @@ CompText875DD4C::
 	.string "If you don't hit the\n"
 	.string "release button,this\n"
 	.string "door will not open."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText875DD4C_unk1
-	ts_jump 0
+	ts_jump [
+		target: 0,
+	]
 
 	def_text_script CompText875DD4C_unk2
-	ts_jump 0
+	ts_jump [
+		target: 0,
+	]
 
 	def_text_script CompText875DD4C_unk3
-	ts_jump 0
+	ts_jump [
+		target: 0,
+	]
 
 	def_text_script CompText875DD4C_unk4
 	ts_msg_open
 	.string "This is the control\n"
 	.string "panel for this\n"
 	.string "pavilion..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "It is operating\n"
 	.string "normally."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	

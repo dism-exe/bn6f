@@ -45,7 +45,9 @@ TextScriptNetworkEnterFolderName0::
 	ts_msg_open_menu
 	.string "Please enter\n"
 	.string "folder name."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script TextScriptNetworkEnterFolderName0_unk21
@@ -53,15 +55,35 @@ TextScriptNetworkEnterFolderName0::
 	def_text_script TextScriptNetworkEnterFolderName0_unk22
 	ts_msg_open_menu
 	.string "\""
-	ts_print_link_buffer 0x2
+	ts_print_link_buffer [
+		buffer: 0x2,
+	]
 	.string "\"\n"
 	.string "OK?\n"
-	ts_position_option_horizontal 0x7
-	ts_option 0x0, 0x11, 0x0
-	ts_space 0x1
+	ts_position_option_horizontal [
+		width: 0x7,
+	]
+	ts_option [
+		brackets: 0x0,
+		right: 0x1,
+		left: 0x1,
+		down: 0x0,
+		up: 0x0,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " Yes  "
-	ts_option 0x0, 0x0, 0x11
-	ts_space 0x1
+	ts_option [
+		brackets: 0x0,
+		right: 0x0,
+		left: 0x0,
+		down: 0x1,
+		up: 0x1,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
@@ -72,12 +94,30 @@ TextScriptNetworkEnterFolderName0::
 	ts_msg_open_menu
 	.string "Quit entry and\n"
 	.string "return to menu?\n"
-	ts_position_option_horizontal 0x7
-	ts_option 0x0, 0x11, 0x0
-	ts_space 0x1
+	ts_position_option_horizontal [
+		width: 0x7,
+	]
+	ts_option [
+		brackets: 0x0,
+		right: 0x1,
+		left: 0x1,
+		down: 0x0,
+		up: 0x0,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " Yes  "
-	ts_option 0x0, 0x0, 0x11
-	ts_space 0x1
+	ts_option [
+		brackets: 0x0,
+		right: 0x0,
+		left: 0x0,
+		down: 0x1,
+		up: 0x1,
+	]
+	ts_space [
+		count: 0x1,
+	]
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
@@ -85,13 +125,21 @@ TextScriptNetworkEnterFolderName0::
 	def_text_script TextScriptNetworkEnterFolderName0_unk25
 
 	def_text_script TextScriptNetworkEnterFolderName0_unk26
-	ts_jump 24
+	ts_jump [
+		target: 24,
+	]
 
 	def_text_script TextScriptNetworkEnterFolderName0_unk27
 
 	def_text_script TextScriptNetworkEnterFolderName0_unk28
-	ts_position_text 0x33, 0x6C, 0x3
-	ts_jump 20
+	ts_position_text [
+		left: 0x33,
+		top: 0x6C,
+		arrowDistance: 0x3,
+	]
+	ts_jump [
+		target: 20,
+	]
 
 	def_text_script TextScriptNetworkEnterFolderName0_unk29
 

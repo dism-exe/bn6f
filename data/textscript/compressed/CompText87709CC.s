@@ -10,25 +10,35 @@ CompText87709CC::
 	text_archive_start
 
 	def_text_script CompText87709CC_unk0
-	ts_mugshot_show 0x10
+	ts_mugshot_show [
+		mugshot: 0x10,
+	]
 	ts_msg_open
 	.string "Hmm...\n"
 	.string "Grading tests on a\n"
 	.string "day off..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "That's not a good\n"
 	.string "sign,is it?\n"
 	.string "Busy,busy..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Hey,wait! You can't\n"
 	.string "just come into the\n"
 	.string "Teachers' Room when"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "there's no school!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87709CC_unk1
@@ -50,35 +60,57 @@ CompText87709CC::
 	def_text_script CompText87709CC_unk9
 
 	def_text_script CompText87709CC_unk10
-	ts_check_flag 0x10, 0xA, 0xF, 0xFF
-	ts_mugshot_show 0xD
+	ts_check_flag [
+		flag: 0xA10,
+		jumpIfTrue: 0xF,
+		jumpIfFalse: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0xD,
+	]
 	ts_msg_open
 	.string "*yawn*\n"
 	.string "It's time\n"
 	.string "to go home!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "Today's been another\n"
 	.string "tiring day!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87709CC_unk11
-	ts_check_flag 0x10, 0xA, 0x10, 0xFF
-	ts_mugshot_show 0xE
+	ts_check_flag [
+		flag: 0xA10,
+		jumpIfTrue: 0x10,
+		jumpIfFalse: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0xE,
+	]
 	ts_msg_open
 	.string "My boyfriend and I\n"
 	.string "are gonna see a"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "professional\n"
 	.string "baseball game\n"
 	.string "tonight!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "... Oops! Forget I\n"
 	.string "said anything!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87709CC_unk12
@@ -88,37 +120,53 @@ CompText87709CC::
 	def_text_script CompText87709CC_unk14
 
 	def_text_script CompText87709CC_unk15
-	ts_mugshot_show 0xD
+	ts_mugshot_show [
+		mugshot: 0xD,
+	]
 	ts_msg_open
 	.string "I have to call all\n"
 	.string "the parents and"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "check that every\n"
 	.string "student made it home\n"
 	.string "safely or else...!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "You better hurry up\n"
 	.string "and get on home,too!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87709CC_unk16
-	ts_mugshot_show 0xE
+	ts_mugshot_show [
+		mugshot: 0xE,
+	]
 	ts_msg_open
 	.string "Aww,because of the\n"
 	.string "crazy weather,"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "my date tonight has\n"
 	.string "been canceled!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "This is terrible!\n"
 	.string "I'll have to work\n"
 	.string "all evening now!"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87709CC_unk17
@@ -168,17 +216,23 @@ CompText87709CC::
 	def_text_script CompText87709CC_unk39
 
 	def_text_script CompText87709CC_unk40
-	ts_mugshot_show 0xD
+	ts_mugshot_show [
+		mugshot: 0xD,
+	]
 	ts_msg_open
 	.string "The Principal of\n"
 	.string "this school is Mayor\n"
 	.string "Cain."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "He's so busy that\n"
 	.string "he's always here\n"
 	.string "until late."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87709CC_unk41
@@ -190,35 +244,57 @@ CompText87709CC::
 	def_text_script CompText87709CC_unk44
 
 	def_text_script CompText87709CC_unk45
-	ts_check_flag 0x24, 0xC, 0x2F, 0xFF
-	ts_check_flag 0x22, 0xC, 0x2E, 0xFF
-	ts_mugshot_show 0x16
+	ts_check_flag [
+		flag: 0xC24,
+		jumpIfTrue: 0x2F,
+		jumpIfFalse: 0xFF,
+	]
+	ts_check_flag [
+		flag: 0xC22,
+		jumpIfTrue: 0x2E,
+		jumpIfFalse: 0xFF,
+	]
+	ts_mugshot_show [
+		mugshot: 0x16,
+	]
 	ts_msg_open
 	.string "Mayor Cain... He's\n"
 	.string "hard at work,even\n"
 	.string "on his day off..."
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_clear_msg
 	.string "I wonder if he's\n"
 	.string "staying healthy?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87709CC_unk46
-	ts_mugshot_show 0x16
+	ts_mugshot_show [
+		mugshot: 0x16,
+	]
 	ts_msg_open
 	.string "Wh-What was that\n"
 	.string "ruckus just now?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87709CC_unk47
-	ts_mugshot_show 0x16
+	ts_mugshot_show [
+		mugshot: 0x16,
+	]
 	ts_msg_open
 	.string "Th-That looked like\n"
 	.string "Mayor Cain being\n"
 	.string "led away...?"
-	ts_key_wait 0x0
+	ts_key_wait [
+		any: 0x0,
+	]
 	ts_end
 
 	def_text_script CompText87709CC_unk48
