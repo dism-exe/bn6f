@@ -1201,7 +1201,7 @@
 	.macro ts_print_request request:req, buffer:req
 		.byte 0xFA, 0x0, \request, ((\buffer & 0xF) << 4) | 0x9
 	.endm
-/*	
+	
 	// Prints the name of the current Navi.
 	.macro ts_print_current_navi 
 		.byte 0xFA, 0x1, 0x0
@@ -1217,12 +1217,15 @@
 	// :param padZeros[2:6:1]: If true, pads the amount of Zenny with zeros instead of spaces, if necessary.
 	// :param padLeft[2:7:1]: If true, places the padding, if any, to the left of the amount of Zenny instead of to the right.
 	.macro ts_print_zenny3 minLength:req, padZeros:req, padLeft:req
-		.byte 0xFA, 0x3, 0x0, 0x0, \minLength, \padZeros, \padLeft
+		.byte 0xFA, 0x3
+		.byte (\minLength & 0xF) | ((\padZeros & 0x1) << 6) | ((\padLeft & 0x1) << 7)
+		.byte 0x0
 	.endm
 	
-	
-	.macro ts_print_zenny4 
-		.byte 0xFA, 0x4, 0x0, 0x0
+	.macro ts_print_zenny4 minLength:req, padZeros:req, padLeft:req
+		.byte 0xFA, 0x4
+		.byte (\minLength & 0xF) | ((\padZeros & 0x1) << 6) | ((\padLeft & 0x1) << 7)
+		.byte 0x0
 	.endm
 	
 	// Prints the contents of the specified 32-bit buffer as a decimal number.
@@ -1231,12 +1234,16 @@
 	// :param padLeft[2:7:1]: If true, places the padding, if any, to the left of the amount of Zenny instead of to the right.
 	// :param buffer[3:0:8]: The buffer to print.
 	.macro ts_print_buffer03 minLength:req, padZeros:req, padLeft:req, buffer:req
-		.byte 0xFA, 0x3, \minLength, \padZeros, \padLeft, \buffer
+		.byte 0xFA, 0x3
+		.byte (\minLength & 0xF) | ((\padZeros & 0x1) << 6) | ((\padLeft & 0x1) << 7)
+		.byte \buffer
 	.endm
 	
 	
-	.macro ts_print_buffer04 
+	.macro ts_print_buffer04 minLength:req, padZeros:req, padLeft:req, buffer:req
 		.byte 0xFA, 0x4
+		.byte (\minLength & 0xF) | ((\padZeros & 0x1) << 6) | ((\padLeft & 0x1) << 7)
+		.byte \buffer
 	.endm
 	
 	// Prints a stat from the currently active Navi Data Chip. Only functions properly in the status screen.
@@ -1245,7 +1252,9 @@
 	// :param padLeft[2:7:1]: If true, places the padding, if any, to the left of the amount of Zenny instead of to the right.
 	// :param stat[3:0:8]: The stat to print. Possible values are: 0 = HP, 1 = Attack, 2 = MegaFolder, 3 = Custom, 4 = Speed, 5 = Charge
 	.macro ts_print_navi_data_chip_stat minLength:req, padZeros:req, padLeft:req, stat:req
-		.byte 0xFA, 0x6, \minLength, \padZeros, \padLeft, \stat
+		.byte 0xFA, 0x6
+		.byte (\minLength & 0xF) | ((\padZeros & 0x1) << 6) | ((\padLeft & 0x1) << 7)
+		.byte \stat
 	.endm
 	
 	// Prints a script of at most 3 bytes from a buffered pointer.
@@ -1280,7 +1289,8 @@
 	// Starts the specified fixed battle.
 	// :param battle[2:0:16]: The battle to load.
 	.macro ts_start_fixed_battle battle:req
-		.byte 0xFB, 0x3, \battle
+		.byte 0xFB, 0x3
+		.hword \battle
 	.endm
 	
 	// Opens the shop screen with the specified shop.
@@ -1305,7 +1315,8 @@
 	// Heals the player by the specified amount of HP (but no more than their maximum HP) and plays a sound effect.
 	// :param amount[2:0:16]: The amount of HP to recover.
 	.macro ts_start_heal amount:req
-		.byte 0xFB, 0x8, \amount
+		.byte 0xFB, 0x8
+		.hword \amount
 	.endm
 	
 	// Opens the BBS screen with the specified BBS.
@@ -1324,7 +1335,8 @@
 	// :param folder[2:0:4]: The new folder to place in the specified slot.
 	// :param slot[2:4:4]: The folder slot to place the new folder in.
 	.macro ts_start_give_folder folder:req, slot:req
-		.byte 0xFB, 0xD, \folder, \slot
+		.byte 0xFB, 0xD
+		.byte (\folder & 0xF) | ((\slot & 0xF) << 4)
 	.endm
 	
 	// Opens the Request BBS screen with the specified Request BBS.
@@ -1438,6 +1450,7 @@
 	.endm
 	
 	// Sets the current Navi's current HP to its maximum.
+	// FIXME: update name to hp, now h_p
 	.macro ts_call_set_full_h_p 
 		.byte 0xFC, 0x3, 0x13
 	.endm
@@ -1504,7 +1517,8 @@
 	// Loads the specified sound track into its designated track slot and starts playback.
 	// :param track[2:0:16]: The sound track to play.
 	.macro ts_sound_play00 track:req
-		.byte 0xFD, 0x0, \track
+		.byte 0xFD, 0x0
+		.hword \track
 	.endm
 	
 	// Stops playback of all track groups if a BGM is currently playing and clears the BGM track number.
@@ -1515,7 +1529,8 @@
 	// Loads the specified sound track into its designated track slot, sets the BGM track number to the specified sound track and starts playback.
 	// :param track[2:0:16]: The sound track to play.
 	.macro ts_sound_play_bgm track:req
-		.byte 0xFD, 0x1, \track
+		.byte 0xFD, 0x1
+		.hword \track
 	.endm
 	
 	// Enables the sound effect that plays when a text character is printed on the screen.
@@ -1645,246 +1660,16 @@
 	
 	// Prints the specified description script data that was received from the e-Reader.
 	// :param data[2:0:8]: The index of the data to print. 0 and 1 pertain to Rare Chip Data.
-	.macro ts_ereader_desc data:req
+	.macro ts_ereader_desc01 data:req
 		.byte 0xFF, 0x1, \data
 	.endm
-*/	
 	
-	.macro ts_print_current_navi
-	.byte 0xFA, 0x1, 0x0
-	.endm
-	.macro ts_print_current_navi_ow
-	.byte 0xFA, 0x1, 0x4
-	.endm
-	.macro ts_print_zenny3 p0:req
-	.byte 0xFA, 0x3, 0x0, 0x0, \p0
-	.endm
-	.macro ts_print_zenny4 p0:req
-	.byte 0xFA, 0x4, 0x0, 0x0, \p0
-	.endm
-	.macro ts_print_buffer03 p0:req, p1:req
-	.byte 0xFA, 0x3, \p0, \p1
-	.endm
-	.macro ts_print_buffer04 p0:req, p1:req
-	.byte 0xFA, 0x4, \p0, \p1
-	.endm
-	.macro ts_print_navi_data_chip_stat p0:req, p1:req
-	.byte 0xFA, 0x6, \p0, \p1
-	.endm
-	.macro ts_print_buffered_short_string p0:req
-	.byte 0xFA, 0xB, \p0
-	.endm
-	.macro ts_print_link_buffer p0:req
-	.byte 0xFA, 0xC, \p0
-	.endm
-	.macro ts_start_give_random_zenny p0:req
-	.byte 0xFB, 0x0, \p0
-	.endm
-	.macro ts_start_give_random_chip_code p0:req
-	.byte 0xFB, 0x1, \p0
-	.endm
-	.macro ts_start_random_battle
-	.byte 0xFB, 0x2
-	.endm
-	.macro ts_start_fixed_battle p0:req, p1:req
-	.byte 0xFB, 0x3, \p0, \p1
-	.endm
-	.macro ts_start_shop p0:req
-	.byte 0xFB, 0x5, \p0
-	.endm
-	.macro ts_start_bug_frag_trader p0:req
-	.byte 0xFB, 0x6, 0x1, \p0
-	.endm
-	.macro ts_start_chip_trader p0:req, p1:req
-	.byte 0xFB, 0x6, \p0, \p1
-	.endm
-	.macro ts_start_heal p0:req, p1:req
-	.byte 0xFB, 0x8, \p0, \p1
-	.endm
-	.macro ts_start_b_b_s p0:req
-	.byte 0xFB, 0xA, \p0
-	.endm
-	.macro ts_start_map p0:req
-	.byte 0xFB, 0xB, \p0
-	.endm
-	.macro ts_start_give_folder p0:req
-	.byte 0xFB, 0xD, \p0
-	.endm
-	.macro ts_start_request_b_b_s p0:req
-	.byte 0xFB, 0xE, \p0
-	.endm
-	.macro ts_start_mailbox p0:req
-	.byte 0xFB, 0xF, \p0
-	.endm
-	.macro ts_call_save p0:req, p1:req, p2:req
-	.byte 0xFC, 0x0, \p0, \p1, \p2
-	.endm
-	.macro ts_call_p_e_t_effect p0:req
-	.byte 0xFC, 0x3, 0x0, \p0
-	.endm
-	.macro ts_call_minigame_effect p0:req
-	.byte 0xFC, 0x3, 0x2, \p0
-	.endm
-	.macro ts_call_scenario_effect p0:req
-	.byte 0xFC, 0x3, 0x4, \p0
-	.endm
-	.macro ts_call_reset_fishing_minigame p0:req
-	.byte 0xFC, 0x3, 0x5, \p0
-	.endm
-	.macro ts_call_reset_evil_spirits p0:req
-	.byte 0xFC, 0x3, 0x6, \p0
-	.endm
-	.macro ts_call_aster_land_stock_add p0:req
-	.byte 0xFC, 0x3, 0x7, \p0
-	.endm
-	.macro ts_call_reload_soul_weapons p0:req
-	.byte 0xFC, 0x3, 0x8, \p0
-	.endm
-	.macro ts_call_get_crossover_points p0:req
-	.byte 0xFC, 0x3, 0x9, \p0
-	.endm
-	.macro ts_call_set_crossover_points p0:req
-	.byte 0xFC, 0x3, 0xA, \p0
-	.endm
-	.macro ts_call_add_all_b_b_s_messages p0:req
-	.byte 0xFC, 0x3, 0xB, \p0
-	.endm
-	.macro ts_call_change_player_sprite p0:req
-	.byte 0xFC, 0x3, 0xC, \p0
-	.endm
-	.macro ts_call_add_all_requests p0:req
-	.byte 0xFC, 0x3, 0xD, \p0
-	.endm
-	.macro ts_call_buffer_gold_mystery_data_location p0:req
-	.byte 0xFC, 0x3, 0xE, \p0
-	.endm
-	.macro ts_call_unload_objects p0:req
-	.byte 0xFC, 0x3, 0xF, \p0
-	.endm
-	.macro ts_call_reload_objects p0:req
-	.byte 0xFC, 0x3, 0x10, \p0
-	.endm
-	.macro ts_call_reload_navi_base_stats p0:req
-	.byte 0xFC, 0x3, 0x11, \p0
-	.endm
-	.macro ts_call_reload_navi_stat_boosts p0:req
-	.byte 0xFC, 0x3, 0x12, \p0
-	.endm
-	.macro ts_call_set_full_h_p p0:req
-	.byte 0xFC, 0x3, 0x13, \p0
-	.endm
-	.macro ts_call_max_virus_delete_count p0:req
-	.byte 0xFC, 0x3, 0x14, \p0
-	.endm
-	.macro ts_call_fade_out
-	.byte 0xFC, 0x4
-	.endm
-	.macro ts_call_give_all_navi_cust_programs
-	.byte 0xFC, 0x5
-	.endm
-	.macro ts_call_disable_mugshot_brighten
-	.byte 0xFC, 0x6
-	.endm
-	.macro ts_call_check_outside_jack_in p0:req, p1:req
-	.byte 0xFC, 0x8, \p0, \p1
-	.endm
-	.macro ts_call_disturb_icon p0:req
-	.byte 0xFC, 0x9, \p0
-	.endm
-	.macro ts_call_change_navi p0:req
-	.byte 0xFC, 0xF, \p0
-	.endm
-	.macro ts_call_request_points_add
-	.byte 0xFC, 0x10
-	.endm
-	.macro ts_call_request_points_buffer
-	.byte 0xFC, 0x11
-	.endm
-	.macro ts_call_request_finish
-	.byte 0xFC, 0x13
-	.endm
-	.macro ts_call_rush_food_buffer
-	.byte 0xFC, 0x14
-	.endm
-	.macro ts_sound_play00 p0:req, p1:req
-	.byte 0xFD, 0x0, \p0, \p1
-	.endm
-	.macro ts_sound_stop_bgm
-	.byte 0xFD, 0x1, 0xFF, 0x0
-	.endm
-	.macro ts_sound_play_bgm p0:req, p1:req
-	.byte 0xFD, 0x1, \p0, \p1
-	.endm
-	.macro ts_sound_enable_text_sfx
-	.byte 0xFD, 0x2
-	.endm
-	.macro ts_sound_disable_text_sfx
-	.byte 0xFD, 0x3
-	.endm
-	.macro ts_sound_stop
-	.byte 0xFD, 0x4
-	.endm
-	.macro ts_sound_fade_out p0:req, p1:req
-	.byte 0xFD, 0x5, \p0, \p1
-	.endm
-	.macro ts_sound_play06 p0:req, p1:req
-	.byte 0xFD, 0x6, \p0, \p1
-	.endm
-	.macro ts_sound_play07 p0:req, p1:req
-	.byte 0xFD, 0x7, \p0, \p1
-	.endm
-	.macro ts_sound_enable_choice_sfx
-	.byte 0xFD, 0x8
-	.endm
-	.macro ts_sound_disable_choice_sfx
-	.byte 0xFD, 0x9
-	.endm
-	.macro ts_sound_play_area_bgm
-	.byte 0xFD, 0xA
-	.endm
-	.macro ts_sound_fade_in_bgm p0:req, p1:req
-	.byte 0xFD, 0xB, \p0, \p1
-	.endm
-	.macro ts_menu_option_number_trader p0:req
-	.byte 0xFE, 0x0, \p0
-	.endm
-	.macro ts_menu_select_number_trader
-	.byte 0xFE, 0x1
-	.endm
-	.macro ts_menu_option_number p0:req
-	.byte 0xFE, 0x2, \p0
-	.endm
-	.macro ts_menu_select_buffered_password p0:req, p1:req, p2:req
-	.byte 0xFE, 0x3, \p0, \p1, \p2
-	.endm
-	.macro ts_menu_option_name p0:req
-	.byte 0xFE, 0x4, \p0
-	.endm
-	.macro ts_menu_select_name p0:req, p1:req, p2:req
-	.byte 0xFE, 0x5, \p0, \p1, \p2
-	.endm
-	.macro ts_menu_option_password p0:req
-	.byte 0xFE, 0xD, \p0
-	.endm
-	.macro ts_menu_select_password p0:req, p1:req, p2:req, p3:req
-	.byte 0xFE, 0x10, \p0, \p1, \p2, \p3
-	.endm
-	.macro ts_menu_option_crossover_trader p0:req
-	.byte 0xFE, 0x11, \p0
-	.endm
-	.macro ts_menu_select_crossover_trader
-	.byte 0xFE, 0x12
-	.endm
-	.macro ts_ereader_name p0:req
-	.byte 0xFF, 0x0, \p0
-	.endm
-	.macro ts_ereader_desc01 p0:req
-	.byte 0xFF, 0x1, \p0
-	.endm
-	.macro ts_ereader_desc0A p0:req
-	.byte 0xFA, 0xA, \p0
-	.endm
-
+	// Prints the specified description script data that was received from the e-Reader.
+	// :param data[2:0:8]: The index of the data to print. 0 and 1 pertain to Rare Chip Data.
+	.macro ts_ereader_desc0A data:req
+		.byte 0xFF, 0xA, \data
+	.endm
+	
 	/* secondary interpreter commands */
 	
     .macro ts_print_mod_buffer p0:req, p1:req
