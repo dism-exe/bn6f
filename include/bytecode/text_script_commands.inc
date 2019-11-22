@@ -201,47 +201,42 @@
 		.byte 0xE9
 	.endm
 
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Sets the specified flag.
 	// :param flag[2:0:16]: The flag to set.
-	.macro ts_flag_set flagL:req, flagH:req
+	.macro ts_flag_set flag:req
 		.byte 0xEA, 0x0
-		.byte \flagL, \flagH
+		.hword \flag
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Clears the specified flag.
 	// :param flag[2:0:16]: The flag to clear.
-	.macro ts_flag_clear flagL:req, flagH:req
+	.macro ts_flag_clear flag:req
 		.byte 0xEA, 0x1
-		.byte \flagL, \flagH
+		.hword \flag
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Toggles the specified flag.
 	// :param flag[2:0:16]: The flag to toggle.
-	.macro ts_flag_toggle flagL:req, flagH:req
+	.macro ts_flag_toggle flag:req
 		.byte 0xEA, 0x2
-		.byte \flagL, \flagH
+		.hword \flag
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Sets a series of flags starting at the specified flag.
 	// :param flag[2:0:16]: The first flag to set.
 	// :param count[4:0:8]: The amount of subsequent flags to set.
-	.macro ts_flag_multi_set flagL:req, flagH:req, count:req
+	.macro ts_flag_multi_set flag:req, count:req
 		.byte 0xEA, 0x3
-		.byte \flagL, \flagH
+		.hword \flag
 		.byte \count
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Clears a series of flags starting at the specified flag.
 	// :param flag[2:0:16]: The first flag to clear.
 	// :param count[4:0:8]: The amount of subsequent flags to clear.
-	.macro ts_flag_multi_clear flagL:req, flagH:req, count:req
+	.macro ts_flag_multi_clear flag:req, count:req
 		.byte 0xEA, 0x4
-		.byte \flagL, \flagH
+		.hword \flag
 		.byte \count
 	.endm
 	
@@ -251,28 +246,25 @@
 		.byte 0xEA, 0x6, \buffer
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Makes the player receive the e-mail with the specified flag.
 	// :param flag[2:0:16]: The flag of the e-mail to give.
-	.macro ts_flag_add_mail flagL:req, flagH:req
+	.macro ts_flag_add_mail flag:req
 		.byte 0xEA, 0x7
-		.byte \flagL, \flagH
+		.hword \flag
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Unlocks the BBS message with the specified flag.
 	// :param flag[2:0:16]: The flag of the BBS message to unlock.
-	.macro ts_flag_add_b_b_s_message flagL:req, flagH:req
+	.macro ts_flag_add_b_b_s_message flag:req
 		.byte 0xEA, 0x9
-		.byte \flagL, \flagH
+		.hword \flag
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Unlocks the request with the specified flag on the Request BBS.
 	// :param flag[2:0:16]: The flag of the BBS message to unlock.
-	.macro ts_flag_add_request flagL:req, flagH:req
+	.macro ts_flag_add_request flag:req
 		.byte 0xEA, 0xA
-		.byte \flagL, \flagH
+		.hword \flag
 	.endm
 
 // FIXME: redump archives and fix implementation
@@ -345,25 +337,25 @@
         .endif
 	.endm
 
-	// FIXME: redump archives and fix implementation
 	// Pauses script execution for a specified number of frames.
 	// :param frames[2:0:16]: The amount of frames to wait.
-    .macro ts_wait framesL:req, framesH:req
-	.byte 0xEE, 0x0, \framesL, \framesH
+    .macro ts_wait frames:req
+	.byte 0xEE, 0x0
+	.hword \frames
 	.endm
 	
-	// FIXME: redump archives and fix implementation
 	// Pauses script execution for a specified number of frames, unless the A or B button has been pressed.
 	// :param frames[2:0:16]: The maximum amount of frames to wait.
-	.macro ts_wait_skip framesL:req, framesH:req
-	.byte 0xEE, 0x1, \framesL, \framesH
+	.macro ts_wait_skip frames:req
+	.byte 0xEE, 0x1
+	.hword \frames
 	.endm
 
-	// FIXME: redump archives and fix implementation
 	// Pauses script execution until the specified flag is set.
 	// :param flag[2:0:16]: The flag that must be set before script execution may continue.
-	.macro ts_wait_flag flagL:req, flagH:req
-		.byte 0xEE, 0x2, \flagL, \flagH
+	.macro ts_wait_flag flag:req
+		.byte 0xEE, 0x2
+		.hword \flag
 	.endm
 	
 	
@@ -374,11 +366,11 @@
 		.byte 0xEE, 0x3, \variable, \value
 	.endm
 	
-	// FIXME: redump archives and fix implementation
 	// Pauses script execution until the specified flag is cleared.
 	// :param flag[2:0:16]: The flag that must be cleared before script execution may continue.
-	.macro ts_wait_flag_clear flagL:req, flagH:req
-		.byte 0xEE, 0x4, \flagL, \flagH
+	.macro ts_wait_flag_clear flag:req
+		.byte 0xEE, 0x4
+		.hword \flag
 	.endm
 	
 	// Pauses script execution indefinitely.
@@ -387,14 +379,13 @@
 		.byte 0xEE, 0xFF, \p0, \p1
 	.endm
 
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Checks the specified flag, and jumps to a different script depending on if it is true or false.
 	// :param flag[2:0:16]: The flag to check.
 	// :param jumpIfTrue[4:0:8]: The script to jump to if the flag is set, or 255 to continue with the current script.
 	// :param jumpIfFalse[5:0:8]: The script to jump to if the flag is not set, or 255 to continue with the current script.
-	.macro ts_check_flag flagL:req, flagH:req, jumpIfTrue:req, jumpIfFalse:req
+	.macro ts_check_flag flag:req, jumpIfTrue:req, jumpIfFalse:req
 		.byte 0xEF, 0x0
-		.byte \flagL, \flagH
+		.hword \flag
 		.byte \jumpIfTrue, \jumpIfFalse
 	.endm
 	
@@ -458,7 +449,6 @@
 		.byte 0xEF, 0x7, \item, \amount, \jumpIfEqual, \jumpIfGreater, \jumpIfLess
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Checks how many of the specified chip with the specified code are in the player's Pack as well as folders, 
 	// and jumps to a different script depending on if it is equal to, greater than or less than the specified amount.
 	// :param chip[2:0:16]: The chip to check.
@@ -467,13 +457,12 @@
 	// :param jumpIfEqual[6:0:8]: The script to jump to if the number of items is equal to the specified amount, or 255 to continue with the current script.
 	// :param jumpIfGreater[7:0:8]: The script to jump to if the number of items is greater than the specified amount, or 255 to continue with the current script.
 	// :param jumpIfLess[8:0:8]: The script to jump to if the number of items is less than the specified amount, or 255 to continue with the current script.
-	.macro ts_check_chip_code chipL:req, chipH:req, code:req, amount:req, jumpIfEqual:req, jumpIfGreater:req, jumpIfLess:req
+	.macro ts_check_chip_code chip:req, code:req, amount:req, jumpIfEqual:req, jumpIfGreater:req, jumpIfLess:req
 		.byte 0xEF, 0x8
-		.byte \chipL, \chipH
+		.hword \chip
 		.byte \code, \amount, \jumpIfEqual, \jumpIfGreater, \jumpIfLess
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Checks how many of the specified chip with the specified code are in the player's Pack, 
 	// and jumps to a different script depending on if it is equal to, greater than or less than the specified amount.
 	// :param chip[2:0:16]: The chip to check.
@@ -482,9 +471,9 @@
 	// :param jumpIfEqual[6:0:8]: The script to jump to if the number of chips is equal to the specified amount, or 255 to continue with the current script.
 	// :param jumpIfGreater[7:0:8]: The script to jump to if the number of chips is greater than the specified amount, or 255 to continue with the current script.
 	// :param jumpIfLess[8:0:8]: The script to jump to if the number of chips is less than the specified amount, or 255 to continue with the current script.
-	.macro ts_check_pack_chip_code chipL:req, chipH:req, code:req, amount:req, jumpIfEqual:req, jumpIfGreater:req, jumpIfLess:req
+	.macro ts_check_pack_chip_code chip:req, code:req, amount:req, jumpIfEqual:req, jumpIfGreater:req, jumpIfLess:req
 		.byte 0xEF, 0x9
-		.byte \chipL, \byteH
+		.hword \chip
 		.byte \code, \amount, \jumpIfEqual, \jumpIfGreater, \jumpIfLess
 	.endm
 	
@@ -520,92 +509,84 @@
 		.byte 0xEF, 0xD
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to word)
 	// Attempts to adds to the player's inventory and buffers a specified amount of Zenny, or sets it to the maximum if that is exceeded, plays a sound effect if any was added, and jumps to a different script depending on how much was added.
 	// :param amount[2:0:32]: The amount of Zenny to give and buffer, or 4294967295 to use a previously buffered amount.
 	// :param jumpIfAll[6:0:8]: The script to jump to if all Zenny could be added, or 255 to continue with the current script.
 	// :param jumpIfNone[7:0:8]: The script to jump to if no Zenny at all could be added, or 255 to continue with the current script.
 	// :param jumpIfSome[8:0:8]: The script to jump to if some, but not all Zenny could be added, or 255 to continue with the current script.
-	.macro ts_check_give_zenny amount0:req, amount1:req, amount2:req, amount3:req, jumpIfAll:req, jumpIfNone:req, jumpIfSome:req
+	.macro ts_check_give_zenny amount:req, jumpIfAll:req, jumpIfNone:req, jumpIfSome:req
 		.byte 0xEF, 0xE
-		.byte \amount0, \amount1, \amount2, \amount3
+		.word \amount
 		.byte \jumpIfAll, \jumpIfNone, \jumpIfSome
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to word)
 	// Attempts to take from the player's inventory a specified amount of Zenny, but only if the player has enough, and jumps to a different script depending on how much the player had.
 	// :param amount[2:0:32]: The amount of Zenny to take.
 	// :param jumpIfAll[6:0:8]: The script to jump to if there was enough Zenny, or 255 to continue with the current script.
 	// :param jumpIfNone[7:0:8]: The script to jump to if there was no Zenny at all, or 255 to continue with the current script.
 	// :param jumpIfSome[8:0:8]: The script to jump to if there was some, but not enough Zenny, or 255 to continue with the current script.
-	.macro ts_check_take_zenny amount0:req, amount1:req, amount2:req, amount3:req, jumpIfAll:req, jumpIfNone:req, jumpIfSome:req
+	.macro ts_check_take_zenny amount:req, jumpIfAll:req, jumpIfNone:req, jumpIfSome:req
 		.byte 0xEF, 0xF
-		.byte \amount0, \amount1, \amount2, \amount3
+		.word \amount
 		.byte \jumpIfAll, \jumpIfNone, \jumpIfSome
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to word)
 	// Sets the amount of Zenny in the player's inventory to the specified amount, and plays a sound effect.
 	// :param amount[2:0:32]: The new amount of Zenny.
-	.macro ts_set_zenny amount0:req, amount1:req, amount2:req, amount3:req
+	.macro ts_set_zenny amount:req
 		.byte 0xEF, 0x10
-		.byte \amount0, \amount1, \amount2, \amount3
+		.word \amount
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to word)
 	// Checks how much Zenny is in the player's inventory, and jumps to a different script depending on if it is equal to, greater than or less than the specified amount.
 	// :param amount[2:0:32]: The amount to compare to.
 	// :param jumpIfEqual[6:0:8]: The script to jump to if the amount of Zenny is equal to the specified amount, or 255 to continue with the current script.
 	// :param jumpIfGreater[7:0:8]: The script to jump to if the amount of Zenny is greater than the specified amount, or 255 to continue with the current script.
 	// :param jumpIfLess[8:0:8]: The script to jump to if the amount of Zenny is less than the specified amount, or 255 to continue with the current script.
-	.macro ts_check_zenny amount0:req, amount1:req, amount2:req, amount3:req, jumpIfEqual:req, jumpIfGreater:req, jumpIfLess:req
+	.macro ts_check_zenny amount:req, jumpIfEqual:req, jumpIfGreater:req, jumpIfLess:req
 		.byte 0xEF, 0x11
-		.byte \amount0, \amount1, \amount2, \amount3 
+		.word \amount
 		.byte \jumpIfEqual, \jumpIfGreater, \jumpIfLess
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to word)
 	// Attempts to adds to the player's inventory and buffers a specified amount of BugFrags,
 	// or sets it to the maximum if that is exceeded, plays a sound effect if any were added, and jumps to a different script depending on how many were added.
 	// :param amount[2:0:32]: The amount of BugFrags to give and buffer, or 4294967295 to use a previously buffered amount.
 	// :param jumpIfAll[6:0:8]: The script to jump to if all BugFrags could be added, or 255 to continue with the current script.
 	// :param jumpIfNone[7:0:8]: The script to jump to if no BugFrags at all could be added, or 255 to continue with the current script.
 	// :param jumpIfSome[8:0:8]: The script to jump to if some, but not all BugFrags could be added, or 255 to continue with the current script.
-	.macro ts_check_give_bug_frags amount0:req, amount1:req, amount2:req, amount3:req, jumpIfAll:req, jumpIfNone:req, jumpIfSome:req
+	.macro ts_check_give_bug_frags amount:req, jumpIfAll:req, jumpIfNone:req, jumpIfSome:req
 		.byte 0xEF, 0x12
-		.byte \amount0, \amount1, \amount2, \amount3 
+		.word \amount
 		.byte \jumpIfAll, \jumpIfNone, \jumpIfSome
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to word)
 	// Attempts to take from the player's inventory a specified amount of BugFrags, but only if the player has enough, and jumps to a different script depending on how many the player had.
 	// :param amount[2:0:32]: The amount of BugFrags to take.
 	// :param jumpIfAll[6:0:8]: The script to jump to if there were enough BugFrags, or 255 to continue with the current script.
 	// :param jumpIfNone[7:0:8]: The script to jump to if there were no BugFrags at all, or 255 to continue with the current script.
 	// :param jumpIfSome[8:0:8]: The script to jump to if there were some, but not enough BugFrags, or 255 to continue with the current script.
-	.macro ts_check_take_bug_frags amount0:req, amount1:req, amount2:req, amount3:req, jumpIfAll:req, jumpIfNone:req, jumpIfSome:req
+	.macro ts_check_take_bug_frags amount:req, jumpIfAll:req, jumpIfNone:req, jumpIfSome:req
 		.byte 0xEF, 0x13
-		.byte \amount0, \amount1, \amount2, \amount3 
+		.word \amount
 		.byte \jumpIfAll, \jumpIfNone, \jumpIfSome
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to word)
 	// Sets the amount of BugFrags in the player's inventory to the specified amount, and plays a sound effect.
 	// :param amount[2:0:32]: The new amount of BugFrags.
-	.macro ts_set_bug_frags amount0:req, amount1:req, amount2:req, amount3:req
+	.macro ts_set_bug_frags amount:req
 		.byte 0xEF, 0x14
-		.byte \amount0, \amount1, \amount2, \amount3 
+		.word \amount
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to word)
 	// Compares the amount of BugFrags in the player's inventory to the specified amount, and jumps to a different script depending on if it is equal, greater or less.
 	// :param amount[2:0:32]: The amount to compare to.
 	// :param jumpIfEqual[6:0:8]: The script to jump to if the amount of BugFrags is equal to the specified amount, or 255 to continue with the current script.
 	// :param jumpIfGreater[7:0:8]: The script to jump to if the amount of BugFrags is greater than the specified amount, or 255 to continue with the current script.
 	// :param jumpIfLess[8:0:8]: The script to jump to if the amount of BugFrags is less than the specified amount, or 255 to continue with the current script.
-	.macro ts_check_bug_frags amount0:req, amount1:req, amount2:req, amount3:req, jumpIfEqual:req, jumpIfGreater:req, jumpIfLess:req
+	.macro ts_check_bug_frags amount:req, jumpIfEqual:req, jumpIfGreater:req, jumpIfLess:req
 		.byte 0xEF, 0x15
-		.byte \amount0, \amount1, \amount2, \amount3 
+		.word \amount
 		.byte \jumpIfEqual, \jumpIfGreater, \jumpIfLess
 	.endm
 
@@ -679,15 +660,14 @@
 		.byte 0xEF, 0x22, \shop, \jumpIfStocked, \jumpIfSoldOut
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Checks a series of flags starting at the specified flag, and jumps to a different script depending on if they are all set.
 	// :param flag[2:0:16]: The first flag to check.
 	// :param count[4:0:8]: The amount of subsequent flags to check.
 	// :param jumpIfAllSet[5:0:8]: The script to jump to if all flags are set, or 255 to continue with the current script.
 	// :param jumpIfNotAllSet[6:0:8]: The script to jump to if not all flags are set, or 255 to continue with the current script.
-	.macro ts_check_multi_flag flagL:req, flagH:req, count:req, jumpIfAllSet:req, jumpIfNotAllSet:req
+	.macro ts_check_multi_flag flag:req, count:req, jumpIfAllSet:req, jumpIfNotAllSet:req
 		.byte 0xEF, 0x28
-		.byte \flagL, \flagH
+		.hword \flag
 		.byte \count, \jumpIfAllSet, \jumpIfNotAllSet
 	.endm
 	
@@ -697,7 +677,6 @@
 		.byte 0xEF, 0x29, \index
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Checks how many of the specified chip with any code are in the player's Pack as well as folders, 
 	// and jumps to a different script depending on if it is equal to, greater than or less than the specified amount.
 	// :param chip[2:0:16]: The chip to check.
@@ -705,9 +684,9 @@
 	// :param jumpIfEqual[5:0:8]: The script to jump to if the number of items is equal to the specified amount, or 255 to continue with the current script.
 	// :param jumpIfGreater[6:0:8]: The script to jump to if the number of items is greater than the specified amount, or 255 to continue with the current script.
 	// :param jumpIfLess[7:0:8]: The script to jump to if the number of items is less than the specified amount, or 255 to continue with the current script.
-	.macro ts_check_chip chipL:req, chipH:req, amount:req, jumpIfEqual:req, jumpIfGreater:req, jumpIfLess:req
+	.macro ts_check_chip chip:req, amount:req, jumpIfEqual:req, jumpIfGreater:req, jumpIfLess:req
 		.byte 0xEF, 0x2A
-		.byte \chipL, \chipH
+		.hword \chip
 		.byte \amount, \jumpIfEqual, \jumpIfGreater, \jumpIfLess
 	.endm
 	
@@ -754,14 +733,13 @@
 		.byte 0xEF, 0x2F, \jumpIfMegaMan, \jumpIfHeatMan, \jumpIfElecMan, \jumpIfSlashMan, \jumpIfEraseMan, \jumpIfChargeMan, \jumpIfSpoutMan, \jumpIfTomahawkMan, \jumpIfTenguMan, \jumpIfGroundMan, \jumpIfDustMan, \jumpIfProtoMan
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Check's the player's current Navi's base HP, and jumps to a different script depending on whether it is at least the specified amount.
 	// :param hp[2:0:16]: The base HP to compare to.
 	// :param jumpIfGreaterOrEqual[4:0:8]: The script to jump to if the player's current Navi's base HP is at least the specified amount, or 255 to continue with the current script.
 	// :param jumpIfLess[5:0:8]: The script to jump to if the player's current Navi's base HP is less than the specified amount, or 255 to continue with the current script.
-	.macro ts_check_base_h_p hpL:req, hpH:req, jumpIfGreaterOrEqual:req, jumpIfLess:req
+	.macro ts_check_base_h_p hp:req, jumpIfGreaterOrEqual:req, jumpIfLess:req
 		.byte 0xEF, 0x31
-		.byte \hpL, \hpH
+		.hword \hp
 		.byte \jumpIfGreaterOrEqual, \jumpIfLess
 	.endm
 	
@@ -983,36 +961,33 @@
 		.byte 0xF4, 0x2, \item, \amount
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Plays the "item get" sound effect, and adds to the player's Pack a specified amount of the specified chip with the specified code, or sets it to the maximum if that is exceeded.
 	// :param chip[2:0:16]: The chip to give, or 65535 to load from a previously buffered Mystery Data.
 	// :param code[4:0:8]: The code of the chip to give, or 255 to load from a previously buffered Mystery Data.
 	// :param amount[5:0:8]: The amount of chips to give.
-	.macro ts_item_give_chip chipL:req, chipH:req, code:req, amount:req
+	.macro ts_item_give_chip chip:req, code:req, amount:req
 		.byte 0xF4, 0x10
-		.byte \chipL, \chipH
+		.hword \chip
 		.byte \code, \amount
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Takes from the player's inventory a specified amount of the specified chip with the specified code, but only if the player has enough.
 	// :param chip[2:0:16]: The chip to take.
 	// :param code[4:0:8]: The code of the chip to take.
 	// :param amount[5:0:8]: The amount of chips to take.
-	.macro ts_item_take_chip chipL:req, chipH:req, code:req, amount:req
+	.macro ts_item_take_chip chip:req, code:req, amount:req
 		.byte 0xF4, 0x11
-		.byte \chipL, \chipH
+		.hword \chip
 		.byte \code, \amount
 	.endm
 	
-	// FIXME: redump archives and fix implementation (bytes to hword)
 	// Plays the "item get" sound effect, and sets the count of the specified chip with the specified code in the player's Pack to the specified amount.
 	// :param chip[2:0:16]: The chip to change the amount of.
 	// :param code[4:0:8]: The code of the chip to change the amount of.
 	// :param amount[5:0:8]: The new amount of chips.
-	.macro ts_item_set_chip chipL:req, chipH:req, code:req, amount:req
+	.macro ts_item_set_chip chip:req, code:req, amount:req
 		.byte 0xF4, 0x12
-		.byte \chipL, \chipH
+		.hword \chip
 		.byte \code, \amount
 	.endm
 	
