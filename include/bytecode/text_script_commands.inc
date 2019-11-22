@@ -3,84 +3,7 @@
 	
 // Legend: When a parameter is specified, its byte offset, bit offset, and size are specified as [byte_offset:bit_offset:size]
 
-/*
-// mmbn6s.ini
-	// Closes any open message box and ends script execution.
-	.macro ts_end 
-		.byte 0xE6
-	.endm
-	
-	// Moves the text position to the right a number of pixels.
-	// :param count[2:0:8]: The amount of pixels to insert.
-	.macro ts_space_px count:req
-		.byte 0xEC, 0x1, \count
-	.endm
-	
-	// Checks the current game version, and jumps to a different script depending on if the current game is Cybeast Gregar or Cybeast Falzar.
-	// :param jumpIfCybeastGregar[1:0:8]: The script to jump to if the current game is Cybeast Gregar, or 255 to continue with the current script.
-	// :param jumpIfCybeastFalzar[2:0:8]: The script to jump to if the current game is Cybeast Falzar, or 255 to continue with the current script.
-	.macro ts_check_game_version_s jumpIfCybeastGregar:req, jumpIfCybeastFalzar:req
-		.byte 0xEF, \jumpIfCybeastGregar, \jumpIfCybeastFalzar
-	.endm
-	
-	// Prints the contents of the specified 32-bit buffer as a decimal number.
-	// :param buffer[1:0:7]: The buffer to print.
-	// :param minLength[2:0:4]: The minimum amount of characters to print. If the number consists of less digits, additional spaces are printed.
-	// :param padZeros[2:6:1]: If true, pads the amount of Zenny with zeros instead of spaces, if necessary.
-	// :param padLeft[2:7:1]: If true, places the padding, if any, to the left of the amount of Zenny instead of to the right.
-	.macro ts_print_buffer buffer:req, minLength:req, padZeros:req, padLeft:req
-		.byte 0xF2, 0x0, \buffer, \minLength, \padZeros, \padLeft
-	.endm
-	
-	// Prints a stat from the currently active Navi Data Chip. Only functions properly in the status screen.
-	// :param stat[1:0:7]: The stat to print. Possible values are: 0 = HP, 1 = Attack, 2 = MegaFolder, 3 = Custom, 4 = Speed, 5 = Charge
-	// :param minLength[2:0:4]: The minimum amount of characters to print. If the number consists of less digits, additional spaces are printed.
-	// :param padZeros[2:6:1]: If true, pads the amount of Zenny with zeros instead of spaces, if necessary.
-	// :param padLeft[2:7:1]: If true, places the padding, if any, to the left of the amount of Zenny instead of to the right.
-	.macro ts_print_navi_data_chip_stat stat:req, minLength:req, padZeros:req, padLeft:req
-		.byte 0xF2, 0x80, \stat, \minLength, \padZeros, \padLeft
-	.endm
-	
-	// Holdover from Mega Man Battle Network 4. Does not function in this game.
-	.macro ts_print_short_string 
-		.byte 0xFA, 0x0
-	.endm
-	
-	// Prints the specified link string buffer (such as player name, player comment, opponent name, etc.).
-	// :param buffer[2:0:8]: The link string buffer to print.
-	.macro ts_print_link_buffer_s buffer:req
-		.byte 0xFA, 0x1, \buffer
-	.endm
-	
-	// Prints the contents of the specified 32-bit buffer as a decimal number. Performs the same function as printBuffer, but there has much less options. Primarily used for Mod Card parameter buffers.
-	// :param length[2:0:4]: The exact number of characters to print. The contents of the buffer must have at most this number of digits. If it has less digits, the number is left-padded with spaces. If length equals zero, then this command prints as many characters as needed to represent the contents of the buffer in text, up to 8 characters.
-	// :param buffer[3:0:8]: The buffer to print. Must be at least 1.
-	.macro ts_print_mod_buffer length:req, buffer:req
-		.byte 0xFA, 0x2, \length, \buffer
-	.endm
-	
-	
-	.macro ts_print_mod_buffer 
-		.byte 0xFA, 0x3
-	.endm
-	
-	// Prints the specified name script data that was received from the e-Reader.
-	// :param data[2:0:8]: The index of the data to print. 0 and 1 pertain to Rare Chip Data.
-	.macro ts_ereader_name data:req
-		.byte 0xFF, 0x0, \data
-	.endm
-	
-	// Prints the specified description script data that was received from the e-Reader.
-	// :param data[2:0:8]: The index of the data to print. 0 and 1 pertain to Rare Chip Data.
-	.macro ts_ereader_desc data:req
-		.byte 0xFF, 0x1, \data
-	.endm
-	
-	
-*/
-
-	/* bytecode macros */
-// mmbn6.ini
+/* primary (chatbox) interpreter commands */
 
 	// Does nothing.
 	.macro ts_nop 
@@ -1669,8 +1592,82 @@
 	.macro ts_ereader_desc0A data:req
 		.byte 0xFF, 0xA, \data
 	.endm
+
+
+/* secondary (visual) interpreter commands */
 	
-	/* secondary interpreter commands */
+	// Closes any open message box and ends script execution.
+/*	
+	// Moves the text position to the right a number of pixels.
+	// :param count[2:0:8]: The amount of pixels to insert.
+	.macro ts_space_px count:req
+		.byte 0xEC, 0x1, \count
+	.endm
+	
+	// Checks the current game version, and jumps to a different script depending on if the current game is Cybeast Gregar or Cybeast Falzar.
+	// :param jumpIfCybeastGregar[1:0:8]: The script to jump to if the current game is Cybeast Gregar, or 255 to continue with the current script.
+	// :param jumpIfCybeastFalzar[2:0:8]: The script to jump to if the current game is Cybeast Falzar, or 255 to continue with the current script.
+	.macro ts_check_game_version_s jumpIfCybeastGregar:req, jumpIfCybeastFalzar:req
+		.byte 0xEF, \jumpIfCybeastGregar, \jumpIfCybeastFalzar
+	.endm
+	
+	// Prints the contents of the specified 32-bit buffer as a decimal number.
+	// :param buffer[1:0:7]: The buffer to print.
+	// :param minLength[2:0:4]: The minimum amount of characters to print. If the number consists of less digits, additional spaces are printed.
+	// :param padZeros[2:6:1]: If true, pads the amount of Zenny with zeros instead of spaces, if necessary.
+	// :param padLeft[2:7:1]: If true, places the padding, if any, to the left of the amount of Zenny instead of to the right.
+	.macro ts_print_buffer buffer:req, minLength:req, padZeros:req, padLeft:req
+		.byte 0xF2, 0x0, (\buffer & 0x7F)
+		.byte (\minLength & 0xF) | ((\padZeros & 0x1) << 6) | ((\padLeft & 0x1) << 7)
+	.endm
+	
+	// Prints a stat from the currently active Navi Data Chip. Only functions properly in the status screen.
+	// :param stat[1:0:7]: The stat to print. Possible values are: 0 = HP, 1 = Attack, 2 = MegaFolder, 3 = Custom, 4 = Speed, 5 = Charge
+	// :param minLength[2:0:4]: The minimum amount of characters to print. If the number consists of less digits, additional spaces are printed.
+	// :param padZeros[2:6:1]: If true, pads the amount of Zenny with zeros instead of spaces, if necessary.
+	// :param padLeft[2:7:1]: If true, places the padding, if any, to the left of the amount of Zenny instead of to the right.
+	.macro ts_print_navi_data_chip_stat stat:req, minLength:req, padZeros:req, padLeft:req
+		.byte 0xF2, 0x80, (\stat & 0x7F)
+		.byte (\minLength & 0xF) | ((\padZeros & 0x1) << 6) | ((\padLeft & 0x1) << 7)
+	.endm
+	
+	// Holdover from Mega Man Battle Network 4. Does not function in this game.
+	.macro ts_print_short_string 
+		.byte 0xFA, 0x0
+	.endm
+	
+	// Prints the specified link string buffer (such as player name, player comment, opponent name, etc.).
+	// :param buffer[2:0:8]: The link string buffer to print.
+	.macro ts_print_link_buffer_s buffer:req
+		.byte 0xFA, 0x1, \buffer
+	.endm
+	
+	// Prints the contents of the specified 32-bit buffer as a decimal number. Performs the same function as printBuffer, but there has much less options. Primarily used for Mod Card parameter buffers.
+	// :param length[2:0:4]: The exact number of characters to print. The contents of the buffer must have at most this number of digits. 
+	// If it has less digits, the number is left-padded with spaces. If length equals zero, then this command prints as many characters as needed to 
+	// represent the contents of the buffer in text, up to 8 characters.
+	// :param buffer[3:0:8]: The buffer to print. Must be at least 1.
+	.macro ts_print_mod_buffer length:req, buffer:req
+		.byte 0xFA, 0x2, \length, \buffer
+	.endm
+	
+	
+	.macro ts_print_mod_buffer 
+		.byte 0xFA, 0x3
+	.endm
+	
+	// Prints the specified name script data that was received from the e-Reader.
+	// :param data[2:0:8]: The index of the data to print. 0 and 1 pertain to Rare Chip Data.
+	.macro ts_ereader_name data:req
+		.byte 0xFF, 0x0, \data
+	.endm
+	
+	// Prints the specified description script data that was received from the e-Reader.
+	// :param data[2:0:8]: The index of the data to print. 0 and 1 pertain to Rare Chip Data.
+	.macro ts_ereader_desc data:req
+		.byte 0xFF, 0x1, \data
+	.endm
+*/
 	
     .macro ts_print_mod_buffer p0:req, p1:req
 	.byte 0xFA, 0x02, \p0, \p1
