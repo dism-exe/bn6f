@@ -381,9 +381,9 @@ CompText8784908::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_chip1 0x0, 0x80
+	ts_print_chip1 0x8, 0x0
 	.string " "
-	ts_print_code 0x1, 0x50
+	ts_print_code 0x15, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -614,9 +614,9 @@ CompText8784908::
 	.string "That means that you\n"
 	.string "are going to give me\n"
 	.string "a \""
-	ts_print_chip1 0x0, 0xF0
+	ts_print_chip1 0xF, 0x0
 	.string " "
-	ts_print_code 0x0, 0x20
+	ts_print_code 0x2, 0x0
 	.string "\"!?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -642,9 +642,9 @@ CompText8784908::
 	.string "Ah! You're going to\n"
 	.string "give me a\n"
 	.string "\""
-	ts_print_chip1 0x0, 0xF0
+	ts_print_chip1 0xF, 0x0
 	.string " "
-	ts_print_code 0x0, 0x20
+	ts_print_code 0x2, 0x0
 	.string "\" right?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -676,9 +676,9 @@ CompText8784908::
 	.string "Huh?\n"
 	.string "You can't find a\n"
 	.string "\""
-	ts_print_chip1 0x0, 0xF0
+	ts_print_chip1 0xF, 0x0
 	.string " "
-	ts_print_code 0x0, 0x20
+	ts_print_code 0x2, 0x0
 	.string "\"?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -694,9 +694,9 @@ CompText8784908::
 	ts_msg_open
 	.string "Ahhh... So this is a\n"
 	.string "\""
-	ts_print_chip1 0x0, 0xF0
+	ts_print_chip1 0xF, 0x0
 	.string " "
-	ts_print_code 0x0, 0x20
+	ts_print_code 0x2, 0x0
 	.string "\" huh?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -720,7 +720,7 @@ CompText8784908::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x0
+	ts_print_item 0x70, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -1166,7 +1166,7 @@ CompText8784908::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_navi_cust_program5 0x1, 0xF0
+	ts_print_navi_cust_program5 0x1F, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

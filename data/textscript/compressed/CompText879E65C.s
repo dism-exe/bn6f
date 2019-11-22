@@ -69,19 +69,19 @@ CompText879E65C::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0x9, 0x20
+	ts_print_chip1 0x92, 0x0
 	.string " "
-	ts_print_code 0x1, 0x90
+	ts_print_code 0x19, 0x0
 	.string "\"\n"
 	.string "\""
-	ts_print_chip1 0x9, 0x30
+	ts_print_chip1 0x93, 0x0
 	.string " "
-	ts_print_code 0x1, 0x20
+	ts_print_code 0x12, 0x0
 	.string "\"\n"
 	.string "\""
-	ts_print_chip1 0x9, 0x40
+	ts_print_chip1 0x94, 0x0
 	.string " "
-	ts_print_code 0x1, 0x30
+	ts_print_code 0x13, 0x0
 	.string "\""
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -128,19 +128,19 @@ CompText879E65C::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0x9, 0x20
+	ts_print_chip1 0x92, 0x0
 	.string " "
-	ts_print_code 0x1, 0x90
+	ts_print_code 0x19, 0x0
 	.string "\"\n"
 	.string "\""
-	ts_print_chip1 0x9, 0x30
+	ts_print_chip1 0x93, 0x0
 	.string " "
-	ts_print_code 0x1, 0x20
+	ts_print_code 0x12, 0x0
 	.string "\"\n"
 	.string "\""
-	ts_print_chip1 0x9, 0x40
+	ts_print_chip1 0x94, 0x0
 	.string " "
-	ts_print_code 0x1, 0x30
+	ts_print_code 0x13, 0x0
 	.string "\""
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -184,7 +184,7 @@ CompText879E65C::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x30
+	ts_print_item 0x73, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

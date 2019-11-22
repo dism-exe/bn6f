@@ -92,7 +92,7 @@ TextScript87DA85C::
 	ts_sound_play00 0x73, 0x0
 	.string "MegaMan got:\n"
 	.string "\""
-	ts_print_item 0x0, 0x50
+	ts_print_item 0x5, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x80

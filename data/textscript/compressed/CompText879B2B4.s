@@ -18,16 +18,16 @@ CompText879B2B4::
 	.string "Sorry to spring this\n"
 	.string "on you but do you\n"
 	.string "got a \""
-	ts_print_chip1 0xA, 0x60
+	ts_print_chip1 0xA6, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\"?"
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "If you do,want to\n"
 	.string "trade for my\n"
 	.string "\""
-	ts_print_chip1 0xA, 0x70
+	ts_print_chip1 0xA7, 0x0
 	.string " "
 	ts_print_code 0x0, 0x0
 	.string "\"?"
@@ -60,12 +60,12 @@ CompText879B2B4::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "your \""
-	ts_print_chip1 0xA, 0x60
+	ts_print_chip1 0xA6, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\"\n"
 	.string "for \""
-	ts_print_chip1 0xA, 0x70
+	ts_print_chip1 0xA7, 0x0
 	.string " "
 	ts_print_code 0x0, 0x0
 	.string "\"?\n"
@@ -107,7 +107,7 @@ CompText879B2B4::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_chip1 0xA, 0x70
+	ts_print_chip1 0xA7, 0x0
 	.string " "
 	ts_print_code 0x0, 0x0
 	.string "\"!!"
@@ -133,9 +133,9 @@ CompText879B2B4::
 	.string "Hmmmm...?\n"
 	.string "I can't find a\n"
 	.string "\""
-	ts_print_chip1 0xA, 0x60
+	ts_print_chip1 0xA6, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\"."
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -151,9 +151,9 @@ CompText879B2B4::
 	ts_clear_msg
 	.string "If you find a\n"
 	.string "\""
-	ts_print_chip1 0xA, 0x60
+	ts_print_chip1 0xA6, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\"\n"
 	.string "let me know!"
 	ts_key_wait 0x0
@@ -299,7 +299,7 @@ CompText879B2B4::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x0
+	ts_print_item 0x70, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -844,7 +844,7 @@ CompText879B2B4::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x6, 0x80
+	ts_print_item 0x68, 0x0
 	.string "\"!!"
 	ts_player_finish
 	ts_player_reset_object

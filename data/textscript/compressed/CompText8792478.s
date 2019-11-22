@@ -70,7 +70,7 @@ CompText8792478::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_navi_cust_program5 0x1, 0x20
+	ts_print_navi_cust_program5 0x12, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -762,7 +762,7 @@ CompText8792478::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x30
+	ts_print_item 0x73, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -1658,7 +1658,7 @@ CompText8792478::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x0
+	ts_print_item 0x70, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

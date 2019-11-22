@@ -284,7 +284,7 @@ CompText875FAB8::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "and the "
-	ts_print_item 0x4, 0x20
+	ts_print_item 0x42, 0x0
 	.string "\n"
 	.string "is too weak to cut\n"
 	.string "it down."

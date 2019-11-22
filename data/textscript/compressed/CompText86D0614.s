@@ -151,19 +151,19 @@ CompText86D0614::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_navi_cust_program5 0x0, 0xD0
+	ts_print_navi_cust_program5 0xD, 0x0
 	.string "\"!!\n"
 	.string "\""
-	ts_print_navi_cust_program5 0x2, 0x30
+	ts_print_navi_cust_program5 0x23, 0x0
 	.string "\"!!\n"
 	.string "\""
-	ts_print_navi_cust_program5 0x2, 0x40
+	ts_print_navi_cust_program5 0x24, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "and\n"
 	.string "\""
-	ts_print_folder_name 0x2, 0x20
+	ts_print_folder_name 0x22, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_set 0xF3, 0x0
@@ -310,7 +310,7 @@ CompText86D0614::
 	ts_item_give 0xB, 0x1
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x0, 0xB0
+	ts_print_item 0xB, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_hold 0x0, 0x0
@@ -406,7 +406,7 @@ CompText86D0614::
 	ts_msg_open_email
 	.string "In SeasideArea3 on\n"
 	.string "the Net,\""
-	ts_print_item 0x0, 0xA0
+	ts_print_item 0xA, 0x0
 	.string "\",\n"
 	.string "a kind of"
 	ts_key_wait 0x0
@@ -1532,9 +1532,9 @@ CompText86D0614::
 	ts_sound_play00 0x73, 0x0
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_chip2 0x2, 0xE0
+	ts_print_chip2 0x2E, 0x0
 	.string " "
-	ts_print_code 0x0, 0x70
+	ts_print_code 0x7, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_set 0xE8, 0x1
@@ -2080,9 +2080,9 @@ CompText86D0614::
 	ts_sound_play00 0x73, 0x0
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_chip2 0x3, 0x30
+	ts_print_chip2 0x33, 0x0
 	.string " "
-	ts_print_code 0x0, 0xD0
+	ts_print_code 0xD, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_set 0xE8, 0x1
@@ -2237,9 +2237,9 @@ CompText86D0614::
 	ts_sound_play00 0x73, 0x0
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_chip1 0xD, 0xD0
+	ts_print_chip1 0xDD, 0x0
 	.string " "
-	ts_print_code 0x1, 0x10
+	ts_print_code 0x11, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_set 0xFB, 0x0
@@ -2475,9 +2475,9 @@ CompText86D0614::
 	ts_sound_play00 0x73, 0x0
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_chip1 0xD, 0xE0
+	ts_print_chip1 0xDE, 0x0
 	.string " "
-	ts_print_code 0x1, 0x10
+	ts_print_code 0x11, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_set 0xE9, 0x1

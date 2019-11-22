@@ -330,7 +330,7 @@ CompText8740E90::
 	.string "Let's help the\n"
 	.string "Repair Navi find his\n"
 	.string "\""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"!"
 	ts_key_wait 0x0
 	ts_end
@@ -344,7 +344,7 @@ CompText8740E90::
 	ts_clear_msg
 	.string "give the Repair Navi\n"
 	.string "back his \""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"!"
 	ts_key_wait 0x0
 	ts_end

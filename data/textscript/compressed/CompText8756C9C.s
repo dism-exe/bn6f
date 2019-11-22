@@ -507,7 +507,7 @@ CompText8756C9C::
 	ts_clear_msg
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_folder_name 0x2, 0x20
+	ts_print_folder_name 0x22, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -530,7 +530,7 @@ CompText8756C9C::
 	ts_clear_msg
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_folder_name 0x2, 0x20
+	ts_print_folder_name 0x22, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg

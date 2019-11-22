@@ -15,7 +15,7 @@ CompText875E690::
 	.string "PLEASE PRESENT\n"
 	.string "BATTLECHIP\n"
 	.string "\""
-	ts_print_chip1 0x8, 0x30
+	ts_print_chip1 0x83, 0x0
 	.string "\"..."
 	ts_key_wait 0x0
 	ts_end
@@ -40,19 +40,19 @@ CompText875E690::
 	.string "PLEASE PRESENT\n"
 	.string "BATTLECHIP\n"
 	.string "\""
-	ts_print_chip1 0x8, 0x30
+	ts_print_chip1 0x83, 0x0
 	.string "\"..."
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "MegaMan showed:\n"
 	.string "\""
-	ts_print_chip1 0x8, 0x30
+	ts_print_chip1 0x83, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "BATTLECHIP\n"
 	.string "\""
-	ts_print_chip1 0x8, 0x30
+	ts_print_chip1 0x83, 0x0
 	.string "\"\n"
 	.string "CONFIRMED..."
 	ts_key_wait 0x0
@@ -73,7 +73,7 @@ CompText875E690::
 	ts_msg_open
 	.string "MegaMan used:\n"
 	.string "\""
-	ts_print_item 0x6, 0x0
+	ts_print_item 0x60, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -85,7 +85,7 @@ CompText875E690::
 	ts_print_current_navi_ow
 	.string " used:\n"
 	.string "\""
-	ts_print_item 0x4, 0x40
+	ts_print_item 0x44, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_clear 0x74, 0x0
@@ -107,7 +107,7 @@ CompText875E690::
 	ts_msg_open
 	.string "HeatMan used:\n"
 	.string "\""
-	ts_print_item 0x6, 0x0
+	ts_print_item 0x60, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -117,7 +117,7 @@ CompText875E690::
 	ts_msg_open
 	.string "SpoutMan used:\n"
 	.string "\""
-	ts_print_item 0x6, 0x0
+	ts_print_item 0x60, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg

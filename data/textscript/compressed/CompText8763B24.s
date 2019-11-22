@@ -32,7 +32,7 @@ CompText8763B24::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "gave me \""
-	ts_print_folder_name 0x2, 0x40
+	ts_print_folder_name 0x24, 0x0
 	.string "\"\n"
 	.string "to take care of..."
 	ts_key_wait 0x0
@@ -101,7 +101,7 @@ CompText8763B24::
 	.string "Your old Extra\n"
 	.string "Folder is now called\n"
 	.string "\""
-	ts_print_folder_name 0x2, 0x40
+	ts_print_folder_name 0x24, 0x0
 	.string "\"."
 	ts_key_wait 0x0
 	ts_clear_msg

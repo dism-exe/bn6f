@@ -203,18 +203,18 @@ CompText877C94C::
 	ts_clear_msg
 	.string "but do you have a\n"
 	.string "\""
-	ts_print_chip1 0xA, 0x80
+	ts_print_chip1 0xA8, 0x0
 	.string " "
-	ts_print_code 0x1, 0x20
+	ts_print_code 0x12, 0x0
 	.string "\" chip?"
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "If you've got one,\n"
 	.string "care to trade for a\n"
 	.string "\""
-	ts_print_chip1 0xC, 0x90
+	ts_print_chip1 0xC9, 0x0
 	.string " "
-	ts_print_code 0x0, 0xD0
+	ts_print_code 0xD, 0x0
 	.string "\"?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -246,14 +246,14 @@ CompText877C94C::
 	ts_clear_msg
 	.string "of you trading your\n"
 	.string "\""
-	ts_print_chip1 0xA, 0x80
+	ts_print_chip1 0xA8, 0x0
 	.string " "
-	ts_print_code 0x1, 0x20
+	ts_print_code 0x12, 0x0
 	.string "\" for\n"
 	.string "my \""
-	ts_print_chip1 0xC, 0x90
+	ts_print_chip1 0xC9, 0x0
 	.string " "
-	ts_print_code 0x0, 0xD0
+	ts_print_code 0xD, 0x0
 	.string "\""
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -296,9 +296,9 @@ CompText877C94C::
 	ts_player_animate_scene 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_chip1 0xC, 0x90
+	ts_print_chip1 0xC9, 0x0
 	.string " "
-	ts_print_code 0x0, 0xD0
+	ts_print_code 0xD, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -318,9 +318,9 @@ CompText877C94C::
 	.string "Really...?\n"
 	.string "You don't have\n"
 	.string "\""
-	ts_print_chip1 0xA, 0x80
+	ts_print_chip1 0xA8, 0x0
 	.string " "
-	ts_print_code 0x1, 0x20
+	ts_print_code 0x12, 0x0
 	.string "\"!?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -336,9 +336,9 @@ CompText877C94C::
 	.string "Come back when\n"
 	.string "you have a\n"
 	.string "\""
-	ts_print_chip1 0xA, 0x80
+	ts_print_chip1 0xA8, 0x0
 	.string " "
-	ts_print_code 0x1, 0x20
+	ts_print_code 0x12, 0x0
 	.string "\"."
 	ts_key_wait 0x0
 	ts_end

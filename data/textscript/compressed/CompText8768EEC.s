@@ -120,9 +120,9 @@ CompText8768EEC::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_chip1 0xD, 0xF0
+	ts_print_chip1 0xDF, 0x0
 	.string " "
-	ts_print_code 0x1, 0x10
+	ts_print_code 0x11, 0x0
 	.string "\"!!\n"
 	ts_player_finish
 	ts_player_reset_object

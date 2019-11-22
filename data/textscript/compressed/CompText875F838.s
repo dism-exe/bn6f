@@ -71,7 +71,7 @@ CompText875F838::
 	ts_msg_open
 	.string "YOU NEED THE\n"
 	.string "\""
-	ts_print_item 0x4, 0x60
+	ts_print_item 0x46, 0x0
 	.string "\" TO OPEN\n"
 	.string "THIS DOOR."
 	ts_key_wait 0x0
@@ -131,7 +131,7 @@ CompText875F838::
 	ts_msg_open
 	.string "YOU NEED THE\n"
 	.string "\""
-	ts_print_item 0x4, 0x60
+	ts_print_item 0x46, 0x0
 	.string "\" TO OPEN\n"
 	.string "THIS DOOR."
 	ts_key_wait 0x0
@@ -139,7 +139,7 @@ CompText875F838::
 	ts_print_current_navi
 	.string " used:\n"
 	.string "\""
-	ts_print_item 0x4, 0x60
+	ts_print_item 0x46, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_clear 0x78, 0x0

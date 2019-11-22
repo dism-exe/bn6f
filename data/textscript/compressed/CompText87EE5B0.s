@@ -99,9 +99,9 @@ CompText87EE5B0::
 	ts_clear_msg
 	.string "I want this chip,\n"
 	.string "\""
-	ts_print_chip1 0x0, 0xF0
+	ts_print_chip1 0xF, 0x0
 	.string " "
-	ts_print_code 0x0, 0x20
+	ts_print_code 0x2, 0x0
 	.string "\",\n"
 	.string "so I can win!"
 	ts_key_wait 0x0

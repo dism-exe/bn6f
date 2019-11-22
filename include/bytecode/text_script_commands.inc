@@ -4,11 +4,6 @@
 // Legend: When a parameter is specified, its byte offset, bit offset, and size are specified as [byte_offset:bit_offset:size]
 
 /*
-	
-	
-	
-	
-	
 // mmbn6s.ini
 	// Closes any open message box and ends script execution.
 	.macro ts_end 
@@ -1173,71 +1168,70 @@
 		.byte 0xF9, 0x1, \global, \value
 	.endm
 
-/*
 	// Prints the name of an item, either specified or loaded from a buffer.
 	// :param item[2:0:8]: The buffer to load the item from, plus one. If zero, uses the specified item instead.
 	// :param buffer[3:4:4]: If greater than zero, the buffer to load the item index from, plus one.
 	.macro ts_print_item item:req, buffer:req
-		.byte 0xFA, 0x0, 0x0, 0x0, \item, \buffer
+		.byte 0xFA, 0x0, \item, ((\buffer & 0xF) << 4) | 0x0
 	.endm
 	
 	// Prints the name of a chip, either specified or loaded from a buffer.
 	// :param chip[2:0:8]: If the buffer is not set, the chip name to print.
 	// :param buffer[3:4:4]: If greater than zero, the buffer to load the chip index from, plus one.
 	.macro ts_print_chip1 chip:req, buffer:req
-		.byte 0xFA, 0x0, 0x0, 0x1, \chip, \buffer
+		.byte 0xFA, 0x0, \chip, ((\buffer & 0xF) << 4) | 0x1
 	.endm
 	
 	
-	.macro ts_print_chip2 
-		.byte 0xFA, 0x0, 0x0, 0x2
+	.macro ts_print_chip2 chip:req, buffer:req
+		.byte 0xFA, 0x0, \chip, ((\buffer & 0xF) << 4) | 0x2
 	.endm
 	
 	// Prints a chip code, either specified or loaded from a buffer.
 	// :param code[2:0:8]: If the buffer is not set, the entry index of the chip code to print.
 	// :param buffer[3:4:4]: If greater than zero, the buffer to load the chip code index from plus one.
 	.macro ts_print_code code:req, buffer:req
-		.byte 0xFA, 0x0, 0x0, 0x3, \code, \buffer
+		.byte 0xFA, 0x0, \code, ((\buffer & 0xF) << 4) | 0x3
 	.endm
 	
 	// Prints the name of a folder, either specified or loaded from a buffer.
 	// :param entry[2:0:4]: If the buffer is not set, the entry index of the folder name to print.
 	// :param buffer[3:4:4]: If greater than zero, the buffer to load the folder name index from plus one.
 	.macro ts_print_folder_name entry:req, buffer:req
-		.byte 0xFA, 0x0, 0x0, 0x4, \entry, \buffer
+		.byte 0xFA, 0x0, \entry & 0xF, ((\buffer & 0xF) << 4) | 0x4
 	.endm
 	
 	// Prints the name of a NaviCust program, either specified or loaded from a buffer.
 	// :param program[2:0:8]: If the buffer is not set, the entry index of the NaviCust program name to print.
 	// :param buffer[3:4:4]: If greater than zero, the buffer to load the folder name index from plus one.
 	.macro ts_print_navi_cust_program5 program:req, buffer:req
-		.byte 0xFA, 0x0, 0x0, 0x5, \program, \buffer
+		.byte 0xFA, 0x0, \program, ((\buffer & 0xF) << 4) | 0x5
 	.endm
 	
 	
-	.macro ts_print_navi_cust_program6 
-		.byte 0xFA, 0x0, 0x0, 0x6
+	.macro ts_print_navi_cust_program6 program:req, buffer:req
+		.byte 0xFA, 0x0, \program, ((\buffer & 0xF) << 4) | 0x6
 	.endm
 	
 	
-	.macro ts_print_chip7 
-		.byte 0xFA, 0x0, 0x0, 0x7
+	.macro ts_print_chip7 chip:req, buffer:req
+		.byte 0xFA, 0x0, \chip, ((\buffer & 0xF) << 4) | 0x7
 	.endm
 	
 	// Prints the name of a NetNavi, either specified or loaded from a buffer.
 	// :param navi[2:0:8]: If the buffer is not set, the entry index of the NetNavi name to print.
 	// :param buffer[3:4:4]: If greater than zero, the buffer to load the NetNavi name index from plus one.
 	.macro ts_print_navi navi:req, buffer:req
-		.byte 0xFA, 0x0, 0x0, 0x8, \navi, \buffer
+		.byte 0xFA, 0x0, \navi, ((\buffer & 0xF) << 4) | 0x8
 	.endm
 	
 	// Prints the name of the a request from the Request BBS. Only works properly in the Request BBS.
 	// :param request[2:0:8]: If the buffer is not set, the entry index of the request to print.
 	// :param buffer[3:4:4]: If greater than zero, the buffer to load the request index from plus one.
 	.macro ts_print_request request:req, buffer:req
-		.byte 0xFA, 0x0, 0x0, 0x9, \request, \buffer
+		.byte 0xFA, 0x0, \request, ((\buffer & 0xF) << 4) | 0x9
 	.endm
-	
+/*	
 	// Prints the name of the current Navi.
 	.macro ts_print_current_navi 
 		.byte 0xFA, 0x1, 0x0
@@ -1686,36 +1680,6 @@
 	.endm
 */	
 	
-	.macro ts_print_item p0:req, p1:req
-	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x0
-	.endm
-	.macro ts_print_chip1 p0:req, p1:req
-	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x1
-	.endm
-	.macro ts_print_chip2 p0:req, p1:req
-	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x2
-	.endm
-	.macro ts_print_code p0:req, p1:req
-	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x3
-	.endm
-	.macro ts_print_folder_name p0:req, p1:req
-	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x4
-	.endm
-	.macro ts_print_navi_cust_program5 p0:req, p1:req
-	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x5
-	.endm
-	.macro ts_print_navi_cust_program6 p0:req, p1:req
-	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x6
-	.endm
-	.macro ts_print_chip7 p0:req, p1:req
-	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x7
-	.endm
-	.macro ts_print_navi p0:req, p1:req
-	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x8
-	.endm
-	.macro ts_print_request p0:req, p1:req
-	.byte 0xFA, 0x0, (\p0<<4) | (\p1>>4), ((\p1&0xF)<<4) | 0x9
-	.endm
 	.macro ts_print_current_navi
 	.byte 0xFA, 0x1, 0x0
 	.endm

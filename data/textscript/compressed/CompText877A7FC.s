@@ -897,7 +897,7 @@ CompText877A7FC::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x20
+	ts_print_item 0x72, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -1098,7 +1098,7 @@ CompText877A7FC::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x0
+	ts_print_item 0x70, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -1798,7 +1798,7 @@ CompText877A7FC::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x2, 0xE0
+	ts_print_item 0x2E, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

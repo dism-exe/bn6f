@@ -152,7 +152,7 @@ CompText87B1720::
 	ts_clear_msg
 	.string "\"In SeasideArea3 on\n"
 	.string " the Net,\""
-	ts_print_item 0x0, 0xA0
+	ts_print_item 0xA, 0x0
 	.string "\",\n"
 	.string " a kind of"
 	ts_key_wait 0x0

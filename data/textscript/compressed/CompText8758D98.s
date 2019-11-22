@@ -67,7 +67,7 @@ CompText8758D98::
 	ts_clear_msg
 	.string "You need a\n"
 	.string "\""
-	ts_print_item 0x0, 0x10
+	ts_print_item 0x1, 0x0
 	.string "\" to get\n"
 	.string "through here."
 	ts_key_wait 0x0

@@ -486,7 +486,7 @@ CompText87825CC::
 	.string "The truth is I\n"
 	.string "can't seem to find\n"
 	.string "my \""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\",and I"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -502,7 +502,7 @@ CompText87825CC::
 	.string "Do you remember\n"
 	.string "where you dropped\n"
 	.string "the \""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -542,7 +542,7 @@ CompText87825CC::
 	.string "Let's split up and\n"
 	.string "look for the\n"
 	.string "\""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -582,7 +582,7 @@ CompText87825CC::
 	ts_mugshot_show 0x41
 	.string "I lost the\n"
 	.string "\""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\" I need for\n"
 	.string "work..."
 	ts_key_wait 0x0

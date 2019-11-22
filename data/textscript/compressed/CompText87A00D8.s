@@ -91,10 +91,10 @@ CompText87A00D8::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x0
+	ts_print_item 0x70, 0x0
 	.string "\" and\n"
 	.string "\""
-	ts_print_folder_name 0x1, 0x10
+	ts_print_folder_name 0x11, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -198,10 +198,10 @@ CompText87A00D8::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x0
+	ts_print_item 0x70, 0x0
 	.string "\" and\n"
 	.string "\""
-	ts_print_folder_name 0x1, 0x10
+	ts_print_folder_name 0x11, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

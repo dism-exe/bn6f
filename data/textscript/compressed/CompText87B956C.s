@@ -282,7 +282,7 @@ CompText87B956C::
 	ts_sound_play00 0x73, 0x0
 	.string "MegaMan got:\n"
 	.string "\""
-	ts_print_item 0x0, 0xD0
+	ts_print_item 0xD, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end

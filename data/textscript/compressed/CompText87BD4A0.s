@@ -29,19 +29,19 @@ CompText87BD4A0::
 	ts_msg_open
 	.string "MegaMan showed:\n"
 	.string "\""
-	ts_print_item 0x1, 0x0
+	ts_print_item 0x10, 0x0
 	.string "\",\n"
 	.string "\""
-	ts_print_item 0x1, 0x10
+	ts_print_item 0x11, 0x0
 	.string "\","
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_item 0x1, 0x20
+	ts_print_item 0x12, 0x0
 	.string "\",\n"
 	.string "and\n"
 	.string "\""
-	ts_print_item 0x1, 0x30
+	ts_print_item 0x13, 0x0
 	.string "\"."
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -84,7 +84,7 @@ CompText87BD4A0::
 	ts_sound_play00 0x73, 0x0
 	.string "MegaMan got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xC0
+	ts_print_item 0x1C, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x82

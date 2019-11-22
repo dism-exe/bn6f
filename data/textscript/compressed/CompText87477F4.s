@@ -227,7 +227,7 @@ CompText87477F4::
 	ts_clear_msg
 	.string "the Repair Navi's\n"
 	.string "\""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"!"
 	ts_key_wait 0x0
 	ts_end
@@ -241,7 +241,7 @@ CompText87477F4::
 	ts_clear_msg
 	.string "give the Repair Navi\n"
 	.string "his \""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"!"
 	ts_key_wait 0x0
 	ts_end

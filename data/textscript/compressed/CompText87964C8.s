@@ -52,7 +52,7 @@ CompText87964C8::
 	ts_clear_msg
 	.string "It's called...\n"
 	.string "\""
-	ts_print_folder_name 0x2, 0x50
+	ts_print_folder_name 0x25, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -124,7 +124,7 @@ CompText87964C8::
 	.string "Your Extra Folder\n"
 	.string "changed into the\n"
 	.string "\""
-	ts_print_folder_name 0x2, 0x50
+	ts_print_folder_name 0x25, 0x0
 	.string "\"!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -155,7 +155,7 @@ CompText87964C8::
 	ts_clear_msg
 	.string "This item's called\n"
 	.string "\""
-	ts_print_item 0x4, 0x40
+	ts_print_item 0x44, 0x0
 	.string "\"...\n"
 	.string "Only 3000 Zennys..."
 	ts_key_wait 0x0
@@ -198,7 +198,7 @@ CompText87964C8::
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x4, 0x40
+	ts_print_item 0x44, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

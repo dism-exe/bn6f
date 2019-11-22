@@ -461,7 +461,7 @@ CompText87792DC::
 	ts_item_give_navi_cust_program 0x64, 0x1, 0x2
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_navi_cust_program5 0x1, 0x90
+	ts_print_navi_cust_program5 0x19, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -600,21 +600,21 @@ CompText87792DC::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_chip1 0xD, 0xD0
+	ts_print_chip1 0xDD, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\",\n"
 	.string "\""
-	ts_print_chip2 0x1, 0x0
+	ts_print_chip2 0x10, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\","
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "and \""
-	ts_print_chip1 0xE, 0x0
+	ts_print_chip1 0xE0, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

@@ -356,7 +356,7 @@ CompText8786EA0::
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x50
+	ts_print_item 0x75, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -599,7 +599,7 @@ CompText8786EA0::
 	ts_mugshot_hide
 	.string "MegaMan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x10
+	ts_print_item 0x31, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg

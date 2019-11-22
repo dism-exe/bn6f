@@ -26,9 +26,9 @@ CompText87A15A0::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0x7, 0x50
+	ts_print_chip1 0x75, 0x0
 	.string " "
-	ts_print_code 0x1, 0x50
+	ts_print_code 0x15, 0x0
 	.string "\"\n"
 	.string "should do the trick!"
 	ts_key_wait 0x0
@@ -39,9 +39,9 @@ CompText87A15A0::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0xA, 0x50
+	ts_print_chip1 0xA5, 0x0
 	.string " "
-	ts_print_code 0x0, 0x80
+	ts_print_code 0x8, 0x0
 	.string "\"?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -71,9 +71,9 @@ CompText87A15A0::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0x7, 0x50
+	ts_print_chip1 0x75, 0x0
 	.string " "
-	ts_print_code 0x1, 0x50
+	ts_print_code 0x15, 0x0
 	.string "\"\n"
 	.string "should do the trick!"
 	ts_key_wait 0x0
@@ -84,9 +84,9 @@ CompText87A15A0::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0xA, 0x50
+	ts_print_chip1 0xA5, 0x0
 	.string " "
-	ts_print_code 0x0, 0x80
+	ts_print_code 0x8, 0x0
 	.string "\"?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -121,9 +121,9 @@ CompText87A15A0::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_chip1 0xA, 0x50
+	ts_print_chip1 0xA5, 0x0
 	.string " "
-	ts_print_code 0x0, 0x80
+	ts_print_code 0x8, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -151,7 +151,7 @@ CompText87A15A0::
 	ts_msg_open
 	.string "Thanks for trading\n"
 	.string "me for \""
-	ts_print_chip1 0x7, 0x50
+	ts_print_chip1 0x75, 0x0
 	.string "\"!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -400,7 +400,7 @@ CompText87A15A0::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_navi_cust_program5 0x2, 0xE0
+	ts_print_navi_cust_program5 0x2E, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

@@ -173,7 +173,7 @@ CompText87B330C::
 	ts_sound_play00 0x73, 0x0
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x6, 0x0
+	ts_print_item 0x60, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81

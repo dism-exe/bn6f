@@ -24,7 +24,7 @@ CompText87B1F6C::
 	ts_msg_open
 	.string "HeatMan used:\n"
 	.string "\""
-	ts_print_item 0x0, 0xA0
+	ts_print_item 0xA, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_sound_play_bgm 0x63, 0x0
@@ -43,7 +43,7 @@ CompText87B1F6C::
 	ts_msg_open
 	.string "SpoutMan used:\n"
 	.string "\""
-	ts_print_item 0x0, 0xA0
+	ts_print_item 0xA, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_sound_play_bgm 0x63, 0x0
@@ -78,7 +78,7 @@ CompText87B1F6C::
 	.string "The Cybeast is\n"
 	.string "rejecting the\n"
 	.string "\""
-	ts_print_item 0x0, 0xA0
+	ts_print_item 0xA, 0x0
 	.string "\"!"
 	ts_key_wait 0x0
 	ts_clear_msg

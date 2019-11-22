@@ -261,7 +261,7 @@ CompText874D74C::
 	ts_clear_msg
 	.string "the Repair Navi's\n"
 	.string "\""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"!"
 	ts_key_wait 0x0
 	ts_end
@@ -271,7 +271,7 @@ CompText874D74C::
 	ts_msg_open
 	.string "We'd better get this\n"
 	.string "\""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\" to the\n"
 	.string "Repair Navi!"
 	ts_key_wait 0x0

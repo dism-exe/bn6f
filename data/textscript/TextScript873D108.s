@@ -34,7 +34,7 @@ TextScript873D108::
 	ts_msg_open
 	.string "It's locked!\n"
 	.string "You need \""
-	ts_print_item 0x8, 0x50
+	ts_print_item 0x85, 0x0
 	.string "\"\n"
 	.string "to open it!"
 	ts_key_wait 0x0
@@ -42,7 +42,7 @@ TextScript873D108::
 	ts_check_item07 0x85, 0x1, 0xFF, 0xFF, 0x9
 	.string "You want to use\n"
 	.string "\""
-	ts_print_item 0x8, 0x50
+	ts_print_item 0x85, 0x0
 	.string "\"?\n"
 	ts_position_option_horizontal 0x7
 	ts_option 0x0, 0x11, 0x0
@@ -78,7 +78,7 @@ TextScript873D108::
 	ts_msg_open
 	.string "The SubChip\n"
 	.string "\""
-	ts_print_item 0x8, 0x50
+	ts_print_item 0x85, 0x0
 	.string "\"\n"
 	.string "was activated!!!"
 	ts_key_wait 0x0
@@ -339,7 +339,7 @@ TextScript873D108::
 	ts_check_flag 0x9, 0x17, 0xFF, 0x39
 	.string "The SubChip\n"
 	.string "\""
-	ts_print_item 0x8, 0x30
+	ts_print_item 0x83, 0x0
 	.string "\"\n"
 	.string "was activated!!!"
 	ts_key_wait 0x0
@@ -398,7 +398,7 @@ TextScript873D108::
 	ts_check_flag 0x9, 0x17, 0xFF, 0x43
 	.string "The SubChip\n"
 	.string "\""
-	ts_print_item 0x8, 0x30
+	ts_print_item 0x83, 0x0
 	.string "\"\n"
 	.string "was activated!!!"
 	ts_key_wait 0x0

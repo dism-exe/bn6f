@@ -66,7 +66,7 @@ CompText87A37AC::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x4, 0x30
+	ts_print_item 0x43, 0x0
 	.string "\"!!\n"
 	ts_player_finish
 	ts_player_reset_object

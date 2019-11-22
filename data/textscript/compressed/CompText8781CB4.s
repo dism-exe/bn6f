@@ -45,7 +45,7 @@ CompText8781CB4::
 	ts_msg_open
 	.string "Mr.Famous gave me\n"
 	.string "\""
-	ts_print_folder_name 0x2, 0x30
+	ts_print_folder_name 0x23, 0x0
 	.string "\" to\n"
 	.string "take care of..."
 	ts_key_wait 0x0
@@ -111,7 +111,7 @@ CompText8781CB4::
 	.string "Your old Extra\n"
 	.string "Folder is now called\n"
 	.string "\""
-	ts_print_folder_name 0x2, 0x30
+	ts_print_folder_name 0x23, 0x0
 	.string "\"."
 	ts_key_wait 0x0
 	ts_clear_msg

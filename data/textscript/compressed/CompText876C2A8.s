@@ -278,7 +278,7 @@ CompText876C2A8::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x4, 0x10
+	ts_print_item 0x41, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

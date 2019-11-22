@@ -51,9 +51,9 @@ CompText8781564::
 	ts_flag_set 0x2D, 0x11
 	.string "I'm looking for a\n"
 	.string "\""
-	ts_print_chip1 0xA, 0x50
+	ts_print_chip1 0xA5, 0x0
 	.string " "
-	ts_print_code 0x0, 0x80
+	ts_print_code 0x8, 0x0
 	.string "\" chip\n"
 	.string "to give as a gift."
 	ts_key_wait 0x0
@@ -64,9 +64,9 @@ CompText8781564::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0xC, 0xA0
+	ts_print_chip1 0xCA, 0x0
 	.string " "
-	ts_print_code 0x0, 0xE0
+	ts_print_code 0xE, 0x0
 	.string "\"!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -90,9 +90,9 @@ CompText8781564::
 	ts_msg_open
 	.string "I'm looking for a\n"
 	.string "\""
-	ts_print_chip1 0xA, 0x50
+	ts_print_chip1 0xA5, 0x0
 	.string " "
-	ts_print_code 0x0, 0x80
+	ts_print_code 0x8, 0x0
 	.string "\" chip\n"
 	.string "to give as a gift."
 	ts_key_wait 0x0
@@ -103,9 +103,9 @@ CompText8781564::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0xC, 0xA0
+	ts_print_chip1 0xCA, 0x0
 	.string " "
-	ts_print_code 0x0, 0xE0
+	ts_print_code 0xE, 0x0
 	.string "\"!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -137,9 +137,9 @@ CompText8781564::
 	ts_player_animate_scene 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_chip1 0xC, 0xA0
+	ts_print_chip1 0xCA, 0x0
 	.string " "
-	ts_print_code 0x0, 0xE0
+	ts_print_code 0xE, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

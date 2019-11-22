@@ -59,7 +59,7 @@ CompText875FF70::
 	ts_print_current_navi_ow
 	.string " used:\n"
 	.string "\""
-	ts_print_item 0x4, 0x40
+	ts_print_item 0x44, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_clear 0x76, 0x0

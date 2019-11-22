@@ -24,7 +24,7 @@ CompText873C5A4::
 	ts_item_give 0x1, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0x10
+	ts_print_item 0x1, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -34,7 +34,7 @@ CompText873C5A4::
 	ts_item_give 0x2, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0x20
+	ts_print_item 0x2, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -44,7 +44,7 @@ CompText873C5A4::
 	ts_item_give 0x3, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0x30
+	ts_print_item 0x3, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -54,7 +54,7 @@ CompText873C5A4::
 	ts_item_give 0x4, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0x40
+	ts_print_item 0x4, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -64,7 +64,7 @@ CompText873C5A4::
 	ts_item_give 0x5, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0x50
+	ts_print_item 0x5, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -74,7 +74,7 @@ CompText873C5A4::
 	ts_item_give 0x6, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0x60
+	ts_print_item 0x6, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -84,7 +84,7 @@ CompText873C5A4::
 	ts_item_give 0x7, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0x70
+	ts_print_item 0x7, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -94,7 +94,7 @@ CompText873C5A4::
 	ts_item_give 0x8, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -104,7 +104,7 @@ CompText873C5A4::
 	ts_item_give 0x9, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0x90
+	ts_print_item 0x9, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -114,7 +114,7 @@ CompText873C5A4::
 	ts_item_give 0xA, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0xA0
+	ts_print_item 0xA, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -124,7 +124,7 @@ CompText873C5A4::
 	ts_item_give 0xB, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0xB0
+	ts_print_item 0xB, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -134,7 +134,7 @@ CompText873C5A4::
 	ts_item_give 0xC, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0xC0
+	ts_print_item 0xC, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -144,7 +144,7 @@ CompText873C5A4::
 	ts_item_give 0xD, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0xD0
+	ts_print_item 0xD, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -154,7 +154,7 @@ CompText873C5A4::
 	ts_item_give 0xE, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0xE0
+	ts_print_item 0xE, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -164,7 +164,7 @@ CompText873C5A4::
 	ts_item_give 0xF, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x0, 0xF0
+	ts_print_item 0xF, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -174,7 +174,7 @@ CompText873C5A4::
 	ts_item_give 0x10, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0x0
+	ts_print_item 0x10, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -184,7 +184,7 @@ CompText873C5A4::
 	ts_item_give 0x11, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0x10
+	ts_print_item 0x11, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -194,7 +194,7 @@ CompText873C5A4::
 	ts_item_give 0x12, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0x20
+	ts_print_item 0x12, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -204,7 +204,7 @@ CompText873C5A4::
 	ts_item_give 0x13, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0x30
+	ts_print_item 0x13, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -214,7 +214,7 @@ CompText873C5A4::
 	ts_item_give 0x14, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0x40
+	ts_print_item 0x14, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -224,7 +224,7 @@ CompText873C5A4::
 	ts_item_give 0x15, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0x50
+	ts_print_item 0x15, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -234,7 +234,7 @@ CompText873C5A4::
 	ts_item_give 0x16, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0x60
+	ts_print_item 0x16, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -244,7 +244,7 @@ CompText873C5A4::
 	ts_item_give 0x17, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0x70
+	ts_print_item 0x17, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -254,7 +254,7 @@ CompText873C5A4::
 	ts_item_give 0x17, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0x80
+	ts_print_item 0x18, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -264,7 +264,7 @@ CompText873C5A4::
 	ts_item_give 0x19, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0x90
+	ts_print_item 0x19, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -274,7 +274,7 @@ CompText873C5A4::
 	ts_item_give 0x1A, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xA0
+	ts_print_item 0x1A, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -284,7 +284,7 @@ CompText873C5A4::
 	ts_item_give 0x1B, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xB0
+	ts_print_item 0x1B, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -294,7 +294,7 @@ CompText873C5A4::
 	ts_item_give 0x1C, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xC0
+	ts_print_item 0x1C, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -304,7 +304,7 @@ CompText873C5A4::
 	ts_item_give 0x1D, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xD0
+	ts_print_item 0x1D, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -314,7 +314,7 @@ CompText873C5A4::
 	ts_item_give 0x1E, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xE0
+	ts_print_item 0x1E, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -324,7 +324,7 @@ CompText873C5A4::
 	ts_item_give 0x1F, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xF0
+	ts_print_item 0x1F, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -334,7 +334,7 @@ CompText873C5A4::
 	ts_item_give 0x20, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x0
+	ts_print_item 0x20, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -344,7 +344,7 @@ CompText873C5A4::
 	ts_item_give 0x21, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x10
+	ts_print_item 0x21, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -354,7 +354,7 @@ CompText873C5A4::
 	ts_item_give 0x22, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x20
+	ts_print_item 0x22, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -364,7 +364,7 @@ CompText873C5A4::
 	ts_item_give 0x23, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x30
+	ts_print_item 0x23, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -374,7 +374,7 @@ CompText873C5A4::
 	ts_item_give 0x24, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x1, 0x20
+	ts_print_item 0x12, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -384,7 +384,7 @@ CompText873C5A4::
 	ts_item_give 0x25, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x50
+	ts_print_item 0x25, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -394,7 +394,7 @@ CompText873C5A4::
 	ts_item_give 0x26, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x60
+	ts_print_item 0x26, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -404,7 +404,7 @@ CompText873C5A4::
 	ts_item_give 0x27, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x70
+	ts_print_item 0x27, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -414,7 +414,7 @@ CompText873C5A4::
 	ts_item_give 0x28, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x80
+	ts_print_item 0x28, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -424,7 +424,7 @@ CompText873C5A4::
 	ts_item_give 0x29, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x90
+	ts_print_item 0x29, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -434,7 +434,7 @@ CompText873C5A4::
 	ts_item_give 0x2A, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0xA0
+	ts_print_item 0x2A, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -444,7 +444,7 @@ CompText873C5A4::
 	ts_item_give 0x2B, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0xB0
+	ts_print_item 0x2B, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -454,7 +454,7 @@ CompText873C5A4::
 	ts_item_give 0x2C, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0xC0
+	ts_print_item 0x2C, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -464,7 +464,7 @@ CompText873C5A4::
 	ts_item_give 0x2D, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0xD0
+	ts_print_item 0x2D, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -474,7 +474,7 @@ CompText873C5A4::
 	ts_item_give 0x2E, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0xE0
+	ts_print_item 0x2E, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -484,7 +484,7 @@ CompText873C5A4::
 	ts_item_give 0x2F, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0xF0
+	ts_print_item 0x2F, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -494,7 +494,7 @@ CompText873C5A4::
 	ts_item_give 0x30, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x0
+	ts_print_item 0x30, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -504,7 +504,7 @@ CompText873C5A4::
 	ts_item_give 0x31, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x10
+	ts_print_item 0x31, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -514,7 +514,7 @@ CompText873C5A4::
 	ts_item_give 0x32, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x20
+	ts_print_item 0x32, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -524,7 +524,7 @@ CompText873C5A4::
 	ts_item_give 0x33, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x30
+	ts_print_item 0x33, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -534,7 +534,7 @@ CompText873C5A4::
 	ts_item_give 0x34, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x40
+	ts_print_item 0x34, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -544,7 +544,7 @@ CompText873C5A4::
 	ts_item_give 0x35, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x50
+	ts_print_item 0x35, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -554,7 +554,7 @@ CompText873C5A4::
 	ts_item_give 0x36, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x60
+	ts_print_item 0x36, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -564,7 +564,7 @@ CompText873C5A4::
 	ts_item_give 0x37, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x70
+	ts_print_item 0x37, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -574,7 +574,7 @@ CompText873C5A4::
 	ts_item_give 0x38, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x80
+	ts_print_item 0x38, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -584,7 +584,7 @@ CompText873C5A4::
 	ts_item_give 0x39, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x90
+	ts_print_item 0x39, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -594,7 +594,7 @@ CompText873C5A4::
 	ts_item_give 0x3A, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0xA0
+	ts_print_item 0x3A, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -604,7 +604,7 @@ CompText873C5A4::
 	ts_item_give 0x3B, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0xB0
+	ts_print_item 0x3B, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -614,7 +614,7 @@ CompText873C5A4::
 	ts_item_give 0x3C, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0xC0
+	ts_print_item 0x3C, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -624,7 +624,7 @@ CompText873C5A4::
 	ts_item_give 0x3D, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0xD0
+	ts_print_item 0x3D, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -634,7 +634,7 @@ CompText873C5A4::
 	ts_item_give 0x3E, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0xE0
+	ts_print_item 0x3E, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -644,7 +644,7 @@ CompText873C5A4::
 	ts_item_give 0x3F, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x3, 0xF0
+	ts_print_item 0x3F, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -654,7 +654,7 @@ CompText873C5A4::
 	ts_item_give 0x40, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x4, 0x0
+	ts_print_item 0x40, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -664,7 +664,7 @@ CompText873C5A4::
 	ts_item_give 0x41, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x4, 0x10
+	ts_print_item 0x41, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -674,7 +674,7 @@ CompText873C5A4::
 	ts_item_give 0x42, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x4, 0x20
+	ts_print_item 0x42, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -684,7 +684,7 @@ CompText873C5A4::
 	ts_item_give 0x43, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x4, 0x30
+	ts_print_item 0x43, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -694,7 +694,7 @@ CompText873C5A4::
 	ts_item_give 0x44, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x4, 0x40
+	ts_print_item 0x44, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -704,7 +704,7 @@ CompText873C5A4::
 	ts_item_give 0x45, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x4, 0x50
+	ts_print_item 0x45, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -714,7 +714,7 @@ CompText873C5A4::
 	ts_item_give 0x46, 0x1
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x4, 0x60
+	ts_print_item 0x46, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -1217,7 +1217,7 @@ CompText873C5A4::
 	ts_flag_set 0x24, 0x2
 	.string "You got:\n"
 	.string "\""
-	ts_print_item 0x2, 0xC0
+	ts_print_item 0x2C, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end

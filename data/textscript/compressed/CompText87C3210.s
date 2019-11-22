@@ -209,7 +209,7 @@ CompText87C3210::
 	ts_sound_play00 0x73, 0x0
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x0
+	ts_print_item 0x70, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81

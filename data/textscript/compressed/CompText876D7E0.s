@@ -111,7 +111,7 @@ CompText876D7E0::
 	ts_player_animate_object 0x18
 	.string "MegaMan got:\n"
 	.string "\""
-	ts_print_item 0x0, 0x20
+	ts_print_item 0x2, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_set 0x7B, 0x4

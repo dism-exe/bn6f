@@ -32,7 +32,7 @@ CompText8796AE4::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x1, 0x90
+	ts_print_item 0x19, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -418,7 +418,7 @@ CompText8796AE4::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x3, 0xF0
+	ts_print_item 0x3F, 0x0
 	.string "\"!!"
 	ts_player_finish
 	ts_player_reset_object

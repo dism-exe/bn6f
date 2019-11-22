@@ -1119,19 +1119,19 @@ CompText877767C::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip2 0x0, 0x70
+	ts_print_chip2 0x7, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\",\n"
 	.string "\""
-	ts_print_chip2 0x0, 0xA0
+	ts_print_chip2 0xA, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\",\n"
 	.string "and \""
-	ts_print_chip2 0x0, 0xD0
+	ts_print_chip2 0xD, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

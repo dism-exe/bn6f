@@ -57,7 +57,7 @@ CompText87D82E4::
 	ts_sound_play00 0x73, 0x0
 	.string "MegaMan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x30
+	ts_print_item 0x33, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81
@@ -79,7 +79,7 @@ CompText87D82E4::
 	ts_sound_play00 0x73, 0x0
 	.string "HeatMan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x30
+	ts_print_item 0x33, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81
@@ -100,7 +100,7 @@ CompText87D82E4::
 	ts_sound_play00 0x73, 0x0
 	.string "ElecMan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x30
+	ts_print_item 0x33, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81
@@ -120,7 +120,7 @@ CompText87D82E4::
 	ts_sound_play00 0x73, 0x0
 	.string "SlashMan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x30
+	ts_print_item 0x33, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81
@@ -144,7 +144,7 @@ CompText87D82E4::
 	ts_sound_play00 0x73, 0x0
 	.string "EraseMan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x30
+	ts_print_item 0x33, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81
@@ -165,7 +165,7 @@ CompText87D82E4::
 	ts_sound_play00 0x73, 0x0
 	.string "ChargeMan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x30
+	ts_print_item 0x33, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81
@@ -186,7 +186,7 @@ CompText87D82E4::
 	ts_sound_play00 0x73, 0x0
 	.string "SpoutMan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x30
+	ts_print_item 0x33, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81
@@ -206,7 +206,7 @@ CompText87D82E4::
 	ts_sound_play00 0x73, 0x0
 	.string "TomahawkMan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x30
+	ts_print_item 0x33, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81
@@ -227,7 +227,7 @@ CompText87D82E4::
 	ts_sound_play00 0x73, 0x0
 	.string "TenguMan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x30
+	ts_print_item 0x33, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81
@@ -247,7 +247,7 @@ CompText87D82E4::
 	ts_sound_play00 0x73, 0x0
 	.string "GroundMan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x30
+	ts_print_item 0x33, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81
@@ -268,7 +268,7 @@ CompText87D82E4::
 	ts_sound_play00 0x73, 0x0
 	.string "DustMan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x30
+	ts_print_item 0x33, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81

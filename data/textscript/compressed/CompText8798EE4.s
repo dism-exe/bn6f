@@ -103,7 +103,7 @@ CompText8798EE4::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x70
+	ts_print_item 0x27, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -148,7 +148,7 @@ CompText8798EE4::
 	ts_mugshot_hide
 	.string "MegaMan gave:\n"
 	.string "\""
-	ts_print_item 0x2, 0x90
+	ts_print_item 0x29, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -218,7 +218,7 @@ CompText8798EE4::
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x80
+	ts_print_item 0x28, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -273,7 +273,7 @@ CompText8798EE4::
 	ts_mugshot_hide
 	.string "MegaMan gave:\n"
 	.string "\""
-	ts_print_item 0x2, 0xA0
+	ts_print_item 0x2A, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg

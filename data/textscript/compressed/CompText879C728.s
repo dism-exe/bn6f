@@ -181,7 +181,7 @@ CompText879C728::
 	ts_mugshot_hide
 	.string "MegaMan gave:\n"
 	.string "\""
-	ts_print_item 0x2, 0x70
+	ts_print_item 0x27, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -472,7 +472,7 @@ CompText879C728::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x3, 0xE0
+	ts_print_item 0x3E, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -580,7 +580,7 @@ CompText879C728::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x6, 0x90
+	ts_print_item 0x69, 0x0
 	.string "\"!!"
 	ts_player_finish
 	ts_player_reset_object

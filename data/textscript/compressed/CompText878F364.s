@@ -201,7 +201,7 @@ CompText878F364::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_navi_cust_program5 0x1, 0x70
+	ts_print_navi_cust_program5 0x17, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

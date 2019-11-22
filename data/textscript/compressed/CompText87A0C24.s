@@ -62,7 +62,7 @@ CompText87A0C24::
 	ts_clear_msg
 	.string "They call it\n"
 	.string "\""
-	ts_print_item 0x2, 0xC0
+	ts_print_item 0x2C, 0x0
 	.string "\"..."
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -100,7 +100,7 @@ CompText87A0C24::
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0xC0
+	ts_print_item 0x2C, 0x0
 	.string "\"!!"
 	ts_player_finish
 	ts_player_reset_object
@@ -161,7 +161,7 @@ CompText87A0C24::
 	ts_msg_open
 	.string "Hey you...\n"
 	.string "Wanna buy \""
-	ts_print_item 0x2, 0xC0
+	ts_print_item 0x2C, 0x0
 	.string "\"\n"
 	.string "for 3000 Zennys?"
 	ts_key_wait 0x0

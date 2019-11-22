@@ -36,7 +36,7 @@ CompText87AA3D0::
 	ts_clear_msg
 	.string "don't tell me THAT'S\n"
 	.string "the \""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"?"
 	ts_key_wait 0x0
 	ts_clear_msg

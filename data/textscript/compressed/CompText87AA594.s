@@ -22,7 +22,7 @@ CompText87AA594::
 	ts_sound_play00 0x73, 0x0
 	.string "MegaMan got:\n"
 	.string "\""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81
@@ -94,7 +94,7 @@ CompText87AA594::
 	ts_clear_msg
 	.string "that just lost a\n"
 	.string "\""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"."
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -104,7 +104,7 @@ CompText87AA594::
 	ts_clear_msg
 	.string "find the\n"
 	.string "\""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"..."
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -135,7 +135,7 @@ CompText87AA594::
 	ts_clear_msg
 	.string "Do you think you can\n"
 	.string "bring the \""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"\n"
 	.string "to CentralArea3?"
 	ts_key_wait 0x0

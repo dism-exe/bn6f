@@ -64,7 +64,7 @@ CompText875F038::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0x1, 0x80
+	ts_print_chip1 0x18, 0x0
 	.string "\"\n"
 	.string "CONFIRMED."
 	ts_key_wait 0x0
@@ -77,7 +77,7 @@ CompText875F038::
 	ts_print_current_navi_ow
 	.string " used:\n"
 	.string "\""
-	ts_print_item 0x4, 0x40
+	ts_print_item 0x44, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_clear 0x75, 0x0

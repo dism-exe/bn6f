@@ -93,7 +93,7 @@ CompText87A54E4::
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "My \""
-	ts_print_item 0x0, 0x10
+	ts_print_item 0x1, 0x0
 	.string "\"?"
 	ts_key_wait 0x0
 	ts_clear_msg

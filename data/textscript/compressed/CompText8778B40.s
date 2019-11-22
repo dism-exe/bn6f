@@ -341,7 +341,7 @@ CompText8778B40::
 	ts_item_take 0x41, 0x1
 	.string "Lan gave:\n"
 	.string "\""
-	ts_print_item 0x4, 0x10
+	ts_print_item 0x41, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -406,7 +406,7 @@ CompText8778B40::
 	ts_player_animate_object 0x18
 	.string "Lan got,\n"
 	.string "\""
-	ts_print_item 0x3, 0xA0
+	ts_print_item 0x3A, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

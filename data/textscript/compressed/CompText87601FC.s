@@ -60,7 +60,7 @@ CompText87601FC::
 	ts_clear_msg
 	.string "It's too thick for\n"
 	.string "the "
-	ts_print_item 0x1, 0xC0
+	ts_print_item 0x1C, 0x0
 	.string " to\n"
 	.string "suck up."
 	ts_key_wait 0x0

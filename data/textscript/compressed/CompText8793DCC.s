@@ -153,7 +153,7 @@ CompText8793DCC::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x1, 0x20
+	ts_print_item 0x12, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -290,7 +290,7 @@ CompText8793DCC::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x1, 0x30
+	ts_print_item 0x13, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

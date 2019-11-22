@@ -618,6 +618,6 @@ TextScript86CB360::
 
 	def_text_script TextScript86CB360_unk243
 	.string "NAME "
-	ts_print_item 0xE, 0x60
+	ts_print_item 0xE6, 0x0
 
 	.balign 4, 0

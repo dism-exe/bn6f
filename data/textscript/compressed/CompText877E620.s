@@ -644,7 +644,7 @@ CompText877E620::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x50
+	ts_print_item 0x35, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

@@ -14,7 +14,7 @@ CompText875E8DC::
 	ts_msg_open
 	.string "YOU WILL NEED\n"
 	.string "\""
-	ts_print_item 0x0, 0x60
+	ts_print_item 0x6, 0x0
 	.string "\""
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -66,7 +66,7 @@ CompText875E8DC::
 	ts_msg_open
 	.string "MegaMan used:\n"
 	.string "\""
-	ts_print_item 0x0, 0x60
+	ts_print_item 0x6, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_clear 0x83, 0x4

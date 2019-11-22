@@ -33,9 +33,9 @@ CompText876D618::
 	ts_msg_open
 	.string "Hey,do you have the\n"
 	.string "\""
-	ts_print_chip1 0x3, 0x70
+	ts_print_chip1 0x37, 0x0
 	.string " "
-	ts_print_code 0x0, 0xA0
+	ts_print_code 0xA, 0x0
 	.string "\" chip?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -44,9 +44,9 @@ CompText876D618::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0x5, 0xA0
+	ts_print_chip1 0x5A, 0x0
 	.string " "
-	ts_print_code 0x0, 0x20
+	ts_print_code 0x2, 0x0
 	.string "\"...?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -75,17 +75,17 @@ CompText876D618::
 	ts_msg_open
 	.string "Hey,want to trade my\n"
 	.string "\""
-	ts_print_chip1 0x5, 0xA0
+	ts_print_chip1 0x5A, 0x0
 	.string " "
-	ts_print_code 0x0, 0x20
+	ts_print_code 0x2, 0x0
 	.string "\""
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "for your\n"
 	.string "\""
-	ts_print_chip1 0x3, 0x70
+	ts_print_chip1 0x37, 0x0
 	.string " "
-	ts_print_code 0x0, 0xA0
+	ts_print_code 0xA, 0x0
 	.string "\"?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -118,9 +118,9 @@ CompText876D618::
 	ts_player_animate_scene 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_chip1 0x5, 0xA0
+	ts_print_chip1 0x5A, 0x0
 	.string " "
-	ts_print_code 0x0, 0x20
+	ts_print_code 0x2, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

@@ -150,7 +150,7 @@ CompText879EBA8::
 	ts_clear_msg
 	.string "What!?\n"
 	.string "\""
-	ts_print_chip2 0x5, 0x60
+	ts_print_chip2 0x56, 0x0
 	.string "\"!!\n"
 	.string "Wow..."
 	ts_key_wait 0x0
@@ -160,19 +160,19 @@ CompText879EBA8::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0x4, 0x60
+	ts_print_chip1 0x46, 0x0
 	.string " "
-	ts_print_code 0x0, 0xF0
+	ts_print_code 0xF, 0x0
 	.string "\",\n"
 	.string "\""
-	ts_print_chip1 0x4, 0x60
+	ts_print_chip1 0x46, 0x0
 	.string " "
-	ts_print_code 0x0, 0xF0
+	ts_print_code 0xF, 0x0
 	.string "\",\n"
 	.string "then \""
-	ts_print_chip1 0x9, 0x80
+	ts_print_chip1 0x98, 0x0
 	.string " "
-	ts_print_code 0x0, 0xF0
+	ts_print_code 0xF, 0x0
 	.string "\"."
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -191,7 +191,7 @@ CompText879EBA8::
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x3, 0xD0
+	ts_print_item 0x3D, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -199,7 +199,7 @@ CompText879EBA8::
 	ts_clear_msg
 	ts_mugshot_show 0x3E
 	.string "\""
-	ts_print_chip2 0x5, 0x60
+	ts_print_chip2 0x56, 0x0
 	.string "\" huh?\n"
 	.string "I'll have to try\n"
 	.string "it out!"
@@ -219,7 +219,7 @@ CompText879EBA8::
 	ts_mugshot_show 0x3E
 	ts_msg_open
 	.string "\""
-	ts_print_chip2 0x5, 0x60
+	ts_print_chip2 0x56, 0x0
 	.string "\" huh?\n"
 	.string "I'll have to try\n"
 	.string "it out!"
@@ -240,7 +240,7 @@ CompText879EBA8::
 	ts_clear_msg
 	.string "What!?\n"
 	.string "\""
-	ts_print_chip2 0x5, 0x60
+	ts_print_chip2 0x56, 0x0
 	.string "\"!!\n"
 	.string "Wow..."
 	ts_key_wait 0x0
@@ -250,19 +250,19 @@ CompText879EBA8::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0x4, 0x60
+	ts_print_chip1 0x46, 0x0
 	.string " "
-	ts_print_code 0x0, 0xF0
+	ts_print_code 0xF, 0x0
 	.string "\",\n"
 	.string "\""
-	ts_print_chip1 0x4, 0x60
+	ts_print_chip1 0x46, 0x0
 	.string " "
-	ts_print_code 0x0, 0xF0
+	ts_print_code 0xF, 0x0
 	.string "\",\n"
 	.string "then \""
-	ts_print_chip1 0x9, 0x80
+	ts_print_chip1 0x98, 0x0
 	.string " "
-	ts_print_code 0x0, 0xF0
+	ts_print_code 0xF, 0x0
 	.string "\"."
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -281,7 +281,7 @@ CompText879EBA8::
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x3, 0xD0
+	ts_print_item 0x3D, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -289,7 +289,7 @@ CompText879EBA8::
 	ts_clear_msg
 	ts_mugshot_show 0x3E
 	.string "\""
-	ts_print_chip2 0x5, 0x60
+	ts_print_chip2 0x56, 0x0
 	.string "\" huh?\n"
 	.string "I'll have to try\n"
 	.string "it out!"
@@ -340,7 +340,7 @@ CompText879EBA8::
 	ts_msg_open
 	.string "Want to give the\n"
 	.string "\""
-	ts_print_folder_name 0x2, 0x20
+	ts_print_folder_name 0x22, 0x0
 	.string "\" I\n"
 	.string "have a try?"
 	ts_key_wait 0x0
@@ -352,7 +352,7 @@ CompText879EBA8::
 	ts_clear_msg
 	.string "I'll give you the\n"
 	.string "\""
-	ts_print_folder_name 0x2, 0x20
+	ts_print_folder_name 0x22, 0x0
 	.string "\" right\n"
 	.string "now!!"
 	ts_key_wait 0x0
@@ -405,7 +405,7 @@ CompText879EBA8::
 	.string "Your old Extra\n"
 	.string "Folder is now called\n"
 	.string "\""
-	ts_print_folder_name 0x2, 0x20
+	ts_print_folder_name 0x22, 0x0
 	.string "\"."
 	ts_key_wait 0x0
 	ts_clear_msg

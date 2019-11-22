@@ -151,7 +151,7 @@ CompText87892BC::
 	ts_clear_msg
 	ts_mugshot_show 0x3E
 	.string "\""
-	ts_print_item 0x1, 0xB0
+	ts_print_item 0x1B, 0x0
 	.string "\"\n"
 	.string "confirmed."
 	ts_key_wait 0x0

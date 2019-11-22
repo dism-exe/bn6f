@@ -80,7 +80,7 @@ CompText875C83C::
 	ts_player_animate_scene 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x0, 0xF0
+	ts_print_item 0xF, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

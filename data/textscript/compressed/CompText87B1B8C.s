@@ -36,7 +36,7 @@ CompText87B1B8C::
 	ts_sound_play00 0x73, 0x0
 	.string "HeatMan got:\n"
 	.string "\""
-	ts_print_item 0x0, 0xA0
+	ts_print_item 0xA, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81
@@ -62,7 +62,7 @@ CompText87B1B8C::
 	ts_msg_open
 	.string "Ooh,so this is\n"
 	.string "\""
-	ts_print_item 0x0, 0xA0
+	ts_print_item 0xA, 0x0
 	.string "\",drip!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -89,7 +89,7 @@ CompText87B1B8C::
 	ts_sound_play00 0x73, 0x0
 	.string "SpoutMan got:\n"
 	.string "\""
-	ts_print_item 0x0, 0xA0
+	ts_print_item 0xA, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81

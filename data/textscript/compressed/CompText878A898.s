@@ -335,7 +335,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xE0
+	ts_print_item 0x1E, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -375,7 +375,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x40
+	ts_print_item 0x24, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -415,7 +415,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x30
+	ts_print_item 0x23, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -487,7 +487,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x50
+	ts_print_item 0x25, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -526,7 +526,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x10
+	ts_print_item 0x21, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -565,7 +565,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x20
+	ts_print_item 0x22, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -640,7 +640,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x40
+	ts_print_item 0x24, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -680,7 +680,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x10
+	ts_print_item 0x21, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -754,7 +754,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xF0
+	ts_print_item 0x1F, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -792,7 +792,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xE0
+	ts_print_item 0x1E, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -830,7 +830,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x0
+	ts_print_item 0x20, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -898,7 +898,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xE0
+	ts_print_item 0x1E, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -935,7 +935,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x10
+	ts_print_item 0x21, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -972,7 +972,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xF0
+	ts_print_item 0x1F, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -1053,7 +1053,7 @@ CompText878A898::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x50
+	ts_print_item 0x25, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

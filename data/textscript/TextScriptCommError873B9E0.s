@@ -7,7 +7,7 @@ TextScriptCommError873B9E0::
 	ts_msg_open
 	.string "Lan!\n"
 	.string "\""
-	ts_print_item 0x8, 0x40
+	ts_print_item 0x84, 0x0
 	.string "\"\n"
 	.string "just expired!"
 	ts_key_wait 0x0
@@ -19,7 +19,7 @@ TextScriptCommError873B9E0::
 	ts_msg_open
 	.string "Lan!\n"
 	.string "\""
-	ts_print_item 0x8, 0x20
+	ts_print_item 0x82, 0x0
 	.string "\"\n"
 	.string "just expired!"
 	ts_key_wait 0x0
@@ -28,7 +28,7 @@ TextScriptCommError873B9E0::
 	def_text_script TextScriptCommError873B9E0_unk2
 	ts_msg_open
 	.string "\""
-	ts_print_item 0x8, 0x40
+	ts_print_item 0x84, 0x0
 	.string "\"\n"
 	.string "just expired!!"
 	ts_key_wait 0x0
@@ -37,7 +37,7 @@ TextScriptCommError873B9E0::
 	def_text_script TextScriptCommError873B9E0_unk3
 	ts_msg_open
 	.string "\""
-	ts_print_item 0x8, 0x20
+	ts_print_item 0x82, 0x0
 	.string "\"\n"
 	.string "just expired!"
 	ts_key_wait 0x0

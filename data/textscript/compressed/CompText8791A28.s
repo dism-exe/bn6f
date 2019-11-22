@@ -24,9 +24,9 @@ CompText8791A28::
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_chip2 0x3, 0x0
+	ts_print_chip2 0x30, 0x0
 	.string " "
-	ts_print_code 0x1, 0x0
+	ts_print_code 0x10, 0x0
 	.string "\"!!"
 	ts_player_finish
 	ts_player_reset_object
@@ -47,9 +47,9 @@ CompText8791A28::
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_chip2 0x3, 0x50
+	ts_print_chip2 0x35, 0x0
 	.string " "
-	ts_print_code 0x0, 0x90
+	ts_print_code 0x9, 0x0
 	.string "\"!!"
 	ts_player_finish
 	ts_player_reset_object

@@ -23,7 +23,7 @@ CompText87AA7E4::
 	ts_msg_open
 	.string "Here,this is the\n"
 	.string "\""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"you're\n"
 	.string "looking for,right?"
 	ts_key_wait 0x0
@@ -33,7 +33,7 @@ CompText87AA7E4::
 	ts_msg_open
 	.string "MegaMan gives:\n"
 	.string "\""
-	ts_print_item 0x0, 0x80
+	ts_print_item 0x8, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end

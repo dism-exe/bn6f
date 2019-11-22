@@ -68,7 +68,7 @@ CompText879F1B8::
 	ts_clear_msg
 	.string "If you have this\n"
 	.string "\""
-	ts_print_item 0x4, 0x0
+	ts_print_item 0x40, 0x0
 	.string "\"\n"
 	.string "I developed,"
 	ts_key_wait 0x0
@@ -136,7 +136,7 @@ CompText879F1B8::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x4, 0x0
+	ts_print_item 0x40, 0x0
 	.string "\"!!\n"
 	ts_player_finish
 	ts_player_reset_object
@@ -161,7 +161,7 @@ CompText879F1B8::
 	.string "You can store virus\n"
 	.string "data in the\n"
 	.string "\""
-	ts_print_item 0x4, 0x0
+	ts_print_item 0x40, 0x0
 	.string "\"."
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -222,7 +222,7 @@ CompText879F1B8::
 	.string "You can store virus\n"
 	.string "data in the\n"
 	.string "\""
-	ts_print_item 0x4, 0x0
+	ts_print_item 0x40, 0x0
 	.string "\"."
 	ts_key_wait 0x0
 	ts_clear_msg

@@ -16,7 +16,7 @@ CompText879AACC::
 	ts_msg_open
 	ts_flag_set 0x2F, 0x11
 	.string "\""
-	ts_print_chip1 0xC, 0xA0
+	ts_print_chip1 0xCA, 0x0
 	.string "\" sure\n"
 	.string "is a cool name for\n"
 	.string "a chip!"
@@ -30,9 +30,9 @@ CompText879AACC::
 	.string "I figured I'd\n"
 	.string "ask if you had a\n"
 	.string "\""
-	ts_print_chip1 0xC, 0xA0
+	ts_print_chip1 0xCA, 0x0
 	.string " "
-	ts_print_code 0x0, 0xE0
+	ts_print_code 0xE, 0x0
 	.string "\"?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -43,9 +43,9 @@ CompText879AACC::
 	ts_clear_msg
 	.string "I'd trade you my\n"
 	.string "\""
-	ts_print_chip1 0x8, 0xC0
+	ts_print_chip1 0x8C, 0x0
 	.string " "
-	ts_print_code 0x0, 0x90
+	ts_print_code 0x9, 0x0
 	.string "\"\n"
 	.string "for it."
 	ts_key_wait 0x0
@@ -69,7 +69,7 @@ CompText879AACC::
 	ts_mugshot_show 0x41
 	ts_msg_open
 	.string "\""
-	ts_print_chip1 0xC, 0xA0
+	ts_print_chip1 0xCA, 0x0
 	.string "\" sure\n"
 	.string "is a cool name for\n"
 	.string "a chip!"
@@ -83,9 +83,9 @@ CompText879AACC::
 	.string "I figured I'd\n"
 	.string "ask if you had a\n"
 	.string "\""
-	ts_print_chip1 0xC, 0xA0
+	ts_print_chip1 0xCA, 0x0
 	.string " "
-	ts_print_code 0x0, 0xE0
+	ts_print_code 0xE, 0x0
 	.string "\"?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -96,9 +96,9 @@ CompText879AACC::
 	ts_clear_msg
 	.string "I'd trade you my\n"
 	.string "\""
-	ts_print_chip1 0x8, 0xC0
+	ts_print_chip1 0x8C, 0x0
 	.string " "
-	ts_print_code 0x0, 0x90
+	ts_print_code 0x9, 0x0
 	.string "\"\n"
 	.string "for it."
 	ts_key_wait 0x0
@@ -132,9 +132,9 @@ CompText879AACC::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_chip1 0x8, 0xC0
+	ts_print_chip1 0x8C, 0x0
 	.string " "
-	ts_print_code 0x0, 0x90
+	ts_print_code 0x9, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -159,7 +159,7 @@ CompText879AACC::
 	ts_msg_open
 	.string "Thanks for the\n"
 	.string "\""
-	ts_print_chip1 0xC, 0xA0
+	ts_print_chip1 0xCA, 0x0
 	.string "\"!\n"
 	.string "Now I'll be big too!"
 	ts_key_wait 0x0
@@ -297,7 +297,7 @@ CompText879AACC::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x6, 0xB0
+	ts_print_item 0x6B, 0x0
 	.string "\"!!"
 	ts_player_finish
 	ts_player_reset_object

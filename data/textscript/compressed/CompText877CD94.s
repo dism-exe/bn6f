@@ -441,7 +441,7 @@ CompText877CD94::
 	ts_item_give 0xC, 0x1
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x0, 0xC0
+	ts_print_item 0xC, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg

@@ -445,9 +445,9 @@ CompText87D8938::
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_chip2 0x2, 0xD0
+	ts_print_chip2 0x2D, 0x0
 	.string " "
-	ts_print_code 0x0, 0x50
+	ts_print_code 0x5, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81
@@ -463,9 +463,9 @@ CompText87D8938::
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_chip2 0x3, 0x20
+	ts_print_chip2 0x32, 0x0
 	.string " "
-	ts_print_code 0x0, 0x50
+	ts_print_code 0x5, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_wait_o_w_var 0x0, 0x81

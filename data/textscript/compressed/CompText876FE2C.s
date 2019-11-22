@@ -40,7 +40,7 @@ CompText876FE2C::
 	ts_msg_open
 	.string "Lan used:\n"
 	.string "\""
-	ts_print_item 0x0, 0x10
+	ts_print_item 0x1, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -105,7 +105,7 @@ CompText876FE2C::
 	ts_msg_open
 	.string "Lan used:\n"
 	.string "\""
-	ts_print_item 0x0, 0x30
+	ts_print_item 0x3, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg

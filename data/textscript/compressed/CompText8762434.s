@@ -882,7 +882,7 @@ CompText8762434::
 	ts_clear_msg
 	.string "It's too thick for\n"
 	.string "the "
-	ts_print_item 0x1, 0xC0
+	ts_print_item 0x1C, 0x0
 	.string " to\n"
 	.string "suck up."
 	ts_key_wait 0x0
@@ -896,7 +896,7 @@ CompText8762434::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "and the "
-	ts_print_item 0x4, 0x20
+	ts_print_item 0x42, 0x0
 	.string "\n"
 	.string "is too weak to cut\n"
 	.string "it."
@@ -924,7 +924,7 @@ CompText8762434::
 	def_text_script CompText8762434_unk82
 	ts_msg_open
 	.string "The "
-	ts_print_item 0x3, 0x30
+	ts_print_item 0x33, 0x0
 	.string " has\n"
 	.string "suddenly started\n"
 	.string "to glow!!"

@@ -38,7 +38,7 @@ CompText87618C0::
 	ts_msg_open
 	.string "MegaMan got:\n"
 	.string "\""
-	ts_print_item 0x4, 0x50
+	ts_print_item 0x45, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_clear 0x36, 0x1
@@ -539,7 +539,7 @@ CompText87618C0::
 	ts_clear_msg
 	.string "It's too thick for\n"
 	.string "the "
-	ts_print_item 0x1, 0xC0
+	ts_print_item 0x1C, 0x0
 	.string " to\n"
 	.string "suck up."
 	ts_key_wait 0x0
@@ -553,7 +553,7 @@ CompText87618C0::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "and the "
-	ts_print_item 0x4, 0x20
+	ts_print_item 0x42, 0x0
 	.string "\n"
 	.string "is too weak to cut\n"
 	.string "it down."

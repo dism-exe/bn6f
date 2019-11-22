@@ -437,7 +437,7 @@ CompText8795E14::
 	ts_mugshot_hide
 	.string "MegaMan gave:\n"
 	.string "\""
-	ts_print_item 0x2, 0x70
+	ts_print_item 0x27, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -466,7 +466,7 @@ CompText8795E14::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x90
+	ts_print_item 0x29, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

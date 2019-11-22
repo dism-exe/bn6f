@@ -277,9 +277,9 @@ CompText877DAB4::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_chip1 0xC, 0xA0
+	ts_print_chip1 0xCA, 0x0
 	.string " "
-	ts_print_code 0x0, 0xF0
+	ts_print_code 0xF, 0x0
 	.string "\"!!"
 	ts_player_finish
 	ts_player_reset_object

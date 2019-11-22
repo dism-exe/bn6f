@@ -204,7 +204,7 @@ CompText875EA10::
 	def_text_script CompText875EA10_unk11
 	ts_msg_open
 	.string "The "
-	ts_print_item 0x1, 0xC0
+	ts_print_item 0x1C, 0x0
 	.string " sucked\n"
 	.string "the cloud up!!"
 	ts_key_wait 0x0
@@ -298,7 +298,7 @@ CompText875EA10::
 	ts_print_current_navi
 	.string " used:\n"
 	.string "\""
-	ts_print_item 0x4, 0x20
+	ts_print_item 0x42, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg

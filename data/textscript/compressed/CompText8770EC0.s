@@ -160,7 +160,7 @@ CompText8770EC0::
 	ts_item_take 0x43, 0x1
 	.string "Lan gave:\n"
 	.string "\""
-	ts_print_item 0x4, 0x30
+	ts_print_item 0x43, 0x0
 	.string "\"!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -178,7 +178,7 @@ CompText8770EC0::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x80
+	ts_print_item 0x38, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

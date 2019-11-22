@@ -308,7 +308,7 @@ CompText879073C::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0xD0
+	ts_print_item 0x2D, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_set 0xEA, 0x11
@@ -375,7 +375,7 @@ CompText879073C::
 	ts_print_current_navi
 	.string " returned the\n"
 	.string "\""
-	ts_print_item 0x2, 0xD0
+	ts_print_item 0x2D, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -464,7 +464,7 @@ CompText879073C::
 	ts_print_current_navi
 	.string " gave:\n"
 	.string "\""
-	ts_print_item 0x2, 0x80
+	ts_print_item 0x28, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -514,7 +514,7 @@ CompText879073C::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0xA0
+	ts_print_item 0x2A, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -985,9 +985,9 @@ CompText879073C::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_chip1 0xB, 0xC0
+	ts_print_chip1 0xBC, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

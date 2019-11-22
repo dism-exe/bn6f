@@ -140,7 +140,7 @@ CompText87605E0::
 	def_text_script CompText87605E0_unk10
 	ts_msg_open
 	.string "The "
-	ts_print_item 0x3, 0x30
+	ts_print_item 0x33, 0x0
 	.string " has\n"
 	.string "suddenly started\n"
 	.string "to glow!!"

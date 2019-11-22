@@ -48,7 +48,7 @@ CompText8794EC0::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xB0
+	ts_print_item 0x1B, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

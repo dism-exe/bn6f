@@ -517,9 +517,9 @@ CompText879DA74::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_chip1 0x5, 0x0
+	ts_print_chip1 0x50, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

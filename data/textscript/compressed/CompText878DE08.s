@@ -142,7 +142,7 @@ CompText878DE08::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x2, 0x70
+	ts_print_item 0x27, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -201,7 +201,7 @@ CompText878DE08::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0x1, 0xF0
+	ts_print_chip1 0x1F, 0x0
 	.string " "
 	ts_print_code 0x0, 0x0
 	.string "\"\n"
@@ -215,7 +215,7 @@ CompText878DE08::
 	.string "he said don't come\n"
 	.string "back until I find\n"
 	.string "\""
-	ts_print_chip1 0x1, 0xF0
+	ts_print_chip1 0x1F, 0x0
 	.string " "
 	ts_print_code 0x0, 0x0
 	.string "\"!"
@@ -234,7 +234,7 @@ CompText878DE08::
 	ts_clear_msg
 	.string "Please get me the\n"
 	.string "\""
-	ts_print_chip1 0x1, 0xF0
+	ts_print_chip1 0x1F, 0x0
 	.string " "
 	ts_print_code 0x0, 0x0
 	.string "\"\n"
@@ -264,7 +264,7 @@ CompText878DE08::
 	.string "Yay!\n"
 	.string "You brought back a\n"
 	.string "\""
-	ts_print_chip1 0x1, 0xF0
+	ts_print_chip1 0x1F, 0x0
 	.string " "
 	ts_print_code 0x0, 0x0
 	.string "\"!!"
@@ -272,7 +272,7 @@ CompText878DE08::
 	ts_clear_msg
 	.string "If I don't get\n"
 	.string "\""
-	ts_print_chip1 0x1, 0xF0
+	ts_print_chip1 0x1F, 0x0
 	.string " "
 	ts_print_code 0x0, 0x0
 	.string "\","
@@ -324,7 +324,7 @@ CompText878DE08::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x20
+	ts_print_item 0x72, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -357,7 +357,7 @@ CompText878DE08::
 	ts_clear_msg
 	.string "You don't have a\n"
 	.string "\""
-	ts_print_chip1 0x1, 0xF0
+	ts_print_chip1 0x1F, 0x0
 	.string " "
 	ts_print_code 0x0, 0x0
 	.string "\"!!"

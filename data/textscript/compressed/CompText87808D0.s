@@ -117,31 +117,31 @@ CompText87808D0::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0x9, 0xD0
+	ts_print_chip1 0x9D, 0x0
 	.string " "
-	ts_print_code 0x0, 0x70
+	ts_print_code 0x7, 0x0
 	.string "\"\n"
 	.string "\""
-	ts_print_chip1 0xA, 0x70
+	ts_print_chip1 0xA7, 0x0
 	.string " "
 	ts_print_code 0x0, 0x0
 	.string "\"\n"
 	.string "\""
-	ts_print_chip1 0xB, 0x50
+	ts_print_chip1 0xB5, 0x0
 	.string " "
-	ts_print_code 0x1, 0x0
+	ts_print_code 0x10, 0x0
 	.string "\""
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0xC, 0x30
+	ts_print_chip1 0xC3, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\"\n"
 	.string "\""
-	ts_print_chip1 0x9, 0x30
+	ts_print_chip1 0x93, 0x0
 	.string " "
-	ts_print_code 0x1, 0x20
+	ts_print_code 0x12, 0x0
 	.string "\""
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -172,31 +172,31 @@ CompText87808D0::
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0x9, 0xD0
+	ts_print_chip1 0x9D, 0x0
 	.string " "
-	ts_print_code 0x0, 0x70
+	ts_print_code 0x7, 0x0
 	.string "\"\n"
 	.string "\""
-	ts_print_chip1 0xA, 0x70
+	ts_print_chip1 0xA7, 0x0
 	.string " "
 	ts_print_code 0x0, 0x0
 	.string "\"\n"
 	.string "\""
-	ts_print_chip1 0xB, 0x50
+	ts_print_chip1 0xB5, 0x0
 	.string " "
-	ts_print_code 0x1, 0x0
+	ts_print_code 0x10, 0x0
 	.string "\""
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip1 0xC, 0x30
+	ts_print_chip1 0xC3, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\"\n"
 	.string "\""
-	ts_print_chip1 0x9, 0x30
+	ts_print_chip1 0x93, 0x0
 	.string " "
-	ts_print_code 0x1, 0x20
+	ts_print_code 0x12, 0x0
 	.string "\""
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -242,7 +242,7 @@ CompText87808D0::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x0
+	ts_print_item 0x70, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -302,7 +302,7 @@ CompText87808D0::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x0
+	ts_print_item 0x70, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -483,7 +483,7 @@ CompText87808D0::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0x60
+	ts_print_item 0x36, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

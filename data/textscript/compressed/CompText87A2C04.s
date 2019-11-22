@@ -139,22 +139,22 @@ CompText87A2C04::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_chip1 0xA, 0x30
+	ts_print_chip1 0xA3, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\",\n"
 	.string "\""
-	ts_print_chip1 0xB, 0xA0
+	ts_print_chip1 0xBA, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\","
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "and\n"
 	.string "\""
-	ts_print_chip1 0xB, 0xD0
+	ts_print_chip1 0xBD, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

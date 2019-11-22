@@ -199,7 +199,7 @@ CompText87D00B0::
 	ts_sound_play00 0x73, 0x0
 	.string "Everyone got a:\n"
 	.string "\""
-	ts_print_item 0x2, 0xB0
+	ts_print_item 0x2B, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg

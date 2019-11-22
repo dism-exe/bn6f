@@ -550,7 +550,7 @@ CompText87643E4::
 	ts_player_animate_scene 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x0, 0x70
+	ts_print_item 0x7, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish

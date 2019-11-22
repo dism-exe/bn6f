@@ -124,7 +124,7 @@ CompText8761234::
 	ts_msg_open
 	.string "MegaMan used:\n"
 	.string "\""
-	ts_print_item 0x1, 0xA0
+	ts_print_item 0x1A, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_clear 0xE6, 0xC
@@ -150,7 +150,7 @@ CompText8761234::
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xA0
+	ts_print_item 0x1A, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -211,7 +211,7 @@ CompText8761234::
 	ts_print_current_navi_ow
 	.string " used:\n"
 	.string "\""
-	ts_print_item 0x4, 0x40
+	ts_print_item 0x44, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_flag_clear 0x77, 0x0

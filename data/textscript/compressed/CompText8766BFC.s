@@ -474,7 +474,7 @@ CompText8766BFC::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x7, 0x30
+	ts_print_item 0x73, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -526,7 +526,7 @@ CompText8766BFC::
 	ts_player_animate_scene 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x1, 0xD0
+	ts_print_item 0x1D, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -554,18 +554,18 @@ CompText8766BFC::
 	.string "That reminds me...\n"
 	.string "Do you have a\n"
 	.string "\""
-	ts_print_chip1 0xB, 0x30
+	ts_print_chip1 0xB3, 0x0
 	.string " "
-	ts_print_code 0x0, 0x70
+	ts_print_code 0x7, 0x0
 	.string "\" chip?"
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "Would you like to\n"
 	.string "trade it for my\n"
 	.string "\""
-	ts_print_chip1 0x3, 0x20
+	ts_print_chip1 0x32, 0x0
 	.string " "
-	ts_print_code 0x0, 0xC0
+	ts_print_code 0xC, 0x0
 	.string "\" chip?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -594,18 +594,18 @@ CompText8766BFC::
 	ts_clear_msg
 	.string "I bet you've got a\n"
 	.string "\""
-	ts_print_chip1 0xB, 0x30
+	ts_print_chip1 0xB3, 0x0
 	.string " "
-	ts_print_code 0x0, 0x70
+	ts_print_code 0x7, 0x0
 	.string "\" chip!!"
 	ts_key_wait 0x0
 	ts_clear_msg
 	.string "And you came to\n"
 	.string "trade it for my\n"
 	.string "\""
-	ts_print_chip1 0x3, 0x20
+	ts_print_chip1 0x32, 0x0
 	.string " "
-	ts_print_code 0x0, 0xC0
+	ts_print_code 0xC, 0x0
 	.string "\" chip?"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -645,9 +645,9 @@ CompText8766BFC::
 	ts_player_animate_scene 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_chip1 0x3, 0x20
+	ts_print_chip1 0x32, 0x0
 	.string " "
-	ts_print_code 0x0, 0xC0
+	ts_print_code 0xC, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -685,9 +685,9 @@ CompText8766BFC::
 	.string "Come back when\n"
 	.string "you've got a\n"
 	.string "\""
-	ts_print_chip1 0xB, 0x30
+	ts_print_chip1 0xB3, 0x0
 	.string " "
-	ts_print_code 0x0, 0x70
+	ts_print_code 0x7, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_end
@@ -761,7 +761,7 @@ CompText8766BFC::
 	ts_item_take 0x2E, 0x1
 	.string "Lan gave:\n"
 	.string "\""
-	ts_print_item 0x2, 0xE0
+	ts_print_item 0x2E, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_clear_msg
@@ -996,7 +996,7 @@ CompText8766BFC::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_item 0x3, 0xC0
+	ts_print_item 0x3C, 0x0
 	.string "\"!!"
 	ts_player_finish
 	ts_player_reset_object
@@ -1185,7 +1185,7 @@ CompText8766BFC::
 	ts_player_animate_object 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_navi_cust_program5 0x0, 0x30
+	ts_print_navi_cust_program5 0x3, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
@@ -1596,9 +1596,9 @@ CompText8766BFC::
 	ts_player_animate_scene 0x18
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_chip1 0xA, 0xD0
+	ts_print_chip1 0xAD, 0x0
 	.string " "
-	ts_print_code 0x1, 0xA0
+	ts_print_code 0x1A, 0x0
 	.string "\"!!"
 	ts_key_wait 0x0
 	ts_player_finish
