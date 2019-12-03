@@ -21,7 +21,7 @@ idaapi.require('ida_require_all')
 
 def identify_local_pointers(range):
     from FixTools import fixTools as fix
-    from utils.ida import ops
+    from .utils.ida import ops
 
     # identify local pointers in data, this accounts for IDA update behavior when collapsing back
     fix.resolvePointers(range, range)
@@ -54,8 +54,8 @@ def main():
     # ida_source_syncer.report_unsynced_labels(source_units, address_space)
     # ida_source_syncer.report_unsynced_units(source_units, address_space)
 
-    # range = (0x8062BFC, 0x80663A8+2)
-    # ida_dumper.dump_range(source_unit.SourceUnitComputations(source_units), *range)
+    range = (0x8062BFC, 0x80663A8+2)
+    ida_dumper.dump_range(source_unit.SourceUnitComputations(source_units), *range)
 
     from . import ida_dump_loader
     ida_dump_loader.main()
