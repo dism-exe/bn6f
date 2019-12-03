@@ -1,30 +1,13 @@
-	text_script_start unk_0 // TODO: change this if label is named different
+	text_archive_start
 
-	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-	text_script_rel_pointers 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
-	text_script_rel_pointers 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47
-	text_script_rel_pointers 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63
-	text_script_rel_pointers 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79
-	text_script_rel_pointers 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95
-	text_script_rel_pointers 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111
-	text_script_rel_pointers 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127
-	text_script_rel_pointers 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143
-	text_script_rel_pointers 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159
-	text_script_rel_pointers 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175
-	text_script_rel_pointers 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191
-	text_script_rel_pointers 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207
-	text_script_rel_pointers 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223
-	text_script_rel_pointers 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239
-	text_script_rel_pointers 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255
-
-	text_script 0, scr_0
+	def_text_script TextScript0_unk0
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	ts_key_wait 0x1
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 1, scr_1
+	def_text_script TextScript0_unk1
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Cannon to\n"
@@ -34,7 +17,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 2, scr_2
+	def_text_script TextScript0_unk2
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Cannon to\n"
@@ -44,7 +27,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 3, scr_3
+	def_text_script TextScript0_unk3
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Cannon to\n"
@@ -54,7 +37,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 4, scr_4
+	def_text_script TextScript0_unk4
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Knock\n"
@@ -64,7 +47,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 5, scr_5
+	def_text_script TextScript0_unk5
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "3-shot to\n"
@@ -74,7 +57,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 6, scr_6
+	def_text_script TextScript0_unk6
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "4-shot to\n"
@@ -84,7 +67,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 7, scr_7
+	def_text_script TextScript0_unk7
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "5-shot to\n"
@@ -94,7 +77,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 8, scr_8
+	def_text_script TextScript0_unk8
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "10-shot\n"
@@ -104,7 +87,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 9, scr_9
+	def_text_script TextScript0_unk9
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Spreads \n"
@@ -114,7 +97,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 10, scr_10
+	def_text_script TextScript0_unk10
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Spreads \n"
@@ -124,7 +107,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 11, scr_11
+	def_text_script TextScript0_unk11
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Spreads \n"
@@ -134,7 +117,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 12, scr_12
+	def_text_script TextScript0_unk12
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "3sqr blst\n"
@@ -144,7 +127,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 13, scr_13
+	def_text_script TextScript0_unk13
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "3sqr blst\n"
@@ -154,7 +137,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 14, scr_14
+	def_text_script TextScript0_unk14
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "3sqr blst\n"
@@ -164,7 +147,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 15, scr_15
+	def_text_script TextScript0_unk15
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Hits row\n"
@@ -174,7 +157,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 16, scr_16
+	def_text_script TextScript0_unk16
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Hits row\n"
@@ -184,7 +167,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 17, scr_17
+	def_text_script TextScript0_unk17
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Hits row\n"
@@ -194,7 +177,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 18, scr_18
+	def_text_script TextScript0_unk18
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Fires a\n"
@@ -204,7 +187,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 19, scr_19
+	def_text_script TextScript0_unk19
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "YoYo atk\n"
@@ -214,7 +197,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 20, scr_20
+	def_text_script TextScript0_unk20
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Crcks 3\n"
@@ -224,7 +207,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 21, scr_21
+	def_text_script TextScript0_unk21
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Crcks 3\n"
@@ -234,7 +217,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 22, scr_22
+	def_text_script TextScript0_unk22
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Crcks 3\n"
@@ -244,7 +227,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 23, scr_23
+	def_text_script TextScript0_unk23
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Fires 3sq\n"
@@ -254,7 +237,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 24, scr_24
+	def_text_script TextScript0_unk24
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Hits enmy\n"
@@ -264,7 +247,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 25, scr_25
+	def_text_script TextScript0_unk25
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Hits enmy\n"
@@ -274,7 +257,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 26, scr_26
+	def_text_script TextScript0_unk26
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Hits enmy\n"
@@ -284,7 +267,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 27, scr_27
+	def_text_script TextScript0_unk27
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Seals an \n"
@@ -294,7 +277,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 28, scr_28
+	def_text_script TextScript0_unk28
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Seals an \n"
@@ -304,7 +287,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 29, scr_29
+	def_text_script TextScript0_unk29
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Seals an \n"
@@ -314,7 +297,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 30, scr_30
+	def_text_script TextScript0_unk30
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Pralyzing\n"
@@ -324,7 +307,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 31, scr_31
+	def_text_script TextScript0_unk31
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "A piercng\n"
@@ -334,7 +317,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 32, scr_32
+	def_text_script TextScript0_unk32
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "A piercng\n"
@@ -344,7 +327,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 33, scr_33
+	def_text_script TextScript0_unk33
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "A piercng\n"
@@ -354,7 +337,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 34, scr_34
+	def_text_script TextScript0_unk34
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Sprd elec\n"
@@ -364,7 +347,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 35, scr_35
+	def_text_script TextScript0_unk35
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Sprd elec\n"
@@ -374,7 +357,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 36, scr_36
+	def_text_script TextScript0_unk36
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Sprd elec\n"
@@ -384,7 +367,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 37, scr_37
+	def_text_script TextScript0_unk37
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Bees attk\n"
@@ -394,7 +377,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 38, scr_38
+	def_text_script TextScript0_unk38
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Bees attk\n"
@@ -404,7 +387,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 39, scr_39
+	def_text_script TextScript0_unk39
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Bees attk\n"
@@ -414,7 +397,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 40, scr_40
+	def_text_script TextScript0_unk40
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Send out\n"
@@ -424,7 +407,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 41, scr_41
+	def_text_script TextScript0_unk41
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Send out\n"
@@ -434,7 +417,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 42, scr_42
+	def_text_script TextScript0_unk42
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Send out\n"
@@ -444,7 +427,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 43, scr_43
+	def_text_script TextScript0_unk43
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Fire 9sts\n"
@@ -454,7 +437,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 44, scr_44
+	def_text_script TextScript0_unk44
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Fire 9sts\n"
@@ -464,7 +447,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 45, scr_45
+	def_text_script TextScript0_unk45
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Fire 9sts\n"
@@ -474,7 +457,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 46, scr_46
+	def_text_script TextScript0_unk46
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Drgn near\n"
@@ -484,7 +467,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 47, scr_47
+	def_text_script TextScript0_unk47
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Drgn near\n"
@@ -494,7 +477,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 48, scr_48
+	def_text_script TextScript0_unk48
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Drgn near\n"
@@ -504,7 +487,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 49, scr_49
+	def_text_script TextScript0_unk49
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Drgn near\n"
@@ -514,7 +497,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 50, scr_50
+	def_text_script TextScript0_unk50
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Bounce \n"
@@ -524,7 +507,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 51, scr_51
+	def_text_script TextScript0_unk51
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Knocks\n"
@@ -534,7 +517,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 52, scr_52
+	def_text_script TextScript0_unk52
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "8hit strm\n"
@@ -544,7 +527,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 53, scr_53
+	def_text_script TextScript0_unk53
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "A static\n"
@@ -554,7 +537,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 54, scr_54
+	def_text_script TextScript0_unk54
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Throws a\n"
@@ -564,7 +547,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 55, scr_55
+	def_text_script TextScript0_unk55
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Throws a\n"
@@ -574,7 +557,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 56, scr_56
+	def_text_script TextScript0_unk56
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Throws a\n"
@@ -584,7 +567,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 57, scr_57
+	def_text_script TextScript0_unk57
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Thrw dlyd\n"
@@ -594,7 +577,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 58, scr_58
+	def_text_script TextScript0_unk58
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Thrw dlyd\n"
@@ -604,7 +587,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 59, scr_59
+	def_text_script TextScript0_unk59
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Thrw dlyd\n"
@@ -614,7 +597,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 60, scr_60
+	def_text_script TextScript0_unk60
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Thrw shel\n"
@@ -624,7 +607,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 61, scr_61
+	def_text_script TextScript0_unk61
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Target 3\n"
@@ -634,7 +617,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 62, scr_62
+	def_text_script TextScript0_unk62
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Target 3\n"
@@ -644,7 +627,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 63, scr_63
+	def_text_script TextScript0_unk63
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Target 3\n"
@@ -654,7 +637,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 64, scr_64
+	def_text_script TextScript0_unk64
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Damages\n"
@@ -664,7 +647,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 65, scr_65
+	def_text_script TextScript0_unk65
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Damages\n"
@@ -674,7 +657,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 66, scr_66
+	def_text_script TextScript0_unk66
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Damages\n"
@@ -684,7 +667,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 67, scr_67
+	def_text_script TextScript0_unk67
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Throws a\n"
@@ -694,7 +677,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 68, scr_68
+	def_text_script TextScript0_unk68
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Makes 9sq\n"
@@ -704,7 +687,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 69, scr_69
+	def_text_script TextScript0_unk69
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Makes 9sq\n"
@@ -714,7 +697,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 70, scr_70
+	def_text_script TextScript0_unk70
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Makes 9sq\n"
@@ -724,7 +707,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 71, scr_71
+	def_text_script TextScript0_unk71
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Cuts enmy\n"
@@ -734,7 +717,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 72, scr_72
+	def_text_script TextScript0_unk72
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Cuts enmy\n"
@@ -744,7 +727,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 73, scr_73
+	def_text_script TextScript0_unk73
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Cuts enmy\n"
@@ -754,7 +737,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 74, scr_74
+	def_text_script TextScript0_unk74
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Cuts enmy\n"
@@ -764,7 +747,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 75, scr_75
+	def_text_script TextScript0_unk75
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Cuts enmy\n"
@@ -774,7 +757,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 76, scr_76
+	def_text_script TextScript0_unk76
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Cut enmy\n"
@@ -784,7 +767,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 77, scr_77
+	def_text_script TextScript0_unk77
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Cut enmy\n"
@@ -794,7 +777,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 78, scr_78
+	def_text_script TextScript0_unk78
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Cut enmy\n"
@@ -804,7 +787,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 79, scr_79
+	def_text_script TextScript0_unk79
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Cut enmy\n"
@@ -814,7 +797,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 80, scr_80
+	def_text_script TextScript0_unk80
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Blow enmy\n"
@@ -824,7 +807,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 81, scr_81
+	def_text_script TextScript0_unk81
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Use\n"
@@ -834,7 +817,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 82, scr_82
+	def_text_script TextScript0_unk82
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "A magical\n"
@@ -844,7 +827,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 83, scr_83
+	def_text_script TextScript0_unk83
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "A magical\n"
@@ -854,7 +837,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 84, scr_84
+	def_text_script TextScript0_unk84
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Slices\n"
@@ -864,7 +847,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 85, scr_85
+	def_text_script TextScript0_unk85
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Atk power\n"
@@ -874,7 +857,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 86, scr_86
+	def_text_script TextScript0_unk86
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Search &\n"
@@ -884,7 +867,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 87, scr_87
+	def_text_script TextScript0_unk87
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Cut enmy\n"
@@ -894,7 +877,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 88, scr_88
+	def_text_script TextScript0_unk88
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "When plyz\n"
@@ -904,7 +887,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 89, scr_89
+	def_text_script TextScript0_unk89
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Shoot a\n"
@@ -914,7 +897,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 90, scr_90
+	def_text_script TextScript0_unk90
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Shoot 2\n"
@@ -924,7 +907,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 91, scr_91
+	def_text_script TextScript0_unk91
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Shoot 3\n"
@@ -934,7 +917,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 92, scr_92
+	def_text_script TextScript0_unk92
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Fllw enmy\n"
@@ -944,7 +927,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 93, scr_93
+	def_text_script TextScript0_unk93
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Fllw enmy\n"
@@ -954,7 +937,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 94, scr_94
+	def_text_script TextScript0_unk94
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Fllw enmy\n"
@@ -964,7 +947,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 95, scr_95
+	def_text_script TextScript0_unk95
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "A flying\n"
@@ -974,7 +957,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 96, scr_96
+	def_text_script TextScript0_unk96
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "A flying\n"
@@ -984,7 +967,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 97, scr_97
+	def_text_script TextScript0_unk97
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "A flying\n"
@@ -994,7 +977,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 98, scr_98
+	def_text_script TextScript0_unk98
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "3pnl fwd\n"
@@ -1004,7 +987,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 99, scr_99
+	def_text_script TextScript0_unk99
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "3pnl fwd\n"
@@ -1014,7 +997,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 100, scr_100
+	def_text_script TextScript0_unk100
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "3pnl fwd\n"
@@ -1024,7 +1007,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 101, scr_101
+	def_text_script TextScript0_unk101
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attk enmy\n"
@@ -1034,7 +1017,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 102, scr_102
+	def_text_script TextScript0_unk102
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attk enmy\n"
@@ -1044,7 +1027,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 103, scr_103
+	def_text_script TextScript0_unk103
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attk enmy\n"
@@ -1054,7 +1037,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 104, scr_104
+	def_text_script TextScript0_unk104
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attk enmy\n"
@@ -1064,7 +1047,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 105, scr_105
+	def_text_script TextScript0_unk105
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attk enmy\n"
@@ -1074,7 +1057,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 106, scr_106
+	def_text_script TextScript0_unk106
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attk enmy\n"
@@ -1084,7 +1067,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 107, scr_107
+	def_text_script TextScript0_unk107
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Slams\n"
@@ -1094,7 +1077,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 108, scr_108
+	def_text_script TextScript0_unk108
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Slams\n"
@@ -1104,7 +1087,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 109, scr_109
+	def_text_script TextScript0_unk109
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Slams\n"
@@ -1114,7 +1097,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 110, scr_110
+	def_text_script TextScript0_unk110
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Press [A]\n"
@@ -1124,7 +1107,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 111, scr_111
+	def_text_script TextScript0_unk111
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Press [A]\n"
@@ -1134,7 +1117,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 112, scr_112
+	def_text_script TextScript0_unk112
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Press [A]\n"
@@ -1144,7 +1127,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 113, scr_113
+	def_text_script TextScript0_unk113
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Hits enmy\n"
@@ -1154,7 +1137,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 114, scr_114
+	def_text_script TextScript0_unk114
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Hits enmy\n"
@@ -1164,7 +1147,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 115, scr_115
+	def_text_script TextScript0_unk115
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Hits enmy\n"
@@ -1174,7 +1157,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 116, scr_116
+	def_text_script TextScript0_unk116
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Boomerang\n"
@@ -1184,7 +1167,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 117, scr_117
+	def_text_script TextScript0_unk117
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Boomerang\n"
@@ -1194,7 +1177,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 118, scr_118
+	def_text_script TextScript0_unk118
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Boomerang\n"
@@ -1204,7 +1187,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 119, scr_119
+	def_text_script TextScript0_unk119
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Lance\n"
@@ -1214,7 +1197,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 120, scr_120
+	def_text_script TextScript0_unk120
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Hit 3panl\n"
@@ -1224,7 +1207,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 121, scr_121
+	def_text_script TextScript0_unk121
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Hit 3panl\n"
@@ -1234,7 +1217,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 122, scr_122
+	def_text_script TextScript0_unk122
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Hit 3panl\n"
@@ -1244,7 +1227,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 123, scr_123
+	def_text_script TextScript0_unk123
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Fire off\n"
@@ -1254,7 +1237,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 124, scr_124
+	def_text_script TextScript0_unk124
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Fire off\n"
@@ -1264,7 +1247,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 125, scr_125
+	def_text_script TextScript0_unk125
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Fire off\n"
@@ -1274,7 +1257,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 126, scr_126
+	def_text_script TextScript0_unk126
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Spits out\n"
@@ -1284,7 +1267,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 127, scr_127
+	def_text_script TextScript0_unk127
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Spits out\n"
@@ -1294,7 +1277,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 128, scr_128
+	def_text_script TextScript0_unk128
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Spits out\n"
@@ -1304,7 +1287,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 129, scr_129
+	def_text_script TextScript0_unk129
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "WindBox \n"
@@ -1314,7 +1297,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 130, scr_130
+	def_text_script TextScript0_unk130
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "VacuumFn\n"
@@ -1324,7 +1307,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 131, scr_131
+	def_text_script TextScript0_unk131
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Bounce an\n"
@@ -1334,7 +1317,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 132, scr_132
+	def_text_script TextScript0_unk132
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Bounce an\n"
@@ -1344,7 +1327,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 133, scr_133
+	def_text_script TextScript0_unk133
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Bounce an\n"
@@ -1354,7 +1337,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 134, scr_134
+	def_text_script TextScript0_unk134
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Call snke\n"
@@ -1364,7 +1347,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 135, scr_135
+	def_text_script TextScript0_unk135
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Summon a\n"
@@ -1374,7 +1357,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 136, scr_136
+	def_text_script TextScript0_unk136
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Summon a\n"
@@ -1384,7 +1367,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 137, scr_137
+	def_text_script TextScript0_unk137
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Summon a\n"
@@ -1394,7 +1377,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 138, scr_138
+	def_text_script TextScript0_unk138
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Last 2\n"
@@ -1404,7 +1387,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 139, scr_139
+	def_text_script TextScript0_unk139
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Drop many\n"
@@ -1414,7 +1397,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 140, scr_140
+	def_text_script TextScript0_unk140
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Fist Atk\n"
@@ -1424,7 +1407,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 141, scr_141
+	def_text_script TextScript0_unk141
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Cursor \n"
@@ -1434,7 +1417,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 142, scr_142
+	def_text_script TextScript0_unk142
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Stop sght\n"
@@ -1444,7 +1427,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 143, scr_143
+	def_text_script TextScript0_unk143
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Place a\n"
@@ -1454,7 +1437,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 144, scr_144
+	def_text_script TextScript0_unk144
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Explodes\n"
@@ -1464,7 +1447,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 145, scr_145
+	def_text_script TextScript0_unk145
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Place a\n"
@@ -1474,7 +1457,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 146, scr_146
+	def_text_script TextScript0_unk146
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Take no\n"
@@ -1484,7 +1467,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 147, scr_147
+	def_text_script TextScript0_unk147
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Confuses \n"
@@ -1494,7 +1477,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 148, scr_148
+	def_text_script TextScript0_unk148
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Stop enmy\n"
@@ -1504,7 +1487,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 149, scr_149
+	def_text_script TextScript0_unk149
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Blinds\n"
@@ -1514,7 +1497,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 150, scr_150
+	def_text_script TextScript0_unk150
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Throws\n"
@@ -1524,7 +1507,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 151, scr_151
+	def_text_script TextScript0_unk151
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Statue\n"
@@ -1534,7 +1517,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 152, scr_152
+	def_text_script TextScript0_unk152
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Anubis\n"
@@ -1544,7 +1527,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 153, scr_153
+	def_text_script TextScript0_unk153
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Put Otnko\n"
@@ -1554,7 +1537,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 154, scr_154
+	def_text_script TextScript0_unk154
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Recovers\n"
@@ -1563,7 +1546,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 155, scr_155
+	def_text_script TextScript0_unk155
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Recovers\n"
@@ -1572,7 +1555,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 156, scr_156
+	def_text_script TextScript0_unk156
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Recovers\n"
@@ -1581,7 +1564,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 157, scr_157
+	def_text_script TextScript0_unk157
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Recovers\n"
@@ -1590,7 +1573,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 158, scr_158
+	def_text_script TextScript0_unk158
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Recovers\n"
@@ -1599,7 +1582,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 159, scr_159
+	def_text_script TextScript0_unk159
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Recovers\n"
@@ -1608,7 +1591,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 160, scr_160
+	def_text_script TextScript0_unk160
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Recovers\n"
@@ -1617,7 +1600,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 161, scr_161
+	def_text_script TextScript0_unk161
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Recovers\n"
@@ -1626,7 +1609,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 162, scr_162
+	def_text_script TextScript0_unk162
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Steals 1\n"
@@ -1636,7 +1619,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 163, scr_163
+	def_text_script TextScript0_unk163
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Steals\n"
@@ -1646,7 +1629,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 164, scr_164
+	def_text_script TextScript0_unk164
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "20 damage\n"
@@ -1656,7 +1639,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 165, scr_165
+	def_text_script TextScript0_unk165
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "40 damage\n"
@@ -1666,7 +1649,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 166, scr_166
+	def_text_script TextScript0_unk166
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Fix your\n"
@@ -1676,7 +1659,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 167, scr_167
+	def_text_script TextScript0_unk167
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Breaks\n"
@@ -1686,7 +1669,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 168, scr_168
+	def_text_script TextScript0_unk168
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Creates a\n"
@@ -1696,7 +1679,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 169, scr_169
+	def_text_script TextScript0_unk169
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Chng all\n"
@@ -1706,7 +1689,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 170, scr_170
+	def_text_script TextScript0_unk170
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Pull an\n"
@@ -1716,7 +1699,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 171, scr_171
+	def_text_script TextScript0_unk171
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Push an\n"
@@ -1726,7 +1709,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 172, scr_172
+	def_text_script TextScript0_unk172
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "CustGauge\n"
@@ -1735,7 +1718,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 173, scr_173
+	def_text_script TextScript0_unk173
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "CustGauge\n"
@@ -1744,7 +1727,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 174, scr_174
+	def_text_script TextScript0_unk174
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "CustGauge\n"
@@ -1754,7 +1737,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 175, scr_175
+	def_text_script TextScript0_unk175
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Power \n"
@@ -1764,7 +1747,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 176, scr_176
+	def_text_script TextScript0_unk176
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Repairs &\n"
@@ -1774,7 +1757,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 177, scr_177
+	def_text_script TextScript0_unk177
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Invisible\n"
@@ -1784,7 +1767,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 178, scr_178
+	def_text_script TextScript0_unk178
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Nullifies\n"
@@ -1794,7 +1777,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 179, scr_179
+	def_text_script TextScript0_unk179
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Nullifies\n"
@@ -1806,7 +1789,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 180, scr_180
+	def_text_script TextScript0_unk180
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Nullifies\n"
@@ -1818,7 +1801,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 181, scr_181
+	def_text_script TextScript0_unk181
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Weak\n"
@@ -1828,7 +1811,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 182, scr_182
+	def_text_script TextScript0_unk182
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Repel all\n"
@@ -1838,7 +1821,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 183, scr_183
+	def_text_script TextScript0_unk183
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Draw in\n"
@@ -1848,7 +1831,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 184, scr_184
+	def_text_script TextScript0_unk184
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Add an\n"
@@ -1858,7 +1841,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 185, scr_185
+	def_text_script TextScript0_unk185
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attach to\n"
@@ -1868,7 +1851,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 186, scr_186
+	def_text_script TextScript0_unk186
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Takes the\n"
@@ -1878,7 +1861,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 187, scr_187
+	def_text_script TextScript0_unk187
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Sets trap\n"
@@ -1888,7 +1871,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 188, scr_188
+	def_text_script TextScript0_unk188
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Retaliate\n"
@@ -1898,7 +1881,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 189, scr_189
+	def_text_script TextScript0_unk189
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Damages\n"
@@ -1908,7 +1891,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 190, scr_190
+	def_text_script TextScript0_unk190
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Duplicate\n"
@@ -1918,7 +1901,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 191, scr_191
+	def_text_script TextScript0_unk191
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Makes HP\n"
@@ -1930,7 +1913,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 192, scr_192
+	def_text_script TextScript0_unk192
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "+10 for\n"
@@ -1940,7 +1923,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 193, scr_193
+	def_text_script TextScript0_unk193
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "+20 for\n"
@@ -1950,7 +1933,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 194, scr_194
+	def_text_script TextScript0_unk194
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "+10 for\n"
@@ -1960,7 +1943,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 195, scr_195
+	def_text_script TextScript0_unk195
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "+30 for\n"
@@ -1970,7 +1953,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 196, scr_196
+	def_text_script TextScript0_unk196
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "+20 for\n"
@@ -1980,7 +1963,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 197, scr_197
+	def_text_script TextScript0_unk197
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Trap enmy\n"
@@ -1990,7 +1973,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 198, scr_198
+	def_text_script TextScript0_unk198
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Launch an\n"
@@ -2000,7 +1983,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 199, scr_199
+	def_text_script TextScript0_unk199
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Launch a\n"
@@ -2010,7 +1993,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 200, scr_200
+	def_text_script TextScript0_unk200
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Explodes\n"
@@ -2020,7 +2003,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 201, scr_201
+	def_text_script TextScript0_unk201
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Explodes\n"
@@ -2030,7 +2013,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 202, scr_202
+	def_text_script TextScript0_unk202
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Throw a 9\n"
@@ -2040,7 +2023,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 203, scr_203
+	def_text_script TextScript0_unk203
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2049,7 +2032,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 204, scr_204
+	def_text_script TextScript0_unk204
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2058,7 +2041,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 205, scr_205
+	def_text_script TextScript0_unk205
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2067,7 +2050,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 206, scr_206
+	def_text_script TextScript0_unk206
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2076,7 +2059,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 207, scr_207
+	def_text_script TextScript0_unk207
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2085,7 +2068,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 208, scr_208
+	def_text_script TextScript0_unk208
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2094,7 +2077,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 209, scr_209
+	def_text_script TextScript0_unk209
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2103,7 +2086,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 210, scr_210
+	def_text_script TextScript0_unk210
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2112,7 +2095,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 211, scr_211
+	def_text_script TextScript0_unk211
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2121,7 +2104,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 212, scr_212
+	def_text_script TextScript0_unk212
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2130,7 +2113,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 213, scr_213
+	def_text_script TextScript0_unk213
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2139,7 +2122,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 214, scr_214
+	def_text_script TextScript0_unk214
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2148,7 +2131,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 215, scr_215
+	def_text_script TextScript0_unk215
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2157,7 +2140,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 216, scr_216
+	def_text_script TextScript0_unk216
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2166,7 +2149,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 217, scr_217
+	def_text_script TextScript0_unk217
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2175,7 +2158,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 218, scr_218
+	def_text_script TextScript0_unk218
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2184,7 +2167,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 219, scr_219
+	def_text_script TextScript0_unk219
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2193,7 +2176,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 220, scr_220
+	def_text_script TextScript0_unk220
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "\n"
@@ -2202,7 +2185,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 221, scr_221
+	def_text_script TextScript0_unk221
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attacks\n"
@@ -2212,7 +2195,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 222, scr_222
+	def_text_script TextScript0_unk222
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attacks\n"
@@ -2222,7 +2205,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 223, scr_223
+	def_text_script TextScript0_unk223
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attacks\n"
@@ -2232,7 +2215,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 224, scr_224
+	def_text_script TextScript0_unk224
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Move in\n"
@@ -2242,7 +2225,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 225, scr_225
+	def_text_script TextScript0_unk225
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Move in\n"
@@ -2252,7 +2235,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 226, scr_226
+	def_text_script TextScript0_unk226
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Move in\n"
@@ -2262,7 +2245,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 227, scr_227
+	def_text_script TextScript0_unk227
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Burn with\n"
@@ -2272,7 +2255,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 228, scr_228
+	def_text_script TextScript0_unk228
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Burn with\n"
@@ -2282,7 +2265,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 229, scr_229
+	def_text_script TextScript0_unk229
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Burn with\n"
@@ -2292,7 +2275,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 230, scr_230
+	def_text_script TextScript0_unk230
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attk your\n"
@@ -2302,7 +2285,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 231, scr_231
+	def_text_script TextScript0_unk231
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attk your\n"
@@ -2312,7 +2295,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 232, scr_232
+	def_text_script TextScript0_unk232
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attk your\n"
@@ -2322,7 +2305,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 233, scr_233
+	def_text_script TextScript0_unk233
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Slash an\n"
@@ -2332,7 +2315,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 234, scr_234
+	def_text_script TextScript0_unk234
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Slash an\n"
@@ -2342,7 +2325,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 235, scr_235
+	def_text_script TextScript0_unk235
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Slash an\n"
@@ -2352,7 +2335,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 236, scr_236
+	def_text_script TextScript0_unk236
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Press [A]\n"
@@ -2362,7 +2345,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 237, scr_237
+	def_text_script TextScript0_unk237
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Press [A]\n"
@@ -2372,7 +2355,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 238, scr_238
+	def_text_script TextScript0_unk238
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Press [A]\n"
@@ -2382,7 +2365,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 239, scr_239
+	def_text_script TextScript0_unk239
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Rush fwd!\n"
@@ -2392,7 +2375,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 240, scr_240
+	def_text_script TextScript0_unk240
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Rush fwd!\n"
@@ -2402,7 +2385,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 241, scr_241
+	def_text_script TextScript0_unk241
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Rush fwd!\n"
@@ -2412,7 +2395,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 242, scr_242
+	def_text_script TextScript0_unk242
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Watr atk!\n"
@@ -2422,7 +2405,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 243, scr_243
+	def_text_script TextScript0_unk243
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Watr atk!\n"
@@ -2432,7 +2415,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 244, scr_244
+	def_text_script TextScript0_unk244
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Watr atk!\n"
@@ -2442,7 +2425,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 245, scr_245
+	def_text_script TextScript0_unk245
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Slice 2sq\n"
@@ -2452,7 +2435,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 246, scr_246
+	def_text_script TextScript0_unk246
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Slice 2sq\n"
@@ -2462,7 +2445,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 247, scr_247
+	def_text_script TextScript0_unk247
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Slice 2sq\n"
@@ -2472,7 +2455,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 248, scr_248
+	def_text_script TextScript0_unk248
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attk 2row\n"
@@ -2482,7 +2465,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 249, scr_249
+	def_text_script TextScript0_unk249
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attk 2row\n"
@@ -2492,7 +2475,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 250, scr_250
+	def_text_script TextScript0_unk250
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attk 2row\n"
@@ -2502,7 +2485,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 251, scr_251
+	def_text_script TextScript0_unk251
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Move fwrd\n"
@@ -2512,7 +2495,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 252, scr_252
+	def_text_script TextScript0_unk252
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Move fwrd\n"
@@ -2522,7 +2505,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 253, scr_253
+	def_text_script TextScript0_unk253
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Move fwrd\n"
@@ -2532,7 +2515,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 254, scr_254
+	def_text_script TextScript0_unk254
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attk ahd.\n"
@@ -2542,7 +2525,7 @@
 	ts_end
 	ts_msg_close_quick_ext 0x1, 0x1
 
-	text_script 255, scr_255
+	def_text_script TextScript0_unk255
 	ts_msg_open_quick_ext 0x1, 0x1
 	ts_text_speed 0x0
 	.string "Attk ahd.\n"

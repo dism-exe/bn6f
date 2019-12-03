@@ -1,8 +1,6 @@
-	text_script_start unk_0 // TODO: change this if label is named different
+	text_archive_start
 
-	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
-
-	text_script 0, scr_0
+	def_text_script TextScript0_unk0
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,do you remember\n"
@@ -12,14 +10,14 @@
 	ts_clear_msg
 	ts_jump 1
 
-	text_script 1, scr_1
+	def_text_script TextScript0_unk1
 	ts_mugshot_show 0x0
 	.string "Huh? What's that?"
 	ts_key_wait 0x0
 	ts_clear_msg
 	ts_jump 2
 
-	text_script 2, scr_2
+	def_text_script TextScript0_unk2
 	ts_mugshot_show 0x37
 	.string "Well... Take a look\n"
 	.string "at the \"Emotion\n"
@@ -27,7 +25,7 @@
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 3, scr_3
+	def_text_script TextScript0_unk3
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "It shows my\n"
@@ -49,7 +47,7 @@
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 4, scr_4
+	def_text_script TextScript0_unk4
 	ts_mugshot_show 0x0
 	ts_msg_open
 	.string "How do I operate\n"
@@ -58,7 +56,7 @@
 	ts_clear_msg
 	ts_jump 5
 
-	text_script 5, scr_5
+	def_text_script TextScript0_unk5
 	ts_mugshot_show 0x37
 	.string "You have to\n"
 	.string "Counter!"
@@ -66,7 +64,7 @@
 	ts_clear_msg
 	ts_jump 6
 
-	text_script 6, scr_6
+	def_text_script TextScript0_unk6
 	ts_mugshot_show 0x0
 	.string "Counter? Uhhh...\n"
 	.string "What was that again?"
@@ -74,7 +72,7 @@
 	ts_clear_msg
 	ts_jump 7
 
-	text_script 7, scr_7
+	def_text_script TextScript0_unk7
 	ts_mugshot_show 0x37
 	.string "Counter means\n"
 	.string "using a chip attack"
@@ -92,7 +90,7 @@
 	ts_clear_msg
 	ts_jump 8
 
-	text_script 8, scr_8
+	def_text_script TextScript0_unk8
 	ts_mugshot_show 0x0
 	.string "I get it.\n"
 	.string "It surprises them!"
@@ -100,7 +98,7 @@
 	ts_clear_msg
 	ts_jump 9
 
-	text_script 9, scr_9
+	def_text_script TextScript0_unk9
 	ts_mugshot_show 0x37
 	.string "During Full Synchro,\n"
 	.string "the next chip's\n"
@@ -136,7 +134,7 @@
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 10, scr_10
+	def_text_script TextScript0_unk10
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Well done,Lan."
@@ -164,7 +162,7 @@
 	ts_clear_msg
 	ts_jump 11
 
-	text_script 11, scr_11
+	def_text_script TextScript0_unk11
 	ts_mugshot_show 0x0
 	.string "Roger! I'm gonna\n"
 	.string "master Counter\n"
@@ -172,7 +170,7 @@
 	ts_key_wait 0x0
 	ts_end
 
-	text_script 12, scr_12
+	def_text_script TextScript0_unk12
 	ts_mugshot_show 0x37
 	ts_msg_open
 	.string "Lan,you have to bust\n"
@@ -182,5 +180,4 @@
 	ts_end
 
 	.balign 4, 0
-
 0x53b

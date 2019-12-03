@@ -1,47 +1,69 @@
 import unittest
+import os
 import io
 from text_script_dumper import *
+import text_script_dumper as uut_dumper
+import text_script_scanner
+import definitions
 
 class RegressionTests(unittest.TestCase):
     def setUp(self):
-        self.test_data_dir = 'test-data/'
-        self.ini_dir = ModuleState.INI_DIR
+        self.test_data_dir = 'data/'
+        self.command_context = CommandContext()
         self.rom_path = ModuleState.ROM_PATH
         pass
     def tearDown(self):
         pass
 
-    def assertCompilation(self, textScript: TextScript, byte_stream, addr: int):
+    def assertCompilation(self, textArchive: TextScriptArchive, byte_stream, addr: int):
+        """
+        Exhaustive test, tests that the text archive compiles to the correct bytes
+        Shows the last 10 bytes and where a mismatch occurred
+        :param textArchive:
+        :param byte_stream:
+        :param addr:
+        :return:
+        """
         prev_addr = byte_stream.tell()
         byte_stream.seek(addr)
+        actual_data = b''
+        data = textArchive.serialize()
+        for i in range(0, textArchive.size):
+            actual_data += byte_stream.read(1)
+            # if i in textArchive.rel_pointers: print('[rel. pointer] text_script %d (0x%x)' % (sorted(list(set(textArchive.rel_pointers))).index(i), i))
+            if i < 2*len(textArchive.rel_pointers):
+                continue
 
-        data = textScript.compile()
-        for i in range(0, textScript.size):
-            expected_byte = byte_stream.read(1)
-            # if i in textScript.rel_pointers: print('text_script %d (0x%x)' % (sorted(list(set(textScript.rel_pointers))).index(i), i))
-            # print('0x%x: %s, %s' % (i, expected_byte, data[i:i+1]))
-            if i < 2*len(textScript.rel_pointers): continue
-            # if i < 0x4af+1: continue
-            # if i < 0x4c0: continue
-            self.assertEqual(expected_byte, data[i:i+1],
-                             'compilation data mismatch at byte 0x%0x' % i)
+            def tail_slice(byte_str, cur: int, window: int) -> str:
+                # returns a slice with the last :window: elements up to :cur: inclusive or since the begenning
+                return byte_str[max(cur-window, 0):cur+1]
+
+            # print(textArchive.build())
+
+            self.assertEqual(actual_data[i], data[i],
+                             'compilation data mismatch at byte 0x%0x\nexpected slice:%s\nactual slice:  %s'
+                             % (i, tail_slice(actual_data, i, 10), tail_slice(data, i, 10)))
 
         byte_stream.seek(prev_addr)
 
 
     def assertTestFile(self, test_name):
         with open(self.test_data_dir + test_name + '.bin', 'rb') as bin_file:
-            textScript = TextScript.read_script(0, bin_file, self.ini_dir)
-            script, end_addr = textScript.build()
+            textScript = TextScriptArchive.read_script(self.command_context, 0, bin_file)
+            script = textScript.build()
+            end_addr = textScript.addr + textScript.size
 
-            def print_script(script, end_addr):
-                for i in script: print(i)
-                print(hex(end_addr))
-            # print_script(script, end_addr)
+            # write output to file
+            with open(self.test_data_dir + 'out/' + test_name + '.s', 'w') as out_file:
+                out_file.write(script)
+                out_file.write('\n' + hex(end_addr))
+
+            # print('[script]')
+            # print(script, hex(textScript.size))
 
             with open(self.test_data_dir + test_name + '.s', 'r', encoding='utf-8') as f:
                 lines = f.readlines()
-                script = '\n'.join(script).split('\n')
+                script = script.split('\n')
                 for line in script:
                     if not line.strip():
                         script.remove(line)
@@ -53,6 +75,7 @@ class RegressionTests(unittest.TestCase):
                     if script[i].strip().startswith('text_script '):
                         cur_script_idx += 1
                     self.assertEqual(script[i].strip(), lines[i].strip(), 'mismatch in script %d' % cur_script_idx)
+
                 self.assertEqual(int(lines[-1], 16), end_addr, 'end address mismatch')
                 self.assertEqual(len(script), len(lines) - 1, 'content length mismatch')
             bin_file.seek(0)
@@ -96,7 +119,7 @@ class RegressionTests(unittest.TestCase):
     def testAgbasmOutput(self):
         # update agbasm_output.s to test validity of the macro system in some instances
         with open(self.test_data_dir + 'TextScriptChipTrader86C580C' + '.bin', 'rb') as bin_file:
-            text_script = TextScript.read_script(ea=0, bin_file=bin_file, ini_path=self.ini_dir)
+            text_script = TextScriptArchive.read_script(self.command_context, ea=0, bin_file=bin_file)
             with open(self.rom_path, 'rb') as gba_file:
                 self.assertCompilation(text_script, gba_file, 0x6C580C)
 
@@ -147,25 +170,23 @@ class CommandIdentificationTess(unittest.TestCase):
 
 class CommandParsingTests(unittest.TestCase):
     def setUp(self):
-        self.sects = read_custom_ini('../' + 'mmbn6.ini')
-        self.sects_s = read_custom_ini('../' + 'mmbn6s.ini')
-        self.select_sect = lambda sel: [self.sects, self.sects_s][sel]
+        self.command_context = CommandContext()
+        self.select_sect = lambda sel: [self.command_context.sects, self.command_context.sects_s][sel]
 
     def assertCommandparsed(self, byteStream, cmd, params, cmdName, prioritize_s):
         startAddr = byteStream.tell()
-        out = TextScriptCommand.read_cmd(byteStream,byteStream.read(1), self.sects, self.sects_s, prioritize_s)
+        out = TextScriptCommand.read(self.command_context, byteStream, byteStream.read(1), prioritize_s)
         if not out:
             self.fail('%s: could not read commad: %s %s' % (cmdName, cmd, params))
         self.assertEqual(out.cmd, cmd, '%s: invalid command read' % cmdName)
         self.assertEqual(out.params, params, '%s: invalid parameters read' % cmdName)
-        sect = TextScriptCommand.find_cmd(cmd, params, self.select_sect(out.with_interpreter_s))
+        sect = TextScriptCommand.find_command_section(cmd, params, self.select_sect(out.use_interpreter_s))
         if not sect:
-            self.fail('%s: could not find commad section: %s %s' % (cmdName, cmd, params))
+            self.fail('%s: could not find commad section for %s %s' % (cmdName, cmd, params))
         self.assertEqual(sect['name'], cmdName, 'invalid command found')
         self.assertEqual(TextScriptCommand.convert_cmd_name(sect['name']),
-                          TextScriptCommand.get_cmd_macro(cmd, params, self.sects, self.sects_s, prioritize_s),
+                         TextScriptCommand.get_cmd_macro_name(self.command_context, cmd, params, prioritize_s),
                           '%s: failed to convert the command to the correct name' % (cmdName))
-        # print(sect['name'])
         self.assertEqual(byteStream.tell(), startAddr + out.size,
                           '%s: read additional bytes from stream' % cmdName)
 
@@ -264,6 +285,93 @@ class CommandParsingTests(unittest.TestCase):
         bytes = self.addTestData(bytes, cmds, b'\xed\x00\x11\x22\x33\x44\xe5', b'\xed', b'\x00\x11\x22\x33\x44',
                                  'select', prioritize_s=False, nop=1)
         self.runTestData(bytes, cmds)
+
+
+class ArchiveListTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.archive_path = os.environ['HOME'] + '/dev/dis/downloads/MMBNTextDumps/tpl/mmbn6cf-us.tpl' # FIXME: Hard path
+        self.rom_path = os.path.join(definitions.ROM_REPO_DIR, 'bn6f.gba')
+
+        archives = text_script_scanner.process_archives(self.archive_path)
+        compressed_archives, regular_archives = text_script_scanner.cache_separate_archives_based_on_compression(self.archive_path, self.rom_path, archives)
+        self.compressed_archives = compressed_archives
+        self.noncompressed_archives = regular_archives
+
+
+
+    # @unittest.skip('skipped till passing in development')
+    def test_noncompressed_textscripts(self):
+        # asserts no crashes amongst all noncompressed archives in bn6f
+        # and that they match original binary
+        for archive_ptr, archive_size in self.noncompressed_archives:
+            # some non-compressed scripts must have their size specified to know they ended...
+            # because their last scripts have been removed, but are still being pointed to.
+            if archive_ptr in definitions.SCRIPT_SIZES:
+                size = definitions.SCRIPT_SIZES[archive_ptr]
+            else:
+                size = None
+
+            with open(self.rom_path, 'rb') as rom_file:
+                textscript_archive = uut_dumper.TextScriptArchive.read_script(uut_dumper.CommandContext(), archive_ptr,
+                                                                      rom_file, size)
+
+    # @unittest.skip('skipped till passing in development')
+    def test_compressed_textscripts(self):
+        # asserts no crashes amongst all noncompressed archives in bn6f
+        # and that they match original binary
+        with open(self.rom_path, 'rb') as rom_file:
+            for archive_ptr, archive_size in self.compressed_archives:
+                self.run_test_compressed_archive(rom_file, archive_ptr)
+
+    def test_comp_8779B1C_char_after_end(self):
+        # ensures that a string character after end_script is still read properly as long as it's within that script.
+        with open(self.rom_path, 'rb') as rom_file:
+            self.run_test_compressed_archive(rom_file, 0x779B1C)
+
+    def test_comp_877E620_e4_extended_char(self):
+        # tests for the presense of E42C, a 2-byte character
+        with open(self.rom_path, 'rb') as rom_file:
+            self.run_test_compressed_archive(rom_file, 0x77E620)
+
+    def test_comp_86D6F30(self):
+        with open(self.rom_path, 'rb') as rom_file:
+            self.run_test_compressed_archive(rom_file, 0x6D6F30)
+
+    def run_test_compressed_archive(self, rom_file, archive_ptr):
+        decompress_path = 'TextScript%07X.lz.bin' % (archive_ptr)
+        text_script_scanner.gbagfx_decompress_at(rom_file, archive_ptr, decompress_path)
+        size = os.path.getsize(decompress_path) - 4  # must not account for the compression header!
+        with open(decompress_path, 'rb') as decompressed_file:
+            try:
+                textscript_archive = uut_dumper.TextScriptArchive.read_script(uut_dumper.CommandContext(), 4, decompressed_file, size)
+
+                # test matching
+                def assert_archive_binary_matches(text_script_archive: TextScriptArchive, bin_file):
+                    rel_pointers = text_script_archive.serialize_rel_pointers()
+                    self.assertEqual(rel_pointers, bin_file.read(len(rel_pointers)),
+                                     'rel. pointers mismatch')
+
+                    for script_idx, text_script in enumerate(text_script_archive.text_scripts):
+                        for unit in text_script.units:
+                            address = bin_file.tell()
+                            if type(unit) is GameString:
+                                content = unit.text
+                                self.assertEqual(bin_file.read(len(unit.data)), unit.data,
+                                                 'mismatch in script {script_idx} at address 0x{address:X}: {content}'.format(**vars()))
+                            if type(unit) is TextScriptCommand:
+                                content = unit.macro
+                                unit_data = unit.serialize()
+                                self.assertEqual(bin_file.read(len(unit_data)), unit_data,
+                                                'mismatch in script {script_idx} at address 0x{address:X}: {content}'.format(**vars()))
+                                address += len(unit_data)
+
+                decompressed_file.seek(4)
+                assert_archive_binary_matches(textscript_archive, decompressed_file)
+
+            finally:
+                os.remove(decompress_path)
+
 
 
 if __name__ == '__main__':
