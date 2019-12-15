@@ -6594,7 +6594,7 @@ char (*ACDCTown_EnterMapGroup())[8]
 
 
 // 0x804cf32
-int __fastcall ACDCTown_sub_8002354_804cf32(int a1, int a2)
+int __fastcall ACDCTown_LoadGFXAnims(int a1, int a2)
 {
     return LoadGFXAnims(off_804CF44[a2]);
 }

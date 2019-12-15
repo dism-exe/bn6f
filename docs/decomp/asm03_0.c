@@ -14703,23 +14703,23 @@ int __fastcall EnterMap_RunMapGroupAsmFunction_8030A00(signed int a1)
 
 
 // 0x8030a30
-int __fastcall map_8030A30(signed int a1)
+int __fastcall LoadGFXAnimsForMapGroup(signed int a1)
 {
     void **v1; // r2
 
     if ( a1 >= 240 )
     {
-        v1 = &UnkMapGroupRangeMapGroupJumptable_80309f8;
+        v1 = &UnkMapGroupRangeLoadGFXAnimsJumptable;
         a1 -= 240;
     }
     else if ( a1 >= 128 )
     {
-        v1 = &UnkInternetMapGroupJumptable_8030998;
+        v1 = &InternetMapGroupLoadGFXAnimsJumptable;
         a1 -= 128;
     }
     else
     {
-        v1 = &UnkRealWorldMapGroupJumptable_8030920;
+        v1 = &RealWorldMapGroupLoadGFXAnimsJumptable;
     }
     return (v1[a1])();
 }

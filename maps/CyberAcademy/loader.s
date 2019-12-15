@@ -69,8 +69,8 @@ dword_805275C: .word 0xFFFF1F18
 dword_8052760: .word 0xFFFF2418
 	thumb_func_end CyberAcademy_EnterMapGroup
 
-	thumb_func_start CyberAcademy_sub_8002354_8052764
-CyberAcademy_sub_8002354_8052764:
+	thumb_func_start CyberAcademy_LoadGFXAnims
+CyberAcademy_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_8052774 // =off_8052778 
@@ -109,7 +109,7 @@ off_80527DC: .word byte_8052538
 dword_80527E4: .word 0xFFFFFFFF
 dword_80527E8: .word 0xFFFFFFFF
 dword_80527EC: .word 0xFFFFFFFF
-	thumb_func_end CyberAcademy_sub_8002354_8052764
+	thumb_func_end CyberAcademy_LoadGFXAnims
 
 	thumb_func_start CyberAcademy_SpawnMapObjectsForMap
 CyberAcademy_SpawnMapObjectsForMap:

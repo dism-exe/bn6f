@@ -60,8 +60,8 @@ byte_8062B58: .byte 0x1C, 0x85, 0x1C, 0x83, 0x1C, 0x84, 0x1C, 0x94, 0x1C
 	.byte 0x97, 0xFF, 0xFF
 	thumb_func_end ExpoSite_EnterMapGroup
 
-	thumb_func_start ExpoSite_sub_8002354_8062b64
-ExpoSite_sub_8002354_8062b64:
+	thumb_func_start ExpoSite_LoadGFXAnims
+ExpoSite_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_8062B74 // =off_8062B78 
@@ -91,7 +91,7 @@ off_8062BB8: .word byte_80629F0
 	.word 0xFFFFFFFF
 off_8062BC4: .word byte_8062A70
 	.word 0xFFFFFFFF
-	thumb_func_end ExpoSite_sub_8002354_8062b64
+	thumb_func_end ExpoSite_LoadGFXAnims
 
 	thumb_func_start ExpoSite_SpawnMapObjectsForMap
 ExpoSite_SpawnMapObjectsForMap:

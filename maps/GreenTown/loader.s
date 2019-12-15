@@ -55,8 +55,8 @@ byte_805DF9A: .byte 0x1C, 0x5D, 0x1C, 0x62, 0xFF, 0xFF
 byte_805DFA0: .byte 0xFF, 0xFF
 	thumb_func_end GreenTown_EnterMapGroup
 
-	thumb_func_start GreenTown_sub_8002354_805dfa2
-GreenTown_sub_8002354_805dfa2:
+	thumb_func_start GreenTown_LoadGFXAnims
+GreenTown_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_805DFB0 // =off_805DFB4 
@@ -79,7 +79,7 @@ off_805DFE0: .word byte_805DEA8
 	.word 0xFFFFFFFF
 off_805DFE8: .word byte_805DED8
 	.word 0xFFFFFFFF
-	thumb_func_end GreenTown_sub_8002354_805dfa2
+	thumb_func_end GreenTown_LoadGFXAnims
 
 	thumb_func_start GreenTown_SpawnMapObjectsForMap
 GreenTown_SpawnMapObjectsForMap:

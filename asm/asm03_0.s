@@ -20297,6 +20297,7 @@ loc_80308FA:
 	blt loc_80308A0
 	add sp, sp, #8
 	pop {r4-r7,pc}
+	.balign 4, 0
 EnterMap_RealWorldMapGroupJumptable:
 	.word ACDCTown_EnterMapGroup+1
 	.word CentralTown_EnterMapGroup+1
@@ -20305,18 +20306,19 @@ EnterMap_RealWorldMapGroupJumptable:
 	.word GreenTown_EnterMapGroup+1
 	.word SkyTown_EnterMapGroup+1
 	.word ExpoSite_EnterMapGroup+1
-UnkRealWorldMapGroupJumptable_8030920:
-	.word ACDCTown_sub_8002354_804cf32+1
-	.word CentralTown_sub_8002354_804e6d0+1
-	.word CyberAcademy_sub_8002354_8052764+1
-	.word SeasideTown_sub_8002354_8059664+1
-	.word GreenTown_sub_8002354_805dfa2+1
-	.word SkyTown_sub_8002354_8060406+1
-	.word ExpoSite_sub_8002354_8062b64+1
+RealWorldMapGroupLoadGFXAnimsJumptable:
+	.word ACDCTown_LoadGFXAnims+1
+	.word CentralTown_LoadGFXAnims+1
+	.word CyberAcademy_LoadGFXAnims+1
+	.word SeasideTown_LoadGFXAnims+1
+	.word GreenTown_LoadGFXAnims+1
+	.word SkyTown_LoadGFXAnims+1
+	.word ExpoSite_LoadGFXAnims+1
+
 EnterMap_InternetMapGroupJumptable:
 	.word RobotControlComp_EnterMapGroup+1
-	.word sub_8067B5C+1
-	.word sub_8069038+1
+	.word AquariumComp_EnterMapGroup+1
+	.word JudgeTreeComp_EnterMapGroup+1
 	.word sub_8069FE8+1
 	.word nullsub_61+1
 	.word sub_806AA00+1
@@ -20337,10 +20339,10 @@ EnterMap_InternetMapGroupJumptable:
 	.word sub_807A8E0+1
 	.word sub_807CDEC+1
 	.word sub_807ECD0+1
-UnkInternetMapGroupJumptable_8030998:
-	.word RobotControlComp_sub_8002354_8066450+1
-	.word sub_8067BE4+1
-	.word sub_80690C2+1
+InternetMapGroupLoadGFXAnimsJumptable:
+	.word RobotControlComp_LoadGFXAnims+1
+	.word AquariumComp_LoadGFXAnims+1
+	.word JudgeTreeComp_LoadGFXAnims+1
 	.word sub_806A070+1
 	.word nullsub_62+1
 	.word sub_806AAAA+1
@@ -20362,7 +20364,7 @@ UnkInternetMapGroupJumptable_8030998:
 	.word sub_807CE90+1
 	.word sub_807ED6C+1
 EnterMap_UnkMapGroupJumptable: .word nullsub_61+1
-UnkMapGroupRangeMapGroupJumptable_80309f8: .word nullsub_62+1
+UnkMapGroupRangeLoadGFXAnimsJumptable: .word nullsub_62+1
 	thumb_func_end sub_8030892
 
 	thumb_local_start
@@ -20401,22 +20403,22 @@ EnterMap_RunMapGroupAsmFunction_8030A00: // 8030A00
 	.pool
 	thumb_func_end EnterMap_RunMapGroupAsmFunction_8030A00
 
-	thumb_func_start map_8030A30
+	thumb_func_start LoadGFXAnimsForMapGroup
 // r0 map group, r1 map number
-map_8030A30:
+LoadGFXAnimsForMapGroup:
 	push {lr}
 	cmp r0, #UNKNOWN_MAP_GROUP_START
 	bge .unknownMapGroupRange
 	cmp r0, #INTERNET_MAP_GROUP_START
 	bge .isInternetMap
-	ldr r2, =UnkRealWorldMapGroupJumptable_8030920
+	ldr r2, =RealWorldMapGroupLoadGFXAnimsJumptable
 	b .runMapGroupFunction
 .isInternetMap
-	ldr r2, =UnkInternetMapGroupJumptable_8030998
+	ldr r2, =InternetMapGroupLoadGFXAnimsJumptable
 	sub r0, #INTERNET_MAP_GROUP_START
 	b .runMapGroupFunction
 .unknownMapGroupRange
-	ldr r2, =UnkMapGroupRangeMapGroupJumptable_80309f8
+	ldr r2, =UnkMapGroupRangeLoadGFXAnimsJumptable
 	sub r0, #UNKNOWN_MAP_GROUP_START
 .runMapGroupFunction
 	lsl r0, r0, #2
@@ -20426,7 +20428,7 @@ map_8030A30:
 	pop {pc}
 	.balign 4, 0
 	.pool
-	thumb_func_end map_8030A30
+	thumb_func_end LoadGFXAnimsForMapGroup
 
 	thumb_func_start npc_freeAllObjectsThenSpawnObjectsFromList
 npc_freeAllObjectsThenSpawnObjectsFromList:

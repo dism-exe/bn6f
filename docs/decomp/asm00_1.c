@@ -2305,7 +2305,7 @@ int __fastcall EnterMap(int a1)
         sub_8033948(v23, v24, v25, v26);
         SetRenderInfoLCDControl(&loc_1740);
         v27 = gs->MapSubOffset;
-        map_8030A30(gs->MapSelect);
+        LoadGFXAnimsForMapGroup(gs->MapSelect);
         map_8001708(gs->MapSelect, gs->MapSubOffset);
         map_8034B4C(gs->MapSelect, gs->MapSubOffset);
         EnterMap_RunMapGroupAsmFunction_8030A00(gs->MapSelect);

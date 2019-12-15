@@ -56,8 +56,8 @@ byte_804E6C6: .byte 0xFF, 0xFF
 byte_804E6C8: .byte 0x1C, 0x96, 0x1C, 0x9D, 0x18, 0x1C, 0xFF, 0xFF
 	thumb_func_end CentralTown_EnterMapGroup
 
-	thumb_func_start CentralTown_sub_8002354_804e6d0
-CentralTown_sub_8002354_804e6d0:
+	thumb_func_start CentralTown_LoadGFXAnims
+CentralTown_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_804E6E0 // =off_804E6E4 
@@ -81,7 +81,7 @@ off_804E70C: .word byte_804E5D4
 dword_804E714: .word 0xFFFFFFFF
 off_804E718: .word byte_804E604
 	.word 0xFFFFFFFF
-	thumb_func_end CentralTown_sub_8002354_804e6d0
+	thumb_func_end CentralTown_LoadGFXAnims
 
 	thumb_func_start CentralTown_SpawnMapObjectsForMap
 CentralTown_SpawnMapObjectsForMap:

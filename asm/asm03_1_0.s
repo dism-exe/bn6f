@@ -1435,8 +1435,8 @@ off_8034728: .word off_80665BC
 	.word off_807F21C
 // JP 0x8035740
 UnkInternetMapGroupJumptable_8034784: .word RobotControlComp_UnkFunction_806651c+1
-	.word sub_8067D1C+1
-	.word sub_80691D4+1
+	.word AquariumComp_UnkFunction_8067d1c+1
+	.word JudgeTreeComp_UnkFunction_80691d4+1
 	.word sub_806A1B4+1
 	.word NULL
 	.word sub_806ACC0+1
@@ -1481,8 +1481,8 @@ NPCList_maps80: .word off_80665B4
 	.word off_807D310
 	.word dword_807F210
 InternetSpawnMapObjectJumptable: .word RobotControlComp_SpawnMapObjectsForMap+1
-	.word sub_8067D46+1
-	.word sub_80691FE+1
+	.word AquariumComp_SpawnMapObjectsForMap+1
+	.word JudgeTreeComp_SpawnMapObjectsForMap+1
 	.word sub_806A1DE+1
 	.word NULL
 	.word sub_806AD00+1
@@ -1503,9 +1503,9 @@ InternetSpawnMapObjectJumptable: .word RobotControlComp_SpawnMapObjectsForMap+1
 	.word sub_807AAD6+1
 	.word sub_807CFFC+1
 	.word sub_807EE92+1
-off_8034898: .word RobotControlComp_LoadBGAnim+1
-	.word sub_8067C88+1
-	.word sub_8069140+1
+InternetLoadBGAnimJumptable: .word RobotControlComp_LoadBGAnim+1
+	.word AquariumComp_LoadBGAnim+1
+	.word JudgeTreeComp_LoadBGAnim+1
 	.word sub_806A120+1
 	.word NULL
 	.word sub_806AB94+1
@@ -2377,8 +2377,8 @@ mapObject_spawnMapObjectsForMap:
 	.pool // 803518C
 	thumb_func_end mapObject_spawnMapObjectsForMap
 
-	thumb_func_start sub_8035194
-sub_8035194:
+	thumb_func_start LoadBGAnimForMapGroup
+LoadBGAnimForMapGroup:
 	push {r4-r7,lr}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
@@ -2387,7 +2387,7 @@ sub_8035194:
 	bge loc_80351A2
 	b locret_80351AE
 loc_80351A2:
-	ldr r2, =off_8034898
+	ldr r2, =InternetLoadBGAnimJumptable
 	sub r0, #INTERNET_MAP_GROUP_START
 	lsl r0, r0, #2
 	ldr r2, [r2,r0]
@@ -2396,7 +2396,7 @@ loc_80351A2:
 locret_80351AE:
 	pop {r4-r7,pc}
 	.pool // 80351B0
-	thumb_func_end sub_8035194
+	thumb_func_end LoadBGAnimForMapGroup
 
 	thumb_func_start npc_freeAllObjectsIfDifferentMap_80351b4
 npc_freeAllObjectsIfDifferentMap_80351b4:
