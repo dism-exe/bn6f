@@ -21186,8 +21186,8 @@ void sub_811ED58()
     *(v0 + 16) = v1;
     if ( !((v1 < 0) ^ v2) )
     {
-        sub_8001B1C(byte_811EA68);
-        sub_8001B1C(byte_811EAB8);
+        LoadGFXAnim(byte_811EA68);
+        LoadGFXAnim(byte_811EAB8);
         *(v0 + 16) = 0;
         *(v0 + 9) = 0;
         *(v0 + 14) = 0;
@@ -21221,7 +21221,7 @@ void sub_811EDB4()
     CopyBackgroundTiles_PET_811EF70();
     CopyBackgroundTiles_onNaviSelect_811F54C();
     sub_811F24C();
-    sub_8001B84(16);
+    IsGFXAnimActive(16);
     if ( v2 )
     {
         if ( v0[9] )
@@ -21243,8 +21243,8 @@ void sub_811EDB4()
 LABEL_10:
                     *v0 = 8;
                     v0[13] = 1;
-                    sub_8001B1C(byte_811EB04);
-                    sub_8001B1C(byte_811EB5C);
+                    LoadGFXAnim(byte_811EB04);
+                    LoadGFXAnim(byte_811EB5C);
                     goto LABEL_22;
                 }
                 v3 = v0[4];
@@ -21303,7 +21303,7 @@ void __noreturn sub_811EE98()
     if ( v1 <= -32 )
     {
         *(v0 + 16) = -32;
-        sub_8001B84(16);
+        IsGFXAnimActive(16);
         if ( v2 )
             *v0 = 12;
     }
@@ -21352,8 +21352,8 @@ void __noreturn sub_811EF28()
     sub_8046664();
     sub_80465A0(byte_811EBA4);
     *v0 = 4;
-    sub_8001B1C(byte_811EAD4);
-    sub_8001B1C(byte_811EAEC);
+    LoadGFXAnim(byte_811EAD4);
+    LoadGFXAnim(byte_811EAEC);
     sub_811F1B8();
 }
 

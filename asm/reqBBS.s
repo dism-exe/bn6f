@@ -124,7 +124,7 @@ byte_813E180: .byte 0x40, 0x5E, 0x0, 0x0, 0xA0, 0x17, 0x0, 0x0
 reqBBS_draw_813E188:
 	push {lr}
 	ldr r0, dword_813E1C4 // =0x1f40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
@@ -855,7 +855,7 @@ off_813E76C: .word dword_87E74F4
 	.word unk_30019E0
 	.word 0x60
 	.word byte_87EF824
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x60
 	.word 0x0
 off_813E794: .word dword_87E7514
@@ -1937,7 +1937,7 @@ off_813F54C: .word reqBBS_textualPointers
 UpdateReqBBSMenu813F550:
 	push {lr}
 	ldr r0, dword_813F58C // =0x1f40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]

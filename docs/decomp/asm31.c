@@ -20080,7 +20080,7 @@ int sub_80C3448()
     int v0; // r5
     _BYTE *v1; // r1
 
-    sub_80198CE(*(v0 + 84));
+    object_freeCollisionData(*(v0 + 84));
     v1 = *(v0 + 76);
     if ( v1 )
         *v1 = 0;
@@ -23176,7 +23176,7 @@ void __noreturn sub_80C532E()
     if ( v1 || (v3 = *(v0 + 32), v4 = __OFSUB__(v3, 1), v5 = v3 - 1, *(v0 + 32) = v5, ((v5 < 0) ^ v4) | (v5 == 0)) )
     {
         object_clearCollisionRegion();
-        sub_80198CE(*(v0 + 84));
+        object_freeCollisionData(*(v0 + 84));
         object_freeMemory();
     }
     else
@@ -36323,7 +36323,7 @@ int sub_80CD78E()
     int v0; // r5
 
     sub_80CD7D0();
-    sub_80198CE(*(v0 + 84));
+    object_freeCollisionData(*(v0 + 84));
     return object_freeMemory();
 }
 
@@ -37006,7 +37006,7 @@ int __fastcall sub_80CDEF8(int a1, int a2, int a3)
 
     PlaySoundEffect(112, a2, a3);
     SpawnT4BattleObjectWithId0(v3, v3 + 64, *(v3 + 52), *(v3 + 56), *(v3 + 60));
-    sub_80198CE(*(v3 + 84));
+    object_freeCollisionData(*(v3 + 84));
     return object_freeMemory();
 }
 
@@ -37106,7 +37106,7 @@ void __noreturn sub_80CDFEE()
         sub_802CEA6(*(v0 + 22));
     }
     object_clearCollisionRegion();
-    sub_80198CE(*(v0 + 84));
+    object_freeCollisionData(*(v0 + 84));
     object_freeMemory();
 }
 
@@ -38206,7 +38206,7 @@ int sub_80CEA88()
     v1 = *(v0 + 100);
     if ( v0 == *v1 )
         *v1 = 0;
-    sub_80198CE(*(v0 + 84));
+    object_freeCollisionData(*(v0 + 84));
     return object_freeMemory();
 }
 
@@ -39081,7 +39081,7 @@ int sub_80CF324()
 {
     int v0; // r5
 
-    sub_80198CE(*(v0 + 84));
+    object_freeCollisionData(*(v0 + 84));
     return object_freeMemory();
 }
 
@@ -39983,7 +39983,7 @@ int __noreturn sub_80CFC96()
     int v0; // r5
 
     object_removeCollisionData();
-    sub_80198CE(*(v0 + 84));
+    object_freeCollisionData(*(v0 + 84));
     return object_freeMemory();
 }
 
@@ -58697,7 +58697,7 @@ void __noreturn sub_80DB5E8()
         if ( *(v0 + 5) )
             **(v0 + 100) = 0;
         object_clearCollisionRegion();
-        sub_80198CE(*(v0 + 84));
+        object_freeCollisionData(*(v0 + 84));
         object_freeMemory();
     }
     else
@@ -59050,7 +59050,7 @@ void __noreturn sub_80DB934()
         }
     }
     object_clearCollisionRegion();
-    sub_80198CE(*(v0 + 84));
+    object_freeCollisionData(*(v0 + 84));
     object_freeMemory();
 }
 
@@ -67309,7 +67309,7 @@ int sub_80E10C0()
     *(v0 + 34) = v3;
     if ( (v3 < 0) ^ v4 )
     {
-        sub_800239A(20);
+        Terminate_ePalette20097a0_Transform(20);
         result = object_freeMemory();
     }
     else
@@ -67347,8 +67347,8 @@ int sub_80E114C()
         *(v0 + 34) = v3;
         if ( (v3 < 0) ^ v4 )
         {
-            sub_800239A(20);
-            sub_800239A(21);
+            Terminate_ePalette20097a0_Transform(20);
+            Terminate_ePalette20097a0_Transform(21);
             result = object_freeMemory();
         }
         else

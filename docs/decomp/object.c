@@ -793,7 +793,7 @@ int __fastcall object_getPanelParameters(int a1, int a2)
 // 0x800c90a
 char *__fastcall object_getPanelDataOffset(int a1, int a2)
 {
-    return sub_3007958(a1, a2);
+    return _object_getPanelDataOffset(a1, a2);
 }
 
 
@@ -807,7 +807,7 @@ char *__noreturn sub_800C918()
 // 0x800c928
 char *__fastcall __noreturn object_updatePanelParameters(int a1, int a2)
 {
-    return sub_30078E0(a1, a2);
+    return _object_updatePanelParameters(a1, a2);
 }
 
 
@@ -1101,7 +1101,7 @@ char *__fastcall object_highlightPanelBlue(__int64 a1)
 // 0x800cc0a
 char *__fastcall __noreturn object_setPanelType(int a1, int a2, signed int a3)
 {
-    return sub_30079A4(a1, a2, a3);
+    return _object_setPanelType(a1, a2, a3);
 }
 
 

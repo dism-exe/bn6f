@@ -17,7 +17,7 @@ void __noreturn main_()
         main_pollGeneralLCDStatus_STAT_LYC_();
         main_awaitFrame();
         sub_80007BE();
-        sub_80019A0();
+        CallBGScrollCallback1();
         render_800172C();
         copyObjAttributesToIWRAM_802FE0C();
         objRender_8000A44();
@@ -35,8 +35,8 @@ void __noreturn main_()
         if ( !zf )
             subsystem_triggerTransition_800630A();
         chatbox_onUpdate();
-        cb_call_200A880();
-        PET_onUpdate_8001B94();
+        CallBGScrollCallback0();
+        ProcessGFXAnims();
         sub_3006814();
         main_static_8000454();
     }
@@ -175,13 +175,13 @@ void __cdecl main_initToolkitAndOtherSubsystems()
 
     tk = SetPrimaryToolkitPointers();
     RandomizeExtraToolkitPointers();
-    v1 = sRender_08_setRenderingState(&loc_C0);
+    v1 = SetRenderInfoLCDControl(&loc_C0);
     main_zeroFill_80017EC(v1, v2, v3, v4);
     render_800172C();
     copyMemory_8001850();
     main_static_8000570();
     zeroFill_80007B2();
-    sub_8001974();
+    SetDummyBGScrollCallbacks();
     zeroFill_80024A2();
     sub_8003962();
     zeroFill_8003AB2();
@@ -223,7 +223,7 @@ __int16 *__cdecl main_static_8000570()
 
     sub_814E8A0();
     sub_814EE2C(9634829);
-    start_800024C(8, sub_3005D78);
+    SetInterruptCallback(8, sub_3005D78);
     result = &GeneralLCDStatus_STAT_LYC_;
     GeneralLCDStatus_STAT_LYC_ = GeneralLCDStatus_STAT_LYC_ | 0x5020;
     return result;

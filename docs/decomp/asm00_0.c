@@ -1874,7 +1874,7 @@ int render_800172C()
 
 
 // 0x8001778
-int __fastcall sRender_08_setRenderingState(int renderingState)
+int __fastcall SetRenderInfoLCDControl(int renderingState)
 {
     Toolkit *tk; // r10
 
@@ -1884,7 +1884,7 @@ int __fastcall sRender_08_setRenderingState(int renderingState)
 
 
 // 0x8001780
-int sub_8001780()
+int GetRenderInfoLCDControl()
 {
     int v0; // r10
 
@@ -1932,7 +1932,7 @@ void __fastcall zeroFillVRAM()
 // 0x80017e0
 void __fastcall ZeroFill_byte_3001960(int unused1, int unused2, int a3, int a4)
 {
-    ZeroFillByHalfword(byte_3001960, 2u, a3, a4);
+    ZeroFillByHalfword(palette_3001960, 2u, a3, a4);
 }
 
 
@@ -1942,7 +1942,7 @@ void __fastcall main_zeroFill_80017EC(int a1, int a2, int a3, int a4)
     int v_a3; // r2
     int v_a4; // r3
 
-    ZeroFillByHalfword(byte_3001960, 2u, a3, a4);
+    ZeroFillByHalfword(palette_3001960, 2u, a3, a4);
     ZeroFillByHalfword(0x5000000, 2u, v_a3, v_a4);
 }
 
@@ -2110,38 +2110,38 @@ int __fastcall sub_8001930(int a1, int a2, int a3, int a4)
 
 
 // 0x800195c
-int __fastcall sub_800195C(int result, int a2, void *a3)
+int __fastcall SetBGScrollCallbacks(int result, int a2, void *a3)
 {
     if ( result )
     {
         off_200A880 = result;
         off_200A888 = a2;
         off_200A884 = a3;
-        result = start_800024C(4, a3);
+        result = SetInterruptCallback(4, a3);
     }
     return result;
 }
 
 
 // 0x8001974
-int sub_8001974()
+int SetDummyBGScrollCallbacks()
 {
     off_200A880 = nullsub_39;
     off_200A888 = nullsub_39;
     off_200A884 = 50355417;
-    return start_800024C(4, nullsub_38 + 1);
+    return SetInterruptCallback(4, nullsub_38 + 1);
 }
 
 
 // 0x8001994
-int cb_call_200A880()
+int CallBGScrollCallback0()
 {
     return off_200A880();
 }
 
 
 // 0x80019a0
-int sub_80019A0()
+int CallBGScrollCallback1()
 {
     return off_200A888();
 }
@@ -2162,117 +2162,117 @@ void nullsub_36()
 
 
 // 0x80019b4
-void sub_80019B4()
+void BGScrollCB_BG1Diagonal3to2Scroll()
 {
     int v0; // r10
     unsigned int v1; // r3
     int v2; // r1
 
-    dword_2009690 -= 8;
+    eBGScrollCBCounters -= 8;
     dword_2009694 -= 4;
     v1 = dword_2009694 >> 4;
     v2 = *(v0 + oToolkit_RenderInfoPtr);
-    *(v2 + 16) = dword_2009690 >> 4;
+    *(v2 + 16) = eBGScrollCBCounters >> 4;
     *(v2 + 18) = v1;
 }
 
 
 // 0x80019d0
-void sub_80019D0()
+void BGScrollCB_BG3Diagonal3to2Scroll()
 {
     int v0; // r10
     unsigned int v1; // r3
     int v2; // r1
 
-    dword_2009690 -= 8;
+    eBGScrollCBCounters -= 8;
     dword_2009694 -= 4;
     v1 = dword_2009694 >> 4;
     v2 = *(v0 + oToolkit_RenderInfoPtr);
-    *(v2 + 24) = dword_2009690 >> 4;
+    *(v2 + 24) = eBGScrollCBCounters >> 4;
     *(v2 + 26) = v1;
 }
 
 
 // 0x80019ec
-void sub_80019EC()
+void BGScrollCB_BG1UpScroll()
 {
     int v0; // r10
 
-    dword_2009690 -= 4;
-    *(*(v0 + oToolkit_RenderInfoPtr) + 18) = dword_2009690 >> 4;
+    eBGScrollCBCounters -= 4;
+    *(*(v0 + oToolkit_RenderInfoPtr) + 18) = eBGScrollCBCounters >> 4;
 }
 
 
 // 0x80019fe
-void sub_80019FE()
+void BGScrollCB_BG3UpScroll()
 {
     int v0; // r10
 
-    dword_2009690 -= 4;
-    *(*(v0 + oToolkit_RenderInfoPtr) + 26) = dword_2009690 >> 4;
+    eBGScrollCBCounters -= 4;
+    *(*(v0 + oToolkit_RenderInfoPtr) + 26) = eBGScrollCBCounters >> 4;
 }
 
 
 // 0x8001a10
-void sub_8001A10()
+void BGScrollCB_BG1DownScroll()
 {
     int v0; // r10
 
-    dword_2009690 += 4;
-    *(*(v0 + oToolkit_RenderInfoPtr) + 18) = dword_2009690 >> 4;
+    eBGScrollCBCounters += 4;
+    *(*(v0 + oToolkit_RenderInfoPtr) + 18) = eBGScrollCBCounters >> 4;
 }
 
 
 // 0x8001a22
-void sub_8001A22()
+void BGScrollCB_BG3DownScroll()
 {
     int v0; // r10
 
-    dword_2009690 += 4;
-    *(*(v0 + oToolkit_RenderInfoPtr) + 26) = dword_2009690 >> 4;
+    eBGScrollCBCounters += 4;
+    *(*(v0 + oToolkit_RenderInfoPtr) + 26) = eBGScrollCBCounters >> 4;
 }
 
 
 // 0x8001a34
-void sub_8001A34()
+void BGScrollCB_BG1SlowRightScroll()
 {
     int v0; // r10
 
-    *(*(v0 + oToolkit_RenderInfoPtr) + 16) = ++dword_2009690 >> 4;
+    *(*(v0 + oToolkit_RenderInfoPtr) + 16) = ++eBGScrollCBCounters >> 4;
 }
 
 
 // 0x8001a46
-void sub_8001A46()
+void BGScrollCB_BG3SlowRightScroll()
 {
     int v0; // r10
 
-    *(*(v0 + oToolkit_RenderInfoPtr) + 24) = ++dword_2009690 >> 4;
+    *(*(v0 + oToolkit_RenderInfoPtr) + 24) = ++eBGScrollCBCounters >> 4;
 }
 
 
 // 0x8001a58
-void sub_8001A58()
+void BGScrollCB_BG1FastLeftScroll()
 {
     int v0; // r10
 
-    dword_2009690 -= 8;
-    *(*(v0 + oToolkit_RenderInfoPtr) + 16) = dword_2009690 >> 4;
+    eBGScrollCBCounters -= 8;
+    *(*(v0 + oToolkit_RenderInfoPtr) + 16) = eBGScrollCBCounters >> 4;
 }
 
 
 // 0x8001a6a
-void sub_8001A6A()
+void BGScrollCB_BG3FastLeftScroll()
 {
     int v0; // r10
 
-    dword_2009690 -= 8;
-    *(*(v0 + oToolkit_RenderInfoPtr) + 24) = dword_2009690 >> 4;
+    eBGScrollCBCounters -= 8;
+    *(*(v0 + oToolkit_RenderInfoPtr) + 24) = eBGScrollCBCounters >> 4;
 }
 
 
 // 0x8001a7c
-int sub_8001A7C()
+int BGScrollCB_BG1AccelToVeryFastDownScroll()
 {
     int v0; // r10
     int result; // r0
@@ -2281,10 +2281,10 @@ int sub_8001A7C()
     result = sub_800139A();
     if ( result & 0x10 )
     {
-        v2 = dword_2009690 - 1024;
-        if ( dword_2009690 - 1024 < -262144 )
+        v2 = eBGScrollCBCounters - 1024;
+        if ( eBGScrollCBCounters - 1024 < -262144 )
             v2 = -262144;
-        dword_2009690 = v2;
+        eBGScrollCBCounters = v2;
         *(*(v0 + oToolkit_RenderInfoPtr) + 18) -= HIWORD(v2);
     }
     return result;
@@ -2301,7 +2301,7 @@ void nullsub_39()
 // 0x8001afc
 void __cdecl zeroFill_e20094C0()
 {
-    ZeroFillByWord(byte_20094C0, &loc_1B0);
+    ZeroFillByWord(eGFXAnimStates, &loc_1B0);
 }
 
 
@@ -2313,7 +2313,7 @@ int __fastcall sub_8001B0C(int a1)
 
 
 // 0x8001b1c
-int __fastcall sub_8001B1C(int a1)
+int __fastcall LoadGFXAnim(int a1)
 {
     int v1; // r1
     char *v2; // r7
@@ -2322,7 +2322,7 @@ int __fastcall sub_8001B1C(int a1)
     int v5; // r6
 
     v1 = *(a1 + 9);
-    v2 = &byte_20094C0[24 * v1];
+    v2 = &eGFXAnimStates[24 * v1];
     v2[1] = v1;
     *(v2 + 3) = *a1;
     *(v2 + 4) = *(a1 + 4);
@@ -2341,22 +2341,22 @@ int __fastcall sub_8001B1C(int a1)
 
 
 // 0x8001b6c
-int __fastcall sub_8001B6C(int a1)
+int __fastcall TerminateGFXAnim(int a1)
 {
-    byte_20094C0[24 * a1] = 0;
-    return sub_800239A(a1);
+    eGFXAnimStates[24 * a1] = 0;
+    return Terminate_ePalette20097a0_Transform(a1);
 }
 
 
 // 0x8001b84
-int __fastcall sub_8001B84(int a1)
+int __fastcall IsGFXAnimActive(int a1)
 {
-    return byte_20094C0[24 * a1];
+    return eGFXAnimStates[24 * a1];
 }
 
 
 // 0x8001b94
-void __cdecl PET_onUpdate_8001B94()
+void __cdecl ProcessGFXAnims()
 {
     char *v0; // r7
     signed int v1; // r4
@@ -2364,7 +2364,7 @@ void __cdecl PET_onUpdate_8001B94()
     int *v3; // r0
     int v4; // r1
 
-    v0 = byte_20094C0;
+    v0 = eGFXAnimStates;
     v1 = 0;
     do
     {
@@ -2751,7 +2751,7 @@ unsigned int __fastcall sub_8002338(int *a1)
 
 
 // 0x8002354
-int __fastcall sub_8002354(int *a1)
+int __fastcall LoadGFXAnims(int *a1)
 {
     int *i; // r5
     int result; // r0
@@ -2761,7 +2761,7 @@ int __fastcall sub_8002354(int *a1)
         result = *i;
         if ( *i < 0 )
             break;
-        sub_8001B1C(result);
+        LoadGFXAnim(result);
     }
     return result;
 }
@@ -2770,7 +2770,7 @@ int __fastcall sub_8002354(int *a1)
 // 0x8002368
 void __cdecl zeroFill_e20097A0()
 {
-    ZeroFillByWord(byte_20097A0, &byte_108);
+    ZeroFillByWord(ePalette20097a0, &byte_108);
 }
 
 
@@ -2781,7 +2781,7 @@ int __fastcall sub_8002378(int result, int a2, int a3, int a4)
     char *v5; // r7
     char v6; // r3
 
-    v5 = &byte_20097A0[12 * a4];
+    v5 = &ePalette20097a0[12 * a4];
     v6 = 0;
     if ( a2 && a3 )
     {
@@ -2797,12 +2797,12 @@ int __fastcall sub_8002378(int result, int a2, int a3, int a4)
 
 
 // 0x800239a
-int __fastcall sub_800239A(int a1)
+int __fastcall Terminate_ePalette20097a0_Transform(int a1)
 {
     char *v1; // r2
     int result; // r0
 
-    v1 = &byte_20097A0[12 * a1];
+    v1 = &ePalette20097a0[12 * a1];
     result = 0;
     *v1 = 0;
     return result;
@@ -2812,14 +2812,14 @@ int __fastcall sub_800239A(int a1)
 // 0x80023a8
 void __fastcall sub_80023A8(int a1, int a2, int a3, int a4)
 {
-    ZeroFillByWord(byte_20097A0, &loc_D8);
+    ZeroFillByWord(ePalette20097a0, &loc_D8);
 }
 
 
 // 0x80023b8
 int __fastcall sub_80023B8(int a1)
 {
-    return byte_20097A0[12 * a1];
+    return ePalette20097a0[12 * a1];
 }
 
 
@@ -2829,7 +2829,7 @@ int sub_80023C6()
     char *v0; // r2
     int result; // r0
 
-    v0 = byte_20097A0;
+    v0 = ePalette20097a0;
     while ( 1 )
     {
         result = *v0;
@@ -2854,9 +2854,9 @@ void __cdecl getPalleteAndTransition_80023E0()
     int v5; // r1
     int v6; // r6
 
-    CopyByEightWords(byte_3001960, iPalette3001B60, 0x200u);
+    CopyByEightWords(palette_3001960, iPalette3001B60, 0x200u);
     CopyByEightWords(byte_3001550, iPallete3001750, 0x200u);
-    v1 = byte_20097A0;
+    v1 = ePalette20097a0;
     do
     {
         if ( *v1 )

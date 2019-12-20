@@ -12875,13 +12875,13 @@ int __usercall startScreen_802F574@<R0>(StartScreen *scr@<R5>)
     int result; // r0
 
     sub_80015FC(11);
-    sRender_08_setRenderingState(&loc_1140);
+    SetRenderInfoLCDControl(&loc_1140);
     renderInfo_8001788();
     renderInfo_80017A0();
     startScreen_initGfx_802FCC0(v1, v2, v3, v4);
     v5 = engine_setScreeneffect(12, 255);
     musicGameState_8000784(v5, v6, v7);
-    sub_8002354(pt_802F5F0);
+    LoadGFXAnims(pt_802F5F0);
     scr->jo_00 = 4;
     scr->unk_02 = 0;
     sub_803FA42();
@@ -12934,7 +12934,7 @@ int sub_802F624()
     _BYTE *v0; // r5
     int result; // r0
 
-    sRender_08_setRenderingState(5953);
+    SetRenderInfoLCDControl(5953);
     *v0 = 8;
     result = 0;
     v0[1] = 0;
@@ -12963,7 +12963,7 @@ void __fastcall __noreturn sub_802F668(int a1, int a2, int a3)
     *(v3 + 4) = 2630;
     sub_80005F2(1, a2, a3);
     sub_80015FC(10);
-    sRender_08_setRenderingState(&loc_1340);
+    SetRenderInfoLCDControl(&loc_1340);
     *(v3 + 6) = 0;
     sub_802FD3C();
 }
@@ -13100,7 +13100,7 @@ int sub_802F756()
     int v10; // r3
 
     **v1 = 4;
-    sRender_08_setRenderingState(&loc_1140);
+    SetRenderInfoLCDControl(&loc_1140);
     sub_813D960();
     if ( *(v0 + 8) )
     {
@@ -13153,8 +13153,8 @@ int __fastcall sub_802F7E8(int a1, int a2, int a3, int a4)
         sub_813D960();
         *(v4 + 1) = 12;
         PlaySoundEffect(103, v7, v8);
-        sub_8001B1C(byte_802F2E4);
-        result = sub_8001B1C(&dword_802F334);
+        LoadGFXAnim(byte_802F2E4);
+        result = LoadGFXAnim(&dword_802F334);
     }
     return result;
 }
@@ -14211,7 +14211,7 @@ int sub_8030472()
     int v3; // ST00_4
     int v4; // ST00_4
 
-    CopyByEightWords(dword_200BE80 + 4, byte_3001960, 0x1A0u);
+    CopyByEightWords(dword_200BE80 + 4, palette_3001960, 0x1A0u);
     v0 = 0;
     v1 = dword_200BE84;
     v2 = dword_200BE84;
@@ -14232,7 +14232,7 @@ int sub_8030472()
 
 
 // 0x80304e8
-void __fastcall sub_80304E8(int a1)
+void __fastcall LoadBGAnimData(int a1)
 {
     int v1; // r10
     int v2; // r5
@@ -14703,23 +14703,23 @@ int __fastcall EnterMap_RunMapGroupAsmFunction_8030A00(signed int a1)
 
 
 // 0x8030a30
-int __fastcall map_8030A30(signed int a1)
+int __fastcall LoadGFXAnimsForMapGroup(signed int a1)
 {
     void **v1; // r2
 
     if ( a1 >= 240 )
     {
-        v1 = &UnkMapGroupRangeMapGroupJumptable_80309f8;
+        v1 = &UnkMapGroupRangeLoadGFXAnimsJumptable;
         a1 -= 240;
     }
     else if ( a1 >= 128 )
     {
-        v1 = &UnkInternetMapGroupJumptable_8030998;
+        v1 = &InternetMapGroupLoadGFXAnimsJumptable;
         a1 -= 128;
     }
     else
     {
-        v1 = &UnkRealWorldMapGroupJumptable_8030920;
+        v1 = &RealWorldMapGroupLoadGFXAnimsJumptable;
     }
     return (v1[a1])();
 }
@@ -14774,7 +14774,7 @@ void __fastcall sub_8030A8C(int a1, int a2, int a3, int a4)
 
 
 // 0x8030aa4
-int __fastcall sub_8030AA4(signed int mapGroup, int mapNumber)
+int __fastcall decompressCoordEventData_8030aa4(signed int mapGroup, int mapNumber)
 {
     char (***mapPtrs)[4532]; // r3
     char (*v3)[4532]; // ST00_4

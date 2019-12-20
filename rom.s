@@ -47,75 +47,95 @@ chatbox:
 	.include "asm/chatbox.s"
 asm03_2:
 	.include "asm/asm03_2.s"
-dat03:
-	.include "data/dat03.s"
+	
+	.include "maps/ACDCTown/warps_gfx_anims.s"
+	.include "maps/ACDCTown/loader.s"
+	.include "maps/ACDCTown/data.s"
 asm04:
-	.include "asm/asm04.s"
-dat04:
-	.include "data/dat04.s"
+	.include "maps/CentralTown/warps_gfx_anims.s"
+	.include "maps/CentralTown/loader.s"
+	.include "maps/CentralTown/data.s"
 asm05:
-	.include "asm/asm05.s"
-dat05:
-	.include "data/dat05.s"
+	.include "maps/CyberAcademy/warps_gfx_anims.s"
+	.include "maps/CyberAcademy/loader.s"
+	.include "maps/CyberAcademy/data.s"
 asm06:
-	.include "asm/asm06.s"
-dat06:
-	.include "data/dat06.s"
+	.include "maps/SeasideTown/warps_gfx_anims.s"
+	.include "maps/SeasideTown/loader.s"
+	.include "maps/SeasideTown/data.s"
 asm07:
-	.include "asm/asm07.s"
-dat07:
-	.include "data/dat07.s"
+	.include "maps/GreenTown/warps_gfx_anims.s"
+	.include "maps/GreenTown/loader.s"
+	.include "maps/GreenTown/data.s"
 asm08:
-	.include "asm/asm08.s"
-dat08:
-	.include "data/dat08.s"
+	.include "maps/SkyTown/warps_gfx_anims.s"
+	.include "maps/SkyTown/loader.s"
+	.include "maps/SkyTown/data.s"
 asm09:
-	.include "asm/asm09.s"
-dat09:
-	.include "data/dat09.s"
+	.include "maps/ExpoSite/warps_gfx_anims.s"
+	.include "maps/ExpoSite/loader.s"
+	.include "maps/ExpoSite/data.s"
 asm10:
-	.include "asm/asm10.s"
-dat10:
-	.include "data/dat10.s"
-asm11:
-	.include "asm/asm11.s"
-dat11:
-	.include "data/dat11.s"
-asm12:
-	.include "asm/asm12.s"
-dat12:
-	.include "data/dat12.s"
-asm13:
-	.include "asm/asm13.s"
-dat13:
-	.include "data/dat13.s"
-asm14:
-	.include "asm/asm14.s"
-dat14:
-	.include "data/dat14.s"
-asm15:
-	.include "asm/asm15.s"
-dat15:
-	.include "data/dat15.s"
-asm16:
-	.include "asm/asm16.s"
-dat16:
-	.include "data/dat16.s"
-asm17:
-	.include "asm/asm17.s"
-dat17:
-	.include "data/dat17.s"
-asm18:
-	.include "asm/asm18.s"
-dat18:
-	.include "data/dat18.s"
-asm19:
-	.include "asm/asm19.s"
-dat19:
-	.include "data/dat19.s"
-asm20:
-	.include "asm/asm20.s"
-dat20:
+	.include "maps/RobotControlComp/warps_gfx_anims.s"
+	.include "maps/RobotControlComp/loader.s"
+	.include "maps/RobotControlComp/data.s"
+
+	.include "maps/AquariumComp/warps_gfx_anims.s"
+	.include "maps/AquariumComp/loader.s"
+	.include "maps/AquariumComp/data.s"
+
+	.include "maps/JudgeTreeComp/warps_gfx_anims.s"
+	.include "maps/JudgeTreeComp/loader.s"
+	.include "maps/JudgeTreeComp/data.s"
+
+	.include "maps/MrWeatherComp/warps_gfx_anims.s"
+	.include "maps/MrWeatherComp/loader.s"
+	.include "maps/MrWeatherComp/data.s"
+
+	.include "maps/PavilionComp/warps_gfx_anims.s"
+	.include "maps/PavilionComp/loader.s"
+	.include "maps/PavilionComp/data.s"
+
+	.include "maps/HomePages/warps_gfx_anims.s"
+	.include "maps/HomePages/loader.s"
+	.include "maps/HomePages/data.s"
+
+	.include "maps/Comps1/warps_gfx_anims.s"
+	.include "maps/Comps1/loader.s"
+	.include "maps/Comps1/data.s"
+
+	.include "maps/Comps2/warps_gfx_anims.s"
+	.include "maps/Comps2/loader.s"
+	.include "maps/Comps2/data.s"
+
+	.include "maps/CentralArea/warps_gfx_anims.s"
+	.include "maps/CentralArea/loader.s"
+	.include "maps/CentralArea/data.s"
+
+	.include "maps/SeasideArea/warps_gfx_anims.s"
+	.include "maps/SeasideArea/loader.s"
+	.include "maps/SeasideArea/data.s"
+
+	.include "maps/GreenArea/warps_gfx_anims.s"
+	.include "maps/GreenArea/loader.s"
+	.include "maps/GreenArea/data.s"
+
+	.include "maps/Underground/warps_gfx_anims.s"
+	.include "maps/Underground/loader.s"
+	.include "maps/Underground/data.s"
+
+	.include "maps/SkyACDCArea/warps_gfx_anims.s"
+	.include "maps/SkyACDCArea/loader.s"
+	.include "maps/SkyACDCArea/data.s"
+
+	.include "maps/Undernet/warps_gfx_anims.s"
+	.include "maps/Undernet/loader.s"
+	.include "maps/Undernet/data.s"
+
+	.include "maps/GraveyardImmortalArea/warps_gfx_anims.s"
+	.include "maps/GraveyardImmortalArea/loader.s"
+	.include "maps/GraveyardImmortalArea/data.s"
+
 	.include "data/dat20.s"
 asm21:
 	.include "asm/asm21.s"

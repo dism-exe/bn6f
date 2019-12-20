@@ -123,9 +123,9 @@ RunBattleObjectLogic:
 	// lower 4 bits of the 2nd (zero-indexed) member of the struct in the
 	// linked list, starting from eBattleObjectsLinkedListStart. Index to an entry from the
 	// read Jumptable pointer is derived from the first member of the struct
-	.word 0x0
+	.word NULL
 	.word T1BattleObjectJumptable
-	.word 0x0
+	.word NULL
 	.word T3BattleObjectJumptable
 	.word T4BattleObjectJumptable
 .dword_200AF70_p: .word eUnkBattleObjectLinkedList
@@ -3865,10 +3865,10 @@ loc_80051AA:
 	bl ClearEventFlagFromImmediate
 	bl sub_8033948
 	ldr r0, off_8005264 // =0x1740
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl map_8030A30
+	bl LoadGFXAnimsForMapGroup
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl map_8001708
@@ -4079,7 +4079,7 @@ sub_80053E4:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r0, word_8005460 // =0x40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 locret_800545C:
 	pop {pc}
 	.balign 4, 0x00
@@ -4122,7 +4122,7 @@ loc_8005474:
 	bl sub_811F6C0
 	bl sub_8005524
 	mov r0, #0x11
-	bl sub_8001B6C
+	bl TerminateGFXAnim
 	bl sub_8046664 // () -> void
 	bl chatbox_8040818
 	b locret_800551C
@@ -4869,7 +4869,7 @@ sub_8005C04:
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl map_8001708
 	ldr r0, off_8005CE4 // =0x40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	mov r5, r10
 	ldr r7, [r5,#oToolkit_Warp2011bb0_Ptr]
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -5266,7 +5266,7 @@ sub_8005F40:
 	push {r4-r7,lr}
 	bl zeroFillVRAM
 	bl ZeroFill_byte_3001960
-	bl sub_8001974
+	bl SetDummyBGScrollCallbacks
 	bl zeroFill_e20094C0
 	bl sub_80023A8
 	bl zeroFill_e2009740
@@ -5297,7 +5297,7 @@ sub_8005F78:
 sub_8005F84:
 	push {r4-r7,lr}
 	ldr r0, off_8005FB0 // =0x40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl sub_809F68C
 	bl chatbox_8040818
 	mov r0, #0x40
@@ -5809,10 +5809,10 @@ sub_8006330:
 	bl sub_800634C
 	ldrb r0, [r5,#0xc]
 	add r0, #0x12
-	bl sub_800239A
+	bl Terminate_ePalette20097a0_Transform
 	ldrb r0, [r5,#0xc]
 	add r0, #0x13
-	bl sub_800239A
+	bl Terminate_ePalette20097a0_Transform
 	pop {r5,pc}
 	thumb_func_end sub_8006330
 
@@ -6117,9 +6117,9 @@ loc_8006552:
 sub_8006580:
 	push {r4-r7,lr}
 	mov r0, #0x14
-	bl sub_800239A
+	bl Terminate_ePalette20097a0_Transform
 	mov r0, #0x15
-	bl sub_800239A
+	bl Terminate_ePalette20097a0_Transform
 	ldr r0, off_80065B4 // =dword_20096D0
 	mov r1, #0
 	str r1, [r0]
@@ -6652,7 +6652,7 @@ SetPrimaryToolkitPointers:
 ToolkitPointers:
 	.word i_joGameSubsysSel
 	.word eJoypad
-	.word unk_200AC40
+	.word eRenderInfo
 	.word eCamera
 	.word eCutsceneState
 	.word byte_2011BB0
@@ -8031,7 +8031,7 @@ off_80075F0: .word dword_86E08F8
 	.word unk_3001980
 	.word 0x100
 	.word dword_86E09F8
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word dword_86E09F8
 	.word byte_3001690
@@ -8864,7 +8864,7 @@ sub_8007CA0:
 	bl sub_800AF50
 	tst r0, r0
 	bne loc_8007CF2
-	bl sub_8001974
+	bl SetDummyBGScrollCallbacks
 	bl zeroFill_e20094C0
 	bl sub_80023A8
 	ldr r1, [r5,#0x18]
@@ -8909,7 +8909,7 @@ loc_8007D2A:
 	movflag EVENT_1733
 	bl TestEventFlagFromImmediate
 	beq loc_8007E38
-	bl sub_8001974
+	bl SetDummyBGScrollCallbacks
 	bl zeroFill_e20094C0
 	bl sub_80023A8
 	ldr r0, [r5,#0x3c]
@@ -9022,7 +9022,7 @@ loc_8007E38:
 	strb r0, [r7,#oGameState_BattlePaused]
 	bl zeroFill_e20097A0
 	mov r0, #0x40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl sub_800A892
 	mov r0, #1
 	bl sub_80071A4

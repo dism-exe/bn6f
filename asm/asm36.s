@@ -5130,7 +5130,7 @@ off_8132D50: .word eDecompBuffer2013A00
 off_8132D54: .word off_8132D58
 off_8132D58: .word dword_86C9108
 	.word 0x2
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word dword_86C9B54
 	.word 0x2
@@ -7203,7 +7203,7 @@ off_8133F68: .word eDecompBuffer2013A00
 off_8133F6C: .word off_8133F70
 off_8133F70: .word dword_86C9108
 	.word 0x2
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word dword_86C9B54
 	.word 0x2
@@ -10789,7 +10789,7 @@ off_8135C24: .word 0x100
 off_8135C28: .word off_8135C2C
 off_8135C2C: .word dword_86C9108
 	.word 0x2
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word dword_86C9B54
 	.word 0x2
@@ -14680,7 +14680,7 @@ off_8137B64: .word eDecompBuffer2013A00
 off_8137B68: .word off_8137B6C
 off_8137B6C: .word dword_86C9108
 	.word 0x2
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word dword_86C9B54
 	.word 0x2
@@ -16153,7 +16153,7 @@ sub_81387D8:
 	bl sub_80303F2
 	mov r0, #0
 	mov r1, #2
-	bl sub_8030AA4
+	bl decompressCoordEventData_8030aa4
 	mov r0, #0
 	mov r1, #0
 	mov r2, #0

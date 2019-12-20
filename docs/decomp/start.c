@@ -7,14 +7,14 @@ void __noreturn GameEntryPoint()
     __asm { MSR         CPSR_cf, R0 }
     _R0 = 31;
     __asm { MSR         CPSR_cf, R0 }
-    *byte_3007FFC = dword_3005B00;
+    *byte_3007FFC = sub_3005B00;
     GamePakWaitstateControl = 17844;
     start_clearMemory(&unk_3000000, 32256);
     start_clearMemory(&timer_2000000, 0x40000);
     start_clearMemory(0x6000000, 98304);
     start_clearMemory(0x7000000, 1024);
     start_clearMemory(0x5000000, 1024);
-    start_copyMemory(IWRAMRoutinesROMLocation, dword_3005B00, 7892);
+    start_copyMemory(IWRAMRoutinesROMLocation, sub_3005B00, 7892);
     SetPrimaryToolkitPointers();
     RandomizeExtraToolkitPointers();
     start_800023C();
@@ -56,11 +56,11 @@ void __noreturn start_800023C()
 
 
 // 0x800024c
-int __fastcall start_800024C(int a1, void *a2)
+int __fastcall SetInterruptCallback(int a1, void *a2)
 {
     int v3; // [sp+0h] [bp-4h]
 
-    sub_3005DD4(a1, a2);
+    _SetInterruptCallback(a1, a2);
     return v3;
 }
 
