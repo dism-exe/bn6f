@@ -164,9 +164,6 @@ off_8075604: .word off_8075608
 off_8075608:
 	// <endpool>
 	.word byte_8075614
-	thumb_func_end sub_80755EE
-
 	.word byte_8075708
-	// <endfile>
 	.word byte_807575C
-/*For debugging purposes, connect comment at any range!*/
+	thumb_func_end sub_80755EE

@@ -156,9 +156,6 @@ sub_807948C:
 	pop {pc}
 off_80794A0: .word pt_80794A4
 pt_80794A4:
-	// <endpool> <endfile>
 	.word byte_80794AC
 	.word byte_80794EC
 	thumb_func_end sub_807948C
-
-/*For debugging purposes, connect comment at any range!*/

@@ -143,21 +143,12 @@ off_807CFA0: .word off_807CFB0
 	.word off_807CFB0
 off_807CFB0: .word dword_8618DFC
 	.word 0x6008020
+	.word byte_8618E40
+	.word 0x1800
+	.word byte_8618F50
+	.word palette_3001960
+	.word 0x20
 	thumb_func_end sub_807CF24
-
-	thumb_local_start
-sub_807CFB8:
-	ldrh r0, [r0,#0x32]
-	lsr r1, r4, #1
-	add r0, r0, r0
-	lsl r0, r0, #0
-	ldrh r0, [r2,#0x3a]
-	lsr r1, r4, #1
-	add r0, r4, r5
-	lsl r0, r0, #0xc
-	lsl r0, r4, #0
-	lsl r0, r0, #0
-	thumb_func_end sub_807CFB8
 
 	thumb_func_start sub_807CFCC
 sub_807CFCC:
@@ -211,11 +202,8 @@ sub_807CFFC:
 	pop {pc}
 off_807D010: .word pt_807D014
 pt_807D014:
-	// <endpool> <endfile>
 	.word byte_807D024
 	.word byte_807D0B4
 	.word byte_807D1A8
 	.word byte_807D210
 	thumb_func_end sub_807CFFC
-
-/*For debugging purposes, connect comment at any range!*/

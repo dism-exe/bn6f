@@ -206,10 +206,7 @@ sub_807AAD6:
 	.balign 4, 0x00
 off_807AAEC: .word pt_807AAF0
 pt_807AAF0:
-	// <endpool> <endfile>
 	.word byte_807AAFC
 	.word byte_807AC18
 	.word byte_807ACA8
 	thumb_func_end sub_807AAD6
-
-/*For debugging purposes, connect comment at any range!*/

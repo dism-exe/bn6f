@@ -103,7 +103,7 @@ asm10:
 	.include "maps/Comps1/warps_gfx_anims.s"
 	.include "maps/Comps1/loader.s"
 	.include "maps/Comps1/data.s"
-	
+
 	.include "maps/Comps2/warps_gfx_anims.s"
 	.include "maps/Comps2/loader.s"
 	.include "maps/Comps2/data.s"
@@ -112,30 +112,30 @@ asm10:
 	.include "maps/CentralArea/loader.s"
 	.include "maps/CentralArea/data.s"
 
-	.include "data/dat14.s"
-asm15:
-	.include "asm/asm15.s"
-dat15:
-	.include "data/dat15.s"
-asm16:
-	.include "asm/asm16.s"
-dat16:
-	.include "data/dat16.s"
-asm17:
-	.include "asm/asm17.s"
-dat17:
-	.include "data/dat17.s"
-asm18:
-	.include "asm/asm18.s"
-dat18:
-	.include "data/dat18.s"
-asm19:
-	.include "asm/asm19.s"
-dat19:
-	.include "data/dat19.s"
-asm20:
-	.include "asm/asm20.s"
-dat20:
+	.include "maps/SeasideArea/warps_gfx_anims.s"
+	.include "maps/SeasideArea/loader.s"
+	.include "maps/SeasideArea/data.s"
+
+	.include "maps/GreenArea/warps_gfx_anims.s"
+	.include "maps/GreenArea/loader.s"
+	.include "maps/GreenArea/data.s"
+
+	.include "maps/Underground/warps_gfx_anims.s"
+	.include "maps/Underground/loader.s"
+	.include "maps/Underground/data.s"
+
+	.include "maps/SkyACDCArea/warps_gfx_anims.s"
+	.include "maps/SkyACDCArea/loader.s"
+	.include "maps/SkyACDCArea/data.s"
+
+	.include "maps/Undernet/warps_gfx_anims.s"
+	.include "maps/Undernet/loader.s"
+	.include "maps/Undernet/data.s"
+
+	.include "maps/GraveyardImmortalArea/warps_gfx_anims.s"
+	.include "maps/GraveyardImmortalArea/loader.s"
+	.include "maps/GraveyardImmortalArea/data.s"
+
 	.include "data/dat20.s"
 asm21:
 	.include "asm/asm21.s"
