@@ -11078,7 +11078,7 @@ unsigned int __fastcall __noreturn sub_81387D8(int a1, int a2, int a3, int a4)
     sub_80027F4();
     sub_8002668();
     sub_80303F2();
-    sub_8030AA4(0, 2);
+    decompressCoordEventData_8030aa4(0, 2);
     camera_802FF4C(0, 0, 0, 208);
     sub_80301B2(0, v9);
     SetCameraXYZ(0, 0, 0);

@@ -9,7 +9,7 @@ main_gameRoutine:
 	bl main_pollGeneralLCDStatus_STAT_LYC_ // () -> void
 	bl main_awaitFrame
 	bl sub_80007BE
-	bl sub_80019A0
+	bl CallBGScrollCallback1
 	bl render_800172C
 	bl copyObjAttributesToIWRAM_802FE0C
 	bl ProcessGFXTransferQueue
@@ -38,8 +38,8 @@ main_gameRoutine:
 	bl subsystem_triggerTransition_800630A
 loc_800032A:
 	bl chatbox_onUpdate
-	bl cb_call_200A880
-	bl PET_onUpdate_8001B94
+	bl CallBGScrollCallback0
+	bl ProcessGFXAnims
 	ldr r0, off_8000344 // =sub_3006814+1
 	mov lr, pc
 	bx r0
@@ -233,13 +233,13 @@ loc_80004AA:
 	beq loc_80004C0
 	ldr r0, off_8000568 // =0xc0
 loc_80004C0:
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl main_zeroFill_80017EC
 	bl render_800172C
 	bl copyMemory_8001850
 	bl main_static_8000570
 	bl zeroFill_80007B2
-	bl sub_8001974
+	bl SetDummyBGScrollCallbacks
 	bl zeroFill_80024A2
 	bl sub_8003962
 	bl zeroFill_8003AB2
@@ -293,7 +293,7 @@ main_static_8000570:
 	bl sub_814EE2C
 	mov r0, #8
 	ldr r1, off_80005A8 // =sub_3005D78+1
-	bl start_800024C
+	bl SetInterruptCallback
 	ldr r0, off_80005A0 // =GeneralLCDStatus_STAT_LYC_
 	ldrh r1, [r0]
 	mov r2, #0xff

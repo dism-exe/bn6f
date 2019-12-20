@@ -23,7 +23,7 @@ _GameEntryPoint:
 	msr CPSR_cf, r0
 	ldr r13, off_80001F4 // =iStack 
 	ldr r0, off_80001F8 // =byte_3007FFC 
-	ldr r1, off_80001FC // =dword_3005B00 
+	ldr r1, off_80001FC // =sub_3005B00 
 	str r1, [r0]
 	ldr r0, off_8000200 // =GamePakWaitstateControl 
 	ldr r1, dword_8000204 // =0x45b4 
@@ -56,7 +56,7 @@ _GameEntryPoint:
 	// src
 	ldr r0, mem // =IWRAMRoutinesROMLocation 
 	// dest
-	ldr r1, off_800020C // =dword_3005B00 
+	ldr r1, off_800020C // =sub_3005B00 
 	// size
 	ldr r2, IWRAMRoutinesSize_p // =0x1ed4 
 	bl start_copyMemory // (void *src, void *dest, int size) -> void
@@ -113,11 +113,11 @@ off_80001EC: .word byte_3007F60
 off_80001F0: .word byte_3007FE0
 off_80001F4: .word iStack
 off_80001F8: .word byte_3007FFC
-off_80001FC: .word dword_3005B00
+off_80001FC: .word sub_3005B00
 off_8000200: .word GamePakWaitstateControl
 dword_8000204: .word 0x45B4
 mem: .word IWRAMRoutinesROMLocation
-off_800020C: .word dword_3005B00
+off_800020C: .word sub_3005B00
 IWRAMRoutinesSize_p: .word 0x1ED4
 off_8000214: .word SetPrimaryToolkitPointers+1
 off_8000218: .word RandomizeExtraToolkitPointers+1
@@ -143,16 +143,17 @@ start_800023C:
 off_8000248: .word sub_3005DA0+1
 	thumb_func_end start_800023C
 
-	thumb_func_start start_800024C
-start_800024C:
+	thumb_func_start SetInterruptCallback
+// set the callback for interrupt r0/4 to callback r1
+SetInterruptCallback:
 	push {lr}
-	ldr r2, off_8000258 // =sub_3005DD4+1 
+	ldr r2, off_8000258 // =_SetInterruptCallback+1 
 	mov lr, pc
 	bx r2
 	pop {r0}
 	bx r0
-off_8000258: .word sub_3005DD4+1
-	thumb_func_end start_800024C
+off_8000258: .word _SetInterruptCallback+1
+	thumb_func_end SetInterruptCallback
 
 	thumb_local_start
 start_dead_800025C:

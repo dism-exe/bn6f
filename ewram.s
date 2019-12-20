@@ -597,32 +597,36 @@ byte_2009470:: // 0x2009470
 	.space 16
 unk_2009480:: // 0x2009480
 	.space 64
-byte_20094C0:: // 0x20094c0
-	s_20094c0_struct eS20094c0_0
-	s_20094c0_struct eS20094c0_1
-	s_20094c0_struct eS20094c0_2
-	s_20094c0_struct eS20094c0_3
-	s_20094c0_struct eS20094c0_4
-	s_20094c0_struct eS20094c0_5
-	s_20094c0_struct eS20094c0_6
-	s_20094c0_struct eS20094c0_7
-	s_20094c0_struct eS20094c0_8
-	s_20094c0_struct eS20094c0_9
-	s_20094c0_struct eS20094c0_10
-	s_20094c0_struct eS20094c0_11
-	s_20094c0_struct eS20094c0_12
-	s_20094c0_struct eS20094c0_13
-	s_20094c0_struct eS20094c0_14
-	s_20094c0_struct eS20094c0_15
-	s_20094c0_struct eS20094c0_16
-	s_20094c0_struct eS20094c0_17
+
+eGFXAnimStates:: // 0x20094c0
+	gfx_anim_state_struct eGFXAnimState0
+	gfx_anim_state_struct eGFXAnimState1
+	gfx_anim_state_struct eGFXAnimState2
+	gfx_anim_state_struct eGFXAnimState3
+	gfx_anim_state_struct eGFXAnimState4
+	gfx_anim_state_struct eGFXAnimState5
+	gfx_anim_state_struct eGFXAnimState6
+	gfx_anim_state_struct eGFXAnimState7
+	gfx_anim_state_struct eGFXAnimState8
+	gfx_anim_state_struct eGFXAnimState9
+	gfx_anim_state_struct eGFXAnimState10
+	gfx_anim_state_struct eGFXAnimState11
+	gfx_anim_state_struct eGFXAnimState12
+	gfx_anim_state_struct eGFXAnimState13
+	gfx_anim_state_struct eGFXAnimState14
+	gfx_anim_state_struct eGFXAnimState15
+	gfx_anim_state_struct eGFXAnimState16
+	gfx_anim_state_struct eGFXAnimState17
+eGFXAnimStatesEnd::
 
 	.space 32
 
-dword_2009690:: // 0x2009690
-	.space 4
-dword_2009694:: // 0x2009694
-	.space 12
+eBGScrollCBCounters:: // 0x2009690
+	bg_scroll_cb_counters_struct eBGScrollCBCounters
+eBGScrollCBCountersEnd:: // 0x2009698
+
+	.space 8
+
 unk_20096A0:: // 0x20096a0
 	.space 3
 byte_20096A3:: // 0x20096a3
@@ -661,16 +665,32 @@ unk_2009750:: // 0x2009750
 	.space 64
 byte_2009790:: // 0x2009790
 	.space 16
-byte_20097A0:: // 0x20097a0
-	.space 1
-byte_20097A1:: // 0x20097a1
-	.space 1
-byte_20097A2:: // 0x20097a2
-	.space 2
-dword_20097A4:: // 0x20097a4
-	.space 4
-dword_20097A8:: // 0x20097a8
-	.space 256
+
+ePalette20097a0:: // 0x20097a0
+	palette_20097a0_struct ePalette20097a0_0
+	palette_20097a0_struct ePalette20097a0_1
+	palette_20097a0_struct ePalette20097a0_2
+	palette_20097a0_struct ePalette20097a0_3
+	palette_20097a0_struct ePalette20097a0_4
+	palette_20097a0_struct ePalette20097a0_5
+	palette_20097a0_struct ePalette20097a0_6
+	palette_20097a0_struct ePalette20097a0_7
+	palette_20097a0_struct ePalette20097a0_8
+	palette_20097a0_struct ePalette20097a0_9
+	palette_20097a0_struct ePalette20097a0_10
+	palette_20097a0_struct ePalette20097a0_11
+	palette_20097a0_struct ePalette20097a0_12
+	palette_20097a0_struct ePalette20097a0_13
+	palette_20097a0_struct ePalette20097a0_14
+	palette_20097a0_struct ePalette20097a0_15
+	palette_20097a0_struct ePalette20097a0_16
+	palette_20097a0_struct ePalette20097a0_17
+	palette_20097a0_struct ePalette20097a0_18
+	palette_20097a0_struct ePalette20097a0_19
+	palette_20097a0_struct ePalette20097a0_20
+	palette_20097a0_struct ePalette20097a0_21
+ePalette20097a0End:: // 0x20098a8
+
 byte_20098A8:: // 0x20098a8
 	.space 1
 byte_20098A9:: // 0x20098a9
@@ -848,12 +868,13 @@ word_200A6F6:: // 0x200a6f6
 	.space 378
 dword_200A870:: // 0x200a870
 	.space 16
-doff_200A880:: // 0x200a880
+
+eBGScrollCallbacks:: // 0x200a880
+	bg_scroll_callbacks_struct eBGScrollCallbacks
+eBGScrollCallbacksEnd:: // 0x200a88c
+
 	.space 4
-doff_200A884:: // 0x200a884
-	.space 4
-off_200A888:: // 0x200a888
-	.space 8
+
 dword_200A890:: // 0x200a890
 	.space 4
 dword_200A894:: // 0x200a894
@@ -882,8 +903,11 @@ byte_200AC34:: // 0x200ac34
 	.space 1
 byte_200AC35:: // 0x200ac35
 	.space 11
-unk_200AC40:: // 0x200ac40
-	.space 64
+
+eRenderInfo:: // 0x200ac40
+	render_info_struct eRenderInfo
+eRenderInfoEnd::
+
 eS200AC80:: // 0x200ac80
 	.space 4
 word_200AC84:: // 0x200ac84

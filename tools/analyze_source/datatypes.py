@@ -614,12 +614,13 @@ class Toolkit(Struct):
         return {
             #0x0: {Size.WORD: StructField("_MainJumptableIndexPtr", RAMPointer())},
             0x4: {Size.WORD: StructField("_JoypadPtr", AnonMemory(Joypad))},
-            #0x8: {Size.WORD: StructField("_RenderInfoPtr", AnonMemory(RenderInfo))},
-            #0xc: {Size.WORD: StructField("_CameraPtr", AnonMemory(Camera))},
+            0x8: {Size.WORD: StructField("_RenderInfoPtr", AnonMemory(RenderInfo))},
+            0xc: {Size.WORD: StructField("_CameraPtr", AnonMemory(Camera))},
             #0x10: {Size.WORD: StructField("_S2011c50_Ptr", AnonMemory(S2011c50))},
-            #0x14: {Size.WORD: StructField("_Unk2011bb0_Ptr", AnonMemory(Unk2011bb0))},
+            0x14: {Size.WORD: StructField("_Warp2011bb0_Ptr", AnonMemory(Warp2011bb0))},
             0x18: {Size.WORD: StructField("_BattleStatePtr", AnonMemory(BattleState))},
             0x2c: {Size.WORD: StructField("_ChatboxPtr", AnonMemory(Chatbox))},
+            0x3c: {Size.WORD: StructField("_GameStatePtr", AnonMemory(GameState))},
             #0x1c: {Size.WORD: StructField("_Unk200f3a0_Ptr", AnonMemory(Unk200f3a0))},
         }
 
@@ -634,6 +635,88 @@ class Toolkit(Struct):
     @property
     def unimplemented_field_offset_ranges(self):
         return Toolkit._unimplemented_field_offset_ranges
+
+# 0x0: {Size.WORD: StructField("_Unk_00", UnkMemory())},
+            # 0x4: {Size.WORD: StructField("_Unk_04", UnkMemory())},
+            # 0x8: {Size.WORD: StructField("_Unk_08", UnkMemory())},
+            # 0xc: {Size.WORD: StructField("_Unk_0c", UnkPrimitiveMemory())},
+            
+class Struct806DA90(Struct):
+    def __init__(self):
+        super().__init__()
+
+    def generate_basic_struct_fields(self):
+        return {}
+
+    def get_prefix(self, offset):
+        return "oStruct806DA90"
+
+    @property
+    def struct_name(self):
+        return "Struct806DA90"
+
+    _unimplemented_field_offset_ranges = (0x0, 0x400)
+    @property
+    def unimplemented_field_offset_ranges(self):
+        return Struct806DA90._unimplemented_field_offset_ranges
+
+    def struct_offset_in_marked_accesses_case_1_range(self, offset):
+        return False
+
+    def on_nan_struct_offset(self, fileline, offset):
+        fileline_msg("Struct806DA90NanOffsetWarning: Offset is NaN!", fileline)
+        return Struct.barebones_struct_field
+
+class RenderInfo(Struct):
+    def __init__(self):
+        super().__init__()
+
+    def generate_basic_struct_fields(self):
+        return {}
+
+    @property
+    def struct_name(self):
+        return "RenderInfo"
+
+    def get_prefix(self, offset):
+        return "oRenderInfo"
+
+    _unk_field_offset_ranges = (0x0, 0x40)
+    @property
+    def unk_field_offset_ranges(self):
+        return RenderInfo._unk_field_offset_ranges
+
+    def on_nan_struct_offset(self, fileline, offset):
+        fileline_msg("RenderInfoNanOffsetWarning: Offset is NaN!", fileline)
+        return Struct.barebones_struct_field
+
+class Warp2011bb0(Struct):
+    def __init__(self):
+        super().__init__()
+
+    def generate_basic_struct_fields(self):
+        return {
+            0x10: {Size.BYTE: StructField("_Unk_10", UnkPrimitiveMemory())},
+            0x11: {Size.BYTE: StructField("_Unk_11", UnkPrimitiveMemory())},
+            0x12: {Size.BYTE: StructField("_Unk_12", UnkPrimitiveMemory())},
+            0x14: {Size.WORD: StructField("_Ptr_14", UnkMemory())},
+        }
+
+    @property
+    def struct_name(self):
+        return "Warp2011bb0"
+
+    def get_prefix(self, offset):
+        return "oWarp2011bb0"
+
+    _unk_field_offset_ranges = (0x0, 0x20)
+    @property
+    def unk_field_offset_ranges(self):
+        return Warp2011bb0._unk_field_offset_ranges
+
+    def on_nan_struct_offset(self, fileline, offset):
+        fileline_msg("Warp2011bb0NanOffsetWarning: Offset is NaN!", fileline)
+        return Struct.barebones_struct_field
 
 class Camera(Struct):
     def __init__(self):
@@ -654,13 +737,17 @@ class Camera(Struct):
             0x48: {Size.WORD: StructField("_Unk_48", UnkPrimitiveMemory())}
         }
 
+    @property
+    def struct_name(self):
+        return "Camera"
+
     def get_prefix(self, offset):
         return "oCamera"
 
     _unk_field_offset_ranges = (0x0, 0x4c)
     @property
     def unk_field_offset_ranges(self):
-        return Camera._unk_field_offset_ranges    
+        return Camera._unk_field_offset_ranges
 
 class Joypad(Struct):
     def __init__(self):
@@ -876,6 +963,81 @@ class OWPlayerObject(Struct):
 
     def on_nan_struct_offset(self, fileline, offset):
         fileline_msg("OWPlayerObjectNanOffsetWarning: Offset is NaN!", fileline)
+        return Struct.barebones_struct_field
+
+class GameState(Struct):
+    def __init__(self):
+        super().__init__()
+
+    def generate_basic_struct_fields(self):
+        return {
+            0x0: {Size.BYTE: StructField("_SubsystemIndex", UnkPrimitiveMemory())},
+            0x1: {Size.BYTE: StructField("_CurPETNavi", UnkPrimitiveMemory())},
+            0x2: {Size.BYTE: StructField("_Unk_02", UnkPrimitiveMemory())},
+            0x3: {Size.BYTE: StructField("_Unk_03", UnkPrimitiveMemory())},
+            0x4: {Size.HWORD: StructField("_MapId", UnkPrimitiveMemory())},
+            0x4: {Size.BYTE: StructField("_MapGroup", UnkPrimitiveMemory())},
+            0x5: {Size.BYTE: StructField("_MapNumber", UnkPrimitiveMemory())},
+            0x6: {Size.BYTE: StructField("_GameProgress", UnkPrimitiveMemory())},
+            0x7: {Size.BYTE: StructField("_Unk_07", UnkPrimitiveMemory())},
+            0x8: {Size.BYTE: StructField("_Unk_08", UnkPrimitiveMemory())},
+            0x9: {Size.BYTE: StructField("_Unk_09", UnkPrimitiveMemory())},
+            0xa: {Size.BYTE: StructField("_BattlePaused", UnkPrimitiveMemory())},
+            0xb: {Size.BYTE: StructField("_Unk_0b", UnkPrimitiveMemory())},
+            0xc: {Size.BYTE: StructField("_LastMapGroup", UnkPrimitiveMemory())},
+            0xd: {Size.BYTE: StructField("_LastMapNumber", UnkPrimitiveMemory())},
+            0xe: {Size.BYTE: StructField("_CoordInteractionValue", UnkPrimitiveMemory())},
+            0xf: {Size.BYTE: StructField("_BGMusicIndicator", UnkPrimitiveMemory())},
+            0x10: {Size.BYTE: StructField("_Unk_10", UnkPrimitiveMemory())},
+            0x11: {Size.BYTE: StructField("_Unk_11", UnkPrimitiveMemory())},
+            0x12: {Size.BYTE: StructField("_Unk_12", UnkPrimitiveMemory())},
+            0x13: {Size.BYTE: StructField("_Unk_13", UnkPrimitiveMemory())},
+            0x14: {Size.BYTE: StructField("_Unk_14", UnkPrimitiveMemory())},
+            0x15: {Size.BYTE: StructField("_Unk_15", UnkPrimitiveMemory())},
+            0x16: {Size.BYTE: StructField("_Unk_16", UnkPrimitiveMemory())},
+            0x17: {Size.BYTE: StructField("_Unk_17", UnkPrimitiveMemory())},
+            0x18: {Size.WORD: StructField("_OverworldPlayerObjectPtr", AnonMemory(OWPlayerObject))},
+            0x1c: {Size.WORD: StructField("_CurBattleDataPtr", UnkMemory())},
+            0x20: {Size.WORD: StructField("_Ptr_20", UnkMemory())},
+            0x24: {Size.WORD: StructField("_PlayerX", UnkPrimitiveMemory())},
+            0x28: {Size.WORD: StructField("_PlayerY", UnkPrimitiveMemory())},
+            0x2c: {Size.WORD: StructField("_Unk_2c", UnkPrimitiveMemory())},
+            0x30: {Size.WORD: StructField("_facingDirectionAfterWarp_30", UnkPrimitiveMemory())},
+            0x34: {Size.WORD: StructField("_Unk_34", UnkMemory())},
+            0x38: {Size.WORD: StructField("_Unk_38", UnkMemory())},
+            0x3c: {Size.WORD: StructField("_Unk_3c", UnkMemory())},
+            0x40: {Size.WORD: StructField("_Unk_40", UnkMemory())},
+            0x44: {Size.WORD: StructField("_Unk_44", UnkMemory())},
+            0x48: {Size.WORD: StructField("_Unk_48", UnkMemory())},
+            0x4c: {Size.WORD: StructField("_Unk_4c", UnkMemory())},
+            0x50: {Size.WORD: StructField("_Unk_50", UnkMemory())},
+            0x54: {Size.WORD: StructField("_Unk_54", UnkMemory())},
+            0x58: {Size.WORD: StructField("_Unk_58", UnkMemory())},
+            0x5c: {Size.WORD: StructField("_ProtectedZenny", UnkPrimitiveMemory())},
+            0x60: {Size.WORD: StructField("_ProtectedBugfrags", UnkPrimitiveMemory())},
+            0x64: {Size.WORD: StructField("_Unk_64", UnkMemory())},
+            0x68: {Size.WORD: StructField("_Unk_68", UnkMemory())},
+            0x6c: {Size.WORD: StructField("_Unk_6c", UnkMemory())},
+            0x70: {Size.WORD: StructField("_Unk_70", UnkMemory())},
+            0x74: {Size.WORD: StructField("_Unk_74", UnkMemory())},
+            0x78: {Size.WORD: StructField("_Unk_78", UnkMemory())},
+            0x7c: {Size.WORD: StructField("_Unk_7c", UnkMemory())},
+        }
+
+    _unk_field_offset_ranges = (0x0, 0x80)
+    @property
+    def unk_field_offset_ranges(self):
+        return GameState._unk_field_offset_ranges
+
+    @property
+    def struct_name(self):
+        return "GameState"
+
+    def get_prefix(self, offset):
+        return "oGameState"
+
+    def on_nan_struct_offset(self, fileline, offset):
+        fileline_msg("GameStateNanOffsetWarning: Offset is NaN!", fileline)
         return Struct.barebones_struct_field
 
 class Chatbox(Struct):

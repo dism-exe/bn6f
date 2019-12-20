@@ -1147,14 +1147,14 @@ MapScriptCutsceneCmd_write_eStruct2001c04_byte: // 8035F0E
 
 	thumb_local_start
 // 0x2c/0x36 word1
-// call sub_8001B1C(r0=word1)
-// word1 - argument to sub_8001B1C
+// call LoadGFXAnim(r0=word1)
+// word1 - argument to LoadGFXAnim
 MapScriptCutsceneCmd_call_sub_8001B1C: // 8035F2A
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl sub_8001B1C
+	bl LoadGFXAnim
 	add r7, #5
 	mov r0, #1
 	pop {pc}
@@ -1162,14 +1162,14 @@ MapScriptCutsceneCmd_call_sub_8001B1C: // 8035F2A
 
 	thumb_local_start
 // 0x2d/0x37 word1
-// do sub_8002354(r0=word1)
-// r0 is a list of pointers for sub_8001B1C, terminated by negative
+// do LoadGFXAnims(r0=word1)
+// r0 is a list of pointers for LoadGFXAnim, terminated by negative
 MapScriptCutsceneCmd_call_sub_8001B1C_multiple: // 8035F3E
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl sub_8002354
+	bl LoadGFXAnims
 	add r7, #5
 	mov r0, #1
 	pop {pc}
@@ -1177,7 +1177,7 @@ MapScriptCutsceneCmd_call_sub_8001B1C_multiple: // 8035F3E
 
 	thumb_local_start
 // 0x2e/0x38
-// call sub_8030A30, then sub_8035194
+// call sub_8030A30, then LoadBGAnimForMapGroup
 // uses map group/number as args
 MapScriptCutsceneCmd_call_sub_8030A30_8035194: // 8035F52
 	push {lr}
@@ -1185,8 +1185,8 @@ MapScriptCutsceneCmd_call_sub_8030A30_8035194: // 8035F52
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	ldrb r0, [r1,#oGameState_MapGroup]
 	ldrb r1, [r1,#oGameState_MapNumber]
-	bl map_8030A30
-	bl sub_8035194
+	bl LoadGFXAnimsForMapGroup
+	bl LoadBGAnimForMapGroup
 	add r7, #1
 	mov r0, #1
 	pop {pc}
@@ -1194,8 +1194,8 @@ MapScriptCutsceneCmd_call_sub_8030A30_8035194: // 8035F52
 
 	thumb_local_start
 // 0x2f/0x39 byte1
-// if byte1 == 0xff, call sub_8001B6C with r0 as 0x0 to 0x11
-// else, call sub_8001B6C with r0=byte1
+// if byte1 == 0xff, call TerminateGFXAnim with r0 as 0x0 to 0x11
+// else, call TerminateGFXAnim with r0=byte1
 MapScriptCutsceneCmd_cmd_8035F6A: // 8035F6A
 	push {lr}
 	mov r6, #1
@@ -1208,7 +1208,7 @@ loc_8035F7A:
 	mov r4, #0
 loc_8035F7C:
 	mov r0, r4
-	bl sub_8001B6C
+	bl TerminateGFXAnim
 	add r4, #1
 	cmp r4, #0x12
 	blt loc_8035F7C
@@ -1216,7 +1216,7 @@ loc_8035F7C:
 	mov r0, #1
 	pop {pc}
 loc_8035F8E:
-	bl sub_8001B6C
+	bl TerminateGFXAnim
 	add r7, #2
 	mov r0, #1
 	pop {pc}
@@ -3180,13 +3180,13 @@ CutsceneCameraCmd_wait_chatbox:
 
 	thumb_local_start
 // 0x30 word1
-// call sub_8001B1C with r0=word1
+// call LoadGFXAnim with r0=word1
 CutsceneCameraCmd_call_sub_8001B1C:
 	push {lr}
 	push {r1}
 	mov r0, #1
 	bl ReadCutsceneCameraScriptWord
-	bl sub_8001B1C
+	bl LoadGFXAnim
 	pop {r1}
 	mov r0, #1
 	add r1, #5
@@ -3195,13 +3195,13 @@ CutsceneCameraCmd_call_sub_8001B1C:
 
 	thumb_local_start
 // 0x34 word1
-// call sub_8001B6C with r0=word1
+// call TerminateGFXAnim with r0=word1
 CutsceneCameraCmd_call_sub_8001B6C:
 	push {lr}
 	push {r1}
 	mov r0, #1
 	bl ReadCutsceneCameraScriptByte
-	bl sub_8001B6C
+	bl TerminateGFXAnim
 	pop {r1}
 	mov r0, #1
 	add r1, #2
@@ -5462,10 +5462,10 @@ CutsceneCmd_nop_8038266:
 
 	thumb_local_start
 // 0x5f
-// call sub_8001974
+// call SetDummyBGScrollCallbacks
 CutsceneCmd_call_sub_8001974:
 	push {lr}
-	bl sub_8001974
+	bl SetDummyBGScrollCallbacks
 	add r7, #1
 	mov r0, #1
 	pop {pc}

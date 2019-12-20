@@ -11,7 +11,7 @@ unsigned int sub_807A8E0()
     *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_8079F74 + *(v0 + 5));
     sub_807A9CC();
     sub_803037C(*(v0 + 4), *(v0 + 5));
-    sub_8030AA4(*(v0 + 4), *(v0 + 5));
+    decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
     sub_8030472();
@@ -26,7 +26,7 @@ unsigned int sub_807A8E0()
 // 0x807a974
 int __fastcall sub_807A974(int a1, int a2)
 {
-    return sub_8002354(off_807A988[a2]);
+    return LoadGFXAnims(off_807A988[a2]);
 }
 
 
@@ -40,10 +40,10 @@ void sub_807A9CC()
 
     v1 = *(v0 + oToolkit_GameStatePtr);
     v2 = &off_807AA34 + 4 * *(v1 + oGameState_MapNumber);
-    sub_800195C(*v2, v2[1], v2[2]);
-    v3 = sub_8001780();
-    sRender_08_setRenderingState(v3 | v2[3]);
-    sub_80304E8(off_807AA68[*(v1 + oGameState_MapNumber)]);
+    SetBGScrollCallbacks(*v2, v2[1], v2[2]);
+    v3 = GetRenderInfoLCDControl();
+    SetRenderInfoLCDControl(v3 | v2[3]);
+    LoadBGAnimData(off_807AA68[*(v1 + oGameState_MapNumber)]);
 }
 
 
@@ -57,9 +57,9 @@ int sub_807A9FE()
 
     v1 = *(v0 + oToolkit_GameStatePtr);
     v2 = &off_807AA34 + 4 * *(v1 + oGameState_MapNumber);
-    sub_800195C(*v2, v2[1], v2[2]);
-    v3 = sub_8001780();
-    sRender_08_setRenderingState(v3 | v2[3]);
+    SetBGScrollCallbacks(*v2, v2[1], v2[2]);
+    v3 = GetRenderInfoLCDControl();
+    SetRenderInfoLCDControl(v3 | v2[3]);
     return sub_8030540(off_807AA68[*(v1 + oGameState_MapNumber)]);
 }
 

@@ -45,14 +45,20 @@
 	u32 Unk_40 // loc=0x40
 	u32 Unk_44 // loc=0x44
 	// same struct as Unk_3_4 to Unk_44
-	u8_arr Unk_48, 0x14 // loc=0x48
+	u32 Unk_48 // loc=0x48
+	u32 Unk_4c // loc=0x4c
+	u32 Unk_50 // loc=0x50
+	u32 Unk_54 // loc=0x54
+	u32 Unk_58 // loc=0x58
 	u32 ProtectedZenny // loc=0x5c
 	u32 ProtectedBugfrags // loc=0x60
 	u32 Unk_64 // loc=0x64
 	u32 Unk_68 // loc=0x68
 	u32 Unk_6c // loc=0x6c
 	u32 Unk_70 // loc=0x70
-	u8_arr Unk_74, 0xc // loc=0x74
+	u32 Unk_74 // loc=0x74
+	u32 Unk_78 // loc=0x78
+	u32 Unk_7c // loc=0x7c
 	u0 Size // 0x80
 	restore_struct_label
 	.endm

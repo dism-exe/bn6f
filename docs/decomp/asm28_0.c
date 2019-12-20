@@ -3617,7 +3617,7 @@ void sub_809E04C()
 
 
 // 0x809e064
-int __fastcall sub_809E064(int a1, int a2, int a3, int a4)
+int __fastcall spawnOWPlayerObjectForEnterMap_809e064(int a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r10

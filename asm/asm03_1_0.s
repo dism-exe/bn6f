@@ -1046,7 +1046,7 @@ sub_80341F8:
 	mov r0, #4
 	strb r0, [r5]
 	ldr r0, off_8034214 // =0x40
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #SONG_TRANSMISSION
@@ -1104,7 +1104,7 @@ sub_8034268:
 	bl ZeroFillGFX30025c0
 	bl decompJackInAnimationGfx_8034314 // () -> void
 	ldr r0, dword_803429C // =0x1341
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	ldr r0, off_80342A0 // =0x50
 	strh r0, [r5,#4]
 	mov r0, #0
@@ -1255,7 +1255,7 @@ loc_80343D0:
 	strh r1, [r5,#6]
 	mov r7, r3
 	ldr r0, [r7,#4]
-	ldr r1, off_8034458 // =byte_3001960 
+	ldr r1, off_8034458 // =palette_3001960 
 	mov r2, #0x20 
 	bl QueueWordAlignedGFXTransfer
 	// j
@@ -1296,7 +1296,7 @@ dword_8034408: .word 0x2
 	.word byte_86C2380
 	.word 0x2
 	.word 0x0
-off_8034458: .word byte_3001960
+off_8034458: .word palette_3001960
 off_803445C: .word eTileIds2017A04
 Struct8034460:
 	// seaside 1
@@ -1355,15 +1355,16 @@ NPCList_maps00: .word npc_map00_ACDC_804D0B4
 	.word off_805E184
 	.word off_806065C
 	.word off_8062F78
-off_8034654: .word sub_804CF84+1
-	.word sub_804E720+1
-	.word sub_80527F0+1
-	.word sub_80596C8+1
-	.word sub_805DFF0+1
-	.word sub_806044C+1
-	.word sub_8062BCC+1
+RealWorldSpawnMapObjectJumptable:
+	.word ACDCTown_SpawnMapObjectsForMap+1
+	.word CentralTown_SpawnMapObjectsForMap+1
+	.word CyberAcademy_SpawnMapObjectsForMap+1
+	.word SeasideTown_SpawnMapObjectsForMap+1
+	.word GreenTown_SpawnMapObjectsForMap+1
+	.word SkyTown_SpawnMapObjectsForMap+1
+	.word ExpoSite_SpawnMapObjectsForMap+1
 
-maps80_8034670: .word off_80665A4
+InternetMapScriptPointers: .word off_80665A4
 	.word off_80665AC
 	.word off_8067DC8
 	.word off_8067DD4
@@ -1413,18 +1414,18 @@ off_8034728: .word off_80665BC
 	.word pt_8067DEC
 	.word off_806931C
 	.word off_806A284
-	.word 0x0
+	.word NULL
 	.word off_806AE44
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word off_806C804
-	.word 0x0
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
+	.word NULL
 	.word off_806E070
 	.word off_80702EC
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word off_8071ED4
 	.word off_80758C4
 	.word off_807811C
@@ -1433,22 +1434,22 @@ off_8034728: .word off_80665BC
 	.word off_807D320
 	.word off_807F21C
 // JP 0x8035740
-off_8034784: .word sub_806651C+1
-	.word sub_8067D1C+1
-	.word sub_80691D4+1
+UnkInternetMapGroupJumptable_8034784: .word RobotControlComp_UnkFunction_806651c+1
+	.word AquariumComp_UnkFunction_8067d1c+1
+	.word JudgeTreeComp_UnkFunction_80691d4+1
 	.word sub_806A1B4+1
-	.word 0x0
+	.word NULL
 	.word sub_806ACC0+1
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word sub_806C4B0+1
-	.word 0x0
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
+	.word NULL
 	.word sub_806DC0C+1
 	.word sub_806FF08+1
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word sub_8071CC4+1
 	.word sub_80755C4+1
 	.word sub_8077E60+1
@@ -1460,18 +1461,18 @@ NPCList_maps80: .word off_80665B4
 	.word off_8067DE0
 	.word off_8069310
 	.word off_806A278
-	.word 0x0
+	.word NULL
 	.word off_806AE30
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word off_806C7E8
-	.word 0x0
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
+	.word NULL
 	.word off_806E030
 	.word off_80702AC
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word off_8071EC8
 	.word off_80758B8
 	.word off_8078114
@@ -1479,22 +1480,22 @@ NPCList_maps80: .word off_80665B4
 	.word off_807AE04
 	.word off_807D310
 	.word dword_807F210
-off_803483C: .word sub_8066540+1
-	.word sub_8067D46+1
-	.word sub_80691FE+1
+InternetSpawnMapObjectJumptable: .word RobotControlComp_SpawnMapObjectsForMap+1
+	.word AquariumComp_SpawnMapObjectsForMap+1
+	.word JudgeTreeComp_SpawnMapObjectsForMap+1
 	.word sub_806A1DE+1
-	.word 0x0
+	.word NULL
 	.word sub_806AD00+1
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word sub_806C59C+1
-	.word 0x0
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
+	.word NULL
 	.word sub_806DCD4+1
 	.word sub_806FFDA+1
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word sub_8071CEE+1
 	.word sub_80755EE+1
 	.word sub_8077E84+1
@@ -1502,22 +1503,22 @@ off_803483C: .word sub_8066540+1
 	.word sub_807AAD6+1
 	.word sub_807CFFC+1
 	.word sub_807EE92+1
-off_8034898: .word sub_806649C+1
-	.word sub_8067C88+1
-	.word sub_8069140+1
+InternetLoadBGAnimJumptable: .word RobotControlComp_LoadBGAnim+1
+	.word AquariumComp_LoadBGAnim+1
+	.word JudgeTreeComp_LoadBGAnim+1
 	.word sub_806A120+1
-	.word 0x0
+	.word NULL
 	.word sub_806AB94+1
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word sub_806C35C+1
-	.word 0x0
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
+	.word NULL
 	.word sub_806DA58+1
 	.word sub_806FD54+1
-	.word 0x0
-	.word 0x0
+	.word NULL
+	.word NULL
 	.word sub_8071C30+1
 	.word sub_8075530+1
 	.word sub_8077DE0+1
@@ -1631,20 +1632,20 @@ map_8034B4C: // JP 0x8035b08
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl playCertainMapMusicBasedOnEventByte_8036e44
 	bl sub_8035028
-	bl npc_80350A8
+	bl owPlayer_80350a8
 	bl npc_spawnOverworldNPCObjectsForMap
 	pop {r0,r1}
 	push {r0,r1}
 	bl sub_803537C
 	bl sub_80353DA
 	pop {r0,r1}
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_8034B86
 	ldr r4, off_8034BAC // =RealWorldMapScriptPointers
 	b loc_8034B8A
 loc_8034B86:
-	ldr r4, off_8034BB0 // =maps80_8034670
-	sub r0, #0x80
+	ldr r4, off_8034BB0 // =InternetMapScriptPointers
+	sub r0, #INTERNET_MAP_GROUP_START
 loc_8034B8A:
 	lsl r0, r0, #3
 	lsl r3, r1, #2
@@ -1662,7 +1663,7 @@ loc_8034B8A:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8034BAC: .word RealWorldMapScriptPointers
-off_8034BB0: .word maps80_8034670
+off_8034BB0: .word InternetMapScriptPointers
 off_8034BB4: .word unk_2011EA0
 	thumb_func_end map_8034B4C
 
@@ -2080,11 +2081,11 @@ HandleCoordinateInteractionCutscene:
 	cmp r6, #INTERNET_MAP_GROUP_START
 	bge .internetMapGroup
 	ldr r1, off_8034F5C // =off_803461C
-	b .gotCutscenePointers
+	b .gotCoordInteractionTextIndices
 .internetMapGroup
 	ldr r1, off_8034F60 // =off_8034728
 	sub r6, #INTERNET_MAP_GROUP_START
-.gotCutscenePointers
+.gotCoordInteractionTextIndices
 	lsl r6, r6, #2
 	lsl r7, r7, #2
 	ldr r1, [r1,r6]
@@ -2183,7 +2184,7 @@ loc_8035004:
 	mov r1, #0x27
 	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8035020: .word byte_809895C
 off_8035024: .word byte_80989C1
 	thumb_func_end sub_8034FB8
@@ -2198,11 +2199,11 @@ sub_8035028: // JP 0x8035fd8
 	mov r2, #0xff
 	and r0, r2
 	ldrb r7, [r5,#oGameState_MapGroup]
-	cmp r7, #0x80
+	cmp r7, #INTERNET_MAP_GROUP_START
 	blt locret_803504C
-	sub r7, #0x80
+	sub r7, #INTERNET_MAP_GROUP_START
 	lsl r7, r7, #2
-	ldr r6, off_8035050 // =off_8034784
+	ldr r6, off_8035050 // =UnkInternetMapGroupJumptable_8034784
 	ldr r6, [r6,r7]
 	tst r6, r6
 	beq locret_803504C
@@ -2210,8 +2211,8 @@ sub_8035028: // JP 0x8035fd8
 	bx r6
 locret_803504C:
 	pop {r4-r7,pc}
-	.byte 0, 0
-off_8035050: .word off_8034784
+	.balign 4, 0
+off_8035050: .word UnkInternetMapGroupJumptable_8034784
 	thumb_func_end sub_8035028
 
 	thumb_local_start
@@ -2258,16 +2259,16 @@ off_80350A4: .word byte_8098BB8
 	thumb_func_end sub_8035084
 
 	thumb_local_start
-npc_80350A8:
+owPlayer_80350a8:
 	push {r5,lr}
-	bl sub_809E064
+	bl spawnOWPlayerObjectForEnterMap_809e064
 	mov r0, #1
 	mov r1, r5
-	add r1, #0x1c
+	add r1, #oOWPlayerObject_Coords
 	bl camera_writeUnk03_14_80301b2
 	pop {r5,pc}
 	.balign 4, 0x00
-	thumb_func_end npc_80350A8
+	thumb_func_end owPlayer_80350a8
 
 	thumb_local_start
 npc_80350BC:
@@ -2361,10 +2362,10 @@ mapObject_spawnMapObjectsForMap:
 	ldrb r0, [r3,#oGameState_MapGroup]
 	cmp r0, #INTERNET_MAP_GROUP_START
 	bge .internetMapGroup
-	ldr r2, =off_8034654
+	ldr r2, =RealWorldSpawnMapObjectJumptable
 	b .realWorldMapGroup
 .internetMapGroup
-	ldr r2, =off_803483C
+	ldr r2, =InternetSpawnMapObjectJumptable
 	sub r0, #INTERNET_MAP_GROUP_START
 .realWorldMapGroup
 	lsl r0, r0, #2
@@ -2376,8 +2377,8 @@ mapObject_spawnMapObjectsForMap:
 	.pool // 803518C
 	thumb_func_end mapObject_spawnMapObjectsForMap
 
-	thumb_func_start sub_8035194
-sub_8035194:
+	thumb_func_start LoadBGAnimForMapGroup
+LoadBGAnimForMapGroup:
 	push {r4-r7,lr}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
@@ -2386,7 +2387,7 @@ sub_8035194:
 	bge loc_80351A2
 	b locret_80351AE
 loc_80351A2:
-	ldr r2, =off_8034898
+	ldr r2, =InternetLoadBGAnimJumptable
 	sub r0, #INTERNET_MAP_GROUP_START
 	lsl r0, r0, #2
 	ldr r2, [r2,r0]
@@ -2395,7 +2396,7 @@ loc_80351A2:
 locret_80351AE:
 	pop {r4-r7,pc}
 	.pool // 80351B0
-	thumb_func_end sub_8035194
+	thumb_func_end LoadBGAnimForMapGroup
 
 	thumb_func_start npc_freeAllObjectsIfDifferentMap_80351b4
 npc_freeAllObjectsIfDifferentMap_80351b4:
@@ -2641,7 +2642,7 @@ loc_80353EA:
 	push {r4-r7,lr}
 loc_80353EC:
 	ldr r0, off_80353F8 // =off_80353FC
-	bl sub_8002354
+	bl LoadGFXAnims
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -2655,7 +2656,7 @@ off_80353FC: .word byte_80349CC
 sub_8035408:
 	push {r4-r7,lr}
 	ldr r0, off_8035414 // =off_8035418
-	bl sub_8002354
+	bl LoadGFXAnims
 	mov r0, #0
 	pop {r4-r7,pc}
 off_8035414: .word off_8035418
@@ -2676,7 +2677,7 @@ sub_8035424:
 	tst r0, r1
 	bne locret_8035440
 	ldr r0, off_8035444 // =off_8035448
-	bl sub_8002354
+	bl LoadGFXAnims
 locret_8035440:
 	pop {r4-r7,pc}
 	.balign 4, 0x00

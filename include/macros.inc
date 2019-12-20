@@ -9,10 +9,10 @@
 	.endm
 
 	.include "charmap.inc"
+	.include "include/macros/enum.inc"
 	.include "include/macros/label.inc"
 	.include "include/macros/struct.inc"
 	.include "include/macros/rom_struct.inc"
-	.include "include/macros/enum.inc"
 	.include "include/macros/ewram_structs.inc"
 	.include "include/macros/rom_structs.inc"
 	.include "include/macros/function.inc"
@@ -20,6 +20,7 @@
 	.include "include/bytecode/map_script.inc"
 	.include "include/bytecode/cutscene_script.inc"
 	.include "include/bytecode/cutscene_camera_script.inc"
+	.include "include/bytecode/gfx_anim_script.inc"
 
 // some macros illustrating quirks of the gnu assembler macro system
 /*

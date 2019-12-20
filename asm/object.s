@@ -2078,11 +2078,11 @@ loc_800C906:
 	thumb_func_start object_getPanelDataOffset
 object_getPanelDataOffset:
 	push {lr}
-	ldr r2, off_800C914 // =sub_3007958+1 
+	ldr r2, off_800C914 // =_object_getPanelDataOffset+1 
 	mov lr, pc
 	bx r2
 	pop {pc}
-off_800C914: .word sub_3007958+1
+off_800C914: .word _object_getPanelDataOffset+1
 	thumb_func_end object_getPanelDataOffset
 
 	thumb_local_start
@@ -2099,12 +2099,12 @@ off_800C924: .word sub_30078C8+1
 	thumb_local_start
 object_updatePanelParameters:
 	push {lr}
-	ldr r2, off_800C934 // =sub_30078E0+1 
+	ldr r2, off_800C934 // =_object_updatePanelParameters+1 
 	mov lr, pc
 	bx r2
 	pop {pc}
 	.balign 4, 0x00
-off_800C934: .word sub_30078E0+1
+off_800C934: .word _object_updatePanelParameters+1
 	thumb_func_end object_updatePanelParameters
 
 	thumb_func_start object_crackPanel
@@ -2479,7 +2479,7 @@ locret_800CC08:
 	thumb_func_start object_setPanelType
 object_setPanelType:
 	push {r4-r6,lr}
-	ldr r4, off_800CE54 // =sub_30079A4+1 
+	ldr r4, off_800CE54 // =_object_setPanelType+1 
 	mov lr, pc
 	bx r4
 	pop {r4-r6,pc}
@@ -2839,7 +2839,7 @@ object_showPanel:
 locret_800CE50:
 	pop {pc}
 	.balign 4, 0x00
-off_800CE54: .word sub_30079A4+1
+off_800CE54: .word _object_setPanelType+1
 off_800CE58: .word unk_2034010
 off_800CE5C: .word 0x708
 off_800CE60: .word unk_2034010
@@ -4677,7 +4677,7 @@ object_calculateFinalDamage1:
 	mov r4, #0
 	mov r6, #0
 	ldrb r1, [r0,#2]
-	cmp r1, #5
+	cmp r1, #5 // holy panel?
 	bne loc_800E3F6
 	add r4, #1
 loc_800E3F6:
@@ -4685,7 +4685,7 @@ loc_800E3F6:
 	lsl r6, r4
 	sub r6, #1
 	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
-	add r3, #0x82
+	add r3, #oCollisionData_PanelDamage1
 	mov r1, #5
 	mov r0, #0
 loc_800E404:
@@ -4699,7 +4699,7 @@ loc_800E404:
 	bgt loc_800E404
 	bl sub_802CE10
 	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
-	add r3, #0x80
+	add r3, #oCollisionData_FinalDamage
 	strh r0, [r3]
 	pop {r4,r6,pc}
 	thumb_func_end object_calculateFinalDamage1
