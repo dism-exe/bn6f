@@ -668,7 +668,7 @@
 // shared command
 	enum cs_call_sub_8030A30_8035194_cmd // 0x38
 // 0x2e/0x38
-// call sub_8030A30, then sub_8035194
+// call sub_8030A30, then LoadBGAnimForMapGroup
 // uses map group/number as args
 	.macro cs_call_sub_8030A30_8035194
 	.byte cs_call_sub_8030A30_8035194_cmd

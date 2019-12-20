@@ -1443,14 +1443,14 @@ int npc_803516C()
 
 
 // 0x8035194
-int sub_8035194()
+int LoadBGAnimForMapGroup()
 {
     int v0; // r10
     int result; // r0
 
     result = *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup);
     if ( result >= 128 )
-        result = (*(&off_8034898 + result - 128))();
+        result = (*(&InternetLoadBGAnimJumptable + result - 128))();
     return result;
 }
 
@@ -2658,8 +2658,8 @@ signed int sub_8035F52()
     v1 = *(v0 + oToolkit_GameStatePtr);
     v2 = *(v1 + oGameState_MapGroup);
     v3 = *(v1 + oGameState_MapNumber);
-    map_8030A30(v2);
-    sub_8035194();
+    LoadGFXAnimsForMapGroup(v2);
+    LoadBGAnimForMapGroup();
     return 1;
 }
 

@@ -46,8 +46,8 @@ byte_8066446: .byte 0x1C, 0xB, 0x1C, 0xC, 0x1C, 0x1A, 0x1C, 0xE, 0xFF
 	.byte 0xFF
 	thumb_func_end RobotControlComp_EnterMapGroup
 
-	thumb_func_start RobotControlComp_sub_8002354_8066450
-RobotControlComp_sub_8002354_8066450:
+	thumb_func_start RobotControlComp_LoadGFXAnims
+RobotControlComp_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_8066460 // =off_8066464 
@@ -70,7 +70,7 @@ off_8066484: .word off_8066048
 	.word byte_8066328
 	.word byte_8066368
 	.word 0xFFFFFFFF
-	thumb_func_end RobotControlComp_sub_8002354_8066450
+	thumb_func_end RobotControlComp_LoadGFXAnims
 
 	thumb_func_start RobotControlComp_LoadBGAnim
 RobotControlComp_LoadBGAnim:
@@ -95,7 +95,7 @@ RobotControlComp_LoadBGAnim:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80664D0: .word off_80664D4
 off_80664D4:
 	bg_scroll_callbacks_data_struct [

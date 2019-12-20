@@ -26,7 +26,7 @@ char (*CentralTown_EnterMapGroup())[8]
 
 
 // 0x804e6d0
-int __fastcall CentralTown_sub_8002354_804e6d0(int a1, int a2)
+int __fastcall CentralTown_LoadGFXAnims(int a1, int a2)
 {
     return LoadGFXAnims(off_804E6E4[a2]);
 }

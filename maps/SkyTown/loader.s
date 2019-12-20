@@ -54,8 +54,8 @@ byte_80603FC: .byte 0xFF, 0xFF
 byte_80603FE: .byte 0x1C, 0x65, 0x18, 0x24, 0x18, 0x25, 0xFF, 0xFF
 	thumb_func_end SkyTown_EnterMapGroup
 
-	thumb_func_start SkyTown_sub_8002354_8060406
-SkyTown_sub_8002354_8060406:
+	thumb_func_start SkyTown_LoadGFXAnims
+SkyTown_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_8060414 // =off_8060418 
@@ -81,7 +81,7 @@ off_806043C:
 off_8060444:
 	.word byte_806032C
 	.word 0xFFFFFFFF
-	thumb_func_end SkyTown_sub_8002354_8060406
+	thumb_func_end SkyTown_LoadGFXAnims
 
 	thumb_func_start SkyTown_SpawnMapObjectsForMap
 SkyTown_SpawnMapObjectsForMap:

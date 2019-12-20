@@ -26,7 +26,7 @@ char (*SeasideTown_EnterMapGroup())[8]
 
 
 // 0x8059664
-int __fastcall SeasideTown_sub_8002354_8059664(int a1, int a2)
+int __fastcall SeasideTown_LoadGFXAnims(int a1, int a2)
 {
     return LoadGFXAnims(*(&off_8059678 + a2));
 }

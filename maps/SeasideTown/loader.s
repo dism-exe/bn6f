@@ -57,8 +57,8 @@ byte_805965A: .byte 0x1C, 0x35, 0x1C, 0x40, 0x1C, 0x48, 0xFF, 0xFF
 byte_8059662: .byte 0xFF, 0xFF
 	thumb_func_end SeasideTown_EnterMapGroup
 
-	thumb_func_start SeasideTown_sub_8002354_8059664
-SeasideTown_sub_8002354_8059664:
+	thumb_func_start SeasideTown_LoadGFXAnims
+SeasideTown_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_8059674 // =off_8059678 
@@ -87,7 +87,7 @@ off_80596B4: .word byte_8059528
 off_80596BC: .word byte_8059558
 	.word byte_8059588
 	.word 0xFFFFFFFF
-	thumb_func_end SeasideTown_sub_8002354_8059664
+	thumb_func_end SeasideTown_LoadGFXAnims
 
 	thumb_func_start SeasideTown_SpawnMapObjectsForMap
 SeasideTown_SpawnMapObjectsForMap:

@@ -1177,7 +1177,7 @@ MapScriptCutsceneCmd_call_sub_8001B1C_multiple: // 8035F3E
 
 	thumb_local_start
 // 0x2e/0x38
-// call sub_8030A30, then sub_8035194
+// call sub_8030A30, then LoadBGAnimForMapGroup
 // uses map group/number as args
 MapScriptCutsceneCmd_call_sub_8030A30_8035194: // 8035F52
 	push {lr}
@@ -1185,8 +1185,8 @@ MapScriptCutsceneCmd_call_sub_8030A30_8035194: // 8035F52
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	ldrb r0, [r1,#oGameState_MapGroup]
 	ldrb r1, [r1,#oGameState_MapNumber]
-	bl map_8030A30
-	bl sub_8035194
+	bl LoadGFXAnimsForMapGroup
+	bl LoadBGAnimForMapGroup
 	add r7, #1
 	mov r0, #1
 	pop {pc}

@@ -10512,12 +10512,6 @@ sub_804CE3C:
 locret_804CE62:
 	pop {r4-r7,pc}
 dword_804CE64: .word 0x800
-off_804CE68: .word byte_804CE70
-	.word off_804CE80
-byte_804CE70: .byte 0x0, 0x0, 0x14, 0x4, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-off_804CE80: .word unk_3000000
-	.word 0, 0
-	.byte 0, 0, 0, 0
 	thumb_func_end sub_804CE3C
 
 /*For debugging purposes, connect comment at any range!*/

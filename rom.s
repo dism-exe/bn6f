@@ -47,34 +47,46 @@ chatbox:
 	.include "asm/chatbox.s"
 asm03_2:
 	.include "asm/asm03_2.s"
+	
+	.include "maps/ACDCTown/warps_gfx_anims.s"
 	.include "maps/ACDCTown/loader.s"
 	.include "maps/ACDCTown/data.s"
 asm04:
+	.include "maps/CentralTown/warps_gfx_anims.s"
 	.include "maps/CentralTown/loader.s"
 	.include "maps/CentralTown/data.s"
 asm05:
+	.include "maps/CyberAcademy/warps_gfx_anims.s"
 	.include "maps/CyberAcademy/loader.s"
 	.include "maps/CyberAcademy/data.s"
 asm06:
+	.include "maps/SeasideTown/warps_gfx_anims.s"
 	.include "maps/SeasideTown/loader.s"
 	.include "maps/SeasideTown/data.s"
 asm07:
+	.include "maps/GreenTown/warps_gfx_anims.s"
 	.include "maps/GreenTown/loader.s"
 	.include "maps/GreenTown/data.s"
 asm08:
+	.include "maps/SkyTown/warps_gfx_anims.s"
 	.include "maps/SkyTown/loader.s"
 	.include "maps/SkyTown/data.s"
 asm09:
+	.include "maps/ExpoSite/warps_gfx_anims.s"
 	.include "maps/ExpoSite/loader.s"
 	.include "maps/ExpoSite/data.s"
-	
+asm10:
+	.include "maps/RobotControlComp/warps_gfx_anims.s"
 	.include "maps/RobotControlComp/loader.s"
 	.include "maps/RobotControlComp/data.s"
 
-asm10:
-	.include "asm/asm10.s"
-dat10:
-	.include "data/dat10.s"
+	.include "maps/AquariumComp/warps_gfx_anims.s"
+	.include "maps/AquariumComp/loader.s"
+	.include "maps/AquariumComp/data.s"
+
+	.include "maps/JudgeTreeComp/warps_gfx_anims.s"
+	.include "maps/JudgeTreeComp/loader.s"
+	.include "maps/JudgeTreeComp/data.s"
 asm11:
 	.include "asm/asm11.s"
 dat11:

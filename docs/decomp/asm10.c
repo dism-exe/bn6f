@@ -24,7 +24,7 @@ unsigned int RobotControlComp_EnterMapGroup()
 
 
 // 0x8066450
-int __fastcall RobotControlComp_sub_8002354_8066450(int a1, int a2)
+int __fastcall RobotControlComp_LoadGFXAnims(int a1, int a2)
 {
     return LoadGFXAnims(off_8066464[a2]);
 }
@@ -80,7 +80,7 @@ int RobotControlComp_SpawnMapObjectsForMap()
 
 
 // 0x8067b5c
-unsigned int sub_8067B5C()
+unsigned int AquariumComp_EnterMapGroup()
 {
     int v0; // r5
     int v1; // r10
@@ -90,7 +90,7 @@ unsigned int sub_8067B5C()
     int v5; // r3
 
     *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_80676E8 + *(v0 + 5));
-    sub_8067C88();
+    AquariumComp_LoadBGAnim();
     sub_803037C(*(v0 + 4), *(v0 + 5));
     decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
@@ -99,20 +99,20 @@ unsigned int sub_8067B5C()
     sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(off_8067BC0[*(v0 + 5)]);
     chatbox_uncompBasedOnMap_803FD08();
-    sub_8067D46();
+    AquariumComp_SpawnMapObjectsForMap();
     return sub_8034FB8();
 }
 
 
 // 0x8067be4
-int __fastcall sub_8067BE4(int a1, int a2)
+int __fastcall AquariumComp_LoadGFXAnims(int a1, int a2)
 {
     return LoadGFXAnims(off_8067BF8[a2]);
 }
 
 
 // 0x8067c88
-void sub_8067C88()
+void AquariumComp_LoadBGAnim()
 {
     int v0; // r10
     int v1; // r5
@@ -129,7 +129,7 @@ void sub_8067C88()
 
 
 // 0x8067d1c
-int sub_8067D1C()
+int AquariumComp_UnkFunction_8067d1c()
 {
     int v0; // r10
 
@@ -159,7 +159,7 @@ void nullsub_66()
 
 
 // 0x8067d46
-int sub_8067D46()
+int AquariumComp_SpawnMapObjectsForMap()
 {
     int v0; // r10
 

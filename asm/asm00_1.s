@@ -3868,7 +3868,7 @@ loc_80051AA:
 	bl SetRenderInfoLCDControl
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl map_8030A30
+	bl LoadGFXAnimsForMapGroup
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl map_8001708

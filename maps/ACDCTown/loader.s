@@ -61,8 +61,8 @@ byte_804CF2E: .byte 0xFF, 0xFF
 byte_804CF30: .byte 0xFF, 0xFF
 	thumb_func_end ACDCTown_EnterMapGroup
 
-	thumb_func_start ACDCTown_sub_8002354_804cf32
-ACDCTown_sub_8002354_804cf32:
+	thumb_func_start ACDCTown_LoadGFXAnims
+ACDCTown_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_804CF40 // =off_804CF44 
@@ -86,7 +86,7 @@ dword_804CF74: .word 0xFFFFFFFF
 dword_804CF78: .word 0xFFFFFFFF
 dword_804CF7C: .word 0xFFFFFFFF
 dword_804CF80: .word 0xFFFFFFFF
-	thumb_func_end ACDCTown_sub_8002354_804cf32
+	thumb_func_end ACDCTown_LoadGFXAnims
 
 	thumb_func_start ACDCTown_SpawnMapObjectsForMap
 ACDCTown_SpawnMapObjectsForMap:
