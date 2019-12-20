@@ -1,17 +1,16 @@
+from misc_scripts.utils.common import bytes_to_word
+
 if __name__ == '__main__': __package__ = 'misc_scripts'
 
 import os
 import argparse
 
 from .include import definitions
-from .utils import pointer_identifier
 
 import edit_source.utils.source_unit as source_unit
 from shared_utils import gba_address
 
-
 class HardPointerFinder(Exception): pass
-
 
 SHIFTED_ROM = os.path.join(definitions.shared.ROM_REPO_DIR, 'bn6f_s4.gba.ign')
 
@@ -82,12 +81,6 @@ def find_similar_pointers(baserom_path: str, shifted_rom_path: str, source_units
                         definitions.shared.RODATA_START_ADDRESS):
                     break
 
-
-
-def bytes_to_word(bytes):
-    if len(bytes) < 4:
-        return -1
-    return bytes[0] + (bytes[1] << 8) + (bytes[2] << 16) + (bytes[3] << 24)
 
 if __name__ == '__main__':
     main()
