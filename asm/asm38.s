@@ -3247,14 +3247,14 @@ loc_30073CC:
 	strb r1, [r6,r0]
 	bl sub_30074BA
 	add r4, r4, r0
-	bl sub_30074A2
+	bl applyElecOnBubbleMultipler_30074a2
 	add r4, r4, r0
 	mov r0, #oCollisionData_ExclamationIndicator
 	sub r1, r4, #1
 	strb r1, [r6,r0]
 	ldrh r0, [r7,#oCollisionData_SelfDamage]
 	ldrb r1, [r7,#oCollisionData_PrimaryElement]
-	cmp r1, #3 // elec, used for bblwrap additional damage, maybe bubble status as well
+	cmp r1, #ELEM_ELEC // elec, used for bblwrap additional damage, maybe bubble status as well
 	bne loc_300740A
 	mov r2, #oCollisionData_Unk_78
 	ldrh r3, [r6,r2]
@@ -3326,14 +3326,14 @@ sub_3007460:
 	bne locret_30074A0
 	ldrb r0, [r7,#0xa]
 	ldrb r1, [r7,#0xb]
-	bl sub_3007958
+	bl _object_getPanelDataOffset
 	ldrb r0, [r0,#2]
 	cmp r0, #7
 	bne locret_30074A0
 	ldrb r0, [r7,#0xa]
 	ldrb r1, [r7,#0xb]
 	mov r2, #2
-	bl sub_30079A4
+	bl _object_setPanelType
 	mov r0, #0x50 
 	strb r0, [r7,#0x11]
 locret_30074A0:
@@ -3341,21 +3341,21 @@ locret_30074A0:
 	thumb_func_end sub_3007460
 
 	thumb_local_start
-sub_30074A2:
+applyElecOnBubbleMultipler_30074a2:
 	push {r4,lr}
 	mov r4, #0
 	ldr r0, [r6,#oCollisionData_ObjectFlags1]
 	ldr r1, dword_3007544 // =0x80000000
 	tst r0, r1
 	beq loc_30074B6
-	ldrb r0, [r7,#2]
-	cmp r0, #3
+	ldrb r0, [r7,#oCollisionData_PrimaryElement]
+	cmp r0, #ELEM_ELEC
 	bne loc_30074B6
 	mov r4, #1
 loc_30074B6:
 	mov r0, r4
 	pop {r4,pc}
-	thumb_func_end sub_30074A2
+	thumb_func_end applyElecOnBubbleMultipler_30074a2
 
 	thumb_local_start
 sub_30074BA:
@@ -3427,8 +3427,8 @@ off_3007548: .word sub_801A29A+1
 dword_300754C: .word 0x2000
 	thumb_func_end getSecondaryElementWeaknessMultipler_30074e2
 
-	thumb_func_start sub_3007550
-sub_3007550:
+	thumb_func_start _object_removeCollisionData
+_object_removeCollisionData:
 	push {r4-r7,lr}
 	sub sp, sp, #8
 	ldr r5, [r5,#oBattleObject_CollisionDataPtr]
@@ -3445,7 +3445,7 @@ sub_3007550:
 	mov lr, pc
 	bx r2
 	mov r6, r0
-loc_3007570:
+loc_3007570: .align 1, 0
 	mov r0, #0
 	ldrsb r0, [r4,r0]
 	cmp r0, #0x7f
@@ -3469,7 +3469,7 @@ loc_3007570:
 	bl sub_3007880
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
-	bl sub_30078E0
+	bl _object_updatePanelParameters
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
 	mov r2, r5
@@ -3478,14 +3478,14 @@ loc_3007570:
 	ldr r1, [sp,#4]
 	mov r2, r5
 	bl sub_3007708
-loc_30075B8:
+loc_30075B8: .align 1, 0
 	add r4, #2
 	b loc_3007570
-loc_30075BC:
+loc_30075BC: .align 1, 0
 	mov r7, #1
-loc_30075BE:
+loc_30075BE: .align 1, 0
 	mov r6, #1
-loc_30075C0:
+loc_30075C0: .align 1, 0
 	mov r0, r6
 	mov r1, r7
 	mov r2, r5
@@ -3493,7 +3493,7 @@ loc_30075C0:
 	beq loc_30075E8
 	mov r0, r6
 	mov r1, r7
-	bl sub_30078E0
+	bl _object_updatePanelParameters
 	mov r0, r6
 	mov r1, r7
 	mov r2, r5
@@ -3502,18 +3502,18 @@ loc_30075C0:
 	mov r1, r7
 	mov r2, r5
 	bl sub_3007708
-loc_30075E8:
+loc_30075E8: .align 1, 0
 	add r6, #1
 	cmp r6, #6
 	ble loc_30075C0
 	add r7, #1
 	cmp r7, #3
 	ble loc_30075BE
-loc_30075F4:
+loc_30075F4: .align 1, 0
 	add sp, sp, #8
 	pop {r4-r7,pc}
 off_30075F8: .word PanelOffsetListsPointerTable
-	thumb_func_end sub_3007550
+	thumb_func_end _object_removeCollisionData
 
 	thumb_local_start
 sub_30075FC:
@@ -3587,10 +3587,10 @@ applyHeatOnGrassDamage_300766c:
 	mov r4, r1
 	ldrb r1, [r0,#oCollisionData_PanelY]
 	ldrb r0, [r0,#oCollisionData_PanelX]
-	bl sub_3007958
+	bl _object_getPanelDataOffset
 	ldrb r0, [r0,#2]
 	ldrb r1, [r4,#oCollisionData_PrimaryElement]
-	cmp r1, #1 // heat
+	cmp r1, #ELEM_HEAT // heat
 	bne loc_3007688
 	cmp r0, #6 // grass
 	bne loc_300768E
@@ -3655,7 +3655,7 @@ loc_30076D6:
 	strb r0, [r6,r1]
 	ldrb r2, [r7,#oCollisionData_PrimaryElement]
 	add r2, r2, r2
-	add r2, #oCollisionData_Unk_94
+	add r2, #oCollisionData_PrimaryElementDamages
 	ldrh r3, [r7,#oCollisionData_SelfDamage]
 	ldrh r4, [r6,r2]
 	add r4, r4, r3
@@ -3663,7 +3663,7 @@ loc_30076D6:
 	mov r0, r6
 	mov r1, r7
 	bl applyHeatOnGrassDamage_300766c
-	mov r2, #oCollisionData_Unk_94
+	mov r2, #oCollisionData_PrimaryElementDamages
 	ldrh r1, [r6,r2]
 	add r1, r1, r0
 	strh r1, [r6,r2]
@@ -3683,7 +3683,7 @@ sub_3007708:
 	mov r4, r2
 	mov r6, r0
 	mov r7, r1
-	bl sub_3007958
+	bl _object_getPanelDataOffset
 	tst r0, r0
 	beq locret_3007774
 	ldr r2, [r4,#oCollisionData_SelfCollisionTypeFlags]
@@ -3694,12 +3694,12 @@ sub_3007708:
 	cmp r0, #6
 	bne loc_3007746
 	ldrb r0, [r4,#oCollisionData_PrimaryElement]
-	cmp r0, #1
+	cmp r0, #ELEM_HEAT
 	bne locret_3007774
 	mov r0, r6
 	mov r1, r7
 	mov r2, #2
-	bl sub_30079A4
+	bl _object_setPanelType
 	pop {r4,r6,r7,pc}
 loc_3007746:
 	cmp r0, #8
@@ -3710,7 +3710,7 @@ loc_3007746:
 	mov r0, r6
 	mov r1, r7
 	mov r2, #2
-	bl sub_30079A4
+	bl _object_setPanelType
 	pop {r4,r6,r7,pc}
 loc_300775C:
 	cmp r0, #9
@@ -3723,7 +3723,7 @@ loc_300775C:
 	mov r0, r6
 	mov r1, r7
 	mov r2, #2
-	bl sub_30079A4
+	bl _object_setPanelType
 locret_3007774:
 	pop {r4,r6,r7,pc}
 	.balign 4, 0x00
@@ -3773,7 +3773,7 @@ loc_300779E:
 	bl sub_3007868
 	mov r0, r7
 	mov r1, r8
-	bl sub_30078E0
+	bl _object_updatePanelParameters
 loc_30077D2:
 	add r4, #2
 	b loc_300779E
@@ -3804,7 +3804,7 @@ loc_30077E6:
 	bl sub_3007868
 	mov r0, r7
 	mov r1, r8
-	bl sub_30078E0
+	bl _object_updatePanelParameters
 loc_300780C:
 	pop {r2,r3}
 	add r6, #1
@@ -3909,7 +3909,7 @@ loc_30078CC:
 loc_30078CE:
 	mov r0, r4
 	mov r1, r5
-	bl sub_30078E0
+	bl _object_updatePanelParameters
 	sub r4, #1
 	bgt loc_30078CE
 	sub r5, #1
@@ -3917,12 +3917,12 @@ loc_30078CE:
 	pop {r4,r5,pc}
 	thumb_func_end sub_30078C8
 
-	thumb_func_start sub_30078E0
-sub_30078E0:
+	thumb_func_start _object_updatePanelParameters
+_object_updatePanelParameters:
 	push {r4-r7,lr}
 	mov r4, r0
 	mov r5, r1
-	bl sub_3007958
+	bl _object_getPanelDataOffset
 	tst r0, r0
 	beq locret_300791C
 	ldrb r1, [r0,#2]
@@ -3955,10 +3955,10 @@ off_3007920: .word word_3007924
 word_3007924: .hword 0x8000, 0x1, 0x4000, 0x1, 0x10, 0x1, 0x50, 0x1, 0x110, 0x1, 0x2010
 	.hword 0x1, 0x410, 0x1, 0x810, 0x1, 0x1010, 0x1, 0x210, 0x1, 0x210, 0x1
 	.hword 0x210, 0x1, 0x210, 0x1
-	thumb_func_end sub_30078E0
+	thumb_func_end _object_updatePanelParameters
 
-	thumb_func_start sub_3007958
-sub_3007958:
+	thumb_func_start _object_getPanelDataOffset
+_object_getPanelDataOffset:
 	// is panel x in range [1,6]?
 	sub r3, r0, #1
 	cmp r3, #6
@@ -3980,7 +3980,7 @@ loc_3007970:
 	mov r0, #0
 	mov pc, lr
 off_3007974: .word ePanelData
-	thumb_func_end sub_3007958
+	thumb_func_end _object_getPanelDataOffset
 
 	thumb_local_start
 sub_3007978:
@@ -4011,13 +4011,13 @@ locret_300799C:
 off_30079A0: .word unk_2034F60
 	thumb_func_end sub_3007978
 
-	thumb_func_start sub_30079A4
-sub_30079A4:
+	thumb_func_start _object_setPanelType
+_object_setPanelType:
 	push {r4-r6,lr}
 	mov r4, r0
 	mov r5, r1
 	mov r6, r2
-	bl sub_3007958
+	bl _object_getPanelDataOffset
 	ldrb r3, [r0,#2]
 	tst r3, r3
 	beq locret_30079CE
@@ -4032,7 +4032,7 @@ sub_30079A4:
 loc_30079C6:
 	mov r0, r4
 	mov r1, r5
-	bl sub_30078E0
+	bl _object_updatePanelParameters
 locret_30079CE:
 	pop {r4-r6,pc}
 byte_30079D0: .word 0x708
@@ -4042,7 +4042,7 @@ byte_30079D0: .word 0x708
 	.byte 0xFF, 0x70, 0xBD
 	// <endpool> <endfile>
 	.word 0x708
-	thumb_func_end sub_30079A4
+	thumb_func_end _object_setPanelType
 
 	.byte  0
 	.byte  0

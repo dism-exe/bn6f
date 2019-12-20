@@ -23570,7 +23570,7 @@ locret_80C3446:
 sub_80C3448:
 	push {lr}
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
-	bl sub_80198CE
+	bl object_freeCollisionData
 	ldr r1, [r5,#oBattleObject_RelatedObject1Ptr]
 	tst r1, r1
 	beq loc_80C345A
@@ -27344,7 +27344,7 @@ loc_80C5348:
 loc_80C535A:
 	bl object_clearCollisionRegion // () -> void
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
-	bl sub_80198CE
+	bl object_freeCollisionData
 	bl object_freeMemory
 	pop {pc}
 	thumb_func_end sub_80C532E
@@ -43940,7 +43940,7 @@ sub_80CD78E:
 	push {lr}
 	bl sub_80CD7D0
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
-	bl sub_80198CE
+	bl object_freeCollisionData
 	bl object_freeMemory
 	pop {pc}
 	thumb_func_end sub_80CD78E
@@ -44841,7 +44841,7 @@ sub_80CDEF8:
 	mov r4, #0x47 
 	bl SpawnT4BattleObjectWithId0
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
-	bl sub_80198CE
+	bl object_freeCollisionData
 	bl object_freeMemory
 	pop {pc}
 	thumb_func_end sub_80CDEF8
@@ -44973,7 +44973,7 @@ loc_80CE012:
 loc_80CE018:
 	bl object_clearCollisionRegion // () -> void
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
-	bl sub_80198CE
+	bl object_freeCollisionData
 	bl object_freeMemory
 	pop {pc}
 off_80CE028: .word off_80CE02C
@@ -46331,7 +46331,7 @@ sub_80CEA88:
 	str r0, [r7]
 loc_80CEA96:
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
-	bl sub_80198CE
+	bl object_freeCollisionData
 	bl object_freeMemory
 	pop {r4,r7,pc}
 	thumb_func_end sub_80CEA88
@@ -47394,7 +47394,7 @@ byte_80CF31C: .byte 0x82, 0xFF, 0x0, 0x52, 0x81, 0xFF, 0x0, 0x52
 sub_80CF324:
 	push {lr}
 	ldr r0, [r5,#0x54]
-	bl sub_80198CE
+	bl object_freeCollisionData
 	bl object_freeMemory
 	pop {pc}
 	thumb_func_end sub_80CF324
@@ -48546,7 +48546,7 @@ sub_80CFC96:
 	push {lr}
 	bl object_removeCollisionData
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
-	bl sub_80198CE
+	bl object_freeCollisionData
 	bl object_freeMemory
 	pop {pc}
 	thumb_func_end sub_80CFC96
@@ -72141,7 +72141,7 @@ loc_80DB64A:
 loc_80DB656:
 	bl object_clearCollisionRegion // () -> void
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
-	bl sub_80198CE
+	bl object_freeCollisionData
 	bl object_freeMemory
 	pop {r4,pc}
 	thumb_func_end sub_80DB5E8
@@ -72545,7 +72545,7 @@ loc_80DB952:
 loc_80DB960:
 	bl object_clearCollisionRegion // () -> void
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
-	bl sub_80198CE
+	bl object_freeCollisionData
 	bl object_freeMemory
 	pop {pc}
 	thumb_func_end sub_80DB934

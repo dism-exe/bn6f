@@ -6,8 +6,14 @@
 	u8 Region // loc=0x1
 	u8 PrimaryElement // loc=0x2
 	u8 Unk_03 // loc=0x3
+	
+	union
 	u8 Alliance // loc=0x4
 	u8 Flip // loc=0x5
+	nextu
+	u16 AllianceAndDirectionFlip // loc=0x4
+	endu
+
 	u8 Barrier // loc=0x6 // barrier
 	u8 StaminaDamageCounterDisabler // loc=0x7
 	u8 PoisonPanelTimer // loc=0x8
@@ -111,7 +117,12 @@
 	endu
 
 	struct_org 0x94
-	u16 Unk_94 // loc=0x94
+	u0 PrimaryElementDamages // loc=0x94
+	u16 NullElementDamage // loc=0x94
+	u16 HeatElementDamage // loc=0x96
+	u16 AquaElementDamage // loc=0x98
+	u16 ElecElementDamage // loc=0x9a
+	u16 WoodElementDamage // loc=0x9c
 	struct_org 0xa0
 	u32 Unk_a0 // loc=0xa0
 	u32 InflictedBugs // loc=0xa4

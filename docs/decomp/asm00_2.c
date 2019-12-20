@@ -12676,7 +12676,7 @@ int sub_8016C4E()
     if ( !*(v0 + 11) )
     {
         sub_801BB78();
-        sub_80198CE(*(v0 + 84));
+        object_freeCollisionData(*(v0 + 84));
         sub_800A104();
         if ( *(v1 + 14) != 255 )
         {
@@ -12702,7 +12702,7 @@ int object_genericDestroy()
     int v0; // r5
 
     sub_801BB78();
-    sub_80198CE(*(v0 + 84));
+    object_freeCollisionData(*(v0 + 84));
     return object_freeMemory();
 }
 
@@ -14866,7 +14866,7 @@ _BYTE *object_createCollisionData()
 
 
 // 0x80198ce
-int __fastcall sub_80198CE(int result)
+int __fastcall object_freeCollisionData(int result)
 {
     if ( result )
     {
@@ -14992,7 +14992,7 @@ int __fastcall object_setupCollisionData(int a1, int a2, int a3, char a4)
 // 0x801a00e
 int object_removeCollisionData()
 {
-    return sub_3007550();
+    return _object_removeCollisionData();
 }
 
 

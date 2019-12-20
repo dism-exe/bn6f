@@ -64,3 +64,16 @@
 	enum NAVI_GROUNDMAN // 9
 	enum NAVI_DUSTMAN // 10
 	enum NAVI_PROTOMAN // 11
+
+	enum_start
+	enum ELEM_NULL // 0x00
+	enum ELEM_HEAT // 0x01
+	enum ELEM_AQUA // 0x02
+	enum ELEM_ELEC // 0x03
+	enum ELEM_WOOD // 0x04
+
+	enum_start 4
+	flag_enum ELEM_BREAK  // 0x10
+	flag_enum ELEM_WIND   // 0x20
+	flag_enum ELEM_CURSOR // 0x40
+	flag_enum ELEM_SWORD  // 0x80

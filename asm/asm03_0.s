@@ -12964,18 +12964,18 @@ sub_802CEF4:
 	ldr r1, dword_802D038 // =0x200000 
 	tst r0, r1
 	beq loc_802CF30
-	mov r1, #0x84
+	mov r1, #oCollisionData_PanelDamage2
 	ldrh r1, [r4,r1]
 	cmp r1, #0
 	bne loc_802CF30
-	mov r0, #0x82
+	mov r0, #oCollisionData_PanelDamage1
 	add r0, r0, r4
-	ldrh r2, [r0]
-	ldrh r1, [r0,#4]
+	ldrh r2, [r0,#oCollisionData_PanelDamage1 - oCollisionData_PanelDamage1]
+	ldrh r1, [r0,#oCollisionData_PanelDamage3 - oCollisionData_PanelDamage1]
 	orr r2, r1
-	ldrh r1, [r0,#6]
+	ldrh r1, [r0,#oCollisionData_PanelDamage4 - oCollisionData_PanelDamage1]
 	orr r2, r1
-	ldrh r1, [r0,#8]
+	ldrh r1, [r0,#oCollisionData_PanelDamage5 - oCollisionData_PanelDamage1]
 	orr r2, r1
 	cmp r2, #0
 	beq loc_802CFB8

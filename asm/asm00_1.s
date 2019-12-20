@@ -123,9 +123,9 @@ RunBattleObjectLogic:
 	// lower 4 bits of the 2nd (zero-indexed) member of the struct in the
 	// linked list, starting from eBattleObjectsLinkedListStart. Index to an entry from the
 	// read Jumptable pointer is derived from the first member of the struct
-	.word 0x0
+	.word NULL
 	.word T1BattleObjectJumptable
-	.word 0x0
+	.word NULL
 	.word T3BattleObjectJumptable
 	.word T4BattleObjectJumptable
 .dword_200AF70_p: .word eUnkBattleObjectLinkedList
