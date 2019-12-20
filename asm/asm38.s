@@ -1,28 +1,116 @@
 
-dword_3005B00:: .word 0xE3A03301, 0xE2833C02, 0xE5932000, 0xE1D310B8, 0xE14F0000
-	.word 0xE92D400F, 0xE3A00000, 0xE1C300B8, 0xE0021822, 0xE59F0168
-	.word 0xE5900000, 0xE1100000, 0x1A000011, 0xE3A0C008, 0xE2110004
-	.word 0x1A00003B, 0xE3A00001, 0xE1C300B8, 0xE3A0C01C, 0xE2110080
-	.word 0x1A000036, 0xE3A0C018, 0xE2110040, 0x1A000033, 0xE3A0C000
-	.word 0xE2110001, 0x1A000030, 0xE3A0C004, 0xE2110002, 0x1A00002D
-	.word 0xEA000010, 0xE3A00001, 0xE1C300B8, 0xE3A0C01C, 0xE2110080
-	.word 0x1A000027, 0xE3A0C018, 0xE2110040, 0x1A000024, 0xE3A0C000
-	.word 0xE2110001, 0x1A000021, 0xE3A0C004, 0xE2110002, 0x1A00001E
-	.word 0xE3A0C008, 0xE2110004, 0x1A00001B, 0xE3A0C00C, 0xE2110008
-	.word 0x1A000018, 0xE3A0C010, 0xE2110010, 0x1A000015, 0xE3A0C014
-	.word 0xE2110020, 0x1A000012, 0xE3A0C020, 0xE2110C01, 0x1A00000F
-	.word 0xE3A0C024, 0xE2110C02, 0x1A00000C, 0xE3A0C028, 0xE2110B01
-	.word 0x1A000009, 0xE3A0C02C, 0xE2110B02, 0x1A000006, 0xE3A0C030
-	.word 0xE2110A01, 0x1A000003, 0xE3A0C034, 0xE2110A02, 0x1543017C
-	.word 0x1AFFFFFE, 0xE1C300B2, 0xE59F105C, 0xE1C22000, 0xE0011002
-	.word 0xE1C310B0, 0xE10F3000, 0xE3C330DF, 0xE383301F, 0xE129F003
-	.word 0xE59F1040, 0xE081100C, 0xE5910000, 0xE92D4000, 0xE28FE000
-	.word 0xE12FFF10, 0xE8BD4000, 0xE10F3000, 0xE3C330DF, 0xE3833092
-	.word 0xE129F003, 0xE8BD400F, 0xE1C320B0, 0xE1C310B8, 0xE169F000
-	.word 0xE12FFF1E
-	.word dword_3001D60
-	.word 0x20C8
-	.word off_3000E70
+	arm_func_start sub_3005B00
+sub_3005B00:
+	mov r3, #0x4000000
+	add r3, r3, #0x200
+	ldr r2, [r3]
+	ldrh r1, [r3,#8]
+	mrs r0, SPSR
+	stmfd sp!, {r0-r3,lr}
+	mov r0, #0
+	strh r0, [r3,#8]
+	and r1, r2, r2,LSR#16
+	ldr r0, off_3005C94 // =dword_3001D60 
+	ldr r0, [r0]
+	tst r0, r0
+	bne loc_3005B7C
+	mov r12, #8
+	ands r0, r1, #4
+	bne loc_3005C30
+	mov r0, #1
+	strh r0, [r3,#8]
+	mov r12, #0x1c
+	ands r0, r1, #0x80
+	bne loc_3005C30
+	mov r12, #0x18
+	ands r0, r1, #0x40
+	bne loc_3005C30
+	mov r12, #0
+	ands r0, r1, #1
+	bne loc_3005C30
+	mov r12, #4
+	ands r0, r1, #2
+	bne loc_3005C30
+	b loc_3005BC0
+loc_3005B7C:
+	mov r0, #1
+	strh r0, [r3,#8]
+	mov r12, #0x1c
+	ands r0, r1, #0x80
+	bne loc_3005C30
+	mov r12, #0x18
+	ands r0, r1, #0x40
+	bne loc_3005C30
+	mov r12, #0
+	ands r0, r1, #1
+	bne loc_3005C30
+	mov r12, #4
+	ands r0, r1, #2
+	bne loc_3005C30
+	mov r12, #8
+	ands r0, r1, #4
+	bne loc_3005C30
+loc_3005BC0:
+	mov r12, #0xc
+	ands r0, r1, #8
+	bne loc_3005C30
+	mov r12, #0x10
+	ands r0, r1, #0x10
+	bne loc_3005C30
+	mov r12, #0x14
+	ands r0, r1, #0x20
+	bne loc_3005C30
+	mov r12, #0x20 
+	ands r0, r1, #0x100
+	bne loc_3005C30
+	mov r12, #0x24 
+	ands r0, r1, #0x200
+	bne loc_3005C30
+loc_3005BFC:
+	mov r12, #0x28 
+	ands r0, r1, #0x400
+	bne loc_3005C30
+	mov r12, #0x2c 
+	ands r0, r1, #0x800
+	bne loc_3005C30
+	mov r12, #0x30 
+	ands r0, r1, #0x1000
+	bne loc_3005C30
+	mov r12, #0x34 
+	ands r0, r1, #0x2000
+	strneb r0, [r3,#0xfffffe84] // -0x17C
+loc_3005C2C:
+	bne loc_3005C2C
+loc_3005C30:
+	strh r0, [r3,#2]
+	ldr r1, byte_3005C98 // =0xc8 
+	bic r2, r2, r0
+	and r1, r1, r2
+	strh r1, [r3]
+	mrs r3, CPSR
+	bic r3, r3, #0xdf
+	orr r3, r3, #0x1f
+	msr CPSR_cf, r3
+	ldr r1, off_3005C9C // =off_3000E70 
+	add r1, r1, r12
+	ldr r0, [r1]
+	stmfd sp!, {lr}
+	adr lr, loc_3005C6C
+	bx r0
+loc_3005C6C:
+	ldmfd sp!, {lr}
+	mrs r3, CPSR
+	bic r3, r3, #0xdf
+	orr r3, r3, #0x92
+	msr CPSR_cf, r3
+	ldmfd sp!, {r0-r3,lr}
+	strh r2, [r3]
+	strh r1, [r3,#8]
+	msr SPSR_cf, r0
+	bx lr
+off_3005C94: .word dword_3001D60
+byte_3005C98: .word 0x20c8
+off_3005C9C: .word off_3000E70
 off_3005CA0: .word sub_3005CDA+1
 	.word nullsub_38+1
 	.word nullsub_38+1
@@ -175,20 +263,27 @@ off_3005DCC: .word off_3005CA0
 dword_3005DD0: .word 0x2005
 	thumb_func_end sub_3005DA0
 
-	thumb_func_start sub_3005DD4
-sub_3005DD4:
+	thumb_func_start _SetInterruptCallback
+// set the callback for interrupt r0/4 to callback r1
+_SetInterruptCallback:
 	push {r4,lr}
+
+	// save old IME state and temporarily disable
 	ldr r3, off_3005E54 // =InterruptMasterEnableRegister
 	ldrh r4, [r3]
 	mov r2, #0
 	strh r2, [r3]
+
+	// write new interrupt callback
 	ldr r2, off_3005DE8 // =off_3000E70
 	str r1, [r2,r0]
+
+	// restore IME state
 	strh r4, [r3]
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_3005DE8: .word off_3000E70
-	thumb_func_end sub_3005DD4
+	thumb_func_end _SetInterruptCallback
 
 	thumb_func_start sub_3005DEC
 sub_3005DEC:
@@ -247,10 +342,10 @@ sub_3005E2C:
 	push {r3}
 	mov r0, #0x18
 	ldr r1, off_3005E78 // =sub_814469C+1
-	bl sub_3005DD4
+	bl _SetInterruptCallback
 	mov r0, #0x1c
 	ldr r1, off_3005E7C // =sub_81446AC+1
-	bl sub_3005DD4
+	bl _SetInterruptCallback
 	pop {r3}
 	strh r4, [r3]
 	pop {r4,pc}
@@ -372,6 +467,9 @@ loc_3005EDE:
 	thumb_func_end sub_3005EBA
 
 	thumb_func_start sub_3005EF0
+// r0 - some param
+// r2 - jumptable index
+// r6 - num palettes
 sub_3005EF0:
 	push {r5,lr}
 	cmp r6, #0
@@ -3137,47 +3235,47 @@ loc_30073B6:
 loc_30073CC:
 	mov r4, #1
 	ldrb r0, [r6,#oCollisionData_PrimaryElement]
-	ldrb r1, [r7,#2]
-	bl sub_3007432
+	ldrb r1, [r7,#oCollisionData_PrimaryElement]
+	bl getPrimaryElementWeaknessMultipler_3007432
 	add r4, r4, r0
 	ldrb r0, [r6,#oCollisionData_SecondaryElementWeakness]
-	ldrb r1, [r7,#0x19]
-	bl sub_30074E2
+	ldrb r1, [r7,#oCollisionData_SecondaryElement]
+	bl getSecondaryElementWeaknessMultipler_30074e2
 	add r4, r4, r0
-	mov r0, #0x75 
+	mov r0, #oCollisionData_DamageMultiplier
 	sub r1, r4, #1
 	strb r1, [r6,r0]
 	bl sub_30074BA
 	add r4, r4, r0
-	bl sub_30074A2
+	bl applyElecOnBubbleMultipler_30074a2
 	add r4, r4, r0
-	mov r0, #0x74 
+	mov r0, #oCollisionData_ExclamationIndicator
 	sub r1, r4, #1
 	strb r1, [r6,r0]
-	ldrh r0, [r7,#0x2e]
-	ldrb r1, [r7,#2]
-	cmp r1, #3
+	ldrh r0, [r7,#oCollisionData_SelfDamage]
+	ldrb r1, [r7,#oCollisionData_PrimaryElement]
+	cmp r1, #ELEM_ELEC // elec, used for bblwrap additional damage, maybe bubble status as well
 	bne loc_300740A
-	mov r2, #0x78 
+	mov r2, #oCollisionData_Unk_78
 	ldrh r3, [r6,r2]
 	add r3, r3, r0
 	strh r3, [r6,r2]
 loc_300740A:
 	mul r0, r4
 	add r1, r1, r1
-	add r1, #0x82
+	add r1, #oCollisionData_PanelDamage1
 	ldrh r2, [r6,r1]
 	add r2, r2, r0
 	strh r2, [r6,r1]
 	mov r0, r6
 	mov r1, r7
-	bl sub_300766C
-	mov r2, #0x82
+	bl applyHeatOnGrassDamage_300766c
+	mov r2, #oCollisionData_PanelDamage1
 	ldrh r1, [r6,r2]
 	add r1, r1, r0
 	strh r1, [r6,r2]
-	ldr r1, [r7,#0x64]
-	mov r3, #0xa0
+	ldr r1, [r7,#oCollisionData_Unk_64]
+	mov r3, #oCollisionData_Unk_a0
 	ldr r2, [r6,r3]
 	add r2, r2, r1
 	str r2, [r6,r3]
@@ -3186,19 +3284,25 @@ locret_3007430:
 	thumb_func_end sub_3007218
 
 	thumb_local_start
-sub_3007432:
+// r0 - defending element
+// r1 - attacking element
+getPrimaryElementWeaknessMultipler_3007432:
 	mov r2, #5
 	mul r0, r2
 	add r0, r0, r1
-	ldr r1, byte_3007440 // =0x44
+	ldr r1, byte_3007440 // =byte_3007444
 	ldrb r0, [r1,r0]
 	mov pc, lr
 	.balign 4, 0x00
 byte_3007440: .word byte_3007444
-byte_3007444: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0
-	thumb_func_end sub_3007432
+byte_3007444:
+	.byte 0x0, 0x0, 0x0, 0x0, 0x0
+	.byte 0x0, 0x0, 0x1, 0x0, 0x0
+	.byte 0x0, 0x0, 0x0, 0x1, 0x0
+	.byte 0x0, 0x0, 0x0, 0x0, 0x1
+	.byte 0x0, 0x1, 0x0, 0x0, 0x0
+	.byte 0x0, 0x0, 0x0
+	thumb_func_end getPrimaryElementWeaknessMultipler_3007432
 
 	thumb_local_start
 sub_3007460:
@@ -3222,14 +3326,14 @@ sub_3007460:
 	bne locret_30074A0
 	ldrb r0, [r7,#0xa]
 	ldrb r1, [r7,#0xb]
-	bl sub_3007958
+	bl _object_getPanelDataOffset
 	ldrb r0, [r0,#2]
 	cmp r0, #7
 	bne locret_30074A0
 	ldrb r0, [r7,#0xa]
 	ldrb r1, [r7,#0xb]
 	mov r2, #2
-	bl sub_30079A4
+	bl _object_setPanelType
 	mov r0, #0x50 
 	strb r0, [r7,#0x11]
 locret_30074A0:
@@ -3237,21 +3341,21 @@ locret_30074A0:
 	thumb_func_end sub_3007460
 
 	thumb_local_start
-sub_30074A2:
+applyElecOnBubbleMultipler_30074a2:
 	push {r4,lr}
 	mov r4, #0
 	ldr r0, [r6,#oCollisionData_ObjectFlags1]
 	ldr r1, dword_3007544 // =0x80000000
 	tst r0, r1
 	beq loc_30074B6
-	ldrb r0, [r7,#2]
-	cmp r0, #3
+	ldrb r0, [r7,#oCollisionData_PrimaryElement]
+	cmp r0, #ELEM_ELEC
 	bne loc_30074B6
 	mov r4, #1
 loc_30074B6:
 	mov r0, r4
 	pop {r4,pc}
-	thumb_func_end sub_30074A2
+	thumb_func_end applyElecOnBubbleMultipler_30074a2
 
 	thumb_local_start
 sub_30074BA:
@@ -3280,13 +3384,15 @@ loc_30074DE:
 	thumb_func_end sub_30074BA
 
 	thumb_local_start
-sub_30074E2:
+// r0 - weakness bitfield
+// r1 - attacking element bitfield
+getSecondaryElementWeaknessMultipler_30074e2:
 	mov r2, #0
 	tst r0, r1
 	bne loc_30074F8
 	cmp r0, #0x80
 	bne loc_30074FE
-	ldr r0, [r7,#0x30]
+	ldr r0, [r7,#oCollisionData_SelfCollisionTypeFlags]
 	ldr r1, dword_300754C // =0x2000
 	tst r0, r1
 	beq loc_30074FE
@@ -3319,10 +3425,10 @@ dword_3007540: .word 0xC000000
 dword_3007544: .word 0x80000000
 off_3007548: .word sub_801A29A+1
 dword_300754C: .word 0x2000
-	thumb_func_end sub_30074E2
+	thumb_func_end getSecondaryElementWeaknessMultipler_30074e2
 
-	thumb_func_start sub_3007550
-sub_3007550:
+	thumb_func_start _object_removeCollisionData
+_object_removeCollisionData:
 	push {r4-r7,lr}
 	sub sp, sp, #8
 	ldr r5, [r5,#oBattleObject_CollisionDataPtr]
@@ -3339,7 +3445,7 @@ sub_3007550:
 	mov lr, pc
 	bx r2
 	mov r6, r0
-loc_3007570:
+loc_3007570: .align 1, 0
 	mov r0, #0
 	ldrsb r0, [r4,r0]
 	cmp r0, #0x7f
@@ -3363,7 +3469,7 @@ loc_3007570:
 	bl sub_3007880
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
-	bl sub_30078E0
+	bl _object_updatePanelParameters
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
 	mov r2, r5
@@ -3372,14 +3478,14 @@ loc_3007570:
 	ldr r1, [sp,#4]
 	mov r2, r5
 	bl sub_3007708
-loc_30075B8:
+loc_30075B8: .align 1, 0
 	add r4, #2
 	b loc_3007570
-loc_30075BC:
+loc_30075BC: .align 1, 0
 	mov r7, #1
-loc_30075BE:
+loc_30075BE: .align 1, 0
 	mov r6, #1
-loc_30075C0:
+loc_30075C0: .align 1, 0
 	mov r0, r6
 	mov r1, r7
 	mov r2, r5
@@ -3387,7 +3493,7 @@ loc_30075C0:
 	beq loc_30075E8
 	mov r0, r6
 	mov r1, r7
-	bl sub_30078E0
+	bl _object_updatePanelParameters
 	mov r0, r6
 	mov r1, r7
 	mov r2, r5
@@ -3396,18 +3502,18 @@ loc_30075C0:
 	mov r1, r7
 	mov r2, r5
 	bl sub_3007708
-loc_30075E8:
+loc_30075E8: .align 1, 0
 	add r6, #1
 	cmp r6, #6
 	ble loc_30075C0
 	add r7, #1
 	cmp r7, #3
 	ble loc_30075BE
-loc_30075F4:
+loc_30075F4: .align 1, 0
 	add sp, sp, #8
 	pop {r4-r7,pc}
 off_30075F8: .word PanelOffsetListsPointerTable
-	thumb_func_end sub_3007550
+	thumb_func_end _object_removeCollisionData
 
 	thumb_local_start
 sub_30075FC:
@@ -3474,28 +3580,30 @@ locret_300766A:
 	thumb_func_end sub_3007650
 
 	thumb_local_start
-sub_300766C:
+// r0 - defending collision data
+// r1 - attacking collision data
+applyHeatOnGrassDamage_300766c:
 	push {r4,lr}
 	mov r4, r1
 	ldrb r1, [r0,#oCollisionData_PanelY]
 	ldrb r0, [r0,#oCollisionData_PanelX]
-	bl sub_3007958
+	bl _object_getPanelDataOffset
 	ldrb r0, [r0,#2]
-	ldrb r1, [r4,#2]
-	cmp r1, #1
+	ldrb r1, [r4,#oCollisionData_PrimaryElement]
+	cmp r1, #ELEM_HEAT // heat
 	bne loc_3007688
-	cmp r0, #6
+	cmp r0, #6 // grass
 	bne loc_300768E
-	ldrh r0, [r4,#0x2e]
+	ldrh r0, [r4,#oCollisionData_SelfDamage]
 	pop {r4,pc}
 loc_3007688:
 	b loc_300768E
-	ldrh r0, [r4,#0x2e]
+	ldrh r0, [r4,#oCollisionData_SelfDamage]
 	pop {r4,pc}
 loc_300768E:
 	mov r0, #0
 	pop {r4,pc}
-	thumb_func_end sub_300766C
+	thumb_func_end applyHeatOnGrassDamage_300766c
 
 	thumb_local_start
 sub_3007692:
@@ -3537,25 +3645,25 @@ loc_30076C4:
 	pop {r4,r6,r7,pc}
 loc_30076D6:
 	ldr r2, [r6,#oCollisionData_Unk_6c]
-	ldr r3, [r7,#0x30]
+	ldr r3, [r7,#oCollisionData_SelfCollisionTypeFlags]
 	orr r2, r3
 	str r2, [r6,#oCollisionData_Unk_6c]
-	ldrb r2, [r7,#0x19]
-	mov r1, #0x77 
+	ldrb r2, [r7,#oCollisionData_SecondaryElement]
+	mov r1, #oCollisionData_Unk_77
 	ldrb r0, [r6,r1]
 	orr r0, r2
 	strb r0, [r6,r1]
-	ldrb r2, [r7,#2]
+	ldrb r2, [r7,#oCollisionData_PrimaryElement]
 	add r2, r2, r2
-	add r2, #0x94
-	ldrh r3, [r7,#0x2e]
+	add r2, #oCollisionData_PrimaryElementDamages
+	ldrh r3, [r7,#oCollisionData_SelfDamage]
 	ldrh r4, [r6,r2]
 	add r4, r4, r3
 	strh r4, [r6,r2]
 	mov r0, r6
 	mov r1, r7
-	bl sub_300766C
-	mov r2, #0x94
+	bl applyHeatOnGrassDamage_300766c
+	mov r2, #oCollisionData_PrimaryElementDamages
 	ldrh r1, [r6,r2]
 	add r1, r1, r0
 	strh r1, [r6,r2]
@@ -3575,7 +3683,7 @@ sub_3007708:
 	mov r4, r2
 	mov r6, r0
 	mov r7, r1
-	bl sub_3007958
+	bl _object_getPanelDataOffset
 	tst r0, r0
 	beq locret_3007774
 	ldr r2, [r4,#oCollisionData_SelfCollisionTypeFlags]
@@ -3586,12 +3694,12 @@ sub_3007708:
 	cmp r0, #6
 	bne loc_3007746
 	ldrb r0, [r4,#oCollisionData_PrimaryElement]
-	cmp r0, #1
+	cmp r0, #ELEM_HEAT
 	bne locret_3007774
 	mov r0, r6
 	mov r1, r7
 	mov r2, #2
-	bl sub_30079A4
+	bl _object_setPanelType
 	pop {r4,r6,r7,pc}
 loc_3007746:
 	cmp r0, #8
@@ -3602,7 +3710,7 @@ loc_3007746:
 	mov r0, r6
 	mov r1, r7
 	mov r2, #2
-	bl sub_30079A4
+	bl _object_setPanelType
 	pop {r4,r6,r7,pc}
 loc_300775C:
 	cmp r0, #9
@@ -3615,7 +3723,7 @@ loc_300775C:
 	mov r0, r6
 	mov r1, r7
 	mov r2, #2
-	bl sub_30079A4
+	bl _object_setPanelType
 locret_3007774:
 	pop {r4,r6,r7,pc}
 	.balign 4, 0x00
@@ -3665,7 +3773,7 @@ loc_300779E:
 	bl sub_3007868
 	mov r0, r7
 	mov r1, r8
-	bl sub_30078E0
+	bl _object_updatePanelParameters
 loc_30077D2:
 	add r4, #2
 	b loc_300779E
@@ -3696,7 +3804,7 @@ loc_30077E6:
 	bl sub_3007868
 	mov r0, r7
 	mov r1, r8
-	bl sub_30078E0
+	bl _object_updatePanelParameters
 loc_300780C:
 	pop {r2,r3}
 	add r6, #1
@@ -3801,7 +3909,7 @@ loc_30078CC:
 loc_30078CE:
 	mov r0, r4
 	mov r1, r5
-	bl sub_30078E0
+	bl _object_updatePanelParameters
 	sub r4, #1
 	bgt loc_30078CE
 	sub r5, #1
@@ -3809,12 +3917,12 @@ loc_30078CE:
 	pop {r4,r5,pc}
 	thumb_func_end sub_30078C8
 
-	thumb_func_start sub_30078E0
-sub_30078E0:
+	thumb_func_start _object_updatePanelParameters
+_object_updatePanelParameters:
 	push {r4-r7,lr}
 	mov r4, r0
 	mov r5, r1
-	bl sub_3007958
+	bl _object_getPanelDataOffset
 	tst r0, r0
 	beq locret_300791C
 	ldrb r1, [r0,#2]
@@ -3847,10 +3955,10 @@ off_3007920: .word word_3007924
 word_3007924: .hword 0x8000, 0x1, 0x4000, 0x1, 0x10, 0x1, 0x50, 0x1, 0x110, 0x1, 0x2010
 	.hword 0x1, 0x410, 0x1, 0x810, 0x1, 0x1010, 0x1, 0x210, 0x1, 0x210, 0x1
 	.hword 0x210, 0x1, 0x210, 0x1
-	thumb_func_end sub_30078E0
+	thumb_func_end _object_updatePanelParameters
 
-	thumb_func_start sub_3007958
-sub_3007958:
+	thumb_func_start _object_getPanelDataOffset
+_object_getPanelDataOffset:
 	// is panel x in range [1,6]?
 	sub r3, r0, #1
 	cmp r3, #6
@@ -3872,7 +3980,7 @@ loc_3007970:
 	mov r0, #0
 	mov pc, lr
 off_3007974: .word ePanelData
-	thumb_func_end sub_3007958
+	thumb_func_end _object_getPanelDataOffset
 
 	thumb_local_start
 sub_3007978:
@@ -3903,13 +4011,13 @@ locret_300799C:
 off_30079A0: .word unk_2034F60
 	thumb_func_end sub_3007978
 
-	thumb_func_start sub_30079A4
-sub_30079A4:
+	thumb_func_start _object_setPanelType
+_object_setPanelType:
 	push {r4-r6,lr}
 	mov r4, r0
 	mov r5, r1
 	mov r6, r2
-	bl sub_3007958
+	bl _object_getPanelDataOffset
 	ldrb r3, [r0,#2]
 	tst r3, r3
 	beq locret_30079CE
@@ -3924,7 +4032,7 @@ sub_30079A4:
 loc_30079C6:
 	mov r0, r4
 	mov r1, r5
-	bl sub_30078E0
+	bl _object_updatePanelParameters
 locret_30079CE:
 	pop {r4-r6,pc}
 byte_30079D0: .word 0x708
@@ -3934,7 +4042,7 @@ byte_30079D0: .word 0x708
 	.byte 0xFF, 0x70, 0xBD
 	// <endpool> <endfile>
 	.word 0x708
-	thumb_func_end sub_30079A4
+	thumb_func_end _object_setPanelType
 
 	.byte  0
 	.byte  0

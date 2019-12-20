@@ -1535,7 +1535,7 @@ sub_8046D4C:
 	mov r1, #0
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	ldr r0, dword_8046DD4 // =0x1f40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x18
@@ -2385,7 +2385,7 @@ copyData_804747C:
 	.byte 0, 0
 off_8047490: .word off_8047494
 off_8047494: .word byte_87F0340
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word comp_87F006C + 1<<31
 	.word 0x6000020
@@ -4404,7 +4404,7 @@ sub_804900C:
 	push {r4-r7,lr}
 	bl chatbox_8040818
 	ldr r0, off_8049054 // =0x40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x11
@@ -4444,7 +4444,7 @@ sub_8049058:
 	bl copyMemory_8001850
 	bl chatbox_8040818
 	ldr r0, off_804907C // =0x40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl sub_811F758
 locret_804907A:
 	pop {r4-r7,pc}
@@ -4496,7 +4496,7 @@ off_8049098: .word sub_8049104+1
 sub_8049104:
 	push {r4-r7,lr}
 	ldr r0, dword_8049154 // =0x1f40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x12
@@ -5286,7 +5286,7 @@ off_8049730: .word sub_8049770+1
 sub_8049770:
 	push {r4-r7,lr}
 	ldr r0, dword_80497CC // =0x1f40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x13
@@ -5608,7 +5608,7 @@ loc_80499E0:
 	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	ldr r0, off_8049A14 // =0x40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl chatbox_8040818
 	bl sub_811F758
 	b locret_8049A12
@@ -6058,7 +6058,7 @@ sub_8049E28:
 	push {r4-r7,lr}
 	bl chatbox_8040818
 	ldr r0, off_8049E58 // =0x40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x11
@@ -6084,7 +6084,7 @@ sub_8049E5C:
 	bl copyMemory_8001850
 	bl chatbox_8040818
 	ldr r0, off_8049E80 // =0x40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl sub_8123408
 locret_8049E7E:
 	pop {r4-r7,pc}
@@ -6117,7 +6117,7 @@ off_8049E98: .word sub_8049EBC+1
 sub_8049EBC:
 	push {r4-r7,lr}
 	ldr r0, dword_8049F1C // =0x1f40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #0x13
@@ -6342,7 +6342,7 @@ sub_804A078:
 	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	ldr r0, off_804A0A8 // =0x40 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl chatbox_8040818
 	bl sub_8123408
 	b locret_804A0A6
@@ -7046,7 +7046,7 @@ loc_804A63C:
 off_804A698: .word off_804A69C
 off_804A69C: .word dword_86C9108
 	.word 0x2
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word dword_86C9B54
 	.word 0x2
@@ -9639,14 +9639,14 @@ sub_804C53C:
 	ldr r1, [r4,#oToolkit_RenderInfoPtr]
 	ldr r0, dword_804C5B4 // =0x1f09 
 	strh r0, [r1,#0xa]
-	bl sub_8001974
+	bl SetDummyBGScrollCallbacks
 	ldrb r0, [r5,#0xc]
 	tst r0, r0
 	beq loc_804C57C
 	ldr r0, off_804C5B8 // =dword_804C4B0 
-	bl sub_8001B1C
+	bl LoadGFXAnim
 	ldr r0, off_804C5BC // =dword_804C4E0 
-	bl sub_8001B1C
+	bl LoadGFXAnim
 loc_804C57C:
 	mov r0, #4
 	strb r0, [r5,#0x10]
@@ -10219,7 +10219,7 @@ sub_804CBDC:
 	strb r0, [r1]
 	mov r0, #0x37 
 	strb r0, [r1,#1]
-	bl sub_8001974
+	bl SetDummyBGScrollCallbacks
 	ldr r0, off_804CC3C // =off_804CC40 
 	ldrb r1, [r5,#0xc]
 	lsl r1, r1, #2
@@ -10251,7 +10251,7 @@ off_804CC40: .word sub_804CC58+1
 sub_804CC58:
 	push {r4-r7,lr}
 	mov r0, #3
-	bl sub_8001B6C
+	bl TerminateGFXAnim
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xc
@@ -10412,7 +10412,7 @@ sub_804CD5C:
 	strb r0, [r5,#0x11]
 	mov r0, #2
 	strb r0, [r5,#0x15]
-	bl sub_8001974
+	bl SetDummyBGScrollCallbacks
 	bl sub_804CDD4
 	mov r0, #4
 	strb r0, [r5,#0x10]
@@ -10512,125 +10512,6 @@ sub_804CE3C:
 locret_804CE62:
 	pop {r4-r7,pc}
 dword_804CE64: .word 0x800
-off_804CE68: .word byte_804CE70
-	.word off_804CE80
-byte_804CE70: .byte 0x0, 0x0, 0x14, 0x4, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-off_804CE80: .word unk_3000000
-	.word 0, 0
-	.byte 0, 0, 0, 0
 	thumb_func_end sub_804CE3C
-
-	thumb_func_start sub_804CE90
-sub_804CE90:
-	push {r4-r7,lr}
-	mov r7, r10
-	ldr r0, off_804CEEC // =off_804CE68 
-	ldr r1, [r7,#oToolkit_Warp2011bb0_Ptr]
-	ldrb r2, [r5,#5]
-	lsl r4, r2, #2
-	add r0, r0, r4
-	ldr r0, [r0]
-	str r0, [r1,#0x14]
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
-	bl sub_803037C
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
-	bl sub_8030AA4
-	ldr r0, [r5,#0x24]
-	ldr r1, [r5,#0x28]
-	ldr r2, [r5,#0x2c]
-	ldrb r3, [r5,#4]
-	ldrb r4, [r5,#5]
-	bl camera_802FF4C
-	bl sub_8030472
-	ldr r0, off_804CEF0 // =unk_2037800 
-	bl sub_80028D4
-	ldrb r1, [r5,#5]
-	lsl r1, r1, #2
-	ldr r0, off_804CEF8 // =off_804CEFC 
-	ldr r0, [r0,r1]
-	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_804CF84
-	ldr r0, off_804CEF4 // =off_804D0E4 
-	ldrb r1, [r5,#5]
-	lsl r1, r1, #2
-	ldr r0, [r0,r1]
-	str r0, [r5,#0x64]
-	pop {r4-r7,pc}
-	.balign 4, 0x00
-off_804CEEC: .word off_804CE68
-off_804CEF0: .word unk_2037800
-off_804CEF4: .word off_804D0E4
-off_804CEF8: .word off_804CEFC
-off_804CEFC: .word dword_804CF1C
-	.word byte_804CF20
-	.word byte_804CF26
-	.word byte_804CF28
-	.word byte_804CF2A
-	.word byte_804CF2C
-	.word byte_804CF2E
-	.word byte_804CF30
-dword_804CF1C: .word 0xFFFF1318
-byte_804CF20: .byte 0x1C, 0xA, 0x18, 0x13, 0xFF, 0xFF
-byte_804CF26: .byte 0xFF, 0xFF
-byte_804CF28: .byte 0xFF, 0xFF
-byte_804CF2A: .byte 0xFF, 0xFF
-byte_804CF2C: .byte 0xFF, 0xFF
-byte_804CF2E: .byte 0xFF, 0xFF
-byte_804CF30: .byte 0xFF, 0xFF
-	thumb_func_end sub_804CE90
-
-	thumb_func_start sub_804CF32
-sub_804CF32:
-	push {lr}
-	lsl r1, r1, #2
-	ldr r0, off_804CF40 // =off_804CF44 
-	ldr r0, [r0,r1]
-	bl sub_8002354
-	pop {pc}
-off_804CF40: .word off_804CF44
-off_804CF44: .word dword_804CF64
-	.word dword_804CF68
-	.word dword_804CF6C
-	.word dword_804CF70
-	.word dword_804CF74
-	.word dword_804CF78
-	.word dword_804CF7C
-	.word dword_804CF80
-dword_804CF64: .word 0xFFFFFFFF
-dword_804CF68: .word 0xFFFFFFFF
-dword_804CF6C: .word 0xFFFFFFFF
-dword_804CF70: .word 0xFFFFFFFF
-dword_804CF74: .word 0xFFFFFFFF
-dword_804CF78: .word 0xFFFFFFFF
-dword_804CF7C: .word 0xFFFFFFFF
-dword_804CF80: .word 0xFFFFFFFF
-	thumb_func_end sub_804CF32
-
-	thumb_func_start sub_804CF84
-sub_804CF84:
-	push {lr}
-	mov r0, r10
-	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r0, [r0,#oGameState_MapNumber]
-	lsl r0, r0, #2
-	ldr r1, off_804CF98 // =off_804CF9C 
-	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
-	pop {pc}
-off_804CF98: .word off_804CF9C
-off_804CF9C:
-	// <endpool> <endfile>
-	.word byte_804CFBC
-	.word byte_804CFD4
-	.word dword_804D08C
-	.word dword_804D090
-	.word dword_804D094
-	.word dword_804D098
-	.word dword_804D09C
-	.word dword_804D0A0
-	thumb_func_end sub_804CF84
 
 /*For debugging purposes, connect comment at any range!*/

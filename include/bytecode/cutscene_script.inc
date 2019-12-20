@@ -648,8 +648,8 @@
 // shared command
 	enum cs_call_sub_8001B1C_cmd // 0x36
 // 0x2c/0x36 word1
-// call sub_8001B1C(r0=word1)
-// word1 - argument to sub_8001B1C
+// call LoadGFXAnim(r0=word1)
+// word1 - argument to LoadGFXAnim
 	.macro cs_call_sub_8001B1C word1:req
 	.byte cs_call_sub_8001B1C_cmd
 	.word \word1
@@ -658,8 +658,8 @@
 // shared command
 	enum cs_call_sub_8001B1C_multiple_cmd // 0x37
 // 0x2d/0x37 word1
-// do sub_8002354(r0=word1)
-// r0 is a list of pointers for sub_8001B1C, terminated by negative
+// do LoadGFXAnims(r0=word1)
+// r0 is a list of pointers for LoadGFXAnim, terminated by negative
 	.macro cs_call_sub_8001B1C_multiple word1:req
 	.byte cs_call_sub_8001B1C_multiple_cmd
 	.word \word1
@@ -668,7 +668,7 @@
 // shared command
 	enum cs_call_sub_8030A30_8035194_cmd // 0x38
 // 0x2e/0x38
-// call sub_8030A30, then sub_8035194
+// call sub_8030A30, then LoadBGAnimForMapGroup
 // uses map group/number as args
 	.macro cs_call_sub_8030A30_8035194
 	.byte cs_call_sub_8030A30_8035194_cmd
@@ -677,8 +677,8 @@
 // shared command
 	enum cs_cmd_8035F6A_cmd // 0x39
 // 0x2f/0x39 byte1
-// if byte1 == 0xff, call sub_8001B6C with r0 as 0x0 to 0x11
-// else, call sub_8001B6C with r0=byte1
+// if byte1 == 0xff, call TerminateGFXAnim with r0 as 0x0 to 0x11
+// else, call TerminateGFXAnim with r0=byte1
 	.macro cs_cmd_8035F6A byte1:req
 	.byte cs_cmd_8035F6A_cmd
 	.byte \byte1
@@ -1320,7 +1320,7 @@
 
 	enum cs_call_sub_8001974_cmd // 0x5f
 // 0x5f
-// call sub_8001974
+// call SetDummyBGScrollCallbacks
 	.macro cs_call_sub_8001974
 	.byte cs_call_sub_8001974_cmd
 	.endm

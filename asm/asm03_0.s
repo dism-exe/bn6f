@@ -12964,18 +12964,18 @@ sub_802CEF4:
 	ldr r1, dword_802D038 // =0x200000 
 	tst r0, r1
 	beq loc_802CF30
-	mov r1, #0x84
+	mov r1, #oCollisionData_PanelDamage2
 	ldrh r1, [r4,r1]
 	cmp r1, #0
 	bne loc_802CF30
-	mov r0, #0x82
+	mov r0, #oCollisionData_PanelDamage1
 	add r0, r0, r4
-	ldrh r2, [r0]
-	ldrh r1, [r0,#4]
+	ldrh r2, [r0,#oCollisionData_PanelDamage1 - oCollisionData_PanelDamage1]
+	ldrh r1, [r0,#oCollisionData_PanelDamage3 - oCollisionData_PanelDamage1]
 	orr r2, r1
-	ldrh r1, [r0,#6]
+	ldrh r1, [r0,#oCollisionData_PanelDamage4 - oCollisionData_PanelDamage1]
 	orr r2, r1
-	ldrh r1, [r0,#8]
+	ldrh r1, [r0,#oCollisionData_PanelDamage5 - oCollisionData_PanelDamage1]
 	orr r2, r1
 	cmp r2, #0
 	beq loc_802CFB8
@@ -17858,7 +17858,7 @@ startScreen_802F574:
 	mov r0, #0xb
 	bl sub_80015FC
 	ldr r0, off_802F7E4 // =0x1140 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	bl startScreen_initGfx_802FCC0
@@ -17867,7 +17867,7 @@ startScreen_802F574:
 	bl SetScreenFade // (int a1, int a2) -> void
 	bl musicGameState_8000784 // () -> void
 	ldr r0, off_802F5EC // =pt_802F5F0 
-	bl sub_8002354
+	bl LoadGFXAnims
 	mov r0, #4
 	strb r0, [r5]
 	mov r0, #0
@@ -17932,7 +17932,7 @@ off_802F620: .word sub_802F624+1
 sub_802F624:
 	push {lr}
 	ldr r0, dword_802F638 // =0x1741 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	mov r0, #8
 	strb r0, [r5]
 	mov r0, #0
@@ -17976,7 +17976,7 @@ sub_802F668:
 	mov r0, #0xa
 	bl sub_80015FC
 	ldr r0, off_802F6A0 // =0x1340 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	mov r0, #0
 	strb r0, [r5,#6]
 	bl sub_802FD3C
@@ -18088,7 +18088,7 @@ sub_802F756:
 	mov r1, #4
 	strb r1, [r0]
 	ldr r0, off_802F7E4 // =0x1140 
-	bl sRender_08_setRenderingState
+	bl SetRenderInfoLCDControl
 	bl sub_813D960
 	ldrb r0, [r5,#8]
 	cmp r0, #0
@@ -18154,9 +18154,9 @@ sub_802F7E8:
 	mov r0, #SOUND_SELECT_67
 	bl PlaySoundEffect
 	ldr r0, off_802F814 // =byte_802F2E4 
-	bl sub_8001B1C
+	bl LoadGFXAnim
 	ldr r0, off_802F818 // =dword_802F334 
-	bl sub_8001B1C
+	bl LoadGFXAnim
 locret_802F810:
 	pop {pc}
 	.balign 4, 0x00
@@ -18591,7 +18591,7 @@ initRefs_802FCD8: .word comp_87F36A0 + 1<<31
 	.word 0x6000000
 	.word eDecompBuffer2013A00
 	.word dword_87F4194
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x1C0
 	.word byte_86A48C0
 	.word 0x6012800
@@ -18884,8 +18884,8 @@ camera_802FF4C:
 	push {r0-r2}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_CameraPtr]
-	ldrb r0, [r5,#3]
-	ldr r1, [r5,#0x14]
+	ldrb r0, [r5,#oCamera_Unk_03]
+	ldr r1, [r5,#oCamera_Unk_14]
 	push {r0,r1,r5}
 	mov r0, r10
 	// memBlock
@@ -18894,28 +18894,28 @@ camera_802FF4C:
 	mov r1, #0x4c 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0,r1,r5}
-	strb r0, [r5,#3]
-	str r1, [r5,#0x14]
+	strb r0, [r5,#oCamera_Unk_03]
+	str r1, [r5,#oCamera_Unk_14]
 	ldr r0, off_802FFF0 // =eStruct200BE70
 	ldrb r3, [r0]
 	sub r3, #0x1e
 	lsl r3, r3, #0x12
-	str r3, [r5,#0x1c]
+	str r3, [r5,#oCamera_Unk_1c]
 	neg r3, r3
-	str r3, [r5,#0x18]
+	str r3, [r5,#oCamera_Unk_18]
 	ldrb r3, [r0,#0x1] // (byte_200BE71 - 0x200be70)
 	sub r3, #0x14
 	lsl r3, r3, #0x12
-	str r3, [r5,#0x20]
+	str r3, [r5,#oCamera_Unk_20]
 	neg r3, r3
-	str r3, [r5,#0x24]
+	str r3, [r5,#oCamera_Unk_24]
 	pop {r1-r3}
-	str r1, [r5,#0x30]
-	str r2, [r5,#0x34]
-	str r3, [r5,#0x38]
+	str r1, [r5,#oCamera_X]
+	str r2, [r5,#oCamera_Y]
+	str r3, [r5,#oCamera_Z]
 	mov r1, #0
-	strh r1, [r5,#4]
-	strh r1, [r5,#6]
+	strh r1, [r5,#oCamera_Unk_04]
+	strh r1, [r5,#oCamera_Unk_06]
 	pop {r0,r1}
 	cmp r0, #0xf0
 	bge loc_802FFB8
@@ -18945,7 +18945,7 @@ loc_802FFC4:
 	ldr r3, [r3,r0]
 	ldr r0, [r3,r1]
 loc_802FFCA:
-	strb r0, [r5,#2]
+	strb r0, [r5,#oCamera_Unk_02]
 	bl camera_doShakeEffect_80301e8
 	bl sub_8030054
 	bl sub_80302D0
@@ -19005,7 +19005,7 @@ off_8030040: .word sub_8030136+1
 sub_8030054:
 	push {lr}
 	ldr r0, off_8030064 // =off_8030068
-	ldrb r1, [r5,#2]
+	ldrb r1, [r5,#oCamera_Unk_02]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
@@ -19022,107 +19022,107 @@ off_8030068: .word sub_803007C+1
 	thumb_local_start
 sub_803007C:
 	mov r1, #0x0 // byte_0
-	ldr r4, [r5,#0x3c]
+	ldr r4, [r5,#oCamera_nextX_3c]
 	sub r1, r1, r4
 	mov r6, #0
-	ldr r4, [r5,#0x40]
+	ldr r4, [r5,#oCamera_nextY_40]
 	sub r6, r6, r4
 	mov r7, r6
 	mov r8, r1
 	add r1, r1, r6
 	asr r1, r1, #0x10
 	neg r1, r1
-	strh r1, [r5,#4]
+	strh r1, [r5,#oCamera_Unk_04]
 	mov r6, r7
 	mov r2, r8
 	sub r6, r6, r2
 	asr r6, r6, #1
 	mov r4, #0
 	sub r6, r6, r4
-	ldr r2, [r5,#0x44]
+	ldr r2, [r5,#oCamera_nextZ_44]
 	add r6, r6, r2
 	asr r6, r6, #0x10
 	neg r6, r6
-	strh r6, [r5,#6]
+	strh r6, [r5,#oCamera_Unk_06]
 	mov pc, lr
 	thumb_func_end sub_803007C
 
 	thumb_local_start
 sub_80300AC:
-	ldr r1, [r5,#0x3c]
-	ldr r2, [r5,#0x18]
+	ldr r1, [r5,#oCamera_nextX_3c]
+	ldr r2, [r5,#oCamera_Unk_18]
 	cmp r1, r2
 	bge loc_80300B6
 	mov r1, r2
 loc_80300B6:
-	ldr r2, [r5,#0x1c]
+	ldr r2, [r5,#oCamera_Unk_1c]
 	cmp r1, r2
 	ble loc_80300BE
 	mov r1, r2
 loc_80300BE:
-	str r1, [r5,#0x3c]
+	str r1, [r5,#oCamera_nextX_3c]
 	asr r1, r1, #0x10
-	strh r1, [r5,#4]
-	ldr r6, [r5,#0x44]
-	ldr r4, [r5,#0x40]
-	ldr r2, [r5,#0x24]
+	strh r1, [r5,#oCamera_Unk_04]
+	ldr r6, [r5,#oCamera_nextZ_44]
+	ldr r4, [r5,#oCamera_nextY_40]
+	ldr r2, [r5,#oCamera_Unk_24]
 	add r2, r2, r6
 	cmp r4, r2
 	bge loc_80300D2
 	mov r4, r2
 loc_80300D2:
-	ldr r2, [r5,#0x20]
+	ldr r2, [r5,#oCamera_Unk_20]
 	add r2, r2, r6
 	cmp r4, r2
 	ble loc_80300DC
 	mov r4, r2
 loc_80300DC:
-	str r4, [r5,#0x40]
+	str r4, [r5,#oCamera_nextY_40]
 	mov r6, r4
-	ldr r4, [r5,#0x44]
-	ldr r2, [r5,#0x24]
+	ldr r4, [r5,#oCamera_nextZ_44]
+	ldr r2, [r5,#oCamera_Unk_24]
 	add r2, r2, r6
-	str r2, [r5,#0x2c]
+	str r2, [r5,#oCamera_Unk_2c]
 	cmp r4, r2
 	bge loc_80300EE
 	mov r4, r2
 loc_80300EE:
-	ldr r2, [r5,#0x20]
+	ldr r2, [r5,#oCamera_Unk_20]
 	add r2, r2, r6
-	str r2, [r5,#0x28]
+	str r2, [r5,#oCamera_Unk_28]
 	cmp r4, r2
 	ble loc_80300FA
 	mov r4, r2
 loc_80300FA:
-	str r4, [r5,#0x44]
+	str r4, [r5,#oCamera_nextZ_44]
 	sub r6, r6, r4
 	asr r6, r6, #0x10
-	strh r6, [r5,#6]
+	strh r6, [r5,#oCamera_Unk_06]
 locret_8030102:
 	mov pc, lr
 	thumb_func_end sub_80300AC
 
 	thumb_local_start
 sub_8030104:
-	ldr r4, [r5,#0x3c]
+	ldr r4, [r5,#oCamera_nextX_3c]
 	asr r4, r4, #0x10
 	add r4, #0x80
 	add r4, #8
-	strh r4, [r5,#4]
-	ldr r4, [r5,#0x40]
+	strh r4, [r5,#oCamera_Unk_04]
+	ldr r4, [r5,#oCamera_nextY_40]
 	asr r4, r4, #0x10
 	add r4, #0x80
 	add r4, #0x30 
-	strh r4, [r5,#6]
+	strh r4, [r5,#oCamera_Unk_06]
 	mov pc, lr
 	thumb_func_end sub_8030104
 
 	thumb_local_start
 sub_803011A:
-	ldrh r1, [r5,#4]
-	strh r1, [r5,#8]
-	ldrh r1, [r5,#6]
-	strh r1, [r5,#0xa]
+	ldrh r1, [r5,#oCamera_Unk_04]
+	strh r1, [r5,#oCamera_Unk_08]
+	ldrh r1, [r5,#oCamera_Unk_06]
+	strh r1, [r5,#oCamera_Unk_0a]
 	mov pc, lr
 	thumb_func_end sub_803011A
 
@@ -19384,7 +19384,7 @@ locret_80302CE:
 sub_80302D0:
 	push {lr}
 	ldr r0, off_80302E0 // =off_80302E4
-	ldrb r1, [r5,#2]
+	ldrb r1, [r5,#oCamera_Unk_02]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
@@ -19402,18 +19402,18 @@ off_80302E4: .word sub_80302F8+1
 sub_80302F8:
 	mov r7, r10
 	ldr r5, [r7,#oToolkit_CameraPtr]
-	ldrh r1, [r5,#4]
-	ldrh r2, [r5,#6]
+	ldrh r1, [r5,#oCamera_Unk_04]
+	ldrh r2, [r5,#oCamera_Unk_06]
 	ldr r3, [r7,#oToolkit_RenderInfoPtr]
 	mov r4, #0xff
 	and r1, r4
-	strh r1, [r3,#0x10]
-	strh r1, [r3,#0x14]
-	strh r1, [r3,#0x18]
+	strh r1, [r3,#oRenderInfo_Unk_10]
+	strh r1, [r3,#oRenderInfo_Unk_14]
+	strh r1, [r3,#oRenderInfo_Unk_18]
 	and r2, r4
-	strh r2, [r3,#0x12]
-	strh r2, [r3,#0x16]
-	strh r2, [r3,#0x1a]
+	strh r2, [r3,#oRenderInfo_Unk_12]
+	strh r2, [r3,#oRenderInfo_Unk_16]
+	strh r2, [r3,#oRenderInfo_Unk_1a]
 	mov pc, lr
 	thumb_func_end sub_80302F8
 
@@ -19421,19 +19421,19 @@ sub_80302F8:
 sub_8030316:
 	mov r7, r10
 	ldr r5, [r7,#oToolkit_CameraPtr]
-	ldrh r1, [r5,#4]
-	ldrh r2, [r5,#6]
+	ldrh r1, [r5,#oCamera_Unk_04]
+	ldrh r2, [r5,#oCamera_Unk_06]
 	ldr r3, [r7,#oToolkit_RenderInfoPtr]
 	mov r4, #0xff
 	and r1, r4
-	strh r1, [r3,#0x10]
-	strh r1, [r3,#0x14]
+	strh r1, [r3,#oRenderInfo_Unk_10]
+	strh r1, [r3,#oRenderInfo_Unk_14]
 	and r2, r4
-	strh r2, [r3,#0x12]
-	strh r2, [r3,#0x16]
+	strh r2, [r3,#oRenderInfo_Unk_12]
+	strh r2, [r3,#oRenderInfo_Unk_16]
 	mov r1, #0
-	strh r1, [r3,#0x18]
-	strh r1, [r3,#0x1a]
+	strh r1, [r3,#oRenderInfo_Unk_18]
+	strh r1, [r3,#oRenderInfo_Unk_1a]
 	mov pc, lr
 	thumb_func_end sub_8030316
 
@@ -19441,23 +19441,23 @@ sub_8030316:
 sub_8030336:
 	mov r7, r10
 	ldr r5, [r7,#oToolkit_CameraPtr]
-	ldrh r1, [r5,#4]
-	ldrh r2, [r5,#6]
+	ldrh r1, [r5,#oCamera_Unk_04]
+	ldrh r2, [r5,#oCamera_Unk_06]
 	ldr r3, [r7,#oToolkit_RenderInfoPtr]
 	mov r4, #0xff
 	and r1, r4
-	strh r1, [r3,#0x10]
-	strh r1, [r3,#0x14]
-	strh r1, [r3,#0x18]
+	strh r1, [r3,#oRenderInfo_Unk_10]
+	strh r1, [r3,#oRenderInfo_Unk_14]
+	strh r1, [r3,#oRenderInfo_Unk_18]
 	and r2, r4
-	strh r2, [r3,#0x12]
-	strh r2, [r3,#0x16]
-	strh r2, [r3,#0x1a]
+	strh r2, [r3,#oRenderInfo_Unk_12]
+	strh r2, [r3,#oRenderInfo_Unk_16]
+	strh r2, [r3,#oRenderInfo_Unk_1a]
 	mov r1, #0
-	strh r1, [r3,#0x10]
-	strh r1, [r3,#0x12]
-	strh r1, [r3,#0x18]
-	strh r1, [r3,#0x1a]
+	strh r1, [r3,#oRenderInfo_Unk_10]
+	strh r1, [r3,#oRenderInfo_Unk_12]
+	strh r1, [r3,#oRenderInfo_Unk_18]
+	strh r1, [r3,#oRenderInfo_Unk_1a]
 	mov pc, lr
 	thumb_func_end sub_8030336
 
@@ -19465,17 +19465,17 @@ sub_8030336:
 sub_803035E:
 	mov r7, r10
 	ldr r5, [r7,#oToolkit_CameraPtr]
-	ldrh r1, [r5,#4]
-	ldrh r2, [r5,#6]
+	ldrh r1, [r5,#oCamera_Unk_04]
+	ldrh r2, [r5,#oCamera_Unk_06]
 	ldr r3, [r7,#oToolkit_RenderInfoPtr]
 	mov r4, #0xff
 	lsl r4, r4, #1
 	add r4, #1
 	and r1, r4
-	strh r1, [r3,#0x10]
+	strh r1, [r3,#oRenderInfo_Unk_10]
 	sub r2, #8
 	and r2, r4
-	strh r2, [r3,#0x12]
+	strh r2, [r3,#oRenderInfo_Unk_12]
 	mov pc, lr
 	thumb_func_end sub_803035E
 
@@ -19638,7 +19638,7 @@ sub_8030472:
 	mov r2, #0xd
 	lsl r2, r2, #5
 	add r0, #4
-	ldr r1, off_80304E0 // =byte_3001960 
+	ldr r1, off_80304E0 // =palette_3001960 
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	mov r0, #0
 	ldr r7, [r5,#0x14] // (dword_200BE84 - 0x200be70)
@@ -19683,57 +19683,71 @@ loc_8030492:
 	mov r9, r2
 	mov r12, r3
 	pop {r4-r7,pc}
-off_80304E0: .word byte_3001960
+off_80304E0: .word palette_3001960
 dword_80304E4: .word 0x6000000
 	thumb_func_end sub_8030472
 
-	thumb_func_start sub_80304E8
-sub_80304E8:
+	thumb_func_start LoadBGAnimData
+LoadBGAnimData:
 	push {r4-r7,lr}
 	mov r5, r0
-	ldr r0, [r5,#0x10]
+	ldr r0, [r5,#oBGAnimData_PaletteSrc]
 	tst r0, r0
-	beq loc_80304FC
+	beq .noPalette
 	add r0, #4
-	ldr r1, [r5,#0x14]
-	ldr r2, [r5,#0x18]
+	ldr r1, [r5,#oBGAnimData_PaletteDest]
+	ldr r2, [r5,#oBGAnimData_PaletteSize]
 	bl QueueEightWordAlignedGFXTransfer
-loc_80304FC:
-	ldr r7, [r5]
+.noPalette
+	ldr r7, [r5,#oBGAnimData_GFXSrc]
 	tst r7, r7
-	beq locret_803053A
+	beq .noGFX
+
+	// read offset to gfx
 	ldr r0, [r7,#4]
 	// src
 	add r0, r0, r7
 	// dest
-	ldr r1, src // =unk_2034A00 
+	ldr r1, =unk_2034A00 
+	// decompress gfx to buffer
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, src // =unk_2034A00 
-	ldr r1, [r5,#4]
+
+	ldr r0, =unk_2034A00 
+	ldr r1, [r5,#oBGAnimData_GFXDest]
+	// read decompressed gfx size
 	ldr r2, [r7]
 	lsl r2, r2, #2
+	// copy gfx to vram
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
-	ldr r0, [r5,#8]
+
+	// read tilemap source
+	ldr r0, [r5,#oBGAnimData_TilemapSrc]
 	// dest
-	ldr r1, src // =unk_2034A00 
-	// src
+	ldr r1, =unk_2034A00 
+	// add offset to compressed tilemap
 	add r0, #0xc
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, src // =unk_2034A00 
-	ldr r1, [r5,#0xc]
+
+	ldr r0, =unk_2034A00 
+	ldr r1, [r5,#oBGAnimData_TilemapDestOffset]
 	mov r2, r10
+	// add tilemap dest offset to base BG tilemap ptr
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
-	ldr r3, [r5,#8]
+	ldr r3, [r5,#oBGAnimData_TilemapSrc]
+	// get tilemap dimensions
 	ldrb r2, [r3]
 	ldrb r3, [r3,#1]
+	// multiply to get total size divided by 2
 	mul r2, r3
 	lsl r2, r2, #1
+	// copy to BG tilemap
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
-locret_803053A:
+.noGFX
 	pop {r4-r7,pc}
-src: .word unk_2034A00
-	thumb_func_end sub_80304E8
+	.balign 4, 0
+	.pool
+	thumb_func_end LoadBGAnimData
 
 	thumb_func_start sub_8030540
 sub_8030540:
@@ -20283,26 +20297,28 @@ loc_80308FA:
 	blt loc_80308A0
 	add sp, sp, #8
 	pop {r4-r7,pc}
+	.balign 4, 0
 EnterMap_RealWorldMapGroupJumptable:
-	.word sub_804CE90+1
-	.word sub_804E62C+1
-	.word sub_8052688+1
-	.word sub_80595B8+1
-	.word sub_805DF08+1
-	.word sub_806036C+1
-	.word sub_8062AB0+1
-UnkRealWorldMapGroupJumptable_8030920:
-	.word sub_804CF32+1
-	.word sub_804E6D0+1
-	.word sub_8052764+1
-	.word sub_8059664+1
-	.word sub_805DFA2+1
-	.word sub_8060406+1
-	.word sub_8062B64+1
+	.word ACDCTown_EnterMapGroup+1
+	.word CentralTown_EnterMapGroup+1
+	.word CyberAcademy_EnterMapGroup+1
+	.word SeasideTown_EnterMapGroup+1
+	.word GreenTown_EnterMapGroup+1
+	.word SkyTown_EnterMapGroup+1
+	.word ExpoSite_EnterMapGroup+1
+RealWorldMapGroupLoadGFXAnimsJumptable:
+	.word ACDCTown_LoadGFXAnims+1
+	.word CentralTown_LoadGFXAnims+1
+	.word CyberAcademy_LoadGFXAnims+1
+	.word SeasideTown_LoadGFXAnims+1
+	.word GreenTown_LoadGFXAnims+1
+	.word SkyTown_LoadGFXAnims+1
+	.word ExpoSite_LoadGFXAnims+1
+
 EnterMap_InternetMapGroupJumptable:
-	.word sub_80663D0+1
-	.word sub_8067B5C+1
-	.word sub_8069038+1
+	.word RobotControlComp_EnterMapGroup+1
+	.word AquariumComp_EnterMapGroup+1
+	.word JudgeTreeComp_EnterMapGroup+1
 	.word sub_8069FE8+1
 	.word nullsub_61+1
 	.word sub_806AA00+1
@@ -20323,10 +20339,10 @@ EnterMap_InternetMapGroupJumptable:
 	.word sub_807A8E0+1
 	.word sub_807CDEC+1
 	.word sub_807ECD0+1
-UnkInternetMapGroupJumptable_8030998:
-	.word sub_8066450+1
-	.word sub_8067BE4+1
-	.word sub_80690C2+1
+InternetMapGroupLoadGFXAnimsJumptable:
+	.word RobotControlComp_LoadGFXAnims+1
+	.word AquariumComp_LoadGFXAnims+1
+	.word JudgeTreeComp_LoadGFXAnims+1
 	.word sub_806A070+1
 	.word nullsub_62+1
 	.word sub_806AAAA+1
@@ -20348,7 +20364,7 @@ UnkInternetMapGroupJumptable_8030998:
 	.word sub_807CE90+1
 	.word sub_807ED6C+1
 EnterMap_UnkMapGroupJumptable: .word nullsub_61+1
-UnkMapGroupRangeMapGroupJumptable_80309f8: .word nullsub_62+1
+UnkMapGroupRangeLoadGFXAnimsJumptable: .word nullsub_62+1
 	thumb_func_end sub_8030892
 
 	thumb_local_start
@@ -20387,22 +20403,22 @@ EnterMap_RunMapGroupAsmFunction_8030A00: // 8030A00
 	.pool
 	thumb_func_end EnterMap_RunMapGroupAsmFunction_8030A00
 
-	thumb_func_start map_8030A30
+	thumb_func_start LoadGFXAnimsForMapGroup
 // r0 map group, r1 map number
-map_8030A30:
+LoadGFXAnimsForMapGroup:
 	push {lr}
 	cmp r0, #UNKNOWN_MAP_GROUP_START
 	bge .unknownMapGroupRange
 	cmp r0, #INTERNET_MAP_GROUP_START
 	bge .isInternetMap
-	ldr r2, =UnkRealWorldMapGroupJumptable_8030920
+	ldr r2, =RealWorldMapGroupLoadGFXAnimsJumptable
 	b .runMapGroupFunction
 .isInternetMap
-	ldr r2, =UnkInternetMapGroupJumptable_8030998
+	ldr r2, =InternetMapGroupLoadGFXAnimsJumptable
 	sub r0, #INTERNET_MAP_GROUP_START
 	b .runMapGroupFunction
 .unknownMapGroupRange
-	ldr r2, =UnkMapGroupRangeMapGroupJumptable_80309f8
+	ldr r2, =UnkMapGroupRangeLoadGFXAnimsJumptable
 	sub r0, #UNKNOWN_MAP_GROUP_START
 .runMapGroupFunction
 	lsl r0, r0, #2
@@ -20412,7 +20428,7 @@ map_8030A30:
 	pop {pc}
 	.balign 4, 0
 	.pool
-	thumb_func_end map_8030A30
+	thumb_func_end LoadGFXAnimsForMapGroup
 
 	thumb_func_start npc_freeAllObjectsThenSpawnObjectsFromList
 npc_freeAllObjectsThenSpawnObjectsFromList:
@@ -20457,9 +20473,9 @@ npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c:
 	.balign 4, 0x00
 	thumb_func_end npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c
 
-	thumb_func_start sub_8030AA4
+	thumb_func_start decompressCoordEventData_8030aa4
 // coordinate effect 
-sub_8030AA4: // JP 0x8031A60
+decompressCoordEventData_8030aa4: // JP 0x8031A60
 	push {r4-r7,lr}
 	mov r2, r8
 	mov r3, r9
@@ -20508,7 +20524,7 @@ loc_8030ABA:
 off_8030B00: .word pt_8033530 // JP Falzar 0x80344ec
 off_8030B04: .word pt_803354C // JP Falzar 0x8034508
 off_8030B08: .word unk_2027A00
-	thumb_func_end sub_8030AA4
+	thumb_func_end decompressCoordEventData_8030aa4
 
 	thumb_local_start
 sub_8030B0C:

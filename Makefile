@@ -31,7 +31,7 @@ ARCH = -mcpu=arm7tdmi -march=armv4t -mthumb -mthumb-interwork
 CDEBUG =
 CFLAGS =
 ASFLAGS = $(ARCH) $(WFLAGS) $(COMPLIANCE_FLAGS) --agbasm-colonless-labels --agbasm-colon-defined-global-labels --agbasm-local-labels --agbasm-multiline-macros \
-	--agbasm-charmap
+	--agbasm-charmap --agbasm-no-gba-thumb-after-label-disasm-fix
 	
 ASDEBUGFLAGS = --agbasm-debug $(@:.o=.dump)
 LDFLAGS = -Map $(BUILD_NAME).map

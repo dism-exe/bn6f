@@ -108,7 +108,7 @@ signed int sub_3005DA0()
 
 
 // 0x3005dd4
-int __fastcall sub_3005DD4(int result, void *a2)
+int __fastcall _SetInterruptCallback(int result, void *a2)
 {
     __int16 *v2; // r3
     __int16 v3; // r4
@@ -182,8 +182,8 @@ int sub_3005E2C()
     *off_3005E54[0] = 0;
     *off_3005E5C[0] = 1;
     v2 = v0;
-    sub_3005DD4(24, off_3005E78);
-    result = sub_3005DD4(28, off_3005E7C);
+    _SetInterruptCallback(24, off_3005E78);
+    result = _SetInterruptCallback(28, off_3005E7C);
     *v2 = v1;
     return result;
 }
@@ -2019,18 +2019,18 @@ signed int __fastcall sub_3007218(int a1, int a2)
                     v13 = *(v3 + 18);
                     if ( v13 )
                         *(v2 + 164) = v13;
-                    v14 = sub_3007432(*(v2 + 2), *(v3 + 2)) + 1;
-                    v15 = v14 + sub_30074E2(*(v2 + 24), *(v3 + 25));
+                    v14 = getPrimaryElementWeaknessMultipler_3007432(*(v2 + 2), *(v3 + 2)) + 1;
+                    v15 = v14 + getSecondaryElementWeaknessMultipler_30074e2(*(v2 + 24), *(v3 + 25));
                     *(v2 + 117) = v15 - 1;
                     v16 = v15 + sub_30074BA();
-                    v17 = v16 + sub_30074A2();
+                    v17 = v16 + applyElecOnBubbleMultipler_30074a2();
                     *(v2 + 116) = v17 - 1;
                     v18 = *(v3 + 46);
                     v19 = *(v3 + 2);
                     if ( v19 == 3 )
                         *(v2 + 120) += v18;
                     *(v2 + 2 * v19 + 130) += v18 * v17;
-                    result = sub_300766C(v2, v3);
+                    result = applyHeatOnGrassDamage_300766c(v2, v3);
                     *(v2 + 130) += result;
                     *(v2 + 160) += *(v3 + 100);
                 }
@@ -2055,7 +2055,7 @@ signed int __fastcall sub_3007218(int a1, int a2)
 
 
 // 0x3007432
-int __fastcall sub_3007432(int a1, int a2)
+int __fastcall getPrimaryElementWeaknessMultipler_3007432(int a1, int a2)
 {
     return *(*byte_3007440 + 5 * a1 + a2);
 }
@@ -2083,10 +2083,10 @@ signed int sub_3007460()
                     result = *(v0 + 112);
                     if ( !(result & 1) )
                     {
-                        result = sub_3007958(*(v1 + 10), *(v1 + 11))[2];
+                        result = _object_getPanelDataOffset(*(v1 + 10), *(v1 + 11))[2];
                         if ( result == 7 )
                         {
-                            sub_30079A4(*(v1 + 10), *(v1 + 11), 2);
+                            _object_setPanelType(*(v1 + 10), *(v1 + 11), 2);
                             result = 80;
                             *(v1 + 17) = 80;
                         }
@@ -2100,7 +2100,7 @@ signed int sub_3007460()
 
 
 // 0x30074a2
-signed int sub_30074A2()
+signed int applyElecOnBubbleMultipler_30074a2()
 {
     int v0; // r6
     int v1; // r7
@@ -2133,7 +2133,7 @@ signed int sub_30074BA()
 
 
 // 0x30074e2
-signed int __fastcall sub_30074E2(int a1, int a2)
+signed int __fastcall getSecondaryElementWeaknessMultipler_30074e2(int a1, int a2)
 {
     int v2; // r7
     signed int v3; // r2
@@ -2153,7 +2153,7 @@ signed int __fastcall sub_30074E2(int a1, int a2)
 
 
 // 0x3007550
-int sub_3007550()
+int _object_removeCollisionData()
 {
     int v0; // r5
     unsigned __int8 *v1; // r5
@@ -2181,7 +2181,7 @@ int sub_3007550()
                 result = sub_3007880(v9, v8, v1);
                 if ( !v7 )
                 {
-                    sub_30078E0(v9, v8);
+                    _object_updatePanelParameters(v9, v8);
                     sub_30075FC(v9, v8, v1);
                     result = sub_3007708(v9, v8, v1);
                 }
@@ -2207,7 +2207,7 @@ int sub_3007550()
             if ( !v7 )
             {
                 sub_3007880(v10, v11, v6);
-                sub_30078E0(v10, v11);
+                _object_updatePanelParameters(v10, v11);
                 sub_30075FC(v10, v11, v1);
                 sub_3007708(v10, v11, v1);
             }
@@ -2287,14 +2287,14 @@ int __fastcall sub_3007650(int result, int a2)
 
 
 // 0x300766c
-int __fastcall sub_300766C(int a1, int a2)
+int __fastcall applyHeatOnGrassDamage_300766c(int a1, int a2)
 {
     int v2; // r4
     int v3; // r0
     int result; // r0
 
     v2 = a2;
-    v3 = sub_3007958(*(a1 + 10), *(a1 + 11))[2];
+    v3 = _object_getPanelDataOffset(*(a1 + 10), *(a1 + 11))[2];
     if ( *(v2 + 2) != 1 || v3 != 6 )
         result = 0;
     else
@@ -2326,7 +2326,7 @@ int __fastcall sub_3007692(int a1, int a2)
             *(v2 + 119) |= *(v3 + 25);
             v7 = 2 * *(v3 + 2) + 148;
             *(v2 + v7) += *(v3 + 46);
-            result = sub_300766C(v2, v3);
+            result = applyHeatOnGrassDamage_300766c(v2, v3);
             *(v2 + 148) += result;
         }
     }
@@ -2350,7 +2350,7 @@ int __fastcall sub_3007708(int a1, int a2, int a3)
     result = v5;
     if ( v3 )
     {
-        result = sub_3007958(v5, v6);
+        result = _object_getPanelDataOffset(v5, v6);
         if ( result )
         {
             if ( !(*(v7 + 48) & dword_3007778) )
@@ -2360,19 +2360,19 @@ int __fastcall sub_3007708(int a1, int a2, int a3)
                 {
                     result = *(v7 + 2);
                     if ( result == 1 )
-                        result = sub_30079A4(v5, v6, 2);
+                        result = _object_setPanelType(v5, v6, 2);
                 }
                 else if ( result == 8 )
                 {
                     result = *(v7 + 2);
                     if ( result == 2 )
-                        result = sub_30079A4(v5, v6, 2);
+                        result = _object_setPanelType(v5, v6, 2);
                 }
                 else if ( result >= 9 && result <= 12 )
                 {
                     result = *(v7 + 2);
                     if ( result == 4 )
-                        result = sub_30079A4(v5, v6, 2);
+                        result = _object_setPanelType(v5, v6, 2);
                 }
             }
         }
@@ -2419,7 +2419,7 @@ void __fastcall sub_300777C(unsigned __int8 *a1)
                 if ( off_30078C0(v14, v13) )
                 {
                     sub_3007868(v14, v13, v2);
-                    sub_30078E0(v13, v1);
+                    _object_updatePanelParameters(v13, v1);
                 }
                 v11 = v15;
                 v12 = v16;
@@ -2445,7 +2445,7 @@ void __fastcall sub_300777C(unsigned __int8 *a1)
             if ( !v9 )
             {
                 sub_3007868(v7, v8, v2);
-                sub_30078E0(v7, v8);
+                _object_updatePanelParameters(v7, v8);
             }
             v4 += 2;
         }
@@ -2514,7 +2514,7 @@ char *sub_30078C8()
         v1 = 7;
         do
         {
-            result = sub_30078E0(v1, v0);
+            result = _object_updatePanelParameters(v1, v0);
             v3 = __OFSUB__(v1--, 1);
         }
         while ( !(((v1 < 0) ^ v3) | (v1 == 0)) );
@@ -2526,7 +2526,7 @@ char *sub_30078C8()
 
 
 // 0x30078e0
-char *__fastcall sub_30078E0(int a1, int a2)
+char *__fastcall _object_updatePanelParameters(int a1, int a2)
 {
     int v2; // r4
     int v3; // r5
@@ -2541,7 +2541,7 @@ char *__fastcall sub_30078E0(int a1, int a2)
 
     v2 = a1;
     v3 = a2;
-    result = sub_3007958(a1, a2);
+    result = _object_getPanelDataOffset(a1, a2);
     if ( result )
     {
         v5 = result[2];
@@ -2563,7 +2563,7 @@ char *__fastcall sub_30078E0(int a1, int a2)
 
 
 // 0x3007958
-char *__fastcall sub_3007958(int a1, int a2)
+char *__fastcall _object_getPanelDataOffset(int a1, int a2)
 {
     char *result; // r0
 
@@ -2605,7 +2605,7 @@ LABEL_6:
 
 
 // 0x30079a4
-char *__fastcall sub_30079A4(int a1, int a2, signed int a3)
+char *__fastcall _object_setPanelType(int a1, int a2, signed int a3)
 {
     int v3; // r4
     int v4; // r5
@@ -2615,13 +2615,13 @@ char *__fastcall sub_30079A4(int a1, int a2, signed int a3)
     v3 = a1;
     v4 = a2;
     v5 = a3;
-    result = sub_3007958(a1, a2);
+    result = _object_getPanelDataOffset(a1, a2);
     if ( result[2] )
     {
         result[2] = v5;
         if ( v5 >= 9 && v5 <= 12 )
             *(result + 9) = *byte_30079D0;
-        result = sub_30078E0(v3, v4);
+        result = _object_updatePanelParameters(v3, v4);
     }
     return result;
 }

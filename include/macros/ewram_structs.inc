@@ -24,7 +24,11 @@
 	.include "structs/Camera.inc"
 	.include "structs/CutsceneCameraInfo.inc"
 	.include "structs/OWObjectInteractionArea.inc"
-	.include "structs/S20094c0.inc"
+	.include "structs/GFXAnimState.inc"
+	.include "structs/RenderInfo.inc"
+	.include "structs/BGScrollCallbacks.inc"
+	.include "structs/BGScrollCallbackCounters.inc"
+	.include "structs/Palette20097a0.inc"
 
 /*
 rough notes for now
@@ -115,7 +119,7 @@ dword_2013940 -> sub_80318B0
 - coordinate triggers (warps, cutscenes, jack-in region, map object)
 dword_2013920 -> sub_8031A7A
 
-important function: sub_8030AA4
+important function: decompressCoordEventData_8030aa4
 can find all the struct labels of collision/tile data there through the calls after the decompression
 
 todo figure out what to call this (collision, tile effects?)
@@ -200,7 +204,7 @@ s16 0x10 - x tile offset of where to draw these screen tiles (menu items, PET ti
 
 /*
 look at:
-- sub_8001B1C
+- LoadGFXAnim
 */
 
 /*

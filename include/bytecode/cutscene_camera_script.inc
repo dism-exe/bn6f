@@ -137,7 +137,7 @@
 
 	enum ccs_call_sub_8001B1C_cmd // 0x30
 // 0x30 word1
-// call sub_8001B1C with r0=word1
+// call LoadGFXAnim with r0=word1
 	.macro ccs_call_sub_8001B1C word1:req
 	.byte ccs_call_sub_8001B1C_cmd
 	.word \word1
@@ -145,7 +145,7 @@
 
 	enum ccs_call_sub_8001B6C_cmd // 0x34
 // 0x34 word1
-// call sub_8001B6C with r0=word1
+// call TerminateGFXAnim with r0=word1
 	.macro ccs_call_sub_8001B6C word1:req
 	.byte ccs_call_sub_8001B6C_cmd
 	.word \word1

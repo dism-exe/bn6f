@@ -2303,9 +2303,9 @@ int __fastcall EnterMap(int a1)
         ClearEventFlagFromImmediate(23, 50);
         v23 = ClearEventFlagFromImmediate(1, 187);
         sub_8033948(v23, v24, v25, v26);
-        sRender_08_setRenderingState(&loc_1740);
+        SetRenderInfoLCDControl(&loc_1740);
         v27 = gs->MapSubOffset;
-        map_8030A30(gs->MapSelect);
+        LoadGFXAnimsForMapGroup(gs->MapSelect);
         map_8001708(gs->MapSelect, gs->MapSubOffset);
         map_8034B4C(gs->MapSelect, gs->MapSubOffset);
         EnterMap_RunMapGroupAsmFunction_8030A00(gs->MapSelect);
@@ -2526,7 +2526,7 @@ int __fastcall sub_80053E4(int a1)
         RandomizeExtraToolkitPointers();
         reloadCurNaviStatBoosts_813c3ac();
         v11 = *(v1 + oToolkit_GameStatePtr);
-        result = sRender_08_setRenderingState(-1249902528);
+        result = SetRenderInfoLCDControl(-1249902528);
     }
     return result;
 }
@@ -2590,7 +2590,7 @@ int sub_8005462()
         zeroFill_e200F3A0();
         sub_811F6C0(v2, v3, v4, v5);
         sub_8005524();
-        sub_8001B6C(17);
+        TerminateGFXAnim(17);
         sub_8046664();
         result = chatbox_8040818();
     }
@@ -3385,7 +3385,7 @@ int sub_8005C04()
     sub_80035A2(0x25u);
     CopyWords(*(v0[5] + 20) + 16 * (*(v0[5] + 17) - 1), v0[5], 0x10u);
     map_8001708(*(v0[0xF] + oGameState_MapGroup), *(v0[0xF] + oGameState_MapNumber));
-    sRender_08_setRenderingState(&byte_40);
+    SetRenderInfoLCDControl(&byte_40);
     v1 = v0[5];
     v2 = v0[0xF];
     TestEventFlagFromImmediate(23, 27);
@@ -3784,7 +3784,7 @@ void __fastcall sub_8005F40(int a1, int a2, int a3, int a4)
 
     zeroFillVRAM();
     ZeroFill_byte_3001960(v4, v5, v6, v7);
-    sub_8001974();
+    SetDummyBGScrollCallbacks();
     zeroFill_e20094C0();
     sub_80023A8(v8, v9, v10, v11);
     zeroFill_e2009740();
@@ -3817,7 +3817,7 @@ _BYTE *sub_8005F84()
     int v0; // r10
     _BYTE *result; // r0
 
-    sRender_08_setRenderingState(&byte_40);
+    SetRenderInfoLCDControl(&byte_40);
     sub_809F68C();
     chatbox_8040818();
     chatbox_clear_eFlags2009F38(64);
@@ -3931,8 +3931,8 @@ int __fastcall sub_8006330(int a1)
 
     v1 = &byte_200A440[a1];
     sub_800634C(a1);
-    sub_800239A(v1[12] + 18);
-    return sub_800239A(v1[12] + 19);
+    Terminate_ePalette20097a0_Transform(v1[12] + 18);
+    return Terminate_ePalette20097a0_Transform(v1[12] + 19);
 }
 
 
@@ -4140,8 +4140,8 @@ _WORD *sub_8006580()
     int v1; // r10
     _WORD *result; // r0
 
-    sub_800239A(20);
-    sub_800239A(21);
+    Terminate_ePalette20097a0_Transform(20);
+    Terminate_ePalette20097a0_Transform(21);
     dword_20096D0 = 0;
     *(v0 + 13) = 0;
     result = *(v1 + oToolkit_RenderInfoPtr);
@@ -6139,7 +6139,7 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
             v9 = sub_800AF50();
             if ( !v9 )
             {
-                sub_8001974();
+                SetDummyBGScrollCallbacks();
                 zeroFill_e20094C0();
                 sub_80023A8(v10, v11, v12, v13);
                 v14 = *(v3 + 24);
@@ -6167,7 +6167,7 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
             TestEventFlagFromImmediate(23, 51);
             if ( !v18 )
             {
-                sub_8001974();
+                SetDummyBGScrollCallbacks();
                 zeroFill_e20094C0();
                 sub_80023A8(v19, v20, v21, v22);
                 (loc_80071FE)(*(v3 + 60));
@@ -6241,7 +6241,7 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
     }
     *(v7 + oGameState_Unk_0a) = 0;
     zeroFill_e20097A0();
-    v38 = sRender_08_setRenderingState(64);
+    v38 = SetRenderInfoLCDControl(64);
     sub_800A892(v38);
     sub_80071A4(1);
     ClearEventFlagFromImmediate(23, 34);

@@ -2523,13 +2523,13 @@ byte_8001618: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x8, 0x3C, 0x0, 0x0,
 	thumb_func_start map_8001708
 map_8001708:
 	push {lr}
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_8001712
 	ldr r3, off_8001724 // =off_803385C
 	b loc_8001716
 loc_8001712:
 	ldr r3, off_8001728 // =off_8033878
-	sub r0, #0x80
+	sub r0, #INTERNET_MAP_GROUP_START
 loc_8001716:
 	lsl r0, r0, #2
 	ldr r3, [r3,r0]
@@ -2579,21 +2579,21 @@ off_8001770: .word Window0HorizontalDimensions
 off_8001774: .word ColorSpecialEffectsSelection
 	thumb_func_end render_800172C
 
-	thumb_func_start sRender_08_setRenderingState
-sRender_08_setRenderingState:
+	thumb_func_start SetRenderInfoLCDControl
+SetRenderInfoLCDControl:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r0, [r1]
+	strh r0, [r1,#oRenderInfo_Unk_00]
 	mov pc, lr
-	thumb_func_end sRender_08_setRenderingState
+	thumb_func_end SetRenderInfoLCDControl
 
-	thumb_func_start sub_8001780
-sub_8001780:
+	thumb_func_start GetRenderInfoLCDControl
+GetRenderInfoLCDControl:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	ldrh r0, [r1]
+	ldrh r0, [r1,#oRenderInfo_Unk_00]
 	mov pc, lr
-	thumb_func_end sub_8001780
+	thumb_func_end GetRenderInfoLCDControl
 
 	thumb_func_start renderInfo_8001788
 renderInfo_8001788:
@@ -2646,7 +2646,7 @@ dword_80017DC: .word 0x600C000
 	thumb_func_start ZeroFill_byte_3001960
 ZeroFill_byte_3001960:
 	push {lr}
-	ldr r0, off_8001800 // =byte_3001960
+	ldr r0, off_8001800 // =palette_3001960
 	mov r1, #2
 	bl ZeroFillByHalfword
 	pop {pc}
@@ -2655,14 +2655,14 @@ ZeroFill_byte_3001960:
 	thumb_func_start main_zeroFill_80017EC
 main_zeroFill_80017EC:
 	push {lr}
-	ldr r0, off_8001800 // =byte_3001960
+	ldr r0, off_8001800 // =palette_3001960
 	mov r1, #2
 	bl ZeroFillByHalfword
 	ldr r0, dword_8001804 // =0x5000000
 	mov r1, #2
 	bl ZeroFillByHalfword
 	pop {pc}
-off_8001800: .word byte_3001960
+off_8001800: .word palette_3001960
 dword_8001804: .word 0x5000000
 	thumb_func_end main_zeroFill_80017EC
 
@@ -2874,59 +2874,70 @@ loc_800193A:
 	.balign 4, 0x00
 	thumb_func_end sub_8001930
 
-	thumb_func_start sub_800195C
-sub_800195C:
+	thumb_func_start SetBGScrollCallbacks
+// set the bg scroll callback
+// is actually just an arbitrary callback
+// but all calls to this function pass
+// a callback that modifies BG scroll
+// registers (modifies eRenderInfo_Unk_10 to
+// eRenderInfo_Unk_1a, which are copied to the
+// bg scroll registers)
+// r0 - callback 0
+// r1 - callback 1
+// r2 - hblank interrupt callback
+SetBGScrollCallbacks:
 	push {lr}
 	tst r0, r0
-	beq locret_8001972
-	ldr r3, off_80019AC // =doff_200A880
-	str r0, [r3]
-	str r1, [r3,#0x8] // (off_200A888 - 0x200a880)
-	str r2, [r3,#0x4] // (doff_200A884 - 0x200a880)
-	mov r0, #4
+	beq .callbackZeroNotSet
+	ldr r3, off_80019AC // =eBGScrollCallbacks
+	str r0, [r3,#oBGScrollCallbacks_Callback0]
+	str r1, [r3,#oBGScrollCallbacks_Callback1] // (off_200A888 - 0x200a880)
+	str r2, [r3,#oBGScrollCallbacks_HBlankCallback] // (doff_200A884 - 0x200a880)
+	mov r0, #4 // hblank
 	mov r1, r2
-	bl start_800024C
-locret_8001972:
+	bl SetInterruptCallback
+.callbackZeroNotSet
 	pop {pc}
-	thumb_func_end sub_800195C
+	thumb_func_end SetBGScrollCallbacks
 
-	thumb_func_start sub_8001974
-sub_8001974:
+	thumb_func_start SetDummyBGScrollCallbacks
+// set all bg callbacks to nullsubs
+SetDummyBGScrollCallbacks:
 	push {lr}
-	ldr r2, off_80019AC // =doff_200A880
+	ldr r2, off_80019AC // =eBGScrollCallbacks
 	ldr r0, off_800198C // =nullsub_39+1
-	str r0, [r2]
-	str r0, [r2,#0x8] // (off_200A888 - 0x200a880)
-	ldr r1, dword_8001990 // =nullsub_38
-	str r1, [r2,#0x4] // (doff_200A884 - 0x200a880)
-	mov r0, #4
-	bl start_800024C
+	str r0, [r2,#oBGScrollCallbacks_Callback0]
+	str r0, [r2,#oBGScrollCallbacks_Callback1] // (off_200A888 - 0x200a880)
+	ldr r1, dword_8001990 // =nullsub_38+1
+	str r1, [r2,#oBGScrollCallbacks_HBlankCallback] // (doff_200A884 - 0x200a880)
+	mov r0, #4 // hblank
+	bl SetInterruptCallback
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800198C: .word nullsub_39+1
-dword_8001990: .word 0x3005CD9
-	thumb_func_end sub_8001974
+dword_8001990: .word nullsub_38+1
+	thumb_func_end SetDummyBGScrollCallbacks
 
-	thumb_func_start cb_call_200A880
-cb_call_200A880:
+	thumb_func_start CallBGScrollCallback0
+CallBGScrollCallback0:
 	push {lr}
-	ldr r1, off_80019AC // =doff_200A880
-	ldr r0, [r1]
+	ldr r1, off_80019AC // =eBGScrollCallbacks
+	ldr r0, [r1,#oBGScrollCallbacks_Callback0]
 	mov lr, pc
 	bx r0
 	pop {pc}
-	thumb_func_end cb_call_200A880
+	thumb_func_end CallBGScrollCallback0
 
-	thumb_func_start sub_80019A0
-sub_80019A0:
+	thumb_func_start CallBGScrollCallback1
+CallBGScrollCallback1:
 	push {lr}
-	ldr r1, off_80019AC // =doff_200A880
-	ldr r0, [r1,#0x8] // (off_200A888 - 0x200a880)
+	ldr r1, off_80019AC // =eBGScrollCallbacks
+	ldr r0, [r1,#oBGScrollCallbacks_Callback1] // (off_200A888 - 0x200a880)
 	mov lr, pc
 	bx r0
 	pop {pc}
-off_80019AC: .word doff_200A880
-	thumb_func_end sub_80019A0
+off_80019AC: .word eBGScrollCallbacks
+	thumb_func_end CallBGScrollCallback1
 
 	thumb_func_start nullsub_35
 nullsub_35:
@@ -2938,155 +2949,155 @@ nullsub_36:
 	mov pc, lr
 	thumb_func_end nullsub_36
 
-	thumb_func_start sub_80019B4
-sub_80019B4:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG1Diagonal3to2Scroll
+BGScrollCB_BG1Diagonal3to2Scroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	sub r2, #8
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
-	ldr r3, [r1,#0x4] // (dword_2009694 - 0x2009690)
+	ldr r3, [r1,#oBGScrollCBCounters_Counter1] // (dword_2009694 - 0x2009690)
 	sub r3, #4
-	str r3, [r1,#0x4] // (dword_2009694 - 0x2009690)
+	str r3, [r1,#oBGScrollCBCounters_Counter1] // (dword_2009694 - 0x2009690)
 	lsr r3, r3, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x10]
-	strh r3, [r1,#0x12]
+	strh r2, [r1,#oRenderInfo_Unk_10]
+	strh r3, [r1,#oRenderInfo_Unk_12]
 	mov pc, lr
-	thumb_func_end sub_80019B4
+	thumb_func_end BGScrollCB_BG1Diagonal3to2Scroll
 
-	thumb_func_start sub_80019D0
-sub_80019D0:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG3Diagonal3to2Scroll
+BGScrollCB_BG3Diagonal3to2Scroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	sub r2, #8
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
-	ldr r3, [r1,#0x4] // (dword_2009694 - 0x2009690)
+	ldr r3, [r1,#oBGScrollCBCounters_Counter1] // (dword_2009694 - 0x2009690)
 	sub r3, #4
-	str r3, [r1,#0x4] // (dword_2009694 - 0x2009690)
+	str r3, [r1,#oBGScrollCBCounters_Counter1] // (dword_2009694 - 0x2009690)
 	lsr r3, r3, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x18]
-	strh r3, [r1,#0x1a]
+	strh r2, [r1,#oRenderInfo_Unk_18]
+	strh r3, [r1,#oRenderInfo_Unk_1a]
 	mov pc, lr
-	thumb_func_end sub_80019D0
+	thumb_func_end BGScrollCB_BG3Diagonal3to2Scroll
 
-	thumb_func_start sub_80019EC
-sub_80019EC:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r3, [r1]
+	thumb_func_start BGScrollCB_BG1UpScroll
+BGScrollCB_BG1UpScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r3, [r1,#oBGScrollCBCounters_Counter0]
 	sub r3, #4
-	str r3, [r1]
+	str r3, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r3, r3, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r3, [r1,#0x12]
+	strh r3, [r1,#oRenderInfo_Unk_12]
 	mov pc, lr
-	thumb_func_end sub_80019EC
+	thumb_func_end BGScrollCB_BG1UpScroll
 
-	thumb_func_start sub_80019FE
-sub_80019FE:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r3, [r1]
+	thumb_func_start BGScrollCB_BG3UpScroll
+BGScrollCB_BG3UpScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r3, [r1,#oBGScrollCBCounters_Counter0]
 	sub r3, #4
-	str r3, [r1]
+	str r3, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r3, r3, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r3, [r1,#0x1a]
+	strh r3, [r1,#oRenderInfo_Unk_1a]
 	mov pc, lr
-	thumb_func_end sub_80019FE
+	thumb_func_end BGScrollCB_BG3UpScroll
 
-	thumb_func_start sub_8001A10
-sub_8001A10:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG1DownScroll
+BGScrollCB_BG1DownScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	add r2, #4
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x12]
+	strh r2, [r1,#oRenderInfo_Unk_12]
 	mov pc, lr
-	thumb_func_end sub_8001A10
+	thumb_func_end BGScrollCB_BG1DownScroll
 
-	thumb_func_start sub_8001A22
-sub_8001A22:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG3DownScroll
+BGScrollCB_BG3DownScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	add r2, #4
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x1a]
+	strh r2, [r1,#oRenderInfo_Unk_1a]
 	mov pc, lr
-	thumb_func_end sub_8001A22
+	thumb_func_end BGScrollCB_BG3DownScroll
 
-	thumb_func_start sub_8001A34
-sub_8001A34:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG1SlowRightScroll
+BGScrollCB_BG1SlowRightScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	add r2, #1
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x10]
+	strh r2, [r1,#oRenderInfo_Unk_10]
 	mov pc, lr
-	thumb_func_end sub_8001A34
+	thumb_func_end BGScrollCB_BG1SlowRightScroll
 
-	thumb_func_start sub_8001A46
-sub_8001A46:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG3SlowRightScroll
+BGScrollCB_BG3SlowRightScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	add r2, #1
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x18]
+	strh r2, [r1,#oRenderInfo_Unk_18]
 	mov pc, lr
-	thumb_func_end sub_8001A46
+	thumb_func_end BGScrollCB_BG3SlowRightScroll
 
-	thumb_func_start sub_8001A58
-sub_8001A58:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG1FastLeftScroll
+BGScrollCB_BG1FastLeftScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	sub r2, #8
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x10]
+	strh r2, [r1,#oRenderInfo_Unk_10]
 	mov pc, lr
-	thumb_func_end sub_8001A58
+	thumb_func_end BGScrollCB_BG1FastLeftScroll
 
-	thumb_func_start sub_8001A6A
-sub_8001A6A:
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	thumb_func_start BGScrollCB_BG3FastLeftScroll
+BGScrollCB_BG3FastLeftScroll:
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	sub r2, #8
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	lsr r2, r2, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	strh r2, [r1,#0x18]
+	strh r2, [r1,#oRenderInfo_Unk_18]
 	mov pc, lr
-	thumb_func_end sub_8001A6A
+	thumb_func_end BGScrollCB_BG3FastLeftScroll
 
 	thumb_local_start
-sub_8001A7C:
+BGScrollCB_BG1AccelToVeryFastDownScroll:
 	push {lr}
 	bl sub_800139A
 	mov r1, #0x10
 	tst r0, r1
 	beq locret_8001AAC
-	ldr r1, off_8001AB0 // =dword_2009690
-	ldr r2, [r1]
+	ldr r1, off_8001AB0 // =eBGScrollCBCounters
+	ldr r2, [r1,#oBGScrollCBCounters_Counter0]
 	mov r3, #1
 	lsl r3, r3, #0xa
 	sub r2, r2, r3
@@ -3097,18 +3108,18 @@ sub_8001A7C:
 	bge loc_8001A9E
 	mov r2, r3
 loc_8001A9E:
-	str r2, [r1]
+	str r2, [r1,#oBGScrollCBCounters_Counter0]
 	asr r2, r2, #0x10
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
-	ldrh r3, [r1,#0x12]
+	ldrh r3, [r1,#oRenderInfo_Unk_12]
 	sub r3, r3, r2
-	strh r3, [r1,#0x12]
+	strh r3, [r1,#oRenderInfo_Unk_12]
 locret_8001AAC:
 	pop {pc}
-	.byte 0, 0
-off_8001AB0: .word dword_2009690
-	thumb_func_end sub_8001A7C
+	.balign 4, 0
+off_8001AB0: .word eBGScrollCBCounters
+	thumb_func_end BGScrollCB_BG1AccelToVeryFastDownScroll
 
 	thumb_func_start nullsub_39
 nullsub_39:
@@ -3137,7 +3148,7 @@ off_8001AB8: .word unk_200DF40
 zeroFill_e20094C0:
 	push {lr}
 	// memBlock
-	ldr r0, off_8001C40 // =byte_20094C0
+	ldr r0, off_8001C40 // =eGFXAnimStates
 	// size
 	ldr r1, off_8001B08 // =0x1b0
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -3156,44 +3167,44 @@ sub_8001B0C:
 off_8001B18: .word off_8001AB8
 	thumb_func_end sub_8001B0C
 
-	thumb_func_start sub_8001B1C
+	thumb_func_start LoadGFXAnim
 // r0 struct format: word0 word4 word8 byte9 (multiple fields depending on command)
-sub_8001B1C:
+LoadGFXAnim:
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
 
-	ldr r7, off_8001C40 // =byte_20094C0
-	ldrb r1, [r0,#oS8001b1c_Unk_09]
-	mov r2, #oS20094c0_Size
+	ldr r7, off_8001C40 // =eGFXAnimStates
+	ldrb r1, [r0,#oGFXAnimData_Index]
+	mov r2, #oGFXAnimState_Size
 	mul r2, r1
 	add r7, r7, r2
-	strb r1, [r7,#oS20094c0_Unk_01]
+	strb r1, [r7,#oGFXAnimState_Index]
 
-	ldr r1, [r0,#oS8001b1c_Unk_00]
-	str r1, [r7,#oS20094c0_Unk_0c]
+	ldr r1, [r0,#oGFXAnimData_Param0]
+	str r1, [r7,#oGFXAnimState_Param0]
 
-	ldr r2, [r0,#oS8001b1c_Unk_04]
-	str r2, [r7,#oS20094c0_Unk_10]
+	ldr r2, [r0,#oGFXAnimData_Param1]
+	str r2, [r7,#oGFXAnimState_Param1]
 
-	ldr r3, [r0,#oS8001b1c_Unk_08]
-	str r3, [r7,#oS20094c0_Unk_14_Word]
+	ldr r3, [r0,#oGFXAnimData_Command]
+	str r3, [r7,#oGFXAnimState_Command_Param2to3]
 
-	add r0, #oS8001b1c_Unk_0c
+	add r0, #oGFXAnimData_ParamNext
 	mov r6, #1
 	cmp r3, #8
 	beq loc_8001B48
-	ldr r6, [r0,#oS8001b1c_Unk_10 - oS8001b1c_Unk_0c]
+	ldr r6, [r0,#oGFXAnimData_Delay - oGFXAnimData_ParamNext]
 loc_8001B48:
-	strh r6, [r7,#oS20094c0_Unk_02]
+	strh r6, [r7,#oGFXAnimState_Timer]
 	mov r6, #1
-	strb r6, [r7,#oS20094c0_Unk_00]
-	str r0, [r7,#oS20094c0_Unk_04]
-	str r0, [r7,#oS20094c0_Unk_08]
+	strb r6, [r7,#oGFXAnimState_IsActive]
+	str r0, [r7,#oGFXAnimState_LoopAddress]
+	str r0, [r7,#oGFXAnimState_CommandPos]
 	ldr r6, off_8001B68 // =off_8001C24
-	ldrb r1, [r7,#oS20094c0_Unk_14]
+	ldrb r1, [r7,#oGFXAnimState_Command]
 	ldr r6, [r6,r1]
 	mov lr, pc
 	bx r6
@@ -3204,65 +3215,65 @@ loc_8001B48:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8001B68: .word off_8001C24
-	thumb_func_end sub_8001B1C
+	thumb_func_end LoadGFXAnim
 
-	thumb_func_start sub_8001B6C
-sub_8001B6C:
+	thumb_func_start TerminateGFXAnim
+TerminateGFXAnim:
 	push {r4-r7,lr}
 	push {r0}
-	ldr r7, off_8001C40 // =byte_20094C0
-	mov r1, #0x18
+	ldr r7, off_8001C40 // =eGFXAnimStates
+	mov r1, #oGFXAnimState_Size
 	mul r1, r0
 	add r7, r7, r1
 	mov r0, #0
 	strb r0, [r7]
 	pop {r0}
-	bl sub_800239A
+	bl Terminate_ePalette20097a0_Transform
 	pop {r4-r7,pc}
-	thumb_func_end sub_8001B6C
+	thumb_func_end TerminateGFXAnim
 
-	thumb_func_start sub_8001B84
-sub_8001B84:
+	thumb_func_start IsGFXAnimActive
+IsGFXAnimActive:
 	push {r4-r7,lr}
-	ldr r7, off_8001C40 // =byte_20094C0
-	mov r1, #0x18
+	ldr r7, off_8001C40 // =eGFXAnimStates
+	mov r1, #oGFXAnimState_Size
 	mul r1, r0
 	add r7, r7, r1
 	ldrb r0, [r7]
 	tst r0, r0
 	pop {r4-r7,pc}
-	thumb_func_end sub_8001B84
+	thumb_func_end IsGFXAnimActive
 
-	thumb_func_start PET_onUpdate_8001B94
-PET_onUpdate_8001B94:
+	thumb_func_start ProcessGFXAnims
+ProcessGFXAnims:
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
-	ldr r7, off_8001C40 // =byte_20094C0
+	ldr r7, off_8001C40 // =eGFXAnimStates
 	mov r4, #0
 .loopStruct
-	ldrb r1, [r7,#oS20094c0_Unk_00]
+	ldrb r1, [r7,#oGFXAnimState_IsActive]
 	tst r1, r1
 	bne .structIsActive
 .doneThisStruct
-	add r7, #oS20094c0_Size
+	add r7, #oGFXAnimState_Size
 	add r4, #1
 	cmp r4, #NUM_S20094C0_STRUCTS // 0x12
 	bge .doneAllStructs
 	b .loopStruct
 .structIsActive
 
-	ldrh r1, [r7,#oS20094c0_Unk_02]
+	ldrh r1, [r7,#oGFXAnimState_Timer]
 	sub r1, #1
-	strh r1, [r7,#oS20094c0_Unk_02]
+	strh r1, [r7,#oGFXAnimState_Timer]
 	cmp r1, #0
 	bgt .doneThisStruct
 
-	ldr r0, [r7,#oS20094c0_Unk_08] // extended data start pointer (S8001b1c + 0xc)
+	ldr r0, [r7,#oGFXAnimState_CommandPos] // extended data start pointer (S8001b1c + 0xc)
 	ldr r1, off_8001C00 // =byte_8001C08
-	ldrb r2, [r7,#oS20094c0_Unk_14] // read sub_8001B1C type
+	ldrb r2, [r7,#oGFXAnimState_Command] // read LoadGFXAnim type
 	ldr r1, [r1,r2]
 	add r0, r0, r1
 
@@ -3271,24 +3282,24 @@ PET_onUpdate_8001B94:
 	beq .noMoreEntries
 
 	cmp r1, #2
-	beq .loc_8001BD8
+	beq .setLoopAddressAndJump
 
 	cmp r1, #1
-	bne .loc_8001BDC
+	bne .gotGFXAnimCommandPos
 
-	ldr r0, [r7,#oS20094c0_Unk_04]
-	b .loc_8001BDC
+	ldr r0, [r7,#oGFXAnimState_LoopAddress]
+	b .gotGFXAnimCommandPos
 
-.loc_8001BD8:
+.setLoopAddressAndJump
 	ldr r0, [r0,#4]
-	str r0, [r7,#oS20094c0_Unk_04]
-.loc_8001BDC:
-	str r0, [r7,#oS20094c0_Unk_08]
+	str r0, [r7,#oGFXAnimState_LoopAddress]
+.gotGFXAnimCommandPos
+	str r0, [r7,#oGFXAnimState_CommandPos]
 	ldr r1, [r0,#4]
-	strh r1, [r7,#oS20094c0_Unk_02]
+	strh r1, [r7,#oGFXAnimState_Timer]
 
 	ldr r6, off_8001C04 // =off_8001C24
-	ldrb r1, [r7,#oS20094c0_Unk_14]
+	ldrb r1, [r7,#oGFXAnimState_Command]
 	ldr r6, [r6,r1]
 	mov lr, pc
 	bx r6
@@ -3304,7 +3315,7 @@ PET_onUpdate_8001B94:
 	mov r9, r2
 	mov r12, r3
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8001C00: .word byte_8001C08
 off_8001C04: .word off_8001C24
 byte_8001C08:
@@ -3316,22 +3327,22 @@ byte_8001C08:
 	.word 0x8
 	.word 0x8
 off_8001C24:
-	.word sub_8001C44+1 // 0x0
-	.word sub_8001C94+1 // 0x4
-	.word sub_8001C52+1 // 0x8
-	.word sub_8002310+1 // 0xc
-	.word sub_800232A+1 // 0x10
-	.word sub_8002338+1 // 0x14
-	.word sub_8001CFC+1 // 0x18
-off_8001C40: .word byte_20094C0
-	thumb_func_end PET_onUpdate_8001B94
+	.word sub_8001C44+1 // 0x0 copy palette
+	.word sub_8001C94+1 // 0x4 copy 0x20 sized tiles
+	.word sub_8001C52+1 // 0x8 ???
+	.word sub_8002310+1 // 0xc manual palette transform
+	.word sub_800232A+1 // 0x10 play sound effect
+	.word sub_8002338+1 // 0x14 set or clear event flag
+	.word sub_8001CFC+1 // 0x18 copy 0x40 sized tiles
+off_8001C40: .word eGFXAnimStates
+	thumb_func_end ProcessGFXAnims
 
 	thumb_local_start
 sub_8001C44:
 	push {lr}
-	ldr r0, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
-	ldr r1, [r7,#oS20094c0_Unk_0c]
-	ldr r2, [r7,#oS20094c0_Unk_10]
+	ldr r0, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
+	ldr r1, [r7,#oGFXAnimState_Param0]
+	ldr r2, [r7,#oGFXAnimState_Param1]
 	bl QueueEightWordAlignedGFXTransfer
 	pop {pc}
 	thumb_func_end sub_8001C44
@@ -3341,18 +3352,18 @@ sub_8001C52:
 	push {lr}
 	ldr r5, off_8001C90 // =eStruct200BE70
 	ldr r5, [r5,#0xc] // (dword_200BE7C - 0x200be70)
-	ldrb r2, [r7,#0x17]
+	ldrb r2, [r7,#oGFXAnimState_Param3]
 	lsl r2, r2, #2
 	add r2, #4
 	ldr r2, [r5,r2]
 	add r5, r5, r2
 	mov r6, #0xf0
 	lsl r6, r6, #8
-	ldrb r2, [r7,#0x16]
+	ldrb r2, [r7,#oGFXAnimState_Param2]
 	mov r8, r7
 loc_8001C6A:
-	ldr r1, [r0]
-	ldr r7, [r0,#4]
+	ldr r1, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
+	ldr r7, [r0,#oGFXAnimData_Delay - oGFXAnimData_ParamNext]
 	ldrh r3, [r5,r1]
 	and r3, r6
 	orr r3, r7
@@ -3366,7 +3377,7 @@ loc_8001C6A:
 	bl sub_8030808
 	pop {r4,r7}
 	mov r0, #0
-	strb r0, [r7]
+	strb r0, [r7,#oGFXAnimState_IsActive]
 	pop {pc}
 	.byte 0, 0
 off_8001C90: .word eStruct200BE70
@@ -3375,22 +3386,38 @@ off_8001C90: .word eStruct200BE70
 	thumb_local_start
 sub_8001C94:
 	push {r4,r7,lr}
-	ldr r6, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
+
+	// read pointer
+	ldr r6, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
+
+	// get some ewram address?
 	ldr r5, off_8001CE4 // =off_8001AB8
-	ldrb r4, [r7,#oS20094c0_Unk_17]
+	ldrb r4, [r7,#oGFXAnimState_Param3]
 	lsl r4, r4, #2
 	ldr r5, [r5,r4]
-	ldr r4, [r7,#oS20094c0_Unk_0c]
+
+	// read pointer
+	ldr r4, [r7,#oGFXAnimState_Param0]
 	mov r1, #0
 	push {r0}
+
 loc_8001CA6:
+	// read from memory
 	ldrh r2, [r6,r1]
+	// & 0x3ff
 	lsl r3, r2, #0x16
 	lsr r3, r3, #0x16
+	// r3 has mask 0xffc0
 	lsl r3, r3, #5
 	push {r4,r6}
+	// add r3 as offset to r4 pointer
 	add r4, r4, r3
+	// jumptable
 	ldr r0, off_8001CE8 // =off_8001CEC
+	// use these bits of r2 for jumptable index
+	//    ||
+	//    vv
+	// 0b 1111 1111 1111
 	lsr r2, r2, #0xa
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
@@ -3399,17 +3426,25 @@ loc_8001CA6:
 	pop {r4,r6}
 	add r5, #0x20
 	add r1, #2
-	ldrb r2, [r7,#oS20094c0_Unk_16]
+
+	// upper limit
+	ldrb r2, [r7,#oGFXAnimState_Param2]
 	lsl r2, r2, #1
 	cmp r1, r2
 	blt loc_8001CA6
 	pop {r0}
+
+	// read same ewram address again
 	ldr r0, off_8001CE4 // =off_8001AB8
-	ldrb r1, [r7,#oS20094c0_Unk_17]
+	ldrb r1, [r7,#oGFXAnimState_Param3]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
-	ldr r1, [r7,#oS20094c0_Unk_10]
-	ldrb r2, [r7,#oS20094c0_Unk_16]
+
+	// dest pointer
+	ldr r1, [r7,#oGFXAnimState_Param1]
+
+	// size
+	ldrb r2, [r7,#oGFXAnimState_Param2]
 	lsl r2, r2, #5
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4,r7,pc}
@@ -3427,16 +3462,16 @@ sub_8001CFC:
 	push {r4,r7,lr}
 
 	// read pointer
-	ldr r6, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
+	ldr r6, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
 
 	// get some ewram address?
 	ldr r5, off_8001D4C // =off_8001AB8
-	ldrb r4, [r7,#oS20094c0_Unk_17]
+	ldrb r4, [r7,#oGFXAnimState_Param3]
 	lsl r4, r4, #2
 	ldr r5, [r5,r4]
 
 	// read pointer
-	ldr r4, [r7,#oS20094c0_Unk_0c]
+	ldr r4, [r7,#oGFXAnimState_Param0]
 	mov r1, #0
 	push {r0}
 
@@ -3467,7 +3502,7 @@ loc_8001D0E:
 	add r1, #2
 
 	// upper limit
-	ldrb r2, [r7,#oS20094c0_Unk_16]
+	ldrb r2, [r7,#oGFXAnimState_Param2]
 	lsl r2, r2, #1
 	cmp r1, r2
 	blt loc_8001D0E
@@ -3475,15 +3510,15 @@ loc_8001D0E:
 
 	// read same ewram address again
 	ldr r0, off_8001D4C // =off_8001AB8
-	ldrb r1, [r7,#oS20094c0_Unk_17]
+	ldrb r1, [r7,#oGFXAnimState_Param3]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 
 	// dest pointer
-	ldr r1, [r7,#oS20094c0_Unk_10]
+	ldr r1, [r7,#oGFXAnimState_Param1]
 
 	// size
-	ldrb r2, [r7,#oS20094c0_Unk_16]
+	ldrb r2, [r7,#oGFXAnimState_Param2]
 	lsl r2, r2, #6
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4,r7,pc}
@@ -4252,16 +4287,21 @@ sub_80021CE:
 	thumb_func_end sub_80021CE
 
 	thumb_local_start
+// r0 = [oGFXAnimData_Param0] - jumptable index
+// r1 = [oGFXAnimData_ParamNext] - param
+// r2 = [oGFXAnimData_Param2] - num palettes
+// r3 = [oGFXAnimData_Index] - S20094c0 index
+// r4 = [oGFXAnimData_Param1] - dest?
 sub_8002310:
 	push {lr}
 	push {r4,r7}
-	ldr r1, [r0,#oS8001b1c_Unk_0c - oS8001b1c_Unk_0c]
+	ldr r1, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
 	lsl r1, r1, #1
 	lsr r1, r1, #1
-	ldrb r0, [r7,#oS20094c0_Unk_0c]
-	ldrb r2, [r7,#oS20094c0_Unk_16]
-	ldrb r3, [r7,#oS20094c0_Unk_01]
-	ldr r4, [r7,#oS20094c0_Unk_10]
+	ldrb r0, [r7,#oGFXAnimState_Param0]
+	ldrb r2, [r7,#oGFXAnimState_Param2]
+	ldrb r3, [r7,#oGFXAnimState_Index]
+	ldr r4, [r7,#oGFXAnimState_Param1]
 	bl sub_8002378
 	pop {r4,r7}
 	pop {pc}
@@ -4270,11 +4310,11 @@ sub_8002310:
 	thumb_local_start
 sub_800232A:
 	push {lr}
-	ldr r0, [r0]
+	ldr r0, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
 	cmp r0, #0
-	blt locret_8002336
+	blt .noSound
 	bl PlaySoundEffect
-locret_8002336:
+.noSound
 	pop {pc}
 	thumb_func_end sub_800232A
 
@@ -4283,39 +4323,39 @@ sub_8002338:
 	push {lr}
 	ldr r0, [r0]
 	cmp r0, #0
-	blt loc_8002348
+	blt .clearEventFlag
 	mov r0, r0
 	bl SetEventFlag
-	b locret_8002352
-loc_8002348:
+	b .done
+.clearEventFlag
 	lsl r0, r0, #1
 	lsr r0, r0, #1
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
-locret_8002352:
+.done
 	pop {pc}
 	thumb_func_end sub_8002338
 
-	thumb_func_start sub_8002354
-sub_8002354:
+	thumb_func_start LoadGFXAnims
+LoadGFXAnims:
 	push {r5,lr}
 	mov r5, r0
-loc_8002358:
+.loadGFXAnimLoop
 	ldr r0, [r5]
 	cmp r0, #0
-	blt locret_8002366
-	bl sub_8001B1C
+	blt .done
+	bl LoadGFXAnim
 	add r5, #4
-	b loc_8002358
-locret_8002366:
+	b .loadGFXAnimLoop
+.done
 	pop {r5,pc}
-	thumb_func_end sub_8002354
+	thumb_func_end LoadGFXAnims
 
 	thumb_func_start zeroFill_e20097A0
 zeroFill_e20097A0:
 	push {lr}
 	// memBlock
-	ldr r0, off_8002464 // =byte_20097A0
+	ldr r0, off_8002464 // =ePalette20097a0
 	// size
 	ldr r1, off_8002374 // =0x108
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -4326,8 +4366,8 @@ off_8002374: .word 0x108
 	thumb_func_start sub_8002378
 sub_8002378:
 	push {r5-r7,lr}
-	ldr r7, off_8002464 // =byte_20097A0
-	mov r6, #0xc
+	ldr r7, off_8002464 // =ePalette20097a0
+	mov r6, #oPalette20097a0_Size
 	mul r3, r6
 	add r7, r7, r3
 	mov r3, #0
@@ -4335,59 +4375,59 @@ sub_8002378:
 	beq loc_8002396
 	tst r2, r2
 	beq loc_8002396
-	strb r0, [r7,#1]
-	str r1, [r7,#4]
-	strb r2, [r7,#2]
+	strb r0, [r7,#oPalette20097a0_Unk_01]
+	str r1, [r7,#oPalette20097a0_Unk_04]
+	strb r2, [r7,#oPalette20097a0_Unk_02]
 	mov r3, #1
-	str r4, [r7,#8]
+	str r4, [r7,#oPalette20097a0_Unk_08]
 loc_8002396:
-	strb r3, [r7]
+	strb r3, [r7,#oPalette20097a0_Unk_00]
 	pop {r5-r7,pc}
 	thumb_func_end sub_8002378
 
-	thumb_func_start sub_800239A
-sub_800239A:
-	ldr r2, off_8002464 // =byte_20097A0
-	mov r1, #0xc
+	thumb_func_start Terminate_ePalette20097a0_Transform
+Terminate_ePalette20097a0_Transform:
+	ldr r2, off_8002464 // =ePalette20097a0
+	mov r1, #oPalette20097a0_Size
 	mul r0, r1
 	add r2, r2, r0
 	mov r0, #0
-	strb r0, [r2]
+	strb r0, [r2,#oPalette20097a0_Unk_00]
 	mov pc, lr
-	thumb_func_end sub_800239A
+	thumb_func_end Terminate_ePalette20097a0_Transform
 
 	thumb_func_start sub_80023A8
 sub_80023A8:
 	push {lr}
 	// memBlock
-	ldr r0, off_8002464 // =byte_20097A0
+	ldr r0, off_8002464 // =ePalette20097a0
 	// size
 	ldr r1, off_80023B4 // =0xd8
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
-off_80023B4: .word 0xD8
+off_80023B4: .word 0xd8
 	thumb_func_end sub_80023A8
 
 	thumb_local_start
 sub_80023B8:
-	ldr r2, off_8002464 // =byte_20097A0
-	mov r1, #0xc
+	ldr r2, off_8002464 // =ePalette20097a0
+	mov r1, #oPalette20097a0_Size
 	mul r1, r0
 	add r2, r2, r1
-	ldrb r0, [r2]
+	ldrb r0, [r2,#oPalette20097a0_Unk_00]
 	tst r0, r0
 	mov pc, lr
 	thumb_func_end sub_80023B8
 
 	thumb_local_start
 sub_80023C6:
-	ldr r2, off_8002464 // =byte_20097A0
+	ldr r2, off_8002464 // =ePalette20097a0
 	ldr r3, off_80023DC // =0x108
 loc_80023CA:
 	ldrb r0, [r2]
 	tst r0, r0
 	bne locret_80023D8
-	add r2, #0xc
+	add r2, #oPalette20097a0_Size
 	cmp r2, r3
 	blt loc_80023CA
 	mov r0, #0
@@ -4400,7 +4440,7 @@ off_80023DC: .word 0x108
 	thumb_func_start getPalleteAndTransition_80023E0
 getPalleteAndTransition_80023E0:
 	push {r5-r7,lr}
-	ldr r0, off_800243C // =byte_3001960
+	ldr r0, off_800243C // =palette_3001960
 	ldr r1, off_8002440 // =iPalette3001B60
 	mov r2, #0x20
 	lsl r2, r2, #4
@@ -4410,15 +4450,15 @@ getPalleteAndTransition_80023E0:
 	mov r2, #0x20
 	lsl r2, r2, #4
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
-	ldr r5, off_8002464 // =byte_20097A0
+	ldr r5, off_8002464 // =ePalette20097a0
 loc_80023FC:
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oPalette20097a0_Unk_00]
 	tst r0, r0
 	beq loc_8002428
-	ldr r0, [r5,#0x4] // (dword_20097A4 - 0x20097a0)
-	ldrb r2, [r5,#0x1] // (byte_20097A1 - 0x20097a0)
-	ldrb r6, [r5,#0x2] // (byte_20097A2 - 0x20097a0)
-	ldr r7, [r5,#0x8] // (dword_20097A8 - 0x20097a0)
+	ldr r0, [r5,#oPalette20097a0_Unk_04] // (dword_20097A4 - 0x20097a0)
+	ldrb r2, [r5,#oPalette20097a0_Unk_01] // (byte_20097A1 - 0x20097a0)
+	ldrb r6, [r5,#oPalette20097a0_Unk_02] // (byte_20097A2 - 0x20097a0)
+	ldr r7, [r5,#oPalette20097a0_Unk_08] // (dword_20097A8 - 0x20097a0)
 	cmp r7, #6
 	bge loc_800241E
 	ldr r6, off_8002438 // =unk_200F388
@@ -4436,8 +4476,8 @@ loc_800241E:
 	mov lr, pc
 	bx r3
 loc_8002428:
-	add r5, #0xc
-	ldr r6, off_8002464 // =byte_20097A0
+	add r5, #oPalette20097a0_Size
+	ldr r6, off_8002464 // =ePalette20097a0
 	ldr r0, off_8002460 // =0x108
 	add r6, r6, r0
 	cmp r5, r6
@@ -4445,18 +4485,18 @@ loc_8002428:
 	pop {r5-r7,pc}
 	.balign 4, 0x00
 off_8002438: .word unk_200F388
-off_800243C: .word byte_3001960
+off_800243C: .word palette_3001960
 off_8002440: .word iPalette3001B60
 off_8002444: .word byte_3001550
 off_8002448: .word iPallete3001750
 off_800244C: .word byte_8002450
 byte_8002450:
-	.word sub_3005EF0
-	.word sub_3005EF0
-	.word sub_3005F78
-	.word sub_3005F78
+	.word sub_3005EF0+1
+	.word sub_3005EF0+1
+	.word sub_3005F78+1
+	.word sub_3005F78+1
 off_8002460: .word 0x108
-off_8002464: .word byte_20097A0
+off_8002464: .word ePalette20097a0
 	thumb_func_end getPalleteAndTransition_80023E0
 
 	thumb_func_start Initialize_eStruct200a6a0

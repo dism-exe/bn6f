@@ -30455,9 +30455,9 @@ sub_811ED58:
 	strh r0, [r5,#0x10]
 	blt loc_811ED8E
 	ldr r0, off_811EDAC // =byte_811EA68
-	bl sub_8001B1C
+	bl LoadGFXAnim
 	ldr r0, off_811EDB0 // =byte_811EAB8
-	bl sub_8001B1C
+	bl LoadGFXAnim
 	mov r0, #0
 	strh r0, [r5,#0x10]
 	strb r0, [r5,#9]
@@ -30494,7 +30494,7 @@ sub_811EDB4:
 	bl CopyBackgroundTiles_onNaviSelect_811F54C // () -> void
 	bl sub_811F24C
 	mov r0, #0x10
-	bl sub_8001B84
+	bl IsGFXAnimActive
 	bne loc_811EE82
 	ldrb r0, [r5,#9]
 	tst r0, r0
@@ -30520,9 +30520,9 @@ loc_811EDF2:
 	mov r0, #1
 	strb r0, [r5,#0xd]
 	ldr r0, off_811EE90 // =byte_811EB04
-	bl sub_8001B1C
+	bl LoadGFXAnim
 	ldr r0, off_811EE94 // =byte_811EB5C
-	bl sub_8001B1C
+	bl LoadGFXAnim
 	b loc_811EE82
 loc_811EE08:
 	mov r4, r0
@@ -30603,7 +30603,7 @@ sub_811EE98:
 	bgt loc_811EEB6
 	strh r1, [r5,#0x10]
 	mov r0, #0x10
-	bl sub_8001B84
+	bl IsGFXAnimActive
 	bne loc_811EEB6
 	mov r0, #0xc
 	strb r0, [r5]
@@ -30665,9 +30665,9 @@ sub_811EF28:
 	mov r0, #4
 	strb r0, [r5]
 	ldr r0, off_811EF68 // =byte_811EAD4
-	bl sub_8001B1C
+	bl LoadGFXAnim
 	ldr r0, off_811EF6C // =byte_811EAEC
-	bl sub_8001B1C
+	bl LoadGFXAnim
 	bl sub_811F1B8
 	bl sub_811F214
 	bl sub_811F0C8

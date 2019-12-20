@@ -541,7 +541,9 @@ def set_template_functions():
         ),
         "sub_8048CCC": (
             ReturnValue("r0", datatypes.Primitive.new_byte),
-        )
+        ),
+        "sub_80305E4": (
+        ),
     }
 
 def check_stored_functions(opcode_params, funcstate, src_file, fileline):
@@ -562,6 +564,8 @@ def check_pointer_shift(opcode_params, funcstate, src_file, fileline):
         return not (opcode_params[0] == "r2" and opcode_params[1] == "r2" and opcode_params[2] == "#1")
     elif funcstate.function.value == 0x8000B8E: # decomp_initGfx_8000B8E
         return not (opcode_params[0] == "r0")
+    elif funcstate.function.value == 0x8002906: # uncompSprite_8002906
+        return not (opcode_params[0] == "r2" and opcode_params[1] == "r2" and opcode_params[2] == "#1")
     else:
         return True
 
@@ -700,6 +704,8 @@ battle_object_specific_callbacks = {
     0x8002b30: (FunctionSpecificCallback(opcodes.lsl_imm_opcode, check_pointer_shift), # sprite_decompress
                 FunctionSpecificCallback(opcodes.lsr_imm_opcode, check_pointer_shift)),
     0x8000B8E: (FunctionSpecificCallback(opcodes.lsl_imm_opcode, check_pointer_shift), # decomp_initGfx_8000B8E
+                FunctionSpecificCallback(opcodes.lsr_imm_opcode, check_pointer_shift)),
+    0x8002906: (FunctionSpecificCallback(opcodes.lsl_imm_opcode, check_pointer_shift), # uncompSprite_8002906
                 FunctionSpecificCallback(opcodes.lsr_imm_opcode, check_pointer_shift)),
     0x80EE406: (FunctionSpecificCallback(opcodes.ble_opcode, check_loc_80EE4F0),), # sub_80EE406
     0x8107E66: (FunctionSpecificCallback(opcodes.tst_opcode, sub_8107E66_hack_push_lr),), # sub_8107E66
@@ -894,6 +900,54 @@ def read_chatbox_function():
         datatypes.Stack.datatypes = {}
         debug_print("function: %s" % function_name)
         run_analyzer_from_label(function_name, registers, time.time())
+
+def read_enter_map_functions():
+    registers = RegisterState()
+    fileline = default_fileline
+    opcodes.bl_opcode.append_callback(check_stored_functions)
+    opcodes.bl_opcode.append_callback(opcodes.check_spawn_battle_object)
+
+    global function_specific_callbacks
+    function_specific_callbacks.update(battle_object_specific_callbacks)
+
+    jumptables = (
+        "EnterMap_RealWorldMapGroupJumptable",
+        "UnkRealWorldMapGroupJumptable_8030920",
+        "EnterMap_InternetMapGroupJumptable",
+        "UnkInternetMapGroupJumptable_8030998",
+        "off_8034784",
+    )
+
+    set_template_functions()
+    for jumptable in jumptables:
+        src_file = parser.find_and_position_at_nonlocal_label(jumptable)
+        words = parser.parse_word_directives(src_file)
+        for word in words:
+            if word not in function_trackers and word != "NULL":
+                registers["r0"].default_initialize(fileline)
+                registers["r1"].default_initialize(fileline)
+                registers["r2"].default_initialize(fileline)
+                registers["r3"].default_initialize(fileline)
+                registers["r4"].default_initialize(fileline)
+
+                if jumptable != "off_8034784":
+                    registers["r5"].initialize(RegisterInfo(datatypes.GameState().wrap(), fileline))
+                else:
+                    registers["r5"].default_initialize(fileline)
+
+                registers["r6"].default_initialize(fileline)
+                registers["r7"].default_initialize(fileline)
+                registers["r8"].default_initialize(fileline)
+                registers["r9"].default_initialize(fileline)
+                registers["r10"].initialize(RegisterInfo(datatypes.Toolkit().wrap(), fileline))
+                registers["r12"].default_initialize(fileline)
+                registers["lr"].initialize(RegisterInfo(datatypes.ProgramCounter("dummy_file", 0).wrap(), fileline))
+                registers["sp"].initialize(RegisterInfo(datatypes.Stack().wrap(), fileline))
+                registers["pc"].default_initialize(fileline)
+                datatypes.Stack.datatypes = {}
+                function_name = parser.strip_plus1(word)
+                debug_print("function: %s" % function_name)
+                run_analyzer_from_label(function_name, registers, time.time())
 
 def run_function_main(function, dump_temp):
     start_time = time.time()

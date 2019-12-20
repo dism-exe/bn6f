@@ -915,7 +915,7 @@ off_81238E4: .word CompText86CE724
 off_8123918: .word off_812391C
 off_812391C: .word dword_86C9108
 	.word 0x2
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word dword_86C9B54
 	.word 0x2
@@ -2187,7 +2187,7 @@ off_8124448: .word eDecompBuffer2013A00
 off_812444C: .word off_8124450
 off_8124450: .word dword_86C9108
 	.word 0x2
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word dword_86C9AF4
 	.word 0x2
@@ -3727,7 +3727,7 @@ sub_81252C0:
 off_812530C: .word off_8125310
 off_8125310: .word dword_86C9108
 	.word 0x2
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word dword_86C9B54
 	.word 0x2
@@ -7291,7 +7291,7 @@ off_8127158: .word eDecompBuffer2013A00
 off_812715C: .word off_8127160
 off_8127160: .word dword_86C9108
 	.word 0x2
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word dword_86C9B54
 	.word 0x2
@@ -8636,7 +8636,7 @@ off_8127D78: .word 0x886C9668
 	.word unk_3001A20
 	.word 0x2013A00
 	.word dword_86C9108
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word 0x0
 off_8127D94: .word dword_8127D98
@@ -8644,7 +8644,7 @@ dword_8127D98: .word 0x886C9694
 	.word 0x3001A20
 	.word 0x2013A00
 	.word dword_86C9128
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word 0x0
 off_8127DB4: .word off_8127DB8
@@ -9878,7 +9878,7 @@ loc_8128918:
 off_812894C: .word off_8128950
 off_8128950: .word dword_86C9108
 	.word 0x2
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word dword_86C9B54
 	.word 0x2
@@ -14640,7 +14640,7 @@ off_812B01C: .word eDecompBuffer2013A00
 off_812B020: .word off_812B024
 off_812B024: .word dword_86C9108
 	.word 0x2
-	.word byte_3001960
+	.word palette_3001960
 	.word 0x20
 	.word dword_86C9B54
 	.word 0x2
