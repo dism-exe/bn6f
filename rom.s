@@ -87,21 +87,31 @@ asm10:
 	.include "maps/JudgeTreeComp/warps_gfx_anims.s"
 	.include "maps/JudgeTreeComp/loader.s"
 	.include "maps/JudgeTreeComp/data.s"
-asm11:
-	.include "asm/asm11.s"
-dat11:
-	.include "data/dat11.s"
-asm12:
-	.include "asm/asm12.s"
-dat12:
-	.include "data/dat12.s"
-asm13:
-	.include "asm/asm13.s"
-dat13:
-	.include "data/dat13.s"
-asm14:
-	.include "asm/asm14.s"
-dat14:
+
+	.include "maps/MrWeatherComp/warps_gfx_anims.s"
+	.include "maps/MrWeatherComp/loader.s"
+	.include "maps/MrWeatherComp/data.s"
+
+	.include "maps/PavilionComp/warps_gfx_anims.s"
+	.include "maps/PavilionComp/loader.s"
+	.include "maps/PavilionComp/data.s"
+
+	.include "maps/HomePages/warps_gfx_anims.s"
+	.include "maps/HomePages/loader.s"
+	.include "maps/HomePages/data.s"
+
+	.include "maps/Comps1/warps_gfx_anims.s"
+	.include "maps/Comps1/loader.s"
+	.include "maps/Comps1/data.s"
+	
+	.include "maps/Comps2/warps_gfx_anims.s"
+	.include "maps/Comps2/loader.s"
+	.include "maps/Comps2/data.s"
+
+	.include "maps/CentralArea/warps_gfx_anims.s"
+	.include "maps/CentralArea/loader.s"
+	.include "maps/CentralArea/data.s"
+
 	.include "data/dat14.s"
 asm15:
 	.include "asm/asm15.s"

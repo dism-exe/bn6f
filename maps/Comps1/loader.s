@@ -352,5 +352,3 @@ pt_806DCEC:
 	.word byte_806DF44
 	.word byte_806DF70
 	thumb_func_end sub_806DCD4
-
-/*For debugging purposes, connect comment at any range!*/

@@ -346,5 +346,3 @@ pt_806FFF4:
 	.word byte_80701FC
 	.word byte_8070214
 	thumb_func_end sub_806FFDA
-
-/*For debugging purposes, connect comment at any range!*/
