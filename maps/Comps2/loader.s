@@ -1,6 +1,6 @@
 
-	thumb_func_start sub_806FC08
-sub_806FC08:
+	thumb_func_start Comps2_EnterMapGroup
+Comps2_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_806FC60 // =off_806FA98 
@@ -10,7 +10,7 @@ sub_806FC08:
 	add r0, r0, r4
 	ldr r0, [r0]
 	str r0, [r1,#oWarp2011bb0_Ptr_14]
-	bl sub_806FD54
+	bl Comps2_LoadBGAnim
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl sub_803037C
@@ -32,7 +32,7 @@ sub_806FC08:
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
 	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_806FFDA
+	bl Comps2_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 off_806FC60: .word off_806FA98
@@ -57,10 +57,10 @@ byte_806FCB8: .byte 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF, 0x1C, 0x6, 0xFF, 0xFF
 	.byte 0x1C, 0x6, 0xFF, 0xFF, 0x1C, 0x6, 0xFF, 0xFF, 0x1C, 0x6
 	.byte 0xFF, 0xFF, 0x1C, 0x6, 0xFF, 0xFF, 0x1C, 0x6, 0xFF, 0xFF
 	.byte 0x1C, 0x6, 0xFF, 0xFF
-	thumb_func_end sub_806FC08
+	thumb_func_end Comps2_EnterMapGroup
 
-	thumb_func_start sub_806FCF8
-sub_806FCF8:
+	thumb_func_start Comps2_LoadGFXAnims
+Comps2_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_806FD08 // =off_806FD0C 
@@ -87,10 +87,10 @@ off_806FD0C: .word off_806FD4C
 	.word off_806FD4C
 off_806FD4C: .word byte_806D820
 	.word 0xFFFFFFFF
-	thumb_func_end sub_806FCF8
+	thumb_func_end Comps2_LoadGFXAnims
 
-	thumb_func_start sub_806FD54
-sub_806FD54:
+	thumb_func_start Comps2_LoadBGAnim
+Comps2_LoadBGAnim:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -209,10 +209,10 @@ off_806FEEC: .word off_8616598
 	.word byte_8616EC4
 	.word 0x3001960
 	.word 0x20
-	thumb_func_end sub_806FD54
+	thumb_func_end Comps2_LoadBGAnim
 
-	thumb_func_start sub_806FF08
-sub_806FF08:
+	thumb_func_start Comps2_UnkFunction_806ff08
+Comps2_UnkFunction_806ff08:
 	push {r4-r7,lr}
 	push {r0,r1}
 	mov r0, #0
@@ -248,7 +248,7 @@ jt_806FF34: .word sub_806FF76+1
 	.word nullsub_27+1
 	.word nullsub_27+1
 	.word nullsub_27+1
-	thumb_func_end sub_806FF08
+	thumb_func_end Comps2_UnkFunction_806ff08
 
 	thumb_local_start
 nullsub_27:
@@ -314,8 +314,8 @@ loc_806FFC8:
 	pop {pc}
 	thumb_func_end sub_806FFBC
 
-	thumb_func_start sub_806FFDA
-sub_806FFDA:
+	thumb_func_start Comps2_SpawnMapObjectsForMap
+Comps2_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -345,4 +345,4 @@ pt_806FFF4:
 	.word byte_80701E4
 	.word byte_80701FC
 	.word byte_8070214
-	thumb_func_end sub_806FFDA
+	thumb_func_end Comps2_SpawnMapObjectsForMap

@@ -1,5 +1,5 @@
 // 0x807931c
-unsigned int sub_807931C()
+unsigned int Underground_EnterMapGroup()
 {
     int v0; // r5
     int v1; // r10
@@ -9,7 +9,7 @@ unsigned int sub_807931C()
     int v5; // r3
 
     *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = off_80790A4[*(v0 + 5)];
-    sub_80793E8();
+    Underground_LoadBGAnim();
     sub_803037C(*(v0 + 4), *(v0 + 5));
     decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
@@ -18,20 +18,20 @@ unsigned int sub_807931C()
     sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(*(&off_8079380 + *(v0 + 5)));
     chatbox_uncompBasedOnMap_803FD08();
-    sub_807948C();
+    Underground_SpawnMapObjectsForMap();
     return sub_8034FB8();
 }
 
 
 // 0x807939a
-int __fastcall sub_807939A(int a1, int a2)
+int __fastcall Underground_LoadGFXAnims(int a1, int a2)
 {
     return LoadGFXAnims(off_80793AC[a2]);
 }
 
 
 // 0x80793e8
-void sub_80793E8()
+void Underground_LoadBGAnim()
 {
     int v0; // r10
     int v1; // r5
@@ -48,7 +48,7 @@ void sub_80793E8()
 
 
 // 0x8079468
-int sub_8079468()
+int Underground_UnkFunction_8079468()
 {
     int v0; // r10
 
@@ -71,7 +71,7 @@ void nullsub_80()
 
 
 // 0x807948c
-int sub_807948C()
+int Underground_SpawnMapObjectsForMap()
 {
     int v0; // r10
 

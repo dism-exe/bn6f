@@ -16,7 +16,7 @@
 	u8 Unk_07 // loc=0x7
 	// related to L button messages
 	u8 Unk_08 // loc=0x8
-	u8 Unk_09 // loc=0x9
+	u8 Unk_09 // loc=0x9 // 03 = can't jack out
 	u8 BattlePaused // loc=0xa
 	u8 Unk_0b // loc=0xb
 

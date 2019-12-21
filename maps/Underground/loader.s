@@ -1,6 +1,6 @@
 
-	thumb_func_start sub_807931C
-sub_807931C:
+	thumb_func_start Underground_EnterMapGroup
+Underground_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_8079374 // =off_80790A4 
@@ -10,7 +10,7 @@ sub_807931C:
 	add r0, r0, r4
 	ldr r0, [r0]
 	str r0, [r1,#oWarp2011bb0_Ptr_14]
-	bl sub_80793E8
+	bl Underground_LoadBGAnim
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl sub_803037C
@@ -32,7 +32,7 @@ sub_807931C:
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
 	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_807948C
+	bl Underground_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 off_8079374: .word off_80790A4
@@ -43,10 +43,10 @@ off_8079380: .word byte_8079388
 byte_8079388: .byte 0x1C, 0xE, 0x1C, 0x20, 0x1C, 0x4B, 0xFF, 0xFF
 byte_8079390: .byte 0x1C, 0xE, 0x18, 0x5A, 0x18, 0x5B, 0x1C, 0x99, 0xFF
 	.byte 0xFF
-	thumb_func_end sub_807931C
+	thumb_func_end Underground_EnterMapGroup
 
-	thumb_func_start sub_807939A
-sub_807939A:
+	thumb_func_start Underground_LoadGFXAnims
+Underground_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_80793A8 // =off_80793AC 
@@ -69,10 +69,10 @@ off_80793CC: .word off_80790EC
 	.word byte_80792A4
 	.word byte_80792F4
 	.word 0xFFFFFFFF
-	thumb_func_end sub_807939A
+	thumb_func_end Underground_LoadGFXAnims
 
-	thumb_func_start sub_80793E8
-sub_80793E8:
+	thumb_func_start Underground_LoadBGAnim
+Underground_LoadBGAnim:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -114,10 +114,10 @@ off_807944C: .word dword_8618DFC
 	.word dword_8618910
 	.word palette_3001960
 	.word 0x20
-	thumb_func_end sub_80793E8
+	thumb_func_end Underground_LoadBGAnim
 
-	thumb_func_start sub_8079468
-sub_8079468:
+	thumb_func_start Underground_UnkFunction_8079468
+Underground_UnkFunction_8079468:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -131,7 +131,7 @@ sub_8079468:
 off_807947C: .word off_8079480
 off_8079480: .word nullsub_79+1
 	.word nullsub_80+1
-	thumb_func_end sub_8079468
+	thumb_func_end Underground_UnkFunction_8079468
 
 	thumb_local_start
 nullsub_79:
@@ -143,8 +143,8 @@ nullsub_80:
 	mov pc, lr
 	thumb_func_end nullsub_80
 
-	thumb_func_start sub_807948C
-sub_807948C:
+	thumb_func_start Underground_SpawnMapObjectsForMap
+Underground_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -158,4 +158,4 @@ off_80794A0: .word pt_80794A4
 pt_80794A4:
 	.word byte_80794AC
 	.word byte_80794EC
-	thumb_func_end sub_807948C
+	thumb_func_end Underground_SpawnMapObjectsForMap

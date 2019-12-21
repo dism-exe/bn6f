@@ -87,7 +87,7 @@ int JudgeTreeComp_SpawnMapObjectsForMap()
 
 
 // 0x8069fe8
-unsigned int sub_8069FE8()
+unsigned int MrWeatherComp_EnterMapGroup()
 {
 	int v0; // r5
 	int v1; // r10
@@ -97,7 +97,7 @@ unsigned int sub_8069FE8()
 	int v5; // r3
 
 	*(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_80698DC + *(v0 + 5));
-	sub_806A120();
+	MrWeatherComp_LoadBGAnim();
 	sub_803037C(*(v0 + 4), *(v0 + 5));
 	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
@@ -106,20 +106,20 @@ unsigned int sub_8069FE8()
 	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(off_806A04C[*(v0 + 5)]);
 	chatbox_uncompBasedOnMap_803FD08();
-	sub_806A1DE();
+	MrWeatherComp_SpawnMapObjectsForMap();
 	return sub_8034FB8();
 }
 
 
 // 0x806a070
-int __fastcall sub_806A070(int a1, int a2)
+int __fastcall MrWeatherComp_LoadGFXAnims(int a1, int a2)
 {
 	return LoadGFXAnims(off_806A084[a2]);
 }
 
 
 // 0x806a120
-void sub_806A120()
+void MrWeatherComp_LoadBGAnim()
 {
 	int v0; // r10
 	int v1; // r5
@@ -136,7 +136,7 @@ void sub_806A120()
 
 
 // 0x806a1b4
-int sub_806A1B4()
+int MrWeatherComp_UnkFunction_806a1b4()
 {
 	int v0; // r10
 
@@ -166,7 +166,7 @@ void nullsub_69()
 
 
 // 0x806a1de
-int sub_806A1DE()
+int MrWeatherComp_SpawnMapObjectsForMap()
 {
 	int v0; // r10
 
@@ -175,7 +175,7 @@ int sub_806A1DE()
 
 
 // 0x806aa00
-unsigned int sub_806AA00()
+unsigned int PavilionComp_EnterMapGroup()
 {
 	int v0; // r5
 	int v1; // r10
@@ -185,7 +185,7 @@ unsigned int sub_806AA00()
 	int v5; // r3
 
 	*(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_806A7AC + *(v0 + 5));
-	sub_806AB94();
+	PavilionComp_LoadBGAnim();
 	sub_803037C(*(v0 + 4), *(v0 + 5));
 	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
@@ -194,20 +194,20 @@ unsigned int sub_806AA00()
 	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(off_806AA64[*(v0 + 5)]);
 	chatbox_uncompBasedOnMap_803FD08();
-	sub_806AD00();
+	PavilionComp_SpawnMapObjectsForMap();
 	return sub_8034FB8();
 }
 
 
 // 0x806aaaa
-int __fastcall sub_806AAAA(int a1, int a2)
+int __fastcall PavilionComp_LoadGFXAnims(int a1, int a2)
 {
 	return LoadGFXAnims((&off_806AABC)[a2]);
 }
 
 
 // 0x806ab94
-void sub_806AB94()
+void PavilionComp_LoadBGAnim()
 {
 	int v0; // r10
 	int v1; // r5
@@ -224,7 +224,7 @@ void sub_806AB94()
 
 
 // 0x806acc0
-int sub_806ACC0()
+int PavilionComp_UnkFunction_806acc0()
 {
 	int v0; // r10
 
@@ -268,7 +268,7 @@ void sub_806ACFC()
 
 
 // 0x806ad00
-int sub_806AD00()
+int PavilionComp_SpawnMapObjectsForMap()
 {
 	int v0; // r10
 
@@ -277,7 +277,7 @@ int sub_806AD00()
 
 
 // 0x806c23c
-unsigned int sub_806C23C()
+unsigned int HomePages_EnterMapGroup()
 {
 	int v0; // r5
 	int v1; // r10
@@ -287,7 +287,7 @@ unsigned int sub_806C23C()
 	int v5; // r3
 
 	*(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = off_806BFF8[*(v0 + 5)];
-	sub_806C35C();
+	HomePages_LoadBGAnim();
 	sub_803037C(*(v0 + 4), *(v0 + 5));
 	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
@@ -296,20 +296,20 @@ unsigned int sub_806C23C()
 	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(*(&off_806C2A0 + *(v0 + 5)));
 	chatbox_uncompBasedOnMap_803FD08();
-	sub_806C59C();
+	HomePages_SpawnMapObjectsForMap();
 	return sub_8034FB8();
 }
 
 
 // 0x806c2e2
-int __fastcall sub_806C2E2(int a1, int a2)
+int __fastcall HomePages_LoadGFXAnims(int a1, int a2)
 {
 	return LoadGFXAnims(off_806C2F4[a2]);
 }
 
 
 // 0x806c35c
-void sub_806C35C()
+void HomePages_LoadBGAnim()
 {
 	int v0; // r10
 	int v1; // r5
@@ -326,7 +326,7 @@ void sub_806C35C()
 
 
 // 0x806c4b0
-int __fastcall sub_806C4B0(int a1, int a2)
+int __fastcall HomePages_UnkFunction_806c4b0(int a1, int a2)
 {
 	int v2; // r10
 	int v3; // ST00_4
@@ -404,7 +404,7 @@ int __fastcall sub_806C578(int result, int a2)
 
 
 // 0x806c59c
-int sub_806C59C()
+int HomePages_SpawnMapObjectsForMap()
 {
 	int v0; // r10
 

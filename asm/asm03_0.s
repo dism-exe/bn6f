@@ -20319,50 +20319,50 @@ EnterMap_InternetMapGroupJumptable:
 	.word RobotControlComp_EnterMapGroup+1
 	.word AquariumComp_EnterMapGroup+1
 	.word JudgeTreeComp_EnterMapGroup+1
-	.word sub_8069FE8+1
+	.word MrWeatherComp_EnterMapGroup+1
 	.word nullsub_61+1
-	.word sub_806AA00+1
-	.word nullsub_61+1
-	.word nullsub_61+1
-	.word sub_806C23C+1
+	.word PavilionComp_EnterMapGroup+1
 	.word nullsub_61+1
 	.word nullsub_61+1
-	.word nullsub_61+1
-	.word sub_806D8F8+1
-	.word sub_806FC08+1
+	.word HomePages_EnterMapGroup+1
 	.word nullsub_61+1
 	.word nullsub_61+1
-	.word sub_8071B50+1
-	.word sub_807544C+1
-	.word sub_8077D00+1
-	.word sub_807931C+1
-	.word sub_807A8E0+1
-	.word sub_807CDEC+1
-	.word sub_807ECD0+1
+	.word nullsub_61+1
+	.word Comps1_EnterMapGroup+1
+	.word Comps2_EnterMapGroup+1
+	.word nullsub_61+1
+	.word nullsub_61+1
+	.word CentralArea_EnterMapGroup+1
+	.word SeasideArea_EnterMapGroup+1
+	.word GreenArea_EnterMapGroup+1
+	.word Underground_EnterMapGroup+1
+	.word SkyACDCArea_EnterMapGroup+1
+	.word Undernet_EnterMapGroup+1
+	.word GraveyardImmortalArea_EnterMapGroup+1
 InternetMapGroupLoadGFXAnimsJumptable:
 	.word RobotControlComp_LoadGFXAnims+1
 	.word AquariumComp_LoadGFXAnims+1
 	.word JudgeTreeComp_LoadGFXAnims+1
-	.word sub_806A070+1
+	.word MrWeatherComp_LoadGFXAnims+1
 	.word nullsub_62+1
-	.word sub_806AAAA+1
-	.word nullsub_62+1
-	.word nullsub_62+1
-	.word sub_806C2E2+1
+	.word PavilionComp_LoadGFXAnims+1
 	.word nullsub_62+1
 	.word nullsub_62+1
-	.word nullsub_62+1
-	.word sub_806D9FC+1
-	.word sub_806FCF8+1
+	.word HomePages_LoadGFXAnims+1
 	.word nullsub_62+1
 	.word nullsub_62+1
-	.word sub_8071BE4+1
-	.word sub_80754E2+1
-	.word sub_8077D8A+1
-	.word sub_807939A+1
-	.word sub_807A974+1
-	.word sub_807CE90+1
-	.word sub_807ED6C+1
+	.word nullsub_62+1
+	.word Comps1_LoadGFXAnims+1
+	.word Comps2_LoadGFXAnims+1
+	.word nullsub_62+1
+	.word nullsub_62+1
+	.word CentralArea_LoadGFXAnims+1
+	.word SeasideArea_LoadGFXAnims+1
+	.word GreenArea_LoadGFXAnims+1
+	.word Underground_LoadGFXAnims+1
+	.word SkyACDCArea_LoadGFXAnims+1
+	.word Undernet_LoadGFXAnims+1
+	.word GraveyardImmortalArea_LoadGFXAnims+1
 EnterMap_UnkMapGroupJumptable: .word nullsub_61+1
 UnkMapGroupRangeLoadGFXAnimsJumptable: .word nullsub_62+1
 	thumb_func_end sub_8030892

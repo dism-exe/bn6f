@@ -1,6 +1,6 @@
 
-	thumb_func_start sub_8077D00
-sub_8077D00:
+	thumb_func_start GreenArea_EnterMapGroup
+GreenArea_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_8077D58 // =off_8077618 
@@ -10,7 +10,7 @@ sub_8077D00:
 	add r0, r0, r4
 	ldr r0, [r0]
 	str r0, [r1,#oWarp2011bb0_Ptr_14]
-	bl sub_8077DE0
+	bl GreenArea_LoadBGAnim
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl sub_803037C
@@ -32,7 +32,7 @@ sub_8077D00:
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
 	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_8077E84
+	bl GreenArea_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 off_8077D58: .word off_8077618
@@ -44,10 +44,10 @@ byte_8077D6C: .byte 0x1C, 0x66, 0x1C, 0x67, 0x1C, 0x68, 0x1C, 0x6A, 0x1C
 	.byte 0x1F, 0xFF, 0xFF
 byte_8077D78: .byte 0x1C, 0x2B, 0x1C, 0x53, 0x1C, 0x1F, 0x1C, 0x66, 0x1C
 	.byte 0x67, 0x1C, 0x68, 0x1C, 0x6A, 0x18, 0x1C, 0xFF, 0xFF
-	thumb_func_end sub_8077D00
+	thumb_func_end GreenArea_EnterMapGroup
 
-	thumb_func_start sub_8077D8A
-sub_8077D8A:
+	thumb_func_start GreenArea_LoadGFXAnims
+GreenArea_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_8077D98 // =off_8077D9C 
@@ -72,10 +72,10 @@ off_8077DC4: .word off_8077720
 	.word byte_8077C70
 	.word byte_8077CC0
 	.word 0xFFFFFFFF
-	thumb_func_end sub_8077D8A
+	thumb_func_end GreenArea_LoadGFXAnims
 
-	thumb_func_start sub_8077DE0
-sub_8077DE0:
+	thumb_func_start GreenArea_LoadBGAnim
+GreenArea_LoadBGAnim:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -117,10 +117,10 @@ off_8077E44: .word off_8617068
 	.word dword_861876C
 	.word palette_3001960
 	.word 0x20
-	thumb_func_end sub_8077DE0
+	thumb_func_end GreenArea_LoadBGAnim
 
-	thumb_func_start sub_8077E60
-sub_8077E60:
+	thumb_func_start GreenArea_UnkFunction_8077e60
+GreenArea_UnkFunction_8077e60:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -134,7 +134,7 @@ sub_8077E60:
 off_8077E74: .word off_8077E78
 off_8077E78: .word nullsub_77+1
 	.word nullsub_78+1
-	thumb_func_end sub_8077E60
+	thumb_func_end GreenArea_UnkFunction_8077e60
 
 	thumb_local_start
 nullsub_77:
@@ -146,8 +146,8 @@ nullsub_78:
 	mov pc, lr
 	thumb_func_end nullsub_78
 
-	thumb_func_start sub_8077E84
-sub_8077E84:
+	thumb_func_start GreenArea_SpawnMapObjectsForMap
+GreenArea_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -161,4 +161,4 @@ off_8077E98: .word pt_8077E9C
 pt_8077E9C:
 	.word byte_8077EA4
 	.word byte_8077EF8
-	thumb_func_end sub_8077E84
+	thumb_func_end GreenArea_SpawnMapObjectsForMap

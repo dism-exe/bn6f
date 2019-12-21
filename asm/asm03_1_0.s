@@ -1437,26 +1437,26 @@ off_8034728: .word off_80665BC
 UnkInternetMapGroupJumptable_8034784: .word RobotControlComp_UnkFunction_806651c+1
 	.word AquariumComp_UnkFunction_8067d1c+1
 	.word JudgeTreeComp_UnkFunction_80691d4+1
-	.word sub_806A1B4+1
+	.word MrWeatherComp_UnkFunction_806a1b4+1
 	.word NULL
-	.word sub_806ACC0+1
-	.word NULL
-	.word NULL
-	.word sub_806C4B0+1
+	.word PavilionComp_UnkFunction_806acc0+1
 	.word NULL
 	.word NULL
-	.word NULL
-	.word sub_806DC0C+1
-	.word sub_806FF08+1
+	.word HomePages_UnkFunction_806c4b0+1
 	.word NULL
 	.word NULL
-	.word sub_8071CC4+1
-	.word sub_80755C4+1
-	.word sub_8077E60+1
-	.word sub_8079468+1
-	.word sub_807AAAC+1
-	.word sub_807CFCC+1
-	.word sub_807EE68+1
+	.word NULL
+	.word Comps1_UnkFunction_806dc0c+1
+	.word Comps2_UnkFunction_806ff08+1
+	.word NULL
+	.word NULL
+	.word CentralArea_UnkFunction_8071cc4+1
+	.word SeasideArea_UnkFunction_80755c4+1
+	.word GreenArea_UnkFunction_8077e60+1
+	.word Underground_UnkFunction_8079468+1
+	.word SkyACDCArea_UnkFunction_807aaac+1
+	.word Undernet_UnkFunction_807cfcc+1
+	.word GraveyardImmortalArea_UnkFunction_807ee68+1
 NPCList_maps80: .word off_80665B4
 	.word off_8067DE0
 	.word off_8069310
@@ -1483,49 +1483,49 @@ NPCList_maps80: .word off_80665B4
 InternetSpawnMapObjectJumptable: .word RobotControlComp_SpawnMapObjectsForMap+1
 	.word AquariumComp_SpawnMapObjectsForMap+1
 	.word JudgeTreeComp_SpawnMapObjectsForMap+1
-	.word sub_806A1DE+1
+	.word MrWeatherComp_SpawnMapObjectsForMap+1
 	.word NULL
-	.word sub_806AD00+1
-	.word NULL
-	.word NULL
-	.word sub_806C59C+1
+	.word PavilionComp_SpawnMapObjectsForMap+1
 	.word NULL
 	.word NULL
-	.word NULL
-	.word sub_806DCD4+1
-	.word sub_806FFDA+1
+	.word HomePages_SpawnMapObjectsForMap+1
 	.word NULL
 	.word NULL
-	.word sub_8071CEE+1
-	.word sub_80755EE+1
-	.word sub_8077E84+1
-	.word sub_807948C+1
-	.word sub_807AAD6+1
-	.word sub_807CFFC+1
-	.word sub_807EE92+1
+	.word NULL
+	.word Comps1_SpawnMapObjectsForMap+1
+	.word Comps2_SpawnMapObjectsForMap+1
+	.word NULL
+	.word NULL
+	.word CentralArea_SpawnMapObjectsForMap+1
+	.word SeasideArea_SpawnMapObjectsForMap+1
+	.word GreenArea_SpawnMapObjectsForMap+1
+	.word Underground_SpawnMapObjectsForMap+1
+	.word SkyACDCArea_SpawnMapObjectsForMap+1
+	.word Undernet_SpawnMapObjectsForMap+1
+	.word GraveyardImmortalArea_SpawnMapObjectsForMap+1
 InternetLoadBGAnimJumptable: .word RobotControlComp_LoadBGAnim+1
 	.word AquariumComp_LoadBGAnim+1
 	.word JudgeTreeComp_LoadBGAnim+1
-	.word sub_806A120+1
+	.word MrWeatherComp_LoadBGAnim+1
 	.word NULL
-	.word sub_806AB94+1
-	.word NULL
-	.word NULL
-	.word sub_806C35C+1
+	.word PavilionComp_LoadBGAnim+1
 	.word NULL
 	.word NULL
-	.word NULL
-	.word sub_806DA58+1
-	.word sub_806FD54+1
+	.word HomePages_LoadBGAnim+1
 	.word NULL
 	.word NULL
-	.word sub_8071C30+1
-	.word sub_8075530+1
-	.word sub_8077DE0+1
-	.word sub_80793E8+1
-	.word sub_807A9CC+1
-	.word sub_807CF24+1
-	.word sub_807EDD4+1
+	.word NULL
+	.word Comps1_LoadBGAnim+1
+	.word Comps2_LoadBGAnim+1
+	.word NULL
+	.word NULL
+	.word CentralArea_LoadBGAnim+1
+	.word SeasideArea_LoadBGAnim+1
+	.word GreenArea_LoadBGAnim+1
+	.word Underground_LoadBGAnim+1
+	.word SkyACDCArea_LoadBGAnim+1
+	.word Undernet_LoadBGAnim+1
+	.word GraveyardImmortalArea_LoadBGAnim+1
 	.word dword_8034908
 	.word 0xFFFFFFFF
 off_80348FC: .word dword_8034908

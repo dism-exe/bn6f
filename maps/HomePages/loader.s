@@ -1,6 +1,6 @@
 
-	thumb_func_start sub_806C23C
-sub_806C23C:
+	thumb_func_start HomePages_EnterMapGroup
+HomePages_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_806C294 // =off_806BFF8 
@@ -10,7 +10,7 @@ sub_806C23C:
 	add r0, r0, r4
 	ldr r0, [r0]
 	str r0, [r1,#oWarp2011bb0_Ptr_14]
-	bl sub_806C35C
+	bl HomePages_LoadBGAnim
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl sub_803037C
@@ -32,7 +32,7 @@ sub_806C23C:
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
 	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_806C59C
+	bl HomePages_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 off_806C294: .word off_806BFF8
@@ -51,10 +51,10 @@ byte_806C2CA: .byte 0x1C, 0x6, 0x1C, 0x88, 0xFF, 0xFF
 byte_806C2D0: .byte 0x1C, 0x6, 0x1C, 0x88, 0xFF, 0xFF
 byte_806C2D6: .byte 0x1C, 0x6, 0x1C, 0x88, 0xFF, 0xFF
 byte_806C2DC: .byte 0x1C, 0x6, 0x1C, 0x88, 0xFF, 0xFF
-	thumb_func_end sub_806C23C
+	thumb_func_end HomePages_EnterMapGroup
 
-	thumb_func_start sub_806C2E2
-sub_806C2E2:
+	thumb_func_start HomePages_LoadGFXAnims
+HomePages_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_806C2F0 // =off_806C2F4 
@@ -88,10 +88,10 @@ off_806C344: .word off_806C194
 off_806C350: .word off_806C194
 	.word off_806C1DC
 	.word 0xFFFFFFFF
-	thumb_func_end sub_806C2E2
+	thumb_func_end HomePages_LoadGFXAnims
 
-	thumb_func_start sub_806C35C
-sub_806C35C:
+	thumb_func_start HomePages_LoadBGAnim
+HomePages_LoadBGAnim:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -186,10 +186,10 @@ off_806C494: .word off_861602C
 	.word byte_86163F4
 	.word palette_3001960
 	.word 0x20
-	thumb_func_end sub_806C35C
+	thumb_func_end HomePages_LoadBGAnim
 
-	thumb_func_start sub_806C4B0
-sub_806C4B0:
+	thumb_func_start HomePages_UnkFunction_806c4b0
+HomePages_UnkFunction_806c4b0:
 	push {r4-r7,lr}
 	push {r0,r1}
 	mov r0, #0
@@ -211,12 +211,12 @@ sub_806C4B0:
 off_806C4D8: .word off_806C4DC
 off_806C4DC: .word sub_806C4F8+1
 	.word sub_806C514+1
-	.word 0x0
+	.word NULL
 	.word sub_806C532+1
-	.word 0x0
+	.word NULL
 	.word sub_806C55A+1
 	.word sub_806C578+1
-	thumb_func_end sub_806C4B0
+	thumb_func_end HomePages_UnkFunction_806c4b0
 
 	thumb_local_start
 sub_806C4F8:
@@ -314,8 +314,8 @@ loc_806C584:
 off_806C598: .word off_806C1C4
 	thumb_func_end sub_806C578
 
-	thumb_func_start sub_806C59C
-sub_806C59C:
+	thumb_func_start HomePages_SpawnMapObjectsForMap
+HomePages_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -330,10 +330,10 @@ pt_806C5B4:
 	// <endpool>
 	.word byte_806C5D0
 	.word byte_806C638
-	.word 0x0
+	.word NULL
 	.word byte_806C68C
-	.word 0x0
+	.word NULL
 	.word byte_806C6E0
 	.word byte_806C748
-	thumb_func_end sub_806C59C
+	thumb_func_end HomePages_SpawnMapObjectsForMap
 /*For debugging purposes, connect comment at any range!*/
