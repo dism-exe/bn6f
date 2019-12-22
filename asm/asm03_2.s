@@ -6791,7 +6791,7 @@ loc_804A4AA:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	mov r1, #0xc
-	strb r1, [r0,#oGameState_Unk_16]
+	strb r1, [r0,#oGameState_EnterMapFadeParam1]
 	mov r0, #1
 	pop {r4-r7,pc}
 loc_804A4CC:

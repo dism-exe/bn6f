@@ -21816,7 +21816,7 @@ signed int sub_811F708()
     signed int result; // r0
 
     sub_811F728();
-    *(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_16) = 8;
+    *(*(v0 + oToolkit_GameStatePtr) + oGameState_EnterMapFadeParam1) = 8;
     ePETMenuData = 20;
     byte_200DF21 = 0;
     byte_200DF28 = 0;

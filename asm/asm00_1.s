@@ -3425,9 +3425,9 @@ sub_8004D48:
 	mov r0, #0
 	strb r0, [r5,#oGameState_SubsystemIndex]
 	mov r0, #8
-	strb r0, [r5,#oGameState_Unk_16]
+	strb r0, [r5,#oGameState_EnterMapFadeParam1]
 	mov r0, #0x10
-	strb r0, [r5,#oGameState_Unk_17]
+	strb r0, [r5,#oGameState_EnterMapFadeParam2]
 	mov r0, #0
 	strb r0, [r5,#oGameState_CoordInteractionValue]
 	strb r0, [r5,#oGameState_Unk_03]
@@ -3883,13 +3883,13 @@ loc_80051AA:
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_173F
 	bl ClearEventFlagFromImmediate
-	ldrb r0, [r5,#oGameState_Unk_16]
-	ldrb r1, [r5,#oGameState_Unk_17]
+	ldrb r0, [r5,#oGameState_EnterMapFadeParam1]
+	ldrb r1, [r5,#oGameState_EnterMapFadeParam2]
 	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
-	strb r0, [r5,#oGameState_Unk_16]
+	strb r0, [r5,#oGameState_EnterMapFadeParam1]
 	mov r0, #0x10
-	strb r0, [r5,#oGameState_Unk_17]
+	strb r0, [r5,#oGameState_EnterMapFadeParam2]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Warp2011bb0_Ptr]
 	mov r1, #0

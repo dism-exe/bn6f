@@ -221,24 +221,26 @@
 	.word \destination3
 	.endm
 
-	enum ms_jump_if_game_state_0e_equals_cmd // 0x0e
+	enum ms_jump_if_coord_interaction_value_equals_cmd // 0x0e
 // 0x0e byte1 destination2
-// jump if byte1 == [eGameState_CoordInteractionValue]
-// byte1 - byte to compare [eGameState_CoordInteractionValue] with
+// jump if the coord interaction value equals byte1
+// the coord interaction value is set when the player presses A in the overworld and is facing coordinates with a defined interaction value
+// byte1 - byte to compare the coord interaction value with
 // destination2 - script to jump to
-	.macro ms_jump_if_game_state_0e_equals byte1:req destination2:req
-	.byte ms_jump_if_game_state_0e_equals_cmd
+	.macro ms_jump_if_coord_interaction_value_equals byte1:req destination2:req
+	.byte ms_jump_if_coord_interaction_value_equals_cmd
 	.byte \byte1
 	.word \destination2
 	.endm
 
-	enum ms_jump_if_game_state_0e_not_equals_cmd // 0x0f
+	enum ms_jump_if_coord_interaction_value_not_equal_cmd // 0x0f
 // 0x0f byte1 destination2
-// jump if byte1 != [eGameStateUnk_0e]
-// byte1 - byte to compare [eGameState_CoordInteractionValue] with
+// jump if the coord interaction value does not equal byte1
+// the coord interaction value is set when the player presses A in the overworld and is facing coordinates with a defined interaction value
+// byte1 - byte to compare the coord interaction value with
 // destination2 - script to jump to
-	.macro ms_jump_if_game_state_0e_not_equals byte1:req destination2:req
-	.byte ms_jump_if_game_state_0e_not_equals_cmd
+	.macro ms_jump_if_coord_interaction_value_not_equal byte1:req destination2:req
+	.byte ms_jump_if_coord_interaction_value_not_equal_cmd
 	.byte \byte1
 	.word \destination2
 	.endm
@@ -278,13 +280,13 @@
 	.word \destination2
 	.endm
 
-	enum ms_jump_if_player_z_not_equals_cmd // 0x13
+	enum ms_jump_if_player_z_not_equal_cmd // 0x13
 // 0x13 signedhword1 destination2
 // jump if the the player's z coordinate does not equal signedhword1
 // signedhword1 - z coordinate to compare the player's z coordinate with
 // destination2 - script to jump to
-	.macro ms_jump_if_player_z_not_equals signedhword1:req destination2:req
-	.byte ms_jump_if_player_z_not_equals_cmd
+	.macro ms_jump_if_player_z_not_equal signedhword1:req destination2:req
+	.byte ms_jump_if_player_z_not_equal_cmd
 	.hword \signedhword1
 	.word \destination2
 	.endm
@@ -300,13 +302,13 @@
 	.word \destination2
 	.endm
 
-	enum ms_jump_if_game_state_44_not_equals_cmd // 0x15
+	enum ms_jump_if_game_state_44_not_equal_cmd // 0x15
 // 0x15 hword1 destination2
 // jump if hword1 doesn't equal eGameState_Unk_44
 // hword1 - value to compare eGameState_Unk_44 with
 // destination2 - script to jump to
-	.macro ms_jump_if_game_state_44_not_equals hword1:req destination2:req
-	.byte ms_jump_if_game_state_44_not_equals_cmd
+	.macro ms_jump_if_game_state_44_not_equal hword1:req destination2:req
+	.byte ms_jump_if_game_state_44_not_equal_cmd
 	.hword \hword1
 	.word \destination2
 	.endm
@@ -420,13 +422,13 @@
 	.endm
 
 // shared command
-	enum ms_set_game_state_16_17_cmd // 0x1e
+	enum ms_set_enter_map_screen_fade_cmd // 0x1e
 // 0x1e/0x28 byte1 byte2
-// store byte1 and byte2 in eGameState_Unk_16 and eGameState_Unk_17 respectively
-// byte1 - value to store to eGameState_Unk_16
-// byte2 - value to store to eGameState_Unk_17
-	.macro ms_set_game_state_16_17 byte1:req byte2:req
-	.byte ms_set_game_state_16_17_cmd
+// sets screen fade params for the screen fade when entering a map
+// byte1 - argument 1 for enter map screen fade
+// byte2 - argument 2 for enter map screen fade
+	.macro ms_set_enter_map_screen_fade byte1:req byte2:req
+	.byte ms_set_enter_map_screen_fade_cmd
 	.byte \byte1
 	.byte \byte2
 	.endm
@@ -589,42 +591,52 @@
 	.endm
 
 // shared command
-	enum ms_call_sub_8001B1C_cmd // 0x2c
+	enum ms_load_gfx_anim_cmd // 0x2c
 // 0x2c/0x36 word1
-// call LoadGFXAnim(r0=word1)
-// word1 - argument to LoadGFXAnim
-	.macro ms_call_sub_8001B1C word1:req
-	.byte ms_call_sub_8001B1C_cmd
+// load a gfx anim
+// e.g. the animated tiles on the background of the net
+// gfx anims can also do palette animations
+// see include/bytecode/gfx_anim_script.inc
+// word1 - gfx anim to load
+	.macro ms_load_gfx_anim word1:req
+	.byte ms_load_gfx_anim_cmd
 	.word \word1
 	.endm
 
 // shared command
-	enum ms_call_sub_8001B1C_multiple_cmd // 0x2d
+	enum ms_load_gfx_anims_cmd // 0x2d
 // 0x2d/0x37 word1
 // do LoadGFXAnims(r0=word1)
 // r0 is a list of pointers for LoadGFXAnim, terminated by negative
-	.macro ms_call_sub_8001B1C_multiple word1:req
-	.byte ms_call_sub_8001B1C_multiple_cmd
+	.macro ms_load_gfx_anims word1:req
+	.byte ms_load_gfx_anims_cmd
 	.word \word1
 	.endm
 
 // shared command
-	enum ms_call_sub_8030A30_8035194_cmd // 0x2e
+	enum ms_load_map_gfx_anims_bg_anim_cmd // 0x2e
 // 0x2e/0x38
-// call sub_8030A30, then LoadBGAnimForMapGroup
+// call LoadGFXAnimsForMapGroup, then LoadBGAnimForMapGroup
 // uses map group/number as args
-	.macro ms_call_sub_8030A30_8035194
-	.byte ms_call_sub_8030A30_8035194_cmd
+	.macro ms_load_map_gfx_anims_bg_anim
+	.byte ms_load_map_gfx_anims_bg_anim_cmd
 	.endm
 
 // shared command
-	enum ms_cmd_8035F6A_cmd // 0x2f
+	enum ms_terminate_one_or_all_gfx_anims_cmd // 0x2f
 // 0x2f/0x39 byte1
-// if byte1 == 0xff, call TerminateGFXAnim with r0 as 0x0 to 0x11
-// else, call TerminateGFXAnim with r0=byte1
-	.macro ms_cmd_8035F6A byte1:req
-	.byte ms_cmd_8035F6A_cmd
+// terminate the given gfx anim
+// byte1 - index of gfx anim to terminate
+	.macro ms_terminate_gfx_anim byte1:req
+	.byte ms_terminate_one_or_all_gfx_anims_cmd
 	.byte \byte1
+	.endm
+
+// 0x2f/0x39 0xff
+// terminate all gfx anims
+	.macro ms_terminate_all_gfx_anims byte1:req
+	.byte ms_terminate_one_or_all_gfx_anims_cmd
+	.byte 0xff
 	.endm
 
 // shared command

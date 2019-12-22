@@ -31442,7 +31442,7 @@ sub_811F708:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	mov r1, #8
-	strb r1, [r0,#oGameState_Unk_16]
+	strb r1, [r0,#oGameState_EnterMapFadeParam1]
 	ldr r1, off_811F770 // =ePETMenuData
 	mov r0, #0x14
 	strb r0, [r1]

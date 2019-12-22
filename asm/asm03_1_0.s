@@ -1087,7 +1087,7 @@ sub_803423C:
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_GameStatePtr]
 	mov r1, #0
-	strb r1, [r0,#0x16]
+	strb r1, [r0,#oGameState_EnterMapFadeParam1]
 	bl sub_8005C04
 	bl sub_8033FDC
 	bl musicGameState_8000784 // () -> void
@@ -1181,9 +1181,9 @@ sub_80342EC:
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_GameStatePtr]
 	mov r1, #0
-	strb r1, [r0,#0x16]
+	strb r1, [r0,#oGameState_EnterMapFadeParam1]
 	mov r1, #0x10
-	strb r1, [r0,#0x17]
+	strb r1, [r0,#oGameState_EnterMapFadeParam2]
 	bl sub_8005C04
 	bl navi_80340F6
 	pop {pc}

@@ -26,7 +26,7 @@
 	.equiv NUM_T4_BATTLE_OBJECTS, 0x20
 	.equiv NUM_OVERWORLD_MAP_OBJECTS, 0x38
 
-	.equiv NUM_S20094C0_STRUCTS, 0x12
+	.equiv NUM_GFX_ANIMS, 0x12
 
 	enum_start 1
 	enum BLUE_MYSTERY_DATA   // 1

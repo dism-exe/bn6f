@@ -3235,9 +3235,9 @@ sub_809BFE8:
 	ldrb r1, [r0,#0x12]
 	cmp r1, #0xff
 	beq loc_809C012
-	strb r1, [r2,#oGameState_Unk_16]
+	strb r1, [r2,#oGameState_EnterMapFadeParam1]
 	mov r1, #0x10
-	strb r1, [r2,#oGameState_Unk_17]
+	strb r1, [r2,#oGameState_EnterMapFadeParam2]
 loc_809C012:
 	mov r0, #0
 	pop {r4-r7,pc}

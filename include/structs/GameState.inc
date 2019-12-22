@@ -30,8 +30,8 @@
 	u8 Unk_13 // loc=0x13
 	u8 Unk_14 // loc=0x14
 	u8 Unk_15 // loc=0x15
-	u8 Unk_16 // loc=0x16
-	u8 Unk_17 // loc=0x17
+	u8 EnterMapFadeParam1 // loc=0x16
+	u8 EnterMapFadeParam2 // loc=0x17
 	ptr OverworldPlayerObjectPtr // loc=0x18
 	ptr CurBattleDataPtr // loc=0x1c
 	ptr Ptr_20 // loc=0x20
@@ -44,7 +44,7 @@
 	u32 Unk_3c // loc=0x3c
 	u32 Unk_40 // loc=0x40
 	u32 Unk_44 // loc=0x44
-	// same struct as Unk_3_4 to Unk_44
+	// same struct as Unk_34 to Unk_44
 	u32 Unk_48 // loc=0x48
 	u32 Unk_4c // loc=0x4c
 	u32 Unk_50 // loc=0x50

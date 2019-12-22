@@ -1858,8 +1858,8 @@ int sub_809BFE8()
     v4 = v2[18];
     if ( v4 != 255 )
     {
-        *(v3 + oGameState_Unk_16) = v4;
-        *(v3 + oGameState_Unk_17) = 16;
+        *(v3 + oGameState_EnterMapFadeParam1) = v4;
+        *(v3 + oGameState_EnterMapFadeParam2) = 16;
     }
     return 0;
 }

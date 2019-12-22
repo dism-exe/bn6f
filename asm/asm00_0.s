@@ -3260,7 +3260,7 @@ ProcessGFXAnims:
 .doneThisStruct
 	add r7, #oGFXAnimState_Size
 	add r4, #1
-	cmp r4, #NUM_S20094C0_STRUCTS // 0x12
+	cmp r4, #NUM_GFX_ANIMS // 0x12
 	bge .doneAllStructs
 	b .loopStruct
 .structIsActive

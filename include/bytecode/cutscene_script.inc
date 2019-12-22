@@ -475,13 +475,13 @@
 	.endm
 
 // shared command
-	enum cs_set_game_state_16_17_cmd // 0x28
+	enum cs_set_enter_map_screen_fade_cmd // 0x28
 // 0x1e/0x28 byte1 byte2
-// store byte1 and byte2 in eGameState_Unk_16 and eGameState_Unk_17 respectively
-// byte1 - value to store to eGameState_Unk_16
-// byte2 - value to store to eGameState_Unk_17
-	.macro cs_set_game_state_16_17 byte1:req byte2:req
-	.byte cs_set_game_state_16_17_cmd
+// sets screen fade params for the screen fade when entering a map
+// byte1 - argument 1 for enter map screen fade
+// byte2 - argument 2 for enter map screen fade
+	.macro cs_set_enter_map_screen_fade byte1:req byte2:req
+	.byte cs_set_enter_map_screen_fade_cmd
 	.byte \byte1
 	.byte \byte2
 	.endm
@@ -646,42 +646,49 @@
 	.endm
 
 // shared command
-	enum cs_call_sub_8001B1C_cmd // 0x36
+	enum cs_load_gfx_anim_cmd // 0x36
 // 0x2c/0x36 word1
 // call LoadGFXAnim(r0=word1)
 // word1 - argument to LoadGFXAnim
-	.macro cs_call_sub_8001B1C word1:req
-	.byte cs_call_sub_8001B1C_cmd
+	.macro cs_load_gfx_anim word1:req
+	.byte cs_load_gfx_anim_cmd
 	.word \word1
 	.endm
 
 // shared command
-	enum cs_call_sub_8001B1C_multiple_cmd // 0x37
+	enum cs_load_gfx_anims_cmd // 0x37
 // 0x2d/0x37 word1
 // do LoadGFXAnims(r0=word1)
 // r0 is a list of pointers for LoadGFXAnim, terminated by negative
-	.macro cs_call_sub_8001B1C_multiple word1:req
-	.byte cs_call_sub_8001B1C_multiple_cmd
+	.macro cs_load_gfx_anims word1:req
+	.byte cs_load_gfx_anims_cmd
 	.word \word1
 	.endm
 
 // shared command
-	enum cs_call_sub_8030A30_8035194_cmd // 0x38
+	enum cs_load_map_gfx_anims_bg_anim_cmd // 0x38
 // 0x2e/0x38
-// call sub_8030A30, then LoadBGAnimForMapGroup
+// call LoadGFXAnimsForMapGroup, then LoadBGAnimForMapGroup
 // uses map group/number as args
-	.macro cs_call_sub_8030A30_8035194
-	.byte cs_call_sub_8030A30_8035194_cmd
+	.macro cs_load_map_gfx_anims_bg_anim
+	.byte cs_load_map_gfx_anims_bg_anim_cmd
 	.endm
 
 // shared command
-	enum cs_cmd_8035F6A_cmd // 0x39
+	enum cs_terminate_one_or_all_gfx_anims_cmd // 0x39
 // 0x2f/0x39 byte1
-// if byte1 == 0xff, call TerminateGFXAnim with r0 as 0x0 to 0x11
-// else, call TerminateGFXAnim with r0=byte1
-	.macro cs_cmd_8035F6A byte1:req
-	.byte cs_cmd_8035F6A_cmd
+// terminate the given gfx anim
+// byte1 - index of gfx anim to terminate
+	.macro cs_terminate_gfx_anim byte1:req
+	.byte cs_terminate_one_or_all_gfx_anims_cmd
 	.byte \byte1
+	.endm
+
+// 0x2f/0x39 0xff
+// terminate all gfx anims
+	.macro cs_terminate_all_gfx_anims byte1:req
+	.byte cs_terminate_one_or_all_gfx_anims_cmd
+	.byte 0xff
 	.endm
 
 	enum cs_run_text_script_cmd // 0x3a
@@ -1318,11 +1325,11 @@
 	.byte cs_nop_8038266_cmd
 	.endm
 
-	enum cs_call_sub_8001974_cmd // 0x5f
+	enum cs_terminate_bg_scroll_effect_cmd // 0x5f
 // 0x5f
 // call SetDummyBGScrollCallbacks
-	.macro cs_call_sub_8001974
-	.byte cs_call_sub_8001974_cmd
+	.macro cs_terminate_bg_scroll_effect
+	.byte cs_terminate_bg_scroll_effect_cmd
 	.endm
 
 // shared command

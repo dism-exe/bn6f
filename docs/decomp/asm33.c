@@ -1105,9 +1105,9 @@ signed int sub_81242AC()
     *(*(v1 + oToolkit_ChatboxPtr) + 76) = *(v0 + 16);
     sub_812474C(10);
     v2 = *(v1 + oToolkit_GameStatePtr);
-    *(v2 + oGameState_Unk_16) = 12;
+    *(v2 + oGameState_EnterMapFadeParam1) = 12;
     result = 255;
-    *(v2 + oGameState_Unk_17) = -1;
+    *(v2 + oGameState_EnterMapFadeParam2) = -1;
     return result;
 }
 

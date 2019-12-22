@@ -1995,9 +1995,9 @@ sub_81242AC:
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
 	mov r0, #0xc
-	strb r0, [r4,#oGameState_Unk_16]
+	strb r0, [r4,#oGameState_EnterMapFadeParam1]
 	mov r0, #0xff
-	strb r0, [r4,#oGameState_Unk_17]
+	strb r0, [r4,#oGameState_EnterMapFadeParam2]
 	pop {r4,r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_81242AC

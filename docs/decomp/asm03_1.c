@@ -2411,9 +2411,9 @@ signed int __fastcall sub_8035D98(int a1)
 
     v3 = *(v2 + oToolkit_GameStatePtr);
     v4 = ReadMapScriptByte(1, v1);
-    *(v5 + oGameState_Unk_16) = v4;
+    *(v5 + oGameState_EnterMapFadeParam1) = v4;
     v6 = ReadMapScriptByte(2, v1);
-    *(v7 + oGameState_Unk_17) = v6;
+    *(v7 + oGameState_EnterMapFadeParam2) = v6;
     return 1;
 }
 
@@ -4762,7 +4762,7 @@ signed int CutsceneCmd_nop_8038266()
 
 
 // 0x803826e
-signed int __noreturn CutsceneCmd_call_sub_8001974()
+signed int __noreturn CutsceneCmd_terminate_bg_scroll_effect()
 {
     SetDummyBGScrollCallbacks();
     return 1;
