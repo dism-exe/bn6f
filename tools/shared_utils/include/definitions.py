@@ -21,11 +21,11 @@ ROOT_DIR = parent_dir(__file__, 1)
 CACHE_DIR = os.path.join(parent_dir_of_dir(ROOT_DIR, 1), '.cache/')
 
 ROM_NAME = 'bn6f'
-ROM_REPO_DIR = os.path.join(parent_dir_of_dir(ROOT_DIR, 2), 'bn6f')
+ROM_REPO_DIR = os.path.join(parent_dir_of_dir(ROOT_DIR, 3), 'bn6f')
 ROM_PATH = os.path.join(ROM_REPO_DIR, ROM_NAME + '.gba')
 BASEROM_PATH = os.path.join(ROM_REPO_DIR, 'baserom.gba')
 
-GBA_IDA_LIB_REPO = os.path.join(parent_dir_of_dir(ROOT_DIR, 2), 'GBA-IDA-Pseudo-Terminal')
+GBA_IDA_LIB_REPO = os.path.join(parent_dir_of_dir(ROOT_DIR, 3), 'GBA-IDA-Pseudo-Terminal')
 
 # ROM-specific constants
 ROM_SIZE = os.path.getsize(BASEROM_PATH)

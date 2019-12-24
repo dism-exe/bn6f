@@ -1,5 +1,7 @@
 # this module is about checking if a pointer is valid within the context of a specific ROM
 
+from typing import List, Tuple
+
 from shared_utils import gba_address
 from ..include import definitions
 from edit_source.utils import source_unit
@@ -36,6 +38,7 @@ def is_possible_rom_pointer(pointer, blacklist, whitelist):
                         if value is int, blacklists a single pointer value.
                         if value is tuple, blacklist entire range ex)clusively (start, end)
     :param whitelist: complimentary of blacklist. Allows ONLY pointers within domain-listed ranges. If empty, it is not checked.
+    :raises TypeError: if blacklist and whitelist aren't an int or a Tuple[int, int]
     :return:
     """
     if not gba_address.is_rom_address(pointer) or pointer > gba_address.rom_address(definitions.shared.ROM_SIZE):

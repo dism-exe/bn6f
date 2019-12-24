@@ -5,7 +5,6 @@ from . import asm_file
 from shared_utils import gba_address
 from ..include import definitions
 
-
 class SourceUnitException(Exception): pass
 
 
@@ -252,6 +251,7 @@ def to_physical_unit(unit):
 
 
 def split_units_by_path(units):
+    # type: (List[dict]) -> List[List[dict]]
     out = [[]]
 
     for unit in units:

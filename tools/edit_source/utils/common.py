@@ -17,8 +17,13 @@ def get_sym_table(elf_path):
     tmp_stderr = '%s_stderr.tmp' % FILE_NAME
 
     objdump_bin = os.path.join(definitions.shared.ROM_REPO_DIR, 'tools', 'binutils', 'bin', 'arm-none-eabi-objdump')
-    os.system('{objdump_bin} -t {elf_path} 1> {tmp_stdout} 2> {tmp_stderr}'.format(**vars()))
+    if not os.path.exists(objdump_bin):
+        raise Exception('could not find arm-none-eabi-objdump')
 
+    if not os.path.exists(elf_path):
+        raise ValueError('could not find {}'.format(elf_path))
+
+    os.system('{objdump_bin} -t {elf_path} 1> {tmp_stdout} 2> {tmp_stderr}'.format(**vars()))
     stdout_file = open(tmp_stdout, 'r')
 
     for line in stdout_file.readlines()[5:]: # skip header and SYMBOL TABLE:

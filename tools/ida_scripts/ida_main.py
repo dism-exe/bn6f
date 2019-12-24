@@ -54,11 +54,11 @@ def main():
     # ida_source_syncer.report_unsynced_labels(source_units, address_space)
     # ida_source_syncer.report_unsynced_units(source_units, address_space)
 
-    # range = (0x8062BFC, 0x80663A8+2)
-    # ida_dumper.dump_range(source_unit.SourceUnitComputations(source_units), *range)
+    _range = (0x8062BFC, 0x80663A8+2)
+    ida_dumper.dump_and_sync_range(source_unit.SourceUnitComputations(source_units), *_range)
 
     from . import ida_dump_loader
-    ida_dump_loader.main()
+    #  ida_dump_loader.main()
 
     print(len(source_units))
 
