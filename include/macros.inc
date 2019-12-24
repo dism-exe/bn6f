@@ -17,6 +17,7 @@
 	.include "include/macros/rom_structs.inc"
 	.include "include/macros/function.inc"
 	.include "include/macros/map.inc"
+	.include "include/bytecode/text_script.inc"
 	.include "include/bytecode/map_script.inc"
 	.include "include/bytecode/cutscene_script.inc"
 	.include "include/bytecode/cutscene_camera_script.inc"
@@ -78,7 +79,7 @@ print_expr_test_label:
 	.endif
 
 /*	__struct_label_stack_size = 0
-	__struct_label_stack_0 = 
+	__struct_label_stack_0 =
 
 	.macro add_struct_label label:req
 	.if __struct_label_stack_size == 0
@@ -86,14 +87,14 @@ print_expr_test_label:
 		.print "\label\()_\field"
 		.endm
 	.elseif __struct_label_stack_size == 1
-		
+
 	.purgem u8
 	.macro _u8_0 field:req
 	.print "\label\()_\field"
 	.endm
 	.macro _u8_1 field:req
 	.print "\label\()_\field"
-	
+
 	.endm
 
 	.print \label
@@ -110,7 +111,7 @@ print_expr_test_label:
 		.macro u8 field:req
 			.print "\label\()_\field"
 		.endm
-		
+
 	.endm
 	__struct_label_stack\()\size
 	.endm

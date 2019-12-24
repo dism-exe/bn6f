@@ -1386,65 +1386,65 @@ byte_8046B84: .byte 0xB, 0x3, 0x0, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 byte_8046B8C: .byte 0xC, 0x4, 0x0, 0xFF, 0xC, 0x5, 0x1, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF
 dword_8046B98: .word 0x0
-	.word dword_87F0DA0
+	.word CompText87F0DA0
 	.word 0x0
 	.byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word dword_87F0DA0
+	.word CompText87F0DA0
 	.word 0x40
 	.byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word dword_87F1278
+	.word CompText87F1278
 	.word 0x80
 	.byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word dword_87F14CC
+	.word CompText87F14CC
 	.word 0xC0
 	.byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word dword_87F0FF4
+	.word CompText87F0FF4
 	.word 0x100
 	.byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word dword_87F0DA0
+	.word CompText87F0DA0
 	.word 0x140
 	.word 0x8
 	.word 0x1
-	.word dword_87F1714
+	.word CompText87F1714
 	.word 0x180
 	.word 0x8
 	.word 0x1
-	.word dword_87F1714
+	.word CompText87F1714
 	.word 0x1C0
 	.word 0x8
 	.word 0x0
-	.word dword_87F1278
+	.word CompText87F1278
 	.word 0x200
 	.byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word dword_87F195C
+	.word CompText87F195C
 	.word 0x240
 	.byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word dword_87F1278
+	.word CompText87F1278
 	.word 0x280
 	.byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word dword_87F1BA8
+	.word CompText87F1BA8
 	.word 0x2C0
 	.byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word dword_87F1BA8
+	.word CompText87F1BA8
 	.word 0x300
 	.byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word dword_87F1BA8
+	.word CompText87F1BA8
 	.word 0x340
 	.byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word dword_87F1BA8
+	.word CompText87F1BA8
 	.word 0x380
 	.byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word dword_87F1BA8
+	.word CompText87F1BA8
 	.word 0x3C0
 	.byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word byte_87F1E10
+	.word CompText87F1E10
 	.word 0x400
 	.byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word dword_87F195C
+	.word CompText87F195C
 	.word 0x440
 	.word 0x8
 	.word 0x2
-	.word byte_87F2094
+	.word CompText87F2094
 	.word 0x480
 	.word 0x140
 	thumb_func_end sub_804692C
@@ -2090,21 +2090,21 @@ uncomp_80471F8:
 	ldr r1, off_8047218 // =unk_2029A00 
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	// src
-	ldr r0, off_804721C // =comp_873DE4C 
+	ldr r0, off_804721C // =CompText873DE4C 
 	// dest
 	ldr r1, off_8047220 // =eDecomp202BA00 
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	// src
-	ldr r0, off_8047224 // =comp_873ECC8 
+	ldr r0, off_8047224 // =CompText873ECC8 
 	// dest
 	ldr r1, off_8047228 // =byte_202DA00 
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8047218: .word unk_2029A00
-off_804721C: .word comp_873DE4C
+off_804721C: .word CompText873DE4C
 off_8047220: .word eDecomp202BA00
-off_8047224: .word comp_873ECC8
+off_8047224: .word CompText873ECC8
 off_8047228: .word byte_202DA00
 	thumb_func_end uncomp_80471F8
 
@@ -2536,7 +2536,7 @@ sub_804760E:
 	lsl r4, r4, #4
 	mul r4, r0
 	push {r4,r5}
-	ldr r0, off_804764C // =byte_873D9FC 
+	ldr r0, off_804764C // =TextScript873D9FC 
 	ldr r2, off_8047650 // =eDecompBuffer2013A00
 	ldr r3, dword_8047654 // =0x6008400 
 	add r2, r2, r4
@@ -2560,7 +2560,7 @@ sub_804760E:
 	bl renderTextGfx_8045F8C
 	pop {r0,r5,r7,pc}
 	.balign 4, 0x00
-off_804764C: .word byte_873D9FC
+off_804764C: .word TextScript873D9FC
 off_8047650: .word eDecompBuffer2013A00
 dword_8047654: .word 0x6008400
 off_8047658: .word unk_2013C00
@@ -2617,7 +2617,7 @@ loc_8047698:
 	bne loc_80476C4
 	mov r3, #0x1b
 loc_80476C4:
-	ldr r0, off_80476F4 // =byte_86EF71C 
+	ldr r0, off_80476F4 // =TextScript86EF71C 
 	mov r1, r3
 	ldr r2, off_80476F8 // =unk_2013C00 
 	ldr r3, dword_80476FC // =0x6008600 
@@ -2635,7 +2635,7 @@ off_80476E4: .word TextScriptChipNames0
 	.word TextScriptChipNames1
 off_80476EC: .word eDecompBuffer2013A00
 dword_80476F0: .word 0x6008400
-off_80476F4: .word byte_86EF71C
+off_80476F4: .word TextScript86EF71C
 off_80476F8: .word unk_2013C00
 dword_80476FC: .word 0x6008600
 off_8047700: .word dword_86A5D60
@@ -2649,7 +2649,7 @@ sub_8047708:
 	lsl r4, r4, #4
 	mul r4, r0
 	push {r4,r5}
-	ldr r0, off_8047748 // =byte_873EA50 
+	ldr r0, off_8047748 // =TextScript873EA50 
 	lsr r1, r1, #2
 	ldr r2, off_804774C // =eDecompBuffer2013A00
 	ldr r3, dword_8047750 // =0x6008400 
@@ -2674,7 +2674,7 @@ sub_8047708:
 	bl renderTextGfx_8045F8C
 	pop {r0,r5,r7,pc}
 	.balign 4, 0x00
-off_8047748: .word byte_873EA50
+off_8047748: .word TextScript873EA50
 off_804774C: .word eDecompBuffer2013A00
 dword_8047750: .word 0x6008400
 off_8047754: .word unk_2013C00
@@ -7098,7 +7098,7 @@ initRefs_804A6E4: .word comp_86C8054 + 1<<31
 	.word comp_86C980C + 1<<31
 	.word 0x6006B80
 	.word 0x2013A00
-	.word comp_86DA1B8 + 1<<31
+	.word CompText86DA1B8 + 1<<31
 	.word 0x2028A20
 	.word 0x2013A00
 	.word comp_86C7980 + 1<<31

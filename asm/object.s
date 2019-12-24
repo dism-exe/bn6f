@@ -5826,10 +5826,10 @@ sub_800EC48:
 
 	thumb_func_start sub_800EC56
 sub_800EC56:
-	ldr r2, off_800ECEC // =dword_86F047C 
+	ldr r2, off_800ECEC // =TextScriptVirusChipNames 
 	cmp r0, #0xff
 	ble loc_800EC5E
-	ldr r2, off_800ECF0 // =dword_86F0D7C 
+	ldr r2, off_800ECF0 // =TextScriptNaviChipNames 
 loc_800EC5E:
 	mov r1, #0xff
 	and r1, r0
@@ -5908,8 +5908,8 @@ dword_800ECDC: .word 0x300EE
 dword_800ECE0: .word 0x4000
 dword_800ECE4: .word 0x2000
 dword_800ECE8: .word 0x8000
-off_800ECEC: .word dword_86F047C
-off_800ECF0: .word dword_86F0D7C
+off_800ECEC: .word TextScriptVirusChipNames
+off_800ECF0: .word TextScriptNaviChipNames
 	.word 0x0
 	.word 0x0
 	.word 0x0

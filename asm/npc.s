@@ -1831,7 +1831,7 @@ NPCCommand_init_mystery_data:
 
 	mov r3, #0xff
 	strb r3, [r5,#oOverworldNPCObject_TextScriptIndex]
-	ldr r0, off_809F0DC // =dword_873D108 
+	ldr r0, off_809F0DC // =TextScript873D108 
 	mov r1, #oOverworldNPCObject_TextScriptPtr
 	str r0, [r5,r1]
 
@@ -1872,7 +1872,7 @@ NPCCommand_init_mystery_data:
 	bl npc_disableScript0x19_809f51e
 	pop {pc}
 	.balign 4, 0x00
-off_809F0DC: .word dword_873D108
+off_809F0DC: .word TextScript873D108
 off_809F0E0: .word byte_809F0E4
 byte_809F0E4: .byte 0xFF, 0x0, 0x0, 0x2, 0x2, 0x1, 0x3, 0xFF
 	thumb_func_end NPCCommand_init_mystery_data

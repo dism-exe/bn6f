@@ -3,6 +3,7 @@ MAKE = make
 AS = tools/binutils/bin/arm-none-eabi-as
 LD = tools/binutils/bin/arm-none-eabi-ld
 OBJCOPY = tools/binutils/bin/arm-none-eabi-objcopy
+GBAGFX = tools/gbagfx/gbagfx
 SHA1SUM = sha1sum
 PY = py
 
@@ -14,6 +15,10 @@ INC = include
 
 # project files
 SFILES = rom.s data.s ewram.s iwram.s
+
+# to keep track of compressed files and to build decompressed versions into them
+# defines rules to build and compress lz files
+include lz_assets.mk
 
 OFILES = $(addprefix $(OBJ),$(SFILES:.s=.o))
 BUILD_NAME = bn6f
@@ -45,6 +50,9 @@ $(ROM): %.elf
 
 %.o: %.s
 	$(AS) $(ASFLAGS) $< -o $@
+
+assets: $(LZ_FILES)
+	
 
 checksum:
 	@$(SHA1SUM) -c $(BUILD_NAME).sha1

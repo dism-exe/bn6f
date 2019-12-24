@@ -2525,7 +2525,7 @@ sub_81314E4:
 loc_81314FC:
 	ldr r4, [sp]
 	lsl r4, r4, #1
-	ldr r0, off_8131538 // =byte_873EA50 
+	ldr r0, off_8131538 // =TextScript873EA50 
 	ldr r1, [sp,#4]
 	ldrh r1, [r1,r4]
 	mov r2, #0x90
@@ -2554,7 +2554,7 @@ loc_81314FC:
 	add sp, sp, #8
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8131538: .word byte_873EA50
+off_8131538: .word TextScript873EA50
 off_813153C: .word byte_2019A00
 dword_8131540: .word 0x600A000
 off_8131544: .word dword_86A5D60
@@ -7185,19 +7185,19 @@ loc_8133EDC:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8133F2C: .word off_8133F30
-off_8133F30: .word dword_86CEE84
-	.word dword_86CF1A8
-	.word dword_86CF1A8
-	.word dword_86CF1A8
-	.word dword_86CF1A8
-	.word dword_86CF1A8
-	.word dword_86CF1A8
-	.word dword_86CF1A8
-	.word dword_86CF1A8
-	.word dword_86CF1A8
-	.word dword_86CF1A8
-	.word dword_86CEE84
-	.word dword_86CF1A8
+off_8133F30: .word CompText86CEE84
+	.word CompText86CF1A8
+	.word CompText86CF1A8
+	.word CompText86CF1A8
+	.word CompText86CF1A8
+	.word CompText86CF1A8
+	.word CompText86CF1A8
+	.word CompText86CF1A8
+	.word CompText86CF1A8
+	.word CompText86CF1A8
+	.word CompText86CF1A8
+	.word CompText86CEE84
+	.word CompText86CF1A8
 off_8133F64: .word eTextScript2028A20
 off_8133F68: .word eDecompBuffer2013A00
 off_8133F6C: .word off_8133F70
@@ -14662,7 +14662,7 @@ loc_8137AE8:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8137B28: .word off_8137B2C
-off_8137B2C: .word dword_86D8FA4
+off_8137B2C: .word CompText86D8FA4
 	.word dword_86D9068
 	.word dword_86D9068
 	.word dword_86D9068
@@ -14673,7 +14673,7 @@ off_8137B2C: .word dword_86D8FA4
 	.word dword_86D9068
 	.word dword_86D9068
 	.word dword_86D9068
-	.word dword_86D8FA4
+	.word CompText86D8FA4
 	.word dword_86D9068
 off_8137B60: .word eTextScript201BF00
 off_8137B64: .word eDecompBuffer2013A00
@@ -14821,7 +14821,7 @@ sub_8137D50:
 	mov r4, #0
 loc_8137D66:
 	ldr r6, [sp]
-	ldr r0, off_8137D94 // =dword_86F0D7C 
+	ldr r0, off_8137D94 // =TextScriptNaviChipNames 
 	ldrb r1, [r5]
 	tst r1, r1
 	beq loc_8137D82
@@ -14843,7 +14843,7 @@ loc_8137D82:
 	add sp, sp, #4
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8137D94: .word dword_86F0D7C
+off_8137D94: .word TextScriptNaviChipNames
 	.word off_8137D9C
 off_8137D9C: .word eTextScript201BF00
 off_8137DA0: .word 0x200

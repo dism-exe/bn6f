@@ -399,7 +399,7 @@ void sub_8033EE8()
     if ( !v0 || s_2011C50_ptr_1C_isNull() <= 1 )
     {
         v1 = sub_811F290();
-        v2 = renderTextGfx_8045F8C(byte_86CB360, v1, &unk_2027400, 100716544);
+        v2 = renderTextGfx_8045F8C(TextScript86CB360, v1, &unk_2027400, 100716544);
         CopyByEightWords(dword_86BEAE0, &unk_3001B20, 0x20u);
         CopyBackgroundTiles(30 - v2, 18, 0, byte_8033F50, 12, &byte_0[2]);
     }

@@ -95193,7 +95193,7 @@ sub_80E68F8:
 	bne loc_80E6910
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
-	ldr r0, off_80E6920 // =byte_8736D74
+	ldr r0, off_80E6920 // =TextScript8736D74
 	ldrb r1, [r5,#oBattleObject_Param2]
 	add r1, #0x1e
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -95207,7 +95207,7 @@ loc_80E6910:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E691E:
 	pop {pc}
-off_80E6920: .word byte_8736D74
+off_80E6920: .word TextScript8736D74
 	thumb_func_end sub_80E68F8
 
 	thumb_local_start

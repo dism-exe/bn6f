@@ -19836,7 +19836,7 @@ void sub_801D048()
     sub_801CF3C();
     if ( *v0 < 8 )
     {
-        renderTextGfx_8045F8C(byte_86F0374, 2, byte_203C4E0, 100701024);
+        renderTextGfx_8045F8C(TextScript86F0374, 2, byte_203C4E0, 100701024);
         CopyBackgroundTiles(14, 5, 3, dword_801D190, 2, &byte_0[2]);
         sub_801D12A(*(v0 + 6), v1, v2, v3, v4);
     }
@@ -20005,7 +20005,7 @@ int __fastcall __noreturn sub_801D344(__int16 a1, int a2, int a3, signed int a4)
     if ( v4 == 511 )
     {
         sub_801D3F8(511, a2 + 100714816, a2, 10);
-        v5 = byte_86F0300;
+        v5 = TextScript86F0300;
         v6 = 28;
     }
     else
@@ -21073,7 +21073,7 @@ int __fastcall __noreturn sub_801E228(signed int a1)
         sub_801DACC(256);
     byte_203528B = 60;
     byte_203528C = 0;
-    renderTextGfx_8045F8C(byte_86F0374, v1, byte_203C4E0, 100701536);
+    renderTextGfx_8045F8C(TextScript86F0374, v1, byte_203C4E0, 100701536);
     sub_801BECC(256);
     return sub_801DA48(256);
 }
@@ -21093,7 +21093,7 @@ int sub_801E270()
     }
     byte_203528B = 60;
     byte_203528C = 1;
-    renderTextGfx_8045F8C(byte_86F0374, 14, byte_203C4E0, 100701536);
+    renderTextGfx_8045F8C(TextScript86F0374, 14, byte_203C4E0, 100701536);
     sub_801BECC(256);
     return sub_801DA48(256);
 }
@@ -21119,7 +21119,7 @@ int __fastcall sub_801E2BA(int a1)
     v2 = 15;
     if ( !v4 )
         v2 = 16;
-    renderTextGfx_8045F8C(byte_86F0374, v2, byte_203C4E0, 100701536);
+    renderTextGfx_8045F8C(TextScript86F0374, v2, byte_203C4E0, 100701536);
     sub_801BECC(256);
     sub_801DA48(256);
     return v4;
@@ -21145,7 +21145,7 @@ int __noreturn sub_801E376()
 // 0x801e398
 int __fastcall __noreturn sub_801E398(int a1)
 {
-    renderTextGfx_8045F8C(byte_86F0374, a1 + 3, byte_203C4E0, 100701536);
+    renderTextGfx_8045F8C(TextScript86F0374, a1 + 3, byte_203C4E0, 100701536);
     sub_801BECC(2048);
     return sub_801DA48(2048);
 }
@@ -21171,7 +21171,7 @@ int __noreturn sub_801E3E4()
 int __noreturn sub_801E408()
 {
     word_20352B2 = 50;
-    renderTextGfx_8045F8C(byte_86F0374, 18, byte_203C4E0, 100702432);
+    renderTextGfx_8045F8C(TextScript86F0374, 18, byte_203C4E0, 100702432);
     sub_801BECC(0x100000);
     return sub_801DA48(0x100000);
 }

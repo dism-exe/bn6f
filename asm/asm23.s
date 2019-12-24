@@ -228,7 +228,7 @@ sub_8089234:
 	thumb_local_start
 sub_8089244:
 	push {r4-r7,lr}
-	ldr r1, off_8089278 // =dword_87DE44C
+	ldr r1, off_8089278 // =byte_87DE44C
 	lsl r0, r0, #5
 	add r0, r0, r1
 	ldr r1, off_808927C // =byte_30016F0
@@ -244,7 +244,7 @@ sub_8089244:
 off_8089264: .word byte_8089268
 byte_8089268: .byte 0x4C, 0xDD, 0x7D, 0x8, 0x0, 0x48, 0x1, 0x6, 0x0, 0x7, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0
-off_8089278: .word dword_87DE44C
+off_8089278: .word byte_87DE44C
 off_808927C: .word byte_30016F0
 	thumb_func_end sub_8089244
 

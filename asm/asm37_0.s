@@ -4571,18 +4571,18 @@ off_813DF74: .word reqBBS_requestNames_textualData
 	.byte 0x4, 0x5A, 0x2, 0x2, 0x4, 0x9A, 0x2, 0x2, 0xE0, 0x18, 0x0, 0x0
 	.byte 0xE0, 0x1A, 0x0, 0x0, 0xD4, 0xF, 0x0, 0x2, 0x4, 0x10, 0x0, 0x2
 	.byte 0x40, 0x15, 0x0, 0x2, 0x4, 0x82, 0x1, 0x2, 0x4, 0xA2, 0x1, 0x2
-off_813E04C: .word byte_87E78A8
-	.word byte_87E7B30
-	.word byte_87E9320
-	.word byte_87E9578
-	.word byte_87EA788
-	.word byte_87EA9F4
-	.word byte_87EBAB8
-	.word byte_87EBDDC
-	.word byte_87ECF34
-	.word byte_87ED240
-	.word byte_87ECF34
-	.word byte_87ED240
+off_813E04C: .word CompText87E78A8
+	.word CompText87E7B30
+	.word CompText87E9320
+	.word CompText87E9578
+	.word CompText87EA788
+	.word CompText87EA9F4
+	.word CompText87EBAB8
+	.word CompText87EBDDC
+	.word CompText87ECF34
+	.word CompText87ED240
+	.word CompText87ECF34
+	.word CompText87ED240
 	thumb_func_end sub_813DB24
 
 /*For debugging purposes, connect comment at any range!*/
