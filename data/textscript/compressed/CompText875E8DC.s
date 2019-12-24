@@ -25,32 +25,22 @@ CompText875E8DC::
 		buffer: 0x0,
 	]
 	.string "\""
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "TO OPEN THIS DOOR..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875E8DC_unk1
 	ts_msg_open
 	.string "It's a Net\n"
 	.string "information board."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It has a map of\n"
 	.string "CentralArea2 on it."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_start_map [
-		map: 0x1,
-	]
+	ts_key_wait any=0x0
+	ts_start_map map=0x1
 	ts_end
 
 	def_text_script CompText875E8DC_unk2
@@ -61,16 +51,12 @@ CompText875E8DC::
 	.string "The darkness won't\n"
 	.string "budge,even with your\n"
 	.string "strongest attacks."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Maybe the\n"
 	.string "EvilSpirits are\n"
 	.string "related somehow..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875E8DC_unk4
@@ -94,12 +80,8 @@ CompText875E8DC::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_clear [
-		flag: 0x483,
-	]
+	ts_key_wait any=0x0
+	ts_flag_clear flag=0x483
 	ts_end
 
 	

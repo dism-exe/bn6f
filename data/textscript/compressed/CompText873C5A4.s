@@ -22,9 +22,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk1
@@ -40,9 +38,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk2
@@ -58,9 +54,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk3
@@ -76,9 +70,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk4
@@ -94,9 +86,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk5
@@ -112,9 +102,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk6
@@ -130,9 +118,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk7
@@ -148,9 +134,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk8
@@ -166,9 +150,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk9
@@ -184,9 +166,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk10
@@ -202,9 +182,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk11
@@ -220,9 +198,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk12
@@ -238,9 +214,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk13
@@ -256,9 +230,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk14
@@ -274,9 +246,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk15
@@ -292,9 +262,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk16
@@ -310,9 +278,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk17
@@ -328,9 +294,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk18
@@ -346,9 +310,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk19
@@ -364,9 +326,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk20
@@ -382,9 +342,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk21
@@ -400,9 +358,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk22
@@ -418,9 +374,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk23
@@ -436,9 +390,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk24
@@ -454,9 +406,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk25
@@ -472,9 +422,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk26
@@ -490,9 +438,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk27
@@ -508,9 +454,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk28
@@ -526,9 +470,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk29
@@ -544,9 +486,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk30
@@ -562,9 +502,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk31
@@ -580,9 +518,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk32
@@ -598,9 +534,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk33
@@ -616,9 +550,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk34
@@ -634,9 +566,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk35
@@ -652,9 +582,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk36
@@ -670,9 +598,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk37
@@ -688,9 +614,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk38
@@ -706,9 +630,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk39
@@ -724,9 +646,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk40
@@ -742,9 +662,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk41
@@ -760,9 +678,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk42
@@ -778,9 +694,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk43
@@ -796,9 +710,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk44
@@ -814,9 +726,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk45
@@ -832,9 +742,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk46
@@ -850,9 +758,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk47
@@ -868,9 +774,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk48
@@ -886,9 +790,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk49
@@ -904,9 +806,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk50
@@ -922,9 +822,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk51
@@ -940,9 +838,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk52
@@ -958,9 +854,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk53
@@ -976,9 +870,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk54
@@ -994,9 +886,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk55
@@ -1012,9 +902,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk56
@@ -1030,9 +918,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk57
@@ -1048,9 +934,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk58
@@ -1066,9 +950,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk59
@@ -1084,9 +966,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk60
@@ -1102,9 +982,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk61
@@ -1120,9 +998,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk62
@@ -1138,9 +1014,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk63
@@ -1156,9 +1030,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk64
@@ -1174,9 +1046,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk65
@@ -1192,9 +1062,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk66
@@ -1210,9 +1078,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk67
@@ -1228,9 +1094,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk68
@@ -1246,9 +1110,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk69
@@ -1264,9 +1126,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk70
@@ -1282,9 +1142,7 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk71
@@ -1347,14 +1205,10 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk100
 	ts_msg_open
-	ts_flag_clear [
-		flag: 0x1715,
-	]
+	ts_flag_clear flag=0x1715
 	.string "Cannot converse.\n"
 	.string "Fix bug."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk101
@@ -1376,188 +1230,68 @@ CompText873C5A4::
 	def_text_script CompText873C5A4_unk109
 
 	def_text_script CompText873C5A4_unk110
-	ts_flag_add_mail [
-		flag: 0x1CA0,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA1,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA2,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA3,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA4,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA5,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA6,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA7,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA8,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA9,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CAA,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CAB,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CAC,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CAD,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CAE,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CAF,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB0,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB1,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB2,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB3,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB4,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB5,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB6,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB7,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB8,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB9,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CBA,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CBB,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CBC,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CBD,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CBE,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CBF,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC0,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC1,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC2,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC3,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC4,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC5,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC6,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC7,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC8,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC9,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CCA,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CCB,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CCC,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CCD,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CCE,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CCF,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD0,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD1,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD2,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD3,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD4,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD5,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD6,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD7,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD8,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD9,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CDA,
-	]
+	ts_flag_add_mail flag=0x1CA0
+	ts_flag_add_mail flag=0x1CA1
+	ts_flag_add_mail flag=0x1CA2
+	ts_flag_add_mail flag=0x1CA3
+	ts_flag_add_mail flag=0x1CA4
+	ts_flag_add_mail flag=0x1CA5
+	ts_flag_add_mail flag=0x1CA6
+	ts_flag_add_mail flag=0x1CA7
+	ts_flag_add_mail flag=0x1CA8
+	ts_flag_add_mail flag=0x1CA9
+	ts_flag_add_mail flag=0x1CAA
+	ts_flag_add_mail flag=0x1CAB
+	ts_flag_add_mail flag=0x1CAC
+	ts_flag_add_mail flag=0x1CAD
+	ts_flag_add_mail flag=0x1CAE
+	ts_flag_add_mail flag=0x1CAF
+	ts_flag_add_mail flag=0x1CB0
+	ts_flag_add_mail flag=0x1CB1
+	ts_flag_add_mail flag=0x1CB2
+	ts_flag_add_mail flag=0x1CB3
+	ts_flag_add_mail flag=0x1CB4
+	ts_flag_add_mail flag=0x1CB5
+	ts_flag_add_mail flag=0x1CB6
+	ts_flag_add_mail flag=0x1CB7
+	ts_flag_add_mail flag=0x1CB8
+	ts_flag_add_mail flag=0x1CB9
+	ts_flag_add_mail flag=0x1CBA
+	ts_flag_add_mail flag=0x1CBB
+	ts_flag_add_mail flag=0x1CBC
+	ts_flag_add_mail flag=0x1CBD
+	ts_flag_add_mail flag=0x1CBE
+	ts_flag_add_mail flag=0x1CBF
+	ts_flag_add_mail flag=0x1CC0
+	ts_flag_add_mail flag=0x1CC1
+	ts_flag_add_mail flag=0x1CC2
+	ts_flag_add_mail flag=0x1CC3
+	ts_flag_add_mail flag=0x1CC4
+	ts_flag_add_mail flag=0x1CC5
+	ts_flag_add_mail flag=0x1CC6
+	ts_flag_add_mail flag=0x1CC7
+	ts_flag_add_mail flag=0x1CC8
+	ts_flag_add_mail flag=0x1CC9
+	ts_flag_add_mail flag=0x1CCA
+	ts_flag_add_mail flag=0x1CCB
+	ts_flag_add_mail flag=0x1CCC
+	ts_flag_add_mail flag=0x1CCD
+	ts_flag_add_mail flag=0x1CCE
+	ts_flag_add_mail flag=0x1CCF
+	ts_flag_add_mail flag=0x1CD0
+	ts_flag_add_mail flag=0x1CD1
+	ts_flag_add_mail flag=0x1CD2
+	ts_flag_add_mail flag=0x1CD3
+	ts_flag_add_mail flag=0x1CD4
+	ts_flag_add_mail flag=0x1CD5
+	ts_flag_add_mail flag=0x1CD6
+	ts_flag_add_mail flag=0x1CD7
+	ts_flag_add_mail flag=0x1CD8
+	ts_flag_add_mail flag=0x1CD9
+	ts_flag_add_mail flag=0x1CDA
 	ts_msg_open
 	.string "All mail sent."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk111
@@ -1680,246 +1414,100 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk170
 	ts_msg_open
-	ts_flag_set [
-		flag: 0x17D,
-	]
+	ts_flag_set flag=0x17D
 	.string "Seaside HP Banner"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk171
 	ts_msg_open
-	ts_flag_set [
-		flag: 0x17E,
-	]
+	ts_flag_set flag=0x17E
 	.string "Green HP Banner"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk172
 	ts_msg_open
-	ts_flag_set [
-		flag: 0x17F,
-	]
+	ts_flag_set flag=0x17F
 	.string "Sky HP Banner"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk173
 	ts_msg_open
-	ts_flag_set [
-		flag: 0x180,
-	]
+	ts_flag_set flag=0x180
 	.string "ACDCTown HP Banner"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk174
-	ts_flag_add_mail [
-		flag: 0x1CA0,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA1,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA2,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA3,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA4,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA5,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA6,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA7,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA8,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA9,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CAA,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CAB,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CAC,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CAD,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CAE,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CAF,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB0,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB1,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB2,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB3,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB4,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB5,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB6,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB7,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB8,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CB9,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CBA,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CBB,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CBC,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CBD,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CBE,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CBF,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC0,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC1,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC2,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC3,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC4,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC5,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC6,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC7,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC8,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CC9,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CCA,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CCB,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CCC,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CCD,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CCE,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CCF,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD0,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD1,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD2,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD3,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD4,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD5,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD6,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD7,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD8,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CD9,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CDA,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CDB,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CDC,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CDD,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CDE,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CDF,
-	]
+	ts_flag_add_mail flag=0x1CA0
+	ts_flag_add_mail flag=0x1CA1
+	ts_flag_add_mail flag=0x1CA2
+	ts_flag_add_mail flag=0x1CA3
+	ts_flag_add_mail flag=0x1CA4
+	ts_flag_add_mail flag=0x1CA5
+	ts_flag_add_mail flag=0x1CA6
+	ts_flag_add_mail flag=0x1CA7
+	ts_flag_add_mail flag=0x1CA8
+	ts_flag_add_mail flag=0x1CA9
+	ts_flag_add_mail flag=0x1CAA
+	ts_flag_add_mail flag=0x1CAB
+	ts_flag_add_mail flag=0x1CAC
+	ts_flag_add_mail flag=0x1CAD
+	ts_flag_add_mail flag=0x1CAE
+	ts_flag_add_mail flag=0x1CAF
+	ts_flag_add_mail flag=0x1CB0
+	ts_flag_add_mail flag=0x1CB1
+	ts_flag_add_mail flag=0x1CB2
+	ts_flag_add_mail flag=0x1CB3
+	ts_flag_add_mail flag=0x1CB4
+	ts_flag_add_mail flag=0x1CB5
+	ts_flag_add_mail flag=0x1CB6
+	ts_flag_add_mail flag=0x1CB7
+	ts_flag_add_mail flag=0x1CB8
+	ts_flag_add_mail flag=0x1CB9
+	ts_flag_add_mail flag=0x1CBA
+	ts_flag_add_mail flag=0x1CBB
+	ts_flag_add_mail flag=0x1CBC
+	ts_flag_add_mail flag=0x1CBD
+	ts_flag_add_mail flag=0x1CBE
+	ts_flag_add_mail flag=0x1CBF
+	ts_flag_add_mail flag=0x1CC0
+	ts_flag_add_mail flag=0x1CC1
+	ts_flag_add_mail flag=0x1CC2
+	ts_flag_add_mail flag=0x1CC3
+	ts_flag_add_mail flag=0x1CC4
+	ts_flag_add_mail flag=0x1CC5
+	ts_flag_add_mail flag=0x1CC6
+	ts_flag_add_mail flag=0x1CC7
+	ts_flag_add_mail flag=0x1CC8
+	ts_flag_add_mail flag=0x1CC9
+	ts_flag_add_mail flag=0x1CCA
+	ts_flag_add_mail flag=0x1CCB
+	ts_flag_add_mail flag=0x1CCC
+	ts_flag_add_mail flag=0x1CCD
+	ts_flag_add_mail flag=0x1CCE
+	ts_flag_add_mail flag=0x1CCF
+	ts_flag_add_mail flag=0x1CD0
+	ts_flag_add_mail flag=0x1CD1
+	ts_flag_add_mail flag=0x1CD2
+	ts_flag_add_mail flag=0x1CD3
+	ts_flag_add_mail flag=0x1CD4
+	ts_flag_add_mail flag=0x1CD5
+	ts_flag_add_mail flag=0x1CD6
+	ts_flag_add_mail flag=0x1CD7
+	ts_flag_add_mail flag=0x1CD8
+	ts_flag_add_mail flag=0x1CD9
+	ts_flag_add_mail flag=0x1CDA
+	ts_flag_add_mail flag=0x1CDB
+	ts_flag_add_mail flag=0x1CDC
+	ts_flag_add_mail flag=0x1CDD
+	ts_flag_add_mail flag=0x1CDE
+	ts_flag_add_mail flag=0x1CDF
 	ts_msg_open
 	.string "All Mail Recvd"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk175
@@ -1934,54 +1522,34 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk180
 	ts_msg_open
-	ts_flag_set [
-		flag: 0x91,
-	]
+	ts_flag_set flag=0x91
 	.string "BOKTAI TRADER DISPL"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk181
 	ts_msg_open
-	ts_flag_set [
-		flag: 0xE00,
-	]
+	ts_flag_set flag=0xE00
 	.string "Green Town ChipTrdr\n"
 	.string "SP Display"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk182
 	ts_msg_open
-	ts_flag_set [
-		flag: 0x1E3,
-	]
-	ts_flag_set [
-		flag: 0x7A,
-	]
-	ts_flag_clear [
-		flag: 0x7B,
-	]
+	ts_flag_set flag=0x1E3
+	ts_flag_set flag=0x7A
+	ts_flag_clear flag=0x7B
 	.string "Navi Change Box\n"
 	.string "Display"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk183
 	ts_msg_open
-	ts_flag_set [
-		flag: 0x84,
-	]
+	ts_flag_set flag=0x84
 	.string "バグピーストレーダーひょ[A]じ"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk184
@@ -1997,26 +1565,18 @@ CompText873C5A4::
 	def_text_script CompText873C5A4_unk189
 
 	def_text_script CompText873C5A4_unk190
-	ts_mugshot_show [
-		mugshot: 0x44,
-	]
+	ts_mugshot_show mugshot=0x44
 	ts_msg_open
-	ts_call_add_all_b_b_s_messages [
-	]
+	ts_call_add_all_b_b_s_messages
 	.string "BBS Entry."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk191
 	ts_msg_open
-	ts_call_add_all_requests [
-	]
+	ts_call_add_all_requests
 	.string "Request BBS Entry"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk192
@@ -2031,131 +1591,55 @@ CompText873C5A4::
 	]
 	.string "PointAcqred"
 	ts_call_request_finish
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk193
 	ts_msg_open
 	ts_call_request_finish
 	.string "Request Complete"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk194
 	ts_msg_open
-	ts_flag_set [
-		flag: 0x1C20,
-	]
-	ts_flag_set [
-		flag: 0x1C28,
-	]
-	ts_flag_set [
-		flag: 0x1C31,
-	]
-	ts_flag_set [
-		flag: 0x1C39,
-	]
-	ts_flag_set [
-		flag: 0x1C3A,
-	]
-	ts_flag_set [
-		flag: 0x1C3B,
-	]
-	ts_flag_set [
-		flag: 0x1C21,
-	]
-	ts_flag_set [
-		flag: 0x1C2B,
-	]
-	ts_flag_set [
-		flag: 0x1C2D,
-	]
-	ts_flag_set [
-		flag: 0x1C36,
-	]
-	ts_flag_set [
-		flag: 0x1C3C,
-	]
-	ts_flag_set [
-		flag: 0x1C22,
-	]
-	ts_flag_set [
-		flag: 0x1C29,
-	]
-	ts_flag_set [
-		flag: 0x1C32,
-	]
-	ts_flag_set [
-		flag: 0x1C35,
-	]
-	ts_flag_set [
-		flag: 0x1C3D,
-	]
-	ts_flag_set [
-		flag: 0x1C24,
-	]
-	ts_flag_set [
-		flag: 0x1C2A,
-	]
-	ts_flag_set [
-		flag: 0x1C2F,
-	]
-	ts_flag_set [
-		flag: 0x1C3E,
-	]
-	ts_flag_set [
-		flag: 0x1C23,
-	]
-	ts_flag_set [
-		flag: 0x1C25,
-	]
-	ts_flag_set [
-		flag: 0x1C2E,
-	]
-	ts_flag_set [
-		flag: 0x1C37,
-	]
-	ts_flag_set [
-		flag: 0x1C3F,
-	]
-	ts_flag_set [
-		flag: 0x1C26,
-	]
-	ts_flag_set [
-		flag: 0x1C27,
-	]
-	ts_flag_set [
-		flag: 0x1C2C,
-	]
-	ts_flag_set [
-		flag: 0x1C30,
-	]
-	ts_flag_set [
-		flag: 0x1C33,
-	]
-	ts_flag_set [
-		flag: 0x1C34,
-	]
-	ts_flag_set [
-		flag: 0x1C38,
-	]
-	ts_flag_set [
-		flag: 0x1C40,
-	]
-	ts_flag_set [
-		flag: 0x1C41,
-	]
-	ts_flag_set [
-		flag: 0x1C42,
-	]
+	ts_flag_set flag=0x1C20
+	ts_flag_set flag=0x1C28
+	ts_flag_set flag=0x1C31
+	ts_flag_set flag=0x1C39
+	ts_flag_set flag=0x1C3A
+	ts_flag_set flag=0x1C3B
+	ts_flag_set flag=0x1C21
+	ts_flag_set flag=0x1C2B
+	ts_flag_set flag=0x1C2D
+	ts_flag_set flag=0x1C36
+	ts_flag_set flag=0x1C3C
+	ts_flag_set flag=0x1C22
+	ts_flag_set flag=0x1C29
+	ts_flag_set flag=0x1C32
+	ts_flag_set flag=0x1C35
+	ts_flag_set flag=0x1C3D
+	ts_flag_set flag=0x1C24
+	ts_flag_set flag=0x1C2A
+	ts_flag_set flag=0x1C2F
+	ts_flag_set flag=0x1C3E
+	ts_flag_set flag=0x1C23
+	ts_flag_set flag=0x1C25
+	ts_flag_set flag=0x1C2E
+	ts_flag_set flag=0x1C37
+	ts_flag_set flag=0x1C3F
+	ts_flag_set flag=0x1C26
+	ts_flag_set flag=0x1C27
+	ts_flag_set flag=0x1C2C
+	ts_flag_set flag=0x1C30
+	ts_flag_set flag=0x1C33
+	ts_flag_set flag=0x1C34
+	ts_flag_set flag=0x1C38
+	ts_flag_set flag=0x1C40
+	ts_flag_set flag=0x1C41
+	ts_flag_set flag=0x1C42
 	.string "All Reqsts Cmplete"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk195
@@ -2164,9 +1648,7 @@ CompText873C5A4::
 		item: 0x2C,
 		amount: 0x9,
 	]
-	ts_flag_set [
-		flag: 0x224,
-	]
+	ts_flag_set flag=0x224
 	.string "You got:\n"
 	.string "\""
 	ts_print_item [
@@ -2174,122 +1656,48 @@ CompText873C5A4::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk196
 	ts_msg_open
-	ts_flag_set [
-		flag: 0x1C60,
-	]
-	ts_flag_set [
-		flag: 0x1C68,
-	]
-	ts_flag_set [
-		flag: 0x1C71,
-	]
-	ts_flag_set [
-		flag: 0x1C79,
-	]
-	ts_flag_set [
-		flag: 0x1C7A,
-	]
-	ts_flag_set [
-		flag: 0x1C7B,
-	]
-	ts_flag_set [
-		flag: 0x1C61,
-	]
-	ts_flag_set [
-		flag: 0x1C6B,
-	]
-	ts_flag_set [
-		flag: 0x1C6D,
-	]
-	ts_flag_set [
-		flag: 0x1C76,
-	]
-	ts_flag_set [
-		flag: 0x1C7C,
-	]
-	ts_flag_set [
-		flag: 0x1C62,
-	]
-	ts_flag_set [
-		flag: 0x1C69,
-	]
-	ts_flag_set [
-		flag: 0x1C72,
-	]
-	ts_flag_set [
-		flag: 0x1C75,
-	]
-	ts_flag_set [
-		flag: 0x1C7D,
-	]
-	ts_flag_set [
-		flag: 0x1C64,
-	]
-	ts_flag_set [
-		flag: 0x1C6A,
-	]
-	ts_flag_set [
-		flag: 0x1C6F,
-	]
-	ts_flag_set [
-		flag: 0x1C7E,
-	]
-	ts_flag_set [
-		flag: 0x1C63,
-	]
-	ts_flag_set [
-		flag: 0x1C65,
-	]
-	ts_flag_set [
-		flag: 0x1C6E,
-	]
-	ts_flag_set [
-		flag: 0x1C77,
-	]
-	ts_flag_set [
-		flag: 0x1C7F,
-	]
-	ts_flag_set [
-		flag: 0x1C66,
-	]
-	ts_flag_set [
-		flag: 0x1C67,
-	]
-	ts_flag_set [
-		flag: 0x1C6C,
-	]
-	ts_flag_set [
-		flag: 0x1C70,
-	]
-	ts_flag_set [
-		flag: 0x1C73,
-	]
-	ts_flag_set [
-		flag: 0x1C74,
-	]
-	ts_flag_set [
-		flag: 0x1C78,
-	]
-	ts_flag_set [
-		flag: 0x1C80,
-	]
-	ts_flag_set [
-		flag: 0x1C81,
-	]
-	ts_flag_set [
-		flag: 0x1C82,
-	]
+	ts_flag_set flag=0x1C60
+	ts_flag_set flag=0x1C68
+	ts_flag_set flag=0x1C71
+	ts_flag_set flag=0x1C79
+	ts_flag_set flag=0x1C7A
+	ts_flag_set flag=0x1C7B
+	ts_flag_set flag=0x1C61
+	ts_flag_set flag=0x1C6B
+	ts_flag_set flag=0x1C6D
+	ts_flag_set flag=0x1C76
+	ts_flag_set flag=0x1C7C
+	ts_flag_set flag=0x1C62
+	ts_flag_set flag=0x1C69
+	ts_flag_set flag=0x1C72
+	ts_flag_set flag=0x1C75
+	ts_flag_set flag=0x1C7D
+	ts_flag_set flag=0x1C64
+	ts_flag_set flag=0x1C6A
+	ts_flag_set flag=0x1C6F
+	ts_flag_set flag=0x1C7E
+	ts_flag_set flag=0x1C63
+	ts_flag_set flag=0x1C65
+	ts_flag_set flag=0x1C6E
+	ts_flag_set flag=0x1C77
+	ts_flag_set flag=0x1C7F
+	ts_flag_set flag=0x1C66
+	ts_flag_set flag=0x1C67
+	ts_flag_set flag=0x1C6C
+	ts_flag_set flag=0x1C70
+	ts_flag_set flag=0x1C73
+	ts_flag_set flag=0x1C74
+	ts_flag_set flag=0x1C78
+	ts_flag_set flag=0x1C80
+	ts_flag_set flag=0x1C81
+	ts_flag_set flag=0x1C82
 	.string "All Request Complete"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk197
@@ -2300,166 +1708,73 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk200
 	ts_msg_open
-	ts_flag_set [
-		flag: 0x126,
-	]
+	ts_flag_set flag=0x126
 	.string "Go to Underground\n"
 	.string "from Set2."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk201
 	ts_msg_open
-	ts_flag_set [
-		flag: 0x682,
-	]
-	ts_flag_set [
-		flag: 0x85F,
-	]
-	ts_flag_set [
-		flag: 0xABA,
-	]
-	ts_flag_set [
-		flag: 0xCDC,
-	]
-	ts_flag_set [
-		flag: 0xCE0,
-	]
+	ts_flag_set flag=0x682
+	ts_flag_set flag=0x85F
+	ts_flag_set flag=0xABA
+	ts_flag_set flag=0xCDC
+	ts_flag_set flag=0xCE0
 	.string "Operate Partner Navi\n"
 	.string "(CHEATER)"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk202
 	ts_msg_open
-	ts_flag_set [
-		flag: 0x197,
-	]
-	ts_flag_set [
-		flag: 0x198,
-	]
-	ts_flag_set [
-		flag: 0x199,
-	]
-	ts_flag_set [
-		flag: 0x19A,
-	]
-	ts_flag_set [
-		flag: 0x19B,
-	]
-	ts_flag_set [
-		flag: 0x19C,
-	]
-	ts_flag_set [
-		flag: 0x19D,
-	]
-	ts_flag_set [
-		flag: 0x19E,
-	]
-	ts_flag_set [
-		flag: 0x19F,
-	]
-	ts_flag_set [
-		flag: 0x1A1,
-	]
-	ts_flag_set [
-		flag: 0x1A2,
-	]
-	ts_flag_set [
-		flag: 0x1A4,
-	]
-	ts_flag_set [
-		flag: 0x1A5,
-	]
-	ts_flag_set [
-		flag: 0x1A6,
-	]
-	ts_flag_set [
-		flag: 0x1A7,
-	]
-	ts_flag_set [
-		flag: 0x1A8,
-	]
-	ts_flag_set [
-		flag: 0x1A9,
-	]
-	ts_flag_set [
-		flag: 0x1AA,
-	]
-	ts_flag_set [
-		flag: 0x1AB,
-	]
-	ts_flag_set [
-		flag: 0x1AC,
-	]
-	ts_flag_set [
-		flag: 0x1AD,
-	]
-	ts_flag_set [
-		flag: 0x1AE,
-	]
-	ts_flag_set [
-		flag: 0x1AF,
-	]
-	ts_flag_set [
-		flag: 0x1B0,
-	]
-	ts_flag_set [
-		flag: 0x1B1,
-	]
-	ts_flag_set [
-		flag: 0x1B2,
-	]
-	ts_flag_set [
-		flag: 0x1B3,
-	]
-	ts_flag_set [
-		flag: 0x1B4,
-	]
-	ts_flag_set [
-		flag: 0x1B5,
-	]
-	ts_flag_set [
-		flag: 0x1B6,
-	]
-	ts_flag_set [
-		flag: 0x1D8,
-	]
-	ts_flag_set [
-		flag: 0x1D4,
-	]
-	ts_flag_set [
-		flag: 0x1D5,
-	]
-	ts_flag_set [
-		flag: 0x1D6,
-	]
-	ts_flag_set [
-		flag: 0x1D7,
-	]
-	ts_call_unload_objects [
-	]
-	ts_call_reload_objects [
-	]
+	ts_flag_set flag=0x197
+	ts_flag_set flag=0x198
+	ts_flag_set flag=0x199
+	ts_flag_set flag=0x19A
+	ts_flag_set flag=0x19B
+	ts_flag_set flag=0x19C
+	ts_flag_set flag=0x19D
+	ts_flag_set flag=0x19E
+	ts_flag_set flag=0x19F
+	ts_flag_set flag=0x1A1
+	ts_flag_set flag=0x1A2
+	ts_flag_set flag=0x1A4
+	ts_flag_set flag=0x1A5
+	ts_flag_set flag=0x1A6
+	ts_flag_set flag=0x1A7
+	ts_flag_set flag=0x1A8
+	ts_flag_set flag=0x1A9
+	ts_flag_set flag=0x1AA
+	ts_flag_set flag=0x1AB
+	ts_flag_set flag=0x1AC
+	ts_flag_set flag=0x1AD
+	ts_flag_set flag=0x1AE
+	ts_flag_set flag=0x1AF
+	ts_flag_set flag=0x1B0
+	ts_flag_set flag=0x1B1
+	ts_flag_set flag=0x1B2
+	ts_flag_set flag=0x1B3
+	ts_flag_set flag=0x1B4
+	ts_flag_set flag=0x1B5
+	ts_flag_set flag=0x1B6
+	ts_flag_set flag=0x1D8
+	ts_flag_set flag=0x1D4
+	ts_flag_set flag=0x1D5
+	ts_flag_set flag=0x1D6
+	ts_flag_set flag=0x1D7
+	ts_call_unload_objects
+	ts_call_reload_objects
 	.string "VIRUS BATTLE SET\n"
 	.string "(CHEATER)"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk203
 	ts_msg_open
-	ts_call_max_virus_delete_count [
-	]
+	ts_call_max_virus_delete_count
 	.string "Max Virus  MAX"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk204
@@ -2472,14 +1787,10 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk208
 	ts_msg_open
-	ts_flag_toggle [
-		flag: 0x1740,
-	]
+	ts_flag_toggle flag=0x1740
 	.string "Recheck Gold Mystery\n"
 	.string "Data."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk209
@@ -2491,9 +1802,7 @@ CompText873C5A4::
 		amount: 0x1,
 	]
 	.string "You got: 1 HP memory"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk211
@@ -2503,9 +1812,7 @@ CompText873C5A4::
 		amount: 0x1,
 	]
 	.string "You got: RegUp 1"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk212
@@ -2515,9 +1822,7 @@ CompText873C5A4::
 		amount: 0x1,
 	]
 	.string "You got: RegUp 2"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk213
@@ -2527,31 +1832,21 @@ CompText873C5A4::
 		amount: 0x1,
 	]
 	.string "You got: RegUp 3"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk214
 	ts_msg_open
-	ts_set_zenny [
-		amount: 0x0,
-	]
+	ts_set_zenny amount=0x0
 	.string "0 Zennys cleared"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk215
 	ts_msg_open
-	ts_set_bug_frags [
-		amount: 0x0,
-	]
+	ts_set_bug_frags amount=0x0
 	.string "0 BugFrags cleared"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk216
@@ -2561,9 +1856,7 @@ CompText873C5A4::
 	]
 	ts_msg_open
 	.string "You got: Extra Deck"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk217
@@ -2573,9 +1866,7 @@ CompText873C5A4::
 	]
 	ts_msg_open
 	.string "You got: Folder2"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk218
@@ -2587,434 +1878,246 @@ CompText873C5A4::
 	]
 	ts_msg_open
 	.string "You got: Extra Deck"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk220
-	ts_call_minigame_effect [
-		effect: 0x0,
-	]
-	ts_call_reset_fishing_minigame [
-	]
-	ts_call_change_navi [
-		navi: 0x6,
-	]
-	ts_flag_set [
-		flag: 0x680,
-	]
+	ts_call_minigame_effect effect=0x0
+	ts_call_reset_fishing_minigame
+	ts_call_change_navi navi=0x6
+	ts_flag_set flag=0x680
 	ts_msg_open
 	.string "Start Fishng MiniGm"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk221
-	ts_call_scenario_effect [
-		effect: 0x0,
-	]
-	ts_call_reset_evil_spirits [
-	]
-	ts_flag_set [
-		flag: 0x741,
-	]
+	ts_call_scenario_effect effect=0x0
+	ts_call_reset_evil_spirits
+	ts_flag_set flag=0x741
 	ts_flag_multi_set [
 		flag: 0x7F0,
 		count: 0x8,
 	]
-	ts_flag_set [
-		flag: 0x618,
-	]
-	ts_flag_set [
-		flag: 0xC26,
-	]
-	ts_flag_set [
-		flag: 0x126,
-	]
+	ts_flag_set flag=0x618
+	ts_flag_set flag=0xC26
+	ts_flag_set flag=0x126
 	ts_msg_open
 	.string "Start EvilSprt MiniG"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk222
-	ts_call_change_navi [
-		navi: 0x3,
-	]
-	ts_flag_set [
-		flag: 0x990,
-	]
-	ts_flag_set [
-		flag: 0x991,
-	]
+	ts_call_change_navi navi=0x3
+	ts_flag_set flag=0x990
+	ts_flag_set flag=0x991
 	ts_msg_open
 	.string "Start Cooking MiniGm"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk223
-	ts_call_change_navi [
-		navi: 0x8,
-	]
-	ts_flag_set [
-		flag: 0x960,
-	]
-	ts_flag_set [
-		flag: 0x961,
-	]
+	ts_call_change_navi navi=0x8
+	ts_flag_set flag=0x960
+	ts_flag_set flag=0x961
 	ts_msg_open
 	.string "Start Roll MiniGame"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk224
-	ts_call_change_navi [
-		navi: 0x2,
-	]
-	ts_flag_set [
-		flag: 0xB00,
-	]
-	ts_flag_set [
-		flag: 0xB01,
-	]
+	ts_call_change_navi navi=0x2
+	ts_flag_set flag=0xB00
+	ts_flag_set flag=0xB01
 	ts_msg_open
 	.string "Start Blckout MiniGm"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk225
-	ts_call_change_navi [
-		navi: 0x4,
-	]
-	ts_flag_set [
-		flag: 0xD00,
-	]
-	ts_flag_set [
-		flag: 0xD01,
-	]
+	ts_call_change_navi navi=0x4
+	ts_flag_set flag=0xD00
+	ts_flag_set flag=0xD01
 	ts_msg_open
 	.string "Start Erasure MiniGm"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk226
-	ts_call_change_navi [
-		navi: 0x9,
-	]
-	ts_flag_set [
-		flag: 0xD30,
-	]
-	ts_flag_set [
-		flag: 0xD31,
-	]
+	ts_call_change_navi navi=0x9
+	ts_flag_set flag=0xD30
+	ts_flag_set flag=0xD31
 	ts_msg_open
 	.string "Start RockCrshr MnGm"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk227
 
 	def_text_script CompText873C5A4_unk228
-	ts_flag_set [
-		flag: 0x1729,
-	]
+	ts_flag_set flag=0x1729
 	ts_msg_open
 	.string "Check Real MegaMan"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk229
-	ts_call_change_player_sprite [
-		sprite: 0x2,
-	]
+	ts_call_change_player_sprite sprite=0x2
 	ts_msg_open
 	.string "Check Mystery Data"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk230
-	ts_call_change_navi [
-		navi: 0x0,
-	]
-	ts_call_reload_navi_base_stats [
-	]
-	ts_call_reload_navi_stat_boosts [
-	]
-	ts_call_set_full_h_p [
-	]
+	ts_call_change_navi navi=0x0
+	ts_call_reload_navi_base_stats
+	ts_call_reload_navi_stat_boosts
+	ts_call_set_full_h_p
 	ts_msg_open
 	.string "Change to MegaMan"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk231
-	ts_call_change_navi [
-		navi: 0x2,
-	]
-	ts_call_reload_navi_base_stats [
-	]
-	ts_call_reload_navi_stat_boosts [
-	]
-	ts_call_set_full_h_p [
-	]
+	ts_call_change_navi navi=0x2
+	ts_call_reload_navi_base_stats
+	ts_call_reload_navi_stat_boosts
+	ts_call_set_full_h_p
 	ts_msg_open
 	.string "Change to ElecMan"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk232
-	ts_call_change_navi [
-		navi: 0x1,
-	]
-	ts_call_reload_navi_base_stats [
-	]
-	ts_call_reload_navi_stat_boosts [
-	]
-	ts_call_set_full_h_p [
-	]
+	ts_call_change_navi navi=0x1
+	ts_call_reload_navi_base_stats
+	ts_call_reload_navi_stat_boosts
+	ts_call_set_full_h_p
 	ts_msg_open
 	.string "Change to HeatMan"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk233
-	ts_call_change_navi [
-		navi: 0x4,
-	]
-	ts_call_reload_navi_base_stats [
-	]
-	ts_call_reload_navi_stat_boosts [
-	]
-	ts_call_set_full_h_p [
-	]
+	ts_call_change_navi navi=0x4
+	ts_call_reload_navi_base_stats
+	ts_call_reload_navi_stat_boosts
+	ts_call_set_full_h_p
 	ts_msg_open
 	.string "Change to EraseMan"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk234
-	ts_call_change_navi [
-		navi: 0x3,
-	]
-	ts_call_reload_navi_base_stats [
-	]
-	ts_call_reload_navi_stat_boosts [
-	]
-	ts_call_set_full_h_p [
-	]
+	ts_call_change_navi navi=0x3
+	ts_call_reload_navi_base_stats
+	ts_call_reload_navi_stat_boosts
+	ts_call_set_full_h_p
 	ts_msg_open
 	.string "Change to SlashMan"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk235
-	ts_call_change_navi [
-		navi: 0x5,
-	]
-	ts_call_reload_navi_base_stats [
-	]
-	ts_call_reload_navi_stat_boosts [
-	]
-	ts_call_set_full_h_p [
-	]
+	ts_call_change_navi navi=0x5
+	ts_call_reload_navi_base_stats
+	ts_call_reload_navi_stat_boosts
+	ts_call_set_full_h_p
 	ts_msg_open
 	.string "Change to ChargeMan"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk236
-	ts_call_change_navi [
-		navi: 0x6,
-	]
-	ts_call_reload_navi_base_stats [
-	]
-	ts_call_reload_navi_stat_boosts [
-	]
-	ts_call_set_full_h_p [
-	]
+	ts_call_change_navi navi=0x6
+	ts_call_reload_navi_base_stats
+	ts_call_reload_navi_stat_boosts
+	ts_call_set_full_h_p
 	ts_msg_open
 	.string "Change to SpoutMan"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk237
-	ts_call_change_navi [
-		navi: 0x7,
-	]
-	ts_call_reload_navi_base_stats [
-	]
-	ts_call_reload_navi_stat_boosts [
-	]
-	ts_call_set_full_h_p [
-	]
+	ts_call_change_navi navi=0x7
+	ts_call_reload_navi_base_stats
+	ts_call_reload_navi_stat_boosts
+	ts_call_set_full_h_p
 	ts_msg_open
 	.string "Change to TmhkMan"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk238
-	ts_call_change_navi [
-		navi: 0x9,
-	]
-	ts_call_reload_navi_base_stats [
-	]
-	ts_call_reload_navi_stat_boosts [
-	]
-	ts_call_set_full_h_p [
-	]
+	ts_call_change_navi navi=0x9
+	ts_call_reload_navi_base_stats
+	ts_call_reload_navi_stat_boosts
+	ts_call_set_full_h_p
 	ts_msg_open
 	.string "Change to GroundMan"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk239
-	ts_call_change_navi [
-		navi: 0xA,
-	]
-	ts_call_reload_navi_base_stats [
-	]
-	ts_call_reload_navi_stat_boosts [
-	]
-	ts_call_set_full_h_p [
-	]
+	ts_call_change_navi navi=0xA
+	ts_call_reload_navi_base_stats
+	ts_call_reload_navi_stat_boosts
+	ts_call_set_full_h_p
 	ts_msg_open
 	.string "Change to DustMan"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk240
-	ts_call_change_navi [
-		navi: 0x8,
-	]
-	ts_call_reload_navi_base_stats [
-	]
-	ts_call_reload_navi_stat_boosts [
-	]
-	ts_call_set_full_h_p [
-	]
+	ts_call_change_navi navi=0x8
+	ts_call_reload_navi_base_stats
+	ts_call_reload_navi_stat_boosts
+	ts_call_set_full_h_p
 	ts_msg_open
 	.string "Change to TenguMan"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk241
-	ts_flag_set [
-		flag: 0xE0,
-	]
-	ts_flag_set [
-		flag: 0xE2,
-	]
-	ts_flag_set [
-		flag: 0xE3,
-	]
-	ts_flag_set [
-		flag: 0xE4,
-	]
-	ts_flag_set [
-		flag: 0xE5,
-	]
-	ts_flag_set [
-		flag: 0xE6,
-	]
-	ts_flag_set [
-		flag: 0xE7,
-	]
-	ts_flag_set [
-		flag: 0xE8,
-	]
-	ts_flag_set [
-		flag: 0xE9,
-	]
-	ts_flag_set [
-		flag: 0xEA,
-	]
-	ts_flag_set [
-		flag: 0xEB,
-	]
+	ts_flag_set flag=0xE0
+	ts_flag_set flag=0xE2
+	ts_flag_set flag=0xE3
+	ts_flag_set flag=0xE4
+	ts_flag_set flag=0xE5
+	ts_flag_set flag=0xE6
+	ts_flag_set flag=0xE7
+	ts_flag_set flag=0xE8
+	ts_flag_set flag=0xE9
+	ts_flag_set flag=0xEA
+	ts_flag_set flag=0xEB
 	ts_msg_open
 	.string "Beast Change OK\n"
 	.string "Cross Change OK"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk242
-	ts_call_change_navi [
-		navi: 0xB,
-	]
-	ts_call_reload_navi_base_stats [
-	]
-	ts_call_reload_navi_stat_boosts [
-	]
-	ts_call_set_full_h_p [
-	]
+	ts_call_change_navi navi=0xB
+	ts_call_reload_navi_base_stats
+	ts_call_reload_navi_stat_boosts
+	ts_call_set_full_h_p
 	ts_msg_open
 	.string "Change to ProtoMan"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk243
-	ts_call_set_crossover_points [
-		points: 0xFF,
-	]
+	ts_call_set_crossover_points points=0xFF
 	ts_msg_open
 	.string "BOKTAI POINT GET"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk244
-	ts_flag_set [
-		flag: 0x7C,
-	]
+	ts_flag_set flag=0x7C
 	ts_msg_open
 	.string "Hidden Gate Display"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk245
@@ -3024,99 +2127,39 @@ CompText873C5A4::
 	]
 	ts_msg_open
 	.string "EX Memory"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk246
-	ts_flag_set [
-		flag: 0x1F60,
-	]
-	ts_flag_set [
-		flag: 0x1F61,
-	]
-	ts_flag_set [
-		flag: 0x1F62,
-	]
-	ts_flag_set [
-		flag: 0x1F63,
-	]
-	ts_flag_set [
-		flag: 0x1F64,
-	]
-	ts_flag_set [
-		flag: 0x1F65,
-	]
-	ts_flag_set [
-		flag: 0x1F66,
-	]
-	ts_flag_set [
-		flag: 0x1F67,
-	]
-	ts_flag_set [
-		flag: 0x1F68,
-	]
-	ts_flag_set [
-		flag: 0x1F69,
-	]
-	ts_flag_set [
-		flag: 0x1F6A,
-	]
-	ts_flag_set [
-		flag: 0x1F6B,
-	]
-	ts_flag_set [
-		flag: 0x1F6C,
-	]
-	ts_flag_set [
-		flag: 0x1F6D,
-	]
-	ts_flag_set [
-		flag: 0x1F6E,
-	]
-	ts_flag_set [
-		flag: 0x1F6F,
-	]
-	ts_flag_set [
-		flag: 0x1F70,
-	]
-	ts_flag_set [
-		flag: 0x1F71,
-	]
-	ts_flag_set [
-		flag: 0x1F72,
-	]
-	ts_flag_set [
-		flag: 0x1F73,
-	]
-	ts_flag_set [
-		flag: 0x1F74,
-	]
-	ts_flag_set [
-		flag: 0x1F75,
-	]
-	ts_flag_set [
-		flag: 0x1F76,
-	]
-	ts_flag_set [
-		flag: 0x1F77,
-	]
-	ts_flag_set [
-		flag: 0x1F78,
-	]
-	ts_flag_set [
-		flag: 0x1F79,
-	]
-	ts_flag_set [
-		flag: 0x1F7A,
-	]
-	ts_flag_set [
-		flag: 0x1F7B,
-	]
-	ts_flag_set [
-		flag: 0x1F7C,
-	]
+	ts_flag_set flag=0x1F60
+	ts_flag_set flag=0x1F61
+	ts_flag_set flag=0x1F62
+	ts_flag_set flag=0x1F63
+	ts_flag_set flag=0x1F64
+	ts_flag_set flag=0x1F65
+	ts_flag_set flag=0x1F66
+	ts_flag_set flag=0x1F67
+	ts_flag_set flag=0x1F68
+	ts_flag_set flag=0x1F69
+	ts_flag_set flag=0x1F6A
+	ts_flag_set flag=0x1F6B
+	ts_flag_set flag=0x1F6C
+	ts_flag_set flag=0x1F6D
+	ts_flag_set flag=0x1F6E
+	ts_flag_set flag=0x1F6F
+	ts_flag_set flag=0x1F70
+	ts_flag_set flag=0x1F71
+	ts_flag_set flag=0x1F72
+	ts_flag_set flag=0x1F73
+	ts_flag_set flag=0x1F74
+	ts_flag_set flag=0x1F75
+	ts_flag_set flag=0x1F76
+	ts_flag_set flag=0x1F77
+	ts_flag_set flag=0x1F78
+	ts_flag_set flag=0x1F79
+	ts_flag_set flag=0x1F7A
+	ts_flag_set flag=0x1F7B
+	ts_flag_set flag=0x1F7C
 	ts_item_give_chip [
 		chip: 0x140,
 		code: 0xFF,
@@ -3264,9 +2307,7 @@ CompText873C5A4::
 	]
 	ts_msg_open
 	.string "You got: PA"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk247
@@ -3276,9 +2317,7 @@ CompText873C5A4::
 	]
 	ts_msg_open
 	.string "Reality World Tour"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk248
@@ -3292,21 +2331,15 @@ CompText873C5A4::
 	]
 	ts_msg_open
 	.string "Cyberworld Tour"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk249
 	ts_call_give_all_navi_cust_programs
-	ts_jump [
-		target: 250,
-	]
+	ts_jump target=250
 
 	def_text_script CompText873C5A4_unk250
-	ts_flag_set [
-		flag: 0xF2,
-	]
+	ts_flag_set flag=0xF2
 	ts_item_give [
 		item: 0x50,
 		amount: 0x1,
@@ -3373,29 +2406,17 @@ CompText873C5A4::
 	]
 	ts_msg_open
 	.string "You got: NaviCust"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk251
-	ts_flag_add_mail [
-		flag: 0x1CA3,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA0,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA2,
-	]
-	ts_flag_add_mail [
-		flag: 0x1CA4,
-	]
+	ts_flag_add_mail flag=0x1CA3
+	ts_flag_add_mail flag=0x1CA0
+	ts_flag_add_mail flag=0x1CA2
+	ts_flag_add_mail flag=0x1CA4
 	ts_msg_open
 	.string "New Mail"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk252
@@ -3413,9 +2434,7 @@ CompText873C5A4::
 		jumpIfSome: 0xFF,
 	]
 	.string "Very Wealthy"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk253
@@ -3445,18 +2464,14 @@ CompText873C5A4::
 		amount: 0x1,
 	]
 	.string "You got: SubChip"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk254
 	ts_msg_open
 	ts_item_give_all_chips
 	.string "You got: all chips"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk255

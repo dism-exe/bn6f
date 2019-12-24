@@ -10,53 +10,33 @@ CompText8795D58::
 	text_archive_start
 
 	def_text_script CompText8795D58_unk0
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Who are you! I've\n"
 	.string "never seen you\n"
 	.string "before!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "What are you doing\n"
 	.string "here!?\n"
 	.string "Get lost!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xE55,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xE55
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText8795D58_unk1
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "I'm bored...\n"
 	.string "Hey ugly!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Deleting you should\n"
 	.string "help pass the time!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xE56,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xE56
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText8795D58_unk2

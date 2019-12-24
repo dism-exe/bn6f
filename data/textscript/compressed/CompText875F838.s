@@ -16,26 +16,18 @@ CompText875F838::
 		jumpIfInRange: 0x5,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_jump [
-		target: 6,
-	]
+	ts_jump target=6
 
 	def_text_script CompText875F838_unk1
 	ts_msg_open
 	.string "It's a Net\n"
 	.string "information board."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It has a map of\n"
 	.string "SeasideArea3 on it."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_start_map [
-		map: 0x5,
-	]
+	ts_key_wait any=0x0
+	ts_start_map map=0x5
 	ts_end
 
 	def_text_script CompText875F838_unk2
@@ -45,9 +37,7 @@ CompText875F838::
 	ts_msg_open
 	.string "Cyberwater is\n"
 	.string "leaking all over..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875F838_unk4
@@ -55,16 +45,12 @@ CompText875F838::
 	.string "The darkness won't\n"
 	.string "budge,even with your\n"
 	.string "strongest attacks."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Maybe the\n"
 	.string "EvilSpirits are\n"
 	.string "related somehow..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875F838_unk5
@@ -73,9 +59,7 @@ CompText875F838::
 		jumpIfTrue: 0x6,
 		jumpIfFalse: 0xFF,
 	]
-	ts_flag_set [
-		flag: 0x634,
-	]
+	ts_flag_set flag=0x634
 	ts_end
 
 	def_text_script CompText875F838_unk6
@@ -83,16 +67,12 @@ CompText875F838::
 	.string "The cyberspring\n"
 	.string "is gushing with\n"
 	.string "water..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "People say this\n"
 	.string "water has the power\n"
 	.string "to get rid of evil."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875F838_unk7
@@ -112,9 +92,7 @@ CompText875F838::
 	]
 	.string "\" TO OPEN\n"
 	.string "THIS DOOR."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875F838_unk8
@@ -137,66 +115,46 @@ CompText875F838::
 	.string "Jack me out,Lan!\n"
 	.string "It's finals time!\n"
 	.string "Full speed ahead!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875F838_unk9
-	ts_mugshot_show [
-		mugshot: 0x4F,
-	]
+	ts_mugshot_show mugshot=0x4F
 	ts_msg_open
 	.string "We don't need to be\n"
 	.string "at this station,yet!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "We should go to the\n"
 	.string "Undernet2 station\n"
 	.string "first!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875F838_unk10
-	ts_mugshot_show [
-		mugshot: 0x4F,
-	]
+	ts_mugshot_show mugshot=0x4F
 	ts_msg_open
 	.string "We don't need to be\n"
 	.string "at this station,yet!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "We should go to the\n"
 	.string "Sky Area2 station\n"
 	.string "first!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875F838_unk11
-	ts_mugshot_show [
-		mugshot: 0x4F,
-	]
+	ts_mugshot_show mugshot=0x4F
 	ts_msg_open
 	.string "We don't need to be\n"
 	.string "at this station,yet!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "We should go to the\n"
 	.string "CentralArea3 station\n"
 	.string "first!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875F838_unk12
@@ -209,9 +167,7 @@ CompText875F838::
 	]
 	.string "\" TO OPEN\n"
 	.string "THIS DOOR."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_print_current_navi
 	.string " used:\n"
@@ -221,12 +177,8 @@ CompText875F838::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_clear [
-		flag: 0x78,
-	]
+	ts_key_wait any=0x0
+	ts_flag_clear flag=0x78
 	ts_end
 
 	

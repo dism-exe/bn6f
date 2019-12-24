@@ -35,29 +35,21 @@ CompText876DE70::
 		jumpIfTrue: 0xF,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0xC,
-	]
+	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "I came down here to\n"
 	.string "get my brother,but"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "that kid is in\n"
 	.string "detention with\n"
 	.string "his teacher..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "which means that I'm\n"
 	.string "stuck waiting for\n"
 	.string "him for a while..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876DE70_unk11
@@ -66,16 +58,12 @@ CompText876DE70::
 		jumpIfTrue: 0x10,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x10,
-	]
+	ts_mugshot_show mugshot=0x10
 	ts_msg_open
 	.string "Good bye.\n"
 	.string "Be careful on your\n"
 	.string "way home."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876DE70_unk12
@@ -85,40 +73,28 @@ CompText876DE70::
 	def_text_script CompText876DE70_unk14
 
 	def_text_script CompText876DE70_unk15
-	ts_mugshot_show [
-		mugshot: 0xC,
-	]
+	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "The weather's gotten\n"
 	.string "really weird..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I've gotta wait for\n"
 	.string "Mom to come pick me\n"
 	.string "up..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876DE70_unk16
-	ts_mugshot_show [
-		mugshot: 0x10,
-	]
+	ts_mugshot_show mugshot=0x10
 	ts_msg_open
 	.string "The weather has\n"
 	.string "become very strange.\n"
 	.string "Please hurry home."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Go!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876DE70_unk17
@@ -153,42 +129,30 @@ CompText876DE70::
 		jumpIfTrue: 0x1F,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0xC,
-	]
+	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "Looks like the\n"
 	.string "final round of\n"
 	.string "the Operator Navi"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Selection Test has\n"
 	.string "already begun!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Good luck!\n"
 	.string "I'll be cheering\n"
 	.string "for you!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876DE70_unk31
-	ts_mugshot_show [
-		mugshot: 0xC,
-	]
+	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "What were the\n"
 	.string "final results?\n"
 	.string "How did you do?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	

@@ -22,34 +22,24 @@ CompText877C7A4::
 		jumpIfInRange: 0x5,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "The recent arrest of\n"
 	.string "Mayor Cain was a\n"
 	.string "major blow."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The JudgeTree\n"
 	.string "hacked...!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The Mayor a\n"
 	.string "criminal...!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I don't know what\n"
 	.string "to believe anymore!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877C7A4_unk1
@@ -61,16 +51,12 @@ CompText877C7A4::
 	def_text_script CompText877C7A4_unk4
 
 	def_text_script CompText877C7A4_unk5
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "I hope the Expo\n"
 	.string "brings back the\n"
 	.string "shine to Cyber City!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877C7A4_unk6
@@ -82,16 +68,12 @@ CompText877C7A4::
 	def_text_script CompText877C7A4_unk9
 
 	def_text_script CompText877C7A4_unk10
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "Yawwwnnn...\n"
 	.string "Another hard day at\n"
 	.string "work for me..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877C7A4_unk11
@@ -105,16 +87,12 @@ CompText877C7A4::
 	def_text_script CompText877C7A4_unk15
 	ts_msg_open
 	.string "A CopyBot..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It got damaged by an\n"
 	.string "attack in battle...\n"
 	.string "It can't move..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877C7A4_unk16
@@ -123,22 +101,14 @@ CompText877C7A4::
 		jumpIfTrue: 0xF,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Lan Hikari!!\n"
 	.string "Time for your life\n"
 	.string "sentence!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xE8F,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xE8F
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText877C7A4_unk17

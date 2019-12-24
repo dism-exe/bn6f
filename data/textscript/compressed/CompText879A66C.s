@@ -75,23 +75,15 @@ CompText879A66C::
 		jumpIfTrue: 0x1F,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "WOOOO!!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText879A66C_unk31
-	ts_flag_set [
-		flag: 0x635,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_flag_set flag=0x635
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText879A66C_unk32

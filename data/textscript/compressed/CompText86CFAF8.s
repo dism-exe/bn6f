@@ -42,9 +42,7 @@ CompText86CFAF8::
 	.string "You don't\n"
 	.string "need to use\n"
 	.string "this yet."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText86CFAF8_unk7
@@ -56,9 +54,7 @@ CompText86CFAF8::
 		buffer: 0x1,
 	]
 	.string "\"?\n"
-	ts_position_option_from_center [
-		width: 0x8,
-	]
+	ts_position_option_from_center width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -66,9 +62,7 @@ CompText86CFAF8::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -77,9 +71,7 @@ CompText86CFAF8::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x0, 0xFF, 0xFF, 0xFF
 	ts_end
@@ -90,9 +82,7 @@ CompText86CFAF8::
 	.string "\n"
 	.string "recovers\n"
 	.string "50HP!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText86CFAF8_unk9
@@ -101,9 +91,7 @@ CompText86CFAF8::
 	.string "\n"
 	.string "recovers\n"
 	.string "max HP!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText86CFAF8_unk10
@@ -115,9 +103,7 @@ CompText86CFAF8::
 		buffer: 0x1,
 	]
 	.string "\""
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText86CFAF8_unk11
@@ -130,9 +116,7 @@ CompText86CFAF8::
 	.string "\"\n"
 	.string "currently\n"
 	.string "is in use."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText86CFAF8_unk12
@@ -140,9 +124,7 @@ CompText86CFAF8::
 	.string "There isn't\n"
 	.string "any locked\n"
 	.string "data!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText86CFAF8_unk13
@@ -150,9 +132,7 @@ CompText86CFAF8::
 	.string "No viruses\n"
 	.string "located in\n"
 	.string "this area!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText86CFAF8_unk14

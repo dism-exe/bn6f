@@ -35,16 +35,12 @@ CompText876E73C::
 		jumpIfTrue: 0xF,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x12,
-	]
+	ts_mugshot_show mugshot=0x12
 	ts_msg_open
 	.string "See you tomorrow!\n"
 	.string "Don't play around\n"
 	.string "and go home,alright?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876E73C_unk11
@@ -56,15 +52,11 @@ CompText876E73C::
 	def_text_script CompText876E73C_unk14
 
 	def_text_script CompText876E73C_unk15
-	ts_mugshot_show [
-		mugshot: 0x12,
-	]
+	ts_mugshot_show mugshot=0x12
 	ts_msg_open
 	.string "This weather...\n"
 	.string "... Sky Town,huh?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876E73C_unk16
@@ -116,33 +108,23 @@ CompText876E73C::
 	def_text_script CompText876E73C_unk39
 
 	def_text_script CompText876E73C_unk40
-	ts_mugshot_show [
-		mugshot: 0xB,
-	]
+	ts_mugshot_show mugshot=0xB
 	ts_msg_open
 	.string "... About the next\n"
 	.string "newspaper,I think\n"
 	.string "the top headline"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "should obviously be\n"
 	.string "about the Operator\n"
 	.string "Navi..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0xC,
-	]
+	ts_mugshot_show mugshot=0xC
 	.string "Yeah,and if we can,\n"
 	.string "I'd like to get an\n"
 	.string "interview too!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876E73C_unk41

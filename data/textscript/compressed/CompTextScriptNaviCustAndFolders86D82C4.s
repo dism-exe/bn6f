@@ -28,17 +28,11 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		jumpIfFalse: 0xFF,
 	]
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x4D,
-	]
+	ts_mugshot_show mugshot=0x4D
 	.string "Here is my status!"
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk2
 	ts_check_navi_all [
@@ -56,17 +50,11 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		jumpIfProtoMan: 0x1,
 	]
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x4D,
-	]
+	ts_mugshot_show mugshot=0x4D
 	.string "Here is my status!\n"
-	ts_position_option_vertical [
-		width: 0xC,
-	]
+	ts_position_option_vertical width=0xC
 	ts_option [
 		brackets: 0x0,
 		right: 0x0,
@@ -74,17 +62,11 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " NaviCust\n"
 	ts_select 0x5, 0x40, 0xFF, 0xFF
-	ts_wait [
-		frames: 0x1,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait frames=0x1
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk3
 	ts_check_navi_all [
@@ -107,17 +89,11 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		jumpIfFalse: 0xFF,
 	]
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x4D,
-	]
+	ts_mugshot_show mugshot=0x4D
 	.string "Here is my status!\n"
-	ts_position_option_vertical [
-		width: 0xC,
-	]
+	ts_position_option_vertical width=0xC
 	ts_option [
 		brackets: 0x0,
 		right: 0x0,
@@ -125,13 +101,9 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " NaviCust\n"
-	ts_position_option_vertical [
-		width: 0xC,
-	]
+	ts_position_option_vertical width=0xC
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -139,31 +111,19 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Records"
 	ts_select 0x6, 0x40, 0xFF, 0xFF, 0xFF
-	ts_wait [
-		frames: 0x1,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait frames=0x1
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk4
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x4D,
-	]
+	ts_mugshot_show mugshot=0x4D
 	.string "Here is my status!\n"
-	ts_position_option_vertical [
-		width: 0x8,
-	]
+	ts_position_option_vertical width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x0,
@@ -171,17 +131,11 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Records"
 	ts_select 0x6, 0x40, 0xFF, 0xFF, 0xFF
-	ts_wait [
-		frames: 0x1,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait frames=0x1
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk5
 	.string "Attack LV"
@@ -221,17 +175,11 @@ CompTextScriptNaviCustAndFolders86D82C4::
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk13
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x4D,
-	]
+	ts_mugshot_show mugshot=0x4D
 	.string "Here is my status!\n"
-	ts_position_option_vertical [
-		width: 0xC,
-	]
+	ts_position_option_vertical width=0xC
 	ts_option [
 		brackets: 0x0,
 		right: 0x0,
@@ -239,13 +187,9 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " NaviCust\n"
-	ts_position_option_vertical [
-		width: 0xC,
-	]
+	ts_position_option_vertical width=0xC
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -253,17 +197,11 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Records"
 	ts_select 0x6, 0x41, 0xFF, 0xFF, 0xFF
-	ts_wait [
-		frames: 0x1,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait frames=0x1
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk14
 	.string "DarkChip "
@@ -272,49 +210,31 @@ CompTextScriptNaviCustAndFolders86D82C4::
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk15
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x4D,
-	]
+	ts_mugshot_show mugshot=0x4D
 	.string "You can't use the\n"
 	.string "equipped folder!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Switchin' to the\n"
 	.string "Extra Folder!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk16
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x4D,
-	]
+	ts_mugshot_show mugshot=0x4D
 	.string "The equipped folder\n"
 	.string "can't be used!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Here! Take this\n"
 	.string "Extra Folder since\n"
 	.string "you don't have one."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
 	.string "Lan got:\n"
@@ -324,43 +244,27 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		buffer: 0x0,
 	]
 	.string "\"!!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x4D,
-	]
+	ts_mugshot_show mugshot=0x4D
 	.string "Switchin' folders!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk17
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x4D,
-	]
+	ts_mugshot_show mugshot=0x4D
 	.string "You can't use the\n"
 	.string "folder you had\n"
 	.string "equipped!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "You can't use the\n"
 	.string "Extra Folder,so use\n"
 	.string "this folder instead!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
 	.string "Lan got:\n"
@@ -370,21 +274,13 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		buffer: 0x0,
 	]
 	.string "\"!!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x4D,
-	]
+	ts_mugshot_show mugshot=0x4D
 	.string "Switchin' to this\n"
 	.string "folder!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk18
 	.string "V"
@@ -462,13 +358,9 @@ CompTextScriptNaviCustAndFolders86D82C4::
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk53
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Save?\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -476,9 +368,7 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -487,14 +377,10 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x0, 0x36, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk54
 	ts_check_flag [
@@ -507,15 +393,11 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		top: 0x6C,
 		arrowDistance: 0x3,
 	]
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_clear_msg
 	.string "OK to erase\n"
 	.string "old save data?\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -523,9 +405,7 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -534,19 +414,13 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x0, 0x37, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk55
-	ts_flag_clear [
-		flag: 0x1713,
-	]
+	ts_flag_clear flag=0x1713
 	ts_call_save [
 		jumpIfSuccessful: 0x38,
 		jumpIfFailed: 0xFF,
@@ -557,9 +431,7 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		top: 0x6C,
 		arrowDistance: 0x3,
 	]
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_position_arrow [
 		left: 0xDE,
 		top: 0x8D,
@@ -567,14 +439,10 @@ CompTextScriptNaviCustAndFolders86D82C4::
 	ts_clear_msg
 	.string "The save\n"
 	.string "failed..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Try again?\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -582,9 +450,7 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -593,14 +459,10 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x0, 0x35, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk56
 	ts_position_text [
@@ -608,34 +470,22 @@ CompTextScriptNaviCustAndFolders86D82C4::
 		top: 0x6C,
 		arrowDistance: 0x3,
 	]
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_position_arrow [
 		left: 0xDE,
 		top: 0x8D,
 	]
 	ts_clear_msg
 	.string "The save is complete"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk57
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Can't save here"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNaviCustAndFolders86D82C4_unk58
 

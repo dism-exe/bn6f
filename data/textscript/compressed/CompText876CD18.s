@@ -16,21 +16,15 @@ CompText876CD18::
 		jumpIfInRange: 0x5,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x9,
-	]
+	ts_mugshot_show mugshot=0x9
 	ts_msg_open
 	.string "I don't feel like\n"
 	.string "doing homework when\n"
 	.string "I'm at home,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "so I'm doing it now!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876CD18_unk1
@@ -42,22 +36,16 @@ CompText876CD18::
 	def_text_script CompText876CD18_unk4
 
 	def_text_script CompText876CD18_unk5
-	ts_mugshot_show [
-		mugshot: 0x9,
-	]
+	ts_mugshot_show mugshot=0x9
 	ts_msg_open
 	.string "Lately,studying\n"
 	.string "has become fun!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Once you understand,\n"
 	.string "class is\n"
 	.string "interesting!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876CD18_unk6
@@ -71,16 +59,12 @@ CompText876CD18::
 	def_text_script CompText876CD18_unk10
 	ts_msg_open
 	.string "A CopyBot..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It got damaged by an\n"
 	.string "attack in battle...\n"
 	.string "It can't move..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876CD18_unk11
@@ -89,21 +73,13 @@ CompText876CD18::
 		jumpIfTrue: 0xA,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "You're Lan Hikari!!\n"
 	.string "YAAAAAHHHHHHHHHHH!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xE77,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xE77
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText876CD18_unk12

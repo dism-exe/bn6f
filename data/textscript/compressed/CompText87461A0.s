@@ -30,9 +30,7 @@ CompText87461A0::
 	]
 	ts_msg_open
 	.string "Dummy text"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87461A0_unk1
@@ -113,16 +111,12 @@ CompText87461A0::
 	def_text_script CompText87461A0_unk28
 
 	def_text_script CompText87461A0_unk29
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "MegaMan,it's up to\n"
 	.string "you to fix the\n"
 	.string "control system!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87461A0_unk30
@@ -130,15 +124,11 @@ CompText87461A0::
 	def_text_script CompText87461A0_unk31
 
 	def_text_script CompText87461A0_unk32
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Let's show BlastMan\n"
 	.string "what you've got!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87461A0_unk33
@@ -146,16 +136,12 @@ CompText87461A0::
 	def_text_script CompText87461A0_unk34
 
 	def_text_script CompText87461A0_unk35
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Things don't look\n"
 	.string "too damaged from the\n"
 	.string "BlastMan incident..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87461A0_unk36

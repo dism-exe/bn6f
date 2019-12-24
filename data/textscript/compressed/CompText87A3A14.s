@@ -15,52 +15,36 @@ CompText87A3A14::
 		jumpIfTrue: 0x1,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "AHHHH!!\n"
 	.string "YOU'RE MEGAMAN!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "DO YOU REMEMBER ME!?\n"
 	.string "I'M THE DOG HOUSE\n"
 	.string "PROGRAM!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "...*SNIFFLE*..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "SORRY... MY NOSE IS\n"
 	.string "RUNNY..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87A3A14_unk1
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "THIS IS THE DOG\n"
 	.string "HOUSE COMP...."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "SINCE THE OWNER\n"
 	.string "LEFT,IT'S BEEN A\n"
 	.string "LONELY PLACE..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87A3A14_unk2

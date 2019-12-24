@@ -13,9 +13,7 @@ CompText875DDF8::
 	ts_msg_open
 	.string "A hot cloud is\n"
 	.string "blocking the way!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875DDF8_unk1
@@ -23,15 +21,11 @@ CompText875DDF8::
 	.string "This is the control\n"
 	.string "panel for this\n"
 	.string "pavilion..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It is operating\n"
 	.string "normally."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	

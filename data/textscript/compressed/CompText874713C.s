@@ -24,9 +24,7 @@ CompText874713C::
 	]
 	ts_msg_open
 	.string "Dummy text"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText874713C_unk1
@@ -38,16 +36,12 @@ CompText874713C::
 	def_text_script CompText874713C_unk4
 
 	def_text_script CompText874713C_unk5
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Things don't look\n"
 	.string "too damaged from the\n"
 	.string "ElementMan incident."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText874713C_unk6
@@ -99,15 +93,11 @@ CompText874713C::
 	def_text_script CompText874713C_unk26
 
 	def_text_script CompText874713C_unk27
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "We've gotta fix\n"
 	.string "Mr.Weather,MegaMan!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText874713C_unk28

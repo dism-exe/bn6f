@@ -38,9 +38,7 @@ CompText873F430::
 	]
 	ts_msg_open
 	.string "Dummy text"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk1
@@ -77,96 +75,66 @@ CompText873F430::
 		jumpIfTrue: 0x6,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "We've got to check\n"
 	.string "the Undernet BBS!!\n"
 	.string "Let's go!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk6
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Lan,let's go to the\n"
 	.string "Sky Town Admin\n"
 	.string "Building!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk7
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "I'm glad we're all\n"
 	.string "safe and sound!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Come on,let's go\n"
 	.string "catch up with Mick\n"
 	.string "and Tab!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk8
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's go home,Lan!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk9
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "So,we're inviting\n"
 	.string "Mick,Iris,Tab,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "and all our friends\n"
 	.string "from ACDC Town!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Oh,and Chaud too,if\n"
 	.string "he's around!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk10
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's go home,Lan!\n"
 	.string "I can hardly wait\n"
 	.string "for the Gala!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk11
@@ -248,139 +216,93 @@ CompText873F430::
 		jumpIfTrue: 0x10,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's say bye to\n"
 	.string "Mom before we go\n"
 	.string "meet everyone!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk16
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Alright,let's go to\n"
 	.string "the meeting point!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk17
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's go to the\n"
 	.string "Expo Site,Lan!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk18
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Lan,let's go back to\n"
 	.string "the Expo! We need to\n"
 	.string "get all the stamps!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk19
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Lan,let's head for\n"
 	.string "the Principal's\n"
 	.string "Office!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk20
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Lan,let's go to the\n"
 	.string "Principal's Office!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk21
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "I wonder where in\n"
 	.string "the Expo Site that\n"
 	.string "passageway leads..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk22
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "We need to get back\n"
 	.string "to the Expo Site!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk23
-	ts_jump [
-		target: 22,
-	]
+	ts_jump target=22
 
 	def_text_script CompText873F430_unk24
-	ts_jump [
-		target: 22,
-	]
+	ts_jump target=22
 
 	def_text_script CompText873F430_unk25
-	ts_jump [
-		target: 22,
-	]
+	ts_jump target=22
 
 	def_text_script CompText873F430_unk26
-	ts_jump [
-		target: 22,
-	]
+	ts_jump target=22
 
 	def_text_script CompText873F430_unk27
-	ts_jump [
-		target: 22,
-	]
+	ts_jump target=22
 
 	def_text_script CompText873F430_unk28
-	ts_jump [
-		target: 22,
-	]
+	ts_jump target=22
 
 	def_text_script CompText873F430_unk29
-	ts_jump [
-		target: 22,
-	]
+	ts_jump target=22
 
 	def_text_script CompText873F430_unk30
 
@@ -506,145 +428,101 @@ CompText873F430::
 	ts_end
 
 	def_text_script CompText873F430_unk91
-	ts_mugshot_show [
-		mugshot: 0x47,
-	]
+	ts_mugshot_show mugshot=0x47
 	ts_msg_open
 	.string "Let me at 'em,Lan!\n"
 	.string "I'm burning for one\n"
 	.string "hot battle!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk92
-	ts_mugshot_show [
-		mugshot: 0x49,
-	]
+	ts_mugshot_show mugshot=0x49
 	ts_msg_open
 	.string "Your operating\n"
 	.string "sparks a surge of\n"
 	.string "power within me..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk93
-	ts_mugshot_show [
-		mugshot: 0x4B,
-	]
+	ts_mugshot_show mugshot=0x4B
 	ts_msg_open
 	.string "Slash! Any virus in\n"
 	.string "my way is asking for\n"
 	.string "a slicing!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk94
-	ts_mugshot_show [
-		mugshot: 0x50,
-	]
+	ts_mugshot_show mugshot=0x50
 	ts_msg_open
 	.string "My scythe cries...\n"
 	.string "It wants to delete!!\n"
 	.string "Hyahahahahaha!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk95
-	ts_mugshot_show [
-		mugshot: 0x4F,
-	]
+	ts_mugshot_show mugshot=0x4F
 	ts_msg_open
 	.string "Is it departure\n"
 	.string "time!? I want to be\n"
 	.string "on time! Choo,choo!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk96
-	ts_mugshot_show [
-		mugshot: 0x48,
-	]
+	ts_mugshot_show mugshot=0x48
 	ts_msg_open
 	.string "I don't fight a lot,\n"
 	.string "drip! Real battles\n"
 	.string "scare me... drip!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk97
-	ts_mugshot_show [
-		mugshot: 0x4A,
-	]
+	ts_mugshot_show mugshot=0x4A
 	ts_msg_open
 	.string "Lan,your operating\n"
 	.string "gives me such an\n"
 	.string "awesome feeling!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk98
-	ts_mugshot_show [
-		mugshot: 0x4C,
-	]
+	ts_mugshot_show mugshot=0x4C
 	ts_msg_open
 	.string "I can feel\n"
 	.string "the wind..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk99
-	ts_mugshot_show [
-		mugshot: 0x4D,
-	]
+	ts_mugshot_show mugshot=0x4D
 	ts_msg_open
 	.string "Whiiiiiir!\n"
 	.string "C'mon! Let's go\n"
 	.string "break some viruses!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk100
-	ts_mugshot_show [
-		mugshot: 0x4E,
-	]
+	ts_mugshot_show mugshot=0x4E
 	ts_msg_open
 	.string "Gahahahaha!!\n"
 	.string "Let's go clean up\n"
 	.string "some cybertrash!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F430_unk101
-	ts_mugshot_show [
-		mugshot: 0x3B,
-	]
+	ts_mugshot_show mugshot=0x3B
 	ts_msg_open
 	.string "Only you and Chaud\n"
 	.string "can operate me well.\n"
 	.string "Don't let me down..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	

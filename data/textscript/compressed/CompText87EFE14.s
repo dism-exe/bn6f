@@ -42,9 +42,7 @@ CompText87EFE14::
 		left: 0xCA,
 		top: 0x64,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_position_box [
 		left: 0x0,
 		top: 0x6,
@@ -54,12 +52,8 @@ CompText87EFE14::
 	.string "It looks like\n"
 	.string "there's a new\n"
 	.string "post!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EFE14_unk1
 	ts_check_flag [
@@ -94,9 +88,7 @@ CompText87EFE14::
 		left: 0xCA,
 		top: 0x64,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_position_box [
 		left: 0x0,
 		top: 0x6,
@@ -106,12 +98,8 @@ CompText87EFE14::
 	.string "There isn't\n"
 	.string "even a single\n"
 	.string "post."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EFE14_unk2
 	ts_end
@@ -137,9 +125,7 @@ CompText87EFE14::
 		left: 0xBA,
 		top: 0x6C,
 	]
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Point:"
 	ts_print_buffer03 [
 		minLength: 0x2,
@@ -156,12 +142,8 @@ CompText87EFE14::
 	]
 	.string "\n"
 	.string "No Open Requests"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EFE14_unk7
 	ts_position_text [
@@ -173,9 +155,7 @@ CompText87EFE14::
 		left: 0xBA,
 		top: 0x6C,
 	]
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Point:"
 	ts_print_buffer03 [
 		minLength: 0x2,
@@ -198,12 +178,8 @@ CompText87EFE14::
 		buffer: 0x2,
 	]
 	.string "\""
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EFE14_unk8
 	.string "Rank:C Rank@"
@@ -253,9 +229,7 @@ CompText87EFE14::
 		left: 0xCA,
 		top: 0x64,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_position_box [
 		left: 0x0,
 		top: 0x6,
@@ -264,12 +238,8 @@ CompText87EFE14::
 	ts_msg_open
 	.string "Let's take this\n"
 	.string "request!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EFE14_unk14
 	ts_check_flag [
@@ -304,9 +274,7 @@ CompText87EFE14::
 		left: 0xCA,
 		top: 0x64,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_position_box [
 		left: 0x0,
 		top: 0x6,
@@ -315,12 +283,8 @@ CompText87EFE14::
 	ts_msg_open
 	.string "This request is\n"
 	.string "already finished!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EFE14_unk15
 	ts_check_flag [
@@ -355,9 +319,7 @@ CompText87EFE14::
 		left: 0xCA,
 		top: 0x64,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_position_box [
 		left: 0x0,
 		top: 0x6,
@@ -367,12 +329,8 @@ CompText87EFE14::
 	.string "You can only pick\n"
 	.string "one request at a\n"
 	.string "time."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EFE14_unk16
 	ts_check_flag [
@@ -407,9 +365,7 @@ CompText87EFE14::
 		left: 0xCA,
 		top: 0x64,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_position_box [
 		left: 0x0,
 		top: 0x6,
@@ -419,12 +375,8 @@ CompText87EFE14::
 	.string "You can't take that\n"
 	.string "request with your\n"
 	.string "current rank!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EFE14_unk17
 	ts_position_text [
@@ -437,9 +389,7 @@ CompText87EFE14::
 		top: 0x6C,
 	]
 	.string "Take this request?\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -447,9 +397,7 @@ CompText87EFE14::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -458,14 +406,10 @@ CompText87EFE14::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x0, 0xFF, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EFE14_unk18
 	.string "RqustBBS@"
@@ -486,9 +430,7 @@ CompText87EFE14::
 		left: 0xCA,
 		top: 0x64,
 	]
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_position_box [
 		left: 0x0,
 		top: 0x6,
@@ -498,12 +440,8 @@ CompText87EFE14::
 	.string "Looks like\n"
 	.string "there's a\n"
 	.string "new post!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EFE14_unk21
 	ts_position_text [
@@ -519,9 +457,7 @@ CompText87EFE14::
 		left: 0xCA,
 		top: 0x64,
 	]
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_position_box [
 		left: 0x0,
 		top: 0x6,
@@ -531,12 +467,8 @@ CompText87EFE14::
 	.string "Awww... There's\n"
 	.string "not even a\n"
 	.string "single post."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EFE14_unk22
 	ts_position_text [
@@ -552,9 +484,7 @@ CompText87EFE14::
 		left: 0xCA,
 		top: 0x64,
 	]
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_position_box [
 		left: 0x0,
 		top: 0x6,
@@ -564,12 +494,8 @@ CompText87EFE14::
 	.string "I can't take a\n"
 	.string "request when\n"
 	.string "MegaMan's not here!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EFE14_unk23
 	ts_position_text [
@@ -585,9 +511,7 @@ CompText87EFE14::
 		left: 0xCA,
 		top: 0x64,
 	]
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_position_box [
 		left: 0x0,
 		top: 0x6,
@@ -596,11 +520,7 @@ CompText87EFE14::
 	ts_msg_open
 	.string "This request is\n"
 	.string "already finished!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	

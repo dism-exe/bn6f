@@ -12,16 +12,12 @@ CompText876D580::
 	def_text_script CompText876D580_unk0
 	ts_msg_open
 	.string "A CopyBot..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It got damaged by an\n"
 	.string "attack in battle...\n"
 	.string "It can't move..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876D580_unk1
@@ -30,21 +26,13 @@ CompText876D580::
 		jumpIfTrue: 0x0,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Don't like it here!?\n"
 	.string "Too bad!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xE79,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xE79
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText876D580_unk2

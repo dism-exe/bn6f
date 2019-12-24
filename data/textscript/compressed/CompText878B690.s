@@ -10,123 +10,81 @@ CompText878B690::
 	text_archive_start
 
 	def_text_script CompText878B690_unk0
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "WELCOME TO\n"
 	.string "SEASIDEAREA2!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "GO HAVE A LOOK\n"
 	.string "AROUND!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk1
-	ts_mugshot_show [
-		mugshot: 0x46,
-	]
+	ts_mugshot_show mugshot=0x46
 	ts_msg_open
 	.string "This is a great\n"
 	.string "area..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x41,
-	]
+	ts_mugshot_show mugshot=0x41
 	.string "Just listen...\n"
 	.string "You can hear the\n"
 	.string "waves!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x46,
-	]
+	ts_mugshot_show mugshot=0x46
 	.string "No way!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk2
-	ts_mugshot_show [
-		mugshot: 0x41,
-	]
+	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "This is a really\n"
 	.string "dynamic area don't\n"
 	.string "you think?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "A perfect place\n"
 	.string "for our first date!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x46,
-	]
+	ts_mugshot_show mugshot=0x46
 	.string "It's like a dream..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk3
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "I've been so busy\n"
 	.string "with patrols,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "looking at those two\n"
 	.string "on a date,I couldn't\n"
 	.string "be more jealous!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It's so unfair..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk4
 
 	def_text_script CompText878B690_unk5
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "I heard that\n"
 	.string "CentralArea is\n"
 	.string "in serious trouble!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I bet this area\n"
 	.string "is dangerous too...!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk6
@@ -138,16 +96,12 @@ CompText878B690::
 	def_text_script CompText878B690_unk9
 
 	def_text_script CompText878B690_unk10
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "What in the...\n"
 	.string "Who is that clown\n"
 	.string "looking Navi..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk11
@@ -239,15 +193,11 @@ CompText878B690::
 		jumpIfTrue: 0x33,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "H-Here...\n"
 	.string "Take these..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_game_version [
 		jumpIfCybeastGregar: 0xFF,
@@ -257,54 +207,35 @@ CompText878B690::
 	ts_mugshot_hide
 	ts_sound_disable_text_sfx
 	ts_mugshot_hide
-	ts_player_animate_object [
-		animation: 0x18,
-	]
-	ts_sound_play00 [
-		track: 0x182,
-	]
+	ts_player_animate_object animation=0x18
+	ts_sound_play00 track=0x182
 	ts_sound_enable_text_sfx
 	.string "\"SoulWeapons\" have\n"
 	.string "been installed\n"
 	.string "inside HeatMan."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_call_reload_soul_weapons [
-	]
-	ts_flag_set [
-		flag: 0x68A,
-	]
+	ts_call_reload_soul_weapons
+	ts_flag_set flag=0x68A
 	ts_player_finish
 	ts_player_reset_object
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	.string "Get rid...\n"
 	.string "of the...\n"
 	.string "EvilSpirits..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk51
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "Reload the\n"
 	.string "SoulWeapons?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_position_option_horizontal [
-		width: 0x7,
-	]
+	ts_position_option_horizontal width=0x7
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -312,9 +243,7 @@ CompText878B690::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -323,41 +252,27 @@ CompText878B690::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0x37, 0xFF, 0xFF
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	.string "Good luck..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk52
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	ts_msg_open
-	ts_mugshot_animation [
-		animation: 0x1,
-	]
+	ts_mugshot_animation animation=0x1
 	.string "......"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
 	.string "No response...\n"
 	.string "It seems he passed\n"
 	.string "out..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk53
@@ -365,76 +280,51 @@ CompText878B690::
 	ts_mugshot_hide
 	ts_sound_disable_text_sfx
 	ts_mugshot_hide
-	ts_player_animate_object [
-		animation: 0x18,
-	]
-	ts_sound_play00 [
-		track: 0x182,
-	]
+	ts_player_animate_object animation=0x18
+	ts_sound_play00 track=0x182
 	ts_sound_enable_text_sfx
 	.string "\"SoulWeapons\" have\n"
 	.string "been installed\n"
 	.string "inside SpoutMan."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_call_reload_soul_weapons [
-	]
-	ts_flag_set [
-		flag: 0x68A,
-	]
+	ts_call_reload_soul_weapons
+	ts_flag_set flag=0x68A
 	ts_player_finish
 	ts_player_reset_object
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	.string "Get rid...\n"
 	.string "of the...\n"
 	.string "EvilSpirits..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk54
 
 	def_text_script CompText878B690_unk55
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "Reloading the Soul\n"
 	.string "Weapons requires a\n"
 	.string "bit of time..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "During that time,\n"
 	.string "the EvilSpirits you\n"
 	.string "have already taken"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "care of in this\n"
 	.string "area may come back\n"
 	.string "to haunt you..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Is that OK?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_position_option_horizontal [
-		width: 0x7,
-	]
+	ts_position_option_horizontal width=0x7
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -442,9 +332,7 @@ CompText878B690::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -453,33 +341,21 @@ CompText878B690::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0x38, 0xFF
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	.string "Good luck..."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0x746,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0x746
 	ts_end
 
 	def_text_script CompText878B690_unk56
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "Take care..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk57
@@ -489,55 +365,37 @@ CompText878B690::
 	def_text_script CompText878B690_unk59
 
 	def_text_script CompText878B690_unk60
-	ts_mugshot_show [
-		mugshot: 0x45,
-	]
+	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "Show me how much of\n"
 	.string "a man you are!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x41,
-	]
+	ts_mugshot_show mugshot=0x41
 	.string "No problem! Check\n"
 	.string "out this cool\n"
 	.string "slide!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "(WHEEEEEEE!!)"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk61
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "THE RIOT ON THE\n"
 	.string "INTERNET WAS\n"
 	.string "NOTHING TO ME!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "SEASIDEAREA2\n"
 	.string "ALWAYS HAS A BRIGHT\n"
 	.string "ATMOSPHERE!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "NO MATTER WHAT!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk62
@@ -547,78 +405,54 @@ CompText878B690::
 	def_text_script CompText878B690_unk64
 
 	def_text_script CompText878B690_unk65
-	ts_mugshot_show [
-		mugshot: 0x41,
-	]
+	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "I'm gonna be \n"
 	.string "number 1 the second\n"
 	.string "round for sure!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Woohoo!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk66
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "I'm in a special\n"
 	.string "training course to"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "win the 2nd Operator\n"
 	.string "Navi Selection Test.\n"
 	.string "Hiiiiyaaaah!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk67
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "THIS AREA IS\n"
 	.string "JUST LIKE THE SEA..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "COUPLES COME HERE\n"
 	.string "ON DATES,AND THERE'S\n"
 	.string "LOTS OF NAVIS TOO."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I'M HAPPY YOU'RE\n"
 	.string "HERE BUT THROWING"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "AWAY THE TRASH IS\n"
 	.string "A REALLY TOUGH JOB!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "DON'T BE A MEAN\n"
 	.string "CRITTER! REMEMBER\n"
 	.string "NOT TO LITTER!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878B690_unk68

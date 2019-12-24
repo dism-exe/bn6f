@@ -10,117 +10,79 @@ CompText877567C::
 	text_archive_start
 
 	def_text_script CompText877567C_unk0
-	ts_mugshot_show [
-		mugshot: 0xF,
-	]
+	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "The Aquarium has\n"
 	.string "started having its\n"
 	.string "animal care staff"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "give guided tours."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "We hope this will be\n"
 	.string "a popular feature,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "and that customers\n"
 	.string "will return because\n"
 	.string "of it."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk1
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "These are clione.\n"
 	.string "They look cute,but"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "when it's ready to\n"
 	.string "catch its food,this\n"
 	.string "part of its head"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "blows open and\n"
 	.string "shoots out a\n"
 	.string "tentacle,whoosh!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0xA,
-	]
+	ts_mugshot_show mugshot=0xA
 	.string "Aaaaaaaaaaack!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk2
-	ts_mugshot_show [
-		mugshot: 0xC,
-	]
+	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "This guide tells us\n"
 	.string "so much stuff. He's\n"
 	.string "so detailed,but"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "the way he talks...\n"
 	.string "it's a little too\n"
 	.string "extreme..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk3
-	ts_mugshot_show [
-		mugshot: 0x9,
-	]
+	ts_mugshot_show mugshot=0x9
 	ts_msg_open
 	.string "Clione are\n"
 	.string "aaaaaaaawesome!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Whoooooosh!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk4
-	ts_mugshot_show [
-		mugshot: 0xA,
-	]
+	ts_mugshot_show mugshot=0xA
 	ts_msg_open
 	.string "Aaaaah!\n"
 	.string "Clione are scaaaary!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk5
@@ -134,52 +96,36 @@ CompText877567C::
 	def_text_script CompText877567C_unk9
 
 	def_text_script CompText877567C_unk10
-	ts_mugshot_show [
-		mugshot: 0x18,
-	]
+	ts_mugshot_show mugshot=0x18
 	ts_msg_open
 	.string "I wonder what I\n"
 	.string "should have for\n"
 	.string "dinner..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Oh,no,no,no!\n"
 	.string "Don't get me wrong!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I wasn't thinking of\n"
 	.string "eating THESE fish!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I just thought I'd\n"
 	.string "ask your opinion..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk11
-	ts_mugshot_show [
-		mugshot: 0xC,
-	]
+	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "I left my brothers\n"
 	.string "with the guide,so"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I can look at the\n"
 	.string "fish all I want."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk12
@@ -189,23 +135,17 @@ CompText877567C::
 	def_text_script CompText877567C_unk14
 
 	def_text_script CompText877567C_unk15
-	ts_mugshot_show [
-		mugshot: 0xF,
-	]
+	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "This weird weather\n"
 	.string "cleared the visitors\n"
 	.string "out in a flash..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "What are those guys\n"
 	.string "in Sky Town doing\n"
 	.string "about this!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk16
@@ -257,58 +197,40 @@ CompText877567C::
 	def_text_script CompText877567C_unk39
 
 	def_text_script CompText877567C_unk40
-	ts_mugshot_show [
-		mugshot: 0x8,
-	]
+	ts_mugshot_show mugshot=0x8
 	ts_msg_open
 	.string "Piranhas seem to\n"
 	.string "like the taste of\n"
 	.string "cows."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Mmm... Just like me!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk41
-	ts_mugshot_show [
-		mugshot: 0xC,
-	]
+	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "The clione look like\n"
 	.string "they're dancing."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "La,la,la...\n"
 	.string "La,dee,da..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk42
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "It's food time,my\n"
 	.string "fishies! Make sure\n"
 	.string "you eat it all up!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Here we go!\n"
 	.string "Food for all!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk43
@@ -321,22 +243,16 @@ CompText877567C::
 		jumpIfTrue: 0x2F,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "Mayor Cain comes\n"
 	.string "here sometimes to\n"
 	.string "see how things are."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The Mayor is really\n"
 	.string "into his work!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk46
@@ -345,62 +261,44 @@ CompText877567C::
 		jumpIfTrue: 0x30,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0xC,
-	]
+	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "I come here to the\n"
 	.string "Aquarium a lot now,\n"
 	.string "but"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "if the Expo opens,\n"
 	.string "I'm sure I'll end up\n"
 	.string "only going there."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I only follow the\n"
 	.string "latest fads,\n"
 	.string "after all."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk47
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "It sounds like\n"
 	.string "something is going\n"
 	.string "on outside..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk48
-	ts_mugshot_show [
-		mugshot: 0xC,
-	]
+	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "I heard some loud\n"
 	.string "noises coming from\n"
 	.string "outside just now..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Did something\n"
 	.string "happen?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877567C_unk49

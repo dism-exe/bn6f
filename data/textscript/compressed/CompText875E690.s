@@ -26,27 +26,19 @@ CompText875E690::
 		buffer: 0x0,
 	]
 	.string "\"..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875E690_unk1
 	ts_msg_open
 	.string "It's a Net\n"
 	.string "information board."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It has a map of\n"
 	.string "CentralArea1 on it."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_start_map [
-		map: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_start_map map=0x0
 	ts_end
 
 	def_text_script CompText875E690_unk2
@@ -62,9 +54,7 @@ CompText875E690::
 		buffer: 0x0,
 	]
 	.string "\"..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "MegaMan showed:\n"
 	.string "\""
@@ -73,9 +63,7 @@ CompText875E690::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "BATTLECHIP\n"
 	.string "\""
@@ -85,12 +73,8 @@ CompText875E690::
 	]
 	.string "\"\n"
 	.string "CONFIRMED..."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_clear [
-		flag: 0x46D,
-	]
+	ts_key_wait any=0x0
+	ts_flag_clear flag=0x46D
 	ts_end
 
 	def_text_script CompText875E690_unk4
@@ -98,9 +82,7 @@ CompText875E690::
 	.string "\"Welcome\n"
 	.string "       to the\n"
 	.string "            NetCafe\""
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875E690_unk5
@@ -133,13 +115,9 @@ CompText875E690::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump [
-		target: 10,
-	]
+	ts_jump target=10
 
 	def_text_script CompText875E690_unk6
 	ts_check_item07 [
@@ -158,12 +136,8 @@ CompText875E690::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_clear [
-		flag: 0x74,
-	]
+	ts_key_wait any=0x0
+	ts_flag_clear flag=0x74
 	ts_end
 
 	def_text_script CompText875E690_unk7
@@ -171,15 +145,11 @@ CompText875E690::
 	.string "A Security Cube that\n"
 	.string "protects Cyber\n"
 	.string "Academy..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It can't be unlocked\n"
 	.string "without its P-Code!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875E690_unk8
@@ -191,13 +161,9 @@ CompText875E690::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump [
-		target: 10,
-	]
+	ts_jump target=10
 
 	def_text_script CompText875E690_unk9
 	ts_msg_open
@@ -208,18 +174,12 @@ CompText875E690::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump [
-		target: 10,
-	]
+	ts_jump target=10
 
 	def_text_script CompText875E690_unk10
-	ts_flag_clear [
-		flag: 0x73,
-	]
+	ts_flag_clear flag=0x73
 	ts_end
 
 	def_text_script CompText875E690_unk11
@@ -230,16 +190,12 @@ CompText875E690::
 	.string "The darkness won't\n"
 	.string "budge,even with your\n"
 	.string "strongest attacks."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Maybe the\n"
 	.string "EvilSpirits are\n"
 	.string "related somehow..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875E690_unk13
@@ -247,9 +203,7 @@ CompText875E690::
 	.string "The door is sealed\n"
 	.string "tight. You can't get\n"
 	.string "through it!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	

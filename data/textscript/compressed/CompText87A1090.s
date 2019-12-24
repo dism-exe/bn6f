@@ -10,27 +10,19 @@ CompText87A1090::
 	text_archive_start
 
 	def_text_script CompText87A1090_unk0
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "THIS VENDING MACHINE\n"
 	.string "HAS A NEW PRODUCT!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "IT'S CALLED \"AWESOME\n"
 	.string "WATER EX\"!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "ITS MILD FLAVOR IS\n"
 	.string "ABSOLUTELY GREAT!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	

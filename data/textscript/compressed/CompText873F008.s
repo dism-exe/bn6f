@@ -12,9 +12,7 @@ CompText873F008::
 	def_text_script CompText873F008_unk0
 	ts_msg_open
 	.string "Dummy Text"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F008_unk1

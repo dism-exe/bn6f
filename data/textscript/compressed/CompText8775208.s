@@ -10,42 +10,30 @@ CompText8775208::
 	text_archive_start
 
 	def_text_script CompText8775208_unk0
-	ts_mugshot_show [
-		mugshot: 0x1A,
-	]
+	ts_mugshot_show mugshot=0x1A
 	ts_msg_open
 	.string "I thought it'd be\n"
 	.string "crazier around\n"
 	.string "here..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It's good to know\n"
 	.string "my assumption was\n"
 	.string "wrong."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk1
-	ts_mugshot_show [
-		mugshot: 0x19,
-	]
+	ts_mugshot_show mugshot=0x19
 	ts_msg_open
 	.string "I haven't told\n"
 	.string "grandma anything\n"
 	.string "about the incident"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "that happened at\n"
 	.string "the Aquarium."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk2
@@ -55,21 +43,15 @@ CompText8775208::
 		jumpIfInRange: 0x7,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x17,
-	]
+	ts_mugshot_show mugshot=0x17
 	ts_msg_open
 	.string "Fishies! Fishies!\n"
 	.string "Teehehehehe!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Fishies! Fishies!\n"
 	.string "Everywhere I see!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk3
@@ -85,142 +67,94 @@ CompText8775208::
 		jumpIfInRange: 0x9,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0xE,
-	]
+	ts_mugshot_show mugshot=0xE
 	ts_msg_open
 	.string "You're Mr.Hikari!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "You don't have to\n"
 	.string "pay the admission\n"
 	.string "fee!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "You're face is\n"
 	.string "your pass!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk4
 
 	def_text_script CompText8775208_unk5
-	ts_mugshot_show [
-		mugshot: 0x1A,
-	]
+	ts_mugshot_show mugshot=0x1A
 	ts_msg_open
 	.string "Huh?\n"
 	.string "They're closing?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	.string "I apologize..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "...We have a\n"
 	.string "situation that\n"
 	.string "needs resolving."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk6
-	ts_mugshot_show [
-		mugshot: 0x19,
-	]
+	ts_mugshot_show mugshot=0x19
 	ts_msg_open
 	.string "I wonder if they\n"
 	.string "had another\n"
 	.string "incident...?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Maybe it's\n"
 	.string "dangerous..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk7
-	ts_mugshot_show [
-		mugshot: 0x17,
-	]
+	ts_mugshot_show mugshot=0x17
 	ts_msg_open
 	.string "Fishies! Fishies!\n"
 	.string "Teehehehehe!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Fishies! Fishies!\n"
 	.string "Three for me!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk8
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "I apologize..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "We've got a\n"
 	.string "situation that"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "requires we close\n"
 	.string "the Aquarium..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x1A,
-	]
+	ts_mugshot_show mugshot=0x1A
 	.string "Huh? Really?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "That's a shame..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk9
-	ts_mugshot_show [
-		mugshot: 0xE,
-	]
+	ts_mugshot_show mugshot=0xE
 	ts_msg_open
 	.string "I wonder if they\n"
 	.string "are running this\n"
 	.string "Aquarium properly?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk10
@@ -230,41 +164,29 @@ CompText8775208::
 		jumpIfInRange: 0xF,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "No matter how\n"
 	.string "often the Aquarium\n"
 	.string "is closed,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "we can't forget\n"
 	.string "to take care of\n"
 	.string "the fish!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk11
-	ts_mugshot_show [
-		mugshot: 0xE,
-	]
+	ts_mugshot_show mugshot=0xE
 	ts_msg_open
 	.string "Closed tomorrow\n"
 	.string "as well..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I wonder if I'll\n"
 	.string "get paid this month!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk12
@@ -274,22 +196,16 @@ CompText8775208::
 	def_text_script CompText8775208_unk14
 
 	def_text_script CompText8775208_unk15
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "...Hmph!\n"
 	.string "I'd like to give\n"
 	.string "those criminals"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "a taste of their\n"
 	.string "own medicine..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk16
@@ -341,49 +257,35 @@ CompText8775208::
 	def_text_script CompText8775208_unk39
 
 	def_text_script CompText8775208_unk40
-	ts_mugshot_show [
-		mugshot: 0x18,
-	]
+	ts_mugshot_show mugshot=0x18
 	ts_msg_open
 	.string "They're all\n"
 	.string "angels..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "When I was little\n"
 	.string "they called me an\n"
 	.string "angel too!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "...What? It's true!\n"
 	.string "Don't look at me\n"
 	.string "with that face!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk41
-	ts_mugshot_show [
-		mugshot: 0x8,
-	]
+	ts_mugshot_show mugshot=0x8
 	ts_msg_open
 	.string "Hmm...?\n"
 	.string "Where can you look\n"
 	.string "at shark fins...?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Huh? They're not\n"
 	.string "sharks? Can I\n"
 	.string "eat them anyways!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk42
@@ -403,46 +305,32 @@ CompText8775208::
 	def_text_script CompText8775208_unk49
 
 	def_text_script CompText8775208_unk50
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "The right jellyfish\n"
 	.string "is Leeroy. The left\n"
 	.string "one is Jenkins."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Huh? You can't tell\n"
 	.string "the difference!?\n"
 	.string "Look harder!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk51
-	ts_mugshot_show [
-		mugshot: 0x17,
-	]
+	ts_mugshot_show mugshot=0x17
 	ts_msg_open
 	.string "Hey! Hey!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Is it true that\n"
 	.string "saving a turtle is\n"
 	.string "a ticket to royalty?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Well? Is it?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8775208_unk52

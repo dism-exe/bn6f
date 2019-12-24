@@ -35,28 +35,20 @@ CompText876CBE8::
 		jumpIfTrue: 0xF,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x17,
-	]
+	ts_mugshot_show mugshot=0x17
 	ts_msg_open
 	.string "I'm today's\n"
 	.string "teacher's aide,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "so that's why I'm\n"
 	.string "wiping off the\n"
 	.string "blackboard!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Being a teacher's\n"
 	.string "aide sure is hard!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876CBE8_unk11
@@ -68,22 +60,16 @@ CompText876CBE8::
 	def_text_script CompText876CBE8_unk14
 
 	def_text_script CompText876CBE8_unk15
-	ts_mugshot_show [
-		mugshot: 0x17,
-	]
+	ts_mugshot_show mugshot=0x17
 	ts_msg_open
 	.string "Oh yeah!\n"
 	.string "I have to water the\n"
 	.string "plants!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "A teacher's aide's\n"
 	.string "work is never done!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876CBE8_unk16
@@ -115,23 +101,17 @@ CompText876CBE8::
 	def_text_script CompText876CBE8_unk29
 
 	def_text_script CompText876CBE8_unk30
-	ts_mugshot_show [
-		mugshot: 0xA,
-	]
+	ts_mugshot_show mugshot=0xA
 	ts_msg_open
 	.string "The school lunch has\n"
 	.string "really,really good\n"
 	.string "bread!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I'm gonna eat it!\n"
 	.string "... Mwraaaawr!!\n"
 	.string "*chomp,chomp,chomp*"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	

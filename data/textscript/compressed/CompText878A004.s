@@ -22,62 +22,44 @@ CompText878A004::
 		jumpIfInRange: 0x5,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "*STARE,STARE...*\n"
 	.string "HMM,YOU LOOK OK..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "THE NETPOLICE HAVE\n"
 	.string "BEEN TELLING PEOPLE\n"
 	.string "LATELY TO REPORT ANY"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "SUSPICIOUS-LOOKING\n"
 	.string "PEOPLE."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I'M JUST DOING MY\n"
 	.string "JOB,SO PLEASE\n"
 	.string "UNDERSTAND."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk1
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "What is up with that\n"
 	.string "Mr.Prog at the\n"
 	.string "entrance getting up"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "in people's faces\n"
 	.string "and staring at them\n"
 	.string "like that!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "He needs to stop.\n"
 	.string "It gives me the\n"
 	.string "creeps!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk2
@@ -87,34 +69,24 @@ CompText878A004::
 	def_text_script CompText878A004_unk4
 
 	def_text_script CompText878A004_unk5
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "*STARE,STARE...*"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk6
-	ts_mugshot_show [
-		mugshot: 0x41,
-	]
+	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "That Mr.Prog\n"
 	.string "standing at the\n"
 	.string "entrance"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "freaks me out with\n"
 	.string "his in-your-face\n"
 	.string "staring!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk7
@@ -124,34 +96,24 @@ CompText878A004::
 	def_text_script CompText878A004_unk9
 
 	def_text_script CompText878A004_unk10
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "*STARE... STARE...*\n"
 	.string "*STARE...*"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk11
-	ts_mugshot_show [
-		mugshot: 0x46,
-	]
+	ts_mugshot_show mugshot=0x46
 	ts_msg_open
 	.string "The way that Mr.Prog\n"
 	.string "stares at my face..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It's so...\n"
 	.string "so...\n"
 	.string "ewwwwwww..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk12
@@ -211,64 +173,44 @@ CompText878A004::
 	def_text_script CompText878A004_unk39
 
 	def_text_script CompText878A004_unk40
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "I-I'm going to post\n"
 	.string "my first message on\n"
 	.string "the BBS!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "... I'm so nervous,\n"
 	.string "like my heart's\n"
 	.string "going to explode!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk41
-	ts_mugshot_show [
-		mugshot: 0x40,
-	]
+	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "Sky Town was\n"
 	.string "attacked a little\n"
 	.string "while ago,I heard..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I wonder what they\n"
 	.string "were after...?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk42
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "ALOHA! ALOHA!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "THIS IS\n"
 	.string "SEASIDEAREA1!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "ALOHA! ALOHA!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk43
@@ -291,72 +233,50 @@ CompText878A004::
 		jumpIfTrue: 0x32,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x40,
-	]
+	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "Hey,hey,hey! You're\n"
 	.string "the one in the Expo\n"
 	.string "commercial,right?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "You were in that,\n"
 	.string "right? Right!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk46
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "WELINA! WELINA!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "TODAY IS ANOTHER\n"
 	.string "FINE DAY IN\n"
 	.string "SEASIDEAREA!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "BY THE WAY,\"WELINA\"\n"
 	.string "IS AN OLD HAWAIIAN\n"
 	.string "WORD FOR \"HELLO\"!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "WELINA! WELINA!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk47
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Ah... No,I can't\n"
 	.string "write it... I can't\n"
 	.string "post it!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I hate how I have\n"
 	.string "no faith in\n"
 	.string "myself..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk48
@@ -364,22 +284,16 @@ CompText878A004::
 	def_text_script CompText878A004_unk49
 
 	def_text_script CompText878A004_unk50
-	ts_mugshot_show [
-		mugshot: 0x40,
-	]
+	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "After the commercial\n"
 	.string "started,interest in\n"
 	.string "the Expo has risen!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Hurry up and open\n"
 	.string "already!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk51
@@ -391,22 +305,16 @@ CompText878A004::
 	def_text_script CompText878A004_unk54
 
 	def_text_script CompText878A004_unk55
-	ts_mugshot_show [
-		mugshot: 0x40,
-	]
+	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "Hey,it looks like\n"
 	.string "there's a riot going\n"
 	.string "on in Seaside Town!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "What in the world\n"
 	.string "is going on!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk56
@@ -418,29 +326,21 @@ CompText878A004::
 	def_text_script CompText878A004_unk59
 
 	def_text_script CompText878A004_unk60
-	ts_mugshot_show [
-		mugshot: 0x40,
-	]
+	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "Mayor Cain is trying\n"
 	.string "to track down that\n"
 	.string "Navi that went nuts,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "so he can take care\n"
 	.string "of that Seaside Town\n"
 	.string "incident."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I bet he'll find\n"
 	.string "that Navi."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878A004_unk61

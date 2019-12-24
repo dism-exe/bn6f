@@ -10,22 +10,16 @@ CompText876DB88::
 	text_archive_start
 
 	def_text_script CompText876DB88_unk0
-	ts_mugshot_show [
-		mugshot: 0xB,
-	]
+	ts_mugshot_show mugshot=0xB
 	ts_msg_open
 	.string "Lan! Are you done\n"
 	.string "with the writing\n"
 	.string "assignment?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Just don't get\n"
 	.string "caught napping,OK?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876DB88_unk1
@@ -87,121 +81,85 @@ CompText876DB88::
 	def_text_script CompText876DB88_unk29
 
 	def_text_script CompText876DB88_unk30
-	ts_mugshot_show [
-		mugshot: 0xA,
-	]
+	ts_mugshot_show mugshot=0xA
 	ts_msg_open
 	.string "I'm going to enter\n"
 	.string "the Operator Navi\n"
 	.string "Selection Test too!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876DB88_unk31
-	ts_mugshot_show [
-		mugshot: 0x8,
-	]
+	ts_mugshot_show mugshot=0x8
 	ts_msg_open
 	.string "...Ummm...\n"
 	.string "What's a pavilion?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I guess it must\n"
 	.string "be close to an\n"
 	.string "onion,right?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I love onion\n"
 	.string "soup...so maybe I'd\n"
 	.string "love pavilion soup!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876DB88_unk32
-	ts_mugshot_show [
-		mugshot: 0xC,
-	]
+	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "The Operator\n"
 	.string "Navi,huh...?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "There are lots of\n"
 	.string "people trying out\n"
 	.string "aren't there?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876DB88_unk33
-	ts_mugshot_show [
-		mugshot: 0x14,
-	]
+	ts_mugshot_show mugshot=0x14
 	ts_msg_open
 	.string "Hey! Don't take\n"
 	.string "your time now!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "If you don't hurry\n"
 	.string "you can't enter the\n"
 	.string "Operator Navi Test!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876DB88_unk34
 
 	def_text_script CompText876DB88_unk35
-	ts_mugshot_show [
-		mugshot: 0xA,
-	]
+	ts_mugshot_show mugshot=0xA
 	ts_msg_open
 	.string "How did the\n"
 	.string "Operator Navi\n"
 	.string "Selection Test go?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I failed...\n"
 	.string "Did you pass,Lan?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876DB88_unk36
-	ts_mugshot_show [
-		mugshot: 0xC,
-	]
+	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "You've got an\n"
 	.string "errand to run in\n"
 	.string "Green Town?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "That's a great place.\n"
 	.string "It's surrounded by\n"
 	.string "nature!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876DB88_unk37
@@ -211,42 +169,30 @@ CompText876DB88::
 	def_text_script CompText876DB88_unk39
 
 	def_text_script CompText876DB88_unk40
-	ts_mugshot_show [
-		mugshot: 0xA,
-	]
+	ts_mugshot_show mugshot=0xA
 	ts_msg_open
 	.string "Doesn't Green Town\n"
 	.string "have a courthouse?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Sometimes I sneak\n"
 	.string "a snack... That's\n"
 	.string "not a crime,is it?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876DB88_unk41
-	ts_mugshot_show [
-		mugshot: 0x8,
-	]
+	ts_mugshot_show mugshot=0x8
 	ts_msg_open
 	.string "For some reason I\n"
 	.string "don't see a single\n"
 	.string "Security Bot!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Where did they go?\n"
 	.string "They didn't run\n"
 	.string "away,did they?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876DB88_unk42

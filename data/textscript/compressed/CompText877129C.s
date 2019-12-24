@@ -15,9 +15,7 @@ CompText877129C::
 		jumpIfTrue: 0x1,
 		jumpIfFalse: 0xFF,
 	]
-	ts_flag_set [
-		flag: 0xE66,
-	]
+	ts_flag_set flag=0xE66
 	ts_end
 
 	def_text_script CompText877129C_unk1

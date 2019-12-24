@@ -14,15 +14,11 @@ CompText8791A28::
 		jumpIfCybeastGregar: 0xFF,
 		jumpIfCybeastFalzar: 0x1,
 	]
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Huh?\n"
 	.string "What is this chip..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
 	ts_item_give_chip [
@@ -30,17 +26,12 @@ CompText8791A28::
 		code: 0x10,
 		amount: 0x1,
 	]
-	ts_flag_set [
-		flag: 0x223,
-	]
-	ts_player_animate_object [
-		animation: 0x18,
-	]
+	ts_flag_set flag=0x223
+	ts_player_animate_object animation=0x18
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_chip2 [
-	]
+	ts_print_chip2
 	.string " "
 	ts_print_code [
 		code: 0x10,
@@ -49,21 +40,15 @@ CompText8791A28::
 	.string "\"!!"
 	ts_player_finish
 	ts_player_reset_object
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8791A28_unk1
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Huh?\n"
 	.string "What is this chip..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
 	ts_item_give_chip [
@@ -71,17 +56,12 @@ CompText8791A28::
 		code: 0x9,
 		amount: 0x1,
 	]
-	ts_flag_set [
-		flag: 0x223,
-	]
-	ts_player_animate_object [
-		animation: 0x18,
-	]
+	ts_flag_set flag=0x223
+	ts_player_animate_object animation=0x18
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_chip2 [
-	]
+	ts_print_chip2
 	.string " "
 	ts_print_code [
 		code: 0x9,
@@ -90,9 +70,7 @@ CompText8791A28::
 	.string "\"!!"
 	ts_player_finish
 	ts_player_reset_object
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8791A28_unk2

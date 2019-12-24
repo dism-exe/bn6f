@@ -14,45 +14,27 @@ CompText87948B8::
 	ts_sound_disable_text_sfx
 	ts_control_lock
 	.string "*BEEP,"
-	ts_sound_play00 [
-		track: 0xCD,
-	]
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_sound_play00 track=0xCD
+	ts_wait frames=0x28
 	.string "BEEP,"
-	ts_sound_play00 [
-		track: 0xCD,
-	]
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_sound_play00 track=0xCD
+	ts_wait frames=0x28
 	.string "BEEP"
-	ts_sound_play00 [
-		track: 0xCD,
-	]
+	ts_sound_play00 track=0xCD
 	.string "!!*"
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_wait frames=0x28
 	ts_sound_enable_text_sfx
 	ts_control_unlock
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Now approaching\n"
 	.string "the Undernet."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Due to the danger,\n"
 	.string "entry is\n"
 	.string "prohibited!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk1
@@ -66,25 +48,17 @@ CompText87948B8::
 	def_text_script CompText87948B8_unk5
 	ts_msg_open
 	.string "A broken Mr.Prog..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It keeps repeating\n"
 	.string "the same thing over\n"
 	.string "and over..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	.string "GRUMBLE...GRUMBLE...\n"
 	.string "ALARBRARLB..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk6
@@ -96,40 +70,28 @@ CompText87948B8::
 	def_text_script CompText87948B8_unk9
 
 	def_text_script CompText87948B8_unk10
-	ts_mugshot_show [
-		mugshot: 0x20,
-	]
+	ts_mugshot_show mugshot=0x20
 	ts_msg_open
 	.string "Where are you\n"
 	.string "going?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "You aren't,perhaps,\n"
 	.string "running away are\n"
 	.string "you?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk11
-	ts_mugshot_show [
-		mugshot: 0x21,
-	]
+	ts_mugshot_show mugshot=0x21
 	ts_msg_open
 	.string "HEY! Where do you\n"
 	.string "think you're going!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The test isn't over\n"
 	.string "yet!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk12
@@ -154,20 +116,14 @@ CompText87948B8::
 		jumpIfTrue: 0x15,
 		jumpIfFalse: 0xFF,
 	]
-	ts_flag_set [
-		flag: 0xA81,
-	]
+	ts_flag_set flag=0xA81
 	ts_msg_open
 	.string "You...\n"
 	.string "Shall you take\n"
 	.string "our test?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -175,9 +131,7 @@ CompText87948B8::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -186,18 +140,14 @@ CompText87948B8::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0x16, 0xFF, 0xFF
 	ts_clear_msg
 	.string "Without passing the\n"
 	.string "test,you cannot\n"
 	.string "continue on..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk21
@@ -205,13 +155,9 @@ CompText87948B8::
 	.string "You...\n"
 	.string "Shall you take\n"
 	.string "our test?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -219,9 +165,7 @@ CompText87948B8::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -230,81 +174,57 @@ CompText87948B8::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0x16, 0xFF, 0xFF
 	ts_clear_msg
 	.string "Without passing the\n"
 	.string "test,you cannot\n"
 	.string "continue on..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk22
 	ts_msg_open
 	.string "Begin the test!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Press the B Button\n"
 	.string "to take up the\n"
 	.string "tomahawk,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "and destroy 30 of\n"
 	.string "us!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "We have 3 stages\n"
 	.string "of growth.If you\n"
 	.string "do not destroy us"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "before our last\n"
 	.string "stage of growth,a"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "thunderous attack\n"
 	.string "will befall you!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "During the test,\n"
 	.string "beings with wings\n"
 	.string "will help you..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Use the L Button and\n"
 	.string "R Button to slash\n"
 	.string "left and right..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Now,let the test\n"
 	.string "begin..."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xA85,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xA85
 	ts_end
 
 	def_text_script CompText87948B8_unk23
@@ -312,9 +232,7 @@ CompText87948B8::
 	.string "Those who have\n"
 	.string "passed the test\n"
 	.string "may proceed..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk24
@@ -325,20 +243,14 @@ CompText87948B8::
 		jumpIfTrue: 0x1A,
 		jumpIfFalse: 0xFF,
 	]
-	ts_flag_set [
-		flag: 0xA82,
-	]
+	ts_flag_set flag=0xA82
 	ts_msg_open
 	.string "You...\n"
 	.string "Shall you take\n"
 	.string "our test?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -346,9 +258,7 @@ CompText87948B8::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -357,18 +267,14 @@ CompText87948B8::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0x1B, 0xFF, 0xFF
 	ts_clear_msg
 	.string "Without passing the\n"
 	.string "test,you cannot\n"
 	.string "continue on..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk26
@@ -376,13 +282,9 @@ CompText87948B8::
 	.string "You...\n"
 	.string "Shall you take\n"
 	.string "our test?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -390,9 +292,7 @@ CompText87948B8::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -401,81 +301,57 @@ CompText87948B8::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0x1B, 0xFF, 0xFF
 	ts_clear_msg
 	.string "Without passing the\n"
 	.string "test,you cannot\n"
 	.string "continue on..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk27
 	ts_msg_open
 	.string "Time for the test!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Press the B Button\n"
 	.string "to take up the\n"
 	.string "tomahawk,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "and destroy 50 of\n"
 	.string "us!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "We have 3 stages\n"
 	.string "of growth.If you\n"
 	.string "do not destroy us"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "before our last\n"
 	.string "stage of growth,a"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "thunderous attack\n"
 	.string "will befall you!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "During the test,\n"
 	.string "beings with wings\n"
 	.string "will help you..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Use the L Button and\n"
 	.string "R Button to slash\n"
 	.string "left and right..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Now,let the test\n"
 	.string "begin..."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xA87,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xA87
 	ts_end
 
 	def_text_script CompText87948B8_unk28
@@ -483,66 +359,46 @@ CompText87948B8::
 	.string "Those who have\n"
 	.string "passed the test\n"
 	.string "may proceed..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk29
 
 	def_text_script CompText87948B8_unk30
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "WELCOME TO\n"
 	.string "SKY AREA2!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "ENJOY YOUR TIME\n"
 	.string "HERE!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk31
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Over there is the\n"
 	.string "Undernet..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It's scary...\n"
 	.string "...*shiver*"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk32
-	ts_mugshot_show [
-		mugshot: 0x41,
-	]
+	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "This beautiful area\n"
 	.string "and the Undernet are\n"
 	.string "next to each other."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "...Kind of\n"
 	.string "unbelievable,huh?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk33
@@ -560,110 +416,76 @@ CompText87948B8::
 	def_text_script CompText87948B8_unk39
 
 	def_text_script CompText87948B8_unk40
-	ts_mugshot_show [
-		mugshot: 0x46,
-	]
+	ts_mugshot_show mugshot=0x46
 	ts_msg_open
 	.string "Arrrgggghhh!!\n"
 	.string "I don't get this\n"
 	.string "at all!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "How can I get\n"
 	.string "over there!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk41
-	ts_mugshot_show [
-		mugshot: 0x41,
-	]
+	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "Ummm... This is a\n"
 	.string "strange question,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "but if you could\n"
 	.string "be something else,\n"
 	.string "what would you be?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I would totally be\n"
 	.string "a bird!! Then I\n"
 	.string "could fly all over!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "...I wish someone\n"
 	.string "would give me wings."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk42
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "I LOVE RIDING ON\n"
 	.string "TRAINS!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "THE VIEW OF THE\n"
 	.string "WORLD KEEPS RUNNING\n"
 	.string "BY THE WINDOW!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk43
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "AHHH! GOTTA HURRY!\n"
 	.string "GOTTA HURRY UP NOW!\n"
 	.string "I'M LATE FOR WORK!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I WISH THE TRAIN\n"
 	.string "WOULD JUST HURRY\n"
 	.string "UP!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk44
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "TODAY I'M GOING\n"
 	.string "FAR AWAY!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "IT'S SO EXCITING!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87948B8_unk45

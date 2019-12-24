@@ -30,26 +30,18 @@ CompText87428D4::
 	]
 	ts_msg_open
 	.string "Dummy text"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk1
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Go back to operating\n"
 	.string "me,Lan?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_position_option_horizontal [
-		width: 0x7,
-	]
+	ts_position_option_horizontal width=0x7
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -57,9 +49,7 @@ CompText87428D4::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -68,14 +58,10 @@ CompText87428D4::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0x2, 0xFF
-	ts_flag_set [
-		flag: 0x5E6,
-	]
+	ts_flag_set flag=0x5E6
 	ts_end
 
 	def_text_script CompText87428D4_unk2
@@ -246,120 +232,82 @@ CompText87428D4::
 		jumpIfTrue: 0x42,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's go tell Mick\n"
 	.string "about the penguin!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk66
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's wait for Mick\n"
 	.string "in front of the\n"
 	.string "LevBus station!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk67
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's go to the\n"
 	.string "Aquarium,Lan!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk68
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's go home and\n"
 	.string "hit the sack,OK,Lan?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk69
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "We said we'd meet\n"
 	.string "in front of the\n"
 	.string "Aquarium,so"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "let's head on out\n"
 	.string "there!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk70
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's go inside,Lan!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk71
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's take a look\n"
 	.string "around,Lan!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk72
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "The show's about to\n"
 	.string "start! Let's go or\n"
 	.string "we'll miss it!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk73
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "If Mick feels that\n"
 	.string "way,we should just\n"
 	.string "go home for today..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk74
@@ -420,15 +368,11 @@ CompText87428D4::
 		jumpIfTrue: 0x51,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Lan! We've gotta go\n"
 	.string "after Mick,quick!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk81
@@ -438,23 +382,17 @@ CompText87428D4::
 		jumpIfInRange: 0x5A,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "We've gotta get to\n"
 	.string "the control room\n"
 	.string "fast!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Normalizing the main\n"
 	.string "computer is the only\n"
 	.string "way to save Mick!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk82
@@ -464,80 +402,56 @@ CompText87428D4::
 		jumpIfInRange: 0xFF,
 		jumpIfOutOfRange: 0x59,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Lan,we've gotta find\n"
 	.string "Fanny's play ball!\n"
 	.string "They just used it"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "for the show,so it's\n"
 	.string "gotta be around here\n"
 	.string "somewhere!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk83
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "There must be some-\n"
 	.string "thing we can use so\n"
 	.string "we don't get stung!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk84
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "I wonder what that\n"
 	.string "mysterious girl was\n"
 	.string "trying to tell us?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk85
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Lan! Transfer me\n"
 	.string "into that CopyBot!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk86
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Use that ball to get\n"
 	.string "Fanny to move out of\n"
 	.string "our way,Lan!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk87
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	ts_check_flag [
 		flag: 0x5DF,
@@ -547,54 +461,38 @@ CompText87428D4::
 	.string "Jack me in,Lan!\n"
 	.string "Hurry! We've gotta\n"
 	.string "save the Aquarium!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk88
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "We've gotta hurry up\n"
 	.string "and get the ball\n"
 	.string "that's in the tank!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk89
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Lan! We've gotta\n"
 	.string "find Fanny's play\n"
 	.string "ball fast!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "They used it in the\n"
 	.string "show,so maybe it's\n"
 	.string "near the stage...?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk90
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Hurry,Lan! Find the\n"
 	.string "main computer!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk91
@@ -611,28 +509,20 @@ CompText87428D4::
 		jumpIfTrue: 0x60,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's hurry to where\n"
 	.string "Mick and the others\n"
 	.string "are,Lan!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk96
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's call it a\n"
 	.string "day,Lan."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87428D4_unk97

@@ -14,16 +14,12 @@ CompText875CE10::
 	.string "The theory of\n"
 	.string "CopyBots and the\n"
 	.string "future of man is"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "being shown on this\n"
 	.string "panel in an easy to\n"
 	.string "understand way."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875CE10_unk1
@@ -31,48 +27,34 @@ CompText875CE10::
 	.string "CopyBot abilities\n"
 	.string "are being explained\n"
 	.string "in an easy to"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "understand way on\n"
 	.string "this monitor."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It seems that if the\n"
 	.string "special limiter on a\n"
 	.string "CopyBot breaks,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "the CopyBot could\n"
 	.string "become very\n"
 	.string "powerful."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875CE10_unk2
-	ts_jump [
-		target: 1,
-	]
+	ts_jump target=1
 
 	def_text_script CompText875CE10_unk3
 	ts_msg_open
 	.string "A control panel for\n"
 	.string "this pavilion."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "You can jack in."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875CE10_unk4
@@ -80,9 +62,7 @@ CompText875CE10::
 	.string "It's too dangerous\n"
 	.string "to go on! You'll get\n"
 	.string "shocked!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875CE10_unk5
@@ -90,22 +70,16 @@ CompText875CE10::
 	.string "CopyBot abilities\n"
 	.string "are being explained\n"
 	.string "in an easy to"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "understand way on\n"
 	.string "this monitor."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Looking closely,you\n"
 	.string "see a port for\n"
 	.string "jacking in..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	

@@ -10,42 +10,30 @@ CompText87821B4::
 	text_archive_start
 
 	def_text_script CompText87821B4_unk0
-	ts_mugshot_show [
-		mugshot: 0x2,
-	]
+	ts_mugshot_show mugshot=0x2
 	ts_msg_open
 	.string "Awesome...\n"
 	.string "Real fish all\n"
 	.string "around!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "They did a good\n"
 	.string "job!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87821B4_unk1
-	ts_mugshot_show [
-		mugshot: 0x14,
-	]
+	ts_mugshot_show mugshot=0x14
 	ts_msg_open
 	.string "Yeah!\n"
 	.string "This water is\n"
 	.string "great!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "No matter how much\n"
 	.string "I drink,it's still\n"
 	.string "delicious!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87821B4_unk2
@@ -67,16 +55,12 @@ CompText87821B4::
 	def_text_script CompText87821B4_unk10
 	ts_msg_open
 	.string "A CopyBot..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It got damaged by an\n"
 	.string "attack in battle...\n"
 	.string "It can't move..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87821B4_unk11
@@ -85,21 +69,13 @@ CompText87821B4::
 		jumpIfTrue: 0xA,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Don't like it here!?\n"
 	.string "Too bad!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xEA3,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xEA3
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText87821B4_unk12

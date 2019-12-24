@@ -11,35 +11,23 @@ CompText87F0DA0::
 
 	def_text_script CompText87F0DA0_unk0
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Welcome!\n"
 	.string "R Button:Description\n"
 	.string "B Button:Quit"
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk1
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "How can I help you?\n"
 	.string "R Button:Description\n"
 	.string "B Button:Quit"
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk2
 	ts_check_navi_all [
@@ -57,17 +45,11 @@ CompText87F0DA0::
 		jumpIfProtoMan: 0x14,
 	]
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Leaving already?\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -75,9 +57,7 @@ CompText87F0DA0::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -86,38 +66,24 @@ CompText87F0DA0::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x40, 0xFF, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk3
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Please come again!"
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk4
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "\""
 	ts_print_item [
 		item: 0x0,
@@ -125,9 +91,7 @@ CompText87F0DA0::
 	]
 	.string "\"?\n"
 	.string "Are you sure?\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -135,9 +99,7 @@ CompText87F0DA0::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -146,25 +108,17 @@ CompText87F0DA0::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_sound_disable_choice_sfx
 	ts_select 0x6, 0x0, 0xFF, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk5
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "\""
 	ts_print_chip1 [
 		chip: 0x0,
@@ -177,9 +131,7 @@ CompText87F0DA0::
 	]
 	.string "\"?\n"
 	.string "Are you sure?\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -187,9 +139,7 @@ CompText87F0DA0::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -198,15 +148,11 @@ CompText87F0DA0::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_sound_disable_choice_sfx
 	ts_select 0x6, 0x0, 0xFF, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk6
 	ts_check_navi_all [
@@ -224,13 +170,9 @@ CompText87F0DA0::
 		jumpIfProtoMan: 0x15,
 	]
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "I bought\n"
 	.string "\""
 	ts_print_item [
@@ -238,12 +180,8 @@ CompText87F0DA0::
 		buffer: 0x1,
 	]
 	.string "\"!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk7
 	ts_check_navi_all [
@@ -261,13 +199,9 @@ CompText87F0DA0::
 		jumpIfProtoMan: 0x16,
 	]
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "I bought\n"
 	.string "\""
 	ts_print_chip1 [
@@ -280,12 +214,8 @@ CompText87F0DA0::
 		buffer: 0x2,
 	]
 	.string "\"!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk8
 	ts_check_navi_all [
@@ -303,21 +233,13 @@ CompText87F0DA0::
 		jumpIfProtoMan: 0x17,
 	]
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Not enough\n"
 	.string "Zennys..."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk9
 	ts_check_navi_all [
@@ -335,50 +257,30 @@ CompText87F0DA0::
 		jumpIfProtoMan: 0x18,
 	]
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "I can't carry\n"
 	.string "any more."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk10
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "We're all\n"
 	.string "sold out!\n"
 	.string "Thank you!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk11
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "\""
 	ts_print_navi_cust_program5 [
 		program: 0x0,
@@ -386,9 +288,7 @@ CompText87F0DA0::
 	]
 	.string "\"?\n"
 	.string "Are you sure?\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -396,9 +296,7 @@ CompText87F0DA0::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -407,15 +305,11 @@ CompText87F0DA0::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_sound_disable_choice_sfx
 	ts_select 0x6, 0x0, 0xFF, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk12
 	ts_check_navi_all [
@@ -433,13 +327,9 @@ CompText87F0DA0::
 		jumpIfProtoMan: 0x19,
 	]
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "I bought\n"
 	.string "\""
 	ts_print_navi_cust_program5 [
@@ -447,12 +337,8 @@ CompText87F0DA0::
 		buffer: 0x1,
 	]
 	.string "\"!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk13
 	ts_clear_msg
@@ -480,17 +366,11 @@ CompText87F0DA0::
 
 	def_text_script CompText87F0DA0_unk20
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Time to leave?\n"
-	ts_position_option_horizontal [
-		width: 0xB,
-	]
+	ts_position_option_horizontal width=0xB
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -498,9 +378,7 @@ CompText87F0DA0::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string "Exit  "
 	ts_option [
 		brackets: 0x0,
@@ -509,24 +387,16 @@ CompText87F0DA0::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string "Keep Looking"
 	ts_select 0x6, 0x40, 0xFF, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk21
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "I bought a new item!\n"
 	.string "\""
 	ts_print_item [
@@ -534,22 +404,14 @@ CompText87F0DA0::
 		buffer: 0x1,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk22
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "I bought a new chip!\n"
 	.string "\""
 	ts_print_chip1 [
@@ -562,55 +424,33 @@ CompText87F0DA0::
 		buffer: 0x2,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk23
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Oops! I don't have\n"
 	.string "enough Zennys!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk24
 	ts_call_disable_mugshot_brighten
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Yikes! I can't carry\n"
 	.string "any more!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk25
 	ts_call_disable_mugshot_brighten
 	ts_msg_open_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "I bought a program!\n"
 	.string "\""
 	ts_print_navi_cust_program5 [
@@ -618,12 +458,8 @@ CompText87F0DA0::
 		buffer: 0x1,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87F0DA0_unk26
 

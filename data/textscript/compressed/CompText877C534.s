@@ -22,35 +22,25 @@ CompText877C534::
 		jumpIfInRange: 0x5,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "Hey,Lan!\n"
 	.string "Thanks for the other\n"
 	.string "day!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The JudgeTree is\n"
 	.string "back to normal!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "But right now,it's a\n"
 	.string "little inconvenient,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "since it's been shut\n"
 	.string "down so it can be\n"
 	.string "checked for errors."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877C534_unk1
@@ -62,36 +52,26 @@ CompText877C534::
 	def_text_script CompText877C534_unk4
 
 	def_text_script CompText877C534_unk5
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "... What!?... That\n"
 	.string "happened in the\n"
 	.string "Undernet...!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "But you know,even\n"
 	.string "with all its power,\n"
 	.string "the JudgeTree"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "can't do anything\n"
 	.string "about what happened\n"
 	.string "in the Undernet."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I'm sorry we can't\n"
 	.string "be of help..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877C534_unk6
@@ -103,23 +83,17 @@ CompText877C534::
 	def_text_script CompText877C534_unk9
 
 	def_text_script CompText877C534_unk10
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "What is with the\n"
 	.string "strange weather\n"
 	.string "outside?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "What are the people\n"
 	.string "up in Sky Town\n"
 	.string "doing!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877C534_unk11
@@ -181,21 +155,15 @@ CompText877C534::
 	def_text_script CompText877C534_unk39
 
 	def_text_script CompText877C534_unk40
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "Starting today,I'll\n"
 	.string "be taking charge of\n"
 	.string "my own lawsuit."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I won't lose!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877C534_unk41
@@ -207,32 +175,22 @@ CompText877C534::
 	def_text_script CompText877C534_unk44
 
 	def_text_script CompText877C534_unk45
-	ts_mugshot_show [
-		mugshot: 0x15,
-	]
+	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "... *sigh*"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Actually,the court\n"
 	.string "date for my suit was\n"
 	.string "yesterday..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I lost because I\n"
 	.string "didn't show up..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "... How sad..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877C534_unk46

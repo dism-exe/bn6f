@@ -20,43 +20,29 @@ CompText876E874::
 	def_text_script CompText876E874_unk4
 
 	def_text_script CompText876E874_unk5
-	ts_mugshot_show [
-		mugshot: 0x10,
-	]
+	ts_mugshot_show mugshot=0x10
 	ts_msg_open
 	.string "OK,see you,later!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Things have been\n"
 	.string "dangerous lately,so\n"
 	.string "hurry on home!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876E874_unk6
-	ts_mugshot_show [
-		mugshot: 0xB,
-	]
+	ts_mugshot_show mugshot=0xB
 	ts_msg_open
 	.string "Later!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876E874_unk7
-	ts_mugshot_show [
-		mugshot: 0x8,
-	]
+	ts_mugshot_show mugshot=0x8
 	ts_msg_open
 	.string "Bye bye!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876E874_unk8
@@ -64,14 +50,10 @@ CompText876E874::
 	def_text_script CompText876E874_unk9
 
 	def_text_script CompText876E874_unk10
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "........"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876E874_unk11

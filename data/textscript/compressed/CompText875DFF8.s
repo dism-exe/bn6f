@@ -16,9 +16,7 @@ CompText875DFF8::
 		jumpIfInRange: 0x6,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_jump [
-		target: 5,
-	]
+	ts_jump target=5
 
 	def_text_script CompText875DFF8_unk1
 
@@ -32,15 +30,11 @@ CompText875DFF8::
 	ts_msg_open
 	.string "It's the elevator's\n"
 	.string "control panel..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It looks perfectly\n"
 	.string "normal."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875DFF8_unk6
@@ -54,47 +48,29 @@ CompText875DFF8::
 		jumpIfTrue: 0xFF,
 		jumpIfFalse: 0x5,
 	]
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "How is it,MegaMan?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	.string "Um... Hold on and\n"
 	.string "I'll take a look!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Um... Hmm..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
 	.string "A virus suddenly\n"
 	.string "jumps out at\n"
 	.string "MegaMan!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	.string "Waaaah!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xA6B,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xA6B
 	ts_end
 
 	def_text_script CompText875DFF8_unk7

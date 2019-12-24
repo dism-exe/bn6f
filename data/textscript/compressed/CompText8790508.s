@@ -10,15 +10,11 @@ CompText8790508::
 	text_archive_start
 
 	def_text_script CompText8790508_unk0
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "WELCOME!\n"
 	.string "THIS IS GREEN AREA2!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8790508_unk1
@@ -34,15 +30,11 @@ CompText8790508::
 		jumpIfInRange: 0x5,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "The coffee here\n"
 	.string "tastes very unique."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8790508_unk2
@@ -58,16 +50,12 @@ CompText8790508::
 		jumpIfInRange: 0x6,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x40,
-	]
+	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "I bet Mayor Cain\n"
 	.string "is answering some\n"
 	.string "tough questions now."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8790508_unk3
@@ -75,42 +63,30 @@ CompText8790508::
 	def_text_script CompText8790508_unk4
 
 	def_text_script CompText8790508_unk5
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "Lots of people\n"
 	.string "gather at an Expo\n"
 	.string "right?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I wonder if it's\n"
 	.string "OK to have one at a\n"
 	.string "time like this..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8790508_unk6
-	ts_mugshot_show [
-		mugshot: 0x40,
-	]
+	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "It looks like the\n"
 	.string "Expo is opening on\n"
 	.string "schedule..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I bet there will be\n"
 	.string "enormous lines!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8790508_unk7
@@ -120,39 +96,27 @@ CompText8790508::
 	def_text_script CompText8790508_unk9
 
 	def_text_script CompText8790508_unk10
-	ts_mugshot_show [
-		mugshot: 0x42,
-	]
+	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "Mmmmm..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "This coffee is\n"
 	.string "truly unique."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8790508_unk11
-	ts_mugshot_show [
-		mugshot: 0x40,
-	]
+	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "If you are planning\n"
 	.string "on being first to"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "the Expo,I think you\n"
 	.string "might have to get in\n"
 	.string "line right now!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8790508_unk12
@@ -162,39 +126,23 @@ CompText8790508::
 	def_text_script CompText8790508_unk14
 
 	def_text_script CompText8790508_unk15
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "What a terrible\n"
 	.string "lie... I'll\n"
 	.string "finish this here!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xEB3,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xEB3
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText8790508_unk16
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Arrrrrghhhh!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xEB5,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xEB5
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText8790508_unk17

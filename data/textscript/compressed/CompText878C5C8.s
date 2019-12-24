@@ -10,19 +10,13 @@ CompText878C5C8::
 	text_archive_start
 
 	def_text_script CompText878C5C8_unk0
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "The toll is 50Z..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_position_option_horizontal [
-		width: 0x7,
-	]
+	ts_position_option_horizontal width=0x7
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -30,9 +24,7 @@ CompText878C5C8::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Pay  "
 	ts_option [
 		brackets: 0x0,
@@ -41,19 +33,13 @@ CompText878C5C8::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Don't pay"
 	ts_select 0x6, 0x80, 0x1, 0xFF, 0xFF
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	.string "Hmmm..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk1
@@ -63,30 +49,20 @@ CompText878C5C8::
 		jumpIfNone: 0x2,
 		jumpIfSome: 0x2,
 	]
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "You may proceed..."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0x1640,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0x1640
 	ts_end
 
 	def_text_script CompText878C5C8_unk2
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Unfortunately,\n"
 	.string "you don't have\n"
 	.string "enough money..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk3
@@ -119,403 +95,263 @@ CompText878C5C8::
 		jumpIfTrue: 0xB,
 		jumpIfFalse: 0xFF,
 	]
-	ts_flag_set [
-		flag: 0x11FB,
-	]
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_flag_set flag=0x11FB
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Ahhh... How would\n"
 	.string "you like some great\n"
 	.string "diet goods?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Don't you want to\n"
 	.string "look your best by\n"
 	.string "using \"Lean Mean\"?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "...Huh?\n"
 	.string "...No effect?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "...Hey kid!\n"
 	.string "Quit making up\n"
 	.string "lies like that!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Where's your proof?\n"
 	.string "C'mon... Let's see\n"
 	.string "it!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I haven't done a\n"
 	.string "single thing outside\n"
 	.string "the law!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "This is just an\n"
 	.string "elaborate shakedown!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "So if you keep it\n"
 	.string "up,I'm going to sue\n"
 	.string "your pants off!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "If you don't like\n"
 	.string "that idea,then get\n"
 	.string "out of here now!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	.string "Lan,he's gonna\n"
 	.string "sue us..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "He can if he wants,\n"
 	.string "but we've got the\n"
 	.string "power of the law!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "He's the one up to\n"
 	.string "something!\n"
 	.string "Not us!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "We should find\n"
 	.string "someone who knows\n"
 	.string "more about fraud..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk11
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "...Hey kid!\n"
 	.string "Quit making up\n"
 	.string "lies like that!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Where's your proof?\n"
 	.string "C'mon... Let's see\n"
 	.string "it!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "This is just an\n"
 	.string "elaborate shakedown!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "So if you keep it\n"
 	.string "up,I'm going to sue\n"
 	.string "your pants off!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "If you don't like\n"
 	.string "that idea,then get\n"
 	.string "out of here now!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	.string "Lan,he's gonna\n"
 	.string "sue us..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "He can if he wants,\n"
 	.string "but we've got the\n"
 	.string "power of the law!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "He's the one up to\n"
 	.string "something!\n"
 	.string "Not us!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "We should find\n"
 	.string "someone who knows\n"
 	.string "more about fraud..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk12
-	ts_flag_set [
-		flag: 0x11FD,
-	]
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_flag_set flag=0x11FD
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "...What is with\n"
 	.string "these lawyers..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "These guys are an\n"
 	.string "absolute pain!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Forgive me already!\n"
 	.string "I've done wrong..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "If it's just money,\n"
 	.string "I'll give it back\n"
 	.string "to all my customers."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I'll go to the bank\n"
 	.string "and send it all\n"
 	.string "back..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Just get these\n"
 	.string "lawyers off my back!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "They're annoying me\n"
 	.string "to death..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk13
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Forgive me already!\n"
 	.string "I've done wrong..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "If it's just money,\n"
 	.string "I'll give it back\n"
 	.string "to all my customers."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Just get these\n"
 	.string "lawyers off my back!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "They're annoying me\n"
 	.string "to death..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk14
-	ts_mugshot_show [
-		mugshot: 0x41,
-	]
+	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "Nowadays,they have\n"
 	.string "something called\n"
 	.string "chilling out..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "But since there are\n"
 	.string "creeps like you,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "people's suffering\n"
 	.string "has increased!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_control_lock
 	.string "Nag!"
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_wait frames=0x28
 	.string " Nag!"
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_wait frames=0x28
 	ts_control_unlock
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_control_lock
 	.string "Nag!"
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_wait frames=0x28
 	.string " Nag!"
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_wait frames=0x28
 	ts_control_unlock
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk15
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Did you ever think\n"
 	.string "of the feelings of\n"
 	.string "your victims!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_control_lock
 	.string "Nag!"
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_wait frames=0x28
 	.string " Nag!"
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_wait frames=0x28
 	ts_control_unlock
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_control_lock
 	.string "Nag!"
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_wait frames=0x28
 	.string " Nag!"
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_wait frames=0x28
 	ts_control_unlock
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk16
-	ts_mugshot_show [
-		mugshot: 0x40,
-	]
+	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "We've got rules\n"
 	.string "in this world!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "You're goin' down\n"
 	.string "for fraud buddy!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_control_lock
 	.string "Nag!"
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_wait frames=0x28
 	.string " Nag!"
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_wait frames=0x28
 	ts_control_unlock
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_control_lock
 	.string "Nag!"
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_wait frames=0x28
 	.string " Nag!"
-	ts_wait [
-		frames: 0x28,
-	]
+	ts_wait frames=0x28
 	ts_control_unlock
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk17
@@ -525,40 +361,28 @@ CompText878C5C8::
 	def_text_script CompText878C5C8_unk19
 
 	def_text_script CompText878C5C8_unk20
-	ts_mugshot_show [
-		mugshot: 0x41,
-	]
+	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "How do I look?\n"
 	.string "Do I seem like a\n"
 	.string "suspicious Navi?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Huh? Not at all!?\n"
 	.string "No way! Take another\n"
 	.string "look!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk21
-	ts_mugshot_show [
-		mugshot: 0x3E,
-	]
+	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "You have to start\n"
 	.string "with one step..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "...I'm nervous..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk22
@@ -568,16 +392,12 @@ CompText878C5C8::
 	def_text_script CompText878C5C8_unk24
 
 	def_text_script CompText878C5C8_unk25
-	ts_mugshot_show [
-		mugshot: 0x4D,
-	]
+	ts_mugshot_show mugshot=0x4D
 	ts_msg_open
 	.string "Hey! Where you goin?\n"
 	.string "You got nothin' to\n"
 	.string "do over there!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk26
@@ -589,53 +409,37 @@ CompText878C5C8::
 	def_text_script CompText878C5C8_unk29
 
 	def_text_script CompText878C5C8_unk30
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "WELCOME TO SEASIDE\n"
 	.string "AREA2!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "THIS AREA WAS MADE\n"
 	.string "TO RESEMBLE THE\n"
 	.string "BEACH!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "...HOW IS IT?\n"
 	.string "SMELLS LIKE THE\n"
 	.string "BEACH,DOESN'T IT?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk31
-	ts_mugshot_show [
-		mugshot: 0x41,
-	]
+	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "Darn!\n"
 	.string "Flooded again!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It's hard to keep\n"
 	.string "going in this area!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Don't you think\n"
 	.string "so? Don'tcha?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk32
@@ -656,203 +460,137 @@ CompText878C5C8::
 	ts_end
 
 	def_text_script CompText878C5C8_unk33
-	ts_mugshot_show [
-		mugshot: 0x45,
-	]
+	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "You're a hottie!\n"
 	.string "I like hotties!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I'll get skinnier\n"
 	.string "just by standing"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "next to your\n"
 	.string "hotness!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk34
-	ts_mugshot_show [
-		mugshot: 0x45,
-	]
+	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "Woooo!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Hey! You!\n"
 	.string "You're burning up!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Don't turn down\n"
 	.string "that voltage,baby!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk35
-	ts_mugshot_show [
-		mugshot: 0x45,
-	]
+	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "Hey,SlashMan!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I know you!\n"
 	.string "You're Ms.Fahran's\n"
 	.string "Navi,right?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "You're good at\n"
 	.string "cooking too,huh?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I like guys who\n"
 	.string "can cook..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk36
-	ts_mugshot_show [
-		mugshot: 0x45,
-	]
+	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "...Wh,What?..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Don't look at me!\n"
 	.string "I'll scream!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk37
-	ts_mugshot_show [
-		mugshot: 0x45,
-	]
+	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "Ahhh,I'm tired of\n"
 	.string "walking. Can I have\n"
 	.string "a piggyback ride."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Haha! Just kidding!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk38
-	ts_mugshot_show [
-		mugshot: 0x45,
-	]
+	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "Awwwwwwww!!\n"
 	.string "It's sooooo cute!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Can I take it\n"
 	.string "home with me!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "...No?\n"
 	.string "That's too bad!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk39
-	ts_mugshot_show [
-		mugshot: 0x45,
-	]
+	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "If I went around\n"
 	.string "carrying a tomahawk,\n"
 	.string "I'd be arrested!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk40
-	ts_mugshot_show [
-		mugshot: 0x45,
-	]
+	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "Wow! What a\n"
 	.string "beautiful nose!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "...Sorry,am I\n"
 	.string "embarrassing you?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk41
-	ts_mugshot_show [
-		mugshot: 0x45,
-	]
+	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "Is there\n"
 	.string "construction here\n"
 	.string "too?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "...You don't know?\n"
 	.string "Aren't you a\n"
 	.string "construction Navi?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk42
-	ts_mugshot_show [
-		mugshot: 0x45,
-	]
+	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "I may have a scary\n"
 	.string "face,but someone\n"
 	.string "somewhere likes it!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText878C5C8_unk43

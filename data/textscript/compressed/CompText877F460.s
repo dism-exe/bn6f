@@ -26,23 +26,17 @@ CompText877F460::
 		jumpIfInRange: 0xA,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0xF,
-	]
+	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "There are signs\n"
 	.string "of a struggle on the\n"
 	.string "Heliport down there."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Someone must have\n"
 	.string "gotten into a fight.\n"
 	.string "How terrible..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877F460_unk6
@@ -54,30 +48,22 @@ CompText877F460::
 	def_text_script CompText877F460_unk9
 
 	def_text_script CompText877F460_unk10
-	ts_mugshot_show [
-		mugshot: 0xF,
-	]
+	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "Really!? You got\n"
 	.string "picked for the Expo\n"
 	.string "pre-opening!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "There is going to be\n"
 	.string "a SkyTown pavilion\n"
 	.string "at the Expo!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "You can check\n"
 	.string "out a replica of\n"
 	.string "Mr.Weather inside!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877F460_unk11

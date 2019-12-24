@@ -27,41 +27,29 @@ CompText87813CC::
 		jumpIfTrue: 0x1,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x41,
-	]
+	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "Each area reporting\n"
 	.string "no abnormalities...\n"
 	.string "in the weather!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Huh,a suspicious\n"
 	.string "group of 3 with a\n"
 	.string "girl?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Hmmm..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87813CC_unk1
-	ts_mugshot_show [
-		mugshot: 0x41,
-	]
+	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "Each area reporting\n"
 	.string "no abnormalities...\n"
 	.string "in the weather!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87813CC_unk2
@@ -71,15 +59,11 @@ CompText87813CC::
 	def_text_script CompText87813CC_unk4
 
 	def_text_script CompText87813CC_unk5
-	ts_mugshot_show [
-		mugshot: 0x41,
-	]
+	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "All of Cyber City\n"
 	.string "has great weather!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87813CC_unk6
@@ -91,21 +75,15 @@ CompText87813CC::
 	def_text_script CompText87813CC_unk9
 
 	def_text_script CompText87813CC_unk10
-	ts_mugshot_show [
-		mugshot: 0x41,
-	]
+	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "Huh? Go to the Expo\n"
 	.string "pre-opening?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Today is going to\n"
 	.string "be sunny all day!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87813CC_unk11
@@ -119,16 +97,12 @@ CompText87813CC::
 	def_text_script CompText87813CC_unk15
 	ts_msg_open
 	.string "A CopyBot..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It got damaged by an\n"
 	.string "attack in battle...\n"
 	.string "It can't move..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87813CC_unk16
@@ -137,22 +111,14 @@ CompText87813CC::
 		jumpIfTrue: 0xF,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Lan Hikari,\n"
 	.string "It's Game Over for\n"
 	.string "you!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xE99,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xE99
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText87813CC_unk17

@@ -55,123 +55,85 @@ CompText877E03C::
 		jumpIfTrue: 0x15,
 		jumpIfFalse: 0xFF,
 	]
-	ts_flag_set [
-		flag: 0xCC3,
-	]
-	ts_mugshot_show [
-		mugshot: 0xD,
-	]
+	ts_flag_set flag=0xCC3
+	ts_mugshot_show mugshot=0xD
 	ts_msg_open
 	.string "... Huh?\n"
 	.string "What was that?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The person that can\n"
 	.string "open the Undernet\n"
 	.string "door?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Now that you mention\n"
 	.string "it..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "There was a criminal\n"
 	.string "that was known for"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "doing bad things on\n"
 	.string "the Undernet..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "That person was a\n"
 	.string "really rotten egg!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "But they worked real\n"
 	.string "hard to become a\n"
 	.string "better person,and"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "was released from\n"
 	.string "here a little while\n"
 	.string "ago."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Now,this is just a\n"
 	.string "rumor,but I heard\n"
 	.string "that they're happy"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "and working at\n"
 	.string "a part-time job\n"
 	.string "near the ocean now."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877E03C_unk21
-	ts_mugshot_show [
-		mugshot: 0xD,
-	]
+	ts_mugshot_show mugshot=0xD
 	ts_msg_open
 	.string "There was a criminal\n"
 	.string "that was known for"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "doing bad things on\n"
 	.string "the Undernet..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "But they worked real\n"
 	.string "hard to become a\n"
 	.string "better person,and"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "was released from\n"
 	.string "here a little while\n"
 	.string "ago."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Now,this is just a\n"
 	.string "rumor,but I heard\n"
 	.string "that they're happy"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "and working at\n"
 	.string "a part-time job\n"
 	.string "near the ocean now."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877E03C_unk22
@@ -181,23 +143,17 @@ CompText877E03C::
 	def_text_script CompText877E03C_unk24
 
 	def_text_script CompText877E03C_unk25
-	ts_mugshot_show [
-		mugshot: 0xF,
-	]
+	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "Noooo!\n"
 	.string "Both of them\n"
 	.string "managed to escape..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "This is a disgrace\n"
 	.string "to the justice\n"
 	.string "system!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877E03C_unk26
@@ -209,15 +165,11 @@ CompText877E03C::
 	def_text_script CompText877E03C_unk29
 
 	def_text_script CompText877E03C_unk30
-	ts_mugshot_show [
-		mugshot: 0xF,
-	]
+	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "Where did those two\n"
 	.string "escapees run to?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877E03C_unk31

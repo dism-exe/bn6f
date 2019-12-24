@@ -15,17 +15,11 @@ CompText87A0AA8::
 		jumpIfTrue: 0x1,
 		jumpIfFalse: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "... Wah! A virus!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xA71,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xA71
 	ts_end
 
 	def_text_script CompText87A0AA8_unk1
@@ -33,9 +27,7 @@ CompText87A0AA8::
 	.string "The control panel\n"
 	.string "is functioning\n"
 	.string "normally."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	

@@ -24,9 +24,7 @@ CompText87463F4::
 	]
 	ts_msg_open
 	.string "Dummy text"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87463F4_unk1
@@ -38,16 +36,12 @@ CompText87463F4::
 	def_text_script CompText87463F4_unk4
 
 	def_text_script CompText87463F4_unk5
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Things don't look\n"
 	.string "too damaged from the\n"
 	.string "BlastMan incident..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87463F4_unk6

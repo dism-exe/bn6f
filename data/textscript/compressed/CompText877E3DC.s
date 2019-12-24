@@ -10,16 +10,12 @@ CompText877E3DC::
 	text_archive_start
 
 	def_text_script CompText877E3DC_unk0
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "No! There are a lot\n"
 	.string "of Punishment Robots\n"
 	.string "in the courtroom!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877E3DC_unk1
@@ -36,26 +32,18 @@ CompText877E3DC::
 		jumpIfTrue: 0x6,
 		jumpIfFalse: 0xFF,
 	]
-	ts_flag_set [
-		flag: 0x1126,
-	]
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_flag_set flag=0x1126
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "I'M THE PROGRAM\n"
 	.string "HIDDEN IN THE\n"
 	.string "PUNISHMENT ROOM."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "NICE JOB FINDING\n"
 	.string "ME. I MUST REWARD\n"
 	.string "YOU FOR THAT."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
 	ts_item_give_navi_cust_program [
@@ -63,9 +51,7 @@ CompText877E3DC::
 		amount: 0x1,
 		color: 0x2,
 	]
-	ts_player_animate_object [
-		animation: 0x18,
-	]
+	ts_player_animate_object animation=0x18
 	.string "Lan got:\n"
 	.string "\""
 	ts_print_navi_cust_program5 [
@@ -73,41 +59,29 @@ CompText877E3DC::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_object
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	.string "INSTALLING THAT\n"
 	.string "WILL GIVE BIRTH\n"
 	.string "TO MANY POEMS."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877E3DC_unk6
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "JUST INSTALLING THAT\n"
 	.string "IN NAVICUST WILL LET\n"
 	.string "YOU READ POEMS."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "THE POEM PROGRAM IS\n"
 	.string "A WONDERFUL PIECE OF\n"
 	.string "PROGRAMMING."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877E3DC_unk7

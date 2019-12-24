@@ -22,20 +22,14 @@ CompText8781B18::
 		jumpIfInRange: 0x5,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_mugshot_show [
-		mugshot: 0x16,
-	]
+	ts_mugshot_show mugshot=0x16
 	ts_msg_open
 	.string "Mr.Weather is done\n"
 	.string "with his cleanup!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "He's sparkling..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8781B18_unk1
@@ -47,21 +41,15 @@ CompText8781B18::
 	def_text_script CompText8781B18_unk4
 
 	def_text_script CompText8781B18_unk5
-	ts_mugshot_show [
-		mugshot: 0x16,
-	]
+	ts_mugshot_show mugshot=0x16
 	ts_msg_open
 	.string "Mr.Weather is a\n"
 	.string "robot,but he is\n"
 	.string "really expressive."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I love his eyes!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8781B18_unk6
@@ -73,33 +61,23 @@ CompText8781B18::
 	def_text_script CompText8781B18_unk9
 
 	def_text_script CompText8781B18_unk10
-	ts_mugshot_show [
-		mugshot: 0x16,
-	]
+	ts_mugshot_show mugshot=0x16
 	ts_msg_open
 	.string "Lately I can kind\n"
 	.string "of understand what"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Mr.Weather's\n"
 	.string "thinking."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Robots and people\n"
 	.string "should be able to"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "understand each\n"
 	.string "other."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8781B18_unk11
@@ -111,62 +89,42 @@ CompText8781B18::
 	def_text_script CompText8781B18_unk14
 
 	def_text_script CompText8781B18_unk15
-	ts_mugshot_show [
-		mugshot: 0x2,
-	]
+	ts_mugshot_show mugshot=0x2
 	ts_msg_open
 	.string "Lan,this one is\n"
 	.string "mine!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8781B18_unk16
-	ts_mugshot_show [
-		mugshot: 0x16,
-	]
+	ts_mugshot_show mugshot=0x16
 	ts_msg_open
 	.string "Mr.Weather was about\n"
 	.string "to be attacked,but"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "that kid helped him\n"
 	.string "out..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8781B18_unk17
-	ts_mugshot_show [
-		mugshot: 0xF,
-	]
+	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "A...A Navi attacked\n"
 	.string "a human..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8781B18_unk18
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "........"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
 	.string "No reaction..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8781B18_unk19

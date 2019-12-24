@@ -10,34 +10,24 @@ CompText876B978::
 	text_archive_start
 
 	def_text_script CompText876B978_unk0
-	ts_mugshot_show [
-		mugshot: 0xB,
-	]
+	ts_mugshot_show mugshot=0xB
 	ts_msg_open
 	.string "Ahh!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Just when I sprained\n"
 	.string "my ankle and thought\n"
 	.string "I could relax,BOOM!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Writing assignment!\n"
 	.string "Teachers are mean!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I've never seen you\n"
 	.string "before. You're the\n"
 	.string "new kid in 6-1,huh?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876B978_unk1
@@ -49,20 +39,14 @@ CompText876B978::
 	def_text_script CompText876B978_unk4
 
 	def_text_script CompText876B978_unk5
-	ts_mugshot_show [
-		mugshot: 0xB,
-	]
+	ts_mugshot_show mugshot=0xB
 	ts_msg_open
 	.string "Huh?\n"
 	.string "Something happen!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Creepy..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876B978_unk6
@@ -170,229 +154,147 @@ CompText876B978::
 		jumpIfFalse: 0xFF,
 	]
 	ts_msg_open
-	ts_mugshot_show [
-		mugshot: 0xB,
-	]
+	ts_mugshot_show mugshot=0xB
 	.string "Huh?\n"
 	.string "What am I doing?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I'm recording the\n"
 	.string "growth of living\n"
 	.string "things!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "This is part of\n"
 	.string "my daily routine."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876B978_unk51
-	ts_flag_set [
-		flag: 0x53D,
-	]
+	ts_flag_set flag=0x53D
 	ts_msg_open
-	ts_mugshot_show [
-		mugshot: 0xB,
-	]
+	ts_mugshot_show mugshot=0xB
 	.string "...Huh?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "That's right!\n"
 	.string "I'm the Biology\n"
 	.string "teacher's aide!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Something the\n"
 	.string "matter?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "Umm..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0xB,
-	]
+	ts_mugshot_show mugshot=0xB
 	.string "WHAT!?\n"
 	.string "You want some fish\n"
 	.string "to feed a penguin!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Well,I am in charge\n"
 	.string "of feeding the\n"
 	.string "animals here..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "But I don't have\n"
 	.string "any food to give to\n"
 	.string "a penguin!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "I guess I'm outta\n"
 	.string "luck..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Thanks anyways..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0xB,
-	]
+	ts_mugshot_show mugshot=0xB
 	.string "...Oh,wait a\n"
 	.string "second..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "My grandpa loves\n"
 	.string "to fish!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I'm sure he is\n"
 	.string "even fishing today!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "He should be coming\n"
 	.string "home around now I\n"
 	.string "think..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "If you ask him,I\n"
 	.string "bet he'd give you a\n"
 	.string "fish!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "Really!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0xB,
-	]
+	ts_mugshot_show mugshot=0xB
 	.string "Yeah,I don't think\n"
 	.string "it'll be a problem!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I'll try and get\n"
 	.string "ahold of my grandpa!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I'll ask him to\n"
 	.string "bring some fish to\n"
 	.string "the LevBus station."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "Thanks!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I'll head to the\n"
 	.string "station right now!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876B978_unk52
-	ts_mugshot_show [
-		mugshot: 0xB,
-	]
+	ts_mugshot_show mugshot=0xB
 	ts_msg_open
 	.string "I'll try and get\n"
 	.string "ahold of my grandpa!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I'll ask him to\n"
 	.string "bring some fish to\n"
 	.string "the LevBus station."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876B978_unk53
-	ts_mugshot_show [
-		mugshot: 0xB,
-	]
+	ts_mugshot_show mugshot=0xB
 	ts_msg_open
 	.string "Were the fish\n"
 	.string "useful?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876B978_unk54
-	ts_mugshot_show [
-		mugshot: 0x9,
-	]
+	ts_mugshot_show mugshot=0x9
 	ts_msg_open
 	.string "Everyone's spreading\n"
 	.string "rumors..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "They say a penguin\n"
 	.string "showed up to the\n"
 	.string "class next door!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876B978_unk55

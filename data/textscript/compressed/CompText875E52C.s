@@ -16,9 +16,7 @@ CompText875E52C::
 		jumpIfInRange: 0x6,
 		jumpIfOutOfRange: 0xFF,
 	]
-	ts_jump [
-		target: 5,
-	]
+	ts_jump target=5
 
 	def_text_script CompText875E52C_unk1
 
@@ -33,9 +31,7 @@ CompText875E52C::
 	.string "The control panel\n"
 	.string "is operating\n"
 	.string "normally."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875E52C_unk6
@@ -49,23 +45,15 @@ CompText875E52C::
 		jumpIfTrue: 0xFF,
 		jumpIfFalse: 0x5,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "If we can normalize\n"
 	.string "this......"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "A v-virus!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xA73,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xA73
 	ts_end
 
 	def_text_script CompText875E52C_unk7
