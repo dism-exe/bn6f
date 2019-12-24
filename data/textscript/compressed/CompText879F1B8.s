@@ -48,9 +48,9 @@ CompText879F1B8::
 	ts_check_item07 [
 		item: 0x40,
 		amount: 0x1,
-		jumpIfEqual: 0xD,
-		jumpIfGreater: 0xD,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText879F1B8_unk13_id,
+		jumpIfGreater: CompText879F1B8_unk13_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open
@@ -139,9 +139,9 @@ CompText879F1B8::
 	def_text_script CompText879F1B8_unk11
 	ts_check_take_zenny [
 		amount: 0x7D0,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xC,
-		jumpIfSome: 0xC,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: CompText879F1B8_unk12_id,
+		jumpIfSome: CompText879F1B8_unk12_id,
 	]
 	ts_flag_set flag=0x1D8
 	ts_flag_set flag=0x197

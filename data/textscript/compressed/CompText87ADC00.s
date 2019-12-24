@@ -91,7 +91,7 @@ CompText87ADC00::
 	.string "mess."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87ADC00_unk2_id
 
 	def_text_script CompText87ADC00_unk2
 	ts_mugshot_show mugshot=0x0
@@ -118,7 +118,7 @@ CompText87ADC00::
 	.string "and let go of Mick!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87ADC00_unk4_id
 
 	def_text_script CompText87ADC00_unk4
 	ts_mugshot_hide
@@ -126,7 +126,7 @@ CompText87ADC00::
 	.string "*Squawk!!*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87ADC00_unk5_id
 
 	def_text_script CompText87ADC00_unk5
 	ts_mugshot_show mugshot=0x0
@@ -136,7 +136,7 @@ CompText87ADC00::
 	.string "is he...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87ADC00_unk6_id
 
 	def_text_script CompText87ADC00_unk6
 	ts_mugshot_show mugshot=0xF
@@ -145,7 +145,7 @@ CompText87ADC00::
 	.string "problem,isn't it...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87ADC00_unk7_id
 
 	def_text_script CompText87ADC00_unk7
 	ts_mugshot_show mugshot=0x14
@@ -153,7 +153,7 @@ CompText87ADC00::
 	.string "... Hey,Lan."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87ADC00_unk8_id
 
 	def_text_script CompText87ADC00_unk8
 	ts_mugshot_show mugshot=0x0
@@ -161,7 +161,7 @@ CompText87ADC00::
 	.string "What?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87ADC00_unk9_id
 
 	def_text_script CompText87ADC00_unk9
 	ts_mugshot_show mugshot=0x14
@@ -169,7 +169,7 @@ CompText87ADC00::
 	.string "Get ready to run."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87ADC00_unk10_id
 
 	def_text_script CompText87ADC00_unk10
 	ts_mugshot_show mugshot=0x0
@@ -236,7 +236,7 @@ CompText87ADC00::
 	.string "*Squawk? Squawk?*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87ADC00_unk17_id
 
 	def_text_script CompText87ADC00_unk17
 	ts_mugshot_show mugshot=0xF
@@ -245,7 +245,7 @@ CompText87ADC00::
 	.string "Plata."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87ADC00_unk18_id
 
 	def_text_script CompText87ADC00_unk18
 	ts_mugshot_hide
@@ -253,7 +253,7 @@ CompText87ADC00::
 	.string "*Squaaaawk!?*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87ADC00_unk19_id
 
 	def_text_script CompText87ADC00_unk19
 	ts_store_timer [

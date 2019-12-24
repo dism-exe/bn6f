@@ -12,13 +12,13 @@ CompText87A2460::
 	def_text_script CompText87A2460_unk0
 	ts_check_flag [
 		flag: 0x1162,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A2460_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1161,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A2460_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1161
 	ts_mugshot_show mugshot=0x3E
@@ -121,18 +121,18 @@ CompText87A2460::
 	def_text_script CompText87A2460_unk3
 	ts_check_flag [
 		flag: 0x1162,
-		jumpIfTrue: 0xA,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A2460_unk10_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1163,
-		jumpIfTrue: 0x5,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A2460_unk5_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1161,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A2460_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "What a heavy box!\n"
@@ -168,7 +168,7 @@ CompText87A2460::
 	.string "...OK..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A2460_unk6_id
 
 	def_text_script CompText87A2460_unk5
 	ts_msg_open
@@ -186,7 +186,7 @@ CompText87A2460::
 	.string "100 is sea angel."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A2460_unk6_id
 
 	def_text_script CompText87A2460_unk6
 	ts_mugshot_hide
@@ -235,9 +235,9 @@ CompText87A2460::
 	.string "(UP/DOWN:Number\n"
 	.string " LEFT/RIGHT:Cursor)"
 	ts_menu_select_password [
-		jumpIfCorrect: 0x7,
-		jumpIfIncorrect: 0x8,
-		jumpIfCancelled: 0x9,
+		jumpIfCorrect: CompText87A2460_unk7_id,
+		jumpIfIncorrect: CompText87A2460_unk8_id,
+		jumpIfCancelled: CompText87A2460_unk9_id,
 		password: 0x1,
 	]
 	ts_end
@@ -361,28 +361,28 @@ CompText87A2460::
 	def_text_script CompText87A2460_unk12
 	ts_check_flag [
 		flag: 0x11E4,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xD,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A2460_unk13_id,
 	]
 	ts_check_flag [
 		flag: 0x11E5,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xD,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A2460_unk13_id,
 	]
 	ts_check_flag [
 		flag: 0x11E6,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xD,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A2460_unk13_id,
 	]
 	ts_check_flag [
 		flag: 0x11E7,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xD,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A2460_unk13_id,
 	]
 	ts_check_flag [
 		flag: 0x11E8,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xD,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A2460_unk13_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

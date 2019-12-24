@@ -21,7 +21,7 @@ CompText87CC3AC::
 	.string "railroad company."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87CC3AC_unk1_id
 
 	def_text_script CompText87CC3AC_unk1
 	ts_mugshot_show mugshot=0x0
@@ -33,7 +33,7 @@ CompText87CC3AC::
 	.string "a train!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87CC3AC_unk2_id
 
 	def_text_script CompText87CC3AC_unk2
 	ts_mugshot_show mugshot=0x26
@@ -56,7 +56,7 @@ CompText87CC3AC::
 	.string "vending machine..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CC3AC_unk3_id
 
 	def_text_script CompText87CC3AC_unk3
 	ts_mugshot_show mugshot=0x0

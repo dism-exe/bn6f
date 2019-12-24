@@ -16,7 +16,7 @@ CompText87B8D1C::
 	.string "really useful here."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B8D1C_unk1_id
 
 	def_text_script CompText87B8D1C_unk1
 	ts_mugshot_show mugshot=0x3C
@@ -89,7 +89,7 @@ CompText87B8D1C::
 	.string " do your job!\""
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B8D1C_unk7_id
 
 	def_text_script CompText87B8D1C_unk7
 	ts_mugshot_hide
@@ -104,7 +104,7 @@ CompText87B8D1C::
 	.string "\"Look real closely!\""
 	ts_key_wait any=0x0
 	ts_end
-	ts_jump target=9
+	ts_jump target=CompText87B8D1C_unk9_id
 
 	def_text_script CompText87B8D1C_unk9
 	ts_mugshot_hide
@@ -129,7 +129,7 @@ CompText87B8D1C::
 	.string " STRANGE...\""
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B8D1C_unk10_id
 
 	def_text_script CompText87B8D1C_unk10
 	ts_mugshot_show mugshot=0x14

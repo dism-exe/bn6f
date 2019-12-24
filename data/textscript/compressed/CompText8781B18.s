@@ -13,14 +13,14 @@ CompText8781B18::
 	ts_check_chapter [
 		lower: 0x62,
 		upper: 0x62,
-		jumpIfInRange: 0xA,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8781B18_unk10_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x61,
 		upper: 0x61,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8781B18_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x16
 	ts_msg_open

@@ -11,25 +11,25 @@ CompText8746AE8::
 
 	def_text_script CompText8746AE8_unk0
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xB,
-		jumpIfElecMan: 0xC,
-		jumpIfSlashMan: 0xD,
-		jumpIfEraseMan: 0xE,
-		jumpIfChargeMan: 0xF,
-		jumpIfSpoutMan: 0x10,
-		jumpIfTomahawkMan: 0x11,
-		jumpIfTenguMan: 0x12,
-		jumpIfGroundMan: 0x13,
-		jumpIfDustMan: 0x14,
-		jumpIfProtoMan: 0x15,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText8746AE8_unk11_id,
+		jumpIfElecMan: CompText8746AE8_unk12_id,
+		jumpIfSlashMan: CompText8746AE8_unk13_id,
+		jumpIfEraseMan: CompText8746AE8_unk14_id,
+		jumpIfChargeMan: CompText8746AE8_unk15_id,
+		jumpIfSpoutMan: CompText8746AE8_unk16_id,
+		jumpIfTomahawkMan: CompText8746AE8_unk17_id,
+		jumpIfTenguMan: CompText8746AE8_unk18_id,
+		jumpIfGroundMan: CompText8746AE8_unk19_id,
+		jumpIfDustMan: CompText8746AE8_unk20_id,
+		jumpIfProtoMan: CompText8746AE8_unk21_id,
 	]
 	ts_check_flag [
 		flag: 0x163,
-		jumpIfTrue: 0xA,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8746AE8_unk10_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_jump target=1
+	ts_jump target=CompText8746AE8_unk1_id
 	ts_end
 
 	def_text_script CompText8746AE8_unk1
@@ -58,7 +58,7 @@ CompText8746AE8::
 	def_text_script CompText8746AE8_unk9
 
 	def_text_script CompText8746AE8_unk10
-	ts_jump target=1
+	ts_jump target=CompText8746AE8_unk1_id
 	ts_end
 
 	def_text_script CompText8746AE8_unk11

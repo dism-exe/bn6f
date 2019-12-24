@@ -22,7 +22,7 @@ CompText87B998C::
 	.string "Dad!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B998C_unk2_id
 
 	def_text_script CompText87B998C_unk2
 	ts_mugshot_show mugshot=0x37
@@ -31,7 +31,7 @@ CompText87B998C::
 	.string "made it."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B998C_unk3_id
 
 	def_text_script CompText87B998C_unk3
 	ts_mugshot_show mugshot=0x0
@@ -45,7 +45,7 @@ CompText87B998C::
 	.string "now!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B998C_unk4_id
 
 	def_text_script CompText87B998C_unk4
 	ts_mugshot_show mugshot=0x5
@@ -58,7 +58,7 @@ CompText87B998C::
 	.string "OK...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B998C_unk5_id
 
 	def_text_script CompText87B998C_unk5
 	ts_mugshot_show mugshot=0x0
@@ -85,7 +85,7 @@ CompText87B998C::
 	.string "BEGIN PREPARATIONS."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B998C_unk7_id
 
 	def_text_script CompText87B998C_unk7
 	ts_mugshot_show mugshot=0x0
@@ -96,7 +96,7 @@ CompText87B998C::
 	.string "We've gotta hurry!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B998C_unk8_id
 
 	def_text_script CompText87B998C_unk8
 	ts_mugshot_show mugshot=0xD
@@ -123,7 +123,7 @@ CompText87B998C::
 	.string "So...!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B998C_unk10_id
 
 	def_text_script CompText87B998C_unk10
 	ts_mugshot_show mugshot=0xD
@@ -135,7 +135,7 @@ CompText87B998C::
 	.string "Now what's wrong?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87B998C_unk11_id
 
 	def_text_script CompText87B998C_unk11
 	ts_mugshot_show mugshot=0x0
@@ -153,7 +153,7 @@ CompText87B998C::
 	.string "innocent!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87B998C_unk12_id
 
 	def_text_script CompText87B998C_unk12
 	ts_mugshot_show mugshot=0xD
@@ -174,7 +174,7 @@ CompText87B998C::
 	.string "in Green Town!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87B998C_unk13_id
 
 	def_text_script CompText87B998C_unk13
 	ts_mugshot_show mugshot=0x0
@@ -184,7 +184,7 @@ CompText87B998C::
 	.string "NOW!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87B998C_unk14_id
 
 	def_text_script CompText87B998C_unk14
 	ts_mugshot_show mugshot=0xD
@@ -198,7 +198,7 @@ CompText87B998C::
 	.string "JudgeTree..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87B998C_unk15_id
 
 	def_text_script CompText87B998C_unk15
 	ts_mugshot_show mugshot=0x0

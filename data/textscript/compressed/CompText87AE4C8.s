@@ -47,7 +47,7 @@ CompText87AE4C8::
 	.string "... *gasp!!*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87AE4C8_unk4_id
 
 	def_text_script CompText87AE4C8_unk4
 	ts_mugshot_hide
@@ -68,7 +68,7 @@ CompText87AE4C8::
 	.string "...!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AE4C8_unk6_id
 
 	def_text_script CompText87AE4C8_unk6
 	ts_mugshot_hide
@@ -82,7 +82,7 @@ CompText87AE4C8::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87AE4C8_unk7_id
 
 	def_text_script CompText87AE4C8_unk7
 	ts_msg_open
@@ -106,7 +106,7 @@ CompText87AE4C8::
 	.string "Lan... L-La..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87AE4C8_unk9_id
 
 	def_text_script CompText87AE4C8_unk9
 	ts_mugshot_show mugshot=0x0
@@ -119,7 +119,7 @@ CompText87AE4C8::
 		slot: 0x1F,
 		length: 0xF,
 	]
-	ts_jump target=10
+	ts_jump target=CompText87AE4C8_unk10_id
 
 	def_text_script CompText87AE4C8_unk10
 	ts_mugshot_hide
@@ -128,7 +128,7 @@ CompText87AE4C8::
 	.string "Lan..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87AE4C8_unk11_id
 
 	def_text_script CompText87AE4C8_unk11
 	ts_mugshot_show mugshot=0x12

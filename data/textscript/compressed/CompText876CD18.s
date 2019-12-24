@@ -13,8 +13,8 @@ CompText876CD18::
 	ts_check_chapter [
 		lower: 0x61,
 		upper: 0x61,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText876CD18_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x9
 	ts_msg_open
@@ -70,8 +70,8 @@ CompText876CD18::
 	def_text_script CompText876CD18_unk11
 	ts_check_flag [
 		flag: 0xE78,
-		jumpIfTrue: 0xA,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876CD18_unk10_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open

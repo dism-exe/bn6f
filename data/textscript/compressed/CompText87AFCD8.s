@@ -27,7 +27,7 @@ CompText87AFCD8::
 	.string "So,what's up?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87AFCD8_unk1_id
 
 	def_text_script CompText87AFCD8_unk1
 	ts_mugshot_show mugshot=0x11
@@ -35,7 +35,7 @@ CompText87AFCD8::
 	.string "......"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87AFCD8_unk2_id
 
 	def_text_script CompText87AFCD8_unk2
 	ts_mugshot_show mugshot=0x0
@@ -50,7 +50,7 @@ CompText87AFCD8::
 	.string "with us on the Net?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87AFCD8_unk3_id
 
 	def_text_script CompText87AFCD8_unk3
 	ts_mugshot_show mugshot=0x11
@@ -61,7 +61,7 @@ CompText87AFCD8::
 	.string "...... You mustn't."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87AFCD8_unk4_id
 
 	def_text_script CompText87AFCD8_unk4
 	ts_mugshot_show mugshot=0x0
@@ -70,7 +70,7 @@ CompText87AFCD8::
 	.string "... What??"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87AFCD8_unk5_id
 
 	def_text_script CompText87AFCD8_unk5
 	ts_mugshot_show mugshot=0x11
@@ -83,7 +83,7 @@ CompText87AFCD8::
 	.string "about that event..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AFCD8_unk6_id
 
 	def_text_script CompText87AFCD8_unk6
 	ts_mugshot_show mugshot=0x0
@@ -92,7 +92,7 @@ CompText87AFCD8::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_sound_play_bgm track=0x63
-	ts_jump target=7
+	ts_jump target=CompText87AFCD8_unk7_id
 
 	def_text_script CompText87AFCD8_unk7
 	ts_mugshot_hide
@@ -106,7 +106,7 @@ CompText87AFCD8::
 	ts_sound_enable_text_sfx
 	ts_control_unlock
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87AFCD8_unk8_id
 
 	def_text_script CompText87AFCD8_unk8
 	ts_mugshot_show mugshot=0x37
@@ -127,7 +127,7 @@ CompText87AFCD8::
 	.string "you wait!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87AFCD8_unk10_id
 
 	def_text_script CompText87AFCD8_unk10
 	ts_mugshot_show mugshot=0x14

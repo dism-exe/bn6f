@@ -28,22 +28,22 @@ CompText87C84A0::
 	.string "But we can do it!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87C84A0_unk1_id
 
 	def_text_script CompText87C84A0_unk1
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0x5,
-		jumpIfSlashMan: 0x3,
-		jumpIfEraseMan: 0xA,
-		jumpIfChargeMan: 0x9,
-		jumpIfSpoutMan: 0x2,
-		jumpIfTomahawkMan: 0x6,
-		jumpIfTenguMan: 0x4,
-		jumpIfGroundMan: 0x7,
-		jumpIfDustMan: 0x8,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: CompText87C84A0_unk5_id,
+		jumpIfSlashMan: CompText87C84A0_unk3_id,
+		jumpIfEraseMan: CompText87C84A0_unk10_id,
+		jumpIfChargeMan: CompText87C84A0_unk9_id,
+		jumpIfSpoutMan: CompText87C84A0_unk2_id,
+		jumpIfTomahawkMan: CompText87C84A0_unk6_id,
+		jumpIfTenguMan: CompText87C84A0_unk4_id,
+		jumpIfGroundMan: CompText87C84A0_unk7_id,
+		jumpIfDustMan: CompText87C84A0_unk8_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open

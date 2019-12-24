@@ -34,7 +34,7 @@ CompText87C23A8::
 	.string "now begin!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87C23A8_unk2_id
 
 	def_text_script CompText87C23A8_unk2
 	ts_mugshot_show mugshot=0x0
@@ -43,7 +43,7 @@ CompText87C23A8::
 	.string "starting!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C23A8_unk3_id
 
 	def_text_script CompText87C23A8_unk3
 	ts_mugshot_show mugshot=0x37
@@ -51,7 +51,7 @@ CompText87C23A8::
 	.string "Stay loose,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C23A8_unk4_id
 
 	def_text_script CompText87C23A8_unk4
 	ts_mugshot_show mugshot=0x16
@@ -136,7 +136,7 @@ CompText87C23A8::
 	.string "Navi Selection Test!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87C23A8_unk9_id
 
 	def_text_script CompText87C23A8_unk9
 	ts_mugshot_hide
@@ -172,7 +172,7 @@ CompText87C23A8::
 	.string "from Green Town..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87C23A8_unk12_id
 
 	def_text_script CompText87C23A8_unk12
 	ts_mugshot_show mugshot=0x37
@@ -227,7 +227,7 @@ CompText87C23A8::
 	.string "back out now."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87C23A8_unk14_id
 
 	def_text_script CompText87C23A8_unk14
 	ts_mugshot_show mugshot=0x0
@@ -241,7 +241,7 @@ CompText87C23A8::
 	.string "the final round."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C23A8_unk15_id
 
 	def_text_script CompText87C23A8_unk15
 	ts_mugshot_show mugshot=0x16

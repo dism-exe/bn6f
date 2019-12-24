@@ -17,7 +17,7 @@ CompText87CB068::
 	.string "too,you hear?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87CB068_unk1_id
 
 	def_text_script CompText87CB068_unk1
 	ts_mugshot_show mugshot=0x4E
@@ -45,7 +45,7 @@ CompText87CB068::
 	.string "Press?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CB068_unk3_id
 
 	def_text_script CompText87CB068_unk3
 	ts_mugshot_show mugshot=0x25
@@ -55,7 +55,7 @@ CompText87CB068::
 	.string "meet up with me!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87CB068_unk4_id
 
 	def_text_script CompText87CB068_unk4
 	ts_mugshot_show mugshot=0x0

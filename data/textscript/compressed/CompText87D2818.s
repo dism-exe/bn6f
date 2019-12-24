@@ -15,7 +15,7 @@ CompText87D2818::
 	.string "Yuika!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D2818_unk1_id
 
 	def_text_script CompText87D2818_unk1
 	ts_mugshot_show mugshot=0x2B
@@ -31,7 +31,7 @@ CompText87D2818::
 	.string "CircusMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87D2818_unk2_id
 
 	def_text_script CompText87D2818_unk2
 	ts_mugshot_show mugshot=0x54
@@ -46,7 +46,7 @@ CompText87D2818::
 	.string "Ah!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87D2818_unk4_id
 
 	def_text_script CompText87D2818_unk4
 	ts_mugshot_show mugshot=0x2B
@@ -73,7 +73,7 @@ CompText87D2818::
 	.string "two men or boys!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87D2818_unk6_id
 
 	def_text_script CompText87D2818_unk6
 	ts_mugshot_show mugshot=0x2E
@@ -87,7 +87,7 @@ CompText87D2818::
 	.string "easy to open!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87D2818_unk7_id
 
 	def_text_script CompText87D2818_unk7
 	ts_mugshot_show mugshot=0x2D
@@ -100,7 +100,7 @@ CompText87D2818::
 	.string "before."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87D2818_unk8_id
 
 	def_text_script CompText87D2818_unk8
 	ts_mugshot_show mugshot=0x2B
@@ -129,7 +129,7 @@ CompText87D2818::
 	.string "Come on,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87D2818_unk10_id
 
 	def_text_script CompText87D2818_unk10
 	ts_mugshot_show mugshot=0x37

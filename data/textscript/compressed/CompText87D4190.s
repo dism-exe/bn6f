@@ -73,8 +73,8 @@ CompText87D4190::
 
 	def_text_script CompText87D4190_unk31
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x21,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87D4190_unk33_id,
 	]
 	ts_msg_open
 	ts_store_timer [
@@ -136,7 +136,7 @@ CompText87D4190::
 	.string "confusion!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=35
+	ts_jump target=CompText87D4190_unk35_id
 
 	def_text_script CompText87D4190_unk35
 	ts_mugshot_show mugshot=0x11
@@ -144,7 +144,7 @@ CompText87D4190::
 	.string "........."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=36
+	ts_jump target=CompText87D4190_unk36_id
 
 	def_text_script CompText87D4190_unk36
 	ts_mugshot_show mugshot=0x0
@@ -168,7 +168,7 @@ CompText87D4190::
 	.string "MegaMan! Iris is..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=38
+	ts_jump target=CompText87D4190_unk38_id
 
 	def_text_script CompText87D4190_unk38
 	ts_mugshot_show mugshot=0x2F
@@ -191,7 +191,7 @@ CompText87D4190::
 	.string "Cybeast."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87D4190_unk40_id
 
 	def_text_script CompText87D4190_unk40
 	ts_mugshot_show mugshot=0x1D
@@ -222,7 +222,7 @@ CompText87D4190::
 	.string "Wahahahahahaha!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=41
+	ts_jump target=CompText87D4190_unk41_id
 
 	def_text_script CompText87D4190_unk41
 	ts_mugshot_show mugshot=0x2F
@@ -252,7 +252,7 @@ CompText87D4190::
 	.string "He-He's bleeding!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=43
+	ts_jump target=CompText87D4190_unk43_id
 
 	def_text_script CompText87D4190_unk43
 	ts_mugshot_show mugshot=0x2F
@@ -268,7 +268,7 @@ CompText87D4190::
 	.string "Dr.Wily!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=45
+	ts_jump target=CompText87D4190_unk45_id
 
 	def_text_script CompText87D4190_unk45
 	ts_mugshot_show mugshot=0x1D
@@ -287,8 +287,8 @@ CompText87D4190::
 
 	def_text_script CompText87D4190_unk46
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x2F,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87D4190_unk47_id,
 	]
 	ts_mugshot_hide
 	ts_msg_open
@@ -355,7 +355,7 @@ CompText87D4190::
 	.string "MegaMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=50
+	ts_jump target=CompText87D4190_unk50_id
 
 	def_text_script CompText87D4190_unk50
 	ts_mugshot_show mugshot=0x1D
@@ -374,19 +374,19 @@ CompText87D4190::
 	.string "into my CopyBot!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=51
+	ts_jump target=CompText87D4190_unk51_id
 
 	def_text_script CompText87D4190_unk51
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x34,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87D4190_unk52_id,
 	]
 	ts_mugshot_show mugshot=0x1D
 	ts_msg_open
 	.string "Cybeast Gregar!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=53
+	ts_jump target=CompText87D4190_unk53_id
 
 	def_text_script CompText87D4190_unk52
 	ts_mugshot_show mugshot=0x1D
@@ -394,7 +394,7 @@ CompText87D4190::
 	.string "Cybeast Falzar!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=53
+	ts_jump target=CompText87D4190_unk53_id
 
 	def_text_script CompText87D4190_unk53
 	ts_mugshot_show mugshot=0x37
@@ -402,7 +402,7 @@ CompText87D4190::
 	.string "Waaaaaaaaa!!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=54
+	ts_jump target=CompText87D4190_unk54_id
 
 	def_text_script CompText87D4190_unk54
 	ts_mugshot_show mugshot=0x0
@@ -410,7 +410,7 @@ CompText87D4190::
 	.string "MegaMan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=55
+	ts_jump target=CompText87D4190_unk55_id
 
 	def_text_script CompText87D4190_unk55
 	ts_mugshot_show mugshot=0x37
@@ -430,7 +430,7 @@ CompText87D4190::
 	.string "from MegaMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=59
+	ts_jump target=CompText87D4190_unk59_id
 
 	def_text_script CompText87D4190_unk59
 	ts_mugshot_show mugshot=0x1D
@@ -674,12 +674,12 @@ CompText87D4190::
 	.string "Lan Hikari...!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=61
+	ts_jump target=CompText87D4190_unk61_id
 
 	def_text_script CompText87D4190_unk61
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x3E,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87D4190_unk62_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -719,7 +719,7 @@ CompText87D4190::
 	.string "Cybeast!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=63
+	ts_jump target=CompText87D4190_unk63_id
 
 	def_text_script CompText87D4190_unk62
 	ts_mugshot_show mugshot=0x37
@@ -760,7 +760,7 @@ CompText87D4190::
 	.string "Cybeast!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=63
+	ts_jump target=CompText87D4190_unk63_id
 
 	def_text_script CompText87D4190_unk63
 	ts_mugshot_show mugshot=0x0

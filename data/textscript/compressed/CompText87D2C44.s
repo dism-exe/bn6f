@@ -16,7 +16,7 @@ CompText87D2C44::
 	.string "Jack out,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D2C44_unk1_id
 
 	def_text_script CompText87D2C44_unk1
 	ts_mugshot_show mugshot=0x37
@@ -32,7 +32,7 @@ CompText87D2C44::
 	.string "long!? Hurry it up!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87D2C44_unk3_id
 
 	def_text_script CompText87D2C44_unk3
 	ts_mugshot_show mugshot=0x2E
@@ -42,7 +42,7 @@ CompText87D2C44::
 	.string "move..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87D2C44_unk4_id
 
 	def_text_script CompText87D2C44_unk4
 	ts_mugshot_show mugshot=0x2B
@@ -50,7 +50,7 @@ CompText87D2C44::
 	.string "Quit your whining!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87D2C44_unk5_id
 
 	def_text_script CompText87D2C44_unk5
 	ts_mugshot_show mugshot=0x0
@@ -65,7 +65,7 @@ CompText87D2C44::
 	.string "You can't escape!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87D2C44_unk7_id
 
 	def_text_script CompText87D2C44_unk7
 	ts_mugshot_show mugshot=0x2B
@@ -97,7 +97,7 @@ CompText87D2C44::
 	.string "kid in real life!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87D2C44_unk9_id
 
 	def_text_script CompText87D2C44_unk9
 	ts_mugshot_show mugshot=0x2D
@@ -124,7 +124,7 @@ CompText87D2C44::
 	.string "could win..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87D2C44_unk11_id
 
 	def_text_script CompText87D2C44_unk11
 	ts_mugshot_hide
@@ -143,7 +143,7 @@ CompText87D2C44::
 	.string "SPOTTED!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D2C44_unk13_id
 
 	def_text_script CompText87D2C44_unk13
 	ts_mugshot_show mugshot=0x43
@@ -165,7 +165,7 @@ CompText87D2C44::
 	.string "Argh,why now!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87D2C44_unk16_id
 
 	def_text_script CompText87D2C44_unk16
 	ts_mugshot_show mugshot=0x2B
@@ -175,7 +175,7 @@ CompText87D2C44::
 	.string "us?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87D2C44_unk17_id
 
 	def_text_script CompText87D2C44_unk17
 	ts_mugshot_show mugshot=0x2D
@@ -184,7 +184,7 @@ CompText87D2C44::
 	.string "way..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87D2C44_unk18_id
 
 	def_text_script CompText87D2C44_unk18
 	ts_mugshot_show mugshot=0x2E
@@ -214,7 +214,7 @@ CompText87D2C44::
 	.string "GET READY!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87D2C44_unk20_id
 
 	def_text_script CompText87D2C44_unk20
 	ts_mugshot_show mugshot=0x43
@@ -230,7 +230,7 @@ CompText87D2C44::
 	.string "DELEEEEEETE!"
 	ts_wait frames=0x28
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87D2C44_unk22_id
 
 	def_text_script CompText87D2C44_unk22
 	ts_mugshot_show mugshot=0x37
@@ -246,7 +246,7 @@ CompText87D2C44::
 	.string "Guts Punch!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87D2C44_unk24_id
 
 	def_text_script CompText87D2C44_unk24
 	ts_mugshot_show mugshot=0x38
@@ -254,7 +254,7 @@ CompText87D2C44::
 	.string "Roll Arrow!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87D2C44_unk25_id
 
 	def_text_script CompText87D2C44_unk25
 	ts_mugshot_show mugshot=0x3A
@@ -287,7 +287,7 @@ CompText87D2C44::
 	.string "... That means...!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D2C44_unk27_id
 
 	def_text_script CompText87D2C44_unk27
 	ts_mugshot_hide
@@ -304,7 +304,7 @@ CompText87D2C44::
 	.string "the CopyBots!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=29
+	ts_jump target=CompText87D2C44_unk29_id
 
 	def_text_script CompText87D2C44_unk29
 	ts_mugshot_show mugshot=0x0
@@ -319,7 +319,7 @@ CompText87D2C44::
 	.string "and Tab!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87D2C44_unk30_id
 
 	def_text_script CompText87D2C44_unk30
 	ts_mugshot_show mugshot=0x2
@@ -347,7 +347,7 @@ CompText87D2C44::
 	.string "H-Help!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=32
+	ts_jump target=CompText87D2C44_unk32_id
 
 	def_text_script CompText87D2C44_unk32
 	ts_mugshot_show mugshot=0x3E
@@ -355,7 +355,7 @@ CompText87D2C44::
 	.string "I-I can't fight!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=33
+	ts_jump target=CompText87D2C44_unk33_id
 
 	def_text_script CompText87D2C44_unk33
 	ts_mugshot_show mugshot=0x43
@@ -363,7 +363,7 @@ CompText87D2C44::
 	.string "DELEEEEEEEETE!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=34
+	ts_jump target=CompText87D2C44_unk34_id
 
 	def_text_script CompText87D2C44_unk34
 	ts_mugshot_show mugshot=0x2
@@ -382,7 +382,7 @@ CompText87D2C44::
 	.string "S-Someone!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=36
+	ts_jump target=CompText87D2C44_unk36_id
 
 	def_text_script CompText87D2C44_unk36
 	ts_mugshot_show mugshot=0x33
@@ -397,7 +397,7 @@ CompText87D2C44::
 	.string "Is this the end!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=38
+	ts_jump target=CompText87D2C44_unk38_id
 
 	def_text_script CompText87D2C44_unk38
 	ts_mugshot_show mugshot=0x3E
@@ -405,7 +405,7 @@ CompText87D2C44::
 	.string "Eeeek!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=39
+	ts_jump target=CompText87D2C44_unk39_id
 
 	def_text_script CompText87D2C44_unk39
 	ts_mugshot_show mugshot=0x43
@@ -413,7 +413,7 @@ CompText87D2C44::
 	.string "DELETE!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87D2C44_unk40_id
 
 	def_text_script CompText87D2C44_unk40
 	ts_mugshot_show mugshot=0x3E
@@ -445,7 +445,7 @@ CompText87D2C44::
 	.string "Sorry I'm late..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=43
+	ts_jump target=CompText87D2C44_unk43_id
 
 	def_text_script CompText87D2C44_unk43
 	ts_mugshot_show mugshot=0x0
@@ -461,7 +461,7 @@ CompText87D2C44::
 	.string "escape now!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=45
+	ts_jump target=CompText87D2C44_unk45_id
 
 	def_text_script CompText87D2C44_unk45
 	ts_mugshot_show mugshot=0x4
@@ -471,7 +471,7 @@ CompText87D2C44::
 	.string "yourselves up now!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=46
+	ts_jump target=CompText87D2C44_unk46_id
 
 	def_text_script CompText87D2C44_unk46
 	ts_mugshot_show mugshot=0x2B
@@ -498,7 +498,7 @@ CompText87D2C44::
 	.string "these two evil men!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=49
+	ts_jump target=CompText87D2C44_unk49_id
 
 	def_text_script CompText87D2C44_unk49
 	ts_mugshot_show mugshot=0x2D
@@ -508,7 +508,7 @@ CompText87D2C44::
 	.string "back on us!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=50
+	ts_jump target=CompText87D2C44_unk50_id
 
 	def_text_script CompText87D2C44_unk50
 	ts_mugshot_show mugshot=0x4
@@ -517,7 +517,7 @@ CompText87D2C44::
 	.string "lady!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=51
+	ts_jump target=CompText87D2C44_unk51_id
 
 	def_text_script CompText87D2C44_unk51
 	ts_mugshot_show mugshot=0x2B
@@ -537,7 +537,7 @@ CompText87D2C44::
 	.string "Come on,Vic!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=53
+	ts_jump target=CompText87D2C44_unk53_id
 
 	def_text_script CompText87D2C44_unk53
 	ts_mugshot_show mugshot=0x2E
@@ -593,7 +593,7 @@ CompText87D2C44::
 	.string "too!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=57
+	ts_jump target=CompText87D2C44_unk57_id
 
 	def_text_script CompText87D2C44_unk57
 	ts_mugshot_show mugshot=0x0
@@ -603,7 +603,7 @@ CompText87D2C44::
 	.string "and I are going."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=58
+	ts_jump target=CompText87D2C44_unk58_id
 
 	def_text_script CompText87D2C44_unk58
 	ts_mugshot_show mugshot=0x2
@@ -613,7 +613,7 @@ CompText87D2C44::
 	.string "twiddle our thumbs!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=59
+	ts_jump target=CompText87D2C44_unk59_id
 
 	def_text_script CompText87D2C44_unk59
 	ts_mugshot_show mugshot=0x0
@@ -637,7 +637,7 @@ CompText87D2C44::
 	.string "for us."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=60
+	ts_jump target=CompText87D2C44_unk60_id
 
 	def_text_script CompText87D2C44_unk60
 	ts_mugshot_show mugshot=0x14
@@ -646,7 +646,7 @@ CompText87D2C44::
 	.string "something?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=61
+	ts_jump target=CompText87D2C44_unk61_id
 
 	def_text_script CompText87D2C44_unk61
 	ts_mugshot_show mugshot=0x0
@@ -660,7 +660,7 @@ CompText87D2C44::
 	.string "Please!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=62
+	ts_jump target=CompText87D2C44_unk62_id
 
 	def_text_script CompText87D2C44_unk62
 	ts_mugshot_show mugshot=0x4
@@ -682,7 +682,7 @@ CompText87D2C44::
 	.string "back in one piece."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=63
+	ts_jump target=CompText87D2C44_unk63_id
 
 	def_text_script CompText87D2C44_unk63
 	ts_mugshot_show mugshot=0x0
@@ -740,7 +740,7 @@ CompText87D2C44::
 	.string "waiting for you."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=69
+	ts_jump target=CompText87D2C44_unk69_id
 
 	def_text_script CompText87D2C44_unk69
 	ts_mugshot_show mugshot=0x0
@@ -758,7 +758,7 @@ CompText87D2C44::
 	.string "this door..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=71
+	ts_jump target=CompText87D2C44_unk71_id
 
 	def_text_script CompText87D2C44_unk71
 	ts_mugshot_show mugshot=0x37
@@ -768,7 +768,7 @@ CompText87D2C44::
 	.string "and Baryl..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=72
+	ts_jump target=CompText87D2C44_unk72_id
 
 	def_text_script CompText87D2C44_unk72
 	ts_mugshot_show mugshot=0x0
@@ -777,7 +777,7 @@ CompText87D2C44::
 	.string "find Baryl..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=73
+	ts_jump target=CompText87D2C44_unk73_id
 
 	def_text_script CompText87D2C44_unk73
 	ts_mugshot_hide
@@ -793,7 +793,7 @@ CompText87D2C44::
 	.string "Baryl..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=75
+	ts_jump target=CompText87D2C44_unk75_id
 
 	def_text_script CompText87D2C44_unk75
 	ts_mugshot_show mugshot=0x2F
@@ -801,7 +801,7 @@ CompText87D2C44::
 	.string "Lan Hikari..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=76
+	ts_jump target=CompText87D2C44_unk76_id
 
 	def_text_script CompText87D2C44_unk76
 	ts_mugshot_show mugshot=0x0
@@ -812,7 +812,7 @@ CompText87D2C44::
 	.string "I WILL stop Dr.Wily!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=77
+	ts_jump target=CompText87D2C44_unk77_id
 
 	def_text_script CompText87D2C44_unk77
 	ts_mugshot_show mugshot=0x2F
@@ -820,7 +820,7 @@ CompText87D2C44::
 	.string "... Out of my way."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=78
+	ts_jump target=CompText87D2C44_unk78_id
 
 	def_text_script CompText87D2C44_unk78
 	ts_mugshot_show mugshot=0x0
@@ -828,7 +828,7 @@ CompText87D2C44::
 	.string "No!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=79
+	ts_jump target=CompText87D2C44_unk79_id
 
 	def_text_script CompText87D2C44_unk79
 	ts_mugshot_show mugshot=0x2F
@@ -846,7 +846,7 @@ CompText87D2C44::
 	.string "This is my \"will\"."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=80
+	ts_jump target=CompText87D2C44_unk80_id
 
 	def_text_script CompText87D2C44_unk80
 	ts_mugshot_show mugshot=0x0
@@ -882,7 +882,7 @@ CompText87D2C44::
 	.string "Let's go."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=83
+	ts_jump target=CompText87D2C44_unk83_id
 
 	def_text_script CompText87D2C44_unk83
 	ts_mugshot_show mugshot=0x37

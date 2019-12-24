@@ -13,20 +13,20 @@ CompText87461A0::
 	ts_check_chapter [
 		lower: 0x10,
 		upper: 0x16,
-		jumpIfInRange: 0x23,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87461A0_unk35_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x5,
 		upper: 0x5,
-		jumpIfInRange: 0x23,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87461A0_unk35_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x3,
 		upper: 0x4,
-		jumpIfInRange: 0x19,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87461A0_unk25_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "Dummy text"
@@ -84,23 +84,23 @@ CompText87461A0::
 	def_text_script CompText87461A0_unk25
 	ts_check_flag [
 		flag: 0x43A,
-		jumpIfTrue: 0x20,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87461A0_unk32_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x436,
-		jumpIfTrue: 0x1F,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87461A0_unk31_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x434,
-		jumpIfTrue: 0x1D,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87461A0_unk29_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x432,
-		jumpIfTrue: 0x1D,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87461A0_unk29_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_end
 

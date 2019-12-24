@@ -301,7 +301,7 @@ CompText87D7318::
 	.string "dreams!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87D7318_unk4_id
 
 	def_text_script CompText87D7318_unk4
 	ts_msg_open

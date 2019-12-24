@@ -17,7 +17,7 @@ CompText87D17DC::
 	.string "really worn out..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D17DC_unk1_id
 
 	def_text_script CompText87D17DC_unk1
 	ts_mugshot_hide
@@ -26,7 +26,7 @@ CompText87D17DC::
 	.string "the book!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87D17DC_unk2_id
 
 	def_text_script CompText87D17DC_unk2
 	ts_msg_open
@@ -47,7 +47,7 @@ CompText87D17DC::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87D17DC_unk3_id
 
 	def_text_script CompText87D17DC_unk3
 	ts_mugshot_show mugshot=0x0
@@ -82,7 +82,7 @@ CompText87D17DC::
 	.string "was talking about..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87D17DC_unk6_id
 
 	def_text_script CompText87D17DC_unk6
 	ts_mugshot_show mugshot=0x0

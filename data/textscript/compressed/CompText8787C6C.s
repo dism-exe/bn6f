@@ -13,12 +13,12 @@ CompText8787C6C::
 	ts_check_chapter [
 		lower: 0x22,
 		upper: 0x22,
-		jumpIfInRange: 0x1A,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8787C6C_unk26_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x5,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8787C6C_unk5_id,
 	]
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
@@ -32,8 +32,8 @@ CompText8787C6C::
 	ts_check_chapter [
 		lower: 0x22,
 		upper: 0x22,
-		jumpIfInRange: 0x1B,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8787C6C_unk27_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
@@ -63,8 +63,8 @@ CompText8787C6C::
 	ts_check_chapter [
 		lower: 0x22,
 		upper: 0x22,
-		jumpIfInRange: 0x1C,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8787C6C_unk28_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
@@ -131,8 +131,8 @@ CompText8787C6C::
 	def_text_script CompText8787C6C_unk20
 	ts_check_flag [
 		flag: 0x639,
-		jumpIfTrue: 0x16,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8787C6C_unk22_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x639
 	ts_mugshot_show mugshot=0x47
@@ -218,8 +218,8 @@ CompText8787C6C::
 	def_text_script CompText8787C6C_unk23
 	ts_check_flag [
 		flag: 0x63A,
-		jumpIfTrue: 0x19,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8787C6C_unk25_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x63A
 	ts_mugshot_show mugshot=0x47
@@ -386,13 +386,13 @@ CompText8787C6C::
 	def_text_script CompText8787C6C_unk50
 	ts_check_flag [
 		flag: 0x7F2,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x34,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8787C6C_unk52_id,
 	]
 	ts_check_flag [
 		flag: 0x688,
-		jumpIfTrue: 0x33,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8787C6C_unk51_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open

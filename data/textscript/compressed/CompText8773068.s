@@ -59,8 +59,8 @@ CompText8773068::
 	def_text_script CompText8773068_unk5
 	ts_check_flag [
 		flag: 0x60C,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8773068_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x9
 	ts_msg_open
@@ -88,14 +88,14 @@ CompText8773068::
 	ts_check_chapter [
 		lower: 0x25,
 		upper: 0x25,
-		jumpIfInRange: 0x15,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8773068_unk21_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x24,
 		upper: 0x24,
-		jumpIfInRange: 0x10,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8773068_unk16_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xF
 	ts_msg_open
@@ -212,8 +212,8 @@ CompText8773068::
 	ts_check_chapter [
 		lower: 0x25,
 		upper: 0x25,
-		jumpIfInRange: 0x14,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8773068_unk20_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x18
 	ts_msg_open

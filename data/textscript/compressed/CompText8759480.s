@@ -23,7 +23,7 @@ CompText8759480::
 	ts_end
 
 	def_text_script CompText8759480_unk1
-	ts_jump target=0
+	ts_jump target=CompText8759480_unk0_id
 
 	def_text_script CompText8759480_unk2
 	ts_msg_open
@@ -85,8 +85,8 @@ CompText8759480::
 	ts_key_wait any=0x0
 	ts_check_flag [
 		flag: 0x18A,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8759480_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	.string "There is something\n"

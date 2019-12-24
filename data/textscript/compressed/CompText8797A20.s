@@ -12,13 +12,13 @@ CompText8797A20::
 	def_text_script CompText8797A20_unk0
 	ts_check_flag [
 		flag: 0x5EA,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8797A20_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x5E8,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8797A20_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x5E8
 	ts_msg_open

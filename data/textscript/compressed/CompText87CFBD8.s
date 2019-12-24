@@ -18,7 +18,7 @@ CompText87CFBD8::
 	.string "There!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87CFBD8_unk1_id
 
 	def_text_script CompText87CFBD8_unk1
 	ts_mugshot_show mugshot=0x3
@@ -28,7 +28,7 @@ CompText87CFBD8::
 	.string "What are you doing!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87CFBD8_unk2_id
 
 	def_text_script CompText87CFBD8_unk2
 	ts_mugshot_show mugshot=0x2
@@ -36,7 +36,7 @@ CompText87CFBD8::
 	.string "Guts Punch!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CFBD8_unk3_id
 
 	def_text_script CompText87CFBD8_unk3
 	ts_mugshot_show mugshot=0x14
@@ -48,7 +48,7 @@ CompText87CFBD8::
 	.string "No! I missed!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87CFBD8_unk4_id
 
 	def_text_script CompText87CFBD8_unk4
 	ts_mugshot_show mugshot=0x1
@@ -60,7 +60,7 @@ CompText87CFBD8::
 	.string "Well,it's a draw!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87CFBD8_unk5_id
 
 	def_text_script CompText87CFBD8_unk5
 	ts_mugshot_show mugshot=0x2
@@ -79,7 +79,7 @@ CompText87CFBD8::
 	.string "guy with guts!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87CFBD8_unk6_id
 
 	def_text_script CompText87CFBD8_unk6
 	ts_mugshot_show mugshot=0x14
@@ -91,7 +91,7 @@ CompText87CFBD8::
 	.string "Nice to meet you."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87CFBD8_unk7_id
 
 	def_text_script CompText87CFBD8_unk7
 	ts_mugshot_show mugshot=0x2
@@ -101,7 +101,7 @@ CompText87CFBD8::
 	.string "Mick!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87CFBD8_unk8_id
 
 	def_text_script CompText87CFBD8_unk8
 	ts_mugshot_show mugshot=0x3
@@ -115,7 +115,7 @@ CompText87CFBD8::
 	.string "Nice to meet you."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87CFBD8_unk9_id
 
 	def_text_script CompText87CFBD8_unk9
 	ts_mugshot_show mugshot=0x1
@@ -128,7 +128,7 @@ CompText87CFBD8::
 	.string "both of you."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87CFBD8_unk10_id
 
 	def_text_script CompText87CFBD8_unk10
 	ts_mugshot_show mugshot=0x33
@@ -138,7 +138,7 @@ CompText87CFBD8::
 	.string "rich Ayanokoji's?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87CFBD8_unk11_id
 
 	def_text_script CompText87CFBD8_unk11
 	ts_mugshot_show mugshot=0x3
@@ -151,7 +151,7 @@ CompText87CFBD8::
 	.string "What's your name?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87CFBD8_unk12_id
 
 	def_text_script CompText87CFBD8_unk12
 	ts_mugshot_show mugshot=0x33
@@ -174,7 +174,7 @@ CompText87CFBD8::
 	.string "What a variety!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87CFBD8_unk13_id
 
 	def_text_script CompText87CFBD8_unk13
 	ts_mugshot_show mugshot=0x2
@@ -183,7 +183,7 @@ CompText87CFBD8::
 	.string "I like you already!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87CFBD8_unk14_id
 
 	def_text_script CompText87CFBD8_unk14
 	ts_mugshot_show mugshot=0x1
@@ -193,7 +193,7 @@ CompText87CFBD8::
 	.string "friends..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87CFBD8_unk15_id
 
 	def_text_script CompText87CFBD8_unk15
 	ts_mugshot_show mugshot=0x14
@@ -206,7 +206,7 @@ CompText87CFBD8::
 	.string "get in,right?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87CFBD8_unk16_id
 
 	def_text_script CompText87CFBD8_unk16
 	ts_mugshot_hide
@@ -228,7 +228,7 @@ CompText87CFBD8::
 	.string "already?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87CFBD8_unk18_id
 
 	def_text_script CompText87CFBD8_unk18
 	ts_mugshot_show mugshot=0x1
@@ -240,7 +240,7 @@ CompText87CFBD8::
 	.string "...and...um..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87CFBD8_unk19_id
 
 	def_text_script CompText87CFBD8_unk19
 	ts_mugshot_show mugshot=0x11
@@ -248,7 +248,7 @@ CompText87CFBD8::
 	.string "My name's Iris..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87CFBD8_unk20_id
 
 	def_text_script CompText87CFBD8_unk20
 	ts_mugshot_show mugshot=0x1
@@ -270,7 +270,7 @@ CompText87CFBD8::
 	.string "Town!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87CFBD8_unk22_id
 
 	def_text_script CompText87CFBD8_unk22
 	ts_mugshot_show mugshot=0x3
@@ -285,7 +285,7 @@ CompText87CFBD8::
 	.string "Yai."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87CFBD8_unk23_id
 
 	def_text_script CompText87CFBD8_unk23
 	ts_mugshot_show mugshot=0x11
@@ -294,7 +294,7 @@ CompText87CFBD8::
 	.string "you all..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87CFBD8_unk24_id
 
 	def_text_script CompText87CFBD8_unk24
 	ts_mugshot_show mugshot=0x0
@@ -312,7 +312,7 @@ CompText87CFBD8::
 	.string "the Expo!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87CFBD8_unk26_id
 
 	def_text_script CompText87CFBD8_unk26
 	ts_mugshot_hide

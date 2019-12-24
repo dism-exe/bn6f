@@ -36,25 +36,25 @@ CompText87601FC::
 
 	def_text_script CompText87601FC_unk2
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0x9,
-		jumpIfSlashMan: 0xFF,
-		jumpIfEraseMan: 0xA,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0xFF,
-		jumpIfTomahawkMan: 0xB,
-		jumpIfTenguMan: 0xFF,
-		jumpIfGroundMan: 0xFF,
-		jumpIfDustMan: 0xC,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: CompText87601FC_unk9_id,
+		jumpIfSlashMan: TS_CONTINUE,
+		jumpIfEraseMan: CompText87601FC_unk10_id,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: TS_CONTINUE,
+		jumpIfTomahawkMan: CompText87601FC_unk11_id,
+		jumpIfTenguMan: TS_CONTINUE,
+		jumpIfGroundMan: TS_CONTINUE,
+		jumpIfDustMan: CompText87601FC_unk12_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_check_item07 [
 		item: 0x1C,
 		amount: 0x1,
-		jumpIfEqual: 0x4,
-		jumpIfGreater: 0x4,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText87601FC_unk4_id,
+		jumpIfGreater: CompText87601FC_unk4_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "A thick,dense cloud\n"
@@ -64,18 +64,18 @@ CompText87601FC::
 
 	def_text_script CompText87601FC_unk3
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0xFF,
-		jumpIfSlashMan: 0xE,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0xF,
-		jumpIfSpoutMan: 0xFF,
-		jumpIfTomahawkMan: 0xFF,
-		jumpIfTenguMan: 0x10,
-		jumpIfGroundMan: 0xFF,
-		jumpIfDustMan: 0x11,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: TS_CONTINUE,
+		jumpIfSlashMan: CompText87601FC_unk14_id,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: CompText87601FC_unk15_id,
+		jumpIfSpoutMan: TS_CONTINUE,
+		jumpIfTomahawkMan: TS_CONTINUE,
+		jumpIfTenguMan: CompText87601FC_unk16_id,
+		jumpIfGroundMan: TS_CONTINUE,
+		jumpIfDustMan: CompText87601FC_unk17_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "There is a violent\n"
@@ -127,7 +127,7 @@ CompText87601FC::
 	.string "dispersed the cloud!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87601FC_unk13_id
 
 	def_text_script CompText87601FC_unk10
 	ts_mugshot_show mugshot=0x50
@@ -148,7 +148,7 @@ CompText87601FC::
 	.string "the cloud!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87601FC_unk13_id
 
 	def_text_script CompText87601FC_unk11
 	ts_mugshot_show mugshot=0x4A
@@ -166,7 +166,7 @@ CompText87601FC::
 	.string "cloud away!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87601FC_unk13_id
 
 	def_text_script CompText87601FC_unk12
 	ts_mugshot_show mugshot=0x4E
@@ -183,7 +183,7 @@ CompText87601FC::
 	.string "the cloud!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87601FC_unk13_id
 
 	def_text_script CompText87601FC_unk13
 	ts_flag_clear flag=0x178
@@ -204,7 +204,7 @@ CompText87601FC::
 	.string "the cyclone out!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87601FC_unk18_id
 
 	def_text_script CompText87601FC_unk15
 	ts_mugshot_show mugshot=0x4F
@@ -225,7 +225,7 @@ CompText87601FC::
 	.string "super charge attack!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87601FC_unk18_id
 
 	def_text_script CompText87601FC_unk16
 	ts_mugshot_show mugshot=0x4C
@@ -246,7 +246,7 @@ CompText87601FC::
 	.string "wave of his fan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87601FC_unk18_id
 
 	def_text_script CompText87601FC_unk17
 	ts_mugshot_show mugshot=0x4E
@@ -269,7 +269,7 @@ CompText87601FC::
 	.string "the cyclone!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87601FC_unk18_id
 
 	def_text_script CompText87601FC_unk18
 	ts_flag_clear flag=0x174

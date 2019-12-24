@@ -92,7 +92,7 @@ CompText87B330C::
 	.string "smart cookie!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B330C_unk1_id
 
 	def_text_script CompText87B330C_unk1
 	ts_mugshot_show mugshot=0x0
@@ -101,7 +101,7 @@ CompText87B330C::
 	.string "like a real teacher!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B330C_unk2_id
 
 	def_text_script CompText87B330C_unk2
 	ts_mugshot_show mugshot=0x1F
@@ -111,7 +111,7 @@ CompText87B330C::
 	.string "me blush..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B330C_unk3_id
 
 	def_text_script CompText87B330C_unk3
 	ts_mugshot_show mugshot=0x0
@@ -119,7 +119,7 @@ CompText87B330C::
 	.string "Yo,Ms.Shuko!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B330C_unk4_id
 
 	def_text_script CompText87B330C_unk4
 	ts_mugshot_show mugshot=0x1F
@@ -133,7 +133,7 @@ CompText87B330C::
 	.string "lesson,OK?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B330C_unk5_id
 
 	def_text_script CompText87B330C_unk5
 	ts_mugshot_show mugshot=0x0
@@ -141,7 +141,7 @@ CompText87B330C::
 	.string "OK!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B330C_unk6_id
 
 	def_text_script CompText87B330C_unk6
 	ts_mugshot_show mugshot=0x1F
@@ -164,7 +164,7 @@ CompText87B330C::
 	.string "this!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B330C_unk7_id
 
 	def_text_script CompText87B330C_unk7
 	ts_mugshot_hide
@@ -191,7 +191,7 @@ CompText87B330C::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B330C_unk8_id
 
 	def_text_script CompText87B330C_unk8
 	ts_mugshot_show mugshot=0x1F

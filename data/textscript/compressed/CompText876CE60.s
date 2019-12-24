@@ -12,13 +12,13 @@ CompText876CE60::
 	def_text_script CompText876CE60_unk0
 	ts_check_flag [
 		flag: 0x1168,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876CE60_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1166,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876CE60_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x1A
 	ts_msg_open

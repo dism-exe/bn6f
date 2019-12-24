@@ -83,7 +83,7 @@ CompText87AB048::
 	.string "the penguin?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87AB048_unk7_id
 
 	def_text_script CompText87AB048_unk7
 	ts_mugshot_show mugshot=0x14
@@ -91,7 +91,7 @@ CompText87AB048::
 	.string "It's shaking."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87AB048_unk8_id
 
 	def_text_script CompText87AB048_unk8
 	ts_mugshot_hide
@@ -99,7 +99,7 @@ CompText87AB048::
 	.string "*Squeak,Squeak*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87AB048_unk9_id
 
 	def_text_script CompText87AB048_unk9
 	ts_mugshot_show mugshot=0x14
@@ -109,7 +109,7 @@ CompText87AB048::
 	.string "inside the Aquarium!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87AB048_unk10_id
 
 	def_text_script CompText87AB048_unk10
 	ts_mugshot_show mugshot=0x0
@@ -132,7 +132,7 @@ CompText87AB048::
 	.string "building..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87AB048_unk13_id
 
 	def_text_script CompText87AB048_unk13
 	ts_mugshot_show mugshot=0x14
@@ -176,7 +176,7 @@ CompText87AB048::
 	.string "nothing!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87AB048_unk18_id
 
 	def_text_script CompText87AB048_unk18
 	ts_mugshot_show mugshot=0x0
@@ -185,7 +185,7 @@ CompText87AB048::
 	.string "come back tomorrow."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87AB048_unk19_id
 
 	def_text_script CompText87AB048_unk19
 	ts_mugshot_show mugshot=0x14
@@ -200,7 +200,7 @@ CompText87AB048::
 	.string "penguin until then!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87AB048_unk20_id
 
 	def_text_script CompText87AB048_unk20
 	ts_mugshot_show mugshot=0x0
@@ -209,7 +209,7 @@ CompText87AB048::
 	.string "was obvious..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87AB048_unk21_id
 
 	def_text_script CompText87AB048_unk21
 	ts_mugshot_show mugshot=0x14
@@ -218,7 +218,7 @@ CompText87AB048::
 	.string "You take him!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87AB048_unk22_id
 
 	def_text_script CompText87AB048_unk22
 	ts_mugshot_show mugshot=0x0
@@ -238,7 +238,7 @@ CompText87AB048::
 	.string "*Squawk!*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87AB048_unk24_id
 
 	def_text_script CompText87AB048_unk24
 	ts_mugshot_show mugshot=0x14
@@ -247,7 +247,7 @@ CompText87AB048::
 	.string "a joke..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87AB048_unk25_id
 
 	def_text_script CompText87AB048_unk25
 	ts_mugshot_show mugshot=0x0
@@ -262,7 +262,7 @@ CompText87AB048::
 	.string "hang out all day!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87AB048_unk26_id
 
 	def_text_script CompText87AB048_unk26
 	ts_mugshot_show mugshot=0x14

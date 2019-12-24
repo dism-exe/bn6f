@@ -27,7 +27,7 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0x5, 0xFF
 	ts_start_chip_trader [
 		amount: 0x3,
-		jumpIfNotEnoughChips: 0x1,
+		jumpIfNotEnoughChips: TextScriptChipTrader86C580C_unk1_id,
 	]
 	ts_key_wait any=0x0
 	ts_end
@@ -35,22 +35,22 @@ TextScriptChipTrader86C580C::
 	def_text_script TextScriptChipTrader86C580C_unk1
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x14,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: TextScriptChipTrader86C580C_unk20_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x14,
-		jumpIfElecMan: 0x14,
-		jumpIfSlashMan: 0x14,
-		jumpIfEraseMan: 0x14,
-		jumpIfChargeMan: 0x14,
-		jumpIfSpoutMan: 0x14,
-		jumpIfTomahawkMan: 0x14,
-		jumpIfTenguMan: 0x14,
-		jumpIfGroundMan: 0x14,
-		jumpIfDustMan: 0x14,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptChipTrader86C580C_unk20_id,
+		jumpIfElecMan: TextScriptChipTrader86C580C_unk20_id,
+		jumpIfSlashMan: TextScriptChipTrader86C580C_unk20_id,
+		jumpIfEraseMan: TextScriptChipTrader86C580C_unk20_id,
+		jumpIfChargeMan: TextScriptChipTrader86C580C_unk20_id,
+		jumpIfSpoutMan: TextScriptChipTrader86C580C_unk20_id,
+		jumpIfTomahawkMan: TextScriptChipTrader86C580C_unk20_id,
+		jumpIfTenguMan: TextScriptChipTrader86C580C_unk20_id,
+		jumpIfGroundMan: TextScriptChipTrader86C580C_unk20_id,
+		jumpIfDustMan: TextScriptChipTrader86C580C_unk20_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_msg_open
 	ts_mugshot_show mugshot=0x37
@@ -63,22 +63,22 @@ TextScriptChipTrader86C580C::
 	def_text_script TextScriptChipTrader86C580C_unk2
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1E,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: TextScriptChipTrader86C580C_unk30_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x1E,
-		jumpIfElecMan: 0x1E,
-		jumpIfSlashMan: 0x1E,
-		jumpIfEraseMan: 0x1E,
-		jumpIfChargeMan: 0x1E,
-		jumpIfSpoutMan: 0x1E,
-		jumpIfTomahawkMan: 0x1E,
-		jumpIfTenguMan: 0x1E,
-		jumpIfGroundMan: 0x1E,
-		jumpIfDustMan: 0x1E,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptChipTrader86C580C_unk30_id,
+		jumpIfElecMan: TextScriptChipTrader86C580C_unk30_id,
+		jumpIfSlashMan: TextScriptChipTrader86C580C_unk30_id,
+		jumpIfEraseMan: TextScriptChipTrader86C580C_unk30_id,
+		jumpIfChargeMan: TextScriptChipTrader86C580C_unk30_id,
+		jumpIfSpoutMan: TextScriptChipTrader86C580C_unk30_id,
+		jumpIfTomahawkMan: TextScriptChipTrader86C580C_unk30_id,
+		jumpIfTenguMan: TextScriptChipTrader86C580C_unk30_id,
+		jumpIfGroundMan: TextScriptChipTrader86C580C_unk30_id,
+		jumpIfDustMan: TextScriptChipTrader86C580C_unk30_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_msg_open
 	ts_text_speed delay=0x0
@@ -173,7 +173,7 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0x5, 0xFF
 	ts_start_chip_trader [
 		amount: 0x3,
-		jumpIfNotEnoughChips: 0x4,
+		jumpIfNotEnoughChips: TextScriptChipTrader86C580C_unk4_id,
 	]
 	ts_key_wait any=0x0
 	ts_end
@@ -181,22 +181,22 @@ TextScriptChipTrader86C580C::
 	def_text_script TextScriptChipTrader86C580C_unk4
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x15,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: TextScriptChipTrader86C580C_unk21_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x15,
-		jumpIfElecMan: 0x15,
-		jumpIfSlashMan: 0x15,
-		jumpIfEraseMan: 0x15,
-		jumpIfChargeMan: 0x15,
-		jumpIfSpoutMan: 0x15,
-		jumpIfTomahawkMan: 0x15,
-		jumpIfTenguMan: 0x15,
-		jumpIfGroundMan: 0x15,
-		jumpIfDustMan: 0x15,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptChipTrader86C580C_unk21_id,
+		jumpIfElecMan: TextScriptChipTrader86C580C_unk21_id,
+		jumpIfSlashMan: TextScriptChipTrader86C580C_unk21_id,
+		jumpIfEraseMan: TextScriptChipTrader86C580C_unk21_id,
+		jumpIfChargeMan: TextScriptChipTrader86C580C_unk21_id,
+		jumpIfSpoutMan: TextScriptChipTrader86C580C_unk21_id,
+		jumpIfTomahawkMan: TextScriptChipTrader86C580C_unk21_id,
+		jumpIfTenguMan: TextScriptChipTrader86C580C_unk21_id,
+		jumpIfGroundMan: TextScriptChipTrader86C580C_unk21_id,
+		jumpIfDustMan: TextScriptChipTrader86C580C_unk21_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x37
@@ -236,7 +236,7 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0xB, 0xFF
 	ts_start_chip_trader [
 		amount: 0xA,
-		jumpIfNotEnoughChips: 0x7,
+		jumpIfNotEnoughChips: TextScriptChipTrader86C580C_unk7_id,
 	]
 	ts_key_wait any=0x0
 	ts_end
@@ -244,22 +244,22 @@ TextScriptChipTrader86C580C::
 	def_text_script TextScriptChipTrader86C580C_unk7
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x16,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: TextScriptChipTrader86C580C_unk22_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x16,
-		jumpIfElecMan: 0x16,
-		jumpIfSlashMan: 0x16,
-		jumpIfEraseMan: 0x16,
-		jumpIfChargeMan: 0x16,
-		jumpIfSpoutMan: 0x16,
-		jumpIfTomahawkMan: 0x16,
-		jumpIfTenguMan: 0x16,
-		jumpIfGroundMan: 0x16,
-		jumpIfDustMan: 0x16,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptChipTrader86C580C_unk22_id,
+		jumpIfElecMan: TextScriptChipTrader86C580C_unk22_id,
+		jumpIfSlashMan: TextScriptChipTrader86C580C_unk22_id,
+		jumpIfEraseMan: TextScriptChipTrader86C580C_unk22_id,
+		jumpIfChargeMan: TextScriptChipTrader86C580C_unk22_id,
+		jumpIfSpoutMan: TextScriptChipTrader86C580C_unk22_id,
+		jumpIfTomahawkMan: TextScriptChipTrader86C580C_unk22_id,
+		jumpIfTenguMan: TextScriptChipTrader86C580C_unk22_id,
+		jumpIfGroundMan: TextScriptChipTrader86C580C_unk22_id,
+		jumpIfDustMan: TextScriptChipTrader86C580C_unk22_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -272,22 +272,22 @@ TextScriptChipTrader86C580C::
 	def_text_script TextScriptChipTrader86C580C_unk8
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1F,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: TextScriptChipTrader86C580C_unk31_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x1F,
-		jumpIfElecMan: 0x1F,
-		jumpIfSlashMan: 0x1F,
-		jumpIfEraseMan: 0x1F,
-		jumpIfChargeMan: 0x1F,
-		jumpIfSpoutMan: 0x1F,
-		jumpIfTomahawkMan: 0x1F,
-		jumpIfTenguMan: 0x1F,
-		jumpIfGroundMan: 0x1F,
-		jumpIfDustMan: 0x1F,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptChipTrader86C580C_unk31_id,
+		jumpIfElecMan: TextScriptChipTrader86C580C_unk31_id,
+		jumpIfSlashMan: TextScriptChipTrader86C580C_unk31_id,
+		jumpIfEraseMan: TextScriptChipTrader86C580C_unk31_id,
+		jumpIfChargeMan: TextScriptChipTrader86C580C_unk31_id,
+		jumpIfSpoutMan: TextScriptChipTrader86C580C_unk31_id,
+		jumpIfTomahawkMan: TextScriptChipTrader86C580C_unk31_id,
+		jumpIfTenguMan: TextScriptChipTrader86C580C_unk31_id,
+		jumpIfGroundMan: TextScriptChipTrader86C580C_unk31_id,
+		jumpIfDustMan: TextScriptChipTrader86C580C_unk31_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_msg_open
 	ts_text_speed delay=0x0
@@ -383,7 +383,7 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0xB, 0xFF
 	ts_start_chip_trader [
 		amount: 0xA,
-		jumpIfNotEnoughChips: 0xA,
+		jumpIfNotEnoughChips: TextScriptChipTrader86C580C_unk10_id,
 	]
 	ts_key_wait any=0x0
 	ts_end
@@ -391,22 +391,22 @@ TextScriptChipTrader86C580C::
 	def_text_script TextScriptChipTrader86C580C_unk10
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x17,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: TextScriptChipTrader86C580C_unk23_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x17,
-		jumpIfElecMan: 0x17,
-		jumpIfSlashMan: 0x17,
-		jumpIfEraseMan: 0x17,
-		jumpIfChargeMan: 0x17,
-		jumpIfSpoutMan: 0x17,
-		jumpIfTomahawkMan: 0x17,
-		jumpIfTenguMan: 0x17,
-		jumpIfGroundMan: 0x17,
-		jumpIfDustMan: 0x17,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptChipTrader86C580C_unk23_id,
+		jumpIfElecMan: TextScriptChipTrader86C580C_unk23_id,
+		jumpIfSlashMan: TextScriptChipTrader86C580C_unk23_id,
+		jumpIfEraseMan: TextScriptChipTrader86C580C_unk23_id,
+		jumpIfChargeMan: TextScriptChipTrader86C580C_unk23_id,
+		jumpIfSpoutMan: TextScriptChipTrader86C580C_unk23_id,
+		jumpIfTomahawkMan: TextScriptChipTrader86C580C_unk23_id,
+		jumpIfTenguMan: TextScriptChipTrader86C580C_unk23_id,
+		jumpIfGroundMan: TextScriptChipTrader86C580C_unk23_id,
+		jumpIfDustMan: TextScriptChipTrader86C580C_unk23_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x37
@@ -448,29 +448,29 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0x11, 0xFF
 	ts_start_chip_trader [
 		amount: 0x1,
-		jumpIfNotEnoughChips: 0xD,
+		jumpIfNotEnoughChips: TextScriptChipTrader86C580C_unk13_id,
 	]
 	ts_wait_hold unused=0x0
 
 	def_text_script TextScriptChipTrader86C580C_unk13
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x18,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: TextScriptChipTrader86C580C_unk24_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x18,
-		jumpIfElecMan: 0x18,
-		jumpIfSlashMan: 0x18,
-		jumpIfEraseMan: 0x18,
-		jumpIfChargeMan: 0x18,
-		jumpIfSpoutMan: 0x18,
-		jumpIfTomahawkMan: 0x18,
-		jumpIfTenguMan: 0x18,
-		jumpIfGroundMan: 0x18,
-		jumpIfDustMan: 0x18,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptChipTrader86C580C_unk24_id,
+		jumpIfElecMan: TextScriptChipTrader86C580C_unk24_id,
+		jumpIfSlashMan: TextScriptChipTrader86C580C_unk24_id,
+		jumpIfEraseMan: TextScriptChipTrader86C580C_unk24_id,
+		jumpIfChargeMan: TextScriptChipTrader86C580C_unk24_id,
+		jumpIfSpoutMan: TextScriptChipTrader86C580C_unk24_id,
+		jumpIfTomahawkMan: TextScriptChipTrader86C580C_unk24_id,
+		jumpIfTenguMan: TextScriptChipTrader86C580C_unk24_id,
+		jumpIfGroundMan: TextScriptChipTrader86C580C_unk24_id,
+		jumpIfDustMan: TextScriptChipTrader86C580C_unk24_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -554,29 +554,29 @@ TextScriptChipTrader86C580C::
 	ts_select 0x6, 0x0, 0xFF, 0x11, 0xFF
 	ts_start_chip_trader [
 		amount: 0x1,
-		jumpIfNotEnoughChips: 0x10,
+		jumpIfNotEnoughChips: TextScriptChipTrader86C580C_unk16_id,
 	]
 	ts_wait_hold unused=0x0
 
 	def_text_script TextScriptChipTrader86C580C_unk16
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x19,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: TextScriptChipTrader86C580C_unk25_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x19,
-		jumpIfElecMan: 0x19,
-		jumpIfSlashMan: 0x19,
-		jumpIfEraseMan: 0x19,
-		jumpIfChargeMan: 0x19,
-		jumpIfSpoutMan: 0x19,
-		jumpIfTomahawkMan: 0x19,
-		jumpIfTenguMan: 0x19,
-		jumpIfGroundMan: 0x19,
-		jumpIfDustMan: 0x19,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptChipTrader86C580C_unk25_id,
+		jumpIfElecMan: TextScriptChipTrader86C580C_unk25_id,
+		jumpIfSlashMan: TextScriptChipTrader86C580C_unk25_id,
+		jumpIfEraseMan: TextScriptChipTrader86C580C_unk25_id,
+		jumpIfChargeMan: TextScriptChipTrader86C580C_unk25_id,
+		jumpIfSpoutMan: TextScriptChipTrader86C580C_unk25_id,
+		jumpIfTomahawkMan: TextScriptChipTrader86C580C_unk25_id,
+		jumpIfTenguMan: TextScriptChipTrader86C580C_unk25_id,
+		jumpIfGroundMan: TextScriptChipTrader86C580C_unk25_id,
+		jumpIfDustMan: TextScriptChipTrader86C580C_unk25_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x37

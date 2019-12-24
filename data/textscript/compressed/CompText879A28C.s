@@ -75,18 +75,18 @@ CompText879A28C::
 	def_text_script CompText879A28C_unk3
 	ts_check_flag [
 		flag: 0xE42,
-		jumpIfTrue: 0x6,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879A28C_unk6_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xFFF,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x5,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879A28C_unk5_id,
 	]
 	ts_check_flag [
 		flag: 0xED7,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879A28C_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xED7
 	ts_mugshot_show mugshot=0x3C

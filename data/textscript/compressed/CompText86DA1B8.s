@@ -57,8 +57,8 @@ CompText86DA1B8::
 	def_text_script CompText86DA1B8_unk2
 	ts_check_flag [
 		flag: 0x1704,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x3,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText86DA1B8_unk3_id,
 	]
 	ts_clear_msg
 	.string "OK to erase\n"
@@ -87,9 +87,9 @@ CompText86DA1B8::
 
 	def_text_script CompText86DA1B8_unk3
 	ts_call_save [
-		jumpIfSuccessful: 0x4,
-		jumpIfFailed: 0xFF,
-		jumpUnused: 0x0,
+		jumpIfSuccessful: CompText86DA1B8_unk4_id,
+		jumpIfFailed: TS_CONTINUE,
+		jumpUnused: CompText86DA1B8_unk0_id,
 	]
 	ts_clear_msg
 	.string "Looks like I failed\n"

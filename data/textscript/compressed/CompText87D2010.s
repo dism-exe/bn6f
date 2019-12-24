@@ -16,7 +16,7 @@ CompText87D2010::
 	.string "JudgeMan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D2010_unk1_id
 
 	def_text_script CompText87D2010_unk1
 	ts_mugshot_show mugshot=0x55
@@ -31,7 +31,7 @@ CompText87D2010::
 	.string "thou must defeat me!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87D2010_unk2_id
 
 	def_text_script CompText87D2010_unk2
 	ts_mugshot_show mugshot=0x37
@@ -39,7 +39,7 @@ CompText87D2010::
 	.string "Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87D2010_unk3_id
 
 	def_text_script CompText87D2010_unk3
 	ts_mugshot_show mugshot=0x0
@@ -52,7 +52,7 @@ CompText87D2010::
 	.string "Battle routine,set!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87D2010_unk4_id
 
 	def_text_script CompText87D2010_unk4
 	ts_mugshot_show mugshot=0x37
@@ -60,7 +60,7 @@ CompText87D2010::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87D2010_unk5_id
 
 	def_text_script CompText87D2010_unk5
 	ts_mugshot_show mugshot=0x55

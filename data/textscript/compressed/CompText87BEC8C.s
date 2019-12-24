@@ -20,7 +20,7 @@ CompText87BEC8C::
 	.string "crazy!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BEC8C_unk1_id
 
 	def_text_script CompText87BEC8C_unk1
 	ts_mugshot_show mugshot=0x6
@@ -32,7 +32,7 @@ CompText87BEC8C::
 	.string "here?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87BEC8C_unk2_id
 
 	def_text_script CompText87BEC8C_unk2
 	ts_mugshot_show mugshot=0x0
@@ -47,7 +47,7 @@ CompText87BEC8C::
 	.string "Mom,what's wrong?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87BEC8C_unk4_id
 
 	def_text_script CompText87BEC8C_unk4
 	ts_mugshot_show mugshot=0x6
@@ -57,7 +57,7 @@ CompText87BEC8C::
 	.string "the news!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87BEC8C_unk5_id
 
 	def_text_script CompText87BEC8C_unk5
 	ts_mugshot_show mugshot=0x0

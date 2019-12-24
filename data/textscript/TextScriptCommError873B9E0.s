@@ -3,18 +3,18 @@ TextScriptCommError873B9E0::
 
 	def_text_script TextScriptCommError873B9E0_unk0
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x2,
-		jumpIfElecMan: 0x2,
-		jumpIfSlashMan: 0x2,
-		jumpIfEraseMan: 0x2,
-		jumpIfChargeMan: 0x2,
-		jumpIfSpoutMan: 0x2,
-		jumpIfTomahawkMan: 0x2,
-		jumpIfTenguMan: 0x2,
-		jumpIfGroundMan: 0x2,
-		jumpIfDustMan: 0x2,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfElecMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfSlashMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfEraseMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfChargeMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfSpoutMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfTomahawkMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfTenguMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfGroundMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfDustMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -31,18 +31,18 @@ TextScriptCommError873B9E0::
 
 	def_text_script TextScriptCommError873B9E0_unk1
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x3,
-		jumpIfElecMan: 0x3,
-		jumpIfSlashMan: 0x3,
-		jumpIfEraseMan: 0x3,
-		jumpIfChargeMan: 0x3,
-		jumpIfSpoutMan: 0x3,
-		jumpIfTomahawkMan: 0x3,
-		jumpIfTenguMan: 0x3,
-		jumpIfGroundMan: 0x3,
-		jumpIfDustMan: 0x3,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfElecMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfSlashMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfEraseMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfChargeMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfSpoutMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfTomahawkMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfTenguMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfGroundMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfDustMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -145,41 +145,41 @@ TextScriptCommError873B9E0::
 
 	def_text_script TextScriptCommError873B9E0_unk20
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x16,
-		jumpIfElecMan: 0x16,
-		jumpIfSlashMan: 0x16,
-		jumpIfEraseMan: 0x16,
-		jumpIfChargeMan: 0x16,
-		jumpIfSpoutMan: 0x16,
-		jumpIfTomahawkMan: 0x16,
-		jumpIfTenguMan: 0x16,
-		jumpIfGroundMan: 0x16,
-		jumpIfDustMan: 0x16,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfElecMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfSlashMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfEraseMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfChargeMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfSpoutMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfTomahawkMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfTenguMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfGroundMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfDustMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x80,
 		upper: 0x96,
-		jumpIfInRange: 0x19,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: TextScriptCommError873B9E0_unk25_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_jump target=24
+	ts_jump target=TextScriptCommError873B9E0_unk24_id
 
 	def_text_script TextScriptCommError873B9E0_unk21
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x1A,
-		jumpIfElecMan: 0x1A,
-		jumpIfSlashMan: 0x1A,
-		jumpIfEraseMan: 0x1A,
-		jumpIfChargeMan: 0x1A,
-		jumpIfSpoutMan: 0x1A,
-		jumpIfTomahawkMan: 0x1A,
-		jumpIfTenguMan: 0x1A,
-		jumpIfGroundMan: 0x1A,
-		jumpIfDustMan: 0x1A,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfElecMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfSlashMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfEraseMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfChargeMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfSpoutMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfTomahawkMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfTenguMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfGroundMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfDustMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -218,10 +218,10 @@ TextScriptCommError873B9E0::
 	def_text_script TextScriptCommError873B9E0_unk24
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x16,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: TextScriptCommError873B9E0_unk22_id,
 	]
-	ts_jump target=25
+	ts_jump target=TextScriptCommError873B9E0_unk25_id
 
 	def_text_script TextScriptCommError873B9E0_unk25
 	ts_mugshot_show mugshot=0x37
@@ -247,18 +247,18 @@ TextScriptCommError873B9E0::
 
 	def_text_script TextScriptCommError873B9E0_unk30
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0xFF,
-		jumpIfSlashMan: 0xFF,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0xFF,
-		jumpIfTomahawkMan: 0xFF,
-		jumpIfTenguMan: 0xFF,
-		jumpIfGroundMan: 0x1F,
-		jumpIfDustMan: 0xFF,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: TS_CONTINUE,
+		jumpIfSlashMan: TS_CONTINUE,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: TS_CONTINUE,
+		jumpIfTomahawkMan: TS_CONTINUE,
+		jumpIfTenguMan: TS_CONTINUE,
+		jumpIfGroundMan: TextScriptCommError873B9E0_unk31_id,
+		jumpIfDustMan: TS_CONTINUE,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

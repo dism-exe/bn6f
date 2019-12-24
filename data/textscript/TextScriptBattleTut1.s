@@ -12,7 +12,7 @@ TextScriptBattleTut1::
 	.string "Operate away!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=TextScriptBattleTut1_unk1_id
 
 	def_text_script TextScriptBattleTut1_unk1
 	ts_mugshot_show mugshot=0x0
@@ -85,7 +85,7 @@ TextScriptBattleTut1::
 	.string "Gotta remember that!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=TextScriptBattleTut1_unk7_id
 
 	def_text_script TextScriptBattleTut1_unk7
 	ts_mugshot_show mugshot=0x37
@@ -285,7 +285,7 @@ TextScriptBattleTut1::
 	.string "all your chips..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=TextScriptBattleTut1_unk20_id
 
 	def_text_script TextScriptBattleTut1_unk20
 	ts_mugshot_show mugshot=0x0

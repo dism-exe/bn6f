@@ -21,7 +21,7 @@ CompText87BF09C::
 	.string "further in..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BF09C_unk1_id
 
 	def_text_script CompText87BF09C_unk1
 	ts_mugshot_hide
@@ -33,7 +33,7 @@ CompText87BF09C::
 	.string "the elevator!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87BF09C_unk2_id
 
 	def_text_script CompText87BF09C_unk2
 	ts_mugshot_show mugshot=0x0

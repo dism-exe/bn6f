@@ -43,7 +43,7 @@ CompText87BA81C::
 	.string "you're going to do?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87BA81C_unk4_id
 
 	def_text_script CompText87BA81C_unk4
 	ts_mugshot_show mugshot=0x0
@@ -52,7 +52,7 @@ CompText87BA81C::
 	.string "the JudgeTree!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87BA81C_unk5_id
 
 	def_text_script CompText87BA81C_unk5
 	ts_mugshot_show mugshot=0x2D
@@ -90,7 +90,7 @@ CompText87BA81C::
 	.string "indeed!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87BA81C_unk6_id
 
 	def_text_script CompText87BA81C_unk6
 	ts_mugshot_show mugshot=0x0
@@ -110,7 +110,7 @@ CompText87BA81C::
 	.string "justice..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87BA81C_unk7_id
 
 	def_text_script CompText87BA81C_unk7
 	ts_mugshot_show mugshot=0x2D
@@ -124,7 +124,7 @@ CompText87BA81C::
 	.string "a long time ago."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87BA81C_unk8_id
 
 	def_text_script CompText87BA81C_unk8
 	ts_mugshot_show mugshot=0x0
@@ -133,7 +133,7 @@ CompText87BA81C::
 	.string "Why...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87BA81C_unk9_id
 
 	def_text_script CompText87BA81C_unk9
 	ts_mugshot_show mugshot=0x2D
@@ -199,7 +199,7 @@ CompText87BA81C::
 	.string "destroy it!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87BA81C_unk10_id
 
 	def_text_script CompText87BA81C_unk10
 	ts_mugshot_show mugshot=0x0
@@ -214,7 +214,7 @@ CompText87BA81C::
 	.string "makes sense at all!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87BA81C_unk11_id
 
 	def_text_script CompText87BA81C_unk11
 	ts_mugshot_show mugshot=0x2D
@@ -233,7 +233,7 @@ CompText87BA81C::
 	.string "world by then!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87BA81C_unk12_id
 
 	def_text_script CompText87BA81C_unk12
 	ts_mugshot_show mugshot=0x0
@@ -265,7 +265,7 @@ CompText87BA81C::
 	.string "Let's go,MegaMan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87BA81C_unk13_id
 
 	def_text_script CompText87BA81C_unk13
 	ts_control_lock

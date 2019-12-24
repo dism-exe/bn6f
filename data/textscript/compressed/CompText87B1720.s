@@ -16,7 +16,7 @@ CompText87B1720::
 	.string "Please wake up..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B1720_unk1_id
 
 	def_text_script CompText87B1720_unk1
 	ts_mugshot_show mugshot=0x37
@@ -46,7 +46,7 @@ CompText87B1720::
 	.string "MegaMan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B1720_unk4_id
 
 	def_text_script CompText87B1720_unk4
 	ts_mugshot_show mugshot=0x5
@@ -66,7 +66,7 @@ CompText87B1720::
 	.string "that soon..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B1720_unk5_id
 
 	def_text_script CompText87B1720_unk5
 	ts_mugshot_show mugshot=0x0
@@ -74,7 +74,7 @@ CompText87B1720::
 	.string "Dad..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B1720_unk6_id
 
 	def_text_script CompText87B1720_unk6
 	ts_mugshot_show mugshot=0x5
@@ -84,7 +84,7 @@ CompText87B1720::
 	.string "on my conversations."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B1720_unk7_id
 
 	def_text_script CompText87B1720_unk7
 	ts_mugshot_show mugshot=0x0
@@ -94,7 +94,7 @@ CompText87B1720::
 	.string "please save MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B1720_unk8_id
 
 	def_text_script CompText87B1720_unk8
 	ts_mugshot_show mugshot=0x5
@@ -114,7 +114,7 @@ CompText87B1720::
 	.string "be deleted..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B1720_unk9_id
 
 	def_text_script CompText87B1720_unk9
 	ts_mugshot_show mugshot=0x0
@@ -127,7 +127,7 @@ CompText87B1720::
 	.string "MegaMan will..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B1720_unk10_id
 
 	def_text_script CompText87B1720_unk10
 	ts_mugshot_show mugshot=0x5
@@ -189,7 +189,7 @@ CompText87B1720::
 	.string "doesn't matter...!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87B1720_unk11_id
 
 	def_text_script CompText87B1720_unk11
 	ts_mugshot_show mugshot=0x0
@@ -202,7 +202,7 @@ CompText87B1720::
 	.string "SeasideArea3!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87B1720_unk12_id
 
 	def_text_script CompText87B1720_unk12
 	ts_mugshot_show mugshot=0x5
@@ -227,7 +227,7 @@ CompText87B1720::
 	.string "without a Navi?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87B1720_unk13_id
 
 	def_text_script CompText87B1720_unk13
 	ts_mugshot_show mugshot=0x0

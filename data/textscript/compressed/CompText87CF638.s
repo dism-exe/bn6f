@@ -15,8 +15,8 @@ CompText87CF638::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x1,
-		jumpIfCybeastFalzar: 0x2,
+		jumpIfCybeastGregar: CompText87CF638_unk1_id,
+		jumpIfCybeastFalzar: CompText87CF638_unk2_id,
 	]
 
 	def_text_script CompText87CF638_unk1
@@ -30,7 +30,7 @@ CompText87CF638::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CF638_unk3_id
 
 	def_text_script CompText87CF638_unk2
 	ts_msg_open
@@ -43,7 +43,7 @@ CompText87CF638::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CF638_unk3_id
 
 	def_text_script CompText87CF638_unk3
 	ts_mugshot_show mugshot=0x37
@@ -60,7 +60,7 @@ CompText87CF638::
 	.string "other Cybeast..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87CF638_unk4_id
 
 	def_text_script CompText87CF638_unk4
 	ts_mugshot_show mugshot=0x0
@@ -79,7 +79,7 @@ CompText87CF638::
 	.string "Mmm... zzzzzz..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87CF638_unk5_id
 
 	def_text_script CompText87CF638_unk5
 	ts_mugshot_show mugshot=0x37
@@ -89,7 +89,7 @@ CompText87CF638::
 	.string "on me..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87CF638_unk6_id
 
 	def_text_script CompText87CF638_unk6
 	ts_mugshot_hide
@@ -106,7 +106,7 @@ CompText87CF638::
 	.string "over!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87CF638_unk8_id
 
 	def_text_script CompText87CF638_unk8
 	ts_mugshot_show mugshot=0x37
@@ -135,7 +135,7 @@ CompText87CF638::
 	.string "DenCity?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87CF638_unk9_id
 
 	def_text_script CompText87CF638_unk9
 	ts_mugshot_show mugshot=0x0

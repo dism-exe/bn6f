@@ -39,7 +39,7 @@ CompText87A8AAC::
 	.string "Wah!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A8AAC_unk2_id
 
 	def_text_script CompText87A8AAC_unk2
 	ts_mugshot_show mugshot=0x51
@@ -72,7 +72,7 @@ CompText87A8AAC::
 	.string "Jack out,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A8AAC_unk5_id
 
 	def_text_script CompText87A8AAC_unk5
 	ts_mugshot_show mugshot=0x37

@@ -43,13 +43,13 @@ CompText8797E94::
 	def_text_script CompText8797E94_unk10
 	ts_check_flag [
 		flag: 0x1139,
-		jumpIfTrue: 0xE,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8797E94_unk14_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1137,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8797E94_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1137
 	ts_mugshot_show mugshot=0x41
@@ -228,18 +228,18 @@ CompText8797E94::
 	def_text_script CompText8797E94_unk20
 	ts_check_flag [
 		flag: 0x11F5,
-		jumpIfTrue: 0x17,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8797E94_unk23_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x11F8,
-		jumpIfTrue: 0x16,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8797E94_unk22_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x11F2,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8797E94_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x11F2
 	ts_mugshot_show mugshot=0x3C

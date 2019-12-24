@@ -65,18 +65,18 @@ CompText879C728::
 	def_text_script CompText879C728_unk10
 	ts_check_flag [
 		flag: 0x117B,
-		jumpIfTrue: 0xD,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879C728_unk13_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x117F,
-		jumpIfTrue: 0xC,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879C728_unk12_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x117A,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879C728_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x117A
 	ts_mugshot_show mugshot=0x40
@@ -220,9 +220,9 @@ CompText879C728::
 	ts_clear_msg
 	ts_check_give_zenny [
 		amount: 0x1388,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_mugshot_hide
 	ts_player_animate_object animation=0x18
@@ -281,23 +281,23 @@ CompText879C728::
 	def_text_script CompText879C728_unk20
 	ts_check_flag [
 		flag: 0x120B,
-		jumpIfTrue: 0x19,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879C728_unk25_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x120E,
-		jumpIfTrue: 0x18,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879C728_unk24_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x120C,
-		jumpIfTrue: 0x17,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879C728_unk23_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x120A,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879C728_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x120A
 	ts_mugshot_show mugshot=0x42
@@ -725,8 +725,8 @@ CompText879C728::
 	def_text_script CompText879C728_unk40
 	ts_check_shop_stock [
 		shop: 0x8,
-		jumpIfStocked: 0xFF,
-		jumpIfSoldOut: 0x2A,
+		jumpIfStocked: TS_CONTINUE,
+		jumpIfSoldOut: CompText879C728_unk42_id,
 	]
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open

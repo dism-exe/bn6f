@@ -13,14 +13,14 @@ CompText8746A34::
 	ts_check_chapter [
 		lower: 0x50,
 		upper: 0x53,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8746A34_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x40,
 		upper: 0x46,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8746A34_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "Dummy text"

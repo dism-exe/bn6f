@@ -23,7 +23,7 @@ CompText87A5F48::
 	.string "don't fit in yet."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87A5F48_unk1_id
 
 	def_text_script CompText87A5F48_unk1
 	ts_mugshot_show mugshot=0x37
@@ -33,7 +33,7 @@ CompText87A5F48::
 	.string "slowly,I guess."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A5F48_unk2_id
 
 	def_text_script CompText87A5F48_unk2
 	ts_mugshot_hide
@@ -53,7 +53,7 @@ CompText87A5F48::
 	.string "Mick...right?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A5F48_unk4_id
 
 	def_text_script CompText87A5F48_unk4
 	ts_mugshot_show mugshot=0x14
@@ -85,7 +85,7 @@ CompText87A5F48::
 	.string "What did I do?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A5F48_unk6_id
 
 	def_text_script CompText87A5F48_unk6
 	ts_mugshot_show mugshot=0x37
@@ -93,7 +93,7 @@ CompText87A5F48::
 	.string "Who knows..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A5F48_unk7_id
 
 	def_text_script CompText87A5F48_unk7
 	ts_mugshot_hide
@@ -113,7 +113,7 @@ CompText87A5F48::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87A5F48_unk8_id
 
 	def_text_script CompText87A5F48_unk8
 	ts_mugshot_show mugshot=0x0
@@ -135,7 +135,7 @@ CompText87A5F48::
 	.string "desks,everyone!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87A5F48_unk10_id
 
 	def_text_script CompText87A5F48_unk10
 	ts_mugshot_show mugshot=0x0
@@ -144,7 +144,7 @@ CompText87A5F48::
 	.string "Let's do this!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87A5F48_unk11_id
 
 	def_text_script CompText87A5F48_unk11
 	ts_mugshot_show mugshot=0x37
@@ -152,7 +152,7 @@ CompText87A5F48::
 	.string "Roger!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87A5F48_unk12_id
 
 	def_text_script CompText87A5F48_unk12
 	ts_control_lock

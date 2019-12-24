@@ -37,13 +37,13 @@ CompText8759EF8::
 	def_text_script CompText8759EF8_unk2
 	ts_check_flag [
 		flag: 0x859,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8759EF8_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x858,
-		jumpIfTrue: 0x7,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8759EF8_unk7_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "A wonderful smell\n"
@@ -75,15 +75,15 @@ CompText8759EF8::
 	def_text_script CompText8759EF8_unk4
 	ts_check_flag [
 		flag: 0x11B6,
-		jumpIfTrue: 0xD,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8759EF8_unk13_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x11B5,
-		jumpIfTrue: 0xA,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8759EF8_unk10_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_jump target=13
+	ts_jump target=CompText8759EF8_unk13_id
 
 	def_text_script CompText8759EF8_unk5
 	ts_msg_open
@@ -161,8 +161,8 @@ CompText8759EF8::
 	def_text_script CompText8759EF8_unk10
 	ts_check_flag [
 		flag: 0x163,
-		jumpIfTrue: 0xD,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8759EF8_unk13_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "Coffee:\n"
@@ -197,9 +197,9 @@ CompText8759EF8::
 	def_text_script CompText8759EF8_unk11
 	ts_check_take_zenny [
 		amount: 0x64,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xC,
-		jumpIfSome: 0xC,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: CompText8759EF8_unk12_id,
+		jumpIfSome: CompText8759EF8_unk12_id,
 	]
 	ts_msg_open
 	ts_item_give [

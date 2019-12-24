@@ -45,7 +45,7 @@ CompText875CE10::
 	ts_end
 
 	def_text_script CompText875CE10_unk2
-	ts_jump target=1
+	ts_jump target=CompText875CE10_unk1_id
 
 	def_text_script CompText875CE10_unk3
 	ts_msg_open

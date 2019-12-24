@@ -124,11 +124,11 @@ CompText87A3180::
 	def_text_script CompText87A3180_unk12
 	ts_check_flag [
 		flag: 0x1D7,
-		jumpIfTrue: 0xE,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A3180_unk14_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1D7
-	ts_jump target=14
+	ts_jump target=CompText87A3180_unk14_id
 
 	def_text_script CompText87A3180_unk13
 	ts_mugshot_show mugshot=0x5E
@@ -142,8 +142,8 @@ CompText87A3180::
 	def_text_script CompText87A3180_unk14
 	ts_check_flag [
 		flag: 0x1EF,
-		jumpIfTrue: 0xF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A3180_unk15_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x5E
 	ts_msg_open
@@ -203,7 +203,7 @@ CompText87A3180::
 	ts_end
 
 	def_text_script CompText87A3180_unk15
-	ts_jump_random 65, 0x20, 0x20, 0xFF, 0x10
+	ts_jump_random CompText87A3180_unk65_id, 0x20, 0x20, 0xFF, 0x10
 	ts_mugshot_show mugshot=0x5E
 	ts_msg_open
 	.string "AMAZING!!\n"
@@ -218,9 +218,9 @@ CompText87A3180::
 	ts_mugshot_hide
 	ts_check_give_zenny [
 		amount: 0x7D0,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_player_animate_object animation=0x18
 	ts_print_current_navi
@@ -271,9 +271,9 @@ CompText87A3180::
 	ts_mugshot_hide
 	ts_check_give_bug_frags [
 		amount: 0x8,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_player_animate_object animation=0x18
 	ts_print_current_navi

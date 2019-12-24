@@ -12,13 +12,13 @@ CompText8794EC0::
 	def_text_script CompText8794EC0_unk0
 	ts_check_flag [
 		flag: 0xCD4,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8794EC0_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCD3,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8794EC0_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
@@ -107,13 +107,13 @@ CompText8794EC0::
 	def_text_script CompText8794EC0_unk10
 	ts_check_flag [
 		flag: 0xC1A,
-		jumpIfTrue: 0x14,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8794EC0_unk20_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC14,
-		jumpIfTrue: 0xF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8794EC0_unk15_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
@@ -135,13 +135,13 @@ CompText8794EC0::
 	def_text_script CompText8794EC0_unk11
 	ts_check_flag [
 		flag: 0xC1A,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8794EC0_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC14,
-		jumpIfTrue: 0x10,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8794EC0_unk16_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3F
 	ts_msg_open

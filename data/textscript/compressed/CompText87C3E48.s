@@ -17,7 +17,7 @@ CompText87C3E48::
 	.string "anyway!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87C3E48_unk1_id
 
 	def_text_script CompText87C3E48_unk1
 	ts_mugshot_show mugshot=0x3
@@ -27,7 +27,7 @@ CompText87C3E48::
 	.string "hasn't changed."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87C3E48_unk2_id
 
 	def_text_script CompText87C3E48_unk2
 	ts_mugshot_show mugshot=0x1
@@ -61,7 +61,7 @@ CompText87C3E48::
 	.string "L-Laaaaan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C3E48_unk5_id
 
 	def_text_script CompText87C3E48_unk5
 	ts_mugshot_show mugshot=0x3
@@ -69,7 +69,7 @@ CompText87C3E48::
 	.string "Hey,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C3E48_unk6_id
 
 	def_text_script CompText87C3E48_unk6
 	ts_mugshot_show mugshot=0x1
@@ -77,7 +77,7 @@ CompText87C3E48::
 	.string "Welcome back,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87C3E48_unk7_id
 
 	def_text_script CompText87C3E48_unk7
 	ts_mugshot_show mugshot=0x0
@@ -130,7 +130,7 @@ CompText87C3E48::
 	.string "Dex!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87C3E48_unk10_id
 
 	def_text_script CompText87C3E48_unk10
 	ts_mugshot_show mugshot=0x2
@@ -139,7 +139,7 @@ CompText87C3E48::
 	.string "a strong NetBattler!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87C3E48_unk11_id
 
 	def_text_script CompText87C3E48_unk11
 	ts_mugshot_show mugshot=0x0
@@ -148,7 +148,7 @@ CompText87C3E48::
 	.string "... Well,not really."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87C3E48_unk12_id
 
 	def_text_script CompText87C3E48_unk12
 	ts_mugshot_show mugshot=0x2
@@ -156,7 +156,7 @@ CompText87C3E48::
 	.string "... Ugh!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87C3E48_unk13_id
 
 	def_text_script CompText87C3E48_unk13
 	ts_mugshot_show mugshot=0x3
@@ -166,7 +166,7 @@ CompText87C3E48::
 	.string "matter where you go!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87C3E48_unk14_id
 
 	def_text_script CompText87C3E48_unk14
 	ts_mugshot_show mugshot=0x1
@@ -181,7 +181,7 @@ CompText87C3E48::
 	.string "hi to you!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C3E48_unk15_id
 
 	def_text_script CompText87C3E48_unk15
 	ts_mugshot_show mugshot=0x0

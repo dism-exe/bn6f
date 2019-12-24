@@ -13,14 +13,14 @@ CompText8779F28::
 	ts_check_chapter [
 		lower: 0x43,
 		upper: 0x46,
-		jumpIfInRange: 0xF,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8779F28_unk15_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x42,
 		upper: 0x42,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8779F28_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x10
 	ts_msg_open
@@ -47,14 +47,14 @@ CompText8779F28::
 	ts_check_chapter [
 		lower: 0x43,
 		upper: 0x46,
-		jumpIfInRange: 0x10,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8779F28_unk16_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x42,
 		upper: 0x42,
-		jumpIfInRange: 0x6,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8779F28_unk6_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x1A
 	ts_msg_open
@@ -77,8 +77,8 @@ CompText8779F28::
 	ts_check_chapter [
 		lower: 0x42,
 		upper: 0x42,
-		jumpIfInRange: 0x7,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8779F28_unk7_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xD
 	ts_msg_open
@@ -312,14 +312,14 @@ CompText8779F28::
 	def_text_script CompText8779F28_unk52
 	ts_check_flag [
 		flag: 0xC20,
-		jumpIfTrue: 0x36,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8779F28_unk54_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x52,
 		upper: 0x53,
-		jumpIfInRange: 0x35,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8779F28_unk53_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xC
 	ts_msg_open

@@ -27,7 +27,7 @@ CompText87BD064::
 	.string "in battle!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BD064_unk1_id
 
 	def_text_script CompText87BD064_unk1
 	ts_mugshot_show mugshot=0x0
@@ -37,7 +37,7 @@ CompText87BD064::
 	.string "specialty!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87BD064_unk2_id
 
 	def_text_script CompText87BD064_unk2
 	ts_mugshot_show mugshot=0x14
@@ -47,7 +47,7 @@ CompText87BD064::
 	.string "flat on your face!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87BD064_unk3_id
 
 	def_text_script CompText87BD064_unk3
 	ts_mugshot_show mugshot=0x0
@@ -57,7 +57,7 @@ CompText87BD064::
 	.string "to no one!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87BD064_unk4_id
 
 	def_text_script CompText87BD064_unk4
 	ts_mugshot_show mugshot=0x14
@@ -66,7 +66,7 @@ CompText87BD064::
 	.string "losing to you!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87BD064_unk5_id
 
 	def_text_script CompText87BD064_unk5
 	ts_mugshot_show mugshot=0x41
@@ -86,7 +86,7 @@ CompText87BD064::
 	.string "TEST."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87BD064_unk6_id
 
 	def_text_script CompText87BD064_unk6
 	ts_mugshot_show mugshot=0xD
@@ -95,7 +95,7 @@ CompText87BD064::
 	.string "mean battle,right?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87BD064_unk7_id
 
 	def_text_script CompText87BD064_unk7
 	ts_mugshot_show mugshot=0x41
@@ -113,7 +113,7 @@ CompText87BD064::
 	.string "REGISTER."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87BD064_unk8_id
 
 	def_text_script CompText87BD064_unk8
 	ts_mugshot_show mugshot=0xE
@@ -130,7 +130,7 @@ CompText87BD064::
 	.string "Ah,I'm so happy!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87BD064_unk9_id
 
 	def_text_script CompText87BD064_unk9
 	ts_mugshot_show mugshot=0x0
@@ -140,7 +140,7 @@ CompText87BD064::
 	.string "on TV,right?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87BD064_unk10_id
 
 	def_text_script CompText87BD064_unk10
 	ts_mugshot_show mugshot=0x41
@@ -160,7 +160,7 @@ CompText87BD064::
 	.string "CONTROLLED BY HIM!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87BD064_unk11_id
 
 	def_text_script CompText87BD064_unk11
 	ts_mugshot_show mugshot=0x0
@@ -170,7 +170,7 @@ CompText87BD064::
 	.string "That's really neat!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87BD064_unk12_id
 
 	def_text_script CompText87BD064_unk12
 	ts_mugshot_show mugshot=0x41
@@ -199,7 +199,7 @@ CompText87BD064::
 	.string "Alright,let's go!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87BD064_unk15_id
 
 	def_text_script CompText87BD064_unk15
 	ts_mugshot_show mugshot=0x14

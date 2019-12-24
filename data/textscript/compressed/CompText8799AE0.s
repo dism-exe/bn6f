@@ -12,8 +12,8 @@ CompText8799AE0::
 	def_text_script CompText8799AE0_unk0
 	ts_check_flag [
 		flag: 0xE32,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8799AE0_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open

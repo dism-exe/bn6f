@@ -58,13 +58,13 @@ CompText877E620::
 	def_text_script CompText877E620_unk10
 	ts_check_flag [
 		flag: 0x1122,
-		jumpIfTrue: 0xE,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877E620_unk14_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1121,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877E620_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1121
 	ts_mugshot_show mugshot=0x19

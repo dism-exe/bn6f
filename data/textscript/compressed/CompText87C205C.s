@@ -43,7 +43,7 @@ CompText87C205C::
 	.string "becomes a reality."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C205C_unk3_id
 
 	def_text_script CompText87C205C_unk3
 	ts_mugshot_show mugshot=0x2F
@@ -71,7 +71,7 @@ CompText87C205C::
 	.string "piece."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C205C_unk5_id
 
 	def_text_script CompText87C205C_unk5
 	ts_mugshot_show mugshot=0x2F
@@ -81,7 +81,7 @@ CompText87C205C::
 	.string "\"benefactor\"?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C205C_unk6_id
 
 	def_text_script CompText87C205C_unk6
 	ts_mugshot_show mugshot=0x1D
@@ -112,7 +112,7 @@ CompText87C205C::
 	.string "to our \"benefactor\"!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87C205C_unk7_id
 
 	def_text_script CompText87C205C_unk7
 	ts_mugshot_show mugshot=0x2F
@@ -132,7 +132,7 @@ CompText87C205C::
 	.string "hurt ourselves..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87C205C_unk8_id
 
 	def_text_script CompText87C205C_unk8
 	ts_mugshot_show mugshot=0x1D
@@ -155,7 +155,7 @@ CompText87C205C::
 	.string "the \"control panel\"."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87C205C_unk9_id
 
 	def_text_script CompText87C205C_unk9
 	ts_mugshot_show mugshot=0x2F
@@ -163,7 +163,7 @@ CompText87C205C::
 	.string "......"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87C205C_unk10_id
 
 	def_text_script CompText87C205C_unk10
 	ts_mugshot_show mugshot=0x1D

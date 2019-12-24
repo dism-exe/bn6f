@@ -30,7 +30,7 @@ CompText87AF374::
 	.string "here?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87AF374_unk3_id
 
 	def_text_script CompText87AF374_unk3
 	ts_mugshot_show mugshot=0x11
@@ -38,7 +38,7 @@ CompText87AF374::
 	.string "......"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87AF374_unk4_id
 
 	def_text_script CompText87AF374_unk4
 	ts_mugshot_show mugshot=0x0
@@ -53,7 +53,7 @@ CompText87AF374::
 	.string "CopyBot to me."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87AF374_unk5_id
 
 	def_text_script CompText87AF374_unk5
 	ts_mugshot_show mugshot=0x11
@@ -61,7 +61,7 @@ CompText87AF374::
 	.string "........."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AF374_unk6_id
 
 	def_text_script CompText87AF374_unk6
 	ts_mugshot_show mugshot=0x0
@@ -76,7 +76,7 @@ CompText87AF374::
 	.string "them that day,too."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87AF374_unk7_id
 
 	def_text_script CompText87AF374_unk7
 	ts_mugshot_show mugshot=0x11
@@ -86,7 +86,7 @@ CompText87AF374::
 	.string "water... It's wrong."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87AF374_unk8_id
 
 	def_text_script CompText87AF374_unk8
 	ts_mugshot_show mugshot=0x0
@@ -94,7 +94,7 @@ CompText87AF374::
 	.string "........."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87AF374_unk9_id
 
 	def_text_script CompText87AF374_unk9
 	ts_mugshot_show mugshot=0x11
@@ -104,7 +104,7 @@ CompText87AF374::
 	.string "live on land...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87AF374_unk10_id
 
 	def_text_script CompText87AF374_unk10
 	ts_mugshot_show mugshot=0x0
@@ -112,7 +112,7 @@ CompText87AF374::
 	.string "......"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87AF374_unk11_id
 
 	def_text_script CompText87AF374_unk11
 	ts_mugshot_show mugshot=0x11
@@ -120,7 +120,7 @@ CompText87AF374::
 	.string "... I-I'm Iris."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87AF374_unk12_id
 
 	def_text_script CompText87AF374_unk12
 	ts_mugshot_show mugshot=0x0
@@ -142,7 +142,7 @@ CompText87AF374::
 	.string "me that time..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87AF374_unk14_id
 
 	def_text_script CompText87AF374_unk14
 	ts_mugshot_show mugshot=0x0
@@ -159,7 +159,7 @@ CompText87AF374::
 	.string "about fish...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87AF374_unk15_id
 
 	def_text_script CompText87AF374_unk15
 	ts_mugshot_show mugshot=0x11
@@ -167,7 +167,7 @@ CompText87AF374::
 	.string "N-Nothing..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87AF374_unk16_id
 
 	def_text_script CompText87AF374_unk16
 	ts_mugshot_show mugshot=0x0
@@ -181,7 +181,7 @@ CompText87AF374::
 	.string "this class,are you?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87AF374_unk17_id
 
 	def_text_script CompText87AF374_unk17
 	ts_mugshot_show mugshot=0x11
@@ -189,7 +189,7 @@ CompText87AF374::
 	.string "I... I'm..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87AF374_unk18_id
 
 	def_text_script CompText87AF374_unk18
 	ts_mugshot_hide
@@ -203,7 +203,7 @@ CompText87AF374::
 	ts_sound_enable_text_sfx
 	ts_control_unlock
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87AF374_unk19_id
 
 	def_text_script CompText87AF374_unk19
 	ts_mugshot_show mugshot=0x37
@@ -215,8 +215,8 @@ CompText87AF374::
 
 	def_text_script CompText87AF374_unk20
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x16,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87AF374_unk22_id,
 	]
 	ts_mugshot_show mugshot=0x1E
 	ts_msg_open
@@ -225,7 +225,7 @@ CompText87AF374::
 	.string "gonna take!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87AF374_unk21_id
 
 	def_text_script CompText87AF374_unk21
 	ts_mugshot_show mugshot=0x0
@@ -243,7 +243,7 @@ CompText87AF374::
 	.string "to come here soon?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87AF374_unk23_id
 
 	def_text_script CompText87AF374_unk23
 	ts_mugshot_show mugshot=0x0
@@ -264,7 +264,7 @@ CompText87AF374::
 	.string "more next time!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87AF374_unk25_id
 
 	def_text_script CompText87AF374_unk25
 	ts_mugshot_show mugshot=0x11
@@ -273,7 +273,7 @@ CompText87AF374::
 	.string "*nod*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87AF374_unk26_id
 
 	def_text_script CompText87AF374_unk26
 	ts_mugshot_show mugshot=0x0

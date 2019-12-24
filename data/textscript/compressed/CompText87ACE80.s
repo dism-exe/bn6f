@@ -16,7 +16,7 @@ CompText87ACE80::
 	.string "sea monkeys!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87ACE80_unk1_id
 
 	def_text_script CompText87ACE80_unk1
 	ts_mugshot_show mugshot=0x0
@@ -186,7 +186,7 @@ CompText87ACE80::
 	.string "match for mine!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87ACE80_unk8_id
 
 	def_text_script CompText87ACE80_unk8
 	ts_mugshot_show mugshot=0x0

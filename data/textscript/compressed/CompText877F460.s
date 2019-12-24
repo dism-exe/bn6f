@@ -23,8 +23,8 @@ CompText877F460::
 	ts_check_chapter [
 		lower: 0x62,
 		upper: 0x62,
-		jumpIfInRange: 0xA,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText877F460_unk10_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xF
 	ts_msg_open

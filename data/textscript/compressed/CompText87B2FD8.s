@@ -39,7 +39,7 @@ CompText87B2FD8::
 	.string "And the Cybeast..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B2FD8_unk2_id
 
 	def_text_script CompText87B2FD8_unk2
 	ts_mugshot_show mugshot=0x0
@@ -63,7 +63,7 @@ CompText87B2FD8::
 	.string "of trouble..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B2FD8_unk4_id
 
 	def_text_script CompText87B2FD8_unk4
 	ts_mugshot_show mugshot=0x0
@@ -89,7 +89,7 @@ CompText87B2FD8::
 	.string "other Cybeast first."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B2FD8_unk6_id
 
 	def_text_script CompText87B2FD8_unk6
 	ts_mugshot_show mugshot=0x60
@@ -104,7 +104,7 @@ CompText87B2FD8::
 	.string "to this town?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B2FD8_unk7_id
 
 	def_text_script CompText87B2FD8_unk7
 	ts_mugshot_show mugshot=0x2B
@@ -112,7 +112,7 @@ CompText87B2FD8::
 	.string "... Huh...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B2FD8_unk8_id
 
 	def_text_script CompText87B2FD8_unk8
 	ts_mugshot_show mugshot=0x60
@@ -131,7 +131,7 @@ CompText87B2FD8::
 	.string "battle a victory."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B2FD8_unk9_id
 
 	def_text_script CompText87B2FD8_unk9
 	ts_mugshot_show mugshot=0x2B
@@ -144,7 +144,7 @@ CompText87B2FD8::
 	.string "one too,for sure!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B2FD8_unk10_id
 
 	def_text_script CompText87B2FD8_unk10
 	ts_mugshot_show mugshot=0x60

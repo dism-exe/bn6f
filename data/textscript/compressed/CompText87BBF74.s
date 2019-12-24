@@ -28,7 +28,7 @@ CompText87BBF74::
 	.string "mission together."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BBF74_unk1_id
 
 	def_text_script CompText87BBF74_unk1
 	ts_mugshot_show mugshot=0x0
@@ -37,17 +37,17 @@ CompText87BBF74::
 	.string "us both!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87BBF74_unk4_id
 
 	def_text_script CompText87BBF74_unk2
 	ts_mugshot_show mugshot=0x23
 	ts_msg_open
-	ts_jump target=3
+	ts_jump target=CompText87BBF74_unk3_id
 
 	def_text_script CompText87BBF74_unk3
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
-	ts_jump target=4
+	ts_jump target=CompText87BBF74_unk4_id
 
 	def_text_script CompText87BBF74_unk4
 	ts_mugshot_show mugshot=0x23
@@ -67,7 +67,7 @@ CompText87BBF74::
 	.string "Ho,ho,ho,ho!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87BBF74_unk5_id
 
 	def_text_script CompText87BBF74_unk5
 	ts_mugshot_show mugshot=0x0

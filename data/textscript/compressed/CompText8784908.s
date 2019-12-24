@@ -44,8 +44,8 @@ CompText8784908::
 	def_text_script CompText8784908_unk10
 	ts_check_shop_stock [
 		shop: 0x2,
-		jumpIfStocked: 0xFF,
-		jumpIfSoldOut: 0xC,
+		jumpIfStocked: TS_CONTINUE,
+		jumpIfSoldOut: CompText8784908_unk12_id,
 	]
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
@@ -184,18 +184,18 @@ CompText8784908::
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	ts_check_navi_all [
-		jumpIfMegaMan: 0x2E,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0x25,
-		jumpIfSlashMan: 0x26,
-		jumpIfEraseMan: 0x27,
-		jumpIfChargeMan: 0x28,
-		jumpIfSpoutMan: 0x29,
-		jumpIfTomahawkMan: 0x2A,
-		jumpIfTenguMan: 0x2B,
-		jumpIfGroundMan: 0x2C,
-		jumpIfDustMan: 0x2D,
-		jumpIfProtoMan: 0x2E,
+		jumpIfMegaMan: CompText8784908_unk46_id,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: CompText8784908_unk37_id,
+		jumpIfSlashMan: CompText8784908_unk38_id,
+		jumpIfEraseMan: CompText8784908_unk39_id,
+		jumpIfChargeMan: CompText8784908_unk40_id,
+		jumpIfSpoutMan: CompText8784908_unk41_id,
+		jumpIfTomahawkMan: CompText8784908_unk42_id,
+		jumpIfTenguMan: CompText8784908_unk43_id,
+		jumpIfGroundMan: CompText8784908_unk44_id,
+		jumpIfDustMan: CompText8784908_unk45_id,
+		jumpIfProtoMan: CompText8784908_unk46_id,
 	]
 	.string "Umm..."
 	ts_key_wait any=0x0
@@ -411,8 +411,8 @@ CompText8784908::
 	def_text_script CompText8784908_unk52
 	ts_check_flag [
 		flag: 0x1F0,
-		jumpIfTrue: 0x37,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8784908_unk55_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3D
 	ts_msg_open
@@ -468,7 +468,7 @@ CompText8784908::
 	def_text_script CompText8784908_unk54
 
 	def_text_script CompText8784908_unk55
-	ts_jump_random 65, 0x20, 0x20, 0xFF, 0x38
+	ts_jump_random CompText8784908_unk65_id, 0x20, 0x20, 0xFF, 0x38
 	ts_mugshot_show mugshot=0x3D
 	ts_msg_open
 	.string "AMAZING!!\n"
@@ -484,9 +484,9 @@ CompText8784908::
 	ts_mugshot_hide
 	ts_check_give_zenny [
 		amount: 0xBB8,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_player_animate_object animation=0x18
 	ts_print_current_navi
@@ -517,9 +517,9 @@ CompText8784908::
 	ts_mugshot_hide
 	ts_check_give_bug_frags [
 		amount: 0xA,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_player_animate_object animation=0x18
 	ts_print_current_navi
@@ -674,13 +674,13 @@ CompText8784908::
 	def_text_script CompText8784908_unk100
 	ts_check_flag [
 		flag: 0x110E,
-		jumpIfTrue: 0x68,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8784908_unk104_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x110D,
-		jumpIfTrue: 0x65,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8784908_unk101_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x110D
 	ts_mugshot_show mugshot=0x3E
@@ -789,9 +789,9 @@ CompText8784908::
 		chip: 0xF,
 		code: 0x2,
 		amount: 0x1,
-		jumpIfEqual: 0x67,
-		jumpIfGreater: 0x67,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText8784908_unk103_id,
+		jumpIfGreater: CompText8784908_unk103_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
@@ -943,28 +943,28 @@ CompText8784908::
 	ts_flag_set flag=0x11C7
 	ts_check_flag [
 		flag: 0x11CB,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x71,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk113_id,
 	]
 	ts_check_flag [
 		flag: 0x11CA,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x71,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk113_id,
 	]
 	ts_check_flag [
 		flag: 0x11C9,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x71,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk113_id,
 	]
 	ts_check_flag [
 		flag: 0x11C8,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x71,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk113_id,
 	]
 	ts_check_flag [
 		flag: 0x11C7,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x71,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk113_id,
 	]
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x37
@@ -1019,28 +1019,28 @@ CompText8784908::
 	ts_flag_set flag=0x11C8
 	ts_check_flag [
 		flag: 0x11CB,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x71,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk113_id,
 	]
 	ts_check_flag [
 		flag: 0x11CA,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x71,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk113_id,
 	]
 	ts_check_flag [
 		flag: 0x11C9,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x71,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk113_id,
 	]
 	ts_check_flag [
 		flag: 0x11C8,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x71,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk113_id,
 	]
 	ts_check_flag [
 		flag: 0x11C7,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x71,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk113_id,
 	]
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x37
@@ -1107,9 +1107,9 @@ CompText8784908::
 	ts_select 0x6, 0x80, 0xFF, 0x79, 0xFF
 	ts_check_take_zenny [
 		amount: 0xA,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0x8A,
-		jumpIfSome: 0x8A,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: CompText8784908_unk138_id,
+		jumpIfSome: CompText8784908_unk138_id,
 	]
 	ts_mugshot_show mugshot=0x42
 	.string "...Thanks!"
@@ -1127,7 +1127,7 @@ CompText8784908::
 	.string "taste..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=122
+	ts_jump target=CompText8784908_unk122_id
 
 	def_text_script CompText8784908_unk121
 	ts_mugshot_show mugshot=0x42
@@ -1138,18 +1138,18 @@ CompText8784908::
 
 	def_text_script CompText8784908_unk122
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x8B,
-		jumpIfElecMan: 0x8B,
-		jumpIfSlashMan: 0x8B,
-		jumpIfEraseMan: 0x8B,
-		jumpIfChargeMan: 0x8B,
-		jumpIfSpoutMan: 0x8B,
-		jumpIfTomahawkMan: 0x8B,
-		jumpIfTenguMan: 0x8B,
-		jumpIfGroundMan: 0x8B,
-		jumpIfDustMan: 0x8B,
-		jumpIfProtoMan: 0x8B,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText8784908_unk139_id,
+		jumpIfElecMan: CompText8784908_unk139_id,
+		jumpIfSlashMan: CompText8784908_unk139_id,
+		jumpIfEraseMan: CompText8784908_unk139_id,
+		jumpIfChargeMan: CompText8784908_unk139_id,
+		jumpIfSpoutMan: CompText8784908_unk139_id,
+		jumpIfTomahawkMan: CompText8784908_unk139_id,
+		jumpIfTenguMan: CompText8784908_unk139_id,
+		jumpIfGroundMan: CompText8784908_unk139_id,
+		jumpIfDustMan: CompText8784908_unk139_id,
+		jumpIfProtoMan: CompText8784908_unk139_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	.string "Coffee is best\n"
@@ -1170,44 +1170,44 @@ CompText8784908::
 	ts_check_chapter [
 		lower: 0x0,
 		upper: 0x5,
-		jumpIfInRange: 0x83,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8784908_unk131_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x10,
 		upper: 0x16,
-		jumpIfInRange: 0x84,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8784908_unk132_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x20,
 		upper: 0x25,
-		jumpIfInRange: 0x85,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8784908_unk133_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x30,
 		upper: 0x33,
-		jumpIfInRange: 0x86,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8784908_unk134_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x40,
 		upper: 0x46,
-		jumpIfInRange: 0x87,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8784908_unk135_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x50,
 		upper: 0x53,
-		jumpIfInRange: 0x88,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8784908_unk136_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x60,
 		upper: 0x64,
-		jumpIfInRange: 0x89,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8784908_unk137_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x42
 	.string "...A customer\n"
@@ -1442,174 +1442,174 @@ CompText8784908::
 	def_text_script CompText8784908_unk131
 	ts_check_flag [
 		flag: 0x10D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7B,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk123_id,
 	]
-	ts_jump target=123
+	ts_jump target=CompText8784908_unk123_id
 	ts_end
 
 	def_text_script CompText8784908_unk132
 	ts_check_flag [
 		flag: 0x10D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7B,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk123_id,
 	]
 	ts_check_flag [
 		flag: 0x10E,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7C,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk124_id,
 	]
-	ts_jump_random 71, 0x20, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7B, 0x7C, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+	ts_jump_random CompText8784908_unk71_id, 0x20, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7B, 0x7C, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.string "Temp message@"
 
 	def_text_script CompText8784908_unk133
 	ts_check_flag [
 		flag: 0x10D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7B,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk123_id,
 	]
 	ts_check_flag [
 		flag: 0x10E,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7C,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk124_id,
 	]
 	ts_check_flag [
 		flag: 0x10F,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7D,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk125_id,
 	]
-	ts_jump_random 71, 0x20, 0x20, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7B, 0x7C, 0x7D, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+	ts_jump_random CompText8784908_unk71_id, 0x20, 0x20, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7B, 0x7C, 0x7D, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.string "Temp message@"
 
 	def_text_script CompText8784908_unk134
 	ts_check_flag [
 		flag: 0x10D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7B,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk123_id,
 	]
 	ts_check_flag [
 		flag: 0x10E,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7C,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk124_id,
 	]
 	ts_check_flag [
 		flag: 0x10F,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7D,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk125_id,
 	]
 	ts_check_flag [
 		flag: 0x110,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7E,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk126_id,
 	]
-	ts_jump_random 71, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0x0, 0x0, 0x7B, 0x7C, 0x7D, 0x7E, 0xFF, 0xFF, 0xFF, 0xFF
+	ts_jump_random CompText8784908_unk71_id, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0x0, 0x0, 0x7B, 0x7C, 0x7D, 0x7E, 0xFF, 0xFF, 0xFF, 0xFF
 	.string "Temp message@"
 
 	def_text_script CompText8784908_unk135
 	ts_check_flag [
 		flag: 0x10D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7B,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk123_id,
 	]
 	ts_check_flag [
 		flag: 0x10E,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7C,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk124_id,
 	]
 	ts_check_flag [
 		flag: 0x10F,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7D,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk125_id,
 	]
 	ts_check_flag [
 		flag: 0x110,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7E,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk126_id,
 	]
 	ts_check_flag [
 		flag: 0x111,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7F,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk127_id,
 	]
-	ts_jump_random 71, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0x0, 0x7B, 0x7C, 0x7D, 0x7E, 0x7F, 0xFF, 0xFF, 0xFF
+	ts_jump_random CompText8784908_unk71_id, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0x0, 0x7B, 0x7C, 0x7D, 0x7E, 0x7F, 0xFF, 0xFF, 0xFF
 	.string "Temp message@"
 
 	def_text_script CompText8784908_unk136
 	ts_check_flag [
 		flag: 0x10D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7B,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk123_id,
 	]
 	ts_check_flag [
 		flag: 0x10E,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7C,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk124_id,
 	]
 	ts_check_flag [
 		flag: 0x10F,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7D,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk125_id,
 	]
 	ts_check_flag [
 		flag: 0x110,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7E,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk126_id,
 	]
 	ts_check_flag [
 		flag: 0x111,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7F,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk127_id,
 	]
 	ts_check_flag [
 		flag: 0x112,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x80,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk128_id,
 	]
-	ts_jump_random 71, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0x7B, 0x7C, 0x7D, 0x7E, 0x7F, 0x80, 0xFF, 0xFF
+	ts_jump_random CompText8784908_unk71_id, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0x7B, 0x7C, 0x7D, 0x7E, 0x7F, 0x80, 0xFF, 0xFF
 	.string "Temp message@"
 
 	def_text_script CompText8784908_unk137
 	ts_check_flag [
 		flag: 0x10D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7B,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk123_id,
 	]
 	ts_check_flag [
 		flag: 0x10E,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7C,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk124_id,
 	]
 	ts_check_flag [
 		flag: 0x10F,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7D,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk125_id,
 	]
 	ts_check_flag [
 		flag: 0x110,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7E,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk126_id,
 	]
 	ts_check_flag [
 		flag: 0x111,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7F,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk127_id,
 	]
 	ts_check_flag [
 		flag: 0x112,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x80,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk128_id,
 	]
 	ts_check_flag [
 		flag: 0x113,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x81,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk129_id,
 	]
 	ts_check_flag [
 		flag: 0x114,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x82,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8784908_unk130_id,
 	]
-	ts_jump_random 71, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x7B, 0x7C, 0x7D, 0x7E, 0x7F, 0x80, 0x81, 0xFF
+	ts_jump_random CompText8784908_unk71_id, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x7B, 0x7C, 0x7D, 0x7E, 0x7F, 0x80, 0x81, 0xFF
 	.string "Temp message@"
 
 	def_text_script CompText8784908_unk138
@@ -1638,8 +1638,8 @@ CompText8784908::
 	def_text_script CompText8784908_unk140
 	ts_check_flag [
 		flag: 0x46A,
-		jumpIfTrue: 0x78,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8784908_unk120_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
@@ -1700,9 +1700,9 @@ CompText8784908::
 	ts_select 0x6, 0x80, 0xFF, 0x79, 0xFF
 	ts_check_take_zenny [
 		amount: 0xA,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0x8A,
-		jumpIfSome: 0x8A,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: CompText8784908_unk138_id,
+		jumpIfSome: CompText8784908_unk138_id,
 	]
 	ts_mugshot_show mugshot=0x42
 	.string "...Thank you!"
@@ -1726,7 +1726,7 @@ CompText8784908::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_start_heal amount=0xA
-	ts_jump target=122
+	ts_jump target=CompText8784908_unk122_id
 
 	def_text_script CompText8784908_unk141
 

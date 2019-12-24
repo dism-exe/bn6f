@@ -25,7 +25,7 @@ CompText87B2A98::
 	.string "using it!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B2A98_unk1_id
 
 	def_text_script CompText87B2A98_unk1
 	ts_mugshot_show mugshot=0x37
@@ -33,7 +33,7 @@ CompText87B2A98::
 	.string "Yeah!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B2A98_unk2_id
 
 	def_text_script CompText87B2A98_unk2
 	ts_mugshot_show mugshot=0x6
@@ -45,7 +45,7 @@ CompText87B2A98::
 	.string "Hey! Wait...!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B2A98_unk3_id
 
 	def_text_script CompText87B2A98_unk3
 	ts_mugshot_show mugshot=0x0
@@ -61,7 +61,7 @@ CompText87B2A98::
 	.string "Yo,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B2A98_unk5_id
 
 	def_text_script CompText87B2A98_unk5
 	ts_mugshot_show mugshot=0x0
@@ -69,7 +69,7 @@ CompText87B2A98::
 	.string "Oh,it's Mick..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B2A98_unk6_id
 
 	def_text_script CompText87B2A98_unk6
 	ts_mugshot_show mugshot=0x14
@@ -79,7 +79,7 @@ CompText87B2A98::
 	.string "Hmph!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B2A98_unk7_id
 
 	def_text_script CompText87B2A98_unk7
 	ts_mugshot_show mugshot=0x0
@@ -91,7 +91,7 @@ CompText87B2A98::
 	.string "you're in a hurry..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B2A98_unk8_id
 
 	def_text_script CompText87B2A98_unk8
 	ts_mugshot_show mugshot=0x14
@@ -125,7 +125,7 @@ CompText87B2A98::
 	.string "be up to no good!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B2A98_unk9_id
 
 	def_text_script CompText87B2A98_unk9
 	ts_mugshot_show mugshot=0x0
@@ -134,7 +134,7 @@ CompText87B2A98::
 	.string "this time!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B2A98_unk10_id
 
 	def_text_script CompText87B2A98_unk10
 	ts_mugshot_show mugshot=0x37
@@ -145,7 +145,7 @@ CompText87B2A98::
 	.string "Jack me in!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87B2A98_unk11_id
 
 	def_text_script CompText87B2A98_unk11
 	ts_mugshot_show mugshot=0x0

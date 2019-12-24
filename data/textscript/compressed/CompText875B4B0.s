@@ -159,36 +159,36 @@ CompText875B4B0::
 	def_text_script CompText875B4B0_unk20
 	ts_check_flag [
 		flag: 0x163,
-		jumpIfTrue: 0x0,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875B4B0_unk0_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x11F,
-		jumpIfTrue: 0x1B,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875B4B0_unk27_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x85F,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x18,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText875B4B0_unk24_id,
 	]
 	ts_check_flag [
 		flag: 0x862,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875B4B0_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x862
-	ts_jump target=22
+	ts_jump target=CompText875B4B0_unk22_id
 
 	def_text_script CompText875B4B0_unk21
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x19,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText875B4B0_unk25_id,
 	]
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x17,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText875B4B0_unk23_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -256,20 +256,20 @@ CompText875B4B0::
 	def_text_script CompText875B4B0_unk24
 	ts_check_flag [
 		flag: 0x120,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x0,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText875B4B0_unk0_id,
 	]
 	ts_check_flag [
 		flag: 0x860,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875B4B0_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_jump target=0
+	ts_jump target=CompText875B4B0_unk0_id
 
 	def_text_script CompText875B4B0_unk25
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x1A,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText875B4B0_unk26_id,
 	]
 	ts_mugshot_show mugshot=0x4B
 	ts_msg_open
@@ -333,8 +333,8 @@ CompText875B4B0::
 
 	def_text_script CompText875B4B0_unk27
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x1C,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText875B4B0_unk28_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

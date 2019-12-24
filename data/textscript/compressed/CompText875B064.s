@@ -70,8 +70,8 @@ CompText875B064::
 	ts_key_wait any=0x0
 	ts_check_flag [
 		flag: 0x188,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875B064_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	.string "... What was that\n"
@@ -81,8 +81,8 @@ CompText875B064::
 	ts_mugshot_hide
 	ts_check_flag [
 		flag: 0x1729,
-		jumpIfTrue: 0x5,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875B064_unk5_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	ts_item_give [
@@ -152,8 +152,8 @@ CompText875B064::
 	ts_check_chapter [
 		lower: 0x30,
 		upper: 0xFF,
-		jumpIfInRange: 0x6,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875B064_unk6_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "Popcorn is sold\n"

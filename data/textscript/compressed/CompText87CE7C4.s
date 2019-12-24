@@ -34,7 +34,7 @@ CompText87CE7C4::
 	.string "worried about you!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87CE7C4_unk2_id
 
 	def_text_script CompText87CE7C4_unk2
 	ts_mugshot_show mugshot=0x0
@@ -46,7 +46,7 @@ CompText87CE7C4::
 	.string "Mick,Tab..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CE7C4_unk3_id
 
 	def_text_script CompText87CE7C4_unk3
 	ts_mugshot_show mugshot=0x14
@@ -59,7 +59,7 @@ CompText87CE7C4::
 	.string "about you at all!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87CE7C4_unk4_id
 
 	def_text_script CompText87CE7C4_unk4
 	ts_mugshot_show mugshot=0x0
@@ -68,7 +68,7 @@ CompText87CE7C4::
 	.string "your face says!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87CE7C4_unk5_id
 
 	def_text_script CompText87CE7C4_unk5
 	ts_mugshot_show mugshot=0x14
@@ -76,7 +76,7 @@ CompText87CE7C4::
 	.string "Shut up!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87CE7C4_unk6_id
 
 	def_text_script CompText87CE7C4_unk6
 	ts_mugshot_show mugshot=0x33
@@ -98,7 +98,7 @@ CompText87CE7C4::
 	.string "with just one word!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87CE7C4_unk7_id
 
 	def_text_script CompText87CE7C4_unk7
 	ts_mugshot_show mugshot=0x0
@@ -108,7 +108,7 @@ CompText87CE7C4::
 	.string " Robots...?)"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87CE7C4_unk8_id
 
 	def_text_script CompText87CE7C4_unk8
 	ts_mugshot_show mugshot=0x14
@@ -135,7 +135,7 @@ CompText87CE7C4::
 	.string "Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87CE7C4_unk10_id
 
 	def_text_script CompText87CE7C4_unk10
 	ts_mugshot_show mugshot=0x0
@@ -159,7 +159,7 @@ CompText87CE7C4::
 	.string "have to do..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87CE7C4_unk13_id
 
 	def_text_script CompText87CE7C4_unk13
 	ts_mugshot_show mugshot=0x0
@@ -171,7 +171,7 @@ CompText87CE7C4::
 	.string "are you?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87CE7C4_unk14_id
 
 	def_text_script CompText87CE7C4_unk14
 	ts_mugshot_show mugshot=0x11
@@ -179,7 +179,7 @@ CompText87CE7C4::
 	.string "Um..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87CE7C4_unk15_id
 
 	def_text_script CompText87CE7C4_unk15
 	ts_mugshot_show mugshot=0x0
@@ -198,7 +198,7 @@ CompText87CE7C4::
 	.string "you..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87CE7C4_unk16_id
 
 	def_text_script CompText87CE7C4_unk16
 	ts_mugshot_show mugshot=0x11
@@ -206,7 +206,7 @@ CompText87CE7C4::
 	.string "........."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87CE7C4_unk17_id
 
 	def_text_script CompText87CE7C4_unk17
 	ts_mugshot_show mugshot=0x0
@@ -233,7 +233,7 @@ CompText87CE7C4::
 	.string "yourself?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87CE7C4_unk18_id
 
 	def_text_script CompText87CE7C4_unk18
 	ts_mugshot_show mugshot=0x11
@@ -245,7 +245,7 @@ CompText87CE7C4::
 	.string "........irst..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87CE7C4_unk19_id
 
 	def_text_script CompText87CE7C4_unk19
 	ts_mugshot_show mugshot=0x0
@@ -254,7 +254,7 @@ CompText87CE7C4::
 	.string "say?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87CE7C4_unk20_id
 
 	def_text_script CompText87CE7C4_unk20
 	ts_mugshot_show mugshot=0x11
@@ -268,7 +268,7 @@ CompText87CE7C4::
 	.string "friend..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87CE7C4_unk21_id
 
 	def_text_script CompText87CE7C4_unk21
 	ts_mugshot_show mugshot=0x0
@@ -276,7 +276,7 @@ CompText87CE7C4::
 	.string "Iris..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87CE7C4_unk22_id
 
 	def_text_script CompText87CE7C4_unk22
 	ts_mugshot_show mugshot=0x14
@@ -307,7 +307,7 @@ CompText87CE7C4::
 	.string "know,OK?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87CE7C4_unk25_id
 
 	def_text_script CompText87CE7C4_unk25
 	ts_mugshot_show mugshot=0x11
@@ -315,7 +315,7 @@ CompText87CE7C4::
 	.string "OK..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87CE7C4_unk26_id
 
 	def_text_script CompText87CE7C4_unk26
 	ts_mugshot_show mugshot=0x0

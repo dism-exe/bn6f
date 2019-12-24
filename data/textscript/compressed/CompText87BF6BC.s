@@ -17,7 +17,7 @@ CompText87BF6BC::
 	.string "here..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BF6BC_unk1_id
 
 	def_text_script CompText87BF6BC_unk1
 	ts_mugshot_hide
@@ -42,7 +42,7 @@ CompText87BF6BC::
 	.string "Aaah!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87BF6BC_unk3_id
 
 	def_text_script CompText87BF6BC_unk3
 	ts_mugshot_show mugshot=0x0
@@ -99,7 +99,7 @@ CompText87BF6BC::
 	.string "looks strange...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87BF6BC_unk8_id
 
 	def_text_script CompText87BF6BC_unk8
 	ts_mugshot_show mugshot=0xF
@@ -109,7 +109,7 @@ CompText87BF6BC::
 	.string "up as me..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87BF6BC_unk9_id
 
 	def_text_script CompText87BF6BC_unk9
 	ts_mugshot_show mugshot=0x0
@@ -119,7 +119,7 @@ CompText87BF6BC::
 	.string "Admin Building?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87BF6BC_unk10_id
 
 	def_text_script CompText87BF6BC_unk10
 	ts_mugshot_show mugshot=0xF
@@ -133,7 +133,7 @@ CompText87BF6BC::
 	.string "the Force Program..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87BF6BC_unk11_id
 
 	def_text_script CompText87BF6BC_unk11
 	ts_mugshot_show mugshot=0x0
@@ -141,7 +141,7 @@ CompText87BF6BC::
 	.string "Force Program...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87BF6BC_unk12_id
 
 	def_text_script CompText87BF6BC_unk12
 	ts_mugshot_show mugshot=0xF
@@ -174,7 +174,7 @@ CompText87BF6BC::
 	.string "fall to the Earth!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87BF6BC_unk13_id
 
 	def_text_script CompText87BF6BC_unk13
 	ts_mugshot_show mugshot=0x0
@@ -182,7 +182,7 @@ CompText87BF6BC::
 	.string "What!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87BF6BC_unk14_id
 
 	def_text_script CompText87BF6BC_unk14
 	ts_mugshot_show mugshot=0xF
@@ -202,7 +202,7 @@ CompText87BF6BC::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87BF6BC_unk15_id
 
 	def_text_script CompText87BF6BC_unk15
 	ts_mugshot_show mugshot=0x0
@@ -211,7 +211,7 @@ CompText87BF6BC::
 	.string "Hey,mister!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87BF6BC_unk16_id
 
 	def_text_script CompText87BF6BC_unk16
 	ts_mugshot_show mugshot=0x37

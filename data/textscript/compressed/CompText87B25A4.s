@@ -25,7 +25,7 @@ CompText87B25A4::
 	.string "it's sunrise..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B25A4_unk1_id
 
 	def_text_script CompText87B25A4_unk1
 	ts_mugshot_show mugshot=0x5
@@ -42,7 +42,7 @@ CompText87B25A4::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_sound_play_bgm track=0xD
-	ts_jump target=3
+	ts_jump target=CompText87B25A4_unk3_id
 
 	def_text_script CompText87B25A4_unk3
 	ts_mugshot_show mugshot=0x0
@@ -63,7 +63,7 @@ CompText87B25A4::
 	.string "... How is..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B25A4_unk5_id
 
 	def_text_script CompText87B25A4_unk5
 	ts_mugshot_show mugshot=0x0
@@ -138,7 +138,7 @@ CompText87B25A4::
 	.string "... M-MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B25A4_unk9_id
 
 	def_text_script CompText87B25A4_unk9
 	ts_mugshot_show mugshot=0x37
@@ -162,7 +162,7 @@ CompText87B25A4::
 	.string "I made you worry!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B25A4_unk10_id
 
 	def_text_script CompText87B25A4_unk10
 	ts_mugshot_show mugshot=0x0
@@ -174,7 +174,7 @@ CompText87B25A4::
 	.string "... I'm so glad..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87B25A4_unk11_id
 
 	def_text_script CompText87B25A4_unk11
 	ts_mugshot_show mugshot=0x37
@@ -191,7 +191,7 @@ CompText87B25A4::
 	.string "Yeah!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87B25A4_unk12_id
 
 	def_text_script CompText87B25A4_unk12
 	ts_mugshot_show mugshot=0x0
@@ -220,7 +220,7 @@ CompText87B25A4::
 	.string "is..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87B25A4_unk13_id
 
 	def_text_script CompText87B25A4_unk13
 	ts_mugshot_hide
@@ -234,7 +234,7 @@ CompText87B25A4::
 	ts_sound_enable_text_sfx
 	ts_control_unlock
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87B25A4_unk14_id
 
 	def_text_script CompText87B25A4_unk14
 	ts_mugshot_show mugshot=0x37

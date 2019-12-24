@@ -19,7 +19,7 @@ CompText87D21D4::
 	.string "Jack out,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D21D4_unk1_id
 
 	def_text_script CompText87D21D4_unk1
 	ts_mugshot_show mugshot=0x37

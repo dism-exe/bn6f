@@ -71,18 +71,18 @@ CompText879FDB4::
 	def_text_script CompText879FDB4_unk3
 	ts_check_flag [
 		flag: 0x114D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x4,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879FDB4_unk4_id,
 	]
 	ts_check_flag [
 		flag: 0x114E,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x4,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879FDB4_unk4_id,
 	]
 	ts_check_flag [
 		flag: 0x114F,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x4,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879FDB4_unk4_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -121,9 +121,9 @@ CompText879FDB4::
 	ts_check_item07 [
 		item: 0x46,
 		amount: 0x1,
-		jumpIfEqual: 0x5,
-		jumpIfGreater: 0x5,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText879FDB4_unk5_id,
+		jumpIfGreater: CompText879FDB4_unk5_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
@@ -164,9 +164,9 @@ CompText879FDB4::
 	def_text_script CompText879FDB4_unk7
 	ts_check_take_zenny [
 		amount: 0x64,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0x8,
-		jumpIfSome: 0x8,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: CompText879FDB4_unk8_id,
+		jumpIfSome: CompText879FDB4_unk8_id,
 	]
 	ts_mugshot_hide
 	ts_msg_open

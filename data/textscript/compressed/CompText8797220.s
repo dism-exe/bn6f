@@ -23,8 +23,8 @@ CompText8797220::
 	def_text_script CompText8797220_unk1
 	ts_check_shop_stock [
 		shop: 0x9,
-		jumpIfStocked: 0xFF,
-		jumpIfSoldOut: 0x3,
+		jumpIfStocked: TS_CONTINUE,
+		jumpIfSoldOut: CompText8797220_unk3_id,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open

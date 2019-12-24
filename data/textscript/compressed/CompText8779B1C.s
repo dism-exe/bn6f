@@ -41,14 +41,14 @@ CompText8779B1C::
 	ts_check_chapter [
 		lower: 0x33,
 		upper: 0x33,
-		jumpIfInRange: 0x12,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8779B1C_unk18_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x32,
 		upper: 0x32,
-		jumpIfInRange: 0xC,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8779B1C_unk12_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x1A
 	ts_msg_open

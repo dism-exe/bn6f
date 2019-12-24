@@ -33,7 +33,7 @@ CompText87A6884::
 	.string "about here,so..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A6884_unk2_id
 
 	def_text_script CompText87A6884_unk2
 	ts_mugshot_show mugshot=0x14
@@ -42,7 +42,7 @@ CompText87A6884::
 	.string "you useless Navi!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A6884_unk3_id
 
 	def_text_script CompText87A6884_unk3
 	ts_mugshot_show mugshot=0x57
@@ -68,7 +68,7 @@ CompText87A6884::
 	.string "a beginner like him!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A6884_unk5_id
 
 	def_text_script CompText87A6884_unk5
 	ts_mugshot_show mugshot=0x57
@@ -78,7 +78,7 @@ CompText87A6884::
 	.string "stink at operating?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A6884_unk7_id
 
 	def_text_script CompText87A6884_unk6
 
@@ -93,7 +93,7 @@ CompText87A6884::
 	.string "Get away from me!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87A6884_unk8_id
 
 	def_text_script CompText87A6884_unk8
 	ts_mugshot_show mugshot=0x57
@@ -117,7 +117,7 @@ CompText87A6884::
 	ts_wait frames=0x14
 	ts_sound_play00 track=0x76
 	ts_wait frames=0x1E
-	ts_jump target=9
+	ts_jump target=CompText87A6884_unk9_id
 
 	def_text_script CompText87A6884_unk9
 	ts_mugshot_show mugshot=0x14
@@ -145,7 +145,7 @@ CompText87A6884::
 	.string "somehow crush him..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87A6884_unk11_id
 
 	def_text_script CompText87A6884_unk11
 	ts_mugshot_hide
@@ -168,7 +168,7 @@ CompText87A6884::
 	.string "W-Who's there!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87A6884_unk13_id
 
 	def_text_script CompText87A6884_unk13
 	ts_mugshot_hide
@@ -187,7 +187,7 @@ CompText87A6884::
 	.string "Who are you...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87A6884_unk15_id
 
 	def_text_script CompText87A6884_unk15
 	ts_mugshot_show mugshot=0x51
@@ -204,7 +204,7 @@ CompText87A6884::
 	.string "that new student..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87A6884_unk16_id
 
 	def_text_script CompText87A6884_unk16
 	ts_mugshot_show mugshot=0x14
@@ -215,7 +215,7 @@ CompText87A6884::
 	.string "And where did...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87A6884_unk17_id
 
 	def_text_script CompText87A6884_unk17
 	ts_mugshot_show mugshot=0x51
@@ -248,7 +248,7 @@ CompText87A6884::
 	.string "."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87A6884_unk18_id
 
 	def_text_script CompText87A6884_unk18
 	ts_mugshot_show mugshot=0x14
@@ -261,7 +261,7 @@ CompText87A6884::
 	.string "a lesson!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87A6884_unk19_id
 
 	def_text_script CompText87A6884_unk19
 	ts_mugshot_show mugshot=0x51
@@ -290,7 +290,7 @@ CompText87A6884::
 	.string "Kwohohoho!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87A6884_unk20_id
 
 	def_text_script CompText87A6884_unk20
 	ts_mugshot_show mugshot=0x14

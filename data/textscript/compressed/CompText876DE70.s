@@ -32,8 +32,8 @@ CompText876DE70::
 	def_text_script CompText876DE70_unk10
 	ts_check_flag [
 		flag: 0xA10,
-		jumpIfTrue: 0xF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876DE70_unk15_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xC
 	ts_msg_open
@@ -55,8 +55,8 @@ CompText876DE70::
 	def_text_script CompText876DE70_unk11
 	ts_check_flag [
 		flag: 0xA10,
-		jumpIfTrue: 0x10,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876DE70_unk16_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x10
 	ts_msg_open
@@ -126,8 +126,8 @@ CompText876DE70::
 	def_text_script CompText876DE70_unk30
 	ts_check_flag [
 		flag: 0xC0A,
-		jumpIfTrue: 0x1F,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876DE70_unk31_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xC
 	ts_msg_open

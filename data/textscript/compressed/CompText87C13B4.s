@@ -17,7 +17,7 @@ CompText87C13B4::
 	.string "rarely missing now!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87C13B4_unk1_id
 
 	def_text_script CompText87C13B4_unk1
 	ts_mugshot_show mugshot=0x0
@@ -32,7 +32,7 @@ CompText87C13B4::
 	.string "learned a lot!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87C13B4_unk2_id
 
 	def_text_script CompText87C13B4_unk2
 	ts_mugshot_show mugshot=0x21
@@ -45,7 +45,7 @@ CompText87C13B4::
 	.string "LinkNavis,alright!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C13B4_unk3_id
 
 	def_text_script CompText87C13B4_unk3
 	ts_mugshot_hide
@@ -67,7 +67,7 @@ CompText87C13B4::
 	]
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C13B4_unk4_id
 
 	def_text_script CompText87C13B4_unk4
 	ts_mugshot_show mugshot=0x21
@@ -86,7 +86,7 @@ CompText87C13B4::
 	.string "have taught me!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C13B4_unk5_id
 
 	def_text_script CompText87C13B4_unk5
 	ts_mugshot_show mugshot=0x21
@@ -99,7 +99,7 @@ CompText87C13B4::
 	.string "just come back here!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C13B4_unk6_id
 
 	def_text_script CompText87C13B4_unk6
 	ts_mugshot_show mugshot=0x0

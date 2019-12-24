@@ -23,7 +23,7 @@ CompText87A849C::
 	.string "right?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87A849C_unk1_id
 
 	def_text_script CompText87A849C_unk1
 	ts_mugshot_show mugshot=0x57
@@ -31,7 +31,7 @@ CompText87A849C::
 	.string "Hmph!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A849C_unk2_id
 
 	def_text_script CompText87A849C_unk2
 	ts_mugshot_show mugshot=0x0
@@ -44,7 +44,7 @@ CompText87A849C::
 	.string "trouble!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A849C_unk3_id
 
 	def_text_script CompText87A849C_unk3
 	ts_mugshot_show mugshot=0x57
@@ -58,7 +58,7 @@ CompText87A849C::
 	.string "\"Oh,well!\""
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A849C_unk4_id
 
 	def_text_script CompText87A849C_unk4
 	ts_mugshot_show mugshot=0x0
@@ -72,7 +72,7 @@ CompText87A849C::
 	.string "worried?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A849C_unk5_id
 
 	def_text_script CompText87A849C_unk5
 	ts_mugshot_show mugshot=0x57
@@ -99,7 +99,7 @@ CompText87A849C::
 	.string "back into your PET!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A849C_unk7_id
 
 	def_text_script CompText87A849C_unk7
 	ts_mugshot_show mugshot=0x14
@@ -112,7 +112,7 @@ CompText87A849C::
 	.string "apologizing to me!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87A849C_unk8_id
 
 	def_text_script CompText87A849C_unk8
 	ts_mugshot_show mugshot=0x57
@@ -125,7 +125,7 @@ CompText87A849C::
 	.string "out for..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87A849C_unk9_id
 
 	def_text_script CompText87A849C_unk9
 	ts_mugshot_show mugshot=0x37
@@ -145,7 +145,7 @@ CompText87A849C::
 	.string "Waaaah! Ouuuuch!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87A849C_unk11_id
 
 	def_text_script CompText87A849C_unk11
 	ts_mugshot_show mugshot=0x0
@@ -153,7 +153,7 @@ CompText87A849C::
 	.string "Mick!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87A849C_unk12_id
 
 	def_text_script CompText87A849C_unk12
 	ts_mugshot_show mugshot=0x57
@@ -190,7 +190,7 @@ CompText87A849C::
 	.string "Are you OK!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87A849C_unk14_id
 
 	def_text_script CompText87A849C_unk14
 	ts_mugshot_show mugshot=0x14
@@ -202,7 +202,7 @@ CompText87A849C::
 	.string "You big dummy..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87A849C_unk15_id
 
 	def_text_script CompText87A849C_unk15
 	ts_mugshot_show mugshot=0x57

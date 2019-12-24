@@ -12,28 +12,28 @@ CompText8778400::
 	def_text_script CompText8778400_unk0
 	ts_check_flag [
 		flag: 0x528,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8778400_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x556,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8778400_unk3_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1729,
-		jumpIfTrue: 0x7,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8778400_unk7_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x51E,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8778400_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x555,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8778400_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x555
 	ts_msg_open

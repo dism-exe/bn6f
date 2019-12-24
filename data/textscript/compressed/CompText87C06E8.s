@@ -29,7 +29,7 @@ CompText87C06E8::
 	.string "ElementMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87C06E8_unk2_id
 
 	def_text_script CompText87C06E8_unk2
 	ts_mugshot_show mugshot=0x37

@@ -11,8 +11,8 @@ CompText8756124::
 
 	def_text_script CompText8756124_unk0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0xB,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8756124_unk11_id,
 	]
 	ts_msg_open
 	.string "This new house came\n"
@@ -86,8 +86,8 @@ CompText8756124::
 
 	def_text_script CompText8756124_unk5
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0xC,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8756124_unk12_id,
 	]
 	ts_msg_open
 	.string "There's a piece of\n"
@@ -137,8 +137,8 @@ CompText8756124::
 
 	def_text_script CompText8756124_unk8
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0xA,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8756124_unk10_id,
 	]
 	ts_msg_open
 	.string "Mom painted this\n"

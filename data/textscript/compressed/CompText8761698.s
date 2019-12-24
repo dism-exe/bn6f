@@ -10,27 +10,27 @@ CompText8761698::
 	text_archive_start
 
 	def_text_script CompText8761698_unk0
-	ts_jump target=5
+	ts_jump target=CompText8761698_unk5_id
 
 	def_text_script CompText8761698_unk1
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x9,
-		jumpIfElecMan: 0x9,
-		jumpIfSlashMan: 0x9,
-		jumpIfEraseMan: 0x9,
-		jumpIfChargeMan: 0x9,
-		jumpIfSpoutMan: 0x9,
-		jumpIfTomahawkMan: 0x9,
-		jumpIfTenguMan: 0x9,
-		jumpIfGroundMan: 0x9,
-		jumpIfDustMan: 0x9,
-		jumpIfProtoMan: 0x9,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText8761698_unk9_id,
+		jumpIfElecMan: CompText8761698_unk9_id,
+		jumpIfSlashMan: CompText8761698_unk9_id,
+		jumpIfEraseMan: CompText8761698_unk9_id,
+		jumpIfChargeMan: CompText8761698_unk9_id,
+		jumpIfSpoutMan: CompText8761698_unk9_id,
+		jumpIfTomahawkMan: CompText8761698_unk9_id,
+		jumpIfTenguMan: CompText8761698_unk9_id,
+		jumpIfGroundMan: CompText8761698_unk9_id,
+		jumpIfDustMan: CompText8761698_unk9_id,
+		jumpIfProtoMan: CompText8761698_unk9_id,
 	]
 	ts_check_flag [
 		flag: 0xCC7,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8761698_unk3_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "YOU NEED A PASSWORD\n"
@@ -140,9 +140,9 @@ CompText8761698::
 	.string "(UP/DOWN:Number\n"
 	.string " LEFT/RIGHT:Cursor)"
 	ts_menu_select_password [
-		jumpIfCorrect: 0x6,
-		jumpIfIncorrect: 0x7,
-		jumpIfCancelled: 0x8,
+		jumpIfCorrect: CompText8761698_unk6_id,
+		jumpIfIncorrect: CompText8761698_unk7_id,
+		jumpIfCancelled: CompText8761698_unk8_id,
 		password: 0x3,
 	]
 	ts_end

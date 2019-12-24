@@ -12,8 +12,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk0
 	ts_check_flag [
 		flag: 0x472,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x14
 	ts_msg_open
@@ -32,8 +32,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk2
 	ts_check_flag [
 		flag: 0x473,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk3_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xB
 	ts_msg_open
@@ -57,8 +57,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk4
 	ts_check_flag [
 		flag: 0x474,
-		jumpIfTrue: 0x5,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk5_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xA
 	ts_msg_open
@@ -86,8 +86,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk6
 	ts_check_flag [
 		flag: 0x475,
-		jumpIfTrue: 0x7,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk7_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xC
 	ts_msg_open
@@ -109,8 +109,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk8
 	ts_check_flag [
 		flag: 0x476,
-		jumpIfTrue: 0x9,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk9_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x17
 	ts_msg_open
@@ -139,8 +139,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk10
 	ts_check_flag [
 		flag: 0x477,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x33
 	ts_msg_open
@@ -177,8 +177,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk12
 	ts_check_flag [
 		flag: 0x478,
-		jumpIfTrue: 0xD,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk13_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xC
 	ts_msg_open
@@ -205,8 +205,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk14
 	ts_check_flag [
 		flag: 0x479,
-		jumpIfTrue: 0xF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk15_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x9
 	ts_msg_open
@@ -238,8 +238,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk20
 	ts_check_flag [
 		flag: 0x47A,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x14
 	ts_msg_open
@@ -259,8 +259,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk22
 	ts_check_flag [
 		flag: 0x484,
-		jumpIfTrue: 0x17,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk23_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xB
 	ts_msg_open
@@ -287,8 +287,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk24
 	ts_check_flag [
 		flag: 0x485,
-		jumpIfTrue: 0x19,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk25_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xA
 	ts_msg_open
@@ -311,8 +311,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk26
 	ts_check_flag [
 		flag: 0x486,
-		jumpIfTrue: 0x1B,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk27_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xC
 	ts_msg_open
@@ -335,8 +335,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk28
 	ts_check_flag [
 		flag: 0x487,
-		jumpIfTrue: 0x1D,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk29_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x33
 	ts_msg_open
@@ -361,8 +361,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk30
 	ts_check_flag [
 		flag: 0x488,
-		jumpIfTrue: 0x1F,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk31_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x17
 	ts_msg_open
@@ -393,8 +393,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk32
 	ts_check_flag [
 		flag: 0x489,
-		jumpIfTrue: 0x21,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk33_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xC
 	ts_msg_open
@@ -416,8 +416,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk34
 	ts_check_flag [
 		flag: 0x48A,
-		jumpIfTrue: 0x23,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk35_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x9
 	ts_msg_open
@@ -448,8 +448,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk36
 	ts_check_flag [
 		flag: 0x48B,
-		jumpIfTrue: 0x25,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk37_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x12
 	ts_msg_open
@@ -471,8 +471,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk38
 	ts_check_flag [
 		flag: 0x48C,
-		jumpIfTrue: 0x27,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk39_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -495,8 +495,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk40
 	ts_check_flag [
 		flag: 0x42E,
-		jumpIfTrue: 0x34,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk52_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xB
 	ts_msg_open
@@ -508,8 +508,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk41
 	ts_check_flag [
 		flag: 0x42E,
-		jumpIfTrue: 0x35,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk53_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xA
 	ts_msg_open
@@ -521,8 +521,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk42
 	ts_check_flag [
 		flag: 0x42E,
-		jumpIfTrue: 0x36,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk54_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xC
 	ts_msg_open
@@ -533,8 +533,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk43
 	ts_check_flag [
 		flag: 0x42E,
-		jumpIfTrue: 0x37,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk55_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x33
 	ts_msg_open
@@ -547,8 +547,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk44
 	ts_check_flag [
 		flag: 0x42E,
-		jumpIfTrue: 0x38,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk56_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xC
 	ts_msg_open
@@ -560,8 +560,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk45
 	ts_check_flag [
 		flag: 0x42E,
-		jumpIfTrue: 0x32,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk50_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x12
 	ts_msg_open
@@ -575,8 +575,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk47
 	ts_check_flag [
 		flag: 0x1729,
-		jumpIfTrue: 0x30,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk48_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -638,8 +638,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk50
 	ts_check_flag [
 		flag: 0x47C,
-		jumpIfTrue: 0x33,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk51_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x12
 	ts_msg_open
@@ -733,8 +733,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk57
 	ts_check_flag [
 		flag: 0x42E,
-		jumpIfTrue: 0x3A,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk58_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "VOOOOOFFF!!"
@@ -866,8 +866,8 @@ CompText876A5B4::
 	def_text_script CompText876A5B4_unk74
 	ts_check_flag [
 		flag: 0x50C,
-		jumpIfTrue: 0x4B,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876A5B4_unk75_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xC
 	ts_msg_open

@@ -40,7 +40,7 @@ CompText87A9420::
 	.string "That's so cool!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A9420_unk2_id
 
 	def_text_script CompText87A9420_unk2
 	ts_mugshot_show mugshot=0x6
@@ -49,7 +49,7 @@ CompText87A9420::
 	.string "for bed!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A9420_unk3_id
 
 	def_text_script CompText87A9420_unk3
 	ts_mugshot_show mugshot=0x0
@@ -66,7 +66,7 @@ CompText87A9420::
 	.string "we gotta jack out."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A9420_unk4_id
 
 	def_text_script CompText87A9420_unk4
 	ts_mugshot_show mugshot=0x37

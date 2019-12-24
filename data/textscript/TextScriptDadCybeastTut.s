@@ -21,7 +21,7 @@ TextScriptDadCybeastTut::
 	.string "The CybeastButton!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=TextScriptDadCybeastTut_unk2_id
 
 	def_text_script TextScriptDadCybeastTut_unk2
 	ts_mugshot_show mugshot=0x0
@@ -29,7 +29,7 @@ TextScriptDadCybeastTut::
 	.string "The CybeastButton...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=TextScriptDadCybeastTut_unk3_id
 
 	def_text_script TextScriptDadCybeastTut_unk3
 	ts_mugshot_show mugshot=0x5
@@ -62,7 +62,7 @@ TextScriptDadCybeastTut::
 	.string "to \"BeastOut\"."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=TextScriptDadCybeastTut_unk4_id
 
 	def_text_script TextScriptDadCybeastTut_unk4
 	ts_mugshot_show mugshot=0x5
@@ -79,7 +79,7 @@ TextScriptDadCybeastTut::
 	.string "a Cybeast now!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=TextScriptDadCybeastTut_unk6_id
 
 	def_text_script TextScriptDadCybeastTut_unk6
 	ts_mugshot_show mugshot=0x5
@@ -88,7 +88,7 @@ TextScriptDadCybeastTut::
 	.string "to MegaMan."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=TextScriptDadCybeastTut_unk7_id
 
 	def_text_script TextScriptDadCybeastTut_unk7
 	ts_mugshot_show mugshot=0x0
@@ -98,7 +98,7 @@ TextScriptDadCybeastTut::
 	.string "alright?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=TextScriptDadCybeastTut_unk8_id
 
 	def_text_script TextScriptDadCybeastTut_unk8
 	ts_mugshot_show mugshot=0x59
@@ -113,7 +113,7 @@ TextScriptDadCybeastTut::
 	.string "inside..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=TextScriptDadCybeastTut_unk9_id
 
 	def_text_script TextScriptDadCybeastTut_unk9
 	ts_mugshot_show mugshot=0x5
@@ -162,7 +162,7 @@ TextScriptDadCybeastTut::
 	.string "No way...!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=TextScriptDadCybeastTut_unk11_id
 
 	def_text_script TextScriptDadCybeastTut_unk11
 	ts_mugshot_show mugshot=0x5
@@ -182,7 +182,7 @@ TextScriptDadCybeastTut::
 	.string "not dim the screen."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=TextScriptDadCybeastTut_unk12_id
 
 	def_text_script TextScriptDadCybeastTut_unk12
 	ts_mugshot_show mugshot=0x5
@@ -204,7 +204,7 @@ TextScriptDadCybeastTut::
 	.string "special move!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=TextScriptDadCybeastTut_unk13_id
 
 	def_text_script TextScriptDadCybeastTut_unk13
 	ts_mugshot_show mugshot=0x0
@@ -217,7 +217,7 @@ TextScriptDadCybeastTut::
 	.string "all this power..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=TextScriptDadCybeastTut_unk14_id
 
 	def_text_script TextScriptDadCybeastTut_unk14
 	ts_mugshot_show mugshot=0x59
@@ -227,7 +227,7 @@ TextScriptDadCybeastTut::
 	.string "Let's give it a try!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=TextScriptDadCybeastTut_unk15_id
 
 	def_text_script TextScriptDadCybeastTut_unk15
 	ts_mugshot_show mugshot=0x5
@@ -250,7 +250,7 @@ TextScriptDadCybeastTut::
 	.string "Are you OK?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=TextScriptDadCybeastTut_unk17_id
 
 	def_text_script TextScriptDadCybeastTut_unk17
 	ts_mugshot_show mugshot=0x59
@@ -258,7 +258,7 @@ TextScriptDadCybeastTut::
 	.string "I'm OK,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=TextScriptDadCybeastTut_unk18_id
 
 	def_text_script TextScriptDadCybeastTut_unk18
 	ts_mugshot_show mugshot=0x0
@@ -267,7 +267,7 @@ TextScriptDadCybeastTut::
 	.string "Thank goodness!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=TextScriptDadCybeastTut_unk19_id
 
 	def_text_script TextScriptDadCybeastTut_unk19
 	ts_mugshot_show mugshot=0x5
@@ -302,7 +302,7 @@ TextScriptDadCybeastTut::
 	.string "Understand?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=TextScriptDadCybeastTut_unk20_id
 
 	def_text_script TextScriptDadCybeastTut_unk20
 	ts_mugshot_show mugshot=0x0
@@ -312,7 +312,7 @@ TextScriptDadCybeastTut::
 	.string "if I press it...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=TextScriptDadCybeastTut_unk21_id
 
 	def_text_script TextScriptDadCybeastTut_unk21
 	ts_mugshot_show mugshot=0x5
@@ -336,7 +336,7 @@ TextScriptDadCybeastTut::
 	.string "He'll \"BeastOver\"!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=TextScriptDadCybeastTut_unk22_id
 
 	def_text_script TextScriptDadCybeastTut_unk22
 	ts_mugshot_show mugshot=0x0
@@ -344,7 +344,7 @@ TextScriptDadCybeastTut::
 	.string "Wild..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=TextScriptDadCybeastTut_unk23_id
 
 	def_text_script TextScriptDadCybeastTut_unk23
 	ts_mugshot_show mugshot=0x5
@@ -362,7 +362,7 @@ TextScriptDadCybeastTut::
 	.string "wrong time."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=TextScriptDadCybeastTut_unk24_id
 
 	def_text_script TextScriptDadCybeastTut_unk24
 	ts_mugshot_show mugshot=0x0
@@ -389,7 +389,7 @@ TextScriptDadCybeastTut::
 	.string "*huff...huff...*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=TextScriptDadCybeastTut_unk26_id
 
 	def_text_script TextScriptDadCybeastTut_unk26
 	ts_mugshot_show mugshot=0x0
@@ -399,7 +399,7 @@ TextScriptDadCybeastTut::
 	.string "Are you OK!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=TextScriptDadCybeastTut_unk27_id
 
 	def_text_script TextScriptDadCybeastTut_unk27
 	ts_mugshot_show mugshot=0x5
@@ -427,7 +427,7 @@ TextScriptDadCybeastTut::
 	.string "Understand?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=TextScriptDadCybeastTut_unk28_id
 
 	def_text_script TextScriptDadCybeastTut_unk28
 	ts_mugshot_show mugshot=0x0
@@ -437,7 +437,7 @@ TextScriptDadCybeastTut::
 	.string "if I press it...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=29
+	ts_jump target=TextScriptDadCybeastTut_unk29_id
 
 	def_text_script TextScriptDadCybeastTut_unk29
 	ts_mugshot_show mugshot=0x5
@@ -461,7 +461,7 @@ TextScriptDadCybeastTut::
 	.string "He'll \"BeastOver\"!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=TextScriptDadCybeastTut_unk30_id
 
 	def_text_script TextScriptDadCybeastTut_unk30
 	ts_mugshot_show mugshot=0x0
@@ -469,7 +469,7 @@ TextScriptDadCybeastTut::
 	.string "Wild..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=TextScriptDadCybeastTut_unk31_id
 
 	def_text_script TextScriptDadCybeastTut_unk31
 	ts_mugshot_show mugshot=0x5
@@ -496,7 +496,7 @@ TextScriptDadCybeastTut::
 	.string "the hang of it!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=33
+	ts_jump target=TextScriptDadCybeastTut_unk33_id
 
 	def_text_script TextScriptDadCybeastTut_unk33
 	ts_mugshot_show mugshot=0x5
@@ -515,7 +515,7 @@ TextScriptDadCybeastTut::
 	.string "use this power."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=34
+	ts_jump target=TextScriptDadCybeastTut_unk34_id
 
 	def_text_script TextScriptDadCybeastTut_unk34
 	ts_mugshot_show mugshot=0x0

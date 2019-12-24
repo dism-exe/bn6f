@@ -80,8 +80,8 @@ CompText8781048::
 	def_text_script CompText8781048_unk10
 	ts_check_flag [
 		flag: 0x1729,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8781048_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open

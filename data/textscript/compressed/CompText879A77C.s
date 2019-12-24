@@ -12,13 +12,13 @@ CompText879A77C::
 	def_text_script CompText879A77C_unk0
 	ts_check_flag [
 		flag: 0xCD3,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879A77C_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCD0,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879A77C_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -97,8 +97,8 @@ CompText879A77C::
 	def_text_script CompText879A77C_unk2
 	ts_check_flag [
 		flag: 0xCD4,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879A77C_unk3_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

@@ -11,24 +11,24 @@ CompText8745DEC::
 
 	def_text_script CompText8745DEC_unk0
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x5B,
-		jumpIfElecMan: 0x5C,
-		jumpIfSlashMan: 0x5D,
-		jumpIfEraseMan: 0x5E,
-		jumpIfChargeMan: 0x5F,
-		jumpIfSpoutMan: 0x60,
-		jumpIfTomahawkMan: 0x61,
-		jumpIfTenguMan: 0x62,
-		jumpIfGroundMan: 0x63,
-		jumpIfDustMan: 0x64,
-		jumpIfProtoMan: 0x65,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText8745DEC_unk91_id,
+		jumpIfElecMan: CompText8745DEC_unk92_id,
+		jumpIfSlashMan: CompText8745DEC_unk93_id,
+		jumpIfEraseMan: CompText8745DEC_unk94_id,
+		jumpIfChargeMan: CompText8745DEC_unk95_id,
+		jumpIfSpoutMan: CompText8745DEC_unk96_id,
+		jumpIfTomahawkMan: CompText8745DEC_unk97_id,
+		jumpIfTenguMan: CompText8745DEC_unk98_id,
+		jumpIfGroundMan: CompText8745DEC_unk99_id,
+		jumpIfDustMan: CompText8745DEC_unk100_id,
+		jumpIfProtoMan: CompText8745DEC_unk101_id,
 	]
 	ts_check_chapter [
 		lower: 0x62,
 		upper: 0x64,
-		jumpIfInRange: 0xF,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8745DEC_unk15_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "Dummy text"
@@ -66,53 +66,53 @@ CompText8745DEC::
 	def_text_script CompText8745DEC_unk15
 	ts_check_flag [
 		flag: 0xE44,
-		jumpIfTrue: 0x1D,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8745DEC_unk29_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xE3E,
-		jumpIfTrue: 0x1C,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8745DEC_unk28_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xE3C,
-		jumpIfTrue: 0x1B,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8745DEC_unk27_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xE36,
-		jumpIfTrue: 0x1A,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8745DEC_unk26_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xE34,
-		jumpIfTrue: 0x19,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8745DEC_unk25_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xE2E,
-		jumpIfTrue: 0x18,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8745DEC_unk24_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xE2C,
-		jumpIfTrue: 0x17,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8745DEC_unk23_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xE2A,
-		jumpIfTrue: 0x16,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8745DEC_unk22_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xE26,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8745DEC_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xE16,
-		jumpIfTrue: 0x12,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8745DEC_unk18_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_end
 
@@ -123,18 +123,18 @@ CompText8745DEC::
 	def_text_script CompText8745DEC_unk18
 	ts_check_flag [
 		flag: 0xE65,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1E,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8745DEC_unk30_id,
 	]
 	ts_check_flag [
 		flag: 0xE64,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1E,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8745DEC_unk30_id,
 	]
 	ts_check_flag [
 		flag: 0xE63,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1E,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8745DEC_unk30_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -173,34 +173,34 @@ CompText8745DEC::
 	ts_check_sub_area [
 		lower: 0x3,
 		upper: 0x3,
-		jumpIfInRange: 0xFF,
-		jumpIfOutOfRange: 0x17,
+		jumpIfInRange: TS_CONTINUE,
+		jumpIfOutOfRange: CompText8745DEC_unk23_id,
 	]
-	ts_jump target=22
+	ts_jump target=CompText8745DEC_unk22_id
 
 	def_text_script CompText8745DEC_unk25
-	ts_jump target=23
+	ts_jump target=CompText8745DEC_unk23_id
 
 	def_text_script CompText8745DEC_unk26
 	ts_check_sub_area [
 		lower: 0x4,
 		upper: 0x4,
-		jumpIfInRange: 0x16,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8745DEC_unk22_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_jump target=23
+	ts_jump target=CompText8745DEC_unk23_id
 
 	def_text_script CompText8745DEC_unk27
-	ts_jump target=23
+	ts_jump target=CompText8745DEC_unk23_id
 
 	def_text_script CompText8745DEC_unk28
 	ts_check_sub_area [
 		lower: 0x1,
 		upper: 0x1,
-		jumpIfInRange: 0xFF,
-		jumpIfOutOfRange: 0x17,
+		jumpIfInRange: TS_CONTINUE,
+		jumpIfOutOfRange: CompText8745DEC_unk23_id,
 	]
-	ts_jump target=22
+	ts_jump target=CompText8745DEC_unk22_id
 
 	def_text_script CompText8745DEC_unk29
 	ts_mugshot_show mugshot=0x37

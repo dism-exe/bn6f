@@ -114,8 +114,8 @@ CompText875B934::
 	ts_key_wait any=0x0
 	ts_check_flag [
 		flag: 0x189,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875B934_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	.string "It looks like some-\n"

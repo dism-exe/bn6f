@@ -17,7 +17,7 @@ CompText87D190C::
 	.string "Iris..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D190C_unk1_id
 
 	def_text_script CompText87D190C_unk1
 	ts_mugshot_show mugshot=0x3
@@ -27,7 +27,7 @@ CompText87D190C::
 	.string "to help..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87D190C_unk2_id
 
 	def_text_script CompText87D190C_unk2
 	ts_mugshot_show mugshot=0x43
@@ -36,7 +36,7 @@ CompText87D190C::
 	.string "No talking!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87D190C_unk3_id
 
 	def_text_script CompText87D190C_unk3
 	ts_mugshot_show mugshot=0x3
@@ -44,7 +44,7 @@ CompText87D190C::
 	.string "Eek!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87D190C_unk4_id
 
 	def_text_script CompText87D190C_unk4
 	ts_mugshot_show mugshot=0x2
@@ -52,7 +52,7 @@ CompText87D190C::
 	.string "Hey,Mick..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87D190C_unk5_id
 
 	def_text_script CompText87D190C_unk5
 	ts_mugshot_show mugshot=0x14
@@ -60,7 +60,7 @@ CompText87D190C::
 	.string "What...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87D190C_unk6_id
 
 	def_text_script CompText87D190C_unk6
 	ts_mugshot_show mugshot=0x2
@@ -69,7 +69,7 @@ CompText87D190C::
 	.string "a CopyBot..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87D190C_unk7_id
 
 	def_text_script CompText87D190C_unk7
 	ts_mugshot_show mugshot=0x14

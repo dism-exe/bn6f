@@ -27,8 +27,8 @@ CompText87A04E4::
 
 	def_text_script CompText87A04E4_unk5
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x6,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87A04E4_unk6_id,
 	]
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open

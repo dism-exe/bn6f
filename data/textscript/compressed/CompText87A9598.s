@@ -24,7 +24,7 @@ CompText87A9598::
 	.string "for you."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A9598_unk2_id
 
 	def_text_script CompText87A9598_unk2
 	ts_mugshot_show mugshot=0x5
@@ -44,7 +44,7 @@ CompText87A9598::
 	.string "are here in school?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A9598_unk3_id
 
 	def_text_script CompText87A9598_unk3
 	ts_mugshot_show mugshot=0x32
@@ -72,7 +72,7 @@ CompText87A9598::
 	.string "program with you?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A9598_unk4_id
 
 	def_text_script CompText87A9598_unk4
 	ts_mugshot_show mugshot=0x5
@@ -89,7 +89,7 @@ CompText87A9598::
 	.string "its existence?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A9598_unk5_id
 
 	def_text_script CompText87A9598_unk5
 	ts_mugshot_show mugshot=0x32
@@ -104,7 +104,7 @@ CompText87A9598::
 	.string "made 11 years ago."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A9598_unk6_id
 
 	def_text_script CompText87A9598_unk6
 	ts_mugshot_show mugshot=0x5
@@ -132,7 +132,7 @@ CompText87A9598::
 	.string "into evil hands."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A9598_unk7_id
 
 	def_text_script CompText87A9598_unk7
 	ts_mugshot_show mugshot=0x32
@@ -152,7 +152,7 @@ CompText87A9598::
 	.string "to guard it closely."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87A9598_unk8_id
 
 	def_text_script CompText87A9598_unk8
 	ts_mugshot_show mugshot=0x5
@@ -180,7 +180,7 @@ CompText87A9598::
 	.string "support the network."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87A9598_unk9_id
 
 	def_text_script CompText87A9598_unk9
 	ts_mugshot_show mugshot=0x32

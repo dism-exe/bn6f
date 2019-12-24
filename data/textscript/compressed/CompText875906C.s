@@ -49,8 +49,8 @@ CompText875906C::
 	ts_check_chapter [
 		lower: 0x20,
 		upper: 0xFF,
-		jumpIfInRange: 0xFF,
-		jumpIfOutOfRange: 0x11,
+		jumpIfInRange: TS_CONTINUE,
+		jumpIfOutOfRange: CompText875906C_unk17_id,
 	]
 	ts_msg_open
 	.string "The blackboard's\n"
@@ -83,18 +83,18 @@ CompText875906C::
 	ts_msg_open
 	ts_check_flag [
 		flag: 0x81C,
-		jumpIfTrue: 0xF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875906C_unk15_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x81A,
-		jumpIfTrue: 0xE,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875906C_unk14_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x430,
-		jumpIfTrue: 0xF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875906C_unk15_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	.string "A big computer that\n"
 	.string "controls all of the"
@@ -146,8 +146,8 @@ CompText875906C::
 	ts_check_chapter [
 		lower: 0x4,
 		upper: 0x4,
-		jumpIfInRange: 0xA,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875906C_unk10_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "These are the\n"
@@ -179,14 +179,14 @@ CompText875906C::
 	def_text_script CompText875906C_unk10
 	ts_check_flag [
 		flag: 0x480,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875906C_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_multi_flag [
 		flag: 0x47D,
 		count: 0x3,
-		jumpIfAllSet: 0xFF,
-		jumpIfNotAllSet: 0xB,
+		jumpIfAllSet: TS_CONTINUE,
+		jumpIfNotAllSet: CompText875906C_unk11_id,
 	]
 	ts_flag_set flag=0x480
 	ts_flag_set flag=0x437

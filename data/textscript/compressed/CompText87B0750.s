@@ -23,7 +23,7 @@ CompText87B0750::
 	.string "happened...!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B0750_unk2_id
 
 	def_text_script CompText87B0750_unk2
 	ts_mugshot_show mugshot=0x37
@@ -36,7 +36,7 @@ CompText87B0750::
 	.string "Let's go,Lan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B0750_unk3_id
 
 	def_text_script CompText87B0750_unk3
 	ts_mugshot_show mugshot=0x0

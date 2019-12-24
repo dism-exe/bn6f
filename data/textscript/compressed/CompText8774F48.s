@@ -48,8 +48,8 @@ CompText8774F48::
 	def_text_script CompText8774F48_unk9
 	ts_check_flag [
 		flag: 0x554,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xB,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8774F48_unk11_id,
 	]
 	ts_mugshot_show mugshot=0x14
 	ts_msg_open
@@ -137,8 +137,8 @@ CompText8774F48::
 	def_text_script CompText8774F48_unk15
 	ts_check_flag [
 		flag: 0x51C,
-		jumpIfTrue: 0x10,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8774F48_unk16_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x15
 	ts_msg_open

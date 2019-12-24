@@ -12,22 +12,22 @@ CompText87EE1AC::
 	def_text_script CompText87EE1AC_unk0
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xB,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87EE1AC_unk11_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xB,
-		jumpIfElecMan: 0xB,
-		jumpIfSlashMan: 0xB,
-		jumpIfEraseMan: 0xB,
-		jumpIfChargeMan: 0xB,
-		jumpIfSpoutMan: 0xB,
-		jumpIfTomahawkMan: 0xB,
-		jumpIfTenguMan: 0xB,
-		jumpIfGroundMan: 0xB,
-		jumpIfDustMan: 0xB,
-		jumpIfProtoMan: 0xB,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87EE1AC_unk11_id,
+		jumpIfElecMan: CompText87EE1AC_unk11_id,
+		jumpIfSlashMan: CompText87EE1AC_unk11_id,
+		jumpIfEraseMan: CompText87EE1AC_unk11_id,
+		jumpIfChargeMan: CompText87EE1AC_unk11_id,
+		jumpIfSpoutMan: CompText87EE1AC_unk11_id,
+		jumpIfTomahawkMan: CompText87EE1AC_unk11_id,
+		jumpIfTenguMan: CompText87EE1AC_unk11_id,
+		jumpIfGroundMan: CompText87EE1AC_unk11_id,
+		jumpIfDustMan: CompText87EE1AC_unk11_id,
+		jumpIfProtoMan: CompText87EE1AC_unk11_id,
 	]
 	ts_position_text [
 		left: 0x33,
@@ -58,22 +58,22 @@ CompText87EE1AC::
 	def_text_script CompText87EE1AC_unk1
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87EE1AC_unk12_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xC,
-		jumpIfElecMan: 0xC,
-		jumpIfSlashMan: 0xC,
-		jumpIfEraseMan: 0xC,
-		jumpIfChargeMan: 0xC,
-		jumpIfSpoutMan: 0xC,
-		jumpIfTomahawkMan: 0xC,
-		jumpIfTenguMan: 0xC,
-		jumpIfGroundMan: 0xC,
-		jumpIfDustMan: 0xC,
-		jumpIfProtoMan: 0xC,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87EE1AC_unk12_id,
+		jumpIfElecMan: CompText87EE1AC_unk12_id,
+		jumpIfSlashMan: CompText87EE1AC_unk12_id,
+		jumpIfEraseMan: CompText87EE1AC_unk12_id,
+		jumpIfChargeMan: CompText87EE1AC_unk12_id,
+		jumpIfSpoutMan: CompText87EE1AC_unk12_id,
+		jumpIfTomahawkMan: CompText87EE1AC_unk12_id,
+		jumpIfTenguMan: CompText87EE1AC_unk12_id,
+		jumpIfGroundMan: CompText87EE1AC_unk12_id,
+		jumpIfDustMan: CompText87EE1AC_unk12_id,
+		jumpIfProtoMan: CompText87EE1AC_unk12_id,
 	]
 	ts_position_text [
 		left: 0x33,

@@ -14,7 +14,7 @@ CompText87BCA44::
 	.string "I'm coming in..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BCA44_unk1_id
 
 	def_text_script CompText87BCA44_unk1
 	ts_msg_open
@@ -31,7 +31,7 @@ CompText87BCA44::
 	.string "busted..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87BCA44_unk3_id
 
 	def_text_script CompText87BCA44_unk3
 	ts_mugshot_hide
@@ -62,7 +62,7 @@ CompText87BCA44::
 	.string "the way?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87BCA44_unk4_id
 
 	def_text_script CompText87BCA44_unk4
 	ts_mugshot_show mugshot=0x2E
@@ -98,7 +98,7 @@ CompText87BCA44::
 	.string "will rise again..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87BCA44_unk6_id
 
 	def_text_script CompText87BCA44_unk6
 	ts_mugshot_show mugshot=0x2E

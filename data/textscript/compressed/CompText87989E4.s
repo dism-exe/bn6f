@@ -22,8 +22,8 @@ CompText87989E4::
 	def_text_script CompText87989E4_unk5
 	ts_check_flag [
 		flag: 0x11DB,
-		jumpIfTrue: 0x6,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87989E4_unk6_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x11DB
 	ts_mugshot_show mugshot=0x41

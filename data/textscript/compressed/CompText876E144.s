@@ -38,18 +38,18 @@ CompText876E144::
 	def_text_script CompText876E144_unk10
 	ts_check_flag [
 		flag: 0x11FA,
-		jumpIfTrue: 0xD,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876E144_unk13_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x11FD,
-		jumpIfTrue: 0xC,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876E144_unk12_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x11F9,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876E144_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x11F9
 	ts_mugshot_show mugshot=0x8
@@ -190,9 +190,9 @@ CompText876E144::
 	ts_clear_msg
 	ts_check_give_zenny [
 		amount: 0x1388,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_mugshot_hide
 	ts_player_animate_object animation=0x18

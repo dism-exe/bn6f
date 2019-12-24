@@ -13,13 +13,13 @@ CompText87466F8::
 	ts_check_chapter [
 		lower: 0x14,
 		upper: 0x14,
-		jumpIfInRange: 0xFF,
-		jumpIfOutOfRange: 0xE,
+		jumpIfInRange: TS_CONTINUE,
+		jumpIfOutOfRange: CompText87466F8_unk14_id,
 	]
 	ts_check_flag [
 		flag: 0x5E8,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xE,
+		jumpIfTrue: CompText87466F8_unk11_id,
+		jumpIfFalse: CompText87466F8_unk14_id,
 	]
 	ts_end
 
@@ -28,7 +28,7 @@ CompText87466F8::
 	ts_msg_open
 	.string "A stubby tail...?"
 	ts_key_wait any=0x0
-	ts_jump target=12
+	ts_jump target=CompText87466F8_unk12_id
 
 	def_text_script CompText87466F8_unk2
 	ts_mugshot_show mugshot=0x0
@@ -36,14 +36,14 @@ CompText87466F8::
 	.string "He doesn't like\n"
 	.string "cold water...?"
 	ts_key_wait any=0x0
-	ts_jump target=12
+	ts_jump target=CompText87466F8_unk12_id
 
 	def_text_script CompText87466F8_unk3
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "He ate a whole cow!?"
 	ts_key_wait any=0x0
-	ts_jump target=12
+	ts_jump target=CompText87466F8_unk12_id
 
 	def_text_script CompText87466F8_unk4
 	ts_mugshot_show mugshot=0x0
@@ -52,7 +52,7 @@ CompText87466F8::
 	.string "something from long\n"
 	.string "ago..."
 	ts_key_wait any=0x0
-	ts_jump target=12
+	ts_jump target=CompText87466F8_unk12_id
 
 	def_text_script CompText87466F8_unk5
 	ts_mugshot_show mugshot=0x0
@@ -61,7 +61,7 @@ CompText87466F8::
 	.string "snobby\" supposed to\n"
 	.string "mean?..."
 	ts_key_wait any=0x0
-	ts_jump target=12
+	ts_jump target=CompText87466F8_unk12_id
 
 	def_text_script CompText87466F8_unk6
 	ts_mugshot_show mugshot=0x0
@@ -69,7 +69,7 @@ CompText87466F8::
 	.string "\"Steady as a rock\"?\n"
 	.string "What in the...?"
 	ts_key_wait any=0x0
-	ts_jump target=12
+	ts_jump target=CompText87466F8_unk12_id
 
 	def_text_script CompText87466F8_unk7
 	ts_mugshot_show mugshot=0x0
@@ -78,7 +78,7 @@ CompText87466F8::
 	.string "don't really live in\n"
 	.string "the water..."
 	ts_key_wait any=0x0
-	ts_jump target=12
+	ts_jump target=CompText87466F8_unk12_id
 
 	def_text_script CompText87466F8_unk8
 	ts_mugshot_show mugshot=0x0
@@ -87,7 +87,7 @@ CompText87466F8::
 	.string "aquarium even have\n"
 	.string "something that big?"
 	ts_key_wait any=0x0
-	ts_jump target=12
+	ts_jump target=CompText87466F8_unk12_id
 
 	def_text_script CompText87466F8_unk9
 	ts_mugshot_show mugshot=0x0
@@ -96,7 +96,7 @@ CompText87466F8::
 	.string "his nose?? I don't\n"
 	.string "get it at all..."
 	ts_key_wait any=0x0
-	ts_jump target=12
+	ts_jump target=CompText87466F8_unk12_id
 
 	def_text_script CompText87466F8_unk10
 	ts_mugshot_show mugshot=0x0
@@ -105,13 +105,13 @@ CompText87466F8::
 	.string "maybe he's a kind\n"
 	.string "of bird...?"
 	ts_key_wait any=0x0
-	ts_jump target=12
+	ts_jump target=CompText87466F8_unk12_id
 
 	def_text_script CompText87466F8_unk11
 	ts_check_flag [
 		flag: 0x5F2,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87466F8_unk12_id,
 	]
 	ts_check_water_god_program index=0x0
 	ts_end
@@ -121,8 +121,8 @@ CompText87466F8::
 	ts_msg_open
 	ts_check_flag [
 		flag: 0x5F0,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x58,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87466F8_unk88_id,
 	]
 	.string "Want me to go look\n"
 	.string "around for a clue?"
@@ -159,14 +159,14 @@ CompText87466F8::
 	ts_check_chapter [
 		lower: 0x15,
 		upper: 0x16,
-		jumpIfInRange: 0x5F,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87466F8_unk95_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x14,
 		upper: 0x14,
-		jumpIfInRange: 0x50,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87466F8_unk80_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "Dummy text"
@@ -174,7 +174,7 @@ CompText87466F8::
 	ts_end
 
 	def_text_script CompText87466F8_unk15
-	ts_jump target=12
+	ts_jump target=CompText87466F8_unk12_id
 
 	def_text_script CompText87466F8_unk16
 
@@ -344,8 +344,8 @@ CompText87466F8::
 	def_text_script CompText87466F8_unk95
 	ts_check_flag [
 		flag: 0x538,
-		jumpIfTrue: 0x60,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87466F8_unk96_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open

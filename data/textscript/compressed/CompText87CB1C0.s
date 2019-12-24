@@ -32,7 +32,7 @@ CompText87CB1C0::
 	.string "LinkNavi!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87CB1C0_unk1_id
 
 	def_text_script CompText87CB1C0_unk1
 	ts_mugshot_hide
@@ -54,7 +54,7 @@ CompText87CB1C0::
 	]
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87CB1C0_unk2_id
 
 	def_text_script CompText87CB1C0_unk2
 	ts_mugshot_show mugshot=0x0
@@ -62,7 +62,7 @@ CompText87CB1C0::
 	.string "Thank you,Mr.Press!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CB1C0_unk3_id
 
 	def_text_script CompText87CB1C0_unk3
 	ts_mugshot_show mugshot=0x25
@@ -76,7 +76,7 @@ CompText87CB1C0::
 	.string "use and treasure it!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87CB1C0_unk4_id
 
 	def_text_script CompText87CB1C0_unk4
 	ts_mugshot_show mugshot=0x0
@@ -84,7 +84,7 @@ CompText87CB1C0::
 	.string "I will!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87CB1C0_unk5_id
 
 	def_text_script CompText87CB1C0_unk5
 	ts_mugshot_show mugshot=0x25
@@ -109,7 +109,7 @@ CompText87CB1C0::
 	.string "secret,OK!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87CB1C0_unk6_id
 
 	def_text_script CompText87CB1C0_unk6
 	ts_mugshot_show mugshot=0x0

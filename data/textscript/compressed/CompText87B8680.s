@@ -17,7 +17,7 @@ CompText87B8680::
 	.string "come from...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B8680_unk1_id
 
 	def_text_script CompText87B8680_unk1
 	ts_mugshot_show mugshot=0x37
@@ -37,7 +37,7 @@ CompText87B8680::
 	.string "to attack me!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B8680_unk2_id
 
 	def_text_script CompText87B8680_unk2
 	ts_mugshot_show mugshot=0x0
@@ -46,7 +46,7 @@ CompText87B8680::
 	.string "that mean...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B8680_unk3_id
 
 	def_text_script CompText87B8680_unk3
 	ts_mugshot_show mugshot=0x37
@@ -68,7 +68,7 @@ CompText87B8680::
 	.string "is gone..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B8680_unk5_id
 
 	def_text_script CompText87B8680_unk5
 	ts_mugshot_show mugshot=0x0
@@ -84,7 +84,7 @@ CompText87B8680::
 	.string "world!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B8680_unk6_id
 
 	def_text_script CompText87B8680_unk6
 	ts_mugshot_show mugshot=0x37
@@ -121,7 +121,7 @@ CompText87B8680::
 	.string "who realized this!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B8680_unk7_id
 
 	def_text_script CompText87B8680_unk7
 	ts_mugshot_show mugshot=0x0
@@ -135,7 +135,7 @@ CompText87B8680::
 	.string "is the real culprit?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B8680_unk8_id
 
 	def_text_script CompText87B8680_unk8
 	ts_mugshot_show mugshot=0x37
@@ -150,7 +150,7 @@ CompText87B8680::
 	.string "is gone..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B8680_unk9_id
 
 	def_text_script CompText87B8680_unk9
 	ts_mugshot_show mugshot=0x0
@@ -183,7 +183,7 @@ CompText87B8680::
 	.string "CAMERA."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87B8680_unk12_id
 
 	def_text_script CompText87B8680_unk12
 	ts_mugshot_show mugshot=0x37
@@ -193,7 +193,7 @@ CompText87B8680::
 	.string "has vanished."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87B8680_unk13_id
 
 	def_text_script CompText87B8680_unk13
 	ts_mugshot_show mugshot=0x3C
@@ -202,7 +202,7 @@ CompText87B8680::
 	.string "ARE YOU SERIOUS!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87B8680_unk14_id
 
 	def_text_script CompText87B8680_unk14
 	ts_mugshot_show mugshot=0x37
@@ -217,7 +217,7 @@ CompText87B8680::
 	.string "would you?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87B8680_unk15_id
 
 	def_text_script CompText87B8680_unk15
 	ts_mugshot_show mugshot=0x3C
@@ -237,7 +237,7 @@ CompText87B8680::
 	.string "MAYBE THAT NAVI..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87B8680_unk16_id
 
 	def_text_script CompText87B8680_unk16
 	ts_mugshot_show mugshot=0x37
@@ -246,7 +246,7 @@ CompText87B8680::
 	.string "look like!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87B8680_unk17_id
 
 	def_text_script CompText87B8680_unk17
 	ts_mugshot_show mugshot=0x3C
@@ -259,7 +259,7 @@ CompText87B8680::
 	.string "ANYTHING ELSE..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87B8680_unk18_id
 
 	def_text_script CompText87B8680_unk18
 	ts_mugshot_show mugshot=0x37
@@ -271,7 +271,7 @@ CompText87B8680::
 	.string "very much."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87B8680_unk19_id
 
 	def_text_script CompText87B8680_unk19
 	ts_mugshot_show mugshot=0x0
@@ -289,7 +289,7 @@ CompText87B8680::
 	.string "by this camera."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87B8680_unk20_id
 
 	def_text_script CompText87B8680_unk20
 	ts_mugshot_show mugshot=0x37
@@ -320,7 +320,7 @@ CompText87B8680::
 	.string "sneaky rascal..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87B8680_unk21_id
 
 	def_text_script CompText87B8680_unk21
 	ts_mugshot_show mugshot=0x0
@@ -328,7 +328,7 @@ CompText87B8680::
 	.string "... I see."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87B8680_unk22_id
 
 	def_text_script CompText87B8680_unk22
 	ts_mugshot_show mugshot=0x3C
@@ -346,7 +346,7 @@ CompText87B8680::
 	.string "YESTERDAY?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87B8680_unk23_id
 
 	def_text_script CompText87B8680_unk23
 	ts_mugshot_show mugshot=0x37
@@ -361,7 +361,7 @@ CompText87B8680::
 	.string "yesterday."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87B8680_unk24_id
 
 	def_text_script CompText87B8680_unk24
 	ts_mugshot_show mugshot=0x3C
@@ -374,7 +374,7 @@ CompText87B8680::
 	.string "UNUSUAL IN IT."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87B8680_unk25_id
 
 	def_text_script CompText87B8680_unk25
 	ts_mugshot_show mugshot=0x37

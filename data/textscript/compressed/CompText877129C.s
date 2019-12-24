@@ -12,8 +12,8 @@ CompText877129C::
 	def_text_script CompText877129C_unk0
 	ts_check_flag [
 		flag: 0xE66,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877129C_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xE66
 	ts_end

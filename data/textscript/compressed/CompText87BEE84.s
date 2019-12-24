@@ -30,7 +30,7 @@ CompText87BEE84::
 	.string "wasn't it?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87BEE84_unk2_id
 
 	def_text_script CompText87BEE84_unk2
 	ts_mugshot_show mugshot=0x37
@@ -45,7 +45,7 @@ CompText87BEE84::
 	.string "yourself right now?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87BEE84_unk3_id
 
 	def_text_script CompText87BEE84_unk3
 	ts_mugshot_show mugshot=0x0
@@ -58,7 +58,7 @@ CompText87BEE84::
 	.string "Sky Town,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87BEE84_unk4_id
 
 	def_text_script CompText87BEE84_unk4
 	ts_mugshot_show mugshot=0x37

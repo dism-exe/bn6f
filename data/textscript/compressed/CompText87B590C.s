@@ -46,7 +46,7 @@ CompText87B590C::
 	ts_sound_play_bgm track=0xC
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B590C_unk2_id
 
 	def_text_script CompText87B590C_unk2
 	ts_mugshot_show mugshot=0x0
@@ -70,7 +70,7 @@ CompText87B590C::
 	.string "Ah,I knew it!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B590C_unk4_id
 
 	def_text_script CompText87B590C_unk4
 	ts_mugshot_hide
@@ -79,7 +79,7 @@ CompText87B590C::
 	.string "INTRUDER ALERT"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B590C_unk5_id
 
 	def_text_script CompText87B590C_unk5
 	ts_mugshot_show mugshot=0x0
@@ -91,7 +91,7 @@ CompText87B590C::
 	.string "here to testify!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B590C_unk6_id
 
 	def_text_script CompText87B590C_unk6
 	ts_mugshot_hide
@@ -105,7 +105,7 @@ CompText87B590C::
 	.string "YOUR NAME."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B590C_unk7_id
 
 	def_text_script CompText87B590C_unk7
 	ts_mugshot_show mugshot=0x0
@@ -113,7 +113,7 @@ CompText87B590C::
 	.string "I'm Lan Hikari,uh..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B590C_unk8_id
 
 	def_text_script CompText87B590C_unk8
 	ts_mugshot_hide
@@ -153,7 +153,7 @@ CompText87B590C::
 	ts_sound_play_bgm track=0xC
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B590C_unk9_id
 
 	def_text_script CompText87B590C_unk9
 	ts_mugshot_show mugshot=0x0
@@ -163,7 +163,7 @@ CompText87B590C::
 	.string "What!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B590C_unk10_id
 
 	def_text_script CompText87B590C_unk10
 	ts_mugshot_hide
@@ -212,7 +212,7 @@ CompText87B590C::
 	.string "Mr.Director!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87B590C_unk14_id
 
 	def_text_script CompText87B590C_unk14
 	ts_mugshot_show mugshot=0xF
@@ -232,7 +232,7 @@ CompText87B590C::
 	.string "the list now."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87B590C_unk15_id
 
 	def_text_script CompText87B590C_unk15
 	ts_mugshot_hide
@@ -272,7 +272,7 @@ CompText87B590C::
 	.string "mix-up,my boy..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87B590C_unk17_id
 
 	def_text_script CompText87B590C_unk17
 	ts_mugshot_show mugshot=0x0
@@ -281,7 +281,7 @@ CompText87B590C::
 	.string "robots just now?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87B590C_unk18_id
 
 	def_text_script CompText87B590C_unk18
 	ts_mugshot_show mugshot=0xF
@@ -296,7 +296,7 @@ CompText87B590C::
 	.string "Robots you just saw."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87B590C_unk19_id
 
 	def_text_script CompText87B590C_unk19
 	ts_mugshot_show mugshot=0x0
@@ -306,7 +306,7 @@ CompText87B590C::
 	.string "that!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87B590C_unk20_id
 
 	def_text_script CompText87B590C_unk20
 	ts_mugshot_show mugshot=0xF
@@ -351,7 +351,7 @@ CompText87B590C::
 	.string "of nature now."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87B590C_unk21_id
 
 	def_text_script CompText87B590C_unk21
 	ts_mugshot_show mugshot=0x0
@@ -367,7 +367,7 @@ CompText87B590C::
 	.string "So how do I get it?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87B590C_unk22_id
 
 	def_text_script CompText87B590C_unk22
 	ts_mugshot_show mugshot=0xF
@@ -387,7 +387,7 @@ CompText87B590C::
 	.string "that."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87B590C_unk23_id
 
 	def_text_script CompText87B590C_unk23
 	ts_mugshot_show mugshot=0x0
@@ -399,7 +399,7 @@ CompText87B590C::
 	.string "and be right back!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87B590C_unk24_id
 
 	def_text_script CompText87B590C_unk24
 	ts_mugshot_show mugshot=0xF
@@ -437,7 +437,7 @@ CompText87B590C::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87B590C_unk25_id
 
 	def_text_script CompText87B590C_unk25
 	ts_mugshot_show mugshot=0xF

@@ -43,7 +43,7 @@ CompText87AD6D8::
 	.string "Where did he...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87AD6D8_unk4_id
 
 	def_text_script CompText87AD6D8_unk4
 	ts_mugshot_hide

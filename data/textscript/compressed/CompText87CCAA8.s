@@ -26,7 +26,7 @@ CompText87CCAA8::
 	.string "of your LinkNavis."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87CCAA8_unk1_id
 
 	def_text_script CompText87CCAA8_unk1
 	ts_mugshot_hide
@@ -48,7 +48,7 @@ CompText87CCAA8::
 	]
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87CCAA8_unk2_id
 
 	def_text_script CompText87CCAA8_unk2
 	ts_mugshot_show mugshot=0x26
@@ -78,7 +78,7 @@ CompText87CCAA8::
 	.string "We'll be waiting."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CCAA8_unk3_id
 
 	def_text_script CompText87CCAA8_unk3
 	ts_mugshot_show mugshot=0x0

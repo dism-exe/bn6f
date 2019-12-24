@@ -49,8 +49,8 @@ CompText876B5A4::
 	def_text_script CompText876B5A4_unk10
 	ts_check_flag [
 		flag: 0xE5B,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876B5A4_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x14
 	ts_msg_open

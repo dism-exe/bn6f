@@ -40,7 +40,7 @@ CompText87D3798::
 	.string "the Maverick."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87D3798_unk3_id
 
 	def_text_script CompText87D3798_unk3
 	ts_mugshot_show mugshot=0x0
@@ -48,7 +48,7 @@ CompText87D3798::
 	.string "Maverick...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87D3798_unk4_id
 
 	def_text_script CompText87D3798_unk4
 	ts_mugshot_show mugshot=0x1D
@@ -61,7 +61,7 @@ CompText87D3798::
 	.string "your betrayal."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87D3798_unk5_id
 
 	def_text_script CompText87D3798_unk5
 	ts_mugshot_show mugshot=0x2F
@@ -83,7 +83,7 @@ CompText87D3798::
 	.string "What Dr.Wily did...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87D3798_unk7_id
 
 	def_text_script CompText87D3798_unk7
 	ts_mugshot_show mugshot=0x2F
@@ -97,7 +97,7 @@ CompText87D3798::
 	.string "Colonel..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87D3798_unk8_id
 
 	def_text_script CompText87D3798_unk8
 	ts_mugshot_show mugshot=0x0
@@ -263,7 +263,7 @@ CompText87D3798::
 	.string "with me!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87D3798_unk10_id
 
 	def_text_script CompText87D3798_unk10
 	ts_mugshot_show mugshot=0x2F
@@ -283,7 +283,7 @@ CompText87D3798::
 	.string "kindness..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87D3798_unk11_id
 
 	def_text_script CompText87D3798_unk11
 	ts_mugshot_show mugshot=0x1D
@@ -305,7 +305,7 @@ CompText87D3798::
 	.string "Huh!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D3798_unk13_id
 
 	def_text_script CompText87D3798_unk13
 	ts_mugshot_show mugshot=0x1D
@@ -354,7 +354,7 @@ CompText87D3798::
 	.string "Iris,Iris!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87D3798_unk16_id
 
 	def_text_script CompText87D3798_unk16
 	ts_mugshot_show mugshot=0x2F
@@ -378,7 +378,7 @@ CompText87D3798::
 	.string "W-What do you mean!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87D3798_unk18_id
 
 	def_text_script CompText87D3798_unk18
 	ts_mugshot_show mugshot=0x2F
@@ -415,7 +415,7 @@ CompText87D3798::
 	.string "Navi..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87D3798_unk19_id
 
 	def_text_script CompText87D3798_unk19
 	ts_mugshot_show mugshot=0x0
@@ -423,7 +423,7 @@ CompText87D3798::
 	.string "... Was?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87D3798_unk20_id
 
 	def_text_script CompText87D3798_unk20
 	ts_mugshot_show mugshot=0x2F
@@ -443,7 +443,7 @@ CompText87D3798::
 	.string "Colonel I knew..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87D3798_unk21_id
 
 	def_text_script CompText87D3798_unk21
 	ts_mugshot_show mugshot=0x0
@@ -451,7 +451,7 @@ CompText87D3798::
 	.string "........."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87D3798_unk22_id
 
 	def_text_script CompText87D3798_unk22
 	ts_mugshot_show mugshot=0x2F
@@ -476,7 +476,7 @@ CompText87D3798::
 	.string "electronic device..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87D3798_unk23_id
 
 	def_text_script CompText87D3798_unk23
 	ts_mugshot_show mugshot=0x0
@@ -485,7 +485,7 @@ CompText87D3798::
 	.string "to do with Iris...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87D3798_unk24_id
 
 	def_text_script CompText87D3798_unk24
 	ts_mugshot_show mugshot=0x1D
@@ -508,7 +508,7 @@ CompText87D3798::
 	ts_key_wait any=0x0
 	ts_sound_play_bgm track=0x63
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87D3798_unk25_id
 
 	def_text_script CompText87D3798_unk25
 	ts_mugshot_show mugshot=0x0
@@ -519,7 +519,7 @@ CompText87D3798::
 	.string "Iris is a NetNavi!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87D3798_unk26_id
 
 	def_text_script CompText87D3798_unk26
 	ts_mugshot_show mugshot=0x2F
@@ -531,7 +531,7 @@ CompText87D3798::
 	.string "younger sister."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D3798_unk27_id
 
 	def_text_script CompText87D3798_unk27
 	ts_mugshot_show mugshot=0x0
@@ -554,7 +554,7 @@ CompText87D3798::
 	.string "...... A CopyBot!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D3798_unk28_id
 
 	def_text_script CompText87D3798_unk28
 	ts_mugshot_show mugshot=0x1D
@@ -579,12 +579,12 @@ CompText87D3798::
 	.string "Iris!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87D3798_unk30_id
 
 	def_text_script CompText87D3798_unk30
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x20,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87D3798_unk32_id,
 	]
 	ts_mugshot_show mugshot=0x11
 	ts_msg_open

@@ -17,7 +17,7 @@ CompText87AB438::
 	.string "Wake up!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87AB438_unk1_id
 
 	def_text_script CompText87AB438_unk1
 	ts_mugshot_show mugshot=0x0
@@ -32,7 +32,7 @@ CompText87AB438::
 	.string "*mumble,mumble*..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87AB438_unk2_id
 
 	def_text_script CompText87AB438_unk2
 	ts_mugshot_show mugshot=0x37

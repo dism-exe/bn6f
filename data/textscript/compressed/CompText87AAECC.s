@@ -25,7 +25,7 @@ CompText87AAECC::
 	.string "getting in my way!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87AAECC_unk2_id
 
 	def_text_script CompText87AAECC_unk2
 	ts_mugshot_hide
@@ -37,7 +37,7 @@ CompText87AAECC::
 	.string "*Squawk! Squawk!*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87AAECC_unk3_id
 
 	def_text_script CompText87AAECC_unk3
 	ts_mugshot_show mugshot=0x14
@@ -66,7 +66,7 @@ CompText87AAECC::
 	.string "finally ready to go!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AAECC_unk6_id
 
 	def_text_script CompText87AAECC_unk6
 	ts_mugshot_show mugshot=0x14

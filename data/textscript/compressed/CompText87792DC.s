@@ -12,13 +12,13 @@ CompText87792DC::
 	def_text_script CompText87792DC_unk0
 	ts_check_flag [
 		flag: 0x1120,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87792DC_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x111F,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87792DC_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x111F
 	ts_mugshot_show mugshot=0x15
@@ -740,13 +740,13 @@ CompText87792DC::
 	def_text_script CompText87792DC_unk10
 	ts_check_flag [
 		flag: 0x11BA,
-		jumpIfTrue: 0xC,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87792DC_unk12_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x11B9,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87792DC_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x11B9
 	ts_mugshot_show mugshot=0xD
@@ -799,8 +799,8 @@ CompText87792DC::
 	def_text_script CompText87792DC_unk12
 	ts_check_flag [
 		flag: 0x11B1,
-		jumpIfTrue: 0xD,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87792DC_unk13_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x11B1
 	ts_mugshot_show mugshot=0xF

@@ -12,18 +12,18 @@ CompText8799708::
 	def_text_script CompText8799708_unk0
 	ts_check_flag [
 		flag: 0xE67,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8799708_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xFF9,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x3,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8799708_unk3_id,
 	]
 	ts_check_flag [
 		flag: 0xED5,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8799708_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xED5
 	ts_mugshot_show mugshot=0x3C

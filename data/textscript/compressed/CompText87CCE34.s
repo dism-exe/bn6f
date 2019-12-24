@@ -25,7 +25,7 @@ CompText87CCE34::
 	.string "coming to school?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87CCE34_unk2_id
 
 	def_text_script CompText87CCE34_unk2
 	ts_mugshot_show mugshot=0x33
@@ -38,7 +38,7 @@ CompText87CCE34::
 	.string "something,don't you?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CCE34_unk3_id
 
 	def_text_script CompText87CCE34_unk3
 	ts_mugshot_show mugshot=0x0
@@ -52,7 +52,7 @@ CompText87CCE34::
 	.string "gotta deal with."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87CCE34_unk4_id
 
 	def_text_script CompText87CCE34_unk4
 	ts_mugshot_show mugshot=0x14
@@ -61,7 +61,7 @@ CompText87CCE34::
 	.string "Is that right...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87CCE34_unk5_id
 
 	def_text_script CompText87CCE34_unk5
 	ts_mugshot_show mugshot=0x0
@@ -72,7 +72,7 @@ CompText87CCE34::
 	.string " part of WWW...)"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87CCE34_unk6_id
 
 	def_text_script CompText87CCE34_unk6
 	ts_mugshot_hide
@@ -87,7 +87,7 @@ CompText87CCE34::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_sound_play_bgm track=0x63
-	ts_jump target=7
+	ts_jump target=CompText87CCE34_unk7_id
 
 	def_text_script CompText87CCE34_unk7
 	ts_mugshot_show mugshot=0x33
@@ -106,7 +106,7 @@ CompText87CCE34::
 	.string "today?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87CCE34_unk9_id
 
 	def_text_script CompText87CCE34_unk9
 	ts_mugshot_show mugshot=0x0
@@ -120,7 +120,7 @@ CompText87CCE34::
 	.string "Mayor,right!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87CCE34_unk10_id
 
 	def_text_script CompText87CCE34_unk10
 	ts_mugshot_show mugshot=0x2B
@@ -147,7 +147,7 @@ CompText87CCE34::
 	.string "Yuika's Lovelies!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87CCE34_unk11_id
 
 	def_text_script CompText87CCE34_unk11
 	ts_mugshot_show mugshot=0x2D
@@ -155,7 +155,7 @@ CompText87CCE34::
 	.string "The Justice Club!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87CCE34_unk12_id
 
 	def_text_script CompText87CCE34_unk12
 	ts_mugshot_show mugshot=0x2E
@@ -163,7 +163,7 @@ CompText87CCE34::
 	.string "Cloudy Bombers!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87CCE34_unk13_id
 
 	def_text_script CompText87CCE34_unk13
 	ts_sound_play_bgm track=0x63
@@ -194,7 +194,7 @@ CompText87CCE34::
 	.string "you the leader!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87CCE34_unk16_id
 
 	def_text_script CompText87CCE34_unk16
 	ts_mugshot_show mugshot=0x2B
@@ -235,7 +235,7 @@ CompText87CCE34::
 	.string "Yuika's Lovelies!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87CCE34_unk19_id
 
 	def_text_script CompText87CCE34_unk19
 	ts_mugshot_show mugshot=0x2E
@@ -243,7 +243,7 @@ CompText87CCE34::
 	.string "Cloudy Bombers!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87CCE34_unk20_id
 
 	def_text_script CompText87CCE34_unk20
 	ts_mugshot_show mugshot=0x0
@@ -273,7 +273,7 @@ CompText87CCE34::
 	.string "few questions!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87CCE34_unk22_id
 
 	def_text_script CompText87CCE34_unk22
 	ts_mugshot_show mugshot=0x0
@@ -282,7 +282,7 @@ CompText87CCE34::
 	.string "That's it!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87CCE34_unk23_id
 
 	def_text_script CompText87CCE34_unk23
 	ts_mugshot_show mugshot=0x2B
@@ -294,7 +294,7 @@ CompText87CCE34::
 	.string "girlfriend!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87CCE34_unk24_id
 
 	def_text_script CompText87CCE34_unk24
 	ts_mugshot_show mugshot=0x0
@@ -302,7 +302,7 @@ CompText87CCE34::
 	.string "G-Girlfriend!?!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87CCE34_unk25_id
 
 	def_text_script CompText87CCE34_unk25
 	ts_mugshot_show mugshot=0x2E
@@ -312,7 +312,7 @@ CompText87CCE34::
 	.string "Colonel in Sky Town!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87CCE34_unk26_id
 
 	def_text_script CompText87CCE34_unk26
 	ts_mugshot_show mugshot=0x0
@@ -329,7 +329,7 @@ CompText87CCE34::
 	.string "is!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87CCE34_unk27_id
 
 	def_text_script CompText87CCE34_unk27
 	ts_mugshot_show mugshot=0x2D
@@ -352,7 +352,7 @@ CompText87CCE34::
 	.string "JudgeMan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87CCE34_unk28_id
 
 	def_text_script CompText87CCE34_unk28
 	ts_mugshot_show mugshot=0x55
@@ -360,7 +360,7 @@ CompText87CCE34::
 	.string "Sir!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=29
+	ts_jump target=CompText87CCE34_unk29_id
 
 	def_text_script CompText87CCE34_unk29
 	ts_mugshot_show mugshot=0x33
@@ -380,7 +380,7 @@ CompText87CCE34::
 	.string "they here!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=CompText87CCE34_unk31_id
 
 	def_text_script CompText87CCE34_unk31
 	ts_mugshot_show mugshot=0x0
@@ -388,7 +388,7 @@ CompText87CCE34::
 	.string "Ah..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=32
+	ts_jump target=CompText87CCE34_unk32_id
 
 	def_text_script CompText87CCE34_unk32
 	ts_mugshot_show mugshot=0x2B
@@ -406,7 +406,7 @@ CompText87CCE34::
 	.string "save your friends!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=33
+	ts_jump target=CompText87CCE34_unk33_id
 
 	def_text_script CompText87CCE34_unk33
 	ts_mugshot_show mugshot=0x2E
@@ -426,7 +426,7 @@ CompText87CCE34::
 	.string "the girl is!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=34
+	ts_jump target=CompText87CCE34_unk34_id
 
 	def_text_script CompText87CCE34_unk34
 	ts_mugshot_show mugshot=0x0
@@ -435,7 +435,7 @@ CompText87CCE34::
 	.string "she is!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=35
+	ts_jump target=CompText87CCE34_unk35_id
 
 	def_text_script CompText87CCE34_unk35
 	ts_mugshot_show mugshot=0x2B
@@ -455,7 +455,7 @@ CompText87CCE34::
 	.string "Waaaaaaaah!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=37
+	ts_jump target=CompText87CCE34_unk37_id
 
 	def_text_script CompText87CCE34_unk37
 	ts_mugshot_show mugshot=0x2B
@@ -468,7 +468,7 @@ CompText87CCE34::
 	.string "little looser now..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=39
+	ts_jump target=CompText87CCE34_unk39_id
 
 	def_text_script CompText87CCE34_unk38
 
@@ -478,7 +478,7 @@ CompText87CCE34::
 	.string "Waaaaaaah!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87CCE34_unk40_id
 
 	def_text_script CompText87CCE34_unk40
 	ts_mugshot_show mugshot=0x2B
@@ -499,7 +499,7 @@ CompText87CCE34::
 	.string "Lan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=42
+	ts_jump target=CompText87CCE34_unk42_id
 
 	def_text_script CompText87CCE34_unk42
 	ts_mugshot_show mugshot=0x33
@@ -507,7 +507,7 @@ CompText87CCE34::
 	.string "Lan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=43
+	ts_jump target=CompText87CCE34_unk43_id
 
 	def_text_script CompText87CCE34_unk43
 	ts_mugshot_show mugshot=0x2B
@@ -533,7 +533,7 @@ CompText87CCE34::
 	.string "finger on Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=45
+	ts_jump target=CompText87CCE34_unk45_id
 
 	def_text_script CompText87CCE34_unk45
 	ts_mugshot_show mugshot=0x33
@@ -543,7 +543,7 @@ CompText87CCE34::
 	.string "have!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=46
+	ts_jump target=CompText87CCE34_unk46_id
 
 	def_text_script CompText87CCE34_unk46
 	ts_mugshot_show mugshot=0x2B
@@ -558,7 +558,7 @@ CompText87CCE34::
 	.string "they deserve!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=47
+	ts_jump target=CompText87CCE34_unk47_id
 
 	def_text_script CompText87CCE34_unk47
 	ts_mugshot_show mugshot=0x14
@@ -566,7 +566,7 @@ CompText87CCE34::
 	.string "Nrrrgh...!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=48
+	ts_jump target=CompText87CCE34_unk48_id
 
 	def_text_script CompText87CCE34_unk48
 	ts_mugshot_hide
@@ -583,7 +583,7 @@ CompText87CCE34::
 	.string "Let the others go."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=50
+	ts_jump target=CompText87CCE34_unk50_id
 
 	def_text_script CompText87CCE34_unk50
 	ts_mugshot_show mugshot=0x2B
@@ -610,7 +610,7 @@ CompText87CCE34::
 	.string "get hurt!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=52
+	ts_jump target=CompText87CCE34_unk52_id
 
 	def_text_script CompText87CCE34_unk52
 	ts_mugshot_show mugshot=0x11
@@ -620,7 +620,7 @@ CompText87CCE34::
 	.string "these robots."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=53
+	ts_jump target=CompText87CCE34_unk53_id
 
 	def_text_script CompText87CCE34_unk53
 	ts_mugshot_show mugshot=0x2B
@@ -628,7 +628,7 @@ CompText87CCE34::
 	.string "And if I say no?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=54
+	ts_jump target=CompText87CCE34_unk54_id
 
 	def_text_script CompText87CCE34_unk54
 	ts_mugshot_show mugshot=0x11
@@ -653,7 +653,7 @@ CompText87CCE34::
 	.string "surround her!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=56
+	ts_jump target=CompText87CCE34_unk56_id
 
 	def_text_script CompText87CCE34_unk56
 	ts_mugshot_hide
@@ -661,7 +661,7 @@ CompText87CCE34::
 	.string "........."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=57
+	ts_jump target=CompText87CCE34_unk57_id
 
 	def_text_script CompText87CCE34_unk57
 	ts_mugshot_show mugshot=0x2B
@@ -681,7 +681,7 @@ CompText87CCE34::
 	.string "ready to go."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=59
+	ts_jump target=CompText87CCE34_unk59_id
 
 	def_text_script CompText87CCE34_unk59
 	ts_mugshot_show mugshot=0x2B
@@ -704,7 +704,7 @@ CompText87CCE34::
 	.string "Uurrgnnnn..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=61
+	ts_jump target=CompText87CCE34_unk61_id
 
 	def_text_script CompText87CCE34_unk61
 	ts_mugshot_hide
@@ -725,7 +725,7 @@ CompText87CCE34::
 	.string "Lan! Are you OK!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=63
+	ts_jump target=CompText87CCE34_unk63_id
 
 	def_text_script CompText87CCE34_unk63
 	ts_mugshot_show mugshot=0x0
@@ -733,7 +733,7 @@ CompText87CCE34::
 	.string "Where are they!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=64
+	ts_jump target=CompText87CCE34_unk64_id
 
 	def_text_script CompText87CCE34_unk64
 	ts_mugshot_show mugshot=0x14
@@ -741,7 +741,7 @@ CompText87CCE34::
 	.string "Well... Um..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=65
+	ts_jump target=CompText87CCE34_unk65_id
 
 	def_text_script CompText87CCE34_unk65
 	ts_mugshot_show mugshot=0x0
@@ -778,7 +778,7 @@ CompText87CCE34::
 	.string "... Yeah..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=66
+	ts_jump target=CompText87CCE34_unk66_id
 
 	def_text_script CompText87CCE34_unk66
 	ts_mugshot_show mugshot=0x33
@@ -832,7 +832,7 @@ CompText87CCE34::
 	.string "something there..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=67
+	ts_jump target=CompText87CCE34_unk67_id
 
 	def_text_script CompText87CCE34_unk67
 	ts_mugshot_show mugshot=0x0
@@ -850,7 +850,7 @@ CompText87CCE34::
 	.string "take a look!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=68
+	ts_jump target=CompText87CCE34_unk68_id
 
 	def_text_script CompText87CCE34_unk68
 	ts_mugshot_show mugshot=0x33

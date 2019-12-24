@@ -172,8 +172,8 @@ CompText8758410::
 	ts_check_chapter [
 		lower: 0x0,
 		upper: 0x1E,
-		jumpIfInRange: 0xE,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8758410_unk14_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "There is a control\n"

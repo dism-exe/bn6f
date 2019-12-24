@@ -56,18 +56,18 @@ CompText8795A44::
 	def_text_script CompText8795A44_unk20
 	ts_check_flag [
 		flag: 0xCD8,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1A,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8795A44_unk26_id,
 	]
 	ts_check_flag [
 		flag: 0xCC2,
-		jumpIfTrue: 0x16,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8795A44_unk22_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCE4,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8795A44_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open
@@ -145,13 +145,13 @@ CompText8795A44::
 	def_text_script CompText8795A44_unk23
 	ts_check_flag [
 		flag: 0xCC8,
-		jumpIfTrue: 0x19,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8795A44_unk25_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCE4,
-		jumpIfTrue: 0x18,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8795A44_unk24_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open

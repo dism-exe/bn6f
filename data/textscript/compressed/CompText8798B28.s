@@ -12,13 +12,13 @@ CompText8798B28::
 	def_text_script CompText8798B28_unk0
 	ts_check_flag [
 		flag: 0xBE1,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8798B28_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xBDF,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8798B28_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xBDF
 	ts_mugshot_show mugshot=0x3C

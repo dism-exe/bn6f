@@ -49,7 +49,7 @@ TextScriptCommError87370C0::
 	ts_flag_clear flag=0x1734
 	.string "Communication error!"
 	ts_key_wait any=0x0
-	ts_jump target=1
+	ts_jump target=TextScriptCommError87370C0_unk1_id
 
 	def_text_script TextScriptCommError87370C0_unk4
 	ts_mugshot_show mugshot=0x47
@@ -100,7 +100,7 @@ TextScriptCommError87370C0::
 	ts_flag_clear flag=0x1734
 	.string "Communication error!"
 	ts_key_wait any=0x0
-	ts_jump target=5
+	ts_jump target=TextScriptCommError87370C0_unk5_id
 
 	def_text_script TextScriptCommError87370C0_unk8
 	ts_mugshot_show mugshot=0x49
@@ -151,7 +151,7 @@ TextScriptCommError87370C0::
 	ts_flag_clear flag=0x1734
 	.string "Communication error!"
 	ts_key_wait any=0x0
-	ts_jump target=9
+	ts_jump target=TextScriptCommError87370C0_unk9_id
 
 	def_text_script TextScriptCommError87370C0_unk12
 	ts_mugshot_show mugshot=0x4B
@@ -202,7 +202,7 @@ TextScriptCommError87370C0::
 	ts_flag_clear flag=0x1734
 	.string "Communication error!"
 	ts_key_wait any=0x0
-	ts_jump target=13
+	ts_jump target=TextScriptCommError87370C0_unk13_id
 
 	def_text_script TextScriptCommError87370C0_unk16
 	ts_mugshot_show mugshot=0x50
@@ -253,7 +253,7 @@ TextScriptCommError87370C0::
 	ts_flag_clear flag=0x1734
 	.string "Communication error!"
 	ts_key_wait any=0x0
-	ts_jump target=17
+	ts_jump target=TextScriptCommError87370C0_unk17_id
 
 	def_text_script TextScriptCommError87370C0_unk20
 	ts_mugshot_show mugshot=0x4F
@@ -304,7 +304,7 @@ TextScriptCommError87370C0::
 	ts_flag_clear flag=0x1734
 	.string "Communication error!"
 	ts_key_wait any=0x0
-	ts_jump target=21
+	ts_jump target=TextScriptCommError87370C0_unk21_id
 
 	def_text_script TextScriptCommError87370C0_unk24
 	ts_mugshot_show mugshot=0x48
@@ -355,7 +355,7 @@ TextScriptCommError87370C0::
 	ts_flag_clear flag=0x1734
 	.string "Communication error!"
 	ts_key_wait any=0x0
-	ts_jump target=25
+	ts_jump target=TextScriptCommError87370C0_unk25_id
 
 	def_text_script TextScriptCommError87370C0_unk28
 	ts_mugshot_show mugshot=0x4A
@@ -406,7 +406,7 @@ TextScriptCommError87370C0::
 	ts_flag_clear flag=0x1734
 	.string "Communication error!"
 	ts_key_wait any=0x0
-	ts_jump target=29
+	ts_jump target=TextScriptCommError87370C0_unk29_id
 
 	def_text_script TextScriptCommError87370C0_unk32
 	ts_mugshot_show mugshot=0x4C
@@ -460,7 +460,7 @@ TextScriptCommError87370C0::
 	ts_flag_clear flag=0x1734
 	.string "Communication error!"
 	ts_key_wait any=0x0
-	ts_jump target=33
+	ts_jump target=TextScriptCommError87370C0_unk33_id
 
 	def_text_script TextScriptCommError87370C0_unk36
 	ts_mugshot_show mugshot=0x4D
@@ -511,7 +511,7 @@ TextScriptCommError87370C0::
 	ts_flag_clear flag=0x1734
 	.string "Communication error!"
 	ts_key_wait any=0x0
-	ts_jump target=37
+	ts_jump target=TextScriptCommError87370C0_unk37_id
 
 	def_text_script TextScriptCommError87370C0_unk40
 	ts_mugshot_show mugshot=0x4E
@@ -566,7 +566,7 @@ TextScriptCommError87370C0::
 	ts_flag_clear flag=0x1734
 	.string "Communication error!"
 	ts_key_wait any=0x0
-	ts_jump target=41
+	ts_jump target=TextScriptCommError87370C0_unk41_id
 
 	def_text_script TextScriptCommError87370C0_unk44
 	ts_mugshot_show mugshot=0x3B
@@ -617,7 +617,7 @@ TextScriptCommError87370C0::
 	ts_flag_clear flag=0x1734
 	.string "Communication error!"
 	ts_key_wait any=0x0
-	ts_jump target=45
+	ts_jump target=TextScriptCommError87370C0_unk45_id
 
 	def_text_script TextScriptCommError87370C0_unk48
 

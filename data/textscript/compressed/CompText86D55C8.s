@@ -85,8 +85,8 @@ CompText86D55C8::
 	ts_clear_msg
 	ts_check_flag [
 		flag: 0x1720,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0x2,
+		jumpIfTrue: CompText86D55C8_unk3_id,
+		jumpIfFalse: CompText86D55C8_unk2_id,
 	]
 
 	def_text_script CompText86D55C8_unk2

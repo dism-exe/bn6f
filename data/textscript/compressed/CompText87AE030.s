@@ -19,7 +19,7 @@ CompText87AE030::
 	.string "We left kinda..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87AE030_unk1_id
 
 	def_text_script CompText87AE030_unk1
 	ts_mugshot_show mugshot=0x14
@@ -33,7 +33,7 @@ CompText87AE030::
 	.string "me around forever..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87AE030_unk2_id
 
 	def_text_script CompText87AE030_unk2
 	ts_mugshot_show mugshot=0x0
@@ -80,7 +80,7 @@ CompText87AE030::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_text_speed delay=0x2
-	ts_jump target=5
+	ts_jump target=CompText87AE030_unk5_id
 
 	def_text_script CompText87AE030_unk5
 	ts_mugshot_show mugshot=0x0
@@ -100,7 +100,7 @@ CompText87AE030::
 	.string "next day off!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AE030_unk6_id
 
 	def_text_script CompText87AE030_unk6
 	ts_mugshot_show mugshot=0x14
@@ -142,7 +142,7 @@ CompText87AE030::
 	.string "."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87AE030_unk9_id
 
 	def_text_script CompText87AE030_unk9
 	ts_sound_play_bgm track=0x2
@@ -162,7 +162,7 @@ CompText87AE030::
 	.string "Town."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87AE030_unk10_id
 
 	def_text_script CompText87AE030_unk10
 	ts_mugshot_show mugshot=0x60

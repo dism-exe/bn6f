@@ -37,7 +37,7 @@ CompText87DA494::
 	.string "HOOOOOOT!!!!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87DA494_unk1_id
 
 	def_text_script CompText87DA494_unk1
 	ts_mugshot_show mugshot=0x37

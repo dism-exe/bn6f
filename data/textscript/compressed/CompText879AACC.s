@@ -12,13 +12,13 @@ CompText879AACC::
 	def_text_script CompText879AACC_unk0
 	ts_check_flag [
 		flag: 0x1130,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879AACC_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x112F,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879AACC_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
@@ -185,9 +185,9 @@ CompText879AACC::
 		chip: 0xCA,
 		code: 0xE,
 		amount: 0x1,
-		jumpIfEqual: 0xFF,
-		jumpIfGreater: 0xFF,
-		jumpIfLess: 0x3,
+		jumpIfEqual: TS_CONTINUE,
+		jumpIfGreater: TS_CONTINUE,
+		jumpIfLess: CompText879AACC_unk3_id,
 	]
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
@@ -264,8 +264,8 @@ CompText879AACC::
 	def_text_script CompText879AACC_unk10
 	ts_check_flag [
 		flag: 0xC1C,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879AACC_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
@@ -311,8 +311,8 @@ CompText879AACC::
 	def_text_script CompText879AACC_unk15
 	ts_check_flag [
 		flag: 0xCD0,
-		jumpIfTrue: 0x10,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879AACC_unk16_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

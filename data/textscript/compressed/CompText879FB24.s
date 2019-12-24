@@ -22,8 +22,8 @@ CompText879FB24::
 	def_text_script CompText879FB24_unk5
 	ts_check_flag [
 		flag: 0x859,
-		jumpIfTrue: 0x6,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879FB24_unk6_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x859
 	ts_msg_open
@@ -109,8 +109,8 @@ CompText879FB24::
 	def_text_script CompText879FB24_unk7
 	ts_check_flag [
 		flag: 0x859,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879FB24_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x859
 	ts_msg_open

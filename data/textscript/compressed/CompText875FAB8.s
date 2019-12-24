@@ -24,13 +24,13 @@ CompText875FAB8::
 	def_text_script CompText875FAB8_unk1
 	ts_check_flag [
 		flag: 0x865,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875FAB8_unk3_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x864,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875FAB8_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "TO PASS THROUGH\n"
@@ -189,25 +189,25 @@ CompText875FAB8::
 
 	def_text_script CompText875FAB8_unk4
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x5,
-		jumpIfElecMan: 0xFF,
-		jumpIfSlashMan: 0x6,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0xFF,
-		jumpIfTomahawkMan: 0x7,
-		jumpIfTenguMan: 0xFF,
-		jumpIfGroundMan: 0x8,
-		jumpIfDustMan: 0xFF,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText875FAB8_unk5_id,
+		jumpIfElecMan: TS_CONTINUE,
+		jumpIfSlashMan: CompText875FAB8_unk6_id,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: TS_CONTINUE,
+		jumpIfTomahawkMan: CompText875FAB8_unk7_id,
+		jumpIfTenguMan: TS_CONTINUE,
+		jumpIfGroundMan: CompText875FAB8_unk8_id,
+		jumpIfDustMan: TS_CONTINUE,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_check_item07 [
 		item: 0x42,
 		amount: 0x1,
-		jumpIfEqual: 0xA,
-		jumpIfGreater: 0xA,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText875FAB8_unk10_id,
+		jumpIfGreater: CompText875FAB8_unk10_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "A strong-looking\n"
@@ -234,7 +234,7 @@ CompText875FAB8::
 	.string "cybertree to ashes!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText875FAB8_unk9_id
 
 	def_text_script CompText875FAB8_unk6
 	ts_mugshot_show mugshot=0x4B
@@ -253,7 +253,7 @@ CompText875FAB8::
 	.string "cybertree down!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText875FAB8_unk9_id
 
 	def_text_script CompText875FAB8_unk7
 	ts_mugshot_show mugshot=0x4A
@@ -273,7 +273,7 @@ CompText875FAB8::
 	.string "split into two!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText875FAB8_unk9_id
 
 	def_text_script CompText875FAB8_unk8
 	ts_mugshot_show mugshot=0x4D
@@ -297,7 +297,7 @@ CompText875FAB8::
 	.string "out,roots and all!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText875FAB8_unk9_id
 
 	def_text_script CompText875FAB8_unk9
 	ts_flag_clear flag=0x169

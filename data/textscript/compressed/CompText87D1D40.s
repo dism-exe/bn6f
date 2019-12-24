@@ -43,7 +43,7 @@ CompText87D1D40::
 	.string "Let's get going!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87D1D40_unk3_id
 
 	def_text_script CompText87D1D40_unk3
 	ts_mugshot_show mugshot=0x37

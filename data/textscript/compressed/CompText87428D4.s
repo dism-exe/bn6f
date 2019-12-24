@@ -13,20 +13,20 @@ CompText87428D4::
 	ts_check_chapter [
 		lower: 0x15,
 		upper: 0x16,
-		jumpIfInRange: 0x5F,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87428D4_unk95_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x14,
 		upper: 0x14,
-		jumpIfInRange: 0x50,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87428D4_unk80_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x12,
 		upper: 0x13,
-		jumpIfInRange: 0x41,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87428D4_unk65_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "Dummy text"
@@ -194,43 +194,43 @@ CompText87428D4::
 	def_text_script CompText87428D4_unk65
 	ts_check_flag [
 		flag: 0x516,
-		jumpIfTrue: 0x49,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk73_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x554,
-		jumpIfTrue: 0x48,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk72_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x514,
-		jumpIfTrue: 0x47,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk71_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x544,
-		jumpIfTrue: 0x46,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk70_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x512,
-		jumpIfTrue: 0x45,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk69_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x510,
-		jumpIfTrue: 0x44,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk68_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x50E,
-		jumpIfTrue: 0x43,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk67_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x543,
-		jumpIfTrue: 0x42,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk66_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -325,48 +325,48 @@ CompText87428D4::
 	def_text_script CompText87428D4_unk80
 	ts_check_flag [
 		flag: 0x52A,
-		jumpIfTrue: 0x57,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk87_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x528,
-		jumpIfTrue: 0x51,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk81_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x526,
-		jumpIfTrue: 0x56,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk86_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1729,
-		jumpIfTrue: 0x58,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk88_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x524,
-		jumpIfTrue: 0x55,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk85_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x522,
-		jumpIfTrue: 0x54,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk84_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x51E,
-		jumpIfTrue: 0x53,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk83_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x555,
-		jumpIfTrue: 0x52,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk82_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x51C,
-		jumpIfTrue: 0x51,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk81_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -379,8 +379,8 @@ CompText87428D4::
 	ts_check_sub_area [
 		lower: 0x4,
 		upper: 0x4,
-		jumpIfInRange: 0x5A,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87428D4_unk90_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -399,8 +399,8 @@ CompText87428D4::
 	ts_check_sub_area [
 		lower: 0x3,
 		upper: 0x3,
-		jumpIfInRange: 0xFF,
-		jumpIfOutOfRange: 0x59,
+		jumpIfInRange: TS_CONTINUE,
+		jumpIfOutOfRange: CompText87428D4_unk89_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -455,8 +455,8 @@ CompText87428D4::
 	ts_msg_open
 	ts_check_flag [
 		flag: 0x5DF,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87428D4_unk1_id,
 	]
 	.string "Jack me in,Lan!\n"
 	.string "Hurry! We've gotta\n"
@@ -506,8 +506,8 @@ CompText87428D4::
 	def_text_script CompText87428D4_unk95
 	ts_check_flag [
 		flag: 0x538,
-		jumpIfTrue: 0x60,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87428D4_unk96_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

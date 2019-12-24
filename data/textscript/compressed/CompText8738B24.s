@@ -13,134 +13,134 @@ CompText8738B24::
 	ts_check_area [
 		lower: 0x6,
 		upper: 0x6,
-		jumpIfInRange: 0x46,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk70_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x5,
 		upper: 0x5,
-		jumpIfInRange: 0x3C,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk60_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x4,
 		upper: 0x4,
-		jumpIfInRange: 0x32,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk50_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x3,
 		upper: 0x3,
-		jumpIfInRange: 0x28,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk40_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x2,
 		upper: 0x2,
-		jumpIfInRange: 0x1E,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk30_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x1,
 		upper: 0x1,
-		jumpIfInRange: 0x14,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk20_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x0,
 		upper: 0x0,
-		jumpIfInRange: 0xA,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk10_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x96,
 		upper: 0x96,
-		jumpIfInRange: 0x50,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk80_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x95,
 		upper: 0x95,
-		jumpIfInRange: 0x50,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk80_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x94,
 		upper: 0x94,
-		jumpIfInRange: 0x1,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk1_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x93,
 		upper: 0x93,
-		jumpIfInRange: 0x50,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk80_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x92,
 		upper: 0x92,
-		jumpIfInRange: 0x32,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk50_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x91,
 		upper: 0x91,
-		jumpIfInRange: 0x28,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk40_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x90,
 		upper: 0x90,
-		jumpIfInRange: 0x14,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk20_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x85,
 		upper: 0x85,
-		jumpIfInRange: 0x46,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk70_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x83,
 		upper: 0x83,
-		jumpIfInRange: 0x3C,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk60_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x82,
 		upper: 0x82,
-		jumpIfInRange: 0x32,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk50_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x81,
 		upper: 0x81,
-		jumpIfInRange: 0x28,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk40_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x80,
 		upper: 0x80,
-		jumpIfInRange: 0x1E,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk30_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x8C,
 		upper: 0x8C,
-		jumpIfInRange: 0x2,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk2_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x8D,
 		upper: 0x8D,
-		jumpIfInRange: 0x3,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk3_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x88,
 		upper: 0x88,
-		jumpIfInRange: 0x4,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk4_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_end
 
@@ -148,8 +148,8 @@ CompText8738B24::
 	ts_check_sub_area [
 		lower: 0x0,
 		upper: 0x1,
-		jumpIfInRange: 0x3C,
-		jumpIfOutOfRange: 0xA,
+		jumpIfInRange: CompText8738B24_unk60_id,
+		jumpIfOutOfRange: CompText8738B24_unk10_id,
 	]
 	ts_end
 
@@ -157,50 +157,50 @@ CompText8738B24::
 	ts_check_sub_area [
 		lower: 0xB,
 		upper: 0xF,
-		jumpIfInRange: 0x3C,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk60_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0xA,
 		upper: 0xA,
-		jumpIfInRange: 0x32,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk50_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x9,
 		upper: 0x9,
-		jumpIfInRange: 0x1E,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk30_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x8,
 		upper: 0x8,
-		jumpIfInRange: 0x28,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk40_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x7,
 		upper: 0x7,
-		jumpIfInRange: 0x3C,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk60_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x6,
 		upper: 0x6,
-		jumpIfInRange: 0x14,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk20_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x1,
 		upper: 0x5,
-		jumpIfInRange: 0x1E,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk30_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x0,
 		upper: 0x0,
-		jumpIfInRange: 0x14,
-		jumpIfOutOfRange: 0x14,
+		jumpIfInRange: CompText8738B24_unk20_id,
+		jumpIfOutOfRange: CompText8738B24_unk20_id,
 	]
 	ts_end
 
@@ -208,92 +208,92 @@ CompText8738B24::
 	ts_check_sub_area [
 		lower: 0xF,
 		upper: 0xF,
-		jumpIfInRange: 0x46,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk70_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0xE,
 		upper: 0xE,
-		jumpIfInRange: 0xA,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk10_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0xD,
 		upper: 0xD,
-		jumpIfInRange: 0x28,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk40_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0xC,
 		upper: 0xC,
-		jumpIfInRange: 0x46,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk70_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0xB,
 		upper: 0xB,
-		jumpIfInRange: 0x1E,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk30_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x9,
 		upper: 0xA,
-		jumpIfInRange: 0x3C,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk60_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x8,
 		upper: 0x8,
-		jumpIfInRange: 0x28,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk40_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x7,
 		upper: 0x7,
-		jumpIfInRange: 0x1E,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk30_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x6,
 		upper: 0x6,
-		jumpIfInRange: 0x28,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk40_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x5,
 		upper: 0x5,
-		jumpIfInRange: 0x1E,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk30_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x4,
 		upper: 0x4,
-		jumpIfInRange: 0x32,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk50_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x3,
 		upper: 0x3,
-		jumpIfInRange: 0x28,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk40_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x2,
 		upper: 0x2,
-		jumpIfInRange: 0x32,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk50_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x1,
 		upper: 0x1,
-		jumpIfInRange: 0x28,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk40_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x0,
 		upper: 0x0,
-		jumpIfInRange: 0x1E,
-		jumpIfOutOfRange: 0x1E,
+		jumpIfInRange: CompText8738B24_unk30_id,
+		jumpIfOutOfRange: CompText8738B24_unk30_id,
 	]
 	ts_end
 
@@ -301,32 +301,32 @@ CompText8738B24::
 	ts_check_sub_area [
 		lower: 0x6,
 		upper: 0x6,
-		jumpIfInRange: 0x3C,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk60_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x5,
 		upper: 0x5,
-		jumpIfInRange: 0x32,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk50_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x3,
 		upper: 0x3,
-		jumpIfInRange: 0x28,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk40_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x1,
 		upper: 0x1,
-		jumpIfInRange: 0xA,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8738B24_unk10_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_sub_area [
 		lower: 0x0,
 		upper: 0x0,
-		jumpIfInRange: 0x14,
-		jumpIfOutOfRange: 0x14,
+		jumpIfInRange: CompText8738B24_unk20_id,
+		jumpIfOutOfRange: CompText8738B24_unk20_id,
 	]
 	ts_end
 
@@ -341,10 +341,10 @@ CompText8738B24::
 	def_text_script CompText8738B24_unk9
 
 	def_text_script CompText8738B24_unk10
-	ts_jump_random 71, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0xFF, 0xB, 0xC, 0xD, 0xE, 0xF, 0xFF, 0xFF
+	ts_jump_random CompText8738B24_unk71_id, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0xFF, 0xB, 0xC, 0xD, 0xE, 0xF, 0xFF, 0xFF
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x10,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8738B24_unk16_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -661,7 +661,7 @@ CompText8738B24::
 	def_text_script CompText8738B24_unk19
 
 	def_text_script CompText8738B24_unk20
-	ts_jump_random 71, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0xFF, 0x15, 0x16, 0x17, 0x18, 0x19, 0xFF, 0xFF
+	ts_jump_random CompText8738B24_unk71_id, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0xFF, 0x15, 0x16, 0x17, 0x18, 0x19, 0xFF, 0xFF
 	ts_msg_open
 	.string "Lan..."
 	ts_key_wait any=0x0
@@ -941,7 +941,7 @@ CompText8738B24::
 	def_text_script CompText8738B24_unk29
 
 	def_text_script CompText8738B24_unk30
-	ts_jump_random 71, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0xFF, 0x1F, 0x20, 0x21, 0x22, 0x23, 0xFF, 0xFF
+	ts_jump_random CompText8738B24_unk71_id, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0xFF, 0x1F, 0x20, 0x21, 0x22, 0x23, 0xFF, 0xFF
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Hot!"
@@ -1214,7 +1214,7 @@ CompText8738B24::
 	def_text_script CompText8738B24_unk39
 
 	def_text_script CompText8738B24_unk40
-	ts_jump_random 71, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0xFF, 0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0xFF, 0xFF
+	ts_jump_random CompText8738B24_unk71_id, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0xFF, 0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0xFF, 0xFF
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Letter Song Time!!"
@@ -1460,7 +1460,7 @@ CompText8738B24::
 	def_text_script CompText8738B24_unk49
 
 	def_text_script CompText8738B24_unk50
-	ts_jump_random 71, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0xFF, 0x33, 0x34, 0x35, 0x36, 0x37, 0xFF, 0xFF
+	ts_jump_random CompText8738B24_unk71_id, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0xFF, 0x33, 0x34, 0x35, 0x36, 0x37, 0xFF, 0xFF
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Hey Hey! Ho Ho!\n"
@@ -1709,7 +1709,7 @@ CompText8738B24::
 	def_text_script CompText8738B24_unk59
 
 	def_text_script CompText8738B24_unk60
-	ts_jump_random 71, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0xFF, 0x3D, 0x3E, 0x3F, 0x40, 0x41, 0xFF, 0xFF
+	ts_jump_random CompText8738B24_unk71_id, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0xFF, 0x3D, 0x3E, 0x3F, 0x40, 0x41, 0xFF, 0xFF
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Impression time!"
@@ -1917,7 +1917,7 @@ CompText8738B24::
 	def_text_script CompText8738B24_unk69
 
 	def_text_script CompText8738B24_unk70
-	ts_jump_random 71, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0xFF, 0x47, 0x48, 0x49, 0x4A, 0x4B, 0xFF, 0xFF
+	ts_jump_random CompText8738B24_unk71_id, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0xFF, 0x47, 0x48, 0x49, 0x4A, 0x4B, 0xFF, 0xFF
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "I came up with a\n"

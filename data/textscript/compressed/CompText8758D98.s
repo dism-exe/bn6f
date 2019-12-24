@@ -104,8 +104,8 @@ CompText8758D98::
 	ts_check_chapter [
 		lower: 0x20,
 		upper: 0xFF,
-		jumpIfInRange: 0x9,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8758D98_unk9_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "Today's events are\n"

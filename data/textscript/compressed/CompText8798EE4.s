@@ -54,18 +54,18 @@ CompText8798EE4::
 	def_text_script CompText8798EE4_unk10
 	ts_check_flag [
 		flag: 0x11DA,
-		jumpIfTrue: 0xF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8798EE4_unk15_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x11D5,
-		jumpIfTrue: 0xD,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8798EE4_unk13_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x11D3,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8798EE4_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x11D3
 	ts_mugshot_show mugshot=0x44
@@ -156,8 +156,8 @@ CompText8798EE4::
 	def_text_script CompText8798EE4_unk11
 	ts_check_flag [
 		flag: 0x11D4,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8798EE4_unk12_id,
 	]
 	ts_flag_set flag=0x11D5
 	ts_item_take [
@@ -293,8 +293,8 @@ CompText8798EE4::
 	def_text_script CompText8798EE4_unk13
 	ts_check_flag [
 		flag: 0x11D6,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xE,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8798EE4_unk14_id,
 	]
 	ts_flag_set flag=0x11DA
 	ts_item_take [

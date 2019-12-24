@@ -48,7 +48,7 @@ CompText87C56CC::
 	.string "What?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C56CC_unk3_id
 
 	def_text_script CompText87C56CC_unk3
 	ts_mugshot_show mugshot=0x12
@@ -79,7 +79,7 @@ CompText87C56CC::
 	.string "we will be enemies!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C56CC_unk4_id
 
 	def_text_script CompText87C56CC_unk4
 	ts_mugshot_show mugshot=0x2A
@@ -137,7 +137,7 @@ CompText87C56CC::
 	.string "us!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87C56CC_unk8_id
 
 	def_text_script CompText87C56CC_unk8
 	ts_mugshot_hide
@@ -156,7 +156,7 @@ CompText87C56CC::
 	.string "Yuika!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87C56CC_unk10_id
 
 	def_text_script CompText87C56CC_unk10
 	ts_mugshot_show mugshot=0x2B
@@ -182,7 +182,7 @@ CompText87C56CC::
 	.string "speechless!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87C56CC_unk11_id
 
 	def_text_script CompText87C56CC_unk11
 	ts_mugshot_show mugshot=0x2A
@@ -194,7 +194,7 @@ CompText87C56CC::
 	.string "deserved,he did!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87C56CC_unk12_id
 
 	def_text_script CompText87C56CC_unk12
 	ts_mugshot_show mugshot=0x2E
@@ -204,7 +204,7 @@ CompText87C56CC::
 	.string "about a good plan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87C56CC_unk13_id
 
 	def_text_script CompText87C56CC_unk13
 	ts_mugshot_show mugshot=0x2B
@@ -214,7 +214,7 @@ CompText87C56CC::
 	.string "\"benefactor\"."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87C56CC_unk14_id
 
 	def_text_script CompText87C56CC_unk14
 	ts_mugshot_show mugshot=0x2D
@@ -222,7 +222,7 @@ CompText87C56CC::
 	.string "Good news?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C56CC_unk15_id
 
 	def_text_script CompText87C56CC_unk15
 	ts_mugshot_show mugshot=0x2B
@@ -240,7 +240,7 @@ CompText87C56CC::
 	.string "Cybeast's max power."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87C56CC_unk16_id
 
 	def_text_script CompText87C56CC_unk16
 	ts_mugshot_show mugshot=0x2A
@@ -258,10 +258,10 @@ CompText87C56CC::
 	.string "to talk..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87C56CC_unk17_id
 
 	def_text_script CompText87C56CC_unk17
-	ts_jump target=18
+	ts_jump target=CompText87C56CC_unk18_id
 
 	def_text_script CompText87C56CC_unk18
 	ts_mugshot_show mugshot=0x2B
@@ -287,7 +287,7 @@ CompText87C56CC::
 	.string "suuuuper cute doll!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87C56CC_unk19_id
 
 	def_text_script CompText87C56CC_unk19
 	ts_mugshot_show mugshot=0x2E
@@ -300,7 +300,7 @@ CompText87C56CC::
 	.string "need or want it!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87C56CC_unk20_id
 
 	def_text_script CompText87C56CC_unk20
 	ts_mugshot_show mugshot=0x2B

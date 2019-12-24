@@ -25,8 +25,8 @@ CompText876F2EC::
 	ts_check_chapter [
 		lower: 0x21,
 		upper: 0x21,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText876F2EC_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xF
 	ts_msg_open
@@ -92,8 +92,8 @@ CompText876F2EC::
 	def_text_script CompText876F2EC_unk20
 	ts_check_flag [
 		flag: 0x86E,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876F2EC_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x86E
 	ts_mugshot_show mugshot=0x12

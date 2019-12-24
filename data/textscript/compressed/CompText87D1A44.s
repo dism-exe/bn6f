@@ -22,7 +22,7 @@ CompText87D1A44::
 	.string "Waaa!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87D1A44_unk2_id
 
 	def_text_script CompText87D1A44_unk2
 	ts_mugshot_hide
@@ -127,7 +127,7 @@ CompText87D1A44::
 	.string "Waaa!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87D1A44_unk14_id
 
 	def_text_script CompText87D1A44_unk14
 	ts_mugshot_show mugshot=0x2B
@@ -147,7 +147,7 @@ CompText87D1A44::
 	.string "What should I do!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87D1A44_unk16_id
 
 	def_text_script CompText87D1A44_unk16
 	ts_mugshot_show mugshot=0x37
@@ -175,7 +175,7 @@ CompText87D1A44::
 	.string "for this pavilion."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87D1A44_unk19_id
 
 	def_text_script CompText87D1A44_unk19
 	ts_mugshot_show mugshot=0x37
@@ -186,7 +186,7 @@ CompText87D1A44::
 	.string "I'll fix the system!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87D1A44_unk20_id
 
 	def_text_script CompText87D1A44_unk20
 	ts_mugshot_show mugshot=0x0

@@ -29,7 +29,7 @@ CompText87ABF88::
 	.string "goodbye..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87ABF88_unk2_id
 
 	def_text_script CompText87ABF88_unk2
 	ts_mugshot_show mugshot=0x18
@@ -50,7 +50,7 @@ CompText87ABF88::
 	ts_sound_play_bgm track=0xC
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87ABF88_unk4_id
 
 	def_text_script CompText87ABF88_unk4
 	ts_mugshot_show mugshot=0xB
@@ -107,7 +107,7 @@ CompText87ABF88::
 	.string "into town..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87ABF88_unk8_id
 
 	def_text_script CompText87ABF88_unk8
 	ts_mugshot_show mugshot=0x14
@@ -123,7 +123,7 @@ CompText87ABF88::
 	.string "Eh?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87ABF88_unk10_id
 
 	def_text_script CompText87ABF88_unk10
 	ts_mugshot_show mugshot=0x14
@@ -165,7 +165,7 @@ CompText87ABF88::
 	.string "someone caused this!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87ABF88_unk14_id
 
 	def_text_script CompText87ABF88_unk14
 	ts_mugshot_show mugshot=0x0

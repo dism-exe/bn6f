@@ -17,7 +17,7 @@ CompText87D1144::
 	.string "Dr.Wily's Navis!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D1144_unk1_id
 
 	def_text_script CompText87D1144_unk1
 	ts_mugshot_show mugshot=0x4
@@ -32,7 +32,7 @@ CompText87D1144::
 	.string "that many CopyBots."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87D1144_unk2_id
 
 	def_text_script CompText87D1144_unk2
 	ts_mugshot_hide
@@ -62,7 +62,7 @@ CompText87D1144::
 	.string "us in!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87D1144_unk5_id
 
 	def_text_script CompText87D1144_unk5
 	ts_mugshot_show mugshot=0x0
@@ -72,7 +72,7 @@ CompText87D1144::
 	.string "of them..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87D1144_unk6_id
 
 	def_text_script CompText87D1144_unk6
 	ts_mugshot_show mugshot=0x43
@@ -94,7 +94,7 @@ CompText87D1144::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87D1144_unk8_id
 
 	def_text_script CompText87D1144_unk8
 	ts_mugshot_show mugshot=0x43
@@ -144,7 +144,7 @@ CompText87D1144::
 	.string "students!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87D1144_unk12_id
 
 	def_text_script CompText87D1144_unk12
 	ts_mugshot_show mugshot=0x0
@@ -152,7 +152,7 @@ CompText87D1144::
 	.string "Mr.Mach!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D1144_unk13_id
 
 	def_text_script CompText87D1144_unk13
 	ts_mugshot_show mugshot=0x12
@@ -161,7 +161,7 @@ CompText87D1144::
 	.string "now!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87D1144_unk14_id
 
 	def_text_script CompText87D1144_unk14
 	ts_mugshot_show mugshot=0x0
@@ -173,7 +173,7 @@ CompText87D1144::
 		slot: 0x1F,
 		length: 0x5,
 	]
-	ts_jump target=15
+	ts_jump target=CompText87D1144_unk15_id
 
 	def_text_script CompText87D1144_unk15
 	ts_mugshot_show mugshot=0x12
@@ -188,7 +188,7 @@ CompText87D1144::
 	.string "into action."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87D1144_unk16_id
 
 	def_text_script CompText87D1144_unk16
 	ts_mugshot_show mugshot=0x0
@@ -200,7 +200,7 @@ CompText87D1144::
 	.string "Dr.Wily want!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87D1144_unk17_id
 
 	def_text_script CompText87D1144_unk17
 	ts_mugshot_show mugshot=0x12
@@ -208,7 +208,7 @@ CompText87D1144::
 	.string "Dr.Wily is..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87D1144_unk18_id
 
 	def_text_script CompText87D1144_unk18
 	ts_mugshot_hide
@@ -248,7 +248,7 @@ CompText87D1144::
 	.string "I'll go too,Mr.Mach!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87D1144_unk22_id
 
 	def_text_script CompText87D1144_unk22
 	ts_mugshot_show mugshot=0x12
@@ -257,7 +257,7 @@ CompText87D1144::
 	.string "to ask of you..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87D1144_unk23_id
 
 	def_text_script CompText87D1144_unk23
 	ts_mugshot_show mugshot=0x0
@@ -265,7 +265,7 @@ CompText87D1144::
 	.string "A favor...? Me?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87D1144_unk24_id
 
 	def_text_script CompText87D1144_unk24
 	ts_mugshot_show mugshot=0x12
@@ -297,7 +297,7 @@ CompText87D1144::
 	.string "Mr.Mach!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87D1144_unk26_id
 
 	def_text_script CompText87D1144_unk26
 	ts_mugshot_show mugshot=0x12
@@ -309,7 +309,7 @@ CompText87D1144::
 	.string "here!! Come get me!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D1144_unk27_id
 
 	def_text_script CompText87D1144_unk27
 	ts_mugshot_show mugshot=0x43
@@ -319,7 +319,7 @@ CompText87D1144::
 	.string "OVER THERE!!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D1144_unk28_id
 
 	def_text_script CompText87D1144_unk28
 	ts_mugshot_show mugshot=0x4
@@ -327,7 +327,7 @@ CompText87D1144::
 	.string "... They're gone."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=29
+	ts_jump target=CompText87D1144_unk29_id
 
 	def_text_script CompText87D1144_unk29
 	ts_mugshot_show mugshot=0x0
@@ -335,7 +335,7 @@ CompText87D1144::
 	.string "......"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87D1144_unk30_id
 
 	def_text_script CompText87D1144_unk30
 	ts_mugshot_show mugshot=0x4
@@ -369,7 +369,7 @@ CompText87D1144::
 	.string "will be alright."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=32
+	ts_jump target=CompText87D1144_unk32_id
 
 	def_text_script CompText87D1144_unk32
 	ts_mugshot_show mugshot=0x0

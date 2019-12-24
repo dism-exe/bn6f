@@ -50,7 +50,7 @@ CompText87C54A8::
 	.string "saying sorry..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C54A8_unk3_id
 
 	def_text_script CompText87C54A8_unk3
 	ts_mugshot_show mugshot=0x2
@@ -59,7 +59,7 @@ CompText87C54A8::
 	.string "yourself up,Lan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C54A8_unk4_id
 
 	def_text_script CompText87C54A8_unk4
 	ts_mugshot_show mugshot=0x3
@@ -74,7 +74,7 @@ CompText87C54A8::
 	.string "now?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C54A8_unk5_id
 
 	def_text_script CompText87C54A8_unk5
 	ts_mugshot_show mugshot=0x0
@@ -94,7 +94,7 @@ CompText87C54A8::
 	.string "then this happened."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C54A8_unk6_id
 
 	def_text_script CompText87C54A8_unk6
 	ts_mugshot_show mugshot=0x1

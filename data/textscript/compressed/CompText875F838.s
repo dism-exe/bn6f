@@ -13,10 +13,10 @@ CompText875F838::
 	ts_check_chapter [
 		lower: 0x24,
 		upper: 0x24,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875F838_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_jump target=6
+	ts_jump target=CompText875F838_unk6_id
 
 	def_text_script CompText875F838_unk1
 	ts_msg_open
@@ -56,8 +56,8 @@ CompText875F838::
 	def_text_script CompText875F838_unk5
 	ts_check_flag [
 		flag: 0x634,
-		jumpIfTrue: 0x6,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875F838_unk6_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x634
 	ts_end
@@ -79,9 +79,9 @@ CompText875F838::
 	ts_check_item07 [
 		item: 0x46,
 		amount: 0x1,
-		jumpIfEqual: 0xC,
-		jumpIfGreater: 0xC,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText875F838_unk12_id,
+		jumpIfGreater: CompText875F838_unk12_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "YOU NEED THE\n"
@@ -98,18 +98,18 @@ CompText875F838::
 	def_text_script CompText875F838_unk8
 	ts_check_flag [
 		flag: 0xC85,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x9,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText875F838_unk9_id,
 	]
 	ts_check_flag [
 		flag: 0xC89,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xA,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText875F838_unk10_id,
 	]
 	ts_check_flag [
 		flag: 0xC8D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xB,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText875F838_unk11_id,
 	]
 	ts_msg_open
 	.string "Jack me out,Lan!\n"

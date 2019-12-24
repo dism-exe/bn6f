@@ -45,8 +45,8 @@ CompText877C94C::
 	def_text_script CompText877C94C_unk3
 	ts_check_flag [
 		flag: 0x824,
-		jumpIfTrue: 0x7,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877C94C_unk7_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x15
 	ts_msg_open
@@ -61,23 +61,23 @@ CompText877C94C::
 	ts_msg_open
 	ts_check_flag [
 		flag: 0x814,
-		jumpIfTrue: 0x6,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877C94C_unk6_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x812,
-		jumpIfTrue: 0x5,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877C94C_unk5_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x80A,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877C94C_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x867,
-		jumpIfTrue: 0x9,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877C94C_unk9_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	.string "Lan,jack into the\n"
 	.string "tablet and let's go\n"
@@ -214,13 +214,13 @@ CompText877C94C::
 	def_text_script CompText877C94C_unk50
 	ts_check_flag [
 		flag: 0x111C,
-		jumpIfTrue: 0x36,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877C94C_unk54_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x111B,
-		jumpIfTrue: 0x33,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877C94C_unk51_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x111B
 	ts_mugshot_show mugshot=0x10
@@ -358,9 +358,9 @@ CompText877C94C::
 		chip: 0xA8,
 		code: 0x12,
 		amount: 0x1,
-		jumpIfEqual: 0xFF,
-		jumpIfGreater: 0xFF,
-		jumpIfLess: 0x35,
+		jumpIfEqual: TS_CONTINUE,
+		jumpIfGreater: TS_CONTINUE,
+		jumpIfLess: CompText877C94C_unk53_id,
 	]
 	ts_item_take_chip [
 		chip: 0xA8,

@@ -22,7 +22,7 @@ CompText87D2234::
 	.string "*huff,huff...*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D2234_unk1_id
 
 	def_text_script CompText87D2234_unk1
 	ts_mugshot_show mugshot=0x37
@@ -33,7 +33,7 @@ CompText87D2234::
 	.string "Look up there!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87D2234_unk2_id
 
 	def_text_script CompText87D2234_unk2
 	ts_mugshot_show mugshot=0x0
@@ -103,7 +103,7 @@ CompText87D2234::
 	.string "to do!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87D2234_unk7_id
 
 	def_text_script CompText87D2234_unk7
 	ts_mugshot_show mugshot=0x2B
@@ -116,7 +116,7 @@ CompText87D2234::
 	.string "something!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87D2234_unk8_id
 
 	def_text_script CompText87D2234_unk8
 	ts_mugshot_show mugshot=0x2E
@@ -130,7 +130,7 @@ CompText87D2234::
 	.string "just gotta try it!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87D2234_unk9_id
 
 	def_text_script CompText87D2234_unk9
 	ts_mugshot_show mugshot=0x2E
@@ -138,7 +138,7 @@ CompText87D2234::
 	.string "ElementMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87D2234_unk10_id
 
 	def_text_script CompText87D2234_unk10
 	ts_mugshot_show mugshot=0x56
@@ -155,7 +155,7 @@ CompText87D2234::
 	.string "I CAN do something!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87D2234_unk12_id
 
 	def_text_script CompText87D2234_unk12
 	ts_mugshot_show mugshot=0x2B
@@ -169,7 +169,7 @@ CompText87D2234::
 	.string "going to get you!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D2234_unk13_id
 
 	def_text_script CompText87D2234_unk13
 	ts_mugshot_show mugshot=0x2E
@@ -177,7 +177,7 @@ CompText87D2234::
 	.string "Huh?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87D2234_unk14_id
 
 	def_text_script CompText87D2234_unk14
 	ts_mugshot_show mugshot=0x0
@@ -199,7 +199,7 @@ CompText87D2234::
 	.string "I've got you now!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87D2234_unk17_id
 
 	def_text_script CompText87D2234_unk17
 	ts_mugshot_show mugshot=0x2E
@@ -216,7 +216,7 @@ CompText87D2234::
 	.string "How did he!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87D2234_unk19_id
 
 	def_text_script CompText87D2234_unk19
 	ts_mugshot_show mugshot=0x2E
@@ -248,7 +248,7 @@ CompText87D2234::
 	.string "Lan,jack me in!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87D2234_unk21_id
 
 	def_text_script CompText87D2234_unk21
 	ts_mugshot_show mugshot=0x0

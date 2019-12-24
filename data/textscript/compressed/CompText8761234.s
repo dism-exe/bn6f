@@ -27,13 +27,13 @@ CompText8761234::
 	def_text_script CompText8761234_unk2
 	ts_check_flag [
 		flag: 0xCD2,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8761234_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCD1,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8761234_unk3_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xCD1
 	ts_mugshot_show mugshot=0x3C
@@ -144,13 +144,13 @@ CompText8761234::
 	def_text_script CompText8761234_unk5
 	ts_check_flag [
 		flag: 0xCD2,
-		jumpIfTrue: 0x6,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8761234_unk6_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCD1,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x6,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8761234_unk6_id,
 	]
 	ts_msg_open
 	.string "Dex's symbol,an\n"
@@ -234,9 +234,9 @@ CompText8761234::
 	ts_check_item07 [
 		item: 0x44,
 		amount: 0x1,
-		jumpIfEqual: 0xFF,
-		jumpIfGreater: 0xFF,
-		jumpIfLess: 0xB,
+		jumpIfEqual: TS_CONTINUE,
+		jumpIfGreater: TS_CONTINUE,
+		jumpIfLess: CompText8761234_unk11_id,
 	]
 	ts_msg_open
 	ts_print_current_navi_ow

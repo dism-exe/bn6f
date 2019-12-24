@@ -11,7 +11,7 @@ CompText876210C::
 
 	def_text_script CompText876210C_unk0
 	ts_msg_open
-	ts_jump target=10
+	ts_jump target=CompText876210C_unk10_id
 	ts_end
 
 	def_text_script CompText876210C_unk1
@@ -26,13 +26,13 @@ CompText876210C::
 	ts_check_library_standard [
 		lower: 0x64,
 		upper: 0xC8,
-		jumpIfInRange: 0xFF,
-		jumpIfOutOfRange: 0x9,
+		jumpIfInRange: TS_CONTINUE,
+		jumpIfOutOfRange: CompText876210C_unk9_id,
 	]
 	ts_check_flag [
 		flag: 0xE00,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x9,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText876210C_unk9_id,
 	]
 	ts_clear_msg
 	.string "Confirmed..."
@@ -57,38 +57,38 @@ CompText876210C::
 	ts_check_chapter [
 		lower: 0x80,
 		upper: 0x80,
-		jumpIfInRange: 0xF,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText876210C_unk15_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x54,
 		upper: 0x57,
-		jumpIfInRange: 0xF,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText876210C_unk15_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x60,
 		upper: 0x60,
-		jumpIfInRange: 0xF,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText876210C_unk15_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_jump target=14
+	ts_jump target=CompText876210C_unk14_id
 
 	def_text_script CompText876210C_unk4
 	ts_check_flag [
 		flag: 0xC8D,
-		jumpIfTrue: 0x6,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876210C_unk6_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC89,
-		jumpIfTrue: 0x7,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876210C_unk7_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC85,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876210C_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x4F
 	ts_msg_open
@@ -210,9 +210,9 @@ CompText876210C::
 	.string "(UP/DOWN:Number\n"
 	.string " LEFT/RIGHT:Cursor)"
 	ts_menu_select_password [
-		jumpIfCorrect: 0xB,
-		jumpIfIncorrect: 0xC,
-		jumpIfCancelled: 0xD,
+		jumpIfCorrect: CompText876210C_unk11_id,
+		jumpIfIncorrect: CompText876210C_unk12_id,
+		jumpIfCancelled: CompText876210C_unk13_id,
 		password: 0x2,
 	]
 	ts_end
@@ -245,26 +245,26 @@ CompText876210C::
 
 	def_text_script CompText876210C_unk15
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x10,
-		jumpIfElecMan: 0x10,
-		jumpIfSlashMan: 0x10,
-		jumpIfEraseMan: 0x10,
-		jumpIfChargeMan: 0x10,
-		jumpIfSpoutMan: 0x10,
-		jumpIfTomahawkMan: 0x10,
-		jumpIfTenguMan: 0x10,
-		jumpIfGroundMan: 0x10,
-		jumpIfDustMan: 0x10,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText876210C_unk16_id,
+		jumpIfElecMan: CompText876210C_unk16_id,
+		jumpIfSlashMan: CompText876210C_unk16_id,
+		jumpIfEraseMan: CompText876210C_unk16_id,
+		jumpIfChargeMan: CompText876210C_unk16_id,
+		jumpIfSpoutMan: CompText876210C_unk16_id,
+		jumpIfTomahawkMan: CompText876210C_unk16_id,
+		jumpIfTenguMan: CompText876210C_unk16_id,
+		jumpIfGroundMan: CompText876210C_unk16_id,
+		jumpIfDustMan: CompText876210C_unk16_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
-	ts_jump target=14
+	ts_jump target=CompText876210C_unk14_id
 
 	def_text_script CompText876210C_unk16
 	ts_check_flag [
 		flag: 0xE08,
-		jumpIfTrue: 0xE,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876210C_unk14_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "It's a BBS..."

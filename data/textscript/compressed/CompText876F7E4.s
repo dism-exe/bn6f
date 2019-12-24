@@ -12,8 +12,8 @@ CompText876F7E4::
 	def_text_script CompText876F7E4_unk0
 	ts_check_flag [
 		flag: 0xA10,
-		jumpIfTrue: 0x5,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876F7E4_unk5_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xF
 	ts_msg_open
@@ -25,8 +25,8 @@ CompText876F7E4::
 	def_text_script CompText876F7E4_unk1
 	ts_check_flag [
 		flag: 0xA10,
-		jumpIfTrue: 0x6,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876F7E4_unk6_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xB
 	ts_msg_open
@@ -45,8 +45,8 @@ CompText876F7E4::
 	def_text_script CompText876F7E4_unk2
 	ts_check_flag [
 		flag: 0xA10,
-		jumpIfTrue: 0x7,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876F7E4_unk7_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xA
 	ts_msg_open
@@ -141,13 +141,13 @@ CompText876F7E4::
 	def_text_script CompText876F7E4_unk20
 	ts_check_flag [
 		flag: 0xCCF,
-		jumpIfTrue: 0x16,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876F7E4_unk22_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCCE,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876F7E4_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "THE MAYOR IS IN THE\n"
@@ -279,13 +279,13 @@ CompText876F7E4::
 	def_text_script CompText876F7E4_unk40
 	ts_check_flag [
 		flag: 0xC24,
-		jumpIfTrue: 0x2A,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876F7E4_unk42_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC22,
-		jumpIfTrue: 0x29,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876F7E4_unk41_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x19
 	ts_msg_open

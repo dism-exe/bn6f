@@ -122,20 +122,20 @@ CompText87892BC::
 	ts_check_chapter [
 		lower: 0x23,
 		upper: 0x25,
-		jumpIfInRange: 0xC,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87892BC_unk12_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCDB,
-		jumpIfTrue: 0xD,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87892BC_unk13_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_item07 [
 		item: 0x1B,
 		amount: 0x1,
-		jumpIfEqual: 0xB,
-		jumpIfGreater: 0xB,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText87892BC_unk11_id,
+		jumpIfGreater: CompText87892BC_unk11_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
@@ -231,28 +231,28 @@ CompText87892BC::
 	ts_flag_set flag=0x11CA
 	ts_check_flag [
 		flag: 0x11CB,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x15,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
 		flag: 0x11CA,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x15,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
 		flag: 0x11C9,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x15,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
 		flag: 0x11C8,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x15,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
 		flag: 0x11C7,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x15,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x37
@@ -298,28 +298,28 @@ CompText87892BC::
 	ts_flag_set flag=0x11CB
 	ts_check_flag [
 		flag: 0x11CB,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x15,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
 		flag: 0x11CA,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x15,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
 		flag: 0x11C9,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x15,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
 		flag: 0x11C8,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x15,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
 		flag: 0x11C7,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x15,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x37

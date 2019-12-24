@@ -15,7 +15,7 @@ CompText87BD9B0::
 	.string "Hey,are you OK!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BD9B0_unk1_id
 
 	def_text_script CompText87BD9B0_unk1
 	ts_mugshot_show mugshot=0x57
@@ -31,7 +31,7 @@ CompText87BD9B0::
 	.string "Are you hurt?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87BD9B0_unk3_id
 
 	def_text_script CompText87BD9B0_unk3
 	ts_mugshot_show mugshot=0x57
@@ -53,7 +53,7 @@ CompText87BD9B0::
 	.string "time!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87BD9B0_unk4_id
 
 	def_text_script CompText87BD9B0_unk4
 	ts_mugshot_show mugshot=0x37
@@ -88,7 +88,7 @@ CompText87BD9B0::
 	.string "brought me here!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87BD9B0_unk8_id
 
 	def_text_script CompText87BD9B0_unk8
 	ts_mugshot_show mugshot=0x37
@@ -96,7 +96,7 @@ CompText87BD9B0::
 	.string "Who are you!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87BD9B0_unk9_id
 
 	def_text_script CompText87BD9B0_unk9
 	ts_mugshot_show mugshot=0x43
@@ -116,7 +116,7 @@ CompText87BD9B0::
 	.string "CYBEASTS!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87BD9B0_unk10_id
 
 	def_text_script CompText87BD9B0_unk10
 	ts_mugshot_show mugshot=0x37
@@ -130,7 +130,7 @@ CompText87BD9B0::
 	.string "MegaMan has one."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87BD9B0_unk11_id
 
 	def_text_script CompText87BD9B0_unk11
 	ts_mugshot_show mugshot=0x43
@@ -158,7 +158,7 @@ CompText87BD9B0::
 	.string "MegaMan,be careful!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87BD9B0_unk13_id
 
 	def_text_script CompText87BD9B0_unk13
 	ts_mugshot_show mugshot=0x37
@@ -175,7 +175,7 @@ CompText87BD9B0::
 	.string "W-What's going on!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87BD9B0_unk15_id
 
 	def_text_script CompText87BD9B0_unk15
 	ts_mugshot_show mugshot=0x37
@@ -185,7 +185,7 @@ CompText87BD9B0::
 	.string "trying..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87BD9B0_unk16_id
 
 	def_text_script CompText87BD9B0_unk16
 	ts_mugshot_show mugshot=0x0
@@ -195,7 +195,7 @@ CompText87BD9B0::
 	.string "Cybeast stronger!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87BD9B0_unk17_id
 
 	def_text_script CompText87BD9B0_unk17
 	ts_mugshot_show mugshot=0x43
@@ -203,7 +203,7 @@ CompText87BD9B0::
 	.string "UUUU LAAAA!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87BD9B0_unk18_id
 
 	def_text_script CompText87BD9B0_unk18
 	ts_mugshot_show mugshot=0x37
@@ -220,7 +220,7 @@ CompText87BD9B0::
 	.string "Hurry..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87BD9B0_unk19_id
 
 	def_text_script CompText87BD9B0_unk19
 	ts_mugshot_show mugshot=0x57
@@ -229,7 +229,7 @@ CompText87BD9B0::
 	.string "out with me!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87BD9B0_unk20_id
 
 	def_text_script CompText87BD9B0_unk20
 	ts_mugshot_show mugshot=0x37
@@ -251,7 +251,7 @@ CompText87BD9B0::
 	.string "you..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87BD9B0_unk21_id
 
 	def_text_script CompText87BD9B0_unk21
 	ts_mugshot_show mugshot=0x57
@@ -268,7 +268,7 @@ CompText87BD9B0::
 	.string "ESCAPING!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87BD9B0_unk23_id
 
 	def_text_script CompText87BD9B0_unk23
 	ts_mugshot_show mugshot=0x43
@@ -281,7 +281,7 @@ CompText87BD9B0::
 	.string "UUUU LAAAA!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87BD9B0_unk24_id
 
 	def_text_script CompText87BD9B0_unk24
 	ts_mugshot_show mugshot=0x37
@@ -311,12 +311,12 @@ CompText87BD9B0::
 	.string "TH-THAT FORM..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87BD9B0_unk28_id
 
 	def_text_script CompText87BD9B0_unk28
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x1D,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87BD9B0_unk29_id,
 	]
 	ts_mugshot_show mugshot=0x58
 	ts_msg_open
@@ -329,7 +329,7 @@ CompText87BD9B0::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87BD9B0_unk30_id
 
 	def_text_script CompText87BD9B0_unk29
 	ts_mugshot_show mugshot=0x59
@@ -343,7 +343,7 @@ CompText87BD9B0::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87BD9B0_unk30_id
 
 	def_text_script CompText87BD9B0_unk30
 	ts_mugshot_show mugshot=0x43
@@ -351,12 +351,12 @@ CompText87BD9B0::
 	.string "C-CYBEAST..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=CompText87BD9B0_unk31_id
 
 	def_text_script CompText87BD9B0_unk31
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x20,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87BD9B0_unk32_id,
 	]
 	ts_mugshot_show mugshot=0x58
 	ts_msg_open
@@ -410,7 +410,7 @@ CompText87BD9B0::
 	.string "CYBEAST'S SHAPE!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=34
+	ts_jump target=CompText87BD9B0_unk34_id
 
 	def_text_script CompText87BD9B0_unk34
 	ts_mugshot_show mugshot=0x0

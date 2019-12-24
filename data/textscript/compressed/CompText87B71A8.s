@@ -31,7 +31,7 @@ CompText87B71A8::
 	ts_clear_msg
 	ts_sound_enable_text_sfx
 	ts_control_unlock
-	ts_jump target=1
+	ts_jump target=CompText87B71A8_unk1_id
 
 	def_text_script CompText87B71A8_unk1
 	ts_msg_open
@@ -56,7 +56,7 @@ CompText87B71A8::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_animation animation=0x2
-	ts_jump target=3
+	ts_jump target=CompText87B71A8_unk3_id
 
 	def_text_script CompText87B71A8_unk3
 	ts_mugshot_hide
@@ -66,7 +66,7 @@ CompText87B71A8::
 	.string "STATEMENT."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B71A8_unk4_id
 
 	def_text_script CompText87B71A8_unk4
 	ts_mugshot_show mugshot=0x2D
@@ -103,7 +103,7 @@ CompText87B71A8::
 	.string "go unpunished!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B71A8_unk5_id
 
 	def_text_script CompText87B71A8_unk5
 	ts_mugshot_show mugshot=0x0
@@ -121,7 +121,7 @@ CompText87B71A8::
 	.string "the witness stand."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B71A8_unk7_id
 
 	def_text_script CompText87B71A8_unk7
 	ts_mugshot_show mugshot=0x0
@@ -142,7 +142,7 @@ CompText87B71A8::
 	.string "name and occupation."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B71A8_unk9_id
 
 	def_text_script CompText87B71A8_unk9
 	ts_mugshot_show mugshot=0x0
@@ -155,7 +155,7 @@ CompText87B71A8::
 	.string "had octopus..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B71A8_unk10_id
 
 	def_text_script CompText87B71A8_unk10
 	ts_mugshot_show mugshot=0x37
@@ -164,7 +164,7 @@ CompText87B71A8::
 	.string " he asked you!)"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87B71A8_unk11_id
 
 	def_text_script CompText87B71A8_unk11
 	ts_mugshot_show mugshot=0x0
@@ -174,7 +174,7 @@ CompText87B71A8::
 	.string " octopus...)"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87B71A8_unk12_id
 
 	def_text_script CompText87B71A8_unk12
 	ts_mugshot_show mugshot=0x37
@@ -183,7 +183,7 @@ CompText87B71A8::
 	.string " \"Occupation\"!)"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87B71A8_unk13_id
 
 	def_text_script CompText87B71A8_unk13
 	ts_mugshot_show mugshot=0x0
@@ -191,7 +191,7 @@ CompText87B71A8::
 	.string "(A what? Octobacon?)"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87B71A8_unk14_id
 
 	def_text_script CompText87B71A8_unk14
 	ts_mugshot_show mugshot=0x37
@@ -340,7 +340,7 @@ CompText87B71A8::
 	ts_clear_msg
 	ts_sound_enable_text_sfx
 	ts_control_unlock
-	ts_jump target=16
+	ts_jump target=CompText87B71A8_unk16_id
 
 	def_text_script CompText87B71A8_unk16
 	ts_mugshot_hide
@@ -403,7 +403,7 @@ CompText87B71A8::
 	.string "ya scurvy rat,arrr'!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87B71A8_unk20_id
 
 	def_text_script CompText87B71A8_unk20
 	ts_mugshot_show mugshot=0x0
@@ -433,7 +433,7 @@ CompText87B71A8::
 	.string "criminals do..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87B71A8_unk21_id
 
 	def_text_script CompText87B71A8_unk21
 	ts_mugshot_hide
@@ -454,7 +454,7 @@ CompText87B71A8::
 	.string "first trial?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87B71A8_unk23_id
 
 	def_text_script CompText87B71A8_unk23
 	ts_mugshot_show mugshot=0x0
@@ -473,7 +473,7 @@ CompText87B71A8::
 	.string "after all!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87B71A8_unk24_id
 
 	def_text_script CompText87B71A8_unk24
 	ts_mugshot_show mugshot=0x2D
@@ -486,7 +486,7 @@ CompText87B71A8::
 	.string "idea!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87B71A8_unk25_id
 
 	def_text_script CompText87B71A8_unk25
 	ts_mugshot_show mugshot=0x0
@@ -494,7 +494,7 @@ CompText87B71A8::
 	.string "Really!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87B71A8_unk26_id
 
 	def_text_script CompText87B71A8_unk26
 	ts_mugshot_show mugshot=0x2D
@@ -507,7 +507,7 @@ CompText87B71A8::
 	.string "bigger and bigger!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87B71A8_unk27_id
 
 	def_text_script CompText87B71A8_unk27
 	ts_mugshot_show mugshot=0x0
@@ -516,7 +516,7 @@ CompText87B71A8::
 	.string "Prosecutor Ito!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87B71A8_unk28_id
 
 	def_text_script CompText87B71A8_unk28
 	ts_mugshot_show mugshot=0x2D
@@ -571,7 +571,7 @@ CompText87B71A8::
 	.string "him when I grow up!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87B71A8_unk30_id
 
 	def_text_script CompText87B71A8_unk30
 	ts_mugshot_show mugshot=0x37
@@ -591,7 +591,7 @@ CompText87B71A8::
 	.string "homework!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=CompText87B71A8_unk31_id
 
 	def_text_script CompText87B71A8_unk31
 	ts_mugshot_show mugshot=0x0

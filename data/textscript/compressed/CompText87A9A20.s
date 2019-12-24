@@ -25,7 +25,7 @@ CompText87A9A20::
 	.string "Tab!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A9A20_unk2_id
 
 	def_text_script CompText87A9A20_unk2
 	ts_mugshot_show mugshot=0x33
@@ -33,7 +33,7 @@ CompText87A9A20::
 	.string "Heeere!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A9A20_unk3_id
 
 	def_text_script CompText87A9A20_unk3
 	ts_mugshot_show mugshot=0x12
@@ -41,7 +41,7 @@ CompText87A9A20::
 	.string "Alice!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A9A20_unk4_id
 
 	def_text_script CompText87A9A20_unk4
 	ts_mugshot_show mugshot=0xC
@@ -49,7 +49,7 @@ CompText87A9A20::
 	.string "Here!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A9A20_unk5_id
 
 	def_text_script CompText87A9A20_unk5
 	ts_mugshot_show mugshot=0x12
@@ -71,7 +71,7 @@ CompText87A9A20::
 	.string "wake up on time..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A9A20_unk6_id
 
 	def_text_script CompText87A9A20_unk6
 	ts_mugshot_hide
@@ -85,7 +85,7 @@ CompText87A9A20::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A9A20_unk7_id
 
 	def_text_script CompText87A9A20_unk7
 	ts_mugshot_hide
@@ -135,7 +135,7 @@ CompText87A9A20::
 	.string "Whoo,just made it!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87A9A20_unk10_id
 
 	def_text_script CompText87A9A20_unk10
 	ts_mugshot_show mugshot=0x33
@@ -143,7 +143,7 @@ CompText87A9A20::
 	.string "Huh!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87A9A20_unk11_id
 
 	def_text_script CompText87A9A20_unk11
 	ts_mugshot_show mugshot=0xC
@@ -151,7 +151,7 @@ CompText87A9A20::
 	.string "W-Wha...!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87A9A20_unk12_id
 
 	def_text_script CompText87A9A20_unk12
 	ts_mugshot_show mugshot=0x0
@@ -168,7 +168,7 @@ CompText87A9A20::
 	.string "surprised at?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87A9A20_unk14_id
 
 	def_text_script CompText87A9A20_unk14
 	ts_mugshot_show mugshot=0x12
@@ -178,7 +178,7 @@ CompText87A9A20::
 	.string "you?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87A9A20_unk15_id
 
 	def_text_script CompText87A9A20_unk15
 	ts_mugshot_show mugshot=0x14
@@ -194,7 +194,7 @@ CompText87A9A20::
 	.string "this thing!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87A9A20_unk17_id
 
 	def_text_script CompText87A9A20_unk17
 	ts_mugshot_show mugshot=0x12
@@ -203,7 +203,7 @@ CompText87A9A20::
 	.string "didn't you?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87A9A20_unk18_id
 
 	def_text_script CompText87A9A20_unk18
 	ts_mugshot_show mugshot=0x14
@@ -231,7 +231,7 @@ CompText87A9A20::
 	.string "you!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87A9A20_unk21_id
 
 	def_text_script CompText87A9A20_unk21
 	ts_mugshot_show mugshot=0x12
@@ -244,7 +244,7 @@ CompText87A9A20::
 	.string "Any idea why?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87A9A20_unk22_id
 
 	def_text_script CompText87A9A20_unk22
 	ts_mugshot_show mugshot=0x14
@@ -267,7 +267,7 @@ CompText87A9A20::
 	.string "strange pigeon!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87A9A20_unk23_id
 
 	def_text_script CompText87A9A20_unk23
 	ts_mugshot_show mugshot=0x12
@@ -280,7 +280,7 @@ CompText87A9A20::
 	.string "penguin!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87A9A20_unk24_id
 
 	def_text_script CompText87A9A20_unk24
 	ts_mugshot_show mugshot=0x14
@@ -298,7 +298,7 @@ CompText87A9A20::
 	.string "pelican..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87A9A20_unk25_id
 
 	def_text_script CompText87A9A20_unk25
 	ts_mugshot_show mugshot=0x12
@@ -330,7 +330,7 @@ CompText87A9A20::
 	.string "What!? Why!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87A9A20_unk27_id
 
 	def_text_script CompText87A9A20_unk27
 	ts_mugshot_show mugshot=0x12
@@ -339,7 +339,7 @@ CompText87A9A20::
 	.string "ditch the bird!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87A9A20_unk28_id
 
 	def_text_script CompText87A9A20_unk28
 	ts_mugshot_show mugshot=0x14
@@ -359,7 +359,7 @@ CompText87A9A20::
 	.string "penguin,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87A9A20_unk30_id
 
 	def_text_script CompText87A9A20_unk30
 	ts_mugshot_show mugshot=0x0
@@ -377,7 +377,7 @@ CompText87A9A20::
 	.string "a pelican..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=CompText87A9A20_unk31_id
 
 	def_text_script CompText87A9A20_unk31
 	ts_mugshot_show mugshot=0x37
@@ -441,7 +441,7 @@ CompText87A9A20::
 	.string "*Squawk! Squawk!*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=36
+	ts_jump target=CompText87A9A20_unk36_id
 
 	def_text_script CompText87A9A20_unk36
 	ts_mugshot_show mugshot=0x14
@@ -468,7 +468,7 @@ CompText87A9A20::
 	.string "hungry?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=38
+	ts_jump target=CompText87A9A20_unk38_id
 
 	def_text_script CompText87A9A20_unk38
 	ts_mugshot_show mugshot=0x14
@@ -482,7 +482,7 @@ CompText87A9A20::
 	.string "pigeon food!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=39
+	ts_jump target=CompText87A9A20_unk39_id
 
 	def_text_script CompText87A9A20_unk39
 	ts_mugshot_show mugshot=0x0
@@ -507,7 +507,7 @@ CompText87A9A20::
 	.string "penguin,OK?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87A9A20_unk40_id
 
 	def_text_script CompText87A9A20_unk40
 	ts_mugshot_show mugshot=0x14

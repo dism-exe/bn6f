@@ -28,15 +28,15 @@ CompText875D800::
 	def_text_script CompText875D800_unk1
 	ts_check_flag [
 		flag: 0x81B,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x2,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText875D800_unk2_id,
 	]
 	ts_check_flag [
 		flag: 0x81C,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x3,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText875D800_unk3_id,
 	]
-	ts_jump target=2
+	ts_jump target=CompText875D800_unk2_id
 
 	def_text_script CompText875D800_unk2
 	ts_msg_open

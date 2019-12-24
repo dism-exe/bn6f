@@ -12,13 +12,13 @@ CompText876C2A8::
 	def_text_script CompText876C2A8_unk0
 	ts_check_flag [
 		flag: 0x1101,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876C2A8_unk3_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1100,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876C2A8_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1100
 	ts_mugshot_show mugshot=0xC
@@ -79,23 +79,23 @@ CompText876C2A8::
 	def_text_script CompText876C2A8_unk2
 	ts_check_flag [
 		flag: 0x1106,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText876C2A8_unk1_id,
 	]
 	ts_check_flag [
 		flag: 0x1107,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText876C2A8_unk1_id,
 	]
 	ts_check_flag [
 		flag: 0x1108,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText876C2A8_unk1_id,
 	]
 	ts_check_flag [
 		flag: 0x1109,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText876C2A8_unk1_id,
 	]
 	ts_flag_set flag=0x1101
 	ts_mugshot_show mugshot=0xC
@@ -112,9 +112,9 @@ CompText876C2A8::
 	ts_mugshot_hide
 	ts_check_give_bug_frags [
 		amount: 0xA,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_player_animate_object animation=0x18
 	.string "Lan got:\n"
@@ -171,28 +171,28 @@ CompText876C2A8::
 	ts_flag_set flag=0x11AC
 	ts_check_flag [
 		flag: 0x11AF,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x6,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText876C2A8_unk6_id,
 	]
 	ts_check_flag [
 		flag: 0x11AE,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x6,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText876C2A8_unk6_id,
 	]
 	ts_check_flag [
 		flag: 0x11AD,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x6,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText876C2A8_unk6_id,
 	]
 	ts_check_flag [
 		flag: 0x11AC,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x6,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText876C2A8_unk6_id,
 	]
 	ts_check_flag [
 		flag: 0x11AB,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x6,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText876C2A8_unk6_id,
 	]
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x0
@@ -218,8 +218,8 @@ CompText876C2A8::
 	def_text_script CompText876C2A8_unk10
 	ts_check_flag [
 		flag: 0x1148,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876C2A8_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1148
 	ts_mugshot_show mugshot=0x8

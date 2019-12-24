@@ -15,7 +15,7 @@ CompText87A65BC::
 	.string "We did it!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87A65BC_unk1_id
 
 	def_text_script CompText87A65BC_unk1
 	ts_mugshot_show mugshot=0x37
@@ -30,7 +30,7 @@ CompText87A65BC::
 	.string "AWESOME!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A65BC_unk3_id
 
 	def_text_script CompText87A65BC_unk3
 	ts_mugshot_show mugshot=0x3F
@@ -38,7 +38,7 @@ CompText87A65BC::
 	.string "That was sooo cool!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A65BC_unk4_id
 
 	def_text_script CompText87A65BC_unk4
 	ts_mugshot_show mugshot=0x41
@@ -46,7 +46,7 @@ CompText87A65BC::
 	.string "What a show!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A65BC_unk5_id
 
 	def_text_script CompText87A65BC_unk5
 	ts_mugshot_show mugshot=0x57
@@ -54,7 +54,7 @@ CompText87A65BC::
 	.string "Hmph!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A65BC_unk6_id
 
 	def_text_script CompText87A65BC_unk6
 	ts_mugshot_show mugshot=0x42
@@ -69,7 +69,7 @@ CompText87A65BC::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_sound_play_bgm track=0x63
-	ts_jump target=7
+	ts_jump target=CompText87A65BC_unk7_id
 
 	def_text_script CompText87A65BC_unk7
 	ts_mugshot_hide
@@ -90,7 +90,7 @@ CompText87A65BC::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_sound_play_bgm track=0x13
-	ts_jump target=8
+	ts_jump target=CompText87A65BC_unk8_id
 
 	def_text_script CompText87A65BC_unk8
 	ts_mugshot_show mugshot=0x42
@@ -149,7 +149,7 @@ CompText87A65BC::
 	.string "problem!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87A65BC_unk13_id
 
 	def_text_script CompText87A65BC_unk13
 	ts_mugshot_show mugshot=0x37
@@ -162,7 +162,7 @@ CompText87A65BC::
 	.string "soon,too."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87A65BC_unk14_id
 
 	def_text_script CompText87A65BC_unk14
 	ts_mugshot_show mugshot=0x0

@@ -23,7 +23,7 @@ CompText87C4494::
 	.string "time,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87C4494_unk1_id
 
 	def_text_script CompText87C4494_unk1
 	ts_mugshot_show mugshot=0x3A
@@ -37,7 +37,7 @@ CompText87C4494::
 	.string "the famous Navi!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87C4494_unk2_id
 
 	def_text_script CompText87C4494_unk2
 	ts_mugshot_show mugshot=0x37
@@ -46,7 +46,7 @@ CompText87C4494::
 	.string "really..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C4494_unk3_id
 
 	def_text_script CompText87C4494_unk3
 	ts_mugshot_show mugshot=0x38
@@ -60,7 +60,7 @@ CompText87C4494::
 	.string "were doing so well!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C4494_unk4_id
 
 	def_text_script CompText87C4494_unk4
 	ts_mugshot_show mugshot=0x37
@@ -68,7 +68,7 @@ CompText87C4494::
 	.string "... Thanks,Roll."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C4494_unk5_id
 
 	def_text_script CompText87C4494_unk5
 	ts_mugshot_show mugshot=0x2
@@ -80,7 +80,7 @@ CompText87C4494::
 	.string "I've got an idea!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C4494_unk6_id
 
 	def_text_script CompText87C4494_unk6
 	ts_mugshot_show mugshot=0x3
@@ -94,7 +94,7 @@ CompText87C4494::
 	.string "ideas,is it?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87C4494_unk7_id
 
 	def_text_script CompText87C4494_unk7
 	ts_mugshot_show mugshot=0x2
@@ -107,7 +107,7 @@ CompText87C4494::
 	.string "It's been too long!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87C4494_unk8_id
 
 	def_text_script CompText87C4494_unk8
 	ts_mugshot_show mugshot=0x0
@@ -117,7 +117,7 @@ CompText87C4494::
 	.string "sudden,Dex...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87C4494_unk9_id
 
 	def_text_script CompText87C4494_unk9
 	ts_mugshot_show mugshot=0x2
@@ -137,7 +137,7 @@ CompText87C4494::
 	.string "you one day!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87C4494_unk10_id
 
 	def_text_script CompText87C4494_unk10
 	ts_mugshot_show mugshot=0x0
@@ -145,7 +145,7 @@ CompText87C4494::
 	.string "Dex..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87C4494_unk11_id
 
 	def_text_script CompText87C4494_unk11
 	ts_mugshot_show mugshot=0x2
@@ -159,7 +159,7 @@ CompText87C4494::
 	.string "Challenge me!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87C4494_unk12_id
 
 	def_text_script CompText87C4494_unk12
 	ts_mugshot_show mugshot=0x0
@@ -169,7 +169,7 @@ CompText87C4494::
 	.string "challenge!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87C4494_unk13_id
 
 	def_text_script CompText87C4494_unk13
 	ts_mugshot_show mugshot=0x2
@@ -183,7 +183,7 @@ CompText87C4494::
 	.string "you don't cheat!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87C4494_unk14_id
 
 	def_text_script CompText87C4494_unk14
 	ts_mugshot_show mugshot=0x1
@@ -191,7 +191,7 @@ CompText87C4494::
 	.string "Heh,alright."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C4494_unk15_id
 
 	def_text_script CompText87C4494_unk15
 	ts_mugshot_show mugshot=0x3
@@ -211,7 +211,7 @@ CompText87C4494::
 	.string "crush someone!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87C4494_unk17_id
 
 	def_text_script CompText87C4494_unk17
 	ts_mugshot_show mugshot=0x39
@@ -223,7 +223,7 @@ CompText87C4494::
 	.string "today for sure!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87C4494_unk18_id
 
 	def_text_script CompText87C4494_unk18
 	ts_mugshot_show mugshot=0x0
@@ -239,7 +239,7 @@ CompText87C4494::
 	.string "Battle routine,set!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87C4494_unk19_id
 
 	def_text_script CompText87C4494_unk19
 	ts_mugshot_show mugshot=0x37
@@ -254,7 +254,7 @@ CompText87C4494::
 	.string "W-What!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87C4494_unk21_id
 
 	def_text_script CompText87C4494_unk21
 	ts_mugshot_show mugshot=0x37
@@ -262,7 +262,7 @@ CompText87C4494::
 	.string "... Huh?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87C4494_unk22_id
 
 	def_text_script CompText87C4494_unk22
 	ts_mugshot_show mugshot=0x3A
@@ -271,7 +271,7 @@ CompText87C4494::
 	.string "Who are you people!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87C4494_unk23_id
 
 	def_text_script CompText87C4494_unk23
 	ts_mugshot_show mugshot=0x38
@@ -287,7 +287,7 @@ CompText87C4494::
 	.string "DiveMan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87C4494_unk25_id
 
 	def_text_script CompText87C4494_unk25
 	ts_mugshot_show mugshot=0x51
@@ -299,7 +299,7 @@ CompText87C4494::
 	.string "MegaMan..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87C4494_unk26_id
 
 	def_text_script CompText87C4494_unk26
 	ts_mugshot_show mugshot=0x52
@@ -309,7 +309,7 @@ CompText87C4494::
 	.string "with you,awooga!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87C4494_unk27_id
 
 	def_text_script CompText87C4494_unk27
 	ts_mugshot_show mugshot=0x0
@@ -317,7 +317,7 @@ CompText87C4494::
 	.string "Why are they here!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87C4494_unk28_id
 
 	def_text_script CompText87C4494_unk28
 	ts_mugshot_show mugshot=0x2A
@@ -329,7 +329,7 @@ CompText87C4494::
 	.string "Central Town,matey."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=29
+	ts_jump target=CompText87C4494_unk29_id
 
 	def_text_script CompText87C4494_unk29
 	ts_mugshot_show mugshot=0x0
@@ -338,7 +338,7 @@ CompText87C4494::
 	.string "Captain Blackbeard!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87C4494_unk30_id
 
 	def_text_script CompText87C4494_unk30
 	ts_mugshot_show mugshot=0x2A
@@ -356,7 +356,7 @@ CompText87C4494::
 	.string "as bargaining chips."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=CompText87C4494_unk31_id
 
 	def_text_script CompText87C4494_unk31
 	ts_mugshot_show mugshot=0x0
@@ -365,7 +365,7 @@ CompText87C4494::
 	.string "to do with them!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=32
+	ts_jump target=CompText87C4494_unk32_id
 
 	def_text_script CompText87C4494_unk32
 	ts_mugshot_show mugshot=0x2A
@@ -383,7 +383,7 @@ CompText87C4494::
 	.string "of 'em!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=33
+	ts_jump target=CompText87C4494_unk33_id
 
 	def_text_script CompText87C4494_unk33
 	ts_mugshot_show mugshot=0x52
@@ -392,7 +392,7 @@ CompText87C4494::
 	.string "Awooga!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=34
+	ts_jump target=CompText87C4494_unk34_id
 
 	def_text_script CompText87C4494_unk34
 	ts_mugshot_show mugshot=0x37
@@ -432,7 +432,7 @@ CompText87C4494::
 	.string "... Everyone..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=37
+	ts_jump target=CompText87C4494_unk37_id
 
 	def_text_script CompText87C4494_unk37
 	ts_mugshot_show mugshot=0x0
@@ -445,7 +445,7 @@ CompText87C4494::
 	.string "Undernet2!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=38
+	ts_jump target=CompText87C4494_unk38_id
 
 	def_text_script CompText87C4494_unk38
 	ts_mugshot_show mugshot=0x3
@@ -462,7 +462,7 @@ CompText87C4494::
 	.string "he goes alone!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=39
+	ts_jump target=CompText87C4494_unk39_id
 
 	def_text_script CompText87C4494_unk39
 	ts_mugshot_show mugshot=0x0
@@ -488,7 +488,7 @@ CompText87C4494::
 	.string "there!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87C4494_unk40_id
 
 	def_text_script CompText87C4494_unk40
 	ts_mugshot_show mugshot=0x37

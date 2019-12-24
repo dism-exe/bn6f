@@ -12,8 +12,8 @@ CompText879694C::
 	def_text_script CompText879694C_unk0
 	ts_check_flag [
 		flag: 0xCC8,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879694C_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open
@@ -32,8 +32,8 @@ CompText879694C::
 	def_text_script CompText879694C_unk2
 	ts_check_flag [
 		flag: 0xCC8,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879694C_unk3_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open

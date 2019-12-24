@@ -32,9 +32,9 @@ CompText875F038::
 	ts_check_chip [
 		chip: 0x18,
 		amount: 0x1,
-		jumpIfEqual: 0x3,
-		jumpIfGreater: 0x3,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText875F038_unk3_id,
+		jumpIfGreater: CompText875F038_unk3_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "PLEASE PRESENT ME\n"
@@ -84,9 +84,9 @@ CompText875F038::
 	ts_check_item07 [
 		item: 0x44,
 		amount: 0x1,
-		jumpIfEqual: 0xFF,
-		jumpIfGreater: 0xFF,
-		jumpIfLess: 0xD,
+		jumpIfEqual: TS_CONTINUE,
+		jumpIfGreater: TS_CONTINUE,
+		jumpIfLess: CompText875F038_unk13_id,
 	]
 	ts_msg_open
 	ts_print_current_navi_ow
@@ -120,18 +120,18 @@ CompText875F038::
 
 	def_text_script CompText875F038_unk7
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0x8,
-		jumpIfSlashMan: 0xFF,
-		jumpIfEraseMan: 0x9,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0xA,
-		jumpIfTomahawkMan: 0xFF,
-		jumpIfTenguMan: 0xFF,
-		jumpIfGroundMan: 0xB,
-		jumpIfDustMan: 0xFF,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: CompText875F038_unk8_id,
+		jumpIfSlashMan: TS_CONTINUE,
+		jumpIfEraseMan: CompText875F038_unk9_id,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: CompText875F038_unk10_id,
+		jumpIfTomahawkMan: TS_CONTINUE,
+		jumpIfTenguMan: TS_CONTINUE,
+		jumpIfGroundMan: CompText875F038_unk11_id,
+		jumpIfDustMan: TS_CONTINUE,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "The cyberwater's\n"
@@ -163,7 +163,7 @@ CompText875F038::
 	.string "off as steam!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText875F038_unk12_id
 
 	def_text_script CompText875F038_unk9
 	ts_mugshot_show mugshot=0x50
@@ -186,7 +186,7 @@ CompText875F038::
 	.string "the waterspout!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText875F038_unk12_id
 
 	def_text_script CompText875F038_unk10
 	ts_mugshot_show mugshot=0x48
@@ -207,7 +207,7 @@ CompText875F038::
 	.string "calmly disappeared!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText875F038_unk12_id
 
 	def_text_script CompText875F038_unk11
 	ts_mugshot_show mugshot=0x4D
@@ -230,7 +230,7 @@ CompText875F038::
 	.string "the water opening!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText875F038_unk12_id
 
 	def_text_script CompText875F038_unk12
 	ts_flag_clear flag=0x164

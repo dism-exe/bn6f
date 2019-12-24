@@ -16,7 +16,7 @@ CompText87A880C::
 	.string "Thanks,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87A880C_unk1_id
 
 	def_text_script CompText87A880C_unk1
 	ts_mugshot_show mugshot=0x0
@@ -25,7 +25,7 @@ CompText87A880C::
 	.string "Mick's Navi."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A880C_unk2_id
 
 	def_text_script CompText87A880C_unk2
 	ts_mugshot_show mugshot=0x57
@@ -45,7 +45,7 @@ CompText87A880C::
 	.string "his fault!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A880C_unk3_id
 
 	def_text_script CompText87A880C_unk3
 	ts_mugshot_show mugshot=0x37
@@ -53,7 +53,7 @@ CompText87A880C::
 	.string "You got it!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A880C_unk4_id
 
 	def_text_script CompText87A880C_unk4
 	ts_mugshot_show mugshot=0x0
@@ -62,7 +62,7 @@ CompText87A880C::
 	.string "MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A880C_unk5_id
 
 	def_text_script CompText87A880C_unk5
 	ts_mugshot_show mugshot=0x37

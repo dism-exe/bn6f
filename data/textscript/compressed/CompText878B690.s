@@ -185,13 +185,13 @@ CompText878B690::
 	def_text_script CompText878B690_unk50
 	ts_check_flag [
 		flag: 0x7F4,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x34,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText878B690_unk52_id,
 	]
 	ts_check_flag [
 		flag: 0x68A,
-		jumpIfTrue: 0x33,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText878B690_unk51_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
@@ -200,8 +200,8 @@ CompText878B690::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x35,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText878B690_unk53_id,
 	]
 	ts_clear_msg
 	ts_mugshot_hide

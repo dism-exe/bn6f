@@ -22,7 +22,7 @@ CompText87BD4A0::
 	.string "COLLECTED."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BD4A0_unk1_id
 
 	def_text_script CompText87BD4A0_unk1
 	ts_mugshot_hide
@@ -57,7 +57,7 @@ CompText87BD4A0::
 	.string "\"."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87BD4A0_unk2_id
 
 	def_text_script CompText87BD4A0_unk2
 	ts_mugshot_show mugshot=0x41
@@ -114,7 +114,7 @@ CompText87BD4A0::
 		value: 0x83,
 	]
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87BD4A0_unk3_id
 
 	def_text_script CompText87BD4A0_unk3
 	ts_mugshot_show mugshot=0x37
@@ -122,7 +122,7 @@ CompText87BD4A0::
 	.string "We did it,Lan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87BD4A0_unk4_id
 
 	def_text_script CompText87BD4A0_unk4
 	ts_mugshot_show mugshot=0x0
@@ -154,7 +154,7 @@ CompText87BD4A0::
 	.string "How did you do?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87BD4A0_unk7_id
 
 	def_text_script CompText87BD4A0_unk7
 	ts_mugshot_show mugshot=0x57
@@ -176,7 +176,7 @@ CompText87BD4A0::
 	.string "mess it all up!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87BD4A0_unk8_id
 
 	def_text_script CompText87BD4A0_unk8
 	ts_mugshot_show mugshot=0x14
@@ -195,7 +195,7 @@ CompText87BD4A0::
 	.string "and you blame me!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87BD4A0_unk10_id
 
 	def_text_script CompText87BD4A0_unk10
 	ts_mugshot_show mugshot=0x37
@@ -227,7 +227,7 @@ CompText87BD4A0::
 	.string "He's gone..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87BD4A0_unk13_id
 
 	def_text_script CompText87BD4A0_unk13
 	ts_mugshot_show mugshot=0x41
@@ -242,7 +242,7 @@ CompText87BD4A0::
 	.string "AROUND HERE..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87BD4A0_unk14_id
 
 	def_text_script CompText87BD4A0_unk14
 	ts_mugshot_hide
@@ -264,7 +264,7 @@ CompText87BD4A0::
 	.string "autophone,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87BD4A0_unk16_id
 
 	def_text_script CompText87BD4A0_unk16
 	ts_sound_play_bgm track=0x63
@@ -280,7 +280,7 @@ CompText87BD4A0::
 	.string "the Undernet!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87BD4A0_unk17_id
 
 	def_text_script CompText87BD4A0_unk17
 	ts_mugshot_show mugshot=0x0
@@ -288,7 +288,7 @@ CompText87BD4A0::
 	.string "No way!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87BD4A0_unk18_id
 
 	def_text_script CompText87BD4A0_unk18
 	ts_mugshot_show mugshot=0x14
@@ -297,7 +297,7 @@ CompText87BD4A0::
 	.string "Help me..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87BD4A0_unk19_id
 
 	def_text_script CompText87BD4A0_unk19
 	ts_mugshot_show mugshot=0x0
@@ -309,7 +309,7 @@ CompText87BD4A0::
 	.string "to the Undernet!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87BD4A0_unk20_id
 
 	def_text_script CompText87BD4A0_unk20
 	ts_mugshot_show mugshot=0x37

@@ -13,8 +13,8 @@ CompText875D5E0::
 	ts_check_chapter [
 		lower: 0x63,
 		upper: 0x64,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875D5E0_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "It's a copy of\n"
@@ -32,10 +32,10 @@ CompText875D5E0::
 	ts_check_chapter [
 		lower: 0x62,
 		upper: 0x62,
-		jumpIfInRange: 0x3,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875D5E0_unk3_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_jump target=4
+	ts_jump target=CompText875D5E0_unk4_id
 
 	def_text_script CompText875D5E0_unk2
 	ts_msg_open
@@ -52,8 +52,8 @@ CompText875D5E0::
 	def_text_script CompText875D5E0_unk3
 	ts_check_flag [
 		flag: 0xE65,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875D5E0_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xE65
 	ts_msg_open

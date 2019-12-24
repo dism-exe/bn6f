@@ -31,7 +31,7 @@ CompText87AE5D8::
 	.string "... M-Mr.Mach...!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87AE5D8_unk2_id
 
 	def_text_script CompText87AE5D8_unk2
 	ts_mugshot_show mugshot=0x12
@@ -47,7 +47,7 @@ CompText87AE5D8::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_sound_play_bgm track=0x5
-	ts_jump target=3
+	ts_jump target=CompText87AE5D8_unk3_id
 
 	def_text_script CompText87AE5D8_unk3
 	ts_mugshot_show mugshot=0x0
@@ -55,7 +55,7 @@ CompText87AE5D8::
 	.string "*gulp!!*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87AE5D8_unk4_id
 
 	def_text_script CompText87AE5D8_unk4
 	ts_mugshot_show mugshot=0x12
@@ -88,7 +88,7 @@ CompText87AE5D8::
 	.string "done. Is that clear?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87AE5D8_unk5_id
 
 	def_text_script CompText87AE5D8_unk5
 	ts_mugshot_show mugshot=0x0
@@ -96,7 +96,7 @@ CompText87AE5D8::
 	.string "Yes,Mr.Mach..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AE5D8_unk6_id
 
 	def_text_script CompText87AE5D8_unk6
 	ts_mugshot_show mugshot=0x9
@@ -104,7 +104,7 @@ CompText87AE5D8::
 	.string "*whisper,whisper...*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87AE5D8_unk7_id
 
 	def_text_script CompText87AE5D8_unk7
 	ts_mugshot_show mugshot=0x14
@@ -116,7 +116,7 @@ CompText87AE5D8::
 	.string "... Owww!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87AE5D8_unk8_id
 
 	def_text_script CompText87AE5D8_unk8
 	ts_mugshot_show mugshot=0x0
@@ -125,7 +125,7 @@ CompText87AE5D8::
 	.string "me up,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87AE5D8_unk9_id
 
 	def_text_script CompText87AE5D8_unk9
 	ts_mugshot_show mugshot=0x37
@@ -137,7 +137,7 @@ CompText87AE5D8::
 	.string "wouldn't wake up!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87AE5D8_unk10_id
 
 	def_text_script CompText87AE5D8_unk10
 	ts_mugshot_show mugshot=0x0
@@ -188,7 +188,7 @@ CompText87AE5D8::
 	.string "gonna fall off."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87AE5D8_unk13_id
 
 	def_text_script CompText87AE5D8_unk13
 	ts_mugshot_show mugshot=0x37
@@ -201,7 +201,7 @@ CompText87AE5D8::
 	.string "Mr.Mach!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87AE5D8_unk14_id
 
 	def_text_script CompText87AE5D8_unk14
 	ts_mugshot_show mugshot=0x0

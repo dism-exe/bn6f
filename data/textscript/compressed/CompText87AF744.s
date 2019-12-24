@@ -34,7 +34,7 @@ CompText87AF744::
 	.string "What's going on?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87AF744_unk3_id
 
 	def_text_script CompText87AF744_unk3
 	ts_mugshot_show mugshot=0x14
@@ -49,7 +49,7 @@ CompText87AF744::
 	.string "just in time!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87AF744_unk4_id
 
 	def_text_script CompText87AF744_unk4
 	ts_mugshot_show mugshot=0x0
@@ -92,7 +92,7 @@ CompText87AF744::
 	.string "the merrier!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AF744_unk6_id
 
 	def_text_script CompText87AF744_unk6
 	ts_mugshot_show mugshot=0x0
@@ -117,7 +117,7 @@ CompText87AF744::
 	.string "Yeah,sure!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87AF744_unk9_id
 
 	def_text_script CompText87AF744_unk9
 	ts_mugshot_show mugshot=0x14
@@ -174,7 +174,7 @@ CompText87AF744::
 	.string "Roger!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87AF744_unk13_id
 
 	def_text_script CompText87AF744_unk13
 	ts_mugshot_show mugshot=0x14
@@ -203,7 +203,7 @@ CompText87AF744::
 	.string "heading home,too..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87AF744_unk15_id
 
 	def_text_script CompText87AF744_unk15
 	ts_mugshot_show mugshot=0x2B
@@ -229,6 +229,6 @@ CompText87AF744::
 	.string "CentralArea3!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87AF744_unk12_id
 
 	

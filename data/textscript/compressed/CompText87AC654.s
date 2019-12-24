@@ -15,7 +15,7 @@ CompText87AC654::
 	.string "Ah!!"
 	ts_key_wait any=0x0
 	ts_end
-	ts_jump target=1
+	ts_jump target=CompText87AC654_unk1_id
 
 	def_text_script CompText87AC654_unk1
 	ts_mugshot_show mugshot=0x0
@@ -30,7 +30,7 @@ CompText87AC654::
 	.string "get it..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87AC654_unk2_id
 
 	def_text_script CompText87AC654_unk2
 	ts_mugshot_show mugshot=0x37
@@ -47,7 +47,7 @@ CompText87AC654::
 	.string "you stopping me?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87AC654_unk4_id
 
 	def_text_script CompText87AC654_unk4
 	ts_mugshot_show mugshot=0x37
@@ -65,7 +65,7 @@ CompText87AC654::
 	.string "you'll drown!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87AC654_unk5_id
 
 	def_text_script CompText87AC654_unk5
 	ts_mugshot_show mugshot=0x0
@@ -79,7 +79,7 @@ CompText87AC654::
 	.string "the others..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AC654_unk6_id
 
 	def_text_script CompText87AC654_unk6
 	ts_mugshot_show mugshot=0x37
@@ -97,7 +97,7 @@ CompText87AC654::
 	.string "and not get stung?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87AC654_unk7_id
 
 	def_text_script CompText87AC654_unk7
 	ts_mugshot_show mugshot=0x0

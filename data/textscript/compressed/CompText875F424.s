@@ -22,22 +22,22 @@ CompText875F424::
 	ts_end
 
 	def_text_script CompText875F424_unk1
-	ts_jump target=4
+	ts_jump target=CompText875F424_unk4_id
 
 	def_text_script CompText875F424_unk2
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0xFF,
-		jumpIfSlashMan: 0xB,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0xC,
-		jumpIfSpoutMan: 0xFF,
-		jumpIfTomahawkMan: 0xFF,
-		jumpIfTenguMan: 0xD,
-		jumpIfGroundMan: 0xFF,
-		jumpIfDustMan: 0xE,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: TS_CONTINUE,
+		jumpIfSlashMan: CompText875F424_unk11_id,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: CompText875F424_unk12_id,
+		jumpIfSpoutMan: TS_CONTINUE,
+		jumpIfTomahawkMan: TS_CONTINUE,
+		jumpIfTenguMan: CompText875F424_unk13_id,
+		jumpIfGroundMan: TS_CONTINUE,
+		jumpIfDustMan: CompText875F424_unk14_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "There is a violent\n"
@@ -157,9 +157,9 @@ CompText875F424::
 	def_text_script CompText875F424_unk9
 	ts_check_take_zenny [
 		amount: 0x64,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xA,
-		jumpIfSome: 0xA,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: CompText875F424_unk10_id,
+		jumpIfSome: CompText875F424_unk10_id,
 	]
 	ts_msg_open
 	.string "THANK YOU FOR\n"
@@ -190,7 +190,7 @@ CompText875F424::
 	.string "the cyclone out!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText875F424_unk15_id
 
 	def_text_script CompText875F424_unk12
 	ts_mugshot_show mugshot=0x4F
@@ -211,7 +211,7 @@ CompText875F424::
 	.string "super charge attack!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText875F424_unk15_id
 
 	def_text_script CompText875F424_unk13
 	ts_mugshot_show mugshot=0x4C
@@ -232,7 +232,7 @@ CompText875F424::
 	.string "wave of his fan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText875F424_unk15_id
 
 	def_text_script CompText875F424_unk14
 	ts_mugshot_show mugshot=0x4E
@@ -255,7 +255,7 @@ CompText875F424::
 	.string "the cyclone!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText875F424_unk15_id
 
 	def_text_script CompText875F424_unk15
 	ts_flag_clear flag=0x173

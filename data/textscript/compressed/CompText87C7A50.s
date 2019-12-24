@@ -102,7 +102,7 @@ CompText87C7A50::
 	.string "my grandfather..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87C7A50_unk40_id
 
 	def_text_script CompText87C7A50_unk40
 	ts_mugshot_show mugshot=0x0
@@ -110,7 +110,7 @@ CompText87C7A50::
 	.string "...!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=41
+	ts_jump target=CompText87C7A50_unk41_id
 
 	def_text_script CompText87C7A50_unk41
 	ts_mugshot_show mugshot=0x32
@@ -182,7 +182,7 @@ CompText87C7A50::
 	.string "what he deserves."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=45
+	ts_jump target=CompText87C7A50_unk45_id
 
 	def_text_script CompText87C7A50_unk45
 	ts_mugshot_show mugshot=0x2C
@@ -195,7 +195,7 @@ CompText87C7A50::
 	.string "there."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=46
+	ts_jump target=CompText87C7A50_unk46_id
 
 	def_text_script CompText87C7A50_unk46
 	ts_mugshot_show mugshot=0x32
@@ -205,7 +205,7 @@ CompText87C7A50::
 	.string "sort of information."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=47
+	ts_jump target=CompText87C7A50_unk47_id
 
 	def_text_script CompText87C7A50_unk47
 	ts_mugshot_show mugshot=0x2C
@@ -227,7 +227,7 @@ CompText87C7A50::
 	.string "to protect me."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=49
+	ts_jump target=CompText87C7A50_unk49_id
 
 	def_text_script CompText87C7A50_unk49
 	ts_mugshot_show mugshot=0x2C
@@ -255,7 +255,7 @@ CompText87C7A50::
 	.string "They're CopyBots!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=51
+	ts_jump target=CompText87C7A50_unk51_id
 
 	def_text_script CompText87C7A50_unk51
 	ts_mugshot_show mugshot=0x32
@@ -264,7 +264,7 @@ CompText87C7A50::
 	.string "of this!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=52
+	ts_jump target=CompText87C7A50_unk52_id
 
 	def_text_script CompText87C7A50_unk52
 	ts_mugshot_show mugshot=0x2C
@@ -310,7 +310,7 @@ CompText87C7A50::
 	.string "You tricked me!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=54
+	ts_jump target=CompText87C7A50_unk54_id
 
 	def_text_script CompText87C7A50_unk54
 	ts_mugshot_show mugshot=0x4
@@ -332,7 +332,7 @@ CompText87C7A50::
 	.string "scrap of junk!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=56
+	ts_jump target=CompText87C7A50_unk56_id
 
 	def_text_script CompText87C7A50_unk56
 	ts_mugshot_show mugshot=0x32
@@ -366,7 +366,7 @@ CompText87C7A50::
 	.string "least told me!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=58
+	ts_jump target=CompText87C7A50_unk58_id
 
 	def_text_script CompText87C7A50_unk58
 	ts_mugshot_show mugshot=0x4
@@ -380,7 +380,7 @@ CompText87C7A50::
 	.string "a long time ago?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=59
+	ts_jump target=CompText87C7A50_unk59_id
 
 	def_text_script CompText87C7A50_unk59
 	ts_mugshot_show mugshot=0x0
@@ -390,7 +390,7 @@ CompText87C7A50::
 	.string "ever!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=60
+	ts_jump target=CompText87C7A50_unk60_id
 
 	def_text_script CompText87C7A50_unk60
 	ts_mugshot_show mugshot=0x4
@@ -399,7 +399,7 @@ CompText87C7A50::
 	.string "too nice."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=61
+	ts_jump target=CompText87C7A50_unk61_id
 
 	def_text_script CompText87C7A50_unk61
 	ts_mugshot_show mugshot=0x0
@@ -407,7 +407,7 @@ CompText87C7A50::
 	.string "Hey!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=62
+	ts_jump target=CompText87C7A50_unk62_id
 
 	def_text_script CompText87C7A50_unk62
 	ts_mugshot_show mugshot=0x4
@@ -439,7 +439,7 @@ CompText87C7A50::
 	.string "been blown."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=63
+	ts_jump target=CompText87C7A50_unk63_id
 
 	def_text_script CompText87C7A50_unk63
 	ts_mugshot_show mugshot=0x0
@@ -447,7 +447,7 @@ CompText87C7A50::
 	.string "I-I see..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=64
+	ts_jump target=CompText87C7A50_unk64_id
 
 	def_text_script CompText87C7A50_unk64
 	ts_mugshot_show mugshot=0x4
@@ -457,7 +457,7 @@ CompText87C7A50::
 	.string "around and talk."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=65
+	ts_jump target=CompText87C7A50_unk65_id
 
 	def_text_script CompText87C7A50_unk65
 	ts_mugshot_show mugshot=0x0
@@ -466,7 +466,7 @@ CompText87C7A50::
 	.string "go after MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=66
+	ts_jump target=CompText87C7A50_unk66_id
 
 	def_text_script CompText87C7A50_unk66
 	ts_mugshot_show mugshot=0x4
@@ -489,7 +489,7 @@ CompText87C7A50::
 	.string "Underground now."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=67
+	ts_jump target=CompText87C7A50_unk67_id
 
 	def_text_script CompText87C7A50_unk67
 	ts_mugshot_show mugshot=0x0
@@ -502,7 +502,7 @@ CompText87C7A50::
 	.string "home!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=68
+	ts_jump target=CompText87C7A50_unk68_id
 
 	def_text_script CompText87C7A50_unk68
 	ts_mugshot_show mugshot=0x4
@@ -551,7 +551,7 @@ CompText87C7A50::
 	.string "of the Undernet..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=69
+	ts_jump target=CompText87C7A50_unk69_id
 
 	def_text_script CompText87C7A50_unk69
 	ts_mugshot_show mugshot=0x0
@@ -596,7 +596,7 @@ CompText87C7A50::
 	.string "the Mayor's group."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=71
+	ts_jump target=CompText87C7A50_unk71_id
 
 	def_text_script CompText87C7A50_unk71
 	ts_mugshot_show mugshot=0x0
@@ -604,7 +604,7 @@ CompText87C7A50::
 	.string "The other part?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=72
+	ts_jump target=CompText87C7A50_unk72_id
 
 	def_text_script CompText87C7A50_unk72
 	ts_mugshot_show mugshot=0x4
@@ -629,7 +629,7 @@ CompText87C7A50::
 	.string "after MegaMan."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=73
+	ts_jump target=CompText87C7A50_unk73_id
 
 	def_text_script CompText87C7A50_unk73
 	ts_mugshot_show mugshot=0x0
@@ -652,7 +652,7 @@ CompText87C7A50::
 	.string "you be OK alone?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=75
+	ts_jump target=CompText87C7A50_unk75_id
 
 	def_text_script CompText87C7A50_unk75
 	ts_mugshot_show mugshot=0x0
@@ -662,7 +662,7 @@ CompText87C7A50::
 	.string "anything stupid!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=76
+	ts_jump target=CompText87C7A50_unk76_id
 
 	def_text_script CompText87C7A50_unk76
 	ts_mugshot_show mugshot=0x4
@@ -678,7 +678,7 @@ CompText87C7A50::
 	.string "... Lan,stay alert."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=77
+	ts_jump target=CompText87C7A50_unk77_id
 
 	def_text_script CompText87C7A50_unk77
 	ts_mugshot_show mugshot=0x0

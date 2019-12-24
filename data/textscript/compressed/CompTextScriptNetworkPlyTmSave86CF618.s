@@ -77,8 +77,8 @@ CompTextScriptNetworkPlyTmSave86CF618::
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk11
 	ts_check_flag [
 		flag: 0x1704,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompTextScriptNetworkPlyTmSave86CF618_unk12_id,
 	]
 	ts_text_speed delay=0x0
 	ts_clear_msg
@@ -108,9 +108,9 @@ CompTextScriptNetworkPlyTmSave86CF618::
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk12
 	ts_call_save [
-		jumpIfSuccessful: 0xD,
-		jumpIfFailed: 0xFF,
-		jumpUnused: 0x0,
+		jumpIfSuccessful: CompTextScriptNetworkPlyTmSave86CF618_unk13_id,
+		jumpIfFailed: TS_CONTINUE,
+		jumpUnused: CompTextScriptNetworkPlyTmSave86CF618_unk0_id,
 	]
 	ts_text_speed delay=0x0
 	ts_clear_msg

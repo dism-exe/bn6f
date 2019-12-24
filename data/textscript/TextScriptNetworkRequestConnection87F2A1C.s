@@ -293,10 +293,10 @@ TextScriptNetworkRequestConnection87F2A1C::
 	ts_end
 
 	def_text_script TextScriptNetworkRequestConnection87F2A1C_unk26
-	ts_jump target=24
+	ts_jump target=TextScriptNetworkRequestConnection87F2A1C_unk24_id
 
 	def_text_script TextScriptNetworkRequestConnection87F2A1C_unk27
-	ts_jump target=25
+	ts_jump target=TextScriptNetworkRequestConnection87F2A1C_unk25_id
 
 	def_text_script TextScriptNetworkRequestConnection87F2A1C_unk28
 	ts_position_text [
@@ -304,7 +304,7 @@ TextScriptNetworkRequestConnection87F2A1C::
 		top: 0x6C,
 		arrowDistance: 0x3,
 	]
-	ts_jump target=20
+	ts_jump target=TextScriptNetworkRequestConnection87F2A1C_unk20_id
 
 	def_text_script TextScriptNetworkRequestConnection87F2A1C_unk29
 

@@ -21,7 +21,7 @@ CompText87C0484::
 	.string "MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87C0484_unk1_id
 
 	def_text_script CompText87C0484_unk1
 	ts_mugshot_show mugshot=0x37

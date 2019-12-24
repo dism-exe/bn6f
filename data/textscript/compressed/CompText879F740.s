@@ -12,13 +12,13 @@ CompText879F740::
 	def_text_script CompText879F740_unk0
 	ts_check_flag [
 		flag: 0x113C,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879F740_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x113A,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879F740_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x113A
 	ts_mugshot_show mugshot=0x43

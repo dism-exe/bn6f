@@ -12,8 +12,8 @@ CompText879DA74::
 	def_text_script CompText879DA74_unk0
 	ts_check_flag [
 		flag: 0x11D1,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879DA74_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -277,28 +277,28 @@ CompText879DA74::
 	def_text_script CompText879DA74_unk11
 	ts_check_flag [
 		flag: 0x11E4,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879DA74_unk12_id,
 	]
 	ts_check_flag [
 		flag: 0x11E5,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879DA74_unk12_id,
 	]
 	ts_check_flag [
 		flag: 0x11E6,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879DA74_unk12_id,
 	]
 	ts_check_flag [
 		flag: 0x11E7,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879DA74_unk12_id,
 	]
 	ts_check_flag [
 		flag: 0x11E8,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879DA74_unk12_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -529,11 +529,11 @@ CompText879DA74::
 	def_text_script CompText879DA74_unk52
 	ts_check_flag [
 		flag: 0x1D4,
-		jumpIfTrue: 0x36,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879DA74_unk54_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1D4
-	ts_jump target=54
+	ts_jump target=CompText879DA74_unk54_id
 
 	def_text_script CompText879DA74_unk53
 	ts_mugshot_show mugshot=0x5C
@@ -547,8 +547,8 @@ CompText879DA74::
 	def_text_script CompText879DA74_unk54
 	ts_check_flag [
 		flag: 0x1EC,
-		jumpIfTrue: 0x37,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879DA74_unk55_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x5C
 	ts_msg_open
@@ -609,7 +609,7 @@ CompText879DA74::
 	ts_end
 
 	def_text_script CompText879DA74_unk55
-	ts_jump_random 65, 0x20, 0x20, 0xFF, 0x38
+	ts_jump_random CompText879DA74_unk65_id, 0x20, 0x20, 0xFF, 0x38
 	ts_mugshot_show mugshot=0x5C
 	ts_msg_open
 	.string "AMAZING!!\n"
@@ -624,9 +624,9 @@ CompText879DA74::
 	ts_mugshot_hide
 	ts_check_give_zenny [
 		amount: 0x1F4,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_player_animate_object animation=0x18
 	ts_print_current_navi
@@ -673,9 +673,9 @@ CompText879DA74::
 	ts_mugshot_hide
 	ts_check_give_bug_frags [
 		amount: 0x2,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_player_animate_object animation=0x18
 	ts_print_current_navi

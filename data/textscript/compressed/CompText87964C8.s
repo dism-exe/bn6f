@@ -11,18 +11,18 @@ CompText87964C8::
 
 	def_text_script CompText87964C8_unk0
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x1,
-		jumpIfElecMan: 0x1,
-		jumpIfSlashMan: 0x1,
-		jumpIfEraseMan: 0x1,
-		jumpIfChargeMan: 0x1,
-		jumpIfSpoutMan: 0x1,
-		jumpIfTomahawkMan: 0x1,
-		jumpIfTenguMan: 0x1,
-		jumpIfGroundMan: 0x1,
-		jumpIfDustMan: 0x1,
-		jumpIfProtoMan: 0x1,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87964C8_unk1_id,
+		jumpIfElecMan: CompText87964C8_unk1_id,
+		jumpIfSlashMan: CompText87964C8_unk1_id,
+		jumpIfEraseMan: CompText87964C8_unk1_id,
+		jumpIfChargeMan: CompText87964C8_unk1_id,
+		jumpIfSpoutMan: CompText87964C8_unk1_id,
+		jumpIfTomahawkMan: CompText87964C8_unk1_id,
+		jumpIfTenguMan: CompText87964C8_unk1_id,
+		jumpIfGroundMan: CompText87964C8_unk1_id,
+		jumpIfDustMan: CompText87964C8_unk1_id,
+		jumpIfProtoMan: CompText87964C8_unk1_id,
 	]
 	ts_flag_set flag=0x101B
 	ts_end
@@ -178,9 +178,9 @@ CompText87964C8::
 	ts_check_item07 [
 		item: 0x44,
 		amount: 0x1,
-		jumpIfEqual: 0xD,
-		jumpIfGreater: 0xD,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText87964C8_unk13_id,
+		jumpIfGreater: CompText87964C8_unk13_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open
@@ -242,9 +242,9 @@ CompText87964C8::
 	def_text_script CompText87964C8_unk11
 	ts_check_take_zenny [
 		amount: 0xBB8,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xC,
-		jumpIfSome: 0xC,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: CompText87964C8_unk12_id,
+		jumpIfSome: CompText87964C8_unk12_id,
 	]
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open
@@ -328,8 +328,8 @@ CompText87964C8::
 	def_text_script CompText87964C8_unk19
 	ts_check_shop_stock [
 		shop: 0x11,
-		jumpIfStocked: 0xFF,
-		jumpIfSoldOut: 0x15,
+		jumpIfStocked: TS_CONTINUE,
+		jumpIfSoldOut: CompText87964C8_unk21_id,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open

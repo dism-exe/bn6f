@@ -57,7 +57,7 @@ CompText87BA470::
 	.string "everyone else!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87BA470_unk2_id
 
 	def_text_script CompText87BA470_unk2
 	ts_mugshot_show mugshot=0x37
@@ -87,7 +87,7 @@ CompText87BA470::
 	.string "Punishment Robots!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87BA470_unk3_id
 
 	def_text_script CompText87BA470_unk3
 	ts_mugshot_show mugshot=0x0
@@ -97,7 +97,7 @@ CompText87BA470::
 	.string "close to the tree!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87BA470_unk4_id
 
 	def_text_script CompText87BA470_unk4
 	ts_mugshot_show mugshot=0x37
@@ -112,7 +112,7 @@ CompText87BA470::
 	.string "Robots is too risky."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87BA470_unk5_id
 
 	def_text_script CompText87BA470_unk5
 	ts_mugshot_show mugshot=0x0
@@ -125,7 +125,7 @@ CompText87BA470::
 	.string "Dad's punishment!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87BA470_unk6_id
 
 	def_text_script CompText87BA470_unk6
 	ts_mugshot_show mugshot=0x37

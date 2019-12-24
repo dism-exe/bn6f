@@ -24,7 +24,7 @@ CompText87C4F68::
 	.string "of a Cybeast...!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87C4F68_unk1_id
 
 	def_text_script CompText87C4F68_unk1
 	ts_mugshot_show mugshot=0x52
@@ -39,7 +39,7 @@ CompText87C4F68::
 	.string "...*huff,huff...*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C4F68_unk3_id
 
 	def_text_script CompText87C4F68_unk3
 	ts_mugshot_show mugshot=0x38
@@ -60,7 +60,7 @@ CompText87C4F68::
 	.string "MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C4F68_unk4_id
 
 	def_text_script CompText87C4F68_unk4
 	ts_mugshot_hide
@@ -85,7 +85,7 @@ CompText87C4F68::
 	.string "C-CircusMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C4F68_unk6_id
 
 	def_text_script CompText87C4F68_unk6
 	ts_mugshot_show mugshot=0x0
@@ -94,7 +94,7 @@ CompText87C4F68::
 	.string "Give us a break!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87C4F68_unk7_id
 
 	def_text_script CompText87C4F68_unk7
 	ts_mugshot_show mugshot=0x2B
@@ -104,7 +104,7 @@ CompText87C4F68::
 	.string "according to plan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87C4F68_unk8_id
 
 	def_text_script CompText87C4F68_unk8
 	ts_mugshot_show mugshot=0x0
@@ -119,7 +119,7 @@ CompText87C4F68::
 	.string "to do!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87C4F68_unk9_id
 
 	def_text_script CompText87C4F68_unk9
 	ts_mugshot_show mugshot=0x2B
@@ -162,7 +162,7 @@ CompText87C4F68::
 	.string "Ahaha!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87C4F68_unk10_id
 
 	def_text_script CompText87C4F68_unk10
 	ts_mugshot_show mugshot=0x0
@@ -170,7 +170,7 @@ CompText87C4F68::
 	.string "That's really dirty!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87C4F68_unk11_id
 
 	def_text_script CompText87C4F68_unk11
 	ts_mugshot_show mugshot=0x2B
@@ -188,7 +188,7 @@ CompText87C4F68::
 	.string "is about to begin!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87C4F68_unk12_id
 
 	def_text_script CompText87C4F68_unk12
 	ts_mugshot_show mugshot=0x54
@@ -206,7 +206,7 @@ CompText87C4F68::
 	.string "I'm being pulled in!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87C4F68_unk14_id
 
 	def_text_script CompText87C4F68_unk14
 	ts_mugshot_show mugshot=0x0
@@ -214,7 +214,7 @@ CompText87C4F68::
 	.string "MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C4F68_unk15_id
 
 	def_text_script CompText87C4F68_unk15
 	ts_mugshot_show mugshot=0x37
@@ -255,7 +255,7 @@ CompText87C4F68::
 	.string "the max!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87C4F68_unk18_id
 
 	def_text_script CompText87C4F68_unk18
 	ts_mugshot_show mugshot=0x0
@@ -264,7 +264,7 @@ CompText87C4F68::
 	.string "MegaMan in..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87C4F68_unk19_id
 
 	def_text_script CompText87C4F68_unk19
 	ts_mugshot_show mugshot=0x2B
@@ -274,7 +274,7 @@ CompText87C4F68::
 	.string "weapon of our own!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87C4F68_unk20_id
 
 	def_text_script CompText87C4F68_unk20
 	ts_mugshot_show mugshot=0x0
@@ -286,7 +286,7 @@ CompText87C4F68::
 	.string "Give MegaMan back!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87C4F68_unk21_id
 
 	def_text_script CompText87C4F68_unk21
 	ts_mugshot_show mugshot=0x2B
@@ -305,7 +305,7 @@ CompText87C4F68::
 	.string "jack out!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87C4F68_unk22_id
 
 	def_text_script CompText87C4F68_unk22
 	ts_mugshot_show mugshot=0x54
@@ -314,7 +314,7 @@ CompText87C4F68::
 	.string "Ahoo,hoo,hoo!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87C4F68_unk23_id
 
 	def_text_script CompText87C4F68_unk23
 	ts_mugshot_show mugshot=0x38

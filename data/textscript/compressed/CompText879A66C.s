@@ -72,8 +72,8 @@ CompText879A66C::
 	def_text_script CompText879A66C_unk30
 	ts_check_flag [
 		flag: 0x620,
-		jumpIfTrue: 0x1F,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879A66C_unk31_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

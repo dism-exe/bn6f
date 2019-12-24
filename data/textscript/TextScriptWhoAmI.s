@@ -13,7 +13,7 @@ TextScriptWhoAmI::
 	.string "STUBBY TAIL..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=TextScriptWhoAmI_unk10_id
 
 	def_text_script TextScriptWhoAmI_unk1
 	ts_mugshot_show mugshot=0x3C
@@ -26,7 +26,7 @@ TextScriptWhoAmI::
 	.string "COLD WATER..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=TextScriptWhoAmI_unk10_id
 
 	def_text_script TextScriptWhoAmI_unk2
 	ts_mugshot_show mugshot=0x3C
@@ -40,7 +40,7 @@ TextScriptWhoAmI::
 	.string "COW ONCE..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=TextScriptWhoAmI_unk10_id
 
 	def_text_script TextScriptWhoAmI_unk3
 	ts_mugshot_show mugshot=0x3C
@@ -54,7 +54,7 @@ TextScriptWhoAmI::
 	.string "AGO..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=TextScriptWhoAmI_unk10_id
 
 	def_text_script TextScriptWhoAmI_unk4
 	ts_mugshot_show mugshot=0x3C
@@ -69,7 +69,7 @@ TextScriptWhoAmI::
 	.string "SNOBBY. HOW RUDE!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=TextScriptWhoAmI_unk10_id
 
 	def_text_script TextScriptWhoAmI_unk5
 	ts_mugshot_show mugshot=0x3C
@@ -82,7 +82,7 @@ TextScriptWhoAmI::
 	.string "STEADY AS A ROCK."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=TextScriptWhoAmI_unk10_id
 
 	def_text_script TextScriptWhoAmI_unk6
 	ts_mugshot_show mugshot=0x3C
@@ -96,7 +96,7 @@ TextScriptWhoAmI::
 	.string "LIKE SNAP..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=TextScriptWhoAmI_unk10_id
 
 	def_text_script TextScriptWhoAmI_unk7
 	ts_mugshot_show mugshot=0x3C
@@ -108,7 +108,7 @@ TextScriptWhoAmI::
 	.string "DIDN'T I...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=TextScriptWhoAmI_unk10_id
 
 	def_text_script TextScriptWhoAmI_unk8
 	ts_mugshot_show mugshot=0x3C
@@ -124,7 +124,7 @@ TextScriptWhoAmI::
 	.string "... MY NOSE??"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=TextScriptWhoAmI_unk10_id
 
 	def_text_script TextScriptWhoAmI_unk9
 	ts_mugshot_show mugshot=0x3C
@@ -134,7 +134,7 @@ TextScriptWhoAmI::
 	.string "REALLY!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=TextScriptWhoAmI_unk10_id
 
 	def_text_script TextScriptWhoAmI_unk10
 	ts_mugshot_show mugshot=0x37
@@ -396,80 +396,80 @@ TextScriptWhoAmI::
 	ts_check_global [
 		variable: 0x0,
 		value: 0x0,
-		jumpIfEqual: 0xB,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk11_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x1,
-		jumpIfEqual: 0xC,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk12_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x2,
-		jumpIfEqual: 0xD,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk13_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x3,
-		jumpIfEqual: 0xE,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk14_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x4,
-		jumpIfEqual: 0xF,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk15_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x5,
-		jumpIfEqual: 0x10,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk16_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x6,
-		jumpIfEqual: 0x11,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk17_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x7,
-		jumpIfEqual: 0x12,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk18_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x8,
-		jumpIfEqual: 0x13,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk19_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x9,
-		jumpIfEqual: 0x14,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk20_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0xA,
-		jumpIfEqual: 0x35,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk53_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0xB,
-		jumpIfEqual: 0x36,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk54_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0xC,
-		jumpIfEqual: 0x37,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk55_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_end
 
@@ -477,80 +477,80 @@ TextScriptWhoAmI::
 	ts_check_global [
 		variable: 0x0,
 		value: 0x0,
-		jumpIfEqual: 0x18,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk24_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x1,
-		jumpIfEqual: 0x19,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk25_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x2,
-		jumpIfEqual: 0x1A,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk26_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x3,
-		jumpIfEqual: 0x1B,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk27_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x4,
-		jumpIfEqual: 0x1C,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk28_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x5,
-		jumpIfEqual: 0x1D,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk29_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x6,
-		jumpIfEqual: 0x1E,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk30_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x7,
-		jumpIfEqual: 0x1F,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk31_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x8,
-		jumpIfEqual: 0x20,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk32_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x9,
-		jumpIfEqual: 0x21,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk33_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0xA,
-		jumpIfEqual: 0x3B,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk59_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0xB,
-		jumpIfEqual: 0x3C,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk60_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0xC,
-		jumpIfEqual: 0x3D,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk61_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_end
 
@@ -893,7 +893,7 @@ TextScriptWhoAmI::
 	.string "SEA ANEMONE..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=TextScriptWhoAmI_unk10_id
 
 	def_text_script TextScriptWhoAmI_unk51
 	ts_mugshot_show mugshot=0x3C
@@ -919,7 +919,7 @@ TextScriptWhoAmI::
 	.string "...... *CHOMP*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=TextScriptWhoAmI_unk10_id
 
 	def_text_script TextScriptWhoAmI_unk52
 	ts_mugshot_show mugshot=0x3C
@@ -938,7 +938,7 @@ TextScriptWhoAmI::
 	.string "AM I...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=TextScriptWhoAmI_unk10_id
 
 	def_text_script TextScriptWhoAmI_unk53
 	ts_msg_open
@@ -974,7 +974,7 @@ TextScriptWhoAmI::
 	.string " CompTank\""
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=34
+	ts_jump target=TextScriptWhoAmI_unk34_id
 	ts_end
 
 	def_text_script TextScriptWhoAmI_unk57
@@ -983,7 +983,7 @@ TextScriptWhoAmI::
 	.string "\"Shark CompTank\""
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=34
+	ts_jump target=TextScriptWhoAmI_unk34_id
 	ts_end
 
 	def_text_script TextScriptWhoAmI_unk58
@@ -997,7 +997,7 @@ TextScriptWhoAmI::
 	.string "this is..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=34
+	ts_jump target=TextScriptWhoAmI_unk34_id
 	ts_end
 
 	def_text_script TextScriptWhoAmI_unk59
@@ -1060,80 +1060,80 @@ TextScriptWhoAmI::
 	ts_check_global [
 		variable: 0x0,
 		value: 0x0,
-		jumpIfEqual: 0x25,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk37_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x1,
-		jumpIfEqual: 0x26,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk38_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x2,
-		jumpIfEqual: 0x27,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk39_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x3,
-		jumpIfEqual: 0x28,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk40_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x4,
-		jumpIfEqual: 0x29,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk41_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x5,
-		jumpIfEqual: 0x2A,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk42_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x6,
-		jumpIfEqual: 0x2B,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk43_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x7,
-		jumpIfEqual: 0x2C,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk44_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x8,
-		jumpIfEqual: 0x2D,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk45_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0x9,
-		jumpIfEqual: 0x2E,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk46_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0xA,
-		jumpIfEqual: 0x38,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk56_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0xB,
-		jumpIfEqual: 0x39,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk57_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_check_global [
 		variable: 0x0,
 		value: 0xC,
-		jumpIfEqual: 0x3A,
-		jumpIfNotEqual: 0xFF,
+		jumpIfEqual: TextScriptWhoAmI_unk58_id,
+		jumpIfNotEqual: TS_CONTINUE,
 	]
 	ts_end
 

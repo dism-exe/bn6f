@@ -21,9 +21,9 @@ CompText875EA10::
 	ts_check_item07 [
 		item: 0x42,
 		amount: 0x1,
-		jumpIfEqual: 0x11,
-		jumpIfGreater: 0x11,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText875EA10_unk17_id,
+		jumpIfGreater: CompText875EA10_unk17_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "There is a cybertree\n"
@@ -40,9 +40,9 @@ CompText875EA10::
 	ts_check_item07 [
 		item: 0x1C,
 		amount: 0x1,
-		jumpIfEqual: 0xB,
-		jumpIfGreater: 0xB,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText875EA10_unk11_id,
+		jumpIfGreater: CompText875EA10_unk11_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "There is a cloud\n"
@@ -55,10 +55,10 @@ CompText875EA10::
 	ts_check_chapter [
 		lower: 0x5,
 		upper: 0x5,
-		jumpIfInRange: 0x6,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875EA10_unk6_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_jump target=7
+	ts_jump target=CompText875EA10_unk7_id
 
 	def_text_script CompText875EA10_unk4
 	ts_msg_open
@@ -95,11 +95,11 @@ CompText875EA10::
 	def_text_script CompText875EA10_unk6
 	ts_check_flag [
 		flag: 0x482,
-		jumpIfTrue: 0x7,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875EA10_unk7_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x482
-	ts_jump target=7
+	ts_jump target=CompText875EA10_unk7_id
 
 	def_text_script CompText875EA10_unk7
 	ts_msg_open
@@ -196,8 +196,8 @@ CompText875EA10::
 	def_text_script CompText875EA10_unk8
 	ts_check_flag [
 		flag: 0x50A,
-		jumpIfTrue: 0xA,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875EA10_unk10_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "A cyberpipe..."
@@ -257,18 +257,18 @@ CompText875EA10::
 	def_text_script CompText875EA10_unk12
 	ts_check_flag [
 		flag: 0xC8D,
-		jumpIfTrue: 0xE,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875EA10_unk14_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC85,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xF,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText875EA10_unk15_id,
 	]
 	ts_check_flag [
 		flag: 0xC89,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x10,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText875EA10_unk16_id,
 	]
 	ts_mugshot_show mugshot=0x4F
 	ts_msg_open

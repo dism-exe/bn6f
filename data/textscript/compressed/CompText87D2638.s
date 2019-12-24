@@ -21,7 +21,7 @@ CompText87D2638::
 	.string " from that day...)"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D2638_unk1_id
 
 	def_text_script CompText87D2638_unk1
 	ts_mugshot_show mugshot=0x37
@@ -29,7 +29,7 @@ CompText87D2638::
 	.string "He's attacking,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87D2638_unk2_id
 
 	def_text_script CompText87D2638_unk2
 	ts_mugshot_show mugshot=0x0
@@ -38,7 +38,7 @@ CompText87D2638::
 	.string "Battle routine,set!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87D2638_unk3_id
 
 	def_text_script CompText87D2638_unk3
 	ts_mugshot_show mugshot=0x37
@@ -46,7 +46,7 @@ CompText87D2638::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87D2638_unk4_id
 
 	def_text_script CompText87D2638_unk4
 	ts_mugshot_show mugshot=0x56

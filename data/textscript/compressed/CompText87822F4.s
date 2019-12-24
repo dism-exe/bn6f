@@ -58,8 +58,8 @@ CompText87822F4::
 	def_text_script CompText87822F4_unk11
 	ts_check_flag [
 		flag: 0xEA6,
-		jumpIfTrue: 0xA,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87822F4_unk10_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open

@@ -17,7 +17,7 @@ CompText87AAB40::
 	.string "Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87AAB40_unk1_id
 
 	def_text_script CompText87AAB40_unk1
 	ts_mugshot_show mugshot=0x0
@@ -27,7 +27,7 @@ CompText87AAB40::
 	.string "about our penguin!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87AAB40_unk2_id
 
 	def_text_script CompText87AAB40_unk2
 	ts_mugshot_show mugshot=0x37
@@ -48,7 +48,7 @@ CompText87AAB40::
 	.string " Ah!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87AAB40_unk4_id
 
 	def_text_script CompText87AAB40_unk4
 	ts_mugshot_show mugshot=0x0
@@ -57,7 +57,7 @@ CompText87AAB40::
 	.string "find something?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87AAB40_unk5_id
 
 	def_text_script CompText87AAB40_unk5
 	ts_mugshot_show mugshot=0x37
@@ -70,7 +70,7 @@ CompText87AAB40::
 	.string "really useful!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AAB40_unk6_id
 
 	def_text_script CompText87AAB40_unk6
 	ts_mugshot_show mugshot=0x0
@@ -83,7 +83,7 @@ CompText87AAB40::
 	.string "for techniques!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87AAB40_unk7_id
 
 	def_text_script CompText87AAB40_unk7
 	ts_mugshot_show mugshot=0x37
@@ -103,7 +103,7 @@ CompText87AAB40::
 	.string "What's this...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87AAB40_unk8_id
 
 	def_text_script CompText87AAB40_unk8
 	ts_mugshot_show mugshot=0x0
@@ -112,7 +112,7 @@ CompText87AAB40::
 	.string "something?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87AAB40_unk9_id
 
 	def_text_script CompText87AAB40_unk9
 	ts_mugshot_show mugshot=0x37
@@ -154,7 +154,7 @@ CompText87AAB40::
 	.string "that penguin!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87AAB40_unk11_id
 
 	def_text_script CompText87AAB40_unk11
 	ts_mugshot_show mugshot=0x0
@@ -175,7 +175,7 @@ CompText87AAB40::
 	.string "general are like?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87AAB40_unk12_id
 
 	def_text_script CompText87AAB40_unk12
 	ts_mugshot_show mugshot=0x37
@@ -193,7 +193,7 @@ CompText87AAB40::
 	.string "Seaside Town's Net!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87AAB40_unk13_id
 
 	def_text_script CompText87AAB40_unk13
 	ts_mugshot_show mugshot=0x0
@@ -206,7 +206,7 @@ CompText87AAB40::
 	.string "Jack out,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87AAB40_unk14_id
 
 	def_text_script CompText87AAB40_unk14
 	ts_mugshot_show mugshot=0x37

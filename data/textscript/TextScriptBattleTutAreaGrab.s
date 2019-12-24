@@ -38,7 +38,7 @@ TextScriptBattleTutAreaGrab::
 	.string "same chips together."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=TextScriptBattleTutAreaGrab_unk3_id
 
 	def_text_script TextScriptBattleTutAreaGrab_unk3
 	ts_mugshot_show mugshot=0x37

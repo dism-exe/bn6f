@@ -12,8 +12,8 @@ CompText879BF6C::
 	def_text_script CompText879BF6C_unk0
 	ts_check_flag [
 		flag: 0x863,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879BF6C_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x863
 	ts_mugshot_show mugshot=0x41
@@ -103,8 +103,8 @@ CompText879BF6C::
 	def_text_script CompText879BF6C_unk2
 	ts_check_flag [
 		flag: 0x87C,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879BF6C_unk3_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
@@ -189,9 +189,9 @@ CompText879BF6C::
 	ts_select 0x6, 0x80, 0xFF, 0x6, 0xFF
 	ts_check_take_zenny [
 		amount: 0x3E8,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xB,
-		jumpIfSome: 0xB,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: CompText879BF6C_unk11_id,
+		jumpIfSome: CompText879BF6C_unk11_id,
 	]
 	.string "MegaMan paid\n"
 	.string "1000 Zennys."
@@ -240,8 +240,8 @@ CompText879BF6C::
 	def_text_script CompText879BF6C_unk4
 	ts_check_flag [
 		flag: 0x873,
-		jumpIfTrue: 0x5,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879BF6C_unk5_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x873
 	ts_mugshot_show mugshot=0x41
@@ -372,18 +372,18 @@ CompText879BF6C::
 	def_text_script CompText879BF6C_unk8
 	ts_check_flag [
 		flag: 0x866,
-		jumpIfTrue: 0x7,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879BF6C_unk7_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x87C,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879BF6C_unk7_id,
 	]
 	ts_check_flag [
 		flag: 0x865,
-		jumpIfTrue: 0x9,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879BF6C_unk9_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
@@ -483,8 +483,8 @@ CompText879BF6C::
 	def_text_script CompText879BF6C_unk10
 	ts_check_flag [
 		flag: 0x87C,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x7,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879BF6C_unk7_id,
 	]
 	ts_mugshot_show mugshot=0x40
 	ts_msg_open

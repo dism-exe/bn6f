@@ -99,8 +99,8 @@ CompText8755C18::
 	ts_check_chapter [
 		lower: 0x20,
 		upper: 0xFF,
-		jumpIfInRange: 0xB,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8755C18_unk11_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "It's the chip shop,\n"
@@ -122,8 +122,8 @@ CompText8755C18::
 	ts_check_chapter [
 		lower: 0x62,
 		upper: 0xFF,
-		jumpIfInRange: 0xE,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8755C18_unk14_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "\"Future site\n"
@@ -193,8 +193,8 @@ CompText8755C18::
 	ts_check_chapter [
 		lower: 0x62,
 		upper: 0xFF,
-		jumpIfInRange: 0xF,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8755C18_unk15_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "It's the Expo\n"
@@ -210,15 +210,15 @@ CompText8755C18::
 	def_text_script CompText8755C18_unk13
 	ts_check_flag [
 		flag: 0x11D0,
-		jumpIfTrue: 0x10,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8755C18_unk16_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x11CF,
-		jumpIfTrue: 0x11,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8755C18_unk17_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_jump target=16
+	ts_jump target=CompText8755C18_unk16_id
 
 	def_text_script CompText8755C18_unk14
 	ts_msg_open

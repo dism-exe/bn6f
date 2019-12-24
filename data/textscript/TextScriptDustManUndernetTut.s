@@ -4,17 +4,17 @@ TextScriptDustManUndernetTut::
 	def_text_script TextScriptDustManUndernetTut_unk0
 	ts_check_flag [
 		flag: 0xCEB,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: TextScriptDustManUndernetTut_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xCEB
-	ts_jump target=4
+	ts_jump target=TextScriptDustManUndernetTut_unk4_id
 
 	def_text_script TextScriptDustManUndernetTut_unk1
-	ts_jump target=4
+	ts_jump target=TextScriptDustManUndernetTut_unk4_id
 
 	def_text_script TextScriptDustManUndernetTut_unk2
-	ts_jump target=4
+	ts_jump target=TextScriptDustManUndernetTut_unk4_id
 
 	def_text_script TextScriptDustManUndernetTut_unk3
 	ts_mugshot_show mugshot=0x44

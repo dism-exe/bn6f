@@ -19,7 +19,7 @@ CompText87A54E4::
 	.string "Teachers' Room..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87A54E4_unk1_id
 
 	def_text_script CompText87A54E4_unk1
 	ts_sound_play_bgm track=0x63
@@ -60,7 +60,7 @@ CompText87A54E4::
 	.string "INTRUDER ALERT"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A54E4_unk4_id
 
 	def_text_script CompText87A54E4_unk4
 	ts_mugshot_show mugshot=0x0
@@ -73,7 +73,7 @@ CompText87A54E4::
 	.string "I'm a student here!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A54E4_unk5_id
 
 	def_text_script CompText87A54E4_unk5
 	ts_mugshot_hide
@@ -87,7 +87,7 @@ CompText87A54E4::
 	.string "YOUR STUDENT ID..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A54E4_unk6_id
 
 	def_text_script CompText87A54E4_unk6
 	ts_mugshot_show mugshot=0x0
@@ -107,7 +107,7 @@ CompText87A54E4::
 	.string "I don't have one..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A54E4_unk7_id
 
 	def_text_script CompText87A54E4_unk7
 	ts_mugshot_hide
@@ -128,7 +128,7 @@ CompText87A54E4::
 	.string "Wait a sec!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87A54E4_unk9_id
 
 	def_text_script CompText87A54E4_unk9
 	ts_mugshot_hide
@@ -152,7 +152,7 @@ CompText87A54E4::
 	.string "MegaMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87A54E4_unk11_id
 
 	def_text_script CompText87A54E4_unk11
 	ts_mugshot_show mugshot=0x37
@@ -160,7 +160,7 @@ CompText87A54E4::
 	.string "...Yeah!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87A54E4_unk12_id
 
 	def_text_script CompText87A54E4_unk12
 	ts_mugshot_hide
@@ -190,7 +190,7 @@ CompText87A54E4::
 	.string "human voice!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87A54E4_unk14_id
 
 	def_text_script CompText87A54E4_unk14
 	ts_mugshot_hide
@@ -199,7 +199,7 @@ CompText87A54E4::
 	.string " Lan Hikari?\""
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87A54E4_unk15_id
 
 	def_text_script CompText87A54E4_unk15
 	ts_mugshot_show mugshot=0x0
@@ -211,7 +211,7 @@ CompText87A54E4::
 	.string "Who are you...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87A54E4_unk16_id
 
 	def_text_script CompText87A54E4_unk16
 	ts_mugshot_hide
@@ -237,7 +237,7 @@ CompText87A54E4::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_sound_play_bgm track=0x5
-	ts_jump target=17
+	ts_jump target=CompText87A54E4_unk17_id
 
 	def_text_script CompText87A54E4_unk17
 	ts_mugshot_show mugshot=0x0
@@ -336,7 +336,7 @@ CompText87A54E4::
 	.string "What's up,Lan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87A54E4_unk23_id
 
 	def_text_script CompText87A54E4_unk23
 	ts_mugshot_show mugshot=0x0
@@ -355,7 +355,7 @@ CompText87A54E4::
 	.string "there?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87A54E4_unk25_id
 
 	def_text_script CompText87A54E4_unk25
 	ts_mugshot_show mugshot=0x37
@@ -367,7 +367,7 @@ CompText87A54E4::
 	.string "teacher later."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87A54E4_unk26_id
 
 	def_text_script CompText87A54E4_unk26
 	ts_mugshot_show mugshot=0x0

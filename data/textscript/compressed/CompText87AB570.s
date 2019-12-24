@@ -33,7 +33,7 @@ CompText87AB570::
 	.string "P-Plata?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87AB570_unk3_id
 
 	def_text_script CompText87AB570_unk3
 	ts_mugshot_hide
@@ -54,7 +54,7 @@ CompText87AB570::
 	.string "have you been!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87AB570_unk5_id
 
 	def_text_script CompText87AB570_unk5
 	ts_mugshot_hide
@@ -62,7 +62,7 @@ CompText87AB570::
 	.string "*Squawk! Squawk!*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AB570_unk6_id
 
 	def_text_script CompText87AB570_unk6
 	ts_mugshot_show mugshot=0xF
@@ -83,7 +83,7 @@ CompText87AB570::
 	.string "... And you two are?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87AB570_unk8_id
 
 	def_text_script CompText87AB570_unk8
 	ts_mugshot_show mugshot=0x0
@@ -101,7 +101,7 @@ CompText87AB570::
 	.string "latched onto Mick."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87AB570_unk10_id
 
 	def_text_script CompText87AB570_unk10
 	ts_mugshot_show mugshot=0x14
@@ -118,7 +118,7 @@ CompText87AB570::
 	.string "SeasideArea BBS."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87AB570_unk12_id
 
 	def_text_script CompText87AB570_unk12
 	ts_mugshot_show mugshot=0xF
@@ -152,7 +152,7 @@ CompText87AB570::
 	.string "of charge today!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87AB570_unk13_id
 
 	def_text_script CompText87AB570_unk13
 	ts_mugshot_show mugshot=0x0
@@ -160,7 +160,7 @@ CompText87AB570::
 	.string "Really!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87AB570_unk14_id
 
 	def_text_script CompText87AB570_unk14
 	ts_mugshot_show mugshot=0xF
@@ -203,7 +203,7 @@ CompText87AB570::
 	.string "have loads of fun!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87AB570_unk16_id
 
 	def_text_script CompText87AB570_unk16
 	ts_mugshot_show mugshot=0x14
@@ -216,7 +216,7 @@ CompText87AB570::
 	.string "Plata,huh..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87AB570_unk17_id
 
 	def_text_script CompText87AB570_unk17
 	ts_mugshot_show mugshot=0x0
@@ -230,7 +230,7 @@ CompText87AB570::
 	.string "everything out!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87AB570_unk18_id
 
 	def_text_script CompText87AB570_unk18
 	ts_mugshot_show mugshot=0x14

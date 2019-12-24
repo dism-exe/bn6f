@@ -9,7 +9,7 @@ TextScript87DA85C::
 	.string "RECORD-BREAKING!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=TextScript87DA85C_unk1_id
 
 	def_text_script TextScript87DA85C_unk1
 	ts_mugshot_show mugshot=0x37
@@ -39,7 +39,7 @@ TextScript87DA85C::
 	.string "What!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=TextScript87DA85C_unk4_id
 
 	def_text_script TextScript87DA85C_unk4
 	ts_mugshot_show mugshot=0x3C
@@ -64,7 +64,7 @@ TextScript87DA85C::
 	.string "GET THEM OUT,PLEASE!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=TextScript87DA85C_unk5_id
 
 	def_text_script TextScript87DA85C_unk5
 	ts_mugshot_show mugshot=0x37

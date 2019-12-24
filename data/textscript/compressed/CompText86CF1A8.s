@@ -138,9 +138,9 @@ CompText86CF1A8::
 	ts_check_item07 [
 		item: 0xB,
 		amount: 0x1,
-		jumpIfEqual: 0x1B,
-		jumpIfGreater: 0x1B,
-		jumpIfLess: 0x16,
+		jumpIfEqual: CompText86CF1A8_unk27_id,
+		jumpIfGreater: CompText86CF1A8_unk27_id,
+		jumpIfLess: CompText86CF1A8_unk22_id,
 	]
 
 	def_text_script CompText86CF1A8_unk11
@@ -161,7 +161,7 @@ CompText86CF1A8::
 	.string "cancelled."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText86CF1A8_unk19_id
 
 	def_text_script CompText86CF1A8_unk14
 	ts_msg_open_menu
@@ -181,15 +181,15 @@ CompText86CF1A8::
 
 	def_text_script CompText86CF1A8_unk16
 	ts_msg_open_menu_quick
-	ts_jump target=19
+	ts_jump target=CompText86CF1A8_unk19_id
 
 	def_text_script CompText86CF1A8_unk17
 	ts_msg_open_menu_quick
-	ts_jump target=21
+	ts_jump target=CompText86CF1A8_unk21_id
 
 	def_text_script CompText86CF1A8_unk18
 	ts_msg_open_menu
-	ts_jump target=19
+	ts_jump target=CompText86CF1A8_unk19_id
 
 	def_text_script CompText86CF1A8_unk19
 	.string "Choose the first\n"
@@ -199,7 +199,7 @@ CompText86CF1A8::
 
 	def_text_script CompText86CF1A8_unk20
 	ts_msg_open_menu
-	ts_jump target=21
+	ts_jump target=CompText86CF1A8_unk21_id
 
 	def_text_script CompText86CF1A8_unk21
 	.string "Choose a chip to\n"

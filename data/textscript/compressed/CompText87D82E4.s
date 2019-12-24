@@ -45,18 +45,18 @@ CompText87D82E4::
 
 	def_text_script CompText87D82E4_unk2
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x3,
-		jumpIfElecMan: 0x4,
-		jumpIfSlashMan: 0x5,
-		jumpIfEraseMan: 0x6,
-		jumpIfChargeMan: 0x7,
-		jumpIfSpoutMan: 0x8,
-		jumpIfTomahawkMan: 0x9,
-		jumpIfTenguMan: 0xA,
-		jumpIfGroundMan: 0xB,
-		jumpIfDustMan: 0xC,
-		jumpIfProtoMan: 0xD,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87D82E4_unk3_id,
+		jumpIfElecMan: CompText87D82E4_unk4_id,
+		jumpIfSlashMan: CompText87D82E4_unk5_id,
+		jumpIfEraseMan: CompText87D82E4_unk6_id,
+		jumpIfChargeMan: CompText87D82E4_unk7_id,
+		jumpIfSpoutMan: CompText87D82E4_unk8_id,
+		jumpIfTomahawkMan: CompText87D82E4_unk9_id,
+		jumpIfTenguMan: CompText87D82E4_unk10_id,
+		jumpIfGroundMan: CompText87D82E4_unk11_id,
+		jumpIfDustMan: CompText87D82E4_unk12_id,
+		jumpIfProtoMan: CompText87D82E4_unk13_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -88,7 +88,7 @@ CompText87D82E4::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D82E4_unk13_id
 
 	def_text_script CompText87D82E4_unk3
 	ts_mugshot_show mugshot=0x47
@@ -125,7 +125,7 @@ CompText87D82E4::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D82E4_unk13_id
 
 	def_text_script CompText87D82E4_unk4
 	ts_mugshot_show mugshot=0x49
@@ -158,7 +158,7 @@ CompText87D82E4::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D82E4_unk13_id
 
 	def_text_script CompText87D82E4_unk5
 	ts_mugshot_show mugshot=0x4B
@@ -190,7 +190,7 @@ CompText87D82E4::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D82E4_unk13_id
 
 	def_text_script CompText87D82E4_unk6
 	ts_mugshot_show mugshot=0x50
@@ -226,7 +226,7 @@ CompText87D82E4::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D82E4_unk13_id
 
 	def_text_script CompText87D82E4_unk7
 	ts_mugshot_show mugshot=0x4F
@@ -259,7 +259,7 @@ CompText87D82E4::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D82E4_unk13_id
 
 	def_text_script CompText87D82E4_unk8
 	ts_mugshot_show mugshot=0x48
@@ -292,7 +292,7 @@ CompText87D82E4::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D82E4_unk13_id
 
 	def_text_script CompText87D82E4_unk9
 	ts_mugshot_show mugshot=0x4A
@@ -324,7 +324,7 @@ CompText87D82E4::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D82E4_unk13_id
 
 	def_text_script CompText87D82E4_unk10
 	ts_mugshot_show mugshot=0x4C
@@ -357,7 +357,7 @@ CompText87D82E4::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D82E4_unk13_id
 
 	def_text_script CompText87D82E4_unk11
 	ts_mugshot_show mugshot=0x4D
@@ -389,7 +389,7 @@ CompText87D82E4::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D82E4_unk13_id
 
 	def_text_script CompText87D82E4_unk12
 	ts_mugshot_show mugshot=0x4E
@@ -422,7 +422,7 @@ CompText87D82E4::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D82E4_unk13_id
 
 	def_text_script CompText87D82E4_unk13
 	ts_mugshot_show mugshot=0x0

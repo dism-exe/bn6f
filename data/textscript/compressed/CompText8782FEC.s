@@ -13,12 +13,12 @@ CompText8782FEC::
 	ts_check_chapter [
 		lower: 0x22,
 		upper: 0x22,
-		jumpIfInRange: 0x19,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8782FEC_unk25_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x4,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8782FEC_unk4_id,
 	]
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
@@ -31,12 +31,12 @@ CompText8782FEC::
 	ts_check_chapter [
 		lower: 0x22,
 		upper: 0x22,
-		jumpIfInRange: 0x1A,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8782FEC_unk26_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x5,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8782FEC_unk5_id,
 	]
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
@@ -62,12 +62,12 @@ CompText8782FEC::
 	ts_check_chapter [
 		lower: 0x22,
 		upper: 0x22,
-		jumpIfInRange: 0x1B,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8782FEC_unk27_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x6,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8782FEC_unk6_id,
 	]
 	ts_mugshot_show mugshot=0x45
 	ts_msg_open
@@ -146,8 +146,8 @@ CompText8782FEC::
 	def_text_script CompText8782FEC_unk20
 	ts_check_flag [
 		flag: 0x637,
-		jumpIfTrue: 0x16,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8782FEC_unk22_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x637
 	ts_mugshot_show mugshot=0x47
@@ -396,13 +396,13 @@ CompText8782FEC::
 	def_text_script CompText8782FEC_unk55
 	ts_check_flag [
 		flag: 0x7F0,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x3A,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8782FEC_unk58_id,
 	]
 	ts_check_flag [
 		flag: 0x686,
-		jumpIfTrue: 0x38,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8782FEC_unk56_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
@@ -827,8 +827,8 @@ CompText8782FEC::
 	def_text_script CompText8782FEC_unk80
 	ts_check_flag [
 		flag: 0x857,
-		jumpIfTrue: 0x51,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8782FEC_unk81_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x857
 	ts_msg_open
@@ -951,8 +951,8 @@ CompText8782FEC::
 	def_text_script CompText8782FEC_unk82
 	ts_check_flag [
 		flag: 0x857,
-		jumpIfTrue: 0x53,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8782FEC_unk83_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	ts_mugshot_show mugshot=0x45

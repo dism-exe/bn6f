@@ -109,7 +109,7 @@ TextScriptNetworkEnterFolderName0::
 	def_text_script TextScriptNetworkEnterFolderName0_unk25
 
 	def_text_script TextScriptNetworkEnterFolderName0_unk26
-	ts_jump target=24
+	ts_jump target=TextScriptNetworkEnterFolderName0_unk24_id
 
 	def_text_script TextScriptNetworkEnterFolderName0_unk27
 
@@ -119,7 +119,7 @@ TextScriptNetworkEnterFolderName0::
 		top: 0x6C,
 		arrowDistance: 0x3,
 	]
-	ts_jump target=20
+	ts_jump target=TextScriptNetworkEnterFolderName0_unk20_id
 
 	def_text_script TextScriptNetworkEnterFolderName0_unk29
 

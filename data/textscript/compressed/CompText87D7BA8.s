@@ -19,22 +19,22 @@ CompText87D7BA8::
 	.string "written on it..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D7BA8_unk1_id
 
 	def_text_script CompText87D7BA8_unk1
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x2,
-		jumpIfElecMan: 0x3,
-		jumpIfSlashMan: 0x4,
-		jumpIfEraseMan: 0x5,
-		jumpIfChargeMan: 0x6,
-		jumpIfSpoutMan: 0x7,
-		jumpIfTomahawkMan: 0x8,
-		jumpIfTenguMan: 0x9,
-		jumpIfGroundMan: 0xA,
-		jumpIfDustMan: 0xB,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87D7BA8_unk2_id,
+		jumpIfElecMan: CompText87D7BA8_unk3_id,
+		jumpIfSlashMan: CompText87D7BA8_unk4_id,
+		jumpIfEraseMan: CompText87D7BA8_unk5_id,
+		jumpIfChargeMan: CompText87D7BA8_unk6_id,
+		jumpIfSpoutMan: CompText87D7BA8_unk7_id,
+		jumpIfTomahawkMan: CompText87D7BA8_unk8_id,
+		jumpIfTenguMan: CompText87D7BA8_unk9_id,
+		jumpIfGroundMan: CompText87D7BA8_unk10_id,
+		jumpIfDustMan: CompText87D7BA8_unk11_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -237,7 +237,7 @@ CompText87D7BA8::
 	.string "The God of..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D7BA8_unk13_id
 
 	def_text_script CompText87D7BA8_unk13
 	ts_mugshot_hide
@@ -277,22 +277,22 @@ CompText87D7BA8::
 	.string "as payment!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87D7BA8_unk17_id
 
 	def_text_script CompText87D7BA8_unk17
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x12,
-		jumpIfElecMan: 0x13,
-		jumpIfSlashMan: 0x14,
-		jumpIfEraseMan: 0x15,
-		jumpIfChargeMan: 0x16,
-		jumpIfSpoutMan: 0x17,
-		jumpIfTomahawkMan: 0x18,
-		jumpIfTenguMan: 0x19,
-		jumpIfGroundMan: 0x1A,
-		jumpIfDustMan: 0x1B,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87D7BA8_unk18_id,
+		jumpIfElecMan: CompText87D7BA8_unk19_id,
+		jumpIfSlashMan: CompText87D7BA8_unk20_id,
+		jumpIfEraseMan: CompText87D7BA8_unk21_id,
+		jumpIfChargeMan: CompText87D7BA8_unk22_id,
+		jumpIfSpoutMan: CompText87D7BA8_unk23_id,
+		jumpIfTomahawkMan: CompText87D7BA8_unk24_id,
+		jumpIfTenguMan: CompText87D7BA8_unk25_id,
+		jumpIfGroundMan: CompText87D7BA8_unk26_id,
+		jumpIfDustMan: CompText87D7BA8_unk27_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -306,7 +306,7 @@ CompText87D7BA8::
 	.string "... Here he comes!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D7BA8_unk28_id
 
 	def_text_script CompText87D7BA8_unk18
 	ts_mugshot_show mugshot=0x47
@@ -320,7 +320,7 @@ CompText87D7BA8::
 	.string "Here he comes!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D7BA8_unk28_id
 
 	def_text_script CompText87D7BA8_unk19
 	ts_mugshot_show mugshot=0x49
@@ -334,7 +334,7 @@ CompText87D7BA8::
 	.string "you!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D7BA8_unk28_id
 
 	def_text_script CompText87D7BA8_unk20
 	ts_mugshot_show mugshot=0x4B
@@ -355,7 +355,7 @@ CompText87D7BA8::
 	.string "No turning back now!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D7BA8_unk28_id
 
 	def_text_script CompText87D7BA8_unk21
 	ts_mugshot_show mugshot=0x50
@@ -374,7 +374,7 @@ CompText87D7BA8::
 	.string "play..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D7BA8_unk28_id
 
 	def_text_script CompText87D7BA8_unk22
 	ts_mugshot_show mugshot=0x4F
@@ -396,7 +396,7 @@ CompText87D7BA8::
 	.string "He's charging!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D7BA8_unk28_id
 
 	def_text_script CompText87D7BA8_unk23
 	ts_mugshot_show mugshot=0x48
@@ -409,7 +409,7 @@ CompText87D7BA8::
 	.string "Waaaaaaaaah!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D7BA8_unk28_id
 
 	def_text_script CompText87D7BA8_unk24
 	ts_mugshot_show mugshot=0x4A
@@ -424,7 +424,7 @@ CompText87D7BA8::
 	.string "want to fight him..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D7BA8_unk28_id
 
 	def_text_script CompText87D7BA8_unk25
 	ts_mugshot_show mugshot=0x4C
@@ -437,7 +437,7 @@ CompText87D7BA8::
 	.string "Lan! Operate,please!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D7BA8_unk28_id
 
 	def_text_script CompText87D7BA8_unk26
 	ts_mugshot_show mugshot=0x4D
@@ -467,7 +467,7 @@ CompText87D7BA8::
 	.string "Get ready! Hurry!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D7BA8_unk28_id
 
 	def_text_script CompText87D7BA8_unk27
 	ts_mugshot_show mugshot=0x4E
@@ -485,7 +485,7 @@ CompText87D7BA8::
 	.string "Gahahahaha!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D7BA8_unk28_id
 
 	def_text_script CompText87D7BA8_unk28
 	ts_mugshot_show mugshot=0x0
@@ -494,29 +494,29 @@ CompText87D7BA8::
 	.string "Battle routine,set!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=29
+	ts_jump target=CompText87D7BA8_unk29_id
 
 	def_text_script CompText87D7BA8_unk29
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x1E,
-		jumpIfElecMan: 0x1F,
-		jumpIfSlashMan: 0x20,
-		jumpIfEraseMan: 0x21,
-		jumpIfChargeMan: 0x22,
-		jumpIfSpoutMan: 0x23,
-		jumpIfTomahawkMan: 0x24,
-		jumpIfTenguMan: 0x25,
-		jumpIfGroundMan: 0x26,
-		jumpIfDustMan: 0x27,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87D7BA8_unk30_id,
+		jumpIfElecMan: CompText87D7BA8_unk31_id,
+		jumpIfSlashMan: CompText87D7BA8_unk32_id,
+		jumpIfEraseMan: CompText87D7BA8_unk33_id,
+		jumpIfChargeMan: CompText87D7BA8_unk34_id,
+		jumpIfSpoutMan: CompText87D7BA8_unk35_id,
+		jumpIfTomahawkMan: CompText87D7BA8_unk36_id,
+		jumpIfTenguMan: CompText87D7BA8_unk37_id,
+		jumpIfGroundMan: CompText87D7BA8_unk38_id,
+		jumpIfDustMan: CompText87D7BA8_unk39_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87D7BA8_unk40_id
 
 	def_text_script CompText87D7BA8_unk30
 	ts_mugshot_show mugshot=0x47
@@ -524,7 +524,7 @@ CompText87D7BA8::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87D7BA8_unk40_id
 
 	def_text_script CompText87D7BA8_unk31
 	ts_mugshot_show mugshot=0x49
@@ -532,7 +532,7 @@ CompText87D7BA8::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87D7BA8_unk40_id
 
 	def_text_script CompText87D7BA8_unk32
 	ts_mugshot_show mugshot=0x4B
@@ -540,7 +540,7 @@ CompText87D7BA8::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87D7BA8_unk40_id
 
 	def_text_script CompText87D7BA8_unk33
 	ts_mugshot_show mugshot=0x50
@@ -548,7 +548,7 @@ CompText87D7BA8::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87D7BA8_unk40_id
 
 	def_text_script CompText87D7BA8_unk34
 	ts_mugshot_show mugshot=0x4F
@@ -556,7 +556,7 @@ CompText87D7BA8::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87D7BA8_unk40_id
 
 	def_text_script CompText87D7BA8_unk35
 	ts_mugshot_show mugshot=0x48
@@ -564,7 +564,7 @@ CompText87D7BA8::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87D7BA8_unk40_id
 
 	def_text_script CompText87D7BA8_unk36
 	ts_mugshot_show mugshot=0x4A
@@ -572,7 +572,7 @@ CompText87D7BA8::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87D7BA8_unk40_id
 
 	def_text_script CompText87D7BA8_unk37
 	ts_mugshot_show mugshot=0x4C
@@ -580,7 +580,7 @@ CompText87D7BA8::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87D7BA8_unk40_id
 
 	def_text_script CompText87D7BA8_unk38
 	ts_mugshot_show mugshot=0x4D
@@ -588,7 +588,7 @@ CompText87D7BA8::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87D7BA8_unk40_id
 
 	def_text_script CompText87D7BA8_unk39
 	ts_mugshot_show mugshot=0x4E
@@ -596,7 +596,7 @@ CompText87D7BA8::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87D7BA8_unk40_id
 
 	def_text_script CompText87D7BA8_unk40
 	ts_mugshot_show mugshot=0x5B

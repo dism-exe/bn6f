@@ -10,7 +10,7 @@ CompText8759C10::
 	text_archive_start
 
 	def_text_script CompText8759C10_unk0
-	ts_jump target=1
+	ts_jump target=CompText8759C10_unk1_id
 
 	def_text_script CompText8759C10_unk1
 	ts_msg_open
@@ -102,36 +102,36 @@ CompText8759C10::
 	def_text_script CompText8759C10_unk20
 	ts_check_flag [
 		flag: 0x163,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8759C10_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x11F,
-		jumpIfTrue: 0x1B,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8759C10_unk27_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCDC,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x18,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8759C10_unk24_id,
 	]
 	ts_check_flag [
 		flag: 0xCDF,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8759C10_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xCDF
-	ts_jump target=22
+	ts_jump target=CompText8759C10_unk22_id
 
 	def_text_script CompText8759C10_unk21
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x19,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8759C10_unk25_id,
 	]
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x17,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8759C10_unk23_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -199,20 +199,20 @@ CompText8759C10::
 	def_text_script CompText8759C10_unk24
 	ts_check_flag [
 		flag: 0x120,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x4,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8759C10_unk4_id,
 	]
 	ts_check_flag [
 		flag: 0xCDD,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8759C10_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_jump target=4
+	ts_jump target=CompText8759C10_unk4_id
 
 	def_text_script CompText8759C10_unk25
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x1A,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8759C10_unk26_id,
 	]
 	ts_mugshot_show mugshot=0x50
 	ts_msg_open
@@ -277,8 +277,8 @@ CompText8759C10::
 
 	def_text_script CompText8759C10_unk27
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x1C,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8759C10_unk28_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

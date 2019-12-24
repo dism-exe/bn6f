@@ -14,7 +14,7 @@ CompText87AA07C::
 	.string "*Squawk! Squawk!*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87AA07C_unk1_id
 
 	def_text_script CompText87AA07C_unk1
 	ts_mugshot_show mugshot=0x0
@@ -42,7 +42,7 @@ CompText87AA07C::
 	.string "*chomp,chomp,chomp*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87AA07C_unk4_id
 
 	def_text_script CompText87AA07C_unk4
 	ts_mugshot_show mugshot=0x14
@@ -51,7 +51,7 @@ CompText87AA07C::
 	.string "likes it!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87AA07C_unk5_id
 
 	def_text_script CompText87AA07C_unk5
 	ts_mugshot_show mugshot=0x0
@@ -66,7 +66,7 @@ CompText87AA07C::
 	.string "Mick?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AA07C_unk6_id
 
 	def_text_script CompText87AA07C_unk6
 	ts_mugshot_show mugshot=0x14
@@ -76,7 +76,7 @@ CompText87AA07C::
 	.string "for a pigeon..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87AA07C_unk7_id
 
 	def_text_script CompText87AA07C_unk7
 	ts_mugshot_show mugshot=0x0
@@ -84,7 +84,7 @@ CompText87AA07C::
 	.string "Totally clueless..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87AA07C_unk8_id
 
 	def_text_script CompText87AA07C_unk8
 	ts_mugshot_show mugshot=0x37
@@ -110,7 +110,7 @@ CompText87AA07C::
 	.string "we can find a clue."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87AA07C_unk10_id
 
 	def_text_script CompText87AA07C_unk10
 	ts_mugshot_show mugshot=0x0
@@ -139,7 +139,7 @@ CompText87AA07C::
 	.string "gonna trip us up..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87AA07C_unk12_id
 
 	def_text_script CompText87AA07C_unk12
 	ts_mugshot_show mugshot=0x0
@@ -166,7 +166,7 @@ CompText87AA07C::
 	.string "NetBattle one day..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87AA07C_unk14_id
 
 	def_text_script CompText87AA07C_unk14
 	ts_mugshot_show mugshot=0x0

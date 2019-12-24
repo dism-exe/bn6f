@@ -142,8 +142,8 @@ CompText86D0614::
 	ts_key_wait any=0x0
 	ts_check_flag [
 		flag: 0xF3,
-		jumpIfTrue: 0x6E,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText86D0614_unk110_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	ts_item_give_navi_cust_program [
@@ -238,7 +238,7 @@ CompText86D0614::
 	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D0614_unk4
-	ts_jump target=90
+	ts_jump target=CompText86D0614_unk90_id
 
 	def_text_script CompText86D0614_unk5
 	ts_call_disable_mugshot_brighten
@@ -338,9 +338,9 @@ CompText86D0614::
 	ts_check_item07 [
 		item: 0xB,
 		amount: 0x1,
-		jumpIfEqual: 0x6E,
-		jumpIfGreater: 0x6E,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText86D0614_unk110_id,
+		jumpIfGreater: CompText86D0614_unk110_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_clear_msg
 	ts_mugshot_hide
@@ -1563,8 +1563,8 @@ CompText86D0614::
 
 	def_text_script CompText86D0614_unk59
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x57,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText86D0614_unk87_id,
 	]
 	ts_msg_open_email
 	.string "You defeated a great\n"
@@ -1576,8 +1576,8 @@ CompText86D0614::
 	ts_key_wait any=0x0
 	ts_check_flag [
 		flag: 0x1E8,
-		jumpIfTrue: 0x6E,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText86D0614_unk110_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	ts_mugshot_hide
@@ -1644,51 +1644,51 @@ CompText86D0614::
 	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D0614_unk62
-	ts_jump target=91
+	ts_jump target=CompText86D0614_unk91_id
 
 	def_text_script CompText86D0614_unk63
-	ts_jump target=92
+	ts_jump target=CompText86D0614_unk92_id
 
 	def_text_script CompText86D0614_unk64
-	ts_jump target=93
+	ts_jump target=CompText86D0614_unk93_id
 
 	def_text_script CompText86D0614_unk65
-	ts_jump target=94
+	ts_jump target=CompText86D0614_unk94_id
 
 	def_text_script CompText86D0614_unk66
-	ts_jump target=95
+	ts_jump target=CompText86D0614_unk95_id
 
 	def_text_script CompText86D0614_unk67
-	ts_jump target=96
+	ts_jump target=CompText86D0614_unk96_id
 
 	def_text_script CompText86D0614_unk68
-	ts_jump target=97
+	ts_jump target=CompText86D0614_unk97_id
 
 	def_text_script CompText86D0614_unk69
-	ts_jump target=98
+	ts_jump target=CompText86D0614_unk98_id
 
 	def_text_script CompText86D0614_unk70
-	ts_jump target=99
+	ts_jump target=CompText86D0614_unk99_id
 
 	def_text_script CompText86D0614_unk71
-	ts_jump target=100
+	ts_jump target=CompText86D0614_unk100_id
 
 	def_text_script CompText86D0614_unk72
-	ts_jump target=101
+	ts_jump target=CompText86D0614_unk101_id
 
 	def_text_script CompText86D0614_unk73
-	ts_jump target=102
+	ts_jump target=CompText86D0614_unk102_id
 
 	def_text_script CompText86D0614_unk74
-	ts_jump target=103
+	ts_jump target=CompText86D0614_unk103_id
 
 	def_text_script CompText86D0614_unk75
-	ts_jump target=104
+	ts_jump target=CompText86D0614_unk104_id
 
 	def_text_script CompText86D0614_unk76
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x58,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText86D0614_unk88_id,
 	]
 	ts_call_disable_mugshot_brighten
 	ts_mugshot_show mugshot=0x5
@@ -2156,8 +2156,8 @@ CompText86D0614::
 	ts_key_wait any=0x0
 	ts_check_flag [
 		flag: 0x1E8,
-		jumpIfTrue: 0x6E,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText86D0614_unk110_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	ts_mugshot_hide
@@ -2324,8 +2324,8 @@ CompText86D0614::
 	ts_key_wait any=0x0
 	ts_check_flag [
 		flag: 0xFB,
-		jumpIfTrue: 0x6E,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText86D0614_unk110_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	ts_mugshot_hide
@@ -2576,8 +2576,8 @@ CompText86D0614::
 	ts_key_wait any=0x0
 	ts_check_flag [
 		flag: 0x1E9,
-		jumpIfTrue: 0x6E,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText86D0614_unk110_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	ts_mugshot_hide

@@ -17,7 +17,7 @@ CompText87CECA4::
 	.string "alright..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87CECA4_unk1_id
 
 	def_text_script CompText87CECA4_unk1
 	ts_mugshot_show mugshot=0x14
@@ -26,7 +26,7 @@ CompText87CECA4::
 	.string "about?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87CECA4_unk2_id
 
 	def_text_script CompText87CECA4_unk2
 	ts_mugshot_show mugshot=0x33
@@ -44,7 +44,7 @@ CompText87CECA4::
 	.string "I'm really worried."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CECA4_unk3_id
 
 	def_text_script CompText87CECA4_unk3
 	ts_mugshot_show mugshot=0x14
@@ -59,7 +59,7 @@ CompText87CECA4::
 	.string "is. Yeesh."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87CECA4_unk4_id
 
 	def_text_script CompText87CECA4_unk4
 	ts_mugshot_show mugshot=0x0
@@ -69,7 +69,7 @@ CompText87CECA4::
 	.string "the Expo..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87CECA4_unk5_id
 
 	def_text_script CompText87CECA4_unk5
 	ts_mugshot_hide
@@ -141,7 +141,7 @@ CompText87CECA4::
 		track: 0x3,
 		length: 0xA,
 	]
-	ts_jump target=11
+	ts_jump target=CompText87CECA4_unk11_id
 
 	def_text_script CompText87CECA4_unk11
 	ts_mugshot_show mugshot=0x14
@@ -155,7 +155,7 @@ CompText87CECA4::
 	.string "Tab?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87CECA4_unk12_id
 
 	def_text_script CompText87CECA4_unk12
 	ts_mugshot_show mugshot=0x33
@@ -166,7 +166,7 @@ CompText87CECA4::
 	.string "Aren't you,Lan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87CECA4_unk13_id
 
 	def_text_script CompText87CECA4_unk13
 	ts_mugshot_show mugshot=0x0
@@ -174,7 +174,7 @@ CompText87CECA4::
 	.string "... Yeah."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87CECA4_unk14_id
 
 	def_text_script CompText87CECA4_unk14
 	ts_mugshot_show mugshot=0x14
@@ -184,7 +184,7 @@ CompText87CECA4::
 	.string "happy."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87CECA4_unk15_id
 
 	def_text_script CompText87CECA4_unk15
 	ts_mugshot_show mugshot=0x0
@@ -209,7 +209,7 @@ CompText87CECA4::
 	.string "stop the Expo..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87CECA4_unk16_id
 
 	def_text_script CompText87CECA4_unk16
 	ts_mugshot_show mugshot=0x14
@@ -231,7 +231,7 @@ CompText87CECA4::
 	.string "to help the Expo!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87CECA4_unk17_id
 
 	def_text_script CompText87CECA4_unk17
 	ts_mugshot_show mugshot=0x33
@@ -243,7 +243,7 @@ CompText87CECA4::
 	.string "you can't do!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87CECA4_unk18_id
 
 	def_text_script CompText87CECA4_unk18
 	ts_mugshot_show mugshot=0x0
@@ -251,7 +251,7 @@ CompText87CECA4::
 	.string "Thanks,you two!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87CECA4_unk19_id
 
 	def_text_script CompText87CECA4_unk19
 	ts_mugshot_show mugshot=0x33
@@ -261,7 +261,7 @@ CompText87CECA4::
 	.string "I have to go home!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87CECA4_unk20_id
 
 	def_text_script CompText87CECA4_unk20
 	ts_mugshot_show mugshot=0x14

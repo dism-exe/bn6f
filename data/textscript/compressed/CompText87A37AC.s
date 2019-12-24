@@ -12,8 +12,8 @@ CompText87A37AC::
 	def_text_script CompText87A37AC_unk0
 	ts_check_flag [
 		flag: 0x1218,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A37AC_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x45
 	ts_msg_open
@@ -66,9 +66,9 @@ CompText87A37AC::
 	def_text_script CompText87A37AC_unk1
 	ts_check_take_zenny [
 		amount: 0xBB8,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0x3,
-		jumpIfSome: 0x3,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: CompText87A37AC_unk3_id,
+		jumpIfSome: CompText87A37AC_unk3_id,
 	]
 	ts_mugshot_show mugshot=0x45
 	ts_msg_open

@@ -3,18 +3,18 @@ TextScriptBattleRunDialog::
 
 	def_text_script TextScriptBattleRunDialog_unk0
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x11,
-		jumpIfElecMan: 0x14,
-		jumpIfSlashMan: 0x23,
-		jumpIfEraseMan: 0x26,
-		jumpIfChargeMan: 0x29,
-		jumpIfSpoutMan: 0x2C,
-		jumpIfTomahawkMan: 0x2F,
-		jumpIfTenguMan: 0x32,
-		jumpIfGroundMan: 0x35,
-		jumpIfDustMan: 0x38,
-		jumpIfProtoMan: 0x3B,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptBattleRunDialog_unk17_id,
+		jumpIfElecMan: TextScriptBattleRunDialog_unk20_id,
+		jumpIfSlashMan: TextScriptBattleRunDialog_unk35_id,
+		jumpIfEraseMan: TextScriptBattleRunDialog_unk38_id,
+		jumpIfChargeMan: TextScriptBattleRunDialog_unk41_id,
+		jumpIfSpoutMan: TextScriptBattleRunDialog_unk44_id,
+		jumpIfTomahawkMan: TextScriptBattleRunDialog_unk47_id,
+		jumpIfTenguMan: TextScriptBattleRunDialog_unk50_id,
+		jumpIfGroundMan: TextScriptBattleRunDialog_unk53_id,
+		jumpIfDustMan: TextScriptBattleRunDialog_unk56_id,
+		jumpIfProtoMan: TextScriptBattleRunDialog_unk59_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -43,18 +43,18 @@ TextScriptBattleRunDialog::
 
 	def_text_script TextScriptBattleRunDialog_unk1
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x12,
-		jumpIfElecMan: 0x15,
-		jumpIfSlashMan: 0x24,
-		jumpIfEraseMan: 0x27,
-		jumpIfChargeMan: 0x2A,
-		jumpIfSpoutMan: 0x2D,
-		jumpIfTomahawkMan: 0x30,
-		jumpIfTenguMan: 0x33,
-		jumpIfGroundMan: 0x36,
-		jumpIfDustMan: 0x39,
-		jumpIfProtoMan: 0x3C,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptBattleRunDialog_unk18_id,
+		jumpIfElecMan: TextScriptBattleRunDialog_unk21_id,
+		jumpIfSlashMan: TextScriptBattleRunDialog_unk36_id,
+		jumpIfEraseMan: TextScriptBattleRunDialog_unk39_id,
+		jumpIfChargeMan: TextScriptBattleRunDialog_unk42_id,
+		jumpIfSpoutMan: TextScriptBattleRunDialog_unk45_id,
+		jumpIfTomahawkMan: TextScriptBattleRunDialog_unk48_id,
+		jumpIfTenguMan: TextScriptBattleRunDialog_unk51_id,
+		jumpIfGroundMan: TextScriptBattleRunDialog_unk54_id,
+		jumpIfDustMan: TextScriptBattleRunDialog_unk57_id,
+		jumpIfProtoMan: TextScriptBattleRunDialog_unk60_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -72,18 +72,18 @@ TextScriptBattleRunDialog::
 
 	def_text_script TextScriptBattleRunDialog_unk2
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x13,
-		jumpIfElecMan: 0x16,
-		jumpIfSlashMan: 0x25,
-		jumpIfEraseMan: 0x28,
-		jumpIfChargeMan: 0x2B,
-		jumpIfSpoutMan: 0x2E,
-		jumpIfTomahawkMan: 0x31,
-		jumpIfTenguMan: 0x34,
-		jumpIfGroundMan: 0x37,
-		jumpIfDustMan: 0x3A,
-		jumpIfProtoMan: 0x3D,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptBattleRunDialog_unk19_id,
+		jumpIfElecMan: TextScriptBattleRunDialog_unk22_id,
+		jumpIfSlashMan: TextScriptBattleRunDialog_unk37_id,
+		jumpIfEraseMan: TextScriptBattleRunDialog_unk40_id,
+		jumpIfChargeMan: TextScriptBattleRunDialog_unk43_id,
+		jumpIfSpoutMan: TextScriptBattleRunDialog_unk46_id,
+		jumpIfTomahawkMan: TextScriptBattleRunDialog_unk49_id,
+		jumpIfTenguMan: TextScriptBattleRunDialog_unk52_id,
+		jumpIfGroundMan: TextScriptBattleRunDialog_unk55_id,
+		jumpIfDustMan: TextScriptBattleRunDialog_unk58_id,
+		jumpIfProtoMan: TextScriptBattleRunDialog_unk61_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -101,18 +101,18 @@ TextScriptBattleRunDialog::
 
 	def_text_script TextScriptBattleRunDialog_unk3
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x17,
-		jumpIfElecMan: 0x18,
-		jumpIfSlashMan: 0x19,
-		jumpIfEraseMan: 0x1A,
-		jumpIfChargeMan: 0x1B,
-		jumpIfSpoutMan: 0x1C,
-		jumpIfTomahawkMan: 0x1D,
-		jumpIfTenguMan: 0x1E,
-		jumpIfGroundMan: 0x1F,
-		jumpIfDustMan: 0x20,
-		jumpIfProtoMan: 0x21,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptBattleRunDialog_unk23_id,
+		jumpIfElecMan: TextScriptBattleRunDialog_unk24_id,
+		jumpIfSlashMan: TextScriptBattleRunDialog_unk25_id,
+		jumpIfEraseMan: TextScriptBattleRunDialog_unk26_id,
+		jumpIfChargeMan: TextScriptBattleRunDialog_unk27_id,
+		jumpIfSpoutMan: TextScriptBattleRunDialog_unk28_id,
+		jumpIfTomahawkMan: TextScriptBattleRunDialog_unk29_id,
+		jumpIfTenguMan: TextScriptBattleRunDialog_unk30_id,
+		jumpIfGroundMan: TextScriptBattleRunDialog_unk31_id,
+		jumpIfDustMan: TextScriptBattleRunDialog_unk32_id,
+		jumpIfProtoMan: TextScriptBattleRunDialog_unk33_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

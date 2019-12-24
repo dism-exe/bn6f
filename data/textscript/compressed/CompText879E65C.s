@@ -12,13 +12,13 @@ CompText879E65C::
 	def_text_script CompText879E65C_unk0
 	ts_check_flag [
 		flag: 0x1160,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879E65C_unk3_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x115F,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879E65C_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x115F
 	ts_mugshot_show mugshot=0x3E
@@ -302,27 +302,27 @@ CompText879E65C::
 		chip: 0x92,
 		code: 0x19,
 		amount: 0x1,
-		jumpIfEqual: 0xFF,
-		jumpIfGreater: 0xFF,
-		jumpIfLess: 0x1,
+		jumpIfEqual: TS_CONTINUE,
+		jumpIfGreater: TS_CONTINUE,
+		jumpIfLess: CompText879E65C_unk1_id,
 	]
 	ts_check_pack_chip_code [
 		chip: 0x93,
 		code: 0x12,
 		amount: 0x1,
-		jumpIfEqual: 0xFF,
-		jumpIfGreater: 0xFF,
-		jumpIfLess: 0x1,
+		jumpIfEqual: TS_CONTINUE,
+		jumpIfGreater: TS_CONTINUE,
+		jumpIfLess: CompText879E65C_unk1_id,
 	]
 	ts_check_pack_chip_code [
 		chip: 0x94,
 		code: 0x13,
 		amount: 0x1,
-		jumpIfEqual: 0xFF,
-		jumpIfGreater: 0xFF,
-		jumpIfLess: 0x1,
+		jumpIfEqual: TS_CONTINUE,
+		jumpIfGreater: TS_CONTINUE,
+		jumpIfLess: CompText879E65C_unk1_id,
 	]
-	ts_jump target=2
+	ts_jump target=CompText879E65C_unk2_id
 
 	def_text_script CompText879E65C_unk5
 
@@ -452,23 +452,23 @@ CompText879E65C::
 	def_text_script CompText879E65C_unk24
 	ts_check_flag [
 		flag: 0x1106,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x19,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879E65C_unk25_id,
 	]
 	ts_check_flag [
 		flag: 0x1107,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x19,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879E65C_unk25_id,
 	]
 	ts_check_flag [
 		flag: 0x1108,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x19,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879E65C_unk25_id,
 	]
 	ts_check_flag [
 		flag: 0x1109,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x19,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText879E65C_unk25_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

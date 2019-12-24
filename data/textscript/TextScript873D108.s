@@ -14,25 +14,25 @@ TextScript873D108::
 	ts_wait frames=0xA
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=TextScript873D108_unk7_id
 
 	def_text_script TextScript873D108_unk1
-	ts_jump target=0
+	ts_jump target=TextScript873D108_unk0_id
 
 	def_text_script TextScript873D108_unk2
-	ts_jump_buffer_set target=7
+	ts_jump_buffer_set target=TextScript873D108_unk7_id
 	ts_check_flag [
 		flag: 0x1708,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0x5,
+		jumpIfTrue: TextScript873D108_unk8_id,
+		jumpIfFalse: TextScript873D108_unk5_id,
 	]
 	ts_end
 
 	def_text_script TextScript873D108_unk3
-	ts_jump target=2
+	ts_jump target=TextScript873D108_unk2_id
 
 	def_text_script TextScript873D108_unk4
-	ts_jump target=0
+	ts_jump target=TextScript873D108_unk0_id
 
 	def_text_script TextScript873D108_unk5
 	ts_msg_open
@@ -49,9 +49,9 @@ TextScript873D108::
 	ts_check_item07 [
 		item: 0x85,
 		amount: 0x1,
-		jumpIfEqual: 0xFF,
-		jumpIfGreater: 0xFF,
-		jumpIfLess: 0x9,
+		jumpIfEqual: TS_CONTINUE,
+		jumpIfGreater: TS_CONTINUE,
+		jumpIfLess: TextScript873D108_unk9_id,
 	]
 	.string "You want to use\n"
 	.string "\""
@@ -145,28 +145,28 @@ TextScript873D108::
 	ts_wait frames=0xA
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=TextScript873D108_unk17_id
 
 	def_text_script TextScript873D108_unk11
-	ts_jump target=10
+	ts_jump target=TextScript873D108_unk10_id
 
 	def_text_script TextScript873D108_unk12
-	ts_jump_buffer_set target=17
+	ts_jump_buffer_set target=TextScript873D108_unk17_id
 	ts_check_flag [
 		flag: 0x1708,
-		jumpIfTrue: 0x12,
-		jumpIfFalse: 0xF,
+		jumpIfTrue: TextScript873D108_unk18_id,
+		jumpIfFalse: TextScript873D108_unk15_id,
 	]
 	ts_end
 
 	def_text_script TextScript873D108_unk13
-	ts_jump target=12
+	ts_jump target=TextScript873D108_unk12_id
 
 	def_text_script TextScript873D108_unk14
-	ts_jump target=10
+	ts_jump target=TextScript873D108_unk10_id
 
 	def_text_script TextScript873D108_unk15
-	ts_jump target=5
+	ts_jump target=TextScript873D108_unk5_id
 
 	def_text_script TextScript873D108_unk16
 	ts_msg_open
@@ -184,9 +184,9 @@ TextScript873D108::
 	ts_check_give_item [
 		item: 0xFF,
 		amount: 0x1,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0x10,
-		jumpIfSome: 0x10,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TextScript873D108_unk16_id,
+		jumpIfSome: TextScript873D108_unk16_id,
 	]
 	ts_flag_set_buffered buffer=0x0
 	ts_player_animate_object animation=0x18
@@ -205,7 +205,7 @@ TextScript873D108::
 	ts_end
 
 	def_text_script TextScript873D108_unk18
-	ts_jump target=8
+	ts_jump target=TextScript873D108_unk8_id
 
 	def_text_script TextScript873D108_unk19
 	ts_end
@@ -223,28 +223,28 @@ TextScript873D108::
 	ts_wait frames=0xA
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=TextScript873D108_unk27_id
 
 	def_text_script TextScript873D108_unk21
-	ts_jump target=20
+	ts_jump target=TextScript873D108_unk20_id
 
 	def_text_script TextScript873D108_unk22
-	ts_jump_buffer_set target=27
+	ts_jump_buffer_set target=TextScript873D108_unk27_id
 	ts_check_flag [
 		flag: 0x1708,
-		jumpIfTrue: 0x1C,
-		jumpIfFalse: 0x19,
+		jumpIfTrue: TextScript873D108_unk28_id,
+		jumpIfFalse: TextScript873D108_unk25_id,
 	]
 	ts_end
 
 	def_text_script TextScript873D108_unk23
-	ts_jump target=22
+	ts_jump target=TextScript873D108_unk22_id
 
 	def_text_script TextScript873D108_unk24
-	ts_jump target=20
+	ts_jump target=TextScript873D108_unk20_id
 
 	def_text_script TextScript873D108_unk25
-	ts_jump target=5
+	ts_jump target=TextScript873D108_unk5_id
 
 	def_text_script TextScript873D108_unk26
 
@@ -252,9 +252,9 @@ TextScript873D108::
 	ts_flag_set_buffered buffer=0x0
 	ts_check_give_zenny [
 		amount: 0xFFFFFFFF,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_player_animate_object animation=0x18
 	ts_print_current_navi_ow
@@ -273,7 +273,7 @@ TextScript873D108::
 	ts_end
 
 	def_text_script TextScript873D108_unk28
-	ts_jump target=8
+	ts_jump target=TextScript873D108_unk8_id
 
 	def_text_script TextScript873D108_unk29
 	ts_end
@@ -291,28 +291,28 @@ TextScript873D108::
 	ts_wait frames=0xA
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=37
+	ts_jump target=TextScript873D108_unk37_id
 
 	def_text_script TextScript873D108_unk31
-	ts_jump target=30
+	ts_jump target=TextScript873D108_unk30_id
 
 	def_text_script TextScript873D108_unk32
-	ts_jump_buffer_set target=37
+	ts_jump_buffer_set target=TextScript873D108_unk37_id
 	ts_check_flag [
 		flag: 0x1708,
-		jumpIfTrue: 0x26,
-		jumpIfFalse: 0x23,
+		jumpIfTrue: TextScript873D108_unk38_id,
+		jumpIfFalse: TextScript873D108_unk35_id,
 	]
 	ts_end
 
 	def_text_script TextScript873D108_unk33
-	ts_jump target=32
+	ts_jump target=TextScript873D108_unk32_id
 
 	def_text_script TextScript873D108_unk34
-	ts_jump target=30
+	ts_jump target=TextScript873D108_unk30_id
 
 	def_text_script TextScript873D108_unk35
-	ts_jump target=5
+	ts_jump target=TextScript873D108_unk5_id
 
 	def_text_script TextScript873D108_unk36
 
@@ -337,7 +337,7 @@ TextScript873D108::
 	ts_end
 
 	def_text_script TextScript873D108_unk38
-	ts_jump target=8
+	ts_jump target=TextScript873D108_unk8_id
 
 	def_text_script TextScript873D108_unk39
 	ts_end
@@ -355,37 +355,37 @@ TextScript873D108::
 	ts_wait frames=0xA
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=47
+	ts_jump target=TextScript873D108_unk47_id
 
 	def_text_script TextScript873D108_unk41
-	ts_jump target=40
+	ts_jump target=TextScript873D108_unk40_id
 
 	def_text_script TextScript873D108_unk42
-	ts_jump_buffer_set target=47
+	ts_jump_buffer_set target=TextScript873D108_unk47_id
 	ts_check_flag [
 		flag: 0x1708,
-		jumpIfTrue: 0x30,
-		jumpIfFalse: 0x2D,
+		jumpIfTrue: TextScript873D108_unk48_id,
+		jumpIfFalse: TextScript873D108_unk45_id,
 	]
 	ts_end
 
 	def_text_script TextScript873D108_unk43
-	ts_jump target=42
+	ts_jump target=TextScript873D108_unk42_id
 
 	def_text_script TextScript873D108_unk44
-	ts_jump target=40
+	ts_jump target=TextScript873D108_unk40_id
 
 	def_text_script TextScript873D108_unk45
-	ts_jump target=5
+	ts_jump target=TextScript873D108_unk5_id
 
 	def_text_script TextScript873D108_unk46
 
 	def_text_script TextScript873D108_unk47
 	ts_check_give_bug_frags [
 		amount: 0xFFFFFFFF,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_flag_set_buffered buffer=0x0
 	ts_player_animate_object animation=0x18
@@ -404,22 +404,22 @@ TextScript873D108::
 	ts_end
 
 	def_text_script TextScript873D108_unk48
-	ts_jump target=8
+	ts_jump target=TextScript873D108_unk8_id
 
 	def_text_script TextScript873D108_unk49
 	ts_end
 
 	def_text_script TextScript873D108_unk50
-	ts_jump target=7
+	ts_jump target=TextScript873D108_unk7_id
 
 	def_text_script TextScript873D108_unk51
-	ts_jump target=0
+	ts_jump target=TextScript873D108_unk0_id
 
 	def_text_script TextScript873D108_unk52
-	ts_jump target=2
+	ts_jump target=TextScript873D108_unk2_id
 
 	def_text_script TextScript873D108_unk53
-	ts_jump target=2
+	ts_jump target=TextScript873D108_unk2_id
 
 	def_text_script TextScript873D108_unk54
 	ts_msg_open
@@ -436,8 +436,8 @@ TextScript873D108::
 	ts_clear_msg
 	ts_check_flag [
 		flag: 0x1709,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x39,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: TextScript873D108_unk57_id,
 	]
 	.string "The SubChip\n"
 	.string "\""
@@ -454,10 +454,10 @@ TextScript873D108::
 	.string "was deleted!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=TextScript873D108_unk7_id
 
 	def_text_script TextScript873D108_unk55
-	ts_jump target=5
+	ts_jump target=TextScript873D108_unk5_id
 
 	def_text_script TextScript873D108_unk56
 
@@ -470,22 +470,22 @@ TextScript873D108::
 	ts_end
 
 	def_text_script TextScript873D108_unk58
-	ts_jump target=8
+	ts_jump target=TextScript873D108_unk8_id
 
 	def_text_script TextScript873D108_unk59
 	ts_end
 
 	def_text_script TextScript873D108_unk60
-	ts_jump target=27
+	ts_jump target=TextScript873D108_unk27_id
 
 	def_text_script TextScript873D108_unk61
-	ts_jump target=20
+	ts_jump target=TextScript873D108_unk20_id
 
 	def_text_script TextScript873D108_unk62
-	ts_jump target=22
+	ts_jump target=TextScript873D108_unk22_id
 
 	def_text_script TextScript873D108_unk63
-	ts_jump target=22
+	ts_jump target=TextScript873D108_unk22_id
 
 	def_text_script TextScript873D108_unk64
 	ts_msg_open
@@ -502,8 +502,8 @@ TextScript873D108::
 	ts_clear_msg
 	ts_check_flag [
 		flag: 0x1709,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x43,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: TextScript873D108_unk67_id,
 	]
 	.string "The SubChip\n"
 	.string "\""
@@ -520,10 +520,10 @@ TextScript873D108::
 	.string "was deleted!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=TextScript873D108_unk27_id
 
 	def_text_script TextScript873D108_unk65
-	ts_jump target=5
+	ts_jump target=TextScript873D108_unk5_id
 
 	def_text_script TextScript873D108_unk66
 
@@ -536,7 +536,7 @@ TextScript873D108::
 	ts_end
 
 	def_text_script TextScript873D108_unk68
-	ts_jump target=8
+	ts_jump target=TextScript873D108_unk8_id
 
 	def_text_script TextScript873D108_unk69
 	ts_end
@@ -554,28 +554,28 @@ TextScript873D108::
 	ts_wait frames=0xA
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=77
+	ts_jump target=TextScript873D108_unk77_id
 
 	def_text_script TextScript873D108_unk71
-	ts_jump target=70
+	ts_jump target=TextScript873D108_unk70_id
 
 	def_text_script TextScript873D108_unk72
-	ts_jump_buffer_set target=77
+	ts_jump_buffer_set target=TextScript873D108_unk77_id
 	ts_check_flag [
 		flag: 0x1708,
-		jumpIfTrue: 0x4E,
-		jumpIfFalse: 0x4B,
+		jumpIfTrue: TextScript873D108_unk78_id,
+		jumpIfFalse: TextScript873D108_unk75_id,
 	]
 	ts_end
 
 	def_text_script TextScript873D108_unk73
-	ts_jump target=72
+	ts_jump target=TextScript873D108_unk72_id
 
 	def_text_script TextScript873D108_unk74
-	ts_jump target=70
+	ts_jump target=TextScript873D108_unk70_id
 
 	def_text_script TextScript873D108_unk75
-	ts_jump target=5
+	ts_jump target=TextScript873D108_unk5_id
 
 	def_text_script TextScript873D108_unk76
 
@@ -600,7 +600,7 @@ TextScript873D108::
 	ts_end
 
 	def_text_script TextScript873D108_unk78
-	ts_jump target=8
+	ts_jump target=TextScript873D108_unk8_id
 
 	def_text_script TextScript873D108_unk79
 	ts_end
@@ -618,28 +618,28 @@ TextScript873D108::
 	ts_wait frames=0xA
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=87
+	ts_jump target=TextScript873D108_unk87_id
 
 	def_text_script TextScript873D108_unk81
-	ts_jump target=80
+	ts_jump target=TextScript873D108_unk80_id
 
 	def_text_script TextScript873D108_unk82
-	ts_jump_buffer_set target=87
+	ts_jump_buffer_set target=TextScript873D108_unk87_id
 	ts_check_flag [
 		flag: 0x1708,
-		jumpIfTrue: 0x58,
-		jumpIfFalse: 0x55,
+		jumpIfTrue: TextScript873D108_unk88_id,
+		jumpIfFalse: TextScript873D108_unk85_id,
 	]
 	ts_end
 
 	def_text_script TextScript873D108_unk83
-	ts_jump target=82
+	ts_jump target=TextScript873D108_unk82_id
 
 	def_text_script TextScript873D108_unk84
-	ts_jump target=80
+	ts_jump target=TextScript873D108_unk80_id
 
 	def_text_script TextScript873D108_unk85
-	ts_jump target=5
+	ts_jump target=TextScript873D108_unk5_id
 
 	def_text_script TextScript873D108_unk86
 
@@ -665,7 +665,7 @@ TextScript873D108::
 	ts_end
 
 	def_text_script TextScript873D108_unk88
-	ts_jump target=8
+	ts_jump target=TextScript873D108_unk8_id
 
 	def_text_script TextScript873D108_unk89
 	ts_end
@@ -683,28 +683,28 @@ TextScript873D108::
 	ts_wait frames=0xA
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=97
+	ts_jump target=TextScript873D108_unk97_id
 
 	def_text_script TextScript873D108_unk91
-	ts_jump target=90
+	ts_jump target=TextScript873D108_unk90_id
 
 	def_text_script TextScript873D108_unk92
-	ts_jump_buffer_set target=97
+	ts_jump_buffer_set target=TextScript873D108_unk97_id
 	ts_check_flag [
 		flag: 0x1708,
-		jumpIfTrue: 0x62,
-		jumpIfFalse: 0x5F,
+		jumpIfTrue: TextScript873D108_unk98_id,
+		jumpIfFalse: TextScript873D108_unk95_id,
 	]
 	ts_end
 
 	def_text_script TextScript873D108_unk93
-	ts_jump target=92
+	ts_jump target=TextScript873D108_unk92_id
 
 	def_text_script TextScript873D108_unk94
-	ts_jump target=90
+	ts_jump target=TextScript873D108_unk90_id
 
 	def_text_script TextScript873D108_unk95
-	ts_jump target=5
+	ts_jump target=TextScript873D108_unk5_id
 
 	def_text_script TextScript873D108_unk96
 
@@ -740,7 +740,7 @@ TextScript873D108::
 	ts_end
 
 	def_text_script TextScript873D108_unk98
-	ts_jump target=8
+	ts_jump target=TextScript873D108_unk8_id
 
 	def_text_script TextScript873D108_unk99
 	ts_end
@@ -758,28 +758,28 @@ TextScript873D108::
 	ts_wait frames=0xA
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=107
+	ts_jump target=TextScript873D108_unk107_id
 
 	def_text_script TextScript873D108_unk101
-	ts_jump target=100
+	ts_jump target=TextScript873D108_unk100_id
 
 	def_text_script TextScript873D108_unk102
-	ts_jump_buffer_set target=107
+	ts_jump_buffer_set target=TextScript873D108_unk107_id
 	ts_check_flag [
 		flag: 0x1708,
-		jumpIfTrue: 0x6C,
-		jumpIfFalse: 0x69,
+		jumpIfTrue: TextScript873D108_unk108_id,
+		jumpIfFalse: TextScript873D108_unk105_id,
 	]
 	ts_end
 
 	def_text_script TextScript873D108_unk103
-	ts_jump target=102
+	ts_jump target=TextScript873D108_unk102_id
 
 	def_text_script TextScript873D108_unk104
-	ts_jump target=100
+	ts_jump target=TextScript873D108_unk100_id
 
 	def_text_script TextScript873D108_unk105
-	ts_jump target=5
+	ts_jump target=TextScript873D108_unk5_id
 
 	def_text_script TextScript873D108_unk106
 
@@ -809,7 +809,7 @@ TextScript873D108::
 	ts_end
 
 	def_text_script TextScript873D108_unk108
-	ts_jump target=8
+	ts_jump target=TextScript873D108_unk8_id
 
 	def_text_script TextScript873D108_unk109
 	ts_end
@@ -827,28 +827,28 @@ TextScript873D108::
 	ts_wait frames=0xA
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=117
+	ts_jump target=TextScript873D108_unk117_id
 
 	def_text_script TextScript873D108_unk111
-	ts_jump target=110
+	ts_jump target=TextScript873D108_unk110_id
 
 	def_text_script TextScript873D108_unk112
-	ts_jump_buffer_set target=117
+	ts_jump_buffer_set target=TextScript873D108_unk117_id
 	ts_check_flag [
 		flag: 0x1708,
-		jumpIfTrue: 0x76,
-		jumpIfFalse: 0x73,
+		jumpIfTrue: TextScript873D108_unk118_id,
+		jumpIfFalse: TextScript873D108_unk115_id,
 	]
 	ts_end
 
 	def_text_script TextScript873D108_unk113
-	ts_jump target=112
+	ts_jump target=TextScript873D108_unk112_id
 
 	def_text_script TextScript873D108_unk114
-	ts_jump target=110
+	ts_jump target=TextScript873D108_unk110_id
 
 	def_text_script TextScript873D108_unk115
-	ts_jump target=5
+	ts_jump target=TextScript873D108_unk5_id
 
 	def_text_script TextScript873D108_unk116
 
@@ -878,25 +878,25 @@ TextScript873D108::
 	ts_end
 
 	def_text_script TextScript873D108_unk118
-	ts_jump target=8
+	ts_jump target=TextScript873D108_unk8_id
 
 	def_text_script TextScript873D108_unk119
 	ts_end
 
 	def_text_script TextScript873D108_unk120
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0xFF,
-		jumpIfSlashMan: 0xFF,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0xFF,
-		jumpIfTomahawkMan: 0xFF,
-		jumpIfTenguMan: 0xFF,
-		jumpIfGroundMan: 0xFF,
-		jumpIfDustMan: 0xFF,
-		jumpIfProtoMan: 0x79,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: TS_CONTINUE,
+		jumpIfSlashMan: TS_CONTINUE,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: TS_CONTINUE,
+		jumpIfTomahawkMan: TS_CONTINUE,
+		jumpIfTenguMan: TS_CONTINUE,
+		jumpIfGroundMan: TS_CONTINUE,
+		jumpIfDustMan: TS_CONTINUE,
+		jumpIfProtoMan: TextScript873D108_unk121_id,
 	]
 	ts_msg_open
 	ts_print_current_navi_ow

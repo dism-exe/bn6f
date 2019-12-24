@@ -30,7 +30,7 @@ CompText87AE954::
 	.string "sleeping in class!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87AE954_unk1_id
 
 	def_text_script CompText87AE954_unk1
 	ts_mugshot_show mugshot=0x0
@@ -38,7 +38,7 @@ CompText87AE954::
 	.string "Yes,Mr.Mach..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87AE954_unk2_id
 
 	def_text_script CompText87AE954_unk2
 	ts_mugshot_show mugshot=0x12
@@ -58,8 +58,8 @@ CompText87AE954::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x3,
-		jumpIfCybeastFalzar: 0x4,
+		jumpIfCybeastGregar: CompText87AE954_unk3_id,
+		jumpIfCybeastFalzar: CompText87AE954_unk4_id,
 	]
 
 	def_text_script CompText87AE954_unk3
@@ -88,8 +88,8 @@ CompText87AE954::
 
 	def_text_script CompText87AE954_unk6
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x19,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87AE954_unk25_id,
 	]
 	ts_mugshot_show mugshot=0x12
 	ts_msg_open
@@ -98,7 +98,7 @@ CompText87AE954::
 	.string "Nice to meet you!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87AE954_unk7_id
 
 	def_text_script CompText87AE954_unk7
 	ts_mugshot_show mugshot=0x1E
@@ -106,7 +106,7 @@ CompText87AE954::
 	.string "The name's Mr.Match."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87AE954_unk8_id
 
 	def_text_script CompText87AE954_unk8
 	ts_mugshot_show mugshot=0x12
@@ -115,7 +115,7 @@ CompText87AE954::
 	.string "Cool name!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87AE954_unk9_id
 
 	def_text_script CompText87AE954_unk9
 	ts_mugshot_show mugshot=0x0
@@ -128,8 +128,8 @@ CompText87AE954::
 
 	def_text_script CompText87AE954_unk10
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x1D,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87AE954_unk29_id,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -140,7 +140,7 @@ CompText87AE954::
 	.string "here!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87AE954_unk11_id
 
 	def_text_script CompText87AE954_unk11
 	ts_mugshot_show mugshot=0x1E
@@ -159,7 +159,7 @@ CompText87AE954::
 	.string "Lan Hikari!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87AE954_unk13_id
 
 	def_text_script CompText87AE954_unk13
 	ts_mugshot_show mugshot=0x12
@@ -171,8 +171,8 @@ CompText87AE954::
 
 	def_text_script CompText87AE954_unk14
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x24,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87AE954_unk36_id,
 	]
 	ts_mugshot_show mugshot=0x1E
 	ts_msg_open
@@ -188,7 +188,7 @@ CompText87AE954::
 	.string "little bro!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87AE954_unk15_id
 
 	def_text_script CompText87AE954_unk15
 	ts_mugshot_show mugshot=0x0
@@ -200,8 +200,8 @@ CompText87AE954::
 
 	def_text_script CompText87AE954_unk16
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x25,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87AE954_unk37_id,
 	]
 	ts_mugshot_show mugshot=0x1E
 	ts_msg_open
@@ -224,7 +224,7 @@ CompText87AE954::
 	.string "I'm in college now!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87AE954_unk17_id
 
 	def_text_script CompText87AE954_unk17
 	ts_mugshot_show mugshot=0x0
@@ -233,7 +233,7 @@ CompText87AE954::
 	.string "you researching?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87AE954_unk18_id
 
 	def_text_script CompText87AE954_unk18
 	ts_mugshot_show mugshot=0x1E
@@ -248,7 +248,7 @@ CompText87AE954::
 	.string "Navi use fire!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87AE954_unk19_id
 
 	def_text_script CompText87AE954_unk19
 	ts_mugshot_show mugshot=0x0
@@ -257,7 +257,7 @@ CompText87AE954::
 	.string "what you're up to..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87AE954_unk20_id
 
 	def_text_script CompText87AE954_unk20
 	ts_mugshot_show mugshot=0x1E
@@ -285,7 +285,7 @@ CompText87AE954::
 	.string "a pro handles fire!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87AE954_unk21_id
 
 	def_text_script CompText87AE954_unk21
 	ts_mugshot_show mugshot=0x12
@@ -317,8 +317,8 @@ CompText87AE954::
 
 	def_text_script CompText87AE954_unk23
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x2D,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87AE954_unk45_id,
 	]
 	ts_mugshot_show mugshot=0x1E
 	ts_msg_open
@@ -335,8 +335,8 @@ CompText87AE954::
 
 	def_text_script CompText87AE954_unk24
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x2E,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87AE954_unk46_id,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -354,7 +354,7 @@ CompText87AE954::
 	.string "class a try..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=51
+	ts_jump target=CompText87AE954_unk51_id
 
 	def_text_script CompText87AE954_unk25
 	ts_mugshot_show mugshot=0x12
@@ -364,7 +364,7 @@ CompText87AE954::
 	.string "Nice to meet you!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87AE954_unk26_id
 
 	def_text_script CompText87AE954_unk26
 	ts_mugshot_show mugshot=0x1F
@@ -374,7 +374,7 @@ CompText87AE954::
 	.string "be working with you!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87AE954_unk27_id
 
 	def_text_script CompText87AE954_unk27
 	ts_mugshot_show mugshot=0x12
@@ -382,7 +382,7 @@ CompText87AE954::
 	.string "Same here,Ms.Shuko!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87AE954_unk28_id
 
 	def_text_script CompText87AE954_unk28
 	ts_mugshot_show mugshot=0x0
@@ -401,7 +401,7 @@ CompText87AE954::
 	.string "see you here!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87AE954_unk30_id
 
 	def_text_script CompText87AE954_unk30
 	ts_mugshot_show mugshot=0x0
@@ -414,7 +414,7 @@ CompText87AE954::
 	.string "Shuko?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=CompText87AE954_unk31_id
 
 	def_text_script CompText87AE954_unk31
 	ts_mugshot_show mugshot=0x1F
@@ -438,7 +438,7 @@ CompText87AE954::
 	.string "uses water power."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=32
+	ts_jump target=CompText87AE954_unk32_id
 
 	def_text_script CompText87AE954_unk32
 	ts_mugshot_show mugshot=0x0
@@ -451,7 +451,7 @@ CompText87AE954::
 	.string "guessed..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=33
+	ts_jump target=CompText87AE954_unk33_id
 
 	def_text_script CompText87AE954_unk33
 	ts_mugshot_show mugshot=0x1F
@@ -464,7 +464,7 @@ CompText87AE954::
 	.string "pretty good,so..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=34
+	ts_jump target=CompText87AE954_unk34_id
 
 	def_text_script CompText87AE954_unk34
 	ts_mugshot_show mugshot=0x0
@@ -472,7 +472,7 @@ CompText87AE954::
 	.string "O-Oh,I see..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=35
+	ts_jump target=CompText87AE954_unk35_id
 
 	def_text_script CompText87AE954_unk35
 	ts_mugshot_show mugshot=0x12
@@ -502,7 +502,7 @@ CompText87AE954::
 	.string "at my class?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=38
+	ts_jump target=CompText87AE954_unk38_id
 
 	def_text_script CompText87AE954_unk38
 	ts_mugshot_show mugshot=0x0
@@ -510,7 +510,7 @@ CompText87AE954::
 	.string "You want me to!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=39
+	ts_jump target=CompText87AE954_unk39_id
 
 	def_text_script CompText87AE954_unk39
 	ts_mugshot_show mugshot=0x1F
@@ -520,7 +520,7 @@ CompText87AE954::
 	.string "good practice run!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87AE954_unk40_id
 
 	def_text_script CompText87AE954_unk40
 	ts_mugshot_show mugshot=0x0
@@ -531,7 +531,7 @@ CompText87AE954::
 	.string "... Uh,when?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=41
+	ts_jump target=CompText87AE954_unk41_id
 
 	def_text_script CompText87AE954_unk41
 	ts_mugshot_show mugshot=0x1F
@@ -541,7 +541,7 @@ CompText87AE954::
 	.string "this,Lan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=42
+	ts_jump target=CompText87AE954_unk42_id
 
 	def_text_script CompText87AE954_unk42
 	ts_mugshot_show mugshot=0x0
@@ -549,7 +549,7 @@ CompText87AE954::
 	.string "I'm free,but..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=43
+	ts_jump target=CompText87AE954_unk43_id
 
 	def_text_script CompText87AE954_unk43
 	ts_mugshot_show mugshot=0x1F
@@ -562,7 +562,7 @@ CompText87AE954::
 	.string "on by later,OK?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=44
+	ts_jump target=CompText87AE954_unk44_id
 
 	def_text_script CompText87AE954_unk44
 	ts_mugshot_show mugshot=0x12
@@ -608,7 +608,7 @@ CompText87AE954::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=47
+	ts_jump target=CompText87AE954_unk47_id
 
 	def_text_script CompText87AE954_unk47
 	ts_mugshot_show mugshot=0x1F
@@ -621,7 +621,7 @@ CompText87AE954::
 	.string "chair there!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=48
+	ts_jump target=CompText87AE954_unk48_id
 
 	def_text_script CompText87AE954_unk48
 	ts_mugshot_show mugshot=0x0
@@ -631,7 +631,7 @@ CompText87AE954::
 	.string "Shuko."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=49
+	ts_jump target=CompText87AE954_unk49_id
 
 	def_text_script CompText87AE954_unk49
 	ts_mugshot_show mugshot=0x1F
@@ -665,7 +665,7 @@ CompText87AE954::
 	.string "interesting!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=51
+	ts_jump target=CompText87AE954_unk51_id
 
 	def_text_script CompText87AE954_unk51
 	ts_mugshot_show mugshot=0x37
@@ -678,7 +678,7 @@ CompText87AE954::
 	.string "Ha,ha,ha!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=52
+	ts_jump target=CompText87AE954_unk52_id
 
 	def_text_script CompText87AE954_unk52
 	ts_mugshot_show mugshot=0x0

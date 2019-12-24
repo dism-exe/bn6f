@@ -13,10 +13,10 @@ CompText875E100::
 	ts_check_chapter [
 		lower: 0x32,
 		upper: 0x32,
-		jumpIfInRange: 0x6,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875E100_unk6_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_jump target=5
+	ts_jump target=CompText875E100_unk5_id
 
 	def_text_script CompText875E100_unk1
 
@@ -46,13 +46,13 @@ CompText875E100::
 	def_text_script CompText875E100_unk6
 	ts_check_flag [
 		flag: 0x816,
-		jumpIfTrue: 0x5,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875E100_unk5_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x86E,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x5,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText875E100_unk5_id,
 	]
 	ts_msg_open
 	.string "The security\n"

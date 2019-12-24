@@ -20,7 +20,7 @@ CompText87C6940::
 	.string "Is MegaMan OK?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87C6940_unk1_id
 
 	def_text_script CompText87C6940_unk1
 	ts_mugshot_show mugshot=0x0
@@ -29,7 +29,7 @@ CompText87C6940::
 	.string "happened,and..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87C6940_unk2_id
 
 	def_text_script CompText87C6940_unk2
 	ts_mugshot_show mugshot=0x14
@@ -53,7 +53,7 @@ CompText87C6940::
 	.string "permission..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C6940_unk3_id
 
 	def_text_script CompText87C6940_unk3
 	ts_mugshot_show mugshot=0x0
@@ -73,7 +73,7 @@ CompText87C6940::
 	.string "place!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C6940_unk4_id
 
 	def_text_script CompText87C6940_unk4
 	ts_mugshot_show mugshot=0x14
@@ -91,7 +91,7 @@ CompText87C6940::
 	.string "It's really easy."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C6940_unk5_id
 
 	def_text_script CompText87C6940_unk5
 	ts_mugshot_show mugshot=0x0
@@ -99,7 +99,7 @@ CompText87C6940::
 	.string "Really?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C6940_unk6_id
 
 	def_text_script CompText87C6940_unk6
 	ts_mugshot_show mugshot=0x14
@@ -134,7 +134,7 @@ CompText87C6940::
 	.string "Navi!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87C6940_unk9_id
 
 	def_text_script CompText87C6940_unk9
 	ts_mugshot_show mugshot=0x57
@@ -147,7 +147,7 @@ CompText87C6940::
 	.string "useless operator!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87C6940_unk10_id
 
 	def_text_script CompText87C6940_unk10
 	ts_mugshot_show mugshot=0x0
@@ -156,7 +156,7 @@ CompText87C6940::
 	.string "think you're doing?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87C6940_unk11_id
 
 	def_text_script CompText87C6940_unk11
 	ts_mugshot_show mugshot=0x14
@@ -183,7 +183,7 @@ CompText87C6940::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87C6940_unk13_id
 
 	def_text_script CompText87C6940_unk13
 	ts_mugshot_hide
@@ -252,7 +252,7 @@ CompText87C6940::
 	.string "M-Mick...!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87C6940_unk17_id
 
 	def_text_script CompText87C6940_unk17
 	ts_mugshot_show mugshot=0x14
@@ -285,7 +285,7 @@ CompText87C6940::
 	.string "Mr.Mach is nothing!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87C6940_unk18_id
 
 	def_text_script CompText87C6940_unk18
 	ts_mugshot_show mugshot=0x0

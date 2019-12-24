@@ -33,7 +33,7 @@ CompText87BC660::
 	.string "become one with you!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BC660_unk1_id
 
 	def_text_script CompText87BC660_unk1
 	ts_mugshot_hide
@@ -55,7 +55,7 @@ CompText87BC660::
 	]
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87BC660_unk2_id
 
 	def_text_script CompText87BC660_unk2
 	ts_mugshot_show mugshot=0x23
@@ -69,7 +69,7 @@ CompText87BC660::
 	.string "and never in anger."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87BC660_unk3_id
 
 	def_text_script CompText87BC660_unk3
 	ts_mugshot_show mugshot=0x0
@@ -79,7 +79,7 @@ CompText87BC660::
 	.string "Master Feng-Tian."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87BC660_unk4_id
 
 	def_text_script CompText87BC660_unk4
 	ts_mugshot_show mugshot=0x23
@@ -97,7 +97,7 @@ CompText87BC660::
 	.string "you have learned."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87BC660_unk5_id
 
 	def_text_script CompText87BC660_unk5
 	ts_mugshot_show mugshot=0x0
@@ -105,7 +105,7 @@ CompText87BC660::
 	.string "I won't! Thank you!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87BC660_unk6_id
 
 	def_text_script CompText87BC660_unk6
 	ts_mugshot_show mugshot=0x23
@@ -123,7 +123,7 @@ CompText87BC660::
 	.string "book of nature."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87BC660_unk7_id
 
 	def_text_script CompText87BC660_unk7
 	ts_mugshot_show mugshot=0x0

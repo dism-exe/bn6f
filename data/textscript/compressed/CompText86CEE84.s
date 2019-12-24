@@ -150,9 +150,9 @@ CompText86CEE84::
 	ts_check_item07 [
 		item: 0xB,
 		amount: 0x1,
-		jumpIfEqual: 0x1B,
-		jumpIfGreater: 0x1B,
-		jumpIfLess: 0x16,
+		jumpIfEqual: CompText86CEE84_unk27_id,
+		jumpIfGreater: CompText86CEE84_unk27_id,
+		jumpIfLess: CompText86CEE84_unk22_id,
 	]
 
 	def_text_script CompText86CEE84_unk11
@@ -175,7 +175,7 @@ CompText86CEE84::
 	.string "current TagChip."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText86CEE84_unk19_id
 
 	def_text_script CompText86CEE84_unk14
 	ts_msg_open_menu
@@ -198,18 +198,18 @@ CompText86CEE84::
 	def_text_script CompText86CEE84_unk16
 	ts_msg_open_menu_quick
 	ts_call_disable_mugshot_brighten
-	ts_jump target=19
+	ts_jump target=CompText86CEE84_unk19_id
 
 	def_text_script CompText86CEE84_unk17
 	ts_msg_open_menu_quick
 	ts_call_disable_mugshot_brighten
 	ts_mugshot_show mugshot=0x37
-	ts_jump target=21
+	ts_jump target=CompText86CEE84_unk21_id
 
 	def_text_script CompText86CEE84_unk18
 	ts_msg_open_menu
 	ts_mugshot_show mugshot=0x37
-	ts_jump target=19
+	ts_jump target=CompText86CEE84_unk19_id
 
 	def_text_script CompText86CEE84_unk19
 	ts_mugshot_show mugshot=0x37
@@ -220,7 +220,7 @@ CompText86CEE84::
 
 	def_text_script CompText86CEE84_unk20
 	ts_msg_open_menu
-	ts_jump target=21
+	ts_jump target=CompText86CEE84_unk21_id
 
 	def_text_script CompText86CEE84_unk21
 	ts_mugshot_show mugshot=0x37

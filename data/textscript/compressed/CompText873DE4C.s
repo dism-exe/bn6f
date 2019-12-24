@@ -1329,8 +1329,8 @@ CompText873DE4C::
 
 	def_text_script CompText873DE4C_unk63
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x90,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText873DE4C_unk144_id,
 	]
 	ts_position_text [
 		left: 0x39,

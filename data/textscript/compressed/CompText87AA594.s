@@ -40,7 +40,7 @@ CompText87AA594::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87AA594_unk2_id
 
 	def_text_script CompText87AA594_unk2
 	ts_mugshot_show mugshot=0x37
@@ -50,7 +50,7 @@ CompText87AA594::
 	.string "this!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87AA594_unk3_id
 
 	def_text_script CompText87AA594_unk3
 	ts_mugshot_show mugshot=0x0
@@ -59,7 +59,7 @@ CompText87AA594::
 	.string "jack out,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87AA594_unk4_id
 
 	def_text_script CompText87AA594_unk4
 	ts_mugshot_show mugshot=0x37
@@ -67,7 +67,7 @@ CompText87AA594::
 	.string "Roge..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87AA594_unk5_id
 
 	def_text_script CompText87AA594_unk5
 	ts_mugshot_hide
@@ -81,7 +81,7 @@ CompText87AA594::
 	ts_sound_enable_text_sfx
 	ts_control_unlock
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AA594_unk6_id
 
 	def_text_script CompText87AA594_unk6
 	ts_mugshot_show mugshot=0x37
@@ -90,7 +90,7 @@ CompText87AA594::
 	.string "autophone,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87AA594_unk7_id
 
 	def_text_script CompText87AA594_unk7
 	ts_mugshot_show mugshot=0xD
@@ -129,7 +129,7 @@ CompText87AA594::
 	.string "Hmm,hmm..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87AA594_unk8_id
 
 	def_text_script CompText87AA594_unk8
 	ts_mugshot_show mugshot=0x0
@@ -138,7 +138,7 @@ CompText87AA594::
 	.string "it,Mister."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87AA594_unk9_id
 
 	def_text_script CompText87AA594_unk9
 	ts_mugshot_show mugshot=0xD
@@ -161,7 +161,7 @@ CompText87AA594::
 	.string "to CentralArea3?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87AA594_unk10_id
 
 	def_text_script CompText87AA594_unk10
 	ts_mugshot_show mugshot=0x0
@@ -174,7 +174,7 @@ CompText87AA594::
 	.string "MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87AA594_unk11_id
 
 	def_text_script CompText87AA594_unk11
 	ts_mugshot_show mugshot=0x37

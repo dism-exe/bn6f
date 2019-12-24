@@ -21,7 +21,7 @@ CompText87BF4B8::
 	.string "let's hurry on!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87BF4B8_unk2_id
 
 	def_text_script CompText87BF4B8_unk1
 	ts_mugshot_show mugshot=0x37
@@ -33,23 +33,23 @@ CompText87BF4B8::
 	def_text_script CompText87BF4B8_unk2
 	ts_check_flag [
 		flag: 0xA1C,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87BF4B8_unk1_id,
 	]
 	ts_check_flag [
 		flag: 0xA1E,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87BF4B8_unk1_id,
 	]
 	ts_check_flag [
 		flag: 0xA20,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87BF4B8_unk1_id,
 	]
 	ts_check_flag [
 		flag: 0xA22,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87BF4B8_unk1_id,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open

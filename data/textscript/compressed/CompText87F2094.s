@@ -32,22 +32,22 @@ CompText87F2094::
 	def_text_script CompText87F2094_unk2
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x12,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87F2094_unk18_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x12,
-		jumpIfElecMan: 0x12,
-		jumpIfSlashMan: 0x12,
-		jumpIfEraseMan: 0x12,
-		jumpIfChargeMan: 0x12,
-		jumpIfSpoutMan: 0x12,
-		jumpIfTomahawkMan: 0x12,
-		jumpIfTenguMan: 0x12,
-		jumpIfGroundMan: 0x12,
-		jumpIfDustMan: 0x12,
-		jumpIfProtoMan: 0x12,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87F2094_unk18_id,
+		jumpIfElecMan: CompText87F2094_unk18_id,
+		jumpIfSlashMan: CompText87F2094_unk18_id,
+		jumpIfEraseMan: CompText87F2094_unk18_id,
+		jumpIfChargeMan: CompText87F2094_unk18_id,
+		jumpIfSpoutMan: CompText87F2094_unk18_id,
+		jumpIfTomahawkMan: CompText87F2094_unk18_id,
+		jumpIfTenguMan: CompText87F2094_unk18_id,
+		jumpIfGroundMan: CompText87F2094_unk18_id,
+		jumpIfDustMan: CompText87F2094_unk18_id,
+		jumpIfProtoMan: CompText87F2094_unk18_id,
 	]
 	ts_call_disable_mugshot_brighten
 	ts_mugshot_show mugshot=0x37
@@ -158,27 +158,27 @@ CompText87F2094::
 	ts_check_chapter [
 		lower: 0x30,
 		upper: 0x30,
-		jumpIfInRange: 0x14,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87F2094_unk20_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x14,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87F2094_unk20_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x14,
-		jumpIfElecMan: 0x14,
-		jumpIfSlashMan: 0x14,
-		jumpIfEraseMan: 0x14,
-		jumpIfChargeMan: 0x14,
-		jumpIfSpoutMan: 0x14,
-		jumpIfTomahawkMan: 0x14,
-		jumpIfTenguMan: 0x14,
-		jumpIfGroundMan: 0x14,
-		jumpIfDustMan: 0x14,
-		jumpIfProtoMan: 0x14,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87F2094_unk20_id,
+		jumpIfElecMan: CompText87F2094_unk20_id,
+		jumpIfSlashMan: CompText87F2094_unk20_id,
+		jumpIfEraseMan: CompText87F2094_unk20_id,
+		jumpIfChargeMan: CompText87F2094_unk20_id,
+		jumpIfSpoutMan: CompText87F2094_unk20_id,
+		jumpIfTomahawkMan: CompText87F2094_unk20_id,
+		jumpIfTenguMan: CompText87F2094_unk20_id,
+		jumpIfGroundMan: CompText87F2094_unk20_id,
+		jumpIfDustMan: CompText87F2094_unk20_id,
+		jumpIfProtoMan: CompText87F2094_unk20_id,
 	]
 	ts_call_disable_mugshot_brighten
 	ts_mugshot_show mugshot=0x37
@@ -203,27 +203,27 @@ CompText87F2094::
 	ts_check_chapter [
 		lower: 0x30,
 		upper: 0x30,
-		jumpIfInRange: 0x15,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87F2094_unk21_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x15,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87F2094_unk21_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x15,
-		jumpIfElecMan: 0x15,
-		jumpIfSlashMan: 0x15,
-		jumpIfEraseMan: 0x15,
-		jumpIfChargeMan: 0x15,
-		jumpIfSpoutMan: 0x15,
-		jumpIfTomahawkMan: 0x15,
-		jumpIfTenguMan: 0x15,
-		jumpIfGroundMan: 0x15,
-		jumpIfDustMan: 0x15,
-		jumpIfProtoMan: 0x15,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87F2094_unk21_id,
+		jumpIfElecMan: CompText87F2094_unk21_id,
+		jumpIfSlashMan: CompText87F2094_unk21_id,
+		jumpIfEraseMan: CompText87F2094_unk21_id,
+		jumpIfChargeMan: CompText87F2094_unk21_id,
+		jumpIfSpoutMan: CompText87F2094_unk21_id,
+		jumpIfTomahawkMan: CompText87F2094_unk21_id,
+		jumpIfTenguMan: CompText87F2094_unk21_id,
+		jumpIfGroundMan: CompText87F2094_unk21_id,
+		jumpIfDustMan: CompText87F2094_unk21_id,
+		jumpIfProtoMan: CompText87F2094_unk21_id,
 	]
 	ts_call_disable_mugshot_brighten
 	ts_mugshot_show mugshot=0x37
@@ -238,27 +238,27 @@ CompText87F2094::
 	ts_check_chapter [
 		lower: 0x30,
 		upper: 0x30,
-		jumpIfInRange: 0x16,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87F2094_unk22_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x16,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87F2094_unk22_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x16,
-		jumpIfElecMan: 0x16,
-		jumpIfSlashMan: 0x16,
-		jumpIfEraseMan: 0x16,
-		jumpIfChargeMan: 0x16,
-		jumpIfSpoutMan: 0x16,
-		jumpIfTomahawkMan: 0x16,
-		jumpIfTenguMan: 0x16,
-		jumpIfGroundMan: 0x16,
-		jumpIfDustMan: 0x16,
-		jumpIfProtoMan: 0x16,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87F2094_unk22_id,
+		jumpIfElecMan: CompText87F2094_unk22_id,
+		jumpIfSlashMan: CompText87F2094_unk22_id,
+		jumpIfEraseMan: CompText87F2094_unk22_id,
+		jumpIfChargeMan: CompText87F2094_unk22_id,
+		jumpIfSpoutMan: CompText87F2094_unk22_id,
+		jumpIfTomahawkMan: CompText87F2094_unk22_id,
+		jumpIfTenguMan: CompText87F2094_unk22_id,
+		jumpIfGroundMan: CompText87F2094_unk22_id,
+		jumpIfDustMan: CompText87F2094_unk22_id,
+		jumpIfProtoMan: CompText87F2094_unk22_id,
 	]
 	ts_call_disable_mugshot_brighten
 	ts_mugshot_show mugshot=0x37

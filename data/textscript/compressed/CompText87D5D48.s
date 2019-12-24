@@ -189,7 +189,7 @@ CompText87D5D48::
 	.string "go to junior high!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87D5D48_unk2_id
 
 	def_text_script CompText87D5D48_unk2
 	ts_mugshot_show mugshot=0x0
@@ -211,7 +211,7 @@ CompText87D5D48::
 	.string "visit... *sniffle*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87D5D48_unk3_id
 
 	def_text_script CompText87D5D48_unk3
 	ts_mugshot_show mugshot=0x13
@@ -236,7 +236,7 @@ CompText87D5D48::
 	.string "OK!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87D5D48_unk5_id
 
 	def_text_script CompText87D5D48_unk5
 	ts_mugshot_show mugshot=0x33
@@ -256,7 +256,7 @@ CompText87D5D48::
 	.string "I'm glad we're here!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87D5D48_unk6_id
 
 	def_text_script CompText87D5D48_unk6
 	ts_mugshot_show mugshot=0x14
@@ -278,7 +278,7 @@ CompText87D5D48::
 	.string "disappears on us..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87D5D48_unk7_id
 
 	def_text_script CompText87D5D48_unk7
 	ts_mugshot_hide
@@ -287,7 +287,7 @@ CompText87D5D48::
 	.string "OLD MAN!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87D5D48_unk8_id
 
 	def_text_script CompText87D5D48_unk8
 	ts_mugshot_show mugshot=0x14
@@ -304,7 +304,7 @@ CompText87D5D48::
 	.string "everyone!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87D5D48_unk10_id
 
 	def_text_script CompText87D5D48_unk10
 	ts_mugshot_show mugshot=0x14
@@ -327,7 +327,7 @@ CompText87D5D48::
 	.string "everyone worry."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87D5D48_unk12_id
 
 	def_text_script CompText87D5D48_unk12
 	ts_mugshot_show mugshot=0x14
@@ -336,7 +336,7 @@ CompText87D5D48::
 	.string "*sniffle*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D5D48_unk13_id
 
 	def_text_script CompText87D5D48_unk13
 	ts_mugshot_show mugshot=0x13
@@ -353,7 +353,7 @@ CompText87D5D48::
 	.string "graduated..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87D5D48_unk14_id
 
 	def_text_script CompText87D5D48_unk14
 	ts_mugshot_hide
@@ -404,7 +404,7 @@ CompText87D5D48::
 	.string "do well in life!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87D5D48_unk17_id
 
 	def_text_script CompText87D5D48_unk17
 	ts_mugshot_show mugshot=0x12
@@ -418,7 +418,7 @@ CompText87D5D48::
 	.string "yourselves!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87D5D48_unk18_id
 
 	def_text_script CompText87D5D48_unk18
 	ts_mugshot_show mugshot=0x13
@@ -432,7 +432,7 @@ CompText87D5D48::
 	.string "again!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87D5D48_unk19_id
 
 	def_text_script CompText87D5D48_unk19
 	ts_mugshot_hide
@@ -448,7 +448,7 @@ CompText87D5D48::
 	.string "to now?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87D5D48_unk21_id
 
 	def_text_script CompText87D5D48_unk21
 	ts_mugshot_show mugshot=0x0
@@ -456,7 +456,7 @@ CompText87D5D48::
 	.string "Hmmm..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87D5D48_unk22_id
 
 	def_text_script CompText87D5D48_unk22
 	ts_mugshot_show mugshot=0x13
@@ -465,7 +465,7 @@ CompText87D5D48::
 	.string "word with you?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87D5D48_unk23_id
 
 	def_text_script CompText87D5D48_unk23
 	ts_mugshot_show mugshot=0x0
@@ -484,7 +484,7 @@ CompText87D5D48::
 	.string "Yes,Ms.Mari?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87D5D48_unk25_id
 
 	def_text_script CompText87D5D48_unk25
 	ts_mugshot_show mugshot=0x13
@@ -498,7 +498,7 @@ CompText87D5D48::
 	.string "large box."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87D5D48_unk26_id
 
 	def_text_script CompText87D5D48_unk26
 	ts_mugshot_show mugshot=0x0
@@ -507,7 +507,7 @@ CompText87D5D48::
 	.string "look like,Ms.Mari!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D5D48_unk27_id
 
 	def_text_script CompText87D5D48_unk27
 	ts_mugshot_show mugshot=0x13
@@ -517,7 +517,7 @@ CompText87D5D48::
 	.string "was sort of quiet..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D5D48_unk28_id
 
 	def_text_script CompText87D5D48_unk28
 	ts_mugshot_show mugshot=0x0
@@ -529,7 +529,7 @@ CompText87D5D48::
 	.string "Ms.Mari!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=29
+	ts_jump target=CompText87D5D48_unk29_id
 
 	def_text_script CompText87D5D48_unk29
 	ts_mugshot_show mugshot=0x13
@@ -538,7 +538,7 @@ CompText87D5D48::
 	.string "Room..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87D5D48_unk30_id
 
 	def_text_script CompText87D5D48_unk30
 	ts_mugshot_show mugshot=0x0

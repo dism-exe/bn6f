@@ -24,7 +24,7 @@ CompText87D2ABC::
 	.string "deleted!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D2ABC_unk1_id
 
 	def_text_script CompText87D2ABC_unk1
 	ts_mugshot_show mugshot=0x37
@@ -32,7 +32,7 @@ CompText87D2ABC::
 	.string "Lan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87D2ABC_unk2_id
 
 	def_text_script CompText87D2ABC_unk2
 	ts_mugshot_show mugshot=0x0
@@ -44,7 +44,7 @@ CompText87D2ABC::
 	.string "Battle routine,set!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87D2ABC_unk3_id
 
 	def_text_script CompText87D2ABC_unk3
 	ts_mugshot_show mugshot=0x37
@@ -52,7 +52,7 @@ CompText87D2ABC::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87D2ABC_unk4_id
 
 	def_text_script CompText87D2ABC_unk4
 	ts_mugshot_show mugshot=0x54

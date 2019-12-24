@@ -16,7 +16,7 @@ CompText87A8318::
 	.string "MegaMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87A8318_unk1_id
 
 	def_text_script CompText87A8318_unk1
 	ts_mugshot_show mugshot=0x37
@@ -25,7 +25,7 @@ CompText87A8318::
 	.string "It's really hot..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A8318_unk3_id
 
 	def_text_script CompText87A8318_unk2
 
@@ -47,7 +47,7 @@ CompText87A8318::
 	.string "Waaah!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A8318_unk5_id
 
 	def_text_script CompText87A8318_unk5
 	ts_mugshot_show mugshot=0x0
@@ -58,7 +58,7 @@ CompText87A8318::
 	.string "Is it BlastMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A8318_unk6_id
 
 	def_text_script CompText87A8318_unk6
 	ts_mugshot_show mugshot=0x37
@@ -75,7 +75,7 @@ CompText87A8318::
 	.string "Fire Extinguisher!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A8318_unk7_id
 
 	def_text_script CompText87A8318_unk7
 	ts_mugshot_show mugshot=0x0

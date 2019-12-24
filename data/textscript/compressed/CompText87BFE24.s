@@ -67,7 +67,7 @@ CompText87BFE24::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_sound_play_bgm track=0x63
-	ts_jump target=5
+	ts_jump target=CompText87BFE24_unk5_id
 
 	def_text_script CompText87BFE24_unk5
 	ts_mugshot_show mugshot=0x37
@@ -75,7 +75,7 @@ CompText87BFE24::
 	.string "Alright!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87BFE24_unk6_id
 
 	def_text_script CompText87BFE24_unk6
 	ts_mugshot_show mugshot=0x0
@@ -91,7 +91,7 @@ CompText87BFE24::
 	.string "See,nothing to it!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87BFE24_unk8_id
 
 	def_text_script CompText87BFE24_unk8
 	ts_mugshot_show mugshot=0x37
@@ -101,7 +101,7 @@ CompText87BFE24::
 	.string "earlier!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87BFE24_unk9_id
 
 	def_text_script CompText87BFE24_unk9
 	ts_mugshot_show mugshot=0x0
@@ -111,7 +111,7 @@ CompText87BFE24::
 	.string "floating up here."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87BFE24_unk10_id
 
 	def_text_script CompText87BFE24_unk10
 	ts_mugshot_hide
@@ -125,7 +125,7 @@ CompText87BFE24::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87BFE24_unk11_id
 
 	def_text_script CompText87BFE24_unk11
 	ts_mugshot_show mugshot=0x0
@@ -133,7 +133,7 @@ CompText87BFE24::
 	.string "... Huh!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87BFE24_unk12_id
 
 	def_text_script CompText87BFE24_unk12
 	ts_mugshot_show mugshot=0x37
@@ -142,7 +142,7 @@ CompText87BFE24::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_sound_play_bgm track=0xC
-	ts_jump target=13
+	ts_jump target=CompText87BFE24_unk13_id
 
 	def_text_script CompText87BFE24_unk13
 	ts_mugshot_hide
@@ -156,7 +156,7 @@ CompText87BFE24::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87BFE24_unk14_id
 
 	def_text_script CompText87BFE24_unk14
 	ts_mugshot_show mugshot=0x0
@@ -176,7 +176,7 @@ CompText87BFE24::
 	.string "catch you!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87BFE24_unk16_id
 
 	def_text_script CompText87BFE24_unk16
 	ts_mugshot_show mugshot=0x0

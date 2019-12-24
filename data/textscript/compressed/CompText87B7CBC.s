@@ -33,7 +33,7 @@ CompText87B7CBC::
 	.string "school?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B7CBC_unk3_id
 
 	def_text_script CompText87B7CBC_unk3
 	ts_mugshot_show mugshot=0x5
@@ -42,7 +42,7 @@ CompText87B7CBC::
 	.string "something there..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B7CBC_unk4_id
 
 	def_text_script CompText87B7CBC_unk4
 	ts_mugshot_show mugshot=0x0
@@ -55,7 +55,7 @@ CompText87B7CBC::
 	.string "Dad!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B7CBC_unk5_id
 
 	def_text_script CompText87B7CBC_unk5
 	ts_mugshot_show mugshot=0x5

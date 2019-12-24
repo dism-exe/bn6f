@@ -52,8 +52,8 @@ CompText87709CC::
 	def_text_script CompText87709CC_unk10
 	ts_check_flag [
 		flag: 0xA10,
-		jumpIfTrue: 0xF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87709CC_unk15_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xD
 	ts_msg_open
@@ -70,8 +70,8 @@ CompText87709CC::
 	def_text_script CompText87709CC_unk11
 	ts_check_flag [
 		flag: 0xA10,
-		jumpIfTrue: 0x10,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87709CC_unk16_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xE
 	ts_msg_open
@@ -200,13 +200,13 @@ CompText87709CC::
 	def_text_script CompText87709CC_unk45
 	ts_check_flag [
 		flag: 0xC24,
-		jumpIfTrue: 0x2F,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87709CC_unk47_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC22,
-		jumpIfTrue: 0x2E,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87709CC_unk46_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x16
 	ts_msg_open

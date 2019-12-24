@@ -35,8 +35,8 @@ CompText8793DCC::
 	ts_check_chapter [
 		lower: 0x42,
 		upper: 0x42,
-		jumpIfInRange: 0x19,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8793DCC_unk25_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3F
 	ts_msg_open
@@ -75,13 +75,13 @@ CompText8793DCC::
 	def_text_script CompText8793DCC_unk10
 	ts_check_flag [
 		flag: 0xA69,
-		jumpIfTrue: 0xE,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8793DCC_unk14_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xA65,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8793DCC_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xA65
 	ts_mugshot_show mugshot=0x42
@@ -252,13 +252,13 @@ CompText8793DCC::
 	def_text_script CompText8793DCC_unk16
 	ts_check_flag [
 		flag: 0xA6A,
-		jumpIfTrue: 0x14,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8793DCC_unk20_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xA66,
-		jumpIfTrue: 0x11,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8793DCC_unk17_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xA66
 	ts_mugshot_show mugshot=0x42
@@ -442,28 +442,28 @@ CompText8793DCC::
 	ts_check_chapter [
 		lower: 0x42,
 		upper: 0x42,
-		jumpIfInRange: 0x1A,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8793DCC_unk26_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xA67,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x17,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8793DCC_unk23_id,
 	]
 	ts_check_flag [
 		flag: 0xA68,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x17,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8793DCC_unk23_id,
 	]
 	ts_check_flag [
 		flag: 0xA69,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x17,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8793DCC_unk23_id,
 	]
 	ts_check_flag [
 		flag: 0xA6A,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x17,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8793DCC_unk23_id,
 	]
 	ts_flag_set flag=0xA98
 	ts_flag_set flag=0x1715
@@ -609,18 +609,18 @@ CompText8793DCC::
 	def_text_script CompText8793DCC_unk45
 	ts_check_flag [
 		flag: 0xC20,
-		jumpIfTrue: 0x3C,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8793DCC_unk60_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC1E,
-		jumpIfTrue: 0x37,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8793DCC_unk55_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC1A,
-		jumpIfTrue: 0x32,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8793DCC_unk50_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open

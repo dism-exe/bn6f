@@ -15,22 +15,22 @@ CompText87D8FA8::
 	.string "Aaaah...!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D8FA8_unk1_id
 
 	def_text_script CompText87D8FA8_unk1
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x2,
-		jumpIfElecMan: 0x2,
-		jumpIfSlashMan: 0x2,
-		jumpIfEraseMan: 0x2,
-		jumpIfChargeMan: 0x2,
-		jumpIfSpoutMan: 0x2,
-		jumpIfTomahawkMan: 0x2,
-		jumpIfTenguMan: 0x2,
-		jumpIfGroundMan: 0x2,
-		jumpIfDustMan: 0x2,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87D8FA8_unk2_id,
+		jumpIfElecMan: CompText87D8FA8_unk2_id,
+		jumpIfSlashMan: CompText87D8FA8_unk2_id,
+		jumpIfEraseMan: CompText87D8FA8_unk2_id,
+		jumpIfChargeMan: CompText87D8FA8_unk2_id,
+		jumpIfSpoutMan: CompText87D8FA8_unk2_id,
+		jumpIfTomahawkMan: CompText87D8FA8_unk2_id,
+		jumpIfTenguMan: CompText87D8FA8_unk2_id,
+		jumpIfGroundMan: CompText87D8FA8_unk2_id,
+		jumpIfDustMan: CompText87D8FA8_unk2_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x5B
 	ts_msg_open
@@ -75,22 +75,22 @@ CompText87D8FA8::
 	.string "teamwork!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87D8FA8_unk4_id
 
 	def_text_script CompText87D8FA8_unk4
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x5,
-		jumpIfElecMan: 0x6,
-		jumpIfSlashMan: 0x7,
-		jumpIfEraseMan: 0x8,
-		jumpIfChargeMan: 0x9,
-		jumpIfSpoutMan: 0xA,
-		jumpIfTomahawkMan: 0xB,
-		jumpIfTenguMan: 0xC,
-		jumpIfGroundMan: 0xD,
-		jumpIfDustMan: 0xE,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87D8FA8_unk5_id,
+		jumpIfElecMan: CompText87D8FA8_unk6_id,
+		jumpIfSlashMan: CompText87D8FA8_unk7_id,
+		jumpIfEraseMan: CompText87D8FA8_unk8_id,
+		jumpIfChargeMan: CompText87D8FA8_unk9_id,
+		jumpIfSpoutMan: CompText87D8FA8_unk10_id,
+		jumpIfTomahawkMan: CompText87D8FA8_unk11_id,
+		jumpIfTenguMan: CompText87D8FA8_unk12_id,
+		jumpIfGroundMan: CompText87D8FA8_unk13_id,
+		jumpIfDustMan: CompText87D8FA8_unk14_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -104,7 +104,7 @@ CompText87D8FA8::
 	.string "Right!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87D8FA8_unk15_id
 
 	def_text_script CompText87D8FA8_unk5
 	ts_mugshot_show mugshot=0x47
@@ -121,7 +121,7 @@ CompText87D8FA8::
 	.string "scared of anything!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87D8FA8_unk15_id
 
 	def_text_script CompText87D8FA8_unk6
 	ts_mugshot_show mugshot=0x49
@@ -136,7 +136,7 @@ CompText87D8FA8::
 	.string "potential yet."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87D8FA8_unk15_id
 
 	def_text_script CompText87D8FA8_unk7
 	ts_mugshot_show mugshot=0x4B
@@ -151,7 +151,7 @@ CompText87D8FA8::
 	.string "unstoppable!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87D8FA8_unk15_id
 
 	def_text_script CompText87D8FA8_unk8
 	ts_mugshot_show mugshot=0x50
@@ -173,7 +173,7 @@ CompText87D8FA8::
 	.string "delete any Navi!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87D8FA8_unk15_id
 
 	def_text_script CompText87D8FA8_unk9
 	ts_mugshot_show mugshot=0x4F
@@ -186,7 +186,7 @@ CompText87D8FA8::
 	.string "to get smoked!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87D8FA8_unk15_id
 
 	def_text_script CompText87D8FA8_unk10
 	ts_mugshot_show mugshot=0x48
@@ -199,7 +199,7 @@ CompText87D8FA8::
 	.string "me stronger,drip!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87D8FA8_unk15_id
 
 	def_text_script CompText87D8FA8_unk11
 	ts_mugshot_show mugshot=0x4A
@@ -214,7 +214,7 @@ CompText87D8FA8::
 	.string "stronger!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87D8FA8_unk15_id
 
 	def_text_script CompText87D8FA8_unk12
 	ts_mugshot_show mugshot=0x4C
@@ -232,7 +232,7 @@ CompText87D8FA8::
 	.string "Master Feng-Tian."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87D8FA8_unk15_id
 
 	def_text_script CompText87D8FA8_unk13
 	ts_mugshot_show mugshot=0x4D
@@ -247,7 +247,7 @@ CompText87D8FA8::
 	.string "a pretty good team!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87D8FA8_unk15_id
 
 	def_text_script CompText87D8FA8_unk14
 	ts_mugshot_show mugshot=0x4E
@@ -261,7 +261,7 @@ CompText87D8FA8::
 	.string "operator for me!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87D8FA8_unk15_id
 
 	def_text_script CompText87D8FA8_unk15
 	ts_mugshot_show mugshot=0x0
@@ -277,24 +277,24 @@ CompText87D8FA8::
 	.string "Time to head back!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87D8FA8_unk17_id
 
 	def_text_script CompText87D8FA8_unk16
 
 	def_text_script CompText87D8FA8_unk17
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x12,
-		jumpIfElecMan: 0x13,
-		jumpIfSlashMan: 0x14,
-		jumpIfEraseMan: 0x15,
-		jumpIfChargeMan: 0x16,
-		jumpIfSpoutMan: 0x17,
-		jumpIfTomahawkMan: 0x18,
-		jumpIfTenguMan: 0x19,
-		jumpIfGroundMan: 0x1A,
-		jumpIfDustMan: 0x1B,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87D8FA8_unk18_id,
+		jumpIfElecMan: CompText87D8FA8_unk19_id,
+		jumpIfSlashMan: CompText87D8FA8_unk20_id,
+		jumpIfEraseMan: CompText87D8FA8_unk21_id,
+		jumpIfChargeMan: CompText87D8FA8_unk22_id,
+		jumpIfSpoutMan: CompText87D8FA8_unk23_id,
+		jumpIfTomahawkMan: CompText87D8FA8_unk24_id,
+		jumpIfTenguMan: CompText87D8FA8_unk25_id,
+		jumpIfGroundMan: CompText87D8FA8_unk26_id,
+		jumpIfDustMan: CompText87D8FA8_unk27_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

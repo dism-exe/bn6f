@@ -18,13 +18,13 @@ CompText875DD4C::
 	ts_end
 
 	def_text_script CompText875DD4C_unk1
-	ts_jump target=0
+	ts_jump target=CompText875DD4C_unk0_id
 
 	def_text_script CompText875DD4C_unk2
-	ts_jump target=0
+	ts_jump target=CompText875DD4C_unk0_id
 
 	def_text_script CompText875DD4C_unk3
-	ts_jump target=0
+	ts_jump target=CompText875DD4C_unk0_id
 
 	def_text_script CompText875DD4C_unk4
 	ts_msg_open

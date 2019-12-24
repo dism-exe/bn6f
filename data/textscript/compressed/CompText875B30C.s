@@ -45,8 +45,8 @@ CompText875B30C::
 	ts_key_wait any=0x0
 	ts_check_flag [
 		flag: 0x185,
-		jumpIfTrue: 0x6,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875B30C_unk6_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	.string "There's something\n"

@@ -13,14 +13,14 @@ CompText874713C::
 	ts_check_chapter [
 		lower: 0x50,
 		upper: 0x53,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText874713C_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x43,
 		upper: 0x46,
-		jumpIfInRange: 0xF,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText874713C_unk15_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "Dummy text"
@@ -65,8 +65,8 @@ CompText874713C::
 	def_text_script CompText874713C_unk15
 	ts_check_flag [
 		flag: 0xA2E,
-		jumpIfTrue: 0x1B,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText874713C_unk27_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_end
 

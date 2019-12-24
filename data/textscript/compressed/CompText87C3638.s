@@ -32,7 +32,7 @@ CompText87C3638::
 	ts_sound_enable_text_sfx
 	ts_control_unlock
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87C3638_unk2_id
 
 	def_text_script CompText87C3638_unk2
 	ts_mugshot_show mugshot=0x32
@@ -107,7 +107,7 @@ CompText87C3638::
 	.string "my excitement?..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C3638_unk4_id
 
 	def_text_script CompText87C3638_unk4
 	ts_mugshot_hide

@@ -17,7 +17,7 @@ CompText87B6094::
 	.string "walk in now..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B6094_unk1_id
 
 	def_text_script CompText87B6094_unk1
 	ts_mugshot_show mugshot=0x37
@@ -38,7 +38,7 @@ CompText87B6094::
 	.string "So it's probably OK!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B6094_unk2_id
 
 	def_text_script CompText87B6094_unk2
 	ts_mugshot_show mugshot=0x0
@@ -75,7 +75,7 @@ CompText87B6094::
 	.string "looks like I'm in!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B6094_unk5_id
 
 	def_text_script CompText87B6094_unk5
 	ts_mugshot_show mugshot=0xF
@@ -99,7 +99,7 @@ CompText87B6094::
 	.string "with no problems."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B6094_unk8_id
 
 	def_text_script CompText87B6094_unk8
 	ts_mugshot_show mugshot=0x0
@@ -110,7 +110,7 @@ CompText87B6094::
 	.string "By the way..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B6094_unk9_id
 
 	def_text_script CompText87B6094_unk9
 	ts_mugshot_show mugshot=0xF
@@ -128,7 +128,7 @@ CompText87B6094::
 	.string "Prosecutor Ito."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B6094_unk10_id
 
 	def_text_script CompText87B6094_unk10
 	ts_mugshot_show mugshot=0x2D
@@ -141,7 +141,7 @@ CompText87B6094::
 	.string "I'm Prosecutor Ito."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87B6094_unk11_id
 
 	def_text_script CompText87B6094_unk11
 	ts_mugshot_show mugshot=0x0
@@ -151,7 +151,7 @@ CompText87B6094::
 	.string "a prosecutor...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87B6094_unk12_id
 
 	def_text_script CompText87B6094_unk12
 	ts_mugshot_show mugshot=0x2D
@@ -178,7 +178,7 @@ CompText87B6094::
 	.string "part of my job."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87B6094_unk13_id
 
 	def_text_script CompText87B6094_unk13
 	ts_mugshot_show mugshot=0x0
@@ -192,7 +192,7 @@ CompText87B6094::
 	.string "Nice to meet you."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87B6094_unk14_id
 
 	def_text_script CompText87B6094_unk14
 	ts_mugshot_show mugshot=0x2D
@@ -201,7 +201,7 @@ CompText87B6094::
 	.string "That's a nice name."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87B6094_unk15_id
 
 	def_text_script CompText87B6094_unk15
 	ts_mugshot_show mugshot=0x0
@@ -209,7 +209,7 @@ CompText87B6094::
 	.string "R-Really?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87B6094_unk16_id
 
 	def_text_script CompText87B6094_unk16
 	ts_mugshot_show mugshot=0x2D
@@ -235,7 +235,7 @@ CompText87B6094::
 	.string "or am I wrong?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87B6094_unk17_id
 
 	def_text_script CompText87B6094_unk17
 	ts_mugshot_show mugshot=0x0
@@ -244,7 +244,7 @@ CompText87B6094::
 	.string "put it like that..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87B6094_unk18_id
 
 	def_text_script CompText87B6094_unk18
 	ts_mugshot_show mugshot=0x2D
@@ -264,7 +264,7 @@ CompText87B6094::
 	.string "Hikari,right?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87B6094_unk19_id
 
 	def_text_script CompText87B6094_unk19
 	ts_mugshot_show mugshot=0xF
@@ -273,7 +273,7 @@ CompText87B6094::
 	.string "I didn't know that!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87B6094_unk20_id
 
 	def_text_script CompText87B6094_unk20
 	ts_mugshot_show mugshot=0x0
@@ -282,7 +282,7 @@ CompText87B6094::
 	.string "that?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87B6094_unk21_id
 
 	def_text_script CompText87B6094_unk21
 	ts_mugshot_show mugshot=0x2D
@@ -307,7 +307,7 @@ CompText87B6094::
 	.string "just a little bit."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87B6094_unk22_id
 
 	def_text_script CompText87B6094_unk22
 	ts_mugshot_show mugshot=0x0
@@ -316,7 +316,7 @@ CompText87B6094::
 	.string "him that!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87B6094_unk23_id
 
 	def_text_script CompText87B6094_unk23
 	ts_mugshot_show mugshot=0x2D
@@ -379,7 +379,7 @@ CompText87B6094::
 	.string "huge doors!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87B6094_unk27_id
 
 	def_text_script CompText87B6094_unk27
 	ts_mugshot_show mugshot=0x0

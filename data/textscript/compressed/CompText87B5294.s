@@ -21,7 +21,7 @@ CompText87B5294::
 	.string "do now?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B5294_unk1_id
 
 	def_text_script CompText87B5294_unk1
 	ts_mugshot_show mugshot=0x37
@@ -31,7 +31,7 @@ CompText87B5294::
 	.string "\"HOMEWORK\"!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B5294_unk2_id
 
 	def_text_script CompText87B5294_unk2
 	ts_mugshot_show mugshot=0x0
@@ -39,7 +39,7 @@ CompText87B5294::
 	.string "Ouch..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B5294_unk3_id
 
 	def_text_script CompText87B5294_unk3
 	ts_mugshot_show mugshot=0x37
@@ -51,7 +51,7 @@ CompText87B5294::
 	.string "it'd be over sooner!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B5294_unk4_id
 
 	def_text_script CompText87B5294_unk4
 	ts_mugshot_show mugshot=0x0
@@ -59,7 +59,7 @@ CompText87B5294::
 	.string "Blah..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B5294_unk5_id
 
 	def_text_script CompText87B5294_unk5
 	ts_mugshot_hide
@@ -77,7 +77,7 @@ CompText87B5294::
 	.string "Ah,you've got mail!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B5294_unk6_id
 
 	def_text_script CompText87B5294_unk6
 	ts_mugshot_show mugshot=0x0
@@ -85,7 +85,7 @@ CompText87B5294::
 	.string "Thank goodness!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B5294_unk7_id
 
 	def_text_script CompText87B5294_unk7
 	ts_mugshot_show mugshot=0x37
@@ -94,7 +94,7 @@ CompText87B5294::
 	.string "say something?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B5294_unk8_id
 
 	def_text_script CompText87B5294_unk8
 	ts_mugshot_show mugshot=0x0
@@ -107,7 +107,7 @@ CompText87B5294::
 	.string "my mail!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B5294_unk9_id
 
 	def_text_script CompText87B5294_unk9
 	ts_mugshot_show mugshot=0x37
@@ -169,7 +169,7 @@ CompText87B5294::
 	.string " short notice.\""
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B5294_unk10_id
 
 	def_text_script CompText87B5294_unk10
 	ts_mugshot_show mugshot=0x0
@@ -187,7 +187,7 @@ CompText87B5294::
 	.string "am I...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87B5294_unk11_id
 
 	def_text_script CompText87B5294_unk11
 	ts_mugshot_show mugshot=0x37
@@ -211,7 +211,7 @@ CompText87B5294::
 	.string "the LevBus."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87B5294_unk12_id
 
 	def_text_script CompText87B5294_unk12
 	ts_mugshot_show mugshot=0x0

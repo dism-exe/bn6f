@@ -11,8 +11,8 @@ CompText87B1B8C::
 
 	def_text_script CompText87B1B8C_unk0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x3,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87B1B8C_unk3_id,
 	]
 	ts_mugshot_show mugshot=0x47
 	ts_msg_open
@@ -36,7 +36,7 @@ CompText87B1B8C::
 	.string "Water!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B1B8C_unk1_id
 
 	def_text_script CompText87B1B8C_unk1
 	ts_mugshot_hide
@@ -63,7 +63,7 @@ CompText87B1B8C::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B1B8C_unk2_id
 
 	def_text_script CompText87B1B8C_unk2
 	ts_mugshot_show mugshot=0x47
@@ -76,7 +76,7 @@ CompText87B1B8C::
 	.string "on outta here!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B1B8C_unk6_id
 
 	def_text_script CompText87B1B8C_unk3
 	ts_mugshot_show mugshot=0x48
@@ -110,7 +110,7 @@ CompText87B1B8C::
 	.string "drip!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B1B8C_unk4_id
 
 	def_text_script CompText87B1B8C_unk4
 	ts_mugshot_hide
@@ -137,7 +137,7 @@ CompText87B1B8C::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B1B8C_unk5_id
 
 	def_text_script CompText87B1B8C_unk5
 	ts_mugshot_show mugshot=0x48
@@ -147,7 +147,7 @@ CompText87B1B8C::
 	.string "MegaMan,drip!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B1B8C_unk6_id
 
 	def_text_script CompText87B1B8C_unk6
 	ts_mugshot_hide
@@ -158,8 +158,8 @@ CompText87B1B8C::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x7,
-		jumpIfCybeastFalzar: 0x8,
+		jumpIfCybeastGregar: CompText87B1B8C_unk7_id,
+		jumpIfCybeastFalzar: CompText87B1B8C_unk8_id,
 	]
 
 	def_text_script CompText87B1B8C_unk7
@@ -221,8 +221,8 @@ CompText87B1B8C::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xA,
-		jumpIfCybeastFalzar: 0xB,
+		jumpIfCybeastGregar: CompText87B1B8C_unk10_id,
+		jumpIfCybeastFalzar: CompText87B1B8C_unk11_id,
 	]
 
 	def_text_script CompText87B1B8C_unk10

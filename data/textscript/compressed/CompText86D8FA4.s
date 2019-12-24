@@ -11,8 +11,8 @@ CompText86D8FA4::
 
 	def_text_script CompText86D8FA4_unk0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x1,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText86D8FA4_unk1_id,
 	]
 	ts_position_text [
 		left: 0x33,
@@ -103,8 +103,8 @@ CompText86D8FA4::
 
 	def_text_script CompText86D8FA4_unk2
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x3,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText86D8FA4_unk3_id,
 	]
 	ts_position_text [
 		left: 0x33,

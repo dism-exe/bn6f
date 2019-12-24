@@ -42,7 +42,7 @@ CompText87CF9B8::
 	.string "together..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87CF9B8_unk4_id
 
 	def_text_script CompText87CF9B8_unk4
 	ts_mugshot_hide
@@ -50,7 +50,7 @@ CompText87CF9B8::
 	.string "WAAAAAAKE UP!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87CF9B8_unk5_id
 
 	def_text_script CompText87CF9B8_unk5
 	ts_mugshot_show mugshot=0x0
@@ -67,7 +67,7 @@ CompText87CF9B8::
 	.string "Yai!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87CF9B8_unk7_id
 
 	def_text_script CompText87CF9B8_unk7
 	ts_mugshot_show mugshot=0x2
@@ -77,7 +77,7 @@ CompText87CF9B8::
 	.string "by to bust your z's!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87CF9B8_unk8_id
 
 	def_text_script CompText87CF9B8_unk8
 	ts_mugshot_show mugshot=0x1
@@ -86,7 +86,7 @@ CompText87CF9B8::
 	.string "Did we scare you?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87CF9B8_unk9_id
 
 	def_text_script CompText87CF9B8_unk9
 	ts_mugshot_show mugshot=0x3
@@ -121,7 +121,7 @@ CompText87CF9B8::
 	.string "the park now."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87CF9B8_unk12_id
 
 	def_text_script CompText87CF9B8_unk12
 	ts_mugshot_show mugshot=0x37

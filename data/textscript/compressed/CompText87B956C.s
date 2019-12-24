@@ -23,7 +23,7 @@ CompText87B956C::
 	.string "Ah! It did!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B956C_unk2_id
 
 	def_text_script CompText87B956C_unk2
 	ts_mugshot_show mugshot=0x37
@@ -33,7 +33,7 @@ CompText87B956C::
 	.string "into the classroom."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B956C_unk3_id
 
 	def_text_script CompText87B956C_unk3
 	ts_mugshot_show mugshot=0x0
@@ -55,7 +55,7 @@ CompText87B956C::
 	.string "There's Dad!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B956C_unk5_id
 
 	def_text_script CompText87B956C_unk5
 	ts_mugshot_show mugshot=0x37
@@ -68,7 +68,7 @@ CompText87B956C::
 	.string "innocent!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B956C_unk6_id
 
 	def_text_script CompText87B956C_unk6
 	ts_mugshot_show mugshot=0x0
@@ -81,7 +81,7 @@ CompText87B956C::
 	.string "this data!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B956C_unk7_id
 
 	def_text_script CompText87B956C_unk7
 	ts_mugshot_show mugshot=0x37
@@ -89,7 +89,7 @@ CompText87B956C::
 	.string "Wait,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B956C_unk8_id
 
 	def_text_script CompText87B956C_unk8
 	ts_mugshot_show mugshot=0x0
@@ -98,7 +98,7 @@ CompText87B956C::
 	.string "gotta hurry!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B956C_unk9_id
 
 	def_text_script CompText87B956C_unk9
 	ts_mugshot_show mugshot=0x37
@@ -111,7 +111,7 @@ CompText87B956C::
 	.string "important thing."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B956C_unk10_id
 
 	def_text_script CompText87B956C_unk10
 	ts_mugshot_show mugshot=0x0
@@ -119,7 +119,7 @@ CompText87B956C::
 	.string "Important thing...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87B956C_unk11_id
 
 	def_text_script CompText87B956C_unk11
 	ts_mugshot_show mugshot=0x37
@@ -158,7 +158,7 @@ CompText87B956C::
 	.string "there..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87B956C_unk14_id
 
 	def_text_script CompText87B956C_unk14
 	ts_mugshot_show mugshot=0x37
@@ -171,7 +171,7 @@ CompText87B956C::
 	.string "Someone's coming in!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87B956C_unk15_id
 
 	def_text_script CompText87B956C_unk15
 	ts_mugshot_show mugshot=0x0
@@ -201,7 +201,7 @@ CompText87B956C::
 	.string "Wh-What's going on!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87B956C_unk18_id
 
 	def_text_script CompText87B956C_unk18
 	ts_mugshot_show mugshot=0x37
@@ -211,7 +211,7 @@ CompText87B956C::
 	.string "is only one answer!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87B956C_unk19_id
 
 	def_text_script CompText87B956C_unk19
 	ts_mugshot_show mugshot=0x0
@@ -219,7 +219,7 @@ CompText87B956C::
 	.string "N-No way..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87B956C_unk20_id
 
 	def_text_script CompText87B956C_unk20
 	ts_mugshot_show mugshot=0x37
@@ -236,7 +236,7 @@ CompText87B956C::
 	.string "framed Dad is him!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87B956C_unk21_id
 
 	def_text_script CompText87B956C_unk21
 	ts_mugshot_show mugshot=0x0
@@ -249,7 +249,7 @@ CompText87B956C::
 	.string "something like this?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87B956C_unk22_id
 
 	def_text_script CompText87B956C_unk22
 	ts_mugshot_show mugshot=0x37
@@ -267,7 +267,7 @@ CompText87B956C::
 	.string "to the courthouse!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87B956C_unk23_id
 
 	def_text_script CompText87B956C_unk23
 	ts_mugshot_show mugshot=0x0

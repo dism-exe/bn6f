@@ -16,7 +16,7 @@ CompText875C22C::
 	.string "strong winds."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText875C22C_unk11_id
 
 	def_text_script CompText875C22C_unk1
 	ts_msg_open
@@ -29,7 +29,7 @@ CompText875C22C::
 	.string "conditions."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText875C22C_unk11_id
 
 	def_text_script CompText875C22C_unk2
 	ts_msg_open
@@ -41,7 +41,7 @@ CompText875C22C::
 	.string "conditions."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText875C22C_unk11_id
 
 	def_text_script CompText875C22C_unk3
 	ts_msg_open
@@ -50,7 +50,7 @@ CompText875C22C::
 	.string "rainstorms."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText875C22C_unk11_id
 
 	def_text_script CompText875C22C_unk4
 	ts_msg_open

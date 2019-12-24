@@ -12,8 +12,8 @@ CompText878DE08::
 	def_text_script CompText878DE08_unk0
 	ts_check_shop_stock [
 		shop: 0x1,
-		jumpIfStocked: 0xFF,
-		jumpIfSoldOut: 0x2,
+		jumpIfStocked: TS_CONTINUE,
+		jumpIfSoldOut: CompText878DE08_unk2_id,
 	]
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
@@ -74,8 +74,8 @@ CompText878DE08::
 	def_text_script CompText878DE08_unk10
 	ts_check_flag [
 		flag: 0x117F,
-		jumpIfTrue: 0xD,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText878DE08_unk13_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open
@@ -225,13 +225,13 @@ CompText878DE08::
 	def_text_script CompText878DE08_unk15
 	ts_check_flag [
 		flag: 0x118B,
-		jumpIfTrue: 0x13,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText878DE08_unk19_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x118A,
-		jumpIfTrue: 0x10,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText878DE08_unk16_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x118A
 	ts_mugshot_show mugshot=0x41
@@ -409,9 +409,9 @@ CompText878DE08::
 		chip: 0x1F,
 		code: 0x0,
 		amount: 0x1,
-		jumpIfEqual: 0xFF,
-		jumpIfGreater: 0xFF,
-		jumpIfLess: 0x12,
+		jumpIfEqual: TS_CONTINUE,
+		jumpIfGreater: TS_CONTINUE,
+		jumpIfLess: CompText878DE08_unk18_id,
 	]
 	ts_item_take_chip [
 		chip: 0x1F,
@@ -512,8 +512,8 @@ CompText878DE08::
 	def_text_script CompText878DE08_unk20
 	ts_check_flag [
 		flag: 0x11EB,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText878DE08_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "There's something\n"

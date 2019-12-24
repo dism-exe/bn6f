@@ -12,13 +12,13 @@ CompText879EBA8::
 	def_text_script CompText879EBA8_unk0
 	ts_check_flag [
 		flag: 0x1165,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879EBA8_unk3_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1164,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879EBA8_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1164
 	ts_mugshot_show mugshot=0x3E
@@ -76,8 +76,8 @@ CompText879EBA8::
 	ts_clear_msg
 	ts_check_flag [
 		flag: 0x1F76,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879EBA8_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	.string "You know about PA\n"
 	.string "Memos right?\n"
@@ -103,8 +103,8 @@ CompText879EBA8::
 	def_text_script CompText879EBA8_unk1
 	ts_check_flag [
 		flag: 0x1F76,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879EBA8_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open

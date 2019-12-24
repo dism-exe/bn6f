@@ -11,8 +11,8 @@ CompText87D4DE0::
 
 	def_text_script CompText87D4DE0_unk0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x1,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87D4DE0_unk1_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -35,7 +35,7 @@ CompText87D4DE0::
 	.string "a tomorrow!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87D4DE0_unk3_id
 
 	def_text_script CompText87D4DE0_unk3
 	ts_mugshot_show mugshot=0x37
@@ -60,7 +60,7 @@ CompText87D4DE0::
 	.string "extra careful!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87D4DE0_unk5_id
 
 	def_text_script CompText87D4DE0_unk5
 	ts_mugshot_show mugshot=0x11
@@ -72,8 +72,8 @@ CompText87D4DE0::
 
 	def_text_script CompText87D4DE0_unk6
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x7,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87D4DE0_unk7_id,
 	]
 	ts_msg_open
 	ts_store_timer [
@@ -131,7 +131,7 @@ CompText87D4DE0::
 	.string "you can imagine!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87D4DE0_unk9_id
 
 	def_text_script CompText87D4DE0_unk9
 	ts_mugshot_show mugshot=0x0
@@ -145,7 +145,7 @@ CompText87D4DE0::
 	.string "Battle routine,set!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87D4DE0_unk10_id
 
 	def_text_script CompText87D4DE0_unk10
 	ts_mugshot_show mugshot=0x37
@@ -153,12 +153,12 @@ CompText87D4DE0::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87D4DE0_unk11_id
 
 	def_text_script CompText87D4DE0_unk11
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0xC,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87D4DE0_unk12_id,
 	]
 	ts_mugshot_hide
 	ts_msg_open

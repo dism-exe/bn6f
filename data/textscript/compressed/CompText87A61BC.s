@@ -31,7 +31,7 @@ CompText87A61BC::
 	.string "a GO?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87A61BC_unk1_id
 
 	def_text_script CompText87A61BC_unk1
 	ts_mugshot_show mugshot=0x57
@@ -39,7 +39,7 @@ CompText87A61BC::
 	.string "Hey,Teeeeeach!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A61BC_unk2_id
 
 	def_text_script CompText87A61BC_unk2
 	ts_mugshot_show mugshot=0x42
@@ -53,7 +53,7 @@ CompText87A61BC::
 	.string "give IT a TRY?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A61BC_unk3_id
 
 	def_text_script CompText87A61BC_unk3
 	ts_mugshot_show mugshot=0x57
@@ -79,7 +79,7 @@ CompText87A61BC::
 	.string "real power!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A61BC_unk5_id
 
 	def_text_script CompText87A61BC_unk5
 	ts_mugshot_show mugshot=0x37
@@ -91,7 +91,7 @@ CompText87A61BC::
 	.string "Well,Lan...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A61BC_unk6_id
 
 	def_text_script CompText87A61BC_unk6
 	ts_mugshot_show mugshot=0x0
@@ -106,7 +106,7 @@ CompText87A61BC::
 	.string "won't be that hard."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A61BC_unk7_id
 
 	def_text_script CompText87A61BC_unk7
 	ts_mugshot_show mugshot=0x14
@@ -115,7 +115,7 @@ CompText87A61BC::
 	.string "*grin*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87A61BC_unk8_id
 
 	def_text_script CompText87A61BC_unk8
 	ts_mugshot_show mugshot=0x37
@@ -125,7 +125,7 @@ CompText87A61BC::
 	.string "a shot,sir!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87A61BC_unk9_id
 
 	def_text_script CompText87A61BC_unk9
 	ts_mugshot_show mugshot=0x42
@@ -150,7 +150,7 @@ CompText87A61BC::
 	.string "Are you READY!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87A61BC_unk11_id
 
 	def_text_script CompText87A61BC_unk11
 	ts_mugshot_show mugshot=0x37
@@ -158,7 +158,7 @@ CompText87A61BC::
 	.string "Yes!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87A61BC_unk12_id
 
 	def_text_script CompText87A61BC_unk12
 	ts_mugshot_show mugshot=0x42
@@ -183,7 +183,7 @@ CompText87A61BC::
 	.string "STOP this..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87A61BC_unk14_id
 
 	def_text_script CompText87A61BC_unk14
 	ts_mugshot_show mugshot=0x14
@@ -197,7 +197,7 @@ CompText87A61BC::
 	.string "chickening out?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87A61BC_unk15_id
 
 	def_text_script CompText87A61BC_unk15
 	ts_mugshot_show mugshot=0x0
@@ -210,7 +210,7 @@ CompText87A61BC::
 	.string "Battle routine,set!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87A61BC_unk16_id
 
 	def_text_script CompText87A61BC_unk16
 	ts_mugshot_show mugshot=0x37

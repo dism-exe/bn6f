@@ -18,8 +18,8 @@ CompText87C6028::
 
 	def_text_script CompText87C6028_unk1
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x2,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87C6028_unk2_id,
 	]
 	ts_mugshot_show mugshot=0x58
 	ts_msg_open
@@ -32,7 +32,7 @@ CompText87C6028::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C6028_unk3_id
 
 	def_text_script CompText87C6028_unk2
 	ts_mugshot_show mugshot=0x59
@@ -46,7 +46,7 @@ CompText87C6028::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C6028_unk3_id
 
 	def_text_script CompText87C6028_unk3
 	ts_mugshot_show mugshot=0xD
@@ -54,7 +54,7 @@ CompText87C6028::
 	.string "Huuuuuhhh....."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C6028_unk4_id
 
 	def_text_script CompText87C6028_unk4
 	ts_mugshot_show mugshot=0xE
@@ -62,7 +62,7 @@ CompText87C6028::
 	.string "Help,help..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C6028_unk5_id
 
 	def_text_script CompText87C6028_unk5
 	ts_mugshot_show mugshot=0x0
@@ -71,7 +71,7 @@ CompText87C6028::
 	.string "Stop!"
 	ts_key_wait any=0x0
 	ts_end
-	ts_jump target=6
+	ts_jump target=CompText87C6028_unk6_id
 
 	def_text_script CompText87C6028_unk6
 	ts_mugshot_show mugshot=0x0
@@ -86,12 +86,12 @@ CompText87C6028::
 	.string "control!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87C6028_unk7_id
 
 	def_text_script CompText87C6028_unk7
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x8,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87C6028_unk8_id,
 	]
 	ts_mugshot_show mugshot=0x58
 	ts_msg_open
@@ -104,7 +104,7 @@ CompText87C6028::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87C6028_unk9_id
 
 	def_text_script CompText87C6028_unk8
 	ts_mugshot_show mugshot=0x59
@@ -118,7 +118,7 @@ CompText87C6028::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87C6028_unk9_id
 
 	def_text_script CompText87C6028_unk9
 	ts_mugshot_show mugshot=0x0
@@ -150,7 +150,7 @@ CompText87C6028::
 	.string "again!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87C6028_unk11_id
 
 	def_text_script CompText87C6028_unk11
 	ts_mugshot_show mugshot=0x2B
@@ -179,8 +179,8 @@ CompText87C6028::
 
 	def_text_script CompText87C6028_unk12
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0xD,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87C6028_unk13_id,
 	]
 	ts_mugshot_show mugshot=0x58
 	ts_msg_open
@@ -193,7 +193,7 @@ CompText87C6028::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87C6028_unk14_id
 
 	def_text_script CompText87C6028_unk13
 	ts_mugshot_show mugshot=0x59
@@ -207,7 +207,7 @@ CompText87C6028::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87C6028_unk14_id
 
 	def_text_script CompText87C6028_unk14
 	ts_mugshot_show mugshot=0x0
@@ -225,8 +225,8 @@ CompText87C6028::
 
 	def_text_script CompText87C6028_unk15
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x10,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87C6028_unk16_id,
 	]
 	ts_mugshot_show mugshot=0x58
 	ts_msg_open
@@ -239,7 +239,7 @@ CompText87C6028::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87C6028_unk17_id
 
 	def_text_script CompText87C6028_unk16
 	ts_mugshot_show mugshot=0x59
@@ -253,7 +253,7 @@ CompText87C6028::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87C6028_unk17_id
 
 	def_text_script CompText87C6028_unk17
 	ts_mugshot_show mugshot=0x0
@@ -306,7 +306,7 @@ CompText87C6028::
 	.string "Iris!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87C6028_unk23_id
 
 	def_text_script CompText87C6028_unk23
 	ts_mugshot_show mugshot=0x11
@@ -322,8 +322,8 @@ CompText87C6028::
 
 	def_text_script CompText87C6028_unk24
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x19,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87C6028_unk25_id,
 	]
 	ts_mugshot_show mugshot=0x58
 	ts_msg_open
@@ -336,7 +336,7 @@ CompText87C6028::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87C6028_unk26_id
 
 	def_text_script CompText87C6028_unk25
 	ts_mugshot_show mugshot=0x59
@@ -350,7 +350,7 @@ CompText87C6028::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87C6028_unk26_id
 
 	def_text_script CompText87C6028_unk26
 	ts_mugshot_show mugshot=0x0
@@ -359,7 +359,7 @@ CompText87C6028::
 	.string "the world are you!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87C6028_unk27_id
 
 	def_text_script CompText87C6028_unk27
 	ts_mugshot_show mugshot=0x11
@@ -378,7 +378,7 @@ CompText87C6028::
 	.string "help him!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87C6028_unk28_id
 
 	def_text_script CompText87C6028_unk28
 	ts_mugshot_show mugshot=0x0
@@ -397,8 +397,8 @@ CompText87C6028::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x1E,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87C6028_unk30_id,
 	]
 	ts_mugshot_show mugshot=0x58
 	ts_msg_open
@@ -415,7 +415,7 @@ CompText87C6028::
 	.string "L-Lan..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=CompText87C6028_unk31_id
 
 	def_text_script CompText87C6028_unk30
 	ts_mugshot_show mugshot=0x59
@@ -433,7 +433,7 @@ CompText87C6028::
 	.string "L-Lan..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=CompText87C6028_unk31_id
 
 	def_text_script CompText87C6028_unk31
 	ts_mugshot_show mugshot=0x0
@@ -449,8 +449,8 @@ CompText87C6028::
 
 	def_text_script CompText87C6028_unk32
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x21,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87C6028_unk33_id,
 	]
 	ts_mugshot_show mugshot=0x58
 	ts_msg_open
@@ -471,7 +471,7 @@ CompText87C6028::
 	.string "MegaMan!!"
 	ts_key_wait any=0x0
 	ts_end
-	ts_jump target=34
+	ts_jump target=CompText87C6028_unk34_id
 
 	def_text_script CompText87C6028_unk33
 	ts_mugshot_show mugshot=0x59
@@ -506,7 +506,7 @@ CompText87C6028::
 	.string "go!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=35
+	ts_jump target=CompText87C6028_unk35_id
 
 	def_text_script CompText87C6028_unk35
 	ts_mugshot_show mugshot=0x11
@@ -521,7 +521,7 @@ CompText87C6028::
 	.string "Cyberworld."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=36
+	ts_jump target=CompText87C6028_unk36_id
 
 	def_text_script CompText87C6028_unk36
 	ts_mugshot_show mugshot=0x0
@@ -559,7 +559,7 @@ CompText87C6028::
 	.string "control a little..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=39
+	ts_jump target=CompText87C6028_unk39_id
 
 	def_text_script CompText87C6028_unk39
 	ts_mugshot_show mugshot=0x0
@@ -575,7 +575,7 @@ CompText87C6028::
 	.string "now,but who are..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87C6028_unk40_id
 
 	def_text_script CompText87C6028_unk40
 	ts_mugshot_show mugshot=0xD
@@ -607,7 +607,7 @@ CompText87C6028::
 	.string "Expo is still on..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=42
+	ts_jump target=CompText87C6028_unk42_id
 
 	def_text_script CompText87C6028_unk42
 	ts_mugshot_hide
@@ -634,7 +634,7 @@ CompText87C6028::
 	.string "examined!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=44
+	ts_jump target=CompText87C6028_unk44_id
 
 	def_text_script CompText87C6028_unk44
 	ts_mugshot_show mugshot=0x0
@@ -654,7 +654,7 @@ CompText87C6028::
 	.string "\"monster\"!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=46
+	ts_jump target=CompText87C6028_unk46_id
 
 	def_text_script CompText87C6028_unk46
 	ts_mugshot_show mugshot=0x32
@@ -677,7 +677,7 @@ CompText87C6028::
 	.string "the Selection Test."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=47
+	ts_jump target=CompText87C6028_unk47_id
 
 	def_text_script CompText87C6028_unk47
 	ts_mugshot_show mugshot=0x0
@@ -689,7 +689,7 @@ CompText87C6028::
 	.string "monster!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=48
+	ts_jump target=CompText87C6028_unk48_id
 
 	def_text_script CompText87C6028_unk48
 	ts_mugshot_show mugshot=0x32
@@ -704,7 +704,7 @@ CompText87C6028::
 	.string "but a monster......"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=49
+	ts_jump target=CompText87C6028_unk49_id
 
 	def_text_script CompText87C6028_unk49
 	ts_mugshot_show mugshot=0x0
@@ -723,7 +723,7 @@ CompText87C6028::
 	.string "Arrgh!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=51
+	ts_jump target=CompText87C6028_unk51_id
 
 	def_text_script CompText87C6028_unk51
 	ts_mugshot_show mugshot=0x32
@@ -738,7 +738,7 @@ CompText87C6028::
 	.string "the Operator Navi!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=52
+	ts_jump target=CompText87C6028_unk52_id
 
 	def_text_script CompText87C6028_unk52
 	ts_mugshot_hide

@@ -57,9 +57,9 @@ CompText875FF70::
 	ts_check_item07 [
 		item: 0x44,
 		amount: 0x1,
-		jumpIfEqual: 0xFF,
-		jumpIfGreater: 0xFF,
-		jumpIfLess: 0xA,
+		jumpIfEqual: TS_CONTINUE,
+		jumpIfGreater: TS_CONTINUE,
+		jumpIfLess: CompText875FF70_unk10_id,
 	]
 	ts_msg_open
 	ts_print_current_navi_ow
@@ -108,26 +108,26 @@ CompText875FF70::
 	ts_check_chapter [
 		lower: 0x57,
 		upper: 0x57,
-		jumpIfInRange: 0xB,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875FF70_unk11_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x56,
 		upper: 0x56,
-		jumpIfInRange: 0xC,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875FF70_unk12_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x34,
 		upper: 0x34,
-		jumpIfInRange: 0x8,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875FF70_unk8_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x35,
 		upper: 0x35,
-		jumpIfInRange: 0x9,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875FF70_unk9_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_flag_clear flag=0x16F4
 	ts_end

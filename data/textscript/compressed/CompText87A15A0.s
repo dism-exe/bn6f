@@ -12,13 +12,13 @@ CompText87A15A0::
 	def_text_script CompText87A15A0_unk0
 	ts_check_flag [
 		flag: 0x112C,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A15A0_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x112B,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A15A0_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3F
 	ts_msg_open
@@ -168,9 +168,9 @@ CompText87A15A0::
 		chip: 0x75,
 		code: 0x15,
 		amount: 0x1,
-		jumpIfEqual: 0xFF,
-		jumpIfGreater: 0xFF,
-		jumpIfLess: 0x3,
+		jumpIfEqual: TS_CONTINUE,
+		jumpIfGreater: TS_CONTINUE,
+		jumpIfLess: CompText87A15A0_unk3_id,
 	]
 	ts_mugshot_show mugshot=0x3F
 	ts_msg_open
@@ -278,28 +278,28 @@ CompText87A15A0::
 	def_text_script CompText87A15A0_unk11
 	ts_check_flag [
 		flag: 0x11E4,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A15A0_unk12_id,
 	]
 	ts_check_flag [
 		flag: 0x11E5,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A15A0_unk12_id,
 	]
 	ts_check_flag [
 		flag: 0x11E6,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A15A0_unk12_id,
 	]
 	ts_check_flag [
 		flag: 0x11E7,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A15A0_unk12_id,
 	]
 	ts_check_flag [
 		flag: 0x11E8,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A15A0_unk12_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -488,11 +488,11 @@ CompText87A15A0::
 	def_text_script CompText87A15A0_unk52
 	ts_check_flag [
 		flag: 0x1D5,
-		jumpIfTrue: 0x36,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A15A0_unk54_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1D5
-	ts_jump target=54
+	ts_jump target=CompText87A15A0_unk54_id
 
 	def_text_script CompText87A15A0_unk53
 	ts_mugshot_show mugshot=0x5D
@@ -506,8 +506,8 @@ CompText87A15A0::
 	def_text_script CompText87A15A0_unk54
 	ts_check_flag [
 		flag: 0x1ED,
-		jumpIfTrue: 0x37,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A15A0_unk55_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x5D
 	ts_msg_open
@@ -566,7 +566,7 @@ CompText87A15A0::
 	ts_end
 
 	def_text_script CompText87A15A0_unk55
-	ts_jump_random 65, 0x20, 0x20, 0xFF, 0x38
+	ts_jump_random CompText87A15A0_unk65_id, 0x20, 0x20, 0xFF, 0x38
 	ts_mugshot_show mugshot=0x5D
 	ts_msg_open
 	.string "AMAZING!!\n"
@@ -581,9 +581,9 @@ CompText87A15A0::
 	ts_mugshot_hide
 	ts_check_give_zenny [
 		amount: 0x2BC,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_player_animate_object animation=0x18
 	ts_print_current_navi
@@ -633,9 +633,9 @@ CompText87A15A0::
 	ts_mugshot_hide
 	ts_check_give_bug_frags [
 		amount: 0x4,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_player_animate_object animation=0x18
 	ts_print_current_navi

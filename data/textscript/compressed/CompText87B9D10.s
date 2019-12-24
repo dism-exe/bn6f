@@ -34,7 +34,7 @@ CompText87B9D10::
 	.string "for him soon."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B9D10_unk2_id
 
 	def_text_script CompText87B9D10_unk2
 	ts_mugshot_show mugshot=0x0
@@ -47,7 +47,7 @@ CompText87B9D10::
 	.string "culprit..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B9D10_unk3_id
 
 	def_text_script CompText87B9D10_unk3
 	ts_mugshot_show mugshot=0x2D
@@ -55,7 +55,7 @@ CompText87B9D10::
 	.string "...!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B9D10_unk4_id
 
 	def_text_script CompText87B9D10_unk4
 	ts_mugshot_show mugshot=0x0
@@ -74,7 +74,7 @@ CompText87B9D10::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_text_speed delay=0x2
-	ts_jump target=6
+	ts_jump target=CompText87B9D10_unk6_id
 
 	def_text_script CompText87B9D10_unk6
 	ts_mugshot_show mugshot=0x0
@@ -82,7 +82,7 @@ CompText87B9D10::
 	.string "So,you really did..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B9D10_unk7_id
 
 	def_text_script CompText87B9D10_unk7
 	ts_mugshot_show mugshot=0x2D
@@ -118,7 +118,7 @@ CompText87B9D10::
 	.string "easy...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B9D10_unk8_id
 
 	def_text_script CompText87B9D10_unk8
 	ts_mugshot_show mugshot=0x0
@@ -134,7 +134,7 @@ CompText87B9D10::
 	.string "my Dad!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B9D10_unk9_id
 
 	def_text_script CompText87B9D10_unk9
 	ts_mugshot_show mugshot=0x2D
@@ -168,7 +168,7 @@ CompText87B9D10::
 	ts_sound_play_bgm track=0x2
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87B9D10_unk11_id
 
 	def_text_script CompText87B9D10_unk11
 	ts_mugshot_show mugshot=0x0
@@ -177,7 +177,7 @@ CompText87B9D10::
 	.string "You can't...!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87B9D10_unk12_id
 
 	def_text_script CompText87B9D10_unk12
 	ts_mugshot_show mugshot=0x2D
@@ -187,7 +187,7 @@ CompText87B9D10::
 	.string "so much trouble."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87B9D10_unk13_id
 
 	def_text_script CompText87B9D10_unk13
 	ts_mugshot_show mugshot=0x0
@@ -200,7 +200,7 @@ CompText87B9D10::
 	.string "Blackbeard...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87B9D10_unk14_id
 
 	def_text_script CompText87B9D10_unk14
 	ts_mugshot_show mugshot=0x2D
@@ -220,7 +220,7 @@ CompText87B9D10::
 	.string "our rule."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87B9D10_unk15_id
 
 	def_text_script CompText87B9D10_unk15
 	ts_mugshot_show mugshot=0x0
@@ -228,7 +228,7 @@ CompText87B9D10::
 	.string "Then,you really..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87B9D10_unk16_id
 
 	def_text_script CompText87B9D10_unk16
 	ts_mugshot_show mugshot=0x2D
@@ -298,7 +298,7 @@ CompText87B9D10::
 	ts_clear_msg
 	ts_sound_enable_text_sfx
 	ts_control_unlock
-	ts_jump target=18
+	ts_jump target=CompText87B9D10_unk18_id
 
 	def_text_script CompText87B9D10_unk18
 	ts_mugshot_hide
@@ -335,7 +335,7 @@ CompText87B9D10::
 	.string "outta here!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87B9D10_unk20_id
 
 	def_text_script CompText87B9D10_unk20
 	ts_mugshot_show mugshot=0x0

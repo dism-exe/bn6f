@@ -32,28 +32,28 @@ CompText87A29D8::
 	def_text_script CompText87A29D8_unk1
 	ts_check_flag [
 		flag: 0x11E4,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x2,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A29D8_unk2_id,
 	]
 	ts_check_flag [
 		flag: 0x11E5,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x2,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A29D8_unk2_id,
 	]
 	ts_check_flag [
 		flag: 0x11E6,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x2,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A29D8_unk2_id,
 	]
 	ts_check_flag [
 		flag: 0x11E7,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x2,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A29D8_unk2_id,
 	]
 	ts_check_flag [
 		flag: 0x11E8,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x2,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87A29D8_unk2_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

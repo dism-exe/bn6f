@@ -28,7 +28,7 @@ CompText87A7BE4::
 	.string "shut them down!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A7BE4_unk2_id
 
 	def_text_script CompText87A7BE4_unk2
 	ts_mugshot_show mugshot=0x14
@@ -40,7 +40,7 @@ CompText87A7BE4::
 	.string "listening to me!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A7BE4_unk3_id
 
 	def_text_script CompText87A7BE4_unk3
 	ts_mugshot_show mugshot=0x0
@@ -50,7 +50,7 @@ CompText87A7BE4::
 	.string "your Navi!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A7BE4_unk4_id
 
 	def_text_script CompText87A7BE4_unk4
 	ts_mugshot_show mugshot=0x14
@@ -70,7 +70,7 @@ CompText87A7BE4::
 	.string "overboard!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A7BE4_unk6_id
 
 	def_text_script CompText87A7BE4_unk6
 	ts_mugshot_show mugshot=0x51
@@ -86,7 +86,7 @@ CompText87A7BE4::
 	.string "shake them up?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A7BE4_unk7_id
 
 	def_text_script CompText87A7BE4_unk7
 	ts_mugshot_show mugshot=0x14
@@ -100,7 +100,7 @@ CompText87A7BE4::
 	.string "it to go this far!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87A7BE4_unk8_id
 
 	def_text_script CompText87A7BE4_unk8
 	ts_mugshot_show mugshot=0x51
@@ -129,7 +129,7 @@ CompText87A7BE4::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87A7BE4_unk9_id
 
 	def_text_script CompText87A7BE4_unk9
 	ts_mugshot_show mugshot=0x14
@@ -141,7 +141,7 @@ CompText87A7BE4::
 	.string "He cut me off..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87A7BE4_unk10_id
 
 	def_text_script CompText87A7BE4_unk10
 	ts_mugshot_hide
@@ -165,7 +165,7 @@ CompText87A7BE4::
 	.string "Ahh! We're trapped!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87A7BE4_unk12_id
 
 	def_text_script CompText87A7BE4_unk12
 	ts_mugshot_show mugshot=0xD
@@ -186,7 +186,7 @@ CompText87A7BE4::
 	.string "This is the end..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87A7BE4_unk14_id
 
 	def_text_script CompText87A7BE4_unk14
 	ts_mugshot_show mugshot=0x10
@@ -206,7 +206,7 @@ CompText87A7BE4::
 	.string "Where's BlastMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87A7BE4_unk16_id
 
 	def_text_script CompText87A7BE4_unk16
 	ts_mugshot_show mugshot=0x14
@@ -220,7 +220,7 @@ CompText87A7BE4::
 	.string "against BlastMan."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87A7BE4_unk17_id
 
 	def_text_script CompText87A7BE4_unk17
 	ts_mugshot_show mugshot=0x0
@@ -238,7 +238,7 @@ CompText87A7BE4::
 	.string "tell me where he is!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87A7BE4_unk18_id
 
 	def_text_script CompText87A7BE4_unk18
 	ts_mugshot_show mugshot=0x14
@@ -254,7 +254,7 @@ CompText87A7BE4::
 	.string "Let's go,MegaMan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87A7BE4_unk20_id
 
 	def_text_script CompText87A7BE4_unk20
 	ts_mugshot_show mugshot=0x37
@@ -262,7 +262,7 @@ CompText87A7BE4::
 	.string "OK!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87A7BE4_unk21_id
 
 	def_text_script CompText87A7BE4_unk21
 	ts_control_lock

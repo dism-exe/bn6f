@@ -340,18 +340,18 @@ CompText8773730::
 	def_text_script CompText8773730_unk50
 	ts_check_flag [
 		flag: 0xCC6,
-		jumpIfTrue: 0x35,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8773730_unk53_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCC5,
-		jumpIfTrue: 0x34,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8773730_unk52_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCC4,
-		jumpIfTrue: 0x33,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8773730_unk51_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x1B
 	ts_msg_open

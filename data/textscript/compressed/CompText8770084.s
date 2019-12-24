@@ -12,8 +12,8 @@ CompText8770084::
 	def_text_script CompText8770084_unk0
 	ts_check_flag [
 		flag: 0x471,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8770084_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x12
 	ts_msg_open
@@ -142,8 +142,8 @@ CompText8770084::
 	def_text_script CompText8770084_unk15
 	ts_check_flag [
 		flag: 0x434,
-		jumpIfTrue: 0x10,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8770084_unk16_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x14
 	ts_msg_open
@@ -166,8 +166,8 @@ CompText8770084::
 	def_text_script CompText8770084_unk19
 	ts_check_flag [
 		flag: 0x47D,
-		jumpIfTrue: 0x14,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8770084_unk20_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -190,8 +190,8 @@ CompText8770084::
 	def_text_script CompText8770084_unk20
 	ts_check_flag [
 		flag: 0x47E,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8770084_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -218,8 +218,8 @@ CompText8770084::
 	def_text_script CompText8770084_unk21
 	ts_check_flag [
 		flag: 0x47F,
-		jumpIfTrue: 0x17,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8770084_unk23_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -283,8 +283,8 @@ CompText8770084::
 	def_text_script CompText8770084_unk25
 	ts_check_flag [
 		flag: 0x43A,
-		jumpIfTrue: 0x1A,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8770084_unk26_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "*Rumble Rumble!!*"
@@ -374,8 +374,8 @@ CompText8770084::
 	def_text_script CompText8770084_unk50
 	ts_check_flag [
 		flag: 0x53C,
-		jumpIfTrue: 0x33,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8770084_unk51_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x53C
 	ts_mugshot_show mugshot=0x0

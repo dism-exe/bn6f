@@ -16,7 +16,7 @@ CompText87BA318::
 	.string "RESIST ARREST!!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BA318_unk1_id
 
 	def_text_script CompText87BA318_unk1
 	ts_mugshot_show mugshot=0xA
@@ -39,7 +39,7 @@ CompText87BA318::
 	.string "was that bad!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87BA318_unk2_id
 
 	def_text_script CompText87BA318_unk2
 	ts_mugshot_show mugshot=0x18
@@ -48,7 +48,7 @@ CompText87BA318::
 	.string "wrong!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87BA318_unk3_id
 
 	def_text_script CompText87BA318_unk3
 	ts_mugshot_show mugshot=0xC
@@ -57,7 +57,7 @@ CompText87BA318::
 	.string "Help me!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87BA318_unk4_id
 
 	def_text_script CompText87BA318_unk4
 	ts_mugshot_show mugshot=0x14

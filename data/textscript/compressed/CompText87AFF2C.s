@@ -17,7 +17,7 @@ CompText87AFF2C::
 	.string "to start!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87AFF2C_unk1_id
 
 	def_text_script CompText87AFF2C_unk1
 	ts_mugshot_show mugshot=0x2B
@@ -29,7 +29,7 @@ CompText87AFF2C::
 	.string "start dancing!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87AFF2C_unk2_id
 
 	def_text_script CompText87AFF2C_unk2
 	ts_mugshot_show mugshot=0x54
@@ -47,7 +47,7 @@ CompText87AFF2C::
 	.string "like fun!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87AFF2C_unk4_id
 
 	def_text_script CompText87AFF2C_unk4
 	ts_mugshot_show mugshot=0x41
@@ -57,7 +57,7 @@ CompText87AFF2C::
 	.string "pulling me along!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87AFF2C_unk5_id
 
 	def_text_script CompText87AFF2C_unk5
 	ts_mugshot_show mugshot=0x45
@@ -67,7 +67,7 @@ CompText87AFF2C::
 	.string "being sucked in!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AFF2C_unk6_id
 
 	def_text_script CompText87AFF2C_unk6
 	ts_mugshot_show mugshot=0x57
@@ -77,7 +77,7 @@ CompText87AFF2C::
 	.string "to use any energy!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87AFF2C_unk7_id
 
 	def_text_script CompText87AFF2C_unk7
 	ts_mugshot_show mugshot=0x14
@@ -100,7 +100,7 @@ CompText87AFF2C::
 	.string "all the fun!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87AFF2C_unk8_id
 
 	def_text_script CompText87AFF2C_unk8
 	ts_mugshot_show mugshot=0x0
@@ -110,7 +110,7 @@ CompText87AFF2C::
 	.string "to see!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87AFF2C_unk9_id
 
 	def_text_script CompText87AFF2C_unk9
 	ts_mugshot_show mugshot=0x14
@@ -134,7 +134,7 @@ CompText87AFF2C::
 	.string "dropping!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87AFF2C_unk10_id
 
 	def_text_script CompText87AFF2C_unk10
 	ts_mugshot_show mugshot=0x57
@@ -159,7 +159,7 @@ CompText87AFF2C::
 	.string "Hey,answer me!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87AFF2C_unk13_id
 
 	def_text_script CompText87AFF2C_unk13
 	ts_mugshot_show mugshot=0x0
@@ -178,7 +178,7 @@ CompText87AFF2C::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87AFF2C_unk14_id
 
 	def_text_script CompText87AFF2C_unk14
 	ts_mugshot_show mugshot=0x2B
@@ -197,7 +197,7 @@ CompText87AFF2C::
 	.string "\"they\" will arise!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87AFF2C_unk15_id
 
 	def_text_script CompText87AFF2C_unk15
 	ts_mugshot_show mugshot=0x54
@@ -227,7 +227,7 @@ CompText87AFF2C::
 	.string "rising!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87AFF2C_unk19_id
 
 	def_text_script CompText87AFF2C_unk19
 	ts_mugshot_show mugshot=0x14
@@ -275,7 +275,7 @@ CompText87AFF2C::
 	.string "much you can carry!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87AFF2C_unk22_id
 
 	def_text_script CompText87AFF2C_unk22
 	ts_mugshot_show mugshot=0x54
@@ -286,8 +286,8 @@ CompText87AFF2C::
 
 	def_text_script CompText87AFF2C_unk23
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x19,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87AFF2C_unk25_id,
 	]
 	ts_mugshot_show mugshot=0x54
 	ts_msg_open
@@ -318,8 +318,8 @@ CompText87AFF2C::
 
 	def_text_script CompText87AFF2C_unk24
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x1A,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87AFF2C_unk26_id,
 	]
 	ts_mugshot_show mugshot=0x54
 	ts_msg_open
@@ -372,7 +372,7 @@ CompText87AFF2C::
 	.string "O-One more..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87AFF2C_unk28_id
 
 	def_text_script CompText87AFF2C_unk28
 	ts_mugshot_hide
@@ -389,7 +389,7 @@ CompText87AFF2C::
 	.string "just a legend,but..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87AFF2C_unk30_id
 
 	def_text_script CompText87AFF2C_unk30
 	ts_mugshot_show mugshot=0x54
@@ -427,7 +427,7 @@ CompText87AFF2C::
 	.string "Cybeasts,scum!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=33
+	ts_jump target=CompText87AFF2C_unk33_id
 
 	def_text_script CompText87AFF2C_unk33
 	ts_mugshot_show mugshot=0x2B
@@ -451,8 +451,8 @@ CompText87AFF2C::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x22,
-		jumpIfCybeastFalzar: 0x23,
+		jumpIfCybeastGregar: CompText87AFF2C_unk34_id,
+		jumpIfCybeastFalzar: CompText87AFF2C_unk35_id,
 	]
 
 	def_text_script CompText87AFF2C_unk34
@@ -471,7 +471,7 @@ CompText87AFF2C::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=36
+	ts_jump target=CompText87AFF2C_unk36_id
 
 	def_text_script CompText87AFF2C_unk35
 	ts_mugshot_hide
@@ -489,7 +489,7 @@ CompText87AFF2C::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=36
+	ts_jump target=CompText87AFF2C_unk36_id
 
 	def_text_script CompText87AFF2C_unk36
 	ts_mugshot_show mugshot=0x2B

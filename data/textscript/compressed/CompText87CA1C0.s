@@ -19,7 +19,7 @@ CompText87CA1C0::
 	.string "is amazing..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87CA1C0_unk1_id
 
 	def_text_script CompText87CA1C0_unk1
 	ts_mugshot_show mugshot=0x37
@@ -27,7 +27,7 @@ CompText87CA1C0::
 	.string "... Colonel."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87CA1C0_unk2_id
 
 	def_text_script CompText87CA1C0_unk2
 	ts_mugshot_show mugshot=0x53
@@ -37,7 +37,7 @@ CompText87CA1C0::
 	.string "You're the winner..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CA1C0_unk3_id
 
 	def_text_script CompText87CA1C0_unk3
 	ts_mugshot_show mugshot=0x37
@@ -65,7 +65,7 @@ CompText87CA1C0::
 	.string "why...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87CA1C0_unk6_id
 
 	def_text_script CompText87CA1C0_unk6
 	ts_mugshot_show mugshot=0x0
@@ -78,7 +78,7 @@ CompText87CA1C0::
 	.string "this!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87CA1C0_unk7_id
 
 	def_text_script CompText87CA1C0_unk7
 	ts_mugshot_show mugshot=0x2F
@@ -97,7 +97,7 @@ CompText87CA1C0::
 	.string "is to it..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87CA1C0_unk8_id
 
 	def_text_script CompText87CA1C0_unk8
 	ts_mugshot_show mugshot=0x0
@@ -115,7 +115,7 @@ CompText87CA1C0::
 	.string "this for no reason."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87CA1C0_unk9_id
 
 	def_text_script CompText87CA1C0_unk9
 	ts_mugshot_show mugshot=0x2F
@@ -128,7 +128,7 @@ CompText87CA1C0::
 	.string "have to fight."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87CA1C0_unk10_id
 
 	def_text_script CompText87CA1C0_unk10
 	ts_mugshot_show mugshot=0x0
@@ -173,7 +173,7 @@ CompText87CA1C0::
 	.string "\"will\" away!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87CA1C0_unk11_id
 
 	def_text_script CompText87CA1C0_unk11
 	ts_mugshot_show mugshot=0x2F
@@ -238,7 +238,7 @@ CompText87CA1C0::
 	.string "right now..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87CA1C0_unk12_id
 
 	def_text_script CompText87CA1C0_unk12
 	ts_mugshot_show mugshot=0x0
@@ -246,7 +246,7 @@ CompText87CA1C0::
 	.string "... Baryl!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87CA1C0_unk13_id
 
 	def_text_script CompText87CA1C0_unk13
 	ts_mugshot_show mugshot=0x2F
@@ -258,7 +258,7 @@ CompText87CA1C0::
 	.string "Stand up,Colonel..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87CA1C0_unk14_id
 
 	def_text_script CompText87CA1C0_unk14
 	ts_mugshot_show mugshot=0x53
@@ -273,7 +273,7 @@ CompText87CA1C0::
 	.string "Wait,Colonel!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87CA1C0_unk16_id
 
 	def_text_script CompText87CA1C0_unk16
 	ts_mugshot_show mugshot=0x53

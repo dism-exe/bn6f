@@ -23,8 +23,8 @@ CompText876D580::
 	def_text_script CompText876D580_unk1
 	ts_check_flag [
 		flag: 0xE7A,
-		jumpIfTrue: 0x0,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876D580_unk0_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open

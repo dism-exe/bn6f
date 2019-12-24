@@ -83,8 +83,8 @@ CompText8756C9C::
 	def_text_script CompText8756C9C_unk6
 	ts_check_flag [
 		flag: 0x163,
-		jumpIfTrue: 0x9,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8756C9C_unk9_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "A request board.\n"
@@ -359,8 +359,8 @@ CompText8756C9C::
 	def_text_script CompText8756C9C_unk30
 	ts_check_flag [
 		flag: 0x163,
-		jumpIfTrue: 0x24,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8756C9C_unk36_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "A Navi Change Box.\n"
@@ -435,18 +435,18 @@ CompText8756C9C::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_navi_all [
-		jumpIfMegaMan: 0x25,
-		jumpIfHeatMan: 0x26,
-		jumpIfElecMan: 0x27,
-		jumpIfSlashMan: 0x28,
-		jumpIfEraseMan: 0x29,
-		jumpIfChargeMan: 0x2A,
-		jumpIfSpoutMan: 0x2B,
-		jumpIfTomahawkMan: 0x2C,
-		jumpIfTenguMan: 0x2D,
-		jumpIfGroundMan: 0x2E,
-		jumpIfDustMan: 0x2F,
-		jumpIfProtoMan: 0x30,
+		jumpIfMegaMan: CompText8756C9C_unk37_id,
+		jumpIfHeatMan: CompText8756C9C_unk38_id,
+		jumpIfElecMan: CompText8756C9C_unk39_id,
+		jumpIfSlashMan: CompText8756C9C_unk40_id,
+		jumpIfEraseMan: CompText8756C9C_unk41_id,
+		jumpIfChargeMan: CompText8756C9C_unk42_id,
+		jumpIfSpoutMan: CompText8756C9C_unk43_id,
+		jumpIfTomahawkMan: CompText8756C9C_unk44_id,
+		jumpIfTenguMan: CompText8756C9C_unk45_id,
+		jumpIfGroundMan: CompText8756C9C_unk46_id,
+		jumpIfDustMan: CompText8756C9C_unk47_id,
+		jumpIfProtoMan: CompText8756C9C_unk48_id,
 	]
 
 	def_text_script CompText8756C9C_unk36

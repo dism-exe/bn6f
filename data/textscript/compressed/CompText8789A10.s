@@ -36,8 +36,8 @@ CompText8789A10::
 
 	def_text_script CompText8789A10_unk2
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x5,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8789A10_unk5_id,
 	]
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
@@ -195,13 +195,13 @@ CompText8789A10::
 	def_text_script CompText8789A10_unk50
 	ts_check_flag [
 		flag: 0x7F3,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x34,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8789A10_unk52_id,
 	]
 	ts_check_flag [
 		flag: 0x689,
-		jumpIfTrue: 0x33,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8789A10_unk51_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
@@ -226,8 +226,8 @@ CompText8789A10::
 	.string "anymore..."
 	ts_key_wait any=0x0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x35,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8789A10_unk53_id,
 	]
 	ts_clear_msg
 	ts_mugshot_hide

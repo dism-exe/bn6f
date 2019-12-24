@@ -22,7 +22,7 @@ CompText87CBD04::
 	.string "always do!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87CBD04_unk1_id
 
 	def_text_script CompText87CBD04_unk1
 	ts_mugshot_show mugshot=0x4D
@@ -75,7 +75,7 @@ CompText87CBD04::
 	.string "explodes!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87CBD04_unk4_id
 
 	def_text_script CompText87CBD04_unk4
 	ts_mugshot_show mugshot=0x0
@@ -85,7 +85,7 @@ CompText87CBD04::
 	.string "doing...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87CBD04_unk5_id
 
 	def_text_script CompText87CBD04_unk5
 	ts_mugshot_show mugshot=0x24

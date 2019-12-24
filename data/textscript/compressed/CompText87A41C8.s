@@ -141,7 +141,7 @@ CompText87A41C8::
 	.string "the Expo opens,OK?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A41C8_unk3_id
 
 	def_text_script CompText87A41C8_unk3
 	ts_mugshot_show mugshot=0x6
@@ -200,7 +200,7 @@ CompText87A41C8::
 	.string "your rival!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A41C8_unk7_id
 
 	def_text_script CompText87A41C8_unk7
 	ts_mugshot_show mugshot=0x0
@@ -212,7 +212,7 @@ CompText87A41C8::
 	.string "be rivals! Always!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87A41C8_unk8_id
 
 	def_text_script CompText87A41C8_unk8
 	ts_mugshot_show mugshot=0x3
@@ -234,7 +234,7 @@ CompText87A41C8::
 	.string "... Waaah..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87A41C8_unk9_id
 
 	def_text_script CompText87A41C8_unk9
 	ts_mugshot_show mugshot=0x0
@@ -246,7 +246,7 @@ CompText87A41C8::
 	.string "keep in touch."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87A41C8_unk10_id
 
 	def_text_script CompText87A41C8_unk10
 	ts_mugshot_show mugshot=0x13
@@ -277,7 +277,7 @@ CompText87A41C8::
 	.string "see that..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87A41C8_unk11_id
 
 	def_text_script CompText87A41C8_unk11
 	ts_mugshot_show mugshot=0x0
@@ -295,7 +295,7 @@ CompText87A41C8::
 	.string "be my teacher!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87A41C8_unk12_id
 
 	def_text_script CompText87A41C8_unk12
 	ts_mugshot_show mugshot=0x13
@@ -303,7 +303,7 @@ CompText87A41C8::
 	.string "Lan... *sniffle*..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87A41C8_unk13_id
 
 	def_text_script CompText87A41C8_unk13
 	ts_mugshot_hide
@@ -311,14 +311,14 @@ CompText87A41C8::
 	.string "Hey,take care,Lan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87A41C8_unk14_id
 
 	def_text_script CompText87A41C8_unk14
 	ts_msg_open
 	.string "Come visit a lot!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87A41C8_unk15_id
 
 	def_text_script CompText87A41C8_unk15
 	ts_msg_open
@@ -326,14 +326,14 @@ CompText87A41C8::
 	.string "kinda lonely..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87A41C8_unk16_id
 
 	def_text_script CompText87A41C8_unk16
 	ts_msg_open
 	.string "Good luck!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87A41C8_unk17_id
 
 	def_text_script CompText87A41C8_unk17
 	ts_mugshot_show mugshot=0x0
@@ -344,7 +344,7 @@ CompText87A41C8::
 	.string "I've gotta go now."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87A41C8_unk18_id
 
 	def_text_script CompText87A41C8_unk18
 	ts_mugshot_show mugshot=0x1
@@ -372,7 +372,7 @@ CompText87A41C8::
 	.string "... *sniffle*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87A41C8_unk19_id
 
 	def_text_script CompText87A41C8_unk19
 	ts_mugshot_show mugshot=0x0
@@ -380,7 +380,7 @@ CompText87A41C8::
 	.string "Mayl..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87A41C8_unk20_id
 
 	def_text_script CompText87A41C8_unk20
 	ts_mugshot_show mugshot=0x1
@@ -408,7 +408,7 @@ CompText87A41C8::
 	.string "... *sniffle*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87A41C8_unk22_id
 
 	def_text_script CompText87A41C8_unk22
 	ts_mugshot_show mugshot=0x1
@@ -416,7 +416,7 @@ CompText87A41C8::
 	.string "... Yeah."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87A41C8_unk23_id
 
 	def_text_script CompText87A41C8_unk23
 	ts_mugshot_show mugshot=0x0
@@ -436,7 +436,7 @@ CompText87A41C8::
 	.string "Take care!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87A41C8_unk25_id
 
 	def_text_script CompText87A41C8_unk25
 	ts_mugshot_show mugshot=0x2

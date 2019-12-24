@@ -16,7 +16,7 @@ CompText87B36EC::
 	.string "you,drip!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B36EC_unk1_id
 
 	def_text_script CompText87B36EC_unk1
 	ts_mugshot_show mugshot=0x0
@@ -24,7 +24,7 @@ CompText87B36EC::
 	.string "You too,SpoutMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B36EC_unk2_id
 
 	def_text_script CompText87B36EC_unk2
 	ts_mugshot_show mugshot=0x1F
@@ -38,7 +38,7 @@ CompText87B36EC::
 	.string "SeasideArea."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B36EC_unk3_id
 
 	def_text_script CompText87B36EC_unk3
 	ts_mugshot_show mugshot=0x0
@@ -51,7 +51,7 @@ CompText87B36EC::
 	.string "Aquarium?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B36EC_unk4_id
 
 	def_text_script CompText87B36EC_unk4
 	ts_mugshot_show mugshot=0x1F
@@ -66,7 +66,7 @@ CompText87B36EC::
 	.string "way... Heheh!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B36EC_unk5_id
 
 	def_text_script CompText87B36EC_unk5
 	ts_mugshot_show mugshot=0x0
@@ -76,7 +76,7 @@ CompText87B36EC::
 	.string "with teaching me!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B36EC_unk6_id
 
 	def_text_script CompText87B36EC_unk6
 	ts_mugshot_show mugshot=0x1F
@@ -94,7 +94,7 @@ CompText87B36EC::
 	.string "tuition costs!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B36EC_unk7_id
 
 	def_text_script CompText87B36EC_unk7
 	ts_mugshot_show mugshot=0x0
@@ -112,7 +112,7 @@ CompText87B36EC::
 	.string "there?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B36EC_unk8_id
 
 	def_text_script CompText87B36EC_unk8
 	ts_mugshot_show mugshot=0x1F
@@ -132,7 +132,7 @@ CompText87B36EC::
 	.string "you at the Aquarium!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B36EC_unk9_id
 
 	def_text_script CompText87B36EC_unk9
 	ts_mugshot_show mugshot=0x0
@@ -154,7 +154,7 @@ CompText87B36EC::
 	.string "SpoutMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B36EC_unk10_id
 
 	def_text_script CompText87B36EC_unk10
 	ts_mugshot_show mugshot=0x48

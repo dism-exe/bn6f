@@ -16,7 +16,7 @@ CompText87AA7E4::
 	.string "thank you!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87AA7E4_unk1_id
 
 	def_text_script CompText87AA7E4_unk1
 	ts_mugshot_show mugshot=0x37
@@ -115,7 +115,7 @@ CompText87AA7E4::
 	.string "*rumble,rumble!!*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87AA7E4_unk7_id
 
 	def_text_script CompText87AA7E4_unk7
 	ts_mugshot_show mugshot=0x37
@@ -123,7 +123,7 @@ CompText87AA7E4::
 	.string "W-What's going on!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87AA7E4_unk8_id
 
 	def_text_script CompText87AA7E4_unk8
 	ts_mugshot_show mugshot=0x41
@@ -144,7 +144,7 @@ CompText87AA7E4::
 	.string "stopped!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87AA7E4_unk10_id
 
 	def_text_script CompText87AA7E4_unk10
 	ts_mugshot_show mugshot=0x41
@@ -184,7 +184,7 @@ CompText87AA7E4::
 	.string "causing them...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87AA7E4_unk12_id
 
 	def_text_script CompText87AA7E4_unk12
 	ts_mugshot_show mugshot=0x0
@@ -198,7 +198,7 @@ CompText87AA7E4::
 	.string "SeasideArea1!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87AA7E4_unk13_id
 
 	def_text_script CompText87AA7E4_unk13
 	ts_mugshot_show mugshot=0x37

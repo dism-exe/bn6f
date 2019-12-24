@@ -12,13 +12,13 @@ CompText87A07DC::
 	def_text_script CompText87A07DC_unk0
 	ts_check_flag [
 		flag: 0x111A,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A07DC_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1119,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A07DC_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1119
 	ts_mugshot_show mugshot=0x46
@@ -152,9 +152,9 @@ CompText87A07DC::
 		chip: 0x5F,
 		code: 0x1,
 		amount: 0x1,
-		jumpIfEqual: 0xFF,
-		jumpIfGreater: 0xFF,
-		jumpIfLess: 0x3,
+		jumpIfEqual: TS_CONTINUE,
+		jumpIfGreater: TS_CONTINUE,
+		jumpIfLess: CompText87A07DC_unk3_id,
 	]
 	ts_mugshot_show mugshot=0x46
 	ts_msg_open

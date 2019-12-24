@@ -16,7 +16,7 @@ CompText87D05B4::
 	.string "the stamps!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D05B4_unk1_id
 
 	def_text_script CompText87D05B4_unk1
 	ts_mugshot_show mugshot=0x2
@@ -41,7 +41,7 @@ CompText87D05B4::
 	.string "waiting to see this!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87D05B4_unk3_id
 
 	def_text_script CompText87D05B4_unk3
 	ts_mugshot_show mugshot=0x0
@@ -50,7 +50,7 @@ CompText87D05B4::
 	.string "excited about it..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87D05B4_unk4_id
 
 	def_text_script CompText87D05B4_unk4
 	ts_mugshot_show mugshot=0x33
@@ -60,7 +60,7 @@ CompText87D05B4::
 	.string "NetBattle,too!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87D05B4_unk5_id
 
 	def_text_script CompText87D05B4_unk5
 	ts_mugshot_show mugshot=0x0
@@ -79,7 +79,7 @@ CompText87D05B4::
 	.string "Iris?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87D05B4_unk7_id
 
 	def_text_script CompText87D05B4_unk7
 	ts_mugshot_show mugshot=0x11
@@ -87,7 +87,7 @@ CompText87D05B4::
 	.string "Yes."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87D05B4_unk8_id
 
 	def_text_script CompText87D05B4_unk8
 	ts_mugshot_show mugshot=0x3
@@ -102,7 +102,7 @@ CompText87D05B4::
 	.string "strawberry milk!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87D05B4_unk9_id
 
 	def_text_script CompText87D05B4_unk9
 	ts_mugshot_show mugshot=0x11
@@ -110,7 +110,7 @@ CompText87D05B4::
 	.string "Really?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87D05B4_unk10_id
 
 	def_text_script CompText87D05B4_unk10
 	ts_mugshot_show mugshot=0x3
@@ -119,7 +119,7 @@ CompText87D05B4::
 	.string "visit any time!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87D05B4_unk11_id
 
 	def_text_script CompText87D05B4_unk11
 	ts_mugshot_show mugshot=0x11
@@ -127,7 +127,7 @@ CompText87D05B4::
 	.string "......"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87D05B4_unk12_id
 
 	def_text_script CompText87D05B4_unk12
 	ts_mugshot_show mugshot=0x1
@@ -135,7 +135,7 @@ CompText87D05B4::
 	.string "What's wrong,Iris?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D05B4_unk13_id
 
 	def_text_script CompText87D05B4_unk13
 	ts_mugshot_show mugshot=0x11
@@ -145,7 +145,7 @@ CompText87D05B4::
 	.string "to strawberry milk!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87D05B4_unk14_id
 
 	def_text_script CompText87D05B4_unk14
 	ts_mugshot_show mugshot=0x0
@@ -184,7 +184,7 @@ CompText87D05B4::
 	.string "chance..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87D05B4_unk18_id
 
 	def_text_script CompText87D05B4_unk18
 	ts_mugshot_show mugshot=0x2D
@@ -194,7 +194,7 @@ CompText87D05B4::
 	.string "through the front..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87D05B4_unk19_id
 
 	def_text_script CompText87D05B4_unk19
 	ts_mugshot_show mugshot=0x41

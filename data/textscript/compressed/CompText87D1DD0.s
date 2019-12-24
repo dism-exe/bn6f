@@ -37,7 +37,7 @@ CompText87D1DD0::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D1DD0_unk1_id
 
 	def_text_script CompText87D1DD0_unk1
 	ts_mugshot_show mugshot=0x0
@@ -62,7 +62,7 @@ CompText87D1DD0::
 	.string "now...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87D1DD0_unk3_id
 
 	def_text_script CompText87D1DD0_unk3
 	ts_mugshot_show mugshot=0x2E
@@ -77,7 +77,7 @@ CompText87D1DD0::
 	.string "Ito,hurry it up!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87D1DD0_unk5_id
 
 	def_text_script CompText87D1DD0_unk5
 	ts_mugshot_show mugshot=0x2D
@@ -91,7 +91,7 @@ CompText87D1DD0::
 	.string "MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87D1DD0_unk6_id
 
 	def_text_script CompText87D1DD0_unk6
 	ts_mugshot_show mugshot=0x55
@@ -138,7 +138,7 @@ CompText87D1DD0::
 	.string "Let's do it,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87D1DD0_unk11_id
 
 	def_text_script CompText87D1DD0_unk11
 	ts_mugshot_show mugshot=0x37

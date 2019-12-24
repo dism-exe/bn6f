@@ -253,8 +253,8 @@ CompText87876E4::
 	def_text_script CompText87876E4_unk50
 	ts_check_flag [
 		flag: 0x541,
-		jumpIfTrue: 0x33,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87876E4_unk51_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x541
 	ts_msg_open
@@ -314,8 +314,8 @@ CompText87876E4::
 	def_text_script CompText87876E4_unk52
 	ts_check_flag [
 		flag: 0x50A,
-		jumpIfTrue: 0x35,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87876E4_unk53_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	ts_mugshot_show mugshot=0x45

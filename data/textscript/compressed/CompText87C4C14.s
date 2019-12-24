@@ -22,7 +22,7 @@ CompText87C4C14::
 	.string "MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87C4C14_unk2_id
 
 	def_text_script CompText87C4C14_unk2
 	ts_mugshot_show mugshot=0x51
@@ -32,7 +32,7 @@ CompText87C4C14::
 	.string "MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C4C14_unk3_id
 
 	def_text_script CompText87C4C14_unk3
 	ts_mugshot_show mugshot=0x37
@@ -41,7 +41,7 @@ CompText87C4C14::
 	.string "Let my friends go!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C4C14_unk4_id
 
 	def_text_script CompText87C4C14_unk4
 	ts_mugshot_show mugshot=0x52
@@ -56,7 +56,7 @@ CompText87C4C14::
 	.string "them go! Awooga!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C4C14_unk5_id
 
 	def_text_script CompText87C4C14_unk5
 	ts_mugshot_show mugshot=0x51
@@ -70,7 +70,7 @@ CompText87C4C14::
 	.string "us it's not 10 on 1!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C4C14_unk6_id
 
 	def_text_script CompText87C4C14_unk6
 	ts_mugshot_show mugshot=0x2A
@@ -80,7 +80,7 @@ CompText87C4C14::
 	.string "the bad guys,ar'!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87C4C14_unk7_id
 
 	def_text_script CompText87C4C14_unk7
 	ts_mugshot_show mugshot=0x0
@@ -88,7 +88,7 @@ CompText87C4C14::
 	.string "Argh!!..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87C4C14_unk8_id
 
 	def_text_script CompText87C4C14_unk8
 	ts_mugshot_show mugshot=0x2A
@@ -118,7 +118,7 @@ CompText87C4C14::
 	.string "again...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87C4C14_unk9_id
 
 	def_text_script CompText87C4C14_unk9
 	ts_mugshot_hide
@@ -126,7 +126,7 @@ CompText87C4C14::
 	.string "......"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87C4C14_unk10_id
 
 	def_text_script CompText87C4C14_unk10
 	ts_mugshot_show mugshot=0x2A
@@ -144,7 +144,7 @@ CompText87C4C14::
 	.string "Gahahaha!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87C4C14_unk11_id
 
 	def_text_script CompText87C4C14_unk11
 	ts_mugshot_show mugshot=0x0
@@ -160,7 +160,7 @@ CompText87C4C14::
 	.string "Battle routine,set!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87C4C14_unk12_id
 
 	def_text_script CompText87C4C14_unk12
 	ts_mugshot_show mugshot=0x37
@@ -168,7 +168,7 @@ CompText87C4C14::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87C4C14_unk13_id
 
 	def_text_script CompText87C4C14_unk13
 	ts_mugshot_show mugshot=0x51

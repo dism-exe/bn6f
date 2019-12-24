@@ -15,7 +15,7 @@ CompText87BDF4C::
 	.string "Hang on,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BDF4C_unk1_id
 
 	def_text_script CompText87BDF4C_unk1
 	ts_mugshot_show mugshot=0x37
@@ -38,8 +38,8 @@ CompText87BDF4C::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x3,
-		jumpIfCybeastFalzar: 0x4,
+		jumpIfCybeastGregar: CompText87BDF4C_unk3_id,
+		jumpIfCybeastFalzar: CompText87BDF4C_unk4_id,
 	]
 
 	def_text_script CompText87BDF4C_unk3
@@ -54,7 +54,7 @@ CompText87BDF4C::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87BDF4C_unk5_id
 
 	def_text_script CompText87BDF4C_unk4
 	ts_mugshot_show mugshot=0x59
@@ -68,22 +68,22 @@ CompText87BDF4C::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87BDF4C_unk5_id
 
 	def_text_script CompText87BDF4C_unk5
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0x9,
-		jumpIfSlashMan: 0x7,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0x6,
-		jumpIfTomahawkMan: 0xA,
-		jumpIfTenguMan: 0x8,
-		jumpIfGroundMan: 0xFF,
-		jumpIfDustMan: 0xFF,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: CompText87BDF4C_unk9_id,
+		jumpIfSlashMan: CompText87BDF4C_unk7_id,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: CompText87BDF4C_unk6_id,
+		jumpIfTomahawkMan: CompText87BDF4C_unk10_id,
+		jumpIfTenguMan: CompText87BDF4C_unk8_id,
+		jumpIfGroundMan: TS_CONTINUE,
+		jumpIfDustMan: TS_CONTINUE,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x47
 	ts_msg_open
@@ -91,7 +91,7 @@ CompText87BDF4C::
 	.string "What's the plan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87BDF4C_unk11_id
 
 	def_text_script CompText87BDF4C_unk6
 	ts_mugshot_show mugshot=0x48
@@ -101,7 +101,7 @@ CompText87BDF4C::
 	.string "should I do,drip!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87BDF4C_unk11_id
 
 	def_text_script CompText87BDF4C_unk7
 	ts_mugshot_show mugshot=0x4B
@@ -110,7 +110,7 @@ CompText87BDF4C::
 	.string "Slash him...!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87BDF4C_unk11_id
 
 	def_text_script CompText87BDF4C_unk8
 	ts_mugshot_show mugshot=0x4C
@@ -120,7 +120,7 @@ CompText87BDF4C::
 	.string "shall I do!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87BDF4C_unk11_id
 
 	def_text_script CompText87BDF4C_unk9
 	ts_mugshot_show mugshot=0x49
@@ -130,7 +130,7 @@ CompText87BDF4C::
 	.string "him a bit,OK,Lan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87BDF4C_unk11_id
 
 	def_text_script CompText87BDF4C_unk10
 	ts_mugshot_show mugshot=0x4A
@@ -144,7 +144,7 @@ CompText87BDF4C::
 	.string "He's charging!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87BDF4C_unk11_id
 
 	def_text_script CompText87BDF4C_unk11
 	ts_mugshot_show mugshot=0x0
@@ -161,22 +161,22 @@ CompText87BDF4C::
 	.string "Please!! Wake up!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87BDF4C_unk12_id
 
 	def_text_script CompText87BDF4C_unk12
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0x10,
-		jumpIfSlashMan: 0xE,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0xD,
-		jumpIfTomahawkMan: 0x11,
-		jumpIfTenguMan: 0xF,
-		jumpIfGroundMan: 0xFF,
-		jumpIfDustMan: 0xFF,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: CompText87BDF4C_unk16_id,
+		jumpIfSlashMan: CompText87BDF4C_unk14_id,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: CompText87BDF4C_unk13_id,
+		jumpIfTomahawkMan: CompText87BDF4C_unk17_id,
+		jumpIfTenguMan: CompText87BDF4C_unk15_id,
+		jumpIfGroundMan: TS_CONTINUE,
+		jumpIfDustMan: TS_CONTINUE,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x47
 	ts_msg_open
@@ -191,7 +191,7 @@ CompText87BDF4C::
 	.string "operate!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87BDF4C_unk18_id
 
 	def_text_script CompText87BDF4C_unk13
 	ts_mugshot_show mugshot=0x48
@@ -201,7 +201,7 @@ CompText87BDF4C::
 	.string "evaporated,drip..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87BDF4C_unk18_id
 
 	def_text_script CompText87BDF4C_unk14
 	ts_mugshot_show mugshot=0x4B
@@ -211,7 +211,7 @@ CompText87BDF4C::
 	.string "YOUR hands!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87BDF4C_unk18_id
 
 	def_text_script CompText87BDF4C_unk15
 	ts_mugshot_show mugshot=0x4C
@@ -228,7 +228,7 @@ CompText87BDF4C::
 	.string "over!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87BDF4C_unk18_id
 
 	def_text_script CompText87BDF4C_unk16
 	ts_mugshot_show mugshot=0x49
@@ -242,7 +242,7 @@ CompText87BDF4C::
 	.string "kinds of decisions!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87BDF4C_unk18_id
 
 	def_text_script CompText87BDF4C_unk17
 	ts_mugshot_show mugshot=0x4A
@@ -252,7 +252,7 @@ CompText87BDF4C::
 	.string "until the end..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87BDF4C_unk18_id
 
 	def_text_script CompText87BDF4C_unk18
 	ts_mugshot_show mugshot=0x0
@@ -265,8 +265,8 @@ CompText87BDF4C::
 
 	def_text_script CompText87BDF4C_unk19
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x14,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87BDF4C_unk20_id,
 	]
 	ts_mugshot_show mugshot=0x58
 	ts_msg_open
@@ -279,7 +279,7 @@ CompText87BDF4C::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87BDF4C_unk21_id
 
 	def_text_script CompText87BDF4C_unk20
 	ts_mugshot_show mugshot=0x59
@@ -293,22 +293,22 @@ CompText87BDF4C::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87BDF4C_unk21_id
 
 	def_text_script CompText87BDF4C_unk21
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0x19,
-		jumpIfSlashMan: 0x17,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0x16,
-		jumpIfTomahawkMan: 0x1A,
-		jumpIfTenguMan: 0x18,
-		jumpIfGroundMan: 0xFF,
-		jumpIfDustMan: 0xFF,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: CompText87BDF4C_unk25_id,
+		jumpIfSlashMan: CompText87BDF4C_unk23_id,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: CompText87BDF4C_unk22_id,
+		jumpIfTomahawkMan: CompText87BDF4C_unk26_id,
+		jumpIfTenguMan: CompText87BDF4C_unk24_id,
+		jumpIfGroundMan: TS_CONTINUE,
+		jumpIfDustMan: TS_CONTINUE,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x47
 	ts_msg_open
@@ -427,18 +427,18 @@ CompText87BDF4C::
 
 	def_text_script CompText87BDF4C_unk30
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0x22,
-		jumpIfSlashMan: 0x20,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0x1F,
-		jumpIfTomahawkMan: 0x23,
-		jumpIfTenguMan: 0x21,
-		jumpIfGroundMan: 0xFF,
-		jumpIfDustMan: 0xFF,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: CompText87BDF4C_unk34_id,
+		jumpIfSlashMan: CompText87BDF4C_unk32_id,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: CompText87BDF4C_unk31_id,
+		jumpIfTomahawkMan: CompText87BDF4C_unk35_id,
+		jumpIfTenguMan: CompText87BDF4C_unk33_id,
+		jumpIfGroundMan: TS_CONTINUE,
+		jumpIfDustMan: TS_CONTINUE,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x47
 	ts_msg_open

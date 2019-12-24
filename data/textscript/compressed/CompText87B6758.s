@@ -20,7 +20,7 @@ CompText87B6758::
 	.string "like..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B6758_unk1_id
 
 	def_text_script CompText87B6758_unk1
 	ts_mugshot_show mugshot=0x37
@@ -35,7 +35,7 @@ CompText87B6758::
 	.string "like us NetNavis."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B6758_unk2_id
 
 	def_text_script CompText87B6758_unk2
 	ts_mugshot_show mugshot=0x0
@@ -49,7 +49,7 @@ CompText87B6758::
 	.string "MegaMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B6758_unk3_id
 
 	def_text_script CompText87B6758_unk3
 	ts_mugshot_show mugshot=0x37
@@ -120,7 +120,7 @@ CompText87B6758::
 	.string "harassing it!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B6758_unk8_id
 
 	def_text_script CompText87B6758_unk8
 	ts_mugshot_show mugshot=0x0
@@ -133,7 +133,7 @@ CompText87B6758::
 	.string "Maybe it's asleep?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B6758_unk9_id
 
 	def_text_script CompText87B6758_unk9
 	ts_mugshot_show mugshot=0x37
@@ -150,7 +150,7 @@ CompText87B6758::
 	.string "just a tree..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B6758_unk10_id
 
 	def_text_script CompText87B6758_unk10
 	ts_sound_play_bgm track=0x63
@@ -184,7 +184,7 @@ CompText87B6758::
 	.string "What? What?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87B6758_unk12_id
 
 	def_text_script CompText87B6758_unk12
 	ts_mugshot_hide
@@ -198,7 +198,7 @@ CompText87B6758::
 	.string "SITUATION!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87B6758_unk13_id
 
 	def_text_script CompText87B6758_unk13
 	ts_mugshot_show mugshot=0x37
@@ -212,7 +212,7 @@ CompText87B6758::
 	.string "outside!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87B6758_unk14_id
 
 	def_text_script CompText87B6758_unk14
 	ts_mugshot_show mugshot=0x0
@@ -227,7 +227,7 @@ CompText87B6758::
 	.string "Waaah!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87B6758_unk16_id
 
 	def_text_script CompText87B6758_unk16
 	ts_mugshot_hide
@@ -238,7 +238,7 @@ CompText87B6758::
 	.string "BEGIN CAPTURE!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87B6758_unk17_id
 
 	def_text_script CompText87B6758_unk17
 	ts_mugshot_show mugshot=0x0
@@ -249,7 +249,7 @@ CompText87B6758::
 	.string "Me...? Again!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87B6758_unk18_id
 
 	def_text_script CompText87B6758_unk18
 	ts_mugshot_hide
@@ -288,7 +288,7 @@ CompText87B6758::
 	.string "THE JUDGETREE."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87B6758_unk19_id
 
 	def_text_script CompText87B6758_unk19
 	ts_mugshot_show mugshot=0x0
@@ -302,7 +302,7 @@ CompText87B6758::
 	.string "suspect anyway!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87B6758_unk20_id
 
 	def_text_script CompText87B6758_unk20
 	ts_mugshot_show mugshot=0x37
@@ -311,7 +311,7 @@ CompText87B6758::
 	.string "the JudgeTree alone."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87B6758_unk21_id
 
 	def_text_script CompText87B6758_unk21
 	ts_mugshot_show mugshot=0x0
@@ -319,7 +319,7 @@ CompText87B6758::
 	.string "Oh,come on!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87B6758_unk22_id
 
 	def_text_script CompText87B6758_unk22
 	ts_mugshot_show mugshot=0x37
@@ -329,7 +329,7 @@ CompText87B6758::
 	.string "portant,and,yeah..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87B6758_unk23_id
 
 	def_text_script CompText87B6758_unk23
 	ts_mugshot_hide
@@ -379,7 +379,7 @@ CompText87B6758::
 	.string "... What's going on?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87B6758_unk28_id
 
 	def_text_script CompText87B6758_unk28
 	ts_mugshot_show mugshot=0x2C
@@ -398,7 +398,7 @@ CompText87B6758::
 	.string "guy from before!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87B6758_unk30_id
 
 	def_text_script CompText87B6758_unk30
 	ts_mugshot_show mugshot=0x37
@@ -415,7 +415,7 @@ CompText87B6758::
 	.string "super-fast speed...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=CompText87B6758_unk31_id
 
 	def_text_script CompText87B6758_unk31
 	ts_mugshot_show mugshot=0x0
@@ -440,7 +440,7 @@ CompText87B6758::
 	.string "still oblivious."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=33
+	ts_jump target=CompText87B6758_unk33_id
 
 	def_text_script CompText87B6758_unk33
 	ts_mugshot_show mugshot=0x0
@@ -449,7 +449,7 @@ CompText87B6758::
 	.string "again! Look..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=34
+	ts_jump target=CompText87B6758_unk34_id
 
 	def_text_script CompText87B6758_unk34
 	ts_mugshot_show mugshot=0x2C
@@ -462,7 +462,7 @@ CompText87B6758::
 	.string "call a \"set-up\"."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=35
+	ts_jump target=CompText87B6758_unk35_id
 
 	def_text_script CompText87B6758_unk35
 	ts_mugshot_show mugshot=0x0
@@ -471,7 +471,7 @@ CompText87B6758::
 	.string "What? By who!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=36
+	ts_jump target=CompText87B6758_unk36_id
 
 	def_text_script CompText87B6758_unk36
 	ts_mugshot_show mugshot=0x2C
@@ -504,7 +504,7 @@ CompText87B6758::
 	.string "......"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=37
+	ts_jump target=CompText87B6758_unk37_id
 
 	def_text_script CompText87B6758_unk37
 	ts_mugshot_show mugshot=0x0
@@ -520,7 +520,7 @@ CompText87B6758::
 	.string "that happen!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=38
+	ts_jump target=CompText87B6758_unk38_id
 
 	def_text_script CompText87B6758_unk38
 	ts_mugshot_show mugshot=0x2D
@@ -537,7 +537,7 @@ CompText87B6758::
 	.string "Lan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87B6758_unk40_id
 
 	def_text_script CompText87B6758_unk40
 	ts_mugshot_show mugshot=0x0
@@ -550,7 +550,7 @@ CompText87B6758::
 	.string "JudgeTree..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=41
+	ts_jump target=CompText87B6758_unk41_id
 
 	def_text_script CompText87B6758_unk41
 	ts_mugshot_show mugshot=0x2D
@@ -576,7 +576,7 @@ CompText87B6758::
 	.string "And your name is...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=43
+	ts_jump target=CompText87B6758_unk43_id
 
 	def_text_script CompText87B6758_unk43
 	ts_mugshot_show mugshot=0x2C
@@ -585,7 +585,7 @@ CompText87B6758::
 	.string "to answer you."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=44
+	ts_jump target=CompText87B6758_unk44_id
 
 	def_text_script CompText87B6758_unk44
 	ts_mugshot_show mugshot=0x2D
@@ -608,7 +608,7 @@ CompText87B6758::
 	.string "get a warrant."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=45
+	ts_jump target=CompText87B6758_unk45_id
 
 	def_text_script CompText87B6758_unk45
 	ts_mugshot_show mugshot=0x2C
@@ -635,7 +635,7 @@ CompText87B6758::
 	.string "that guy..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=47
+	ts_jump target=CompText87B6758_unk47_id
 
 	def_text_script CompText87B6758_unk47
 	ts_mugshot_show mugshot=0x2D

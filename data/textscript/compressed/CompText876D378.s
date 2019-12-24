@@ -13,8 +13,8 @@ CompText876D378::
 	ts_check_chapter [
 		lower: 0x21,
 		upper: 0x21,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText876D378_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x16
 	ts_msg_open
@@ -34,8 +34,8 @@ CompText876D378::
 	ts_check_chapter [
 		lower: 0x21,
 		upper: 0x21,
-		jumpIfInRange: 0x6,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText876D378_unk6_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xA
 	ts_msg_open

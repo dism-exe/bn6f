@@ -22,7 +22,7 @@ CompText87C00B0::
 	.string "Tsk!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87C00B0_unk2_id
 
 	def_text_script CompText87C00B0_unk2
 	ts_mugshot_show mugshot=0x0
@@ -37,7 +37,7 @@ CompText87C00B0::
 	.string "Building person!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C00B0_unk3_id
 
 	def_text_script CompText87C00B0_unk3
 	ts_mugshot_show mugshot=0xF
@@ -76,7 +76,7 @@ CompText87C00B0::
 	.string "Program!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C00B0_unk5_id
 
 	def_text_script CompText87C00B0_unk5
 	ts_mugshot_show mugshot=0x2E
@@ -111,7 +111,7 @@ CompText87C00B0::
 	.string "does!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C00B0_unk6_id
 
 	def_text_script CompText87C00B0_unk6
 	ts_mugshot_show mugshot=0x0
@@ -120,7 +120,7 @@ CompText87C00B0::
 	.string "are \"they\"!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87C00B0_unk7_id
 
 	def_text_script CompText87C00B0_unk7
 	ts_mugshot_show mugshot=0x2E
@@ -145,7 +145,7 @@ CompText87C00B0::
 	.string "Program!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87C00B0_unk8_id
 
 	def_text_script CompText87C00B0_unk8
 	ts_mugshot_show mugshot=0x56

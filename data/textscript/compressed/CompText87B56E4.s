@@ -20,7 +20,7 @@ CompText87B56E4::
 	.string "the courthouse."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B56E4_unk1_id
 
 	def_text_script CompText87B56E4_unk1
 	ts_sound_play_bgm track=0x63
@@ -44,7 +44,7 @@ CompText87B56E4::
 	.string "say something?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B56E4_unk4_id
 
 	def_text_script CompText87B56E4_unk4
 	ts_mugshot_show mugshot=0x2C
@@ -56,7 +56,7 @@ CompText87B56E4::
 	.string "you are."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B56E4_unk5_id
 
 	def_text_script CompText87B56E4_unk5
 	ts_mugshot_show mugshot=0x0
@@ -68,7 +68,7 @@ CompText87B56E4::
 	.string "my name...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B56E4_unk6_id
 
 	def_text_script CompText87B56E4_unk6
 	ts_mugshot_show mugshot=0x2C
@@ -81,7 +81,7 @@ CompText87B56E4::
 	.string "This is a command..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B56E4_unk7_id
 
 	def_text_script CompText87B56E4_unk7
 	ts_mugshot_show mugshot=0x0
@@ -94,7 +94,7 @@ CompText87B56E4::
 	.string "don't know!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B56E4_unk8_id
 
 	def_text_script CompText87B56E4_unk8
 	ts_mugshot_show mugshot=0x2C
@@ -103,7 +103,7 @@ CompText87B56E4::
 	.string "duty..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B56E4_unk9_id
 
 	def_text_script CompText87B56E4_unk9
 	ts_mugshot_show mugshot=0x0
@@ -129,7 +129,7 @@ CompText87B56E4::
 	.string "Let's go,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87B56E4_unk11_id
 
 	def_text_script CompText87B56E4_unk11
 	ts_mugshot_show mugshot=0x37

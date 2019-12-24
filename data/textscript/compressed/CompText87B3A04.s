@@ -21,7 +21,7 @@ CompText87B3A04::
 	.string "doin' here?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B3A04_unk1_id
 
 	def_text_script CompText87B3A04_unk1
 	ts_mugshot_show mugshot=0x48
@@ -30,7 +30,7 @@ CompText87B3A04::
 	.string "today,drip!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B3A04_unk2_id
 
 	def_text_script CompText87B3A04_unk2
 	ts_mugshot_show mugshot=0x42
@@ -77,7 +77,7 @@ CompText87B3A04::
 	.string "I'm here,drip!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B3A04_unk7_id
 
 	def_text_script CompText87B3A04_unk7
 	ts_mugshot_show mugshot=0x1F
@@ -91,7 +91,7 @@ CompText87B3A04::
 	.string "the cyberwater!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B3A04_unk8_id
 
 	def_text_script CompText87B3A04_unk8
 	ts_mugshot_show mugshot=0x0
@@ -99,7 +99,7 @@ CompText87B3A04::
 	.string "What!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B3A04_unk9_id
 
 	def_text_script CompText87B3A04_unk9
 	ts_mugshot_show mugshot=0x1F
@@ -118,7 +118,7 @@ CompText87B3A04::
 	.string "Net?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B3A04_unk10_id
 
 	def_text_script CompText87B3A04_unk10
 	ts_mugshot_show mugshot=0x0
@@ -126,7 +126,7 @@ CompText87B3A04::
 	.string "Eh? Me!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87B3A04_unk11_id
 
 	def_text_script CompText87B3A04_unk11
 	ts_mugshot_show mugshot=0x1F
@@ -144,7 +144,7 @@ CompText87B3A04::
 	.string "*sniffle...*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87B3A04_unk12_id
 
 	def_text_script CompText87B3A04_unk12
 	ts_mugshot_show mugshot=0x0
@@ -158,7 +158,7 @@ CompText87B3A04::
 	.string "for you!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87B3A04_unk13_id
 
 	def_text_script CompText87B3A04_unk13
 	ts_mugshot_show mugshot=0x1F
@@ -171,7 +171,7 @@ CompText87B3A04::
 	.string "savior!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87B3A04_unk14_id
 
 	def_text_script CompText87B3A04_unk14
 	ts_mugshot_show mugshot=0x0
@@ -180,7 +180,7 @@ CompText87B3A04::
 	.string "SpoutMan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87B3A04_unk15_id
 
 	def_text_script CompText87B3A04_unk15
 	ts_mugshot_show mugshot=0x48

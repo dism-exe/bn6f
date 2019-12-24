@@ -12,8 +12,8 @@ CompText87956C4::
 	def_text_script CompText87956C4_unk0
 	ts_check_shop_stock [
 		shop: 0x5,
-		jumpIfStocked: 0xFF,
-		jumpIfSoldOut: 0x2,
+		jumpIfStocked: TS_CONTINUE,
+		jumpIfSoldOut: CompText87956C4_unk2_id,
 	]
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
@@ -74,15 +74,15 @@ CompText87956C4::
 	def_text_script CompText87956C4_unk6
 	ts_check_flag [
 		flag: 0xCD3,
-		jumpIfTrue: 0x9,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87956C4_unk9_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCD1,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87956C4_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_jump target=9
+	ts_jump target=CompText87956C4_unk9_id
 
 	def_text_script CompText87956C4_unk7
 	ts_mugshot_show mugshot=0x3C
@@ -190,13 +190,13 @@ CompText87956C4::
 	def_text_script CompText87956C4_unk20
 	ts_check_flag [
 		flag: 0xCD4,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87956C4_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCD3,
-		jumpIfTrue: 0x16,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87956C4_unk22_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

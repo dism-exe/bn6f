@@ -20,7 +20,7 @@ CompText87B0614::
 	.string "... MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B0614_unk1_id
 
 	def_text_script CompText87B0614_unk1
 	ts_mugshot_show mugshot=0x37
@@ -40,7 +40,7 @@ CompText87B0614::
 	.string "I've gotta go!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B0614_unk3_id
 
 	def_text_script CompText87B0614_unk3
 	ts_mugshot_show mugshot=0x11
@@ -48,7 +48,7 @@ CompText87B0614::
 	.string "... But..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B0614_unk4_id
 
 	def_text_script CompText87B0614_unk4
 	ts_mugshot_show mugshot=0x0
@@ -72,7 +72,7 @@ CompText87B0614::
 	.string "Let's go,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B0614_unk6_id
 
 	def_text_script CompText87B0614_unk6
 	ts_mugshot_show mugshot=0x37

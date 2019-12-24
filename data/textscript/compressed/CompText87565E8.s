@@ -10,12 +10,12 @@ CompText87565E8::
 	text_archive_start
 
 	def_text_script CompText87565E8_unk0
-	ts_jump target=27
+	ts_jump target=CompText87565E8_unk27_id
 
 	def_text_script CompText87565E8_unk1
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0xB,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87565E8_unk11_id,
 	]
 	ts_msg_open
 	.string "A poster of\n"
@@ -49,8 +49,8 @@ CompText87565E8::
 
 	def_text_script CompText87565E8_unk4
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0xA,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87565E8_unk10_id,
 	]
 	ts_msg_open
 	.string "There are still a\n"
@@ -118,8 +118,8 @@ CompText87565E8::
 
 	def_text_script CompText87565E8_unk9
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0xC,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87565E8_unk12_id,
 	]
 	ts_msg_open
 	.string "It's one of the\n"
@@ -243,8 +243,8 @@ CompText87565E8::
 	def_text_script CompText87565E8_unk22
 	ts_check_flag [
 		flag: 0x1704,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x17,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87565E8_unk23_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -276,15 +276,15 @@ CompText87565E8::
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	ts_call_save [
-		jumpIfSuccessful: 0xFF,
-		jumpIfFailed: 0x19,
-		jumpUnused: 0x0,
+		jumpIfSuccessful: TS_CONTINUE,
+		jumpIfFailed: CompText87565E8_unk25_id,
+		jumpUnused: CompText87565E8_unk0_id,
 	]
 	.string "OK!\n"
 	.string "... All saved!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87565E8_unk24_id
 
 	def_text_script CompText87565E8_unk24
 	ts_mugshot_show mugshot=0x37
@@ -327,8 +327,8 @@ CompText87565E8::
 	def_text_script CompText87565E8_unk27
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1C,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87565E8_unk28_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

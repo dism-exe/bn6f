@@ -3,18 +3,18 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk0
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x14,
-		jumpIfElecMan: 0x64,
-		jumpIfSlashMan: 0x3C,
-		jumpIfEraseMan: 0x8C,
-		jumpIfChargeMan: 0xB4,
-		jumpIfSpoutMan: 0x28,
-		jumpIfTomahawkMan: 0x78,
-		jumpIfTenguMan: 0x50,
-		jumpIfGroundMan: 0xA0,
-		jumpIfDustMan: 0xC8,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScript87DE48C_unk20_id,
+		jumpIfElecMan: TextScript87DE48C_unk100_id,
+		jumpIfSlashMan: TextScript87DE48C_unk60_id,
+		jumpIfEraseMan: TextScript87DE48C_unk140_id,
+		jumpIfChargeMan: TextScript87DE48C_unk180_id,
+		jumpIfSpoutMan: TextScript87DE48C_unk40_id,
+		jumpIfTomahawkMan: TextScript87DE48C_unk120_id,
+		jumpIfTenguMan: TextScript87DE48C_unk80_id,
+		jumpIfGroundMan: TextScript87DE48C_unk160_id,
+		jumpIfDustMan: TextScript87DE48C_unk200_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -27,18 +27,18 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk2
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x16,
-		jumpIfElecMan: 0x66,
-		jumpIfSlashMan: 0x3E,
-		jumpIfEraseMan: 0x8E,
-		jumpIfChargeMan: 0xB6,
-		jumpIfSpoutMan: 0x2A,
-		jumpIfTomahawkMan: 0x7A,
-		jumpIfTenguMan: 0x52,
-		jumpIfGroundMan: 0xA2,
-		jumpIfDustMan: 0xCA,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScript87DE48C_unk22_id,
+		jumpIfElecMan: TextScript87DE48C_unk102_id,
+		jumpIfSlashMan: TextScript87DE48C_unk62_id,
+		jumpIfEraseMan: TextScript87DE48C_unk142_id,
+		jumpIfChargeMan: TextScript87DE48C_unk182_id,
+		jumpIfSpoutMan: TextScript87DE48C_unk42_id,
+		jumpIfTomahawkMan: TextScript87DE48C_unk122_id,
+		jumpIfTenguMan: TextScript87DE48C_unk82_id,
+		jumpIfGroundMan: TextScript87DE48C_unk162_id,
+		jumpIfDustMan: TextScript87DE48C_unk202_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -68,18 +68,18 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk3
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x17,
-		jumpIfElecMan: 0x67,
-		jumpIfSlashMan: 0x3F,
-		jumpIfEraseMan: 0x8F,
-		jumpIfChargeMan: 0xB7,
-		jumpIfSpoutMan: 0x2B,
-		jumpIfTomahawkMan: 0x7B,
-		jumpIfTenguMan: 0x53,
-		jumpIfGroundMan: 0xA3,
-		jumpIfDustMan: 0xCB,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScript87DE48C_unk23_id,
+		jumpIfElecMan: TextScript87DE48C_unk103_id,
+		jumpIfSlashMan: TextScript87DE48C_unk63_id,
+		jumpIfEraseMan: TextScript87DE48C_unk143_id,
+		jumpIfChargeMan: TextScript87DE48C_unk183_id,
+		jumpIfSpoutMan: TextScript87DE48C_unk43_id,
+		jumpIfTomahawkMan: TextScript87DE48C_unk123_id,
+		jumpIfTenguMan: TextScript87DE48C_unk83_id,
+		jumpIfGroundMan: TextScript87DE48C_unk163_id,
+		jumpIfDustMan: TextScript87DE48C_unk203_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -109,18 +109,18 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk4
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x18,
-		jumpIfElecMan: 0x68,
-		jumpIfSlashMan: 0x40,
-		jumpIfEraseMan: 0x90,
-		jumpIfChargeMan: 0xB8,
-		jumpIfSpoutMan: 0x2C,
-		jumpIfTomahawkMan: 0x7C,
-		jumpIfTenguMan: 0x54,
-		jumpIfGroundMan: 0xA4,
-		jumpIfDustMan: 0xCC,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScript87DE48C_unk24_id,
+		jumpIfElecMan: TextScript87DE48C_unk104_id,
+		jumpIfSlashMan: TextScript87DE48C_unk64_id,
+		jumpIfEraseMan: TextScript87DE48C_unk144_id,
+		jumpIfChargeMan: TextScript87DE48C_unk184_id,
+		jumpIfSpoutMan: TextScript87DE48C_unk44_id,
+		jumpIfTomahawkMan: TextScript87DE48C_unk124_id,
+		jumpIfTenguMan: TextScript87DE48C_unk84_id,
+		jumpIfGroundMan: TextScript87DE48C_unk164_id,
+		jumpIfDustMan: TextScript87DE48C_unk204_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -150,18 +150,18 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk5
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x19,
-		jumpIfElecMan: 0x69,
-		jumpIfSlashMan: 0x41,
-		jumpIfEraseMan: 0x91,
-		jumpIfChargeMan: 0xB9,
-		jumpIfSpoutMan: 0x2D,
-		jumpIfTomahawkMan: 0x7D,
-		jumpIfTenguMan: 0x55,
-		jumpIfGroundMan: 0xA5,
-		jumpIfDustMan: 0xCD,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScript87DE48C_unk25_id,
+		jumpIfElecMan: TextScript87DE48C_unk105_id,
+		jumpIfSlashMan: TextScript87DE48C_unk65_id,
+		jumpIfEraseMan: TextScript87DE48C_unk145_id,
+		jumpIfChargeMan: TextScript87DE48C_unk185_id,
+		jumpIfSpoutMan: TextScript87DE48C_unk45_id,
+		jumpIfTomahawkMan: TextScript87DE48C_unk125_id,
+		jumpIfTenguMan: TextScript87DE48C_unk85_id,
+		jumpIfGroundMan: TextScript87DE48C_unk165_id,
+		jumpIfDustMan: TextScript87DE48C_unk205_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -199,23 +199,23 @@ TextScript87DE48C::
 	def_text_script TextScript87DE48C_unk7
 	ts_check_flag [
 		flag: 0x225,
-		jumpIfTrue: 0x9,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: TextScript87DE48C_unk9_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x225
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x1B,
-		jumpIfElecMan: 0x6B,
-		jumpIfSlashMan: 0x43,
-		jumpIfEraseMan: 0x93,
-		jumpIfChargeMan: 0xBB,
-		jumpIfSpoutMan: 0x2F,
-		jumpIfTomahawkMan: 0x7F,
-		jumpIfTenguMan: 0x57,
-		jumpIfGroundMan: 0xA7,
-		jumpIfDustMan: 0xCF,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScript87DE48C_unk27_id,
+		jumpIfElecMan: TextScript87DE48C_unk107_id,
+		jumpIfSlashMan: TextScript87DE48C_unk67_id,
+		jumpIfEraseMan: TextScript87DE48C_unk147_id,
+		jumpIfChargeMan: TextScript87DE48C_unk187_id,
+		jumpIfSpoutMan: TextScript87DE48C_unk47_id,
+		jumpIfTomahawkMan: TextScript87DE48C_unk127_id,
+		jumpIfTenguMan: TextScript87DE48C_unk87_id,
+		jumpIfGroundMan: TextScript87DE48C_unk167_id,
+		jumpIfDustMan: TextScript87DE48C_unk207_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -227,18 +227,18 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk8
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x1C,
-		jumpIfElecMan: 0x6C,
-		jumpIfSlashMan: 0x44,
-		jumpIfEraseMan: 0x94,
-		jumpIfChargeMan: 0xBC,
-		jumpIfSpoutMan: 0x30,
-		jumpIfTomahawkMan: 0x80,
-		jumpIfTenguMan: 0x58,
-		jumpIfGroundMan: 0xA8,
-		jumpIfDustMan: 0xD0,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScript87DE48C_unk28_id,
+		jumpIfElecMan: TextScript87DE48C_unk108_id,
+		jumpIfSlashMan: TextScript87DE48C_unk68_id,
+		jumpIfEraseMan: TextScript87DE48C_unk148_id,
+		jumpIfChargeMan: TextScript87DE48C_unk188_id,
+		jumpIfSpoutMan: TextScript87DE48C_unk48_id,
+		jumpIfTomahawkMan: TextScript87DE48C_unk128_id,
+		jumpIfTenguMan: TextScript87DE48C_unk88_id,
+		jumpIfGroundMan: TextScript87DE48C_unk168_id,
+		jumpIfDustMan: TextScript87DE48C_unk208_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -253,30 +253,30 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk10
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x1E,
-		jumpIfElecMan: 0x6E,
-		jumpIfSlashMan: 0x46,
-		jumpIfEraseMan: 0x96,
-		jumpIfChargeMan: 0xBE,
-		jumpIfSpoutMan: 0x32,
-		jumpIfTomahawkMan: 0x82,
-		jumpIfTenguMan: 0x5A,
-		jumpIfGroundMan: 0xAA,
-		jumpIfDustMan: 0xD2,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScript87DE48C_unk30_id,
+		jumpIfElecMan: TextScript87DE48C_unk110_id,
+		jumpIfSlashMan: TextScript87DE48C_unk70_id,
+		jumpIfEraseMan: TextScript87DE48C_unk150_id,
+		jumpIfChargeMan: TextScript87DE48C_unk190_id,
+		jumpIfSpoutMan: TextScript87DE48C_unk50_id,
+		jumpIfTomahawkMan: TextScript87DE48C_unk130_id,
+		jumpIfTenguMan: TextScript87DE48C_unk90_id,
+		jumpIfGroundMan: TextScript87DE48C_unk170_id,
+		jumpIfDustMan: TextScript87DE48C_unk210_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x745,
-		jumpIfTrue: 0xF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: TextScript87DE48C_unk15_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Are you OK,MegaMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=TextScript87DE48C_unk11_id
 
 	def_text_script TextScript87DE48C_unk11
 	ts_mugshot_show mugshot=0x37
@@ -289,18 +289,18 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk12
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x20,
-		jumpIfElecMan: 0x70,
-		jumpIfSlashMan: 0x48,
-		jumpIfEraseMan: 0x98,
-		jumpIfChargeMan: 0xC0,
-		jumpIfSpoutMan: 0x34,
-		jumpIfTomahawkMan: 0x84,
-		jumpIfTenguMan: 0x5C,
-		jumpIfGroundMan: 0xAC,
-		jumpIfDustMan: 0xD4,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScript87DE48C_unk32_id,
+		jumpIfElecMan: TextScript87DE48C_unk112_id,
+		jumpIfSlashMan: TextScript87DE48C_unk72_id,
+		jumpIfEraseMan: TextScript87DE48C_unk152_id,
+		jumpIfChargeMan: TextScript87DE48C_unk192_id,
+		jumpIfSpoutMan: TextScript87DE48C_unk52_id,
+		jumpIfTomahawkMan: TextScript87DE48C_unk132_id,
+		jumpIfTenguMan: TextScript87DE48C_unk92_id,
+		jumpIfGroundMan: TextScript87DE48C_unk172_id,
+		jumpIfDustMan: TextScript87DE48C_unk212_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -315,18 +315,18 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk13
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x21,
-		jumpIfElecMan: 0x71,
-		jumpIfSlashMan: 0x49,
-		jumpIfEraseMan: 0x99,
-		jumpIfChargeMan: 0xC1,
-		jumpIfSpoutMan: 0x35,
-		jumpIfTomahawkMan: 0x85,
-		jumpIfTenguMan: 0x5D,
-		jumpIfGroundMan: 0xAD,
-		jumpIfDustMan: 0xD5,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScript87DE48C_unk33_id,
+		jumpIfElecMan: TextScript87DE48C_unk113_id,
+		jumpIfSlashMan: TextScript87DE48C_unk73_id,
+		jumpIfEraseMan: TextScript87DE48C_unk153_id,
+		jumpIfChargeMan: TextScript87DE48C_unk193_id,
+		jumpIfSpoutMan: TextScript87DE48C_unk53_id,
+		jumpIfTomahawkMan: TextScript87DE48C_unk133_id,
+		jumpIfTenguMan: TextScript87DE48C_unk93_id,
+		jumpIfGroundMan: TextScript87DE48C_unk173_id,
+		jumpIfDustMan: TextScript87DE48C_unk213_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -338,18 +338,18 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk14
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x22,
-		jumpIfElecMan: 0x72,
-		jumpIfSlashMan: 0x4A,
-		jumpIfEraseMan: 0x9A,
-		jumpIfChargeMan: 0xC2,
-		jumpIfSpoutMan: 0x36,
-		jumpIfTomahawkMan: 0x86,
-		jumpIfTenguMan: 0x5E,
-		jumpIfGroundMan: 0xAE,
-		jumpIfDustMan: 0xD6,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScript87DE48C_unk34_id,
+		jumpIfElecMan: TextScript87DE48C_unk114_id,
+		jumpIfSlashMan: TextScript87DE48C_unk74_id,
+		jumpIfEraseMan: TextScript87DE48C_unk154_id,
+		jumpIfChargeMan: TextScript87DE48C_unk194_id,
+		jumpIfSpoutMan: TextScript87DE48C_unk54_id,
+		jumpIfTomahawkMan: TextScript87DE48C_unk134_id,
+		jumpIfTenguMan: TextScript87DE48C_unk94_id,
+		jumpIfGroundMan: TextScript87DE48C_unk174_id,
+		jumpIfDustMan: TextScript87DE48C_unk214_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -359,18 +359,18 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk15
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x23,
-		jumpIfElecMan: 0x73,
-		jumpIfSlashMan: 0x4B,
-		jumpIfEraseMan: 0x37,
-		jumpIfChargeMan: 0xC3,
-		jumpIfSpoutMan: 0x37,
-		jumpIfTomahawkMan: 0x87,
-		jumpIfTenguMan: 0x5F,
-		jumpIfGroundMan: 0xAF,
-		jumpIfDustMan: 0xD7,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScript87DE48C_unk35_id,
+		jumpIfElecMan: TextScript87DE48C_unk115_id,
+		jumpIfSlashMan: TextScript87DE48C_unk75_id,
+		jumpIfEraseMan: TextScript87DE48C_unk55_id,
+		jumpIfChargeMan: TextScript87DE48C_unk195_id,
+		jumpIfSpoutMan: TextScript87DE48C_unk55_id,
+		jumpIfTomahawkMan: TextScript87DE48C_unk135_id,
+		jumpIfTenguMan: TextScript87DE48C_unk95_id,
+		jumpIfGroundMan: TextScript87DE48C_unk175_id,
+		jumpIfDustMan: TextScript87DE48C_unk215_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -378,7 +378,7 @@ TextScript87DE48C::
 	.string "MegaMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=TextScript87DE48C_unk16_id
 
 	def_text_script TextScript87DE48C_unk16
 	ts_mugshot_show mugshot=0x37
@@ -397,9 +397,9 @@ TextScript87DE48C::
 	ts_clear_msg
 	ts_check_give_bug_frags [
 		amount: 0xFFFFFFFF,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_player_animate_object animation=0x18
 	ts_print_current_navi_ow
@@ -568,15 +568,15 @@ TextScript87DE48C::
 	def_text_script TextScript87DE48C_unk30
 	ts_check_flag [
 		flag: 0x745,
-		jumpIfTrue: 0x23,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: TextScript87DE48C_unk35_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Are you OK,HeatMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=TextScript87DE48C_unk31_id
 
 	def_text_script TextScript87DE48C_unk31
 	ts_mugshot_show mugshot=0x47
@@ -620,7 +620,7 @@ TextScript87DE48C::
 	.string "HeatMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=36
+	ts_jump target=TextScript87DE48C_unk36_id
 
 	def_text_script TextScript87DE48C_unk36
 	ts_mugshot_show mugshot=0x47
@@ -784,8 +784,8 @@ TextScript87DE48C::
 	def_text_script TextScript87DE48C_unk50
 	ts_check_flag [
 		flag: 0x745,
-		jumpIfTrue: 0x37,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: TextScript87DE48C_unk55_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -793,7 +793,7 @@ TextScript87DE48C::
 	.string "SpoutMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=51
+	ts_jump target=TextScript87DE48C_unk51_id
 
 	def_text_script TextScript87DE48C_unk51
 	ts_mugshot_show mugshot=0x48
@@ -838,7 +838,7 @@ TextScript87DE48C::
 	.string "SpoutMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=56
+	ts_jump target=TextScript87DE48C_unk56_id
 
 	def_text_script TextScript87DE48C_unk56
 	ts_mugshot_show mugshot=0x48
@@ -1002,8 +1002,8 @@ TextScript87DE48C::
 	def_text_script TextScript87DE48C_unk70
 	ts_check_flag [
 		flag: 0x745,
-		jumpIfTrue: 0x4B,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: TextScript87DE48C_unk75_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -1011,7 +1011,7 @@ TextScript87DE48C::
 	.string "SlashMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=71
+	ts_jump target=TextScript87DE48C_unk71_id
 
 	def_text_script TextScript87DE48C_unk71
 	ts_mugshot_show mugshot=0x4B
@@ -1057,7 +1057,7 @@ TextScript87DE48C::
 	.string "SlashMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=76
+	ts_jump target=TextScript87DE48C_unk76_id
 
 	def_text_script TextScript87DE48C_unk76
 	ts_mugshot_show mugshot=0x4B
@@ -1221,8 +1221,8 @@ TextScript87DE48C::
 	def_text_script TextScript87DE48C_unk90
 	ts_check_flag [
 		flag: 0x745,
-		jumpIfTrue: 0x5F,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: TextScript87DE48C_unk95_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -1230,7 +1230,7 @@ TextScript87DE48C::
 	.string "TenguMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=91
+	ts_jump target=TextScript87DE48C_unk91_id
 
 	def_text_script TextScript87DE48C_unk91
 	ts_mugshot_show mugshot=0x4C
@@ -1275,7 +1275,7 @@ TextScript87DE48C::
 	.string "TenguMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=96
+	ts_jump target=TextScript87DE48C_unk96_id
 
 	def_text_script TextScript87DE48C_unk96
 	ts_mugshot_show mugshot=0x4C
@@ -1439,15 +1439,15 @@ TextScript87DE48C::
 	def_text_script TextScript87DE48C_unk110
 	ts_check_flag [
 		flag: 0x745,
-		jumpIfTrue: 0x73,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: TextScript87DE48C_unk115_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Are you OK,ElecMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=111
+	ts_jump target=TextScript87DE48C_unk111_id
 
 	def_text_script TextScript87DE48C_unk111
 	ts_mugshot_show mugshot=0x49
@@ -1491,7 +1491,7 @@ TextScript87DE48C::
 	.string "ElecMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=116
+	ts_jump target=TextScript87DE48C_unk116_id
 
 	def_text_script TextScript87DE48C_unk116
 	ts_mugshot_show mugshot=0x49
@@ -1655,8 +1655,8 @@ TextScript87DE48C::
 	def_text_script TextScript87DE48C_unk130
 	ts_check_flag [
 		flag: 0x745,
-		jumpIfTrue: 0x87,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: TextScript87DE48C_unk135_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -1664,7 +1664,7 @@ TextScript87DE48C::
 	.string "TomahawkMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=131
+	ts_jump target=TextScript87DE48C_unk131_id
 
 	def_text_script TextScript87DE48C_unk131
 	ts_mugshot_show mugshot=0x4A
@@ -1709,7 +1709,7 @@ TextScript87DE48C::
 	.string "TomahawkMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=136
+	ts_jump target=TextScript87DE48C_unk136_id
 
 	def_text_script TextScript87DE48C_unk136
 	ts_mugshot_show mugshot=0x4A
@@ -1873,8 +1873,8 @@ TextScript87DE48C::
 	def_text_script TextScript87DE48C_unk150
 	ts_check_flag [
 		flag: 0x745,
-		jumpIfTrue: 0x9B,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: TextScript87DE48C_unk155_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -1882,7 +1882,7 @@ TextScript87DE48C::
 	.string "EraseMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=151
+	ts_jump target=TextScript87DE48C_unk151_id
 
 	def_text_script TextScript87DE48C_unk151
 	ts_mugshot_show mugshot=0x50
@@ -1932,7 +1932,7 @@ TextScript87DE48C::
 	.string "EraseMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=156
+	ts_jump target=TextScript87DE48C_unk156_id
 
 	def_text_script TextScript87DE48C_unk156
 	ts_mugshot_show mugshot=0x50
@@ -2097,8 +2097,8 @@ TextScript87DE48C::
 	def_text_script TextScript87DE48C_unk170
 	ts_check_flag [
 		flag: 0x745,
-		jumpIfTrue: 0xAF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: TextScript87DE48C_unk175_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -2106,7 +2106,7 @@ TextScript87DE48C::
 	.string "GroundMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=171
+	ts_jump target=TextScript87DE48C_unk171_id
 
 	def_text_script TextScript87DE48C_unk171
 	ts_mugshot_show mugshot=0x4D
@@ -2155,7 +2155,7 @@ TextScript87DE48C::
 	.string "GroundMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=176
+	ts_jump target=TextScript87DE48C_unk176_id
 
 	def_text_script TextScript87DE48C_unk176
 	ts_mugshot_show mugshot=0x4D
@@ -2320,8 +2320,8 @@ TextScript87DE48C::
 	def_text_script TextScript87DE48C_unk190
 	ts_check_flag [
 		flag: 0x745,
-		jumpIfTrue: 0xC3,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: TextScript87DE48C_unk195_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -2329,7 +2329,7 @@ TextScript87DE48C::
 	.string "ChargeMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=191
+	ts_jump target=TextScript87DE48C_unk191_id
 
 	def_text_script TextScript87DE48C_unk191
 	ts_mugshot_show mugshot=0x4F
@@ -2379,7 +2379,7 @@ TextScript87DE48C::
 	.string "ChargeMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=196
+	ts_jump target=TextScript87DE48C_unk196_id
 
 	def_text_script TextScript87DE48C_unk196
 	ts_mugshot_show mugshot=0x4F
@@ -2544,15 +2544,15 @@ TextScript87DE48C::
 	def_text_script TextScript87DE48C_unk210
 	ts_check_flag [
 		flag: 0x745,
-		jumpIfTrue: 0xD7,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: TextScript87DE48C_unk215_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Are you OK,DustMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=211
+	ts_jump target=TextScript87DE48C_unk211_id
 
 	def_text_script TextScript87DE48C_unk211
 	ts_mugshot_show mugshot=0x4E
@@ -2598,7 +2598,7 @@ TextScript87DE48C::
 	.string "DustMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=216
+	ts_jump target=TextScript87DE48C_unk216_id
 
 	def_text_script TextScript87DE48C_unk216
 	ts_mugshot_show mugshot=0x4E

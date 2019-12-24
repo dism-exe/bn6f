@@ -13,9 +13,9 @@ CompText876FE2C::
 	ts_check_item07 [
 		item: 0x1,
 		amount: 0x1,
-		jumpIfEqual: 0x1,
-		jumpIfGreater: 0x1,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText876FE2C_unk1_id,
+		jumpIfGreater: CompText876FE2C_unk1_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	ts_sound_disable_text_sfx
@@ -78,8 +78,8 @@ CompText876FE2C::
 	ts_check_chapter [
 		lower: 0x3,
 		upper: 0x4,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText876FE2C_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -92,9 +92,9 @@ CompText876FE2C::
 	ts_check_item07 [
 		item: 0x3,
 		amount: 0x1,
-		jumpIfEqual: 0x4,
-		jumpIfGreater: 0x4,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText876FE2C_unk4_id,
+		jumpIfGreater: CompText876FE2C_unk4_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	ts_sound_disable_text_sfx
@@ -170,8 +170,8 @@ CompText876FE2C::
 	def_text_script CompText876FE2C_unk10
 	ts_check_flag [
 		flag: 0x53C,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876FE2C_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

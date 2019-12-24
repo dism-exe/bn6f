@@ -29,7 +29,7 @@ CompText87AB96C::
 	.string "*aur! aur! aur!*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87AB96C_unk2_id
 
 	def_text_script CompText87AB96C_unk2
 	ts_mugshot_show mugshot=0x0
@@ -80,7 +80,7 @@ CompText87AB96C::
 	.string "That's cool..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87AB96C_unk7_id
 
 	def_text_script CompText87AB96C_unk7
 	ts_mugshot_show mugshot=0xA
@@ -97,7 +97,7 @@ CompText87AB96C::
 	.string "time,huh?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87AB96C_unk9_id
 
 	def_text_script CompText87AB96C_unk9
 	ts_mugshot_show mugshot=0x19
@@ -126,7 +126,7 @@ CompText87AB96C::
 	.string "he was fired."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87AB96C_unk10_id
 
 	def_text_script CompText87AB96C_unk10
 	ts_mugshot_show mugshot=0xE
@@ -170,7 +170,7 @@ CompText87AB96C::
 	.string "There you go!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87AB96C_unk14_id
 
 	def_text_script CompText87AB96C_unk14
 	ts_mugshot_show mugshot=0x0
@@ -196,7 +196,7 @@ CompText87AB96C::
 	.string "this!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87AB96C_unk16_id
 
 	def_text_script CompText87AB96C_unk16
 	ts_mugshot_show mugshot=0x14
@@ -226,7 +226,7 @@ CompText87AB96C::
 	.string "to go home!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87AB96C_unk19_id
 
 	def_text_script CompText87AB96C_unk19
 	ts_mugshot_show mugshot=0x0
@@ -236,7 +236,7 @@ CompText87AB96C::
 	.string "go see Plata and..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87AB96C_unk20_id
 
 	def_text_script CompText87AB96C_unk20
 	ts_mugshot_show mugshot=0x14
@@ -245,7 +245,7 @@ CompText87AB96C::
 	.string "right now."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87AB96C_unk21_id
 
 	def_text_script CompText87AB96C_unk21
 	ts_mugshot_show mugshot=0x0
@@ -264,7 +264,7 @@ CompText87AB96C::
 	.string "out of here!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87AB96C_unk23_id
 
 	def_text_script CompText87AB96C_unk23
 	ts_mugshot_show mugshot=0x0
@@ -293,7 +293,7 @@ CompText87AB96C::
 	.string "a NetBattle!..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87AB96C_unk25_id
 
 	def_text_script CompText87AB96C_unk25
 	ts_mugshot_show mugshot=0x0

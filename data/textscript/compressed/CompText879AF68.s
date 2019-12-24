@@ -49,8 +49,8 @@ CompText879AF68::
 	def_text_script CompText879AF68_unk17
 	ts_check_flag [
 		flag: 0x67C,
-		jumpIfTrue: 0x12,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879AF68_unk18_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x67C
 	ts_flag_set flag=0x1715
@@ -123,8 +123,8 @@ CompText879AF68::
 	def_text_script CompText879AF68_unk50
 	ts_check_flag [
 		flag: 0x858,
-		jumpIfTrue: 0x33,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879AF68_unk51_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x858
 	ts_msg_open
@@ -211,8 +211,8 @@ CompText879AF68::
 	def_text_script CompText879AF68_unk52
 	ts_check_flag [
 		flag: 0x858,
-		jumpIfTrue: 0x35,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879AF68_unk53_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x858
 	ts_msg_open

@@ -23,25 +23,25 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk1
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0x2E,
-		jumpIfSlashMan: 0xFF,
-		jumpIfEraseMan: 0x2F,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0xFF,
-		jumpIfTomahawkMan: 0x30,
-		jumpIfTenguMan: 0xFF,
-		jumpIfGroundMan: 0xFF,
-		jumpIfDustMan: 0x31,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: CompText8762434_unk46_id,
+		jumpIfSlashMan: TS_CONTINUE,
+		jumpIfEraseMan: CompText8762434_unk47_id,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: TS_CONTINUE,
+		jumpIfTomahawkMan: CompText8762434_unk48_id,
+		jumpIfTenguMan: TS_CONTINUE,
+		jumpIfGroundMan: TS_CONTINUE,
+		jumpIfDustMan: CompText8762434_unk49_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_check_item07 [
 		item: 0x1C,
 		amount: 0x1,
-		jumpIfEqual: 0x4E,
-		jumpIfGreater: 0x4E,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText8762434_unk78_id,
+		jumpIfGreater: CompText8762434_unk78_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "A thick,dense cloud\n"
@@ -51,25 +51,25 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk2
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x33,
-		jumpIfElecMan: 0xFF,
-		jumpIfSlashMan: 0x34,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0xFF,
-		jumpIfTomahawkMan: 0x35,
-		jumpIfTenguMan: 0xFF,
-		jumpIfGroundMan: 0x36,
-		jumpIfDustMan: 0xFF,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText8762434_unk51_id,
+		jumpIfElecMan: TS_CONTINUE,
+		jumpIfSlashMan: CompText8762434_unk52_id,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: TS_CONTINUE,
+		jumpIfTomahawkMan: CompText8762434_unk53_id,
+		jumpIfTenguMan: TS_CONTINUE,
+		jumpIfGroundMan: CompText8762434_unk54_id,
+		jumpIfDustMan: TS_CONTINUE,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_check_item07 [
 		item: 0x42,
 		amount: 0x1,
-		jumpIfEqual: 0x4F,
-		jumpIfGreater: 0x4F,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText8762434_unk79_id,
+		jumpIfGreater: CompText8762434_unk79_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "A strong-looking\n"
@@ -80,18 +80,18 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk3
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0x38,
-		jumpIfSlashMan: 0xFF,
-		jumpIfEraseMan: 0x39,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0x3A,
-		jumpIfTomahawkMan: 0xFF,
-		jumpIfTenguMan: 0xFF,
-		jumpIfGroundMan: 0x3B,
-		jumpIfDustMan: 0xFF,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: CompText8762434_unk56_id,
+		jumpIfSlashMan: TS_CONTINUE,
+		jumpIfEraseMan: CompText8762434_unk57_id,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: CompText8762434_unk58_id,
+		jumpIfTomahawkMan: TS_CONTINUE,
+		jumpIfTenguMan: TS_CONTINUE,
+		jumpIfGroundMan: CompText8762434_unk59_id,
+		jumpIfDustMan: TS_CONTINUE,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "The cyberwater's\n"
@@ -102,18 +102,18 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk4
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x3D,
-		jumpIfElecMan: 0xFF,
-		jumpIfSlashMan: 0xFF,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0x3E,
-		jumpIfSpoutMan: 0x3F,
-		jumpIfTomahawkMan: 0xFF,
-		jumpIfTenguMan: 0x40,
-		jumpIfGroundMan: 0xFF,
-		jumpIfDustMan: 0xFF,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText8762434_unk61_id,
+		jumpIfElecMan: TS_CONTINUE,
+		jumpIfSlashMan: TS_CONTINUE,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: CompText8762434_unk62_id,
+		jumpIfSpoutMan: CompText8762434_unk63_id,
+		jumpIfTomahawkMan: TS_CONTINUE,
+		jumpIfTenguMan: CompText8762434_unk64_id,
+		jumpIfGroundMan: TS_CONTINUE,
+		jumpIfDustMan: TS_CONTINUE,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "The flames are too\n"
@@ -124,18 +124,18 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk5
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0xFF,
-		jumpIfSlashMan: 0x42,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0x43,
-		jumpIfSpoutMan: 0xFF,
-		jumpIfTomahawkMan: 0xFF,
-		jumpIfTenguMan: 0x44,
-		jumpIfGroundMan: 0xFF,
-		jumpIfDustMan: 0x45,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: TS_CONTINUE,
+		jumpIfSlashMan: CompText8762434_unk66_id,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: CompText8762434_unk67_id,
+		jumpIfSpoutMan: TS_CONTINUE,
+		jumpIfTomahawkMan: TS_CONTINUE,
+		jumpIfTenguMan: CompText8762434_unk68_id,
+		jumpIfGroundMan: TS_CONTINUE,
+		jumpIfDustMan: CompText8762434_unk69_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "There is a violent\n"
@@ -155,80 +155,80 @@ CompText8762434::
 	def_text_script CompText8762434_unk7
 	ts_check_flag [
 		flag: 0x1BD,
-		jumpIfTrue: 0xD,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8762434_unk13_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x101C,
-		jumpIfTrue: 0x13,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8762434_unk19_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_jump target=13
+	ts_jump target=CompText8762434_unk13_id
 
 	def_text_script CompText8762434_unk8
 	ts_check_flag [
 		flag: 0x1BF,
-		jumpIfTrue: 0xE,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8762434_unk14_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x101C,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8762434_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_jump target=14
+	ts_jump target=CompText8762434_unk14_id
 
 	def_text_script CompText8762434_unk9
 	ts_check_flag [
 		flag: 0x1C1,
-		jumpIfTrue: 0xF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8762434_unk15_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x101C,
-		jumpIfTrue: 0x17,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8762434_unk23_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_jump target=15
+	ts_jump target=CompText8762434_unk15_id
 
 	def_text_script CompText8762434_unk10
 	ts_check_flag [
 		flag: 0x1C3,
-		jumpIfTrue: 0x10,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8762434_unk16_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x101C,
-		jumpIfTrue: 0x19,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8762434_unk25_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_jump target=16
+	ts_jump target=CompText8762434_unk16_id
 
 	def_text_script CompText8762434_unk11
 	ts_check_flag [
 		flag: 0x1C5,
-		jumpIfTrue: 0x11,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8762434_unk17_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x101C,
-		jumpIfTrue: 0x1B,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8762434_unk27_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_jump target=17
+	ts_jump target=CompText8762434_unk17_id
 
 	def_text_script CompText8762434_unk12
 	ts_check_flag [
 		flag: 0x1C7,
-		jumpIfTrue: 0x12,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8762434_unk18_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x101C,
-		jumpIfTrue: 0x1D,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8762434_unk29_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_jump target=18
+	ts_jump target=CompText8762434_unk18_id
 
 	def_text_script CompText8762434_unk13
 	ts_msg_open
@@ -452,8 +452,8 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk40
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x47,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8762434_unk71_id,
 	]
 	ts_msg_open
 	.string "It says:\n"
@@ -464,8 +464,8 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk41
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x48,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8762434_unk72_id,
 	]
 	ts_msg_open
 	.string "It says:\n"
@@ -476,8 +476,8 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk42
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x49,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8762434_unk73_id,
 	]
 	ts_msg_open
 	.string "It says:\n"
@@ -488,8 +488,8 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk43
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x4A,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8762434_unk74_id,
 	]
 	ts_msg_open
 	.string "It says:\n"
@@ -500,8 +500,8 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk44
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x4B,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8762434_unk75_id,
 	]
 	ts_msg_open
 	.string "It says:\n"
@@ -536,7 +536,7 @@ CompText8762434::
 	.string "dispersed the cloud!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=50
+	ts_jump target=CompText8762434_unk50_id
 
 	def_text_script CompText8762434_unk47
 	ts_mugshot_show mugshot=0x50
@@ -557,7 +557,7 @@ CompText8762434::
 	.string "the cloud!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=50
+	ts_jump target=CompText8762434_unk50_id
 
 	def_text_script CompText8762434_unk48
 	ts_mugshot_show mugshot=0x4A
@@ -575,7 +575,7 @@ CompText8762434::
 	.string "cloud away!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=50
+	ts_jump target=CompText8762434_unk50_id
 
 	def_text_script CompText8762434_unk49
 	ts_mugshot_show mugshot=0x4E
@@ -592,7 +592,7 @@ CompText8762434::
 	.string "the cloud!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=50
+	ts_jump target=CompText8762434_unk50_id
 
 	def_text_script CompText8762434_unk50
 	ts_flag_clear flag=0x17C
@@ -616,7 +616,7 @@ CompText8762434::
 	.string "cybertree to ashes!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=55
+	ts_jump target=CompText8762434_unk55_id
 
 	def_text_script CompText8762434_unk52
 	ts_mugshot_show mugshot=0x4B
@@ -635,7 +635,7 @@ CompText8762434::
 	.string "cybertree down!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=55
+	ts_jump target=CompText8762434_unk55_id
 
 	def_text_script CompText8762434_unk53
 	ts_mugshot_show mugshot=0x4A
@@ -655,7 +655,7 @@ CompText8762434::
 	.string "split into two!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=55
+	ts_jump target=CompText8762434_unk55_id
 
 	def_text_script CompText8762434_unk54
 	ts_mugshot_show mugshot=0x4D
@@ -679,7 +679,7 @@ CompText8762434::
 	.string "out,roots and all!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=55
+	ts_jump target=CompText8762434_unk55_id
 
 	def_text_script CompText8762434_unk55
 	ts_flag_clear flag=0x16D
@@ -708,7 +708,7 @@ CompText8762434::
 	.string "off as steam!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=60
+	ts_jump target=CompText8762434_unk60_id
 
 	def_text_script CompText8762434_unk57
 	ts_mugshot_show mugshot=0x50
@@ -731,7 +731,7 @@ CompText8762434::
 	.string "the waterspout!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=60
+	ts_jump target=CompText8762434_unk60_id
 
 	def_text_script CompText8762434_unk58
 	ts_mugshot_show mugshot=0x48
@@ -752,7 +752,7 @@ CompText8762434::
 	.string "calmly disappeared!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=60
+	ts_jump target=CompText8762434_unk60_id
 
 	def_text_script CompText8762434_unk59
 	ts_mugshot_show mugshot=0x4D
@@ -775,7 +775,7 @@ CompText8762434::
 	.string "the water opening!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=60
+	ts_jump target=CompText8762434_unk60_id
 
 	def_text_script CompText8762434_unk60
 	ts_flag_clear flag=0x168
@@ -796,7 +796,7 @@ CompText8762434::
 	.string "flames!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=65
+	ts_jump target=CompText8762434_unk65_id
 
 	def_text_script CompText8762434_unk62
 	ts_mugshot_show mugshot=0x4F
@@ -816,7 +816,7 @@ CompText8762434::
 	.string "the raging flames!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=65
+	ts_jump target=CompText8762434_unk65_id
 
 	def_text_script CompText8762434_unk63
 	ts_mugshot_show mugshot=0x48
@@ -834,7 +834,7 @@ CompText8762434::
 	.string "put out the fire!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=65
+	ts_jump target=CompText8762434_unk65_id
 
 	def_text_script CompText8762434_unk64
 	ts_mugshot_show mugshot=0x4C
@@ -851,7 +851,7 @@ CompText8762434::
 	.string "the flames out!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=65
+	ts_jump target=CompText8762434_unk65_id
 
 	def_text_script CompText8762434_unk65
 	ts_flag_clear flag=0x172
@@ -872,7 +872,7 @@ CompText8762434::
 	.string "the cyclone out!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=70
+	ts_jump target=CompText8762434_unk70_id
 
 	def_text_script CompText8762434_unk67
 	ts_mugshot_show mugshot=0x4F
@@ -893,7 +893,7 @@ CompText8762434::
 	.string "super charge attack!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=70
+	ts_jump target=CompText8762434_unk70_id
 
 	def_text_script CompText8762434_unk68
 	ts_mugshot_show mugshot=0x4C
@@ -914,7 +914,7 @@ CompText8762434::
 	.string "wave of his fan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=70
+	ts_jump target=CompText8762434_unk70_id
 
 	def_text_script CompText8762434_unk69
 	ts_mugshot_show mugshot=0x4E
@@ -937,7 +937,7 @@ CompText8762434::
 	.string "the cyclone!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=70
+	ts_jump target=CompText8762434_unk70_id
 
 	def_text_script CompText8762434_unk70
 	ts_flag_clear flag=0x177
@@ -987,8 +987,8 @@ CompText8762434::
 	ts_check_library_standard [
 		lower: 0xC8,
 		upper: 0xC8,
-		jumpIfInRange: 0x4D,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8762434_unk77_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "You can hear a voice\n"
@@ -1056,25 +1056,25 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk80
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x51,
-		jumpIfElecMan: 0x51,
-		jumpIfSlashMan: 0x51,
-		jumpIfEraseMan: 0x51,
-		jumpIfChargeMan: 0x51,
-		jumpIfSpoutMan: 0x51,
-		jumpIfTomahawkMan: 0x51,
-		jumpIfTenguMan: 0x51,
-		jumpIfGroundMan: 0x51,
-		jumpIfDustMan: 0x51,
-		jumpIfProtoMan: 0x51,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText8762434_unk81_id,
+		jumpIfElecMan: CompText8762434_unk81_id,
+		jumpIfSlashMan: CompText8762434_unk81_id,
+		jumpIfEraseMan: CompText8762434_unk81_id,
+		jumpIfChargeMan: CompText8762434_unk81_id,
+		jumpIfSpoutMan: CompText8762434_unk81_id,
+		jumpIfTomahawkMan: CompText8762434_unk81_id,
+		jumpIfTenguMan: CompText8762434_unk81_id,
+		jumpIfGroundMan: CompText8762434_unk81_id,
+		jumpIfDustMan: CompText8762434_unk81_id,
+		jumpIfProtoMan: CompText8762434_unk81_id,
 	]
 	ts_check_item07 [
 		item: 0x33,
 		amount: 0x1,
-		jumpIfEqual: 0x52,
-		jumpIfGreater: 0x52,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText8762434_unk82_id,
+		jumpIfGreater: CompText8762434_unk82_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "There is a worn out\n"

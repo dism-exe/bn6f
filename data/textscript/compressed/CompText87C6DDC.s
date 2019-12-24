@@ -30,7 +30,7 @@ CompText87C6DDC::
 	.string "people like you."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87C6DDC_unk1_id
 
 	def_text_script CompText87C6DDC_unk1
 	ts_mugshot_show mugshot=0x2A
@@ -64,7 +64,7 @@ CompText87C6DDC::
 	.string "Gahahahaha!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87C6DDC_unk2_id
 
 	def_text_script CompText87C6DDC_unk2
 	ts_mugshot_show mugshot=0x32
@@ -73,7 +73,7 @@ CompText87C6DDC::
 	.string "me what you want."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C6DDC_unk3_id
 
 	def_text_script CompText87C6DDC_unk3
 	ts_mugshot_show mugshot=0x2A
@@ -91,7 +91,7 @@ CompText87C6DDC::
 	.string "we need yer help."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C6DDC_unk4_id
 
 	def_text_script CompText87C6DDC_unk4
 	ts_mugshot_show mugshot=0x32
@@ -106,7 +106,7 @@ CompText87C6DDC::
 	.string "removed,correct?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C6DDC_unk5_id
 
 	def_text_script CompText87C6DDC_unk5
 	ts_mugshot_show mugshot=0x2A
@@ -114,7 +114,7 @@ CompText87C6DDC::
 	.string "Heh,yer pretty good."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C6DDC_unk6_id
 
 	def_text_script CompText87C6DDC_unk6
 	ts_mugshot_show mugshot=0x32
@@ -131,7 +131,7 @@ CompText87C6DDC::
 	.string "CopyBot I sent...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87C6DDC_unk7_id
 
 	def_text_script CompText87C6DDC_unk7
 	ts_mugshot_show mugshot=0x2A
@@ -151,7 +151,7 @@ CompText87C6DDC::
 	.string "gets quiet..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87C6DDC_unk8_id
 
 	def_text_script CompText87C6DDC_unk8
 	ts_mugshot_show mugshot=0x32
@@ -178,7 +178,7 @@ CompText87C6DDC::
 	.string "I want MegaMan back!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87C6DDC_unk9_id
 
 	def_text_script CompText87C6DDC_unk9
 	ts_mugshot_show mugshot=0x0
@@ -194,7 +194,7 @@ CompText87C6DDC::
 	.string "Blackbeard here...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87C6DDC_unk11_id
 
 	def_text_script CompText87C6DDC_unk11
 	ts_mugshot_show mugshot=0x32
@@ -207,7 +207,7 @@ CompText87C6DDC::
 	.string "about."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87C6DDC_unk12_id
 
 	def_text_script CompText87C6DDC_unk12
 	ts_mugshot_show mugshot=0x2A
@@ -216,7 +216,7 @@ CompText87C6DDC::
 	.string "here!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87C6DDC_unk13_id
 
 	def_text_script CompText87C6DDC_unk13
 	ts_mugshot_show mugshot=0x32
@@ -239,7 +239,7 @@ CompText87C6DDC::
 	.string "Blackbeard...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C6DDC_unk15_id
 
 	def_text_script CompText87C6DDC_unk15
 	ts_mugshot_show mugshot=0x32
@@ -267,7 +267,7 @@ CompText87C6DDC::
 	.string "all this time?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87C6DDC_unk17_id
 
 	def_text_script CompText87C6DDC_unk17
 	ts_mugshot_show mugshot=0x32
@@ -277,7 +277,7 @@ CompText87C6DDC::
 	.string "them."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87C6DDC_unk18_id
 
 	def_text_script CompText87C6DDC_unk18
 	ts_mugshot_show mugshot=0x0
@@ -287,7 +287,7 @@ CompText87C6DDC::
 	.string "to everyone!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87C6DDC_unk19_id
 
 	def_text_script CompText87C6DDC_unk19
 	ts_mugshot_show mugshot=0x32
@@ -331,7 +331,7 @@ CompText87C6DDC::
 	.string "the day I was born!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87C6DDC_unk21_id
 
 	def_text_script CompText87C6DDC_unk21
 	ts_mugshot_show mugshot=0x0
@@ -341,7 +341,7 @@ CompText87C6DDC::
 	.string "don't get it at all!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87C6DDC_unk22_id
 
 	def_text_script CompText87C6DDC_unk22
 	ts_mugshot_show mugshot=0x32
@@ -436,7 +436,7 @@ CompText87C6DDC::
 	.string "destroy the Net."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87C6DDC_unk27_id
 
 	def_text_script CompText87C6DDC_unk27
 	ts_mugshot_show mugshot=0x0
@@ -445,7 +445,7 @@ CompText87C6DDC::
 	.string "how the Cybeasts...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87C6DDC_unk28_id
 
 	def_text_script CompText87C6DDC_unk28
 	ts_mugshot_show mugshot=0x32
@@ -547,7 +547,7 @@ CompText87C6DDC::
 	.string "powerful..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=33
+	ts_jump target=CompText87C6DDC_unk33_id
 
 	def_text_script CompText87C6DDC_unk33
 	ts_mugshot_show mugshot=0x0
@@ -556,7 +556,7 @@ CompText87C6DDC::
 	.string "that program..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=34
+	ts_jump target=CompText87C6DDC_unk34_id
 
 	def_text_script CompText87C6DDC_unk34
 	ts_mugshot_show mugshot=0x32

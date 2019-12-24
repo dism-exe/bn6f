@@ -13,10 +13,10 @@ CompText875C4B8::
 	ts_check_chapter [
 		lower: 0x45,
 		upper: 0x45,
-		jumpIfInRange: 0xA,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875C4B8_unk10_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_jump target=11
+	ts_jump target=CompText875C4B8_unk11_id
 
 	def_text_script CompText875C4B8_unk1
 	ts_msg_open
@@ -81,8 +81,8 @@ CompText875C4B8::
 	ts_key_wait any=0x0
 	ts_check_flag [
 		flag: 0x186,
-		jumpIfTrue: 0xC,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875C4B8_unk12_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	.string "... What's this?"
@@ -95,8 +95,8 @@ CompText875C4B8::
 	ts_mugshot_hide
 	ts_check_flag [
 		flag: 0x1729,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875C4B8_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	ts_item_give [
@@ -178,8 +178,8 @@ CompText875C4B8::
 	def_text_script CompText875C4B8_unk10
 	ts_check_flag [
 		flag: 0xA75,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875C4B8_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xA75
 	ts_end

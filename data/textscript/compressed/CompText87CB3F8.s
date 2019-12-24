@@ -16,7 +16,7 @@ CompText87CB3F8::
 	.string "me,Mr.Mach...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87CB3F8_unk1_id
 
 	def_text_script CompText87CB3F8_unk1
 	ts_mugshot_show mugshot=0x12
@@ -31,7 +31,7 @@ CompText87CB3F8::
 	.string "... I'm sorry,Lan."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CB3F8_unk3_id
 
 	def_text_script CompText87CB3F8_unk3
 	ts_mugshot_show mugshot=0x0
@@ -57,7 +57,7 @@ CompText87CB3F8::
 	.string "that..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87CB3F8_unk5_id
 
 	def_text_script CompText87CB3F8_unk5
 	ts_mugshot_show mugshot=0x0
@@ -70,7 +70,7 @@ CompText87CB3F8::
 	.string "Ha,ha,ha..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87CB3F8_unk6_id
 
 	def_text_script CompText87CB3F8_unk6
 	ts_mugshot_show mugshot=0x12
@@ -92,7 +92,7 @@ CompText87CB3F8::
 	.string "... That was all me."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87CB3F8_unk7_id
 
 	def_text_script CompText87CB3F8_unk7
 	ts_mugshot_show mugshot=0x0
@@ -107,7 +107,7 @@ CompText87CB3F8::
 	.string "joking,Mr.Mach..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87CB3F8_unk8_id
 
 	def_text_script CompText87CB3F8_unk8
 	ts_mugshot_show mugshot=0x12
@@ -125,7 +125,7 @@ CompText87CB3F8::
 	.string "in the Underground."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87CB3F8_unk9_id
 
 	def_text_script CompText87CB3F8_unk9
 	ts_mugshot_show mugshot=0x0
@@ -135,7 +135,7 @@ CompText87CB3F8::
 	.string "MegaMan is!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87CB3F8_unk10_id
 
 	def_text_script CompText87CB3F8_unk10
 	ts_mugshot_show mugshot=0x12
@@ -165,7 +165,7 @@ CompText87CB3F8::
 	.string "him go there..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87CB3F8_unk11_id
 
 	def_text_script CompText87CB3F8_unk11
 	ts_mugshot_show mugshot=0x0
@@ -184,7 +184,7 @@ CompText87CB3F8::
 	.string "where MegaMan is..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87CB3F8_unk12_id
 
 	def_text_script CompText87CB3F8_unk12
 	ts_mugshot_show mugshot=0x12
@@ -207,7 +207,7 @@ CompText87CB3F8::
 	.string "never be forgiven..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87CB3F8_unk13_id
 
 	def_text_script CompText87CB3F8_unk13
 	ts_mugshot_hide
@@ -236,7 +236,7 @@ CompText87CB3F8::
 	.string "Mr.Mach!!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87CB3F8_unk16_id
 
 	def_text_script CompText87CB3F8_unk16
 	ts_mugshot_show mugshot=0x12
@@ -250,7 +250,7 @@ CompText87CB3F8::
 	.string "commands me to..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87CB3F8_unk17_id
 
 	def_text_script CompText87CB3F8_unk17
 	ts_mugshot_show mugshot=0x0
@@ -267,7 +267,7 @@ CompText87CB3F8::
 	.string "had joined WWW..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87CB3F8_unk18_id
 
 	def_text_script CompText87CB3F8_unk18
 	ts_mugshot_show mugshot=0x12

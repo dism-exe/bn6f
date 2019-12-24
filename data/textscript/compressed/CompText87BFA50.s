@@ -22,7 +22,7 @@ CompText87BFA50::
 	.string "around there..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BFA50_unk1_id
 
 	def_text_script CompText87BFA50_unk1
 	ts_mugshot_show mugshot=0x37
@@ -37,7 +37,7 @@ CompText87BFA50::
 	.string "you..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87BFA50_unk2_id
 
 	def_text_script CompText87BFA50_unk2
 	ts_mugshot_show mugshot=0x0
@@ -66,7 +66,7 @@ CompText87BFA50::
 	.string "hurry..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87BFA50_unk5_id
 
 	def_text_script CompText87BFA50_unk5
 	ts_mugshot_hide
@@ -80,7 +80,7 @@ CompText87BFA50::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87BFA50_unk6_id
 
 	def_text_script CompText87BFA50_unk6
 	ts_mugshot_show mugshot=0x0
@@ -99,7 +99,7 @@ CompText87BFA50::
 	.string "Force Room now...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87BFA50_unk8_id
 
 	def_text_script CompText87BFA50_unk8
 	ts_mugshot_show mugshot=0x37
@@ -120,7 +120,7 @@ CompText87BFA50::
 	.string "...jump for it!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87BFA50_unk10_id
 
 	def_text_script CompText87BFA50_unk10
 	ts_mugshot_show mugshot=0x37
@@ -129,7 +129,7 @@ CompText87BFA50::
 	.string "You're not really..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87BFA50_unk11_id
 
 	def_text_script CompText87BFA50_unk11
 	ts_mugshot_show mugshot=0x0
@@ -145,7 +145,7 @@ CompText87BFA50::
 	.string "Here goes..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87BFA50_unk13_id
 
 	def_text_script CompText87BFA50_unk13
 	ts_mugshot_show mugshot=0x37
@@ -154,7 +154,7 @@ CompText87BFA50::
 	.string "Lan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87BFA50_unk14_id
 
 	def_text_script CompText87BFA50_unk14
 	ts_mugshot_show mugshot=0x0
@@ -177,7 +177,7 @@ CompText87BFA50::
 	.string "It's too scary..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87BFA50_unk16_id
 
 	def_text_script CompText87BFA50_unk16
 	ts_mugshot_show mugshot=0x37
@@ -192,7 +192,7 @@ CompText87BFA50::
 	.string "Yes,MegaMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87BFA50_unk18_id
 
 	def_text_script CompText87BFA50_unk18
 	ts_mugshot_show mugshot=0x37
@@ -206,7 +206,7 @@ CompText87BFA50::
 	.string "side!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87BFA50_unk19_id
 
 	def_text_script CompText87BFA50_unk19
 	ts_mugshot_show mugshot=0x0
@@ -215,7 +215,7 @@ CompText87BFA50::
 	.string "But how?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87BFA50_unk20_id
 
 	def_text_script CompText87BFA50_unk20
 	ts_mugshot_show mugshot=0x37
@@ -225,7 +225,7 @@ CompText87BFA50::
 	.string "Operator's Room."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87BFA50_unk21_id
 
 	def_text_script CompText87BFA50_unk21
 	ts_mugshot_show mugshot=0x0
@@ -235,7 +235,7 @@ CompText87BFA50::
 	.string "want to do this?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87BFA50_unk22_id
 
 	def_text_script CompText87BFA50_unk22
 	ts_mugshot_show mugshot=0x37
@@ -254,7 +254,7 @@ CompText87BFA50::
 	.string "place..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87BFA50_unk23_id
 
 	def_text_script CompText87BFA50_unk23
 	ts_mugshot_show mugshot=0x0

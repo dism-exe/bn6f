@@ -13,8 +13,8 @@ CompText87469C4::
 	ts_check_chapter [
 		lower: 0x20,
 		upper: 0x33,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87469C4_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "Dummy text"

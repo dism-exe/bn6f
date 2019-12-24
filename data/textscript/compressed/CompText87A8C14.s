@@ -39,7 +39,7 @@ CompText87A8C14::
 	.string "his ways..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A8C14_unk2_id
 
 	def_text_script CompText87A8C14_unk2
 	ts_mugshot_show mugshot=0x14
@@ -55,7 +55,7 @@ CompText87A8C14::
 	.string "Mick..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A8C14_unk4_id
 
 	def_text_script CompText87A8C14_unk4
 	ts_mugshot_show mugshot=0x14
@@ -77,7 +77,7 @@ CompText87A8C14::
 	.string "wrong of me."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A8C14_unk5_id
 
 	def_text_script CompText87A8C14_unk5
 	ts_mugshot_show mugshot=0x0
@@ -94,7 +94,7 @@ CompText87A8C14::
 	.string "hang out with here."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A8C14_unk6_id
 
 	def_text_script CompText87A8C14_unk6
 	ts_mugshot_show mugshot=0x14
@@ -114,7 +114,7 @@ CompText87A8C14::
 	.string "you two!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A8C14_unk7_id
 
 	def_text_script CompText87A8C14_unk7
 	ts_mugshot_show mugshot=0x0
@@ -128,7 +128,7 @@ CompText87A8C14::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_animation animation=0x2
-	ts_jump target=18
+	ts_jump target=CompText87A8C14_unk18_id
 
 	def_text_script CompText87A8C14_unk8
 	ts_mugshot_show mugshot=0x33
@@ -160,7 +160,7 @@ CompText87A8C14::
 	.string "so here,take this."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87A8C14_unk9_id
 
 	def_text_script CompText87A8C14_unk9
 	ts_mugshot_hide
@@ -187,7 +187,7 @@ CompText87A8C14::
 		value: 0xE,
 	]
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87A8C14_unk10_id
 
 	def_text_script CompText87A8C14_unk10
 	ts_mugshot_show mugshot=0x0
@@ -196,7 +196,7 @@ CompText87A8C14::
 	.string "Your doodles!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87A8C14_unk11_id
 
 	def_text_script CompText87A8C14_unk11
 	ts_mugshot_show mugshot=0x14
@@ -234,7 +234,7 @@ CompText87A8C14::
 	.string "in CentralArea3!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87A8C14_unk12_id
 
 	def_text_script CompText87A8C14_unk12
 	ts_mugshot_show mugshot=0x0
@@ -252,7 +252,7 @@ CompText87A8C14::
 	.string "Really...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87A8C14_unk13_id
 
 	def_text_script CompText87A8C14_unk13
 	ts_mugshot_show mugshot=0x14
@@ -322,7 +322,7 @@ CompText87A8C14::
 	.string "tomorrow,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87A8C14_unk16_id
 
 	def_text_script CompText87A8C14_unk16
 	ts_mugshot_show mugshot=0x0
@@ -383,7 +383,7 @@ CompText87A8C14::
 	.string "T-Tab!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87A8C14_unk20_id
 
 	def_text_script CompText87A8C14_unk20
 	ts_mugshot_show mugshot=0x33
@@ -398,7 +398,7 @@ CompText87A8C14::
 	.string "be your friend,too!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87A8C14_unk21_id
 
 	def_text_script CompText87A8C14_unk21
 	ts_mugshot_show mugshot=0x0
@@ -417,7 +417,7 @@ CompText87A8C14::
 	.string "me,\"Mr.\"either..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87A8C14_unk22_id
 
 	def_text_script CompText87A8C14_unk22
 	ts_mugshot_show mugshot=0x33
@@ -461,7 +461,7 @@ CompText87A8C14::
 	.string "Grr..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87A8C14_unk23_id
 
 	def_text_script CompText87A8C14_unk23
 	ts_mugshot_show mugshot=0x14

@@ -13,14 +13,14 @@ CompText8777078::
 	ts_check_chapter [
 		lower: 0x43,
 		upper: 0x46,
-		jumpIfInRange: 0xA,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8777078_unk10_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x42,
 		upper: 0x42,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8777078_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x10
 	ts_msg_open
@@ -250,8 +250,8 @@ CompText8777078::
 	def_text_script CompText8777078_unk47
 	ts_check_flag [
 		flag: 0xC20,
-		jumpIfTrue: 0x30,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8777078_unk48_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x15
 	ts_msg_open

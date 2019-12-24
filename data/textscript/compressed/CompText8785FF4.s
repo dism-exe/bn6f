@@ -13,12 +13,12 @@ CompText8785FF4::
 	ts_check_chapter [
 		lower: 0x22,
 		upper: 0x22,
-		jumpIfInRange: 0x18,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8785FF4_unk24_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x5,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText8785FF4_unk5_id,
 	]
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
@@ -92,8 +92,8 @@ CompText8785FF4::
 	def_text_script CompText8785FF4_unk20
 	ts_check_flag [
 		flag: 0x638,
-		jumpIfTrue: 0x16,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8785FF4_unk22_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x638
 	ts_msg_open
@@ -259,13 +259,13 @@ CompText8785FF4::
 	def_text_script CompText8785FF4_unk50
 	ts_check_flag [
 		flag: 0x7F1,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x34,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8785FF4_unk52_id,
 	]
 	ts_check_flag [
 		flag: 0x687,
-		jumpIfTrue: 0x33,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8785FF4_unk51_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open

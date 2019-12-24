@@ -29,8 +29,8 @@ CompText877E3DC::
 	def_text_script CompText877E3DC_unk5
 	ts_check_flag [
 		flag: 0x1126,
-		jumpIfTrue: 0x6,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877E3DC_unk6_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1126
 	ts_mugshot_show mugshot=0x3C

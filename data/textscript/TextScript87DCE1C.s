@@ -7,7 +7,7 @@ TextScript87DCE1C::
 	.string "Drip,drip..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=TextScript87DCE1C_unk1_id
 
 	def_text_script TextScript87DCE1C_unk1
 	ts_mugshot_show mugshot=0x0
@@ -15,7 +15,7 @@ TextScript87DCE1C::
 	.string "Are you OK,SpoutMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=TextScript87DCE1C_unk2_id
 
 	def_text_script TextScript87DCE1C_unk2
 	ts_mugshot_show mugshot=0x48

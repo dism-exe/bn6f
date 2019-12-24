@@ -13,8 +13,8 @@ CompText8758AF0::
 	ts_check_chapter [
 		lower: 0x3,
 		upper: 0x4,
-		jumpIfInRange: 0x8,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8758AF0_unk8_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "This sink has an\n"
@@ -57,8 +57,8 @@ CompText8758AF0::
 	ts_check_chapter [
 		lower: 0x30,
 		upper: 0xFF,
-		jumpIfInRange: 0x7,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8758AF0_unk7_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "A flyer from the\n"

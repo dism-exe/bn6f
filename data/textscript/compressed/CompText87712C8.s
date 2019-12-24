@@ -12,13 +12,13 @@ CompText87712C8::
 	def_text_script CompText87712C8_unk0
 	ts_check_flag [
 		flag: 0x657,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87712C8_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x636,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87712C8_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x636
 	ts_flag_set flag=0x1715
@@ -57,13 +57,13 @@ CompText87712C8::
 	def_text_script CompText87712C8_unk5
 	ts_check_flag [
 		flag: 0x669,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87712C8_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x652,
-		jumpIfTrue: 0x9,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87712C8_unk9_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x652
 	ts_mugshot_show mugshot=0x1E
@@ -246,8 +246,8 @@ CompText87712C8::
 	def_text_script CompText87712C8_unk15
 	ts_check_flag [
 		flag: 0x645,
-		jumpIfTrue: 0x10,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87712C8_unk16_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x645
 	ts_flag_set flag=0x1715
@@ -264,8 +264,8 @@ CompText87712C8::
 	def_text_script CompText87712C8_unk17
 	ts_check_flag [
 		flag: 0x653,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87712C8_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x653
 	ts_mugshot_show mugshot=0x1F
@@ -478,8 +478,8 @@ CompText87712C8::
 
 	def_text_script CompText87712C8_unk25
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x1A,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87712C8_unk26_id,
 	]
 	ts_mugshot_show mugshot=0x1E
 	ts_msg_open

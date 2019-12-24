@@ -11,18 +11,18 @@ CompText878205C::
 
 	def_text_script CompText878205C_unk0
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x2,
-		jumpIfElecMan: 0x2,
-		jumpIfSlashMan: 0x2,
-		jumpIfEraseMan: 0x2,
-		jumpIfChargeMan: 0x2,
-		jumpIfSpoutMan: 0x2,
-		jumpIfTomahawkMan: 0x2,
-		jumpIfTenguMan: 0x2,
-		jumpIfGroundMan: 0x2,
-		jumpIfDustMan: 0x2,
-		jumpIfProtoMan: 0x2,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText878205C_unk2_id,
+		jumpIfElecMan: CompText878205C_unk2_id,
+		jumpIfSlashMan: CompText878205C_unk2_id,
+		jumpIfEraseMan: CompText878205C_unk2_id,
+		jumpIfChargeMan: CompText878205C_unk2_id,
+		jumpIfSpoutMan: CompText878205C_unk2_id,
+		jumpIfTomahawkMan: CompText878205C_unk2_id,
+		jumpIfTenguMan: CompText878205C_unk2_id,
+		jumpIfGroundMan: CompText878205C_unk2_id,
+		jumpIfDustMan: CompText878205C_unk2_id,
+		jumpIfProtoMan: CompText878205C_unk2_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

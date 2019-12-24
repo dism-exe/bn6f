@@ -33,7 +33,7 @@ CompText87ACBB0::
 	.string "How do you feel?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87ACBB0_unk3_id
 
 	def_text_script CompText87ACBB0_unk3
 	ts_mugshot_show mugshot=0x37
@@ -46,7 +46,7 @@ CompText87ACBB0::
 	.string "out though..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87ACBB0_unk4_id
 
 	def_text_script CompText87ACBB0_unk4
 	ts_mugshot_show mugshot=0x0

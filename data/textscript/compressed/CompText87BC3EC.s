@@ -16,7 +16,7 @@ CompText87BC3EC::
 	.string "4 cyberscrolls!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BC3EC_unk1_id
 
 	def_text_script CompText87BC3EC_unk1
 	ts_mugshot_show mugshot=0x4C
@@ -26,7 +26,7 @@ CompText87BC3EC::
 	.string "one with the wind."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87BC3EC_unk2_id
 
 	def_text_script CompText87BC3EC_unk2
 	ts_mugshot_show mugshot=0x23
@@ -41,7 +41,7 @@ CompText87BC3EC::
 	.string "Next is Green Area2."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87BC3EC_unk3_id
 
 	def_text_script CompText87BC3EC_unk3
 	ts_mugshot_show mugshot=0x0

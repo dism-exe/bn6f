@@ -16,7 +16,7 @@ CompText87A536C::
 	.string "La...n..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87A536C_unk1_id
 
 	def_text_script CompText87A536C_unk1
 	ts_mugshot_show mugshot=0x0
@@ -25,7 +25,7 @@ CompText87A536C::
 	.string "5 more minutes..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A536C_unk2_id
 
 	def_text_script CompText87A536C_unk2
 	ts_mugshot_show mugshot=0x37
@@ -34,7 +34,7 @@ CompText87A536C::
 	.string "you're late!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A536C_unk3_id
 
 	def_text_script CompText87A536C_unk3
 	ts_mugshot_show mugshot=0x0
@@ -51,7 +51,7 @@ CompText87A536C::
 	.string "I got up!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A536C_unk5_id
 
 	def_text_script CompText87A536C_unk5
 	ts_mugshot_show mugshot=0x37
@@ -68,7 +68,7 @@ CompText87A536C::
 	.string "to manage yourself!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A536C_unk6_id
 
 	def_text_script CompText87A536C_unk6
 	ts_mugshot_show mugshot=0x0
@@ -85,7 +85,7 @@ CompText87A536C::
 	.string "chatter and go!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A536C_unk7_id
 
 	def_text_script CompText87A536C_unk7
 	ts_mugshot_show mugshot=0x37

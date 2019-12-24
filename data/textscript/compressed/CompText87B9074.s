@@ -29,7 +29,7 @@ CompText87B9074::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B9074_unk1_id
 
 	def_text_script CompText87B9074_unk1
 	ts_mugshot_show mugshot=0x0
@@ -48,7 +48,7 @@ CompText87B9074::
 	.string "now?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B9074_unk2_id
 
 	def_text_script CompText87B9074_unk2
 	ts_mugshot_hide
@@ -79,7 +79,7 @@ CompText87B9074::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B9074_unk3_id
 
 	def_text_script CompText87B9074_unk3
 	ts_mugshot_show mugshot=0x0
@@ -157,7 +157,7 @@ CompText87B9074::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_text_speed delay=0x2
-	ts_jump target=7
+	ts_jump target=CompText87B9074_unk7_id
 
 	def_text_script CompText87B9074_unk7
 	ts_mugshot_show mugshot=0x0
@@ -165,7 +165,7 @@ CompText87B9074::
 	.string "Hey,are you OK...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B9074_unk8_id
 
 	def_text_script CompText87B9074_unk8
 	ts_mugshot_show mugshot=0x12
@@ -193,7 +193,7 @@ CompText87B9074::
 	.string "here,Lan Hikari?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87B9074_unk11_id
 
 	def_text_script CompText87B9074_unk11
 	ts_mugshot_show mugshot=0x0
@@ -201,7 +201,7 @@ CompText87B9074::
 	.string "N-No!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87B9074_unk12_id
 
 	def_text_script CompText87B9074_unk12
 	ts_mugshot_show mugshot=0x12
@@ -209,7 +209,7 @@ CompText87B9074::
 	.string "... Really?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87B9074_unk13_id
 
 	def_text_script CompText87B9074_unk13
 	ts_mugshot_show mugshot=0x0
@@ -217,7 +217,7 @@ CompText87B9074::
 	.string "Really!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87B9074_unk14_id
 
 	def_text_script CompText87B9074_unk14
 	ts_mugshot_show mugshot=0x12
@@ -248,7 +248,7 @@ CompText87B9074::
 	.string "Wahaha!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87B9074_unk15_id
 
 	def_text_script CompText87B9074_unk15
 	ts_mugshot_show mugshot=0x0
@@ -270,7 +270,7 @@ CompText87B9074::
 	.string "say,Mr.Mach...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87B9074_unk16_id
 
 	def_text_script CompText87B9074_unk16
 	ts_mugshot_show mugshot=0x12
@@ -293,7 +293,7 @@ CompText87B9074::
 	.string "that hid the Bot!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87B9074_unk17_id
 
 	def_text_script CompText87B9074_unk17
 	ts_mugshot_show mugshot=0x0
@@ -305,7 +305,7 @@ CompText87B9074::
 	.string "Maybe...!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87B9074_unk18_id
 
 	def_text_script CompText87B9074_unk18
 	ts_mugshot_show mugshot=0x37
@@ -328,7 +328,7 @@ CompText87B9074::
 	.string "everything we need!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87B9074_unk19_id
 
 	def_text_script CompText87B9074_unk19
 	ts_mugshot_show mugshot=0x0
@@ -338,7 +338,7 @@ CompText87B9074::
 	.string "for this Bot!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87B9074_unk20_id
 
 	def_text_script CompText87B9074_unk20
 	ts_mugshot_show mugshot=0x12
@@ -353,7 +353,7 @@ CompText87B9074::
 	.string "understand!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87B9074_unk21_id
 
 	def_text_script CompText87B9074_unk21
 	ts_mugshot_show mugshot=0x0

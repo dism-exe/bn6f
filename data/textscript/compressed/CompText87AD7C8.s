@@ -26,7 +26,7 @@ CompText87AD7C8::
 	.string "guard down..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87AD7C8_unk2_id
 
 	def_text_script CompText87AD7C8_unk2
 	ts_mugshot_show mugshot=0x2A
@@ -34,7 +34,7 @@ CompText87AD7C8::
 	.string "Hey,shut yer trap!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87AD7C8_unk3_id
 
 	def_text_script CompText87AD7C8_unk3
 	ts_mugshot_show mugshot=0x14
@@ -42,7 +42,7 @@ CompText87AD7C8::
 	.string "Ugh...!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87AD7C8_unk4_id
 
 	def_text_script CompText87AD7C8_unk4
 	ts_mugshot_show mugshot=0x0
@@ -62,7 +62,7 @@ CompText87AD7C8::
 	.string "yer friend 'ere,boy."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AD7C8_unk6_id
 
 	def_text_script CompText87AD7C8_unk6
 	ts_mugshot_show mugshot=0x0
@@ -70,7 +70,7 @@ CompText87AD7C8::
 	.string "That's low!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87AD7C8_unk7_id
 
 	def_text_script CompText87AD7C8_unk7
 	ts_mugshot_show mugshot=0x2A
@@ -101,7 +101,7 @@ CompText87AD7C8::
 	.string "mess it all up!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87AD7C8_unk8_id
 
 	def_text_script CompText87AD7C8_unk8
 	ts_mugshot_show mugshot=0x0
@@ -109,7 +109,7 @@ CompText87AD7C8::
 	.string "Let Mick go!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87AD7C8_unk9_id
 
 	def_text_script CompText87AD7C8_unk9
 	ts_mugshot_show mugshot=0x2A
@@ -142,7 +142,7 @@ CompText87AD7C8::
 	.string "NOW!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87AD7C8_unk10_id
 
 	def_text_script CompText87AD7C8_unk10
 	ts_mugshot_show mugshot=0x0
@@ -157,7 +157,7 @@ CompText87AD7C8::
 	.string "about!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87AD7C8_unk11_id
 
 	def_text_script CompText87AD7C8_unk11
 	ts_mugshot_show mugshot=0x2A
@@ -167,8 +167,8 @@ CompText87AD7C8::
 	.string "ye know what'll..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
-	ts_jump target=12
+	ts_jump target=CompText87AD7C8_unk12_id
+	ts_jump target=CompText87AD7C8_unk12_id
 
 	def_text_script CompText87AD7C8_unk12
 	ts_mugshot_show mugshot=0x14
@@ -176,7 +176,7 @@ CompText87AD7C8::
 	.string "Ugh!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87AD7C8_unk13_id
 
 	def_text_script CompText87AD7C8_unk13
 	ts_mugshot_show mugshot=0x0
@@ -209,7 +209,7 @@ CompText87AD7C8::
 	ts_control_lock
 	.string "*aur! aur! aur!*"
 	ts_wait frames=0x23
-	ts_jump target=16
+	ts_jump target=CompText87AD7C8_unk16_id
 
 	def_text_script CompText87AD7C8_unk16
 	ts_mugshot_show mugshot=0x2A
@@ -231,7 +231,7 @@ CompText87AD7C8::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87AD7C8_unk18_id
 
 	def_text_script CompText87AD7C8_unk18
 	ts_mugshot_show mugshot=0x2A
@@ -250,7 +250,7 @@ CompText87AD7C8::
 		length: 0x7,
 	]
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87AD7C8_unk20_id
 
 	def_text_script CompText87AD7C8_unk20
 	ts_mugshot_show mugshot=0x0
@@ -262,7 +262,7 @@ CompText87AD7C8::
 	.string "Great job,Plata!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87AD7C8_unk21_id
 
 	def_text_script CompText87AD7C8_unk21
 	ts_mugshot_hide
@@ -270,7 +270,7 @@ CompText87AD7C8::
 	.string "*Squawk!!*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87AD7C8_unk22_id
 
 	def_text_script CompText87AD7C8_unk22
 	ts_mugshot_show mugshot=0x14
@@ -288,7 +288,7 @@ CompText87AD7C8::
 	.string "come to save me...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87AD7C8_unk24_id
 
 	def_text_script CompText87AD7C8_unk24
 	ts_mugshot_hide
@@ -296,7 +296,7 @@ CompText87AD7C8::
 	.string "*Squawk!! Squawk!!*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87AD7C8_unk25_id
 
 	def_text_script CompText87AD7C8_unk25
 	ts_mugshot_show mugshot=0x0
@@ -310,7 +310,7 @@ CompText87AD7C8::
 	.string "Plata!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87AD7C8_unk26_id
 
 	def_text_script CompText87AD7C8_unk26
 	ts_mugshot_show mugshot=0x14

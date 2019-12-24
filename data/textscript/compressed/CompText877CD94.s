@@ -12,13 +12,13 @@ CompText877CD94::
 	def_text_script CompText877CD94_unk0
 	ts_check_flag [
 		flag: 0x80E,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877CD94_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x868,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877CD94_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x868
 	ts_mugshot_show mugshot=0x15
@@ -98,8 +98,8 @@ CompText877CD94::
 	def_text_script CompText877CD94_unk2
 	ts_check_flag [
 		flag: 0x869,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877CD94_unk3_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x869
 	ts_msg_open
@@ -212,8 +212,8 @@ CompText877CD94::
 	def_text_script CompText877CD94_unk4
 	ts_check_flag [
 		flag: 0x86A,
-		jumpIfTrue: 0x5,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877CD94_unk5_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x86A
 	ts_msg_open
@@ -282,8 +282,8 @@ CompText877CD94::
 	def_text_script CompText877CD94_unk6
 	ts_check_flag [
 		flag: 0x86B,
-		jumpIfTrue: 0x7,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877CD94_unk7_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x86B
 	ts_msg_open
@@ -401,8 +401,8 @@ CompText877CD94::
 	def_text_script CompText877CD94_unk20
 	ts_check_flag [
 		flag: 0x86D,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877CD94_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x86D
 	ts_sound_fade_out [

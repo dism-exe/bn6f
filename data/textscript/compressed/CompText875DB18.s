@@ -18,10 +18,10 @@ CompText875DB18::
 	ts_end
 
 	def_text_script CompText875DB18_unk1
-	ts_jump target=0
+	ts_jump target=CompText875DB18_unk0_id
 
 	def_text_script CompText875DB18_unk2
-	ts_jump target=0
+	ts_jump target=CompText875DB18_unk0_id
 
 	def_text_script CompText875DB18_unk3
 	ts_msg_open

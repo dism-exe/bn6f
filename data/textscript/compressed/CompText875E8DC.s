@@ -13,9 +13,9 @@ CompText875E8DC::
 	ts_check_item07 [
 		item: 0x6,
 		amount: 0x1,
-		jumpIfEqual: 0xA,
-		jumpIfGreater: 0xA,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText875E8DC_unk10_id,
+		jumpIfGreater: CompText875E8DC_unk10_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "YOU WILL NEED\n"

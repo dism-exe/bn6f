@@ -113,8 +113,8 @@ CompText87948B8::
 	def_text_script CompText87948B8_unk20
 	ts_check_flag [
 		flag: 0xA81,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87948B8_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xA81
 	ts_msg_open
@@ -240,8 +240,8 @@ CompText87948B8::
 	def_text_script CompText87948B8_unk25
 	ts_check_flag [
 		flag: 0xA82,
-		jumpIfTrue: 0x1A,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87948B8_unk26_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xA82
 	ts_msg_open

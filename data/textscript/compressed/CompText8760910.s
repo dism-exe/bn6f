@@ -31,8 +31,8 @@ CompText8760910::
 	ts_check_chapter [
 		lower: 0x48,
 		upper: 0x48,
-		jumpIfInRange: 0x10,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8760910_unk16_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "\"Welcome\n"
@@ -43,25 +43,25 @@ CompText8760910::
 
 	def_text_script CompText8760910_unk4
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0x6,
-		jumpIfSlashMan: 0xFF,
-		jumpIfEraseMan: 0x7,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0xFF,
-		jumpIfTomahawkMan: 0x8,
-		jumpIfTenguMan: 0xFF,
-		jumpIfGroundMan: 0xFF,
-		jumpIfDustMan: 0x9,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: CompText8760910_unk6_id,
+		jumpIfSlashMan: TS_CONTINUE,
+		jumpIfEraseMan: CompText8760910_unk7_id,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: TS_CONTINUE,
+		jumpIfTomahawkMan: CompText8760910_unk8_id,
+		jumpIfTenguMan: TS_CONTINUE,
+		jumpIfGroundMan: TS_CONTINUE,
+		jumpIfDustMan: CompText8760910_unk9_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_check_item07 [
 		item: 0x1C,
 		amount: 0x1,
-		jumpIfEqual: 0x11,
-		jumpIfGreater: 0x11,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText8760910_unk17_id,
+		jumpIfGreater: CompText8760910_unk17_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "A thick,dense cloud\n"
@@ -71,25 +71,25 @@ CompText8760910::
 
 	def_text_script CompText8760910_unk5
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xB,
-		jumpIfElecMan: 0xFF,
-		jumpIfSlashMan: 0xC,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0xFF,
-		jumpIfTomahawkMan: 0xD,
-		jumpIfTenguMan: 0xFF,
-		jumpIfGroundMan: 0xE,
-		jumpIfDustMan: 0xFF,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText8760910_unk11_id,
+		jumpIfElecMan: TS_CONTINUE,
+		jumpIfSlashMan: CompText8760910_unk12_id,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: TS_CONTINUE,
+		jumpIfTomahawkMan: CompText8760910_unk13_id,
+		jumpIfTenguMan: TS_CONTINUE,
+		jumpIfGroundMan: CompText8760910_unk14_id,
+		jumpIfDustMan: TS_CONTINUE,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_check_item07 [
 		item: 0x42,
 		amount: 0x1,
-		jumpIfEqual: 0x12,
-		jumpIfGreater: 0x12,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText8760910_unk18_id,
+		jumpIfGreater: CompText8760910_unk18_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "A strong-looking\n"
@@ -116,7 +116,7 @@ CompText8760910::
 	.string "dispersed the cloud!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText8760910_unk10_id
 
 	def_text_script CompText8760910_unk7
 	ts_mugshot_show mugshot=0x50
@@ -137,7 +137,7 @@ CompText8760910::
 	.string "the cloud!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText8760910_unk10_id
 
 	def_text_script CompText8760910_unk8
 	ts_mugshot_show mugshot=0x4A
@@ -155,7 +155,7 @@ CompText8760910::
 	.string "cloud away!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText8760910_unk10_id
 
 	def_text_script CompText8760910_unk9
 	ts_mugshot_show mugshot=0x4E
@@ -172,7 +172,7 @@ CompText8760910::
 	.string "the cloud!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText8760910_unk10_id
 
 	def_text_script CompText8760910_unk10
 	ts_flag_clear flag=0x179
@@ -196,7 +196,7 @@ CompText8760910::
 	.string "cybertree to ashes!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText8760910_unk15_id
 
 	def_text_script CompText8760910_unk12
 	ts_mugshot_show mugshot=0x4B
@@ -215,7 +215,7 @@ CompText8760910::
 	.string "cybertree down!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText8760910_unk15_id
 
 	def_text_script CompText8760910_unk13
 	ts_mugshot_show mugshot=0x4A
@@ -235,7 +235,7 @@ CompText8760910::
 	.string "split into two!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText8760910_unk15_id
 
 	def_text_script CompText8760910_unk14
 	ts_mugshot_show mugshot=0x4D
@@ -259,7 +259,7 @@ CompText8760910::
 	.string "out,roots and all!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText8760910_unk15_id
 
 	def_text_script CompText8760910_unk15
 	ts_flag_clear flag=0x16A

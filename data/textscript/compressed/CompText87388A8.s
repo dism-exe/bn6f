@@ -11,18 +11,18 @@ CompText87388A8::
 
 	def_text_script CompText87388A8_unk0
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xA,
-		jumpIfHeatMan: 0x1E,
-		jumpIfElecMan: 0x28,
-		jumpIfSlashMan: 0x32,
-		jumpIfEraseMan: 0x3C,
-		jumpIfChargeMan: 0x46,
-		jumpIfSpoutMan: 0x50,
-		jumpIfTomahawkMan: 0x5A,
-		jumpIfTenguMan: 0x64,
-		jumpIfGroundMan: 0x6E,
-		jumpIfDustMan: 0x78,
-		jumpIfProtoMan: 0xA,
+		jumpIfMegaMan: CompText87388A8_unk10_id,
+		jumpIfHeatMan: CompText87388A8_unk30_id,
+		jumpIfElecMan: CompText87388A8_unk40_id,
+		jumpIfSlashMan: CompText87388A8_unk50_id,
+		jumpIfEraseMan: CompText87388A8_unk60_id,
+		jumpIfChargeMan: CompText87388A8_unk70_id,
+		jumpIfSpoutMan: CompText87388A8_unk80_id,
+		jumpIfTomahawkMan: CompText87388A8_unk90_id,
+		jumpIfTenguMan: CompText87388A8_unk100_id,
+		jumpIfGroundMan: CompText87388A8_unk110_id,
+		jumpIfDustMan: CompText87388A8_unk120_id,
+		jumpIfProtoMan: CompText87388A8_unk10_id,
 	]
 
 	def_text_script CompText87388A8_unk1
@@ -31,18 +31,18 @@ CompText87388A8::
 
 	def_text_script CompText87388A8_unk3
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xD,
-		jumpIfHeatMan: 0x21,
-		jumpIfElecMan: 0x2B,
-		jumpIfSlashMan: 0x35,
-		jumpIfEraseMan: 0x3F,
-		jumpIfChargeMan: 0x49,
-		jumpIfSpoutMan: 0x53,
-		jumpIfTomahawkMan: 0x5D,
-		jumpIfTenguMan: 0x67,
-		jumpIfGroundMan: 0x71,
-		jumpIfDustMan: 0x7B,
-		jumpIfProtoMan: 0xD,
+		jumpIfMegaMan: CompText87388A8_unk13_id,
+		jumpIfHeatMan: CompText87388A8_unk33_id,
+		jumpIfElecMan: CompText87388A8_unk43_id,
+		jumpIfSlashMan: CompText87388A8_unk53_id,
+		jumpIfEraseMan: CompText87388A8_unk63_id,
+		jumpIfChargeMan: CompText87388A8_unk73_id,
+		jumpIfSpoutMan: CompText87388A8_unk83_id,
+		jumpIfTomahawkMan: CompText87388A8_unk93_id,
+		jumpIfTenguMan: CompText87388A8_unk103_id,
+		jumpIfGroundMan: CompText87388A8_unk113_id,
+		jumpIfDustMan: CompText87388A8_unk123_id,
+		jumpIfProtoMan: CompText87388A8_unk13_id,
 	]
 
 	def_text_script CompText87388A8_unk4
@@ -58,7 +58,7 @@ CompText87388A8::
 	def_text_script CompText87388A8_unk9
 
 	def_text_script CompText87388A8_unk10
-	ts_jump target=11
+	ts_jump target=CompText87388A8_unk11_id
 
 	def_text_script CompText87388A8_unk11
 	ts_mugshot_show mugshot=0x0
@@ -134,7 +134,7 @@ CompText87388A8::
 	def_text_script CompText87388A8_unk29
 
 	def_text_script CompText87388A8_unk30
-	ts_jump target=31
+	ts_jump target=CompText87388A8_unk31_id
 
 	def_text_script CompText87388A8_unk31
 	ts_mugshot_show mugshot=0x0
@@ -190,7 +190,7 @@ CompText87388A8::
 	def_text_script CompText87388A8_unk39
 
 	def_text_script CompText87388A8_unk40
-	ts_jump target=41
+	ts_jump target=CompText87388A8_unk41_id
 
 	def_text_script CompText87388A8_unk41
 	ts_mugshot_show mugshot=0x0
@@ -246,7 +246,7 @@ CompText87388A8::
 	def_text_script CompText87388A8_unk49
 
 	def_text_script CompText87388A8_unk50
-	ts_jump target=51
+	ts_jump target=CompText87388A8_unk51_id
 
 	def_text_script CompText87388A8_unk51
 	ts_mugshot_show mugshot=0x0
@@ -302,7 +302,7 @@ CompText87388A8::
 	def_text_script CompText87388A8_unk59
 
 	def_text_script CompText87388A8_unk60
-	ts_jump target=61
+	ts_jump target=CompText87388A8_unk61_id
 
 	def_text_script CompText87388A8_unk61
 	ts_mugshot_show mugshot=0x0
@@ -358,7 +358,7 @@ CompText87388A8::
 	def_text_script CompText87388A8_unk69
 
 	def_text_script CompText87388A8_unk70
-	ts_jump target=71
+	ts_jump target=CompText87388A8_unk71_id
 
 	def_text_script CompText87388A8_unk71
 	ts_mugshot_show mugshot=0x0
@@ -414,7 +414,7 @@ CompText87388A8::
 	def_text_script CompText87388A8_unk79
 
 	def_text_script CompText87388A8_unk80
-	ts_jump target=81
+	ts_jump target=CompText87388A8_unk81_id
 
 	def_text_script CompText87388A8_unk81
 	ts_mugshot_show mugshot=0x0
@@ -481,7 +481,7 @@ CompText87388A8::
 	def_text_script CompText87388A8_unk89
 
 	def_text_script CompText87388A8_unk90
-	ts_jump target=91
+	ts_jump target=CompText87388A8_unk91_id
 
 	def_text_script CompText87388A8_unk91
 	ts_mugshot_show mugshot=0x0
@@ -537,7 +537,7 @@ CompText87388A8::
 	def_text_script CompText87388A8_unk99
 
 	def_text_script CompText87388A8_unk100
-	ts_jump target=101
+	ts_jump target=CompText87388A8_unk101_id
 
 	def_text_script CompText87388A8_unk101
 	ts_mugshot_show mugshot=0x0
@@ -593,7 +593,7 @@ CompText87388A8::
 	def_text_script CompText87388A8_unk109
 
 	def_text_script CompText87388A8_unk110
-	ts_jump target=111
+	ts_jump target=CompText87388A8_unk111_id
 
 	def_text_script CompText87388A8_unk111
 	ts_mugshot_show mugshot=0x0
@@ -649,7 +649,7 @@ CompText87388A8::
 	def_text_script CompText87388A8_unk119
 
 	def_text_script CompText87388A8_unk120
-	ts_jump target=121
+	ts_jump target=CompText87388A8_unk121_id
 
 	def_text_script CompText87388A8_unk121
 	ts_mugshot_show mugshot=0x0
@@ -705,7 +705,7 @@ CompText87388A8::
 	def_text_script CompText87388A8_unk129
 
 	def_text_script CompText87388A8_unk130
-	ts_jump target=131
+	ts_jump target=CompText87388A8_unk131_id
 
 	def_text_script CompText87388A8_unk131
 	ts_mugshot_show mugshot=0x0
@@ -761,16 +761,16 @@ CompText87388A8::
 	def_text_script CompText87388A8_unk139
 
 	def_text_script CompText87388A8_unk140
-	ts_jump target=131
+	ts_jump target=CompText87388A8_unk131_id
 
 	def_text_script CompText87388A8_unk141
-	ts_jump target=11
+	ts_jump target=CompText87388A8_unk11_id
 
 	def_text_script CompText87388A8_unk142
-	ts_jump target=12
+	ts_jump target=CompText87388A8_unk12_id
 
 	def_text_script CompText87388A8_unk143
-	ts_jump target=13
+	ts_jump target=CompText87388A8_unk13_id
 
 	def_text_script CompText87388A8_unk144
 

@@ -16,7 +16,7 @@ CompText87C0764::
 	.string "away!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87C0764_unk1_id
 
 	def_text_script CompText87C0764_unk1
 	ts_mugshot_show mugshot=0x2E
@@ -26,7 +26,7 @@ CompText87C0764::
 	.string "underestimated you!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87C0764_unk2_id
 
 	def_text_script CompText87C0764_unk2
 	ts_mugshot_show mugshot=0x0
@@ -35,7 +35,7 @@ CompText87C0764::
 	.string "in to the police!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C0764_unk3_id
 
 	def_text_script CompText87C0764_unk3
 	ts_mugshot_show mugshot=0x2E
@@ -63,7 +63,7 @@ CompText87C0764::
 	.string "M-My eyes!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C0764_unk6_id
 
 	def_text_script CompText87C0764_unk6
 	ts_mugshot_show mugshot=0x2E
@@ -90,7 +90,7 @@ CompText87C0764::
 	.string "Darn this stupid...!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87C0764_unk8_id
 
 	def_text_script CompText87C0764_unk8
 	ts_mugshot_hide
@@ -103,7 +103,7 @@ CompText87C0764::
 	.string "Program!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87C0764_unk9_id
 
 	def_text_script CompText87C0764_unk9
 	ts_mugshot_show mugshot=0x2E
@@ -165,7 +165,7 @@ CompText87C0764::
 	.string "Mr.Weather!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87C0764_unk14_id
 
 	def_text_script CompText87C0764_unk14
 	ts_mugshot_hide
@@ -178,7 +178,7 @@ CompText87C0764::
 	.string "fight one another..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C0764_unk15_id
 
 	def_text_script CompText87C0764_unk15
 	ts_mugshot_show mugshot=0x0
@@ -199,7 +199,7 @@ CompText87C0764::
 	.string "earlier...you...!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87C0764_unk17_id
 
 	def_text_script CompText87C0764_unk17
 	ts_mugshot_show mugshot=0x53
@@ -209,7 +209,7 @@ CompText87C0764::
 	.string "return to base..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87C0764_unk18_id
 
 	def_text_script CompText87C0764_unk18
 	ts_mugshot_show mugshot=0x2E
@@ -224,7 +224,7 @@ CompText87C0764::
 	.string "Ah!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87C0764_unk20_id
 
 	def_text_script CompText87C0764_unk20
 	ts_mugshot_show mugshot=0x53
@@ -243,7 +243,7 @@ CompText87C0764::
 	.string "Please wake up!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87C0764_unk22_id
 
 	def_text_script CompText87C0764_unk22
 	ts_mugshot_show mugshot=0x53
@@ -270,7 +270,7 @@ CompText87C0764::
 	.string "I won't miss..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87C0764_unk24_id
 
 	def_text_script CompText87C0764_unk24
 	ts_mugshot_show mugshot=0x0
@@ -294,7 +294,7 @@ CompText87C0764::
 	.string "I-Iris..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87C0764_unk27_id
 
 	def_text_script CompText87C0764_unk27
 	ts_mugshot_show mugshot=0x11
@@ -302,7 +302,7 @@ CompText87C0764::
 	.string "......"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87C0764_unk28_id
 
 	def_text_script CompText87C0764_unk28
 	ts_mugshot_show mugshot=0x53
@@ -311,7 +311,7 @@ CompText87C0764::
 	.string "here...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=29
+	ts_jump target=CompText87C0764_unk29_id
 
 	def_text_script CompText87C0764_unk29
 	ts_mugshot_show mugshot=0x11
@@ -319,7 +319,7 @@ CompText87C0764::
 	.string "........."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87C0764_unk30_id
 
 	def_text_script CompText87C0764_unk30
 	ts_mugshot_show mugshot=0x53
@@ -355,7 +355,7 @@ CompText87C0764::
 	.string "save who anymore!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=33
+	ts_jump target=CompText87C0764_unk33_id
 
 	def_text_script CompText87C0764_unk33
 	ts_mugshot_show mugshot=0x11
@@ -364,7 +364,7 @@ CompText87C0764::
 	.string "not hurt,Lan..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=34
+	ts_jump target=CompText87C0764_unk34_id
 
 	def_text_script CompText87C0764_unk34
 	ts_mugshot_show mugshot=0x0
@@ -380,7 +380,7 @@ CompText87C0764::
 	.string "Waaaaaah!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=36
+	ts_jump target=CompText87C0764_unk36_id
 
 	def_text_script CompText87C0764_unk36
 	ts_mugshot_show mugshot=0x37
@@ -389,7 +389,7 @@ CompText87C0764::
 	.string "falling!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=37
+	ts_jump target=CompText87C0764_unk37_id
 
 	def_text_script CompText87C0764_unk37
 	ts_mugshot_show mugshot=0x0
@@ -413,7 +413,7 @@ CompText87C0764::
 	.string "bottom of the ocean!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=39
+	ts_jump target=CompText87C0764_unk39_id
 
 	def_text_script CompText87C0764_unk39
 	ts_mugshot_show mugshot=0x11
@@ -458,7 +458,7 @@ CompText87C0764::
 	.string "Iris... What..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=42
+	ts_jump target=CompText87C0764_unk42_id
 
 	def_text_script CompText87C0764_unk42
 	ts_mugshot_show mugshot=0x11
@@ -466,7 +466,7 @@ CompText87C0764::
 	.string "........."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=43
+	ts_jump target=CompText87C0764_unk43_id
 
 	def_text_script CompText87C0764_unk43
 	ts_mugshot_hide

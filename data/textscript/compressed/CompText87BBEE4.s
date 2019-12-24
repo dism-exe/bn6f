@@ -22,7 +22,7 @@ CompText87BBEE4::
 	.string "day!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BBEE4_unk1_id
 
 	def_text_script CompText87BBEE4_unk1
 	ts_mugshot_show mugshot=0x14

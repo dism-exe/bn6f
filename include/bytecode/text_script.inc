@@ -6,6 +6,8 @@
 	__subsection_id = 0
 	__cur_text_script_id = 0
 
+    // for jumps to 0xFF, which just continue the current script
+    .equiv TS_CONTINUE, 0xFF
 
 
 	.macro text_archive_start

@@ -28,7 +28,7 @@ CompText87D2B9C::
 	.string "He was tough..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87D2B9C_unk2_id
 
 	def_text_script CompText87D2B9C_unk2
 	ts_mugshot_show mugshot=0x0
@@ -36,7 +36,7 @@ CompText87D2B9C::
 	.string "MegaMan,the switch!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87D2B9C_unk3_id
 
 	def_text_script CompText87D2B9C_unk3
 	ts_mugshot_show mugshot=0x37

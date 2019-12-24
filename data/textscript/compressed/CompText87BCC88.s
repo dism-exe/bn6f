@@ -39,7 +39,7 @@ CompText87BCC88::
 	.string "more like notices!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87BCC88_unk2_id
 
 	def_text_script CompText87BCC88_unk2
 	ts_mugshot_show mugshot=0x37
@@ -54,7 +54,7 @@ CompText87BCC88::
 	.string "the time!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87BCC88_unk3_id
 
 	def_text_script CompText87BCC88_unk3
 	ts_mugshot_show mugshot=0x0
@@ -68,7 +68,7 @@ CompText87BCC88::
 	.string "of things,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87BCC88_unk4_id
 
 	def_text_script CompText87BCC88_unk4
 	ts_mugshot_show mugshot=0x37
@@ -83,7 +83,7 @@ CompText87BCC88::
 	.string "sleeping again!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87BCC88_unk5_id
 
 	def_text_script CompText87BCC88_unk5
 	ts_mugshot_show mugshot=0x0
@@ -96,7 +96,7 @@ CompText87BCC88::
 	.string "sure...? Ahaha..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87BCC88_unk6_id
 
 	def_text_script CompText87BCC88_unk6
 	ts_mugshot_show mugshot=0x37
@@ -104,7 +104,7 @@ CompText87BCC88::
 	.string "L-a-n!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87BCC88_unk7_id
 
 	def_text_script CompText87BCC88_unk7
 	ts_mugshot_hide
@@ -118,7 +118,7 @@ CompText87BCC88::
 	ts_sound_enable_text_sfx
 	ts_control_unlock
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87BCC88_unk8_id
 
 	def_text_script CompText87BCC88_unk8
 	ts_mugshot_show mugshot=0x0
@@ -130,7 +130,7 @@ CompText87BCC88::
 	.string "read it,OK,MegaMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87BCC88_unk9_id
 
 	def_text_script CompText87BCC88_unk9
 	ts_mugshot_show mugshot=0x37
@@ -169,7 +169,7 @@ CompText87BCC88::
 	.string "That's what it says!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87BCC88_unk10_id
 
 	def_text_script CompText87BCC88_unk10
 	ts_mugshot_show mugshot=0x0
@@ -187,7 +187,7 @@ CompText87BCC88::
 	.string "out!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87BCC88_unk11_id
 
 	def_text_script CompText87BCC88_unk11
 	ts_mugshot_show mugshot=0x37

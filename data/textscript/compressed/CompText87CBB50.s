@@ -34,7 +34,7 @@ CompText87CBB50::
 	.string "achin' to get goin'!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87CBB50_unk1_id
 
 	def_text_script CompText87CBB50_unk1
 	ts_mugshot_show mugshot=0x0
@@ -42,7 +42,7 @@ CompText87CBB50::
 	.string "Alright,GroundMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87CBB50_unk2_id
 
 	def_text_script CompText87CBB50_unk2
 	ts_mugshot_show mugshot=0x24
@@ -57,7 +57,7 @@ CompText87CBB50::
 	.string "CentralArea2."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CBB50_unk3_id
 
 	def_text_script CompText87CBB50_unk3
 	ts_mugshot_show mugshot=0x4D
@@ -69,7 +69,7 @@ CompText87CBB50::
 	.string "Can't wait!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87CBB50_unk4_id
 
 	def_text_script CompText87CBB50_unk4
 	ts_mugshot_show mugshot=0x0

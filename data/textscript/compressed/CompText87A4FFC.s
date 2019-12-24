@@ -50,7 +50,7 @@ CompText87A4FFC::
 	.string "What's your name?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A4FFC_unk3_id
 
 	def_text_script CompText87A4FFC_unk3
 	ts_mugshot_show mugshot=0x11
@@ -59,7 +59,7 @@ CompText87A4FFC::
 	.string "...or..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A4FFC_unk4_id
 
 	def_text_script CompText87A4FFC_unk4
 	ts_mugshot_show mugshot=0x0
@@ -67,7 +67,7 @@ CompText87A4FFC::
 	.string "Huh?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A4FFC_unk5_id
 
 	def_text_script CompText87A4FFC_unk5
 	ts_mugshot_show mugshot=0x11
@@ -83,7 +83,7 @@ CompText87A4FFC::
 	.string "What's with her...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A4FFC_unk7_id
 
 	def_text_script CompText87A4FFC_unk7
 	ts_mugshot_show mugshot=0x37

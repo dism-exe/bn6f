@@ -12,8 +12,8 @@ CompText878FA4C::
 	def_text_script CompText878FA4C_unk0
 	ts_check_flag [
 		flag: 0x867,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText878FA4C_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x867
 	ts_msg_open

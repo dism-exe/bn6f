@@ -36,7 +36,7 @@ CompText87A5A60::
 	.string "student!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A5A60_unk2_id
 
 	def_text_script CompText87A5A60_unk2
 	ts_mugshot_hide
@@ -61,7 +61,7 @@ CompText87A5A60::
 	.string "Ah,I can't wait!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A5A60_unk3_id
 
 	def_text_script CompText87A5A60_unk3
 	ts_mugshot_show mugshot=0x14
@@ -69,7 +69,7 @@ CompText87A5A60::
 	.string "...... Hmph!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A5A60_unk4_id
 
 	def_text_script CompText87A5A60_unk4
 	ts_mugshot_show mugshot=0x12
@@ -89,7 +89,7 @@ CompText87A5A60::
 	.string "Nice to meet you!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A5A60_unk6_id
 
 	def_text_script CompText87A5A60_unk6
 	ts_mugshot_hide
@@ -97,7 +97,7 @@ CompText87A5A60::
 	.string "*clap,clap,clap*..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A5A60_unk7_id
 
 	def_text_script CompText87A5A60_unk7
 	ts_mugshot_show mugshot=0x12
@@ -160,7 +160,7 @@ CompText87A5A60::
 	.string "sit down now,Lan."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87A5A60_unk9_id
 
 	def_text_script CompText87A5A60_unk9
 	ts_mugshot_show mugshot=0x0
@@ -185,7 +185,7 @@ CompText87A5A60::
 	.string "N-Nice to meet you!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87A5A60_unk12_id
 
 	def_text_script CompText87A5A60_unk12
 	ts_mugshot_show mugshot=0x14
@@ -197,7 +197,7 @@ CompText87A5A60::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_sound_play_bgm track=0x5
-	ts_jump target=13
+	ts_jump target=CompText87A5A60_unk13_id
 
 	def_text_script CompText87A5A60_unk13
 	ts_mugshot_show mugshot=0x0
@@ -248,7 +248,7 @@ CompText87A5A60::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87A5A60_unk16_id
 
 	def_text_script CompText87A5A60_unk16
 	ts_mugshot_show mugshot=0x12
@@ -268,14 +268,14 @@ CompText87A5A60::
 	.string "... Wow,no one!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87A5A60_unk17_id
 
 	def_text_script CompText87A5A60_unk17
 	ts_msg_open
 	.string "Wahahahahahahahaha!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87A5A60_unk18_id
 
 	def_text_script CompText87A5A60_unk18
 	ts_mugshot_show mugshot=0x0

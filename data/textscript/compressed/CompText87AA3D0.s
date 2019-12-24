@@ -43,7 +43,7 @@ CompText87AA3D0::
 	.string "\"?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87AA3D0_unk2_id
 
 	def_text_script CompText87AA3D0_unk2
 	ts_mugshot_show mugshot=0x0
@@ -85,7 +85,7 @@ CompText87AA3D0::
 	.string "the toilet is stuck!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87AA3D0_unk4_id
 
 	def_text_script CompText87AA3D0_unk4
 	ts_mugshot_show mugshot=0x0
@@ -93,7 +93,7 @@ CompText87AA3D0::
 	.string "Battle routine,set!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87AA3D0_unk5_id
 
 	def_text_script CompText87AA3D0_unk5
 	ts_mugshot_show mugshot=0x37
@@ -103,7 +103,7 @@ CompText87AA3D0::
 	.string "listening...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AA3D0_unk6_id
 
 	def_text_script CompText87AA3D0_unk6
 	ts_mugshot_show mugshot=0x0
@@ -111,7 +111,7 @@ CompText87AA3D0::
 	.string "Battle routine,set!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87AA3D0_unk7_id
 
 	def_text_script CompText87AA3D0_unk7
 	ts_mugshot_show mugshot=0x37

@@ -13,8 +13,8 @@ CompText876CA38::
 	ts_check_chapter [
 		lower: 0x21,
 		upper: 0x21,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText876CA38_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xA
 	ts_msg_open

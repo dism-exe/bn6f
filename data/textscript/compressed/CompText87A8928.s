@@ -29,7 +29,7 @@ CompText87A8928::
 	.string "Kwohohoho..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87A8928_unk1_id
 
 	def_text_script CompText87A8928_unk1
 	ts_mugshot_show mugshot=0x37
@@ -41,7 +41,7 @@ CompText87A8928::
 	.string "get away with this!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A8928_unk2_id
 
 	def_text_script CompText87A8928_unk2
 	ts_mugshot_show mugshot=0x51
@@ -58,7 +58,7 @@ CompText87A8928::
 	.string "Kwohohoho..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A8928_unk3_id
 
 	def_text_script CompText87A8928_unk3
 	ts_mugshot_show mugshot=0x37
@@ -66,7 +66,7 @@ CompText87A8928::
 	.string "Here he comes,Lan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A8928_unk4_id
 
 	def_text_script CompText87A8928_unk4
 	ts_mugshot_show mugshot=0x0
@@ -75,7 +75,7 @@ CompText87A8928::
 	.string "Battle routine,set!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A8928_unk5_id
 
 	def_text_script CompText87A8928_unk5
 	ts_mugshot_show mugshot=0x37
@@ -83,7 +83,7 @@ CompText87A8928::
 	.string "Execute!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A8928_unk6_id
 
 	def_text_script CompText87A8928_unk6
 	ts_mugshot_show mugshot=0x51

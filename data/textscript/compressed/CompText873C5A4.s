@@ -2336,7 +2336,7 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk249
 	ts_call_give_all_navi_cust_programs
-	ts_jump target=250
+	ts_jump target=CompText873C5A4_unk250_id
 
 	def_text_script CompText873C5A4_unk250
 	ts_flag_set flag=0xF2
@@ -2423,15 +2423,15 @@ CompText873C5A4::
 	ts_msg_open
 	ts_check_give_zenny [
 		amount: 0x186A0,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_check_give_bug_frags [
 		amount: 0x270F,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	.string "Very Wealthy"
 	ts_key_wait any=0x0

@@ -19,7 +19,7 @@ CompText87B45A4::
 	.string "are all clear!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B45A4_unk1_id
 
 	def_text_script CompText87B45A4_unk1
 	ts_mugshot_show mugshot=0x42
@@ -32,7 +32,7 @@ CompText87B45A4::
 	.string "a few days ago...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B45A4_unk2_id
 
 	def_text_script CompText87B45A4_unk2
 	ts_mugshot_show mugshot=0x3E
@@ -42,7 +42,7 @@ CompText87B45A4::
 	.string "care of it,though..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B45A4_unk3_id
 
 	def_text_script CompText87B45A4_unk3
 	ts_mugshot_show mugshot=0x42

@@ -945,11 +945,11 @@ CompText87ED240::
 	def_text_script CompText87ED240_unk25
 	ts_check_flag [
 		flag: 0xE5A,
-		jumpIfTrue: 0x2F,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87ED240_unk47_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xE5A
-	ts_jump target=47
+	ts_jump target=CompText87ED240_unk47_id
 	ts_end
 
 	def_text_script CompText87ED240_unk26

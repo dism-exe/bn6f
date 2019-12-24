@@ -43,8 +43,8 @@ CompText8799534::
 	def_text_script CompText8799534_unk10
 	ts_check_flag [
 		flag: 0x11D9,
-		jumpIfTrue: 0xC,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8799534_unk12_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

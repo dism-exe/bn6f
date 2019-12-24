@@ -70,8 +70,8 @@ CompText8770D20::
 	def_text_script CompText8770D20_unk11
 	ts_check_flag [
 		flag: 0xE7C,
-		jumpIfTrue: 0xA,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8770D20_unk10_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
@@ -85,8 +85,8 @@ CompText8770D20::
 	def_text_script CompText8770D20_unk12
 	ts_check_flag [
 		flag: 0xE7E,
-		jumpIfTrue: 0xA,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8770D20_unk10_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open

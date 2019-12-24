@@ -50,8 +50,8 @@ CompText87558D8::
 	def_text_script CompText87558D8_unk3
 	ts_check_flag [
 		flag: 0xC12,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87558D8_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "A cute squirrel\n"
@@ -93,8 +93,8 @@ CompText87558D8::
 	ts_key_wait any=0x0
 	ts_check_flag [
 		flag: 0x18C,
-		jumpIfTrue: 0x9,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87558D8_unk9_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	.string "There's something\n"

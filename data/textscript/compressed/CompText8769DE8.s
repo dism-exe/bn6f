@@ -13,18 +13,18 @@ CompText8769DE8::
 	ts_check_chapter [
 		lower: 0x64,
 		upper: 0x64,
-		jumpIfInRange: 0xF,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8769DE8_unk15_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1EB,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8769DE8_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x802,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8769DE8_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x33
 	ts_msg_open
@@ -32,7 +32,7 @@ CompText8769DE8::
 	.string "Welcome to AsterLand!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText8769DE8_unk4_id
 
 	def_text_script CompText8769DE8_unk1
 	ts_flag_set flag=0x1EB
@@ -159,8 +159,8 @@ CompText8769DE8::
 	def_text_script CompText8769DE8_unk4
 	ts_check_shop_stock [
 		shop: 0x4,
-		jumpIfStocked: 0xFF,
-		jumpIfSoldOut: 0x3,
+		jumpIfStocked: TS_CONTINUE,
+		jumpIfSoldOut: CompText8769DE8_unk3_id,
 	]
 	ts_start_shop shop=0x4
 
@@ -194,28 +194,28 @@ CompText8769DE8::
 	ts_flag_set flag=0x11AD
 	ts_check_flag [
 		flag: 0x11AF,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xB,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8769DE8_unk11_id,
 	]
 	ts_check_flag [
 		flag: 0x11AE,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xB,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8769DE8_unk11_id,
 	]
 	ts_check_flag [
 		flag: 0x11AD,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xB,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8769DE8_unk11_id,
 	]
 	ts_check_flag [
 		flag: 0x11AC,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xB,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8769DE8_unk11_id,
 	]
 	ts_check_flag [
 		flag: 0x11AB,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xB,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8769DE8_unk11_id,
 	]
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x0
@@ -246,7 +246,7 @@ CompText8769DE8::
 	.string "do is sell chips!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText8769DE8_unk2_id
 	ts_end
 
 	def_text_script CompText8769DE8_unk16
@@ -261,13 +261,13 @@ CompText8769DE8::
 	ts_check_chapter [
 		lower: 0x64,
 		upper: 0x64,
-		jumpIfInRange: 0x17,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8769DE8_unk23_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_shop_stock [
 		shop: 0x10,
-		jumpIfStocked: 0xFF,
-		jumpIfSoldOut: 0x16,
+		jumpIfStocked: TS_CONTINUE,
+		jumpIfSoldOut: CompText8769DE8_unk22_id,
 	]
 	ts_mugshot_show mugshot=0x1C
 	ts_msg_open
@@ -280,7 +280,7 @@ CompText8769DE8::
 	.string "NetBattles!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText8769DE8_unk24_id
 	ts_end
 
 	def_text_script CompText8769DE8_unk21
@@ -308,8 +308,8 @@ CompText8769DE8::
 	def_text_script CompText8769DE8_unk23
 	ts_check_shop_stock [
 		shop: 0x10,
-		jumpIfStocked: 0xFF,
-		jumpIfSoldOut: 0x16,
+		jumpIfStocked: TS_CONTINUE,
+		jumpIfSoldOut: CompText8769DE8_unk22_id,
 	]
 	ts_mugshot_show mugshot=0x1C
 	ts_msg_open
@@ -318,7 +318,7 @@ CompText8769DE8::
 	.string "bother Mr.Famous!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText8769DE8_unk24_id
 	ts_end
 
 	def_text_script CompText8769DE8_unk24

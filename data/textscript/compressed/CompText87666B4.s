@@ -13,24 +13,24 @@ CompText87666B4::
 	ts_check_chapter [
 		lower: 0x62,
 		upper: 0x62,
-		jumpIfInRange: 0xF,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87666B4_unk15_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x61,
 		upper: 0x61,
-		jumpIfInRange: 0xA,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText87666B4_unk10_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xE0A,
-		jumpIfTrue: 0x5,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87666B4_unk5_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xE08,
-		jumpIfTrue: 0x23,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87666B4_unk35_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x19
 	ts_msg_open
@@ -46,8 +46,8 @@ CompText87666B4::
 	def_text_script CompText87666B4_unk1
 	ts_check_flag [
 		flag: 0xE08,
-		jumpIfTrue: 0x24,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87666B4_unk36_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xF
 	ts_msg_open
@@ -63,8 +63,8 @@ CompText87666B4::
 	def_text_script CompText87666B4_unk2
 	ts_check_flag [
 		flag: 0xE08,
-		jumpIfTrue: 0x25,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87666B4_unk37_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xE
 	ts_msg_open
@@ -80,13 +80,13 @@ CompText87666B4::
 	def_text_script CompText87666B4_unk3
 	ts_check_flag [
 		flag: 0xE0A,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87666B4_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xE08,
-		jumpIfTrue: 0x26,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87666B4_unk38_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x9
 	ts_msg_open
@@ -283,8 +283,8 @@ CompText87666B4::
 	def_text_script CompText87666B4_unk26
 	ts_check_flag [
 		flag: 0xE6C,
-		jumpIfTrue: 0x19,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87666B4_unk25_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
@@ -298,8 +298,8 @@ CompText87666B4::
 	def_text_script CompText87666B4_unk27
 	ts_check_flag [
 		flag: 0xE6E,
-		jumpIfTrue: 0x19,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87666B4_unk25_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
@@ -313,8 +313,8 @@ CompText87666B4::
 	def_text_script CompText87666B4_unk28
 	ts_check_flag [
 		flag: 0xE70,
-		jumpIfTrue: 0x19,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87666B4_unk25_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
@@ -328,8 +328,8 @@ CompText87666B4::
 	def_text_script CompText87666B4_unk29
 	ts_check_flag [
 		flag: 0xE72,
-		jumpIfTrue: 0x19,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87666B4_unk25_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
@@ -344,8 +344,8 @@ CompText87666B4::
 	def_text_script CompText87666B4_unk30
 	ts_check_flag [
 		flag: 0xE74,
-		jumpIfTrue: 0x19,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87666B4_unk25_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open

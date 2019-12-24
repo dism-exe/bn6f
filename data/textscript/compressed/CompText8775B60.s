@@ -130,8 +130,8 @@ CompText8775B60::
 	def_text_script CompText8775B60_unk16
 	ts_check_flag [
 		flag: 0xE84,
-		jumpIfTrue: 0xF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8775B60_unk15_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open

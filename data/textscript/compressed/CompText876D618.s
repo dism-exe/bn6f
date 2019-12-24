@@ -28,13 +28,13 @@ CompText876D618::
 	def_text_script CompText876D618_unk8
 	ts_check_flag [
 		flag: 0x1128,
-		jumpIfTrue: 0xC,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876D618_unk12_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1127,
-		jumpIfTrue: 0x9,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876D618_unk9_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1127
 	ts_mugshot_show mugshot=0x17
@@ -165,9 +165,9 @@ CompText876D618::
 		chip: 0x37,
 		code: 0xA,
 		amount: 0x1,
-		jumpIfEqual: 0xFF,
-		jumpIfGreater: 0xFF,
-		jumpIfLess: 0xB,
+		jumpIfEqual: TS_CONTINUE,
+		jumpIfGreater: TS_CONTINUE,
+		jumpIfLess: CompText876D618_unk11_id,
 	]
 	ts_mugshot_show mugshot=0x17
 	ts_msg_open

@@ -41,7 +41,7 @@ CompText87B41AC::
 	.string "LinkNavis!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B41AC_unk1_id
 
 	def_text_script CompText87B41AC_unk1
 	ts_mugshot_hide
@@ -63,7 +63,7 @@ CompText87B41AC::
 	]
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B41AC_unk2_id
 
 	def_text_script CompText87B41AC_unk2
 	ts_mugshot_show mugshot=0x0
@@ -131,7 +131,7 @@ CompText87B41AC::
 	.string "SpoutCross!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B41AC_unk3_id
 
 	def_text_script CompText87B41AC_unk3
 	ts_mugshot_show mugshot=0x0
@@ -148,7 +148,7 @@ CompText87B41AC::
 	.string "any different..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B41AC_unk4_id
 
 	def_text_script CompText87B41AC_unk4
 	ts_mugshot_show mugshot=0x1F
@@ -161,7 +161,7 @@ CompText87B41AC::
 	.string "for yourself!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B41AC_unk5_id
 
 	def_text_script CompText87B41AC_unk5
 	ts_mugshot_show mugshot=0x0
@@ -171,7 +171,7 @@ CompText87B41AC::
 	.string "kind of power..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B41AC_unk6_id
 
 	def_text_script CompText87B41AC_unk6
 	ts_mugshot_show mugshot=0x1F
@@ -180,7 +180,7 @@ CompText87B41AC::
 	.string "it a try!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B41AC_unk7_id
 
 	def_text_script CompText87B41AC_unk7
 	ts_mugshot_show mugshot=0x0
@@ -191,7 +191,7 @@ CompText87B41AC::
 	.string "You ready,MegaMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87B41AC_unk8_id
 
 	def_text_script CompText87B41AC_unk8
 	ts_mugshot_show mugshot=0x37
@@ -199,7 +199,7 @@ CompText87B41AC::
 	.string "Yeah,I'm all set!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B41AC_unk9_id
 
 	def_text_script CompText87B41AC_unk9
 	ts_mugshot_show mugshot=0x1F

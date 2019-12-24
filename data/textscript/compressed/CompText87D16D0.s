@@ -49,7 +49,7 @@ CompText87D16D0::
 	.string "You go ahead."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87D16D0_unk5_id
 
 	def_text_script CompText87D16D0_unk5
 	ts_mugshot_show mugshot=0x0
@@ -57,7 +57,7 @@ CompText87D16D0::
 	.string "Chaud!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87D16D0_unk6_id
 
 	def_text_script CompText87D16D0_unk6
 	ts_mugshot_show mugshot=0x4
@@ -65,7 +65,7 @@ CompText87D16D0::
 	.string "Hurry!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87D16D0_unk7_id
 
 	def_text_script CompText87D16D0_unk7
 	ts_mugshot_show mugshot=0x0

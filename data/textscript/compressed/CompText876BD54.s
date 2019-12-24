@@ -13,8 +13,8 @@ CompText876BD54::
 	ts_check_chapter [
 		lower: 0x21,
 		upper: 0x21,
-		jumpIfInRange: 0x5,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText876BD54_unk5_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0xB
 	ts_msg_open
@@ -45,8 +45,8 @@ CompText876BD54::
 	ts_check_chapter [
 		lower: 0x21,
 		upper: 0x21,
-		jumpIfInRange: 0x6,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText876BD54_unk6_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x9
 	ts_msg_open

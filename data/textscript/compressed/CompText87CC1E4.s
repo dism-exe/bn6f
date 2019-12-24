@@ -26,7 +26,7 @@ CompText87CC1E4::
 	.string "from now on!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87CC1E4_unk1_id
 
 	def_text_script CompText87CC1E4_unk1
 	ts_mugshot_hide
@@ -48,7 +48,7 @@ CompText87CC1E4::
 	]
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87CC1E4_unk2_id
 
 	def_text_script CompText87CC1E4_unk2
 	ts_mugshot_show mugshot=0x24
@@ -81,7 +81,7 @@ CompText87CC1E4::
 	.string "alright!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CC1E4_unk3_id
 
 	def_text_script CompText87CC1E4_unk3
 	ts_mugshot_show mugshot=0x0

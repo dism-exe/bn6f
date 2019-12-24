@@ -12,13 +12,13 @@ CompText8791878::
 	def_text_script CompText8791878_unk0
 	ts_check_flag [
 		flag: 0x7F7,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x5,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8791878_unk5_id,
 	]
 	ts_check_flag [
 		flag: 0x68D,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8791878_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open

@@ -33,7 +33,7 @@ CompText87B0820::
 	.string "just standing there!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B0820_unk1_id
 
 	def_text_script CompText87B0820_unk1
 	ts_mugshot_show mugshot=0x0
@@ -48,7 +48,7 @@ CompText87B0820::
 	.string "gonna be in chaos!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B0820_unk2_id
 
 	def_text_script CompText87B0820_unk2
 	ts_mugshot_show mugshot=0x37
@@ -56,7 +56,7 @@ CompText87B0820::
 	.string "Let's go,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B0820_unk3_id
 
 	def_text_script CompText87B0820_unk3
 	ts_mugshot_show mugshot=0x0
@@ -67,7 +67,7 @@ CompText87B0820::
 	.string "Battle routine,set!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87B0820_unk4_id
 
 	def_text_script CompText87B0820_unk4
 	ts_mugshot_show mugshot=0x37
@@ -79,8 +79,8 @@ CompText87B0820::
 
 	def_text_script CompText87B0820_unk5
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x6,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87B0820_unk6_id,
 	]
 	ts_mugshot_hide
 	ts_msg_open
@@ -123,7 +123,7 @@ CompText87B0820::
 	.string "Are you OK,MegaMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B0820_unk9_id
 
 	def_text_script CompText87B0820_unk9
 	ts_mugshot_show mugshot=0x37
@@ -131,7 +131,7 @@ CompText87B0820::
 	.string "U-Ugh..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B0820_unk10_id
 
 	def_text_script CompText87B0820_unk10
 	ts_mugshot_show mugshot=0x0
@@ -140,8 +140,8 @@ CompText87B0820::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xB,
-		jumpIfCybeastFalzar: 0xC,
+		jumpIfCybeastGregar: CompText87B0820_unk11_id,
+		jumpIfCybeastFalzar: CompText87B0820_unk12_id,
 	]
 
 	def_text_script CompText87B0820_unk11
@@ -156,7 +156,7 @@ CompText87B0820::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87B0820_unk13_id
 
 	def_text_script CompText87B0820_unk12
 	ts_mugshot_hide
@@ -170,7 +170,7 @@ CompText87B0820::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87B0820_unk13_id
 
 	def_text_script CompText87B0820_unk13
 	ts_mugshot_show mugshot=0x0
@@ -178,7 +178,7 @@ CompText87B0820::
 	.string "Jack out,MegaMan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87B0820_unk14_id
 
 	def_text_script CompText87B0820_unk14
 	ts_mugshot_show mugshot=0x37
@@ -189,8 +189,8 @@ CompText87B0820::
 
 	def_text_script CompText87B0820_unk15
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x10,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87B0820_unk16_id,
 	]
 	ts_msg_open
 	ts_sound_disable_text_sfx
@@ -202,7 +202,7 @@ CompText87B0820::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87B0820_unk17_id
 
 	def_text_script CompText87B0820_unk16
 	ts_msg_open
@@ -215,7 +215,7 @@ CompText87B0820::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87B0820_unk17_id
 
 	def_text_script CompText87B0820_unk17
 	ts_mugshot_show mugshot=0x0

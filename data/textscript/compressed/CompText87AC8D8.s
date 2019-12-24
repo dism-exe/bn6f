@@ -69,7 +69,7 @@ CompText87AC8D8::
 	.string "to go over there?..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87AC8D8_unk6_id
 
 	def_text_script CompText87AC8D8_unk6
 	ts_mugshot_hide

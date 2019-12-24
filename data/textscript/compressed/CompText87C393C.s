@@ -14,7 +14,7 @@ CompText87C393C::
 	.string "A few days later..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87C393C_unk1_id
 
 	def_text_script CompText87C393C_unk1
 	ts_mugshot_show mugshot=0x0
@@ -36,7 +36,7 @@ CompText87C393C::
 	.string "preliminary trials!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C393C_unk3_id
 
 	def_text_script CompText87C393C_unk3
 	ts_mugshot_hide
@@ -44,7 +44,7 @@ CompText87C393C::
 	.string "\"Let's go,Lan!\""
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C393C_unk4_id
 
 	def_text_script CompText87C393C_unk4
 	ts_mugshot_show mugshot=0x0
@@ -53,7 +53,7 @@ CompText87C393C::
 	.string "crystal clear!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C393C_unk5_id
 
 	def_text_script CompText87C393C_unk5
 	ts_mugshot_show mugshot=0x37
@@ -67,7 +67,7 @@ CompText87C393C::
 	.string "please?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C393C_unk6_id
 
 	def_text_script CompText87C393C_unk6
 	ts_mugshot_show mugshot=0x0
@@ -77,7 +77,7 @@ CompText87C393C::
 	.string "just keep it on!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87C393C_unk7_id
 
 	def_text_script CompText87C393C_unk7
 	ts_mugshot_hide
@@ -91,7 +91,7 @@ CompText87C393C::
 	ts_sound_enable_text_sfx
 	ts_control_unlock
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87C393C_unk8_id
 
 	def_text_script CompText87C393C_unk8
 	ts_mugshot_show mugshot=0x37
@@ -107,7 +107,7 @@ CompText87C393C::
 	.string "Hello?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87C393C_unk10_id
 
 	def_text_script CompText87C393C_unk10
 	ts_mugshot_hide
@@ -116,7 +116,7 @@ CompText87C393C::
 	ts_sound_stop
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87C393C_unk11_id
 
 	def_text_script CompText87C393C_unk11
 	ts_mugshot_show mugshot=0x0
@@ -124,7 +124,7 @@ CompText87C393C::
 	.string "!? Hello??"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87C393C_unk12_id
 
 	def_text_script CompText87C393C_unk12
 	ts_mugshot_hide
@@ -136,7 +136,7 @@ CompText87C393C::
 	.string "I am?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87C393C_unk13_id
 
 	def_text_script CompText87C393C_unk13
 	ts_mugshot_show mugshot=0x0
@@ -147,7 +147,7 @@ CompText87C393C::
 	.string "Mayl!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87C393C_unk14_id
 
 	def_text_script CompText87C393C_unk14
 	ts_mugshot_show mugshot=0x1
@@ -155,7 +155,7 @@ CompText87C393C::
 	.string "Eheheh,that's right!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C393C_unk15_id
 
 	def_text_script CompText87C393C_unk15
 	ts_mugshot_show mugshot=0x0
@@ -165,7 +165,7 @@ CompText87C393C::
 	.string "surprise! What's up?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87C393C_unk16_id
 
 	def_text_script CompText87C393C_unk16
 	ts_mugshot_show mugshot=0x1
@@ -179,7 +179,7 @@ CompText87C393C::
 	.string "stunned!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87C393C_unk17_id
 
 	def_text_script CompText87C393C_unk17
 	ts_mugshot_show mugshot=0x0
@@ -192,7 +192,7 @@ CompText87C393C::
 	.string "doing just fine!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87C393C_unk18_id
 
 	def_text_script CompText87C393C_unk18
 	ts_mugshot_show mugshot=0x1
@@ -207,7 +207,7 @@ CompText87C393C::
 	.string "life..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87C393C_unk19_id
 
 	def_text_script CompText87C393C_unk19
 	ts_mugshot_show mugshot=0x0
@@ -215,7 +215,7 @@ CompText87C393C::
 	.string "... Mayl..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87C393C_unk20_id
 
 	def_text_script CompText87C393C_unk20
 	ts_mugshot_show mugshot=0x1
@@ -229,7 +229,7 @@ CompText87C393C::
 	.string "you too..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87C393C_unk21_id
 
 	def_text_script CompText87C393C_unk21
 	ts_mugshot_show mugshot=0x0
@@ -249,7 +249,7 @@ CompText87C393C::
 	.string "weekend?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87C393C_unk22_id
 
 	def_text_script CompText87C393C_unk22
 	ts_mugshot_show mugshot=0x1
@@ -262,7 +262,7 @@ CompText87C393C::
 	.string "oversleep!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87C393C_unk23_id
 
 	def_text_script CompText87C393C_unk23
 	ts_mugshot_show mugshot=0x0
@@ -274,7 +274,7 @@ CompText87C393C::
 	.string "this weekend!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87C393C_unk24_id
 
 	def_text_script CompText87C393C_unk24
 	ts_mugshot_show mugshot=0x1
@@ -314,7 +314,7 @@ CompText87C393C::
 	.string "out,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87C393C_unk28_id
 
 	def_text_script CompText87C393C_unk28
 	ts_mugshot_show mugshot=0x37
@@ -324,7 +324,7 @@ CompText87C393C::
 	.string "you're ready?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=29
+	ts_jump target=CompText87C393C_unk29_id
 
 	def_text_script CompText87C393C_unk29
 	ts_mugshot_show mugshot=0x0

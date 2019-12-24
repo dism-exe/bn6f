@@ -40,7 +40,7 @@ TextScript8736D74::
 	.string "It didn't work..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=TextScript8736D74_unk12_id
 
 	def_text_script TextScript8736D74_unk12
 	ts_mugshot_show mugshot=0x36
@@ -62,7 +62,7 @@ TextScript8736D74::
 	.string "Yahhhhhhhh!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=TextScript8736D74_unk14_id
 
 	def_text_script TextScript8736D74_unk14
 	ts_mugshot_hide
@@ -70,7 +70,7 @@ TextScript8736D74::
 	.string "That's enough,Zap!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=TextScript8736D74_unk15_id
 
 	def_text_script TextScript8736D74_unk15
 	ts_mugshot_show mugshot=0x36
@@ -120,7 +120,7 @@ TextScript8736D74::
 	.string "some fight left!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=TextScript8736D74_unk23_id
 
 	def_text_script TextScript8736D74_unk23
 	ts_mugshot_show mugshot=0x36
@@ -129,7 +129,7 @@ TextScript8736D74::
 	.string "I'll never lose!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=TextScript8736D74_unk24_id
 
 	def_text_script TextScript8736D74_unk24
 	ts_mugshot_hide
@@ -145,7 +145,7 @@ TextScript8736D74::
 	.string "this together!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=TextScript8736D74_unk26_id
 
 	def_text_script TextScript8736D74_unk26
 	ts_mugshot_show mugshot=0x37

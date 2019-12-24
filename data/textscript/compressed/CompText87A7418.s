@@ -17,7 +17,7 @@ CompText87A7418::
 	.string "world?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87A7418_unk1_id
 
 	def_text_script CompText87A7418_unk1
 	ts_mugshot_show mugshot=0x37
@@ -26,7 +26,7 @@ CompText87A7418::
 	.string "stay here forever."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A7418_unk2_id
 
 	def_text_script CompText87A7418_unk2
 	ts_mugshot_show mugshot=0x12
@@ -48,7 +48,7 @@ CompText87A7418::
 	.string "someday!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A7418_unk3_id
 
 	def_text_script CompText87A7418_unk3
 	ts_mugshot_show mugshot=0x0
@@ -62,7 +62,7 @@ CompText87A7418::
 	.string "sometimes!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A7418_unk4_id
 
 	def_text_script CompText87A7418_unk4
 	ts_mugshot_show mugshot=0x37
@@ -70,7 +70,7 @@ CompText87A7418::
 	.string "Lan..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A7418_unk5_id
 
 	def_text_script CompText87A7418_unk5
 	ts_mugshot_show mugshot=0x12
@@ -80,7 +80,7 @@ CompText87A7418::
 	.string "into Lan's PET."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A7418_unk6_id
 
 	def_text_script CompText87A7418_unk6
 	ts_mugshot_show mugshot=0x37
@@ -90,7 +90,7 @@ CompText87A7418::
 	.string "again sometime!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A7418_unk7_id
 
 	def_text_script CompText87A7418_unk7
 	ts_mugshot_show mugshot=0x12
@@ -103,7 +103,7 @@ CompText87A7418::
 	.string "don't worry!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87A7418_unk8_id
 
 	def_text_script CompText87A7418_unk8
 	ts_mugshot_show mugshot=0x37
@@ -119,7 +119,7 @@ CompText87A7418::
 	.string "MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87A7418_unk10_id
 
 	def_text_script CompText87A7418_unk10
 	ts_mugshot_show mugshot=0x37
@@ -149,7 +149,7 @@ CompText87A7418::
 	.string "to your seat,Lan..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87A7418_unk13_id
 
 	def_text_script CompText87A7418_unk13
 	ts_mugshot_show mugshot=0x14
@@ -157,7 +157,7 @@ CompText87A7418::
 	.string "Let's get started!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87A7418_unk14_id
 
 	def_text_script CompText87A7418_unk14
 	ts_mugshot_hide
@@ -184,7 +184,7 @@ CompText87A7418::
 	.string "Waaaaah!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87A7418_unk16_id
 
 	def_text_script CompText87A7418_unk16
 	ts_mugshot_show mugshot=0x12
@@ -204,7 +204,7 @@ CompText87A7418::
 	.string "doing here?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87A7418_unk18_id
 
 	def_text_script CompText87A7418_unk18
 	ts_mugshot_show mugshot=0x12
@@ -233,7 +233,7 @@ CompText87A7418::
 	.string "M-Mr.Mach!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87A7418_unk21_id
 
 	def_text_script CompText87A7418_unk21
 	ts_mugshot_show mugshot=0x12
@@ -242,7 +242,7 @@ CompText87A7418::
 	.string "hand punch!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87A7418_unk22_id
 
 	def_text_script CompText87A7418_unk22
 	ts_mugshot_hide
@@ -293,7 +293,7 @@ CompText87A7418::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87A7418_unk23_id
 
 	def_text_script CompText87A7418_unk23
 	ts_mugshot_show mugshot=0x0
@@ -323,7 +323,7 @@ CompText87A7418::
 	.string "... He fainted..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87A7418_unk26_id
 
 	def_text_script CompText87A7418_unk26
 	ts_mugshot_show mugshot=0x37
@@ -333,7 +333,7 @@ CompText87A7418::
 	.string "Security Bot!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87A7418_unk27_id
 
 	def_text_script CompText87A7418_unk27
 	ts_mugshot_hide
@@ -351,7 +351,7 @@ CompText87A7418::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87A7418_unk28_id
 
 	def_text_script CompText87A7418_unk28
 	ts_mugshot_show mugshot=0x17
@@ -377,7 +377,7 @@ CompText87A7418::
 	.string "is going on...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=CompText87A7418_unk31_id
 
 	def_text_script CompText87A7418_unk31
 	ts_mugshot_show mugshot=0x14
@@ -386,7 +386,7 @@ CompText87A7418::
 	.string "just begun..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=32
+	ts_jump target=CompText87A7418_unk32_id
 
 	def_text_script CompText87A7418_unk32
 	ts_mugshot_show mugshot=0x0
@@ -401,7 +401,7 @@ CompText87A7418::
 	.string "No,you didn't...!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=34
+	ts_jump target=CompText87A7418_unk34_id
 
 	def_text_script CompText87A7418_unk34
 	ts_mugshot_show mugshot=0x14
@@ -424,7 +424,7 @@ CompText87A7418::
 	.string "Put out the fire!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=36
+	ts_jump target=CompText87A7418_unk36_id
 
 	def_text_script CompText87A7418_unk36
 	ts_mugshot_show mugshot=0x14
@@ -463,7 +463,7 @@ CompText87A7418::
 	.string "But how...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=38
+	ts_jump target=CompText87A7418_unk38_id
 
 	def_text_script CompText87A7418_unk38
 	ts_mugshot_show mugshot=0x33
@@ -471,7 +471,7 @@ CompText87A7418::
 	.string "Hot,hot,hot!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=39
+	ts_jump target=CompText87A7418_unk39_id
 
 	def_text_script CompText87A7418_unk39
 	ts_mugshot_show mugshot=0x0

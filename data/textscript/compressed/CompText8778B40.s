@@ -12,8 +12,8 @@ CompText8778B40::
 	def_text_script CompText8778B40_unk0
 	ts_check_flag [
 		flag: 0x532,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8778B40_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -50,13 +50,13 @@ CompText8778B40::
 	def_text_script CompText8778B40_unk10
 	ts_check_flag [
 		flag: 0x1136,
-		jumpIfTrue: 0xE,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8778B40_unk14_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1134,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8778B40_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1134
 	ts_mugshot_show mugshot=0x15
@@ -186,9 +186,9 @@ CompText8778B40::
 	ts_mugshot_hide
 	ts_check_give_bug_frags [
 		amount: 0x5,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
 	ts_player_animate_scene animation=0x18
 	.string "Lan got:\n"
@@ -230,18 +230,18 @@ CompText8778B40::
 	def_text_script CompText8778B40_unk20
 	ts_check_flag [
 		flag: 0x1147,
-		jumpIfTrue: 0x17,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8778B40_unk23_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1148,
-		jumpIfTrue: 0x16,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8778B40_unk22_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1146,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8778B40_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1146
 	ts_mugshot_show mugshot=0x16
@@ -527,28 +527,28 @@ CompText8778B40::
 	ts_flag_set flag=0x11AF
 	ts_check_flag [
 		flag: 0x11AF,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1A,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8778B40_unk26_id,
 	]
 	ts_check_flag [
 		flag: 0x11AE,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1A,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8778B40_unk26_id,
 	]
 	ts_check_flag [
 		flag: 0x11AD,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1A,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8778B40_unk26_id,
 	]
 	ts_check_flag [
 		flag: 0x11AC,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1A,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8778B40_unk26_id,
 	]
 	ts_check_flag [
 		flag: 0x11AB,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1A,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText8778B40_unk26_id,
 	]
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x0

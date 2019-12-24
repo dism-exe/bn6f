@@ -12,8 +12,8 @@ CompText8768EEC::
 	def_text_script CompText8768EEC_unk0
 	ts_check_flag [
 		flag: 0xE62,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8768EEC_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -51,8 +51,8 @@ CompText8768EEC::
 	ts_check_chapter [
 		lower: 0x64,
 		upper: 0x64,
-		jumpIfInRange: 0xA,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText8768EEC_unk10_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x6
 	ts_msg_open
@@ -109,8 +109,8 @@ CompText8768EEC::
 	def_text_script CompText8768EEC_unk11
 	ts_check_flag [
 		flag: 0x1EA,
-		jumpIfTrue: 0xC,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8768EEC_unk12_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1EA
 	ts_mugshot_show mugshot=0x1

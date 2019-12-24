@@ -44,18 +44,18 @@ CompText87D9B10::
 
 	def_text_script CompText87D9B10_unk2
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x3,
-		jumpIfElecMan: 0x4,
-		jumpIfSlashMan: 0x5,
-		jumpIfEraseMan: 0x6,
-		jumpIfChargeMan: 0x7,
-		jumpIfSpoutMan: 0x8,
-		jumpIfTomahawkMan: 0x9,
-		jumpIfTenguMan: 0xA,
-		jumpIfGroundMan: 0xB,
-		jumpIfDustMan: 0xC,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87D9B10_unk3_id,
+		jumpIfElecMan: CompText87D9B10_unk4_id,
+		jumpIfSlashMan: CompText87D9B10_unk5_id,
+		jumpIfEraseMan: CompText87D9B10_unk6_id,
+		jumpIfChargeMan: CompText87D9B10_unk7_id,
+		jumpIfSpoutMan: CompText87D9B10_unk8_id,
+		jumpIfTomahawkMan: CompText87D9B10_unk9_id,
+		jumpIfTenguMan: CompText87D9B10_unk10_id,
+		jumpIfGroundMan: CompText87D9B10_unk11_id,
+		jumpIfDustMan: CompText87D9B10_unk12_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -67,7 +67,7 @@ CompText87D9B10::
 	.string "Right,Lan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D9B10_unk13_id
 
 	def_text_script CompText87D9B10_unk3
 	ts_mugshot_show mugshot=0x47
@@ -80,7 +80,7 @@ CompText87D9B10::
 	.string "again!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D9B10_unk13_id
 
 	def_text_script CompText87D9B10_unk4
 	ts_mugshot_show mugshot=0x49
@@ -93,7 +93,7 @@ CompText87D9B10::
 	.string "We can do it,right?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D9B10_unk13_id
 
 	def_text_script CompText87D9B10_unk5
 	ts_mugshot_show mugshot=0x4B
@@ -116,7 +116,7 @@ CompText87D9B10::
 	.string "Lan."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D9B10_unk13_id
 
 	def_text_script CompText87D9B10_unk6
 	ts_mugshot_show mugshot=0x50
@@ -129,7 +129,7 @@ CompText87D9B10::
 	.string "beaten,right?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D9B10_unk13_id
 
 	def_text_script CompText87D9B10_unk7
 	ts_mugshot_show mugshot=0x4F
@@ -145,7 +145,7 @@ CompText87D9B10::
 	.string "Right,Lan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D9B10_unk13_id
 
 	def_text_script CompText87D9B10_unk8
 	ts_mugshot_show mugshot=0x48
@@ -163,7 +163,7 @@ CompText87D9B10::
 	.string "you're with me,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D9B10_unk13_id
 
 	def_text_script CompText87D9B10_unk9
 	ts_mugshot_show mugshot=0x4A
@@ -181,7 +181,7 @@ CompText87D9B10::
 	.string "Right,Lan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D9B10_unk13_id
 
 	def_text_script CompText87D9B10_unk10
 	ts_mugshot_show mugshot=0x4C
@@ -199,7 +199,7 @@ CompText87D9B10::
 	.string "Is that not true?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D9B10_unk13_id
 
 	def_text_script CompText87D9B10_unk11
 	ts_mugshot_show mugshot=0x4D
@@ -214,7 +214,7 @@ CompText87D9B10::
 	.string "combined power!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D9B10_unk13_id
 
 	def_text_script CompText87D9B10_unk12
 	ts_mugshot_show mugshot=0x4E
@@ -236,7 +236,7 @@ CompText87D9B10::
 	.string "Gahahahahahahaha!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D9B10_unk13_id
 
 	def_text_script CompText87D9B10_unk13
 	ts_mugshot_show mugshot=0x0

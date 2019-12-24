@@ -36,18 +36,18 @@ CompText87605E0::
 
 	def_text_script CompText87605E0_unk2
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x5,
-		jumpIfElecMan: 0xFF,
-		jumpIfSlashMan: 0xFF,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0x6,
-		jumpIfSpoutMan: 0x7,
-		jumpIfTomahawkMan: 0xFF,
-		jumpIfTenguMan: 0x8,
-		jumpIfGroundMan: 0xFF,
-		jumpIfDustMan: 0xFF,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87605E0_unk5_id,
+		jumpIfElecMan: TS_CONTINUE,
+		jumpIfSlashMan: TS_CONTINUE,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: CompText87605E0_unk6_id,
+		jumpIfSpoutMan: CompText87605E0_unk7_id,
+		jumpIfTomahawkMan: TS_CONTINUE,
+		jumpIfTenguMan: CompText87605E0_unk8_id,
+		jumpIfGroundMan: TS_CONTINUE,
+		jumpIfDustMan: TS_CONTINUE,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "The flames are too\n"
@@ -58,25 +58,25 @@ CompText87605E0::
 
 	def_text_script CompText87605E0_unk3
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x4,
-		jumpIfElecMan: 0x4,
-		jumpIfSlashMan: 0x4,
-		jumpIfEraseMan: 0x4,
-		jumpIfChargeMan: 0x4,
-		jumpIfSpoutMan: 0x4,
-		jumpIfTomahawkMan: 0x4,
-		jumpIfTenguMan: 0x4,
-		jumpIfGroundMan: 0x4,
-		jumpIfDustMan: 0x4,
-		jumpIfProtoMan: 0x4,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87605E0_unk4_id,
+		jumpIfElecMan: CompText87605E0_unk4_id,
+		jumpIfSlashMan: CompText87605E0_unk4_id,
+		jumpIfEraseMan: CompText87605E0_unk4_id,
+		jumpIfChargeMan: CompText87605E0_unk4_id,
+		jumpIfSpoutMan: CompText87605E0_unk4_id,
+		jumpIfTomahawkMan: CompText87605E0_unk4_id,
+		jumpIfTenguMan: CompText87605E0_unk4_id,
+		jumpIfGroundMan: CompText87605E0_unk4_id,
+		jumpIfDustMan: CompText87605E0_unk4_id,
+		jumpIfProtoMan: CompText87605E0_unk4_id,
 	]
 	ts_check_item07 [
 		item: 0x33,
 		amount: 0x1,
-		jumpIfEqual: 0xA,
-		jumpIfGreater: 0xA,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText87605E0_unk10_id,
+		jumpIfGreater: CompText87605E0_unk10_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "There is a worn out\n"
@@ -108,7 +108,7 @@ CompText87605E0::
 	.string "flames!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87605E0_unk9_id
 
 	def_text_script CompText87605E0_unk6
 	ts_mugshot_show mugshot=0x4F
@@ -128,7 +128,7 @@ CompText87605E0::
 	.string "the raging flames!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87605E0_unk9_id
 
 	def_text_script CompText87605E0_unk7
 	ts_mugshot_show mugshot=0x48
@@ -146,7 +146,7 @@ CompText87605E0::
 	.string "put out the fire!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87605E0_unk9_id
 
 	def_text_script CompText87605E0_unk8
 	ts_mugshot_show mugshot=0x4C
@@ -163,7 +163,7 @@ CompText87605E0::
 	.string "the flames out!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87605E0_unk9_id
 
 	def_text_script CompText87605E0_unk9
 	ts_flag_clear flag=0x16E

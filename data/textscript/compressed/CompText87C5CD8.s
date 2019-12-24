@@ -26,7 +26,7 @@ CompText87C5CD8::
 	.string "MegaMan..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87C5CD8_unk1_id
 
 	def_text_script CompText87C5CD8_unk1
 	ts_mugshot_hide
@@ -40,7 +40,7 @@ CompText87C5CD8::
 	ts_sound_enable_text_sfx
 	ts_control_unlock
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87C5CD8_unk2_id
 
 	def_text_script CompText87C5CD8_unk2
 	ts_mugshot_show mugshot=0x0
@@ -60,7 +60,7 @@ CompText87C5CD8::
 	.string "... Hello?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C5CD8_unk4_id
 
 	def_text_script CompText87C5CD8_unk4
 	ts_mugshot_show mugshot=0x14
@@ -70,7 +70,7 @@ CompText87C5CD8::
 	.string "trouble!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C5CD8_unk5_id
 
 	def_text_script CompText87C5CD8_unk5
 	ts_mugshot_show mugshot=0x0
@@ -78,7 +78,7 @@ CompText87C5CD8::
 	.string "What's wrong!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C5CD8_unk6_id
 
 	def_text_script CompText87C5CD8_unk6
 	ts_mugshot_show mugshot=0x14
@@ -87,7 +87,7 @@ CompText87C5CD8::
 	.string "PET right now?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87C5CD8_unk7_id
 
 	def_text_script CompText87C5CD8_unk7
 	ts_mugshot_show mugshot=0x0
@@ -97,7 +97,7 @@ CompText87C5CD8::
 	.string "to me right now..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87C5CD8_unk8_id
 
 	def_text_script CompText87C5CD8_unk8
 	ts_mugshot_show mugshot=0x14
@@ -105,7 +105,7 @@ CompText87C5CD8::
 	.string "I thought so!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87C5CD8_unk9_id
 
 	def_text_script CompText87C5CD8_unk9
 	ts_mugshot_show mugshot=0x0
@@ -114,7 +114,7 @@ CompText87C5CD8::
 	.string "What do you mean!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87C5CD8_unk10_id
 
 	def_text_script CompText87C5CD8_unk10
 	ts_mugshot_show mugshot=0x14
@@ -140,7 +140,7 @@ CompText87C5CD8::
 	.string "like MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87C5CD8_unk11_id
 
 	def_text_script CompText87C5CD8_unk11
 	ts_mugshot_show mugshot=0x0
@@ -156,7 +156,7 @@ CompText87C5CD8::
 	.string "happening?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87C5CD8_unk12_id
 
 	def_text_script CompText87C5CD8_unk12
 	ts_mugshot_show mugshot=0x14
@@ -164,7 +164,7 @@ CompText87C5CD8::
 	.string "Ah! In Seaside Town!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87C5CD8_unk13_id
 
 	def_text_script CompText87C5CD8_unk13
 	ts_mugshot_show mugshot=0x0
@@ -173,7 +173,7 @@ CompText87C5CD8::
 	.string "right now!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87C5CD8_unk14_id
 
 	def_text_script CompText87C5CD8_unk14
 	ts_mugshot_show mugshot=0x14
@@ -195,7 +195,7 @@ CompText87C5CD8::
 	.string "that time..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C5CD8_unk15_id
 
 	def_text_script CompText87C5CD8_unk15
 	ts_mugshot_show mugshot=0x0

@@ -18,9 +18,9 @@ CompText875DA58::
 	ts_end
 
 	def_text_script CompText875DA58_unk1
-	ts_jump target=0
+	ts_jump target=CompText875DA58_unk0_id
 
 	def_text_script CompText875DA58_unk2
-	ts_jump target=0
+	ts_jump target=CompText875DA58_unk0_id
 
 	

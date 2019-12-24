@@ -52,8 +52,8 @@ CompText87C86E4::
 
 	def_text_script CompText87C86E4_unk3
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x4,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87C86E4_unk4_id,
 	]
 	ts_mugshot_show mugshot=0x58
 	ts_msg_open
@@ -66,7 +66,7 @@ CompText87C86E4::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C86E4_unk5_id
 
 	def_text_script CompText87C86E4_unk4
 	ts_mugshot_show mugshot=0x59
@@ -80,22 +80,22 @@ CompText87C86E4::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C86E4_unk5_id
 
 	def_text_script CompText87C86E4_unk5
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0x9,
-		jumpIfSlashMan: 0x7,
-		jumpIfEraseMan: 0xE,
-		jumpIfChargeMan: 0xD,
-		jumpIfSpoutMan: 0x6,
-		jumpIfTomahawkMan: 0xA,
-		jumpIfTenguMan: 0x8,
-		jumpIfGroundMan: 0xB,
-		jumpIfDustMan: 0xC,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: CompText87C86E4_unk9_id,
+		jumpIfSlashMan: CompText87C86E4_unk7_id,
+		jumpIfEraseMan: CompText87C86E4_unk14_id,
+		jumpIfChargeMan: CompText87C86E4_unk13_id,
+		jumpIfSpoutMan: CompText87C86E4_unk6_id,
+		jumpIfTomahawkMan: CompText87C86E4_unk10_id,
+		jumpIfTenguMan: CompText87C86E4_unk8_id,
+		jumpIfGroundMan: CompText87C86E4_unk11_id,
+		jumpIfDustMan: CompText87C86E4_unk12_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x47
 	ts_msg_open
@@ -104,7 +104,7 @@ CompText87C86E4::
 	.string "Are we attacking?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C86E4_unk15_id
 
 	def_text_script CompText87C86E4_unk6
 	ts_mugshot_show mugshot=0x48
@@ -113,7 +113,7 @@ CompText87C86E4::
 	.string "do,drip!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C86E4_unk15_id
 
 	def_text_script CompText87C86E4_unk7
 	ts_mugshot_show mugshot=0x4B
@@ -122,7 +122,7 @@ CompText87C86E4::
 	.string "Slash back...!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C86E4_unk15_id
 
 	def_text_script CompText87C86E4_unk8
 	ts_mugshot_show mugshot=0x4C
@@ -132,7 +132,7 @@ CompText87C86E4::
 	.string "to attack?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C86E4_unk15_id
 
 	def_text_script CompText87C86E4_unk9
 	ts_mugshot_show mugshot=0x49
@@ -141,7 +141,7 @@ CompText87C86E4::
 	.string "Lan,can I zap him!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C86E4_unk15_id
 
 	def_text_script CompText87C86E4_unk10
 	ts_mugshot_show mugshot=0x4A
@@ -151,7 +151,7 @@ CompText87C86E4::
 	.string "He's coming!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C86E4_unk15_id
 
 	def_text_script CompText87C86E4_unk11
 	ts_mugshot_show mugshot=0x4D
@@ -164,7 +164,7 @@ CompText87C86E4::
 	.string "back...!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C86E4_unk15_id
 
 	def_text_script CompText87C86E4_unk12
 	ts_mugshot_show mugshot=0x4E
@@ -174,7 +174,7 @@ CompText87C86E4::
 	.string "take care of this!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C86E4_unk15_id
 
 	def_text_script CompText87C86E4_unk13
 	ts_mugshot_show mugshot=0x4F
@@ -183,7 +183,7 @@ CompText87C86E4::
 	.string "Choo,choo..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C86E4_unk15_id
 
 	def_text_script CompText87C86E4_unk14
 	ts_mugshot_show mugshot=0x50
@@ -193,7 +193,7 @@ CompText87C86E4::
 	.string "out...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87C86E4_unk15_id
 
 	def_text_script CompText87C86E4_unk15
 	ts_mugshot_show mugshot=0x0
@@ -220,22 +220,22 @@ CompText87C86E4::
 	.string "here."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87C86E4_unk16_id
 
 	def_text_script CompText87C86E4_unk16
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0x14,
-		jumpIfSlashMan: 0x12,
-		jumpIfEraseMan: 0x19,
-		jumpIfChargeMan: 0x18,
-		jumpIfSpoutMan: 0x11,
-		jumpIfTomahawkMan: 0x15,
-		jumpIfTenguMan: 0x13,
-		jumpIfGroundMan: 0x16,
-		jumpIfDustMan: 0x17,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: CompText87C86E4_unk20_id,
+		jumpIfSlashMan: CompText87C86E4_unk18_id,
+		jumpIfEraseMan: CompText87C86E4_unk25_id,
+		jumpIfChargeMan: CompText87C86E4_unk24_id,
+		jumpIfSpoutMan: CompText87C86E4_unk17_id,
+		jumpIfTomahawkMan: CompText87C86E4_unk21_id,
+		jumpIfTenguMan: CompText87C86E4_unk19_id,
+		jumpIfGroundMan: CompText87C86E4_unk22_id,
+		jumpIfDustMan: CompText87C86E4_unk23_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -249,7 +249,7 @@ CompText87C86E4::
 	.string "You sure!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87C86E4_unk26_id
 
 	def_text_script CompText87C86E4_unk17
 	ts_mugshot_show mugshot=0x0
@@ -265,7 +265,7 @@ CompText87C86E4::
 	.string "Is that OK,drip!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87C86E4_unk26_id
 
 	def_text_script CompText87C86E4_unk18
 	ts_mugshot_show mugshot=0x0
@@ -280,7 +280,7 @@ CompText87C86E4::
 	.string "You really sure!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87C86E4_unk26_id
 
 	def_text_script CompText87C86E4_unk19
 	ts_mugshot_show mugshot=0x0
@@ -296,7 +296,7 @@ CompText87C86E4::
 	.string "this!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87C86E4_unk26_id
 
 	def_text_script CompText87C86E4_unk20
 	ts_mugshot_show mugshot=0x0
@@ -312,7 +312,7 @@ CompText87C86E4::
 	.string "sure?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87C86E4_unk26_id
 
 	def_text_script CompText87C86E4_unk21
 	ts_mugshot_show mugshot=0x0
@@ -328,7 +328,7 @@ CompText87C86E4::
 	.string "it's MegaMan..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87C86E4_unk26_id
 
 	def_text_script CompText87C86E4_unk22
 	ts_mugshot_show mugshot=0x0
@@ -343,7 +343,7 @@ CompText87C86E4::
 	.string "Yo' sure it's OK?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87C86E4_unk26_id
 
 	def_text_script CompText87C86E4_unk23
 	ts_mugshot_show mugshot=0x0
@@ -359,7 +359,7 @@ CompText87C86E4::
 	.string "this!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87C86E4_unk26_id
 
 	def_text_script CompText87C86E4_unk24
 	ts_mugshot_show mugshot=0x0
@@ -376,7 +376,7 @@ CompText87C86E4::
 	.string "Chooooooo..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87C86E4_unk26_id
 
 	def_text_script CompText87C86E4_unk25
 	ts_mugshot_show mugshot=0x0
@@ -393,7 +393,7 @@ CompText87C86E4::
 	.string "holding back..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87C86E4_unk26_id
 
 	def_text_script CompText87C86E4_unk26
 	ts_mugshot_show mugshot=0x0
@@ -420,22 +420,22 @@ CompText87C86E4::
 	.string "matter what!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87C86E4_unk27_id
 
 	def_text_script CompText87C86E4_unk27
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0x1F,
-		jumpIfSlashMan: 0x1D,
-		jumpIfEraseMan: 0x24,
-		jumpIfChargeMan: 0x23,
-		jumpIfSpoutMan: 0x1C,
-		jumpIfTomahawkMan: 0x20,
-		jumpIfTenguMan: 0x1E,
-		jumpIfGroundMan: 0x21,
-		jumpIfDustMan: 0x22,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: CompText87C86E4_unk31_id,
+		jumpIfSlashMan: CompText87C86E4_unk29_id,
+		jumpIfEraseMan: CompText87C86E4_unk36_id,
+		jumpIfChargeMan: CompText87C86E4_unk35_id,
+		jumpIfSpoutMan: CompText87C86E4_unk28_id,
+		jumpIfTomahawkMan: CompText87C86E4_unk32_id,
+		jumpIfTenguMan: CompText87C86E4_unk30_id,
+		jumpIfGroundMan: CompText87C86E4_unk33_id,
+		jumpIfDustMan: CompText87C86E4_unk34_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open

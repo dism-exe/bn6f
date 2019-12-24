@@ -20,7 +20,7 @@ CompText87C41E4::
 	.string "I'm really touched!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87C41E4_unk1_id
 
 	def_text_script CompText87C41E4_unk1
 	ts_mugshot_show mugshot=0x3
@@ -44,7 +44,7 @@ CompText87C41E4::
 	.string "and screaming..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87C41E4_unk2_id
 
 	def_text_script CompText87C41E4_unk2
 	ts_mugshot_show mugshot=0x2
@@ -57,7 +57,7 @@ CompText87C41E4::
 	.string "like we used to!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C41E4_unk3_id
 
 	def_text_script CompText87C41E4_unk3
 	ts_mugshot_show mugshot=0x1
@@ -67,7 +67,7 @@ CompText87C41E4::
 	.string "MegaMan too!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C41E4_unk4_id
 
 	def_text_script CompText87C41E4_unk4
 	ts_mugshot_show mugshot=0x2
@@ -77,7 +77,7 @@ CompText87C41E4::
 	.string "ducks in ACDC Area."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C41E4_unk5_id
 
 	def_text_script CompText87C41E4_unk5
 	ts_mugshot_show mugshot=0x3
@@ -92,7 +92,7 @@ CompText87C41E4::
 	.string "in the park."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C41E4_unk6_id
 
 	def_text_script CompText87C41E4_unk6
 	ts_mugshot_show mugshot=0x0
@@ -100,7 +100,7 @@ CompText87C41E4::
 	.string "I remember!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87C41E4_unk7_id
 
 	def_text_script CompText87C41E4_unk7
 	ts_mugshot_show mugshot=0x3
@@ -115,7 +115,7 @@ CompText87C41E4::
 	.string "it out sometime!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87C41E4_unk8_id
 
 	def_text_script CompText87C41E4_unk8
 	ts_mugshot_show mugshot=0x0

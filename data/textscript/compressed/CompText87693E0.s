@@ -22,28 +22,28 @@ CompText87693E0::
 	ts_flag_set flag=0x11AB
 	ts_check_flag [
 		flag: 0x11AF,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87693E0_unk1_id,
 	]
 	ts_check_flag [
 		flag: 0x11AE,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87693E0_unk1_id,
 	]
 	ts_check_flag [
 		flag: 0x11AD,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87693E0_unk1_id,
 	]
 	ts_check_flag [
 		flag: 0x11AC,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87693E0_unk1_id,
 	]
 	ts_check_flag [
 		flag: 0x11AB,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87693E0_unk1_id,
 	]
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x0

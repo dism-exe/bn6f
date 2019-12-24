@@ -17,7 +17,7 @@ CompText87C0E14::
 	.string "teacher,Dingo!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87C0E14_unk1_id
 
 	def_text_script CompText87C0E14_unk1
 	ts_mugshot_show mugshot=0x21
@@ -38,7 +38,7 @@ CompText87C0E14::
 	.string "good,too!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87C0E14_unk2_id
 
 	def_text_script CompText87C0E14_unk2
 	ts_mugshot_show mugshot=0x0
@@ -48,7 +48,7 @@ CompText87C0E14::
 	.string "hard..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87C0E14_unk3_id
 
 	def_text_script CompText87C0E14_unk3
 	ts_mugshot_show mugshot=0x21
@@ -66,7 +66,7 @@ CompText87C0E14::
 	.string "gotta do carefully."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87C0E14_unk4_id
 
 	def_text_script CompText87C0E14_unk4
 	ts_mugshot_show mugshot=0x0
@@ -76,7 +76,7 @@ CompText87C0E14::
 	.string "Mr.Dingo!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87C0E14_unk5_id
 
 	def_text_script CompText87C0E14_unk5
 	ts_mugshot_show mugshot=0x21
@@ -96,7 +96,7 @@ CompText87C0E14::
 	.string "power of Wood."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87C0E14_unk6_id
 
 	def_text_script CompText87C0E14_unk6
 	ts_mugshot_show mugshot=0x0
@@ -109,7 +109,7 @@ CompText87C0E14::
 	.string "TomahawkMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87C0E14_unk7_id
 
 	def_text_script CompText87C0E14_unk7
 	ts_mugshot_show mugshot=0x21
@@ -128,7 +128,7 @@ CompText87C0E14::
 	.string "you their powers!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87C0E14_unk8_id
 
 	def_text_script CompText87C0E14_unk8
 	ts_mugshot_show mugshot=0x0
@@ -140,7 +140,7 @@ CompText87C0E14::
 	.string "scary..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87C0E14_unk9_id
 
 	def_text_script CompText87C0E14_unk9
 	ts_mugshot_show mugshot=0x21
@@ -155,7 +155,7 @@ CompText87C0E14::
 	.string "that control panel."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87C0E14_unk10_id
 
 	def_text_script CompText87C0E14_unk10
 	ts_mugshot_show mugshot=0x0

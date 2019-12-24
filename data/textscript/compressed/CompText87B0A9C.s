@@ -22,7 +22,7 @@ CompText87B0A9C::
 	.string "forever..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87B0A9C_unk1_id
 
 	def_text_script CompText87B0A9C_unk1
 	ts_mugshot_show mugshot=0x37
@@ -30,7 +30,7 @@ CompText87B0A9C::
 	.string "... Shhh,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87B0A9C_unk2_id
 
 	def_text_script CompText87B0A9C_unk2
 	ts_mugshot_show mugshot=0x0
@@ -38,7 +38,7 @@ CompText87B0A9C::
 	.string "What's up?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87B0A9C_unk3_id
 
 	def_text_script CompText87B0A9C_unk3
 	ts_mugshot_show mugshot=0x37
@@ -53,7 +53,7 @@ CompText87B0A9C::
 	]
 	ts_msg_close
 	ts_wait frames=0x5A
-	ts_jump target=4
+	ts_jump target=CompText87B0A9C_unk4_id
 
 	def_text_script CompText87B0A9C_unk4
 	ts_mugshot_hide
@@ -63,7 +63,7 @@ CompText87B0A9C::
 	.string "...do!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87B0A9C_unk5_id
 
 	def_text_script CompText87B0A9C_unk5
 	ts_mugshot_show mugshot=0x0
@@ -82,7 +82,7 @@ CompText87B0A9C::
 	.string "........."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B0A9C_unk7_id
 
 	def_text_script CompText87B0A9C_unk7
 	ts_mugshot_show mugshot=0x5
@@ -255,7 +255,7 @@ CompText87B0A9C::
 	ts_clear_msg
 	ts_msg_close
 	ts_wait frames=0x5A
-	ts_jump target=8
+	ts_jump target=CompText87B0A9C_unk8_id
 
 	def_text_script CompText87B0A9C_unk8
 	ts_sound_fade_in_bgm [
@@ -272,7 +272,7 @@ CompText87B0A9C::
 	.string "some way..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B0A9C_unk9_id
 
 	def_text_script CompText87B0A9C_unk9
 	ts_mugshot_show mugshot=0x37
@@ -303,7 +303,7 @@ CompText87B0A9C::
 	.string "without a strate--"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87B0A9C_unk11_id
 
 	def_text_script CompText87B0A9C_unk11
 	ts_mugshot_show mugshot=0x37
@@ -317,7 +317,7 @@ CompText87B0A9C::
 	.string "CentralArea3!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87B0A9C_unk12_id
 
 	def_text_script CompText87B0A9C_unk12
 	ts_mugshot_show mugshot=0x0

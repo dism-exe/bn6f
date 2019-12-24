@@ -12,20 +12,20 @@ CompText86D894C::
 	def_text_script CompText86D894C_unk0
 	ts_check_flag [
 		flag: 0xF2,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText86D894C_unk1_id,
 	]
 	ts_check_flag [
 		flag: 0xF7,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0x2,
+		jumpIfTrue: CompText86D894C_unk3_id,
+		jumpIfFalse: CompText86D894C_unk2_id,
 	]
 
 	def_text_script CompText86D894C_unk1
 	ts_check_flag [
 		flag: 0xF7,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText86D894C_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open_menu_quick
 	ts_text_speed delay=0x0
@@ -35,18 +35,18 @@ CompText86D894C::
 
 	def_text_script CompText86D894C_unk2
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x1,
-		jumpIfElecMan: 0x1,
-		jumpIfSlashMan: 0x1,
-		jumpIfEraseMan: 0x1,
-		jumpIfChargeMan: 0x1,
-		jumpIfSpoutMan: 0x1,
-		jumpIfTomahawkMan: 0x1,
-		jumpIfTenguMan: 0x1,
-		jumpIfGroundMan: 0x1,
-		jumpIfDustMan: 0x1,
-		jumpIfProtoMan: 0x1,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText86D894C_unk1_id,
+		jumpIfElecMan: CompText86D894C_unk1_id,
+		jumpIfSlashMan: CompText86D894C_unk1_id,
+		jumpIfEraseMan: CompText86D894C_unk1_id,
+		jumpIfChargeMan: CompText86D894C_unk1_id,
+		jumpIfSpoutMan: CompText86D894C_unk1_id,
+		jumpIfTomahawkMan: CompText86D894C_unk1_id,
+		jumpIfTenguMan: CompText86D894C_unk1_id,
+		jumpIfGroundMan: CompText86D894C_unk1_id,
+		jumpIfDustMan: CompText86D894C_unk1_id,
+		jumpIfProtoMan: CompText86D894C_unk1_id,
 	]
 	ts_msg_open_menu_quick
 	ts_text_speed delay=0x0
@@ -68,23 +68,23 @@ CompText86D894C::
 
 	def_text_script CompText86D894C_unk3
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x4,
-		jumpIfElecMan: 0x4,
-		jumpIfSlashMan: 0x4,
-		jumpIfEraseMan: 0x4,
-		jumpIfChargeMan: 0x4,
-		jumpIfSpoutMan: 0x4,
-		jumpIfTomahawkMan: 0x4,
-		jumpIfTenguMan: 0x4,
-		jumpIfGroundMan: 0x4,
-		jumpIfDustMan: 0x4,
-		jumpIfProtoMan: 0x4,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText86D894C_unk4_id,
+		jumpIfElecMan: CompText86D894C_unk4_id,
+		jumpIfSlashMan: CompText86D894C_unk4_id,
+		jumpIfEraseMan: CompText86D894C_unk4_id,
+		jumpIfChargeMan: CompText86D894C_unk4_id,
+		jumpIfSpoutMan: CompText86D894C_unk4_id,
+		jumpIfTomahawkMan: CompText86D894C_unk4_id,
+		jumpIfTenguMan: CompText86D894C_unk4_id,
+		jumpIfGroundMan: CompText86D894C_unk4_id,
+		jumpIfDustMan: CompText86D894C_unk4_id,
+		jumpIfProtoMan: CompText86D894C_unk4_id,
 	]
 	ts_check_flag [
 		flag: 0x170F,
-		jumpIfTrue: 0xD,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText86D894C_unk13_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open_menu_quick
 	ts_text_speed delay=0x0
@@ -373,8 +373,8 @@ CompText86D894C::
 	def_text_script CompText86D894C_unk54
 	ts_check_flag [
 		flag: 0x1704,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x37,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText86D894C_unk55_id,
 	]
 	ts_position_text [
 		left: 0x39,
@@ -410,9 +410,9 @@ CompText86D894C::
 	def_text_script CompText86D894C_unk55
 	ts_flag_clear flag=0x1713
 	ts_call_save [
-		jumpIfSuccessful: 0x38,
-		jumpIfFailed: 0xFF,
-		jumpUnused: 0x0,
+		jumpIfSuccessful: CompText86D894C_unk56_id,
+		jumpIfFailed: TS_CONTINUE,
+		jumpUnused: CompText86D894C_unk0_id,
 	]
 	ts_position_text [
 		left: 0x39,

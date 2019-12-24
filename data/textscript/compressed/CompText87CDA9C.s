@@ -32,7 +32,7 @@ CompText87CDA9C::
 	.string "Tee,hee!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87CDA9C_unk1_id
 
 	def_text_script CompText87CDA9C_unk1
 	ts_mugshot_show mugshot=0x2F
@@ -40,7 +40,7 @@ CompText87CDA9C::
 	.string "... I-Iris..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87CDA9C_unk2_id
 
 	def_text_script CompText87CDA9C_unk2
 	ts_mugshot_show mugshot=0x2E
@@ -69,7 +69,7 @@ CompText87CDA9C::
 	.string "to do!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87CDA9C_unk3_id
 
 	def_text_script CompText87CDA9C_unk3
 	ts_mugshot_show mugshot=0x2D
@@ -87,7 +87,7 @@ CompText87CDA9C::
 	.string "to go with them."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87CDA9C_unk4_id
 
 	def_text_script CompText87CDA9C_unk4
 	ts_mugshot_show mugshot=0x2B
@@ -107,7 +107,7 @@ CompText87CDA9C::
 	.string "sea!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87CDA9C_unk5_id
 
 	def_text_script CompText87CDA9C_unk5
 	ts_mugshot_hide
@@ -124,7 +124,7 @@ CompText87CDA9C::
 	.string "go!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87CDA9C_unk7_id
 
 	def_text_script CompText87CDA9C_unk7
 	ts_mugshot_show mugshot=0x2F
@@ -132,7 +132,7 @@ CompText87CDA9C::
 	.string "L-Lan... Hikari..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87CDA9C_unk8_id
 
 	def_text_script CompText87CDA9C_unk8
 	ts_mugshot_show mugshot=0x2B
@@ -167,7 +167,7 @@ CompText87CDA9C::
 	.string "don't you?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87CDA9C_unk9_id
 
 	def_text_script CompText87CDA9C_unk9
 	ts_mugshot_show mugshot=0x0
@@ -175,7 +175,7 @@ CompText87CDA9C::
 	.string "Nngh...!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87CDA9C_unk10_id
 
 	def_text_script CompText87CDA9C_unk10
 	ts_mugshot_show mugshot=0x2B
@@ -186,7 +186,7 @@ CompText87CDA9C::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_sound_play_bgm track=0xC
-	ts_jump target=11
+	ts_jump target=CompText87CDA9C_unk11_id
 
 	def_text_script CompText87CDA9C_unk11
 	ts_mugshot_show mugshot=0x2E
@@ -195,7 +195,7 @@ CompText87CDA9C::
 	.string "I got it!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87CDA9C_unk12_id
 
 	def_text_script CompText87CDA9C_unk12
 	ts_mugshot_show mugshot=0x2D
@@ -216,7 +216,7 @@ CompText87CDA9C::
 	.string "help Baryl..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87CDA9C_unk14_id
 
 	def_text_script CompText87CDA9C_unk14
 	ts_mugshot_show mugshot=0x2B
@@ -231,7 +231,7 @@ CompText87CDA9C::
 	.string "time!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87CDA9C_unk15_id
 
 	def_text_script CompText87CDA9C_unk15
 	ts_mugshot_hide
@@ -260,7 +260,7 @@ CompText87CDA9C::
 	.string "me like a teacher..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87CDA9C_unk18_id
 
 	def_text_script CompText87CDA9C_unk18
 	ts_mugshot_show mugshot=0x2B
@@ -269,7 +269,7 @@ CompText87CDA9C::
 	.string "What do you want!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87CDA9C_unk19_id
 
 	def_text_script CompText87CDA9C_unk19
 	ts_mugshot_show mugshot=0x12
@@ -289,7 +289,7 @@ CompText87CDA9C::
 	.string "to fail."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87CDA9C_unk21_id
 
 	def_text_script CompText87CDA9C_unk20
 
@@ -306,7 +306,7 @@ CompText87CDA9C::
 	.string "Baryl!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87CDA9C_unk22_id
 
 	def_text_script CompText87CDA9C_unk22
 	ts_mugshot_show mugshot=0x12
@@ -353,7 +353,7 @@ CompText87CDA9C::
 	.string "to that girl..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87CDA9C_unk26_id
 
 	def_text_script CompText87CDA9C_unk26
 	ts_mugshot_show mugshot=0x2B
@@ -362,7 +362,7 @@ CompText87CDA9C::
 	.string "I'll remember this!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87CDA9C_unk27_id
 
 	def_text_script CompText87CDA9C_unk27
 	ts_mugshot_show mugshot=0x12
@@ -372,7 +372,7 @@ CompText87CDA9C::
 	.string "too."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87CDA9C_unk28_id
 
 	def_text_script CompText87CDA9C_unk28
 	ts_mugshot_show mugshot=0x2B
@@ -391,7 +391,7 @@ CompText87CDA9C::
 	.string "M-Mr.Mach..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87CDA9C_unk30_id
 
 	def_text_script CompText87CDA9C_unk30
 	ts_mugshot_show mugshot=0x12
@@ -416,7 +416,7 @@ CompText87CDA9C::
 	.string "students..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=CompText87CDA9C_unk31_id
 
 	def_text_script CompText87CDA9C_unk31
 	ts_mugshot_show mugshot=0x0
@@ -479,7 +479,7 @@ CompText87CDA9C::
 	.string "Dr.Wily."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=33
+	ts_jump target=CompText87CDA9C_unk33_id
 
 	def_text_script CompText87CDA9C_unk33
 	ts_mugshot_show mugshot=0x0
@@ -559,7 +559,7 @@ CompText87CDA9C::
 	.string "........."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=34
+	ts_jump target=CompText87CDA9C_unk34_id
 
 	def_text_script CompText87CDA9C_unk34
 	ts_mugshot_show mugshot=0x12
@@ -569,7 +569,7 @@ CompText87CDA9C::
 	.string "I've done."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=35
+	ts_jump target=CompText87CDA9C_unk35_id
 
 	def_text_script CompText87CDA9C_unk35
 	ts_mugshot_show mugshot=0x0
@@ -582,7 +582,7 @@ CompText87CDA9C::
 	.string "It's not too late!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=36
+	ts_jump target=CompText87CDA9C_unk36_id
 
 	def_text_script CompText87CDA9C_unk36
 	ts_mugshot_show mugshot=0x12
@@ -703,7 +703,7 @@ CompText87CDA9C::
 	.string "tell me..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=37
+	ts_jump target=CompText87CDA9C_unk37_id
 
 	def_text_script CompText87CDA9C_unk37
 	ts_mugshot_show mugshot=0x0
@@ -715,7 +715,7 @@ CompText87CDA9C::
 	.string "do now?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=38
+	ts_jump target=CompText87CDA9C_unk38_id
 
 	def_text_script CompText87CDA9C_unk38
 	ts_mugshot_show mugshot=0x12
@@ -734,7 +734,7 @@ CompText87CDA9C::
 	.string "you ever again..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=39
+	ts_jump target=CompText87CDA9C_unk39_id
 
 	def_text_script CompText87CDA9C_unk39
 	ts_mugshot_show mugshot=0x0

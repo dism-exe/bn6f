@@ -89,7 +89,7 @@ CompText87B4730::
 		value: 0xA,
 	]
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87B4730_unk6_id
 
 	def_text_script CompText87B4730_unk6
 	ts_mugshot_show mugshot=0x14
@@ -117,7 +117,7 @@ CompText87B4730::
 	.string "a CopyBot,that is."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87B4730_unk7_id
 
 	def_text_script CompText87B4730_unk7
 	ts_mugshot_show mugshot=0x0
@@ -151,7 +151,7 @@ CompText87B4730::
 	.string "what's a pavilion?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87B4730_unk9_id
 
 	def_text_script CompText87B4730_unk9
 	ts_mugshot_show mugshot=0x14
@@ -165,7 +165,7 @@ CompText87B4730::
 	.string "sleeping in class!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87B4730_unk10_id
 
 	def_text_script CompText87B4730_unk10
 	ts_mugshot_show mugshot=0x0
@@ -173,7 +173,7 @@ CompText87B4730::
 	.string "... Hmph."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87B4730_unk11_id
 
 	def_text_script CompText87B4730_unk11
 	ts_mugshot_show mugshot=0x14
@@ -185,7 +185,7 @@ CompText87B4730::
 	.string "to a lion..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87B4730_unk12_id
 
 	def_text_script CompText87B4730_unk12
 	ts_mugshot_show mugshot=0x57
@@ -208,7 +208,7 @@ CompText87B4730::
 	.string "take naps!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87B4730_unk13_id
 
 	def_text_script CompText87B4730_unk13
 	ts_mugshot_show mugshot=0x0
@@ -219,7 +219,7 @@ CompText87B4730::
 	.string "He got you good!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87B4730_unk14_id
 
 	def_text_script CompText87B4730_unk14
 	ts_mugshot_show mugshot=0x14
@@ -228,7 +228,7 @@ CompText87B4730::
 	.string "tell me what it is!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87B4730_unk15_id
 
 	def_text_script CompText87B4730_unk15
 	ts_mugshot_show mugshot=0x0
@@ -241,7 +241,7 @@ CompText87B4730::
 	.string "it's related...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87B4730_unk16_id
 
 	def_text_script CompText87B4730_unk16
 	ts_mugshot_show mugshot=0x37
@@ -264,7 +264,7 @@ CompText87B4730::
 	.string "like an Expo."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=17
+	ts_jump target=CompText87B4730_unk17_id
 
 	def_text_script CompText87B4730_unk17
 	ts_mugshot_show mugshot=0x0
@@ -290,7 +290,7 @@ CompText87B4730::
 	.string "right now!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87B4730_unk18_id
 
 	def_text_script CompText87B4730_unk18
 	ts_mugshot_show mugshot=0x14
@@ -314,7 +314,7 @@ CompText87B4730::
 	.string "started!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87B4730_unk19_id
 
 	def_text_script CompText87B4730_unk19
 	ts_mugshot_show mugshot=0x0
@@ -353,7 +353,7 @@ CompText87B4730::
 	.string "rules get detention!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87B4730_unk22_id
 
 	def_text_script CompText87B4730_unk22
 	ts_mugshot_show mugshot=0x0
@@ -366,7 +366,7 @@ CompText87B4730::
 	.string "older sister...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87B4730_unk23_id
 
 	def_text_script CompText87B4730_unk23
 	ts_mugshot_show mugshot=0x22
@@ -391,7 +391,7 @@ CompText87B4730::
 	.string "Ms.Fahran!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87B4730_unk24_id
 
 	def_text_script CompText87B4730_unk24
 	ts_mugshot_show mugshot=0x0
@@ -400,7 +400,7 @@ CompText87B4730::
 	.string "You're a teacher!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87B4730_unk25_id
 
 	def_text_script CompText87B4730_unk25
 	ts_mugshot_show mugshot=0x22
@@ -423,7 +423,7 @@ CompText87B4730::
 	.string "couldn't tell."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87B4730_unk26_id
 
 	def_text_script CompText87B4730_unk26
 	ts_mugshot_show mugshot=0x0
@@ -433,7 +433,7 @@ CompText87B4730::
 	.string "than a teacher..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87B4730_unk27_id
 
 	def_text_script CompText87B4730_unk27
 	ts_mugshot_show mugshot=0x22
@@ -458,7 +458,7 @@ CompText87B4730::
 	.string "little famous there!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87B4730_unk28_id
 
 	def_text_script CompText87B4730_unk28
 	ts_mugshot_show mugshot=0x0
@@ -467,7 +467,7 @@ CompText87B4730::
 	.string "you come here...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=29
+	ts_jump target=CompText87B4730_unk29_id
 
 	def_text_script CompText87B4730_unk29
 	ts_mugshot_show mugshot=0x22
@@ -491,7 +491,7 @@ CompText87B4730::
 	.string "foods!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87B4730_unk30_id
 
 	def_text_script CompText87B4730_unk30
 	ts_mugshot_show mugshot=0x0
@@ -505,7 +505,7 @@ CompText87B4730::
 	.string "Unlike math..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=CompText87B4730_unk31_id
 
 	def_text_script CompText87B4730_unk31
 	ts_mugshot_show mugshot=0x22
@@ -520,7 +520,7 @@ CompText87B4730::
 	.string "you on rules!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=32
+	ts_jump target=CompText87B4730_unk32_id
 
 	def_text_script CompText87B4730_unk32
 	ts_mugshot_show mugshot=0x0
@@ -529,7 +529,7 @@ CompText87B4730::
 	.string "me!? Really!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=33
+	ts_jump target=CompText87B4730_unk33_id
 
 	def_text_script CompText87B4730_unk33
 	ts_mugshot_show mugshot=0x22
@@ -596,7 +596,7 @@ CompText87B4730::
 	.string "this old fogey!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=37
+	ts_jump target=CompText87B4730_unk37_id
 
 	def_text_script CompText87B4730_unk37
 	ts_mugshot_show mugshot=0x0
@@ -618,7 +618,7 @@ CompText87B4730::
 	.string "Waaaah!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87B4730_unk40_id
 
 	def_text_script CompText87B4730_unk40
 	ts_mugshot_show mugshot=0x23
@@ -637,7 +637,7 @@ CompText87B4730::
 	.string "teacher."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=41
+	ts_jump target=CompText87B4730_unk41_id
 
 	def_text_script CompText87B4730_unk41
 	ts_mugshot_show mugshot=0x0
@@ -647,7 +647,7 @@ CompText87B4730::
 	.string "that move just now?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=42
+	ts_jump target=CompText87B4730_unk42_id
 
 	def_text_script CompText87B4730_unk42
 	ts_mugshot_show mugshot=0x23
@@ -662,7 +662,7 @@ CompText87B4730::
 	.string "that's all."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=43
+	ts_jump target=CompText87B4730_unk43_id
 
 	def_text_script CompText87B4730_unk43
 	ts_mugshot_show mugshot=0x0
@@ -674,7 +674,7 @@ CompText87B4730::
 	.string "of mumbo-jumbo..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=44
+	ts_jump target=CompText87B4730_unk44_id
 
 	def_text_script CompText87B4730_unk44
 	ts_mugshot_show mugshot=0x23
@@ -713,7 +713,7 @@ CompText87B4730::
 	.string "now!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=46
+	ts_jump target=CompText87B4730_unk46_id
 
 	def_text_script CompText87B4730_unk46
 	ts_mugshot_show mugshot=0x0

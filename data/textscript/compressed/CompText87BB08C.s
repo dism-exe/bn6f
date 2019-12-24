@@ -57,7 +57,7 @@ CompText87BB08C::
 	.string "here,Colonel!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87BB08C_unk2_id
 
 	def_text_script CompText87BB08C_unk2
 	ts_mugshot_show mugshot=0x53
@@ -74,7 +74,7 @@ CompText87BB08C::
 	.string "is under my command."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87BB08C_unk3_id
 
 	def_text_script CompText87BB08C_unk3
 	ts_mugshot_show mugshot=0x37
@@ -82,7 +82,7 @@ CompText87BB08C::
 	.string "Your command?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87BB08C_unk4_id
 
 	def_text_script CompText87BB08C_unk4
 	ts_mugshot_show mugshot=0x53
@@ -95,7 +95,7 @@ CompText87BB08C::
 	.string "because of me."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87BB08C_unk5_id
 
 	def_text_script CompText87BB08C_unk5
 	ts_mugshot_show mugshot=0x37
@@ -109,7 +109,7 @@ CompText87BB08C::
 	.string "things!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87BB08C_unk6_id
 
 	def_text_script CompText87BB08C_unk6
 	ts_mugshot_show mugshot=0x53
@@ -151,7 +151,7 @@ CompText87BB08C::
 	.string "MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87BB08C_unk7_id
 
 	def_text_script CompText87BB08C_unk7
 	ts_mugshot_show mugshot=0x37
@@ -193,7 +193,7 @@ CompText87BB08C::
 	.string "Wait,Colonel!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87BB08C_unk8_id
 
 	def_text_script CompText87BB08C_unk8
 	ts_mugshot_show mugshot=0x53
@@ -228,7 +228,7 @@ CompText87BB08C::
 	.string "...?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87BB08C_unk11_id
 
 	def_text_script CompText87BB08C_unk11
 	ts_mugshot_show mugshot=0x53
@@ -256,7 +256,7 @@ CompText87BB08C::
 	.string "Where are you!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87BB08C_unk13_id
 
 	def_text_script CompText87BB08C_unk13
 	ts_mugshot_show mugshot=0x0
@@ -303,7 +303,7 @@ CompText87BB08C::
 	.string "yours."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87BB08C_unk16_id
 
 	def_text_script CompText87BB08C_unk16
 	ts_mugshot_show mugshot=0x37
@@ -320,7 +320,7 @@ CompText87BB08C::
 	.string "was Colonel,huh?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87BB08C_unk18_id
 
 	def_text_script CompText87BB08C_unk18
 	ts_mugshot_show mugshot=0x0
@@ -357,7 +357,7 @@ CompText87BB08C::
 	.string "longer."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87BB08C_unk20_id
 
 	def_text_script CompText87BB08C_unk20
 	ts_mugshot_show mugshot=0x2D
@@ -370,7 +370,7 @@ CompText87BB08C::
 	.string "thoroughly."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87BB08C_unk21_id
 
 	def_text_script CompText87BB08C_unk21
 	ts_mugshot_show mugshot=0x0
@@ -380,7 +380,7 @@ CompText87BB08C::
 	.string "Please,stop this!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87BB08C_unk22_id
 
 	def_text_script CompText87BB08C_unk22
 	ts_mugshot_show mugshot=0x2D
@@ -408,7 +408,7 @@ CompText87BB08C::
 	.string "pipe dream."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87BB08C_unk23_id
 
 	def_text_script CompText87BB08C_unk23
 	ts_mugshot_show mugshot=0x0
@@ -443,7 +443,7 @@ CompText87BB08C::
 	.string "That's why I fight!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=24
+	ts_jump target=CompText87BB08C_unk24_id
 
 	def_text_script CompText87BB08C_unk24
 	ts_mugshot_show mugshot=0x2D
@@ -455,7 +455,7 @@ CompText87BB08C::
 	.string "You're too nice..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87BB08C_unk25_id
 
 	def_text_script CompText87BB08C_unk25
 	ts_mugshot_show mugshot=0x0
@@ -483,7 +483,7 @@ CompText87BB08C::
 	.string "Battle routine,set!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=26
+	ts_jump target=CompText87BB08C_unk26_id
 
 	def_text_script CompText87BB08C_unk26
 	ts_mugshot_show mugshot=0x37
@@ -491,7 +491,7 @@ CompText87BB08C::
 	.string "Execute!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87BB08C_unk27_id
 
 	def_text_script CompText87BB08C_unk27
 	ts_mugshot_show mugshot=0x2D
@@ -500,7 +500,7 @@ CompText87BB08C::
 	.string "JudgeMan."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87BB08C_unk28_id
 
 	def_text_script CompText87BB08C_unk28
 	ts_mugshot_show mugshot=0x55

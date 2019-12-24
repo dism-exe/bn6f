@@ -68,8 +68,8 @@ CompText878F364::
 	def_text_script CompText878F364_unk10
 	ts_check_shop_stock [
 		shop: 0x8,
-		jumpIfStocked: 0xFF,
-		jumpIfSoldOut: 0xC,
+		jumpIfStocked: TS_CONTINUE,
+		jumpIfSoldOut: CompText878F364_unk12_id,
 	]
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
@@ -160,8 +160,8 @@ CompText878F364::
 	def_text_script CompText878F364_unk20
 	ts_check_flag [
 		flag: 0x1124,
-		jumpIfTrue: 0x17,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText878F364_unk23_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
@@ -218,9 +218,9 @@ CompText878F364::
 	def_text_script CompText878F364_unk21
 	ts_check_take_zenny [
 		amount: 0xBB8,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0x16,
-		jumpIfSome: 0x16,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: CompText878F364_unk22_id,
+		jumpIfSome: CompText878F364_unk22_id,
 	]
 	ts_flag_set flag=0x1124
 	ts_mugshot_show mugshot=0x43
@@ -280,8 +280,8 @@ CompText878F364::
 	def_text_script CompText878F364_unk25
 	ts_check_flag [
 		flag: 0x123B,
-		jumpIfTrue: 0x1C,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText878F364_unk28_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
@@ -434,8 +434,8 @@ CompText878F364::
 	def_text_script CompText878F364_unk30
 	ts_check_shop_stock [
 		shop: 0x3,
-		jumpIfStocked: 0xFF,
-		jumpIfSoldOut: 0x20,
+		jumpIfStocked: TS_CONTINUE,
+		jumpIfSoldOut: CompText878F364_unk32_id,
 	]
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open

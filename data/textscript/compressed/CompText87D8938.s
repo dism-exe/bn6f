@@ -15,22 +15,22 @@ CompText87D8938::
 	.string "Aaaah...!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D8938_unk1_id
 
 	def_text_script CompText87D8938_unk1
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x2,
-		jumpIfElecMan: 0x2,
-		jumpIfSlashMan: 0x2,
-		jumpIfEraseMan: 0x2,
-		jumpIfChargeMan: 0x2,
-		jumpIfSpoutMan: 0x2,
-		jumpIfTomahawkMan: 0x2,
-		jumpIfTenguMan: 0x2,
-		jumpIfGroundMan: 0x2,
-		jumpIfDustMan: 0x2,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87D8938_unk2_id,
+		jumpIfElecMan: CompText87D8938_unk2_id,
+		jumpIfSlashMan: CompText87D8938_unk2_id,
+		jumpIfEraseMan: CompText87D8938_unk2_id,
+		jumpIfChargeMan: CompText87D8938_unk2_id,
+		jumpIfSpoutMan: CompText87D8938_unk2_id,
+		jumpIfTomahawkMan: CompText87D8938_unk2_id,
+		jumpIfTenguMan: CompText87D8938_unk2_id,
+		jumpIfGroundMan: CompText87D8938_unk2_id,
+		jumpIfDustMan: CompText87D8938_unk2_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x5B
 	ts_msg_open
@@ -70,26 +70,26 @@ CompText87D8938::
 
 	def_text_script CompText87D8938_unk4
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x5,
-		jumpIfElecMan: 0x6,
-		jumpIfSlashMan: 0x7,
-		jumpIfEraseMan: 0x8,
-		jumpIfChargeMan: 0x9,
-		jumpIfSpoutMan: 0xA,
-		jumpIfTomahawkMan: 0xB,
-		jumpIfTenguMan: 0xC,
-		jumpIfGroundMan: 0xD,
-		jumpIfDustMan: 0xE,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87D8938_unk5_id,
+		jumpIfElecMan: CompText87D8938_unk6_id,
+		jumpIfSlashMan: CompText87D8938_unk7_id,
+		jumpIfEraseMan: CompText87D8938_unk8_id,
+		jumpIfChargeMan: CompText87D8938_unk9_id,
+		jumpIfSpoutMan: CompText87D8938_unk10_id,
+		jumpIfTomahawkMan: CompText87D8938_unk11_id,
+		jumpIfTenguMan: CompText87D8938_unk12_id,
+		jumpIfGroundMan: CompText87D8938_unk13_id,
+		jumpIfDustMan: CompText87D8938_unk14_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "This is..."
 	ts_key_wait any=0x0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x27,
-		jumpIfCybeastFalzar: 0x28,
+		jumpIfCybeastGregar: CompText87D8938_unk39_id,
+		jumpIfCybeastFalzar: CompText87D8938_unk40_id,
 	]
 	ts_end
 
@@ -99,8 +99,8 @@ CompText87D8938::
 	.string "... Hey! This is...!"
 	ts_key_wait any=0x0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x27,
-		jumpIfCybeastFalzar: 0x28,
+		jumpIfCybeastGregar: CompText87D8938_unk39_id,
+		jumpIfCybeastFalzar: CompText87D8938_unk40_id,
 	]
 	ts_end
 
@@ -110,8 +110,8 @@ CompText87D8938::
 	.string "This chip is..."
 	ts_key_wait any=0x0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x27,
-		jumpIfCybeastFalzar: 0x28,
+		jumpIfCybeastGregar: CompText87D8938_unk39_id,
+		jumpIfCybeastFalzar: CompText87D8938_unk40_id,
 	]
 	ts_end
 
@@ -121,8 +121,8 @@ CompText87D8938::
 	.string "Hmm? This chip..."
 	ts_key_wait any=0x0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x27,
-		jumpIfCybeastFalzar: 0x28,
+		jumpIfCybeastGregar: CompText87D8938_unk39_id,
+		jumpIfCybeastFalzar: CompText87D8938_unk40_id,
 	]
 	ts_end
 
@@ -133,8 +133,8 @@ CompText87D8938::
 	.string "like a..."
 	ts_key_wait any=0x0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x27,
-		jumpIfCybeastFalzar: 0x28,
+		jumpIfCybeastGregar: CompText87D8938_unk39_id,
+		jumpIfCybeastFalzar: CompText87D8938_unk40_id,
 	]
 	ts_end
 
@@ -146,8 +146,8 @@ CompText87D8938::
 	.string "looks like...!"
 	ts_key_wait any=0x0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x27,
-		jumpIfCybeastFalzar: 0x28,
+		jumpIfCybeastGregar: CompText87D8938_unk39_id,
+		jumpIfCybeastFalzar: CompText87D8938_unk40_id,
 	]
 	ts_end
 
@@ -158,8 +158,8 @@ CompText87D8938::
 	.string "This chip is...!"
 	ts_key_wait any=0x0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x27,
-		jumpIfCybeastFalzar: 0x28,
+		jumpIfCybeastGregar: CompText87D8938_unk39_id,
+		jumpIfCybeastFalzar: CompText87D8938_unk40_id,
 	]
 	ts_end
 
@@ -170,8 +170,8 @@ CompText87D8938::
 	.string "It's so powerful..."
 	ts_key_wait any=0x0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x27,
-		jumpIfCybeastFalzar: 0x28,
+		jumpIfCybeastGregar: CompText87D8938_unk39_id,
+		jumpIfCybeastFalzar: CompText87D8938_unk40_id,
 	]
 	ts_end
 
@@ -181,8 +181,8 @@ CompText87D8938::
 	.string "Hmm,this chip is..."
 	ts_key_wait any=0x0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x27,
-		jumpIfCybeastFalzar: 0x28,
+		jumpIfCybeastGregar: CompText87D8938_unk39_id,
+		jumpIfCybeastFalzar: CompText87D8938_unk40_id,
 	]
 	ts_end
 
@@ -193,8 +193,8 @@ CompText87D8938::
 	.string "Hey,this chip is..."
 	ts_key_wait any=0x0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x27,
-		jumpIfCybeastFalzar: 0x28,
+		jumpIfCybeastGregar: CompText87D8938_unk39_id,
+		jumpIfCybeastFalzar: CompText87D8938_unk40_id,
 	]
 	ts_end
 
@@ -204,8 +204,8 @@ CompText87D8938::
 	.string "Th-This chip is...!!"
 	ts_key_wait any=0x0
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0x27,
-		jumpIfCybeastFalzar: 0x28,
+		jumpIfCybeastGregar: CompText87D8938_unk39_id,
+		jumpIfCybeastFalzar: CompText87D8938_unk40_id,
 	]
 	ts_end
 
@@ -225,22 +225,22 @@ CompText87D8938::
 	.string "teamwork!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=16
+	ts_jump target=CompText87D8938_unk16_id
 
 	def_text_script CompText87D8938_unk16
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x11,
-		jumpIfElecMan: 0x12,
-		jumpIfSlashMan: 0x13,
-		jumpIfEraseMan: 0x14,
-		jumpIfChargeMan: 0x15,
-		jumpIfSpoutMan: 0x16,
-		jumpIfTomahawkMan: 0x17,
-		jumpIfTenguMan: 0x18,
-		jumpIfGroundMan: 0x19,
-		jumpIfDustMan: 0x1A,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87D8938_unk17_id,
+		jumpIfElecMan: CompText87D8938_unk18_id,
+		jumpIfSlashMan: CompText87D8938_unk19_id,
+		jumpIfEraseMan: CompText87D8938_unk20_id,
+		jumpIfChargeMan: CompText87D8938_unk21_id,
+		jumpIfSpoutMan: CompText87D8938_unk22_id,
+		jumpIfTomahawkMan: CompText87D8938_unk23_id,
+		jumpIfTenguMan: CompText87D8938_unk24_id,
+		jumpIfGroundMan: CompText87D8938_unk25_id,
+		jumpIfDustMan: CompText87D8938_unk26_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -254,7 +254,7 @@ CompText87D8938::
 	.string "Right!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D8938_unk27_id
 
 	def_text_script CompText87D8938_unk17
 	ts_mugshot_show mugshot=0x47
@@ -271,7 +271,7 @@ CompText87D8938::
 	.string "scared of anything!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D8938_unk27_id
 
 	def_text_script CompText87D8938_unk18
 	ts_mugshot_show mugshot=0x49
@@ -286,7 +286,7 @@ CompText87D8938::
 	.string "potential yet."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D8938_unk27_id
 
 	def_text_script CompText87D8938_unk19
 	ts_mugshot_show mugshot=0x4B
@@ -301,7 +301,7 @@ CompText87D8938::
 	.string "unstoppable!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D8938_unk27_id
 
 	def_text_script CompText87D8938_unk20
 	ts_mugshot_show mugshot=0x50
@@ -323,7 +323,7 @@ CompText87D8938::
 	.string "delete any Navi!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D8938_unk27_id
 
 	def_text_script CompText87D8938_unk21
 	ts_mugshot_show mugshot=0x4F
@@ -336,7 +336,7 @@ CompText87D8938::
 	.string "to get smoked!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D8938_unk27_id
 
 	def_text_script CompText87D8938_unk22
 	ts_mugshot_show mugshot=0x48
@@ -349,7 +349,7 @@ CompText87D8938::
 	.string "me stronger,drip!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D8938_unk27_id
 
 	def_text_script CompText87D8938_unk23
 	ts_mugshot_show mugshot=0x4A
@@ -364,7 +364,7 @@ CompText87D8938::
 	.string "stronger!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D8938_unk27_id
 
 	def_text_script CompText87D8938_unk24
 	ts_mugshot_show mugshot=0x4C
@@ -382,7 +382,7 @@ CompText87D8938::
 	.string "Master Feng-Tian."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D8938_unk27_id
 
 	def_text_script CompText87D8938_unk25
 	ts_mugshot_show mugshot=0x4D
@@ -397,7 +397,7 @@ CompText87D8938::
 	.string "a pretty good team!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D8938_unk27_id
 
 	def_text_script CompText87D8938_unk26
 	ts_mugshot_show mugshot=0x4E
@@ -411,7 +411,7 @@ CompText87D8938::
 	.string "operator for me!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D8938_unk27_id
 
 	def_text_script CompText87D8938_unk27
 	ts_mugshot_show mugshot=0x0
@@ -427,22 +427,22 @@ CompText87D8938::
 	.string "Time to head back!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D8938_unk28_id
 
 	def_text_script CompText87D8938_unk28
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x1D,
-		jumpIfElecMan: 0x1E,
-		jumpIfSlashMan: 0x1F,
-		jumpIfEraseMan: 0x20,
-		jumpIfChargeMan: 0x21,
-		jumpIfSpoutMan: 0x22,
-		jumpIfTomahawkMan: 0x23,
-		jumpIfTenguMan: 0x24,
-		jumpIfGroundMan: 0x25,
-		jumpIfDustMan: 0x26,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87D8938_unk29_id,
+		jumpIfElecMan: CompText87D8938_unk30_id,
+		jumpIfSlashMan: CompText87D8938_unk31_id,
+		jumpIfEraseMan: CompText87D8938_unk32_id,
+		jumpIfChargeMan: CompText87D8938_unk33_id,
+		jumpIfSpoutMan: CompText87D8938_unk34_id,
+		jumpIfTomahawkMan: CompText87D8938_unk35_id,
+		jumpIfTenguMan: CompText87D8938_unk36_id,
+		jumpIfGroundMan: CompText87D8938_unk37_id,
+		jumpIfDustMan: CompText87D8938_unk38_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
@@ -550,7 +550,7 @@ CompText87D8938::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87D8938_unk15_id
 
 	def_text_script CompText87D8938_unk40
 	ts_clear_msg
@@ -580,6 +580,6 @@ CompText87D8938::
 		value: 0x82,
 	]
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87D8938_unk15_id
 
 	

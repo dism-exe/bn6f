@@ -25,7 +25,7 @@ CompText87A6D68::
 	.string "do you,Lan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87A6D68_unk1_id
 
 	def_text_script CompText87A6D68_unk1
 	ts_mugshot_show mugshot=0x0
@@ -35,7 +35,7 @@ CompText87A6D68::
 	.string "know what it does."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A6D68_unk2_id
 
 	def_text_script CompText87A6D68_unk2
 	ts_mugshot_show mugshot=0x12
@@ -45,7 +45,7 @@ CompText87A6D68::
 	.string "what a CopyBot is?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A6D68_unk3_id
 
 	def_text_script CompText87A6D68_unk3
 	ts_mugshot_show mugshot=0x33
@@ -68,7 +68,7 @@ CompText87A6D68::
 	.string "around in our world."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87A6D68_unk4_id
 
 	def_text_script CompText87A6D68_unk4
 	ts_mugshot_show mugshot=0x0
@@ -82,7 +82,7 @@ CompText87A6D68::
 	.string "like that!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A6D68_unk5_id
 
 	def_text_script CompText87A6D68_unk5
 	ts_mugshot_show mugshot=0x12
@@ -110,7 +110,7 @@ CompText87A6D68::
 	.string "society!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=6
+	ts_jump target=CompText87A6D68_unk6_id
 
 	def_text_script CompText87A6D68_unk6
 	ts_mugshot_show mugshot=0x0
@@ -119,7 +119,7 @@ CompText87A6D68::
 	.string "society!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87A6D68_unk7_id
 
 	def_text_script CompText87A6D68_unk7
 	ts_mugshot_show mugshot=0x12
@@ -148,7 +148,7 @@ CompText87A6D68::
 	.string "society is about!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87A6D68_unk8_id
 
 	def_text_script CompText87A6D68_unk8
 	ts_mugshot_show mugshot=0x0
@@ -161,7 +161,7 @@ CompText87A6D68::
 	.string "world too,Mr.Mach?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87A6D68_unk9_id
 
 	def_text_script CompText87A6D68_unk9
 	ts_mugshot_show mugshot=0x12
@@ -173,7 +173,7 @@ CompText87A6D68::
 	.string "few restrictions."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=10
+	ts_jump target=CompText87A6D68_unk10_id
 
 	def_text_script CompText87A6D68_unk10
 	ts_mugshot_show mugshot=0x0
@@ -181,7 +181,7 @@ CompText87A6D68::
 	.string "Restrictions?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87A6D68_unk11_id
 
 	def_text_script CompText87A6D68_unk11
 	ts_mugshot_show mugshot=0x12
@@ -215,7 +215,7 @@ CompText87A6D68::
 	.string "into the real world?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87A6D68_unk12_id
 
 	def_text_script CompText87A6D68_unk12
 	ts_mugshot_show mugshot=0x0
@@ -235,7 +235,7 @@ CompText87A6D68::
 	.string "MegaMan..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87A6D68_unk14_id
 
 	def_text_script CompText87A6D68_unk14
 	ts_mugshot_show mugshot=0x37
@@ -245,7 +245,7 @@ CompText87A6D68::
 	.string "could happen."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87A6D68_unk15_id
 
 	def_text_script CompText87A6D68_unk15
 	ts_mugshot_show mugshot=0x0
@@ -278,7 +278,7 @@ CompText87A6D68::
 	.string "H-H-He's aliiiive!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87A6D68_unk19_id
 
 	def_text_script CompText87A6D68_unk19
 	ts_mugshot_show mugshot=0x37
@@ -287,7 +287,7 @@ CompText87A6D68::
 	.string "of monster,Lan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87A6D68_unk20_id
 
 	def_text_script CompText87A6D68_unk20
 	ts_mugshot_show mugshot=0x0
@@ -300,7 +300,7 @@ CompText87A6D68::
 	.string "of dream,doesn't it?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87A6D68_unk21_id
 
 	def_text_script CompText87A6D68_unk21
 	ts_mugshot_show mugshot=0x37
@@ -309,7 +309,7 @@ CompText87A6D68::
 	.string "it's not a dream!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87A6D68_unk22_id
 
 	def_text_script CompText87A6D68_unk22
 	ts_mugshot_show mugshot=0x0
@@ -318,7 +318,7 @@ CompText87A6D68::
 	.string "the cheek,then."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87A6D68_unk23_id
 
 	def_text_script CompText87A6D68_unk23
 	ts_mugshot_show mugshot=0x37
@@ -352,7 +352,7 @@ CompText87A6D68::
 	.string "too hard?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87A6D68_unk27_id
 
 	def_text_script CompText87A6D68_unk27
 	ts_mugshot_show mugshot=0x0
@@ -374,7 +374,7 @@ CompText87A6D68::
 	.string "Ow,ow,ow..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87A6D68_unk28_id
 
 	def_text_script CompText87A6D68_unk28
 	ts_mugshot_show mugshot=0x37
@@ -384,7 +384,7 @@ CompText87A6D68::
 	.string "...... *gulp*"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=29
+	ts_jump target=CompText87A6D68_unk29_id
 
 	def_text_script CompText87A6D68_unk29
 	ts_mugshot_show mugshot=0x12

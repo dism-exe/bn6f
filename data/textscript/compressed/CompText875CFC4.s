@@ -13,10 +13,10 @@ CompText875CFC4::
 	ts_check_chapter [
 		lower: 0x62,
 		upper: 0x62,
-		jumpIfInRange: 0x4,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875CFC4_unk4_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_jump target=5
+	ts_jump target=CompText875CFC4_unk5_id
 
 	def_text_script CompText875CFC4_unk1
 	ts_msg_open
@@ -43,8 +43,8 @@ CompText875CFC4::
 	ts_key_wait any=0x0
 	ts_check_flag [
 		flag: 0x18B,
-		jumpIfTrue: 0x6,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875CFC4_unk6_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	.string "Something is shining\n"
@@ -91,8 +91,8 @@ CompText875CFC4::
 	def_text_script CompText875CFC4_unk4
 	ts_check_flag [
 		flag: 0xE63,
-		jumpIfTrue: 0x5,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875CFC4_unk5_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xE63
 	ts_msg_open

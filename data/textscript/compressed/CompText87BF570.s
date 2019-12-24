@@ -15,7 +15,7 @@ CompText87BF570::
 	.string "Iris...isn't here?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87BF570_unk1_id
 
 	def_text_script CompText87BF570_unk1
 	ts_mugshot_hide
@@ -90,7 +90,7 @@ CompText87BF570::
 	.string "hiding in there..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=7
+	ts_jump target=CompText87BF570_unk7_id
 
 	def_text_script CompText87BF570_unk7
 	ts_mugshot_show mugshot=0x37
@@ -104,7 +104,7 @@ CompText87BF570::
 	.string "the locker first..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87BF570_unk8_id
 
 	def_text_script CompText87BF570_unk8
 	ts_mugshot_show mugshot=0x0

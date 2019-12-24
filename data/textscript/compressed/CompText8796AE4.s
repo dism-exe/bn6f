@@ -50,8 +50,8 @@ CompText8796AE4::
 	def_text_script CompText8796AE4_unk2
 	ts_check_flag [
 		flag: 0x7E,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8796AE4_unk3_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open
@@ -125,13 +125,13 @@ CompText8796AE4::
 	def_text_script CompText8796AE4_unk10
 	ts_check_flag [
 		flag: 0xCB2,
-		jumpIfTrue: 0xF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8796AE4_unk15_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCAC,
-		jumpIfTrue: 0xB,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8796AE4_unk11_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xCAC
 	ts_mugshot_show mugshot=0x44
@@ -313,13 +313,13 @@ CompText8796AE4::
 	def_text_script CompText8796AE4_unk20
 	ts_check_flag [
 		flag: 0xCB3,
-		jumpIfTrue: 0x19,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8796AE4_unk25_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCAD,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText8796AE4_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0xCAD
 	ts_mugshot_show mugshot=0x44
@@ -617,8 +617,8 @@ CompText8796AE4::
 	def_text_script CompText8796AE4_unk50
 	ts_check_shop_stock [
 		shop: 0x7,
-		jumpIfStocked: 0xFF,
-		jumpIfSoldOut: 0x34,
+		jumpIfStocked: TS_CONTINUE,
+		jumpIfSoldOut: CompText8796AE4_unk52_id,
 	]
 	ts_mugshot_show mugshot=0x3F
 	ts_msg_open

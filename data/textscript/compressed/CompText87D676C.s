@@ -27,7 +27,7 @@ CompText87D676C::
 	.string "in ACDC Town,Mick."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87D676C_unk1_id
 
 	def_text_script CompText87D676C_unk1
 	ts_mugshot_show mugshot=0x14
@@ -46,7 +46,7 @@ CompText87D676C::
 	.string "so clean!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87D676C_unk2_id
 
 	def_text_script CompText87D676C_unk2
 	ts_mugshot_show mugshot=0x33
@@ -65,7 +65,7 @@ CompText87D676C::
 	.string "It's great!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87D676C_unk3_id
 
 	def_text_script CompText87D676C_unk3
 	ts_mugshot_show mugshot=0x0
@@ -81,7 +81,7 @@ CompText87D676C::
 	.string "think it's praise..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=4
+	ts_jump target=CompText87D676C_unk4_id
 
 	def_text_script CompText87D676C_unk4
 	ts_mugshot_show mugshot=0x14
@@ -98,7 +98,7 @@ CompText87D676C::
 	.string "Fine with me!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87D676C_unk5_id
 
 	def_text_script CompText87D676C_unk5
 	ts_mugshot_show mugshot=0x2
@@ -144,7 +144,7 @@ CompText87D676C::
 	.string "from your arguing..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87D676C_unk9_id
 
 	def_text_script CompText87D676C_unk9
 	ts_mugshot_hide
@@ -163,7 +163,7 @@ CompText87D676C::
 	.string "junior high school."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87D676C_unk11_id
 
 	def_text_script CompText87D676C_unk11
 	ts_mugshot_show mugshot=0x0
@@ -176,7 +176,7 @@ CompText87D676C::
 	.string "too?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=12
+	ts_jump target=CompText87D676C_unk12_id
 
 	def_text_script CompText87D676C_unk12
 	ts_mugshot_show mugshot=0x4
@@ -184,7 +184,7 @@ CompText87D676C::
 	.string "Yeah,sort of..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=13
+	ts_jump target=CompText87D676C_unk13_id
 
 	def_text_script CompText87D676C_unk13
 	ts_mugshot_show mugshot=0x0
@@ -197,7 +197,7 @@ CompText87D676C::
 	.string "festivities,right?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=14
+	ts_jump target=CompText87D676C_unk14_id
 
 	def_text_script CompText87D676C_unk14
 	ts_mugshot_show mugshot=0x4
@@ -228,7 +228,7 @@ CompText87D676C::
 	.string "to thank you..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=15
+	ts_jump target=CompText87D676C_unk15_id
 
 	def_text_script CompText87D676C_unk15
 	ts_mugshot_show mugshot=0x0
@@ -254,7 +254,7 @@ CompText87D676C::
 	.string "come back to him."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=18
+	ts_jump target=CompText87D676C_unk18_id
 
 	def_text_script CompText87D676C_unk18
 	ts_mugshot_show mugshot=0x0
@@ -262,7 +262,7 @@ CompText87D676C::
 	.string "Yeah,I guess so..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=19
+	ts_jump target=CompText87D676C_unk19_id
 
 	def_text_script CompText87D676C_unk19
 	ts_mugshot_show mugshot=0x2
@@ -288,7 +288,7 @@ CompText87D676C::
 	.string "homework."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=20
+	ts_jump target=CompText87D676C_unk20_id
 
 	def_text_script CompText87D676C_unk20
 	ts_mugshot_show mugshot=0x0
@@ -312,7 +312,7 @@ CompText87D676C::
 	.string "High."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=21
+	ts_jump target=CompText87D676C_unk21_id
 
 	def_text_script CompText87D676C_unk21
 	ts_mugshot_show mugshot=0x3
@@ -327,7 +327,7 @@ CompText87D676C::
 	.string "can still do things!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=22
+	ts_jump target=CompText87D676C_unk22_id
 
 	def_text_script CompText87D676C_unk22
 	ts_mugshot_show mugshot=0x14
@@ -341,7 +341,7 @@ CompText87D676C::
 	.string "school there."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=23
+	ts_jump target=CompText87D676C_unk23_id
 
 	def_text_script CompText87D676C_unk23
 	ts_mugshot_show mugshot=0x33
@@ -357,7 +357,7 @@ CompText87D676C::
 	.string "Chaud?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=25
+	ts_jump target=CompText87D676C_unk25_id
 
 	def_text_script CompText87D676C_unk25
 	ts_mugshot_show mugshot=0x4
@@ -383,7 +383,7 @@ CompText87D676C::
 	.string "W-Wow..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=27
+	ts_jump target=CompText87D676C_unk27_id
 
 	def_text_script CompText87D676C_unk27
 	ts_mugshot_show mugshot=0x3
@@ -392,7 +392,7 @@ CompText87D676C::
 	.string "W-Wow...!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=28
+	ts_jump target=CompText87D676C_unk28_id
 
 	def_text_script CompText87D676C_unk28
 	ts_mugshot_show mugshot=0x0
@@ -402,7 +402,7 @@ CompText87D676C::
 	.string "another country..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=29
+	ts_jump target=CompText87D676C_unk29_id
 
 	def_text_script CompText87D676C_unk29
 	ts_mugshot_show mugshot=0x4
@@ -422,7 +422,7 @@ CompText87D676C::
 	.string "future?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=30
+	ts_jump target=CompText87D676C_unk30_id
 
 	def_text_script CompText87D676C_unk30
 	ts_mugshot_show mugshot=0x0
@@ -446,7 +446,7 @@ CompText87D676C::
 	.string "as much as I can!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=31
+	ts_jump target=CompText87D676C_unk31_id
 
 	def_text_script CompText87D676C_unk31
 	ts_mugshot_show mugshot=0x4
@@ -615,7 +615,7 @@ CompText87D676C::
 	.string "older brother,Hub!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=37
+	ts_jump target=CompText87D676C_unk37_id
 
 	def_text_script CompText87D676C_unk37
 	ts_mugshot_show mugshot=0x14
@@ -626,7 +626,7 @@ CompText87D676C::
 	.string "CopyBot?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=38
+	ts_jump target=CompText87D676C_unk38_id
 
 	def_text_script CompText87D676C_unk38
 	ts_mugshot_show mugshot=0x0
@@ -640,7 +640,7 @@ CompText87D676C::
 	.string "it...I guess..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=39
+	ts_jump target=CompText87D676C_unk39_id
 
 	def_text_script CompText87D676C_unk39
 	ts_mugshot_show mugshot=0x4
@@ -658,7 +658,7 @@ CompText87D676C::
 	.string " Hmph,whatever."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=40
+	ts_jump target=CompText87D676C_unk40_id
 
 	def_text_script CompText87D676C_unk40
 	ts_mugshot_show mugshot=0x37
@@ -674,7 +674,7 @@ CompText87D676C::
 	.string "MegaMan?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=42
+	ts_jump target=CompText87D676C_unk42_id
 
 	def_text_script CompText87D676C_unk42
 	ts_mugshot_show mugshot=0x37
@@ -715,7 +715,7 @@ CompText87D676C::
 	.string "friends,right!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=46
+	ts_jump target=CompText87D676C_unk46_id
 
 	def_text_script CompText87D676C_unk46
 	ts_mugshot_show mugshot=0x2
@@ -745,7 +745,7 @@ CompText87D676C::
 	.string "... Alright!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=47
+	ts_jump target=CompText87D676C_unk47_id
 
 	def_text_script CompText87D676C_unk47
 	ts_mugshot_show mugshot=0x0

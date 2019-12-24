@@ -13,10 +13,10 @@ CompText875E414::
 	ts_check_chapter [
 		lower: 0x44,
 		upper: 0x44,
-		jumpIfInRange: 0x6,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875E414_unk6_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_jump target=5
+	ts_jump target=CompText875E414_unk5_id
 
 	def_text_script CompText875E414_unk1
 
@@ -37,13 +37,13 @@ CompText875E414::
 	def_text_script CompText875E414_unk6
 	ts_check_flag [
 		flag: 0xA1E,
-		jumpIfTrue: 0x5,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875E414_unk5_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xA1D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x5,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText875E414_unk5_id,
 	]
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open

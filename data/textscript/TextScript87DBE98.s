@@ -89,7 +89,7 @@ TextScript87DBE98::
 	.string "Are you OK,MegaMan!?"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=TextScript87DBE98_unk5_id
 
 	def_text_script TextScript87DBE98_unk5
 	ts_mugshot_show mugshot=0x37

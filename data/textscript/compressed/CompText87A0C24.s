@@ -45,8 +45,8 @@ CompText87A0C24::
 	def_text_script CompText87A0C24_unk10
 	ts_check_flag [
 		flag: 0x226,
-		jumpIfTrue: 0xE,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A0C24_unk14_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x226
 	ts_mugshot_show mugshot=0x43
@@ -108,15 +108,15 @@ CompText87A0C24::
 	ts_check_item07 [
 		item: 0x2C,
 		amount: 0x9,
-		jumpIfEqual: 0xD,
-		jumpIfGreater: 0xD,
-		jumpIfLess: 0xFF,
+		jumpIfEqual: CompText87A0C24_unk13_id,
+		jumpIfGreater: CompText87A0C24_unk13_id,
+		jumpIfLess: TS_CONTINUE,
 	]
 	ts_check_take_zenny [
 		amount: 0xBB8,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xC,
-		jumpIfSome: 0xC,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: CompText87A0C24_unk12_id,
+		jumpIfSome: CompText87A0C24_unk12_id,
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open

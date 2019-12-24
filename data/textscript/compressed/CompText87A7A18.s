@@ -21,7 +21,7 @@ CompText87A7A18::
 	.string "closing in..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=1
+	ts_jump target=CompText87A7A18_unk1_id
 
 	def_text_script CompText87A7A18_unk1
 	ts_mugshot_show mugshot=0xA
@@ -34,7 +34,7 @@ CompText87A7A18::
 	.string "We're doomed..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=2
+	ts_jump target=CompText87A7A18_unk2_id
 
 	def_text_script CompText87A7A18_unk2
 	ts_mugshot_show mugshot=0x0
@@ -42,7 +42,7 @@ CompText87A7A18::
 	.string "M-MegaMan..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=3
+	ts_jump target=CompText87A7A18_unk3_id
 
 	def_text_script CompText87A7A18_unk3
 	ts_mugshot_show mugshot=0x37
@@ -57,7 +57,7 @@ CompText87A7A18::
 	.string "MegaMan!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=5
+	ts_jump target=CompText87A7A18_unk5_id
 
 	def_text_script CompText87A7A18_unk5
 	ts_mugshot_show mugshot=0x37
@@ -81,7 +81,7 @@ CompText87A7A18::
 	.string "so long,Lan."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=8
+	ts_jump target=CompText87A7A18_unk8_id
 
 	def_text_script CompText87A7A18_unk8
 	ts_mugshot_show mugshot=0x0
@@ -94,7 +94,7 @@ CompText87A7A18::
 	.string "gotta stop Mick!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=9
+	ts_jump target=CompText87A7A18_unk9_id
 
 	def_text_script CompText87A7A18_unk9
 	ts_mugshot_show mugshot=0x37
@@ -115,7 +115,7 @@ CompText87A7A18::
 	.string "let's do it,MegaMan!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_jump target=11
+	ts_jump target=CompText87A7A18_unk11_id
 
 	def_text_script CompText87A7A18_unk11
 	ts_mugshot_show mugshot=0x37

@@ -25,8 +25,8 @@ CompText875752C::
 	ts_key_wait any=0x0
 	ts_check_flag [
 		flag: 0x187,
-		jumpIfTrue: 0x12,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875752C_unk18_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	.string "Looking closer,you\n"
@@ -36,8 +36,8 @@ CompText875752C::
 	ts_mugshot_hide
 	ts_check_flag [
 		flag: 0x1729,
-		jumpIfTrue: 0x13,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875752C_unk19_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_clear_msg
 	ts_item_give [
@@ -131,8 +131,8 @@ CompText875752C::
 	def_text_script CompText875752C_unk6
 	ts_check_flag [
 		flag: 0x859,
-		jumpIfTrue: 0x10,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875752C_unk16_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "A special gizmo in\n"
@@ -155,10 +155,10 @@ CompText875752C::
 	ts_check_chapter [
 		lower: 0x32,
 		upper: 0x32,
-		jumpIfInRange: 0x15,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875752C_unk21_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_jump target=20
+	ts_jump target=CompText875752C_unk20_id
 
 	def_text_script CompText875752C_unk8
 	ts_msg_open
@@ -230,8 +230,8 @@ CompText875752C::
 	def_text_script CompText875752C_unk13
 	ts_check_flag [
 		flag: 0x87B,
-		jumpIfTrue: 0xE,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875752C_unk14_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "Cyber Academy takes\n"
@@ -248,8 +248,8 @@ CompText875752C::
 	def_text_script CompText875752C_unk14
 	ts_check_flag [
 		flag: 0x804,
-		jumpIfTrue: 0xF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875752C_unk15_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "A security camera..."
@@ -287,8 +287,8 @@ CompText875752C::
 	def_text_script CompText875752C_unk16
 	ts_check_flag [
 		flag: 0x86F,
-		jumpIfTrue: 0x11,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875752C_unk17_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open
 	ts_mugshot_show mugshot=0x0
@@ -380,13 +380,13 @@ CompText875752C::
 	def_text_script CompText875752C_unk21
 	ts_check_flag [
 		flag: 0x81A,
-		jumpIfTrue: 0x14,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875752C_unk20_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x819,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x14,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText875752C_unk20_id,
 	]
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open

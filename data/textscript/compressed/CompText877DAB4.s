@@ -83,8 +83,8 @@ CompText877DAB4::
 	def_text_script CompText877DAB4_unk20
 	ts_check_flag [
 		flag: 0x11FC,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877DAB4_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x11FC
 	ts_mugshot_show mugshot=0xF
@@ -193,18 +193,18 @@ CompText877DAB4::
 	def_text_script CompText877DAB4_unk22
 	ts_check_flag [
 		flag: 0x123C,
-		jumpIfTrue: 0x19,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877DAB4_unk25_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x123B,
-		jumpIfTrue: 0x18,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877DAB4_unk24_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x1237,
-		jumpIfTrue: 0x17,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877DAB4_unk23_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_flag_set flag=0x1237
 	ts_mugshot_show mugshot=0xC
