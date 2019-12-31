@@ -62,6 +62,7 @@ SkyTown_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
+	.balign 4, 0
 off_8060414: .word off_8060418
 off_8060418:
 	.word off_8060428
@@ -94,6 +95,7 @@ SkyTown_SpawnMapObjectsForMap:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_8060460: .word pt_8060464
 pt_8060464:
 	// <endpool> <endfile>

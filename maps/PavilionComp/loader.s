@@ -35,6 +35,7 @@ sub_806AA00:
 	bl sub_806AD00
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_806AA58: .word off_806A7AC
 off_806AA5C: .word unk_2037800
 off_806AA60: .word off_806AA64
@@ -62,6 +63,7 @@ sub_806AAAA:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
+	.balign 4, 0
 off_806AAB8: .word off_806AABC
 off_806AABC: .word off_806AAD0
 	.word off_806AAFC
@@ -268,6 +270,7 @@ sub_806AD00:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_806AD14: .word off_806AD18
 off_806AD18: .word byte_806AD2C
 	.word byte_806AD44

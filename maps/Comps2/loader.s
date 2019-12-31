@@ -35,6 +35,7 @@ sub_806FC08:
 	bl sub_806FFDA
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_806FC60: .word off_806FA98
 off_806FC64: .word unk_2037800
 off_806FC68: .word off_806FC6C
@@ -231,6 +232,7 @@ sub_806FF08:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_806FF30: .word jt_806FF34
 jt_806FF34: .word sub_806FF76+1
 	.word sub_806FF94+1

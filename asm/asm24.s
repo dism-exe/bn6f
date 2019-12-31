@@ -187,6 +187,7 @@ loc_808C3F2:
 	tst r0, r0
 	pop {r4-r7,pc}
 	.word 0x70
+	.balign 4, 0
 off_808C404: .word 0x3C
 	.byte 0x0, 0x0, 0xE3, 0x0, 0x6, 0x0, 0x0, 0x8, 0x0, 0xA0, 0xDC, 0x60, 0x4
 	.byte 0x0, 0x0, 0x8, 0x0, 0xA0, 0xE2, 0x80, 0x12, 0x0, 0x0, 0x8
@@ -525,6 +526,7 @@ loc_808CB8A:
 	bl StartCutscene
 locret_808CB96:
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_808CB98: .word 0x13B
 off_808CB9C: .word dword_808CA44
 	thumb_func_end sub_808CB0C
@@ -780,6 +782,7 @@ sub_808CD24:
 	bl SetEventFlagFromImmediate
 locret_808CD62:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_808CD64: .word off_808CD68
 off_808CD68: .word byte_808CD78
 	.word byte_808CD86
@@ -1185,6 +1188,7 @@ loc_808D0F2:
 	mov r0, r6
 	tst r0, r0
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_808D0F8: .word byte_808D0FC
 byte_808D0FC: .byte 0x73, 0x8D, 0x74, 0x8F, 0x73, 0x8A, 0x8D, 0x72
 byte_808D104: .byte 0x72

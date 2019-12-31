@@ -34,6 +34,7 @@ sub_8069FE8:
 	bl sub_806A1DE
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_806A040: .word off_80698DC
 off_806A044: .word unk_2037800
 off_806A048: .word off_806A04C

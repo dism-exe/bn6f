@@ -100,6 +100,7 @@ SeasideTown_SpawnMapObjectsForMap:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_80596DC: .word off_80596E0
 off_80596E0:
 	// <endpool> <endfile>

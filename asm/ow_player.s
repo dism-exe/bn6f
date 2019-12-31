@@ -131,6 +131,7 @@ loc_809D252:
 	bl sprite_update
 locret_809D256:
 	pop {pc}
+	.balign 4, 0
 off_809D258: .word off_809D25C
 off_809D25C: .word sub_809D270+1
 	.word sub_809D348+1
@@ -228,6 +229,7 @@ sub_809D270:
 	str r2, [r5,#oOWPlayerObject_NextZ]
 	bl sub_809D348
 	pop {r4,pc}
+	.balign 4, 0
 off_809D324: .word PETNaviToNPCSpriteTable
 PETNaviToNPCSpriteTable: .byte 0x37, 0x47, 0x49, 0x4B, 0x50, 0x4F, 0x48, 0x4A, 0x4C
 	.byte 0x4D, 0x4E, 0x37
@@ -309,6 +311,7 @@ loc_809D3E6:
 	movflag EVENT_1718
 	bl ClearEventFlagFromImmediate
 	bl owPlayer_809E0C8
+	.balign 4, 0
 loc_809D3FC: .align 1, 0
 	ldrb r0, [r5,#oOWPlayerObject_LayerIndexOverride]
 	tst r0, r0
@@ -472,6 +475,7 @@ loc_809D54E:
 	strb r0, [r5,#oOWPlayerObject_Unk_13]
 locret_809D552:
 	pop {pc}
+	.balign 4, 0
 off_809D554: .word sub_809D560+1
 	.word sub_809D5C4+1
 off_809D55C: .word off_809D554
@@ -518,6 +522,7 @@ loc_809D592:
 	mov r0, #4
 	strb r0, [r5,#oOWPlayerObject_Unk_0a]
 	pop {pc}
+	.balign 4, 0
 off_809D5AC: .word off_809D5B0
 off_809D5B0: .word byte_809CF5C
 	.word byte_809D0DC
@@ -639,6 +644,7 @@ loc_809D6AA:
 	bl sub_809DDF0
 locret_809D6AE:
 	pop {pc}
+	.balign 4, 0
 off_809D6B0: .word sub_809D6BC+1
 	.word sub_809D730+1
 off_809D6B8: .word off_809D6B0
@@ -754,6 +760,7 @@ loc_809D778:
 	bl owPlayer_setJumptableIndex09AndOthers_809e004
 locret_809D796:
 	pop {pc}
+	.balign 4, 0
 off_809D798: .word sub_809D7A8+1
 	.word sub_809D7C8+1
 	.word sub_809D7D8+1
@@ -956,6 +963,7 @@ sub_809D8F4:
 	bl owPlayer_setJumptableIndex09AndOthers_809e004
 locret_809D91A:
 	pop {pc}
+	.balign 4, 0
 off_809D91C: .word sub_809D92C+1
 	.word sub_809D964+1
 	.word sub_809D9A0+1
@@ -1059,6 +1067,7 @@ loc_809D9C4:
 	strb r0, [r5,#oOWPlayerObject_Unk_0b]
 locret_809D9D6:
 	pop {pc}
+	.balign 4, 0
 off_809D9D8: .word off_809D9DC
 off_809D9DC: .word byte_809D07C
 	thumb_func_end sub_809D9A0
@@ -1190,6 +1199,7 @@ loc_809DAD0:
 	add sp, sp, #0xc
 	pop {pc}
 	.word 0xE7F42000
+	.balign 4, 0
 byte_809DAD8: .byte 0x0, 0x3, 0x7, 0x0, 0x1, 0x2, 0x8, 0x0, 0x5, 0x4, 0x6, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x2, 0x0, 0x0
 off_809DAEC: .word byte_809DAD8
@@ -1296,6 +1306,7 @@ loc_809DBAC:
 	mov r3, #oOWPlayerObject_Unk_50
 	str r0, [r5,r3]
 	pop {pc}
+	.balign 4, 0
 off_809DBBC: .word off_809DC0C
 off_809DBC0: .word off_809DCEC
 	thumb_func_end sub_809DB60
@@ -1561,6 +1572,7 @@ sub_809DDF0:
 	bl sub_809DE60
 locret_809DE2A:
 	pop {pc}
+	.balign 4, 0
 dword_809DE2C: .word 0xC00000
 	thumb_func_end sub_809DDF0
 
@@ -1661,6 +1673,7 @@ loc_809DEEA:
 	bx r7
 locret_809DEF6:
 	pop {pc}
+	.balign 4, 0
 off_809DEF8: .word sub_809DF00+1
 off_809DEFC: .word off_809DEF8
 	thumb_func_end sub_809DED4
@@ -1789,6 +1802,7 @@ loc_809DFDC:
 	strb r0, [r5,r3]
 locret_809DFF6:
 	pop {pc}
+	.balign 4, 0
 off_809DFF8: .word byte_809DFFC
 byte_809DFFC: .byte 0x1, 0x3, 0x2, 0x6, 0x4, 0xC, 0x8, 0x9
 	thumb_func_end sub_809DFC0
@@ -1834,6 +1848,7 @@ loc_809E03A:
 	mov r0, #1
 locret_809E042:
 	pop {pc}
+	.balign 4, 0
 off_809E044: .word eOverworldNPCObjects
 dword_809E048: .word 0xD80
 	thumb_func_end sub_809E01C
@@ -1990,6 +2005,7 @@ owPlayer_unlockPlayerAfterNonNPCDialogue_809E122:
 	movflag EVENT_1719
 	bl ClearEventFlagFromImmediate
 	pop {pc}
+	.balign 4, 0
 off_809E138: .word eStruct200ace0
 	thumb_func_end owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
 

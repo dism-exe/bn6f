@@ -35,6 +35,7 @@ sub_807A8E0:
 	bl sub_807AAD6
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_807A938: .word off_8079F74
 off_807A93C: .word unk_2037800
 off_807A940: .word off_807A944
@@ -126,6 +127,7 @@ sub_807A9FE:
 	ldr r0, [r0,r1]
 	bl sub_8030540
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_807AA30: .word off_807AA34
 off_807AA34: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1

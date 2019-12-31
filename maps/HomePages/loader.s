@@ -35,6 +35,7 @@ sub_806C23C:
 	bl sub_806C59C
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_806C294: .word off_806BFF8
 off_806C298: .word unk_2037800
 off_806C29C: .word off_806C2A0
@@ -61,6 +62,7 @@ sub_806C2E2:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
+	.balign 4, 0
 off_806C2F0: .word off_806C2F4
 off_806C2F4: .word off_806C310
 	.word off_806C31C
@@ -208,6 +210,7 @@ sub_806C4B0:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_806C4D8: .word off_806C4DC
 off_806C4DC: .word sub_806C4F8+1
 	.word sub_806C514+1
@@ -325,6 +328,7 @@ sub_806C59C:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_806C5B0: .word pt_806C5B4
 pt_806C5B4:
 	// <endpool>

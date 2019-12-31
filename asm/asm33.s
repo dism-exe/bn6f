@@ -304,6 +304,7 @@ loc_8123376:
 loc_8123390:
 	mov r0, r4
 	pop {r4,pc}
+	.balign 4, 0
 byte_8123394: .byte 0x90, 0xC3, 0x91, 0xC3, 0x92, 0xC3, 0x93, 0xC3, 0x94
 	.byte 0xC3, 0x95, 0xC3, 0x96, 0xC3, 0x97, 0xC3, 0x98, 0xC3
 	.byte 0x99, 0xC3, 0x9A, 0xC3, 0x9B, 0xC3, 0x9C, 0xC3, 0x9D
@@ -342,6 +343,7 @@ sub_8123408:
 	mov r0, #0x28 
 	strb r0, [r4]
 	pop {r4,pc}
+	.balign 4, 0
 off_812342C: .word unk_2037780
 off_8123430: .word sSubmenu
 	thumb_func_end sub_8123408
@@ -995,6 +997,7 @@ sub_8123A40:
 	ldr r0, off_8123A4C // =eTextScript201C220
 	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 	pop {pc}
+	.balign 4, 0
 off_8123A4C: .word eTextScript201C220
 	thumb_func_end sub_8123A40
 
@@ -1013,6 +1016,7 @@ sub_8123A50:
 	mov r7, #0x46 
 	bl sub_811FA98
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_8123A6C: .word 0x20002
 dword_8123A70: .word 0xC24C
 dword_8123A74: .word 0xDA003D
@@ -1147,6 +1151,7 @@ sub_8123AB8:
 	mov r5, #0xa
 	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8123B88: .word unk_201D220
 off_8123B8C: .word unk_201D6E0
 off_8123B90: .word unk_201D7C0
@@ -1190,6 +1195,7 @@ sub_8123BE0:
 	mov r6, #0
 	bl sub_8123C20
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8123BF4: .word byte_81233E0
 off_8123BF8: .word dword_8123BFC
 dword_8123BFC: .word 0x5A5856
@@ -1206,6 +1212,7 @@ sub_8123C00:
 	mov r6, #1
 	bl sub_8123C20
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8123C14: .word byte_81233E8
 off_8123C18: .word dword_8123C1C
 dword_8123C1C: .word 0x5B5957
@@ -1309,6 +1316,7 @@ sub_8123C98:
 	ldr r2, byte_8123CF0 // =0x37
 	bl sub_812053C
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8123CE4: .word unk_20347D8
 	.word unk_20018EC
 dword_8123CEC: .word 0x8160
@@ -1402,6 +1410,7 @@ sub_8123D70:
 	ldr r6, dword_8123E00 // =0x40000000 
 	bl sub_8123D98
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8123D8C: .word byte_8123D90
 byte_8123D90: .byte 0x4F, 0x0, 0x0, 0x0, 0x55, 0x0, 0x0, 0x0
 	thumb_func_end sub_8123D70
@@ -1503,6 +1512,7 @@ loc_8123E40:
 	cmp r4, #3
 	blt loc_8123E28
 	pop {r4,pc}
+	.balign 4, 0
 off_8123E48: .word byte_8123E4C
 byte_8123E4C: .byte 0x7, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x9, 0x0, 0x0, 0x0
 	thumb_func_end sub_8123E24
@@ -1686,6 +1696,7 @@ sub_8123F7C:
 	strb r0, [r5,#0xd]
 	strb r1, [r5,#0x12]
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_8124048: .word 0x1F40
 off_812404C: .word unk_201EBDC
 dword_8124050: .word 0x30B380
@@ -2114,6 +2125,7 @@ loc_8124394:
 	cmp r7, #0x85
 	ble loc_8124394
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_81243AC: .word unk_201C400
 	thumb_func_end sub_8124384
 
@@ -2346,6 +2358,7 @@ sub_81245BC:
 	mov r5, #0xc
 	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_81245D0: .word unk_201EC2C
 	thumb_func_end sub_81245BC
 
@@ -2375,6 +2388,7 @@ loc_81245F8:
 	mov r0, #6
 	bl sub_812474C
 	pop {pc}
+	.balign 4, 0
 off_8124604: .word unk_201C400
 off_8124608: .word off_812460C
 off_812460C: .word sub_8124624+1
@@ -2560,6 +2574,7 @@ sub_812474C:
 	ldr r0, off_8124758 // =eTextScript201C100
 	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 	pop {pc}
+	.balign 4, 0
 off_8124758: .word eTextScript201C100
 	thumb_func_end sub_812474C
 
@@ -2633,6 +2648,7 @@ loc_81247CE:
 	bl call_sub_3005EBA
 locret_81247DE:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_81247E0: .word unk_201EC8C
 off_81247E4: .word unk_201ECAC
 off_81247E8: .word unk_201ECCC
@@ -2666,6 +2682,7 @@ loc_81247F4:
 	blt loc_81247F4
 	add sp, sp, #4
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8124820: .word TextScript873D9FC
 off_8124824: .word dword_86B7AE0
 off_8124828: .word off_812482C
@@ -2873,6 +2890,7 @@ loc_8124BCC:
 	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0
 	pop {pc}
+	.balign 4, 0
 dword_8124C24: .word 0x7F40
 off_8124C28: .word byte_8124AE0
 off_8124C2C: .word dword_8124A94
@@ -3724,6 +3742,7 @@ sub_81252C0:
 	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
 	.word 0xFFFFFFFF
+	.balign 4, 0
 off_812530C: .word off_8125310
 off_8125310: .word dword_86C9108
 	.word 0x2
@@ -3942,6 +3961,7 @@ sub_81254FC:
 	mov r7, #0
 	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8125564: .word unk_201CC20
 off_8125568: .word dword_86B7AE0
 off_812556C: .word unk_2018A00
@@ -4006,6 +4026,7 @@ loc_81255DE:
 	str r7, [r5,#0x70]
 locret_81255F2:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_81255F4: .word 0x300
 	thumb_func_end sub_8125594
 
@@ -4411,6 +4432,7 @@ loc_81258D2:
 	add r0, r8
 	strh r3, [r5,r0]
 	pop {r5,pc}
+	.balign 4, 0
 off_81258E0: .word 0x200
 off_81258E4: .word 0x100
 	thumb_func_end sub_8125820
@@ -4499,6 +4521,7 @@ loc_8125978:
 	ble loc_8125908
 	mov r0, r5
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8125984: .word unk_201DC20
 off_8125988: .word 0x320
 	.word unk_201E198
@@ -4615,6 +4638,7 @@ loc_8125A52:
 	blt loc_8125A34
 	mov r0, r5
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8125A60: .word dword_201E420
 off_8125A64: .word 0x578
 off_8125A68: .word unk_201E998
@@ -4726,6 +4750,7 @@ loc_8125B22:
 	blt loc_8125B04
 	mov r0, r5
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8125B30: .word dword_201EC20
 off_8125B34: .word 0x578
 off_8125B38: .word unk_201F198
@@ -4958,6 +4983,7 @@ loc_8125CD6:
 	blt loc_8125CB8
 	mov r0, r5
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8125CE4: .word dword_201FC20
 off_8125CE8: .word 0x578
 off_8125CEC: .word unk_2020198
@@ -5543,6 +5569,7 @@ loc_81261D0:
 	bl sub_8126404
 locret_81261F2:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_81261F4: .word byte_2017A00
 off_81261F8: .word dword_201FC20
 	thumb_func_end sub_8126184
@@ -5793,6 +5820,7 @@ loc_81263A0:
 	pop {r7}
 	mov r8, r7
 	pop {r4-r7,pc}
+	.balign 4, 0
 TextScriptChipNamesPtrs_p: .word TextScriptChipNamesPtrs
 TextScriptChipNamesPtrs: .word TextScriptChipNames0
 	.word TextScriptChipNames1
@@ -6226,6 +6254,7 @@ loc_812669A:
 	bl sub_811A220
 locret_81266BE:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_81266C0: .word off_81266C4
 off_81266C4: .word unk_201DC20
 	.word dword_201E420
@@ -6390,6 +6419,7 @@ sub_81267F0:
 	bl sub_8126570
 locret_812680A:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812680C: .word byte_8124A98
 dword_8126810: .word 0x40000000
 off_8126814: .word byte_8124A9E
@@ -6519,6 +6549,7 @@ sub_81268D8:
 	mov r1, #1
 	bl sub_811983C
 	pop {pc}
+	.balign 4, 0
 off_81268F4: .word dword_201F420
 dword_81268F8: .word 0xFF060606
 byte_81268FC: .byte 0x50, 0xC2, 0x4F, 0xC2, 0x4E, 0xC2, 0xFF, 0xFF
@@ -6729,6 +6760,7 @@ loc_8126C5E:
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_8126CA8: .word 0x1F40
 dword_8126CAC: .word 0x1DA
 off_8126CB0: .word byte_8126B1C
@@ -6848,6 +6880,7 @@ loc_8126D92:
 	bl sub_81273F0
 	bl sub_8127374
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8126DBC: .word off_8126DC0
 off_8126DC0: .word sub_8126DF8+1
 	.word sub_8126E10+1
@@ -7026,6 +7059,7 @@ loc_8126F0E:
 	mov r5, #0xa
 	bl call_sub_3005EBA
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8126F30: .word byte_8126F34
 byte_8126F34: .byte 0x0, 0x0, 0x0, 0x0, 0xE0, 0xFF, 0xFF, 0xFF, 0xC0, 0xFF, 0xFF
 	.byte 0xFF
@@ -7525,6 +7559,7 @@ sub_8127374:
 	bl sub_811FA98
 locret_81273A6:
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_81273A8: .word 0x20002
 byte_81273AC: .byte 0x4C, 0xC2, 0x0, 0x0, 0xDA, 0x1, 0x0, 0x0
 	thumb_func_end sub_8127374
@@ -7554,6 +7589,7 @@ loc_81273D6:
 	bl sub_8127578
 locret_81273E2:
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_81273E4: .word 0x600AC00
 off_81273E8: .word eTextScript201BF20
 off_81273EC: .word unk_201A600
@@ -7673,6 +7709,7 @@ loc_81274CE:
 	ldr r4, off_81274E8 // =byte_2017A00 
 	bl sub_8127578
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_81274E0: .word 0x6008020
 off_81274E4: .word eTextScript201BF20
 off_81274E8: .word byte_2017A00
@@ -7804,6 +7841,7 @@ sub_8127618:
 	mov r5, #6
 	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8127634: .word byte_81269E0
 	thumb_func_end sub_8127618
 
@@ -7918,6 +7956,7 @@ sub_81276E4:
 	lsl r4, r4, #2
 	ldr r0, [r1,r4]
 	pop {r4,pc}
+	.balign 4, 0
 off_8127708: .word byte_201D74C
 off_812770C: .word pt_8121200
 off_8127710: .word byte_81211B4
@@ -7953,6 +7992,7 @@ loc_8127730:
 	ble loc_8127724
 locret_812774A:
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_812774C: .word 0x600A000
 off_8127750: .word TextScript873EA50
 off_8127754: .word byte_2019A00
@@ -7982,6 +8022,7 @@ loc_8127772:
 	add r3, r3, r1
 	strh r2, [r5,r3]
 	mov pc, lr
+	.balign 4, 0
 off_8127784: .word unk_2024394
 	thumb_func_end sub_8127760
 
@@ -8023,6 +8064,7 @@ loc_81277B0:
 	ble loc_8127794
 locret_81277CA:
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_81277CC: .word 0x600A000
 off_81277D0: .word TextScript873EA50
 off_81277D4: .word byte_2019A00
@@ -8078,6 +8120,7 @@ loc_8127828:
 	blt loc_8127806
 locret_812782E:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8127830: .word byte_8127834
 byte_8127834: .byte 0x21, 0x3, 0x0, 0x0, 0x27, 0x3, 0x0, 0x0, 0x2D, 0x3, 0x0, 0x0, 0x33
 	.byte 0x3, 0x0, 0x0, 0x39, 0x3, 0x0, 0x0, 0x45, 0x3, 0x0, 0x0, 0x4B, 0x3
@@ -8102,6 +8145,7 @@ sub_81278C8:
 	ldr r0, off_81278D4 // =eTextScript201BF20
 	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 	pop {pc}
+	.balign 4, 0
 off_81278D4: .word eTextScript201BF20
 	thumb_func_end sub_81278C8
 
@@ -8148,6 +8192,7 @@ sub_81278E8:
 	bl sub_811FAF4
 	bl sub_8127944
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8127928: .word 0x200
 off_812792C: .word 0x220
 off_8127930: .word 0x70
@@ -8197,6 +8242,7 @@ sub_8127990:
 	strb r0, [r1,#0xd] // (sSubmenu.unk_0D - 0x2009a30)
 locret_81279A2:
 	pop {r4,pc}
+	.balign 4, 0
 off_81279A4: .word sSubmenu
 	thumb_func_end sub_8127990
 
@@ -8236,6 +8282,7 @@ loc_81279E2:
 	mov r0, r7
 	tst r0, r0
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_81279E8: .word byte_2006530
 dword_81279EC: .word 0x1DA0
 off_81279F0: .word dword_2001140
@@ -8252,6 +8299,7 @@ HandleEmailMenu81279F8:
 	mov lr, pc
 	bx r0
 	pop {r5,pc}
+	.balign 4, 0
 off_8127A08: .word sSubmenu
 off_8127A0C: .word off_8127A10
 off_8127A10: .word sub_8127A1C+1
@@ -8323,6 +8371,7 @@ sub_8127A1C:
 	bl sub_81281E0
 	bl sub_8128280
 	pop {pc}
+	.balign 4, 0
 dword_8127AB8: .word 0x1F40
 off_8127ABC: .word dword_2001140
 	.word unk_2027570
@@ -8419,6 +8468,7 @@ loc_8127B72:
 	bl sub_81281C0
 locret_8127B8E:
 	pop {pc}
+	.balign 4, 0
 off_8127B90: .word dword_8127980
 	thumb_func_end sub_8127B18
 
@@ -8453,6 +8503,7 @@ sub_8127B94:
 	bl sub_8127ED4
 locret_8127BD6:
 	pop {r4,pc}
+	.balign 4, 0
 off_8127BD8: .word dword_2027590
 dword_8127BDC: .word 0x1DA0
 dword_8127BE0: .word 0x1D20
@@ -8509,6 +8560,7 @@ loc_8127C46:
 	bl sub_8127F90
 	bl sub_812848C
 	pop {pc}
+	.balign 4, 0
 off_8127C50: .word dword_8127C54
 dword_8127C54: .word 0x7020300
 off_8127C58: .word byte_2000FE0
@@ -8623,6 +8675,7 @@ loc_8127D28:
 	bl CopyBackgroundTiles
 	add sp, sp, #4
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8127D34: .word byte_8127D38
 byte_8127D38: .byte 0x60, 0x4, 0x6D, 0x8, 0x44, 0x5, 0x6D, 0x8, 0x44, 0x5, 0x6D
 	.byte 0x8, 0x44, 0x5, 0x6D, 0x8, 0x44, 0x5, 0x6D, 0x8, 0x44, 0x5
@@ -8746,6 +8799,7 @@ loc_8127EEA:
 	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 locret_8127EEE:
 	pop {pc}
+	.balign 4, 0
 off_8127EF0: .word eTextScript201BA00
 	thumb_func_end sub_8127ED4
 
@@ -8858,6 +8912,7 @@ sub_8127F90:
 	strb r1, [r5,#0x10]
 locret_8127FBE:
 	pop {r4,pc}
+	.balign 4, 0
 dword_8127FC0: .word 0xE0000
 dword_8127FC4: .word 0x18
 dword_8127FC8: .word 0x20003
@@ -8884,6 +8939,7 @@ sub_8127FE4:
 	mov r7, #0x35 
 	bl sub_811FA98
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_8128000: .word 0x20002
 dword_8128004: .word 0x30CA4C
 	thumb_func_end sub_8127FE4
@@ -8971,6 +9027,7 @@ loc_812802C:
 loc_81280A8:
 	add sp, sp, #8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_81280AC: .word dword_2027590
 off_81280B0: .word 0x201
 off_81280B4: .word unk_2025700
@@ -9062,6 +9119,7 @@ loc_8128148:
 loc_8128168:
 	add sp, sp, #0x14
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812816C: .word unk_2026700
 	.word 0xC8
 dword_8128174: .word 0x16
@@ -9173,6 +9231,7 @@ loc_81281F2:
 loc_812823C:
 	add sp, sp, #4
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8128240: .word dword_2027590
 dword_8128244: .word 0x40000000
 off_8128248: .word 0x210
@@ -9228,6 +9287,7 @@ loc_81282AC:
 	blt loc_812828C
 locret_81282B6:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_81282B8: .word dword_2027590
 dword_81282BC: .word 0x1DA0
 	thumb_func_end sub_8128280
@@ -9485,6 +9545,7 @@ sub_812848C:
 	mov r5, #0xb
 	bl CopyBackgroundTiles
 	pop {r4,r5,pc}
+	.balign 4, 0
 off_81284A0: .word unk_2028590
 	thumb_func_end sub_812848C
 
@@ -9813,6 +9874,7 @@ sub_81288BC:
 	bl chatbox_8040818
 locret_81288DE:
 	pop {r7,pc}
+	.balign 4, 0
 off_81288E0: .word unk_2037780
 	thumb_func_end sub_81288BC
 
@@ -9875,6 +9937,7 @@ loc_8128918:
 	mov r5, #0x14
 	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812894C: .word off_8128950
 off_8128950: .word dword_86C9108
 	.word 0x2
@@ -9957,6 +10020,7 @@ loc_8128A18:
 	cmp r4, r0
 	blt loc_81289FA
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8128A24: .word eTextScript201BF00
 dword_8128A28: .word 0xDE
 off_8128A2C: .word byte_81286C4
@@ -10007,6 +10071,7 @@ loc_8128A60:
 	bne loc_8128A60
 locret_8128A8E:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8128A90: .word eTextScript201BF00
 off_8128A94: .word TextScript873D9FC
 off_8128A98: .word byte_2017A00
@@ -10100,6 +10165,7 @@ sub_8128B34:
 	mov r5, #8
 	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8128B48: .word unk_201C040
 	thumb_func_end sub_8128B34
 
@@ -10211,6 +10277,7 @@ sub_8128BF0:
 	bl SetScreenFade // (int a1, int a2) -> void
 locret_8128C1A:
 	pop {pc}
+	.balign 4, 0
 off_8128C1C: .word eTextScript201BF00
 	thumb_func_end sub_8128BF0
 
@@ -10233,6 +10300,7 @@ sub_8128C20:
 	mov r7, #0x37 
 	bl sub_811FA98
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_8128C44: .word 0x20002
 byte_8128C48: .byte 0x40, 0xC2, 0x0, 0x0, 0x0, 0xB5, 0xA8, 0x8C, 0x0, 0x42, 0xA
 	.byte 0xD0, 0xE3, 0x20, 0x0, 0x4, 0xD, 0x21, 0x8, 0x43, 0xE, 0x49
@@ -10401,6 +10469,7 @@ loc_8128E1E:
 	bl sub_8128FF0
 	bl sub_812907C
 	pop {pc}
+	.balign 4, 0
 off_8128E28: .word byte_201BDB8
 	thumb_func_end sub_8128DF4
 
@@ -10501,6 +10570,7 @@ sub_8128ED4:
 	bl chatbox_8040818
 locret_8128EFE:
 	pop {pc}
+	.balign 4, 0
 off_8128F00: .word unk_2037780
 	thumb_func_end sub_8128ED4
 
@@ -10536,6 +10606,7 @@ sub_8128F10:
 	mov r5, #0x14
 	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8128F34: .word byte_8128F38
 byte_8128F38: .byte 0x9C, 0xD5, 0x6D, 0x88, 0x20, 0x80, 0x0, 0x6
 	.word eDecompBuffer2013A00
@@ -10600,6 +10671,7 @@ sub_8128FF0:
 	bl sub_8129018
 locret_812900A:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812900C: .word byte_8128CA8
 dword_8129010: .word 0x10002
 dword_8129014: .word 0x40000000
@@ -10674,6 +10746,7 @@ sub_812907C:
 	mov r7, #0x48 
 	bl sub_811FA98
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_8129098: .word 0x62
 dword_812909C: .word 0x10002
 dword_81290A0: .word 0xB370
@@ -10716,6 +10789,7 @@ loc_81290C8:
 	bl CopyBackgroundTiles
 locret_81290EA:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_81290EC: .word unk_201C2F8
 off_81290F0: .word byte_201B200
 dword_81290F4: .word 0x600B800
@@ -10754,6 +10828,7 @@ loc_812911E:
 	blt loc_8129118
 	add sp, sp, #4
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_8129138: .word 0x1C2
 byte_812913C: .byte 0x1C, 0x0, 0x0, 0x0, 0x1C, 0x1, 0x1, 0x0, 0x1C, 0x2, 0x1, 0x0, 0x1C
 	.byte 0x3, 0x1, 0x0, 0xFF, 0xFF, 0xFF, 0xFF
@@ -10925,6 +11000,7 @@ loc_8129330:
 	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 locret_8129336:
 	pop {r4,pc}
+	.balign 4, 0
 off_8129338: .word byte_8129158
 	thumb_func_end sub_81292D8
 
@@ -11015,6 +11091,7 @@ loc_81293E8:
 	mov r0, #0xd
 	bl sub_812B29C
 	pop {r4,pc}
+	.balign 4, 0
 off_81293F8: .word dword_81293FC
 dword_81293FC: .word 0x5B5A
 	thumb_func_end sub_812933C
@@ -11048,6 +11125,7 @@ loc_8129438:
 	mov r0, #0xd
 	bl sub_812B29C
 	pop {pc}
+	.balign 4, 0
 off_8129448: .word byte_8129168
 off_812944C: .word dword_8129450
 dword_8129450: .word 0x5C5D5D
@@ -11150,6 +11228,7 @@ loc_8129514:
 	mov r0, #0xd
 	bl sub_812B288
 	pop {pc}
+	.balign 4, 0
 off_8129524: .word dword_8129528
 dword_8129528: .word 0x5C5D5D
 	thumb_func_end sub_8129454
@@ -11222,6 +11301,7 @@ loc_81295A4:
 	mov lr, pc
 	bx r0
 	pop {pc}
+	.balign 4, 0
 off_81295B0: .word off_81295B4
 off_81295B4: .word sub_81295D8+1
 	.word sub_8129658+1
@@ -11302,6 +11382,7 @@ sub_8129658:
 	mov r0, #0xe
 	bl sub_812B25C
 	pop {pc}
+	.balign 4, 0
 off_812966C: .word off_8129670
 off_8129670: .word sub_812968C+1
 	.word sub_81296A0+1
@@ -11477,6 +11558,7 @@ loc_812979A:
 	strb r1, [r5,#0x1b]
 locret_81297BA:
 	pop {pc}
+	.balign 4, 0
 off_81297BC: .word unk_20251A0
 	thumb_func_end sub_812977C
 
@@ -11507,6 +11589,7 @@ sub_81297DC:
 	mov r0, #0x12
 	bl sub_812B25C
 	pop {pc}
+	.balign 4, 0
 off_81297F0: .word off_81297F4
 off_81297F4: .word sub_8129808+1
 	.word sub_812982C+1
@@ -11572,6 +11655,7 @@ loc_812984A:
 	strb r1, [r5,#0x1b]
 locret_812986A:
 	pop {pc}
+	.balign 4, 0
 off_812986C: .word unk_20251A0
 	thumb_func_end sub_812982C
 
@@ -11678,6 +11762,7 @@ sub_8129918:
 	mov r0, #0x12
 	bl sub_812B25C
 	pop {pc}
+	.balign 4, 0
 off_812992C: .word off_8129930
 off_8129930: .word sub_8129948+1
 	.word sub_812996C+1
@@ -11744,6 +11829,7 @@ loc_812998A:
 	strb r1, [r5,#0x1b]
 locret_81299AA:
 	pop {pc}
+	.balign 4, 0
 off_81299AC: .word unk_20251A0
 	thumb_func_end sub_812996C
 
@@ -11868,6 +11954,7 @@ loc_8129A72:
 	strb r1, [r5,#0x1b]
 locret_8129A92:
 	pop {pc}
+	.balign 4, 0
 off_8129A94: .word unk_20251A0
 	thumb_func_end sub_8129A54
 
@@ -11882,6 +11969,7 @@ sub_8129A98:
 	mov r0, #0x12
 	bl sub_812B25C
 	pop {pc}
+	.balign 4, 0
 off_8129AAC: .word off_8129AB0
 off_8129AB0: .word sub_8129AC8+1
 	.word sub_8129AF0+1
@@ -11950,6 +12038,7 @@ loc_8129B0E:
 	strb r1, [r5,#0x1b]
 locret_8129B2E:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8129B30: .word unk_20251A0
 	thumb_func_end sub_8129AF0
 
@@ -12081,6 +12170,7 @@ loc_8129BFA:
 	strb r1, [r5,#0x1b]
 locret_8129C22:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8129C24: .word unk_20251A0
 	thumb_func_end sub_8129BDC
 
@@ -12095,6 +12185,7 @@ sub_8129C28:
 	mov r0, #0x13
 	bl sub_812B25C
 	pop {pc}
+	.balign 4, 0
 off_8129C3C: .word off_8129C40
 off_8129C40: .word sub_8129C74+1
 	.word sub_8129CB4+1
@@ -12368,6 +12459,7 @@ sub_8129E28:
 	strb r0, [r5,#3]
 locret_8129E42:
 	pop {r4,pc}
+	.balign 4, 0
 off_8129E44: .word byte_8129E48
 byte_8129E48: .byte 0x0, 0x50, 0x51, 0x52, 0x0, 0x53, 0x0, 0x0, 0x0, 0x30, 0x0, 0x0
 	thumb_func_end sub_8129E28
@@ -12481,6 +12573,7 @@ sub_8129F04:
 	bx r0
 	bl sub_812B26C
 	pop {pc}
+	.balign 4, 0
 off_8129F18: .word off_8129F1C
 off_8129F1C: .word sub_8129F28+1
 	.word sub_8129FE0+1
@@ -12735,6 +12828,7 @@ sub_812A0E8:
 	strh r0, [r5,#0x24]
 locret_812A12A:
 	pop {pc}
+	.balign 4, 0
 dword_812A12C: .word 0x42523545
 dword_812A130: .word 0x2000
 	thumb_func_end sub_812A0E8
@@ -12800,6 +12894,7 @@ sub_812A168:
 	strh r0, [r5,#0x24]
 locret_812A1B6:
 	pop {pc}
+	.balign 4, 0
 dword_812A1B8: .word 0x42523545
 dword_812A1BC: .word 0x2000
 off_812A1C0: .word byte_2023BC0
@@ -12887,6 +12982,7 @@ sub_812A240:
 	mov r0, #0
 	strb r0, [r5,#0xc]
 	pop {pc}
+	.balign 4, 0
 dword_812A274: .word 0x42523545
 dword_812A278: .word 0x2000
 	thumb_func_end sub_812A240
@@ -13190,6 +13286,7 @@ sub_812A4DC:
 	mov r0, #1
 	bl sub_803CB0C
 	pop {pc}
+	.balign 4, 0
 off_812A4F0: .word off_812A4F4
 off_812A4F4: .word sub_812A4FC+1
 	.word sub_812A540+1
@@ -13647,6 +13744,7 @@ loc_812A88E:
 locret_812A892:
 	pop {r4-r7,pc}
 	.word byte_200A290
+	.balign 4, 0
 dword_812A898: .word 0xFFFFFFFF
 dword_812A89C: .word 0x2000
 off_812A8A0: .word 0x168
@@ -14074,6 +14172,7 @@ loc_812ABE0:
 loc_812ABE2:
 	bl sub_812B26C
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_812ABE8: .word 0xFFFFFFFF
 	thumb_func_end sub_812AAC0
 
@@ -14371,6 +14470,7 @@ loc_812AE10:
 	bl sub_812B504
 locret_812AE2A:
 	pop {pc}
+	.balign 4, 0
 off_812AE2C: .word off_812AE30
 off_812AE30: .word sub_812AC1A+1
 	.word sub_812AE3C+1
@@ -14440,6 +14540,7 @@ loc_812AE96:
 	bl sub_8149568
 locret_812AEBE:
 	pop {pc}
+	.balign 4, 0
 off_812AEC0: .word unk_20251A0
 off_812AEC4: .word byte_8129150
 	thumb_func_end sub_812AE74
@@ -14894,6 +14995,7 @@ loc_812B2AC:
 	mov r2, #2
 	bl sub_811C23C
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_812B2BC: .word 0x78
 off_812B2C0: .word 0x28
 	thumb_func_end sub_812B29C
@@ -15132,6 +15234,7 @@ sub_812B430:
 	mov r5, #2
 	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812B48C: .word eTextScript201BA20
 off_812B490: .word dword_86B7AE0
 off_812B494: .word byte_2017A00
@@ -15176,6 +15279,7 @@ sub_812B4AC:
 	ldr r0, off_812B500 // =byte_8129150
 	bl sub_80465A0 // (void *a1) -> void
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812B4F8: .word sSubmenu
 off_812B4FC: .word unk_20251A0
 off_812B500: .word byte_8129150
@@ -15246,6 +15350,7 @@ loc_812B584:
 	bl sub_81475D4
 locret_812B58A:
 	pop {pc}
+	.balign 4, 0
 off_812B58C: .word dword_814FE94
 	thumb_func_end sub_812B574
 
@@ -15500,6 +15605,7 @@ loc_812B792:
 	bl PlaySoundEffect
 	add sp, sp, #4
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812B7A8: .word off_812B7AC
 off_812B7AC: .word 0x200
 	.byte 0x2, 0x0, 0x0, 0x0, 0x0, 0x6, 0x0, 0x0, 0x2, 0x4, 0x0, 0x0, 0x0, 0x2, 0x20, 0x0
@@ -15586,6 +15692,7 @@ loc_812B842:
 	bl sub_803C59C
 locret_812B852:
 	pop {pc}
+	.balign 4, 0
 off_812B854: .word off_812B858
 off_812B858: .word sub_812B8DC+1
 	.word sub_812B97C+1
@@ -15634,6 +15741,7 @@ loc_812B8AA:
 	bl sub_803C59C
 locret_812B8BA:
 	pop {pc}
+	.balign 4, 0
 off_812B8BC: .word off_812B8C0
 off_812B8C0: .word sub_812B8DC+1
 	.word sub_812B97C+1
@@ -16207,6 +16315,7 @@ loc_812BD08:
 	bl sub_803F798
 locret_812BD1E:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812BD20: .word unk_2033C00
 dword_812BD24: .word 0x2020
 dword_812BD28: .word 0x1E20
@@ -16351,6 +16460,7 @@ loc_812BE26:
 	bl sub_803F798
 locret_812BE3A:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812BE3C: .word unk_2033C00
 off_812BE40: .word unk_20018C0
 off_812BE44: .word off_812BE48
@@ -16496,6 +16606,7 @@ sub_812BFAC:
 	bl sub_80465A0 // (void *a1) -> void
 locret_812BFE2:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812BFE4: .word unk_2037780
 off_812BFE8: .word 0x80
 off_812BFEC: .word unk_20251A0
@@ -16562,6 +16673,7 @@ sub_812C034:
 	bl sub_80465A0 // (void *a1) -> void
 locret_812C06A:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812C06C: .word unk_2037780
 off_812C070: .word 0x80
 off_812C074: .word unk_20251A0
@@ -16605,6 +16717,7 @@ sub_812C094:
 	bl sub_80465A0 // (void *a1) -> void
 locret_812C0C2:
 	pop {pc}
+	.balign 4, 0
 off_812C0C4: .word unk_20251A0
 off_812C0C8: .word byte_8129150
 	thumb_func_end sub_812C094
@@ -16812,6 +16925,7 @@ loc_812C22E:
 	mov r4, #1
 	str r4, [r7,r1]
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812C244: .word 0x28
 off_812C248: .word unk_20018C0
 	thumb_func_end sub_812C21C

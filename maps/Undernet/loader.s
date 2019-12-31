@@ -35,6 +35,7 @@ sub_807CDEC:
 	bl sub_807CFFC
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_807CE44: .word off_807C82C
 off_807CE48: .word unk_2037800
 off_807CE4C: .word off_807CE50
@@ -200,6 +201,7 @@ sub_807CFFC:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_807D010: .word pt_807D014
 pt_807D014:
 	.word byte_807D024

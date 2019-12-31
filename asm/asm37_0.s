@@ -32,6 +32,7 @@ sub_813B790:
 	ldrb r1, [r1]
 	bl sub_813B7A0
 	pop {pc}
+	.balign 4, 0
 off_813B79C: .word byte_20096D8
 	thumb_func_end sub_813B790
 
@@ -300,6 +301,7 @@ zeroFill_813B934:
 	mov r1, #0x40 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_813B94C: .word 0x188
 	thumb_func_end zeroFill_813B934
 
@@ -503,6 +505,7 @@ sub_813BA80:
 	ldr r2, off_813BAA4 // =0x188 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_813BA9C: .word eTextScript201BA00
 off_813BAA0: .word byte_201BA40
 off_813BAA4: .word 0x188
@@ -538,6 +541,7 @@ sub_813BAC4:
 	ldr r2, off_813BAE8 // =0x188 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_813BAE0: .word byte_201BC40
 off_813BAE4: .word byte_201BC80
 off_813BAE8: .word 0x188
@@ -1125,6 +1129,7 @@ loc_813BEFE:
 	strb r2, [r0,r1]
 locret_813BF06:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_813BF08: .word byte_2006D30
 	thumb_func_end sub_813BEA8
 
@@ -1589,6 +1594,7 @@ sub_813C324:
 	mov r1, #8
 	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_813C330: .word unk_2000090
 	thumb_func_end sub_813C324
 
@@ -1645,6 +1651,7 @@ loc_813C38E:
 loc_813C394:
 	mov r0, r6
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_813C398: .word byte_813B522
 off_813C39C: .word byte_813C3A4
 dword_813C3A0: .word 0x2660
@@ -1773,6 +1780,7 @@ sub_813C4A8:
 	lsl r0, r0, #2
 	ldr r1, [r1,r0]
 	pop {pc}
+	.balign 4, 0
 off_813C4B8: .word pt_813C4BC
 pt_813C4BC: .word byte_813B3AE+225
 	.word byte_813B3AE+274
@@ -1788,6 +1796,7 @@ sub_813C4C8:
 	lsl r0, r0, #2
 	ldr r1, [r1,r0]
 	pop {pc}
+	.balign 4, 0
 off_813C4D8: .word off_813C4DC
 off_813C4DC: .word byte_813C4E8
 	.word byte_813C51C
@@ -2725,6 +2734,7 @@ loc_813CC0C:
 	blt loc_813CBE6
 locret_813CC12:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_813CC14: .word byte_813CC18
 byte_813CC18: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.word sub_813CCE8+1
@@ -3488,6 +3498,7 @@ loc_813D4A4:
 loc_813D4CC:
 	mov r0, r7
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_813D4D0: .word off_813D4D4
 off_813D4D4: .word sub_813D510+1
 	.word sub_813D568+1
@@ -3706,6 +3717,7 @@ sub_813D648:
 	ldr r1, byte_813D654 // =0x1 
 	cmp r0, r1
 	pop {pc}
+	.balign 4, 0
 byte_813D654: .byte 0x1, 0x80, 0x0, 0x0, 0x10, 0xB5, 0x9, 0xF0, 0xD, 0xFC, 0x10
 	.byte 0xBD
 	.word byte_200AF80
@@ -3899,6 +3911,7 @@ loc_813D7DC:
 	mov r0, #1
 	bl sub_813D5E8
 	pop {r5,r7,pc}
+	.balign 4, 0
 off_813D7E4: .word off_813D7E8
 off_813D7E8: .word sub_813D804+1
 	.word sub_813D838+1
@@ -3978,6 +3991,7 @@ loc_813D864:
 	tst r0, r0
 	bne loc_813D864
 	pop {r4,pc}
+	.balign 4, 0
 dword_813D878: .word 0x8
 	thumb_func_end sub_813D848
 
@@ -4158,6 +4172,7 @@ sub_813D978:
 	mov r0, #0
 	bl sub_813D934
 	pop {pc}
+	.balign 4, 0
 off_813D988: .word byte_200BC50
 	thumb_func_end sub_813D978
 
@@ -4199,6 +4214,7 @@ sub_813D9AC:
 	bl sub_8146B70
 locret_813D9CA:
 	pop {r4,pc}
+	.balign 4, 0
 off_813D9CC: .word byte_200BC50
 off_813D9D0: .word off_813D9D4
 off_813D9D4: .word sub_813D9DC+1
@@ -4307,6 +4323,7 @@ sub_813DA84:
 	mov r1, #0x10
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_813DA90: .word byte_2010290
 	thumb_func_end sub_813DA84
 

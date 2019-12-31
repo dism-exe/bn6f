@@ -69,6 +69,7 @@ ACDCTown_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
+	.balign 4, 0
 off_804CF40: .word off_804CF44
 off_804CF44: .word dword_804CF64
 	.word dword_804CF68
@@ -99,6 +100,7 @@ ACDCTown_SpawnMapObjectsForMap:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_804CF98: .word off_804CF9C
 off_804CF9C:
 	// <endpool> <endfile>

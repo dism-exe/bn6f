@@ -259,6 +259,7 @@ loc_812DCEE::
 	bl sub_812EC04
 	bl sub_812EFD4
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_812DCF8:: .word 0xFFFFFFFF
 byte_812DCFC:: .byte 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE, 0x0, 0x0
 dword_812DD04:: .word 0x814C
@@ -942,6 +943,7 @@ loc_812E250::
 	bl sub_812F000
 locret_812E256::
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_812E258:: .word 0xFFFFFFFF
 dword_812E25C:: .word 0xFEDC
 dword_812E260:: .word 0xFEDB
@@ -1525,6 +1527,7 @@ loc_812E6E4::
 	bl sub_80465A0 // (void *a1) -> void
 locret_812E70A::
 	pop {pc}
+	.balign 4, 0
 off_812E70C:: .word unk_20251A0
 off_812E710:: .word byte_8129150
 	thumb_func_end sub_812E6CC
@@ -1790,6 +1793,7 @@ loc_812E8F4::
 	bl sub_812EFD4
 locret_812E902::
 	pop {pc}
+	.balign 4, 0
 dword_812E904:: .word 0xFFFFFFFF
 byte_812E908:: .byte 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE, 0x0, 0x0
 	thumb_func_end sub_812E898

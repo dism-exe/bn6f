@@ -6,6 +6,7 @@ call_m4aSoundMain:
 	pop {pc}
 	.word unk_2006840
 	.word dword_80005BC
+	.balign 4, 0
 dword_80005BC: .hword 0x121c
 	.asciz "%D"
 	.balign 4, 0
@@ -207,6 +208,7 @@ loc_80006B0:
 	mov r10, r7
 	pop {r4-r7,pc}
 	.word off_2010890
+	.balign 4, 0
 off_8000700: .word off_8000704
 off_8000704: .word byte_2010690
 	.word byte_2010910
@@ -383,6 +385,7 @@ loc_8000854:
 	str r0, [r5,#8]
 locret_800085A:
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_200A490_p: .word dword_200A490
 	.word unk_200F390
 off_8000864: .word byte_2010B90
@@ -654,6 +657,7 @@ loc_80009D8:
 	orr r4, r2
 	str r4, [r5,#8]
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80009E8: .word off_80009EC
 off_80009EC: .word DMA0SourceAddress
 	.word DMA1SourceAddress
@@ -823,6 +827,7 @@ loc_8000ACA:
 loc_8000AF4:
 	pop {r4-r7}
 	mov pc, lr
+	.balign 4, 0
 off_8000AF8: .word dword_8000AFC
 dword_8000AFC: .word 0x84000000
 	.word 0xffffffff
@@ -994,6 +999,7 @@ sub_8000BEC:
 	ldr r1, [r1]
 	add r0, r0, r1
 	mov pc, lr
+	.balign 4, 0
 off_8000BF8: .word VerticalCounter_LY_
 off_8000BFC: .word dword_2009CC0
 	thumb_func_end sub_8000BEC
@@ -1261,6 +1267,7 @@ loc_8000D92:
 loc_8000DD4:
 	add sp, sp, #0x10
 	pop {pc}
+	.balign 4, 0
 dword_8000DD8: .word 0x1499727
 dword_8000DDC: .word 0x99595999
 	thumb_func_end sub_8000D84
@@ -1285,6 +1292,7 @@ sub_8000DE0:
 	ldr r1, [sp,#4]
 	add sp, sp, #0x10
 	pop {pc}
+	.balign 4, 0
 dword_8000E04: .word 0x34BC0
 off_8000E08: .word 0xE10
 off_8000E0C: .word 0x3C
@@ -1618,6 +1626,7 @@ loc_8001028:
 	mov r1, #0xa
 	bl sub_8001014
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_800103C: .word 0x17A0
 	thumb_func_end sub_8001014
 
@@ -2463,6 +2472,7 @@ sub_80015B4:
 	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	pop {pc}
+	.balign 4, 0
 dword_80015C8: .word 0x600E000
 dword_80015CC: .word 0x2000
 	thumb_func_end sub_80015B4
@@ -2482,6 +2492,7 @@ copyToVRAMAndClear_iBGTileIdBlocks_Ptr:
 	ldr r2, fill // =0x2ff02ff
 	bl FillByEightWords
 	pop {pc}
+	.balign 4, 0
 dword_80015EC: .word 0x600E000
 dword_80015F0: .word 0x2000
 dword_80015F4: .word 0x800
@@ -2537,6 +2548,7 @@ loc_8001716:
 	ldrb r0, [r3]
 	bl sub_80015FC
 	pop {pc}
+	.balign 4, 0
 off_8001724: .word off_803385C
 off_8001728: .word off_8033878
 	thumb_func_end map_8001708
@@ -2572,6 +2584,7 @@ render_800172C:
 	ldrh r2, [r5]
 	strh r2, [r1]
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8001764: .word LCDControl
 off_8001768: .word MosaicSize
 off_800176C: .word BG0Control
@@ -2662,6 +2675,7 @@ main_zeroFill_80017EC:
 	mov r1, #2
 	bl ZeroFillByHalfword
 	pop {pc}
+	.balign 4, 0
 off_8001800: .word palette_3001960
 dword_8001804: .word 0x5000000
 	thumb_func_end main_zeroFill_80017EC
@@ -2675,6 +2689,7 @@ copyPalletesToIWRAM_8001808:
 	lsl r2, r2, #4
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {pc}
+	.balign 4, 0
 off_8001818: .word iPalette3001B60
 dword_800181C: .word 0x5000000
 	thumb_func_end copyPalletesToIWRAM_8001808
@@ -2727,6 +2742,7 @@ copyMemory_8001850:
 	mov r2, #0x20
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {pc}
+	.balign 4, 0
 off_8001868: .word dword_86A5520
 dword_800186C: .word 0x600D400
 dword_8001870: .word 0x800
@@ -3153,6 +3169,7 @@ zeroFill_e20094C0:
 	ldr r1, off_8001B08 // =0x1b0
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_8001B08: .word 0x1B0
 	thumb_func_end zeroFill_e20094C0
 
@@ -3875,6 +3892,7 @@ sub_8001ED0:
 	orr r0, r3
 	str r0, [r5]
 	mov pc, lr
+	.balign 4, 0
 dword_8001FF8: .word 0xFF00FF00
 dword_8001FFC: .word 0xF0F0F0F0
 	thumb_func_end sub_8001ED0
@@ -4360,6 +4378,7 @@ zeroFill_e20097A0:
 	ldr r1, off_8002374 // =0x108
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_8002374: .word 0x108
 	thumb_func_end zeroFill_e20097A0
 
@@ -4405,6 +4424,7 @@ sub_80023A8:
 	ldr r1, off_80023B4 // =0xd8
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_80023B4: .word 0xd8
 	thumb_func_end sub_80023A8
 
@@ -4747,6 +4767,7 @@ sub_800260C:
 	mov r1, #7
 	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {r4,pc}
+	.balign 4, 0
 dword_800263C: .word 0x7000000
 off_8002640: .word 0x400
 dword_8002644: .word 0x6010000
@@ -4763,6 +4784,7 @@ copyPalletesToIWRAM_8002650:
 	lsl r2, r2, #4
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {pc}
+	.balign 4, 0
 off_8002660: .word iPallete3001750
 dword_8002664: .word 0x5000200
 	thumb_func_end copyPalletesToIWRAM_8002650
@@ -4783,6 +4805,7 @@ loc_8002678:
 	mov r2, #0x20
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {pc}
+	.balign 4, 0
 off_8002684: .word byte_80025CC
 off_8002688: .word byte_3001730
 off_800268C: .word dword_86A5500

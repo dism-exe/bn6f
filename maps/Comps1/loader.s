@@ -35,6 +35,7 @@ sub_806D8F8:
 	bl sub_806DCD4
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_806D950: .word off_806D6B0
 off_806D954: .word unk_2037800
 off_806D958: .word off_806D95C
@@ -243,6 +244,7 @@ sub_806DC0C:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_806DC34: .word off_806DC38
 off_806DC38: .word nullsub_70+1
 	.word sub_806DC7A+1
@@ -332,6 +334,7 @@ sub_806DCD4:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_806DCE8: .word pt_806DCEC
 pt_806DCEC:
 	// <endpool> <endfile>

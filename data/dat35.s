@@ -56,6 +56,7 @@ loc_812F038::
 	strb r1, [r5,#0xc]
 	strb r1, [r5,#3]
 	pop {r0,pc}
+	.balign 4, 0
 byte_812F044:: .byte 0x23, 0x3, 0x1, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 byte_812F04C:: .byte 0x20, 0x0, 0x1, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 byte_812F054:: .byte 0x20, 0x1, 0x1, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
@@ -1530,6 +1531,7 @@ loc_812FC1C::
 	b locret_812FC1E
 locret_812FC1E::
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_812FC20:: .word 0xFFFFFFFF
 dword_812FC24:: .word 0xFEDC
 dword_812FC28:: .word 0xFEDB
@@ -1750,6 +1752,7 @@ loc_812FDD8::
 	bl sub_80465A0 // (void *a1) -> void
 locret_812FE02::
 	pop {pc}
+	.balign 4, 0
 off_812FE04:: .word unk_20251A0
 off_812FE08:: .word byte_8129150
 	thumb_func_end sub_812FDC0
@@ -1955,6 +1958,7 @@ loc_812FF90::
 	b locret_812FF92
 locret_812FF92::
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_812FF94:: .word 0xFFFFFFFF
 byte_812FF98:: .byte 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE, 0x0, 0x0
 	thumb_func_end sub_812FEF0

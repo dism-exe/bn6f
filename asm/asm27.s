@@ -7,6 +7,7 @@ sub_80946C4:
 	bl decompAndCopyData // (u32 *initRefs) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80946D0: .word initRefs_80946D4
 initRefs_80946D4: .word comp_857CCC8 + 1<<31
 	.word 0x600C000

@@ -33,6 +33,7 @@ loc_8086F36:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_8086F54: .word dword_8086F58
 dword_8086F58: .word 0x2030101
 	thumb_func_end sub_8086F18
@@ -71,6 +72,7 @@ loc_8086F7A:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_8086F98: .word dword_8086F9C
 dword_8086F9C: .word 0x3020202
 off_8086FA0: .word off_8086D18
@@ -100,6 +102,7 @@ loc_8086FB6:
 loc_8086FC8:
 	mov r0, r4
 	pop {r4,pc}
+	.balign 4, 0
 off_8086FCC: .word byte_8086FD0
 byte_8086FD0: .byte 0xE1, 0x5, 0xE2, 0x5, 0xE3, 0x5, 0xC0, 0xF
 	thumb_func_end sub_8086FA4
@@ -231,6 +234,7 @@ loc_80870F2:
 	bl StartCutscene
 locret_80870F6:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80870F8: .word off_8086D1C+4
 off_80870FC: .word byte_8086D2C+4
 off_8087100: .word byte_8086D5C

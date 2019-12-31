@@ -35,6 +35,7 @@ JudgeTreeComp_EnterMapGroup:
 	bl JudgeTreeComp_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8069090: .word off_8068CCC
 off_8069094: .word unk_2037800
 off_8069098: .word off_806909C
@@ -55,6 +56,7 @@ JudgeTreeComp_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
+	.balign 4, 0
 off_80690D0: .word off_80690D4
 off_80690D4: .word off_80690E0
 	.word off_8069100

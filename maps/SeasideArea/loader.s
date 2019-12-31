@@ -35,6 +35,7 @@ sub_807544C:
 	bl sub_80755EE
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80754A4: .word off_8074F30
 off_80754A8: .word unk_2037800
 off_80754AC: .word off_80754B0
@@ -56,6 +57,7 @@ sub_80754E2:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
+	.balign 4, 0
 off_80754F0: .word off_80754F4
 off_80754F4: .word off_8075500
 	.word off_8075510

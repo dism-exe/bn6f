@@ -35,6 +35,7 @@ AquariumComp_EnterMapGroup:
 	bl AquariumComp_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8067BB4: .word off_80676E8
 off_8067BB8: .word unk_2037800
 off_8067BBC: .word off_8067BC0

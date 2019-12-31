@@ -104,6 +104,7 @@ ExpoSite_SpawnMapObjectsForMap:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_8062BE0: .word pt_8062BE4
 pt_8062BE4:
 	// <endpool> <endfile>

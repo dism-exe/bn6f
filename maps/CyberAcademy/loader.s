@@ -122,6 +122,7 @@ CyberAcademy_SpawnMapObjectsForMap:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_8052804: .word off_8052808
 off_8052808: .word byte_8052834
 	.word byte_80529B4

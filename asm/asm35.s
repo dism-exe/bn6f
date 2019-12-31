@@ -14,6 +14,7 @@ CopyBackgroundTiles812EAAC:
 	mov r5, #0x14
 	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812EAC0: .word unk_201EE20
 	thumb_func_end CopyBackgroundTiles812EAAC
 
@@ -212,6 +213,7 @@ sub_812EC04:
 	mov r1, #0
 	bl sub_811BC00
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812EC28: .word word_2023FA0
 	thumb_func_end sub_812EC04
 
@@ -373,6 +375,7 @@ sub_812ED34:
 	lsl r2, r2, #8
 	orr r0, r2
 	pop {pc}
+	.balign 4, 0
 off_812ED54: .word word_2023FA0
 	thumb_func_end sub_812ED34
 
@@ -439,6 +442,7 @@ sub_812ED94:
 	bl sub_812EC2C
 	bl sub_812EDE4
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812EDE0: .word unk_201E920
 	thumb_func_end sub_812ED94
 
@@ -454,6 +458,7 @@ loc_812EDEA:
 loc_812EDEE:
 	bl sub_80465A0 // (void *a1) -> void
 	pop {pc}
+	.balign 4, 0
 off_812EDF4: .word byte_812DAD4
 off_812EDF8: .word byte_812DADC
 	thumb_func_end sub_812EDE4
@@ -681,6 +686,7 @@ loc_812EFAE:
 	cmp r4, #0x78 
 	blt loc_812EFAE
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_812EFCC: .word 0x21C0
 off_812EFD0: .word unk_2025A70
 	thumb_func_end sub_812EFA4

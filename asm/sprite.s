@@ -127,6 +127,7 @@ spriteLoadMugshot_800275A:
 	mov r0, #0x80
 	strh r0, [r5,#0x16]
 	pop {pc}
+	.balign 4, 0
 off_800276C: .word mugshotSpritePtrs
 	thumb_func_end spriteLoadMugshot_800275A
 
@@ -169,6 +170,7 @@ sub_800279C:
 	mov r0, #0x80
 	strh r0, [r5,#0x16]
 	pop {r5,pc}
+	.balign 4, 0
 off_80027B0: .word mugshotSpritePtrs
 	thumb_func_end sub_800279C
 
@@ -178,6 +180,7 @@ sub_80027B4:
 	ldr r1, dword_80027C0 // =0x1
 	str r1, [r0]
 	mov pc, lr
+	.balign 4, 0
 off_80027BC: .word dword_200F350
 dword_80027C0: .word 0x1
 	thumb_func_end sub_80027B4
@@ -228,6 +231,7 @@ sub_80027F4:
 	ldr r0, byte_8002810 // =0xff
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
+	.balign 4, 0
 off_8002804: .word byte_20098A8
 dword_8002808: .word 0x32F
 dword_800280C: .word 0x2FF
@@ -277,6 +281,7 @@ loc_8002840:
 	bx r1
 locret_8002862:
 	pop {pc}
+	.balign 4, 0
 off_8002864: .word sub_3005EF0+1
 off_8002868: .word byte_3001550
 	thumb_func_end sub_8002818
@@ -309,6 +314,7 @@ sub_8002874:
 	bl QueueEightWordAlignedGFXTransfer
 locret_8002896:
 	pop {r5,pc}
+	.balign 4, 0
 dword_8002898: .word 0x6010000
 	thumb_func_end sub_8002874
 

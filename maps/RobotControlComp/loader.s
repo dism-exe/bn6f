@@ -35,6 +35,7 @@ RobotControlComp_EnterMapGroup:
 	bl RobotControlComp_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8066428: .word off_8066020
 off_806642C: .word unk_2037800
 off_8066430: .word off_8066434
@@ -165,6 +166,7 @@ RobotControlComp_SpawnMapObjectsForMap:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_8066554: .word off_8066558
 off_8066558: .word byte_8066560
 	.word byte_8066578

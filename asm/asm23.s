@@ -265,6 +265,7 @@ loc_8089294:
 	ldr r0, off_8089340 // =byte_8089344
 	bl sub_8001158 // () -> void
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80892A0: .word byte_80892A4
 byte_80892A4: .byte 0x8, 0x0, 0x8, 0x0, 0x47, 0xD2, 0x0, 0x0, 0x4, 0x0, 0x74, 0x0, 0x40
 	.byte 0xD2, 0x0, 0x0, 0x8, 0x0, 0xE0, 0x0, 0x41, 0xD2, 0x0, 0x0, 0x4D, 0x0
@@ -443,6 +444,7 @@ loc_808966E:
 loc_80896A0:
 	mov r0, #1
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80896A4: .word byte_80896A8
 byte_80896A8: .byte 0xFF, 0x29, 0xFF, 0x2A, 0xFF, 0x2B, 0xFF, 0x2C
 	thumb_func_end sub_808964C
@@ -1280,6 +1282,7 @@ sub_8089CC4:
 	mov r0, #1
 	strb r0, [r5,#0x13]
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8089CD8: .word byte_8089480
 	thumb_func_end sub_8089CC4
 
@@ -1294,6 +1297,7 @@ sub_8089CDC:
 	bl sub_8089D0E
 	bl sub_8089D44
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8089CF4: .word byte_808948A
 	thumb_func_end sub_8089CDC
 

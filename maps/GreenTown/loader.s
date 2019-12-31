@@ -63,6 +63,7 @@ GreenTown_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
+	.balign 4, 0
 off_805DFB0: .word off_805DFB4
 off_805DFB4: .word off_805DFC8
 	.word off_805DFD0
@@ -92,6 +93,7 @@ GreenTown_SpawnMapObjectsForMap:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_805E004: .word pt_805E008
 pt_805E008:
 	// <endpool> <endfile>

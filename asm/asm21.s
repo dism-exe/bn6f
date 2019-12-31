@@ -6,6 +6,7 @@ sub_8080D90:
 	mov r1, #8
 	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_8080D9C: .word eBGScrollCBCounters
 	thumb_func_end sub_8080D90
 
@@ -69,6 +70,7 @@ sub_8080DEA:
 	bl sub_803537C
 	bl sub_8035424
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8080E2C: .word off_8081220
 off_8080E30: .word off_8080E34
 off_8080E34:

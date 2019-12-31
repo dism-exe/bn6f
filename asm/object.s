@@ -117,6 +117,7 @@ loc_800B938:
 	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
+	.balign 4, 0
 off_800B948: .word dword_200F3B8
 	thumb_func_end object_timefreezeBegin
 
@@ -419,6 +420,7 @@ loc_800BB94:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_800BB9E:
 	pop {pc}
+	.balign 4, 0
 dword_800BBA0: .word 0x10000
 off_800BBA4: .word dword_200F3B8
 	thumb_func_end sub_800BA8A
@@ -1025,6 +1027,7 @@ loc_800C004:
 	ble loc_800BFEA
 locret_800C016:
 	pop {r4,r5,r7,pc}
+	.balign 4, 0
 off_800C018: .word unk_2039C00
 	thumb_func_end sub_800BFC4
 
@@ -1085,6 +1088,7 @@ loc_800C066:
 	bx r6
 	add sp, sp, #0x28
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_800C07C: .word byte_86DFA98
 off_800C080: .word iCopyBackgroundTiles+1
 off_800C084: .word byte_800C08C
@@ -1199,6 +1203,7 @@ sub_800C138:
 	bl CopyBackgroundTiles
 	add sp, sp, #0x28
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_800C16C: .word byte_86E0498
 off_800C170: .word byte_800C178
 off_800C174: .word byte_800C182
@@ -1505,6 +1510,7 @@ sub_800C488:
 	ldr r1, off_800C4B0 // =0x1e0 
 locret_800C496:
 	pop {r0,r2,r3,pc}
+	.balign 4, 0
 off_800C498: .word 0x258
 dword_800C49C: .word 0xF880080
 dword_800C4A0: .word 0xF800000
@@ -1610,6 +1616,7 @@ loc_800C53C:
 	bl sub_800C67C
 	add sp, sp, #8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_800C57C: .word byte_800C590
 off_800C580: .word byte_800C5B8
 off_800C584: .word ePanelData
@@ -2150,6 +2157,7 @@ loc_800C96A:
 loc_800C988:
 	mov r0, #0
 	pop {pc}
+	.balign 4, 0
 dword_800C98C: .word 0xF880080
 dword_800C990: .word 0x3F5F
 dword_800C994: .word 0x3F0F
@@ -2198,6 +2206,7 @@ loc_800C9CA:
 loc_800C9E8:
 	mov r0, #0
 	pop {pc}
+	.balign 4, 0
 dword_800C9EC: .word 0xF880080
 dword_800C9F0: .word 0x3F5F
 dword_800C9F4: .word 0x3F0F
@@ -2230,6 +2239,7 @@ object_breakPanel:
 loc_800CA28:
 	mov r0, #0
 	pop {pc}
+	.balign 4, 0
 dword_800CA2C: .word 0xF880080
 dword_800CA30: .word 0x3F5F
 	thumb_func_end object_breakPanel
@@ -2273,6 +2283,7 @@ loc_800CA64:
 loc_800CA7C:
 	mov r0, #0
 	pop {pc}
+	.balign 4, 0
 dword_800CA80: .word 0xF080080
 dword_800CA84: .word 0x3F5F
 dword_800CA88: .word 0x3F0F
@@ -2319,6 +2330,7 @@ loc_800CABC:
 loc_800CAD8:
 	mov r0, #0
 	pop {pc}
+	.balign 4, 0
 dword_800CADC: .word 0xF880080
 dword_800CAE0: .word 0x3F5F
 dword_800CAE4: .word 0x3F0F
@@ -2365,6 +2377,7 @@ loc_800CB18:
 loc_800CB34:
 	mov r0, #0
 	pop {pc}
+	.balign 4, 0
 dword_800CB38: .word 0xF880080
 dword_800CB3C: .word 0x3F5F
 dword_800CB40: .word 0x3F0F
@@ -2411,6 +2424,7 @@ loc_800CB74:
 loc_800CB90:
 	mov r0, #0
 	pop {pc}
+	.balign 4, 0
 dword_800CB94: .word 0xF880080
 dword_800CB98: .word 0x3F5F
 dword_800CB9C: .word 0x3F0F
@@ -2441,6 +2455,7 @@ object_panel_setPoison:
 loc_800CBCC:
 	mov r0, #0
 	pop {pc}
+	.balign 4, 0
 dword_800CBD0: .word 0x3F5F
 off_800CBD4: .word 0x114
 	thumb_func_end object_panel_setPoison
@@ -2739,6 +2754,7 @@ loc_800CD9C:
 loc_800CDA8:
 	add sp, sp, #0x14
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_800CDAC: .word PanelOffsetListsPointerTable
 off_800CDB0: .word byte_8019C34
 	thumb_func_end object_highlightPanelRegionBlue
@@ -3727,6 +3743,7 @@ loc_800D452:
 	mov r0, r6
 	add sp, sp, #0x1c
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_800D458: .word PanelOffsetListsPointerTable
 	thumb_func_end object_getPanelRegion
 
@@ -3771,6 +3788,7 @@ loc_800D498:
 	bne loc_800D462
 	mov r0, r6
 	pop {r4,r6,pc}
+	.balign 4, 0
 dword_800D4A4: .word 0x1800000
 dword_800D4A8: .word 0x2800000
 	thumb_func_end sub_800D45C
@@ -3843,6 +3861,7 @@ sub_800D4D0:
 loc_800D524:
 	add sp, sp, #0x14
 	pop {r4,pc}
+	.balign 4, 0
 off_800D528: .word byte_800D52C
 byte_800D52C: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -4128,6 +4147,7 @@ loc_800D71A:
 	ble loc_800D70A
 	mov r0, r4
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_800D724: .word unk_2034010
 off_800D728: .word unk_2034010
 off_800D72C: .word unk_2034010
@@ -4464,6 +4484,7 @@ object_getCoordinatesForPanels:
 	ldr r2, dword_800E298 // =0xffec0000 
 	add r1, r1, r2
 	mov pc, lr
+	.balign 4, 0
 dword_800E294: .word 0xFF740000
 dword_800E298: .word 0xFFEC0000
 	thumb_func_end object_getCoordinatesForPanels
@@ -4857,6 +4878,7 @@ loc_800E52C:
 	mov r2, #0
 locret_800E532:
 	pop {r4,pc}
+	.balign 4, 0
 off_800E534: .word byte_800E538
 byte_800E538: .byte 0x0, 0xFF, 0x1, 0x0, 0x0, 0x1, 0x1, 0x0, 0xFF, 0x0, 0x1, 0x0, 0x1, 0x0, 0x1, 0x0
 	thumb_func_end sub_800E500
@@ -4946,6 +4968,7 @@ object_canMove:
 loc_800E5F4:
 	mov r0, #0
 	pop {r4,pc}
+	.balign 4, 0
 dword_800E5F8: .word 0x5040
 	thumb_func_end object_canMove
 
@@ -5369,6 +5392,7 @@ loc_800E956:
 loc_800E95C:
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_800E960: .word 0x800
 dword_800E964: .word 0x80018000
 dword_800E968: .word 0x10000
@@ -5737,6 +5761,7 @@ object_spawnHiteffect:
 	bl sub_80E08C4
 locret_800EBCE:
 	pop {r4,r6,pc}
+	.balign 4, 0
 dword_800EBD0: .word 0x20000
 	thumb_func_end object_spawnHiteffect
 
