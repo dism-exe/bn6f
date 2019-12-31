@@ -60,24 +60,34 @@ def fix_unsynced_functions(source_units, address_space):
         if not common.found_in_any(ea, [synced_functions, synced_data, synced_unk]):
             unit = source_unit.get_physical_unit(source_units, ea)
             unit_size = source_unit.compute_unit_size_from_index(address_space, i)
+
             if unit['unit']['id'] == AsmFile.UNIT_IDS.FUNCTION:
+
+                # check if it's thumb or arm
+                # print(unit['unit']['content'])
+                if 'arm' in unit['unit']['content']:
+                    print('ARM function found!')
+                    is_thumb = 0
+                else:
+                    is_thumb = 1
+
                 if Function.isFunction(ea):
                     func = Function.Function(ea)
                     if not func.func_ea == ea:
                         report = '{}::{}. {:X} <{}>: IDA func_ea=0x{:X} != ea=0x{:X}'.format(count, ea_mismatch_count, ea, unit['name'], func.func_ea, ea)
-                        ops.delete_and_make_function(ea, unit_size, unit['name'])
+                        ops.delete_and_make_function(ea, unit_size, unit['name'], is_thumb)
                         ea_mismatch_count += 1
                         count += 1
                         print(report)
                     elif not func.getSize(withPool=True) == unit_size:
                         report = '{}::{}. {:X} <{}>: size mismatch: unit size {} != {}'.format(count, size_mismatch_count, ea, unit['name'], unit_size, func.getSize(withPool=True))
-                        ops.delete_and_make_function(ea, unit_size, unit['name'])
+                        ops.delete_and_make_function(ea, unit_size, unit['name'], is_thumb)
                         size_mismatch_count += 1
                         count += 1
                         print(report)
                 else:
                     report = '{}::{}. {:X} <{}>: unidentified function in IDA'.format(count, unidentified_count, ea, unit['name'])
-                    ops.delete_and_make_function(ea, unit_size, unit['name'])
+                    ops.delete_and_make_function(ea, unit_size, unit['name'], is_thumb)
                     unidentified_count += 1
                     count += 1
                     print(report)

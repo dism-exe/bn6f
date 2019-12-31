@@ -14,13 +14,21 @@ def delete_items(ea, size):
         idc.del_items(item_ea)
 
 
-def delete_and_make_function(ea, func_size, func_name, is_thumb=1):
+def delete_and_make_function(ea, func_size, func_name, is_thumb):
+    if ea == 0x8001030:
+        raise Exception('target found!')
     print('{:X} <{}>: make function'.format(ea, func_name))
     # delete items and make sure that the area is thumb or arm
     for item_ea in next_item_ea(ea, func_size):
         idc.del_items(item_ea)  
         idc.SetRegEx(item_ea, 'T', is_thumb, idc.SR_user)
     idc.MakeFunction(ea)
+
+    # check that the function was created
+    import IDAItems.Function
+    f = IDAItems.Function.Function(ea)
+    if f.getSize(withPool=True) != func_size:
+        raise Exception('Function {:07X} could not be successfully created'.format(ea))
 
 
 def delete_and_make_array(ea, size, label):
