@@ -266,6 +266,7 @@ def split_units_by_path(units):
 
 
 def get_unit_path(unit):
+    unit = to_physical_unit(unit)
     return str(unit['path'][:unit['path'].index(':')]) # convert from unicode
 
 
