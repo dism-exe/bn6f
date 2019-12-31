@@ -17,7 +17,7 @@ reqBBS_813E07C:
 	add r0, r0, r2
 	str r0, [r5,#0x28] // (dword_2001178 - 0x2001150)
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813E09C: .word off_813DF74
 off_813E0A0: .word reqBBS_eStruct2001150
 	thumb_func_end reqBBS_813E07C
@@ -150,7 +150,7 @@ loc_813E1B6:
 	bl reqBBS_813EDE4
 	mov r0, #0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_813E1C4: .word 0x1F40
 	thumb_func_end reqBBS_draw_813E188
 
@@ -251,7 +251,7 @@ loc_813E282:
 	bl reqBBS_813E534
 	mov r0, #0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.word 0x800
 off_813E290: .word off_813E294
 off_813E294: .word dword_87E76B8
@@ -522,7 +522,7 @@ loc_813E49A:
 	bl reqBBS_813E534
 	mov r0, #0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813E4A4: .word reqBBS_eTextScript
 dword_813E4A8: .word 0x5F40
 	thumb_func_end reqBBS_draw_813E450
@@ -793,7 +793,7 @@ loc_813E66A:
 	cmp r1, #6
 	bne loc_813E666
 	pop {r4,r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813E688: .word byte_813E68C
 byte_813E68C: .byte 0xA0, 0x17, 0x0, 0x0, 0xE0, 0x17, 0x0, 0x0, 0x20, 0x18, 0x0
 	.byte 0x0, 0x60, 0x18, 0x0, 0x0, 0xA0, 0x18, 0x0, 0x0, 0xE0, 0x18
@@ -828,7 +828,7 @@ reqBBS_vram_813E6D0:
 	bl ZeroFillGFX30025c0
 	bl sub_8046664 // () -> void
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813E6F8: .word byte_813E6FC
 byte_813E6FC: .byte 0x68, 0x73, 0x7E, 0x88, 0x0, 0x2, 0x0, 0x6, 0x0, 0x7A, 0x1, 0x2
 	.byte 0xA0, 0x72, 0x7E, 0x88, 0x0, 0x0, 0x0, 0x0
@@ -945,7 +945,7 @@ loc_813E880:
 loc_813E886:
 	strb r7, [r5,#5]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813E88C: .word reqBBS_eRequestEntriesIDs
 	thumb_func_end reqBBS_813E834
 
@@ -1413,7 +1413,7 @@ reqBBS_813ED40:
 	mov r2, #0x80
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813ED58: .word byte_813DEC4
 	thumb_func_end reqBBS_813ED40
 
@@ -1452,7 +1452,7 @@ loc_813ED8A:
 	strh r2, [r5,#oReqBBSGui_PagePosUpdate]
 locret_813ED90:
 	pop {r0,r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813ED94: .word reqBBS_eRequestEntriesIDs
 	thumb_func_end reqBBS_813ED60
 
@@ -1979,7 +1979,7 @@ loc_813F57E:
 	bl reqBBS_animateCursor
 	mov r0, #0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_813F58C: .word 0x1F40
 	thumb_func_end UpdateReqBBSMenu813F550
 
@@ -2151,7 +2151,7 @@ loc_813F6CE:
 	bl reqBBS_813FEB0
 	mov r0, #0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813F6EC: .word reqBBS_eRequestEntriesIDs
 off_813F6F0: .word reqBBS_textualShades
 off_813F6F4: .word reqBBS_eTextScript
@@ -2617,7 +2617,7 @@ loc_813FA2E:
 	cmp r1, #1
 	bne loc_813FA2A
 	pop {r4,r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813FA4C: .word dword_813FA50
 dword_813FA50: .word 0x1B60
 	thumb_func_end sub_813FA24
@@ -2715,7 +2715,7 @@ loc_813FB02:
 	bl reqBBS_813F8F0
 	mov r0, #0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.word 0x800
 off_813FB10: .word reqBBS_textualShades
 dword_813FB14: .word 0x5F40
@@ -3036,7 +3036,7 @@ reqBBS_813FDA8:
 	bl ZeroFillGFX30025c0
 	bl sub_8046664 // () -> void
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813FDC8: .word byte_813FDCC
 byte_813FDCC: .byte 0x84, 0xF8, 0x7E, 0x88, 0x0, 0x2, 0x0, 0x6, 0x0, 0x7A, 0x1, 0x2
 	.byte 0x28, 0xFC, 0x7E, 0x88, 0x0, 0x0, 0x0, 0x0
@@ -3113,7 +3113,7 @@ loc_813FEA0:
 loc_813FEA6:
 	strb r7, [r5,#5]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813FEAC: .word reqBBS_eRequestEntriesIDs
 	thumb_func_end reqBBS_813FE54
 
@@ -3553,7 +3553,7 @@ loc_8140320:
 	bne loc_8140320
 locret_8140340:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8140344: .word eReqBBSGui
 dword_8140348: .word 0xF
 off_814034C: .word byte_813F380
@@ -3600,7 +3600,7 @@ loc_814038C:
 	strb r7, [r5,#0xb]
 locret_81403A0:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81403A4: .word 0x3C0
 	thumb_func_end reqBBS_8140358
 
@@ -3795,7 +3795,7 @@ reqBBS_renderSelectedEntry_HeaderText:
 	mov r7, #0
 	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_814050C: .word reqBBS_eRequestEntriesIDs
 off_8140510: .word byte_201B200
 dword_8140514: .word 0x6008400
@@ -3818,7 +3818,7 @@ reqBBS_setChatboxHeaderBasedOn_0F:
 	mov r7, #0
 	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.word reqBBS_eRequestEntriesIDs
 off_8140540: .word byte_201B200
 dword_8140544: .word 0x6008400
@@ -3842,7 +3842,7 @@ reqBBS_changeChatboxHeader:
 	ldr r7, off_8140584 // =unk_201C200 
 	bl sub_8045FC6
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8140574: .word reqBBS_eTextScript
 off_8140578: .word byte_201B200
 dword_814057C: .word 0x6008400
@@ -3878,7 +3878,7 @@ reqBBS_81405A4:
 	mov r2, #0x80
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81405BC: .word byte_813F2AC
 	thumb_func_end reqBBS_81405A4
 
@@ -3956,7 +3956,7 @@ loc_814062E:
 	strh r2, [r5,#0x26]
 locret_8140634:
 	pop {r0,r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8140638: .word reqBBS_eRequestEntriesIDs
 	thumb_func_end reqBBS_8140604
 
@@ -4154,7 +4154,7 @@ reqBBS_getRequestBBSRank:
 	ldr r1, dword_81407A4 // =0xe 
 	ldrb r0, [r0,r1]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_81407A4: .word 0xE
 	thumb_func_end reqBBS_getRequestBBSRank
 
@@ -4165,7 +4165,7 @@ reqBBS_81407A8:
 	ldr r2, dword_81407B4 // =0xe 
 	strb r0, [r1,r2]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_81407B4: .word 0xE
 	thumb_func_end reqBBS_81407A8
 
@@ -4176,7 +4176,7 @@ reqBBS_81407B8:
 	ldr r1, dword_81407C4 // =0xd 
 	ldrb r0, [r0,r1]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_81407C4: .word 0xD
 	thumb_func_end reqBBS_81407B8
 
@@ -4187,7 +4187,7 @@ reqBBS_81407C8:
 	ldr r2, dword_81407D4 // =0xd 
 	strb r0, [r1,r2]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_81407D4: .word 0xD
 	thumb_func_end reqBBS_81407C8
 
@@ -4338,7 +4338,7 @@ reqBBS_81408DC:
 	ldr r2, dword_81408EC // =0xf 
 	strb r0, [r1,r2]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_81408EC: .word 0xF
 	thumb_func_end reqBBS_81408DC
 
@@ -4540,7 +4540,7 @@ reqBBS_RunTextScriptWhoAmI:
 	ldr r0, [r2,r0]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8140A6C: .word TextScriptWhoAmIPtr
 TextScriptWhoAmIPtr: .word TextScriptWhoAmI
 byte_8140A74: .byte 0x78, 0x96, 0x78, 0x78, 0x78, 0x78, 0xAA, 0x96, 0x96

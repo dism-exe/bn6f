@@ -99,7 +99,7 @@ sub_8077DE0:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8077E14: .word off_8077E18
 off_8077E18: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1

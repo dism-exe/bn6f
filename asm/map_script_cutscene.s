@@ -2411,7 +2411,7 @@ StartCutscene:
 	ldr r0, =off_8036EC4
 	str r0, [r5,#oCutsceneState_Unk_34] // s_02011C50.ptr_34
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.pool // 8036EBC
 off_8036EC4: .word 0x4000000
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0

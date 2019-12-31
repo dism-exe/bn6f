@@ -943,7 +943,7 @@ sub_800BF66:
 	mov r1, #0xa0
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_800BF74: .word 0x10000
 off_800BF78: .word 0x171
 off_800BF7C: .word 0x100
@@ -1249,7 +1249,7 @@ loc_800C1CC:
 	b loc_800C198
 locret_800C1D0:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800C1D4: .word off_800C1DC
 off_800C1D8: .word byte_2036740
 off_800C1DC: .word dword_800C200
@@ -2854,7 +2854,7 @@ object_showPanel:
 	strb r1, [r0]
 locret_800CE50:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800CE54: .word _object_setPanelType+1
 off_800CE58: .word unk_2034010
 off_800CE5C: .word 0x708
@@ -4985,7 +4985,7 @@ sub_800E5FC:
 loc_800E60E:
 	mov r0, #0
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800E614: .word 0x1040
 	thumb_func_end sub_800E5FC
 
@@ -5023,7 +5023,7 @@ loc_800E63E:
 loc_800E656:
 	mov r0, #0
 	pop {r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800E65C: .word byte_800E660
 byte_800E660: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xB, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0x7, 0x0, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xB, 0x20, 0x0
@@ -5064,7 +5064,7 @@ loc_800E6A6:
 loc_800E6BE:
 	mov r0, #0
 	pop {r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800E6C4: .word byte_800E6C8
 byte_800E6C8: .byte 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x7, 0x10, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x80, 0xB, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x7, 0x0, 0x0, 0x0, 0x0
@@ -5927,7 +5927,7 @@ loc_800ECD2:
 	mov r0, r4
 locret_800ECD4:
 	pop {r4,r5,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_800ECD8: .word 0x301FE
 dword_800ECDC: .word 0x300EE
 dword_800ECE0: .word 0x4000
@@ -6009,7 +6009,7 @@ loc_800ED52:
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, r4
 	pop {r4,r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800ED78: .word unk_2034080
 off_800ED7C: .word byte_203F6A0
 	thumb_func_end object_createAIData

@@ -58,7 +58,7 @@ sub_807A974:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_807A984: .word off_807A988
 off_807A988: .word off_807A994
 	.word off_807A9A0
@@ -205,7 +205,7 @@ sub_807AAD6:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_807AAEC: .word pt_807AAF0
 pt_807AAF0:
 	.word byte_807AAFC

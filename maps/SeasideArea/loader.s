@@ -99,7 +99,7 @@ sub_8075530:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8075564: .word off_8075568
 off_8075568: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
@@ -161,7 +161,7 @@ sub_80755EE:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8075604: .word off_8075608
 off_8075608:
 	// <endpool>

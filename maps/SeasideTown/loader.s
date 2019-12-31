@@ -38,7 +38,7 @@ SeasideTown_EnterMapGroup:
 	ldr r0, [r0,r1]
 	str r0, [r5,#oGameState_Unk_64]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8059614: .word off_8059294
 off_8059618: .word unk_2037800
 off_805961C: .word off_8059DE8
@@ -65,7 +65,7 @@ SeasideTown_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8059674: .word off_8059678
 off_8059678: .word off_805968C
 	.word off_80596A0

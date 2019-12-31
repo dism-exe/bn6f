@@ -145,7 +145,7 @@ sub_801FEEE:
 	mov lr, pc
 	bx r2
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_801FF04: .word off_801FF08
 off_801FF08: .word sub_801FF18+1
 	.word sub_801FFD6+1

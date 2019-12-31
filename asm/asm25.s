@@ -99,7 +99,7 @@ sub_808F8AC:
 	bl loc_809E306
 	mov r0, #0
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_808F8FC: .word off_808F5D4
 	thumb_func_end sub_808F8AC
 
@@ -390,7 +390,7 @@ sub_808FB18:
 	strb r0, [r1,#0x1c] // (byte_200032C - 0x2000310)
 	mov r0, #0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_808FB48: .word off_808F5D4
 	thumb_func_end sub_808FB18
 
@@ -752,7 +752,7 @@ loc_808FE90:
 	bl StartCutscene
 locret_808FE9C:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_808FEA0: .word off_808FDB8
 	thumb_func_end sub_808FE74
 
@@ -780,7 +780,7 @@ loc_808FEBA:
 	bl sub_8046854
 locret_808FED0:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_808FED4: .word off_808FDB8
 	thumb_func_end sub_808FEA4
 
@@ -1233,7 +1233,7 @@ loc_8090210:
 	mov r0, r6
 	tst r0, r0
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8090218: .word byte_8090220
 off_809021C: .word byte_8090226
 byte_8090220: .byte 0xEC, 0xB, 0xED, 0xB, 0xEE, 0xB
@@ -1338,7 +1338,7 @@ loc_80902CE:
 	mov r8, r1
 	tst r0, r0
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80902D8: .word off_808FDB8
 	thumb_func_end sub_809022C
 

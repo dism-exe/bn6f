@@ -805,7 +805,7 @@ sub_8033F80:
 	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 locret_8033FA4:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8033FA8: .word byte_86C1AA0
 dword_8033FAC: .word 0x6017580
 off_8033FB0: .word byte_8033FB4
@@ -826,7 +826,7 @@ doPETEffect_8033fc0:
 	bl PlaySoundEffect
 locret_8033FD4:
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8033FD8: .word unk_2011E30
 	thumb_func_end doPETEffect_8033fc0
 
@@ -1214,7 +1214,7 @@ decompJackInAnimationGfx_8034314:
 	ldr r0, a1 // =byte_8034370
 	bl sub_80465A0 // (void *a1) -> void
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8034334: .word initRefs_8034338
 initRefs_8034338: .word compFile_86C23A0 + 1<<31
 	.word 0x6000020
@@ -1279,7 +1279,7 @@ loc_80343D0:
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80343FC: .word off_8034400
 off_8034400: .word eTileIds2017A04
 	.word byte_86C22C0
@@ -1668,7 +1668,7 @@ loc_8034B8A:
 	mov r9, r3
 	mov r12, r4
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8034BAC: .word RealWorldMapScriptPointers
 off_8034BB0: .word InternetMapScriptPointers
 off_8034BB4: .word unk_2011EA0
@@ -1864,7 +1864,7 @@ loc_8034D4C:
 loc_8034D52:
 	mov r0, #1
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8034D58: .word 0x16D0
 off_8034D5C: .word 0x100
 off_8034D60: .word byte_8098824
@@ -1954,7 +1954,7 @@ loc_8034E08:
 loc_8034E22:
 	mov r0, #1
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8034E28: .word eS200AC80
 off_8034E2C: .word byte_8099EA0
 off_8034E30: .word byte_809A8A8
@@ -2146,7 +2146,7 @@ sub_8034F68:
 	bl StartCutscene
 locret_8034FA8:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8034FAC: .word 0x16F0
 off_8034FB0: .word byte_8098384
 off_8034FB4: .word unk_2011EA0
@@ -2265,7 +2265,7 @@ sub_8035084:
 loc_803509E:
 	mov r0, #1
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80350A4: .word byte_8098BB8
 	thumb_func_end sub_8035084
 
@@ -2329,7 +2329,7 @@ loc_803511C:
 loc_8035126:
 	mov r0, #1
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_803512C: .word byte_8099DC0
 off_8035130: .word byte_8099E04
 	thumb_func_end npc_80350BC
@@ -2538,7 +2538,7 @@ loc_80352CE:
 	b loc_80352A6
 locret_80352D4:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80352D8: .word word_80352DC
 word_80352DC: .hword 0xD0
 word_80352DE: .hword 0x104
@@ -2633,7 +2633,7 @@ loc_80353AC:
 	b loc_803538E
 locret_80353B0:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80353B4: .word word_80353B8
 word_80353B8: .hword 0x90
 word_80353BA: .hword 0x29
@@ -2658,7 +2658,7 @@ loc_80353EC:
 	bl LoadGFXAnims
 	mov r0, #0
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80353F8: .word off_80353FC
 off_80353FC: .word byte_80349CC
 	.word byte_8034A1C
@@ -2694,7 +2694,7 @@ sub_8035424:
 	bl LoadGFXAnims
 locret_8035440:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8035444: .word off_8035448
 off_8035448: .word byte_8034AFC
 	.word 0xFFFFFFFF
@@ -2839,7 +2839,7 @@ loc_803561A:
 	mov r2, #0
 	bl SetNaviStatsByte
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8035628: .word word_803562C
 word_803562C: .hword 0x0
 	.hword 0x1
@@ -3024,7 +3024,7 @@ loc_8035772:
 loc_803577E:
 	tst r0, r0
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8035784: .word dword_2000DC0
 off_8035788: .word 0x100
 	thumb_func_end sub_8035756

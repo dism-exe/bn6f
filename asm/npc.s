@@ -1872,7 +1872,7 @@ NPCCommand_init_mystery_data:
 	bl FreeOverworldNPCObject
 	bl npc_disableScript0x19_809f51e
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_809F0DC: .word TextScript873D108
 off_809F0E0: .word byte_809F0E4
 byte_809F0E4: .byte 0xFF, 0x0, 0x0, 0x2, 0x2, 0x1, 0x3, 0xFF
@@ -3054,7 +3054,7 @@ loc_809F680:
 	mov r0, r7
 	pop {r7}
 	mov pc, lr
-	.balign 4, 0x00
+	.balign 4, 0
 off_809F688: .word eOverworldNPCObjects
 	thumb_func_end sub_809F66C
 

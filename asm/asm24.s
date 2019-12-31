@@ -5,7 +5,7 @@ sub_808BEFC:
 	bl sub_8005D88
 	mov r0, #0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.byte 0x0, 0xC0, 0xF9, 0x40, 0xFF, 0x0, 0x0, 0x8, 0x3F, 0x0, 0x6, 0x3E
 	.byte 0x74, 0xBF, 0x7B, 0x88, 0x2, 0xFF, 0x1, 0x54, 0x0, 0x8, 0xBF, 0x8
 	.byte 0x8, 0x4A, 0x2, 0xD0, 0xF8, 0x6, 0x8, 0x3F, 0x34, 0x3F, 0x1C, 0x2
@@ -588,7 +588,7 @@ sub_808CBD8:
 loc_808CC06:
 	mov r0, #0
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_808CC0C: .word 0x13B
 	thumb_func_end sub_808CBD8
 
@@ -645,7 +645,7 @@ loc_808CC6C:
 	mov r0, r4
 	mov r1, r6
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_808CC74: .word byte_808CA48
 off_808CC78: .word byte_808C74C
 off_808CC7C: .word byte_808C428
@@ -933,7 +933,7 @@ loc_808CEAE:
 	pop {r0}
 	mov r8, r0
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_808CEB8: .word off_808CEBC
 off_808CEBC: .word byte_808CECC
 	.word byte_808CEE4
@@ -985,7 +985,7 @@ sub_808CF50:
 	bl SetEventFlag
 locret_808CF70:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_808CF74: .word byte_808CF7C
 off_808CF78: .word byte_808CF84
 byte_808CF7C: .byte 0xF8, 0x9, 0xFB, 0x9, 0xFE, 0x9, 0xFD, 0xF
@@ -1012,7 +1012,7 @@ loc_808CFAC:
 	mov r0, r4
 	tst r0, r0
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_808CFB4: .word 0x122
 	thumb_func_end sub_808CF8C
 
@@ -1072,7 +1072,7 @@ loc_808D020:
 	strb r4, [r5,#0x4] // (byte_2000B44 - 0x2000b40)
 	mov r0, r4
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_808D028: .word 0x11B
 dword_808D02C: .word 0xFFFF
 off_808D030: .word dword_808CA44
@@ -1115,7 +1115,7 @@ sub_808D060:
 	mov r1, #1
 	ldrsb r1, [r3,r1]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_808D078: .word byte_808D07C
 byte_808D07C: .byte 0x4, 0xE, 0xC, 0x4, 0xA, 0x4, 0xFC, 0xF6
 	thumb_func_end sub_808D060
@@ -1245,7 +1245,7 @@ loc_808D152:
 	mov r1, #0xd6
 	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_808D16C: .word dword_808CA44
 	.byte 0x50, 0xAC, 0x58, 0x0, 0x2, 0x8, 0x4, 0x38, 0x0, 0x0, 0x0, 0x80
 	.byte 0xFF, 0x0, 0x0, 0x8, 0x3F, 0x0, 0x6, 0x3E, 0x44, 0xCA, 0x7B, 0x88

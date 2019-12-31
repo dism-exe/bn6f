@@ -137,7 +137,7 @@ sub_8141914:
 	mov r0, #0xff
 	strb r0, [r5,#0x13] // (byte_200103B - 0x2001028)
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8141954: .word byte_8141958
 byte_8141958: .byte 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0, 0x18, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -594,7 +594,7 @@ sub_8142050:
 	ldr r7, [r7,r0]
 	ldr r7, [r7,r4]
 	pop {r4-r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8142064: .word off_8141B18
 	thumb_func_end sub_8142050
 
@@ -895,7 +895,7 @@ sub_8142204:
 	ldrb r0, [r2,r0]
 	str r0, [r5,r1]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_814221C: .word dword_8142220
 dword_8142220: .word 0x1E140A00
 	thumb_func_end sub_8142204
@@ -1379,7 +1379,7 @@ sub_81427A4:
 	ldrh r0, [r1,r0]
 	add r0, r0, r4
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81427B8: .word byte_81427BC
 byte_81427BC: .byte 0x50, 0x7, 0x64, 0x7, 0x78, 0x7, 0x8C, 0x7, 0xA0, 0x7, 0xB4
 	.byte 0x7, 0xC8, 0x7, 0xDC, 0x7, 0x0, 0x0
@@ -1449,7 +1449,7 @@ GetSoulWeaponCursorCameraOffsetForMap:
 	mov r1, #1
 	ldrsb r1, [r3,r1]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.pool // 8142854
 SoulWeaponMapBasedCameraOffsets:
 	.byte 0x0, 0x0, 0x8, -0x8
@@ -1682,7 +1682,7 @@ loc_81429F2:
 	b loc_81429F2
 locret_8142A14:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8142A18: .word off_8142A1C
 off_8142A1C: .word byte_8142A2C
 	.word byte_8142A3C
@@ -1720,7 +1720,7 @@ loc_8142A9C:
 	mov r0, r6
 	tst r0, r0
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8142AAC: .word eOverworldMapObjects
 	thumb_func_end sub_8142A84
 
@@ -1821,7 +1821,7 @@ loc_8142B4C:
 	mov r0, r4
 	tst r0, r0
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8142B54: .word eOverworldMapObjects
 	thumb_func_end sub_8142B28
 
@@ -2010,7 +2010,7 @@ sub_8142C94:
 	ldr r2, off_8142CAC // =0x420 
 	bl QueueEightWordAlignedGFXTransfer
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8142CA4: .word dword_8619730
 dword_8142CA8: .word 0x6006C00
 off_8142CAC: .word 0x420
@@ -2433,7 +2433,7 @@ loc_814305E:
 loc_814306E:
 	mov r0, #0
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8143074: .word off_8143078
 off_8143078: .word byte_808C004
 	.word byte_808C0F4
@@ -2495,7 +2495,7 @@ sub_81430DC:
 	lsl r0, r0, #1
 	ldrh r0, [r1,r0]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81430EC: .word dword_81430F0
 dword_81430F0: .word 0x96F096E
 	thumb_func_end sub_81430DC
@@ -2661,7 +2661,7 @@ sub_8143220:
 	mov r1, #1
 	bl sub_81432FA
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_8143244: .word 0x1E
 	thumb_func_end sub_8143220
 
@@ -3281,7 +3281,7 @@ loc_8143A2E:
 loc_8143A46:
 	mov r0, #0
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8143A4C: .word off_8143804
 off_8143A50: .word byte_8093358
 	thumb_func_end sub_8143978
@@ -3369,7 +3369,7 @@ loc_8143B04:
 	bl ClearEventFlagFromImmediate
 locret_8143B14:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8143B18: .word dword_8143B1C
 dword_8143B1C: .word 0x8092C78
 	.word byte_8092A98
@@ -3422,7 +3422,7 @@ sub_8143B5E:
 	ldrh r1, [r1,r3]
 	add r1, r1, r4
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8143B78: .word dword_8143B7C
 dword_8143B7C: .word 0xD680D38
 off_8143B80: .word dword_8143B84
@@ -3449,7 +3449,7 @@ GetGroundmanMinigameProgGridCoordsAndTextScriptIndex:
 	add r2, #0x14
 	mov r0, r4
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8143BAC: .word off_814380C
 	thumb_func_end GetGroundmanMinigameProgGridCoordsAndTextScriptIndex
 
@@ -3501,7 +3501,7 @@ sub_8143BFC:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8143C0C: .word byte_8143C10
 byte_8143C10: .byte 0x78, 0x1E, 0x0, 0x0, 0x4C, 0x1D, 0x0, 0x0
 	thumb_func_end sub_8143BFC
@@ -3514,7 +3514,7 @@ sub_8143C18:
 	lsl r0, r0, #1
 	ldrh r0, [r1,r0]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8143C28: .word dword_8143C2C
 dword_8143C2C: .word 0xD330D32
 	thumb_func_end sub_8143C18
@@ -4075,7 +4075,7 @@ loc_814402A:
 	mov r1, #4
 locret_8144038:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_814403C: .word byte_8144040
 byte_8144040: .byte 0x1B, 0x35, 0x4A, 0x5A, 0x64, 0x0, 0x0, 0x0
 	thumb_func_end sub_8144010

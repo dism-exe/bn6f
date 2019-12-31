@@ -158,7 +158,7 @@ sub_812D3E4:
 	bl CopyBackgroundTiles
 	bl sub_812D5EC
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812D4C4: .word word_2023FA0
 off_812D4C8: .word unk_202DFA0
 off_812D4CC: .word unk_202E080
@@ -236,7 +236,7 @@ sub_812D54C:
 	bl sub_812D56C
 locret_812D564:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812D568: .word byte_812C268
 	thumb_func_end sub_812D54C
 
@@ -291,7 +291,7 @@ sub_812D5A0:
 	mov r3, r4
 	bl sub_811980C
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812D5CC: .word word_2023FA0
 	thumb_func_end sub_812D5A0
 
@@ -781,7 +781,7 @@ sub_812D934:
 	mov r3, #0xa
 	bl sub_8120228
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812D948: .word off_812D94C
 off_812D94C: .word unk_202DFA0
 	.word unk_202DFC0

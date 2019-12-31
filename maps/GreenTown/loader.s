@@ -38,7 +38,7 @@ GreenTown_EnterMapGroup:
 	ldr r0, [r0,r1]
 	str r0, [r5,#oGameState_Unk_64]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_805DF64: .word off_805DD24
 off_805DF68: .word unk_2037800
 off_805DF6C: .word off_805E1FC

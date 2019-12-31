@@ -103,7 +103,7 @@ loc_812EB5C:
 loc_812EB62:
 	add sp, sp, #4
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812EB68: .word word_2023FA0
 	.word word_2023FA4
 off_812EB70: .word 0x14C
@@ -117,7 +117,7 @@ sub_812EB78:
 	ldr r0, off_812EB84 // =byte_812DA94 
 	bl sub_80465A0 // (void *a1) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812EB84: .word byte_812DA94
 	thumb_func_end sub_812EB78
 
@@ -165,7 +165,7 @@ sub_812EBB8:
 	bl sub_812EBD8
 locret_812EBD0:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812EBD4: .word byte_812DACC
 	thumb_func_end sub_812EBB8
 
@@ -475,7 +475,7 @@ sub_812EDFC:
 	mov r3, #0xa
 	bl sub_8120280
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812EE14: .word off_812EE18
 off_812EE18: .word unk_2024F90
 	.word unk_2024FB0

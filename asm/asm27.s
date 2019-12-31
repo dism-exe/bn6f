@@ -90,7 +90,7 @@ loc_8094752:
 	bl sub_80307D8
 	mov r0, #0
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8094774: .word unk_2025404
 off_8094778: .word unk_2026404
 off_809477C:

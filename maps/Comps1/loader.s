@@ -82,7 +82,7 @@ sub_806D9FC:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_806DA0C: .word off_806DA10
 off_806DA10: .word off_806DA50
 	.word off_806DA50
@@ -127,7 +127,7 @@ sub_806DA58:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_806DA8C: .word off_806DA90
 off_806DA90: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1

@@ -119,7 +119,7 @@ sub_807CF24:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_807CF58: .word off_807CF5C
 off_807CF5C: .word nullsub_39+1
 	.word nullsub_36+1

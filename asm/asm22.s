@@ -262,7 +262,7 @@ loc_808712A:
 loc_8087130:
 	bl StartCutscene
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8087138: .word byte_80868C8+0x20
 off_808713C: .word byte_8086678+0x20
 	thumb_func_end sub_808711C

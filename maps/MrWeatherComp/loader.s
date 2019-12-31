@@ -120,7 +120,7 @@ sub_806A120:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_806A154: .word off_806A158
 off_806A158: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
@@ -191,7 +191,7 @@ sub_806A1DE:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_806A1F4: .word off_806A1F8
 off_806A1F8: .word byte_806A204
 	.word byte_806A21C

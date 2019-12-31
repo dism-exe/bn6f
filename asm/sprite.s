@@ -83,7 +83,7 @@ loc_8002716:
 	pop {r1}
 	strb r1, [r5,#oObjectSprite_Unk_03]
 	pop {r4,r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8002724: .word SpritePointersList
 sprite8002728: .word spriteWhiteDot
 	thumb_func_end sprite_load
@@ -155,7 +155,7 @@ loc_800278A:
 	mov r0, #0x80
 	strh r0, [r5,#0x16]
 	pop {r4-r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8002798: .word guiSpritePtrs
 	thumb_func_end initGuiSprite_8002770
 
@@ -330,7 +330,7 @@ sprite_resetObjVars_800289C:
 	mvn r2, r2
 	bl WordFill
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80028B4: .word dword_20093A8
 off_80028B8: .word dword_200A890
 off_80028BC: .word 0x388
@@ -343,7 +343,7 @@ sub_80028C0:
 	ldr r2, off_80028D0 // =byte_200F389
 	strb r1, [r2,r0]
 	mov pc, lr
-	.balign 4, 0x00
+	.balign 4, 0
 off_80028CC: .word dword_200F340
 off_80028D0: .word byte_200F389
 	thumb_func_end sub_80028C0

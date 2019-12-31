@@ -38,7 +38,7 @@ ExpoSite_EnterMapGroup:
 	ldr r0, [r0,r1]
 	str r0, [r5,#oGameState_Unk_64]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8062B0C: .word off_8062728
 off_8062B10: .word unk_2037800
 off_8062B14: .word off_8063008
@@ -68,7 +68,7 @@ ExpoSite_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8062B74: .word off_8062B78
 off_8062B78: .word off_8062B90
 	.word off_8062B9C

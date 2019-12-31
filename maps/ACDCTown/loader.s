@@ -38,7 +38,7 @@ ACDCTown_EnterMapGroup:
 	ldr r0, [r0,r1]
 	str r0, [r5,#oGameState_Unk_64]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_804CEEC: .word off_804CE68
 off_804CEF0: .word unk_2037800
 off_804CEF4: .word off_804D0E4

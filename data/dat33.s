@@ -31,7 +31,7 @@ sub_812C2C0::
 	bl sub_803C59C
 locret_812C2E4::
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812C2E8:: .word off_812C2EC
 off_812C2EC:: .word sub_812C320+1
 	.word sub_812C3BC+1
@@ -965,7 +965,7 @@ loc_812CA52::
 	bl sub_812DA4C
 locret_812CA58::
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_812CA5C:: .word 0xFFFFFFFF
 dword_812CA60:: .word 0xFEDC
 dword_812CA64:: .word 0xFEDB
@@ -1093,7 +1093,7 @@ loc_812CB62::
 	b locret_812CB64
 locret_812CB64::
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_812CB68:: .word 0xFFFFFFFF
 dword_812CB6C:: .word 0xFEDC
 dword_812CB70:: .word 0xFEDB
@@ -1363,7 +1363,7 @@ loc_812CD76::
 	b locret_812CD78
 locret_812CD78::
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_812CD7C:: .word 0xFFFFFFFF
 dword_812CD80:: .word 0xFEDC
 dword_812CD84:: .word 0xFEDB
@@ -1456,7 +1456,7 @@ sub_812CE28::
 	bx r0
 	bl sub_812DA3C
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812CE3C:: .word off_812CE40
 off_812CE40:: .word sub_812AC14+1
 	.word sub_812CE50+1
@@ -1644,7 +1644,7 @@ loc_812CFBC::
 	bl sub_812D3E4
 	bl sub_812D4FC
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_812CFC8:: .byte 0xFF, 0xFF, 0xFF, 0xFF, 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE
 	.byte 0x0, 0x0
 	thumb_func_end sub_812CEF0

@@ -110,7 +110,7 @@ JudgeTreeComp_LoadBGAnim:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8069174: .word off_8069178
 off_8069178: .word nullsub_39+1
 	.word BGScrollCB_BG3UpScroll+1

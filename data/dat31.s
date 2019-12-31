@@ -360,7 +360,7 @@ loc_810C6DA::
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 locret_810C6E0::
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_810C6E4:: .word 0x10000
 dword_810C6E8:: .word 0xF880080
 dword_810C6EC:: .word 0xC000000
@@ -419,7 +419,7 @@ sub_810C754::
 	mov r0, #4
 	strb r0, [r6,#oAIState_Unk_00]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810C76C:: .word byte_810C770
 byte_810C770:: .byte 0x78, 0x64, 0x50, 0x3C, 0x3C, 0x3C
 	thumb_func_end sub_810C754
@@ -451,7 +451,7 @@ loc_810C794::
 	strb r0, [r6,#oAIState_Unk_00]
 locret_810C7A8::
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810C7AC:: .word byte_810C7B0
 byte_810C7B0:: .byte 0xB4, 0x3C, 0x3C, 0x3C, 0x1E, 0x1E
 	thumb_func_end sub_810C776
@@ -499,7 +499,7 @@ loc_810C7F4::
 	strb r0, [r6,#oAIState_Unk_00]
 locret_810C808::
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810C80C:: .word byte_810C814
 off_810C810:: .word byte_810C81A
 byte_810C814:: .byte 0x78, 0x78, 0x78, 0x78, 0x78, 0x78

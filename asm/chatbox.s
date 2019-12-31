@@ -18,7 +18,7 @@ chatbox_uncompBasedOnMap_803FD08:
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_803FD30: .word byte_202DA00
 off_803FD34: .word unk_2033400
 off_803FD38: .word byte_202FA00
@@ -616,7 +616,7 @@ loc_80401A4:
 	pop {r1}
 	mov r12, r1
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80401F8: .word 0xE2B8
 off_80401FC: .word byte_8040200
 byte_8040200: .byte 0x0, 0x40, 0x0, 0x80, 0x0, 0x40, 0x0, 0x80
@@ -920,7 +920,7 @@ chatbox_runScript:
 	mov r2, #0x20
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {r4-r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_804046C: .word dword_86BEB20
 dword_8040470: .word 0x600DC80
 off_8040474: .word 0x160
@@ -1827,7 +1827,7 @@ loc_8040C0C:
 	bl sub_8002694
 locret_8040C24:
 	pop {r4-r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8040C28: .word 0x421
 dword_8040C2C: .word 0x842
 off_8040C30: .word 0x100
@@ -1910,7 +1910,7 @@ loc_8040CBC:
 	ldr r1, off_8040CC8 // =0x1f0
 	strb r0, [r5,r1]
 	pop {r0,r1,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_8040CC4: .word 0x1F2
 off_8040CC8: .word 0x1F0
 off_8040CCC: .word 0x1F1
@@ -2331,7 +2331,7 @@ loc_8040FBC:
 	add r4, r4, r1
 locret_8040FD0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8040FD4: .word chatbox_EB_msgboxJumpTable
 off_8040FD8: .word byte_8045DCC
 chatbox_EB_msgboxJumpTable: .word chatbox_804103E+1
@@ -4343,7 +4343,7 @@ loc_8041E5A:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_8041E7C: .word 0xFFFF
 	thumb_func_end chatbox_8041DF4
 
@@ -4756,7 +4756,7 @@ chatbox_8042184:
 	mov r4, r0
 	mov r0, #1
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80421CC: .word byte_200AFA0
 off_80421D0: .word 0x140
 off_80421D4: .word off_8043C8C
@@ -5532,7 +5532,7 @@ loc_8042750:
 	add r4, #3
 	mov r0, #1
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8042758: .word off_804275C
 off_804275C: .word 0x1D4
 dword_8042760: .word 0x1D6
@@ -5592,7 +5592,7 @@ loc_80427CE:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80427D8: .word 0xD
 dword_80427DC: .word 0xF
 off_80427E0: .word byte_813F380
@@ -5627,7 +5627,7 @@ chatbox_8042804:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8042818: .word eReqBBSGui
 dword_804281C: .word 0xF
 	thumb_func_end chatbox_8042804
@@ -6186,7 +6186,7 @@ loc_8042C0C:
 	add r4, #9
 	mov r0, #1
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_8042C14: .word 0xFFFFFFFF
 	thumb_func_end chatbox_8042B38
 
@@ -6302,7 +6302,7 @@ loc_8042CEC:
 	add r4, #9
 	mov r0, #1
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_8042CF4: .word 0xFFFFFFFF
 	thumb_func_end chatbox_8042C18
 
@@ -6799,7 +6799,7 @@ loc_8043050:
 	mov r4, r0
 	mov r0, #1
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8043084: .word off_8043088
 off_8043088: .word dword_20018F0
 	.word dword_200194C
@@ -6890,7 +6890,7 @@ sub_804312C:
 	add r4, #3
 	mov r0, #1
 	mov pc, lr
-	.balign 4, 0x00
+	.balign 4, 0
 off_804315C: .word 0x1CC
 off_8043160: .word 0x154
 	thumb_func_end sub_804312C
@@ -7574,7 +7574,7 @@ loc_804368C:
 	add r4, #5
 	mov r0, #0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8043694: .word byte_803FCE4
 off_8043698: .word sub_3007038+1
 	.word 0x1CC
@@ -7840,7 +7840,7 @@ loc_804388C:
 	add r4, #5
 	mov r0, #0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8043894: .word byte_803FCE4
 byte_8043898: .byte 0x39, 0x70, 0x0, 0x3, 0xCC, 0x1, 0x0, 0x0
 dword_80438A0: .word 0x154

@@ -57,7 +57,7 @@ sub_8071BE4:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8071BF4: .word off_8071BF8
 off_8071BF8: .word off_8071C04
 	.word off_8071C18
@@ -98,7 +98,7 @@ sub_8071C30:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8071C64: .word off_8071C68
 off_8071C68: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
@@ -165,7 +165,7 @@ sub_8071CEE:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8071D04: .word off_8071D08
 off_8071D08: .word byte_8071D14
 	.word byte_8071D7C

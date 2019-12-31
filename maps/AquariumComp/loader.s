@@ -118,7 +118,7 @@ AquariumComp_LoadBGAnim:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8067CBC: .word off_8067CC0
 off_8067CC0: .word nullsub_39+1
 	.word BGScrollCB_BG3FastLeftScroll+1
@@ -189,7 +189,7 @@ AquariumComp_SpawnMapObjectsForMap:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8067D5C: .word pt_8067D60
 pt_8067D60:
 	// <endpool>

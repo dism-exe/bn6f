@@ -1051,7 +1051,7 @@ loc_813BE7C:
 	blt loc_813BE4A
 	add sp, sp, #4
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813BE88: .word byte_2006C50
 	thumb_func_end sub_813BE38
 
@@ -1435,7 +1435,7 @@ loc_813C120:
 	blt loc_813C08C
 	add sp, sp, #0xc
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813C12C: .word unk_30019E0
 	.word byte_813C14C
 dword_813C134: .word 0x6F15
@@ -1557,7 +1557,7 @@ loc_813C270:
 	blt loc_813C1DA
 	add sp, sp, #8
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813C27C: .word unk_30019E0
 	.word byte_813C2B0
 dword_813C284: .word 0x6F15
@@ -2034,7 +2034,7 @@ loc_813C730:
 	bl sub_813CEA0 // () -> void
 	add sp, sp, #4
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813C744: .word byte_2006DD8
 off_813C748: .word navicust_jt_NCPs
 navicust_jt_NCPs: .word sub_813C808+1
@@ -2307,7 +2307,7 @@ navicust_NCP_OilBody:
 	ldr r2, dword_813C958 // =0x2 
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_813C958: .word 0x2
 	thumb_func_end navicust_NCP_OilBody
 
@@ -2319,7 +2319,7 @@ navicust_NCP_Fish:
 	ldr r2, dword_813C96C // =0x4 
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_813C96C: .word 0x4
 	thumb_func_end navicust_NCP_Fish
 
@@ -2343,7 +2343,7 @@ navicust_NCP_Jungle:
 	ldr r2, dword_813C994 // =0x10 
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_813C994: .word 0x10
 	thumb_func_end navicust_NCP_Jungle
 
@@ -3279,7 +3279,7 @@ sub_813CF8C:
 	mov r1, #0x1a
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_813CF9C: .byte 0x2
 byte_813CF9D: .byte 0xFF
 word_813CF9E: .hword 0x81
@@ -4184,7 +4184,7 @@ sub_813D98C:
 	ldr r1, off_813D99C // =eStruct200BC30 
 	strb r0, [r1,#0xe] // (byte_200BC3E - 0x200bc30)
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813D99C: .word eStruct200BC30
 	thumb_func_end sub_813D98C
 

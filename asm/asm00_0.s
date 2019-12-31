@@ -325,7 +325,7 @@ loc_80007F0:
 	bl sound_8000808 // () -> void
 locret_8000800:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8000804: .word loc_80007E8+1
 	thumb_func_end sub_80007BE
 
@@ -699,7 +699,7 @@ loc_8000A2A:
 	and r1, r2
 	bne loc_8000A00
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8000A34: .word DMA0SourceAddress
 dword_8000A38: .word 0x80000000
 	thumb_func_end sub_80009FC
@@ -762,7 +762,7 @@ loc_8000A96:
 	mov r8, r0
 	mov r9, r1
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8000AA4: .word CopyJumpTable8000AA8
 CopyJumpTable8000AA8: .word CopyBytes+1
 	.word CopyHalfwords+1
@@ -1874,7 +1874,7 @@ sub_80011A0:
 	mul r2, r1
 	asr r1, r2, #8
 	mov pc, lr
-	.balign 4, 0x00
+	.balign 4, 0
 off_80011B8: .word math_cosTable
 off_80011BC: .word byte_80066E0
 	thumb_func_end sub_80011A0
@@ -2300,7 +2300,7 @@ loc_80014A8:
 	ldr r2, [sp,#0x14]
 	add sp, sp, #0x40
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80014B4: .word byte_80014BC
 off_80014B8: .word eCamera+0x4C // eCamera.unk_4C
 byte_80014BC: .byte 0x8, 0x8, 0x10, 0x10, 0x20, 0x20, 0x40, 0x40
@@ -2452,7 +2452,7 @@ dead_rng_800157C:
 	eor r0, r1
 	str r0, [r7]
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 rng_8001594: .word 0xA338244F
 off_8001598: .word eRngSeed20013F0
 off_800159C: .word eRngSeed20013F0
@@ -2726,7 +2726,7 @@ ZeroFillGFX30025c0:
 	ldr r1, dword_800184C // =0x2000
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_800184C: .word 0x2000
 	thumb_func_end ZeroFillGFX30025c0
 
@@ -3230,7 +3230,7 @@ loc_8001B48:
 	mov r9, r2
 	mov r12, r3
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8001B68: .word off_8001C24
 	thumb_func_end LoadGFXAnim
 
@@ -3465,7 +3465,7 @@ loc_8001CA6:
 	lsl r2, r2, #5
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8001CE4: .word off_8001AB8
 off_8001CE8: .word off_8001CEC
 off_8001CEC: .word sub_8001D64+1
@@ -3539,7 +3539,7 @@ loc_8001D0E:
 	lsl r2, r2, #6
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8001D4C: .word off_8001AB8
 off_8001D50: .word off_8001D54
 off_8001D54: .word sub_8002000+1
@@ -4453,7 +4453,7 @@ loc_80023CA:
 	mov r0, #0
 locret_80023D8:
 	mov pc, lr
-	.balign 4, 0x00
+	.balign 4, 0
 off_80023DC: .word 0x108
 	thumb_func_end sub_80023C6
 
@@ -4503,7 +4503,7 @@ loc_8002428:
 	cmp r5, r6
 	blt loc_80023FC
 	pop {r5-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8002438: .word unk_200F388
 off_800243C: .word palette_3001960
 off_8002440: .word iPalette3001B60

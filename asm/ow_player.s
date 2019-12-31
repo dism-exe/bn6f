@@ -906,7 +906,7 @@ loc_809D886:
 loc_809D894:
 	bl sub_8002E14
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_809D89C: .byte 0x4, 0x0, 0x4, 0x0, 0x4, 0xC, 0x8, 0x0, 0x4, 0x0, 0x0, 0x0
 off_809D8A8: .word byte_809D89C
 off_809D8AC: .word eStruct200ace0
@@ -1546,7 +1546,7 @@ loc_809DDDE:
 	mov r0, #1
 locret_809DDE8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_809DDEC: .word 0xC00000
 	thumb_func_end sub_809DDCC
 
@@ -1620,7 +1620,7 @@ loc_809DE72:
 	ldr r0, [r7,#8]
 	str r0, [r5,#oOWPlayerObject_Unk_3c]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_809DE8C: .word off_809DE90
 off_809DE90: .word byte_809CFBC
 	.word byte_809D0DC
@@ -2048,7 +2048,7 @@ sub_809E168:
 	movflag EVENT_1719
 	bl SetEventFlagFromImmediate
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_809E184: .word eStruct200ace0
 	thumb_func_end sub_809E168
 

@@ -38,7 +38,7 @@ CyberAcademy_EnterMapGroup:
 	ldr r0, [r0,r1]
 	str r0, [r5,#oGameState_Unk_64]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80526E4: .word off_8052244
 off_80526E8: .word unk_2037800
 off_80526EC: .word off_8052EE8
@@ -77,7 +77,7 @@ CyberAcademy_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8052774: .word off_8052778
 off_8052778: .word off_80527A4
 	.word off_80527AC

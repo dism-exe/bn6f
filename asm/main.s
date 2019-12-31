@@ -45,7 +45,7 @@ loc_800032A:
 	bx r0
 	bl main_static_8000454
 	b main_gameRoutine
-	.balign 4, 0x00
+	.balign 4, 0
 off_8000344: .word sub_3006814+1
 off_8000348: .word main_subsystemJumpTable
 main_subsystemJumpTable: .word startscreen_802F544+1
@@ -171,7 +171,7 @@ loc_8000438:
 	and r4, r5
 	strh r4, [r0,#2]
 	mov pc, lr
-	.balign 4, 0x00
+	.balign 4, 0
 off_800044C: .word KeyStatus
 dword_8000450: .word 0x3FF
 	thumb_func_end main_static_80003E4
@@ -279,7 +279,7 @@ loc_80004C0:
 	bl sub_803D1A8 // () -> void
 	bl sub_803E900
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8000564: .word 0x40
 off_8000568: .word 0xC0
 off_800056C: .word dword_2009930
@@ -305,7 +305,7 @@ main_static_8000570:
 	orr r1, r2
 	strh r1, [r0]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_800059C: .word 0x93040D
 off_80005A0: .word GeneralLCDStatus_STAT_LYC_
 	.word off_3000E70

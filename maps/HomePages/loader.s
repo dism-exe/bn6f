@@ -313,7 +313,7 @@ loc_806C584:
 	mov r1, #0x8f
 	bl SetEventFlagFromImmediate
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_806C598: .word off_806C1C4
 	thumb_func_end sub_806C578
 
