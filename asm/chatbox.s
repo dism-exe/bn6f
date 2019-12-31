@@ -34,7 +34,7 @@ chatbox_uncomp_803FD3C:
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_803FD50: .word unk_2034A00
 	thumb_func_end chatbox_uncomp_803FD3C
 
@@ -76,7 +76,7 @@ chatbox_runScript_803FD78:
 	mov r2, #8
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	pop {r4,r5,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_803FD90: .word byte_803FD94
 byte_803FD94: .byte 0x7E, 0x0, 0x83, 0x0, 0x7F, 0x0, 0x81, 0x0
 	thumb_func_end chatbox_runScript_803FD78
@@ -1185,7 +1185,7 @@ dead_80405F8:
 	mov r2, #0x20
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {r4-r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 	.word dword_86BEB20
 byte_80406E4: .byte 0x80, 0xDC, 0x0, 0x6, 0x60, 0x1, 0x0, 0x0
 	.word byte_86BEC80
@@ -1676,7 +1676,7 @@ chatbox_8040A9A:
 loc_8040B0A:
 	strb r2, [r5,#oChatbox_Unk_16]
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_8040B10: .word 0x8000
 off_8040B14: .word dword_86A4A40
 dword_8040B18: .word 0x6017F80
@@ -3166,7 +3166,7 @@ loc_8041688:
 	add r4, #3
 	mov r0, #1
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8041690: .word off_8043C84
 	thumb_func_end chatbox_8041670
 
@@ -3330,7 +3330,7 @@ loc_8041798:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80417A0: .word off_8043C64
 	thumb_func_end chatbox_8041774
 
@@ -3638,7 +3638,7 @@ loc_80419A8:
 	add r4, #0xf
 	mov r0, #1
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80419B0: .word off_8043C64
 	thumb_func_end chatbox_804198C
 
@@ -3788,7 +3788,7 @@ loc_8041AA8:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8041AB0: .word byte_8041AB4
 byte_8041AB4: .byte 0x0, 0x1, 0x2, 0x4, 0x5, 0x6, 0x0, 0x0
 	thumb_func_end chatbox_8041A7C
@@ -3956,7 +3956,7 @@ loc_8041BC8:
 	add r4, #3
 	mov r0, #1
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 Flags8041BD0: .word FLAGS_3E_UNK_0800
 dword_8041BD4: .word 0x1F3
 	thumb_func_end chatbox_F1_textspeed
@@ -5435,7 +5435,7 @@ chatbox_80426E0:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80426F0: .word 0x1000
 	thumb_func_end chatbox_80426E0
 
@@ -6657,7 +6657,7 @@ sub_8042FC2:
 	ldr r0, dword_8042FD4 // =0x687261
 	str r0, [r5,#0x58]
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_8042FD0: .word 0x67625E6F
 dword_8042FD4: .word 0x687261
 	thumb_func_end sub_8042FC2

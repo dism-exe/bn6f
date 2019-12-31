@@ -1238,7 +1238,7 @@ sub_8089C78:
 loc_8089C9A:
 	mov r0, #1
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8089CA0: .word byte_80894D4
 	thumb_func_end sub_8089C78
 

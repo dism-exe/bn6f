@@ -759,7 +759,7 @@ loc_8002BB2:
 	mov r9, r2
 	mov r12, r3
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8002BC0: .word SpritePointersList
 dword_8002BC4: .word 0x2040000
 off_8002BC8: .word dword_2033000

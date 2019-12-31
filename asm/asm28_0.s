@@ -978,7 +978,7 @@ sub_809A334:
 	ldr r0, off_809A340 // =initRefs_809A344 
 	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_809A340: .word initRefs_809A344
 initRefs_809A344: .word dword_86C57EC
 	.word unk_3001B20
@@ -3190,7 +3190,7 @@ loc_809BEF4:
 	bl sub_809B9EC
 	mov r0, #1
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_809BF00: .word byte_809BF04
 byte_809BF04: .byte 0x8, 0x0, 0x4, 0x0, 0x2, 0x0, 0xFF, 0xFF, 0x0, 0x8, 0x0, 0x4, 0x0, 0x2, 0xFF
 	.byte 0xFF, 0xF8, 0x0, 0xFC, 0x0, 0xFE, 0x0, 0xFF, 0xFF, 0x0, 0xF8, 0x0, 0xFC, 0x0, 0xFE
@@ -3809,7 +3809,7 @@ sub_809CA40:
 loc_809CA7A:
 	mov r0, #0
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_809CA80: .word off_809C0F0
 	thumb_func_end sub_809CA40
 

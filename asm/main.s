@@ -90,7 +90,7 @@ loc_80003A6:
 	mov r1, #0
 	str r1, [r0]
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 	.word dword_2009CC0
 off_80003C4: .word dword_200A870
 off_80003C8: .word dword_2009930
@@ -108,7 +108,7 @@ loc_80003D6:
 	tst r1, r2
 	bne loc_80003D6
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80003E0: .word GeneralLCDStatus_STAT_LYC_
 	thumb_func_end main_pollGeneralLCDStatus_STAT_LYC_
 

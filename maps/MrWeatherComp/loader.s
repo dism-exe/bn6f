@@ -53,7 +53,7 @@ sub_806A070:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_806A080: .word off_806A084
 off_806A084: .word off_806A090
 	.word off_806A0C0

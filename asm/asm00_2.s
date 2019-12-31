@@ -818,7 +818,7 @@ loc_800F346:
 	ldrb r0, [r0,r2]
 	mul r0, r3
 	mov pc, lr
-	.byte 0, 0
+	.balign 4, 0
 off_800F350: .word byte_800F354
 byte_800F354: .byte 0x0, 0x0, 0x0, 0x0, 0x3, 0x1, 0x0, 0x0
 	thumb_func_end sub_800F334
@@ -1360,7 +1360,7 @@ loc_800F720:
 	lsr r0, r0, #0x1d
 	add sp, sp, #0x14
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_800F740: .word off_800F748
 off_800F744: .word byte_800F758
 off_800F748: .word LCDControl
@@ -5452,7 +5452,7 @@ loc_8011754:
 	mov r0, #0
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	pop {r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_8011760: .word 0x1000003F
 	thumb_func_end object_exitAttackState
 	thumb_func_end sub_801171C
@@ -6585,7 +6585,7 @@ sub_8012018:
 	strb r0, [r7,#oAIAttackVars_Unk_05]
 	mov r0, #0x2b 
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8012040: .word 0x114
 	thumb_func_end sub_8012018
 
@@ -8629,7 +8629,7 @@ sub_8012DB8:
 	orr r0, r1
 locret_8012DCC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8012DD0: .word byte_8012DD4
 byte_8012DD4: .byte 0x20, 0x0, 0x0, 0x0, 0x80, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xA0, 0x0
 	.byte 0x0, 0x0
@@ -9407,7 +9407,7 @@ sub_8013396:
 loc_80133AA:
 	mov r0, #0
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80133B0: .word 0x800
 off_80133B4: .word 0x1500
 off_80133B8: .word timer_2000000
@@ -10760,7 +10760,7 @@ loc_8013D20:
 	bl PlaySoundEffect
 locret_8013D3C:
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8013D40: .word byte_8013D44
 byte_8013D44: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x90, 0x0, 0xA4, 0x0, 0x1B, 0x1
 	.byte 0x18, 0x1, 0x1C, 0x1, 0xFC, 0x0, 0xFC, 0x0, 0xFC, 0x0, 0xFC, 0x0
@@ -16673,7 +16673,7 @@ loc_8016D74:
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_Unk_0d]
 	pop {r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_8016D80: .word 0x1000
 dword_8016D84: .word 0xA0000
 dword_8016D88: .word 0x60000
@@ -18691,7 +18691,7 @@ loc_8017F08:
 	strb r0, [r5,#oBattleObject_Unk_0d]
 	pop {r4,r6,r7,pc}
 	.word 0, 0, 0
-	.byte 0, 0
+	.balign 4, 0
 off_8017F20: .word byte_8017F24
 byte_8017F24: .byte 0x0, 0x0, 0x1, 0x1, 0x0, 0x0, 0x2, 0x2
 off_8017F2C: .word 0x1040
@@ -21246,7 +21246,7 @@ loc_801A7A6:
 	strb r0, [r4,r1]
 locret_801A7AC:
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_801A7B0: .word off_80209EC
 off_801A7B4: .word off_80209EC
 off_801A7B8: .word off_80209EC
@@ -21583,7 +21583,7 @@ loc_801AA20:
 	bl object_spawnHiteffect
 locret_801AA3C:
 	pop {r4,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_801AA40: .word 0x125
 dword_801AA44: .word 0x12A
 	thumb_func_end sub_801A9B8
@@ -22570,7 +22570,7 @@ loc_801B376:
 loc_801B37A:
 	add sp, sp, #4
 	pop {r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_801B380: .word 0x202
 dword_801B384: .word 0x40000100
 dword_801B388: .word 0x8000
@@ -24105,7 +24105,7 @@ loc_801BEF2:
 	b loc_801BEE8
 locret_801BEFC:
 	pop {r5-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_801BF00: .word off_801BF04
 off_801BF04: .word sub_801BFEE+1
 	.word sub_801BFF8+1
@@ -25505,7 +25505,7 @@ sub_801C9C8:
 	mov r5, #2
 	bl CopyBackgroundTiles
 	pop {r4,r5,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_801C9E0: .word byte_801D964
 	thumb_func_end sub_801C9C8
 
@@ -26870,7 +26870,7 @@ loc_801D4AA:
 	ldr r1, dword_801D4FC // =0xc3c8 
 	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 	pop {r4-r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_801D4F0: .word 0x80044080
 dword_801D4F4: .word 0xC3C0
 dword_801D4F8: .word 0x8090
@@ -27386,7 +27386,7 @@ sub_801DA24:
 	ldr r1, off_801DB50 // =eStruct2035280
 	str r0, [r1,#0x48] // (dword_20352C8 - 0x2035280)
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_801DA40: .word off_801ECB4
 dword_801DA44: .word 0x1F09
 	thumb_func_end sub_801DA24
@@ -27860,7 +27860,7 @@ sub_801DD88:
 	mov r0, #8
 	bl sub_801DA48
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_801DDA0: .word off_801DDA4
 off_801DDA4: .word dword_86BA0A0
 	.word 0x600C940
@@ -28489,7 +28489,7 @@ loc_801E20A:
 	lsl r0, r0, #8
 	bl sub_801BEB8
 	pop {r4-r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_801E220: .word word_801EE14
 off_801E224: .word word_801EE58
 	thumb_func_end sub_801E1E4
@@ -28725,7 +28725,7 @@ sub_801E3C4:
 	ldr r0, dword_801E3E0 // =0x100000 
 	bl sub_801BEC2
 	pop {r4,r5,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_801E3E0: .word 0x100000
 	thumb_func_end sub_801E3C4
 
@@ -28746,7 +28746,7 @@ sub_801E3E4:
 	ldr r0, dword_801E400 // =0x100000 
 	bl sub_801BEB8
 	pop {r4,r5,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_801E400: .word 0x100000
 off_801E404: .word byte_801EF10
 	thumb_func_end sub_801E3E4

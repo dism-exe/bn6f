@@ -623,7 +623,7 @@ loc_812C796::
 	bl sub_812DA4C
 locret_812C79C::
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_812C7A0:: .word 0xFFFFFFFF
 dword_812C7A4:: .word 0xFEDC
 dword_812C7A8:: .word 0xFEDB

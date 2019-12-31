@@ -1252,7 +1252,7 @@ loc_813EC38:
 	strb r7, [r5,#0xb]
 locret_813EC4C:
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_813EC50: .word 0x3C0
 	thumb_func_end reqBBS_static_813EC10
 
@@ -1343,7 +1343,7 @@ reqBBS_dead_813ECD8:
 	mov r5, #0xa
 	bl call_sub_3005EBA
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_813ECF0: .word eTileIds2018A04
 	thumb_func_end reqBBS_dead_813ECD8
 
@@ -1383,7 +1383,7 @@ reqBBS_drawHeaderText:
 	mov r7, #0
 	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_813ED30: .word reqBBS_eRequestEntriesIDs
 off_813ED34: .word byte_201B200
 dword_813ED38: .word 0x6008400
@@ -3830,7 +3830,7 @@ reqBBS_8140588:
 	mov r2, #0x80
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_81405A0: .word byte_813F22C
 	thumb_func_end reqBBS_8140588
 
@@ -4356,7 +4356,7 @@ loc_814096A:
 	mov r0, #0
 locret_814096C:
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8140970: .word 0x110
 	thumb_func_end reqBBS_81408F0
 
@@ -4367,7 +4367,7 @@ reqBBS_8140974:
 	ldr r1, dword_8140980 // =0xf 
 	ldrb r0, [r0,r1]
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_8140980: .word 0xF
 	thumb_func_end reqBBS_8140974
 

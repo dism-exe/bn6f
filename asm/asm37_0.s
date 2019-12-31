@@ -59,7 +59,7 @@ loc_813B7BC:
 	bx r0
 	mov r0, r4
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_813B7D0: .word off_813B7D4
 off_813B7D4: .word sub_813B7EC+1
 	.word sub_813B7FC+1
@@ -2322,7 +2322,7 @@ navicust_NCP_Battery:
 	ldr r2, dword_813C980 // =0x8 
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_813C980: .word 0x8
 	thumb_func_end navicust_NCP_Battery
 
@@ -3447,7 +3447,7 @@ loc_813D472:
 	mov r3, #0xff
 	mov r4, #0xff
 	pop {r5-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_813D480: .word byte_813CF9C
 off_813D484: .word byte_813D410
 dword_813D488: .word 0x2620
@@ -4326,7 +4326,7 @@ sub_813DA94:
 loc_813DAAA:
 	mov r0, r4
 	pop {r4,r5,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_813DAB0: .word byte_200BC50
 off_813DAB4: .word off_813DAB8
 off_813DAB8: .word sub_813DAC0+1

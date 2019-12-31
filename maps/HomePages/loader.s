@@ -113,7 +113,7 @@ sub_806C35C:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_806C390: .word off_806C394
 off_806C394: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1

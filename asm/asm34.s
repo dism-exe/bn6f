@@ -25,7 +25,7 @@ sub_812D378:
 	mov r5, #0x11
 	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_812D3A0: .word unk_201D620
 off_812D3A4: .word unk_201DB20
 	thumb_func_end sub_812D378
@@ -371,7 +371,7 @@ loc_812D64C:
 	strb r0, [r5,r2]
 	add sp, sp, #0x1c
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 	.word byte_8129178
 off_812D664: .word dword_8129180
 	thumb_func_end sub_812D600

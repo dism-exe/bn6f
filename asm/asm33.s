@@ -429,7 +429,7 @@ sub_81234DC:
 	mov r0, #0x18
 	strb r0, [r5,#2]
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_81234F0: .word unk_201D220
 off_81234F4: .word byte_81233D8
 off_81234F8: .word off_81234FC
@@ -1042,7 +1042,7 @@ sub_8123A80:
 	add r0, r0, r6
 	str r0, [r5,#0x64]
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8123AB0: .word unk_201D220
 off_8123AB4: .word unk_20343E0
 	thumb_func_end sub_8123A80
@@ -1783,7 +1783,7 @@ loc_8124112:
 loc_8124128:
 	bl sub_81244EC
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8124130: .word unk_201C400
 	thumb_func_end sub_81240D0
 
@@ -2700,7 +2700,7 @@ loc_8124880:
 	mov r6, #3
 	bl sub_8120900
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8124890: .word unk_201C4B0
 dword_8124894: .word 0x3071E0
 dword_8124898: .word 0x3081E0
@@ -4149,7 +4149,7 @@ loc_81256F8:
 	strh r1, [r5,#0x26]
 locret_81256FC:
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8125700: .word 0x300
 	thumb_func_end sub_8125678
 
@@ -4217,7 +4217,7 @@ loc_8125778:
 	strh r1, [r5,#0x30]
 locret_812577C:
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8125780: .word 0x300
 	thumb_func_end sub_8125704
 
@@ -5966,7 +5966,7 @@ loc_81264D2:
 	cmp r7, #7
 	blt loc_812649E
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_81264E0: .word 0x8340
 	thumb_func_end sub_8126494
 
@@ -6109,7 +6109,7 @@ loc_81265BC:
 	strb r0, [r5,r2]
 	add sp, sp, #0x1c
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_81265D0: .word 0x2
 dword_81265D4: .word 0x40000000
 off_81265D8: .word dword_8124A94
@@ -7436,7 +7436,7 @@ loc_81272EA:
 	bl sub_812730C
 locret_81272FC:
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8127300: .word byte_81268FC
 dword_8127304: .word 0x0
 dword_8127308: .word 0x10000000
@@ -7720,7 +7720,7 @@ loc_8127584:
 	mov r7, #0
 	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_81275A0: .word dword_86A5D60
 off_81275A4: .word dword_86B7AE0
 	thumb_func_end sub_8127580
@@ -9658,7 +9658,7 @@ sub_8128750:
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_81287B0: .word 0x1F40
 	thumb_func_end sub_8128750
 
@@ -10131,7 +10131,7 @@ loc_8128B62:
 	strb r0, [r5,#0xc]
 locret_8128B7C:
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_8128B80: .word 0x100000
 dword_8128B84: .word 0x680000
 dword_8128B88: .word 0x18
@@ -12842,7 +12842,7 @@ loc_812A200:
 	mov lr, pc
 	bx r1
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_812A210: .word dword_812A214
 dword_812A214: .word 0x0
 	.word sub_812A224+1
@@ -12901,7 +12901,7 @@ sub_812A27C:
 	mov lr, pc
 	bx r1
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_812A290: .word off_812A294
 off_812A294: .word sub_812A2B4+1
 	.word sub_812A2EC+1
@@ -13433,7 +13433,7 @@ loc_812A6DE:
 	bl SetScreenFade // (int a1, int a2) -> void
 locret_812A6EC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_812A6F0: .word unk_20251A0
 off_812A6F4: .word byte_8129150
 	thumb_func_end sub_812A694
@@ -14087,7 +14087,7 @@ sub_812ABEC:
 	bx r0
 	bl sub_812B26C
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_812AC00: .word off_812AC04
 off_812AC04: .word sub_812AC1A+1
 	.word sub_812AC80+1
@@ -14928,7 +14928,7 @@ sub_812B2C4:
 	strb r1, [r5,#0x18]
 locret_812B2FC:
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_812B300: .word byte_8129178
 dword_812B304: .word 0x40000000
 off_812B308: .word dword_8129180
@@ -15196,7 +15196,7 @@ sub_812B504:
 	bl sub_811FAF4
 locret_812B51C:
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_812B520: .word 0xC80008
 dword_812B524: .word 0x20004
 off_812B528: .word dword_8129184
@@ -15301,7 +15301,7 @@ sub_812B5C8:
 	bl sub_80465F8 // () -> void
 locret_812B5EC:
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 JumpTable812B5F4_p: .word JumpTable812B5F4
 JumpTable812B5F4: .word sub_812B608+1
 	.word sub_812B640+1
@@ -15926,7 +15926,7 @@ loc_812BAEA:
 	b locret_812BAEC
 locret_812BAEC:
 	pop {r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_812BAF0: .word 0xFFFFFFFF
 off_812BAF4: .word unk_2033C00
 dword_812BAF8: .word 0x800
@@ -16068,7 +16068,7 @@ loc_812BC0A:
 	b locret_812BC0C
 locret_812BC0C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_812BC10: .word 0xFFFFFFFF
 	thumb_func_end sub_812BB08
 
@@ -16712,7 +16712,7 @@ loc_812C172:
 	str r1, [r5,#0x40]
 locret_812C17C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_812C180: .word 0x48
 off_812C184: .word 0x30
 dword_812C188: .word 0x4321

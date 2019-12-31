@@ -185,7 +185,7 @@ npc_doNonCutsceneMovement_809E6DC:
 	bx r7
 	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 jt_809E6F0: .word npc_nonCutsceneMovementInit_809E704+1
 	.word npc_nonCutsceneMovementUpdate_809E7D8+1
 	.word npc_doVerticalMovement_809e84e+1
@@ -509,7 +509,7 @@ npc_doHopMovement_809e8cc:
 	bx r7
 	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 jt_809E8E0: .word npc_initHopMovement_809e8fc+1
 	.word npc_updateHopMovement_809e916+1
 	.word npc_initLeapMovement_809e944+1

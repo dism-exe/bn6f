@@ -1122,7 +1122,7 @@ loc_812F8EA::
 	b locret_812F8EC
 locret_812F8EC::
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 byte_812F8F0:: .byte 0xFF, 0xFF, 0xFF, 0xFF, 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE
 	.byte 0x0, 0x0
 dword_812F8FC:: .word 0xFED8
@@ -1249,7 +1249,7 @@ loc_812F9FA::
 	b locret_812F9FC
 locret_812F9FC::
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_812FA00:: .word 0xFFFFFFFF
 dword_812FA04:: .word 0xFEDC
 dword_812FA08:: .word 0xFEDB

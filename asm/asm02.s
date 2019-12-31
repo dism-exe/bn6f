@@ -265,7 +265,7 @@ loc_8021C48:
 	add sp, sp, #4
 	mov r0, r5
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8021C60: .word unk_20018EC
 dword_8021C64: .word 0x1FF
 	thumb_func_end sub_8021C02

@@ -777,7 +777,7 @@ loc_80A54B6:
 	b locret_80A54CC
 locret_80A54CC:
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80A54D0: .word off_80A54D8
 off_80A54D4: .word off_80A54E4
 off_80A54D8: .word byte_80A5358
@@ -2139,7 +2139,7 @@ loc_80A5F8E:
 loc_80A5FAA:
 	mov r0, r4
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80A5FB0: .word byte_80A5FB4
 byte_80A5FB4: .byte 0xF5, 0x5, 0xF6, 0x5, 0xF7, 0x5, 0xF8, 0x5, 0xF9, 0x5, 0xFA
 	.byte 0x5, 0xFB, 0x5, 0xFC, 0x5, 0xFD, 0x5, 0xFE, 0x5, 0xC2, 0xF
@@ -4863,7 +4863,7 @@ sub_80A7BC0:
 	bl StartCutscene
 locret_80A7C3C:
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80A7C40: .word dword_80A7C44
 dword_80A7C44: .word 0x80000
 dword_80A7C48: .word 0x80000
@@ -5370,7 +5370,7 @@ sub_80A8020:
 	ldrb r0, [r1,r0]
 	bl sprite_setPalette // (int pallete) -> void
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80A8030: .word off_80A8034
 off_80A8034: .word unk_2010000
 	thumb_func_end sub_80A8020
@@ -5757,7 +5757,7 @@ sub_80A8484:
 	bl FreeOverworldMapObject
 locret_80A84BC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80A84C0: .word byte_808C74C
 	thumb_func_end sub_80A8484
 
@@ -6620,7 +6620,7 @@ sub_80A8B4C:
 loc_80A8BA8:
 	bl sprite_update
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80A8BB0: .word math_cosTable
 off_80A8BB4: .word math_sinTable
 dword_80A8BB8: .word 0x85
@@ -6936,7 +6936,7 @@ loc_80A8E18:
 	mov r0, r4
 	tst r0, r0
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 byte_80A8E20: .byte 0xF0, 0xC2, 0x8, 0x8, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0, 0x1, 0x0, 0x3C, 0x0
 	.byte 0x78, 0x0, 0x9E, 0xFF, 0x3C, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0, 0x1, 0x0
 	.byte 0x3C, 0x0, 0x78, 0x0, 0x28, 0x0, 0xA0, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0
@@ -7111,7 +7111,7 @@ loc_80A8FC6:
 loc_80A8FD8:
 	bl sprite_update
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80A8FE0: .word 0x160
 	thumb_func_end sub_80A8FA0
 
@@ -7374,7 +7374,7 @@ loc_80A917E:
 	mul r2, r3
 	add r0, r0, r2
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80A9190: .word off_80A9194
 off_80A9194: .word byte_81436B4
 	.word byte_81436C4
@@ -8493,7 +8493,7 @@ sub_80A9A96:
 	push {lr}
 	bl FreeOverworldMapObject
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 byte_80A9AA0: .byte 0x2A, 0x1, 0xBF, 0x16, 0x8E, 0x1, 0x1C, 0x9E, 0x5, 0x5, 0x0
 	.byte 0x0, 0x3, 0x1, 0x7D, 0x1, 0x2A, 0x1, 0xBF, 0x16, 0x8E, 0x1
 	.byte 0x1C, 0x9E, 0x5, 0x5, 0x0, 0x0, 0x3, 0x1, 0x7D, 0x1, 0x2B
@@ -9971,7 +9971,7 @@ loc_80AA746:
 	mov r0, r6
 	pop {r4-r7,pc}
 	.word 0
-	.byte 0, 0
+	.balign 4, 0
 off_80AA750: .word word_80AA754
 word_80AA754: .hword 0x2010
 	thumb_func_end sub_80AA6EC

@@ -2519,7 +2519,7 @@ loc_809E41E:
 	str r0, [r7,#0x1c]
 locret_809E42C:
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_809E430: .word eStruct2000aa0
 	thumb_func_end sub_809E3D6
 

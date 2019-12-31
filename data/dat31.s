@@ -566,7 +566,7 @@ loc_810C862::
 	mov r0, #0
 locret_810C89C::
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 	.word byte_810C8A4
 byte_810C8A4:: .byte 0x1, 0x0, 0xFF, 0x0, 0x7F, 0x0, 0x0, 0x0
 off_810C8AC:: .word byte_810C8B0
@@ -1533,7 +1533,7 @@ loc_810D2C4::
 	bl object_exitAttackState
 locret_810D2CC::
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_810D2D0:: .word byte_810D2D4
 byte_810D2D4:: .byte 0x10, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -1874,7 +1874,7 @@ loc_810D526::
 loc_810D54A::
 	add sp, sp, #0x10
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_810D550:: .word 0x184
 off_810D554:: .word sub_8016380+1
 	.word sub_80165B8+1
@@ -2259,7 +2259,7 @@ sub_810D8EA::
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_810D90C::
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_810D910:: .word sub_8016380+1
 	.word sub_80165B8+1
 	.word sub_810D970+1

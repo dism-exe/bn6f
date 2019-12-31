@@ -1028,7 +1028,7 @@ loc_8000C22:
 	mov r0, r2
 locret_8000C2C:
 	pop {r4,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8000C30: .word off_8000C34
 off_8000C34:
 	.word 10000000
@@ -1425,7 +1425,7 @@ loc_8000ED2:
 	b loc_8000ED2
 locret_8000EDC:
 	pop {r5-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_8000EE0: .word 0xFFFF
 	thumb_func_end sub_8000EB6
 
@@ -1593,7 +1593,7 @@ sub_8001002:
 	mov r1, #0xa
 	bl sub_8000FE6
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8001010: .word 0x17A0
 	thumb_func_end sub_8001002
 
@@ -2636,7 +2636,7 @@ zeroFillVRAM:
 	mov r1, #0x20
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80017D0: .word 0x6000000
 dword_80017D4: .word 0x6004000
 dword_80017D8: .word 0x6008000
@@ -3379,7 +3379,7 @@ loc_8001C6A:
 	mov r0, #0
 	strb r0, [r7,#oGFXAnimState_IsActive]
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8001C90: .word eStruct200BE70
 	thumb_func_end sub_8001C52
 
@@ -4714,7 +4714,7 @@ loc_80025B4:
 	mov r8, r4
 	mov r9, r5
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80025C0: .word dword_80025C4
 dword_80025C4: .word 0xFF031A18
 byte_80025C8: .byte 0x14

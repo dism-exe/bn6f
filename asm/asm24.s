@@ -284,7 +284,7 @@ loc_808C656:
 	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	mov r0, #0
 	pop {r4,r5,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_808C680: .word byte_808C684
 byte_808C684: .byte 0x30, 0xFE, 0x5E, 0x0, 0x3, 0x0, 0x3, 0x0, 0xCA, 0xFD, 0x46
 	.byte 0x0, 0x1, 0x0, 0x1, 0x0, 0x2A, 0xFE, 0x8, 0x1, 0x7, 0x0
@@ -432,7 +432,7 @@ loc_808CABE:
 	bl sound_8000672
 	mov r0, #0
 	pop {r5,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_808CAD0: .word 0x100
 	thumb_func_end sub_808CA68
 

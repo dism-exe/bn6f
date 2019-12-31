@@ -325,7 +325,7 @@ sub_806FFDA:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_806FFF0: .word pt_806FFF4
 pt_806FFF4:
 	// <endpool> <endfile>

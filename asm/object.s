@@ -977,7 +977,7 @@ sub_800BF88:
 	mov r0, #9
 	strb r0, [r7,#0xd] // (byte_203674D - 0x2036740)
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_800BFC0: .word byte_2036740
 	thumb_func_end sub_800BF88
 
@@ -1126,7 +1126,7 @@ sub_800C0BA:
 	bl CopyBackgroundTiles
 	add sp, sp, #0x28
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_800C0F0: .word off_800C0F4
 off_800C0F4: .word dword_86E0458
 	.word dword_86E0478

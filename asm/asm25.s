@@ -553,7 +553,7 @@ sub_808FCF0:
 	bl PlaySoundEffect
 	mov r0, #0
 	pop {r5,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_808FD10: .word byte_808FD14
 byte_808FD14: .byte 0x5, 0x5, 0x7, 0x7, 0x1, 0x1, 0x3, 0x3
 	thumb_func_end sub_808FCF0
@@ -944,7 +944,7 @@ loc_808FFD2:
 	ldrb r2, [r4,#4]
 	ldrb r3, [r4,#6]
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_808FFF0: .word off_808FFF4
 off_808FFF4: .word byte_81434E4
 	.word byte_814350C

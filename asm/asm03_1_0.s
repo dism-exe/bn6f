@@ -160,7 +160,7 @@ loc_8033998:
 	mov r2, #0x20 
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80339B0: .word dword_86C0D20
 dword_80339B4: .word 0x6017200
 off_80339B8: .word 0x100
@@ -437,7 +437,7 @@ loc_8033C02:
 	mov r3, #0
 	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8033C20: .word off_8033C24
 off_8033C24: .word byte_86C1B20
 	.word byte_86C1BA0
@@ -501,7 +501,7 @@ loc_8033CBA:
 	strb r0, [r5,#7]
 locret_8033CBC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8033CC0: .word byte_8033CC4
 byte_8033CC4: .byte 0x0, 0x0, 0x0, 0x20, 0x20, 0x20, 0x0, 0x0, 0x0, 0x20, 0x20, 0x20
 	.byte 0x0, 0x0, 0x0, 0x20, 0x20, 0x20, 0x0, 0x0
@@ -605,7 +605,7 @@ loc_8033DBC:
 	mov r2, #0x20 
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8033DD0: .word off_8033DD4
 off_8033DD4: .word byte_86C18A0
 	.word byte_86C18E0
@@ -719,7 +719,7 @@ loc_8033E9E:
 	mov r3, #0
 	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 	pop {r5,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8033ED0: .word byte_86C1F20
 off_8033ED4: .word byte_30016D0
 dword_8033ED8: .word 0x8000
@@ -2235,7 +2235,7 @@ sub_8035054:
 loc_803507A:
 	mov r0, #1
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8035080: .word byte_809AE68
 	thumb_func_end sub_8035054
 
@@ -2560,7 +2560,7 @@ loc_8035334:
 	mov r0, #0
 	strb r0, [r7,#oGameState_GameProgress]
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8035350: .word byte_8037694
 	thumb_func_end initGameProgressBuffer_803532c
 

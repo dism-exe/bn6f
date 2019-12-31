@@ -145,7 +145,7 @@ loc_812EB9A:
 	bl sub_812EBD8
 locret_812EBAC:
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_812EBB0: .word byte_812DABC
 off_812EBB4: .word byte_812DAC4
 	thumb_func_end sub_812EB92

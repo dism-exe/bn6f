@@ -54,7 +54,7 @@ RobotControlComp_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8066460: .word off_8066464
 off_8066464: .word off_806646C
 	.word off_8066484

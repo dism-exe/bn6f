@@ -2455,7 +2455,7 @@ cutscene_8036EFE:
 	movflag EVENT_1731
 	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8036F20: .word DummyCutsceneScript
 	thumb_func_end cutscene_8036EFE
 

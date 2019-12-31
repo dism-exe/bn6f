@@ -4533,7 +4533,7 @@ sub_80058D0:
 	bx r0
 locret_800593C:
 	pop {r5,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8005940: .word 0x16F0
 off_8005944: .word off_8005948
 off_8005948: .word sub_800596C+1
@@ -5312,7 +5312,7 @@ sub_8005F84:
 	mov r1, #8
 	strb r1, [r0,#0x16]
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8005FB0: .word 0x40
 off_8005FB4: .word sub_8006366+1
 	.word sub_800647C+1
@@ -6319,7 +6319,7 @@ sub_8006920:
 	mov lr, pc
 	bx r4
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8006980: .word Window0HorizontalDimensions
 dword_8006984: .word 0xA2600000
 off_8006988: .word ZeroFillByWord+1
@@ -10558,7 +10558,7 @@ loc_8008A4C:
 locret_8008A60:
 	pop {pc}
 	.word 0, 0, 0
-	.byte 0, 0
+	.balign 4, 0
 	.word byte_8008A74
 byte_8008A74: .byte 0x10, 0x0, 0x25, 0x33, 0x64, 0x0, 0x0, 0x0
 	thumb_func_end sub_80089CC
@@ -12209,7 +12209,7 @@ sub_80096E0:
 	mov r0, #0
 	bl sub_801DFA2
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8009700: .word 0x404
 	thumb_func_end sub_80096E0
 
@@ -13779,7 +13779,7 @@ sub_800A21C:
 loc_800A23A:
 	mov r0, #0
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_800A240: .word 0x4000
 	thumb_func_end sub_800A21C
 
