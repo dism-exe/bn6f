@@ -13055,18 +13055,18 @@ loc_802CF96:
 	bl SetAIData_Unk_44_Flag
 loc_802CFB8:
 	mov r0, #0
-	mov r1, #0x82
+	mov r1, #oCollisionData_PanelDamage1
 	add r1, r1, r4
-	strh r0, [r1]
-	strh r0, [r1,#2]
-	strh r0, [r1,#4]
-	strh r0, [r1,#6]
-	strh r0, [r1,#8]
-	mov r1, #0x8e
+	strh r0, [r1,#oCollisionData_PanelDamage1 - oCollisionData_PanelDamage1]
+	strh r0, [r1,#oCollisionData_PanelDamage2 - oCollisionData_PanelDamage1]
+	strh r0, [r1,#oCollisionData_PanelDamage3 - oCollisionData_PanelDamage1]
+	strh r0, [r1,#oCollisionData_PanelDamage4 - oCollisionData_PanelDamage1]
+	strh r0, [r1,#oCollisionData_PanelDamage5 - oCollisionData_PanelDamage1]
+	mov r1, #oCollisionData_Unk_8e
 	strh r0, [r4,r1]
-	mov r1, #0x90
+	mov r1, #oCollisionData_Unk_90
 	strh r0, [r4,r1]
-	mov r1, #0x92
+	mov r1, #oCollisionData_Unk_92
 	strh r0, [r4,r1]
 	mov r1, #0x74 
 	str r0, [r4,r1]

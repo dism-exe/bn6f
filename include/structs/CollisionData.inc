@@ -116,7 +116,10 @@
 	u32 PanelDamage5and6 // misaligned // loc=0x8a
 	endu
 
-	struct_org 0x94
+	u16 Unk_8e // loc=0x8e
+	u16 Unk_90 // loc=0x90
+	u16 Unk_92 // loc=0x92
+
 	u0 PrimaryElementDamages // loc=0x94
 	u16 NullElementDamage // loc=0x94
 	u16 HeatElementDamage // loc=0x96
