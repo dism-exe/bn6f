@@ -266,6 +266,7 @@ def split_units_by_path(units):
 
 
 def get_unit_path(unit):
+    unit = to_physical_unit(unit)
     return str(unit['path'][:unit['path'].index(':')]) # convert from unicode
 
 
@@ -280,3 +281,44 @@ def get_units_in_range(source_unit_computations, start_ea, end_ea):
         units.append(unit)
         ea += compute_unit_size(source_unit_computations.address_space, unit['ea'])
     return units
+
+
+def edit_unit_content(unit, content):
+    """
+    updates the unit with the new content, but preserves the old content so that it can be replaced in the source
+    """
+    unit['new_content'] = content
+
+
+def dump_source_units(units, verbose=False):
+    """
+    finds and replaces modified content in the repository
+    :param units:
+    :return:
+    """
+
+    # only dump modified units
+    units = iter(units)
+    units = filter(lambda u: 'new_content' in u, units)
+    units = list(units)
+
+    # don't do anything if no modifications found
+    if units == []:
+        return
+
+    units_per_path = split_units_by_path(units)
+
+
+    for path_units in units_per_path:
+        path = os.path.join(definitions.shared.ROM_REPO_DIR, get_unit_path(path_units[0]))
+
+        with open(path, 'r') as f:
+            file_data = f.read()
+
+        for unit in path_units:
+            if unit['unit']['content'] in file_data:
+                file_data = file_data.replace(unit['unit']['content'], unit['new_content'])
+
+        if verbose: print('writing {}'.format(path))
+        with open(path, 'w') as f:
+            f.write(file_data)

@@ -360,7 +360,7 @@ loc_810C6DA::
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 locret_810C6E0::
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_810C6E4:: .word 0x10000
 dword_810C6E8:: .word 0xF880080
 dword_810C6EC:: .word 0xC000000
@@ -419,7 +419,7 @@ sub_810C754::
 	mov r0, #4
 	strb r0, [r6,#oAIState_Unk_00]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810C76C:: .word byte_810C770
 byte_810C770:: .byte 0x78, 0x64, 0x50, 0x3C, 0x3C, 0x3C
 	thumb_func_end sub_810C754
@@ -451,7 +451,7 @@ loc_810C794::
 	strb r0, [r6,#oAIState_Unk_00]
 locret_810C7A8::
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810C7AC:: .word byte_810C7B0
 byte_810C7B0:: .byte 0xB4, 0x3C, 0x3C, 0x3C, 0x1E, 0x1E
 	thumb_func_end sub_810C776
@@ -499,7 +499,7 @@ loc_810C7F4::
 	strb r0, [r6,#oAIState_Unk_00]
 locret_810C808::
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810C80C:: .word byte_810C814
 off_810C810:: .word byte_810C81A
 byte_810C814:: .byte 0x78, 0x78, 0x78, 0x78, 0x78, 0x78
@@ -566,7 +566,7 @@ loc_810C862::
 	mov r0, #0
 locret_810C89C::
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 	.word byte_810C8A4
 byte_810C8A4:: .byte 0x1, 0x0, 0xFF, 0x0, 0x7F, 0x0, 0x0, 0x0
 off_810C8AC:: .word byte_810C8B0
@@ -1083,6 +1083,7 @@ sub_810CD38::
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 dword_810CD58:: .word 0x4050101
 dword_810CD5C:: .word 0xF800000
 off_810CD60:: .word sub_8016380+1
@@ -1533,7 +1534,7 @@ loc_810D2C4::
 	bl object_exitAttackState
 locret_810D2CC::
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_810D2D0:: .word byte_810D2D4
 byte_810D2D4:: .byte 0x10, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -1649,6 +1650,7 @@ loc_810D39E::
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_810D3B2::
 	pop {pc}
+	.balign 4, 0
 off_810D3B4:: .word off_810D3B8
 off_810D3B8:: .word sub_810D3EA+1
 	.word sub_810D414+1
@@ -1771,6 +1773,7 @@ sub_810D476::
 	mov r1, #1
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_810D494:: .word 0x2D00FF00
 	thumb_func_end sub_810D476
 
@@ -1816,6 +1819,7 @@ loc_810D4CE::
 loc_810D4E0::
 	add sp, sp, #0x20
 	pop {pc}
+	.balign 4, 0
 dword_810D4E4:: .word 0xFFFF
 	thumb_func_end sub_810D4BA
 
@@ -1874,7 +1878,7 @@ loc_810D526::
 loc_810D54A::
 	add sp, sp, #0x10
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_810D550:: .word 0x184
 off_810D554:: .word sub_8016380+1
 	.word sub_80165B8+1
@@ -2064,6 +2068,7 @@ loc_810D6AE::
 	beq loc_810D6A8
 locret_810D6C2::
 	pop {pc}
+	.balign 4, 0
 off_810D6C4:: .word byte_810D6C8
 byte_810D6C8:: .byte 0x0, 0xFF, 0x0, 0x1, 0x7F, 0x0, 0x0, 0x0
 off_810D6D0:: .word byte_810D6D4
@@ -2259,7 +2264,7 @@ sub_810D8EA::
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_810D90C::
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_810D910:: .word sub_8016380+1
 	.word sub_80165B8+1
 	.word sub_810D970+1
@@ -2288,6 +2293,7 @@ sub_810D940::
 	str r0, [r5,#oBattleObject_ExtraVars+4]
 	pop {pc}
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.balign 4, 0
 off_810D960:: .word byte_810D964
 byte_810D964:: .byte 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x6, 0x6, 0x6, 0x6, 0x6, 0x6
 	thumb_func_end sub_810D940

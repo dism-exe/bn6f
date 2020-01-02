@@ -32,6 +32,7 @@ sub_813B790:
 	ldrb r1, [r1]
 	bl sub_813B7A0
 	pop {pc}
+	.balign 4, 0
 off_813B79C: .word byte_20096D8
 	thumb_func_end sub_813B790
 
@@ -59,7 +60,7 @@ loc_813B7BC:
 	bx r0
 	mov r0, r4
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_813B7D0: .word off_813B7D4
 off_813B7D4: .word sub_813B7EC+1
 	.word sub_813B7FC+1
@@ -300,6 +301,7 @@ zeroFill_813B934:
 	mov r1, #0x40 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_813B94C: .word 0x188
 	thumb_func_end zeroFill_813B934
 
@@ -503,6 +505,7 @@ sub_813BA80:
 	ldr r2, off_813BAA4 // =0x188 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_813BA9C: .word eTextScript201BA00
 off_813BAA0: .word byte_201BA40
 off_813BAA4: .word 0x188
@@ -538,6 +541,7 @@ sub_813BAC4:
 	ldr r2, off_813BAE8 // =0x188 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_813BAE0: .word byte_201BC40
 off_813BAE4: .word byte_201BC80
 off_813BAE8: .word 0x188
@@ -1047,7 +1051,7 @@ loc_813BE7C:
 	blt loc_813BE4A
 	add sp, sp, #4
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813BE88: .word byte_2006C50
 	thumb_func_end sub_813BE38
 
@@ -1125,6 +1129,7 @@ loc_813BEFE:
 	strb r2, [r0,r1]
 locret_813BF06:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_813BF08: .word byte_2006D30
 	thumb_func_end sub_813BEA8
 
@@ -1430,7 +1435,7 @@ loc_813C120:
 	blt loc_813C08C
 	add sp, sp, #0xc
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813C12C: .word unk_30019E0
 	.word byte_813C14C
 dword_813C134: .word 0x6F15
@@ -1552,7 +1557,7 @@ loc_813C270:
 	blt loc_813C1DA
 	add sp, sp, #8
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813C27C: .word unk_30019E0
 	.word byte_813C2B0
 dword_813C284: .word 0x6F15
@@ -1589,6 +1594,7 @@ sub_813C324:
 	mov r1, #8
 	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_813C330: .word unk_2000090
 	thumb_func_end sub_813C324
 
@@ -1645,6 +1651,7 @@ loc_813C38E:
 loc_813C394:
 	mov r0, r6
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_813C398: .word byte_813B522
 off_813C39C: .word byte_813C3A4
 dword_813C3A0: .word 0x2660
@@ -1773,6 +1780,7 @@ sub_813C4A8:
 	lsl r0, r0, #2
 	ldr r1, [r1,r0]
 	pop {pc}
+	.balign 4, 0
 off_813C4B8: .word pt_813C4BC
 pt_813C4BC: .word byte_813B3AE+225
 	.word byte_813B3AE+274
@@ -1788,6 +1796,7 @@ sub_813C4C8:
 	lsl r0, r0, #2
 	ldr r1, [r1,r0]
 	pop {pc}
+	.balign 4, 0
 off_813C4D8: .word off_813C4DC
 off_813C4DC: .word byte_813C4E8
 	.word byte_813C51C
@@ -2025,7 +2034,7 @@ loc_813C730:
 	bl sub_813CEA0 // () -> void
 	add sp, sp, #4
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813C744: .word byte_2006DD8
 off_813C748: .word navicust_jt_NCPs
 navicust_jt_NCPs: .word sub_813C808+1
@@ -2298,7 +2307,7 @@ navicust_NCP_OilBody:
 	ldr r2, dword_813C958 // =0x2 
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_813C958: .word 0x2
 	thumb_func_end navicust_NCP_OilBody
 
@@ -2310,7 +2319,7 @@ navicust_NCP_Fish:
 	ldr r2, dword_813C96C // =0x4 
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_813C96C: .word 0x4
 	thumb_func_end navicust_NCP_Fish
 
@@ -2322,7 +2331,7 @@ navicust_NCP_Battery:
 	ldr r2, dword_813C980 // =0x8 
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_813C980: .word 0x8
 	thumb_func_end navicust_NCP_Battery
 
@@ -2334,7 +2343,7 @@ navicust_NCP_Jungle:
 	ldr r2, dword_813C994 // =0x10 
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_813C994: .word 0x10
 	thumb_func_end navicust_NCP_Jungle
 
@@ -2725,6 +2734,7 @@ loc_813CC0C:
 	blt loc_813CBE6
 locret_813CC12:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_813CC14: .word byte_813CC18
 byte_813CC18: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.word sub_813CCE8+1
@@ -3269,7 +3279,7 @@ sub_813CF8C:
 	mov r1, #0x1a
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_813CF9C: .byte 0x2
 byte_813CF9D: .byte 0xFF
 word_813CF9E: .hword 0x81
@@ -3447,7 +3457,7 @@ loc_813D472:
 	mov r3, #0xff
 	mov r4, #0xff
 	pop {r5-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_813D480: .word byte_813CF9C
 off_813D484: .word byte_813D410
 dword_813D488: .word 0x2620
@@ -3488,6 +3498,7 @@ loc_813D4A4:
 loc_813D4CC:
 	mov r0, r7
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_813D4D0: .word off_813D4D4
 off_813D4D4: .word sub_813D510+1
 	.word sub_813D568+1
@@ -3706,6 +3717,7 @@ sub_813D648:
 	ldr r1, byte_813D654 // =0x1 
 	cmp r0, r1
 	pop {pc}
+	.balign 4, 0
 byte_813D654: .byte 0x1, 0x80, 0x0, 0x0, 0x10, 0xB5, 0x9, 0xF0, 0xD, 0xFC, 0x10
 	.byte 0xBD
 	.word byte_200AF80
@@ -3899,6 +3911,7 @@ loc_813D7DC:
 	mov r0, #1
 	bl sub_813D5E8
 	pop {r5,r7,pc}
+	.balign 4, 0
 off_813D7E4: .word off_813D7E8
 off_813D7E8: .word sub_813D804+1
 	.word sub_813D838+1
@@ -3978,6 +3991,7 @@ loc_813D864:
 	tst r0, r0
 	bne loc_813D864
 	pop {r4,pc}
+	.balign 4, 0
 dword_813D878: .word 0x8
 	thumb_func_end sub_813D848
 
@@ -4158,6 +4172,7 @@ sub_813D978:
 	mov r0, #0
 	bl sub_813D934
 	pop {pc}
+	.balign 4, 0
 off_813D988: .word byte_200BC50
 	thumb_func_end sub_813D978
 
@@ -4169,7 +4184,7 @@ sub_813D98C:
 	ldr r1, off_813D99C // =eStruct200BC30 
 	strb r0, [r1,#0xe] // (byte_200BC3E - 0x200bc30)
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_813D99C: .word eStruct200BC30
 	thumb_func_end sub_813D98C
 
@@ -4199,6 +4214,7 @@ sub_813D9AC:
 	bl sub_8146B70
 locret_813D9CA:
 	pop {r4,pc}
+	.balign 4, 0
 off_813D9CC: .word byte_200BC50
 off_813D9D0: .word off_813D9D4
 off_813D9D4: .word sub_813D9DC+1
@@ -4307,6 +4323,7 @@ sub_813DA84:
 	mov r1, #0x10
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_813DA90: .word byte_2010290
 	thumb_func_end sub_813DA84
 
@@ -4326,7 +4343,7 @@ sub_813DA94:
 loc_813DAAA:
 	mov r0, r4
 	pop {r4,r5,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_813DAB0: .word byte_200BC50
 off_813DAB4: .word off_813DAB8
 off_813DAB8: .word sub_813DAC0+1

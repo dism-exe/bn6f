@@ -35,6 +35,7 @@ sub_807ECD0:
 	bl sub_807EE92
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_807ED28: .word off_807EA6C
 off_807ED2C: .word unk_2037800
 off_807ED30: .word off_807ED34
@@ -57,7 +58,7 @@ sub_807ED6C:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_807ED7C: .word off_807ED80
 off_807ED80: .word off_807ED8C
 	.word off_807EDA8
@@ -105,7 +106,7 @@ sub_807EDD4:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_807EE08: .word off_807EE0C
 off_807EE0C: .word nullsub_39+1
 	.word BGScrollCB_BG3SlowRightScroll+1
@@ -176,7 +177,7 @@ sub_807EE92:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_807EEA8: .word pt_807EEAC
 pt_807EEAC:
 	.word byte_807EEB8

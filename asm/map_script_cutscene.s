@@ -1394,6 +1394,7 @@ loc_8036086:
 	pop {r4}
 	mov r12, r4
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_803608C: .word MapScriptCommandJumptable
 off_8036090: .word eMapScriptState
 	thumb_func_end RunSecondaryContinuousMapScript
@@ -2410,7 +2411,7 @@ StartCutscene:
 	ldr r0, =off_8036EC4
 	str r0, [r5,#oCutsceneState_Unk_34] // s_02011C50.ptr_34
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.pool // 8036EBC
 off_8036EC4: .word 0x4000000
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -2455,7 +2456,7 @@ cutscene_8036EFE:
 	movflag EVENT_1731
 	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8036F20: .word DummyCutsceneScript
 	thumb_func_end cutscene_8036EFE
 
@@ -2497,6 +2498,7 @@ cutscene_checkOriginalCutsceneScriptPos_8036F40:
 loc_8036F50:
 	tst r2, r2
 	mov pc, lr
+	.balign 4, 0
 off_8036F54: .word CutsceneScript_80991F4
 	thumb_func_end cutscene_checkOriginalCutsceneScriptPos_8036F40
 
@@ -2513,6 +2515,7 @@ cutscene_checkOriginalCutsceneScriptPos_8036F58:
 loc_8036F68:
 	tst r2, r2
 	mov pc, lr
+	.balign 4, 0
 off_8036F6C: .word CutsceneScript_80988E4
 	thumb_func_end cutscene_checkOriginalCutsceneScriptPos_8036F58
 
@@ -4375,6 +4378,7 @@ CutsceneCmd_ow_player_sprite_special_with_arg:
 	mov r0, #1
 	pop {pc}
 	.pool // 8037B98
+	.balign 4, 0
 off_8037B9C: .word owPlayer_writeLayerIndexOverride_809e260+1
 	.word SetOWPlayerFacingDirection+1
 	.word owPlayer_setPalette_809e2a0+1
@@ -4986,6 +4990,7 @@ MapScriptSubCmd_free_all_spawned_ow_map_objects:
 	add r7, #2
 	mov r0, #1
 	pop {pc}
+	.balign 4, 0
 off_8037FB4: .word eOverworldNPCObjects
 	thumb_func_end MapScriptSubCmd_free_all_spawned_ow_map_objects
 

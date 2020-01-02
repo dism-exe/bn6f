@@ -2,6 +2,7 @@
 	arm_local_start
 GameEntryPoint:
 	b _GameEntryPoint
+	.balign 4, 0
 GameHeader: .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B2411
 	.word 0x217F81C0, 0x19BE52A3, 0x20CE0993, 0x4A4A4610, 0xEC3127F8
 	.word 0x33E8C758, 0xBFCEE382, 0x94DFF485, 0xC1094BCE, 0xC08A5694
@@ -109,6 +110,7 @@ start_copyMemory:
 	str r3, [r1,r2]
 	bne start_copyMemory
 	bx lr
+	.balign 4, 0
 off_80001EC: .word byte_3007F60
 off_80001F0: .word byte_3007FE0
 off_80001F4: .word iStack

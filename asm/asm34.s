@@ -25,7 +25,7 @@ sub_812D378:
 	mov r5, #0x11
 	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_812D3A0: .word unk_201D620
 off_812D3A4: .word unk_201DB20
 	thumb_func_end sub_812D378
@@ -54,6 +54,7 @@ sub_812D3A8:
 	mov r0, #4
 	strb r0, [r1,#3]
 	pop {pc}
+	.balign 4, 0
 off_812D3DC: .word word_2023FA0
 off_812D3E0: .word unk_2023FC0
 	thumb_func_end sub_812D3A8
@@ -157,7 +158,7 @@ sub_812D3E4:
 	bl CopyBackgroundTiles
 	bl sub_812D5EC
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812D4C4: .word word_2023FA0
 off_812D4C8: .word unk_202DFA0
 off_812D4CC: .word unk_202E080
@@ -189,6 +190,7 @@ sub_812D4FC:
 	bl sub_812D600
 	bl sub_812D9F0
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812D51C: .word byte_8129178
 dword_812D520: .word 0x20002
 dword_812D524: .word 0x40000000
@@ -216,6 +218,7 @@ loc_812D532:
 	bl sub_812D56C
 locret_812D546:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812D548: .word byte_812C258
 	thumb_func_end sub_812D52E
 
@@ -233,7 +236,7 @@ sub_812D54C:
 	bl sub_812D56C
 locret_812D564:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812D568: .word byte_812C268
 	thumb_func_end sub_812D54C
 
@@ -288,7 +291,7 @@ sub_812D5A0:
 	mov r3, r4
 	bl sub_811980C
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812D5CC: .word word_2023FA0
 	thumb_func_end sub_812D5A0
 
@@ -371,7 +374,7 @@ loc_812D64C:
 	strb r0, [r5,r2]
 	add sp, sp, #0x1c
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 	.word byte_8129178
 off_812D664: .word dword_8129180
 	thumb_func_end sub_812D600
@@ -390,6 +393,7 @@ sub_812D668:
 	ldr r7, dword_812D688 // =0x2 
 	bl sub_812D600
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812D684: .word byte_8129178
 dword_812D688: .word 0x2
 dword_812D68C: .word 0x40000000
@@ -604,6 +608,7 @@ loc_812D800:
 loc_812D804:
 	add sp, sp, #4
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_812D808: .word byte_30069A0
 off_812D80C: .word unk_2023FC0
 	.word 0x64
@@ -647,6 +652,7 @@ sub_812D83C:
 	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 locret_812D84E:
 	pop {pc}
+	.balign 4, 0
 off_812D850: .word 0x64
 	thumb_func_end sub_812D83C
 
@@ -671,6 +677,7 @@ sub_812D854:
 	lsl r2, r2, #8
 	orr r0, r2
 	pop {pc}
+	.balign 4, 0
 off_812D87C: .word word_2023FA0
 	thumb_func_end sub_812D854
 
@@ -759,6 +766,7 @@ loc_812D922:
 loc_812D926:
 	bl sub_80465A0 // (void *a1) -> void
 	pop {pc}
+	.balign 4, 0
 off_812D92C: .word byte_812C278
 off_812D930: .word byte_812C280
 	thumb_func_end sub_812D91C
@@ -773,7 +781,7 @@ sub_812D934:
 	mov r3, #0xa
 	bl sub_8120228
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812D948: .word off_812D94C
 off_812D94C: .word unk_202DFA0
 	.word unk_202DFC0
@@ -891,6 +899,7 @@ sub_812DA08:
 	bl sub_811FA98
 	add sp, sp, #0xc
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_812DA30: .word 0x92
 dword_812DA34: .word 0x20002
 dword_812DA38: .word 0xC24C

@@ -265,7 +265,7 @@ loc_8021C48:
 	add sp, sp, #4
 	mov r0, r5
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8021C60: .word unk_20018EC
 dword_8021C64: .word 0x1FF
 	thumb_func_end sub_8021C02
@@ -280,7 +280,7 @@ zeroFill_e2002230:
 	ldr r1, dword_8021C78 // =0xf00
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_8021C78: .word 0xF00
 	thumb_func_end zeroFill_e2002230
 
@@ -365,7 +365,7 @@ loc_8021CF4:
 	mov r0, r4
 	mov r1, r5
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8021D04: .word 0x140
 	thumb_func_end sub_8021CA8
 
