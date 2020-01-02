@@ -17,6 +17,8 @@ Makefile text eol=lf
 *.sha1 text eol=lf
 *.tpl text eol=lf
 *.ld text eol=lf
+docs/structs/.memAccessScanner export-ignore
+docs/structs/.memo export-ignore
 
 # Denote all files that are truly binary and should not be modified.
 *.lz77 binary diff=hex
@@ -25,8 +27,5 @@ Makefile text eol=lf
 
 # not in the build yet but will be added
 *.png binary diff=hex
-
-structs/.memAccessScanner export-ignore
-structs/.memo export-ignore
 
 *.inc linguist-language=Unix Assembly
