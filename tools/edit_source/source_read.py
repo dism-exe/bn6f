@@ -7,13 +7,13 @@ by different tools.
 if __name__ == '__main__': __package__ = 'edit_source'
 
 import logging
-import os
 from typing import List
 
 
 
 from .utils.asm_file import AsmFile, process_function, process_code, process_data, process_label, \
     process_function_types
+from .utils.asm_file import get_file_path_of_directive_include
 from .utils.common import get_sym_table
 from .include import definitions
 
@@ -27,6 +27,10 @@ def read_file(file_path: str) -> List[AsmFile.Unit]:
     This reads includes recursively.
     :return: list of AsmFile.Unit objects
     """
+
+    if file_path == '':
+        return []
+
     file = AsmFile(file_path)
 
     output = []
@@ -40,20 +44,7 @@ def read_file(file_path: str) -> List[AsmFile.Unit]:
 
         # recusrive include scan
         if unit.id == AsmFile.UNIT_IDS.DIRECTIVE_INCLUDE:
-            file_path = unit.content[unit.content.index('"')+1:]
-            file_path = file_path[:file_path.index('"')]
-
-            # TODO: still not handling inc files
-            if '.inc' in file_path:
-                continue
-
-            if not os.path.isfile(file_path):
-                file_path = 'include/' + file_path
-
-            if not os.path.isfile(file_path):
-                raise SourceReadException('could not find {file_path}'.format(**vars()))
-
-            output += read_file(file_path)
+            output += read_file(get_file_path_of_directive_include(unit))
 
     return output
 
@@ -92,8 +83,10 @@ def read_repo(proj_path, elf_path, file_paths, info=False):
                 out.append(process_data(unit, sym_table, dict_out=True))
             elif unit.id == AsmFile.UNIT_IDS.LABEL:
                 out.append(process_label(unit, sym_table, dict_out=True))
+            elif unit.id == AsmFile.UNIT_IDS.DIRECTIVE_INCLUDE:
+                pass
             else:
-                logging.warning('could not process: ' + unit.content)
+                logging.warning('could not process: {} (id: {})'.format(unit.content, AsmFile.UNIT_IDS.STR[unit.id]))
 
         print('UNITS', len(units))
         return out
@@ -128,7 +121,7 @@ def build_rsync():
         elif unit.id == AsmFile.UNIT_IDS.DATA:
             write_file.write(process_data(unit, sym_table) + '\n')
         else:
-            pass
+            logging.warning('could not process: {} (id: {})'.format(unit.content, AsmFile.UNIT_IDS.STR[unit.id]))
     write_file.close()
 
     print("> Source Reading Complete!")

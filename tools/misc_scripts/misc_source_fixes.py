@@ -50,5 +50,7 @@ def main():
     source_units = source_unit.cache_load_addressable_source_units(cache_path, False)
     align_functions_with_pool(source_units)
 
+    print(source_units[hex(0x3005DA0)])
+
 if __name__ == '__main__':
     main()
