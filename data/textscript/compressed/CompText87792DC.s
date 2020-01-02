@@ -857,7 +857,10 @@ CompText87792DC::
 	]
 	.string "\",\n"
 	.string "\""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0x10,
+		buffer: 0x0,
+	]
 	.string " "
 	ts_print_code [
 		code: 0x1A,

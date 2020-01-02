@@ -1501,7 +1501,10 @@ CompText877767C::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "\""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0x7,
+		buffer: 0x0,
+	]
 	.string " "
 	ts_print_code [
 		code: 0x1A,
@@ -1509,7 +1512,10 @@ CompText877767C::
 	]
 	.string "\",\n"
 	.string "\""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0xA,
+		buffer: 0x0,
+	]
 	.string " "
 	ts_print_code [
 		code: 0x1A,
@@ -1517,7 +1523,10 @@ CompText877767C::
 	]
 	.string "\",\n"
 	.string "and \""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0xD,
+		buffer: 0x0,
+	]
 	.string " "
 	ts_print_code [
 		code: 0x1A,
