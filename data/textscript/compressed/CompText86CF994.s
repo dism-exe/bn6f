@@ -39,21 +39,15 @@ CompText86CF994::
 
 	def_text_script CompText86CF994_unk6
 	ts_msg_open_menu
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	.string "Let's not\n"
 	.string "use it yet."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText86CF994_unk7
 	ts_msg_open_menu
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	.string "You want to\n"
 	.string "use \""
 	ts_print_item [
@@ -61,9 +55,7 @@ CompText86CF994::
 		buffer: 0x1,
 	]
 	.string "\"?\n"
-	ts_position_option_from_center [
-		width: 0x8,
-	]
+	ts_position_option_from_center width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -71,9 +63,7 @@ CompText86CF994::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -82,9 +72,7 @@ CompText86CF994::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x0, 0xFF, 0xFF, 0xFF
 	ts_end
@@ -95,9 +83,7 @@ CompText86CF994::
 	.string "\n"
 	.string "recovers\n"
 	.string "50HP!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText86CF994_unk9
@@ -106,9 +92,7 @@ CompText86CF994::
 	.string "\n"
 	.string "recovers\n"
 	.string "max HP!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText86CF994_unk10
@@ -120,16 +104,12 @@ CompText86CF994::
 		buffer: 0x1,
 	]
 	.string "\""
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText86CF994_unk11
 	ts_msg_open_menu
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	.string "\""
 	ts_print_item [
 		item: 0x0,
@@ -137,35 +117,25 @@ CompText86CF994::
 	]
 	.string "\"\n"
 	.string "is in use."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText86CF994_unk12
 	ts_msg_open_menu
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	.string "There isn't\n"
 	.string "any locked\n"
 	.string "data!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText86CF994_unk13
 	ts_msg_open_menu
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	.string "No viruses\n"
 	.string "around\n"
 	.string "here yet!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText86CF994_unk14

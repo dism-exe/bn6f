@@ -12,71 +12,45 @@ CompText876FD30::
 	def_text_script CompText876FD30_unk0
 	ts_check_flag [
 		flag: 0xE5C,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText876FD30_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Ahh,Iris!\n"
 	.string "Nice to see you!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x11,
-	]
+	ts_mugshot_show mugshot=0x11
 	.string "...You're inviting\n"
 	.string "me to the Expo too?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "Yeah! It's gonna\n"
 	.string "be great! Let's\n"
 	.string "go together!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "We are meeting at\n"
 	.string "blah blah blah..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Got it?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x11,
-	]
+	ts_mugshot_show mugshot=0x11
 	.string "Umm...yeah..."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xE5C,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xE5C
 	ts_end
 
 	def_text_script CompText876FD30_unk1
-	ts_mugshot_show [
-		mugshot: 0x11,
-	]
+	ts_mugshot_show mugshot=0x11
 	ts_msg_open
 	.string "...The...Expo...\n"
 	.string "It'll...be...fun..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876FD30_unk2

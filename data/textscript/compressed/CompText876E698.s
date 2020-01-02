@@ -90,26 +90,18 @@ CompText876E698::
 	def_text_script CompText876E698_unk39
 
 	def_text_script CompText876E698_unk40
-	ts_mugshot_show [
-		mugshot: 0xC,
-	]
+	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "There isn't a\n"
 	.string "school newspaper...\n"
 	.string "What's going on?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0xB,
-	]
+	ts_mugshot_show mugshot=0xB
 	.string "Yeah... I really\n"
 	.string "wanted to read a\n"
 	.string "big scoop today..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText876E698_unk41

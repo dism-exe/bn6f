@@ -13,12 +13,10 @@ CompText875E4AC::
 	ts_check_chapter [
 		lower: 0x44,
 		upper: 0x44,
-		jumpIfInRange: 0x6,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText875E4AC_unk6_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_jump [
-		target: 5,
-	]
+	ts_jump target=CompText875E4AC_unk5_id
 
 	def_text_script CompText875E4AC_unk1
 
@@ -33,33 +31,25 @@ CompText875E4AC::
 	.string "The control panel\n"
 	.string "is operating\n"
 	.string "normally."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875E4AC_unk6
 	ts_check_flag [
 		flag: 0xA20,
-		jumpIfTrue: 0x5,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText875E4AC_unk5_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xA1F,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x5,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText875E4AC_unk5_id,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "... A v-virus!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xA71,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xA71
 	ts_end
 
 	def_text_script CompText875E4AC_unk7

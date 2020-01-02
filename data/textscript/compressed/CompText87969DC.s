@@ -10,72 +10,44 @@ CompText87969DC::
 	text_archive_start
 
 	def_text_script CompText87969DC_unk0
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "You... You're not\n"
 	.string "an Under dweller!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "If that's true...\n"
 	.string "It's your doom!!!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xE57,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xE57
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText87969DC_unk1
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "I wonder what would\n"
 	.string "happen if people\n"
 	.string "from the other side"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "just walked in\n"
 	.string "here they like owned\n"
 	.string "the place!?"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xE58,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xE58
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText87969DC_unk2
-	ts_mugshot_show [
-		mugshot: 0x43,
-	]
+	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "People from the\n"
 	.string "other side hanging\n"
 	.string "around... Ewww!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xE59,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xE59
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText87969DC_unk3

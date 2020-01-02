@@ -3,22 +3,20 @@ TextScriptCommError873B9E0::
 
 	def_text_script TextScriptCommError873B9E0_unk0
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x2,
-		jumpIfElecMan: 0x2,
-		jumpIfSlashMan: 0x2,
-		jumpIfEraseMan: 0x2,
-		jumpIfChargeMan: 0x2,
-		jumpIfSpoutMan: 0x2,
-		jumpIfTomahawkMan: 0x2,
-		jumpIfTenguMan: 0x2,
-		jumpIfGroundMan: 0x2,
-		jumpIfDustMan: 0x2,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfElecMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfSlashMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfEraseMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfChargeMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfSpoutMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfTomahawkMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfTenguMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfGroundMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfDustMan: TextScriptCommError873B9E0_unk2_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Lan!\n"
 	.string "\""
@@ -28,29 +26,25 @@ TextScriptCommError873B9E0::
 	]
 	.string "\"\n"
 	.string "just expired!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk1
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x3,
-		jumpIfElecMan: 0x3,
-		jumpIfSlashMan: 0x3,
-		jumpIfEraseMan: 0x3,
-		jumpIfChargeMan: 0x3,
-		jumpIfSpoutMan: 0x3,
-		jumpIfTomahawkMan: 0x3,
-		jumpIfTenguMan: 0x3,
-		jumpIfGroundMan: 0x3,
-		jumpIfDustMan: 0x3,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfElecMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfSlashMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfEraseMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfChargeMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfSpoutMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfTomahawkMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfTenguMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfGroundMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfDustMan: TextScriptCommError873B9E0_unk3_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Lan!\n"
 	.string "\""
@@ -60,9 +54,7 @@ TextScriptCommError873B9E0::
 	]
 	.string "\"\n"
 	.string "just expired!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk2
@@ -74,9 +66,7 @@ TextScriptCommError873B9E0::
 	]
 	.string "\"\n"
 	.string "just expired!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk3
@@ -88,9 +78,7 @@ TextScriptCommError873B9E0::
 	]
 	.string "\"\n"
 	.string "just expired!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk4
@@ -106,48 +94,32 @@ TextScriptCommError873B9E0::
 	def_text_script TextScriptCommError873B9E0_unk9
 
 	def_text_script TextScriptCommError873B9E0_unk10
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Communication error."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Check Wireless\n"
 	.string "Adapter connection\n"
 	.string "and reset the GBA."
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script TextScriptCommError873B9E0_unk11
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open_menu
 	.string "Communication error.\n"
 	.string "Transmission failed."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Don't put anything\n"
 	.string "between Wireless\n"
 	.string "Adapters."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Move the GBAs closer\n"
 	.string "together."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script TextScriptCommError873B9E0_unk12
 
@@ -156,15 +128,11 @@ TextScriptCommError873B9E0::
 	def_text_script TextScriptCommError873B9E0_unk14
 
 	def_text_script TextScriptCommError873B9E0_unk15
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's practice,Lan!\n"
 	.string "Starting program!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk16
@@ -177,126 +145,98 @@ TextScriptCommError873B9E0::
 
 	def_text_script TextScriptCommError873B9E0_unk20
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x16,
-		jumpIfElecMan: 0x16,
-		jumpIfSlashMan: 0x16,
-		jumpIfEraseMan: 0x16,
-		jumpIfChargeMan: 0x16,
-		jumpIfSpoutMan: 0x16,
-		jumpIfTomahawkMan: 0x16,
-		jumpIfTenguMan: 0x16,
-		jumpIfGroundMan: 0x16,
-		jumpIfDustMan: 0x16,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfElecMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfSlashMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfEraseMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfChargeMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfSpoutMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfTomahawkMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfTenguMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfGroundMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfDustMan: TextScriptCommError873B9E0_unk22_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_check_area [
 		lower: 0x80,
 		upper: 0x96,
-		jumpIfInRange: 0x19,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: TextScriptCommError873B9E0_unk25_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_jump [
-		target: 24,
-	]
+	ts_jump target=TextScriptCommError873B9E0_unk24_id
 
 	def_text_script TextScriptCommError873B9E0_unk21
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x1A,
-		jumpIfElecMan: 0x1A,
-		jumpIfSlashMan: 0x1A,
-		jumpIfEraseMan: 0x1A,
-		jumpIfChargeMan: 0x1A,
-		jumpIfSpoutMan: 0x1A,
-		jumpIfTomahawkMan: 0x1A,
-		jumpIfTenguMan: 0x1A,
-		jumpIfGroundMan: 0x1A,
-		jumpIfDustMan: 0x1A,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfElecMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfSlashMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfEraseMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfChargeMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfSpoutMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfTomahawkMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfTenguMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfGroundMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfDustMan: TextScriptCommError873B9E0_unk26_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Hey Lan!\n"
 	.string "Check your mail!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk22
 	ts_msg_open
 	.string "You've got some\n"
 	.string "mail..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk23
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "You have mail,\n"
 	.string "Lan!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Press START to\n"
 	.string "open the PET."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Select E-Mail from\n"
 	.string "the menu to"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "check and read\n"
 	.string "your mail!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk24
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x16,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: TextScriptCommError873B9E0_unk22_id,
 	]
-	ts_jump [
-		target: 25,
-	]
+	ts_jump target=TextScriptCommError873B9E0_unk25_id
 
 	def_text_script TextScriptCommError873B9E0_unk25
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "You have mail,\n"
 	.string "Lan!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 
 	def_text_script TextScriptCommError873B9E0_unk26
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Let's check out\n"
 	.string "the e-mail!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk27
@@ -307,46 +247,36 @@ TextScriptCommError873B9E0::
 
 	def_text_script TextScriptCommError873B9E0_unk30
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xFF,
-		jumpIfElecMan: 0xFF,
-		jumpIfSlashMan: 0xFF,
-		jumpIfEraseMan: 0xFF,
-		jumpIfChargeMan: 0xFF,
-		jumpIfSpoutMan: 0xFF,
-		jumpIfTomahawkMan: 0xFF,
-		jumpIfTenguMan: 0xFF,
-		jumpIfGroundMan: 0x1F,
-		jumpIfDustMan: 0xFF,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TS_CONTINUE,
+		jumpIfElecMan: TS_CONTINUE,
+		jumpIfSlashMan: TS_CONTINUE,
+		jumpIfEraseMan: TS_CONTINUE,
+		jumpIfChargeMan: TS_CONTINUE,
+		jumpIfSpoutMan: TS_CONTINUE,
+		jumpIfTomahawkMan: TS_CONTINUE,
+		jumpIfTenguMan: TS_CONTINUE,
+		jumpIfGroundMan: TextScriptCommError873B9E0_unk31_id,
+		jumpIfDustMan: TS_CONTINUE,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "No Rush Coil!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk31
-	ts_mugshot_show [
-		mugshot: 0x4D,
-	]
+	ts_mugshot_show mugshot=0x4D
 	ts_msg_open
 	.string "Hey! It's no time\n"
 	.string "to be doing that\n"
 	.string "sort of thing!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "You need to be\n"
 	.string "concentratin'!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk32
@@ -377,26 +307,18 @@ TextScriptCommError873B9E0::
 	def_text_script TextScriptCommError873B9E0_unk44
 
 	def_text_script TextScriptCommError873B9E0_unk45
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Transfer complete!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk46
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Transfer complete!!\n"
 	.string "Welcome back!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk47
@@ -407,72 +329,48 @@ TextScriptCommError873B9E0::
 
 	def_text_script TextScriptCommError873B9E0_unk50
 	ts_msg_open
-	ts_sound_play00 [
-		track: 0x74,
-	]
-	ts_player_animate_object [
-		animation: 0x18,
-	]
+	ts_sound_play00 track=0x74
+	ts_player_animate_object animation=0x18
 	.string "Your Request Rank\n"
 	.string "has been increased\n"
 	.string "to \"B Rank\"!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_object
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk51
 	ts_msg_open
-	ts_sound_play00 [
-		track: 0x74,
-	]
-	ts_player_animate_object [
-		animation: 0x18,
-	]
+	ts_sound_play00 track=0x74
+	ts_player_animate_object animation=0x18
 	.string "Your Request Rank\n"
 	.string "has been increased\n"
 	.string "to \"A Rank\"!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_object
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk52
 	ts_msg_open
-	ts_sound_play00 [
-		track: 0x74,
-	]
-	ts_player_animate_object [
-		animation: 0x18,
-	]
+	ts_sound_play00 track=0x74
+	ts_player_animate_object animation=0x18
 	.string "Your Request Rank\n"
 	.string "has been increased\n"
 	.string "to \"S Rank\"!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_object
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk53
 	ts_msg_open
-	ts_sound_play00 [
-		track: 0x74,
-	]
-	ts_player_animate_object [
-		animation: 0x18,
-	]
+	ts_sound_play00 track=0x74
+	ts_player_animate_object animation=0x18
 	.string "Your Request Rank\n"
 	.string "has been increased\n"
 	.string "to \"Master\"!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_object
 	ts_end
@@ -490,85 +388,57 @@ TextScriptCommError873B9E0::
 	def_text_script TextScriptCommError873B9E0_unk59
 
 	def_text_script TextScriptCommError873B9E0_unk60
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "It's the \n"
 	.string "autophone..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x4,
-	]
+	ts_mugshot_show mugshot=0x4
 	.string "I hear there is\n"
 	.string "someone who finished\n"
 	.string "every request!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I should have known\n"
 	.string "that someone is you!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "By completing all\n"
 	.string "of those requests,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "your powers are now\n"
 	.string "more than even an\n"
 	.string "Official!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I've got something\n"
 	.string "I want to show you."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "ProtoMan's true\n"
 	.string "form..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "We're waiting in\n"
 	.string "Cyber Academy\n"
 	.string "Class 6-1!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
 	.string "*click*..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "ProtoMan's\n"
 	.string "true form..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Alright! Let's make\n"
 	.string "the most of this\n"
 	.string "challenge!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk61
@@ -592,9 +462,7 @@ TextScriptCommError873B9E0::
 	]
 	.string " pcs. of\n"
 	.string "Rush Food."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptCommError873B9E0_unk66

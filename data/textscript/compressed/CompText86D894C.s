@@ -12,55 +12,47 @@ CompText86D894C::
 	def_text_script CompText86D894C_unk0
 	ts_check_flag [
 		flag: 0xF2,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x1,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText86D894C_unk1_id,
 	]
 	ts_check_flag [
 		flag: 0xF7,
-		jumpIfTrue: 0x3,
-		jumpIfFalse: 0x2,
+		jumpIfTrue: CompText86D894C_unk3_id,
+		jumpIfFalse: CompText86D894C_unk2_id,
 	]
 
 	def_text_script CompText86D894C_unk1
 	ts_check_flag [
 		flag: 0xF7,
-		jumpIfTrue: 0x4,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText86D894C_unk4_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "This is the Navi's\n"
 	.string "status."
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D894C_unk2
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x1,
-		jumpIfElecMan: 0x1,
-		jumpIfSlashMan: 0x1,
-		jumpIfEraseMan: 0x1,
-		jumpIfChargeMan: 0x1,
-		jumpIfSpoutMan: 0x1,
-		jumpIfTomahawkMan: 0x1,
-		jumpIfTenguMan: 0x1,
-		jumpIfGroundMan: 0x1,
-		jumpIfDustMan: 0x1,
-		jumpIfProtoMan: 0x1,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText86D894C_unk1_id,
+		jumpIfElecMan: CompText86D894C_unk1_id,
+		jumpIfSlashMan: CompText86D894C_unk1_id,
+		jumpIfEraseMan: CompText86D894C_unk1_id,
+		jumpIfChargeMan: CompText86D894C_unk1_id,
+		jumpIfSpoutMan: CompText86D894C_unk1_id,
+		jumpIfTomahawkMan: CompText86D894C_unk1_id,
+		jumpIfTenguMan: CompText86D894C_unk1_id,
+		jumpIfGroundMan: CompText86D894C_unk1_id,
+		jumpIfDustMan: CompText86D894C_unk1_id,
+		jumpIfProtoMan: CompText86D894C_unk1_id,
 	]
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "This is the Navi's\n"
 	.string "status.\n"
-	ts_position_option_vertical [
-		width: 0xC,
-	]
+	ts_position_option_vertical width=0xC
 	ts_option [
 		brackets: 0x0,
 		right: 0x0,
@@ -68,51 +60,39 @@ CompText86D894C::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " NaviCust"
 	ts_select 0x5, 0x40, 0xFF, 0xFF
-	ts_wait [
-		frames: 0x1,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait frames=0x1
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D894C_unk3
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x4,
-		jumpIfElecMan: 0x4,
-		jumpIfSlashMan: 0x4,
-		jumpIfEraseMan: 0x4,
-		jumpIfChargeMan: 0x4,
-		jumpIfSpoutMan: 0x4,
-		jumpIfTomahawkMan: 0x4,
-		jumpIfTenguMan: 0x4,
-		jumpIfGroundMan: 0x4,
-		jumpIfDustMan: 0x4,
-		jumpIfProtoMan: 0x4,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText86D894C_unk4_id,
+		jumpIfElecMan: CompText86D894C_unk4_id,
+		jumpIfSlashMan: CompText86D894C_unk4_id,
+		jumpIfEraseMan: CompText86D894C_unk4_id,
+		jumpIfChargeMan: CompText86D894C_unk4_id,
+		jumpIfSpoutMan: CompText86D894C_unk4_id,
+		jumpIfTomahawkMan: CompText86D894C_unk4_id,
+		jumpIfTenguMan: CompText86D894C_unk4_id,
+		jumpIfGroundMan: CompText86D894C_unk4_id,
+		jumpIfDustMan: CompText86D894C_unk4_id,
+		jumpIfProtoMan: CompText86D894C_unk4_id,
 	]
 	ts_check_flag [
 		flag: 0x170F,
-		jumpIfTrue: 0xD,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText86D894C_unk13_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "This is the Navi's\n"
 	.string "status."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_position_option_vertical [
-		width: 0xC,
-	]
+	ts_position_option_vertical width=0xC
 	ts_option [
 		brackets: 0x0,
 		right: 0x0,
@@ -120,13 +100,9 @@ CompText86D894C::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " NaviCust\n"
-	ts_position_option_vertical [
-		width: 0xC,
-	]
+	ts_position_option_vertical width=0xC
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -134,28 +110,18 @@ CompText86D894C::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Records"
 	ts_select 0x6, 0x40, 0xFF, 0xFF, 0xFF
-	ts_wait [
-		frames: 0x1,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait frames=0x1
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D894C_unk4
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "This is the Navi's\n"
 	.string "status.\n"
-	ts_position_option_vertical [
-		width: 0x8,
-	]
+	ts_position_option_vertical width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x0,
@@ -163,17 +129,11 @@ CompText86D894C::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Records"
 	ts_select 0x6, 0x40, 0xFF, 0xFF, 0xFF
-	ts_wait [
-		frames: 0x1,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait frames=0x1
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D894C_unk5
 	.string "Attack LV"
@@ -213,14 +173,10 @@ CompText86D894C::
 
 	def_text_script CompText86D894C_unk13
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "This is the Navi's\n"
 	.string "status.\n"
-	ts_position_option_vertical [
-		width: 0xC,
-	]
+	ts_position_option_vertical width=0xC
 	ts_option [
 		brackets: 0x0,
 		right: 0x0,
@@ -228,13 +184,9 @@ CompText86D894C::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " NaviCust\n"
-	ts_position_option_vertical [
-		width: 0xC,
-	]
+	ts_position_option_vertical width=0xC
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -242,17 +194,11 @@ CompText86D894C::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " records"
 	ts_select 0x6, 0x41, 0xFF, 0xFF, 0xFF
-	ts_wait [
-		frames: 0x1,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait frames=0x1
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D894C_unk14
 	.string "DarkChip "
@@ -261,41 +207,27 @@ CompText86D894C::
 
 	def_text_script CompText86D894C_unk15
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Unable to use the\n"
 	.string "equipped folder.\n"
 	.string "Switching to"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Extra Folder."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D894C_unk16
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Equipped folder\n"
 	.string "can't be used now."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "You can't use the\n"
 	.string "Extra Folder,so\n"
 	.string "use this one."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
 	.string "Lan got:\n"
@@ -305,35 +237,23 @@ CompText86D894C::
 		buffer: 0x0,
 	]
 	.string "\"!!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Switching folders."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D894C_unk17
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Can't use the\n"
 	.string "equipped folder."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Since the Extra\n"
 	.string "Folder cannot be\n"
 	.string "used,use this."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
 	.string "Lan got:\n"
@@ -343,18 +263,12 @@ CompText86D894C::
 		buffer: 0x0,
 	]
 	.string "\"!!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Switching to this\n"
 	.string "folder."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D894C_unk18
 	.string "V"
@@ -432,13 +346,9 @@ CompText86D894C::
 
 	def_text_script CompText86D894C_unk53
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Save?\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -446,9 +356,7 @@ CompText86D894C::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -457,35 +365,27 @@ CompText86D894C::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x0, 0x36, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D894C_unk54
 	ts_check_flag [
 		flag: 0x1704,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x37,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText86D894C_unk55_id,
 	]
 	ts_position_text [
 		left: 0x39,
 		top: 0x6C,
 		arrowDistance: 0x3,
 	]
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_clear_msg
 	.string "OK to erase\n"
 	.string "old save data?\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -493,9 +393,7 @@ CompText86D894C::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -504,32 +402,24 @@ CompText86D894C::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x0, 0x37, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D894C_unk55
-	ts_flag_clear [
-		flag: 0x1713,
-	]
+	ts_flag_clear flag=0x1713
 	ts_call_save [
-		jumpIfSuccessful: 0x38,
-		jumpIfFailed: 0xFF,
-		jumpUnused: 0x0,
+		jumpIfSuccessful: CompText86D894C_unk56_id,
+		jumpIfFailed: TS_CONTINUE,
+		jumpUnused: CompText86D894C_unk0_id,
 	]
 	ts_position_text [
 		left: 0x39,
 		top: 0x6C,
 		arrowDistance: 0x3,
 	]
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_position_arrow [
 		left: 0xDE,
 		top: 0x8D,
@@ -537,13 +427,9 @@ CompText86D894C::
 	ts_clear_msg
 	.string "Try saving\n"
 	.string "again?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -551,9 +437,7 @@ CompText86D894C::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -562,14 +446,10 @@ CompText86D894C::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x0, 0x35, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D894C_unk56
 	ts_position_text [
@@ -577,34 +457,22 @@ CompText86D894C::
 		top: 0x6C,
 		arrowDistance: 0x3,
 	]
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_position_arrow [
 		left: 0xDE,
 		top: 0x8D,
 	]
 	ts_clear_msg
 	.string "The save is complete"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D894C_unk57
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	.string "Can't save here"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D894C_unk58
 

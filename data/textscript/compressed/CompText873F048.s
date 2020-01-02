@@ -13,20 +13,18 @@ CompText873F048::
 	ts_check_chapter [
 		lower: 0x52,
 		upper: 0x52,
-		jumpIfInRange: 0x87,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText873F048_unk135_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x51,
 		upper: 0x51,
-		jumpIfInRange: 0x73,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText873F048_unk115_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_msg_open
 	.string "Dummy text"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk1
@@ -260,188 +258,146 @@ CompText873F048::
 	def_text_script CompText873F048_unk115
 	ts_check_flag [
 		flag: 0xC1C,
-		jumpIfTrue: 0x7D,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk125_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC1A,
-		jumpIfTrue: 0x7C,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk124_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC14,
-		jumpIfTrue: 0x7B,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk123_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCD4,
-		jumpIfTrue: 0x7A,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk122_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCD3,
-		jumpIfTrue: 0x79,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk121_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCD2,
-		jumpIfTrue: 0x78,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk120_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCD1,
-		jumpIfTrue: 0x77,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk119_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCD0,
-		jumpIfTrue: 0x76,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk118_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC12,
-		jumpIfTrue: 0x75,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk117_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC10,
-		jumpIfTrue: 0x74,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk116_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_end
 
 	def_text_script CompText873F048_unk116
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "It'd sure be nice to\n"
 	.string "say hi to everyone\n"
 	.string "in town,wouldn't it?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk117
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's jack into the\n"
 	.string "squirrel in the park\n"
 	.string "and go to ACDC Area!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk118
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's find that lost\n"
 	.string "Mr.Prog! He's some-\n"
 	.string "where in ACDC Area!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk119
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "I wonder who's the\n"
 	.string "one causing trouble\n"
 	.string "in ACDC Area?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk120
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's go back to the\n"
 	.string "lost Mr.Prog,Lan!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk121
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's go give Roll\n"
 	.string "her stuff,OK,Lan?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk122
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's jack into the\n"
 	.string "squirrel in the park\n"
 	.string "and go to ACDC Area!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "We're supposed to\n"
 	.string "meet up in front of\n"
 	.string "the ducks!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk123
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "We have to go to\n"
 	.string "Undernet2 right now,\n"
 	.string "Lan!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk124
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "... Guess all I can\n"
 	.string "do is go back to\n"
 	.string "Central Town..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk125
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "... Maybe I should\n"
 	.string "go home..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk126
@@ -465,168 +421,128 @@ CompText873F048::
 	def_text_script CompText873F048_unk135
 	ts_check_flag [
 		flag: 0xC26,
-		jumpIfTrue: 0x8D,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk141_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC24,
-		jumpIfTrue: 0x8C,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk140_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC22,
-		jumpIfTrue: 0x8B,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk139_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCCF,
-		jumpIfTrue: 0x8A,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk138_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xCCE,
-		jumpIfTrue: 0x89,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk137_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC30,
-		jumpIfTrue: 0x88,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk136_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xC20,
-		jumpIfTrue: 0x8E,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText873F048_unk142_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "I've gotta hurry\n"
 	.string "to Seaside Town!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk136
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Somehow,I've gotta\n"
 	.string "get to CentralArea3!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk137
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "I have to ask the\n"
 	.string "Mayor to get rid of\n"
 	.string "the cyberbarrier..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I think the Mayor\n"
 	.string "might be in the\n"
 	.string "Principal's Office."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk138
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "I've gotta see the\n"
 	.string "Mayor no matter\n"
 	.string "what!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk139
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "I've gotta get to\n"
 	.string "the Principal's\n"
 	.string "Office right now!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk140
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "I've gotta get to\n"
 	.string "the large hole in\n"
 	.string "CentralArea!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk141
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Hold on,MegaMan! I'm\n"
 	.string "coming to the Under-\n"
 	.string "ground right now!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk142
 	ts_check_flag [
 		flag: 0x1D28,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0x8F,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText873F048_unk143_id,
 	]
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "I guess I should\n"
 	.string "read my mail..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk143
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "I wonder what\n"
 	.string "Mr.Mach wants?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Guess I should go\n"
 	.string "to Sky Town and\n"
 	.string "find out..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873F048_unk144

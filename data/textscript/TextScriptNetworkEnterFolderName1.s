@@ -43,60 +43,50 @@ TextScriptNetworkEnterFolderName1::
 
 	def_text_script TextScriptNetworkEnterFolderName1_unk20
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x1E,
-		jumpIfElecMan: 0x1E,
-		jumpIfSlashMan: 0x1E,
-		jumpIfEraseMan: 0x1E,
-		jumpIfChargeMan: 0x1E,
-		jumpIfSpoutMan: 0x1E,
-		jumpIfTomahawkMan: 0x1E,
-		jumpIfTenguMan: 0x1E,
-		jumpIfGroundMan: 0x1E,
-		jumpIfDustMan: 0x1E,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptNetworkEnterFolderName1_unk30_id,
+		jumpIfElecMan: TextScriptNetworkEnterFolderName1_unk30_id,
+		jumpIfSlashMan: TextScriptNetworkEnterFolderName1_unk30_id,
+		jumpIfEraseMan: TextScriptNetworkEnterFolderName1_unk30_id,
+		jumpIfChargeMan: TextScriptNetworkEnterFolderName1_unk30_id,
+		jumpIfSpoutMan: TextScriptNetworkEnterFolderName1_unk30_id,
+		jumpIfTomahawkMan: TextScriptNetworkEnterFolderName1_unk30_id,
+		jumpIfTenguMan: TextScriptNetworkEnterFolderName1_unk30_id,
+		jumpIfGroundMan: TextScriptNetworkEnterFolderName1_unk30_id,
+		jumpIfDustMan: TextScriptNetworkEnterFolderName1_unk30_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open_menu
 	.string "Please enter\n"
 	.string "folder name!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptNetworkEnterFolderName1_unk21
 
 	def_text_script TextScriptNetworkEnterFolderName1_unk22
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x1F,
-		jumpIfElecMan: 0x1F,
-		jumpIfSlashMan: 0x1F,
-		jumpIfEraseMan: 0x1F,
-		jumpIfChargeMan: 0x1F,
-		jumpIfSpoutMan: 0x1F,
-		jumpIfTomahawkMan: 0x1F,
-		jumpIfTenguMan: 0x1F,
-		jumpIfGroundMan: 0x1F,
-		jumpIfDustMan: 0x1F,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptNetworkEnterFolderName1_unk31_id,
+		jumpIfElecMan: TextScriptNetworkEnterFolderName1_unk31_id,
+		jumpIfSlashMan: TextScriptNetworkEnterFolderName1_unk31_id,
+		jumpIfEraseMan: TextScriptNetworkEnterFolderName1_unk31_id,
+		jumpIfChargeMan: TextScriptNetworkEnterFolderName1_unk31_id,
+		jumpIfSpoutMan: TextScriptNetworkEnterFolderName1_unk31_id,
+		jumpIfTomahawkMan: TextScriptNetworkEnterFolderName1_unk31_id,
+		jumpIfTenguMan: TextScriptNetworkEnterFolderName1_unk31_id,
+		jumpIfGroundMan: TextScriptNetworkEnterFolderName1_unk31_id,
+		jumpIfDustMan: TextScriptNetworkEnterFolderName1_unk31_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open_menu
 	.string "\""
-	ts_print_link_buffer [
-		buffer: 0x2,
-	]
+	ts_print_link_buffer buffer=0x2
 	.string "\"\n"
 	.string "Is that OK?\n"
-	ts_position_option_horizontal [
-		width: 0x7,
-	]
+	ts_position_option_horizontal width=0x7
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -104,9 +94,7 @@ TextScriptNetworkEnterFolderName1::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -115,9 +103,7 @@ TextScriptNetworkEnterFolderName1::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
@@ -126,28 +112,24 @@ TextScriptNetworkEnterFolderName1::
 
 	def_text_script TextScriptNetworkEnterFolderName1_unk24
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0x20,
-		jumpIfElecMan: 0x20,
-		jumpIfSlashMan: 0x20,
-		jumpIfEraseMan: 0x20,
-		jumpIfChargeMan: 0x20,
-		jumpIfSpoutMan: 0x20,
-		jumpIfTomahawkMan: 0x20,
-		jumpIfTenguMan: 0x20,
-		jumpIfGroundMan: 0x20,
-		jumpIfDustMan: 0x20,
-		jumpIfProtoMan: 0xFF,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: TextScriptNetworkEnterFolderName1_unk32_id,
+		jumpIfElecMan: TextScriptNetworkEnterFolderName1_unk32_id,
+		jumpIfSlashMan: TextScriptNetworkEnterFolderName1_unk32_id,
+		jumpIfEraseMan: TextScriptNetworkEnterFolderName1_unk32_id,
+		jumpIfChargeMan: TextScriptNetworkEnterFolderName1_unk32_id,
+		jumpIfSpoutMan: TextScriptNetworkEnterFolderName1_unk32_id,
+		jumpIfTomahawkMan: TextScriptNetworkEnterFolderName1_unk32_id,
+		jumpIfTenguMan: TextScriptNetworkEnterFolderName1_unk32_id,
+		jumpIfGroundMan: TextScriptNetworkEnterFolderName1_unk32_id,
+		jumpIfDustMan: TextScriptNetworkEnterFolderName1_unk32_id,
+		jumpIfProtoMan: TS_CONTINUE,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open_menu
 	.string "Quit entering name\n"
 	.string "and return to menu?\n"
-	ts_position_option_horizontal [
-		width: 0x7,
-	]
+	ts_position_option_horizontal width=0x7
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -155,9 +137,7 @@ TextScriptNetworkEnterFolderName1::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -166,9 +146,7 @@ TextScriptNetworkEnterFolderName1::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
@@ -176,9 +154,7 @@ TextScriptNetworkEnterFolderName1::
 	def_text_script TextScriptNetworkEnterFolderName1_unk25
 
 	def_text_script TextScriptNetworkEnterFolderName1_unk26
-	ts_jump [
-		target: 24,
-	]
+	ts_jump target=TextScriptNetworkEnterFolderName1_unk24_id
 
 	def_text_script TextScriptNetworkEnterFolderName1_unk27
 
@@ -188,9 +164,7 @@ TextScriptNetworkEnterFolderName1::
 		top: 0x6C,
 		arrowDistance: 0x3,
 	]
-	ts_jump [
-		target: 20,
-	]
+	ts_jump target=TextScriptNetworkEnterFolderName1_unk20_id
 
 	def_text_script TextScriptNetworkEnterFolderName1_unk29
 
@@ -198,22 +172,16 @@ TextScriptNetworkEnterFolderName1::
 	ts_msg_open_menu
 	.string "Please enter\n"
 	.string "folder name."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptNetworkEnterFolderName1_unk31
 	ts_msg_open_menu
 	.string "\""
-	ts_print_link_buffer [
-		buffer: 0x2,
-	]
+	ts_print_link_buffer buffer=0x2
 	.string "\"\n"
 	.string "OK?\n"
-	ts_position_option_horizontal [
-		width: 0x7,
-	]
+	ts_position_option_horizontal width=0x7
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -221,9 +189,7 @@ TextScriptNetworkEnterFolderName1::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -232,9 +198,7 @@ TextScriptNetworkEnterFolderName1::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end
@@ -243,9 +207,7 @@ TextScriptNetworkEnterFolderName1::
 	ts_msg_open_menu
 	.string "Quit entry and\n"
 	.string "return to menu?\n"
-	ts_position_option_horizontal [
-		width: 0x7,
-	]
+	ts_position_option_horizontal width=0x7
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -253,9 +215,7 @@ TextScriptNetworkEnterFolderName1::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -264,9 +224,7 @@ TextScriptNetworkEnterFolderName1::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0xFF, 0xFF
 	ts_end

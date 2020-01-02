@@ -13,303 +13,205 @@ CompText877EDD8::
 	ts_check_chapter [
 		lower: 0x42,
 		upper: 0x42,
-		jumpIfInRange: 0xF,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText877EDD8_unk15_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_chapter [
 		lower: 0x41,
 		upper: 0x41,
-		jumpIfInRange: 0xA,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText877EDD8_unk10_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0xA60,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877EDD8_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Um... I'm here to\n"
 	.string "take part in the\n"
 	.string "Selection Test..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0xF,
-	]
+	ts_mugshot_show mugshot=0xF
 	.string "Can you please show\n"
 	.string "me the E-mail you\n"
 	.string "got from us?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "Ah,yes!..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0xF,
-	]
+	ts_mugshot_show mugshot=0xF
 	.string "... Ah,I see.\n"
 	.string "Thank you."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Well then,please\n"
 	.string "take the elevator on\n"
 	.string "up to Sky Town."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "After you get up\n"
 	.string "there,please head\n"
 	.string "straight ahead"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "towards the big\n"
 	.string "building."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "My Navi will be\n"
 	.string "waiting inside,so"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "please check in with\n"
 	.string "him."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "OK!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0xA60,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0xA60
 	ts_end
 
 	def_text_script CompText877EDD8_unk1
-	ts_mugshot_show [
-		mugshot: 0xF,
-	]
+	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "Good luck to you!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877EDD8_unk2
-	ts_mugshot_show [
-		mugshot: 0xD,
-	]
+	ts_mugshot_show mugshot=0xD
 	ts_msg_open
 	.string "Ooh...\n"
 	.string "I'm so nervous!\n"
 	.string "Gotta concentrate!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877EDD8_unk3
 	ts_check_chapter [
 		lower: 0x41,
 		upper: 0x41,
-		jumpIfInRange: 0xB,
-		jumpIfOutOfRange: 0xFF,
+		jumpIfInRange: CompText877EDD8_unk11_id,
+		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_mugshot_show [
-		mugshot: 0xA,
-	]
+	ts_mugshot_show mugshot=0xA
 	ts_msg_open
 	.string "Once you get in the\n"
 	.string "elevator,you'll be\n"
 	.string "taken straight up"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "30,000 feet into\n"
 	.string "the air to Sky Town!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "But I'm scared of\n"
 	.string "heights,so I can't\n"
 	.string "ride it..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877EDD8_unk4
 	ts_check_flag [
 		flag: 0xABF,
-		jumpIfTrue: 0x6,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877EDD8_unk6_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set [
-		flag: 0xABF,
-	]
-	ts_mugshot_show [
-		mugshot: 0x20,
-	]
+	ts_flag_set flag=0xABF
+	ts_mugshot_show mugshot=0x20
 	ts_msg_open
 	.string "I am Ann Zap."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I am holding Elec\n"
 	.string "Operating classes on\n"
 	.string "that helipad below."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "Elec Operating?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x20,
-	]
+	ts_mugshot_show mugshot=0x20
 	.string "Yes. \"How to use\n"
 	.string "electricity in\n"
 	.string "NetBattles\"."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "If you have time,\n"
 	.string "why don't you come\n"
 	.string "on by?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877EDD8_unk5
 	ts_check_flag [
 		flag: 0xAC0,
-		jumpIfTrue: 0x7,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText877EDD8_unk7_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set [
-		flag: 0xAC0,
-	]
-	ts_mugshot_show [
-		mugshot: 0x21,
-	]
+	ts_flag_set flag=0xAC0
+	ts_mugshot_show mugshot=0x21
 	ts_msg_open
 	.string "Well if it isn't\n"
 	.string "Lan! It's been a\n"
 	.string "long time,buddy!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "Dingo!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "What are you doing\n"
 	.string "in a place like\n"
 	.string "this!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x21,
-	]
+	ts_mugshot_show mugshot=0x21
 	.string "I opened a NetBattle\n"
 	.string "class"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "right down there on\n"
 	.string "the helipad!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I want to teach\n"
 	.string "people how to chop"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "things clean in\n"
 	.string "two,just like\n"
 	.string "TomahawkMan,so"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "if you want,come\n"
 	.string "check out my class,\n"
 	.string "alright!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877EDD8_unk6
-	ts_mugshot_show [
-		mugshot: 0x20,
-	]
+	ts_mugshot_show mugshot=0x20
 	ts_msg_open
 	.string "If you have time,\n"
 	.string "why don't you come\n"
 	.string "take my class?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877EDD8_unk7
-	ts_mugshot_show [
-		mugshot: 0x21,
-	]
+	ts_mugshot_show mugshot=0x21
 	ts_msg_open
 	.string "If you want,come\n"
 	.string "take my class,OK!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877EDD8_unk8
@@ -317,46 +219,32 @@ CompText877EDD8::
 	def_text_script CompText877EDD8_unk9
 
 	def_text_script CompText877EDD8_unk10
-	ts_mugshot_show [
-		mugshot: 0xF,
-	]
+	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "Oh,are you finished\n"
 	.string "already?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "... No?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Sorry to bother you\n"
 	.string "then. Good luck!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877EDD8_unk11
-	ts_mugshot_show [
-		mugshot: 0xA,
-	]
+	ts_mugshot_show mugshot=0xA
 	ts_msg_open
 	.string "How was the elevator\n"
 	.string "ride? Were you\n"
 	.string "scared?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Sadly,I'm afraid of\n"
 	.string "heights,so I can't\n"
 	.string "ride it..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877EDD8_unk12
@@ -366,39 +254,27 @@ CompText877EDD8::
 	def_text_script CompText877EDD8_unk14
 
 	def_text_script CompText877EDD8_unk15
-	ts_mugshot_show [
-		mugshot: 0xF,
-	]
+	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "What!?\n"
 	.string "... The Undernet!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It's true that a\n"
 	.string "bunch of suspicious\n"
 	.string "guys have been"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "showing up from the\n"
 	.string "Undernet..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "But there's nothing\n"
 	.string "I can really do..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "*sigh...*"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877EDD8_unk16
@@ -410,36 +286,26 @@ CompText877EDD8::
 	def_text_script CompText877EDD8_unk19
 
 	def_text_script CompText877EDD8_unk20
-	ts_mugshot_show [
-		mugshot: 0x10,
-	]
+	ts_mugshot_show mugshot=0x10
 	ts_msg_open
 	.string "The cause of the\n"
 	.string "recent string of\n"
 	.string "strange weather is"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "most certainly on\n"
 	.string "the Sky Town\n"
 	.string "computer system."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The system admins\n"
 	.string "are doing repair\n"
 	.string "work up there now..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I wonder how they're\n"
 	.string "doing?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877EDD8_unk21
@@ -481,49 +347,35 @@ CompText877EDD8::
 	def_text_script CompText877EDD8_unk39
 
 	def_text_script CompText877EDD8_unk40
-	ts_mugshot_show [
-		mugshot: 0xF,
-	]
+	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "Because the Force\n"
 	.string "Program was stolen,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Sky Town is\n"
 	.string "currently running on\n"
 	.string "back-up electricity."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It's not generating\n"
 	.string "enough power,so we\n"
 	.string "are bringing every-"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "thing that is not\n"
 	.string "needed down to the\n"
 	.string "ground."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "This is what you get\n"
 	.string "when you build a"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Town on the latest\n"
 	.string "technology...\n"
 	.string "O-ho,ho..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877EDD8_unk41
@@ -535,28 +387,20 @@ CompText877EDD8::
 	def_text_script CompText877EDD8_unk44
 
 	def_text_script CompText877EDD8_unk45
-	ts_mugshot_show [
-		mugshot: 0xF,
-	]
+	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "Sky Town is running\n"
 	.string "on its back-up\n"
 	.string "energy again."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "I wish they would\n"
 	.string "hurry up and get"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "things back to\n"
 	.string "normal!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877EDD8_unk46

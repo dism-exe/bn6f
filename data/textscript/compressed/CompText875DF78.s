@@ -16,12 +16,8 @@ CompText875DF78::
 	ts_msg_open
 	ts_msg_open
 	.string "It's a BBS..."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_start_b_b_s [
-		bbs: 0x2,
-	]
+	ts_key_wait any=0x0
+	ts_start_b_b_s bbs=0x2
 	ts_end
 
 	def_text_script CompText875DF78_unk2

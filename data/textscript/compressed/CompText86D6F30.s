@@ -462,8 +462,8 @@ CompText86D6F30::
 
 	def_text_script CompText86D6F30_unk125
 	ts_check_game_version_s [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x7E,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText86D6F30_unk126_id,
 	]
 	.string "VDoll   F\n"
 	.string "VDoll   F\n"

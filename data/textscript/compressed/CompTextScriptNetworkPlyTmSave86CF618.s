@@ -48,17 +48,11 @@ CompTextScriptNetworkPlyTmSave86CF618::
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk10
 	ts_msg_open_menu_quick
-	ts_text_speed [
-		delay: 0x0,
-	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_text_speed delay=0x0
+	ts_mugshot_show mugshot=0x37
 	.string "Save your\n"
 	.string "game?\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -66,9 +60,7 @@ CompTextScriptNetworkPlyTmSave86CF618::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -77,30 +69,22 @@ CompTextScriptNetworkPlyTmSave86CF618::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x0, 0xB, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk11
 	ts_check_flag [
 		flag: 0x1704,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompTextScriptNetworkPlyTmSave86CF618_unk12_id,
 	]
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_clear_msg
 	.string "OK to erase\n"
 	.string "old save data?\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -108,9 +92,7 @@ CompTextScriptNetworkPlyTmSave86CF618::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -119,35 +101,25 @@ CompTextScriptNetworkPlyTmSave86CF618::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x0, 0xC, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk12
 	ts_call_save [
-		jumpIfSuccessful: 0xD,
-		jumpIfFailed: 0xFF,
-		jumpUnused: 0x0,
+		jumpIfSuccessful: CompTextScriptNetworkPlyTmSave86CF618_unk13_id,
+		jumpIfFailed: TS_CONTINUE,
+		jumpUnused: CompTextScriptNetworkPlyTmSave86CF618_unk0_id,
 	]
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_clear_msg
 	.string "The save\n"
 	.string "failed..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Try again?\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -155,9 +127,7 @@ CompTextScriptNetworkPlyTmSave86CF618::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -166,28 +136,18 @@ CompTextScriptNetworkPlyTmSave86CF618::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x0, 0xA, 0xFF, 0xFF
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk13
-	ts_text_speed [
-		delay: 0x0,
-	]
+	ts_text_speed delay=0x0
 	ts_clear_msg
 	.string "OK! Your save\n"
 	.string "is complete!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk14
 

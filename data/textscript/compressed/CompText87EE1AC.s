@@ -12,22 +12,22 @@ CompText87EE1AC::
 	def_text_script CompText87EE1AC_unk0
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xB,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87EE1AC_unk11_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xB,
-		jumpIfElecMan: 0xB,
-		jumpIfSlashMan: 0xB,
-		jumpIfEraseMan: 0xB,
-		jumpIfChargeMan: 0xB,
-		jumpIfSpoutMan: 0xB,
-		jumpIfTomahawkMan: 0xB,
-		jumpIfTenguMan: 0xB,
-		jumpIfGroundMan: 0xB,
-		jumpIfDustMan: 0xB,
-		jumpIfProtoMan: 0xB,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87EE1AC_unk11_id,
+		jumpIfElecMan: CompText87EE1AC_unk11_id,
+		jumpIfSlashMan: CompText87EE1AC_unk11_id,
+		jumpIfEraseMan: CompText87EE1AC_unk11_id,
+		jumpIfChargeMan: CompText87EE1AC_unk11_id,
+		jumpIfSpoutMan: CompText87EE1AC_unk11_id,
+		jumpIfTomahawkMan: CompText87EE1AC_unk11_id,
+		jumpIfTenguMan: CompText87EE1AC_unk11_id,
+		jumpIfGroundMan: CompText87EE1AC_unk11_id,
+		jumpIfDustMan: CompText87EE1AC_unk11_id,
+		jumpIfProtoMan: CompText87EE1AC_unk11_id,
 	]
 	ts_position_text [
 		left: 0x33,
@@ -42,9 +42,7 @@ CompText87EE1AC::
 		left: 0xCA,
 		top: 0x64,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_position_box [
 		left: 0x0,
 		top: 0x6,
@@ -54,32 +52,28 @@ CompText87EE1AC::
 	.string "It looks like\n"
 	.string "there's a new\n"
 	.string "post!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EE1AC_unk1
 	ts_check_flag [
 		flag: 0x171D,
-		jumpIfTrue: 0xFF,
-		jumpIfFalse: 0xC,
+		jumpIfTrue: TS_CONTINUE,
+		jumpIfFalse: CompText87EE1AC_unk12_id,
 	]
 	ts_check_navi_all [
-		jumpIfMegaMan: 0xFF,
-		jumpIfHeatMan: 0xC,
-		jumpIfElecMan: 0xC,
-		jumpIfSlashMan: 0xC,
-		jumpIfEraseMan: 0xC,
-		jumpIfChargeMan: 0xC,
-		jumpIfSpoutMan: 0xC,
-		jumpIfTomahawkMan: 0xC,
-		jumpIfTenguMan: 0xC,
-		jumpIfGroundMan: 0xC,
-		jumpIfDustMan: 0xC,
-		jumpIfProtoMan: 0xC,
+		jumpIfMegaMan: TS_CONTINUE,
+		jumpIfHeatMan: CompText87EE1AC_unk12_id,
+		jumpIfElecMan: CompText87EE1AC_unk12_id,
+		jumpIfSlashMan: CompText87EE1AC_unk12_id,
+		jumpIfEraseMan: CompText87EE1AC_unk12_id,
+		jumpIfChargeMan: CompText87EE1AC_unk12_id,
+		jumpIfSpoutMan: CompText87EE1AC_unk12_id,
+		jumpIfTomahawkMan: CompText87EE1AC_unk12_id,
+		jumpIfTenguMan: CompText87EE1AC_unk12_id,
+		jumpIfGroundMan: CompText87EE1AC_unk12_id,
+		jumpIfDustMan: CompText87EE1AC_unk12_id,
+		jumpIfProtoMan: CompText87EE1AC_unk12_id,
 	]
 	ts_position_text [
 		left: 0x33,
@@ -94,9 +88,7 @@ CompText87EE1AC::
 		left: 0xCA,
 		top: 0x64,
 	]
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_position_box [
 		left: 0x0,
 		top: 0x6,
@@ -106,12 +98,8 @@ CompText87EE1AC::
 	.string "There isn't\n"
 	.string "even a single\n"
 	.string "post."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EE1AC_unk2
 	ts_position_text [
@@ -135,12 +123,8 @@ CompText87EE1AC::
 	ts_msg_open
 	.string "There seems to\n"
 	.string "be a new post."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EE1AC_unk3
 	ts_position_text [
@@ -165,12 +149,8 @@ CompText87EE1AC::
 	.string "There isn't\n"
 	.string "even a single\n"
 	.string "post."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EE1AC_unk4
 	ts_position_text [
@@ -195,12 +175,8 @@ CompText87EE1AC::
 	.string "Looks to me\n"
 	.string "like there's a\n"
 	.string "new post."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EE1AC_unk5
 	ts_position_text [
@@ -225,12 +201,8 @@ CompText87EE1AC::
 	.string "There isn't\n"
 	.string "even a single\n"
 	.string "post here."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EE1AC_unk6
 	.string "EndlsSmmrBBS@"
@@ -261,9 +233,7 @@ CompText87EE1AC::
 		left: 0xCA,
 		top: 0x64,
 	]
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_position_box [
 		left: 0x0,
 		top: 0x6,
@@ -273,12 +243,8 @@ CompText87EE1AC::
 	.string "Looks like\n"
 	.string "there's a\n"
 	.string "new post!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	def_text_script CompText87EE1AC_unk12
 	ts_position_text [
@@ -294,9 +260,7 @@ CompText87EE1AC::
 		left: 0xCA,
 		top: 0x64,
 	]
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	ts_position_box [
 		left: 0x0,
 		top: 0x6,
@@ -306,11 +270,7 @@ CompText87EE1AC::
 	.string "Awww... There's\n"
 	.string "not even a\n"
 	.string "single post."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_wait_hold [
-		unused: 0x0,
-	]
+	ts_key_wait any=0x0
+	ts_wait_hold unused=0x0
 
 	

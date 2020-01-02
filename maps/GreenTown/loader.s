@@ -38,7 +38,7 @@ GreenTown_EnterMapGroup:
 	ldr r0, [r0,r1]
 	str r0, [r5,#oGameState_Unk_64]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_805DF64: .word off_805DD24
 off_805DF68: .word unk_2037800
 off_805DF6C: .word off_805E1FC
@@ -63,6 +63,7 @@ GreenTown_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
+	.balign 4, 0
 off_805DFB0: .word off_805DFB4
 off_805DFB4: .word off_805DFC8
 	.word off_805DFD0
@@ -92,6 +93,7 @@ GreenTown_SpawnMapObjectsForMap:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_805E004: .word pt_805E008
 pt_805E008:
 	// <endpool> <endfile>

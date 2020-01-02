@@ -54,6 +54,7 @@ sub_800318C:
 	str r0, [r1]
 	str r3, [r1,#0x4] // (dword_2009AB4 - 0x2009ab0)
 	mov pc, lr
+	.balign 4, 0
 off_80031A0: .word eUnkBattleObjectLinkedList
 off_80031A4: .word eBattleObjectsLinkedListStart
 off_80031A8: .word eBattleObjectsLinkedListSentinel
@@ -114,7 +115,7 @@ RunBattleObjectLogic:
 	str r0, [r1]
 	add sp, sp, #0x10
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 .eBattleObjectsLinkedListStart_p: .word eBattleObjectsLinkedListStart
 .eBattleObjectsLinkedListSentinel_p: .word eBattleObjectsLinkedListSentinel
 .BattleObjectFunctionJumptableTable_p: .word .BattleObjectFunctionJumptableTable
@@ -198,6 +199,7 @@ loc_80032A6:
 loc_80032C8:
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80032CC: .word dword_80032D0
 dword_80032D0:
 	.word 0x0
@@ -395,6 +397,7 @@ sub_8003400:
 	bl UpdateBattleObjectLinkedList
 .done
 	pop {pc}
+	.balign 4, 0
 off_8003424: .word eUnkBattleObjectLinkedList
 	thumb_func_end sub_8003400
 
@@ -465,7 +468,7 @@ object_freeMemory:
 	str r1, [r2,#oBattleObject_LinkedList_Prev]
 	bl sprite_makeUnscalable
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 .ActiveObjectBitfieldPointers_p: .word ActiveObjectBitfieldPointers
 	thumb_func_end object_freeMemory
 
@@ -503,7 +506,7 @@ InitializeStructsOfObjectType:
 	cmp r1, r3
 	blt .loop
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 .ObjectInitializationTable_p: .word .ObjectInitializationTable
 .ObjectInitializationTable:
 	// word 1 is part of a linked list?
@@ -727,6 +730,7 @@ FreeAllObjectsOfSpecifiedTypes:
 .doneFreeingObjects
 	add sp, sp, #0x18
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8003618: .word FreeObjectJumptable
 off_800361C: .word ObjectMemoryPointers
 off_8003620: .word ActiveObjectBitfieldPointers
@@ -788,6 +792,7 @@ loc_8003688:
 	mov r1, #0x50
 	mov r2, #0
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8003690: .word eCamera+0x4C // eCamera.unk_4C
 	thumb_func_end sub_800362C
 
@@ -918,7 +923,7 @@ sub_800378C:
 	mov r1, #0
 	str r1, [r0]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80037A0: .word eOWObjectInteractionAreas
 off_80037A4: .word 0x280
 off_80037A8: .word eNumOWObjectInteractionAreas
@@ -1067,6 +1072,7 @@ loc_800387C
 	ldr r1, off_8003884 // =eNumOWObjectInteractionAreas
 	str r0, [r1]
 	pop {r5,pc}
+	.balign 4, 0
 off_8003884: .word eNumOWObjectInteractionAreas
 off_8003888: .word eOWObjectInteractionAreas
 off_800388C: .word eOWPlayerObject
@@ -1147,6 +1153,7 @@ checkOWObjectInteractionAreasOverlap_8003894:
 .interactionSuccessful
 	mov r0, #1
 	pop {pc}
+	.balign 4, 0
 jt_80038E8: .word sub_8142248+1
 	.word 0x0
 	.word 0x0
@@ -1319,6 +1326,7 @@ loc_80039EA:
 	mov r0, r4
 	tst r0, r0
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80039F0: .word eScenarioEffectState2000780
 off_80039F4: .word jt_80038E8
 off_80039F8: .word sub_81419A0+1
@@ -1495,6 +1503,7 @@ loc_8003B3A:
 	mov r0, r4
 	tst r0, r0
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8003B40: .word eStruct2001010
 off_8003B44: .word off_80039F8
 off_8003B48: .word sub_809D19C+1
@@ -1597,6 +1606,7 @@ loc_8003BDC:
 	mov r9, r5
 	mov r12, r6
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8003BF0: .word off_8003B48
 	thumb_func_end sub_8003BA2
 
@@ -1660,6 +1670,7 @@ loc_8003C4C:
 	mov r9, r5
 	mov r12, r6
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8003C64: .word sub_3006028+1
 off_8003C68: .word sub_30061E8+1
 off_8003C6C: .word sub_3006440+1
@@ -1687,6 +1698,7 @@ loc_8003C7E:
 	cmp r0, #1
 	blt loc_8003C7E
 	mov pc, lr
+	.balign 4, 0
 off_8003C90: .word eActiveOWPlayerObjectBitfield
 off_8003C94: .word eOWPlayerObject
 off_8003C98: .word eOWPlayerObjectEnd
@@ -1849,7 +1861,7 @@ loc_8003E7A:
 	mov r9, r5
 	mov r12, r6
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8003E8C: .word sub_3006028+1
 off_8003E90: .word sub_30061E8+1
 off_8003E94: .word sub_3006440+1
@@ -1873,6 +1885,7 @@ loc_8003EA6:
 	cmp r0, #0x20
 	blt loc_8003EA6
 	mov pc, lr
+	.balign 4, 0
 off_8003EB8: .word eT1BattleObject0
 off_8003EBC: .word byte_2036778
 off_8003EC0: .word dword_2039A10
@@ -2153,7 +2166,7 @@ loc_800427A:
 	mov r9, r5
 	mov r12, r6
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800428C: .word sub_3006028+1
 off_8004290: .word sub_30061E8+1
 off_8004294: .word sub_3006440+1
@@ -2181,6 +2194,7 @@ sub_80042A6:
 	blt sub_80042A6
 	mov pc, lr
 	.word eT3BattleObject0
+	.balign 4, 0
 off_80042BC: .word eT3BattleObject0_LinkedList
 off_80042C0: .word dword_203CA7C
 off_80042C4: .word dword_203A010
@@ -2394,7 +2408,7 @@ loc_8004572:
 	mov r9, r5
 	mov r12, r6
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8004584: .word sub_3006028+1
 off_8004588: .word sub_30061E8+1
 off_800458C: .word sub_3006440+1
@@ -2422,6 +2436,7 @@ loc_800459E:
 	cmp r0, #0x20
 	blt loc_800459E
 	mov pc, lr
+	.balign 4, 0
 off_80045B0: .word eT4BattleObject0
 off_80045B4: .word byte_2036830
 off_80045B8: .word byte_203F750
@@ -2537,7 +2552,7 @@ loc_800466C:
 	mov r9, r5
 	mov r12, r6
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8004678: .word off_80045BC
 	thumb_func_end npc_800461E
 
@@ -2601,6 +2616,7 @@ loc_80046D4:
 	mov r9, r5
 	mov r12, r6
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80046EC: .word sub_3006028+1
 off_80046F0: .word sub_30061E8+1
 off_80046F4: .word sub_3006440+1
@@ -2628,6 +2644,7 @@ loc_8004706:
 	cmp r0, #0x10
 	blt loc_8004706
 	mov pc, lr
+	.balign 4, 0
 off_8004718: .word eActiveOverworldNPCObjectsBitfield
 off_800471C: .word eOverworldNPCObjects
 off_8004720: .word byte_2006530
@@ -2873,7 +2890,7 @@ loc_8004920:
 	mov r9, r5
 	mov r12, r6
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800492C: .word off_8004724
 	.word dword_2013920
 	thumb_func_end sub_80048D2
@@ -2938,6 +2955,7 @@ loc_800498C:
 	mov r9, r5
 	mov r12, r6
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80049A4: .word sub_3006028+1
 off_80049A8: .word sub_30061E8+1
 off_80049AC: .word sub_3006440+1
@@ -2965,6 +2983,7 @@ loc_80049BE:
 	cmp r0, #0x38
 	blt loc_80049BE
 	mov pc, lr
+	.balign 4, 0
 off_80049D0: .word eActiveOverworldMapObjectsBitfield
 off_80049D4: .word eOverworldMapObjects
 off_80049D8: .word dword_2013920
@@ -2983,7 +3002,7 @@ sub_80049E0:
 	ldr r1, off_8004D2C // =byte_2006848
 	str r1, [r0]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80049F4: .word 0x400
 	thumb_func_end sub_80049E0
 
@@ -3099,7 +3118,7 @@ loc_8004AB0:
 	add sp, sp, #0x24
 	pop {r0-r7}
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8004ABC: .word off_8004AC0
 off_8004AC0: .word sub_8004B72+1
 	.word sub_8004B72+1
@@ -3194,7 +3213,7 @@ loc_8004B8E:
 loc_8004B96:
 	mov r4, #1
 	pop {r0,r5-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8004B9C: .word byte_8004BA0
 byte_8004BA0: .byte 0x0, 0xCA, 0x9A, 0x3B, 0x0, 0xE1, 0xF5, 0x5, 0x80, 0x96
 	.byte 0x98, 0x0, 0x40, 0x42, 0xF, 0x0, 0xA0, 0x86, 0x1, 0x0
@@ -3211,6 +3230,7 @@ sub_8004BC8:
 	bl sub_8004BFC
 	mov r4, #1
 	pop {r0,r5-r7,pc}
+	.balign 4, 0
 off_8004BD8: .word dword_8004BDC
 dword_8004BDC: .word 0x10000000, 0x1000000, 0x100000, 0x10000, 0x1000, 0x100
 	.word 0x10, 0x1
@@ -3409,6 +3429,7 @@ loc_8004D1E:
 locret_8004D24:
 	mov pc, lr
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_8004D28: .word dword_2006C48
 off_8004D2C: .word byte_2006848
 off_8004D30: .word byte_8004D34
@@ -3478,6 +3499,7 @@ sub_8004D48:
 loc_8004DDA:
 	bl sub_8048C98
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8004DE0: .word eStruct200ace0
 off_8004DE4: .word byte_200F410
 off_8004DE8: .word eCamera+0x4C // eCamera.unk_4C
@@ -3767,6 +3789,7 @@ reqBBS_init_8004DF0:
 	bl ClearEventFlagFromImmediate
 	bl reqBBS_8140984
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80050E4: .word 0x100
 off_80050E8: .word byte_80213AC
 	thumb_func_end reqBBS_init_8004DF0
@@ -3785,7 +3808,7 @@ cbGameState_80050EC:
 	bl GetRNG2 // () -> int
 	bl GetRNG1 // () -> void
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 GameStateJumptable_p: .word GameStateJumptable
 GameStateJumptable: .word EnterMap+1
 	.word gamestate_8005268+1
@@ -3897,6 +3920,7 @@ loc_80051AA:
 	mov r0, #4
 	strb r0, [r5,#oGameState_SubsystemIndex]
 	pop {pc}
+	.balign 4, 0
 off_8005264: .word 0x1740
 	thumb_func_end EnterMap
 
@@ -3981,6 +4005,7 @@ sub_800531C:
 	mvn r2, r2
 	bl WordFill
 	pop {pc}
+	.balign 4, 0
 off_8005358: .word byte_2011800
 off_800535C: .word 0x2180
 	thumb_func_end sub_800531C
@@ -4039,6 +4064,7 @@ loc_80053D2:
 	bl sub_8005C04
 locret_80053DA:
 	pop {pc}
+	.balign 4, 0
 off_80053DC: .word hword_80053E0
 hword_80053E0: .hword 0xE7, 0xEC
 	thumb_func_end sub_800536E
@@ -4082,7 +4108,7 @@ sub_80053E4:
 	bl SetRenderInfoLCDControl
 locret_800545C:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 word_8005460: .hword 0x40
 	thumb_func_end sub_80053E4
 
@@ -4158,7 +4184,7 @@ loc_80054EA:
 	bl ClearEventFlagFromImmediate
 locret_800551C:
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8005520: .word ePETMenuData
 	thumb_func_end sub_8005462
 
@@ -4533,7 +4559,7 @@ sub_80058D0:
 	bx r0
 locret_800593C:
 	pop {r5,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8005940: .word 0x16F0
 off_8005944: .word off_8005948
 off_8005948: .word sub_800596C+1
@@ -4672,6 +4698,7 @@ sub_8005A50:
 	mov r0, #0x10
 	strb r0, [r5]
 	pop {pc}
+	.balign 4, 0
 off_8005A78: .word byte_8098A02
 off_8005A7C: .word byte_8098A2E
 off_8005A80: .word byte_8098A78
@@ -4842,6 +4869,7 @@ loc_8005BF0:
 	mov r0, #SOUND_BATTLE_START
 	bl PlaySoundEffect
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_8005C00: .word 0x4000
 	thumb_func_end gameState_8005BC8
 
@@ -4957,6 +4985,7 @@ loc_8005CB8:
 	strh r0, [r7,#0x12]
 	strh r0, [r7,#0x14]
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8005CE4: .word 0x40
 	thumb_func_end sub_8005C04
 
@@ -5312,7 +5341,7 @@ sub_8005F84:
 	mov r1, #8
 	strb r1, [r0,#0x16]
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8005FB0: .word 0x40
 off_8005FB4: .word sub_8006366+1
 	.word sub_800647C+1
@@ -5798,6 +5827,7 @@ loc_8006322:
 	cmp r4, #2
 	blt loc_8006310
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_800632C: .word off_8005FB4
 	thumb_func_end subsystem_triggerTransition_800630A
 
@@ -5876,7 +5906,7 @@ loc_80063B0:
 	sub r0, r5, r0
 	bl sub_8006330
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80063BC: .word eScreenFade
 	thumb_func_end sub_8006366
 
@@ -5973,6 +6003,7 @@ loc_800645E:
 	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_800647C
 	pop {r6,pc}
+	.balign 4, 0
 dword_8006474: .word 0x10
 off_8006478: .word eScreenFade
 	thumb_func_end sub_8006444
@@ -6053,6 +6084,7 @@ loc_80064D6:
 	mov lr, pc
 	bx r0
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_800650C: .word off_8006510
 off_8006510: .word sub_8006518+1
 	.word sub_8006580+1
@@ -6139,6 +6171,7 @@ sub_8006580:
 	mov r1, #0
 	strh r1, [r0,#2]
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80065B4: .word dword_20096D0
 off_80065B8: .word byte_80065BC
 byte_80065BC: .byte 0x0, 0x10, 0x0, 0x18, 0x0, 0x20, 0x0, 0x28, 0x0, 0x30, 0x0, 0x38
@@ -6256,6 +6289,7 @@ loc_80068F2:
 	mov r0, #1
 	strb r0, [r7]
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8006908: .word unk_2008E80
 off_800690C: .word 0x500
 	thumb_func_end sub_80068EC
@@ -6319,7 +6353,7 @@ sub_8006920:
 	mov lr, pc
 	bx r4
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8006980: .word Window0HorizontalDimensions
 dword_8006984: .word 0xA2600000
 off_8006988: .word ZeroFillByWord+1
@@ -6432,6 +6466,7 @@ loc_8006A44:
 	mov r12, r6
 	pop {r4-r7,pc}
 	.word dword_8006A54
+	.balign 4, 0
 dword_8006A54: .word 0xFFFF1FFF
 off_8006A58: .word sub_8003694+1
 	thumb_func_end sub_8006990
@@ -6630,6 +6665,7 @@ loc_8006BA6:
 	sub r1, #4
 	bpl loc_8006BA6
 	pop {r5,pc}
+	.balign 4, 0
 dword_8006BB4: .word 0xFFFF0000
 dword_8006BB8: .word 0xFFFFFF00
 off_8006BBC: .word 0x101
@@ -6647,6 +6683,7 @@ SetPrimaryToolkitPointers:
 	mov r10, r0
 	pop {r0}
 	bx r0
+	.balign 4, 0
 .eToolkit_p: .word eToolkit
 .ToolkitPointers_p: .word ToolkitPointers
 ToolkitPointers:
@@ -6748,7 +6785,7 @@ SetExtraToolkitPointers:
 	cmp r1, #(ToolkitExtraPtrsOffsetsEnd - ToolkitExtraPtrsOffsets + 4)
 	blt .copyToolkitExtraPtrsLoop
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 
 	// 8006C94
 ToolkitExtraPtrs_eToolkitExtraPtrsMemory_p:	   .word eToolkitExtraPtrsMemory
@@ -6955,6 +6992,7 @@ loc_8006E2A:
 	beq loc_8006E2A
 	str r0, [r7,#0x4] // (dword_2001064 - 0x2001060)
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8006E38: .word eUnusedExtraToolkitPtrsOffset
 	thumb_func_end encryption_8006e26
 
@@ -6988,7 +7026,7 @@ encryption_navicustMaybe_8006e50:
 	mov r0, #1
 locret_8006E68:
 	pop {r1-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8006E6C: .word byte_20004E0
 	thumb_func_end encryption_navicustMaybe_8006e50
 
@@ -7023,7 +7061,7 @@ encryption_8006e84:
 	mov r0, #1
 locret_8006E9C:
 	pop {r1-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8006EA0: .word byte_20008A0
 	thumb_func_end encryption_8006e84
 
@@ -7183,7 +7221,7 @@ loc_8006F90:
 	mov r0, #1
 locret_8006FA4:
 	pop {r0-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8006FA8: .word dword_2000060
 	thumb_func_end encryption_zenny_8006f78
 
@@ -7237,7 +7275,7 @@ loc_8006FE8:
 	mov r0, #1
 locret_8006FFC:
 	pop {r0-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8007000: .word dword_20018B8
 	thumb_func_end encryption_bugfrags_8006fd0
 
@@ -7297,6 +7335,7 @@ loc_8007046:
 	b loc_8007042
 locret_800705E:
 	pop {r1-r7,pc}
+	.balign 4, 0
 off_8007060: .word byte_2000670
 off_8007064: .word 0x100
 	thumb_func_end encryption_8007036
@@ -7318,7 +7357,7 @@ encryption_8007068:
 	mov r0, #1
 locret_8007084:
 	pop {r1-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8007088: .word byte_2000670
 	thumb_func_end encryption_8007068
 
@@ -7341,6 +7380,7 @@ loc_80070A2:
 	ldrh r3, [r7,#2]
 	add r0, r3, r1
 	pop {r1-r7,pc}
+	.balign 4, 0
 off_80070A8: .word word_80070AC
 word_80070AC: .hword 0x1000
 Short_80070AE: .hword 0x0, 0x1010, 0x50, 0x1020, 0xDC, 0x1040, 0xE6
@@ -7639,7 +7679,7 @@ loc_80072E2:
 	mov r0, #1
 	bl sub_802D08C
 	pop {r4,r5,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8007308: .word dword_2036820
 off_800730C: .word eCamera+0x4C // eCamera.unk_4C
 off_8007310: .word dword_20364C0
@@ -7709,6 +7749,7 @@ loc_8007384:
 	mov r2, #0x20
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {r6,pc}
+	.balign 4, 0
 off_800739C: .word off_80073A0
 off_80073A0: .word sub_80073CC+1
 	.word sub_80073E2+1
@@ -7767,7 +7808,7 @@ loc_8007416:
 	pop {r1-r3}
 	bl dead_800768C
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_8007420: .word 0x8000
 	thumb_func_end sub_80073E2
 
@@ -8026,6 +8067,7 @@ sub_80075CA:
 	ldr r1, dword_8007620 // =0x6001460
 	bl SWI_LZ77UnCompReadNormalWrite16bit
 	pop {r5,pc}
+	.balign 4, 0
 dataList: .word off_80075F0
 off_80075F0: .word dword_86E08F8
 	.word unk_3001980
@@ -8070,7 +8112,7 @@ loc_8007642:
 	b loc_8007642
 locret_8007650:
 	mov pc, lr
-	.balign 4, 0x00
+	.balign 4, 0
 off_8007654: .word word_800765C
 off_8007658: .word word_8007672
 word_800765C: .hword 0x4
@@ -8316,6 +8358,7 @@ battle_8007800:
 	mov r3, r4
 	tst r0, r0
 	pop {r4,r5,pc}
+	.balign 4, 0
 off_8007834: .word JumpTable8007838
 JumpTable8007838: .word sub_8007850+1
 	.word battle_8007A44+1
@@ -8436,6 +8479,7 @@ loc_8007918:
 	b loc_8007862
 locret_8007936:
 	pop {r4,pc}
+	.balign 4, 0
 off_8007938: .word off_8007940
 off_800793C: .word dword_200F3B0
 off_8007940: .word sub_800794C+1
@@ -8505,6 +8549,7 @@ loc_80079BC:
 	mov r0, #8
 	strb r0, [r5,#2]
 	pop {pc}
+	.balign 4, 0
 off_80079CC: .word eCamera+0x4C // eCamera.unk_4C
 	thumb_func_end sub_80079A8
 
@@ -8522,6 +8567,7 @@ sub_80079D0:
 	b locret_80079EA
 locret_80079EA:
 	pop {pc}
+	.balign 4, 0
 dword_80079EC: .word 0x12345678
 	thumb_func_end sub_80079D0
 
@@ -8561,6 +8607,7 @@ loc_8007A36:
 	mov r0, #4
 	str r0, [r5]
 	pop {pc}
+	.balign 4, 0
 off_8007A40: .word byte_2011800
 	thumb_func_end sub_8007A0C
 
@@ -8676,7 +8723,7 @@ loc_8007B10:
 	mov r1, #0x90
 	bl sub_803C59C
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8007B4C: .word off_8007B50
 off_8007B50: .word sub_8009158+1
 	.word sub_8009158+1
@@ -8722,7 +8769,7 @@ sub_8007B9C:
 	bl sub_800286C
 	bl sub_800A01C
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8007BC4: .word off_8007BC8
 off_8007BC8: .word sub_8007BD0+1
 	.word sub_8007BF0+1
@@ -8759,6 +8806,7 @@ sub_8007BF0:
 	mov lr, pc
 	bx r0
 	pop {pc}
+	.balign 4, 0
 off_8007C00: .word off_8007C04
 off_8007C04: .word sub_8007C14+1
 	.word sub_8007C50+1
@@ -8836,7 +8884,7 @@ loc_8007C90:
 	strh r0, [r5,#2]
 locret_8007C98:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8007C9C: .word 0x400
 	thumb_func_end sub_8007C50
 
@@ -9059,7 +9107,7 @@ sub_8007E62:
 	mov r0, #2
 	strb r0, [r1,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8007EA8: .word off_8007EAC
 off_8007EAC: .word sub_8007EB8+1
 	.word sub_8007F14+1
@@ -9169,7 +9217,7 @@ sub_8007F4E:
 	mov r0, #2
 	strb r0, [r1,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8007F98: .word off_8007F9C
 off_8007F9C: .word sub_8007FA4+1
 	.word sub_8007FD2+1
@@ -9241,7 +9289,7 @@ sub_800801C:
 	bl sub_802DE5C
 	ldrb r0, [r5,#0x4] // (byte_203CA74 - 0x203ca70)
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8008034: .word off_8008038
 off_8008038: .word sub_800840C+1
 	.word sub_8008064+1
@@ -9725,7 +9773,7 @@ sub_80083E4:
 	bl sub_801DACC
 locret_8008400:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.word dword_2036820
 off_8008408: .word 0x200
 	thumb_func_end sub_80083E4
@@ -9832,6 +9880,7 @@ sub_80084C0:
 	mov r1, #0xc
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r5,pc}
+	.balign 4, 0
 off_80084CC: .word dword_203CA70
 off_80084D0: .word 0x2900
 dword_80084D4: .word 0xE4C53
@@ -9854,7 +9903,7 @@ sub_80084F0:
 	bx r1
 	ldrb r0, [r5,#0x4] // (byte_203CA74 - 0x203ca70)
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8008504: .word off_8008508
 off_8008508: .word sub_8008528+1
 	.word sub_800855E+1
@@ -10425,6 +10474,7 @@ sub_8008928:
 	mov r1, #0xc
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_8008934: .word dword_203CA70
 dword_8008938: .word 0x820080
 dword_800893C: .word 0x824C43
@@ -10445,7 +10495,7 @@ sub_8008950:
 	bl sub_802DE5C
 	ldrb r0, [r5,#0x4] // (byte_203CA74 - 0x203ca70)
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8008968: .word off_800896C
 off_800896C: .word sub_800898C+1
 	.word sub_80089CC+1
@@ -10558,7 +10608,7 @@ loc_8008A4C:
 locret_8008A60:
 	pop {pc}
 	.word 0, 0, 0
-	.byte 0, 0
+	.balign 4, 0
 	.word byte_8008A74
 byte_8008A74: .byte 0x10, 0x0, 0x25, 0x33, 0x64, 0x0, 0x0, 0x0
 	thumb_func_end sub_80089CC
@@ -10944,7 +10994,7 @@ sub_8008D18:
 	bl sub_801DACC
 locret_8008D34:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.word dword_2036820
 off_8008D3C: .word 0x200
 	thumb_func_end sub_8008D18
@@ -10958,6 +11008,7 @@ sub_8008D40:
 	mov r1, #0xc
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_8008D4C: .word dword_203CA70
 dword_8008D50: .word 0x4000
 dword_8008D54: .word 0x4C43
@@ -10977,7 +11028,7 @@ sub_8008D60:
 	bl sub_802DE5C
 	ldrb r0, [r5,#0x4] // (byte_203CA74 - 0x203ca70)
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8008D78: .word off_8008D7C
 off_8008D7C: .word sub_8008D9C+1
 	.word sub_8008DDC+1
@@ -11089,6 +11140,7 @@ locret_8008E6A:
 	pop {pc}
 	.word 0x0
 	.word byte_8008E74
+	.balign 4, 0
 byte_8008E74: .byte 0x10, 0x0, 0x25, 0x33, 0x64, 0x0, 0x0, 0x0
 	thumb_func_end sub_8008DDC
 
@@ -11473,7 +11525,7 @@ sub_8009118:
 	bl sub_801DACC
 locret_8009134:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.word dword_2036820
 off_800913C: .word 0x200
 	thumb_func_end sub_8009118
@@ -11487,6 +11539,7 @@ sub_8009140:
 	mov r1, #0xc
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
+	.balign 4, 0
 off_800914C: .word dword_203CA70
 dword_8009150: .word 0x4C43
 off_8009154: .word 0x400
@@ -11538,6 +11591,7 @@ loc_800919A:
 	bl sound_8000672
 locret_80091B6:
 	pop {pc}
+	.balign 4, 0
 off_80091B8: .word off_80091BC
 off_80091BC: .word sub_80091F0+1
 	.word sub_80092A0+1
@@ -11620,6 +11674,7 @@ loc_8009270:
 	strh r0, [r5,#2]
 locret_8009276:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_8009278: .word 0x400
 	thumb_func_end sub_80091F0
 
@@ -11636,6 +11691,7 @@ sub_800927C:
 	mov r1, #0
 	bl sub_801E0A0
 	pop {pc}
+	.balign 4, 0
 off_800929C: .word 0x484
 	thumb_func_end sub_800927C
 
@@ -12209,7 +12265,7 @@ sub_80096E0:
 	mov r0, #0
 	bl sub_801DFA2
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8009700: .word 0x404
 	thumb_func_end sub_80096E0
 
@@ -12569,6 +12625,7 @@ loc_8009982:
 	strh r0, [r5,#2]
 locret_8009992:
 	pop {pc}
+	.balign 4, 0
 off_8009994: .word 0x400
 dword_8009998: .word 0x1F2F3F4F
 off_800999C: .word unk_2035260
@@ -12676,6 +12733,7 @@ sub_8009A68:
 	mov r1, #0
 	bl sub_801E0A0
 	pop {pc}
+	.balign 4, 0
 off_8009A84: .word 0x404
 	thumb_func_end sub_8009A68
 
@@ -12957,6 +13015,7 @@ loc_8009C72:
 	strh r0, [r5,#2]
 locret_8009C82:
 	pop {pc}
+	.balign 4, 0
 off_8009C84: .word 0x400
 dword_8009C88: .word 0x1F2F3F4F
 off_8009C8C: .word unk_2035260
@@ -13064,6 +13123,7 @@ sub_8009D58:
 	mov r1, #0
 	bl sub_801E0A0
 	pop {pc}
+	.balign 4, 0
 off_8009D74: .word 0x404
 	thumb_func_end sub_8009D58
 
@@ -13387,6 +13447,7 @@ loc_8009FA6:
 	strh r0, [r5,#2]
 locret_8009FB6:
 	pop {pc}
+	.balign 4, 0
 off_8009FB8: .word 0x400
 off_8009FBC: .word TextScriptDustManUndernetTut
 dword_8009FC0: .word 0x1F2F3F4F
@@ -13415,6 +13476,7 @@ loc_8009FD4:
 	b loc_8009FD4
 locret_8009FEE:
 	pop {r5-r7,pc}
+	.balign 4, 0
 off_8009FF0: .word dword_3002180
 off_8009FF4: .word byte_3000EA8
 	thumb_func_end sub_8009FCC
@@ -13435,6 +13497,7 @@ sub_8009FF8:
 	add r4, #1
 	str r4, [r6]
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_800A014: .word dword_3002180
 off_800A018: .word byte_3000EA8
 	thumb_func_end sub_8009FF8
@@ -13502,6 +13565,7 @@ loc_800A06E:
 	mov r0, #1
 locret_800A076:
 	pop {pc}
+	.balign 4, 0
 off_800A078: .word dword_2036820
 	thumb_func_end sub_800A046
 
@@ -13519,7 +13583,7 @@ sub_800A07C:
 	mov r0, #1
 locret_800A090:
 	mov pc, lr
-	.balign 4, 0x00
+	.balign 4, 0
 off_800A094: .word dword_2036820
 	thumb_func_end sub_800A07C
 
@@ -13719,6 +13783,7 @@ sub_800A1AA:
 loc_800A1C8:
 	mov r0, #0
 	pop {pc}
+	.balign 4, 0
 off_800A1CC: .word 0x2D0
 	thumb_func_end sub_800A1AA
 
@@ -13779,7 +13844,7 @@ sub_800A21C:
 loc_800A23A:
 	mov r0, #0
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_800A240: .word 0x4000
 	thumb_func_end sub_800A21C
 
@@ -13848,6 +13913,7 @@ loc_800A2C0:
 	mov r0, #0
 locret_800A2C2:
 	pop {r4,pc}
+	.balign 4, 0
 off_800A2C4: .word dword_2036820
 off_800A2C8: .word 0x2900
 off_800A2CC: .word 0x300
@@ -14012,7 +14078,7 @@ loc_800A3CE:
 	bl sub_800A570
 locret_800A3D8:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800A3DC: .word dword_802137C
 off_800A3E0: .word eBattleFolder
 	thumb_func_end sub_800A318
@@ -14144,7 +14210,7 @@ loc_800A4B6:
 loc_800A4D2:
 	add sp, sp, #0xc
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800A4D8: .word dword_802137C
 off_800A4DC: .word eBattleFolder
 	thumb_func_end sub_800A3E4
@@ -14218,7 +14284,7 @@ loc_800A558:
 	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 locret_800A560:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_800A564: .word 0x200000
 off_800A568: .word unk_2039AA0
 off_800A56C: .word unk_2039AA0
@@ -14773,6 +14839,7 @@ sub_800A8B2:
 	ldr r1, off_800A8C4 // =byte_800A8C8
 	ldrb r0, [r0,r1]
 	pop {pc}
+	.balign 4, 0
 off_800A8C4: .word byte_800A8C8
 byte_800A8C8: .byte 0x8, 0x64, 0x68, 0x6C, 0x70, 0x74, 0x78, 0x7C, 0x80
 	.byte 0x84, 0x88, 0x8C
@@ -14787,7 +14854,7 @@ sub_800A8D4:
 	ldr r1, off_800A8E8 // =byte_800A8EC
 	ldrb r0, [r0,r1]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800A8E8: .word byte_800A8EC
 byte_800A8EC:
 	.byte 0x38, 0x90, 0x94, 0x98
@@ -15273,6 +15340,7 @@ sub_800ABC6:
 	mov r0, #0xa5
 	bl PlaySoundEffect
 	pop {r4,pc}
+	.balign 4, 0
 off_800ABF0: .word byte_20349C0
 off_800ABF4: .word byte_2034A10
 off_800ABF8: .word unk_20018C0
@@ -15521,6 +15589,7 @@ loc_800ADC8:
 	ldr r0, [sp,#4]
 	add sp, sp, #0x14
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_800ADD0: .word off_800ADDC
 off_800ADD4: .word byte_800AE00
 dword_800ADD8: .word 0x18F
@@ -15609,7 +15678,7 @@ loc_800AE7C:
 	bne loc_800AE66
 	mov r0, #0
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800AE88: .word dword_800AE8C
 dword_800AE8C: .word 0x4900480
 	thumb_func_end sub_800AE54
@@ -15657,7 +15726,7 @@ loc_800AEA6:
 	pop {r0,r1,r6}
 locret_800AEE0:
 	pop {r5-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_800AEE4: .word 0xD3CA
 	thumb_func_end sub_800AE90
 
@@ -15960,7 +16029,7 @@ loc_800B0FA:
 	mov r8, r0
 	mov r9, r1
 	pop {r0-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_800B104: .word 0x19B
 off_800B108: .word dword_20367E0
 dword_800B10C: .word 0x185
@@ -15980,6 +16049,7 @@ loc_800B114:
 	b loc_800B114
 locret_800B122:
 	pop {r4,pc}
+	.balign 4, 0
 off_800B124: .word word_800B128
 word_800B128: .hword 0x195
 	.hword 0x196
@@ -16162,7 +16232,7 @@ loc_800B2A2:
 	mov r0, #0x3e
 	bl sub_80200A4
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800B2BC: .word dword_203CBE0
 off_800B2C0: .word eRngSeed20013F0
 dword_800B2C4: .word 0x200000
@@ -16813,7 +16883,7 @@ sub_800B79A:
 	bx r0
 locret_800B7B4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800B7B8: .word off_800B7BC
 off_800B7BC: .word sub_800B7D0+1
 	.word sub_800B7E8+1
@@ -16879,7 +16949,7 @@ loc_800B81E:
 	mov r1, #0x18
 	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_800B828: .word eOWPlayerObjectEnd
 dword_800B82C: .word 0xFFFF
 off_800B830: .word eOWPlayerObjectEnd

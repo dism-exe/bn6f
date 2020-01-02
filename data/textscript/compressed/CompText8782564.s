@@ -10,16 +10,12 @@ CompText8782564::
 	text_archive_start
 
 	def_text_script CompText8782564_unk0
-	ts_mugshot_show [
-		mugshot: 0x37,
-	]
+	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "This looks like an\n"
 	.string "emergency exit,but\n"
 	.string "it's locked!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText8782564_unk1

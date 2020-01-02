@@ -90,26 +90,18 @@ CompText877D7D4::
 	def_text_script CompText877D7D4_unk39
 
 	def_text_script CompText877D7D4_unk40
-	ts_mugshot_show [
-		mugshot: 0x18,
-	]
+	ts_mugshot_show mugshot=0x18
 	ts_msg_open
 	.string "Mr.Lawyer...\n"
 	.string "Do you think today's\n"
 	.string "trial went OK?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x10,
-	]
+	ts_mugshot_show mugshot=0x10
 	.string "Oh,of course it's\n"
 	.string "OK! You just leave\n"
 	.string "everything to me!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877D7D4_unk41
@@ -131,30 +123,20 @@ CompText877D7D4::
 	def_text_script CompText877D7D4_unk49
 
 	def_text_script CompText877D7D4_unk50
-	ts_mugshot_show [
-		mugshot: 0x18,
-	]
+	ts_mugshot_show mugshot=0x18
 	ts_msg_open
 	.string "M-Mr.Lawyer,thank\n"
 	.string "you so much!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x10,
-	]
+	ts_mugshot_show mugshot=0x10
 	.string "Ah,it was a bit of\n"
 	.string "a rough trial..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "But we won,and\n"
 	.string "that's what counts!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText877D7D4_unk51

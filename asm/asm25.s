@@ -99,7 +99,7 @@ sub_808F8AC:
 	bl loc_809E306
 	mov r0, #0
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_808F8FC: .word off_808F5D4
 	thumb_func_end sub_808F8AC
 
@@ -250,6 +250,7 @@ loc_808FA22:
 	mov r0, r4
 	tst r0, r0
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_808FA34: .word 0x10000
 	thumb_func_end sub_808F9C4
 
@@ -281,6 +282,7 @@ sub_808FA38:
 	strb r4, [r5,#0x11] // (byte_2000321 - 0x2000310)
 locret_808FA6E:
 	pop {r4,r5,pc}
+	.balign 4, 0
 off_808FA70: .word byte_808FA74
 byte_808FA74: .byte 0xB, 0xB, 0x9, 0xF, 0xD, 0x0, 0x0, 0x0
 	thumb_func_end sub_808FA38
@@ -351,6 +353,7 @@ loc_808FAC6:
 	ldrb r1, [r0,#5]
 	strb r1, [r5,#0x10] // (byte_2000320 - 0x2000310)
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_808FADC: .word off_808FAE8
 off_808FAE0: .word off_808FAF8
 off_808FAE4: .word off_808FB08
@@ -387,7 +390,7 @@ sub_808FB18:
 	strb r0, [r1,#0x1c] // (byte_200032C - 0x2000310)
 	mov r0, #0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_808FB48: .word off_808F5D4
 	thumb_func_end sub_808FB18
 
@@ -430,6 +433,7 @@ loc_808FB94:
 	bl owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
 	mov r0, #1
 	pop {pc}
+	.balign 4, 0
 dword_808FB9C: .word 0x1AE
 	thumb_func_end sub_808FB68
 
@@ -502,6 +506,7 @@ loc_808FC08:
 	bl SetCameraXYZ
 	mov r0, #0
 	pop {r5,pc}
+	.balign 4, 0
 off_808FC20: .word byte_808FC24
 byte_808FC24: .byte 0xCA, 0xFF, 0x56, 0xFF, 0x82, 0x1, 0xE, 0x0, 0xC2, 0x1, 0xE
 	.byte 0x0, 0xA4, 0xFF, 0x70, 0xFE, 0x20, 0xB5, 0x2A, 0x4D, 0x2D, 0x68
@@ -553,7 +558,7 @@ sub_808FCF0:
 	bl PlaySoundEffect
 	mov r0, #0
 	pop {r5,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_808FD10: .word byte_808FD14
 byte_808FD14: .byte 0x5, 0x5, 0x7, 0x7, 0x1, 0x1, 0x3, 0x3
 	thumb_func_end sub_808FCF0
@@ -598,6 +603,7 @@ loc_808FD58:
 loc_808FD5C:
 	mov r0, #1
 	pop {r4,r5,pc}
+	.balign 4, 0
 off_808FD60: .word off_808F5D4
 	thumb_func_end sub_808FD1C
 
@@ -628,6 +634,7 @@ loc_808FD76:
 	bl sub_809E3C4
 	mov r0, #0
 	pop {r4,r5,pc}
+	.balign 4, 0
 off_808FD94: .word byte_808FD98
 byte_808FD98: .byte 0x80, 0xFD, 0x70, 0xFE, 0x86, 0x1, 0x80, 0x2, 0x26, 0xFD
 	.byte 0x70, 0xFE, 0x58, 0x2, 0x6C, 0x2, 0x94, 0xFD, 0xD0, 0xFD
@@ -745,7 +752,7 @@ loc_808FE90:
 	bl StartCutscene
 locret_808FE9C:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_808FEA0: .word off_808FDB8
 	thumb_func_end sub_808FE74
 
@@ -773,7 +780,7 @@ loc_808FEBA:
 	bl sub_8046854
 locret_808FED0:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_808FED4: .word off_808FDB8
 	thumb_func_end sub_808FEA4
 
@@ -825,6 +832,7 @@ loc_808FF24:
 	mov r0, r4
 locret_808FF26:
 	pop {r4,pc}
+	.balign 4, 0
 off_808FF28: .word dword_808FF2C
 dword_808FF2C: .word 0x2020201
 	thumb_func_end sub_808FF00
@@ -944,7 +952,7 @@ loc_808FFD2:
 	ldrb r2, [r4,#4]
 	ldrb r3, [r4,#6]
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_808FFF0: .word off_808FFF4
 off_808FFF4: .word byte_81434E4
 	.word byte_814350C
@@ -1147,6 +1155,7 @@ loc_8090170:
 loc_809017C:
 	mov r0, r4
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_8090180: .word byte_808F668
 off_8090184: .word byte_808F67C
 off_8090188: .word byte_808F690
@@ -1224,7 +1233,7 @@ loc_8090210:
 	mov r0, r6
 	tst r0, r0
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8090218: .word byte_8090220
 off_809021C: .word byte_8090226
 byte_8090220: .byte 0xEC, 0xB, 0xED, 0xB, 0xEE, 0xB
@@ -1329,7 +1338,7 @@ loc_80902CE:
 	mov r8, r1
 	tst r0, r0
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80902D8: .word off_808FDB8
 	thumb_func_end sub_809022C
 
@@ -1352,6 +1361,7 @@ loc_80902EE:
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80902FC: .word byte_8090300
 byte_8090300: .byte 0xE1, 0xB, 0xE2, 0xB, 0xE3, 0xB, 0xD2, 0xF
 	thumb_func_end sub_80902DC

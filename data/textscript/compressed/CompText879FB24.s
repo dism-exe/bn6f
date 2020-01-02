@@ -22,249 +22,169 @@ CompText879FB24::
 	def_text_script CompText879FB24_unk5
 	ts_check_flag [
 		flag: 0x859,
-		jumpIfTrue: 0x6,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879FB24_unk6_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set [
-		flag: 0x859,
-	]
+	ts_flag_set flag=0x859
 	ts_msg_open
-	ts_mugshot_show [
-		mugshot: 0x46,
-	]
+	ts_mugshot_show mugshot=0x46
 	.string "Seems like you\n"
 	.string "discovered the\n"
 	.string "right answer!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Yep!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "\"A fish that can't\n"
 	.string "swim\"...\n"
 	.string "It's Fish Sticks!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Congrats on getting\n"
 	.string "the second answer\n"
 	.string "correct!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The next quest\n"
 	.string "is also the final\n"
 	.string "quest..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The last item you\n"
 	.string "must find is..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Well,the clue is\n"
 	.string "hidden in the\n"
 	.string "following words..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "\"I'm always looking\n"
 	.string " at crayfish.\""
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Do you know what it\n"
 	.string "is?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The key to the next\n"
 	.string "round is at hand!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Good luck!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText879FB24_unk6
 	ts_msg_open
-	ts_mugshot_show [
-		mugshot: 0x46,
-	]
+	ts_mugshot_show mugshot=0x46
 	.string "\"I'm always looking\n"
 	.string " at crayfish.\""
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "What is it?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Pretty difficult,\n"
 	.string "huh?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Well,maybe you\n"
 	.string "should try to find"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "crayfish in the\n"
 	.string "real world!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The key to the next\n"
 	.string "round is at hand!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Good luck!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText879FB24_unk7
 	ts_check_flag [
 		flag: 0x859,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText879FB24_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set [
-		flag: 0x859,
-	]
+	ts_flag_set flag=0x859
 	ts_msg_open
-	ts_mugshot_show [
-		mugshot: 0x45,
-	]
+	ts_mugshot_show mugshot=0x45
 	.string "Seems like you\n"
 	.string "discovered the\n"
 	.string "right answer!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Yep!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "\"A fish that can't\n"
 	.string " swim\"...\n"
 	.string "It's Fish Sticks!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Congrats on getting\n"
 	.string "the second answer\n"
 	.string "correct!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The next quest\n"
 	.string "is also the final\n"
 	.string "quest..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The last item you\n"
 	.string "must find is..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Well,the clue is\n"
 	.string "hidden in the\n"
 	.string "following words..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "\"I'm always looking\n"
 	.string " at crayfish.\""
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Do you know what it\n"
 	.string "is?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The key to the next\n"
 	.string "round is at hand!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Good luck!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText879FB24_unk8
 	ts_msg_open
-	ts_mugshot_show [
-		mugshot: 0x45,
-	]
+	ts_mugshot_show mugshot=0x45
 	.string "\"I'm always looking\n"
 	.string " at crayfish.\""
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The last one really\n"
 	.string "is the hardest!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "So here is the best\n"
 	.string "hint I can give..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "There are no\n"
 	.string "crayfish in Seaside\n"
 	.string "Town!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Did that help?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	

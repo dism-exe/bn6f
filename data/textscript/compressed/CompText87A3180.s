@@ -10,47 +10,33 @@ CompText87A3180::
 	text_archive_start
 
 	def_text_script CompText87A3180_unk0
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "THIS OXYGEN TANK IS\n"
 	.string "FOR EMERGENCIES\n"
 	.string "ONLY,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "SO,I DON'T REALLY\n"
 	.string "HAVE ANY WORK TO\n"
 	.string "DO..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "AHHH... NOTHING IN\n"
 	.string "THE WORLD TO DO..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87A3180_unk1
-	ts_mugshot_show [
-		mugshot: 0x3C,
-	]
+	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "...? WHAT?\n"
 	.string "A DROPPED MEMO PAD?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "WITH \"729\" WRITTEN\n"
 	.string "ON IT...?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87A3180_unk2
@@ -70,30 +56,20 @@ CompText87A3180::
 	def_text_script CompText87A3180_unk9
 
 	def_text_script CompText87A3180_unk10
-	ts_mugshot_show [
-		mugshot: 0x5E,
-	]
+	ts_mugshot_show mugshot=0x5E
 	ts_msg_open
 	.string "...I'M THE VIRUS\n"
 	.string "BATTLE MACHINE V4..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "WOULD YOU LIKE TO\n"
 	.string "ENTER 10 CONSECUTIVE\n"
 	.string "VIRUS BATTLES?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_text_speed [
-		delay: 0x0,
-	]
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_text_speed delay=0x0
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x0,
@@ -101,13 +77,9 @@ CompText87A3180::
 		down: 0x1,
 		up: 0x2,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -115,13 +87,9 @@ CompText87A3180::
 		down: 0x2,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No\n"
-	ts_position_option_horizontal [
-		width: 0x8,
-	]
+	ts_position_option_horizontal width=0x8
 	ts_option [
 		brackets: 0x0,
 		right: 0x2,
@@ -129,98 +97,64 @@ CompText87A3180::
 		down: 0x0,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Hear Explanation"
 	ts_select 0x7, 0xA0, 0xB, 0xFF, 0x11, 0xFF
 	ts_clear_msg
-	ts_text_speed [
-		delay: 0x2,
-	]
-	ts_mugshot_show [
-		mugshot: 0x5E,
-	]
+	ts_text_speed delay=0x2
+	ts_mugshot_show mugshot=0x5E
 	.string "COME BACK SOON!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87A3180_unk11
-	ts_text_speed [
-		delay: 0x2,
-	]
-	ts_mugshot_show [
-		mugshot: 0x5E,
-	]
+	ts_text_speed delay=0x2
+	ts_mugshot_show mugshot=0x5E
 	ts_msg_open
 	.string "LAUNCHING VIRUS\n"
 	.string "BATTLE..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "BATTLE... START!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
-	ts_flag_set [
-		flag: 0x1DF,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0x1715
+	ts_flag_set flag=0x1DF
 	ts_end
 
 	def_text_script CompText87A3180_unk12
 	ts_check_flag [
 		flag: 0x1D7,
-		jumpIfTrue: 0xE,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A3180_unk14_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set [
-		flag: 0x1D7,
-	]
-	ts_jump [
-		target: 14,
-	]
+	ts_flag_set flag=0x1D7
+	ts_jump target=CompText87A3180_unk14_id
 
 	def_text_script CompText87A3180_unk13
-	ts_mugshot_show [
-		mugshot: 0x5E,
-	]
+	ts_mugshot_show mugshot=0x5E
 	ts_msg_open
 	.string "THAT WAS CLOSE...\n"
 	.string "COME BACK AGAIN\n"
 	.string "SOON!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87A3180_unk14
 	ts_check_flag [
 		flag: 0x1EF,
-		jumpIfTrue: 0xF,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87A3180_unk15_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_mugshot_show [
-		mugshot: 0x5E,
-	]
+	ts_mugshot_show mugshot=0x5E
 	ts_msg_open
 	.string "AMAZING!!\n"
 	.string "WELL DONE!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "TO COMMEMORATE YOUR\n"
 	.string "GREAT VIRUS BUSTING\n"
 	.string "SKILL,HERE'S A GIFT!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
 	ts_item_give_navi_cust_program [
@@ -228,9 +162,7 @@ CompText87A3180::
 		amount: 0x1,
 		color: 0x3,
 	]
-	ts_player_animate_object [
-		animation: 0x18,
-	]
+	ts_player_animate_object animation=0x18
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
@@ -239,287 +171,195 @@ CompText87A3180::
 		buffer: 0x0,
 	]
 	.string "\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_object
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x5E,
-	]
+	ts_mugshot_show mugshot=0x5E
 	.string "CONGRATULATIONS!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "THERE ARE OTHER\n"
 	.string "MR.PROGS THAT ARE\n"
 	.string "DIFFERENT COLORS..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "YOU SHOULD TRY\n"
 	.string "LOOKING FOR THEM."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "WHERE ARE THEY?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "HAHAHA...\n"
 	.string "YOU KNOW..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "IT'S AN AREA YOU\n"
 	.string "PASS THROUGH\n"
 	.string "REGULARLY..."
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0x1EF,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0x1EF
 	ts_end
 
 	def_text_script CompText87A3180_unk15
-	ts_jump_random 65, 0x20, 0x20, 0xFF, 0x10
-	ts_mugshot_show [
-		mugshot: 0x5E,
-	]
+	ts_jump_random CompText87A3180_unk65_id, 0x20, 0x20, 0xFF, 0x10
+	ts_mugshot_show mugshot=0x5E
 	ts_msg_open
 	.string "AMAZING!!\n"
 	.string "WELL DONE!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "TO COMMEMORATE YOUR\n"
 	.string "GREAT VIRUS BUSTING\n"
 	.string "SKILL,HERE'S A GIFT!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
 	ts_check_give_zenny [
 		amount: 0x7D0,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
-	ts_player_animate_object [
-		animation: 0x18,
-	]
+	ts_player_animate_object animation=0x18
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\"2000 Zennys\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_object
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x5E,
-	]
+	ts_mugshot_show mugshot=0x5E
 	.string "CONGRATULATIONS!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "THERE ARE OTHER\n"
 	.string "MR.PROGS THAT ARE\n"
 	.string "DIFFERENT COLORS..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "YOU SHOULD TRY\n"
 	.string "LOOKING FOR THEM."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "WHERE ARE THEY?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "HAHAHA...\n"
 	.string "YOU KNOW..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "IT'S AN AREA YOU\n"
 	.string "PASS THROUGH\n"
 	.string "REGULARLY..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87A3180_unk16
-	ts_mugshot_show [
-		mugshot: 0x5E,
-	]
+	ts_mugshot_show mugshot=0x5E
 	ts_msg_open
 	.string "AMAZING!!\n"
 	.string "WELL DONE!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "TO COMEMMORATE YOUR\n"
 	.string "GREAT VIRUS BUSTING\n"
 	.string "SKILL,HERE'S A GIFT!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
 	ts_check_give_bug_frags [
 		amount: 0x8,
-		jumpIfAll: 0xFF,
-		jumpIfNone: 0xFF,
-		jumpIfSome: 0xFF,
+		jumpIfAll: TS_CONTINUE,
+		jumpIfNone: TS_CONTINUE,
+		jumpIfSome: TS_CONTINUE,
 	]
-	ts_player_animate_object [
-		animation: 0x18,
-	]
+	ts_player_animate_object animation=0x18
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\"8 BugFrags\"!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_object
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x5E,
-	]
+	ts_mugshot_show mugshot=0x5E
 	.string "CONGRATULATIONS!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "THERE ARE OTHER\n"
 	.string "MR.PROG THAT ARE\n"
 	.string "DIFFERENT COLORS..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "YOU SHOULD TRY\n"
 	.string "LOOKING FOR THEM."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "WHERE ARE THEY?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "HAHAHA...\n"
 	.string "YOU KNOW..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "IT'S AN AREA YOU\n"
 	.string "ALWAYS PASS THROUGH\n"
 	.string "I GUESS..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87A3180_unk17
-	ts_text_speed [
-		delay: 0x2,
-	]
-	ts_mugshot_show [
-		mugshot: 0x5E,
-	]
+	ts_text_speed delay=0x2
+	ts_mugshot_show mugshot=0x5E
 	ts_msg_open
 	.string "LET ME EXPLAIN THE\n"
 	.string "RULES."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "YOU CAN FIGHT\n"
 	.string "AGAINST 2 VIRUSES"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "THAT YOU HAVE THE\n"
 	.string "DATA FOR..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "YOU MUST REDUCE AN\n"
 	.string "ENEMY VIRUS'"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "ENERGY TO ZERO\n"
 	.string "WITHIN THE TIME\n"
 	.string "LIMIT."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "THERE IS ONE THING\n"
 	.string "TO REMEMBER WHEN\n"
 	.string "SETTING UP A BATTLE."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "THE TOTAL SIZE OF\n"
 	.string "THE TWO VIRUSES YOU"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "CHOOSE MUST NOT BE\n"
 	.string "MORE THAN 50 MB."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "IF IT IS OVER,YOU\n"
 	.string "WILL NOT BE ABLE TO\n"
 	.string "SET THE BATTLE."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "IF YOU CAN DELETE\n"
 	.string "ALL THE VIRUSES\n"
 	.string "WITH STYLE,"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "YOU WILL GET AN\n"
 	.string "AMAZING REWARD!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	

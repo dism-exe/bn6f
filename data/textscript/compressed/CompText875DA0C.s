@@ -14,9 +14,7 @@ CompText875DA0C::
 	.string "\"THIS DOOR IS\n"
 	.string " CLOSED DUE TO THE\n"
 	.string " CURRENT EMERGENCY\""
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875DA0C_unk1

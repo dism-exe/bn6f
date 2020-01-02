@@ -12,58 +12,42 @@ CompText87712C8::
 	def_text_script CompText87712C8_unk0
 	ts_check_flag [
 		flag: 0x657,
-		jumpIfTrue: 0x2,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87712C8_unk2_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x636,
-		jumpIfTrue: 0x1,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87712C8_unk1_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set [
-		flag: 0x636,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_flag_set flag=0x636
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText87712C8_unk1
-	ts_mugshot_show [
-		mugshot: 0x1E,
-	]
+	ts_mugshot_show mugshot=0x1E
 	ts_msg_open
 	.string "Hey,use that\n"
 	.string "computer!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Hurry up!\n"
 	.string "HeatMan's waitin'\n"
 	.string "for ya!!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87712C8_unk2
-	ts_mugshot_show [
-		mugshot: 0x1E,
-	]
+	ts_mugshot_show mugshot=0x1E
 	ts_msg_open
 	.string "Do yer best and\n"
 	.string "delete those\n"
 	.string "Kettles!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "If ya don't,you\n"
 	.string "can't ever go home!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87712C8_unk3
@@ -73,77 +57,53 @@ CompText87712C8::
 	def_text_script CompText87712C8_unk5
 	ts_check_flag [
 		flag: 0x669,
-		jumpIfTrue: 0x8,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87712C8_unk8_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
 		flag: 0x652,
-		jumpIfTrue: 0x9,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87712C8_unk9_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set [
-		flag: 0x652,
-	]
-	ts_mugshot_show [
-		mugshot: 0x1E,
-	]
+	ts_flag_set flag=0x652
+	ts_mugshot_show mugshot=0x1E
 	ts_msg_open
 	.string "Time for the\n"
 	.string "final test!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "The test is..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "A NetBattle with\n"
 	.string "HeatMan!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Of course,ya'll\n"
 	.string "operate MegaMan."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Ya shoulda figured\n"
 	.string "out how to use Fire"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "by operatin'\n"
 	.string "HeatMan,right?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "So Fire attacks\n"
 	.string "shouldn't be a\n"
 	.string "problem for ya!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Alright! Let's go!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Are ya ready!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_position_option_horizontal [
-		width: 0x7,
-	]
+	ts_position_option_horizontal width=0x7
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -151,9 +111,7 @@ CompText87712C8::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -162,65 +120,41 @@ CompText87712C8::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0x6, 0xFF, 0xFF
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x1E,
-	]
+	ts_mugshot_show mugshot=0x1E
 	.string "Huh? Ya aren't\n"
 	.string "scared are ya!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87712C8_unk6
-	ts_mugshot_show [
-		mugshot: 0x1E,
-	]
+	ts_mugshot_show mugshot=0x1E
 	ts_msg_open
 	.string "Let's go! Time for\n"
 	.string "the final test!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "START!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0x643,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0x643
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText87712C8_unk7
-	ts_mugshot_show [
-		mugshot: 0x1E,
-	]
+	ts_mugshot_show mugshot=0x1E
 	ts_msg_open
 	.string "That's too bad!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "You wanna give it\n"
 	.string "another shot!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_position_option_horizontal [
-		width: 0x7,
-	]
+	ts_position_option_horizontal width=0x7
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -228,9 +162,7 @@ CompText87712C8::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -239,62 +171,42 @@ CompText87712C8::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0x6, 0xFF, 0xFF
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x1E,
-	]
+	ts_mugshot_show mugshot=0x1E
 	.string "Huh? Ya aren't\n"
 	.string "scared are ya!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87712C8_unk8
-	ts_mugshot_show [
-		mugshot: 0x1E,
-	]
+	ts_mugshot_show mugshot=0x1E
 	ts_msg_open
 	.string "How was it!?\n"
 	.string "My control's as\n"
 	.string "good as yers!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "That's the way to\n"
 	.string "master Fire!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87712C8_unk9
-	ts_mugshot_show [
-		mugshot: 0x1E,
-	]
+	ts_mugshot_show mugshot=0x1E
 	ts_msg_open
 	.string "Looks like yer\n"
 	.string "soul's ready to go!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Let's get started...\n"
 	.string "OK?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_position_option_horizontal [
-		width: 0x7,
-	]
+	ts_position_option_horizontal width=0x7
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -302,9 +214,7 @@ CompText87712C8::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -313,20 +223,14 @@ CompText87712C8::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0x6, 0xFF, 0xFF
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x1E,
-	]
+	ts_mugshot_show mugshot=0x1E
 	.string "Huh? Ya aren't\n"
 	.string "scared are ya!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87712C8_unk10
@@ -342,190 +246,118 @@ CompText87712C8::
 	def_text_script CompText87712C8_unk15
 	ts_check_flag [
 		flag: 0x645,
-		jumpIfTrue: 0x10,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87712C8_unk16_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set [
-		flag: 0x645,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_flag_set flag=0x645
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText87712C8_unk16
-	ts_mugshot_show [
-		mugshot: 0x1F,
-	]
+	ts_mugshot_show mugshot=0x1F
 	ts_msg_open
 	.string "Use this computer.\n"
 	.string "SpoutMan's waiting."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87712C8_unk17
 	ts_check_flag [
 		flag: 0x653,
-		jumpIfTrue: 0x15,
-		jumpIfFalse: 0xFF,
+		jumpIfTrue: CompText87712C8_unk21_id,
+		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set [
-		flag: 0x653,
-	]
-	ts_mugshot_show [
-		mugshot: 0x1F,
-	]
+	ts_flag_set flag=0x653
+	ts_mugshot_show mugshot=0x1F
 	ts_msg_open
 	.string "Lan,let's start\n"
 	.string "the test!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "What? All I did was\n"
 	.string "operate SpoutMan and\n"
 	.string "catch some fish..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It's not like we did\n"
 	.string "anything classwork-\n"
 	.string "like,so"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "why the test all of\n"
 	.string "a sudden?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x1F,
-	]
+	ts_mugshot_show mugshot=0x1F
 	.string "What are you\n"
 	.string "talking about?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Finding the fish\n"
 	.string "WAS the classwork!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "Re..Really...?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x1F,
-	]
+	ts_mugshot_show mugshot=0x1F
 	.string "Yes!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Using SpoutMan was\n"
 	.string "to get you to"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "understand the\n"
 	.string "soul of water!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "...Really?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x1F,
-	]
+	ts_mugshot_show mugshot=0x1F
 	.string "Of course!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "You should\n"
 	.string "understand the soul\n"
 	.string "of water by now!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "I guess so...?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x1F,
-	]
+	ts_mugshot_show mugshot=0x1F
 	.string "OK then! Let's see\n"
 	.string "how much you learned\n"
 	.string "in class!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "How about a battle\n"
 	.string "against SpoutMan\n"
 	.string "while I operate?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Show me just how\n"
 	.string "much you've learned\n"
 	.string "through this fight!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x0,
-	]
+	ts_mugshot_show mugshot=0x0
 	.string "It's a NetBattle...?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x1F,
-	]
+	ts_mugshot_show mugshot=0x1F
 	.string "Yep,a NetBattle.\n"
 	.string "Are you ready!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_position_option_horizontal [
-		width: 0x7,
-	]
+	ts_position_option_horizontal width=0x7
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -533,9 +365,7 @@ CompText87712C8::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -544,61 +374,39 @@ CompText87712C8::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0x12, 0xFF, 0xFF
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x1F,
-	]
+	ts_mugshot_show mugshot=0x1F
 	.string "Once you are ready,\n"
 	.string "we'll begin!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87712C8_unk18
-	ts_mugshot_show [
-		mugshot: 0x1F,
-	]
+	ts_mugshot_show mugshot=0x1F
 	ts_msg_open
 	.string "Let's see if you've\n"
 	.string "got a soul of water!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Battle Start!!"
-	ts_key_wait [
-		any: 0x0,
-	]
-	ts_flag_set [
-		flag: 0x650,
-	]
-	ts_flag_set [
-		flag: 0x1715,
-	]
+	ts_key_wait any=0x0
+	ts_flag_set flag=0x650
+	ts_flag_set flag=0x1715
 	ts_end
 
 	def_text_script CompText87712C8_unk19
-	ts_mugshot_show [
-		mugshot: 0x1F,
-	]
+	ts_mugshot_show mugshot=0x1F
 	ts_msg_open
 	.string "What a shame...\n"
 	.string "Would you like to\n"
 	.string "try again?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_position_option_horizontal [
-		width: 0x7,
-	]
+	ts_position_option_horizontal width=0x7
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -606,9 +414,7 @@ CompText87712C8::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -617,39 +423,27 @@ CompText87712C8::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0x12, 0xFF, 0xFF
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x1F,
-	]
+	ts_mugshot_show mugshot=0x1F
 	.string "Once you are ready,\n"
 	.string "we'll begin!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87712C8_unk20
 
 	def_text_script CompText87712C8_unk21
-	ts_mugshot_show [
-		mugshot: 0x1F,
-	]
+	ts_mugshot_show mugshot=0x1F
 	ts_msg_open
 	.string "Are you ready to\n"
 	.string "take the test!?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_position_option_horizontal [
-		width: 0x7,
-	]
+	ts_position_option_horizontal width=0x7
 	ts_option [
 		brackets: 0x0,
 		right: 0x1,
@@ -657,9 +451,7 @@ CompText87712C8::
 		down: 0x0,
 		up: 0x0,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " Yes  "
 	ts_option [
 		brackets: 0x0,
@@ -668,20 +460,14 @@ CompText87712C8::
 		down: 0x1,
 		up: 0x1,
 	]
-	ts_space [
-		count: 0x1,
-	]
+	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0x12, 0xFF, 0xFF
 	ts_clear_msg
-	ts_mugshot_show [
-		mugshot: 0x1F,
-	]
+	ts_mugshot_show mugshot=0x1F
 	.string "Once you are ready,\n"
 	.string "we'll begin!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87712C8_unk22
@@ -692,41 +478,29 @@ CompText87712C8::
 
 	def_text_script CompText87712C8_unk25
 	ts_check_game_version [
-		jumpIfCybeastGregar: 0xFF,
-		jumpIfCybeastFalzar: 0x1A,
+		jumpIfCybeastGregar: TS_CONTINUE,
+		jumpIfCybeastFalzar: CompText87712C8_unk26_id,
 	]
-	ts_mugshot_show [
-		mugshot: 0x1E,
-	]
+	ts_mugshot_show mugshot=0x1E
 	ts_msg_open
 	.string "What's the problem?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "Hurry up and get\n"
 	.string "ready to go home!"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87712C8_unk26
-	ts_mugshot_show [
-		mugshot: 0x1F,
-	]
+	ts_mugshot_show mugshot=0x1F
 	ts_msg_open
 	.string "Hmm?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "You're not all\n"
 	.string "packed up to go\n"
 	.string "home yet,right?"
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText87712C8_unk27

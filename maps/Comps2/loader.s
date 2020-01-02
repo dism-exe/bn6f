@@ -35,6 +35,7 @@ sub_806FC08:
 	bl sub_806FFDA
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_806FC60: .word off_806FA98
 off_806FC64: .word unk_2037800
 off_806FC68: .word off_806FC6C
@@ -67,7 +68,7 @@ sub_806FCF8:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_806FD08: .word off_806FD0C
 off_806FD0C: .word off_806FD4C
 	.word off_806FD4C
@@ -112,7 +113,7 @@ sub_806FD54:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_806FD88: .word off_806FD8C
 off_806FD8C: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
@@ -231,6 +232,7 @@ sub_806FF08:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_806FF30: .word jt_806FF34
 jt_806FF34: .word sub_806FF76+1
 	.word sub_806FF94+1
@@ -325,7 +327,7 @@ sub_806FFDA:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_806FFF0: .word pt_806FFF4
 pt_806FFF4:
 	// <endpool> <endfile>

@@ -14,9 +14,7 @@ CompText875DE80::
 	.string "The darkness won't\n"
 	.string "budge,even with your\n"
 	.string "strongest attacks."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText875DE80_unk1
@@ -24,15 +22,11 @@ CompText875DE80::
 	.string "This is the control\n"
 	.string "panel for this\n"
 	.string "pavilion..."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_clear_msg
 	.string "It is operating\n"
 	.string "normally."
-	ts_key_wait [
-		any: 0x0,
-	]
+	ts_key_wait any=0x0
 	ts_end
 
 	
