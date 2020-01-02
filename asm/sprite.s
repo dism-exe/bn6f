@@ -83,7 +83,7 @@ loc_8002716:
 	pop {r1}
 	strb r1, [r5,#oObjectSprite_Unk_03]
 	pop {r4,r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8002724: .word SpritePointersList
 sprite8002728: .word spriteWhiteDot
 	thumb_func_end sprite_load
@@ -127,6 +127,7 @@ spriteLoadMugshot_800275A:
 	mov r0, #0x80
 	strh r0, [r5,#0x16]
 	pop {pc}
+	.balign 4, 0
 off_800276C: .word mugshotSpritePtrs
 	thumb_func_end spriteLoadMugshot_800275A
 
@@ -154,7 +155,7 @@ loc_800278A:
 	mov r0, #0x80
 	strh r0, [r5,#0x16]
 	pop {r4-r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8002798: .word guiSpritePtrs
 	thumb_func_end initGuiSprite_8002770
 
@@ -169,6 +170,7 @@ sub_800279C:
 	mov r0, #0x80
 	strh r0, [r5,#0x16]
 	pop {r5,pc}
+	.balign 4, 0
 off_80027B0: .word mugshotSpritePtrs
 	thumb_func_end sub_800279C
 
@@ -178,6 +180,7 @@ sub_80027B4:
 	ldr r1, dword_80027C0 // =0x1
 	str r1, [r0]
 	mov pc, lr
+	.balign 4, 0
 off_80027BC: .word dword_200F350
 dword_80027C0: .word 0x1
 	thumb_func_end sub_80027B4
@@ -228,6 +231,7 @@ sub_80027F4:
 	ldr r0, byte_8002810 // =0xff
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
+	.balign 4, 0
 off_8002804: .word byte_20098A8
 dword_8002808: .word 0x32F
 dword_800280C: .word 0x2FF
@@ -277,6 +281,7 @@ loc_8002840:
 	bx r1
 locret_8002862:
 	pop {pc}
+	.balign 4, 0
 off_8002864: .word sub_3005EF0+1
 off_8002868: .word byte_3001550
 	thumb_func_end sub_8002818
@@ -309,6 +314,7 @@ sub_8002874:
 	bl QueueEightWordAlignedGFXTransfer
 locret_8002896:
 	pop {r5,pc}
+	.balign 4, 0
 dword_8002898: .word 0x6010000
 	thumb_func_end sub_8002874
 
@@ -324,7 +330,7 @@ sprite_resetObjVars_800289C:
 	mvn r2, r2
 	bl WordFill
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80028B4: .word dword_20093A8
 off_80028B8: .word dword_200A890
 off_80028BC: .word 0x388
@@ -337,7 +343,7 @@ sub_80028C0:
 	ldr r2, off_80028D0 // =byte_200F389
 	strb r1, [r2,r0]
 	mov pc, lr
-	.balign 4, 0x00
+	.balign 4, 0
 off_80028CC: .word dword_200F340
 off_80028D0: .word byte_200F389
 	thumb_func_end sub_80028C0
@@ -759,7 +765,7 @@ loc_8002BB2:
 	mov r9, r2
 	mov r12, r3
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8002BC0: .word SpritePointersList
 dword_8002BC4: .word 0x2040000
 off_8002BC8: .word dword_2033000

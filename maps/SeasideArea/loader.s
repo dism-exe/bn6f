@@ -35,6 +35,7 @@ SeasideArea_EnterMapGroup:
 	bl SeasideArea_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80754A4: .word off_8074F30
 off_80754A8: .word unk_2037800
 off_80754AC: .word off_80754B0
@@ -56,6 +57,7 @@ SeasideArea_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
+	.balign 4, 0
 off_80754F0: .word off_80754F4
 off_80754F4: .word off_8075500
 	.word off_8075510
@@ -97,7 +99,7 @@ SeasideArea_LoadBGAnim:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8075564: .word off_8075568
 off_8075568: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
@@ -159,7 +161,7 @@ SeasideArea_SpawnMapObjectsForMap:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8075604: .word off_8075608
 off_8075608:
 	// <endpool>

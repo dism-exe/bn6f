@@ -35,6 +35,7 @@ Comps1_EnterMapGroup:
 	bl Comps1_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_806D950: .word off_806D6B0
 off_806D954: .word unk_2037800
 off_806D958: .word off_806D95C
@@ -81,7 +82,7 @@ Comps1_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_806DA0C: .word off_806DA10
 off_806DA10: .word off_806DA50
 	.word off_806DA50
@@ -126,7 +127,7 @@ Comps1_LoadBGAnim:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_806DA8C: .word off_806DA90
 off_806DA90: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
@@ -243,6 +244,7 @@ Comps1_UnkFunction_806dc0c:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_806DC34: .word off_806DC38
 off_806DC38: .word nullsub_70+1
 	.word sub_806DC7A+1
@@ -332,6 +334,7 @@ Comps1_SpawnMapObjectsForMap:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_806DCE8: .word pt_806DCEC
 pt_806DCEC:
 	// <endpool> <endfile>

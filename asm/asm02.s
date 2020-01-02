@@ -2,7 +2,7 @@
 // (int chip_idx) -> ChipData*
 	thumb_func_start getChip8021DA8
 getChip8021DA8:
-	ldr r1, off_8021AB0 // =ChipDataArr_8021DA8 
+	ldr r1, off_8021AB0 // =ChipDataArr_8021DA8
 	mov r2, #44
 	mul r0, r2
 	add r0, r0, r1
@@ -15,12 +15,12 @@ off_8021AB0: .word ChipDataArr_8021DA8
 	thumb_func_start sub_8021AB4
 sub_8021AB4:
 	push {r4,r6,r7,lr}
-	mov r2, #0x3c 
+	mov r2, #0x3c
 	mul r1, r2
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_S_Chip_2002178_Ptr]
 	add r1, r1, r3
-	mov r2, #0x3c 
+	mov r2, #0x3c
 	push {r1}
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {r7}
@@ -31,7 +31,7 @@ loc_8021ACC:
 	mov r2, #1
 	bl sub_8021B2A
 	add r6, #2
-	cmp r6, #0x3c 
+	cmp r6, #0x3c
 	blt loc_8021ACC
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_8021AB4
@@ -45,7 +45,7 @@ split9BitsFromBitfield_8021AE0: // 8021AE0
 	// splits bitfield into lower and upper 9 bits, and returns those in r0, r1
 	push {lr}
 	lsr r1, r0, #9
-	ldr r2, .Mask9Bits // =0x01ff 
+	ldr r2, .Mask9Bits // =0x01ff
 	and r0, r2 // r0 assumed to have bits 16-31 unset
 	pop {pc}
 	.balign 4, 0x00
@@ -64,7 +64,7 @@ GiveChips:
 	pop {r4,pc}
 loc_8021B00:
 	push {r0-r2}
-	ldr r1, off_8021B74 // =0x1e20 
+	ldr r1, off_8021B74 // =0x1e20
 	add r1, r1, r0
 	// bitfield
 	mov r0, r1
@@ -93,7 +93,7 @@ sub_8021B2A:
 	pop {pc}
 loc_8021B3C:
 	push {r0-r2}
-	ldr r1, off_8021B74 // =0x1e20 
+	ldr r1, off_8021B74 // =0x1e20
 	add r1, r1, r0
 	// bitfield
 	mov r0, r1
@@ -111,7 +111,7 @@ loc_8021B3C:
 addChipsToChipPackOffset_8021b5a:
 	mov r3, #1
 	ldrb r1, [r0]
-	cmp r1, #99 
+	cmp r1, #99
 	beq loc_8021B6E
 	mov r3, #0
 	add r1, r1, r2
@@ -230,16 +230,16 @@ sub_8021C02:
 loc_8021C16:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_S_Chip_2002178_Ptr]
-	ldr r6, off_8021C60 // =unk_20018EC 
+	ldr r6, off_8021C60 // =unk_20018EC
 	ldrb r3, [r6,r4]
 	lsr r2, r3, #4
-	mov r3, #0x3c 
+	mov r3, #0x3c
 	mul r3, r2
 	add r3, r3, r7
 	mov r2, #0
 loc_8021C28:
 	ldrh r7, [r3,r2]
-	ldr r6, dword_8021C64 // =0x1ff 
+	ldr r6, dword_8021C64 // =0x1ff
 	and r6, r7
 	lsr r7, r7, #9
 	cmp r0, r6
@@ -255,7 +255,7 @@ loc_8021C28:
 	add r5, #1
 loc_8021C48:
 	add r2, #2
-	cmp r2, #0x3c 
+	cmp r2, #0x3c
 	blt loc_8021C28
 	add r4, #1
 	ldr r2, [sp]
@@ -265,7 +265,7 @@ loc_8021C48:
 	add sp, sp, #4
 	mov r0, r5
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8021C60: .word unk_20018EC
 dword_8021C64: .word 0x1FF
 	thumb_func_end sub_8021C02
@@ -277,10 +277,10 @@ zeroFill_e2002230:
 	// memBlock
 	ldr r0, [r0,#oToolkit_Unk2002230_Ptr]
 	// size
-	ldr r1, dword_8021C78 // =0xf00 
+	ldr r1, dword_8021C78 // =0xf00
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_8021C78: .word 0xF00
 	thumb_func_end zeroFill_e2002230
 
@@ -338,7 +338,7 @@ loc_8021CC8:
 	cmp r6, #0xff
 	beq loc_8021CEE
 	ldrb r7, [r0,#9]
-	mov r1, #0x20 
+	mov r1, #0x20
 	tst r7, r1
 	bne loc_8021CEE
 	mov r7, r10
@@ -359,21 +359,21 @@ loc_8021CEE:
 	blt loc_8021CC8
 loc_8021CF4:
 	add r2, #1
-	ldr r1, off_8021D04 // =0x140 
+	ldr r1, off_8021D04 // =0x140
 	cmp r2, r1
 	blt loc_8021CB0
 	mov r0, r4
 	mov r1, r5
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8021D04: .word 0x140
 	thumb_func_end sub_8021CA8
 
 	thumb_func_start sub_8021D08
 sub_8021D08:
 	push {lr}
-	ldr r0, off_8021D94 // =unk_203A0A0 
-	ldr r1, off_8021D98 // =0x2e0 
+	ldr r0, off_8021D94 // =unk_203A0A0
+	ldr r1, off_8021D98 // =0x2e0
 	bl ZeroFillByHalfword
 	pop {pc}
 	thumb_func_end sub_8021D08
@@ -381,9 +381,9 @@ sub_8021D08:
 	thumb_func_start sub_8021D14
 sub_8021D14:
 	push {lr}
-	ldr r2, off_8021D9C // =0x170 
+	ldr r2, off_8021D9C // =0x170
 	mul r2, r0
-	ldr r0, off_8021DA0 // =unk_203A0A0 
+	ldr r0, off_8021DA0 // =unk_203A0A0
 	add r0, r0, r2
 	ldrb r2, [r0,r1]
 	cmp r2, #0xff
@@ -396,9 +396,9 @@ locret_8021D28:
 
 	thumb_local_start
 sub_8021D2A:
-	ldr r2, off_8021D9C // =0x170 
+	ldr r2, off_8021D9C // =0x170
 	mul r2, r0
-	ldr r0, off_8021DA4 // =unk_203A0A0 
+	ldr r0, off_8021DA4 // =unk_203A0A0
 	add r0, r0, r2
 	ldrb r0, [r0,r1]
 	mov pc, lr
@@ -407,40 +407,41 @@ sub_8021D2A:
 	thumb_func_start sub_8021D36
 sub_8021D36:
 	push {lr}
-	ldr r0, off_8021D6C // =unk_2000AF0 
-	mov r1, #0x40 
+	ldr r0, off_8021D6C // =unk_2000AF0
+	mov r1, #0x40
 	bl ZeroFillByHalfword
-	ldr r0, off_8021D80 // =script_8021D88 
-	ldr r1, off_8021D70 // =unk_2001184 
+	ldr r0, off_8021D80 // =TextScriptJap8021D88
+	ldr r1, off_8021D70 // =unk_2001184
 	mov r2, #8
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
-	ldr r0, off_8021D80 // =script_8021D88 
-	ldr r1, off_8021D74 // =unk_200119C 
+	ldr r0, off_8021D80 // =TextScriptJap8021D88
+	ldr r1, off_8021D74 // =unk_200119C
 	mov r2, #8
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
-	ldr r0, off_8021D84 // =byte_8021D8A 
-	ldr r1, off_8021D78 // =byte_20007D6 
+	ldr r0, off_8021D84 // =byte_8021D8A
+	ldr r1, off_8021D78 // =byte_20007D6
 	mov r2, #8
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
-	ldr r0, off_8021D84 // =byte_8021D8A 
-	ldr r1, off_8021D7C // =byte_200083A 
+	ldr r0, off_8021D84 // =byte_8021D8A
+	ldr r1, off_8021D7C // =byte_200083A
 	mov r2, #8
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
 	.balign 4, 0x00
+	thumb_func_end sub_8021D36
+
 off_8021D6C: .word unk_2000AF0
 off_8021D70: .word unk_2001184
 off_8021D74: .word unk_200119C
 off_8021D78: .word byte_20007D6
 off_8021D7C: .word byte_200083A
-off_8021D80: .word script_8021D88
+off_8021D80: .word TextScriptJap8021D88
 off_8021D84: .word byte_8021D8A
-script_8021D88:
-	// <endpool>
-	.byte 0x2, 0x0
-	thumb_func_end sub_8021D36
 
-byte_8021D8A: .byte 0x7E, 0x7E, 0x7E, 0x7E, 0xE6, 0x0, 0x0, 0x0, 0x0, 0x0
+text_8021D88:
+	.include "data/textscript/TextScriptJap8021D88.s"
+	.word 0x0
+
 off_8021D94: .word unk_203A0A0
 off_8021D98: .word 0x2E0
 off_8021D9C: .word 0x170

@@ -35,6 +35,7 @@ PavilionComp_EnterMapGroup:
 	bl PavilionComp_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_806AA58: .word off_806A7AC
 off_806AA5C: .word unk_2037800
 off_806AA60: .word off_806AA64
@@ -62,6 +63,7 @@ PavilionComp_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
+	.balign 4, 0
 off_806AAB8: .word off_806AABC
 off_806AABC: .word off_806AAD0
 	.word off_806AAFC
@@ -142,7 +144,7 @@ PavilionComp_LoadBGAnim:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_806ABC8: .word off_806ABCC
 off_806ABCC: .word nullsub_39+1
 	.word BGScrollCB_BG3FastLeftScroll+1
@@ -268,6 +270,7 @@ PavilionComp_SpawnMapObjectsForMap:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_806AD14: .word off_806AD18
 off_806AD18: .word byte_806AD2C
 	.word byte_806AD44

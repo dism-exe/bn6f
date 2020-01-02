@@ -27,7 +27,7 @@ sub_812DAE4::
 	bl sub_803C59C
 locret_812DB08::
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812DB0C:: .word off_812DB10
 off_812DB10:: .word sub_812DB44+1
 	.word sub_812DBE0+1
@@ -259,6 +259,7 @@ loc_812DCEE::
 	bl sub_812EC04
 	bl sub_812EFD4
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_812DCF8:: .word 0xFFFFFFFF
 byte_812DCFC:: .byte 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE, 0x0, 0x0
 dword_812DD04:: .word 0x814C
@@ -599,7 +600,7 @@ loc_812DF8E::
 	bl sub_812F000
 locret_812DF94::
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_812DF98:: .word 0xFFFFFFFF
 byte_812DF9C:: .byte 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE, 0x0, 0x0
 dword_812DFA4:: .word 0x814C
@@ -942,6 +943,7 @@ loc_812E250::
 	bl sub_812F000
 locret_812E256::
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_812E258:: .word 0xFFFFFFFF
 dword_812E25C:: .word 0xFEDC
 dword_812E260:: .word 0xFEDB
@@ -1069,7 +1071,7 @@ loc_812E35E::
 	b locret_812E360
 locret_812E360::
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_812E364:: .word 0xFFFFFFFF
 dword_812E368:: .word 0xFEDC
 dword_812E36C:: .word 0xFEDB
@@ -1339,7 +1341,7 @@ loc_812E572::
 	b locret_812E574
 locret_812E574::
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_812E578:: .word 0xFFFFFFFF
 dword_812E57C:: .word 0xFEDC
 dword_812E580:: .word 0xFEDB
@@ -1453,7 +1455,7 @@ sub_812E650::
 	bx r0
 	bl sub_812EFE4
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812E664:: .word off_812E668
 off_812E668:: .word sub_812AC14+1
 	.word sub_812E678+1
@@ -1525,6 +1527,7 @@ loc_812E6E4::
 	bl sub_80465A0 // (void *a1) -> void
 locret_812E70A::
 	pop {pc}
+	.balign 4, 0
 off_812E70C:: .word unk_20251A0
 off_812E710:: .word byte_8129150
 	thumb_func_end sub_812E6CC
@@ -1790,6 +1793,7 @@ loc_812E8F4::
 	bl sub_812EFD4
 locret_812E902::
 	pop {pc}
+	.balign 4, 0
 dword_812E904:: .word 0xFFFFFFFF
 byte_812E908:: .byte 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE, 0x0, 0x0
 	thumb_func_end sub_812E898
@@ -1863,7 +1867,7 @@ loc_812E994::
 	bl sub_811A914
 locret_812E9A0::
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_812E9A4:: .word 0xFEDB
 dword_812E9A8:: .word 0xFEDC
 	thumb_func_end sub_812E910
@@ -1925,7 +1929,7 @@ sub_812E9AC::
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_812EA3C:: .word 0xBF40
 off_812EA40:: .word dword_8129180
 	thumb_func_end sub_812E9AC
@@ -1940,7 +1944,7 @@ sub_812EA44::
 	ldr r0, off_812EA5C // =off_812EA60 
 	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812EA5C:: .word off_812EA60
 off_812EA60:: .word byte_86C9D6C
 	.word byte_30016D0

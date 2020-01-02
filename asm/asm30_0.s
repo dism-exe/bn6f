@@ -15,7 +15,7 @@ sub_80AED50:
 	mul r3, r1
 	add r0, r0, r3
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80AED70: .word off_80AED74
 off_80AED74:
 	// <endpool>

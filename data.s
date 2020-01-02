@@ -614,8 +614,8 @@ comp_86C45A8::
 	.incbin "data/compressed/comp_86C45A8.lz77"
 dat38_63::
 	.include "data/dat38_63.s"
-compScripts_credits_86C4B58::
-	.incbin "data/scripts/compScripts_credits_86C4B58.lz77"
+TextScriptCredits86C4B58::
+	.incbin "data/textscript/compressed/TextScriptCredits86C4B58.s.lz"
 dat38_64::
 	.include "data/dat38_64.s"
 comp_86C5190::
@@ -686,10 +686,10 @@ comp_86CE51C::
 	.incbin "data/compressed/comp_86CE51C.lz77"
 comp_86CE63C::
 	.incbin "data/compressed/comp_86CE63C.lz77"
-comp_86CE724::
-	.incbin "data/compressed/comp_86CE724.lz77"
-comp_86CE77C::
-	.incbin "data/compressed/comp_86CE77C.lz77"
+CompText86CE724::
+    .incbin "data/textscript/compressed/CompText86CE724.s.lz"
+CompText86CE77C::
+    .incbin "data/textscript/compressed/CompText86CE77C.s.lz"
 comp_86CE7D0::
 	.incbin "data/compressed/comp_86CE7D0.lz77"
 comp_86CE8AC::
@@ -728,16 +728,16 @@ comp_86D54F4::
 	.incbin "data/compressed/comp_86D54F4.lz77"
 dat38_74::
 	.include "data/dat38_74.s"
-comp_86D6974::
-	.incbin "data/compressed/comp_86D6974.lz77"
+CompText86D6974::
+	.incbin "data/textscript/compressed/CompText86D6974.s.lz"
 comp_86D6C70::
 	.incbin "data/compressed/comp_86D6C70.lz77"
 comp_86D6D50::
 	.incbin "data/compressed/comp_86D6D50.lz77"
-comp_86D6EE4::
-	.incbin "data/compressed/comp_86D6EE4.lz77"
-comp_86D6F30::
-	.incbin "data/compressed/comp_86D6F30.lz77"
+CompText86D6EE4::
+	.incbin "data/textscript/compressed/CompText86D6EE4.s.lz"
+CompText86D6F30::
+	.incbin "data/textscript/compressed/CompText86D6F30.s.lz"
 comp_86D737C::
 	.incbin "data/compressed/comp_86D737C.lz77"
 comp_86D73D4::
@@ -764,8 +764,8 @@ comp_86D9C40::
 	.incbin "data/compressed/comp_86D9C40.lz77"
 comp_86D9D10::
 	.incbin "data/compressed/comp_86D9D10.lz77"
-comp_86DA1B8::
-	.incbin "data/compressed/comp_86DA1B8.lz77"
+CompText86DA1B8::
+	.incbin "data/textscript/compressed/CompText86DA1B8.s.lz"
 comp_86DA944::
 	.incbin "data/compressed/comp_86DA944.lz77"
 dat38_78::
@@ -808,15 +808,16 @@ comp_86DDB7C::
 	.incbin "data/compressed/comp_86DDB7C.lz77"
 dat38_85::
 	.include "data/dat38_85.s"
-	.include "data/scripts/TextScriptBattleTutFullSynchro.s"
-TextScriptDadCybeastTut::
-	.incbin "data/scripts/TextScriptDadCybeastTut.bin"
-TextScriptShukoCrossTut::
-	.incbin "data/scripts/TextScriptShukoCrossTut.bin"
+    .include "data/textscript/TextScriptBattleTut1.s"
+    .include "data/textscript/TextScriptBattleTutAreaGrab.s"
+    .include "data/textscript/TextScriptBattleTutFullSynchro.s"  
+text_86f4498:
+	.include "data/textscript/TextScriptDadCybeastTut.s"
+	.include "data/textscript/TextScriptShukoCrossTut.s"
 dat38_86::
 	.include "data/dat38_86.s"
-TextScriptCommError87370C0::
-	.incbin "data/scripts/TextScriptCommError87370C0.bin"
+text_87370C0:
+	.include "data/textscript/TextScriptCommError87370C0.s"
 dat38_87::
 	.include "data/dat38_87.s"
 comp_87E4500::

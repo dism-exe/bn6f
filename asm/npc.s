@@ -185,7 +185,7 @@ npc_doNonCutsceneMovement_809E6DC:
 	bx r7
 	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 jt_809E6F0: .word npc_nonCutsceneMovementInit_809E704+1
 	.word npc_nonCutsceneMovementUpdate_809E7D8+1
 	.word npc_doVerticalMovement_809e84e+1
@@ -509,7 +509,7 @@ npc_doHopMovement_809e8cc:
 	bx r7
 	bl npc_runSecondaryScriptMaybe_809ebf8
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 jt_809E8E0: .word npc_initHopMovement_809e8fc+1
 	.word npc_updateHopMovement_809e916+1
 	.word npc_initLeapMovement_809e944+1
@@ -857,6 +857,7 @@ npc_inChatbox_809EADA:
 	bl sub_809F922
 locret_809EAFA:
 	pop {pc}
+	.balign 4, 0
 off_809EAFC: .word npc_inChatbox_curAction_809EB04+1
 off_809EB00: .word off_809EAFC
 	thumb_func_end npc_inChatbox_809EADA
@@ -1831,7 +1832,7 @@ NPCCommand_init_mystery_data:
 
 	mov r3, #0xff
 	strb r3, [r5,#oOverworldNPCObject_TextScriptIndex]
-	ldr r0, off_809F0DC // =dword_873D108 
+	ldr r0, off_809F0DC // =TextScript873D108 
 	mov r1, #oOverworldNPCObject_TextScriptPtr
 	str r0, [r5,r1]
 
@@ -1871,8 +1872,8 @@ NPCCommand_init_mystery_data:
 	bl FreeOverworldNPCObject
 	bl npc_disableScript0x19_809f51e
 	pop {pc}
-	.balign 4, 0x00
-off_809F0DC: .word dword_873D108
+	.balign 4, 0
+off_809F0DC: .word TextScript873D108
 off_809F0E0: .word byte_809F0E4
 byte_809F0E4: .byte 0xFF, 0x0, 0x0, 0x2, 0x2, 0x1, 0x3, 0xFF
 	thumb_func_end NPCCommand_init_mystery_data
@@ -2530,6 +2531,7 @@ NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer:
 	str r3, [r5,r1]
 	add r6, #2
 	pop {pc}
+	.balign 4, 0
 off_809F3D8: .word byte_202FA04
 	.word off_809F3E0
 off_809F3E0: .word off_8044470
@@ -2740,6 +2742,7 @@ NPCCommand_init_groundman_minigame_prog:
 	bl FreeOverworldNPCObject
 	bl npc_disableScript0x19_809f51e
 	pop {pc}
+	.balign 4, 0
 TextScriptGroundmanMinigame_p: .word TextScriptGroundmanMinigame
 	thumb_func_end NPCCommand_init_groundman_minigame_prog
 
@@ -2904,6 +2907,7 @@ loc_809F598:
 	str r0, [r5,#oOverworldNPCObject_Unk_50]
 	str r0, [r5,#oOverworldNPCObject_Unk_58]
 	pop {r7,pc}
+	.balign 4, 0
 dword_809F5A0: .word OW_OBJECT_INTERACTION_AREA_FLAG_0x20000
 dword_809F5A4: .word (OW_OBJECT_INTERACTION_AREA_FLAG_0x1 | OW_OBJECT_INTERACTION_AREA_FLAG_0x10000 | OW_OBJECT_INTERACTION_AREA_FLAG_0x40000)
 dword_809F5A8: .word OW_OBJECT_INTERACTION_AREA_FLAG_0x400000
@@ -2949,6 +2953,7 @@ loc_809F5EA:
 	mov r0, #0
 	str r0, [r5,#oOverworldNPCObject_Unk_54]
 	pop {pc}
+	.balign 4, 0
 dword_809F5F0: .word 0x804
 dword_809F5F4: .word OW_OBJECT_INTERACTION_AREA_FLAG_0x80000
 dword_809F5F8: .word (OW_OBJECT_INTERACTION_AREA_FLAG_0x10000 | OW_OBJECT_INTERACTION_AREA_FLAG_0x40000)
@@ -3002,6 +3007,7 @@ sub_809F638:
 	mov r0, #1
 locret_809F646:
 	pop {pc}
+	.balign 4, 0
 dword_809F648: .word 0x50000
 	thumb_func_end sub_809F638
 
@@ -3048,7 +3054,7 @@ loc_809F680:
 	mov r0, r7
 	pop {r7}
 	mov pc, lr
-	.balign 4, 0x00
+	.balign 4, 0
 off_809F688: .word eOverworldNPCObjects
 	thumb_func_end sub_809F66C
 
@@ -3067,6 +3073,7 @@ loc_809F694:
 	cmp r3, r2
 	blt loc_809F694
 	pop {pc}
+	.balign 4, 0
 off_809F6A4: .word eOverworldNPCObjects
 off_809F6A8: .word NUM_OVERWORLD_NPC_OBJECTS * oOverworldNPCObject_Size
 off_809F6AC: .word OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x400

@@ -11,6 +11,10 @@ Run the following commands (first, see [this](#macos) if you are on **macOS** or
 
 	cd ../bn6f
 
+	cd tools/gbagfx
+	make
+
+
 To build **bn6f.gba**:
 
 	make -j$(nproc)

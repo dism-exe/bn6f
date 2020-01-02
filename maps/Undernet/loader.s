@@ -35,6 +35,7 @@ Undernet_EnterMapGroup:
 	bl Undernet_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_807CE44: .word off_807C82C
 off_807CE48: .word unk_2037800
 off_807CE4C: .word off_807CE50
@@ -59,7 +60,7 @@ Undernet_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_807CEA0: .word off_807CEA4
 off_807CEA4: .word off_807CEB4
 	.word off_807CED0
@@ -118,7 +119,7 @@ Undernet_LoadBGAnim:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_807CF58: .word off_807CF5C
 off_807CF5C: .word nullsub_39+1
 	.word nullsub_36+1
@@ -200,6 +201,7 @@ Undernet_SpawnMapObjectsForMap:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
+	.balign 4, 0
 off_807D010: .word pt_807D014
 pt_807D014:
 	.word byte_807D024

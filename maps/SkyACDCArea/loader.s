@@ -35,6 +35,7 @@ SkyACDCArea_EnterMapGroup:
 	bl SkyACDCArea_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_807A938: .word off_8079F74
 off_807A93C: .word unk_2037800
 off_807A940: .word off_807A944
@@ -57,7 +58,7 @@ SkyACDCArea_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_807A984: .word off_807A988
 off_807A988: .word off_807A994
 	.word off_807A9A0
@@ -126,6 +127,7 @@ sub_807A9FE:
 	ldr r0, [r0,r1]
 	bl sub_8030540
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_807AA30: .word off_807AA34
 off_807AA34: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
@@ -203,7 +205,7 @@ SkyACDCArea_SpawnMapObjectsForMap:
 	ldr r0, [r1,r0]
 	bl SpawnObjectsFromList
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_807AAEC: .word pt_807AAF0
 pt_807AAF0:
 	.word byte_807AAFC

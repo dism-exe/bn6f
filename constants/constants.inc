@@ -1,3 +1,6 @@
+	.ifndef CONSTANTS_INC
+	.set CONSTANTS_INC, 0
+
 	.include "constants/gba_constants.inc"
 	.include "constants/GameAreas.inc"
 	.include "constants/SoundOffsets.inc"
@@ -77,3 +80,5 @@
 	flag_enum ELEM_WIND   // 0x20
 	flag_enum ELEM_CURSOR // 0x40
 	flag_enum ELEM_SWORD  // 0x80
+
+	.endif // CONSTANTS_INC

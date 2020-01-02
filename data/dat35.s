@@ -56,6 +56,7 @@ loc_812F038::
 	strb r1, [r5,#0xc]
 	strb r1, [r5,#3]
 	pop {r0,pc}
+	.balign 4, 0
 byte_812F044:: .byte 0x23, 0x3, 0x1, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 byte_812F04C:: .byte 0x20, 0x0, 0x1, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 byte_812F054:: .byte 0x20, 0x1, 0x1, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
@@ -86,7 +87,7 @@ sub_812F094::
 	bl sub_803C59C
 locret_812F0B8::
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812F0BC:: .word off_812F0C0
 off_812F0C0:: .word sub_812F0F8+1
 	.word sub_812F190+1
@@ -311,7 +312,7 @@ loc_812F290::
 	bl sub_813064C
 	bl sub_8130810
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_812F29C:: .word 0xFFFFFFFF
 byte_812F2A0:: .byte 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE, 0x0, 0x0
 dword_812F2A8:: .word 0x8003
@@ -636,7 +637,7 @@ loc_812F516::
 	b locret_812F518
 locret_812F518::
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_812F51C:: .word 0xFFFFFFFF
 byte_812F520:: .byte 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE, 0x0, 0x0
 dword_812F528:: .word 0x8003
@@ -961,7 +962,7 @@ loc_812F7B6::
 	b locret_812F7B8
 locret_812F7B8::
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_812F7BC:: .word 0xFFFFFFFF
 dword_812F7C0:: .word 0xFEDC
 dword_812F7C4:: .word 0xFEDB
@@ -1122,7 +1123,7 @@ loc_812F8EA::
 	b locret_812F8EC
 locret_812F8EC::
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 byte_812F8F0:: .byte 0xFF, 0xFF, 0xFF, 0xFF, 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE
 	.byte 0x0, 0x0
 dword_812F8FC:: .word 0xFED8
@@ -1249,7 +1250,7 @@ loc_812F9FA::
 	b locret_812F9FC
 locret_812F9FC::
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_812FA00:: .word 0xFFFFFFFF
 dword_812FA04:: .word 0xFEDC
 dword_812FA08:: .word 0xFEDB
@@ -1530,6 +1531,7 @@ loc_812FC1C::
 	b locret_812FC1E
 locret_812FC1E::
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_812FC20:: .word 0xFFFFFFFF
 dword_812FC24:: .word 0xFEDC
 dword_812FC28:: .word 0xFEDB
@@ -1637,7 +1639,7 @@ loc_812FCEC::
 	mov r0, #8
 	strb r0, [r5,#0xc]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812FD04:: .word unk_20018EC
 off_812FD08:: .word unk_20270EC
 off_812FD0C:: .word unk_202714C
@@ -1677,7 +1679,7 @@ sub_812FD44::
 	bx r0
 	bl sub_81307F4
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_812FD58:: .word off_812FD5C
 off_812FD5C:: .word sub_812AC14+1
 	.word sub_812FD6C+1
@@ -1750,6 +1752,7 @@ loc_812FDD8::
 	bl sub_80465A0 // (void *a1) -> void
 locret_812FE02::
 	pop {pc}
+	.balign 4, 0
 off_812FE04:: .word unk_20251A0
 off_812FE08:: .word byte_8129150
 	thumb_func_end sub_812FDC0
@@ -1955,6 +1958,7 @@ loc_812FF90::
 	b locret_812FF92
 locret_812FF92::
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_812FF94:: .word 0xFFFFFFFF
 byte_812FF98:: .byte 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE, 0x0, 0x0
 	thumb_func_end sub_812FEF0
@@ -2017,7 +2021,7 @@ loc_812FFBC::
 	b locret_8130014
 locret_8130014::
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_8130018:: .word 0xFEDB
 dword_813001C:: .word 0xFEDC
 	thumb_func_end sub_812FFA0

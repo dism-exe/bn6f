@@ -11,6 +11,13 @@
 *.sg?
 *.SNA
 
+# backup directory in case of text archive build falure
+data/textscript/compressed/backup_lz/
+
+# remove build files for compressed textscripts
+data/textscript/compressed/*.lz
+data/textscript/compressed/*.bin
+
 # atom-specific settings
 .atom*
 *.json
@@ -18,8 +25,19 @@
 # python generated files/folders
 __pycache__/
 
+# compiled python bytecode files
+*.pyc
+
 # clion settings
 .idea/
+
+# cache files for heavy computations
+.cache/
+
+# vim files
+*.swp
+*.swo
+tags
 
 # intentionally ignore those junk/temp files
 *.ign

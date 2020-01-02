@@ -1,0 +1,10 @@
+class AddressSpace:
+    SEGMENT_NIBBLE = 0xF000000
+    SYSTEM_ROM =    (0x0000000, 0x3FFF)
+    EWRAM =         (0x2000000, 0x203FFFF)
+    IWRAM =         (0x3000000, 0x3007FFF)
+    IO_RAM =        (0x4000000, 0x40003FF)
+    PAL_RAM =       (0x5000000, 0x50003FF)
+    OAM =           (0x7000000, 0x70003FF)
+    PAK_ROM_START =  0x8000000
+    CART_RAM_START = 0xE000000

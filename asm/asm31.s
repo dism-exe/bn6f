@@ -70,6 +70,7 @@ sub_80B8230:
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
+	.balign 4, 0
 off_80B828C: .word byte_80B8294
 dword_80B8290: .word 0x7FFF
 byte_80B8294: .byte 0x0, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0
@@ -86,7 +87,7 @@ sub_80B829C:
 	bl object_updateSpriteTimestop
 	bl sub_80B844A
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B82B4: .word sub_80B82C4+1
 	.word sub_80B8376+1
 	.word sub_80B8406+1
@@ -357,6 +358,7 @@ loc_80B8482:
 	pop {r4,r7,pc}
 	.word 0x0
 	.word 0x0
+	.balign 4, 0
 off_80B8490: .word byte_80B8494
 byte_80B8494: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -395,6 +397,7 @@ loc_80B84DA:
 	add sp, sp, #8
 	pop {r4,r6,r7,pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80B84E0: .word byte_80B84E4
 byte_80B84E4: .byte 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x0, 0x8
 	thumb_func_end sub_80B84A4
@@ -506,6 +509,7 @@ sub_80B8564:
 	bl sub_80E11E0
 locret_80B85C2:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80B85C4: .word 0xD011208
 dword_80B85C8: .word 0x11C1F
 dword_80B85CC: .word 0x705FF29
@@ -591,7 +595,7 @@ sub_80B863A:
 	mov lr, pc
 	bx r1
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B8694: .word off_80B8698
 off_80B8698: .word sub_80B86A4+1
 	.word sub_80B86C4+1
@@ -637,7 +641,7 @@ sub_80B86D4:
 	bx r1
 locret_80B86E8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B86EC: .word off_80B86F0
 off_80B86F0: .word sub_80B86F8+1
 	.word nullsub_8+1
@@ -887,7 +891,7 @@ sub_80B8870:
 	bl SpawnT4BattleObjectWithId0
 locret_80B88A4:
 	pop {r0,r1,r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 off_80B88B0: .word byte_80B88B4
 byte_80B88B4: .byte 0x1, 0xA, 0x5, 0x15, 0x1, 0x9, 0x5, 0x55
@@ -1066,7 +1070,7 @@ sub_80B8A18:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B8A2C: .word off_80B8A30
 off_80B8A30: .word sub_80B8A3C+1
 	.word sub_80B8AD4+1
@@ -1160,6 +1164,7 @@ loc_80B8AF0:
 	mov lr, pc
 	bx r1
 	pop {r4,pc}
+	.balign 4, 0
 off_80B8AFC: .word off_80B8B00
 off_80B8B00: .word sub_80B8B08+1
 	.word sub_80B8B6E+1
@@ -1274,7 +1279,7 @@ sub_80B8BA0:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80B8BD0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_80B8BD4: .byte 0xC, 0x1, 0x0, 0x0, 0x7, 0xC, 0x1, 0x1, 0x0, 0x7, 0xC, 0x1, 0x2, 0x0, 0x7
 	.byte 0xC, 0x0, 0x0, 0x0, 0x0, 0xC, 0x2, 0x0, 0x0, 0x0, 0xC, 0x6, 0x0, 0x0, 0x10
 	.byte 0xC, 0x3, 0x0, 0x0, 0x0, 0xC, 0x3B, 0x0, 0x0, 0xD, 0xC, 0x3B, 0x3, 0x0, 0xD
@@ -1546,7 +1551,7 @@ sub_80B8EA0:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B8EB4: .word off_80B8EB8
 off_80B8EB8: .word sub_80B8EC4+1
 	.word sub_80B8F0A+1
@@ -1809,7 +1814,7 @@ sub_80B9078:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B908C: .word off_80B9090
 off_80B9090: .word sub_80B909C+1
 	.word sub_80B90E4+1
@@ -1907,6 +1912,7 @@ loc_80B9152:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80B915A:
 	pop {pc}
+	.balign 4, 0
 dword_80B915C: .word 0x10010
 	thumb_func_end sub_80B910C
 
@@ -2109,7 +2115,7 @@ sub_80B9288:
 	bl sub_80C8DE0
 locret_80B92B0:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80B92B4: .word 0x10010
 	thumb_func_end sub_80B9288
 
@@ -2123,7 +2129,7 @@ sub_80B92B8:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B92CC: .word off_80B92D0
 off_80B92D0: .word sub_80B92DC+1
 	.word sub_80B931A+1
@@ -2385,7 +2391,7 @@ loc_80B9482:
 loc_80B94A2:
 	add sp, sp, #0x24
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B94A8: .word byte_80B94AC
 byte_80B94AC: .byte 0x0, 0x0, 0x1, 0x4, 0x0, 0x0, 0x1, 0x8, 0x0, 0x0, 0x81, 0x0, 0x0, 0x0, 0x81
 	.byte 0x0
@@ -2401,7 +2407,7 @@ sub_80B94BC:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80B94D0: .word off_80B94D4
 off_80B94D4: .word sub_80B94E0+1
 	.word sub_80B951E+1
@@ -2500,7 +2506,7 @@ loc_80B959C:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80B95A4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80B95A8: .word 0x10010
 	thumb_func_end sub_80B954C
 
@@ -2802,7 +2808,7 @@ loc_80B9782:
 loc_80B97AE:
 	add sp, sp, #0x18
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B97B4: .word off_80B97B8
 off_80B97B8: .word 0x4000000
 	.word 0x8000000
@@ -2818,7 +2824,7 @@ sub_80B97C0:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B97D4: .word off_80B97D8
 off_80B97D8: .word sub_80B97E4+1
 	.word sub_80B9822+1
@@ -2911,6 +2917,7 @@ loc_80B988E:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80B9896:
 	pop {pc}
+	.balign 4, 0
 dword_80B9898: .word 0x10010
 	thumb_func_end sub_80B9848
 
@@ -3025,6 +3032,7 @@ loc_80B991A:
 	bl camera_initShakeEffect_80302a8
 locret_80B9966:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80B9968: .word 0x700FF11
 dword_80B996C: .word 0x1
 	thumb_func_end sub_80B98EC
@@ -3089,7 +3097,7 @@ sub_80B99C0:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B99D4: .word off_80B99D8
 off_80B99D8: .word sub_80B99E4+1
 	.word sub_80B9A34+1
@@ -3382,7 +3390,7 @@ loc_80B9BE2:
 	cmp r4, #3
 	ble loc_80B9B98
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B9BEC: .word byte_80B9BF0
 byte_80B9BF0: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -3401,7 +3409,7 @@ sub_80B9C14:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B9C28: .word off_80B9C2C
 off_80B9C2C: .word sub_80B9C38+1
 	.word sub_80B9C9C+1
@@ -3468,7 +3476,7 @@ loc_80B9CB2:
 	bx r1
 	bl object_presentCollisionData
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B9CC4: .word off_80B9CC8
 off_80B9CC8: .word sub_80B9CDC+1
 	.word sub_80B9D12+1
@@ -3660,6 +3668,7 @@ loc_80B9E26:
 	bl PlaySoundEffect
 locret_80B9E2E:
 	pop {r4,pc}
+	.balign 4, 0
 off_80B9E30: .word dword_80B9E34
 dword_80B9E34: .word 0x3070300
 off_80B9E38: .word dword_80B9E3C
@@ -3750,6 +3759,7 @@ loc_80B9EDE:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80B9EEE:
 	pop {r4,pc}
+	.balign 4, 0
 off_80B9EF0: .word dword_80B9EF4
 dword_80B9EF4: .word 0x50002
 off_80B9EF8: .word off_80B9EFC
@@ -3787,6 +3797,7 @@ sub_80B9F0E:
 	strb r1, [r7]
 locret_80B9F32:
 	pop {pc}
+	.balign 4, 0
 dword_80B9F34: .word 0x50000
 dword_80B9F38: .word 0xA000
 dword_80B9F3C: .word 0xC0000
@@ -3803,7 +3814,7 @@ sub_80B9F44:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80B9F58: .word off_80B9F5C
 off_80B9F5C: .word sub_80B9F68+1
 	.word sub_80B9FA6+1
@@ -3899,6 +3910,7 @@ loc_80BA01E:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BA026:
 	pop {pc}
+	.balign 4, 0
 dword_80BA028: .word 0x10010
 	thumb_func_end sub_80B9FD8
 
@@ -4200,7 +4212,7 @@ loc_80BA21C:
 loc_80BA21E:
 	add sp, sp, #0x1c
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BA224: .word byte_80BA228
 byte_80BA228: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -4243,7 +4255,7 @@ loc_80BA276:
 	cmp r6, #3
 	ble loc_80BA23E
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80BA280: .word byte_80BA284
 byte_80BA284: .byte 0x0, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -4306,6 +4318,7 @@ loc_80BA2FE:
 loc_80BA300:
 	add sp, sp, #0x18
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80BA304: .word off_80BA308
 off_80BA308: .word 0x4000000
 	.word 0x8000000
@@ -4342,6 +4355,7 @@ sub_80BA31C:
 	lsl r3, r3, #0x10
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80BA35C: .word 0x700FF04
 dword_80BA360: .word 0x3
 	thumb_func_end sub_80BA31C
@@ -4356,7 +4370,7 @@ sub_80BA364:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BA378: .word off_80BA37C
 off_80BA37C: .word sub_80BA388+1
 	.word sub_80BA3D8+1
@@ -4462,6 +4476,7 @@ loc_80BA45A:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BA462:
 	pop {pc}
+	.balign 4, 0
 dword_80BA464: .word 0x10010
 	thumb_func_end sub_80BA414
 
@@ -4569,6 +4584,7 @@ loc_80BA512:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BA51A:
 	pop {pc}
+	.balign 4, 0
 off_80BA51C: .word off_80BA520
 off_80BA520: .word 0x4000000
 	.word 0x8000000
@@ -4796,6 +4812,7 @@ sub_80BA686:
 	ldr r7, dword_80BA6A0 // =0x3 
 	bl sub_80C53A6
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80BA69C: .word 0x1605FF01
 dword_80BA6A0: .word 0x3
 	thumb_func_end sub_80BA686
@@ -4852,6 +4869,7 @@ loc_80BA6EE:
 	mov r4, #0x21 
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80BA704: .word 0x100000
 	thumb_func_end sub_80BA6B6
 
@@ -4865,7 +4883,7 @@ sub_80BA708:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BA71C: .word off_80BA720
 off_80BA720: .word sub_80BA72C+1
 	.word sub_80BA772+1
@@ -4963,6 +4981,7 @@ loc_80BA7E6:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BA7EE:
 	pop {pc}
+	.balign 4, 0
 dword_80BA7F0: .word 0x10010
 	thumb_func_end sub_80BA7A0
 
@@ -5209,7 +5228,7 @@ sub_80BA946:
 	ldr r7, dword_80BA9A0 // =0x1101 
 	bl sub_80C53A6
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80BA99C: .word 0x19050301
 dword_80BA9A0: .word 0x1101
 	thumb_func_end sub_80BA946
@@ -5257,6 +5276,7 @@ loc_80BA9E4:
 	ble loc_80BA9AA
 	mov r0, r7
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80BA9F4: .word byte_80BA9F8
 byte_80BA9F8: .byte 0x5, 0x4, 0x3, 0x2, 0x2, 0x3, 0x4, 0x5
 off_80BAA00: .word dword_80BAA04
@@ -5330,6 +5350,7 @@ loc_80BAA78:
 	cmp r4, #3
 	ble loc_80BAA50
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80BAA80: .word off_80BAA84
 off_80BAA84: .word byte_2030405
 	.word 0x5040302
@@ -5345,7 +5366,7 @@ sub_80BAA8C:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80BAAA0: .word off_80BAAA4
 off_80BAAA4: .word sub_80BAAB0+1
 	.word sub_80BAB00+1
@@ -5448,6 +5469,7 @@ loc_80BAB76:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BAB7E:
 	pop {pc}
+	.balign 4, 0
 dword_80BAB80: .word 0x10010
 	thumb_func_end sub_80BAB30
 
@@ -5553,7 +5575,7 @@ loc_80BAC34:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BAC44:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BAC48: .word dword_80BAC4C
 dword_80BAC4C: .word 0x6080402
 	thumb_func_end sub_80BABAC
@@ -5857,7 +5879,7 @@ sub_80BAE3C:
 	add r7, r7, r5
 	bl object_getPanelsExceptCurrentFiltered
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BAE54: .word off_80BAE58
 off_80BAE58: .word 0x4000000
 	.word 0x8000000
@@ -6006,7 +6028,7 @@ sub_80BAF50:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BAF64: .word off_80BAF68
 off_80BAF68: .word sub_80BAF74+1
 	.word sub_80BB00C+1
@@ -6100,6 +6122,7 @@ loc_80BB028:
 	mov lr, pc
 	bx r1
 	pop {r4,pc}
+	.balign 4, 0
 off_80BB034: .word off_80BB038
 off_80BB038: .word sub_80BB048+1
 	.word sub_80BB098+1
@@ -6135,7 +6158,7 @@ sub_80BB048:
 	bl sub_80BB098
 	pop {r4,r6,pc}
 	.word 0, 0, 0
-	.byte 0, 0
+	.balign 4, 0
 off_80BB090: .word dword_80BB094
 dword_80BB094: .word 0x6010205
 	thumb_func_end sub_80BB048
@@ -6275,6 +6298,7 @@ ho_80BB170:
 	bx r1
 	bl sub_80BB23E
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80BB188: .word jt_80BB18C
 jt_80BB18C: .word sub_80BB19C+1
 	.word sub_80BB1A6+1
@@ -6423,6 +6447,7 @@ sub_80BB278:
 	strh r1, [r0,#oBattleObject_Timer]
 locret_80BB286:
 	pop {r1-r3,pc}
+	.balign 4, 0
 off_80BB288: .word 0x12C
 dword_80BB28C: .word 0x1E04
 dword_80BB290: .word 0x280000
@@ -6439,7 +6464,7 @@ sub_80BB2A0:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BB2B4: .word off_80BB2B8
 off_80BB2B8: .word sub_80BB2C4+1
 	.word sub_80BB35C+1
@@ -6533,6 +6558,7 @@ loc_80BB378:
 	mov lr, pc
 	bx r1
 	pop {r4,pc}
+	.balign 4, 0
 off_80BB384: .word off_80BB388
 off_80BB388: .word sub_80BB398+1
 	.word sub_80BB3F6+1
@@ -6579,6 +6605,7 @@ loc_80BB3BC:
 	pop {r4,r6,pc}
 	.word 0, 0
 	.byte 0, 0, 0, 0
+	.balign 4, 0
 off_80BB3F0: .word byte_80BB3F4
 byte_80BB3F4: .byte 0x6, 0x1
 	thumb_func_end sub_80BB398
@@ -6721,7 +6748,7 @@ sub_80BB4CE:
 	mov r1, #0xc
 	bl sub_80BB59A
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BB4EC: .word off_80BB4F0
 off_80BB4F0: .word sub_80BB4F8+1
 	.word sub_80BB514+1
@@ -6862,7 +6889,7 @@ sub_80BB5DC:
 	strh r7, [r0,#oBattleObject_Timer]
 locret_80BB5E8:
 	pop {r1-r3,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BB5EC: .word 0x12C
 off_80BB5F0: .word PanelOffsetListsPointerTable
 dword_80BB5F4: .word 0xA050601
@@ -6882,7 +6909,7 @@ sub_80BB608:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BB61C: .word off_80BB620
 off_80BB620: .word sub_80BB62C+1
 	.word sub_80BB66A+1
@@ -6976,6 +7003,7 @@ loc_80BB6DA:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BB6E2:
 	pop {pc}
+	.balign 4, 0
 dword_80BB6E4: .word 0x10010
 	thumb_func_end sub_80BB694
 
@@ -7193,6 +7221,7 @@ loc_80BB820:
 	ble loc_80BB820
 locret_80BB85A:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80BB85C: .word byte_80BB860
 byte_80BB860: .byte 0x1, 0xFF, 0x1, 0x0, 0x1, 0x1
 	thumb_func_end sub_80BB81C
@@ -7217,6 +7246,7 @@ loc_80BB882:
 	str r0, [r5,#oBattleObject_ExtraVars+4]
 	str r1, [r5,#oBattleObject_ExtraVars]
 	pop {pc}
+	.balign 4, 0
 off_80BB888: .word byte_80BB88C
 byte_80BB88C: .byte 0x1, 0x2, 0xFF, 0xFF, 0xFF, 0x0, 0x1, 0x2, 0x1, 0xFF, 0x0, 0x1, 0xFF
 	.byte 0xFF, 0xFF, 0x0
@@ -7280,6 +7310,7 @@ loc_80BB8B4:
 	ble loc_80BB8B4
 locret_80BB902:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80BB904: .word byte_80BB908
 byte_80BB908: .byte 0x1, 0xFF, 0x1, 0x0, 0x1, 0x1, 0x0, 0x0
 off_80BB910: .word 0x168
@@ -7295,7 +7326,7 @@ sub_80BB914:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BB928: .word off_80BB92C
 off_80BB92C: .word sub_80BB938+1
 	.word sub_80BB976+1
@@ -7388,6 +7419,7 @@ loc_80BB9E2:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BB9EA:
 	pop {pc}
+	.balign 4, 0
 dword_80BB9EC: .word 0x10010
 	thumb_func_end sub_80BB99C
 
@@ -7577,7 +7609,7 @@ sub_80BBB18:
 	ldr r7, dword_80BBB34 // =0x3 
 	bl sub_80C53A6
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80BBB30: .word 0x6050A01
 dword_80BBB34: .word 0x3
 	thumb_func_end sub_80BBB18
@@ -7623,6 +7655,7 @@ loc_80BBB3C:
 loc_80BBB84:
 	mov r0, r4
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80BBB88: .word dword_80BBB8C
 dword_80BBB8C: .word 0x10
 dword_80BBB90: .word 0xF800000
@@ -7639,7 +7672,7 @@ sub_80BBB98:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BBBAC: .word off_80BBBB0
 off_80BBBB0: .word sub_80BBBBC+1
 	.word sub_80BBC04+1
@@ -7737,6 +7770,7 @@ loc_80BBC72:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BBC7A:
 	pop {pc}
+	.balign 4, 0
 dword_80BBC7C: .word 0x10010
 	thumb_func_end sub_80BBC2C
 
@@ -7847,7 +7881,7 @@ loc_80BBD40:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BBD48:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BBD4C: .word byte_80BBD50
 byte_80BBD50: .byte 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x5, 0x10, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x80, 0xA
@@ -7991,6 +8025,7 @@ sub_80BBE3A:
 	ldr r7, dword_80BBE54 // =0x3 
 	bl sub_80C53A6
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80BBE50: .word 0x15050A01
 dword_80BBE54: .word 0x3
 	thumb_func_end sub_80BBE3A
@@ -8060,7 +8095,7 @@ loc_80BBECE:
 	strb r1, [r5,#oBattleObject_PanelY]
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BBEDC: .word off_80BBEE0
 off_80BBEE0: .word BG2Rotation_ScalingParameterA_dx_
 	.word 0x0
@@ -8083,7 +8118,7 @@ sub_80BBF0C:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80BBF20: .word off_80BBF24
 off_80BBF24: .word sub_80BBF30+1
 	.word sub_80BBF6E+1
@@ -8176,6 +8211,7 @@ loc_80BBFDA:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BBFE2:
 	pop {pc}
+	.balign 4, 0
 dword_80BBFE4: .word 0x10010
 	thumb_func_end sub_80BBF94
 
@@ -8510,6 +8546,7 @@ loc_80BC1FE:
 	mov lr, pc
 	bx r1
 	pop {pc}
+	.balign 4, 0
 off_80BC254: .word off_80BC258
 off_80BC258: .word sub_80BC268+1
 	.word sub_80BC284+1
@@ -8563,7 +8600,7 @@ sub_80BC29C:
 	bx r1
 locret_80BC2B8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BC2BC: .word off_80BC2C0
 off_80BC2C0: .word sub_80BC2C8+1
 	.word sub_80BC30E+1
@@ -8867,6 +8904,7 @@ sub_80BC4B4:
 	bl object_getFrontDirection // () -> int
 	mul r0, r2
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_80BC4DC: .word 0x780000
 dword_80BC4E0: .word 0x10000
 off_80BC4E4: .word byte_810AA3C
@@ -8890,6 +8928,7 @@ sub_80BC4FC:
 	bl object_updateSprite
 locret_80BC512:
 	pop {pc}
+	.balign 4, 0
 off_80BC514: .word off_80BC518
 off_80BC518: .word sub_80BC524+1
 	.word sub_80BC56E+1
@@ -8941,7 +8980,7 @@ sub_80BC56E:
 	strb r0, [r5,#8]
 locret_80BC580:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BC584: .word off_80BC588
 off_80BC588: .word sub_80BC58C+1
 	thumb_func_end sub_80BC56E
@@ -9151,7 +9190,7 @@ loc_80BC718:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	.word 0, 0
-	.byte 0, 0
+	.balign 4, 0
 	.word byte_80BC734
 byte_80BC734: .byte 0x0, 0x0, 0x74, 0xFF, 0x0, 0x0, 0x9C, 0xFF, 0x0, 0x0, 0xC4, 0xFF
 	.byte 0x0, 0x0, 0xEC, 0xFF, 0x0, 0x0, 0x14, 0x0, 0x0, 0x0, 0x3C, 0x0
@@ -9279,6 +9318,7 @@ sub_80BC844:
 	strb r1, [r0,#oObjectHeader_Flags]
 locret_80BC86E:
 	pop {pc}
+	.balign 4, 0
 off_80BC870: .word 0x1A0
 dword_80BC874: .word 0x280000
 dword_80BC878: .word 0x180000
@@ -9299,7 +9339,7 @@ loc_80BC88A:
 	mov lr, pc
 	bx r1
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BC898: .word off_80BC89C
 off_80BC89C: .word sub_80BC8A8+1
 	.word sub_80BC8EC+1
@@ -9582,7 +9622,7 @@ sub_80BCA72:
 	mov lr, pc
 	bx r1
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BCACC: .word off_80BCAD0
 off_80BCAD0: .word sub_80BCAD4+1
 	thumb_func_end sub_80BCA72
@@ -9669,7 +9709,7 @@ sub_80BCB50:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BCB64: .word off_80BCB68
 off_80BCB68: .word sub_80BCB74+1
 	.word sub_80BCC0C+1
@@ -9881,7 +9921,7 @@ sub_80BCCDC:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80BCD0C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80BCD10: .word 0x10018
 	thumb_func_end sub_80BCCDC
 
@@ -9895,7 +9935,7 @@ sub_80BCD14:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BCD28: .word off_80BCD2C
 off_80BCD2C: .word sub_80BCD38+1
 	.word sub_80BCE4C+1
@@ -10023,7 +10063,7 @@ loc_80BCE34:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BCE4C
 	pop {r4,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80BCE40: .word dword_80BCE44
 dword_80BCE44: .word 0xA0AF6F6
 dword_80BCE48: .word 0x1AB
@@ -10048,6 +10088,7 @@ loc_80BCE60:
 	mov lr, pc
 	bx r1
 	pop {pc}
+	.balign 4, 0
 off_80BCE6C: .word off_80BCE74
 off_80BCE70: .word off_80BCE80
 off_80BCE74: .word sub_80BCE90+1
@@ -10314,7 +10355,7 @@ sub_80BD064:
 	bx r1
 	bl sub_80BD374
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BD078: .word off_80BD07C
 off_80BD07C: .word sub_80BD084+1
 	.word sub_80BD0DA+1
@@ -10576,6 +10617,7 @@ loc_80BD22E:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80BD23E:
 	pop {pc}
+	.balign 4, 0
 dword_80BD240: .word 0x10005
 dword_80BD244: .word 0x7FFF
 dword_80BD248: .word 0x10B03
@@ -10601,7 +10643,7 @@ loc_80BD250:
 	cmp r7, #3
 	ble loc_80BD250
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80BD274: .word 0x405FF00
 	thumb_func_end sub_80BD24C
 
@@ -10650,6 +10692,7 @@ loc_80BD2C0:
 	ldr r1, [sp,#4]
 	add sp, sp, #8
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 byte_80BD2CC: .byte 0x0, 0x1, 0x2, 0x6, 0x7, 0x20, 0x8, 0x0
 off_80BD2D4: .word byte_80BD2CC
 	thumb_func_end sub_80BD278
@@ -10751,7 +10794,7 @@ sub_80BD388:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BD39C: .word off_80BD3A0
 off_80BD3A0: .word sub_80BD3AC+1
 	.word sub_80BD478+1
@@ -10842,6 +10885,7 @@ loc_80BD45A:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BD478
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 byte_80BD464: .byte 0x8, 0xB, 0x3D, 0x1, 0xA, 0xA, 0x0, 0x0, 0x88, 0x12, 0x67
 	.byte 0x1, 0xF6, 0xF6, 0x0, 0x0
 off_80BD474: .word byte_80BD464
@@ -10866,6 +10910,7 @@ loc_80BD48C:
 	mov lr, pc
 	bx r1
 	pop {pc}
+	.balign 4, 0
 off_80BD498: .word off_80BD4A0
 off_80BD49C: .word off_80BD4B0
 off_80BD4A0: .word sub_80BD4BC+1
@@ -10887,7 +10932,7 @@ sub_80BD4BC:
 	bx r1
 	bl sub_80BD9D4
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80BD4D0: .word off_80BD4D4
 off_80BD4D4: .word sub_80BD4DC+1
 	.word sub_80BD538+1
@@ -10939,7 +10984,7 @@ loc_80BD518:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BD530:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80BD534: .word 0x7FFF
 	thumb_func_end sub_80BD4DC
 
@@ -11077,7 +11122,7 @@ loc_80BD62C:
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BD638: .word off_80BD63C
 off_80BD63C: .word 0x4000000
 	.word 0x8000000
@@ -11431,7 +11476,7 @@ sub_80BD89C:
 	bx r1
 	bl sub_80BDAE0
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80BD8B0: .word off_80BD8B4
 off_80BD8B4: .word sub_80BD8BC+1
 	.word sub_80BD960+1
@@ -11595,7 +11640,7 @@ sub_80BD9D4:
 	add r0, r0, r1
 	bl sprite_setColorShader
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80BD9E8: .word 0xF800000
 dword_80BD9EC: .word 0x10B11
 dword_80BD9F0: .word 0x405FF04
@@ -11656,7 +11701,7 @@ loc_80BDA5E:
 	ldr r1, [sp,#4]
 	add sp, sp, #0x10
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BDA68: .word 0x4000000
 	.word 0x8000000
 dword_80BDA70: .word 0x205
@@ -11707,7 +11752,7 @@ loc_80BDAAC:
 	bl sub_80E33FA
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80BDAD8: .word 0x8318
 dword_80BDADC: .word 0x101001E
 	thumb_func_end sub_80BDA7C
@@ -11830,7 +11875,7 @@ sub_80BDBA4:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BDBB8: .word off_80BDBBC
 off_80BDBBC: .word sub_80BDBC8+1
 	.word sub_80BDCFC+1
@@ -11975,6 +12020,7 @@ loc_80BDCE2:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BDCFC
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80BDCF0: .word 0x1A0
 dword_80BDCF4: .word 0x1AB
 off_80BDCF8: .word byte_80203EA
@@ -11999,6 +12045,7 @@ loc_80BDD10:
 	mov lr, pc
 	bx r1
 	pop {pc}
+	.balign 4, 0
 off_80BDD1C: .word off_80BDD24
 off_80BDD20: .word off_80BDD34
 off_80BDD24: .word sub_80BDD40+1
@@ -12211,6 +12258,7 @@ loc_80BDEA6:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BDEAE:
 	pop {r4,pc}
+	.balign 4, 0
 dword_80BDEB0: .word 0x10006
 dword_80BDEB4: .word 0x10005
 dword_80BDEB8: .word 0x100000
@@ -12546,6 +12594,7 @@ loc_80BE10A:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BE12A:
 	pop {pc}
+	.balign 4, 0
 dword_80BE12C: .word 0x7800000
 dword_80BE130: .word 0xB800000
 dword_80BE134: .word 0x405FF01
@@ -12955,7 +13004,7 @@ loc_80BE40C:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80BE418:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80BE41C: .word 0x1080B
 dword_80BE420: .word 0x10000
 dword_80BE424: .word 0x1705FF04
@@ -13042,6 +13091,7 @@ loc_80BE4BC:
 	ldr r3, [sp,#8]
 	add sp, sp, #0x18
 	pop {pc}
+	.balign 4, 0
 off_80BE4C8: .word 0x4000000
 	.word 0x8000000
 off_80BE4D0: .word off_80BE4C8
@@ -13095,7 +13145,7 @@ sub_80BE4F8:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BE55C
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BE548: .word off_80BE54C
 off_80BE54C: .word dword_80BE554
 	.word dword_80BE558
@@ -13142,7 +13192,7 @@ loc_80BE5A4:
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BE5BC: .word off_80BE5C0
 off_80BE5C0: .word sub_80BE5CC+1
 	.word sub_80BE648+1
@@ -13390,7 +13440,7 @@ sub_80BE76A:
 	mov r0, #0
 locret_80BE788:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BE78C: .word math_sinTable
 dword_80BE790: .word 0x80110C00
 dword_80BE794: .word 0x10000
@@ -13406,7 +13456,7 @@ sub_80BE798:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BE7AC: .word off_80BE7B0
 off_80BE7B0: .word sub_80BE7BC+1
 	.word sub_80BE834+1
@@ -13461,7 +13511,7 @@ loc_80BE810:
 loc_80BE824:
 	bl sub_80BE834
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BE82C: .word 0x1AC
 off_80BE830: .word byte_80203EA
 	thumb_func_end sub_80BE7BC
@@ -13481,7 +13531,7 @@ loc_80BE842:
 	mov lr, pc
 	bx r1
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80BE850: .word off_80BE854
 off_80BE854: .word sub_80BEA50+1
 	.word sub_80BEC68+1
@@ -13578,7 +13628,7 @@ loc_80BE914:
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_80BE91C: .byte 0x5, 0x0, 0x0, 0x1, 0x0, 0x1, 0x0, 0x2, 0x0, 0x1, 0x2, 0x0, 0x4, 0x1, 0x3, 0x3, 0x0
 	.byte 0x1, 0x0, 0x0, 0x4, 0x1, 0x0, 0x1, 0x0, 0xFF
 byte_80BE936: .byte 0xA, 0x0, 0x0, 0x1, 0x0, 0x6, 0x0, 0x3, 0x0, 0x2, 0x7, 0x0, 0x5, 0x1, 0x4, 0x8, 0x3
@@ -13661,6 +13711,7 @@ loc_80BE9D2:
 	mov r0, #0x10
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 byte_80BE9D8: .byte 0x5, 0x4, 0x0, 0x1, 0x0, 0x1, 0x4, 0x0, 0x1, 0x1, 0x2, 0x4, 0x0, 0x1, 0x3, 0xFF
 	.byte 0x3, 0x4, 0x0, 0x1, 0x3, 0x4, 0x4, 0x0, 0x1, 0x3, 0xFF
 byte_80BE9F3: .byte 0xA, 0x4, 0x0, 0x1, 0x0, 0x6, 0x4, 0x0, 0x1, 0x2, 0x7, 0x4, 0x0, 0x1, 0x4, 0xFF
@@ -13696,6 +13747,7 @@ loc_80BEA3A:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BEA3E:
 	pop {pc}
+	.balign 4, 0
 off_80BEA40: .word byte_80BE91C
 off_80BEA44: .word byte_80BE936
 off_80BEA48: .word byte_80BE9D8
@@ -13809,6 +13861,7 @@ loc_80BEAF4:
 	str r0, [r5,#oBattleObject_X]
 	str r1, [r5,#oBattleObject_Y]
 	pop {pc}
+	.balign 4, 0
 byte_80BEB20: .byte 0x0, 0x55, 0xAA, 0x78, 0xC8, 0x0, 0x0, 0x0
 	thumb_func_end sub_80BEACE
 
@@ -13898,7 +13951,7 @@ loc_80BEBA4:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BEBB4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BEBB8: .word byte_80BEB20
 	thumb_func_end sub_80BEB90
 
@@ -13965,7 +14018,7 @@ loc_80BEC28:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BEC34:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_80BEC38: .byte 0x0, 0x55, 0xAA, 0x78, 0xC8, 0x0, 0x0, 0x0
 	thumb_func_end sub_80BEBD8
 
@@ -14163,6 +14216,7 @@ loc_80BED94:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BEDA6:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 byte_80BEDA8: .byte 0x1, 0xFF, 0x5, 0x4, 0x4, 0xFF, 0x5, 0x4, 0x4, 0xFF, 0x5, 0x4, 0x4, 0xFF
 	.byte 0x5, 0x4, 0x4, 0xFF, 0x5, 0x4, 0x4, 0xFF, 0x5, 0x4
 byte_80BEDC0: .byte 0x18, 0x16, 0x16, 0x16, 0x16, 0x16
@@ -14190,7 +14244,7 @@ loc_80BEDDC:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BEDEC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80BEDF0: .word byte_80BEDC6
 dword_80BEDF4: .word 0x10000
 off_80BEDF8: .word byte_80BEDA8
@@ -14592,7 +14646,7 @@ loc_80BF0DE:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BF0EC:
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 byte_80BF0F0: .byte 0x82, 0xFF, 0x5, 0x4, 0x81, 0xFF, 0x5, 0x4
 	thumb_func_end sub_80BF07A
 
@@ -14763,7 +14817,7 @@ loc_80BF202:
 loc_80BF21E:
 	add sp, sp, #0x28
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BF224: .word 0x4000000
 	.word 0x0
 	.word 0x8000000
@@ -14791,7 +14845,7 @@ sub_80BF260:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BF274: .word off_80BF278
 off_80BF278: .word sub_80BF284+1
 	.word sub_80BF2D0+1
@@ -14827,7 +14881,7 @@ sub_80BF284:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BF2D0
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80BF2CC: .word 0x400000
 	thumb_func_end sub_80BF284
 
@@ -15420,6 +15474,7 @@ loc_80BF6D2:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80BF6DE:
 	pop {pc}
+	.balign 4, 0
 dword_80BF6E0: .word 0xF800010
 dword_80BF6E4: .word 0xA05FF0F
 dword_80BF6E8: .word 0x11E00
@@ -15435,7 +15490,7 @@ sub_80BF6EC:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80BF700: .word off_80BF704
 off_80BF704: .word sub_80BF710+1
 	.word sub_80BF7BC+1
@@ -15510,6 +15565,7 @@ loc_80BF730:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BF7BC
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 byte_80BF7A8: .byte 0x0, 0x0, 0xA0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x88, 0x13, 0x6D, 0x1, 0x0
 	.byte 0x0, 0x0, 0x0
 off_80BF7B8: .word byte_80BF7A8
@@ -15534,6 +15590,7 @@ loc_80BF7D0:
 	mov lr, pc
 	bx r1
 	pop {pc}
+	.balign 4, 0
 off_80BF7DC: .word off_80BF7E4
 off_80BF7E0: .word off_80BF7F4
 off_80BF7E4: .word sub_80BF800+1
@@ -15755,6 +15812,7 @@ loc_80BF966:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BF976:
 	pop {pc}
+	.balign 4, 0
 dword_80BF978: .word 0x10032
 	thumb_func_end sub_80BF94E
 
@@ -15952,6 +16010,7 @@ loc_80BFABE:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BFACE:
 	pop {pc}
+	.balign 4, 0
 dword_80BFAD0: .word 0x640000
 dword_80BFAD4: .word 0xA0000
 	thumb_func_end sub_80BFAAE
@@ -16121,6 +16180,7 @@ loc_80BFC0A:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BFC1A:
 	pop {pc}
+	.balign 4, 0
 dword_80BFC1C: .word 0x10E03
 dword_80BFC20: .word 0x405FF11
 dword_80BFC24: .word 0x11E00
@@ -16304,7 +16364,7 @@ loc_80BFD2C:
 loc_80BFD62:
 	add sp, sp, #0xc
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BFD68: .word byte_80BFD74
 	.word byte_80BFD77
 	.word byte_80BFD7E
@@ -16356,7 +16416,7 @@ sub_80BFD90:
 	bl sub_80E33FA
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80BFDE8: .word 0x141308
 dword_80BFDEC: .word 0x10000
 dword_80BFDF0: .word 0x8108
@@ -16377,6 +16437,7 @@ sub_80BFDFC:
 	bl object_updateSprite
 locret_80BFE12:
 	pop {pc}
+	.balign 4, 0
 off_80BFE14: .word off_80BFE18
 off_80BFE18: .word sub_80BFE24+1
 	.word sub_80BFE6E+1
@@ -16428,7 +16489,7 @@ sub_80BFE6E:
 	strb r0, [r5,#8]
 locret_80BFE80:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80BFE84: .word off_80BFE88
 off_80BFE88: .word sub_80BFE8C+1
 	thumb_func_end sub_80BFE6E
@@ -16633,6 +16694,7 @@ sub_80BFFC0:
 	mov lr, pc
 	bx r1
 	pop {pc}
+	.balign 4, 0
 off_80C0018: .word off_80C001C
 off_80C001C: .word sub_80C0030+1
 	.word sub_80C004C+1
@@ -16837,6 +16899,7 @@ sub_80C0144:
 	ldr r7, dword_80C0168 // =0x1010008 
 	bl sub_80E33FA
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_80C0164: .word 0x83E0
 dword_80C0168: .word 0x1010008
 dword_80C016C: .word 0xA1904
@@ -16923,6 +16986,7 @@ sub_80C01D8:
 	mov lr, pc
 	bx r1
 	pop {pc}
+	.balign 4, 0
 off_80C0230: .word off_80C0234
 off_80C0234: .word sub_80C023C+1
 	.word sub_80C025C+1
@@ -17092,7 +17156,7 @@ sub_80C0334:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C0348: .word off_80C034C
 off_80C034C: .word sub_80C0358+1
 	.word sub_80C03AE+1
@@ -17153,6 +17217,7 @@ loc_80C03BC:
 	bx r1
 locret_80C03C6:
 	pop {pc}
+	.balign 4, 0
 off_80C03C8: .word off_80C03CC
 off_80C03CC: .word sub_80C03D4+1
 	.word sub_80C0404+1
@@ -17396,6 +17461,7 @@ loc_80C0566:
 	bl sprite_setColorShader
 locret_80C057E:
 	pop {pc}
+	.balign 4, 0
 dword_80C0580: .word 0x2108
 	thumb_func_end sub_80C0544
 
@@ -17519,6 +17585,7 @@ sub_80C063C:
 	strh r1, [r0,#0x16]
 locret_80C0652:
 	pop {pc}
+	.balign 4, 0
 off_80C0654: .word math_cosTable
 off_80C0658: .word math_sinTable
 	thumb_func_end sub_80C063C
@@ -17533,7 +17600,7 @@ sub_80C065C:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80C0670: .word off_80C0674
 off_80C0674: .word sub_80C0680+1
 	.word sub_80C06BC+1
@@ -17715,6 +17782,7 @@ sub_80C0790:
 	strb r1, [r0]
 locret_80C07AE:
 	pop {pc}
+	.balign 4, 0
 dword_80C07B0: .word 0x1000000
 off_80C07B4: .word math_cosTable
 off_80C07B8: .word math_sinTable
@@ -17775,6 +17843,7 @@ loc_80C0828:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C0840
 	pop {pc}
+	.balign 4, 0
 dword_80C083C: .word 0x7FFF
 	thumb_func_end sub_80C07DC
 
@@ -17789,7 +17858,7 @@ sub_80C0840:
 	bl object_updateSprite
 	bl sub_80C0DB0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C0858: .word sub_80C0870+1
 	.word sub_80C0912+1
 	.word sub_80C0A4C+1
@@ -18388,7 +18457,7 @@ loc_80C0C70:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C0C7C:
 	pop {r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.word byte_80C0C84
 byte_80C0C84: .byte 0x32, 0x32, 0x32, 0x32, 0x32, 0x0, 0x0, 0x0
 	thumb_func_end sub_80C0C48
@@ -18535,7 +18604,7 @@ loc_80C0D82:
 loc_80C0D86:
 	add sp, sp, #0x34
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C0D8C: .word off_80C0D90
 off_80C0D90: .word 0x4000000
 	.word 0x8000000
@@ -18552,6 +18621,7 @@ sub_80C0D98:
 	mov r7, #3
 	bl sub_80C53A6
 	pop {pc}
+	.balign 4, 0
 dword_80C0DAC: .word 0x4050001
 	thumb_func_end sub_80C0D98
 
@@ -18602,6 +18672,7 @@ sub_80C0DD8:
 	strb r1, [r7]
 locret_80C0DFE:
 	pop {pc}
+	.balign 4, 0
 dword_80C0E00: .word 0xF800000
 	thumb_func_end sub_80C0DD8
 
@@ -18895,7 +18966,7 @@ loc_80C105A:
 	mov lr, pc
 	bx r1
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C1068: .word off_80C106C
 off_80C106C: .word sub_80C1078+1
 	.word sub_80C1094+1
@@ -19081,7 +19152,7 @@ sub_80C1182:
 	mov r0, #0
 locret_80C11A0:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C11A4: .word 0x80110C00
 dword_80C11A8: .word 0x10000
 	thumb_func_end sub_80C1182
@@ -19153,7 +19224,7 @@ sub_80C1204:
 	bx r1
 	bl sub_80169BE
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80C1250: .word off_80C1254
 off_80C1254: .word sub_80C1268+1
 	.word sub_80C12A6+1
@@ -19501,6 +19572,7 @@ sub_80C14B2:
 	add r1, r1, r0
 	str r1, [r5,#oBattleObject_Y]
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80C14E0: .word byte_80C14E4
 byte_80C14E4: .byte 0x1, 0x0, 0x0, 0x0, 0xFF, 0xFF, 0xFF, 0xFF
 	thumb_func_end sub_80C14B2
@@ -19546,6 +19618,7 @@ sub_80C1514:
 	bl SpawnT4BattleObjectWithId0
 locret_80C1532:
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_80C1534: .word 0x2
 	thumb_func_end sub_80C1514
 
@@ -19638,7 +19711,7 @@ sub_80C15EC:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80C1600: .word sub_80C1610+1
 	.word sub_80C16BE+1
 	.word sub_80C17B2+1
@@ -19972,7 +20045,7 @@ sub_80C1820:
 	orr r4, r0
 	bl SpawnT4BattleObjectWithId0
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80C1850: .word byte_80C1854
 byte_80C1854: .byte 0x15, 0x0, 0x0, 0x0, 0x14, 0x0, 0x0, 0x0
 	thumb_func_end sub_80C1820
@@ -19998,6 +20071,7 @@ sub_80C185C:
 	orr r4, r0
 	bl SpawnT4BattleObjectWithId0
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_80C1888: .word 0x60216
 	thumb_func_end sub_80C185C
 
@@ -20015,6 +20089,7 @@ sub_80C188C:
 	ldr r7, dword_80C18AC // =0x3 
 	bl sub_80C53A6
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_80C18A8: .word 0x705FF04
 dword_80C18AC: .word 0x3
 	thumb_func_end sub_80C188C
@@ -20195,6 +20270,7 @@ loc_80C19F8:
 	add sp, sp, #0x24
 	pop {r4-r7,pc}
 	.word 0x0
+	.balign 4, 0
 off_80C1A00: .word off_80C1A04
 off_80C1A04: .word 0x90
 	.word 0x80
@@ -20211,7 +20287,7 @@ sub_80C1A10:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C1A24: .word off_80C1A28
 off_80C1A28: .word sub_80C1A34+1
 	.word sub_80C1A7C+1
@@ -20244,7 +20320,7 @@ sub_80C1A34:
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C1A78: .word 0x1B6
 	thumb_func_end sub_80C1A34
 
@@ -20414,6 +20490,7 @@ loc_80C1BBE:
 	strb r0, [r5,#oBattleObject_Param3]
 locret_80C1BC2:
 	pop {r4,r7,pc}
+	.balign 4, 0
 dword_80C1BC4: .word 0x10C03
 	thumb_func_end sub_80C1B2E
 
@@ -20524,7 +20601,7 @@ loc_80C1C90:
 	bl sub_80C205C
 locret_80C1C98:
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C1C9C: .word 0x10120
 	thumb_func_end sub_80C1BEC
 
@@ -20649,6 +20726,7 @@ loc_80C1D8E:
 	bl sub_80C205C
 locret_80C1D96:
 	pop {r4,r7,pc}
+	.balign 4, 0
 dword_80C1D98: .word 0x10B06
 dword_80C1D9C: .word 0x10005
 	thumb_func_end sub_80C1CC4
@@ -20828,7 +20906,7 @@ sub_80C1ECE:
 	bl object_getPanelsExceptCurrentFiltered
 	strb r0, [r5,#oBattleObject_Param2]
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C1EE8: .word off_80C1EEC
 off_80C1EEC: .word 0x4000000
 	.word 0x8000000
@@ -20922,6 +21000,7 @@ loc_80C1F8E:
 	mov r2, r7
 	add sp, sp, #0xc
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 byte_80C1F94: .byte 0x0, 0xFF, 0x0, 0x1, 0x1, 0x0, 0x0, 0xFF, 0xFF, 0x1, 0x1, 0xFF, 0x0
 	.byte 0xFF, 0x1, 0x1, 0x1, 0x1, 0xFF, 0x0
 byte_80C1FA8: .byte 0x0, 0xFF, 0x0, 0x1, 0x1, 0x0, 0x0, 0xFE, 0x0, 0x1, 0x2, 0x0, 0xFF, 0x0
@@ -20959,7 +21038,7 @@ sub_80C2000:
 	mov r3, #0
 	bl sub_80C53A6
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C2028: .word byte_80C202C
 byte_80C202C: .byte 0x4, 0x6, 0x5, 0x4, 0x2, 0xA, 0x5, 0x6, 0x0, 0x0, 0x0, 0x0, 0x2, 0x6, 0x5, 0x4, 0x4
 	.byte 0x6, 0x5, 0x4
@@ -21009,6 +21088,7 @@ sub_80C2082:
 	lsl r3, r3, #0x10
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,pc}
+	.balign 4, 0
 off_80C20AC: .word dword_80C20B0
 dword_80C20B0: .word 0x393A
 	thumb_func_end sub_80C2082
@@ -21050,7 +21130,7 @@ loc_80C20E4:
 	bl sub_80C53A6
 locret_80C20F8:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C20FC: .word 0x4050501
 dword_80C2100: .word 0x3
 off_80C2104: .word byte_80C2108
@@ -21087,7 +21167,7 @@ sub_80C2138:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C214C: .word off_80C2150
 off_80C2150: .word sub_80C215C+1
 	.word sub_80C21AC+1
@@ -21124,6 +21204,7 @@ sub_80C215C:
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
+	.balign 4, 0
 dword_80C21A8: .word 0x1B7
 	thumb_func_end sub_80C215C
 
@@ -21298,6 +21379,7 @@ loc_80C22F6:
 	strb r0, [r5,#oBattleObject_Param3]
 locret_80C22FA:
 	pop {r4,r7,pc}
+	.balign 4, 0
 dword_80C22FC: .word 0x10121
 	thumb_func_end sub_80C2256
 
@@ -21403,6 +21485,7 @@ loc_80C23BE:
 	bl sub_80C2678
 locret_80C23C6:
 	pop {r4,r7,pc}
+	.balign 4, 0
 dword_80C23C8: .word 0x10D03
 	thumb_func_end sub_80C2324
 
@@ -21508,6 +21591,7 @@ loc_80C248A:
 	bl sub_80C2678
 locret_80C2492:
 	pop {r4,r7,pc}
+	.balign 4, 0
 dword_80C2494: .word 0x10D03
 	thumb_func_end sub_80C23F0
 
@@ -21578,6 +21662,7 @@ sub_80C24F4:
 	bl object_getPanelsExceptCurrentFiltered
 	strb r0, [r5,#oBattleObject_Param2]
 	pop {r7,pc}
+	.balign 4, 0
 off_80C250C: .word off_80C2510
 off_80C2510: .word 0x4000000
 	.word 0x8000000
@@ -21671,6 +21756,7 @@ loc_80C25B2:
 	mov r2, r7
 	add sp, sp, #0xc
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 byte_80C25B8: .byte 0x0, 0xFE, 0x0, 0x1, 0x2, 0x0, 0xFF, 0x0
 byte_80C25C0: .byte 0x0, 0xFF, 0x0, 0x1, 0x1, 0x0
 	.byte 0x0, 0xFE, 0x0, 0x1, 0x2, 0x0, 0xFF, 0x0, 0x0, 0x0
@@ -21714,7 +21800,7 @@ sub_80C2600:
 	mov r3, #0
 	bl sub_80C53A6
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C263C: .word byte_80C2640
 byte_80C2640: .byte 0x1, 0x6, 0x5, 0x4, 0x2, 0x6, 0x5, 0x4, 0x4, 0x6, 0x5, 0x4
 dword_80C264C: .word 0x3
@@ -21838,6 +21924,7 @@ sub_80C2710:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C2770
 	pop {pc}
+	.balign 4, 0
 off_80C2764: .word dword_80C276C
 dword_80C2768: .word 0x7FFF
 dword_80C276C: .word 0x0
@@ -21854,7 +21941,7 @@ sub_80C2770:
 	bl object_updateSpriteTimestop
 	bl sub_80C2A3A
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C2788: .word sub_80C2798+1
 	.word sub_80C2854+1
 	.word sub_80C29FC+1
@@ -22054,6 +22141,7 @@ loc_80C28F6:
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	pop {pc}
+	.balign 4, 0
 off_80C2900: .word off_80C2904
 off_80C2904: .word 0x4000000
 	.word 0x8000000
@@ -22177,7 +22265,7 @@ loc_80C29D8:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80C29E4:
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C29E8: .word 0x705FF04
 off_80C29EC: .word byte_80C29F0
 byte_80C29F0: .byte 0x11, 0xB, 0x1, 0x0, 0x11, 0xB, 0x1, 0x0, 0x11, 0xB, 0x1, 0x0
@@ -22256,7 +22344,7 @@ sub_80C2A4C:
 	strb r1, [r7]
 locret_80C2A70:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C2A74: .word 0xF800000
 	thumb_func_end sub_80C2A4C
 
@@ -22312,6 +22400,7 @@ sub_80C2A9C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C2AF8
 	pop {pc}
+	.balign 4, 0
 dword_80C2AF4: .word 0x7FFF
 	thumb_func_end sub_80C2A9C
 
@@ -22326,7 +22415,7 @@ sub_80C2AF8:
 	bl object_updateSpriteTimestop
 	bl sub_80C2F84
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80C2B10: .word sub_80C2B20+1
 	.word sub_80C2BE6+1
 	.word sub_80C2F40+1
@@ -22742,7 +22831,7 @@ loc_80C2E18:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80C2E24:
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C2E28: .word 0x705FF04
 dword_80C2E2C: .word 0x10B03
 	thumb_func_end sub_80C2D8C
@@ -22879,6 +22968,7 @@ loc_80C2F16:
 	bl object_checkPanelParameters
 locret_80C2F1A:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80C2F1C: .word byte_80C2F20
 byte_80C2F20: .byte 0xFF, 0xFF, 0x2, 0x1, 0xFE, 0x1, 0x0, 0x0
 off_80C2F28: .word off_80C2F2C
@@ -22996,7 +23086,7 @@ loc_80C2FC6:
 	bl sub_80E11E0
 	pop {r4}
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C2FF8: .word 0x10500
 dword_80C2FFC: .word 0x11400
 	thumb_func_end sub_80C2FBC
@@ -23011,7 +23101,7 @@ sub_80C3000:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C3014: .word off_80C3018
 off_80C3018: .word sub_80C3024+1
 	.word sub_80C30C2+1
@@ -23108,7 +23198,7 @@ loc_80C30DE:
 	mov lr, pc
 	bx r1
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.word 0x0
 off_80C30F0: .word off_80C30F4
 off_80C30F4: .word sub_80C3100+1
@@ -23286,7 +23376,7 @@ sub_80C3218:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C322C: .word off_80C3230
 off_80C3230: .word sub_80C323C+1
 	.word sub_80C32B6+1
@@ -23354,6 +23444,7 @@ sub_80C32B6:
 	bx r1
 	bl object_presentCollisionData
 	pop {pc}
+	.balign 4, 0
 off_80C32CC: .word off_80C32D0
 off_80C32D0: .word sub_80C32D8+1
 	.word sub_80C3322+1
@@ -23615,7 +23706,7 @@ loc_80C3494:
 	mov r0, #0
 	str r0, [r5,#oBattleObject_Z]
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C34A4: .word byte_80C34A8
 byte_80C34A8: .byte 0x0, 0x0, 0x1, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -23641,6 +23732,7 @@ sub_80C34B8:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80C34DA:
 	pop {pc}
+	.balign 4, 0
 dword_80C34DC: .word 0x17E
 	thumb_func_end sub_80C34B8
 
@@ -23654,7 +23746,7 @@ sub_80C34E0:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C34F4: .word off_80C34F8
 off_80C34F8: .word sub_80C3504+1
 	.word sub_80C3550+1
@@ -23808,7 +23900,7 @@ loc_80C3616:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80C3624:
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_80C3628: .byte 0x0, 0x0, 0x4, 0x0, 0x55, 0x55, 0x1, 0x0
 	thumb_func_end sub_80C35CE
 
@@ -23850,6 +23942,7 @@ sub_80C364A:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80C366E:
 	pop {pc}
+	.balign 4, 0
 dword_80C3670: .word 0xC0000
 dword_80C3674: .word 0x40000
 	thumb_func_end sub_80C364A
@@ -23925,6 +24018,7 @@ sub_80C36AE:
 	mov r0, #0
 	str r0, [r5,#oBattleObject_YVelocity]
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80C36F8: .word 0xC0000
 dword_80C36FC: .word 0xFFFC0000
 	thumb_func_end sub_80C36AE
@@ -23974,7 +24068,7 @@ sub_80C3734:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C3748: .word off_80C374C
 off_80C374C: .word sub_80C3758+1
 	.word sub_80C37AC+1
@@ -24033,7 +24127,7 @@ loc_80C37BC:
 	mov lr, pc
 	bx r1
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C37CC: .word off_80C37D0
 off_80C37D0: .word sub_80C37EC+1
 	.word sub_80C3816+1
@@ -24242,6 +24336,7 @@ sub_80C390E:
 	strh r0, [r5,#oBattleObject_Y16]
 	pop {pc}
 	.word word_80C3944
+	.balign 4, 0
 dword_80C393C: .word 0x3C0000
 dword_80C3940: .word 0x210000
 word_80C3944: .hword 0x502
@@ -24267,7 +24362,7 @@ sub_80C3946:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80C3968:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C396C: .word 0x40000
 	thumb_func_end sub_80C3946
 
@@ -24281,7 +24376,7 @@ sub_80C3970:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C3984: .word off_80C3988
 off_80C3988: .word sub_80C39BA+1
 	.word sub_80C3A24+1
@@ -24348,7 +24443,7 @@ sub_80C39BA:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C3A24
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80C3A20: .word 0x14011308
 	thumb_func_end sub_80C39BA
 
@@ -24369,7 +24464,7 @@ sub_80C3A24:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C3A40:
 	pop {r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C3A44: .word off_80C3A48
 off_80C3A48: .word sub_80C3A50+1
 	.word sub_80C3A78+1
@@ -24396,7 +24491,7 @@ loc_80C3A60:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80C3A70:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C3A74: .word 0x8000
 	thumb_func_end sub_80C3A50
 
@@ -24568,6 +24663,7 @@ loc_80C3B80:
 	bl sub_80C3CA0
 locret_80C3BA6:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80C3BA8: .word 0x10000
 off_80C3BAC: .word off_80C3BB0
 off_80C3BB0: .word 0x4000000
@@ -24687,6 +24783,7 @@ loc_80C3C6C:
 	ldrb r0, [r5,r0]
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80C3C8C: .word byte_80C3C90
 byte_80C3C90: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -24744,7 +24841,7 @@ sub_80C3CE8:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C3CFC: .word off_80C3D00
 off_80C3D00: .word sub_80C3D32+1
 	.word sub_80C3D9C+1
@@ -24811,7 +24908,7 @@ sub_80C3D32:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C3D9C
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C3D98: .word 0x14011308
 	thumb_func_end sub_80C3D32
 
@@ -24832,7 +24929,7 @@ sub_80C3D9C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C3DB8:
 	pop {r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C3DBC: .word off_80C3DC0
 off_80C3DC0: .word sub_80C3DC8+1
 	.word sub_80C3DDC+1
@@ -25266,7 +25363,7 @@ sub_80C409C:
 	add r0, #1
 	strh r0, [r5,#oBattleObject_Z16]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C40C8: .word 0x10000
 dword_80C40CC: .word 0x80110C00
 dword_80C40D0: .word 0x180000
@@ -25514,7 +25611,7 @@ loc_80C439C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C43C4
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C43BC: .word byte_80C4320
 off_80C43C0: .word off_80C42D4
 	thumb_func_end sub_80C4368
@@ -25608,6 +25705,7 @@ loc_80C4444:
 	mov lr, pc
 	bx r1
 	pop {r4,pc}
+	.balign 4, 0
 off_80C447C: .word off_80C4480
 off_80C4480: .word sub_80C4484+1
 	thumb_func_end sub_80C43C4
@@ -25834,6 +25932,7 @@ loc_80C45B8:
 	mov lr, pc
 	bx r1
 	pop {pc}
+	.balign 4, 0
 off_80C4610: .word off_80C4614
 off_80C4614: .word sub_80C461C+1
 	.word sub_80C464C+1
@@ -25975,6 +26074,7 @@ loc_80C46F0:
 	mov r0, r4
 locret_80C46F2:
 	pop {r4,pc}
+	.balign 4, 0
 dword_80C46F4: .word 0x10000
 dword_80C46F8: .word 0x100800
 	thumb_func_end sub_80C46CC
@@ -26242,7 +26342,7 @@ loc_80C4918:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C492C: .word off_80C4930
 off_80C4930: .word sub_80C493C+1
 	.word sub_80C49E4+1
@@ -26515,7 +26615,7 @@ sub_80C4B18:
 	bl sub_801BC64
 locret_80C4B34:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C4B38: .word off_80C4B3C
 off_80C4B3C: .word sub_80C4B48+1
 	.word sub_80C4B84+1
@@ -26690,6 +26790,7 @@ loc_80C4C74:
 	mov r1, #0xd
 locret_80C4C76:
 	pop {pc}
+	.balign 4, 0
 off_80C4C78: .word 0x504
 	.byte 0x0, 0xFF, 0xFF, 0x0, 0xFF, 0x0, 0x0, 0x0, 0x4, 0x5, 0x3, 0x0, 0x7, 0xFF
 	.byte 0xFF, 0x1, 0xFF, 0x0, 0x0, 0x0, 0x4, 0x5, 0x1, 0x0, 0x0, 0xC, 0x0, 0x1
@@ -26737,7 +26838,7 @@ sub_80C4E58:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C4E6C: .word off_80C4E70
 off_80C4E70: .word sub_80C4E7C+1
 	.word sub_80C4F02+1
@@ -26996,6 +27097,7 @@ sub_80C5050:
 	mov r7, #3
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80C5084: .word off_80C4C78
 dword_80C5088: .word 0x405FF11
 dword_80C508C: .word 0x405FF10
@@ -27016,6 +27118,7 @@ sub_80C5090:
 	str r0, [r5,#oBattleObject_Z]
 locret_80C50A6:
 	pop {pc}
+	.balign 4, 0
 dword_80C50A8: .word 0x10000
 byte_80C50AC: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1
 	thumb_func_end sub_80C5090
@@ -27030,7 +27133,7 @@ sub_80C50B8:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C50CC: .word off_80C50D0
 off_80C50D0: .word sub_80C50DC+1
 	.word sub_80C5116+1
@@ -27206,6 +27309,7 @@ loc_80C5234:
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
+	.balign 4, 0
 off_80C5248: .word byte_80C51A0
 	thumb_func_end sub_80C51CC
 
@@ -27404,7 +27508,7 @@ sub_80C53A6:
 	strb r1, [r0,#oObjectHeader_Flags]
 locret_80C53B8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C53BC: .word 0xC000000
 	thumb_func_end sub_80C53A6
 
@@ -27418,7 +27522,7 @@ sub_80C53C0:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C53D4: .word off_80C53D8
 off_80C53D8: .word sub_80C53FA+1
 	.word sub_80C54E0+1
@@ -27536,6 +27640,7 @@ loc_80C548E:
 loc_80C54CA:
 	bl object_freeMemory
 	pop {r4,r7,pc}
+	.balign 4, 0
 byte_80C54D0: .byte 0x0, 0x0, 0x4, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x14, 0x0
 byte_80C54DC: .byte 0x0, 0x1, 0x1, 0x0
 	thumb_func_end sub_80C53FA
@@ -27564,7 +27669,7 @@ loc_80C54FE:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_highlightPanel
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C5518: .word off_80C551C
 off_80C551C: .word sub_80C552A+1
 loc_80C5520:
@@ -27642,7 +27747,7 @@ sub_80C5590:
 	ldr r1, [r5,#oBattleObject_RelatedObject1Ptr]
 	str r1, [r0,#oBattleObject_RelatedObject1Ptr]
 	pop {r0,r1,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C55A8: .word byte_80C54DC
 off_80C55AC: .word byte_80C54D0
 	thumb_func_end sub_80C5590
@@ -27657,7 +27762,7 @@ sub_80C55B0:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C55C4: .word off_80C55C8
 off_80C55C8: .word sub_80C55E4+1
 	.word sub_80C5654+1
@@ -27759,7 +27864,7 @@ loc_80C5688:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C56A8: .word off_80C56AC
 off_80C56AC: .word sub_80C56B4+1
 	.word sub_80C5760+1
@@ -27902,6 +28007,7 @@ sub_80C579E:
 	str r7, [r0,#oBattleObject_RelatedObject1Ptr]
 locret_80C57BA:
 	pop {pc}
+	.balign 4, 0
 dword_80C57BC: .word 0xFFFFA000
 	thumb_func_end sub_80C579E
 
@@ -27915,7 +28021,7 @@ sub_80C57C0:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C57D4: .word off_80C57D8
 off_80C57D8: .word sub_80C57F4+1
 	.word sub_80C5886+1
@@ -28037,6 +28143,7 @@ loc_80C58C2:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
+	.balign 4, 0
 off_80C58D4: .word off_80C58D8
 off_80C58D8: .word sub_80C58E0+1
 	.word sub_80C59B6+1
@@ -28141,7 +28248,7 @@ loc_80C598E:
 	bl object_highlightPanel
 locret_80C599C:
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 	.word byte_80C59A4
 byte_80C59A4: .byte 0x0, 0xF4, 0x8, 0xF4, 0x8, 0xF8, 0x8, 0xFC, 0x0, 0xFC, 0xF8
 	.byte 0xFC, 0xF8, 0xF8, 0xF8, 0xF4, 0x0, 0xF8
@@ -28220,7 +28327,7 @@ sub_80C5A34:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C5A48: .word off_80C5A4C
 off_80C5A4C: .word sub_80C5A58+1
 	.word sub_80C5AD4+1
@@ -28384,6 +28491,7 @@ sub_80C5B76:
 	str r6, [r0,#0x2c]
 locret_80C5B8E:
 	pop {pc}
+	.balign 4, 0
 dword_80C5B90: .word 0xFFFF0000
 dword_80C5B94: .word 0x1000
 dword_80C5B98: .word 0x3800000
@@ -28402,7 +28510,7 @@ sub_80C5BB0:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C5BC4: .word off_80C5BC8
 off_80C5BC8: .word sub_80C5BD4+1
 	.word sub_80C5C40+1
@@ -28455,6 +28563,7 @@ loc_80C5C1E:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C5C40
 	pop {pc}
+	.balign 4, 0
 off_80C5C3C: .word byte_80C5BA0
 	thumb_func_end sub_80C5BD4
 
@@ -28496,6 +28605,7 @@ loc_80C5C7C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80C5C90: .word off_80C5C94
 off_80C5C94: .word sub_80C5C9C+1
 	.word sub_80C5D84+1
@@ -28593,6 +28703,7 @@ loc_80C5D52:
 	pop {r0}
 	mov r9, r0
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 byte_80C5D58: .byte 0x66, 0xE6, 0x2, 0x0, 0x0, 0xD8, 0xFF, 0xFF, 0x66, 0x6, 0x2
 	.byte 0x0, 0x66, 0xE6, 0x2, 0x0, 0x66, 0xE6, 0x2, 0x0, 0x66, 0xE6
 	.byte 0x2, 0x0
@@ -28664,7 +28775,7 @@ sub_80C5DDC:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80C5DF0: .word off_80C5DF4
 off_80C5DF4: .word sub_80C5E00+1
 	.word sub_80C5E44+1
@@ -28729,6 +28840,7 @@ loc_80C5E6E:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80C5E78: .word off_80C5E7C
 off_80C5E7C: .word sub_80C5E84+1
 	.word sub_80C5F0C+1
@@ -28863,7 +28975,7 @@ sub_80C5F60:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C5F74: .word off_80C5F78
 off_80C5F78: .word sub_80C5F84+1
 	.word sub_80C5FDE+1
@@ -28957,6 +29069,7 @@ sub_80C6018:
 	strb r1, [r0,#oBattleObject_Alliance]
 locret_80C6036:
 	pop {pc}
+	.balign 4, 0
 byte_80C6038: .byte 0x17, 0x5, 0x3, 0x0, 0x0, 0xC, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x0, 0x5, 0x0
 	.byte 0x4, 0x5, 0x3, 0x0, 0x6, 0xC, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x0, 0xA, 0x0
 	.byte 0x4, 0x5, 0x1, 0x2, 0x2, 0xC, 0x2A, 0x3, 0x0, 0x8, 0x0, 0x0, 0x0, 0x0, 0x6, 0x0
@@ -28976,7 +29089,7 @@ sub_80C60A8:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C60BC: .word off_80C60C0
 off_80C60C0: .word sub_80C60CC+1
 	.word sub_80C619C+1
@@ -29196,6 +29309,7 @@ sub_80C6264:
 	strb r1, [r0]
 locret_80C6276:
 	pop {pc}
+	.balign 4, 0
 off_80C6278: .word byte_80C6038
 dword_80C627C: .word 0xFFFEE000
 	thumb_func_end sub_80C6264
@@ -29257,7 +29371,7 @@ loc_80C62E0:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C62E4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C62E8: .word off_80C62EC
 off_80C62EC: .word sub_80C62F8+1
 off_80C62F0: .word dword_80C62F4
@@ -29354,7 +29468,7 @@ loc_80C638E:
 	cmp r6, #9
 	blt loc_80C635C
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C6398: .word byte_80C639C
 byte_80C639C: .byte 0x0, 0x0, 0xFF, 0xFF, 0x0, 0xFF, 0x1, 0xFF, 0xFF, 0x0, 0x1, 0x0
 	.byte 0xFF, 0x1, 0x0, 0x1, 0x1, 0x1
@@ -29410,7 +29524,7 @@ loc_80C63FA:
 	bl object_spawnCollisionRegion
 locret_80C640C:
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80C6410: .word 0x400FF0F
 	thumb_func_end sub_80C63AE
 
@@ -29424,7 +29538,7 @@ sub_80C6414:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C6428: .word off_80C642C
 off_80C642C: .word sub_80C6438+1
 	.word sub_80C647C+1
@@ -29474,7 +29588,7 @@ sub_80C647C:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80C6490: .word off_80C6494
 off_80C6494: .word sub_80C64A0+1
 	.word sub_80C6524+1
@@ -29537,6 +29651,7 @@ loc_80C650A:
 	strb r0, [r5,#oBattleObject_CurAction]
 locret_80C650E:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80C6510: .word byte_80C6514
 byte_80C6514: .byte 0x80, 0x0, 0x88, 0xF, 0x20, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF
 	.byte 0x0, 0x0, 0x0, 0x0
@@ -29584,7 +29699,7 @@ sub_80C6548:
 	str r6, [r0,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 locret_80C6564:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C6568: .word 0x80000
 dword_80C656C: .word 0x1000000
 byte_80C6570: .byte 0x1, 0xFF, 0x5, 0xA, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -29684,7 +29799,7 @@ loc_80C6630:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C6644: .word off_80C6648
 off_80C6648: .word sub_80C6650+1
 	.word sub_80C667C+1
@@ -29833,6 +29948,7 @@ sub_80C673A:
 	bl object_getPanelRegion
 	str r0, [r5,#oBattleObject_ExtraVars]
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80C6760: .word off_80C6764
 off_80C6764: .word 0x4000000
 	.word 0x0
@@ -29914,7 +30030,7 @@ sub_80C67D8:
 	bl sub_801155A
 locret_80C67EC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80C67F0: .word eBattleObjectsLinkedListStart
 off_80C67F4: .word eBattleObjectsLinkedListSentinel
 	thumb_func_end sub_80C67D8
@@ -29929,7 +30045,7 @@ sub_80C67F8:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C680C: .word off_80C6810
 off_80C6810: .word sub_80C681C+1
 	.word sub_80C6854+1
@@ -30008,6 +30124,7 @@ loc_80C689A:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C68A6:
 	pop {pc}
+	.balign 4, 0
 off_80C68A8: .word dword_80C68AC
 dword_80C68AC: .word 0x30101
 	thumb_func_end sub_80C6854
@@ -30030,6 +30147,7 @@ sub_80C68B0:
 	str r5, [r0,#oBattleObject_RelatedObject1Ptr]
 locret_80C68CE:
 	pop {pc}
+	.balign 4, 0
 dword_80C68D0: .word 0xA05FF01
 byte_80C68D4: .byte 0x2, 0x0, 0x21, 0x0, 0xAF, 0x0, 0xD, 0x0, 0x21, 0x0, 0xAF, 0x0, 0x4
 	.byte 0x0, 0x21, 0x0, 0xAF, 0x0, 0xF, 0x0, 0x21, 0x0, 0xAF, 0x0, 0x2, 0x0
@@ -30128,7 +30246,7 @@ loc_80C69D8:
 	mov r0, #8
 	str r0, [r5,#8]
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C69FC: .word off_80C6A00
 off_80C6A00: .word sub_80C6A08+1
 	.word sub_80C6A34+1
@@ -30260,6 +30378,7 @@ sub_80C6ADA:
 	bl sub_801155A
 locret_80C6AEE:
 	pop {pc}
+	.balign 4, 0
 off_80C6AF0: .word byte_80C68D4
 	.word 0, 0
 	.byte 0, 0, 0, 0
@@ -30281,7 +30400,7 @@ sub_80C6B40:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C6B54: .word off_80C6B58
 off_80C6B58: .word sub_80C6B64+1
 	.word sub_80C6C14+1
@@ -30361,6 +30480,7 @@ loc_80C6BE8:
 loc_80C6C0A:
 	bl object_freeMemory
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80C6C10: .word byte_80C6B00
 	thumb_func_end sub_80C6B64
 
@@ -30392,6 +30512,7 @@ loc_80C6C40:
 	bl object_presentCollisionData
 	bl object_highlightCurrentCollisionPanels
 	pop {r7,pc}
+	.balign 4, 0
 off_80C6C54: .word off_80C6C58
 off_80C6C58: .word sub_80C6C6A+1
 	.word sub_80C6CBA+1
@@ -30580,6 +30701,7 @@ loc_80C6DA4:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 locret_80C6DAE:
 	pop {pc}
+	.balign 4, 0
 off_80C6DB0: .word byte_80C6DB8
 off_80C6DB4: .word dword_80C6DC8
 byte_80C6DB8: .byte 0x8, 0x20, 0x7, 0x6, 0x2, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x2
@@ -30604,7 +30726,7 @@ loc_80C6DE4:
 	bl object_updateSpriteTimestop
 locret_80C6DE8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C6DEC: .word off_80C6DF0
 off_80C6DF0: .word sub_80C6DFC+1
 	.word sub_80C6E50+1
@@ -30680,6 +30802,7 @@ loc_80C6E82:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C6E86:
 	pop {pc}
+	.balign 4, 0
 off_80C6E88: .word off_80C6E8C
 off_80C6E8C: .word sub_80C6E90+1
 	thumb_func_end sub_80C6E50
@@ -30782,7 +30905,7 @@ loc_80C6F16:
 	ble loc_80C6F16
 locret_80C6F40:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C6F44: .word byte_80C6F48
 byte_80C6F48: .byte 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x80, 0xA
 	thumb_func_end sub_80C6F08
@@ -30845,6 +30968,7 @@ loc_80C6F8E:
 loc_80C6FBC:
 	add sp, sp, #8
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80C6FC0: .word 0x4050201
 dword_80C6FC4: .word 0x3
 	thumb_func_end sub_80C6F50
@@ -30895,7 +31019,7 @@ loc_80C6FF2:
 loc_80C701E:
 	add sp, sp, #0xc
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C7024: .word byte_80C7028
 byte_80C7028: .byte 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
 	thumb_func_end sub_80C6FC8
@@ -30948,7 +31072,7 @@ sub_80C7074:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C7088: .word off_80C708C
 off_80C708C: .word sub_80C7098+1
 	.word sub_80C70D8+1
@@ -31012,7 +31136,7 @@ loc_80C7100:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C710C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80C7110: .word 0xA05FF01
 	thumb_func_end sub_80C70D8
 
@@ -31077,7 +31201,7 @@ loc_80C717A:
 loc_80C717E:
 	add sp, sp, #0x1c
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C7184: .word off_80C7188
 off_80C7188: .word byte_80C7194
 	.word byte_80C7197
@@ -31155,7 +31279,7 @@ loc_80C7222:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C7240:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C7244: .word byte_80C7248
 byte_80C7248: .byte 0xF, 0x0, 0x14, 0x0, 0x28, 0x0, 0x28, 0x0
 	thumb_func_end sub_80C71C4
@@ -31182,6 +31306,7 @@ loc_80C7268:
 	bl object_presentCollisionData
 	bl object_updateSpritePaused
 	pop {pc}
+	.balign 4, 0
 off_80C7280: .word off_80C7284
 off_80C7284: .word sub_80C72B0+1
 	.word sub_80165B8+1
@@ -31377,7 +31502,7 @@ loc_80C73E6:
 	cmp r4, #3
 	ble loc_80C73C2
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80C73F0: .word 0x405FF01
 dword_80C73F4: .word 0x3
 off_80C73F8: .word off_80C73FC
@@ -31442,6 +31567,7 @@ loc_80C7472:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C7476:
 	pop {pc}
+	.balign 4, 0
 off_80C7478: .word off_80C747C
 off_80C747C: .word sub_80C7484+1
 	.word sub_80C7524+1
@@ -31521,7 +31647,7 @@ loc_80C74D0:
 	bl object_removePanelReserve
 locret_80C7514:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C7518: .word dword_80C751C
 dword_80C751C: .word 0x10
 dword_80C7520: .word 0xF880080
@@ -31649,7 +31775,7 @@ loc_80C75F0:
 loc_80C75F2:
 	add sp, sp, #0x20
 	pop {r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C75F8: .word 0xA000
 off_80C75FC: .word dword_80C7600
 dword_80C7600: .word 0x10
@@ -31724,7 +31850,7 @@ loc_80C768C:
 loc_80C768E:
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C7694: .word byte_80C7698
 byte_80C7698: .byte 0x4, 0x4, 0x4, 0x4, 0x4, 0x5, 0x5, 0x5, 0x4, 0x4, 0x4, 0x5, 0x5, 0x5, 0x5, 0x5, 0x3
 	.byte 0x3, 0x3, 0x3, 0x3, 0x2, 0x2, 0x2, 0x3, 0x3, 0x3, 0x2, 0x2, 0x2, 0x2, 0x2
@@ -31819,6 +31945,7 @@ loc_80C7744:
 loc_80C775C:
 	add sp, sp, #0x28
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80C7760: .word byte_80C7764
 byte_80C7764: .byte 0x4, 0x5, 0x6, 0x3, 0x2, 0x1, 0x0, 0x0
 	thumb_func_end sub_80C76B8
@@ -31890,7 +32017,7 @@ loc_80C77E0:
 loc_80C77E2:
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C77E8: .word byte_80C77EC
 byte_80C77EC: .byte 0x4, 0x4, 0x4, 0x4, 0x4, 0x5, 0x5, 0x5, 0x4, 0x4, 0x4, 0x5, 0x5, 0x5, 0x5, 0x5, 0x3
 	.byte 0x3, 0x3, 0x3, 0x3, 0x2, 0x2, 0x2, 0x3, 0x3, 0x3, 0x2, 0x2, 0x2, 0x2, 0x2
@@ -32002,6 +32129,7 @@ loc_80C78C6:
 loc_80C78CC:
 	add sp, sp, #0x28
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80C78D0: .word byte_80C78D4
 byte_80C78D4: .byte 0x4, 0x5, 0x6, 0x3, 0x2, 0x1, 0x0, 0x0
 	thumb_func_end sub_80C780C
@@ -32130,6 +32258,7 @@ loc_80C79A6:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C79AA:
 	pop {pc}
+	.balign 4, 0
 off_80C79AC: .word off_80C79B0
 off_80C79B0: .word sub_80C79BC+1
 	.word sub_80C7A06+1
@@ -32364,6 +32493,7 @@ loc_80C7B04:
 loc_80C7B48:
 	add sp, sp, #0x18
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80C7B4C: .word byte_80C7B50
 byte_80C7B50: .byte 0x1, 0x2, 0x2, 0x2, 0x3, 0x3, 0x3, 0x3, 0x2, 0x3, 0x3, 0x3, 0x3, 0x3, 0x4, 0x4
 off_80C7B60: .word byte_80C7B64
@@ -32468,7 +32598,7 @@ sub_80C7C18:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C7C2C: .word off_80C7C30
 off_80C7C30: .word sub_80C7C3C+1
 	.word sub_80C7CC0+1
@@ -32564,6 +32694,7 @@ loc_80C7CF4:
 locret_80C7CFC:
 	pop {pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80C7D00: .word off_80C7D04
 off_80C7D04: .word sub_80C7D08+1
 	thumb_func_end sub_80C7CC0
@@ -32740,6 +32871,7 @@ loc_80C7E50:
 	bl object_presentCollisionData
 locret_80C7E62:
 	pop {pc}
+	.balign 4, 0
 off_80C7E64: .word off_80C7E68
 off_80C7E68: .word sub_80C7E6C+1
 	thumb_func_end sub_80C7E24
@@ -32790,6 +32922,7 @@ loc_80C7EBE:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C7EC2:
 	pop {pc}
+	.balign 4, 0
 dword_80C7EC4: .word 0x2000
 	thumb_func_end sub_80C7E6C
 
@@ -32819,6 +32952,7 @@ loc_80C7ECE:
 	mov r0, #0xd9
 	bl PlaySoundEffect
 	pop {pc}
+	.balign 4, 0
 off_80C7EFC: .word dword_80C7F00
 dword_80C7F00: .word 0x8000
 byte_80C7F04: .byte 0x0, 0x80, 0x2, 0x0, 0x0, 0x80, 0xFF, 0xFF, 0x0, 0x0, 0x3, 0x0, 0x0
@@ -32856,7 +32990,7 @@ sub_80C7F40:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C7F54: .word off_80C7F58
 off_80C7F58: .word sub_80C7F64+1
 	.word sub_80C7FDC+1
@@ -32948,6 +33082,7 @@ loc_80C801A:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8022:
 	pop {pc}
+	.balign 4, 0
 off_80C8024: .word off_80C8028
 off_80C8028: .word sub_80C802C+1
 	thumb_func_end sub_80C7FDC
@@ -32982,7 +33117,7 @@ loc_80C8050:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8060:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C8064: .word byte_80C8068
 byte_80C8068: .byte 0x48, 0x0, 0x48, 0x0, 0x48, 0x0, 0x48, 0x0
 	thumb_func_end sub_80C802C
@@ -33089,6 +33224,7 @@ loc_80C8130:
 locret_80C8138:
 	pop {pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80C813C: .word off_80C8140
 off_80C8140: .word sub_80C8144+1
 	thumb_func_end sub_80C8100
@@ -33175,7 +33311,7 @@ sub_80C81CC:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80C81E0: .word off_80C81E4
 off_80C81E4: .word sub_80C81F0+1
 	.word sub_80C8232+1
@@ -33235,7 +33371,7 @@ loc_80C8258:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C825C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80C8260: .word off_80C8264
 off_80C8264: .word sub_80C8268+1
 	thumb_func_end sub_80C8232
@@ -33331,6 +33467,7 @@ loc_80C82D4:
 	cmp r4, r0
 	ble loc_80C82D4
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80C8308: .word 0x4050101
 dword_80C830C: .word 0x3
 	thumb_func_end sub_80C82D0
@@ -33423,7 +33560,7 @@ loc_80C83A0:
 	bl object_updateSpriteTimestop
 locret_80C83A4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C83A8: .word off_80C83AC
 off_80C83AC: .word sub_80C83B8+1
 	.word sub_80C8498+1
@@ -33498,6 +33635,7 @@ loc_80C8436:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C844E:
 	pop {pc}
+	.balign 4, 0
 off_80C8450: .word byte_80C8454
 byte_80C8454: .byte 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0xC
 	.byte 0x0, 0x0, 0x0, 0x6, 0x0
@@ -33544,6 +33682,7 @@ loc_80C84CE:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C84D6:
 	pop {pc}
+	.balign 4, 0
 off_80C84D8: .word off_80C84DC
 off_80C84DC: .word sub_80C84E0+1
 	thumb_func_end sub_80C8498
@@ -33616,7 +33755,7 @@ loc_80C8554:
 	bl object_updateSpriteTimestop
 locret_80C8558:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C855C: .word off_80C8560
 off_80C8560: .word sub_80C856C+1
 	.word sub_80C85C0+1
@@ -33683,6 +33822,7 @@ loc_80C85E2:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C85E6:
 	pop {pc}
+	.balign 4, 0
 off_80C85E8: .word off_80C85EC
 off_80C85EC: .word sub_80C85F4+1
 	.word sub_80C8660+1
@@ -33807,7 +33947,7 @@ sub_80C86B0:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80C86D4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 loc_80C86D8:
 	push {lr}
 	ldr r1, off_80C86F8 // =off_80C86FC 
@@ -33824,7 +33964,7 @@ loc_80C86F0:
 	bl object_updateSpriteTimestop
 locret_80C86F4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C86F8: .word off_80C86FC
 off_80C86FC: .word sub_80C8708+1
 	.word sub_80C876C+1
@@ -33908,6 +34048,7 @@ loc_80C87A6:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C87AE:
 	pop {pc}
+	.balign 4, 0
 off_80C87B0: .word off_80C87B4
 off_80C87B4: .word sub_80C87B8+1
 	thumb_func_end sub_80C876C
@@ -33991,7 +34132,7 @@ sub_80C882C:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80C8840: .word off_80C8844
 off_80C8844: .word sub_80C8850+1
 	.word sub_80C8892+1
@@ -34047,7 +34188,7 @@ loc_80C88A8:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C88BC: .word off_80C88C0
 off_80C88C0: .word sub_80C88C8+1
 	.word sub_80C89A4+1
@@ -34154,6 +34295,7 @@ loc_80C8950:
 	bl object_highlightPanel
 locret_80C899A:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80C899C: .word dword_80C89A0
 dword_80C89A0: .word 0x90909770
 	thumb_func_end sub_80C88C8
@@ -34236,6 +34378,7 @@ loc_80C8A28:
 	bl sub_80C8A60
 locret_80C8A32:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80C8A34: .word dword_80C8A5C
 off_80C8A38: .word byte_80C8A3C
 byte_80C8A3C: .byte 0x3, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x3, 0x0, 0xFB
@@ -34277,7 +34420,7 @@ sub_80C8A7A:
 	mov r0, #0x23 
 	strb r0, [r7,#5]
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C8A9C: .word 0xFFFFD000
 dword_80C8AA0: .word 0xA05FF04
 	thumb_func_end sub_80C8A7A
@@ -34292,7 +34435,7 @@ sub_80C8AA4:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C8AB8: .word off_80C8ABC
 off_80C8ABC: .word sub_80C8AC8+1
 	.word sub_80C8B3E+1
@@ -34376,6 +34519,7 @@ loc_80C8B6E:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8B76:
 	pop {pc}
+	.balign 4, 0
 off_80C8B78: .word off_80C8B7C
 off_80C8B7C: .word sub_80C8B80+1
 	thumb_func_end sub_80C8B3E
@@ -34470,7 +34614,7 @@ loc_80C8C2C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8C34:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C8C38: .word byte_80C8C3C
 byte_80C8C3C: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0
 	thumb_func_end sub_80C8B80
@@ -34523,7 +34667,7 @@ loc_80C8C8C:
 	bl object_updateSpriteTimestop
 locret_80C8C90:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C8C94: .word off_80C8C98
 off_80C8C98: .word sub_80C8CA4+1
 	.word sub_80C8D10+1
@@ -34612,6 +34756,7 @@ loc_80C8D4A:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8D52:
 	pop {pc}
+	.balign 4, 0
 off_80C8D54: .word off_80C8D58
 off_80C8D58: .word sub_80C8D64+1
 	.word sub_80C8D8E+1
@@ -34730,7 +34875,7 @@ sub_80C8E08:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C8E1C: .word off_80C8E20
 off_80C8E20: .word sub_80C8E2C+1
 	.word sub_80C8E6E+1
@@ -34790,7 +34935,7 @@ loc_80C8E94:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8E98:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C8E9C: .word off_80C8EA0
 off_80C8EA0: .word sub_80C8EAC+1
 	.word sub_80C8F14+1
@@ -34968,6 +35113,7 @@ loc_80C8FCC:
 	cmp r4, #3
 	blt loc_80C8FA4
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80C8FD4: .word 0x4050101
 dword_80C8FD8: .word 0x3
 	thumb_func_end sub_80C8FA0
@@ -35001,7 +35147,7 @@ sub_80C8FFC:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80C9010: .word off_80C9014
 off_80C9014: .word sub_80C9024+1
 	.word sub_80C9074+1
@@ -35172,7 +35318,7 @@ loc_80C916C:
 loc_80C9176:
 	mov r0, #0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C917C: .word 0x600000
 off_80C9180: .word dword_203CFB0
 	thumb_func_end sub_80C913C
@@ -35205,7 +35351,7 @@ sub_80C91A0:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C91B4: .word off_80C91B8
 off_80C91B8: .word sub_80C91C4+1
 	.word sub_80C91FE+1
@@ -35267,6 +35413,7 @@ loc_80C922A:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C922E:
 	pop {pc}
+	.balign 4, 0
 off_80C9230: .word off_80C9234
 off_80C9234: .word sub_80C9238+1
 	thumb_func_end sub_80C91FE
@@ -35340,7 +35487,7 @@ loc_80C92B8:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C92BC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80C92C0: .word byte_80C92C4
 byte_80C92C4: .byte 0x0, 0x1, 0x2, 0x3, 0x0, 0x3, 0x2, 0x1
 	thumb_func_end sub_80C9238
@@ -35419,7 +35566,7 @@ loc_80C934C:
 	ble loc_80C930C
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C9358: .word 0x4050201
 dword_80C935C: .word 0x3
 	thumb_func_end sub_80C92F4
@@ -35463,7 +35610,7 @@ loc_80C93A0:
 	ble loc_80C9376
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C93AC: .word byte_80C93B0
 byte_80C93B0: .byte 0xFF, 0x0, 0x1, 0x0, 0xFF, 0xFF, 0x1, 0x1, 0x0, 0xFF, 0x0, 0x1, 0x1
 	.byte 0xFF, 0xFF, 0x1
@@ -35481,7 +35628,7 @@ sub_80C93CC:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80C93E0: .word off_80C93E4
 off_80C93E4: .word sub_80C940C+1
 	.word sub_80C94BC+1
@@ -35616,7 +35763,7 @@ loc_80C94F4:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C9500: .word off_80C9504
 off_80C9504: .word sub_80C950C+1
 dword_80C9508: .word 0xFF800000
@@ -35742,7 +35889,7 @@ loc_80C95CC:
 loc_80C95D6:
 	strh r0, [r5,#oBattleObject_Timer]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C95DC: .word 0xAAAB
 dword_80C95E0: .word 0x10000
 dword_80C95E4: .word 0x6666
@@ -35818,6 +35965,7 @@ loc_80C9646:
 	bne loc_80C9644
 locret_80C965A:
 	pop {pc}
+	.balign 4, 0
 off_80C965C: .word 0x4000000
 off_80C9660: .word 0x8000000
 byte_80C9664:
@@ -35846,6 +35994,7 @@ sub_80C96A0: // shield
 	bl object_updateSprite
 locret_80C96B6:
 	pop {pc}
+	.balign 4, 0
 off_80C96B8: .word off_80C96BC
 off_80C96BC: .word sub_80C96C8+1
 	.word sub_80C9726+1
@@ -35928,7 +36077,7 @@ loc_80C974C:
 	strb r0, [r5,#oObjectHeader_Flags]
 locret_80C9764:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C9768: .word off_80C976C
 off_80C976C: .word sub_80C9774+1
 	.word sub_80C97B4+1
@@ -36019,6 +36168,7 @@ sub_80C97E0:
 	strb r1, [r0,#oObjectHeader_Flags]
 locret_80C9802:
 	pop {pc}
+	.balign 4, 0
 off_80C9804: .word byte_80C9664
 dword_80C9808: .word 0x100000
 	thumb_func_end sub_80C97E0
@@ -36060,7 +36210,7 @@ sub_80C9824:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C9838: .word off_80C983C
 off_80C983C: .word sub_80C9848+1
 	.word sub_80C98DC+1
@@ -36127,7 +36277,7 @@ loc_80C98B2:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C98DC
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C98D8: .word byte_80C9818
 	thumb_func_end sub_80C9848
 
@@ -36191,6 +36341,7 @@ loc_80C9946:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
+	.balign 4, 0
 off_80C995C: .word off_80C9960
 off_80C9960: .word sub_80C9964+1
 	thumb_func_end sub_80C98DC
@@ -36486,7 +36637,7 @@ sub_80C9B64:
 	bl sub_80E33FA
 locret_80C9B94:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80C9B98: .word 0x8318
 dword_80C9B9C: .word 0x8
 off_80C9BA0: .word 0x610
@@ -36522,7 +36673,7 @@ sub_80C9BC4:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C9BD8: .word off_80C9BDC
 off_80C9BDC: .word sub_80C9BE8+1
 	.word sub_80C9C5C+1
@@ -36598,7 +36749,7 @@ loc_80C9C7A:
 	bx r1
 	bl object_presentCollisionData
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C9C8C: .word off_80C9C90
 off_80C9C90: .word sub_80C9CA2+1
 	.word sub_80C9CC4+1
@@ -36670,7 +36821,7 @@ sub_80C9D00:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80C9D14: .word off_80C9D18
 off_80C9D18: .word sub_80C9D24+1
 	.word sub_80C9D9E+1
@@ -36748,6 +36899,7 @@ loc_80C9DB8:
 	pop {r7,pc}
 	.word 0
 	.byte 0, 0, 0, 0
+	.balign 4, 0
 off_80C9DD0: .word off_80C9DD4
 off_80C9DD4: .word sub_80C9DE0+1
 	.word sub_80C9E20+1
@@ -36839,6 +36991,7 @@ loc_80C9E72:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80C9E7E:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80C9E80: .word dword_80C9E84
 dword_80C9E84: .word 0x20181008
 	thumb_func_end sub_80C9E20
@@ -36964,6 +37117,7 @@ loc_80C9F54:
 	eor r0, r1
 	pop {r4,r6,r7,pc}
 	.word 0x0
+	.balign 4, 0
 off_80C9F60: .word off_80C9F64
 off_80C9F64: .word 0x4000000
 	.word 0x0
@@ -37074,6 +37228,7 @@ loc_80CA046:
 loc_80CA05A:
 	bl object_freeMemory
 	pop {pc}
+	.balign 4, 0
 off_80CA060: .word byte_80CA064
 byte_80CA064: .byte 0x1, 0x4, 0x0, 0x4, 0x3, 0x4, 0x3, 0x4, 0x4, 0x4, 0x2, 0x4, 0x5, 0x4, 0x0, 0x0
 	thumb_func_end sub_80C9F98
@@ -37200,7 +37355,7 @@ loc_80CA12A:
 loc_80CA152:
 	add sp, sp, #0x1c
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CA158: .word byte_80CA170
 off_80CA15C: .word off_80CA160
 off_80CA160: .word byte_80CA180
@@ -37260,6 +37415,7 @@ loc_80CA1C4:
 loc_80CA1EC:
 	add sp, sp, #0x1c
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80CA1F0: .word byte_80CA208
 off_80CA1F4: .word off_80CA1F8
 off_80CA1F8: .word byte_80CA218
@@ -37293,7 +37449,7 @@ loc_80CA250:
 	ldrb r0, [r1,#2]
 	ldrb r1, [r1,#1]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CA258: .word byte_80CA25C
 byte_80CA25C: .byte 0x8
 byte_80CA25D: .byte 0x21
@@ -37316,7 +37472,7 @@ sub_80CA2A8:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CA2BC: .word off_80CA2C0
 off_80CA2C0: .word sub_80CA2D4+1
 	.word sub_80CA3A0+1
@@ -37423,7 +37579,7 @@ loc_80CA374:
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CA39C: .word byte_80CA26C
 	thumb_func_end sub_80CA2D4
 
@@ -37471,6 +37627,7 @@ loc_80CA3F6:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
+	.balign 4, 0
 off_80CA400: .word off_80CA404
 off_80CA404: .word sub_80CA408+1
 	thumb_func_end sub_80CA3A0
@@ -37563,6 +37720,7 @@ loc_80CA49E:
 	bl sub_80CA510
 locret_80CA4AE:
 	pop {r4,pc}
+	.balign 4, 0
 off_80CA4B0: .word byte_80CA4B4
 byte_80CA4B4: .byte 0x0, 0x0, 0x9C, 0xFF, 0x0, 0x0, 0xC4, 0xFF, 0x0, 0x0, 0xEC, 0xFF
 off_80CA4C0: .word byte_80CA4C4
@@ -37631,6 +37789,7 @@ sub_80CA510:
 	bl object_setPanelType
 locret_80CA53E:
 	pop {pc}
+	.balign 4, 0
 dword_80CA540: .word 0xFF800000
 	thumb_func_end sub_80CA510
 
@@ -37644,7 +37803,7 @@ sub_80CA544:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CA558: .word off_80CA55C
 off_80CA55C: .word sub_80CA568+1
 	.word sub_80CA61A+1
@@ -37808,6 +37967,7 @@ sub_80CA69C:
 	strb r1, [r0]
 locret_80CA6AE:
 	pop {pc}
+	.balign 4, 0
 dword_80CA6B0: .word 0xF880080
 dword_80CA6B4: .word 0x80000
 	thumb_func_end sub_80CA69C
@@ -37921,6 +38081,7 @@ loc_80CA77C:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CA7AC
 	pop {r4,pc}
+	.balign 4, 0
 off_80CA79C: .word byte_80CA7A0
 byte_80CA7A0: .byte 0x0, 0x0, 0x6, 0x0, 0x0, 0x0, 0x7, 0x0, 0x0, 0x0, 0x8, 0x0
 	thumb_func_end sub_80CA6D8
@@ -37980,7 +38141,7 @@ loc_80CA806:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CA824: .word off_80CA828
 off_80CA828: .word sub_80CA834+1
 	.word sub_80CA88E+1
@@ -38116,6 +38277,7 @@ sub_80CA90E:
 	bl sub_801155A
 locret_80CA922:
 	pop {pc}
+	.balign 4, 0
 dword_80CA924: .word 0x103041B
 dword_80CA928: .word 0x6050300
 dword_80CA92C: .word 0x6050100
@@ -38133,7 +38295,7 @@ sub_80CA938:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CA94C: .word off_80CA950
 off_80CA950: .word sub_80CA95C+1
 	.word sub_80CA9CA+1
@@ -38229,7 +38391,7 @@ loc_80CAA14:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CAA20: .word off_80CAA24
 off_80CAA24: .word sub_80CAA2C+1
 	.word sub_80CAB14+1
@@ -38340,7 +38502,7 @@ loc_80CAAE2:
 	bl object_updateCollisionPanels
 locret_80CAB08:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CAB0C: .word dword_80CAB10
 dword_80CAB10: .word 0x40101
 	thumb_func_end sub_80CAA2C
@@ -38392,6 +38554,7 @@ sub_80CAB44:
 	pop {r1-r3}
 	bl sub_80CAB28
 	pop {pc}
+	.balign 4, 0
 dword_80CAB64: .word 0xFFFFD000
 	thumb_func_end sub_80CAB44
 
@@ -38446,7 +38609,7 @@ loc_80CABBC:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CABC0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CABC4: .word off_80CABC8
 off_80CABC8: .word sub_80CABD0+1
 	.word sub_80CAC00+1
@@ -38476,6 +38639,7 @@ loc_80CABE6:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80CABF6:
 	pop {pc}
+	.balign 4, 0
 off_80CABF8: .word dword_80CABFC
 dword_80CABFC: .word 0x30303C50
 	thumb_func_end sub_80CABD0
@@ -38511,6 +38675,7 @@ loc_80CAC22:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80CAC3A:
 	pop {pc}
+	.balign 4, 0
 off_80CAC3C: .word dword_80CAC40
 dword_80CAC40: .word 0x6060C0C
 	thumb_func_end sub_80CAC00
@@ -38617,7 +38782,7 @@ loc_80CACF6:
 	mov r1, r6
 	add sp, sp, #0x1c
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80CAD00: .word byte_80CAD04
 byte_80CAD04: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -38647,7 +38812,7 @@ sub_80CAD28:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CAD3C: .word off_80CAD40
 off_80CAD40: .word sub_80CAD4C+1
 	.word sub_80CADE0+1
@@ -38705,6 +38870,7 @@ loc_80CADAA:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CADC6:
 	pop {pc}
+	.balign 4, 0
 off_80CADC8: .word byte_80CADCC
 byte_80CADCC: .byte 0x0, 0xA0, 0x5, 0x0, 0x0, 0xA0, 0x6, 0x0, 0x0, 0x50, 0x7, 0x0, 0x0, 0x0
 	.byte 0x9, 0x0
@@ -38739,7 +38905,7 @@ loc_80CAE10:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CAE18:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CAE1C: .word off_80CAE20
 off_80CAE20: .word sub_80CAE28+1
 	.word sub_80CAE94+1
@@ -38867,7 +39033,7 @@ sub_80CAEF0:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CAF04: .word off_80CAF08
 off_80CAF08: .word sub_80CAF14+1
 	.word sub_80CAF9C+1
@@ -38915,6 +39081,7 @@ sub_80CAF14:
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
+	.balign 4, 0
 off_80CAF74: .word byte_80CAF78
 byte_80CAF78: .byte 0x23, 0x0, 0x0, 0x0, 0x23, 0x0, 0x0, 0x0, 0x23, 0x0, 0x0, 0x0, 0x23
 	.byte 0x0, 0x0, 0x0
@@ -38942,7 +39109,7 @@ loc_80CAFB8:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CAFBC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80CAFC0: .word off_80CAFC4
 off_80CAFC4: .word sub_80CAFC8+1
 	thumb_func_end sub_80CAF9C
@@ -39028,7 +39195,7 @@ loc_80CB046:
 	bl object_setPanelsFromCoordinates
 locret_80CB068:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CB06C: .word byte_80CB070
 byte_80CB070: .byte 0x10, 0x0, 0x80, 0x15, 0x10, 0x0, 0x80, 0x2A
 	thumb_func_end sub_80CAFC8
@@ -39084,6 +39251,7 @@ sub_80CB0AE:
 	strh r1, [r0,#oBattleObject_Timer]
 locret_80CB0CA:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80CB0CC: .word 0x4050101
 dword_80CB0D0: .word 0x3
 dword_80CB0D4: .word 0x140000
@@ -39107,7 +39275,7 @@ loc_80CB0F4:
 	bl object_updateSpriteTimestop
 locret_80CB0F8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CB0FC: .word off_80CB100
 off_80CB100: .word sub_80CB10C+1
 	.word sub_80CB154+1
@@ -39168,6 +39336,7 @@ loc_80CB176:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CB17A:
 	pop {pc}
+	.balign 4, 0
 off_80CB17C: .word off_80CB180
 off_80CB180: .word sub_80CB184+1
 	thumb_func_end sub_80CB154
@@ -39276,6 +39445,7 @@ sub_80CB208:
 	strh r6, [r0,#oBattleObject_Timer]
 locret_80CB23E:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80CB240: .word 0xA050201
 dword_80CB244: .word 0x3
 	thumb_func_end sub_80CB208
@@ -39320,7 +39490,7 @@ sub_80CB284:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CB298: .word off_80CB29C
 off_80CB29C: .word sub_80CB2A8+1
 	.word sub_80CB368+1
@@ -39392,6 +39562,7 @@ loc_80CB2F2:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CB33E:
 	pop {pc}
+	.balign 4, 0
 off_80CB340: .word byte_80CB344
 byte_80CB344: .byte 0x0, 0x0, 0x4, 0x0, 0x0, 0x0, 0x5, 0x0, 0x0, 0x0, 0x5, 0x0, 0x0, 0x0, 0x6, 0x0
 off_80CB354: .word off_80CB358
@@ -39423,6 +39594,7 @@ loc_80CB392:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CB396:
 	pop {pc}
+	.balign 4, 0
 off_80CB398: .word off_80CB39C
 off_80CB39C: .word sub_80CB3A0+1
 	thumb_func_end sub_80CB368
@@ -39559,7 +39731,7 @@ sub_80CB45C:
 	add r1, r1, r0
 	str r1, [r5,#oBattleObject_Y]
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CB494: .word math_cosTable
 off_80CB498: .word math_sinTable
 	thumb_func_end sub_80CB45C
@@ -39574,7 +39746,7 @@ sub_80CB49C:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80CB4B0: .word off_80CB4B4
 off_80CB4B4: .word sub_80CB4D4+1
 	.word sub_80CB5B4+1
@@ -39673,6 +39845,7 @@ loc_80CB574:
 	mov r0, #0xa7
 	bl PlaySoundEffect
 	pop {r7,pc}
+	.balign 4, 0
 off_80CB588: .word byte_80CB58C
 byte_80CB58C: .byte 0x0, 0x0, 0x3, 0x0, 0x0, 0x80, 0x3, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x0, 0x6, 0x0
 	.byte 0x0, 0x80, 0x6, 0x0, 0x0, 0x0, 0x7, 0x0, 0x0, 0x0, 0x6, 0x0, 0x0, 0x80, 0x6, 0x0
@@ -39729,6 +39902,7 @@ loc_80CB614:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80CB620: .word off_80CB624
 off_80CB624: .word sub_80CB628+1
 	thumb_func_end sub_80CB5B4
@@ -39840,7 +40014,7 @@ sub_80CB6CA:
 	mov r7, #0x14
 	bl sub_80E33FA
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80CB6E8: .word 0x10010
 dword_80CB6EC: .word 0xC3FF
 byte_80CB6F0: .byte 0x4, 0x5, 0x4B, 0x4, 0x5, 0x63, 0x0, 0x0
@@ -39856,7 +40030,7 @@ sub_80CB6F8:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CB70C: .word off_80CB710
 off_80CB710: .word sub_80CB71C+1
 	.word sub_80CB762+1
@@ -39931,7 +40105,7 @@ loc_80CB7A4:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CB7B0: .word off_80CB7B4
 off_80CB7B4: .word sub_80CB7BC+1
 	.word sub_80CB898+1
@@ -40035,6 +40209,7 @@ loc_80CB866:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80CB892:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80CB894: .word 0xA05FF04
 	thumb_func_end sub_80CB7BC
 
@@ -40095,6 +40270,7 @@ sub_80CB8DE:
 	strh r3, [r0,#oBattleObject_AllianceAndDirectionFlip]
 locret_80CB8FA:
 	pop {pc}
+	.balign 4, 0
 off_80CB8FC: .word byte_80CB6F0
 	thumb_func_end sub_80CB8DE
 
@@ -40108,7 +40284,7 @@ sub_80CB900:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CB914: .word off_80CB918
 off_80CB918: .word sub_80CB964+1
 	.word sub_80CB9E2+1
@@ -40239,6 +40415,7 @@ loc_80CBA1E:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80CBA28: .word off_80CBA2C
 off_80CBA2C: .word sub_80CBA34+1
 	.word sub_80CBA52+1
@@ -40389,6 +40566,7 @@ loc_80CBB30:
 	str r2, [r5,#oBattleObject_ExtraVars+4]
 locret_80CBB32:
 	pop {pc}
+	.balign 4, 0
 dword_80CBB34: .word 0x1021025
 dword_80CBB38: .word 0xC0D0000
 dword_80CBB3C: .word 0x280000
@@ -40549,6 +40727,7 @@ loc_80CBC78:
 	bl object_updateSprite
 	bl object_presentCollisionData
 	pop {pc}
+	.balign 4, 0
 off_80CBC88: .word off_80CBC8C
 off_80CBC8C: .word sub_80CBCB0+1
 	.word sub_80165B8+1
@@ -40701,6 +40880,7 @@ loc_80CBDC2:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80CBDD4: .word byte_80CBDD8
 byte_80CBDD8: .byte 0x82, 0xFF, 0x5, 0x4, 0x81, 0xFF, 0x5, 0x4
 off_80CBDE0: .word byte_80CBDE4
@@ -41005,6 +41185,7 @@ sub_80CC006:
 	strb r1, [r5,#oBattleObject_Param2]
 locret_80CC01E:
 	pop {pc}
+	.balign 4, 0
 off_80CC020: .word byte_80CC024
 byte_80CC024: .byte 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0xB
 dword_80CC02C: .word 0x10
@@ -41087,6 +41268,7 @@ sub_80CC0B2:
 	bl sub_801155A
 locret_80CC0C6:
 	pop {pc}
+	.balign 4, 0
 dword_80CC0C8: .word 0x3205FF01
 dword_80CC0CC: .word 0x4200
 byte_80CC0D0: .byte 0x5, 0x0, 0x5, 0x0, 0x5, 0x0, 0x5, 0x0
@@ -41105,7 +41287,7 @@ sub_80CC0E8:
 	bl sub_80169BE
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80CC100: .word off_80CC104
 off_80CC104: .word sub_80CC110+1
 	.word sub_80CC1A0+1
@@ -41211,7 +41393,7 @@ loc_80CC1E0:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CC1E8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CC1EC: .word off_80CC1F0
 off_80CC1F0: .word sub_80CC208+1
 	.word sub_80CC23E+1
@@ -41359,7 +41541,7 @@ loc_80CC2C6:
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CC30C: .word byte_80CC310
 byte_80CC310: .byte 0x0, 0x0, 0x7, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x9, 0x0, 0x0, 0x0, 0xA, 0x0
 loc_80CC320:
@@ -41595,7 +41777,7 @@ sub_80CC486:
 	pop {r5}
 locret_80CC4B8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CC4BC: .word byte_80CC0D8
 off_80CC4C0: .word byte_80CC0D0
 	thumb_func_end sub_80CC486
@@ -41611,7 +41793,7 @@ sub_80CC4C4:
 	bl sub_80169BE
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CC4DC: .word off_80CC4E0
 off_80CC4E0: .word sub_80CC4EC+1
 	.word sub_80CC562+1
@@ -41788,7 +41970,7 @@ loc_80CC624:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CC668
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CC658: .word byte_80CC65C
 byte_80CC65C: .byte 0x0, 0x80, 0x1, 0x0, 0x0, 0x40, 0x2, 0x0, 0x0, 0x0, 0x3, 0x0
 	thumb_func_end sub_80CC5C8
@@ -41849,6 +42031,7 @@ loc_80CC6C2:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80CC6E0: .word off_80CC6E4
 off_80CC6E4: .word sub_80CC6E8+1
 	thumb_func_end sub_80CC668
@@ -41909,7 +42092,7 @@ sub_80CC73C:
 	bl sub_801155A
 locret_80CC750:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80CC754: .word 0x100040F
 dword_80CC758: .word 0x4050000
 dword_80CC75C: .word 0x800000
@@ -41927,7 +42110,7 @@ sub_80CC76C:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80CC780: .word off_80CC784
 off_80CC784: .word sub_80CC790+1
 	.word sub_80CC800+1
@@ -42019,6 +42202,7 @@ loc_80CC842:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80CC84A:
 	pop {pc}
+	.balign 4, 0
 off_80CC84C: .word off_80CC850
 off_80CC850: .word sub_80CC868+1
 	.word sub_80CC892+1
@@ -42114,6 +42298,7 @@ loc_80CC8E0:
 	b locret_80CC902
 locret_80CC902:
 	pop {r4,pc}
+	.balign 4, 0
 off_80CC904: .word byte_80CC908
 byte_80CC908: .byte 0x0, 0x0, 0x5, 0x0, 0x0, 0x0, 0x6, 0x0, 0x0, 0x0, 0x6, 0x0, 0x0, 0x0, 0x7, 0x0
 	thumb_func_end sub_80CC8BA
@@ -42140,6 +42325,7 @@ sub_80CC918:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80CC93E:
 	pop {pc}
+	.balign 4, 0
 off_80CC940: .word byte_80CC764
 	thumb_func_end sub_80CC918
 
@@ -42227,7 +42413,7 @@ loc_80CC9E4:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CC9EC:
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80CC9F0: .word byte_80CC9F4
 byte_80CC9F4: .byte 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x80, 0xA
 	thumb_func_end sub_80CC9AA
@@ -42320,7 +42506,7 @@ sub_80CCA60:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CCAB8
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80CCAB0: .word 0x80000
 dword_80CCAB4: .word 0x1000000
 	thumb_func_end sub_80CCA60
@@ -42345,7 +42531,7 @@ loc_80CCAD2:
 	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80CCAE0: .word off_80CCAE4
 off_80CCAE4: .word sub_80CCAF4+1
 	.word sub_80CCBD0+1
@@ -42437,7 +42623,7 @@ loc_80CCB84:
 	strb r0, [r1]
 	bl object_freeMemory
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CCBA4: .word byte_80CCBB0
 dword_80CCBA8: .word 0xA050201
 off_80CCBAC: .word byte_80CCBC0
@@ -42577,7 +42763,7 @@ loc_80CCCA8:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CCCBC
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80CCCB4: .word 0x80000
 dword_80CCCB8: .word 0xC00000
 	thumb_func_end sub_80CCC68
@@ -42592,7 +42778,7 @@ sub_80CCCBC:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80CCCD0: .word off_80CCCD4
 off_80CCCD4: .word sub_80CCCE0+1
 	.word sub_80CCD24+1
@@ -42634,6 +42820,7 @@ loc_80CCD1A:
 	strb r0, [r5,#oBattleObject_CurAction]
 locret_80CCD1E:
 	pop {pc}
+	.balign 4, 0
 dword_80CCD20: .word 0x1905FF01
 	thumb_func_end sub_80CCCE0
 
@@ -42700,7 +42887,7 @@ sub_80CCD70:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CCD84: .word off_80CCD88
 off_80CCD88: .word sub_80CCD94+1
 	.word sub_80CCDFC+1
@@ -42785,7 +42972,7 @@ loc_80CCE38:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80CCE40:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CCE44: .word off_80CCE48
 off_80CCE48: .word sub_80CCE64+1
 	.word sub_80CCEAC+1
@@ -42936,6 +43123,7 @@ loc_80CCF54:
 	beq locret_80CCF66
 locret_80CCF66:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80CCF68: .word byte_80CCF6C
 byte_80CCF6C: .byte 0x0, 0x80, 0x1, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x80, 0x2, 0x0, 0x0, 0x0, 0x3
 	.byte 0x0
@@ -42988,6 +43176,7 @@ sub_80CCFAC:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80CCFD2:
 	pop {pc}
+	.balign 4, 0
 byte_80CCFD4: .byte 0x1, 0x0, 0x28, 0x0, 0x1, 0x1, 0x28, 0x0
 	thumb_func_end sub_80CCFAC
 
@@ -43064,6 +43253,7 @@ loc_80CD06C:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CD08C
 	pop {r7,pc}
+	.balign 4, 0
 off_80CD084: .word 0x5A0
 off_80CD088: .word byte_80CCFD4
 	thumb_func_end sub_80CCFFC
@@ -43083,7 +43273,7 @@ sub_80CD08C:
 	bl object_updateSprite
 	bl object_presentCollisionData
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CD0B4: .word off_80CD0B8
 off_80CD0B8: .word sub_80CD0E0+1
 	.word sub_80165B8+1
@@ -43346,6 +43536,7 @@ sub_80CD26C:
 	mov r0, #0
 locret_80CD29E:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80CD2A0: .word byte_80CD2A4
 byte_80CD2A4: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -43374,6 +43565,7 @@ sub_80CD2B4:
 	bl setFieldBattleObject_800F614
 locret_80CD2DE:
 	pop {pc}
+	.balign 4, 0
 dword_80CD2E0: .word 0x8000
 dword_80CD2E4: .word 0x300000
 dword_80CD2E8: .word 0x800000
@@ -43389,7 +43581,7 @@ sub_80CD2EC:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80CD300: .word off_80CD304
 off_80CD304: .word sub_80CD310+1
 	.word sub_80CD3B0+1
@@ -43464,6 +43656,7 @@ loc_80CD392:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CD3B0
 	pop {pc}
+	.balign 4, 0
 dword_80CD3AC: .word 0xA0000
 	thumb_func_end sub_80CD310
 
@@ -43515,7 +43708,7 @@ loc_80CD3F4:
 loc_80CD404:
 	bl object_presentCollisionData
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CD40C: .word off_80CD410
 off_80CD410: .word sub_80CD414+1
 	thumb_func_end sub_80CD3B0
@@ -43568,7 +43761,7 @@ loc_80CD46C:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CD474: .word byte_80CD478
 byte_80CD478: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -43626,7 +43819,7 @@ loc_80CD4C0:
 	mov r0, #0xad
 	bl PlaySoundEffect
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80CD4E8: .word 0x800000
 	thumb_func_end sub_80CD4AC
 
@@ -43742,6 +43935,7 @@ loc_80CD5CE:
 	bl sub_800F656
 	bl object_genericDestroy
 	pop {pc}
+	.balign 4, 0
 dword_80CD5EC: .word 0x2C000
 dword_80CD5F0: .word 0xFFFFD800
 dword_80CD5F4: .word 0x1770
@@ -43767,6 +43961,7 @@ loc_80CD618:
 	bl object_updateSprite
 	bl object_presentCollisionData
 	pop {pc}
+	.balign 4, 0
 off_80CD628: .word off_80CD62C
 off_80CD62C: .word sub_80CD654+1
 	.word sub_80165B8+1
@@ -43856,7 +44051,7 @@ loc_80CD6D4:
 	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80CD6F8: .word 0xFFFFD800
 	thumb_func_end sub_80CD654
 
@@ -44012,7 +44207,7 @@ sub_80CD7D0:
 	bl PlaySoundEffect
 locret_80CD820:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CD824: .word byte_80CD828
 byte_80CD828: .byte 0x82, 0xFF, 0x5, 0x4, 0x81, 0xFF, 0x5, 0x4
 	thumb_func_end sub_80CD7D0
@@ -44213,6 +44408,7 @@ loc_80CD9DC:
 	bl object_updateSprite
 	bl object_presentCollisionData
 	pop {pc}
+	.balign 4, 0
 off_80CD9F0: .word off_80CD9F4
 off_80CD9F4: .word sub_80CDA1C+1
 	.word sub_80165B8+1
@@ -44299,6 +44495,7 @@ loc_80CDAA0:
 	strh r0, [r5,#oBattleObject_Timer]
 locret_80CDAB2:
 	pop {pc}
+	.balign 4, 0
 dword_80CDAB4: .word 0x10010
 dword_80CDAB8: .word 0xF880080
 dword_80CDABC: .word 0x10010
@@ -44349,6 +44546,7 @@ loc_80CDB0A:
 	strb r0, [r5,#oBattleObject_CurPhase]
 locret_80CDB26:
 	pop {pc}
+	.balign 4, 0
 dword_80CDB28: .word 0x34000000
 	thumb_func_end sub_80CDAFC
 
@@ -44369,6 +44567,7 @@ sub_80CDB2C:
 	strb r0, [r5,#oBattleObject_CurPhase]
 locret_80CDB4A:
 	pop {pc}
+	.balign 4, 0
 dword_80CDB4C: .word 0x2C000000
 	thumb_func_end sub_80CDB2C
 
@@ -44395,7 +44594,7 @@ loc_80CDB74:
 	strb r0, [r5,#oBattleObject_CurPhase]
 locret_80CDB78:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80CDB7C: .word 0x1C000000
 	thumb_func_end sub_80CDB50
 
@@ -44617,7 +44816,7 @@ sub_80CDCBC:
 	pop {r5}
 locret_80CDD28:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CDD2C: .word byte_80CDD30
 byte_80CDD30: .byte 0x82, 0xFF, 0x5, 0x4, 0x81, 0xFF, 0x5, 0x4
 dword_80CDD38: .word 0x8000
@@ -44705,6 +44904,7 @@ loc_80CDDDC:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CDDFC
 	pop {pc}
+	.balign 4, 0
 dword_80CDDF8: .word 0x1770
 	thumb_func_end sub_80CDD64
 
@@ -44722,6 +44922,7 @@ sub_80CDDFC:
 	bl object_presentCollisionData
 	bl object_updateSprite
 	pop {pc}
+	.balign 4, 0
 off_80CDE1C: .word off_80CDE20
 off_80CDE20: .word sub_80CDE68+1
 	.word sub_80165B8+1
@@ -44872,7 +45073,7 @@ sub_80CDF18:
 loc_80CDF46:
 	mov r0, #0
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CDF4C: .word byte_80CDF50
 byte_80CDF50: .byte 0x30, 0x0, 0x0, 0x0, 0x80, 0x0, 0x8C, 0xF, 0x10, 0x0, 0x0, 0x0, 0xA0
 	.byte 0x0, 0x8C, 0xF
@@ -44976,6 +45177,7 @@ loc_80CE018:
 	bl object_freeCollisionData
 	bl object_freeMemory
 	pop {pc}
+	.balign 4, 0
 off_80CE028: .word off_80CE02C
 off_80CE02C: .word sub_80CE034+1
 	.word sub_80CE05E+1
@@ -45069,7 +45271,7 @@ loc_80CE0C0:
 loc_80CE0D2:
 	add sp, sp, #0x28
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CE0D8: .word byte_80CE0DC
 byte_80CE0DC: .byte 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x40, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -45097,6 +45299,7 @@ sub_80CE0EC:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80CE112:
 	pop {pc}
+	.balign 4, 0
 dword_80CE114: .word 0x1000000
 	thumb_func_end sub_80CE0EC
 
@@ -45155,7 +45358,7 @@ sub_80CE178:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CE18C: .word off_80CE190
 off_80CE190: .word sub_80CE198+1
 	.word sub_80CE1D6+1
@@ -45277,7 +45480,7 @@ sub_80CE24C:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80CE260: .word off_80CE264
 off_80CE264: .word sub_80CE270+1
 	.word sub_80CE2B4+1
@@ -45311,6 +45514,7 @@ loc_80CE28C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CE2B4
 	pop {pc}
+	.balign 4, 0
 off_80CE2AC: .word dword_80CE2B0
 dword_80CE2B0: .word 0x1040200
 	thumb_func_end sub_80CE270
@@ -45348,6 +45552,7 @@ loc_80CE2DC:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80CE2FC: .word off_80CE300
 off_80CE300: .word sub_80CE308+1
 	.word sub_80CE3C4+1
@@ -45433,7 +45638,7 @@ loc_80CE3A4:
 	pop {r0}
 	mov r9, r0
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_80CE3AC: .byte 0x66, 0xE6, 0x2, 0x0, 0x0, 0xD8, 0xFF, 0xFF, 0x66, 0x6, 0x2
 	.byte 0x0, 0x66, 0xE6, 0x2, 0x0, 0x66, 0xE6, 0x2, 0x0, 0x66, 0xE6
 	.byte 0x2, 0x0
@@ -45474,6 +45679,7 @@ loc_80CE3D6:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80CE40C: .word byte_80CE41E
 off_80CE410: .word byte_80CE421
 off_80CE414: .word byte_80CE418
@@ -45615,6 +45821,7 @@ loc_80CE50A:
 	pop {r0}
 	mov r8, r0
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80CE518: .word 0x1090C02
 dword_80CE51C: .word 0x4050100
 off_80CE520: .word byte_80CE3AC
@@ -45633,7 +45840,7 @@ sub_80CE530:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CE544: .word off_80CE548
 off_80CE548: .word sub_80CE554+1
 	.word sub_80CE5F0+1
@@ -45744,6 +45951,7 @@ loc_80CE62C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80CE640: .word off_80CE644
 off_80CE644: .word sub_80CE64C+1
 	.word sub_80CE690+1
@@ -45849,6 +46057,7 @@ sub_80CE6E6:
 	str r6, [r0,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 locret_80CE702:
 	pop {pc}
+	.balign 4, 0
 dword_80CE704: .word 0xC0000
 dword_80CE708: .word 0x40000
 	thumb_func_end sub_80CE6E6
@@ -45863,7 +46072,7 @@ sub_80CE70C:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80CE720: .word off_80CE724
 off_80CE724: .word sub_80CE730+1
 	.word sub_80CE782+1
@@ -45934,6 +46143,7 @@ loc_80CE7B2:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80CE7BC: .word off_80CE7C0
 off_80CE7C0: .word sub_80CE7C4+1
 	thumb_func_end sub_80CE782
@@ -45980,6 +46190,7 @@ sub_80CE7EE:
 	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
 locret_80CE80E:
 	pop {pc}
+	.balign 4, 0
 dword_80CE810: .word 0x70402
 dword_80CE814: .word 0x4050300
 dword_80CE818: .word 0xF800000
@@ -46028,6 +46239,7 @@ loc_80CE858:
 	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
+	.balign 4, 0
 dword_80CE878: .word 0x50000
 	thumb_func_end sub_80CE83C
 
@@ -46066,7 +46278,7 @@ loc_80CE8B6:
 loc_80CE8C0:
 	bl object_presentCollisionData
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CE8C8: .word off_80CE8CC
 off_80CE8CC: .word sub_80CE8D8+1
 	.word sub_80CE9A4+1
@@ -46203,7 +46415,7 @@ loc_80CE9B2:
 	bx r1
 locret_80CE9BC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80CE9C0: .word off_80CE9C4
 off_80CE9C4: .word sub_80CE9CC+1
 	.word sub_80CE9DC+1
@@ -46404,7 +46616,7 @@ sub_80CEB00:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CEB14: .word off_80CEB18
 off_80CEB18: .word sub_80CEB24+1
 	.word sub_80CEB66+1
@@ -46459,6 +46671,7 @@ loc_80CEB82:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CEB86:
 	pop {pc}
+	.balign 4, 0
 off_80CEB88: .word off_80CEB8C
 off_80CEB8C: .word sub_80CEB9C+1
 	.word sub_80CEBBE+1
@@ -46664,6 +46877,7 @@ loc_80CED00:
 	bl object_highlightPanel
 locret_80CED12:
 	pop {pc}
+	.balign 4, 0
 off_80CED14: .word byte_80CED18
 byte_80CED18: .byte 0x0, 0x0, 0x4, 0x0, 0x99, 0x99, 0x9, 0x0, 0xC7, 0x71, 0x4, 0x0, 0xAA
 	.byte 0xAA, 0xA, 0x0, 0x0, 0x0, 0x5, 0x0, 0x0, 0x0, 0xC, 0x0, 0xDB, 0xB6
@@ -46779,6 +46993,7 @@ loc_80CEE02:
 loc_80CEE14:
 	add sp, sp, #0x24
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80CEE18: .word byte_80CEE1C
 byte_80CEE1C: .byte 0x5, 0x1, 0x5, 0x3, 0x4, 0x2, 0x6, 0x2
 off_80CEE24: .word byte_80CEE28
@@ -46803,7 +47018,7 @@ sub_80CEE38:
 	strh r1, [r0,#oBattleObject_Timer]
 locret_80CEE54:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80CEE58: .word 0xA050101
 dword_80CEE5C: .word 0x3
 dword_80CEE60: .word 0x260000
@@ -46823,7 +47038,7 @@ sub_80CEE78:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CEE8C: .word off_80CEE90
 off_80CEE90: .word sub_80CEE9C+1
 	.word sub_80CEF0A+1
@@ -46906,7 +47121,7 @@ loc_80CEF3C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CEF44:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CEF48: .word off_80CEF4C
 off_80CEF4C: .word sub_80CEF5C+1
 	.word sub_80CEF90+1
@@ -46940,6 +47155,7 @@ loc_80CEF76:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80CEF86:
 	pop {pc}
+	.balign 4, 0
 off_80CEF88: .word dword_80CEF8C
 dword_80CEF8C: .word 0x141A1E28
 	thumb_func_end sub_80CEF5C
@@ -46993,7 +47209,7 @@ loc_80CEFA8:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80CEFF0:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CEFF4: .word dword_80CEFF8
 dword_80CEFF8: .word 0x20181008
 	thumb_func_end sub_80CEF90
@@ -47024,6 +47240,7 @@ loc_80CF016:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80CF026:
 	pop {pc}
+	.balign 4, 0
 off_80CF028: .word dword_80CF02C
 dword_80CF02C: .word 0x141A1E28
 	thumb_func_end sub_80CEFFC
@@ -47112,7 +47329,7 @@ loc_80CF0B0:
 loc_80CF0B6:
 	strb r0, [r5,#oBattleObject_DirectionFlip]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CF0BC: .word byte_80CEE70
 byte_80CF0C0: .byte 0xC, 0x30, 0x6, 0x0, 0x64, 0x0, 0xB8, 0xB, 0xC, 0x30, 0x1
 	.byte 0x1, 0x64, 0x0, 0xA1, 0x5
@@ -47199,7 +47416,7 @@ loc_80CF16A:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CF18C
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CF188: .word byte_80CF0C0
 	thumb_func_end sub_80CF0F0
 
@@ -47218,7 +47435,7 @@ sub_80CF18C:
 	bl object_presentCollisionData
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CF1B4: .word off_80CF1B8
 off_80CF1B8: .word sub_80CF250+1
 	.word sub_80165B8+1
@@ -47332,6 +47549,7 @@ loc_80CF296:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80CF2AA:
 	pop {pc}
+	.balign 4, 0
 dword_80CF2AC: .word 0x10
 dword_80CF2B0: .word 0xF880080
 	thumb_func_end sub_80CF250
@@ -47385,7 +47603,7 @@ loc_80CF30C:
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CF318: .word byte_80CF31C
 byte_80CF31C: .byte 0x82, 0xFF, 0x0, 0x52, 0x81, 0xFF, 0x0, 0x52
 	thumb_func_end sub_80CF2B4
@@ -47423,6 +47641,7 @@ sub_80CF332:
 loc_80CF35C:
 	add sp, sp, #0x18
 	pop {r4,pc}
+	.balign 4, 0
 off_80CF360: .word byte_80CF364
 byte_80CF364: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -47453,6 +47672,7 @@ sub_80CF374:
 locret_80CF3A0:
 	pop {pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 dword_80CF3A4: .word 0x8000
 dword_80CF3A8: .word 0x300000
 byte_80CF3AC: .byte 0x31, 0x0, 0xA, 0x5, 0x1, 0x0, 0x31, 0x0, 0xA, 0x5, 0x1, 0x0, 0x31
@@ -47541,6 +47761,7 @@ loc_80CF452:
 	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r7,pc}
+	.balign 4, 0
 dword_80CF47C: .word 0x1000000
 dword_80CF480: .word 0x1000000
 off_80CF484: .word byte_80CF3AC
@@ -47567,6 +47788,7 @@ sub_80CF488:
 	bic r0, r1
 	strb r0, [r5]
 	pop {pc}
+	.balign 4, 0
 off_80CF4B8: .word off_80CF4BC
 off_80CF4BC: .word sub_80CF4C8+1
 	.word sub_80CF4E6+1
@@ -47644,6 +47866,7 @@ loc_80CF53E:
 	sub r0, r0, r1
 	str r0, [r5,#oBattleObject_Z]
 	pop {r7,pc}
+	.balign 4, 0
 dword_80CF550: .word 0xF800010
 	thumb_func_end sub_80CF4E6
 
@@ -47726,7 +47949,7 @@ sub_80CF5C8:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CF5DC: .word off_80CF5E0
 off_80CF5E0: .word sub_80CF5EC+1
 	.word sub_80CF658+1
@@ -47851,6 +48074,7 @@ loc_80CF6D8:
 	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r6,r7,pc}
+	.balign 4, 0
 off_80CF6E8: .word off_80CF6EC
 off_80CF6EC: .word sub_80CF700+1
 off_80CF6F0: .word off_80CF6F4
@@ -47903,6 +48127,7 @@ loc_80CF748:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80CF756:
 	pop {r4,pc}
+	.balign 4, 0
 off_80CF758: .word byte_80CF75C
 byte_80CF75C: .byte 0x0, 0x0, 0x6, 0x0, 0x0, 0x0, 0x6, 0x0, 0x0, 0x0, 0x6, 0x0, 0x0, 0x0, 0x6, 0x0
 	thumb_func_end sub_80CF700
@@ -47977,6 +48202,7 @@ loc_80CF7D6:
 loc_80CF7E0:
 	add sp, sp, #0x10
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80CF7E4: .word off_80CF7E8
 off_80CF7E8: .word 0x4000000
 	.word 0x8000000
@@ -48059,7 +48285,7 @@ loc_80CF89C:
 	bl object_freeMemory
 locret_80CF8A0:
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CF8A4: .word byte_80CF8A8
 byte_80CF8A8: .byte 0x0, 0x1, 0x2, 0x3, 0x4, 0x0, 0x0, 0x0
 	thumb_func_end sub_80CF810
@@ -48097,6 +48323,7 @@ loc_80CF8EA:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80CF8F2:
 	pop {r4,pc}
+	.balign 4, 0
 dword_80CF8F4: .word 0x3F800000
 	thumb_func_end sub_80CF8B0
 
@@ -48133,6 +48360,7 @@ sub_80CF91E:
 	bl sub_801155A
 locret_80CF932:
 	pop {r5,pc}
+	.balign 4, 0
 byte_80CF934: .byte 0x1, 0xC8, 0x0, 0x0, 0x97, 0x0, 0xD0, 0x0, 0x1, 0xC8, 0x64, 0x0
 	.byte 0x97, 0x0, 0xD0, 0x0, 0x1, 0xC8, 0xFA, 0x0, 0x97, 0x0, 0xD0, 0x0
 	.byte 0x2, 0xC8, 0x64, 0x1, 0xD9, 0x0, 0xD1, 0x0
@@ -48225,6 +48453,7 @@ loc_80CF9EE:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CFA18
 	pop {r7,pc}
+	.balign 4, 0
 dword_80CFA10: .word 0x1770
 off_80CFA14: .word byte_80CF934
 	thumb_func_end sub_80CF974
@@ -48245,7 +48474,7 @@ sub_80CFA18:
 	bl object_updateSprite
 	bl object_presentCollisionData
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CFA44: .word off_80CFA48
 off_80CFA48: .word sub_80CFA6C+1
 	.word sub_80165B8+1
@@ -48461,7 +48690,7 @@ loc_80CFBE6:
 	bl setFieldBattleObject_800F614
 locret_80CFBF4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80CFBF8: .word 0xF880080
 dword_80CFBFC: .word 0xFFFFC000
 dword_80CFC00: .word 0x8000
@@ -48608,7 +48837,7 @@ sub_80CFCF8:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CFD0C: .word off_80CFD10
 off_80CFD10: .word sub_80CFD1C+1
 	.word sub_80CFD64+1
@@ -48834,7 +49063,7 @@ loc_80CFEA2:
 	ldr r0, [sp,#0x1c]
 	add sp, sp, #0x24
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80CFEB4: .word off_80CFEB8
 off_80CFEB8: .word 0x4000000
 	.word 0x8000000
@@ -49085,6 +49314,7 @@ sub_80D008C:
 	orr r1, r2
 	strb r1, [r0]
 	pop {pc}
+	.balign 4, 0
 dword_80D009C: .word 0xC0000
 	thumb_func_end sub_80D008C
 
@@ -49098,7 +49328,7 @@ sub_80D00A0:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D00B4: .word off_80D00B8
 off_80D00B8: .word sub_80D00C4+1
 	.word sub_80D0132+1
@@ -49151,6 +49381,7 @@ loc_80D011C:
 	bl object_freeMemory
 locret_80D012A:
 	pop {pc}
+	.balign 4, 0
 off_80D012C: .word word_80D0130
 word_80D0130: .hword 0x3D3C
 	thumb_func_end sub_80D00C4
@@ -49179,7 +49410,7 @@ loc_80D0158:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D015C:
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D0160: .word off_80D0164
 off_80D0164: .word sub_80D0168+1
 	thumb_func_end sub_80D0132
@@ -49298,7 +49529,7 @@ sub_80D020E:
 	ldr r7, dword_80D022C // =0x3 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D0228: .word 0x4050604
 dword_80D022C: .word 0x3
 	thumb_func_end sub_80D020E
@@ -49327,7 +49558,7 @@ loc_80D0250:
 	ldrb r4, [r4,r6]
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D0260: .word dword_80D0264
 dword_80D0264: .word 0x1213
 	thumb_func_end sub_80D0230
@@ -49342,7 +49573,7 @@ sub_80D0268:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D027C: .word off_80D0280
 off_80D0280: .word sub_80D028C+1
 	.word sub_80D02D6+1
@@ -49405,7 +49636,7 @@ loc_80D02FC:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D0300:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D0304: .word off_80D0308
 off_80D0308: .word sub_80D0310+1
 	.word sub_80D033C+1
@@ -49504,7 +49735,7 @@ sub_80D0394:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D03A8: .word off_80D03AC
 off_80D03AC: .word sub_80D03B8+1
 	.word sub_80D0454+1
@@ -49568,6 +49799,7 @@ loc_80D0420:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D043E:
 	pop {pc}
+	.balign 4, 0
 off_80D0440: .word byte_80D0444
 byte_80D0444: .byte 0x0, 0x0, 0x6, 0x0, 0x0, 0x80, 0x6, 0x0, 0x0, 0x0, 0x7, 0x0, 0x0, 0x80, 0x7
 	.byte 0x0
@@ -49601,7 +49833,7 @@ loc_80D0484:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D048C:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D0490: .word off_80D0494
 off_80D0494: .word sub_80D0498+1
 	thumb_func_end sub_80D0454
@@ -49676,7 +49908,7 @@ sub_80D0500:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D0514: .word off_80D0518
 off_80D0518: .word sub_80D0524+1
 	.word sub_80D0566+1
@@ -49731,6 +49963,7 @@ loc_80D0582:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D0586:
 	pop {pc}
+	.balign 4, 0
 off_80D0588: .word off_80D058C
 off_80D058C: .word sub_80D0590+1
 	thumb_func_end sub_80D0566
@@ -49803,7 +50036,7 @@ sub_80D05EC:
 	ldr r7, byte_80D0608 // =0x1
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D0604: .word 0x1200FF01
 byte_80D0608: .byte 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80D05EC
@@ -49818,7 +50051,7 @@ sub_80D0610:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D0624: .word off_80D0628
 off_80D0628: .word sub_80D0634+1
 	.word sub_80D072C+1
@@ -49997,6 +50230,7 @@ loc_80D0782:
 	strb r0, [r5,#oBattleObject_CurAnim]
 locret_80D078E:
 	pop {pc}
+	.balign 4, 0
 off_80D0790: .word byte_80D0794
 byte_80D0794: .byte 0x35, 0x3C, 0xE, 0xA, 0xD, 0x4, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80D0766
@@ -50019,6 +50253,7 @@ sub_80D07A0:
 	str r5, [r0,#oBattleObject_RelatedObject1Ptr]
 locret_80D07BE:
 	pop {pc}
+	.balign 4, 0
 dword_80D07C0: .word 0x80000
 dword_80D07C4: .word 0x70000
 dword_80D07C8: .word 0x20000
@@ -50041,7 +50276,7 @@ loc_80D07E4:
 	bl object_updateSpriteTimestop
 locret_80D07E8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D07EC: .word off_80D07F0
 off_80D07F0: .word sub_80D07FC+1
 	.word sub_80D0868+1
@@ -50129,6 +50364,7 @@ loc_80D08A6:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D08AE:
 	pop {pc}
+	.balign 4, 0
 off_80D08B0: .word off_80D08B4
 off_80D08B4: .word sub_80D08CC+1
 	.word sub_80D0916+1
@@ -50173,6 +50409,7 @@ loc_80D090A:
 	bl sub_80D0A5C
 locret_80D090E:
 	pop {pc}
+	.balign 4, 0
 off_80D0910: .word byte_80D0914
 byte_80D0914: .byte 0x14, 0x28
 	thumb_func_end sub_80D08CC
@@ -50206,6 +50443,7 @@ loc_80D093A:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80D094A:
 	pop {pc}
+	.balign 4, 0
 off_80D094C: .word byte_80D0950
 byte_80D0950: .byte 0xA, 0xF
 	thumb_func_end sub_80D0916
@@ -50332,7 +50570,7 @@ loc_80D0A24:
 	mul r0, r1
 	str r0, [r5,#oBattleObject_XVelocity]
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D0A38: .word off_80D0A3C
 off_80D0A3C: .word 0x4000000
 	.word 0x8000000
@@ -50358,6 +50596,7 @@ sub_80D0A5C:
 	bl object_spawnCollisionRegion
 locret_80D0A76:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80D0A78: .word 0x405FF01
 dword_80D0A7C: .word 0x1
 	thumb_func_end sub_80D0A5C
@@ -50463,7 +50702,7 @@ loc_80D0B36:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D0B44:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D0B48: .word off_80D0B4C
 off_80D0B4C: .word sub_80D0B54+1
 	.word sub_80D0BD4+1
@@ -50524,7 +50763,7 @@ loc_80D0BAA:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D0BB8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D0BBC: .word off_80D0BC0
 off_80D0BC0: .word 0x4000000
 	.word 0x8000000
@@ -50621,7 +50860,7 @@ sub_80D0C5C:
 	ldr r7, dword_80D0C78 // =0x4000 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D0C74: .word 0x3105FF01
 dword_80D0C78: .word 0x4000
 	thumb_func_end sub_80D0C5C
@@ -50642,7 +50881,7 @@ sub_80D0C7C:
 	lsl r6, r6, #0x10
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D0C9C: .word 0x3105FF01
 off_80D0CA0: .word byte_80D0CA4
 byte_80D0CA4: .byte 0x3, 0x0, 0x0, 0x0, 0x3, 0x10, 0x0, 0x0, 0x3, 0x20, 0x0, 0x0, 0x3, 0x30
@@ -50663,7 +50902,7 @@ sub_80D0CB4:
 	ldr r7, dword_80D0CD4 // =0x0 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80D0CD0: .word 0x3105FF01
 dword_80D0CD4: .word 0x0
 off_80D0CD8: .word dword_80D0CDC
@@ -50753,7 +50992,7 @@ loc_80D0D60:
 	mov r4, #0x21 
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D0D78: .word 0x100000
 	thumb_func_end sub_80D0D28
 
@@ -50774,7 +51013,7 @@ loc_80D0D94:
 	bl object_updateSpriteTimestop
 locret_80D0D98:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D0D9C: .word off_80D0DA0
 off_80D0DA0: .word sub_80D0DAC+1
 	.word sub_80D0E14+1
@@ -50858,6 +51097,7 @@ loc_80D0E4E:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D0E56:
 	pop {pc}
+	.balign 4, 0
 off_80D0E58: .word off_80D0E5C
 off_80D0E5C: .word sub_80D0E64+1
 	.word sub_80D0E9E+1
@@ -51007,6 +51247,7 @@ loc_80D0F36:
 	cmp r6, #8
 	blt loc_80D0F36
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80D0F68: .word 0xA050301
 dword_80D0F6C: .word 0x1201
 off_80D0F70: .word byte_80D0F74
@@ -51026,7 +51267,7 @@ sub_80D0F8C:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D0FA0: .word off_80D0FA4
 off_80D0FA4: .word sub_80D0FB0+1
 	.word sub_80D102E+1
@@ -51123,7 +51364,7 @@ loc_80D1068:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D107C:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D1080: .word off_80D1084
 off_80D1084: .word sub_80D1094+1
 	.word sub_80D10B8+1
@@ -51323,7 +51564,7 @@ loc_80D11DA:
 	svc 6
 	strh r0, [r5,#oBattleObject_Timer]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D11E8: .word byte_80D11EC
 byte_80D11EC: .byte 0x0, 0x0, 0x3, 0x0, 0x0, 0x80, 0x3, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x0, 0x4, 0x0
 	thumb_func_end sub_80D11B4
@@ -51354,7 +51595,7 @@ sub_80D1218:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D122C: .word off_80D1230
 off_80D1230: .word sub_80D124E+1
 	.word sub_80D12CA+1
@@ -51520,6 +51761,7 @@ loc_80D135E:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80D1380: .word off_80D1384
 off_80D1384: .word sub_80D1394+1
 	.word sub_80D13F6+1
@@ -51727,6 +51969,7 @@ loc_80D14D2:
 	str r0, [r5,#oBattleObject_X]
 locret_80D14F6:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80D14F8: .word 0x1034
 dword_80D14FC: .word 0xC0D0100
 dword_80D1500: .word 0xF800000
@@ -51746,7 +51989,7 @@ sub_80D1514:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D1528: .word off_80D152C
 off_80D152C: .word sub_80D1538+1
 	.word sub_80D15A4+1
@@ -51790,7 +52033,7 @@ sub_80D1538:
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D1590: .word byte_80D1594
 byte_80D1594: .byte 0x0, 0x0, 0x5, 0x0, 0x0, 0x0, 0x6, 0x0, 0x0, 0x0, 0x7, 0x0, 0x0, 0x0, 0x8, 0x0
 	thumb_func_end sub_80D1538
@@ -51822,7 +52065,7 @@ loc_80D15CA:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D15D4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D15D8: .word off_80D15DC
 off_80D15DC: .word sub_80D15E4+1
 	.word sub_80D1610+1
@@ -51998,6 +52241,7 @@ sub_80D1700:
 loc_80D171C:
 	mov r0, r4
 	pop {r4,pc}
+	.balign 4, 0
 off_80D1720: .word off_80D1724
 off_80D1724: .word 0x4000000
 	.word 0x8000000
@@ -52039,7 +52283,7 @@ sub_80D172C:
 	str r0, [r5,#oBattleObject_ExtraVars]
 locret_80D176C:
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D1770: .word byte_80D1774
 byte_80D1774: .byte 0x6, 0x1, 0x0, 0x1, 0x6, 0x3, 0xFF, 0x0, 0x1, 0x1, 0x0, 0x1, 0x1, 0x3, 0x1, 0x0
 	thumb_func_end sub_80D172C
@@ -52056,7 +52300,7 @@ sub_80D1784:
 	ldr r7, dword_80D17A0 // =0x1000 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D179C: .word 0x405FF01
 dword_80D17A0: .word 0x1000
 	thumb_func_end sub_80D1784
@@ -52071,7 +52315,7 @@ sub_80D17A4:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D17B8: .word off_80D17BC
 off_80D17BC: .word sub_80D17C8+1
 	.word sub_80D1860+1
@@ -52135,6 +52379,7 @@ loc_80D182C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D184E:
 	pop {pc}
+	.balign 4, 0
 off_80D1850: .word dword_80D1854
 dword_80D1854: .word 0x2D2823
 off_80D1858: .word dword_80D185C
@@ -52311,7 +52556,7 @@ loc_80D19A8:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D19B0:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D19B4: .word byte_80D19B8
 byte_80D19B8: .byte 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x80, 0xA
 	thumb_func_end sub_80D1934
@@ -52434,7 +52679,7 @@ loc_80D1A98:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D1AA0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D1AA4: .word off_80D1AA8
 off_80D1AA8: .word sub_80D1AB0+1
 	.word sub_80D1AD2+1
@@ -52604,7 +52849,7 @@ loc_80D1BD8:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D1BE0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D1BE4: .word byte_80D1BE8
 byte_80D1BE8: .byte 0x0, 0x0, 0x0, 0x50, 0x0, 0x0, 0x0, 0xA0
 dword_80D1BF0: .word 0x4000
@@ -52641,7 +52886,7 @@ sub_80D1C20:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D1C34: .word off_80D1C38
 off_80D1C38: .word sub_80D1C5A+1
 	.word sub_80D1D14+1
@@ -52720,6 +52965,7 @@ loc_80D1C84:
 	pop {r4,pc}
 	.word 0, 0
 	.byte 0, 0, 0, 0
+	.balign 4, 0
 off_80D1CE0: .word byte_80D1CE4
 byte_80D1CE4: .byte 0x0, 0x80, 0x1, 0x0, 0x0, 0x80, 0x1, 0x0, 0x0, 0x80, 0x1, 0x0, 0x0, 0x80
 	.byte 0x1, 0x0, 0x0, 0x80, 0x1, 0x0, 0x0, 0x80, 0x1, 0x0, 0x66, 0xE6, 0x0, 0x0
@@ -52777,6 +53023,7 @@ loc_80D1D76:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80D1D80: .word off_80D1D84
 off_80D1D84: .word sub_80D1D90+1
 	.word sub_80D1DEE+1
@@ -53178,7 +53425,7 @@ sub_80D2034:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D2048: .word off_80D204C
 off_80D204C: .word sub_80D2058+1
 	.word sub_80D20E8+1
@@ -53237,7 +53484,7 @@ loc_80D20CC:
 	bl object_freeMemory
 locret_80D20D0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D20D4: .word byte_80D20D8
 byte_80D20D8: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x80, 0x1, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x80, 0x2
 	.byte 0x0
@@ -53279,6 +53526,7 @@ loc_80D212A:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D2132:
 	pop {pc}
+	.balign 4, 0
 off_80D2134: .word off_80D2138
 off_80D2138: .word sub_80D214C+1
 	.word sub_80D2176+1
@@ -53450,6 +53698,7 @@ loc_80D2260:
 locret_80D2276:
 	pop {r4,pc}
 	.word byte_80D227C
+	.balign 4, 0
 byte_80D227C: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x80, 0x1, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x80, 0x2
 	.byte 0x0
 off_80D228C: .word byte_80D202C
@@ -53517,7 +53766,7 @@ loc_80D2306:
 	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D231C: .word 0x1770
 	thumb_func_end sub_80D22B0
 
@@ -53535,7 +53784,7 @@ sub_80D2320:
 	bl object_presentCollisionData
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D2344: .word jt_80D2348
 jt_80D2348: .word sub_80D236C+1
 	.word sub_80165B8+1
@@ -53671,7 +53920,7 @@ sub_80D2430:
 	strb r2, [r0]
 locret_80D2454:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D2458: .word 0x8000
 dword_80D245C: .word 0x300000
 	thumb_func_end sub_80D2430
@@ -53861,7 +54110,7 @@ sub_80D2596:
 	bl sub_80D2580
 	pop {r0,r2,r3}
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D25C8: .word 0x4040401
 byte_80D25CC: .byte 0x8, 0x0, 0xC, 0x0, 0x10, 0x0, 0x18, 0x0
 	thumb_func_end sub_80D2596
@@ -53876,7 +54125,7 @@ sub_80D25D4:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D25E8: .word off_80D25EC
 off_80D25EC: .word sub_80D25F8+1
 	.word sub_80D2684+1
@@ -53939,6 +54188,7 @@ loc_80D2676:
 	bl object_freeMemory
 locret_80D267E:
 	pop {pc}
+	.balign 4, 0
 off_80D2680: .word byte_80D25CC
 	thumb_func_end sub_80D25F8
 
@@ -53995,6 +54245,7 @@ loc_80D26E4:
 locret_80D26EC:
 	pop {pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80D26F0: .word off_80D26F4
 off_80D26F4: .word sub_80D2714+1
 	.word sub_80D2750+1
@@ -54063,6 +54314,7 @@ loc_80D2766:
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 locret_80D2776:
 	pop {pc}
+	.balign 4, 0
 off_80D2778: .word dword_80D277C
 dword_80D277C: .word 0x12121818
 	thumb_func_end sub_80D2750
@@ -54156,6 +54408,7 @@ loc_80D2812:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D281A:
 	pop {pc}
+	.balign 4, 0
 off_80D281C: .word off_80D2820
 off_80D2820: .word sub_80D282C+1
 	.word sub_80D289E+1
@@ -54399,7 +54652,7 @@ sub_80D29BA:
 	mov r0, #0
 locret_80D29DC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D29E0: .word byte_80D29E4
 byte_80D29E4: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -54417,7 +54670,7 @@ sub_80D29F4:
 	ldr r7, dword_80D2A10 // =0x0 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D2A0C: .word 0x605FF01
 dword_80D2A10: .word 0x0
 	thumb_func_end sub_80D29F4
@@ -54437,7 +54690,7 @@ sub_80D2A14:
 	lsl r1, r1, #0x10
 	orr r0, r1
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D2A30: .word byte_80D2A34
 byte_80D2A34: .byte 0x3C, 0x0, 0x64, 0x0, 0xA0, 0x0, 0xC8, 0x0, 0x1E, 0x0, 0x32
 	.byte 0x0, 0x50, 0x0, 0x64, 0x0, 0x3C, 0x0, 0x64, 0x0, 0xA0, 0x0
@@ -54476,6 +54729,7 @@ sub_80D2A68:
 	ldr r0, [r5,#oBattleObject_ExtraVars+0x1c]
 	bl sub_80E5B6E
 	pop {pc}
+	.balign 4, 0
 dword_80D2A90: .word 0xB333
 	thumb_func_end sub_80D2A68
 
@@ -54664,7 +54918,7 @@ sub_80D2BDC:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D2BF0: .word off_80D2BF4
 off_80D2BF4: .word sub_80D2C00+1
 	.word sub_80D2C10+1
@@ -54835,6 +55089,7 @@ loc_80D2D1C:
 loc_80D2D28:
 	add sp, sp, #0xc
 	pop {r4,pc}
+	.balign 4, 0
 off_80D2D2C: .word byte_80D2D30
 byte_80D2D30: .byte 0x0, 0x0, 0x0, 0x0, 0xB0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x0, 0x0, 0x90
 	.byte 0x0, 0x88, 0xF
@@ -54966,6 +55221,7 @@ loc_80D2E1E:
 loc_80D2E20:
 	add sp, sp, #0x40
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80D2E24: .word byte_80D2E28
 byte_80D2E28: .byte 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0xA, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -55126,6 +55382,7 @@ loc_80D2F56:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D2F5A:
 	pop {pc}
+	.balign 4, 0
 off_80D2F5C: .word off_80D2F60
 off_80D2F60: .word sub_80D2F70+1
 	.word sub_80D2FA0+1
@@ -55258,6 +55515,7 @@ sub_80D3004:
 	str r0, [r5,#8]
 locret_80D3042:
 	pop {pc}
+	.balign 4, 0
 dword_80D3044: .word 0x4050501
 	thumb_func_end sub_80D3004
 
@@ -55307,6 +55565,7 @@ loc_80D3098:
 	str r1, [r5,#oBattleObject_YVelocity]
 	add sp, sp, #0x10
 	pop {pc}
+	.balign 4, 0
 dword_80D30A0: .word 0x100000
 	thumb_func_end sub_80D3058
 
@@ -55343,7 +55602,7 @@ sub_80D30D0:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D30E4: .word off_80D30E8
 off_80D30E8: .word sub_80D30F4+1
 	.word sub_80D317C+1
@@ -55398,6 +55657,7 @@ loc_80D311E:
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r4,pc}
 	.word 0x0
+	.balign 4, 0
 off_80D3160: .word byte_80D3164
 byte_80D3164: .byte 0x0, 0x80, 0x2, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x80, 0x3, 0x0, 0x0, 0x80
 	.byte 0x1, 0x0, 0xCC, 0xCC, 0x1, 0x0, 0x99, 0x19, 0x2, 0x0
@@ -55448,6 +55708,7 @@ loc_80D31D2:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80D31DC: .word off_80D31E0
 off_80D31E0: .word sub_80D31EC+1
 	.word ho_80D3240+1
@@ -55740,7 +56001,7 @@ loc_80D33E2:
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
 	.word 0, 0
-	.byte 0, 0
+	.balign 4, 0
 off_80D33F0: .word off_80D33F4
 off_80D33F4: .word 0x4000000
 	.word 0x0
@@ -55959,7 +56220,7 @@ sub_80D358C:
 	bl object_updateSprite
 	bl object_presentCollisionData
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D35B4: .word off_80D35B8
 off_80D35B8: .word sub_80D35E0+1
 	.word sub_80165B8+1
@@ -56001,6 +56262,7 @@ loc_80D35FE:
 	bx r1
 locret_80D3612:
 	pop {pc}
+	.balign 4, 0
 off_80D3614: .word jt_80D3618
 jt_80D3618: .word sub_80D3620+1
 	.word sub_80D3638+1
@@ -56053,7 +56315,7 @@ sub_80D3654:
 	bx r1
 locret_80D3668:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D366C: .word off_80D3670
 off_80D3670: .word sub_80D3678+1
 	.word sub_80D369E+1
@@ -56283,6 +56545,7 @@ loc_80D3820:
 	pop {r4,r6,r7,pc}
 	.word 0, 0
 	.byte 0, 0, 0, 0
+	.balign 4, 0
 off_80D3830: .word off_80D3834
 off_80D3834: .word 0x4000000 // flag for opponent
 	.word 0x0
@@ -56459,6 +56722,7 @@ sub_80D398E:
 	strb r1, [r0,#oBattleObject_Alliance]
 locret_80D39AE:
 	pop {pc}
+	.balign 4, 0
 dword_80D39B0: .word 0x140000
 byte_80D39B4: .byte 0x32, 0x0, 0x46, 0x0, 0x5A, 0x0, 0x6E, 0x0
 	thumb_func_end sub_80D398E
@@ -56473,7 +56737,7 @@ sub_80D39BC:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D39D0: .word off_80D39D4
 off_80D39D4: .word sub_80D39E0+1
 	.word sub_80D3A7C+1
@@ -56536,6 +56800,7 @@ loc_80D3A5A:
 	bl object_freeMemory
 locret_80D3A62:
 	pop {pc}
+	.balign 4, 0
 off_80D3A64: .word byte_80D3A68
 byte_80D3A68: .byte 0x0, 0x50, 0x0, 0x0, 0x0, 0x60, 0x0, 0x0, 0x0, 0x70, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x0
@@ -56592,6 +56857,7 @@ loc_80D3AD4:
 locret_80D3AE0:
 	pop {r4,pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80D3AE4: .word off_80D3AE8
 off_80D3AE8: .word sub_80D3B08+1
 	.word sub_80D3B4E+1
@@ -56767,6 +57033,7 @@ loc_80D3C2E:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80D3C36:
 	pop {pc}
+	.balign 4, 0
 off_80D3C38: .word byte_80D3C3C
 byte_80D3C3C: .byte 0x50, 0x0, 0x5A, 0x0, 0x64, 0x0, 0x6E, 0x0
 	thumb_func_end sub_80D3BC2
@@ -56926,7 +57193,7 @@ loc_80D3D4C:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80D3D58:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D3D5C: .word byte_80D3D60
 byte_80D3D60: .byte 0x18, 0x0, 0x14, 0x0, 0x12, 0x0, 0x10, 0x0
 	thumb_func_end sub_80D3D22
@@ -57097,7 +57364,7 @@ loc_80D3E80:
 loc_80D3E8A:
 	add sp, sp, #0xc
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D3E90: .word byte_80D3E94
 byte_80D3E94: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80, 0xC, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80
 	.byte 0xC, 0x20, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80, 0xC, 0x0, 0x0, 0x1, 0x0, 0x20, 0x0
@@ -57207,6 +57474,7 @@ loc_80D3F76:
 loc_80D3F78:
 	add sp, sp, #0x18
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80D3F7C: .word dword_80D3F80
 dword_80D3F80: .word 0x10000
 dword_80D3F84: .word 0xF880080
@@ -57273,7 +57541,7 @@ loc_80D3FE8:
 loc_80D3FEA:
 	add sp, sp, #0x18
 	pop {r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D3FF0: .word byte_80D3FF4
 byte_80D3FF4: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -57288,6 +57556,7 @@ sub_80D4004:
 	ldr r2, [r1,r0]
 	bl object_highlightPanelRegionBlue
 	pop {pc}
+	.balign 4, 0
 off_80D4014: .word byte_80D4018
 byte_80D4018: .byte 0x82, 0x0, 0x0, 0x0, 0x81, 0x0, 0x0, 0x0
 	thumb_func_end sub_80D4004
@@ -57334,7 +57603,7 @@ loc_80D4062:
 	cmp r7, #4
 	blt loc_80D4034
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D406C: .word byte_80D4070
 byte_80D4070: .byte 0xFF, 0x0, 0x1, 0x0, 0x0, 0xFF, 0x0, 0x1
 byte_80D4078: .byte 0x55, 0x3, 0x0, 0x40, 0x37
@@ -57415,7 +57684,7 @@ loc_80D411A:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80D4144
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D4134: .word 0x960
 off_80D4138: .word dword_80D4140
 off_80D413C: .word byte_80D4078
@@ -57437,7 +57706,7 @@ sub_80D4144:
 	bl object_updateSprite
 	bl object_presentCollisionData
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D416C: .word off_80D4170
 off_80D4170: .word sub_80D4198+1
 	.word sub_80165B8+1
@@ -57482,6 +57751,7 @@ sub_80D41B6:
 	bx r1
 locret_80D41CA:
 	pop {pc}
+	.balign 4, 0
 off_80D41CC: .word off_80D41D0
 off_80D41D0: .word sub_80D41D8+1
 	.word sub_80D41E8+1
@@ -57527,7 +57797,7 @@ sub_80D41FC:
 	bx r1
 locret_80D4210:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D4214: .word off_80D4218
 off_80D4218: .word sub_80D4228+1
 	.word sub_80D4242+1
@@ -57594,7 +57864,7 @@ loc_80D4288:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80D428C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D4290: .word off_80D4298
 off_80D4294: .word byte_80D42A8
 off_80D4298: .word sub_80D435C+1
@@ -57742,7 +58012,7 @@ sub_80D4392:
 	add r7, #0
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D43B4: .word byte_80D43B8
 byte_80D43B8: .byte 0x85, 0xFF, 0x0, 0x32, 0x84, 0xFF, 0x0, 0x32
 	thumb_func_end sub_80D4392
@@ -57764,7 +58034,7 @@ sub_80D43C0:
 	mov r1, #4
 	bl camera_initShakeEffect_80302a8
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D43E4: .word 0x3205FF83
 	thumb_func_end sub_80D43C0
 
@@ -57782,7 +58052,7 @@ sub_80D43E8:
 	add r7, #0
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D4404: .word 0x3205FF80
 	thumb_func_end sub_80D43E8
 
@@ -57810,7 +58080,7 @@ sub_80D4408:
 	bl setFieldBattleObject_800F614
 locret_80D4434:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D4438: .word 0x8000
 dword_80D443C: .word 0x300000
 	thumb_func_end sub_80D4408
@@ -57825,7 +58095,7 @@ sub_80D4440:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D4454: .word off_80D4458
 off_80D4458: .word sub_80D4472+1
 	.word sub_80D44D2+1
@@ -57931,7 +58201,7 @@ loc_80D4520:
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D4530: .word off_80D4534
 off_80D4534: .word sub_80D4544+1
 	.word sub_80D4570+1
@@ -58144,7 +58414,7 @@ loc_80D467C:
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_Alliance]
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D46A0: .word byte_80D46A4
 byte_80D46A4: .byte 0x0, 0x0, 0x14, 0x1, 0x0, 0x1, 0x28, 0x1
 dword_80D46AC: .word 0x41F
@@ -58215,7 +58485,7 @@ loc_80D472C:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80D4754
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D4750: .word 0x1E0
 	thumb_func_end sub_80D46D8
 
@@ -58247,7 +58517,7 @@ loc_80D4786:
 	bl sub_801BC24
 	bl object_presentCollisionData
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D4798: .word off_80D479C
 off_80D479C: .word sub_80D47C0+1
 	.word sub_80165B8+1
@@ -58557,7 +58827,7 @@ sub_80D49F6:
 	pop {r1-r3}
 	bl sub_80D49CC
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D4A18: .word 0xFFFFE000
 off_80D4A1C: .word 0x4000000
 byte_80D4A20: .byte 0x0, 0x80, 0x0, 0x0
@@ -58661,6 +58931,7 @@ loc_80D4AD2:
 	mov r0, #8
 	str r0, [r5,#8]
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80D4AF8: .word off_80D4AFC
 off_80D4AFC: .word sub_80D4B00+1
 	thumb_func_end sub_80D4A98
@@ -58714,7 +58985,7 @@ sub_80D4B44:
 	bl sub_801155A
 locret_80D4B58:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D4B5C: .word 0x102102A
 dword_80D4B60: .word 0x6050300
 dword_80D4B64: .word 0x80000
@@ -58951,7 +59222,7 @@ loc_80D4D16:
 	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80D4D30: .word 0x1770
 	thumb_func_end sub_80D4CA4
 
@@ -58970,7 +59241,7 @@ sub_80D4D34:
 	bl object_updateSprite
 	bl object_presentCollisionData
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D4D5C: .word off_80D4D60
 off_80D4D60: .word sub_80D4D88+1
 	.word sub_80165B8+1
@@ -59011,7 +59282,7 @@ loc_80D4DA8:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80D4DBC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80D4DC0: .word 0x10
 dword_80D4DC4: .word 0xF880080
 	thumb_func_end sub_80D4D88
@@ -59130,7 +59401,7 @@ sub_80D4E64:
 	strb r0, [r5,#oBattleObject_CurPhase]
 locret_80D4EAC:
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D4EB0: .word byte_80D4EB4
 byte_80D4EB4: .byte 0x85, 0xFF, 0x5, 0x17, 0x84, 0xFF, 0x5, 0x17
 	thumb_func_end sub_80D4E64
@@ -59321,7 +59592,7 @@ loc_80D5006:
 loc_80D5012:
 	mov r0, #0xff
 	mov pc, lr
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D5018: .word 0x8000
 dword_80D501C: .word 0x300000
 dword_80D5020: .word 0x55000000
@@ -59339,7 +59610,7 @@ sub_80D5028:
 	bl sub_80169BE
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D5040: .word off_80D5044
 off_80D5044: .word sub_80D5050+1
 	.word sub_80D50C6+1
@@ -59474,7 +59745,7 @@ sub_80D5138:
 	bl sub_80169BE
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D5150: .word off_80D5154
 off_80D5154: .word sub_80D5160+1
 	.word sub_80D51E4+1
@@ -59569,7 +59840,7 @@ loc_80D521C:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D5228:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D522C: .word off_80D5230
 off_80D5230: .word sub_80D5240+1
 	.word sub_80D5280+1
@@ -59698,6 +59969,7 @@ sub_80D52FA:
 	bl sub_80D532C
 locret_80D531E:
 	pop {pc}
+	.balign 4, 0
 off_80D5320: .word byte_80D5324
 byte_80D5324: .byte 0x0, 0x0, 0x80, 0x1, 0x0, 0x0, 0x80, 0x2
 	thumb_func_end sub_80D52FA
@@ -59712,7 +59984,7 @@ sub_80D532C:
 	ldr r7, dword_80D5344 // =0x0 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80D5340: .word 0x605FF01
 dword_80D5344: .word 0x0
 	thumb_func_end sub_80D532C
@@ -59748,7 +60020,7 @@ loc_80D5374:
 	bl object_updateSpriteTimestop
 locret_80D5378:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D537C: .word off_80D5380
 off_80D5380: .word sub_80D538C+1
 	.word sub_80D53F4+1
@@ -59833,6 +60105,7 @@ loc_80D542E:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D5436:
 	pop {pc}
+	.balign 4, 0
 off_80D5438: .word off_80D543C
 off_80D543C: .word sub_80D5448+1
 	.word sub_80D5482+1
@@ -59984,7 +60257,7 @@ loc_80D5522:
 	cmp r4, #2
 	bmi loc_80D5522
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D554C: .word byte_80D5550
 byte_80D5550: .byte 0x0, 0x80, 0x0, 0x0, 0x0, 0x80, 0x2, 0x0, 0x0, 0x80, 0xFF, 0xFF
 	.byte 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x80, 0x2, 0x0
@@ -60003,7 +60276,7 @@ sub_80D5580:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D5594: .word off_80D5598
 off_80D5598: .word sub_80D55A4+1
 	.word sub_80D55F8+1
@@ -60153,7 +60426,7 @@ sub_80D5684:
 locret_80D56B8:
 	pop {r0,r4,r6,r7,pc}
 	.word 0
-	.byte 0, 0
+	.balign 4, 0
 off_80D56C0: .word off_80D56C4
 off_80D56C4: .word byte_80D56D0
 	.word byte_80D56E8
@@ -60184,6 +60457,7 @@ sub_80D5718:
 	str r5, [r0,#oBattleObject_RelatedObject1Ptr]
 locret_80D5736:
 	pop {pc}
+	.balign 4, 0
 byte_80D5738: .byte 0x0, 0x0, 0x28, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80D5718
 
@@ -60197,7 +60471,7 @@ sub_80D5740:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D5754: .word off_80D5758
 off_80D5758: .word sub_80D5764+1
 	.word sub_80D5806+1
@@ -60275,6 +60549,7 @@ loc_80D57F6:
 	pop {pc}
 	.word 0x0
 	.word byte_80D5804
+	.balign 4, 0
 byte_80D5804: .byte 0x4E, 0x78
 	thumb_func_end sub_80D5764
 
@@ -60395,7 +60670,7 @@ sub_80D58B4:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D58C8: .word off_80D58CC
 off_80D58CC: .word sub_80D58D8+1
 	.word sub_80D592C+1
@@ -60459,7 +60734,7 @@ loc_80D5948:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D594C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D5950: .word off_80D5954
 off_80D5954: .word sub_80D595C+1
 	.word sub_80D5994+1
@@ -60634,7 +60909,7 @@ loc_80D5A7E:
 	strh r0, [r5,#oBattleObject_Timer]
 locret_80D5A84:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D5A88: .word byte_80D5A8C
 byte_80D5A8C: .byte 0x0, 0x0, 0x9, 0x0, 0x0, 0x80, 0x9, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x80, 0xA
 	.byte 0x0
@@ -60652,7 +60927,7 @@ sub_80D5A9C:
 	ldr r7, dword_80D5AB8 // =0x3 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D5AB4: .word 0x15050A01
 dword_80D5AB8: .word 0x3
 	thumb_func_end sub_80D5A9C
@@ -60667,7 +60942,7 @@ sub_80D5ABC:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D5AD0: .word off_80D5AD4
 off_80D5AD4: .word sub_80D5AE0+1
 	.word sub_80D5B84+1
@@ -60734,6 +61009,7 @@ loc_80D5B3E:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D5B6E:
 	pop {pc}
+	.balign 4, 0
 off_80D5B70: .word byte_80D5B74
 byte_80D5B74: .byte 0x0, 0x0, 0x5, 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x0, 0x6, 0x0, 0x0, 0x80, 0x6
 	.byte 0x0
@@ -60769,7 +61045,7 @@ loc_80D5BB8:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D5BC0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D5BC4: .word off_80D5BC8
 off_80D5BC8: .word sub_80D5BCC+1
 	thumb_func_end sub_80D5B84
@@ -60857,7 +61133,7 @@ sub_80D5C48:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D5C5C: .word off_80D5C60
 off_80D5C60: .word sub_80D5C6C+1
 	.word sub_80D5C9A+1
@@ -60960,7 +61236,7 @@ loc_80D5D16:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D5D20: .word byte_80D5D24
 byte_80D5D24: .byte 0x1, 0x0, 0x1, 0x1, 0x0, 0x1, 0xFF, 0x1, 0xFF, 0x0, 0xFF, 0xFF, 0x0
 	.byte 0xFF, 0x1, 0xFF
@@ -60979,6 +61255,7 @@ sub_80D5D34:
 locret_80D5D48:
 	pop {pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 dword_80D5D4C: .word 0x705FF01
 dword_80D5D50: .word 0x1180003
 	thumb_func_end sub_80D5D34
@@ -60993,7 +61270,7 @@ sub_80D5D54:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D5D68: .word off_80D5D6C
 off_80D5D6C: .word sub_80D5D78+1
 	.word sub_80D5DC8+1
@@ -61054,7 +61331,7 @@ loc_80D5DE4:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D5DE8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D5DEC: .word off_80D5DF0
 off_80D5DF0: .word sub_80D5DF4+1
 	thumb_func_end sub_80D5DC8
@@ -61142,6 +61419,7 @@ loc_80D5E78:
 	bl object_setPanelsFromCoordinates
 locret_80D5E9A:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80D5E9C: .word byte_80D5EA0
 byte_80D5EA0: .byte 0x10, 0x0, 0x80, 0x15, 0x10, 0x0, 0x80, 0x2A
 	thumb_func_end sub_80D5DF4
@@ -61197,6 +61475,7 @@ sub_80D5EDE:
 	strh r1, [r0,#oBattleObject_Timer]
 locret_80D5EFA:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80D5EFC: .word 0xA050101
 dword_80D5F00: .word 0x3
 dword_80D5F04: .word 0xFFFFC000
@@ -61212,7 +61491,7 @@ sub_80D5F08:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D5F1C: .word off_80D5F20
 off_80D5F20: .word sub_80D5F2C+1
 	.word sub_80D5FA0+1
@@ -61313,6 +61592,7 @@ loc_80D5FF6:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D5FFE:
 	pop {r4,pc}
+	.balign 4, 0
 off_80D6000: .word off_80D6004
 off_80D6004: .word sub_80D6020+1
 	.word sub_80D6098+1
@@ -61372,6 +61652,7 @@ loc_80D6072:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80D6082:
 	pop {r4,pc}
+	.balign 4, 0
 off_80D6084: .word byte_80D6088
 byte_80D6088: .byte 0x0, 0x0, 0x2, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0, 0x2, 0x0
 	thumb_func_end sub_80D6020
@@ -61469,6 +61750,7 @@ loc_80D613E:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D6146:
 	pop {r4,pc}
+	.balign 4, 0
 off_80D6148: .word byte_80D614C
 byte_80D614C: .byte 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x9, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0xB, 0x0
 off_80D615C: .word dword_80D6160
@@ -61506,7 +61788,7 @@ loc_80D618C:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80D619C:
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D61A0: .word off_80D61A4
 off_80D61A4: .word 0x700
 	thumb_func_end sub_80D6164
@@ -61590,7 +61872,7 @@ sub_80D622C:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D6240: .word off_80D6244
 off_80D6244: .word sub_80D6250+1
 	.word sub_80D62E8+1
@@ -61658,6 +61940,7 @@ loc_80D62B0:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D62DE:
 	pop {pc}
+	.balign 4, 0
 off_80D62E0: .word dword_80D62E4
 dword_80D62E4: .word 0x10200
 	thumb_func_end sub_80D6250
@@ -61711,6 +61994,7 @@ loc_80D6346:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D634E:
 	pop {pc}
+	.balign 4, 0
 off_80D6350: .word off_80D6354
 off_80D6354: .word sub_80D6364+1
 off_80D6358: .word byte_80D635C
@@ -61777,7 +62061,7 @@ loc_80D63D4:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D63DC:
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D63E0: .word byte_80D63E4
 byte_80D63E4: .byte 0x0, 0x0, 0x3, 0x0, 0x0, 0x80, 0x3, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x80, 0x4
 	.byte 0x0
@@ -61897,6 +62181,7 @@ loc_80D64C4:
 	blt loc_80D6478
 locret_80D64CA:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80D64CC: .word byte_80D64D0
 byte_80D64D0: .byte 0xFF, 0x0, 0x0, 0xFF, 0x1, 0x0, 0x0, 0x1, 0xFF, 0x1, 0xFF, 0xFF
 	.byte 0x1, 0x1, 0x1, 0xFF
@@ -61934,6 +62219,7 @@ loc_80D6534:
 	mov r0, #0
 locret_80D6536:
 	pop {pc}
+	.balign 4, 0
 off_80D6538: .word dword_80D653C
 dword_80D653C: .word 0x10010
 dword_80D6540: .word 0x0
@@ -61948,6 +62234,7 @@ sub_80D6544:
 	mov r4, #0x12
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,pc}
+	.balign 4, 0
 off_80D6554: .word byte_80D6214
 dword_80D6558: .word 0x100000
 	thumb_func_end sub_80D6544
@@ -61962,7 +62249,7 @@ sub_80D655C:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D6570: .word off_80D6574
 off_80D6574: .word sub_80D6580+1
 	.word sub_80D65E0+1
@@ -62097,6 +62384,7 @@ loc_80D6646:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80D6686:
 	pop {r4,pc}
+	.balign 4, 0
 off_80D6688: .word off_80D668C
 off_80D668C: .word sub_80D6694+1
 	.word sub_80D66E2+1
@@ -62214,6 +62502,7 @@ loc_80D6752:
 loc_80D6764:
 	add sp, sp, #0xc
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80D6768: .word byte_80D676C
 byte_80D676C: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -62282,6 +62571,7 @@ sub_80D67D2:
 	str r0, [r5,#oBattleObject_Y]
 	str r1, [r5,#oBattleObject_Z]
 	pop {pc}
+	.balign 4, 0
 off_80D67E4: .word 0x168
 dword_80D67E8: .word 0x80000
 	thumb_func_end sub_80D67D2
@@ -62296,7 +62586,7 @@ sub_80D67EC:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D6800: .word off_80D6804
 off_80D6804: .word sub_80D6810+1
 	.word sub_80D685A+1
@@ -62401,7 +62691,7 @@ loc_80D68C6:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D68D4: .word byte_80D68D8
 byte_80D68D8: .byte 0x3, 0x0, 0x0, 0x0, 0x3, 0x0, 0x54, 0x32
 	thumb_func_end sub_80D688C
@@ -62430,6 +62720,7 @@ sub_80D68E0:
 	strb r1, [r0,#oObjectHeader_Flags]
 locret_80D690A:
 	pop {pc}
+	.balign 4, 0
 dword_80D690C: .word 0xA050001
 dword_80D6910: .word 0x2B050001
 byte_80D6914: .byte 0x4, 0x5, 0x3, 0x1, 0x3, 0x0, 0x0, 0x0, 0xB, 0x5, 0x0, 0x1, 0x3, 0x0, 0x0, 0x0
@@ -62564,7 +62855,7 @@ sub_80D6A02:
 	strb r1, [r0]
 locret_80D6A14:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D6A18: .word byte_80D6914
 	.word 0x0
 	thumb_func_end sub_80D6A02
@@ -62579,7 +62870,7 @@ sub_80D6A20:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D6A34: .word off_80D6A38
 off_80D6A38: .word sub_80D6A44+1
 	.word sub_80D6B28+1
@@ -62676,7 +62967,7 @@ loc_80D6AFE:
 	bl sub_80D6B28
 	pop {r4,pc}
 	.word 0, 0, 0
-	.byte 0, 0
+	.balign 4, 0
 off_80D6B20: .word dword_80D6B24
 dword_80D6B24: .word 0x3000201
 	thumb_func_end sub_80D6A44
@@ -62801,7 +63092,7 @@ loc_80D6BEC:
 	bl object_updateSpriteTimestop
 locret_80D6BF0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D6BF4: .word off_80D6BF8
 off_80D6BF8: .word sub_80D6C04+1
 	.word sub_80D6C56+1
@@ -62867,7 +63158,7 @@ loc_80D6C78:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D6C7C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D6C80: .word off_80D6C84
 off_80D6C84: .word sub_80D6C88+1
 	thumb_func_end sub_80D6C56
@@ -62934,6 +63225,7 @@ loc_80D6CF0:
 	bl object_highlightPanel
 locret_80D6D02:
 	pop {pc}
+	.balign 4, 0
 off_80D6D04: .word byte_80D6D08
 byte_80D6D08: .byte 0x10, 0x0, 0x80, 0x15, 0x10, 0x0, 0x80, 0x2A
 	thumb_func_end sub_80D6C88
@@ -62994,7 +63286,7 @@ loc_80D6D5A:
 	bl sub_80C53A6
 locret_80D6D6C:
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80D6D70: .word 0xA050101
 dword_80D6D74: .word 0x3
 dword_80D6D78: .word 0xC00000
@@ -63018,7 +63310,7 @@ loc_80D6D98:
 	bl object_updateSpriteTimestop
 locret_80D6D9C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D6DA0: .word off_80D6DA4
 off_80D6DA4: .word sub_80D6DB0+1
 	.word sub_80D6E1E+1
@@ -63107,6 +63399,7 @@ loc_80D6E5C:
 locret_80D6E64:
 	pop {r4,pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80D6E68: .word off_80D6E6C
 off_80D6E6C: .word sub_80D6E70+1
 	thumb_func_end sub_80D6E1E
@@ -63167,7 +63460,7 @@ sub_80D6EB0:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80D6ED4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_80D6ED8: .byte 0x2, 0x0, 0x4, 0x0, 0x6, 0x0, 0xA, 0x0
 	thumb_func_end sub_80D6EB0
 
@@ -63181,7 +63474,7 @@ sub_80D6EE0:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D6EF4: .word off_80D6EF8
 off_80D6EF8: .word sub_80D6F04+1
 	.word sub_80D6F74+1
@@ -63275,6 +63568,7 @@ loc_80D6FBA:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D6FC2:
 	pop {pc}
+	.balign 4, 0
 off_80D6FC4: .word off_80D6FC8
 off_80D6FC8: .word sub_80D6FDC+1
 	.word sub_80D7008+1
@@ -63360,7 +63654,7 @@ sub_80D703A:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80D7060:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D7064: .word byte_80D6ED8
 	thumb_func_end sub_80D703A
 
@@ -63374,7 +63668,7 @@ sub_80D7068:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D707C: .word off_80D7080
 off_80D7080: .word sub_80D708C+1
 	.word sub_80D7100+1
@@ -63466,6 +63760,7 @@ loc_80D7138:
 locret_80D7140:
 	pop {pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80D7144: .word off_80D7148
 off_80D7148: .word sub_80D715C+1
 	.word sub_80D7186+1
@@ -63600,7 +63895,7 @@ sub_80D71FE:
 	add r0, #1
 	str r0, [r5,#oBattleObject_ExtraVars]
 	pop {r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D7244: .word byte_80D7248
 byte_80D7248: .byte 0x0, 0x0, 0x4, 0x0, 0x0, 0x80, 0x4, 0x0, 0x0, 0x0, 0x5, 0x0, 0x0, 0x80, 0x5
 	.byte 0x0
@@ -63620,7 +63915,7 @@ sub_80D7278:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D728C: .word off_80D7290
 off_80D7290: .word sub_80D729C+1
 	.word sub_80D730A+1
@@ -63701,6 +63996,7 @@ loc_80D732C:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
+	.balign 4, 0
 off_80D7348: .word off_80D734C
 off_80D734C: .word sub_80D7358+1
 	.word sub_80D7382+1
@@ -63903,6 +64199,7 @@ loc_80D74A2:
 	pop {r4,pc}
 	.word 0
 	.byte 0, 0, 0, 0
+	.balign 4, 0
 off_80D74D0: .word byte_80D74D4
 byte_80D74D4: .byte 0x0, 0x0, 0xC, 0x0, 0x0, 0x0, 0xC, 0x0
 	thumb_func_end sub_80D7420
@@ -63974,6 +64271,7 @@ loc_80D7546:
 	mov r0, #8
 	str r0, [r5,#8]
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80D756C: .word off_80D7570
 off_80D7570: .word sub_80D7578+1
 	.word sub_80D75A4+1
@@ -64045,7 +64343,7 @@ sub_80D75D4:
 	bl sub_801155A
 locret_80D75E8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D75EC: .word 0x1040403
 dword_80D75F0: .word 0x6050300
 dword_80D75F4: .word 0x6050100
@@ -64189,7 +64487,7 @@ loc_80D7718:
 	bl sub_800F656
 	bl object_genericDestroy
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D7738: .word 0x2C000
 dword_80D773C: .word 0xFFFFD800
 off_80D7740: .word 0xB4
@@ -64230,6 +64528,7 @@ loc_80D778A:
 	bl object_updateSprite
 	bl object_presentCollisionData
 	pop {pc}
+	.balign 4, 0
 off_80D7794: .word off_80D7798
 off_80D7798: .word sub_80D77D4+1
 	.word sub_80165B8+1
@@ -64321,6 +64620,7 @@ loc_80D784E:
 	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
+	.balign 4, 0
 dword_80D7874: .word 0xFFFFD800
 	thumb_func_end sub_80D77D4
 
@@ -64433,7 +64733,7 @@ loc_80D793C:
 	orr r0, r1
 	strh r0, [r5,#oBattleObject_Timer]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D7948: .word off_80D794C
 off_80D794C: .word sub_80D795C+1
 	.word sub_80D7996+1
@@ -64631,6 +64931,7 @@ sub_80D7A96:
 	orr r4, r7
 	bl sub_80D7A78
 	pop {r4,r7,pc}
+	.balign 4, 0
 dword_80D7AB8: .word 0x8000
 dword_80D7ABC: .word 0x300000
 dword_80D7AC0: .word 0x10D04
@@ -64648,7 +64949,7 @@ sub_80D7ACC:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D7AE0: .word off_80D7AE4
 off_80D7AE4: .word sub_80D7AF0+1
 	.word sub_80D7B5C+1
@@ -64731,6 +65032,7 @@ loc_80D7B8E:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D7B96:
 	pop {pc}
+	.balign 4, 0
 off_80D7B98: .word off_80D7B9C
 off_80D7B9C: .word sub_80D7BB0+1
 	.word sub_80D7BE0+1
@@ -64960,7 +65262,7 @@ loc_80D7D2E:
 loc_80D7D3A:
 	add sp, sp, #8
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D7D40: .word off_80D7D44
 off_80D7D44: .word 0x4000000
 	.word 0x8000000
@@ -65045,7 +65347,7 @@ sub_80D7DC0:
 loc_80D7DDA:
 	mov r0, r4
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80D7DE0: .word 0x24000
 	thumb_func_end sub_80D7DC0
 
@@ -65059,7 +65361,7 @@ sub_80D7DE4:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D7DF8: .word off_80D7DFC
 off_80D7DFC: .word sub_80D7E08+1
 	.word sub_80D7E7A+1
@@ -65229,6 +65531,7 @@ loc_80D7F32:
 	bne loc_80D7F08
 	add sp, sp, #8
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80D7F40: .word 0x4000000
 off_80D7F44: .word 0x8000000
 dword_80D7F48: .word 0x3205FF01
@@ -65275,6 +65578,7 @@ loc_80D809E:
 	bl object_updateSprite
 locret_80D80A2:
 	pop {pc}
+	.balign 4, 0
 off_80D80A4: .word off_80D80A8
 off_80D80A8: .word sub_80D80B4+1
 	.word sub_80D8172+1
@@ -65486,7 +65790,7 @@ sub_80D8242:
 	strb r1, [r0]
 locret_80D8254:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D8258: .word byte_80D7F4C
 	thumb_func_end sub_80D8242
 
@@ -65500,7 +65804,7 @@ sub_80D825C:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D8270: .word off_80D8274
 off_80D8274: .word sub_80D8280+1
 	.word sub_80D8310+1
@@ -65619,6 +65923,7 @@ loc_80D8366:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D836A:
 	pop {pc}
+	.balign 4, 0
 off_80D836C: .word off_80D8370
 off_80D8370: .word sub_80D837C+1
 	.word sub_80D83A0+1
@@ -65838,6 +66143,7 @@ sub_80D84DE:
 	bl object_presentCollisionData
 	bl object_updateSpriteTimestop
 	pop {pc}
+	.balign 4, 0
 off_80D8504: .word off_80D8508
 off_80D8508: .word sub_80D852C+1
 	.word sub_80165B8+1
@@ -65973,7 +66279,7 @@ sub_80D85F0:
 	strb r2, [r0]
 locret_80D8614:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D8618: .word 0x8000
 dword_80D861C: .word 0x300000
 	thumb_func_end sub_80D85F0
@@ -65988,7 +66294,7 @@ sub_80D8620:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D8634: .word off_80D8638
 off_80D8638: .word sub_80D8644+1
 	.word sub_80D868E+1
@@ -66197,7 +66503,7 @@ sub_80D879C:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D87B0: .word off_80D87B4
 off_80D87B4: .word sub_80D87C0+1
 	.word sub_80D881C+1
@@ -66263,6 +66569,7 @@ sub_80D881C:
 	bl PlaySoundEffect
 locret_80D883E:
 	pop {pc}
+	.balign 4, 0
 off_80D8840: .word off_80D8844
 off_80D8844: .word sub_80D884C+1
 	.word sub_80D8868+1
@@ -66325,7 +66632,7 @@ loc_80D887C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D88B0:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D88B4: .word 0x16050C01
 	thumb_func_end sub_80D8868
 
@@ -66366,6 +66673,7 @@ sub_80D88E0:
 	bl object_updateSprite
 locret_80D88F6:
 	pop {pc}
+	.balign 4, 0
 off_80D88F8: .word off_80D88FC
 off_80D88FC: .word sub_80D8908+1
 	.word sub_80D8988+1
@@ -66510,6 +66818,7 @@ loc_80D8A0E:
 loc_80D8A1E:
 	bl object_presentCollisionData
 	pop {r4,pc}
+	.balign 4, 0
 off_80D8A24: .word off_80D8A28
 off_80D8A28: .word sub_80D8A3C+1
 	.word sub_80D8AB6+1
@@ -66790,7 +67099,7 @@ sub_80D8C10:
 loc_80D8C2A:
 	mov r0, #0
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80D8C30: .word 0x3800000
 dword_80D8C34: .word 0xC41
 dword_80D8C38: .word 0xE0F0300
@@ -66913,7 +67222,7 @@ loc_80D8D3A:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D8D4C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D8D50: .word off_80D8D54
 off_80D8D54: .word nullsub_97+1
 	thumb_func_end sub_80D8CF0
@@ -67034,7 +67343,7 @@ sub_80D8E10:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D8E24: .word off_80D8E28
 off_80D8E28: .word sub_80D8E34+1
 	.word sub_80D8EB0+1
@@ -67084,7 +67393,7 @@ loc_80D8E72:
 	bl sub_80D8EB0
 	pop {pc}
 	.word 0, 0
-	.byte 0, 0
+	.balign 4, 0
 off_80D8EA0: .word byte_80D8EA4
 byte_80D8EA4: .byte 0x0, 0x0, 0x3C, 0x0, 0x0, 0x0, 0x46, 0x0, 0x0, 0x0, 0x3C, 0x0
 	thumb_func_end sub_80D8E34
@@ -67434,6 +67743,7 @@ loc_80D910E:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80D9118: .word 0x405FF09
 dword_80D911C: .word 0x405FF0B
 	thumb_func_end sub_80D90C8
@@ -67468,7 +67778,7 @@ sub_80D9130:
 	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
 locret_80D914C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80D9150: .word 0x1000
 	thumb_func_end sub_80D9130
 
@@ -67482,7 +67792,7 @@ sub_80D9154:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D9168: .word off_80D916C
 off_80D916C: .word sub_80D9178+1
 	.word sub_80D91C8+1
@@ -67558,7 +67868,7 @@ loc_80D9200:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D9204:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D9208: .word off_80D920C
 off_80D920C: .word sub_80D9210+1
 	thumb_func_end sub_80D91C8
@@ -67717,7 +68027,7 @@ loc_80D9312:
 loc_80D931E:
 	mov r0, #1
 	pop {r5,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D9324: .word off_80D9328
 off_80D9328: .word dword_80D9334
 	.word dword_80D9338
@@ -67745,7 +68055,7 @@ sub_80D9350:
 	bl object_updateSpritePaused
 locret_80D9368:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D936C: .word off_80D9370
 off_80D9370: .word sub_80D937C+1
 	.word sub_80D9434+1
@@ -67808,7 +68118,7 @@ loc_80D93CE:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D9400:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D9404: .word dword_80D9408
 dword_80D9408: .word 0x20001
 off_80D940C: .word byte_80D9410
@@ -67856,6 +68166,7 @@ loc_80D947A:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D9482:
 	pop {pc}
+	.balign 4, 0
 off_80D9484: .word off_80D9488
 off_80D9488: .word sub_80D9498+1
 	.word sub_80D94B8+1
@@ -68080,7 +68391,7 @@ loc_80D9624:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D9630:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80D9634: .word 0xC000000
 	thumb_func_end sub_80D95B0
 
@@ -68169,7 +68480,7 @@ sub_80D96A4:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D96B8: .word off_80D96BC
 off_80D96BC: .word sub_80D96C8+1
 	.word sub_80D9746+1
@@ -68260,6 +68571,7 @@ loc_80D9762:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
+	.balign 4, 0
 off_80D977C: .word off_80D9780
 off_80D9780: .word sub_80D9788+1
 	.word sub_80D97EC+1
@@ -68364,6 +68676,7 @@ sub_80D981C:
 	str r6, [r0,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 locret_80D9836:
 	pop {pc}
+	.balign 4, 0
 dword_80D9838: .word 0x3C0000
 dword_80D983C: .word 0x190000
 dword_80D9840: .word 0x140000
@@ -68381,7 +68694,7 @@ sub_80D984C:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80D9860: .word off_80D9864
 off_80D9864: .word sub_80D9870+1
 	.word sub_80D98E8+1
@@ -68434,6 +68747,7 @@ loc_80D98BE:
 	add r0, #0xff
 	bl PlaySoundEffect
 	pop {r7,pc}
+	.balign 4, 0
 dword_80D98E4: .word 0xA0000
 	thumb_func_end sub_80D9870
 
@@ -68462,6 +68776,7 @@ loc_80D9914:
 	bl sub_80D99A4
 	pop {pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80D9920: .word off_80D9924
 off_80D9924: .word sub_80D9930+1
 	.word sub_80D995C+1
@@ -68587,6 +68902,7 @@ sub_80D99EC:
 	strb r1, [r0,#oObjectHeader_Flags]
 locret_80D9A12:
 	pop {pc}
+	.balign 4, 0
 byte_80D9A14: .byte 0x0, 0x0, 0x80, 0xC, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 byte_80D9A20: .byte 0x3C, 0xA, 0x10, 0x0, 0x0, 0x3C, 0xF, 0x12, 0x0, 0x3, 0x3C
 	.byte 0x14, 0x12, 0x30, 0x6, 0x3C, 0x4, 0x10, 0x0, 0x0, 0x3C, 0x8
@@ -68605,7 +68921,7 @@ sub_80D9A50:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D9A64: .word off_80D9A68
 off_80D9A68: .word sub_80D9A74+1
 	.word sub_80D9ABA+1
@@ -68691,7 +69007,7 @@ loc_80D9B08:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80D9B1C: .word off_80D9B20
 off_80D9B20: .word sub_80D9B2C+1
 	.word sub_80D9C1C+1
@@ -68946,6 +69262,7 @@ loc_80D9D02:
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
 	.word 0x0
+	.balign 4, 0
 off_80D9D20: .word byte_80D9D24
 byte_80D9D24: .byte 0x82, 0xFF, 0x5, 0xB, 0x81, 0xFF, 0x5, 0xB
 off_80D9D2C: .word byte_80D9A20
@@ -69046,6 +69363,7 @@ loc_80D9DF2:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80D9E24
 	pop {pc}
+	.balign 4, 0
 dword_80D9E18: .word 0x2C000
 byte_80D9E1C: .byte 0x0, 0xD8, 0xFF, 0xFF, 0x70, 0x17, 0x0, 0x0
 	thumb_func_end sub_80D9D6C
@@ -69095,6 +69413,7 @@ loc_80D9E72:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D9E82:
 	pop {r4,pc}
+	.balign 4, 0
 off_80D9E84: .word off_80D9E88
 off_80D9E88: .word sub_80D9E94+1
 	.word sub_80D9F2C+1
@@ -69172,6 +69491,7 @@ loc_80D9F06:
 	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80D9F28: .word 0xFFFFD800
 	thumb_func_end sub_80D9E94
 
@@ -69319,6 +69639,7 @@ loc_80DA012:
 	bl sub_801A4D0
 	add sp, sp, #8
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80DA030: .word byte_80DA034
 byte_80DA034: .byte 0x18, 0x1, 0x19, 0x1, 0xF5, 0x0, 0x14, 0x4
 dword_80DA03C: .word 0x3F800000
@@ -69403,7 +69724,7 @@ loc_80DA0E6:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80DA108
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DA100: .word dword_80DA104
 dword_80DA104: .word 0x10200
 	thumb_func_end sub_80DA07C
@@ -69423,7 +69744,7 @@ sub_80DA108:
 	bl object_updateSprite
 	bl object_presentCollisionData
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DA130: .word off_80DA134
 off_80DA134: .word sub_80DA15C+1
 	.word sub_80165B8+1
@@ -69465,6 +69786,7 @@ sub_80DA172:
 	bx r1
 locret_80DA18A:
 	pop {pc}
+	.balign 4, 0
 off_80DA18C: .word off_80DA190
 off_80DA190: .word sub_80DA1A4+1
 	.word sub_80DA1AE+1
@@ -69517,7 +69839,7 @@ sub_80DA1C6:
 locret_80DA1E0:
 	pop {pc}
 	.word 0, 0, 0
-	.byte 0, 0
+	.balign 4, 0
 off_80DA1F0: .word dword_80DA1F4
 dword_80DA1F4: .word 0x40001
 	thumb_func_end sub_80DA1C6
@@ -69555,6 +69877,7 @@ locret_80DA232:
 	pop {r4,r6,pc}
 	.word 0, 0
 	.byte 0, 0, 0, 0
+	.balign 4, 0
 off_80DA240: .word dword_80DA244
 dword_80DA244: .word 0x50002
 	thumb_func_end sub_80DA1F8
@@ -69594,6 +69917,7 @@ sub_80DA266:
 	bx r1
 locret_80DA282:
 	pop {pc}
+	.balign 4, 0
 off_80DA284: .word off_80DA288
 off_80DA288: .word sub_80DA290+1
 	.word sub_80DA2D8+1
@@ -69629,7 +69953,7 @@ loc_80DA2AE:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
 	.word 0
-	.byte 0, 0
+	.balign 4, 0
 off_80DA2D0: .word dword_80DA2D4
 dword_80DA2D4: .word 0x90708
 	thumb_func_end sub_80DA290
@@ -69783,6 +70107,7 @@ loc_80DA3D6:
 	pop {r0,r1}
 locret_80DA3E6:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80DA3E8: .word 0x100FF
 	thumb_func_end sub_80DA3C0
 
@@ -69874,7 +70199,7 @@ sub_80DA470:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DA484: .word off_80DA488
 off_80DA488: .word sub_80DA494+1
 	.word sub_80DA53A+1
@@ -69946,6 +70271,7 @@ loc_80DA502:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DA52A:
 	pop {pc}
+	.balign 4, 0
 off_80DA52C: .word off_80DA530
 off_80DA530: .word 0x100
 off_80DA534: .word byte_80DA538
@@ -69986,7 +70312,7 @@ loc_80DA578:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DA580:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DA584: .word off_80DA588
 off_80DA588: .word sub_80DA58C+1
 	thumb_func_end sub_80DA53A
@@ -70025,6 +70351,7 @@ loc_80DA5AA:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DA5CA:
 	pop {pc}
+	.balign 4, 0
 off_80DA5CC: .word byte_80DA5D0
 byte_80DA5D0: .byte 0x8, 0x2E
 	thumb_func_end sub_80DA58C
@@ -70064,7 +70391,7 @@ sub_80DA5FC:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DA610: .word off_80DA614
 off_80DA614: .word sub_80DA620+1
 	.word sub_80DA662+1
@@ -70119,6 +70446,7 @@ loc_80DA67E:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DA682:
 	pop {pc}
+	.balign 4, 0
 off_80DA684: .word off_80DA688
 off_80DA688: .word sub_80DA68C+1
 	thumb_func_end sub_80DA662
@@ -70181,7 +70509,7 @@ loc_80DA6FC:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DA700:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DA704: .word byte_80DA708
 byte_80DA708: .byte 0x10, 0x0, 0x80, 0x15, 0x10, 0x0, 0x80, 0x2A
 	thumb_func_end sub_80DA68C
@@ -70299,7 +70627,7 @@ loc_80DA7BE:
 	str r0, [r5,#oBattleObject_ZVelocity]
 locret_80DA7D4:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DA7D8: .word byte_80DA7DC
 byte_80DA7DC: .byte 0x0, 0x0, 0x14, 0x0, 0x0, 0x0, 0x14, 0x0, 0x0, 0x0, 0x14, 0x0, 0x0, 0x0
 	.byte 0x14, 0x0
@@ -70317,7 +70645,7 @@ sub_80DA7EC:
 	ldr r7, dword_80DA808 // =0x3 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80DA804: .word 0xA05FF01
 dword_80DA808: .word 0x3
 	thumb_func_end sub_80DA7EC
@@ -70335,6 +70663,7 @@ sub_80DA80C:
 	bl object_updateSprite
 locret_80DA822:
 	pop {pc}
+	.balign 4, 0
 off_80DA824: .word off_80DA828
 off_80DA828: .word sub_80DA834+1
 	.word sub_80DA886+1
@@ -70416,7 +70745,7 @@ loc_80DA8BA:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DA8D8: .word off_80DA8DC
 off_80DA8DC: .word sub_80DA8EC+1
 	.word sub_80DA908+1
@@ -70538,6 +70867,7 @@ sub_80DA9A2:
 	ldr r0, [r0,r3]
 	bl sprite_setUnk0x2c
 	pop {pc}
+	.balign 4, 0
 off_80DA9B4: .word byte_80DA9B8
 byte_80DA9B8: .byte 0x0, 0x0, 0xF8, 0x7, 0x0, 0x0, 0xF8, 0xB, 0x0, 0x0, 0xF8, 0xD, 0x0
 	.byte 0x0, 0xF8, 0xE, 0x0, 0x0, 0x78, 0xF, 0x0, 0x0, 0xB8, 0xF, 0x0, 0x0
@@ -70577,6 +70907,7 @@ sub_80DA9FE:
 	ldrh r0, [r4,r0]
 	pop {r4,pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80DAA14: .word byte_80211A0
 dword_80DAA18: .word 0x100100C
 dword_80DAA1C: .word 0xE0F0300
@@ -70649,7 +70980,7 @@ sub_80DAA86:
 	mov r0, #8
 	str r0, [r5,#8]
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DAAB0: .word off_80DAAB4
 off_80DAAB4: .word sub_80DAABC+1
 	.word sub_80DAB22+1
@@ -70829,6 +71160,7 @@ sub_80DABE8:
 	ldr r4, off_80DACD8 // =byte_80DACC0 
 	bl sub_8015D80
 	pop {pc}
+	.balign 4, 0
 off_80DABFC: .word 0x4000000
 	.word 0x0
 	.word 0x8000000
@@ -70921,6 +71253,7 @@ loc_80DAC9A:
 loc_80DACAC:
 	add sp, sp, #0x30
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80DACB0: .word 0x0
 	.word 0x4000000
 	.word 0x0
@@ -70948,6 +71281,7 @@ sub_80DACE4:
 	bl object_updateSpritePaused
 locret_80DACFA:
 	pop {pc}
+	.balign 4, 0
 off_80DACFC: .word off_80DAD00
 off_80DAD00: .word sub_80DAD0C+1
 	.word sub_80DAD84+1
@@ -71041,7 +71375,7 @@ loc_80DADC0:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DADC8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DADCC: .word off_80DADD0
 off_80DADD0: .word sub_80DADE0+1
 off_80DADD4: .word byte_80DADD8
@@ -71142,7 +71476,7 @@ loc_80DAE7E:
 	svc 6
 	strh r0, [r5,#oBattleObject_Timer]
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80DAE90: .word 0xA0000
 	thumb_func_end sub_80DAE70
 
@@ -71163,7 +71497,7 @@ loc_80DAEAC:
 	bl object_updateSpriteTimestop
 locret_80DAEB0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DAEB4: .word off_80DAEB8
 off_80DAEB8: .word sub_80DAEC4+1
 	.word sub_80DAF2A+1
@@ -71250,6 +71584,7 @@ loc_80DAF5E:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DAF66:
 	pop {pc}
+	.balign 4, 0
 off_80DAF68: .word off_80DAF6C
 off_80DAF6C: .word sub_80DAF74+1
 	.word sub_80DAF98+1
@@ -71331,7 +71666,7 @@ loc_80DAFF8:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DAFFC:
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DB000: .word byte_80DB004
 byte_80DB004: .byte 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -71427,6 +71762,7 @@ loc_80DB096:
 	bl sub_80C53A6
 locret_80DB0AA:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80DB0AC: .word 0x6050A01
 off_80DB0B0: .word dword_80DB0B4
 dword_80DB0B4: .word 0x1
@@ -71470,7 +71806,7 @@ sub_80DB0E4:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DB0F8: .word off_80DB0FC
 off_80DB0FC: .word sub_80DB108+1
 	.word sub_80DB148+1
@@ -71525,7 +71861,7 @@ sub_80DB148:
 	bl object_updateSprite
 	bl object_presentCollisionData
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DB170: .word off_80DB174
 off_80DB174: .word sub_80DB198+1
 	.word sub_80165B8+1
@@ -71716,7 +72052,7 @@ sub_80DB2C6:
 	bl setFieldBattleObject_800F614
 locret_80DB2EC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80DB2F0: .word 0x1000C00
 dword_80DB2F4: .word 0x13140300
 dword_80DB2F8: .word 0x708
@@ -71800,7 +72136,7 @@ sub_80DB376:
 	bic r0, r1
 	strb r0, [r5]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DB3A8: .word off_80DB3AC
 off_80DB3AC: .word sub_80DB3B4+1
 	.word sub_80DB41C+1
@@ -71852,7 +72188,7 @@ loc_80DB404:
 	sub r0, r0, r1
 	str r0, [r5,#oBattleObject_Z]
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80DB418: .word 0xF800010
 	thumb_func_end sub_80DB3B4
 
@@ -72014,6 +72350,7 @@ loc_80DB50C:
 	cmp r6, #9
 	blt loc_80DB50C
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80DB53C: .word byte_80DB540
 byte_80DB540: .byte 0xFF
 byte_80DB541: .byte 0xFF, 0xFF, 0x0, 0xFF, 0x1, 0x0, 0xFF, 0x0, 0x0, 0x0, 0x1, 0x1, 0xFF
@@ -72180,6 +72517,7 @@ sub_80DB684:
 	ldr r0, [r3,#oBattleObject_Y]
 	str r0, [r5,#oBattleObject_Y]
 	pop {pc}
+	.balign 4, 0
 dword_80DB6A0: .word 0x3A0000
 	thumb_func_end sub_80DB684
 
@@ -72200,7 +72538,7 @@ loc_80DB6BC:
 	bl object_updateSpriteTimestop
 locret_80DB6C0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DB6C4: .word off_80DB6C8
 off_80DB6C8: .word sub_80DB6D4+1
 	.word sub_80DB726+1
@@ -72266,7 +72604,7 @@ loc_80DB748:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DB74C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DB750: .word off_80DB754
 off_80DB754: .word sub_80DB75C+1
 	.word sub_80DB7B2+1
@@ -72435,7 +72773,7 @@ sub_80DB864:
 loc_80DB87E:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DB884: .word byte_80DB888
 byte_80DB888: .byte 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x80, 0xA
 	thumb_func_end sub_80DB864
@@ -72466,6 +72804,7 @@ loc_80DB8AC:
 	bl sub_80C53A6
 locret_80DB8BE:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80DB8C0: .word 0x15050A01
 dword_80DB8C4: .word 0x3
 dword_80DB8C8: .word 0x60000
@@ -72567,7 +72906,7 @@ sub_80DB970:
 	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
 locret_80DB98C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80DB990: .word 0xC000000
 	thumb_func_end sub_80DB970
 
@@ -72581,7 +72920,7 @@ sub_80DB994:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DB9A8: .word off_80DB9AC
 off_80DB9AC: .word sub_80DB9B8+1
 	.word sub_80DBA50+1
@@ -72649,7 +72988,7 @@ loc_80DBA1E:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DBA48:
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80DBA4C: .word 0xFFF
 	thumb_func_end sub_80DB9B8
 
@@ -72669,6 +73008,7 @@ sub_80DBA50:
 	mov r0, #8
 	str r0, [r5,#8]
 	pop {pc}
+	.balign 4, 0
 off_80DBA74: .word off_80DBA78
 off_80DBA78: .word sub_80DBA7C+1
 	thumb_func_end sub_80DBA50
@@ -72737,6 +73077,7 @@ loc_80DBAF8:
 	add sp, sp, #0x10
 	pop {r4,pc}
 	.byte 0x0, 0x0, 0x0, 0x3F, 0x0, 0x0, 0x80, 0x0
+	.balign 4, 0
 off_80DBB04: .word dword_80DBB08
 dword_80DBB08: .word 0x101
 	thumb_func_end sub_80DBA7C
@@ -72766,7 +73107,7 @@ sub_80DBB0C:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80DBB38:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80DBB3C: .word 0x30000
 	thumb_func_end sub_80DBB0C
 
@@ -72780,7 +73121,7 @@ sub_80DBB40:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DBB54: .word off_80DBB58
 off_80DBB58: .word sub_80DBB64+1
 	.word sub_80DBC0A+1
@@ -72891,6 +73232,7 @@ loc_80DBC34:
 locret_80DBC3C:
 	pop {pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80DBC40: .word off_80DBC44
 off_80DBC44: .word sub_80DBC48+1
 	thumb_func_end sub_80DBC0A
@@ -72982,6 +73324,7 @@ loc_80DBCE0:
 	svc 6
 	strh r0, [r5,#oBattleObject_Timer]
 	pop {r4,pc}
+	.balign 4, 0
 dword_80DBCE8: .word 0x60000
 	thumb_func_end sub_80DBCBA
 
@@ -72995,7 +73338,7 @@ sub_80DBCEC:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DBD00: .word off_80DBD04
 off_80DBD04: .word sub_80DBD10+1
 	.word sub_80DBDA0+1
@@ -73049,6 +73392,7 @@ sub_80DBD10:
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
+	.balign 4, 0
 dword_80DBD80: .word 0x860000
 dword_80DBD84: .word 0x100000
 off_80DBD88: .word byte_80DBD8C
@@ -73136,6 +73480,7 @@ loc_80DBE3A:
 loc_80DBE3C:
 	str r1, [r5,#oBattleObject_Z]
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80DBE40: .word byte_80DBE44
 byte_80DBE44: .byte 0x0, 0x78, 0x0, 0x0, 0x0, 0xD2, 0x0, 0x0
 	thumb_func_end sub_80DBDBC
@@ -73229,6 +73574,7 @@ sub_80DBEBA:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80DBEDA:
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_80DBEDC: .word 0x15050001
 byte_80DBEE0: .byte 0x31, 0x0, 0xA, 0x5, 0x1, 0x0
 	thumb_func_end sub_80DBEBA
@@ -73323,6 +73669,7 @@ loc_80DBF90:
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r7,pc}
 	.byte 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x1
+	.balign 4, 0
 off_80DBFBC: .word byte_80DBEE0
 	thumb_func_end sub_80DBF04
 
@@ -73347,6 +73694,7 @@ sub_80DBFC0:
 	bic r0, r1
 	strb r0, [r5]
 	pop {pc}
+	.balign 4, 0
 off_80DBFF0: .word off_80DBFF4
 off_80DBFF4: .word sub_80DC000+1
 	.word sub_80DC018+1
@@ -73439,6 +73787,7 @@ loc_80DC08E:
 	bl object_setPanelsFromCoordinates
 	bl object_updateCollisionPanels
 	pop {r7,pc}
+	.balign 4, 0
 dword_80DC0A8: .word 0xF800010
 	thumb_func_end sub_80DC018
 
@@ -73543,7 +73892,7 @@ sub_80DC160:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DC174: .word off_80DC178
 off_80DC178: .word sub_80DC180+1
 	.word sub_80DC1A2+1
@@ -73633,6 +73982,7 @@ loc_80DC1EE:
 locret_80DC216:
 	pop {r4,r6,r7,pc}
 	.word byte_80DC21C
+	.balign 4, 0
 byte_80DC21C: .byte 0x1, 0x0, 0x23, 0x0, 0x1, 0x0, 0x1B, 0x0, 0x1, 0x0, 0x1C, 0x0, 0x1, 0x0
 	.byte 0x1D, 0x0
 	thumb_func_end sub_80DC1A2
@@ -73658,7 +74008,7 @@ sub_80DC22C:
 	strb r1, [r0,#oObjectHeader_Flags]
 locret_80DC250:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80DC254: .word 0x1705FF01
 dword_80DC258: .word 0x2000
 dword_80DC25C: .word 0x3005FF01
@@ -73745,6 +74095,7 @@ loc_80DC2F6:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80DC308: .word off_80DC30C
 off_80DC30C: .word sub_80DC310+1
 	thumb_func_end sub_80DC2D4
@@ -73882,7 +74233,7 @@ sub_80DC3F8:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DC40C: .word off_80DC410
 off_80DC410: .word sub_80DC41C+1
 	.word sub_80DC45E+1
@@ -73935,7 +74286,7 @@ loc_80DC474:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DC478:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DC47C: .word off_80DC480
 off_80DC480: .word sub_80DC484+1
 	thumb_func_end sub_80DC45E
@@ -74004,6 +74355,7 @@ sub_80DC4DE:
 	ldr r7, dword_80DC4F8 // =0x3 
 	bl sub_80C53A6
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80DC4F4: .word 0xA050301
 dword_80DC4F8: .word 0x3
 	thumb_func_end sub_80DC4DE
@@ -74018,7 +74370,7 @@ sub_80DC4FC:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DC510: .word off_80DC514
 off_80DC514: .word sub_80DC520+1
 	.word loc_80DC562+1
@@ -74068,7 +74420,7 @@ loc_80DC578:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DC57C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DC580: .word off_80DC584
 off_80DC584: .word sub_80DC588+1
 	thumb_func_end sub_80DC520
@@ -74134,6 +74486,7 @@ sub_80DC5DA:
 	ldr r7, dword_80DC5F4 // =0x1 
 	bl sub_80C53A6
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80DC5F0: .word 0xA050401
 dword_80DC5F4: .word 0x1
 	thumb_func_end sub_80DC5DA
@@ -74148,7 +74501,7 @@ sub_80DC5F8:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DC60C: .word off_80DC610
 off_80DC610: .word sub_80DC61C+1
 	.word sub_80DC668+1
@@ -74226,6 +74579,7 @@ loc_80DC6A6:
 	bl sub_80DC6D2
 	bl object_presentCollisionData
 	pop {pc}
+	.balign 4, 0
 dword_80DC6B0: .word 0x1044
 dword_80DC6B4: .word 0x56050300
 dword_80DC6B8: .word 0x280000
@@ -74268,6 +74622,7 @@ loc_80DC6DC:
 	b loc_80DC6DC
 locret_80DC6FA:
 	pop {r4,r6,pc}
+	.balign 4, 0
 byte_80DC6FC: .byte 0x0
 byte_80DC6FD: .byte 0x0, 0x1, 0x0, 0x2, 0x0, 0x2, 0x1, 0x2, 0xFF, 0x7F, 0x0
 off_80DC708: .word byte_80DC6FC
@@ -74283,7 +74638,7 @@ sub_80DC70C:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DC720: .word off_80DC724
 off_80DC724: .word sub_80DC730+1
 	.word sub_80DC778+1
@@ -74379,6 +74734,7 @@ loc_80DC7D8:
 	bl object_highlightPanel
 	bl object_presentCollisionData
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80DC7E8: .word off_80DC7EC
 off_80DC7EC: .word sub_80DC7FC+1
 	.word sub_80DC872+1
@@ -74636,7 +74992,7 @@ sub_80DC99C:
 loc_80DC9D2:
 	add sp, sp, #0x14
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DC9D8: .word byte_80DC9DC
 byte_80DC9DC: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -74677,7 +75033,7 @@ sub_80DC9F0:
 loc_80DCA26:
 	mov r0, #0
 	pop {r5-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DCA2C: .word byte_80DCA30
 byte_80DCA30: .byte 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x80, 0xA
 	thumb_func_end sub_80DC9F0
@@ -74797,7 +75153,7 @@ sub_80DCAFA:
 	add r1, r1, r2
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80DCB0C: .word 0x100D
 dword_80DCB10: .word 0x4050300
 dword_80DCB14: .word 0x40000
@@ -74821,7 +75177,7 @@ loc_80DCB34:
 	bl object_updateSpriteTimestop
 locret_80DCB38:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DCB3C: .word off_80DCB40
 off_80DCB40: .word sub_80DCB4C+1
 	.word sub_80DCB9C+1
@@ -74886,6 +75242,7 @@ loc_80DCBBE:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DCBC2:
 	pop {pc}
+	.balign 4, 0
 off_80DCBC4: .word off_80DCBC8
 off_80DCBC8: .word sub_80DCBCC+1
 	thumb_func_end sub_80DCB9C
@@ -74950,7 +75307,7 @@ loc_80DCC32:
 	bl object_highlightPanel
 locret_80DCC44:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DCC48: .word byte_80DCC4C
 byte_80DCC4C: .byte 0x0, 0x0, 0xC, 0x0, 0x0, 0x0, 0xC, 0x0, 0x0, 0x0, 0xC, 0x0, 0x0, 0x0, 0xC
 	.byte 0x0
@@ -75008,7 +75365,7 @@ loc_80DCCB2:
 	bl sub_80C53A6
 locret_80DCCC4:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80DCCC8: .word 0xA050701
 dword_80DCCCC: .word 0x3
 dword_80DCCD0: .word 0xC00000
@@ -75024,7 +75381,7 @@ sub_80DCCD4:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DCCE8: .word off_80DCCEC
 off_80DCCEC: .word sub_80DCCF8+1
 	.word sub_80DCD48+1
@@ -75085,7 +75442,7 @@ loc_80DCD64:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DCD68:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DCD6C: .word off_80DCD70
 off_80DCD70: .word sub_80DCD74+1
 	thumb_func_end sub_80DCD48
@@ -75175,6 +75532,7 @@ sub_80DCDFA:
 	ldr r7, dword_80DCE14 // =0x3 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80DCE10: .word 0x15050601
 dword_80DCE14: .word 0x3
 	thumb_func_end sub_80DCDFA
@@ -75191,6 +75549,7 @@ sub_80DCE18:
 	mov r4, #0x34 
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,pc}
+	.balign 4, 0
 dword_80DCE30: .word 0x300000
 dword_80DCE34: .word 0x80000
 	thumb_func_end sub_80DCE18
@@ -75205,7 +75564,7 @@ sub_80DCE38:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DCE4C: .word off_80DCE50
 off_80DCE50: .word sub_80DCE5C+1
 	.word sub_80DCE9E+1
@@ -75286,7 +75645,7 @@ sub_80DCEC6:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80DCEE8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_80DCEEC: .byte 0x3, 0x0, 0x3, 0x0, 0xA, 0x0, 0xA, 0x0
 	thumb_func_end sub_80DCEC6
 
@@ -75300,7 +75659,7 @@ sub_80DCEF4:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DCF08: .word off_80DCF0C
 off_80DCF0C: .word sub_80DCF18+1
 	.word sub_80DCF88+1
@@ -75398,6 +75757,7 @@ loc_80DCFD6:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DCFDE:
 	pop {pc}
+	.balign 4, 0
 off_80DCFE0: .word off_80DCFE4
 off_80DCFE4: .word sub_80DCFF4+1
 off_80DCFE8: .word byte_80DCFEC
@@ -75491,6 +75851,7 @@ loc_80DD088:
 	svc 6
 	strh r0, [r5,#oBattleObject_Timer]
 	pop {pc}
+	.balign 4, 0
 off_80DD094: .word byte_80DD098
 byte_80DD098: .byte 0x0, 0x80, 0x3, 0x0, 0x0, 0x80, 0x3, 0x0, 0x0, 0x80, 0x3, 0x0, 0x0, 0x80
 	.byte 0x3, 0x0
@@ -75507,7 +75868,7 @@ sub_80DD0AC:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DD0C0: .word off_80DD0C4
 off_80DD0C4: .word sub_80DD0D0+1
 	.word sub_80DD15C+1
@@ -75559,7 +75920,7 @@ loc_80DD112:
 	bl sub_80DD15C
 locret_80DD13C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DD140: .word byte_80DD144
 byte_80DD144: .byte 0x10, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x10
 	.byte 0x0, 0x0, 0x0, 0x11, 0x0, 0x0, 0x0, 0x12, 0x0, 0x0, 0x0
@@ -75593,7 +75954,7 @@ loc_80DD18C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DD198:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DD19C: .word off_80DD1A0
 off_80DD1A0: .word sub_80DD1AC+1
 	.word sub_80DD204+1
@@ -75832,7 +76193,7 @@ loc_80DD33E:
 	mov r0, #1
 locret_80DD340:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DD344: .word byte_8113DC0
 dword_80DD348: .word 0x30000
 	thumb_func_end sub_80DD322
@@ -75847,7 +76208,7 @@ sub_80DD34C:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DD360: .word off_80DD364
 off_80DD364: .word sub_80DD382+1
 	.word sub_80DD438+1
@@ -75942,7 +76303,7 @@ loc_80DD416:
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80DD430: .word 0x38000
 dword_80DD434: .word 0xC000
 	thumb_func_end sub_80DD382
@@ -75994,6 +76355,7 @@ loc_80DD488:
 loc_80DD496:
 	bl sub_80DD584
 	pop {pc}
+	.balign 4, 0
 off_80DD49C: .word off_80DD4A0
 off_80DD4A0: .word sub_80DD4B0+1
 	.word sub_80DD4E8+1
@@ -76268,6 +76630,7 @@ loc_80DD69E:
 	strb r0, [r5,#oBattleObject_Param3]
 locret_80DD6A2:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80DD6A4: .word byte_80DD6A8
 byte_80DD6A8: .byte 0x66, 0x66, 0x2, 0x0, 0x33, 0xB3, 0x2, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0
 	.byte 0x80, 0x7, 0x0
@@ -76317,7 +76680,7 @@ loc_80DD72A:
 	str r0, [r5,#oBattleObject_ExtraVars+8]
 locret_80DD72C:
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80DD730: .word 0xA94A
 dword_80DD734: .word 0xC
 	thumb_func_end sub_80DD6F4
@@ -76344,7 +76707,7 @@ loc_80DD754:
 	str r0, [r5,#oBattleObject_XVelocity]
 locret_80DD75C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80DD760: .word 0x1E800000
 	thumb_func_end sub_80DD738
 
@@ -76612,7 +76975,7 @@ loc_80DD958:
 	bl object_updateSpriteTimestop
 locret_80DD95C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DD960: .word off_80DD964
 off_80DD964: .word sub_80DD970+1
 	.word sub_80DDA08+1
@@ -76676,6 +77039,7 @@ loc_80DD9D4:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DD9F6:
 	pop {pc}
+	.balign 4, 0
 off_80DD9F8: .word dword_80DD9FC
 dword_80DD9FC: .word 0x2D2823
 off_80DDA00: .word dword_80DDA04
@@ -76760,7 +77124,7 @@ sub_80DDA84:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DDA98: .word off_80DDA9C
 off_80DDA9C: .word sub_80DDAA8+1
 	.word sub_80DDB24+1
@@ -76867,6 +77231,7 @@ loc_80DDB84:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80DDB90: .word off_80DDB94
 off_80DDB94: .word sub_80DDB98+1
 	thumb_func_end sub_80DDB24
@@ -76933,6 +77298,7 @@ sub_80DDBDE:
 	mov r7, #0x14
 	bl sub_80E33FA
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80DDC00: .word 0xC0000
 dword_80DDC04: .word 0x910
 dword_80DDC08: .word 0x10000
@@ -77035,6 +77401,7 @@ loc_80DDCCA:
 	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r7,pc}
+	.balign 4, 0
 dword_80DDCEC: .word 0x80000
 dword_80DDCF0: .word 0x80000
 	thumb_func_end sub_80DDC30
@@ -77060,6 +77427,7 @@ sub_80DDCF4:
 	bic r0, r1
 	strb r0, [r5]
 	pop {pc}
+	.balign 4, 0
 off_80DDD24: .word off_80DDD28
 off_80DDD28: .word sub_80DDD30+1
 	.word sub_80DDDB8+1
@@ -77128,6 +77496,7 @@ loc_80DDD8A:
 	bl object_highlightPanel
 locret_80DDDB2:
 	pop {r7,pc}
+	.balign 4, 0
 dword_80DDDB4: .word 0xF800010
 	thumb_func_end sub_80DDD30
 
@@ -77161,7 +77530,7 @@ sub_80DDDCC:
 	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
 locret_80DDDE8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80DDDEC: .word 0xD0000
 	thumb_func_end sub_80DDDCC
 
@@ -77175,7 +77544,7 @@ sub_80DDDF0:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DDE04: .word off_80DDE08
 off_80DDE08: .word sub_80DDE14+1
 	.word sub_80DDE82+1
@@ -77225,6 +77594,7 @@ loc_80DDE62:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DDE7A:
 	pop {pc}
+	.balign 4, 0
 off_80DDE7C: .word byte_80DDE80
 byte_80DDE80: .byte 0x15, 0x17
 	thumb_func_end sub_80DDE14
@@ -77271,6 +77641,7 @@ loc_80DDECE:
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DDED6:
 	pop {pc}
+	.balign 4, 0
 off_80DDED8: .word off_80DDEDC
 off_80DDEDC: .word sub_80DDEF4+1
 	.word sub_80DDF18+1
@@ -77353,6 +77724,7 @@ loc_80DDF76:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DDF7E:
 	pop {r4,pc}
+	.balign 4, 0
 off_80DDF80: .word byte_80DDF84
 byte_80DDF84: .byte 0x16, 0x18
 	thumb_func_end sub_80DDF18
@@ -77423,6 +77795,7 @@ sub_80DDFDE:
 	ldr r7, dword_80DDFF8 // =0x1 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80DDFF4: .word 0x6050A01
 dword_80DDFF8: .word 0x1
 dword_80DDFFC: .word 0x80000
@@ -77438,7 +77811,7 @@ sub_80DE000:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DE014: .word off_80DE018
 off_80DE018: .word sub_80DE024+1
 	.word sub_80DE080+1
@@ -77581,7 +77954,7 @@ sub_80DE112:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80DE134:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80DE138: .word 0xFFFF7778
 	thumb_func_end sub_80DE112
 
@@ -77595,7 +77968,7 @@ sub_80DE13C:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DE150: .word off_80DE154
 off_80DE154: .word sub_80DE168+1
 	.word sub_80DE1B8+1
@@ -77662,7 +78035,7 @@ loc_80DE1D4:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DE1DC: .word off_80DE1E0
 off_80DE1E0: .word sub_80DE1F4+1
 	.word sub_80DE21A+1
@@ -77862,6 +78235,7 @@ loc_80DE33C:
 	mov r1, #0x61 
 	strb r0, [r5,r1]
 	pop {pc}
+	.balign 4, 0
 off_80DE348: .word byte_80DE3DC
 dword_80DE34C: .word 0x280000
 	thumb_func_end sub_80DE30E
@@ -77891,7 +78265,7 @@ sub_80DE350:
 	add r1, r1, r0
 	str r1, [r5,#0x38]
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DE380: .word byte_80DE384
 byte_80DE384: .byte 0x1, 0x0, 0x0, 0x0, 0xFF, 0xFF, 0xFF, 0xFF
 	thumb_func_end sub_80DE350
@@ -77914,6 +78288,7 @@ sub_80DE38C:
 	bl SpawnT4BattleObjectWithId0
 locret_80DE3AA:
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_80DE3AC: .word 0x2
 	thumb_func_end sub_80DE38C
 
@@ -77953,7 +78328,7 @@ sub_80DE404:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DE418: .word off_80DE41C
 off_80DE41C: .word sub_80DE430+1
 	.word sub_80DE4EC+1
@@ -78026,6 +78401,7 @@ loc_80DE482:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DE4EC
 	pop {pc}
+	.balign 4, 0
 off_80DE4C4: .word byte_80DE4C8
 byte_80DE4C8: .byte 0x3, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0
 off_80DE4D8: .word byte_80DE4DC
@@ -78063,6 +78439,7 @@ loc_80DE526:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80DE530: .word off_80DE534
 off_80DE534: .word sub_80DE544+1
 	.word sub_80DE594+1
@@ -78166,7 +78543,7 @@ loc_80DE5D8:
 loc_80DE5FC:
 	bl object_updateCollisionPanels
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DE604: .word dword_80DE608
 dword_80DE608: .word 0x602
 off_80DE60C: .word byte_80DE610
@@ -78269,6 +78646,7 @@ loc_80DE6B8:
 	mov r1, #0x63 
 	strb r0, [r5,r1]
 	pop {pc}
+	.balign 4, 0
 off_80DE6C8: .word byte_80DE3DC
 dword_80DE6CC: .word 0x280000
 	thumb_func_end sub_80DE67E
@@ -78298,7 +78676,7 @@ sub_80DE6D0:
 	add r1, r1, r0
 	str r1, [r5,#oBattleObject_Y]
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DE700: .word byte_80DE704
 byte_80DE704: .byte 0x1, 0x0, 0x0, 0x0, 0xFF, 0xFF, 0xFF, 0xFF
 	thumb_func_end sub_80DE6D0
@@ -78321,6 +78699,7 @@ sub_80DE70C:
 	bl SpawnT4BattleObjectWithId0
 locret_80DE72A:
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_80DE72C: .word 0x2
 	thumb_func_end sub_80DE70C
 
@@ -78380,7 +78759,7 @@ sub_80DE768:
 	bl object_setPanelType
 locret_80DE794:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DE798: .word dword_80DE79C
 dword_80DE79C: .word 0x60703FF
 	thumb_func_end sub_80DE768
@@ -78426,6 +78805,7 @@ loc_80DE7D4:
 	cmp r2, #4
 	bne loc_80DE7D4
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80DE7EC: .word math_sinTable
 off_80DE7F0: .word byte_80DE3F4
 	thumb_func_end sub_80DE7C8
@@ -78440,7 +78820,7 @@ sub_80DE7F4:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DE808: .word off_80DE80C
 off_80DE80C: .word sub_80DE818+1
 	.word sub_80DE8C0+1
@@ -78497,7 +78877,7 @@ loc_80DE85E:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DE8C0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DE888: .word off_80DE88C
 off_80DE88C: .word byte_80DE894
 	.word byte_80DE89C
@@ -78564,7 +78944,7 @@ loc_80DE906:
 	bl object_highlightPanelRegion
 	bl object_presentCollisionData
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DE91C: .word off_80DE920
 off_80DE920: .word sub_80DE924+1
 	thumb_func_end sub_80DE8C0
@@ -78661,7 +79041,7 @@ sub_80DE984:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer2]
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DE9D0: .word math_sinTable
 off_80DE9D4: .word math_cosTable
 off_80DE9D8: .word off_80DE9DC
@@ -78696,6 +79076,7 @@ loc_80DEA06:
 	bl sub_80E3428
 locret_80DEA16:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80DEA18: .word 0x83E0
 dword_80DEA1C: .word 0xA1EF
 dword_80DEA20: .word 0xE
@@ -78726,7 +79107,7 @@ sub_80DEA7C:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DEA90: .word off_80DEA94
 off_80DEA94: .word sub_80DEAA8+1
 	.word sub_80DEB1C+1
@@ -78818,6 +79199,7 @@ loc_80DEB56:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80DEB5C: .word off_80DEB60
 off_80DEB60: .word sub_80DEB70+1
 	.word sub_80DEB94+1
@@ -79068,7 +79450,7 @@ sub_80DECBC:
 	bl sub_80DED80
 	pop {r4-r7,pc}
 	.word 0, 0
-	.byte 0, 0
+	.balign 4, 0
 off_80DED50: .word byte_80DEA50
 off_80DED54: .word byte_80DEA70
 	thumb_func_end sub_80DECBC
@@ -79137,7 +79519,7 @@ loc_80DEDBC:
 	blt loc_80DED8A
 	pop {r4-r7,pc}
 	.word 0, 0
-	.byte 0, 0
+	.balign 4, 0
 off_80DEDD0: .word byte_80DEA58
 off_80DEDD4: .word byte_80DEDD8
 byte_80DEDD8: .byte 0x0, 0x0, 0x0, 0x10, 0x1, 0xFF, 0xFF, 0x0
@@ -79191,6 +79573,7 @@ loc_80DEE36:
 	bne loc_80DEE02
 	add sp, sp, #0x10
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80DEE40: .word byte_80DEE44
 byte_80DEE44: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80, 0xA
 	thumb_func_end sub_80DEDE0
@@ -79207,7 +79590,7 @@ sub_80DEE60:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DEE74: .word off_80DEE78
 off_80DEE78: .word sub_80DEE8C+1
 	.word sub_80DEEE8+1
@@ -79254,7 +79637,7 @@ sub_80DEE8C:
 	bl sub_80DEEE8
 	pop {r4-r7,pc}
 	.word 0
-	.byte 0, 0
+	.balign 4, 0
 off_80DEEE0: .word dword_80DEEE4
 dword_80DEEE4: .word 0x509
 	thumb_func_end sub_80DEE8C
@@ -79278,7 +79661,7 @@ loc_80DEF04:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DEF0C: .word off_80DEF10
 off_80DEF10: .word sub_80DEF1C+1
 	.word sub_80DEF3C+1
@@ -79369,6 +79752,7 @@ loc_80DEFAA:
 	pop {r4-r7,pc}
 	.word 0, 0
 	.byte 0, 0, 0, 0
+	.balign 4, 0
 off_80DEFC0: .word byte_80DEFC4
 byte_80DEFC4: .byte 0x9, 0x5
 	thumb_func_end sub_80DEF3C
@@ -79475,7 +79859,7 @@ sub_80DF016:
 	strb r0, [r5,r1]
 	pop {r4-r7,pc}
 	.word 0, 0, 0
-	.byte 0, 0
+	.balign 4, 0
 off_80DF090: .word byte_80DEA50
 off_80DF094: .word dword_80DF098
 dword_80DF098: .word 0x509
@@ -79493,7 +79877,7 @@ sub_80DF0A4:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DF0B8: .word off_80DF0BC
 off_80DF0BC: .word sub_80DF0C8+1
 	.word sub_80DF132+1
@@ -79600,7 +79984,7 @@ sub_80DF188:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DF19C: .word off_80DF1A0
 off_80DF1A0: .word sub_80DF1AC+1
 	.word sub_80DF1FC+1
@@ -79655,6 +80039,7 @@ sub_80DF1FC:
 	strb r0, [r5,#8]
 locret_80DF20E:
 	pop {pc}
+	.balign 4, 0
 off_80DF210: .word off_80DF214
 off_80DF214: .word sub_80DF218+1
 	thumb_func_end sub_80DF1FC
@@ -79762,6 +80147,7 @@ sub_80DF2A0:
 	bl sub_80C53A6
 locret_80DF2C6:
 	pop {r0,r4,r6,r7,pc}
+	.balign 4, 0
 off_80DF2C8: .word off_80DF2CC
 off_80DF2CC: .word off_80DF2D8
 	.word byte_80DF2F0
@@ -79787,7 +80173,7 @@ sub_80DF328:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DF33C: .word off_80DF340
 off_80DF340: .word sub_80DF34C+1
 	.word loc_80DF390+1
@@ -79840,7 +80226,7 @@ loc_80DF3AC:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DF3B0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DF3B4: .word off_80DF3B8
 off_80DF3B8: .word sub_80DF3CC+1
 	.word sub_80DF3F0+1
@@ -79950,7 +80336,7 @@ loc_80DF434:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80DF47C:
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DF480: .word dword_80DF484
 dword_80DF484: .word 0x20181008
 	thumb_func_end sub_80DF41C
@@ -80039,7 +80425,7 @@ sub_80DF4FC:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DF510: .word off_80DF514
 off_80DF514: .word sub_80DF520+1
 	.word sub_80DF574+1
@@ -80576,7 +80962,7 @@ sub_80DF8D2:
 	mov r4, #0xc
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DF8F0: .word 0x100
 dword_80DF8F4: .word 0xFFFFA000
 dword_80DF8F8: .word 0x60000
@@ -80596,7 +80982,7 @@ sub_80DF90C:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DF920: .word off_80DF924
 off_80DF924: .word sub_80DF930+1
 	.word sub_80DFA58+1
@@ -80689,7 +81075,7 @@ loc_80DF9BE:
 	bl sub_80DFA58
 locret_80DF9EC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DF9F0: .word byte_80DF9F4
 byte_80DF9F4: .byte 0x0, 0x1, 0x2, 0x3, 0x4, 0xFF, 0xFF, 0xFF
 off_80DF9FC: .word byte_80DFA00
@@ -80738,6 +81124,7 @@ loc_80DFA8E:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DFA9A:
 	pop {pc}
+	.balign 4, 0
 off_80DFA9C: .word off_80DFAA0
 off_80DFAA0: .word sub_80DFAA8+1
 	.word sub_80DFACE+1
@@ -80872,6 +81259,7 @@ sub_80DFB56:
 	mov r4, #1
 	bl sub_80E2FE8
 	pop {r4-r7,pc}
+	.balign 4, 0
 dword_80DFB78: .word 0x405FF81
 dword_80DFB7C: .word 0x2
 	thumb_func_end sub_80DFB56
@@ -80908,7 +81296,7 @@ loc_80DFBB0:
 loc_80DFBB4:
 	bl sub_80DFBE4
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DFBBC: .word byte_80DFBC0
 byte_80DFBC0: .byte 0x0, 0x10, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x20
 	.byte 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
@@ -80940,7 +81328,7 @@ sub_80DFBE4:
 	bl PlaySoundEffect
 locret_80DFC10:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DFC14: .word byte_80DFC18
 byte_80DFC18: .byte 0x21, 0x0, 0x0, 0x0, 0x21, 0x0, 0x0, 0x0, 0x21, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -81019,7 +81407,7 @@ loc_80DFCC0:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DFCCC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80DFCD0: .word off_80DFCD4
 off_80DFCD4: .word sub_80DFCE0+1
 	.word sub_80DFD38+1
@@ -81198,7 +81586,7 @@ loc_80DFDF8:
 	strb r0, [r1,r2]
 locret_80DFE00:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DFE04: .word byte_80DFE08
 byte_80DFE08: .byte 0x2, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0, 0x0, 0x4, 0x0, 0x0
@@ -81239,7 +81627,7 @@ sub_80DFE40:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DFE54: .word off_80DFE58
 off_80DFE58: .word sub_80DFE64+1
 	.word sub_80DFEA8+1
@@ -81304,6 +81692,7 @@ loc_80DFED2:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80DFEDC: .word off_80DFEE0
 off_80DFEE0: .word sub_80DFEE8+1
 	.word loc_80DFF64+1
@@ -81427,7 +81816,7 @@ sub_80DFFB8:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80DFFCC: .word off_80DFFD0
 off_80DFFD0: .word sub_80DFFDC+1
 	.word sub_80E002C+1
@@ -81526,6 +81915,7 @@ loc_80E008C:
 	bl object_highlightPanel
 	bl object_presentCollisionData
 	pop {r4,r7,pc}
+	.balign 4, 0
 off_80E009C: .word off_80E00A0
 off_80E00A0: .word sub_80E00B0+1
 	.word sub_80E0118+1
@@ -81792,6 +82182,7 @@ sub_80E025E:
 loc_80E0294:
 	add sp, sp, #0x14
 	pop {r4,pc}
+	.balign 4, 0
 off_80E0298: .word byte_80E029C
 byte_80E029C: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -81826,7 +82217,7 @@ sub_80E02AC:
 loc_80E02E2:
 	mov r0, #0
 	pop {r5-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E02E8: .word byte_80E02EC
 byte_80E02EC: .byte 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x80, 0xA
 	thumb_func_end sub_80E02AC
@@ -81909,7 +82300,7 @@ sub_80E0376:
 	add r1, r1, r2
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80E0388: .word 0x100D
 dword_80E038C: .word 0x4050100
 dword_80E0390: .word 0x40000
@@ -82170,6 +82561,7 @@ loc_80E06C8:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E06DA:
 	pop {pc}
+	.balign 4, 0
 off_80E06DC: .word byte_2036740
 	thumb_func_end sub_80E0684
 
@@ -82198,6 +82590,7 @@ sub_80E06F8:
 	strb r0, [r5]
 	mov r0, r5
 	pop {r4,r5,pc}
+	.balign 4, 0
 off_80E070C: .word 0x400
 	thumb_func_end sub_80E06F8
 
@@ -82298,7 +82691,7 @@ loc_80E07B8:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E07C8:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.word byte_80E07D0
 byte_80E07D0: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -82323,7 +82716,7 @@ sub_80E07E0:
 	str r7, [r0,#oBattleObject_Unk_30]
 locret_80E0800:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E0804: .word 0x514
 	.byte 0x14, 0x5, 0x2, 0x0, 0x14, 0x5, 0x3, 0x0, 0x14, 0x5, 0x4, 0x0, 0x14
 	.byte 0x5, 0x5, 0x0, 0x14, 0x4, 0x0, 0x0, 0x14, 0x5, 0x8, 0x0, 0x14, 0x1
@@ -82411,6 +82804,7 @@ sub_80E08C4:
 	strb r1, [r0,#oBattleObject_Alliance]
 locret_80E08DA:
 	pop {pc}
+	.balign 4, 0
 off_80E08DC: .word off_80E0804
 	thumb_func_end sub_80E08C4
 
@@ -82602,7 +82996,7 @@ loc_80E0AF0:
 	bl sub_801BC64
 locret_80E0AF4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E0AF8: .word off_80E0AFC
 off_80E0AFC: .word sub_80E0B08+1
 	.word sub_80E0B8C+1
@@ -82778,6 +83172,7 @@ loc_80E0C4C:
 loc_80E0C5E:
 	bl nullsub_10
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80E0C64: .word off_80E0C68
 off_80E0C68: .word sub_80E0C74+1
 	.word sub_80E0CAA+1
@@ -83308,6 +83703,7 @@ sub_80E100A:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
+	.balign 4, 0
 off_80E101C: .word off_80E1020
 off_80E1020: .word sub_80E1028+1
 	.word sub_80E1054+1
@@ -83468,6 +83864,7 @@ loc_80E112C:
 	bl object_freeMemory
 locret_80E1136:
 	pop {pc}
+	.balign 4, 0
 off_80E1138: .word byte_80E113C
 byte_80E113C: .byte 0xFF, 0x7F, 0x0, 0x0, 0x1F, 0x0, 0x0, 0x0
 dword_80E1144: .word 0x0
@@ -83539,7 +83936,7 @@ loc_80E11C0:
 	bl object_freeMemory
 locret_80E11D0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80E11D4: .word 0x7FFF
 off_80E11D8: .word iPalette3001B60
 off_80E11DC: .word iPallete3001750
@@ -83975,6 +84372,7 @@ sub_80E1502:
 loc_80E1512:
 	bl sub_80E14AC
 	pop {pc}
+	.balign 4, 0
 byte_80E1518: .byte 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80E1502
 
@@ -84205,7 +84603,7 @@ sub_80E1670:
 loc_80E16BA:
 	add sp, sp, #0x34
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 	.word byte_80E16C4
 byte_80E16C4: .byte 0xA0, 0xA4, 0xAC, 0xB0, 0xB4, 0xB8, 0xBC, 0xFF
 	thumb_func_end sub_80E1670
@@ -84382,6 +84780,7 @@ loc_80E17D8:
 	mov r0, r7
 locret_80E17DA:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80E17DC: .word 0x173
 off_80E17E0: .word 0x178
 dword_80E17E4: .word 0x1C3
@@ -84640,7 +85039,7 @@ loc_80E19A8:
 	mov r1, #3
 	mul r0, r1
 	mov pc, lr
-	.byte 0, 0
+	.balign 4, 0
 off_80E19B0: .word off_802CD5C
 off_80E19B4: .word byte_203C960
 dword_80E19B8: .word 0x87FF
@@ -84785,7 +85184,7 @@ sub_80E1A90:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E1AA4: .word off_80E1AA8
 off_80E1AA8: .word sub_80E1AB4+1
 	.word sub_80E1AFA+1
@@ -84979,7 +85378,7 @@ loc_80E1C04:
 	bl sprite_setColorShader
 locret_80E1C1C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80E1C20: .word 0x2108
 	thumb_func_end sub_80E1BDC
 
@@ -85099,7 +85498,7 @@ sub_80E1CD6:
 	strb r1, [r0,#0x16]
 locret_80E1CEC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E1CF0: .word math_cosTable
 off_80E1CF4: .word math_sinTable
 	thumb_func_end sub_80E1CD6
@@ -85193,7 +85592,7 @@ sub_80E1D88:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E1D9C: .word off_80E1DA0
 off_80E1DA0: .word sub_80E1DAC+1
 	.word sub_80E1DFC+1
@@ -85585,7 +85984,7 @@ loc_80E204C:
 	bl object_freeMemory
 locret_80E2058:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E205C: .word byte_80E2060
 byte_80E2060: .byte 0x2
 byte_80E2061: .byte 0x1, 0x2, 0x3, 0x5, 0x1, 0x5, 0x3
@@ -85623,7 +86022,7 @@ loc_80E2098:
 	bl object_updateSpriteTimestop
 locret_80E209C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E20A0: .word off_80E20A4
 off_80E20A4: .word sub_80E20B0+1
 	.word sub_80E213C+1
@@ -85744,6 +86143,7 @@ loc_80E219E:
 	bl object_freeMemory
 locret_80E21A2:
 	pop {pc}
+	.balign 4, 0
 off_80E21A4: .word dword_80E21A8
 dword_80E21A8: .word 0x5E000E0D
 	thumb_func_end sub_80E213C
@@ -85764,6 +86164,7 @@ sub_80E21AC:
 	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
 locret_80E21C6:
 	pop {pc}
+	.balign 4, 0
 dword_80E21C8: .word 0x140000
 dword_80E21CC: .word 0x15555
 dword_80E21D0: .word 0x800000
@@ -85856,7 +86257,7 @@ sub_80E225C:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E2270: .word off_80E2274
 off_80E2274: .word sub_80E2280+1
 	.word sub_80E2358+1
@@ -85949,7 +86350,7 @@ loc_80E2314:
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E2338: .word byte_80E233C
 byte_80E233C: .byte 0x7, 0x1, 0x0, 0x1, 0x1, 0x4, 0x1, 0x0
 off_80E2344: .word byte_80E2348
@@ -85998,7 +86399,7 @@ sub_80E2388:
 	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
 locret_80E239C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80E23A0: .word 0x3FFFF
 	thumb_func_end sub_80E2388
 
@@ -86122,7 +86523,7 @@ loc_80E2484:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E2494:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E2498: .word off_80E24A0
 off_80E249C: .word off_80E24AC
 off_80E24A0: .word dword_86E55FC
@@ -86152,7 +86553,7 @@ sub_80E24B8:
 	str r7, [r0,#oBattleObject_Unk_30]
 locret_80E24D8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E24DC: .word 0x1E0
 off_80E24E0: .word 0x438
 	thumb_func_end sub_80E24B8
@@ -86243,6 +86644,7 @@ sub_80E2566:
 	str r7, [r0,#oBattleObject_Unk_30]
 locret_80E2586:
 	pop {pc}
+	.balign 4, 0
 byte_80E2588: .byte 0x0, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0
 	.word object_crackPanelDup1+1
@@ -86292,7 +86694,7 @@ sub_80E25F0:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80E2628
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E2618: .word byte_80E2588
 off_80E261C: .word off_80E2620
 off_80E2620: .word sub_80E269A+1
@@ -86446,7 +86848,7 @@ sub_80E2712:
 	str r3, [r0,#oBattleObject_RelatedObject1Ptr]
 locret_80E2728:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_80E272C: .byte 0x2, 0x0, 0x3, 0x40, 0x0, 0x0, 0x0, 0x0, 0x20, 0x80, 0x0, 0x0, 0x20
 	.byte 0x0, 0x0, 0x0, 0x0, 0x80, 0x0, 0x0, 0x8, 0x0, 0x3, 0x40, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x80, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x0
@@ -86536,7 +86938,7 @@ loc_80E28FA:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80E292C
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E2914: .word byte_80E272C
 off_80E2918: .word off_80E291C
 off_80E291C: .word sub_80E29F8+1
@@ -86951,6 +87353,7 @@ sub_80E2BE0:
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {pc}
+	.balign 4, 0
 dword_80E2C04: .word 0x30201
 	thumb_func_end sub_80E2BE0
 
@@ -86999,7 +87402,7 @@ loc_80E2C54:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E2C58:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.word byte_80E2C60
 byte_80E2C60: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -87252,7 +87655,7 @@ loc_80E2E12:
 	bne loc_80E2DF2
 	mov r0, r4
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E2E20: .word byte_80E2E24
 byte_80E2E24: .byte 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x40, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -87372,7 +87775,7 @@ loc_80E2F02:
 	bl sprite_forceWhitePalette
 	pop {r5}
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80E2F10: .word 0x13C00
 off_80E2F14: .word byte_80E2F18
 byte_80E2F18: .byte 0x82, 0xFF, 0x5, 0x34, 0x81, 0xFF, 0x5, 0x34
@@ -87398,7 +87801,7 @@ sub_80E2F24:
 	str r7, [r0,#oBattleObject_Unk_30]
 locret_80E2F44:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_80E2F48: .byte 0x1F, 0x0, 0x0, 0x0, 0x45, 0x0, 0x22, 0x0, 0xB, 0x0, 0x6B, 0x0, 0x24
 	.byte 0x0
 	thumb_func_end sub_80E2F24
@@ -87473,6 +87876,7 @@ loc_80E2FD6:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
+	.balign 4, 0
 off_80E2FDC: .word byte_80E2F48
 	thumb_func_end sub_80E2F8C
 
@@ -87523,6 +87927,7 @@ loc_80E3030:
 	strb r0, [r7,#oBattleObject_Param2]
 locret_80E3032:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80E3034: .word byte_8019C34
 	thumb_func_end sub_80E2FE8
 
@@ -87574,7 +87979,7 @@ loc_80E308C:
 	mov r0, r6
 	add sp, sp, #0x1c
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E3094: .word PanelOffsetListsPointerTable
 dword_80E3098: .word 0x10000
 	thumb_func_end sub_80E3038
@@ -87671,7 +88076,7 @@ sub_80E3128:
 	str r7, [r0,#oBattleObject_Unk_30]
 locret_80E3148:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80E314C: .word 0xF880080
 	thumb_func_end sub_80E3128
 
@@ -87685,7 +88090,7 @@ sub_80E3150:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E3164: .word off_80E3168
 off_80E3168: .word sub_80E3174+1
 	.word sub_80E318E+1
@@ -87843,6 +88248,7 @@ sub_80E3264:
 	bl GetAllianceDependentPanelParamArgs
 	bl object_getFirstPanelInDirectionFiltered
 	pop {r4,pc}
+	.balign 4, 0
 off_80E327C: .word off_80E3280
 off_80E3280: .word 0x30
 	.byte 0x0, 0x0, 0x80, 0xF, 0x10, 0x0, 0x0, 0x0, 0x20, 0x0, 0x80, 0xF
@@ -88437,7 +88843,7 @@ loc_80E36BA:
 loc_80E36CA:
 	add sp, sp, #0x34
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E36D0: .word byte_80E36E4
 off_80E36D4: .word byte_80E36EC
 off_80E36D8: .word byte_80E371E
@@ -88575,7 +88981,7 @@ loc_80E380C:
 	bl object_updateSpriteTimestop
 locret_80E3810:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E3814: .word off_80E3818
 off_80E3818: .word sub_80E3824+1
 	.word sub_80E386A+1
@@ -88651,7 +89057,7 @@ loc_80E38A8:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E38AC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E38B0: .word off_80E38B4
 off_80E38B4: .word sub_80E38C8+1
 	.word sub_80E38EE+1
@@ -88821,7 +89227,7 @@ loc_80E39B8:
 	bl object_updateSpriteTimestop
 locret_80E39BC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E39C0: .word off_80E39C4
 off_80E39C4: .word sub_80E39D0+1
 	.word sub_80E3A32+1
@@ -88866,6 +89272,7 @@ sub_80E39D0:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E3A32
 	pop {pc}
+	.balign 4, 0
 off_80E3A2C: .word word_80E3A30
 word_80E3A30: .hword 0x201
 	thumb_func_end sub_80E39D0
@@ -88902,7 +89309,7 @@ loc_80E3A64:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E3A68:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E3A6C: .word off_80E3A70
 off_80E3A70: .word sub_80E3A74+1
 	thumb_func_end sub_80E3A32
@@ -89021,6 +89428,7 @@ loc_80E3B2E:
 locret_80E3B3E:
 	pop {r4,r6,r7,pc}
 	.word dword_80E3B44
+	.balign 4, 0
 dword_80E3B44: .word 0x4030201
 	.word byte_8070605
 	.word 0xA09
@@ -89056,7 +89464,7 @@ sub_80E3B70:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E3B84: .word off_80E3B88
 off_80E3B88: .word sub_80E3B94+1
 	.word sub_80E3BEA+1
@@ -89117,6 +89525,7 @@ sub_80E3BEA:
 	mov lr, pc
 	bx r1
 	pop {pc}
+	.balign 4, 0
 off_80E3C08: .word off_80E3C0C
 off_80E3C0C: .word sub_80E3C14+1
 	.word sub_80E3CC4+1
@@ -89201,7 +89610,7 @@ loc_80E3C86:
 locret_80E3CA8:
 	pop {r4,pc}
 	.word 0
-	.byte 0, 0
+	.balign 4, 0
 off_80E3CB0: .word byte_80E3CB4
 byte_80E3CB4: .byte 0x20, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -89276,6 +89685,7 @@ loc_80E3D2E:
 	str r0, [r5,#oBattleObject_ExtraVars+8]
 locret_80E3D36:
 	pop {r0,r1,pc}
+	.balign 4, 0
 dword_80E3D38: .word 0x280000
 off_80E3D3C: .word 0x4000000
 off_80E3D40: .word 0x8000000
@@ -89298,6 +89708,7 @@ sub_80E3D68:
 	bl object_updateSprite
 locret_80E3D7E:
 	pop {pc}
+	.balign 4, 0
 off_80E3D80: .word off_80E3D84
 off_80E3D84: .word sub_80E3D90+1
 	.word sub_80E3DE0+1
@@ -89447,6 +89858,7 @@ loc_80E3E9C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E3EAA:
 	pop {pc}
+	.balign 4, 0
 off_80E3EAC: .word dword_80E3EB0
 dword_80E3EB0: .word 0x20302
 	thumb_func_end sub_80E3E38
@@ -89642,7 +90054,7 @@ sub_80E3FD0:
 	bl object_updateSpritePaused
 locret_80E3FE8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E3FEC: .word off_80E3FF0
 off_80E3FF0: .word sub_80E3FFC+1
 	.word sub_80E403E+1
@@ -89737,6 +90149,7 @@ loc_80E40B6:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E40BA:
 	pop {r4,pc}
+	.balign 4, 0
 off_80E40BC: .word byte_80E40C0
 byte_80E40C0: .byte 0xC, 0xA
 	thumb_func_end sub_80E403E
@@ -90086,7 +90499,7 @@ loc_80E432C:
 	mov r0, r6
 	add sp, sp, #0x18
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_80E4334: .byte 0x2D, 0xA, 0x5, 0x0, 0x1E, 0xA, 0x5, 0x0, 0x28, 0xA, 0x5, 0x0
 	.byte 0xF, 0x6, 0x3, 0x0
 	thumb_func_end sub_80E42AA
@@ -90139,6 +90552,7 @@ sub_80E4364:
 loc_80E439E:
 	bl object_freeMemory
 	pop {pc}
+	.balign 4, 0
 off_80E43A4: .word byte_80E4334
 	thumb_func_end sub_80E4364
 
@@ -90273,6 +90687,7 @@ loc_80E4496:
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {pc}
+	.balign 4, 0
 off_80E449C: .word off_80E44A4
 off_80E44A0: .word off_80E44B0
 off_80E44A4: .word dword_86E55FC
@@ -90458,6 +90873,7 @@ loc_80E45D4:
 	bne loc_80E45AE
 	mov r0, r4
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80E45E0: .word byte_80E45E8
 dword_80E45E4: .word 0x1A050601
 byte_80E45E8: .byte 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x40, 0x0, 0x0, 0x0, 0x0
@@ -90495,6 +90911,7 @@ sub_80E4612:
 	bl sub_800AE90
 locret_80E462E:
 	pop {pc}
+	.balign 4, 0
 dword_80E4630: .word 0xFFFF
 	thumb_func_end sub_80E4612
 
@@ -90674,6 +91091,7 @@ loc_80E4774:
 loc_80E4786:
 	bl sub_80E4790
 	pop {r7,pc}
+	.balign 4, 0
 dword_80E478C: .word 0xFFFEC000
 	thumb_func_end sub_80E475C
 
@@ -90831,6 +91249,7 @@ sub_80E4868:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80E48C0
 	pop {pc}
+	.balign 4, 0
 dword_80E48B8: .word 0x100000
 dword_80E48BC: .word 0xFFF98000
 	thumb_func_end sub_80E4868
@@ -90858,7 +91277,7 @@ sub_80E48C0:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E48E8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80E48EC: .word 0x3C00
 	thumb_func_end sub_80E48C0
 
@@ -91035,7 +91454,7 @@ loc_80E4A34:
 	bl sub_801BC24
 locret_80E4A38:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E4A3C: .word off_80E4A40
 off_80E4A40: .word sub_80E4A6E+1
 	.word sub_80E4AAE+1
@@ -91231,6 +91650,7 @@ sub_80E4B9E:
 	bx r1
 locret_80E4BB2:
 	pop {pc}
+	.balign 4, 0
 off_80E4BB4: .word off_80E4BB8
 off_80E4BB8: .word sub_80E4BC0+1
 	.word sub_80E4BD4+1
@@ -91390,7 +91810,7 @@ sub_80E4CB8:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E4CCC: .word off_80E4CD0
 off_80E4CD0: .word sub_80E4CDC+1
 	.word sub_80E4D1E+1
@@ -91591,7 +92011,7 @@ loc_80E4E16:
 	bl sub_80E4E84
 	pop {pc}
 	.word 0
-	.byte 0, 0
+	.balign 4, 0
 off_80E4E70: .word byte_80E4E74
 byte_80E4E74: .byte 0x20, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -91614,6 +92034,7 @@ loc_80E4E9E:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
+	.balign 4, 0
 off_80E4EA4: .word off_80E4EA8
 off_80E4EA8: .word sub_80E4EB8+1
 	.word sub_80E4EC8+1
@@ -91807,6 +92228,7 @@ sub_80E4FFC:
 	ldr r7, dword_80E501C // =0xe 
 	bl sub_80E33FA
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80E5018: .word 0x83E0
 dword_80E501C: .word 0xE
 dword_80E5020: .word 0x43010
@@ -91828,6 +92250,7 @@ sub_80E5024:
 	ldr r7, dword_80E5048 // =0xe 
 	bl sub_80E33FA
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80E5044: .word 0x83E0
 dword_80E5048: .word 0xE
 dword_80E504C: .word 0x33010
@@ -91871,6 +92294,7 @@ sub_80E5068:
 	bl SpawnT4BattleObjectWithId0
 locret_80E509A:
 	pop {r0,r1,r4,r6,r7,pc}
+	.balign 4, 0
 dword_80E509C: .word 0x5F0000
 dword_80E50A0: .word 0x280000
 dword_80E50A4: .word 0x208000
@@ -92095,6 +92519,7 @@ loc_80E5234:
 	mov r0, r2
 locret_80E523A:
 	pop {r3,pc}
+	.balign 4, 0
 off_80E523C: .word 0x100
 dword_80E5240: .word 0x1C3
 	thumb_func_end sub_80E5208
@@ -92345,7 +92770,7 @@ locret_80E53F0:
 loc_80E53F2:
 	mov r0, #0
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E53F8: .word byte_80E5400
 dword_80E53FC: .word 0x800000
 byte_80E5400: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
@@ -92413,7 +92838,7 @@ loc_80E5460:
 	cmp r1, #2
 	blt loc_80E5454
 	mov pc, lr
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80E546C: .word 0x80010000
 	thumb_func_end sub_80E544C
 
@@ -92427,7 +92852,7 @@ sub_80E5470:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E5484: .word off_80E5488
 off_80E5488: .word sub_80E5494+1
 	.word sub_80E54DC+1
@@ -92590,7 +93015,7 @@ sub_80E558A:
 	strb r1, [r0,#oObjectHeader_Flags]
 locret_80E55B0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80E55B4: .word 0x280000
 off_80E55B8: .word 0x4000000
 off_80E55BC: .word 0x8000000
@@ -92700,7 +93125,7 @@ sub_80E566C:
 	pop {r5}
 	bl sub_80E5700
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E5694: .word byte_805FF01
 dword_80E5698: .word 0x3
 	thumb_func_end sub_80E566C
@@ -92785,7 +93210,7 @@ sub_80E5710:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E5724: .word off_80E5728
 off_80E5728: .word sub_80E5734+1
 	.word sub_80E57A0+1
@@ -92837,7 +93262,7 @@ sub_80E5734:
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80E57A0
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E5794: .word off_80E5798
 off_80E5798: .word 0x4000000
 	.word 0x8000000
@@ -93054,7 +93479,7 @@ sub_80E5910:
 	ldr r7, dword_80E5940 // =0x1100 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80E5924: .word 0x1000
 dword_80E5928: .word 0x280000
 dword_80E592C: .word 0xFFF80000
@@ -93350,6 +93775,7 @@ loc_80E5B26:
 loc_80E5B44:
 	add sp, sp, #0x18
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80E5B48: .word byte_80E5B50
 off_80E5B4C: .word byte_80E5B58
 byte_80E5B50: .byte 0x0, 0x1, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -93496,7 +93922,7 @@ sub_80E5C0C:
 	mov r2, #0xf
 	and r0, r2
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80E5C28: .word 0x470C3C0C
 	thumb_func_end sub_80E5C0C
 
@@ -93548,6 +93974,7 @@ sub_80E5C4C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E5CA0
 	pop {pc}
+	.balign 4, 0
 off_80E5C9C: .word dword_80E5C28
 	thumb_func_end sub_80E5C4C
 
@@ -93655,7 +94082,7 @@ sub_80E5D44:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E5D58: .word off_80E5D5C
 off_80E5D5C: .word sub_80E5D68+1
 	.word sub_80E5DAA+1
@@ -93815,6 +94242,7 @@ loc_80E5E82:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E5E92:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80E5E94: .word byte_80E5E98
 byte_80E5E98: .byte 0x10, 0x0, 0x0, 0x0, 0x80, 0x0, 0x88, 0xF, 0x10, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -93919,6 +94347,7 @@ loc_80E5F52:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E5F62:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80E5F64: .word byte_80E5F68
 byte_80E5F68: .byte 0x0, 0x0, 0x0, 0x0, 0x80, 0x0, 0x88, 0xF, 0x0, 0x0, 0x0, 0x0, 0x80, 0x0
 	.byte 0x88, 0xF
@@ -94037,6 +94466,7 @@ loc_80E603E:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E604E:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80E6050: .word byte_80E6054
 byte_80E6054: .byte 0x10, 0x0, 0x0, 0x0, 0x80, 0x0, 0x88, 0xF, 0x10, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF, 0x0, 0xB5, 0x27, 0xB4, 0x4D, 0x20, 0x1D, 0xF7, 0x9F, 0xF9
@@ -94150,7 +94580,7 @@ loc_80E612A:
 loc_80E615A:
 	add sp, sp, #0xc
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E6160: .word off_80E6168
 off_80E6164: .word off_80E6174
 off_80E6168: .word dword_86E55FC
@@ -94245,7 +94675,7 @@ sub_80E61F4:
 	add r7, r7, r5
 	bl sub_801632C
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.word byte_80E620C
 byte_80E620C: .byte 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x40, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -94276,7 +94706,7 @@ sub_80E621C:
 	bl sub_80E1A6A
 locret_80E624C:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80E6250: .word 0x19050601
 	thumb_func_end sub_80E621C
 
@@ -94486,6 +94916,7 @@ loc_80E63BA:
 loc_80E63C4:
 	add sp, sp, #8
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80E63C8: .word dword_80E63CC
 dword_80E63CC: .word 0x101FF06
 	thumb_func_end sub_80E636A
@@ -94536,7 +94967,7 @@ loc_80E6420:
 	b loc_80E63DE
 locret_80E6424:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E6428: .word byte_80E642C
 byte_80E642C: .byte 0x1
 byte_80E642D: .byte 0x0, 0x0, 0xFF, 0x0, 0x1, 0xFF, 0x0, 0x7F, 0x0, 0x0, 0x0
@@ -94576,6 +95007,7 @@ sub_80E6458:
 	ldr r3, [r3,#4]
 	bl object_checkPanelParameters
 	pop {pc}
+	.balign 4, 0
 off_80E646C: .word byte_80E6470
 byte_80E6470: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -94696,7 +95128,7 @@ loc_80E654E:
 	cmp r6, #3
 	ble loc_80E6516
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80E6558: .word 0xF880080
 	thumb_func_end sub_80E650A
 
@@ -94710,7 +95142,7 @@ sub_80E655C:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E6570: .word off_80E6574
 off_80E6574: .word sub_80E6580+1
 	.word sub_80E65E0+1
@@ -94956,6 +95388,7 @@ sub_80E6720:
 	strb r1, [r0,#oObjectHeader_Flags]
 locret_80E674A:
 	pop {pc}
+	.balign 4, 0
 dword_80E674C: .word 0x40000
 dword_80E6750: .word 0xFFFF
 dword_80E6754: .word 0x4000
@@ -95054,6 +95487,7 @@ sub_80E67E6:
 	str r7, [r0,#oBattleObject_Unk_30]
 locret_80E6806:
 	pop {pc}
+	.balign 4, 0
 dword_80E6808: .word 0xF880080
 	thumb_func_end sub_80E67E6
 
@@ -95193,7 +95627,7 @@ sub_80E68F8:
 	bne loc_80E6910
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
-	ldr r0, off_80E6920 // =byte_8736D74
+	ldr r0, off_80E6920 // =TextScript8736D74
 	ldrb r1, [r5,#oBattleObject_Param2]
 	add r1, #0x1e
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -95207,7 +95641,8 @@ loc_80E6910:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E691E:
 	pop {pc}
-off_80E6920: .word byte_8736D74
+	.balign 4, 0
+off_80E6920: .word TextScript8736D74
 	thumb_func_end sub_80E68F8
 
 	thumb_local_start
@@ -95378,6 +95813,7 @@ loc_80E6A56:
 loc_80E6A58:
 	add sp, sp, #0x10
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80E6A5C: .word byte_80E6A60
 byte_80E6A60: .byte 0x6, 0x1, 0x6, 0x3, 0x1, 0x1, 0x1, 0x3
 off_80E6A68: .word byte_80E6A6C
@@ -95395,6 +95831,7 @@ sub_80E6A7C:
 	bl object_updateSpriteTimestop
 locret_80E6A8A:
 	pop {r5,pc}
+	.balign 4, 0
 dword_80E6A8C: .word 0xF880080
 	thumb_func_end sub_80E6A7C
 
@@ -95578,6 +96015,7 @@ loc_80E6BC8:
 	ble loc_80E6BAA
 locret_80E6BCE:
 	pop {pc}
+	.balign 4, 0
 off_80E6BD0: .word dword_80E6BD4
 dword_80E6BD4: .word 0x4020201
 	.word loc_8030604
@@ -95663,7 +96101,7 @@ loc_80E6C5E:
 	bl PlaySoundEffect
 locret_80E6C70:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E6C74: .word byte_80E6C78
 byte_80E6C78: .byte 0x97, 0x0, 0x0, 0x0, 0x1C, 0x1, 0x0, 0x0, 0x18, 0x1, 0x0, 0x0, 0x97
 	.byte 0x0, 0x0, 0x0, 0x1B, 0x1, 0x0, 0x0
@@ -95739,6 +96177,7 @@ loc_80E6CFA:
 	ble loc_80E6CC6
 	add sp, sp, #4
 	pop {r4,r6,pc}
+	.balign 4, 0
 byte_80E6D0C: .byte 0x22, 0x22, 0x23, 0x0, 0x22, 0x32, 0x32, 0x0, 0x22, 0x22
 	.byte 0x23, 0x0, 0x22, 0x32, 0x32, 0x0, 0x22, 0x22, 0x23, 0x0
 	.byte 0x22, 0x32, 0x32, 0x0, 0x22, 0x82, 0x82, 0x0, 0x22, 0x62
@@ -95793,7 +96232,7 @@ loc_80E6E26:
 	blt loc_80E6E00
 locret_80E6E2C:
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E6E30: .word byte_80E6E34
 byte_80E6E34: .byte 0x2, 0x0, 0x3, 0x2, 0x7, 0x3, 0x6, 0x5, 0x8, 0x6, 0x0, 0x0
 off_80E6E40: .word byte_80E6D0C
@@ -95846,7 +96285,7 @@ loc_80E6E90:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E6E94:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E6E98: .word off_80E6E9C
 off_80E6E9C: .word sub_80E6EA0+1
 	thumb_func_end sub_80E6E74
@@ -96180,7 +96619,7 @@ loc_80E70E0:
 	bl object_updateSpriteTimestop
 locret_80E70E4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E70E8: .word off_80E70EC
 off_80E70EC: .word sub_80E70F8+1
 	.word sub_80E7142+1
@@ -96532,7 +96971,7 @@ loc_80E7370:
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.word byte_80E738C
 byte_80E738C: .byte 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x40, 0x0
 	thumb_func_end sub_80E72C8
@@ -96700,6 +97139,7 @@ loc_80E74BC:
 	mov r0, #0
 locret_80E74BE:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80E74C0: .word byte_80E74C4
 byte_80E74C4: .byte 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x40, 0x0
 off_80E74CC: .word 0x119
@@ -96862,6 +97302,7 @@ loc_80E75EC:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E75F6:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80E75F8: .word dword_80E75FC
 dword_80E75FC: .word 0x1010106
 	thumb_func_end sub_80E75AC
@@ -96966,7 +97407,7 @@ loc_80E76AC:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E76BC:
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E76C0: .word byte_80E76C4
 byte_80E76C4: .byte 0x10, 0x0, 0x0, 0x0, 0x80, 0x0, 0x88, 0xF, 0x10, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -97088,7 +97529,7 @@ loc_80E77A0:
 	bl object_updateSpriteTimestop
 locret_80E77A4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E77A8: .word off_80E77AC
 off_80E77AC: .word sub_80E77B8+1
 	.word sub_80E7816+1
@@ -97233,7 +97674,7 @@ sub_80E78BC:
 	bx r1
 	bl object_updateSpriteTimestop
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E78D0: .word off_80E78D4
 off_80E78D4: .word sub_80E78E0+1
 	.word sub_80E792A+1
@@ -97322,7 +97763,7 @@ loc_80E7974:
 	bl object_updateSpriteTimestop
 locret_80E7978:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E797C: .word off_80E7980
 off_80E7980: .word sub_80E798C+1
 	.word sub_80E79CE+1
@@ -97405,7 +97846,7 @@ loc_80E7A3C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E7A40:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E7A44: .word off_80E7A48
 off_80E7A48: .word sub_80E7A50+1
 	.word sub_80E7A66+1
@@ -97513,7 +97954,7 @@ loc_80E7AE4:
 	bl object_updateSpriteTimestop
 locret_80E7AE8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E7AEC: .word off_80E7AF0
 off_80E7AF0: .word sub_80E7AFC+1
 	.word sub_80E7B4A+1
@@ -97724,6 +98165,7 @@ loc_80E7C82:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E7C92:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80E7C94: .word byte_80E7C98
 byte_80E7C98: .byte 0x0, 0x0, 0x0, 0x0, 0x80, 0x0, 0x88, 0xF, 0x0, 0x0, 0x0, 0x0, 0x80, 0x0
 	.byte 0x88, 0xF
@@ -97991,6 +98433,7 @@ sub_80E7E64:
 locret_80E7E82:
 	pop {pc}
 	.word byte_80E7E88
+	.balign 4, 0
 byte_80E7E88: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
 dword_80E7E98: .word 0xF880080
@@ -98568,6 +99011,7 @@ sub_80E829E:
 	bx r1
 locret_80E82B2:
 	pop {pc}
+	.balign 4, 0
 off_80E82B4: .word off_80E82B8
 off_80E82B8: .word sub_80E82C0+1
 	.word sub_80E82D4+1
@@ -98860,6 +99304,7 @@ loc_80E84BC:
 loc_80E84C0:
 	mov r0, #0xff
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80E84C4: .word byte_80E84C8
 byte_80E84C8: .byte 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x80, 0xA
 	thumb_func_end sub_80E8486
@@ -98949,7 +99394,7 @@ loc_80E856E:
 loc_80E8572:
 	mov r0, r6
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80E8578: .word 0xF880080
 	thumb_func_end sub_80E84D0
 
@@ -99098,7 +99543,7 @@ sub_80E8656:
 loc_80E8678:
 	bl sub_80E8612
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80E8680: .word 0xFFFF00FF
 off_80E8684: .word 0x200
 	thumb_func_end sub_80E8656
@@ -99113,7 +99558,7 @@ sub_80E8688:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E869C: .word off_80E86A0
 off_80E86A0: .word sub_80E86AC+1
 	.word sub_80E86F6+1
@@ -99244,7 +99689,7 @@ sub_80E8794:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E87A8: .word off_80E87AC
 off_80E87AC: .word sub_80E87B8+1
 	.word sub_80E8802+1
@@ -99447,7 +99892,7 @@ sub_80E8912:
 	strb r1, [r0,#oObjectHeader_Flags]
 locret_80E8930:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E8934: .word 0x201
 	thumb_func_end sub_80E8912
 
@@ -99461,7 +99906,7 @@ sub_80E8938:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E894C: .word off_80E8950
 off_80E8950: .word sub_80E895C+1
 	.word sub_80E89BA+1
@@ -99867,6 +100312,7 @@ loc_80E8C1E:
 	add r2, r2, r0
 	str r2, [r5,#oBattleObject_ExtraVars]
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80E8C30: .word byte_80E8C34
 byte_80E8C34: .byte 0x20, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -100009,6 +100455,7 @@ loc_80E8D3A:
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
 	.word byte_80E8D44
+	.balign 4, 0
 byte_80E8D44: .byte 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x0, 0x0
 	.word 0x8000000
 	.word 0x0
@@ -100457,7 +100904,7 @@ loc_80E9092:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E909C:
 	pop {r4,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E90A0: .word off_80E90A4
 off_80E90A4: .word sub_80C34B8+1
 	.word sub_80C3710+1
@@ -100636,6 +101083,7 @@ sub_80E91B8:
 	strb r2, [r0,r1]
 locret_80E91DE:
 	pop {pc}
+	.balign 4, 0
 dword_80E91E0: .word 0xF800010
 	thumb_func_end sub_80E91B8
 
@@ -100746,6 +101194,7 @@ loc_80E92A0:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E92AA:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80E92AC: .word off_80E92B0
 off_80E92B0: .word sub_80C2F96+1
 	.word sub_80C2F96+1
@@ -101135,7 +101584,7 @@ loc_80E954E:
 loc_80E9552:
 	mov r0, r7
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E9558: .word byte_80E955C
 byte_80E955C: .byte 0x10, 0x0, 0x0, 0x0, 0x20, 0x0, 0x80, 0x3, 0x30, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x80, 0x3, 0xF7, 0x46
@@ -101460,6 +101909,7 @@ loc_80E97D8:
 	strb r2, [r0,#oAIData_Unk_06]
 locret_80E97DE:
 	pop {pc}
+	.balign 4, 0
 dword_80E97E0: .word 0x40030
 byte_80E97E4: .byte 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80E97BE
@@ -101554,7 +102004,7 @@ loc_80E985C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.word 0, 0
-	.byte 0, 0
+	.balign 4, 0
 byte_80E98C0: .byte 0x4, 0x9, 0xC, 0x24, 0xC, 0x23, 0xC, 0x30
 	.word loc_8100010
 	.byte 0x4, 0x18, 0x4, 0xA, 0xC, 0x34, 0xC, 0x35, 0x4, 0xD, 0x10
@@ -101588,6 +102038,7 @@ loc_80E98FC:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
+	.balign 4, 0
 off_80E9914: .word off_80E9918
 off_80E9918: .word sub_80E991C+1
 	thumb_func_end sub_80E98DE
@@ -101654,7 +102105,7 @@ sub_80E996E:
 	strb r1, [r0,#oObjectHeader_Flags]
 locret_80E998C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E9990: .word byte_80E98C0
 	thumb_func_end sub_80E996E
 
@@ -101723,7 +102174,7 @@ sub_80E99DC:
 	strh r0, [r5,#oBattleObject_Timer]
 locret_80E9A04:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E9A08: .word off_80E9A0C
 off_80E9A0C: .word 0xB4
 	.word 0xA0
@@ -101822,6 +102273,7 @@ loc_80E9ABE:
 	ble loc_80E9A60
 	add sp, sp, #0x28
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80E9AC8: .word byte_80E9ACC
 byte_80E9ACC: .byte 0x0, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -101839,7 +102291,7 @@ sub_80E9AF0:
 	bx r1
 	bl sub_801BC24
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E9B04: .word off_80E9B08
 off_80E9B08: .word sub_80E9B14+1
 	.word sub_80E9B56+1
@@ -101981,7 +102433,7 @@ sub_80E9C06:
 	ldr r2, [r2,r0]
 	ldrb r0, [r2,r1]
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80E9C20: .word off_80E9C24
 off_80E9C24: .word byte_80E9C30
 	.word byte_80E9C4E
@@ -102187,7 +102639,7 @@ loc_80E9DD4:
 loc_80E9DD6:
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80E9DDC: .word byte_80E9DE0
 byte_80E9DE0: .byte 0x20, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -102412,7 +102864,7 @@ sub_80E9F64:
 	lsl r6, r6, #0x10
 	bl sub_80C53A6
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80E9F84: .word 0xB05FF01
 off_80E9F88: .word byte_80E9F8C
 byte_80E9F8C: .byte 0x1, 0x0, 0x0, 0x0, 0x1, 0x10, 0x0, 0x0, 0x1, 0x20, 0x0, 0x0, 0x1, 0x30
@@ -102431,7 +102883,7 @@ sub_80E9F9C:
 	ldr r7, dword_80E9FB8 // =0x0 
 	bl sub_80C53A6
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80E9FB4: .word 0xB05FF01
 dword_80E9FB8: .word 0x0
 	thumb_func_end sub_80E9F9C
@@ -102475,7 +102927,7 @@ loc_80E9FF4:
 	mov r4, #0x21 
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80EA00C: .word 0x100000
 	thumb_func_end sub_80E9FBC
 
@@ -102676,7 +103128,7 @@ sub_80EA14C:
 	bx r1
 	bl object_updateSpritePaused
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80EA160: .word off_80EA164
 off_80EA164: .word sub_80EA170+1
 	.word sub_80EA1BC+1
@@ -103035,7 +103487,7 @@ loc_80EA40C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80EA410:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80EA414: .word byte_80EA418
 byte_80EA418: .byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x1
 	.byte 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0xFF, 0xFF
@@ -103078,7 +103530,7 @@ sub_80EA460:
 	bx r1
 	bl sub_801BCF4
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80EA474: .word off_80EA478
 off_80EA478: .word sub_80172F0+1
 	.word sub_80EA484+1
@@ -103110,6 +103562,7 @@ loc_80EA498:
 	bl object_presentCollisionData
 locret_80EA4BE:
 	pop {r4,pc}
+	.balign 4, 0
 off_80EA4C0: .word off_80EA4C8
 off_80EA4C4: .word off_80EA93C
 off_80EA4C8: .word off_80EA52C
@@ -103597,7 +104050,7 @@ loc_80EADBC:
 	strb r0, [r7,#4]
 locret_80EADC8:
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80EADCC: .word off_80EADD0
 off_80EADD0: .word sub_80EADDC+1
 	.word sub_80EAE28+1
@@ -103889,6 +104342,7 @@ loc_80EB012:
 	bl sub_80E341E
 locret_80EB01A:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80EB01C: .word 0x83E0
 dword_80EB020: .word 0x1010014
 off_80EB024: .word byte_80EB028
@@ -103919,7 +104373,7 @@ sub_80EB04C:
 	str r0, [r7,#oAIAttackVars_Unk_30]
 locret_80EB06C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80EB070: .word off_80EB074
 off_80EB074: .word sub_80EB088+1
 	.word sub_80EB128+1
@@ -104219,6 +104673,7 @@ loc_80EB2CA:
 	bl object_exitAttackState
 locret_80EB2D2:
 	pop {pc}
+	.balign 4, 0
 dword_80EB2D4: .word 0x12492
 dword_80EB2D8: .word 0xAF8A
 	thumb_func_end sub_80EB254
@@ -104338,7 +104793,7 @@ loc_80EB3B2:
 	strh r0, [r7]
 locret_80EB3CC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80EB3D0: .word 0xFFFF8000
 dword_80EB3D4: .word 0x88000
 dword_80EB3D8: .word 0x600FF01
@@ -104650,6 +105105,7 @@ loc_80EB61A:
 	mov r9, r3
 	pop {r4,r6,r7,pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_80EB624: .word 0x200
 	thumb_func_end sub_80EB572
 
@@ -104754,6 +105210,7 @@ loc_80EB6EA:
 	pop {r0}
 	mov r8, r0
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80EB6F0: .word off_80EB6F8
 off_80EB6F4: .word byte_80EB738
 off_80EB6F8: .word sub_80C5DBC+1
@@ -104889,6 +105346,7 @@ loc_80EB82C:
 locret_80EB83A:
 	pop {r4,r6,pc}
 	.byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80, 0xF
+	.balign 4, 0
 dword_80EB844: .word 0xFFE0
 dword_80EB848: .word 0x1010014
 	thumb_func_end sub_80EB79C
@@ -105097,6 +105555,7 @@ loc_80EB9EE:
 	pop {r0}
 	mov r8, r0
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80EB9F4: .word byte_80EBA18
 off_80EB9F8: .word byte_80EBAD8
 off_80EB9FC: .word off_80EBA00
@@ -105196,6 +105655,7 @@ loc_80EBB58:
 	mov r0, r7
 	pop {r4,r7,pc}
 	.word 0x0
+	.balign 4, 0
 off_80EBB60: .word byte_80EBB64
 byte_80EBB64: .byte 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x19, 0x1A, 0x1B
 	.byte 0x1C, 0x0, 0x3, 0x3, 0x0
@@ -105409,7 +105869,7 @@ loc_80EBD06:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80EBD14:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80EBD18: .word byte_80EBD2C
 off_80EBD1C: .word byte_80EBD34
 dword_80EBD20: .word 0x8318
@@ -105458,6 +105918,7 @@ sub_80EBD68:
 loc_80EBD78:
 	mov r0, #0
 	mov pc, lr
+	.balign 4, 0
 off_80EBD7C: .word off_80EBD80
 off_80EBD80: .word 0x100
 	.word 0x0
@@ -105513,7 +105974,7 @@ loc_80EBDF0:
 	bl object_exitAttackState
 locret_80EBDF4:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80EBDF8: .word off_802CCB4
 off_80EBDFC: .word 0x170
 	thumb_func_end sub_80EBD9C
@@ -105764,6 +106225,7 @@ loc_80EBF98:
 loc_80EBFE0:
 	add sp, sp, #0x14
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80EBFE4: .word dword_80EBFEC
 off_80EBFE8: .word dword_80EBFF0
 dword_80EBFEC: .word 0xA050403
@@ -106008,7 +106470,7 @@ loc_80EC1B0:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80EC1B4:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80EC1B8: .word byte_80EC1BC
 byte_80EC1BC: .byte 0x2, 0x3, 0x1, 0x1, 0x0, 0x1, 0x0
 	thumb_func_end sub_80EC11C
@@ -106201,6 +106663,7 @@ loc_80EC308:
 	bl object_exitAttackState
 locret_80EC342:
 	pop {r4,pc}
+	.balign 4, 0
 dword_80EC344: .word 0xFFFF
 dword_80EC348: .word 0x10000
 dword_80EC34C: .word 0xDC0000
@@ -106242,6 +106705,7 @@ loc_80EC38A:
 loc_80EC392:
 	bl object_exitAttackState
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80EC398: .word 0x170
 	thumb_func_end sub_80EC350
 
@@ -106289,6 +106753,7 @@ loc_80EC3E6:
 	pop {r0}
 	mov r8, r0
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80EC3EC: .word off_80EC3F0
 off_80EC3F0: .word sub_80104E0+1
 	.word sub_80CA4F6+1
@@ -106343,7 +106808,7 @@ sub_80EC45E:
 	bl sub_801056A
 locret_80EC47C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80EC480: .word off_80EC484
 off_80EC484: .word sub_80EC490+1
 	.word sub_80EC556+1
@@ -106483,6 +106948,7 @@ loc_80EC5A2:
 	bl object_exitAttackState
 locret_80EC5A6:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80EC5A8: .word dword_80EC5B0
 off_80EC5AC: .word dword_80EC5B4
 dword_80EC5B0: .word 0x20181008
@@ -106507,6 +106973,7 @@ sub_80EC5BC:
 	bl sub_801056A
 locret_80EC5DA:
 	pop {pc}
+	.balign 4, 0
 off_80EC5DC: .word off_80EC5E0
 off_80EC5E0: .word sub_80EC5EC+1
 	.word sub_80EC67E+1
@@ -106656,6 +107123,7 @@ loc_80EC6D6:
 	bl sub_80116AE
 locret_80EC706:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80EC708: .word dword_80EC70C
 dword_80EC70C: .word 0x2C241C16
 	thumb_func_end sub_80EC67E
@@ -106710,6 +107178,7 @@ loc_80EC776:
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.balign 4, 0
 off_80EC780: .word byte_80EC784
 byte_80EC784: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x0, 0x0
 	thumb_func_end sub_80EC710
@@ -106831,7 +107300,7 @@ loc_80EC85A:
 	bl sub_800AB46
 	bl object_exitAttackState
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80EC86C: .word byte_80EC870
 byte_80EC870: .byte 0xA, 0x0, 0x1E, 0x0, 0x32, 0x0, 0x50, 0x0, 0x78, 0x0, 0x96, 0x0
 	.byte 0xC8, 0x0, 0x2C, 0x1, 0xE8, 0x3, 0x0, 0x0
@@ -107029,6 +107498,7 @@ loc_80EC9F2:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80ECA02:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80ECA04: .word dword_80ECA08
 dword_80ECA08: .word 0x40201
 	thumb_func_end sub_80EC97C
@@ -107043,6 +107513,7 @@ sub_80ECA0C:
 	bl object_exitAttackState
 locret_80ECA1A:
 	pop {pc}
+	.balign 4, 0
 dword_80ECA1C: .word 0x10003
 dword_80ECA20: .word 0x10000
 dword_80ECA24: .word 0x1E0000
@@ -107329,6 +107800,7 @@ loc_80ECC08:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80ECC46:
 	pop {pc}
+	.balign 4, 0
 off_80ECC48: .word dword_80ECC54
 	.word dword_80ECC58
 off_80ECC50: .word dword_80ECC5C
@@ -107636,6 +108108,7 @@ loc_80ECE7C:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80ECEA6:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80ECEA8: .word byte_80ECEAC
 byte_80ECEAC: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80
 	.byte 0xA
@@ -107844,6 +108317,7 @@ loc_80ED02E:
 	bl object_exitAttackState
 locret_80ED03A:
 	pop {r4,r6,pc}
+	.balign 4, 0
 dword_80ED03C: .word 0x10000
 	thumb_func_end sub_80ECF8E
 
@@ -107878,7 +108352,7 @@ loc_80ED06E:
 	mov r0, #1
 locret_80ED078:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80ED07C: .word byte_80ED080
 byte_80ED080: .byte 0x0, 0x0, 0x1, 0x4, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x8, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80ED040
@@ -108106,7 +108580,7 @@ loc_80ED226:
 	bl object_exitAttackState
 locret_80ED244:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 	.word byte_80ED254
 byte_80ED24C: .byte 0x2, 0x0, 0x0, 0x0, 0x0, 0x0, 0x2, 0x0
 byte_80ED254: .byte 0x0, 0x0, 0x0, 0x51, 0x0, 0x0, 0x0, 0xA2
@@ -108561,6 +109035,7 @@ loc_80ED594:
 	mov r0, #5
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	pop {pc}
+	.balign 4, 0
 off_80ED5B8: .word byte_80ED5BC
 byte_80ED5BC: .byte 0x1, 0x3
 	thumb_func_end sub_80ED57C
@@ -108609,7 +109084,7 @@ loc_80ED5DC:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80ED610:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80ED614: .word dword_80ED618
 dword_80ED618: .word 0x1010300
 	thumb_func_end sub_80ED5BE
@@ -109225,7 +109700,7 @@ loc_80EDA9E:
 	add sp, sp, #0x14
 	pop {r4,r6,r7,pc}
 	.word 0, 0, 0
-	.byte 0, 0
+	.balign 4, 0
 off_80EDAB0: .word byte_80EDAB4
 byte_80EDAB4: .byte 0x2, 0x2, 0x3, 0x2, 0x3, 0x3
 	thumb_func_end sub_80EDA0E
@@ -109271,6 +109746,7 @@ sub_80EDAE0:
 	bl sub_801056A
 locret_80EDAFE:
 	pop {r7,pc}
+	.balign 4, 0
 off_80EDB00: .word off_80EDB08
 dword_80EDB04: .word 0x8600
 off_80EDB08: .word sub_80EDB14+1
@@ -109352,7 +109828,7 @@ loc_80EDB7C:
 	strh r0, [r7]
 locret_80EDBAC:
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80EDBB0: .word dword_80EDBC8
 off_80EDBB4: .word byte_80EDBB8
 byte_80EDBB8: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x2, 0x0, 0x2, 0x0, 0x2, 0x1, 0x3
@@ -109446,7 +109922,7 @@ loc_80EDC68:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80EDC6C:
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80EDC70: .word 0x2C05FF04
 dword_80EDC74: .word 0x2C05FF11
 	thumb_func_end sub_80EDBCC
@@ -109483,7 +109959,7 @@ loc_80EDC92:
 	bl object_exitAttackState
 locret_80EDCB4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80EDCB8: .word PanelOffsetListsPointerTable
 dword_80EDCBC: .word 0x45A00
 	thumb_func_end sub_80EDC78
@@ -109556,7 +110032,7 @@ loc_80EDD30:
 loc_80EDD42:
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80EDD48: .word off_80EDD54
 dword_80EDD4C: .word 0x400040
 off_80EDD50: .word 0x40
@@ -109834,7 +110310,7 @@ loc_80EDF42:
 	bl object_exitAttackState
 locret_80EDF4C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80EDF50: .word 0x1000
 dword_80EDF54: .word 0x2000
 dword_80EDF58: .word 0x3000
@@ -109954,6 +110430,7 @@ loc_80EE02C:
 	b loc_80EDFFC
 locret_80EE032:
 	pop {r4,r6,pc}
+	.balign 4, 0
 dword_80EE034: .word 0x200000
 dword_80EE038: .word 0xC3C
 off_80EE03C: .word PanelOffsetListsPointerTable
@@ -110239,7 +110716,7 @@ loc_80EE260:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80EE26C:
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80EE270: .word 0x1205FF04
 	thumb_func_end sub_80EE1AC
 
@@ -110265,7 +110742,7 @@ loc_80EE284:
 	bl object_exitAttackState
 locret_80EE298:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80EE29C: .word 0x1906
 	thumb_func_end sub_80EE274
 
@@ -110430,7 +110907,7 @@ loc_80EE3D2:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80EE3DC:
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 	.byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80, 0xF
 dword_80EE3E8: .word 0xFFE0
 dword_80EE3EC: .word 0x1010014
@@ -110851,6 +111328,7 @@ loc_80EE6E8:
 	bl object_exitAttackState
 locret_80EE6F2:
 	pop {r4,r6,pc}
+	.balign 4, 0
 dword_80EE6F4: .word 0xFFF40000
 dword_80EE6F8: .word 0x8000
 	thumb_func_end sub_80EE6A4
@@ -111119,6 +111597,7 @@ loc_80EE8E2:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80EE8FE:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80EE900: .word byte_80EE904
 byte_80EE904: .byte 0x0, 0xFF, 0x2, 0xFD, 0x4, 0x7F, 0x0, 0x0
 	thumb_func_end sub_80EE89C
@@ -111269,6 +111748,7 @@ loc_80EEA22:
 	bl object_exitAttackState
 locret_80EEA2E:
 	pop {pc}
+	.balign 4, 0
 off_80EEA30: .word 0x200
 dword_80EEA34: .word 0x1040
 off_80EEA38: .word 0x4000000
@@ -111377,6 +111857,7 @@ loc_80EEB0A:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80EEB0E:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80EEB10: .word dword_80EEB14
 dword_80EEB14: .word 0x1010301
 	thumb_func_end sub_80EEA78
@@ -111406,6 +111887,7 @@ loc_80EEB32:
 	bl object_exitAttackState
 locret_80EEB46:
 	pop {pc}
+	.balign 4, 0
 off_80EEB48: .word 0x400
 	thumb_func_end sub_80EEB18
 
@@ -111657,7 +112139,7 @@ loc_80EED14:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80EED28:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80EED2C: .word 0x705FF11
 	thumb_func_end sub_80EECCC
 
@@ -111809,7 +112291,7 @@ loc_80EEE40:
 	bl object_exitAttackState
 locret_80EEE4C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80EEE50: .word 0xFFFF
 dword_80EEE54: .word 0x1C00
 dword_80EEE58: .word 0x705FF04
@@ -112005,7 +112487,7 @@ loc_80EEFCC:
 loc_80EEFD0:
 	bl ho_8026554
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80EEFD8: .word 0x705FF01
 	thumb_func_end sub_80EEFBC
 
@@ -112099,6 +112581,7 @@ loc_80EF082:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80EF09E:
 	pop {r4,pc}
+	.balign 4, 0
 off_80EF0A0: .word byte_80EF0A4
 byte_80EF0A4: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -112259,7 +112742,7 @@ sub_80EF1AE:
 	bl object_exitAttackState
 locret_80EF1E4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80EF1E8: .word 0xB40000
 	thumb_func_end sub_80EF1AE
 
@@ -112423,6 +112906,7 @@ sub_80EF30A:
 	add r7, #0
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80EF324: .word 0x3205FF83
 	thumb_func_end sub_80EF30A
 
@@ -112620,7 +113104,7 @@ sub_80EF47A:
 	bl object_exitAttackState
 locret_80EF4A0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80EF4A4: .word 0x6000
 dword_80EF4A8: .word 0x3000
 dword_80EF4AC: .word 0x10000
@@ -112689,6 +113173,7 @@ loc_80EF51A:
 locret_80EF52A:
 	pop {r4,r6,r7,pc}
 	.word dword_80EF530
+	.balign 4, 0
 dword_80EF530: .word 0x40201
 	thumb_func_end sub_80EF4D0
 
@@ -112781,7 +113266,7 @@ loc_80EF596:
 locret_80EF5E8:
 	pop {r4,r6,r7,pc}
 	.word 0
-	.byte 0, 0
+	.balign 4, 0
 off_80EF5F0: .word byte_80EF5FC
 off_80EF5F4: .word byte_80EF604
 off_80EF5F8: .word byte_80EF606
@@ -112845,7 +113330,7 @@ sub_80EF648:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	bl sub_80EF6FC
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80EF66C: .word off_80EF670
 off_80EF670: .word byte_80EF698
 	.word byte_80EF6A8
@@ -112981,6 +113466,7 @@ loc_80EF7CE:
 	strb r0, [r7,#oAIAttackVars_Unk_1d]
 locret_80EF7D2:
 	pop {r4,pc}
+	.balign 4, 0
 off_80EF7D4: .word loc_80EF7D8
 	thumb_func_end sub_80EF6FC
 
@@ -113022,7 +113508,7 @@ sub_80EF7FC:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	bl sub_80EF87C
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80EF820: .word off_80EF824
 off_80EF824: .word byte_80EF83C
 	.word byte_80EF84C
@@ -113150,6 +113636,7 @@ loc_80EF94E:
 	strb r0, [r7,#oAIAttackVars_Unk_1d]
 locret_80EF952:
 	pop {r4,pc}
+	.balign 4, 0
 off_80EF954: .word byte_80EF958
 byte_80EF958: .byte 0x76, 0x1, 0x77, 0x1, 0x78, 0x1, 0x0, 0x0
 dword_80EF960: .word 0x1C5
@@ -113487,7 +113974,7 @@ loc_80EFBBE:
 	bl object_exitAttackState
 locret_80EFC04:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80EFC08: .word 0xC0000
 dword_80EFC0C: .word 0x780000
 dword_80EFC10: .word 0x10000
@@ -113592,6 +114079,7 @@ sub_80EFCB4:
 	strh r1, [r0,#0x20]
 locret_80EFCCA:
 	pop {pc}
+	.balign 4, 0
 off_80EFCCC: .word off_80EFCD0
 off_80EFCD0: .word sub_80EFCD8+1
 	.word sub_80EFD5E+1
@@ -113791,7 +114279,7 @@ loc_80EFE5E:
 	bl object_exitAttackState
 locret_80EFE68:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80EFE6C: .word 0x348000
 dword_80EFE70: .word 0x80011C40
 dword_80EFE74: .word 0x200000
@@ -113818,6 +114306,7 @@ loc_80EFE94:
 	bx r1
 locret_80EFE9E:
 	pop {r7,pc}
+	.balign 4, 0
 off_80EFEA0: .word off_80EFEA8
 off_80EFEA4: .word 0x600
 off_80EFEA8: .word sub_80EFEAC+1
@@ -113846,7 +114335,7 @@ loc_80EFEC6:
 	bl object_exitAttackState
 locret_80EFED8:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80EFEDC: .word 0x800
 	thumb_func_end sub_80EFEAC
 
@@ -114021,7 +114510,7 @@ loc_80F003C:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F0040:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F0044: .word byte_80F004C
 off_80F0048: .word dword_80F0064
 byte_80F004C: .byte 0x2, 0xFF, 0x5, 0x7, 0x4, 0xFF, 0x5, 0x7, 0x6, 0xFF, 0x5, 0x7, 0xE0
@@ -114138,7 +114627,7 @@ sub_80F0110:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	bl sub_80F014C
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F0134: .word byte_80F0138
 byte_80F0138: .byte 0xFF, 0x1, 0x0, 0xFF, 0x0, 0x1, 0x0, 0x1, 0xFF, 0x0, 0xFF, 0x1, 0x1
 	.byte 0x0, 0xFF, 0x1, 0xFF, 0x0, 0x0, 0x0
@@ -114339,6 +114828,7 @@ sub_80F02A2:
 loc_80F02B8:
 	mov r0, r4
 	pop {r4,pc}
+	.balign 4, 0
 dword_80F02BC: .word 0x8000
 off_80F02C0: .word unk_2010000
 	.byte 0x0
@@ -115024,7 +115514,7 @@ loc_80F0880:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F088C:
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80F0890: .word 0x4050101
 dword_80F0894: .word 0x3
 	thumb_func_end sub_80F0832
@@ -115106,6 +115596,7 @@ loc_80F092C:
 	blt loc_80F08EE
 locret_80F0932:
 	pop {r4,r6,pc}
+	.balign 4, 0
 dword_80F0934: .word 0x10010
 dword_80F0938: .word 0xFFFE8000
 off_80F093C: .word unk_2010108
@@ -115403,6 +115894,7 @@ loc_80F0B52:
 loc_80F0B70:
 	add sp, sp, #0x18
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80F0B74: .word off_80F0B78
 off_80F0B78: .word 0x4000000
 	.word 0x8000000
@@ -115422,6 +115914,7 @@ sub_80F0B80:
 	ldr r7, dword_80F0BA0 // =0x1001 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80F0B9C: .word 0x7050304
 dword_80F0BA0: .word 0x1001
 	thumb_func_end sub_80F0B80
@@ -115487,6 +115980,7 @@ loc_80F0C1C:
 	mov r0, #1
 locret_80F0C1E:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80F0C20: .word off_80F0C24
 off_80F0C24: .word 0x4000000
 	.word 0x8000000
@@ -115651,7 +116145,7 @@ loc_80F0D4C:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F0D5C:
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80F0D60: .word 0x1FF03
 	thumb_func_end sub_80F0D08
 
@@ -115718,6 +116212,7 @@ loc_80F0DDA:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F0DDE:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80F0DE0: .word dword_80F0DE4
 dword_80F0DE4: .word 0x10010
 dword_80F0DE8: .word 0x800000
@@ -115911,7 +116406,7 @@ loc_80F0F46:
 	mov r0, #0
 locret_80F0F48:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F0F4C: .word byte_80F0F50
 byte_80F0F50: .byte 0x0, 0x3, 0x1, 0x0, 0x6, 0x0, 0x0, 0xFF, 0x0, 0x1, 0xFF, 0x0, 0x1, 0x0, 0x0
 	.byte 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x3, 0xFF, 0x0, 0x1, 0x0, 0x0, 0xFF, 0x0, 0x1
@@ -115932,7 +116427,7 @@ sub_80F0F78:
 	bl object_getPanelsInColumnFiltered
 	add sp, sp, #0x18
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F0F94: .word off_80F0F98
 off_80F0F98: .word 0x4000000
 	.word 0x8000000
@@ -116147,7 +116642,7 @@ sub_80F10F2:
 	ldr r7, dword_80F1118 // =0x3 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80F1114: .word 0x705FF04
 dword_80F1118: .word 0x3
 	thumb_func_end sub_80F10F2
@@ -116206,7 +116701,7 @@ loc_80F114C:
 	ble loc_80F114C
 locret_80F1184:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F1188: .word byte_2010408
 	.word 0x4
 byte_80F1190: .byte 0xF4, 0x1, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0
@@ -116559,6 +117054,7 @@ loc_80F1414:
 loc_80F142C:
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80F1430: .word off_80F1434
 off_80F1434: .word BG2Rotation_ScalingParameterA_dx_
 	.word 0x0
@@ -116621,7 +117117,7 @@ sub_80F149C:
 	ldr r7, dword_80F14B8 // =0x1 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80F14B4: .word 0x6050A01
 dword_80F14B8: .word 0x1
 	thumb_func_end sub_80F149C
@@ -116685,7 +117181,7 @@ loc_80F151A:
 	ble loc_80F1504
 locret_80F1520:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80F1524: .word 0xFFFF
 dword_80F1528: .word 0x60000
 off_80F152C: .word off_2010508
@@ -116866,7 +117362,7 @@ loc_80F167C:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F1684:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F1688: .word dword_80F168C
 dword_80F168C: .word 0x10
 dword_80F1690: .word 0xF880080
@@ -117028,7 +117524,7 @@ loc_80F17A4:
 	bl object_exitAttackState
 locret_80F17B0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F17B4: .word off_2010608
 	.word 0x6
 byte_80F17BC: .byte 0xF4, 0x1, 0x0, 0x8, 0xA, 0x0, 0x0, 0x0
@@ -117132,6 +117628,7 @@ loc_80F183A:
 	bl SpawnT4BattleObjectWithId0
 locret_80F187E:
 	pop {r4,r6,pc}
+	.balign 4, 0
 dword_80F1880: .word 0x700FF11
 dword_80F1884: .word 0x1
 	thumb_func_end sub_80F1808
@@ -117313,7 +117810,7 @@ loc_80F197E:
 	ble loc_80F197E
 locret_80F19C0:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F19C4: .word off_2010708
 	.word 0x7
 byte_80F19CC: .byte 0xC8, 0x40, 0x0, 0x1, 0xA, 0x0, 0x0, 0x0
@@ -117493,7 +117990,7 @@ loc_80F1AE2:
 	cmp r4, #3
 	ble loc_80F1AE2
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80F1B10: .word 0x400FF01
 off_80F1B14: .word byte_80F1B18
 byte_80F1B18: .byte 0x3, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0
@@ -117536,6 +118033,7 @@ loc_80F1B5C:
 	cmp r6, #3
 	ble loc_80F1B2A
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80F1B6C: .word byte_80F1B70
 byte_80F1B70: .byte 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x80, 0xA
 	thumb_func_end sub_80F1B24
@@ -117552,7 +118050,7 @@ sub_80F1B78:
 	ldr r7, dword_80F1B94 // =0x0 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80F1B90: .word 0x102FF80
 dword_80F1B94: .word 0x0
 off_80F1B98: .word off_2010808
@@ -117751,7 +118249,7 @@ loc_80F1D14:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F1D18:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F1D1C: .word byte_80F1D20
 byte_80F1D20: .byte 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x7, 0x10, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x80, 0xB
@@ -117910,7 +118408,7 @@ loc_80F1E3A:
 	cmp r4, #1
 	ble loc_80F1E0E
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F1E44: .word byte_80F1E48
 byte_80F1E48: .byte 0x1, 0xC, 0x0, 0x0, 0x1, 0x18, 0x0, 0x0
 	thumb_func_end sub_80F1E08
@@ -117953,6 +118451,7 @@ sub_80F1E7E:
 	ldr r7, dword_80F1E94 // =0x63 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80F1E90: .word 0x6050A01
 dword_80F1E94: .word 0x63
 	thumb_func_end sub_80F1E7E
@@ -117998,7 +118497,7 @@ sub_80F1E98:
 loc_80F1EE6:
 	add sp, sp, #0x18
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F1EEC: .word off_80F1EF0
 off_80F1EF0: .word BG2Rotation_ScalingParameterA_dx_
 	.word 0x0
@@ -118222,6 +118721,7 @@ sub_80F207C:
 	ldr r7, dword_80F209C // =0x3 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80F2098: .word 0x6050A01
 dword_80F209C: .word 0x3
 	thumb_func_end sub_80F207C
@@ -118257,7 +118757,7 @@ loc_80F20D2:
 	cmp r4, #6
 	ble loc_80F20A4
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F20DC: .word byte_80F20E0
 byte_80F20E0: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -118392,6 +118892,7 @@ loc_80F21E6:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F21EA:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80F21EC: .word byte_80F21F0
 byte_80F21F0: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x32, 0x0, 0x46, 0x0, 0x0, 0x0
 	thumb_func_end sub_80F2180
@@ -118557,6 +119058,7 @@ sub_80F22F8:
 	str r0, [r5,#oBattleObject_ExtraVars+0x18]
 locret_80F230E:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_80F2310: .word off_2010A08
 	.word 0xA
 byte_80F2318: .byte 0xF4, 0x1, 0x0, 0x1, 0xA, 0x0, 0x0, 0x0
@@ -118575,7 +119077,7 @@ sub_80F2330:
 	bx r1
 	bl object_updateSprite
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F2344: .word off_80F2348
 off_80F2348: .word sub_8016F56+1
 	.word sub_80F2354+1
@@ -119009,6 +119511,7 @@ sub_80F29D8:
 	bl sub_801056A
 locret_80F29F6:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80F29F8: .word off_80F29FC
 off_80F29FC: .word sub_80F2A04+1
 	.word sub_80F2A16+1
@@ -119297,7 +119800,7 @@ sub_80F2CE4:
 loc_80F2CFA:
 	mov r0, r4
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F2D00: .word dword_80F2D04
 dword_80F2D04: .word 0x3C3C3C3C
 	thumb_func_end sub_80F2CE4
@@ -119316,7 +119819,7 @@ sub_80F2D08:
 loc_80F2D1E:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F2D24: .word dword_80F2D28
 dword_80F2D28: .word 0x14181E28
 	thumb_func_end sub_80F2D08
@@ -119335,7 +119838,7 @@ sub_80F2D2C:
 loc_80F2D42:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F2D48: .word dword_80F2D4C
 dword_80F2D4C: .word 0x14181E28
 	thumb_func_end sub_80F2D2C
@@ -119346,7 +119849,7 @@ sub_80F2D50:
 	ldr r0, off_80F2D5C // =dword_80F2D60
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F2D5C: .word dword_80F2D60
 dword_80F2D60: .word 0x18182430
 	thumb_func_end sub_80F2D50
@@ -119395,7 +119898,7 @@ sub_80F2DAC:
 	ldr r0, off_80F2DB8 // =loc_80F2DBC 
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F2DB8: .word loc_80F2DBC
 	thumb_func_end sub_80F2DAC
 
@@ -119475,7 +119978,7 @@ sub_80F2E54:
 	lsl r0, r0, #0x10
 	orr r0, r6
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F2E7C: .word byte_80F2E88
 	.word byte_80F2E90
 	.word byte_80F2E98
@@ -119548,7 +120051,7 @@ loc_80F2F30:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F2F3C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F2F40: .word byte_80F2F44
 byte_80F2F44: .byte 0x0, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -119664,6 +120167,7 @@ loc_80F3022:
 	bl object_exitAttackState
 locret_80F302A:
 	pop {pc}
+	.balign 4, 0
 off_80F302C: .word byte_80F3030
 byte_80F3030: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -119772,6 +120276,7 @@ loc_80F30CE:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F30F2:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80F30F4: .word off_80F30F8
 off_80F30F8: .word byte_8080C0C
 off_80F30FC: .word off_80F3100
@@ -120289,7 +120794,7 @@ loc_80F34D0:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F34D4:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F34D8: .word byte_80F34DC
 byte_80F34DC: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -120662,7 +121167,7 @@ sub_80F3704:
 loc_80F3776:
 	add sp, sp, #0x20
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F377C: .word dword_80F3780
 dword_80F3780: .word 0x2060201
 	thumb_func_end sub_80F3704
@@ -120750,7 +121255,7 @@ loc_80F3814:
 	blt loc_80F37E4
 	add sp, sp, #0xc
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F3820: .word byte_80F3824
 byte_80F3824: .byte 0xFF
 byte_80F3825: .byte 0x0, 0x1, 0x0, 0x0, 0xFF, 0x0, 0x1
@@ -120860,6 +121365,7 @@ sub_80F38D0:
 	ldrh r3, [r5,#oBattleObject_AllianceAndDirectionFlip]
 	bl object_highlightPanelRegion
 	pop {pc}
+	.balign 4, 0
 byte_80F38E0: .byte 0x8, 0x2, 0x1, 0x1, 0x2, 0x0, 0x0, 0x1
 byte_80F38E8: .byte 0x84, 0x33, 0x0, 0x6, 0xA, 0x0, 0x78, 0x35, 0x1, 0x6, 0xA, 0x0
 	.byte 0x8, 0x37, 0x2, 0x6, 0xA, 0x0, 0x8, 0x37, 0x3, 0x6, 0xA, 0x0
@@ -121098,7 +121604,7 @@ sub_80F3B8C:
 loc_80F3BA2:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F3BA8: .word dword_80F3BAC
 dword_80F3BAC: .word 0x14191E28
 	thumb_func_end sub_80F3B8C
@@ -121117,7 +121623,7 @@ sub_80F3BB0:
 loc_80F3BC6:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F3BCC: .word dword_80F3BD0
 dword_80F3BD0: .word 0x14191E28
 	thumb_func_end sub_80F3BB0
@@ -121136,7 +121642,7 @@ sub_80F3BD4:
 loc_80F3BEA:
 	mov r0, r4
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F3BF0: .word dword_80F3BF4
 dword_80F3BF4: .word 0x14191E28
 	thumb_func_end sub_80F3BD4
@@ -121155,7 +121661,7 @@ sub_80F3BF8:
 loc_80F3C0E:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F3C14: .word dword_80F3C18
 dword_80F3C18: .word 0x1E283C3C
 	thumb_func_end sub_80F3BF8
@@ -121196,7 +121702,7 @@ sub_80F3C2C:
 	add r3, r3, r1
 	str r6, [r3,#oAIAttackVars_Unk_08]
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F3C5C: .word byte_80F3C68
 	.word byte_80F3C70
 	.word byte_80F3C78
@@ -121230,7 +121736,7 @@ sub_80F3CA4:
 	lsl r0, r0, #0x10
 	orr r0, r6
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F3CCC: .word byte_80F3CD8
 	.word byte_80F3CE0
 	.word byte_80F3CE8
@@ -121306,6 +121812,7 @@ loc_80F3D92:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F3D96:
 	pop {pc}
+	.balign 4, 0
 off_80F3D98: .word byte_80F3D9C
 byte_80F3D9C: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -121560,6 +122067,7 @@ loc_80F3F82:
 	bl object_exitAttackState
 locret_80F3F86:
 	pop {pc}
+	.balign 4, 0
 off_80F3F88: .word byte_80F3F8C
 byte_80F3F8C: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -121694,7 +122202,7 @@ loc_80F4090:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F40A4:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F40A8: .word byte_80F40AC
 byte_80F40AC: .byte 0x48, 0x0, 0x48, 0x0, 0x48, 0x0, 0x48, 0x0
 	thumb_func_end sub_80F404E
@@ -121771,7 +122279,7 @@ loc_80F4124:
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80F4140: .word 0xA000
 	thumb_func_end sub_80F4108
 
@@ -121816,6 +122324,7 @@ loc_80F4192:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F4196:
 	pop {pc}
+	.balign 4, 0
 off_80F4198: .word byte_80F419C
 byte_80F419C: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -122049,7 +122558,7 @@ loc_80F4354:
 	bl object_exitAttackState
 locret_80F4358:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F435C: .word byte_80F4360
 byte_80F4360: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -122221,6 +122730,7 @@ loc_80F44C6:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F44CA:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80F44CC: .word byte_80F44D0
 byte_80F44D0: .byte 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0xB, 0x0, 0x0, 0x0, 0xC, 0x0, 0x0, 0x0, 0xD
 	.byte 0x0
@@ -122283,7 +122793,7 @@ loc_80F4544:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F4550:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80F4554: .word 0x705FF04
 dword_80F4558: .word 0x3
 	thumb_func_end sub_80F44E4
@@ -122411,6 +122921,7 @@ loc_80F4634:
 loc_80F4648:
 	add sp, sp, #0x14
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80F464C: .word byte_80F4650
 byte_80F4650: .byte 0xFF
 byte_80F4651: .byte 0x0, 0x0, 0xFF, 0x1, 0x0, 0x0, 0x1
@@ -122717,6 +123228,7 @@ loc_80F4936:
 	str r0, [r5,#oBattleObject_ExtraVars+0x10]
 locret_80F4946:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80F4948: .word loc_80F494C
 	thumb_func_end sub_80F48E8
 
@@ -122802,7 +123314,7 @@ sub_80F49D4:
 loc_80F49EA:
 	mov r0, r4
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F49F0: .word dword_80F49F4
 dword_80F49F4: .word 0x12181E1E
 	thumb_func_end sub_80F49D4
@@ -122819,6 +123331,7 @@ sub_80F49F8:
 	mov r1, r0
 	mov r0, r4
 	pop {r4,pc}
+	.balign 4, 0
 off_80F4A10: .word byte_80F4A14
 byte_80F4A14: .byte 0x1E, 0x18, 0x18, 0x14, 0xA, 0xA, 0xA, 0xA
 	thumb_func_end sub_80F49F8
@@ -122829,7 +123342,7 @@ sub_80F4A1C:
 	ldr r0, off_80F4A28 // =dword_80F4A2C
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F4A28: .word dword_80F4A2C
 dword_80F4A2C: .word 0x1E1E242A
 	thumb_func_end sub_80F4A1C
@@ -122848,7 +123361,7 @@ sub_80F4A30:
 loc_80F4A46:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F4A4C: .word dword_80F4A50
 dword_80F4A50: .word 0x1212181E
 	thumb_func_end sub_80F4A30
@@ -122867,7 +123380,7 @@ sub_80F4A54:
 loc_80F4A6A:
 	mov r0, r4
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F4A70: .word dword_80F4A74
 dword_80F4A74: .word 0x101E283C
 	thumb_func_end sub_80F4A54
@@ -122878,7 +123391,7 @@ sub_80F4A78:
 	ldr r0, off_80F4A84 // =dword_80F4A88
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F4A84: .word dword_80F4A88
 dword_80F4A88: .word 0x1212181E
 	thumb_func_end sub_80F4A78
@@ -123120,6 +123633,7 @@ loc_80F4C96:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F4C9E:
 	pop {pc}
+	.balign 4, 0
 off_80F4CA0: .word byte_80F4CA4
 byte_80F4CA4: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -123255,6 +123769,7 @@ loc_80F4DAE:
 	bl object_exitAttackState
 locret_80F4DB6:
 	pop {pc}
+	.balign 4, 0
 off_80F4DB8: .word dword_80F4DBC
 dword_80F4DBC: .word 0x10
 dword_80F4DC0: .word 0xF880080
@@ -123393,7 +123908,7 @@ loc_80F4EBC:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F4EC0:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80F4EC4: .word 0x700FF04
 dword_80F4EC8: .word 0x3
 	thumb_func_end sub_80F4E44
@@ -123489,7 +124004,7 @@ loc_80F4F70:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F4F7C:
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80F4F80: .word 0x700FF02
 dword_80F4F84: .word 0x3
 	thumb_func_end sub_80F4F14
@@ -123624,7 +124139,7 @@ loc_80F5080:
 	bl object_exitAttackState
 locret_80F5088:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F508C: .word byte_80F5090
 byte_80F5090: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -123720,7 +124235,7 @@ loc_80F50F8:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F5150:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F5154: .word byte_80F5158
 byte_80F5158: .byte 0x0, 0x0, 0x7, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x9, 0x0, 0x0, 0x0, 0x9, 0x0
 	thumb_func_end sub_80F50E2
@@ -123799,7 +124314,7 @@ loc_80F51F4:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F51F8:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F51FC: .word dword_80F5200
 dword_80F5200: .word 0x10010
 dword_80F5204: .word 0x800000
@@ -123937,6 +124452,7 @@ loc_80F52FE:
 	bl object_exitAttackState
 locret_80F5306:
 	pop {pc}
+	.balign 4, 0
 off_80F5308: .word byte_80F530C
 byte_80F530C: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -124134,7 +124650,7 @@ loc_80F546E:
 loc_80F5472:
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F5478: .word byte_80F547C
 byte_80F547C: .byte 0xFF
 byte_80F547D: .byte 0x0, 0x0, 0xFF, 0x1, 0x0, 0x0, 0x1
@@ -124316,7 +124832,7 @@ sub_80F55AC:
 	mov r0, #0
 locret_80F55C8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F55CC: .word loc_80F55D0
 	thumb_func_end sub_80F55AC
 
@@ -124429,7 +124945,7 @@ loc_80F56C6:
 	cmp r4, #4
 	blt loc_80F5690
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F56D0: .word byte_80F56D4
 byte_80F56D4: .byte 0x3, 0x1, 0x1, 0x3, 0x2, 0x1, 0x3, 0x3, 0x3, 0x1, 0x3, 0x2, 0x3, 0x3, 0x2, 0x2, 0x3
 	.byte 0x1, 0x2, 0x2, 0x3, 0x2, 0x3, 0x3, 0x3, 0x1, 0x1, 0x3, 0x3, 0x2, 0x1, 0x3, 0x2, 0x2
@@ -124584,6 +125100,7 @@ sub_80F57DE:
 	ldr r7, dword_80F5808 // =0x10014 
 	bl sub_80E33FA
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80F5800: .word 0x308
 dword_80F5804: .word 0xBC0F
 dword_80F5808: .word 0x10014
@@ -124712,7 +125229,7 @@ loc_80F59B4:
 	bl object_setAttack4
 locret_80F59DC:
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F59E0: .word dword_80F59E4
 dword_80F59E4: .word 0x3040405
 	thumb_func_end sub_80F594C
@@ -124807,7 +125324,7 @@ sub_80F5A8C:
 	ldr r0, off_80F5A98 // =dword_80F5A9C
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F5A98: .word dword_80F5A9C
 dword_80F5A9C: .word 0x1E28323C
 	thumb_func_end sub_80F5A8C
@@ -124882,6 +125399,7 @@ sub_80F5B02:
 	lsl r0, r0, #0x10
 	orr r0, r6
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80F5B28: .word byte_80F5B34
 	.word byte_80F5B3C
 	.word byte_80F5B44
@@ -124952,7 +125470,7 @@ loc_80F5BE0:
 	bl object_exitAttackState
 locret_80F5BE8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F5BEC: .word byte_80F5BF0
 byte_80F5BF0: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -125069,7 +125587,7 @@ loc_80F5CD0:
 	bl object_exitAttackState
 locret_80F5CD8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F5CDC: .word byte_80F5CE0
 byte_80F5CE0: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -125145,6 +125663,7 @@ loc_80F5D5E:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F5D6A:
 	pop {pc}
+	.balign 4, 0
 off_80F5D6C: .word dword_80F5D70
 dword_80F5D70: .word 0x191E2328
 	thumb_func_end sub_80F5D3E
@@ -125264,6 +125783,7 @@ loc_80F5E52:
 	bl object_exitAttackState
 locret_80F5E5A:
 	pop {pc}
+	.balign 4, 0
 off_80F5E5C: .word byte_80F5E60
 byte_80F5E60: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -125426,7 +125946,7 @@ loc_80F5F80:
 	bl object_exitAttackState
 locret_80F5F88:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F5F8C: .word dword_80F5F90
 dword_80F5F90: .word 0x10
 dword_80F5F94: .word 0xF880080
@@ -125820,7 +126340,7 @@ sub_80F622A:
 	ldr r7, dword_80F6250 // =0x3 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80F624C: .word 0x705FF04
 dword_80F6250: .word 0x3
 	thumb_func_end sub_80F622A
@@ -125908,7 +126428,7 @@ sub_80F62EC:
 	ldr r6, [r7,#oAIAttackVars_Unk_34]
 	bl sub_80D16D6
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F6308: .word dword_80F630C
 dword_80F630C: .word 0x1060101
 	thumb_func_end sub_80F62EC
@@ -125951,7 +126471,7 @@ loc_80F6314:
 	ble loc_80F6314
 locret_80F6358:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F635C: .word dword_80F6360
 dword_80F6360: .word 0x100FF
 dword_80F6364: .word 0xA000
@@ -126108,7 +126628,7 @@ loc_80F6542:
 	bl object_setFlag2
 locret_80F6548:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F654C: .word off_80F6550
 off_80F6550: .word 0x28
 	.word 0x28
@@ -126147,6 +126667,7 @@ sub_80F6592:
 	ldr r0, off_80F659C // =dword_80F65A0 
 	bl sub_800FE28
 	pop {pc}
+	.balign 4, 0
 off_80F659C: .word dword_80F65A0
 dword_80F65A0: .word 0x3C3C3C3C
 	thumb_func_end sub_80F6592
@@ -126471,7 +126992,7 @@ loc_80F684C:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F6854:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F6858: .word byte_80F685C
 byte_80F685C: .byte 0x0, 0x50, 0x2, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x50, 0x3, 0x0, 0x0, 0x0, 0x4
 	.byte 0x0
@@ -126584,6 +127105,7 @@ loc_80F6946:
 	bl object_exitAttackState
 locret_80F694E:
 	pop {pc}
+	.balign 4, 0
 off_80F6950: .word dword_80F6954
 dword_80F6954: .word 0x10
 dword_80F6958: .word 0xF880080
@@ -126696,7 +127218,7 @@ loc_80F6A2C:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F6A30:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F6A34: .word byte_80F6A38
 byte_80F6A38: .byte 0x0, 0x0, 0x2, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0, 0x2, 0x0
 off_80F6A48: .word dword_80F6A4C
@@ -126839,7 +127361,7 @@ loc_80F6B5A:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F6B68:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F6B6C: .word byte_80F6B70
 byte_80F6B70: .byte 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x9, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0xB, 0x0
 off_80F6B80: .word dword_80F6B84
@@ -127092,7 +127614,7 @@ loc_80F6D6C:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F6D74:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F6D78: .word byte_80F6D7C
 byte_80F6D7C: .byte 0x0, 0x0, 0x3, 0x0, 0x0, 0x80, 0x3, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x80, 0x4
 	.byte 0x0
@@ -127331,6 +127853,7 @@ loc_80F6F66:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F6F6E:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80F6F70: .word byte_80F6F74
 byte_80F6F74: .byte 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x80, 0xA
 	thumb_func_end sub_80F6EA6
@@ -127491,7 +128014,7 @@ loc_80F7088:
 loc_80F7096:
 	add sp, sp, #0x10
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80F709C: .word 0xA000
 	thumb_func_end sub_80F6FEC
 
@@ -127518,7 +128041,7 @@ loc_80F70B6:
 	pop {r0,r1}
 	add r0, r0, r2
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F70CC: .word byte_80F70D0
 byte_80F70D0: .byte 0x3, 0x2, 0x3, 0x1, 0x3, 0x3, 0x1, 0x2, 0x3, 0x2, 0x1, 0x3, 0x1, 0x3, 0x3, 0x2
 	thumb_func_end sub_80F70A0
@@ -127568,6 +128091,7 @@ sub_80F710A:
 	mov r1, r0
 	mov r0, r4
 	pop {r4,pc}
+	.balign 4, 0
 off_80F712C: .word byte_80F7130
 byte_80F7130: .byte 0x0, 0x0, 0x3, 0x0, 0x0, 0x80, 0x3, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x80, 0x4
 	.byte 0x0
@@ -127621,7 +128145,7 @@ loc_80F7196:
 	mov r0, #0
 locret_80F7198:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F719C: .word dword_80F71A0
 dword_80F71A0: .word 0x10010
 dword_80F71A4: .word 0x800000
@@ -127650,6 +128174,7 @@ loc_80F71D0:
 	mov r0, #0
 locret_80F71D2:
 	pop {pc}
+	.balign 4, 0
 off_80F71D4: .word dword_80F71D8
 dword_80F71D8: .word 0x10010
 dword_80F71DC: .word 0x0
@@ -127686,7 +128211,7 @@ sub_80F71E0:
 loc_80F7216:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F721C: .word byte_80F7220
 byte_80F7220: .byte 0x3, 0x4, 0x5, 0x4, 0x3, 0x2, 0x0, 0x0
 off_80F7228: .word byte_80F722C
@@ -127858,6 +128383,7 @@ loc_80F735E:
 loc_80F7378:
 	add sp, sp, #0x2c
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80F737C: .word byte_80F7380
 byte_80F7380: .byte 0xFF
 byte_80F7381: .byte 0xFF, 0xFF, 0x1, 0x1, 0xFF, 0x1, 0x1, 0xFF, 0x0, 0x0, 0xFF, 0x1
@@ -127970,6 +128496,7 @@ loc_80F7452:
 	cmp r4, #2
 	blt loc_80F7432
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80F7474: .word byte_80F7478
 byte_80F7478: .byte 0x1, 0x1, 0x0, 0x1, 0x3, 0x0, 0x1, 0x2, 0x0, 0x3, 0x3, 0x0, 0x1, 0x1, 0x0, 0x2, 0x2
 	.byte 0x0, 0x2, 0x3, 0x0, 0x3, 0x1, 0x0, 0x1, 0x1, 0x0, 0x2, 0x3, 0x0, 0x3, 0x1, 0x0, 0x2
@@ -127994,7 +128521,7 @@ sub_80F74A8:
 	ldrb r2, [r7,#oAIAttackVars_Unk_02]
 	bl sub_80D63FC
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F74CC: .word byte_80F74D0
 byte_80F74D0: .byte 0x1E, 0x0, 0xA, 0x0, 0x32, 0x0, 0xA, 0x0, 0x64, 0x0, 0xA, 0x0
 	.byte 0x64, 0x0, 0xA, 0x0, 0x1E, 0x0, 0xA, 0x0, 0x32, 0x0, 0xA, 0x0
@@ -128045,6 +128572,7 @@ sub_80F7520:
 	bl object_spawnCollisionRegion
 locret_80F7546:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80F7548: .word 0x4050601
 dword_80F754C: .word 0x3
 byte_80F7550: .byte 0x8, 0x6, 0x1, 0x1, 0x6, 0x0, 0x0, 0x1
@@ -128213,7 +128741,7 @@ sub_80F7744:
 loc_80F775A:
 	mov r0, r4
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F7760: .word dword_80F7764
 dword_80F7764: .word 0x1014181E
 	thumb_func_end sub_80F7744
@@ -128232,7 +128760,7 @@ sub_80F7768:
 loc_80F777E:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F7784: .word dword_80F7788
 dword_80F7788: .word 0x1014181E
 	thumb_func_end sub_80F7768
@@ -128249,6 +128777,7 @@ sub_80F778C:
 	mov r1, r0
 	pop {r0}
 	pop {pc}
+	.balign 4, 0
 off_80F77A4: .word byte_80F77A8
 byte_80F77A8: .byte 0x2, 0x3, 0x5, 0x5, 0x18, 0x12, 0xC, 0xC
 	thumb_func_end sub_80F778C
@@ -128267,7 +128796,7 @@ sub_80F77B0:
 loc_80F77C6:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F77CC: .word dword_80F77D0
 dword_80F77D0: .word 0x1014181E
 	thumb_func_end sub_80F77B0
@@ -128278,7 +128807,7 @@ sub_80F77D4:
 	ldr r0, off_80F77E0 // =dword_80F77E4
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F77E0: .word dword_80F77E4
 dword_80F77E4: .word 0x3030302
 	thumb_func_end sub_80F77D4
@@ -128310,6 +128839,7 @@ loc_80F77EC:
 	blt loc_80F77EC
 locret_80F7816:
 	pop {r4,pc}
+	.balign 4, 0
 off_80F7818: .word dword_80F781C
 dword_80F781C: .word 0x10
 dword_80F7820: .word 0xF8800C0
@@ -128436,6 +128966,7 @@ sub_80F78FA:
 	add r3, r3, r1
 	str r6, [r3,#oAIAttackVars_Unk_08]
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80F7928: .word byte_80F7934
 	.word byte_80F793C
 	.word byte_80F7944
@@ -128469,7 +129000,7 @@ sub_80F7970:
 	lsl r0, r0, #0x10
 	orr r0, r6
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F7998: .word byte_80F79A4
 	.word byte_80F79AC
 	.word byte_80F79B4
@@ -128539,7 +129070,7 @@ loc_80F7A4C:
 	bl object_exitAttackState
 locret_80F7A54:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F7A58: .word byte_80F7A5C
 byte_80F7A5C: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -128669,6 +129200,7 @@ loc_80F7B52:
 	bl object_exitAttackState
 locret_80F7B5A:
 	pop {pc}
+	.balign 4, 0
 off_80F7B5C: .word byte_80F7B60
 byte_80F7B60: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -128869,7 +129401,7 @@ loc_80F7CCC:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F7CD8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F7CDC: .word byte_80F7CE0
 byte_80F7CE0: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -129046,6 +129578,7 @@ loc_80F7E22:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F7E26:
 	pop {pc}
+	.balign 4, 0
 off_80F7E28: .word dword_80F7E2C
 dword_80F7E2C: .word 0x50505050
 	thumb_func_end sub_80F7DBA
@@ -129078,6 +129611,7 @@ loc_80F7E52:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F7E5E:
 	pop {pc}
+	.balign 4, 0
 off_80F7E60: .word dword_80F7E64
 dword_80F7E64: .word 0x6060606
 	thumb_func_end sub_80F7E30
@@ -129217,7 +129751,7 @@ loc_80F7F60:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F7F6C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F7F70: .word dword_80F7F74
 dword_80F7F74: .word 0x10
 dword_80F7F78: .word 0xF880080
@@ -129306,6 +129840,7 @@ loc_80F7FFE:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F800A:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80F800C: .word dword_80F8010
 dword_80F8010: .word 0xC0E1012
 	thumb_func_end sub_80F7FC2
@@ -129655,7 +130190,7 @@ loc_80F829E:
 loc_80F82A2:
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F82A8: .word dword_80F82AC
 dword_80F82AC: .word 0x2050202
 	thumb_func_end sub_80F8256
@@ -129708,7 +130243,7 @@ sub_80F82E2:
 loc_80F8302:
 	mov r0, r2
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_80F8308: .byte 0x8, 0x7, 0x1, 0x1, 0x7, 0x0, 0x0, 0x1
 byte_80F8310: .byte 0xE8, 0x43, 0x0, 0x1, 0xA, 0x0, 0xDC, 0x45, 0x1, 0x1, 0xA, 0x0
 	.byte 0xD0, 0x47, 0x2, 0x1, 0xA, 0x0, 0xD0, 0x47, 0x3, 0x1, 0xA, 0x0
@@ -129874,7 +130409,7 @@ loc_80F8518:
 	bl object_setAttack4
 locret_80F8534:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F8538: .word dword_80F853C
 dword_80F853C: .word 0x3030306
 	thumb_func_end sub_80F8448
@@ -129902,7 +130437,7 @@ sub_80F8540:
 	pop {r0,r1}
 	bl sub_80CC584
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F8574: .word loc_80F8578
 	thumb_func_end sub_80F8540
 
@@ -129956,7 +130491,7 @@ sub_80F85D4:
 	ldr r0, off_80F85E0 // =dword_80F85E4
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F85E0: .word dword_80F85E4
 dword_80F85E4: .word 0x10181E26
 	thumb_func_end sub_80F85D4
@@ -129967,7 +130502,7 @@ sub_80F85E8:
 	ldr r0, off_80F85F4 // =dword_80F85F8
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F85F4: .word dword_80F85F8
 dword_80F85F8: .word 0x81014
 	thumb_func_end sub_80F85E8
@@ -129978,7 +130513,7 @@ sub_80F85FC:
 	ldr r0, off_80F8608 // =dword_80F860C
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F8608: .word dword_80F860C
 dword_80F860C: .word 0x101E323C
 	thumb_func_end sub_80F85FC
@@ -130012,7 +130547,7 @@ loc_80F8642:
 	sub r0, r0, r4
 locret_80F8644:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F8648: .word byte_80F864C
 byte_80F864C: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -130137,6 +130672,7 @@ loc_80F8776:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F877E:
 	pop {pc}
+	.balign 4, 0
 off_80F8780: .word byte_80F8784
 byte_80F8784: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -130260,6 +130796,7 @@ loc_80F8872:
 	bl object_exitAttackState
 locret_80F887A:
 	pop {pc}
+	.balign 4, 0
 off_80F887C: .word byte_80F8880
 byte_80F8880: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -130474,6 +131011,7 @@ loc_80F89FE:
 	bl object_exitAttackState
 locret_80F8A06:
 	pop {pc}
+	.balign 4, 0
 off_80F8A08: .word byte_80F8A0C
 byte_80F8A0C: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -130612,7 +131150,7 @@ loc_80F8AD4:
 	bl SpawnT4BattleObjectWithId0
 locret_80F8B14:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80F8B18: .word 0x700FF11
 dword_80F8B1C: .word 0x3
 	thumb_func_end sub_80F8A9C
@@ -130699,7 +131237,7 @@ loc_80F8BB8:
 	bl object_exitAttackState
 locret_80F8BC0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F8BC4: .word byte_80F8BC8
 byte_80F8BC8: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -131327,7 +131865,7 @@ sub_80F9104:
 	ldr r0, off_80F9110 // =dword_80F9114
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F9110: .word dword_80F9114
 dword_80F9114: .word 0xC121218
 	thumb_func_end sub_80F9104
@@ -131338,7 +131876,7 @@ sub_80F9118:
 	ldr r0, off_80F9124 // =off_80F9128
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F9124: .word off_80F9128
 off_80F9128: .word loc_80C1014
 	thumb_func_end sub_80F9118
@@ -131349,7 +131887,7 @@ sub_80F912C:
 	ldr r0, off_80F9138 // =dword_80F913C
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F9138: .word dword_80F913C
 dword_80F913C: .word 0x12161A1E
 	thumb_func_end sub_80F912C
@@ -131360,7 +131898,7 @@ sub_80F9140:
 	ldr r0, off_80F914C // =dword_80F9150
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F914C: .word dword_80F9150
 dword_80F9150: .word 0xC101014
 	thumb_func_end sub_80F9140
@@ -131584,6 +132122,7 @@ loc_80F933A:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F9342:
 	pop {pc}
+	.balign 4, 0
 off_80F9344: .word byte_80F9348
 byte_80F9348: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -131713,7 +132252,7 @@ loc_80F943C:
 	bl object_exitAttackState
 locret_80F9444:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F9448: .word byte_80F944C
 byte_80F944C: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -131911,7 +132450,7 @@ loc_80F95B4:
 	bl object_exitAttackState
 locret_80F95BC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F95C0: .word byte_80F95C4
 byte_80F95C4: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -132008,7 +132547,7 @@ loc_80F9650:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F9688:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F968C: .word byte_80F9690
 byte_80F9690: .byte 0x0, 0x80, 0x1, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x80, 0x2, 0x0, 0x0, 0x0, 0x3
 	.byte 0x0
@@ -132163,6 +132702,7 @@ loc_80F97A6:
 	bl sub_80F9BDC
 locret_80F97B6:
 	pop {pc}
+	.balign 4, 0
 off_80F97B8: .word dword_80F97BC
 dword_80F97BC: .word 0x13141213
 	thumb_func_end sub_80F975A
@@ -132258,7 +132798,7 @@ loc_80F9870:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F987C:
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F9880: .word byte_80F9884
 byte_80F9884: .byte 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0x6, 0x0, 0x0, 0x0, 0xC, 0x0, 0x33, 0x33
 	.byte 0x7, 0x0, 0x0, 0x0, 0xC, 0x0, 0x33, 0x33, 0x7, 0x0, 0x0, 0x0, 0xE, 0x0
@@ -132440,6 +132980,7 @@ loc_80F99CE:
 	cmp r4, #3
 	ble loc_80F99CE
 	pop {r4,r6,pc}
+	.balign 4, 0
 dword_80F99F4: .word 0x400FF01
 dword_80F99F8: .word 0x3
 	thumb_func_end sub_80F99CA
@@ -132522,7 +133063,7 @@ loc_80F9A84:
 loc_80F9A8A:
 	add sp, sp, #4
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F9A90: .word byte_80F9A94
 byte_80F9A94: .byte 0x1, 0x3, 0x0, 0x2, 0x1, 0x1, 0x3, 0x1, 0x1, 0x1, 0x3, 0x0, 0x2, 0x1, 0x1, 0x3, 0x3
 	.byte 0x0, 0x1, 0x3, 0x0, 0x2, 0x3, 0x0, 0x3, 0x1, 0x1, 0x1, 0x1, 0x1, 0x2, 0x3, 0x0, 0x3
@@ -132577,7 +133118,7 @@ loc_80F9B28:
 loc_80F9B32:
 	add sp, sp, #0x18
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F9B38: .word byte_80F9B3C
 byte_80F9B3C: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -132642,7 +133183,7 @@ loc_80F9BAC:
 	mov r2, r6
 	add sp, sp, #8
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F9BB4: .word byte_80F9BB8
 byte_80F9BB8: .byte 0x6, 0x2, 0x0, 0x2, 0x2, 0x0, 0x2, 0x3, 0x1, 0x3, 0x3, 0x1, 0x5, 0x1, 0x1, 0x6, 0x1
 	.byte 0x1, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0
@@ -132677,6 +133218,7 @@ loc_80F9BF4:
 	orr r3, r4
 	bl object_highlightPanelRegion
 	pop {r4,pc}
+	.balign 4, 0
 off_80F9C08: .word byte_80F9C0C
 byte_80F9C0C: .byte 0x1, 0x1, 0x4, 0x2, 0x4, 0x2, 0x1, 0x3
 off_80F9C14: .word byte_80F9C18
@@ -132700,6 +133242,7 @@ sub_80F9C28:
 	ldr r7, dword_80F9C50 // =0x101000f 
 	bl sub_80E33FA
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80F9C48: .word 0x808
 dword_80F9C4C: .word 0x8318
 dword_80F9C50: .word 0x101000F
@@ -132873,7 +133416,7 @@ sub_80F9E58:
 	ldr r0, off_80F9E64 // =dword_80F9E68
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F9E64: .word dword_80F9E68
 dword_80F9E68: .word 0x10121418
 	thumb_func_end sub_80F9E58
@@ -132892,7 +133435,7 @@ sub_80F9E6C:
 loc_80F9E82:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F9E88: .word dword_80F9E8C
 dword_80F9E8C: .word 0xF14191E
 	thumb_func_end sub_80F9E6C
@@ -132903,7 +133446,7 @@ sub_80F9E90:
 	ldr r0, off_80F9E9C // =dword_80F9EA0
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F9E9C: .word dword_80F9EA0
 dword_80F9EA0: .word 0x10121418
 	thumb_func_end sub_80F9E90
@@ -132922,7 +133465,7 @@ sub_80F9EA4:
 loc_80F9EBA:
 	mov r0, r4
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80F9EC0: .word dword_80F9EC4
 dword_80F9EC4: .word 0x1E28323C
 	thumb_func_end sub_80F9EA4
@@ -132933,7 +133476,7 @@ sub_80F9EC8:
 	ldr r0, off_80F9ED4 // =dword_80F9ED8
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F9ED4: .word dword_80F9ED8
 dword_80F9ED8: .word 0x16161A1E
 	thumb_func_end sub_80F9EC8
@@ -132950,6 +133493,7 @@ sub_80F9EDC:
 	mov r1, r0
 	pop {r0}
 	pop {pc}
+	.balign 4, 0
 off_80F9EF4: .word byte_80F9EF8
 byte_80F9EF8: .byte 0x3, 0x3, 0x4, 0x5, 0x2, 0x3, 0x3, 0x3
 	thumb_func_end sub_80F9EDC
@@ -132968,7 +133512,7 @@ sub_80F9F00:
 loc_80F9F16:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80F9F1C: .word dword_80F9F20
 dword_80F9F20: .word 0x1E28323C
 	thumb_func_end sub_80F9F00
@@ -133111,6 +133655,7 @@ sub_80FA01A:
 	lsl r0, r0, #0x10
 	orr r0, r6
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80FA040: .word byte_80FA050
 	.word byte_80FA058
 	.word byte_80FA060
@@ -133197,7 +133742,7 @@ loc_80FA124:
 	bl object_exitAttackState
 locret_80FA12C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80FA130: .word byte_80FA134
 byte_80FA134: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -133489,6 +134034,7 @@ loc_80FA36A:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FA36E:
 	pop {pc}
+	.balign 4, 0
 off_80FA370: .word byte_80FA374
 byte_80FA374: .byte 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x80, 0xA
 	thumb_func_end sub_80FA31E
@@ -133641,6 +134187,7 @@ loc_80FA49E:
 	bl object_exitAttackState
 locret_80FA4A6:
 	pop {pc}
+	.balign 4, 0
 off_80FA4A8: .word byte_80FA4AC
 byte_80FA4AC: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -133837,6 +134384,7 @@ loc_80FA62A:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FA632:
 	pop {pc}
+	.balign 4, 0
 dword_80FA634: .word 0x49000
 off_80FA638: .word byte_80FA63C
 byte_80FA63C: .byte 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x80, 0xA
@@ -133989,7 +134537,7 @@ loc_80FA760:
 	bl object_exitAttackState
 locret_80FA768:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FA76C: .word byte_80FA770
 byte_80FA770: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -134183,7 +134731,7 @@ loc_80FA8D0:
 	strh r0, [r7]
 locret_80FA8E8:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80FA8EC: .word 0x120000
 	thumb_func_end sub_80FA81E
 
@@ -134243,7 +134791,7 @@ loc_80FA954:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FA958:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FA95C: .word byte_80FA960
 byte_80FA960: .byte 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x80, 0xA
 	thumb_func_end sub_80FA8F0
@@ -134407,6 +134955,7 @@ loc_80FAA80:
 loc_80FAA94:
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80FAA98: .word byte_80FAA9C
 byte_80FAA9C: .byte 0xFF
 byte_80FAA9D: .byte 0x0, 0x0, 0xFF, 0x1, 0x0, 0x0, 0x1, 0xFF, 0x1, 0xFF, 0xFF, 0x1, 0x1
@@ -134430,7 +134979,7 @@ sub_80FAAAC:
 	mov r0, #0
 locret_80FAAC8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FAACC: .word byte_80FAAD0
 byte_80FAAD0: .byte 0x1, 0x2, 0x6, 0x2, 0xD0
 byte_80FAAD5: .byte 0xB5, 0x89, 0xB0, 0xC0, 0x7C, 0x2, 0x90, 0x0, 0x92, 0x1
@@ -134454,7 +135003,7 @@ sub_80FAB2C:
 	ldr r7, dword_80FAB44 // =0x0 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80FAB40: .word 0x605FF01
 dword_80FAB44: .word 0x0
 	thumb_func_end sub_80FAB2C
@@ -134528,6 +135077,7 @@ loc_80FAB92:
 	sub r0, r2, r0
 locret_80FABCE:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80FABD0: .word byte_80FABD4
 byte_80FABD4: .byte 0x1, 0x2, 0x1, 0x1, 0x3, 0x3, 0x1, 0x1, 0x1, 0x3, 0x3, 0x2, 0x1, 0x2, 0x1, 0x3, 0x3
 	.byte 0x1, 0x1, 0x2, 0x3, 0x1, 0x3, 0x3
@@ -134637,7 +135187,7 @@ sub_80FAC8A:
 	ldr r6, [r7,#oAIAttackVars_Unk_30]
 	bl sub_80D54F0
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80FACAC: .word 0x10000
 byte_80FACB0: .byte 0x8, 0xA, 0x1, 0x1, 0xA, 0x10, 0x40, 0x1
 byte_80FACB8: .byte 0x84, 0x3, 0x0, 0x1, 0xA, 0x0, 0x14, 0x5, 0x1, 0x1, 0xA, 0x0, 0x8, 0x7
@@ -134831,6 +135381,7 @@ sub_80FAEC4:
 	mov r1, r0
 	pop {r0}
 	pop {pc}
+	.balign 4, 0
 off_80FAEDC: .word byte_80FAEE0
 byte_80FAEE0: .byte 0x2, 0x2, 0x2, 0x2, 0x30, 0x30, 0x30, 0x30
 	thumb_func_end sub_80FAEC4
@@ -134849,7 +135400,7 @@ sub_80FAEE8:
 loc_80FAEFE:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FAF04: .word dword_80FAF08
 dword_80FAF08: .word 0xC12181E
 	thumb_func_end sub_80FAEE8
@@ -134868,7 +135419,7 @@ sub_80FAF0C:
 loc_80FAF22:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FAF28: .word dword_80FAF2C
 dword_80FAF2C: .word 0x12121818
 	thumb_func_end sub_80FAF0C
@@ -134879,7 +135430,7 @@ sub_80FAF30:
 	ldr r0, off_80FAF3C // =dword_80FAF40
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FAF3C: .word dword_80FAF40
 dword_80FAF40: .word 0xC0C1212
 	thumb_func_end sub_80FAF30
@@ -134902,7 +135453,7 @@ sub_80FAF44:
 	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FAF6C: .word byte_80FAF70
 byte_80FAF70: .byte 0x12, 0x12, 0x12, 0x12, 0x3, 0x3, 0x3, 0x3, 0xC, 0xC, 0xC
 	.byte 0xC
@@ -134922,7 +135473,7 @@ sub_80FAF7C:
 loc_80FAF92:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FAF98: .word dword_80FAF9C
 dword_80FAF9C: .word 0x18181E1E
 	thumb_func_end sub_80FAF7C
@@ -135140,6 +135691,7 @@ loc_80FB17E:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FB186:
 	pop {pc}
+	.balign 4, 0
 off_80FB188: .word byte_80FB18C
 byte_80FB18C: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -135272,6 +135824,7 @@ loc_80FB286:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FB28E:
 	pop {pc}
+	.balign 4, 0
 off_80FB290: .word byte_80FB294
 byte_80FB294: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -135529,7 +136082,7 @@ loc_80FB474:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FB47C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80FB480: .word byte_80FB484
 byte_80FB484: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -135765,7 +136318,7 @@ loc_80FB630:
 	strh r0, [r7]
 locret_80FB638:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FB63C: .word byte_80FB640
 byte_80FB640: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -135959,7 +136512,7 @@ sub_80FB76A:
 loc_80FB79A:
 	add sp, sp, #8
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FB7A0: .word byte_80FB7A4
 byte_80FB7A4: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -136040,7 +136593,7 @@ sub_80FB81E:
 	ldr r7, byte_80FB840 // =0x3
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80FB83C: .word 0x6050A01
 byte_80FB840: .byte 0x3, 0x0, 0x0, 0x0, 0x0, 0xB5, 0x12, 0xF7, 0x40, 0xFD, 0xA9
 	.byte 0x7C, 0x40, 0x18, 0xE9, 0x7C, 0x11, 0xF7, 0x52, 0xF8, 0xA9, 0x7D
@@ -136161,7 +136714,7 @@ sub_80FBA0C:
 	ldrb r0, [r1,r0]
 	strb r0, [r6,#oAIState_Unk_00]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FBA1C: .word dword_80FBA20
 dword_80FBA20: .word 0xC0C0C04
 	thumb_func_end sub_80FBA0C
@@ -136557,7 +137110,7 @@ sub_80FBD04:
 	ldr r0, off_80FBD10 // =dword_80FBD14
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80FBD10: .word dword_80FBD14
 dword_80FBD14: .word 0xC0E1014
 	thumb_func_end sub_80FBD04
@@ -136568,7 +137121,7 @@ sub_80FBD18:
 	ldr r0, off_80FBD24 // =dword_80FBD28
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FBD24: .word dword_80FBD28
 dword_80FBD28: .word 0xA0C0E10
 	thumb_func_end sub_80FBD18
@@ -136579,7 +137132,7 @@ sub_80FBD2C:
 	ldr r0, off_80FBD38 // =dword_80FBD3C
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FBD38: .word dword_80FBD3C
 dword_80FBD3C: .word 0xC0E1014
 	thumb_func_end sub_80FBD2C
@@ -136590,7 +137143,7 @@ sub_80FBD40:
 	ldr r0, off_80FBD4C // =dword_80FBD50
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FBD4C: .word dword_80FBD50
 dword_80FBD50: .word 0x6080A0C
 	thumb_func_end sub_80FBD40
@@ -136601,7 +137154,7 @@ sub_80FBD54:
 	ldr r0, off_80FBD60 // =dword_80FBD64
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80FBD60: .word dword_80FBD64
 dword_80FBD64: .word 0x1E28323C
 	thumb_func_end sub_80FBD54
@@ -136612,7 +137165,7 @@ sub_80FBD68:
 	ldr r0, off_80FBD74 // =dword_80FBD78
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FBD74: .word dword_80FBD78
 dword_80FBD78: .word 0xC0E1014
 	thumb_func_end sub_80FBD68
@@ -136623,7 +137176,7 @@ sub_80FBD7C:
 	ldr r0, off_80FBD88 // =dword_80FBD8C
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FBD88: .word dword_80FBD8C
 dword_80FBD8C: .word 0xA0C0E10
 	thumb_func_end sub_80FBD7C
@@ -136634,7 +137187,7 @@ sub_80FBD90:
 	ldr r0, off_80FBD9C // =dword_80FBDA0
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FBD9C: .word dword_80FBDA0
 dword_80FBDA0: .word 0xC0E1014
 	thumb_func_end sub_80FBD90
@@ -136645,7 +137198,7 @@ sub_80FBDA4:
 	ldr r0, off_80FBDB0 // =dword_80FBDB4
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80FBDB0: .word dword_80FBDB4
 dword_80FBDB4: .word 0xC0E1014
 	thumb_func_end sub_80FBDA4
@@ -136656,7 +137209,7 @@ sub_80FBDB8:
 	ldr r0, off_80FBDC4 // =dword_80FBDC8
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FBDC4: .word dword_80FBDC8
 dword_80FBDC8: .word 0xC0E1014
 	thumb_func_end sub_80FBDB8
@@ -136667,7 +137220,7 @@ sub_80FBDCC:
 	ldr r0, off_80FBDD8 // =dword_80FBDDC
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FBDD8: .word dword_80FBDDC
 dword_80FBDDC: .word 0xC0E1014
 	thumb_func_end sub_80FBDCC
@@ -136678,7 +137231,7 @@ sub_80FBDE0:
 	ldr r0, off_80FBDEC // =dword_80FBDF0
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FBDEC: .word dword_80FBDF0
 dword_80FBDF0: .word 0x4040402
 	thumb_func_end sub_80FBDE0
@@ -136723,6 +137276,7 @@ loc_80FBE30:
 loc_80FBE38:
 	add sp, sp, #8
 	pop {r4,pc}
+	.balign 4, 0
 off_80FBE3C: .word byte_80FBE40
 byte_80FBE40: .byte 0x3, 0x2, 0x4, 0x2, 0x5, 0x2, 0x4, 0x2, 0x3, 0x2, 0x2, 0x2
 	thumb_func_end sub_80FBDF4
@@ -136999,6 +137553,7 @@ loc_80FC0CE:
 	bl object_exitAttackState
 locret_80FC0D6:
 	pop {pc}
+	.balign 4, 0
 off_80FC0D8: .word byte_80FC0DC
 byte_80FC0DC: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -137115,7 +137670,7 @@ loc_80FC1BC:
 	bl object_exitAttackState
 locret_80FC1C4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FC1C8: .word byte_80FC1CC
 byte_80FC1CC: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -137338,7 +137893,7 @@ loc_80FC378:
 	bl object_exitAttackState
 locret_80FC380:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FC384: .word byte_80FC388
 byte_80FC388: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -137717,6 +138272,7 @@ loc_80FC66E:
 	bl object_exitAttackState
 locret_80FC676:
 	pop {pc}
+	.balign 4, 0
 off_80FC678: .word dword_80FC67C
 dword_80FC67C: .word 0x10
 dword_80FC680: .word 0xF880080
@@ -137968,6 +138524,7 @@ loc_80FC84E:
 	bl object_exitAttackState
 locret_80FC856:
 	pop {pc}
+	.balign 4, 0
 off_80FC858: .word byte_80FC85C
 byte_80FC85C: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -138346,6 +138903,7 @@ loc_80FCB3E:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FCB42:
 	pop {pc}
+	.balign 4, 0
 off_80FCB44: .word byte_80FCB48
 byte_80FCB48: .byte 0xFF, 0x1, 0x1, 0x1, 0xFF, 0x0, 0x1, 0x0, 0x1, 0x1, 0xFF, 0x1, 0x1, 0x0
 	.byte 0xFF, 0x0
@@ -138616,7 +139174,7 @@ loc_80FCD56:
 loc_80FCD5A:
 	add sp, sp, #0x24
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80FCD60: .word byte_80FCD64
 byte_80FCD64: .byte 0xFF, 0xFE, 0x0, 0xFE, 0x1, 0xFE, 0xFF, 0x2, 0x0, 0x2, 0x1, 0x2
 	.byte 0x10
@@ -138708,7 +139266,7 @@ loc_80FCE26:
 	mov r0, #0
 locret_80FCE28:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FCE2C: .word byte_80FCE30
 byte_80FCE30: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -138725,6 +139283,7 @@ sub_80FCE40:
 	ldr r7, dword_80FCE58 // =0x3 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80FCE54: .word 0x705FF00
 dword_80FCE58: .word 0x3
 	thumb_func_end sub_80FCE40
@@ -138853,6 +139412,7 @@ loc_80FCF28:
 	mov r0, #0
 locret_80FCF2A:
 	pop {r4,pc}
+	.balign 4, 0
 off_80FCF2C: .word byte_80FCF30
 byte_80FCF30: .byte 0x3, 0x4, 0x5, 0x4, 0x3, 0x2
 	thumb_func_end sub_80FCF04
@@ -138883,7 +139443,7 @@ sub_80FCF36:
 	ldr r0, [r1,r0]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FCF68: .word byte_80FCF6C
 byte_80FCF6C: .byte 0x1, 0xFF, 0xFF, 0xFF, 0x1, 0x0, 0xFF, 0x0, 0xFF, 0xFF, 0x1
 	.byte 0xFF, 0xFF, 0x0, 0x1, 0x0
@@ -138956,6 +139516,7 @@ sub_80FCFD2:
 	bl sub_80E33FA
 	pop {r7}
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_80FCFFC: .word 0x90000
 dword_80FD000: .word 0xC8000
 dword_80FD004: .word 0x78000
@@ -139186,7 +139747,7 @@ sub_80FD29C:
 loc_80FD2B2:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FD2B8: .word dword_80FD2BC
 dword_80FD2BC: .word 0xC10181E
 	thumb_func_end sub_80FD29C
@@ -139205,7 +139766,7 @@ sub_80FD2C0:
 loc_80FD2D6:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FD2DC: .word dword_80FD2E0
 dword_80FD2E0: .word 0x323C4650
 	thumb_func_end sub_80FD2C0
@@ -139216,7 +139777,7 @@ sub_80FD2E4:
 	ldr r0, off_80FD2F0 // =dword_80FD2F4
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80FD2F0: .word dword_80FD2F4
 dword_80FD2F4: .word 0x5040403
 	thumb_func_end sub_80FD2E4
@@ -139235,7 +139796,7 @@ sub_80FD2F8:
 loc_80FD30E:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FD314: .word dword_80FD318
 dword_80FD318: .word 0x1E28323C
 	thumb_func_end sub_80FD2F8
@@ -139311,6 +139872,7 @@ loc_80FD394:
 	mov r1, r0
 	mov r0, r4
 	pop {r4,pc}
+	.balign 4, 0
 off_80FD3A0: .word byte_80FD3A4
 byte_80FD3A4: .byte 0x0, 0x0, 0x0, 0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x2, 0x2, 0x2, 0x3, 0x3, 0x3, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x1, 0x1, 0x1, 0x2, 0x2, 0x2, 0x3, 0x3, 0x3
@@ -139341,7 +139903,7 @@ sub_80FD3CC:
 	add r3, r3, r1
 	str r6, [r3,#oAIAttackVars_Unk_08]
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FD3FC: .word byte_80FD408
 	.word byte_80FD410
 	.word byte_80FD418
@@ -139375,7 +139937,7 @@ sub_80FD444:
 	lsl r0, r0, #0x10
 	orr r0, r6
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FD46C: .word byte_80FD478
 	.word byte_80FD480
 	.word byte_80FD488
@@ -139449,7 +140011,7 @@ loc_80FD524:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FD530:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FD534: .word byte_80FD538
 byte_80FD538: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -139566,7 +140128,7 @@ loc_80FD618:
 	bl object_exitAttackState
 locret_80FD620:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FD624: .word byte_80FD628
 byte_80FD628: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -139674,6 +140236,7 @@ loc_80FD6C2:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FD6EA:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80FD6EC: .word dword_80FD6F0
 dword_80FD6F0: .word 0x80A0C0E
 	thumb_func_end sub_80FD6A6
@@ -139758,7 +140321,7 @@ loc_80FD788:
 	bl object_exitAttackState
 locret_80FD790:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FD794: .word byte_80FD798
 byte_80FD798: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -139909,7 +140472,7 @@ loc_80FD898:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FD8A4:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FD8A8: .word dword_80FD8AC
 dword_80FD8AC: .word 0x50505050
 	thumb_func_end sub_80FD852
@@ -139993,6 +140556,7 @@ loc_80FD942:
 	bl object_exitAttackState
 locret_80FD94A:
 	pop {pc}
+	.balign 4, 0
 off_80FD94C: .word byte_80FD950
 byte_80FD950: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -140300,6 +140864,7 @@ loc_80FDB6C:
 	pop {r0,r1}
 	add sp, sp, #0x24
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80FDB7C: .word loc_80FDB80
 	thumb_func_end sub_80FDAC4
 
@@ -140469,7 +141034,7 @@ loc_80FDCAA:
 	cmp r4, r6
 	ble loc_80FDCAA
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_80FDCC4: .byte 0x8, 0xD, 0x1, 0x1, 0xD, 0x0, 0x0, 0x1
 byte_80FDCCC: .byte 0xF4, 0x21, 0x0, 0x0, 0xA, 0x0, 0xE8, 0x23, 0x1, 0x0, 0xA, 0x0
 	.byte 0xDC, 0x25, 0x2, 0x0, 0xA, 0x0, 0x6C, 0x27, 0x3, 0x0, 0xA, 0x0
@@ -140673,6 +141238,7 @@ loc_80FDF22:
 	str r0, [r5,#oBattleObject_ExtraVars+8]
 locret_80FDF32:
 	pop {pc}
+	.balign 4, 0
 dword_80FDF34: .word 0x20
 	thumb_func_end sub_80FDEFC
 
@@ -140684,6 +141250,7 @@ sub_80FDF38:
 	ldr r0, dword_80FDF48 // =0x20 
 	bl sub_801031C
 	pop {pc}
+	.balign 4, 0
 dword_80FDF48: .word 0x20
 	thumb_func_end sub_80FDF38
 
@@ -140693,7 +141260,7 @@ sub_80FDF4C:
 	ldr r0, off_80FDF58 // =dword_80FDF5C 
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FDF58: .word dword_80FDF5C
 dword_80FDF5C: .word 0x0
 	thumb_func_end sub_80FDF4C
@@ -140712,7 +141279,7 @@ sub_80FDF60:
 loc_80FDF76:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FDF7C: .word off_80FDF80
 off_80FDF80: .word loc_810141E
 	thumb_func_end sub_80FDF60
@@ -140723,7 +141290,7 @@ sub_80FDF84:
 	ldr r0, off_80FDF90 // =dword_80FDF94
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80FDF90: .word dword_80FDF94
 dword_80FDF94: .word 0x2020202
 	thumb_func_end sub_80FDF84
@@ -140734,7 +141301,7 @@ sub_80FDF98:
 	ldr r0, off_80FDFA4 // =dword_80FDFA8
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FDFA4: .word dword_80FDFA8
 dword_80FDFA8: .word 0x181E242A
 	thumb_func_end sub_80FDF98
@@ -140753,7 +141320,7 @@ sub_80FDFAC:
 loc_80FDFC2:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FDFC8: .word dword_80FDFCC
 dword_80FDFCC: .word 0x14141414
 	thumb_func_end sub_80FDFAC
@@ -140764,7 +141331,7 @@ sub_80FDFD0:
 	ldr r0, off_80FDFDC // =dword_80FDFE0
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FDFDC: .word dword_80FDFE0
 dword_80FDFE0: .word 0x14141414
 	thumb_func_end sub_80FDFD0
@@ -140792,7 +141359,7 @@ sub_80FDFE4:
 	add r3, r3, r1
 	str r6, [r3,#oAIAttackVars_Unk_08]
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FE014: .word byte_80FE020
 	.word byte_80FE028
 	.word byte_80FE030
@@ -140826,7 +141393,7 @@ sub_80FE05C:
 	lsl r0, r0, #0x10
 	orr r0, r6
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FE084: .word byte_80FE090
 	.word byte_80FE098
 	.word byte_80FE0A0
@@ -140889,6 +141456,7 @@ loc_80FE126:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FE12A:
 	pop {pc}
+	.balign 4, 0
 dword_80FE12C: .word 0x20
 	thumb_func_end sub_80FE0F8
 
@@ -140936,7 +141504,7 @@ loc_80FE184:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FE188:
 	pop {r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FE18C: .word byte_80FE190
 byte_80FE190: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -141051,6 +141619,7 @@ loc_80FE27A:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FE27E:
 	pop {pc}
+	.balign 4, 0
 dword_80FE280: .word 0x20
 	thumb_func_end sub_80FE240
 
@@ -141203,7 +141772,7 @@ loc_80FE388:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FE38C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80FE390: .word 0x20
 	thumb_func_end sub_80FE354
 
@@ -141362,7 +141931,7 @@ loc_80FE4A0:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FE4A4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80FE4A8: .word 0x20
 	thumb_func_end sub_80FE46C
 
@@ -141490,6 +142059,7 @@ loc_80FE578:
 loc_80FE58C:
 	add sp, sp, #0x1c
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80FE590: .word byte_80FE594
 byte_80FE594: .byte 0xFF
 byte_80FE595: .byte 0x0, 0x0, 0xFF, 0x1, 0x0, 0x0, 0x1
@@ -141645,6 +142215,7 @@ loc_80FE690:
 loc_80FE6A4:
 	add sp, sp, #0x30
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80FE6A8: .word byte_80FE6AC
 byte_80FE6AC: .byte 0xFF, 0x0, 0x0, 0xFF, 0x1, 0x0, 0x0, 0x1
 off_80FE6B4: .word byte_80FE6B8
@@ -141747,7 +142318,7 @@ loc_80FE772:
 	cmp r4, #3
 	ble loc_80FE730
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FE77C: .word byte_80FE780
 byte_80FE780: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -141941,6 +142512,7 @@ sub_80FE9B0:
 loc_80FE9D4:
 	mov r0, r4
 	pop {r4,pc}
+	.balign 4, 0
 off_80FE9D8: .word byte_80FE9DC
 byte_80FE9DC: .byte 0xE, 0xE, 0xE, 0xE, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80FE9B0
@@ -141957,6 +142529,7 @@ sub_80FE9E4:
 	mov r1, r0
 	pop {r0}
 	pop {pc}
+	.balign 4, 0
 off_80FE9FC: .word byte_80FEA00
 byte_80FEA00: .byte 0x14, 0x10, 0xC, 0x6, 0x1, 0x3, 0x3, 0x5
 	thumb_func_end sub_80FE9E4
@@ -141981,6 +142554,7 @@ sub_80FEA08:
 loc_80FEA2C:
 	mov r0, r4
 	pop {r4,pc}
+	.balign 4, 0
 off_80FEA30: .word byte_80FEA34
 byte_80FEA34: .byte 0xE, 0xE, 0xE, 0xE, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80FEA08
@@ -142003,7 +142577,7 @@ sub_80FEA3C:
 	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FEA64: .word byte_80FEA68
 byte_80FEA68: .byte 0xA, 0xA, 0xA, 0xA, 0x1E, 0x1E, 0x14, 0x14, 0x3, 0x3, 0x3
 	.byte 0x5
@@ -142029,6 +142603,7 @@ sub_80FEA74:
 loc_80FEA98:
 	mov r0, r4
 	pop {r4,pc}
+	.balign 4, 0
 off_80FEA9C: .word byte_80FEAA0
 byte_80FEAA0: .byte 0x16, 0x10, 0xA, 0x8, 0x10, 0x10, 0x10, 0x10
 	thumb_func_end sub_80FEA74
@@ -142039,7 +142614,7 @@ sub_80FEAA8:
 	ldr r0, off_80FEAB4 // =dword_80FEAB8
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FEAB4: .word dword_80FEAB8
 dword_80FEAB8: .word 0x6060606
 	thumb_func_end sub_80FEAA8
@@ -142052,7 +142627,7 @@ sub_80FEABC:
 	ldr r1, off_80FEACC // =byte_80FEAD0 
 	ldrh r0, [r1,r0]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FEACC: .word byte_80FEAD0
 byte_80FEAD0: .byte 0xB4, 0x0, 0xF0, 0x0, 0x2C, 0x1, 0x68, 0x1
 	thumb_func_end sub_80FEABC
@@ -142069,6 +142644,7 @@ sub_80FEAD8:
 	mov r1, r0
 	pop {r0}
 	pop {pc}
+	.balign 4, 0
 off_80FEAF0: .word loc_80FEAF4
 	thumb_func_end sub_80FEAD8
 
@@ -142305,7 +142881,7 @@ loc_80FED08:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FED10:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FED14: .word byte_80FED18
 byte_80FED18: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -142380,7 +142956,7 @@ loc_80FED5E:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FEDBC:
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80FEDC0: .word dword_80FEDC4
 dword_80FEDC4: .word 0x191E
 dword_80FEDC8: .word 0xFFFF6000
@@ -142501,7 +143077,7 @@ loc_80FEE98:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FEEA0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FEEA4: .word byte_80FEEA8
 byte_80FEEA8: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -142574,7 +143150,7 @@ loc_80FEEEA:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FEF48:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_80FEF4C: .word 0xFFFF6000
 	thumb_func_end sub_80FEEB8
 
@@ -142794,7 +143370,7 @@ loc_80FF0BC:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FF0C4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FF0C8: .word byte_80FF0CC
 byte_80FF0CC: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -142867,7 +143443,7 @@ loc_80FF10E:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FF16C:
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80FF170: .word 0xFFFF6000
 	thumb_func_end sub_80FF0DC
 
@@ -143139,7 +143715,7 @@ loc_80FF354:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FF36C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80FF370: .word 0x780000
 dword_80FF374: .word 0xC0000
 	thumb_func_end sub_80FF322
@@ -143182,6 +143758,7 @@ loc_80FF3BA:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FF3BE:
 	pop {pc}
+	.balign 4, 0
 dword_80FF3C0: .word 0x183
 	thumb_func_end sub_80FF378
 
@@ -143499,7 +144076,7 @@ loc_80FF5F6:
 loc_80FF5FA:
 	add sp, sp, #0x24
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80FF600: .word byte_80FF604
 byte_80FF604: .byte 0xFF
 byte_80FF605: .byte 0xFF, 0xFF, 0x1, 0x1, 0xFF, 0x1, 0x1, 0xFF
@@ -143545,6 +144122,7 @@ loc_80FF64A:
 loc_80FF65C:
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_80FF660: .word dword_80FF664
 dword_80FF664: .word 0x601
 	thumb_func_end sub_80FF614
@@ -143686,7 +144264,7 @@ loc_80FF71E:
 	mov r0, #0
 locret_80FF778:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FF77C: .word byte_80FF780
 byte_80FF780: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -143712,7 +144290,7 @@ sub_80FF7B0:
 	ldr r6, [r7,#oAIAttackVars_Unk_08]
 	bl sub_80D04DA
 	pop {r4,r6,pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_80FF7C0: .word 0xC0000
 byte_80FF7C4: .byte 0x8, 0xF, 0x1, 0x1, 0xF, 0x0, 0x0, 0x1
 byte_80FF7CC: .byte 0x20, 0x3, 0x0, 0x0, 0xA, 0x0, 0x4C, 0x4, 0x1, 0x0, 0xA, 0x0, 0x40
@@ -143959,7 +144537,7 @@ sub_80FFA78:
 	ldr r0, off_80FFA84 // =dword_80FFA88 
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FFA84: .word dword_80FFA88
 dword_80FFA88: .word 0xC101216
 	thumb_func_end sub_80FFA78
@@ -143970,7 +144548,7 @@ sub_80FFA8C:
 	ldr r0, off_80FFA98 // =loc_80FFA9C 
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FFA98: .word loc_80FFA9C
 	thumb_func_end sub_80FFA8C
 
@@ -144002,7 +144580,7 @@ sub_80FFAC4:
 	ldr r0, off_80FFAD0 // =dword_80FFAD4 
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80FFAD0: .word dword_80FFAD4
 dword_80FFAD4: .word 0x12181E24
 	thumb_func_end sub_80FFAC4
@@ -144013,7 +144591,7 @@ sub_80FFAD8:
 	ldr r0, off_80FFAE4 // =dword_80FFAE8 
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FFAE4: .word dword_80FFAE8
 dword_80FFAE8: .word 0x10121418
 	thumb_func_end sub_80FFAD8
@@ -144073,6 +144651,7 @@ sub_80FFB26:
 	lsl r0, r0, #0x10
 	orr r0, r6
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_80FFB4C: .word byte_80FFB54
 	.word byte_80FFB5C
 byte_80FFB54: .byte 0x1E, 0x0, 0x32, 0x0, 0x50, 0x0, 0x64, 0x0
@@ -144149,7 +144728,7 @@ loc_80FFBF8:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FFC00:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FFC04: .word byte_80FFC08
 byte_80FFC08: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -144281,7 +144860,7 @@ loc_80FFD00:
 	bl object_exitAttackState
 locret_80FFD08:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_80FFD0C: .word byte_80FFD10
 byte_80FFD10: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -144859,6 +145438,7 @@ loc_8100130:
 	cmp r6, #3
 	ble loc_810010A
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_8100138: .word dword_810013C
 dword_810013C: .word 0x10
 dword_8100140: .word 0xF880080
@@ -144912,6 +145492,7 @@ sub_8100144:
 loc_81001A4:
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_81001A8: .word byte_81001AC
 byte_81001AC: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -145053,6 +145634,7 @@ loc_810038C:
 	bl sub_810055C
 locret_8100396:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_8100398: .word dword_810039C
 dword_810039C: .word 0x2020203
 	thumb_func_end sub_8100308
@@ -145119,6 +145701,7 @@ sub_81003EA:
 loc_8100400:
 	mov r0, r4
 	pop {r4,pc}
+	.balign 4, 0
 off_8100404: .word dword_8100408
 dword_8100408: .word 0xC12181E
 	thumb_func_end sub_81003EA
@@ -145129,7 +145712,7 @@ sub_810040C:
 	ldr r0, off_8100418 // =dword_810041C
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8100418: .word dword_810041C
 dword_810041C: .word 0xA0A0A0A
 	thumb_func_end sub_810040C
@@ -145148,7 +145731,7 @@ sub_8100420:
 loc_8100436:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810043C: .word dword_8100440
 dword_8100440: .word 0xC0E1014
 	thumb_func_end sub_8100420
@@ -145168,7 +145751,7 @@ loc_8100454:
 	add r0, r0, r1
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8100460: .word byte_8100464
 byte_8100464: .byte 0x4, 0x4, 0x5, 0x6, 0x6, 0x6, 0x8, 0xA
 	thumb_func_end sub_8100444
@@ -145179,7 +145762,7 @@ sub_810046C:
 	ldr r0, off_8100478 // =dword_810047C
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8100478: .word dword_810047C
 dword_810047C: .word 0xA0C0E10
 	thumb_func_end sub_810046C
@@ -145198,7 +145781,7 @@ sub_8100480:
 loc_8100496:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810049C: .word dword_81004A0
 dword_81004A0: .word 0x1C202428
 	thumb_func_end sub_8100480
@@ -145215,6 +145798,7 @@ sub_81004A4:
 	mov r1, r0
 	pop {r0}
 	pop {pc}
+	.balign 4, 0
 off_81004BC: .word byte_81004C0
 byte_81004C0: .byte 0xA, 0xA, 0xA, 0xA, 0x14, 0x10, 0xC, 0xA
 	thumb_func_end sub_81004A4
@@ -145233,7 +145817,7 @@ sub_81004C8:
 loc_81004DE:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81004E4: .word dword_81004E8
 dword_81004E8: .word 0x1C202428
 	thumb_func_end sub_81004C8
@@ -145244,7 +145828,7 @@ sub_81004EC:
 	ldr r0, off_81004F8 // =dword_81004FC
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81004F8: .word dword_81004FC
 dword_81004FC: .word 0xA0A0A0A
 	thumb_func_end sub_81004EC
@@ -145263,7 +145847,7 @@ sub_8100500:
 loc_8100516:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810051C: .word dword_8100520
 dword_8100520: .word 0x1C202428
 	thumb_func_end sub_8100500
@@ -145274,7 +145858,7 @@ sub_8100524:
 	ldr r0, off_8100530 // =dword_8100534
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8100530: .word dword_8100534
 dword_8100534: .word 0xA0A0A0A
 	thumb_func_end sub_8100524
@@ -145293,7 +145877,7 @@ sub_8100538:
 loc_810054E:
 	mov r0, r4
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8100554: .word loc_8100558
 	thumb_func_end sub_8100538
 
@@ -145566,7 +146150,7 @@ loc_81007C4:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_81007CC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_81007D0: .word byte_81007D4
 byte_81007D4: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -145734,7 +146318,7 @@ loc_81008D4:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_8100904:
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8100908: .word byte_810090C
 byte_810090C: .byte 0x0, 0x4, 0x1, 0x3, 0x2, 0x0, 0x0, 0x0
 off_8100914: .word off_8100918
@@ -145971,6 +146555,7 @@ loc_8100AB6:
 	bl object_exitAttackState
 locret_8100ABE:
 	pop {pc}
+	.balign 4, 0
 off_8100AC0: .word dword_8100AC4
 dword_8100AC4: .word 0x10
 dword_8100AC8: .word 0xF880080
@@ -146232,6 +146817,7 @@ loc_8100C9A:
 	bl object_exitAttackState
 locret_8100CA2:
 	pop {pc}
+	.balign 4, 0
 off_8100CA4: .word byte_8100CA8
 byte_8100CA8: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -146875,7 +147461,7 @@ loc_81010E6:
 	pop {r0,r7}
 locret_8101114:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8101118: .word byte_810111C
 byte_810111C: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -146924,6 +147510,7 @@ loc_8101178:
 	bl object_removePanelReserve
 	add sp, sp, #8
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_8101184: .word dword_8101188
 dword_8101188: .word 0x10000
 dword_810118C: .word 0xF880080
@@ -146986,7 +147573,7 @@ loc_81011E0:
 	mov r0, #0
 locret_81011F4:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81011F8: .word dword_81011FC
 dword_81011FC: .word 0x10
 dword_8101200: .word 0x3800000
@@ -147021,7 +147608,7 @@ sub_8101218:
 	lsl r3, r3, #0x10
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_810123C: .byte 0x8, 0x12, 0x1, 0x1, 0x12, 0x0, 0x0, 0x1
 byte_8101244: .byte 0xB0, 0x4, 0x0, 0x0, 0xA, 0x0, 0x40, 0x6, 0x1, 0x0, 0xA, 0x0, 0xD0
 	.byte 0x7, 0x2, 0x0, 0xA, 0x0, 0x28, 0xA, 0x3, 0x0, 0xA, 0x0, 0x28, 0xA
@@ -147248,7 +147835,7 @@ sub_8101498:
 	ldr r0, off_81014A4 // =dword_81014A8
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81014A4: .word dword_81014A8
 dword_81014A8: .word 0x18181818
 	thumb_func_end sub_8101498
@@ -147259,7 +147846,7 @@ sub_81014AC:
 	ldr r0, off_81014B8 // =dword_81014BC
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81014B8: .word dword_81014BC
 dword_81014BC: .word 0x1E1E1E1E
 	thumb_func_end sub_81014AC
@@ -147270,7 +147857,7 @@ sub_81014C0:
 	ldr r0, off_81014CC // =dword_81014D0
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81014CC: .word dword_81014D0
 dword_81014D0: .word 0x28282828
 	thumb_func_end sub_81014C0
@@ -147281,7 +147868,7 @@ sub_81014D4:
 	ldr r0, off_81014E0 // =dword_81014E4 
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_81014E0: .word dword_81014E4
 dword_81014E4: .word 0x18181818
 	thumb_func_end sub_81014D4
@@ -147292,7 +147879,7 @@ sub_81014E8:
 	ldr r0, off_81014F4 // =dword_81014F8
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81014F4: .word dword_81014F8
 dword_81014F8: .word 0x4030302
 	thumb_func_end sub_81014E8
@@ -147303,7 +147890,7 @@ sub_81014FC:
 	ldr r0, off_8101508 // =dword_810150C
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8101508: .word dword_810150C
 dword_810150C: .word 0xA0C1014
 	thumb_func_end sub_81014FC
@@ -147314,7 +147901,7 @@ sub_8101510:
 	ldr r0, off_810151C // =dword_8101520
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810151C: .word dword_8101520
 dword_8101520: .word 0x12161A1E
 	thumb_func_end sub_8101510
@@ -147325,7 +147912,7 @@ sub_8101524:
 	ldr r0, off_8101530 // =dword_8101534 
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8101530: .word dword_8101534
 dword_8101534: .word 0x3C424650
 	thumb_func_end sub_8101524
@@ -147336,7 +147923,7 @@ sub_8101538:
 	ldr r0, off_8101544 // =dword_8101548
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8101544: .word dword_8101548
 dword_8101548: .word 0x2010101
 	thumb_func_end sub_8101538
@@ -147353,6 +147940,7 @@ sub_810154C:
 	mov r1, r0
 	pop {r0}
 	pop {pc}
+	.balign 4, 0
 off_8101564: .word byte_8101568
 byte_8101568: .byte 0x10, 0xC, 0xC, 0xA, 0x28, 0x1E, 0x1A, 0x14
 	thumb_func_end sub_810154C
@@ -147363,7 +147951,7 @@ sub_8101570:
 	ldr r0, off_810157C // =loc_8101580 
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810157C: .word loc_8101580
 	thumb_func_end sub_8101570
 
@@ -147818,7 +148406,7 @@ loc_8101AB8:
 	mov lr, pc
 	bx r0
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8101AC4: .word sub_8101AD4+1
 	.word sub_8101B90+1
 	.word sub_8101C3A+1
@@ -148230,6 +148818,7 @@ loc_8101DB2:
 	mov r0, #0
 	strh r0, [r6,#oAIState_Unk_02]
 	pop {r4,r6,pc}
+	.balign 4, 0
 byte_8101DBC: .byte 0x1, 0x1, 0x1, 0x2, 0x1, 0x3, 0x7F
 byte_8101DC3: .byte 0x2, 0x1, 0x2, 0x2, 0x2, 0x3, 0x3, 0x1, 0x3, 0x2, 0x3, 0x3, 0x7F
 byte_8101DD0: .byte 0x3, 0x1, 0x3, 0x2, 0x3, 0x3, 0x7F
@@ -148681,7 +149270,7 @@ sub_8102154:
 	ldr r0, [r5,#oBattleObject_RelatedObject2Ptr]
 	bl sub_80C44D2
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8102160: .word sub_8102EE2+1
 off_8102164: .word sub_8102F5C+1
 off_8102168: .word sub_8102F98+1
@@ -149492,6 +150081,7 @@ loc_8102782:
 	bl object_exitAttackState
 locret_810279A:
 	pop {pc}
+	.balign 4, 0
 dword_810279C: .word 0xE03
 dword_81027A0: .word 0x705FF11
 	thumb_func_end sub_8102772
@@ -150030,7 +150620,7 @@ loc_8102B46:
 	b loc_8102B46
 locret_8102B64:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_8102B68: .byte 0x1
 byte_8102B69: .byte 0x0, 0x2, 0xFF, 0x2, 0x0, 0x2, 0x1, 0x3, 0xFF, 0x3, 0x0, 0x3, 0x1, 0x7F
 	.byte 0x0
@@ -150084,6 +150674,7 @@ loc_8102BAA:
 loc_8102BD8:
 	add sp, sp, #8
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_8102BDC: .word byte_8102BE8
 	.word byte_8102BEB
 	.word byte_8102BF2
@@ -150108,7 +150699,7 @@ sub_8102BFC:
 	bl sub_80DC6BC
 locret_8102C18:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_8102C1C: .word 0x2831
 off_8102C20: .word 0x191
 dword_8102C24: .word 0x193
@@ -150161,6 +150752,7 @@ loc_8102C6E:
 loc_8102C8C:
 	add sp, sp, #0x18
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 byte_8102C90: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
 	thumb_func_end sub_8102C38
@@ -150207,6 +150799,7 @@ loc_8102CCA:
 	cmp r4, #8
 	blt loc_8102CCA
 	pop {r4,r7,pc}
+	.balign 4, 0
 byte_8102CE8: .byte 0xFF
 byte_8102CE9: .byte 0xFF, 0x0, 0xFF, 0x1, 0xFF, 0xFF, 0x0, 0x1, 0x0, 0xFF, 0x1, 0x0
 	.byte 0x1, 0x1, 0x1
@@ -150387,6 +150980,7 @@ loc_8102E40:
 loc_8102E48:
 	add sp, sp, #0x5c
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 byte_8102E4C: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
 	thumb_func_end sub_8102CF8
@@ -150492,6 +151086,7 @@ sub_8102EE2:
 loc_8102F08:
 	mov r0, #0
 	pop {pc}
+	.balign 4, 0
 byte_8102F0C: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
 off_8102F1C: .word byte_8102C90
@@ -150543,6 +151138,7 @@ sub_8102F5C:
 	pop {r0,r1}
 	bl object_getFirstPanelInDirectionFiltered
 	pop {pc}
+	.balign 4, 0
 byte_8102F84: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
 off_8102F94: .word byte_8102F84
@@ -150582,6 +151178,7 @@ loc_8102FD6:
 	mov r0, #0
 	pop {pc}
 	.hword 0x0
+	.balign 4, 0
 byte_8102FDC: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
 off_8102FEC: .word byte_8102FDC
@@ -150611,7 +151208,7 @@ sub_8102FF4:
 	ldrb r1, [r7,#0x13]
 	bl object_getFirstPanelInDirectionFiltered
 	pop {r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_8103024: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
 off_8103034: .word byte_8103024
@@ -150659,7 +151256,7 @@ loc_810306A:
 	mov r0, #0
 locret_8103088:
 	pop {r4,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_810308C: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
 off_810309C: .word byte_810308C
@@ -150711,6 +151308,7 @@ loc_81030F6:
 	bl object_exitAttackState
 locret_81030FA:
 	pop {pc}
+	.balign 4, 0
 off_81030FC: .word byte_8103100
 byte_8103100: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -150827,7 +151425,7 @@ loc_81031E0:
 	bl object_exitAttackState
 locret_81031E8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81031EC: .word byte_81031F0
 byte_81031F0: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -151027,7 +151625,7 @@ loc_8103360:
 	bl object_exitAttackState
 locret_8103368:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810336C: .word byte_8103370
 byte_8103370: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -151229,7 +151827,7 @@ loc_81034DC:
 	bl object_exitAttackState
 locret_81034E4:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81034E8: .word byte_81034EC
 byte_81034EC: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -151393,6 +151991,7 @@ loc_810361E:
 	bl object_exitAttackState
 locret_8103626:
 	pop {pc}
+	.balign 4, 0
 off_8103628: .word dword_810362C
 dword_810362C: .word 0x10
 dword_8103630: .word 0xF880080
@@ -151554,6 +152153,7 @@ loc_810370C:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_810374E:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_8103750: .word 0x181
 	thumb_func_end sub_81036F0
 
@@ -151737,7 +152337,7 @@ loc_810388C:
 loc_8103892:
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8103898: .word byte_810389C
 byte_810389C: .byte 0xFF
 byte_810389D: .byte 0x0, 0x0, 0xFF, 0x1, 0x0, 0x0, 0x1
@@ -151873,6 +152473,7 @@ sub_8103966:
 	ldr r7, dword_81039A0 // =0x3 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_810398C: .word byte_8103990
 byte_8103990: .byte 0x12, 0xFF, 0x5, 0x7, 0x13, 0xFF, 0x5, 0x7, 0x1F, 0xFF, 0x5
 	.byte 0x7, 0x22, 0xFF, 0x5, 0x7
@@ -151901,6 +152502,7 @@ sub_81039A4:
 	orr r4, r0
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_81039D0: .word dword_81039D4
 dword_81039D4: .word 0x38353637
 	thumb_func_end sub_81039A4
@@ -151921,7 +152523,7 @@ sub_81039D8:
 	ldrh r3, [r5,#oBattleObject_AllianceAndDirectionFlip]
 	bl object_highlightPanelRegion
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81039F8: .word dword_81039FC
 dword_81039FC: .word 0x221F1312
 off_8103A00: .word dword_8103A04
@@ -152057,7 +152659,7 @@ loc_8103ADA:
 loc_8103AF6:
 	add sp, sp, #0x24
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8103AFC: .word dword_8103B00
 dword_8103B00: .word 0x4010603
 off_8103B04: .word dword_8103B08
@@ -152124,6 +152726,7 @@ loc_8103B4E:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 locret_8103B7A:
 	pop {r4,pc}
+	.balign 4, 0
 off_8103B7C: .word dword_8103B80
 dword_8103B80: .word 0x10
 dword_8103B84: .word 0xF880080
@@ -152293,7 +152896,7 @@ loc_8103D76:
 	cmp r4, #3
 	blt loc_8103D76
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8103DA4: .word byte_8103DA8
 byte_8103DA8: .byte 0x3, 0x2, 0x1, 0x4, 0x5, 0x6, 0x0, 0x0
 off_8103DB0: .word loc_8103DB4
@@ -152415,7 +153018,7 @@ sub_8103E74:
 	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8103E9C: .word byte_8103EA0
 byte_8103EA0: .byte 0xA, 0xA, 0xA, 0xA, 0x1E, 0x1A, 0x14, 0x10, 0x3C, 0x3C
 	.byte 0x28, 0x28
@@ -152439,7 +153042,7 @@ sub_8103EAC:
 	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8103ED4: .word byte_8103ED8
 byte_8103ED8: .byte 0xA, 0xA, 0xA, 0xA, 0x1E, 0x1A, 0x14, 0x10, 0x3C, 0x3C
 	.byte 0x28, 0x28
@@ -152451,7 +153054,7 @@ sub_8103EE4:
 	ldr r0, off_8103EF0 // =off_8103EF4 
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8103EF0: .word off_8103EF4
 off_8103EF4: .word byte_80A0C10
 	thumb_func_end sub_8103EE4
@@ -152474,7 +153077,7 @@ sub_8103EF8:
 	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8103F20: .word byte_8103F24
 byte_8103F24: .byte 0x3C, 0x28, 0x28, 0x1E, 0xC, 0xC, 0xC, 0xC, 0x9, 0xC
 	.byte 0xC, 0xC
@@ -152492,6 +153095,7 @@ sub_8103F30:
 	mov r1, r0
 	pop {r0}
 	pop {pc}
+	.balign 4, 0
 off_8103F48: .word loc_8103F4C
 	thumb_func_end sub_8103F30
 
@@ -152798,7 +153402,7 @@ loc_8104218:
 	bl sub_801171C
 locret_8104220:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8104224: .word byte_8104228
 byte_8104228: .byte 0x0, 0x0, 0x1, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -153001,6 +153605,7 @@ loc_81043AA:
 	bl sub_801171C
 locret_81043B2:
 	pop {pc}
+	.balign 4, 0
 off_81043B4: .word byte_81043B8
 byte_81043B8: .byte 0x0, 0x0, 0x1, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -153289,6 +153894,7 @@ loc_81045CA:
 	bl sub_801171C
 locret_81045D2:
 	pop {pc}
+	.balign 4, 0
 off_81045D4: .word byte_81045D8
 byte_81045D8: .byte 0x0, 0x0, 0x1, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -153785,6 +154391,7 @@ loc_8104982:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_810498E:
 	pop {r4,pc}
+	.balign 4, 0
 off_8104990: .word off_8104994
 off_8104994: .word 0x700
 	thumb_func_end sub_81048AA
@@ -153866,6 +154473,7 @@ loc_8104A1A:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_8104A26:
 	pop {r4,pc}
+	.balign 4, 0
 off_8104A28: .word dword_8104A2C
 dword_8104A2C: .word 0x501
 	thumb_func_end sub_81049C0
@@ -153973,6 +154581,7 @@ loc_8104AEE:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_8104AFA:
 	pop {pc}
+	.balign 4, 0
 off_8104AFC: .word dword_8104B00
 dword_8104B00: .word 0x1010106
 	thumb_func_end sub_8104AC4
@@ -154023,6 +154632,7 @@ loc_8104B44:
 	strh r0, [r7]
 locret_8104B56:
 	pop {pc}
+	.balign 4, 0
 off_8104B58: .word byte_8104B5C
 byte_8104B5C: .byte 0x1, 0x2, 0x3, 0x3, 0x2, 0x1, 0x1, 0x2, 0x3, 0x3, 0x2, 0x1
 	thumb_func_end sub_8104B04
@@ -154499,7 +155109,7 @@ loc_8104ED8:
 loc_8104EEA:
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8104EF0: .word loc_8104EF4
 	thumb_func_end sub_8104E98
 
@@ -154872,6 +155482,7 @@ sub_8105174:
 loc_81051B4:
 	add sp, sp, #0x18
 	pop {r6,r7,pc}
+	.balign 4, 0
 off_81051B8: .word byte_81051BC
 byte_81051BC: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -154890,6 +155501,7 @@ sub_81051CC:
 	ldrh r3, [r5,#oBattleObject_AllianceAndDirectionFlip]
 	bl object_highlightPanelRegion
 	pop {pc}
+	.balign 4, 0
 off_81051E4: .word off_81051E8
 off_81051E8: .word byte_2030204
 	thumb_func_end sub_81051CC
@@ -154939,6 +155551,7 @@ sub_81051EC:
 	ldr r6, [r7,#oAIAttackVars_Unk_08]
 	bl sub_80DAE48
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_8105248: .word byte_810524C
 byte_810524C: .byte 0x3, 0x4, 0x4, 0x0, 0x4, 0x4, 0x3, 0x0
 	thumb_func_end sub_81051EC
@@ -154968,6 +155581,7 @@ sub_8105254:
 	lsl r3, r3, #0x10
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_8105288: .word byte_810528C
 byte_810528C: .byte 0x2, 0x2, 0x3, 0x2, 0x3, 0x2, 0x2, 0x2
 	thumb_func_end sub_8105254
@@ -155019,7 +155633,7 @@ loc_81052DC:
 	mov r2, r6
 	add sp, sp, #8
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81052E8: .word byte_81052EC
 byte_81052EC: .byte 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0xA
 	.byte 0x0
@@ -155064,7 +155678,7 @@ loc_8105332:
 	svc 6
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8105340: .word byte_8105344
 byte_8105344: .byte 0x0, 0x0, 0x15, 0x0, 0x0, 0x0, 0x1C, 0x0, 0x0, 0x0, 0x1C, 0x0, 0x0, 0x0
 	.byte 0x1C, 0x0
@@ -155092,6 +155706,7 @@ sub_8105354:
 	bl SpawnT4BattleObjectWithId0
 locret_810537E:
 	pop {r4,pc}
+	.balign 4, 0
 off_8105380: .word off_8105384
 off_8105384: .word 0x4000000
 	.word 0x8000000
@@ -155269,6 +155884,7 @@ loc_8105578:
 	cmp r4, #3
 	blt loc_8105578
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_81055BC: .word byte_81055C0
 byte_81055C0: .byte 0x3, 0x2, 0x1, 0x4, 0x5, 0x6, 0x0, 0x0
 off_81055C8: .word loc_81055CC
@@ -155379,6 +155995,7 @@ sub_810565C:
 	mov r3, r0
 	pop {r0-r2}
 	pop {pc}
+	.balign 4, 0
 off_8105690: .word byte_8105694
 byte_8105694: .byte 0x1E, 0x18, 0x14, 0x12, 0x1E, 0x18, 0x14, 0x12, 0x10
 	.byte 0x10, 0x10, 0x10, 0x8, 0x10, 0x14, 0x1E
@@ -155402,7 +156019,7 @@ sub_81056A4:
 	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81056CC: .word byte_81056D0
 byte_81056D0: .byte 0x1E, 0x18, 0x14, 0x12, 0x50, 0x50, 0x50, 0x50, 0x19
 	.byte 0x19, 0x19, 0x19
@@ -155426,7 +156043,7 @@ sub_81056DC:
 	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8105704: .word byte_8105708
 byte_8105708: .byte 0x12, 0x12, 0xC, 0xC, 0x14, 0x14, 0x14, 0x14, 0x8, 0x8
 	.byte 0x8, 0x8
@@ -155450,7 +156067,7 @@ sub_8105714:
 	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810573C: .word byte_8105740
 byte_8105740: .byte 0x1E, 0x18, 0x14, 0x12, 0x14, 0x14, 0x14, 0x14, 0xC
 	.byte 0x12, 0x18, 0x1E
@@ -155468,6 +156085,7 @@ sub_810574C:
 	mov r1, r0
 	pop {r0}
 	pop {pc}
+	.balign 4, 0
 off_8105764: .word loc_8105768
 	thumb_func_end sub_810574C
 
@@ -155773,6 +156391,7 @@ loc_8105A0E:
 	bl sub_801171C
 locret_8105A16:
 	pop {pc}
+	.balign 4, 0
 off_8105A18: .word byte_8105A1C
 byte_8105A1C: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -156204,7 +156823,7 @@ loc_8105D3C:
 	bl sub_801171C
 locret_8105D44:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8105D48: .word byte_8105D4C
 byte_8105D4C: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -156443,6 +157062,7 @@ loc_8105F02:
 	bl sub_801171C
 locret_8105F0A:
 	pop {pc}
+	.balign 4, 0
 off_8105F0C: .word byte_8105F10
 byte_8105F10: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -156758,7 +157378,7 @@ loc_8106154:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_8106158:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810615C: .word byte_8106160
 byte_8106160: .byte 0x1B, 0x1C
 	thumb_func_end sub_810610A
@@ -156977,7 +157597,7 @@ loc_81062E0:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_81062EC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_81062F0: .word dword_81062F4
 dword_81062F4: .word 0x30101
 	thumb_func_end sub_810629C
@@ -157230,6 +157850,7 @@ sub_810649E:
 	mov r0, #0
 locret_81064BA:
 	pop {pc}
+	.balign 4, 0
 off_81064BC: .word loc_81064C0
 	thumb_func_end sub_810649E
 
@@ -157324,6 +157945,7 @@ loc_8106526:
 loc_8106564:
 	add sp, sp, #0x18
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_8106568: .word byte_810656C
 byte_810656C: .byte 0x20, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -157428,7 +158050,7 @@ loc_8106620:
 loc_810663E:
 	add sp, sp, #0x18
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8106644: .word byte_8106648
 byte_8106648: .byte 0x20, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -157460,6 +158082,7 @@ sub_8106670:
 	ldrh r3, [r5,#oBattleObject_AllianceAndDirectionFlip]
 	bl object_highlightPanelRegion
 	pop {pc}
+	.balign 4, 0
 off_8106688: .word dword_810668C
 dword_810668C: .word 0x2020205
 	thumb_func_end sub_8106670
@@ -157575,7 +158198,7 @@ loc_810674C:
 	ldrb r1, [r2,r1]
 locret_8106754:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8106758: .word dword_810675C
 dword_810675C: .word 0x70700
 off_8106760: .word byte_8106764
@@ -157618,7 +158241,7 @@ loc_81067A6:
 	svc 6
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81067B4: .word byte_81067B8
 byte_81067B8: .byte 0x0, 0x0, 0xB, 0x0, 0x0, 0x0, 0xB, 0x0, 0x0, 0x0, 0xB, 0x0, 0x0, 0x0, 0xB
 	.byte 0x0
@@ -157645,7 +158268,7 @@ loc_81067DC:
 	ldr r7, dword_81067F8 // =0x3 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_81067F4: .word 0x57050618
 dword_81067F8: .word 0x3
 byte_81067FC: .byte 0x0, 0xB, 0x1, 0x1, 0x17, 0x0, 0x0, 0x1
@@ -157719,7 +158342,7 @@ sub_810694C:
 	ldrb r0, [r1,r0]
 	strb r0, [r6,#oAIState_Unk_00]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810695C: .word off_8106960
 off_8106960: .word byte_8080404
 	thumb_func_end sub_810694C
@@ -157902,7 +158525,7 @@ sub_8106AA8:
 	ldr r0, off_8106AB4 // =off_8106AB8 
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8106AB4: .word off_8106AB8
 off_8106AB8: .word dword_8081010
 	thumb_func_end sub_8106AA8
@@ -157913,7 +158536,7 @@ sub_8106ABC:
 	ldr r0, off_8106AC8 // =off_8106ACC 
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8106AC8: .word off_8106ACC
 off_8106ACC: .word dword_8081010
 	thumb_func_end sub_8106ABC
@@ -157924,7 +158547,7 @@ sub_8106AD0:
 	ldr r0, off_8106ADC // =dword_8106AE0
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8106ADC: .word dword_8106AE0
 dword_8106AE0: .word 0x10101414
 	thumb_func_end sub_8106AD0
@@ -157935,7 +158558,7 @@ sub_8106AE4:
 	ldr r0, off_8106AF0 // =loc_8106AF4 
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8106AF0: .word loc_8106AF4
 	thumb_func_end sub_8106AE4
 
@@ -157955,7 +158578,7 @@ sub_8106B0C:
 	ldr r0, off_8106B18 // =dword_8106B1C
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8106B18: .word dword_8106B1C
 dword_8106B1C: .word 0x10101414
 	thumb_func_end sub_8106B0C
@@ -157972,6 +158595,7 @@ sub_8106B20:
 	mov r1, r0
 	pop {r0}
 	pop {pc}
+	.balign 4, 0
 off_8106B38: .word byte_8106B3C
 byte_8106B3C: .byte 0x14, 0x14, 0x10, 0x10, 0xC, 0xC, 0x8, 0x8
 	thumb_func_end sub_8106B20
@@ -157982,7 +158606,7 @@ sub_8106B44:
 	ldr r0, off_8106B50 // =off_8106B54 
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8106B50: .word off_8106B54
 off_8106B54: .word byte_8080C0C
 	thumb_func_end sub_8106B44
@@ -157999,6 +158623,7 @@ sub_8106B58:
 	mov r1, r0
 	pop {r0}
 	pop {pc}
+	.balign 4, 0
 off_8106B70: .word byte_8106B74
 byte_8106B74: .byte 0x18, 0x18, 0x10, 0x10, 0x1E, 0x1E, 0x1E, 0x1E
 	thumb_func_end sub_8106B58
@@ -158009,7 +158634,7 @@ sub_8106B7C:
 	ldr r0, off_8106B88 // =dword_8106B8C
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8106B88: .word dword_8106B8C
 dword_8106B8C: .word 0x1E1E1E1E
 	thumb_func_end sub_8106B7C
@@ -158020,7 +158645,7 @@ sub_8106B90:
 	ldr r0, off_8106B9C // =dword_8106BA0
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8106B9C: .word dword_8106BA0
 dword_8106BA0: .word 0x14141414
 	thumb_func_end sub_8106B90
@@ -158031,7 +158656,7 @@ sub_8106BA4:
 	ldr r0, off_8106BB0 // =loc_8106BB4 
 	bl sub_800FE28
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8106BB0: .word loc_8106BB4
 	thumb_func_end sub_8106BA4
 
@@ -158306,7 +158931,7 @@ loc_8106E48:
 	bl object_exitAttackState
 locret_8106E50:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8106E54: .word byte_8106E58
 byte_8106E58: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -158428,6 +159053,7 @@ loc_8106F46:
 	bl object_exitAttackState
 locret_8106F4E:
 	pop {pc}
+	.balign 4, 0
 off_8106F50: .word dword_8106F54
 dword_8106F54: .word 0x10000
 dword_8106F58: .word 0xF880080
@@ -158800,6 +159426,7 @@ loc_8107206:
 	bl object_exitAttackState
 locret_810720E:
 	pop {pc}
+	.balign 4, 0
 off_8107210: .word dword_8107214
 dword_8107214: .word 0x10000
 dword_8107218: .word 0xF880080
@@ -159143,7 +159770,7 @@ loc_8107484:
 	bl object_exitAttackState
 locret_810748C:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8107490: .word dword_8107494
 dword_8107494: .word 0x10000
 dword_8107498: .word 0xF880080
@@ -159324,6 +159951,7 @@ loc_81075D6:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_81075DA:
 	pop {pc}
+	.balign 4, 0
 off_81075DC: .word dword_81075E0
 dword_81075E0: .word 0x10000
 dword_81075E4: .word 0xF880080
@@ -159580,6 +160208,7 @@ loc_81077B6:
 	bl object_exitAttackState
 locret_81077BE:
 	pop {pc}
+	.balign 4, 0
 off_81077C0: .word dword_81077C4
 dword_81077C4: .word 0x10000
 dword_81077C8: .word 0xF880080
@@ -159867,7 +160496,7 @@ sub_8107994:
 	mov r0, #0
 locret_81079C4:
 	pop {r4,r6,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81079C8: .word byte_81079CC
 byte_81079CC: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -159887,6 +160516,7 @@ sub_81079DC:
 	ldr r7, dword_81079FC // =0x3 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_81079F8: .word 0x7050104
 dword_81079FC: .word 0x3
 	thumb_func_end sub_81079DC
@@ -159907,6 +160537,7 @@ sub_8107A00:
 	ldr r7, dword_8107A2C // =0x1 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_8107A20: .word byte_8107A24
 byte_8107A24: .byte 0x2, 0xFF, 0x5, 0x4, 0x4, 0xFF, 0x5, 0x4
 dword_8107A2C: .word 0x1
@@ -159931,7 +160562,7 @@ sub_8107A30:
 	lsl r3, r3, #0x10
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8107A5C: .word dword_8107A60
 dword_8107A60: .word 0x393A
 	thumb_func_end sub_8107A30
@@ -159950,6 +160581,7 @@ sub_8107A64:
 	ldr r7, dword_8107A84 // =0x1001 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_8107A80: .word 0x405FF02
 dword_8107A84: .word 0x1001
 	thumb_func_end sub_8107A64
@@ -160039,6 +160671,7 @@ sub_8107B06:
 	ldr r6, [r7,#oAIAttackVars_Unk_30]
 	bl sub_80C4FFE
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_8107B20: .word PanelOffsetListsPointerTable
 byte_8107B24: .byte 0x0, 0xC, 0x1, 0x1, 0x18, 0x0, 0x0, 0x1
 byte_8107B2C: .byte 0x20, 0x3, 0x0, 0x6, 0xA, 0x0, 0x40, 0x6, 0x1, 0x6, 0xA, 0x0, 0x40
@@ -160113,7 +160746,7 @@ sub_8107C7C:
 	ldrb r0, [r1,r0]
 	strb r0, [r6,#oAIState_Unk_00]
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8107C8C: .word dword_8107C90
 dword_8107C90: .word 0xC0C0404
 	thumb_func_end sub_8107C7C
@@ -160451,7 +161084,7 @@ sub_8107EE8:
 	ldr r0, off_8107EF4 // =dword_8107EF8
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8107EF4: .word dword_8107EF8
 dword_8107EF8: .word 0x18182020
 	thumb_func_end sub_8107EE8
@@ -160462,7 +161095,7 @@ sub_8107EFC:
 	ldr r0, off_8107F08 // =dword_8107F0C
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8107F08: .word dword_8107F0C
 dword_8107F0C: .word 0xC0C1010
 	thumb_func_end sub_8107EFC
@@ -160473,7 +161106,7 @@ sub_8107F10:
 	ldr r0, off_8107F1C // =dword_8107F20
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8107F1C: .word dword_8107F20
 dword_8107F20: .word 0x18182020
 	thumb_func_end sub_8107F10
@@ -160490,6 +161123,7 @@ sub_8107F24:
 	mov r1, r0
 	pop {r0}
 	pop {pc}
+	.balign 4, 0
 off_8107F3C: .word byte_8107F40
 byte_8107F40: .byte 0x10, 0x10, 0xC, 0xC, 0x8, 0x8, 0x8, 0x8
 	thumb_func_end sub_8107F24
@@ -160500,7 +161134,7 @@ sub_8107F48:
 	ldr r0, off_8107F54 // =dword_8107F58
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8107F54: .word dword_8107F58
 dword_8107F58: .word 0x10101414
 	thumb_func_end sub_8107F48
@@ -160517,6 +161151,7 @@ sub_8107F5C:
 	mov r1, r0
 	pop {r0}
 	pop {pc}
+	.balign 4, 0
 off_8107F74: .word byte_8107F78
 byte_8107F78: .byte 0x14, 0x14, 0x10, 0x10, 0xC, 0xC, 0x8, 0x8
 	thumb_func_end sub_8107F5C
@@ -160527,7 +161162,7 @@ sub_8107F80:
 	ldr r0, off_8107F8C // =dword_8107F90
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8107F8C: .word dword_8107F90
 dword_8107F90: .word 0x10101818
 	thumb_func_end sub_8107F80
@@ -160544,6 +161179,7 @@ sub_8107F94:
 	mov r1, r0
 	pop {r0}
 	pop {pc}
+	.balign 4, 0
 off_8107FAC: .word off_8107FB0
 off_8107FB0: .word byte_8080C0C
 	.word 0x1E1E1E1E
@@ -160555,7 +161191,7 @@ sub_8107FB8:
 	ldr r0, off_8107FC4 // =dword_8107FC8
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8107FC4: .word dword_8107FC8
 dword_8107FC8: .word 0x1E1E1E1E
 	thumb_func_end sub_8107FB8
@@ -160566,7 +161202,7 @@ sub_8107FCC:
 	ldr r0, off_8107FD8 // =dword_8107FDC
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8107FD8: .word dword_8107FDC
 dword_8107FDC: .word 0x14141414
 	thumb_func_end sub_8107FCC
@@ -160577,7 +161213,7 @@ sub_8107FE0:
 	ldr r0, off_8107FEC // =loc_8107FF0 
 	bl sub_800FE28
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8107FEC: .word loc_8107FF0
 	thumb_func_end sub_8107FE0
 
@@ -160852,7 +161488,7 @@ loc_8108278:
 	bl object_exitAttackState
 locret_8108280:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8108284: .word byte_8108288
 byte_8108288: .byte 0x0, 0x0, 0x1, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x1, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -161104,7 +161740,7 @@ loc_810843C:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_8108448:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810844C: .word dword_8108450
 dword_8108450: .word 0x2060201
 	thumb_func_end sub_8108408
@@ -161235,6 +161871,7 @@ loc_8108542:
 	bl object_exitAttackState
 locret_810854A:
 	pop {pc}
+	.balign 4, 0
 off_810854C: .word dword_8108550
 dword_8108550: .word 0x10000
 dword_8108554: .word 0xF880080
@@ -161587,7 +162224,7 @@ loc_81087D8:
 	bl object_exitAttackState
 locret_81087E0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_81087E4: .word dword_81087E8
 dword_81087E8: .word 0x10000
 dword_81087EC: .word 0xF880080
@@ -161768,6 +162405,7 @@ loc_810892A:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_810892E:
 	pop {pc}
+	.balign 4, 0
 off_8108930: .word dword_8108934
 dword_8108934: .word 0x10000
 dword_8108938: .word 0xF880080
@@ -162034,6 +162672,7 @@ loc_8108B22:
 	bl object_exitAttackState
 locret_8108B2A:
 	pop {pc}
+	.balign 4, 0
 off_8108B2C: .word dword_8108B30
 dword_8108B30: .word 0x10000
 dword_8108B34: .word 0xF880080
@@ -162241,7 +162880,7 @@ loc_8108C9A:
 loc_8108C9E:
 	add sp, sp, #0x24
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8108CA4: .word byte_8108CA8
 byte_8108CA8: .byte 0x0
 byte_8108CA9: .byte 0x0, 0xFF, 0xFF, 0xFF, 0x1, 0x1, 0xFF, 0x1, 0x1, 0xFF, 0x0, 0x0
@@ -162295,6 +162934,7 @@ sub_8108CDE:
 	mov r0, #0
 locret_8108D0E:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_8108D10: .word byte_8108D14
 byte_8108D14: .byte 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
@@ -162386,7 +163026,7 @@ loc_8108D94:
 loc_8108DD6:
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8108DDC: .word byte_8108DE0
 byte_8108DE0: .byte 0x20, 0x0, 0x0, 0x0, 0x80, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xA0, 0x0
 	.byte 0x0, 0x0
@@ -162451,6 +163091,7 @@ sub_8108E34:
 	ldr r7, dword_8108E60 // =0x1 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_8108E54: .word byte_8108E58
 byte_8108E58: .byte 0x2, 0xFF, 0x5, 0x4, 0x4, 0xFF, 0x5, 0x4
 dword_8108E60: .word 0x1
@@ -162475,7 +163116,7 @@ sub_8108E64:
 	lsl r3, r3, #0x10
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_8108E90: .word dword_8108E94
 dword_8108E94: .word 0x393A
 	thumb_func_end sub_8108E64
@@ -162494,6 +163135,7 @@ sub_8108E98:
 	ldr r7, dword_8108EB8 // =0x1001 
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_8108EB4: .word 0x405FF02
 dword_8108EB8: .word 0x1001
 	thumb_func_end sub_8108E98
@@ -162551,6 +163193,7 @@ sub_8108EE6:
 	ldr r6, [r7,#oAIAttackVars_Unk_30]
 	bl sub_80C6248
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_8108F20: .word dword_8108F24
 dword_8108F24: .word 0x2C241C24
 	thumb_func_end sub_8108EE6
@@ -162587,7 +163230,7 @@ sub_8108F50:
 	bx r1
 	bl sub_8016E64
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_8108F64: .word off_8108F68
 off_8108F68: .word sub_8016F56+1
 	.word sub_8108F74+1
@@ -162693,6 +163336,7 @@ loc_8109020:
 	strh r0, [r1,#oAIData_Unk_3c]
 locret_8109046:
 	pop {r4,pc}
+	.balign 4, 0
 off_8109048: .word off_8109050
 off_810904C: .word off_81091D0
 off_8109050: .word off_8109B74
@@ -163047,7 +163691,7 @@ loc_8109698:
 	b loc_8109672
 locret_810969C:
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_81096A0: .word PanelOffsetListsPointerTable
 	thumb_func_end sub_8109660
 
@@ -163196,7 +163840,7 @@ sub_8109794:
 	bl object_crackPanel
 locret_81097A8:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_81097AC: .word 0x405FF01
 dword_81097B0: .word 0xC000000
 	thumb_func_end sub_8109794
@@ -163589,7 +164233,7 @@ sub_8109A50:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_8109A74:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 byte_8109A78: .byte 0x4, 0x1, 0x1, 0x0, 0x0, 0x0, 0x0, 0x1
 byte_8109A80: .byte 0xF4, 0x1, 0x0, 0x8, 0xA, 0x0, 0xE8, 0x3, 0x1, 0x8, 0x28, 0x0, 0xDC
 	.byte 0x5, 0x2, 0x8, 0x50, 0x0, 0xD0, 0x7, 0x3, 0x8, 0x78, 0x0, 0xC4, 0x9
@@ -163628,6 +164272,7 @@ sub_8109B64:
 	bl object_exitAttackState
 locret_8109B72:
 	pop {pc}
+	.balign 4, 0
 off_8109B74: .word sub_8016380+1
 	.word sub_80165B8+1
 	.word sub_80165C2+1
@@ -163671,7 +164316,7 @@ sub_8109BC0:
 	mov r0, #9
 	bl object_setAttack0
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 byte_8109BD0: .byte 0x4, 0x1, 0x1, 0x0, 0x1, 0x0, 0x0, 0x1
 byte_8109BD8: .byte 0x28, 0x0, 0x0, 0x8, 0xA, 0x0, 0x50, 0x0, 0x1, 0x8, 0x14, 0x0, 0x78
 	.byte 0x0, 0x2, 0x8, 0x28, 0x0, 0xA0, 0x0, 0x3, 0x8, 0x3C, 0x0, 0x78, 0x0
@@ -163781,6 +164426,7 @@ loc_8109D52:
 	bl object_exitAttackState
 locret_8109D5A:
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_8109D5C: .word byte_8109D60
 byte_8109D60: .byte 0x10, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -164007,6 +164653,7 @@ sub_8109EE4:
 	bl object_exitAttackState
 locret_8109EF2:
 	pop {pc}
+	.balign 4, 0
 off_8109EF4: .word sub_8016380+1
 	.word sub_8109F4C+1
 	.word sub_8109F6A+1
@@ -164196,7 +164843,7 @@ loc_810A070:
 	strh r0, [r6,#oAIState_Unk_02]
 locret_810A078:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_810A07C: .word 0xA000
 	thumb_func_end sub_810A004
 
@@ -164364,7 +165011,7 @@ loc_810A184:
 loc_810A1AA:
 	add sp, sp, #4
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_810A1B0: .word 0x12C
 	thumb_func_end sub_810A126
 
@@ -164410,6 +165057,7 @@ loc_810A1FA:
 	mov r0, r6
 	add sp, sp, #0x10
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_810A200: .word 0x7FFFFFFF
 	thumb_func_end sub_810A1B4
 
@@ -164491,7 +165139,7 @@ loc_810A262:
 	mov r1, r7
 locret_810A288:
 	pop {r4,r6,r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810A28C: .word byte_810A290
 byte_810A290: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
@@ -164757,6 +165405,7 @@ sub_810A534:
 	bl sub_8109630
 	pop {pc}
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.balign 4, 0
 off_810A550: .word sub_8016380+1
 	.word sub_80165B8+1
 	.word sub_810A5C2+1
@@ -164819,6 +165468,7 @@ sub_810A5EA:
 	bx r1
 locret_810A5FE:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_810A600: .word off_810A604
 off_810A604: .word sub_810A610+1
 	.word sub_810A648+1
@@ -164910,6 +165560,7 @@ locret_810A6A6:
 	pop {pc}
 	.word 0
 	.byte 0, 0, 0, 0
+	.balign 4, 0
 off_810A6B0: .word byte_810A6B8
 off_810A6B4: .word byte_810A6BA
 byte_810A6B8: .byte 0x0, 0x1
@@ -165047,6 +165698,7 @@ loc_810A7B4:
 	pop {r4,r6,r7,pc}
 	.word 0, 0
 	.byte 0, 0, 0, 0
+	.balign 4, 0
 byte_810A7D0: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
 	thumb_func_end sub_810A724
@@ -165083,6 +165735,7 @@ loc_810A812:
 	mov r0, r4
 	add sp, sp, #0x10
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 off_810A818: .word sub_810A724+1
 off_810A81C: .word byte_810A5BC
 off_810A820: .word byte_810A5B6
@@ -165211,6 +165864,7 @@ sub_810A9AE:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_810A9DE:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_810A9E0: .word byte_810A9E4
 byte_810A9E4: .byte 0x0, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0
 off_810A9EC: .word sub_8016380+1
@@ -165283,6 +165937,7 @@ loc_810AAC4:
 	bl sub_80165C2
 	pop {pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 dword_810AACC: .word 0x40000000
 	thumb_func_end sub_810AA90
 
@@ -165340,6 +165995,7 @@ loc_810AB2E:
 	mov r0, #0
 	strb r0, [r6,#oAIState_Unk_00]
 	pop {pc}
+	.balign 4, 0
 off_810AB34: .word byte_810AB38
 byte_810AB38: .byte 0x1, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0
 	thumb_func_end sub_810AAE6
@@ -165470,7 +166126,7 @@ sub_810ABFE:
 	bl PlaySoundEffect
 locret_810AC24:
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_810AC28: .word byte_810AC2C
 byte_810AC2C: .byte 0xC, 0xB, 0xE, 0xD, 0xF, 0xF, 0xFF, 0xFF
 	thumb_func_end sub_810ABFE
@@ -165609,6 +166265,7 @@ loc_810ACF4:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 locret_810ACFE:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_810AD00: .word off_810AD08
 	.word off_810AD0C
 off_810AD08: .word sub_810AD10+1
@@ -165745,6 +166402,7 @@ sub_810ADAC:
 	bl GetRandomRelativePanelFiltered
 locret_810AE06:
 	pop {r4-r7,pc}
+	.balign 4, 0
 byte_810AE08: .byte 0x0, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
 off_810AE18: .word byte_810AA20
@@ -166194,6 +166852,7 @@ sub_810B21C:
 	ldr r7, dword_810B23C // =0x1010014
 	bl sub_80E33FA
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 dword_810B238: .word 0x83E0
 dword_810B23C: .word 0x1010014
 off_810B240: .word 0x404
@@ -166263,7 +166922,7 @@ sub_810B2AE:
 	bl object_exitAttackState
 locret_810B2BC:
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 dword_810B2C0: .word 0x705FF00
 dword_810B2C4: .word 0x80000
 byte_810B2C8: .byte 0x80, 0x0, 0x88, 0xF, 0x0, 0x0, 0x0, 0x0
@@ -166303,6 +166962,7 @@ sub_810B30C:
 	mov r1, #0
 	strh r1, [r5,r0]
 	pop {pc}
+	.balign 4, 0
 dword_810B334: .word 0x7000404
 	thumb_func_end sub_810B30C
 
@@ -166365,7 +167025,7 @@ sub_810B36C:
 locret_810B3A0:
 	pop {pc}
 	.word 0, 0, 0
-	.byte 0, 0
+	.balign 4, 0
 off_810B3B0: .word off_810B3B4
 off_810B3B4: .word sub_810B3E4+1
 	.word sub_810B436+1
@@ -166651,6 +167311,7 @@ sub_810B5BE:
 	pop {pc}
 	.word 0
 	.byte 0, 0, 0, 0
+	.balign 4, 0
 off_810B5F0: .word byte_810B5F4
 byte_810B5F4: .byte 0x0, 0x50, 0x0, 0x0, 0x0, 0x70, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x70
 	.byte 0x0, 0x0, 0x0, 0x90, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -166800,6 +167461,7 @@ loc_810B70E:
 	mov r0, #1
 	str r0, [r5,#oBattleObject_ExtraVars+4]
 	pop {pc}
+	.balign 4, 0
 off_810B730: .word byte_810B740
 off_810B734: .word byte_810B746
 off_810B738: .word byte_810B74C
@@ -167028,6 +167690,7 @@ loc_810B9D4:
 locret_810B9E0:
 	pop {r4,r6,pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_810B9E4: .word dword_810B9E8
 dword_810B9E8: .word 0x1060403
 	thumb_func_end sub_810B9AA
@@ -167051,6 +167714,7 @@ loc_810BA02:
 	strb r0, [r5,r1]
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_810BA0C: .word off_810BA10
 off_810BA10: .word dword_810BA1C
 	.word dword_810BA20
@@ -167071,6 +167735,7 @@ sub_810BA28:
 	strb r0, [r5,#oBattleObject_CurAnim]
 locret_810BA36:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_810BA38: .word dword_810BA3C
 dword_810BA3C: .word 0xFF050002
 	thumb_func_end sub_810BA28
@@ -167086,6 +167751,7 @@ sub_810BA40:
 	strb r0, [r5,#oBattleObject_CurAnim]
 locret_810BA4E:
 	pop {r4-r7,pc}
+	.balign 4, 0
 off_810BA50: .word dword_810BA54
 dword_810BA54: .word 0xFF090708
 	thumb_func_end sub_810BA40
@@ -167113,6 +167779,7 @@ sub_810BA58:
 	bl sub_80D924E
 	pop {r4-r7,pc}
 	.word dword_810BA88
+	.balign 4, 0
 dword_810BA88: .word 0xFF050002
 off_810BA8C: .word dword_810BA90
 dword_810BA90: .word 0x100FF
@@ -167220,6 +167887,7 @@ loc_810BAE6:
 locret_810BB50:
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
+	.balign 4, 0
 off_810BB54: .word dword_810BB58
 dword_810BB58: .word 0x100FF
 off_810BB5C: .word dword_810BB60
@@ -167351,6 +168019,7 @@ loc_810BC84:
 	bx r1
 locret_810BC8E:
 	pop {r4,r6,pc}
+	.balign 4, 0
 off_810BC90: .word off_810BC94
 off_810BC94: .word sub_810BCA0+1
 	.word sub_810BCBC+1
@@ -167439,6 +168108,7 @@ loc_810BD28:
 	strb r0, [r6,#oAIState_Unk_00]
 locret_810BD36:
 	pop {pc}
+	.balign 4, 0
 off_810BD38: .word loc_810BD3C
 	thumb_func_end sub_810BCFC
 
@@ -167588,6 +168258,7 @@ sub_810BE2A:
 	mov r1, #0x62 
 	strb r0, [r5,r1]
 	pop {r4,pc}
+	.balign 4, 0
 off_810BE58: .word off_810BE5C
 off_810BE5C: .word dword_810BE68
 	.word dword_810BE6C
@@ -167628,7 +168299,7 @@ sub_810BE8E:
 	strb r0, [r5,r1]
 locret_810BEB0:
 	pop {pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_810BEB4: .word 0xA000
 off_810BEB8: .word byte_810BBD8
 off_810BEBC: .word byte_810BBF0
@@ -167882,6 +168553,7 @@ sub_810C14A:
 	add r7, #0
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7,pc}
+	.balign 4, 0
 byte_810C164: .byte 0x83, 0xFF, 0x5, 0x32, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 off_810C170: .word sub_8016380+1
 	.word sub_80165B8+1
@@ -168063,6 +168735,7 @@ loc_810C2F8:
 loc_810C30C:
 	add sp, sp, #0x18
 	pop {r4,r7,pc}
+	.balign 4, 0
 byte_810C310: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0xF
 off_810C320: .word byte_810C1D2

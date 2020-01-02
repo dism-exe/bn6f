@@ -459,5 +459,5 @@
 	.charmap "[bracket1]", 0xE4E6
 	.charmap "[bracket2]", 0xE4E7
 	.charmap "[.]", 0xE4E8
-	.charmap "$", 0xE6 // ts_end
+	.charmap "@", 0xE6 // ts_end
 	.charmap "\n", 0xE9

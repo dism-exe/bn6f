@@ -38,7 +38,7 @@ CentralTown_EnterMapGroup:
 	ldr r0, [r0,r1]
 	str r0, [r5,#oGameState_Unk_64]
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 off_804E688: .word off_804E38C
 off_804E68C: .word unk_2037800
 off_804E690: .word off_804E9CC
@@ -64,7 +64,7 @@ CentralTown_LoadGFXAnims:
 	ldr r0, [r0,r1]
 	bl LoadGFXAnims
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_804E6E0: .word off_804E6E4
 off_804E6E4: .word dword_804E6F8
 	.word off_804E6FC
