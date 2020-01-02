@@ -1604,13 +1604,6 @@
 		.byte 0xEC, 0x1, \count
 	.endm
 	
-	// Checks the current game version, and jumps to a different script depending on if the current game is Cybeast Gregar or Cybeast Falzar.
-	// :param jumpIfCybeastGregar[1:0:8]: The script to jump to if the current game is Cybeast Gregar, or 255 to continue with the current script.
-	// :param jumpIfCybeastFalzar[2:0:8]: The script to jump to if the current game is Cybeast Falzar, or 255 to continue with the current script.
-	.macro ts_check_game_version_s jumpIfCybeastGregar:req, jumpIfCybeastFalzar:req
-		.byte 0xEF, \jumpIfCybeastGregar, \jumpIfCybeastFalzar
-	.endm
-	
 	// Prints the contents of the specified 32-bit buffer as a decimal number.
 	// :param buffer[1:0:7]: The buffer to print.
 	// :param minLength[2:0:4]: The minimum amount of characters to print. If the number consists of less digits, additional spaces are printed.
@@ -1685,8 +1678,11 @@
     */
 
     // naming conflict, adding _s
-	.macro ts_check_game_version_s p0:req, p1:req
-	.byte 0xEF, \p0, \p1
+	// Checks the current game version, and jumps to a different script depending on if the current game is Cybeast Gregar or Cybeast Falzar.
+	// :param jumpIfCybeastGregar[1:0:8]: The script to jump to if the current game is Cybeast Gregar, or 255 to continue with the current script.
+	// :param jumpIfCybeastFalzar[2:0:8]: The script to jump to if the current game is Cybeast Falzar, or 255 to continue with the current script.
+	.macro ts_check_game_version_s jumpIfCybeastGregar:req, jumpIfCybeastFalzar:req
+		.byte 0xEF, \jumpIfCybeastGregar, \jumpIfCybeastFalzar
 	.endm
-
+	
 	.endif
