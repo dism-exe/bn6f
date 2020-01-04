@@ -10,6 +10,7 @@ function grep_source_files() {
     echo $files
 }
 
-funcion update_ctags() {
-    ctags -R *.s asm/* data/dat* docs/decomp/*.c include/* maps/*
+function update_ctags() {
+    echo "updating ctags" >&2
+    ctags -R ewram.s *.s asm/* data/dat* docs/decomp/*.c include/* maps/*
 }

@@ -17,7 +17,7 @@ unsigned int RobotControlComp_EnterMapGroup()
     sub_8030472();
     sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(off_8066434[*(v0 + 5)]);
-    chatbox_uncompBasedOnMap_803FD08();
+    chatbox_uncompMapTextArchives_803FD08();
     RobotControlComp_SpawnMapObjectsForMap();
     return sub_8034FB8();
 }
@@ -98,7 +98,7 @@ unsigned int AquariumComp_EnterMapGroup()
     sub_8030472();
     sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(off_8067BC0[*(v0 + 5)]);
-    chatbox_uncompBasedOnMap_803FD08();
+    chatbox_uncompMapTextArchives_803FD08();
     AquariumComp_SpawnMapObjectsForMap();
     return sub_8034FB8();
 }

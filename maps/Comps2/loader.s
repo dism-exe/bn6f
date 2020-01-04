@@ -31,7 +31,7 @@ sub_806FC08:
 	ldr r0, off_806FC68 // =off_806FC6C 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
 	bl sub_806FFDA
 	bl sub_8034FB8
 	pop {r4-r7,pc}
@@ -325,7 +325,7 @@ sub_806FFDA:
 	lsl r0, r0, #2
 	ldr r1, off_806FFF0 // =pt_806FFF4 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_806FFF0: .word pt_806FFF4

@@ -30,7 +30,7 @@ ACDCTown_EnterMapGroup:
 	ldr r0, off_804CEF8 // =off_804CEFC 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
 	bl ACDCTown_SpawnMapObjectsForMap
 	ldr r0, off_804CEF4 // =off_804D0E4 
 	ldrb r1, [r5,#oGameState_MapNumber]
@@ -98,7 +98,7 @@ ACDCTown_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, off_804CF98 // =off_804CF9C 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_804CF98: .word off_804CF9C

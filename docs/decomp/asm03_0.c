@@ -14246,10 +14246,10 @@ void __fastcall LoadBGAnimData(int a1)
     v4 = *v2;
     if ( *v2 )
     {
-        SWI_LZ77UnCompReadNormalWrite8bit(v4 + v4[1], &unk_2034A00);
-        CopyByEightWords(&unk_2034A00, *(v2 + 4), 4 * *v4);
-        SWI_LZ77UnCompReadNormalWrite8bit((*(v2 + 8) + 12), &unk_2034A00);
-        CopyByEightWords(&unk_2034A00, *(v2 + 12) + *(v1 + oToolkit_iBGTileIdBlocks_Ptr), 2 * **(v2 + 8) * *(*(v2 + 8) + 1));
+        SWI_LZ77UnCompReadNormalWrite8bit(v4 + v4[1], &eDecompressionBuf2034A00);
+        CopyByEightWords(&eDecompressionBuf2034A00, *(v2 + 4), 4 * *v4);
+        SWI_LZ77UnCompReadNormalWrite8bit((*(v2 + 8) + 12), &eDecompressionBuf2034A00);
+        CopyByEightWords(&eDecompressionBuf2034A00, *(v2 + 12) + *(v1 + oToolkit_iBGTileIdBlocks_Ptr), 2 * **(v2 + 8) * *(*(v2 + 8) + 1));
     }
 }
 
@@ -14265,8 +14265,8 @@ int __fastcall sub_8030540(_DWORD *a1)
     v3 = a1[4];
     if ( v3 )
         (loc_8000AC8)(v3 + 4, v2[5], v2[6]);
-    SWI_LZ77UnCompReadNormalWrite8bit((v2[2] + 12), &unk_2034A00);
-    return (loc_8000AC8)(&unk_2034A00, v2[3] + *(v1 + oToolkit_iBGTileIdBlocks_Ptr), 2 * *v2[2] * *(v2[2] + 1));
+    SWI_LZ77UnCompReadNormalWrite8bit((v2[2] + 12), &eDecompressionBuf2034A00);
+    return (loc_8000AC8)(&eDecompressionBuf2034A00, v2[3] + *(v1 + oToolkit_iBGTileIdBlocks_Ptr), 2 * *v2[2] * *(v2[2] + 1));
 }
 
 

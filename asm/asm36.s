@@ -15493,7 +15493,7 @@ loc_8138196:
 	str r2, [r4,#0x54]
 	ldr r0, off_813820C // =eTextScript201BF00
 	mov r1, r7
-	bl chatbox_runScript_803FD78 // (void *textScript, u8 scriptIdx) -> void
+	bl chatbox_runScript_803FD78 // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r5, #0
 loc_81381F6:
 	mov r0, r5

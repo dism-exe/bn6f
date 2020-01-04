@@ -54,7 +54,7 @@ int RunLMessageTextScript()
         if ( GetNaviStatsByte(v4, 95) != 1 )
         {
 LABEL_12:
-            chatbox_uncomp_803FD3C();
+            chatbox_uncompMapTextArchives_803FD3C();
             chatbox_runTrainScript(tk->gamestate->scriptOffIdx_LMsg_15);
             return 0;
         }

@@ -31,7 +31,7 @@ JudgeTreeComp_EnterMapGroup:
 	ldr r0, off_8069098 // =off_806909C 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
 	bl JudgeTreeComp_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
@@ -179,7 +179,7 @@ JudgeTreeComp_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, off_8069214 // =off_8069218 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_8069214: .word off_8069218

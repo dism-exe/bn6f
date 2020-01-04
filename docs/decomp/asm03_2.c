@@ -1094,7 +1094,7 @@ void uncomp_80471F8()
 
     SWI_LZ77UnCompReadNormalWrite8bit(*(*(v0 + 28) + 4), &unk_2029A00);
     SWI_LZ77UnCompReadNormalWrite8bit(CompText873DE4C, eDecomp202BA00);
-    SWI_LZ77UnCompReadNormalWrite8bit(CompText873ECC8, &byte_202DA00);
+    SWI_LZ77UnCompReadNormalWrite8bit(CompText873ECC8, &eDecompressedTextArchive202DA00);
 }
 
 
@@ -6585,7 +6585,7 @@ char (*ACDCTown_EnterMapGroup())[8]
     sub_8030472();
     sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(off_804CEFC[gs->MapSubOffset]);
-    chatbox_uncompBasedOnMap_803FD08();
+    chatbox_uncompMapTextArchives_803FD08();
     ACDCTown_SpawnMapObjectsForMap();
     result = off_804D0E4[gs->MapSubOffset];
     gs->unk_64 = result;

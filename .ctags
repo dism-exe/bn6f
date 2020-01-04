@@ -1,0 +1,2 @@
+--langdef=GlobalLabels
+--regex-GlobalLabels=/^.*::/Label/

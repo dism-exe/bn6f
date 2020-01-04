@@ -17,7 +17,7 @@ unsigned int sub_807544C()
     sub_8030472();
     sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(*(&off_80754B0 + *(v0 + 5)));
-    chatbox_uncompBasedOnMap_803FD08();
+    chatbox_uncompMapTextArchives_803FD08();
     sub_80755EE();
     return sub_8034FB8();
 }

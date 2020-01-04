@@ -2105,7 +2105,7 @@ uncomp_80471F8:
 	// src
 	ldr r0, off_8047224 // =CompText873ECC8 
 	// dest
-	ldr r1, off_8047228 // =byte_202DA00 
+	ldr r1, off_8047228 // =eDecompressedTextArchive202DA00 
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -2113,7 +2113,7 @@ off_8047218: .word unk_2029A00
 off_804721C: .word CompText873DE4C
 off_8047220: .word eDecomp202BA00
 off_8047224: .word CompText873ECC8
-off_8047228: .word byte_202DA00
+off_8047228: .word eDecompressedTextArchive202DA00
 	thumb_func_end uncomp_80471F8
 
 	thumb_local_start
@@ -2432,7 +2432,7 @@ off_8047494: .word byte_87F0340
 	.word unk_2035A00
 	.word comp_87F0664 + 1<<31
 	.word 0x0
-	.word byte_202FA00
+	.word eDecompressedTextArchive202FA00
 	.word comp_87F0834 + 1<<31
 	.word 0x0
 	.word byte_2030200
@@ -8165,7 +8165,7 @@ sub_804AF10:
 	push {lr}
 	mov r1, r0
 	ldr r0, off_804AF1C // =TextScriptChipTrader86C580C
-	bl chatbox_runScript_803FD78 // (void *textScript, u8 scriptIdx) -> void
+	bl chatbox_runScript_803FD78 // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	pop {pc}
 	.balign 4, 0
 off_804AF1C: .word TextScriptChipTrader86C580C

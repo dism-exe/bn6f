@@ -10245,7 +10245,7 @@ loc_8128BB8:
 loc_8128BDC:
 	mov r1, r0
 	ldr r0, off_8128BE8 // =unk_201C1B0 
-	bl chatbox_runScript_803FD78 // (void *textScript, u8 scriptIdx) -> void
+	bl chatbox_runScript_803FD78 // (TextScriptArchive *archive, u8 scriptIdx) -> void
 locret_8128BE4:
 	pop {pc}
 	.balign 4, 0

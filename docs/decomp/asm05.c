@@ -17,7 +17,7 @@ char (*CyberAcademy_EnterMapGroup())[8]
 	sub_8030472();
 	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(*(&off_80526F4 + *(v0 + 5)));
-	chatbox_uncompBasedOnMap_803FD08();
+	chatbox_uncompMapTextArchives_803FD08();
 	CyberAcademy_SpawnMapObjectsForMap();
 	result = off_8052EE8[*(v0 + 5)];
 	*(v0 + 100) = result;

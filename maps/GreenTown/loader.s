@@ -30,7 +30,7 @@ GreenTown_EnterMapGroup:
 	ldr r0, off_805DF70 // =off_805DF74 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
 	bl GreenTown_SpawnMapObjectsForMap
 	ldr r0, off_805DF6C // =off_805E1FC 
 	ldrb r1, [r5,#oGameState_MapNumber]
@@ -91,7 +91,7 @@ GreenTown_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, off_805E004 // =pt_805E008 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_805E004: .word pt_805E008

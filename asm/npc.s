@@ -2534,8 +2534,8 @@ NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer:
 	.balign 4, 0
 off_809F3D8: .word byte_202FA04
 	.word off_809F3E0
-off_809F3E0: .word off_8044470
-	.word off_80444C4
+off_809F3E0: .word off_realWorld_8044470
+	.word off_internet_80444C4
 	thumb_func_end NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer
 
 	thumb_local_start

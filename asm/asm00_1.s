@@ -606,37 +606,60 @@ InitializeOverworldMapObjectStructs:
 	pop {pc}
 	thumb_func_end InitializeOverworldMapObjectStructs
 
+
 	thumb_func_start SpawnObjectsFromList
-SpawnObjectsFromList:
+SpawnObjectsFromList: // (void *a1) -> int
 	push {r4-r7,lr}
+	
+	// void* vA1: r7
+	// i: r4
 	mov r7, r0
 	mov r4, #0
+
 .spawnObjectsLoop
-	ldr r0, SpawnObjectJumptable_p // =SpawnObjectJumptable
+	// vSpawnObjectJumpTable: r0
+	// u8 v1: r1 = *vA1
+    ldr r0, SpawnObjectJumptable_p // =SpawnObjectJumptable
 	ldrb r1, [r7]
-	cmp r1, #0xff
+
+	cmp r1, #0xff // if v1 == 0xff
 	beq .doneSpawningObjects
-	lsl r1, r1, #2
+
+	// vCallBack: r6 = vSpawnObjectJumpTable[4*v1]
+    lsl r1, r1, #2
 	ldr r6, [r0,r1]
+	
 	push {r4,r7}
+
 	ldrb r0, [r7,#1]
 	ldr r1, [r7,#4]
 	ldr r2, [r7,#8]
 	ldr r3, [r7,#0xc]
 	ldr r4, [r7,#0x10]
+
+	// vCallBack(...) to spawn object into r5
 	mov lr, pc
 	bx r6
+	
 	pop {r4,r7}
+	
 	tst r5, r5
 	beq .currentObjectFailedToSpawn
+
+	# i++
 	add r4, #1
+
 .currentObjectFailedToSpawn
 	add r7, #0x14
+
 	b .spawnObjectsLoop
+
+	// return i
 .doneSpawningObjects
 	mov r0, r4
 	pop {r4-r7,pc}
 	thumb_func_end SpawnObjectsFromList
+
 
 	.set oStack_FreeObjectJumptable, 0x4
 	.set oStack_ObjectMemoryPointers, 0x8

@@ -2458,7 +2458,7 @@ byte_202D600:: // 0x202d600
 	.space 512
 byte_202D800:: // 0x202d800
 	.space 512
-byte_202DA00:: // 0x202da00
+eDecompressedTextArchive202DA00:: // 0x202da00
 	.space 4
 eTextScript202DA04:: // 0x202da04
 	.space 508
@@ -2486,7 +2486,7 @@ byte_202F57C:: // 0x202f57c
 	.space 644
 byte_202F800:: // 0x202f800
 	.space 512
-byte_202FA00:: // 0x202fa00
+eDecompressedTextArchive202FA00:: // 0x202fa00
 	.space 4
 byte_202FA04:: // 0x202fa04
 	.space 1532
@@ -2560,7 +2560,7 @@ word_2033040:: // 0x2033040
 	.space 2
 word_2033042:: // 0x2033042
 	.space 958
-unk_2033400:: // 0x2033400
+DecompressionBuf2033400:: // 0x2033400
 	.space 4
 eTextScript2033404:: // 0x2033404
 	.space 764
@@ -2662,7 +2662,7 @@ byte_20349B1:: // 0x20349b1
 	.space 15
 byte_20349C0:: // 0x20349c0
 	.space 64
-unk_2034A00:: // 0x2034a00
+eDecompressionBuf2034A00:: // 0x2034a00
 	.space 4
 eTextScript2034A04:: // 0x2034a04
 	.space 12

@@ -17,7 +17,7 @@ char (*ExpoSite_EnterMapGroup())[8]
 	sub_8030472();
 	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(*(&off_8062B1C + *(v0 + 5)));
-	chatbox_uncompBasedOnMap_803FD08();
+	chatbox_uncompMapTextArchives_803FD08();
 	ExpoSite_SpawnMapObjectsForMap();
 	result = off_8063008[*(v0 + 5)];
 	*(v0 + 100) = result;

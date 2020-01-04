@@ -1299,7 +1299,7 @@ MapScriptCmd_spawn_or_free_objects: // 8035FDE
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	add r7, #6
 	mov r0, #1
 	pop {pc}
@@ -4284,9 +4284,9 @@ DecompressTextArchiveForCutscene:
 	lsl r0, r0, #1
 	lsr r0, r0, #1
 	// dest
-	ldr r1, =unk_2034A00
+	ldr r1, =eDecompressionBuf2034A00
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, =unk_2034A00
+	ldr r0, =eDecompressionBuf2034A00
 	add r0, #4
 .uncompressedPtr
 	pop {pc}
@@ -4302,14 +4302,14 @@ uncomp_8037AEC:
 	lsl r0, r0, #1
 	lsr r0, r0, #1
 	// dest
-	ldr r1, off_8037B04 // =unk_2033400
+	ldr r1, off_8037B04 // =DecompressionBuf2033400
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, off_8037B04 // =unk_2033400
+	ldr r0, off_8037B04 // =DecompressionBuf2033400
 	add r0, #4
 locret_8037B00:
 	pop {pc}
 	.balign 4, 0
-off_8037B04: .word unk_2033400
+off_8037B04: .word DecompressionBuf2033400
 	thumb_func_end uncomp_8037AEC
 
 	thumb_local_start
@@ -5043,7 +5043,7 @@ CutsceneCmd_spawn_or_free_ow_map_or_npc_objects:
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	add r7, #6
 	mov r0, #1
 	pop {pc}

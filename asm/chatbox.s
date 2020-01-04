@@ -1,53 +1,59 @@
-	thumb_func_start chatbox_uncompBasedOnMap_803FD08
-chatbox_uncompBasedOnMap_803FD08: // () -> int
+	thumb_func_start chatbox_uncompMapTextArchives_803FD08
+chatbox_uncompMapTextArchives_803FD08: // () -> int
 	push {r4-r7,lr}
-	mov r0, #0
-	bl chatbox_map_8040730
-	// dest
-	ldr r1, off_803FD30 // =byte_202DA00
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	bl chatbox_map_8040794
-	// dest
-	ldr r1, off_803FD34 // =unk_2033400
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	bl chatbox_map_80407C8
-	// dest
-	ldr r1, off_803FD38 // =byte_202FA00
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	mov r0, #0
-	pop {r4-r7,pc}
-	.balign 4, 0
-off_803FD30: .word byte_202DA00
-off_803FD34: .word unk_2033400
-off_803FD38: .word byte_202FA00
-	thumb_func_end chatbox_uncompBasedOnMap_803FD08
 
-	thumb_func_start chatbox_uncomp_803FD3C
-chatbox_uncomp_803FD3C:
-	push {r4-r7,lr}
-	mov r0, #1
-	bl chatbox_map_8040730
-	// dest
-	ldr r1, off_803FD50 // =unk_2034A00
+	mov r0, #0
+	bl chatbox_selectCompTextByMap_8040730 // (u8 idx) -> CompText*
+	ldr r1, off_803FD30 // =eDecompressedTextArchive202DA00
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+
+	bl chatbox_selectCompTextByMap_8040794 // () -> CompText*
+	ldr r1, off_803FD34 // =DecompressionBuf2033400
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+
+	bl chatbox_selectCompTextByMap_80407C8 // () -> CompText*
+	ldr r1, off_803FD38 // =eDecompressedTextArchive202FA00
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803FD50: .word unk_2034A00
-	thumb_func_end chatbox_uncomp_803FD3C
+off_803FD30: .word eDecompressedTextArchive202DA00
+off_803FD34: .word DecompressionBuf2033400
+off_803FD38: .word eDecompressedTextArchive202FA00
+	thumb_func_end chatbox_uncompMapTextArchives_803FD08
+
+
+	thumb_func_start chatbox_uncompMapTextArchives_803FD3C
+chatbox_uncompMapTextArchives_803FD3C: // () -> int
+	push {r4-r7,lr}
+	
+    mov r0, #1
+	bl chatbox_selectCompTextByMap_8040730 // (u8 idx) -> CompText*
+	ldr r1, off_803FD50 // =eDecompressionBuf2034A00
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	
+    mov r0, #0
+	pop {r4-r7,pc}
+	.balign 4, 0
+off_803FD50: .word eDecompressionBuf2034A00
+	thumb_func_end chatbox_uncompMapTextArchives_803FD3C
+
 
 	thumb_local_start
-chatbox_uncomp_803FD54:
+chatbox_uncompMapTextArchives_803FD54: // () -> int
 	push {r4-r7,lr}
-	bl chatbox_map_8040794
-	// dest
-	ldr r1, off_803FD64 // =unk_2033400
+	
+    bl chatbox_selectCompTextByMap_8040794 // () -> CompText*
+	ldr r1, off_803FD64 // =DecompressionBuf2033400
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803FD64: .word unk_2033400
-	thumb_func_end chatbox_uncomp_803FD54
+off_803FD64: .word DecompressionBuf2033400
+	thumb_func_end chatbox_uncompMapTextArchives_803FD54
+
 
 	thumb_func_start chatbox_runScript_202da04
 chatbox_runScript_202da04: // (u8 scriptID) -> void
@@ -60,24 +66,28 @@ chatbox_runScript_202da04: // (u8 scriptID) -> void
 off_803FD74: .word eTextScript202DA04
 	thumb_func_end chatbox_runScript_202da04
 
+
 	thumb_func_start chatbox_runScript_803FD78
-chatbox_runScript_803FD78: // (void *textScript, u8 scriptIdx) -> void
+chatbox_runScript_803FD78: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	push {r4,r5,lr}
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-	// src
+
+	// u16 src[4]: r0 = byte_803FD94
+	// dest: r1 = &r10->oToolkit_ChatboxPtr->oChatbox_Unk_68
+	// halfwordCount: r2 = 8
 	ldr r0, off_803FD90 // =byte_803FD94
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_ChatboxPtr]
-	// dest
-	add r1, #0x68 // ChatBoxPropreties.unk_68
-	// halfwordCount
+	add r1, #oChatbox_Unk_68
 	mov r2, #8
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+
 	pop {r4,r5,pc}
 	.balign 4, 0
 off_803FD90: .word byte_803FD94
-byte_803FD94: .byte 0x7E, 0x0, 0x83, 0x0, 0x7F, 0x0, 0x81, 0x0
+byte_803FD94: .hword 0x7E, 0x83, 0x7F, 0x81
 	thumb_func_end chatbox_runScript_803FD78
+
 
 // (void *textScript, u8 scriptIdx) -> void
 	thumb_func_start chatbox_runScript_803FD9C
@@ -1214,9 +1224,15 @@ off_804072C: .word 0x1F5
 	thumb_func_end dead_80405F8
 
 	thumb_local_start
-chatbox_map_8040730: // (unk_t r0)
+chatbox_selectCompTextByMap_8040730: // (u8 idx) -> CompText*
 	push {r4-r7,lr}
+	
+	// u8 idx: r4
 	mov r4, r0
+
+	// u8 vMapGroup: r0 = r10->oToolkit_GameStatePtr->oGameState_MapGroup
+	// u8 vMapNumber: r1 = r10->oToolkit_GameStatePtr->oGameState_MapNumber
+	// u8 vUnk_08: r2 = r10->oToolkit_GameStatePtr->oGameState_Unk_08
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
 	ldrb r0, [r2,#oGameState_MapGroup]
@@ -1224,70 +1240,97 @@ chatbox_map_8040730: // (unk_t r0)
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
 	ldrb r2, [r2,#oGameState_Unk_08]
+
+	// u8 vMapWorldSel: r6 = vMapGroup < INTERNET_MAP_GROUP_START ? 0 : 4
 	mov r6, #0
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bmi loc_804074C
-	mov r6, #4
-	sub r0, #0x80
+    mov r6, #4
+	sub r0, #INTERNET_MAP_GROUP_START
 loc_804074C:
+
+	// unk v1: r5 = off_8040770[8*idx]
+	// idx = 8*idx
 	ldr r5, off_804076C // =off_8040770
 	lsl r4, r4, #3
 	add r5, r5, r4
+	
+	// unk v2: r3 = v1[vMapWorldSel][4*vMapGroup] <=> off_8040770[8*idx][vMapWorldSel][4*vMapGroup]
 	ldr r3, [r5,r6]
 	lsl r0, r0, #2
 	add r3, r3, r0
 	ldr r3, [r3]
+
+	// if idx == 0
 	tst r4, r4
-	bne loc_8040764
+	bne .idxNotZero
+	// unk v2: r3 = v2[4*vMapNumber] <=> off_8040770[8*idx][vMapWorldSel][4*vMapGroup][4*vMapNumber]
 	lsl r1, r1, #2
 	add r3, r3, r1
 	ldr r3, [r3]
-loc_8040764:
+.idxNotZero
+
+	// return v2[4*vUnk_08] <=> off_8040770[8*idx][vMapWorldSel][4*vMapGroup][4*vUnk_08] if idx != 0 else ...
 	lsl r2, r2, #2
 	add r3, r3, r2
 	ldr r0, [r3]
+
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_804076C: .word off_8040770
-off_8040770: .word off_8044470
-	.word off_80444C4
-	.word off_80444A8
-	.word off_804457C
+off_8040770: 
+	.word off_realWorld_8044470
+	.word off_internet_80444C4
+	
+	.word off_realWorld_80444A8
+	.word off_internet_804457C
+	
 	.word byte_8040784
 byte_8040784: .byte 0x60, 0x3, 0x50, 0x2, 0x40, 0x2, 0x30, 0x1, 0x20, 0x1, 0x10
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0
-	thumb_func_end chatbox_map_8040730
+	thumb_func_end chatbox_selectCompTextByMap_8040730
 
 	thumb_local_start
-chatbox_map_8040794:
+chatbox_selectCompTextByMap_8040794: // () -> CompText*
 	push {r4-r7,lr}
+	
+    // vMapGroup: r0
+    // vMapNumber: r1
+    // vGameProgress: r2
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
 	ldrb r0, [r2,#oGameState_MapGroup]
 	ldrb r1, [r2,#oGameState_MapNumber]
 	ldrb r2, [r2,#oGameState_GameProgress]
+
+    // vMapWorldSel: r6 = INTERNET_MAP_GROUP_START ? 0 : 4
 	mov r6, #0
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bmi loc_80407AA
 	mov r6, #4
-	sub r0, #0x80
+	sub r0, #INTERNET_MAP_GROUP_START
 loc_80407AA:
+
+    // v0: r3 = mapPtrs80407C0[vMapWorldSel][4*vMapGroup]
 	ldr r5, off_80407BC // =mapPtrs80407C0
 	ldr r3, [r5,r6]
 	lsl r0, r0, #2
 	add r3, r3, r0
 	ldr r3, [r3]
-	lsl r1, r1, #2
+	
+    // return v0[4*vMapNumber] <=> mapPtrs80407C0[vMapWorldSel][4*vMapGroup][4*vMapNumber]
+    lsl r1, r1, #2
 	add r3, r3, r1
 	ldr r0, [r3]
-	pop {r4-r7,pc}
+	
+    pop {r4-r7,pc}
 off_80407BC: .word mapPtrs80407C0
 mapPtrs80407C0: .word off_804448C
 	.word off_8044520
-	thumb_func_end chatbox_map_8040794
+	thumb_func_end chatbox_selectCompTextByMap_8040794
 
 	thumb_local_start
-chatbox_map_80407C8:
+chatbox_selectCompTextByMap_80407C8: // () -> CompText*
 	push {r4-r7,lr}
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
@@ -1314,12 +1357,12 @@ loc_80407DE:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_80407F8: .word mapPtrs80407FC
-mapPtrs80407FC: .word off_8044470
-	.word off_80444C4
+mapPtrs80407FC: .word off_realWorld_8044470
+	.word off_internet_80444C4
 	.word byte_8040808
 byte_8040808: .byte 0x60, 0x4, 0x50, 0x4, 0x40, 0x4, 0x30, 0x4, 0x20, 0x4, 0x10
 	.byte 0x4, 0x0, 0x4, 0x0, 0x0
-	thumb_func_end chatbox_map_80407C8
+	thumb_func_end chatbox_selectCompTextByMap_80407C8
 
 	thumb_func_start chatbox_8040818
 chatbox_8040818:
@@ -8364,7 +8407,7 @@ off_804440C:: .word byte_200C7A0
 	.byte 0x0, 0x2, 0x20, 0x20, 0x20, 0x20, 0xE0, 0xCA, 0x0, 0x2
 	.byte 0x20, 0x20, 0x20, 0x20, 0xF0, 0xCA, 0x0, 0x2, 0x20, 0x20
 	.byte 0x20, 0x20, 0x0, 0x0, 0x0, 0x0
-off_8044470: .word off_80445D8
+off_realWorld_8044470: .word off_80445D8
 	.word off_8044620
 	.word off_80446BC
 	.word off_8044800
@@ -8378,14 +8421,14 @@ off_804448C: .word off_8044608
 	.word off_8044914
 	.word off_8044998
 	.word off_8044A48
-off_80444A8: .word off_8044610
+off_realWorld_80444A8: .word off_8044610
 	.word off_80446AC
 	.word off_80447F0
 	.word off_804488C
 	.word off_8044928
 	.word off_80449A8
 	.word off_8044A60
-off_80444C4: .word off_8044A70
+off_internet_80444C4: .word off_8044A70
 	.word off_8044AB8
 	.word off_8044B1C
 	.word off_8044B80
@@ -8426,7 +8469,7 @@ off_8044520: .word off_8044AA0
 	.word off_804526C
 	.word off_80452E8
 	.word off_8045350
-off_804457C: .word off_8044AA8
+off_internet_804457C: .word off_8044AA8
 	.word off_8044B0C
 	.word off_8044B70
 	.word off_8044BD4

@@ -24064,7 +24064,7 @@ off_811AF8C: .word unk_202CA00
 	.word byte_202D400
 	.word byte_202D600
 	.word byte_202D800
-	.word byte_202DA00
+	.word eDecompressedTextArchive202DA00
 	.word byte_202DC00
 	.word unk_202DE00
 off_811AFB8: .word byte_811AFBC

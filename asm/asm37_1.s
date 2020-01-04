@@ -547,7 +547,7 @@ loc_8141FE4:
 	ldr r7, off_814203C // =off_8141B24 
 	lsl r0, r0, #2
 	ldr r0, [r7,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	mov r0, #7
 	mov r1, #2
 	bl TestEventFlagFromImmediate

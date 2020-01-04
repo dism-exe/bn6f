@@ -17,7 +17,7 @@ unsigned int JudgeTreeComp_EnterMapGroup()
 	sub_8030472();
 	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(off_806909C[*(v0 + 5)]);
-	chatbox_uncompBasedOnMap_803FD08();
+	chatbox_uncompMapTextArchives_803FD08();
 	JudgeTreeComp_SpawnMapObjectsForMap();
 	return sub_8034FB8();
 }
@@ -105,7 +105,7 @@ unsigned int sub_8069FE8()
 	sub_8030472();
 	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(off_806A04C[*(v0 + 5)]);
-	chatbox_uncompBasedOnMap_803FD08();
+	chatbox_uncompMapTextArchives_803FD08();
 	sub_806A1DE();
 	return sub_8034FB8();
 }
@@ -193,7 +193,7 @@ unsigned int sub_806AA00()
 	sub_8030472();
 	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(off_806AA64[*(v0 + 5)]);
-	chatbox_uncompBasedOnMap_803FD08();
+	chatbox_uncompMapTextArchives_803FD08();
 	sub_806AD00();
 	return sub_8034FB8();
 }
@@ -295,7 +295,7 @@ unsigned int sub_806C23C()
 	sub_8030472();
 	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(*(&off_806C2A0 + *(v0 + 5)));
-	chatbox_uncompBasedOnMap_803FD08();
+	chatbox_uncompMapTextArchives_803FD08();
 	sub_806C59C();
 	return sub_8034FB8();
 }

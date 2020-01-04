@@ -4002,7 +4002,7 @@ signed int __fastcall uncomp_8037AD0(signed int result)
 {
     if ( result < 0 )
     {
-        SWI_LZ77UnCompReadNormalWrite8bit(((2 * result) >> 1), &unk_2034A00);
+        SWI_LZ77UnCompReadNormalWrite8bit(((2 * result) >> 1), &eDecompressionBuf2034A00);
         result = eTextScript2034A04;
     }
     return result;
@@ -4014,7 +4014,7 @@ signed int __fastcall uncomp_8037AEC(signed int result)
 {
     if ( result < 0 )
     {
-        SWI_LZ77UnCompReadNormalWrite8bit(((2 * result) >> 1), &unk_2033400);
+        SWI_LZ77UnCompReadNormalWrite8bit(((2 * result) >> 1), &DecompressionBuf2033400);
         result = &eTextScript2033404;
     }
     return result;

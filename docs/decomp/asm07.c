@@ -17,7 +17,7 @@ char (*GreenTown_EnterMapGroup())[8]
 	sub_8030472();
 	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(*(&off_805DF74 + *(v0 + 5)));
-	chatbox_uncompBasedOnMap_803FD08();
+	chatbox_uncompMapTextArchives_803FD08();
 	GreenTown_SpawnMapObjectsForMap();
 	result = off_805E1FC[*(v0 + 5)];
 	*(v0 + 100) = result;

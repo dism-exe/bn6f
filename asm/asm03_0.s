@@ -19829,11 +19829,11 @@ LoadBGAnimData:
 	// src
 	add r0, r0, r7
 	// dest
-	ldr r1, =unk_2034A00 
+	ldr r1, =eDecompressionBuf2034A00 
 	// decompress gfx to buffer
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
-	ldr r0, =unk_2034A00 
+	ldr r0, =eDecompressionBuf2034A00 
 	ldr r1, [r5,#oBGAnimData_GFXDest]
 	// read decompressed gfx size
 	ldr r2, [r7]
@@ -19844,12 +19844,12 @@ LoadBGAnimData:
 	// read tilemap source
 	ldr r0, [r5,#oBGAnimData_TilemapSrc]
 	// dest
-	ldr r1, =unk_2034A00 
+	ldr r1, =eDecompressionBuf2034A00 
 	// add offset to compressed tilemap
 	add r0, #0xc
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
-	ldr r0, =unk_2034A00 
+	ldr r0, =eDecompressionBuf2034A00 
 	ldr r1, [r5,#oBGAnimData_TilemapDestOffset]
 	mov r2, r10
 	// add tilemap dest offset to base BG tilemap ptr
@@ -19884,11 +19884,11 @@ sub_8030540:
 loc_8030554:
 	ldr r0, [r5,#8]
 	// dest
-	ldr r1, off_8030578 // =unk_2034A00 
+	ldr r1, off_8030578 // =eDecompressionBuf2034A00 
 	// src
 	add r0, #0xc
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, off_8030578 // =unk_2034A00 
+	ldr r0, off_8030578 // =eDecompressionBuf2034A00 
 	ldr r1, [r5,#0xc]
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
@@ -19901,7 +19901,7 @@ loc_8030554:
 	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8030578: .word unk_2034A00
+off_8030578: .word eDecompressionBuf2034A00
 off_803057C: .word eDecompBuffer2013A00
 	thumb_func_end sub_8030540
 

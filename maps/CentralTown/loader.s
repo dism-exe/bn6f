@@ -30,7 +30,7 @@ CentralTown_EnterMapGroup:
 	ldr r0, off_804E694 // =off_804E698 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
 	bl CentralTown_SpawnMapObjectsForMap
 	ldr r0, off_804E690 // =off_804E9CC 
 	ldrb r1, [r5,#oGameState_MapNumber]
@@ -92,7 +92,7 @@ CentralTown_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, =off_804E738
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.pool // off_804E734
 off_804E738:

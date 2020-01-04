@@ -31,8 +31,8 @@ sub_8077D00:
 	ldr r0, off_8077D60 // =off_8077D64 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_8077E84
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
+	bl sub_8077E84 // () -> int
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -149,15 +149,20 @@ nullsub_78:
 	thumb_func_end nullsub_78
 
 	thumb_func_start sub_8077E84
-sub_8077E84:
+sub_8077E84: // () -> int
 	push {lr}
+
+    // vMapNumber: r0
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_MapNumber]
-	lsl r0, r0, #2
+	
+    // void *v0: r0 = pt_8077E9C[4*vMapNumber]
+    lsl r0, r0, #2
 	ldr r1, off_8077E98 // =pt_8077E9C 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
+
 	pop {pc}
 	.balign 4, 0
 off_8077E98: .word pt_8077E9C

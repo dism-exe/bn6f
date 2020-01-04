@@ -1505,7 +1505,7 @@ InternetSpawnMapObjectJumptable: .word RobotControlComp_SpawnMapObjectsForMap+1
 	.word NULL
 	.word sub_8071CEE+1
 	.word sub_80755EE+1
-	.word sub_8077E84+1
+	.word sub_8077E84+1 // () -> int
 	.word sub_807948C+1
 	.word sub_807AAD6+1
 	.word sub_807CFFC+1

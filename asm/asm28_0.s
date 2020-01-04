@@ -241,7 +241,7 @@ loc_8099266:
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	b loc_8099290
 loc_8099282:
-	bl chatbox_uncomp_803FD3C
+	bl chatbox_uncompMapTextArchives_803FD3C // () -> int
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_Unk_15]
