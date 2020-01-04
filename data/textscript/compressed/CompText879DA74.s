@@ -609,7 +609,7 @@ CompText879DA74::
 	ts_end
 
 	def_text_script CompText879DA74_unk55
-	ts_jump_random CompText879DA74_unk65_id, 0x20, 0x20, 0xFF, 0x38
+	ts_jump_random 0x41, 0x20, 0x20, 0xFF, 0x38
 	ts_mugshot_show mugshot=0x5C
 	ts_msg_open
 	.string "AMAZING!!\n"
