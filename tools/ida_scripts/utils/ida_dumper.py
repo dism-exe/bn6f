@@ -33,16 +33,13 @@ def dump_units_in_path(source_unit_computations, units, path):
     range = (units[0]['ea'], units[-1]['ea'] + source_unit.compute_unit_size(source_unit_computations.address_space,
                                                                              units[-1]['ea']))
     pt = ptm.pt
-    new_content = pt.dis.rng(*range).replace(':', '::') # FIXME hack. this function doesn't dump global labels with ::
+    new_content = pt.dis.rng(*range)
+    # new_content = new_content.replace(':', '::') # FIXME hack. this function doesn't dump global labels with ::
 
     # rename all new label occurances
-    for item_ea in ops.next_item_ea(range[0], range[1] - range[0]):
-        if idc.get_name(item_ea):
-            if hex(item_ea) not in source_unit_computations.source_units.keys():
-                continue
-            unit = source_unit_computations.source_units[hex(item_ea)]
-            if unit['name'] != idc.get_name(item_ea):
-                source_relabel(unit['name'], idc.get_name(item_ea))
+    for unit in units:
+        if unit['name'] != '' and unit['name'] != idc.get_name(unit['ea']):
+            source_relabel(unit['name'], idc.get_name(unit['ea']))
 
     with open(path, 'w') as f:
         f.write(file_data.replace(orig_content, new_content))

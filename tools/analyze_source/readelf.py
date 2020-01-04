@@ -41,7 +41,13 @@ def read_syms():
 
     debug_print("Reading syms...")
 
-    output = subprocess.check_output(["./tools/binutils/bin/arm-none-eabi-objdump.exe", "-t", "bn6f.elf"])
+    import os
+    objdump_path = "./tools/binutils/bin/arm-none-eabi-objdump"
+    if 'win' in os.name:
+        output = subprocess.check_output([objdump_path + ".exe", "-t", "bn6f.elf"])
+    else:
+        output = subprocess.check_output([objdump_path, "-t", "bn6f.elf"])
+
 
     lines = output.splitlines()[4:]
     

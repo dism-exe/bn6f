@@ -1,7 +1,10 @@
 from __future__ import absolute_import
 
 import logging
+import os
+
 from ..include.definitions import DATA_TYPES
+from ..include import definitions
 from .tokenizer import is_code, is_data, has_label, filter_source, get_label, filter_label
 
 
@@ -98,8 +101,8 @@ class AsmFile:
         :return: unit object
         """
         self.cur = self._advance_line(self.cur) # move to current functional line
-        if self.cur == len(self.lines)-1: # FIXME: you will likely not reach the end so neatly
-            return None
+        # if self.cur == len(self.lines)-1: # FIXME: you will likely not reach the end so neatly
+        #     return None
         unit = self.get_unit(self.cur)
         if not unit: return None
         # move to next functional line
@@ -612,3 +615,21 @@ def process_function_types(units, warning=False):
                 out[function_name] = ''
 
     return out
+
+
+def get_file_path_of_directive_include(unit):
+    file_path = unit.content[unit.content.index('"') + 1:]
+    file_path = file_path[:file_path.index('"')]
+    abs_file_path = os.path.join(definitions.shared.ROM_REPO_DIR, file_path)
+
+    # TODO: still not handling inc files
+    # if '.inc' in file_path:
+    #     return ''
+
+    if not os.path.isfile(abs_file_path):
+        abs_file_path = os.path.join(definitions.shared.ROM_REPO_DIR, 'include', file_path)
+
+    if not os.path.isfile(abs_file_path):
+        raise FileNotFoundError('could not find {file_path}'.format(**vars()))
+
+    return abs_file_path
