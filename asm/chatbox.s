@@ -1,7 +1,5 @@
-
-// () -> int
 	thumb_func_start chatbox_uncompBasedOnMap_803FD08
-chatbox_uncompBasedOnMap_803FD08:
+chatbox_uncompBasedOnMap_803FD08: // () -> int
 	push {r4-r7,lr}
 	mov r0, #0
 	bl chatbox_map_8040730
@@ -51,9 +49,8 @@ chatbox_uncomp_803FD54:
 off_803FD64: .word unk_2033400
 	thumb_func_end chatbox_uncomp_803FD54
 
-// (u8 scriptID) -> void
 	thumb_func_start chatbox_runScript_202da04
-chatbox_runScript_202da04:
+chatbox_runScript_202da04: // (u8 scriptID) -> void
 	push {r4,r5,lr}
 	mov r1, r0
 	ldr r0, off_803FD74 // =eTextScript202DA04
@@ -63,9 +60,8 @@ chatbox_runScript_202da04:
 off_803FD74: .word eTextScript202DA04
 	thumb_func_end chatbox_runScript_202da04
 
-// (void *textScript, u8 scriptIdx) -> void
 	thumb_func_start chatbox_runScript_803FD78
-chatbox_runScript_803FD78:
+chatbox_runScript_803FD78: // (void *textScript, u8 scriptIdx) -> void
 	push {r4,r5,lr}
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	// src
@@ -256,7 +252,7 @@ loc_803FEEA:
 	str r1, [r5,#oChatbox_Unk_78] // ChatBoxPropreties.unk_78
 	b loc_803FF04
 loc_803FEFE:
-	bl chatbox_8040154
+	bl chatbox_8040154 // (unk) -> unk
 	b loc_803FF08
 loc_803FF04:
 	mov r0, #1
@@ -527,7 +523,7 @@ Flags804014C: .word FLAGS_3E_UNK_0800 | FLAGS_3E_UNK_0040
 	thumb_func_end chatbox_interpreteAndDrawDialogChar_1
 
 	thumb_local_start
-chatbox_8040154:
+chatbox_8040154: // (unk) -> unk
 	push {lr}
 	mov r2, #2
 	ldrh r1, [r5,#oChatbox_JoypadHeld]
@@ -1218,7 +1214,7 @@ off_804072C: .word 0x1F5
 	thumb_func_end dead_80405F8
 
 	thumb_local_start
-chatbox_map_8040730:
+chatbox_map_8040730: // (unk_t r0)
 	push {r4-r7,lr}
 	mov r4, r0
 	mov r2, r10

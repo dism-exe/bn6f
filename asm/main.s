@@ -24,7 +24,7 @@ main_gameRoutine:
 	ldrh r1, [r0]
 	add r1, #1
 	strh r1, [r0]
-	bl sub_8000E10
+	bl sub_8000E10 // () -> void
 	ldr r0, off_8000348 // =main_subsystemJumpTable
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
@@ -72,7 +72,7 @@ main_subsystemJumpTable: .word startscreen_802F544+1
 	thumb_func_end main_
 
 	thumb_local_start
-main_awaitFrame:
+main_awaitFrame: // () -> void
 	push {lr}
 loc_80003A2:
 	ldr r0, off_80003CC // =GeneralLCDStatus_STAT_LYC_
@@ -97,9 +97,8 @@ off_80003C8: .word dword_2009930
 off_80003CC: .word GeneralLCDStatus_STAT_LYC_
 	thumb_func_end main_awaitFrame
 
-// () -> void
 	thumb_local_start
-main_pollGeneralLCDStatus_STAT_LYC_:
+main_pollGeneralLCDStatus_STAT_LYC_: // () -> void
 	push {lr}
 	ldr r0, off_80003E0 // =GeneralLCDStatus_STAT_LYC_
 	mov r2, #1

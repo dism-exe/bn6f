@@ -14561,9 +14561,8 @@ getBattleSettingsFromList0:
 	mov pc, lr
 	thumb_func_end getBattleSettingsFromList0
 
-// (int battleSettingsIdx) -> BattleSettings*
 	thumb_func_start getBattleSettingsFromList1
-getBattleSettingsFromList1:
+getBattleSettingsFromList1: // (int battleSettingsIdx) -> BattleSettings*
 	mov r1, #0x10
 	mul r1, r0
 	ldr r0, off_800A944 // =BattleSettingsList1
@@ -14571,9 +14570,8 @@ getBattleSettingsFromList1:
 	mov pc, lr
 	thumb_func_end getBattleSettingsFromList1
 
-// () -> zf
 	thumb_func_start isSameSubsystem_800A732
-isSameSubsystem_800A732:
+isSameSubsystem_800A732: // () -> zf
 	push {r4,lr}
 	mov r4, #1
 	bl sub_800A7D0 // () -> (zf, int)

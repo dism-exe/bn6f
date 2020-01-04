@@ -1299,7 +1299,7 @@ off_8000E0C: .word 0x3C
 	thumb_func_end sub_8000DE0
 
 	thumb_func_start sub_8000E10
-sub_8000E10:
+sub_8000E10: // () -> void
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_S2001c04_Ptr]
 	ldr r0, [r3,#0x18]
@@ -2406,9 +2406,8 @@ GetPositiveSignedRNG2:
 	pop {r7,pc}
 	thumb_func_end GetPositiveSignedRNG2
 
-// () -> void
 	thumb_func_start GetRNG1
-GetRNG1:
+GetRNG1: // () -> void
 	push {r7,lr}
 	ldr r7, off_80015A8 // =rngSeed_2001120
 	ldr r0, [r7]
