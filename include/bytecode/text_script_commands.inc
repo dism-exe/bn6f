@@ -1088,10 +1088,10 @@
 	.endm
 	
 	// Prints the name of a folder, either specified or loaded from a buffer.
-	// :param entry[2:0:4]: If the buffer is not set, the entry index of the folder name to print.
+	// :param entry[2:0:8]: If the buffer is not set, the entry index of the folder name to print.
 	// :param buffer[3:4:4]: If greater than zero, the buffer to load the folder name index from plus one.
 	.macro ts_print_folder_name entry:req, buffer:req
-		.byte 0xFA, 0x0, \entry & 0xF, ((\buffer & 0xF) << 4) | 0x4
+		.byte 0xFA, 0x0, \entry, ((\buffer & 0xF) << 4) | 0x4
 	.endm
 	
 	// Prints the name of a NaviCust program, either specified or loaded from a buffer.

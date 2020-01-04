@@ -430,7 +430,7 @@ CompText879EBA8::
 	.string "Want to give the\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x2,
+		entry: 0x22,
 		buffer: 0x0,
 	]
 	.string "\" I\n"
@@ -445,7 +445,7 @@ CompText879EBA8::
 	.string "I'll give you the\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x2,
+		entry: 0x22,
 		buffer: 0x0,
 	]
 	.string "\" right\n"
@@ -516,7 +516,7 @@ CompText879EBA8::
 	.string "Folder is now called\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x2,
+		entry: 0x22,
 		buffer: 0x0,
 	]
 	.string "\"."
