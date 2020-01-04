@@ -59,7 +59,7 @@ CompText87913C8::
 	.string "."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_call_reload_soul_weapons
+	ts_call_reload_soul_weapons unused=0x0
 	ts_flag_set flag=0x68C
 	ts_end
 

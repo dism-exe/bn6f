@@ -1567,14 +1567,14 @@ CompText873C5A4::
 	def_text_script CompText873C5A4_unk190
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open
-	ts_call_add_all_b_b_s_messages
+	ts_call_add_all_b_b_s_messages unused=0x0
 	.string "BBS Entry."
 	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk191
 	ts_msg_open
-	ts_call_add_all_requests
+	ts_call_add_all_requests unused=0x0
 	.string "Request BBS Entry"
 	ts_key_wait any=0x0
 	ts_end
@@ -1763,8 +1763,8 @@ CompText873C5A4::
 	ts_flag_set flag=0x1D5
 	ts_flag_set flag=0x1D6
 	ts_flag_set flag=0x1D7
-	ts_call_unload_objects
-	ts_call_reload_objects
+	ts_call_unload_objects unused=0x0
+	ts_call_reload_objects unused=0x0
 	.string "VIRUS BATTLE SET\n"
 	.string "(CHEATER)"
 	ts_key_wait any=0x0
@@ -1772,7 +1772,7 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk203
 	ts_msg_open
-	ts_call_max_virus_delete_count
+	ts_call_max_virus_delete_count unused=0x0
 	.string "Max Virus  MAX"
 	ts_key_wait any=0x0
 	ts_end
@@ -1883,7 +1883,7 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk220
 	ts_call_minigame_effect effect=0x0
-	ts_call_reset_fishing_minigame
+	ts_call_reset_fishing_minigame unused=0x0
 	ts_call_change_navi navi=0x6
 	ts_flag_set flag=0x680
 	ts_msg_open
@@ -1893,7 +1893,7 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk221
 	ts_call_scenario_effect effect=0x0
-	ts_call_reset_evil_spirits
+	ts_call_reset_evil_spirits unused=0x0
 	ts_flag_set flag=0x741
 	ts_flag_multi_set [
 		flag: 0x7F0,
@@ -1970,9 +1970,9 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk230
 	ts_call_change_navi navi=0x0
-	ts_call_reload_navi_base_stats
-	ts_call_reload_navi_stat_boosts
-	ts_call_set_full_h_p
+	ts_call_reload_navi_base_stats unused=0x0
+	ts_call_reload_navi_stat_boosts unused=0x0
+	ts_call_set_full_h_p unused=0x0
 	ts_msg_open
 	.string "Change to MegaMan"
 	ts_key_wait any=0x0
@@ -1980,9 +1980,9 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk231
 	ts_call_change_navi navi=0x2
-	ts_call_reload_navi_base_stats
-	ts_call_reload_navi_stat_boosts
-	ts_call_set_full_h_p
+	ts_call_reload_navi_base_stats unused=0x0
+	ts_call_reload_navi_stat_boosts unused=0x0
+	ts_call_set_full_h_p unused=0x0
 	ts_msg_open
 	.string "Change to ElecMan"
 	ts_key_wait any=0x0
@@ -1990,9 +1990,9 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk232
 	ts_call_change_navi navi=0x1
-	ts_call_reload_navi_base_stats
-	ts_call_reload_navi_stat_boosts
-	ts_call_set_full_h_p
+	ts_call_reload_navi_base_stats unused=0x0
+	ts_call_reload_navi_stat_boosts unused=0x0
+	ts_call_set_full_h_p unused=0x0
 	ts_msg_open
 	.string "Change to HeatMan"
 	ts_key_wait any=0x0
@@ -2000,9 +2000,9 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk233
 	ts_call_change_navi navi=0x4
-	ts_call_reload_navi_base_stats
-	ts_call_reload_navi_stat_boosts
-	ts_call_set_full_h_p
+	ts_call_reload_navi_base_stats unused=0x0
+	ts_call_reload_navi_stat_boosts unused=0x0
+	ts_call_set_full_h_p unused=0x0
 	ts_msg_open
 	.string "Change to EraseMan"
 	ts_key_wait any=0x0
@@ -2010,9 +2010,9 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk234
 	ts_call_change_navi navi=0x3
-	ts_call_reload_navi_base_stats
-	ts_call_reload_navi_stat_boosts
-	ts_call_set_full_h_p
+	ts_call_reload_navi_base_stats unused=0x0
+	ts_call_reload_navi_stat_boosts unused=0x0
+	ts_call_set_full_h_p unused=0x0
 	ts_msg_open
 	.string "Change to SlashMan"
 	ts_key_wait any=0x0
@@ -2020,9 +2020,9 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk235
 	ts_call_change_navi navi=0x5
-	ts_call_reload_navi_base_stats
-	ts_call_reload_navi_stat_boosts
-	ts_call_set_full_h_p
+	ts_call_reload_navi_base_stats unused=0x0
+	ts_call_reload_navi_stat_boosts unused=0x0
+	ts_call_set_full_h_p unused=0x0
 	ts_msg_open
 	.string "Change to ChargeMan"
 	ts_key_wait any=0x0
@@ -2030,9 +2030,9 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk236
 	ts_call_change_navi navi=0x6
-	ts_call_reload_navi_base_stats
-	ts_call_reload_navi_stat_boosts
-	ts_call_set_full_h_p
+	ts_call_reload_navi_base_stats unused=0x0
+	ts_call_reload_navi_stat_boosts unused=0x0
+	ts_call_set_full_h_p unused=0x0
 	ts_msg_open
 	.string "Change to SpoutMan"
 	ts_key_wait any=0x0
@@ -2040,9 +2040,9 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk237
 	ts_call_change_navi navi=0x7
-	ts_call_reload_navi_base_stats
-	ts_call_reload_navi_stat_boosts
-	ts_call_set_full_h_p
+	ts_call_reload_navi_base_stats unused=0x0
+	ts_call_reload_navi_stat_boosts unused=0x0
+	ts_call_set_full_h_p unused=0x0
 	ts_msg_open
 	.string "Change to TmhkMan"
 	ts_key_wait any=0x0
@@ -2050,9 +2050,9 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk238
 	ts_call_change_navi navi=0x9
-	ts_call_reload_navi_base_stats
-	ts_call_reload_navi_stat_boosts
-	ts_call_set_full_h_p
+	ts_call_reload_navi_base_stats unused=0x0
+	ts_call_reload_navi_stat_boosts unused=0x0
+	ts_call_set_full_h_p unused=0x0
 	ts_msg_open
 	.string "Change to GroundMan"
 	ts_key_wait any=0x0
@@ -2060,9 +2060,9 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk239
 	ts_call_change_navi navi=0xA
-	ts_call_reload_navi_base_stats
-	ts_call_reload_navi_stat_boosts
-	ts_call_set_full_h_p
+	ts_call_reload_navi_base_stats unused=0x0
+	ts_call_reload_navi_stat_boosts unused=0x0
+	ts_call_set_full_h_p unused=0x0
 	ts_msg_open
 	.string "Change to DustMan"
 	ts_key_wait any=0x0
@@ -2070,9 +2070,9 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk240
 	ts_call_change_navi navi=0x8
-	ts_call_reload_navi_base_stats
-	ts_call_reload_navi_stat_boosts
-	ts_call_set_full_h_p
+	ts_call_reload_navi_base_stats unused=0x0
+	ts_call_reload_navi_stat_boosts unused=0x0
+	ts_call_set_full_h_p unused=0x0
 	ts_msg_open
 	.string "Change to TenguMan"
 	ts_key_wait any=0x0
@@ -2098,9 +2098,9 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk242
 	ts_call_change_navi navi=0xB
-	ts_call_reload_navi_base_stats
-	ts_call_reload_navi_stat_boosts
-	ts_call_set_full_h_p
+	ts_call_reload_navi_base_stats unused=0x0
+	ts_call_reload_navi_stat_boosts unused=0x0
+	ts_call_set_full_h_p unused=0x0
 	ts_msg_open
 	.string "Change to ProtoMan"
 	ts_key_wait any=0x0
