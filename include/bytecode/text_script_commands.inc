@@ -221,35 +221,35 @@
 	// :param BSeparate[2:5:1]: If true, pressing the B button is treated as a separate option; otherwise, the last defined option is assigned.
 	// :param disableB[2:6:1]: If true, pressing the B button has no effect; otherwise, it chooses the last labeled option.
 	// :param clear[2:7:1]: If true, clears the message box after choosing an option.
-	.macro ts_select p0:req, p1:req, p2=NULL, p3=NULL, p4=NULL, p5=NULL, p6=NULL, p7=NULL, p8=NULL
+	.macro ts_select p0:req, p1:req, p2=NOT_SPECIFIED, p3=NOT_SPECIFIED, p4=NOT_SPECIFIED, p5=NOT_SPECIFIED, p6=NOT_SPECIFIED, p7=NOT_SPECIFIED, p8=NOT_SPECIFIED
         .byte 0xED, \p0, \p1
         
-        .if \p2 != NULL
+        .if \p2 != NOT_SPECIFIED
         .byte \p2
         .endif
         
-        .if \p3 != NULL
+        .if \p3 != NOT_SPECIFIED
         .byte \p3
         .endif
         
-        .if \p4 != NULL
+        .if \p4 != NOT_SPECIFIED
         .byte \p4
         .endif
 
-        .if \p5 != NULL
+        .if \p5 != NOT_SPECIFIED
         .byte \p5
         .endif
 
         
-        .if \p6 != NULL
+        .if \p6 != NOT_SPECIFIED
         .byte \p6
         .endif
         
-        .if \p7 != NULL
+        .if \p7 != NOT_SPECIFIED
         .byte \p7
         .endif
         
-        .if \p8 != NULL
+        .if \p8 != NOT_SPECIFIED
         .byte \p8
         .endif
 	.endm
@@ -764,69 +764,69 @@
 	// :param length[1:0:6]:
 	// :param unused[1:6:1]: An unused parameter with unknown intended purpose.
 	// :param untrap[1:7:1]: If set to true, the first jump target will be ignored if Untrap is active.
-    .macro ts_jump_random p0:req, p1=NULL, p2=NULL, p3=NULL, p4=NULL, p5=NULL, p6=NULL, p7=NULL, p8=NULL, p9=NULL, p10=NULL, p11=NULL, p12=NULL, p13=NULL, p14=NULL, p15=NULL, p16=NULL
+    .macro ts_jump_random p0:req, p1=NOT_SPECIFIED, p2=NOT_SPECIFIED, p3=NOT_SPECIFIED, p4=NOT_SPECIFIED, p5=NOT_SPECIFIED, p6=NOT_SPECIFIED, p7=NOT_SPECIFIED, p8=NOT_SPECIFIED, p9=NOT_SPECIFIED, p10=NOT_SPECIFIED, p11=NOT_SPECIFIED, p12=NOT_SPECIFIED, p13=NOT_SPECIFIED, p14=NOT_SPECIFIED, p15=NOT_SPECIFIED, p16=NOT_SPECIFIED
         .byte 0xF0, \p0
-        .if \p1 != NULL
+        .if \p1 != NOT_SPECIFIED
         .byte \p1
         .endif
 
-        .if \p2 != NULL
+        .if \p2 != NOT_SPECIFIED
         .byte \p2
         .endif
         
-        .if \p3 != NULL
+        .if \p3 != NOT_SPECIFIED
         .byte \p3
         .endif
         
-        .if \p4 != NULL
+        .if \p4 != NOT_SPECIFIED
         .byte \p4
         .endif
         
-        .if \p5 != NULL
+        .if \p5 != NOT_SPECIFIED
         .byte \p5
         .endif
         
-        .if \p6 != NULL
+        .if \p6 != NOT_SPECIFIED
         .byte \p6
         .endif
         
-        .if \p7 != NULL
+        .if \p7 != NOT_SPECIFIED
         .byte \p7
         .endif
         
-        .if \p8 != NULL
+        .if \p8 != NOT_SPECIFIED
         .byte \p8
         .endif
         
-        .if \p9 != NULL
+        .if \p9 != NOT_SPECIFIED
         .byte \p9
         .endif
         
-        .if \p10 != NULL
+        .if \p10 != NOT_SPECIFIED
         .byte \p10
         .endif
         
-        .if \p11 != NULL
+        .if \p11 != NOT_SPECIFIED
         .byte \p11
         .endif
         
-        .if \p12 != NULL
+        .if \p12 != NOT_SPECIFIED
         .byte \p12
         .endif
         
-        .if \p13 != NULL
+        .if \p13 != NOT_SPECIFIED
         .byte \p13
         .endif
         
-        .if \p14 != NULL
+        .if \p14 != NOT_SPECIFIED
         .byte \p14
         .endif
         
-        .if \p15 != NULL
+        .if \p15 != NOT_SPECIFIED
         .byte \p15
         .endif
 
-        .if \p16 != NULL
+        .if \p16 != NOT_SPECIFIED
         .byte \p16
         .endif
 	.endm
