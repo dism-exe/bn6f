@@ -108,7 +108,7 @@ CompText87A00D8::
 	.string "\" and\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x1,
+		entry: 0x11,
 		buffer: 0x0,
 	]
 	.string "\"!!"
@@ -231,7 +231,7 @@ CompText87A00D8::
 	.string "\" and\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x1,
+		entry: 0x11,
 		buffer: 0x0,
 	]
 	.string "\"!!"

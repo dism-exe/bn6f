@@ -46,7 +46,7 @@ CompText8781CB4::
 	.string "Mr.Famous gave me\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x3,
+		entry: 0x23,
 		buffer: 0x0,
 	]
 	.string "\" to\n"
@@ -130,7 +130,7 @@ CompText8781CB4::
 	.string "Folder is now called\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x3,
+		entry: 0x23,
 		buffer: 0x0,
 	]
 	.string "\"."

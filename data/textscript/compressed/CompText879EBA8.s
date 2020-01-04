@@ -166,7 +166,10 @@ CompText879EBA8::
 	ts_clear_msg
 	.string "What!?\n"
 	.string "\""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0x56,
+		buffer: 0x0,
+	]
 	.string "\"!!\n"
 	.string "Wow..."
 	ts_key_wait any=0x0
@@ -239,7 +242,10 @@ CompText879EBA8::
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x3E
 	.string "\""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0x56,
+		buffer: 0x0,
+	]
 	.string "\" huh?\n"
 	.string "I'll have to try\n"
 	.string "it out!"
@@ -264,7 +270,10 @@ CompText879EBA8::
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "\""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0x56,
+		buffer: 0x0,
+	]
 	.string "\" huh?\n"
 	.string "I'll have to try\n"
 	.string "it out!"
@@ -285,7 +294,10 @@ CompText879EBA8::
 	ts_clear_msg
 	.string "What!?\n"
 	.string "\""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0x56,
+		buffer: 0x0,
+	]
 	.string "\"!!\n"
 	.string "Wow..."
 	ts_key_wait any=0x0
@@ -358,7 +370,10 @@ CompText879EBA8::
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x3E
 	.string "\""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0x56,
+		buffer: 0x0,
+	]
 	.string "\" huh?\n"
 	.string "I'll have to try\n"
 	.string "it out!"
@@ -415,7 +430,7 @@ CompText879EBA8::
 	.string "Want to give the\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x2,
+		entry: 0x22,
 		buffer: 0x0,
 	]
 	.string "\" I\n"
@@ -430,7 +445,7 @@ CompText879EBA8::
 	.string "I'll give you the\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x2,
+		entry: 0x22,
 		buffer: 0x0,
 	]
 	.string "\" right\n"
@@ -501,7 +516,7 @@ CompText879EBA8::
 	.string "Folder is now called\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x2,
+		entry: 0x22,
 		buffer: 0x0,
 	]
 	.string "\"."

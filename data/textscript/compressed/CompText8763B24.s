@@ -33,7 +33,7 @@ CompText8763B24::
 	ts_clear_msg
 	.string "gave me \""
 	ts_print_folder_name [
-		entry: 0x4,
+		entry: 0x24,
 		buffer: 0x0,
 	]
 	.string "\"\n"
@@ -120,7 +120,7 @@ CompText8763B24::
 	.string "Folder is now called\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x4,
+		entry: 0x24,
 		buffer: 0x0,
 	]
 	.string "\"."

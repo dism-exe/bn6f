@@ -192,7 +192,7 @@ CompText86D0614::
 	.string "and\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x2,
+		entry: 0x22,
 		buffer: 0x0,
 	]
 	.string "\"!!"
@@ -1589,7 +1589,10 @@ CompText86D0614::
 	ts_sound_play00 track=0x73
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0x2E,
+		buffer: 0x0,
+	]
 	.string " "
 	ts_print_code [
 		code: 0x7,
@@ -2169,7 +2172,10 @@ CompText86D0614::
 	ts_sound_play00 track=0x73
 	.string "Lan got:\n"
 	.string "\""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0x33,
+		buffer: 0x0,
+	]
 	.string " "
 	ts_print_code [
 		code: 0xD,

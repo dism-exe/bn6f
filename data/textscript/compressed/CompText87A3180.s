@@ -203,7 +203,7 @@ CompText87A3180::
 	ts_end
 
 	def_text_script CompText87A3180_unk15
-	ts_jump_random CompText87A3180_unk65_id, 0x20, 0x20, 0xFF, 0x10
+	ts_jump_random 0x41, 0x20, 0x20, 0xFF, 0x10
 	ts_mugshot_show mugshot=0x5E
 	ts_msg_open
 	.string "AMAZING!!\n"

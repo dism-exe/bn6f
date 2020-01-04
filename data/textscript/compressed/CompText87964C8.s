@@ -66,7 +66,7 @@ CompText87964C8::
 	.string "It's called...\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x5,
+		entry: 0x25,
 		buffer: 0x0,
 	]
 	.string "\"!!"
@@ -156,7 +156,7 @@ CompText87964C8::
 	.string "changed into the\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x5,
+		entry: 0x25,
 		buffer: 0x0,
 	]
 	.string "\"!"

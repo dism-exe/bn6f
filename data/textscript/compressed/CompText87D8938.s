@@ -533,7 +533,10 @@ CompText87D8938::
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0x2D,
+		buffer: 0x0,
+	]
 	.string " "
 	ts_print_code [
 		code: 0x5,
@@ -563,7 +566,10 @@ CompText87D8938::
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0x32,
+		buffer: 0x0,
+	]
 	.string " "
 	ts_print_code [
 		code: 0x5,
