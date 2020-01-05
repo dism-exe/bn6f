@@ -5019,7 +5019,7 @@ chatbox_80422E8:
 	ldrb r1, [r4,#3]
 	lsl r1, r1, #8
 	orr r0, r1
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	add r4, #4
 	mov r0, #1
 	pop {pc}

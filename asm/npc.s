@@ -2447,7 +2447,7 @@ NPCCommand_play_music:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	add r6, #3
 	pop {pc}
 	thumb_func_end NPCCommand_play_music

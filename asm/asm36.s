@@ -10273,7 +10273,7 @@ sub_81356F4:
 	ldr r0, off_81357C0 // =byte_8135628
 	bl sub_80465A0 // (void *a1) -> void
 	mov r0, #SONG_NAVI_CUSTOMIZER
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	pop {pc}
 dword_81357BC: .word 0xDF40
 off_81357C0: .word byte_8135628
@@ -15609,7 +15609,7 @@ playCreditsScene_81382D0:
 	bl sub_81207F8
 	strh r0, [r5,#0x12]
 	mov r0, #SONG_CREDITS
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	mov r0, #0x78 
 	strh r0, [r5,#4]
 	mov r0, #4

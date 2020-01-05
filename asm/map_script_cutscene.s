@@ -2374,7 +2374,7 @@ PlayMapMusic:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#oS2001c04_MapMusic]
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	pop {r4-r7,pc}
 	thumb_func_end PlayMapMusic
 
@@ -3309,7 +3309,7 @@ CutsceneCameraCmd_play_music:
 	push {r1}
 	mov r0, #1
 	bl ReadCutsceneCameraScriptHalfword
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	pop {r1}
 	mov r0, #1
 	add r1, #3
@@ -5201,7 +5201,7 @@ MapScriptCutsceneCmd_play_music:
 	b .done
 .regularPlayMusic
 	mov r0, r4
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 .done
 	add r7, #3
 	mov r0, #1

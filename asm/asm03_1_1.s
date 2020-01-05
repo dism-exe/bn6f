@@ -13176,7 +13176,7 @@ playGameOver_803FB9C:
 	cmp r0, r1
 	bne locret_803FBC0
 	mov r0, #SONG_GAME_OVER
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	b locret_803FBC0
 loc_803FBB4:
 	mov r0, #0xc

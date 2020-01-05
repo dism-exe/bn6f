@@ -9533,7 +9533,7 @@ loc_80081F4:
 	mov r4, #0x66
 loc_8008206:
 	mov r0, r2
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	strh r4, [r5,#8]
 	mov r6, #4
 	bl GetBattleEffects // () -> int
@@ -9594,7 +9594,7 @@ sub_800825A:
 	tst r0, r1
 	beq loc_800828A
 	mov r0, #SONG_LOSER
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 loc_800828A:
 	bl GetBattleEffects // () -> int
 	mov r1, #2
@@ -10153,7 +10153,7 @@ sub_8008688:
 	mov r2, #SONG_ACDC_TOWN
 .playSong:
 	mov r0, r2
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	strh r4, [r5,#8]
 	mov r0, #0x14
 	bl sub_801E792
@@ -10264,7 +10264,7 @@ sub_8008764:
 	tst r0, r1
 	beq loc_8008794
 	mov r0, #SONG_LOSER
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 loc_8008794:
 	bl GetBattleEffects // () -> int
 	mov r1, #2
@@ -10687,7 +10687,7 @@ loc_8008AE0:
 	mov r2, #SONG_ACDC_TOWN
 loc_8008AE6:
 	mov r0, r2
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	strh r4, [r5,#8]
 	mov r0, #0x14
 	bl sub_801E792
@@ -10798,7 +10798,7 @@ sub_8008B7C:
 	tst r0, r1
 	beq loc_8008BAC
 	mov r0, #SONG_LOSER
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 loc_8008BAC:
 	bl GetBattleEffects // () -> int
 	mov r1, #2
@@ -11218,7 +11218,7 @@ loc_8008EE0:
 	mov r2, #0x24
 loc_8008EE6:
 	mov r0, r2
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	strh r4, [r5,#8]
 	mov r0, #0x14
 	bl sub_801E792
@@ -11329,7 +11329,7 @@ sub_8008F7C:
 	tst r0, r1
 	beq loc_8008FAC
 	mov r0, #SONG_LOSER
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 loc_8008FAC:
 	bl GetBattleEffects // () -> int
 	mov r1, #2
@@ -11666,7 +11666,7 @@ loc_800922E:
 loc_8009232:
 	cmp r0, #0x63
 	beq loc_800923A
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 loc_800923A:
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -12243,7 +12243,7 @@ loc_8009696:
 loc_800969A:
 	cmp r0, #0x63
 	beq loc_80096A2
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 loc_80096A2:
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -12711,7 +12711,7 @@ loc_8009A1E:
 loc_8009A22:
 	cmp r0, #0x63
 	beq loc_8009A2A
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 loc_8009A2A:
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -13101,7 +13101,7 @@ loc_8009D0E:
 loc_8009D12:
 	cmp r0, #0x63
 	beq loc_8009D1A
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 loc_8009D1A:
 	mov r0, #4
 	strb r0, [r5,#3]

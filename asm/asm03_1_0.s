@@ -1055,7 +1055,7 @@ sub_80341F8:
 	bl renderInfo_8001788
 	bl renderInfo_80017A0
 	mov r0, #SONG_TRANSMISSION
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	pop {pc}
 	.balign 4, 0
 off_8034214: .word 0x40

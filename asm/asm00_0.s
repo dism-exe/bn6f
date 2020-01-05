@@ -30,8 +30,7 @@ PlaySoundEffect:
 	thumb_func_end PlaySoundEffect
 
 	thumb_func_start PlayMusic
-// (enum Song idx) -> void
-PlayMusic:
+PlayMusic: // (int song) -> void
 	push {r1-r7,lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
