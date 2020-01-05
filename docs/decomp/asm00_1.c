@@ -3183,7 +3183,7 @@ void sub_8005A8C()
                                     s_2011C50_ptr_1C_isNull();
                                     if ( v1 )
                                     {
-                                        chatbox_check_eFlags2009F38(128);
+                                        chatbox_mask_eFlags2009F38(128);
                                         if ( v1 )
                                         {
                                             v2 = sub_80AA4C0();
@@ -3242,7 +3242,7 @@ void sub_8005AF4()
                             s_2011C50_ptr_1C_isNull();
                             if ( !v2 )
                                 return;
-                            chatbox_check_eFlags2009F38(128);
+                            chatbox_mask_eFlags2009F38(128);
                             if ( !v2 )
                                 return;
                             JoypadKeyPressed();
@@ -3303,7 +3303,7 @@ int __fastcall sub_8005B6E(int a1, int a2, int a3, int a4, int a5, int (__fastca
                             v7 = s_2011C50_ptr_1C_isNull();
                             if ( v8 )
                             {
-                                v7 = chatbox_check_eFlags2009F38(128);
+                                v7 = chatbox_mask_eFlags2009F38(128);
                                 if ( v8 )
                                 {
                                     v7 = TestEventFlagFromImmediate(23, 57);
@@ -6321,7 +6321,7 @@ int sub_8007F14()
     int result; // r0
     char v2; // zf
 
-    result = chatbox_check_eFlags2009F38(128);
+    result = chatbox_mask_eFlags2009F38(128);
     if ( v2 )
     {
         engine_setScreeneffect(12, 16);
@@ -8835,7 +8835,7 @@ int sub_800951E()
 
     if ( *(v0 + 3) )
     {
-        result = chatbox_check_eFlags2009F38(128);
+        result = chatbox_mask_eFlags2009F38(128);
         if ( v2 )
         {
             v3 = sub_802D246();
@@ -8870,7 +8870,7 @@ int sub_8009552()
 
     if ( *(v0 + 3) )
     {
-        result = chatbox_check_eFlags2009F38(128);
+        result = chatbox_mask_eFlags2009F38(128);
         if ( v4 )
         {
             v5 = sub_802D246();
@@ -8907,7 +8907,7 @@ int sub_8009594()
 
     if ( *(v0 + 3) )
     {
-        result = chatbox_check_eFlags2009F38(128);
+        result = chatbox_mask_eFlags2009F38(128);
         if ( v2 )
         {
             v3 = sub_802D246();
@@ -8939,7 +8939,7 @@ int sub_80095C8()
 
     if ( *(v0 + 3) )
     {
-        result = chatbox_check_eFlags2009F38(128);
+        result = chatbox_mask_eFlags2009F38(128);
         if ( v3 )
         {
             *(v0 + 1) = 4;
@@ -9393,7 +9393,7 @@ int sub_8009966()
 
     if ( *(v0 + 3) )
     {
-        result = chatbox_check_eFlags2009F38(128);
+        result = chatbox_mask_eFlags2009F38(128);
         if ( v3 )
         {
             *(v0 + 1) = 4;
@@ -9772,7 +9772,7 @@ int sub_8009C56()
 
     if ( *(v0 + 3) )
     {
-        result = chatbox_check_eFlags2009F38(128);
+        result = chatbox_mask_eFlags2009F38(128);
         if ( v3 )
         {
             *(v0 + 1) = 4;
@@ -10003,7 +10003,7 @@ int sub_8009E40()
     int v0; // r5
     int result; // r0
 
-    result = chatbox_check_eFlags2009F38(128);
+    result = chatbox_mask_eFlags2009F38(128);
     if ( !result )
     {
         *(v0 + 1) = 12;
@@ -10190,7 +10190,7 @@ int sub_8009F8A()
 
     if ( *(v0 + 3) )
     {
-        result = chatbox_check_eFlags2009F38(128);
+        result = chatbox_mask_eFlags2009F38(128);
         if ( v3 )
         {
             *(v0 + 1) = 4;

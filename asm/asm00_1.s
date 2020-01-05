@@ -4758,7 +4758,7 @@ sub_8005A8C:
 	bl IsCutsceneScriptNonNull // () -> zf
 	bne locret_8005AF2
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_8005AF2
 	bl sub_80AA4C0
 	beq locret_8005AF2
@@ -4797,7 +4797,7 @@ sub_8005AF4:
 	bl IsCutsceneScriptNonNull // () -> zf
 	bne locret_8005B68
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_8005B68
 	mov r0, #JOYPAD_START
 	bl IsButtonPressed
@@ -4846,7 +4846,7 @@ sub_8005B6E:
 	bl IsCutsceneScriptNonNull // () -> zf
 	bne locret_8005BC6
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_8005BC6
 	movflag EVENT_1739
 	bl TestEventFlagFromImmediate
@@ -9175,7 +9175,7 @@ loc_8007F04:
 	add r1, r1, r4
 loc_8007F08:
 	ldr r0, off_8008014 // =TextScriptCommError87370C0
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#1]
 	pop {r4,pc}
@@ -9185,7 +9185,7 @@ loc_8007F08:
 sub_8007F14:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_8007F2A
 	mov r0, #0xc
 	mov r1, #0x10
@@ -12068,13 +12068,13 @@ sub_800951E:
 	bne loc_8009534
 	ldr r0, =TextScriptBattleTutFullSynchro
 	mov r1, #0xa
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_8009550
 loc_8009534:
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_8009550
 	bl GetBattleEffects // () -> int
 	mov r2, #0x10
@@ -12107,13 +12107,13 @@ loc_8009568:
 	mov r1, #0x20
 loc_800956A:
 	ldr r0, =TextScriptDadCybeastTut
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_8009592
 loc_8009576:
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_8009592
 	bl GetBattleEffects // () -> int
 	mov r2, #0x10
@@ -12137,13 +12137,13 @@ sub_8009594:
 	bne loc_80095AA
 	ldr r0, =TextScriptShukoCrossTut
 	mov r1, #3
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_80095C6
 loc_80095AA:
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_80095C6
 	bl GetBattleEffects // () -> int
 	mov r2, #0x10
@@ -12169,13 +12169,13 @@ sub_80095C8:
 	mov r1, #0x73
 	add r1, r1, r0
 	ldr r0, =TextScriptCommError87370C0
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_80095F4
 loc_80095E4:
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_80095F4
 	mov r0, #4
 	strb r0, [r5,#1]
@@ -12634,13 +12634,13 @@ sub_8009966:
 	mov r1, #0x73
 	add r1, r1, r0
 	ldr r0, off_80099A0 // =TextScriptCommError87370C0
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_8009992
 loc_8009982:
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_8009992
 	mov r0, #4
 	strb r0, [r5,#1]
@@ -13024,13 +13024,13 @@ sub_8009C56:
 	mov r1, #0x73
 	add r1, r1, r0
 	ldr r0, off_8009C90 // =TextScriptCommError87370C0
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_8009C82
 loc_8009C72:
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_8009C82
 	mov r0, #4
 	strb r0, [r5,#1]
@@ -13265,7 +13265,7 @@ RunTextScriptDustManUndernetTut_8009E2C:
 	ldr r0, [r5,r0]
 	ldrb r1, [r0,#4]
 	ldr r0, off_8009FBC // =TextScriptDustManUndernetTut
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #4
 	strh r0, [r5,#2]
 	pop {pc}
@@ -13275,7 +13275,7 @@ RunTextScriptDustManUndernetTut_8009E2C:
 sub_8009E40:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	cmp r0, #0
 	bne locret_8009E54
 	mov r0, #0xc
@@ -13456,13 +13456,13 @@ sub_8009F8A:
 	mov r1, #0x73
 	add r1, r1, r0
 	ldr r0, off_8009FC8 // =TextScriptCommError87370C0
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_8009FB6
 loc_8009FA6:
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_8009FB6
 	mov r0, #4
 	strb r0, [r5,#1]

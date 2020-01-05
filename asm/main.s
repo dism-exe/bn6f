@@ -37,7 +37,7 @@ main_gameRoutine:
 	beq loc_800032A
 	bl subsystem_triggerTransition_800630A
 loc_800032A:
-	bl chatbox_onUpdate
+	bl chatbox_onUpdate // () -> void
 	bl CallBGScrollCallback0
 	bl ProcessGFXAnims
 	ldr r0, off_8000344 // =sub_3006814+1

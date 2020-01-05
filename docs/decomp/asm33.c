@@ -399,7 +399,7 @@ int sub_812377C()
     int result; // r0
     char v2; // zf
 
-    result = chatbox_check_eFlags2009F38(8);
+    result = chatbox_mask_eFlags2009F38(8);
     if ( !v2 )
     {
         *(v0 + 2) = 4;
@@ -968,7 +968,7 @@ int sub_8124134()
     int result; // r0
     char v2; // zf
 
-    result = chatbox_check_eFlags2009F38(128);
+    result = chatbox_mask_eFlags2009F38(128);
     if ( v2 )
     {
         result = 4;
@@ -987,13 +987,13 @@ int sub_8124144()
 
     if ( v0[17] & 1 )
         return (*(&off_8124188 + v0[3]))();
-    result = chatbox_check_eFlags2009F38(128);
+    result = chatbox_mask_eFlags2009F38(128);
     if ( !result )
         return result;
-    chatbox_check_eFlags2009F38(16);
+    chatbox_mask_eFlags2009F38(16);
     if ( !v2 )
         goto LABEL_12;
-    result = chatbox_check_eFlags2009F38(32);
+    result = chatbox_mask_eFlags2009F38(32);
     if ( v2 )
         return result;
     if ( !chatbox_8045F4C() )
@@ -1118,7 +1118,7 @@ void __noreturn sub_81242D8()
     int v0; // r5
     int v1; // r0
 
-    if ( !chatbox_check_eFlags2009F38(128) )
+    if ( !chatbox_mask_eFlags2009F38(128) )
     {
         *(v0 + 2) = 4;
         TakeItem(*(v0 + 16), 1);
@@ -1139,7 +1139,7 @@ int sub_8124308()
     char v2; // zf
     int v3; // r0
 
-    result = chatbox_check_eFlags2009F38(128);
+    result = chatbox_mask_eFlags2009F38(128);
     if ( v2 )
     {
         TakeItem(*(v0 + 16), 1);
@@ -4158,7 +4158,7 @@ int sub_8126E10()
     JoypadKeyPressed();
     if ( v4 )
     {
-        if ( v0[16] == 2 || (chatbox_check_eFlags2009F38(128), !v4) )
+        if ( v0[16] == 2 || (chatbox_mask_eFlags2009F38(128), !v4) )
         {
             sub_8127264();
             if ( !v4 )
@@ -4248,7 +4248,7 @@ void __noreturn sub_8126EC0()
         }
         else
         {
-            chatbox_check_eFlags2009F38(128);
+            chatbox_mask_eFlags2009F38(128);
             if ( v4 )
             {
                 sub_8120D10(0);
@@ -4274,7 +4274,7 @@ void sub_8126F40()
     if ( !v1 )
     {
         chatbox_clear_eFlags2009F38(64);
-        chatbox_check_eFlags2009F38(8);
+        chatbox_mask_eFlags2009F38(8);
         if ( !v1 )
         {
             if ( *(v0 + 58) == 4112 )
@@ -4438,7 +4438,7 @@ signed int sub_8127264()
     char v4; // r0
 
     v1 = 0;
-    chatbox_check_eFlags2009F38(32);
+    chatbox_mask_eFlags2009F38(32);
     if ( !v2 )
     {
         v3 = 0;
@@ -5044,7 +5044,7 @@ void sub_8127B94()
     char v1; // zf
     unsigned int v2; // r4
 
-    chatbox_check_eFlags2009F38(8);
+    chatbox_mask_eFlags2009F38(8);
     if ( !v1 )
     {
         v2 = dword_2027590[8 * (*(v0 + 32) + *(v0 + 36)) + 6] >> 16;
@@ -5831,7 +5831,7 @@ void sub_8128800()
     *(v0 + 38) = *(v0 + 36);
     *(v0 + 34) = *(v0 + 32);
     *(v0 + 14) = *(v0 + 13);
-    if ( (*(v0 + 30) || (JoypadKeyPressed(), v4)) && ((chatbox_check_eFlags2009F38(8), v4) || (JoypadKeyPressed(), v4)) )
+    if ( (*(v0 + 30) || (JoypadKeyPressed(), v4)) && ((chatbox_mask_eFlags2009F38(8), v4) || (JoypadKeyPressed(), v4)) )
     {
         if ( *(v0 + 30) )
         {
@@ -6867,13 +6867,13 @@ void sub_81296A0()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(8);
+    chatbox_mask_eFlags2009F38(8);
     if ( v1 )
     {
-        chatbox_check_eFlags2009F38(32);
+        chatbox_mask_eFlags2009F38(32);
         if ( !v1 )
         {
-            chatbox_check_eFlags2009F38(&byte_110);
+            chatbox_mask_eFlags2009F38(&byte_110);
             if ( !v1 )
             {
                 *(v0 + 2) = 32;
@@ -7810,7 +7810,7 @@ int sub_8129E54()
     int result; // r0
     char v2; // zf
 
-    result = chatbox_check_eFlags2009F38(8);
+    result = chatbox_mask_eFlags2009F38(8);
     if ( !v2 )
     {
         result = *(v0 + 34) & 0xFF;
@@ -8300,7 +8300,7 @@ int __fastcall sub_812A350(int a1)
     }
     else
     {
-        result = chatbox_check_eFlags2009F38(32);
+        result = chatbox_mask_eFlags2009F38(32);
         if ( !v2 )
         {
             if ( chatbox_8045F4C() )
@@ -8358,8 +8358,8 @@ int __fastcall sub_812A3FC(int a1)
     result = sub_813D60C();
     if ( v3 )
     {
-        chatbox_check_eFlags2009F38(128);
-        if ( v3 || (result = chatbox_check_eFlags2009F38(8), !v3) )
+        chatbox_mask_eFlags2009F38(128);
+        if ( v3 || (result = chatbox_mask_eFlags2009F38(8), !v3) )
         {
             engine_setScreeneffect(12, 16);
             result = 20;
@@ -8406,7 +8406,7 @@ int __fastcall sub_812A494(int a1)
     result = sub_813D60C();
     if ( v3 )
     {
-        result = chatbox_check_eFlags2009F38(8);
+        result = chatbox_mask_eFlags2009F38(8);
         if ( !v3 )
         {
             result = 16;
@@ -8709,7 +8709,7 @@ int sub_812A758()
     int result; // r0
     char v2; // zf
 
-    result = chatbox_check_eFlags2009F38(8);
+    result = chatbox_mask_eFlags2009F38(8);
     if ( !v2 )
     {
         *(v0 + 3) = 0;
@@ -8881,12 +8881,12 @@ int sub_812A8EC()
     char v19; // [sp-4h] [bp-18h]
 
     *(v0 + 16) = 0;
-    if ( chatbox_check_eFlags2009F38(128) )
+    if ( chatbox_mask_eFlags2009F38(128) )
     {
-        chatbox_check_eFlags2009F38(16);
+        chatbox_mask_eFlags2009F38(16);
         if ( !v1 )
             goto LABEL_54;
-        chatbox_check_eFlags2009F38(32);
+        chatbox_mask_eFlags2009F38(32);
         if ( v1 )
             goto LABEL_15;
         if ( chatbox_8045F4C() )
@@ -9046,12 +9046,12 @@ int sub_812AAC0()
     int v12; // r2
 
     *(v0 + 16) = 0;
-    if ( chatbox_check_eFlags2009F38(128) )
+    if ( chatbox_mask_eFlags2009F38(128) )
     {
-        chatbox_check_eFlags2009F38(16);
+        chatbox_mask_eFlags2009F38(16);
         if ( !v1 )
             goto LABEL_35;
-        chatbox_check_eFlags2009F38(32);
+        chatbox_mask_eFlags2009F38(32);
         if ( v1 )
             goto LABEL_10;
         if ( chatbox_8045F4C() )
@@ -9405,8 +9405,8 @@ int sub_812AE3C()
     char v1; // zf
     int result; // r0
 
-    chatbox_check_eFlags2009F38(128);
-    if ( v1 || (result = chatbox_check_eFlags2009F38(8), !v1) )
+    chatbox_mask_eFlags2009F38(128);
+    if ( v1 || (result = chatbox_mask_eFlags2009F38(8), !v1) )
     {
         if ( eStruct200BC30_getJumpOffset00() )
         {
@@ -9484,8 +9484,8 @@ int sub_812AEFC()
     char v0; // zf
     int result; // r0
 
-    chatbox_check_eFlags2009F38(128);
-    if ( v0 || (result = chatbox_check_eFlags2009F38(8), !v0) )
+    chatbox_mask_eFlags2009F38(128);
+    if ( v0 || (result = chatbox_mask_eFlags2009F38(8), !v0) )
         result = sub_8132614();
     return result;
 }

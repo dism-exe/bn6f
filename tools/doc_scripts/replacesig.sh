@@ -22,13 +22,14 @@ function update_function_signature() {
         sed -i "s/\<${function_name}\>:.*/${function_name}: \/\/ ${signature}/" ${files}
     fi
 
-    # update calls to function
+    # update function calls
     local files=$(grep_source_files "bl ${function_name}")
     if [[ "${files}" != "" ]]; then
         sed -i "s/bl \<${function_name}\>.*/bl ${function_name} \/\/ ${signature}/" ${files}
+        sed -i "s/b \<${function_name}\>.*/b ${function_name} \/\/ ${signature}/" ${files}
     fi
 
-    # update calls to callback data
+    # update callback data definitions
     local files=$(grep_source_files "\.word ${function_name}+1")
     if [[ "${files}" != "" ]]; then
         sed -i "s/\.word \<${function_name}\>+1.*/\.word ${function_name}+1 \/\/ ${signature}/" ${files}

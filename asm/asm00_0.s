@@ -786,12 +786,12 @@ QueueHwordAlignedGFXTransfer:
 	b loc_8000ACA
 
 	thumb_func_start QueueWordAlignedGFXTransfer
-QueueWordAlignedGFXTransfer:
+QueueWordAlignedGFXTransfer: // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	mov r3, #3
 	b loc_8000ACA
 
 	thumb_func_start QueueEightWordAlignedGFXTransfer
-QueueEightWordAlignedGFXTransfer:
+QueueEightWordAlignedGFXTransfer: // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	mov r3, #4
 
 // r0 - queued source
@@ -799,7 +799,7 @@ QueueEightWordAlignedGFXTransfer:
 // r2 - queued size
 // r3 - copy type (preset)
 // preserves r0-r2
-loc_8000ACA:
+loc_8000ACA: // (void *queuedSource, void *queuedDest, int queuedSize, unk copyType) -> void
 	push {r4-r7}
 	mov r7, r3
 	ldr r3, off_8000B10 // =dword_200AC1C 
@@ -841,6 +841,7 @@ off_8000B14: .word fiveWordArr200B4B0
 	thumb_func_end QueueHwordAlignedGFXTransfer
 	thumb_func_end QueueWordAlignedGFXTransfer
 	thumb_func_end QueueEightWordAlignedGFXTransfer
+
 
 	thumb_local_start
 sub_8000B18:
@@ -980,10 +981,10 @@ loc_8000BD6:
 	bl QueueHwordAlignedGFXTransfer
 	b loc_8000BE6
 loc_8000BDC:
-	bl QueueWordAlignedGFXTransfer
+	bl QueueWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	b loc_8000BE6
 loc_8000BE2:
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 loc_8000BE6:
 	add r7, #0xc
 	b loc_8000B92
@@ -3359,7 +3360,7 @@ sub_8001C44:
 	ldr r0, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
 	ldr r1, [r7,#oGFXAnimState_Param0]
 	ldr r2, [r7,#oGFXAnimState_Param1]
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {pc}
 	thumb_func_end sub_8001C44
 
@@ -3462,7 +3463,7 @@ loc_8001CA6:
 	// size
 	ldrb r2, [r7,#oGFXAnimState_Param2]
 	lsl r2, r2, #5
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4,r7,pc}
 	.balign 4, 0
 off_8001CE4: .word off_8001AB8
@@ -3536,7 +3537,7 @@ loc_8001D0E:
 	// size
 	ldrb r2, [r7,#oGFXAnimState_Param2]
 	lsl r2, r2, #6
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4,r7,pc}
 	.balign 4, 0
 off_8001D4C: .word off_8001AB8

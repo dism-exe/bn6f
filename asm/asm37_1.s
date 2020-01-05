@@ -178,7 +178,7 @@ loc_81419CC:
 	bl IsScreenFadeActive // () -> zf
 	beq loc_8141A0C
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_8141A0C
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -2008,7 +2008,7 @@ sub_8142C94:
 	ldr r0, off_8142CA4 // =dword_8619730 
 	ldr r1, dword_8142CA8 // =0x6006c00 
 	ldr r2, off_8142CAC // =0x420 
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {pc}
 	.balign 4, 0
 off_8142CA4: .word dword_8619730

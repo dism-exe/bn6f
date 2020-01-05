@@ -805,7 +805,7 @@ locret_809D7D6:
 sub_809D7D8:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_809D7F6
 loc_809D7E2:
 	mov r7, r10
@@ -932,7 +932,7 @@ sub_809D8CC:
 	strb r0, [r5,#0xa]
 loc_809D8DE:
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_809D8F0
 	mov r0, #0
 	strb r0, [r5,#9]

@@ -141,7 +141,7 @@ int sub_81419A0()
                 IsPaletteFadeActive();
                 if ( !v1 )
                 {
-                    chatbox_check_eFlags2009F38(128);
+                    chatbox_mask_eFlags2009F38(128);
                     if ( v1 )
                     {
                         if ( **(v0 + oToolkit_GameStatePtr) == 4 )

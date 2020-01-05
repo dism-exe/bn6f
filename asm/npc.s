@@ -945,13 +945,13 @@ npc_inChatbox_curAction_init_809EB20:
 	mov r2, #oOverworldNPCObject_TextScriptPtr // NPC.scriptArray
 	ldr r0, [r5,r2]
 	mov r1, #0x78 
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	b .done
 .notLinkNaviPickingUpHPMemry
 	mov r2, #oOverworldNPCObject_TextScriptPtr
 	ldr r0, [r5,r2]
 	ldrb r1, [r5,#oOverworldNPCObject_TextScriptIndex]
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	b .done
 .runMapLoadedTextScript
 	ldrb r0, [r5,#oOverworldNPCObject_TextScriptIndex]

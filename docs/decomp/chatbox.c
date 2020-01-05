@@ -92,7 +92,7 @@ void __fastcall chatbox_runScript_803FE10(int a1, int a2)
 
 // 0x803fe74
 // (u16 *scriptList, u8 scriptOffIdx) -> void
-void __fastcall chatbox_runScript_803FE74(int a1, int a2)
+void __fastcall chatbox_runScriptAndSetWhiteDot803FE74(int a1, int a2)
 {
     chatbox_runScript(a1, a2);
     (loc_8000AC8)(spriteWhiteDot, 100719744, &dword_6F8);
@@ -113,7 +113,7 @@ void __cdecl chatbox_onUpdate()
     if ( cb->bVisible )
     {
         chatbox_clear_eFlags2009F38(&dword_338);
-        chatbox_check_eFlags2009F38(64);
+        chatbox_mask_eFlags2009F38(64);
         if ( zf )
         {
             joystick = tk->joystick;
@@ -215,7 +215,7 @@ LABEL_16:
     chatbox_maskFlags_3e(0x100u);
     if ( zf )
         chatbox_CopyBackgroundTiles_8040344();
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( !zf )
     {
         chatbox_maskFlags_3e(0x100u);
@@ -290,7 +290,7 @@ signed int chatbox_interpreteAndDrawDialogChar_1()
     chatbox_maskFlags_3e(byte_100);
     if ( v7 )
         chatbox_CopyBackgroundTiles_8040344();
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( !v7 )
     {
         chatbox_maskFlags_3e(byte_100);
@@ -4975,7 +4975,7 @@ int __fastcall chatbox_clear_eFlags2009F38(int result)
 
 
 // 0x8045f3c
-int __fastcall chatbox_check_eFlags2009F38(int a1)
+int __fastcall chatbox_mask_eFlags2009F38(int a1)
 {
     return a1 & *eFlags2009F38;
 }

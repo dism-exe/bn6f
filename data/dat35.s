@@ -1649,7 +1649,7 @@ off_812FD0C:: .word unk_202714C
 sub_812FD10::
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq locret_812FD42
 	bl eStruct200BC30_getJumpOffset00
 	mov r4, r0
@@ -1691,10 +1691,10 @@ off_812FD5C:: .word sub_812AC14+1
 sub_812FD6C::
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_812FD96
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq locret_812FDBE
 	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
@@ -1932,7 +1932,7 @@ loc_812FF3C::
 	tst r3, r3
 	bne loc_812FF90
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_812FF90
 	bl chatbox_8040818
 	mov r0, #0xc

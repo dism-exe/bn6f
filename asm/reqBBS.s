@@ -280,7 +280,7 @@ reqBBS_draw_813E2AC:
 	strb r1, [r0,#9]
 loc_813E2C8:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813E320
 	ldrh r0, [r5,#oReqBBSGui_PagePos]
 	ldrh r1, [r5,#oReqBBSGui_CursorPos]
@@ -514,7 +514,7 @@ reqBBS_draw_813E450:
 loc_813E48A:
 	mov r1, r0
 	ldr r0, off_813E4A4 // =reqBBS_eTextScript
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	bl reqBBS_drawHeaderText
 	mov r0, #0x20 
 	strb r0, [r5]
@@ -545,7 +545,7 @@ reqBBS_draw_813E4AC:
 	strb r1, [r0,#9]
 loc_813E4C8:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813E4EC
 	bl chatbox_8040818
 	mov r0, #0x24 
@@ -1411,7 +1411,7 @@ reqBBS_813ED40:
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_813ED58: .word byte_813DEC4
@@ -1514,7 +1514,7 @@ reqBBS_813EDE4:
 	add r0, r0, r2
 	ldr r1, dword_813EE38 // =0x6017f80 
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldrh r1, [r5,#0x20]
 	mov r0, #3
 	mov r3, #0x10
@@ -2102,7 +2102,7 @@ reqBBS_813F65C:
 	strb r1, [r0,#9]
 loc_813F678:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813F6CE
 	ldrh r0, [r5,#0x24]
 	ldrh r1, [r5,#0x20]
@@ -2338,7 +2338,7 @@ reqBBS_813F80C:
 loc_813F846:
 	mov r1, r0
 	ldr r0, off_813F860 // =reqBBS_eTextScript
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	bl reqBBS_renderSelectedEntry_HeaderText
 	mov r0, #0x20 
 	strb r0, [r5]
@@ -2369,7 +2369,7 @@ reqBBS_813F868:
 	strb r1, [r0,#9]
 loc_813F884:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813F8A8
 	bl chatbox_8040818
 	mov r0, #0x24 
@@ -2742,7 +2742,7 @@ reqBBS_813FB24:
 	strb r1, [r0,#9]
 loc_813FB40:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813FB98
 	movflag EVENT_173A
 	bl TestEventFlagFromImmediate
@@ -2813,7 +2813,7 @@ reqBBS_813FBC0:
 	strb r1, [r0,#9]
 loc_813FBDC:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813FC0E
 	bl chatbox_8040818
 	bl reqBBS_813FE54
@@ -2920,13 +2920,13 @@ loc_813FCA8:
 	beq loc_813FCBE
 	mov r1, r0
 	ldr r0, off_813FD0C // =reqBBS_eTextScript
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #0x44 
 	strb r0, [r5]
 	b loc_813FCF0
 loc_813FCBE:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813FCF0
 	bl chatbox_8040818
 	bl reqBBS_813FE54
@@ -2980,7 +2980,7 @@ reqBBS_813FD14:
 	strb r1, [r0,#9]
 loc_813FD30:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813FD6C
 	bl chatbox_8040818
 	bl reqBBS_813FE54
@@ -3860,7 +3860,7 @@ reqBBS_8140588:
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_81405A0: .word byte_813F22C
@@ -3876,7 +3876,7 @@ reqBBS_81405A4:
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_81405BC: .word byte_813F2AC
@@ -4018,7 +4018,7 @@ reqBBS_animateCursor:
 	add r0, r0, r2
 	ldr r1, dword_81406DC // =0x6017f80 
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldrh r1, [r5,#0x20]
 	mov r0, #3
 	mov r3, #0x10
@@ -4346,13 +4346,13 @@ dword_81408EC: .word 0xF
 reqBBS_81408F0:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_814095E
 	mov r0, #0x20 
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_814096A
 	ldr r0, off_8140970 // =0x110 
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_814096A
 	bl reqBBS_81408C8
 	bl reqBBS_8140868
@@ -4538,7 +4538,7 @@ reqBBS_RunTextScriptWhoAmI:
 	ldr r2, off_8140A6C // =TextScriptWhoAmIPtr
 	lsl r0, r0, #2
 	ldr r0, [r2,r0]
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	pop {pc}
 	.balign 4, 0
 off_8140A6C: .word TextScriptWhoAmIPtr

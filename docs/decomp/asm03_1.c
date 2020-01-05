@@ -864,7 +864,7 @@ BOOL sub_8034C36()
                 sub_809E462();
                 if ( v0 )
                 {
-                    chatbox_check_eFlags2009F38(128);
+                    chatbox_mask_eFlags2009F38(128);
                     if ( v0 )
                     {
                         s_2011C50_ptr_1C_isNull();
@@ -895,7 +895,7 @@ BOOL sub_8034C6E()
             sub_809E462();
             if ( v0 )
             {
-                chatbox_check_eFlags2009F38(128);
+                chatbox_mask_eFlags2009F38(128);
                 if ( v0 )
                 {
                     s_2011C50_ptr_1C_isNull();
@@ -3324,7 +3324,7 @@ signed int __fastcall CutsceneCameraCmd_run_text_script(int a1, int a2)
 // 0x8037352
 signed int CutsceneCameraCmd_wait_chatbox()
 {
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     return 1;
 }
 
@@ -3575,11 +3575,11 @@ BOOL sub_8037790()
     BOOL result; // r0
 
     v1 = ReadMapScriptByte(1, v0);
-    chatbox_check_eFlags2009F38(v1 & 0x80);
+    chatbox_mask_eFlags2009F38(v1 & 0x80);
     result = 1;
     if ( !v2 )
     {
-        chatbox_check_eFlags2009F38(v1 & 0x38);
+        chatbox_mask_eFlags2009F38(v1 & 0x38);
         if ( v2 )
             result = 0;
     }
@@ -6088,7 +6088,7 @@ void __noreturn sub_803970C()
     IsPaletteFadeActive();
     if ( !v1 )
     {
-        chatbox_check_eFlags2009F38(8);
+        chatbox_mask_eFlags2009F38(8);
         if ( !v1 )
         {
             *(v0 + 20) = 0;
@@ -6528,7 +6528,7 @@ int sub_8039B60()
     IsPaletteFadeActive();
     if ( !v1 )
     {
-        chatbox_check_eFlags2009F38(8);
+        chatbox_mask_eFlags2009F38(8);
         if ( !v1 )
         {
             engine_setScreeneffect(12, 16);
@@ -6598,7 +6598,7 @@ int __fastcall sub_8039BC0(int a1)
             }
             else
             {
-                chatbox_check_eFlags2009F38(8);
+                chatbox_mask_eFlags2009F38(8);
                 if ( !v3 )
                 {
                     sub_803BB94();
@@ -6627,7 +6627,7 @@ int sub_8039C14()
     _BYTE *v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         v0[14] = 0;
@@ -6743,7 +6743,7 @@ int __fastcall sub_8039D08(int a1)
     sub_803A558(a1);
     if ( v2 )
     {
-        chatbox_check_eFlags2009F38(8);
+        chatbox_mask_eFlags2009F38(8);
         if ( !v2 )
         {
             if ( chatbox_8045F4C() || (v3 = sub_813D638(), v4 = v1[11], v5 = v1[14] + v4, v5 >= v3) )
@@ -6805,7 +6805,7 @@ int __fastcall sub_8039D9A(int a1)
     sub_803A558(a1);
     if ( v2 )
     {
-        chatbox_check_eFlags2009F38(128);
+        chatbox_mask_eFlags2009F38(128);
         if ( v2 )
             *(v1 + 1) = 36;
     }
@@ -6875,7 +6875,7 @@ int __fastcall sub_8039E2C(int a1)
     sub_803A58C(a1);
     if ( !v2 )
     {
-        chatbox_check_eFlags2009F38(8);
+        chatbox_mask_eFlags2009F38(8);
         if ( !v2 )
         {
             sub_8146588();
@@ -7075,7 +7075,7 @@ int sub_8039FEC()
     char v1; // zf
     int v2; // r0
 
-    chatbox_check_eFlags2009F38(8);
+    chatbox_mask_eFlags2009F38(8);
     if ( !v1 )
     {
         sub_8146588();
@@ -7248,7 +7248,7 @@ void __noreturn sub_803A186()
     char v2; // zf
 
     v1 = 0;
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v2 )
         v1 = 1;
     sub_803BBA4(4, 32 * *(v0 + 14) + 33, v1);
@@ -7366,7 +7366,7 @@ void __noreturn sub_803A2CC()
     char v2; // zf
     _BYTE *v3; // r3
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v2 )
     {
         SetRenderInfoLCDControl(32576);
@@ -8024,7 +8024,7 @@ void __noreturn sub_803A9CC()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         sub_803BB80();
@@ -8305,7 +8305,7 @@ void __noreturn sub_803AC02()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         if ( chatbox_8045F4C() )
@@ -8349,7 +8349,7 @@ void __noreturn sub_803AC56()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         if ( chatbox_8045F4C() )
@@ -8367,7 +8367,7 @@ void __noreturn sub_803AC78()
     _BYTE *v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         v0[19] = 0;
@@ -8396,7 +8396,7 @@ void __noreturn sub_803ACB2()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
         *(v0 + 1) = 40;
     sub_803A820();
@@ -8674,7 +8674,7 @@ void __noreturn sub_803AEE6()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         if ( *(v0 + 3) == 1 )
@@ -8722,7 +8722,7 @@ void __noreturn sub_803AF46()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         if ( chatbox_8045F4C() )
@@ -8745,7 +8745,7 @@ void __noreturn sub_803AF70()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         *(v0 + 19) = 0;
@@ -8898,7 +8898,7 @@ int sub_803B1D6()
     int v2; // r2
     char v3; // zf
 
-    chatbox_check_eFlags2009F38(8);
+    chatbox_mask_eFlags2009F38(8);
     if ( !v3 )
     {
         PlaySoundEffect(104, v1, v2);
@@ -9321,7 +9321,7 @@ void __fastcall sub_803BB2C(int a1)
     }
     else
     {
-        chatbox_runScript_803FE74(TextScript87E36F8, a1);
+        chatbox_runScriptAndSetWhiteDot803FE74(TextScript87E36F8, a1);
     }
 }
 
@@ -10931,7 +10931,7 @@ int sub_803CC28()
     int result; // r0
     char v2; // zf
 
-    result = chatbox_check_eFlags2009F38(8);
+    result = chatbox_mask_eFlags2009F38(8);
     if ( !v2 )
     {
         engine_setScreeneffect(12, 8);

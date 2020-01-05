@@ -3156,7 +3156,7 @@ CutsceneCameraCmd_run_text_script:
 	mov r0, #2
 	bl ReadCutsceneCameraScriptWord
 	mov r1, r4
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	pop {r1}
 	mov r0, #1
 	add r1, #6
@@ -3170,7 +3170,7 @@ CutsceneCameraCmd_wait_chatbox:
 	push {lr}
 	push {r1}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	pop {r1}
 	bne .textboxStillUp
 	mov r0, #1
@@ -3668,11 +3668,11 @@ CutsceneCmd_wait_chatbox:
 	bl ReadMapScriptByte
 	mov r0, #0x80
 	and r0, r4
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_80377AC
 	mov r0, #0x38
 	and r0, r4
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_80377B2
 loc_80377AC:
 	add r7, #2
@@ -4186,7 +4186,7 @@ CutsceneCmd_run_text_script:
 	beq .notFromMem
 	ldr r0, [r5,#oCutsceneState_TextArchivePtr]
 	ldrb r1, [r5,r4]
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	add r7, #2
 	mov r0, #1
 	pop {pc}
@@ -4195,7 +4195,7 @@ CutsceneCmd_run_text_script:
 	bl ReadMapScriptByte
 	mov r1, r4
 	ldr r0, [r5,#oCutsceneState_TextArchivePtr]
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	add r7, #3
 	mov r0, #1
 	pop {pc}

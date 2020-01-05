@@ -1326,7 +1326,7 @@ sub_803970C:
 	bl IsScreenFadeActive // () -> zf
 	beq loc_803972A
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_803972A
 	mov r0, #0
 	strb r0, [r5,#0x14]
@@ -1869,7 +1869,7 @@ sub_8039B60:
 	bl IsScreenFadeActive // () -> zf
 	beq loc_8039B7C
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_8039B7C
 	mov r0, #0xc
 	mov r1, #0x10
@@ -1934,7 +1934,7 @@ sub_8039BC0:
 	b loc_8039C0E
 loc_8039BE6:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_8039C0E
 	bl sub_803BB94
 	beq loc_8039C0E
@@ -1956,7 +1956,7 @@ loc_8039C0E:
 sub_8039C14:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_8039C2C
 	mov r0, #0
 	strb r0, [r5,#0xe]
@@ -2073,7 +2073,7 @@ sub_8039D08:
 	bl sub_803A558
 	bne loc_8039D60
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_8039D60
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -2142,7 +2142,7 @@ sub_8039D9A:
 	bl sub_803A558
 	bne loc_8039DAE
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_8039DAE
 	mov r0, #0x24
 	strb r0, [r5,#1]
@@ -2208,7 +2208,7 @@ sub_8039E2C:
 	bl sub_803A58C
 	beq loc_8039E7A
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_8039E7A
 	bl sub_8146588
 	mov r0, r5
@@ -2422,7 +2422,7 @@ loc_8039FE6:
 sub_8039FEC:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_803A034
 	bl sub_8146588
 	mov r0, r5
@@ -2638,7 +2638,7 @@ sub_803A186:
 	push {r4-r7,lr}
 	mov r4, #0
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803A194
 	mov r4, #1
 loc_803A194:
@@ -2805,7 +2805,7 @@ off_803A2B8: .word sub_803A2CC+1
 sub_803A2CC:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803A31C
 	ldr r0, dword_803A324 // =0x7f40
 	bl SetRenderInfoLCDControl
@@ -3683,7 +3683,7 @@ byte_803A9C4: .byte 0xBC, 0x42, 0xBD, 0x42, 0xBE, 0x42, 0xBF, 0x42
 sub_803A9CC:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803A9E0
 	bl sub_803BB80
 	beq loc_803A9E0
@@ -3979,7 +3979,7 @@ sub_803ABF4:
 sub_803AC02:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803AC26
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -4025,7 +4025,7 @@ loc_803AC50:
 sub_803AC56:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803AC72
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -4045,7 +4045,7 @@ loc_803AC72:
 sub_803AC78:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803AC9C
 	mov r0, #0
 	strb r0, [r5,#0x13]
@@ -4078,7 +4078,7 @@ sub_803ACA2:
 sub_803ACB2:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803ACC0
 	mov r0, #0x28
 	strb r0, [r5,#1]
@@ -4374,7 +4374,7 @@ sub_803AED8:
 sub_803AEE6:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803AF16
 	ldrb r0, [r5,#3]
 	cmp r0, #1
@@ -4427,7 +4427,7 @@ loc_803AF40:
 sub_803AF46:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803AF6A
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -4450,7 +4450,7 @@ loc_803AF6A:
 sub_803AF70:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803AF8A
 	mov r0, #0
 	strb r0, [r5,#0x13]
@@ -4654,7 +4654,7 @@ loc_803B1D0:
 sub_803B1D6:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_803B1F2
 	mov r0, #SOUND_UNSELECT_68
 	bl PlaySoundEffect
@@ -5452,11 +5452,11 @@ sub_803BB2C:
 	cmp r3, #0x4c
 	beq loc_803BB52
 	ldr r0, off_803BB68 // =TextScript87E36F8
-	bl chatbox_runScript_803FE74 // (u16 *scriptList, u8 scriptOffIdx) -> void
+	bl chatbox_runScriptAndSetWhiteDot803FE74 // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	b locret_803BB64
 loc_803BB4A:
 	ldr r0, off_803BB6C // =TextScriptNetworkRequestConnection87F2A1C
-	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
+	bl chatbox_runScript_803FD9C // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	b locret_803BB64
 loc_803BB52:
 	push {r1}
@@ -5465,7 +5465,7 @@ loc_803BB52:
 	ldr r0, TextScriptNetworkEnterFolderNamePtrs_p // =TextScriptNetworkEnterFolderNamePtrs
 	ldr r0, [r0,r1]
 	pop {r1}
-	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
+	bl chatbox_runScript_803FD9C // (TextScriptArchive *archive, u8 scriptIdx) -> void
 locret_803BB64:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -5719,7 +5719,7 @@ loc_803BE78:
 	ldr r0, [sp,#4]
 	ldr r1, [sp,#8]
 	ldr r2, [sp,#0xc]
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	add sp, sp, #0x10
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -6780,7 +6780,7 @@ loc_803C5DE:
 	add r0, r0, r1
 	ldr r1, dword_803C5FC // =0x6017e80
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 locret_803C5EC:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -7633,7 +7633,7 @@ locret_803CC26:
 sub_803CC28:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq locret_803CC3E
 	mov r0, #0xc
 	mov r1, #8
@@ -7699,7 +7699,7 @@ RunTextScriptCommError_803CCB0:
 	push {r4-r7,lr}
 	mov r1, r0
 	ldr r0, off_803CCBC // =TextScriptCommError873B9E0
-	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
+	bl chatbox_runScript_803FD9C // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803CCBC: .word TextScriptCommError873B9E0
@@ -7797,7 +7797,7 @@ RunTextScriptCommError_803CD64:
 	push {r4-r7,lr}
 	mov r1, r0
 	ldr r0, off_803CD70 // =TextScriptCommError873B9E0
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803CD70: .word TextScriptCommError873B9E0
