@@ -17926,33 +17926,38 @@ off_802F4E0: .word unk_3001B20
 	.word 0x1
 	thumb_func_end sub_802F2C8
 
-	thumb_func_start sub_802F530
-sub_802F530:
+	thumb_func_start startScreen_init_802F530
+startScreen_init_802F530: // () -> void
 	push {lr}
-	// memBlock
+
 	ldr r0, off_802F570 // =eStartScreen
-	// size
 	mov r1, #0x20 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
+
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	mov r0, #0
 	strb r0, [r1]
+
 	pop {pc}
-	thumb_func_end sub_802F530
+	thumb_func_end startScreen_init_802F530
+
 
 	thumb_func_start startscreen_802F544
 startscreen_802F544:
 	push {r4-r7,lr}
 	bl sub_803E938
+
 	ldr r5, off_802F570 // =eStartScreen
 	ldr r0, off_802F55C // =jt_802F560 
-	ldrb r1, [r5]
+	ldrb r1, [r5, #oStartScreen_JumpTableOff_00]
 	ldr r0, [r0,r1]
-	mov lr, pc
+	
+    mov lr, pc
 	bx r0
-	bl GetRNG2 // () -> int
-	pop {r4-r7,pc}
+	
+    bl GetRNG2 // () -> int
+    pop {r4-r7,pc}
 	.balign 4, 0
 off_802F55C: .word jt_802F560
 jt_802F560: .word startScreen_802F574+1

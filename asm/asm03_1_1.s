@@ -1237,7 +1237,7 @@ sub_8039630:
 	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	bl chatbox_8040818
-	bl sub_802F530
+	bl startScreen_init_802F530 // () -> void
 	ldr r0, off_8039654 // =0x40
 	bl SetRenderInfoLCDControl
 locret_8039652:
@@ -8551,7 +8551,7 @@ sub_803D2A6:
 	push {lr}
 	ldr r0, off_803D2B4 // =0x40
 	bl SetRenderInfoLCDControl
-	bl sub_802F530
+	bl startScreen_init_802F530 // () -> void
 	pop {pc}
 	.balign 4, 0
 off_803D2B4: .word 0x40
@@ -10556,10 +10556,12 @@ sub_803E938:
 	push {r4,lr}
 	ldr r4, off_803E960 // =byte_200B1A0
 	ldrb r0, [r4]
+
 	cmp r0, #1
 	beq loc_803E94C
 	cmp r0, #2
 	beq loc_803E958
+
 	bl sub_803E964
 	b locret_803E95C
 loc_803E94C:
@@ -12742,7 +12744,7 @@ loc_803F870:
 	mov r4, #1
 	movflag EVENT_1704
 	bl ClearEventFlagFromImmediate
-	bl SeedRNG2 // () -> int
+	bl SeedRNG2 // () -> void
 loc_803F87E:
 	bl RandomizeExtraToolkitPointers
 	mov r0, r4
@@ -13194,7 +13196,7 @@ sub_803FBC2:
 	bl IsScreenFadeActive // () -> zf
 	beq locret_803FBE0
 	bl sub_8006910
-	bl sub_802F530
+	bl startScreen_init_802F530 // () -> void
 	bl clear_e200AD04 // () -> void
 	bl sub_803E914
 	ldr r0, off_803FBE4 // =0x40

@@ -12836,7 +12836,7 @@ int *sub_802F2C8()
 
 
 // 0x802f530
-int __fastcall sub_802F530(int a1, int a2, int a3, int a4)
+int __fastcall startScreen_init_802F530(int a1, int a2, int a3, int a4)
 {
     _BYTE **v4; // r10
     int result; // r0

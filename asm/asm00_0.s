@@ -2364,23 +2364,24 @@ copyWords_80014EC: // 80014EC
 	pop {r0-r7,pc}
 	thumb_func_end copyWords_80014EC
 
-// () -> void
+
 	thumb_func_start SeedRNG2
-SeedRNG2:
+SeedRNG2: // () -> void
 	ldr r0, rng_8001594 // =0xa338244f
 	ldr r1, off_8001598 // =eRngSeed20013F0
 	str r0, [r1]
 	mov pc, lr
 	thumb_func_end SeedRNG2
 
-// () -> int
+
 	thumb_func_start GetRNG2
-GetRNG2:
+GetRNG2: // () -> int
 	push {r7,lr}
+
 	ldr r7, off_800159C // =eRngSeed20013F0
 	ldr r0, [r7]
-	ldr r1, rng_80015A0 // =0x873ca9e5
-	lsl r2, r0, #1
+	ldr r1, rng_80015A0 // =0x873ca9e5@
+    lsl r2, r0, #1
 	lsr r3, r0, #0x1f
 	add r0, r2, r3
 	add r0, #1
@@ -2388,6 +2389,7 @@ GetRNG2:
 	str r0, [r7]
 	pop {r7,pc}
 	thumb_func_end GetRNG2
+
 
 	thumb_func_start GetPositiveSignedRNG2
 GetPositiveSignedRNG2:

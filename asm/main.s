@@ -2,7 +2,7 @@
 	thumb_func_start main_
 main_:
 	bl main_initToolkitAndOtherSubsystems
-	bl SeedRNG2 // () -> int
+	bl SeedRNG2 // () -> void
 	bl clear_e200AD04 // () -> void
 	bl sub_803D1A8 // () -> void
 main_gameRoutine:
@@ -48,7 +48,8 @@ loc_800032A:
 	.balign 4, 0
 off_8000344: .word sub_3006814+1
 off_8000348: .word main_subsystemJumpTable
-main_subsystemJumpTable: .word startscreen_802F544+1
+main_subsystemJumpTable: 
+    .word startscreen_802F544+1
 	.word cbGameState_80050EC+1
 	.word ho_jackIn_80341B6+1
 	.word cb_8038AD0+1

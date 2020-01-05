@@ -2,14 +2,14 @@
 	thumb_func_start reqBBS_813E07C
 reqBBS_813E07C:
 	push {r4-r7,lr}
-	push {r0}
-	// memBlock
+	
+    push {r0}
 	ldr r0, off_813E0A0 // =reqBBS_eStruct2001150 
-	// size
 	mov r1, #0x2c 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0}
-	ldr r5, off_813E0A0 // =reqBBS_eStruct2001150 
+	
+    ldr r5, off_813E0A0 // =reqBBS_eStruct2001150 
 	strb r0, [r5,#0x4] // (byte_2001154 - 0x2001150)
 	ldr r2, off_813E09C // =off_813DF74 
 	mov r1, #0x24 

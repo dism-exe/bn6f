@@ -6014,7 +6014,7 @@ int sub_8039630()
         ZeroFillGFX30025c0();
         copyMemory_8001850();
         v2 = chatbox_8040818();
-        sub_802F530(v2, v3, v4, v5);
+        startScreen_init_802F530(v2, v3, v4, v5);
         result = SetRenderInfoLCDControl(&byte_40);
     }
     return result;
@@ -11735,7 +11735,7 @@ int sub_803D2A6()
     int v3; // r3
 
     v0 = SetRenderInfoLCDControl(&byte_40);
-    return sub_802F530(v0, v1, v2, v3);
+    return startScreen_init_802F530(v0, v1, v2, v3);
 }
 
 
@@ -14980,7 +14980,7 @@ int sub_803FBC2()
     if ( !v1 )
     {
         v2 = sub_8006910();
-        sub_802F530(v2, v3, v4, v5);
+        startScreen_init_802F530(v2, v3, v4, v5);
         clear_e200AD04();
         sub_803E914();
         result = SetRenderInfoLCDControl(&byte_40);
