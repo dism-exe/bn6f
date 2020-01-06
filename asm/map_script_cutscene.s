@@ -394,9 +394,9 @@ MapScriptCutsceneCmd_jump_if_chip_count_in_range: // 8035AAA
 
 	thumb_local_start
 // 0x0c/0x21 byte1 signedbyte2 destination3
-// jump if the return value of the coordinate trigger function (sub_8031A7A) equals byte1
-// sub_8031A7A returns r0, r1. if r0 == 0, r1 is used in comparison
-// byte1 - byte to compare return value of sub_8031A7A
+// jump if the return value of the coordinate trigger function (checkCoordinateTrigger_8031a7a) equals byte1
+// checkCoordinateTrigger_8031a7a returns r0, r1. if r0 == 0, r1 is used in comparison
+// byte1 - byte to compare return value of checkCoordinateTrigger_8031a7a
 // signedbyte2 - signed offset to overworld player object coordinates
 // destination3 - script to jump to
 MapScriptCutsceneCmd_coordinate_trigger_equals_cmd_8035afa: // 8035afa
@@ -416,7 +416,7 @@ MapScriptCutsceneCmd_coordinate_trigger_equals_cmd_8035afa: // 8035afa
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	mov r0, sp
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	add sp, sp, #0xc
 	tst r0, r0
 	bne loc_8035B28
@@ -439,9 +439,9 @@ loc_8035B3E:
 
 	thumb_local_start
 // 0x0d/0x22 byte1 signedbyte2 destination3
-// jump if the return value of the coordinate trigger function (sub_8031A7A) doesn't equal byte1
-// sub_8031A7A returns r0, r1. if r0 == 0, r1 is used in comparison
-// byte1 - byte to compare return value of sub_8031A7A
+// jump if the return value of the coordinate trigger function (checkCoordinateTrigger_8031a7a) doesn't equal byte1
+// checkCoordinateTrigger_8031a7a returns r0, r1. if r0 == 0, r1 is used in comparison
+// byte1 - byte to compare return value of checkCoordinateTrigger_8031a7a
 // signedbyte2 - signed offset to overworld player object coordinates
 // destination3 - script to jump to
 MapScriptCutsceneCmd_coordinate_trigger_not_equal_cmd_8035b44: // 8035b44
@@ -461,7 +461,7 @@ MapScriptCutsceneCmd_coordinate_trigger_not_equal_cmd_8035b44: // 8035b44
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	mov r0, sp
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	add sp, sp, #0xc
 	tst r0, r0
 	bne loc_8035B72
@@ -597,7 +597,7 @@ MapScriptCmd_jump_if_game_state_44_equals: // 8035C26
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldr r0, [r0,#oGameState_Unk_44]
+	ldr r0, [r0,#oGameState_SavedRealWorldMapId]
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	cmp r0, r4
@@ -622,7 +622,7 @@ MapScriptCmd_jump_if_game_state_44_not_equal: // 8035C4A
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldr r0, [r0,#oGameState_Unk_44]
+	ldr r0, [r0,#oGameState_SavedRealWorldMapId]
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	cmp r0, r4
@@ -2499,12 +2499,12 @@ IsCutsceneScriptNonNull:
 cutscene_checkOriginalCutsceneScriptPos_8036F40:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
-	mov r2, #CUTSCENE_SCRIPT_UNK_MAGIC_SCRIPT_VALUE_0x1
+	mov r2, #TRUE
 	ldr r0, [r0,#oCutsceneState_originalCutsceneScriptPos_40] // s_02011C50.unk_40
 	ldr r1, off_8036F54 // =CutsceneScript_80991F4
 	cmp r0, r1
 	beq loc_8036F50
-	mov r2, #0
+	mov r2, #FALSE
 loc_8036F50:
 	tst r2, r2
 	mov pc, lr
@@ -2516,12 +2516,12 @@ off_8036F54: .word CutsceneScript_80991F4
 cutscene_checkOriginalCutsceneScriptPos_8036F58:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
-	mov r2, #CUTSCENE_SCRIPT_UNK_MAGIC_SCRIPT_VALUE_0x1
+	mov r2, #TRUE
 	ldr r0, [r0,#oCutsceneState_originalCutsceneScriptPos_40]
 	ldr r1, off_8036F6C // =CutsceneScript_80988E4
 	cmp r0, r1
 	beq loc_8036F68
-	mov r2, #0
+	mov r2, #FALSE
 loc_8036F68:
 	tst r2, r2
 	mov pc, lr
@@ -5122,9 +5122,10 @@ CutsceneCmd_call_native_with_return_value:
 // literal interpretation:
 // if bit7 of byte1 is set, word3 = [eCutsceneState_Unk_34]
 // if bit0 of byte1 is set:
-// call warp_setSubsystemIndexTo0x10AndOthers_8005f00 with r0=word3, r1=0, r2=byte2
-// else:
 // call warp_setSubsystemIndexTo0x14AndOthers_8005f14 with r0=word3, r1=0, r2=byte2
+// else:
+// call warp_setSubsystemIndexTo0x10AndOthers_8005f00 with r0=word3, r1=0, r2=byte2
+// byte2 = map group transition type
 CutsceneCmd_warp_cmd_8038040:
 	push {lr}
 	mov r6, #1

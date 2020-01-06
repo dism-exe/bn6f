@@ -387,9 +387,9 @@
 // shared command
 	enum cs_coordinate_trigger_equals_cmd_8035afa_cmd // 0x21
 // 0x0c/0x21 byte1 signedbyte2 destination3
-// jump if the return value of the coordinate trigger function (sub_8031A7A) equals byte1
-// sub_8031A7A returns r0, r1. if r0 == 0, r1 is used in comparison
-// byte1 - byte to compare return value of sub_8031A7A
+// jump if the return value of the coordinate trigger function (checkCoordinateTrigger_8031a7a) equals byte1
+// checkCoordinateTrigger_8031a7a returns r0, r1. if r0 == 0, r1 is used in comparison
+// byte1 - byte to compare return value of checkCoordinateTrigger_8031a7a
 // signedbyte2 - signed offset to overworld player object coordinates
 // destination3 - script to jump to
 	.macro cs_coordinate_trigger_equals_cmd_8035afa byte1:req signedbyte2:req destination3:req
@@ -402,9 +402,9 @@
 // shared command
 	enum cs_coordinate_trigger_not_equal_cmd_8035b44_cmd // 0x22
 // 0x0d/0x22 byte1 signedbyte2 destination3
-// jump if the return value of the coordinate trigger function (sub_8031A7A) doesn't equal byte1
-// sub_8031A7A returns r0, r1. if r0 == 0, r1 is used in comparison
-// byte1 - byte to compare return value of sub_8031A7A
+// jump if the return value of the coordinate trigger function (checkCoordinateTrigger_8031a7a) doesn't equal byte1
+// checkCoordinateTrigger_8031a7a returns r0, r1. if r0 == 0, r1 is used in comparison
+// byte1 - byte to compare return value of checkCoordinateTrigger_8031a7a
 // signedbyte2 - signed offset to overworld player object coordinates
 // destination3 - script to jump to
 	.macro cs_coordinate_trigger_not_equal_cmd_8035b44 byte1:req signedbyte2:req destination3:req
@@ -1125,9 +1125,9 @@
 // literal interpretation:
 // if bit7 of byte1 is set, word3 = [eCutsceneState_Unk_34]
 // if bit0 of byte1 is set:
-// call warp_setSubsystemIndexTo0x10AndOthers_8005f00 with r0=word3, r1=0, r2=byte2
-// else:
 // call warp_setSubsystemIndexTo0x14AndOthers_8005f14 with r0=word3, r1=0, r2=byte2
+// else:
+// call warp_setSubsystemIndexTo0x10AndOthers_8005f00 with r0=word3, r1=0, r2=byte2
 	.macro cs_warp_cmd_8038040_2 byte1:req byte2:req word3:req
 	.byte cs_warp_cmd_8038040_cmd
 	.byte \byte1

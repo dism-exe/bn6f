@@ -194,9 +194,9 @@
 // shared command
 	enum ms_coordinate_trigger_equals_cmd_8035afa_cmd // 0x0c
 // 0x0c/0x21 byte1 signedbyte2 destination3
-// jump if the return value of the coordinate trigger function (sub_8031A7A) equals byte1
-// sub_8031A7A returns r0, r1. if r0 == 0, r1 is used in comparison
-// byte1 - byte to compare return value of sub_8031A7A
+// jump if the return value of the coordinate trigger function (checkCoordinateTrigger_8031a7a) equals byte1
+// checkCoordinateTrigger_8031a7a returns r0, r1. if r0 == 0, r1 is used in comparison
+// byte1 - byte to compare return value of checkCoordinateTrigger_8031a7a
 // signedbyte2 - signed offset to overworld player object coordinates
 // destination3 - script to jump to
 	.macro ms_coordinate_trigger_equals_cmd_8035afa byte1:req signedbyte2:req destination3:req
@@ -209,9 +209,9 @@
 // shared command
 	enum ms_coordinate_trigger_not_equal_cmd_8035b44_cmd // 0x0d
 // 0x0d/0x22 byte1 signedbyte2 destination3
-// jump if the return value of the coordinate trigger function (sub_8031A7A) doesn't equal byte1
-// sub_8031A7A returns r0, r1. if r0 == 0, r1 is used in comparison
-// byte1 - byte to compare return value of sub_8031A7A
+// jump if the return value of the coordinate trigger function (checkCoordinateTrigger_8031a7a) doesn't equal byte1
+// checkCoordinateTrigger_8031a7a returns r0, r1. if r0 == 0, r1 is used in comparison
+// byte1 - byte to compare return value of checkCoordinateTrigger_8031a7a
 // signedbyte2 - signed offset to overworld player object coordinates
 // destination3 - script to jump to
 	.macro ms_coordinate_trigger_not_equal_cmd_8035b44 byte1:req signedbyte2:req destination3:req

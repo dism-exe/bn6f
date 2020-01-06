@@ -1021,7 +1021,7 @@ ho_jackIn_80341B6:
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
 	ldrb r0, [r2,#oGameState_MapGroup]
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_80341C8
 	ldr r0, off_80341D4 // =off_80341DC
 	b loc_80341CA
@@ -1830,7 +1830,7 @@ loc_8034CF6:
 	add r2, r2, r6
 	str r2, [sp,#8]
 	mov r0, sp
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	add sp, sp, #0xc
 	sub r0, #0x40
 	blt loc_8034D44
@@ -2123,13 +2123,13 @@ sub_8034F68:
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r0, [r5,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #0x1c
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	mov r4, r1
 	cmp r4, #1
 	blt locret_8034FA8
 	cmp r4, #0xf
 	bgt locret_8034FA8
-	ldr r1, off_8034FAC // =0x16f0
+	ldr r1, off_8034FAC // =EVENT_16F0
 	add r1, r1, r4
 	mov r0, r1
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
@@ -2147,7 +2147,7 @@ sub_8034F68:
 locret_8034FA8:
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8034FAC: .word 0x16F0
+off_8034FAC: .word EVENT_16F0
 off_8034FB0: .word byte_8098384
 off_8034FB4: .word unk_2011EA0
 	thumb_func_end sub_8034F68
@@ -2205,7 +2205,7 @@ sub_8035028: // JP 0x8035fd8
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r0, [r5,#oGameState_Unk_44]
+	ldr r0, [r5,#oGameState_SavedRealWorldMapId]
 	lsr r1, r0, #8
 	mov r2, #0xff
 	and r0, r2
@@ -2506,7 +2506,7 @@ sub_8035274:
 	blt locret_80352D4
 	ldr r0, [r7,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #0x1c
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	mov r6, r0
 	cmp r6, #0xd0
 	blt locret_80352D4
@@ -2817,7 +2817,7 @@ sub_80355EC:
 	ldrh r1, [r7,#oGameState_MapGroup]
 	cmp r0, #0x80
 	blt loc_80355FE
-	ldr r1, [r7,#oGameState_Unk_44]
+	ldr r1, [r7,#oGameState_SavedRealWorldMapId]
 loc_80355FE:
 	ldrb r3, [r4]
 	cmp r3, #0xff
@@ -2913,7 +2913,7 @@ applyLayerEffectToOWObject_8035694:
 	b .loop
 .reachedTerminator
 	mov r0, r5
-	bl sub_80318B0
+	bl checkLayerPriority_80318b0
 	pop {r4-r7,pc}
 	.pool // Struct8034460
 	thumb_func_end applyLayerEffectToOWObject_8035694

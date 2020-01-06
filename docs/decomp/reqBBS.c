@@ -2524,7 +2524,7 @@ signed int reqBBS_81409E4()
 {
     int v0; // r10
 
-    return sub_8031A7A(*(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr) + offsetof(NPC, scriptArrayOffset));
+    return checkCoordinateTrigger_8031a7a(*(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr) + offsetof(NPC, scriptArrayOffset));
 }
 
 

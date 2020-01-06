@@ -9,7 +9,7 @@ HomePages_EnterMapGroup:
 	lsl r4, r2, #2
 	add r0, r0, r4
 	ldr r0, [r0]
-	str r0, [r1,#oWarp2011bb0_Ptr_14]
+	str r0, [r1,#oWarp2011bb0_WarpDataPtr]
 	bl HomePages_LoadBGAnim
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
@@ -19,7 +19,7 @@ HomePages_EnterMapGroup:
 	bl decompressCoordEventData_8030aa4
 	ldr r0, [r5,#oGameState_PlayerX]
 	ldr r1, [r5,#oGameState_PlayerY]
-	ldr r2, [r5,#oGameState_Unk_2c]
+	ldr r2, [r5,#oGameState_PlayerZ]
 	ldrb r3, [r5,#oGameState_MapGroup]
 	ldrb r4, [r5,#oGameState_MapNumber]
 	bl camera_802FF4C
@@ -265,7 +265,7 @@ sub_806C532:
 	bne loc_806C548
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	ldr r0, [r1,#oGameState_Unk_3c]
+	ldr r0, [r1,#oGameState_SavedRealWorldZ]
 	cmp r0, #0
 	bne loc_806C548
 	pop {pc}

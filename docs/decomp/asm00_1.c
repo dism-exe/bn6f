@@ -3007,7 +3007,7 @@ void sub_80058D0()
                         s_2011C50_ptr_1C_isNull();
                         if ( v2 )
                         {
-                            sub_8031A7A(*(v1 + oGameState_OverworldPlayerObjectPtr) + 28);
+                            checkCoordinateTrigger_8031a7a(*(v1 + oGameState_OverworldPlayerObjectPtr) + 28);
                             v4 = v3;
                             if ( v3 >= 1 && v3 <= 15 )
                             {
@@ -3070,7 +3070,7 @@ void *sub_80059B4()
 
     ClearEventFlagFromImmediate(23, 3);
     SetEventFlagFromImmediate(23, 56);
-    return StartCutscene(byte_8098A02, 0, v0, v1);
+    return StartCutscene(CutsceneScript_8098a02, 0, v0, v1);
 }
 
 
@@ -3082,7 +3082,7 @@ void *sub_80059D0()
 
     SetEventFlagFromImmediate(23, 3);
     SetEventFlagFromImmediate(23, 56);
-    return StartCutscene(byte_8098A78, 0, v0, v1);
+    return StartCutscene(CutsceneScript_8098a78, 0, v0, v1);
 }
 
 
@@ -3093,14 +3093,14 @@ void *sub_80059EC()
     int v1; // r3
 
     ClearEventFlagFromImmediate(23, 3);
-    return StartCutscene(byte_8098A2E, 0, v0, v1);
+    return StartCutscene(CutsceneScript_8098a2e, 0, v0, v1);
 }
 
 
 // 0x8005a00
 void *__fastcall sub_8005A00(int a1, int a2, int a3, int a4)
 {
-    return StartCutscene(byte_809B5AD, 0, a3, a4);
+    return StartCutscene(CutsceneScript_809b5ad, 0, a3, a4);
 }
 
 
@@ -3112,7 +3112,7 @@ void *sub_8005A0C()
 
     ClearEventFlagFromImmediate(23, 3);
     SetEventFlagFromImmediate(23, 56);
-    return StartCutscene(byte_8098B1C, 0, v0, v1);
+    return StartCutscene(CutsceneScript_8098b1c, 0, v0, v1);
 }
 
 
@@ -3392,9 +3392,9 @@ int sub_8005C04()
     if ( v3 && (*v1 ^ *(v2 + oGameState_MapGroup)) & 0x80 )
     {
         if ( *v1 & 0x80 )
-            v4 = oGameState_Unk_34;
+            v4 = oGameState_SavedRealWorldCoords_FacingDirection_MapId;
         else
-            v4 = oGameState_Unk_48;
+            v4 = oGameState_SavedInternetCoords_FacingDirection_MapId;
         v5 = *(v2 + oGameState_OverworldPlayerObjectPtr);
         v6 = *(v5 + 32);
         v7 = *(v5 + 36);
@@ -3410,19 +3410,19 @@ int sub_8005C04()
     v10 = *(v1 + 18);
     if ( v10 == 1 )
     {
-        v11 = *(v2 + oGameState_Unk_34);
-        v12 = *(v2 + oGameState_Unk_38);
-        v13 = *(v2 + oGameState_Unk_3c);
-        v14 = *(v2 + oGameState_Unk_40);
-        v15 = *(v2 + oGameState_Unk_44);
+        v11 = *(v2 + oGameState_SavedRealWorldCoords_FacingDirection_MapId);
+        v12 = *(v2 + oGameState_SavedRealWorldY);
+        v13 = *(v2 + oGameState_SavedRealWorldZ);
+        v14 = *(v2 + oGameState_SavedRealWorldFacingDirection);
+        v15 = *(v2 + oGameState_SavedRealWorldMapId);
     }
     else if ( v10 == 2 )
     {
-        v11 = *(v2 + oGameState_Unk_48);
-        v12 = *(v2 + (oGameState_Unk_48|oGameState_MapGroup));
-        v13 = *(v2 + (oGameState_Unk_40|oGameState_Unk_10));
-        v14 = *(v2 + (oGameState_Unk_44|oGameState_Unk_10));
-        v15 = *(v2 + (oGameState_Unk_48|oGameState_Unk_10));
+        v11 = *(v2 + oGameState_SavedInternetCoords_FacingDirection_MapId);
+        v12 = *(v2 + (oGameState_SavedInternetCoords_FacingDirection_MapId|oGameState_MapGroup));
+        v13 = *(v2 + (oGameState_SavedRealWorldFacingDirection|oGameState_Unk_10));
+        v14 = *(v2 + (oGameState_SavedRealWorldMapId|oGameState_Unk_10));
+        v15 = *(v2 + (oGameState_SavedInternetCoords_FacingDirection_MapId|oGameState_Unk_10));
     }
     else
     {
@@ -3435,7 +3435,7 @@ int sub_8005C04()
     }
     *(v2 + oGameState_PlayerX) = v11;
     *(v2 + oGameState_PlayerY) = v12;
-    *(v2 + oGameState_Unk_2c) = v13;
+    *(v2 + oGameState_PlayerZ) = v13;
     *(v2 + oGameState_Unk_30) = v14;
     *v2 = 0;
     *(v2 + oGameState_LastMapNumber) = *(v2 + oGameState_MapNumber);
@@ -3523,7 +3523,7 @@ signed int __fastcall subsystem_launchChipTrader(int a1)
     v8 = *(v7 + oGameState_OverworldPlayerObjectPtr);
     *(v7 + oGameState_PlayerX) = *(v8 + 28);
     *(v7 + oGameState_PlayerY) = *(v8 + 32);
-    *(v7 + oGameState_Unk_2c) = *(v8 + 36);
+    *(v7 + oGameState_PlayerZ) = *(v8 + 36);
     *(v7 + oGameState_Unk_30) = *(v8 + 16);
     *v7 = 36;
     engine_setScreeneffect(12, 16);
@@ -3695,7 +3695,7 @@ int __fastcall subsystem_launchMail(int a1, int a2, int a3, int a4)
     v6 = *(v5 + oGameState_OverworldPlayerObjectPtr);
     *(v5 + oGameState_PlayerX) = *(v6 + 28);
     *(v5 + oGameState_PlayerY) = *(v6 + 32);
-    *(v5 + oGameState_Unk_2c) = *(v6 + 36);
+    *(v5 + oGameState_PlayerZ) = *(v6 + 36);
     *(v5 + oGameState_Unk_30) = *(v6 + 16);
     *v5 = 52;
     engine_setScreeneffect(12, 16);

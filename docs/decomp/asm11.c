@@ -370,7 +370,7 @@ unsigned int __fastcall sub_806C532(int a1, int a2)
 	int v2; // r10
 	unsigned int result; // r0
 
-	if ( a1 != 3 || a2 != 2 || (result = *(*(v2 + oToolkit_GameStatePtr) + oGameState_Unk_3c)) != 0 )
+	if ( a1 != 3 || a2 != 2 || (result = *(*(v2 + oToolkit_GameStatePtr) + oGameState_SavedRealWorldZ)) != 0 )
 	{
 		ClearEventFlagFromImmediate(0, 142);
 		result = SetEventFlagFromImmediate(0, 143);

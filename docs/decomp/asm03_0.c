@@ -14849,7 +14849,7 @@ void __fastcall sub_8030B1E(int a1, int a2)
 
 
 // 0x8030b6a
-int __fastcall sub_8030B6A(int a1)
+int __fastcall checkCollision_8030b6a(int a1)
 {
     int v1; // r12
     __int16 *v2; // r2
@@ -15695,7 +15695,7 @@ signed int __fastcall sub_8031600(_DWORD *a1)
 
 
 // 0x8031612
-int __fastcall sub_8031612(int a1)
+int __fastcall checkZCoordModifiers_8031612(int a1)
 {
     int v1; // r0
     int v2; // r1
@@ -15928,7 +15928,7 @@ signed int __fastcall sub_803189C(_DWORD *a1)
 
 
 // 0x80318b0
-int __fastcall sub_80318B0(int a1)
+int __fastcall checkLayerPriority_80318b0(int a1)
 {
     int v1; // r0
     int v2; // r1
@@ -16107,7 +16107,7 @@ signed int __fastcall sub_8031A68(_DWORD *a1)
 
 
 // 0x8031a7a
-signed int __fastcall sub_8031A7A(int a1)
+signed int __fastcall checkCoordinateTrigger_8031a7a(int a1)
 {
     int v1; // r0
     int v2; // r1

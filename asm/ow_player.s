@@ -110,7 +110,7 @@ loc_809D222:
 	bl sprite_zeroColorShader
 	mov r0, #oOWPlayerObject_Coords
 	add r0, r0, r5
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	cmp r0, #0x3c 
 	bne loc_809D238
 	ldr r0, dword_809D344 // =0xa108 
@@ -270,7 +270,7 @@ sub_809D348:
 	bl sub_809E3D6
 	mov r0, #oOWPlayerObject_Coords
 	add r0, r0, r5
-	bl sub_8030B6A
+	bl checkCollision_8030b6a
 	tst r0, r0
 	beq loc_809D3BC
 	movflag EVENT_1716
@@ -301,7 +301,7 @@ loc_809D3BC:
 	bne loc_809D3E6
 	mov r0, #oOWPlayerObject_Coords
 	add r0, r0, r5
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	lsl r0, r0, #0x10
 	str r0, [r5,#oOWPlayerObject_Z]
 loc_809D3E6:
@@ -539,7 +539,7 @@ sub_809D5C4:
 	beq loc_809D60C
 	mov r0, #0x1c
 	add r0, r0, r5
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	mov r2, #0
 	mov r3, #1
 	cmp r1, #1
@@ -873,7 +873,7 @@ loc_809D844:
 	bl sub_809E3D6
 	mov r0, #0x1c
 	add r0, r0, r5
-	bl sub_8030B6A
+	bl checkCollision_8030b6a
 loc_809D856:
 	ldr r7, off_809D8AC // =eStruct200ace0 
 	ldr r0, [r5,#oOWPlayerObject_X]
@@ -893,7 +893,7 @@ loc_809D856:
 	bne loc_809D886
 	mov r0, #0x1c
 	add r0, r0, r5
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	lsl r0, r0, #0x10
 	str r0, [r5,#oOWPlayerObject_Z]
 loc_809D886:
@@ -1043,7 +1043,7 @@ sub_809D9A0:
 	push {lr}
 	mov r0, r5
 	add r0, #0x1c
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	cmp r0, #0x4c 
 	blt loc_809D9C4
 	cmp r0, #0x4f 
@@ -1124,7 +1124,7 @@ sub_809D9E0:
 	add r0, r0, r1
 	str r0, [r6,#8]
 	mov r0, r6
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	mov r2, r0
 	strb r2, [r5,#oOWPlayerObject_Unk_0d]
 	mov r7, r10
@@ -1882,9 +1882,9 @@ spawnOWPlayerObjectForEnterMap_809e064:
 	str r1, [r5,#oOWPlayerObject_X]
 	ldr r1, [r6,#oGameState_PlayerY]
 	str r1, [r5,#oOWPlayerObject_Y]
-	ldr r1, [r6,#oGameState_Unk_2c]
+	ldr r1, [r6,#oGameState_PlayerZ]
 	str r1, [r5,#oOWPlayerObject_Z]
-	ldr r1, [r6,#oGameState_facingDirectionAfterWarp_30]
+	ldr r1, [r6,#oGameState_FacingDirectionAfterWarp]
 	strb r1, [r5,#oOWPlayerObject_FacingDirection]
 locret_809E088:
 	pop {r4,r6,r7,pc}
@@ -2590,7 +2590,7 @@ sub_809E46E:
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldr r0, [r7,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #0x1c
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	cmp r0, #0x48 
 	blt locret_809E494
 	cmp r0, #0x4f 

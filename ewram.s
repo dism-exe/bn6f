@@ -1662,8 +1662,10 @@ byte_2011A9D:: // 0x2011a9d
 	.space 147
 byte_2011B30:: // 0x2011b30
 	.space 128
-byte_2011BB0:: // 0x2011bb0
-	.space 32
+
+eWarp2011bb0:: // 0x2011bb0
+	warp_2011bb0_struct eWarp2011bb0
+eWarp2011bb0End:: // 0x2011bd0
 
 eCutsceneCameraInfo:: // 0x2011bd0
 	cutscene_camera_info_struct eCutsceneCameraInfo

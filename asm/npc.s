@@ -388,7 +388,7 @@ loc_809E81A:
 	bne loc_809E842
 	mov r0, #oOverworldNPCObject_Coords
 	add r0, r0, r5
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	lsl r0, r0, #0x10
 	str r0, [r5,#oOverworldNPCObject_Z]
 	str r0, [r5,#oOverworldNPCObject_NextZ]
@@ -541,7 +541,7 @@ npc_updateHopMovement_809e916:
 	push {lr}
 	mov r0, #oOverworldNPCObject_Coords
 	add r0, r0, r5
-	bl sub_8031612 // get Z coordinate of current position
+	bl checkZCoordModifiers_8031612 // get Z coordinate of current position
 	mov r2, r0
 	lsl r2, r2, #0x10
 
@@ -599,7 +599,7 @@ npc_updateLeapMovement_809e95e:
 
 	mov r0, #oOverworldNPCObject_Coords
 	add r0, r0, r5
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	mov r2, r0
 	lsl r2, r2, #0x10
 	push {r2}
@@ -692,7 +692,7 @@ npc_updateDiagonalLeapMovement_809e9da:
 
 	mov r0, #oOverworldNPCObject_Coords
 	add r0, r0, r5
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	mov r2, r0
 	lsl r2, r2, #0x10
 	push {r2}
@@ -2871,7 +2871,7 @@ loc_809F53E:
 	push {r0,r1,r3-r5}
 	mov r0, #oOverworldNPCObject_Coords
 	add r0, r0, r5
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	mov r2, r0
 	lsl r2, r2, #0x10
 	pop {r0,r1,r3-r5}

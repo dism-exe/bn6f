@@ -984,7 +984,7 @@ signed int sub_8034CB6()
                     v19 = v8[7];
                     v20 = v9;
                     v21 = v10 + v7;
-                    v11 = sub_8031A7A(&v19);
+                    v11 = checkCoordinateTrigger_8031a7a(&v19);
                     v14 = __OFSUB__(v11, 64);
                     v15 = v11 - 64;
                     if ( !((v15 < 0) ^ v14) && v15 < 24 )
@@ -1214,7 +1214,7 @@ signed int __fastcall sub_8034F68(int a1)
     result = s_2011C50_ptr_1C_isNull();
     if ( v3 )
     {
-        result = sub_8031A7A(*(*(v1 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr) + 28);
+        result = checkCoordinateTrigger_8031a7a(*(*(v1 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr) + 28);
         v5 = v4;
         if ( v4 >= 1 && v4 <= 15 )
         {
@@ -1279,7 +1279,7 @@ unsigned int sub_8035028()
     int (__fastcall *v5)(_DWORD, unsigned int); // r6
 
     v1 = *(v0 + oToolkit_GameStatePtr);
-    result = *(v1 + oGameState_Unk_44);
+    result = *(v1 + oGameState_SavedRealWorldMapId);
     v2 = result >> 8;
     result = result;
     v4 = *(v1 + oGameState_MapGroup);
@@ -1527,7 +1527,7 @@ int sub_8035274()
             result = *(v3 + oGameState_MapGroup);
             if ( result >= 128 )
             {
-                result = sub_8031A7A(*(v3 + oGameState_OverworldPlayerObjectPtr) + 28);
+                result = checkCoordinateTrigger_8031a7a(*(v3 + oGameState_OverworldPlayerObjectPtr) + 28);
                 v4 = result;
                 if ( result >= 208 && result <= 239 )
                 {
@@ -1736,7 +1736,7 @@ int sub_80355EC()
     v2 = *(v0 + oToolkit_GameStatePtr);
     v3 = *(v2 + oGameState_MapGroup);
     if ( *(v2 + oGameState_MapGroup) >= 128 )
-        v3 = *(v2 + oGameState_Unk_44);
+        v3 = *(v2 + oGameState_SavedRealWorldMapId);
     while ( *v1 != 255 )
     {
         if ( *v1 == v3 )
@@ -1777,7 +1777,7 @@ int __fastcall sub_8035694(int *a1)
             }
         }
     }
-    return sub_80318B0(v2);
+    return checkLayerPriority_80318b0(v2);
 }
 
 
@@ -2142,7 +2142,7 @@ signed int MapScript_cmd_8035afa()
     v8 = v3[7];
     v9 = v4;
     v10 = v5;
-    sub_8031A7A(&v8);
+    checkCoordinateTrigger_8031a7a(&v8);
     if ( v6 == ReadMapScriptByte(1, v0) )
         ReadMapScriptWord(3, v0);
     return 1;
@@ -2170,7 +2170,7 @@ signed int MapScript_cmd_8035b44()
     v8 = v3[7];
     v9 = v4;
     v10 = v5;
-    sub_8031A7A(&v8);
+    checkCoordinateTrigger_8031a7a(&v8);
     if ( v6 != ReadMapScriptByte(1, v0) )
         ReadMapScriptWord(3, v0);
     return 1;
@@ -2240,7 +2240,7 @@ signed int MapScript_jump_if_game_state_44_equals()
     int v1; // r10
     int v2; // r0
 
-    v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_44);
+    v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_SavedRealWorldMapId);
     if ( v2 == ReadMapScriptHalfword(1, v0) )
         ReadMapScriptWord(3, v0);
     return 1;
@@ -2254,7 +2254,7 @@ signed int MapScript_jump_if_game_state_44_not_equals()
     int v1; // r10
     int v2; // r0
 
-    v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_44);
+    v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_SavedRealWorldMapId);
     if ( v2 != ReadMapScriptHalfword(1, v0) )
         ReadMapScriptWord(3, v0);
     return 1;

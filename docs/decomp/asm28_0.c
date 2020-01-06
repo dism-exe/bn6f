@@ -1371,7 +1371,7 @@ int sub_809B00C()
     signed __int16 v4; // r0
 
     v2 = *(v1 + oToolkit_GameStatePtr);
-    *(v0 + 4) = *(&dword_809B050 + sub_8031A7A(*(v2 + oGameState_OverworldPlayerObjectPtr) + 28) - 192);
+    *(v0 + 4) = *(&dword_809B050 + checkCoordinateTrigger_8031a7a(*(v2 + oGameState_OverworldPlayerObjectPtr) + 28) - 192);
     *(v0 + 5) = 26;
     v3 = 2;
     if ( *(*(v2 + oGameState_OverworldPlayerObjectPtr) + 36) >> 16 < 60 )
@@ -1498,7 +1498,7 @@ int sub_809B130()
     int v5; // r3
     char v6; // zf
 
-    v1 = sub_8031A7A(*(*(v0 + 60) + 24) + 28);
+    v1 = checkCoordinateTrigger_8031a7a(*(*(v0 + 60) + 24) + 28);
     v2 = __OFSUB__(v1, 192);
     v3 = v1 - 192;
     if ( !((v3 < 0) ^ v2) && v3 <= 15 )
@@ -2490,7 +2490,7 @@ void sub_809D19C()
             goto LABEL_17;
     }
     sprite_zeroColorShader();
-    if ( sub_8031A7A(&v0->unk_1C) == 60 )
+    if ( checkCoordinateTrigger_8031a7a(&v0->unk_1C) == 60 )
     {
         v5 = 41224;
 LABEL_17:
@@ -2593,7 +2593,7 @@ unsigned int sub_809D348()
     if ( *(v0 + 12) )
     {
         sub_809E3D6();
-        if ( sub_8030B6A(v0 + 28) )
+        if ( checkCollision_8030b6a(v0 + 28) )
         {
             TestEventFlagFromImmediate(23, 22);
             if ( !v4 )
@@ -2616,7 +2616,7 @@ unsigned int sub_809D348()
         {
             TestEventFlagFromImmediate(11, 228);
             if ( v4 )
-                *(v0 + 36) = sub_8031612(v0 + 28) << 16;
+                *(v0 + 36) = checkZCoordModifiers_8031612(v0 + 28) << 16;
         }
     }
     TestEventFlagFromImmediate(23, 24);
@@ -2776,7 +2776,7 @@ int sub_809D5C4()
 
     if ( sub_809DDCC() )
     {
-        sub_8031612(v0 + 28);
+        checkZCoordModifiers_8031612(v0 + 28);
         v1 = 0;
         v2 = 1;
         if ( v3 == 1 )
@@ -3012,7 +3012,7 @@ int sub_809D800()
     if ( *(v0 + 12) )
     {
         sub_809E3D6();
-        sub_8030B6A(v0 + 28);
+        checkCollision_8030b6a(v0 + 28);
     }
     dword_200ACE8 = *(v0 + 28);
     dword_200ACEC = *(v0 + 32);
@@ -3024,7 +3024,7 @@ int sub_809D800()
         {
             TestEventFlagFromImmediate(11, 228);
             if ( v4 )
-                *(v0 + 36) = sub_8031612(v0 + 28) << 16;
+                *(v0 + 36) = checkZCoordModifiers_8031612(v0 + 28) << 16;
         }
     }
     v5 = *(v0 + 22);
@@ -3135,7 +3135,7 @@ int sub_809D9A0()
     signed int v1; // r0
     int result; // r0
 
-    v1 = sub_8031A7A(v0 + 28);
+    v1 = checkCoordinateTrigger_8031a7a(v0 + 28);
     if ( v1 < 76 || v1 > 79 )
     {
         ClearEventFlagFromImmediate(23, 23);
@@ -3202,7 +3202,7 @@ int sub_809D9E0()
                             v12 = *(v0 + 28) + *v9;
                             v13 = *(v0 + 32) + *&(*v9)[4];
                             v14 = *(v0 + 36) + *&(*v9)[8];
-                            *(v0 + 13) = sub_8031A7A(&v12);
+                            *(v0 + 13) = checkCoordinateTrigger_8031a7a(&v12);
                             *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_11) = 1;
                             result = 0;
                             v6 = v8;
@@ -4304,7 +4304,7 @@ signed int sub_809E46E()
     signed int result; // r0
 
     v1 = *(v0 + oToolkit_GameStatePtr);
-    result = sub_8031A7A(*(v1 + oGameState_OverworldPlayerObjectPtr) + 28);
+    result = checkCoordinateTrigger_8031a7a(*(v1 + oGameState_OverworldPlayerObjectPtr) + 28);
     if ( result >= 72 && result <= 79 )
     {
         *(*(v1 + oGameState_OverworldPlayerObjectPtr) + 100) = result - 72;

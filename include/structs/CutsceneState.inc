@@ -7,6 +7,7 @@
 	u8 Unk_05 // loc=0x5
 	u8 Unk_06 // loc=0x6
 	u8 Unk_07 // loc=0x7
+	u0 Unk_08 // loc=0x8
 	struct_org 0xc
 	u8 CutsceneScript1PauseTimer // loc=0xc
 	u8 CutsceneScript2PauseTimer // loc=0xd

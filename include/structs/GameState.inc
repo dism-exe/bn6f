@@ -37,19 +37,22 @@
 	ptr Ptr_20 // loc=0x20
 	u32 PlayerX // loc=0x24
 	u32 PlayerY // loc=0x28
-	u32 Unk_2c // loc=0x2c
-	u32 facingDirectionAfterWarp_30 // loc=0x30
-	u32 Unk_34 // loc=0x34
-	u32 Unk_38 // loc=0x38
-	u32 Unk_3c // loc=0x3c
-	u32 Unk_40 // loc=0x40
-	u32 Unk_44 // loc=0x44
+	u32 PlayerZ // loc=0x2c
+	u32 FacingDirectionAfterWarp // loc=0x30
+	// can probably be done with a nested struct
+	u0 SavedRealWorldCoords_FacingDirection_MapId // loc=0x34
+	u32 SavedRealWorldX // loc=0x34
+	u32 SavedRealWorldY // loc=0x38
+	u32 SavedRealWorldZ // loc=0x3c
+	u32 SavedRealWorldFacingDirection // loc=0x40
+	u32 SavedRealWorldMapId // loc=0x44
 	// same struct as Unk_34 to Unk_44
-	u32 Unk_48 // loc=0x48
-	u32 Unk_4c // loc=0x4c
-	u32 Unk_50 // loc=0x50
-	u32 Unk_54 // loc=0x54
-	u32 Unk_58 // loc=0x58
+	u0 SavedInternetCoords_FacingDirection_MapId
+	u32 SavedInternetX // loc=0x48
+	u32 SavedInternetY // loc=0x4c
+	u32 SavedInternetZ // loc=0x50
+	u32 SavedInternetFacingDirection // loc=0x54
+	u32 SavedInternetMapId // loc=0x58
 	u32 ProtectedZenny // loc=0x5c
 	u32 ProtectedBugfrags // loc=0x60
 	u32 Unk_64 // loc=0x64
@@ -64,3 +67,9 @@
 	.endm
 
 	def_struct_offsets game_state_struct, oGameState
+
+	.equiv oSavedOWPlayerInfo_X, 0x0
+	.equiv oSavedOWPlayerInfo_Y, 0x4
+	.equiv oSavedOWPlayerInfo_Z, 0x8
+	.equiv oSavedOWPlayerInfo_FacingDirection, 0xc
+	.equiv oSavedOWPlayerInfo_MapId, 0x10

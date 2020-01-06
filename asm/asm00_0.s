@@ -1670,14 +1670,14 @@ updatePlayerGameState_800107A:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r1, [r3,#oGameState_OverworldPlayerObjectPtr]
-	ldr r0, [r1,#0x1c] // NPC.scriptArrayOffset
+	ldr r0, [r1,#0x1c]
 	str r0, [r3,#oGameState_PlayerX]
-	ldr r0, [r1,#0x20] // NPC.animationTimer
+	ldr r0, [r1,#0x20]
 	str r0, [r3,#oGameState_PlayerY]
 	ldr r0, [r1,#0x24]
-	str r0, [r3,#oGameState_Unk_2c]
+	str r0, [r3,#oGameState_PlayerZ]
 	ldrb r0, [r1,#0x10]
-	str r0, [r3,#oGameState_facingDirectionAfterWarp_30]
+	str r0, [r3,#oGameState_FacingDirectionAfterWarp]
 	mov pc, lr
 	thumb_func_end updatePlayerGameState_800107A
 
@@ -1686,11 +1686,11 @@ sub_8001092:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	str r0, [r5,#oGameState_Unk_34]
-	str r1, [r5,#oGameState_Unk_38]
-	str r2, [r5,#oGameState_Unk_3c]
-	str r3, [r5,#oGameState_Unk_40]
-	str r4, [r5,#oGameState_Unk_44]
+	str r0, [r5,#oGameState_SavedRealWorldX]
+	str r1, [r5,#oGameState_SavedRealWorldY]
+	str r2, [r5,#oGameState_SavedRealWorldZ]
+	str r3, [r5,#oGameState_SavedRealWorldFacingDirection]
+	str r4, [r5,#oGameState_SavedRealWorldMapId]
 	pop {r4-r7,pc}
 	thumb_func_end sub_8001092
 
@@ -1699,11 +1699,11 @@ sub_80010A4:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	str r0, [r5,#oGameState_Unk_48]
-	str r1, [r5,#0x4c]
-	str r2, [r5,#0x50]
-	str r3, [r5,#0x54]
-	str r4, [r5,#0x58]
+	str r0, [r5,#oGameState_SavedInternetX]
+	str r1, [r5,#oGameState_SavedInternetY]
+	str r2, [r5,#oGameState_SavedInternetZ]
+	str r3, [r5,#oGameState_SavedInternetFacingDirection]
+	str r4, [r5,#oGameState_SavedInternetMapId]
 	pop {r4-r7,pc}
 	thumb_func_end sub_80010A4
 

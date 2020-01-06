@@ -20724,8 +20724,8 @@ sub_8030B1E:
 	pop {pc}
 	thumb_func_end sub_8030B1E
 
-	thumb_func_start sub_8030B6A
-sub_8030B6A:
+	thumb_func_start checkCollision_8030b6a
+checkCollision_8030b6a:
 	push {r4-r7,lr}
 	mov r2, r8
 	mov r3, r9
@@ -20864,7 +20864,7 @@ dword_8030C40: .word 0x0
 	.word 0x0
 	.word 0x0
 dword_8030CA8: .word 0x1640
-	thumb_func_end sub_8030B6A
+	thumb_func_end checkCollision_8030b6a
 
 	thumb_local_start
 // r0 - pointer to coords
@@ -22174,8 +22174,8 @@ sub_8031600:
 	mov pc, lr
 	thumb_func_end sub_8031600
 
-	thumb_func_start sub_8031612
-sub_8031612:
+	thumb_func_start checkZCoordModifiers_8031612
+checkZCoordModifiers_8031612:
 	push {r4-r7,lr}
 	mov r4, r8
 	mov r5, r9
@@ -22270,7 +22270,7 @@ dword_8031690:
 	.word NULL // 0x17
 	.word NULL // 0x18
 	.word NULL // 0x19
-	thumb_func_end sub_8031612
+	thumb_func_end checkZCoordModifiers_8031612
 
 	thumb_local_start
 sub_80316F8:
@@ -22550,8 +22550,8 @@ sub_803189C:
 	.byte 0, 0
 	thumb_func_end sub_803189C
 
-	thumb_func_start sub_80318B0
-sub_80318B0:
+	thumb_func_start checkLayerPriority_80318b0
+checkLayerPriority_80318b0:
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
@@ -22632,7 +22632,7 @@ dword_8031918: .word NULL
 	.word NULL
 	.word NULL
 	.word NULL
-	thumb_func_end sub_80318B0
+	thumb_func_end checkLayerPriority_80318b0
 
 	thumb_local_start
 sub_8031980:
@@ -22783,8 +22783,8 @@ sub_8031A68:
 	mov pc, lr
 	thumb_func_end sub_8031A68
 
-	thumb_func_start sub_8031A7A
-sub_8031A7A:
+	thumb_func_start checkCoordinateTrigger_8031a7a
+checkCoordinateTrigger_8031a7a:
 	push {r4-r7,lr}
 	mov r3, r8
 	mov r4, r9
@@ -22892,7 +22892,7 @@ jt_8031B10: .word 0x0
 	.word sub_8031C94+1 // 0x18
 	.word sub_8031CAC+1 // 0x19
 dword_8031B78: .word 0x16EF
-	thumb_func_end sub_8031A7A
+	thumb_func_end checkCoordinateTrigger_8031a7a
 
 	thumb_local_start
 sub_8031B7C:

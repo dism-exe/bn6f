@@ -181,7 +181,7 @@ int npc_nonCutsceneMovementUpdate_809E7D8()
         *(v0 + 52) += *(v0 + 68);
         if ( !(*(v0 + 96) & 0x200) )
         {
-            v4 = sub_8031612(v0 + 36) << 16;
+            v4 = checkZCoordModifiers_8031612(v0 + 36) << 16;
             *(v0 + 44) = v4;
             *(v0 + 56) = v4;
         }
@@ -283,7 +283,7 @@ int npc_updateHopMovement_809e916()
     int v2; // r0
     int result; // r0
 
-    v1 = sub_8031612(v0 + 36) << 16;
+    v1 = checkZCoordModifiers_8031612(v0 + 36) << 16;
     v2 = *(v0 + 72) + *(v0 + 68);
     *(v0 + 72) = v2;
     result = v2 + *(v0 + 44);
@@ -327,7 +327,7 @@ int npc_updateLeapMovement_809e95e()
     int result; // r0
     int v6; // [sp-4h] [bp-8h]
 
-    v6 = sub_8031612(v0 + 36) << 16;
+    v6 = checkZCoordModifiers_8031612(v0 + 36) << 16;
     v1 = 2 * *(v0 + 6);
     v2 = NPCLeapDirectionTable[v1];
     v3 = *(v0 + 7);
@@ -378,7 +378,7 @@ int npc_updateDiagonalLeapMovement_809e9da()
     int v5; // r0
     int result; // r0
 
-    v1 = sub_8031612(v0 + 36) << 16;
+    v1 = checkZCoordModifiers_8031612(v0 + 36) << 16;
     v2 = 2 * *(v0 + 6);
     v3 = byte_809EA34[v2];
     v4 = *(v0 + 7);

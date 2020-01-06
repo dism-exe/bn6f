@@ -25,7 +25,7 @@ void sub_80A49B0()
     if ( v2 == 255 )
     {
         v3 = *(v0 + 20);
-        *(v0 + 20) = sub_8031612(v0 + 12) << 16;
+        *(v0 + 20) = checkZCoordModifiers_8031612(v0 + 12) << 16;
         v2 = sub_8035694((v0 + 12));
         *(v0 + 20) = v3;
     }
@@ -184,7 +184,7 @@ void __noreturn sub_80A4BFC()
     *v0 = 3;
     sprite_load(v0, 128, *(v0 + 6), *(v0 + 7));
     v1 = *(v0 + 20);
-    *(v0 + 20) = sub_8031612(v0 + 12) << 16;
+    *(v0 + 20) = checkZCoordModifiers_8031612(v0 + 12) << 16;
     v2 = sub_8035694((v0 + 12));
     *(v0 + 20) = v1;
     sub_8002E14(v2);
@@ -917,7 +917,7 @@ LABEL_8:
             v2 = 1;
 LABEL_14:
             *(v1 + 16) = v9;
-            v10 = sub_8031612(v1 + 12) << 16;
+            v10 = checkZCoordModifiers_8031612(v1 + 12) << 16;
             *(v1 + 20) = v10;
             *(v1 + 32) = v10;
             return v2;
@@ -1216,7 +1216,7 @@ signed int sub_80A5C74()
     if ( v2 >= 192 )
     {
         v1 = 0;
-        if ( v2 == sub_8031A7A(v0 + 12) )
+        if ( v2 == checkCoordinateTrigger_8031a7a(v0 + 12) )
         {
             v1 = 1;
             *(v0 + 36) = 1;
@@ -1391,7 +1391,7 @@ LABEL_8:
             v1 = 1;
 LABEL_14:
             v0[4] = v7;
-            v8 = sub_8031612((v0 + 3)) << 16;
+            v8 = checkZCoordModifiers_8031612((v0 + 3)) << 16;
             v0[5] = v8;
             v0[8] = v8;
             return v1;
@@ -1700,7 +1700,7 @@ void sub_80A6A62()
     }
     while ( !v2 );
     v4 = *(v0 + 20);
-    *(v0 + 20) = sub_8031612(v0 + 12) << 16;
+    *(v0 + 20) = checkZCoordModifiers_8031612(v0 + 12) << 16;
     v5 = sub_8035694((v0 + 12));
     *(v0 + 20) = v4;
     sub_8002E14(v5);
@@ -3733,7 +3733,7 @@ void __noreturn sub_80A7DB8()
     *(v0 + 12) = GetSoulWeaponCursorCameraCoords();
     *(v0 + 16) = v3;
     *(v0 + 20) = 16384000;
-    *(v0 + 20) = sub_8031612(v0 + 12) << 16;
+    *(v0 + 20) = checkZCoordModifiers_8031612(v0 + 12) << 16;
     v4 = sub_8035694((v0 + 12));
     sub_8002E14(v4);
     *(v0 + 8) = 4;
@@ -5071,7 +5071,7 @@ int sub_80A8C98()
     int v2; // r0
 
     v1 = *(v0 + 20);
-    *(v0 + 20) = sub_8031612(v0 + 12) << 16;
+    *(v0 + 20) = checkZCoordModifiers_8031612(v0 + 12) << 16;
     v2 = sub_8035694((v0 + 12));
     *(v0 + 20) = v1;
     return sub_8002E14(v2);
@@ -5555,7 +5555,7 @@ signed int sub_80A90CC()
     signed int v1; // r4
 
     v1 = 0;
-    if ( sub_8031A7A(v0 + 12) == 192 )
+    if ( checkCoordinateTrigger_8031a7a(v0 + 12) == 192 )
         v1 = 1;
     return v1;
 }
@@ -6405,7 +6405,7 @@ void __noreturn sub_80A9A2C()
     *v0 = 3;
     sprite_load(v0, 128, *(v0 + 6), *(v0 + 7));
     v1 = *(v0 + 20);
-    *(v0 + 20) = sub_8031612(v0 + 12) << 16;
+    *(v0 + 20) = checkZCoordModifiers_8031612(v0 + 12) << 16;
     v2 = sub_8035694((v0 + 12));
     *(v0 + 20) = v1;
     sub_8002E14(v2);
@@ -6475,7 +6475,7 @@ void sub_80A9B9C()
     if ( v3 == 255 )
     {
         v4 = *(v0 + 20);
-        *(v0 + 20) = sub_8031612(v0 + 12) << 16;
+        *(v0 + 20) = checkZCoordModifiers_8031612(v0 + 12) << 16;
         v3 = sub_8035694((v0 + 12));
         *(v0 + 20) = v4;
     }

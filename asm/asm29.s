@@ -38,7 +38,7 @@ sub_80A49B0:
 	ldr r6, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x14]
 	mov r0, r5
@@ -308,7 +308,7 @@ sub_80A4BFC:
 	ldr r6, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x14]
 	mov r0, r5
@@ -1362,7 +1362,7 @@ loc_80A593E:
 	str r0, [r5,#0x10]
 	mov r0, #0xc
 	add r0, r0, r5
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x14]
 	str r0, [r5,#0x20]
@@ -1733,7 +1733,7 @@ sub_80A5C74:
 	mov r7, r0
 	mov r0, #0xc
 	add r0, r0, r5
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	mov r1, r0
 	mov r4, #0
 	cmp r7, r1
@@ -1916,7 +1916,7 @@ loc_80A5DD0:
 	str r0, [r5,#0x10]
 	mov r0, #0xc
 	add r0, r0, r5
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x14]
 	str r0, [r5,#0x20]
@@ -2587,7 +2587,7 @@ loc_80A6A94:
 	ldr r4, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x14]
 	mov r0, r5
@@ -5090,7 +5090,7 @@ sub_80A7DB8:
 	str r2, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x14]
 	mov r0, r5
@@ -6779,7 +6779,7 @@ sub_80A8C98:
 	ldr r4, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x14]
 	mov r0, r5
@@ -7310,7 +7310,7 @@ sub_80A90CC:
 	mov r4, #0
 	mov r0, #0xc
 	add r0, r0, r5
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	cmp r0, #0xc0
 	bne loc_80A90DE
 	mov r4, #1
@@ -8504,7 +8504,7 @@ sub_80A9A2C:
 	ldr r6, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x14]
 	mov r0, r5
@@ -8627,7 +8627,7 @@ loc_80A9BCE:
 	ldr r6, [r5,#0x14]
 	mov r0, r5
 	add r0, #0xc
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x14]
 	mov r0, r5

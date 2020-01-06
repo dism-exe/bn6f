@@ -3732,7 +3732,7 @@ reqBBS_init_8004DF0:
 	bl sub_80356EC
 	ldr r0, off_80050E4 // =0x100
 	strh r0, [r5,#oGameState_MapGroup]
-	str r0, [r5,#oGameState_Unk_44]
+	str r0, [r5,#oGameState_SavedRealWorldMapId]
 	str r0, [r5,#0x58]
 	mov r0, #0
 	strb r0, [r5,#oGameState_GameProgress]
@@ -3740,17 +3740,17 @@ reqBBS_init_8004DF0:
 	strb r0, [r5,#oGameState_Unk_08]
 	mov r0, #0
 	str r0, [r5,#oGameState_PlayerX]
-	str r0, [r5,#oGameState_Unk_34]
-	str r0, [r5,#oGameState_Unk_48]
+	str r0, [r5,#oGameState_SavedRealWorldX]
+	str r0, [r5,#oGameState_SavedInternetX]
 	str r0, [r5,#oGameState_PlayerY]
-	str r0, [r5,#oGameState_Unk_38]
+	str r0, [r5,#oGameState_SavedRealWorldY]
 	str r0, [r5,#0x4c]
-	str r0, [r5,#oGameState_Unk_2c]
-	str r0, [r5,#oGameState_Unk_3c]
+	str r0, [r5,#oGameState_PlayerZ]
+	str r0, [r5,#oGameState_SavedRealWorldZ]
 	str r0, [r5,#0x50]
 	mov r0, #4
-	str r0, [r5,#oGameState_facingDirectionAfterWarp_30]
-	str r0, [r5,#oGameState_Unk_40]
+	str r0, [r5,#oGameState_FacingDirectionAfterWarp]
+	str r0, [r5,#oGameState_SavedRealWorldFacingDirection]
 	str r0, [r5,#0x54]
 	bl initGameProgressBuffer_803532c
 	bl sub_8021D36
@@ -3831,9 +3831,9 @@ GameStateJumptable: .word EnterMap+1
 EnterMap: // JP 0x8005118
 	push {lr}
 	bl IsScreenFadeActive // () -> zf
-	bne loc_8005152
+	bne .waitScreenFade
 	pop {pc}
-loc_8005152:
+.waitScreenFade
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
@@ -3916,7 +3916,7 @@ loc_80051AA:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Warp2011bb0_Ptr]
 	mov r1, #0
-	strb r1, [r0,#0x10]
+	strb r1, [r0,#oWarp2011bb0_Unk_10]
 	mov r0, #4
 	strb r0, [r5,#oGameState_SubsystemIndex]
 	pop {pc}
@@ -4038,10 +4038,10 @@ sub_800536E:
 	bl sub_80024AE
 	bl IsScreenFadeActive // () -> zf
 	beq locret_80053DA
-	ldr r0, [r5,#0x68]
+	ldr r0, [r5,#oGameState_Unk_68]
 	sub r0, #1
 	blt loc_80053D2
-	str r0, [r5,#0x68]
+	str r0, [r5,#oGameState_Unk_68]
 	cmp r0, #0x29
 	bne loc_80053BC
 	mov r0, #0x72
@@ -4515,62 +4515,62 @@ sub_80058D0:
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldrb r0, [r5,#oGameState_SubsystemIndex]
 	cmp r0, #4
-	bne locret_800593C
+	bne .doNotCheckWarp
 	bl sub_809E462
-	bne locret_800593C
+	bne .doNotCheckWarp
 	bl sub_8005F28
-	bne locret_800593C
+	bne .doNotCheckWarp
 	mov r0, #1
 	bl TestPETMenuDataFlag
-	bne locret_800593C
+	bne .doNotCheckWarp
 	bl IsScreenFadeActive // () -> zf
-	beq locret_800593C
+	beq .doNotCheckWarp
 	bl IsCutsceneScriptNonNull // () -> zf
-	bne locret_800593C
+	bne .doNotCheckWarp
 	ldr r0, [r5,#oGameState_OverworldPlayerObjectPtr]
-	add r0, #0x1c
-	bl sub_8031A7A
+	add r0, #oOWPlayerObject_Coords
+	bl checkCoordinateTrigger_8031a7a
 	mov r4, r1
 	cmp r4, #1
-	blt locret_800593C
+	blt .doNotCheckWarp
 	cmp r4, #0xf
-	bgt locret_800593C
-	ldr r1, off_8005940 // =0x16f0
+	bgt .doNotCheckWarp
+	ldr r1, off_8005940 // =EVENT_16F0
 	add r1, r1, r4
 	mov r0, r1
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
-	bne locret_800593C
+	bne .doNotCheckWarp
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_Warp2011bb0_Ptr]
 	mov r0, #1
-	strb r0, [r2,#0x10]
-	strb r4, [r2,#0x11]
+	strb r0, [r2,#oWarp2011bb0_Unk_10]
+	strb r4, [r2,#oWarp2011bb0_WarpIndex]
 	mov r0, #0
-	strb r0, [r2,#0x12]
-	ldr r2, [r2,#0x14]
-	mov r0, #0x10
+	strb r0, [r2,#oWarp2011bb0_MapGroupTransitionType]
+	ldr r2, [r2,#oWarp2011bb0_WarpDataPtr]
+	mov r0, #oWarpData_Size
 	sub r4, #1
 	mul r4, r0
 	add r2, r2, r4
-	ldrb r0, [r2,#2]
+	ldrb r0, [r2,#oWarpData_warpType_02]
 	ldr r1, off_8005944 // =off_8005948
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-locret_800593C:
+.doNotCheckWarp
 	pop {r5,pc}
 	.balign 4, 0
-off_8005940: .word 0x16F0
+off_8005940: .word EVENT_16F0
 off_8005944: .word off_8005948
-off_8005948: .word sub_800596C+1
-	.word sub_8005990+1
-	.word sub_80059B4+1
-	.word sub_80059D0+1
-	.word sub_80059EC+1
-	.word sub_8005A00+1
-	.word sub_8005A0C+1
-	.word sub_8005A28+1
-	.word sub_8005A50+1
+off_8005948: .word sub_800596C+1 // fade to black warp
+	.word sub_8005990+1 // fade to white warp
+	.word sub_80059B4+1 // jack out anim, fade to black, fade from black, jack in anim, walk in direction
+	.word sub_80059D0+1 // jack out anim, auto camera scroll to another area in the same map, jack in anim, walk in direction
+	.word sub_80059EC+1 // jack out warp
+	.word sub_8005A00+1 // levbus warp
+	.word sub_8005A0C+1 // underground warp
+	.word sub_8005A28+1 // todo check this one with sound. like 0x0, but has a delay + plays a hardcoded sound
+	.word sub_8005A50+1 // same as above, but with a different delay
 	thumb_func_end sub_80058D0
 
 	thumb_local_start
@@ -4585,7 +4585,7 @@ sub_800596C:
 	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_8035738
 	mov r0, #0x10
-	strb r0, [r5]
+	strb r0, [r5,#oGameState_SubsystemIndex]
 	pop {pc}
 	thumb_func_end sub_800596C
 
@@ -4601,7 +4601,7 @@ sub_8005990:
 	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_8035738
 	mov r0, #0x10
-	strb r0, [r5]
+	strb r0, [r5,#oGameState_SubsystemIndex]
 	pop {pc}
 	thumb_func_end sub_8005990
 
@@ -4612,7 +4612,7 @@ sub_80059B4:
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
-	ldr r0, off_8005A78 // =byte_8098A02
+	ldr r0, off_8005A78 // =CutsceneScript_8098a02
 	mov r1, #0
 	bl StartCutscene
 	pop {pc}
@@ -4625,7 +4625,7 @@ sub_80059D0:
 	bl SetEventFlagFromImmediate
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
-	ldr r0, off_8005A80 // =byte_8098A78
+	ldr r0, off_8005A80 // =CutsceneScript_8098a78
 	mov r1, #0
 	bl StartCutscene
 	pop {pc}
@@ -4636,7 +4636,7 @@ sub_80059EC:
 	push {lr}
 	movflag EVENT_1703
 	bl ClearEventFlagFromImmediate
-	ldr r0, off_8005A7C // =byte_8098A2E
+	ldr r0, off_8005A7C // =CutsceneScript_8098a2e
 	mov r1, #0
 	bl StartCutscene
 	pop {pc}
@@ -4645,7 +4645,7 @@ sub_80059EC:
 	thumb_local_start
 sub_8005A00:
 	push {lr}
-	ldr r0, off_8005A84 // =byte_809B5AD
+	ldr r0, off_8005A84 // =CutsceneScript_809b5ad
 	mov r1, #0
 	bl StartCutscene
 	pop {pc}
@@ -4658,7 +4658,7 @@ sub_8005A0C:
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
-	ldr r0, off_8005A88 // =byte_8098B1C
+	ldr r0, off_8005A88 // =CutsceneScript_8098b1c
 	mov r1, #0
 	bl StartCutscene
 	pop {pc}
@@ -4676,9 +4676,9 @@ sub_8005A28:
 	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_8035738
 	mov r0, #0x3c
-	str r0, [r5,#0x68]
+	str r0, [r5,#oGameState_Unk_68]
 	mov r0, #0x10
-	strb r0, [r5]
+	strb r0, [r5,#oGameState_SubsystemIndex]
 	pop {pc}
 	thumb_func_end sub_8005A28
 
@@ -4694,16 +4694,16 @@ sub_8005A50:
 	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_8035738
 	mov r0, #0xa0
-	str r0, [r5,#0x68]
+	str r0, [r5,#oGameState_Unk_68]
 	mov r0, #0x10
-	strb r0, [r5]
+	strb r0, [r5,#oGameState_SubsystemIndex]
 	pop {pc}
 	.balign 4, 0
-off_8005A78: .word byte_8098A02
-off_8005A7C: .word byte_8098A2E
-off_8005A80: .word byte_8098A78
-off_8005A84: .word byte_809B5AD
-off_8005A88: .word byte_8098B1C
+off_8005A78: .word CutsceneScript_8098a02
+off_8005A7C: .word CutsceneScript_8098a2e
+off_8005A80: .word CutsceneScript_8098a78
+off_8005A84: .word CutsceneScript_809b5ad
+off_8005A88: .word CutsceneScript_8098b1c
 	thumb_func_end sub_8005A50
 
 	thumb_local_start
@@ -4884,9 +4884,9 @@ sub_8005C04:
 	bl FreeAllObjectsOfSpecifiedTypes
 	mov r5, r10
 	ldr r1, [r5,#oToolkit_Warp2011bb0_Ptr]
-	ldr r0, [r1,#0x14]
-	mov r2, #0x10
-	ldrb r3, [r1,#0x11]
+	ldr r0, [r1,#oWarp2011bb0_WarpDataPtr]
+	mov r2, #oWarpData_Size
+	ldrb r3, [r1,#oWarp2011bb0_WarpIndex]
 	sub r3, #1
 	mul r3, r2
 	add r0, r0, r3
@@ -4903,70 +4903,73 @@ sub_8005C04:
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	movflag EVENT_171B
 	bl TestEventFlagFromImmediate
-	bne loc_8005C80
-	ldrb r1, [r7]
+	bne .loc_8005C80
+	ldrb r1, [r7,#oWarp2011bb0_MapGroup]
 	ldrb r2, [r5,#oGameState_MapGroup]
 	mov r3, #0x80
 	mov r4, r1
+	// r4 = unk_00 ^ mapGroup
 	eor r4, r2
+	// check transition from real world to internet or vice versa
 	tst r4, r3
-	beq loc_8005C80
+	beq .loc_8005C80
+	// is the map to warp to is internet or real world?
 	tst r1, r3
-	bne loc_8005C60
-	mov r6, #oGameState_Unk_48
-	b loc_8005C62
-loc_8005C60:
-	mov r6, #oGameState_Unk_34
-loc_8005C62:
+	bne .warpingToInternet // jump if warping to internet
+	mov r6, #oGameState_SavedInternetCoords_FacingDirection_MapId
+	b .gotSavedOWPlayerInfoOffset
+.warpingToInternet
+	mov r6, #oGameState_SavedRealWorldCoords_FacingDirection_MapId
+.gotSavedOWPlayerInfoOffset
 	ldr r0, [r5,#oGameState_OverworldPlayerObjectPtr]
-	ldr r1, [r0,#0x1c]
-	ldr r2, [r0,#0x20]
-	ldr r3, [r0,#0x24]
-	ldrb r4, [r0,#0x10]
+	ldr r1, [r0,#oOWPlayerObject_X]
+	ldr r2, [r0,#oOWPlayerObject_Y]
+	ldr r3, [r0,#oOWPlayerObject_Z]
+	ldrb r4, [r0,#oOWPlayerObject_FacingDirection]
 	add r6, r6, r5
-	str r1, [r6]
-	str r2, [r6,#4] //  TODO: nested struct
-	str r3, [r6,#8]
-	str r4, [r6,#0xc]
+	str r1, [r6,#oSavedOWPlayerInfo_X]
+	str r2, [r6,#oSavedOWPlayerInfo_Y]
+	str r3, [r6,#oSavedOWPlayerInfo_Z]
+	str r4, [r6,#oSavedOWPlayerInfo_FacingDirection]
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #8
 	orr r1, r0
-	str r1, [r6,#0x10]
-loc_8005C80:
+	str r1, [r6,#oSavedOWPlayerInfo_MapId]
+.loc_8005C80:
 	movflag EVENT_171B
 	bl ClearEventFlagFromImmediate
-	ldrb r0, [r7,#0x12]
-	cmp r0, #1
-	beq loc_8005CA2
-	cmp r0, #2
-	beq loc_8005CAE
+	ldrb r0, [r7,#oWarp2011bb0_MapGroupTransitionType]
+	cmp r0, #MAP_GROUP_TRANSITION_TYPE_INTERNET_TO_REAL_WORLD
+	beq .internetToRealWorld
+	cmp r0, #MAP_GROUP_TRANSITION_TYPE_REAL_WORLD_TO_INTERNET
+	beq .realWorldToInternet
 	mov r1, #2
-	strb r1, [r7,#0x10]
-	ldr r1, [r7,#4]
-	ldr r2, [r7,#8]
-	ldr r3, [r7,#0xc]
-	ldrb r4, [r7,#3]
-	ldrh r6, [r7]
-	b loc_8005CB8
-loc_8005CA2:
-	ldr r1, [r5,#oGameState_Unk_34]
-	ldr r2, [r5,#oGameState_Unk_38]
-	ldr r3, [r5,#oGameState_Unk_3c]
-	ldr r4, [r5,#oGameState_Unk_40]
-	ldr r6, [r5,#oGameState_Unk_44]
-	b loc_8005CB8
-loc_8005CAE:
-	ldr r1, [r5,#oGameState_Unk_48]
-	ldr r2, [r5,#0x4c]
-	ldr r3, [r5,#0x50]
-	ldr r4, [r5,#0x54]
-	ldr r6, [r5,#0x58]
-loc_8005CB8:
+	strb r1, [r7,#oWarp2011bb0_Unk_10]
+	ldr r1, [r7,#oWarp2011bb0_X]
+	ldr r2, [r7,#oWarp2011bb0_Y]
+	ldr r3, [r7,#oWarp2011bb0_Z]
+	ldrb r4, [r7,#oWarp2011bb0_FacingDirection]
+	ldrh r6, [r7,#oWarp2011bb0_MapId]
+	b .gotWarpInfo
+.internetToRealWorld
+	ldr r1, [r5,#oGameState_SavedRealWorldX]
+	ldr r2, [r5,#oGameState_SavedRealWorldY]
+	ldr r3, [r5,#oGameState_SavedRealWorldZ]
+	ldr r4, [r5,#oGameState_SavedRealWorldFacingDirection]
+	ldr r6, [r5,#oGameState_SavedRealWorldMapId]
+	b .gotWarpInfo
+.realWorldToInternet
+	ldr r1, [r5,#oGameState_SavedInternetX]
+	ldr r2, [r5,#oGameState_SavedInternetY]
+	ldr r3, [r5,#oGameState_SavedInternetZ]
+	ldr r4, [r5,#oGameState_SavedInternetFacingDirection]
+	ldr r6, [r5,#oGameState_SavedInternetMapId]
+.gotWarpInfo
 	str r1, [r5,#oGameState_PlayerX]
 	str r2, [r5,#oGameState_PlayerY]
-	str r3, [r5,#oGameState_Unk_2c]
-	str r4, [r5,#oGameState_facingDirectionAfterWarp_30]
+	str r3, [r5,#oGameState_PlayerZ]
+	str r4, [r5,#oGameState_FacingDirectionAfterWarp]
 	lsr r7, r6, #8
 	mov r0, #0xff
 	and r6, r0
@@ -4982,8 +4985,8 @@ loc_8005CB8:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
-	strh r0, [r7,#0x12]
-	strh r0, [r7,#0x14]
+	strh r0, [r7,#oS2001c04_Unk_12]
+	strh r0, [r7,#oS2001c04_Unk_14]
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8005CE4: .word 0x40
@@ -5062,9 +5065,9 @@ loc_8005D5C:
 	ldr r0, [r1,#0x20]
 	str r0, [r5,#oGameState_PlayerY]
 	ldr r0, [r1,#0x24]
-	str r0, [r5,#oGameState_Unk_2c]
+	str r0, [r5,#oGameState_PlayerZ]
 	ldrb r0, [r1,#0x10]
-	str r0, [r5,#oGameState_facingDirectionAfterWarp_30]
+	str r0, [r5,#oGameState_FacingDirectionAfterWarp]
 	mov r1, #0x24
 	strb r1, [r5,#oGameState_SubsystemIndex]
 	mov r0, #0xc
@@ -5220,9 +5223,9 @@ subsystem_launchMail:
 	ldr r0, [r1,#0x20]
 	str r0, [r5,#oGameState_PlayerY]
 	ldr r0, [r1,#0x24]
-	str r0, [r5,#oGameState_Unk_2c]
+	str r0, [r5,#oGameState_PlayerZ]
 	ldrb r0, [r1,#0x10]
-	str r0, [r5,#oGameState_facingDirectionAfterWarp_30]
+	str r0, [r5,#oGameState_FacingDirectionAfterWarp]
 	mov r1, #0x34
 	strb r1, [r5,#oGameState_SubsystemIndex]
 	mov r0, #0xc
@@ -5240,13 +5243,14 @@ sub_8005EEC:
 	mov r3, #1
 	strb r3, [r4,#oWarp2011bb0_Unk_10]
 	add r3, r1, #1
-	strb r3, [r4,#oWarp2011bb0_Unk_11]
-	str r0, [r4,#oWarp2011bb0_Ptr_14]
-	strb r2, [r4,#oWarp2011bb0_Unk_12]
+	strb r3, [r4,#oWarp2011bb0_WarpIndex]
+	str r0, [r4,#oWarp2011bb0_WarpDataPtr]
+	strb r2, [r4,#oWarp2011bb0_MapGroupTransitionType]
 	pop {r4-r7,pc}
 	thumb_func_end sub_8005EEC
 
 	thumb_func_start warp_setSubsystemIndexTo0x10AndOthers_8005f00
+// just pure warp
 warp_setSubsystemIndexTo0x10AndOthers_8005f00:
 	push {r4-r7,lr}
 	bl sub_8005EEC
@@ -5259,6 +5263,7 @@ warp_setSubsystemIndexTo0x10AndOthers_8005f00:
 	thumb_func_end warp_setSubsystemIndexTo0x10AndOthers_8005f00
 
 	thumb_func_start warp_setSubsystemIndexTo0x14AndOthers_8005f14
+// warp with extra effects? e.g. jack in animation
 warp_setSubsystemIndexTo0x14AndOthers_8005f14:
 	push {r4-r7,lr}
 	bl sub_8005EEC
@@ -5283,10 +5288,10 @@ sub_8005F28:
 warp_8005f32:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_Warp2011bb0_Ptr]
-	ldr r0, [r3,#oWarp2011bb0_Ptr_14]
-	ldrb r1, [r3,#oWarp2011bb0_Unk_11]
+	ldr r0, [r3,#oWarp2011bb0_WarpDataPtr]
+	ldrb r1, [r3,#oWarp2011bb0_WarpIndex]
 	sub r1, #1
-	ldrb r2, [r3,#oWarp2011bb0_Unk_12]
+	ldrb r2, [r3,#oWarp2011bb0_MapGroupTransitionType]
 	mov pc, lr
 	thumb_func_end warp_8005f32
 
@@ -6692,7 +6697,7 @@ ToolkitPointers:
 	.word eRenderInfo
 	.word eCamera
 	.word eCutsceneState
-	.word byte_2011BB0
+	.word eWarp2011bb0
 	.word eBattleState
 	.word unk_200F3A0
 	.word unk_2009740

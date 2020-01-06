@@ -6723,7 +6723,7 @@ chatbox_8042FF4:
 	push {lr}
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_CutsceneStatePtr]
-	add r2, #8
+	add r2, #oCutsceneState_Unk_08
 	ldrb r0, [r4,#2]
 	ldrb r1, [r4,#3]
 	strb r1, [r2,r0]

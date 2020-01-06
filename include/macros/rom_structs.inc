@@ -4,3 +4,4 @@
 	.include "include/rom_structs/GFXAnimData.inc"
 	.include "include/rom_structs/BGScrollCallbacksData.inc"
 	.include "include/rom_structs/BGAnimData.inc"
+	.include "include/rom_structs/WarpData.inc"

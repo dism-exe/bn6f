@@ -1012,7 +1012,7 @@ sub_300631C:
 	tst r2, r3
 	bne loc_3006336
 	push {r0,r5}
-	ldr r5, off_3006388 // =sub_8031612+1
+	ldr r5, off_3006388 // =checkZCoordModifiers_8031612+1
 	mov lr, pc
 	bx r5
 	lsl r0, r0, #0x10
@@ -1063,7 +1063,7 @@ loc_300633A:
 	strb r7, [r5,#0xf]
 	pop {pc}
 	.balign 4, 0
-off_3006388: .word sub_8031612+1
+off_3006388: .word checkZCoordModifiers_8031612+1
 	thumb_func_end sub_300631C
 
 	thumb_local_start
