@@ -51,7 +51,7 @@ $(ROM): %.elf
 %.o: %.s
 	$(AS) $(ASFLAGS) $< -o $@
 
-assets: $(LZ_FILES)
+assets: $(LZ_FILES) $(LZ_BINFILES)
 	
 
 checksum:
@@ -69,4 +69,6 @@ clean:
 	rm -f *.o
 	rm -f *.map
 	rm -f *.elf
-	rm -f *.gba
+	# rm -f *.gba
+	rm -f $(COMPRESSED_TEXT_ARCHIVES_DIR)/*.lz
+	rm -f $(COMPRESSED_TEXT_ARCHIVES_DIR)/*.bin

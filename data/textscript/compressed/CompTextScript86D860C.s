@@ -239,7 +239,7 @@ CompTextScript86D860C::
 	.string "Lan got:\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x2,
+		entry: 0x22,
 		buffer: 0x0,
 	]
 	.string "\"!!!"
@@ -269,7 +269,7 @@ CompTextScript86D860C::
 	.string "Lan got:\n"
 	.string "\""
 	ts_print_folder_name [
-		entry: 0x2,
+		entry: 0x22,
 		buffer: 0x0,
 	]
 	.string "\"!!!"

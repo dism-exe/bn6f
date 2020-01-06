@@ -221,35 +221,35 @@
 	// :param BSeparate[2:5:1]: If true, pressing the B button is treated as a separate option; otherwise, the last defined option is assigned.
 	// :param disableB[2:6:1]: If true, pressing the B button has no effect; otherwise, it chooses the last labeled option.
 	// :param clear[2:7:1]: If true, clears the message box after choosing an option.
-	.macro ts_select p0:req, p1:req, p2=NULL, p3=NULL, p4=NULL, p5=NULL, p6=NULL, p7=NULL, p8=NULL
+	.macro ts_select p0:req, p1:req, p2=NOT_SPECIFIED, p3=NOT_SPECIFIED, p4=NOT_SPECIFIED, p5=NOT_SPECIFIED, p6=NOT_SPECIFIED, p7=NOT_SPECIFIED, p8=NOT_SPECIFIED
         .byte 0xED, \p0, \p1
         
-        .if \p2 != NULL
+        .if \p2 != NOT_SPECIFIED
         .byte \p2
         .endif
         
-        .if \p3 != NULL
+        .if \p3 != NOT_SPECIFIED
         .byte \p3
         .endif
         
-        .if \p4 != NULL
+        .if \p4 != NOT_SPECIFIED
         .byte \p4
         .endif
 
-        .if \p5 != NULL
+        .if \p5 != NOT_SPECIFIED
         .byte \p5
         .endif
 
         
-        .if \p6 != NULL
+        .if \p6 != NOT_SPECIFIED
         .byte \p6
         .endif
         
-        .if \p7 != NULL
+        .if \p7 != NOT_SPECIFIED
         .byte \p7
         .endif
         
-        .if \p8 != NULL
+        .if \p8 != NOT_SPECIFIED
         .byte \p8
         .endif
 	.endm
@@ -764,69 +764,69 @@
 	// :param length[1:0:6]:
 	// :param unused[1:6:1]: An unused parameter with unknown intended purpose.
 	// :param untrap[1:7:1]: If set to true, the first jump target will be ignored if Untrap is active.
-    .macro ts_jump_random p0:req, p1=NULL, p2=NULL, p3=NULL, p4=NULL, p5=NULL, p6=NULL, p7=NULL, p8=NULL, p9=NULL, p10=NULL, p11=NULL, p12=NULL, p13=NULL, p14=NULL, p15=NULL, p16=NULL
+    .macro ts_jump_random p0:req, p1=NOT_SPECIFIED, p2=NOT_SPECIFIED, p3=NOT_SPECIFIED, p4=NOT_SPECIFIED, p5=NOT_SPECIFIED, p6=NOT_SPECIFIED, p7=NOT_SPECIFIED, p8=NOT_SPECIFIED, p9=NOT_SPECIFIED, p10=NOT_SPECIFIED, p11=NOT_SPECIFIED, p12=NOT_SPECIFIED, p13=NOT_SPECIFIED, p14=NOT_SPECIFIED, p15=NOT_SPECIFIED, p16=NOT_SPECIFIED
         .byte 0xF0, \p0
-        .if \p1 != NULL
+        .if \p1 != NOT_SPECIFIED
         .byte \p1
         .endif
 
-        .if \p2 != NULL
+        .if \p2 != NOT_SPECIFIED
         .byte \p2
         .endif
         
-        .if \p3 != NULL
+        .if \p3 != NOT_SPECIFIED
         .byte \p3
         .endif
         
-        .if \p4 != NULL
+        .if \p4 != NOT_SPECIFIED
         .byte \p4
         .endif
         
-        .if \p5 != NULL
+        .if \p5 != NOT_SPECIFIED
         .byte \p5
         .endif
         
-        .if \p6 != NULL
+        .if \p6 != NOT_SPECIFIED
         .byte \p6
         .endif
         
-        .if \p7 != NULL
+        .if \p7 != NOT_SPECIFIED
         .byte \p7
         .endif
         
-        .if \p8 != NULL
+        .if \p8 != NOT_SPECIFIED
         .byte \p8
         .endif
         
-        .if \p9 != NULL
+        .if \p9 != NOT_SPECIFIED
         .byte \p9
         .endif
         
-        .if \p10 != NULL
+        .if \p10 != NOT_SPECIFIED
         .byte \p10
         .endif
         
-        .if \p11 != NULL
+        .if \p11 != NOT_SPECIFIED
         .byte \p11
         .endif
         
-        .if \p12 != NULL
+        .if \p12 != NOT_SPECIFIED
         .byte \p12
         .endif
         
-        .if \p13 != NULL
+        .if \p13 != NOT_SPECIFIED
         .byte \p13
         .endif
         
-        .if \p14 != NULL
+        .if \p14 != NOT_SPECIFIED
         .byte \p14
         .endif
         
-        .if \p15 != NULL
+        .if \p15 != NOT_SPECIFIED
         .byte \p15
         .endif
 
-        .if \p16 != NULL
+        .if \p16 != NOT_SPECIFIED
         .byte \p16
         .endif
 	.endm
@@ -1088,10 +1088,10 @@
 	.endm
 	
 	// Prints the name of a folder, either specified or loaded from a buffer.
-	// :param entry[2:0:4]: If the buffer is not set, the entry index of the folder name to print.
+	// :param entry[2:0:8]: If the buffer is not set, the entry index of the folder name to print.
 	// :param buffer[3:4:4]: If greater than zero, the buffer to load the folder name index from plus one.
 	.macro ts_print_folder_name entry:req, buffer:req
-		.byte 0xFA, 0x0, \entry & 0xF, ((\buffer & 0xF) << 4) | 0x4
+		.byte 0xFA, 0x0, \entry, ((\buffer & 0xF) << 4) | 0x4
 	.endm
 	
 	// Prints the name of a NaviCust program, either specified or loaded from a buffer.
@@ -1301,28 +1301,28 @@
 	.endm
 	
 	// Clears all data related to the AquaMan fishing minigame and resets their positions when the player re-enters the area.
-	.macro ts_call_reset_fishing_minigame 
-		.byte 0xFC, 0x3, 0x5
+	.macro ts_call_reset_fishing_minigame unused=0x0
+		.byte 0xFC, 0x3, 0x5, \unused
 	.endm
 	
 	// Clears all data related to Evil Spirits and resets their positions when the player re-enters the area.
-	.macro ts_call_reset_evil_spirits 
-		.byte 0xFC, 0x3, 0x6
+	.macro ts_call_reset_evil_spirits unused=0x0
+		.byte 0xFC, 0x3, 0x6, \unused
 	.endm
 	
 	// Adds new stock to AsterLand.
-	.macro ts_call_aster_land_stock_add 
-		.byte 0xFC, 0x3, 0x7
+	.macro ts_call_aster_land_stock_add unused=0x0
+		.byte 0xFC, 0x3, 0x7, \unused
 	.endm
 	
 	// Reloads all Soul Weapons for the current area.
-	.macro ts_call_reload_soul_weapons 
-		.byte 0xFC, 0x3, 0x8
+	.macro ts_call_reload_soul_weapons unused=0x0
+		.byte 0xFC, 0x3, 0x8, \unused
 	.endm
 	
 	// Gets the current amount of Crossover Points that the player has. But because nothing is done with it, this command is useless.
-	.macro ts_call_get_crossover_points 
-		.byte 0xFC, 0x3, 0x9
+	.macro ts_call_get_crossover_points unused=0x0
+		.byte 0xFC, 0x3, 0x9, \unused
 	.endm
 	
 	// Changes the player's current amount of Crossover Points to the specified amount.
@@ -1332,8 +1332,8 @@
 	.endm
 	
 	// Unlocks all BBS messages. BBS messages that were already unlocked remain on the list, which results in duplicates.
-	.macro ts_call_add_all_b_b_s_messages 
-		.byte 0xFC, 0x3, 0xB
+	.macro ts_call_add_all_b_b_s_messages unused=0x0
+		.byte 0xFC, 0x3, 0xB, \unused
 	.endm
 	
 	// Changes the player's overworld sprite when the map is refreshed.
@@ -1343,8 +1343,8 @@
 	.endm
 	
 	// Unlocks all requests on the Request BBS. Requests that were already unlocked remain on the list, which results in duplicates.
-	.macro ts_call_add_all_requests 
-		.byte 0xFC, 0x3, 0xD
+	.macro ts_call_add_all_requests unused=0x0
+		.byte 0xFC, 0x3, 0xD, \unused
 	.endm
 	
 	// Buffers the (index of the) current location of the Gold Mystery Data. The index of the area and subarea are stored in the first and second buffer, and the third and fourth buffer are cleared.
@@ -1353,34 +1353,34 @@
 	.endm
 	
 	// Unloads all overworld objects from the current map.
-	.macro ts_call_unload_objects 
-		.byte 0xFC, 0x3, 0xF
+	.macro ts_call_unload_objects unused=0x0
+		.byte 0xFC, 0x3, 0xF, \unused
 	.endm
 	
 	// Reloads all overworld objects on the current map, if they are not already loaded.
-	.macro ts_call_reload_objects 
-		.byte 0xFC, 0x3, 0x10
+	.macro ts_call_reload_objects unused=0x0
+		.byte 0xFC, 0x3, 0x10, \unused
 	.endm
 	
 	// Reloads the base stats and abilities for the current Navi.
-	.macro ts_call_reload_navi_base_stats 
-		.byte 0xFC, 0x3, 0x11
+	.macro ts_call_reload_navi_base_stats unused=0x0
+		.byte 0xFC, 0x3, 0x11, \unused
 	.endm
 	
 	// Reloads stat boosts and abilities from the Navi Customizer, Mod Cards and the MegaMan Navi Data Chip. Does not update stats from Navi Data Chips of Link Navis.
-	.macro ts_call_reload_navi_stat_boosts 
-		.byte 0xFC, 0x3, 0x12
+	.macro ts_call_reload_navi_stat_boosts unused=0x0
+		.byte 0xFC, 0x3, 0x12, \unused
 	.endm
 	
 	// Sets the current Navi's current HP to its maximum.
-	// FIXME: update name to hp, now h_p
-	.macro ts_call_set_full_h_p 
-		.byte 0xFC, 0x3, 0x13
+	// FIXME: update name to hp, not h_p
+	.macro ts_call_set_full_h_p unused=0x0
+		.byte 0xFC, 0x3, 0x13, \unused
 	.endm
 	
 	// May have been intended to set every virus's delete count to max, but the command is not implemented and does not function.
-	.macro ts_call_max_virus_delete_count 
-		.byte 0xFC, 0x3, 0x14
+	.macro ts_call_max_virus_delete_count unused=0x0
+		.byte 0xFC, 0x3, 0x14, \unused
 	.endm
 	
 	// Fades out the screen to black.
@@ -1604,13 +1604,6 @@
 		.byte 0xEC, 0x1, \count
 	.endm
 	
-	// Checks the current game version, and jumps to a different script depending on if the current game is Cybeast Gregar or Cybeast Falzar.
-	// :param jumpIfCybeastGregar[1:0:8]: The script to jump to if the current game is Cybeast Gregar, or 255 to continue with the current script.
-	// :param jumpIfCybeastFalzar[2:0:8]: The script to jump to if the current game is Cybeast Falzar, or 255 to continue with the current script.
-	.macro ts_check_game_version_s jumpIfCybeastGregar:req, jumpIfCybeastFalzar:req
-		.byte 0xEF, \jumpIfCybeastGregar, \jumpIfCybeastFalzar
-	.endm
-	
 	// Prints the contents of the specified 32-bit buffer as a decimal number.
 	// :param buffer[1:0:7]: The buffer to print.
 	// :param minLength[2:0:4]: The minimum amount of characters to print. If the number consists of less digits, additional spaces are printed.
@@ -1685,8 +1678,11 @@
     */
 
     // naming conflict, adding _s
-	.macro ts_check_game_version_s p0:req, p1:req
-	.byte 0xEF, \p0, \p1
+	// Checks the current game version, and jumps to a different script depending on if the current game is Cybeast Gregar or Cybeast Falzar.
+	// :param jumpIfCybeastGregar[1:0:8]: The script to jump to if the current game is Cybeast Gregar, or 255 to continue with the current script.
+	// :param jumpIfCybeastFalzar[2:0:8]: The script to jump to if the current game is Cybeast Falzar, or 255 to continue with the current script.
+	.macro ts_check_game_version_s jumpIfCybeastGregar:req, jumpIfCybeastFalzar:req
+		.byte 0xEF, \jumpIfCybeastGregar, \jumpIfCybeastFalzar
 	.endm
-
+	
 	.endif

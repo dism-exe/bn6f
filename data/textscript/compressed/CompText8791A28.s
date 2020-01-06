@@ -31,7 +31,10 @@ CompText8791A28::
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0x30,
+		buffer: 0x0,
+	]
 	.string " "
 	ts_print_code [
 		code: 0x10,
@@ -61,7 +64,10 @@ CompText8791A28::
 	ts_print_current_navi_ow
 	.string " got:\n"
 	.string "\""
-	ts_print_chip2
+	ts_print_chip2 [
+		chip: 0x35,
+		buffer: 0x0,
+	]
 	.string " "
 	ts_print_code [
 		code: 0x9,
