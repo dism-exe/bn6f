@@ -18992,6 +18992,10 @@ off_802FF48: .word word_200A6F0
 	thumb_func_end cleareMemory_802FF2C
 
 	thumb_func_start camera_802FF4C
+// r3 - map group
+// r4 - map number
+// only map related data is a jumptable index
+// that's the same for every map group type
 camera_802FF4C:
 	push {r5-r7,lr}
 	mov r5, r8
@@ -19014,14 +19018,14 @@ camera_802FF4C:
 	pop {r0,r1,r5}
 	strb r0, [r5,#oCamera_Unk_03]
 	str r1, [r5,#oCamera_Unk_14]
-	ldr r0, off_802FFF0 // =eStruct200BE70
-	ldrb r3, [r0]
+	ldr r0, off_802FFF0 // =eMapTilesState200be70
+	ldrb r3, [r0,#oMapTilesState200be70_MapWidth]
 	sub r3, #0x1e
 	lsl r3, r3, #0x12
 	str r3, [r5,#oCamera_Unk_1c]
 	neg r3, r3
 	str r3, [r5,#oCamera_Unk_18]
-	ldrb r3, [r0,#0x1] // (byte_200BE71 - 0x200be70)
+	ldrb r3, [r0,#oMapTilesState200be70_MapHeight] // (byte_200BE71 - 0x200be70)
 	sub r3, #0x14
 	lsl r3, r3, #0x12
 	str r3, [r5,#oCamera_Unk_20]
@@ -19061,6 +19065,9 @@ loc_802FFC0:
 loc_802FFC4:
 	lsl r0, r0, #2
 	ldr r3, [r3,r0]
+	// bad read? [off_8033770+mapGroup] is byte array
+	// but doesn't actually matter since all values
+	// of all arrays are the same
 	ldr r0, [r3,r1]
 loc_802FFCA:
 	strb r0, [r5,#oCamera_Unk_02]
@@ -19076,7 +19083,7 @@ loc_802FFCA:
 	.balign 4, 0
 off_802FFE8: .word off_8033770
 off_802FFEC: .word off_803378C
-off_802FFF0: .word eStruct200BE70
+off_802FFF0: .word eMapTilesState200be70
 	thumb_func_end camera_802FF4C
 
 	thumb_func_start sub_802FFF4
@@ -19603,15 +19610,17 @@ nullsub_60:
 	mov pc, lr
 	thumb_func_end nullsub_60
 
-	thumb_func_start sub_803037C
-sub_803037C:
+	thumb_func_start initMapTilesState_803037c
+// r0 - map group
+// r1 - map number
+initMapTilesState_803037c:
 	push {r4-r7,lr}
 	mov r2, r8
 	mov r3, r9
 	mov r4, r12
 	push {r2-r4}
-	ldr r5, off_80305E0 // =eStruct200BE70
-	cmp r0, #0x80
+	ldr r5, off_80305E0 // =eMapTilesState200be70
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_8030392
 	ldr r3, off_80303D8 // =off_80329A8 
 	ldr r4, off_80303DC // =off_8032F6C 
@@ -19619,35 +19628,42 @@ sub_803037C:
 loc_8030392:
 	ldr r3, off_80303E0 // =off_80329C4 
 	ldr r4, off_80303E4 // =off_8032F88 
-	sub r0, #0x80
+	sub r0, #INTERNET_MAP_GROUP_START
 loc_8030398:
 	lsl r0, r0, #2
 	ldr r3, [r3,r0]
 	mov r2, #0xc
 	mul r2, r1
 	add r3, r3, r2
-	str r3, [r5,#0x8] // (dword_200BE78 - 0x200be70)
+	str r3, [r5,#oMapTilesState200be70_MapGFXPtrsPtr] // (dword_200BE78 - 0x200be70)
+
 	ldr r4, [r4,r0]
 	mov r2, #0xc
 	mul r2, r1
 	add r4, r4, r2
+
 	ldr r2, [r4]
-	str r2, [r5,#0x18] // (dword_200BE88 - 0x200be70)
+	str r2, [r5,#oMapTilesState200be70_UnkCallback_18] // (dword_200BE88 - 0x200be70)
 	ldr r2, [r4,#4]
-	str r2, [r5,#0x1c] // (dword_200BE8C - 0x200be70)
+	str r2, [r5,#oMapTilesState200be70_UnkCallback_1c] // (dword_200BE8C - 0x200be70)
 	ldr r2, [r4,#8]
-	str r2, [r5,#0x20] // (dword_200BE90 - 0x200be70)
+	str r2, [r5,#oMapTilesState200be70_UnkCallback_20] // (dword_200BE90 - 0x200be70)
+
 	ldr r0, [r3,#8]
 	ldr r1, off_803057C // =eDecompBuffer2013A00
 	ldrb r2, [r0]
-	strb r2, [r5]
+	strb r2, [r5,#oMapTilesState200be70_MapWidth]
 	ldrb r2, [r0,#1]
-	strb r2, [r5,#0x1] // (byte_200BE71 - 0x200be70)
+	strb r2, [r5,#oMapTilesState200be70_MapHeight] // (byte_200BE71 - 0x200be70)
+
 	ldr r2, [r3,#4]
-	str r2, [r5,#0x10] // (dword_200BE80 - 0x200be70)
+	str r2, [r5,#oMapTilesState200be70_PalettePtr] // (dword_200BE80 - 0x200be70)
+
 	ldr r2, [r3]
-	str r2, [r5,#0x14] // (dword_200BE84 - 0x200be70)
-	str r1, [r5,#0xc] // (dword_200BE7C - 0x200be70)
+	str r2, [r5,#oMapTilesState200be70_TilesetPtr] // (dword_200BE84 - 0x200be70)
+
+	str r1, [r5,#oMapTilesState200be70_Unk_0c] // (dword_200BE7C - 0x200be70)
+
 	pop {r1-r3}
 	mov r8, r1
 	mov r9, r2
@@ -19658,23 +19674,23 @@ off_80303D8: .word off_80329A8
 off_80303DC: .word off_8032F6C
 off_80303E0: .word off_80329C4
 off_80303E4: .word off_8032F88
-	thumb_func_end sub_803037C
+	thumb_func_end initMapTilesState_803037c
 
 	thumb_func_start sub_80303E8
 sub_80303E8:
-	ldr r1, off_80305E0 // =eStruct200BE70
+	ldr r1, off_80305E0 // =eMapTilesState200be70
 	mov r0, #0x20 
-	strb r0, [r1]
-	strb r0, [r1,#0x1] // (byte_200BE71 - 0x200be70)
+	strb r0, [r1,#oMapTilesState200be70_MapWidth]
+	strb r0, [r1,#oMapTilesState200be70_MapHeight] // (byte_200BE71 - 0x200be70)
 	mov pc, lr
 	thumb_func_end sub_80303E8
 
 	thumb_func_start sub_80303F2
 sub_80303F2:
-	ldr r1, off_80305E0 // =eStruct200BE70
+	ldr r1, off_80305E0 // =eMapTilesState200be70
 	mov r0, #0x40 
-	strb r0, [r1]
-	strb r0, [r1,#0x1] // (byte_200BE71 - 0x200be70)
+	strb r0, [r1,#oMapTilesState200be70_MapWidth]
+	strb r0, [r1,#oMapTilesState200be70_MapHeight] // (byte_200BE71 - 0x200be70)
 	mov pc, lr
 	thumb_func_end sub_80303F2
 
@@ -19706,12 +19722,12 @@ sub_80303FC:
 	add r6, r6, r2
 	asr r6, r6, #0x10
 	neg r6, r6
-	ldr r5, off_80305E0 // =eStruct200BE70
+	ldr r5, off_80305E0 // =eMapTilesState200be70
 	asr r1, r1, #3
 	asr r6, r6, #3
-	ldrb r2, [r5]
+	ldrb r2, [r5,#oMapTilesState200be70_MapWidth]
 	lsr r2, r2, #1
-	ldrb r3, [r5,#0x1] // (byte_200BE71 - 0x200be70)
+	ldrb r3, [r5,#oMapTilesState200be70_MapHeight] // (byte_200BE71 - 0x200be70)
 	lsr r3, r3, #1
 	add r1, r1, r2
 	add r6, r6, r3
@@ -19719,7 +19735,7 @@ sub_80303FC:
 	bge loc_8030448
 	b loc_8030468
 loc_8030448:
-	ldrb r2, [r5]
+	ldrb r2, [r5,#oMapTilesState200be70_MapWidth]
 	cmp r1, r2
 	blt loc_8030450
 	b loc_8030468
@@ -19728,7 +19744,7 @@ loc_8030450:
 	bge loc_8030456
 	b loc_8030468
 loc_8030456:
-	ldrb r3, [r5,#0x1] // (byte_200BE71 - 0x200be70)
+	ldrb r3, [r5,#oMapTilesState200be70_MapHeight] // (byte_200BE71 - 0x200be70)
 	cmp r6, r3
 	blt loc_803045E
 	b loc_8030468
@@ -19746,22 +19762,24 @@ loc_8030468:
 	pop {r4-r7,pc}
 	thumb_func_end sub_80303FC
 
-	thumb_func_start sub_8030472
-sub_8030472:
+	thumb_func_start decompAndCopyMapTiles_8030472
+decompAndCopyMapTiles_8030472:
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
-	ldr r5, off_80305E0 // =eStruct200BE70
-	ldr r0, [r5,#0x10] // (dword_200BE80 - 0x200be70)
+
+	ldr r5, off_80305E0 // =eMapTilesState200be70
+	ldr r0, [r5,#oMapTilesState200be70_PalettePtr] // (dword_200BE80 - 0x200be70)
 	mov r2, #0xd
-	lsl r2, r2, #5
+	lsl r2, r2, #5 // r2 = 0x1a0
 	add r0, #4
 	ldr r1, off_80304E0 // =palette_3001960 
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+
 	mov r0, #0
-	ldr r7, [r5,#0x14] // (dword_200BE84 - 0x200be70)
+	ldr r7, [r5,#oMapTilesState200be70_TilesetPtr] // (dword_200BE84 - 0x200be70)
 	mov r6, r7
 loc_8030492:
 	push {r0,r6}
@@ -19771,6 +19789,7 @@ loc_8030492:
 	// dest
 	ldr r1, off_803057C // =eDecompBuffer2013A00
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	
 	ldr r0, off_803057C // =eDecompBuffer2013A00
 	ldr r1, [r7,#8]
 	ldr r2, dword_80304E4 // =0x6000000 
@@ -19778,12 +19797,13 @@ loc_8030492:
 	ldr r2, [r7]
 	lsl r2, r2, #2
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+
 	add r7, #0xc
 	pop {r0,r6}
 	add r0, #1
 	cmp r0, #2
 	blt loc_8030492
-	ldr r3, [r5,#0x8] // (dword_200BE78 - 0x200be70)
+	ldr r3, [r5,#oMapTilesState200be70_MapGFXPtrsPtr] // (dword_200BE78 - 0x200be70)
 	ldr r0, [r3,#8]
 	ldr r1, off_803057C // =eDecompBuffer2013A00
 	mov r2, #0xc
@@ -19795,7 +19815,7 @@ loc_8030492:
 	// dest
 	add r1, #0xc
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, [r5,#0x1c] // (dword_200BE8C - 0x200be70)
+	ldr r0, [r5,#oMapTilesState200be70_UnkCallback_1c] // (dword_200BE8C - 0x200be70)
 	mov lr, pc
 	bx r0
 	pop {r1-r3}
@@ -19806,7 +19826,7 @@ loc_8030492:
 	.balign 4, 0
 off_80304E0: .word palette_3001960
 dword_80304E4: .word 0x6000000
-	thumb_func_end sub_8030472
+	thumb_func_end decompAndCopyMapTiles_8030472
 
 	thumb_func_start LoadBGAnimData
 LoadBGAnimData:
@@ -19914,7 +19934,7 @@ sub_8030580:
 	push {r1-r3}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_CameraPtr]
-	ldr r5, off_80305E0 // =eStruct200BE70
+	ldr r5, off_80305E0 // =eMapTilesState200be70
 	mov r4, #4
 	ldrsh r0, [r3,r4]
 	mov r4, #6
@@ -19955,7 +19975,7 @@ loc_80305D4:
 	mov r12, r3
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_80305E0: .word eStruct200BE70
+off_80305E0: .word eMapTilesState200be70
 	thumb_func_end sub_8030580
 
 	thumb_local_start
@@ -20271,7 +20291,7 @@ sub_80307D8:
 	ldrsh r1, [r3,r4]
 	asr r0, r0, #3
 	asr r1, r1, #3
-	ldr r5, off_8030804 // =eStruct200BE70
+	ldr r5, off_8030804 // =eMapTilesState200be70
 	bl sub_803086C
 	pop {r4-r6}
 	mov r8, r4
@@ -20279,7 +20299,7 @@ sub_80307D8:
 	mov r12, r6
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8030804: .word eStruct200BE70
+off_8030804: .word eMapTilesState200be70
 	thumb_func_end sub_80307D8
 
 	thumb_func_start sub_8030808

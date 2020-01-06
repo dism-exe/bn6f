@@ -10,12 +10,12 @@ unsigned int Underground_EnterMapGroup()
 
     *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = off_80790A4[*(v0 + 5)];
     Underground_LoadBGAnim();
-    sub_803037C(*(v0 + 4), *(v0 + 5));
+    initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
     decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
-    sub_8030472();
-    sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
+    decompAndCopyMapTiles_8030472();
+    initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(*(&off_8079380 + *(v0 + 5)));
     chatbox_uncompBasedOnMap_803FD08();
     Underground_SpawnMapObjectsForMap();

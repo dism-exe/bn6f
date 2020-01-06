@@ -10,12 +10,12 @@ unsigned int RobotControlComp_EnterMapGroup()
 
     *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = off_8066020[*(v0 + 5)];
     RobotControlComp_LoadBGAnim();
-    sub_803037C(*(v0 + 4), *(v0 + 5));
+    initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
     decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
-    sub_8030472();
-    sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
+    decompAndCopyMapTiles_8030472();
+    initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(off_8066434[*(v0 + 5)]);
     chatbox_uncompBasedOnMap_803FD08();
     RobotControlComp_SpawnMapObjectsForMap();
@@ -91,12 +91,12 @@ unsigned int AquariumComp_EnterMapGroup()
 
     *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_80676E8 + *(v0 + 5));
     AquariumComp_LoadBGAnim();
-    sub_803037C(*(v0 + 4), *(v0 + 5));
+    initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
     decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
-    sub_8030472();
-    sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
+    decompAndCopyMapTiles_8030472();
+    initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(off_8067BC0[*(v0 + 5)]);
     chatbox_uncompBasedOnMap_803FD08();
     AquariumComp_SpawnMapObjectsForMap();

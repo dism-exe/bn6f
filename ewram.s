@@ -1031,28 +1031,12 @@ byte_200BC61:: // 0x200bc61
 	.space 15
 byte_200BC70:: // 0x200bc70
 	.space 512
-eStruct200BE70:: // 0x200be70
-	.space 1
-byte_200BE71:: // 0x200be71
-	.space 3
-word_200BE74:: // 0x200be74
-	.space 2
-word_200BE76:: // 0x200be76
-	.space 2
-dword_200BE78:: // 0x200be78
-	.space 4
-dword_200BE7C:: // 0x200be7c
-	.space 4
-dword_200BE80:: // 0x200be80
-	.space 4
-dword_200BE84:: // 0x200be84
-	.space 4
-dword_200BE88:: // 0x200be88
-	.space 4
-dword_200BE8C:: // 0x200be8c
-	.space 4
-dword_200BE90:: // 0x200be90
-	.space 16
+
+eMapTilesState200be70:: // 0x200be70
+	map_tiles_state_200be70_struct eMapTilesState200be70
+eMapTilesState200be70End:: // 0x200be94
+
+	.space 12
 unk_200BEA0:: // 0x200bea0
 	.space 576
 unk_200C0E0:: // 0x200c0e0

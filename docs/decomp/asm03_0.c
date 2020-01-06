@@ -13646,7 +13646,7 @@ void __fastcall camera_802FF4C(int x, int y, int a3, int mapGroup)
     ZeroFillByWord(tk->camera, 76);
     pCamera->pad_02[1] = v9;
     pCamera->unk_14 = v10;
-    v11 = (eStruct200BE70 - 30) << 18;
+    v11 = (eMapTilesState200be70 - 30) << 18;
     pCamera->unk_1C = v11;
     pCamera->unk_18 = -v11;
     v12 = (byte_200BE71 - 20) << 18;
@@ -14127,7 +14127,7 @@ void nullsub_60()
 
 
 // 0x803037c
-char *__fastcall sub_803037C(signed int MapGroup, int MapNumber)
+char *__fastcall initMapTilesState_803037c(signed int MapGroup, int MapNumber)
 {
     char (***v2)[17212]; // r3
     void **v3; // r4
@@ -14153,7 +14153,7 @@ char *__fastcall sub_803037C(signed int MapGroup, int MapNumber)
     dword_200BE8C = v5[1];
     dword_200BE90 = v5[2];
     result = *(dword_200BE78 + 8);
-    eStruct200BE70 = *result;
+    eMapTilesState200be70 = *result;
     byte_200BE71 = result[1];
     dword_200BE80 = *(dword_200BE78 + 4);
     dword_200BE84 = *dword_200BE78;
@@ -14168,7 +14168,7 @@ signed int sub_80303E8()
     signed int result; // r0
 
     result = 32;
-    eStruct200BE70 = 32;
+    eMapTilesState200be70 = 32;
     byte_200BE71 = 32;
     return result;
 }
@@ -14180,7 +14180,7 @@ signed int sub_80303F2()
     signed int result; // r0
 
     result = 64;
-    eStruct200BE70 = 64;
+    eMapTilesState200be70 = 64;
     byte_200BE71 = 64;
     return result;
 }
@@ -14196,14 +14196,14 @@ BOOL __fastcall sub_80303FC(_DWORD *a1)
 
     v1 = -*a1;
     v2 = v1;
-    v3 = (-((v1 - a1[1]) >> 16) >> 3) + (eStruct200BE70 >> 1);
+    v3 = (-((v1 - a1[1]) >> 16) >> 3) + (eMapTilesState200be70 >> 1);
     v4 = (-((((-a1[1] - v2) >> 1) + a1[2]) >> 16) >> 3) + (byte_200BE71 >> 1);
-    return v3 < 0 || v3 >= eStruct200BE70 || v4 < 0 || v4 >= byte_200BE71;
+    return v3 < 0 || v3 >= eMapTilesState200be70 || v4 < 0 || v4 >= byte_200BE71;
 }
 
 
 // 0x8030472
-int sub_8030472()
+int decompAndCopyMapTiles_8030472()
 {
     int v0; // r0
     _DWORD *v1; // r7

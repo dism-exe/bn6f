@@ -6578,12 +6578,12 @@ char (*ACDCTown_EnterMapGroup())[8]
     char (*result)[8]; // r0
 
     *(tk->unk_2011BB0 + 5) = off_804CE68[gs->MapSubOffset];
-    sub_803037C(gs->MapSelect, gs->MapSubOffset);
+    initMapTilesState_803037c(gs->MapSelect, gs->MapSubOffset);
     decompressCoordEventData_8030aa4(gs->MapSelect, gs->MapSubOffset);
     v2 = gs->MapSubOffset;
     camera_802FF4C(gs->player_x, gs->player_y, gs->unk_2C, gs->MapSelect);
-    sub_8030472();
-    sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
+    decompAndCopyMapTiles_8030472();
+    initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(off_804CEFC[gs->MapSubOffset]);
     chatbox_uncompBasedOnMap_803FD08();
     ACDCTown_SpawnMapObjectsForMap();

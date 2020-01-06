@@ -16037,7 +16037,7 @@ loc_813863A:
 	lsl r4, r4, #2
 	push {r3}
 	ldr r0, off_813868C // =unk_202A000 
-	bl sub_80028D4
+	bl initUncompSpriteState_80028d4
 	ldr r0, off_8138690 // =off_8138694 
 	ldr r0, [r0,r4]
 	bl uncompSprite_8002906

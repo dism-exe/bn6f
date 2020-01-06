@@ -10908,7 +10908,7 @@ int __fastcall sub_8138624(int a1, int a2, int a3, int a4)
     {
         v6 = v5;
         v8 = a4;
-        sub_80028D4(&unk_202A000, a2, a3, a4);
+        initUncompSpriteState_80028d4(&unk_202A000, a2, a3, a4);
         uncompSprite_8002906(*(&off_8138694 + v6 * 4));
         sub_8030A60((&off_813866C)[v6]);
         engine_setScreeneffect(124, 8);

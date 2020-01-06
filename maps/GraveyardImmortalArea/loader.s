@@ -13,7 +13,7 @@ GraveyardImmortalArea_EnterMapGroup:
 	bl GraveyardImmortalArea_LoadBGAnim
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl sub_803037C
+	bl initMapTilesState_803037c
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl decompressCoordEventData_8030aa4
@@ -23,9 +23,9 @@ GraveyardImmortalArea_EnterMapGroup:
 	ldrb r3, [r5,#oGameState_MapGroup]
 	ldrb r4, [r5,#oGameState_MapNumber]
 	bl camera_802FF4C
-	bl sub_8030472
+	bl decompAndCopyMapTiles_8030472
 	ldr r0, off_807ED2C // =unk_2037800 
-	bl sub_80028D4
+	bl initUncompSpriteState_80028d4
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, off_807ED30 // =off_807ED34 

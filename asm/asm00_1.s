@@ -8599,7 +8599,7 @@ sub_8007A0C:
 	bl sub_800318C
 	bl sub_800BFC4
 	ldr r0, off_8007A40 // =byte_2011800
-	bl sub_80028D4
+	bl initUncompSpriteState_80028d4
 	bl GetBattleEffects // () -> int
 	mov r1, #8
 	tst r0, r1

@@ -2019,7 +2019,7 @@ off_8142CAC: .word 0x420
 	thumb_func_start sub_8142CB0
 sub_8142CB0:
 	push {r4-r7,lr}
-	ldr r5, off_8142D54 // =eStruct200BE70 
+	ldr r5, off_8142D54 // =eMapTilesState200be70 
 	bl sub_8142D58
 	bl sub_8142DA0
 	ldr r5, [r5,#0xc] // (dword_200BE7C - 0x200be70)
@@ -2033,7 +2033,7 @@ sub_8142CB0:
 	thumb_func_start sub_8142CC8
 sub_8142CC8:
 	push {r4-r7,lr}
-	ldr r5, off_8142D54 // =eStruct200BE70 
+	ldr r5, off_8142D54 // =eMapTilesState200be70 
 	ldrb r4, [r5]
 	mov r5, r0
 	lsl r1, r1, #2
@@ -2107,13 +2107,13 @@ sub_8142D4C:
 	bl sub_80307D8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8142D54: .word eStruct200BE70
+off_8142D54: .word eMapTilesState200be70
 	thumb_func_end sub_8142D4C
 
 	thumb_local_start
 sub_8142D58:
 	push {r4-r7,lr}
-	ldr r5, off_8142E04 // =eStruct200BE70 
+	ldr r5, off_8142E04 // =eMapTilesState200be70 
 	ldr r6, off_8142E08 // =unk_2000B40 
 	ldrb r4, [r5]
 	ldrb r0, [r6,#0x8] // (byte_2000B48 - 0x2000b40)
@@ -2154,7 +2154,7 @@ locret_8142D9E:
 sub_8142DA0:
 	push {r4-r7,lr}
 	push {r0}
-	ldr r5, off_8142E04 // =eStruct200BE70 
+	ldr r5, off_8142E04 // =eMapTilesState200be70 
 	ldr r6, off_8142E08 // =unk_2000B40 
 	ldrb r4, [r5]
 	ldrb r0, [r6,#0x9] // (byte_2000B49 - 0x2000b40)
@@ -2210,7 +2210,7 @@ loc_8142DF8:
 	pop {pc}
 	.balign 4, 0
 off_8142E00: .word byte_8142E0C
-off_8142E04: .word eStruct200BE70
+off_8142E04: .word eMapTilesState200be70
 off_8142E08: .word unk_2000B40
 byte_8142E0C: .byte 0x50, 0x3C, 0xD0, 0x45, 0x90, 0x4A, 0xC0, 0x49
 off_8142E14: .word byte_8142E24

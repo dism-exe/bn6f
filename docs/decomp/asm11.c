@@ -10,12 +10,12 @@ unsigned int JudgeTreeComp_EnterMapGroup()
 
 	*(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_8068CCC + *(v0 + 5));
 	JudgeTreeComp_LoadBGAnim();
-	sub_803037C(*(v0 + 4), *(v0 + 5));
+	initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
 	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
 	camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
-	sub_8030472();
-	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
+	decompAndCopyMapTiles_8030472();
+	initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(off_806909C[*(v0 + 5)]);
 	chatbox_uncompBasedOnMap_803FD08();
 	JudgeTreeComp_SpawnMapObjectsForMap();
@@ -98,12 +98,12 @@ unsigned int MrWeatherComp_EnterMapGroup()
 
 	*(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_80698DC + *(v0 + 5));
 	MrWeatherComp_LoadBGAnim();
-	sub_803037C(*(v0 + 4), *(v0 + 5));
+	initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
 	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
 	camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
-	sub_8030472();
-	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
+	decompAndCopyMapTiles_8030472();
+	initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(off_806A04C[*(v0 + 5)]);
 	chatbox_uncompBasedOnMap_803FD08();
 	MrWeatherComp_SpawnMapObjectsForMap();
@@ -186,12 +186,12 @@ unsigned int PavilionComp_EnterMapGroup()
 
 	*(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_806A7AC + *(v0 + 5));
 	PavilionComp_LoadBGAnim();
-	sub_803037C(*(v0 + 4), *(v0 + 5));
+	initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
 	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
 	camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
-	sub_8030472();
-	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
+	decompAndCopyMapTiles_8030472();
+	initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(off_806AA64[*(v0 + 5)]);
 	chatbox_uncompBasedOnMap_803FD08();
 	PavilionComp_SpawnMapObjectsForMap();
@@ -288,12 +288,12 @@ unsigned int HomePages_EnterMapGroup()
 
 	*(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = off_806BFF8[*(v0 + 5)];
 	HomePages_LoadBGAnim();
-	sub_803037C(*(v0 + 4), *(v0 + 5));
+	initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
 	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
 	camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
-	sub_8030472();
-	sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
+	decompAndCopyMapTiles_8030472();
+	initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(*(&off_806C2A0 + *(v0 + 5)));
 	chatbox_uncompBasedOnMap_803FD08();
 	HomePages_SpawnMapObjectsForMap();

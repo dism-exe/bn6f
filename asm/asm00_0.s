@@ -3367,7 +3367,7 @@ sub_8001C44:
 	thumb_local_start
 sub_8001C52:
 	push {lr}
-	ldr r5, off_8001C90 // =eStruct200BE70
+	ldr r5, off_8001C90 // =eMapTilesState200be70
 	ldr r5, [r5,#0xc] // (dword_200BE7C - 0x200be70)
 	ldrb r2, [r7,#oGFXAnimState_Param3]
 	lsl r2, r2, #2
@@ -3390,14 +3390,14 @@ loc_8001C6A:
 	bgt loc_8001C6A
 	mov r7, r8
 	push {r4,r7}
-	ldr r5, off_8001C90 // =eStruct200BE70
+	ldr r5, off_8001C90 // =eMapTilesState200be70
 	bl sub_8030808
 	pop {r4,r7}
 	mov r0, #0
 	strb r0, [r7,#oGFXAnimState_IsActive]
 	pop {pc}
 	.balign 4, 0
-off_8001C90: .word eStruct200BE70
+off_8001C90: .word eMapTilesState200be70
 	thumb_func_end sub_8001C52
 
 	thumb_local_start
