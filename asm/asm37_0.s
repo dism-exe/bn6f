@@ -4346,7 +4346,8 @@ loc_813DAAA:
 	.balign 4, 0
 off_813DAB0: .word byte_200BC50
 off_813DAB4: .word off_813DAB8
-off_813DAB8: .word sub_813DAC0+1
+off_813DAB8: 
+	.word sub_813DAC0+1
 	.word sub_813DADC+1
 	thumb_func_end sub_813DA94
 

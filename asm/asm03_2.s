@@ -4398,7 +4398,7 @@ cb_8048FD4:
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-	bl sub_800A7D0 // () -> (zf, int)
+	bl IsCurSubsystemInUse // () -> (bool, !zf)
 	bne locret_8048FF0
 	mov r0, #0xda
 	mov r1, #2

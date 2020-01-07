@@ -2,7 +2,7 @@
     // type: struct AIData
 	\set_struct_start_address \label
 	set_struct_label \struct_entry, \label
-	u8 ActorType // loc=0x0
+	enum8 ActorType // loc=0x0
 		struct_const ACTOR_TYPE_VIRUS, 0x00
 		struct_const ACTOR_TYPE_NAVI, 0x01
 		struct_const ACTOR_TYPE_PLAYER, 0x02

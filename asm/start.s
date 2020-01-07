@@ -154,7 +154,7 @@ SetInterruptCallback:
 	bx r2
 	pop {r0}
 	bx r0
-off_8000258: .word _SetInterruptCallback+1
+off_8000258: .word _SetInterruptCallback+1 // (int interruptIdx, void *callback) -> void
 	thumb_func_end SetInterruptCallback
 
 	thumb_local_start

@@ -579,7 +579,8 @@ word_200939A:: // 0x200939a
 	.space 2
 byte_200939C:: // 0x200939c
 	.space 8
-dword_20093A4:: // 0x20093a4
+flags32_20093A4:: // 0x20093a4
+	// type: Flags20093A4
 	.space 4
 dword_20093A8:: // 0x20093a8
 	.space 8
@@ -958,14 +959,8 @@ dword_200AF94:: // 0x200af94
 	.space 12
 byte_200AFA0:: // 0x200afa0
 	.space 512
-byte_200B1A0:: // 0x200b1a0
-	.space 1
-byte_200B1A1:: // 0x200b1a1
-	.space 1
-byte_200B1A2:: // 0x200b1a2
-	.space 1
-byte_200B1A3:: // 0x200b1a3
-	.space 5
+eStartScreenAnimationControl200B1A0:: // 0x200b1a0
+    .space 8
 dword_200B1A8:: // 0x200b1a8
 	.space 8
 dword_200B1B0:: // 0x200b1b0
@@ -1258,7 +1253,7 @@ byte_200F450:: // 0x200f450
 	.space 4
 byte_200F454:: // 0x200f454
 	.space 12
-byte_200F460:: // 0x200f460
+eTimerEnable200F460:: // 0x200f460
 	.space 1
 byte_200F461:: // 0x200f461
 	.space 1

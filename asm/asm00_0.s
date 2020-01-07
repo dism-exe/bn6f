@@ -1298,21 +1298,24 @@ off_8000E08: .word 0xE10
 off_8000E0C: .word 0x3C
 	thumb_func_end sub_8000DE0
 
-	thumb_func_start sub_8000E10
-sub_8000E10: // () -> void
+	thumb_func_start CapIncrementGameTimeFrames
+CapIncrementGameTimeFrames: // () -> void
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_S2001c04_Ptr]
-	ldr r0, [r3,#0x18]
+	ldr r0, [r3,#oS2001c04_GameTimeFrames]
 	add r0, #1
+
+	// cap frame count
 	ldr r1, dword_8000E24 // =0x14988f0
 	cmp r0, r1
 	ble loc_8000E20
 	mov r0, r1
 loc_8000E20:
-	str r0, [r3,#0x18]
+
+	str r0, [r3,#oS2001c04_GameTimeFrames]
 	mov pc, lr
 dword_8000E24: .word 0x14988F0
-	thumb_func_end sub_8000E10
+	thumb_func_end CapIncrementGameTimeFrames
 
 	thumb_func_start sub_8000E28
 sub_8000E28:

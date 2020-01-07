@@ -3833,9 +3833,10 @@ cbGameState_80050EC:
 	pop {r4-r7,pc}
 	.balign 4, 0
 GameStateJumptable_p: .word GameStateJumptable
-GameStateJumptable: .word EnterMap+1
+GameStateJumptable: 
+	.word EnterMap+1
 	.word gamestate_8005268+1
-	.word sub_80052D8+1
+	.word battle_80052D8+1
 	.word sub_8005360+1
 	.word sub_800536E+1
 	.word sub_80053E4+1
@@ -3982,7 +3983,7 @@ gamestate_8005268:
 	thumb_func_end gamestate_8005268
 
 	thumb_local_start
-sub_80052D8:
+battle_80052D8:
 	push {lr}
 	bl sub_80339CC
 	bl sub_80039AA
@@ -4003,7 +4004,7 @@ sub_80052D8:
 	bl sub_800531C
 locret_800531A:
 	pop {pc}
-	thumb_func_end sub_80052D8
+	thumb_func_end battle_80052D8
 
 	thumb_local_start
 sub_800531C:
@@ -7524,57 +7525,57 @@ off_8007188: .word 0x200
 
 	thumb_local_start
 sub_800718C:
-	ldr r1, off_80071BC // =dword_20093A4
+	ldr r1, off_80071BC // =flags32_20093A4
 	ldr r1, [r1]
 	tst r0, r1
 	mov pc, lr
 	thumb_func_end sub_800718C
 
 	thumb_local_start
-sub_8007194:
-	ldr r0, off_80071C0 // =dword_20093A4
+get_flags32_20093A4: // () -> flags32
+	ldr r0, off_80071C0 // =flags32_20093A4
 	ldr r0, [r0]
 	mov pc, lr
-	thumb_func_end sub_8007194
+	thumb_func_end get_flags32_20093A4
 
 	thumb_local_start
-sub_800719A:
-	ldr r1, off_80071C4 // =dword_20093A4
+set_flags32_20093A4: // (flags32 flags) -> void
+	ldr r1, off_80071C4 // =flags32_20093A4
 	ldr r2, [r1]
 	orr r2, r0
 	str r2, [r1]
 	mov pc, lr
-	thumb_func_end sub_800719A
+	thumb_func_end set_flags32_20093A4
 
 	thumb_local_start
-sub_80071A4:
-	ldr r1, off_80071C8 // =dword_20093A4
+clear_flags32_20093A4: // (flags32 flags) -> void
+	ldr r1, off_80071C8 // =flags32_20093A4
 	ldr r2, [r1]
 	bic r2, r0
 	str r2, [r1]
 	mov pc, lr
-	thumb_func_end sub_80071A4
+	thumb_func_end clear_flags32_20093A4
 
 	thumb_local_start
-sub_80071AE:
-	ldr r1, off_80071CC // =dword_20093A4
+assign_flags32_20093A4: // (flags32 val) -> void
+	ldr r1, off_80071CC // =flags32_20093A4
 	str r0, [r1]
 	mov pc, lr
-	thumb_func_end sub_80071AE
+	thumb_func_end assign_flags32_20093A4
 
-	thumb_func_start sub_80071B4
-sub_80071B4:
-	ldr r1, off_80071D0 // =dword_20093A4
+	thumb_func_start reset_flags32_20093A4
+reset_flags32_20093A4: // () -> void
+	ldr r1, off_80071D0 // =flags32_20093A4
 	mov r0, #0
 	str r0, [r1]
 	mov pc, lr
-off_80071BC: .word dword_20093A4
-off_80071C0: .word dword_20093A4
-off_80071C4: .word dword_20093A4
-off_80071C8: .word dword_20093A4
-off_80071CC: .word dword_20093A4
-off_80071D0: .word dword_20093A4
-	thumb_func_end sub_80071B4
+off_80071BC: .word flags32_20093A4
+off_80071C0: .word flags32_20093A4
+off_80071C4: .word flags32_20093A4
+off_80071C8: .word flags32_20093A4
+off_80071CC: .word flags32_20093A4
+off_80071D0: .word flags32_20093A4
+	thumb_func_end reset_flags32_20093A4
 
 	thumb_func_start sub_80071D4
 sub_80071D4:
@@ -7631,7 +7632,7 @@ loc_8007232:
 	bl sub_80027E4
 loc_8007236:
 	mov r0, #1
-	bl sub_800719A
+	bl set_flags32_20093A4 // (flags32 flags) -> void
 	bl battle_clearEnemyFadeinList
 	mov r0, #1
 	strb r0, [r5,#0x1b]
@@ -9096,7 +9097,7 @@ loc_8007E38:
 	bl SetRenderInfoLCDControl
 	bl sub_800A892
 	mov r0, #1
-	bl sub_80071A4
+	bl clear_flags32_20093A4 // (flags32 flags) -> void
 	movflag EVENT_1722
 	bl ClearEventFlagFromImmediate
 	mov r0, #0
@@ -14594,17 +14595,17 @@ getBattleSettingsFromList1: // (int battleSettingsIdx) -> BattleSettings*
 	thumb_func_end getBattleSettingsFromList1
 
 	thumb_func_start isSameSubsystem_800A732
-isSameSubsystem_800A732: // () -> zf
+isSameSubsystem_800A732: // () -> !zf
 	push {r4,lr}
-	mov r4, #1
-	bl sub_800A7D0 // () -> (zf, int)
+	mov r4, #TRUE
+	bl IsCurSubsystemInUse // () -> (bool, !zf)
 	beq loc_800A748
 	ldr r3, off_800A750 // =eStruct203F7D8
 	ldrb r1, [r3,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	mov r2, #2
 	tst r1, r2
 	bne loc_800A748
-	mov r4, #0
+	mov r4, #FALSE
 loc_800A748:
 	mov r0, r4
 	tst r0, r0
@@ -14694,20 +14695,20 @@ loc_800A7C4:
 	.byte 0, 0
 	thumb_func_end sub_800A7A6
 
-// () -> (zf, int)
-	thumb_func_start sub_800A7D0
-sub_800A7D0:
-	mov r0, #0
-	ldr r1, off_800A948 // =dword_20093A4
+	thumb_func_start IsCurSubsystemInUse
+IsCurSubsystemInUse: // () -> (bool, !zf)
+	mov r0, #FALSE
+	// Flags20093A4 *v0 = *flags32_20093A4
+	ldr r1, off_800A948 // =flags32_20093A4
 	ldr r1, [r1]
-	mov r2, #1
+	mov r2, #FLAGS_20093A4_CUR_SUBSYSTEM_IN_USE
 	tst r1, r2
 	beq loc_800A7DE
-	mov r0, #1
+    mov r0, #TRUE
 loc_800A7DE:
 	tst r0, r0
 	mov pc, lr
-	thumb_func_end sub_800A7D0
+	thumb_func_end IsCurSubsystemInUse
 
 	thumb_func_start sub_800A7E2
 sub_800A7E2:
@@ -14915,7 +14916,7 @@ off_800A938: .word dword_2033000
 dword_800A93C: .word 0x8C9F
 off_800A940: .word battleSettingsList0
 off_800A944: .word BattleSettingsList1
-off_800A948: .word dword_20093A4
+off_800A948: .word flags32_20093A4
 off_800A94C: .word 0x100
 off_800A950: .word dword_2000B30
 	thumb_func_end sub_800A908

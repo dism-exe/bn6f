@@ -109,7 +109,7 @@ loc_3005C6C:
 	msr SPSR_cf, r0
 	bx lr
 	.balign 4, 0
-off_3005C94: .word dword_3001D60
+off_3005C94: .word dword_3001D60 // type: bool*
 byte_3005C98: .word 0x20c8
 off_3005C9C: .word off_3000E70
 off_3005CA0: .word sub_3005CDA+1
@@ -118,7 +118,7 @@ off_3005CA0: .word sub_3005CDA+1
 	.word nullsub_38+1
 	.word nullsub_38+1
 	.word nullsub_38+1
-	.word sub_814469C+1
+	.word libSIO814469C+1
 	.word sub_81446AC+1
 	.word nullsub_38+1
 	.word nullsub_38+1
@@ -269,7 +269,7 @@ dword_3005DD0: .word 0x2005
 
 	thumb_func_start _SetInterruptCallback
 // set the callback for interrupt r0/4 to callback r1
-_SetInterruptCallback:
+_SetInterruptCallback: // (int interruptIdx, void *callback) -> void
 	push {r4,lr}
 
 	// save old IME state and temporarily disable
@@ -323,12 +323,17 @@ sub_3005E02:
 sub_3005E18:
 	push {r4,lr}
 	ldr r3, off_3005E54 // =InterruptMasterEnableRegister
+
+	// Backup and disable all interrupts
 	ldrh r4, [r3]
 	mov r2, #0
 	strh r2, [r3]
+	
 	ldr r1, off_3005E5C // =dword_3001D60
-	mov r0, #0
+	mov r0, #FALSE
 	str r0, [r1]
+
+	// restore pervious interrupt enable state
 	strh r4, [r3]
 	pop {r4,pc}
 	thumb_func_end sub_3005E18
@@ -337,20 +342,26 @@ sub_3005E18:
 sub_3005E2C:
 	push {r4,lr}
 	ldr r3, off_3005E54 // =InterruptMasterEnableRegister
+
+	// backup and disable all interrupts
 	ldrh r4, [r3]
 	mov r2, #0
 	strh r2, [r3]
+
 	ldr r1, off_3005E5C // =dword_3001D60
-	mov r0, #1
+	mov r0, #TRUE
 	str r0, [r1]
+	
 	push {r3}
 	mov r0, #0x18
-	ldr r1, off_3005E78 // =sub_814469C+1
-	bl _SetInterruptCallback
+	ldr r1, off_3005E78 // =libSIO814469C+1
+	bl _SetInterruptCallback // (int interruptIdx, void *callback) -> void
 	mov r0, #0x1c
 	ldr r1, off_3005E7C // =sub_81446AC+1
-	bl _SetInterruptCallback
+	bl _SetInterruptCallback // (int interruptIdx, void *callback) -> void
 	pop {r3}
+	
+	// restore interrupt master enable state
 	strh r4, [r3]
 	pop {r4,pc}
 	.balign 4, 0
@@ -376,7 +387,7 @@ sub_3005E6A:
 	strh r2, [r3]
 	pop {r4,pc}
 off_3005E74: .word InterruptMasterEnableRegister
-off_3005E78: .word sub_814469C+1
+off_3005E78: .word libSIO814469C+1
 off_3005E7C: .word sub_81446AC+1
 	thumb_func_end sub_3005E6A
 
@@ -1672,31 +1683,56 @@ loc_30067F8:
 	.balign 4, 0x00
 	thumb_func_end sub_3006792
 
-	thumb_func_start sub_3006814
-sub_3006814:
+	thumb_func_start copyTo_iObjectAttr3001D70_3006814
+copyTo_iObjectAttr3001D70_3006814: // () -> void
 	push {r4-r7,lr}
+	// backup r12
 	mov r0, r12
 	push {r0}
+
+	// typedef struct{u32 unk0, u16 unk1, u8 unk2, u8 unk3} s1
+	// s1 v1[128]: r0
+	// void *v4End: r2
+	// void *v1End: r3
+	// struct{u8 *p0, int len} v4[4]: r6
+	// s1 *v5: r7
 	ldr r0, off_30068C0 // =iObjectAttr3001D70
 	ldr r2, off_30068C4 // =unk_30025B0
 	ldr r3, off_30068C8 // =unk_3002170
-	ldr r6, off_30068CC // =dword_3002590
-	ldr r7, off_30068D0 // =byte_3001150
+	ldr r6, off_30068CC // =tupleArr_3002590
+	ldr r7, off_30068D0 // =iObjectAttr3001150
 	mov r12, r7
-loc_3006826:
-	ldr r1, [r6]
+
+.loop1
+	// u8 *p0: r1 = *v4.p0
+	// u8 *p1: r4 = p0 + *v4.len
+	ldr r1, [r6,#0]
 	ldr r4, [r6,#4]
 	add r4, r4, r1
-loc_300682C:
+
+// reverse search p0 until a non 0xFF is found or reached buffer end
+.searchTillNo0xFF
+	// --p1
 	sub r4, #1
+
+	// goto .processNext if (p0 > p1): reached end of buffer
 	cmp r1, r4
-	bgt loc_3006854
+	bgt .processNext
+	
+	// u8 v6: r5 = *p1
+	// do while (v6 == 0xFF)
 	ldrb r5, [r4]
 	cmp r5, #0xff
-	beq loc_300682C
-loc_3006838:
+	beq .searchTillNo0xFF
+
+.copyLoop
+	// break if (v1 >= v1End)
 	cmp r0, r3
-	bge loc_300685A
+	bge .break1
+
+	// *v1.unk0 = v5[v6].unk0
+	// *v1.unk1 = v5[v6].unk1
+	// ++v1
 	lsl r5, r5, #3
 	mov r7, r12
 	add r7, r7, r5
@@ -1705,34 +1741,54 @@ loc_3006838:
 	ldrh r5, [r7,#4]
 	strh r5, [r0,#4]
 	add r0, #8
+
+	// v6 = v5[v6].unk3
+	// goto .searchTillNo0xFF if v6 == 0xFF
 	ldrb r5, [r7,#7]
 	cmp r5, #0xff
-	beq loc_300682C
-	b loc_3006838
-loc_3006854:
+	beq .searchTillNo0xFF
+	
+	b .copyLoop
+
+.processNext
+	// do while (++v4 < v4End)
 	add r6, #8
 	cmp r6, r2
-	blt loc_3006826
-loc_300685A:
+	blt .loop1
+.break1:
+
+	// *dword_200B1A8 = (v1End - v1) / sizeof(*v1)
 	sub r2, r3, r0
 	lsr r2, r2, #3
 	ldr r4, off_30068D4 // =dword_200B1A8
 	str r2, [r4]
+
+// for (; v1<v1End; ++v1)
+	// copy default values for unk0 and unk1
 	mov r2, #0xf0
 	mov r4, #0xc
 	lsl r4, r4, #8
-loc_3006868:
+.forRemainingElements:
 	cmp r0, r3
-	bge loc_3006874
+	bge .break2
+	
+	// v1.unk0 = 0xf0
+	// v1.unk1 = 0xc00
 	str r2, [r0]
 	strh r4, [r0,#4]
+
 	add r0, #8
-	b loc_3006868
-loc_3006874:
+	b .forRemainingElements
+.break2:
+
+	// unk *v7: r0
+	// s1 v1[128]: r1
 	ldr r0, off_30068D8 // =word_200A6F0
 	ldr r1, off_30068C0 // =iObjectAttr3001D70
-	mov r3, #0x20 
-loc_300687A:
+
+// for (i=20; i>=0; i--)
+	mov r3, #0x20
+.loop300687A:
 	ldrh r4, [r0]
 	strh r4, [r1,#6]
 	ldrh r4, [r0,#2]
@@ -1743,43 +1799,50 @@ loc_300687A:
 	strh r4, [r1,#0x1e]
 	add r0, #0xc
 	add r1, #0x20 
+	
 	sub r3, #1
 	cmp r3, #0
-	bgt loc_300687A
+	bgt .loop300687A
+
 	mov r2, #0
 	mvn r2, r2
 	ldr r5, off_30068DC // =off_802FD70
 	mov r4, #4
 	ldr r7, off_30068E0 // =WordFill+1
 	mov r12, r7
-loc_30068A0:
+.loop30068A0:
 	ldr r0, [r5]
 	ldr r1, [r5,#4]
 	mov r7, r12
 	mov lr, pc
 	bx r7
+
 	add r5, #8
 	sub r4, #1
 	cmp r4, #0
-	bgt loc_30068A0
+	bgt .loop30068A0
+
 	ldr r0, off_30068E4 // =byte_3001950
 	mov r1, #0
 	str r1, [r0]
+
+	// restore r12
 	pop {r0}
 	mov r12, r0
+
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_30068C0: .word iObjectAttr3001D70
 off_30068C4: .word unk_30025B0
 off_30068C8: .word unk_3002170
-off_30068CC: .word dword_3002590
-off_30068D0: .word byte_3001150
+off_30068CC: .word tupleArr_3002590
+off_30068D0: .word iObjectAttr3001150
 off_30068D4: .word dword_200B1A8
 off_30068D8: .word word_200A6F0
 off_30068DC: .word off_802FD70
 off_30068E0: .word WordFill+1
 off_30068E4: .word byte_3001950
-	thumb_func_end sub_3006814
+	thumb_func_end copyTo_iObjectAttr3001D70_3006814
 
 	thumb_func_start sub_30068E8
 sub_30068E8:
@@ -1788,7 +1851,7 @@ sub_30068E8:
 	ldr r6, [r5]
 	cmp r6, #0x80
 	bge locret_300691E
-	ldr r4, off_300699C // =dword_3002590
+	ldr r4, off_300699C // =tupleArr_3002590
 	lsl r7, r2, #3
 	add r4, r4, r7
 	ldr r7, [r4,#4]
@@ -1803,7 +1866,7 @@ sub_30068E8:
 	ldrb r7, [r4]
 	strb r6, [r4]
 	lsl r6, r6, #3
-	ldr r5, off_3006998 // =byte_3001150
+	ldr r5, off_3006998 // =iObjectAttr3001150
 	add r5, r5, r6
 	str r0, [r5]
 	strh r1, [r5,#4]
@@ -1829,7 +1892,7 @@ sub_3006920:
 	cmp r1, #0x80
 	bge loc_3006988
 	sub r1, r1, r6
-	ldr r3, off_3006998 // =byte_3001150
+	ldr r3, off_3006998 // =iObjectAttr3001150
 	mov r12, r3
 loc_300693E:
 	str r0, [sp]
@@ -1839,7 +1902,7 @@ loc_300693E:
 	ldrb r2, [r0,#6]
 	ldrh r1, [r0,#4]
 	ldr r0, [r0]
-	ldr r4, off_300699C // =dword_3002590
+	ldr r4, off_300699C // =tupleArr_3002590
 	lsl r7, r2, #3
 	add r4, r4, r7
 	ldr r7, [r4,#4]
@@ -1878,8 +1941,8 @@ loc_3006988:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_3006994: .word byte_3001950
-off_3006998: .word byte_3001150
-off_300699C: .word dword_3002590
+off_3006998: .word iObjectAttr3001150
+off_300699C: .word tupleArr_3002590
 byte_30069A0:: .byte 0x4, 0x4, 0x4, 0x0, 0x4, 0x0, 0x4, 0x4
 	thumb_func_end sub_3006920
 

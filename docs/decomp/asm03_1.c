@@ -5785,7 +5785,7 @@ int sub_8038F0C()
     {
         (loc_803D1AC)(result);
         clear_e200AD04();
-        sub_803E900();
+        init_eStartScreenAnimationControl200B1A0_2();
         result = SetRenderInfoLCDControl(&byte_40);
     }
     return result;
@@ -5951,7 +5951,7 @@ signed int cb_80395A4()
     char zf; // zf
 
     (*(&JumpTable80395C8 + byte_200A290))();
-    result = sub_800A7D0();
+    result = IsCurSubsystemInUse();
     if ( zf )
         result = sub_803C59C(218, 2);
     return result;
@@ -10613,7 +10613,7 @@ signed __int64 sub_803C94C()
 {
     char v0; // zf
 
-    sub_800A7D0();
+    IsCurSubsystemInUse();
     if ( v0 )
         sub_813D9A0(1);
     else
@@ -11629,7 +11629,7 @@ void __cdecl sub_803D1A8()
 int cb_803D1CA()
 {
     (*(&JumpTable803D1E4 + byte_2011800))();
-    return sub_803E938();
+    return startScreen_AnimationControl_803E938();
 }
 
 
@@ -12906,7 +12906,7 @@ void sub_803E80C()
     int v2; // r2
     char v3; // zf
 
-    sub_800A7D0();
+    IsCurSubsystemInUse();
     if ( !v3 && **(v1 + oToolkit_S2034880_Ptr) == 4 && !v2 )
         *v0 = 12;
 }
@@ -13031,11 +13031,11 @@ u8 *sub_803E8F8()
 
 
 // 0x803e900
-signed int sub_803E900()
+signed int init_eStartScreenAnimationControl200B1A0_2()
 {
     signed int result; // r0
 
-    ZeroFillByByte(&byte_200B1A0, 8);
+    ZeroFillByByte(&eStartScreenAnimationControl200B1A0, 8);
     result = 180;
     byte_200B1A3 = -76;
     return result;
@@ -13043,11 +13043,11 @@ signed int sub_803E900()
 
 
 // 0x803e914
-signed int sub_803E914()
+signed int init_eStartScreenAnimationControl200B1A0_2()
 {
     signed int result; // r0
 
-    ZeroFillByByte(&byte_200B1A0, 8);
+    ZeroFillByByte(&eStartScreenAnimationControl200B1A0, 8);
     result = 1;
     byte_200B1A3 = 1;
     return result;
@@ -13057,46 +13057,46 @@ signed int sub_803E914()
 // 0x803e928
 int sub_803E928()
 {
-    return byte_200B1A0;
+    return eStartScreenAnimationControl200B1A0;
 }
 
 
 // 0x803e930
-int sub_803E930()
+int startScreen_TstZero()
 {
     return 0;
 }
 
 
 // 0x803e938
-int sub_803E938()
+int startScreen_AnimationControl_803E938()
 {
     int result; // r0
     char zf; // zf
 
-    if ( byte_200B1A0 == 1 )
+    if ( eStartScreenAnimationControl200B1A0 == 1 )
     {
         result = sub_803E978();
         if ( zf )
         {
             result = 2;
-            byte_200B1A0 = 2;
+            eStartScreenAnimationControl200B1A0 = 2;
         }
     }
-    else if ( byte_200B1A0 == 2 )
+    else if ( eStartScreenAnimationControl200B1A0 == 2 )
     {
         result = sub_803EA1C(2);
     }
     else
     {
-        result = sub_803E964();
+        result = startScreen_DecrementPressStartPauseAnimationTimer();
     }
     return result;
 }
 
 
 // 0x803e964
-int sub_803E964()
+int startScreen_DecrementPressStartPauseAnimationTimer()
 {
     bool v0; // zf
     int result; // r0
@@ -13106,7 +13106,7 @@ int sub_803E964()
     if ( v0 )
     {
         result = 1;
-        byte_200B1A0 = 1;
+        eStartScreenAnimationControl200B1A0 = 1;
     }
     return result;
 }
@@ -13124,7 +13124,7 @@ signed int sub_803E978()
     int v6; // r4
 
     v0 = 1;
-    sub_803E930();
+    startScreen_TstZero();
     if ( v1 )
     {
         if ( !sub_813DA94() )
@@ -14982,7 +14982,7 @@ int sub_803FBC2()
         v2 = sub_8006910();
         startScreen_init_802F530(v2, v3, v4, v5);
         clear_e200AD04();
-        sub_803E914();
+        init_eStartScreenAnimationControl200B1A0_2();
         result = SetRenderInfoLCDControl(&byte_40);
     }
     return result;

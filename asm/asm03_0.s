@@ -17943,10 +17943,10 @@ startScreen_init_802F530: // () -> void
 	thumb_func_end startScreen_init_802F530
 
 
-	thumb_func_start startscreen_802F544
-startscreen_802F544:
+	thumb_func_start startscreen_render_802F544
+startscreen_render_802F544: // () ->
 	push {r4-r7,lr}
-	bl sub_803E938
+	bl startScreen_AnimatePressStart_803E938
 
 	ldr r5, off_802F570 // =eStartScreen
 	ldr r0, off_802F55C // =jt_802F560 
@@ -17965,7 +17965,7 @@ jt_802F560: .word startScreen_802F574+1
 	.word ho_802F63C+1
 	.word sub_802F756+1
 off_802F570: .word eStartScreen
-	thumb_func_end startscreen_802F544
+	thumb_func_end startscreen_render_802F544
 
 	thumb_local_start
 startScreen_802F574:
@@ -18001,7 +18001,7 @@ loc_802F5BE:
 	bne loc_802F5D4
 	mov r6, #0
 	mov r7, #1
-	bl sub_803E930
+	bl startScreen_TstZero // () -> !zf
 	beq loc_802F5E2
 	mov r0, #0
 	mov r7, #2
@@ -18009,7 +18009,7 @@ loc_802F5BE:
 loc_802F5D4:
 	mov r6, #1
 	mov r7, #2
-	bl sub_803E930
+	bl startScreen_TstZero // () -> !zf
 	beq loc_802F5E2
 	mov r6, #1
 	mov r7, #3
@@ -18193,7 +18193,7 @@ loc_802F72E:
 	mov r0, #0
 	bl sub_803F6B0
 	bl loc_803F512
-	bl sub_803E900
+	bl init_eStartScreenAnimationControl200B1A0_1
 locret_802F754:
 	pop {pc}
 	thumb_func_end sub_802F710
@@ -18400,7 +18400,7 @@ loc_802F8F0:
 	bne loc_802F924
 	bl notZero_eByte200AD04
 	bne loc_802F936
-	bl sub_803E930
+	bl startScreen_TstZero // () -> !zf
 	beq loc_802F936
 	b loc_802F936
 loc_802F924:
@@ -18408,7 +18408,7 @@ loc_802F924:
 	bl sub_802F9EC
 	bl notZero_eByte200AD04
 	bne loc_802F936
-	bl sub_803E930
+	bl startScreen_TstZero // () -> !zf
 	beq loc_802F936
 loc_802F936:
 	bl sub_802FC9C
@@ -18746,7 +18746,7 @@ off_802FD50: .word byte_87F8EB0
 	thumb_local_start
 sub_802FD54:
 	push {r4-r7,lr}
-	bl sub_803E930
+	bl startScreen_TstZero // () -> !zf
 	beq locret_802FD68
 	mov r1, #2
 	ldrb r0, [r5,#2]
@@ -18758,7 +18758,7 @@ loc_802FD66:
 locret_802FD68:
 	pop {r4-r7,pc}
 	.balign 4, 0
-	.word byte_200B1A0
+	.word eStartScreenAnimationControl200B1A0
 off_802FD70:: .word unk_30025B0
 dword_802FD74: .word 0x8
 	.word unk_3002580
@@ -18779,11 +18779,13 @@ loc_802FDB6:
 	ldr r1, off_802FDF0 // =off_802FDF4 
 	ldr r0, [r1,r0]
 	push {r4,lr}
-	mov r4, r0
-	ldr r1, off_802FE08 // =dword_3002590 
+    mov r4, r0
+    
+    ldr r1, off_802FE08 // =tupleArr_3002590 
 	mov r2, #0x20 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
-	mov r2, #0
+	
+    mov r2, #0
 	mvn r2, r2
 	mov r3, r4
 	mov r4, #4
@@ -18791,13 +18793,16 @@ loc_802FDCE:
 	ldr r0, [r3]
 	ldr r1, [r3,#4]
 	bl WordFill
-	add r3, #8
+	
+    add r3, #8
 	sub r4, #1
 	cmp r4, #0
 	bgt loc_802FDCE
-	ldr r0, off_802FE04 // =byte_3001150 
+	
+    ldr r0, off_802FE04 // =iObjectAttr3001150 
 	ldr r1, off_802FDFC // =0x400 
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
+
 	ldr r0, off_802FE00 // =byte_3001950 
 	mov r1, #0
 	str r1, [r0]
@@ -18808,8 +18813,8 @@ off_802FDF4: .word off_802FD70
 	.word byte_802FD90
 off_802FDFC: .word 0x400
 off_802FE00: .word byte_3001950
-off_802FE04: .word byte_3001150
-off_802FE08: .word dword_3002590
+off_802FE04: .word iObjectAttr3001150
+off_802FE08: .word tupleArr_3002590
 	thumb_func_end sub_802FDB0
 
 	thumb_func_start copyObjAttributesToIWRAM_802FE0C
@@ -19389,7 +19394,7 @@ camera_doShakeEffect_80301e8:
 	bl sub_80269D0
 	tst r0, r0
 	bne loc_8030200
-	bl sub_800A7D0 // () -> (zf, int)
+	bl IsCurSubsystemInUse // () -> (bool, !zf)
 	beq loc_8030200
 	bl battle_isTimeStopPauseOrBattleFlags0x20_800a0a4
 	tst r0, r0

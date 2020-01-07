@@ -945,7 +945,7 @@ LABEL_8:
 
 
 // 0x3006814
-int sub_3006814()
+int copyTo_iObjectAttr3001D70_3006814()
 {
     int v0; // r12
     int *v1; // r0

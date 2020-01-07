@@ -2474,9 +2474,8 @@ clearCutsceneScriptPosIfMagicValue0x1_8036F24:
 	mov pc, lr
 	thumb_func_end clearCutsceneScriptPosIfMagicValue0x1_8036F24
 
-// () -> zf
 	thumb_func_start IsCutsceneScriptNonNull
-IsCutsceneScriptNonNull:
+IsCutsceneScriptNonNull: // () -> zf
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	ldr r0, [r0,#oCutsceneState_CutsceneScriptPos] // s_02011C50.ptr_1C

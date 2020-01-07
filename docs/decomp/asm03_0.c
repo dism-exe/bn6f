@@ -12850,9 +12850,9 @@ int __fastcall startScreen_init_802F530(int a1, int a2, int a3, int a4)
 
 // 0x802f544
 // set R5 = eStartScreen
-void startscreen_802F544()
+void startscreen_render_802F544()
 {
-    sub_803E938();
+    startScreen_AnimationControl_803E938();
     (*(JumpTable802F560 + eStartScreen.jo_00))();
     GetRNG2();
 }
@@ -12896,7 +12896,7 @@ int __usercall startScreen_802F574@<R0>(StartScreen *scr@<R5>)
     {
         v10 = 1;
         v11 = 2;
-        sub_803E930();
+        startScreen_TstZero();
         if ( !v8 )
         {
             v10 = 1;
@@ -12907,7 +12907,7 @@ int __usercall startScreen_802F574@<R0>(StartScreen *scr@<R5>)
     {
         v10 = 0;
         v11 = 1;
-        sub_803E930();
+        startScreen_TstZero();
         if ( !v8 )
             v11 = 2;
     }
@@ -13072,7 +13072,7 @@ int sub_802F710()
             clear_e200AD04();
             sub_803F6B0(0, v7, v8, v9);
             (loc_803F512)();
-            result = sub_803E900();
+            result = init_eStartScreenAnimationControl200B1A0_2();
         }
         else
         {
@@ -13259,13 +13259,13 @@ int __noreturn sub_802F8D8()
         sub_802F9EC(v0[8]);
         notZero_eByte200AD04();
         if ( v3 )
-            sub_803E930();
+            startScreen_TstZero();
     }
     else
     {
         notZero_eByte200AD04();
         if ( v3 )
-            sub_803E930();
+            startScreen_TstZero();
     }
     sub_802FC9C();
     sub_802FC70();
@@ -13456,7 +13456,7 @@ int __fastcall sub_802FD54(int a1)
     char v3; // zf
     char v4; // r1
 
-    result = sub_803E930();
+    result = startScreen_TstZero();
     if ( !v3 )
     {
         v4 = 2;
@@ -13478,7 +13478,7 @@ char *sub_802FDB0()
     int v3; // r3
     char *result; // r0
 
-    CopyWords(&off_802FD70, &dword_3002590, 0x20u);
+    CopyWords(&off_802FD70, &tupleArr_3002590, 0x20u);
     v0 = -1;
     v1 = &off_802FD70;
     v2 = 4;
@@ -13489,7 +13489,7 @@ char *sub_802FDB0()
         --v2;
     }
     while ( v2 > 0 );
-    ZeroFillByEightWords(byte_3001150, &byte_400);
+    ZeroFillByEightWords(iObjectAttr3001150, &byte_400);
     result = byte_3001950;
     *byte_3001950 = 0;
     return result;
@@ -13948,7 +13948,7 @@ int camera_doShakeEffect_80301e8()
     int v5; // r0
     int v6; // r0
 
-    if ( (sub_80269D0() || (sub_800A7D0(), v1) || battle_isTimeStopPauseOrBattleFlags0x20_800a0a4()) && *(v0 + 12) )
+    if ( (sub_80269D0() || (IsCurSubsystemInUse(), v1) || battle_isTimeStopPauseOrBattleFlags0x20_800a0a4()) && *(v0 + 12) )
     {
         v2 = &byte_8030284[8 * *(v0 + 14)];
         --*(v0 + 12);

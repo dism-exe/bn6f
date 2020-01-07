@@ -2434,7 +2434,7 @@ signed int cb_8048FD4()
     char v1; // zf
 
     (*(&off_8048FF8 + byte_200A290))();
-    result = sub_800A7D0();
+    result = IsCurSubsystemInUse();
     if ( v1 )
         result = sub_803C59C(218, 2);
     return result;

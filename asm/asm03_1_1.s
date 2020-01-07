@@ -772,7 +772,7 @@ sub_8038F0C:
 	beq locret_8038F2A
 	bl loc_803D1AC // () -> void
 	bl clear_e200AD04 // () -> void
-	bl sub_803E900
+	bl init_eStartScreenAnimationControl200B1A0_1
 	ldr r0, off_8038F2C // =0x40
 	bl SetRenderInfoLCDControl
 locret_8038F2A:
@@ -1179,7 +1179,7 @@ cb_80395A4:
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-	bl sub_800A7D0 // () -> (zf, int)
+	bl IsCurSubsystemInUse // () -> (bool, !zf)
 	bne locret_80395C0
 	mov r0, #0xda
 	mov r1, #2
@@ -7231,7 +7231,7 @@ off_803C948: .word unk_200FE70
 	thumb_local_start
 sub_803C94C:
 	push {lr}
-	bl sub_800A7D0 // () -> (zf, int)
+	bl IsCurSubsystemInUse // () -> (bool, !zf)
 	bne loc_803C966
 	ldr r0, dword_803C978 // =0x1
 	bl sub_813D9A0
@@ -8448,7 +8448,7 @@ cb_803D1CA:
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-	bl sub_803E938
+	bl startScreen_AnimatePressStart_803E938
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803D1E0: .word off_803D1E4
@@ -9184,7 +9184,7 @@ loc_803DF96:
 off_803DF9C: .word eCamera+0x50 // eCamera.unk_50
 off_803DFA0: .word byte_200DD10
 off_803DFA4: .word unk_2009480
-	.word byte_200F460
+	.word eTimerEnable200F460
 	thumb_func_end sub_803DEB4
 
 	thumb_local_start
@@ -10339,7 +10339,7 @@ locret_803E80A:
 	thumb_local_start
 sub_803E80C:
 	push {r0-r7,lr}
-	bl sub_800A7D0 // () -> (zf, int)
+	bl IsCurSubsystemInUse // () -> (bool, !zf)
 	beq locret_803E826
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
@@ -10509,24 +10509,24 @@ sub_803E8F8:
 off_803E8FC: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803E8F8
 
-	thumb_func_start sub_803E900
-sub_803E900:
+	thumb_func_start init_eStartScreenAnimationControl200B1A0_1
+init_eStartScreenAnimationControl200B1A0_1:
 	push {r4,lr}
-	ldr r0, off_803E960 // =byte_200B1A0
+	ldr r0, off_803E960 // =eStartScreenAnimationControl200B1A0
 	mov r4, r0
 	mov r1, #8
 	bl ZeroFillByByte // (void *mem, int size) -> void
 
 	mov r0, #0xb4
-	strb r0, [r4,#0x3] // (byte_200B1A3 - 0x200b1a0)
+	strb r0, [r4,#0x3]
 	pop {r4,pc}
 	.balign 4, 0x00
-	thumb_func_end sub_803E900
+	thumb_func_end init_eStartScreenAnimationControl200B1A0_1
 
 	thumb_local_start
-sub_803E914:
+init_eStartScreenAnimationControl200B1A0_2:
 	push {r4,lr}
-	ldr r0, off_803E960 // =byte_200B1A0
+	ldr r0, off_803E960 // =eStartScreenAnimationControl200B1A0
 	mov r4, r0
 	mov r1, #8
 	bl ZeroFillByByte // (void *mem, int size) -> void
@@ -10534,72 +10534,78 @@ sub_803E914:
 	strb r0, [r4,#0x3] // (byte_200B1A3 - 0x200b1a0)
 	pop {r4,pc}
 	.balign 4, 0x00
-	thumb_func_end sub_803E914
+	thumb_func_end init_eStartScreenAnimationControl200B1A0_2
 
 	thumb_func_start sub_803E928
 sub_803E928:
-	ldr r0, off_803E960 // =byte_200B1A0
+	ldr r0, off_803E960 // =eStartScreenAnimationControl200B1A0
 	ldrb r0, [r0]
 	cmp r0, #2
 	mov pc, lr
 	thumb_func_end sub_803E928
 
-	thumb_func_start sub_803E930
-sub_803E930:
+	thumb_func_start startScreen_TstZero
+startScreen_TstZero: // () -> !zf
 	mov r0, #0
 	tst r0, r0
 	mov pc, lr
 	.balign 4, 0x00
-	thumb_func_end sub_803E930
+	thumb_func_end startScreen_TstZero
 
-	thumb_func_start sub_803E938
-sub_803E938:
+	thumb_func_start startScreen_AnimatePressStart_803E938
+startScreen_AnimatePressStart_803E938:
 	push {r4,lr}
-	ldr r4, off_803E960 // =byte_200B1A0
+	ldr r4, off_803E960 // =eStartScreenAnimationControl200B1A0
 	ldrb r0, [r4]
 
+	// checks blinking state of Press Screen
 	cmp r0, #1
-	beq loc_803E94C
+	beq .nonBlinkingState803E94C
 	cmp r0, #2
-	beq loc_803E958
+	beq .blinkingState803E958
 
-	bl sub_803E964
-	b locret_803E95C
-loc_803E94C:
+	// state 0 -- pause PressStart animation till timer runs out
+	bl startScreen_DecrementPressStartPauseAnimationTimer
+	b .ret
+.nonBlinkingState803E94C
 	bl sub_803E978
-	bne locret_803E95C
-	mov r0, #2
-	strb r0, [r4]
-	b locret_803E95C
-loc_803E958:
+	bne .ret
+		// enable blinking Press Start
+		mov r0, #2
+		strb r0, [r4]
+	b .ret
+.blinkingState803E958
 	bl sub_803EA1C
-locret_803E95C:
+.ret:
 	pop {r4,pc}
 	.balign 4, 0
-off_803E960: .word byte_200B1A0
-	thumb_func_end sub_803E938
+off_803E960: .word eStartScreenAnimationControl200B1A0
+	thumb_func_end startScreen_AnimatePressStart_803E938
 
 	thumb_local_start
-sub_803E964:
+startScreen_DecrementPressStartPauseAnimationTimer:
 	push {r4-r7,lr}
-	ldr r5, off_803EA14 // =byte_200B1A0
+	ldr r5, off_803EA14 // =eStartScreenAnimationControl200B1A0
+	
+	// decrement timer
 	ldrb r0, [r5,#0x3] // (byte_200B1A3 - 0x200b1a0)
 	sub r0, #1
 	strb r0, [r5,#0x3] // (byte_200B1A3 - 0x200b1a0)
+
 	bne locret_803E974
 	mov r0, #1
 	strb r0, [r5]
 locret_803E974:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-	thumb_func_end sub_803E964
+	thumb_func_end startScreen_DecrementPressStartPauseAnimationTimer
 
 	thumb_local_start
 sub_803E978:
 	push {r4-r7,lr}
-	ldr r5, off_803EA14 // =byte_200B1A0
+	ldr r5, off_803EA14 // =eStartScreenAnimationControl200B1A0
 	mov r6, #1
-	bl sub_803E930
+	bl startScreen_TstZero // () -> !zf
 	bne loc_803EA0A
 	bl sub_813DA94
 	tst r0, r0
@@ -10666,7 +10672,7 @@ loc_803EA0A:
 	pop {r4-r7,pc}
 	.word eCamera+0x50 // eCamera.unk_50
 	.balign 4, 0
-off_803EA14: .word byte_200B1A0
+off_803EA14: .word eStartScreenAnimationControl200B1A0
 off_803EA18: .word word_200AD04
 	thumb_func_end sub_803E978
 
@@ -13199,7 +13205,7 @@ sub_803FBC2:
 	bl sub_8006910
 	bl startScreen_init_802F530 // () -> void
 	bl clear_e200AD04 // () -> void
-	bl sub_803E914
+	bl init_eStartScreenAnimationControl200B1A0_2
 	ldr r0, off_803FBE4 // =0x40
 	bl SetRenderInfoLCDControl
 locret_803FBE0:
