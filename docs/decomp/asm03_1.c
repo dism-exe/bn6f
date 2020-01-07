@@ -4010,7 +4010,7 @@ signed int __fastcall uncomp_8037AD0(signed int result)
 
 
 // 0x8037aec
-signed int __fastcall uncomp_8037AEC(signed int result)
+signed int __fastcall DecompressTextArchiveForCutscene2(signed int result)
 {
     if ( result < 0 )
     {

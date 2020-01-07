@@ -31,6 +31,9 @@
 
 	.equiv NUM_S20094C0_STRUCTS, 0x12
 
+    // pointers to compressed data have this flag set
+    .equiv COMPRESSED_PTR_FLAG, 0x80000000
+
 	enum_start 1
 	enum BLUE_MYSTERY_DATA   // 1
 	enum UNK_MYSTERY_DATA_2  // 2

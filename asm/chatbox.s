@@ -862,7 +862,7 @@ chatbox_CopyBackgroundTiles_8040344:
 	.pool
 	thumb_func_end chatbox_CopyBackgroundTiles_8040344
 
-// (u8 scriptOffIdx) -> void
+
 	thumb_func_start chatbox_runTrainScript
 chatbox_runTrainScript:
 	push {r4,r5,lr}
@@ -874,7 +874,7 @@ chatbox_runTrainScript:
 off_8040380: .word eTextScript2034A04
 	thumb_func_end chatbox_runTrainScript
 
-// (void *scripts, u8 scriptOffIdx) -> void
+
 	thumb_func_start chatbox_runScript
 chatbox_runScript: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	push {r4-r6,lr}
@@ -3177,7 +3177,7 @@ loc_8041510:
 	lsl r1, r1, #8
 	orr r0, r1
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_80414F0
 	// mask
 	mov r0, #FLAGS_3E_UNK_0001
@@ -3204,7 +3204,7 @@ loc_8041546:
 	lsl r1, r1, #8
 	orr r0, r1
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_80414F0
 	// mask
 	mov r0, #FLAGS_3E_UNK_0001
@@ -3402,7 +3402,7 @@ chatbox_804171C:
 	orr r0, r2
 	mov r2, #0
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8041732
 	mov r2, #1
 loc_8041732:
@@ -4000,7 +4000,7 @@ loc_8041B1A:
 	lsr r6, r2, #7
 	push {r0,r2}
 	movflag EVENT_1709
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	pop {r0,r2}
 	bne loc_8041B2E
 	mov r6, #0

@@ -2776,7 +2776,7 @@ sub_80101F8:
 	cmp r4, #0
 	bne loc_8010216
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8010216
 	bl notZero_eByte200AD04
 	beq loc_8010216
@@ -27366,7 +27366,7 @@ sub_801D814:
 	cmp r0, #5
 	beq loc_801D848
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_801D84A
 	bl TestBattleFlag_0x40
 	bne loc_801D84A
@@ -27375,7 +27375,7 @@ sub_801D814:
 	tst r0, r1
 	bne loc_801D84A
 	movflag EVENT_E0
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_801D84A
 loc_801D848:
 	mov r4, #1

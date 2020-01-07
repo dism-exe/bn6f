@@ -187,10 +187,10 @@ sub_80339CC:
 	beq loc_8033A00
 	lsl r4, r4, #3
 	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_80339FE
 	movflag EVENT_PET_NAVI_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8033A00
 loc_80339FE:
 	sub r4, #4
@@ -421,7 +421,7 @@ sub_8033BE8:
 	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8033C02
 	bl notZero_eByte200AD04
 	beq loc_8033C02
@@ -594,7 +594,7 @@ sub_8033DA0:
 	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8033DBC
 	bl notZero_eByte200AD04
 	beq loc_8033DBC
@@ -630,7 +630,7 @@ off_8033E08: .word byte_30016D0
 sub_8033E0C:
 	push {r5,lr}
 	movflag EVENT_1732
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8033E6A
 	bl GetCurPETNavi // () -> u8
 	bl sub_80010D4
@@ -735,7 +735,7 @@ dword_8033EE4: .word 0x10288000
 sub_8033EE8:
 	push {r4-r7,lr}
 	movflag EVENT_1731
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8033EFC
 	bl IsCutsceneScriptNonNull // () -> zf
 	cmp r0, #1
@@ -864,7 +864,7 @@ sub_8033FDC:
 	bl ClearEventFlagFromImmediate
 	mov r0, #2
 	mov r1, #0x24
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_803405A
 	mov r0, #1
 	mov r1, #0x2a
@@ -922,7 +922,7 @@ loc_8034064:
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0x10
 	mov r1, #8
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_80340F4
 	mov r0, #0x10
 	mov r1, #0x1c
@@ -951,7 +951,7 @@ navi_80340F6:
 	bl loadGameProgressFromGameProgressBuffer_8035354
 loc_8034108:
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_803412A
 	bl writeCurPETNaviToS2001c04_Unk07_80010c6
 	mov r0, #0
@@ -964,7 +964,7 @@ loc_803412A:
 	bl reloadCurNaviStatBoosts_813c3ac
 loc_803412E:
 	movflag EVENT_172A
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8034140
 	movflag EVENT_PET_NAVI_ACTIVE
 	bl SetEventFlagFromImmediate
@@ -1728,10 +1728,10 @@ sub_8034C36:
 	bl IsScreenFadeActive // () -> zf
 	beq loc_8034C6A
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8034C6A
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8034C6A
 	bl sub_809E462
 	bne loc_8034C6A
@@ -1753,7 +1753,7 @@ sub_8034C6E:
 	bl IsScreenFadeActive // () -> zf
 	beq loc_8034C98
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8034C98
 	bl sub_809E462
 	bne loc_8034C98
@@ -1773,7 +1773,7 @@ loc_8034C98:
 isFlag173DClearAndCutsceneScriptNull_8034c9c:
 	push {r4-r7,lr}
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .returnFalse
 	bl IsCutsceneScriptNonNull // () -> zf
 	bne .returnFalse
@@ -1796,7 +1796,7 @@ sub_8034CB6:
 	tst r3, r2
 	beq loc_8034D52
 	movflag EVENT_1727
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8034D52
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -1840,7 +1840,7 @@ loc_8034CF6:
 	ldr r2, off_8034D58 // =0x16d0
 	add r0, r0, r2
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8034D44
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -1886,7 +1886,7 @@ sub_8034D7C:
 	tst r3, r2
 	beq loc_8034DA4
 	movflag EVENT_L_MESSAGE_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8034DA4
 	ldr r0, off_8034DAC // =CutsceneScript_80991F4
 	bl StartCutscene
@@ -2009,7 +2009,7 @@ sub_8034E88:
 	bne loc_8034EAC
 	mov r0, #0xe
 	mov r1, #0
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8034EAC
 	mov r1, #1
 	tst r1, r1
@@ -2030,7 +2030,7 @@ loc_8034EB6:
 	bne loc_8034ECE
 	mov r0, #0
 	mov r1, #0x84
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8034ED2
 loc_8034ECE:
 	mov r1, #0
@@ -2086,7 +2086,7 @@ HandleCoordinateInteractionCutscene:
 	ldr r0, off_8034F58 // =EVENT_16C0
 	add r0, r0, r4
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne .done
 	cmp r6, #INTERNET_MAP_GROUP_START
 	bge .internetMapGroup
@@ -2132,7 +2132,7 @@ sub_8034F68:
 	ldr r1, off_8034FAC // =0x16f0
 	add r1, r1, r4
 	mov r0, r1
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq locret_8034FA8
 	mov r0, #4
 	mul r0, r4
@@ -2167,14 +2167,14 @@ sub_8034FB8:
 	beq loc_8035004
 loc_8034FCE:
 	movflag EVENT_1703
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8035004
 	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_8035004
 	ldr r4, off_8035020 // =byte_809895C
 	mov r0, #1
 	mov r1, #0x27
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8034FEC
 	ldr r4, off_8035024 // =byte_80989C1
 loc_8034FEC:
@@ -2237,7 +2237,7 @@ sub_8035054:
 	cmp r0, #0xff
 	beq loc_803507A
 	movflag EVENT_171A
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_803507A
 	ldr r0, off_8035080 // =byte_809AE68
 	bl StartCutscene
@@ -2292,7 +2292,7 @@ npc_80350BC:
 	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
 	beq loc_8035126
 	movflag EVENT_1708
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_80350E2
 	ldr r0, off_8035130 // =byte_8099E04
 	bl StartCutscene
@@ -2302,7 +2302,7 @@ loc_80350E2:
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_S2001c04_Ptr]
 	movflag EVENT_170A
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8035102
 	ldr r0, [r4,#0x24]
 	tst r0, r0
@@ -2313,7 +2313,7 @@ loc_80350E2:
 	b loc_803511C
 loc_8035102:
 	movflag EVENT_170B
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8035126
 	ldr r0, [r4,#0x28]
 	tst r0, r0
@@ -2338,7 +2338,7 @@ off_8035130: .word byte_8099E04
 npc_spawnOverworldNPCObjectsForMap:
 	push {r4-r7,lr}
 	movflag EVENT_1721
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .flagSet
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
@@ -2429,7 +2429,7 @@ loc_80351CC:
 	tst r0, r0
 	beq locret_80351E6
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_80351E2
 	ldrh r0, [r4,#2]
 	mov r0, r0
@@ -2497,7 +2497,7 @@ sub_8035274:
 	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
 	beq locret_80352D4
 	movflag EVENT_1700
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne locret_80352D4
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -2522,11 +2522,11 @@ loc_80352A6:
 	bne loc_80352CE
 	ldrh r7, [r4,#2]
 	mov r0, r7
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_80352CE
 	ldrh r7, [r4,#4]
 	mov r0, r7
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_80352CE
 	ldr r0, off_8035328 // =byte_80990B8
 	ldr r1, [r5]
@@ -2622,7 +2622,7 @@ loc_803538E:
 	bne loc_80353AC
 	ldrh r0, [r4,#2]
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_80353AC
 	mov r0, #0
 	mov r1, #0x28
@@ -2647,7 +2647,7 @@ sub_80353DA:
 	push {r4-r7,lr}
 	mov r0, #0
 	mov r1, #0x28
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_80353EC
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -2684,7 +2684,7 @@ sub_8035424:
 	push {r4-r7,lr}
 	mov r0, #0
 	mov r1, #0x28
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_8035440
 	bl GetBattleEffects // () -> int
 	mov r1, #8
@@ -2727,7 +2727,7 @@ testSetClearFlags_803553c:
 	bl clearSetFlags_80355a8
 	mov r0, #6
 	mov r1, #0x7b
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8035554
 	mov r0, #6
 	mov r1, #0x82
@@ -2735,7 +2735,7 @@ testSetClearFlags_803553c:
 loc_8035554:
 	mov r0, #8
 	mov r1, #0x56
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8035566
 	mov r0, #8
 	mov r1, #0x5f
@@ -2743,7 +2743,7 @@ loc_8035554:
 loc_8035566:
 	mov r0, #0xa
 	mov r1, #0x44
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8035578
 	mov r0, #0xa
 	mov r1, #0xba
@@ -2751,7 +2751,7 @@ loc_8035566:
 loc_8035578:
 	mov r0, #0xc
 	mov r1, #0x6d
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_803558A
 	mov r0, #0xc
 	mov r1, #0xdc
@@ -2759,7 +2759,7 @@ loc_8035578:
 loc_803558A:
 	mov r0, #0xc
 	mov r1, #0xa7
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_803559C
 	mov r0, #0xc
 	mov r1, #0xe0

@@ -457,7 +457,7 @@ loc_808133C:
 	push {r0}
 	ldrh r2, [r3,#2]
 	mov r0, r2
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	pop {r0}
 	bne locret_808135C
 	mov r0, #0x15

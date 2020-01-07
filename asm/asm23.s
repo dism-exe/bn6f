@@ -969,7 +969,7 @@ sub_8089A60:
 	strb r1, [r0,#oGameState_Unk_15]
 	mov r0, #0
 	mov r1, #0x28
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8089ABA
 	bl GetSoulWeaponsMapIndex
 	cmp r0, #6

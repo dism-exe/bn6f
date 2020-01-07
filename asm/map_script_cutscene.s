@@ -145,7 +145,7 @@ MapScriptCutsceneCmd_jump_if_flag_set: // 8035962
 	bl ReadMapScriptHalfword
 .gotEventFlag
 	mov r0, r4
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq .eventFlagNotSet
 	mov r6, #4
 	bl ReadMapScriptWord
@@ -205,7 +205,7 @@ MapScriptCutsceneCmd_jump_if_flag_clear: // 80359BE
 	bl ReadMapScriptHalfword
 .gotEventFlag
 	mov r0, r4
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne .eventFlagSet
 	mov r6, #4
 	bl ReadMapScriptWord
@@ -3534,7 +3534,7 @@ byte_8037694: .byte 0x0, 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
 CutsceneCmd_end_for_map_reload_maybe_8037c64:
 	push {lr}
 	movflag EVENT_1741
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .eventActive
 	bl reloadCurNaviStatBoosts_813c3ac
 .eventActive
@@ -3549,7 +3549,7 @@ CutsceneCmd_end_for_map_reload_maybe_8037c64:
 CutsceneCmd_end_for_map_reload_maybe_80376dc:
 	push {lr}
 	movflag EVENT_1741
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .eventActive
 	bl reloadCurNaviStatBoosts_813c3ac
 .eventActive
@@ -3832,7 +3832,7 @@ CutsceneCmd_wait_if_flag_clear:
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq .flagClear
 	add r7, #3
 	mov r0, #1
@@ -3851,7 +3851,7 @@ CutsceneCmd_wait_if_flag_set:
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne .flagSet
 	add r7, #3
 	mov r0, #1
@@ -4267,7 +4267,7 @@ CutsceneCmd_decomp_text_archive:
 	mov r0, r4
 	cmp r0, #0
 	bge .uncompressedPtr
-	bl DecompressTextArchiveForCutscene // (void *a1) -> void*
+	bl DecompressTextArchiveForCutscene // (CompText *archive) -> TextScriptArchive*
 .uncompressedPtr
 	str r0, [r5,#oCutsceneState_TextArchivePtr]
 	add r7, #5
@@ -4275,9 +4275,8 @@ CutsceneCmd_decomp_text_archive:
 	pop {pc}
 	thumb_func_end CutsceneCmd_decomp_text_archive
 
-// (void *a1) -> void*
 	thumb_local_start
-DecompressTextArchiveForCutscene:
+DecompressTextArchiveForCutscene: // (CompText *archive) -> TextScriptArchive*
 	push {lr}
 	cmp r0, #0
 	bge .uncompressedPtr
@@ -4294,23 +4293,24 @@ DecompressTextArchiveForCutscene:
 	.pool // 8037AE8
 	thumb_func_end DecompressTextArchiveForCutscene
 
-	thumb_func_start uncomp_8037AEC
-uncomp_8037AEC:
+	thumb_func_start DecompressTextArchiveForCutscene2
+DecompressTextArchiveForCutscene2:
 	push {lr}
 	cmp r0, #0
-	bge locret_8037B00
+	bge .uncompressedPtr
+    // remove compression bit
 	lsl r0, r0, #1
 	lsr r0, r0, #1
-	// dest
-	ldr r1, off_8037B04 // =DecompressionBuf2033400
+
+	ldr r1, =DecompressionBuf2033400
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, off_8037B04 // =DecompressionBuf2033400
+	ldr r0, =DecompressionBuf2033400
 	add r0, #4
-locret_8037B00:
+.uncompressedPtr
 	pop {pc}
 	.balign 4, 0
-off_8037B04: .word DecompressionBuf2033400
-	thumb_func_end uncomp_8037AEC
+    .pool // 8037B04
+	thumb_func_end DecompressTextArchiveForCutscene2
 
 	thumb_local_start
 // 0x3f byte1

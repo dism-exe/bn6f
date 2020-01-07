@@ -200,45 +200,55 @@ CutsceneScript_80991F4: .byte 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17, 0x47, 0x0,
 
 	thumb_local_start
 RunLMessageTextScript:
+
 	push {r4-r7,lr}
 	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
 	bne loc_8099282
-	mov r0, r10
+	
+    mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_MapGroup]
-	cmp r0, #0x80
+	
+    cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_809924A
-	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate
-	bne loc_8099282
-	movflag EVENT_PET_NAVI_ACTIVE
-	bl TestEventFlagFromImmediate
+	
+    movflag EVENT_COPYBOT_ACTIVE
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+    bne loc_8099282
+	
+    movflag EVENT_PET_NAVI_ACTIVE
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8099282
+
 	movflag EVENT_172A
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8099282
+
 loc_809924A:
 	bl GetCurPETNavi // () -> u8
 	mov r1, #0x25 
 	bl GetNaviStatsByte
+
 	cmp r0, #1
 	bne loc_8099266
-	ldr r0, dword_8099294 // =0x88738b24 
-	bl uncomp_8037AEC
-	mov r1, #0
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+        ldr r0, MegamanJokesCompText8099294 // =CompText8738B24 + COMPRESSED_PTR_FLAG
+        bl DecompressTextArchiveForCutscene2
+        mov r1, #0
+        bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	b loc_8099290
-loc_8099266:
+
+loc_8099266
 	bl GetCurPETNavi // () -> u8
 	mov r1, #0x5f 
 	bl GetNaviStatsByte
+
 	cmp r0, #1
 	bne loc_8099282
-	ldr r0, dword_8099298 // =0x8873a528 
-	bl uncomp_8037AEC
-	mov r1, #0
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+        ldr r0, dword_8099298 // =CompText873A528 + COMPRESSED_PTR_FLAG
+        bl DecompressTextArchiveForCutscene2
+        mov r1, #0
+        bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	b loc_8099290
 loc_8099282:
 	bl chatbox_uncompMapTextArchives_803FD3C // () -> int
@@ -246,12 +256,13 @@ loc_8099282:
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_Unk_15]
 	bl chatbox_runTrainScript // (u8 scriptOffIdx) -> void
+
 loc_8099290:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
-dword_8099294: .word 0x88738B24
-dword_8099298: .word 0x8873A528
+MegamanJokesCompText8099294: .word CompText8738B24 + COMPRESSED_PTR_FLAG
+dword_8099298: .word CompText873A528 + COMPRESSED_PTR_FLAG
 byte_809929C: .byte 0x0, 0x0, 0x0, 0x0, 0x34, 0x1, 0xFF, 0x1, 0x76, 0x0, 0x44, 0x0, 0x0
 	.byte 0x0, 0x82, 0x0, 0x44, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x36, 0x1
 	.byte 0xFF, 0x1, 0x76, 0x0, 0x44, 0x0, 0x0, 0x0, 0x82, 0x0, 0x44, 0x0, 0x0
@@ -784,7 +795,7 @@ loc_809A12E:
 sub_809A138:
 	push {r4-r7,lr}
 	movflag EVENT_F6
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809A1A4
 	ldr r0, [r5,#0xc]
 	sub r0, #1
@@ -802,7 +813,7 @@ loc_809A15C:
 	bl sub_803D0F4
 	str r0, [r5,#0x70]
 	movflag EVENT_F5
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809A1A4
 	mov r0, #0x20
 	strb r0, [r5,#4]
@@ -861,7 +872,7 @@ loc_809A1CC:
 	ldr r0, [r5,#0x74]
 	bl sub_809A360
 	movflag EVENT_F5
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809A1F6
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -1129,7 +1140,7 @@ sub_809A44C:
 	ldr r0, [r5,#0x74]
 	bl sub_809A80C
 	movflag EVENT_1725
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809A488
 	mov r0, #0x84
 	ldr r0, [r5,r0]
@@ -1355,7 +1366,7 @@ byte_809A628: .byte 0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0xFF, 0x0
 sub_809A630:
 	push {r4-r7,lr}
 	movflag EVENT_F6
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809A694
 	ldrh r0, [r5,#0xc]
 	sub r0, #1
@@ -1370,7 +1381,7 @@ loc_809A64E:
 	bl sub_802D15E
 	str r0, [r5,#0x70]
 	movflag EVENT_F5
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809A694
 	mov r0, #0x20 
 	strb r0, [r5,#4]
@@ -1428,7 +1439,7 @@ loc_809A6BC:
 	ldr r0, [r5,#0x74]
 	bl sub_809A80C
 	movflag EVENT_F5
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809A6E6
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -1719,7 +1730,7 @@ byte_809A934: .byte 0x80, 0x79, 0x6C, 0x88, 0x0, 0x4E, 0x3, 0x2, 0x0, 0x37, 0x3
 sub_809A950:
 	push {r4-r7,lr}
 	movflag EVENT_F5
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809A982
 	mov r0, #0
 	strb r0, [r5,#4]
@@ -1769,7 +1780,7 @@ loc_809A9A4:
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
 	movflag EVENT_F5
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809A9C8
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -1896,7 +1907,7 @@ loc_809AB1A:
 sub_809AB20:
 	push {r4-r7,lr}
 	movflag EVENT_1725
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809AB5A
 	mov r0, #0x84
 	ldr r0, [r5,r0]
@@ -2150,7 +2161,7 @@ loc_809AD00:
 sub_809AD0C:
 	push {r4-r7,lr}
 	movflag EVENT_F5
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809AD30
 	ldrb r0, [r5,#4]
 	sub r0, #0x10
@@ -2274,7 +2285,7 @@ sub_809AF00:
 loc_809AF4C:
 	mov r4, #0x2d
 	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809AF5A
 	mov r4, #0x2e
 loc_809AF5A:
@@ -2307,7 +2318,7 @@ sub_809AF7C:
 	add r7, r7, r2
 	mov r6, #0
 	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809AF9A
 	mov r6, #0x10
 loc_809AF9A:
@@ -2513,7 +2524,7 @@ sub_809B130:
 	cmp r0, #0xf
 	bgt loc_809B162
 	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809B15A
 	ldr r0, byte_809B16C // =0x84
 	ldr r1, byte_809B16C+4 // =0x2
@@ -3087,7 +3098,7 @@ sub_809BDB8:
 	push {r4-r7,lr}
 	mov r0, #1
 	mov r1, #0x28
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809BDC8
 	mov r0, #3
 	b loc_809BDE6
@@ -3274,11 +3285,11 @@ sub_809C01C:
 	ldr r7, [r5,#0x34]
 	ldrh r0, [r7,#0x16]
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_809C042
 	mov r0, #1
 	mov r1, #0x20
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809C042
 	mov r0, #0
 	bl storeGameProgressToGameProgressBuffer_8035364
@@ -3707,11 +3718,11 @@ sub_809C968:
 	beq loc_809CA26
 	mov r0, #2
 	mov r1, #0x24
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809CA26
 	mov r0, #1
 	mov r1, #0xb9
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809C9B6
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -3739,7 +3750,7 @@ sub_809C968:
 loc_809C9B6:
 	mov r0, #1
 	mov r1, #0xba
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809C9CA
 	mov r0, #1
 	mov r1, #0xba
@@ -3773,7 +3784,7 @@ loc_809C9CA:
 	mov r4, r0
 	ldr r0, [r4,#0x10]
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_809CA26
 	mov r0, #0x2c 
 	bl CheckKeyItem
@@ -3829,7 +3840,7 @@ sub_809CA40:
 	mov r4, r0
 	ldr r0, [r4,#0x10]
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_809CA7A
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -3933,7 +3944,7 @@ loc_809CBAA:
 	cmp r0, #0
 	bne loc_809CBDC
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809CBCC
 	bl writeCurPETNaviToS2001c04_Unk07_80010c6
 	mov r0, #0
@@ -3951,7 +3962,7 @@ loc_809CBCC:
 	pop {r4-r7,pc}
 loc_809CBDC:
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809CBE8
 	b loc_809CBCC
 loc_809CBE8:

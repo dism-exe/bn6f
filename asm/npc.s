@@ -814,7 +814,7 @@ npc_waitMysteryDataTaken_809eaa0:
 	mov r7, #oOverworldNPCObject_MysteryDataId
 	ldr r0, [r5,r7]
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq .mysteryDataStillExists
 
 	bl npc_enableScript0x19_809f516
@@ -970,7 +970,7 @@ dword_809EBB8: .word OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x800
 npc_inChatbox_curAction_waitClose_809EBBC:
 	push {lr}
 	movflag EVENT_EVENT_CUR_DIR_LOCKED
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne locret_809EBDA
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -1176,7 +1176,7 @@ NPCCommand_jump_if_flag_set:
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq .flagNotSet
 	add r0, r6, #3
 	bl ReadNPCScriptWord // (void* a1) -> int
@@ -1197,7 +1197,7 @@ NPCCommand_jump_if_flag_clear:
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne .flagNotClear
 	add r0, r6, #3
 	bl ReadNPCScriptWord // (void* a1) -> int
@@ -2700,7 +2700,7 @@ NPCCommand_init_groundman_minigame_prog:
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne .progPickedUpOrDoesNotExist
 
 	add r0, r6, #1
@@ -3157,7 +3157,7 @@ sub_809F904:
 sub_809F90C:
 	push {lr}
 	movflag EVENT_1708
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne locret_809F920
 	ldr r0, off_809F9C4 // =byte_2000210 
 	mov r1, #0
@@ -3171,7 +3171,7 @@ locret_809F920:
 sub_809F922:
 	push {r4,r6,r7,lr}
 	movflag EVENT_1708
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne locret_809F940
 	ldr r7, off_809F9C4 // =byte_2000210 
 	ldrb r6, [r7]
@@ -3190,7 +3190,7 @@ locret_809F940:
 sub_809F942:
 	push {r4-r7,lr}
 	movflag EVENT_1708
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne locret_809F9BC
 	ldr r7, off_809F9C4 // =byte_2000210 
 	ldrb r6, [r7]

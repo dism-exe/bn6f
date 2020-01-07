@@ -7950,7 +7950,7 @@ sub_803CE44:
 	mov r2, r7
 	bl SetCurPETNaviStatsHword
 	movflag EVENT_PET_NAVI_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_803CEB4
 	mov r0, #0
 	mov r1, #0x40
@@ -9082,7 +9082,7 @@ loc_803DED6:
 	cmp r0, #1
 	bne loc_803DEFE
 	movflag EVENT_172F
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_803DEF8
 	ldrh r0, [r7,#0xc] // (eCamera.unk_5C - 0x20099d0)
 	tst r0, r0
@@ -10516,6 +10516,7 @@ sub_803E900:
 	mov r4, r0
 	mov r1, #8
 	bl ZeroFillByByte // (void *mem, int size) -> void
+
 	mov r0, #0xb4
 	strb r0, [r4,#0x3] // (byte_200B1A3 - 0x200b1a0)
 	pop {r4,pc}
@@ -10651,7 +10652,7 @@ loc_803E9E6:
 	beq loc_803EA0A
 	mov r0, #1
 	mov r1, #0xe3
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_803EA0A
 	mov r0, #0
 	mov r1, #0x7a

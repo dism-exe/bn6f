@@ -15562,13 +15562,13 @@ off_8116900: .word 0x390
 sub_8116904:
 	push {lr}
 	push {r5}
-	ldr r5, off_8116918 // =reqBBS_eStruct2001150
+	ldr r5, off_8116918 // =eReqBBS2001150
 	bl reqBBS_813EE58
 	pop {r5}
 	bl sprite_update
 	pop {pc}
 	.balign 4, 0
-off_8116918: .word reqBBS_eStruct2001150
+off_8116918: .word eReqBBS2001150
 	thumb_func_end sub_8116904
 
 	thumb_local_start
@@ -21674,7 +21674,7 @@ loc_8119B02:
 	bl notZero_eByte200AD04
 	beq loc_8119B22
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8119B22
 	mov r0, #0xc
 	add r0, r0, r4
@@ -21849,7 +21849,7 @@ sub_8119C94:
 	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r4, r0
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8119CB6
 	mov r0, #0x17
 	add r4, r4, r0
@@ -21946,11 +21946,11 @@ sub_8119DE8:
 	mov r1, #0x80
 	orr r4, r1
 	movflag EVENT_1720
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8119E1A
 	b loc_8119E18
 	movflag EVENT_1723
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8119E1A
 loc_8119E18:
 	mov r4, #1
@@ -25736,7 +25736,7 @@ sub_811BD88:
 	bl notZero_eByte200AD04
 	beq loc_811BDB4
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_811BDB4
 	mov r1, #0x17
 	add r4, r4, r1
@@ -29080,7 +29080,7 @@ sub_811DF94:
 loc_811DFB0:
 	mov r0, #0xb
 	mov r1, #0xf2
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_811DFC0
 loc_811DFBA:
 	bl sub_811DFD4
@@ -30704,7 +30704,7 @@ loc_811EDF2:
 loc_811EE08:
 	mov r4, r0
 	movflag EVENT_PET_COMM_SAVE_DISABLED
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_811EE24
 	cmp r4, #6
 	beq loc_811EE1C
@@ -30805,7 +30805,7 @@ sub_811EED0:
 	mov r0, #SOUND_UNSELECT_7C
 	bl PlaySoundEffect
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_811EEF8
 	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
@@ -31086,7 +31086,7 @@ loc_811F122:
 	strh r1, [r2]
 loc_811F13C:
 	movflag EVENT_PET_COMM_SAVE_DISABLED
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_811F150
 	ldr r2, [r4,#0x1c] // (off_811F174 - 0x811f158)
 	ldr r1, dword_811F180 // =0x5a7a
@@ -33903,17 +33903,17 @@ loc_8120808:
 	ldrh r0, [r4]
 	add r0, r0, r7
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_812082C
 	ldrh r0, [r4,#2]
 	add r0, r0, r7
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_812082C
 	ldrh r0, [r4,#4]
 	add r0, r0, r7
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_812086E
 loc_812082C:
 	cmp r5, #4
@@ -34457,17 +34457,17 @@ sub_8120BE4:
 	ldrh r0, [r4]
 	add r0, r0, r5
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8120C84
 	ldrh r0, [r4,#0x2] // (word_8120C8E - 0x8120c8c)
 	add r0, r0, r5
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8120C84
 	ldrh r0, [r4,#0x4] // (word_8120C90 - 0x8120c8c)
 	add r0, r0, r5
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8120C84
 	mov r7, #0
 loc_8120C84:
@@ -34692,7 +34692,7 @@ loc_8120E22:
 	cmp r7, #0
 	bne loc_8120E56
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8120E56
 	mov r7, r4
 	mov r6, #0
@@ -34740,7 +34740,7 @@ loc_8120E7C:
 loc_8120E8C:
 	push {r0,r1}
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	pop {r0,r1}
 	bne loc_8120EA0
 loc_8120E9A:
@@ -34752,7 +34752,7 @@ loc_8120EA0:
 	b loc_8120E66
 loc_8120EA6:
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8120EF2
 	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
@@ -34925,7 +34925,7 @@ sub_8121108:
 loc_812110E:
 	ldr r0, [r4,r6]
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_812111E
 	sub r6, #4
 	bge loc_812110E

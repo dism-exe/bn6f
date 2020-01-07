@@ -45,7 +45,7 @@ int RunLMessageTextScript()
     v2 = getPETNaviSelect();
     if ( GetNaviStatsByte(v2, 37) == 1 )
     {
-        v3 = uncomp_8037AEC(-2005693660);
+        v3 = DecompressTextArchiveForCutscene2(-2005693660);
         chatbox_runScript(v3, 0);
     }
     else
@@ -58,7 +58,7 @@ LABEL_12:
             chatbox_runTrainScript(tk->gamestate->scriptOffIdx_LMsg_15);
             return 0;
         }
-        v5 = uncomp_8037AEC(-2005687000);
+        v5 = DecompressTextArchiveForCutscene2(-2005687000);
         chatbox_runScript(v5, 0);
     }
     return 0;

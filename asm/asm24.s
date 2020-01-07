@@ -413,7 +413,7 @@ sub_808CA68:
 	bl sub_8001172
 	mov r0, #9
 	mov r1, #0xd3
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_808CAA2
 	bl sub_808CF50
 loc_808CAA2:
@@ -447,7 +447,7 @@ sub_808CAD4:
 	bl sub_808CBA0
 	mov r0, #9
 	mov r1, #0xd8
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_808CB06
 	mov r0, #9
 	mov r1, #0xd7
@@ -469,12 +469,12 @@ sub_808CB0C:
 	ldr r5, [r5]
 	mov r0, #9
 	mov r1, #0xd6
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_808CB3C
 	bl sub_808D11C
 	mov r0, #9
 	mov r1, #0xd8
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_808CB96
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -601,7 +601,7 @@ sub_808CC10:
 	bne loc_808CC2E
 	mov r0, #9
 	mov r1, #0xd8
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_808CC2E
 	mov r0, #9
 	mov r1, #0xd8
@@ -620,7 +620,7 @@ sub_808CC34:
 	mov r6, #0
 	mov r0, #9
 	mov r1, #0xd4
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_808CC48
 	ldr r4, off_808CC80 // =byte_808C930
 	b loc_808CC6C
@@ -766,14 +766,14 @@ sub_808CD24:
 	lsl r0, r0, #1
 	ldrh r4, [r4,r0]
 	mov r0, r4
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne locret_808CD62
 	// bitfield
 	mov r0, r4
 	bl SetEventFlag
 	mov r0, #0xb
 	mov r1, #0xf1
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne locret_808CD62
 	mov r0, #0xd4
 	bl PlaySoundEffect
@@ -816,7 +816,7 @@ loc_808CDDA:
 	lsl r3, r3, #3
 	ldrh r0, [r6,r3]
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_808CE02
 	mov r3, r7
 	lsl r3, r3, #3
@@ -871,7 +871,7 @@ loc_808CE3C:
 	lsl r6, r6, #3
 	ldrh r0, [r4,r6]
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_808CE5A
 	add r6, #2
 	ldrh r0, [r4,r6]
@@ -959,7 +959,7 @@ sub_808CF34:
 	ldr r1, off_808CF78 // =byte_808CF84 
 	ldrh r1, [r1,r0]
 	mov r0, r1
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_808CF4C
 	mov r4, #1
 loc_808CF4C:
@@ -976,7 +976,7 @@ sub_808CF50:
 	ldr r1, off_808CF74 // =byte_808CF7C 
 	ldrh r1, [r1,r4]
 	mov r0, r1
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne locret_808CF70
 	ldr r1, off_808CF78 // =byte_808CF84 
 	ldrh r1, [r1,r4]
@@ -998,7 +998,7 @@ sub_808CF8C:
 	mov r4, #0
 	mov r0, #9
 	mov r1, #0xd9
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_808CFAC
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_ChatboxPtr]

@@ -4467,7 +4467,7 @@ loc_813268A:
 	bl GetCurPETNavi // () -> u8
 	mov r6, r0
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_81326A0
 	mov r6, #0
 loc_81326A0:
@@ -11909,7 +11909,7 @@ sub_81364E8:
 	ldr r1, dword_8136528 // =0x2660 
 	add r1, r1, r0
 	mov r0, r1
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_81364FC
 	mov r4, #1
 loc_81364FC:
@@ -13123,7 +13123,7 @@ sub_8136F0C:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xee
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_8136F3C
 	mov r0, #0x48 
 	mov r1, #0x40 
@@ -13148,7 +13148,7 @@ sub_8136F40:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xee
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_8136F70
 	mov r0, #0x7a 
 	mov r1, #0x30 
@@ -13173,7 +13173,7 @@ sub_8136F74:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xee
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_8136FA2
 	mov r0, #0x48 
 	mov r1, #0x61 
@@ -13442,7 +13442,7 @@ sub_8137170:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xee
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_813719E
 	mov r0, #0x40 
 	mov r1, #0x40 
@@ -13647,7 +13647,7 @@ sub_81372F4:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xee
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_8137332
 	ldrb r0, [r5,#5]
 	mov r1, #0x14
@@ -13678,7 +13678,7 @@ sub_8137334:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xee
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_8137366
 	mov r0, #0x48 
 	mov r1, #0x52 
@@ -13979,7 +13979,7 @@ sub_813756C:
 	push {lr}
 	mov r0, #0
 	mov r1, #0xee
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_813759A
 	mov r0, #0x3c 
 	mov r1, #0x20 
@@ -14272,7 +14272,7 @@ loc_8137762:
 	strb r1, [r0,#5]
 loc_8137774:
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8137786
 	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
@@ -14548,7 +14548,7 @@ locret_813799C:
 sub_81379A0:
 	push {lr}
 	movflag EVENT_1710
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_81379D0
 	mov r0, #JOYPAD_A
 	bl IsButtonPressed
@@ -14659,7 +14659,7 @@ sub_8137A7C:
 	mov r2, #0x13
 	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	movflag EVENT_1710
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8137ABA
 	movflag EVENT_1710
 	bl ClearEventFlagFromImmediate
@@ -14798,12 +14798,12 @@ loc_8137C00:
 	ldr r1, off_8137C48 // =byte_8137C4C
 	ldr r0, [r1,r6]
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8137C18
 	ldr r1, off_8137C98 // =byte_8137C9C
 	ldr r0, [r1,r6]
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_8137C38
 loc_8137C18:
 	mov r2, r7
@@ -15521,7 +15521,7 @@ sub_8138210:
 	tst r0, r0
 	beq loc_8138232
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_8138232
 	ldr r7, [sp]
 loc_8138232:

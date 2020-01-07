@@ -47,7 +47,7 @@ sub_813B7A0:
 	ldr r1, dword_813B7E8 // =0x2660 
 	add r1, r1, r4
 	mov r0, r1
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_813B7BC
 	mov r2, #0xc
 loc_813B7BC:
@@ -1151,11 +1151,11 @@ sub_813BF1C:
 	push {r4-r7,lr}
 	mov r6, #1
 	movflag EVENT_1720
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_813BF36
 	b loc_813BF38
 	movflag EVENT_1723
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_813BF38
 loc_813BF36:
 	mov r6, #0
@@ -1635,7 +1635,7 @@ loc_813C366:
 	ldr r2, dword_813C3A0 // =0x2660 
 	add r2, r2, r3
 	mov r0, r2
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_813C386
 	mov r0, r2
 	mov r2, #4
@@ -1668,7 +1668,7 @@ reloadCurNaviStatBoosts_813c3ac:
 .IfNoNaviSelected:
 	bl sub_813C458
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq .loc_813C3CC
     // if (!EVENT_163)
 	bl sub_8121154
@@ -1681,7 +1681,7 @@ reloadCurNaviStatBoosts_813c3ac:
 	bge .IfInternetMap
     // if (real world map)
 	movflag EVENT_PET_NAVI_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq .ret
     // if (EVENT_PET_NAVI_ACTIVE)
 	mov r0, #0
@@ -3433,7 +3433,7 @@ loc_813D44A:
 	ldr r4, dword_813D488 // =0x2620 
 	add r4, r4, r5
 	mov r0, r4
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_813D466
 	// bitfield
 	mov r0, r4

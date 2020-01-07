@@ -244,7 +244,7 @@ byte_2001130:: // 0x2001130
 	.space 16
 dword_2001140:: // 0x2001140
 	.space 16
-reqBBS_eStruct2001150:: // 0x2001150
+eReqBBS2001150:: // 0x2001150
 	.space 4
 byte_2001154:: // 0x2001154
 	.space 36

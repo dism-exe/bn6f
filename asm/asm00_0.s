@@ -1444,7 +1444,7 @@ GetTitleScreenIconCount:
 	mov r7, #0
 	mov r0, #0xe
 	mov r1, #0
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8000EFA
 	add r4, #1
 	mov r0, #0x80
@@ -1492,7 +1492,7 @@ loc_8000F3A:
 loc_8000F4A:
 	mov r0, #3
 	mov r1, #0x70
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8000F5A
 	add r4, #1
 	mov r0, #2
@@ -1500,7 +1500,7 @@ loc_8000F4A:
 loc_8000F5A:
 	mov r0, #3
 	mov r1, #0x40
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8000F6C
 	add r4, #1
 	mov r0, #0x10
@@ -1551,7 +1551,7 @@ sub_8000FAC:
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	// flag 3 @ 0x2001C88[0x17<<5 + 0x1] (=2001F69)
 	movflag EVENT_170C
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8000FCE
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_LastMapGroup]
@@ -1583,7 +1583,7 @@ sub_8000FE6:
 	mov r4, r1
 loc_8000FEC:
 	mov r0, r6
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8000FFA
 	mov r0, r6
 	bl reqBBS_addBBSMessage_813e5dc
@@ -1612,7 +1612,7 @@ sub_8001014:
 	mov r4, r1
 loc_800101A:
 	mov r0, r6
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8001028
 	mov r0, r6
 	bl reqBBS_addRequest_813F9A0
@@ -1707,14 +1707,15 @@ sub_80010A4:
 	pop {r4-r7,pc}
 	thumb_func_end sub_80010A4
 
-// () -> u8
+
 	thumb_func_start GetCurPETNavi
-GetCurPETNavi:
+GetCurPETNavi: // () -> u8
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldrb r0, [r3,#oGameState_CurPETNavi]
 	mov pc, lr
 	thumb_func_end GetCurPETNavi
+
 
 	thumb_func_start SetCurPETNavi
 SetCurPETNavi:
@@ -1723,6 +1724,7 @@ SetCurPETNavi:
 	strb r0, [r3,#oGameState_CurPETNavi]
 	mov pc, lr
 	thumb_func_end SetCurPETNavi
+
 
 	thumb_func_start writeCurPETNaviToS2001c04_Unk07_80010c6
 writeCurPETNaviToS2001c04_Unk07_80010c6:
