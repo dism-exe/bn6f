@@ -1,5 +1,6 @@
 
 	.macro navi_stats_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct NaviStats
 	\set_struct_start_address \label
 	set_struct_label \struct_entry, \label
 	struct_org 0x1

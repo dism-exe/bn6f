@@ -1,5 +1,6 @@
 
 	.macro render_info_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct RenderInfo
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
 	// look at render_800172C for how data is transferred

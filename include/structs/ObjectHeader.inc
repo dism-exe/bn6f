@@ -1,9 +1,10 @@
 
 	.macro object_header_struct, label=oObjectHeader, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct ObjectHeader
 	\set_struct_start_address \label
 	set_struct_label \struct_entry, \label
 	u0 ObjectHeader // loc=0x0
-	u8 Flags // loc=0x0
+	flags8 Flags // loc=0x0
 		struct_const OBJECT_FLAG_ACTIVE,                  0x01
 		struct_const OBJECT_FLAG_VISIBLE,                 0x02
 		struct_const OBJECT_FLAG_PAUSE_UPDATE,            0x04

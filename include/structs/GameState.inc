@@ -1,17 +1,31 @@
+    .macro PETNavi field:req // type: enum PETNavi
+        enum8 \field
+        struct_const PET_NAVI_MEGAMAN,      0x00
+        struct_const PET_NAVI_SPOUTMAN,     0x01    
+        struct_const PET_NAVI_TOMAHAWKMAN,  0x02
+        struct_const PET_NAVI_TENGUMAN,     0x03
+        struct_const PET_NAVI_GROUNDMAN,    0x04
+        struct_const PET_NAVI_DUSTMAN,      0x05
+        // 0x06 resets back to spoutman
+    .endm
 
 	.macro game_state_struct, label=oGameState, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct GameState
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
 	u8 SubsystemIndex // loc=0x0
-	u8 CurPETNavi // loc=0x1
+    // PET displayed icon
+	PETNavi CurPETNavi // loc=0x1
 	u8 Unk_02 // loc=0x2
 	u8 Unk_03 // loc=0x3
-	union
+	
+    union
 	u8 MapGroup // loc=0x4
 	u8 MapNumber // loc=0x5
 	nextu
 	u16 MapId // loc=0x4
 	endu
+
 	u8 GameProgress // loc=0x6
 	u8 Unk_07 // loc=0x7
 	// related to L button messages

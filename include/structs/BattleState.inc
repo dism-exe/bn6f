@@ -1,5 +1,6 @@
 
 	.macro battle_state_struct label=oBattleState, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: BattleState
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
 	struct_org 0x1

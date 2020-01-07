@@ -1,8 +1,16 @@
+    .macro TextScriptArchivePtr field:req // type: TextScriptArchive*
+        ptr \field
+    .endm
+
+    .macro CompTextPtr field:req // type: CompText*
+        ptr \field
+    .endm
 
 	.macro chatbox_struct, label=oChatbox, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct Chatbox
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
-	bool8 Visible // loc=0x0
+    bool8 Visible // loc=0x0
 	u8 TextScriptIdx // loc=0x1
 	u8 CurrLine // loc=0x2
 	u8 Unk_03 // loc=0x3
@@ -15,6 +23,7 @@
 	u8 Unk_0A // loc=0xA
 	// Set to -1 everytime a page loads for some reason
 	u8 Unk_0B // loc=0xB
+
 	// BoxX: 0x00 is neutral position
 	union
 	u8 BoxY // loc=0xC
@@ -22,10 +31,11 @@
 	nextu
 	u16 BoxYX // loc=0xC
 	endu
-	u8 Unk_0E // loc=0xE
+	
+    u8 Unk_0E // loc=0xE
 	// box gfx loaded from 0x00 to 0x08 at max
 	u8 BoxGfxLoadState_0F // loc=0xF
-	u8 OpenState_10 // loc=0x10
+	enum8 OpenState_10 // loc=0x10
 	u8 JumpTableOffset_11 // loc=0x11
 	u8 Unk_12 // loc=0x12
 	u8 ChoiceCursorPos // loc=0x13
@@ -48,16 +58,17 @@
 	u16 JoypadDown // loc=0x24
 	u16 JoypadUp // loc=0x26
 	u16 JoypadReleased // loc=0x28
+
 	struct_org 0x2c
 	ptr TextScriptCursorPtr // loc=0x2C
-	ptr TextScriptPtr // loc=0x30
+	TextScriptArchivePtr TextScriptPtr // loc=0x30
 	// ?? check this
 	ptr CurrTextScriptPtr // loc=0x34
 	u32 Unk_38 // loc=0x38
 	u0 Und_3C_32 // suspect u32 access?
 	u8 Und_3C // loc=0x3C
 	u8 Unk_3D // loc=0x3D
-	u16 flags_3E // loc=0x3E
+	flags16 flags_3E // loc=0x3E
 		struct_const FLAGS_3E_UNK_0001,			  0x0001
 		struct_const FLAGS_3E_MUGSHOT_ACTIVE,		0x0002
 		struct_const FLAGS_3E_UNK_0004,			  0x0004
@@ -78,6 +89,7 @@
 	u32 Unk_50 // loc=0x50
 	u32 Unk_54 // loc=0x54
 	u32 Unk_58 // loc=0x58
+
 	struct_org 0x64
 	u16 Unk_64 // loc=0x64
 	u16 Und_66 // loc=0x66
@@ -90,12 +102,14 @@
 	u32 Unk_78 // loc=0x78
 	u32 Unk_7C // loc=0x7C
 	u8 Unk_80 // loc=0x80
+
 	struct_org 0x84
 	u32 Unk_84 // loc=0x84
 	u32 Unk_88 // loc=0x88
 	u32 Und_8C // loc=0x8C
 	u32 Unk_90 // loc=0x90
 	u8 Unk_94 // loc=0x94
+
 	struct_org 0x9c
 	u8 Unk_9c // loc=0x9c
 	// finish scanning fields? Is this struct really that big?

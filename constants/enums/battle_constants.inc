@@ -1,5 +1,4 @@
-
-	enum_start
+	enum_start // type: enum BattleEffect
 	flag_enum BATTLE_EFFECT_BOSS_RANK
 	flag_enum BATTLE_EFFECT_SHOW_RESULTS
 	flag_enum BATTLE_EFFECT_HEAL_BEFORE_BATTLE
@@ -27,7 +26,7 @@
 
 	.equiv BATTLE_ACTORS_PER_SIDE, 4
 
-	enum_start
+	enum_start // type: enum BattleMode
 	enum BATTLE_MODE_NORMAL // 0
 	enum BATTLE_MODE_CROSSOVER // 1
 	enum BATTLE_MODE_TUTORIAL_1 // 2
@@ -41,10 +40,9 @@
 	enum BATTLE_MODE_HAKUSHAKU_INVINCIBLE_MODE // 10
 	enum BATTLE_MODE_HAKUSHAKU_DEFEAT // 11
 
-	enum_start
+	enum_start // type: enum BattleResult
 	enum BATTLE_RESULT_WON // 0
 	enum BATTLE_RESULT_LOST // 1
 	enum BATTLE_RESULT_TIED // 2
 	enum BATTLE_RESULT_ESCAPED // 3
 
-	

@@ -2,11 +2,11 @@
 	.set CONSTANTS_INC, 0
 
 	.include "constants/gba_constants.inc"
-	.include "constants/GameAreas.inc"
-	.include "constants/SoundOffsets.inc"
-	.include "constants/ewram_flags.inc"
+	.include "constants/enums/GameAreas.inc"
+	.include "constants/enums/SoundOffsets.inc"
+	.include "constants/enums/ewram_flags.inc"
+	.include "constants/enums/battle_constants.inc"
 	.include "constants/iwram_end_locations.inc" // will be removed later
-	.include "constants/battle_constants.inc"
 
 	enum_start
 	enum OVERWORLD_PLAYER_OBJECT // 0x0
@@ -34,7 +34,7 @@
     // pointers to compressed data have this flag set
     .equiv COMPRESSED_PTR_FLAG, 0x80000000
 
-	enum_start 1
+	enum_start 1 // type: enum MysteryDataState
 	enum BLUE_MYSTERY_DATA   // 1
 	enum UNK_MYSTERY_DATA_2  // 2
 	enum PURPLE_MYSTERY_DATA // 3
@@ -57,7 +57,7 @@
 	enum OW_LEFT // 6
 	enum OW_UP_LEFT // 7
 
-	enum_start
+	enum_start // type: enum Navi
 	enum NAVI_MEGAMAN // 0
 	enum NAVI_HEATMAN // 1
 	enum NAVI_ELECMAN // 2
@@ -71,7 +71,7 @@
 	enum NAVI_DUSTMAN // 10
 	enum NAVI_PROTOMAN // 11
 
-	enum_start
+	enum_start // type: enum ElemType
 	enum ELEM_NULL // 0x00
 	enum ELEM_HEAT // 0x01
 	enum ELEM_AQUA // 0x02

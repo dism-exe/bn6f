@@ -1,5 +1,6 @@
 
 	.macro start_screen_struct, label=oStartScreen, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct StartScreen
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
 	u0 Unk_00 // loc=0x00 accessed as u16
@@ -12,7 +13,7 @@
 	u8 Unk_07 // loc=0x7
 	u8 CurrCursorPos // loc=0x8
 	u8 NumChoices // loc=0x9
-	u16 AchievmentFlags // loc=0xA
+	flags16 AchievmentFlags // loc=0xA
 	u8 Unk_0C // loc=0xC
 	u8 Und_0D // loc=0xD
 	u8 Unk_0E // loc=0xE

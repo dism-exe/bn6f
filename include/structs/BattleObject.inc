@@ -33,7 +33,7 @@
 	endu
 
 	union
-	u8 CurState // loc=0x8
+	enum8 CurState // loc=0x8
 		struct_const CUR_STATE_INITIALIZE, 0x00
 		struct_const CUR_STATE_UPDATE,     0x04
 		struct_const CUR_STATE_DESTROY,	   0x08

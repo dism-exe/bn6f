@@ -1,5 +1,6 @@
 	
 	.macro screen_fade_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct ScreenFade
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
 	struct_org 0x3

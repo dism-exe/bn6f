@@ -1,5 +1,5 @@
-
 	.macro ai_data_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct AIData
 	\set_struct_start_address \label
 	set_struct_label \struct_entry, \label
 	u8 ActorType // loc=0x0
@@ -79,6 +79,7 @@
 
 // ai state and ai attack vars might be swapped
 	.macro ai_state_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct AIState
 	\set_struct_start_address \label
 	set_struct_label \struct_entry, \label
 	u8 Unk_00 // loc=0x0
@@ -102,6 +103,7 @@
 	.endm
 
 	.macro ai_attack_vars_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct AIAttackVars
 	\set_struct_start_address \label
 	set_struct_label \struct_entry, \label
 	u8 Unk_00 // loc=0x0

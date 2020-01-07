@@ -1,5 +1,6 @@
 
 	.macro req_bbs_gui_struct, label=oReqBBSGui, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct ReqBBSGui
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
 	u8 SubsystemJumpTableOffset // loc=0x0
@@ -12,7 +13,7 @@
 	u8 AnimationTimer0 // loc=0x8
 	u8 AnimationTimer1 // loc=0x9
 	u8 Und_0A // loc=0xA
-	u8 UnkState_0B // loc=0xB
+	enum8 UnkState_0B // loc=0xB
 	u8 Und_0C // loc=0xC
 	// In the select chatbox, this represents XX in "Point: XX/YY"
 	u8 NumPoints // loc=0xD
