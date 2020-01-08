@@ -449,7 +449,7 @@ int __fastcall sub_8033FDC(int a1)
     ClearEventFlagFromImmediate(1, 39);
     ClearEventFlagFromImmediate(23, 33);
     sub_809F9DC();
-    setCurNaviHPToFull_803ceb8();
+    SetCurNaviHPToFull();
     SetEventFlagFromImmediate(23, 36);
     ClearEventFlagFromImmediate(5, 223);
     SetEventFlagFromImmediate(6, 142);
@@ -519,7 +519,7 @@ int navi_80340F6()
     TestEventFlagFromImmediate(23, 42);
     if ( v1 )
         SetEventFlagFromImmediate(23, 29);
-    setCurNaviHPToFull_803ceb8();
+    SetCurNaviHPToFull();
     v2 = *(v0 + oToolkit_Unk2001c04_Ptr);
     *(v2 + 36) = 0;
     *(v2 + 40) = 0;
@@ -4868,7 +4868,7 @@ signed int CutsceneCmd_change_navi_maybe_80382fe()
     sub_80010BE(v1);
     reloadCurNaviBaseStats_8120df0();
     reloadCurNaviStatBoosts_813c3ac();
-    setCurNaviHPToFull_803ceb8();
+    SetCurNaviHPToFull();
     return 1;
 }
 
@@ -11231,7 +11231,7 @@ int sub_803CE44()
 
 
 // 0x803ceb8
-int setCurNaviHPToFull_803ceb8()
+int SetCurNaviHPToFull()
 {
     int v0; // r0
     int v1; // r4

@@ -70,3 +70,4 @@ clean:
 	rm -f *.map
 	rm -f *.elf
 	rm -f *.gba
+	rm -f $(COMPRESSED_TEXT_ARCHIVES_DIR)/*.lz

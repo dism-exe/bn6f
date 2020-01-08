@@ -766,17 +766,155 @@
 	.endm
 
 	enum cs_ow_player_sprite_special_cmd // 0x3f
-// 0x3f byte1
-// call sprite related special
-// byte1 - special to call (multiple of 4)
-	.macro cs_ow_player_sprite_special byte1:req
+	subenum_start 0, 4
+
+	subenum cs_lock_player_for_non_npc_dialogue_809e0b0_subcmd // 0x0
+// 0x3f 0x0
+// call ow player related special
+	.macro cs_lock_player_for_non_npc_dialogue_809e0b0
 	.byte cs_ow_player_sprite_special_cmd
-	.byte \byte1
+	.byte cs_lock_player_for_non_npc_dialogue_809e0b0_subcmd
+	.endm
+
+	subenum cs_unlock_player_after_non_npc_dialogue_809e122_subcmd // 0x4
+// 0x3f 0x4
+// call ow player related special
+	.macro cs_unlock_player_after_non_npc_dialogue_809e122
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_unlock_player_after_non_npc_dialogue_809e122_subcmd
+	.endm
+
+	subenum cs_ow_player_cmd_809e0fc_subcmd // 0x8
+// 0x3f 0x8
+// call ow player related special
+	.macro cs_ow_player_cmd_809e0fc
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_ow_player_cmd_809e0fc_subcmd
+	.endm
+
+	subenum cs_ow_player_cmd_809e114_subcmd // 0xc
+// 0x3f 0xc
+// call ow player related special
+	.macro cs_ow_player_cmd_809e114
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_ow_player_cmd_809e114_subcmd
+	.endm
+
+	subenum cs_set_ow_player_interaction_locked_809e230_subcmd // 0x10
+// 0x3f 0x10
+// call ow player related special
+	.macro cs_set_ow_player_interaction_locked_809e230
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_set_ow_player_interaction_locked_809e230_subcmd
+	.endm
+
+	subenum cs_clear_ow_player_interaction_locked_809e23c_subcmd // 0x14
+// 0x3f 0x14
+// call ow player related special
+	.macro cs_clear_ow_player_interaction_locked_809e23c
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_clear_ow_player_interaction_locked_809e23c_subcmd
+	.endm
+
+	subenum cs_enable_ow_player_wall_collision_809e248_subcmd // 0x18
+// 0x3f 0x18
+// call ow player related special
+	.macro cs_enable_ow_player_wall_collision_809e248
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_enable_ow_player_wall_collision_809e248_subcmd
+	.endm
+
+	subenum cs_disable_ow_player_wall_collision_809e254_subcmd // 0x1c
+// 0x3f 0x1c
+// call ow player related special
+	.macro cs_disable_ow_player_wall_collision_809e254
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_disable_ow_player_wall_collision_809e254_subcmd
+	.endm
+
+	subenum cs_clear_ow_player_layer_index_override_subcmd // 0x20
+// 0x3f 0x20
+// call ow player related special
+	.macro cs_clear_ow_player_layer_index_override
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_clear_ow_player_layer_index_override_subcmd
+	.endm
+
+	subenum cs_give_ow_player_attached_shadow_subcmd // 0x24
+// 0x3f 0x24
+// call ow player related special
+	.macro cs_give_ow_player_attached_shadow
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_give_ow_player_attached_shadow_subcmd
+	.endm
+
+	subenum cs_give_ow_player_detatched_shadow_subcmd // 0x28
+// 0x3f 0x28
+// call ow player related special
+	.macro cs_give_ow_player_detatched_shadow
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_give_ow_player_detatched_shadow_subcmd
+	.endm
+
+	subenum cs_remove_ow_player_shadow_subcmd // 0x2c
+// 0x3f 0x2c
+// call ow player related special
+	.macro cs_remove_ow_player_shadow
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_remove_ow_player_shadow_subcmd
+	.endm
+
+	subenum cs_make_ow_player_visible_subcmd // 0x30
+// 0x3f 0x30
+// call ow player related special
+	.macro cs_make_ow_player_visible
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_make_ow_player_visible_subcmd
+	.endm
+
+	subenum cs_make_ow_player_invisible_subcmd // 0x34
+// 0x3f 0x34
+// call ow player related special
+	.macro cs_make_ow_player_invisible
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_make_ow_player_invisible_subcmd
+	.endm
+
+	subenum cs_disable_ow_player_alpha_subcmd // 0x38
+// 0x3f 0x38
+// call ow player related special
+	.macro cs_disable_ow_player_alpha
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_disable_ow_player_alpha_subcmd
+	.endm
+
+	subenum cs_toggle_ow_player_using_copybot_809e4bc_subcmd // 0x3c
+// 0x3f 0x3c
+// call ow player related special
+	.macro cs_toggle_ow_player_using_copybot_809e4bc
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_toggle_ow_player_using_copybot_809e4bc_subcmd
+	.endm
+
+	subenum cs_ow_player_zero_S2000AA0param0x4_809e312_subcmd // 0x40
+// 0x3f 0x40
+// call ow player related special
+	.macro cs_ow_player_zero_S2000AA0param0x4_809e312
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_ow_player_zero_S2000AA0param0x4_809e312_subcmd
+	.endm
+
+	subenum cs_set_cur_navi_hp_to_full_subcmd // 0x44
+// 0x3f 0x44
+// call ow player related special
+	.macro cs_set_cur_navi_hp_to_full
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_set_cur_navi_hp_to_full_subcmd
 	.endm
 
 	enum cs_ow_player_sprite_special_with_arg_cmd // 0x40
 // 0x40 byte1 byte2 byte3
-// call sprite related special with one parameter
+// call ow player related special with one parameter
 // byte1 - special to call (multiple of 4)
 // byte2 - memory param
 // byte3 or mem - argument to special
