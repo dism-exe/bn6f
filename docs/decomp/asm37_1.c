@@ -141,7 +141,7 @@ int sub_81419A0()
                 IsPaletteFadeActive();
                 if ( !v1 )
                 {
-                    chatbox_check_eFlags2009F38(128);
+                    chatbox_mask_eFlags2009F38(128);
                     if ( v1 )
                     {
                         if ( **(v0 + oToolkit_GameStatePtr) == 4 )
@@ -1445,7 +1445,7 @@ int __fastcall sub_8142CC8(int a1, int a2)
     signed int v7; // r7
     int result; // r0
 
-    v2 = eStruct200BE70;
+    v2 = eMapTilesState200be70;
     v3 = a1;
     v4 = *(&off_8142D44 + a2);
     *(a1 + 6) = *(v4 + 6);
@@ -1491,12 +1491,12 @@ int sub_8142D58()
 
     if ( byte_2000B48 < 128 )
     {
-        v2 = 2 * (2 * (128 - byte_2000B48) * eStruct200BE70 - 4 * (128 - byte_2000B48));
+        v2 = 2 * (2 * (128 - byte_2000B48) * eMapTilesState200be70 - 4 * (128 - byte_2000B48));
         result = sub_8142DE6() + v2;
     }
     else
     {
-        v0 = 2 * (2 * (byte_2000B48 - 128) * eStruct200BE70 - 4 * (byte_2000B48 - 128));
+        v0 = 2 * (2 * (byte_2000B48 - 128) * eMapTilesState200be70 - 4 * (byte_2000B48 - 128));
         result = sub_8142DE6() - v0;
     }
     return result;
@@ -1509,9 +1509,9 @@ int __fastcall sub_8142DA0(int a1)
     int result; // r0
 
     if ( byte_2000B49 < 128 )
-        result = a1 - 2 * (2 * (128 - byte_2000B49) * eStruct200BE70 + 4 * (128 - byte_2000B49));
+        result = a1 - 2 * (2 * (128 - byte_2000B49) * eMapTilesState200be70 + 4 * (128 - byte_2000B49));
     else
-        result = a1 + 2 * (2 * (byte_2000B49 - 128) * eStruct200BE70 + 4 * (byte_2000B49 - 128));
+        result = a1 + 2 * (2 * (byte_2000B49 - 128) * eMapTilesState200be70 + 4 * (byte_2000B49 - 128));
     return result;
 }
 

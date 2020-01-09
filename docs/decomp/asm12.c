@@ -1,5 +1,5 @@
 // 0x806d8f8
-unsigned int sub_806D8F8()
+unsigned int Comps1_EnterMapGroup()
 {
     int v0; // r5
     int v1; // r10
@@ -9,29 +9,29 @@ unsigned int sub_806D8F8()
     int v5; // r3
 
     *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_806D6B0 + *(v0 + 5));
-    sub_806DA58();
-    sub_803037C(*(v0 + 4), *(v0 + 5));
+    Comps1_LoadBGAnim();
+    initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
     decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
-    sub_8030472();
-    sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
+    decompAndCopyMapTiles_8030472();
+    initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(*(&off_806D95C + *(v0 + 5)));
-    chatbox_uncompBasedOnMap_803FD08();
-    sub_806DCD4();
+    chatbox_uncompMapTextArchives_803FD08();
+    Comps1_SpawnMapObjectsForMap();
     return sub_8034FB8();
 }
 
 
 // 0x806d9fc
-int __fastcall sub_806D9FC(int a1, int a2)
+int __fastcall Comps1_LoadGFXAnims(int a1, int a2)
 {
     return LoadGFXAnims(off_806DA10[a2]);
 }
 
 
 // 0x806da58
-void sub_806DA58()
+void Comps1_LoadBGAnim()
 {
     int v0; // r10
     int v1; // r5
@@ -48,7 +48,7 @@ void sub_806DA58()
 
 
 // 0x806dc0c
-int __fastcall sub_806DC0C(int a1, int a2)
+int __fastcall Comps1_UnkFunction_806dc0c(int a1, int a2)
 {
     int v2; // r10
     int v3; // ST00_4
@@ -106,7 +106,7 @@ int __fastcall sub_806DCB6(int result, int a2)
 
 
 // 0x806dcd4
-int sub_806DCD4()
+int Comps1_SpawnMapObjectsForMap()
 {
     int v0; // r10
 

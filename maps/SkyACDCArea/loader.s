@@ -1,6 +1,6 @@
 
-	thumb_func_start sub_807A8E0
-sub_807A8E0:
+	thumb_func_start SkyACDCArea_EnterMapGroup
+SkyACDCArea_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_807A938 // =off_8079F74 
@@ -9,30 +9,30 @@ sub_807A8E0:
 	lsl r4, r2, #2
 	add r0, r0, r4
 	ldr r0, [r0]
-	str r0, [r1,#oWarp2011bb0_Ptr_14]
-	bl sub_807A9CC
+	str r0, [r1,#oWarp2011bb0_WarpDataPtr]
+	bl SkyACDCArea_LoadBGAnim
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl sub_803037C
+	bl initMapTilesState_803037c
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl decompressCoordEventData_8030aa4
 	ldr r0, [r5,#oGameState_PlayerX]
 	ldr r1, [r5,#oGameState_PlayerY]
-	ldr r2, [r5,#oGameState_Unk_2c]
+	ldr r2, [r5,#oGameState_PlayerZ]
 	ldrb r3, [r5,#oGameState_MapGroup]
 	ldrb r4, [r5,#oGameState_MapNumber]
 	bl camera_802FF4C
-	bl sub_8030472
+	bl decompAndCopyMapTiles_8030472
 	ldr r0, off_807A93C // =unk_2037800 
-	bl sub_80028D4
+	bl initUncompSpriteState_80028d4
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, off_807A940 // =off_807A944 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_807AAD6
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
+	bl SkyACDCArea_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -48,10 +48,10 @@ byte_807A95A: .byte 0x1C, 0x64, 0x1C, 0xE, 0x1C, 0x95, 0x1C, 0x79, 0xFF
 	.byte 0xFF
 byte_807A964: .byte 0x1C, 0x7E, 0x1C, 0x7F, 0x1C, 0x80, 0x1C, 0x1F, 0x18
 	.byte 0x38, 0x18, 0x39, 0x18, 0x3A, 0xFF, 0xFF
-	thumb_func_end sub_807A8E0
+	thumb_func_end SkyACDCArea_EnterMapGroup
 
-	thumb_func_start sub_807A974
-sub_807A974:
+	thumb_func_start SkyACDCArea_LoadGFXAnims
+SkyACDCArea_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_807A984 // =off_807A988 
@@ -77,10 +77,10 @@ off_807A9B8: .word off_807A4E0
 	.word byte_807A800
 	.word byte_807A850
 	.word 0xFFFFFFFF
-	thumb_func_end sub_807A974
+	thumb_func_end SkyACDCArea_LoadGFXAnims
 
-	thumb_func_start sub_807A9CC
-sub_807A9CC:
+	thumb_func_start SkyACDCArea_LoadBGAnim
+SkyACDCArea_LoadBGAnim:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -102,7 +102,7 @@ sub_807A9CC:
 	ldr r0, [r0,r1]
 	bl LoadBGAnimData
 	pop {r4-r7,pc}
-	thumb_func_end sub_807A9CC
+	thumb_func_end SkyACDCArea_LoadBGAnim
 
 	thumb_local_start
 sub_807A9FE:
@@ -161,8 +161,8 @@ off_807AA90: .word off_8617068
 	.word 0x20
 	thumb_func_end sub_807A9FE
 
-	thumb_func_start sub_807AAAC
-sub_807AAAC:
+	thumb_func_start SkyACDCArea_UnkFunction_807aaac
+SkyACDCArea_UnkFunction_807aaac:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -177,7 +177,7 @@ off_807AAC0: .word off_807AAC4
 off_807AAC4: .word nullsub_81+1
 	.word nullsub_82+1
 	.word nullsub_83+1
-	thumb_func_end sub_807AAAC
+	thumb_func_end SkyACDCArea_UnkFunction_807aaac
 
 	thumb_local_start
 nullsub_81:
@@ -194,8 +194,8 @@ nullsub_83:
 	mov pc, lr
 	thumb_func_end nullsub_83
 
-	thumb_func_start sub_807AAD6
-sub_807AAD6:
+	thumb_func_start SkyACDCArea_SpawnMapObjectsForMap
+SkyACDCArea_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -203,7 +203,7 @@ sub_807AAD6:
 	lsl r0, r0, #2
 	ldr r1, off_807AAEC // =pt_807AAF0 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_807AAEC: .word pt_807AAF0
@@ -211,4 +211,4 @@ pt_807AAF0:
 	.word byte_807AAFC
 	.word byte_807AC18
 	.word byte_807ACA8
-	thumb_func_end sub_807AAD6
+	thumb_func_end SkyACDCArea_SpawnMapObjectsForMap

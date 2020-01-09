@@ -15,14 +15,14 @@ MapScriptCommandJumptable:
 	.word MapScriptCutsceneCmd_jump_if_battle_result_not_equal+1
 	.word MapScriptCutsceneCmd_coordinate_trigger_equals_cmd_8035afa+1
 	.word MapScriptCutsceneCmd_coordinate_trigger_not_equal_cmd_8035b44+1
-	.word MapScriptCmd_jump_if_game_state_0e_equals+1
-	.word MapScriptCmd_jump_if_game_state_0e_not_equals+1
+	.word MapScriptCmd_jump_if_coord_interaction_value_equals+1
+	.word MapScriptCmd_jump_if_coord_interaction_value_not_equal+1
 	.word MapScriptCutsceneCmd_jump_if_current_navi_equals+1
 	.word MapScriptCutsceneCmd_jump_if_current_navi_not_equal+1
 	.word MapScriptCmd_jump_if_player_z_equals+1
-	.word MapScriptCmd_jump_if_player_z_not_equals+1
+	.word MapScriptCmd_jump_if_player_z_not_equal+1
 	.word MapScriptCmd_jump_if_game_state_44_equals+1
-	.word MapScriptCmd_jump_if_game_state_44_not_equals+1
+	.word MapScriptCmd_jump_if_game_state_44_not_equal+1
 	.word MapScriptCmd_jump_if_map_group_compare_last_map_group+1
 	.word MapScriptCmd_switch_case_from_navi_stats_4c+1
 	.word MapScriptCmd_cmd_8035cd6+1
@@ -31,7 +31,7 @@ MapScriptCommandJumptable:
 	.word MapScriptCmd_jump_if_eStruct200a6a0_initialized+1
 	.word MapScriptCmd_jump_if_in_pet_menu+1
 	.word MapScriptCutsceneCmd_set_screen_fade+1
-	.word MapScriptCutsceneCmd_set_game_state_16_17+1
+	.word MapScriptCutsceneCmd_set_enter_map_screen_fade+1
 	.word MapScriptCutsceneCmd_set_event_flag+1
 	.word MapScriptCutsceneCmd_clear_event_flag+1
 	.word MapScriptCutsceneCmd_set_event_flag_range+1
@@ -45,10 +45,10 @@ MapScriptCommandJumptable:
 	.word MapScriptCutsceneCmd_write_word+1
 	.word MapScriptCutsceneCmd_write_gamestate_byte+1
 	.word MapScriptCutsceneCmd_write_eStruct2001c04_byte+1
-	.word MapScriptCutsceneCmd_call_sub_8001B1C+1
-	.word MapScriptCutsceneCmd_call_sub_8001B1C_multiple+1
-	.word MapScriptCutsceneCmd_call_sub_8030A30_8035194+1
-	.word MapScriptCutsceneCmd_cmd_8035F6A+1
+	.word MapScriptCutsceneCmd_load_gfx_anim+1
+	.word MapScriptCutsceneCmd_load_gfx_anims+1
+	.word MapScriptCutsceneCmd_load_map_gfx_anims_bg_anim+1
+	.word MapScriptCutsceneCmd_terminate_one_or_all_gfx_anims+1
 	.word MapScriptCutsceneCmd_play_sound+1
 	.word MapScriptCutsceneCmd_play_music+1
 	.word MapScriptCutsceneCmd_sound_cmd_80380ea+1
@@ -145,7 +145,7 @@ MapScriptCutsceneCmd_jump_if_flag_set: // 8035962
 	bl ReadMapScriptHalfword
 .gotEventFlag
 	mov r0, r4
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq .eventFlagNotSet
 	mov r6, #4
 	bl ReadMapScriptWord
@@ -205,7 +205,7 @@ MapScriptCutsceneCmd_jump_if_flag_clear: // 80359BE
 	bl ReadMapScriptHalfword
 .gotEventFlag
 	mov r0, r4
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne .eventFlagSet
 	mov r6, #4
 	bl ReadMapScriptWord
@@ -394,9 +394,9 @@ MapScriptCutsceneCmd_jump_if_chip_count_in_range: // 8035AAA
 
 	thumb_local_start
 // 0x0c/0x21 byte1 signedbyte2 destination3
-// jump if the return value of the coordinate trigger function (sub_8031A7A) equals byte1
-// sub_8031A7A returns r0, r1. if r0 == 0, r1 is used in comparison
-// byte1 - byte to compare return value of sub_8031A7A
+// jump if the return value of the coordinate trigger function (checkCoordinateTrigger_8031a7a) equals byte1
+// checkCoordinateTrigger_8031a7a returns r0, r1. if r0 == 0, r1 is used in comparison
+// byte1 - byte to compare return value of checkCoordinateTrigger_8031a7a
 // signedbyte2 - signed offset to overworld player object coordinates
 // destination3 - script to jump to
 MapScriptCutsceneCmd_coordinate_trigger_equals_cmd_8035afa: // 8035afa
@@ -416,7 +416,7 @@ MapScriptCutsceneCmd_coordinate_trigger_equals_cmd_8035afa: // 8035afa
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	mov r0, sp
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	add sp, sp, #0xc
 	tst r0, r0
 	bne loc_8035B28
@@ -439,9 +439,9 @@ loc_8035B3E:
 
 	thumb_local_start
 // 0x0d/0x22 byte1 signedbyte2 destination3
-// jump if the return value of the coordinate trigger function (sub_8031A7A) doesn't equal byte1
-// sub_8031A7A returns r0, r1. if r0 == 0, r1 is used in comparison
-// byte1 - byte to compare return value of sub_8031A7A
+// jump if the return value of the coordinate trigger function (checkCoordinateTrigger_8031a7a) doesn't equal byte1
+// checkCoordinateTrigger_8031a7a returns r0, r1. if r0 == 0, r1 is used in comparison
+// byte1 - byte to compare return value of checkCoordinateTrigger_8031a7a
 // signedbyte2 - signed offset to overworld player object coordinates
 // destination3 - script to jump to
 MapScriptCutsceneCmd_coordinate_trigger_not_equal_cmd_8035b44: // 8035b44
@@ -461,7 +461,7 @@ MapScriptCutsceneCmd_coordinate_trigger_not_equal_cmd_8035b44: // 8035b44
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	mov r0, sp
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	add sp, sp, #0xc
 	tst r0, r0
 	bne loc_8035B72
@@ -484,10 +484,11 @@ loc_8035B88:
 
 	thumb_local_start
 // 0x0e byte1 destination2
-// jump if byte1 == [eGameState_CoordInteractionValue]
-// byte1 - byte to compare [eGameState_CoordInteractionValue] with
+// jump if the coord interaction value equals byte1
+// the coord interaction value is set when the player presses A in the overworld and is facing coordinates with a defined interaction value
+// byte1 - byte to compare the coord interaction value with
 // destination2 - script to jump to
-MapScriptCmd_jump_if_game_state_0e_equals: // 8035b8e
+MapScriptCmd_jump_if_coord_interaction_value_equals: // 8035b8e
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -505,14 +506,15 @@ MapScriptCmd_jump_if_game_state_0e_equals: // 8035b8e
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_jump_if_game_state_0e_equals
+	thumb_func_end MapScriptCmd_jump_if_coord_interaction_value_equals
 
 	thumb_local_start
 // 0x0f byte1 destination2
-// jump if byte1 != [eGameStateUnk_0e]
-// byte1 - byte to compare [eGameState_CoordInteractionValue] with
+// jump if the coord interaction value does not equal byte1
+// the coord interaction value is set when the player presses A in the overworld and is facing coordinates with a defined interaction value
+// byte1 - byte to compare the coord interaction value with
 // destination2 - script to jump to
-MapScriptCmd_jump_if_game_state_0e_not_equals: // 8035BB2
+MapScriptCmd_jump_if_coord_interaction_value_not_equal: // 8035BB2
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -530,7 +532,7 @@ loc_8035BD0:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_jump_if_game_state_0e_not_equals
+	thumb_func_end MapScriptCmd_jump_if_coord_interaction_value_not_equal
 
 	thumb_local_start
 // 0x12 signedhword1 destination2
@@ -564,7 +566,7 @@ MapScriptCmd_jump_if_player_z_equals: // 8035BD6
 // jump if the the player's z coordinate does not equal signedhword1
 // signedhword1 - z coordinate to compare the player's z coordinate with
 // destination2 - script to jump to
-MapScriptCmd_jump_if_player_z_not_equals: // 8035BFE
+MapScriptCmd_jump_if_player_z_not_equal: // 8035BFE
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -584,7 +586,7 @@ loc_8035C20:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_jump_if_player_z_not_equals
+	thumb_func_end MapScriptCmd_jump_if_player_z_not_equal
 
 	thumb_local_start
 // 0x14 hword1 destination2
@@ -595,7 +597,7 @@ MapScriptCmd_jump_if_game_state_44_equals: // 8035C26
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldr r0, [r0,#oGameState_Unk_44]
+	ldr r0, [r0,#oGameState_SavedRealWorldMapId]
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	cmp r0, r4
@@ -616,11 +618,11 @@ MapScriptCmd_jump_if_game_state_44_equals: // 8035C26
 // jump if hword1 doesn't equal eGameState_Unk_44
 // hword1 - value to compare eGameState_Unk_44 with
 // destination2 - script to jump to
-MapScriptCmd_jump_if_game_state_44_not_equals: // 8035C4A
+MapScriptCmd_jump_if_game_state_44_not_equal: // 8035C4A
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldr r0, [r0,#oGameState_Unk_44]
+	ldr r0, [r0,#oGameState_SavedRealWorldMapId]
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	cmp r0, r4
@@ -634,7 +636,7 @@ MapScriptCmd_jump_if_game_state_44_not_equals: // 8035C4A
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_jump_if_game_state_44_not_equals
+	thumb_func_end MapScriptCmd_jump_if_game_state_44_not_equal
 
 	thumb_local_start
 // 0x16 0x00 destination2
@@ -853,23 +855,23 @@ MapScriptCutsceneCmd_set_screen_fade: // 8035D6A
 
 	thumb_local_start
 // 0x1e/0x28 byte1 byte2
-// store byte1 and byte2 in eGameState_Unk_16 and eGameState_Unk_17 respectively
-// byte1 - value to store to eGameState_Unk_16
-// byte2 - value to store to eGameState_Unk_17
-MapScriptCutsceneCmd_set_game_state_16_17: // 8035D98
+// sets screen fade params for the screen fade when entering a map
+// byte1 - argument 1 for enter map screen fade
+// byte2 - argument 2 for enter map screen fade
+MapScriptCutsceneCmd_set_enter_map_screen_fade: // 8035D98
 	push {lr}
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r6, #1
 	bl ReadMapScriptByte
-	strb r4, [r1,#oGameState_Unk_16]
+	strb r4, [r1,#oGameState_EnterMapFadeParam1]
 	mov r6, #2
 	bl ReadMapScriptByte
-	strb r4, [r1,#oGameState_Unk_17]
+	strb r4, [r1,#oGameState_EnterMapFadeParam2]
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCutsceneCmd_set_game_state_16_17
+	thumb_func_end MapScriptCutsceneCmd_set_enter_map_screen_fade
 
 	thumb_local_start
 // 0x1f/0x29 byte1 hword2
@@ -1147,9 +1149,12 @@ MapScriptCutsceneCmd_write_eStruct2001c04_byte: // 8035F0E
 
 	thumb_local_start
 // 0x2c/0x36 word1
-// call LoadGFXAnim(r0=word1)
-// word1 - argument to LoadGFXAnim
-MapScriptCutsceneCmd_call_sub_8001B1C: // 8035F2A
+// load a gfx anim
+// e.g. the animated tiles on the background of the net
+// gfx anims can also do palette animations
+// see include/bytecode/gfx_anim_script.inc
+// word1 - gfx anim to load
+MapScriptCutsceneCmd_load_gfx_anim: // 8035F2A
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -1158,13 +1163,16 @@ MapScriptCutsceneCmd_call_sub_8001B1C: // 8035F2A
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCutsceneCmd_call_sub_8001B1C
+	thumb_func_end MapScriptCutsceneCmd_load_gfx_anim
 
 	thumb_local_start
 // 0x2d/0x37 word1
-// do LoadGFXAnims(r0=word1)
-// r0 is a list of pointers for LoadGFXAnim, terminated by negative
-MapScriptCutsceneCmd_call_sub_8001B1C_multiple: // 8035F3E
+// load multiple gfx anims
+// e.g. the animated tiles on the background of the net
+// gfx anims can also do palette animations
+// see include/bytecode/gfx_anim_script.inc
+// word1 - list of gfx anims to load, terminated by negative
+MapScriptCutsceneCmd_load_gfx_anims: // 8035F3E
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -1173,13 +1181,12 @@ MapScriptCutsceneCmd_call_sub_8001B1C_multiple: // 8035F3E
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCutsceneCmd_call_sub_8001B1C_multiple
+	thumb_func_end MapScriptCutsceneCmd_load_gfx_anims
 
 	thumb_local_start
 // 0x2e/0x38
-// call sub_8030A30, then LoadBGAnimForMapGroup
-// uses map group/number as args
-MapScriptCutsceneCmd_call_sub_8030A30_8035194: // 8035F52
+// load the gfx anims and BG anim for the current map
+MapScriptCutsceneCmd_load_map_gfx_anims_bg_anim: // 8035F52
 	push {lr}
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
@@ -1190,37 +1197,40 @@ MapScriptCutsceneCmd_call_sub_8030A30_8035194: // 8035F52
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCutsceneCmd_call_sub_8030A30_8035194
+	thumb_func_end MapScriptCutsceneCmd_load_map_gfx_anims_bg_anim
 
 	thumb_local_start
 // 0x2f/0x39 byte1
-// if byte1 == 0xff, call TerminateGFXAnim with r0 as 0x0 to 0x11
-// else, call TerminateGFXAnim with r0=byte1
-MapScriptCutsceneCmd_cmd_8035F6A: // 8035F6A
+// terminate the given gfx anim
+// byte1 - index of gfx anim to terminate
+
+// 0x2f/0x39 0xff
+// terminate all gfx anims
+MapScriptCutsceneCmd_terminate_one_or_all_gfx_anims: // 8035F6A
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	mov r0, r4
 	cmp r0, #0xff
-	beq loc_8035F7A
-	b loc_8035F8E
-loc_8035F7A:
+	beq .terminateAllGFXAnims
+	b .terminateOneGFXAnim
+.terminateAllGFXAnims
 	mov r4, #0
-loc_8035F7C:
+.terminateGFXAnimLoop
 	mov r0, r4
 	bl TerminateGFXAnim
 	add r4, #1
-	cmp r4, #0x12
-	blt loc_8035F7C
+	cmp r4, #NUM_GFX_ANIMS
+	blt .terminateGFXAnimLoop
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-loc_8035F8E:
+.terminateOneGFXAnim
 	bl TerminateGFXAnim
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCutsceneCmd_cmd_8035F6A
+	thumb_func_end MapScriptCutsceneCmd_terminate_one_or_all_gfx_anims
 
 	thumb_local_start
 // 0x36/0x53 byte1 byte2
@@ -1299,7 +1309,7 @@ MapScriptCmd_spawn_or_free_objects: // 8035FDE
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	add r7, #6
 	mov r0, #1
 	pop {pc}
@@ -2374,7 +2384,7 @@ PlayMapMusic:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#oS2001c04_MapMusic]
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	pop {r4-r7,pc}
 	thumb_func_end PlayMapMusic
 
@@ -2474,9 +2484,8 @@ clearCutsceneScriptPosIfMagicValue0x1_8036F24:
 	mov pc, lr
 	thumb_func_end clearCutsceneScriptPosIfMagicValue0x1_8036F24
 
-// () -> zf
 	thumb_func_start IsCutsceneScriptNonNull
-IsCutsceneScriptNonNull:
+IsCutsceneScriptNonNull: // () -> zf
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	ldr r0, [r0,#oCutsceneState_CutsceneScriptPos] // s_02011C50.ptr_1C
@@ -2489,12 +2498,12 @@ IsCutsceneScriptNonNull:
 cutscene_checkOriginalCutsceneScriptPos_8036F40:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
-	mov r2, #1
+	mov r2, #TRUE
 	ldr r0, [r0,#oCutsceneState_originalCutsceneScriptPos_40] // s_02011C50.unk_40
 	ldr r1, off_8036F54 // =CutsceneScript_80991F4
 	cmp r0, r1
 	beq loc_8036F50
-	mov r2, #0
+	mov r2, #FALSE
 loc_8036F50:
 	tst r2, r2
 	mov pc, lr
@@ -2506,12 +2515,12 @@ off_8036F54: .word CutsceneScript_80991F4
 cutscene_checkOriginalCutsceneScriptPos_8036F58:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
-	mov r2, #1
+	mov r2, #TRUE
 	ldr r0, [r0,#oCutsceneState_originalCutsceneScriptPos_40]
 	ldr r1, off_8036F6C // =CutsceneScript_80988E4
 	cmp r0, r1
 	beq loc_8036F68
-	mov r2, #0
+	mov r2, #FALSE
 loc_8036F68:
 	tst r2, r2
 	mov pc, lr
@@ -2523,7 +2532,7 @@ off_8036F6C: .word CutsceneScript_80988E4
 cutscene_checkOriginalCutsceneScriptPos_8036F70:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_CutsceneStatePtr]
-	mov r2, #1
+	mov r2, #CUTSCENE_SCRIPT_UNK_MAGIC_SCRIPT_VALUE_0x1
 	ldr r1, [r1,#oCutsceneState_originalCutsceneScriptPos_40]
 	cmp r1, r0
 	beq loc_8036F7E
@@ -3156,7 +3165,7 @@ CutsceneCameraCmd_run_text_script:
 	mov r0, #2
 	bl ReadCutsceneCameraScriptWord
 	mov r1, r4
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	pop {r1}
 	mov r0, #1
 	add r1, #6
@@ -3170,7 +3179,7 @@ CutsceneCameraCmd_wait_chatbox:
 	push {lr}
 	push {r1}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	pop {r1}
 	bne .textboxStillUp
 	mov r0, #1
@@ -3309,7 +3318,7 @@ CutsceneCameraCmd_play_music:
 	push {r1}
 	mov r0, #1
 	bl ReadCutsceneCameraScriptHalfword
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	pop {r1}
 	mov r0, #1
 	add r1, #3
@@ -3434,7 +3443,7 @@ CutsceneCommandJumptable:
 	.word CutsceneCmd_jump_if_title_screen_icon_count_equals+1
 	.word CutsceneCmd_jump_if_title_screen_icon_count_not_equal+1
 	.word MapScriptCutsceneCmd_set_screen_fade+1
-	.word MapScriptCutsceneCmd_set_game_state_16_17+1
+	.word MapScriptCutsceneCmd_set_enter_map_screen_fade+1
 	.word MapScriptCutsceneCmd_set_event_flag+1
 	.word MapScriptCutsceneCmd_clear_event_flag+1
 	.word MapScriptCutsceneCmd_set_event_flag_range+1
@@ -3448,10 +3457,10 @@ CutsceneCommandJumptable:
 	.word MapScriptCutsceneCmd_write_eStruct2001c04_byte+1
 	.word CutsceneCmd_write_byte_to_extended_var_plus_param+1
 	.word CutsceneCmd_set_var+1
-	.word MapScriptCutsceneCmd_call_sub_8001B1C+1
-	.word MapScriptCutsceneCmd_call_sub_8001B1C_multiple+1
-	.word MapScriptCutsceneCmd_call_sub_8030A30_8035194+1
-	.word MapScriptCutsceneCmd_cmd_8035F6A+1
+	.word MapScriptCutsceneCmd_load_gfx_anim+1
+	.word MapScriptCutsceneCmd_load_gfx_anims+1
+	.word MapScriptCutsceneCmd_load_map_gfx_anims_bg_anim+1
+	.word MapScriptCutsceneCmd_terminate_one_or_all_gfx_anims+1
 	.word CutsceneCmd_run_text_script+1
 	.word CutsceneCmd_chatbox_cmd_8037a70+1
 	.word CutsceneCmd_set_or_clear_chatbox_flags+1
@@ -3489,7 +3498,7 @@ CutsceneCommandJumptable:
 	.word CutsceneCmd_nop_8038256+1
 	.word CutsceneCmd_nop_803825e+1
 	.word CutsceneCmd_nop_8038266+1
-	.word CutsceneCmd_call_sub_8001974+1
+	.word CutsceneCmd_terminate_bg_scroll_effect+1
 	.word MapScriptCutsceneCmd_init_scenario_effect+1
 	.word MapScriptCutsceneCmd_end_scenario_effect+1
 	.word MapScriptCutsceneCmd_init_minigame_effect+1
@@ -3534,7 +3543,7 @@ byte_8037694: .byte 0x0, 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
 CutsceneCmd_end_for_map_reload_maybe_8037c64:
 	push {lr}
 	movflag EVENT_1741
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .eventActive
 	bl reloadCurNaviStatBoosts_813c3ac
 .eventActive
@@ -3549,7 +3558,7 @@ CutsceneCmd_end_for_map_reload_maybe_8037c64:
 CutsceneCmd_end_for_map_reload_maybe_80376dc:
 	push {lr}
 	movflag EVENT_1741
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .eventActive
 	bl reloadCurNaviStatBoosts_813c3ac
 .eventActive
@@ -3668,11 +3677,11 @@ CutsceneCmd_wait_chatbox:
 	bl ReadMapScriptByte
 	mov r0, #0x80
 	and r0, r4
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_80377AC
 	mov r0, #0x38
 	and r0, r4
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_80377B2
 loc_80377AC:
 	add r7, #2
@@ -3832,7 +3841,7 @@ CutsceneCmd_wait_if_flag_clear:
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq .flagClear
 	add r7, #3
 	mov r0, #1
@@ -3851,7 +3860,7 @@ CutsceneCmd_wait_if_flag_set:
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne .flagSet
 	add r7, #3
 	mov r0, #1
@@ -4186,7 +4195,7 @@ CutsceneCmd_run_text_script:
 	beq .notFromMem
 	ldr r0, [r5,#oCutsceneState_TextArchivePtr]
 	ldrb r1, [r5,r4]
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	add r7, #2
 	mov r0, #1
 	pop {pc}
@@ -4195,7 +4204,7 @@ CutsceneCmd_run_text_script:
 	bl ReadMapScriptByte
 	mov r1, r4
 	ldr r0, [r5,#oCutsceneState_TextArchivePtr]
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	add r7, #3
 	mov r0, #1
 	pop {pc}
@@ -4267,7 +4276,7 @@ CutsceneCmd_decomp_text_archive:
 	mov r0, r4
 	cmp r0, #0
 	bge .uncompressedPtr
-	bl DecompressTextArchiveForCutscene // (void *a1) -> void*
+	bl DecompressTextArchiveForCutscene // (CompText *archive) -> TextScriptArchive*
 .uncompressedPtr
 	str r0, [r5,#oCutsceneState_TextArchivePtr]
 	add r7, #5
@@ -4275,18 +4284,17 @@ CutsceneCmd_decomp_text_archive:
 	pop {pc}
 	thumb_func_end CutsceneCmd_decomp_text_archive
 
-// (void *a1) -> void*
 	thumb_local_start
-DecompressTextArchiveForCutscene:
+DecompressTextArchiveForCutscene: // (CompText *archive) -> TextScriptArchive*
 	push {lr}
 	cmp r0, #0
 	bge .uncompressedPtr
 	lsl r0, r0, #1
 	lsr r0, r0, #1
 	// dest
-	ldr r1, =unk_2034A00
+	ldr r1, =eDecompressionBuf2034A00
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, =unk_2034A00
+	ldr r0, =eDecompressionBuf2034A00
 	add r0, #4
 .uncompressedPtr
 	pop {pc}
@@ -4294,23 +4302,24 @@ DecompressTextArchiveForCutscene:
 	.pool // 8037AE8
 	thumb_func_end DecompressTextArchiveForCutscene
 
-	thumb_func_start uncomp_8037AEC
-uncomp_8037AEC:
+	thumb_func_start DecompressTextArchiveForCutscene2
+DecompressTextArchiveForCutscene2:
 	push {lr}
 	cmp r0, #0
-	bge locret_8037B00
+	bge .uncompressedPtr
+    // remove compression bit
 	lsl r0, r0, #1
 	lsr r0, r0, #1
-	// dest
-	ldr r1, off_8037B04 // =unk_2033400
+
+	ldr r1, =DecompressionBuf2033400
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, off_8037B04 // =unk_2033400
+	ldr r0, =DecompressionBuf2033400
 	add r0, #4
-locret_8037B00:
+.uncompressedPtr
 	pop {pc}
 	.balign 4, 0
-off_8037B04: .word unk_2033400
-	thumb_func_end uncomp_8037AEC
+    .pool // 8037B04
+	thumb_func_end DecompressTextArchiveForCutscene2
 
 	thumb_local_start
 // 0x3f byte1
@@ -4329,7 +4338,8 @@ CutsceneCmd_ow_player_sprite_special:
 	pop {pc}
 	.balign 4, 0
 	.pool // 8037B20
-off_8037B24: .word owPlayer_lockPlayerForNonNPCDialogue_809E0B0+1
+off_8037B24:
+	.word owPlayer_lockPlayerForNonNPCDialogue_809E0B0+1
 	.word owPlayer_unlockPlayerAfterNonNPCDialogue_809E122+1
 	.word owPlayer_809E0FC+1
 	.word owPlayer_809E114+1
@@ -4337,16 +4347,16 @@ off_8037B24: .word owPlayer_lockPlayerForNonNPCDialogue_809E0B0+1
 	.word owPlayer_clearInteractionLocked_809e23c+1
 	.word owPlayer_enableWallCollision_809e248+1
 	.word owPlayer_disableWallCollision_809e254+1
-	.word owPlayer_clearLayerIndexOverride_809e26a+1
-	.word owPlayer_call_sprite_noShadow_809e276+1
-	.word owPlayer_call_sprite_hasShadow_809e284+1
-	.word owPlayer_removeShadow_809e292+1
-	.word owPlayer_makeVisible_809e442+1
-	.word owPlayer_makeInvisible_809e452+1
-	.word owPlayer_809E4AE+1
+	.word ClearOWPlayerLayerIndexOverride+1
+	.word GiveOWPlayerAttachedShadow+1
+	.word GiveOWPlayerDetatchedShadow+1
+	.word RemoveOWPlayerShadow+1
+	.word MakeOWPlayerVisible+1
+	.word MakeOWPlayerInvisible+1
+	.word DisableOWPlayerAlpha+1
 	.word owPlayer_toggleUsingCopybot_809e4bc+1
 	.word owPlayer_zeroS2000AA0Param0x4_809e312+1
-	.word setCurNaviHPToFull_803ceb8+1
+	.word SetCurNaviHPToFull+1
 	thumb_func_end CutsceneCmd_ow_player_sprite_special
 
 	thumb_local_start
@@ -4379,7 +4389,7 @@ CutsceneCmd_ow_player_sprite_special_with_arg:
 	pop {pc}
 	.pool // 8037B98
 	.balign 4, 0
-off_8037B9C: .word owPlayer_writeLayerIndexOverride_809e260+1
+off_8037B9C: .word WriteOWPlayerLayerIndexOverride+1
 	.word SetOWPlayerFacingDirection+1
 	.word owPlayer_setPalette_809e2a0+1
 	.word owPlayer_setAlpha_8002c7a_809e4a0+1
@@ -5043,7 +5053,7 @@ CutsceneCmd_spawn_or_free_ow_map_or_npc_objects:
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	add r7, #6
 	mov r0, #1
 	pop {pc}
@@ -5112,9 +5122,10 @@ CutsceneCmd_call_native_with_return_value:
 // literal interpretation:
 // if bit7 of byte1 is set, word3 = [eCutsceneState_Unk_34]
 // if bit0 of byte1 is set:
-// call warp_setSubsystemIndexTo0x10AndOthers_8005f00 with r0=word3, r1=0, r2=byte2
-// else:
 // call warp_setSubsystemIndexTo0x14AndOthers_8005f14 with r0=word3, r1=0, r2=byte2
+// else:
+// call warp_setSubsystemIndexTo0x10AndOthers_8005f00 with r0=word3, r1=0, r2=byte2
+// byte2 = map group transition type
 CutsceneCmd_warp_cmd_8038040:
 	push {lr}
 	mov r6, #1
@@ -5201,7 +5212,7 @@ MapScriptCutsceneCmd_play_music:
 	b .done
 .regularPlayMusic
 	mov r0, r4
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 .done
 	add r7, #3
 	mov r0, #1
@@ -5467,14 +5478,15 @@ CutsceneCmd_nop_8038266:
 
 	thumb_local_start
 // 0x5f
-// call SetDummyBGScrollCallbacks
-CutsceneCmd_call_sub_8001974:
+// sets all bg scroll callbacks to nullsubs
+// i.e. terminates BG scrolling effect
+CutsceneCmd_terminate_bg_scroll_effect:
 	push {lr}
 	bl SetDummyBGScrollCallbacks
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end CutsceneCmd_call_sub_8001974
+	thumb_func_end CutsceneCmd_terminate_bg_scroll_effect
 
 	thumb_local_start
 // 0x3b/0x60 byte1
@@ -5592,7 +5604,7 @@ CutsceneCmd_change_navi_maybe_80382fe:
 	bl SetCurPETNavi
 	bl reloadCurNaviBaseStats_8120df0
 	bl reloadCurNaviStatBoosts_813c3ac
-	bl setCurNaviHPToFull_803ceb8
+	bl SetCurNaviHPToFull
 	add r7, #2
 	mov r0, #1
 	pop {pc}

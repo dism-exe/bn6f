@@ -273,7 +273,7 @@ int __fastcall sub_80028C0(int result)
 
 
 // 0x80028d4
-void __fastcall sub_80028D4(int a1, int a2, int a3, int a4)
+void __fastcall initUncompSpriteState_80028d4(int a1, int a2, int a3, int a4)
 {
     int v4; // ST00_4
     int v5; // r3

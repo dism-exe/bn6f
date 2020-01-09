@@ -1,5 +1,5 @@
 // 0x807cdec
-unsigned int sub_807CDEC()
+unsigned int Undernet_EnterMapGroup()
 {
     int v0; // r5
     int v1; // r10
@@ -9,29 +9,29 @@ unsigned int sub_807CDEC()
     int v5; // r3
 
     *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_807C82C + *(v0 + 5));
-    sub_807CF24();
-    sub_803037C(*(v0 + 4), *(v0 + 5));
+    Undernet_LoadBGAnim();
+    initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
     decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
-    sub_8030472();
-    sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
+    decompAndCopyMapTiles_8030472();
+    initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(*(&off_807CE50 + *(v0 + 5)));
-    chatbox_uncompBasedOnMap_803FD08();
-    sub_807CFFC();
+    chatbox_uncompMapTextArchives_803FD08();
+    Undernet_SpawnMapObjectsForMap();
     return sub_8034FB8();
 }
 
 
 // 0x807ce90
-int __fastcall sub_807CE90(int a1, int a2)
+int __fastcall Undernet_LoadGFXAnims(int a1, int a2)
 {
     return LoadGFXAnims(off_807CEA4[a2]);
 }
 
 
 // 0x807cf24
-void sub_807CF24()
+void Undernet_LoadBGAnim()
 {
     int v0; // r10
     int v1; // r5
@@ -55,12 +55,12 @@ int __fastcall sub_807CFB8(int a1, int a2, int a3)
 
     v3 = *(a1 + 50);
     v4 = *(a3 + 58);
-    return sub_807CFCC();
+    return Undernet_UnkFunction_807cfcc();
 }
 
 
 // 0x807cfcc
-int sub_807CFCC()
+int Undernet_UnkFunction_807cfcc()
 {
     int v0; // r10
 
@@ -97,7 +97,7 @@ void nullsub_87()
 
 
 // 0x807cffc
-int sub_807CFFC()
+int Undernet_SpawnMapObjectsForMap()
 {
     int v0; // r10
 

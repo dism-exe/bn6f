@@ -9,6 +9,8 @@
     // for jumps to 0xFF, which just continue the current script
     .equiv TS_CONTINUE, 0xFF
 
+	.equiv TS_COMMANDS_START, 0xE5
+
 
 	.macro text_archive_start
 	/* increment subsection id before anything because

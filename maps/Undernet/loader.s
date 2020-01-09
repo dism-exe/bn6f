@@ -1,6 +1,6 @@
 
-	thumb_func_start sub_807CDEC
-sub_807CDEC:
+	thumb_func_start Undernet_EnterMapGroup
+Undernet_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_807CE44 // =off_807C82C 
@@ -9,30 +9,30 @@ sub_807CDEC:
 	lsl r4, r2, #2
 	add r0, r0, r4
 	ldr r0, [r0]
-	str r0, [r1,#oWarp2011bb0_Ptr_14]
-	bl sub_807CF24
+	str r0, [r1,#oWarp2011bb0_WarpDataPtr]
+	bl Undernet_LoadBGAnim
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl sub_803037C
+	bl initMapTilesState_803037c
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl decompressCoordEventData_8030aa4
 	ldr r0, [r5,#oGameState_PlayerX]
 	ldr r1, [r5,#oGameState_PlayerY]
-	ldr r2, [r5,#oGameState_Unk_2c]
+	ldr r2, [r5,#oGameState_PlayerZ]
 	ldrb r3, [r5,#oGameState_MapGroup]
 	ldrb r4, [r5,#oGameState_MapNumber]
 	bl camera_802FF4C
-	bl sub_8030472
+	bl decompAndCopyMapTiles_8030472
 	ldr r0, off_807CE48 // =unk_2037800 
-	bl sub_80028D4
+	bl initUncompSpriteState_80028d4
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, off_807CE4C // =off_807CE50 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_807CFFC
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
+	bl Undernet_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -50,10 +50,10 @@ byte_807CE68: .byte 0x1C, 0xE, 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x72, 0x1C
 byte_807CE7C: .byte 0x1C, 0x5F, 0x1C, 0x81, 0x1C, 0x95, 0x18, 0x38, 0x18
 	.byte 0x39, 0x18, 0x3A, 0xFF, 0xFF
 byte_807CE8A: .byte 0x1C, 0x72, 0x1C, 0x86, 0xFF, 0xFF
-	thumb_func_end sub_807CDEC
+	thumb_func_end Undernet_EnterMapGroup
 
-	thumb_func_start sub_807CE90
-sub_807CE90:
+	thumb_func_start Undernet_LoadGFXAnims
+Undernet_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_807CEA0 // =off_807CEA4 
@@ -94,10 +94,10 @@ off_807CF10: .word off_807C94C
 	.word byte_807CD4C
 	.word byte_807CD9C
 	.word 0xFFFFFFFF
-	thumb_func_end sub_807CE90
+	thumb_func_end Undernet_LoadGFXAnims
 
-	thumb_func_start sub_807CF24
-sub_807CF24:
+	thumb_func_start Undernet_LoadBGAnim
+Undernet_LoadBGAnim:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -149,10 +149,10 @@ off_807CFB0: .word dword_8618DFC
 	.word byte_8618F50
 	.word palette_3001960
 	.word 0x20
-	thumb_func_end sub_807CF24
+	thumb_func_end Undernet_LoadBGAnim
 
-	thumb_func_start sub_807CFCC
-sub_807CFCC:
+	thumb_func_start Undernet_UnkFunction_807cfcc
+Undernet_UnkFunction_807cfcc:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -168,7 +168,7 @@ off_807CFE4: .word nullsub_84+1
 	.word nullsub_85+1
 	.word nullsub_86+1
 	.word nullsub_87+1
-	thumb_func_end sub_807CFCC
+	thumb_func_end Undernet_UnkFunction_807cfcc
 
 	thumb_local_start
 nullsub_84:
@@ -190,8 +190,8 @@ nullsub_87:
 	mov pc, lr
 	thumb_func_end nullsub_87
 
-	thumb_func_start sub_807CFFC
-sub_807CFFC:
+	thumb_func_start Undernet_SpawnMapObjectsForMap
+Undernet_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -199,7 +199,7 @@ sub_807CFFC:
 	lsl r0, r0, #2
 	ldr r1, off_807D010 // =pt_807D014 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_807D010: .word pt_807D014
@@ -208,4 +208,4 @@ pt_807D014:
 	.word byte_807D0B4
 	.word byte_807D1A8
 	.word byte_807D210
-	thumb_func_end sub_807CFFC
+	thumb_func_end Undernet_SpawnMapObjectsForMap

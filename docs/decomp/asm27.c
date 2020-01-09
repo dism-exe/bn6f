@@ -39,8 +39,8 @@ int __fastcall sub_8094738(int a1)
     int v3; // r5
     signed int v4; // r4
 
-    v1 = 2 * eStruct200BE70;
-    v2 = dword_200BE7C + *(dword_200BE7C + 8) + 66 + 86 * eStruct200BE70;
+    v1 = 2 * eMapTilesState200be70;
+    v2 = dword_200BE7C + *(dword_200BE7C + 8) + 66 + 86 * eMapTilesState200be70;
     v3 = a1;
     v4 = 0;
     do

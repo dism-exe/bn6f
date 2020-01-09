@@ -772,7 +772,7 @@ sub_8038F0C:
 	beq locret_8038F2A
 	bl loc_803D1AC // () -> void
 	bl clear_e200AD04 // () -> void
-	bl sub_803E900
+	bl init_eStartScreenAnimationControl200B1A0_1
 	ldr r0, off_8038F2C // =0x40
 	bl SetRenderInfoLCDControl
 locret_8038F2A:
@@ -1179,7 +1179,7 @@ cb_80395A4:
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-	bl sub_800A7D0 // () -> (zf, int)
+	bl IsCurSubsystemInUse // () -> (bool, !zf)
 	bne locret_80395C0
 	mov r0, #0xda
 	mov r1, #2
@@ -1237,7 +1237,7 @@ sub_8039630:
 	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	bl chatbox_8040818
-	bl sub_802F530
+	bl startScreen_init_802F530 // () -> void
 	ldr r0, off_8039654 // =0x40
 	bl SetRenderInfoLCDControl
 locret_8039652:
@@ -1326,7 +1326,7 @@ sub_803970C:
 	bl IsScreenFadeActive // () -> zf
 	beq loc_803972A
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_803972A
 	mov r0, #0
 	strb r0, [r5,#0x14]
@@ -1869,7 +1869,7 @@ sub_8039B60:
 	bl IsScreenFadeActive // () -> zf
 	beq loc_8039B7C
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_8039B7C
 	mov r0, #0xc
 	mov r1, #0x10
@@ -1934,7 +1934,7 @@ sub_8039BC0:
 	b loc_8039C0E
 loc_8039BE6:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_8039C0E
 	bl sub_803BB94
 	beq loc_8039C0E
@@ -1956,7 +1956,7 @@ loc_8039C0E:
 sub_8039C14:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_8039C2C
 	mov r0, #0
 	strb r0, [r5,#0xe]
@@ -2073,7 +2073,7 @@ sub_8039D08:
 	bl sub_803A558
 	bne loc_8039D60
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_8039D60
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -2142,7 +2142,7 @@ sub_8039D9A:
 	bl sub_803A558
 	bne loc_8039DAE
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_8039DAE
 	mov r0, #0x24
 	strb r0, [r5,#1]
@@ -2208,7 +2208,7 @@ sub_8039E2C:
 	bl sub_803A58C
 	beq loc_8039E7A
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_8039E7A
 	bl sub_8146588
 	mov r0, r5
@@ -2422,7 +2422,7 @@ loc_8039FE6:
 sub_8039FEC:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_803A034
 	bl sub_8146588
 	mov r0, r5
@@ -2638,7 +2638,7 @@ sub_803A186:
 	push {r4-r7,lr}
 	mov r4, #0
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803A194
 	mov r4, #1
 loc_803A194:
@@ -2805,7 +2805,7 @@ off_803A2B8: .word sub_803A2CC+1
 sub_803A2CC:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803A31C
 	ldr r0, dword_803A324 // =0x7f40
 	bl SetRenderInfoLCDControl
@@ -3683,7 +3683,7 @@ byte_803A9C4: .byte 0xBC, 0x42, 0xBD, 0x42, 0xBE, 0x42, 0xBF, 0x42
 sub_803A9CC:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803A9E0
 	bl sub_803BB80
 	beq loc_803A9E0
@@ -3979,7 +3979,7 @@ sub_803ABF4:
 sub_803AC02:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803AC26
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -4025,7 +4025,7 @@ loc_803AC50:
 sub_803AC56:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803AC72
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -4045,7 +4045,7 @@ loc_803AC72:
 sub_803AC78:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803AC9C
 	mov r0, #0
 	strb r0, [r5,#0x13]
@@ -4078,7 +4078,7 @@ sub_803ACA2:
 sub_803ACB2:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803ACC0
 	mov r0, #0x28
 	strb r0, [r5,#1]
@@ -4374,7 +4374,7 @@ sub_803AED8:
 sub_803AEE6:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803AF16
 	ldrb r0, [r5,#3]
 	cmp r0, #1
@@ -4427,7 +4427,7 @@ loc_803AF40:
 sub_803AF46:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803AF6A
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -4450,7 +4450,7 @@ loc_803AF6A:
 sub_803AF70:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803AF8A
 	mov r0, #0
 	strb r0, [r5,#0x13]
@@ -4654,7 +4654,7 @@ loc_803B1D0:
 sub_803B1D6:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_803B1F2
 	mov r0, #SOUND_UNSELECT_68
 	bl PlaySoundEffect
@@ -5452,11 +5452,11 @@ sub_803BB2C:
 	cmp r3, #0x4c
 	beq loc_803BB52
 	ldr r0, off_803BB68 // =TextScript87E36F8
-	bl chatbox_runScript_803FE74 // (u16 *scriptList, u8 scriptOffIdx) -> void
+	bl chatbox_runScriptAndSetWhiteDot803FE74 // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	b locret_803BB64
 loc_803BB4A:
 	ldr r0, off_803BB6C // =TextScriptNetworkRequestConnection87F2A1C
-	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
+	bl chatbox_runScript_803FD9C // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	b locret_803BB64
 loc_803BB52:
 	push {r1}
@@ -5465,7 +5465,7 @@ loc_803BB52:
 	ldr r0, TextScriptNetworkEnterFolderNamePtrs_p // =TextScriptNetworkEnterFolderNamePtrs
 	ldr r0, [r0,r1]
 	pop {r1}
-	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
+	bl chatbox_runScript_803FD9C // (TextScriptArchive *archive, u8 scriptIdx) -> void
 locret_803BB64:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -5719,7 +5719,7 @@ loc_803BE78:
 	ldr r0, [sp,#4]
 	ldr r1, [sp,#8]
 	ldr r2, [sp,#0xc]
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	add sp, sp, #0x10
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -6780,7 +6780,7 @@ loc_803C5DE:
 	add r0, r0, r1
 	ldr r1, dword_803C5FC // =0x6017e80
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 locret_803C5EC:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -7231,7 +7231,7 @@ off_803C948: .word unk_200FE70
 	thumb_local_start
 sub_803C94C:
 	push {lr}
-	bl sub_800A7D0 // () -> (zf, int)
+	bl IsCurSubsystemInUse // () -> (bool, !zf)
 	bne loc_803C966
 	ldr r0, dword_803C978 // =0x1
 	bl sub_813D9A0
@@ -7633,7 +7633,7 @@ locret_803CC26:
 sub_803CC28:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq locret_803CC3E
 	mov r0, #0xc
 	mov r1, #8
@@ -7699,7 +7699,7 @@ RunTextScriptCommError_803CCB0:
 	push {r4-r7,lr}
 	mov r1, r0
 	ldr r0, off_803CCBC // =TextScriptCommError873B9E0
-	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
+	bl chatbox_runScript_803FD9C // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803CCBC: .word TextScriptCommError873B9E0
@@ -7797,7 +7797,7 @@ RunTextScriptCommError_803CD64:
 	push {r4-r7,lr}
 	mov r1, r0
 	ldr r0, off_803CD70 // =TextScriptCommError873B9E0
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803CD70: .word TextScriptCommError873B9E0
@@ -7950,7 +7950,7 @@ sub_803CE44:
 	mov r2, r7
 	bl SetCurPETNaviStatsHword
 	movflag EVENT_PET_NAVI_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_803CEB4
 	mov r0, #0
 	mov r1, #0x40
@@ -7977,20 +7977,20 @@ locret_803CEB4:
 	.balign 4, 0x00
 	thumb_func_end sub_803CE44
 
-	thumb_func_start setCurNaviHPToFull_803ceb8
-setCurNaviHPToFull_803ceb8:
+	thumb_func_start SetCurNaviHPToFull
+SetCurNaviHPToFull:
 	push {r4-r7,lr}
 	bl GetCurPETNavi // () -> u8
 	mov r4, r0
-	mov r1, #0x42
+	mov r1, #oNaviStats_MaxHP
 	bl GetCurPETNaviStatsHword
 	mov r2, r0
 	mov r0, r4
-	mov r1, #0x40
+	mov r1, #oNaviStats_CurHP
 	bl SetCurPETNaviStatsHword
 	mov r0, #0
 	pop {r4-r7,pc}
-	thumb_func_end setCurNaviHPToFull_803ceb8
+	thumb_func_end SetCurNaviHPToFull
 
 	thumb_func_start sub_803CED4
 sub_803CED4:
@@ -8448,7 +8448,7 @@ cb_803D1CA:
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-	bl sub_803E938
+	bl startScreen_AnimatePressStart_803E938
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803D1E0: .word off_803D1E4
@@ -8551,7 +8551,7 @@ sub_803D2A6:
 	push {lr}
 	ldr r0, off_803D2B4 // =0x40
 	bl SetRenderInfoLCDControl
-	bl sub_802F530
+	bl startScreen_init_802F530 // () -> void
 	pop {pc}
 	.balign 4, 0
 off_803D2B4: .word 0x40
@@ -9082,7 +9082,7 @@ loc_803DED6:
 	cmp r0, #1
 	bne loc_803DEFE
 	movflag EVENT_172F
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_803DEF8
 	ldrh r0, [r7,#0xc] // (eCamera.unk_5C - 0x20099d0)
 	tst r0, r0
@@ -9184,7 +9184,7 @@ loc_803DF96:
 off_803DF9C: .word eCamera+0x50 // eCamera.unk_50
 off_803DFA0: .word byte_200DD10
 off_803DFA4: .word unk_2009480
-	.word byte_200F460
+	.word eTimerEnable200F460
 	thumb_func_end sub_803DEB4
 
 	thumb_local_start
@@ -10339,7 +10339,7 @@ locret_803E80A:
 	thumb_local_start
 sub_803E80C:
 	push {r0-r7,lr}
-	bl sub_800A7D0 // () -> (zf, int)
+	bl IsCurSubsystemInUse // () -> (bool, !zf)
 	beq locret_803E826
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
@@ -10509,23 +10509,24 @@ sub_803E8F8:
 off_803E8FC: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803E8F8
 
-	thumb_func_start sub_803E900
-sub_803E900:
+	thumb_func_start init_eStartScreenAnimationControl200B1A0_1
+init_eStartScreenAnimationControl200B1A0_1:
 	push {r4,lr}
-	ldr r0, off_803E960 // =byte_200B1A0
+	ldr r0, off_803E960 // =eStartScreenAnimationControl200B1A0
 	mov r4, r0
 	mov r1, #8
 	bl ZeroFillByByte // (void *mem, int size) -> void
+
 	mov r0, #0xb4
-	strb r0, [r4,#0x3] // (byte_200B1A3 - 0x200b1a0)
+	strb r0, [r4,#0x3]
 	pop {r4,pc}
 	.balign 4, 0x00
-	thumb_func_end sub_803E900
+	thumb_func_end init_eStartScreenAnimationControl200B1A0_1
 
 	thumb_local_start
-sub_803E914:
+init_eStartScreenAnimationControl200B1A0_2:
 	push {r4,lr}
-	ldr r0, off_803E960 // =byte_200B1A0
+	ldr r0, off_803E960 // =eStartScreenAnimationControl200B1A0
 	mov r4, r0
 	mov r1, #8
 	bl ZeroFillByByte // (void *mem, int size) -> void
@@ -10533,70 +10534,78 @@ sub_803E914:
 	strb r0, [r4,#0x3] // (byte_200B1A3 - 0x200b1a0)
 	pop {r4,pc}
 	.balign 4, 0x00
-	thumb_func_end sub_803E914
+	thumb_func_end init_eStartScreenAnimationControl200B1A0_2
 
 	thumb_func_start sub_803E928
 sub_803E928:
-	ldr r0, off_803E960 // =byte_200B1A0
+	ldr r0, off_803E960 // =eStartScreenAnimationControl200B1A0
 	ldrb r0, [r0]
 	cmp r0, #2
 	mov pc, lr
 	thumb_func_end sub_803E928
 
-	thumb_func_start sub_803E930
-sub_803E930:
+	thumb_func_start startScreen_TstZero
+startScreen_TstZero: // () -> !zf
 	mov r0, #0
 	tst r0, r0
 	mov pc, lr
 	.balign 4, 0x00
-	thumb_func_end sub_803E930
+	thumb_func_end startScreen_TstZero
 
-	thumb_func_start sub_803E938
-sub_803E938:
+	thumb_func_start startScreen_AnimatePressStart_803E938
+startScreen_AnimatePressStart_803E938:
 	push {r4,lr}
-	ldr r4, off_803E960 // =byte_200B1A0
+	ldr r4, off_803E960 // =eStartScreenAnimationControl200B1A0
 	ldrb r0, [r4]
+
+	// checks blinking state of Press Screen
 	cmp r0, #1
-	beq loc_803E94C
+	beq .nonBlinkingState803E94C
 	cmp r0, #2
-	beq loc_803E958
-	bl sub_803E964
-	b locret_803E95C
-loc_803E94C:
+	beq .blinkingState803E958
+
+	// state 0 -- pause PressStart animation till timer runs out
+	bl startScreen_DecrementPressStartPauseAnimationTimer
+	b .ret
+.nonBlinkingState803E94C
 	bl sub_803E978
-	bne locret_803E95C
-	mov r0, #2
-	strb r0, [r4]
-	b locret_803E95C
-loc_803E958:
+	bne .ret
+		// enable blinking Press Start
+		mov r0, #2
+		strb r0, [r4]
+	b .ret
+.blinkingState803E958
 	bl sub_803EA1C
-locret_803E95C:
+.ret:
 	pop {r4,pc}
 	.balign 4, 0
-off_803E960: .word byte_200B1A0
-	thumb_func_end sub_803E938
+off_803E960: .word eStartScreenAnimationControl200B1A0
+	thumb_func_end startScreen_AnimatePressStart_803E938
 
 	thumb_local_start
-sub_803E964:
+startScreen_DecrementPressStartPauseAnimationTimer:
 	push {r4-r7,lr}
-	ldr r5, off_803EA14 // =byte_200B1A0
+	ldr r5, off_803EA14 // =eStartScreenAnimationControl200B1A0
+	
+	// decrement timer
 	ldrb r0, [r5,#0x3] // (byte_200B1A3 - 0x200b1a0)
 	sub r0, #1
 	strb r0, [r5,#0x3] // (byte_200B1A3 - 0x200b1a0)
+
 	bne locret_803E974
 	mov r0, #1
 	strb r0, [r5]
 locret_803E974:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-	thumb_func_end sub_803E964
+	thumb_func_end startScreen_DecrementPressStartPauseAnimationTimer
 
 	thumb_local_start
 sub_803E978:
 	push {r4-r7,lr}
-	ldr r5, off_803EA14 // =byte_200B1A0
+	ldr r5, off_803EA14 // =eStartScreenAnimationControl200B1A0
 	mov r6, #1
-	bl sub_803E930
+	bl startScreen_TstZero // () -> !zf
 	bne loc_803EA0A
 	bl sub_813DA94
 	tst r0, r0
@@ -10647,15 +10656,12 @@ loc_803E9E6:
 	bl sub_803F4EC
 	tst r4, r4
 	beq loc_803EA0A
-	mov r0, #1
-	mov r1, #0xe3
-	bl TestEventFlagFromImmediate
+	movflag EVENT_1E3
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_803EA0A
-	mov r0, #0
-	mov r1, #0x7a
+	movflag EVENT_7A
 	bl SetEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x7b
+	movflag EVENT_7B
 	bl ClearEventFlagFromImmediate
 loc_803EA0A:
 	mov r0, r6
@@ -10663,7 +10669,7 @@ loc_803EA0A:
 	pop {r4-r7,pc}
 	.word eCamera+0x50 // eCamera.unk_50
 	.balign 4, 0
-off_803EA14: .word byte_200B1A0
+off_803EA14: .word eStartScreenAnimationControl200B1A0
 off_803EA18: .word word_200AD04
 	thumb_func_end sub_803E978
 
@@ -12742,7 +12748,7 @@ loc_803F870:
 	mov r4, #1
 	movflag EVENT_1704
 	bl ClearEventFlagFromImmediate
-	bl SeedRNG2 // () -> int
+	bl SeedRNG2 // () -> void
 loc_803F87E:
 	bl RandomizeExtraToolkitPointers
 	mov r0, r4
@@ -13176,7 +13182,7 @@ playGameOver_803FB9C:
 	cmp r0, r1
 	bne locret_803FBC0
 	mov r0, #SONG_GAME_OVER
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	b locret_803FBC0
 loc_803FBB4:
 	mov r0, #0xc
@@ -13194,9 +13200,9 @@ sub_803FBC2:
 	bl IsScreenFadeActive // () -> zf
 	beq locret_803FBE0
 	bl sub_8006910
-	bl sub_802F530
+	bl startScreen_init_802F530 // () -> void
 	bl clear_e200AD04 // () -> void
-	bl sub_803E914
+	bl init_eStartScreenAnimationControl200B1A0_2
 	ldr r0, off_803FBE4 // =0x40
 	bl SetRenderInfoLCDControl
 locret_803FBE0:

@@ -1,129 +1,140 @@
-
-// () -> int
-	thumb_func_start chatbox_uncompBasedOnMap_803FD08
-chatbox_uncompBasedOnMap_803FD08:
+	thumb_func_start chatbox_uncompMapTextArchives_803FD08
+chatbox_uncompMapTextArchives_803FD08: // () -> int
 	push {r4-r7,lr}
+
 	mov r0, #0
-	bl chatbox_map_8040730
-	// dest
-	ldr r1, off_803FD30 // =byte_202DA00
+	bl chatbox_selectCompTextByMap_8040730 // (u8 idx) -> CompText*
+	ldr r1, off_803FD30 // =eDecompressedTextArchive202DA00
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	bl chatbox_map_8040794
-	// dest
-	ldr r1, off_803FD34 // =unk_2033400
+
+	bl chatbox_selectCompTextByMap_8040794 // () -> CompText*
+	ldr r1, off_803FD34 // =DecompressionBuf2033400
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	bl chatbox_map_80407C8
-	// dest
-	ldr r1, off_803FD38 // =byte_202FA00
+
+	bl chatbox_selectCompTextByMap_80407C8 // () -> CompText*
+	ldr r1, off_803FD38 // =eDecompressedTextArchive202FA00
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803FD30: .word byte_202DA00
-off_803FD34: .word unk_2033400
-off_803FD38: .word byte_202FA00
-	thumb_func_end chatbox_uncompBasedOnMap_803FD08
+off_803FD30: .word eDecompressedTextArchive202DA00
+off_803FD34: .word DecompressionBuf2033400
+off_803FD38: .word eDecompressedTextArchive202FA00
+	thumb_func_end chatbox_uncompMapTextArchives_803FD08
 
-	thumb_func_start chatbox_uncomp_803FD3C
-chatbox_uncomp_803FD3C:
+
+	thumb_func_start chatbox_uncompMapTextArchives_803FD3C
+chatbox_uncompMapTextArchives_803FD3C: // () -> int
 	push {r4-r7,lr}
-	mov r0, #1
-	bl chatbox_map_8040730
-	// dest
-	ldr r1, off_803FD50 // =unk_2034A00
+	
+    mov r0, #1
+	bl chatbox_selectCompTextByMap_8040730 // (u8 idx) -> CompText*
+	ldr r1, off_803FD50 // =eDecompressionBuf2034A00
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	mov r0, #0
+	
+    mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803FD50: .word unk_2034A00
-	thumb_func_end chatbox_uncomp_803FD3C
+off_803FD50: .word eDecompressionBuf2034A00
+	thumb_func_end chatbox_uncompMapTextArchives_803FD3C
+
 
 	thumb_local_start
-chatbox_uncomp_803FD54:
+chatbox_uncompMapTextArchives_803FD54: // () -> int
 	push {r4-r7,lr}
-	bl chatbox_map_8040794
-	// dest
-	ldr r1, off_803FD64 // =unk_2033400
+	
+    bl chatbox_selectCompTextByMap_8040794 // () -> CompText*
+	ldr r1, off_803FD64 // =DecompressionBuf2033400
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803FD64: .word unk_2033400
-	thumb_func_end chatbox_uncomp_803FD54
+off_803FD64: .word DecompressionBuf2033400
+	thumb_func_end chatbox_uncompMapTextArchives_803FD54
 
-// (u8 scriptID) -> void
+
 	thumb_func_start chatbox_runScript_202da04
-chatbox_runScript_202da04:
+chatbox_runScript_202da04: // (u8 scriptID) -> void
 	push {r4,r5,lr}
 	mov r1, r0
 	ldr r0, off_803FD74 // =eTextScript202DA04
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	pop {r4,r5,pc}
 	.balign 4, 0
 off_803FD74: .word eTextScript202DA04
 	thumb_func_end chatbox_runScript_202da04
 
-// (void *textScript, u8 scriptIdx) -> void
+
 	thumb_func_start chatbox_runScript_803FD78
-chatbox_runScript_803FD78:
+chatbox_runScript_803FD78: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	push {r4,r5,lr}
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-	// src
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+
+	// u16 src[4]: r0 = byte_803FD94
+	// dest: r1 = &r10->oToolkit_ChatboxPtr->oChatbox_Unk_68
+	// halfwordCount: r2 = 8
 	ldr r0, off_803FD90 // =byte_803FD94
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_ChatboxPtr]
-	// dest
-	add r1, #0x68 // ChatBoxPropreties.unk_68
-	// halfwordCount
+	add r1, #oChatbox_Unk_68
 	mov r2, #8
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+
 	pop {r4,r5,pc}
 	.balign 4, 0
 off_803FD90: .word byte_803FD94
-byte_803FD94: .byte 0x7E, 0x0, 0x83, 0x0, 0x7F, 0x0, 0x81, 0x0
+byte_803FD94: .hword 0x7E, 0x83, 0x7F, 0x81
 	thumb_func_end chatbox_runScript_803FD78
 
-// (void *textScript, u8 scriptIdx) -> void
+
 	thumb_func_start chatbox_runScript_803FD9C
-chatbox_runScript_803FD9C:
+chatbox_runScript_803FD9C: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	push {r4,r5,lr}
-	mov r4, #0
+	// bool v0: r4
+	mov r4, #FALSE
 	b loc_803FDA8
 	.balign 4, 0x00
 	thumb_func_end chatbox_runScript_803FD9C
 
 	thumb_func_start chatbox_runScript_803FDA4
-chatbox_runScript_803FDA4:
+chatbox_runScript_803FDA4: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	push {r4,r5,lr}
-	mov r4, #1
+    // bool v0: r4
+	mov r4, #TRUE
+
 loc_803FDA8:
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+
 	ldr r0, off_803FDEC // =byte_86BFBA0
 	ldr r1, dword_803FDF0 // =0x600dc80 
 	ldr r2, off_803FDF4 // =0x280 
-	bl QueueEightWordAlignedGFXTransfer
-	cmp r4, #1
-	beq loc_803FDC6
-	ldr r0, off_803FDFC // =byte_86BFE20
-	ldr r1, off_803FE00 // =unk_3001B40
-	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
-	b loc_803FDD0
-loc_803FDC6:
-	ldr r0, off_803FE04 // =byte_86BFE40
-	ldr r1, off_803FE00 // =unk_3001B40
-	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
-loc_803FDD0:
-	// src
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	
+	cmp r4, #TRUE
+	beq .if_803FDC6
+    // if (!v0)
+		ldr r0, off_803FDFC // =byte_86BFE20
+		ldr r1, off_803FE00 // =unk_3001B40
+		mov r2, #0x20
+		bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	b .fi_803FDD0
+.if_803FDC6
+	// else
+		ldr r0, off_803FE04 // =byte_86BFE40
+		ldr r1, off_803FE00 // =unk_3001B40
+		mov r2, #0x20
+		bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+.fi_803FDD0
+
 	ldr r0, off_803FDE0 // =byte_803FDE4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_ChatboxPtr]
-	// dest
 	add r1, #0x68
-	// halfwordCount
 	mov r2, #8
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+
 	pop {r4,r5,pc}
 	.balign 4, 0
 off_803FDE0: .word byte_803FDE4
@@ -137,47 +148,53 @@ off_803FE00: .word unk_3001B40
 off_803FE04: .word byte_86BFE40
 	thumb_func_end chatbox_runScript_803FDA4
 
-// (void *textScript, u8 scriptIdx) -> void
+
 	thumb_func_start chatbox_runScript_803FE08
-chatbox_runScript_803FE08:
+chatbox_runScript_803FE08: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	push {r4,r5,lr}
-	mov r4, #0
+	// bool v0: r4
+	mov r4, #FALSE
 	b loc_803FE14
-	.byte 0, 0
+	.balign 4, 0
 	thumb_func_end chatbox_runScript_803FE08
 
 	thumb_func_start chatbox_runScript_803FE10
-chatbox_runScript_803FE10:
+chatbox_runScript_803FE10: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	push {r4,r5,lr}
-	mov r4, #1
+	// bool v0: r4
+	mov r4, #TRUE
+
 loc_803FE14:
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+
 	ldr r0, off_803FE58 // =byte_86C05E0
 	ldr r1, dword_803FE5C // =0x600dc80 
 	ldr r2, off_803FE60 // =0x320 
-	bl QueueEightWordAlignedGFXTransfer
-	cmp r4, #1
-	beq loc_803FE32
-	ldr r0, off_803FE68 // =byte_86C0900
-	ldr r1, off_803FE6C // =unk_3001B40
-	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
-	b loc_803FE3C
-loc_803FE32:
-	ldr r0, off_803FE70 // =byte_86C0920
-	ldr r1, off_803FE6C // =unk_3001B40
-	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
-loc_803FE3C:
-	// src
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	
+	cmp r4, #TRUE
+	beq .if_803FE32
+	// if (!v0)
+		ldr r0, off_803FE68 // =byte_86C0900
+		ldr r1, off_803FE6C // =unk_3001B40
+		mov r2, #0x20
+		bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	b .fi_803FE3C
+.if_803FE32
+	// else
+		ldr r0, off_803FE70 // =byte_86C0920
+		ldr r1, off_803FE6C // =unk_3001B40
+		mov r2, #0x20
+		bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+.fi_803FE3C
+
 	ldr r0, off_803FE4C // =byte_803FE50
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_ChatboxPtr]
-	// dest
 	add r1, #0x68
-	// halfwordCount
 	mov r2, #8
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+
 	pop {r4,r5,pc}
 	.balign 4, 0
 off_803FE4C: .word byte_803FE50
@@ -191,19 +208,22 @@ off_803FE6C: .word unk_3001B40
 off_803FE70: .word byte_86C0920
 	thumb_func_end chatbox_runScript_803FE10
 
-// (u16 *scriptList, u8 scriptOffIdx) -> void
-	thumb_func_start chatbox_runScript_803FE74
-chatbox_runScript_803FE74:
+
+	thumb_func_start chatbox_runScriptAndSetWhiteDot803FE74
+chatbox_runScriptAndSetWhiteDot803FE74: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	push {r4,r5,lr}
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+
 	ldr r0, off_803FE9C // =spriteWhiteDot 
 	ldr r1, dword_803FEA0 // =0x600dc80 
 	ldr r2, off_803FEA4 // =0x6f8 
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	
 	ldr r0, off_803FEAC // =spriteWhiteDot 
 	ldr r1, off_803FEB0 // =unk_3001B40 
 	mov r2, #0x20 
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	
 	pop {r4,r5,pc}
 	.balign 4, 0
 off_803FE90: .word byte_803FE94
@@ -214,161 +234,213 @@ off_803FEA4: .word 0x6F8
 	.word 0x380
 off_803FEAC: .word spriteWhiteDot
 off_803FEB0: .word unk_3001B40
-	thumb_func_end chatbox_runScript_803FE74
+	thumb_func_end chatbox_runScriptAndSetWhiteDot803FE74
+
 
 	thumb_func_start chatbox_onUpdate
-chatbox_onUpdate:
+chatbox_onUpdate: // () -> void
 	push {r4-r7,lr}
+
+	// Chatbox vChatBox: r5
+	// u8 vChatbox_Visible: r0
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	ldrb r0, [r5,#oChatbox_Visible]
+
 	tst r0, r0
-	bne loc_803FEC2
-	pop {r4-r7,pc}
-loc_803FEC2:
+	bne .if_803FEC2
+	// if (!vChatbox_Visible)
+		pop {r4-r7,pc}
+.if_803FEC2
+
 	ldr r0, off_803FF28 // =0x338
 	bl chatbox_clear_eFlags2009F38 // (int a1) ->
+
+	// int flag: r0
 	mov r0, #0x40
-	bl chatbox_check_eFlags2009F38
-	bne loc_803FEE2
-	mov r7, r10
-	ldr r7, [r7,#oToolkit_JoypadPtr]
-	ldrh r1, [r7,#oJoypad_Held]
-	strh r1, [r5,#oChatbox_JoypadHeld]
-	ldrh r1, [r7,#oJoypad_Pressed] // Joystick.IQR
-	strh r1, [r5,#oChatbox_JoypadUp]
-	ldrh r1, [r7,#oJoypad_LowSensitivityHeld] // Joystick.keyPress
-	strh r1, [r5,#oChatbox_JoypadDown] // ChatBoxPropreties.keyPress
-	b loc_803FEEA
-loc_803FEE2:
-	mov r0, #0
-	strh r0, [r5,#oChatbox_JoypadHeld]
-	strh r0, [r5,#oChatbox_JoypadUp]
-	strh r0, [r5,#oChatbox_JoypadDown] // ChatBoxPropreties.keyPress
-loc_803FEEA:
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
+
+	bne .if_803FEE2
+	// if (flag)
+		// store chatbox joypad data
+		mov r7, r10
+		ldr r7, [r7,#oToolkit_JoypadPtr]
+		ldrh r1, [r7,#oJoypad_Held]
+		strh r1, [r5,#oChatbox_JoypadHeld]
+		ldrh r1, [r7,#oJoypad_Pressed]
+		strh r1, [r5,#oChatbox_JoypadUp]
+		ldrh r1, [r7,#oJoypad_LowSensitivityHeld]
+		strh r1, [r5,#oChatbox_JoypadDown]
+	b .fi_803FEEA
+.if_803FEE2
+	// else
+		// set chatbox joypad data to 0
+		mov r0, #0
+		strh r0, [r5,#oChatbox_JoypadHeld]
+		strh r0, [r5,#oChatbox_JoypadUp]
+		strh r0, [r5,#oChatbox_JoypadDown]
+.fi_803FEEA
+
+	// int flag: r0
 	mov r0, #FLAGS_3E_UNK_0001
 	bl chatbox_maskFlags_3e // (int mask) -> void
-	bne loc_803FF04
-	ldr r1, [r5,#oChatbox_Unk_78] // ChatBoxPropreties.unk_78
-	cmp r1, #0
-	beq loc_803FEFE
-	sub r1, #1
-	str r1, [r5,#oChatbox_Unk_78] // ChatBoxPropreties.unk_78
-	b loc_803FF04
-loc_803FEFE:
-	bl chatbox_8040154
-	b loc_803FF08
-loc_803FF04:
-	mov r0, #1
-	strb r0, [r5,#oChatbox_JumpTableOffset_11] // ChatBoxPropreties.bxoff_11
-loc_803FF08:
+
+	bne .if_803FF04
+	// if (flag)
+		// int vUnk_78: r1
+		ldr r1, [r5,#oChatbox_Unk_78]
+
+		cmp r1, #0
+		beq .if_803FEFE
+		// if (vUnk_78)
+			sub r1, #1
+			str r1, [r5,#oChatbox_Unk_78]
+	b .if_803FF04
+.if_803FEFE
+		// else
+			bl chatbox_8040154 // (unk) -> unk
+		b .fi_803FF08
+.if_803FF04
+	// else
+		mov r0, #1
+		strb r0, [r5,#oChatbox_JumpTableOffset_11]
+.fi_803FF08
+	
+	// vCallBack: r0 = jt_803FF30[4*vChatbox->oChatbox_JumpTableOffset_11]
 	ldr r0, off_803FF2C // =jt_803FF30
-	ldrb r1, [r5,#oChatbox_JumpTableOffset_11] // ChatBoxPropreties.bxoff_11
+	ldrb r1, [r5,#oChatbox_JumpTableOffset_11]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
+
 	mov lr, pc
 	bx r0
+
+	// u16 v0: r1 = *(vChatBox+0x1D4)
 	ldr r0, off_803FF38 // =off_803FF3C
 	ldr r1, [r0]
 	ldrh r1, [r5,r1]
+
 	tst r1, r1
-	beq locret_803FF26
-	push {r0-r5}
-	bl chatbox_8040CD0
-	pop {r0-r5}
-locret_803FF26:
+	beq .if_803FF26
+	// id (v0)
+		push {r0-r5}
+		bl chatbox_8040CD0
+		pop {r0-r5}
+.if_803FF26
+
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803FF28: .word 0x338
 off_803FF2C: .word jt_803FF30
-jt_803FF30: .word chatbox_interpreteAndDrawDialogChar_1+1
-	.word chatbox_interpreteAndDrawDialogChar+1
+jt_803FF30: 
+	.word chatbox_interpreteAndDrawDialogChar_1+1
+	.word chatbox_interpreteAndDrawDialogChar+1 // (&self@r5) ->
 off_803FF38: .word off_803FF3C
 off_803FF3C: .word 0x1D4
 	.byte 0xD6, 0x1, 0x0, 0x0, 0xD8, 0x1, 0x0, 0x0, 0xE8, 0x1, 0x0, 0x0, 0xEC
 	.byte 0x1, 0x0, 0x0
 	thumb_func_end chatbox_onUpdate
 
-// () ->
 	thumb_local_start
-chatbox_interpreteAndDrawDialogChar:
+chatbox_interpreteAndDrawDialogChar: // (&self@r5) ->
 	push {lr}
+
 	mov r0, #1
-	strb r0, [r5,#oChatbox_JumpTableOffset_11] // ChatBoxPropreties.bxoff_11
-loc_803FF56:
-	ldr r4, [r5,#oChatbox_TextScriptCursorPtr] // ChatBoxPropreties.pScriptCursor
+	strb r0, [r5,#oChatbox_JumpTableOffset_11]
+
+loop_803FF56:
+	// vCurByte: r1 = *self->oChatbox_TextScriptCursorPtr
+	ldr r4, [r5,#oChatbox_TextScriptCursorPtr]
 	ldrb r1, [r4]
-	cmp r1, #0xe5
-	bmi loc_803FF7C
-	mov r0, #0
-	ldrb r2, [r5,#oChatbox_CharInPrint] // ChatBoxPropreties.bNumCharacterTyped
-	cmp r2, #0
-	bgt loc_803FFCC
-	sub r1, #0xe5
-	lsl r1, r1, #2
-	ldr r2, off_8040020 // =TextScriptBytecodeJumptable
-	ldr r1, [r2,r1]
-	mov lr, pc
-	bx r1
-	cmp r0, #2
-	beq loc_803FF7A
-	bl chatbox_8040C9C
+
+	cmp r1, #TS_COMMANDS_START
+	bmi if_803FF7C
+	// if vCurByte is a command
+		// vCharInPrint: r2
+		mov r0, #0
+		ldrb r2, [r5,#oChatbox_CharInPrint]
+
+		cmp r2, #0
+		bgt if_803FFCC
+		// if (vCharInPrint <= 0)
+			sub r1, #TS_COMMANDS_START
+			lsl r1, r1, #2
+			ldr r2, off_8040020 // =TextScriptBytecodeJumptable
+			ldr r1, [r2,r1]
+
+			mov lr, pc
+			bx r1
+			
+			cmp r0, #2
+			beq loc_803FF7A
+				bl chatbox_8040C9C
 loc_803FF7A:
-	b loc_803FFD0
-loc_803FF7C:
+	b fi_803FFD0
+if_803FF7C:
 	mov r0, #FLAGS_3E_UNK_0001
 	bl chatbox_clearFlags_3e // (int mask) -> void
 	mov r0, #0
+
 	ldrb r2, [r5,#oChatbox_CharInPrint]
 	cmp r2, #0
-	bgt loc_803FFCC
-	ldrb r2, [r5,#oChatbox_TextScriptPrintSpeed] // ChatBoxPropreties.typingSpeed
-	strb r2, [r5,#oChatbox_CharInPrint] // ChatBoxPropreties.bNumCharacterTyped
-	mov r0, #FLAGS_3E_UNK_0040
-	bl chatbox_maskFlags_3e // (int mask) -> void
+	bgt if_803FFCC
+		ldrb r2, [r5,#oChatbox_TextScriptPrintSpeed]
+		strb r2, [r5,#oChatbox_CharInPrint]
+		mov r0, #FLAGS_3E_UNK_0040
+		bl chatbox_maskFlags_3e // (int mask) -> void
 
-	bne loc_803FF9E
-	mov r2, #0x68 // ChatBoxPropreties.unk_68
-	ldrh r0, [r5,r2]
-	bl PlaySoundEffect
+		bne loc_803FF9E
+		mov r2, #0x68 // ChatBoxPropreties.unk_68
+		ldrh r0, [r5,r2]
+		bl PlaySoundEffect
+
 loc_803FF9E:
 	cmp r1, #0xe4
-	beq loc_803FFB4
-	ldr r6, [r5,#oChatbox_Unk_7C] // ChatBoxPropreties.unk_7C
-	ldr r3, off_8040038 // =sub_3006F8C+1
-	mov lr, pc
-	bx r3
-	add r4, #1
-	bl chatbox_8040C44
-	mov r0, #1
-	b loc_803FFD0
-loc_803FFB4:
-	ldrb r1, [r4,#1]
-	add r1, #0xe4
-	mov r0, #0
-	ldr r6, [r5,#oChatbox_Unk_7C] // ChatBoxPropreties.unk_7C
-	ldr r3, off_8040038 // =sub_3006F8C+1
-	mov lr, pc
-	bx r3
-	add r4, #2
-	bl chatbox_8040C44
-	mov r0, #1
-	b loc_803FFD0
-loc_803FFCC:
+	beq ifTwoByteChar_803FFB4
+		ldr r6, [r5,#oChatbox_Unk_7C] // ChatBoxPropreties.unk_7C
+		ldr r3, off_8040038 // =sub_3006F8C+1
+
+		mov lr, pc
+		bx r3
+		
+		add r4, #1
+		bl chatbox_8040C44
+		mov r0, #1
+	b fi_803FFD0
+ifTwoByteChar_803FFB4:
+		ldrb r1, [r4,#1]
+		add r1, #0xe4
+		mov r0, #0
+		ldr r6, [r5,#oChatbox_Unk_7C]
+		ldr r3, off_8040038 // =sub_3006F8C+1
+		
+		mov lr, pc
+		bx r3
+		
+		add r4, #2
+		bl chatbox_8040C44
+		mov r0, #1
+	b fi_803FFD0
+
+if_803FFCC:
 	sub r2, #1
 	strb r2, [r5,#oChatbox_CharInPrint]
-loc_803FFD0:
-	str r4, [r5,#oChatbox_TextScriptCursorPtr] // ChatBoxPropreties.pScriptCursor
+fi_803FFD0:
+	str r4, [r5,#oChatbox_TextScriptCursorPtr]
 	tst r0, r0
-	bne loc_803FF56
+	bne loop_803FF56
+
+
 	ldr r0, off_8040030 // =FLAGS_3E_HIDE_CHATBOX
 	bl chatbox_maskFlags_3e // (int mask) -> void
 
-	bne loc_803FFE2
-	bl chatbox_CopyBackgroundTiles_8040344
-loc_803FFE2:
+	bne if_803FFE2
+		bl chatbox_CopyBackgroundTiles_8040344
+if_803FFE2
+
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
+
 	beq loc_8040016
 	ldr r0, off_8040030 // =FLAGS_3E_HIDE_CHATBOX
 	bl chatbox_maskFlags_3e // (int mask) -> void
@@ -413,6 +485,7 @@ byte_8040040: .byte 0x0, 0xB, 0x4D, 0x25, 0x44, 0x2A, 0x0, 0x0
 	.word 0x1F4
 	.word 0x1F5
 	thumb_func_end chatbox_interpreteAndDrawDialogChar
+
 
 	thumb_local_start
 chatbox_interpreteAndDrawDialogChar_1:
@@ -484,7 +557,7 @@ loc_80400B8:
 	bl chatbox_CopyBackgroundTiles_8040344
 loc_80400E2:
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_8040112
 	ldr r0, Flags8040130 // =FLAGS_3E_HIDE_CHATBOX
 	bl chatbox_maskFlags_3e // (int mask) -> void
@@ -527,7 +600,7 @@ Flags804014C: .word FLAGS_3E_UNK_0800 | FLAGS_3E_UNK_0040
 	thumb_func_end chatbox_interpreteAndDrawDialogChar_1
 
 	thumb_local_start
-chatbox_8040154:
+chatbox_8040154: // (unk) -> unk
 	push {lr}
 	mov r2, #2
 	ldrh r1, [r5,#oChatbox_JoypadHeld]
@@ -789,21 +862,21 @@ chatbox_CopyBackgroundTiles_8040344:
 	.pool
 	thumb_func_end chatbox_CopyBackgroundTiles_8040344
 
-// (u8 scriptOffIdx) -> void
+
 	thumb_func_start chatbox_runTrainScript
 chatbox_runTrainScript:
 	push {r4,r5,lr}
 	mov r1, r0
 	ldr r0, off_8040380 // =eTextScript2034A04
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	pop {r4,r5,pc}
 	.balign 4, 0
 off_8040380: .word eTextScript2034A04
 	thumb_func_end chatbox_runTrainScript
 
-// (void *scripts, u8 scriptOffIdx) -> void
+
 	thumb_func_start chatbox_runScript
-chatbox_runScript:
+chatbox_runScript: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	push {r4-r6,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_ChatboxPtr]
@@ -910,7 +983,7 @@ chatbox_runScript:
 	ldr r0, off_804046C // =dword_86BEB20 
 	ldr r1, dword_8040470 // =0x600dc80 
 	ldr r2, off_8040474 // =0x160 
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldr r0, off_804047C // =byte_86BEC80 
 	ldr r1, off_8040480 // =unk_3001B40 
 	mov r2, #0x20 
@@ -1049,7 +1122,7 @@ chatbox_reqBBS_80404C0:
 	ldr r0, off_80405A8 // =dword_86BEB20 
 	ldr r1, dword_80405AC // =0x600dc80 
 	ldr r2, off_80405B0 // =0x160 
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldr r0, off_80405B4 // =byte_86BEC80 
 	ldr r1, off_80405B8 // =unk_3001B40 
 	mov r2, #0x20 
@@ -1186,7 +1259,7 @@ dead_80405F8:
 	str r0, [r5,r2]
 	pop {r0,r2}
 	ldr r1, byte_80406E4 // =0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r0}
 	ldr r1, off_80406F0 // =unk_3001B40
 	mov r2, #0x20
@@ -1218,9 +1291,15 @@ off_804072C: .word 0x1F5
 	thumb_func_end dead_80405F8
 
 	thumb_local_start
-chatbox_map_8040730:
+chatbox_selectCompTextByMap_8040730: // (u8 idx) -> CompText*
 	push {r4-r7,lr}
+	
+	// u8 idx: r4
 	mov r4, r0
+
+	// u8 vMapGroup: r0 = r10->oToolkit_GameStatePtr->oGameState_MapGroup
+	// u8 vMapNumber: r1 = r10->oToolkit_GameStatePtr->oGameState_MapNumber
+	// u8 vUnk_08: r2 = r10->oToolkit_GameStatePtr->oGameState_Unk_08
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
 	ldrb r0, [r2,#oGameState_MapGroup]
@@ -1228,70 +1307,97 @@ chatbox_map_8040730:
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
 	ldrb r2, [r2,#oGameState_Unk_08]
+
+	// u8 vMapWorldSel: r6 = vMapGroup < INTERNET_MAP_GROUP_START ? 0 : 4
 	mov r6, #0
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bmi loc_804074C
-	mov r6, #4
-	sub r0, #0x80
+    mov r6, #4
+	sub r0, #INTERNET_MAP_GROUP_START
 loc_804074C:
+
+	// unk v1: r5 = off_8040770[8*idx]
+	// idx = 8*idx
 	ldr r5, off_804076C // =off_8040770
 	lsl r4, r4, #3
 	add r5, r5, r4
+	
+	// unk v2: r3 = v1[vMapWorldSel][4*vMapGroup] <=> off_8040770[8*idx][vMapWorldSel][4*vMapGroup]
 	ldr r3, [r5,r6]
 	lsl r0, r0, #2
 	add r3, r3, r0
 	ldr r3, [r3]
+
+	// if idx == 0
 	tst r4, r4
-	bne loc_8040764
+	bne .idxNotZero
+	// unk v2: r3 = v2[4*vMapNumber] <=> off_8040770[8*idx][vMapWorldSel][4*vMapGroup][4*vMapNumber]
 	lsl r1, r1, #2
 	add r3, r3, r1
 	ldr r3, [r3]
-loc_8040764:
+.idxNotZero
+
+	// return v2[4*vUnk_08] <=> off_8040770[8*idx][vMapWorldSel][4*vMapGroup][4*vUnk_08] if idx != 0 else ...
 	lsl r2, r2, #2
 	add r3, r3, r2
 	ldr r0, [r3]
+
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_804076C: .word off_8040770
-off_8040770: .word off_8044470
-	.word off_80444C4
-	.word off_80444A8
-	.word off_804457C
+off_8040770: 
+	.word off_realWorld_8044470
+	.word off_internet_80444C4
+	
+	.word off_realWorld_80444A8
+	.word off_internet_804457C
+	
 	.word byte_8040784
 byte_8040784: .byte 0x60, 0x3, 0x50, 0x2, 0x40, 0x2, 0x30, 0x1, 0x20, 0x1, 0x10
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0
-	thumb_func_end chatbox_map_8040730
+	thumb_func_end chatbox_selectCompTextByMap_8040730
 
 	thumb_local_start
-chatbox_map_8040794:
+chatbox_selectCompTextByMap_8040794: // () -> CompText*
 	push {r4-r7,lr}
+	
+    // vMapGroup: r0
+    // vMapNumber: r1
+    // vGameProgress: r2
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
 	ldrb r0, [r2,#oGameState_MapGroup]
 	ldrb r1, [r2,#oGameState_MapNumber]
 	ldrb r2, [r2,#oGameState_GameProgress]
+
+    // vMapWorldSel: r6 = INTERNET_MAP_GROUP_START ? 0 : 4
 	mov r6, #0
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bmi loc_80407AA
 	mov r6, #4
-	sub r0, #0x80
+	sub r0, #INTERNET_MAP_GROUP_START
 loc_80407AA:
+
+    // v0: r3 = mapPtrs80407C0[vMapWorldSel][4*vMapGroup]
 	ldr r5, off_80407BC // =mapPtrs80407C0
 	ldr r3, [r5,r6]
 	lsl r0, r0, #2
 	add r3, r3, r0
 	ldr r3, [r3]
-	lsl r1, r1, #2
+	
+    // return v0[4*vMapNumber] <=> mapPtrs80407C0[vMapWorldSel][4*vMapGroup][4*vMapNumber]
+    lsl r1, r1, #2
 	add r3, r3, r1
 	ldr r0, [r3]
-	pop {r4-r7,pc}
+	
+    pop {r4-r7,pc}
 off_80407BC: .word mapPtrs80407C0
 mapPtrs80407C0: .word off_804448C
 	.word off_8044520
-	thumb_func_end chatbox_map_8040794
+	thumb_func_end chatbox_selectCompTextByMap_8040794
 
 	thumb_local_start
-chatbox_map_80407C8:
+chatbox_selectCompTextByMap_80407C8: // () -> CompText*
 	push {r4-r7,lr}
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
@@ -1318,12 +1424,12 @@ loc_80407DE:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_80407F8: .word mapPtrs80407FC
-mapPtrs80407FC: .word off_8044470
-	.word off_80444C4
+mapPtrs80407FC: .word off_realWorld_8044470
+	.word off_internet_80444C4
 	.word byte_8040808
 byte_8040808: .byte 0x60, 0x4, 0x50, 0x4, 0x40, 0x4, 0x30, 0x4, 0x20, 0x4, 0x10
 	.byte 0x4, 0x0, 0x4, 0x0, 0x0
-	thumb_func_end chatbox_map_80407C8
+	thumb_func_end chatbox_selectCompTextByMap_80407C8
 
 	thumb_func_start chatbox_8040818
 chatbox_8040818:
@@ -1361,7 +1467,7 @@ chatbox_804082C:
 	add r0, r0, r2
 	ldr r1, dword_804088C // =0x6017f00
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldrb r0, [r5,#oChatbox_CursorIdx]
 	ldrb r1, [r5,#oChatbox_Unk_1B]
 	lsl r0, r0, #0x10
@@ -1486,7 +1592,7 @@ chatbox_ED_select_8040944:
 	add r0, r0, r2
 	ldr r1, dword_80409A8 // =0x6017f80
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	mov r2, r5
 	add r2, #0x94
 	ldrb r1, [r2]
@@ -1540,7 +1646,7 @@ chatbox_80409C8:
 	ldr r0, off_80409D8 // =dword_86A4A40
 	ldr r1, dword_80409DC // =0x6017f80
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {pc}
 	.balign 4, 0
 off_80409D8: .word dword_86A4A40
@@ -1558,7 +1664,7 @@ chatbox_80409E0:
 	add r0, r0, r2
 	ldr r1, dword_8040A78 // =0x6017f80
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldrb r1, [r5,#oChatbox_TextScriptCharIdx]
 	ldr r0, [r5,#oChatbox_Unk_70]
 	add r0, r0, r1
@@ -1644,7 +1750,7 @@ chatbox_8040A9A:
 	add r0, r0, r2
 	ldr r1, dword_8040B18 // =0x6017f80
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldrb r1, [r5,#oChatbox_TextScriptCharIdx]
 	ldr r0, [r5,#oChatbox_Unk_70]
 	add r0, r0, r1
@@ -1935,11 +2041,11 @@ loc_8040CDA:
 	ldr r0, [r4,#8]
 	ldr r1, [r4,#0xc]
 	ldr r2, [r4,#0x10]
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldr r0, [r4,#0x14]
 	ldr r1, [r4,#0x18]
 	ldr r2, [r4,#0x1c]
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4,r6,r7}
 	push {r4,r6}
 	ldr r0, [r7,#8]
@@ -2078,9 +2184,10 @@ off_8040E00: .word unk_200BEA0
 	.word 0x1C05B520
 	.word 0xFF3EF7FF
 	.word 0xBD20
-TextScriptBytecodeJumptable: .word chatbox_E5_nop+1
-	.word chatbox_E6_end+1
-	.word chatbox_E7_buttonhalt+1
+TextScriptBytecodeJumptable: 
+	.word chatbox_E5_nop+1 // (&self@r5, char *script@r4) -> int
+	.word chatbox_E6_end+1 // (&self@r5, char *script@r4) -> int
+	.word chatbox_E7_buttonhalt+1 // (&self@r5, char *script@r4) -> int
 	.word chatbox_E8_msgbox+1
 	.word chatbox_E9_newline+1
 	.word chatbox_EA_flag+1
@@ -2107,39 +2214,42 @@ TextScriptBytecodeJumptable: .word chatbox_E5_nop+1
 	.word chatbox_FF_copytext+1
 	thumb_func_end chatbox_8040DDC
 
-// (int textScriptCursor@R4) -> int
 // Description: do nothing (but make the script go on)
 // Parameters: 0
 	thumb_local_start
-chatbox_E5_nop:
+chatbox_E5_nop: // (&self@r5, char *script@r4) -> int
+	// cur++
 	add r4, #1
+
 	mov r0, #2
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end chatbox_E5_nop
 
-// () -> int
 // Description: ends the current script and closes message box
 // Parameters: 0
 	thumb_local_start
-chatbox_E6_end:
+chatbox_E6_end: // (&self@r5, char *script@r4) -> int
 	push {lr}
 	ldrb r0, [r5,#oChatbox_Unk_05]
+	
 	tst r0, r0
-	beq loc_8040EB2
-	sub r0, #1
-	ldr r1, dword_8040EF0 // =0x140
-	mov r2, #4
-	mul r2, r0
-	add r1, r1, r2
-	ldr r4, [r5,r1]
-	strb r0, [r5,#oChatbox_Unk_05]
-	mov r0, #1
-	pop {pc}
-loc_8040EB2:
-	// mask
+	beq .if_8040EB2
+	// if (self->oChatbox_Unk_05)
+		sub r0, #1
+		ldr r1, dword_8040EF0 // =0x140
+		mov r2, #4
+		mul r2, r0
+		add r1, r1, r2
+		ldr r4, [r5,r1]
+		strb r0, [r5,#oChatbox_Unk_05]
+		mov r0, #1
+		pop {pc}
+.if_8040EB2:
+
 	mov r0, #FLAGS_3E_UNK_0001
 	bl chatbox_setflags_3e // (int mask) -> void
+
 	ldr r0, Flags8040EEC // =FLAGS_3E_HIDE_CHATBOX
 	bl chatbox_maskFlags_3e // (int mask) -> void
 
@@ -2170,7 +2280,6 @@ Flags8040EEC: .word FLAGS_3E_HIDE_CHATBOX
 dword_8040EF0: .word 0x140
 	thumb_func_end chatbox_E6_end
 
-// () -> int
 // E7 = buttonhalt
 // Description: display an arrow at the lower right of the message box and stop processing until a button is pressed
 // Parameters: 1
@@ -2178,25 +2287,28 @@ dword_8040EF0: .word 0x140
 // E7 00 = wait for A button or B button
 // E7 01 = wait for any button
 	thumb_local_start
-chatbox_E7_buttonhalt:
+chatbox_E7_buttonhalt: // (&self@r5, char *script@r4) -> int
 	push {lr}
-	// mask
+
 	ldr r0, Flags8040F6C // =FLAGS_3E_UNK_0400
 	bl chatbox_setflags_3e // (int mask) -> void
-	// mask
 	mov r0, #FLAGS_3E_UNK_0020 | FLAGS_3E_UNK_0001
 	bl chatbox_setflags_3e // (int mask) -> void
+
 	mov r0, #0
 	strb r0, [r5,#oChatbox_Unk_03]
 	ldrb r0, [r5,#oChatbox_TextScriptState_04]
+
 	cmp r0, #1
 	beq loc_8040F1A
 	cmp r0, #2
 	beq loc_8040F2A
+	
 	mov r0, #5
 	strh r0, [r5,#oChatbox_BoxYX]
 	mov r0, #1
 	strb r0, [r5,#oChatbox_TextScriptState_04]
+	
 	b loc_8040F64
 loc_8040F1A:
 	ldrh r0, [r5,#oChatbox_BoxYX]
@@ -3065,7 +3177,7 @@ loc_8041510:
 	lsl r1, r1, #8
 	orr r0, r1
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_80414F0
 	// mask
 	mov r0, #FLAGS_3E_UNK_0001
@@ -3092,7 +3204,7 @@ loc_8041546:
 	lsl r1, r1, #8
 	orr r0, r1
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_80414F0
 	// mask
 	mov r0, #FLAGS_3E_UNK_0001
@@ -3290,7 +3402,7 @@ chatbox_804171C:
 	orr r0, r2
 	mov r2, #0
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8041732
 	mov r2, #1
 loc_8041732:
@@ -3888,7 +4000,7 @@ loc_8041B1A:
 	lsr r6, r2, #7
 	push {r0,r2}
 	movflag EVENT_1709
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	pop {r0,r2}
 	bne loc_8041B2E
 	mov r6, #0
@@ -4907,7 +5019,7 @@ chatbox_80422E8:
 	ldrb r1, [r4,#3]
 	lsl r1, r1, #8
 	orr r0, r1
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	add r4, #4
 	mov r0, #1
 	pop {pc}
@@ -6723,7 +6835,7 @@ chatbox_8042FF4:
 	push {lr}
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_CutsceneStatePtr]
-	add r2, #8
+	add r2, #oCutsceneState_Unk_08
 	ldrb r0, [r4,#2]
 	ldrb r1, [r4,#3]
 	strb r1, [r2,r0]
@@ -8168,7 +8280,7 @@ jt_8043B00: .word doPETEffect_8033fc0+1
 	.word npc_spawnOverworldNPCObjectsForMap+1
 	.word reloadCurNaviBaseStats_8120df0+1
 	.word reloadCurNaviStatBoosts_813c3ac+1
-	.word setCurNaviHPToFull_803ceb8+1
+	.word SetCurNaviHPToFull+1
 	.word sub_80AA86E+1
 byte_8043B54:: .byte 0xE0, 0xA2, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0, 0x40, 0xA3, 0x0, 0x2
 	.byte 0x20, 0x0, 0x0, 0x0, 0x0, 0xA3, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0
@@ -8368,7 +8480,7 @@ off_804440C:: .word byte_200C7A0
 	.byte 0x0, 0x2, 0x20, 0x20, 0x20, 0x20, 0xE0, 0xCA, 0x0, 0x2
 	.byte 0x20, 0x20, 0x20, 0x20, 0xF0, 0xCA, 0x0, 0x2, 0x20, 0x20
 	.byte 0x20, 0x20, 0x0, 0x0, 0x0, 0x0
-off_8044470: .word off_80445D8
+off_realWorld_8044470: .word off_80445D8
 	.word off_8044620
 	.word off_80446BC
 	.word off_8044800
@@ -8382,14 +8494,14 @@ off_804448C: .word off_8044608
 	.word off_8044914
 	.word off_8044998
 	.word off_8044A48
-off_80444A8: .word off_8044610
+off_realWorld_80444A8: .word off_8044610
 	.word off_80446AC
 	.word off_80447F0
 	.word off_804488C
 	.word off_8044928
 	.word off_80449A8
 	.word off_8044A60
-off_80444C4: .word off_8044A70
+off_internet_80444C4: .word off_8044A70
 	.word off_8044AB8
 	.word off_8044B1C
 	.word off_8044B80
@@ -8430,7 +8542,7 @@ off_8044520: .word off_8044AA0
 	.word off_804526C
 	.word off_80452E8
 	.word off_8045350
-off_804457C: .word off_8044AA8
+off_internet_804457C: .word off_8044AA8
 	.word off_8044B0C
 	.word off_8044B70
 	.word off_8044BD4
@@ -9785,8 +9897,9 @@ chatbox_clear_eFlags2009F38:
 	.balign 4, 0x00
 	thumb_func_end chatbox_clear_eFlags2009F38
 
-	thumb_func_start chatbox_check_eFlags2009F38
-chatbox_check_eFlags2009F38:
+
+	thumb_func_start chatbox_mask_eFlags2009F38
+chatbox_mask_eFlags2009F38: // (int flag) -> int
 	push {r1}
 	ldr r1, off_8045F48 // =eFlags2009F38
 	ldr r1, [r1]
@@ -9794,7 +9907,8 @@ chatbox_check_eFlags2009F38:
 	pop {r1}
 	mov pc, lr
 off_8045F48: .word eFlags2009F38
-	thumb_func_end chatbox_check_eFlags2009F38
+	thumb_func_end chatbox_mask_eFlags2009F38
+
 
 	thumb_func_start chatbox_8045F4C
 chatbox_8045F4C:

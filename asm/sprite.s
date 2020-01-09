@@ -311,7 +311,7 @@ sub_8002874:
 	ldrh r3, [r5,#8]
 	lsl r3, r3, #5
 	add r1, r1, r3
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 locret_8002896:
 	pop {r5,pc}
 	.balign 4, 0
@@ -348,8 +348,8 @@ off_80028CC: .word dword_200F340
 off_80028D0: .word byte_200F389
 	thumb_func_end sub_80028C0
 
-	thumb_func_start sub_80028D4
-sub_80028D4:
+	thumb_func_start initUncompSpriteState_80028d4
+initUncompSpriteState_80028d4:
 	push {r5,lr}
 	ldr r5, off_8002BF0 // =byte_200DCA0
 	push {r0}
@@ -377,7 +377,7 @@ sub_80028D4:
 	mov r2, #0xff
 	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	pop {r5,pc}
-	thumb_func_end sub_80028D4
+	thumb_func_end initUncompSpriteState_80028d4
 
 	thumb_func_start uncompSprite_8002906
 uncompSprite_8002906:

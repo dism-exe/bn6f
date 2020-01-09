@@ -1,5 +1,6 @@
 
 	.macro object_sprite_struct, label=oObjectSprite, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct ObjectSprite
 	set_struct_label \struct_entry, \label
 \label:
 	u8 Unk_00 // loc=0x0

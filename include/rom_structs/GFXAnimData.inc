@@ -2,6 +2,7 @@
 // only used for struct offsets, see include/bytecode/gfx_anim_script.inc
 
 	.macro gfx_anim_data_struct param0, param1, command, index, param2, param3
+    // type: struct GFXAnimData
 	init_rom_struct gfx_anim_data_struct
 	u32 Param0, \param0
 	u32 Param1, \param1

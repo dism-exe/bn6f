@@ -28,7 +28,7 @@ void __noreturn main_()
         copyToVRAMAndClear_iBGTileIdBlocks_Ptr();
         main_static_80003E4();
         ++*tk->currFrame;
-        sub_8000E10();
+        CapIncrementGameTimeFrames();
         (*(&main_subsystemJumpTable + *tk->jo_gameSubsysSel))();
         GetRNG1();
         isSameSubsystem_800A732();
@@ -37,7 +37,7 @@ void __noreturn main_()
         chatbox_onUpdate();
         CallBGScrollCallback0();
         ProcessGFXAnims();
-        sub_3006814();
+        copyTo_iObjectAttr3001D70_3006814();
         main_static_8000454();
     }
 }
@@ -206,13 +206,13 @@ void __cdecl main_initToolkitAndOtherSubsystems()
     sub_8144240();
     sub_803EBC8();
     sub_813D960();
-    sub_80071B4();
+    reset_flags32_20093A4();
     sub_804657C();
     sub_80467D8();
     LOWORD(dword_2009930) = 1;
     ZeroFillByWord(tk->jo_gameSubsysSel, 8);
     sub_803D1A8();
-    sub_803E900();
+    init_eStartScreenAnimationControl200B1A0_2();
 }
 
 

@@ -22,7 +22,7 @@ int __usercall sub_809F526@<R0>(OverworldNPCObject *obj@<R5>)
         {
             v4 = *(obj + 36) + (*(obj + 17) << 16);
             v5 = *(obj + 40) + (*(obj + 18) << 16);
-            v6 = sub_8031612(obj + 36) << 16;
+            v6 = checkZCoordModifiers_8031612(obj + 36) << 16;
             v2 = v4;
             v3 = v5;
         }

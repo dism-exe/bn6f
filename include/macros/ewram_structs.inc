@@ -14,6 +14,7 @@
 	.include "structs/Chatbox.inc"
 	.include "structs/StartScreen.inc"
 	.include "structs/ReqBBSGui.inc"
+    .include "structs/ReqBBS2001150.inc"
 	.include "structs/NaviStats.inc"
 	.include "structs/CutsceneState.inc"
 	.include "structs/ScreenFade.inc"
@@ -29,6 +30,7 @@
 	.include "structs/BGScrollCallbacks.inc"
 	.include "structs/BGScrollCallbackCounters.inc"
 	.include "structs/Palette20097a0.inc"
+	.include "structs/MapTilesState200be70.inc"
 
 /*
 rough notes for now
@@ -111,13 +113,16 @@ ex2011a20 struct:
 14, 4 - pointer to tile effect data if a tile effect was triggered
 known structs:
 - collision
-dword_2011D10 -> sub_8030B6A (06-07 and 08 are swapped)
+dword_2011D10 -> checkCollision_8030b6a (06-07 and 08 are swapped)
 - z coordinate modifiers
-dword_2011A20 -> sub_8031612
+dword_2011A20 -> checkZCoordModifiers_8031612
 - layer priority
-dword_2013940 -> sub_80318B0
+dword_2013940 -> checkLayerPriority_80318b0
 - coordinate triggers (warps, cutscenes, jack-in region, map object)
-dword_2013920 -> sub_8031A7A
+  return values 0x1 to 0xf inclusive are reserved for warps
+  other return values are checked within map scripts, using ms_coordinate_trigger_not_equal_cmd_8035b44
+  probably checked elsewhere as well
+dword_2013920 -> checkCoordinateTrigger_8031a7a
 
 important function: decompressCoordEventData_8030aa4
 can find all the struct labels of collision/tile data there through the calls after the decompression

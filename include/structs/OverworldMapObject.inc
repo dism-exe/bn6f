@@ -1,5 +1,6 @@
 
 	.macro overworld_map_object_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct OverworldMapObject
 	set_struct_label \struct_entry, \label
 	object_header_struct \label, \struct_entry, \set_struct_start_address
 	u32 Unk_04 // loc=0x4

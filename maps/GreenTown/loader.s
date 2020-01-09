@@ -9,28 +9,28 @@ GreenTown_EnterMapGroup:
 	lsl r4, r2, #2
 	add r0, r0, r4
 	ldr r0, [r0]
-	str r0, [r1,#oWarp2011bb0_Ptr_14]
+	str r0, [r1,#oWarp2011bb0_WarpDataPtr]
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl sub_803037C
+	bl initMapTilesState_803037c
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl decompressCoordEventData_8030aa4
 	ldr r0, [r5,#oGameState_PlayerX]
 	ldr r1, [r5,#oGameState_PlayerY]
-	ldr r2, [r5,#oGameState_Unk_2c]
+	ldr r2, [r5,#oGameState_PlayerZ]
 	ldrb r3, [r5,#oGameState_MapGroup]
 	ldrb r4, [r5,#oGameState_MapNumber]
 	bl camera_802FF4C
-	bl sub_8030472
+	bl decompAndCopyMapTiles_8030472
 	ldr r0, off_805DF68 // =unk_2037800 
-	bl sub_80028D4
+	bl initUncompSpriteState_80028d4
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, off_805DF70 // =off_805DF74 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
 	bl GreenTown_SpawnMapObjectsForMap
 	ldr r0, off_805DF6C // =off_805E1FC 
 	ldrb r1, [r5,#oGameState_MapNumber]
@@ -91,7 +91,7 @@ GreenTown_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, off_805E004 // =pt_805E008 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_805E004: .word pt_805E008

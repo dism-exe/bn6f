@@ -1,5 +1,6 @@
 
 	.macro ow_object_interaction_area_struct label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct OWObjectInteractionArea
 	\set_struct_start_address \label
 	set_struct_label \struct_entry, \label
 	union
@@ -17,7 +18,7 @@
 	u32 Z_Radius_ZReachAmount // loc=0x4
 	endu
 
-	u32 Unk_08 // loc=0x8
+	flags32 Unk_08 // loc=0x8
 		struct_const OW_OBJECT_INTERACTION_AREA_FLAG_0x1, 0x1
 		struct_const OW_OBJECT_INTERACTION_AREA_FLAG_0x10000, 0x10000
 		struct_const OW_OBJECT_INTERACTION_AREA_FLAG_0x20000, 0x20000

@@ -1,5 +1,5 @@
 // 0x807ecd0
-unsigned int sub_807ECD0()
+unsigned int GraveyardImmortalArea_EnterMapGroup()
 {
     int v0; // r5
     int v1; // r10
@@ -9,29 +9,29 @@ unsigned int sub_807ECD0()
     int v5; // r3
 
     *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_807EA6C + *(v0 + 5));
-    sub_807EDD4();
-    sub_803037C(*(v0 + 4), *(v0 + 5));
+    GraveyardImmortalArea_LoadBGAnim();
+    initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
     decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
-    sub_8030472();
-    sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
+    decompAndCopyMapTiles_8030472();
+    initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(*(&off_807ED34 + *(v0 + 5)));
-    chatbox_uncompBasedOnMap_803FD08();
-    sub_807EE92();
+    chatbox_uncompMapTextArchives_803FD08();
+    GraveyardImmortalArea_SpawnMapObjectsForMap();
     return sub_8034FB8();
 }
 
 
 // 0x807ed6c
-int __fastcall sub_807ED6C(int a1, int a2)
+int __fastcall GraveyardImmortalArea_LoadGFXAnims(int a1, int a2)
 {
     return LoadGFXAnims(off_807ED80[a2]);
 }
 
 
 // 0x807edd4
-void sub_807EDD4()
+void GraveyardImmortalArea_LoadBGAnim()
 {
     int v0; // r10
     int v1; // r5
@@ -48,7 +48,7 @@ void sub_807EDD4()
 
 
 // 0x807ee68
-int sub_807EE68()
+int GraveyardImmortalArea_UnkFunction_807ee68()
 {
     int v0; // r10
 
@@ -78,7 +78,7 @@ void nullsub_90()
 
 
 // 0x807ee92
-int sub_807EE92()
+int GraveyardImmortalArea_SpawnMapObjectsForMap()
 {
     int v0; // r10
 

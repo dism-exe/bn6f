@@ -1,6 +1,6 @@
 
-	thumb_func_start sub_806D8F8
-sub_806D8F8:
+	thumb_func_start Comps1_EnterMapGroup
+Comps1_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_806D950 // =off_806D6B0 
@@ -9,30 +9,30 @@ sub_806D8F8:
 	lsl r4, r2, #2
 	add r0, r0, r4
 	ldr r0, [r0]
-	str r0, [r1,#oWarp2011bb0_Ptr_14]
-	bl sub_806DA58
+	str r0, [r1,#oWarp2011bb0_WarpDataPtr]
+	bl Comps1_LoadBGAnim
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl sub_803037C
+	bl initMapTilesState_803037c
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl decompressCoordEventData_8030aa4
 	ldr r0, [r5,#oGameState_PlayerX]
 	ldr r1, [r5,#oGameState_PlayerY]
-	ldr r2, [r5,#oGameState_Unk_2c]
+	ldr r2, [r5,#oGameState_PlayerZ]
 	ldrb r3, [r5,#oGameState_MapGroup]
 	ldrb r4, [r5,#oGameState_MapNumber]
 	bl camera_802FF4C
-	bl sub_8030472
+	bl decompAndCopyMapTiles_8030472
 	ldr r0, off_806D954 // =unk_2037800 
-	bl sub_80028D4
+	bl initUncompSpriteState_80028d4
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, off_806D958 // =off_806D95C 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_806DCD4
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
+	bl Comps1_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -72,10 +72,10 @@ byte_806D9E6: .byte 0x1C, 0x5C, 0x1C, 0x6, 0xFF, 0xFF
 byte_806D9EC: .byte 0x1C, 0x5C, 0x1C, 0x6, 0xFF, 0xFF
 byte_806D9F2: .byte 0x1C, 0x5C, 0x1C, 0x6, 0xFF, 0xFF
 dword_806D9F8: .word 0xFFFF061C
-	thumb_func_end sub_806D8F8
+	thumb_func_end Comps1_EnterMapGroup
 
-	thumb_func_start sub_806D9FC
-sub_806D9FC:
+	thumb_func_start Comps1_LoadGFXAnims
+Comps1_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_806DA0C // =off_806DA10 
@@ -102,10 +102,10 @@ off_806DA10: .word off_806DA50
 	.word off_806DA50
 off_806DA50: .word byte_806D820
 	.word 0xFFFFFFFF
-	thumb_func_end sub_806D9FC
+	thumb_func_end Comps1_LoadGFXAnims
 
-	thumb_func_start sub_806DA58
-sub_806DA58:
+	thumb_func_start Comps1_LoadBGAnim
+Comps1_LoadBGAnim:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -222,17 +222,15 @@ off_806DBF0: .word off_8616598
 	.word 0x1800
 	.word byte_8616EC4
 	.byte 0x60, 0x19, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0
-	thumb_func_end sub_806DA58
+	thumb_func_end Comps1_LoadBGAnim
 
-	thumb_func_start sub_806DC0C
-sub_806DC0C:
+	thumb_func_start Comps1_UnkFunction_806dc0c
+Comps1_UnkFunction_806dc0c:
 	push {r4-r7,lr}
 	push {r0,r1}
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl SetEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl ClearEventFlagFromImmediate
 	pop {r0,r1}
 	mov r5, r10
@@ -262,7 +260,7 @@ off_806DC38: .word nullsub_70+1
 	.word nullsub_70+1
 	.word nullsub_70+1
 	.word sub_806DCB6+1
-	thumb_func_end sub_806DC0C
+	thumb_func_end Comps1_UnkFunction_806dc0c
 
 	thumb_local_start
 nullsub_70:
@@ -278,11 +276,9 @@ sub_806DC7A:
 	bne loc_806DC86
 	pop {pc}
 loc_806DC86:
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl ClearEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806DC7A
@@ -296,11 +292,9 @@ sub_806DC98:
 	bne loc_806DCA4
 	pop {pc}
 loc_806DCA4:
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl ClearEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806DC98
@@ -314,17 +308,15 @@ sub_806DCB6:
 	bne loc_806DCC2
 	pop {pc}
 loc_806DCC2:
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl ClearEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806DCB6
 
-	thumb_func_start sub_806DCD4
-sub_806DCD4:
+	thumb_func_start Comps1_SpawnMapObjectsForMap
+Comps1_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -332,7 +324,7 @@ sub_806DCD4:
 	lsl r0, r0, #2
 	ldr r1, off_806DCE8 // =pt_806DCEC 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_806DCE8: .word pt_806DCEC
@@ -354,4 +346,4 @@ pt_806DCEC:
 	.word byte_806DF18
 	.word byte_806DF44
 	.word byte_806DF70
-	thumb_func_end sub_806DCD4
+	thumb_func_end Comps1_SpawnMapObjectsForMap

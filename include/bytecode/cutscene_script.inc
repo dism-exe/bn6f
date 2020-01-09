@@ -387,9 +387,9 @@
 // shared command
 	enum cs_coordinate_trigger_equals_cmd_8035afa_cmd // 0x21
 // 0x0c/0x21 byte1 signedbyte2 destination3
-// jump if the return value of the coordinate trigger function (sub_8031A7A) equals byte1
-// sub_8031A7A returns r0, r1. if r0 == 0, r1 is used in comparison
-// byte1 - byte to compare return value of sub_8031A7A
+// jump if the return value of the coordinate trigger function (checkCoordinateTrigger_8031a7a) equals byte1
+// checkCoordinateTrigger_8031a7a returns r0, r1. if r0 == 0, r1 is used in comparison
+// byte1 - byte to compare return value of checkCoordinateTrigger_8031a7a
 // signedbyte2 - signed offset to overworld player object coordinates
 // destination3 - script to jump to
 	.macro cs_coordinate_trigger_equals_cmd_8035afa byte1:req signedbyte2:req destination3:req
@@ -402,9 +402,9 @@
 // shared command
 	enum cs_coordinate_trigger_not_equal_cmd_8035b44_cmd // 0x22
 // 0x0d/0x22 byte1 signedbyte2 destination3
-// jump if the return value of the coordinate trigger function (sub_8031A7A) doesn't equal byte1
-// sub_8031A7A returns r0, r1. if r0 == 0, r1 is used in comparison
-// byte1 - byte to compare return value of sub_8031A7A
+// jump if the return value of the coordinate trigger function (checkCoordinateTrigger_8031a7a) doesn't equal byte1
+// checkCoordinateTrigger_8031a7a returns r0, r1. if r0 == 0, r1 is used in comparison
+// byte1 - byte to compare return value of checkCoordinateTrigger_8031a7a
 // signedbyte2 - signed offset to overworld player object coordinates
 // destination3 - script to jump to
 	.macro cs_coordinate_trigger_not_equal_cmd_8035b44 byte1:req signedbyte2:req destination3:req
@@ -475,13 +475,13 @@
 	.endm
 
 // shared command
-	enum cs_set_game_state_16_17_cmd // 0x28
+	enum cs_set_enter_map_screen_fade_cmd // 0x28
 // 0x1e/0x28 byte1 byte2
-// store byte1 and byte2 in eGameState_Unk_16 and eGameState_Unk_17 respectively
-// byte1 - value to store to eGameState_Unk_16
-// byte2 - value to store to eGameState_Unk_17
-	.macro cs_set_game_state_16_17 byte1:req byte2:req
-	.byte cs_set_game_state_16_17_cmd
+// sets screen fade params for the screen fade when entering a map
+// byte1 - argument 1 for enter map screen fade
+// byte2 - argument 2 for enter map screen fade
+	.macro cs_set_enter_map_screen_fade byte1:req byte2:req
+	.byte cs_set_enter_map_screen_fade_cmd
 	.byte \byte1
 	.byte \byte2
 	.endm
@@ -646,42 +646,49 @@
 	.endm
 
 // shared command
-	enum cs_call_sub_8001B1C_cmd // 0x36
+	enum cs_load_gfx_anim_cmd // 0x36
 // 0x2c/0x36 word1
 // call LoadGFXAnim(r0=word1)
 // word1 - argument to LoadGFXAnim
-	.macro cs_call_sub_8001B1C word1:req
-	.byte cs_call_sub_8001B1C_cmd
+	.macro cs_load_gfx_anim word1:req
+	.byte cs_load_gfx_anim_cmd
 	.word \word1
 	.endm
 
 // shared command
-	enum cs_call_sub_8001B1C_multiple_cmd // 0x37
+	enum cs_load_gfx_anims_cmd // 0x37
 // 0x2d/0x37 word1
 // do LoadGFXAnims(r0=word1)
 // r0 is a list of pointers for LoadGFXAnim, terminated by negative
-	.macro cs_call_sub_8001B1C_multiple word1:req
-	.byte cs_call_sub_8001B1C_multiple_cmd
+	.macro cs_load_gfx_anims word1:req
+	.byte cs_load_gfx_anims_cmd
 	.word \word1
 	.endm
 
 // shared command
-	enum cs_call_sub_8030A30_8035194_cmd // 0x38
+	enum cs_load_map_gfx_anims_bg_anim_cmd // 0x38
 // 0x2e/0x38
-// call sub_8030A30, then LoadBGAnimForMapGroup
+// call LoadGFXAnimsForMapGroup, then LoadBGAnimForMapGroup
 // uses map group/number as args
-	.macro cs_call_sub_8030A30_8035194
-	.byte cs_call_sub_8030A30_8035194_cmd
+	.macro cs_load_map_gfx_anims_bg_anim
+	.byte cs_load_map_gfx_anims_bg_anim_cmd
 	.endm
 
 // shared command
-	enum cs_cmd_8035F6A_cmd // 0x39
+	enum cs_terminate_one_or_all_gfx_anims_cmd // 0x39
 // 0x2f/0x39 byte1
-// if byte1 == 0xff, call TerminateGFXAnim with r0 as 0x0 to 0x11
-// else, call TerminateGFXAnim with r0=byte1
-	.macro cs_cmd_8035F6A byte1:req
-	.byte cs_cmd_8035F6A_cmd
+// terminate the given gfx anim
+// byte1 - index of gfx anim to terminate
+	.macro cs_terminate_gfx_anim byte1:req
+	.byte cs_terminate_one_or_all_gfx_anims_cmd
 	.byte \byte1
+	.endm
+
+// 0x2f/0x39 0xff
+// terminate all gfx anims
+	.macro cs_terminate_all_gfx_anims byte1:req
+	.byte cs_terminate_one_or_all_gfx_anims_cmd
+	.byte 0xff
 	.endm
 
 	enum cs_run_text_script_cmd // 0x3a
@@ -759,17 +766,155 @@
 	.endm
 
 	enum cs_ow_player_sprite_special_cmd // 0x3f
-// 0x3f byte1
-// call sprite related special
-// byte1 - special to call (multiple of 4)
-	.macro cs_ow_player_sprite_special byte1:req
+	subenum_start 0, 4
+
+	subenum cs_lock_player_for_non_npc_dialogue_809e0b0_subcmd // 0x0
+// 0x3f 0x0
+// call ow player related special
+	.macro cs_lock_player_for_non_npc_dialogue_809e0b0
 	.byte cs_ow_player_sprite_special_cmd
-	.byte \byte1
+	.byte cs_lock_player_for_non_npc_dialogue_809e0b0_subcmd
+	.endm
+
+	subenum cs_unlock_player_after_non_npc_dialogue_809e122_subcmd // 0x4
+// 0x3f 0x4
+// call ow player related special
+	.macro cs_unlock_player_after_non_npc_dialogue_809e122
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_unlock_player_after_non_npc_dialogue_809e122_subcmd
+	.endm
+
+	subenum cs_ow_player_cmd_809e0fc_subcmd // 0x8
+// 0x3f 0x8
+// call ow player related special
+	.macro cs_ow_player_cmd_809e0fc
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_ow_player_cmd_809e0fc_subcmd
+	.endm
+
+	subenum cs_ow_player_cmd_809e114_subcmd // 0xc
+// 0x3f 0xc
+// call ow player related special
+	.macro cs_ow_player_cmd_809e114
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_ow_player_cmd_809e114_subcmd
+	.endm
+
+	subenum cs_set_ow_player_interaction_locked_809e230_subcmd // 0x10
+// 0x3f 0x10
+// call ow player related special
+	.macro cs_set_ow_player_interaction_locked_809e230
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_set_ow_player_interaction_locked_809e230_subcmd
+	.endm
+
+	subenum cs_clear_ow_player_interaction_locked_809e23c_subcmd // 0x14
+// 0x3f 0x14
+// call ow player related special
+	.macro cs_clear_ow_player_interaction_locked_809e23c
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_clear_ow_player_interaction_locked_809e23c_subcmd
+	.endm
+
+	subenum cs_enable_ow_player_wall_collision_809e248_subcmd // 0x18
+// 0x3f 0x18
+// call ow player related special
+	.macro cs_enable_ow_player_wall_collision_809e248
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_enable_ow_player_wall_collision_809e248_subcmd
+	.endm
+
+	subenum cs_disable_ow_player_wall_collision_809e254_subcmd // 0x1c
+// 0x3f 0x1c
+// call ow player related special
+	.macro cs_disable_ow_player_wall_collision_809e254
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_disable_ow_player_wall_collision_809e254_subcmd
+	.endm
+
+	subenum cs_clear_ow_player_layer_index_override_subcmd // 0x20
+// 0x3f 0x20
+// call ow player related special
+	.macro cs_clear_ow_player_layer_index_override
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_clear_ow_player_layer_index_override_subcmd
+	.endm
+
+	subenum cs_give_ow_player_attached_shadow_subcmd // 0x24
+// 0x3f 0x24
+// call ow player related special
+	.macro cs_give_ow_player_attached_shadow
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_give_ow_player_attached_shadow_subcmd
+	.endm
+
+	subenum cs_give_ow_player_detatched_shadow_subcmd // 0x28
+// 0x3f 0x28
+// call ow player related special
+	.macro cs_give_ow_player_detatched_shadow
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_give_ow_player_detatched_shadow_subcmd
+	.endm
+
+	subenum cs_remove_ow_player_shadow_subcmd // 0x2c
+// 0x3f 0x2c
+// call ow player related special
+	.macro cs_remove_ow_player_shadow
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_remove_ow_player_shadow_subcmd
+	.endm
+
+	subenum cs_make_ow_player_visible_subcmd // 0x30
+// 0x3f 0x30
+// call ow player related special
+	.macro cs_make_ow_player_visible
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_make_ow_player_visible_subcmd
+	.endm
+
+	subenum cs_make_ow_player_invisible_subcmd // 0x34
+// 0x3f 0x34
+// call ow player related special
+	.macro cs_make_ow_player_invisible
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_make_ow_player_invisible_subcmd
+	.endm
+
+	subenum cs_disable_ow_player_alpha_subcmd // 0x38
+// 0x3f 0x38
+// call ow player related special
+	.macro cs_disable_ow_player_alpha
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_disable_ow_player_alpha_subcmd
+	.endm
+
+	subenum cs_toggle_ow_player_using_copybot_809e4bc_subcmd // 0x3c
+// 0x3f 0x3c
+// call ow player related special
+	.macro cs_toggle_ow_player_using_copybot_809e4bc
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_toggle_ow_player_using_copybot_809e4bc_subcmd
+	.endm
+
+	subenum cs_ow_player_zero_S2000AA0param0x4_809e312_subcmd // 0x40
+// 0x3f 0x40
+// call ow player related special
+	.macro cs_ow_player_zero_S2000AA0param0x4_809e312
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_ow_player_zero_S2000AA0param0x4_809e312_subcmd
+	.endm
+
+	subenum cs_set_cur_navi_hp_to_full_subcmd // 0x44
+// 0x3f 0x44
+// call ow player related special
+	.macro cs_set_cur_navi_hp_to_full
+	.byte cs_ow_player_sprite_special_cmd
+	.byte cs_set_cur_navi_hp_to_full_subcmd
 	.endm
 
 	enum cs_ow_player_sprite_special_with_arg_cmd // 0x40
 // 0x40 byte1 byte2 byte3
-// call sprite related special with one parameter
+// call ow player related special with one parameter
 // byte1 - special to call (multiple of 4)
 // byte2 - memory param
 // byte3 or mem - argument to special
@@ -1118,9 +1263,9 @@
 // literal interpretation:
 // if bit7 of byte1 is set, word3 = [eCutsceneState_Unk_34]
 // if bit0 of byte1 is set:
-// call warp_setSubsystemIndexTo0x10AndOthers_8005f00 with r0=word3, r1=0, r2=byte2
-// else:
 // call warp_setSubsystemIndexTo0x14AndOthers_8005f14 with r0=word3, r1=0, r2=byte2
+// else:
+// call warp_setSubsystemIndexTo0x10AndOthers_8005f00 with r0=word3, r1=0, r2=byte2
 	.macro cs_warp_cmd_8038040_2 byte1:req byte2:req word3:req
 	.byte cs_warp_cmd_8038040_cmd
 	.byte \byte1
@@ -1318,11 +1463,11 @@
 	.byte cs_nop_8038266_cmd
 	.endm
 
-	enum cs_call_sub_8001974_cmd // 0x5f
+	enum cs_terminate_bg_scroll_effect_cmd // 0x5f
 // 0x5f
 // call SetDummyBGScrollCallbacks
-	.macro cs_call_sub_8001974
-	.byte cs_call_sub_8001974_cmd
+	.macro cs_terminate_bg_scroll_effect
+	.byte cs_terminate_bg_scroll_effect_cmd
 	.endm
 
 // shared command

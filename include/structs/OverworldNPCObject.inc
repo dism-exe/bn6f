@@ -1,5 +1,6 @@
 
 	.macro overworld_npc_object_struct, label=oOverworldNPCObject, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct OverworldNPCObject
 	set_struct_label \struct_entry, \label
 	object_header_struct \label, \struct_entry, \set_struct_start_address
 
@@ -12,7 +13,7 @@
 	u32 MovementSpeed_MovementTimer_Undetected_06_Unk_07 // loc=0x4
 	endu
 
-	u8 CurState // loc=0x8
+	enum8 CurState // loc=0x8
 		struct_const NPC_CUR_STATE_INIT,       0x0
 		struct_const NPC_CUR_STATE_STANDARD,   0x4
 		struct_const NPC_CUR_STATE_IN_CHATBOX, 0x8
@@ -20,7 +21,7 @@
 	// 0x0 - init
 	// 0x4 - standard
 	// 0x8 - stationary? activated when ChatTriggered is true
-	u8 CurAction // loc=0x9
+	flags8 CurAction // loc=0x9
 		struct_const MOVEMENT_FLAG_STOP,                      0x00
 		struct_const MOVEMENT_FLAG_DEFAULT_MOVING,            0x04
 		struct_const MOVEMENT_FLAG_HOP_OR_LEAP,               0x08
@@ -94,7 +95,7 @@
 	u32 Unk_54 // loc=0x54
 	u32 Unk_58 // loc=0x58
 	ptr UnkNPCScriptPtr_5c // loc=0x5c
-	u32 UnkFlags_60 // loc=0x60
+	flags32 UnkFlags_60 // loc=0x60
 		struct_const OW_NPC_UNK_FLAGS_60_DISABLE_INTERACTION, 0x1
 		struct_const OW_NPC_UNK_FLAGS_60_FACE_PLAYER_WHEN_INTERACTED, 0x2
 		struct_const OW_NPC_UNK_FLAGS_60_DISABLE_COLLISION, 0x4

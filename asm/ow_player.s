@@ -49,9 +49,8 @@ sub_809D19C:
 	push {lr}
 	movflag EVENT_1716
 	bl ClearEventFlagFromImmediate
-	mov r0, #0xb
-	mov r1, #0xe4
-	bl TestEventFlagFromImmediate
+	movflag EVENT_BE4
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809D1D2
 	bl GetCurPETNavi // () -> u8
 	mov r1, #0x35 
@@ -61,7 +60,7 @@ sub_809D19C:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r0, [r7,#oGameState_MapGroup]
-	mov r1, #0x80
+	mov r1, #INTERNET_MAP_GROUP_START
 	cmp r0, r1
 	blt loc_809D1D2
 	movflag EVENT_1716
@@ -84,7 +83,7 @@ loc_809D1EE:
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_GameStatePtr]
 	ldrb r0, [r6,#oGameState_MapGroup]
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	blt loc_809D222
 	bl sprite_makeScalable
 	ldrb r0, [r7,#oS2000aa0_OWPlayerNaviRotation] // (byte_2000AA2 - 0x2000aa0)
@@ -110,7 +109,7 @@ loc_809D222:
 	bl sprite_zeroColorShader
 	mov r0, #oOWPlayerObject_Coords
 	add r0, r0, r5
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	cmp r0, #0x3c 
 	bne loc_809D238
 	ldr r0, dword_809D344 // =0xa108 
@@ -120,7 +119,7 @@ loc_809D238:
 	ldrb r0, [r7,#oS2000aa0_OWPlayerNaviPaletteIndex] // (byte_2000AA5 - 0x2000aa0)
 	bl sprite_setPalette // (int pallete) -> void
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D252
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -157,7 +156,7 @@ sub_809D270:
 	bge .inInternetMap
 	mov r4, #0x37 
 	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .inInternetMap
 	mov r4, #0
 	mov r6, #0x18
@@ -194,7 +193,7 @@ sub_809D270:
 	// size
 	mov r1, #0x20 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	mov r0, #1
+	mov r0, #TRUE
 	strb r0, [r5,#oOWPlayerObject_InteractionLocked]
 	strb r0, [r5,#oOWPlayerObject_wallCollision_0c]
 	mov r0, #0
@@ -270,14 +269,14 @@ sub_809D348:
 	bl sub_809E3D6
 	mov r0, #oOWPlayerObject_Coords
 	add r0, r0, r5
-	bl sub_8030B6A
+	bl checkCollision_8030b6a
 	tst r0, r0
 	beq loc_809D3BC
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D3BC
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D3A8
 	movflag EVENT_173F
 	bl SetEventFlagFromImmediate
@@ -295,24 +294,22 @@ loc_809D3BC:
 	ldrb r0, [r5,#oOWPlayerObject_InteractionLocked]
 	tst r0, r0
 	beq loc_809D3E6
-	mov r0, #0xb
-	mov r1, #0xe4
-	bl TestEventFlagFromImmediate
+	movflag EVENT_BE4
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809D3E6
 	mov r0, #oOWPlayerObject_Coords
 	add r0, r0, r5
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	lsl r0, r0, #0x10
 	str r0, [r5,#oOWPlayerObject_Z]
 loc_809D3E6:
 	movflag EVENT_1718
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D3FC
 	movflag EVENT_1718
 	bl ClearEventFlagFromImmediate
 	bl owPlayer_809E0C8
-	.balign 4, 0
-loc_809D3FC: .align 1, 0
+loc_809D3FC:
 	ldrb r0, [r5,#oOWPlayerObject_LayerIndexOverride]
 	tst r0, r0
 	bne loc_809D40A
@@ -497,7 +494,7 @@ loc_809D572:
 	ldr r7, off_809D5AC // =off_809D5B0 
 	push {r0,r1,r3-r5}
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D584
 	ldr r7, off_809D5B8 // =off_809D5BC 
 loc_809D584:
@@ -539,7 +536,7 @@ sub_809D5C4:
 	beq loc_809D60C
 	mov r0, #0x1c
 	add r0, r0, r5
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	mov r2, #0
 	mov r3, #1
 	cmp r1, #1
@@ -548,7 +545,7 @@ sub_809D5C4:
 	mov r3, #2
 	push {r3}
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	pop {r3}
 	beq loc_809D5F4
 	mov r2, #0
@@ -580,10 +577,10 @@ loc_809D60C:
 sub_809D61A:
 	push {lr}
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D630
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809D646
 loc_809D630:
 	bl sub_809D9E0
@@ -666,13 +663,13 @@ sub_809D6BC:
 	ldr r7, off_809D718 // =off_809D71C 
 	push {r0,r1,r3-r5}
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq .loc_809D6F4
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .loc_809D6F2
 	movflag EVENT_173F
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .loc_809D6F4
 .loc_809D6F2:
 	ldr r7, off_809D724 // =off_809D728 
@@ -805,7 +802,7 @@ locret_809D7D6:
 sub_809D7D8:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_809D7F6
 loc_809D7E2:
 	mov r7, r10
@@ -873,7 +870,7 @@ loc_809D844:
 	bl sub_809E3D6
 	mov r0, #0x1c
 	add r0, r0, r5
-	bl sub_8030B6A
+	bl checkCollision_8030b6a
 loc_809D856:
 	ldr r7, off_809D8AC // =eStruct200ace0 
 	ldr r0, [r5,#oOWPlayerObject_X]
@@ -887,13 +884,12 @@ loc_809D856:
 	ldrb r0, [r5,#oOWPlayerObject_InteractionLocked]
 	tst r0, r0
 	beq loc_809D886
-	mov r0, #0xb
-	mov r1, #0xe4
-	bl TestEventFlagFromImmediate
+	movflag EVENT_BE4
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809D886
 	mov r0, #0x1c
 	add r0, r0, r5
-	bl sub_8031612
+	bl checkZCoordModifiers_8031612
 	lsl r0, r0, #0x10
 	str r0, [r5,#oOWPlayerObject_Z]
 loc_809D886:
@@ -932,7 +928,7 @@ sub_809D8CC:
 	strb r0, [r5,#0xa]
 loc_809D8DE:
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_809D8F0
 	mov r0, #0
 	strb r0, [r5,#9]
@@ -1043,7 +1039,7 @@ sub_809D9A0:
 	push {lr}
 	mov r0, r5
 	add r0, #0x1c
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	cmp r0, #0x4c 
 	blt loc_809D9C4
 	cmp r0, #0x4f 
@@ -1085,11 +1081,11 @@ sub_809D9E0:
 	beq loc_809DA94
 	push {r0}
 	movflag EVENT_PLAYER_CAN_MOVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	pop {r0}
 	beq loc_809DA82
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809DA94
 	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_809DA94
@@ -1124,7 +1120,7 @@ sub_809D9E0:
 	add r0, r0, r1
 	str r0, [r6,#8]
 	mov r0, r6
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	mov r2, r0
 	strb r2, [r5,#oOWPlayerObject_Unk_0d]
 	mov r7, r10
@@ -1227,13 +1223,13 @@ sub_809DB02:
 	tst r0, r0
 	beq loc_809DB4A
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809DB4A
 	movflag EVENT_173F
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809DB4A
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809DB4A
 	movflag EVENT_173D
 	bl SetEventFlagFromImmediate
@@ -1253,7 +1249,7 @@ loc_809DB4A:
 sub_809DB50:
 	push {lr}
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne locret_809DB5E
 	mov r0, #0
 locret_809DB5E:
@@ -1268,7 +1264,7 @@ sub_809DB60:
 	add r1, r1, r5
 	bl sub_809DBC4
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809DB82
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
@@ -1554,10 +1550,10 @@ dword_809DDEC: .word 0xC00000
 sub_809DDF0:
 	push {lr}
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_809DE2A
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_809DE2A
 	ldr r1, [r5,#oOWPlayerObject_Unk_50]
 	ldr r2, dword_809DE2C // =0xc00000 
@@ -1580,10 +1576,10 @@ dword_809DE2C: .word 0xC00000
 sub_809DE30:
 	push {lr}
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_809DE5E
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809DE4E
 	movflag EVENT_173F
 	bl SetEventFlagFromImmediate
@@ -1630,7 +1626,7 @@ off_809DE90: .word byte_809CFBC
 sub_809DE98:
 	push {lr}
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809DEBE
 	movflag EVENT_173D
 	bl ClearEventFlagFromImmediate
@@ -1882,9 +1878,9 @@ spawnOWPlayerObjectForEnterMap_809e064:
 	str r1, [r5,#oOWPlayerObject_X]
 	ldr r1, [r6,#oGameState_PlayerY]
 	str r1, [r5,#oOWPlayerObject_Y]
-	ldr r1, [r6,#oGameState_Unk_2c]
+	ldr r1, [r6,#oGameState_PlayerZ]
 	str r1, [r5,#oOWPlayerObject_Z]
-	ldr r1, [r6,#oGameState_facingDirectionAfterWarp_30]
+	ldr r1, [r6,#oGameState_FacingDirectionAfterWarp]
 	strb r1, [r5,#oOWPlayerObject_FacingDirection]
 locret_809E088:
 	pop {r4,r6,r7,pc}
@@ -1954,7 +1950,7 @@ owPlayer_809E0C8:
 	str r0, [r3,#oS200ace0_PlayerZ] // (dword_200ACF0 - 0x200ace0)
 	push {r3}
 	movflag EVENT_1719
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	pop {r3}
 	bne locret_809E0FA
 	mov r2, r10
@@ -2213,56 +2209,58 @@ owPlayer_disableWallCollision_809e254:
 	mov pc, lr
 	thumb_func_end owPlayer_disableWallCollision_809e254
 
-	thumb_func_start owPlayer_writeLayerIndexOverride_809e260
-owPlayer_writeLayerIndexOverride_809e260:
+	thumb_func_start WriteOWPlayerLayerIndexOverride
+WriteOWPlayerLayerIndexOverride:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	strb r0, [r3,#oOWPlayerObject_LayerIndexOverride]
 	mov pc, lr
-	thumb_func_end owPlayer_writeLayerIndexOverride_809e260
+	thumb_func_end WriteOWPlayerLayerIndexOverride
 
-	thumb_func_start owPlayer_clearLayerIndexOverride_809e26a
-owPlayer_clearLayerIndexOverride_809e26a:
+	thumb_func_start ClearOWPlayerLayerIndexOverride
+ClearOWPlayerLayerIndexOverride:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #0
 	strb r0, [r3,#oOWPlayerObject_LayerIndexOverride]
 	mov pc, lr
-	thumb_func_end owPlayer_clearLayerIndexOverride_809e26a
+	thumb_func_end ClearOWPlayerLayerIndexOverride
 
-	thumb_func_start owPlayer_call_sprite_noShadow_809e276
-owPlayer_call_sprite_noShadow_809e276:
+	thumb_func_start GiveOWPlayerAttachedShadow
+GiveOWPlayerAttachedShadow:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sprite_noShadow // () -> void
 	pop {r5,pc}
-	thumb_func_end owPlayer_call_sprite_noShadow_809e276
+	thumb_func_end GiveOWPlayerAttachedShadow
 
-	thumb_func_start owPlayer_call_sprite_hasShadow_809e284
-owPlayer_call_sprite_hasShadow_809e284:
+	thumb_func_start GiveOWPlayerDetatchedShadow
+GiveOWPlayerDetatchedShadow:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sprite_hasShadow
 	pop {r5,pc}
-	thumb_func_end owPlayer_call_sprite_hasShadow_809e284
+	thumb_func_end GiveOWPlayerDetatchedShadow
 
-	thumb_func_start owPlayer_removeShadow_809e292
-owPlayer_removeShadow_809e292:
+	thumb_func_start RemoveOWPlayerShadow
+RemoveOWPlayerShadow:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sprite_removeShadow
 	pop {r5,pc}
-	thumb_func_end owPlayer_removeShadow_809e292
+	thumb_func_end RemoveOWPlayerShadow
 
 	thumb_func_start owPlayer_setPalette_809e2a0
+// possibly broken? directly writing to the palette var does nothing
+// as the game calls sprite_setPalette within the ow player's loop anyway
 owPlayer_setPalette_809e2a0:
 	push {r5,lr}
 	mov r5, r10
@@ -2404,11 +2402,9 @@ sub_809E31A:
 	bl sprite_update
 	mov r0, #0
 	bl sub_8001172
-	mov r0, #6
-	mov r1, #0x8e
+	movflag EVENT_68E
 	bl SetEventFlagFromImmediate
-	mov r0, #6
-	mov r1, #0x8f
+	movflag EVENT_68F
 	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E31A
@@ -2434,11 +2430,9 @@ sub_809E35E:
 	bl sprite_update
 	mov r0, #0x54
 	bl sub_8001172
-	mov r0, #6
-	mov r1, #0x8e
+	movflag EVENT_68E
 	bl ClearEventFlagFromImmediate
-	mov r0, #6
-	mov r1, #0x8f
+	movflag EVENT_68F
 	bl SetEventFlagFromImmediate
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E35E
@@ -2549,8 +2543,8 @@ getOWPlayerSpriteFrameParameters_809E434:
 	pop {r5,pc}
 	thumb_func_end getOWPlayerSpriteFrameParameters_809E434
 
-	thumb_func_start owPlayer_makeVisible_809e442
-owPlayer_makeVisible_809e442:
+	thumb_func_start MakeOWPlayerVisible
+MakeOWPlayerVisible:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
@@ -2559,10 +2553,10 @@ owPlayer_makeVisible_809e442:
 	orr r0, r1
 	strb r0, [r3,#oOWPlayerObject_Flags]
 	mov pc, lr
-	thumb_func_end owPlayer_makeVisible_809e442
+	thumb_func_end MakeOWPlayerVisible
 
-	thumb_func_start owPlayer_makeInvisible_809e452
-owPlayer_makeInvisible_809e452:
+	thumb_func_start MakeOWPlayerInvisible
+MakeOWPlayerInvisible:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
@@ -2571,7 +2565,7 @@ owPlayer_makeInvisible_809e452:
 	bic r0, r1
 	strb r0, [r3]
 	mov pc, lr
-	thumb_func_end owPlayer_makeInvisible_809e452
+	thumb_func_end MakeOWPlayerInvisible
 
 	thumb_func_start sub_809E462
 sub_809E462:
@@ -2590,7 +2584,7 @@ sub_809E46E:
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldr r0, [r7,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #0x1c
-	bl sub_8031A7A
+	bl checkCoordinateTrigger_8031a7a
 	cmp r0, #0x48 
 	blt locret_809E494
 	cmp r0, #0x4f 
@@ -2624,15 +2618,15 @@ owPlayer_setAlpha_8002c7a_809e4a0:
 	pop {r5,pc}
 	thumb_func_end owPlayer_setAlpha_8002c7a_809e4a0
 
-	thumb_func_start owPlayer_809E4AE
-owPlayer_809E4AE:
+	thumb_func_start DisableOWPlayerAlpha
+DisableOWPlayerAlpha:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sprite_disableAlpha
 	pop {r5,pc}
-	thumb_func_end owPlayer_809E4AE
+	thumb_func_end DisableOWPlayerAlpha
 
 	thumb_func_start owPlayer_toggleUsingCopybot_809e4bc
 owPlayer_toggleUsingCopybot_809e4bc:
@@ -2644,7 +2638,7 @@ owPlayer_toggleUsingCopybot_809e4bc:
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	mov r4, #0x37 
 	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809E4DA
 	mov r4, #0
 loc_809E4DA:

@@ -1,5 +1,5 @@
 // 0x807544c
-unsigned int sub_807544C()
+unsigned int SeasideArea_EnterMapGroup()
 {
     int v0; // r5
     int v1; // r10
@@ -9,29 +9,29 @@ unsigned int sub_807544C()
     int v5; // r3
 
     *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_8074F30 + *(v0 + 5));
-    sub_8075530();
-    sub_803037C(*(v0 + 4), *(v0 + 5));
+    SeasideArea_LoadBGAnim();
+    initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
     decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
-    sub_8030472();
-    sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
+    decompAndCopyMapTiles_8030472();
+    initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(*(&off_80754B0 + *(v0 + 5)));
-    chatbox_uncompBasedOnMap_803FD08();
-    sub_80755EE();
+    chatbox_uncompMapTextArchives_803FD08();
+    SeasideArea_SpawnMapObjectsForMap();
     return sub_8034FB8();
 }
 
 
 // 0x80754e2
-int __fastcall sub_80754E2(int a1, int a2)
+int __fastcall SeasideArea_LoadGFXAnims(int a1, int a2)
 {
     return LoadGFXAnims(off_80754F4[a2]);
 }
 
 
 // 0x8075530
-void sub_8075530()
+void SeasideArea_LoadBGAnim()
 {
     int v0; // r10
     int v1; // r5
@@ -48,7 +48,7 @@ void sub_8075530()
 
 
 // 0x80755c4
-int sub_80755C4()
+int SeasideArea_UnkFunction_80755c4()
 {
     int v0; // r10
 
@@ -78,7 +78,7 @@ void nullsub_76()
 
 
 // 0x80755ee
-int sub_80755EE()
+int SeasideArea_SpawnMapObjectsForMap()
 {
     int v0; // r10
 

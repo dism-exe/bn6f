@@ -955,7 +955,7 @@ void sub_8000DE0()
 
 
 // 0x8000e10
-void __cdecl sub_8000E10()
+void __cdecl CapIncrementGameTimeFrames()
 {
     Toolkit *tk; // r10
     _DWORD *v1; // r3
@@ -1293,7 +1293,7 @@ int __fastcall sub_80010A4(int result, int a2, int a3, int a4)
     v6[oGameState_Unk_13] = a2;
     v6[oGameState_Unk_14] = a3;
     v6[oGameState_Unk_15] = a4;
-    v6[oGameState_Unk_16] = v4;
+    v6[oGameState_EnterMapFadeParam1] = v4;
     return result;
 }
 

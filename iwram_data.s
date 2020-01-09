@@ -41,7 +41,8 @@ off_3000EA4:: // 0x3000ea4
 	.space 4
 byte_3000EA8:: // 0x3000ea8
 	.space 680
-byte_3001150:: // 0x3001150
+iObjectAttr3001150:: // 0x3001150
+	// type: struct{u32 unk0, u16 unk1, u8 unk2, u8 unk3} [128]
 	.space 1024
 byte_3001550:: // 0x3001550
 	.space 28
@@ -140,17 +141,8 @@ iPalette3001C80:: // 0x3001c80
 dword_3001D60:: // 0x3001d60
 	.space 16
 iObjectAttr3001D70:: // 0x3001d70
-	.space 4
-word_3001D74:: // 0x3001d74
-	.space 2
-word_3001D76:: // 0x3001d76
-	.space 8
-word_3001D7E:: // 0x3001d7e
-	.space 8
-word_3001D86:: // 0x3001d86
-	.space 8
-word_3001D8E:: // 0x3001d8e
-	.space 994
+	// type: struct{u32 unk0, u16 unk1, u8 unk2, u8 unk3} [128]
+	.space 128*8
 unk_3002170:: // 0x3002170
 	.space 16
 dword_3002180:: // 0x3002180
@@ -169,17 +161,16 @@ unk_3002400:: // 0x3002400
 	.space 384
 unk_3002580:: // 0x3002580
 	.space 16
-dword_3002590:: // 0x3002590
-	.space 4
-dword_3002594:: // 0x3002594
-	.space 28
+tupleArr_3002590:: // 0x3002590
+	// type: struct{u8 *p0, int len} [4]
+	.space 4*8
 unk_30025B0:: // 0x30025b0
 	.space 16
-// u16[32][32][4]
 // array of 32x32 blocks of u16 tile ids
 // 0x2000 is cleared and recopied every frame
 iBGTileIdBlocks:: // 0x30025c0
-	.space 2*32*32*4
+	// type: u16[32][32][4]
+	.space 4*2*32*32
 byte_30045C0:: // 0x30045c0
 	.space 2688
 byte_3005040:: // 0x3005040

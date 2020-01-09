@@ -45,7 +45,7 @@ int RunLMessageTextScript()
     v2 = getPETNaviSelect();
     if ( GetNaviStatsByte(v2, 37) == 1 )
     {
-        v3 = uncomp_8037AEC(-2005693660);
+        v3 = DecompressTextArchiveForCutscene2(-2005693660);
         chatbox_runScript(v3, 0);
     }
     else
@@ -54,11 +54,11 @@ int RunLMessageTextScript()
         if ( GetNaviStatsByte(v4, 95) != 1 )
         {
 LABEL_12:
-            chatbox_uncomp_803FD3C();
+            chatbox_uncompMapTextArchives_803FD3C();
             chatbox_runTrainScript(tk->gamestate->scriptOffIdx_LMsg_15);
             return 0;
         }
-        v5 = uncomp_8037AEC(-2005687000);
+        v5 = DecompressTextArchiveForCutscene2(-2005687000);
         chatbox_runScript(v5, 0);
     }
     return 0;
@@ -183,10 +183,10 @@ signed int sub_809A078()
     int v9; // r2
     int v10; // r2
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( !v2 )
     {
-        chatbox_check_eFlags2009F38(8);
+        chatbox_mask_eFlags2009F38(8);
         if ( v2 )
         {
             sub_809A360(*(v0 + 116));
@@ -232,8 +232,8 @@ signed int sub_809A104()
     int v2; // r0
     signed int result; // r0
 
-    chatbox_check_eFlags2009F38(8);
-    if ( v1 && (chatbox_check_eFlags2009F38(128), !v1) || (v2 = *(v0 + 116) + 2, *(v0 + 116) = v2, v2 < 32) )
+    chatbox_mask_eFlags2009F38(8);
+    if ( v1 && (chatbox_mask_eFlags2009F38(128), !v1) || (v2 = *(v0 + 116) + 2, *(v0 + 116) = v2, v2 < 32) )
     {
         sub_809A360(*(v0 + 116));
         result = 1;
@@ -335,7 +335,7 @@ signed int sub_809A1FC()
     sub_8119854(v1 - 48, 88, 0);
     sub_80465BC();
     sub_80465F8();
-    chatbox_check_eFlags2009F38(8);
+    chatbox_mask_eFlags2009F38(8);
     if ( v2 )
     {
         sub_809A360(*(v0 + 116));
@@ -462,7 +462,7 @@ signed int sub_809A404()
     char v1; // zf
 
     sub_809A80C(*(v0 + 116));
-    chatbox_check_eFlags2009F38(8);
+    chatbox_mask_eFlags2009F38(8);
     if ( v1 )
         return 1;
     if ( chatbox_8045F4C() )
@@ -506,7 +506,7 @@ signed int sub_809A44C()
             return 0;
         }
     }
-    chatbox_check_eFlags2009F38(8);
+    chatbox_mask_eFlags2009F38(8);
     if ( !v3 )
     {
         *(v0 + 136) = *(*(v1 + oToolkit_ChatboxPtr) + 76);
@@ -527,8 +527,8 @@ signed int sub_809A4B8()
     int v2; // r0
     signed int result; // r0
 
-    chatbox_check_eFlags2009F38(8);
-    if ( v1 && (chatbox_check_eFlags2009F38(128), !v1) || (v2 = *(v0 + 116) + 2, *(v0 + 116) = v2, v2 < 32) )
+    chatbox_mask_eFlags2009F38(8);
+    if ( v1 && (chatbox_mask_eFlags2009F38(128), !v1) || (v2 = *(v0 + 116) + 2, *(v0 + 116) = v2, v2 < 32) )
     {
         sub_809A80C(*(v0 + 116));
         result = 1;
@@ -579,10 +579,10 @@ signed int sub_809A520()
     __int16 v12; // r0
 
     sub_809A80C(*(v0 + 116));
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( _ZF )
         return 1;
-    chatbox_check_eFlags2009F38(32);
+    chatbox_mask_eFlags2009F38(32);
     if ( _ZF )
         return 1;
     if ( chatbox_8045F4C() )
@@ -742,7 +742,7 @@ signed int sub_809A6EC()
     sub_8119854(v1 - 48, 88, 0);
     sub_80465BC();
     sub_80465F8();
-    chatbox_check_eFlags2009F38(8);
+    chatbox_mask_eFlags2009F38(8);
     if ( v2 )
     {
         sub_809A80C(*(v0 + 116));
@@ -792,7 +792,7 @@ signed int sub_809A784()
     int v2; // r0
     signed int result; // r0
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 && (v2 = *(v0 + 116) + 2, *(v0 + 116) = v2, v2 >= 32) )
     {
         *(v0 + 116) = 32;
@@ -828,7 +828,7 @@ LABEL_8:
         sub_809A80C(*(v0 + 116));
         return 1;
     }
-    chatbox_check_eFlags2009F38(32);
+    chatbox_mask_eFlags2009F38(32);
     if ( v4 )
         goto LABEL_8;
     if ( chatbox_8045F4C() )
@@ -986,7 +986,7 @@ signed int sub_809A9CC()
     sub_8119854(v1 - 48, 88, 0);
     sub_80465BC();
     sub_80465F8();
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v2 )
         result = 0;
     else
@@ -1034,7 +1034,7 @@ signed int sub_809AADC()
     char v1; // zf
     signed int result; // r0
 
-    chatbox_check_eFlags2009F38(8);
+    chatbox_mask_eFlags2009F38(8);
     if ( v1 )
         return 1;
     if ( chatbox_8045F4C() )
@@ -1090,7 +1090,7 @@ signed int sub_809AB20()
             return 0;
         }
     }
-    chatbox_check_eFlags2009F38(8);
+    chatbox_mask_eFlags2009F38(8);
     if ( !v4 )
     {
         CopyWords(*(v2 + oToolkit_ChatboxPtr) + 76, &v15, 8u);
@@ -1270,7 +1270,7 @@ signed int sub_809AD0C()
     sub_80465BC();
     sub_80465F8();
     v3 = 1;
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
         v3 = 0;
     return v3;
@@ -1371,7 +1371,7 @@ int sub_809B00C()
     signed __int16 v4; // r0
 
     v2 = *(v1 + oToolkit_GameStatePtr);
-    *(v0 + 4) = *(&dword_809B050 + sub_8031A7A(*(v2 + oGameState_OverworldPlayerObjectPtr) + 28) - 192);
+    *(v0 + 4) = *(&dword_809B050 + checkCoordinateTrigger_8031a7a(*(v2 + oGameState_OverworldPlayerObjectPtr) + 28) - 192);
     *(v0 + 5) = 26;
     v3 = 2;
     if ( *(*(v2 + oGameState_OverworldPlayerObjectPtr) + 36) >> 16 < 60 )
@@ -1498,7 +1498,7 @@ int sub_809B130()
     int v5; // r3
     char v6; // zf
 
-    v1 = sub_8031A7A(*(*(v0 + 60) + 24) + 28);
+    v1 = checkCoordinateTrigger_8031a7a(*(*(v0 + 60) + 24) + 28);
     v2 = __OFSUB__(v1, 192);
     v3 = v1 - 192;
     if ( !((v3 < 0) ^ v2) && v3 <= 15 )
@@ -1858,8 +1858,8 @@ int sub_809BFE8()
     v4 = v2[18];
     if ( v4 != 255 )
     {
-        *(v3 + oGameState_Unk_16) = v4;
-        *(v3 + oGameState_Unk_17) = 16;
+        *(v3 + oGameState_EnterMapFadeParam1) = v4;
+        *(v3 + oGameState_EnterMapFadeParam2) = 16;
     }
     return 0;
 }
@@ -2151,10 +2151,10 @@ signed int sub_809CB88()
     char v1; // zf
     signed int result; // r0
 
-    chatbox_check_eFlags2009F38(8);
+    chatbox_mask_eFlags2009F38(8);
     if ( !v1 )
     {
-        chatbox_check_eFlags2009F38(256);
+        chatbox_mask_eFlags2009F38(256);
         if ( !v1 )
         {
             chatbox_runScript(&eTextScript2033404, 32);
@@ -2244,7 +2244,7 @@ signed int sub_809CC60()
     sub_809CE14();
     if ( v2 )
     {
-        chatbox_check_eFlags2009F38(8);
+        chatbox_mask_eFlags2009F38(8);
         if ( v2 )
         {
 LABEL_12:
@@ -2490,7 +2490,7 @@ void sub_809D19C()
             goto LABEL_17;
     }
     sprite_zeroColorShader();
-    if ( sub_8031A7A(&v0->unk_1C) == 60 )
+    if ( checkCoordinateTrigger_8031a7a(&v0->unk_1C) == 60 )
     {
         v5 = 41224;
 LABEL_17:
@@ -2593,7 +2593,7 @@ unsigned int sub_809D348()
     if ( *(v0 + 12) )
     {
         sub_809E3D6();
-        if ( sub_8030B6A(v0 + 28) )
+        if ( checkCollision_8030b6a(v0 + 28) )
         {
             TestEventFlagFromImmediate(23, 22);
             if ( !v4 )
@@ -2616,7 +2616,7 @@ unsigned int sub_809D348()
         {
             TestEventFlagFromImmediate(11, 228);
             if ( v4 )
-                *(v0 + 36) = sub_8031612(v0 + 28) << 16;
+                *(v0 + 36) = checkZCoordModifiers_8031612(v0 + 28) << 16;
         }
     }
     TestEventFlagFromImmediate(23, 24);
@@ -2776,7 +2776,7 @@ int sub_809D5C4()
 
     if ( sub_809DDCC() )
     {
-        sub_8031612(v0 + 28);
+        checkZCoordModifiers_8031612(v0 + 28);
         v1 = 0;
         v2 = 1;
         if ( v3 == 1 )
@@ -3012,7 +3012,7 @@ int sub_809D800()
     if ( *(v0 + 12) )
     {
         sub_809E3D6();
-        sub_8030B6A(v0 + 28);
+        checkCollision_8030b6a(v0 + 28);
     }
     dword_200ACE8 = *(v0 + 28);
     dword_200ACEC = *(v0 + 32);
@@ -3024,7 +3024,7 @@ int sub_809D800()
         {
             TestEventFlagFromImmediate(11, 228);
             if ( v4 )
-                *(v0 + 36) = sub_8031612(v0 + 28) << 16;
+                *(v0 + 36) = checkZCoordModifiers_8031612(v0 + 28) << 16;
         }
     }
     v5 = *(v0 + 22);
@@ -3047,7 +3047,7 @@ int sub_809D8CC()
         v0[20] = 4;
         v0[10] = 4;
     }
-    result = chatbox_check_eFlags2009F38(128);
+    result = chatbox_mask_eFlags2009F38(128);
     if ( v2 )
     {
         v0[9] = 0;
@@ -3135,7 +3135,7 @@ int sub_809D9A0()
     signed int v1; // r0
     int result; // r0
 
-    v1 = sub_8031A7A(v0 + 28);
+    v1 = checkCoordinateTrigger_8031a7a(v0 + 28);
     if ( v1 < 76 || v1 > 79 )
     {
         ClearEventFlagFromImmediate(23, 23);
@@ -3202,7 +3202,7 @@ int sub_809D9E0()
                             v12 = *(v0 + 28) + *v9;
                             v13 = *(v0 + 32) + *&(*v9)[4];
                             v14 = *(v0 + 36) + *&(*v9)[8];
-                            *(v0 + 13) = sub_8031A7A(&v12);
+                            *(v0 + 13) = checkCoordinateTrigger_8031a7a(&v12);
                             *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_11) = 1;
                             result = 0;
                             v6 = v8;
@@ -3955,7 +3955,7 @@ int __fastcall sub_809E260(int result)
 
 
 // 0x809e26a
-int owPlayer_clearLayerIndexOverride_809e26a()
+int ClearOWPlayerLayerIndexOverride()
 {
     int v0; // r10
     int result; // r0
@@ -3967,7 +3967,7 @@ int owPlayer_clearLayerIndexOverride_809e26a()
 
 
 // 0x809e276
-int owPlayer_call_sprite_noShadow_809e276()
+int GiveOWPlayerAttachedShadow()
 {
     int v0; // r10
 
@@ -3976,7 +3976,7 @@ int owPlayer_call_sprite_noShadow_809e276()
 
 
 // 0x809e284
-int owPlayer_call_sprite_hasShadow_809e284()
+int GiveOWPlayerDetatchedShadow()
 {
     int v0; // r10
     int v1; // r5
@@ -3987,7 +3987,7 @@ int owPlayer_call_sprite_hasShadow_809e284()
 
 
 // 0x809e292
-int owPlayer_removeShadow_809e292()
+int RemoveOWPlayerShadow()
 {
     int v0; // r10
     int v1; // r5
@@ -4260,7 +4260,7 @@ int sub_809E434()
 
 
 // 0x809e442
-int owPlayer_makeVisible_809e442()
+int MakeOWPlayerVisible()
 {
     int v0; // r10
     _BYTE *v1; // r3
@@ -4274,7 +4274,7 @@ int owPlayer_makeVisible_809e442()
 
 
 // 0x809e452
-int owPlayer_makeInvisible_809e452()
+int MakeOWPlayerInvisible()
 {
     int v0; // r10
     _BYTE *v1; // r3
@@ -4304,7 +4304,7 @@ signed int sub_809E46E()
     signed int result; // r0
 
     v1 = *(v0 + oToolkit_GameStatePtr);
-    result = sub_8031A7A(*(v1 + oGameState_OverworldPlayerObjectPtr) + 28);
+    result = checkCoordinateTrigger_8031a7a(*(v1 + oGameState_OverworldPlayerObjectPtr) + 28);
     if ( result >= 72 && result <= 79 )
     {
         *(*(v1 + oGameState_OverworldPlayerObjectPtr) + 100) = result - 72;
@@ -4334,7 +4334,7 @@ signed int __fastcall sub_809E4A0(char a1)
 
 
 // 0x809e4ae
-signed int owPlayer_809E4AE()
+signed int DisableOWPlayerAlpha()
 {
     int v0; // r10
     int v1; // r5

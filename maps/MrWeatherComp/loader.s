@@ -1,5 +1,6 @@
-	thumb_func_start sub_8069FE8
-sub_8069FE8:
+
+	thumb_func_start MrWeatherComp_EnterMapGroup
+MrWeatherComp_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_806A040 // =off_80698DC 
@@ -8,30 +9,30 @@ sub_8069FE8:
 	lsl r4, r2, #2
 	add r0, r0, r4
 	ldr r0, [r0]
-	str r0, [r1,#oWarp2011bb0_Ptr_14]
-	bl sub_806A120
+	str r0, [r1,#oWarp2011bb0_WarpDataPtr]
+	bl MrWeatherComp_LoadBGAnim
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl sub_803037C
+	bl initMapTilesState_803037c
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl decompressCoordEventData_8030aa4
 	ldr r0, [r5,#oGameState_PlayerX]
 	ldr r1, [r5,#oGameState_PlayerY]
-	ldr r2, [r5,#oGameState_Unk_2c]
+	ldr r2, [r5,#oGameState_PlayerZ]
 	ldrb r3, [r5,#oGameState_MapGroup]
 	ldrb r4, [r5,#oGameState_MapNumber]
 	bl camera_802FF4C
-	bl sub_8030472
+	bl decompAndCopyMapTiles_8030472
 	ldr r0, off_806A044 // =unk_2037800 
-	bl sub_80028D4
+	bl initUncompSpriteState_80028d4
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, off_806A048 // =off_806A04C 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_806A1DE
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
+	bl MrWeatherComp_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -44,10 +45,10 @@ off_806A04C: .word byte_806A058
 byte_806A058: .byte 0x1C, 0x6B, 0x1C, 0x6C, 0x1C, 0x20, 0xFF, 0xFF
 byte_806A060: .byte 0x1C, 0x6B, 0x1C, 0x6C, 0x1C, 0x20, 0xFF, 0xFF
 byte_806A068: .byte 0x1C, 0x6B, 0x1C, 0x6C, 0x1C, 0x20, 0xFF, 0xFF
-	thumb_func_end sub_8069FE8
+	thumb_func_end MrWeatherComp_EnterMapGroup
 
-	thumb_func_start sub_806A070
-sub_806A070:
+	thumb_func_start MrWeatherComp_LoadGFXAnims
+MrWeatherComp_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_806A080 // =off_806A084 
@@ -95,10 +96,10 @@ off_806A0F0: .word off_8069928
 	.word off_8069F80
 	.word off_8069FA0
 	.word 0xFFFFFFFF
-	thumb_func_end sub_806A070
+	thumb_func_end MrWeatherComp_LoadGFXAnims
 
-	thumb_func_start sub_806A120
-sub_806A120:
+	thumb_func_start MrWeatherComp_LoadBGAnim
+MrWeatherComp_LoadBGAnim:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -145,10 +146,10 @@ off_806A198: .word off_8613608
 	.word 0x0
 	.word 0x0
 	.word 0x0
-	thumb_func_end sub_806A120
+	thumb_func_end MrWeatherComp_LoadBGAnim
 
-	thumb_func_start sub_806A1B4
-sub_806A1B4:
+	thumb_func_start MrWeatherComp_UnkFunction_806a1b4
+MrWeatherComp_UnkFunction_806a1b4:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -163,7 +164,7 @@ off_806A1C8: .word off_806A1CC
 off_806A1CC: .word nullsub_67+1
 	.word nullsub_68+1
 	.word nullsub_69+1
-	thumb_func_end sub_806A1B4
+	thumb_func_end MrWeatherComp_UnkFunction_806a1b4
 
 	thumb_local_start
 nullsub_67:
@@ -180,8 +181,8 @@ nullsub_69:
 	mov pc, lr
 	thumb_func_end nullsub_69
 
-	thumb_func_start sub_806A1DE
-sub_806A1DE:
+	thumb_func_start MrWeatherComp_SpawnMapObjectsForMap
+MrWeatherComp_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -189,11 +190,11 @@ sub_806A1DE:
 	lsl r0, r0, #2
 	ldr r1, off_806A1F4 // =off_806A1F8 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_806A1F4: .word off_806A1F8
 off_806A1F8: .word byte_806A204
 	.word byte_806A21C
 	.word byte_806A234
-	thumb_func_end sub_806A1DE
+	thumb_func_end MrWeatherComp_SpawnMapObjectsForMap

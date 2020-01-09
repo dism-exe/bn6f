@@ -1,6 +1,7 @@
 // not done
 
 	.macro overworld_player_object_struct, label=oOWPlayerObject, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct OWPlayerObject
 	set_struct_label \struct_entry, \label
 	object_header_struct \label, \struct_entry, \set_struct_start_address
 	u8 Unk_04 // loc=0x4

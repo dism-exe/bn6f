@@ -1,7 +1,9 @@
 
 	.macro camera_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
 	\set_struct_start_address
+    // type: struct Camera
 	set_struct_label \struct_entry, \label
+
 	struct_org 0x2
 	u8 Unk_02 // loc=0x2
 	u8 Unk_03 // loc=0x3
@@ -27,6 +29,7 @@
 	u32 nextY_40 // loc=0x40
 	u32 nextZ_44 // loc=0x44
 	u32 Unk_48 // loc=0x48
+
 	struct_org 0x50
 	u0 Size // loc=0x50
 	restore_struct_label

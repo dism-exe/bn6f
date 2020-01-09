@@ -1,6 +1,6 @@
 
-	thumb_func_start sub_807544C
-sub_807544C:
+	thumb_func_start SeasideArea_EnterMapGroup
+SeasideArea_EnterMapGroup:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_80754A4 // =off_8074F30 
@@ -9,30 +9,30 @@ sub_807544C:
 	lsl r4, r2, #2
 	add r0, r0, r4
 	ldr r0, [r0]
-	str r0, [r1,#oWarp2011bb0_Ptr_14]
-	bl sub_8075530
+	str r0, [r1,#oWarp2011bb0_WarpDataPtr]
+	bl SeasideArea_LoadBGAnim
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl sub_803037C
+	bl initMapTilesState_803037c
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl decompressCoordEventData_8030aa4
 	ldr r0, [r5,#oGameState_PlayerX]
 	ldr r1, [r5,#oGameState_PlayerY]
-	ldr r2, [r5,#oGameState_Unk_2c]
+	ldr r2, [r5,#oGameState_PlayerZ]
 	ldrb r3, [r5,#oGameState_MapGroup]
 	ldrb r4, [r5,#oGameState_MapNumber]
 	bl camera_802FF4C
-	bl sub_8030472
+	bl decompAndCopyMapTiles_8030472
 	ldr r0, off_80754A8 // =unk_2037800 
-	bl sub_80028D4
+	bl initUncompSpriteState_80028d4
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, off_80754AC // =off_80754B0 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
-	bl sub_80755EE
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
+	bl SeasideArea_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -47,10 +47,10 @@ byte_80754BC: .byte 0x1C, 0x3E, 0x1C, 0x49, 0x1C, 0x4A, 0x1C, 0x4B, 0x1C
 byte_80754C8: .byte 0x1C, 0xE, 0x1C, 0x49, 0x1C, 0x4A, 0x1C, 0x4B, 0xFF
 	.byte 0xFF, 0x1C, 0x49, 0x1C, 0x4A, 0x1C, 0x4B, 0x1C, 0x38
 	.byte 0x1C, 0xE, 0x1C, 0x95, 0x1C, 0x25, 0xFF, 0xFF
-	thumb_func_end sub_807544C
+	thumb_func_end SeasideArea_EnterMapGroup
 
-	thumb_func_start sub_80754E2
-sub_80754E2:
+	thumb_func_start SeasideArea_LoadGFXAnims
+SeasideArea_LoadGFXAnims:
 	push {lr}
 	lsl r1, r1, #2
 	ldr r0, off_80754F0 // =off_80754F4 
@@ -74,10 +74,10 @@ off_8075520: .word byte_80753CC
 	.word byte_80753FC
 	.word off_807505C
 	.word 0xFFFFFFFF
-	thumb_func_end sub_80754E2
+	thumb_func_end SeasideArea_LoadGFXAnims
 
-	thumb_func_start sub_8075530
-sub_8075530:
+	thumb_func_start SeasideArea_LoadBGAnim
+SeasideArea_LoadBGAnim:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -115,10 +115,10 @@ off_80755A8: .word off_8617068
 	.byte 0x20, 0x80, 0x0, 0x6, 0x90, 0x71, 0x61, 0x8, 0x0, 0x18, 0x0
 	.byte 0x0, 0xC8, 0x85, 0x61, 0x8, 0x60, 0x19, 0x0, 0x3, 0x20, 0x0
 	.byte 0x0, 0x0
-	thumb_func_end sub_8075530
+	thumb_func_end SeasideArea_LoadBGAnim
 
-	thumb_func_start sub_80755C4
-sub_80755C4:
+	thumb_func_start SeasideArea_UnkFunction_80755c4
+SeasideArea_UnkFunction_80755c4:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -133,7 +133,7 @@ off_80755D8: .word off_80755DC
 off_80755DC: .word nullsub_74+1
 	.word nullsub_75+1
 	.word nullsub_76+1
-	thumb_func_end sub_80755C4
+	thumb_func_end SeasideArea_UnkFunction_80755c4
 
 	thumb_local_start
 nullsub_74:
@@ -150,8 +150,8 @@ nullsub_76:
 	mov pc, lr
 	thumb_func_end nullsub_76
 
-	thumb_func_start sub_80755EE
-sub_80755EE:
+	thumb_func_start SeasideArea_SpawnMapObjectsForMap
+SeasideArea_SpawnMapObjectsForMap:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -159,7 +159,7 @@ sub_80755EE:
 	lsl r0, r0, #2
 	ldr r1, off_8075604 // =off_8075608 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_8075604: .word off_8075608
@@ -168,4 +168,4 @@ off_8075608:
 	.word byte_8075614
 	.word byte_8075708
 	.word byte_807575C
-	thumb_func_end sub_80755EE
+	thumb_func_end SeasideArea_SpawnMapObjectsForMap
