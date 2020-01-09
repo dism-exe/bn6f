@@ -864,7 +864,7 @@ BOOL sub_8034C36()
                 sub_809E462();
                 if ( v0 )
                 {
-                    chatbox_check_eFlags2009F38(128);
+                    chatbox_mask_eFlags2009F38(128);
                     if ( v0 )
                     {
                         s_2011C50_ptr_1C_isNull();
@@ -895,7 +895,7 @@ BOOL sub_8034C6E()
             sub_809E462();
             if ( v0 )
             {
-                chatbox_check_eFlags2009F38(128);
+                chatbox_mask_eFlags2009F38(128);
                 if ( v0 )
                 {
                     s_2011C50_ptr_1C_isNull();
@@ -3324,7 +3324,7 @@ signed int __fastcall CutsceneCameraCmd_run_text_script(int a1, int a2)
 // 0x8037352
 signed int CutsceneCameraCmd_wait_chatbox()
 {
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     return 1;
 }
 
@@ -3575,11 +3575,11 @@ BOOL sub_8037790()
     BOOL result; // r0
 
     v1 = ReadMapScriptByte(1, v0);
-    chatbox_check_eFlags2009F38(v1 & 0x80);
+    chatbox_mask_eFlags2009F38(v1 & 0x80);
     result = 1;
     if ( !v2 )
     {
-        chatbox_check_eFlags2009F38(v1 & 0x38);
+        chatbox_mask_eFlags2009F38(v1 & 0x38);
         if ( v2 )
             result = 0;
     }
@@ -4002,7 +4002,7 @@ signed int __fastcall uncomp_8037AD0(signed int result)
 {
     if ( result < 0 )
     {
-        SWI_LZ77UnCompReadNormalWrite8bit(((2 * result) >> 1), &unk_2034A00);
+        SWI_LZ77UnCompReadNormalWrite8bit(((2 * result) >> 1), &eDecompressionBuf2034A00);
         result = eTextScript2034A04;
     }
     return result;
@@ -4010,11 +4010,11 @@ signed int __fastcall uncomp_8037AD0(signed int result)
 
 
 // 0x8037aec
-signed int __fastcall uncomp_8037AEC(signed int result)
+signed int __fastcall DecompressTextArchiveForCutscene2(signed int result)
 {
     if ( result < 0 )
     {
-        SWI_LZ77UnCompReadNormalWrite8bit(((2 * result) >> 1), &unk_2033400);
+        SWI_LZ77UnCompReadNormalWrite8bit(((2 * result) >> 1), &DecompressionBuf2033400);
         result = &eTextScript2033404;
     }
     return result;
@@ -5785,7 +5785,7 @@ int sub_8038F0C()
     {
         (loc_803D1AC)(result);
         clear_e200AD04();
-        sub_803E900();
+        init_eStartScreenAnimationControl200B1A0_2();
         result = SetRenderInfoLCDControl(&byte_40);
     }
     return result;
@@ -5951,7 +5951,7 @@ signed int cb_80395A4()
     char zf; // zf
 
     (*(&JumpTable80395C8 + byte_200A290))();
-    result = sub_800A7D0();
+    result = IsCurSubsystemInUse();
     if ( zf )
         result = sub_803C59C(218, 2);
     return result;
@@ -6014,7 +6014,7 @@ int sub_8039630()
         ZeroFillGFX30025c0();
         copyMemory_8001850();
         v2 = chatbox_8040818();
-        sub_802F530(v2, v3, v4, v5);
+        startScreen_init_802F530(v2, v3, v4, v5);
         result = SetRenderInfoLCDControl(&byte_40);
     }
     return result;
@@ -6088,7 +6088,7 @@ void __noreturn sub_803970C()
     IsPaletteFadeActive();
     if ( !v1 )
     {
-        chatbox_check_eFlags2009F38(8);
+        chatbox_mask_eFlags2009F38(8);
         if ( !v1 )
         {
             *(v0 + 20) = 0;
@@ -6528,7 +6528,7 @@ int sub_8039B60()
     IsPaletteFadeActive();
     if ( !v1 )
     {
-        chatbox_check_eFlags2009F38(8);
+        chatbox_mask_eFlags2009F38(8);
         if ( !v1 )
         {
             engine_setScreeneffect(12, 16);
@@ -6598,7 +6598,7 @@ int __fastcall sub_8039BC0(int a1)
             }
             else
             {
-                chatbox_check_eFlags2009F38(8);
+                chatbox_mask_eFlags2009F38(8);
                 if ( !v3 )
                 {
                     sub_803BB94();
@@ -6627,7 +6627,7 @@ int sub_8039C14()
     _BYTE *v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         v0[14] = 0;
@@ -6743,7 +6743,7 @@ int __fastcall sub_8039D08(int a1)
     sub_803A558(a1);
     if ( v2 )
     {
-        chatbox_check_eFlags2009F38(8);
+        chatbox_mask_eFlags2009F38(8);
         if ( !v2 )
         {
             if ( chatbox_8045F4C() || (v3 = sub_813D638(), v4 = v1[11], v5 = v1[14] + v4, v5 >= v3) )
@@ -6805,7 +6805,7 @@ int __fastcall sub_8039D9A(int a1)
     sub_803A558(a1);
     if ( v2 )
     {
-        chatbox_check_eFlags2009F38(128);
+        chatbox_mask_eFlags2009F38(128);
         if ( v2 )
             *(v1 + 1) = 36;
     }
@@ -6875,7 +6875,7 @@ int __fastcall sub_8039E2C(int a1)
     sub_803A58C(a1);
     if ( !v2 )
     {
-        chatbox_check_eFlags2009F38(8);
+        chatbox_mask_eFlags2009F38(8);
         if ( !v2 )
         {
             sub_8146588();
@@ -7075,7 +7075,7 @@ int sub_8039FEC()
     char v1; // zf
     int v2; // r0
 
-    chatbox_check_eFlags2009F38(8);
+    chatbox_mask_eFlags2009F38(8);
     if ( !v1 )
     {
         sub_8146588();
@@ -7248,7 +7248,7 @@ void __noreturn sub_803A186()
     char v2; // zf
 
     v1 = 0;
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v2 )
         v1 = 1;
     sub_803BBA4(4, 32 * *(v0 + 14) + 33, v1);
@@ -7366,7 +7366,7 @@ void __noreturn sub_803A2CC()
     char v2; // zf
     _BYTE *v3; // r3
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v2 )
     {
         SetRenderInfoLCDControl(32576);
@@ -8024,7 +8024,7 @@ void __noreturn sub_803A9CC()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         sub_803BB80();
@@ -8305,7 +8305,7 @@ void __noreturn sub_803AC02()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         if ( chatbox_8045F4C() )
@@ -8349,7 +8349,7 @@ void __noreturn sub_803AC56()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         if ( chatbox_8045F4C() )
@@ -8367,7 +8367,7 @@ void __noreturn sub_803AC78()
     _BYTE *v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         v0[19] = 0;
@@ -8396,7 +8396,7 @@ void __noreturn sub_803ACB2()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
         *(v0 + 1) = 40;
     sub_803A820();
@@ -8674,7 +8674,7 @@ void __noreturn sub_803AEE6()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         if ( *(v0 + 3) == 1 )
@@ -8722,7 +8722,7 @@ void __noreturn sub_803AF46()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         if ( chatbox_8045F4C() )
@@ -8745,7 +8745,7 @@ void __noreturn sub_803AF70()
     int v0; // r5
     char v1; // zf
 
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( v1 )
     {
         *(v0 + 19) = 0;
@@ -8898,7 +8898,7 @@ int sub_803B1D6()
     int v2; // r2
     char v3; // zf
 
-    chatbox_check_eFlags2009F38(8);
+    chatbox_mask_eFlags2009F38(8);
     if ( !v3 )
     {
         PlaySoundEffect(104, v1, v2);
@@ -9321,7 +9321,7 @@ void __fastcall sub_803BB2C(int a1)
     }
     else
     {
-        chatbox_runScript_803FE74(TextScript87E36F8, a1);
+        chatbox_runScriptAndSetWhiteDot803FE74(TextScript87E36F8, a1);
     }
 }
 
@@ -10613,7 +10613,7 @@ signed __int64 sub_803C94C()
 {
     char v0; // zf
 
-    sub_800A7D0();
+    IsCurSubsystemInUse();
     if ( v0 )
         sub_813D9A0(1);
     else
@@ -10931,7 +10931,7 @@ int sub_803CC28()
     int result; // r0
     char v2; // zf
 
-    result = chatbox_check_eFlags2009F38(8);
+    result = chatbox_mask_eFlags2009F38(8);
     if ( !v2 )
     {
         engine_setScreeneffect(12, 8);
@@ -11629,7 +11629,7 @@ void __cdecl sub_803D1A8()
 int cb_803D1CA()
 {
     (*(&JumpTable803D1E4 + byte_2011800))();
-    return sub_803E938();
+    return startScreen_AnimationControl_803E938();
 }
 
 
@@ -11735,7 +11735,7 @@ int sub_803D2A6()
     int v3; // r3
 
     v0 = SetRenderInfoLCDControl(&byte_40);
-    return sub_802F530(v0, v1, v2, v3);
+    return startScreen_init_802F530(v0, v1, v2, v3);
 }
 
 
@@ -12906,7 +12906,7 @@ void sub_803E80C()
     int v2; // r2
     char v3; // zf
 
-    sub_800A7D0();
+    IsCurSubsystemInUse();
     if ( !v3 && **(v1 + oToolkit_S2034880_Ptr) == 4 && !v2 )
         *v0 = 12;
 }
@@ -13031,11 +13031,11 @@ u8 *sub_803E8F8()
 
 
 // 0x803e900
-signed int sub_803E900()
+signed int init_eStartScreenAnimationControl200B1A0_2()
 {
     signed int result; // r0
 
-    ZeroFillByByte(&byte_200B1A0, 8);
+    ZeroFillByByte(&eStartScreenAnimationControl200B1A0, 8);
     result = 180;
     byte_200B1A3 = -76;
     return result;
@@ -13043,11 +13043,11 @@ signed int sub_803E900()
 
 
 // 0x803e914
-signed int sub_803E914()
+signed int init_eStartScreenAnimationControl200B1A0_2()
 {
     signed int result; // r0
 
-    ZeroFillByByte(&byte_200B1A0, 8);
+    ZeroFillByByte(&eStartScreenAnimationControl200B1A0, 8);
     result = 1;
     byte_200B1A3 = 1;
     return result;
@@ -13057,46 +13057,46 @@ signed int sub_803E914()
 // 0x803e928
 int sub_803E928()
 {
-    return byte_200B1A0;
+    return eStartScreenAnimationControl200B1A0;
 }
 
 
 // 0x803e930
-int sub_803E930()
+int startScreen_TstZero()
 {
     return 0;
 }
 
 
 // 0x803e938
-int sub_803E938()
+int startScreen_AnimationControl_803E938()
 {
     int result; // r0
     char zf; // zf
 
-    if ( byte_200B1A0 == 1 )
+    if ( eStartScreenAnimationControl200B1A0 == 1 )
     {
         result = sub_803E978();
         if ( zf )
         {
             result = 2;
-            byte_200B1A0 = 2;
+            eStartScreenAnimationControl200B1A0 = 2;
         }
     }
-    else if ( byte_200B1A0 == 2 )
+    else if ( eStartScreenAnimationControl200B1A0 == 2 )
     {
         result = sub_803EA1C(2);
     }
     else
     {
-        result = sub_803E964();
+        result = startScreen_DecrementPressStartPauseAnimationTimer();
     }
     return result;
 }
 
 
 // 0x803e964
-int sub_803E964()
+int startScreen_DecrementPressStartPauseAnimationTimer()
 {
     bool v0; // zf
     int result; // r0
@@ -13106,7 +13106,7 @@ int sub_803E964()
     if ( v0 )
     {
         result = 1;
-        byte_200B1A0 = 1;
+        eStartScreenAnimationControl200B1A0 = 1;
     }
     return result;
 }
@@ -13124,7 +13124,7 @@ signed int sub_803E978()
     int v6; // r4
 
     v0 = 1;
-    sub_803E930();
+    startScreen_TstZero();
     if ( v1 )
     {
         if ( !sub_813DA94() )
@@ -14980,9 +14980,9 @@ int sub_803FBC2()
     if ( !v1 )
     {
         v2 = sub_8006910();
-        sub_802F530(v2, v3, v4, v5);
+        startScreen_init_802F530(v2, v3, v4, v5);
         clear_e200AD04();
-        sub_803E914();
+        init_eStartScreenAnimationControl200B1A0_2();
         result = SetRenderInfoLCDControl(&byte_40);
     }
     return result;

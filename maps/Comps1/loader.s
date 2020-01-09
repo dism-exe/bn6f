@@ -31,7 +31,7 @@ Comps1_EnterMapGroup:
 	ldr r0, off_806D958 // =off_806D95C 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
 	bl Comps1_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
@@ -228,11 +228,9 @@ off_806DBF0: .word off_8616598
 Comps1_UnkFunction_806dc0c:
 	push {r4-r7,lr}
 	push {r0,r1}
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl SetEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl ClearEventFlagFromImmediate
 	pop {r0,r1}
 	mov r5, r10
@@ -278,11 +276,9 @@ sub_806DC7A:
 	bne loc_806DC86
 	pop {pc}
 loc_806DC86:
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl ClearEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806DC7A
@@ -296,11 +292,9 @@ sub_806DC98:
 	bne loc_806DCA4
 	pop {pc}
 loc_806DCA4:
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl ClearEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806DC98
@@ -314,11 +308,9 @@ sub_806DCB6:
 	bne loc_806DCC2
 	pop {pc}
 loc_806DCC2:
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl ClearEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806DCB6
@@ -332,7 +324,7 @@ Comps1_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, off_806DCE8 // =pt_806DCEC 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_806DCE8: .word pt_806DCEC

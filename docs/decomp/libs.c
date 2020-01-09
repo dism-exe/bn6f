@@ -12,7 +12,7 @@ int sub_81440D8()
     Timer3Control = 0;
     InterruptRequestFlags_IRQAcknowledge = 192;
     v1 = 0;
-    SWI_CpuSet(&v1, &byte_200F460, 83886694);
+    SWI_CpuSet(&v1, &eTimerEnable200F460, 83886694);
     v2 = 0;
     SWI_CpuSet(&v2, &unk_200F44C, 16777218);
     byte_200F44D = 0;
@@ -36,7 +36,7 @@ int sub_8144158()
     *&SIOData0_Parent__Multi_PlayerMode_ = 0;
     *&SIOData2_2ndChild__Multi_PlayerMode_ = 0;
     v1 = 0;
-    SWI_CpuSet(&v1, &byte_200F460, 83886694);
+    SWI_CpuSet(&v1, &eTimerEnable200F460, 83886694);
     v2 = 0;
     SWI_CpuSet(&v2, &unk_200F44C, 16777218);
     byte_200F450 = 0;
@@ -94,7 +94,7 @@ int __fastcall sub_8144250(_BYTE *a1, int a2, int a3)
             v6 = *a1;
             if ( v6 == 1 )
             {
-                if ( byte_200F460 && byte_200F463 > 1u )
+                if ( eTimerEnable200F460 && byte_200F463 > 1u )
                     byte_200F470 = 1;
             }
             else if ( v6 == 2 )
@@ -124,7 +124,7 @@ LABEL_13:
     }
     *v3 = 0;
     v7 = byte_200F462 | 4 * byte_200F463;
-    if ( byte_200F460 == 8 )
+    if ( eTimerEnable200F460 == 8 )
         v7 |= 0x20u;
     v8 = byte_200F46C << 8;
     if ( byte_200F461 == 4 )
@@ -144,9 +144,9 @@ int sub_8144380()
     int v1; // [sp+0h] [bp-4h]
 
     if ( (SIOControlRegister & 0xC) != 8 || byte_200F462 )
-        byte_200F460 = 0;
+        eTimerEnable200F460 = 0;
     else
-        byte_200F460 = 8;
+        eTimerEnable200F460 = 8;
     return v1;
 }
 
@@ -156,7 +156,7 @@ int sub_81443AC()
 {
     int v1; // [sp+4h] [bp-4h]
 
-    if ( byte_200F460 )
+    if ( eTimerEnable200F460 )
     {
         Timer3Counter_Reload = -132;
         Timer3Control = 65;
@@ -293,7 +293,7 @@ int sub_81445F8()
 {
     int v1; // [sp+4h] [bp-4h]
 
-    if ( byte_200F460 )
+    if ( eTimerEnable200F460 )
     {
         if ( byte_200F461 != 2 )
         {
@@ -311,7 +311,7 @@ int sub_81445F8()
                 return v1;
             }
         }
-        sub_814474C();
+        libSIOControlStart();
         if ( byte_200F454 == 2 && ++byte_200F450 > 6u )
         {
             byte_200F475 = 2;
@@ -326,9 +326,9 @@ int sub_81445F8()
             byte_200F475 = 2;
         if ( byte_200F461 == 2 )
         {
-            byte_200F462 = byte_200F460;
-            byte_200F463 = byte_200F460;
-            byte_200F471 = byte_200F460;
+            byte_200F462 = eTimerEnable200F460;
+            byte_200F463 = eTimerEnable200F460;
+            byte_200F471 = eTimerEnable200F460;
         }
     }
     return v1;
@@ -336,12 +336,12 @@ int sub_81445F8()
 
 
 // 0x814469c
-int sub_814469C()
+int libSIO814469C()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_8144BBC();
-    sub_814474C();
+    libStopAndReloadTimer3If_eTimerEnable200F460();
+    libSIOControlStart();
     return v1;
 }
 
@@ -357,7 +357,7 @@ int sub_81446AC()
     {
         if ( sub_814475C() << 24 )
         {
-            if ( byte_200F460 )
+            if ( eTimerEnable200F460 )
             {
                 byte_200F461 = 3;
                 byte_200F46D = 8;
@@ -394,7 +394,7 @@ int sub_81446AC()
 
 
 // 0x814474c
-__int16 *sub_814474C()
+__int16 *libSIOControlStart()
 {
     __int16 *result; // r0
 
@@ -637,11 +637,11 @@ LABEL_13:
 
 
 // 0x8144bbc
-int sub_8144BBC()
+int libStopAndReloadTimer3If_eTimerEnable200F460()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    if ( byte_200F460 )
+    if ( eTimerEnable200F460 )
     {
         Timer3Control &= 0xFF7Fu;
         Timer3Counter_Reload = -132;
@@ -660,7 +660,7 @@ int sub_8144BF0()
         byte_200F488 = 0;
         byte_200F489 = 0;
     }
-    else if ( byte_200F460 )
+    else if ( eTimerEnable200F460 )
     {
         Timer3Control |= 0x80u;
     }

@@ -30,8 +30,7 @@ PlaySoundEffect:
 	thumb_func_end PlaySoundEffect
 
 	thumb_func_start PlayMusic
-// (enum Song idx) -> void
-PlayMusic:
+PlayMusic: // (int song) -> void
 	push {r1-r7,lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -786,12 +785,12 @@ QueueHwordAlignedGFXTransfer:
 	b loc_8000ACA
 
 	thumb_func_start QueueWordAlignedGFXTransfer
-QueueWordAlignedGFXTransfer:
+QueueWordAlignedGFXTransfer: // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	mov r3, #3
 	b loc_8000ACA
 
 	thumb_func_start QueueEightWordAlignedGFXTransfer
-QueueEightWordAlignedGFXTransfer:
+QueueEightWordAlignedGFXTransfer: // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	mov r3, #4
 
 // r0 - queued source
@@ -799,7 +798,7 @@ QueueEightWordAlignedGFXTransfer:
 // r2 - queued size
 // r3 - copy type (preset)
 // preserves r0-r2
-loc_8000ACA:
+loc_8000ACA: // (void *queuedSource, void *queuedDest, int queuedSize, unk copyType) -> void
 	push {r4-r7}
 	mov r7, r3
 	ldr r3, off_8000B10 // =dword_200AC1C 
@@ -841,6 +840,7 @@ off_8000B14: .word fiveWordArr200B4B0
 	thumb_func_end QueueHwordAlignedGFXTransfer
 	thumb_func_end QueueWordAlignedGFXTransfer
 	thumb_func_end QueueEightWordAlignedGFXTransfer
+
 
 	thumb_local_start
 sub_8000B18:
@@ -980,10 +980,10 @@ loc_8000BD6:
 	bl QueueHwordAlignedGFXTransfer
 	b loc_8000BE6
 loc_8000BDC:
-	bl QueueWordAlignedGFXTransfer
+	bl QueueWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	b loc_8000BE6
 loc_8000BE2:
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 loc_8000BE6:
 	add r7, #0xc
 	b loc_8000B92
@@ -1298,21 +1298,24 @@ off_8000E08: .word 0xE10
 off_8000E0C: .word 0x3C
 	thumb_func_end sub_8000DE0
 
-	thumb_func_start sub_8000E10
-sub_8000E10:
+	thumb_func_start CapIncrementGameTimeFrames
+CapIncrementGameTimeFrames: // () -> void
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_S2001c04_Ptr]
-	ldr r0, [r3,#0x18]
+	ldr r0, [r3,#oS2001c04_GameTimeFrames]
 	add r0, #1
+
+	// cap frame count
 	ldr r1, dword_8000E24 // =0x14988f0
 	cmp r0, r1
 	ble loc_8000E20
 	mov r0, r1
 loc_8000E20:
-	str r0, [r3,#0x18]
+
+	str r0, [r3,#oS2001c04_GameTimeFrames]
 	mov pc, lr
 dword_8000E24: .word 0x14988F0
-	thumb_func_end sub_8000E10
+	thumb_func_end CapIncrementGameTimeFrames
 
 	thumb_func_start sub_8000E28
 sub_8000E28:
@@ -1442,9 +1445,8 @@ GetTitleScreenIconCount:
 	push {r4-r7,lr}
 	mov r4, #0
 	mov r7, #0
-	mov r0, #0xe
-	mov r1, #0
-	bl TestEventFlagFromImmediate
+	movflag EVENT_E00
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8000EFA
 	add r4, #1
 	mov r0, #0x80
@@ -1490,25 +1492,22 @@ loc_8000F3A:
 	mov r0, #4
 	orr r7, r0
 loc_8000F4A:
-	mov r0, #3
-	mov r1, #0x70
-	bl TestEventFlagFromImmediate
+	movflag EVENT_370
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8000F5A
 	add r4, #1
 	mov r0, #2
 	orr r7, r0
 loc_8000F5A:
-	mov r0, #3
-	mov r1, #0x40
-	bl TestEventFlagFromImmediate
+	movflag EVENT_340
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8000F6C
 	add r4, #1
 	mov r0, #0x10
 	lsl r0, r0, #4
 	orr r7, r0
 loc_8000F6C:
-	mov r0, #3
-	mov r1, #0xbd
+	movflag EVENT_3BD
 	mov r2, #5
 	bl TestEventFlagRangeFromImmediate // (int a3, int a2) ->
 	beq loc_8000F80
@@ -1529,12 +1528,10 @@ sub_8000F86:
 	bl sub_803F838
 	bne locret_8000FAA
 	// flag 7 @ 0x2001C88[0xE<<5 + 0x0] (=2001E48)
-	mov r0, #0xe
-	mov r1, #0
+	movflag EVENT_E00
 	bl SetEventFlagFromImmediate
 	// flag 6 @ 0x2001C88[0x10<<5 + 0x0] (=2001E88)
-	mov r0, #0x10
-	mov r1, #1
+	movflag EVENT_1001
 	bl SetEventFlagFromImmediate
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
@@ -1551,7 +1548,7 @@ sub_8000FAC:
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	// flag 3 @ 0x2001C88[0x17<<5 + 0x1] (=2001F69)
 	movflag EVENT_170C
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8000FCE
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_LastMapGroup]
@@ -1583,7 +1580,7 @@ sub_8000FE6:
 	mov r4, r1
 loc_8000FEC:
 	mov r0, r6
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8000FFA
 	mov r0, r6
 	bl reqBBS_addBBSMessage_813e5dc
@@ -1612,7 +1609,7 @@ sub_8001014:
 	mov r4, r1
 loc_800101A:
 	mov r0, r6
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8001028
 	mov r0, r6
 	bl reqBBS_addRequest_813F9A0
@@ -1707,14 +1704,15 @@ sub_80010A4:
 	pop {r4-r7,pc}
 	thumb_func_end sub_80010A4
 
-// () -> u8
+
 	thumb_func_start GetCurPETNavi
-GetCurPETNavi:
+GetCurPETNavi: // () -> u8
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldrb r0, [r3,#oGameState_CurPETNavi]
 	mov pc, lr
 	thumb_func_end GetCurPETNavi
+
 
 	thumb_func_start SetCurPETNavi
 SetCurPETNavi:
@@ -1723,6 +1721,7 @@ SetCurPETNavi:
 	strb r0, [r3,#oGameState_CurPETNavi]
 	mov pc, lr
 	thumb_func_end SetCurPETNavi
+
 
 	thumb_func_start writeCurPETNaviToS2001c04_Unk07_80010c6
 writeCurPETNaviToS2001c04_Unk07_80010c6:
@@ -2364,23 +2363,24 @@ copyWords_80014EC: // 80014EC
 	pop {r0-r7,pc}
 	thumb_func_end copyWords_80014EC
 
-// () -> void
+
 	thumb_func_start SeedRNG2
-SeedRNG2:
+SeedRNG2: // () -> void
 	ldr r0, rng_8001594 // =0xa338244f
 	ldr r1, off_8001598 // =eRngSeed20013F0
 	str r0, [r1]
 	mov pc, lr
 	thumb_func_end SeedRNG2
 
-// () -> int
+
 	thumb_func_start GetRNG2
-GetRNG2:
+GetRNG2: // () -> int
 	push {r7,lr}
+
 	ldr r7, off_800159C // =eRngSeed20013F0
 	ldr r0, [r7]
-	ldr r1, rng_80015A0 // =0x873ca9e5
-	lsl r2, r0, #1
+	ldr r1, rng_80015A0 // =0x873ca9e5@
+    lsl r2, r0, #1
 	lsr r3, r0, #0x1f
 	add r0, r2, r3
 	add r0, #1
@@ -2388,6 +2388,7 @@ GetRNG2:
 	str r0, [r7]
 	pop {r7,pc}
 	thumb_func_end GetRNG2
+
 
 	thumb_func_start GetPositiveSignedRNG2
 GetPositiveSignedRNG2:
@@ -2406,9 +2407,8 @@ GetPositiveSignedRNG2:
 	pop {r7,pc}
 	thumb_func_end GetPositiveSignedRNG2
 
-// () -> void
 	thumb_func_start GetRNG1
-GetRNG1:
+GetRNG1: // () -> void
 	push {r7,lr}
 	ldr r7, off_80015A8 // =rngSeed_2001120
 	ldr r0, [r7]
@@ -3360,7 +3360,7 @@ sub_8001C44:
 	ldr r0, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
 	ldr r1, [r7,#oGFXAnimState_Param0]
 	ldr r2, [r7,#oGFXAnimState_Param1]
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {pc}
 	thumb_func_end sub_8001C44
 
@@ -3463,7 +3463,7 @@ loc_8001CA6:
 	// size
 	ldrb r2, [r7,#oGFXAnimState_Param2]
 	lsl r2, r2, #5
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4,r7,pc}
 	.balign 4, 0
 off_8001CE4: .word off_8001AB8
@@ -3537,7 +3537,7 @@ loc_8001D0E:
 	// size
 	ldrb r2, [r7,#oGFXAnimState_Param2]
 	lsl r2, r2, #6
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4,r7,pc}
 	.balign 4, 0
 off_8001D4C: .word off_8001AB8

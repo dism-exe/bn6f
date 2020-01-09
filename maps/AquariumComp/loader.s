@@ -31,7 +31,7 @@ AquariumComp_EnterMapGroup:
 	ldr r0, off_8067BBC // =off_8067BC0 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
 	bl AquariumComp_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
@@ -187,7 +187,7 @@ AquariumComp_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, off_8067D5C // =pt_8067D60 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_8067D5C: .word pt_8067D60

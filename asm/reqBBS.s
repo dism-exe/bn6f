@@ -1,25 +1,27 @@
 
 	thumb_func_start reqBBS_813E07C
-reqBBS_813E07C:
+reqBBS_813E07C: // (unk a1) ->
 	push {r4-r7,lr}
-	push {r0}
-	// memBlock
-	ldr r0, off_813E0A0 // =reqBBS_eStruct2001150 
-	// size
-	mov r1, #0x2c 
+	
+    push {r0}
+	ldr r0, off_813E0A0 // =eReqBBS2001150 
+	mov r1, #oReqBBS2001150_Size 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0}
-	ldr r5, off_813E0A0 // =reqBBS_eStruct2001150 
-	strb r0, [r5,#0x4] // (byte_2001154 - 0x2001150)
+    
+    ldr r5, off_813E0A0 // =eReqBBS2001150 
+	strb r0, [r5,#oReqBBS2001150_Unk_04]
+
 	ldr r2, off_813E09C // =off_813DF74 
 	mov r1, #0x24 
 	mul r0, r1
 	add r0, r0, r2
-	str r0, [r5,#0x28] // (dword_2001178 - 0x2001150)
+	str r0, [r5,#oReqBBS2001150_Unk_28]
+
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_813E09C: .word off_813DF74
-off_813E0A0: .word reqBBS_eStruct2001150
+off_813E0A0: .word eReqBBS2001150
 	thumb_func_end reqBBS_813E07C
 
 	thumb_func_start reqBBS_cb_draw_813E0A4
@@ -29,7 +31,7 @@ reqBBS_cb_draw_813E0A4:
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
-	ldr r5, off_813E0C4 // =reqBBS_eStruct2001150 
+	ldr r5, off_813E0C4 // =eReqBBS2001150 
 	ldr r0, off_813E0C8 // =reqBBS_jtDraw_813E0CC 
 	ldrb r1, [r5]
 	ldr r0, [r0,r1]
@@ -41,7 +43,7 @@ reqBBS_cb_draw_813E0A4:
 	mov r12, r3
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_813E0C4: .word reqBBS_eStruct2001150
+off_813E0C4: .word eReqBBS2001150
 off_813E0C8: .word reqBBS_jtDraw_813E0CC
 reqBBS_jtDraw_813E0CC: .word reqBBS_static_draw_813E0F8+1
 	.word reqBBS_draw_813E188+1
@@ -280,7 +282,7 @@ reqBBS_draw_813E2AC:
 	strb r1, [r0,#9]
 loc_813E2C8:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813E320
 	ldrh r0, [r5,#oReqBBSGui_PagePos]
 	ldrh r1, [r5,#oReqBBSGui_CursorPos]
@@ -292,7 +294,7 @@ loc_813E2C8:
 	add r0, r0, r2
 	mov r8, r0
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_813E2F6
 	mov r0, r8
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
@@ -514,7 +516,7 @@ reqBBS_draw_813E450:
 loc_813E48A:
 	mov r1, r0
 	ldr r0, off_813E4A4 // =reqBBS_eTextScript
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	bl reqBBS_drawHeaderText
 	mov r0, #0x20 
 	strb r0, [r5]
@@ -545,7 +547,7 @@ reqBBS_draw_813E4AC:
 	strb r1, [r0,#9]
 loc_813E4C8:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813E4EC
 	bl chatbox_8040818
 	mov r0, #0x24 
@@ -934,7 +936,7 @@ loc_813E870:
 	push {r0,r1}
 	add r0, r0, r1
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	pop {r0,r1}
 	beq loc_813E880
 	add r7, #1
@@ -1047,7 +1049,7 @@ loc_813E934:
 	add r0, r2, r7
 	push {r3}
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	pop {r3}
 	beq loc_813E968
 	push {r4-r7}
@@ -1136,7 +1138,7 @@ loc_813EAA6:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_813EAD6
 	push {r4-r7}
 	// j
@@ -1411,7 +1413,7 @@ reqBBS_813ED40:
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_813ED58: .word byte_813DEC4
@@ -1436,7 +1438,7 @@ reqBBS_813ED60:
 	ldr r1, [r1,#0xc]
 	add r3, r3, r1
 	mov r0, r3
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq locret_813ED90
 	mov r0, r7
 	mov r1, #7
@@ -1514,7 +1516,7 @@ reqBBS_813EDE4:
 	add r0, r0, r2
 	ldr r1, dword_813EE38 // =0x6017f80 
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldrh r1, [r5,#0x20]
 	mov r0, #3
 	mov r3, #0x10
@@ -1861,7 +1863,7 @@ ReqBBSSubSystemJumpTable:
 OpenReqBBSMenu813F474:
 	push {lr}
 	movflag EVENT_173A
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_813F4B6
 	ldr r0, off_813F548 // =eReqBBSGui
 	ldr r1, dword_813F544 // =0xf 
@@ -1870,7 +1872,7 @@ OpenReqBBSMenu813F474:
 	ldr r3, [r3,#0x18] // (dword_813F364 - 0x813f34c)
 	add r2, r2, r3
 	mov r0, r2
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_813F4B6
 	ldr r0, off_813F548 // =eReqBBSGui
 	ldr r1, dword_813F544 // =0xf 
@@ -2102,7 +2104,7 @@ reqBBS_813F65C:
 	strb r1, [r0,#9]
 loc_813F678:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813F6CE
 	ldrh r0, [r5,#0x24]
 	ldrh r1, [r5,#0x20]
@@ -2114,7 +2116,7 @@ loc_813F678:
 	add r0, r0, r2
 	mov r8, r0
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_813F6A6
 	mov r0, r8
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
@@ -2338,7 +2340,7 @@ reqBBS_813F80C:
 loc_813F846:
 	mov r1, r0
 	ldr r0, off_813F860 // =reqBBS_eTextScript
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	bl reqBBS_renderSelectedEntry_HeaderText
 	mov r0, #0x20 
 	strb r0, [r5]
@@ -2369,7 +2371,7 @@ reqBBS_813F868:
 	strb r1, [r0,#9]
 loc_813F884:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813F8A8
 	bl chatbox_8040818
 	mov r0, #0x24 
@@ -2742,10 +2744,10 @@ reqBBS_813FB24:
 	strb r1, [r0,#9]
 loc_813FB40:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813FB98
 	movflag EVENT_173A
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_813FB6E
 	ldr r0, off_813FBB4 // =reqBBS_requestInfo_textOffsets 
 	ldr r1, off_813FDA4 // =eReqBBSGui
@@ -2813,7 +2815,7 @@ reqBBS_813FBC0:
 	strb r1, [r0,#9]
 loc_813FBDC:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813FC0E
 	bl chatbox_8040818
 	bl reqBBS_813FE54
@@ -2920,13 +2922,13 @@ loc_813FCA8:
 	beq loc_813FCBE
 	mov r1, r0
 	ldr r0, off_813FD0C // =reqBBS_eTextScript
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #0x44 
 	strb r0, [r5]
 	b loc_813FCF0
 loc_813FCBE:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813FCF0
 	bl chatbox_8040818
 	bl reqBBS_813FE54
@@ -2980,7 +2982,7 @@ reqBBS_813FD14:
 	strb r1, [r0,#9]
 loc_813FD30:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813FD6C
 	bl chatbox_8040818
 	bl reqBBS_813FE54
@@ -3102,7 +3104,7 @@ loc_813FE90:
 	push {r0,r1}
 	add r0, r0, r1
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	pop {r0,r1}
 	beq loc_813FEA0
 	add r7, #1
@@ -3246,7 +3248,7 @@ loc_814005E:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_814008E
 	push {r4-r7}
 	// j
@@ -3356,7 +3358,7 @@ loc_81401CE:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_81401FC
 	push {r4-r7}
 	// j
@@ -3382,7 +3384,7 @@ loc_81401FC:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_8140228
 	push {r4-r7}
 	// j
@@ -3425,7 +3427,7 @@ loc_8140252:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_81402B4
 	push {r4-r7}
 	mov r0, #0x16
@@ -3860,7 +3862,7 @@ reqBBS_8140588:
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_81405A0: .word byte_813F22C
@@ -3876,7 +3878,7 @@ reqBBS_81405A4:
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_81405BC: .word byte_813F2AC
@@ -3940,7 +3942,7 @@ reqBBS_8140604:
 	ldr r1, [r1,#0xc]
 	add r3, r3, r1
 	mov r0, r3
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq locret_8140634
 	mov r0, r7
 	mov r1, #7
@@ -4018,7 +4020,7 @@ reqBBS_animateCursor:
 	add r0, r0, r2
 	ldr r1, dword_81406DC // =0x6017f80 
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldrh r1, [r5,#0x20]
 	mov r0, #3
 	mov r3, #0x10
@@ -4195,7 +4197,7 @@ dword_81407D4: .word 0xD
 reqBBS_81407D8:
 	push {r4-r7,lr}
 	movflag EVENT_173A
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8140814
 	ldr r0, off_81409B4 // =eReqBBSGui
 	ldr r1, dword_8140820 // =0xf 
@@ -4241,7 +4243,7 @@ reqBBS_814084C:
 	ldr r1, [r1,#0x18] // (dword_813F364 - 0x813f34c)
 	add r0, r0, r1
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_8140860
 	mov r0, #1
 	b locret_8140862
@@ -4260,7 +4262,7 @@ reqBBS_8140868:
 	ldr r1, [r1,#0x14] // (byte_813F354+0xc - 0x813f34c)
 	add r0, r0, r1
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_814087C
 	mov r0, #1
 	b locret_814087E
@@ -4346,13 +4348,13 @@ dword_81408EC: .word 0xF
 reqBBS_81408F0:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_814095E
 	mov r0, #0x20 
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_814096A
 	ldr r0, off_8140970 // =0x110 
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_814096A
 	bl reqBBS_81408C8
 	bl reqBBS_8140868
@@ -4360,14 +4362,14 @@ reqBBS_81408F0:
 	bne loc_814095E
 	// flag 5 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
 	movflag EVENT_173A
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8140962
 	bl reqBBS_81408C8
 	bl reqBBS_8140884
 	tst r0, r0
 	bne loc_8140966
 	movflag EVENT_PET_NAVI_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_814095A
 	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
@@ -4503,12 +4505,10 @@ reqBBS_clearFlag_8140A0C:
 	thumb_local_start
 reqBBS_setFlags_8140A24:
 	push {lr}
-	mov r0, #0x16
-	mov r1, #0x40 
+	movflag EVENT_1640
 	mov r2, #0x40 
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
-	mov r0, #0x16
-	mov r1, #0xc0
+	movflag EVENT_16C0
 	mov r2, #0x10
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0
@@ -4519,12 +4519,10 @@ reqBBS_setFlags_8140A24:
 	thumb_local_start
 reqBBS_setFlags_8140A40:
 	push {lr}
-	mov r0, #0x16
-	mov r1, #0xf3
+	movflag EVENT_16F3
 	mov r2, #0xd
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
-	mov r0, #0x16
-	mov r1, #0xc0
+	movflag EVENT_16C0
 	mov r2, #0x10
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0
@@ -4538,7 +4536,7 @@ reqBBS_RunTextScriptWhoAmI:
 	ldr r2, off_8140A6C // =TextScriptWhoAmIPtr
 	lsl r0, r0, #2
 	ldr r0, [r2,r0]
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	pop {pc}
 	.balign 4, 0
 off_8140A6C: .word TextScriptWhoAmIPtr

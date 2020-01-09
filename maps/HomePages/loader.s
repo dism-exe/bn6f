@@ -31,7 +31,7 @@ HomePages_EnterMapGroup:
 	ldr r0, off_806C29C // =off_806C2A0 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
 	bl HomePages_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
@@ -194,11 +194,9 @@ off_806C494: .word off_861602C
 HomePages_UnkFunction_806c4b0:
 	push {r4-r7,lr}
 	push {r0,r1}
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl SetEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl ClearEventFlagFromImmediate
 	pop {r0,r1}
 	mov r5, r10
@@ -232,8 +230,7 @@ sub_806C4F8:
 loc_806C504:
 	ldr r0, off_806C598 // =off_806C1C4 
 	bl LoadGFXAnim
-	mov r0, #0x16
-	mov r1, #0xf1
+	movflag EVENT_16F1
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806C4F8
@@ -247,11 +244,9 @@ sub_806C514:
 	bne loc_806C520
 	pop {pc}
 loc_806C520:
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl ClearEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806C514
@@ -270,11 +265,9 @@ sub_806C532:
 	bne loc_806C548
 	pop {pc}
 loc_806C548:
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl ClearEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806C532
@@ -288,11 +281,9 @@ sub_806C55A:
 	bne loc_806C566
 	pop {pc}
 loc_806C566:
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl ClearEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806C55A
@@ -306,11 +297,9 @@ sub_806C578:
 	bne loc_806C584
 	pop {pc}
 loc_806C584:
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl ClearEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	.balign 4, 0
@@ -326,7 +315,7 @@ HomePages_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, off_806C5B0 // =pt_806C5B4 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_806C5B0: .word pt_806C5B4

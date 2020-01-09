@@ -145,7 +145,7 @@ MapScriptCutsceneCmd_jump_if_flag_set: // 8035962
 	bl ReadMapScriptHalfword
 .gotEventFlag
 	mov r0, r4
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq .eventFlagNotSet
 	mov r6, #4
 	bl ReadMapScriptWord
@@ -205,7 +205,7 @@ MapScriptCutsceneCmd_jump_if_flag_clear: // 80359BE
 	bl ReadMapScriptHalfword
 .gotEventFlag
 	mov r0, r4
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne .eventFlagSet
 	mov r6, #4
 	bl ReadMapScriptWord
@@ -1309,7 +1309,7 @@ MapScriptCmd_spawn_or_free_objects: // 8035FDE
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	add r7, #6
 	mov r0, #1
 	pop {pc}
@@ -2384,7 +2384,7 @@ PlayMapMusic:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#oS2001c04_MapMusic]
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	pop {r4-r7,pc}
 	thumb_func_end PlayMapMusic
 
@@ -2484,9 +2484,8 @@ clearCutsceneScriptPosIfMagicValue0x1_8036F24:
 	mov pc, lr
 	thumb_func_end clearCutsceneScriptPosIfMagicValue0x1_8036F24
 
-// () -> zf
 	thumb_func_start IsCutsceneScriptNonNull
-IsCutsceneScriptNonNull:
+IsCutsceneScriptNonNull: // () -> zf
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	ldr r0, [r0,#oCutsceneState_CutsceneScriptPos] // s_02011C50.ptr_1C
@@ -3166,7 +3165,7 @@ CutsceneCameraCmd_run_text_script:
 	mov r0, #2
 	bl ReadCutsceneCameraScriptWord
 	mov r1, r4
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	pop {r1}
 	mov r0, #1
 	add r1, #6
@@ -3180,7 +3179,7 @@ CutsceneCameraCmd_wait_chatbox:
 	push {lr}
 	push {r1}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	pop {r1}
 	bne .textboxStillUp
 	mov r0, #1
@@ -3319,7 +3318,7 @@ CutsceneCameraCmd_play_music:
 	push {r1}
 	mov r0, #1
 	bl ReadCutsceneCameraScriptHalfword
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 	pop {r1}
 	mov r0, #1
 	add r1, #3
@@ -3544,7 +3543,7 @@ byte_8037694: .byte 0x0, 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
 CutsceneCmd_end_for_map_reload_maybe_8037c64:
 	push {lr}
 	movflag EVENT_1741
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .eventActive
 	bl reloadCurNaviStatBoosts_813c3ac
 .eventActive
@@ -3559,7 +3558,7 @@ CutsceneCmd_end_for_map_reload_maybe_8037c64:
 CutsceneCmd_end_for_map_reload_maybe_80376dc:
 	push {lr}
 	movflag EVENT_1741
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .eventActive
 	bl reloadCurNaviStatBoosts_813c3ac
 .eventActive
@@ -3678,11 +3677,11 @@ CutsceneCmd_wait_chatbox:
 	bl ReadMapScriptByte
 	mov r0, #0x80
 	and r0, r4
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_80377AC
 	mov r0, #0x38
 	and r0, r4
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_80377B2
 loc_80377AC:
 	add r7, #2
@@ -3842,7 +3841,7 @@ CutsceneCmd_wait_if_flag_clear:
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq .flagClear
 	add r7, #3
 	mov r0, #1
@@ -3861,7 +3860,7 @@ CutsceneCmd_wait_if_flag_set:
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne .flagSet
 	add r7, #3
 	mov r0, #1
@@ -4196,7 +4195,7 @@ CutsceneCmd_run_text_script:
 	beq .notFromMem
 	ldr r0, [r5,#oCutsceneState_TextArchivePtr]
 	ldrb r1, [r5,r4]
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	add r7, #2
 	mov r0, #1
 	pop {pc}
@@ -4205,7 +4204,7 @@ CutsceneCmd_run_text_script:
 	bl ReadMapScriptByte
 	mov r1, r4
 	ldr r0, [r5,#oCutsceneState_TextArchivePtr]
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	add r7, #3
 	mov r0, #1
 	pop {pc}
@@ -4277,7 +4276,7 @@ CutsceneCmd_decomp_text_archive:
 	mov r0, r4
 	cmp r0, #0
 	bge .uncompressedPtr
-	bl DecompressTextArchiveForCutscene // (void *a1) -> void*
+	bl DecompressTextArchiveForCutscene // (CompText *archive) -> TextScriptArchive*
 .uncompressedPtr
 	str r0, [r5,#oCutsceneState_TextArchivePtr]
 	add r7, #5
@@ -4285,18 +4284,17 @@ CutsceneCmd_decomp_text_archive:
 	pop {pc}
 	thumb_func_end CutsceneCmd_decomp_text_archive
 
-// (void *a1) -> void*
 	thumb_local_start
-DecompressTextArchiveForCutscene:
+DecompressTextArchiveForCutscene: // (CompText *archive) -> TextScriptArchive*
 	push {lr}
 	cmp r0, #0
 	bge .uncompressedPtr
 	lsl r0, r0, #1
 	lsr r0, r0, #1
 	// dest
-	ldr r1, =unk_2034A00
+	ldr r1, =eDecompressionBuf2034A00
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, =unk_2034A00
+	ldr r0, =eDecompressionBuf2034A00
 	add r0, #4
 .uncompressedPtr
 	pop {pc}
@@ -4304,23 +4302,24 @@ DecompressTextArchiveForCutscene:
 	.pool // 8037AE8
 	thumb_func_end DecompressTextArchiveForCutscene
 
-	thumb_func_start uncomp_8037AEC
-uncomp_8037AEC:
+	thumb_func_start DecompressTextArchiveForCutscene2
+DecompressTextArchiveForCutscene2:
 	push {lr}
 	cmp r0, #0
-	bge locret_8037B00
+	bge .uncompressedPtr
+    // remove compression bit
 	lsl r0, r0, #1
 	lsr r0, r0, #1
-	// dest
-	ldr r1, off_8037B04 // =unk_2033400
+
+	ldr r1, =DecompressionBuf2033400
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, off_8037B04 // =unk_2033400
+	ldr r0, =DecompressionBuf2033400
 	add r0, #4
-locret_8037B00:
+.uncompressedPtr
 	pop {pc}
 	.balign 4, 0
-off_8037B04: .word unk_2033400
-	thumb_func_end uncomp_8037AEC
+    .pool // 8037B04
+	thumb_func_end DecompressTextArchiveForCutscene2
 
 	thumb_local_start
 // 0x3f byte1
@@ -5054,7 +5053,7 @@ CutsceneCmd_spawn_or_free_ow_map_or_npc_objects:
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	add r7, #6
 	mov r0, #1
 	pop {pc}
@@ -5213,7 +5212,7 @@ MapScriptCutsceneCmd_play_music:
 	b .done
 .regularPlayMusic
 	mov r0, r4
-	bl PlayMusic
+	bl PlayMusic // (int song) -> void
 .done
 	add r7, #3
 	mov r0, #1

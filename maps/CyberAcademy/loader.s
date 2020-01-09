@@ -30,7 +30,7 @@ CyberAcademy_EnterMapGroup:
 	ldr r0, off_80526F0 // =off_80526F4 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
 	bl CyberAcademy_SpawnMapObjectsForMap
 	ldr r0, off_80526EC // =off_8052EE8 
 	ldrb r1, [r5,#oGameState_MapNumber]
@@ -120,7 +120,7 @@ CyberAcademy_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, off_8052804 // =off_8052808 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_8052804: .word off_8052808

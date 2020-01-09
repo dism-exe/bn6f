@@ -244,7 +244,7 @@ byte_2001130:: // 0x2001130
 	.space 16
 dword_2001140:: // 0x2001140
 	.space 16
-reqBBS_eStruct2001150:: // 0x2001150
+eReqBBS2001150:: // 0x2001150
 	.space 4
 byte_2001154:: // 0x2001154
 	.space 36
@@ -579,7 +579,8 @@ word_200939A:: // 0x200939a
 	.space 2
 byte_200939C:: // 0x200939c
 	.space 8
-dword_20093A4:: // 0x20093a4
+flags32_20093A4:: // 0x20093a4
+	// type: Flags20093A4
 	.space 4
 dword_20093A8:: // 0x20093a8
 	.space 8
@@ -958,14 +959,8 @@ dword_200AF94:: // 0x200af94
 	.space 12
 byte_200AFA0:: // 0x200afa0
 	.space 512
-byte_200B1A0:: // 0x200b1a0
-	.space 1
-byte_200B1A1:: // 0x200b1a1
-	.space 1
-byte_200B1A2:: // 0x200b1a2
-	.space 1
-byte_200B1A3:: // 0x200b1a3
-	.space 5
+eStartScreenAnimationControl200B1A0:: // 0x200b1a0
+    .space 8
 dword_200B1A8:: // 0x200b1a8
 	.space 8
 dword_200B1B0:: // 0x200b1b0
@@ -1242,7 +1237,7 @@ byte_200F450:: // 0x200f450
 	.space 4
 byte_200F454:: // 0x200f454
 	.space 12
-byte_200F460:: // 0x200f460
+eTimerEnable200F460:: // 0x200f460
 	.space 1
 byte_200F461:: // 0x200f461
 	.space 1
@@ -2444,7 +2439,7 @@ byte_202D600:: // 0x202d600
 	.space 512
 byte_202D800:: // 0x202d800
 	.space 512
-byte_202DA00:: // 0x202da00
+eDecompressedTextArchive202DA00:: // 0x202da00
 	.space 4
 eTextScript202DA04:: // 0x202da04
 	.space 508
@@ -2472,7 +2467,7 @@ byte_202F57C:: // 0x202f57c
 	.space 644
 byte_202F800:: // 0x202f800
 	.space 512
-byte_202FA00:: // 0x202fa00
+eDecompressedTextArchive202FA00:: // 0x202fa00
 	.space 4
 byte_202FA04:: // 0x202fa04
 	.space 1532
@@ -2546,7 +2541,7 @@ word_2033040:: // 0x2033040
 	.space 2
 word_2033042:: // 0x2033042
 	.space 958
-unk_2033400:: // 0x2033400
+DecompressionBuf2033400:: // 0x2033400
 	.space 4
 eTextScript2033404:: // 0x2033404
 	.space 764
@@ -2648,7 +2643,7 @@ byte_20349B1:: // 0x20349b1
 	.space 15
 byte_20349C0:: // 0x20349c0
 	.space 64
-unk_2034A00:: // 0x2034a00
+eDecompressionBuf2034A00:: // 0x2034a00
 	.space 4
 eTextScript2034A04:: // 0x2034a04
 	.space 12

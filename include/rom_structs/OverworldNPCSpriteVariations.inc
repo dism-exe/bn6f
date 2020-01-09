@@ -1,5 +1,6 @@
 
 	.macro ow_npc_sprite_variations_struct sprite_id, hidden_oam_pieces, palette_index
+    // type: struct OverworldNPCSpriteVariations
 	init_rom_struct ow_npc_sprite_variations_struct
 	u8 SpriteId, \sprite_id // loc=0x0
 	u8 HiddenOAMPieces, \hidden_oam_pieces // loc=0x1

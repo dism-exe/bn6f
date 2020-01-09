@@ -1,6 +1,7 @@
 
 	// toolkit struct, always in r10
 	.macro toolkit_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct Toolkit
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
 	ptr MainJumptableIndexPtr // loc=0x0

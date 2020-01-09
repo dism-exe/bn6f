@@ -1,5 +1,6 @@
 
 	.macro warp_2011bb0_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct Warp2011bb0
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
 	union

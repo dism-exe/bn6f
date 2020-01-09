@@ -955,7 +955,7 @@ void sub_8000DE0()
 
 
 // 0x8000e10
-void __cdecl sub_8000E10()
+void __cdecl CapIncrementGameTimeFrames()
 {
     Toolkit *tk; // r10
     _DWORD *v1; // r3

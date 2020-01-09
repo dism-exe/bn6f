@@ -28,7 +28,7 @@ sub_81440D8:
 	strh r0, [r1]
 	mov r4, #0
 	str r4, [sp]
-	ldr r1, off_8144148 // =byte_200F460 
+	ldr r1, off_8144148 // =eTimerEnable200F460 
 	ldr r2, dword_814414C // =0x5000266 
 	mov r0, sp
 	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
@@ -50,7 +50,7 @@ off_8144138: .word InterruptEnableRegister
 dword_814413C: .word 0xFF3F
 off_8144140: .word SIOControlRegister
 off_8144144: .word Timer3Control
-off_8144148: .word byte_200F460
+off_8144148: .word eTimerEnable200F460
 dword_814414C: .word 0x5000266
 off_8144150: .word unk_200F44C
 dword_8144154: .word 0x1000002
@@ -100,7 +100,7 @@ sub_8144158:
 	str r1, [r2,#0x4] // (SIOData2_2ndChild__Multi_PlayerMode_ - 0x4000120)
 	mov r5, #0
 	str r5, [sp]
-	ldr r1, off_8144210 // =byte_200F460 
+	ldr r1, off_8144210 // =eTimerEnable200F460 
 	ldr r2, dword_8144214 // =0x5000266 
 	mov r0, sp
 	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
@@ -139,7 +139,7 @@ off_8144200: .word SIOControlRegister
 dword_8144204: .word 0x4003
 off_8144208: .word SIOData_Normal_8bitandUARTMode_
 off_814420C: .word SIOData0_Parent__Multi_PlayerMode_
-off_8144210: .word byte_200F460
+off_8144210: .word eTimerEnable200F460
 dword_8144214: .word 0x5000266
 off_8144218: .word unk_200F44C
 dword_814421C: .word 0x1000002
@@ -169,7 +169,7 @@ sub_8144250:
 	mov r4, r0
 	mov r5, r1
 	mov r6, r2
-	ldr r0, off_814426C // =byte_200F460 
+	ldr r0, off_814426C // =eTimerEnable200F460 
 	ldrb r0, [r0,#0x1] // (byte_200F461 - 0x200f460)
 	// switch 6 cases 
 	cmp r0, #5
@@ -181,7 +181,7 @@ sub_8144250:
 	// switch jump
 	mov pc, r0
 	.balign 4, 0
-off_814426C: .word byte_200F460
+off_814426C: .word eTimerEnable200F460
 off_8144270: .word jpt_8144268
 jpt_8144268:
 	// jump table for switch statement
@@ -193,22 +193,22 @@ jpt_8144268:
 	.word loc_814430C
 loc_814428C:
 	bl sub_81440D8 // static () -> void
-	ldr r1, off_8144298 // =byte_200F460 
+	ldr r1, off_8144298 // =eTimerEnable200F460 
 	mov r0, #1
 	strb r0, [r1,#0x1] // (byte_200F461 - 0x200f460)
 	b def_8144268
-off_8144298: .word byte_200F460
+off_8144298: .word eTimerEnable200F460
 loc_814429C:
 	ldrb r0, [r4]
 	cmp r0, #1
 	bne def_8144268
 	bl sub_8144158
-	ldr r1, off_81442B0 // =byte_200F460 
+	ldr r1, off_81442B0 // =eTimerEnable200F460 
 	mov r0, #2
 	strb r0, [r1,#0x1] // (byte_200F461 - 0x200f460)
 	b def_8144268
 	.byte 0, 0
-off_81442B0: .word byte_200F460
+off_81442B0: .word eTimerEnable200F460
 loc_81442B4:
 	ldrb r1, [r4]
 	cmp r1, #1
@@ -218,7 +218,7 @@ loc_81442B4:
 	bl sub_8144380
 	b def_8144268
 loc_81442C4:
-	ldr r2, off_81442D8 // =byte_200F460 
+	ldr r2, off_81442D8 // =eTimerEnable200F460 
 	ldrb r0, [r2]
 	cmp r0, #0
 	beq def_8144268
@@ -228,19 +228,19 @@ loc_81442C4:
 	strb r1, [r2,#0x10] // (byte_200F470 - 0x200f460)
 	b def_8144268
 	.balign 4, 0x00
-off_81442D8: .word byte_200F460
+off_81442D8: .word eTimerEnable200F460
 loc_81442DC:
-	ldr r0, off_81442E8 // =byte_200F460 
+	ldr r0, off_81442E8 // =eTimerEnable200F460 
 	mov r1, #0
 	strb r1, [r0,#0x1] // (byte_200F461 - 0x200f460)
 	ldr r0, off_81442EC // =SIOData_Normal_8bitandUARTMode_ 
 	strh r1, [r0]
 	b def_8144268
-off_81442E8: .word byte_200F460
+off_81442E8: .word eTimerEnable200F460
 off_81442EC: .word SIOData_Normal_8bitandUARTMode_
 loc_81442F0:
 	bl sub_81443AC
-	ldr r1, off_8144308 // =byte_200F460 
+	ldr r1, off_8144308 // =eTimerEnable200F460 
 	mov r0, #4
 	strb r0, [r1,#0x1] // (byte_200F461 - 0x200f460)
 loc_81442FA:
@@ -249,15 +249,15 @@ loc_81442FA:
 	mov r0, r6
 	bl sub_81444E4
 	b def_8144268
-off_8144308: .word byte_200F460
+off_8144308: .word eTimerEnable200F460
 loc_814430C:
-	ldr r1, off_8144354 // =byte_200F460 
+	ldr r1, off_8144354 // =eTimerEnable200F460 
 	mov r0, #2
 	strb r0, [r1,#0x15] // (byte_200F475 - 0x200f460)
 def_8144268:
 	mov r0, #0
 	strb r0, [r4]
-	ldr r1, off_8144354 // =byte_200F460 
+	ldr r1, off_8144354 // =eTimerEnable200F460 
 	ldrb r2, [r1,#0x2] // (byte_200F462 - 0x200f460)
 	ldrb r0, [r1,#0x3] // (byte_200F463 - 0x200f460)
 	lsl r0, r0, #2
@@ -289,7 +289,7 @@ loc_814432A:
 	orr r0, r2
 	b loc_814435C
 	.balign 4, 0x00
-off_8144354: .word byte_200F460
+off_8144354: .word eTimerEnable200F460
 loc_8144358:
 	mov r0, r2
 	orr r0, r3
@@ -322,7 +322,7 @@ sub_8144380:
 	ldr r1, [r0]
 	mov r0, #0xc
 	and r1, r0
-	ldr r2, off_81443A0 // =byte_200F460 
+	ldr r2, off_81443A0 // =eTimerEnable200F460 
 	cmp r1, #8
 	bne loc_81443A4
 	ldrb r0, [r2,#0x2] // (byte_200F462 - 0x200f460)
@@ -332,7 +332,7 @@ sub_8144380:
 	b loc_81443A8
 	.balign 4, 0
 off_814439C: .word SIOControlRegister
-off_81443A0: .word byte_200F460
+off_81443A0: .word eTimerEnable200F460
 loc_81443A4:
 	mov r0, #0
 	strb r0, [r2]
@@ -344,7 +344,7 @@ loc_81443A8:
 	thumb_local_start
 sub_81443AC:
 	push {r4,lr}
-	ldr r0, off_81443E4 // =byte_200F460 
+	ldr r0, off_81443E4 // =eTimerEnable200F460 
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq loc_81443DC
@@ -372,7 +372,7 @@ loc_81443DC:
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_81443E4: .word byte_200F460
+off_81443E4: .word eTimerEnable200F460
 off_81443E8: .word Timer3Counter_Reload
 dword_81443EC: .word 0xFF7C
 off_81443F0: .word word_2006DFC
@@ -394,7 +394,7 @@ sub_81443FC:
 	strh r0, [r2]
 	mov r0, #0
 	strh r0, [r1]
-	ldr r1, off_814447C // =byte_200F460 
+	ldr r1, off_814447C // =eTimerEnable200F460 
 	ldr r4, off_8144480 // =0x211 
 	add r0, r1, r4
 	ldrb r4, [r0]
@@ -447,7 +447,7 @@ loc_8144450:
 	.balign 4, 0
 off_8144474: .word word_2006DFC
 off_8144478: .word InterruptMasterEnableRegister
-off_814447C: .word byte_200F460
+off_814447C: .word eTimerEnable200F460
 off_8144480: .word 0x211
 off_8144484: .word word_2006E02
 off_8144488: .word byte_200F440
@@ -510,7 +510,7 @@ sub_81444E4:
 	strh r0, [r2]
 	mov r0, #0
 	strh r0, [r1]
-	ldr r1, off_814454C // =byte_200F460 
+	ldr r1, off_814454C // =eTimerEnable200F460 
 	ldr r3, dword_8144550 // =0x995 
 	add r0, r1, r3
 	ldrb r0, [r0]
@@ -551,7 +551,7 @@ loc_8144534:
 	.balign 4, 0
 off_8144544: .word word_2006DFC
 off_8144548: .word InterruptMasterEnableRegister
-off_814454C: .word byte_200F460
+off_814454C: .word eTimerEnable200F460
 dword_8144550: .word 0x995
 loc_8144554:
 	mov r3, #0
@@ -641,7 +641,7 @@ off_81445F4: .word word_2006DFC
 	thumb_func_start sub_81445F8
 sub_81445F8:
 	push {r4,lr}
-	ldr r4, off_8144620 // =byte_200F460 
+	ldr r4, off_8144620 // =eTimerEnable200F460 
 	ldrb r3, [r4]
 	cmp r3, #0
 	beq loc_8144664
@@ -660,14 +660,14 @@ sub_81445F8:
 	strb r0, [r4,#0x15] // (byte_200F475 - 0x200f460)
 	b loc_8144690
 	.balign 4, 0
-off_8144620: .word byte_200F460
+off_8144620: .word eTimerEnable200F460
 loc_8144624:
 	ldrb r0, [r4,#0x15] // (byte_200F475 - 0x200f460)
 	cmp r0, #0
 	bne loc_8144690
 	strb r0, [r4,#0xd] // (byte_200F46D - 0x200f460)
 loc_814462C:
-	bl sub_814474C
+	bl libSIOControlStart
 	ldr r0, off_8144658 // =byte_200F454 
 	ldrb r2, [r0]
 	cmp r2, #2
@@ -680,7 +680,7 @@ loc_814462C:
 	lsr r0, r0, #0x18
 	cmp r0, #6
 	bls loc_8144690
-	ldr r0, off_8144660 // =byte_200F460 
+	ldr r0, off_8144660 // =eTimerEnable200F460 
 	mov r1, #0
 	strb r2, [r0,#0x15] // (byte_200F475 - 0x200f460)
 	strb r1, [r0,#0x2] // (byte_200F462 - 0x200f460)
@@ -690,7 +690,7 @@ loc_814462C:
 	.balign 4, 0x00
 off_8144658: .word byte_200F454
 off_814465C: .word byte_200F450
-off_8144660: .word byte_200F460
+off_8144660: .word eTimerEnable200F460
 loc_8144664:
 	ldrb r2, [r4,#0x1] // (byte_200F461 - 0x200f460)
 	cmp r2, #4
@@ -724,22 +724,22 @@ loc_8144690:
 off_8144698: .word byte_200F450
 	thumb_func_end sub_81445F8
 
-	thumb_func_start sub_814469C
-sub_814469C:
+	thumb_func_start libSIO814469C
+libSIO814469C:
 	push {lr}
-	bl sub_8144BBC
-	bl sub_814474C
+	bl libStopAndReloadTimer3If_eTimerEnable200F460
+	bl libSIOControlStart
 	pop {r0}
 	bx r0
 	.balign 4, 0x00
-	thumb_func_end sub_814469C
+	thumb_func_end libSIO814469C
 
 	thumb_func_start sub_81446AC
 sub_81446AC:
 	push {r4,lr}
 	ldr r0, off_81446D4 // =SIOControlRegister 
 	ldr r0, [r0]
-	ldr r4, off_81446D8 // =byte_200F460 
+	ldr r4, off_81446D8 // =eTimerEnable200F460 
 	lsl r0, r0, #0x1a
 	lsr r0, r0, #0x1e
 	strb r0, [r4,#0x2] // (byte_200F462 - 0x200f460)
@@ -754,7 +754,7 @@ sub_81446AC:
 	b loc_8144714
 	.balign 4, 0
 off_81446D4: .word SIOControlRegister
-off_81446D8: .word byte_200F460
+off_81446D8: .word eTimerEnable200F460
 loc_81446DC:
 	bl sub_814475C
 	lsl r0, r0, #0x18
@@ -787,7 +787,7 @@ loc_8144702:
 	cmp r2, #3
 	bls loc_8144702
 loc_8144714:
-	ldr r3, off_814473C // =byte_200F460 
+	ldr r3, off_814473C // =eTimerEnable200F460 
 	ldrb r0, [r3,#0xd] // (byte_200F46D - 0x200f460)
 	add r0, #1
 	mov r2, #0
@@ -808,14 +808,14 @@ loc_8144734:
 	pop {r0}
 	bx r0
 	.balign 4, 0x00
-off_814473C: .word byte_200F460
+off_814473C: .word eTimerEnable200F460
 off_8144740: .word byte_200F450
 off_8144744: .word byte_200F448
 dword_8144748: .word 0x995
 	thumb_func_end sub_81446AC
 
 	thumb_local_start
-sub_814474C:
+libSIOControlStart:
 	ldr r0, off_8144758 // =SIOControlRegister 
 	ldrh r1, [r0]
 	mov r2, #0x80
@@ -823,7 +823,7 @@ sub_814474C:
 	strh r1, [r0]
 	bx lr
 off_8144758: .word SIOControlRegister
-	thumb_func_end sub_814474C
+	thumb_func_end libSIOControlStart
 
 	thumb_local_start
 sub_814475C:
@@ -844,7 +844,7 @@ sub_814475C:
 	beq loc_814477C
 	b loc_81448CC
 loc_814477C:
-	ldr r0, off_8144794 // =byte_200F460 
+	ldr r0, off_8144794 // =eTimerEnable200F460 
 	ldrb r1, [r0,#0x10] // (byte_200F470 - 0x200f460)
 	mov r10, r0
 	cmp r1, #1
@@ -855,7 +855,7 @@ loc_814477C:
 	.balign 4, 0
 dword_814478C: .word 0xFFFF
 off_8144790: .word byte_200F454
-off_8144794: .word byte_200F460
+off_8144794: .word eTimerEnable200F460
 off_8144798: .word SIOData_Normal_8bitandUARTMode_
 dword_814479C: .word 0x8FFF
 loc_81447A0:
@@ -1015,7 +1015,7 @@ loc_81448BA:
 	.balign 4, 0x00
 off_81448C8: .word byte_2006E00
 loc_81448CC:
-	ldr r0, off_81448DC // =byte_200F460 
+	ldr r0, off_81448DC // =eTimerEnable200F460 
 	ldrb r1, [r0,#0x10] // (byte_200F470 - 0x200f460)
 	mov r10, r0
 	cmp r1, #1
@@ -1023,7 +1023,7 @@ loc_81448CC:
 	ldr r1, off_81448E0 // =SIOData_Normal_8bitandUARTMode_ 
 	ldr r2, dword_81448E4 // =0x8fff 
 	b loc_81448EC
-off_81448DC: .word byte_200F460
+off_81448DC: .word eTimerEnable200F460
 off_81448E0: .word SIOData_Normal_8bitandUARTMode_
 dword_81448E4: .word 0x8FFF
 loc_81448E8:
@@ -1083,7 +1083,7 @@ loc_8144938:
 	lsr r4, r0, #0x18
 	cmp r4, #3
 	bls loc_8144938
-	ldr r0, off_81449A8 // =byte_200F460 
+	ldr r0, off_81449A8 // =eTimerEnable200F460 
 	mov r6, r0
 	add r0, #0x28 
 	ldrb r0, [r0]
@@ -1126,7 +1126,7 @@ loc_8144978:
 	.balign 4, 0
 off_81449A0: .word SIOData0_Parent__Multi_PlayerMode_
 off_81449A4: .word byte_200F489
-off_81449A8: .word byte_200F460
+off_81449A8: .word eTimerEnable200F460
 off_81449AC: .word byte_2006E01
 loc_81449B0:
 	cmp r2, #2
@@ -1308,7 +1308,7 @@ dword_8144AF8: .word 0x995
 	thumb_local_start
 sub_8144AFC:
 	push {lr}
-	ldr r1, off_8144B40 // =byte_200F460 
+	ldr r1, off_8144B40 // =eTimerEnable200F460 
 	mov r0, r1
 	add r0, #0x28 
 	ldrb r0, [r0]
@@ -1341,7 +1341,7 @@ sub_8144AFC:
 	strb r2, [r1]
 	b loc_8144BB2
 	.balign 4, 0
-off_8144B40: .word byte_200F460
+off_8144B40: .word eTimerEnable200F460
 off_8144B44: .word SIOData_Normal_8bitandUARTMode_
 off_8144B48: .word byte_2006DFE
 off_8144B4C: .word 0x211
@@ -1405,36 +1405,39 @@ off_8144BB8: .word SIOData_Normal_8bitandUARTMode_
 	thumb_func_end sub_8144AFC
 
 	thumb_local_start
-sub_8144BBC:
+libStopAndReloadTimer3If_eTimerEnable200F460:
 	push {lr}
-	ldr r0, off_8144BDC // =byte_200F460 
+	ldr r0, off_8144BDC // =eTimerEnable200F460 
 	ldrb r0, [r0]
-	cmp r0, #0
-	beq loc_8144BD8
+	cmp r0, #FALSE
+	beq .timerDisabled
+
+	// Stop Timer3
 	ldr r2, off_8144BE0 // =Timer3Control 
 	ldrh r1, [r2]
 	ldr r0, dword_8144BE4 // =0xff7f 
 	and r0, r1
 	strh r0, [r2]
+	
 	ldr r1, off_8144BE8 // =Timer3Counter_Reload 
 	ldr r2, dword_8144BEC // =0xff7c 
 	mov r0, r2
 	strh r0, [r1]
-loc_8144BD8:
+.timerDisabled
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_8144BDC: .word byte_200F460
+off_8144BDC: .word eTimerEnable200F460
 off_8144BE0: .word Timer3Control
 dword_8144BE4: .word 0xFF7F
 off_8144BE8: .word Timer3Counter_Reload
 dword_8144BEC: .word 0xFF7C
-	thumb_func_end sub_8144BBC
+	thumb_func_end libStopAndReloadTimer3If_eTimerEnable200F460
 
 	thumb_local_start
 sub_8144BF0:
 	push {lr}
-	ldr r1, off_8144C08 // =byte_200F460 
+	ldr r1, off_8144C08 // =eTimerEnable200F460 
 	mov r2, r1
 	add r2, #0x29 
 	ldrb r0, [r2]
@@ -1446,7 +1449,7 @@ sub_8144BF0:
 	strb r0, [r2]
 	b loc_8144C1C
 	.balign 4, 0
-off_8144C08: .word byte_200F460
+off_8144C08: .word eTimerEnable200F460
 loc_8144C0C:
 	ldrb r0, [r1]
 	cmp r0, #0
@@ -1465,7 +1468,7 @@ off_8144C20: .word Timer3Control
 	thumb_local_start
 sub_8144C24:
 	push {r4,r5,lr}
-	ldr r1, off_8144C68 // =byte_200F460 
+	ldr r1, off_8144C68 // =eTimerEnable200F460 
 	ldr r2, off_8144C6C // =0x211 
 	add r0, r1, r2
 	mov r2, #0
@@ -1502,7 +1505,7 @@ loc_8144C48:
 	bx r0
 	thumb_func_end sub_8144C24
 
-off_8144C68: .word byte_200F460
+off_8144C68: .word eTimerEnable200F460
 off_8144C6C: .word 0x211
 byte_8144C70: .byte 0xFF, 0xEF, 0x0, 0x0, 0xF0, 0xB5, 0x16, 0x49, 0x16, 0x4A
 	.byte 0x88, 0x18, 0x0, 0x22, 0x2, 0x70, 0x15, 0x4B, 0xC8, 0x18
@@ -1545,26 +1548,26 @@ loc_8144CA4:
 	pop {r0}
 	bx r0
 	.byte 0, 0
-	.word byte_200F460
+	.word eTimerEnable200F460
 	.byte 0x95, 0x9, 0x0, 0x0, 0x94, 0x9, 0x0, 0x0, 0xFF, 0xEF, 0x0, 0x0
 	thumb_func_end sub_8144C90
 
 	thumb_func_start sub_8144CE0
 sub_8144CE0:
-	ldr r0, off_8144CE8 // =byte_200F460 
+	ldr r0, off_8144CE8 // =eTimerEnable200F460 
 	ldrb r0, [r0,#0x1] // (byte_200F461 - 0x200f460)
 	bx lr
 	.balign 4, 0x00
-off_8144CE8: .word byte_200F460
+off_8144CE8: .word eTimerEnable200F460
 	thumb_func_end sub_8144CE0
 
 	thumb_local_start
 sub_8144CEC:
-	ldr r0, off_8144CF4 // =byte_200F460 
+	ldr r0, off_8144CF4 // =eTimerEnable200F460 
 	add r0, #0x29 
 	ldrb r0, [r0]
 	bx lr
-off_8144CF4: .word byte_200F460
+off_8144CF4: .word eTimerEnable200F460
 	thumb_func_end sub_8144CEC
 
 	thumb_local_start
@@ -1580,13 +1583,13 @@ off_8144D00: .word byte_200F454
 sub_8144D04:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	ldr r1, off_8144D14 // =byte_200F460 
+	ldr r1, off_8144D14 // =eTimerEnable200F460 
 	add r1, #0x2a 
 	add r0, r0, r1
 	ldrb r0, [r0]
 	bx lr
 	.balign 4, 0x00
-off_8144D14: .word byte_200F460
+off_8144D14: .word eTimerEnable200F460
 	thumb_func_end sub_8144D04
 
 	thumb_func_start sub_8144D18
@@ -1609,11 +1612,11 @@ off_8144D2C: .word byte_200F448
 
 	thumb_func_start sub_8144D30
 sub_8144D30:
-	ldr r1, off_8144D38 // =byte_200F460 
+	ldr r1, off_8144D38 // =eTimerEnable200F460 
 	mov r0, #5
 	strb r0, [r1,#0x1] // (byte_200F461 - 0x200f460)
 	bx lr
-off_8144D38: .word byte_200F460
+off_8144D38: .word eTimerEnable200F460
 	thumb_func_end sub_8144D30
 
 	thumb_local_start

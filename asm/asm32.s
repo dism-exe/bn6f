@@ -15562,13 +15562,13 @@ off_8116900: .word 0x390
 sub_8116904:
 	push {lr}
 	push {r5}
-	ldr r5, off_8116918 // =reqBBS_eStruct2001150
+	ldr r5, off_8116918 // =eReqBBS2001150
 	bl reqBBS_813EE58
 	pop {r5}
 	bl sprite_update
 	pop {pc}
 	.balign 4, 0
-off_8116918: .word reqBBS_eStruct2001150
+off_8116918: .word eReqBBS2001150
 	thumb_func_end sub_8116904
 
 	thumb_local_start
@@ -17676,7 +17676,7 @@ sub_8117A14:
 	ldr r1, dword_8117A80 // =0x6013b40
 	mov r2, #0x20
 	lsl r2, r2, #4
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8117A7C: .word unk_2016300
@@ -17760,7 +17760,7 @@ sub_8117AB4:
 	ldr r1, dword_8117B30 // =0x6013c40
 	mov r2, #0x10
 	lsl r2, r2, #4
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8117B2C: .word unk_2016400
@@ -18875,7 +18875,7 @@ sub_811842C:
 	cmp r0, #0x28
 	beq loc_811843E
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_8118454
 loc_811843E:
 	ldrb r0, [r6,#0xc]
@@ -18912,7 +18912,7 @@ sub_811847C:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_811848A
 	mov r4, #0x23
 loc_811848A:
@@ -18949,7 +18949,7 @@ sub_81184C0:
 	push {lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_81184CE
 	mov r4, #0x23
 loc_81184CE:
@@ -18987,7 +18987,7 @@ sub_8118510:
 	push {lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_811851E
 	mov r4, #0x23
 loc_811851E:
@@ -19023,7 +19023,7 @@ sub_8118550:
 	push {lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_811855E
 	mov r4, #0x23
 loc_811855E:
@@ -19044,7 +19044,7 @@ sub_811857C:
 	push {lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_811858A
 	mov r4, #0x23
 loc_811858A:
@@ -19064,7 +19064,7 @@ loc_811858A:
 sub_81185A8:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq locret_81185B6
 	mov r0, #1
 	strb r0, [r5]
@@ -19524,7 +19524,7 @@ sub_811891C:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_811892A
 	mov r4, #0x23
 loc_811892A:
@@ -19564,7 +19564,7 @@ sub_8118964:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_8118972
 	mov r4, #0x23
 loc_8118972:
@@ -19658,7 +19658,7 @@ sub_8118A00:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_8118A0E
 	mov r4, #0x23
 loc_8118A0E:
@@ -19682,7 +19682,7 @@ sub_8118A2C:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_8118A3A
 	mov r4, #0x23
 loc_8118A3A:
@@ -19982,7 +19982,7 @@ sub_8118C8C:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_8118C9A
 	mov r4, #0x43
 loc_8118C9A:
@@ -20793,7 +20793,7 @@ loc_8119454:
 	mov r6, #0
 loc_8119478:
 	push {r0-r2}
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r0-r2}
 	add r0, r0, r4
 	ldr r3, off_8119658 // =0x100
@@ -20821,7 +20821,7 @@ loc_8119478:
 	ldr r2, dword_8119664 // =0x800
 	add r1, r1, r2
 	mov r2, #0x40 
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldr r1, off_811964C // =off_8119304
 	ldrb r2, [r5,#5]
 	lsl r2, r2, #2
@@ -20842,7 +20842,7 @@ loc_8119478:
 	ldr r2, dword_8119670 // =0x840
 	add r1, r1, r2
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldr r1, off_8119650 // =off_8119330
 	ldrb r2, [r5,#5]
 	lsl r2, r2, #2
@@ -21578,7 +21578,7 @@ sub_8119A48:
 	and r4, r3
 	bne loc_8119A76
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_8119A76
 	mov r0, #SOUND_UNK_7E
 	bl PlaySoundEffect
@@ -21674,7 +21674,7 @@ loc_8119B02:
 	bl notZero_eByte200AD04
 	beq loc_8119B22
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8119B22
 	mov r0, #0xc
 	add r0, r0, r4
@@ -21849,7 +21849,7 @@ sub_8119C94:
 	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	mov r4, r0
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8119CB6
 	mov r0, #0x17
 	add r4, r4, r0
@@ -21946,11 +21946,11 @@ sub_8119DE8:
 	mov r1, #0x80
 	orr r4, r1
 	movflag EVENT_1720
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8119E1A
 	b loc_8119E18
 	movflag EVENT_1723
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8119E1A
 loc_8119E18:
 	mov r4, #1
@@ -23184,7 +23184,7 @@ sub_811A818:
 	push {r4,lr}
 	mov r4, #0x23
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_811A826
 	mov r4, #1
 loc_811A826:
@@ -23279,7 +23279,7 @@ sub_811A8D0:
 	ldrb r4, [r5]
 	mov r7, #2
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_811A8E2
 	bic r4, r7
 	b loc_811A8E4
@@ -23988,7 +23988,7 @@ sub_811AE7C:
 	lsl r2, r2, #2
 	ldr r1, [r1,r2]
 	ldr r2, off_811AF44 // =0x80 
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldr r1, off_811AF48 // =off_811AF4C
 	ldr r0, [r1,r4]
 	ldr r1, off_811AF7C // =off_811AF80
@@ -23996,7 +23996,7 @@ sub_811AE7C:
 	lsl r2, r2, #2
 	ldr r1, [r1,r2]
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldr r1, off_811AF88 // =off_811AF8C 
 	lsl r6, r6, #2
 	ldr r0, [r1,r6]
@@ -24005,14 +24005,14 @@ sub_811AE7C:
 	lsl r2, r2, #2
 	ldr r1, [r1,r2]
 	ldr r2, off_811AFD4 // =0x200 
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	ldr r0, off_811AFD0 // =off_86DC3F8 
 	ldr r1, off_811AFC4 // =off_811AFC8 
 	ldr r2, [sp,#4]
 	lsl r2, r2, #2
 	ldr r1, [r1,r2]
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	mov r1, #0x23 
 loc_811AEF2:
 	strb r1, [r5]
@@ -24064,7 +24064,7 @@ off_811AF8C: .word unk_202CA00
 	.word byte_202D400
 	.word byte_202D600
 	.word byte_202D800
-	.word byte_202DA00
+	.word eDecompressedTextArchive202DA00
 	.word byte_202DC00
 	.word unk_202DE00
 off_811AFB8: .word byte_811AFBC
@@ -25332,7 +25332,7 @@ sub_811BA88:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_811BAAC
 	ldrb r0, [r6,#0xc]
 	cmp r0, #0xc
@@ -25736,7 +25736,7 @@ sub_811BD88:
 	bl notZero_eByte200AD04
 	beq loc_811BDB4
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_811BDB4
 	mov r1, #0x17
 	add r4, r4, r1
@@ -29078,9 +29078,8 @@ sub_811DF94:
 	bl sprite_noShadow // () -> void
 	b loc_811DFBA
 loc_811DFB0:
-	mov r0, #0xb
-	mov r1, #0xf2
-	bl TestEventFlagFromImmediate
+	movflag EVENT_BF2
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_811DFC0
 loc_811DFBA:
 	bl sub_811DFD4
@@ -29306,7 +29305,7 @@ loc_811E14C:
 	ldr r1, dword_811E15C // =0x6015580
 	mov r2, #0xa
 	lsl r2, r2, #5
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_811E15C: .word 0x6015580
@@ -30088,7 +30087,7 @@ loc_811E774:
 	ldr r1, dword_811E794 // =0x6014180
 	mov r2, #0x34
 	lsl r2, r2, #4
-	bl QueueWordAlignedGFXTransfer
+	bl QueueWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_811E794: .word 0x6014180
@@ -30704,7 +30703,7 @@ loc_811EDF2:
 loc_811EE08:
 	mov r4, r0
 	movflag EVENT_PET_COMM_SAVE_DISABLED
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_811EE24
 	cmp r4, #6
 	beq loc_811EE1C
@@ -30805,7 +30804,7 @@ sub_811EED0:
 	mov r0, #SOUND_UNSELECT_7C
 	bl PlaySoundEffect
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_811EEF8
 	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
@@ -31086,7 +31085,7 @@ loc_811F122:
 	strh r1, [r2]
 loc_811F13C:
 	movflag EVENT_PET_COMM_SAVE_DISABLED
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_811F150
 	ldr r2, [r4,#0x1c] // (off_811F174 - 0x811f158)
 	ldr r1, dword_811F180 // =0x5a7a
@@ -31571,7 +31570,7 @@ loc_811F6A8:
 	ldr r2, [sp,#0x10]
 	mov r3, #0x40
 	mul r2, r3
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	add sp, sp, #0x18
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -33315,7 +33314,7 @@ loc_81203B4:
 	ldr r0, [r0,#0x20]
 	mov r1, r4
 	mov r2, #0x80
-	bl QueueWordAlignedGFXTransfer
+	bl QueueWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	b loc_81203D2
 loc_81203CC:
 	mov r0, #0
@@ -33903,17 +33902,17 @@ loc_8120808:
 	ldrh r0, [r4]
 	add r0, r0, r7
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_812082C
 	ldrh r0, [r4,#2]
 	add r0, r0, r7
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_812082C
 	ldrh r0, [r4,#4]
 	add r0, r0, r7
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_812086E
 loc_812082C:
 	cmp r5, #4
@@ -34457,17 +34456,17 @@ sub_8120BE4:
 	ldrh r0, [r4]
 	add r0, r0, r5
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8120C84
 	ldrh r0, [r4,#0x2] // (word_8120C8E - 0x8120c8c)
 	add r0, r0, r5
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8120C84
 	ldrh r0, [r4,#0x4] // (word_8120C90 - 0x8120c8c)
 	add r0, r0, r5
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8120C84
 	mov r7, #0
 loc_8120C84:
@@ -34692,7 +34691,7 @@ loc_8120E22:
 	cmp r7, #0
 	bne loc_8120E56
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8120E56
 	mov r7, r4
 	mov r6, #0
@@ -34740,7 +34739,7 @@ loc_8120E7C:
 loc_8120E8C:
 	push {r0,r1}
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	pop {r0,r1}
 	bne loc_8120EA0
 loc_8120E9A:
@@ -34752,7 +34751,7 @@ loc_8120EA0:
 	b loc_8120E66
 loc_8120EA6:
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8120EF2
 	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
@@ -34925,7 +34924,7 @@ sub_8121108:
 loc_812110E:
 	ldr r0, [r4,r6]
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_812111E
 	sub r6, #4
 	bge loc_812110E

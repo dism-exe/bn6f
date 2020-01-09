@@ -1,5 +1,6 @@
 
 	.macro cutscene_state_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct CutsceneState
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
 	struct_org 0x4
@@ -26,7 +27,7 @@
 	ptr CutsceneScriptPos2 // loc=0x20
 	ptr CutsceneScriptPos3 // loc=0x24
 	ptr CutsceneScriptPos4 // loc=0x28
-	u32 CutsceneFlags // loc=0x2c
+	flags32 CutsceneFlags // loc=0x2c
 		struct_const CUTSCENE_FLAG_SCRIPT_1_PAUSED, 0x0
 		struct_const CUTSCENE_FLAG_SCRIPT_2_PAUSED, 0x1
 		struct_const CUTSCENE_FLAG_SCRIPT_3_PAUSED, 0x2
@@ -37,7 +38,7 @@
 		struct_const CUTSCENE_FLAG_SCRIPT_4_PAUSED_LONG, 0x7
 		struct_const CUTSCENE_FLAG_8, 0x8
 		struct_const CUTSCENE_FLAG_9, 0x9
-	ptr TextArchivePtr // loc=0x30
+	TextScriptArchivePtr TextArchivePtr // loc=0x30
 	ptr Unk_34 // loc=0x34
 	ptr CutsceneScriptAfterCutsceneSkip // loc=0x38
 	ptr CutsceneCameraScriptPtr // loc=0x3c

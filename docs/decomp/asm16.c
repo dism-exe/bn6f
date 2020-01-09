@@ -17,7 +17,7 @@ unsigned int GreenArea_EnterMapGroup()
     decompAndCopyMapTiles_8030472();
     initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(*(&off_8077D64 + *(v0 + 5)));
-    chatbox_uncompBasedOnMap_803FD08();
+    chatbox_uncompMapTextArchives_803FD08();
     GreenArea_SpawnMapObjectsForMap();
     return sub_8034FB8();
 }

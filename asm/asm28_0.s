@@ -200,58 +200,69 @@ CutsceneScript_80991F4: .byte 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17, 0x47, 0x0,
 
 	thumb_local_start
 RunLMessageTextScript:
+
 	push {r4-r7,lr}
 	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
 	bne loc_8099282
-	mov r0, r10
+	
+    mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_MapGroup]
-	cmp r0, #0x80
+	
+    cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_809924A
-	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate
-	bne loc_8099282
-	movflag EVENT_PET_NAVI_ACTIVE
-	bl TestEventFlagFromImmediate
+	
+    movflag EVENT_COPYBOT_ACTIVE
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+    bne loc_8099282
+	
+    movflag EVENT_PET_NAVI_ACTIVE
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8099282
+
 	movflag EVENT_172A
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8099282
+
 loc_809924A:
 	bl GetCurPETNavi // () -> u8
 	mov r1, #0x25 
 	bl GetNaviStatsByte
+
 	cmp r0, #1
 	bne loc_8099266
-	ldr r0, dword_8099294 // =0x88738b24 
-	bl uncomp_8037AEC
-	mov r1, #0
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+        ldr r0, MegamanJokesCompText8099294 // =CompText8738B24 + COMPRESSED_PTR_FLAG
+        bl DecompressTextArchiveForCutscene2
+        mov r1, #0
+        bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	b loc_8099290
-loc_8099266:
+
+loc_8099266
 	bl GetCurPETNavi // () -> u8
 	mov r1, #0x5f 
 	bl GetNaviStatsByte
+
 	cmp r0, #1
 	bne loc_8099282
-	ldr r0, dword_8099298 // =0x8873a528 
-	bl uncomp_8037AEC
-	mov r1, #0
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+        ldr r0, dword_8099298 // =CompText873A528 + COMPRESSED_PTR_FLAG
+        bl DecompressTextArchiveForCutscene2
+        mov r1, #0
+        bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	b loc_8099290
 loc_8099282:
-	bl chatbox_uncomp_803FD3C
+	bl chatbox_uncompMapTextArchives_803FD3C // () -> int
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_Unk_15]
 	bl chatbox_runTrainScript // (u8 scriptOffIdx) -> void
+
 loc_8099290:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
-dword_8099294: .word 0x88738B24
-dword_8099298: .word 0x8873A528
+MegamanJokesCompText8099294: .word CompText8738B24 + COMPRESSED_PTR_FLAG
+dword_8099298: .word CompText873A528 + COMPRESSED_PTR_FLAG
 byte_809929C: .byte 0x0, 0x0, 0x0, 0x0, 0x34, 0x1, 0xFF, 0x1, 0x76, 0x0, 0x44, 0x0, 0x0
 	.byte 0x0, 0x82, 0x0, 0x44, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x36, 0x1
 	.byte 0xFF, 0x1, 0x76, 0x0, 0x44, 0x0, 0x0, 0x0, 0x82, 0x0, 0x44, 0x0, 0x0
@@ -677,7 +688,7 @@ sub_809A05C:
 	push {r4-r7,lr}
 	ldr r0, off_809A074 // =TextScriptChipTrader86C580C
 	ldr r1, [r5,#8]
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	ldr r0, [r5,#0x74]
 	bl sub_809A360
 	mov r0, #0
@@ -692,10 +703,10 @@ off_809A074: .word TextScriptChipTrader86C580C
 sub_809A078:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_809A0F2
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_809A0E8
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -725,7 +736,7 @@ sub_809A078:
 	str r2, [r5,r0]
 	ldr r0, off_809A100 // =TextScriptChipTrader86C580C
 	mov r1, #0xf
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r2, #0
 	strh r2, [r7,#0x30] // (dword_200ACB0 - 0x200ac80)
 	strh r2, [r7,#0x4] // (word_200AC84 - 0x200ac80)
@@ -756,10 +767,10 @@ off_809A100: .word TextScriptChipTrader86C580C
 sub_809A104:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_809A116
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_809A12E
 loc_809A116:
 	ldr r0, [r5,#0x74]
@@ -784,7 +795,7 @@ loc_809A12E:
 sub_809A138:
 	push {r4-r7,lr}
 	movflag EVENT_F6
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809A1A4
 	ldr r0, [r5,#0xc]
 	sub r0, #1
@@ -802,7 +813,7 @@ loc_809A15C:
 	bl sub_803D0F4
 	str r0, [r5,#0x70]
 	movflag EVENT_F5
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809A1A4
 	mov r0, #0x20
 	strb r0, [r5,#4]
@@ -861,7 +872,7 @@ loc_809A1CC:
 	ldr r0, [r5,#0x74]
 	bl sub_809A360
 	movflag EVENT_F5
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809A1F6
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -889,7 +900,7 @@ loc_809A208:
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_809A252
 	bl sub_803D0F4
 	mov r7, r0
@@ -1079,7 +1090,7 @@ sub_809A3EC:
 	push {r4-r7,lr}
 	ldr r0, off_809A400 // =TextScriptChipTrader86C580C
 	ldr r1, [r5,#8]
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	ldr r0, [r5,#0x74]
 	bl sub_809A80C
 	mov r0, #0
@@ -1094,14 +1105,14 @@ sub_809A404:
 	ldr r0, [r5,#0x74]
 	bl sub_809A80C
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_809A442
 	bl chatbox_8045F4C
 	cmp r0, #0
 	bne loc_809A43A
 	ldr r0, off_809A448 // =TextScriptChipTrader86C580C
 	mov r1, #0x33 
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	movflag EVENT_1725
 	bl ClearEventFlagFromImmediate
 	mov r0, #8
@@ -1129,7 +1140,7 @@ sub_809A44C:
 	ldr r0, [r5,#0x74]
 	bl sub_809A80C
 	movflag EVENT_1725
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809A488
 	mov r0, #0x84
 	ldr r0, [r5,r0]
@@ -1153,7 +1164,7 @@ loc_809A46C:
 	b loc_809A4AA
 loc_809A488:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_809A4AE
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_ChatboxPtr]
@@ -1163,7 +1174,7 @@ loc_809A488:
 	bl sub_809A868
 	ldr r0, off_809A894 // =TextScriptChipTrader86C580C
 	mov r1, #0x35 
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #0
 	strb r0, [r5,#9]
 loc_809A4AA:
@@ -1180,10 +1191,10 @@ loc_809A4AE:
 sub_809A4B8:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_809A4CA
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_809A4E2
 loc_809A4CA:
 	ldr r0, [r5,#0x74]
@@ -1229,10 +1240,10 @@ sub_809A520:
 	ldr r0, [r5,#0x74]
 	bl sub_809A80C
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_809A610
 	mov r0, #0x20 
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_809A610
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -1323,14 +1334,14 @@ loc_809A5B8:
 loc_809A5EC:
 	ldr r0, off_809A894 // =TextScriptChipTrader86C580C
 	mov r1, #0x36 
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #2
 	strb r0, [r5,#9]
 	b loc_809A60C
 loc_809A5FA:
 	ldr r0, off_809A894 // =TextScriptChipTrader86C580C
 	mov r1, #0x33 
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #8
 	mov r1, #0x84
 	str r0, [r5,r1]
@@ -1355,7 +1366,7 @@ byte_809A628: .byte 0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0xFF, 0x0
 sub_809A630:
 	push {r4-r7,lr}
 	movflag EVENT_F6
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809A694
 	ldrh r0, [r5,#0xc]
 	sub r0, #1
@@ -1370,7 +1381,7 @@ loc_809A64E:
 	bl sub_802D15E
 	str r0, [r5,#0x70]
 	movflag EVENT_F5
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809A694
 	mov r0, #0x20 
 	strb r0, [r5,#4]
@@ -1428,7 +1439,7 @@ loc_809A6BC:
 	ldr r0, [r5,#0x74]
 	bl sub_809A80C
 	movflag EVENT_F5
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809A6E6
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -1456,7 +1467,7 @@ loc_809A6F8:
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_809A74E
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -1469,7 +1480,7 @@ loc_809A6F8:
 loc_809A72A:
 	ldr r0, off_809A894 // =TextScriptChipTrader86C580C
 	mov r1, #0x33 
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	movflag EVENT_1725
 	bl ClearEventFlagFromImmediate
 	mov r0, #8
@@ -1499,7 +1510,7 @@ sub_809A75C:
 	ldr r0, off_809A780 // =TextScriptChipTrader86C580C
 	mov r1, #0x8c
 	ldr r1, [r5,r1]
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r1, #1
 	mov r2, #0x8c
 	ldr r0, [r5,r2]
@@ -1518,7 +1529,7 @@ off_809A780: .word TextScriptChipTrader86C580C
 sub_809A784:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_809A7A6
 	ldr r0, [r5,#0x74]
 	add r0, #2
@@ -1552,7 +1563,7 @@ sub_809A7B0:
 	b loc_809A802
 loc_809A7C4:
 	mov r0, #0x20 
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_809A802
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -1563,7 +1574,7 @@ loc_809A7C4:
 	strb r1, [r5,#9]
 	ldr r0, off_809A894 // =TextScriptChipTrader86C580C
 	mov r1, #0x33 
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	movflag EVENT_1725
 	bl ClearEventFlagFromImmediate
 	mov r0, #8
@@ -1719,7 +1730,7 @@ byte_809A934: .byte 0x80, 0x79, 0x6C, 0x88, 0x0, 0x4E, 0x3, 0x2, 0x0, 0x37, 0x3
 sub_809A950:
 	push {r4-r7,lr}
 	movflag EVENT_F5
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809A982
 	mov r0, #0
 	strb r0, [r5,#4]
@@ -1769,7 +1780,7 @@ loc_809A9A4:
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
 	movflag EVENT_F5
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809A9C8
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -1796,7 +1807,7 @@ loc_809A9D8:
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_809A9FA
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -1850,7 +1861,7 @@ sub_809AAB8:
 	bl sub_8003AD4
 	ldr r0, off_809AD78 // =eTextScript2033404
 	mov r1, #0xa
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	bl sub_8046664 // () -> void
 	mov r0, #0
 	strb r0, [r5,#8]
@@ -1862,14 +1873,14 @@ sub_809AAB8:
 sub_809AADC:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_809AB1A
 	bl chatbox_8045F4C
 	cmp r0, #0
 	bne loc_809AB0C
 	ldr r0, off_809AD78 // =eTextScript2033404
 	mov r1, #0xc
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #1
 	strb r0, [r5,#8]
 	movflag EVENT_1725
@@ -1882,7 +1893,7 @@ sub_809AADC:
 loc_809AB0C:
 	ldr r0, off_809AD78 // =eTextScript2033404
 	mov r1, #0xb
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #0
 	strb r0, [r5,#8]
 	pop {r4-r7,pc}
@@ -1896,7 +1907,7 @@ loc_809AB1A:
 sub_809AB20:
 	push {r4-r7,lr}
 	movflag EVENT_1725
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809AB5A
 	mov r0, #0x84
 	ldr r0, [r5,r0]
@@ -1918,11 +1929,11 @@ loc_809AB3A:
 	bl PlaySoundEffect
 	ldr r0, off_809AD78 // =eTextScript2033404
 	mov r1, #0xb
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	b loc_809AC20
 loc_809AB5A:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_809AC24
 	sub sp, sp, #8
 	mov r0, r10
@@ -1941,7 +1952,7 @@ loc_809AB5A:
 	beq loc_809AC14
 	ldr r0, off_809AD78 // =eTextScript2033404
 	mov r1, #0xd
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #1
 	strb r0, [r5,#8]
 	b loc_809AC20
@@ -2008,12 +2019,12 @@ loc_809AC06:
 	strb r1, [r5,#8]
 	ldr r0, off_809AD7C // =TextScriptLottery86C67E4
 	mov r1, #0xe
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	b loc_809AC20
 loc_809AC14:
 	ldr r0, off_809AD78 // =eTextScript2033404
 	mov r1, #0x14
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #1
 	strb r0, [r5,#8]
 loc_809AC20:
@@ -2064,7 +2075,7 @@ sub_809AC70:
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	ldr r0, off_809AD7C // =TextScriptLottery86C67E4
 	ldr r1, [r5,#0x74]
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -2075,7 +2086,7 @@ sub_809AC88:
 	push {r4-r7,lr}
 	ldr r0, off_809AD7C // =TextScriptLottery86C67E4
 	ldr r1, [r5,#0x74]
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r1, #0x1c
 	ldr r0, [r5,#0x74]
 	cmp r0, #0xf
@@ -2150,7 +2161,7 @@ loc_809AD00:
 sub_809AD0C:
 	push {r4-r7,lr}
 	movflag EVENT_F5
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809AD30
 	ldrb r0, [r5,#4]
 	sub r0, #0x10
@@ -2169,7 +2180,7 @@ loc_809AD30:
 	bl sub_80465F8 // () -> void
 	mov r7, #1
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_809AD44
 	mov r7, #0
 loc_809AD44:
@@ -2274,7 +2285,7 @@ sub_809AF00:
 loc_809AF4C:
 	mov r4, #0x2d
 	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809AF5A
 	mov r4, #0x2e
 loc_809AF5A:
@@ -2307,7 +2318,7 @@ sub_809AF7C:
 	add r7, r7, r2
 	mov r6, #0
 	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809AF9A
 	mov r6, #0x10
 loc_809AF9A:
@@ -2513,7 +2524,7 @@ sub_809B130:
 	cmp r0, #0xf
 	bgt loc_809B162
 	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809B15A
 	ldr r0, byte_809B16C // =0x84
 	ldr r1, byte_809B16C+4 // =0x2
@@ -2749,11 +2760,9 @@ sub_809B800:
 	mov r0, #0
 	str r0, [r6,#0x1c]
 	str r0, [r5,#0x14]
-	mov r0, #0
-	mov r1, #0x38
+	movflag EVENT_38
 	bl SetEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x39
+	movflag EVENT_39
 	bl SetEventFlagFromImmediate
 	ldrh r0, [r7,#0x20]
 	tst r0, r0
@@ -2774,11 +2783,9 @@ sub_809B868:
 	mul r1, r0
 	add r7, r7, r1
 	str r7, [r5,#0x34]
-	mov r0, #0
-	mov r1, #0x38
+	movflag EVENT_38
 	bl SetEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x39
+	movflag EVENT_39
 	bl SetEventFlagFromImmediate
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -2869,11 +2876,9 @@ sub_809B910:
 	mov r0, #0
 	str r0, [r6,#0x1c]
 	str r0, [r5,#0x14]
-	mov r0, #0
-	mov r1, #0x38
+	movflag EVENT_38
 	bl SetEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x39
+	movflag EVENT_39
 	bl SetEventFlagFromImmediate
 	ldrh r0, [r7,#0x32]
 	tst r0, r0
@@ -3085,9 +3090,8 @@ byte_809BD8E: .byte 0x40, 0xC, 0xFF, 0x0, 0x2, 0xFF, 0x2, 0x40, 0xC, 0xFF, 0x4
 	thumb_local_start
 sub_809BDB8:
 	push {r4-r7,lr}
-	mov r0, #1
-	mov r1, #0x28
-	bl TestEventFlagFromImmediate
+	movflag EVENT_128
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809BDC8
 	mov r0, #3
 	b loc_809BDE6
@@ -3145,11 +3149,9 @@ loc_809BDE6:
 	str r0, [r6,#0x14]
 	mov r0, #0
 	str r0, [r5,#0x14]
-	mov r0, #0
-	mov r1, #0x38
+	movflag EVENT_38
 	bl SetEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x39
+	movflag EVENT_39
 	bl SetEventFlagFromImmediate
 	ldrh r0, [r7,#0x10]
 	tst r0, r0
@@ -3274,11 +3276,10 @@ sub_809C01C:
 	ldr r7, [r5,#0x34]
 	ldrh r0, [r7,#0x16]
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_809C042
-	mov r0, #1
-	mov r1, #0x20
-	bl TestEventFlagFromImmediate
+	movflag EVENT_120
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809C042
 	mov r0, #0
 	bl storeGameProgressToGameProgressBuffer_8035364
@@ -3705,13 +3706,11 @@ sub_809C968:
 	push {r4-r7,lr}
 	bl sub_8034C36
 	beq loc_809CA26
-	mov r0, #2
-	mov r1, #0x24
-	bl TestEventFlagFromImmediate
+	movflag EVENT_224
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809CA26
-	mov r0, #1
-	mov r1, #0xb9
-	bl TestEventFlagFromImmediate
+	movflag EVENT_1B9
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809C9B6
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -3732,17 +3731,14 @@ sub_809C968:
 	ldr r1, off_809CABC // =eOWPlayerObject 
 	mov r2, #0x83 // (byte_2009FC3 - 0x2009f40)
 	strb r0, [r1,r2]
-	mov r0, #1
-	mov r1, #0xb9
+	movflag EVENT_1B9
 	bl SetEventFlagFromImmediate
 	b locret_809CA1E
 loc_809C9B6:
-	mov r0, #1
-	mov r1, #0xba
-	bl TestEventFlagFromImmediate
+	movflag EVENT_1BA
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809C9CA
-	mov r0, #1
-	mov r1, #0xba
+	movflag EVENT_1BA
 	bl SetEventFlagFromImmediate
 	b locret_809CA1E
 loc_809C9CA:
@@ -3773,7 +3769,7 @@ loc_809C9CA:
 	mov r4, r0
 	ldr r0, [r4,#0x10]
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_809CA26
 	mov r0, #0x2c 
 	bl CheckKeyItem
@@ -3791,11 +3787,9 @@ loc_809CA20:
 	mov r0, #SOUND_CANT_JACK_IN
 	bl PlaySoundEffect
 loc_809CA26:
-	mov r0, #1
-	mov r1, #0xba
+	movflag EVENT_1BA
 	bl ClearEventFlagFromImmediate
-	mov r0, #1
-	mov r1, #0xb9
+	movflag EVENT_1B9
 	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -3829,7 +3823,7 @@ sub_809CA40:
 	mov r4, r0
 	ldr r0, [r4,#0x10]
 	mov r0, r0
-	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_809CA7A
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -3905,7 +3899,7 @@ sub_809CB68:
 	bl sub_8003AD4
 	ldr r0, byte_809CEAC+4 // =0x4
 	mov r1, #0x1e
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #0
 	strb r0, [r5,#8]
 	str r0, [r5,#0x70]
@@ -3916,14 +3910,14 @@ sub_809CB68:
 sub_809CB88:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_809CBF6
 	ldr r0, dword_809CBFC // =0x100
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_809CBAA
 	ldr r0, byte_809CEAC+4 // =0x4
 	mov r1, #0x20
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #2
 	str r0, [r5,#8]
 	mov r0, #0
@@ -3933,7 +3927,7 @@ loc_809CBAA:
 	cmp r0, #0
 	bne loc_809CBDC
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809CBCC
 	bl writeCurPETNaviToS2001c04_Unk07_80010c6
 	mov r0, #0
@@ -3944,20 +3938,20 @@ loc_809CBAA:
 loc_809CBCC:
 	ldr r0, byte_809CEAC+4 // =0x4
 	mov r1, #0x1f
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #1
 	str r0, [r5,#8]
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_809CBDC:
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809CBE8
 	b loc_809CBCC
 loc_809CBE8:
 	ldr r0, byte_809CEAC+4 // =0x4
 	mov r1, #0x20
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #0
 	str r0, [r5,#8]
 	pop {r4-r7,pc}
@@ -4007,7 +4001,7 @@ loc_809CC3E:
 	beq loc_809CC52
 	ldr r0, byte_809CEAC+4 // =0x4
 	mov r1, #0x22
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 loc_809CC52:
 	mov r0, #0
 	b locret_809CC58
@@ -4030,7 +4024,7 @@ sub_809CC60:
 	b locret_809CCF2
 loc_809CC70:
 	mov r0, #8
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_809CCF0
 	ldr r0, [r5,#0x74]
 	mov r4, #0
@@ -4061,7 +4055,7 @@ loc_809CC7E:
 	bl PlaySoundEffect
 	ldr r0, byte_809CEAC+4 // =0x4
 	mov r1, #0x23
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	b loc_809CCE4
 loc_809CCC0:
 	add r4, #4
@@ -4078,7 +4072,7 @@ loc_809CCC0:
 	bl writeCurPETNaviToS2001c04_Unk07_80010c6
 	ldr r0, byte_809CEAC+4 // =0x4
 	mov r1, #0x20
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 loc_809CCE4:
 	bl sub_81440D8 // static () -> void
 	mov r0, #1
@@ -4104,7 +4098,7 @@ sub_809CD34:
 	push {r4-r7,lr}
 	ldr r0, byte_809CEAC+4 // =0x4
 	mov r1, #0x21
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -4162,7 +4156,7 @@ loc_809CD9E:
 	bl ClearEventFlagFromImmediate
 	ldr r0, byte_809CEAC+4 // =0x4
 	mov r1, #0x31
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #0
 	b locret_809CDBC
 loc_809CDBA:
@@ -4178,7 +4172,7 @@ sub_809CDC4:
 	push {r4-r7,lr}
 	ldr r0, byte_809CEAC+4 // =0x4
 	mov r1, #0x1f
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -4209,7 +4203,7 @@ loc_809CDE8:
 loc_809CE02:
 	mov r1, r0
 	ldr r0, byte_809CEAC+4 // =0x4
-	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
+	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #0
 	b locret_809CE10
 loc_809CE0E:

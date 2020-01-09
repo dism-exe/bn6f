@@ -31,7 +31,7 @@ GraveyardImmortalArea_EnterMapGroup:
 	ldr r0, off_807ED30 // =off_807ED34 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
 	bl GraveyardImmortalArea_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
@@ -175,7 +175,7 @@ GraveyardImmortalArea_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, off_807EEA8 // =pt_807EEAC 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_807EEA8: .word pt_807EEAC

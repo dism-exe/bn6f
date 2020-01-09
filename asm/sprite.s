@@ -311,7 +311,7 @@ sub_8002874:
 	ldrh r3, [r5,#8]
 	lsl r3, r3, #5
 	add r1, r1, r3
-	bl QueueEightWordAlignedGFXTransfer
+	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 locret_8002896:
 	pop {r5,pc}
 	.balign 4, 0

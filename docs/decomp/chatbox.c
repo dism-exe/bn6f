@@ -1,39 +1,39 @@
 // 0x803fd08
 // () -> int
-int chatbox_uncompBasedOnMap_803FD08()
+int chatbox_uncompMapTextArchives_803FD08()
 {
     int (*v0)[19]; // r0
     int (*v1)[205]; // r0
     void *v2; // r0
 
-    v0 = chatbox_map_8040730(0);
-    SWI_LZ77UnCompReadNormalWrite8bit(v0, &byte_202DA00);
-    v1 = chatbox_map_8040794();
-    SWI_LZ77UnCompReadNormalWrite8bit(v1, &unk_2033400);
-    v2 = chatbox_map_80407C8();
-    SWI_LZ77UnCompReadNormalWrite8bit(v2, byte_202FA00);
+    v0 = chatbox_selectCompTextByMap_8040730(0);
+    SWI_LZ77UnCompReadNormalWrite8bit(v0, &eDecompressedTextArchive202DA00);
+    v1 = chatbox_selectCompTextByMap_8040794();
+    SWI_LZ77UnCompReadNormalWrite8bit(v1, &DecompressionBuf2033400);
+    v2 = chatbox_selectCompTextByMap_80407C8();
+    SWI_LZ77UnCompReadNormalWrite8bit(v2, eDecompressedTextArchive202FA00);
     return 0;
 }
 
 
 // 0x803fd3c
-int chatbox_uncomp_803FD3C()
+int chatbox_uncompMapTextArchives_803FD3C()
 {
     int (*v0)[19]; // r0
 
-    v0 = chatbox_map_8040730(1);
-    SWI_LZ77UnCompReadNormalWrite8bit(v0, &unk_2034A00);
+    v0 = chatbox_selectCompTextByMap_8040730(1);
+    SWI_LZ77UnCompReadNormalWrite8bit(v0, &eDecompressionBuf2034A00);
     return 0;
 }
 
 
 // 0x803fd54
-int chatbox_uncomp_803FD54()
+int chatbox_uncompMapTextArchives_803FD54()
 {
     int (*v0)[205]; // r0
 
-    v0 = chatbox_map_8040794();
-    SWI_LZ77UnCompReadNormalWrite8bit(v0, &unk_2033400);
+    v0 = chatbox_selectCompTextByMap_8040794();
+    SWI_LZ77UnCompReadNormalWrite8bit(v0, &DecompressionBuf2033400);
     return 0;
 }
 
@@ -92,7 +92,7 @@ void __fastcall chatbox_runScript_803FE10(int a1, int a2)
 
 // 0x803fe74
 // (u16 *scriptList, u8 scriptOffIdx) -> void
-void __fastcall chatbox_runScript_803FE74(int a1, int a2)
+void __fastcall chatbox_runScriptAndSetWhiteDot803FE74(int a1, int a2)
 {
     chatbox_runScript(a1, a2);
     (loc_8000AC8)(spriteWhiteDot, 100719744, &dword_6F8);
@@ -113,7 +113,7 @@ void __cdecl chatbox_onUpdate()
     if ( cb->bVisible )
     {
         chatbox_clear_eFlags2009F38(&dword_338);
-        chatbox_check_eFlags2009F38(64);
+        chatbox_mask_eFlags2009F38(64);
         if ( zf )
         {
             joystick = tk->joystick;
@@ -215,7 +215,7 @@ LABEL_16:
     chatbox_maskFlags_3e(0x100u);
     if ( zf )
         chatbox_CopyBackgroundTiles_8040344();
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( !zf )
     {
         chatbox_maskFlags_3e(0x100u);
@@ -290,7 +290,7 @@ signed int chatbox_interpreteAndDrawDialogChar_1()
     chatbox_maskFlags_3e(byte_100);
     if ( v7 )
         chatbox_CopyBackgroundTiles_8040344();
-    chatbox_check_eFlags2009F38(128);
+    chatbox_mask_eFlags2009F38(128);
     if ( !v7 )
     {
         chatbox_maskFlags_3e(byte_100);
@@ -658,7 +658,7 @@ void __fastcall dead_80405F8(int a1, int a2, int a3, int a4)
 
 
 // 0x8040730
-int (*__fastcall chatbox_map_8040730(int a1))[19]
+int (*__fastcall chatbox_selectCompTextByMap_8040730(int a1))[19]
 {
     Toolkit *tk; // r10
     int boolVal; // r4
@@ -686,7 +686,7 @@ int (*__fastcall chatbox_map_8040730(int a1))[19]
 
 
 // 0x8040794
-int (*chatbox_map_8040794())[205]
+int (*chatbox_selectCompTextByMap_8040794())[205]
 {
     Toolkit *tk; // r10
     GameState *v1; // r2
@@ -710,7 +710,7 @@ int (*chatbox_map_8040794())[205]
 
 
 // 0x80407c8
-int chatbox_map_80407C8()
+int chatbox_selectCompTextByMap_80407C8()
 {
     Toolkit *tk; // r10
     GameState *gs; // r2
@@ -4975,7 +4975,7 @@ int __fastcall chatbox_clear_eFlags2009F38(int result)
 
 
 // 0x8045f3c
-int __fastcall chatbox_check_eFlags2009F38(int a1)
+int __fastcall chatbox_mask_eFlags2009F38(int a1)
 {
     return a1 & *eFlags2009F38;
 }

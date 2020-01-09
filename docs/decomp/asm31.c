@@ -77093,7 +77093,7 @@ void sub_80E68F8()
 
     if ( *(v0 + 11) )
     {
-        if ( !chatbox_check_eFlags2009F38(128) )
+        if ( !chatbox_mask_eFlags2009F38(128) )
             *(v0 + 10) = 4;
     }
     else

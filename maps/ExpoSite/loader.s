@@ -30,7 +30,7 @@ ExpoSite_EnterMapGroup:
 	ldr r0, off_8062B18 // =off_8062B1C 
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906
-	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
+	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
 	bl ExpoSite_SpawnMapObjectsForMap
 	ldr r0, off_8062B14 // =off_8063008 
 	ldrb r1, [r5,#oGameState_MapNumber]
@@ -102,7 +102,7 @@ ExpoSite_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, off_8062BE0 // =pt_8062BE4 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList
+	bl SpawnObjectsFromList // (void *a1) -> int
 	pop {pc}
 	.balign 4, 0
 off_8062BE0: .word pt_8062BE4

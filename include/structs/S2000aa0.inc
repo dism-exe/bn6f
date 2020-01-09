@@ -1,5 +1,6 @@
 
 	.macro s_2000aa0_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+    // type: struct S2000aa0
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
 	u8 OWPlayerNaviHorizontalCompress // loc=0x0

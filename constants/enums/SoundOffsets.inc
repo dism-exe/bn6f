@@ -1,6 +1,5 @@
 
-	// enum Song
-	enum_start 0x00
+	enum_start 0x00 // type: enum Song
 	enum SONG_NO_MUSIC // 0x00
 	enum SONG_TITLE_SCREEN // 0x01
 	enum SONG_WWW_THEME // 0x02
@@ -40,8 +39,7 @@
 	enum SONG_ACDC_TOWN // 0x24
 	enum SONG_EXPO // 0x25
 
-	// enum SoundEffect
-	enum_start 0x64
+	enum_start 0x64 // type: enum SoundEffect
 	enum SOUND_BEEP_64 // 0x64
 	enum SOUND_TYPE // 0x65
 	enum SOUND_UNK_66 // 0x66

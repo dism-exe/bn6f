@@ -17,7 +17,7 @@ char (*SkyTown_EnterMapGroup())[8]
     decompAndCopyMapTiles_8030472();
     initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(*(&off_80603D8 + *(v0 + 5)));
-    chatbox_uncompBasedOnMap_803FD08();
+    chatbox_uncompMapTextArchives_803FD08();
     SkyTown_SpawnMapObjectsForMap();
     result = off_80606BC[*(v0 + 5)];
     *(v0 + 100) = result;

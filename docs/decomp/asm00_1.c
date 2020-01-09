@@ -2362,7 +2362,7 @@ void __usercall gamestate_8005268(GameState *gs@<R5>, int a1@<R0>)
 
 
 // 0x80052d8
-int __fastcall sub_80052D8(int a1)
+int __fastcall battle_80052D8(int a1)
 {
     int result; // r0
     char v2; // zf
@@ -3183,7 +3183,7 @@ void sub_8005A8C()
                                     s_2011C50_ptr_1C_isNull();
                                     if ( v1 )
                                     {
-                                        chatbox_check_eFlags2009F38(128);
+                                        chatbox_mask_eFlags2009F38(128);
                                         if ( v1 )
                                         {
                                             v2 = sub_80AA4C0();
@@ -3242,7 +3242,7 @@ void sub_8005AF4()
                             s_2011C50_ptr_1C_isNull();
                             if ( !v2 )
                                 return;
-                            chatbox_check_eFlags2009F38(128);
+                            chatbox_mask_eFlags2009F38(128);
                             if ( !v2 )
                                 return;
                             JoypadKeyPressed();
@@ -3303,7 +3303,7 @@ int __fastcall sub_8005B6E(int a1, int a2, int a3, int a4, int a5, int (__fastca
                             v7 = s_2011C50_ptr_1C_isNull();
                             if ( v8 )
                             {
-                                v7 = chatbox_check_eFlags2009F38(128);
+                                v7 = chatbox_mask_eFlags2009F38(128);
                                 if ( v8 )
                                 {
                                     v7 = TestEventFlagFromImmediate(23, 57);
@@ -5029,43 +5029,43 @@ void sub_800718C()
 
 
 // 0x8007194
-int sub_8007194()
+int get_flags32_20093A4()
 {
-    return dword_20093A4;
+    return flags32_20093A4;
 }
 
 
 // 0x800719a
-int __fastcall sub_800719A(int result)
+int __fastcall set_flags32_20093A4(int result)
 {
-    dword_20093A4 |= result;
+    flags32_20093A4 |= result;
     return result;
 }
 
 
 // 0x80071a4
-int __fastcall sub_80071A4(int result)
+int __fastcall clear_flags32_20093A4(int result)
 {
-    dword_20093A4 &= ~result;
+    flags32_20093A4 &= ~result;
     return result;
 }
 
 
 // 0x80071ae
-int __fastcall sub_80071AE(int result)
+int __fastcall assign_flags32_20093A4(int result)
 {
-    dword_20093A4 = result;
+    flags32_20093A4 = result;
     return result;
 }
 
 
 // 0x80071b4
-int sub_80071B4()
+int reset_flags32_20093A4()
 {
     int result; // r0
 
     result = 0;
-    dword_20093A4 = 0;
+    flags32_20093A4 = 0;
     return result;
 }
 
@@ -5136,7 +5136,7 @@ char *__fastcall __noreturn sub_80071D4(int a1, int a2, int a3, int a4)
         sub_80027E4();
     else
         sub_80027D4();
-    sub_800719A(1);
+    set_flags32_20093A4(1);
     batle_clearEnemyFadeinList();
     *(v6 + 27) = 1;
     ZeroFillByByte(dword_2036820, 16);
@@ -6243,7 +6243,7 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
     zeroFill_e20097A0();
     v38 = SetRenderInfoLCDControl(64);
     sub_800A892(v38);
-    sub_80071A4(1);
+    clear_flags32_20093A4(1);
     ClearEventFlagFromImmediate(23, 34);
     *(v3 + 10) = 0;
     SetPrimaryToolkitPointers();
@@ -6321,7 +6321,7 @@ int sub_8007F14()
     int result; // r0
     char v2; // zf
 
-    result = chatbox_check_eFlags2009F38(128);
+    result = chatbox_mask_eFlags2009F38(128);
     if ( v2 )
     {
         engine_setScreeneffect(12, 16);
@@ -8835,7 +8835,7 @@ int sub_800951E()
 
     if ( *(v0 + 3) )
     {
-        result = chatbox_check_eFlags2009F38(128);
+        result = chatbox_mask_eFlags2009F38(128);
         if ( v2 )
         {
             v3 = sub_802D246();
@@ -8870,7 +8870,7 @@ int sub_8009552()
 
     if ( *(v0 + 3) )
     {
-        result = chatbox_check_eFlags2009F38(128);
+        result = chatbox_mask_eFlags2009F38(128);
         if ( v4 )
         {
             v5 = sub_802D246();
@@ -8907,7 +8907,7 @@ int sub_8009594()
 
     if ( *(v0 + 3) )
     {
-        result = chatbox_check_eFlags2009F38(128);
+        result = chatbox_mask_eFlags2009F38(128);
         if ( v2 )
         {
             v3 = sub_802D246();
@@ -8939,7 +8939,7 @@ int sub_80095C8()
 
     if ( *(v0 + 3) )
     {
-        result = chatbox_check_eFlags2009F38(128);
+        result = chatbox_mask_eFlags2009F38(128);
         if ( v3 )
         {
             *(v0 + 1) = 4;
@@ -9393,7 +9393,7 @@ int sub_8009966()
 
     if ( *(v0 + 3) )
     {
-        result = chatbox_check_eFlags2009F38(128);
+        result = chatbox_mask_eFlags2009F38(128);
         if ( v3 )
         {
             *(v0 + 1) = 4;
@@ -9772,7 +9772,7 @@ int sub_8009C56()
 
     if ( *(v0 + 3) )
     {
-        result = chatbox_check_eFlags2009F38(128);
+        result = chatbox_mask_eFlags2009F38(128);
         if ( v3 )
         {
             *(v0 + 1) = 4;
@@ -10003,7 +10003,7 @@ int sub_8009E40()
     int v0; // r5
     int result; // r0
 
-    result = chatbox_check_eFlags2009F38(128);
+    result = chatbox_mask_eFlags2009F38(128);
     if ( !result )
     {
         *(v0 + 1) = 12;
@@ -10190,7 +10190,7 @@ int sub_8009F8A()
 
     if ( *(v0 + 3) )
     {
-        result = chatbox_check_eFlags2009F38(128);
+        result = chatbox_mask_eFlags2009F38(128);
         if ( v3 )
         {
             *(v0 + 1) = 4;
@@ -11117,7 +11117,7 @@ signed int isSameSubsystem_800A732()
     char zf; // zf
 
     v0 = 1;
-    sub_800A7D0();
+    IsCurSubsystemInUse();
     if ( !zf && !(eStruct203F7D8[1] & 2) )
         v0 = 0;
     return v0;
@@ -11201,12 +11201,12 @@ int __fastcall sub_800A7A6(int a1, int a2, int a3)
 
 // 0x800a7d0
 // () -> zf
-int __cdecl sub_800A7D0()
+int __cdecl IsCurSubsystemInUse()
 {
     int result; // r0
 
     result = 0;
-    if ( dword_20093A4 & 1 )
+    if ( flags32_20093A4 & 1 )
         result = 1;
     return result;
 }

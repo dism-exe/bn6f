@@ -2,7 +2,7 @@
 	thumb_func_start main_
 main_:
 	bl main_initToolkitAndOtherSubsystems
-	bl SeedRNG2 // () -> int
+	bl SeedRNG2 // () -> void
 	bl clear_e200AD04 // () -> void
 	bl sub_803D1A8 // () -> void
 main_gameRoutine:
@@ -19,12 +19,16 @@ main_gameRoutine:
 	bl sprite_resetObjVars_800289C
 	bl copyToVRAMAndClear_iBGTileIdBlocks_Ptr
 	bl main_static_80003E4
+
+    // advance cur frame
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CurFramePtr]
 	ldrh r1, [r0]
 	add r1, #1
 	strh r1, [r0]
-	bl sub_8000E10
+    bl CapIncrementGameTimeFrames // () -> void
+
+    // (*main_subsystemJumptable[*tk->oToolkit_MainJumptableIndexPtr])()
 	ldr r0, off_8000348 // =main_subsystemJumpTable
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
@@ -32,23 +36,29 @@ main_gameRoutine:
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
+
+    // update frame rng
 	bl GetRNG1 // () -> void
-	bl isSameSubsystem_800A732 // () -> zf
+
+	bl isSameSubsystem_800A732 // () -> !zf
 	beq loc_800032A
-	bl subsystem_triggerTransition_800630A
+    bl subsystem_triggerTransition_800630A
 loc_800032A:
-	bl chatbox_onUpdate
+
+	bl chatbox_onUpdate // () -> void
 	bl CallBGScrollCallback0
 	bl ProcessGFXAnims
-	ldr r0, off_8000344 // =sub_3006814+1
+	ldr r0, off_8000344 // =copyTo_iObjectAttr3001D70_3006814+1
 	mov lr, pc
-	bx r0
-	bl main_static_8000454
+	bx r0	
+    bl main_static_8000454
+
 	b main_gameRoutine
 	.balign 4, 0
-off_8000344: .word sub_3006814+1
+off_8000344: .word copyTo_iObjectAttr3001D70_3006814+1 // () -> void
 off_8000348: .word main_subsystemJumpTable
-main_subsystemJumpTable: .word startscreen_802F544+1
+main_subsystemJumpTable: 
+    .word startscreen_render_802F544+1 // () ->
 	.word cbGameState_80050EC+1
 	.word ho_jackIn_80341B6+1
 	.word cb_8038AD0+1
@@ -72,7 +82,7 @@ main_subsystemJumpTable: .word startscreen_802F544+1
 	thumb_func_end main_
 
 	thumb_local_start
-main_awaitFrame:
+main_awaitFrame: // () -> void
 	push {lr}
 loc_80003A2:
 	ldr r0, off_80003CC // =GeneralLCDStatus_STAT_LYC_
@@ -97,9 +107,8 @@ off_80003C8: .word dword_2009930
 off_80003CC: .word GeneralLCDStatus_STAT_LYC_
 	thumb_func_end main_awaitFrame
 
-// () -> void
 	thumb_local_start
-main_pollGeneralLCDStatus_STAT_LYC_:
+main_pollGeneralLCDStatus_STAT_LYC_: // () -> void
 	push {lr}
 	ldr r0, off_80003E0 // =GeneralLCDStatus_STAT_LYC_
 	mov r2, #1
@@ -264,7 +273,7 @@ loc_80004C0:
 	bl sub_8144240
 	bl sub_803EBC8
 	bl sub_813D960
-	bl sub_80071B4
+	bl reset_flags32_20093A4 // () -> void
 	bl sub_804657C // () -> void
 	bl sub_80467D8
 	ldr r0, off_800056C // =dword_2009930
@@ -277,7 +286,7 @@ loc_80004C0:
 	mov r1, #8
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_803D1A8 // () -> void
-	bl sub_803E900
+	bl init_eStartScreenAnimationControl200B1A0_1
 	pop {r5,pc}
 	.balign 4, 0
 off_8000564: .word 0x40

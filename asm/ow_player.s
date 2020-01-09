@@ -49,9 +49,8 @@ sub_809D19C:
 	push {lr}
 	movflag EVENT_1716
 	bl ClearEventFlagFromImmediate
-	mov r0, #0xb
-	mov r1, #0xe4
-	bl TestEventFlagFromImmediate
+	movflag EVENT_BE4
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809D1D2
 	bl GetCurPETNavi // () -> u8
 	mov r1, #0x35 
@@ -120,7 +119,7 @@ loc_809D238:
 	ldrb r0, [r7,#oS2000aa0_OWPlayerNaviPaletteIndex] // (byte_2000AA5 - 0x2000aa0)
 	bl sprite_setPalette // (int pallete) -> void
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D252
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -157,7 +156,7 @@ sub_809D270:
 	bge .inInternetMap
 	mov r4, #0x37 
 	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .inInternetMap
 	mov r4, #0
 	mov r6, #0x18
@@ -274,10 +273,10 @@ sub_809D348:
 	tst r0, r0
 	beq loc_809D3BC
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D3BC
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D3A8
 	movflag EVENT_173F
 	bl SetEventFlagFromImmediate
@@ -295,9 +294,8 @@ loc_809D3BC:
 	ldrb r0, [r5,#oOWPlayerObject_InteractionLocked]
 	tst r0, r0
 	beq loc_809D3E6
-	mov r0, #0xb
-	mov r1, #0xe4
-	bl TestEventFlagFromImmediate
+	movflag EVENT_BE4
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809D3E6
 	mov r0, #oOWPlayerObject_Coords
 	add r0, r0, r5
@@ -306,7 +304,7 @@ loc_809D3BC:
 	str r0, [r5,#oOWPlayerObject_Z]
 loc_809D3E6:
 	movflag EVENT_1718
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D3FC
 	movflag EVENT_1718
 	bl ClearEventFlagFromImmediate
@@ -496,7 +494,7 @@ loc_809D572:
 	ldr r7, off_809D5AC // =off_809D5B0 
 	push {r0,r1,r3-r5}
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D584
 	ldr r7, off_809D5B8 // =off_809D5BC 
 loc_809D584:
@@ -547,7 +545,7 @@ sub_809D5C4:
 	mov r3, #2
 	push {r3}
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	pop {r3}
 	beq loc_809D5F4
 	mov r2, #0
@@ -579,10 +577,10 @@ loc_809D60C:
 sub_809D61A:
 	push {lr}
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D630
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809D646
 loc_809D630:
 	bl sub_809D9E0
@@ -665,13 +663,13 @@ sub_809D6BC:
 	ldr r7, off_809D718 // =off_809D71C 
 	push {r0,r1,r3-r5}
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq .loc_809D6F4
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .loc_809D6F2
 	movflag EVENT_173F
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .loc_809D6F4
 .loc_809D6F2:
 	ldr r7, off_809D724 // =off_809D728 
@@ -804,7 +802,7 @@ locret_809D7D6:
 sub_809D7D8:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_809D7F6
 loc_809D7E2:
 	mov r7, r10
@@ -886,9 +884,8 @@ loc_809D856:
 	ldrb r0, [r5,#oOWPlayerObject_InteractionLocked]
 	tst r0, r0
 	beq loc_809D886
-	mov r0, #0xb
-	mov r1, #0xe4
-	bl TestEventFlagFromImmediate
+	movflag EVENT_BE4
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809D886
 	mov r0, #0x1c
 	add r0, r0, r5
@@ -931,7 +928,7 @@ sub_809D8CC:
 	strb r0, [r5,#0xa]
 loc_809D8DE:
 	mov r0, #0x80
-	bl chatbox_check_eFlags2009F38
+	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_809D8F0
 	mov r0, #0
 	strb r0, [r5,#9]
@@ -1084,11 +1081,11 @@ sub_809D9E0:
 	beq loc_809DA94
 	push {r0}
 	movflag EVENT_PLAYER_CAN_MOVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	pop {r0}
 	beq loc_809DA82
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809DA94
 	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_809DA94
@@ -1226,13 +1223,13 @@ sub_809DB02:
 	tst r0, r0
 	beq loc_809DB4A
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809DB4A
 	movflag EVENT_173F
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809DB4A
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809DB4A
 	movflag EVENT_173D
 	bl SetEventFlagFromImmediate
@@ -1252,7 +1249,7 @@ loc_809DB4A:
 sub_809DB50:
 	push {lr}
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne locret_809DB5E
 	mov r0, #0
 locret_809DB5E:
@@ -1267,7 +1264,7 @@ sub_809DB60:
 	add r1, r1, r5
 	bl sub_809DBC4
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809DB82
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
@@ -1553,10 +1550,10 @@ dword_809DDEC: .word 0xC00000
 sub_809DDF0:
 	push {lr}
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_809DE2A
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_809DE2A
 	ldr r1, [r5,#oOWPlayerObject_Unk_50]
 	ldr r2, dword_809DE2C // =0xc00000 
@@ -1579,10 +1576,10 @@ dword_809DE2C: .word 0xC00000
 sub_809DE30:
 	push {lr}
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_809DE5E
 	movflag EVENT_173D
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809DE4E
 	movflag EVENT_173F
 	bl SetEventFlagFromImmediate
@@ -1629,7 +1626,7 @@ off_809DE90: .word byte_809CFBC
 sub_809DE98:
 	push {lr}
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809DEBE
 	movflag EVENT_173D
 	bl ClearEventFlagFromImmediate
@@ -1953,7 +1950,7 @@ owPlayer_809E0C8:
 	str r0, [r3,#oS200ace0_PlayerZ] // (dword_200ACF0 - 0x200ace0)
 	push {r3}
 	movflag EVENT_1719
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	pop {r3}
 	bne locret_809E0FA
 	mov r2, r10
@@ -2405,11 +2402,9 @@ sub_809E31A:
 	bl sprite_update
 	mov r0, #0
 	bl sub_8001172
-	mov r0, #6
-	mov r1, #0x8e
+	movflag EVENT_68E
 	bl SetEventFlagFromImmediate
-	mov r0, #6
-	mov r1, #0x8f
+	movflag EVENT_68F
 	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E31A
@@ -2435,11 +2430,9 @@ sub_809E35E:
 	bl sprite_update
 	mov r0, #0x54
 	bl sub_8001172
-	mov r0, #6
-	mov r1, #0x8e
+	movflag EVENT_68E
 	bl ClearEventFlagFromImmediate
-	mov r0, #6
-	mov r1, #0x8f
+	movflag EVENT_68F
 	bl SetEventFlagFromImmediate
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E35E
@@ -2645,7 +2638,7 @@ owPlayer_toggleUsingCopybot_809e4bc:
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	mov r4, #0x37 
 	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate
+	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809E4DA
 	mov r4, #0
 loc_809E4DA:
