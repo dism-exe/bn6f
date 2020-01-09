@@ -3955,7 +3955,7 @@ int __fastcall sub_809E260(int result)
 
 
 // 0x809e26a
-int owPlayer_clearLayerIndexOverride_809e26a()
+int ClearOWPlayerLayerIndexOverride()
 {
     int v0; // r10
     int result; // r0
@@ -3967,7 +3967,7 @@ int owPlayer_clearLayerIndexOverride_809e26a()
 
 
 // 0x809e276
-int owPlayer_call_sprite_noShadow_809e276()
+int GiveOWPlayerAttachedShadow()
 {
     int v0; // r10
 
@@ -3976,7 +3976,7 @@ int owPlayer_call_sprite_noShadow_809e276()
 
 
 // 0x809e284
-int owPlayer_call_sprite_hasShadow_809e284()
+int GiveOWPlayerDetatchedShadow()
 {
     int v0; // r10
     int v1; // r5
@@ -3987,7 +3987,7 @@ int owPlayer_call_sprite_hasShadow_809e284()
 
 
 // 0x809e292
-int owPlayer_removeShadow_809e292()
+int RemoveOWPlayerShadow()
 {
     int v0; // r10
     int v1; // r5
@@ -4260,7 +4260,7 @@ int sub_809E434()
 
 
 // 0x809e442
-int owPlayer_makeVisible_809e442()
+int MakeOWPlayerVisible()
 {
     int v0; // r10
     _BYTE *v1; // r3
@@ -4274,7 +4274,7 @@ int owPlayer_makeVisible_809e442()
 
 
 // 0x809e452
-int owPlayer_makeInvisible_809e452()
+int MakeOWPlayerInvisible()
 {
     int v0; // r10
     _BYTE *v1; // r3
@@ -4334,7 +4334,7 @@ signed int __fastcall sub_809E4A0(char a1)
 
 
 // 0x809e4ae
-signed int owPlayer_809E4AE()
+signed int DisableOWPlayerAlpha()
 {
     int v0; // r10
     int v1; // r5

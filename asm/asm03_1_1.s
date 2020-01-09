@@ -7977,20 +7977,20 @@ locret_803CEB4:
 	.balign 4, 0x00
 	thumb_func_end sub_803CE44
 
-	thumb_func_start setCurNaviHPToFull_803ceb8
-setCurNaviHPToFull_803ceb8:
+	thumb_func_start SetCurNaviHPToFull
+SetCurNaviHPToFull:
 	push {r4-r7,lr}
 	bl GetCurPETNavi // () -> u8
 	mov r4, r0
-	mov r1, #0x42
+	mov r1, #oNaviStats_MaxHP
 	bl GetCurPETNaviStatsHword
 	mov r2, r0
 	mov r0, r4
-	mov r1, #0x40
+	mov r1, #oNaviStats_CurHP
 	bl SetCurPETNaviStatsHword
 	mov r0, #0
 	pop {r4-r7,pc}
-	thumb_func_end setCurNaviHPToFull_803ceb8
+	thumb_func_end SetCurNaviHPToFull
 
 	thumb_func_start sub_803CED4
 sub_803CED4:

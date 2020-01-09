@@ -4339,7 +4339,8 @@ CutsceneCmd_ow_player_sprite_special:
 	pop {pc}
 	.balign 4, 0
 	.pool // 8037B20
-off_8037B24: .word owPlayer_lockPlayerForNonNPCDialogue_809E0B0+1
+off_8037B24:
+	.word owPlayer_lockPlayerForNonNPCDialogue_809E0B0+1
 	.word owPlayer_unlockPlayerAfterNonNPCDialogue_809E122+1
 	.word owPlayer_809E0FC+1
 	.word owPlayer_809E114+1
@@ -4347,16 +4348,16 @@ off_8037B24: .word owPlayer_lockPlayerForNonNPCDialogue_809E0B0+1
 	.word owPlayer_clearInteractionLocked_809e23c+1
 	.word owPlayer_enableWallCollision_809e248+1
 	.word owPlayer_disableWallCollision_809e254+1
-	.word owPlayer_clearLayerIndexOverride_809e26a+1
-	.word owPlayer_call_sprite_noShadow_809e276+1
-	.word owPlayer_call_sprite_hasShadow_809e284+1
-	.word owPlayer_removeShadow_809e292+1
-	.word owPlayer_makeVisible_809e442+1
-	.word owPlayer_makeInvisible_809e452+1
-	.word owPlayer_809E4AE+1
+	.word ClearOWPlayerLayerIndexOverride+1
+	.word GiveOWPlayerAttachedShadow+1
+	.word GiveOWPlayerDetatchedShadow+1
+	.word RemoveOWPlayerShadow+1
+	.word MakeOWPlayerVisible+1
+	.word MakeOWPlayerInvisible+1
+	.word DisableOWPlayerAlpha+1
 	.word owPlayer_toggleUsingCopybot_809e4bc+1
 	.word owPlayer_zeroS2000AA0Param0x4_809e312+1
-	.word setCurNaviHPToFull_803ceb8+1
+	.word SetCurNaviHPToFull+1
 	thumb_func_end CutsceneCmd_ow_player_sprite_special
 
 	thumb_local_start
@@ -4389,7 +4390,7 @@ CutsceneCmd_ow_player_sprite_special_with_arg:
 	pop {pc}
 	.pool // 8037B98
 	.balign 4, 0
-off_8037B9C: .word owPlayer_writeLayerIndexOverride_809e260+1
+off_8037B9C: .word WriteOWPlayerLayerIndexOverride+1
 	.word SetOWPlayerFacingDirection+1
 	.word owPlayer_setPalette_809e2a0+1
 	.word owPlayer_setAlpha_8002c7a_809e4a0+1
@@ -5604,7 +5605,7 @@ CutsceneCmd_change_navi_maybe_80382fe:
 	bl SetCurPETNavi
 	bl reloadCurNaviBaseStats_8120df0
 	bl reloadCurNaviStatBoosts_813c3ac
-	bl setCurNaviHPToFull_803ceb8
+	bl SetCurNaviHPToFull
 	add r7, #2
 	mov r0, #1
 	pop {pc}

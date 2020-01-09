@@ -845,7 +845,7 @@ sub_8033FDC:
 	movflag EVENT_1721
 	bl ClearEventFlagFromImmediate
 	bl sub_809F9DC
-	bl setCurNaviHPToFull_803ceb8
+	bl SetCurNaviHPToFull
 	movflag EVENT_1724
 	bl SetEventFlagFromImmediate
 	mov r0, #5
@@ -970,7 +970,7 @@ loc_803412E:
 	movflag EVENT_PET_NAVI_ACTIVE
 	bl SetEventFlagFromImmediate
 loc_8034140:
-	bl setCurNaviHPToFull_803ceb8
+	bl SetCurNaviHPToFull
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	mov r2, #0

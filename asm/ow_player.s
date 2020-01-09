@@ -61,7 +61,7 @@ sub_809D19C:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r0, [r7,#oGameState_MapGroup]
-	mov r1, #0x80
+	mov r1, #INTERNET_MAP_GROUP_START
 	cmp r0, r1
 	blt loc_809D1D2
 	movflag EVENT_1716
@@ -84,7 +84,7 @@ loc_809D1EE:
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_GameStatePtr]
 	ldrb r0, [r6,#oGameState_MapGroup]
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	blt loc_809D222
 	bl sprite_makeScalable
 	ldrb r0, [r7,#oS2000aa0_OWPlayerNaviRotation] // (byte_2000AA2 - 0x2000aa0)
@@ -194,7 +194,7 @@ sub_809D270:
 	// size
 	mov r1, #0x20 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	mov r0, #1
+	mov r0, #TRUE
 	strb r0, [r5,#oOWPlayerObject_InteractionLocked]
 	strb r0, [r5,#oOWPlayerObject_wallCollision_0c]
 	mov r0, #0
@@ -311,8 +311,7 @@ loc_809D3E6:
 	movflag EVENT_1718
 	bl ClearEventFlagFromImmediate
 	bl owPlayer_809E0C8
-	.balign 4, 0
-loc_809D3FC: .align 1, 0
+loc_809D3FC:
 	ldrb r0, [r5,#oOWPlayerObject_LayerIndexOverride]
 	tst r0, r0
 	bne loc_809D40A
@@ -2213,56 +2212,58 @@ owPlayer_disableWallCollision_809e254:
 	mov pc, lr
 	thumb_func_end owPlayer_disableWallCollision_809e254
 
-	thumb_func_start owPlayer_writeLayerIndexOverride_809e260
-owPlayer_writeLayerIndexOverride_809e260:
+	thumb_func_start WriteOWPlayerLayerIndexOverride
+WriteOWPlayerLayerIndexOverride:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	strb r0, [r3,#oOWPlayerObject_LayerIndexOverride]
 	mov pc, lr
-	thumb_func_end owPlayer_writeLayerIndexOverride_809e260
+	thumb_func_end WriteOWPlayerLayerIndexOverride
 
-	thumb_func_start owPlayer_clearLayerIndexOverride_809e26a
-owPlayer_clearLayerIndexOverride_809e26a:
+	thumb_func_start ClearOWPlayerLayerIndexOverride
+ClearOWPlayerLayerIndexOverride:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #0
 	strb r0, [r3,#oOWPlayerObject_LayerIndexOverride]
 	mov pc, lr
-	thumb_func_end owPlayer_clearLayerIndexOverride_809e26a
+	thumb_func_end ClearOWPlayerLayerIndexOverride
 
-	thumb_func_start owPlayer_call_sprite_noShadow_809e276
-owPlayer_call_sprite_noShadow_809e276:
+	thumb_func_start GiveOWPlayerAttachedShadow
+GiveOWPlayerAttachedShadow:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sprite_noShadow // () -> void
 	pop {r5,pc}
-	thumb_func_end owPlayer_call_sprite_noShadow_809e276
+	thumb_func_end GiveOWPlayerAttachedShadow
 
-	thumb_func_start owPlayer_call_sprite_hasShadow_809e284
-owPlayer_call_sprite_hasShadow_809e284:
+	thumb_func_start GiveOWPlayerDetatchedShadow
+GiveOWPlayerDetatchedShadow:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sprite_hasShadow
 	pop {r5,pc}
-	thumb_func_end owPlayer_call_sprite_hasShadow_809e284
+	thumb_func_end GiveOWPlayerDetatchedShadow
 
-	thumb_func_start owPlayer_removeShadow_809e292
-owPlayer_removeShadow_809e292:
+	thumb_func_start RemoveOWPlayerShadow
+RemoveOWPlayerShadow:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sprite_removeShadow
 	pop {r5,pc}
-	thumb_func_end owPlayer_removeShadow_809e292
+	thumb_func_end RemoveOWPlayerShadow
 
 	thumb_func_start owPlayer_setPalette_809e2a0
+// possibly broken? directly writing to the palette var does nothing
+// as the game calls sprite_setPalette within the ow player's loop anyway
 owPlayer_setPalette_809e2a0:
 	push {r5,lr}
 	mov r5, r10
@@ -2549,8 +2550,8 @@ getOWPlayerSpriteFrameParameters_809E434:
 	pop {r5,pc}
 	thumb_func_end getOWPlayerSpriteFrameParameters_809E434
 
-	thumb_func_start owPlayer_makeVisible_809e442
-owPlayer_makeVisible_809e442:
+	thumb_func_start MakeOWPlayerVisible
+MakeOWPlayerVisible:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
@@ -2559,10 +2560,10 @@ owPlayer_makeVisible_809e442:
 	orr r0, r1
 	strb r0, [r3,#oOWPlayerObject_Flags]
 	mov pc, lr
-	thumb_func_end owPlayer_makeVisible_809e442
+	thumb_func_end MakeOWPlayerVisible
 
-	thumb_func_start owPlayer_makeInvisible_809e452
-owPlayer_makeInvisible_809e452:
+	thumb_func_start MakeOWPlayerInvisible
+MakeOWPlayerInvisible:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
@@ -2571,7 +2572,7 @@ owPlayer_makeInvisible_809e452:
 	bic r0, r1
 	strb r0, [r3]
 	mov pc, lr
-	thumb_func_end owPlayer_makeInvisible_809e452
+	thumb_func_end MakeOWPlayerInvisible
 
 	thumb_func_start sub_809E462
 sub_809E462:
@@ -2624,15 +2625,15 @@ owPlayer_setAlpha_8002c7a_809e4a0:
 	pop {r5,pc}
 	thumb_func_end owPlayer_setAlpha_8002c7a_809e4a0
 
-	thumb_func_start owPlayer_809E4AE
-owPlayer_809E4AE:
+	thumb_func_start DisableOWPlayerAlpha
+DisableOWPlayerAlpha:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sprite_disableAlpha
 	pop {r5,pc}
-	thumb_func_end owPlayer_809E4AE
+	thumb_func_end DisableOWPlayerAlpha
 
 	thumb_func_start owPlayer_toggleUsingCopybot_809e4bc
 owPlayer_toggleUsingCopybot_809e4bc:

@@ -6219,7 +6219,7 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
             if ( v33 & 0x800000 )
             {
                 v34 = v33;
-                setCurNaviHPToFull_803ceb8();
+                SetCurNaviHPToFull();
                 v33 = v34;
             }
             if ( v33 & &loc_1000 )
@@ -6236,7 +6236,7 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
             }
         }
         if ( sub_802D246() & 0x10 )
-            setCurNaviHPToFull_803ceb8();
+            SetCurNaviHPToFull();
         sub_802CA82();
     }
     *(v7 + oGameState_Unk_0a) = 0;

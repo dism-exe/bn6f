@@ -1622,7 +1622,7 @@ sub_8003BF4:
 	ldr r5, off_8003C94 // =eOWPlayerObject
 loc_8003C04:
 	ldrb r2, [r5]
-	mov r3, #2
+	mov r3, #OBJECT_FLAG_VISIBLE
 	tst r2, r3
 	beq loc_8003C30
 	push {r0,r1,r5}
@@ -9042,7 +9042,7 @@ loc_8007DE4:
 	tst r0, r1
 	beq loc_8007DFE
 	push {r0}
-	bl setCurNaviHPToFull_803ceb8
+	bl SetCurNaviHPToFull
 	pop {r0}
 loc_8007DFE:
 	ldr r1, off_8008000 // =0x1000
@@ -9067,7 +9067,7 @@ loc_8007E26:
 	mov r1, #0x10
 	tst r0, r1
 	beq loc_8007E34
-	bl setCurNaviHPToFull_803ceb8
+	bl SetCurNaviHPToFull
 loc_8007E34:
 	bl sub_802CA82
 loc_8007E38:
