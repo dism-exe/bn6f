@@ -14461,8 +14461,7 @@ sub_81378D4:
 	ldrb r0, [r0]
 	cmp r0, #0x18
 	beq loc_8137906
-	mov r0, #0
-	mov r1, #0xbf
+	movflag EVENT_BF
 	mov r2, #0x12
 	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 loc_8137906:
