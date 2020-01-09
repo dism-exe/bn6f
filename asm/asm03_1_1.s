@@ -10656,15 +10656,12 @@ loc_803E9E6:
 	bl sub_803F4EC
 	tst r4, r4
 	beq loc_803EA0A
-	mov r0, #1
-	mov r1, #0xe3
+	movflag EVENT_1E3
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_803EA0A
-	mov r0, #0
-	mov r1, #0x7a
+	movflag EVENT_7A
 	bl SetEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x7b
+	movflag EVENT_7B
 	bl ClearEventFlagFromImmediate
 loc_803EA0A:
 	mov r0, r6

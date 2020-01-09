@@ -2760,11 +2760,9 @@ sub_809B800:
 	mov r0, #0
 	str r0, [r6,#0x1c]
 	str r0, [r5,#0x14]
-	mov r0, #0
-	mov r1, #0x38
+	movflag EVENT_38
 	bl SetEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x39
+	movflag EVENT_39
 	bl SetEventFlagFromImmediate
 	ldrh r0, [r7,#0x20]
 	tst r0, r0
@@ -2785,11 +2783,9 @@ sub_809B868:
 	mul r1, r0
 	add r7, r7, r1
 	str r7, [r5,#0x34]
-	mov r0, #0
-	mov r1, #0x38
+	movflag EVENT_38
 	bl SetEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x39
+	movflag EVENT_39
 	bl SetEventFlagFromImmediate
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -2880,11 +2876,9 @@ sub_809B910:
 	mov r0, #0
 	str r0, [r6,#0x1c]
 	str r0, [r5,#0x14]
-	mov r0, #0
-	mov r1, #0x38
+	movflag EVENT_38
 	bl SetEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x39
+	movflag EVENT_39
 	bl SetEventFlagFromImmediate
 	ldrh r0, [r7,#0x32]
 	tst r0, r0
@@ -3096,8 +3090,7 @@ byte_809BD8E: .byte 0x40, 0xC, 0xFF, 0x0, 0x2, 0xFF, 0x2, 0x40, 0xC, 0xFF, 0x4
 	thumb_local_start
 sub_809BDB8:
 	push {r4-r7,lr}
-	mov r0, #1
-	mov r1, #0x28
+	movflag EVENT_128
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809BDC8
 	mov r0, #3
@@ -3156,11 +3149,9 @@ loc_809BDE6:
 	str r0, [r6,#0x14]
 	mov r0, #0
 	str r0, [r5,#0x14]
-	mov r0, #0
-	mov r1, #0x38
+	movflag EVENT_38
 	bl SetEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x39
+	movflag EVENT_39
 	bl SetEventFlagFromImmediate
 	ldrh r0, [r7,#0x10]
 	tst r0, r0
@@ -3287,8 +3278,7 @@ sub_809C01C:
 	mov r0, r0
 	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_809C042
-	mov r0, #1
-	mov r1, #0x20
+	movflag EVENT_120
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809C042
 	mov r0, #0
@@ -3716,12 +3706,10 @@ sub_809C968:
 	push {r4-r7,lr}
 	bl sub_8034C36
 	beq loc_809CA26
-	mov r0, #2
-	mov r1, #0x24
+	movflag EVENT_224
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809CA26
-	mov r0, #1
-	mov r1, #0xb9
+	movflag EVENT_1B9
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809C9B6
 	mov r7, r10
@@ -3743,17 +3731,14 @@ sub_809C968:
 	ldr r1, off_809CABC // =eOWPlayerObject 
 	mov r2, #0x83 // (byte_2009FC3 - 0x2009f40)
 	strb r0, [r1,r2]
-	mov r0, #1
-	mov r1, #0xb9
+	movflag EVENT_1B9
 	bl SetEventFlagFromImmediate
 	b locret_809CA1E
 loc_809C9B6:
-	mov r0, #1
-	mov r1, #0xba
+	movflag EVENT_1BA
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809C9CA
-	mov r0, #1
-	mov r1, #0xba
+	movflag EVENT_1BA
 	bl SetEventFlagFromImmediate
 	b locret_809CA1E
 loc_809C9CA:
@@ -3802,11 +3787,9 @@ loc_809CA20:
 	mov r0, #SOUND_CANT_JACK_IN
 	bl PlaySoundEffect
 loc_809CA26:
-	mov r0, #1
-	mov r1, #0xba
+	movflag EVENT_1BA
 	bl ClearEventFlagFromImmediate
-	mov r0, #1
-	mov r1, #0xb9
+	movflag EVENT_1B9
 	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
 	.balign 4, 0

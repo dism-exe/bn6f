@@ -29078,8 +29078,7 @@ sub_811DF94:
 	bl sprite_noShadow // () -> void
 	b loc_811DFBA
 loc_811DFB0:
-	mov r0, #0xb
-	mov r1, #0xf2
+	movflag EVENT_BF2
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_811DFC0
 loc_811DFBA:

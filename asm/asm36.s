@@ -13121,8 +13121,7 @@ sub_8136EF8:
 	thumb_local_start
 sub_8136F0C:
 	push {lr}
-	mov r0, #0
-	mov r1, #0xee
+	movflag EVENT_EE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_8136F3C
 	mov r0, #0x48 
@@ -13146,8 +13145,7 @@ locret_8136F3C:
 	thumb_local_start
 sub_8136F40:
 	push {lr}
-	mov r0, #0
-	mov r1, #0xee
+	movflag EVENT_EE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_8136F70
 	mov r0, #0x7a 
@@ -13171,8 +13169,7 @@ locret_8136F70:
 	thumb_local_start
 sub_8136F74:
 	push {lr}
-	mov r0, #0
-	mov r1, #0xee
+	movflag EVENT_EE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_8136FA2
 	mov r0, #0x48 
@@ -13440,8 +13437,7 @@ locret_813716E:
 	thumb_local_start
 sub_8137170:
 	push {lr}
-	mov r0, #0
-	mov r1, #0xee
+	movflag EVENT_EE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_813719E
 	mov r0, #0x40 
@@ -13645,8 +13641,7 @@ locret_81372F2:
 	thumb_local_start
 sub_81372F4:
 	push {lr}
-	mov r0, #0
-	mov r1, #0xee
+	movflag EVENT_EE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_8137332
 	ldrb r0, [r5,#5]
@@ -13676,8 +13671,7 @@ locret_8137332:
 	thumb_local_start
 sub_8137334:
 	push {lr}
-	mov r0, #0
-	mov r1, #0xee
+	movflag EVENT_EE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_8137366
 	mov r0, #0x48 
@@ -13977,8 +13971,7 @@ locret_813756A:
 	thumb_local_start
 sub_813756C:
 	push {lr}
-	mov r0, #0
-	mov r1, #0xee
+	movflag EVENT_EE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_813759A
 	mov r0, #0x3c 
@@ -14046,11 +14039,9 @@ sub_81375D8:
 	strb r0, [r5,#2]
 	mov r0, #0
 	strb r0, [r5,#3]
-	mov r0, #0
-	mov r1, #0xee
+	movflag EVENT_EE
 	bl ClearEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0xef
+	movflag EVENT_EF
 	bl ClearEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_81375D8
@@ -14089,8 +14080,7 @@ loc_813762E:
 loc_8137632:
 	mov r7, #1
 	mov r4, #0x4f 
-	mov r0, #0
-	mov r1, #0xef
+	movflag EVENT_EF
 	bl SetEventFlagFromImmediate
 loc_813763E:
 	strb r4, [r5,#3]
@@ -14654,8 +14644,7 @@ sub_8137A7C:
 	bl chatbox_8040818
 	mov r0, #0x40 
 	bl chatbox_clear_eFlags2009F38 // (int a1) ->
-	mov r0, #0
-	mov r1, #0xbf
+	movflag EVENT_BF
 	mov r2, #0x13
 	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	movflag EVENT_1710
@@ -16233,8 +16222,7 @@ sub_81387D8:
 	bl sub_80027F4
 	bl sub_8002668
 	bl sub_80303F2
-	mov r0, #0
-	mov r1, #2
+	movflag EVENT_2
 	bl decompressCoordEventData_8030aa4
 	mov r0, #0
 	mov r1, #0

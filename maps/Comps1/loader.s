@@ -228,11 +228,9 @@ off_806DBF0: .word off_8616598
 sub_806DC0C:
 	push {r4-r7,lr}
 	push {r0,r1}
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl SetEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl ClearEventFlagFromImmediate
 	pop {r0,r1}
 	mov r5, r10
@@ -278,11 +276,9 @@ sub_806DC7A:
 	bne loc_806DC86
 	pop {pc}
 loc_806DC86:
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl ClearEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806DC7A
@@ -296,11 +292,9 @@ sub_806DC98:
 	bne loc_806DCA4
 	pop {pc}
 loc_806DCA4:
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl ClearEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806DC98
@@ -314,11 +308,9 @@ sub_806DCB6:
 	bne loc_806DCC2
 	pop {pc}
 loc_806DCC2:
-	mov r0, #0
-	mov r1, #0x8e
+	movflag EVENT_8E
 	bl ClearEventFlagFromImmediate
-	mov r0, #0
-	mov r1, #0x8f
+	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806DCB6

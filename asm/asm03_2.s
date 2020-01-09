@@ -9068,8 +9068,7 @@ off_804C06C: .word sub_804C08C+1
 	thumb_func_start sub_804C074
 sub_804C074:
 	push {r4-r7,lr}
-	mov r0, #4
-	mov r1, #0xfe
+	movflag EVENT_4FE
 	bl ClearEventFlagFromImmediate
 	mov r4, r10
 	ldr r1, [r4,#oToolkit_RenderInfoPtr]
@@ -9117,12 +9116,10 @@ sub_804C08C:
 	strb r0, [r5,#0x11]
 	mov r0, #2
 	strb r0, [r5,#0x18]
-	mov r0, #4
-	mov r1, #0xfb
+	movflag EVENT_4FB
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_804C0EE
-	mov r0, #4
-	mov r1, #0xfe
+	movflag EVENT_4FE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_804C0EE
 	bl sub_804C2D0
@@ -9130,8 +9127,7 @@ loc_804C0EE:
 	bl sub_804C144
 	mov r0, #4
 	strb r0, [r5,#0x10]
-	mov r0, #4
-	mov r1, #0xfe
+	movflag EVENT_4FE
 	bl SetEventFlagFromImmediate
 	bl sub_804C11C
 	pop {r4-r7,pc}
@@ -10503,8 +10499,7 @@ sub_804CDD4:
 	ldr r2, dword_804CE64 // =0x800 
 	orr r0, r2
 	strh r0, [r4]
-	mov r0, #0xb
-	mov r1, #0xf0
+	movflag EVENT_BF0
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_804CDF0
 	bl sub_804CE3C

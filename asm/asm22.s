@@ -209,12 +209,10 @@ loc_80870AC:
 	ldr r0, off_8087110 // =byte_8086340+188 
 	b loc_80870F2
 loc_80870C2:
-	mov r0, #0xf
-	mov r1, #0xc0
+	movflag EVENT_FC0
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_80870D8
-	mov r0, #0xf
-	mov r1, #0xc0
+	movflag EVENT_FC0
 	bl SetEventFlagFromImmediate
 	ldr r0, off_8087114 // =byte_8086460+8 
 	b loc_80870F2

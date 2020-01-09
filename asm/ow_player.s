@@ -49,8 +49,7 @@ sub_809D19C:
 	push {lr}
 	movflag EVENT_1716
 	bl ClearEventFlagFromImmediate
-	mov r0, #0xb
-	mov r1, #0xe4
+	movflag EVENT_BE4
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809D1D2
 	bl GetCurPETNavi // () -> u8
@@ -295,8 +294,7 @@ loc_809D3BC:
 	ldrb r0, [r5,#oOWPlayerObject_InteractionLocked]
 	tst r0, r0
 	beq loc_809D3E6
-	mov r0, #0xb
-	mov r1, #0xe4
+	movflag EVENT_BE4
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809D3E6
 	mov r0, #oOWPlayerObject_Coords
@@ -887,8 +885,7 @@ loc_809D856:
 	ldrb r0, [r5,#oOWPlayerObject_InteractionLocked]
 	tst r0, r0
 	beq loc_809D886
-	mov r0, #0xb
-	mov r1, #0xe4
+	movflag EVENT_BE4
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809D886
 	mov r0, #0x1c
@@ -2404,11 +2401,9 @@ sub_809E31A:
 	bl sprite_update
 	mov r0, #0
 	bl sub_8001172
-	mov r0, #6
-	mov r1, #0x8e
+	movflag EVENT_68E
 	bl SetEventFlagFromImmediate
-	mov r0, #6
-	mov r1, #0x8f
+	movflag EVENT_68F
 	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E31A
@@ -2434,11 +2429,9 @@ sub_809E35E:
 	bl sprite_update
 	mov r0, #0x54
 	bl sub_8001172
-	mov r0, #6
-	mov r1, #0x8e
+	movflag EVENT_68E
 	bl ClearEventFlagFromImmediate
-	mov r0, #6
-	mov r1, #0x8f
+	movflag EVENT_68F
 	bl SetEventFlagFromImmediate
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E35E

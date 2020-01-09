@@ -8568,11 +8568,9 @@ off_802A898: .word sub_802A8A4+1
 	thumb_local_start
 sub_802A8A4:
 	push {lr}
-	mov r0, #1
-	mov r1, #0x97
+	movflag EVENT_197
 	bl SetEventFlagFromImmediate
-	mov r0, #1
-	mov r1, #0xad
+	movflag EVENT_1AD
 	bl SetEventFlagFromImmediate
 	bl decomp_802B060
 	ldr r0, off_802A918 // =unk_2035000 
@@ -14090,8 +14088,7 @@ sub_802D658:
 sub_802D65E:
 	push {r4,lr}
 	mov r4, r0
-	mov r0, #1
-	mov r1, #0xd8
+	movflag EVENT_1D8
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_802D68A
 	ldr r1, dword_802D69C // =0x196 

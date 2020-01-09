@@ -10334,11 +10334,9 @@ off_8128CD0: .word sub_8128CD8+1
 	thumb_local_start
 sub_8128CD8:
 	push {r4-r7,lr}
-	mov r0, #1
-	mov r1, #0x97
+	movflag EVENT_197
 	bl SetEventFlagFromImmediate
-	mov r0, #1
-	mov r1, #0xad
+	movflag EVENT_1AD
 	bl SetEventFlagFromImmediate
 	bl zeroFillVRAM
 	bl ZeroFill_byte_3001960
@@ -16238,8 +16236,7 @@ loc_812BC70:
 	sub r2, #4
 	bgt loc_812BC70
 	ldr r6, off_812BD20 // =unk_2033C00 
-	mov r0, #0x20
-	mov r1, #0x20
+	movflag EVENT_2020
 	bl SetEventFlagFromImmediate
 	mov r0, #0x20 
 	mov r1, #0x20 

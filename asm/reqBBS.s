@@ -4505,12 +4505,10 @@ reqBBS_clearFlag_8140A0C:
 	thumb_local_start
 reqBBS_setFlags_8140A24:
 	push {lr}
-	mov r0, #0x16
-	mov r1, #0x40 
+	movflag EVENT_1640
 	mov r2, #0x40 
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
-	mov r0, #0x16
-	mov r1, #0xc0
+	movflag EVENT_16C0
 	mov r2, #0x10
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0
@@ -4521,12 +4519,10 @@ reqBBS_setFlags_8140A24:
 	thumb_local_start
 reqBBS_setFlags_8140A40:
 	push {lr}
-	mov r0, #0x16
-	mov r1, #0xf3
+	movflag EVENT_16F3
 	mov r2, #0xd
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
-	mov r0, #0x16
-	mov r1, #0xc0
+	movflag EVENT_16C0
 	mov r2, #0x10
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0

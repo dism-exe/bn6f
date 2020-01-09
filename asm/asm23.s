@@ -957,18 +957,15 @@ sub_8089A60:
 	bl sub_814219C
 	str r0, [r7,#0x10]
 	bl sub_81422B4
-	mov r0, #7
-	mov r1, #0x40
+	movflag EVENT_740
 	bl SetEventFlagFromImmediate
-	mov r0, #2
-	mov r1, #0x25 
+	movflag EVENT_225
 	bl ClearEventFlagFromImmediate
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	mov r1, #0
 	strb r1, [r0,#oGameState_Unk_15]
-	mov r0, #0
-	mov r1, #0x28
+	movflag EVENT_28
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8089ABA
 	bl GetSoulWeaponsMapIndex
@@ -1130,8 +1127,7 @@ sub_8089BC0:
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_8089BE0
-	mov r0, #7
-	mov r1, #0x45
+	movflag EVENT_745
 	bl SetEventFlagFromImmediate
 	mov r0, #0
 	strb r0, [r5,#8]

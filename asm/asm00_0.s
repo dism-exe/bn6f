@@ -1445,8 +1445,7 @@ GetTitleScreenIconCount:
 	push {r4-r7,lr}
 	mov r4, #0
 	mov r7, #0
-	mov r0, #0xe
-	mov r1, #0
+	movflag EVENT_E00
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8000EFA
 	add r4, #1
@@ -1493,16 +1492,14 @@ loc_8000F3A:
 	mov r0, #4
 	orr r7, r0
 loc_8000F4A:
-	mov r0, #3
-	mov r1, #0x70
+	movflag EVENT_370
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8000F5A
 	add r4, #1
 	mov r0, #2
 	orr r7, r0
 loc_8000F5A:
-	mov r0, #3
-	mov r1, #0x40
+	movflag EVENT_340
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8000F6C
 	add r4, #1
@@ -1510,8 +1507,7 @@ loc_8000F5A:
 	lsl r0, r0, #4
 	orr r7, r0
 loc_8000F6C:
-	mov r0, #3
-	mov r1, #0xbd
+	movflag EVENT_3BD
 	mov r2, #5
 	bl TestEventFlagRangeFromImmediate // (int a3, int a2) ->
 	beq loc_8000F80
@@ -1532,12 +1528,10 @@ sub_8000F86:
 	bl sub_803F838
 	bne locret_8000FAA
 	// flag 7 @ 0x2001C88[0xE<<5 + 0x0] (=2001E48)
-	mov r0, #0xe
-	mov r1, #0
+	movflag EVENT_E00
 	bl SetEventFlagFromImmediate
 	// flag 6 @ 0x2001C88[0x10<<5 + 0x0] (=2001E88)
-	mov r0, #0x10
-	mov r1, #1
+	movflag EVENT_1001
 	bl SetEventFlagFromImmediate
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
