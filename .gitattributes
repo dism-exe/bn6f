@@ -17,6 +17,8 @@ Makefile text eol=lf
 *.sha1 text eol=lf
 *.tpl text eol=lf
 *.ld text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
 docs/structs/.memAccessScanner export-ignore
 docs/structs/.memo export-ignore
 
