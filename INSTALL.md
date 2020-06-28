@@ -55,6 +55,7 @@ Install the [Windows Subsystem for Linux](https://docs.microsoft.com/windows/wsl
 ## Building
 Use the following make rules to build the ROM:
 - **make**: Builds the output ROM `bn6f.gba` by compiling rom.s, which includes all disassembled asm files, and data files.
+- **make assets**: Builds asset files. Currently this builds Textscript assets that must be included before a successful ROM Build.
 - **make compare**: validates that the checksum of `bn6f.gba` is correct.
 - **make clean**: removes intermediate build files
 - **make tail**: In case the tail label changes locations in `_rom.s`, Run this to recompute `tail.bin`. the tail label is the very last label in `_rom.s`, so it only has content if the rom has not been completely disassembled.
