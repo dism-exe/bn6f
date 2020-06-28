@@ -14,6 +14,9 @@ Run the following commands (first, see [this](#macos) if you are on **macOS** or
 	cd tools/gbagfx
 	make
 
+Build bn6f assets initially (and after each `make clean`):
+
+	make assets
 
 To build **bn6f.gba**:
 
