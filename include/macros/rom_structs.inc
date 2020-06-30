@@ -1,4 +1,5 @@
 	.include "include/rom_structs/FadeParams.inc"
+	.include "include/rom_structs/MapBGData.inc"
 	.include "include/rom_structs/MapObjectData.inc"
 	.include "include/rom_structs/MapObjectSpawnData.inc"
 	.include "include/rom_structs/ObjectSpawnData.inc"

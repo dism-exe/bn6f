@@ -853,12 +853,17 @@ off_80329C4:: .word off_8032BE8
 	.word off_8032EF4
 	.word off_8032F18
 	.word off_8032F48
-off_8032A20:: .word byte_84FAFCC
-	.word byte_84FF308
-	.word byte_84FF4AC
-	.word dword_8500F1C
-	.word byte_8503098
-	.word byte_850323C
+off_8032A20::
+	map_bg_descriptor_struct [
+		tileset_ptr: ACDCTown_Map0_Tileset,
+		palette_ptr: ACDCTown_Map0_Palette,
+		tilemap_ptr: ACDCTown_Map0_Tilemap,
+	]
+	map_bg_descriptor_struct [
+		tileset_ptr: dword_8500F1C,
+		palette_ptr: byte_8503098,
+		tilemap_ptr: byte_850323C,
+	]
 off_8032A38:: .word byte_8503C90
 	.word byte_85077F8
 	.word byte_850799C

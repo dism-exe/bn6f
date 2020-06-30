@@ -7,9 +7,11 @@
 	struct_org 0x4
 	u16 Unk_04 // loc=0x4
 	u16 Unk_06 // loc=0x6
-	u32 MapGFXPtrsPtr // loc=0x8
+	// Pointer to a map_bg_descriptor_struct.
+	u32 MapBGDescriptorPtr // loc=0x8
 	u32 Unk_0c // loc=0xc
 	u32 PalettePtr // loc=0x10
+	// Pointer to two map_bg_tileset_header_struct-s.
 	u32 TilesetPtr // loc=0x14
 	u32 UnkCallback_18 // loc=0x18
 	u32 UnkCallback_1c // loc=0x1c
