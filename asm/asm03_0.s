@@ -19786,10 +19786,11 @@ decompAndCopyMapTiles_8030472:
 	ldr r1, off_80304E0 // =palette_3001960 
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 
+	// Load two tilesets into VRAM: one for BG1 and one for BG2.
 	mov r0, #0
 	ldr r7, [r5,#oMapTilesState200be70_TilesetPtr] // (dword_200BE84 - 0x200be70)
 	mov r6, r7
-loc_8030492:
+.loadOneTileset
 	push {r0,r6}
 	ldr r0, [r7,#oMapBGTilesetHeader_CompressedDataOffset]
 	// src
@@ -19810,7 +19811,7 @@ loc_8030492:
 	pop {r0,r6}
 	add r0, #1
 	cmp r0, #2
-	blt loc_8030492
+	blt .loadOneTileset
 
 	ldr r3, [r5,#oMapTilesState200be70_MapBGDescriptorPtr] // (dword_200BE78 - 0x200be70)
 	ldr r0, [r3,#oMapBGDescriptor_TilemapPtr]
