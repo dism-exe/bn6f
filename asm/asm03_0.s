@@ -19628,11 +19628,12 @@ initMapTilesState_803037c:
 	push {r2-r4}
 	ldr r5, off_80305E0 // =eMapTilesState200be70
 	cmp r0, #INTERNET_MAP_GROUP_START
-	bge loc_8030392
+	bge .isInternetMap
+.isRealWorldMap
 	ldr r3, off_80303D8 // =off_80329A8 
 	ldr r4, off_80303DC // =off_8032F6C 
 	b loc_8030398
-loc_8030392:
+.isInternetMap
 	ldr r3, off_80303E0 // =off_80329C4 
 	ldr r4, off_80303E4 // =off_8032F88 
 	sub r0, #INTERNET_MAP_GROUP_START
