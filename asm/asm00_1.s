@@ -2752,7 +2752,7 @@ SpawnOverworldMapObject:
 	str r1, [r5,#oOverworldMapObject_X]
 	str r2, [r5,#oOverworldMapObject_Y]
 	str r3, [r5,#oOverworldMapObject_Z]
-	str r4, [r5,#oOverworldMapObject_Unk_04]
+	str r4, [r5,#oOverworldMapObject_ObjectID]
 	mov r0, #0
 	str r0, [r5,#oOverworldMapObject_Unk_08]
 	pop {pc}

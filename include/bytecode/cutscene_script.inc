@@ -1097,7 +1097,7 @@
 // hword3 - map object x coordinate
 // hword5 - map object y coordinate
 // hword7 - map object z coordinate
-// word9 - unknown param (written to field oOverworldMapObject_Unk_04)
+// word9 - map object ID (written to field oOverworldMapObject_ObjectID)
 	.macro cs_spawn_ow_map_object nybble1:req byte2:req hword3:req hword5:req hword7:req word9:req
 	.byte cs_spawn_free_ow_map_object_specials_cmd
 	nybble cs_spawn_ow_map_object_subcmd, nybble1
@@ -1116,7 +1116,7 @@
 // signedhword3 - map object x coordinate offset to player
 // signedhword5 - map object y coordinate offset to player
 // signedhword7 - map object z coordinate offset to player
-// word9 - unknown param (written to field oOverworldMapObject_Unk_04)
+// word9 - map object ID (written to field oOverworldMapObject_ObjectID)
 	.macro cs_spawn_ow_map_object_rel_to_ow_player nybble1:req byte2:req hword3:req hword5:req hword7:req word9:req
 	.byte cs_spawn_free_ow_map_object_specials_cmd
 	nybble cs_spawn_ow_map_object_rel_to_ow_player_subcmd, nybble1
@@ -1136,7 +1136,7 @@
 // signedhword4 - map object x coordinate offset to npc
 // signedhword6 - map object y coordinate offset to npc
 // signedhword8 - map object z coordinate offset to npc
-// word10 - unknown param (written to field oOverworldMapObject_Unk_04)
+// word10 - map object ID (written to field oOverworldMapObject_ObjectID)
 	.macro cs_spawn_ow_map_object_rel_to_ow_npc nybble1:req byte2:req byte3:req hword4:req hword6:req hword8:req word10:req
 	.byte cs_spawn_free_ow_map_object_specials_cmd
 	nybble cs_spawn_ow_map_object_rel_to_ow_npc_subcmd, nybble1

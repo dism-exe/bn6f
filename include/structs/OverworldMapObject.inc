@@ -3,7 +3,8 @@
     // type: struct OverworldMapObject
 	set_struct_label \struct_entry, \label
 	object_header_struct \label, \struct_entry, \set_struct_start_address
-	u32 Unk_04 // loc=0x4
+	// Index into the OverworldMapObjects array.
+	u32 ObjectID // loc=0x4
 	u32 Unk_08 // loc=0x8
 	u0 Coords // loc=0xc
 	s32 X // loc=0xc

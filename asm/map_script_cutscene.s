@@ -4793,7 +4793,7 @@ off_8037E38: .word MapScriptSubCmd_spawn_ow_map_object+1
 // hword3 - map object x coordinate
 // hword5 - map object y coordinate
 // hword7 - map object z coordinate
-// word9 - unknown param (written to field oOverworldMapObject_Unk_04)
+// word9 - map object ID (written to field oOverworldMapObject_ObjectID)
 MapScriptSubCmd_spawn_ow_map_object:
 	push {lr}
 	mov r1, #0xf
@@ -4839,7 +4839,7 @@ MapScriptSubCmd_spawn_ow_map_object:
 // signedhword3 - map object x coordinate offset to player
 // signedhword5 - map object y coordinate offset to player
 // signedhword7 - map object z coordinate offset to player
-// word9 - unknown param (written to field oOverworldMapObject_Unk_04)
+// word9 - unknown param (written to field oOverworldMapObject_ObjectID)
 MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_player:
 	push {lr}
 	mov r1, #0xf
@@ -4898,7 +4898,7 @@ MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_player:
 // signedhword4 - map object x coordinate offset to npc
 // signedhword6 - map object y coordinate offset to npc
 // signedhword8 - map object z coordinate offset to npc
-// word10 - unknown param (written to field oOverworldMapObject_Unk_04)
+// word10 - map object ID (written to field oOverworldMapObject_ObjectID)
 MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_npc:
 	push {lr}
 	mov r1, #0xf

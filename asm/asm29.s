@@ -3,12 +3,12 @@
 ho_80A4984:
 	push {lr}
 	ldr r7, off_80A49AC // =OverworldMapObjects
-	ldrb r1, [r5,#4]
-	mov r2, #0x10
+	ldrb r1, [r5,#oOverworldMapObject_ObjectID]
+	mov r2, #oMapObjectData_Size
 	mul r1, r2
 	add r7, r7, r1
 	ldr r0, off_80A499C // =jt_80A49A0 
-	ldrb r1, [r5,#8]
+	ldrb r1, [r5,#oOverworldMapObject_Unk_08]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
