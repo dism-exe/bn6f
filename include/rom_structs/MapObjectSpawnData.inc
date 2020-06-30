@@ -7,6 +7,7 @@
 		x: \x,
 		y: \y,
 		z: \z,
+		// object_id is an index into the OverworldMapObjects array.
 		object_id: \object_id,
 	]
 	u0 Size // loc=0x14

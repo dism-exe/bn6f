@@ -4,7 +4,7 @@ int ho_80A4984()
     int v0; // r5
     char *v1; // r7
 
-    v1 = &byte_80A3A44[16 * *(v0 + 4)];
+    v1 = &OverworldMapObjects[16 * *(v0 + 4)];
     return (*(&jt_80A49A0 + *(v0 + 8)))();
 }
 
