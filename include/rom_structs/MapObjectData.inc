@@ -15,3 +15,15 @@
 	.endm
 
 	def_rom_struct_offsets map_object_data_struct, oMapObjectData
+
+	// A sprite whose palette and tileset needs to be loaded into memory.
+	// Used by uncompSprite_8002906 during overworld map loading.
+	.macro sprite_load_data_struct sprite_type_offset, sprite_index
+	init_rom_struct sprite_load_data_struct
+	// Byte offset into the SpritePointersList array.
+	u8 SpriteTypeOffset, \sprite_type_offset // loc=0x0
+	u8 SpriteIndex, \sprite_index // loc=0x1
+	u0 Size // loc=0x2
+	.endm
+
+	def_rom_struct_offsets sprite_load_data_struct, oSpriteLoadData
