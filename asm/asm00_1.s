@@ -2745,8 +2745,8 @@ SpawnOverworldMapObject:
 .foundFreeMapObject
 	orr r2, r1
 	str r2, [r0,r3]
-	mov r0, #9
-	strb r0, [r5]
+	mov r0, #OBJECT_FLAG_STOP_SPRITE_UPDATE | OBJECT_FLAG_ACTIVE
+	strb r0, [r5,#oOverworldMapObject_Flags]
 	pop {r0-r4,r6}
 	strb r0, [r5,#oOverworldMapObject_Index]
 	str r1, [r5,#oOverworldMapObject_X]
