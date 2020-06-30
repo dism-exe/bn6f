@@ -2,7 +2,7 @@
 	.macro map_object_spawn_data_struct index, x, y, z, object_id
 	init_rom_struct map_object_spawn_data_struct
 	object_spawn_data_struct [
-		type: 0x5,
+		type: OBJECT_SPAWN_TYPE_OVERWORLD_MAP,
 		index: \index,
 		x: \x,
 		y: \y,

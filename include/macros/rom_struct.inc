@@ -70,6 +70,7 @@
 		.purgem s16
 		.purgem s32
 		.purgem ptr
+		.purgem enum8
 		.purgem bool
 		.purgem bool8
 		.endif
@@ -107,6 +108,10 @@
 
 		.macro ptr field:req, value
 			\struct_entry \label\()_\field, 4, \value
+		.endm
+
+		.macro enum8 field:req, value
+			\struct_entry \label\()_\field, 1, \value
 		.endm
 
 		// for exclusively 0 or 1

@@ -1,11 +1,12 @@
 
 SpawnObjectJumptable:
-	.word SpawnOWPlayerObject+1
-	.word object_spawnType1+1
-	.word SpawnOverworldNPCObject+1
-	.word object_spawnType3+1
-	.word object_spawnType4+1
-	.word SpawnOverworldMapObject+1
+	.word SpawnOWPlayerObject+1     // OBJECT_SPAWN_TYPE_OWPLAYER
+	.word object_spawnType1+1       // OBJECT_SPAWN_TYPE_UNK_1
+	.word SpawnOverworldNPCObject+1 // OBJECT_SPAWN_TYPE_OVERWORLD_NPC
+	.word object_spawnType3+1       // OBJECT_SPAWN_TYPE_UNK_3
+	.word object_spawnType4+1       // OBJECT_SPAWN_TYPE_UNK_4
+	.word SpawnOverworldMapObject+1 // OBJECT_SPAWN_TYPE_OVERWORLD_MAP
+
 FreeObjectJumptable:
 	.word FreeOWPlayerObject+1
 	.word object_freeMemory+1
