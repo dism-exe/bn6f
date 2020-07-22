@@ -29,7 +29,7 @@ void sub_80A49B0()
         v2 = sub_8035694((v0 + 12));
         *(v0 + 20) = v3;
     }
-    sub_8002E14(v2);
+    sprite_setBGPriority(v2);
     sprite_setUnk0x2c(*(v1 + 1));
     sprite_setPallete(v1[8]);
     *(v0 + 8) = 4;
@@ -187,7 +187,7 @@ void __noreturn sub_80A4BFC()
     *(v0 + 20) = checkZCoordModifiers_8031612(v0 + 12) << 16;
     v2 = sub_8035694((v0 + 12));
     *(v0 + 20) = v1;
-    sub_8002E14(v2);
+    sprite_setBGPriority(v2);
     sprite_setAnimation(v0, *(v0 + 4));
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
@@ -238,7 +238,7 @@ int sub_80A51F8()
     {
         v0->objFlags = 3;
         sprite_load(v0, 128, *(v1 + 6), *(v1 + 7));
-        sub_8002E14(*(v1 + 12));
+        sprite_setBGPriority(*(v1 + 12));
         sprite_setAnimation(v0, *(v1 + 8));
         sprite_loadAnimationData(v0);
         sprite_noShadow(v0);
@@ -389,7 +389,7 @@ void __noreturn sub_80A5448()
     sprite_setAnimation(v0, v3);
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
-    sub_8002E14(2);
+    sprite_setBGPriority(2);
     *(v0 + 5) = v1[3];
     *(v0 + 8) = 4;
     sub_80A5494();
@@ -466,7 +466,7 @@ void __noreturn sub_80A5514()
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
     v4 = sub_8035694((v0 + 12));
-    sub_8002E14(v4);
+    sprite_setBGPriority(v4);
     v5 = *(v0 + 16);
     *(v0 + 36) = *(v0 + 12);
     *(v0 + 40) = v5;
@@ -735,7 +735,7 @@ void __noreturn sub_80A57D0()
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
     v1 = sub_8035694((v0 + 12));
-    sub_8002E14(v1);
+    sprite_setBGPriority(v1);
     sprite_setPallete(0);
     sub_80A5890();
     *(v0 + 48) = 0;
@@ -1094,7 +1094,7 @@ char *sub_80A5AF8()
         sprite_loadAnimationData(v0);
         sprite_noShadow(v0);
         v4 = sub_8035694((v0 + 12));
-        sub_8002E14(v4);
+        sprite_setBGPriority(v4);
         *(v0 + 6) = v2[7];
         *(v0 + 7) = 1;
         *(v0 + 36) = 0;
@@ -1703,7 +1703,7 @@ void sub_80A6A62()
     *(v0 + 20) = checkZCoordModifiers_8031612(v0 + 12) << 16;
     v5 = sub_8035694((v0 + 12));
     *(v0 + 20) = v4;
-    sub_8002E14(v5);
+    sprite_setBGPriority(v5);
     sprite_update(v0);
 }
 
@@ -2143,7 +2143,7 @@ void __noreturn sub_80A6EBC()
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
     v1 = sub_8035694((v0 + 12));
-    sub_8002E14(v1);
+    sprite_setBGPriority(v1);
     sprite_setPallete(1);
     v2 = sub_80A70C0();
     if ( !v2 )
@@ -2532,7 +2532,7 @@ void __noreturn sub_80A72D8()
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
     v3 = sub_8035694((v0 + 12));
-    sub_8002E14(v3);
+    sprite_setBGPriority(v3);
     sprite_setPallete(0);
     *(v0 + 12) = *v1 << 16;
     *(v0 + 16) = *(v1 + 1) << 16;
@@ -3057,7 +3057,7 @@ void __noreturn sub_80A77C8()
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
     sprite_setPallete(*(v0 + 5));
-    sub_8002E14(*(v0 + 6));
+    sprite_setBGPriority(*(v0 + 6));
     *(v0 + 8) = 4;
     sprite_update(v0);
 }
@@ -3135,7 +3135,7 @@ void __noreturn sub_80A786C()
 LABEL_5:
         sprite_disableAlpha();
     *v1 = v5;
-    sub_8002E14(2);
+    sprite_setBGPriority(2);
     v6 = *(v1 + 4);
     if ( v6 != *(v1 + 5) )
     {
@@ -3175,7 +3175,7 @@ void __noreturn sub_80A78E0()
     sprite_setAnimation(v0, *(v1 + 2));
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
-    sub_8002E14(2);
+    sprite_setBGPriority(2);
     *(v0 + 36) = 0;
     *(v0 + 8) = 4;
     sub_80A7912();
@@ -3608,7 +3608,7 @@ void __noreturn sub_80A7CA4()
     sprite_setAnimation(v0, 0);
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
-    sub_8002E14(2);
+    sprite_setBGPriority(2);
     sprite_setPallete(1);
     SpawnOverworldMapObject(0, *(v0 + 12), *(v0 + 16), *(v0 + 20));
     *(v0 + 8) = 4;
@@ -3735,7 +3735,7 @@ void __noreturn sub_80A7DB8()
     *(v0 + 20) = 16384000;
     *(v0 + 20) = checkZCoordModifiers_8031612(v0 + 12) << 16;
     v4 = sub_8035694((v0 + 12));
-    sub_8002E14(v4);
+    sprite_setBGPriority(v4);
     *(v0 + 8) = 4;
     sub_80A7E14();
 }
@@ -4062,7 +4062,7 @@ void __noreturn sub_80A822C()
     sprite_setAnimation(v0, v1);
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
-    sub_8002E14(2);
+    sprite_setBGPriority(2);
     v2 = sub_80A82A4();
     *(v0 + 12) = *v2 << 16;
     *(v0 + 16) = *(v2 + 1) << 16;
@@ -4133,7 +4133,7 @@ signed int sub_80A82DC()
     if ( !v5 )
     {
         v4 = 1;
-        sub_8002E14(3);
+        sprite_setBGPriority(3);
     }
     return v4;
 }
@@ -4201,7 +4201,7 @@ void __noreturn sub_80A83B8()
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
     v2 = sub_8035694((v0 + 12));
-    sub_8002E14(v2);
+    sprite_setBGPriority(v2);
     ClearEventFlagFromImmediate(9, 255);
     TestEventFlagFromImmediate(9, 215);
     if ( !v3 )
@@ -4579,7 +4579,7 @@ void sub_80A86B4()
     sub_809E1AE();
     *(v0 + 20) = v8;
     v9 = sub_8035694((v0 + 12));
-    sub_8002E14(v9);
+    sprite_setBGPriority(v9);
     *(v0 + 20) += 786432;
     v10 = 4;
     sub_8142B04(v2);
@@ -4624,7 +4624,7 @@ void __noreturn sub_80A8748()
     sub_809E1AE();
     *(v0 + 20) = v4;
     v5 = sub_8035694((v0 + 12));
-    sub_8002E14(v5);
+    sprite_setBGPriority(v5);
     v7 = v3[3] << 16;
     *(v0 + 20) += v7;
     v8 = 2 * v2;
@@ -4674,7 +4674,7 @@ void __noreturn sub_80A8814()
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
     v1 = sub_8035694((v0 + 12));
-    sub_8002E14(v1);
+    sprite_setBGPriority(v1);
     *(v0 + 8) = 4;
     sub_80A8848();
 }
@@ -4721,7 +4721,7 @@ void __noreturn sub_80A8894()
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
     v1 = sub_8035694((v0 + 12));
-    sub_8002E14(v1);
+    sprite_setBGPriority(v1);
     *(v0 + 40) = 0;
     v2 = *(v0 + 16);
     *(v0 + 44) = *(v0 + 12);
@@ -4851,7 +4851,7 @@ void __fastcall __noreturn sub_80A8A50(int a1)
     if ( *(v1 + 6) <= 0 )
         FreeOverworldMapObject();
     v2 = sub_8035694((v1 + 12));
-    sub_8002E14(v2);
+    sprite_setBGPriority(v2);
     sprite_update(v1);
 }
 
@@ -5074,7 +5074,7 @@ int sub_80A8C98()
     *(v0 + 20) = checkZCoordModifiers_8031612(v0 + 12) << 16;
     v2 = sub_8035694((v0 + 12));
     *(v0 + 20) = v1;
-    return sub_8002E14(v2);
+    return sprite_setBGPriority(v2);
 }
 
 
@@ -5274,7 +5274,7 @@ int __noreturn sub_80A8E9C()
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
     v1 = sub_8035694((v0 + 12));
-    sub_8002E14(v1);
+    sprite_setBGPriority(v1);
     sub_80A90B0();
     TestEventFlagFromImmediate(11, 251);
     if ( v2 )
@@ -5677,9 +5677,9 @@ int sub_80A91F4()
 
     TestEventFlagFromImmediate(11, 230);
     if ( !v1 )
-        return sub_8002E14(1);
+        return sprite_setBGPriority(1);
     v3 = sub_8035694((v0 + 12));
-    return sub_8002E14(v3);
+    return sprite_setBGPriority(v3);
 }
 
 
@@ -5745,7 +5745,7 @@ void __noreturn sub_80A92E0()
     sprite_setAnimation(v0, *(v0 + 4));
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
-    sub_8002E14(*(v0 + 5));
+    sprite_setBGPriority(*(v0 + 5));
     sprite_setPallete(*(v1 + 28));
     *(v0 + 6) = 0;
     *(v0 + 7) = 0;
@@ -5767,7 +5767,7 @@ void __noreturn sub_80A931C()
     TestEventFlagFromImmediate(11, 230);
     if ( !v1 )
     {
-        sub_8002E14(3);
+        sprite_setBGPriority(3);
         v0->currState = 8;
         v4 = PlaySoundEffect(107, v2, v3);
         sub_80A9360(v4);
@@ -5796,7 +5796,7 @@ void __fastcall __noreturn sub_80A9360(int a1)
     sub_80A93D8();
     sub_80A937C();
     v2 = sub_8035694((v1 + 12));
-    sub_8002E14(v2);
+    sprite_setBGPriority(v2);
     sprite_update(v1);
 }
 
@@ -5906,7 +5906,7 @@ int __noreturn sub_80A9458()
     sprite_setAnimation(v0, 0);
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
-    sub_8002E14(2);
+    sprite_setBGPriority(2);
     v1 = sub_80A9570();
     *(v0 + 12) = *v1 << 16;
     *(v0 + 16) = *(v1 + 1) << 16;
@@ -6039,11 +6039,11 @@ int sub_80A95EC()
         if ( v2 )
         {
             v3 = sub_8035694((v0 + 12));
-            result = sub_8002E14(v3);
+            result = sprite_setBGPriority(v3);
         }
         else
         {
-            result = sub_8002E14(3);
+            result = sprite_setBGPriority(3);
         }
     }
     return result;
@@ -6097,7 +6097,7 @@ void __noreturn sub_80A9680()
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
     v1 = sub_8035694((v0 + 12));
-    sub_8002E14(v1);
+    sprite_setBGPriority(v1);
     *(v0 + 36) = 0;
     sub_80A97F4();
     PlaySoundEffect(435, v2, v3);
@@ -6408,7 +6408,7 @@ void __noreturn sub_80A9A2C()
     *(v0 + 20) = checkZCoordModifiers_8031612(v0 + 12) << 16;
     v2 = sub_8035694((v0 + 12));
     *(v0 + 20) = v1;
-    sub_8002E14(v2);
+    sprite_setBGPriority(v2);
     sprite_setAnimation(v0, *(v0 + 4));
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
@@ -6479,7 +6479,7 @@ void sub_80A9B9C()
         v3 = sub_8035694((v0 + 12));
         *(v0 + 20) = v4;
     }
-    sub_8002E14(v3);
+    sprite_setBGPriority(v3);
     sprite_setAnimation(v0, *(v1 + 8));
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
@@ -6603,7 +6603,7 @@ void __noreturn sub_80A9D30()
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
     v4 = sub_8035694((v0 + 12));
-    sub_8002E14(v4);
+    sprite_setBGPriority(v4);
     *(v0 + 36) = 0;
     *(v0 + 38) = 0;
     *(v0 + 40) = 174762;
@@ -6786,7 +6786,7 @@ void __noreturn sub_80A9EEC()
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
     v4 = sub_8035694((v0 + 12));
-    sub_8002E14(v4);
+    sprite_setBGPriority(v4);
     PlaySoundEffect(118, v5, v6);
     *(v0 + 8) = 4;
     sub_80A9F30();
@@ -6830,7 +6830,7 @@ void __noreturn sub_80A9F78()
     sprite_setAnimation(v0, *(v0 + 6));
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
-    sub_8002E14(*(v0 + 7));
+    sprite_setBGPriority(*(v0 + 7));
     sprite_setPallete(0);
     *(v0 + 20) = sub_80AA04C(*(v0 + 4));
     *(v0 + 36) = 0;
@@ -6908,7 +6908,7 @@ void __noreturn sub_80AA078()
     sprite_setAnimation(v0, *(v0 + 6));
     sprite_loadAnimationData(v0);
     sprite_removeShadow();
-    sub_8002E14(*(v0 + 7));
+    sprite_setBGPriority(*(v0 + 7));
     sprite_setPallete(0);
     *(v0 + 20) = sub_80AA134(*(v0 + 4));
     *(v0 + 36) = 0;
@@ -6988,7 +6988,7 @@ void __noreturn sub_80AA160()
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
     v1 = sub_8035694((v0 + 12));
-    sub_8002E14(v1);
+    sprite_setBGPriority(v1);
     *(v0 + 8) = 4;
     sub_80AA194();
 }
@@ -7051,7 +7051,7 @@ void __noreturn sub_80AA204()
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
     v1 = sub_8035694((v0 + 12));
-    sub_8002E14(v1);
+    sprite_setBGPriority(v1);
     v2 = *(v0 + 16);
     v3 = *(v0 + 20);
     *(v0 + 40) = *(v0 + 12);
@@ -7191,7 +7191,7 @@ void __noreturn sub_80AA322()
     *(v0 + 16) = v3;
     *(v0 + 20) = v4;
     v5 = sub_8035694((v0 + 12));
-    sub_8002E14(v5);
+    sprite_setBGPriority(v5);
     sprite_update(v0);
 }
 
@@ -7259,7 +7259,7 @@ int __fastcall sub_80AA3C2(int a1)
         sprite_loadAnimationData(v1);
         sprite_hasShadow();
         v7 = sub_8035694((v1 + 12));
-        result = sub_8002E14(v7);
+        result = sprite_setBGPriority(v7);
         v8 = v2[4];
     }
     return result;

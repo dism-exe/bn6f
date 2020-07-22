@@ -99,7 +99,7 @@ void npc_standard_809E5E2()
     v4 = *(v0 + 100);
     if ( !v4 )
         v4 = sub_8035694((v0 + 36));
-    sub_8002E14(v4);
+    sprite_setBGPriority(v4);
     if ( *(v0 + 96) & 0x40 )
         sub_809F922();
 }

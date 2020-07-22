@@ -142,7 +142,7 @@ loc_809E66E: .align 1, 0
 	add r0, #oOverworldNPCObject_Coords
 	bl applyLayerEffectToOWObject_8035694
 loc_809E690:
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
 	mov r1, #OW_NPC_UNK_FLAGS_60_0x40
 	tst r0, r1
