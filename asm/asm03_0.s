@@ -20664,9 +20664,9 @@ loc_8030ABA:
 	add r0, r0, r7
 	bl sub_8031600
 
-	ldr r0, [r6,#oMapTriggersHeader_UnkOffset_08]
+	ldr r0, [r6,#oMapTriggersHeader_LayerPriorityTriggersOffset]
 	add r0, r0, r7
-	bl sub_803189C
+	bl initializeLayerPriorityTriggers
 
 	ldr r0, [r6,#oMapTriggersHeader_UnkOffset_0C]
 	add r0, r0, r7
@@ -20699,17 +20699,17 @@ sub_8030B0C:
 	thumb_local_start
 sub_8030B1E:
 	push {lr}
-	ldrh r2, [r5,#oUnk_Ex2011a20_Unk_04]
+	ldrh r2, [r5,#oUnk_Ex2011a20_EntryCount]
 	cmp r2, #0
 	beq .loc_8030B66
 	mov r2, #0
-	ldrh r3, [r5,#oUnk_Ex2011a20_Unk_04]
-	ldr r6, [r5,#oUnk_Ex2011a20_UnkPtr_00]
+	ldrh r3, [r5,#oUnk_Ex2011a20_EntryCount]
+	ldr r6, [r5,#oUnk_Ex2011a20_EntriesPtr]
 	mov r8, r6
 
 // this is a binary search
 // will document later
-// r3 = unk04
+// r3 = EntryCount
 .loop
 	.align 1, 0
 	add r4, r2, r3
@@ -20717,7 +20717,7 @@ sub_8030B1E:
 	lsl r7, r4, #2
 	mov r6, r8
 	add r6, r6, r7
-	// read hword from [UnkPtr_00 + ((r2 + r3) & ~1) * 2]
+	// read hword from [EntriesPtr + ((r2 + r3) & ~1) * 2]
 	ldrh r7, [r6]
 	cmp r1, r7
 	beq .loc_8030B4C
@@ -22317,13 +22317,13 @@ sub_80316F8:
 	asr r2, r2, #3
 
 	// at a glance, unk07 and unk06 seem to be always 0xfe
-	ldrb r3, [r5,#oUnk_Ex2011a20_Unk_07]
+	ldrb r3, [r5,#oUnk_Ex2011a20_MaxY]
 	lsr r3, r3, #1
 
 	// y/8 + unk07/2
 	add r2, r2, r3
 
-	ldrb r3, [r5,#oUnk_Ex2011a20_Unk_06]	
+	ldrb r3, [r5,#oUnk_Ex2011a20_MaxX]
 	lsr r3, r3, #1
 
 	// x/8 + unk06/2
@@ -22571,20 +22571,26 @@ sub_8031874:
 	pop {pc}
 	thumb_func_end sub_8031874
 
+	// Initialize eLayerPriorityTriggers.
+	//
+	// Inputs:
+	// r0: pointer to header of decompressed layer priority trigger table
+	//
+	// Clobbers: r0, r1, r5
 	thumb_local_start
-sub_803189C:
-	ldr r5, off_8031994 // =dword_2013940 
-	ldr r1, [r0]
-	strh r1, [r5,#0x4] // (word_2013944 - 0x2013940)
-	add r0, #4
-	str r0, [r5]
+initializeLayerPriorityTriggers:
+	ldr r5, off_8031994 // =eLayerPriorityTriggers
+	ldr r1, [r0] // header (entry count)
+	strh r1, [r5,#oUnk_Ex2011a20_EntryCount]
+	add r0, #4 // skip header (entry count)
+	str r0, [r5,#oUnk_Ex2011a20_EntriesPtr]
 	mov r0, #0xfe
-	strb r0, [r5,#0x6] // (byte_2013946 - 0x2013940)
-	strb r0, [r5,#0x7] // (byte_2013947 - 0x2013940)
+	strb r0, [r5,#oUnk_Ex2011a20_MaxX]
+	strb r0, [r5,#oUnk_Ex2011a20_MaxY]
 	mov pc, lr
-	.byte 0, 0
-	thumb_func_end sub_803189C
+	thumb_func_end initializeLayerPriorityTriggers
 
+	.balign 4, 0
 	thumb_func_start checkLayerPriority_80318b0
 checkLayerPriority_80318b0:
 	push {r4-r7,lr}
@@ -22592,7 +22598,7 @@ checkLayerPriority_80318b0:
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
-	ldr r5, off_8031994 // =dword_2013940 
+	ldr r5, off_8031994 // =eLayerPriorityTriggers
 	ldr r2, off_8031910 // =dword_200F3D0 
 	str r0, [r2]
 	bl sub_80316F8
@@ -22672,7 +22678,7 @@ dword_8031918: .word NULL
 	thumb_local_start
 sub_8031980:
 	push {lr}
-	ldr r5, off_8031994 // =dword_2013940 
+	ldr r5, off_8031994 // =eLayerPriorityTriggers
 	cmp r0, #1
 	beq loc_803198A
 	b loc_803198E
@@ -22683,7 +22689,7 @@ loc_803198E:
 	mov r0, #2
 	pop {pc}
 	.balign 4, 0
-off_8031994: .word dword_2013940
+off_8031994: .word eLayerPriorityTriggers
 	thumb_func_end sub_8031980
 
 	thumb_local_start

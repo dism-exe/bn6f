@@ -1811,7 +1811,7 @@ byte_2013927:: // 0x2013927
 	.space 13
 dword_2013934:: // 0x2013934
 	.space 12
-dword_2013940:: // 0x2013940
+eLayerPriorityTriggers:: // 0x2013940
 	.space 4
 word_2013944:: // 0x2013944
 	.space 2
