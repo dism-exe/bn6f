@@ -689,7 +689,7 @@ loc_30060B8:
 	mov r0, r12
 	str r0, [r5,#0x24]
 loc_30060BE: .align 1, 0
-	ldrb r1, [r5,#oObjectSprite_Unk_15]
+	ldrb r1, [r5,#oObjectSprite_PaletteAndPriorityHi]
 	mov r2, #0xf0
 	and r1, r2
 	mov r2, #0xf0
@@ -700,12 +700,13 @@ loc_30060BE: .align 1, 0
 	tst r1, r2
 	bne locret_30060E2
 	bl sub_3006108
-	ldrb r1, [r5,#oObjectSprite_Unk_15]
+	// Set the sprite's palette index to r0.
+	ldrb r1, [r5,#oObjectSprite_PaletteAndPriorityHi]
 	mov r2, #0xf0
 	bic r1, r2
 	lsl r0, r0, #4
 	orr r1, r0
-	strb r1, [r5,#oObjectSprite_Unk_15]
+	strb r1, [r5,#oObjectSprite_PaletteAndPriorityHi]
 locret_30060E2:
 	pop {r5,pc}
 off_30060E4: .word off_30060E8
@@ -1266,6 +1267,10 @@ loc_30064B0:
 	mov r8, r1
 	mov r9, r0
 	mov r3, r6
+
+	// r3 is OAM0And1.
+	// r3 = r3 | 0
+	// All this computation constant-folds to 0.
 	mov r0, #0xc
 	ldrsh r0, [r5,r0]
 	add r0, r8
@@ -1275,6 +1280,9 @@ loc_30064B0:
 	and r0, r4
 	lsl r0, r0, #0x10
 	orr r3, r0
+
+	// r3 ^= ([r2,#3] & 0xf0) << 22
+	// Some of this computation constant-folds to 0.
 	ldrb r4, [r2,#3]
 	mov r0, #0xf0
 	and r0, r4
@@ -1282,6 +1290,7 @@ loc_30064B0:
 	orr r3, r4
 	lsl r0, r0, #0x16
 	eor r3, r0
+
 	mov r0, #0xe
 	add r0, r0, r7
 	ldrb r0, [r5,r0]
@@ -1289,26 +1298,35 @@ loc_30064B0:
 	mov r4, #0xff
 	and r0, r4
 	orr r3, r0
+
 	ldrb r4, [r2,#4]
 	lsl r1, r4, #0x1c
 	lsr r1, r1, #0x1c
 	lsl r1, r1, #0xe
 	orr r3, r1
-	ldrh r1, [r5,#0x14]
+
+	// r1 is OAM2.
+	// OAM2 = [r5,#oObjectSprite_PaletteAndPriority]
+	ldrh r1, [r5,#oObjectSprite_PaletteAndPriority]
 	ldr r0, [sp,#8]
-	cmp r0, #0xff
+	cmp r0, #0xff // Is palette overwritten?
 	ble loc_3006528
+
+	// Set the palette number: OAM2 = (OAM2 & ~0xf000) | ([r0,#0] << 12)
 	mov r4, #0xf0
 	lsl r4, r4, #8
 	bic r1, r4
-	ldrb r4, [r0]
+	ldrb r4, [r0,#0] // palette number
 	lsl r4, r4, #0xc
 	orr r1, r4
+
 loc_3006528:
-	ldrh r0, [r5,#8]
+	// OAM2 |= [r2] + [r5,#oObjectSprite_Unk_08]
+	ldrh r0, [r5,#oObjectSprite_BaseTileIndex]
 	ldrb r4, [r2]
 	add r4, r4, r0
 	orr r1, r4
+
 	mov r8, r2
 	mov r9, r5
 	mov r0, r3

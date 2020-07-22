@@ -103,14 +103,14 @@ sprite_initialize:
 	str r0, [r5,#oObjectSprite_Unk_2c]
 	strh r0, [r5,#oObjectSprite_Unk_10]
 	strh r0, [r5,#oObjectSprite_Unk_12]
-	strb r0, [r5,#oObjectSprite_Unk_14]
+	strb r0, [r5,#oObjectSprite_PaletteAndPriority]
 	strb r0, [r5,#oObjectSprite_Unk_05]
 	str r0, [r5,#oObjectSprite_Unk_30]
 	str r0, [r5,#oObjectSprite_Unk_34]
 	mvn r0, r0
 	str r0, [r5,#oObjectSprite_Unk_28]
 	mov r0, #8
-	strb r0, [r5,#oObjectSprite_Unk_15]
+	strb r0, [r5,#oObjectSprite_PaletteAndPriorityHi]
 	mov r0, #8
 	strh r0, [r5,#oObjectSprite_Unk_16]
 	mov pc, lr
@@ -1098,11 +1098,11 @@ sprite_setFinalPalette:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r0, [r3,#oObjectSprite_Unk_15]
+	ldrb r0, [r3,#oObjectSprite_PaletteAndPriorityHi]
 	mov r2, #0xf0
 	bic r0, r2
 	orr r0, r1
-	strb r0, [r3,#oObjectSprite_Unk_15]
+	strb r0, [r3,#oObjectSprite_PaletteAndPriorityHi]
 	mov pc, lr
 	thumb_func_end sprite_forceWhitePalette
 
@@ -1112,7 +1112,7 @@ sprite_getFinalPalette:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r0
-	ldrb r0, [r3,#oObjectSprite_Unk_15]
+	ldrb r0, [r3,#oObjectSprite_PaletteAndPriorityHi]
 	mov r1, #0xf0
 	and r1, r0
 	mov pc, lr
@@ -1124,10 +1124,10 @@ sprite_clearFinalPalette:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r0, [r3,#oObjectSprite_Unk_15]
+	ldrb r0, [r3,#oObjectSprite_PaletteAndPriorityHi]
 	mov r1, #0xf0
 	bic r0, r1
-	strb r0, [r3,#oObjectSprite_Unk_15]
+	strb r0, [r3,#oObjectSprite_PaletteAndPriorityHi]
 	mov pc, lr
 	thumb_func_end sprite_clearFinalPalette
 
@@ -1168,11 +1168,11 @@ sub_8002E14:
 	lsl r3, r3, #4
 	add r3, r3, r5
 	mov r2, #0xc
-	ldrb r1, [r3,#oObjectSprite_Unk_15]
+	ldrb r1, [r3,#oObjectSprite_PaletteAndPriorityHi]
 	bic r1, r2
 	lsl r0, r0, #2
 	orr r1, r0
-	strb r1, [r3,#oObjectSprite_Unk_15]
+	strb r1, [r3,#oObjectSprite_PaletteAndPriorityHi]
 	mov pc, lr
 	thumb_func_end sub_8002E14
 
