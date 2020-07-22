@@ -20696,12 +20696,23 @@ sub_8030B0C:
 	mov pc, lr
 	thumb_func_end sub_8030B0C
 
+	// Find the first trigger entry for the given tile position.
+	//
+	// Inputs:
+	// r1: tile position (returned by sub_80316F8)
+	// r5: Unk_Ex2011a20 table to search
+	//
+	// Outputs:
+	// r2: pointer to found table entry, or NULL if no entry exists in the
+	//     table
+	//
+	// Clobbers: r3, r4, r6, r7, r8
 	thumb_local_start
-sub_8030B1E:
+findTriggerForTilePosition:
 	push {lr}
 	ldrh r2, [r5,#oUnk_Ex2011a20_EntryCount]
 	cmp r2, #0
-	beq .loc_8030B66
+	beq .notFound
 	mov r2, #0
 	ldrh r3, [r5,#oUnk_Ex2011a20_EntryCount]
 	ldr r6, [r5,#oUnk_Ex2011a20_EntriesPtr]
@@ -20711,7 +20722,6 @@ sub_8030B1E:
 // will document later
 // r3 = EntryCount
 .loop
-	.align 1, 0
 	add r4, r2, r3
 	lsr r4, r4, #1
 	lsl r7, r4, #2
@@ -20726,21 +20736,17 @@ sub_8030B1E:
 	mov r3, r4
 	b .loc_8030B48
 .loc_8030B44:
-	.align 1, 0
 	mov r2, r4
 	add r2, #1
 .loc_8030B48:
-	.align 1, 0
 	cmp r2, r3
 	blt .loop
 
 .loc_8030B4C:
-	.align 1, 0
 	cmp r1, r7
-	bne .loc_8030B66
+	bne .notFound
 	ldr r2, [r5]
 .loc_8030B52:
-	.align 1, 0
 	sub r6, #4
 	cmp r6, r2
 	blt .loc_8030B60
@@ -20749,15 +20755,13 @@ sub_8030B1E:
 	bne .loc_8030B60
 	b .loc_8030B52
 .loc_8030B60:
-	.align 1, 0
 	add r6, #4
 	mov r2, r6
 	pop {pc}
-.loc_8030B66:
-	.align 1, 0
+.notFound
 	mov r2, #NULL
 	pop {pc}
-	thumb_func_end sub_8030B1E
+	thumb_func_end findTriggerForTilePosition
 
 	thumb_func_start checkCollision_8030b6a
 checkCollision_8030b6a:
@@ -20790,7 +20794,7 @@ loc_8030B98: .align 1, 0
 	cmp r2, r1
 	beq loc_8030C0E
 	ldrh r1, [r2]
-	bl sub_8030B1E
+	bl findTriggerForTilePosition
 	cmp r2, #0
 	bne loc_8030BB0
 loc_8030BA8: .align 1, 0
@@ -22220,7 +22224,7 @@ checkZCoordModifiers_8031612:
 	ldr r2, off_8031688 // =dword_200F3D0 
 	str r0, [r2]
 	bl sub_80316F8
-	bl sub_8030B1E
+	bl findTriggerForTilePosition
 	cmp r2, #0
 	beq loc_8031678
 	mov r3, #0
@@ -22602,7 +22606,7 @@ checkLayerPriority_80318b0:
 	ldr r2, off_8031910 // =dword_200F3D0 
 	str r0, [r2]
 	bl sub_80316F8
-	bl sub_8030B1E
+	bl findTriggerForTilePosition
 	cmp r2, #0
 	beq .returnLayer2
 .loc_80318CC:
@@ -22834,7 +22838,7 @@ checkCoordinateTrigger_8031a7a:
 	ldr r2, off_8031B08 // =dword_200F3D0 
 	str r0, [r2]
 	bl sub_80316F8
-	bl sub_8030B1E
+	bl findTriggerForTilePosition
 	cmp r2, #NULL
 	beq loc_8031AF6
 loc_8031A96:
