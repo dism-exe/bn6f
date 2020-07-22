@@ -7,6 +7,9 @@
 	.equ vBGTileIds, 0x600E000 // BG0 and BG2
 	.equ vObjectTiles, 0x6010000 // 4bpp
 
+	.equ GBA_SCREEN_WIDTH, 240
+	.equ GBA_SCREEN_HEIGHT, 160
+
 	// I/O
 	.equ LCDControl, 0x4000000
 	.equ Undocumented_GreenSwap, 0x4000002

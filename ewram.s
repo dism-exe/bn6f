@@ -859,14 +859,10 @@ dword_200A6A8:: // 0x200a6a8
 	.space 4
 dword_200A6AC:: // 0x200a6ac
 	.space 68
+
 word_200A6F0:: // 0x200a6f0
-	.space 2
-word_200A6F2:: // 0x200a6f2
-	.space 2
-word_200A6F4:: // 0x200a6f4
-	.space 2
-word_200A6F6:: // 0x200a6f6
-	.space 378
+	.space oOAMRotoScale_Size*32
+
 dword_200A870:: // 0x200a870
 	.space 16
 

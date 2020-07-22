@@ -1339,12 +1339,12 @@ loc_3006528:
 	add r3, r3, r4
 	lsl r7, r7, #5
 	lsr r3, r7
-	ldr r7, [sp,#0x10]
-	str r0, [r7]
-	strh r1, [r7,#4]
-	strb r2, [r7,#6]
-	strh r3, [r7,#8]
-	add r7, #0xc
+	ldr r7, [sp,#0x10] // r7 = unk_3002400
+	str r0, [r7,#oOAMEntry3002400_OAM0And1]
+	strh r1, [r7,#oOAMEntry3002400_OAM2]
+	strb r2, [r7,#oOAMEntry3002400_Unk_06]
+	strh r3, [r7,#oOAMEntry3002400_Unk_08]
+	add r7, #oOAMEntry3002400_Size
 	str r7, [sp,#0x10]
 	ldr r7, [sp,#0xc]
 	add r7, #1
@@ -1716,7 +1716,7 @@ copyTo_iObjectAttr3001D70_3006814: // () -> void
 	// s1 *v5: r7
 	ldr r0, off_30068C0 // =iObjectAttr3001D70
 	ldr r2, off_30068C4 // =unk_30025B0
-	ldr r3, off_30068C8 // =unk_3002170
+	ldr r3, off_30068C8 // =iObjectAttr3001D70End
 	ldr r6, off_30068CC // =tupleArr_3002590
 	ldr r7, off_30068D0 // =iObjectAttr3001150
 	mov r12, r7
@@ -1731,7 +1731,7 @@ copyTo_iObjectAttr3001D70_3006814: // () -> void
 // reverse search p0 until a non 0xFF is found or reached buffer end
 .searchTillNo0xFF
 	// --p1
-	sub r4, #1
+	sub r4, #1 // adjust to oObjectAttr3001150_Unk_07 of previous entry
 
 	// goto .processNext if (p0 > p1): reached end of buffer
 	cmp r1, r4
@@ -1739,7 +1739,7 @@ copyTo_iObjectAttr3001D70_3006814: // () -> void
 	
 	// u8 v6: r5 = *p1
 	// do while (v6 == 0xFF)
-	ldrb r5, [r4]
+	ldrb r5, [r4] // oObjectAttr3001150_Unk_07
 	cmp r5, #0xff
 	beq .searchTillNo0xFF
 
@@ -1754,15 +1754,15 @@ copyTo_iObjectAttr3001D70_3006814: // () -> void
 	lsl r5, r5, #3
 	mov r7, r12
 	add r7, r7, r5
-	ldr r5, [r7]
-	str r5, [r0]
-	ldrh r5, [r7,#4]
-	strh r5, [r0,#4]
+	ldr r5, [r7,#oObjectAttr3001150_OAM0And1]
+	str r5, [r0,#oObjectAttr3001D70_OAM0And1]
+	ldrh r5, [r7,#oObjectAttr3001150_OAM2]
+	strh r5, [r0,#oObjectAttr3001D70_OAM2]
 	add r0, #8
 
 	// v6 = v5[v6].unk3
 	// goto .searchTillNo0xFF if v6 == 0xFF
-	ldrb r5, [r7,#7]
+	ldrb r5, [r7,#oObjectAttr3001150_Unk_07]
 	cmp r5, #0xff
 	beq .searchTillNo0xFF
 	
@@ -1775,16 +1775,16 @@ copyTo_iObjectAttr3001D70_3006814: // () -> void
 	blt .loop1
 .break1:
 
-	// *dword_200B1A8 = (v1End - v1) / sizeof(*v1)
+	// *dword_200B1A8 = (v1End - v1) / oObjectAttr3001D70_Size
 	sub r2, r3, r0
 	lsr r2, r2, #3
 	ldr r4, off_30068D4 // =dword_200B1A8
 	str r2, [r4]
 
 // for (; v1<v1End; ++v1)
-	// copy default values for unk0 and unk1
-	mov r2, #0xf0
-	mov r4, #0xc
+	// put remaining sprites off screen
+	mov r2, #GBA_SCREEN_WIDTH /* X */ // OAM0And1
+	mov r4, #(3 << 10 /* priority */) >> 8 // OAM2
 	lsl r4, r4, #8
 .forRemainingElements:
 	cmp r0, r3
@@ -1792,8 +1792,8 @@ copyTo_iObjectAttr3001D70_3006814: // () -> void
 	
 	// v1.unk0 = 0xf0
 	// v1.unk1 = 0xc00
-	str r2, [r0]
-	strh r4, [r0,#4]
+	str r2, [r0,#oObjectAttr3001D70_OAM0And1]
+	strh r4, [r0,#oObjectAttr3001D70_OAM2]
 
 	add r0, #8
 	b .forRemainingElements
@@ -1807,16 +1807,16 @@ copyTo_iObjectAttr3001D70_3006814: // () -> void
 // for (i=20; i>=0; i--)
 	mov r3, #0x20
 .loop300687A:
-	ldrh r4, [r0]
-	strh r4, [r1,#6]
-	ldrh r4, [r0,#2]
-	strh r4, [r1,#0xe]
-	ldrh r4, [r0,#4]
-	strh r4, [r1,#0x16]
-	ldrh r4, [r0,#6]
-	strh r4, [r1,#0x1e]
-	add r0, #0xc
-	add r1, #0x20 
+	ldrh r4, [r0,#oOAMRotoScale_PA]
+	strh r4, [r1,#0*oObjectAttr3001D70_Size + oObjectAttr3001D70_RotoScale]
+	ldrh r4, [r0,#oOAMRotoScale_PB]
+	strh r4, [r1,#1*oObjectAttr3001D70_Size + oObjectAttr3001D70_RotoScale]
+	ldrh r4, [r0,#oOAMRotoScale_PC]
+	strh r4, [r1,#2*oObjectAttr3001D70_Size + oObjectAttr3001D70_RotoScale]
+	ldrh r4, [r0,#oOAMRotoScale_PD]
+	strh r4, [r1,#3*oObjectAttr3001D70_Size + oObjectAttr3001D70_RotoScale]
+	add r0, #oOAMRotoScale_Size
+	add r1, #oObjectAttr3001D70_Size * 4
 	
 	sub r3, #1
 	cmp r3, #0
@@ -1852,7 +1852,7 @@ copyTo_iObjectAttr3001D70_3006814: // () -> void
 	.balign 4, 0
 off_30068C0: .word iObjectAttr3001D70
 off_30068C4: .word unk_30025B0
-off_30068C8: .word unk_3002170
+off_30068C8: .word iObjectAttr3001D70End
 off_30068CC: .word tupleArr_3002590
 off_30068D0: .word iObjectAttr3001150
 off_30068D4: .word dword_200B1A8
@@ -1862,6 +1862,14 @@ off_30068E0: .word WordFill+1
 off_30068E4: .word byte_3001950
 	thumb_func_end copyTo_iObjectAttr3001D70_3006814
 
+	// Write to iObjectAttr3001150
+	//
+	// Inputs:
+	// r0: oObjectAttr3001150_OAM0And1
+	// r1: oObjectAttr3001150_OAM2
+	// r2
+	// r3
+	// maybe more
 	thumb_func_start sub_30068E8
 sub_30068E8:
 	push {r4-r7,lr}
@@ -1883,18 +1891,23 @@ sub_30068E8:
 	str r7, [r5]
 	ldrb r7, [r4]
 	strb r6, [r4]
-	lsl r6, r6, #3
+	lsl r6, r6, #3 // r6 *= oObjectAttr3001150_Size
 	ldr r5, off_3006998 // =iObjectAttr3001150
 	add r5, r5, r6
-	str r0, [r5]
-	strh r1, [r5,#4]
-	strb r7, [r5,#7]
+	str r0, [r5,#oObjectAttr3001150_OAM0And1]
+	strh r1, [r5,#oObjectAttr3001150_OAM2]
+	strb r7, [r5,#oObjectAttr3001150_Unk_07]
 	mov r0, #0xff
-	strb r0, [r5,#6]
+	strb r0, [r5,#oObjectAttr3001150_Unk_06]
 locret_300691E:
 	pop {r4-r7,pc}
 	thumb_func_end sub_30068E8
 
+	// Write into iObjectAttr3001150
+	//
+	// inputs:
+	// r0: pointer to oOAMEntry
+	// r1
 	thumb_func_start sub_3006920
 sub_3006920:
 	push {r4-r7,lr}
@@ -1917,9 +1930,9 @@ loc_300693E:
 	str r1, [sp,#4]
 	mov r3, #8
 	ldrsh r3, [r0,r3]
-	ldrb r2, [r0,#6]
-	ldrh r1, [r0,#4]
-	ldr r0, [r0]
+	ldrb r2, [r0,#oOAMEntry3002400_Unk_06]
+	ldrh r1, [r0,#oOAMEntry3002400_OAM2]
+	ldr r0, [r0,#oOAMEntry3002400_OAM0And1]
 	ldr r4, off_300699C // =tupleArr_3002590
 	lsl r7, r2, #3
 	add r4, r4, r7
@@ -1935,14 +1948,14 @@ loc_300693E:
 	mov r9, r7
 	ldrb r7, [r4]
 	strb r6, [r4]
-	lsl r6, r6, #3
-	mov r5, r12
+	lsl r6, r6, #3 // r6 *= oObjectAttr3001150_Size
+	mov r5, r12 // r5 = iObjectAttr3001150
 	add r5, r5, r6
-	str r0, [r5]
-	strh r1, [r5,#4]
-	strb r7, [r5,#7]
+	str r0, [r5,#oObjectAttr3001150_OAM0And1]
+	strh r1, [r5,#oObjectAttr3001150_OAM2]
+	strb r7, [r5,#oObjectAttr3001150_Unk_07]
 	mov r0, #0xff
-	strb r0, [r5,#6]
+	strb r0, [r5,#oObjectAttr3001150_Unk_06]
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
 	mov r5, r8
