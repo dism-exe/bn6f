@@ -20699,7 +20699,7 @@ sub_8030B0C:
 	// Find the first trigger entry for the given tile position.
 	//
 	// Inputs:
-	// r1: tile position (returned by sub_80316F8)
+	// r1: tile position (returned by getObjectTilePosition)
 	// r5: Unk_Ex2011a20 table to search
 	//
 	// Outputs:
@@ -22223,7 +22223,7 @@ checkZCoordModifiers_8031612:
 	ldr r5, off_8031780 // =dword_2011A20
 	ldr r2, off_8031688 // =dword_200F3D0 
 	str r0, [r2]
-	bl sub_80316F8
+	bl getObjectTilePosition
 	bl findTriggerForTilePosition
 	cmp r2, #0
 	beq loc_8031678
@@ -22311,8 +22311,22 @@ dword_8031690:
 	.word NULL // 0x19
 	thumb_func_end checkZCoordModifiers_8031612
 
+	// Calculate the object's tile position for use by
+	// FindTriggerForTilePosition.
+	//
+	// Inputs:
+	// r0: pointer to OWObjectCoords
+	// r5: pointer to Unk_Ex2011a20
+	//
+	// Outputs:
+	// r1: tile position
+	// [r5,#oUnk_Ex2011a20_TilePosition]: tile position
+	// [r5,#oUnk_Ex2011a20_Unk_0c]
+	// [r5,#oUnk_Ex2011a20_Unk_10]
+	//
+	// Clobbers: r1, r2, r3
 	thumb_local_start
-sub_80316F8:
+getObjectTilePosition:
 	mov r2, #oOWObjectCoords_X
 	ldrsh r1, [r0,r2]
 	mov r2, #oOWObjectCoords_Y
@@ -22338,7 +22352,7 @@ sub_80316F8:
 
 	// r2 = unk06 * (y/8 + unk07/2) + x/8 + unk06/2
 	add r2, r2, r1
-	strh r2, [r5,#oUnk_Ex2011a20_Unk_08]
+	strh r2, [r5,#oUnk_Ex2011a20_TilePosition]
 
 	mov r2, #oOWObjectCoords_X
 	ldrsh r1, [r0,r2]
@@ -22353,9 +22367,9 @@ sub_80316F8:
 	str r2, [r5,#oUnk_Ex2011a20_Unk_10]
 
 	// return value
-	ldrh r1, [r5,#oUnk_Ex2011a20_Unk_08]
+	ldrh r1, [r5,#oUnk_Ex2011a20_TilePosition]
 	mov pc, lr
-	thumb_func_end sub_80316F8
+	thumb_func_end getObjectTilePosition
 
 	thumb_local_start
 sub_803172E:
@@ -22605,7 +22619,7 @@ checkLayerPriority_80318b0:
 	ldr r5, off_8031994 // =eLayerPriorityTriggers
 	ldr r2, off_8031910 // =dword_200F3D0 
 	str r0, [r2]
-	bl sub_80316F8
+	bl getObjectTilePosition
 	bl findTriggerForTilePosition
 	cmp r2, #0
 	beq .returnLayer2
@@ -22837,7 +22851,7 @@ checkCoordinateTrigger_8031a7a:
 	ldr r5, off_8031B90 // =dword_2013920 
 	ldr r2, off_8031B08 // =dword_200F3D0 
 	str r0, [r2]
-	bl sub_80316F8
+	bl getObjectTilePosition
 	bl findTriggerForTilePosition
 	cmp r2, #NULL
 	beq loc_8031AF6

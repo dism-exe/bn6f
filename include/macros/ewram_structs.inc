@@ -137,7 +137,7 @@ todo figure out what to call this (collision, tile effects?)
 	\struct_entry \label\()_EntryCount, 2 // loc=0x4
 	\struct_entry \label\()_MaxX, 1 // loc=0x6
 	\struct_entry \label\()_MaxY, 1 // loc=0x7
-	\struct_entry \label\()_Unk_08, 2 // loc=0x8
+	\struct_entry \label\()_TilePosition, 2 // loc=0x8
 	.space 0x2
 	\struct_entry \label\()_Unk_0c, 4 // loc=0xc
 	\struct_entry \label\()_Unk_10, 4 // loc=0x10
