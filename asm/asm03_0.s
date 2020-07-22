@@ -20633,13 +20633,13 @@ decompressCoordEventData_8030aa4: // JP 0x8031A60
 	mov r3, r9
 	mov r4, r12
 	push {r2-r4}
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_8030AB6
 	ldr r3, off_8030B00 // =pt_8033530 
 	b loc_8030ABA
 loc_8030AB6:
 	ldr r3, off_8030B04 // =pt_803354C 
-	sub r0, #0x80
+	sub r0, #INTERNET_MAP_GROUP_START
 loc_8030ABA:
 	lsl r0, r0, #2 // map group
 	add r3, r3, r0
@@ -20655,18 +20655,23 @@ loc_8030ABA:
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	pop {r6}
 	ldr r7, off_8030B08 // =unk_2027A00 
-	ldr r0, [r6]
+
+	ldr r0, [r6,#oMapTriggersHeader_UnkOffset_00]
 	add r0, r0, r7
 	bl sub_8030B0C
-	ldr r0, [r6,#4]
+
+	ldr r0, [r6,#oMapTriggersHeader_UnkOffset_04]
 	add r0, r0, r7
 	bl sub_8031600
-	ldr r0, [r6,#8]
+
+	ldr r0, [r6,#oMapTriggersHeader_UnkOffset_08]
 	add r0, r0, r7
 	bl sub_803189C
-	ldr r0, [r6,#0xc]
+
+	ldr r0, [r6,#oMapTriggersHeader_UnkOffset_0C]
 	add r0, r0, r7
 	bl sub_8031A68
+
 	pop {r2-r4}
 	mov r8, r2
 	mov r9, r3
