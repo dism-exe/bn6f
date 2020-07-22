@@ -18828,16 +18828,21 @@ dword_802FE20: .word 0x7000000
 off_802FE24: .word 0x400
 	thumb_func_end copyObjAttributesToIWRAM_802FE0C
 
-// (u32 a1, u16 a2, int notUsed, int a4) -> void
+	// Writes to iObjectAttr3001150. Just calls sub_30068E8.
+	//
+	// Inputs:
+	// r0: OAM 0 and OAM 1
+	// r1: OAM 2
+	// r2
+	// r3
 	thumb_func_start sub_802FE28
 sub_802FE28:
 	push {r4,lr}
-	ldr r4, off_802FE34 // =sub_30068E8+1 
+	ldr r4, =sub_30068E8+1
 	mov lr, pc
 	bx r4
 	pop {r4,pc}
-	.balign 4, 0x00
-off_802FE34: .word sub_30068E8+1
+	.pool
 	thumb_func_end sub_802FE28
 
 	thumb_local_start
