@@ -22604,12 +22604,11 @@ checkLayerPriority_80318b0:
 	bl sub_80316F8
 	bl sub_8030B1E
 	cmp r2, #0
-	beq loc_8031904
-	.balign 4, 0
-loc_80318CC: .align 1, 0
-	ldrh r4, [r2]
+	beq .returnLayer2
+.loc_80318CC:
+	ldrh r4, [r2,#0]
 	cmp r1, r4
-	bne loc_8031904
+	bne .returnLayer2
 	ldrh r7, [r2,#2]
 	ldr r4, [r5]
 	add r7, r7, r4
@@ -22618,16 +22617,16 @@ loc_80318CC: .align 1, 0
 	mov r6, #0xa
 	ldrsh r6, [r0,r6]
 	cmp r6, r4
-	blt loc_80318EE
+	blt .next
 	ldrb r3, [r7,#2]
 	add r4, r4, r3
 	cmp r6, r4
-	bgt loc_80318EE
-	b loc_80318F2
-loc_80318EE: .align 1, 0
+	bgt .next
+	b .loc_80318F2
+.next
 	add r2, #4
-	b loc_80318CC
-loc_80318F2: .align 1, 0
+	b .loc_80318CC
+.loc_80318F2:
 	str r7, [r5,#0x14] // (dword_2013954 - 0x2013940)
 	ldrb r6, [r7,#3]
 	lsl r6, r6, #2
@@ -22637,9 +22636,9 @@ loc_80318F2: .align 1, 0
 	mov lr, pc
 	bx r4
 	b loc_8031906
-loc_8031904: .align 1, 0
+.returnLayer2
 	mov r0, #2
-loc_8031906: .align 1, 0
+loc_8031906:
 	pop {r1-r3}
 	mov r8, r1
 	mov r9, r2
