@@ -1,11 +1,12 @@
 
 SpawnObjectJumptable:
-	.word SpawnOWPlayerObject+1
-	.word object_spawnType1+1
-	.word SpawnOverworldNPCObject+1
-	.word object_spawnType3+1
-	.word object_spawnType4+1
-	.word SpawnOverworldMapObject+1
+	.word SpawnOWPlayerObject+1     // OBJECT_SPAWN_TYPE_OWPLAYER
+	.word object_spawnType1+1       // OBJECT_SPAWN_TYPE_UNK_1
+	.word SpawnOverworldNPCObject+1 // OBJECT_SPAWN_TYPE_OVERWORLD_NPC
+	.word object_spawnType3+1       // OBJECT_SPAWN_TYPE_UNK_3
+	.word object_spawnType4+1       // OBJECT_SPAWN_TYPE_UNK_4
+	.word SpawnOverworldMapObject+1 // OBJECT_SPAWN_TYPE_OVERWORLD_MAP
+
 FreeObjectJumptable:
 	.word FreeOWPlayerObject+1
 	.word object_freeMemory+1
@@ -2744,14 +2745,14 @@ SpawnOverworldMapObject:
 .foundFreeMapObject
 	orr r2, r1
 	str r2, [r0,r3]
-	mov r0, #9
-	strb r0, [r5]
+	mov r0, #OBJECT_FLAG_STOP_SPRITE_UPDATE | OBJECT_FLAG_ACTIVE
+	strb r0, [r5,#oOverworldMapObject_Flags]
 	pop {r0-r4,r6}
 	strb r0, [r5,#oOverworldMapObject_Index]
 	str r1, [r5,#oOverworldMapObject_X]
 	str r2, [r5,#oOverworldMapObject_Y]
 	str r3, [r5,#oOverworldMapObject_Z]
-	str r4, [r5,#oOverworldMapObject_Unk_04]
+	str r4, [r5,#oOverworldMapObject_ObjectID]
 	mov r0, #0
 	str r0, [r5,#oOverworldMapObject_Unk_08]
 	pop {pc}

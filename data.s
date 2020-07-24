@@ -1,4 +1,4 @@
-	.include "include/macros/enum.inc"
+	.include "include/macros.inc"
 	.include "include/bytecode/text_script.inc"
 
 	.include "charmap.inc"

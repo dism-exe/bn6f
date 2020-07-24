@@ -2,13 +2,13 @@
 	thumb_func_start ho_80A4984
 ho_80A4984:
 	push {lr}
-	ldr r7, off_80A49AC // =byte_80A3A44
-	ldrb r1, [r5,#4]
-	mov r2, #0x10
+	ldr r7, off_80A49AC // =OverworldMapObjects
+	ldrb r1, [r5,#oOverworldMapObject_ObjectID]
+	mov r2, #oMapObjectData_Size
 	mul r1, r2
 	add r7, r7, r1
 	ldr r0, off_80A499C // =jt_80A49A0 
-	ldrb r1, [r5,#8]
+	ldrb r1, [r5,#oOverworldMapObject_Unk_08]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
@@ -18,7 +18,7 @@ off_80A499C: .word jt_80A49A0
 jt_80A49A0: .word sub_80A49B0+1
 	.word event_80A4A08+1
 	.word sub_80A4A90+1
-off_80A49AC: .word byte_80A3A44
+off_80A49AC: .word OverworldMapObjects
 	thumb_func_end ho_80A4984
 
 	thumb_local_start

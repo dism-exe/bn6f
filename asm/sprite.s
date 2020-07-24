@@ -379,6 +379,8 @@ initUncompSpriteState_80028d4:
 	pop {r5,pc}
 	thumb_func_end initUncompSpriteState_80028d4
 
+	// Load the sprite tilesets and palettes according to the map group's
+	// sprite_load_data_struct list (e.g. byte_804E6AC).
 	thumb_func_start uncompSprite_8002906
 uncompSprite_8002906:
 	push {r4-r7,lr}
@@ -390,18 +392,23 @@ uncompSprite_8002906:
 	ldr r4, off_8002BC0 // =SpritePointersList
 	ldr r6, dword_8002BC4 // =0x2040000
 	mov r7, r0
-loc_8002918:
-	ldrb r0, [r7]
+.loadNextSprite
+	ldrb r0, [r7,#oSpriteLoadData_SpriteTypeOffset]
 	cmp r0, #0xff
-	beq loc_8002972
-	ldrb r3, [r7,#1]
+	beq .doneLoadingSprites
+
+	// Find the entry from SpritePointersList, putting its address into r2.
+	ldrb r3, [r7,#oSpriteLoadData_SpriteIndex]
 	lsl r3, r3, #2
 	ldr r2, [r4,r0]
 	ldr r2, [r2,r3]
+	// Remove the SPRITE_IS_COMPRESSED flag.
 	lsl r2, r2, #1
 	lsr r2, r2, #1
+
 	mov r8, r2
 	ldr r2, [r2]
+
 	lsl r0, r0, #8
 	lsr r3, r3, #2
 	orr r0, r3
@@ -435,9 +442,9 @@ loc_8002918:
 	add r1, r1, r2
 	str r1, [r5,#0x4c]
 	pop {r7}
-	add r7, #2
-	b loc_8002918
-loc_8002972:
+	add r7, #oSpriteLoadData_Size
+	b .loadNextSprite
+.doneLoadingSprites
 	mov r0, #1
 	pop {r1,r2}
 	mov r8, r1

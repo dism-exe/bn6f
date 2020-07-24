@@ -48,8 +48,16 @@ off_804E698: .word byte_804E6AC
 	.word dword_804E6C2
 	.word byte_804E6C6
 	.word byte_804E6C8
-byte_804E6AC: .byte 0x1C, 0x11, 0x1C, 0x15, 0x1C, 0x16, 0x1C, 0x51, 0x1C
-	.byte 0x13, 0x18, 0x24, 0x18, 0x25, 0x18, 0x1C, 0xFF, 0xFF
+byte_804E6AC:
+	sprite_load_data_struct 0x1C, 0x11
+	sprite_load_data_struct 0x1C, 0x15
+	sprite_load_data_struct 0x1C, 0x16
+	sprite_load_data_struct 0x1C, 0x51
+	sprite_load_data_struct 0x1C, 0x13
+	sprite_load_data_struct 0x18, 0x24
+	sprite_load_data_struct 0x18, 0x25
+	sprite_load_data_struct 0x18, 0x1C
+	sprite_load_data_struct 0xFF, 0xFF
 dword_804E6BE: .word 0xFFFF071C
 dword_804E6C2: .word 0xFFFF141C
 byte_804E6C6: .byte 0xFF, 0xFF
@@ -97,10 +105,10 @@ CentralTown_SpawnMapObjectsForMap:
 	.pool // off_804E734
 off_804E738:
 	// <endpool>
-	.word byte_804E74C
-	.word byte_804E87C
-	.word dword_804E8D0
-	.word dword_804E8D4
-	.word byte_804E8D8
+	.word CentralTownObjectSpawns
+	.word LansHouseObjectSpawns
+	.word LansRoomObjectSpawns
+	.word BathroomObjectSpawns
+	.word AsterLandObjectSpawns
 	thumb_func_end CentralTown_SpawnMapObjectsForMap
 /*For debugging purposes, connect comment at any range!*/
