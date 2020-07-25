@@ -796,7 +796,7 @@ int sub_8002E04()
 
 
 // 0x8002e14
-int __fastcall sub_8002E14(int a1)
+int __fastcall sprite_setBGPriority(int a1)
 {
     int v1; // r5
     unsigned int v2; // r3

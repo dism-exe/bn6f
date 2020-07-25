@@ -15542,7 +15542,7 @@ sub_81168B4:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #3
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_8116900 // =0x390
 	bl sub_800306C
 	mov r0, #0
@@ -15608,7 +15608,7 @@ sub_8116944:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, dword_81169A4 // =0x2d4
 	bl sub_800306C
 	mov r0, #0
@@ -15824,7 +15824,7 @@ loc_8116B24:
 	mov r0, #1
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_8116B8C // =off_8116B90
 	ldr r0, [r0]
 	bl sub_800306C
@@ -16074,7 +16074,7 @@ sub_8116D00:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, dword_8116D5C // =0x38b
 	bl sub_800306C
 	mov r0, #0
@@ -16239,7 +16239,7 @@ loc_8116E3C:
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 	ldrb r0, [r0,r4]
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_8116EC4 // =off_8116EC8
 	ldrb r1, [r5,#5]
 	lsl r1, r1, #2
@@ -16588,7 +16588,7 @@ loc_811713E:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_8117194 // =off_8117198
 	ldrb r1, [r5,#4]
 	lsl r1, r1, #2
@@ -16716,7 +16716,7 @@ sub_8117238:
 	ldr r0, off_8117278 // =0x380
 	bl sub_800306C
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0
 	mov r1, #0
 	bl sprite_setCoordinates
@@ -16808,7 +16808,7 @@ loc_81172E8:
 	add r0, r0, r1
 	bl sub_800306C
 	mov r0, #3
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #4
 	bl sub_8003060
 	ldrb r0, [r5,#6]
@@ -16906,7 +16906,7 @@ sub_8117424:
 	add r0, r0, r1
 	bl sub_800306C
 	mov r0, #3
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #0
@@ -17140,7 +17140,7 @@ sub_81175F0:
 	ldr r0, [r1,r0]
 	bl sub_800306C
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldrb r0, [r5,#5]
 	ldrb r1, [r5,#6]
 	bl sprite_setCoordinates
@@ -17337,7 +17337,7 @@ sub_81177A4:
 	mov r0, #1
 	bl sub_8003060
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_81177EC
@@ -17518,7 +17518,7 @@ sub_81178FC:
 	mov r0, #1
 	bl sub_8003060
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_811794C
@@ -17878,7 +17878,7 @@ sub_8117BE8:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_8117C40 // =0x170
 	bl sub_800306C
 	mov r0, #0
@@ -18058,7 +18058,7 @@ sub_8117D4C:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_8117DB0 // =off_8117DB4
 	ldrb r1, [r5,#3]
 	lsl r1, r1, #2
@@ -18251,7 +18251,7 @@ sub_8117EE8:
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
 	mov r0, #3
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_8117F40 // =off_8117F44
 	ldrb r1, [r5,#4]
 	lsl r1, r1, #2
@@ -18802,7 +18802,7 @@ sub_8118368:
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
 	mov r0, #3
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_81183BC // =0x1c0
 	bl sub_800306C
 	mov r0, #1
@@ -19415,7 +19415,7 @@ sub_811880C:
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
 	mov r0, #3
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811886C // =0x1d8
 	bl sub_800306C
 	mov r0, #3
@@ -19910,7 +19910,7 @@ sub_8118BC8:
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
 	mov r0, #3
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_8118C24 // =0x1e0
 	bl sub_800306C
 	mov r0, #4
@@ -20121,7 +20121,7 @@ sub_8118D84:
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
 	mov r0, #3
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_8118DD8 // =0x200
 	bl sub_800306C
 	mov r0, #4
@@ -20269,7 +20269,7 @@ sub_8118EA8:
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_8118F00 // =0x220
 	bl sub_800306C
 	mov r0, #4
@@ -20343,7 +20343,7 @@ sub_8118F44:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, dword_8118F98 // =0x0
 	bl sub_800306C
 	bl sub_81190E0
@@ -20716,7 +20716,7 @@ loc_81193AA:
 	lsl r0, r0, #2
 	ldr r1, [r1,r0]
 	ldrb r0, [r1,r4]
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r1, off_8119628 // =off_8119128
 	ldrb r0, [r5,#5]
 	lsl r0, r0, #2
@@ -21697,7 +21697,7 @@ loc_8119B30:
 	bl sub_8119C08
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, dword_8119B6C // =0x0
 	bl sub_800306C
 	mov r0, #0
@@ -21915,7 +21915,7 @@ loc_8119D86:
 	ldr r0, byte_8119DC8 // =0x0
 	bl sub_8002FEC
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, dword_8119DBC // =0x20
 	bl sub_800306C
 	mov r0, #3
@@ -22025,7 +22025,7 @@ loc_8119E76:
 	ldrb r0, [r5,#5]
 	lsl r0, r0, #2
 	ldrb r0, [r1,r0]
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r1, off_8119FCC // =off_8119FD0
 	ldrb r0, [r5,#5]
 	lsl r0, r0, #2
@@ -22668,7 +22668,7 @@ sub_811A3AC:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, dword_811A3E8 // =0x0
 	bl sub_800306C
 	mov r0, #8
@@ -22749,7 +22749,7 @@ loc_811A45C:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r1, off_811A4B8 // =byte_811A4BC
 	ldrb r0, [r5,#4]
 	lsl r0, r0, #2
@@ -23152,7 +23152,7 @@ sub_811A7AC:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811A800 // =0x1d0
 	bl sub_800306C
 	mov r0, #0xa
@@ -23250,7 +23250,7 @@ sub_811A878:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811A8C8 // =0x1d0
 	bl sub_800306C
 	mov r0, #0xa
@@ -23399,7 +23399,7 @@ sub_811A998:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, dword_811A9EC // =0x0
 	bl sub_800306C
 	bl sub_811AB14
@@ -23601,7 +23601,7 @@ sub_811AB7C:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, dword_811ABC0 // =0x0
 	bl sub_800306C
 	mov r0, #0
@@ -23825,7 +23825,7 @@ sub_811AD58:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811ADAC // =0xa0
 	bl sub_800306C
 	mov r0, #2
@@ -24360,7 +24360,7 @@ loc_811B232:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811B270 // =0x130
 	bl sub_800306C
 	mov r0, #2
@@ -24496,7 +24496,7 @@ sub_811B35C:
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811B3A8 // =0x210
 	bl sub_800306C
 	mov r0, #2
@@ -24583,7 +24583,7 @@ sub_811B414:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811B458 // =0xc0
 	bl sub_800306C
 	mov r0, #6
@@ -24682,7 +24682,7 @@ loc_811B4C0:
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
 	mov r0, #3
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811B52C // =off_811B530
 	ldrb r1, [r5,#4]
 	lsl r1, r1, #2
@@ -25261,7 +25261,7 @@ sub_811B9D8:
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
 	mov r0, #3
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #1
 	bl sub_8003060
 	ldrb r0, [r5,#4]
@@ -25614,7 +25614,7 @@ sub_811BC68:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811BCB8 // =off_811BCBC
 	ldrb r1, [r5,#5]
 	lsl r1, r1, #2
@@ -25844,7 +25844,7 @@ loc_811BE64:
 	ldr r0, off_811BEF8 // =0x120
 	bl sub_800306C
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldrb r1, [r5,#0xc]
 	ldr r0, off_811BF04 // =byte_811BFB6
 	ldrb r0, [r0,r1]
@@ -25972,7 +25972,7 @@ sub_811C01C:
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r1, off_811C074 // =dword_811C078
 	ldrb r0, [r5,#4]
 	lsl r0, r0, #1
@@ -26038,7 +26038,7 @@ sub_811C0AC:
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #1
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0x78
 	ldr r1, [r5,#4]
 	bl sprite_setCoordinates
@@ -26108,7 +26108,7 @@ sub_811C13C:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #3
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811C188 // =0x390
 	bl sub_800306C
 	mov r0, #0
@@ -26175,7 +26175,7 @@ sub_811C1CC:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811C21C // =0xf0
 	bl sub_800306C
 	mov r0, #5
@@ -26315,7 +26315,7 @@ loc_811C2D8:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, dword_811C31C // =0x0
 	bl sub_800306C
 	mov r0, #0
@@ -26521,7 +26521,7 @@ loc_811C584:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811C5CC // =byte_811C5D0
 	ldr r0, [r0,r4]
 	bl sub_800306C
@@ -26810,7 +26810,7 @@ sub_811CA1C:
 	add r0, r0, r1
 	bl sub_800306C
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #0
@@ -27679,7 +27679,7 @@ sub_811D0EC:
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #3
 	bl sub_8003060
 	mov r0, #0x1e
@@ -27974,7 +27974,7 @@ loc_811D320:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811D38C // =byte_811D390
 	ldr r0, [r0,r6]
 	bl sub_800306C
@@ -28047,7 +28047,7 @@ sub_811D410:
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811D45C // =0x180
 	bl sub_800306C
 	mov r0, #3
@@ -28087,7 +28087,7 @@ sub_811D464:
 	ldrb r0, [r1,r0]
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811D4DC // =0x100
 	ldrb r1, [r5,#4]
 	cmp r1, #1
@@ -28152,7 +28152,7 @@ sub_811D530:
 	ldrb r0, [r1,r0]
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #3
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811D594 // =byte_811D598
 	ldrb r1, [r5,#5]
 	lsl r1, r1, #2
@@ -28353,7 +28353,7 @@ loc_811D70A:
 	ldr r0, off_811D770 // =0x1a0
 	bl sub_800306C
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldrb r1, [r5,#5]
 	ldr r0, off_811D77C // =byte_811D7BA
 	ldrb r0, [r0,r1]
@@ -28422,7 +28422,7 @@ loc_811D7E6:
 	ldr r0, off_811D858 // =0x1e0
 	bl sub_800306C
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldrb r1, [r5,#5]
 	ldr r0, off_811D864 // =byte_811D889
 	ldrb r0, [r0,r1]
@@ -28501,7 +28501,7 @@ loc_811D8AA:
 	ldr r0, [r0,r1]
 	bl sub_800306C
 	mov r0, #3
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldrb r1, [r5,#5]
 	ldr r0, off_811D920 // =byte_811D94A
 	ldrb r0, [r0,r1]
@@ -28563,7 +28563,7 @@ sub_811D954:
 	ldr r0, [r0,r1]
 	bl sub_800306C
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldrb r1, [r5,#5]
 	ldr r0, off_811D9D8 // =dword_811D9F0
 	ldrb r0, [r0,r1]
@@ -28630,7 +28630,7 @@ sub_811DA00:
 	ldr r0, [r0,r1]
 	bl sub_800306C
 	mov r0, #3
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldrb r1, [r5,#5]
 	ldr r0, off_811DA80 // =byte_811DA8E
 	ldrb r0, [r0,r1]
@@ -28672,7 +28672,7 @@ sub_811DA94:
 	ldr r0, off_811DAE4 // =0x320
 	bl sub_800306C
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #1
 	bl sub_8003060
 	ldr r0, dword_811DAEC // =0x193
@@ -28707,7 +28707,7 @@ sub_811DAF0:
 	ldr r0, off_811DB4C // =0x320
 	bl sub_800306C
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #1
 	bl sub_8003060
 	ldrb r2, [r5,#5]
@@ -28755,7 +28755,7 @@ sub_811DB7C:
 	ldr r0, off_811DBC0 // =0x3a0
 	bl sub_800306C
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #1
 	bl sub_8003060
 	ldr r0, off_811DBC8 // =0x38
@@ -28922,7 +28922,7 @@ loc_811DCBC:
 	ldrb r0, [r0,r1]
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	ldr r0, off_811DD0C // =0x80
 	bl sub_800306C
 	mov r0, #1
@@ -29050,7 +29050,7 @@ sub_811DF40:
 	ldr r0, off_811DF90 // =0x270
 	bl sub_800306C
 	mov r0, #1
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0xd2
 	mov r1, #0xa
 	bl sprite_setCoordinates
@@ -29179,7 +29179,7 @@ sub_811E048:
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #1
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
@@ -29349,7 +29349,7 @@ sub_811E18C:
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #1
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
@@ -29461,7 +29461,7 @@ sub_811E26C:
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
@@ -29595,7 +29595,7 @@ sub_811E384:
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
@@ -29684,7 +29684,7 @@ sub_811E438:
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #2
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	bl sub_811E51C
 	bl sub_811E548
 	mov r0, #4
@@ -29862,7 +29862,7 @@ sub_811E59C:
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0xd8
 	mov r1, #0xe
 	bl sprite_setCoordinates
@@ -29941,7 +29941,7 @@ sub_811E63C:
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0xdc
 	mov r1, #0x2c
 	bl sprite_setCoordinates
@@ -30018,7 +30018,7 @@ sub_811E6E4:
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
@@ -30137,7 +30137,7 @@ sub_811E7F8:
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
@@ -30201,7 +30201,7 @@ sub_811E87C:
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
@@ -30284,7 +30284,7 @@ sub_811E938:
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
@@ -30351,7 +30351,7 @@ sub_811E9C4:
 	mov r0, #0
 	bl sub_8003060
 	mov r0, #0
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4

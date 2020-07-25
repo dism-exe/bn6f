@@ -248,7 +248,7 @@ sub_8033A7C:
 sub_8033A80:
 	push {lr}
 	mov r0, #0
-	bl sub_8033B80
+	bl updateHUDPETSprite
 	mov r0, #0
 	bl sub_8033F80
 	mov r0, #0
@@ -260,7 +260,7 @@ sub_8033A80:
 sub_8033A96:
 	push {lr}
 	mov r0, #0
-	bl sub_8033B80
+	bl updateHUDPETSprite
 	mov r0, #0
 	bl sub_8033F80
 	bl sub_8033BE8
@@ -273,7 +273,7 @@ sub_8033A96:
 sub_8033AB0:
 	push {lr}
 	mov r0, #0
-	bl sub_8033B80
+	bl updateHUDPETSprite
 	mov r0, #0
 	bl sub_8033F80
 	bl sub_8033C68
@@ -284,7 +284,7 @@ sub_8033AB0:
 sub_8033AC4:
 	push {lr}
 	mov r0, #0
-	bl sub_8033B80
+	bl updateHUDPETSprite
 	mov r0, #0
 	bl sub_8033F80
 	bl sub_8033C68
@@ -296,7 +296,7 @@ sub_8033AC4:
 sub_8033ADC:
 	push {lr}
 	mov r0, #1
-	bl sub_8033B80
+	bl updateHUDPETSprite
 	mov r0, #0
 	bl sub_8033F80
 	bl sub_8033CF0
@@ -307,7 +307,7 @@ sub_8033ADC:
 sub_8033AF0:
 	push {lr}
 	mov r0, #1
-	bl sub_8033B80
+	bl updateHUDPETSprite
 	mov r0, #0
 	bl sub_8033F80
 	bl sub_8033CF0
@@ -383,19 +383,23 @@ sub_8033B6E:
 	pop {pc}
 	thumb_func_end sub_8033B6E
 
+        // Draw the PET HUD sprite.
+        //
+        // Inputs:
+        // r5
 	thumb_local_start
-sub_8033B80:
+updateHUDPETSprite:
 	push {lr}
 	mov r2, #0x18
 	mul r2, r0
 	ldrb r0, [r5,#5]
 	add r0, r0, r2
 	ldr r1, off_8033BB4 // =byte_8033BB8
-	ldrb r1, [r1,r0]
-	ldr r0, dword_8033BAC // =0x80028003
-	lsl r1, r1, #0x10
-	add r0, r0, r1
-	ldr r1, dword_8033BB0 // =0xc790
+	ldrb r1, [r1,r0] // X addend
+	ldr r0, =3 /* Y */ | 2 << 14 /* vertical */ | 2 << 16 /* X */ | 2 << 30 /* 32x16 */
+	lsl r1, r1, #16
+	add r0, r0, r1 // OAM 0 and OAM 1
+	ldr r1, =912 /* tile number */ | 1 << 10 /* priority */ | 12 << 12 /* palette */ // OAM 2
 	mov r2, #1
 	mov r3, #0
 	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
@@ -408,13 +412,12 @@ loc_8033BA8:
 	strb r0, [r5,#5]
 	pop {pc}
 	.balign 4, 0
-dword_8033BAC: .word 0x80028003
-dword_8033BB0: .word 0xC790
+	.pool
 off_8033BB4: .word byte_8033BB8
 byte_8033BB8: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x2, 0x3, 0x2, 0x1, 0x0, 0x1, 0x2, 0x3
 	.byte 0x2, 0x1, 0x0, 0x1, 0x2, 0x3, 0x2, 0x1, 0x0, 0x1, 0x2, 0x3, 0x2, 0x1
-	thumb_func_end sub_8033B80
+	thumb_func_end updateHUDPETSprite
 
 	thumb_local_start
 sub_8033BE8:

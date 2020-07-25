@@ -66210,7 +66210,7 @@ void __noreturn sub_80E0568()
     sprite_setFlip(v0, *(v0 + 5));
     *v0 |= 2u;
     if ( *(v0 + 7) )
-        sub_8002E14(0);
+        sprite_setBGPriority(0);
     sub_80E0616();
     *(v0 + 8) = 4;
 }
@@ -67176,7 +67176,7 @@ void __noreturn sub_80E0FC0()
     sprite_setAnimation(v0, 1u);
     sprite_loadAnimationData(v0);
     sprite_update(v0);
-    sub_8002E14(*(v0 + 12));
+    sprite_setBGPriority(*(v0 + 12));
     *(v0 + 32) = 10;
     v1 = object_getFlip(v0);
     sprite_setFlip(v0, v1);
@@ -68522,7 +68522,7 @@ int sub_80E1BDC()
 
     if ( !*(v0 + 11) )
     {
-        sub_8002E14(0);
+        sprite_setBGPriority(0);
         *(v0 + 32) = 22;
         *(v0 + 11) = 4;
     }
@@ -68596,7 +68596,7 @@ signed int sub_80E1C66()
     if ( !*(v0 + 11) )
     {
         sub_80E1CB0(0, 0);
-        sub_8002E14(2);
+        sprite_setBGPriority(2);
         *(v0 + 32) = 8;
         *(v0 + 11) = 4;
     }

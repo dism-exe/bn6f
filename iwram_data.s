@@ -41,9 +41,10 @@ off_3000EA4:: // 0x3000ea4
 	.space 4
 byte_3000EA8:: // 0x3000ea8
 	.space 680
+
 iObjectAttr3001150:: // 0x3001150
-	// type: struct{u32 unk0, u16 unk1, u8 unk2, u8 unk3} [128]
-	.space 1024
+	.space oObjectAttr3001150_Size*128
+
 byte_3001550:: // 0x3001550
 	.space 28
 byte_300156C:: // 0x300156c
@@ -140,9 +141,11 @@ iPalette3001C80:: // 0x3001c80
 	.space 0xe0
 dword_3001D60:: // 0x3001d60
 	.space 16
+
 iObjectAttr3001D70:: // 0x3001d70
-	// type: struct{u32 unk0, u16 unk1, u8 unk2, u8 unk3} [128]
-	.space 128*8
+	.space oObjectAttr3001D70_Size*128
+iObjectAttr3001D70End::
+
 unk_3002170:: // 0x3002170
 	.space 16
 dword_3002180:: // 0x3002180
@@ -158,7 +161,7 @@ unk_3002300:: // 0x3002300
 unk_300231C:: // 0x300231c
 	.space 228
 unk_3002400:: // 0x3002400
-	.space 384
+	.space oOAMEntry3002400_Size*32
 unk_3002580:: // 0x3002580
 	.space 16
 tupleArr_3002590:: // 0x3002590

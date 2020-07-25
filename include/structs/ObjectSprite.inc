@@ -10,7 +10,7 @@
 	u8 Unk_04 // loc=0x4
 	u8 Unk_05 // loc=0x5
 	u16 Unk_06 // loc=0x6
-	.space 0x2
+	u16 BaseTileIndex // loc=0x8
 	u16 Unk_0a // loc=0xa
 	.space 0x4
 	u8 Unk_10 // loc=0x12 // also size 2
@@ -22,8 +22,8 @@
 
 	u8 Unk_12 // loc=0x12 // also size 2
 	u8 Unk_13 // loc=0x13
-	u8 Unk_14 // loc=0x14
-	u8 Unk_15 // loc=0x15
+	u8 PaletteAndPriority // loc=0x14 // also size 2
+	u8 PaletteAndPriorityHi // loc=0x15
 	u16 Unk_16 // loc=0x16
 	u32 Unk_18 // loc=0x18
 	u32 Unk_1c // loc=0x1c

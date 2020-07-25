@@ -317,7 +317,7 @@ loc_809D3FC:
 	add r0, #oOWPlayerObject_Coords
 	bl applyLayerEffectToOWObject_8035694
 loc_809D40A:
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	bl sub_809DFA0
 	tst r0, r0
 	beq loc_809D446
@@ -900,7 +900,7 @@ loc_809D886:
 	add r0, #0x1c
 	bl applyLayerEffectToOWObject_8035694
 loc_809D894:
-	bl sub_8002E14
+	bl sprite_setBGPriority
 	pop {pc}
 	.balign 4, 0
 byte_809D89C: .byte 0x4, 0x0, 0x4, 0x0, 0x4, 0xC, 0x8, 0x0, 0x4, 0x0, 0x0, 0x0
