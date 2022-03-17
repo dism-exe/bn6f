@@ -2075,7 +2075,7 @@ object_getPanelParameters:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800C906
-	ldr r0, [r0,#0x14]
+	ldr r0, [r0,#oPanelData_Flags]
 	pop {pc}
 loc_800C906:
 	mov r0, #0
