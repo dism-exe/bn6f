@@ -10612,7 +10612,7 @@ off_802BA14: .word unk_3001AA0
 sub_802BA18:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_RenderInfoPtr]
-	ldrh r0, [r0,#0x18]
+	ldrh r0, [r0,#oRenderInfo_Unk_18]
 	asr r0, r0, #3
 	add r0, #1
 	mov pc, lr
@@ -19495,8 +19495,8 @@ camera_initShakeEffect_80302a8:
 sub_80302B6:
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_CameraPtr]
-	strh r0, [r2,#0x12]
-	strh r1, [r2,#0x10]
+	strh r0, [r2,#oCamera_Unk_12]
+	strh r1, [r2,#oCamera_Unk_10]
 	mov pc, lr
 	thumb_func_end sub_80302B6
 

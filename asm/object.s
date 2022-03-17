@@ -2120,7 +2120,7 @@ object_crackPanel:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800C988
-	ldr r1, [r0,#0x14]
+	ldr r1, [r0,#oPanelData_Flags]
 	mov r2, #0x10
 	tst r1, r2
 	beq loc_800C988
@@ -2131,10 +2131,10 @@ object_crackPanel:
 	ldr r2, dword_800C994 // =0x3f0f 
 	bic r1, r2
 	add r1, #3
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	mov r2, #3
-	strb r2, [r0,#2]
-	strb r2, [r0,#6]
+	strb r2, [r0,#oPanelData_Type]
+	strb r2, [r0,#oPanelData_Animation]
 	mov r0, #0x97
 	bl PlaySoundEffect
 	mov r0, #1
@@ -2146,10 +2146,10 @@ loc_800C96A:
 	ldr r2, dword_800C990 // =0x3f5f 
 	bic r1, r2
 	add r1, #1
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	mov r2, #1
-	strb r2, [r0,#2]
-	strb r2, [r0,#6]
+	strb r2, [r0,#oPanelData_Type]
+	strb r2, [r0,#oPanelData_Animation]
 	mov r0, #0x97
 	bl PlaySoundEffect
 	mov r0, #1
@@ -2169,7 +2169,7 @@ object_crackPanelDup1:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800C9E8
-	ldr r1, [r0,#0x14]
+	ldr r1, [r0,#oPanelData_Flags]
 	mov r2, #0x10
 	tst r1, r2
 	beq loc_800C9E8
@@ -2180,10 +2180,10 @@ object_crackPanelDup1:
 	ldr r2, dword_800C9F4 // =0x3f0f 
 	bic r1, r2
 	add r1, #3
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	mov r2, #3
-	strb r2, [r0,#2]
-	strb r2, [r0,#6]
+	strb r2, [r0,#oPanelData_Type]
+	strb r2, [r0,#oPanelData_Animation]
 	mov r0, #0x97
 	bl PlaySoundEffect
 	mov r0, #1
@@ -2195,10 +2195,10 @@ loc_800C9CA:
 	ldr r2, dword_800C9F0 // =0x3f5f 
 	bic r1, r2
 	add r1, #1
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	mov r2, #1
-	strb r2, [r0,#2]
-	strb r2, [r0,#6]
+	strb r2, [r0,#oPanelData_Type]
+	strb r2, [r0,#oPanelData_Animation]
 	mov r0, #0x97
 	bl PlaySoundEffect
 	mov r0, #1
@@ -2218,7 +2218,7 @@ object_breakPanel:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800CA28
-	ldr r1, [r0,#0x14]
+	ldr r1, [r0,#oPanelData_Flags]
 	mov r2, #0x10
 	tst r1, r2
 	beq loc_800CA28
@@ -2228,10 +2228,10 @@ object_breakPanel:
 	ldr r2, dword_800CA30 // =0x3f5f 
 	bic r1, r2
 	add r1, #1
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	mov r2, #1
-	strb r2, [r0,#2]
-	strb r2, [r0,#6]
+	strb r2, [r0,#oPanelData_Type]
+	strb r2, [r0,#oPanelData_Animation]
 	mov r0, #0x97
 	bl PlaySoundEffect
 	mov r0, #1
@@ -2250,7 +2250,7 @@ object_breakPanel_dup1:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800CA7C
-	ldr r1, [r0,#0x14]
+	ldr r1, [r0,#oPanelData_Flags]
 	mov r2, #0x10
 	tst r1, r2
 	beq loc_800CA7C
@@ -2260,10 +2260,10 @@ object_breakPanel_dup1:
 	ldr r2, dword_800CA84 // =0x3f5f 
 	bic r1, r2
 	add r1, #1
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	mov r2, #1
-	strb r2, [r0,#2]
-	strb r2, [r0,#6]
+	strb r2, [r0,#oPanelData_Type]
+	strb r2, [r0,#oPanelData_Animation]
 	mov r0, #0x97
 	bl PlaySoundEffect
 	mov r0, #1
@@ -2274,10 +2274,10 @@ loc_800CA64:
 	ldr r2, dword_800CA88 // =0x3f0f 
 	bic r1, r2
 	add r1, #3
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	mov r2, #3
-	strb r2, [r0,#2]
-	strb r2, [r0,#6]
+	strb r2, [r0,#oPanelData_Type]
+	strb r2, [r0,#oPanelData_Animation]
 	mov r0, #0x97
 	bl PlaySoundEffect
 loc_800CA7C:
@@ -2295,7 +2295,7 @@ object_breakPanel_dup2:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800CAD8
-	ldr r1, [r0,#0x14]
+	ldr r1, [r0,#oPanelData_Flags]
 	mov r2, #0x10
 	tst r1, r2
 	beq loc_800CAD8
@@ -2305,10 +2305,10 @@ object_breakPanel_dup2:
 	ldr r2, dword_800CAE0 // =0x3f5f 
 	bic r1, r2
 	add r1, #1
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	mov r2, #1
-	strb r2, [r0,#2]
-	strb r2, [r0,#6]
+	strb r2, [r0,#oPanelData_Type]
+	strb r2, [r0,#oPanelData_Animation]
 	mov r0, #0x97
 	bl PlaySoundEffect
 	mov r0, #1
@@ -2319,10 +2319,10 @@ loc_800CABC:
 	ldr r2, dword_800CAE4 // =0x3f0f 
 	bic r1, r2
 	add r1, #3
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	mov r2, #3
-	strb r2, [r0,#2]
-	strb r2, [r0,#6]
+	strb r2, [r0,#oPanelData_Type]
+	strb r2, [r0,#oPanelData_Animation]
 	mov r0, #0x97
 	bl PlaySoundEffect
 	mov r0, #1
@@ -2342,7 +2342,7 @@ object_breakPanel_dup3:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800CB34
-	ldr r1, [r0,#0x14]
+	ldr r1, [r0,#oPanelData_Flags]
 	mov r2, #0x10
 	tst r1, r2
 	beq loc_800CB34
@@ -2352,10 +2352,10 @@ object_breakPanel_dup3:
 	ldr r2, dword_800CB3C // =0x3f5f 
 	bic r1, r2
 	add r1, #1
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	mov r2, #1
-	strb r2, [r0,#2]
-	strb r2, [r0,#6]
+	strb r2, [r0,#oPanelData_Type]
+	strb r2, [r0,#oPanelData_Animation]
 	mov r0, #0x97
 	bl PlaySoundEffect
 	mov r0, #1
@@ -2366,10 +2366,10 @@ loc_800CB18:
 	ldr r2, dword_800CB40 // =0x3f0f 
 	bic r1, r2
 	add r1, #3
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	mov r2, #3
-	strb r2, [r0,#2]
-	strb r2, [r0,#6]
+	strb r2, [r0,#oPanelData_Type]
+	strb r2, [r0,#oPanelData_Animation]
 	mov r0, #0x97
 	bl PlaySoundEffect
 	mov r0, #1
@@ -2389,7 +2389,7 @@ object_breakPanelLoud:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800CB90
-	ldr r1, [r0,#0x14]
+	ldr r1, [r0,#oPanelData_Flags]
 	mov r2, #0x10
 	tst r1, r2
 	beq loc_800CB90
@@ -2399,10 +2399,10 @@ object_breakPanelLoud:
 	ldr r2, dword_800CB98 // =0x3f5f 
 	bic r1, r2
 	add r1, #1
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	mov r2, #1
-	strb r2, [r0,#2]
-	strb r2, [r0,#6]
+	strb r2, [r0,#oPanelData_Type]
+	strb r2, [r0,#oPanelData_Animation]
 	mov r0, #0xda
 	bl PlaySoundEffect
 	mov r0, #1
@@ -2413,10 +2413,10 @@ loc_800CB74:
 	ldr r2, dword_800CB9C // =0x3f0f 
 	bic r1, r2
 	add r1, #3
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	mov r2, #3
-	strb r2, [r0,#2]
-	strb r2, [r0,#6]
+	strb r2, [r0,#oPanelData_Type]
+	strb r2, [r0,#oPanelData_Animation]
 	mov r0, #0xda
 	bl PlaySoundEffect
 	mov r0, #1
@@ -2469,7 +2469,7 @@ object_highlightPanel:
 	beq locret_800CBEC
 	bl object_getPanelDataOffset
 	mov r1, #1
-	strb r1, [r0,#1]
+	strb r1, [r0,#oPanelData_Unk_01]
 locret_800CBEC:
 	pop {pc}
 	thumb_func_end object_highlightPanel
@@ -2482,11 +2482,11 @@ object_highlightPanelBlue:
 	pop {r0,r1}
 	beq locret_800CC08
 	bl object_getPanelDataOffset
-	ldrb r1, [r0,#1]
+	ldrb r1, [r0,#oPanelData_Unk_01]
 	cmp r1, #1
 	beq locret_800CC08
 	mov r1, #2
-	strb r1, [r0,#1]
+	strb r1, [r0,#oPanelData_Unk_01]
 locret_800CC08:
 	pop {pc}
 	thumb_func_end object_highlightPanelBlue
@@ -2507,12 +2507,12 @@ object_setPanelAlliance:
 	mov r5, r1
 	mov r6, r2
 	bl object_getPanelDataOffset
-	ldrb r3, [r0,#2]
+	ldrb r3, [r0,#oPanelData_Type]
 	tst r3, r3
 	beq locret_800CC34
-	strb r6, [r0,#3]
+	strb r6, [r0,#oPanelData_Alliance]
 	mov r2, #0
-	strh r2, [r0,#0x10]
+	strh r2, [r0,#oPanelData_Unk_10]
 	mov r0, r4
 	mov r1, r5
 	bl object_updatePanelParameters
@@ -2549,9 +2549,9 @@ object_setPanelTypeBlink:
 	bl object_getPanelDataOffset
 	pop {r2,r3}
 	mov r1, #1
-	strb r1, [r0,#0xd]
-	strb r2, [r0,#8]
-	strb r3, [r0,#9]
+	strb r1, [r0,#oPanelData_Unk_0d]
+	strb r2, [r0,#oPanelData_Unk_08]
+	strb r3, [r0,#oPanelData_Unk_09]
 	pop {pc}
 	thumb_func_end object_setPanelTypeBlink
 
@@ -2839,7 +2839,7 @@ object_hidePanel:
 	tst r0, r0
 	beq locret_800CE40
 	mov r1, #0
-	strb r1, [r0]
+	strb r1, [r0,#oPanelData_Visible]
 locret_800CE40:
 	pop {pc}
 	thumb_func_end object_hidePanel
@@ -3893,7 +3893,7 @@ loc_800D55E:
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
 	bl object_getPanelDataOffset
-	ldrb r0, [r0,#3]
+	ldrb r0, [r0,#oPanelData_Alliance]
 	ldr r1, [sp,#8]
 	cmp r0, r1
 	bne loc_800D586
@@ -3979,7 +3979,7 @@ loc_800D5FA:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800D60E
-	ldrb r1, [r0,#3]
+	ldrb r1, [r0,#oPanelData_Alliance]
 	cmp r1, r4
 	beq loc_800D60E
 	add r5, #1
@@ -3998,8 +3998,8 @@ sub_800D618:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq locret_800D634
-	ldrb r1, [r0,#4]
-	ldrb r2, [r0,#3]
+	ldrb r1, [r0,#oPanelData_Unk_04]
+	ldrb r2, [r0,#oPanelData_Alliance]
 	mov r0, #0
 	cmp r1, r2
 	beq locret_800D634
@@ -4113,7 +4113,7 @@ loc_800D6E0:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800D6FC
-	ldrb r1, [r0,#3]
+	ldrb r1, [r0,#oPanelData_Alliance]
 	cmp r1, r6
 	bne loc_800D6FC
 	add r5, #1
@@ -4697,7 +4697,7 @@ object_calculateFinalDamage1:
 	bl object_getPanelDataOffset
 	mov r4, #0
 	mov r6, #0
-	ldrb r1, [r0,#2]
+	ldrb r1, [r0,#oPanelData_Type]
 	cmp r1, #5 // holy panel?
 	bne loc_800E3F6
 	add r4, #1
@@ -4733,7 +4733,7 @@ object_calculateFinalDamage2:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getPanelDataOffset
 	mov r4, #0
-	ldrb r1, [r0,#2]
+	ldrb r1, [r0,#oPanelData_Type]
 	cmp r1, #5
 	bne loc_800E436
 	mov r4, #1
@@ -4857,7 +4857,7 @@ sub_800E500:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800E52C
-	ldrb r0, [r0,#2]
+	ldrb r0, [r0,#oPanelData_Type]
 	cmp r0, #9
 	blt loc_800E52C
 	cmp r0, #0xc

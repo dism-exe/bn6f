@@ -10755,7 +10755,7 @@ sub_8013CC4:
 	mov r0, r6
 	mov r1, r7
 	bl object_getPanelDataOffset
-	ldrb r5, [r0,#2]
+	ldrb r5, [r0,#oPanelData_Type]
 	cmp r5, #1
 	beq locret_8013D3C
 	cmp r5, #0
@@ -15995,7 +15995,7 @@ sub_8016730:
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_getPanelDataOffset
-	ldrb r4, [r0,#2]
+	ldrb r4, [r0,#oPanelData_Type]
 	cmp r4, #7
 	bne loc_8016768
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
@@ -16769,7 +16769,7 @@ loc_8016DBC:
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_getPanelDataOffset
-	ldrb r4, [r0,#2]
+	ldrb r4, [r0,#oPanelData_Type]
 	cmp r4, #7
 	bne loc_8016DE2
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
@@ -18130,7 +18130,7 @@ loc_80179C2:
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_getPanelDataOffset
-	ldrb r4, [r0,#2]
+	ldrb r4, [r0,#oPanelData_Type]
 	cmp r4, #7
 	bne loc_80179E8
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
@@ -18580,7 +18580,7 @@ loc_8017D94:
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_getPanelDataOffset
-	ldrb r0, [r0,#2]
+	ldrb r0, [r0,#oPanelData_Type]
 	cmp r0, #7
 	bne loc_8017DBA
 	ldrb r0, [r5,#oBattleObject_PhaseInitialized]
@@ -18804,7 +18804,7 @@ loc_8017F68:
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_getPanelDataOffset
-	ldrb r0, [r0,#2]
+	ldrb r0, [r0,#oPanelData_Type]
 	cmp r0, #7
 	bne loc_8017F8E
 	ldrb r0, [r5,#oBattleObject_PhaseInitialized]
@@ -20445,7 +20445,7 @@ sub_801A186:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq locret_801A1FA
-	ldrb r0, [r0,#2]
+	ldrb r0, [r0,#oPanelData_Type]
 	cmp r0, #4
 	bne loc_801A1CE
 	bl object_getFlag // () -> int
@@ -20723,7 +20723,7 @@ loc_801A38A:
 	ldrb r0, [r7,#oCollisionData_PanelX]
 	ldrb r1, [r7,#oCollisionData_PanelY]
 	bl object_getPanelDataOffset
-	ldrb r1, [r0,#2]
+	ldrb r1, [r0,#oPanelData_Type]
 	cmp r1, #9
 	blt loc_801A3AC
 	cmp r1, #0xc
@@ -20745,7 +20745,7 @@ loc_801A3B8:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq locret_801A3D8
-	ldrb r1, [r0,#2]
+	ldrb r1, [r0,#oPanelData_Type]
 	cmp r1, #7
 	bne locret_801A3D8
 	bl sub_801A3DA
@@ -21538,7 +21538,7 @@ loc_801A916:
 	ldrb r0, [r4,#oCollisionData_PanelX]
 	ldrb r1, [r4,#oCollisionData_PanelY]
 	bl object_getPanelDataOffset
-	ldrb r0, [r0,#2]
+	ldrb r0, [r0,#oPanelData_Type]
 	cmp r0, #5
 	pop {r0,r4}
 	bne loc_801A948
@@ -23606,14 +23606,14 @@ object_reservePanel:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_801BB42
-	ldr r2, [r0,#0x1c]
+	ldr r2, [r0,#oPanelData_ReserverObjectPtr]
 	tst r2, r2
 	bne loc_801BB42
-	str r5, [r0,#0x1c]
-	ldr r1, [r0,#0x14]
+	str r5, [r0,#oPanelData_ReserverObjectPtr]
+	ldr r1, [r0,#oPanelData_Flags]
 	mov r2, #0x80
 	orr r1, r2
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #0x20 
 	orr r0, r1
@@ -23631,15 +23631,15 @@ object_removePanelReserve:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_801BB66
-	ldr r1, [r0,#0x1c]
+	ldr r1, [r0,#oPanelData_ReserverObjectPtr]
 	cmp r1, r5
 	bne loc_801BB66
 	mov r1, #0
-	str r1, [r0,#0x1c]
-	ldr r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_ReserverObjectPtr]
+	ldr r1, [r0,#oPanelData_Flags]
 	mov r2, #0x80
 	bic r1, r2
-	str r1, [r0,#0x14]
+	str r1, [r0,#oPanelData_Flags]
 	mov r0, #1
 	pop {pc}
 loc_801BB66:
@@ -23674,7 +23674,7 @@ loc_801BB86:
 	bl object_getPanelDataOffset
 	cmp r0, #0
 	beq loc_801BBA0
-	ldr r1, [r0,#0x1c]
+	ldr r1, [r0,#oPanelData_ReserverObjectPtr]
 	cmp r1, r5
 	bne loc_801BBA0
 	mov r0, r6

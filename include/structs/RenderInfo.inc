@@ -6,6 +6,7 @@
 	// look at render_800172C for how data is transferred
 	// todo document rest of struct fields
 	u16 Unk_00 // loc=0x0
+	u16 Unk_02 // loc=0x2
 	struct_org 0x10
 	u16 Unk_10 // loc=0x10
 	u16 Unk_12 // loc=0x12

@@ -254,9 +254,9 @@ musicGameState_8000784:
 	pop {r1}
 	mov r10, r1
 	mov r7, r10
-	ldr r7, [r7,#0x3c] // Toolkit.gamestate
+	ldr r7, [r7,#oToolkit_GameStatePtr] // Toolkit.gamestate
 	mov r0, #0xff
-	strb r0, [r7,#0xf] // GameState.bgMusicIndicator
+	strb r0, [r7,#oGameState_BGMusicIndicator] // GameState.bgMusicIndicator
 	pop {r7,pc}
 	.byte 0, 0
 	thumb_func_end musicGameState_8000784

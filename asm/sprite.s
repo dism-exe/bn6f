@@ -1345,12 +1345,12 @@ loc_8002F06:
 	strb r1, [r3,#oObjectSprite_Unk_11]
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_RenderInfoPtr]
-	ldrh r1, [r3,#2]
+	ldrh r1, [r3,#oRenderInfo_Unk_02]
 	mov r2, #0xff
 	lsl r2, r2, #8
 	bic r1, r2
 	orr r1, r0
-	strh r1, [r3,#2]
+	strh r1, [r3,#oRenderInfo_Unk_02]
 	mov pc, lr
 	thumb_func_end sprite_setMosaicSize
 
@@ -1378,7 +1378,7 @@ sub_8002F3E:
 	and r2, r0
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_RenderInfoPtr]
-	ldrh r0, [r3,#2]
+	ldrh r0, [r3,#oRenderInfo_Unk_02]
 	mov r1, #0xff
 	bic r0, r1
 	lsr r0, r0, #8

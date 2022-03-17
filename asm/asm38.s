@@ -3403,7 +3403,7 @@ sub_3007460:
 	ldrb r0, [r7,#0xa]
 	ldrb r1, [r7,#0xb]
 	bl _object_getPanelDataOffset
-	ldrb r0, [r0,#2]
+	ldrb r0, [r0,#oPanelData_Type]
 	cmp r0, #7
 	bne locret_30074A0
 	ldrb r0, [r7,#0xa]
@@ -3666,7 +3666,7 @@ applyHeatOnGrassDamage_300766c:
 	ldrb r1, [r0,#oCollisionData_PanelY]
 	ldrb r0, [r0,#oCollisionData_PanelX]
 	bl _object_getPanelDataOffset
-	ldrb r0, [r0,#2]
+	ldrb r0, [r0,#oPanelData_Type]
 	ldrb r1, [r4,#oCollisionData_PrimaryElement]
 	cmp r1, #ELEM_HEAT // heat
 	bne loc_3007688
@@ -3768,7 +3768,7 @@ sub_3007708:
 	ldr r1, dword_3007778 // =0xc000000
 	tst r2, r1
 	bne locret_3007774
-	ldrb r0, [r0,#2]
+	ldrb r0, [r0,#oPanelData_Type]
 	cmp r0, #6
 	bne loc_3007746
 	ldrb r0, [r4,#oCollisionData_PrimaryElement]
@@ -4004,17 +4004,17 @@ _object_updatePanelParameters:
 	bl _object_getPanelDataOffset
 	tst r0, r0
 	beq locret_300791C
-	ldrb r1, [r0,#2]
-	strb r1, [r0,#6]
+	ldrb r1, [r0,#oPanelData_Type]
+	strb r1, [r0,#oPanelData_Animation]
 	lsl r2, r1, #2
 	ldr r3, off_3007920 // =word_3007924
 	ldr r3, [r3,r2]
 	orr r1, r3
-	ldrb r2, [r0,#3]
-	strb r2, [r0,#7]
+	ldrb r2, [r0,#oPanelData_Alliance]
+	strb r2, [r0,#oPanelData_Unk_07]
 	lsl r2, r2, #5
 	orr r1, r2
-	ldr r2, [r0,#0x1c]
+	ldr r2, [r0,#oPanelData_ReserverObjectPtr]
 	tst r2, r2
 	beq loc_300790A
 	mov r2, #0x80
@@ -4026,7 +4026,7 @@ loc_300790A:
 	mov r1, r5
 	bl sub_3007978
 	orr r6, r0
-	str r6, [r7,#0x14]
+	str r6, [r7,#oPanelData_Flags]
 locret_300791C:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -4097,16 +4097,16 @@ _object_setPanelType:
 	mov r5, r1
 	mov r6, r2
 	bl _object_getPanelDataOffset
-	ldrb r3, [r0,#2]
+	ldrb r3, [r0,#oPanelData_Type]
 	tst r3, r3
 	beq locret_30079CE
-	strb r6, [r0,#2]
+	strb r6, [r0,#oPanelData_Type]
 	cmp r6, #9
 	blt loc_30079C6
 	cmp r6, #0xc
 	bgt loc_30079C6
 	ldr r1, byte_30079D0 // =0x8
-	strh r1, [r0,#0x12]
+	strh r1, [r0,#oPanelData_Unk_12]
 	b loc_30079C6
 loc_30079C6:
 	mov r0, r4

@@ -769,7 +769,7 @@ sub_800362C:
 	ldr r3, [r3,#oToolkit_CameraPtr]
 	mov r2, #2
 	ldrsh r1, [r0,r2]
-	ldr r4, [r3,#0x3c]
+	ldr r4, [r3,#oCamera_nextX_3c]
 	asr r4, r4, #0x10
 	sub r1, r1, r4
 	ldr r6, off_8003690 // =eCamera+76
@@ -781,13 +781,13 @@ loc_8003646:
 	add r1, #0x78
 	mov r2, #6
 	ldrsh r6, [r0,r2]
-	ldr r4, [r3,#0x40]
+	ldr r4, [r3,#oCamera_nextY_40]
 	asr r4, r4, #0x10
 	sub r6, r6, r4
 	add r6, #0x50
 	mov r2, #0xa
 	ldrsh r4, [r0,r2]
-	ldr r2, [r3,#0x44]
+	ldr r2, [r3,#oCamera_nextZ_44]
 	asr r2, r2, #0x10
 	sub r4, r4, r2
 	sub r6, r6, r4

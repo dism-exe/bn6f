@@ -10666,7 +10666,7 @@ loc_80BD28A:
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
 	bl object_getPanelDataOffset
-	ldrb r1, [r0,#3]
+	ldrb r1, [r0,#oPanelData_Alliance]
 	ldrb r2, [r5,#oBattleObject_Alliance]
 	cmp r1, r2
 	bne loc_80BD2AE
@@ -10719,7 +10719,7 @@ loc_80BD2EE:
 	ldr r0, [sp,#0x20]
 	ldr r1, [sp,#0x24]
 	bl object_getPanelDataOffset
-	ldrb r1, [r0,#3]
+	ldrb r1, [r0,#oPanelData_Alliance]
 	ldrb r2, [r5,#oBattleObject_Alliance]
 	cmp r1, r2
 	beq loc_80BD318
@@ -24610,13 +24610,13 @@ sub_80C3B30:
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C3B52
-	strb r1, [r0,#0x12]
-	strb r2, [r0,#0x13]
-	strb r3, [r0,#0xe]
-	ldrh r1, [r5,#0x16]
-	strh r1, [r0,#0x16]
-	str r6, [r0,#0x2c]
-	str r7, [r0,#0x40]
+	strb r1, [r0,#oBattleObject_PanelX]
+	strb r2, [r0,#oBattleObject_PanelY]
+	strb r3, [r0,#oBattleObject_Element]
+	ldrh r1, [r5,#oBattleObject_AllianceAndDirectionFlip]
+	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
+	str r6, [r0,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
+	str r7, [r0,#oBattleObject_XVelocity]
 	mov r1, #1
 	strb r1, [r7]
 locret_80C3B52:
@@ -25071,13 +25071,13 @@ sub_80C3E98:
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C3EBA
-	strb r1, [r0,#0x12]
-	strb r2, [r0,#0x13]
-	strb r3, [r0,#0xe]
-	ldrh r1, [r5,#0x16]
-	strh r1, [r0,#0x16]
-	str r6, [r0,#0x2c]
-	str r7, [r0,#0x40]
+	strb r1, [r0,#oBattleObject_PanelX]
+	strb r2, [r0,#oBattleObject_PanelY]
+	strb r3, [r0,#oBattleObject_Element]
+	ldrh r1, [r5,#oBattleObject_AllianceAndDirectionFlip]
+	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
+	str r6, [r0,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
+	str r7, [r0,#oBattleObject_XVelocity]
 	mov r1, #1
 	strb r1, [r7]
 locret_80C3EBA:
@@ -36308,7 +36308,7 @@ loc_80C98FA:
 	ldrb r0, [r2,#oCollisionData_PanelX]
 	ldrb r1, [r2,#oCollisionData_PanelY]
 	bl object_getPanelDataOffset
-	ldrb r1, [r0,#3]
+	ldrb r1, [r0,#oPanelData_Alliance]
 	ldrb r2, [r5,#oBattleObject_Alliance]
 	eor r1, r2
 	beq loc_80C9922
@@ -36547,7 +36547,7 @@ loc_80C9AD6:
 	pop {r0-r3}
 	beq loc_80C9AFA
 	push {r0-r3}
-	ldrb r1, [r4,#3]
+	ldrb r1, [r4,#oPanelData_Alliance]
 	ldrb r2, [r5,#oBattleObject_Alliance]
 	eor r1, r2
 	pop {r0-r3}
@@ -36562,7 +36562,7 @@ loc_80C9AFA:
 	pop {r0-r3}
 	beq loc_80C9B24
 	push {r0-r3}
-	ldrb r1, [r4,#3]
+	ldrb r1, [r4,#oPanelData_Alliance]
 	ldrb r2, [r5,#oBattleObject_Alliance]
 	eor r1, r2
 	pop {r0-r3}
@@ -37435,7 +37435,7 @@ sub_80CA234:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getPanelDataOffset
-	ldrb r3, [r0,#2]
+	ldrb r3, [r0,#oPanelData_Type]
 	ldr r1, off_80CA258 // =byte_80CA25C 
 loc_80CA242:
 	ldrb r2, [r1]
@@ -40829,7 +40829,7 @@ sub_80CBD32:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getPanelDataOffset
-	ldrb r0, [r0,#3]
+	ldrb r0, [r0,#oPanelData_Alliance]
 	mov r1, #1
 	eor r0, r1
 	strb r0, [r5,#oBattleObject_Alliance]
@@ -44177,7 +44177,7 @@ sub_80CD7D0:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getPanelDataOffset
-	ldrb r0, [r0,#3]
+	ldrb r0, [r0,#oPanelData_Alliance]
 	mov r1, #1
 	eor r0, r1
 	strb r0, [r5,#oBattleObject_Alliance]
@@ -44780,7 +44780,7 @@ sub_80CDCBC:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getPanelDataOffset
-	ldrb r0, [r0,#3]
+	ldrb r0, [r0,#oPanelData_Alliance]
 	mov r1, #1
 	eor r0, r1
 	strb r0, [r5,#oBattleObject_Alliance]
@@ -45767,7 +45767,7 @@ loc_80CE48A:
 	beq loc_80CE4D0
 	push {r0-r3}
 	bl object_getPanelDataOffset
-	ldrb r0, [r0,#2]
+	ldrb r0, [r0,#oPanelData_Type]
 	tst r0, r0
 	pop {r0-r3}
 	beq loc_80CE4D0
@@ -59550,7 +59550,7 @@ loc_80D4FC8:
 	ldrb r1, [r0,#oBattleObject_PanelY]
 	ldrb r0, [r0,#oBattleObject_PanelX]
 	bl object_getPanelDataOffset
-	ldrb r1, [r0,#3]
+	ldrb r1, [r0,#oPanelData_Alliance]
 	pop {r0}
 	strb r1, [r0,#oBattleObject_Alliance]
 	mov r1, #0
@@ -67267,7 +67267,7 @@ sub_80D8D7E:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getPanelDataOffset
-	ldrb r0, [r0,#2]
+	ldrb r0, [r0,#oPanelData_Type]
 	cmp r0, #5
 	bne loc_80D8DA2
 	add r4, #1
@@ -85729,10 +85729,10 @@ loc_80E1E86:
 	mov r0, r6
 	mov r1, r7
 	bl object_getPanelDataOffset
-	ldrb r1, [r0,#2]
+	ldrb r1, [r0,#oPanelData_Type]
 	tst r1, r1
 	beq loc_80E1EA0
-	ldrb r3, [r0,#3]
+	ldrb r3, [r0,#oPanelData_Alliance]
 	mov r0, r6
 	mov r1, r7
 	ldrb r2, [r5,#oBattleObject_Param1]
@@ -85779,11 +85779,11 @@ loc_80E1EDC:
 	mov r0, r6
 	mov r1, r7
 	bl object_getPanelDataOffset
-	ldrb r3, [r0,#3]
+	ldrb r3, [r0,#oPanelData_Alliance]
 	ldrb r2, [r5,#oBattleObject_Alliance]
 	eor r2, r3
 	beq loc_80E1EFC
-	ldrb r1, [r0,#2]
+	ldrb r1, [r0,#oPanelData_Type]
 	tst r1, r1
 	beq loc_80E1EFC
 	mov r0, r6
@@ -85804,7 +85804,7 @@ loc_80E1F0A:
 	mov r0, r6
 	mov r1, r7
 	bl object_getPanelDataOffset
-	ldrb r1, [r0,#3]
+	ldrb r1, [r0,#oPanelData_Alliance]
 	ldrb r2, [r5,#oBattleObject_Alliance]
 	eor r1, r2
 	beq loc_80E1F24
@@ -85850,10 +85850,10 @@ loc_80E1F56:
 	mov r0, r6
 	mov r1, r7
 	bl object_getPanelDataOffset
-	ldrb r1, [r0,#2]
+	ldrb r1, [r0,#oPanelData_Type]
 	tst r1, r1
 	beq loc_80E1F72
-	ldrb r3, [r0,#3]
+	ldrb r3, [r0,#oPanelData_Alliance]
 	mov r0, r6
 	mov r1, r7
 	ldrb r2, [r5,#oBattleObject_Param1]
@@ -85882,7 +85882,7 @@ loc_80E1F8E:
 	mov r0, r6
 	mov r1, r7
 	bl object_getPanelDataOffset
-	ldrb r1, [r0,#2]
+	ldrb r1, [r0,#oPanelData_Type]
 	tst r1, r1
 	beq loc_80E1FA8
 	mov r0, r6
@@ -85915,10 +85915,10 @@ loc_80E1FCA:
 	mov r0, r6
 	mov r1, #2
 	bl object_getPanelDataOffset
-	ldrb r1, [r0,#2]
+	ldrb r1, [r0,#oPanelData_Type]
 	tst r1, r1
 	beq loc_80E1FE4
-	ldrb r3, [r0,#3]
+	ldrb r3, [r0,#oPanelData_Alliance]
 	mov r0, r6
 	mov r1, #2
 	ldrb r2, [r5,#oBattleObject_Param1]
@@ -85932,10 +85932,10 @@ loc_80E1FEC:
 	ldrb r0, [r7]
 	ldrb r1, [r7,#0x1] // (byte_80E2061 - 0x80e2060)
 	bl object_getPanelDataOffset
-	ldrb r1, [r0,#2]
+	ldrb r1, [r0,#oPanelData_Type]
 	tst r1, r1
 	beq loc_80E2006
-	ldrb r3, [r0,#3]
+	ldrb r3, [r0,#oPanelData_Alliance]
 	ldrb r0, [r7]
 	ldrb r1, [r7,#1]
 	ldrb r2, [r5,#oBattleObject_Param1]
@@ -85952,7 +85952,7 @@ loc_80E2012:
 	mov r0, r6
 	mov r1, #2
 	bl object_getPanelDataOffset
-	ldrb r1, [r0,#2]
+	ldrb r1, [r0,#oPanelData_Type]
 	tst r1, r1
 	beq loc_80E202A
 	mov r0, r6
@@ -85968,10 +85968,10 @@ loc_80E2032:
 	ldrb r0, [r7]
 	ldrb r1, [r7,#0x1] // (byte_80E2061 - 0x80e2060)
 	bl object_getPanelDataOffset
-	ldrb r1, [r0,#2]
+	ldrb r1, [r0,#oPanelData_Type]
 	tst r1, r1
 	beq loc_80E204C
-	ldrb r3, [r0,#3]
+	ldrb r3, [r0,#oPanelData_Alliance]
 	ldrb r0, [r7]
 	ldrb r1, [r7,#1]
 	ldrb r2, [r5,#oBattleObject_Param1]
@@ -86994,7 +86994,7 @@ loc_80E296A:
 	pop {r2}
 	push {r0-r2}
 	bl object_getPanelDataOffset
-	ldrb r3, [r0,#3]
+	ldrb r3, [r0,#oPanelData_Alliance]
 	pop {r0-r2}
 	bl object_setPanelTypeBlink
 	pop {r2,r6,r7}
@@ -87019,7 +87019,7 @@ loc_80E299A:
 	pop {r2}
 	push {r0-r2}
 	bl object_getPanelDataOffset
-	ldrb r3, [r0,#3]
+	ldrb r3, [r0,#oPanelData_Alliance]
 	pop {r0-r2}
 	push {r0-r3}
 	bl object_setPanelType
@@ -88776,7 +88776,7 @@ loc_80E3644:
 	ldr r0, [sp,#0x28]
 	ldr r1, [sp,#0x2c]
 	bl object_getPanelDataOffset
-	ldr r1, [r0,#0x14]
+	ldr r1, [r0,#oPanelData_Flags]
 	ldr r2, [sp,#0x30]
 	tst r1, r2
 	beq loc_80E3662
@@ -90469,7 +90469,7 @@ loc_80E42F2:
 	ldr r0, [sp,#0x10]
 	mov r1, r4
 	bl object_getPanelDataOffset
-	ldrb r0, [r0,#3]
+	ldrb r0, [r0,#oPanelData_Alliance]
 	ldr r1, [sp,#4]
 	cmp r0, r1
 	beq loc_80E4312
@@ -101070,16 +101070,16 @@ sub_80E91B8:
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E91DE
-	strb r1, [r0,#0x12]
-	strb r2, [r0,#0x13]
-	strb r3, [r0,#0xe]
-	str r5, [r0,#0x4c]
-	ldrh r1, [r5,#0x16]
-	strh r1, [r0,#0x16]
-	str r6, [r0,#0x2c]
-	str r7, [r0,#0x30]
+	strb r1, [r0,#oBattleObject_PanelX]
+	strb r2, [r0,#oBattleObject_PanelY]
+	strb r3, [r0,#oBattleObject_Element]
+	str r5, [r0,#oBattleObject_RelatedObject1Ptr]
+	ldrh r1, [r5,#oBattleObject_AllianceAndDirectionFlip]
+	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
+	str r6, [r0,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
+	str r7, [r0,#oBattleObject_Unk_30]
 	mov r1, #0x60 
-	ldrb r2, [r0,#4]
+	ldrb r2, [r0,#oBattleObject_Param1]
 	strb r2, [r0,r1]
 locret_80E91DE:
 	pop {pc}
@@ -101238,14 +101238,14 @@ sub_80E92EE:
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E930E
-	strb r1, [r0,#0x12]
-	strb r2, [r0,#0x13]
-	strb r3, [r0,#0xe]
-	str r5, [r0,#0x4c]
-	ldrh r1, [r5,#0x16]
-	strh r1, [r0,#0x16]
-	str r6, [r0,#0x2c]
-	str r7, [r0,#0x30]
+	strb r1, [r0,#oBattleObject_PanelX]
+	strb r2, [r0,#oBattleObject_PanelY]
+	strb r3, [r0,#oBattleObject_Element]
+	str r5, [r0,#oBattleObject_RelatedObject1Ptr]
+	ldrh r1, [r5,#oBattleObject_AllianceAndDirectionFlip]
+	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
+	str r6, [r0,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
+	str r7, [r0,#oBattleObject_Unk_30]
 locret_80E930E:
 	pop {pc}
 	thumb_func_end sub_80E92EE
@@ -101428,14 +101428,14 @@ sub_80E943E:
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E945E
-	strb r1, [r0,#0x12]
-	strb r2, [r0,#0x13]
-	strb r3, [r0,#0xe]
-	str r5, [r0,#0x4c]
-	ldrh r1, [r5,#0x16]
-	strh r1, [r0,#0x16]
-	str r6, [r0,#0x2c]
-	str r7, [r0,#0x30]
+	strb r1, [r0,#oBattleObject_PanelX]
+	strb r2, [r0,#oBattleObject_PanelY]
+	strb r3, [r0,#oBattleObject_Element]
+	str r5, [r0,#oBattleObject_RelatedObject1Ptr]
+	ldrh r1, [r5,#oBattleObject_AllianceAndDirectionFlip]
+	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
+	str r6, [r0,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
+	str r7, [r0,#oBattleObject_Unk_30]
 locret_80E945E:
 	pop {pc}
 	thumb_func_end sub_80E943E
@@ -101876,14 +101876,14 @@ sub_80E979C:
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E97BC
-	strb r1, [r0,#0x12]
-	strb r2, [r0,#0x13]
-	strb r3, [r0,#0xe]
-	str r5, [r0,#0x4c]
-	ldrh r1, [r5,#0x16]
-	strh r1, [r0,#0x16]
-	str r6, [r0,#0x2c]
-	str r7, [r0,#0x30]
+	strb r1, [r0,#oBattleObject_PanelX]
+	strb r2, [r0,#oBattleObject_PanelY]
+	strb r3, [r0,#oBattleObject_Element]
+	str r5, [r0,#oBattleObject_RelatedObject1Ptr]
+	ldrh r1, [r5,#oBattleObject_AllianceAndDirectionFlip]
+	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
+	str r6, [r0,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
+	str r7, [r0,#oBattleObject_Unk_30]
 locret_80E97BC:
 	pop {pc}
 	thumb_func_end sub_80E979C
@@ -109884,7 +109884,7 @@ loc_80EDC1E:
 	mov r2, r0
 	pop {r0,r1}
 	beq loc_80EDC2C
-	ldrb r3, [r2,#2]
+	ldrb r3, [r2,#oPanelData_Type]
 loc_80EDC2C:
 	add r1, #1
 	add r4, #1
@@ -109904,7 +109904,7 @@ loc_80EDC46:
 	mov r2, r0
 	pop {r0,r1}
 	beq loc_80EDC54
-	ldrb r3, [r2,#2]
+	ldrb r3, [r2,#oPanelData_Type]
 loc_80EDC54:
 	add r1, #1
 	add r4, #1
