@@ -3057,32 +3057,51 @@ unk_2039AA0:: // 0x2039aa0
 	.space 60
 unk_2039ADC:: // 0x2039adc
 	.space 4
+
 ePanelData:: // 0x2039ae0
-	.space 1
-byte_2039AE1:: // 0x2039ae1
-	.space 5
-byte_2039AE6:: // 0x2039ae6
-	.space 1
-byte_2039AE7:: // 0x2039ae7
-	.space 1
-byte_2039AE8:: // 0x2039ae8
-	.space 1
-byte_2039AE9:: // 0x2039ae9
-	.space 1
-byte_2039AEA:: // 0x2039aea
-	.space 1
-byte_2039AEB:: // 0x2039aeb
-	.space 1
-byte_2039AEC:: // 0x2039aec
-	.space 1
-byte_2039AED:: // 0x2039aed
-	.space 275
-unk_2039C00:: // 0x2039c00
-	.space 2
-byte_2039C02:: // 0x2039c02
-	.space 22
-dword_2039C18:: // 0x2039c18
-	.space 1016
+	panel_data_struct ePanelData0 // 0x2039ae0
+	panel_data_struct ePanelData1
+	panel_data_struct ePanelData2
+	panel_data_struct ePanelData3
+	panel_data_struct ePanelData4
+	panel_data_struct ePanelData5
+	panel_data_struct ePanelData6
+	panel_data_struct ePanelData7
+	panel_data_struct ePanelData8
+	panel_data_struct ePanelData9 // 0x2039c00 // start of on-screen panels
+	panel_data_struct ePanelData10
+	panel_data_struct ePanelData11
+	panel_data_struct ePanelData12
+	panel_data_struct ePanelData13
+	panel_data_struct ePanelData14
+	panel_data_struct ePanelData15
+	panel_data_struct ePanelData16
+	panel_data_struct ePanelData17
+	panel_data_struct ePanelData18
+	panel_data_struct ePanelData19
+	panel_data_struct ePanelData20
+	panel_data_struct ePanelData21
+	panel_data_struct ePanelData22
+	panel_data_struct ePanelData23
+	panel_data_struct ePanelData24
+	panel_data_struct ePanelData25
+	panel_data_struct ePanelData26
+	panel_data_struct ePanelData27
+	panel_data_struct ePanelData28
+	panel_data_struct ePanelData29
+	panel_data_struct ePanelData30
+	panel_data_struct ePanelData31
+	panel_data_struct ePanelData32
+	panel_data_struct ePanelData33
+	panel_data_struct ePanelData34
+	panel_data_struct ePanelData35
+	panel_data_struct ePanelData36
+	panel_data_struct ePanelData37
+	panel_data_struct ePanelData38
+	panel_data_struct ePanelData39
+ePanelDataEnd:: // 0x2039fe0
+
+	.space 48
 dword_203A010:: // 0x203a010
 	.space 144
 unk_203A0A0:: // 0x203a0a0

@@ -3,6 +3,7 @@ MAKE = make
 AS = tools/binutils/bin/arm-none-eabi-as
 LD = tools/binutils/bin/arm-none-eabi-ld
 OBJCOPY = tools/binutils/bin/arm-none-eabi-objcopy
+OBJDUMP := tools/binutils/bin/arm-none-eabi-objdump
 GBAGFX = tools/gbagfx/gbagfx
 SHA1SUM = sha1sum
 PY = py
@@ -23,6 +24,8 @@ include lz_assets.mk
 OFILES = $(addprefix $(OBJ),$(SFILES:.s=.o))
 BUILD_NAME = bn6f
 ROM = $(BUILD_NAME).gba
+ELF := $(ROM:.gba=.elf)
+SYM = $(ROM:.gba=.sym)
 
 # build flags
 COMPLIANCE_FLAGS = -g -I$(INC)
@@ -37,16 +40,18 @@ ASDEBUGFLAGS = --agbasm-debug $(@:.o=.dump)
 LDFLAGS = -Map $(BUILD_NAME).map
 LIB =
 
+.PHONY: syms
+
 # TODO: INTEGRATE SCAN INCLUDES
 
 all: $(ROM)
 	@$(SHA1SUM) -c $(BUILD_NAME).sha1
 
-$(ROM): %.elf
-	$(OBJCOPY) -O binary $(BUILD_NAME).elf $(ROM)
+$(ROM): $(ELF)
+	$(OBJCOPY) -O binary $(ELF) $(ROM)
 
 %.elf: $(OFILES)
-	$(LD) $(LDFLAGS) -o $(BUILD_NAME).elf -T ld_script.ld $(OFILES) $(LIB)
+	$(LD) $(LDFLAGS) -o $(ELF) -T ld_script.ld $(OFILES) $(LIB)
 
 %.o: %.s
 	$(AS) $(ASFLAGS) $< -o $@
@@ -62,7 +67,7 @@ fdiff:
 
 tail: $(ROM)
 	@# Create tail.bin using the tail location in current elf then compile again
-	$(PY) tools/gen_obj_tail.py $(BUILD_NAME).elf _$(ROM) bin/tail.bin 'tail'
+	$(PY) tools/gen_obj_tail.py $(ELF) _$(ROM) bin/tail.bin 'tail'
 	@echo "Updated tail.bin!"
 
 clean:
@@ -72,3 +77,8 @@ clean:
 	# rm -f *.gba
 	rm -f $(COMPRESSED_TEXT_ARCHIVES_DIR)/*.lz
 	rm -f $(COMPRESSED_TEXT_ARCHIVES_DIR)/*.bin
+
+syms: $(SYM)
+
+$(SYM): $(ELF)
+	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389]" | perl -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@

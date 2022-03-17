@@ -31,3 +31,4 @@ docs/structs/.memo export-ignore
 *.png binary diff=hex
 
 *.inc linguist-language=Unix Assembly
+.gitignore text eol=lf

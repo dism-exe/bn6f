@@ -31,6 +31,7 @@
 	.include "structs/BGScrollCallbackCounters.inc"
 	.include "structs/Palette20097a0.inc"
 	.include "structs/MapTilesState200be70.inc"
+	.include "structs/PanelData.inc"
 
 /*
 rough notes for now

@@ -1000,7 +1000,7 @@ sub_800BFC4:
 	mov r2, #0x8c
 	str r2, [r0]
 loc_800BFE6:
-	ldr r7, off_800C018 // =unk_2039C00 
+	ldr r7, off_800C018 // =ePanelData9 
 	mov r5, #1
 loc_800BFEA:
 	mov r4, #1
@@ -1028,7 +1028,7 @@ loc_800C004:
 locret_800C016:
 	pop {r4,r5,r7,pc}
 	.balign 4, 0
-off_800C018: .word unk_2039C00
+off_800C018: .word ePanelData9
 	thumb_func_end sub_800BFC4
 
 	thumb_local_start
