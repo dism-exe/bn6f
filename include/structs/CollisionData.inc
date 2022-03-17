@@ -1,5 +1,5 @@
-    .macro ObjectFlags1 field:req // type: enum ObjectFlags1
-        enum32 \field
+	.macro ObjectFlags1 field:req // type: enum ObjectFlags1
+		enum32 \field
 		struct_const OBJECT_FLAGS_GUARD,                  0x0000001
 		struct_const OBJECT_FLAGS_UNK_2,                  0x0000002
 		struct_const OBJECT_FLAGS_UNK_4,                  0x0000004
@@ -18,7 +18,7 @@
 		struct_const OBJECT_FLAGS_UNK_BIT_22_BIT,         22
 		struct_const OBJECT_FLAGS_AFFECTED_BY_ICE,        0x2000000
 		struct_const OBJECT_FLAGS_UNAFFECTED_BY_POISON,   0x8000000
-    .endm
+	.endm
 
 	.macro collision_data_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
     // type: struct CollisionData

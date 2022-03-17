@@ -19,15 +19,22 @@ import analyzer
 import functools
 import os
 import shutil
+import re
 
 syms = {}
 scanned_files = {}
+syms_by_value = None
 
 def set_syms_and_scanned_files(_syms, _scanned_files):
     global syms
     global scanned_files
+    global syms_by_value
     syms = _syms
     scanned_files = _scanned_files
+    syms_by_value = {sym.value: sym for label, sym in syms.items()}
+
+def get_sym_label_from_value(value):
+    return syms_by_value[value].name
 
 class FunctionState:
     __slots__ = ("regs", "_function_branches", "_uncond_branch", "_cond_branches", "found_labels", "_function")
@@ -219,6 +226,8 @@ def remove_function_specific_callbacks(function_value):
 # - sub_801AF44: force path which calls sub_801B9E6
 force_all_paths_functions = set((0x8019892, 0x801B9E6, 0x801AF44))  # object_createCollisionData, sub_801B9E6, sub_801AF44
 
+single_double_colon_regex = re.compile(r":{1,2}")
+
 def run_analyzer_common(src_file, funcstate, function_start_time):
     function_total_time = 0
     return_lr = funcstate.regs["lr"].data
@@ -242,7 +251,7 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
             #if funcstate.function.value == 0x80BE8AE: # sub_80BE8AE
             #    debug_print("cur src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
             if not line.startswith("\t"):
-                split_line = line.split(":", 1)
+                split_line = single_double_colon_regex.split(line, 1)
                 # if we're currently in an unconditional branch, don't read opcodes until we find the label
                 if funcstate.uncond_branch != "":
                     if funcstate.uncond_branch != split_line[0]:
@@ -353,7 +362,7 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
                         src_file.line_num = syms[funcstate.uncond_branch].line_num - 1
             else:
                 stripped_line = line.strip()
-                if stripped_line.startswith("thumb_func") or stripped_line.startswith(".align 1, 0"):
+                if stripped_line.startswith("thumb_func") or stripped_line.startswith(".align 1, 0") or stripped_line.startswith(".balign"):
                     continue                    
                 fileline_error("Unknown directive \"%s\"!" % stripped_line, fileline)
         else:
@@ -420,38 +429,38 @@ def set_template_functions():
         "PlaySoundEffect": (
             ReturnValue("r0", datatypes.UnknownDataType),
         ),
-        "sub_3007958": (
-            ReturnValue("r0", datatypes.RAMPointer),
+        get_sym_label_from_value(0x03007958): ( # _object_getPanelDataOffset
+            ReturnValue("r0", datatypes.PanelData),
             ReturnValue("r1", datatypes.RAMPointer), # side effect
-            ReturnValue("r3", datatypes.Primitive.new_byte)
-        ),
-        "object_getPanelDataOffset": (
-            ReturnValue("r0", datatypes.RAMPointer),
-            ReturnValue("r1", datatypes.RAMPointer), # side effect
-            ReturnValue("r2", datatypes.ROMPointer, syms["sub_3007958"]), # side effect
             ReturnValue("r3", datatypes.Primitive.new_byte) # side effect
         ),
-        "object_getPanelParameters": (
+        get_sym_label_from_value(0x0800c90a): ( # object_getPanelDataOffset
+            ReturnValue("r0", datatypes.PanelData),
+            ReturnValue("r1", datatypes.RAMPointer), # side effect
+            ReturnValue("r2", datatypes.ROMPointer, syms_by_value[0x03007958]),
+            ReturnValue("r3", datatypes.Primitive.new_byte) # side effect
+        ),
+        get_sym_label_from_value(0x0800c8f8): ( # object_getPanelParameters
             ReturnValue("r0", datatypes.Primitive.new_word),
             ReturnValue("r1", datatypes.RAMPointer), # side effect
-            ReturnValue("r2", datatypes.ROMPointer, syms["sub_3007958"]), # side effect
+            ReturnValue("r2", datatypes.ROMPointer, syms_by_value[0x3007958]), # side effect
             ReturnValue("r3", datatypes.Primitive.new_byte) # side effect
         ),
-        "sub_8013682": (
+        get_sym_label_from_value(0x08013682): (
             ReturnValue("r0", datatypes.RAMPointer),
             ReturnValue("r1", datatypes.Primitive.new_byte)
         ),
-        "sub_8013774": (
+        get_sym_label_from_value(0x8013774): (
             ReturnValue("r0", datatypes.Primitive.new_byte),
             ReturnValue("r1", datatypes.Primitive.new_byte)
         ),
-        "object_checkPanelParameters": (
+        get_sym_label_from_value(0x0800cc86): ( # object_checkPanelParameters
             ReturnValue("r0", datatypes.Primitive.new_byte),
             ReturnValue("r1", datatypes.RAMPointer), # side effect
-            ReturnValue("r2", datatypes.ROMPointer, syms["sub_3007958"]), # side effect
+            ReturnValue("r2", datatypes.ROMPointer, syms_by_value[0x3007958]), # side effect
             ReturnValue("r3", datatypes.Primitive.new_byte) # side effect
         ),
-        "sub_800E994": (
+        get_sym_label_from_value(0x800E994): (
             ReturnValue("r0", datatypes.Primitive.new_byte),
             ReturnValue("r1", datatypes.Primitive.new_byte), # side effect
         ),
@@ -480,7 +489,7 @@ def set_template_functions():
             ReturnValue("r2", datatypes.RAMPointer),
             ReturnValue("r3", datatypes.UnknownDataType)
         ),
-        "get_802D246": (
+        get_sym_label_from_value(0x0802d246): ( # GetBattleEffects
             ReturnValue("r0", datatypes.Primitive.new_word),
         ),
         "battle_isTimeStop": (
@@ -512,7 +521,7 @@ def set_template_functions():
         "sub_800E680": (
             ReturnValue("r0", datatypes.Primitive.new_byte),
             ReturnValue("r1", datatypes.RAMPointer), # side effect
-            ReturnValue("r2", datatypes.ROMPointer, syms["sub_3007958"]), # side effect
+            ReturnValue("r2", datatypes.ROMPointer, syms_by_value[0x3007958]), # side effect
             ReturnValue("r3", datatypes.Primitive.new_byte) # side effect
         ),
         "object_isValidPanel": (
@@ -528,7 +537,7 @@ def set_template_functions():
         "sub_80E7486": (
             ReturnValue("r0", datatypes.BattleObject),
         ),
-        "sub_8031A7A": (
+        get_sym_label_from_value(0x8031A7A): ( # checkCoordinateTrigger_8031a7a
             ReturnValue("r0", datatypes.Primitive.new_byte),
             ReturnValue("r1", datatypes.Primitive.new_byte),
             ReturnValue("r2", datatypes.Primitive.new_byte),
@@ -545,6 +554,16 @@ def set_template_functions():
         "sub_80305E4": (
         ),
     }
+
+    missing_functions = []
+
+    for template_function in analyzer.template_functions:
+        if template_function not in syms:
+            missing_functions.append(template_function)
+
+    if len(missing_functions) != 0:
+        debug_print(f"missing_functions: {', '.join(missing_functions)}")
+        raise RuntimeError("Missing template functions!")
 
 def check_stored_functions(opcode_params, funcstate, src_file, fileline):
     if opcode_params.startswith("nullsub"):
@@ -957,9 +976,9 @@ def run_function_main(function, dump_temp):
         function()
     except:
         analyzer_end_time = time.time()
-        for i in range(5):
-            print('\a')
-            time.sleep(0.4)
+        #for i in range(5):
+        #    print('\a')
+        #    time.sleep(0.4)
         print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, syms, scanned_files, dump_temp)
         print("%s:%s: Error!" % (analyze_source.global_fileline.filename, analyze_source.global_fileline.line_num))
         global_fileline_error("Error!")
@@ -1006,5 +1025,5 @@ def print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, s
 
     execution_time = time.time() - start_time
     post_output += "Full execution time: %s, Analyzer execution time: %s, Function time sum: %s, Full - Analyzer difference: %s, Full - Function difference: %s, Analyzer - Function difference: %s" % (execution_time, analyzer_execution_time, function_time_sum, execution_time - analyzer_execution_time, execution_time - function_time_sum, analyzer_execution_time - function_time_sum)
-    debug_print(post_output)
+    print(post_output)
     analyze_source.close_debug_file()

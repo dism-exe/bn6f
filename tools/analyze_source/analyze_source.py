@@ -53,22 +53,23 @@ class ScannedFilesAndSyms:
         self.syms = syms
 
 def global_fileline_error(error_msg):
-    raise RuntimeError("%s:%s: %s" % (analyze_source.global_fileline.filename, analyze_source.global_fileline.line_num + 1, error_msg))
+    raise RuntimeError("%s:%s [%s]: %s" % (analyze_source.global_fileline.filename, analyze_source.global_fileline.line_num + 1, opcodes.read_opcode_count, error_msg))
 
 def global_fileline_msg(fileline_msg):
     debug_print("%s:%s: %s" % (analyze_source.global_fileline.filename, analyze_source.global_fileline.line_num + 1, fileline_msg))
 
 def fileline_error(error_msg, fileline):
-    raise RuntimeError("%s:%s: %s" % (fileline.filename, fileline.line_num + 1, error_msg))
+    raise RuntimeError("%s:%s [%s]: %s" % (fileline.filename, fileline.line_num + 1, opcodes.read_opcode_count, error_msg))
 
 def fileline_msg(fileline_msg, fileline):
     debug_print("%s:%s: %s" % (fileline.filename, fileline.line_num + 1, fileline_msg))
 
 def debug_print(msg, override=False):
-    if analyze_source.debug_file is not None:
-        analyze_source.debug_file.write(msg + "\n")
-    else:
-        print(msg)
+    return
+    #if analyze_source.debug_file is not None:
+    #    analyze_source.debug_file.write(msg + "\n")
+    #else:
+    #    print(msg)
 
 import analyzer
 import datatypes
@@ -108,7 +109,7 @@ def read_source_and_syms():
             syms = readelf.make_and_read_syms()
         else:
             syms = readelf.read_syms()
-        input_files = ("rom.s", "iwram_code.s", "data.s")
+        input_files = ("rom.s", "iwram_code.s", "data.s", "ewram.s")
         for input_file in input_files:
             scanner.recursive_scan_includes(input_file, scanned_files, syms)
             if args.cache is not None:

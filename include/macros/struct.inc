@@ -79,97 +79,97 @@
 
 	.macro _add_struct_label index:req, label:req
 	.macro __struct_label_stack\()\index
-        .ifdef __defined_types
-        .purgem u0
-        .purgem u8
-        .purgem u16
-        .purgem u32
-        .purgem s8
-        .purgem s16
-        .purgem s32
-        .purgem ptr
-        .purgem enum8
-        .purgem enum16
-        .purgem enum32
-        .purgem flags8
-        .purgem flags16
-        .purgem flags32
-        .purgem u8_arr
-        .purgem bool
-        .purgem bool8
-        .endif
+		.ifdef __defined_types
+		.purgem u0
+		.purgem u8
+		.purgem u16
+		.purgem u32
+		.purgem s8
+		.purgem s16
+		.purgem s32
+		.purgem ptr
+		.purgem enum8
+		.purgem enum16
+		.purgem enum32
+		.purgem flags8
+		.purgem flags16
+		.purgem flags32
+		.purgem u8_arr
+		.purgem bool
+		.purgem bool8
+		.endif
 		.set __defined_types, 1
 
-        /* struct data macros */
-        .macro u0 field:req
-            struct_entry \label\()_\field
-        .endm
+		/* struct data macros */
+		.macro u0 field:req
+			struct_entry \label\()_\field
+		.endm
 
-        .macro u8 field:req
-            struct_entry \label\()_\field, 1
-        .endm
+		.macro u8 field:req
+			struct_entry \label\()_\field, 1
+		.endm
 
-        .macro u16 field:req
-            struct_entry \label\()_\field, 2
-        .endm
+		.macro u16 field:req
+			struct_entry \label\()_\field, 2
+		.endm
 
-        .macro u32 field:req
-            struct_entry \label\()_\field, 4
-        .endm
+		.macro u32 field:req
+			struct_entry \label\()_\field, 4
+		.endm
 
-        .macro s8 field:req
-            struct_entry \label\()_\field, 1
-        .endm
+		.macro s8 field:req
+			struct_entry \label\()_\field, 1
+		.endm
 
-        .macro s16 field:req
-            struct_entry \label\()_\field, 2
-        .endm
+		.macro s16 field:req
+			struct_entry \label\()_\field, 2
+		.endm
 
-        .macro s32 field:req
-            struct_entry \label\()_\field, 4
-        .endm
+		.macro s32 field:req
+			struct_entry \label\()_\field, 4
+		.endm
 
-        .macro ptr field:req
-            struct_entry \label\()_\field, 4
-        .endm
-        
-        .macro enum8 field:req
-            struct_entry \label\()_\field, 1
-        .endm
-        
-        .macro enum16 field:req
-            struct_entry \label\()_\field, 2
-        .endm
-        
-        .macro enum32 field:req
-            struct_entry \label\()_\field, 4
-        .endm
+		.macro ptr field:req
+			struct_entry \label\()_\field, 4
+		.endm
+		
+		.macro enum8 field:req
+			struct_entry \label\()_\field, 1
+		.endm
+		
+		.macro enum16 field:req
+			struct_entry \label\()_\field, 2
+		.endm
+		
+		.macro enum32 field:req
+			struct_entry \label\()_\field, 4
+		.endm
 
-        .macro flags8 field:req
-            struct_entry \label\()_\field, 1
-        .endm
-        
-        .macro flags16 field:req
-            struct_entry \label\()_\field, 2
-        .endm
-        
-        .macro flags32 field:req
-            struct_entry \label\()_\field, 4
-        .endm
+		.macro flags8 field:req
+			struct_entry \label\()_\field, 1
+		.endm
+		
+		.macro flags16 field:req
+			struct_entry \label\()_\field, 2
+		.endm
+		
+		.macro flags32 field:req
+			struct_entry \label\()_\field, 4
+		.endm
 
-        .macro u8_arr field:req, arr_size:req
-            struct_entry \label\()_\field, \arr_size
-        .endm
+		.macro u8_arr field:req, arr_size:req
+			struct_entry \label\()_\field, \arr_size
+		.endm
 
-        // for exclusively 0 or 1
-        .macro bool field:req
-            struct_entry \label\()_\field, 1
-        .endm
+		// for exclusively 0 or 1
+		.macro bool field:req
+			struct_entry \label\()_\field, 1
+		.endm
 
-        // 0 or !0
-        .macro bool8 field:req
-            struct_entry \label\()_\field, 1
-        .endm
+		// 0 or !0
+		.macro bool8 field:req
+			struct_entry \label\()_\field, 1
+		.endm
 
 	.endm
 	__struct_label_stack\()\index

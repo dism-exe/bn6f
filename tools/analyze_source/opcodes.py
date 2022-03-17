@@ -18,6 +18,7 @@ from datatypes import Size, DataType
 import analyzer
 import readelf
 from collections import namedtuple
+import opcodes
 
 MAX_UINT32 = 2**32 - 1
 
@@ -37,6 +38,8 @@ rd_deref_sp_imm_regex = re.compile(r"^(r[0-7]), *\[ *sp((?= *\])|, *(#[^\]]+)) *
 rlist_regex = re.compile(r"^({[^}]+})$")
 rb_excl_rlist_regex = re.compile(r"^(r[0-7])!, *({[^}]+})$")
 label_or_imm_regex = re.compile(r"^(.+)$")
+
+read_opcode_count = 0
 
 def set_syms_and_scanned_files(_syms, _scanned_files):
     global syms
@@ -121,7 +124,8 @@ def evaluate_data(data, fileline):
                             value |= sym.value
                 return datatypes.Primitive(Size.UNKNOWN, value).wrap()
             fileline_error("Could not evaluate undefined symbol \"%s\"!" % data, fileline)
-            
+
+        #debug_print(f"data: {data}, sym.type: {sym.type}, sym.section: {sym.section}")
         if sym.type == "F":
             # technically asm38.s routines are not in ROM
             # but they are read-only so they are functionally equivalent
@@ -145,7 +149,8 @@ def evaluate_sym_or_num_error_if_undefined(sym_or_num, fileline):
         fileline_error("Could not evaluate undefined symbol \"%s\"!" % sym_or_num, fileline)
     return sym_value
 
-plus_or_minus_regex = re.compile(r" *\+ *| *- *")
+plus_regex = re.compile(r" *\+ *")
+minus_regex = re.compile(r" *- *")
 bitwise_or_regex = re.compile(r" *\| *")
 
 def evaluate_sym_or_num(sym_or_num):
@@ -162,14 +167,19 @@ def evaluate_sym_or_num(sym_or_num):
             if sym_or_num[-1] == ")":
                 sym_or_num = sym_or_num[:-1]
         # allow simple + or - operations
-            split_sym_or_num = plus_or_minus_regex.split(sym_or_num)
+            split_sym_or_num = plus_regex.split(sym_or_num)
             if len(split_sym_or_num) != 2:
-                split_sym_or_num = bitwise_or_regex.split(sym_or_num)
+                split_sym_or_num = minus_regex.split(sym_or_num)
                 if len(split_sym_or_num) != 2:
-                    debug_print("Failed recursive plus, minus, or bitwise or sym split: %s" % split_sym_or_num)
-                    raise KeyError
-                return evaluate_sym_or_num(split_sym_or_num[0]) | evaluate_sym_or_num(split_sym_or_num[1])
-            return evaluate_sym_or_num(split_sym_or_num[0]) + evaluate_sym_or_num(split_sym_or_num[1])
+                    split_sym_or_num = bitwise_or_regex.split(sym_or_num)
+                    if len(split_sym_or_num) != 2:
+                        debug_print("Failed recursive plus, minus, or bitwise or sym split: %s" % split_sym_or_num)
+                        raise KeyError
+                    return evaluate_sym_or_num(split_sym_or_num[0]) | evaluate_sym_or_num(split_sym_or_num[1])
+                else:
+                    return evaluate_sym_or_num(split_sym_or_num[0]) - evaluate_sym_or_num(split_sym_or_num[1])
+            else:
+                return evaluate_sym_or_num(split_sym_or_num[0]) + evaluate_sym_or_num(split_sym_or_num[1])
 
 def order_datatypes(datatype1, datatype2):
     if datatype1.type < datatype2.type:
@@ -229,13 +239,17 @@ def do_double_arg_numeric_operation(registers, dest_reg, source_reg, callback, f
 def do_triple_arg_numeric_operation(registers, dest_reg, source_reg, operand_reg_or_imm, callback, fileline):
     source_datatype = registers[source_reg].data
 
+    #print(f"fileline.filename: {fileline.filename}, fileline.line_num: {fileline.line_num}")
+    #if fileline.line_num == 2384 and fileline.filename == "asm/asm00_0.s":
+    #    debug_print(f"r0: {registers['r0'].data.ref}, r1: {registers['r1'].data.ref}, r2: {registers['r2'].data.ref}, r3: {registers['r3'].data.ref}")
+
     if source_datatype.type == DataType.UNKNOWN:
         source_datatype.ref = datatypes.Primitive(Size.WORD)
     #elif source_datatype.type == DataType.PRIMITIVE:
     #    if source_datatype.ref.sym.name == "LCDControl" or source_datatype.ref.sym.name == "timer_2000000":
     #        fileline_msg("FakePointerWarning: Fake pointer \"%s\" being used in numeric operation!" % source_datatype.ref.sym.name)
     elif source_datatype.type == DataType.POINTER:
-        fileline_error("Tried performing numeric operation on pointer!", fileline)
+        fileline_error(f"Tried performing numeric operation on pointer! registers['r1']: {registers['r1'].data.ref}, source_reg: {source_reg}, dest_reg: {dest_reg}, operand_reg_or_imm: {operand_reg_or_imm}, source_datatype.ref.possible_syms: {[x.name for x in source_datatype.ref.possible_syms]}", fileline)
 
     immediate_value = evaluate_reg_or_imm_require_primitive(registers, operand_reg_or_imm, fileline)
 
@@ -421,6 +435,7 @@ def bx_opcode_function(opcode_params, funcstate, src_file, fileline):
 def ldr_label_opcode_function(opcode_params, funcstate, src_file, fileline):
     label_name = opcode_params[1]
     contents = parser.get_ldr_label_contents(label_name, src_file)
+    #debug_print(f"ldr_label_opcode_function contents: {contents}")
     dest_datatype = evaluate_data(contents, fileline)
     funcstate.regs[opcode_params[0]].set_new_reg(analyzer.RegisterInfo(dest_datatype, fileline))
     return True
@@ -1065,10 +1080,14 @@ def do_store_operation(funcstate, dest_reg, source_reg, operand_reg_or_imm, size
 def load_from_datatypes(source_datatype, operand_datatype, size, funcstate, fileline):
     datatype_weak, datatype_strong = order_datatypes(source_datatype, operand_datatype)
 
-    if funcstate.function.name == "chatbox_EA_flag":
-        r2_type_name = type(funcstate.regs["r2"].data.ref).__name__
-        debug_print("r2_type_name: %s" % r2_type_name)
-        
+    #if funcstate.function.name == "chatbox_EA_flag":
+    #    r2_type_name = type(funcstate.regs["r2"].data.ref).__name__
+    #    debug_print("r2_type_name: %s" % r2_type_name)
+
+    #if funcstate.function.name == "GetRNG2":
+    #    r2_type_name = type(funcstate.regs["r7"].data.ref).__name__
+    #    debug_print(f"r7_type_name: {r2_type_name}, datatype_weak.type: {datatype_weak.type}, datatype_strong.type: {datatype_strong.type}, datatype_strong.ref: {datatype_strong.ref}")
+
     if datatype_weak.type == DataType.UNKNOWN:
         if datatype_strong.type == DataType.UNKNOWN:
             return datatypes.new_unk_datatype_from_size(size)
@@ -1113,6 +1132,7 @@ def store_to_datatypes(dest_datatype, source_datatype, operand_datatype, size, f
 def add_datatypes(source_datatype, operand_datatype, fileline):
     datatype_weak, datatype_strong = order_datatypes(source_datatype, operand_datatype)
 
+    #print(f"add_datatypes {fileline.filename}:{fileline.line_num} datatype_weak.type: {datatype_weak.type}, datatype_strong.type: {datatype_strong.type}")
     if datatype_weak.type == DataType.UNKNOWN:
         if datatype_strong.type == DataType.UNKNOWN:
             return datatypes.UnknownDataType().wrap()
@@ -1167,6 +1187,10 @@ def subtract_datatypes(source_datatype, operand_datatype, fileline):
         fileline_error("Context information: pointer - pointer", fileline)
 
 def read_opcode(line, funcstate, src_file, fileline):
+    #debug_print(f"read_opcode {fileline.filename}:{fileline.line_num}, line: {line}")
+    global read_opcode_count
+    read_opcode_count += 1
+
     line = line.strip()
     opcode_parts = line.split(None, 1)
     try:

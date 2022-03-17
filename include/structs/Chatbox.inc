@@ -1,16 +1,16 @@
-    .macro TextScriptArchivePtr field:req // type: TextScriptArchive*
-        ptr \field
-    .endm
+	.macro TextScriptArchivePtr field:req // type: TextScriptArchive*
+		ptr \field
+	.endm
 
-    .macro CompTextPtr field:req // type: CompText*
-        ptr \field
-    .endm
+	.macro CompTextPtr field:req // type: CompText*
+		ptr \field
+	.endm
 
 	.macro chatbox_struct, label=oChatbox, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
-    // type: struct Chatbox
+	// type: struct Chatbox
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
-    bool8 Visible // loc=0x0
+	bool8 Visible // loc=0x0
 	u8 TextScriptIdx // loc=0x1
 	u8 CurrLine // loc=0x2
 	u8 Unk_03 // loc=0x3
@@ -32,7 +32,7 @@
 	u16 BoxYX // loc=0xC
 	endu
 	
-    u8 Unk_0E // loc=0xE
+	u8 Unk_0E // loc=0xE
 	// box gfx loaded from 0x00 to 0x08 at max
 	u8 BoxGfxLoadState_0F // loc=0xF
 	enum8 OpenState_10 // loc=0x10

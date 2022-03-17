@@ -2376,11 +2376,10 @@ SeedRNG2: // () -> void
 	thumb_func_start GetRNG2
 GetRNG2: // () -> int
 	push {r7,lr}
-
 	ldr r7, off_800159C // =eRngSeed20013F0
 	ldr r0, [r7]
-	ldr r1, rng_80015A0 // =0x873ca9e5@
-    lsl r2, r0, #1
+	ldr r1, rng_80015A0 // =0x873ca9e5
+	lsl r2, r0, #1
 	lsr r3, r0, #0x1f
 	add r0, r2, r3
 	add r0, #1

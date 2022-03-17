@@ -217,9 +217,11 @@ def check_and_parse_colon_label(line):
         return None
 
     return split_line[0]
-    
+
+single_double_colon_regex = re.compile(r":{1,2}")
+
 def consume_label(line):
-    split_line = line.split(":", 1)
+    split_line = single_double_colon_regex.split(line, 1)
     if len(split_line) > 1:
         return split_line[1]
     else:

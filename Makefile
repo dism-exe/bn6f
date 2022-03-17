@@ -47,7 +47,7 @@ LIB =
 all: $(ROM)
 	@$(SHA1SUM) -c $(BUILD_NAME).sha1
 
-$(ROM): $(ELF)
+$(ROM): %.elf
 	$(OBJCOPY) -O binary $(ELF) $(ROM)
 
 %.elf: $(OFILES)

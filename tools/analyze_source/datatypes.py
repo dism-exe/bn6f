@@ -243,6 +243,7 @@ class ROMPointer(Pointer):
             return Primitive(size).wrap()
 
         read_syms = []
+        debug_print(f"self.possible_syms: {self.possible_syms}")
         for possible_sym in self.possible_syms:
             if possible_sym.section == "*UND*":
                 return new_unk_datatype_from_size(size)
@@ -250,6 +251,7 @@ class ROMPointer(Pointer):
                 global_fileline_msg("BadReadWarning: Cannot read from a function! (function: %s)" % possible_sym.name)
                 return new_unk_datatype_from_size(size)
 
+            debug_print(f"possible_sym: {possible_sym.filename}")
             words = parser.try_parse_word_directives_from_sym(possible_sym)
             if len(words) == 0:
                 return new_unk_datatype_from_size(size)
@@ -272,7 +274,10 @@ class ROMPointer(Pointer):
                         if int(word, 0) != 0:
                             return new_unk_datatype_from_size(size)
                     except ValueError:
-                        global_fileline_error("Unknown .word parameter \"%s\" found!" % word)
+                        if "+" in word:
+                            global_fileline_msg(f"Ignoring complex .word parameter \"{word}\"!")
+                        else:
+                            global_fileline_error("Unknown .word parameter \"%s\" found!" % word)
 
         if len(read_syms) == 0:
             return new_unk_datatype_from_size(size)
@@ -1319,6 +1324,53 @@ class CollisionData(Struct):
     @property
     def unk_field_offset_ranges(self):
         return CollisionData._unk_field_offset_ranges
+
+class PanelData(Struct):
+    def __init__(self):
+        super().__init__()
+
+    def generate_basic_struct_fields(self):
+        return {
+            0x0: {Size.BYTE: StructField("_Visible", UnkPrimitiveMemory())},
+            0x1: {Size.BYTE: StructField("_Unk_01", UnkPrimitiveMemory())},
+            0x2: {Size.BYTE: StructField("_Type", UnkPrimitiveMemory())},
+            0x3: {Size.BYTE: StructField("_Alliance", UnkPrimitiveMemory())},
+            #0x4: {Size.BYTE: StructField("_Alliance", UnkPrimitiveMemory())},
+            #0x5: {Size.BYTE: StructField("_Flip", UnkPrimitiveMemory())},
+            0x6: {Size.BYTE: StructField("_Animation", UnkPrimitiveMemory())},
+            #0x7: {Size.BYTE: StructField("_StaminaDamageCounterDisabler", UnkPrimitiveMemory())},
+            #0x8: {Size.BYTE: StructField("_PoisonPanelTimer", UnkPrimitiveMemory())},
+            #0x9: {Size.BYTE: StructField("_HitEffect", UnkPrimitiveMemory())},
+            #0xa: {Size.BYTE: StructField("_PanelX", UnkPrimitiveMemory()),
+            #      Size.HWORD: StructField("_PanelXY", UnkPrimitiveMemory())},
+            #0xb: {Size.BYTE: StructField("_PanelY", UnkPrimitiveMemory())},
+            #0xc: {Size.BYTE: StructField("_Direction", UnkPrimitiveMemory())},
+            #0xd: {Size.BYTE: StructField("_CounterTimer", UnkPrimitiveMemory())},
+            #0xe: {Size.BYTE: StructField("_HitModifierBase", UnkPrimitiveMemory())},
+            #0xf: {Size.BYTE: StructField("_HitModifierFinal", UnkPrimitiveMemory())},
+            #0x10: {Size.BYTE: StructField("_StatusEffectBase", UnkPrimitiveMemory())},
+            #0x11: {Size.BYTE: StructField("_StatusEffectFinal", UnkPrimitiveMemory())},
+            #0x12: {Size.HWORD: StructField("_Bugs", UnkPrimitiveMemory())},
+            0x14: {Size.WORD: StructField("_Flags", UnkPrimitiveMemory())},
+            #0x18: {Size.BYTE: StructField("_SecondaryElementWeakness", UnkPrimitiveMemory())},
+            0x1c: {Size.WORD: StructField("_ReserverObjectPtr", AnonMemory(BattleObject))},
+        }
+
+    def get_prefix(self, offset):
+        return "oPanelData"
+
+    @property
+    def struct_name(self):
+        return "PanelData"
+
+    def on_nan_struct_offset(self, fileline, offset):
+        fileline_msg("Context information: PanelDataNanOffset", fileline)
+        return Struct.barebones_struct_field
+
+    _unk_field_offset_ranges = (0x0, 0x20)
+    @property
+    def unk_field_offset_ranges(self):
+        return PanelData._unk_field_offset_ranges
 
 class FunctionMemory(Memory):
     __slots__ = ("function",)

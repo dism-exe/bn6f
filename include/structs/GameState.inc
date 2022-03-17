@@ -1,13 +1,13 @@
-    .macro PETNavi field:req // type: enum PETNavi
-        enum8 \field
-        struct_const PET_NAVI_MEGAMAN,      0x00
-        struct_const PET_NAVI_SPOUTMAN,     0x01    
-        struct_const PET_NAVI_TOMAHAWKMAN,  0x02
-        struct_const PET_NAVI_TENGUMAN,     0x03
-        struct_const PET_NAVI_GROUNDMAN,    0x04
-        struct_const PET_NAVI_DUSTMAN,      0x05
-        // 0x06 resets back to spoutman
-    .endm
+	.macro PETNavi field:req // type: enum PETNavi
+		enum8 \field
+		struct_const PET_NAVI_MEGAMAN,      0x00
+		struct_const PET_NAVI_SPOUTMAN,     0x01    
+		struct_const PET_NAVI_TOMAHAWKMAN,  0x02
+		struct_const PET_NAVI_TENGUMAN,     0x03
+		struct_const PET_NAVI_GROUNDMAN,    0x04
+		struct_const PET_NAVI_DUSTMAN,      0x05
+		// 0x06 resets back to spoutman
+	.endm
 
 	.macro game_state_struct, label=oGameState, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
     // type: struct GameState
