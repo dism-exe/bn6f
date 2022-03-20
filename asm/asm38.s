@@ -159,7 +159,7 @@ sub_3005CF0:
 	bx lr
 	.balign 4, 0
 off_3005D04: .word dword_200A870
-	.word eCamera+0x50 // eCamera.unk_50
+	.word eLinkState // eLinkState
 jt_81D620C: .word iJumpTable3005D10
 iJumpTable3005D10: .word sub_803DE72+1
 	.word sub_813D5DC+1

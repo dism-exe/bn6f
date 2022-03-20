@@ -709,6 +709,7 @@ eCamera:: // 0x2009980
 	camera_struct eCamera
 eCameraEnd:: // 0x20099d0
 
+eLinkState:: // 0x20099d0
 	.space 64
 dword_2009A10:: // 0x2009a10
 	.space 8
