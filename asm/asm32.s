@@ -34712,7 +34712,7 @@ loc_8120E50:
 	b loc_8120E3A
 loc_8120E56:
 	mov r0, r7
-	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
+	bl GetNaviStatsIndexGivenCurPETNavi // (int idx) -> bool8
 	mov r1, r7
 	bl init_8013B4E // (bool a1, int a2) -> void
 	mov r7, r4

@@ -10023,7 +10023,7 @@ GetBattleNaviStatsHword_AllianceFromBattleObject:
 SetCurPETNaviStatsByte:
 	push {lr}
 	push {r1,r2}
-	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
+	bl GetNaviStatsIndexGivenCurPETNavi // (int idx) -> bool8
 	pop {r1,r2}
 	mov r3, #oNaviStats_Size
 	mul r0, r3
@@ -10039,7 +10039,7 @@ SetCurPETNaviStatsByte:
 GetCurPETNaviStatsByte:
 	push {lr}
 	push {r1}
-	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
+	bl GetNaviStatsIndexGivenCurPETNavi // (int idx) -> bool8
 	pop {r1}
 	mov r3, #oNaviStats_Size
 	mul r0, r3
@@ -10054,7 +10054,7 @@ GetCurPETNaviStatsByte:
 GetCurPetNaviStatsSignedByte:
 	push {lr}
 	push {r1}
-	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
+	bl GetNaviStatsIndexGivenCurPETNavi // (int idx) -> bool8
 	pop {r1}
 	mov r3, #oNaviStats_Size
 	mul r0, r3
@@ -10069,9 +10069,9 @@ GetCurPetNaviStatsSignedByte:
 // (int structSelectIdx, int structOffset, u16 val) -> void
 SetCurPETNaviStatsHword:
 	push {lr}
-	// Toolkit->NaviStatsPtr[oNaviStats_Size*GetNaviStatsIndexFromCurPETNavi(a1)+a2] = a3
+	// Toolkit->NaviStatsPtr[oNaviStats_Size*GetNaviStatsIndexGivenCurPETNavi(a1)+a2] = a3
 	push {r1,r2}
-	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
+	bl GetNaviStatsIndexGivenCurPETNavi // (int idx) -> bool8
 	pop {r1,r2}
 	mov r3, #oNaviStats_Size
 	mul r0, r3
@@ -10086,9 +10086,9 @@ SetCurPETNaviStatsHword:
 // (int structSelectIdx, int structOffset) -> u16
 GetCurPETNaviStatsHword:
 	push {lr}
-	// return Toolkit->S20047CC_Ptrs[100*GetNaviStatsIndexFromCurPETNavi(a1)+a2]
+	// return Toolkit->S20047CC_Ptrs[100*GetNaviStatsIndexGivenCurPETNavi(a1)+a2]
 	push {r1}
-	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
+	bl GetNaviStatsIndexGivenCurPETNavi // (int idx) -> bool8
 	pop {r1}
 	mov r3, #oNaviStats_Size
 	mul r0, r3
@@ -11184,23 +11184,23 @@ locret_8014016:
 	pop {pc}
 	thumb_func_end sub_8013FF8
 
-	thumb_func_start GetNaviStatsIndexFromCurPETNavi
+	thumb_func_start GetNaviStatsIndexGivenCurPETNavi
 // (int idx) -> bool8
-GetNaviStatsIndexFromCurPETNavi:
+GetNaviStatsIndexGivenCurPETNavi:
     // return CurPETNaviToNaviStatsIndexTable[a1]
 	// maps Megaman to use index 0, and all other navis
 	// to use index 1
 	ldr r1, =CurPETNaviToNaviStatsIndexTable
 	ldrb r0, [r1,r0]
 	mov pc, lr
-	thumb_func_end GetNaviStatsIndexFromCurPETNavi
+	thumb_func_end GetNaviStatsIndexGivenCurPETNavi
 
-	thumb_func_start sub_801401E
+	thumb_func_start GetNaviStatsAddrGivenCurPETNavi
 // (int a1) -> void*
-sub_801401E:
+GetNaviStatsAddrGivenCurPETNavi:
 	push {lr}
-	// return &Toolkit->S20047CC_Ptrs[100*GetNaviStatsIndexFromCurPETNavi(a1)]
-	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
+	// return &Toolkit->S20047CC_Ptrs[100*GetNaviStatsIndexGivenCurPETNavi(a1)]
+	bl GetNaviStatsIndexGivenCurPETNavi // (int idx) -> bool8
 	mov r1, #0x64 
 	mul r0, r1
 	mov r1, r10
@@ -11211,7 +11211,7 @@ sub_801401E:
 	.pool
 	.balign 4, 0
 CurPETNaviToNaviStatsIndexTable: .byte 0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1
-	thumb_func_end sub_801401E
+	thumb_func_end GetNaviStatsAddrGivenCurPETNavi
 
 	thumb_func_start sub_8014040
 sub_8014040:

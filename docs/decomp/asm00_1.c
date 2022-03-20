@@ -12367,7 +12367,7 @@ int sub_800B144()
             case 5:
             case 8:
                 initNaviStats_WithDefaultStatsMaybe_8013438(&byte_203CBE8[4], v2, v3, v4);
-                v14 = sub_801401E(0);
+                v14 = GetNaviStatsAddrGivenCurPETNavi(0);
                 word_203CC2A = *(v14 + 62);
                 *byte_203CC2C = (*(v14 + 64) >> 16 << 16) | (*(v14 + 64) >> 16);
                 break;
@@ -12379,7 +12379,7 @@ int sub_800B144()
                 break;
             default:
                 v5 = getPETNaviSelect();
-                v6 = sub_801401E(v5);
+                v6 = GetNaviStatsAddrGivenCurPETNavi(v5);
                 CopyWords(v6, &byte_203CBE8[4], 0x64u);
                 v7 = sub_802D246();
                 if ( v7 & 8 )

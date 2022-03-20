@@ -8351,7 +8351,7 @@ int __fastcall SelectS20047CCStruct8014018(int a1)
 
 
 // 0x801401e
-int __fastcall sub_801401E(int a1)
+int __fastcall GetNaviStatsAddrGivenCurPETNavi(int a1)
 {
     int v1; // r10
 

@@ -8551,7 +8551,7 @@ loc_8134A16:
 	b loc_8134A28
 loc_8134A20:
 	ldrb r0, [r5,#0x14]
-	bl sub_801401E
+	bl GetNaviStatsAddrGivenCurPETNavi
 	ldrb r1, [r0,#9]
 loc_8134A28:
 	cmp r1, r4
@@ -12893,7 +12893,7 @@ sub_8136C24:
 	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	str r0, [sp,#0x44]
 	mov r0, #0
-	bl GetNaviStatsIndexFromCurPETNavi // (int idx) -> bool8
+	bl GetNaviStatsIndexGivenCurPETNavi // (int idx) -> bool8
 	mov r1, #0
 	bl init_8013B4E // (bool a1, int a2) -> void
 	mov r0, #0

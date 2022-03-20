@@ -5464,7 +5464,7 @@ signed int sub_81349E8()
             v1 = 1;
         sub_81355D8();
         if ( v4 )
-            v5 = *(sub_801401E(*(v0 + 20)) + 9);
+            v5 = *(GetNaviStatsAddrGivenCurPETNavi(*(v0 + 20)) + 9);
         else
             v5 = 30;
         if ( v5 >= v3 )

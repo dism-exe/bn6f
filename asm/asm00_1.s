@@ -16070,7 +16070,7 @@ sub_800B144:
 	cmp r0, #9
 	beq loc_800B1E6
 	bl GetCurPETNavi // () -> u8
-	bl sub_801401E
+	bl GetNaviStatsAddrGivenCurPETNavi
 	mov r1, #0xc
 	add r1, r1, r4
 	mov r6, r1
@@ -16146,7 +16146,7 @@ loc_800B220:
 	add r0, r0, r4
 	bl initNaviStats_WithDefaultStatsMaybe_8013438 // (void *struct) -> void
 	mov r0, #0
-	bl sub_801401E
+	bl GetNaviStatsAddrGivenCurPETNavi
 	mov r1, #0xc
 	add r1, r1, r4
 	ldrh r2, [r0,#0x3e]
