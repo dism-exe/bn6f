@@ -13134,11 +13134,11 @@ signed int sub_803E978()
                 return v0;
             if ( v2 == 1 )
             {
-                sub_8149644();
+                rfu_REQ_stopMode();
                 byte_200B1A2 = 1;
                 return 0;
             }
-            sub_8149644();
+            rfu_REQ_stopMode();
         }
         notZero_eByte200AD04();
         if ( !v1 || byte_200B1A1 )

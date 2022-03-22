@@ -1818,8 +1818,8 @@ sub_8130F1C:
 	bne loc_8130F36
 	mov r0, #0xc
 	strb r0, [r5,#0xc]
-	bl sub_8149644
-	bl sub_8149568
+	bl rfu_REQ_stopMode
+	bl rfu_waitREQComplete
 	b locret_8130F76
 loc_8130F36:
 	ldrb r1, [r5,#0x1b]
@@ -1859,8 +1859,8 @@ sub_8130F78:
 	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq loc_8130F90
-	bl sub_8149644
-	bl sub_8149568
+	bl rfu_REQ_stopMode
+	bl rfu_waitREQComplete
 loc_8130F90:
 	bl chatbox_8040818
 	bl sub_8129248

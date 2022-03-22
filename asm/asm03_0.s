@@ -18216,7 +18216,7 @@ loc_802F776:
 	bl reqBBS_init_8004DF0
 	bl sub_8004D48
 	bl sub_81440D8 // static () -> void
-	bl sub_8149644
+	bl rfu_REQ_stopMode
 	ldrb r0, [r5,#2]
 	tst r0, r0
 	beq locret_802F7E0
@@ -18231,7 +18231,7 @@ loc_802F79A:
 	movflag EVENT_1704
 	bl SetEventFlagFromImmediate
 	bl sub_81440D8 // static () -> void
-	bl sub_8149644
+	bl rfu_REQ_stopMode
 	b locret_802F7E0
 loc_802F7B6:
 	mov r0, #0

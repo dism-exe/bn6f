@@ -1169,8 +1169,8 @@ LABEL_8:
     else
     {
         *(v0 + 12) = 12;
-        sub_8149644();
-        result = sub_8149568();
+        rfu_REQ_stopMode();
+        result = rfu_waitREQComplete();
     }
     return result;
 }
@@ -1193,8 +1193,8 @@ int sub_812CEA4()
         v3 = eStruct200BC30_getJumpOffset00();
         if ( v3 )
         {
-            sub_8149644();
-            v3 = sub_8149568();
+            rfu_REQ_stopMode();
+            v3 = rfu_waitREQComplete();
         }
         sub_8129248(v3, v4, v5, v6);
         sub_812B530();

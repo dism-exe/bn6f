@@ -13109,7 +13109,7 @@ int sub_802F756()
             sub_8004D48();
             SetEventFlagFromImmediate(23, 4);
             sub_81440D8();
-            result = sub_8149644();
+            result = rfu_REQ_stopMode();
         }
         else
         {
@@ -13129,7 +13129,7 @@ int sub_802F756()
         reqBBS_init_8004DF0();
         sub_8004D48();
         sub_81440D8();
-        sub_8149644();
+        rfu_REQ_stopMode();
         result = *(v0 + 2);
         if ( *(v0 + 2) )
             result = SetEventFlagFromImmediate(23, 4);

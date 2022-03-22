@@ -1243,8 +1243,8 @@ int sub_8130F1C()
     if ( eStruct200BC30_getRef()[14] == 2 )
     {
         *(v0 + 12) = 12;
-        sub_8149644();
-        result = sub_8149568();
+        rfu_REQ_stopMode();
+        result = rfu_waitREQComplete();
     }
     else if ( *(v0 + 27) & 2 || (chatbox_mask_eFlags2009F38(128), v2) || (result = chatbox_check_eFlags2009F38(8), !v2) )
     {
@@ -1276,8 +1276,8 @@ int sub_8130F78()
     {
         if ( eStruct200BC30_getJumpOffset00() )
         {
-            sub_8149644();
-            sub_8149568();
+            rfu_REQ_stopMode();
+            rfu_waitREQComplete();
         }
         v3 = chatbox_8040818();
         sub_8129248(v3, v4, v5, v6);

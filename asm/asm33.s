@@ -11278,8 +11278,8 @@ sub_812956C:
 	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq locret_8129594
-	bl sub_8149644
-	bl sub_8149568
+	bl rfu_REQ_stopMode
+	bl rfu_waitREQComplete
 locret_8129594:
 	pop {pc}
 	.balign 4, 0x00
@@ -14263,8 +14263,8 @@ sub_812AC80:
 	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq loc_812ACA6
-	bl sub_8149644
-	bl sub_8149568
+	bl rfu_REQ_stopMode
+	bl rfu_waitREQComplete
 	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
 	cmp r0, #2
@@ -14534,8 +14534,8 @@ loc_812AE96:
 	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq locret_812AEBE
-	bl sub_8149644
-	bl sub_8149568
+	bl rfu_REQ_stopMode
+	bl rfu_waitREQComplete
 locret_812AEBE:
 	pop {pc}
 	.balign 4, 0
@@ -15534,8 +15534,8 @@ sub_812B708:
 	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq loc_812B71A
-	bl sub_8149644
-	bl sub_8149568
+	bl rfu_REQ_stopMode
+	bl rfu_waitREQComplete
 loc_812B71A:
 	ldrb r4, [r5,#0x1b]
 	bl sub_8144240
@@ -16367,8 +16367,8 @@ sub_812BD60:
 	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq locret_812BDBC
-	bl sub_8149644
-	bl sub_8149568
+	bl rfu_REQ_stopMode
+	bl rfu_waitREQComplete
 	b locret_812BDBC
 loc_812BD96:
 	bl eStruct200BC30_getJumpOffset00
@@ -16381,8 +16381,8 @@ loc_812BD96:
 	mov r0, #0xc
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
-	bl sub_8149644
-	bl sub_8149568
+	bl rfu_REQ_stopMode
+	bl rfu_waitREQComplete
 	b locret_812BDBC
 loc_812BDB8:
 	bl sub_8132614
@@ -16519,8 +16519,8 @@ sub_812BF10:
 	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq locret_812BF68
-	bl sub_8149644
-	bl sub_8149568
+	bl rfu_REQ_stopMode
+	bl rfu_waitREQComplete
 	b locret_812BF68
 loc_812BF42:
 	bl eStruct200BC30_getJumpOffset00
@@ -16533,8 +16533,8 @@ loc_812BF42:
 	mov r0, #0xc
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
-	bl sub_8149644
-	bl sub_8149568
+	bl rfu_REQ_stopMode
+	bl rfu_waitREQComplete
 	b locret_812BF68
 loc_812BF64:
 	bl sub_8132614

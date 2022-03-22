@@ -10614,10 +10614,10 @@ sub_803E978:
 	beq loc_803EA0A
 	cmp r0, #1
 	beq loc_803E99C
-	bl sub_8149644
+	bl rfu_REQ_stopMode
 	b loc_803E9A8
 loc_803E99C:
-	bl sub_8149644
+	bl rfu_REQ_stopMode
 	mov r0, #1
 	strb r0, [r5,#0x2] // (byte_200B1A2 - 0x200b1a0)
 	mov r6, #0

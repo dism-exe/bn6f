@@ -6778,8 +6778,8 @@ int sub_812956C()
         result = eStruct200BC30_getJumpOffset00();
         if ( result )
         {
-            sub_8149644();
-            result = sub_8149568();
+            rfu_REQ_stopMode();
+            result = rfu_waitREQComplete();
         }
     }
     return result;
@@ -9231,8 +9231,8 @@ int sub_812AC80()
         v1 = 36;
         if ( eStruct200BC30_getJumpOffset00() )
         {
-            sub_8149644();
-            sub_8149568();
+            rfu_REQ_stopMode();
+            rfu_waitREQComplete();
             if ( eStruct200BC30_getRef()[14] == 2 )
                 v1 = 48;
         }
@@ -10057,8 +10057,8 @@ void __noreturn sub_812B708()
 
     if ( eStruct200BC30_getJumpOffset00() )
     {
-        sub_8149644();
-        sub_8149568();
+        rfu_REQ_stopMode();
+        rfu_waitREQComplete();
     }
     v1 = v0[27];
     v2 = sub_8144240();
@@ -10622,8 +10622,8 @@ void sub_812BD60()
                 v0[2] = 24;
                 v0[3] = 0;
                 engine_setScreeneffect(12, 16);
-                sub_8149644();
-                sub_8149568();
+                rfu_REQ_stopMode();
+                rfu_waitREQComplete();
             }
             else
             {
@@ -10637,8 +10637,8 @@ void sub_812BD60()
             engine_setScreeneffect(12, 16);
             if ( eStruct200BC30_getJumpOffset00() )
             {
-                sub_8149644();
-                sub_8149568();
+                rfu_REQ_stopMode();
+                rfu_waitREQComplete();
             }
         }
     }
@@ -10743,8 +10743,8 @@ void sub_812BF10()
                 v0[2] = 24;
                 v0[3] = 0;
                 engine_setScreeneffect(12, 16);
-                sub_8149644();
-                sub_8149568();
+                rfu_REQ_stopMode();
+                rfu_waitREQComplete();
             }
             else
             {
@@ -10758,8 +10758,8 @@ void sub_812BF10()
             engine_setScreeneffect(12, 16);
             if ( eStruct200BC30_getJumpOffset00() )
             {
-                sub_8149644();
-                sub_8149568();
+                rfu_REQ_stopMode();
+                rfu_waitREQComplete();
             }
         }
     }

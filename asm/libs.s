@@ -1738,9 +1738,9 @@ sub_8144DF0:
 	str r5, [r4,#0x40] // (dword_200FE40 - 0x200fe00)
 	str r6, [r4,#0x44] // (dword_200FE44 - 0x200fe00)
 	ldr r0, off_8144E30 // =sub_8145D54+1 
-	bl sub_8149464
+	bl rfu_setMSCCallback
 	ldr r0, off_8144E34 // =sub_8145658+1 
-	bl sub_8149470
+	bl rfu_setREQCallback
 	mov r0, #0
 	b loc_8144E3A
 	.balign 4, 0
@@ -2551,7 +2551,7 @@ loc_814541A:
 	bne loc_8145424
 	b loc_81455A4
 loc_8145424:
-	bl sub_8149568
+	bl rfu_waitREQComplete
 	mov r0, #1
 	strb r0, [r4,#0xe] // (byte_200FE0E - 0x200fe00)
 	ldrb r0, [r4,#0x4] // (byte_200FE04 - 0x200fe00)
@@ -2709,9 +2709,9 @@ loc_8145590:
 	bl rfu_REQ_changeMasterSlave
 	b def_814543E
 loc_8145596:
-	bl sub_8149644
+	bl rfu_REQ_stopMode
 def_814543E:
-	bl sub_8149568
+	bl rfu_waitREQComplete
 	ldr r1, off_81455E0 // =eStruct200FE00 
 	mov r0, #0
 	strb r0, [r1,#0xe] // (byte_200FE0E - 0x200fe00)
@@ -3025,7 +3025,7 @@ loc_8145824:
 	cmp r0, #4
 	bne loc_814584A
 	bl rfu_REQ_endSearchParent
-	bl sub_8149568
+	bl rfu_waitREQComplete
 	mov r0, #9
 	strb r0, [r4,#0x4] // (byte_200FE04 - 0x200fe00)
 	mov r0, #1
@@ -3429,10 +3429,10 @@ loc_8145B3C:
 	cmp r3, #0x27 
 	bne loc_8145B8A
 loc_8145B54:
-	bl sub_814957C
-	bl sub_8149568
+	bl rfu_REQ_RFUStatus
+	bl rfu_waitREQComplete
 	mov r0, sp
-	bl sub_8149590
+	bl rfu_getRFUStatus
 	mov r0, sp
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -3442,7 +3442,7 @@ loc_8145B54:
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne loc_8145B8A
-	bl sub_8149454
+	bl rfu_getSTWIRecvBuffer
 	ldr r1, [r4]
 	ldrb r1, [r1,#2]
 	strb r1, [r0,#4]
@@ -3480,7 +3480,7 @@ loc_8145BB2:
 	beq loc_8145BB8
 	b loc_8145CE6
 loc_8145BB8:
-	bl sub_8149454
+	bl rfu_getSTWIRecvBuffer
 	ldr r4, off_8145C68 // =eStruct200FE00 
 	ldrb r0, [r0,#8]
 	strh r0, [r4,#0x14] // (word_200FE14 - 0x200fe00)
@@ -3651,7 +3651,7 @@ loc_8145CE6:
 	mov r0, #0xf
 	strb r0, [r1,#2]
 	bl sub_81461D8
-	bl sub_8149568
+	bl rfu_waitREQComplete
 	b loc_8145D48
 off_8145D10: .word eStruct200FE00
 off_8145D14: .word dword_2010CC0
@@ -3718,7 +3718,7 @@ off_8145D88: .word eStruct200FE00
 off_8145D8C: .word dword_2010CC0
 loc_8145D90:
 	mov r0, sp
-	bl sub_81493F8
+	bl rfu_UNI_PARENT_getDRAC_ACK
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	bne loc_8145DA8
@@ -3735,7 +3735,7 @@ loc_8145DA8:
 	beq loc_8145DC4
 	mov r0, r6
 	bl sub_814DA64
-	bl sub_8149568
+	bl rfu_waitREQComplete
 	ldrb r0, [r4,#0x2] // (byte_200FE02 - 0x200fe00)
 	cmp r0, #2
 	bne loc_8145DC4
@@ -4300,7 +4300,7 @@ sub_81461D8:
 	mov r1, #1
 	strb r1, [r4,#0xe] // (byte_200FE0E - 0x200fe00)
 	bl rfu_REQ_disconnect
-	bl sub_8149568
+	bl rfu_waitREQComplete
 	strb r5, [r4,#0xe] // (byte_200FE0E - 0x200fe00)
 	pop {r4,r5}
 	pop {r0}
@@ -4565,7 +4565,7 @@ sub_81463D0:
 	ldr r1, off_81463E0 // =eStruct200FE00 
 	str r0, [r1,#0x44] // (dword_200FE44 - 0x200fe00)
 	ldr r0, off_81463E4 // =sub_8145D54+1 
-	bl sub_8149464
+	bl rfu_setMSCCallback
 	pop {r0}
 	bx r0
 	.balign 4, 0
@@ -4817,13 +4817,13 @@ sub_81465BC:
 	ldr r4, off_81465F0 // =off_3000E8C 
 	mov r2, r4
 	mov r3, #1
-	bl sub_8149220
+	bl rfu_initializeAPI
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	bne loc_81465F4
 	sub r1, r4, #4
 	mov r0, #3
-	bl sub_8149440
+	bl rfu_setTimerInterrupt
 	bl sub_813D8C4
 	mov r0, #4
 	bl sub_803DE88
@@ -6155,7 +6155,7 @@ loc_8146FB0:
 	cmp r0, #0
 	beq loc_8146FD0
 	bl rfu_REQ_disconnect
-	bl sub_8149568
+	bl rfu_waitREQComplete
 	mov r0, #0
 	strb r0, [r4]
 loc_8146FD0:
@@ -6897,7 +6897,7 @@ loc_81475DA:
 	cmp r0, #0
 	beq loc_81475FC
 	bl rfu_REQ_disconnect
-	bl sub_8149568
+	bl rfu_waitREQComplete
 	mov r0, #0
 	strb r0, [r4]
 loc_81475FC:
@@ -7743,7 +7743,7 @@ loc_8147D88:
 	ldrb r0, [r0,#3]
 	orr r0, r1
 	bl rfu_REQ_disconnect
-	bl sub_8149568
+	bl rfu_waitREQComplete
 	b def_8147C6A
 off_8147DA4: .word eStruct200FE00
 off_8147DA8: .word dword_2010CC0
@@ -8615,7 +8615,7 @@ loc_81484E8:
 	ldrb r0, [r0,#3]
 	orr r0, r1
 	bl rfu_REQ_disconnect
-	bl sub_8149568
+	bl rfu_waitREQComplete
 	b def_814825A
 off_8148504: .word eStruct200FE00
 off_8148508: .word dword_2010CC0
@@ -9106,7 +9106,7 @@ off_8148910: .word byte_2010430
 off_8148914: .word byte_2010328
 off_8148918: .word byte_20101E0
 loc_814891C:
-	bl sub_81493E4
+	bl rfu_REQ_PARENT_resumeRetransmitAndChange
 loc_8148920:
 	ldr r0, off_8148938 // =byte_200BC50 
 	ldrh r1, [r0,#0x8] // (word_200BC58 - 0x200bc50)
@@ -10115,7 +10115,7 @@ off_814921C: .word word_2010428
 	thumb_func_end sub_8149150
 
 	thumb_local_start
-sub_8149220:
+rfu_initializeAPI:
 	push {r4-r7,lr}
 	mov r4, r0
 	mov r12, r2
@@ -10208,7 +10208,7 @@ loc_8149294:
 	mov r1, r12
 	mov r2, r7
 	bl STWI_init_all
-	bl sub_814935C
+	bl rfu_STC_clearAPIVariables
 	mov r5, #0
 	ldr r3, off_8149348 // =dword_2010CB0 
 	mov r2, #0
@@ -10274,10 +10274,10 @@ off_814934C: .word off_2010CA0
 off_8149350: .word rfu_STC_fastCopy+1
 off_8149354: .word rfu_REQ_changeMasterSlave+1
 dword_8149358: .word 0xFFFF
-	thumb_func_end sub_8149220
+	thumb_func_end rfu_initializeAPI
 
 	thumb_local_start
-sub_814935C:
+rfu_STC_clearAPIVariables:
 	push {r4-r7,lr}
 	sub sp, sp, #4
 	ldr r1, off_81493D0 // =InterruptMasterEnableRegister 
@@ -10340,10 +10340,10 @@ off_81493D4: .word dword_2010CC4
 dword_81493D8: .word 0x1000014
 off_81493DC: .word dword_2010CC0
 dword_81493E0: .word 0x100005A
-	thumb_func_end sub_814935C
+	thumb_func_end rfu_STC_clearAPIVariables
 
 	thumb_local_start
-sub_81493E4:
+rfu_REQ_PARENT_resumeRetransmitAndChange:
 	push {lr}
 	ldr r0, off_81493F4 // =rfu_STC_REQ_callback+1 
 	bl STWI_set_Callback_M
@@ -10352,10 +10352,10 @@ sub_81493E4:
 	bx r0
 	.balign 4, 0
 off_81493F4: .word rfu_STC_REQ_callback+1
-	thumb_func_end sub_81493E4
+	thumb_func_end rfu_REQ_PARENT_resumeRetransmitAndChange
 
 	thumb_local_start
-sub_81493F8:
+rfu_UNI_PARENT_getDRAC_ACK:
 	push {r4,r5,lr}
 	mov r4, r0
 	mov r0, #0
@@ -10371,7 +10371,7 @@ sub_81493F8:
 	.balign 4, 0
 off_8149410: .word dword_2010CC0
 loc_8149414:
-	bl sub_8149454
+	bl rfu_getSTWIRecvBuffer
 	mov r1, r0
 	ldrb r0, [r1]
 	cmp r0, #0x28 
@@ -10397,10 +10397,10 @@ loc_814943A:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
-	thumb_func_end sub_81493F8
+	thumb_func_end rfu_UNI_PARENT_getDRAC_ACK
 
 	thumb_local_start
-sub_8149440:
+rfu_setTimerInterrupt:
 	push {lr}
 	mov r2, r0
 	mov r0, r1
@@ -10410,10 +10410,10 @@ sub_8149440:
 	bl STWI_init_timer
 	pop {r0}
 	bx r0
-	thumb_func_end sub_8149440
+	thumb_func_end rfu_setTimerInterrupt
 
 	thumb_local_start
-sub_8149454:
+rfu_getSTWIRecvBuffer:
 	ldr r0, off_8149460 // =dword_2010CC8 
 	ldr r0, [r0]
 	add r0, #0xdc
@@ -10421,19 +10421,19 @@ sub_8149454:
 	bx lr
 	.byte 0, 0
 off_8149460: .word dword_2010CC8
-	thumb_func_end sub_8149454
+	thumb_func_end rfu_getSTWIRecvBuffer
 
 	thumb_local_start
-sub_8149464:
+rfu_setMSCCallback:
 	push {lr}
 	bl STWI_set_Callback_S
 	pop {r0}
 	bx r0
 	.byte 0, 0
-	thumb_func_end sub_8149464
+	thumb_func_end rfu_setMSCCallback
 
 	thumb_local_start
-sub_8149470:
+rfu_setREQCallback:
 	push {lr}
 	mov r1, r0
 	ldr r0, off_8149488 // =dword_2010CC8 
@@ -10442,15 +10442,15 @@ sub_8149470:
 	neg r0, r1
 	orr r0, r1
 	lsr r0, r0, #0x1f
-	bl sub_814948C
+	bl rfu_enableREQCallback
 	pop {r0}
 	bx r0
 	.balign 4, 0
 off_8149488: .word dword_2010CC8
-	thumb_func_end sub_8149470
+	thumb_func_end rfu_setREQCallback
 
 	thumb_local_start
-sub_814948C:
+rfu_enableREQCallback:
 	push {lr}
 	lsl r0, r0, #0x18
 	cmp r0, #0
@@ -10474,7 +10474,7 @@ loc_81494AE:
 	pop {r0}
 	bx r0
 off_81494B4: .word dword_2010CC4
-	thumb_func_end sub_814948C
+	thumb_func_end rfu_enableREQCallback
 
 	thumb_local_start
 rfu_STC_REQ_callback:
@@ -10483,7 +10483,7 @@ rfu_STC_REQ_callback:
 	lsr r5, r0, #0x18
 	lsl r1, r1, #0x10
 	lsr r4, r1, #0x10
-	ldr r0, off_81494EC // =sub_81494F8+1 
+	ldr r0, off_81494EC // =rfu_CB_defaultCallback+1 
 	bl STWI_set_Callback_M
 	ldr r0, off_81494F0 // =dword_2010CC4 
 	ldr r0, [r0]
@@ -10504,13 +10504,13 @@ loc_81494E6:
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_81494EC: .word sub_81494F8+1
+off_81494EC: .word rfu_CB_defaultCallback+1
 off_81494F0: .word dword_2010CC4
 off_81494F4: .word dword_2010CC8
 	thumb_func_end rfu_STC_REQ_callback
 
 	thumb_local_start
-sub_81494F8:
+rfu_CB_defaultCallback:
 	push {r4,r5,lr}
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -10566,10 +10566,10 @@ loc_8149554:
 off_814955C: .word dword_2010CC4
 off_8149560: .word dword_2010CC8
 off_8149564: .word dword_2010CC0
-	thumb_func_end sub_81494F8
+	thumb_func_end rfu_CB_defaultCallback
 
-	thumb_func_start sub_8149568
-sub_8149568:
+	thumb_func_start rfu_waitREQComplete
+rfu_waitREQComplete:
 	push {lr}
 	bl STWI_poll_CommandEnd
 	ldr r0, off_8149578 // =dword_2010CC4 
@@ -10579,10 +10579,10 @@ sub_8149568:
 	bx r1
 	.balign 4, 0
 off_8149578: .word dword_2010CC4
-	thumb_func_end sub_8149568
+	thumb_func_end rfu_waitREQComplete
 
 	thumb_local_start
-sub_814957C:
+rfu_REQ_RFUStatus:
 	push {lr}
 	ldr r0, off_814958C // =rfu_STC_REQ_callback+1 
 	bl STWI_set_Callback_M
@@ -10591,10 +10591,10 @@ sub_814957C:
 	bx r0
 	.balign 4, 0
 off_814958C: .word rfu_STC_REQ_callback+1
-	thumb_func_end sub_814957C
+	thumb_func_end rfu_REQ_RFUStatus
 
 	thumb_local_start
-sub_8149590:
+rfu_getRFUStatus:
 	push {r4,r5,lr}
 	mov r4, r0
 	ldr r5, off_81495A8 // =dword_2010CC8 
@@ -10627,10 +10627,10 @@ loc_81495C6:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
-	thumb_func_end sub_8149590
+	thumb_func_end rfu_getRFUStatus
 
 	thumb_local_start
-sub_81495CC:
+rfu_MBOOT_CHILD_inheritanceLinkStatus:
 	push {lr}
 	ldr r2, off_81495D4 // =byte_81C03D8 
 	ldr r3, off_81495D8 // =byte_30000F0 
@@ -10691,10 +10691,10 @@ loc_814963E:
 	pop {r1}
 	bx r1
 	.balign 4, 0x00
-	thumb_func_end sub_81495CC
+	thumb_func_end rfu_MBOOT_CHILD_inheritanceLinkStatus
 
-	thumb_func_start sub_8149644
-sub_8149644:
+	thumb_func_start rfu_REQ_stopMode
+rfu_REQ_stopMode:
 	push {lr}
 	ldr r0, off_8149664 // =InterruptMasterEnableRegister 
 	ldrh r0, [r0]
@@ -10714,7 +10714,7 @@ off_8149664: .word InterruptMasterEnableRegister
 off_8149668: .word dword_2010CCC
 loc_814966C:
 	bl AgbRFU_SoftReset
-	bl sub_814935C
+	bl rfu_STC_clearAPIVariables
 	mov r0, #8
 	bl AgbRFU_checkID
 	ldr r1, dword_81496BC // =0x8001 
@@ -10769,7 +10769,7 @@ loc_81496E2:
 	bx r0
 	.balign 4, 0x00
 off_81496E8: .word SIOControlRegister
-	thumb_func_end sub_8149644
+	thumb_func_end rfu_REQ_stopMode
 
 	thumb_local_start
 rfu_CB_stopMode:
@@ -10811,7 +10811,7 @@ rfu_REQBN_softReset_and_checkID:
 off_8149728: .word InterruptMasterEnableRegister
 loc_814972C:
 	bl AgbRFU_SoftReset
-	bl sub_814935C
+	bl rfu_STC_clearAPIVariables
 	mov r0, #0x1e
 	bl AgbRFU_checkID
 	mov r2, r0
@@ -10852,7 +10852,7 @@ rfu_CB_reset:
 	mov r4, r1
 	cmp r4, #0
 	bne loc_814977C
-	bl sub_814935C
+	bl rfu_STC_clearAPIVariables
 loc_814977C:
 	mov r0, r5
 	mov r1, r4
@@ -11078,7 +11078,7 @@ off_8149918: .word dword_2010CC0
 	thumb_local_start
 rfu_REQ_startSearchChild:
 	push {lr}
-	ldr r0, off_814994C // =sub_81494F8+1 
+	ldr r0, off_814994C // =rfu_CB_defaultCallback+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_SystemStatusREQ
 	bl STWI_poll_CommandEnd
@@ -11097,7 +11097,7 @@ rfu_REQ_startSearchChild:
 	bl rfu_STC_clearLinkStatus
 	b loc_814995A
 	.balign 4, 0
-off_814994C: .word sub_81494F8+1
+off_814994C: .word rfu_CB_defaultCallback+1
 off_8149950: .word dword_2010CC8
 loc_8149954:
 	mov r0, #0x19
@@ -11231,7 +11231,7 @@ loc_8149A32:
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne loc_8149A90
-	ldr r0, off_8149A6C // =sub_81494F8+1 
+	ldr r0, off_8149A6C // =rfu_CB_defaultCallback+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_SystemStatusREQ
 	bl STWI_poll_CommandEnd
@@ -11249,7 +11249,7 @@ loc_8149A32:
 	b loc_8149A90
 	.balign 4, 0
 off_8149A68: .word dword_2010CC0
-off_8149A6C: .word sub_81494F8+1
+off_8149A6C: .word rfu_CB_defaultCallback+1
 off_8149A70: .word dword_2010CC8
 loc_8149A74:
 	cmp r4, #0x1b
@@ -11297,7 +11297,7 @@ rfu_STC_readChildList:
 	cmp r2, #0
 	beq loc_8149B06
 	ldr r5, [r0,#4]
-	ldr r0, off_8149BD8 // =sub_81494F8+1 
+	ldr r0, off_8149BD8 // =rfu_CB_defaultCallback+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_LinkStatusREQ
 	bl STWI_poll_CommandEnd
@@ -11436,7 +11436,7 @@ loc_8149BC2:
 	bx r0
 	.balign 4, 0
 off_8149BD4: .word dword_2010CC8
-off_8149BD8: .word sub_81494F8+1
+off_8149BD8: .word rfu_CB_defaultCallback+1
 off_8149BDC: .word dword_2010CC4
 off_8149BE0: .word dword_2010CC0
 	thumb_func_end rfu_STC_readChildList
@@ -12204,7 +12204,7 @@ loc_814A168:
 	str r1, [sp,#0x10]
 	ldr r0, [r0,#4]
 	str r0, [sp,#0x14]
-	ldr r0, off_814A1C4 // =sub_81494F8+1 
+	ldr r0, off_814A1C4 // =rfu_CB_defaultCallback+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_LinkStatusREQ
 	bl STWI_poll_CommandEnd
@@ -12238,7 +12238,7 @@ loc_814A19C:
 	.balign 4, 0x00
 off_814A1BC: .word dword_2010CC8
 off_814A1C0: .word dword_2010CC0
-off_814A1C4: .word sub_81494F8+1
+off_814A1C4: .word rfu_CB_defaultCallback+1
 loc_814A1C8:
 	mov r0, #0x11
 	ldr r1, [sp,#0xc]
@@ -12672,7 +12672,7 @@ loc_814A518:
 	ldrb r0, [r0,#9]
 	cmp r0, #0
 	beq loc_814A544
-	ldr r0, off_814A540 // =sub_81494F8+1 
+	ldr r0, off_814A540 // =rfu_CB_defaultCallback+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_SC_EndREQ
 	bl STWI_poll_CommandEnd
@@ -12684,7 +12684,7 @@ loc_814A518:
 	bl rfu_STC_REQ_callback
 	b loc_814A550
 	.byte 0, 0
-off_814A540: .word sub_81494F8+1
+off_814A540: .word rfu_CB_defaultCallback+1
 loc_814A544:
 	ldr r0, off_814A558 // =rfu_CB_disconnect+1 
 	bl STWI_set_Callback_M
@@ -12712,7 +12712,7 @@ rfu_CB_disconnect:
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne loc_814A598
-	ldr r0, off_814A630 // =sub_81494F8+1 
+	ldr r0, off_814A630 // =rfu_CB_defaultCallback+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_SystemStatusREQ
 	bl STWI_poll_CommandEnd
@@ -12787,7 +12787,7 @@ loc_814A5F8:
 	ldrb r0, [r0,#9]
 	cmp r0, #0
 	beq loc_814A626
-	ldr r0, off_814A630 // =sub_81494F8+1 
+	ldr r0, off_814A630 // =rfu_CB_defaultCallback+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_SC_StartREQ
 	bl STWI_poll_CommandEnd
@@ -12803,7 +12803,7 @@ loc_814A626:
 	bx r0
 	.balign 4, 0
 off_814A62C: .word dword_2010CC0
-off_814A630: .word sub_81494F8+1
+off_814A630: .word rfu_CB_defaultCallback+1
 off_814A634: .word dword_2010CC8
 off_814A638: .word dword_2010CC4
 	thumb_func_end rfu_CB_disconnect

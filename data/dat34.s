@@ -1478,8 +1478,8 @@ sub_812E678::
 	bne loc_812E6A2
 	mov r0, #0xc
 	strb r0, [r5,#0xc]
-	bl sub_8149644
-	bl sub_8149568
+	bl rfu_REQ_stopMode
+	bl rfu_waitREQComplete
 	b locret_812E6CA
 loc_812E6A2::
 	bl eStruct200BC30_getJumpOffset00
@@ -1508,8 +1508,8 @@ sub_812E6CC::
 	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq loc_812E6E4
-	bl sub_8149644
-	bl sub_8149568
+	bl rfu_REQ_stopMode
+	bl rfu_waitREQComplete
 loc_812E6E4::
 	bl sub_8129248
 	bl sub_812B530

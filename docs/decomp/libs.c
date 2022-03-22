@@ -790,8 +790,8 @@ signed int __fastcall sub_8144DF0(int a1, int a2)
     byte_200FE06 = -1;
     dword_200FE40 = v2;
     dword_200FE44 = v3;
-    sub_8149464(sub_8145D54);
-    sub_8149470(sub_8145658);
+    rfu_setMSCCallback(sub_8145D54);
+    rfu_setREQCallback(sub_8145658);
     return 0;
 }
 
@@ -1255,7 +1255,7 @@ int __fastcall sub_81453F0(int a1)
         {
             if ( byte_200FE04 )
             {
-                sub_8149568();
+                rfu_waitREQComplete();
                 byte_200FE0E = 1;
                 switch ( byte_200FE04 )
                 {
@@ -1319,7 +1319,7 @@ int __fastcall sub_81453F0(int a1)
                         rfu_REQ_changeMasterSlave();
                         break;
                     case 0x15:
-                        sub_8149644();
+                        rfu_REQ_stopMode();
                         break;
                     case 0x17:
                         v1 = sub_8144D64();
@@ -1335,7 +1335,7 @@ LABEL_14:
                     default:
                         break;
                 }
-                sub_8149568();
+                rfu_waitREQComplete();
                 byte_200FE0E = 0;
             }
         }
@@ -1496,7 +1496,7 @@ int __fastcall sub_8145658(unsigned __int16 a1, unsigned __int16 a2)
                     if ( byte_200FE0B && word_200FE1A != 1 && *(dword_2010CC0 + 8) == 4 )
                     {
                         rfu_REQ_endSearchParent();
-                        sub_8149568();
+                        rfu_waitREQComplete();
                         byte_200FE04 = 9;
                         byte_200FE0B = 1;
                     }
@@ -1674,12 +1674,12 @@ LABEL_76:
     }
     else if ( a2 == 3 && byte_200FE0F && (a1 == 36 || a1 == 38 || a1 == 39) )
     {
-        sub_814957C();
-        sub_8149568();
-        sub_8149590(&v18);
+        rfu_REQ_RFUStatus();
+        rfu_waitREQComplete();
+        rfu_getRFUStatus(&v18);
         if ( !v18 && !*dword_2010CC0 )
         {
-            v13 = sub_8149454();
+            v13 = rfu_getSTWIRecvBuffer();
             *(v13 + 4) = *(dword_2010CC0 + 2);
             *(v13 + 5) = 1;
             sub_8145210(0x29u);
@@ -1703,7 +1703,7 @@ LABEL_76:
     {
         if ( v3 )
             goto LABEL_130;
-        word_200FE14 = *(sub_8149454() + 8);
+        word_200FE14 = *(rfu_getSTWIRecvBuffer() + 8);
         sub_81461FC(word_200FE14);
         if ( byte_200FE30 )
         {
@@ -1785,7 +1785,7 @@ LABEL_130:
         *dword_2010CC0 = 1;
         *(dword_2010CC0 + 2) = 15;
         sub_81461D8(0xFu);
-        sub_8149568();
+        rfu_waitREQComplete();
         return v19;
     }
     word_200FE14 = v2;
@@ -1821,7 +1821,7 @@ int __fastcall sub_8145D54(unsigned __int16 a1)
     byte_200FE0F = 1;
     if ( *dword_2010CC0 )
     {
-        if ( !(sub_81493F8(&v4) << 16) )
+        if ( !(rfu_UNI_PARENT_getDRAC_ACK(&v4) << 16) )
             byte_200FE03 |= v4;
     }
     else
@@ -2123,7 +2123,7 @@ int __fastcall sub_81461D8(unsigned __int8 a1)
     v1 = byte_200FE0E;
     byte_200FE0E = 1;
     rfu_REQ_disconnect(a1);
-    sub_8149568();
+    rfu_waitREQComplete();
     byte_200FE0E = v1;
     return v3;
 }
@@ -2262,7 +2262,7 @@ int __fastcall sub_81463D0(int a1)
     int v2; // [sp+0h] [bp-4h]
 
     dword_200FE44 = a1;
-    sub_8149464(sub_8145D54);
+    rfu_setMSCCallback(sub_8145D54);
     return v2;
 }
 
@@ -2367,9 +2367,9 @@ signed int sub_81465BC()
     int v1; // r2
     int v2; // r3
 
-    if ( sub_8149220(&unk_3000000, 0xE64u, &off_3000E8C, 1) << 16 )
+    if ( rfu_initializeAPI(&unk_3000000, 0xE64u, &off_3000E8C, 1) << 16 )
         return 0;
-    sub_8149440(3u, &off_3000E88);
+    rfu_setTimerInterrupt(3u, &off_3000E88);
     sub_813D8C4();
     sub_803DE88(4, v0, v1, v2);
     return 1;
@@ -3092,7 +3092,7 @@ int __fastcall sub_8146F90(int a1, int a2, int a3)
         if ( byte_2010340 )
         {
             rfu_REQ_disconnect(byte_2010340);
-            sub_8149568();
+            rfu_waitREQComplete();
             byte_2010340 = 0;
         }
         if ( *dword_2010CC0 == 1 )
@@ -3466,7 +3466,7 @@ int __fastcall sub_81475D4(unsigned __int16 *a1)
     if ( byte_2010340 )
     {
         rfu_REQ_disconnect(byte_2010340);
-        sub_8149568();
+        rfu_waitREQComplete();
         byte_2010340 = 0;
     }
     if ( *dword_2010CC0 == 1 )
@@ -3754,7 +3754,7 @@ int __fastcall sub_8147C20(int a1, int a2, int a3)
             if ( !byte_200FE02 )
             {
                 rfu_REQ_disconnect(*(dword_2010CC0 + 3) | *(dword_2010CC0 + 2));
-                sub_8149568();
+                rfu_waitREQComplete();
             }
             break;
         case 0x33:
@@ -4171,7 +4171,7 @@ int __fastcall sub_8148234(unsigned __int16 *a1)
             if ( !byte_200FE02 )
             {
                 rfu_REQ_disconnect(*(dword_2010CC0 + 3) | *(dword_2010CC0 + 2));
-                sub_8149568();
+                rfu_waitREQComplete();
             }
             return v6;
         case 0x25:
@@ -4431,7 +4431,7 @@ int sub_8148884()
         byte_2010368 = 1;
         if ( byte_2010270 )
         {
-            sub_81493E4();
+            rfu_REQ_PARENT_resumeRetransmitAndChange();
         }
         else
         {
@@ -4863,7 +4863,7 @@ signed int sub_8149150()
 
 
 // 0x8149220
-signed int __fastcall sub_8149220(int a1, unsigned __int16 a2, int a3, char a4)
+signed int __fastcall rfu_initializeAPI(int a1, unsigned __int16 a2, int a3, char a4)
 {
     char v4; // r7
     char *v6; // r3
@@ -4903,7 +4903,7 @@ signed int __fastcall sub_8149220(int a1, unsigned __int16 a2, int a3, char a4)
     v9 = dword_2010CAC + 28;
     *(dword_2010CC8 + 220) = dword_2010CAC + 28;
     STWI_init_all(v9, a3, v4);
-    sub_814935C();
+    rfu_STC_clearAPIVariables();
     v10 = 0;
     do
     {
@@ -4933,7 +4933,7 @@ signed int __fastcall sub_8149220(int a1, unsigned __int16 a2, int a3, char a4)
 
 
 // 0x814935c
-int sub_814935C()
+int rfu_STC_clearAPIVariables()
 {
     __int16 v0; // r7
     char v1; // r4
@@ -4968,7 +4968,7 @@ int sub_814935C()
 
 
 // 0x81493e4
-int sub_81493E4()
+int rfu_REQ_PARENT_resumeRetransmitAndChange()
 {
     int v1; // [sp+0h] [bp-4h]
 
@@ -4979,7 +4979,7 @@ int sub_81493E4()
 
 
 // 0x81493f8
-signed int __fastcall sub_81493F8(unsigned __int8 *a1)
+signed int __fastcall rfu_UNI_PARENT_getDRAC_ACK(unsigned __int8 *a1)
 {
     unsigned __int8 *v1; // r4
     unsigned __int8 *v3; // r0
@@ -4991,7 +4991,7 @@ signed int __fastcall sub_81493F8(unsigned __int8 *a1)
     *a1 = 0;
     if ( *dword_2010CC0 != 1 )
         return 768;
-    v3 = sub_8149454();
+    v3 = rfu_getSTWIRecvBuffer();
     v4 = v3;
     v5 = *v3;
     if ( v5 != 40 && v5 != 54 )
@@ -5006,7 +5006,7 @@ signed int __fastcall sub_81493F8(unsigned __int8 *a1)
 
 
 // 0x8149440
-int __fastcall sub_8149440(unsigned __int8 a1, int a2)
+int __fastcall rfu_setTimerInterrupt(unsigned __int8 a1, int a2)
 {
     int v3; // [sp+0h] [bp-4h]
 
@@ -5016,14 +5016,14 @@ int __fastcall sub_8149440(unsigned __int8 a1, int a2)
 
 
 // 0x8149454
-int sub_8149454()
+int rfu_getSTWIRecvBuffer()
 {
     return *(dword_2010CC8 + 220);
 }
 
 
 // 0x8149464
-int __fastcall sub_8149464(int a1)
+int __fastcall rfu_setMSCCallback(int a1)
 {
     int v2; // [sp+0h] [bp-4h]
 
@@ -5033,18 +5033,18 @@ int __fastcall sub_8149464(int a1)
 
 
 // 0x8149470
-int __fastcall sub_8149470(unsigned int a1)
+int __fastcall rfu_setREQCallback(unsigned int a1)
 {
     int v2; // [sp+0h] [bp-4h]
 
     *dword_2010CC8 = a1;
-    sub_814948C((-a1 | a1) >> 31);
+    rfu_enableREQCallback((-a1 | a1) >> 31);
     return v2;
 }
 
 
 // 0x814948c
-int __fastcall sub_814948C(int a1)
+int __fastcall rfu_enableREQCallback(int a1)
 {
     _BYTE *v1; // r2
     char v2; // r0
@@ -5075,7 +5075,7 @@ int __fastcall rfu_STC_REQ_callback(unsigned __int8 a1, unsigned __int16 a2)
 
     v2 = a1;
     v3 = a2;
-    STWI_set_Callback_M(sub_81494F8);
+    STWI_set_Callback_M(rfu_CB_defaultCallback);
     v4 = dword_2010CC4;
     *(dword_2010CC4 + 28) = v3;
     if ( *v4 & 8 )
@@ -5085,7 +5085,7 @@ int __fastcall rfu_STC_REQ_callback(unsigned __int8 a1, unsigned __int16 a2)
 
 
 // 0x81494f8
-int __fastcall sub_81494F8(unsigned __int8 a1, int a2)
+int __fastcall rfu_CB_defaultCallback(unsigned __int8 a1, int a2)
 {
     unsigned int v2; // r1
     int v3; // r5
@@ -5113,7 +5113,7 @@ int __fastcall sub_81494F8(unsigned __int8 a1, int a2)
 
 
 // 0x8149568
-int sub_8149568()
+int rfu_waitREQComplete()
 {
     STWI_poll_CommandEnd();
     return *(dword_2010CC4 + 28);
@@ -5121,7 +5121,7 @@ int sub_8149568()
 
 
 // 0x814957c
-int sub_814957C()
+int rfu_REQ_RFUStatus()
 {
     int v1; // [sp+0h] [bp-4h]
 
@@ -5132,7 +5132,7 @@ int sub_814957C()
 
 
 // 0x8149590
-signed int __fastcall sub_8149590(_BYTE *a1)
+signed int __fastcall rfu_getRFUStatus(_BYTE *a1)
 {
     _BYTE *v1; // r4
     int v3; // r0
@@ -5150,7 +5150,7 @@ signed int __fastcall sub_8149590(_BYTE *a1)
 
 
 // 0x81495cc
-signed int sub_81495CC()
+signed int rfu_MBOOT_CHILD_inheritanceLinkStatus()
 {
     char *v0; // r2
     char *v1; // r3
@@ -5193,7 +5193,7 @@ signed int sub_81495CC()
 
 
 // 0x8149644
-int sub_8149644()
+int rfu_REQ_stopMode()
 {
     __int16 v0; // t1
     __int16 *v1; // r1
@@ -5202,7 +5202,7 @@ int sub_8149644()
     if ( InterruptMasterEnableRegister )
     {
         AgbRFU_SoftReset();
-        sub_814935C();
+        rfu_STC_clearAPIVariables();
         if ( AgbRFU_checkID(8u) == 32769 )
         {
             v1 = &Timer0Counter_Reload[2 * *(dword_2010CCC + 10)];
@@ -5250,7 +5250,7 @@ signed int rfu_REQBN_softReset_and_checkID()
     if ( !InterruptMasterEnableRegister )
         return -1;
     AgbRFU_SoftReset();
-    sub_814935C();
+    rfu_STC_clearAPIVariables();
     v1 = AgbRFU_checkID(0x1Eu);
     if ( !v1 )
         SIOControlRegister = 0x2000;
@@ -5279,7 +5279,7 @@ int __fastcall rfu_CB_reset(unsigned __int8 a1, unsigned __int16 a2)
     v2 = a1;
     v3 = a2;
     if ( !a2 )
-        sub_814935C();
+        rfu_STC_clearAPIVariables();
     rfu_STC_REQ_callback(v2, v3);
     return v5;
 }
@@ -5435,7 +5435,7 @@ int rfu_REQ_startSearchChild()
     unsigned __int16 v0; // r0
     int v2; // [sp+0h] [bp-4h]
 
-    STWI_set_Callback_M(sub_81494F8);
+    STWI_set_Callback_M(rfu_CB_defaultCallback);
     STWI_send_SystemStatusREQ();
     v0 = STWI_poll_CommandEnd();
     if ( v0 )
@@ -5532,7 +5532,7 @@ int __fastcall rfu_CB_pollAndEndSearchChild(unsigned __int8 a1, unsigned __int16
     {
         if ( !*(dword_2010CC0 + 148) )
         {
-            STWI_set_Callback_M(sub_81494F8);
+            STWI_set_Callback_M(rfu_CB_defaultCallback);
             STWI_send_SystemStatusREQ();
             if ( !(STWI_poll_CommandEnd() << 16) )
                 *(dword_2010CC0 + 148) = *(*(dword_2010CC8 + 220) + 4);
@@ -5569,7 +5569,7 @@ int rfu_STC_readChildList()
     if ( *(v0 + 1) )
     {
         v2 = *(v0 + 4);
-        STWI_set_Callback_M(sub_81494F8);
+        STWI_set_Callback_M(rfu_CB_defaultCallback);
         STWI_send_LinkStatusREQ();
         if ( !(STWI_poll_CommandEnd() << 16) )
         {
@@ -6062,7 +6062,7 @@ int __fastcall rfu_REQBN_watchLink(__int16 a1, _BYTE *a2, char *a3, _BYTE *a4)
     v8 = *(dword_2010CC8 + 220);
     v30 = *v8;
     v31 = v8[1];
-    STWI_set_Callback_M(sub_81494F8);
+    STWI_set_Callback_M(rfu_CB_defaultCallback);
     STWI_send_LinkStatusREQ();
     v29 = STWI_poll_CommandEnd();
     if ( !v29 )
@@ -6242,7 +6242,7 @@ int __fastcall rfu_REQ_disconnect(unsigned __int8 a1)
             if ( *(dword_2010CC0 + 3) & a1 )
                 rfu_CB_disconnect(0x30u, 0);
         }
-        else if ( *(dword_2010CC4 + 9) && (STWI_set_Callback_M(sub_81494F8), STWI_send_SC_EndREQ(), (v2 = STWI_poll_CommandEnd()) != 0) )
+        else if ( *(dword_2010CC4 + 9) && (STWI_set_Callback_M(rfu_CB_defaultCallback), STWI_send_SC_EndREQ(), (v2 = STWI_poll_CommandEnd()) != 0) )
         {
             rfu_STC_REQ_callback(0x1Bu, v2);
         }
@@ -6269,7 +6269,7 @@ int __fastcall rfu_CB_disconnect(unsigned __int8 a1, unsigned __int16 a2)
     v3 = a2;
     if ( a2 == 3 && !*dword_2010CC0 )
     {
-        STWI_set_Callback_M(sub_81494F8);
+        STWI_set_Callback_M(rfu_CB_defaultCallback);
         STWI_send_SystemStatusREQ();
         if ( !(STWI_poll_CommandEnd() << 16) && !*(*(dword_2010CC8 + 220) + 7) )
             v3 = 0;
@@ -6292,7 +6292,7 @@ int __fastcall rfu_CB_disconnect(unsigned __int8 a1, unsigned __int16 a2)
     rfu_STC_REQ_callback(v2, v3);
     if ( *(dword_2010CC4 + 9) )
     {
-        STWI_set_Callback_M(sub_81494F8);
+        STWI_set_Callback_M(rfu_CB_defaultCallback);
         STWI_send_SC_StartREQ();
         v5 = STWI_poll_CommandEnd();
         if ( v5 )
