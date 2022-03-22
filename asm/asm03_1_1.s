@@ -6887,7 +6887,7 @@ sub_803C6C0:
 	thumb_local_start
 sub_803C6D8:
 	push {lr}
-	bl sub_814A828
+	bl rfu_clearAllSlot
 	bl sub_813D978
 	mov r0, #8
 	bl sub_803CB00

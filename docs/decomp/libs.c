@@ -889,7 +889,7 @@ signed int __fastcall sub_8144EF8(unsigned __int8 a1, __int16 a2, __int16 a3, un
         sub_81461B0(243, 1);
         result = 1;
     }
-    else if ( sub_814A7F0() << 24 )
+    else if ( rfu_getMasterSlave() << 24 )
     {
         v9 = 0;
         v10 = v4 + 1;
@@ -968,7 +968,7 @@ signed int __fastcall sub_8144FD0(unsigned __int16 a1, __int16 a2)
         sub_81461B0(243, 1);
         result = 1;
     }
-    else if ( sub_814A7F0() << 24 )
+    else if ( rfu_getMasterSlave() << 24 )
     {
         v5 = 0;
         v6 = *(dword_2010CC0 + 8);
@@ -1310,13 +1310,13 @@ int __fastcall sub_81453F0(int a1)
                         sub_814A63C(*(dword_2010CC0 + 3));
                         break;
                     case 0x11:
-                        sub_814A698();
+                        rfu_REQ_CHILD_pollConnectRecovery();
                         break;
                     case 0x12:
-                        sub_814A780();
+                        rfu_REQ_CHILD_endConnectRecovery();
                         break;
                     case 0x13:
-                        sub_814A7C4();
+                        rfu_REQ_changeMasterSlave();
                         break;
                     case 0x15:
                         sub_8149644();
@@ -1594,7 +1594,7 @@ LABEL_76:
                         sub_81461B0(65, 0);
                         byte_200FE24 |= 1 << byte_200FE10;
                         *&algn_200FE28[2 * byte_200FE10] = word_200FE26;
-                        sub_814A934(4, byte_200FE10);
+                        rfu_clearSlot(4, byte_200FE10);
                         v12 = rfu_NI_CHILD_setSendGameName(byte_200FE10, 0xEu);
                         v18 = v12;
                         if ( v12 << 24 )
@@ -1625,7 +1625,7 @@ LABEL_76:
                 }
                 break;
             case 0x33u:
-                if ( !a2 && !(sub_814A750(&v18) << 16) && v18 <= 1u )
+                if ( !a2 && !(rfu_CHILD_getConnectRecoveryStatus(&v18) << 16) && v18 <= 1u )
                     byte_200FE04 = 18;
                 v10 = &algn_200FE34[byte_200FE10];
                 if ( *v10 )
@@ -1637,7 +1637,7 @@ LABEL_76:
                 }
                 break;
             case 0x34u:
-                if ( !a2 && !(sub_814A750(&v18) << 16) )
+                if ( !a2 && !(rfu_CHILD_getConnectRecoveryStatus(&v18) << 16) )
                 {
                     if ( v18 )
                     {
@@ -1928,7 +1928,7 @@ LABEL_14:
                     {
                         byte_200FE24 &= ~v3;
                         *&algn_200FE28[2 * v2] = 0;
-                        sub_814A934(8, v2);
+                        rfu_clearSlot(8, v2);
                     }
                     if ( v4 & 4 )
                         byte_200FE0D |= v3;
@@ -2009,7 +2009,7 @@ int sub_8145FFC()
         {
             sub_81464D4();
             byte_200FE04 = 24;
-            sub_814A934(4, byte_200FE10);
+            rfu_clearSlot(4, byte_200FE10);
             byte_200FE24 &= ~(1 << byte_200FE10);
             *&algn_200FE28[2 * byte_200FE10] = 0;
         }
@@ -2042,7 +2042,7 @@ int sub_81460B0()
     {
         byte_200FE05 = 0;
         byte_200FE04 = 0;
-        sub_814A934(4, byte_200FE10);
+        rfu_clearSlot(4, byte_200FE10);
         byte_200FE24 &= ~(1 << byte_200FE10);
         *&algn_200FE28[2 * byte_200FE10] = 0;
         sub_81461B0(36, 0);
@@ -2863,13 +2863,13 @@ int __fastcall sub_8146C9C(_BYTE *a1)
     v2 = *dword_2010CB0[byte_20103E0];
     if ( v2 == 38 )
     {
-        sub_814A934(4, byte_20103E0);
+        rfu_clearSlot(4, byte_20103E0);
         *v1 = 3;
         v1[2] = 0;
     }
     else if ( v2 == 39 )
     {
-        sub_814A934(4, byte_20103E0);
+        rfu_clearSlot(4, byte_20103E0);
         *v1 = 4;
     }
     return v4;
@@ -2922,8 +2922,8 @@ signed int __fastcall sub_8146D40(int a1)
     {
         if ( byte_2010292 & (2 << v3) )
         {
-            sub_814A934(8, v3);
-            if ( sub_814AAF0(32, v3, v2, *(v1 + 20)) << 16 )
+            rfu_clearSlot(8, v3);
+            if ( rfu_setRecvBuffer(32, v3, v2, *(v1 + 20)) << 16 )
                 return 1;
         }
         v2 += 4 * (*(v1 + 20) >> 2);
@@ -2960,12 +2960,12 @@ int __fastcall sub_8146D98(int a1, int a2, int a3, int a4)
             case 71:
                 goto LABEL_14;
             case 70:
-                sub_814A934(8, v6);
+                rfu_clearSlot(8, v6);
                 v5 |= v7;
                 break;
             case 72:
 LABEL_14:
-                sub_814A934(8, v6);
+                rfu_clearSlot(8, v6);
                 *(v4 + 1) = 2;
                 break;
         }
@@ -3059,8 +3059,8 @@ int __fastcall sub_8146E90(int a1, int a2, unsigned int a3)
     {
         if ( byte_2010292 & (2 << v6) )
         {
-            sub_814A934(12, v6);
-            if ( sub_814AAF0(32, v6, v3 + 4 * v6, v4) << 16 )
+            rfu_clearSlot(12, v6);
+            if ( rfu_setRecvBuffer(32, v6, v3 + 4 * v6, v4) << 16 )
                 word_200BC58 |= 0x80u;
         }
         v6 = (v6 + 1) & 0xFF;
@@ -3112,7 +3112,7 @@ int __fastcall sub_8146F90(int a1, int a2, int a3)
                 v7 = 12;
                 goto LABEL_13;
             case 0x34:
-                sub_814A828();
+                rfu_clearAllSlot();
                 sub_813D760();
                 break;
             case 0x40:
@@ -3157,12 +3157,12 @@ int __fastcall sub_814713C(int a1, int a2)
             case 71:
                 goto LABEL_14;
             case 70:
-                sub_814A934(8, v5);
+                rfu_clearSlot(8, v5);
                 v4 |= v6;
                 break;
             case 72:
 LABEL_14:
-                sub_814A934(8, v5);
+                rfu_clearSlot(8, v5);
                 *(v2 + 1) = 2;
                 break;
         }
@@ -3221,13 +3221,13 @@ int __fastcall sub_8147228(_BYTE *a1, int a2)
     {
         if ( v5 != 39 )
             return v10;
-        sub_814A934(4, byte_2010328);
+        rfu_clearSlot(4, byte_2010328);
 LABEL_6:
         *v2 = 4;
         return v10;
     }
     v6 = *(v4 + 26) ^ *(v4 + 44);
-    sub_814A934(4, byte_2010328);
+    rfu_clearSlot(4, byte_2010328);
     if ( v6 )
         goto LABEL_6;
     *v2 = 3;
@@ -3522,7 +3522,7 @@ int __fastcall sub_81475D4(unsigned __int16 *a1)
             }
             break;
         case 0x34:
-            sub_814A828();
+            rfu_clearAllSlot();
             sub_813D760();
             break;
         case 0x40:
@@ -3645,7 +3645,7 @@ int sub_8147A84()
         if ( v2 == 38 )
         {
             v0 = *(v1 + 26) ^ *(v1 + 44);
-            sub_814A934(4, byte_2010328);
+            rfu_clearSlot(4, byte_2010328);
             byte_201028C &= 0xFDu;
             if ( byte_201028C & 0x40 )
                 byte_201028C |= 0x80u;
@@ -3653,7 +3653,7 @@ int sub_8147A84()
         else if ( v2 == 39 )
         {
             v0 = *(v1 + 26) ^ *(v1 + 44);
-            sub_814A934(4, byte_2010328);
+            rfu_clearSlot(4, byte_2010328);
             byte_201028C = 0;
             if ( word_200BC58 == 34 )
                 word_200BC58 = 3;
@@ -3717,8 +3717,8 @@ int __fastcall sub_8147B54(int a1, int a2, int a3)
     }
     while ( v6 <= 3 );
     byte_2010390 = 0;
-    sub_814A934(12, byte_20103E0);
-    sub_814AAF0(32, byte_20103E0, v3, v4);
+    rfu_clearSlot(12, byte_20103E0);
+    rfu_setRecvBuffer(32, byte_20103E0, v3, v4);
     word_200BC58 = 49;
     return v10;
 }
@@ -3769,7 +3769,7 @@ int __fastcall sub_8147C20(int a1, int a2, int a3)
             }
             break;
         case 0x34:
-            sub_814A828();
+            rfu_clearAllSlot();
             sub_813D760();
             break;
         default:
@@ -3796,7 +3796,7 @@ int __fastcall sub_8147DE0(int a1, int a2)
         {
             if ( v4 == 70 )
             {
-                sub_814A934(8, byte_20103E0);
+                rfu_clearSlot(8, byte_20103E0);
                 *(v2 + 1) = 1;
                 sub_813D7B8(v3);
                 return v6;
@@ -3804,7 +3804,7 @@ int __fastcall sub_8147DE0(int a1, int a2)
             if ( v4 != 72 )
                 return v6;
         }
-        sub_814A934(8, byte_20103E0);
+        rfu_clearSlot(8, byte_20103E0);
         if ( word_200BC58 == 49 )
             *(v2 + 1) = 2;
     }
@@ -3848,7 +3848,7 @@ int __fastcall sub_8147E98(_BYTE *a1, int a2)
     v4 = *dword_2010CB0[byte_20103E0];
     if ( v4 == 38 )
     {
-        sub_814A934(4, byte_20103E0);
+        rfu_clearSlot(4, byte_20103E0);
         *v2 = 3;
         v2[2] = 0;
         v5 = *(v3 + 1);
@@ -3857,7 +3857,7 @@ int __fastcall sub_8147E98(_BYTE *a1, int a2)
     }
     else if ( v4 == 39 )
     {
-        sub_814A934(4, byte_20103E0);
+        rfu_clearSlot(4, byte_20103E0);
         if ( word_200BC58 == 49 )
             *v2 = 4;
     }
@@ -3988,7 +3988,7 @@ int __fastcall sub_814801C(signed int a1)
                 {
                     byte_20103E0 = word_200FE14;
                     unk_200AF84 = word_200FE14;
-                    sub_814AAF0(32, word_200FE14, &byte_2010290, 64);
+                    rfu_setRecvBuffer(32, word_200FE14, &byte_2010290, 64);
                     word_200BC58 = 13;
                     sub_813D934(10);
                 }
@@ -4071,7 +4071,7 @@ LABEL_48:
         }
         if ( a1 == 67 )
         {
-            sub_814A828();
+            rfu_clearAllSlot();
             goto LABEL_49;
         }
         if ( a1 == 68 )
@@ -4178,7 +4178,7 @@ int __fastcall sub_8148234(unsigned __int16 *a1)
             v4 = *(dword_2010CB0[byte_20103E0] + 52);
             if ( v4 == 70 )
             {
-                sub_814A934(8, byte_20103E0);
+                rfu_clearSlot(8, byte_20103E0);
                 if ( byte_2010291 )
                 {
                     if ( !byte_2010290 )
@@ -4199,7 +4199,7 @@ LABEL_19:
             }
             else if ( ((v4 - 71) & 0xFFFFu) <= 1 )
             {
-                sub_814A934(8, byte_20103E0);
+                rfu_clearSlot(8, byte_20103E0);
                 word_200BC58 = 63;
                 sub_813D934(4);
             }
@@ -4216,7 +4216,7 @@ LABEL_19:
             }
             return v6;
         case 0x34:
-            sub_814A828();
+            rfu_clearAllSlot();
             sub_813D760();
             return v6;
         default:
@@ -4276,8 +4276,8 @@ int sub_8148540()
     {
         if ( byte_2010292 & (2 << v1) )
         {
-            sub_814AAF0(16, v1, &byte_2010230[16 * v1], 14);
-            sub_814A934(3, v1);
+            rfu_setRecvBuffer(16, v1, &byte_2010230[16 * v1], 14);
+            rfu_clearSlot(3, v1);
         }
         v1 = (v1 + 1) & 0xFF;
     }
@@ -4453,12 +4453,12 @@ LABEL_16:
             break;
         case 0x32:
             word_200BC58 = 0;
-            sub_814A828();
+            rfu_clearAllSlot();
             sub_8144D64();
             sub_813D760();
             break;
         case 0x34:
-            sub_814A828();
+            rfu_clearAllSlot();
             sub_813D760();
             break;
         default:
@@ -4654,8 +4654,8 @@ signed int sub_8148D24()
     byte_201039C = 0;
     sub_81463E8(sub_8148E74);
     sub_81463D0(sub_8148FB4);
-    sub_814AAF0(16, byte_20103E0, &unk_20103A0, 64);
-    v1 = sub_814A934(3, byte_20103E0);
+    rfu_setRecvBuffer(16, byte_20103E0, &unk_20103A0, 64);
+    v1 = rfu_clearSlot(3, byte_20103E0);
     sub_803ECFC(v1);
     sub_803F030(&byte_2010390, 0xCu);
     if ( rfu_UNI_setSendData((0x1000000 << byte_20103E0) >> 24, &byte_2010390, 14) << 16 )
@@ -4787,13 +4787,13 @@ LABEL_6:
             word_200BC58 = v0;
             break;
         case 0x32:
-            sub_814A828();
+            rfu_clearAllSlot();
             sub_8144D64();
             word_200BC58 = 0;
             sub_813D760();
             break;
         case 0x34:
-            sub_814A828();
+            rfu_clearAllSlot();
             sub_813D760();
             break;
         default:
@@ -4916,7 +4916,7 @@ signed int __fastcall sub_8149220(int a1, unsigned __int16 a2, int a3, char a4)
         v10 = (v10 + 1) & 0xFFFF;
     }
     while ( v10 <= 3 );
-    v13 = (sub_814A794 & 0xFFFFFFFE);
+    v13 = (rfu_STC_fastCopy & 0xFFFFFFFE);
     v14 = (dword_2010CC8 + 8);
     v15 = 23;
     do
@@ -4953,7 +4953,7 @@ int sub_814935C()
     *(dword_2010CC0 + 9) = 4;
     *(dword_2010CC4 + 6) = 0;
     *dword_2010CC0 = -1;
-    sub_814A828();
+    rfu_clearAllSlot();
     *(dword_2010CC4 + 9) = 0;
     v2 = 0;
     do
@@ -5473,7 +5473,7 @@ int __fastcall sub_8149994(unsigned __int8 a1)
     int v5; // [sp+Ch] [bp-4h]
 
     v1 = a1;
-    sub_814A828();
+    rfu_clearAllSlot();
     if ( v1 )
     {
         v4 = 0;
@@ -5932,7 +5932,7 @@ signed int sub_8149F80()
         return 0;
     if ( *(dword_2010CC4 + 6) )
         --*(dword_2010CC4 + 6);
-    v0 = sub_814A7F0();
+    v0 = rfu_getMasterSlave();
     v1 = *dword_2010CC4;
     if ( *dword_2010CC4 & 2 )
     {
@@ -6325,18 +6325,18 @@ int __fastcall sub_814A63C(unsigned __int8 a1)
 
 
 // 0x814a698
-int sub_814A698()
+int rfu_REQ_CHILD_pollConnectRecovery()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    STWI_set_Callback_M(sub_814A6AC);
+    STWI_set_Callback_M(rfu_CB_CHILD_pollConnectRecovery);
     STWI_send_CPR_PollingREQ();
     return v1;
 }
 
 
 // 0x814a6ac
-int __fastcall sub_814A6AC(unsigned __int8 a1, unsigned __int16 a2)
+int __fastcall rfu_CB_CHILD_pollConnectRecovery(unsigned __int8 a1, unsigned __int16 a2)
 {
     unsigned int v2; // r4
     unsigned int v3; // r3
@@ -6367,7 +6367,7 @@ int __fastcall sub_814A6AC(unsigned __int8 a1, unsigned __int16 a2)
 
 
 // 0x814a750
-signed int __fastcall sub_814A750(_BYTE *a1)
+signed int __fastcall rfu_CHILD_getConnectRecoveryStatus(_BYTE *a1)
 {
     unsigned __int8 *v1; // r1
 
@@ -6381,18 +6381,18 @@ signed int __fastcall sub_814A750(_BYTE *a1)
 
 
 // 0x814a780
-int sub_814A780()
+int rfu_REQ_CHILD_endConnectRecovery()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    STWI_set_Callback_M(sub_814A6AC);
+    STWI_set_Callback_M(rfu_CB_CHILD_pollConnectRecovery);
     STWI_send_CPR_EndREQ();
     return v1;
 }
 
 
 // 0x814a794
-int __fastcall sub_814A794(_BYTE **a1, _DWORD *a2, int a3)
+int __fastcall rfu_STC_fastCopy(_BYTE **a1, _DWORD *a2, int a3)
 {
     _DWORD *v3; // r6
     _BYTE *v4; // r3
@@ -6412,7 +6412,7 @@ int __fastcall sub_814A794(_BYTE **a1, _DWORD *a2, int a3)
 
 
 // 0x814a7c4
-int sub_814A7C4()
+int rfu_REQ_changeMasterSlave()
 {
     int v1; // [sp+0h] [bp-4h]
 
@@ -6430,7 +6430,7 @@ int sub_814A7C4()
 
 
 // 0x814a7f0
-int sub_814A7F0()
+int rfu_getMasterSlave()
 {
     int v0; // r2
     int v1; // r0
@@ -6450,7 +6450,7 @@ int sub_814A7F0()
 
 
 // 0x814a828
-int sub_814A828()
+int rfu_clearAllSlot()
 {
     __int16 v0; // r8
     unsigned int v1; // r5
@@ -6482,7 +6482,7 @@ int sub_814A828()
 
 
 // 0x814a8c8
-int __fastcall sub_814A8C8(unsigned __int8 a1, char a2, int a3)
+int __fastcall rfu_STC_releaseFrame(unsigned __int8 a1, char a2, int a3)
 {
     int v4; // [sp+Ch] [bp-4h]
 
@@ -6503,7 +6503,7 @@ int __fastcall sub_814A8C8(unsigned __int8 a1, char a2, int a3)
 
 
 // 0x814a934
-signed int __fastcall sub_814A934(char a1, unsigned __int8 a2)
+signed int __fastcall rfu_clearSlot(char a1, unsigned __int8 a2)
 {
     char v2; // r8
     int v3; // r7
@@ -6549,7 +6549,7 @@ signed int __fastcall sub_814A934(char a1, unsigned __int8 a2)
             {
                 if ( *v8 & 0x8000 )
                 {
-                    sub_814A8C8(v3, v6, v8);
+                    rfu_STC_releaseFrame(v3, v6, v8);
                     v10 = 0;
                     do
                     {
@@ -6591,7 +6591,7 @@ signed int __fastcall sub_814A934(char a1, unsigned __int8 a2)
 
 
 // 0x814aaf0
-signed int __fastcall sub_814AAF0(int a1, int a2, int a3, int a4)
+signed int __fastcall rfu_setRecvBuffer(int a1, int a2, int a3, int a4)
 {
     int v4; // r6
     unsigned int v5; // r0
@@ -6808,7 +6808,7 @@ int *__fastcall rfu_changeSendTarget(int a1, unsigned __int8 a2, unsigned __int8
                     *(v5 + 26) = v3;
                     if ( !(v3 << 24) )
                     {
-                        sub_814A8C8(a2, 0, v5);
+                        rfu_STC_releaseFrame(a2, 0, v5);
                         *v5 = 39;
                     }
                     InterruptMasterEnableRegister = v7;
@@ -6871,7 +6871,7 @@ signed int __fastcall rfu_NI_stopReceivingData(unsigned __int8 a1)
             v7 = 71;
         *(v3 + 52) = v7;
         *(dword_2010CC0 + 5) &= ~(1 << v1);
-        sub_814A8C8(v1, 1, v4);
+        rfu_STC_releaseFrame(v1, 1, v4);
     }
     InterruptMasterEnableRegister = v5;
     return 0;
@@ -7046,7 +7046,7 @@ int __fastcall rfu_CB_sendData(int a1, unsigned __int16 a2)
             v6 = dword_2010CB0[v4];
             if ( *v6 == 32800 )
             {
-                sub_814A8C8(v3, 0, dword_2010CB0[v4]);
+                rfu_STC_releaseFrame(v3, 0, dword_2010CB0[v4]);
                 *(dword_2010CC0 + 4) &= ~*(v6 + 26);
                 if ( *(v6 + 45) == 1 )
                     *(dword_2010CC0 + 7) |= 1 << v3;
@@ -7343,7 +7343,7 @@ int __fastcall rfu_CB_recvData(unsigned __int8 a1, int a2, int a3, int a4)
                 if ( *(v11 + 97) == 1 )
                     *(*v9 + 7) |= 1 << v8;
                 v12 = v9;
-                sub_814A8C8(v8, 1, v11 + 52);
+                rfu_STC_releaseFrame(v8, 1, v11 + 52);
                 v9 = v12;
                 *(*v12 + 5) &= ~*(v11 + 78);
                 *(v11 + 52) = 70;
@@ -7854,7 +7854,7 @@ int __fastcall rfu_STC_NI_initSlot_asRecvDataEntity(unsigned __int8 a1, int a2)
             *(dword_2010CC0 + 5) &= ~((0x1000000 << a1) >> 24);
             *(a2 + 24) = 1793;
             *a2 = 71;
-            sub_814A8C8(a1, 1, a2);
+            rfu_STC_releaseFrame(a1, 1, a2);
             return v6;
         }
         v2 = *(v3 + 104);

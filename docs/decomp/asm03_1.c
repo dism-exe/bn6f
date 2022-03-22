@@ -10353,7 +10353,7 @@ signed __int64 sub_803C6C0()
 // 0x803c6d8
 __int64 sub_803C6D8()
 {
-    sub_814A828();
+    rfu_clearAllSlot();
     sub_813D978();
     sub_803CB00(8);
     sub_803CB00(128);

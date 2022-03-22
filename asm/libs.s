@@ -1891,7 +1891,7 @@ loc_8144F1E:
 	.balign 4, 0
 off_8144F30: .word eStruct200FE00
 loc_8144F34:
-	bl sub_814A7F0
+	bl rfu_getMasterSlave
 	lsl r0, r0, #0x18
 	cmp r0, #0
 	bne loc_8144F54
@@ -2003,7 +2003,7 @@ sub_8144FD0:
 	.balign 4, 0
 off_8145004: .word eStruct200FE00
 loc_8145008:
-	bl sub_814A7F0
+	bl rfu_getMasterSlave
 	lsl r0, r0, #0x18
 	cmp r0, #0
 	bne loc_8145028
@@ -2700,13 +2700,13 @@ loc_8145574:
 	b def_814543E
 off_8145580: .word dword_2010CC0
 loc_8145584:
-	bl sub_814A698
+	bl rfu_REQ_CHILD_pollConnectRecovery
 	b def_814543E
 loc_814558A:
-	bl sub_814A780
+	bl rfu_REQ_CHILD_endConnectRecovery
 	b def_814543E
 loc_8145590:
-	bl sub_814A7C4
+	bl rfu_REQ_changeMasterSlave
 	b def_814543E
 loc_8145596:
 	bl sub_8149644
@@ -3234,7 +3234,7 @@ loc_81459C0:
 	cmp r6, #0
 	bne loc_81459DE
 	mov r0, sp
-	bl sub_814A750
+	bl rfu_CHILD_getConnectRecoveryStatus
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	bne loc_81459DE
@@ -3274,7 +3274,7 @@ loc_8145A08:
 	b def_814568C
 loc_8145A0E:
 	mov r0, sp
-	bl sub_814A750
+	bl rfu_CHILD_getConnectRecoveryStatus
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	beq loc_8145A1C
@@ -3373,7 +3373,7 @@ loc_8145AA8:
 	strh r1, [r0]
 	ldrb r1, [r5,#0x10] // (byte_200FE10 - 0x200fe00)
 	mov r0, #4
-	bl sub_814A934
+	bl rfu_clearSlot
 	mov r4, sp
 	ldrb r0, [r5,#0x10] // (byte_200FE10 - 0x200fe00)
 	mov r1, #0xe
@@ -3921,7 +3921,7 @@ loc_8145EFC:
 	strh r2, [r0]
 	mov r0, #8
 	mov r1, r6
-	bl sub_814A934
+	bl rfu_clearSlot
 loc_8145F22:
 	mov r0, #4
 	and r5, r0
@@ -4073,7 +4073,7 @@ loc_8146036:
 	strb r0, [r4,#0x4] // (byte_200FE04 - 0x200fe00)
 	ldrb r1, [r4,#0x10] // (byte_200FE10 - 0x200fe00)
 	mov r0, #4
-	bl sub_814A934
+	bl rfu_clearSlot
 	mov r2, r4
 	add r2, #0x24 
 	mov r1, #1
@@ -4146,7 +4146,7 @@ sub_81460B0:
 	strb r4, [r5,#0x4] // (byte_200FE04 - 0x200fe00)
 	mov r0, #4
 	mov r1, r2
-	bl sub_814A934
+	bl rfu_clearSlot
 	mov r2, r5
 	add r2, #0x24 
 	mov r1, #1
@@ -5743,7 +5743,7 @@ sub_8146C9C:
 	bne loc_8146CCC
 	mov r0, #4
 	mov r1, r2
-	bl sub_814A934
+	bl rfu_clearSlot
 	mov r1, #0
 	mov r0, #3
 	strb r0, [r4]
@@ -5757,7 +5757,7 @@ loc_8146CCC:
 	bne loc_8146CDC
 	mov r0, #4
 	mov r1, r2
-	bl sub_814A934
+	bl rfu_clearSlot
 	mov r0, #4
 	strb r0, [r4]
 loc_8146CDC:
@@ -5837,12 +5837,12 @@ loc_8146D48:
 	beq loc_8146D7C
 	mov r0, #8
 	mov r1, r4
-	bl sub_814A934
+	bl rfu_clearSlot
 	ldr r3, [r5,#0x14]
 	mov r0, #0x20 
 	mov r1, r4
 	mov r2, r6
-	bl sub_814AAF0
+	bl rfu_setRecvBuffer
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	beq loc_8146D7C
@@ -5904,7 +5904,7 @@ loc_8146DAE:
 	bne loc_8146DEC
 	mov r0, #8
 	mov r1, r4
-	bl sub_814A934
+	bl rfu_clearSlot
 	orr r7, r5
 	b loc_8146DFC
 	.balign 4, 0
@@ -5917,7 +5917,7 @@ loc_8146DEC:
 loc_8146DF0:
 	mov r0, #8
 	mov r1, r4
-	bl sub_814A934
+	bl rfu_clearSlot
 	mov r0, r8
 	strb r0, [r6,#1]
 loc_8146DFC:
@@ -6082,13 +6082,13 @@ loc_8146F14:
 	beq loc_8146F46
 	mov r0, #0xc
 	mov r1, r4
-	bl sub_814A934
+	bl rfu_clearSlot
 	lsl r2, r4, #2
 	add r2, r8
 	mov r0, #0x20 
 	mov r1, r4
 	mov r3, r7
-	bl sub_814AAF0
+	bl rfu_setRecvBuffer
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	beq loc_8146F46
@@ -6266,7 +6266,7 @@ loc_8147108:
 	.balign 4, 0x00
 off_8147114: .word byte_200BC50
 loc_8147118:
-	bl sub_814A828
+	bl rfu_clearAllSlot
 	bl sub_813D760
 	b def_814700A
 loc_8147122:
@@ -6320,7 +6320,7 @@ loc_8147150:
 	bne loc_814718C
 	mov r0, #8
 	mov r1, r4
-	bl sub_814A934
+	bl rfu_clearSlot
 	orr r6, r5
 	b loc_814719C
 	.balign 4, 0
@@ -6332,7 +6332,7 @@ loc_814718C:
 loc_8147190:
 	mov r0, #8
 	mov r1, r4
-	bl sub_814A934
+	bl rfu_clearSlot
 	mov r0, r8
 	strb r0, [r7,#1]
 loc_814719C:
@@ -6429,7 +6429,7 @@ sub_8147228:
 	eor r4, r0
 	mov r0, #4
 	mov r1, r2
-	bl sub_814A934
+	bl rfu_clearSlot
 	cmp r4, #0
 	bne loc_8147280
 	mov r0, #3
@@ -6449,7 +6449,7 @@ loc_8147274:
 	bne loc_8147284
 	mov r0, #4
 	mov r1, r2
-	bl sub_814A934
+	bl rfu_clearSlot
 loc_8147280:
 	mov r0, #4
 	strb r0, [r5]
@@ -7093,7 +7093,7 @@ loc_8147804:
 	.byte 0, 0
 off_8147810: .word byte_200BC50
 loc_8147814:
-	bl sub_814A828
+	bl rfu_clearAllSlot
 	bl sub_813D760
 	b def_814762C
 loc_814781E:
@@ -7434,7 +7434,7 @@ sub_8147A84:
 	eor r4, r1
 	mov r0, #4
 	mov r1, r3
-	bl sub_814A934
+	bl rfu_clearSlot
 	ldrb r0, [r5]
 	mov r2, #0xfd
 	and r2, r0
@@ -7463,7 +7463,7 @@ loc_8147AE0:
 	eor r4, r1
 	mov r0, #4
 	mov r1, r3
-	bl sub_814A934
+	bl rfu_clearSlot
 	mov r0, #0
 	strb r0, [r5]
 	ldr r1, off_8147B1C // =byte_200BC50 
@@ -7578,12 +7578,12 @@ loc_8147BAE:
 	ldr r4, off_8147C18 // =byte_20103E0 
 	ldrb r1, [r4]
 	mov r0, #0xc
-	bl sub_814A934
+	bl rfu_clearSlot
 	ldrb r1, [r4]
 	mov r0, #0x20 
 	mov r2, r7
 	mov r3, r8
-	bl sub_814AAF0
+	bl rfu_setRecvBuffer
 	ldr r1, off_8147C1C // =byte_200BC50 
 	mov r0, #0x31 
 	strh r0, [r1,#0x8] // (word_200BC58 - 0x200bc50)
@@ -7764,7 +7764,7 @@ loc_8147DC0:
 	b def_8147C6A
 off_8147DCC: .word byte_200BC50
 loc_8147DD0:
-	bl sub_814A828
+	bl rfu_clearAllSlot
 	bl sub_813D760
 def_8147C6A:
 	pop {r4-r7}
@@ -7794,7 +7794,7 @@ sub_8147DE0:
 	bne loc_8147E20
 	mov r0, #8
 	mov r1, r2
-	bl sub_814A934
+	bl rfu_clearSlot
 	mov r0, #1
 	strb r0, [r4,#1]
 	mov r0, r5
@@ -7809,7 +7809,7 @@ loc_8147E20:
 loc_8147E24:
 	mov r0, #8
 	mov r1, r2
-	bl sub_814A934
+	bl rfu_clearSlot
 	ldr r0, off_8147E40 // =byte_200BC50 
 	ldrh r0, [r0,#0x8] // (word_200BC58 - 0x200bc50)
 	cmp r0, #0x31 
@@ -7885,7 +7885,7 @@ sub_8147E98:
 	bne loc_8147EDC
 	mov r0, #4
 	mov r1, r2
-	bl sub_814A934
+	bl rfu_clearSlot
 	mov r1, #0
 	mov r0, #3
 	strb r0, [r4]
@@ -7905,7 +7905,7 @@ loc_8147EDC:
 	bne loc_8147EF4
 	mov r0, #4
 	mov r1, r2
-	bl sub_814A934
+	bl rfu_clearSlot
 	ldr r0, off_8147EFC // =byte_200BC50 
 	ldrh r0, [r0,#0x8] // (word_200BC58 - 0x200bc50)
 	cmp r0, #0x31 
@@ -8175,7 +8175,7 @@ loc_81480D0:
 	ldr r2, off_81480FC // =byte_2010290 
 	mov r0, #0x20 
 	mov r3, #0x40 
-	bl sub_814AAF0
+	bl rfu_setRecvBuffer
 	ldr r1, off_8148100 // =byte_200BC50 
 	mov r0, #0xd
 	strh r0, [r1,#0x8] // (word_200BC58 - 0x200bc50)
@@ -8242,7 +8242,7 @@ loc_8148178:
 	bl sub_813D934
 	b loc_8148200
 loc_8148180:
-	bl sub_814A828
+	bl rfu_clearAllSlot
 loc_8148184:
 	ldr r1, off_814818C // =byte_200BC50 
 	mov r0, #5
@@ -8538,7 +8538,7 @@ loc_814843C:
 	bne loc_8148492
 	mov r0, #8
 	mov r1, r2
-	bl sub_814A934
+	bl rfu_clearSlot
 	ldr r1, off_8148478 // =byte_2010290 
 	ldrb r0, [r1,#0x1] // (byte_2010291 - 0x2010290)
 	cmp r0, #0
@@ -8573,7 +8573,7 @@ loc_8148492:
 	bhi def_814825A
 	mov r0, #8
 	mov r1, r2
-	bl sub_814A934
+	bl rfu_clearSlot
 	ldr r1, off_81484B4 // =byte_200BC50 
 	mov r0, #0x3f 
 	strh r0, [r1,#0x8] // (word_200BC58 - 0x200bc50)
@@ -8636,7 +8636,7 @@ loc_8148520:
 	b def_814825A
 off_814852C: .word byte_200BC50
 loc_8148530:
-	bl sub_814A828
+	bl rfu_clearAllSlot
 	bl sub_813D760
 def_814825A:
 	pop {r4}
@@ -8764,10 +8764,10 @@ loc_814861A:
 	mov r0, #0x10
 	mov r1, r4
 	mov r3, #0xe
-	bl sub_814AAF0
+	bl rfu_setRecvBuffer
 	mov r0, #3
 	mov r1, r4
-	bl sub_814A934
+	bl rfu_clearSlot
 loc_8148642:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -9194,7 +9194,7 @@ jpt_8148934:
 loc_8148A40:
 	mov r0, #0
 	strh r0, [r2,#0x8] // (word_200BC58 - 0x200bc50)
-	bl sub_814A828
+	bl rfu_clearAllSlot
 	bl sub_8144D64
 	bl sub_813D760
 	b def_8148934
@@ -9205,7 +9205,7 @@ loc_8148A52:
 	b loc_8148A74
 off_8148A5C: .word byte_200BC50
 loc_8148A60:
-	bl sub_814A828
+	bl rfu_clearAllSlot
 	bl sub_813D760
 	b def_8148934
 loc_8148A6A:
@@ -9648,10 +9648,10 @@ loc_8148D9C:
 	ldr r2, off_8148E30 // =unk_20103A0 
 	mov r0, #0x10
 	mov r3, #0x40 
-	bl sub_814AAF0
+	bl rfu_setRecvBuffer
 	ldrb r1, [r4]
 	mov r0, #3
-	bl sub_814A934
+	bl rfu_clearSlot
 	bl sub_803ECFC
 	mov r0, r5
 	mov r1, #0xc
@@ -9968,7 +9968,7 @@ loc_81490E4:
 	.byte 0, 0
 off_81490F0: .word byte_200BC50
 loc_81490F4:
-	bl sub_814A828
+	bl rfu_clearAllSlot
 	bl sub_8144D64
 	ldr r1, off_8149108 // =byte_200BC50 
 	mov r0, #0
@@ -9977,7 +9977,7 @@ loc_81490F4:
 	b def_8148FDA
 off_8149108: .word byte_200BC50
 loc_814910C:
-	bl sub_814A828
+	bl rfu_clearAllSlot
 	bl sub_813D760
 	b def_8148FDA
 loc_8149116:
@@ -10227,7 +10227,7 @@ loc_81492D8:
 	lsr r5, r0, #0x10
 	cmp r5, #3
 	bls loc_81492D8
-	ldr r1, off_8149350 // =sub_814A794+1 
+	ldr r1, off_8149350 // =rfu_STC_fastCopy+1 
 	mov r5, #2
 	neg r5, r5
 	and r5, r1
@@ -10235,7 +10235,7 @@ loc_81492D8:
 	ldr r0, [r2]
 	mov r4, r0
 	add r4, #8
-	ldr r0, off_8149354 // =sub_814A7C4+1 
+	ldr r0, off_8149354 // =rfu_REQ_changeMasterSlave+1 
 	sub r0, r0, r1
 	lsl r0, r0, #0xf
 	lsr r3, r0, #0x10
@@ -10271,8 +10271,8 @@ off_8149340: .word dword_2010CC4
 off_8149344: .word dword_2010CC8
 off_8149348: .word dword_2010CB0
 off_814934C: .word off_2010CA0
-off_8149350: .word sub_814A794+1
-off_8149354: .word sub_814A7C4+1
+off_8149350: .word rfu_STC_fastCopy+1
+off_8149354: .word rfu_REQ_changeMasterSlave+1
 dword_8149358: .word 0xFFFF
 	thumb_func_end sub_8149220
 
@@ -10312,7 +10312,7 @@ sub_814935C:
 	ldr r1, [r4]
 	mov r0, #0xff
 	strb r0, [r1]
-	bl sub_814A828
+	bl rfu_clearAllSlot
 	ldr r0, [r5]
 	strb r6, [r0,#9]
 	mov r2, #0
@@ -11142,7 +11142,7 @@ sub_8149994:
 	mov r4, r0
 	lsl r4, r4, #0x18
 	lsr r4, r4, #0x18
-	bl sub_814A828
+	bl rfu_clearAllSlot
 	cmp r4, #0
 	beq loc_81499BC
 	mov r0, sp
@@ -11954,7 +11954,7 @@ sub_8149F80:
 	sub r0, #1
 	strb r0, [r1,#6]
 loc_8149F9E:
-	bl sub_814A7F0
+	bl rfu_getMasterSlave
 	lsl r0, r0, #0x18
 	lsr r3, r0, #0x18
 	ldr r2, [r4]
@@ -12856,19 +12856,19 @@ off_814A694: .word dword_2010CC0
 	thumb_func_end sub_814A63C
 
 	thumb_local_start
-sub_814A698:
+rfu_REQ_CHILD_pollConnectRecovery:
 	push {lr}
-	ldr r0, off_814A6A8 // =sub_814A6AC+1 
+	ldr r0, off_814A6A8 // =rfu_CB_CHILD_pollConnectRecovery+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_CPR_PollingREQ
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_814A6A8: .word sub_814A6AC+1
-	thumb_func_end sub_814A698
+off_814A6A8: .word rfu_CB_CHILD_pollConnectRecovery+1
+	thumb_func_end rfu_REQ_CHILD_pollConnectRecovery
 
 	thumb_local_start
-sub_814A6AC:
+rfu_CB_CHILD_pollConnectRecovery:
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -12950,10 +12950,10 @@ loc_814A730:
 off_814A744: .word dword_2010CC8
 off_814A748: .word dword_2010CC4
 off_814A74C: .word dword_2010CC0
-	thumb_func_end sub_814A6AC
+	thumb_func_end rfu_CB_CHILD_pollConnectRecovery
 
 	thumb_local_start
-sub_814A750:
+rfu_CHILD_getConnectRecoveryStatus:
 	push {lr}
 	mov r2, r0
 	mov r0, #0xff
@@ -12979,23 +12979,22 @@ loc_814A774:
 loc_814A77A:
 	pop {r1}
 	bx r1
-	.byte 0, 0
-	thumb_func_end sub_814A750
+	thumb_func_end rfu_CHILD_getConnectRecoveryStatus
 
-	thumb_local_start
-sub_814A780:
+	thumb_local_start 2
+rfu_REQ_CHILD_endConnectRecovery:
 	push {lr}
-	ldr r0, off_814A790 // =sub_814A6AC+1 
+	ldr r0, off_814A790 // =rfu_CB_CHILD_pollConnectRecovery+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_CPR_EndREQ
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_814A790: .word sub_814A6AC+1
-	thumb_func_end sub_814A780
+off_814A790: .word rfu_CB_CHILD_pollConnectRecovery+1
+	thumb_func_end rfu_REQ_CHILD_endConnectRecovery
 
 	thumb_local_start
-sub_814A794:
+rfu_STC_fastCopy:
 	push {r4-r6,lr}
 	mov r5, r0
 	mov r6, r1
@@ -13022,10 +13021,10 @@ loc_814A7B8:
 	pop {r0}
 	bx r0
 	.balign 4, 0x00
-	thumb_func_end sub_814A794
+	thumb_func_end rfu_STC_fastCopy
 
 	thumb_local_start
-sub_814A7C4:
+rfu_REQ_changeMasterSlave:
 	push {lr}
 	mov r0, #1
 	bl STWI_read_status
@@ -13046,10 +13045,10 @@ loc_814A7E4:
 loc_814A7EC:
 	pop {r0}
 	bx r0
-	thumb_func_end sub_814A7C4
+	thumb_func_end rfu_REQ_changeMasterSlave
 
 	thumb_local_start
-sub_814A7F0:
+rfu_getMasterSlave:
 	push {lr}
 	mov r0, #1
 	bl STWI_read_status
@@ -13079,10 +13078,10 @@ loc_814A81E:
 	bx r1
 	.balign 4, 0
 off_814A824: .word dword_2010CCC
-	thumb_func_end sub_814A7F0
+	thumb_func_end rfu_getMasterSlave
 
-	thumb_func_start sub_814A828
-sub_814A828:
+	thumb_func_start rfu_clearAllSlot
+rfu_clearAllSlot:
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -13155,10 +13154,10 @@ off_814A8B8: .word off_2010CA0
 dword_814A8BC: .word 0x100000A
 off_814A8C0: .word dword_2010CC0
 off_814A8C4: .word dword_2010CC4
-	thumb_func_end sub_814A828
+	thumb_func_end rfu_clearAllSlot
 
 	thumb_local_start
-sub_814A8C8:
+rfu_STC_releaseFrame:
 	push {r4-r6,lr}
 	mov r4, r2
 	lsl r0, r0, #0x18
@@ -13214,10 +13213,10 @@ loc_814A928:
 	bx r0
 	.byte 0, 0
 off_814A930: .word dword_2010CC0
-	thumb_func_end sub_814A8C8
+	thumb_func_end rfu_STC_releaseFrame
 
 	thumb_local_start
-sub_814A934:
+rfu_clearSlot:
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -13315,7 +13314,7 @@ loc_814A9D4:
 	lsr r1, r1, #0x18
 	mov r0, r7
 	mov r2, r4
-	bl sub_814A8C8
+	bl rfu_STC_releaseFrame
 	mov r1, #0
 	mov r2, r4
 	add r2, #0x2c 
@@ -13441,10 +13440,10 @@ dword_814AAE0: .word 0x1000006
 off_814AAE4: .word off_2010CA0
 dword_814AAE8: .word 0x1000004
 off_814AAEC: .word InterruptMasterEnableRegister
-	thumb_func_end sub_814A934
+	thumb_func_end rfu_clearSlot
 
 	thumb_local_start
-sub_814AAF0:
+rfu_setRecvBuffer:
 	push {r4-r6,lr}
 	mov r5, r2
 	mov r6, r3
@@ -13496,7 +13495,7 @@ loc_814AB44:
 	bx r1
 	.balign 4, 0x00
 off_814AB4C: .word off_2010CA0
-	thumb_func_end sub_814AAF0
+	thumb_func_end rfu_setRecvBuffer
 
 	thumb_local_start
 rfu_NI_setSendData:
@@ -13949,7 +13948,7 @@ loc_814AE72:
 	mov r0, r7
 	mov r1, #0
 	mov r2, r5
-	bl sub_814A8C8
+	bl rfu_STC_releaseFrame
 	mov r0, #0x27 
 	strh r0, [r5]
 loc_814AE9E:
@@ -14101,7 +14100,7 @@ loc_814AFA6:
 	mov r0, r3
 	mov r1, #1
 	mov r2, r5
-	bl sub_814A8C8
+	bl rfu_STC_releaseFrame
 loc_814AFC0:
 	ldr r0, off_814AFD0 // =InterruptMasterEnableRegister 
 	strh r4, [r0]
@@ -14427,7 +14426,7 @@ loc_814B21E:
 	mov r0, r6
 	mov r1, #0
 	mov r2, r4
-	bl sub_814A8C8
+	bl rfu_STC_releaseFrame
 	ldr r5, off_814B28C // =dword_2010CC0 
 	ldr r2, [r5]
 	ldrb r1, [r4,#0x1a]
@@ -15126,7 +15125,7 @@ loc_814B75E:
 	mov r1, #1
 	mov r2, r5
 	str r3, [sp]
-	bl sub_814A8C8
+	bl rfu_STC_releaseFrame
 	ldr r3, [sp]
 	ldr r2, [r3]
 	ldrb r1, [r5,#0x1a]
@@ -16256,7 +16255,7 @@ loc_814BFC4:
 	mov r0, r5
 	mov r1, #1
 	mov r2, r4
-	bl sub_814A8C8
+	bl rfu_STC_releaseFrame
 	b loc_814C04C
 	.balign 4, 0x00
 off_814C008: .word dword_2010CB0
