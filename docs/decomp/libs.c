@@ -734,7 +734,7 @@ int sub_8144D64()
 {
     signed int v0; // r4
 
-    v0 = sub_8149718();
+    v0 = rfu_REQBN_softReset_and_checkID();
     if ( v0 == 32769 )
         byte_200FE08 = 1;
     if ( byte_200FE04 != 23 && byte_200FE04 != 1 )
@@ -1271,37 +1271,37 @@ int __fastcall sub_81453F0(int a1)
                         byte_200FE05 = 3;
                         break;
                     case 2:
-                        sub_8149754();
+                        rfu_REQ_reset();
                         break;
                     case 3:
-                        sub_814978C(*(dword_200FE3C + 2), *dword_200FE3C, *(dword_200FE3C + 1));
+                        rfu_REQ_configSystem(*(dword_200FE3C + 2), *dword_200FE3C, *(dword_200FE3C + 1));
                         break;
                     case 4:
-                        sub_81497F4(*(dword_200FE3C + 4), *(dword_200FE3C + 6), *(dword_200FE3C + 8), *(dword_200FE3C + 12));
+                        rfu_REQ_configGameData(*(dword_200FE3C + 4), *(dword_200FE3C + 6), *(dword_200FE3C + 8), *(dword_200FE3C + 12));
                         break;
                     case 5:
-                        sub_814991C();
+                        rfu_REQ_startSearchChild();
                         break;
                     case 6:
-                        sub_81499F8();
+                        rfu_REQ_pollSearchChild();
                         break;
                     case 7:
-                        sub_8149A0C();
+                        rfu_REQ_endSearchChild();
                         break;
                     case 9:
-                        sub_8149BE4();
+                        rfu_REQ_startSearchParent();
                         break;
                     case 0xA:
-                        sub_8149C1C();
+                        rfu_REQ_pollSearchParent();
                         break;
                     case 0xB:
-                        sub_8149C54();
+                        rfu_REQ_endSearchParent();
                         break;
                     case 0xC:
-                        sub_8149D78(word_200FE1E);
+                        rfu_REQ_startConnectParent(word_200FE1E);
                         break;
                     case 0xD:
-                        sub_8149DE0();
+                        rfu_REQ_pollConnectParent();
                         break;
                     case 0xE:
                         rfu_REQ_endConnectParent();
@@ -1495,7 +1495,7 @@ int __fastcall sub_8145658(unsigned __int16 a1, unsigned __int16 a2)
                         sub_81461B0(32, 1);
                     if ( byte_200FE0B && word_200FE1A != 1 && *(dword_2010CC0 + 8) == 4 )
                     {
-                        sub_8149C54();
+                        rfu_REQ_endSearchParent();
                         sub_8149568();
                         byte_200FE04 = 9;
                         byte_200FE0B = 1;
@@ -5211,7 +5211,7 @@ int sub_8149644()
             while ( *v1 << 16 <= 0x105FFFFu )
                 ;
             *v1 = 0;
-            STWI_set_Callback_M(sub_81496EC);
+            STWI_set_Callback_M(rfu_CB_stopMode);
             STWI_send_StopModeREQ();
         }
         else
@@ -5231,7 +5231,7 @@ int sub_8149644()
 
 
 // 0x81496ec
-int __fastcall sub_81496EC(unsigned __int8 a1, unsigned __int16 a2)
+int __fastcall rfu_CB_stopMode(unsigned __int8 a1, unsigned __int16 a2)
 {
     int v3; // [sp+4h] [bp-4h]
 
@@ -5243,7 +5243,7 @@ int __fastcall sub_81496EC(unsigned __int8 a1, unsigned __int16 a2)
 
 
 // 0x8149718
-signed int sub_8149718()
+signed int rfu_REQBN_softReset_and_checkID()
 {
     signed int v1; // r2
 
@@ -5259,18 +5259,18 @@ signed int sub_8149718()
 
 
 // 0x8149754
-int sub_8149754()
+int rfu_REQ_reset()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    STWI_set_Callback_M(sub_8149768);
+    STWI_set_Callback_M(rfu_CB_reset);
     STWI_send_ResetREQ();
     return v1;
 }
 
 
 // 0x8149768
-int __fastcall sub_8149768(unsigned __int8 a1, unsigned __int16 a2)
+int __fastcall rfu_CB_reset(unsigned __int8 a1, unsigned __int16 a2)
 {
     unsigned __int8 v2; // r5
     unsigned __int16 v3; // r4
@@ -5286,7 +5286,7 @@ int __fastcall sub_8149768(unsigned __int8 a1, unsigned __int16 a2)
 
 
 // 0x814978c
-int __fastcall sub_814978C(char a1, unsigned __int8 a2, unsigned __int8 a3)
+int __fastcall rfu_REQ_configSystem(char a1, unsigned __int8 a2, unsigned __int8 a3)
 {
     char v3; // r4
     unsigned __int8 v4; // r5
@@ -5315,7 +5315,7 @@ int __fastcall sub_814978C(char a1, unsigned __int8 a2, unsigned __int8 a3)
 
 
 // 0x81497f4
-int __fastcall sub_81497F4(unsigned __int8 a1, int a2, char *a3, unsigned __int8 *a4)
+int __fastcall rfu_REQ_configGameData(unsigned __int8 a1, int a2, char *a3, unsigned __int8 *a4)
 {
     char *v4; // r4
     unsigned __int8 *v5; // r7
@@ -5360,14 +5360,14 @@ int __fastcall sub_81497F4(unsigned __int8 a1, int a2, char *a3, unsigned __int8
     v17 = ~v9;
     if ( v6 )
         v16 = 0;
-    STWI_set_Callback_M(sub_8149880);
+    STWI_set_Callback_M(rfu_CB_configGameData);
     STWI_send_GameConfigREQ(&v14, v5);
     return v18;
 }
 
 
 // 0x8149880
-int __fastcall sub_8149880(unsigned __int8 a1, unsigned __int16 a2)
+int __fastcall rfu_CB_configGameData(unsigned __int8 a1, unsigned __int16 a2)
 {
     unsigned __int8 v2; // r12
     unsigned __int16 v3; // r7
@@ -5430,7 +5430,7 @@ int __fastcall sub_8149880(unsigned __int8 a1, unsigned __int16 a2)
 
 
 // 0x814991c
-int sub_814991C()
+int rfu_REQ_startSearchChild()
 {
     unsigned __int16 v0; // r0
     int v2; // [sp+0h] [bp-4h]
@@ -5444,16 +5444,16 @@ int sub_814991C()
     }
     else if ( !*(*(dword_2010CC8 + 220) + 7) )
     {
-        sub_8149994(1u);
+        rfu_STC_clearLinkStatus(1u);
     }
-    STWI_set_Callback_M(sub_814996C);
+    STWI_set_Callback_M(rfu_CB_startSearchChild);
     STWI_send_SC_StartREQ();
     return v2;
 }
 
 
 // 0x814996c
-int __fastcall sub_814996C(unsigned __int8 a1, unsigned __int16 a2)
+int __fastcall rfu_CB_startSearchChild(unsigned __int8 a1, unsigned __int16 a2)
 {
     int v3; // [sp+0h] [bp-4h]
 
@@ -5465,7 +5465,7 @@ int __fastcall sub_814996C(unsigned __int8 a1, unsigned __int16 a2)
 
 
 // 0x8149994
-int __fastcall sub_8149994(unsigned __int8 a1)
+int __fastcall rfu_STC_clearLinkStatus(unsigned __int8 a1)
 {
     int v1; // r4
     unsigned int v2; // r1
@@ -5496,29 +5496,29 @@ int __fastcall sub_8149994(unsigned __int8 a1)
 
 
 // 0x81499f8
-int sub_81499F8()
+int rfu_REQ_pollSearchChild()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    STWI_set_Callback_M(sub_8149A20);
+    STWI_set_Callback_M(rfu_CB_pollAndEndSearchChild);
     STWI_send_SC_PollingREQ();
     return v1;
 }
 
 
 // 0x8149a0c
-int sub_8149A0C()
+int rfu_REQ_endSearchChild()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    STWI_set_Callback_M(sub_8149A20);
+    STWI_set_Callback_M(rfu_CB_pollAndEndSearchChild);
     STWI_send_SC_EndREQ();
     return v1;
 }
 
 
 // 0x8149a20
-int __fastcall sub_8149A20(unsigned __int8 a1, unsigned __int16 a2)
+int __fastcall rfu_CB_pollAndEndSearchChild(unsigned __int8 a1, unsigned __int16 a2)
 {
     int v2; // r4
     unsigned __int16 v3; // r6
@@ -5527,7 +5527,7 @@ int __fastcall sub_8149A20(unsigned __int8 a1, unsigned __int16 a2)
     v2 = a1;
     v3 = a2;
     if ( !a2 )
-        sub_8149AA8();
+        rfu_STC_readChildList();
     if ( v2 == 26 )
     {
         if ( !*(dword_2010CC0 + 148) )
@@ -5550,7 +5550,7 @@ int __fastcall sub_8149A20(unsigned __int8 a1, unsigned __int16 a2)
 
 
 // 0x8149aa8
-int sub_8149AA8()
+int rfu_STC_readChildList()
 {
     int v0; // r0
     int v1; // r8
@@ -5613,18 +5613,18 @@ int sub_8149AA8()
 
 
 // 0x8149be4
-int sub_8149BE4()
+int rfu_REQ_startSearchParent()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    STWI_set_Callback_M(sub_8149BF8);
+    STWI_set_Callback_M(rfu_CB_startSearchParent);
     STWI_send_SP_StartREQ();
     return v1;
 }
 
 
 // 0x8149bf8
-int __fastcall sub_8149BF8(unsigned __int8 a1, unsigned __int16 a2)
+int __fastcall rfu_CB_startSearchParent(unsigned __int8 a1, unsigned __int16 a2)
 {
     unsigned __int8 v2; // r5
     unsigned __int16 v3; // r4
@@ -5633,25 +5633,25 @@ int __fastcall sub_8149BF8(unsigned __int8 a1, unsigned __int16 a2)
     v2 = a1;
     v3 = a2;
     if ( !a2 )
-        sub_8149994(0);
+        rfu_STC_clearLinkStatus(0);
     rfu_STC_REQ_callback(v2, v3);
     return v5;
 }
 
 
 // 0x8149c1c
-int sub_8149C1C()
+int rfu_REQ_pollSearchParent()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    STWI_set_Callback_M(sub_8149C30);
+    STWI_set_Callback_M(rfu_CB_pollSearchParent);
     STWI_send_SP_EndREQ();
     return v1;
 }
 
 
 // 0x8149c30
-int __fastcall sub_8149C30(unsigned __int8 a1, unsigned __int16 a2)
+int __fastcall rfu_CB_pollSearchParent(unsigned __int8 a1, unsigned __int16 a2)
 {
     unsigned __int8 v2; // r5
     unsigned __int16 v3; // r4
@@ -5660,14 +5660,14 @@ int __fastcall sub_8149C30(unsigned __int8 a1, unsigned __int16 a2)
     v2 = a1;
     v3 = a2;
     if ( !a2 )
-        sub_8149C68();
+        rfu_STC_readParentCandidateList();
     rfu_STC_REQ_callback(v2, v3);
     return v5;
 }
 
 
 // 0x8149c54
-int sub_8149C54()
+int rfu_REQ_endSearchParent()
 {
     int v1; // [sp+0h] [bp-4h]
 
@@ -5678,7 +5678,7 @@ int sub_8149C54()
 
 
 // 0x8149c68
-int sub_8149C68()
+int rfu_STC_readParentCandidateList()
 {
     int v0; // r2
     int v1; // r7
@@ -5768,7 +5768,7 @@ int sub_8149C68()
 
 
 // 0x8149d78
-int __fastcall sub_8149D78(unsigned __int16 a1)
+int __fastcall rfu_REQ_startConnectParent(unsigned __int16 a1)
 {
     unsigned __int16 v1; // r4
     signed int v2; // r3
@@ -5801,18 +5801,18 @@ int __fastcall sub_8149D78(unsigned __int16 a1)
 
 
 // 0x8149de0
-int sub_8149DE0()
+int rfu_REQ_pollConnectParent()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    STWI_set_Callback_M(sub_8149DF4);
+    STWI_set_Callback_M(rfu_CB_pollConnectParent);
     STWI_send_CP_PollingREQ();
     return v1;
 }
 
 
 // 0x8149df4
-int __fastcall sub_8149DF4(unsigned __int8 a1, unsigned __int16 a2)
+int __fastcall rfu_CB_pollConnectParent(unsigned __int8 a1, unsigned __int16 a2)
 {
     int *v2; // r9
     int v3; // r0
@@ -5908,7 +5908,7 @@ int rfu_REQ_endConnectParent()
     int v0; // r1
     int v2; // [sp+0h] [bp-4h]
 
-    STWI_set_Callback_M(sub_8149DF4);
+    STWI_set_Callback_M(rfu_CB_pollConnectParent);
     STWI_send_CP_EndREQ();
     v0 = *(dword_2010CC8 + 220);
     if ( *(v0 + 6) <= 3u )

@@ -2805,7 +2805,7 @@ int sub_813D638()
 // 0x813d648
 int sub_813D648()
 {
-    return sub_8149718();
+    return rfu_REQBN_softReset_and_checkID();
 }
 
 

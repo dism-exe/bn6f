@@ -3713,7 +3713,7 @@ off_813D644: .word byte_2009470
 	thumb_func_start sub_813D648
 sub_813D648:
 	push {lr}
-	bl sub_8149718
+	bl rfu_REQBN_softReset_and_checkID
 	ldr r1, byte_813D654 // =0x1 
 	cmp r0, r1
 	pop {pc}

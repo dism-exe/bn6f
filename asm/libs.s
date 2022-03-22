@@ -1646,7 +1646,7 @@ loc_8144D5E:
 	thumb_local_start
 sub_8144D64:
 	push {r4,lr}
-	bl sub_8149718
+	bl rfu_REQBN_softReset_and_checkID
 	mov r4, r0
 	ldr r0, dword_8144DA8 // =0x8001 
 	cmp r4, r0
@@ -2638,7 +2638,7 @@ loc_81454F2:
 	.balign 4, 0x00
 off_81454FC: .word eStruct200FE00
 loc_8145500:
-	bl sub_8149754
+	bl rfu_REQ_reset
 	b def_814543E
 loc_8145506:
 	ldr r0, off_8145518 // =eStruct200FE00 
@@ -2646,7 +2646,7 @@ loc_8145506:
 	ldrh r0, [r2,#2]
 	ldrb r1, [r2]
 	ldrb r2, [r2,#1]
-	bl sub_814978C
+	bl rfu_REQ_configSystem
 	b def_814543E
 	.balign 4, 0x00
 off_8145518: .word eStruct200FE00
@@ -2657,37 +2657,37 @@ loc_814551C:
 	ldrh r1, [r3,#6]
 	ldr r2, [r3,#8]
 	ldr r3, [r3,#0xc]
-	bl sub_81497F4
+	bl rfu_REQ_configGameData
 	b def_814543E
 	.byte 0, 0
 off_8145530: .word eStruct200FE00
 loc_8145534:
-	bl sub_814991C
+	bl rfu_REQ_startSearchChild
 	b def_814543E
 loc_814553A:
-	bl sub_81499F8
+	bl rfu_REQ_pollSearchChild
 	b def_814543E
 loc_8145540:
-	bl sub_8149A0C
+	bl rfu_REQ_endSearchChild
 	b def_814543E
 loc_8145546:
-	bl sub_8149BE4
+	bl rfu_REQ_startSearchParent
 	b def_814543E
 loc_814554C:
-	bl sub_8149C1C
+	bl rfu_REQ_pollSearchParent
 	b def_814543E
 loc_8145552:
-	bl sub_8149C54
+	bl rfu_REQ_endSearchParent
 	b def_814543E
 loc_8145558:
 	ldr r0, off_8145564 // =eStruct200FE00 
 	ldrh r0, [r0,#0x1e] // (word_200FE1E - 0x200fe00)
-	bl sub_8149D78
+	bl rfu_REQ_startConnectParent
 	b def_814543E
 	.balign 4, 0x00
 off_8145564: .word eStruct200FE00
 loc_8145568:
-	bl sub_8149DE0
+	bl rfu_REQ_pollConnectParent
 	b def_814543E
 loc_814556E:
 	bl rfu_REQ_endConnectParent
@@ -3024,7 +3024,7 @@ loc_8145824:
 	ldrb r0, [r0,#8]
 	cmp r0, #4
 	bne loc_814584A
-	bl sub_8149C54
+	bl rfu_REQ_endSearchParent
 	bl sub_8149568
 	mov r0, #9
 	strb r0, [r4,#0x4] // (byte_200FE04 - 0x200fe00)
@@ -10734,7 +10734,7 @@ loc_814966C:
 	ldr r0, [r1]
 	lsl r0, r0, #0x10
 	ldr r2, dword_81496C8 // =0x105ffff 
-	ldr r3, off_81496CC // =sub_81496EC+1 
+	ldr r3, off_81496CC // =rfu_CB_stopMode+1 
 	cmp r0, r2
 	bhi loc_81496AA
 loc_81496A2:
@@ -10754,7 +10754,7 @@ dword_81496BC: .word 0x8001
 off_81496C0: .word dword_2010CCC
 off_81496C4: .word Timer0Counter_Reload
 dword_81496C8: .word 0x105FFFF
-off_81496CC: .word sub_81496EC+1
+off_81496CC: .word rfu_CB_stopMode+1
 loc_81496D0:
 	ldr r1, off_81496E8 // =SIOControlRegister 
 	mov r2, #0x80
@@ -10772,7 +10772,7 @@ off_81496E8: .word SIOControlRegister
 	thumb_func_end sub_8149644
 
 	thumb_local_start
-sub_81496EC:
+rfu_CB_stopMode:
 	push {r4,lr}
 	lsl r0, r0, #0x18
 	lsr r3, r0, #0x18
@@ -10795,10 +10795,10 @@ loc_8149706:
 	bx r0
 	.balign 4, 0
 off_8149714: .word SIOControlRegister
-	thumb_func_end sub_81496EC
+	thumb_func_end rfu_CB_stopMode
 
-	thumb_func_start sub_8149718
-sub_8149718:
+	thumb_func_start rfu_REQBN_softReset_and_checkID
+rfu_REQBN_softReset_and_checkID:
 	push {lr}
 	ldr r0, off_8149728 // =InterruptMasterEnableRegister 
 	ldrh r0, [r0]
@@ -10828,22 +10828,22 @@ loc_814974C:
 	pop {r1}
 	bx r1
 off_8149750: .word SIOControlRegister
-	thumb_func_end sub_8149718
+	thumb_func_end rfu_REQBN_softReset_and_checkID
 
 	thumb_local_start
-sub_8149754:
+rfu_REQ_reset:
 	push {lr}
-	ldr r0, off_8149764 // =sub_8149768+1 
+	ldr r0, off_8149764 // =rfu_CB_reset+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_ResetREQ
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_8149764: .word sub_8149768+1
-	thumb_func_end sub_8149754
+off_8149764: .word rfu_CB_reset+1
+	thumb_func_end rfu_REQ_reset
 
 	thumb_local_start
-sub_8149768:
+rfu_CB_reset:
 	push {r4,r5,lr}
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
@@ -10861,10 +10861,10 @@ loc_814977C:
 	pop {r0}
 	bx r0
 	.balign 4, 0x00
-	thumb_func_end sub_8149768
+	thumb_func_end rfu_CB_reset
 
 	thumb_local_start
-sub_814978C:
+rfu_REQ_configSystem:
 	push {r4-r6,lr}
 	mov r4, r0
 	mov r5, r1
@@ -10913,10 +10913,10 @@ loc_81497E6:
 	bx r0
 off_81497EC: .word InterruptMasterEnableRegister
 off_81497F0: .word dword_2010CC4
-	thumb_func_end sub_814978C
+	thumb_func_end rfu_REQ_configSystem
 
 	thumb_local_start
-sub_81497F4:
+rfu_REQ_configGameData:
 	push {r4-r7,lr}
 	sub sp, sp, #0x10
 	mov r4, r2
@@ -10938,7 +10938,7 @@ sub_81497F4:
 	strb r2, [r0,#1]
 loc_814981A:
 	mov r2, #2
-	ldr r0, off_814987C // =sub_8149880+1 
+	ldr r0, off_814987C // =rfu_CB_configGameData+1 
 	mov r12, r0
 loc_8149820:
 	mov r3, sp
@@ -10988,11 +10988,11 @@ loc_8149866:
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_814987C: .word sub_8149880+1
-	thumb_func_end sub_81497F4
+off_814987C: .word rfu_CB_configGameData+1
+	thumb_func_end rfu_REQ_configGameData
 
 	thumb_local_start
-sub_8149880:
+rfu_CB_configGameData:
 	push {r4-r7,lr}
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -11073,10 +11073,10 @@ loc_814990A:
 	pop {r0}
 	bx r0
 off_8149918: .word dword_2010CC0
-	thumb_func_end sub_8149880
+	thumb_func_end rfu_CB_configGameData
 
 	thumb_local_start
-sub_814991C:
+rfu_REQ_startSearchChild:
 	push {lr}
 	ldr r0, off_814994C // =sub_81494F8+1 
 	bl STWI_set_Callback_M
@@ -11094,7 +11094,7 @@ sub_814991C:
 	cmp r0, #0
 	bne loc_814995A
 	mov r0, #1
-	bl sub_8149994
+	bl rfu_STC_clearLinkStatus
 	b loc_814995A
 	.balign 4, 0
 off_814994C: .word sub_81494F8+1
@@ -11103,16 +11103,16 @@ loc_8149954:
 	mov r0, #0x19
 	bl rfu_STC_REQ_callback
 loc_814995A:
-	ldr r0, off_8149968 // =sub_814996C+1 
+	ldr r0, off_8149968 // =rfu_CB_startSearchChild+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_SC_StartREQ
 	pop {r0}
 	bx r0
-off_8149968: .word sub_814996C+1
-	thumb_func_end sub_814991C
+off_8149968: .word rfu_CB_startSearchChild+1
+	thumb_func_end rfu_REQ_startSearchChild
 
 	thumb_local_start
-sub_814996C:
+rfu_CB_startSearchChild:
 	push {lr}
 	lsl r0, r0, #0x18
 	lsr r3, r0, #0x18
@@ -11133,10 +11133,10 @@ loc_8149984:
 	bx r0
 	.balign 4, 0
 off_8149990: .word dword_2010CC4
-	thumb_func_end sub_814996C
+	thumb_func_end rfu_CB_startSearchChild
 
 	thumb_local_start
-sub_8149994:
+rfu_STC_clearLinkStatus:
 	push {r4,r5,lr}
 	sub sp, sp, #4
 	mov r4, r0
@@ -11186,34 +11186,34 @@ loc_81499C4:
 	.balign 4, 0
 off_81499F0: .word dword_2010CC0
 dword_81499F4: .word 0x1000040
-	thumb_func_end sub_8149994
+	thumb_func_end rfu_STC_clearLinkStatus
 
 	thumb_local_start
-sub_81499F8:
+rfu_REQ_pollSearchChild:
 	push {lr}
-	ldr r0, off_8149A08 // =sub_8149A20+1 
+	ldr r0, off_8149A08 // =rfu_CB_pollAndEndSearchChild+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_SC_PollingREQ
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_8149A08: .word sub_8149A20+1
-	thumb_func_end sub_81499F8
+off_8149A08: .word rfu_CB_pollAndEndSearchChild+1
+	thumb_func_end rfu_REQ_pollSearchChild
 
 	thumb_local_start
-sub_8149A0C:
+rfu_REQ_endSearchChild:
 	push {lr}
-	ldr r0, off_8149A1C // =sub_8149A20+1 
+	ldr r0, off_8149A1C // =rfu_CB_pollAndEndSearchChild+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_SC_EndREQ
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_8149A1C: .word sub_8149A20+1
-	thumb_func_end sub_8149A0C
+off_8149A1C: .word rfu_CB_pollAndEndSearchChild+1
+	thumb_func_end rfu_REQ_endSearchChild
 
 	thumb_local_start
-sub_8149A20:
+rfu_CB_pollAndEndSearchChild:
 	push {r4-r6,lr}
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -11221,7 +11221,7 @@ sub_8149A20:
 	lsr r6, r1, #0x10
 	cmp r6, #0
 	bne loc_8149A32
-	bl sub_8149AA8
+	bl rfu_STC_readChildList
 loc_8149A32:
 	cmp r4, #0x1a
 	bne loc_8149A74
@@ -11277,10 +11277,10 @@ loc_8149A90:
 	.byte 0, 0
 off_8149AA0: .word dword_2010CC0
 off_8149AA4: .word dword_2010CC4
-	thumb_func_end sub_8149A20
+	thumb_func_end rfu_CB_pollAndEndSearchChild
 
 	thumb_local_start
-sub_8149AA8:
+rfu_STC_readChildList:
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -11439,22 +11439,22 @@ off_8149BD4: .word dword_2010CC8
 off_8149BD8: .word sub_81494F8+1
 off_8149BDC: .word dword_2010CC4
 off_8149BE0: .word dword_2010CC0
-	thumb_func_end sub_8149AA8
+	thumb_func_end rfu_STC_readChildList
 
 	thumb_local_start
-sub_8149BE4:
+rfu_REQ_startSearchParent:
 	push {lr}
-	ldr r0, off_8149BF4 // =sub_8149BF8+1 
+	ldr r0, off_8149BF4 // =rfu_CB_startSearchParent+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_SP_StartREQ
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_8149BF4: .word sub_8149BF8+1
-	thumb_func_end sub_8149BE4
+off_8149BF4: .word rfu_CB_startSearchParent+1
+	thumb_func_end rfu_REQ_startSearchParent
 
 	thumb_local_start
-sub_8149BF8:
+rfu_CB_startSearchParent:
 	push {r4,r5,lr}
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
@@ -11464,7 +11464,7 @@ sub_8149BF8:
 	cmp r4, #0
 	bne loc_8149C0E
 	mov r0, #0
-	bl sub_8149994
+	bl rfu_STC_clearLinkStatus
 loc_8149C0E:
 	mov r0, r5
 	mov r1, r4
@@ -11472,22 +11472,22 @@ loc_8149C0E:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
-	thumb_func_end sub_8149BF8
+	thumb_func_end rfu_CB_startSearchParent
 
 	thumb_local_start
-sub_8149C1C:
+rfu_REQ_pollSearchParent:
 	push {lr}
-	ldr r0, off_8149C2C // =sub_8149C30+1 
+	ldr r0, off_8149C2C // =rfu_CB_pollSearchParent+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_SP_PollingREQ
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_8149C2C: .word sub_8149C30+1
-	thumb_func_end sub_8149C1C
+off_8149C2C: .word rfu_CB_pollSearchParent+1
+	thumb_func_end rfu_REQ_pollSearchParent
 
 	thumb_local_start
-sub_8149C30:
+rfu_CB_pollSearchParent:
 	push {r4,r5,lr}
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
@@ -11496,7 +11496,7 @@ sub_8149C30:
 	mov r4, r1
 	cmp r4, #0
 	bne loc_8149C44
-	bl sub_8149C68
+	bl rfu_STC_readParentCandidateList
 loc_8149C44:
 	mov r0, r5
 	mov r1, r4
@@ -11505,10 +11505,10 @@ loc_8149C44:
 	pop {r0}
 	bx r0
 	.balign 4, 0x00
-	thumb_func_end sub_8149C30
+	thumb_func_end rfu_CB_pollSearchParent
 
 	thumb_local_start
-sub_8149C54:
+rfu_REQ_endSearchParent:
 	push {lr}
 	ldr r0, off_8149C64 // =rfu_STC_REQ_callback+1 
 	bl STWI_set_Callback_M
@@ -11517,10 +11517,10 @@ sub_8149C54:
 	bx r0
 	.balign 4, 0
 off_8149C64: .word rfu_STC_REQ_callback+1
-	thumb_func_end sub_8149C54
+	thumb_func_end rfu_REQ_endSearchParent
 
 	thumb_local_start
-sub_8149C68:
+rfu_STC_readParentCandidateList:
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -11661,10 +11661,10 @@ loc_8149D6C:
 	pop {r4-r7}
 	pop {r0}
 	bx r0
-	thumb_func_end sub_8149C68
+	thumb_func_end rfu_STC_readParentCandidateList
 
 	thumb_local_start
-sub_8149D78:
+rfu_REQ_startConnectParent:
 	push {r4,r5,lr}
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -11717,22 +11717,22 @@ loc_8149DD8:
 	pop {r0}
 	bx r0
 	.byte 0, 0
-	thumb_func_end sub_8149D78
+	thumb_func_end rfu_REQ_startConnectParent
 
 	thumb_local_start
-sub_8149DE0:
+rfu_REQ_pollConnectParent:
 	push {lr}
-	ldr r0, off_8149DF0 // =sub_8149DF4+1 
+	ldr r0, off_8149DF0 // =rfu_CB_pollConnectParent+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_CP_PollingREQ
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_8149DF0: .word sub_8149DF4+1
-	thumb_func_end sub_8149DE0
+off_8149DF0: .word rfu_CB_pollConnectParent+1
+	thumb_func_end rfu_REQ_pollConnectParent
 
 	thumb_local_start
-sub_8149DF4:
+rfu_CB_pollConnectParent:
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -11874,7 +11874,7 @@ loc_8149EF6:
 	bx r0
 	.balign 4, 0
 off_8149F10: .word dword_2010CC0
-	thumb_func_end sub_8149DF4
+	thumb_func_end rfu_CB_pollConnectParent
 
 	thumb_local_start
 rfu_getConnectParentStatus:
@@ -11911,7 +11911,7 @@ loc_8149F44:
 	thumb_local_start
 rfu_REQ_endConnectParent:
 	push {lr}
-	ldr r0, off_8149F74 // =sub_8149DF4+1 
+	ldr r0, off_8149F74 // =rfu_CB_pollConnectParent+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_CP_EndREQ
 	ldr r0, off_8149F78 // =dword_2010CC8 
@@ -11932,7 +11932,7 @@ loc_8149F70:
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_8149F74: .word sub_8149DF4+1
+off_8149F74: .word rfu_CB_pollConnectParent+1
 off_8149F78: .word dword_2010CC8
 off_8149F7C: .word dword_2010CC4
 	thumb_func_end rfu_REQ_endConnectParent
