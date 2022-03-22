@@ -1710,7 +1710,7 @@ loc_8144DD8:
 	strb r1, [r0,#0x3] // (byte_200FE03 - 0x200fe00)
 loc_8144DE0:
 	mov r0, r2
-	bl sub_814B0B4
+	bl rfu_REQ_sendData
 	pop {r0}
 	bx r0
 	.balign 4, 0x00
@@ -3377,7 +3377,7 @@ loc_8145AA8:
 	mov r4, sp
 	ldrb r0, [r5,#0x10] // (byte_200FE10 - 0x200fe00)
 	mov r1, #0xe
-	bl sub_814ABB8
+	bl rfu_NI_CHILD_setSendGameName
 	strb r0, [r4]
 	lsl r0, r0, #0x18
 	cmp r0, #0
@@ -4341,7 +4341,7 @@ loc_814620E:
 	bic r2, r5
 	mov r0, #0x20 
 	mov r1, r4
-	bl sub_814ADF4
+	bl rfu_changeSendTarget
 loc_814623A:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -4374,7 +4374,7 @@ loc_8146250:
 	cmp r0, #0
 	beq loc_8146278
 	mov r0, r4
-	bl sub_814AF5C
+	bl rfu_NI_stopReceivingData
 loc_8146278:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -4498,7 +4498,7 @@ loc_8146348:
 	mov r0, #0x20 
 	mov r1, r6
 	str r3, [sp]
-	bl sub_814ADF4
+	bl rfu_changeSendTarget
 	ldr r3, [sp]
 loc_8146364:
 	add r0, r4, #1
@@ -4537,7 +4537,7 @@ loc_8146384:
 	cmp r0, r1
 	bls loc_81463AA
 	mov r0, r6
-	bl sub_814AF5C
+	bl rfu_NI_stopReceivingData
 loc_81463AA:
 	add r0, r6, #1
 	lsl r0, r0, #0x18
@@ -5709,7 +5709,7 @@ sub_8146C60:
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	ldr r2, off_8146C8C // =byte_200DD10 
-	bl sub_814AB50
+	bl rfu_NI_setSendData
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	beq loc_8146C90
@@ -6377,7 +6377,7 @@ sub_81471D8:
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	ldr r2, off_8147210 // =byte_20101E0 
-	bl sub_814AB50
+	bl rfu_NI_setSendData
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	cmp r1, #0
@@ -6868,7 +6868,7 @@ off_81475B4: .word byte_2010368
 	thumb_local_start
 sub_81475B8:
 	push {lr}
-	bl sub_814B694
+	bl rfu_REQ_recvData
 	pop {r0}
 	bx r0
 	.balign 4, 0x00
@@ -7200,7 +7200,7 @@ loc_81478CC:
 	ldr r2, off_8147940 // =byte_2010290 
 	mov r1, #0x43 
 	mov r3, #0x40 
-	bl sub_814AB50
+	bl rfu_NI_setSendData
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	bne loc_8147928
@@ -7839,7 +7839,7 @@ sub_8147E44:
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	ldr r2, off_8147E80 // =byte_2010390 
-	bl sub_814AB50
+	bl rfu_NI_setSendData
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	beq loc_8147E8C
@@ -8309,7 +8309,7 @@ off_8148204: .word byte_200BC50
 	thumb_local_start
 sub_8148208:
 	push {lr}
-	bl sub_814B694
+	bl rfu_REQ_recvData
 	pop {r0}
 	bx r0
 	.balign 4, 0x00
@@ -8782,7 +8782,7 @@ loc_8148642:
 	ldrb r0, [r5,#0x2] // (byte_2010292 - 0x2010290)
 	lsr r0, r0, #1
 	mov r2, #0x40 
-	bl sub_814AB7C
+	bl rfu_UNI_setSendData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	cmp r0, #0
@@ -8817,7 +8817,7 @@ loc_8148698:
 	mov r1, r8
 	strb r0, [r1,#0x4] // (byte_200AF84 - 0x200af80)
 	ldrb r0, [r3]
-	bl sub_814B068
+	bl rfu_UNI_readySendData
 	ldr r2, off_8148724 // =byte_200BC50 
 	mov r1, #0x30 
 	strh r1, [r2,#0x8] // (word_200BC58 - 0x200bc50)
@@ -9032,7 +9032,7 @@ off_8148874: .word byte_2010368
 	thumb_local_start
 sub_8148878:
 	push {lr}
-	bl sub_814B694
+	bl rfu_REQ_recvData
 	pop {r0}
 	bx r0
 	.balign 4, 0x00
@@ -9090,7 +9090,7 @@ loc_81488B4:
 	ldrb r0, [r0]
 	ldr r1, off_8148918 // =byte_20101E0 
 	mov r2, #0x40 
-	bl sub_814AFD4
+	bl rfu_UNI_changeAndReadySendData
 	mov r0, #1
 	bl sub_8144DB0
 	b loc_8148920
@@ -9418,7 +9418,7 @@ loc_8148BE0:
 	orr r0, r1
 	strb r0, [r2]
 	mov r0, r4
-	bl sub_814B094
+	bl rfu_UNI_clearRecvNewDataFlag
 	ldr r0, off_8148C44 // =byte_2010220 
 	add r0, r4, r0
 	ldrb r3, [r0]
@@ -9663,7 +9663,7 @@ loc_8148D9C:
 	lsr r0, r0, #0x18
 	mov r1, r5
 	mov r2, #0xe
-	bl sub_814AB7C
+	bl rfu_UNI_setSendData
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	bne loc_8148E68
@@ -9867,7 +9867,7 @@ off_8148FB0: .word byte_200BC50
 	thumb_local_start
 sub_8148FB4:
 	push {lr}
-	bl sub_814B694
+	bl rfu_REQ_recvData
 	pop {r0}
 	bx r0
 	.byte 0, 0
@@ -10003,7 +10003,7 @@ sub_814912C:
 	beq loc_8149140
 	ldr r0, off_814914C // =byte_20103E0 
 	ldrb r0, [r0]
-	bl sub_814B068
+	bl rfu_UNI_readySendData
 loc_8149140:
 	mov r0, #1
 	bl sub_8144DB0
@@ -10037,7 +10037,7 @@ loc_8149164:
 	beq loc_8149214
 	mov r6, #1
 	mov r0, r2
-	bl sub_814B094
+	bl rfu_UNI_clearRecvNewDataFlag
 	ldr r0, off_81491BC // =byte_2010220 
 	ldrb r2, [r0]
 	add r0, r2, #1
@@ -13499,7 +13499,7 @@ off_814AB4C: .word off_2010CA0
 	thumb_func_end sub_814AAF0
 
 	thumb_local_start
-sub_814AB50:
+rfu_NI_setSendData:
 	push {r4-r6,lr}
 	sub sp, sp, #4
 	mov r4, r0
@@ -13514,17 +13514,17 @@ sub_814AB50:
 	mov r1, r4
 	mov r2, r5
 	mov r3, r6
-	bl sub_814ABEC
+	bl rfu_STC_setSendData_org
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	add sp, sp, #4
 	pop {r4-r6}
 	pop {r1}
 	bx r1
-	thumb_func_end sub_814AB50
+	thumb_func_end rfu_NI_setSendData
 
 	thumb_local_start
-sub_814AB7C:
+rfu_UNI_setSendData:
 	push {lr}
 	sub sp, sp, #4
 	mov r3, r1
@@ -13549,17 +13549,17 @@ loc_814AB9E:
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x10
-	bl sub_814ABEC
+	bl rfu_STC_setSendData_org
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	add sp, sp, #4
 	pop {r1}
 	bx r1
 	.balign 4, 0x00
-	thumb_func_end sub_814AB7C
+	thumb_func_end rfu_UNI_setSendData
 
 	thumb_local_start
-sub_814ABB8:
+rfu_NI_CHILD_setSendGameName:
 	push {lr}
 	sub sp, sp, #4
 	mov r2, r1
@@ -13577,7 +13577,7 @@ sub_814ABB8:
 	mov r0, #0x1a
 	str r0, [sp]
 	mov r0, #0x40 
-	bl sub_814ABEC
+	bl rfu_STC_setSendData_org
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	add sp, sp, #4
@@ -13585,10 +13585,10 @@ sub_814ABB8:
 	bx r1
 	.balign 4, 0
 off_814ABE8: .word dword_2010CC0
-	thumb_func_end sub_814ABB8
+	thumb_func_end rfu_NI_CHILD_setSendGameName
 
 	thumb_local_start
-sub_814ABEC:
+rfu_STC_setSendData_org:
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -13860,10 +13860,10 @@ loc_814ADD6:
 off_814ADE8: .word off_2010CA0
 dword_814ADEC: .word 0x8024
 off_814ADF0: .word InterruptMasterEnableRegister
-	thumb_func_end sub_814ABEC
+	thumb_func_end rfu_STC_setSendData_org
 
 	thumb_local_start
-sub_814ADF4:
+rfu_changeSendTarget:
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -14048,10 +14048,10 @@ loc_814AF4C:
 	pop {r4-r7}
 	pop {r1}
 	bx r1
-	thumb_func_end sub_814ADF4
+	thumb_func_end rfu_changeSendTarget
 
 	thumb_local_start
-sub_814AF5C:
+rfu_NI_stopReceivingData:
 	push {r4,r5,lr}
 	lsl r0, r0, #0x18
 	lsr r3, r0, #0x18
@@ -14112,10 +14112,10 @@ loc_814AFC6:
 	bx r1
 off_814AFCC: .word dword_2010CC0
 off_814AFD0: .word InterruptMasterEnableRegister
-	thumb_func_end sub_814AF5C
+	thumb_func_end rfu_NI_stopReceivingData
 
 	thumb_local_start
-sub_814AFD4:
+rfu_UNI_changeAndReadySendData:
 	push {r4-r7,lr}
 	mov r7, r1
 	lsl r0, r0, #0x18
@@ -14192,10 +14192,10 @@ loc_814B060:
 	pop {r1}
 	bx r1
 	.balign 4, 0x00
-	thumb_func_end sub_814AFD4
+	thumb_func_end rfu_UNI_changeAndReadySendData
 
 	thumb_local_start
-sub_814B068:
+rfu_UNI_readySendData:
 	push {lr}
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -14217,10 +14217,10 @@ loc_814B086:
 	.balign 4, 0
 off_814B08C: .word off_2010CA0
 dword_814B090: .word 0x8024
-	thumb_func_end sub_814B068
+	thumb_func_end rfu_UNI_readySendData
 
 	thumb_local_start
-sub_814B094:
+rfu_UNI_clearRecvNewDataFlag:
 	push {lr}
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -14237,10 +14237,10 @@ loc_814B0AA:
 	bx r0
 	.byte 0, 0
 off_814B0B0: .word off_2010CA0
-	thumb_func_end sub_814B094
+	thumb_func_end rfu_UNI_clearRecvNewDataFlag
 
 	thumb_local_start
-sub_814B0B4:
+rfu_REQ_sendData:
 	push {r4,r5,lr}
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
@@ -14304,7 +14304,7 @@ loc_814B120:
 	str r0, [r1,#0x68]
 	mov r0, #0xff
 	str r0, [r1,#0x78]
-	ldr r0, off_814B148 // =sub_814B2A0+1 
+	ldr r0, off_814B148 // =rfu_CB_sendData3+1 
 	bl STWI_set_Callback_M
 	cmp r5, #0
 	bne loc_814B14C
@@ -14315,7 +14315,7 @@ loc_814B120:
 	b loc_814B1EE
 	.balign 4, 0x00
 off_814B144: .word dword_2010CC8
-off_814B148: .word sub_814B2A0+1
+off_814B148: .word rfu_CB_sendData3+1
 loc_814B14C:
 	ldr r0, [r4]
 	add r0, #0x68 
@@ -14327,13 +14327,13 @@ loc_814B158:
 	ldrb r0, [r0,#0xe]
 	cmp r0, #0
 	bne loc_814B164
-	bl sub_814B2C8
+	bl rfu_constructSendLLFrame
 loc_814B164:
 	ldr r0, [r4]
 	ldrb r0, [r0,#0xe]
 	cmp r0, #0
 	beq loc_814B1B2
-	ldr r0, off_814B190 // =sub_814B1F8+1 
+	ldr r0, off_814B190 // =rfu_CB_sendData+1 
 	bl STWI_set_Callback_M
 	cmp r5, #0
 	beq loc_814B19C
@@ -14349,7 +14349,7 @@ loc_814B164:
 	bl STWI_send_DataTxAndChangeREQ
 	b loc_814B1EE
 	.byte 0, 0
-off_814B190: .word sub_814B1F8+1
+off_814B190: .word rfu_CB_sendData+1
 off_814B194: .word dword_2010CC8
 off_814B198: .word dword_2010CC4
 loc_814B19C:
@@ -14385,18 +14385,18 @@ off_814B1D8: .word dword_2010CC4
 off_814B1DC: .word dword_2010CC0
 off_814B1E0: .word dword_2010CCC
 loc_814B1E4:
-	ldr r0, off_814B1F4 // =sub_814B290+1 
+	ldr r0, off_814B1F4 // =rfu_CB_sendData2+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_MS_ChangeREQ
 loc_814B1EE:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
-off_814B1F4: .word sub_814B290+1
-	thumb_func_end sub_814B0B4
+off_814B1F4: .word rfu_CB_sendData2+1
+	thumb_func_end rfu_REQ_sendData
 
 	thumb_local_start
-sub_814B1F8:
+rfu_CB_sendData:
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -14472,10 +14472,10 @@ dword_814B280: .word 0x8020
 off_814B284: .word off_2010CA0
 off_814B288: .word dword_2010CB0
 off_814B28C: .word dword_2010CC0
-	thumb_func_end sub_814B1F8
+	thumb_func_end rfu_CB_sendData
 
 	thumb_local_start
-sub_814B290:
+rfu_CB_sendData2:
 	push {lr}
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
@@ -14483,10 +14483,10 @@ sub_814B290:
 	bl rfu_STC_REQ_callback
 	pop {r0}
 	bx r0
-	thumb_func_end sub_814B290
+	thumb_func_end rfu_CB_sendData2
 
 	thumb_local_start
-sub_814B2A0:
+rfu_CB_sendData3:
 	push {lr}
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -14507,10 +14507,10 @@ loc_814B2C2:
 	pop {r0}
 	bx r0
 	.balign 4, 0x00
-	thumb_func_end sub_814B2A0
+	thumb_func_end rfu_CB_sendData3
 
 	thumb_local_start
-sub_814B2C8:
+rfu_constructSendLLFrame:
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -14558,7 +14558,7 @@ loc_814B30A:
 	beq loc_814B32A
 	mov r0, r6
 	mov r1, sp
-	bl sub_814B400
+	bl rfu_STC_NI_constructLLSF
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 loc_814B32A:
@@ -14571,7 +14571,7 @@ loc_814B32A:
 	add r2, #0x34 
 	mov r0, r6
 	mov r1, sp
-	bl sub_814B400
+	bl rfu_STC_NI_constructLLSF
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	add r5, r5, r0
@@ -14584,7 +14584,7 @@ loc_814B346:
 	bne loc_814B360
 	mov r0, r6
 	mov r1, sp
-	bl sub_814B5C0
+	bl rfu_STC_UNI_constructLLSF
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	add r5, r5, r0
@@ -14667,10 +14667,10 @@ loc_814B3E4:
 off_814B3F4: .word dword_2010CC4
 off_814B3F8: .word dword_2010CC0
 off_814B3FC: .word dword_2010CC8
-	thumb_func_end sub_814B2C8
+	thumb_func_end rfu_constructSendLLFrame
 
 	thumb_local_start
-sub_814B400:
+rfu_STC_NI_constructLLSF:
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -14903,10 +14903,10 @@ loc_814B5A6:
 	pop {r4-r7}
 	pop {r1}
 	bx r1
-	thumb_func_end sub_814B400
+	thumb_func_end rfu_STC_NI_constructLLSF
 
 	thumb_local_start
-sub_814B5C0:
+rfu_STC_UNI_constructLLSF:
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -15017,10 +15017,10 @@ loc_814B688:
 	pop {r4-r7}
 	pop {r1}
 	bx r1
-	thumb_func_end sub_814B5C0
+	thumb_func_end rfu_STC_UNI_constructLLSF
 
 	thumb_local_start
-sub_814B694:
+rfu_REQ_recvData:
 	push {r4,lr}
 	ldr r0, off_814B6C8 // =dword_2010CC0 
 	ldr r4, [r0]
@@ -15038,7 +15038,7 @@ sub_814B694:
 	strb r0, [r3,#3]
 	ldr r0, [r2]
 	strb r1, [r0,#4]
-	ldr r0, off_814B6D0 // =sub_814B6D4+1 
+	ldr r0, off_814B6D0 // =rfu_CB_recvData+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_DataRxREQ
 loc_814B6C0:
@@ -15048,11 +15048,11 @@ loc_814B6C0:
 	.balign 4, 0
 off_814B6C8: .word dword_2010CC0
 off_814B6CC: .word dword_2010CC4
-off_814B6D0: .word sub_814B6D4+1
-	thumb_func_end sub_814B694
+off_814B6D0: .word rfu_CB_recvData+1
+	thumb_func_end rfu_REQ_recvData
 
 	thumb_local_start
-sub_814B6D4:
+rfu_CB_recvData:
 	push {r4-r7,lr}
 	mov r7, r9
 	mov r6, r8
@@ -15167,7 +15167,7 @@ dword_814B7B0: .word 0x8043
 off_814B7B4: .word dword_2010CC0
 off_814B7B8: .word dword_2010CB0
 off_814B7BC: .word dword_2010CC4
-	thumb_func_end sub_814B6D4
+	thumb_func_end rfu_CB_recvData
 
 	thumb_local_start
 rfu_STC_PARENT_analyzeRecvPacket:

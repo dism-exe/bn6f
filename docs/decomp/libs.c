@@ -769,7 +769,7 @@ int __fastcall sub_8144DB0(unsigned __int8 a1)
         if ( byte_200FE02 == 1 )
             v1 = 1;
     }
-    sub_814B0B4(v1);
+    rfu_REQ_sendData(v1);
     return v3;
 }
 
@@ -1595,7 +1595,7 @@ LABEL_76:
                         byte_200FE24 |= 1 << byte_200FE10;
                         *&algn_200FE28[2 * byte_200FE10] = word_200FE26;
                         sub_814A934(4, byte_200FE10);
-                        v12 = sub_814ABB8(byte_200FE10, 0xEu);
+                        v12 = rfu_NI_CHILD_setSendGameName(byte_200FE10, 0xEu);
                         v18 = v12;
                         if ( v12 << 24 )
                         {
@@ -2154,7 +2154,7 @@ int __fastcall sub_81461FC(unsigned __int8 a1)
             {
                 v4 = *(v3 + 26);
                 if ( v1 & v4 )
-                    sub_814ADF4(32, v2, v4 & ~v1);
+                    rfu_changeSendTarget(32, v2, v4 & ~v1);
             }
             v2 = (v2 + 1) & 0xFF;
         }
@@ -2167,7 +2167,7 @@ int __fastcall sub_81461FC(unsigned __int8 a1)
         {
             v6 = dword_2010CB0[v5];
             if ( *(v6 + 52) & 0x8000 && *(v6 + 78) & v1 )
-                sub_814AF5C(v5);
+                rfu_NI_stopReceivingData(v5);
             v5 = (v5 + 1) & 0xFF;
         }
         while ( v5 <= 3 );
@@ -2228,7 +2228,7 @@ int sub_81462D8()
                         if ( v4 )
                         {
                             v6 = v1;
-                            sub_814ADF4(32, v0, v4 ^ *(dword_2010CB0[v2] + 26));
+                            rfu_changeSendTarget(32, v0, v4 ^ *(dword_2010CB0[v2] + 26));
                             v1 = v6;
                         }
                         v5 = (v5 + 1) & 0xFF;
@@ -2246,7 +2246,7 @@ int sub_81462D8()
             {
                 v8 = dword_2010CB0[v7];
                 if ( *(v8 + 52) & 0x8000 && *(v8 + 54) > word_200FE18 )
-                    sub_814AF5C(v7);
+                    rfu_NI_stopReceivingData(v7);
                 v7 = (v7 + 1) & 0xFF;
             }
             while ( v7 <= 3 );
@@ -2843,7 +2843,7 @@ int __fastcall sub_8146C60(int a1)
     int v4; // [sp+4h] [bp-4h]
 
     v1 = a1;
-    if ( sub_814AB50((0x1000000 << byte_20103E0) >> 24, *(v1 + 16) + 2, &byte_200DD10, *(v1 + 16)) << 16 )
+    if ( rfu_NI_setSendData((0x1000000 << byte_20103E0) >> 24, *(v1 + 16) + 2, &byte_200DD10, *(v1 + 16)) << 16 )
         v2 = 4;
     else
         v2 = 2;
@@ -3186,7 +3186,7 @@ int __fastcall sub_81471D8(_BYTE *a1, int a2)
     int v4; // [sp+4h] [bp-4h]
 
     v2 = a1;
-    if ( sub_814AB50(byte_2010280, a2 + 3, &byte_20101E0, a2) )
+    if ( rfu_NI_setSendData(byte_2010280, a2 + 3, &byte_20101E0, a2) )
     {
         *v2 = 4;
         word_200BC58 |= 0x80u;
@@ -3446,7 +3446,7 @@ int sub_81475B8()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814B694();
+    rfu_REQ_recvData();
     return v1;
 }
 
@@ -3566,7 +3566,7 @@ signed int sub_8147834()
         byte_201028C &= 0xFBu;
         v0 = 1;
     }
-    if ( byte_201028C & 1 && !(sub_814AB50(byte_2010280, 0x43u, &byte_2010290, 64) << 16) )
+    if ( byte_201028C & 1 && !(rfu_NI_setSendData(byte_2010280, 0x43u, &byte_2010290, 64) << 16) )
     {
         v3 = 0;
         if ( !(*(dword_2010CC0 + 2) & 1) )
@@ -3819,7 +3819,7 @@ int __fastcall sub_8147E44(_BYTE *a1, int a2)
     int v4; // [sp+4h] [bp-4h]
 
     v2 = a1;
-    if ( sub_814AB50((0x1000000 << byte_20103E0) >> 24, a2 + 2, &byte_2010390, a2) << 16 )
+    if ( rfu_NI_setSendData((0x1000000 << byte_20103E0) >> 24, a2 + 2, &byte_2010390, a2) << 16 )
     {
         if ( word_200BC58 == 49 )
             *v2 = 4;
@@ -4086,7 +4086,7 @@ int sub_8148208()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814B694();
+    rfu_REQ_recvData();
     return v1;
 }
 
@@ -4283,7 +4283,7 @@ int sub_8148540()
     }
     while ( v1 <= 3 );
     byte_201021D = byte_2010293;
-    if ( sub_814AB7C(byte_2010292 >> 1, &byte_20101E0, 64) )
+    if ( rfu_UNI_setSendData(byte_2010292 >> 1, &byte_20101E0, 64) )
         return 1;
     byte_2010328 = 0;
     if ( !(byte_2010292 & 2) )
@@ -4293,7 +4293,7 @@ int sub_8148540()
         while ( byte_2010328 <= 3u && !(byte_2010292 & (2 << byte_2010328)) );
     }
     unk_200AF84 = byte_2010328;
-    result = sub_814B068(byte_2010328);
+    result = rfu_UNI_readySendData(byte_2010328);
     word_200BC58 = 48;
     return result;
 }
@@ -4404,7 +4404,7 @@ int sub_8148878()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814B694();
+    rfu_REQ_recvData();
     return v1;
 }
 
@@ -4435,7 +4435,7 @@ int sub_8148884()
         }
         else
         {
-            sub_814AFD4(byte_2010328, &byte_20101E0, 0x40u);
+            rfu_UNI_changeAndReadySendData(byte_2010328, &byte_20101E0, 0x40u);
             sub_8144DB0(1u);
         }
     }
@@ -4556,7 +4556,7 @@ int sub_8148BCC()
         if ( byte_2010292 & v1 && (*off_2010CA0[v0])[18] )
         {
             byte_20101B0 |= v1;
-            sub_814B094(v0);
+            rfu_UNI_clearRecvNewDataFlag(v0);
             v2 = byte_2010220[v0];
             v3 = byte_2010230[16 * v0 + 12];
             if ( ((v2 + 1) & 0xFF) == v3 )
@@ -4658,7 +4658,7 @@ signed int sub_8148D24()
     v1 = sub_814A934(3, byte_20103E0);
     sub_803ECFC(v1);
     sub_803F030(&byte_2010390, 0xCu);
-    if ( sub_814AB7C((0x1000000 << byte_20103E0) >> 24, &byte_2010390, 14) << 16 )
+    if ( rfu_UNI_setSendData((0x1000000 << byte_20103E0) >> 24, &byte_2010390, 14) << 16 )
         return 1;
     word_200BC58 = 49;
     return 0;
@@ -4762,7 +4762,7 @@ int sub_8148FB4()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814B694();
+    rfu_REQ_recvData();
     return v1;
 }
 
@@ -4809,7 +4809,7 @@ int sub_814912C()
     int v1; // [sp+0h] [bp-4h]
 
     if ( sub_8149150() << 24 )
-        sub_814B068(byte_20103E0);
+        rfu_UNI_readySendData(byte_20103E0);
     sub_8144DB0(1u);
     return v1;
 }
@@ -4827,7 +4827,7 @@ signed int sub_8149150()
     if ( (*off_2010CA0[byte_20103E0])[18] )
     {
         v0 = 1;
-        sub_814B094(byte_20103E0);
+        rfu_UNI_clearRecvNewDataFlag(byte_20103E0);
         if ( ((byte_2010220[0] + 1) & 0xFF) == byte_20103DC )
         {
             sub_803F334(&unk_20103A0, 0x40u);
@@ -6624,14 +6624,14 @@ signed int __fastcall sub_814AAF0(int a1, int a2, int a3, int a4)
 
 
 // 0x814ab50
-int __fastcall sub_814AB50(unsigned __int8 a1, unsigned __int8 a2, int a3, int a4)
+int __fastcall rfu_NI_setSendData(unsigned __int8 a1, unsigned __int8 a2, int a3, int a4)
 {
-    return sub_814ABEC(0x20u, a1, a2, a3, a4);
+    return rfu_STC_setSendData_org(0x20u, a1, a2, a3, a4);
 }
 
 
 // 0x814ab7c
-int __fastcall sub_814AB7C(unsigned __int8 a1, int a2, char a3)
+int __fastcall rfu_UNI_setSendData(unsigned __int8 a1, int a2, char a3)
 {
     int v3; // r3
     unsigned __int8 v4; // r1
@@ -6643,19 +6643,19 @@ int __fastcall sub_814AB7C(unsigned __int8 a1, int a2, char a3)
         v5 = a3 + 3;
     else
         v5 = a3 + 2;
-    return sub_814ABEC(0x10u, v4, v5, v3, 0);
+    return rfu_STC_setSendData_org(0x10u, v4, v5, v3, 0);
 }
 
 
 // 0x814abb8
-int __fastcall sub_814ABB8(char a1, unsigned __int8 a2)
+int __fastcall rfu_NI_CHILD_setSendGameName(char a1, unsigned __int8 a2)
 {
-    return sub_814ABEC(0x40u, (0x1000000 << a1) >> 24, a2, dword_2010CC0 + 152, 26);
+    return rfu_STC_setSendData_org(0x40u, (0x1000000 << a1) >> 24, a2, dword_2010CC0 + 152, 26);
 }
 
 
 // 0x814abec
-char *__fastcall sub_814ABEC(unsigned __int8 a1, unsigned __int8 a2, unsigned __int8 a3, int a4, int a5)
+char *__fastcall rfu_STC_setSendData_org(unsigned __int8 a1, unsigned __int8 a2, unsigned __int8 a3, int a4, int a5)
 {
     _BYTE *v5; // r9
     int v6; // r6
@@ -6768,7 +6768,7 @@ LABEL_20:
 
 
 // 0x814adf4
-int *__fastcall sub_814ADF4(int a1, unsigned __int8 a2, unsigned __int8 a3)
+int *__fastcall rfu_changeSendTarget(int a1, unsigned __int8 a2, unsigned __int8 a3)
 {
     int v3; // r6
     int v5; // r5
@@ -6846,7 +6846,7 @@ int *__fastcall sub_814ADF4(int a1, unsigned __int8 a2, unsigned __int8 a3)
 
 
 // 0x814af5c
-signed int __fastcall sub_814AF5C(unsigned __int8 a1)
+signed int __fastcall rfu_NI_stopReceivingData(unsigned __int8 a1)
 {
     unsigned __int8 v1; // r3
     int v3; // r2
@@ -6879,7 +6879,7 @@ signed int __fastcall sub_814AF5C(unsigned __int8 a1)
 
 
 // 0x814afd4
-signed int __fastcall sub_814AFD4(int a1, int a2, unsigned __int8 a3)
+signed int __fastcall rfu_UNI_changeAndReadySendData(int a1, int a2, unsigned __int8 a3)
 {
     int v3; // r7
     int v4; // r3
@@ -6924,7 +6924,7 @@ signed int __fastcall sub_814AFD4(int a1, int a2, unsigned __int8 a3)
 
 
 // 0x814b068
-int __fastcall sub_814B068(int a1)
+int __fastcall rfu_UNI_readySendData(int a1)
 {
     char (*v1)[28]; // r2
     int v3; // [sp+0h] [bp-4h]
@@ -6941,7 +6941,7 @@ int __fastcall sub_814B068(int a1)
 
 
 // 0x814b094
-int __fastcall sub_814B094(int a1)
+int __fastcall rfu_UNI_clearRecvNewDataFlag(int a1)
 {
     int v2; // [sp+0h] [bp-4h]
 
@@ -6953,7 +6953,7 @@ int __fastcall sub_814B094(int a1)
 
 
 // 0x814b0b4
-int __fastcall sub_814B0B4(unsigned __int8 a1)
+int __fastcall rfu_REQ_sendData(unsigned __int8 a1)
 {
     int v1; // r5
     int v2; // r1
@@ -6968,10 +6968,10 @@ int __fastcall sub_814B0B4(unsigned __int8 a1)
     if ( v2 != 1 || *(dword_2010CC0 + 4) | *(dword_2010CC0 + 5) | *(dword_2010CC0 + 6) )
     {
         if ( !*(dword_2010CC0 + 14) )
-            sub_814B2C8();
+            rfu_constructSendLLFrame();
         if ( *(dword_2010CC0 + 14) )
         {
-            STWI_set_Callback_M(sub_814B1F8);
+            STWI_set_Callback_M(rfu_CB_sendData);
             if ( v1 )
             {
                 STWI_send_DataTxAndChangeREQ(dword_2010CC8 + 104, (*(dword_2010CC4 + 36) + 4) & 0xFF);
@@ -6996,7 +6996,7 @@ int __fastcall sub_814B0B4(unsigned __int8 a1)
             v3 = dword_2010CC8;
             *(dword_2010CC8 + 104) = 1;
             *(v3 + 120) = 255;
-            STWI_set_Callback_M(sub_814B2A0);
+            STWI_set_Callback_M(rfu_CB_sendData3);
             if ( v1 )
                 STWI_send_DataTxAndChangeREQ(dword_2010CC8 + 104, 1);
             else
@@ -7014,7 +7014,7 @@ int __fastcall sub_814B0B4(unsigned __int8 a1)
         }
         else
         {
-            STWI_set_Callback_M(sub_814B290);
+            STWI_set_Callback_M(rfu_CB_sendData2);
             STWI_send_MS_ChangeREQ();
         }
     }
@@ -7023,7 +7023,7 @@ int __fastcall sub_814B0B4(unsigned __int8 a1)
 
 
 // 0x814b1f8
-int __fastcall sub_814B1F8(int a1, unsigned __int16 a2)
+int __fastcall rfu_CB_sendData(int a1, unsigned __int16 a2)
 {
     unsigned __int16 v2; // r7
     unsigned int v3; // r6
@@ -7064,7 +7064,7 @@ int __fastcall sub_814B1F8(int a1, unsigned __int16 a2)
 
 
 // 0x814b290
-int __fastcall sub_814B290(int a1, unsigned __int16 a2)
+int __fastcall rfu_CB_sendData2(int a1, unsigned __int16 a2)
 {
     int v3; // [sp+0h] [bp-4h]
 
@@ -7074,7 +7074,7 @@ int __fastcall sub_814B290(int a1, unsigned __int16 a2)
 
 
 // 0x814b2a0
-int __fastcall sub_814B2A0(int a1, unsigned __int16 a2)
+int __fastcall rfu_CB_sendData3(int a1, unsigned __int16 a2)
 {
     int v3; // [sp+0h] [bp-4h]
 
@@ -7092,7 +7092,7 @@ int __fastcall sub_814B2A0(int a1, unsigned __int16 a2)
 
 
 // 0x814b2c8
-int sub_814B2C8()
+int rfu_constructSendLLFrame()
 {
     char v0; // t1
     int v1; // r8
@@ -7115,11 +7115,11 @@ int sub_814B2C8()
             v3 = 0;
             v4 = &dword_2010CB0[v2];
             if ( **v4 & 0x8000 )
-                v3 = sub_814B400(v2, &v7, *v4) & 0xFFFF;
+                v3 = rfu_STC_NI_constructLLSF(v2, &v7, *v4) & 0xFFFF;
             if ( (*v4)[26] & 0x8000 )
-                v3 += sub_814B400(v2, &v7, *v4 + 26);
+                v3 += rfu_STC_NI_constructLLSF(v2, &v7, *v4 + 26);
             if ( *&(*off_2010CA0[v2])[0] == 32804 )
-                v3 += sub_814B5C0(v2, &v7);
+                v3 += rfu_STC_UNI_constructLLSF(v2, &v7);
             if ( v3 )
             {
                 if ( *dword_2010CC0 == 1 )
@@ -7145,7 +7145,7 @@ int sub_814B2C8()
 
 
 // 0x814b400
-int __fastcall sub_814B400(char a1, _BYTE **a2, unsigned __int16 *a3)
+int __fastcall rfu_STC_NI_constructLLSF(char a1, _BYTE **a2, unsigned __int16 *a3)
 {
     _BYTE **v3; // r12
     unsigned __int16 *v4; // r4
@@ -7257,7 +7257,7 @@ LABEL_16:
 
 
 // 0x814b5c0
-int __fastcall sub_814B5C0(unsigned __int8 a1, _BYTE **a2)
+int __fastcall rfu_STC_UNI_constructLLSF(unsigned __int8 a1, _BYTE **a2)
 {
     _BYTE **v2; // r6
     char (*v3)[28]; // r4
@@ -7292,7 +7292,7 @@ int __fastcall sub_814B5C0(unsigned __int8 a1, _BYTE **a2)
 
 
 // 0x814b694
-int sub_814B694()
+int rfu_REQ_recvData()
 {
     int v1; // [sp+4h] [bp-4h]
 
@@ -7300,7 +7300,7 @@ int sub_814B694()
     {
         *(dword_2010CC4 + 3) = *(dword_2010CC0 + 4) | *(dword_2010CC0 + 5) | *(dword_2010CC0 + 6);
         *(dword_2010CC4 + 4) = 0;
-        STWI_set_Callback_M(sub_814B6D4);
+        STWI_set_Callback_M(rfu_CB_recvData);
         STWI_send_DataRxREQ();
     }
     return v1;
@@ -7308,7 +7308,7 @@ int sub_814B694()
 
 
 // 0x814b6d4
-int __fastcall sub_814B6D4(unsigned __int8 a1, int a2, int a3, int a4)
+int __fastcall rfu_CB_recvData(unsigned __int8 a1, int a2, int a3, int a4)
 {
     unsigned __int8 v4; // r9
     unsigned int v5; // r1
