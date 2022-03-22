@@ -7718,8 +7718,8 @@ loc_800736C:
 	add r6, #4
 	b loc_800736C
 loc_8007384:
-	ldrh r0, [r5,#oBattleState_Unk_04]
-	strh r0, [r5,#oBattleState_Unk_12]
+	ldrh r0, [r5,#oBattleState_Unk_04_05]
+	strh r0, [r5,#oBattleState_Unk_12_13]
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_BattleStatePtr]
 	mov r0, #0x80
@@ -8392,7 +8392,7 @@ loc_8007898:
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 	bl GetBattleEffects // () -> int
 	mov r1, #8
 	tst r0, r1
@@ -8429,7 +8429,7 @@ loc_80078EC:
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 	b locret_8007936
 loc_8007900:
 	mov r0, r4
@@ -8563,7 +8563,7 @@ sub_80079F0:
 	mov r0, #8
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 	pop {pc}
 	thumb_func_end sub_80079F0
 
@@ -8773,7 +8773,7 @@ loc_8007BE2:
 	strh r0, [r5,#oBattleState_Unk_28]
 	bge locret_8007BEE
 	mov r0, #4
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8007BEE:
 	pop {pc}
 	thumb_func_end sub_8007BD0
@@ -8822,7 +8822,7 @@ loc_8007C44:
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8007C4C:
 	pop {pc}
 	.byte 0, 0
@@ -8862,7 +8862,7 @@ loc_8007C90:
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8007C98:
 	pop {pc}
 	.balign 4, 0
@@ -9168,7 +9168,7 @@ sub_8007F2C:
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8007F4C:
 	pop {pc}
 	thumb_func_end sub_8007F2C
@@ -9223,7 +9223,7 @@ loc_8007FC4:
 	tst r0, r0
 	bne locret_8007FD0
 	mov r0, #4
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8007FD0:
 	pop {pc}
 	thumb_func_end sub_8007FA4
@@ -9239,7 +9239,7 @@ sub_8007FD2:
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8007FE8:
 	pop {pc}
 
@@ -11657,7 +11657,7 @@ loc_800924E:
 loc_8009270:
 	strb r4, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009276:
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
@@ -11717,13 +11717,13 @@ loc_80092D8:
 	strh r0, [r5,#oBattleState_Unk_28]
 	bge locret_80092EE
 	mov r0, #4
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 	pop {pc}
 loc_80092E6:
 	mov r0, #8
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80092EE:
 	pop {pc}
 	thumb_func_end sub_80092C0
@@ -11745,7 +11745,7 @@ loc_8009306:
 	tst r0, r0
 	bne locret_8009312
 	mov r0, #8
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009312:
 	pop {pc}
 	thumb_func_end sub_80092F0
@@ -11769,7 +11769,7 @@ loc_8009326:
 	mov r0, #8
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009336:
 	pop {pc}
 	thumb_func_end sub_8009314
@@ -11813,7 +11813,7 @@ loc_8009380:
 	mov r0, #0xc
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009388:
 	pop {pc}
 	thumb_func_end sub_8009338
@@ -11835,7 +11835,7 @@ loc_800939A:
 	mov r0, #8
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 	b locret_800945A
 loc_80093B0:
 	cmp r0, #0
@@ -11911,7 +11911,7 @@ loc_8009452:
 loc_8009454:
 	strb r2, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_800945A:
 	pop {r4,pc}
 	thumb_func_end sub_800938A
@@ -11951,7 +11951,7 @@ loc_800948E:
 	bl sub_800B460
 	bl sub_800B444
 	mov r0, #4
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 	pop {pc}
 loc_80094A6:
 	ldrh r0, [r5,#oBattleState_Unk_28]
@@ -11982,7 +11982,7 @@ loc_80094C8:
 	mov r0, #0x14
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80094D8:
 	pop {pc}
 	thumb_func_end sub_80094B6
@@ -12048,7 +12048,7 @@ loc_8009534:
 loc_800954A:
 	strb r2, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009550:
 	pop {pc}
 	thumb_func_end sub_800951E
@@ -12087,7 +12087,7 @@ loc_8009576:
 loc_800958C:
 	strb r2, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009592:
 	pop {pc}
 	thumb_func_end sub_8009552
@@ -12117,7 +12117,7 @@ loc_80095AA:
 loc_80095C0:
 	strb r2, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80095C6:
 	pop {pc}
 	thumb_func_end sub_8009594
@@ -12143,7 +12143,7 @@ loc_80095E4:
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80095F4:
 	pop {pc}
 	.balign 4, 0x00
@@ -12234,7 +12234,7 @@ loc_80096B6:
 loc_80096D8:
 	strb r4, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80096DE:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_8009658
@@ -12322,13 +12322,13 @@ loc_800976C:
 	strh r0, [r5,#oBattleState_Unk_28]
 	bge locret_8009782
 	mov r0, #4
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 	pop {pc}
 loc_800977A:
 	mov r0, #8
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009782:
 	pop {pc}
 	thumb_func_end sub_8009754
@@ -12350,7 +12350,7 @@ loc_800979A:
 	tst r0, r0
 	bne locret_80097A6
 	mov r0, #8
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80097A6:
 	pop {pc}
 	thumb_func_end sub_8009784
@@ -12374,7 +12374,7 @@ loc_80097BA:
 	mov r0, #8
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80097CA:
 	pop {pc}
 	thumb_func_end sub_80097A8
@@ -12407,7 +12407,7 @@ loc_80097FA:
 	mov r0, #0xc
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_800980C:
 	pop {pc}
 	thumb_func_end sub_80097CC
@@ -12487,7 +12487,7 @@ loc_80098B2:
 loc_80098B4:
 	strb r2, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80098BA:
 	pop {r4,pc}
 	thumb_func_end sub_800980E
@@ -12527,7 +12527,7 @@ loc_80098EE:
 	bl sub_800B460
 	bl sub_800B444
 	mov r0, #4
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 	pop {pc}
 loc_8009906:
 	ldrh r0, [r5,#oBattleState_Unk_28]
@@ -12558,7 +12558,7 @@ loc_8009928:
 	mov r0, #0x14
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009938:
 	pop {pc}
 	thumb_func_end sub_8009916
@@ -12702,7 +12702,7 @@ loc_8009A3E:
 loc_8009A60:
 	strb r4, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009A66:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80099E0
@@ -12759,13 +12759,13 @@ loc_8009AC0:
 	strh r0, [r5,#oBattleState_Unk_28]
 	bge locret_8009AD6
 	mov r0, #4
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 	pop {pc}
 loc_8009ACE:
 	mov r0, #0xc
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009AD6:
 	pop {pc}
 	thumb_func_end sub_8009AA8
@@ -12787,7 +12787,7 @@ loc_8009AEE:
 	tst r0, r0
 	bne locret_8009AFA
 	mov r0, #8
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009AFA:
 	pop {pc}
 	thumb_func_end sub_8009AD8
@@ -12811,7 +12811,7 @@ loc_8009B0E:
 	mov r0, #0xc
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009B1E:
 	pop {pc}
 	thumb_func_end sub_8009AFC
@@ -12877,7 +12877,7 @@ loc_8009BA2:
 loc_8009BA4:
 	strb r2, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009BAA:
 	pop {r4,pc}
 	thumb_func_end sub_8009B20
@@ -12917,7 +12917,7 @@ loc_8009BDE:
 	bl sub_800B460
 	bl sub_800B444
 	mov r0, #4
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 	pop {pc}
 loc_8009BF6:
 	ldrh r0, [r5,#oBattleState_Unk_28]
@@ -12948,7 +12948,7 @@ loc_8009C18:
 	mov r0, #0x14
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009C28:
 	pop {pc}
 	thumb_func_end sub_8009C06
@@ -13092,7 +13092,7 @@ loc_8009D2E:
 loc_8009D50:
 	strb r4, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009D56:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_8009CD0
@@ -13149,13 +13149,13 @@ loc_8009DB0:
 	strh r0, [r5,#oBattleState_Unk_28]
 	bge locret_8009DC6
 	mov r0, #4
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 	pop {pc}
 loc_8009DBE:
 	mov r0, #8
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009DC6:
 	pop {pc}
 	thumb_func_end sub_8009D98
@@ -13177,7 +13177,7 @@ loc_8009DDE:
 	tst r0, r0
 	bne locret_8009DEA
 	mov r0, #8
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009DEA:
 	pop {pc}
 	thumb_func_end sub_8009DC8
@@ -13201,7 +13201,7 @@ loc_8009DFE:
 	mov r0, #0xc
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009E0E:
 	pop {pc}
 	thumb_func_end sub_8009DEC
@@ -13230,7 +13230,7 @@ RunTextScriptDustManUndernetTut_8009E2C:
 	ldr r0, off_8009FBC // =TextScriptDustManUndernetTut
 	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r0, #4
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 	pop {pc}
 	thumb_func_end RunTextScriptDustManUndernetTut_8009E2C
 
@@ -13244,7 +13244,7 @@ sub_8009E40:
 	mov r0, #0xc
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009E54:
 	pop {pc}
 	thumb_func_end sub_8009E40
@@ -13310,7 +13310,7 @@ loc_8009ED8:
 loc_8009EDA:
 	strb r2, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009EE0:
 	pop {r4,pc}
 	thumb_func_end sub_8009E56
@@ -13349,7 +13349,7 @@ loc_8009F12:
 	bl sub_800B460
 	bl sub_800B444
 	mov r0, #4
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 	pop {pc}
 loc_8009F2A:
 	ldrh r0, [r5,#oBattleState_Unk_28]
@@ -13380,7 +13380,7 @@ loc_8009F4C:
 	mov r0, #0x14
 	strb r0, [r5,#oBattleState_Unk_01]
 	mov r0, #0
-	strh r0, [r5,#oBattleState_Unk_02]
+	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009F5C:
 	pop {pc}
 	thumb_func_end sub_8009F3A
@@ -15142,7 +15142,7 @@ sub_800AABC:
 	mov r1, #0x14
 	strb r1, [r0,#oBattleState_Unk_01]
 	mov r1, #0
-	strh r1, [r0,#oBattleState_Unk_02]
+	strh r1, [r0,#oBattleState_Unk_02_03]
 	pop {r5,pc}
 	thumb_func_end sub_800AABC
 

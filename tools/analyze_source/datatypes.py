@@ -812,6 +812,8 @@ class BattleState(Struct):
                   Size.BYTE: StructField("_Unk_02", UnkPrimitiveMemory())},
             0x4: {Size.HWORD: StructField("_Unk_04_05", UnkPrimitiveMemory()),
                   Size.BYTE: StructField("_Unk_04", UnkPrimitiveMemory())},
+            0x12: {Size.HWORD: StructField("_Unk_12_13", UnkPrimitiveMemory()),
+                  Size.BYTE: StructField("_Unk_12", UnkPrimitiveMemory())},
             0x3c: {Size.WORD: StructField("_BattleSettings", UnkMemory())},
         }
 
