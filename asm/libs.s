@@ -10346,7 +10346,7 @@ dword_81493E0: .word 0x100005A
 sub_81493E4:
 	push {lr}
 	ldr r0, off_81493F4 // =sub_81494B8+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	bl STWI_send_ResumeRetransmitAndChangeREQ
 	pop {r0}
 	bx r0
@@ -10426,7 +10426,7 @@ off_8149460: .word dword_2010CC8
 	thumb_local_start
 sub_8149464:
 	push {lr}
-	bl sub_814C36C
+	bl STWI_set_Callback_S
 	pop {r0}
 	bx r0
 	.byte 0, 0
@@ -10484,7 +10484,7 @@ sub_81494B8:
 	lsl r1, r1, #0x10
 	lsr r4, r1, #0x10
 	ldr r0, off_81494EC // =sub_81494F8+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	ldr r0, off_81494F0 // =dword_2010CC4 
 	ldr r0, [r0]
 	strh r4, [r0,#0x1c]
@@ -10571,7 +10571,7 @@ off_8149564: .word dword_2010CC0
 	thumb_func_start sub_8149568
 sub_8149568:
 	push {lr}
-	bl sub_814C384
+	bl STWI_poll_CommandEnd
 	ldr r0, off_8149578 // =dword_2010CC4 
 	ldr r0, [r0]
 	ldrh r0, [r0,#0x1c]
@@ -10585,8 +10585,8 @@ off_8149578: .word dword_2010CC4
 sub_814957C:
 	push {lr}
 	ldr r0, off_814958C // =sub_81494B8+1 
-	bl sub_814C360
-	bl sub_814C418
+	bl STWI_set_Callback_M
+	bl STWI_send_SystemStatusREQ
 	pop {r0}
 	bx r0
 	.balign 4, 0
@@ -10609,7 +10609,7 @@ sub_8149590:
 	.balign 4, 0
 off_81495A8: .word dword_2010CC8
 loc_81495AC:
-	bl sub_814C384
+	bl STWI_poll_CommandEnd
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	bne loc_81495C0
@@ -10746,7 +10746,7 @@ loc_81496AA:
 	mov r0, #0
 	str r0, [r1]
 	mov r0, r3
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	bl STWI_send_StopModeREQ
 	b loc_81496E2
 	.balign 4, 0x00
@@ -10834,8 +10834,8 @@ off_8149750: .word SIOControlRegister
 sub_8149754:
 	push {lr}
 	ldr r0, off_8149764 // =sub_8149768+1 
-	bl sub_814C360
-	bl sub_814C3AC
+	bl STWI_set_Callback_M
+	bl STWI_send_ResetREQ
 	pop {r0}
 	bx r0
 	.balign 4, 0
@@ -10875,7 +10875,7 @@ sub_814978C:
 	lsl r2, r2, #0x18
 	lsr r6, r2, #0x18
 	ldr r0, off_81497C4 // =sub_81494B8+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	mov r0, #3
 	and r4, r0
 	mov r0, #0x3c 
@@ -10883,7 +10883,7 @@ sub_814978C:
 	mov r0, r4
 	mov r1, r5
 	mov r2, r6
-	bl sub_814C4DC
+	bl STWI_send_SystemConfigREQ
 	cmp r6, #0
 	bne loc_81497CC
 	ldr r0, off_81497C8 // =dword_2010CC4 
@@ -10979,10 +10979,10 @@ loc_814983A:
 	strb r0, [r1,#0xe]
 loc_8149866:
 	mov r0, r12
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	mov r0, sp
 	mov r1, r7
-	bl sub_814C484
+	bl STWI_send_GameConfigREQ
 	add sp, sp, #0x10
 	pop {r4-r7}
 	pop {r0}
@@ -11079,9 +11079,9 @@ off_8149918: .word dword_2010CC0
 sub_814991C:
 	push {lr}
 	ldr r0, off_814994C // =sub_81494F8+1 
-	bl sub_814C360
-	bl sub_814C418
-	bl sub_814C384
+	bl STWI_set_Callback_M
+	bl STWI_send_SystemStatusREQ
+	bl STWI_poll_CommandEnd
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	cmp r1, #0
@@ -11104,8 +11104,8 @@ loc_8149954:
 	bl sub_81494B8
 loc_814995A:
 	ldr r0, off_8149968 // =sub_814996C+1 
-	bl sub_814C360
-	bl sub_814C51C
+	bl STWI_set_Callback_M
+	bl STWI_send_SC_StartREQ
 	pop {r0}
 	bx r0
 off_8149968: .word sub_814996C+1
@@ -11192,8 +11192,8 @@ dword_81499F4: .word 0x1000040
 sub_81499F8:
 	push {lr}
 	ldr r0, off_8149A08 // =sub_8149A20+1 
-	bl sub_814C360
-	bl sub_814C540
+	bl STWI_set_Callback_M
+	bl STWI_send_SC_PollingREQ
 	pop {r0}
 	bx r0
 	.balign 4, 0
@@ -11204,7 +11204,7 @@ off_8149A08: .word sub_8149A20+1
 sub_8149A0C:
 	push {lr}
 	ldr r0, off_8149A1C // =sub_8149A20+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	bl STWI_send_SC_EndREQ
 	pop {r0}
 	bx r0
@@ -11232,9 +11232,9 @@ loc_8149A32:
 	cmp r0, #0
 	bne loc_8149A90
 	ldr r0, off_8149A6C // =sub_81494F8+1 
-	bl sub_814C360
-	bl sub_814C418
-	bl sub_814C384
+	bl STWI_set_Callback_M
+	bl STWI_send_SystemStatusREQ
+	bl STWI_poll_CommandEnd
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	bne loc_8149A90
@@ -11298,9 +11298,9 @@ sub_8149AA8:
 	beq loc_8149B06
 	ldr r5, [r0,#4]
 	ldr r0, off_8149BD8 // =sub_81494F8+1 
-	bl sub_814C360
-	bl sub_814C3D0
-	bl sub_814C384
+	bl STWI_set_Callback_M
+	bl STWI_send_LinkStatusREQ
+	bl STWI_poll_CommandEnd
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	bne loc_8149AFA
@@ -11445,7 +11445,7 @@ off_8149BE0: .word dword_2010CC0
 sub_8149BE4:
 	push {lr}
 	ldr r0, off_8149BF4 // =sub_8149BF8+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	bl STWI_send_SP_StartREQ
 	pop {r0}
 	bx r0
@@ -11478,7 +11478,7 @@ loc_8149C0E:
 sub_8149C1C:
 	push {lr}
 	ldr r0, off_8149C2C // =sub_8149C30+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	bl STWI_send_SP_PollingREQ
 	pop {r0}
 	bx r0
@@ -11511,7 +11511,7 @@ loc_8149C44:
 sub_8149C54:
 	push {lr}
 	ldr r0, off_8149C64 // =sub_81494B8+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	bl STWI_send_SP_EndREQ
 	pop {r0}
 	bx r0
@@ -11700,7 +11700,7 @@ loc_8149DAC:
 	ldr r0, [r0]
 	strh r4, [r0,#0x1e]
 	ldr r0, off_8149DCC // =sub_81494B8+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	mov r0, r4
 	bl STWI_send_CP_StartREQ
 	b loc_8149DD8
@@ -11723,7 +11723,7 @@ loc_8149DD8:
 sub_8149DE0:
 	push {lr}
 	ldr r0, off_8149DF0 // =sub_8149DF4+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	bl STWI_send_CP_PollingREQ
 	pop {r0}
 	bx r0
@@ -11912,7 +11912,7 @@ loc_8149F44:
 sub_8149F48:
 	push {lr}
 	ldr r0, off_8149F74 // =sub_8149DF4+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	bl STWI_send_CP_EndREQ
 	ldr r0, off_8149F78 // =dword_2010CC8 
 	ldr r0, [r0]
@@ -12205,9 +12205,9 @@ loc_814A168:
 	ldr r0, [r0,#4]
 	str r0, [sp,#0x14]
 	ldr r0, off_814A1C4 // =sub_81494F8+1 
-	bl sub_814C360
-	bl sub_814C3D0
-	bl sub_814C384
+	bl STWI_set_Callback_M
+	bl STWI_send_LinkStatusREQ
+	bl STWI_poll_CommandEnd
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp,#0xc]
@@ -12292,8 +12292,8 @@ loc_814A1E8:
 off_814A228: .word dword_2010CC0
 off_814A22C: .word dword_2010CC4
 loc_814A230:
-	bl sub_814C418
-	bl sub_814C384
+	bl STWI_send_SystemStatusREQ
+	bl STWI_poll_CommandEnd
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	bne loc_814A2BE
@@ -12338,7 +12338,7 @@ loc_814A264:
 	ldr r0, [r4]
 	ldrb r0, [r0,#2]
 	bl STWI_send_DisconnectREQ
-	bl sub_814C384
+	bl STWI_poll_CommandEnd
 loc_814A296:
 	mov r0, r8
 	ldrb r1, [r0]
@@ -12423,8 +12423,8 @@ loc_814A32E:
 	and r0, r6
 	cmp r0, #0
 	bne loc_814A3B2
-	bl sub_814C43C
-	bl sub_814C384
+	bl STWI_send_SlotStatusREQ
+	bl STWI_poll_CommandEnd
 	ldr r0, off_814A378 // =dword_2010CC8 
 	ldr r0, [r0]
 	add r0, #0xdc
@@ -12508,7 +12508,7 @@ loc_814A3D8:
 	beq loc_814A3E8
 	mov r0, r9
 	bl STWI_send_DisconnectREQ
-	bl sub_814C384
+	bl STWI_poll_CommandEnd
 loc_814A3E8:
 	ldr r1, off_814A418 // =dword_2010CC8 
 	ldr r0, [r1]
@@ -12673,9 +12673,9 @@ loc_814A518:
 	cmp r0, #0
 	beq loc_814A544
 	ldr r0, off_814A540 // =sub_81494F8+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	bl STWI_send_SC_EndREQ
-	bl sub_814C384
+	bl STWI_poll_CommandEnd
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	cmp r1, #0
@@ -12687,7 +12687,7 @@ loc_814A518:
 off_814A540: .word sub_81494F8+1
 loc_814A544:
 	ldr r0, off_814A558 // =sub_814A55C+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	mov r0, r4
 	bl STWI_send_DisconnectREQ
 loc_814A550:
@@ -12713,9 +12713,9 @@ sub_814A55C:
 	cmp r0, #0
 	bne loc_814A598
 	ldr r0, off_814A630 // =sub_81494F8+1 
-	bl sub_814C360
-	bl sub_814C418
-	bl sub_814C384
+	bl STWI_set_Callback_M
+	bl STWI_send_SystemStatusREQ
+	bl STWI_poll_CommandEnd
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	bne loc_814A598
@@ -12788,9 +12788,9 @@ loc_814A5F8:
 	cmp r0, #0
 	beq loc_814A626
 	ldr r0, off_814A630 // =sub_81494F8+1 
-	bl sub_814C360
-	bl sub_814C51C
-	bl sub_814C384
+	bl STWI_set_Callback_M
+	bl STWI_send_SC_StartREQ
+	bl STWI_poll_CommandEnd
 	mov r5, r0
 	cmp r5, #0
 	beq loc_814A626
@@ -12836,7 +12836,7 @@ loc_814A656:
 	beq loc_814A656
 loc_814A66A:
 	mov r0, r2
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	ldr r0, off_814A694 // =dword_2010CC0 
 	ldr r1, [r0]
 	lsl r0, r4, #5
@@ -12859,7 +12859,7 @@ off_814A694: .word dword_2010CC0
 sub_814A698:
 	push {lr}
 	ldr r0, off_814A6A8 // =sub_814A6AC+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	bl STWI_send_CPR_PollingREQ
 	pop {r0}
 	bx r0
@@ -12986,7 +12986,7 @@ loc_814A77A:
 sub_814A780:
 	push {lr}
 	ldr r0, off_814A790 // =sub_814A6AC+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	bl STWI_send_CPR_EndREQ
 	pop {r0}
 	bx r0
@@ -13034,7 +13034,7 @@ sub_814A7C4:
 	cmp r0, #1
 	bne loc_814A7E4
 	ldr r0, off_814A7E0 // =sub_81494B8+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	bl STWI_send_MS_ChangeREQ
 	b loc_814A7EC
 	.balign 4, 0
@@ -14305,7 +14305,7 @@ loc_814B120:
 	mov r0, #0xff
 	str r0, [r1,#0x78]
 	ldr r0, off_814B148 // =sub_814B2A0+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	cmp r5, #0
 	bne loc_814B14C
 	ldr r0, [r4]
@@ -14334,7 +14334,7 @@ loc_814B164:
 	cmp r0, #0
 	beq loc_814B1B2
 	ldr r0, off_814B190 // =sub_814B1F8+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	cmp r5, #0
 	beq loc_814B19C
 	ldr r0, off_814B194 // =dword_2010CC8 
@@ -14386,7 +14386,7 @@ off_814B1DC: .word dword_2010CC0
 off_814B1E0: .word dword_2010CCC
 loc_814B1E4:
 	ldr r0, off_814B1F4 // =sub_814B290+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	bl STWI_send_MS_ChangeREQ
 loc_814B1EE:
 	pop {r4,r5}
@@ -15039,7 +15039,7 @@ sub_814B694:
 	ldr r0, [r2]
 	strb r1, [r0,#4]
 	ldr r0, off_814B6D0 // =sub_814B6D4+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	bl STWI_send_DataRxREQ
 loc_814B6C0:
 	pop {r4}
@@ -16385,7 +16385,7 @@ off_814C0F0: .word dword_2010CB0
 
 	push {lr}
 	ldr r0, off_814C108 // =sub_81494B8+1 
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	mov r0, #1
 	mov r1, #0
 	bl STWI_send_TestModeREQ
@@ -16471,8 +16471,8 @@ loc_814C152:
 	ldr r2, dword_814C1D8 // =0x5003 
 	mov r0, r2
 	strh r0, [r1]
-	bl sub_814C348
-	bl sub_814C354
+	bl STWI_init_Callback_M
+	bl STWI_init_Callback_S
 	ldr r3, off_814C1DC // =InterruptMasterEnableRegister 
 	ldrh r2, [r3]
 	strh r4, [r3]
@@ -16673,52 +16673,52 @@ dword_814C344: .word 0xFFFF
 	thumb_func_end sub_814C2E8
 
 	thumb_local_start
-sub_814C348:
+STWI_init_Callback_M:
 	push {lr}
 	mov r0, #0
-	bl sub_814C360
+	bl STWI_set_Callback_M
 	pop {r0}
 	bx r0
-	thumb_func_end sub_814C348
+	thumb_func_end STWI_init_Callback_M
 
 	thumb_local_start
-sub_814C354:
+STWI_init_Callback_S:
 	push {lr}
 	mov r0, #0
-	bl sub_814C36C
+	bl STWI_set_Callback_S
 	pop {r0}
 	bx r0
-	thumb_func_end sub_814C354
+	thumb_func_end STWI_init_Callback_S
 
 	thumb_local_start
-sub_814C360:
+STWI_set_Callback_M:
 	ldr r1, off_814C368 // =dword_2010CCC 
 	ldr r1, [r1]
 	str r0, [r1,#0x18]
 	bx lr
 off_814C368: .word dword_2010CCC
-	thumb_func_end sub_814C360
+	thumb_func_end STWI_set_Callback_M
 
 	thumb_local_start
-sub_814C36C:
+STWI_set_Callback_S:
 	ldr r1, off_814C374 // =dword_2010CCC 
 	ldr r1, [r1]
 	str r0, [r1,#0x1c]
 	bx lr
 off_814C374: .word dword_2010CCC
-	thumb_func_end sub_814C36C
+	thumb_func_end STWI_set_Callback_S
 
 	thumb_local_start
-sub_814C378:
+STWI_set_Callback_ID:
 	ldr r1, off_814C380 // =dword_2010CCC 
 	ldr r1, [r1]
 	str r0, [r1,#0x20]
 	bx lr
 off_814C380: .word dword_2010CCC
-	thumb_func_end sub_814C378
+	thumb_func_end STWI_set_Callback_ID
 
 	thumb_local_start
-sub_814C384:
+STWI_poll_CommandEnd:
 	push {lr}
 	ldr r0, off_814C3A8 // =dword_2010CCC 
 	ldr r1, [r0]
@@ -16740,10 +16740,10 @@ loc_814C39E:
 	bx r1
 	.balign 4, 0
 off_814C3A8: .word dword_2010CCC
-	thumb_func_end sub_814C384
+	thumb_func_end STWI_poll_CommandEnd
 
 	thumb_local_start
-sub_814C3AC:
+STWI_send_ResetREQ:
 	push {lr}
 	mov r0, #0x10
 	bl STWI_init
@@ -16760,10 +16760,10 @@ loc_814C3C6:
 	bx r0
 	.balign 4, 0
 off_814C3CC: .word dword_2010CCC
-	thumb_func_end sub_814C3AC
+	thumb_func_end STWI_send_ResetREQ
 
 	thumb_local_start
-sub_814C3D0:
+STWI_send_LinkStatusREQ:
 	push {lr}
 	mov r0, #0x11
 	bl STWI_init
@@ -16780,8 +16780,10 @@ loc_814C3EA:
 	bx r0
 	.balign 4, 0
 off_814C3F0: .word dword_2010CCC
-	thumb_func_end sub_814C3D0
+	thumb_func_end STWI_send_LinkStatusREQ
 
+	thumb_local_start 2
+STWI_send_VersionStatusREQ:
 	push {lr}
 	mov r0, #0x12
 	bl STWI_init
@@ -16798,8 +16800,10 @@ loc_814C40E:
 	bx r0
 	.balign 4, 0x00
 off_814C414: .word dword_2010CCC
-	thumb_local_start
-sub_814C418:
+	thumb_func_end STWI_send_VersionStatusREQ
+
+	thumb_local_start 2
+STWI_send_SystemStatusREQ:
 	push {lr}
 	mov r0, #0x13
 	bl STWI_init
@@ -16816,10 +16820,10 @@ loc_814C432:
 	bx r0
 	.balign 4, 0
 off_814C438: .word dword_2010CCC
-	thumb_func_end sub_814C418
+	thumb_func_end STWI_send_SystemStatusREQ
 
 	thumb_local_start
-sub_814C43C:
+STWI_send_SlotStatusREQ:
 	push {lr}
 	mov r0, #0x14
 	bl STWI_init
@@ -16836,8 +16840,10 @@ loc_814C456:
 	bx r0
 	.balign 4, 0
 off_814C45C: .word dword_2010CCC
-	thumb_func_end sub_814C43C
+	thumb_func_end STWI_send_SlotStatusREQ
 
+	thumb_local_start 2
+STWI_send_ConfigStatusREQ:
 	push {lr}
 	mov r0, #0x15
 	bl STWI_init
@@ -16852,10 +16858,12 @@ off_814C45C: .word dword_2010CCC
 loc_814C47A:
 	pop {r0}
 	bx r0
-	.byte 0, 0
+	.balign 4, 0
 off_814C480: .word dword_2010CCC
+	thumb_func_end STWI_send_ConfigStatusREQ
+
 	thumb_local_start
-sub_814C484:
+STWI_send_GameConfigREQ:
 	push {r4,r5,lr}
 	mov r4, r0
 	mov r5, r1
@@ -16900,10 +16908,10 @@ loc_814C4D0:
 	bx r0
 	.balign 4, 0
 off_814C4D8: .word dword_2010CCC
-	thumb_func_end sub_814C484
+	thumb_func_end STWI_send_GameConfigREQ
 
 	thumb_local_start
-sub_814C4DC:
+STWI_send_SystemConfigREQ:
 	push {r4-r6,lr}
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
@@ -16935,10 +16943,10 @@ loc_814C512:
 	bx r0
 	.balign 4, 0
 off_814C518: .word dword_2010CCC
-	thumb_func_end sub_814C4DC
+	thumb_func_end STWI_send_SystemConfigREQ
 
 	thumb_local_start
-sub_814C51C:
+STWI_send_SC_StartREQ:
 	push {lr}
 	mov r0, #0x19
 	bl STWI_init
@@ -16955,10 +16963,10 @@ loc_814C536:
 	bx r0
 	.balign 4, 0
 off_814C53C: .word dword_2010CCC
-	thumb_func_end sub_814C51C
+	thumb_func_end STWI_send_SC_StartREQ
 
 	thumb_local_start
-sub_814C540:
+STWI_send_SC_PollingREQ:
 	push {lr}
 	mov r0, #0x1a
 	bl STWI_init
@@ -16975,7 +16983,7 @@ loc_814C55A:
 	bx r0
 	.balign 4, 0
 off_814C560: .word dword_2010CCC
-	thumb_func_end sub_814C540
+	thumb_func_end STWI_send_SC_PollingREQ
 
 	thumb_local_start
 STWI_send_SC_EndREQ:
@@ -17943,7 +17951,7 @@ loc_814CC64:
 	mov r0, #0xa
 	str r0, [r1]
 	ldr r0, off_814CC98 // =Sio32IDIntr+1 
-	bl sub_814C378
+	bl STWI_set_Callback_ID
 	bl Sio32IDInit
 	ldr r0, [r4]
 	ldrb r0, [r0,#0xa]
@@ -17993,7 +18001,7 @@ loc_814CCC6:
 	ldr r1, [r0]
 	mov r0, #0
 	str r0, [r1]
-	bl sub_814C378
+	bl STWI_set_Callback_ID
 	mov r0, r6
 loc_814CCE4:
 	pop {r3}

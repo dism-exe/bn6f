@@ -4972,7 +4972,7 @@ int sub_81493E4()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814C360(sub_81494B8);
+    STWI_set_Callback_M(sub_81494B8);
     STWI_send_ResumeRetransmitAndChangeREQ();
     return v1;
 }
@@ -5027,7 +5027,7 @@ int __fastcall sub_8149464(int a1)
 {
     int v2; // [sp+0h] [bp-4h]
 
-    sub_814C36C(a1);
+    STWI_set_Callback_S(a1);
     return v2;
 }
 
@@ -5075,7 +5075,7 @@ int __fastcall sub_81494B8(unsigned __int8 a1, unsigned __int16 a2)
 
     v2 = a1;
     v3 = a2;
-    sub_814C360(sub_81494F8);
+    STWI_set_Callback_M(sub_81494F8);
     v4 = dword_2010CC4;
     *(dword_2010CC4 + 28) = v3;
     if ( *v4 & 8 )
@@ -5115,7 +5115,7 @@ int __fastcall sub_81494F8(unsigned __int8 a1, int a2)
 // 0x8149568
 int sub_8149568()
 {
-    sub_814C384();
+    STWI_poll_CommandEnd();
     return *(dword_2010CC4 + 28);
 }
 
@@ -5125,8 +5125,8 @@ int sub_814957C()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814C360(sub_81494B8);
-    sub_814C418();
+    STWI_set_Callback_M(sub_81494B8);
+    STWI_send_SystemStatusREQ();
     return v1;
 }
 
@@ -5140,7 +5140,7 @@ signed int __fastcall sub_8149590(_BYTE *a1)
     v1 = a1;
     if ( **(dword_2010CC8 + 220) != 147 )
         return 16;
-    if ( sub_814C384() << 16 )
+    if ( STWI_poll_CommandEnd() << 16 )
         LOBYTE(v3) = -1;
     else
         v3 = *(*(dword_2010CC8 + 220) + 7);
@@ -5211,7 +5211,7 @@ int sub_8149644()
             while ( *v1 << 16 <= 0x105FFFFu )
                 ;
             *v1 = 0;
-            sub_814C360(sub_81496EC);
+            STWI_set_Callback_M(sub_81496EC);
             STWI_send_StopModeREQ();
         }
         else
@@ -5263,8 +5263,8 @@ int sub_8149754()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814C360(sub_8149768);
-    sub_814C3AC();
+    STWI_set_Callback_M(sub_8149768);
+    STWI_send_ResetREQ();
     return v1;
 }
 
@@ -5297,8 +5297,8 @@ int __fastcall sub_814978C(char a1, unsigned __int8 a2, unsigned __int8 a3)
     v3 = a1;
     v4 = a2;
     v5 = a3;
-    sub_814C360(sub_81494B8);
-    sub_814C4DC(v3 & 3 | 0x3C, v4, v5);
+    STWI_set_Callback_M(sub_81494B8);
+    STWI_send_SystemConfigREQ(v3 & 3 | 0x3C, v4, v5);
     if ( v5 )
     {
         v6 = InterruptMasterEnableRegister;
@@ -5360,8 +5360,8 @@ int __fastcall sub_81497F4(unsigned __int8 a1, int a2, char *a3, unsigned __int8
     v17 = ~v9;
     if ( v6 )
         v16 = 0;
-    sub_814C360(sub_8149880);
-    sub_814C484(&v14, v5);
+    STWI_set_Callback_M(sub_8149880);
+    STWI_send_GameConfigREQ(&v14, v5);
     return v18;
 }
 
@@ -5435,9 +5435,9 @@ int sub_814991C()
     unsigned __int16 v0; // r0
     int v2; // [sp+0h] [bp-4h]
 
-    sub_814C360(sub_81494F8);
-    sub_814C418();
-    v0 = sub_814C384();
+    STWI_set_Callback_M(sub_81494F8);
+    STWI_send_SystemStatusREQ();
+    v0 = STWI_poll_CommandEnd();
     if ( v0 )
     {
         sub_81494B8(0x19u, v0);
@@ -5446,8 +5446,8 @@ int sub_814991C()
     {
         sub_8149994(1u);
     }
-    sub_814C360(sub_814996C);
-    sub_814C51C();
+    STWI_set_Callback_M(sub_814996C);
+    STWI_send_SC_StartREQ();
     return v2;
 }
 
@@ -5500,8 +5500,8 @@ int sub_81499F8()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814C360(sub_8149A20);
-    sub_814C540();
+    STWI_set_Callback_M(sub_8149A20);
+    STWI_send_SC_PollingREQ();
     return v1;
 }
 
@@ -5511,7 +5511,7 @@ int sub_8149A0C()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814C360(sub_8149A20);
+    STWI_set_Callback_M(sub_8149A20);
     STWI_send_SC_EndREQ();
     return v1;
 }
@@ -5532,9 +5532,9 @@ int __fastcall sub_8149A20(unsigned __int8 a1, unsigned __int16 a2)
     {
         if ( !*(dword_2010CC0 + 148) )
         {
-            sub_814C360(sub_81494F8);
-            sub_814C418();
-            if ( !(sub_814C384() << 16) )
+            STWI_set_Callback_M(sub_81494F8);
+            STWI_send_SystemStatusREQ();
+            if ( !(STWI_poll_CommandEnd() << 16) )
                 *(dword_2010CC0 + 148) = *(*(dword_2010CC8 + 220) + 4);
         }
     }
@@ -5569,9 +5569,9 @@ int sub_8149AA8()
     if ( *(v0 + 1) )
     {
         v2 = *(v0 + 4);
-        sub_814C360(sub_81494F8);
-        sub_814C3D0();
-        if ( !(sub_814C384() << 16) )
+        STWI_set_Callback_M(sub_81494F8);
+        STWI_send_LinkStatusREQ();
+        if ( !(STWI_poll_CommandEnd() << 16) )
         {
             v3 = (*(dword_2010CC8 + 220) + 4);
             v4 = 0;
@@ -5617,7 +5617,7 @@ int sub_8149BE4()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814C360(sub_8149BF8);
+    STWI_set_Callback_M(sub_8149BF8);
     STWI_send_SP_StartREQ();
     return v1;
 }
@@ -5644,7 +5644,7 @@ int sub_8149C1C()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814C360(sub_8149C30);
+    STWI_set_Callback_M(sub_8149C30);
     STWI_send_SP_EndREQ();
     return v1;
 }
@@ -5671,7 +5671,7 @@ int sub_8149C54()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814C360(sub_81494B8);
+    STWI_set_Callback_M(sub_81494B8);
     STWI_send_SP_EndREQ();
     return v1;
 }
@@ -5793,7 +5793,7 @@ int __fastcall sub_8149D78(unsigned __int16 a1)
     else
     {
         *(dword_2010CC4 + 30) = a1;
-        sub_814C360(sub_81494B8);
+        STWI_set_Callback_M(sub_81494B8);
         STWI_send_CP_StartREQ(v1);
     }
     return v5;
@@ -5805,7 +5805,7 @@ int sub_8149DE0()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814C360(sub_8149DF4);
+    STWI_set_Callback_M(sub_8149DF4);
     STWI_send_CP_PollingREQ();
     return v1;
 }
@@ -5908,7 +5908,7 @@ int sub_8149F48()
     int v0; // r1
     int v2; // [sp+0h] [bp-4h]
 
-    sub_814C360(sub_8149DF4);
+    STWI_set_Callback_M(sub_8149DF4);
     STWI_send_CP_EndREQ();
     v0 = *(dword_2010CC8 + 220);
     if ( *(v0 + 6) <= 3u )
@@ -6062,9 +6062,9 @@ int __fastcall sub_814A060(__int16 a1, _BYTE *a2, char *a3, _BYTE *a4)
     v8 = *(dword_2010CC8 + 220);
     v30 = *v8;
     v31 = v8[1];
-    sub_814C360(sub_81494F8);
-    sub_814C3D0();
-    v29 = sub_814C384();
+    STWI_set_Callback_M(sub_81494F8);
+    STWI_send_LinkStatusREQ();
+    v29 = STWI_poll_CommandEnd();
     if ( !v29 )
     {
         v9 = (*(dword_2010CC8 + 220) + 4);
@@ -6098,8 +6098,8 @@ LABEL_33:
                     *v26 = 1;
                     goto LABEL_36;
                 }
-                sub_814C418();
-                if ( sub_814C384() << 16 )
+                STWI_send_SystemStatusREQ();
+                if ( STWI_poll_CommandEnd() << 16 )
                     goto LABEL_36;
                 if ( *(*(dword_2010CC8 + 220) + 7) )
                 {
@@ -6110,7 +6110,7 @@ LABEL_33:
                         goto LABEL_36;
                     *(dword_2010CC4 + 10 + v12) = 0;
                     STWI_send_DisconnectREQ(*(dword_2010CC0 + 2));
-                    sub_814C384();
+                    STWI_poll_CommandEnd();
                     goto LABEL_33;
                 }
                 *v4 |= v14;
@@ -6143,8 +6143,8 @@ LABEL_36:
                     }
                     else if ( !((*(dword_2010CC0 + 2) | v21) & v14) )
                     {
-                        sub_814C43C();
-                        sub_814C384();
+                        STWI_send_SlotStatusREQ();
+                        STWI_poll_CommandEnd();
                         v22 = *(dword_2010CC8 + 220);
                         v23 = (*(v22 + 1) - 1) & 0xFF;
                         v24 = (v22 + 8);
@@ -6183,7 +6183,7 @@ LABEL_51:
                 if ( v11 )
                 {
                     STWI_send_DisconnectREQ(v11);
-                    sub_814C384();
+                    STWI_poll_CommandEnd();
                 }
                 **(dword_2010CC8 + 220) = v30;
                 *(*(dword_2010CC8 + 220) + 4) = v31;
@@ -6242,13 +6242,13 @@ int __fastcall sub_814A4CC(unsigned __int8 a1)
             if ( *(dword_2010CC0 + 3) & a1 )
                 sub_814A55C(0x30u, 0);
         }
-        else if ( *(dword_2010CC4 + 9) && (sub_814C360(sub_81494F8), STWI_send_SC_EndREQ(), (v2 = sub_814C384()) != 0) )
+        else if ( *(dword_2010CC4 + 9) && (STWI_set_Callback_M(sub_81494F8), STWI_send_SC_EndREQ(), (v2 = STWI_poll_CommandEnd()) != 0) )
         {
             sub_81494B8(0x1Bu, v2);
         }
         else
         {
-            sub_814C360(sub_814A55C);
+            STWI_set_Callback_M(sub_814A55C);
             STWI_send_DisconnectREQ(v1);
         }
     }
@@ -6269,9 +6269,9 @@ int __fastcall sub_814A55C(unsigned __int8 a1, unsigned __int16 a2)
     v3 = a2;
     if ( a2 == 3 && !*dword_2010CC0 )
     {
-        sub_814C360(sub_81494F8);
-        sub_814C418();
-        if ( !(sub_814C384() << 16) && !*(*(dword_2010CC8 + 220) + 7) )
+        STWI_set_Callback_M(sub_81494F8);
+        STWI_send_SystemStatusREQ();
+        if ( !(STWI_poll_CommandEnd() << 16) && !*(*(dword_2010CC8 + 220) + 7) )
             v3 = 0;
     }
     *(dword_2010CC4 + 5) &= *(dword_2010CC0 + 2) | *(dword_2010CC0 + 3);
@@ -6292,9 +6292,9 @@ int __fastcall sub_814A55C(unsigned __int8 a1, unsigned __int16 a2)
     sub_81494B8(v2, v3);
     if ( *(dword_2010CC4 + 9) )
     {
-        sub_814C360(sub_81494F8);
-        sub_814C51C();
-        v5 = sub_814C384();
+        STWI_set_Callback_M(sub_81494F8);
+        STWI_send_SC_StartREQ();
+        v5 = STWI_poll_CommandEnd();
         if ( v5 )
             sub_81494B8(0x19u, v5);
     }
@@ -6318,7 +6318,7 @@ int __fastcall sub_814A63C(unsigned __int8 a1)
             v2 = (v2 + 1) & 0xFF;
         while ( v2 <= 3 && !((a1 >> v2) & 1) );
     }
-    sub_814C360(sub_81494B8);
+    STWI_set_Callback_M(sub_81494B8);
     STWI_send_CPR_StartREQ(*(dword_2010CC0 + 32 * v2 + 20), *(dword_2010CC0 + 148), v1);
     return v4;
 }
@@ -6329,7 +6329,7 @@ int sub_814A698()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814C360(sub_814A6AC);
+    STWI_set_Callback_M(sub_814A6AC);
     STWI_send_CPR_PollingREQ();
     return v1;
 }
@@ -6385,7 +6385,7 @@ int sub_814A780()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814C360(sub_814A6AC);
+    STWI_set_Callback_M(sub_814A6AC);
     STWI_send_CPR_EndREQ();
     return v1;
 }
@@ -6418,7 +6418,7 @@ int sub_814A7C4()
 
     if ( sub_814C2E8(1) == 1 )
     {
-        sub_814C360(sub_81494B8);
+        STWI_set_Callback_M(sub_81494B8);
         STWI_send_MS_ChangeREQ();
     }
     else
@@ -6971,7 +6971,7 @@ int __fastcall sub_814B0B4(unsigned __int8 a1)
             sub_814B2C8();
         if ( *(dword_2010CC0 + 14) )
         {
-            sub_814C360(sub_814B1F8);
+            STWI_set_Callback_M(sub_814B1F8);
             if ( v1 )
             {
                 STWI_send_DataTxAndChangeREQ(dword_2010CC8 + 104, (*(dword_2010CC4 + 36) + 4) & 0xFF);
@@ -6996,7 +6996,7 @@ int __fastcall sub_814B0B4(unsigned __int8 a1)
             v3 = dword_2010CC8;
             *(dword_2010CC8 + 104) = 1;
             *(v3 + 120) = 255;
-            sub_814C360(sub_814B2A0);
+            STWI_set_Callback_M(sub_814B2A0);
             if ( v1 )
                 STWI_send_DataTxAndChangeREQ(dword_2010CC8 + 104, 1);
             else
@@ -7014,7 +7014,7 @@ int __fastcall sub_814B0B4(unsigned __int8 a1)
         }
         else
         {
-            sub_814C360(sub_814B290);
+            STWI_set_Callback_M(sub_814B290);
             STWI_send_MS_ChangeREQ();
         }
     }
@@ -7300,7 +7300,7 @@ int sub_814B694()
     {
         *(dword_2010CC4 + 3) = *(dword_2010CC0 + 4) | *(dword_2010CC0 + 5) | *(dword_2010CC0 + 6);
         *(dword_2010CC4 + 4) = 0;
-        sub_814C360(sub_814B6D4);
+        STWI_set_Callback_M(sub_814B6D4);
         STWI_send_DataRxREQ();
     }
     return v1;
@@ -7957,8 +7957,8 @@ int __fastcall sub_814C10C(int a1, _DWORD *a2, char a3)
     *(dword_2010CCC + 44) = 0;
     SIOModeSelect_GeneralPurposeData = 256;
     SIOControlRegister = 20483;
-    sub_814C348();
-    sub_814C354();
+    STWI_init_Callback_M();
+    STWI_init_Callback_S();
     InterruptEnableRegister |= 0x80u;
     return v12;
 }
@@ -8049,27 +8049,27 @@ int __fastcall sub_814C2E8(signed int a1)
 
 
 // 0x814c348
-int sub_814C348()
+int STWI_init_Callback_M()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814C360(0);
+    STWI_set_Callback_M(0);
     return v1;
 }
 
 
 // 0x814c354
-int sub_814C354()
+int STWI_init_Callback_S()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814C36C(0);
+    STWI_set_Callback_S(0);
     return v1;
 }
 
 
 // 0x814c360
-int __fastcall sub_814C360(int result)
+int __fastcall STWI_set_Callback_M(int result)
 {
     *(dword_2010CCC + 24) = result;
     return result;
@@ -8077,7 +8077,7 @@ int __fastcall sub_814C360(int result)
 
 
 // 0x814c36c
-int __fastcall sub_814C36C(int result)
+int __fastcall STWI_set_Callback_S(int result)
 {
     *(dword_2010CCC + 28) = result;
     return result;
@@ -8085,7 +8085,7 @@ int __fastcall sub_814C36C(int result)
 
 
 // 0x814c378
-int __fastcall sub_814C378(int result)
+int __fastcall STWI_set_Callback_ID(int result)
 {
     *(dword_2010CCC + 32) = result;
     return result;
@@ -8093,7 +8093,7 @@ int __fastcall sub_814C378(int result)
 
 
 // 0x814c384
-int sub_814C384()
+int STWI_poll_CommandEnd()
 {
     while ( *(dword_2010CCC + 44) == 1 )
         ;
@@ -8102,7 +8102,7 @@ int sub_814C384()
 
 
 // 0x814c3ac
-int sub_814C3AC()
+int STWI_send_ResetREQ()
 {
     int v1; // [sp+0h] [bp-4h]
 
@@ -8116,7 +8116,7 @@ int sub_814C3AC()
 
 
 // 0x814c3d0
-int sub_814C3D0()
+int STWI_send_LinkStatusREQ()
 {
     int v1; // [sp+0h] [bp-4h]
 
@@ -8130,7 +8130,7 @@ int sub_814C3D0()
 
 
 // 0x814c418
-int sub_814C418()
+int STWI_send_SystemStatusREQ()
 {
     int v1; // [sp+0h] [bp-4h]
 
@@ -8144,7 +8144,7 @@ int sub_814C418()
 
 
 // 0x814c43c
-int sub_814C43C()
+int STWI_send_SlotStatusREQ()
 {
     int v1; // [sp+0h] [bp-4h]
 
@@ -8158,7 +8158,7 @@ int sub_814C43C()
 
 
 // 0x814c484
-int __fastcall sub_814C484(_WORD *a1, _BYTE *a2)
+int __fastcall STWI_send_GameConfigREQ(_WORD *a1, _BYTE *a2)
 {
     _WORD *v2; // r4
     _BYTE *v3; // r5
@@ -8199,7 +8199,7 @@ int __fastcall sub_814C484(_WORD *a1, _BYTE *a2)
 
 
 // 0x814c4dc
-int __fastcall sub_814C4DC(__int16 a1, char a2, char a3)
+int __fastcall STWI_send_SystemConfigREQ(__int16 a1, char a2, char a3)
 {
     __int16 v3; // r6
     char v4; // r5
@@ -8224,7 +8224,7 @@ int __fastcall sub_814C4DC(__int16 a1, char a2, char a3)
 
 
 // 0x814c51c
-int sub_814C51C()
+int STWI_send_SC_StartREQ()
 {
     int v1; // [sp+0h] [bp-4h]
 
@@ -8238,7 +8238,7 @@ int sub_814C51C()
 
 
 // 0x814c540
-int sub_814C540()
+int STWI_send_SC_PollingREQ()
 {
     int v1; // [sp+0h] [bp-4h]
 
@@ -8892,7 +8892,7 @@ signed int __fastcall AgbRFU_checkID(unsigned __int8 a1)
         return -1;
     v4 = InterruptEnableRegister;
     *dword_2010CCC = 10;
-    sub_814C378(Sio32IDIntr);
+    STWI_set_Callback_ID(Sio32IDIntr);
     Sio32IDInit();
     v5 = &Timer0Counter_Reload[2 * *(dword_2010CCC + 10)];
     v6 = 8 * v2 & 0xFF;
@@ -8915,7 +8915,7 @@ signed int __fastcall AgbRFU_checkID(unsigned __int8 a1)
     InterruptEnableRegister = v4;
     InterruptMasterEnableRegister = 1;
     *dword_2010CCC = 0;
-    sub_814C378(0);
+    STWI_set_Callback_ID(0);
     return v1;
 }
 
