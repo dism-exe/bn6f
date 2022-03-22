@@ -2583,6 +2583,7 @@ byte_203401D:: // 0x203401d
 	.space 1
 word_203401E:: // 0x203401e
 	.space 98
+// eAIData
 unk_2034080:: // 0x2034080
 	.space 124
 	.space 740

@@ -7574,7 +7574,7 @@ loc_8007208:
 	// size
 	mov r1, #0xf0
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	str r4, [r5,#oBattleState_Unk_3c]
+	str r4, [r5,#oBattleState_BattleSettings]
 	mov r0, #1
 	strb r0, [r5,#oBattleState_Unk_0a]
 	bl sub_8005F40
@@ -7693,7 +7693,7 @@ sub_8007338:
 	thumb_local_start
 sub_8007358:
 	push {lr}
-	ldr r0, [r5,#oBattleState_Unk_3c]
+	ldr r0, [r5,#oBattleState_BattleSettings]
 	ldr r0, [r0,#0xc]
 	bl sub_8007368
 	bl sub_80AA88C
@@ -8580,7 +8580,7 @@ sub_8007A0C:
 	mov r1, #8
 	tst r0, r1
 	bne loc_8007A36
-	ldr r0, [r5,#oBattleState_Unk_3c]
+	ldr r0, [r5,#oBattleState_BattleSettings]
 	ldr r0, [r0,#0xc]
 	bl sub_80029A8
 loc_8007A36:
@@ -8941,7 +8941,7 @@ loc_8007D2A:
 	bl SetDummyBGScrollCallbacks
 	bl zeroFill_e20094C0
 	bl sub_80023A8
-	ldr r0, [r5,#oBattleState_Unk_3c]
+	ldr r0, [r5,#oBattleState_BattleSettings]
 	bl loc_80071FE
 	b locret_8007E60
 loc_8007D4E:
@@ -11604,7 +11604,7 @@ sub_80091F0:
 	ldr r1, off_8009278 // =0x400 
 	tst r0, r1
 	bne loc_800920A
-	ldr r1, [r5,#oBattleState_Unk_3c]
+	ldr r1, [r5,#oBattleState_BattleSettings]
 	ldrb r1, [r1,#5]
 	strb r1, [r5,#oBattleState_Unk_1a]
 	b loc_8009210
@@ -11624,7 +11624,7 @@ loc_8009210:
 	mov r0, #0x15
 	b loc_8009232
 loc_800922E:
-	ldr r0, [r5,#oBattleState_Unk_3c]
+	ldr r0, [r5,#oBattleState_BattleSettings]
 	ldrb r0, [r0,#2]
 loc_8009232:
 	cmp r0, #0x63
@@ -12181,7 +12181,7 @@ sub_8009658:
 	ldr r1, off_8009994 // =0x400 
 	tst r0, r1
 	bne loc_8009672
-	ldr r1, [r5,#oBattleState_Unk_3c]
+	ldr r1, [r5,#oBattleState_BattleSettings]
 	ldrb r1, [r1,#5]
 	strb r1, [r5,#oBattleState_Unk_1a]
 	b loc_8009678
@@ -12201,7 +12201,7 @@ loc_8009678:
 	mov r0, #0x15
 	b loc_800969A
 loc_8009696:
-	ldr r0, [r5,#oBattleState_Unk_3c]
+	ldr r0, [r5,#oBattleState_BattleSettings]
 	ldrb r0, [r0,#2]
 loc_800969A:
 	cmp r0, #0x63
@@ -12649,7 +12649,7 @@ sub_80099E0:
 	ldr r1, off_8009C84 // =0x400 
 	tst r0, r1
 	bne loc_80099FA
-	ldr r1, [r5,#oBattleState_Unk_3c]
+	ldr r1, [r5,#oBattleState_BattleSettings]
 	ldrb r1, [r1,#5]
 	strb r1, [r5,#oBattleState_Unk_1a]
 	b loc_8009A00
@@ -12669,7 +12669,7 @@ loc_8009A00:
 	mov r0, #0x15
 	b loc_8009A22
 loc_8009A1E:
-	ldr r0, [r5,#oBattleState_Unk_3c]
+	ldr r0, [r5,#oBattleState_BattleSettings]
 	ldrb r0, [r0,#2]
 loc_8009A22:
 	cmp r0, #0x63
@@ -13039,7 +13039,7 @@ sub_8009CD0:
 	ldr r1, off_8009FB8 // =0x400 
 	tst r0, r1
 	bne loc_8009CEA
-	ldr r1, [r5,#oBattleState_Unk_3c]
+	ldr r1, [r5,#oBattleState_BattleSettings]
 	ldrb r1, [r1,#5]
 	strb r1, [r5,#oBattleState_Unk_1a]
 	b loc_8009CF0
@@ -13059,7 +13059,7 @@ loc_8009CF0:
 	mov r0, #0x15
 	b loc_8009D12
 loc_8009D0E:
-	ldr r0, [r5,#oBattleState_Unk_3c]
+	ldr r0, [r5,#oBattleState_BattleSettings]
 	ldrb r0, [r0,#2]
 loc_8009D12:
 	cmp r0, #0x63
@@ -13953,7 +13953,7 @@ sub_800A2F8:
 	strb r0, [r4,r1]
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_BattleStatePtr]
-	ldr r1, [r3,#oBattleState_Unk_3c]
+	ldr r1, [r3,#oBattleState_BattleSettings]
 	ldrb r0, [r1,#3]
 	strb r0, [r3,#oBattleState_Unk_0f]
 	ldrb r0, [r1]
@@ -16052,7 +16052,7 @@ sub_800B144:
 	str r0, [r4,#0x4] // (dword_203CBE4 - 0x203cbe0)
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldr r0, [r0,#oBattleState_Unk_3c]
+	ldr r0, [r0,#oBattleState_BattleSettings]
 	str r0, [r4,#0x8] // (byte_203CBE8 - 0x203cbe0)
 	bl GetBattleEffects // () -> int
 	ldr r1, dword_800B2C4 // =0x200000 

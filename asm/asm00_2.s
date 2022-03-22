@@ -8694,7 +8694,7 @@ loc_8012E1E:
 	strh r3, [r4,#oAIData_JoypadHeld]
 	mvn r0, r2
 	and r0, r3
-	strh r0, [r4,#oAIData_JoypadDown]
+	strh r0, [r4,#oAIData_JoypadPressed]
 	mvn r0, r3
 	and r0, r2
 	strh r0, [r4,#oAIData_JoypadUp]
@@ -8723,7 +8723,7 @@ loc_8012E64:
 	mov r1, #0
 	strh r1, [r4,#oAIData_JoypadHeld]
 	strh r1, [r4,#oAIData_JoypadReleased]
-	strh r1, [r4,#oAIData_JoypadDown]
+	strh r1, [r4,#oAIData_JoypadPressed]
 	strh r1, [r4,#oAIData_JoypadUp]
 	pop {r4,r6,pc}
 	.balign 4, 0

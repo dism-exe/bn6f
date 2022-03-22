@@ -431,7 +431,7 @@ class ArrayField:
         self.size = size
         self.name = name
 
-discovered_struct_fields = collections.defaultdict(lambda: [])
+discovered_struct_fields = collections.defaultdict(list)
 size_to_type = {
     Size.BYTE: "u8",
     Size.HWORD: "u16",
@@ -453,7 +453,8 @@ def output_discovered_struct_fields():
 
     for struct_name, struct_fields in discovered_struct_fields.items():
         output += struct_name + ":\n"
-        for struct_field in struct_fields:
+        sorted_struct_fields = sorted(struct_fields, key=lambda x: x.offset)
+        for struct_field in sorted_struct_fields:
             output += "\t%s %s // loc=0x%x\n" % (size_to_type[struct_field.size], struct_field.field_name[1:], struct_field.offset)
 
     return output
@@ -805,6 +806,15 @@ class BattleState(Struct):
     def struct_name(self):
         return "BattleState"
 
+    def generate_basic_struct_fields(self):
+        return {
+            0x2: {Size.HWORD: StructField("_Unk_02_03", UnkPrimitiveMemory()),
+                  Size.BYTE: StructField("_Unk_02", UnkPrimitiveMemory())},
+            0x4: {Size.HWORD: StructField("_Unk_04_05", UnkPrimitiveMemory()),
+                  Size.BYTE: StructField("_Unk_04", UnkPrimitiveMemory())},
+            0x3c: {Size.WORD: StructField("_BattleSettings", UnkMemory())},
+        }
+
     def on_nan_struct_offset(self, fileline, offset):
         fileline_msg("Context information: BattleStateNanOffset", fileline)
         return Struct.barebones_struct_field
@@ -1092,7 +1102,7 @@ class Chatbox(Struct):
             0x1F: {Size.BYTE: StructField("_CurTileHeight16", UnkPrimitiveMemory())},
             0x20: {Size.HWORD: StructField("_Und_20", UnkPrimitiveMemory())},
             0x22: {Size.HWORD: StructField("_JoypadHeld", UnkPrimitiveMemory())},
-            0x24: {Size.HWORD: StructField("_JoypadDown", UnkPrimitiveMemory())},
+            0x24: {Size.HWORD: StructField("_JoypadPressed", UnkPrimitiveMemory())},
             0x26: {Size.HWORD: StructField("_JoypadUp", UnkPrimitiveMemory())},
             0x28: {Size.HWORD: StructField("_JoypadReleased", UnkPrimitiveMemory())},
             0x2C: {Size.WORD: StructField("_TextScriptCursorPtr", UnkMemory())},

@@ -7,7 +7,10 @@
 	// todo document rest of struct fields
 	u16 Unk_00 // loc=0x0
 	u16 Unk_02 // loc=0x2
-	struct_org 0x10
+	struct_org 0xa
+	u16 Unk_0a // loc=0xa
+	u16 Unk_0c // loc=0xc
+	u16 Unk_0e // loc=0xe
 	u16 Unk_10 // loc=0x10
 	u16 Unk_12 // loc=0x12
 	u16 Unk_14 // loc=0x14

@@ -15,7 +15,7 @@
 	u8 Unk_07 // loc=0x7
 	u8 Unk_08 // loc=0x8
 	u8 Unk_09 // loc=0x9
-	struct_org 0xb
+	u8 Unk_0a // loc=0xa
 	u8 Unk_0b // loc=0xb
 	u8 Unk_0c // loc=0xc
 	u8 Unk_0d // loc=0xd
@@ -42,9 +42,10 @@
 	u16 JoypadPressed // loc=0x24
 	u16 JoypadUp // loc=0x26
 	u16 JoypadReleased // loc=0x28
-	struct_org 0x2c
+	u16 Unk_2a // loc=0x2a
 	u16 Unk_2c // loc=0x2c
-	struct_org 0x32
+	u16 Unk_2e // loc=0x2e
+	u16 Unk_30 // loc=0x30
 	u16 Unk_32 // loc=0x32
 	// bool16???
 	u16 Anger // loc=0x34
