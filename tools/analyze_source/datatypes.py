@@ -262,13 +262,19 @@ class ROMPointer(Pointer):
                 word = parser.strip_plus1(word)
                 if word == "NULL":
                     continue
-                if word in syms:
-                    if syms[word].section == "*ABS*":
+                syms_word = syms.get(word)
+                if syms_word is not None:
+                    if syms_word.section == "*ABS*":
                         return new_unk_datatype_from_size(size)
-                    elif syms[word].section in RAM_SECTIONS_SYMBOLS:
-                        return new_unk_datatype_from_size(size)
+                    elif syms_word.section in RAM_SECTIONS_SYMBOLS:
+                        if syms_word.value in (0x02039ae0, 0x2039c00): # ePanelData
+                            #debug_print(f"ROMPointer.load: panel data detected")
+                            return PanelData().wrap()
+                        else:
+                            #debug_print(f"ROMPointer.load syms_word.value: {syms_word.value}")
+                            return new_unk_datatype_from_size(size)
                     else:
-                        read_syms.append(syms[word])
+                        read_syms.append(syms_word)
                 else:
                     try:
                         if int(word, 0) != 0:

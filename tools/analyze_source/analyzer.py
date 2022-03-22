@@ -175,7 +175,11 @@ class BranchState:
         self.register_states = register_states
 
 def run_analyzer_from_sym(sym, registers, function_start_time):
-    src_file = scanned_files[sym.filename]
+    try:
+        src_file = scanned_files[sym.filename]
+    except KeyError as e:
+        raise RuntimeError(f"sym.name: {sym.name}") from e
+
     src_file.line_num = sym.line_num
     funcstate = FunctionState(registers, sym)
     return run_analyzer_common(src_file, funcstate, function_start_time)
@@ -190,7 +194,10 @@ def run_analyzer_from_label(label, registers, function_start_time):
 # sub_801E4F4 - writes to sp in a loop
 # sub_3006C8E - blatant read from invalid address
 # sub_8102CF8 - actually recursive function (blatantly calls itself)
-problem_functions = set(("sub_801E1E4", "sub_801E4F4", "sub_3006C8E"))
+# sub_801C6EE - dynamic sp manipulation
+# sub_801D048 - relies on ignored function where sp is written in a loop, probably wouldn't have worked anyway
+# removed_8007FEA - just does not exist but the pointer does
+problem_functions = set((0x801E1E4, 0x801E4F4, 0x3006C8E, 0x801C6EE, 0x801D048, 0x8007FEA))
 
 class FunctionTracker:
     __slots__ = ("count", "time")
@@ -306,7 +313,7 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
                             for sym in possible_syms:
                                 if sym.type != "F":
                                     fileline_msg("BadFunctionDefinitionWarning: Tried executing jumptable non-function symbol \"%s\"!" % sym.name, fileline)
-                                if sym.name not in problem_functions:
+                                if sym.value not in problem_functions:
                                     debug_print("Start of jumptable function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
                                     function_total_time += time.time() - function_start_time
                                     #subroutine_return_regs, function_tree["!" + sym.name] = run_analyzer_from_sym(sym, funcstate.regs, time.time())
@@ -425,7 +432,7 @@ template_functions = None
 
 # do this later once syms has been set
 def set_template_functions():
-    analyzer.template_functions = {
+    template_functions = {
         "PlaySoundEffect": (
             ReturnValue("r0", datatypes.UnknownDataType),
         ),
@@ -553,8 +560,61 @@ def set_template_functions():
         ),
         "sub_80305E4": (
         ),
+        get_sym_label_from_value(0x08003490): (
+            ReturnValue("r0", datatypes.UnknownDataType),
+            ReturnValue("r1", datatypes.UnknownDataType),
+            ReturnValue("r2", datatypes.UnknownDataType),
+            ReturnValue("r3", datatypes.UnknownDataType),
+        ),
+        get_sym_label_from_value(0x0800A570): (
+            ReturnValue("r0", datatypes.UnknownDataType),
+            ReturnValue("r1", datatypes.UnknownDataType),
+            ReturnValue("r2", datatypes.UnknownDataType),
+            ReturnValue("r3", datatypes.UnknownDataType),
+        ),
+        0x801C6EE: (
+            ReturnValue("r0", datatypes.UnknownDataType),
+            ReturnValue("r1", datatypes.UnknownDataType),
+            ReturnValue("r2", datatypes.UnknownDataType),
+            ReturnValue("r3", datatypes.UnknownDataType),
+        ),
+        # mov pc, r7, where r7 once held the value of lr
+        0x801D12A: (
+            ReturnValue("r0", datatypes.UnknownDataType),
+            ReturnValue("r1", datatypes.UnknownDataType),
+            ReturnValue("r2", datatypes.UnknownDataType),
+            ReturnValue("r3", datatypes.UnknownDataType),
+            ReturnValue("r4", datatypes.UnknownDataType),
+        ),
+        # relies on sp manipulation of ignored function, probably wouldn't have worked anyway
+        0x801D048: (
+            ReturnValue("r0", datatypes.UnknownDataType),
+            ReturnValue("r1", datatypes.UnknownDataType),
+            ReturnValue("r2", datatypes.UnknownDataType),
+            ReturnValue("r3", datatypes.UnknownDataType),
+        ),
+        # add rHS, sp
+        0x802C6EC: (
+            ReturnValue("r0", datatypes.UnknownDataType),
+            ReturnValue("r1", datatypes.UnknownDataType),
+            ReturnValue("r2", datatypes.UnknownDataType),
+            ReturnValue("r3", datatypes.UnknownDataType),
+        ),
+        0x80031ac: ( # RunBattleObjectLogic
+            ReturnValue("r0", datatypes.UnknownDataType),
+            ReturnValue("r1", datatypes.UnknownDataType),
+            ReturnValue("r2", datatypes.UnknownDataType),
+            ReturnValue("r3", datatypes.UnknownDataType),
+        )
+        #get_sym_label_from_value(0x8144250): (
+        #    ReturnValue("r0", datatypes.UnknownDataType),
+        #    ReturnValue("r1", datatypes.UnknownDataType),
+        #    ReturnValue("r2", datatypes.UnknownDataType),
+        #    ReturnValue("r3", datatypes.UnknownDataType),
+        #)
     }
 
+    analyzer.template_functions = {get_sym_label_from_value(k) if isinstance(k, int) else k: v for k, v in template_functions.items()}
     missing_functions = []
 
     for template_function in analyzer.template_functions:
@@ -565,18 +625,34 @@ def set_template_functions():
         debug_print(f"missing_functions: {', '.join(missing_functions)}")
         raise RuntimeError("Missing template functions!")
 
+generic_arm_eabi_return_values = (
+    ReturnValue("r0", datatypes.UnknownDataType),
+    ReturnValue("r1", datatypes.UnknownDataType),
+    ReturnValue("r2", datatypes.UnknownDataType),
+    ReturnValue("r3", datatypes.UnknownDataType),
+)
+
 def check_stored_functions(opcode_params, funcstate, src_file, fileline):
     if opcode_params.startswith("nullsub"):
         return False
-    elif opcode_params not in analyzer.template_functions:
-        return True
+    elif opcode_params in analyzer.template_functions:
+        return_values = analyzer.template_functions[opcode_params]
+        for return_value in return_values:
+            funcstate.regs[return_value.regname].set_new_reg(analyzer.RegisterInfo(return_value.datatype().wrap(), fileline))
+    
+        fileline_msg("Called stored function \"%s\"." % opcode_params, fileline)
+        return False
+    else:
+        #debug_print(f"syms[opcode_params].filename: {syms[opcode_params].filename}")
+        if syms[opcode_params].filename == "asm/libs.s":
+            for return_value in generic_arm_eabi_return_values:
+                funcstate.regs[return_value.regname].set_new_reg(analyzer.RegisterInfo(return_value.datatype().wrap(), fileline))
 
-    return_values = analyzer.template_functions[opcode_params]
-    for return_value in return_values:
-        funcstate.regs[return_value.regname].set_new_reg(analyzer.RegisterInfo(return_value.datatype().wrap(), fileline))
-
-    fileline_msg("Called stored function \"%s\"." % opcode_params, fileline)
-    return False
+            fileline_msg("Called asm/libs.s function \"%s\"." % opcode_params, fileline)
+    
+            return False
+        else:
+            return True
 
 def check_pointer_shift(opcode_params, funcstate, src_file, fileline):
     if funcstate.function.value == 0x8002b30: # sprite_decompress
@@ -712,6 +788,27 @@ def sub_81023C0_sub_8102428_skip_bl_sub_8102CF8(opcode_params, funcstate, src_fi
         return False
     return True
 
+def sub_800B090_ignore_cmp(opcode_params, funcstate, src_file, fileline):
+    if opcode_params[0] == "r1" and opcode_params[1] == "r0":
+        return False
+
+    return True
+
+def fix_misaligned_pop_pc(opcode_params, funcstate, src_file, fileline):
+    if opcode_params == "{r6,pc}":
+        opcodes.pop_opcode_function("{pc}", funcstate, src_file, fileline)
+        return False
+
+    return True
+
+def sub_8007C50_skip_sub_803C754(opcode_params, funcstate, src_file, fileline):
+    if syms[opcode_params].value == 0x803C754:
+        return False
+    return True
+
+def sub_8080DA0_ignore_orr(opcode_params, funcstate, src_file, fileline):
+    return False
+
 battle_object_specific_callbacks = {
     0x800EA22: (FunctionSpecificCallback(opcodes.bne_opcode, check_loc_800EA38),), # sub_800EA22
     0x810ab8c: (FunctionSpecificCallback(opcodes.ldrb_rb_imm_opcode, check_sub_810AB8C),), # sub_810AB8C
@@ -751,6 +848,12 @@ battle_object_specific_callbacks = {
                 FunctionSpecificCallback(opcodes.add_sp_opcode, sub_80E72C8_fix_misaligned_stack)), # sub_80E72C8
     0x81023C0: (FunctionSpecificCallback(opcodes.bl_opcode, sub_81023C0_sub_8102428_skip_bl_sub_8102CF8),), # sub_81023C0
     0x8102428: (FunctionSpecificCallback(opcodes.bl_opcode, sub_81023C0_sub_8102428_skip_bl_sub_8102CF8),), # sub_8102428
+    0x800B090: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, sub_800B090_ignore_cmp),), # sub_800B090
+    0x802C280: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_pc),), # sub_802C280
+    0x8007C50: (FunctionSpecificCallback(opcodes.bl_opcode, sub_8007C50_skip_sub_803C754),), # sub_8007C50
+
+    # I think some ldr thinks a primitive is a pointer (just see the asm code)
+    0x8080DA0: (FunctionSpecificCallback(opcodes.orr_opcode, sub_8080DA0_ignore_orr),) # sub_8080DA0
 }
 
 def read_battle_object_jumptables():
@@ -768,7 +871,8 @@ def read_battle_object_jumptables():
         Thrown if the jumptable was not found.
     """
 
-    jumptables = ("T1BattleObjectJumptable", "T3BattleObjectJumptable", "T4BattleObjectJumptable")
+    #jumptables = ("T1BattleObjectJumptable", "T3BattleObjectJumptable", "T4BattleObjectJumptable", ("battle_8007800",))
+    jumptables = (("battle_8007800",),)
 
     registers = RegisterState()
     fileline = default_fileline
@@ -782,8 +886,11 @@ def read_battle_object_jumptables():
     #global_function_tree = run_analyzer_from_label(parser.strip_plus1(words[0]), registers, time.time())[1]
     set_template_functions()
     for jumptable in jumptables:
-        src_file = parser.find_and_position_at_nonlocal_label(jumptable)
-        words = parser.parse_word_directives(src_file)
+        if isinstance(jumptable, str):
+            src_file = parser.find_and_position_at_nonlocal_label(jumptable)
+            words = parser.parse_word_directives(src_file)
+        else:
+            words = jumptable
         for word in words:
             if word not in function_trackers:
                 registers["r0"].default_initialize(fileline)
@@ -979,7 +1086,7 @@ def run_function_main(function, dump_temp):
         #for i in range(5):
         #    print('\a')
         #    time.sleep(0.4)
-        print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, syms, scanned_files, dump_temp)
+        print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, syms, scanned_files, dump_temp, True)
         print("%s:%s: Error!" % (analyze_source.global_fileline.filename, analyze_source.global_fileline.line_num))
         global_fileline_error("Error!")
 
@@ -987,7 +1094,7 @@ def run_function_main(function, dump_temp):
     for i in range(5):
         print('\a')
         time.sleep(0.4)
-    print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, syms, scanned_files, dump_temp)
+    print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, syms, scanned_files, dump_temp, False)
 
 def recursive_print_function_tree(f, function_tree, indentation_level=0):
     for function, subtree in function_tree.items():
@@ -995,7 +1102,7 @@ def recursive_print_function_tree(f, function_tree, indentation_level=0):
         if subtree:
             recursive_print_function_tree(f, subtree, indentation_level + 2)
 
-def print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, syms, scanned_files, dump_temp):
+def print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, syms, scanned_files, dump_temp, exception_occurred):
     analyzer_execution_time = analyzer_end_time - analyzer_start_time
     post_output = ""
 
@@ -1014,7 +1121,7 @@ def print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, s
     # with open("function_tracker_output.pickle", "wb+") as f:
     #     pickle.dump(analyzer.function_trackers, f)
 
-    if dump_temp:
+    if dump_temp and not exception_occurred:
         if os.path.exists("temp/"):
             shutil.rmtree("temp/")
         os.makedirs("temp/")

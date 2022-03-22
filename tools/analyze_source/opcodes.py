@@ -41,11 +41,17 @@ label_or_imm_regex = re.compile(r"^(.+)$")
 
 read_opcode_count = 0
 
+sprite_addrs = set((0x81d8000, 0x84e8800, 0x84e6804, 0x8214808, 0x83a000c, 0x829d818, 0x836b818, 0x84ea01c, 0x84e3820, 0x83f6824, 0x830902c, 0x836e034, 0x8377834, 0x8395034, 0x8325038, 0x84b4838, 0x8406044, 0x8367848, 0x84a3048, 0x84ee048, 0x83d604c, 0x84bc854, 0x838c864, 0x84f4868, 0x83ad870, 0x8350888, 0x84f0094, 0x831c8a4, 0x83908a4, 0x83dd0a8, 0x84c90b4, 0x831e8c0, 0x84f68c0, 0x83138c4, 0x832f0c8, 0x832f8c8, 0x84bc0c8, 0x837d8e0, 0x83930e0, 0x83b00f8, 0x84f3100, 0x8204108, 0x834a108, 0x83e0108, 0x84f2908, 0x8318920, 0x8322920, 0x84e8120, 0x8382928, 0x838b930, 0x83fa130, 0x835b938, 0x845f138, 0x835613c, 0x86cc13c, 0x8468940, 0x83ba940, 0x830f144, 0x82ff95c, 0x8244164, 0x8442164, 0x849d164, 0x84df96c, 0x84f9978, 0x83eb980, 0x828f18c, 0x83a9190, 0x87dc190, 0x838e194, 0x84c5194, 0x84a599c, 0x838a9a8, 0x83ac1a8, 0x825c9ac, 0x84201ac, 0x83249b0, 0x84f81b0, 0x82f39c0, 0x83279c0, 0x839b9c0, 0x83d91c0, 0x841c9c4, 0x832e9c8, 0x81fa9e8, 0x84069ec, 0x83241f4, 0x83611fc, 0x84e3200, 0x84e9a18, 0x8246a24, 0x8376a24, 0x83bd228, 0x849ba28, 0x835ca2c, 0x8330a30, 0x8303a34, 0x843c234, 0x84b5238, 0x84f223c, 0x831ea40, 0x8387244, 0x84e6244, 0x84eba48, 0x87dd248, 0x828324c, 0x824b254, 0x835e264, 0x84eda70, 0x8371274, 0x831fa84, 0x8311288, 0x84fa28c, 0x836ea90, 0x83b0a90, 0x8415a90, 0x84c0298, 0x83732ac, 0x84b62ac, 0x84e4aac, 0x83ae2b4, 0x83b92b4, 0x83322b8, 0x839aab8, 0x8456abc, 0x83262c0, 0x842dac0, 0x84a8ac0, 0x8342ac4, 0x825f2c8, 0x834b2d0, 0x84ab2d0, 0x837f2e0, 0x83b4ae4, 0x826faf0, 0x82a5af0, 0x83822f0, 0x824eaf4, 0x8377af4, 0x831caf8, 0x8373afc, 0x84e7b00, 0x830a308, 0x8357308, 0x84f3b08, 0x831530c, 0x8357b10, 0x8336320, 0x84f4324, 0x84eb328, 0x84c832c, 0x84f1b3c, 0x8317340, 0x8381340, 0x84e2b40, 0x84f5340, 0x83e2b48, 0x848334c, 0x837eb4c, 0x8333350, 0x821c354, 0x8385354, 0x84f6354, 0x8319b5c, 0x8352360, 0x8408360, 0x8376364, 0x82fe378, 0x84efb78, 0x86cbb7c, 0x87ddb7c, 0x8495b88, 0x84fab88, 0x833f3a0, 0x84b1ba0, 0x840b3a4, 0x83bc3b0, 0x84b8bb4, 0x849fbc0, 0x84a53c4, 0x838c3c8, 0x84f13d0, 0x834bbf0, 0x82533f4, 0x83b3bf4, 0x838ec00, 0x83b440c, 0x8372410, 0x86cd410, 0x81f1414, 0x84b7414, 0x84ba414, 0x832c418, 0x84b5c18, 0x81df420, 0x835f424, 0x849b424, 0x83ac430, 0x83bb440, 0x8419440, 0x84f7c44, 0x8223c48, 0x830e44c, 0x84e5c4c, 0x822cc50, 0x8345c50, 0x8371c50, 0x84e9460, 0x83fec68, 0x83d346c, 0x83bcc70, 0x8424c78, 0x839247c, 0x8332484, 0x824ac94, 0x830d494, 0x8325c94, 0x83b2494, 0x838849c, 0x835c4b0, 0x84ed4b4, 0x84f0cc4, 0x81e7cc8, 0x82f9ccc, 0x84e44cc, 0x84e1cd0, 0x83234d4, 0x839ccdc, 0x84eacdc, 0x84e24e0, 0x84e74e0, 0x84f5ce0, 0x83124e8, 0x848fcec, 0x831fcf0, 0x83864f4, 0x8497cf8, 0x8300cfc, 0x8354d0c, 0x83bfd0c, 0x830451c, 0x84ecd24, 0x8329d28, 0x8430534, 0x84c2d34, 0x84f9534, 0x8379d44, 0x8481548, 0x820cd4c, 0x832154c, 0x849e54c, 0x82c7550, 0x8355d50, 0x846fd50, 0x84e0554, 0x8336d54, 0x8370d6c, 0x84add6c, 0x8373d70, 0x83cd574, 0x8477574, 0x8399578, 0x834a580, 0x8453d90, 0x837fd98, 0x835ad9c, 0x83a0da8, 0x84f75a8, 0x8408db4, 0x836edb8, 0x84d3dbc, 0x83255c0, 0x84e55c8, 0x83805d4, 0x84bddd4, 0x84f4dd4, 0x83245e8, 0x83195f0, 0x84e15f0, 0x87dc5f0, 0x83e55f8, 0x8445e00, 0x84f8e10, 0x8324e14, 0x831661c, 0x84ea61c, 0x8350628, 0x84f362c, 0x83a5e30, 0x842a630, 0x8391e40, 0x8359644, 0x84ec644, 0x8385648, 0x84f9e48, 0x82efe48, 0x8387e4c, 0x8396650, 0x83af658, 0x8395660, 0x84e8e60, 0x833be68, 0x836c668, 0x84e0e68, 0x831e67c, 0x8348e80, 0x84ab680, 0x84e3e80, 0x82b0690, 0x8411e90, 0x834ae94, 0x8383698, 0x82f569c, 0x84ef69c, 0x834b6a4, 0x84e6ea4, 0x836b6a8, 0x83be6b0, 0x834beb8, 0x8278ebc, 0x83536bc, 0x82f6ecc, 0x83e1eec, 0x834c6f0, 0x8354ef0, 0x8325ef4, 0x83566f4, 0x84bf6f8, 0x8304700, 0x8308700, 0x82fe704, 0x84f070c, 0x84af710, 0x83eef14, 0x8338f18, 0x8326724, 0x8233728, 0x8323728, 0x83cff28, 0x8372f34, 0x8296f40, 0x8390f44, 0x83b5f44, 0x84fa744, 0x83acf48, 0x838e74c, 0x83e7f4c, 0x8368f54, 0x84f8754, 0x823b768, 0x8300f70, 0x8485f74, 0x84cdf74, 0x844bf80, 0x84f6f84, 0x8253f88, 0x8260f88, 0x835c794, 0x8264fa0, 0x8402fa0, 0x83547a4, 0x84f57a4, 0x84a97a8, 0x84ba7a8, 0x8330fa8, 0x8351fa8, 0x83a67ac, 0x8312fb4, 0x82ba7bc, 0x8390fc4, 0x83f37c4, 0x84e4fc8, 0x83497cc, 0x83607d0, 0x84eefdc, 0x84ebfe4, 0x83317f0, 0x84ee7fc))
+
+sprite_syms = None
+
 def set_syms_and_scanned_files(_syms, _scanned_files):
     global syms
     global scanned_files
+    global sprite_syms
     syms = _syms
     scanned_files = _scanned_files
+    sprite_syms = set(analyzer.syms_by_value[sprite_addr].name for sprite_addr in sprite_addrs)
 
 def assert_valid_datatype(datatype, fileline):
     if not (datatype.type == DataType.UNKNOWN or datatype.type == DataType.PRIMITIVE or datatype.type == DataType.POINTER):
@@ -123,6 +129,10 @@ def evaluate_data(data, fileline):
                             fileline_error("Tried | operation against non-absolute symbol \"%s\"!" % data_part, fileline)
                             value |= sym.value
                 return datatypes.Primitive(Size.UNKNOWN, value).wrap()
+            #elif data == ".ObjectInitializationTable":
+            #    sym = syms["InitializeStructsOfObjectType.ObjectInitializationTable"]
+            #    sym.filename = "asm/asm00_1.s"
+            #    return datatypes.ROMPointer(sym).wrap()
             fileline_error("Could not evaluate undefined symbol \"%s\"!" % data, fileline)
 
         #debug_print(f"data: {data}, sym.type: {sym.type}, sym.section: {sym.section}")
@@ -206,8 +216,14 @@ def read_alu_args(opcode_params, funcstate):
     source_datatype = funcstate.regs[opcode_params[1]].data
     return dest_datatype, source_datatype
 
+def left_shift_imm(a, b):
+    return a << b
+
+def right_shift_imm(a, b):
+    return a >> b
+
 def lsl_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_triple_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], lambda a, b: a << b, fileline)
+    do_triple_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], left_shift_imm, fileline)
     return True
 
 def lsl_reg_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -215,7 +231,7 @@ def lsl_reg_opcode_function(opcode_params, funcstate, src_file, fileline):
     return True
     
 def lsr_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_triple_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], lambda a, b: a >> b, fileline)
+    do_triple_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], right_shift_imm, fileline)
     return True
 
 def lsr_reg_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -243,22 +259,32 @@ def do_triple_arg_numeric_operation(registers, dest_reg, source_reg, operand_reg
     #if fileline.line_num == 2384 and fileline.filename == "asm/asm00_0.s":
     #    debug_print(f"r0: {registers['r0'].data.ref}, r1: {registers['r1'].data.ref}, r2: {registers['r2'].data.ref}, r3: {registers['r3'].data.ref}")
 
+    is_ptr_shift = False
+
     if source_datatype.type == DataType.UNKNOWN:
         source_datatype.ref = datatypes.Primitive(Size.WORD)
     #elif source_datatype.type == DataType.PRIMITIVE:
     #    if source_datatype.ref.sym.name == "LCDControl" or source_datatype.ref.sym.name == "timer_2000000":
     #        fileline_msg("FakePointerWarning: Fake pointer \"%s\" being used in numeric operation!" % source_datatype.ref.sym.name)
     elif source_datatype.type == DataType.POINTER:
-        fileline_error(f"Tried performing numeric operation on pointer! registers['r1']: {registers['r1'].data.ref}, source_reg: {source_reg}, dest_reg: {dest_reg}, operand_reg_or_imm: {operand_reg_or_imm}, source_datatype.ref.possible_syms: {[x.name for x in source_datatype.ref.possible_syms]}", fileline)
+        if callback in (left_shift_imm, right_shift_imm) and not sprite_addrs.isdisjoint(sym.value for sym in source_datatype.ref.possible_syms):
+            fileline_msg(f"PtrShiftWarning: Detected pointer shift! source_reg: {source_reg}, dest_reg: {dest_reg}, operand_reg_or_imm: {operand_reg_or_imm}, source_datatype.ref.possible_syms: {[x.name for x in source_datatype.ref.possible_syms]}", fileline)
+            is_ptr_shift = True
+        else:
+            fileline_error(f"Tried performing numeric operation on pointer! registers['r1']: {registers['r1'].data.ref}, source_reg: {source_reg}, dest_reg: {dest_reg}, operand_reg_or_imm: {operand_reg_or_imm}, source_datatype.ref.possible_syms: {[x.name for x in source_datatype.ref.possible_syms]}", fileline)
 
-    immediate_value = evaluate_reg_or_imm_require_primitive(registers, operand_reg_or_imm, fileline)
+    if not is_ptr_shift:
+        immediate_value = evaluate_reg_or_imm_require_primitive(registers, operand_reg_or_imm, fileline)
+    
+        try:
+            new_value = callback(source_datatype.ref.value, immediate_value.ref.value)
+        except TypeError:
+            new_value = NaN
 
-    try:
-        new_value = callback(source_datatype.ref.value, immediate_value.ref.value)
-    except TypeError:
-        new_value = NaN
+        new_dest_datatype = datatypes.Primitive(Size.UNKNOWN, new_value).wrap()
+    else:
+        new_dest_datatype = copy.deepcopy(source_datatype)
 
-    new_dest_datatype = datatypes.Primitive(Size.UNKNOWN, new_value).wrap()
     registers[dest_reg].set_new_reg(analyzer.RegisterInfo(new_dest_datatype, fileline))
 
 def add_rd_rs_rn_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -1192,6 +1218,9 @@ def read_opcode(line, funcstate, src_file, fileline):
     read_opcode_count += 1
 
     line = line.strip()
+    if line == "nop":
+        return True
+
     opcode_parts = line.split(None, 1)
     try:
         opcode_subsyntaxes = opcodes[opcode_parts[0]]

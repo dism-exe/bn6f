@@ -25875,10 +25875,6 @@ loc_801CBBE:
 	ldr r1, dword_801CD68 // =0x6017680 
 	ldr r2, off_801CD6C // =0x100 
 	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
-	thumb_func_end sub_801CB38
-
-	thumb_local_start
-sub_801CBD0:
 	push {r0-r3}
 	bl sub_801D814
 	tst r0, r0
@@ -25930,7 +25926,7 @@ loc_801CC2A:
 	mov r2, #0x20 
 	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	pop {r0,r4,r6,r7,pc}
-	thumb_func_end sub_801CBD0
+	thumb_func_end sub_801CB38
 
 	thumb_local_start
 sub_801CC34:

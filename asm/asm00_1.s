@@ -620,14 +620,14 @@ SpawnObjectsFromList: // (void *a1) -> int
 .spawnObjectsLoop
 	// vSpawnObjectJumpTable: r0
 	// u8 v1: r1 = *vA1
-    ldr r0, SpawnObjectJumptable_p // =SpawnObjectJumptable
+	ldr r0, SpawnObjectJumptable_p // =SpawnObjectJumptable
 	ldrb r1, [r7]
 
 	cmp r1, #0xff // if v1 == 0xff
 	beq .doneSpawningObjects
 
 	// vCallBack: r6 = vSpawnObjectJumpTable[4*v1]
-    lsl r1, r1, #2
+	lsl r1, r1, #2
 	ldr r6, [r0,r1]
 	
 	push {r4,r7}
@@ -7955,7 +7955,7 @@ sub_800751C:
 	pop {r0,r1}
 	ldrb r3, [r6,#2]
 	mov r4, #1
-	ldr r6, byte_80077F4+4 // =0xc8
+	ldr r6, byte_80077F8 // =0xc8
 	bl sub_80D4FA6
 	pop {r4,r6,pc}
 	thumb_func_end sub_800751C
@@ -8310,7 +8310,8 @@ sub_80077D2:
 	strh r0, [r3,r1]
 	pop {r4,r6,pc}
 	.balign 4, 0x00
-byte_80077F4: .byte 0x0, 0x0, 0x3, 0x0, 0xC8, 0x0, 0xA8, 0x0
+byte_80077F4: .byte 0x0, 0x0, 0x3, 0x0
+byte_80077F8: .byte 0xC8, 0x0, 0xA8, 0x0
 dword_80077FC: .word 0xFFFF
 	thumb_func_end sub_80077D2
 
@@ -8345,7 +8346,7 @@ JumpTable8007838: .word sub_8007850+1
 	.word sub_8007B80+1
 	.word sub_8007E62+1
 	.word sub_8007F4E+1
-	.word byte_8007FEB
+	.word removed_8007FEA+1
 	thumb_func_end battle_8007800
 
 	thumb_local_start
@@ -9241,8 +9242,13 @@ sub_8007FD2:
 	strh r0, [r5,#2]
 locret_8007FE8:
 	pop {pc}
-	.byte 0x0
-byte_8007FEB: .byte 0x0
+
+	thumb_local_start
+// non-existent
+removed_8007FEA:
+	thumb_func_end removed_8007FEA
+	.balign 4, 0
+
 dword_8007FEC: .word 0x400
 off_8007FF0: .word dword_2000B30
 dword_8007FF4: .word 0x10000
@@ -14660,7 +14666,7 @@ IsCurSubsystemInUse: // () -> (bool, !zf)
 	mov r2, #FLAGS_20093A4_CUR_SUBSYSTEM_IN_USE
 	tst r1, r2
 	beq loc_800A7DE
-    mov r0, #TRUE
+	mov r0, #TRUE
 loc_800A7DE:
 	tst r0, r0
 	mov pc, lr
