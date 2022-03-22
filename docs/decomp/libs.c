@@ -1129,7 +1129,7 @@ signed int __fastcall sub_8145210(unsigned __int16 a1)
     int v10; // [sp+0h] [bp-20h]
 
     v1 = 0;
-    sub_814A060(a1, &v10, &v10 + 1, &v10 + 2);
+    rfu_REQBN_watchLink(a1, &v10, &v10 + 1, &v10 + 2);
     if ( v10 )
     {
         word_200FE14 = v10;
@@ -1230,7 +1230,7 @@ int sub_81453D4()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    if ( sub_8149F80() << 16 )
+    if ( rfu_syncVBlank() << 16 )
     {
         sub_81461B0(241, 0);
         sub_81464B4();
@@ -1304,10 +1304,10 @@ int __fastcall sub_81453F0(int a1)
                         sub_8149DE0();
                         break;
                     case 0xE:
-                        sub_8149F48();
+                        rfu_REQ_endConnectParent();
                         break;
                     case 0x10:
-                        sub_814A63C(*(dword_2010CC0 + 3));
+                        rfu_REQ_CHILD_startConnectRecovery(*(dword_2010CC0 + 3));
                         break;
                     case 0x11:
                         rfu_REQ_CHILD_pollConnectRecovery();
@@ -1540,7 +1540,7 @@ LABEL_40:
                 }
                 break;
             case 0x20u:
-                if ( !a2 && !(sub_8149F14(&v18, &byte_200FE10) << 16) && !v18 )
+                if ( !a2 && !(rfu_getConnectParentStatus(&v18, &byte_200FE10) << 16) && !v18 )
                     byte_200FE04 = 14;
                 if ( word_200FE1A )
                 {
@@ -1550,7 +1550,7 @@ LABEL_40:
                 }
                 break;
             case 0x21u:
-                if ( !a2 && !(sub_8149F14(&v18, &byte_200FE10) << 16) )
+                if ( !a2 && !(rfu_getConnectParentStatus(&v18, &byte_200FE10) << 16) )
                 {
                     if ( v18 )
                     {
@@ -2122,7 +2122,7 @@ int __fastcall sub_81461D8(unsigned __int8 a1)
 
     v1 = byte_200FE0E;
     byte_200FE0E = 1;
-    sub_814A4CC(a1);
+    rfu_REQ_disconnect(a1);
     sub_8149568();
     byte_200FE0E = v1;
     return v3;
@@ -3091,7 +3091,7 @@ int __fastcall sub_8146F90(int a1, int a2, int a3)
         sub_81453F0(0);
         if ( byte_2010340 )
         {
-            sub_814A4CC(byte_2010340);
+            rfu_REQ_disconnect(byte_2010340);
             sub_8149568();
             byte_2010340 = 0;
         }
@@ -3465,7 +3465,7 @@ int __fastcall sub_81475D4(unsigned __int16 *a1)
     sub_81453F0(Timer2Counter_Reload);
     if ( byte_2010340 )
     {
-        sub_814A4CC(byte_2010340);
+        rfu_REQ_disconnect(byte_2010340);
         sub_8149568();
         byte_2010340 = 0;
     }
@@ -3753,7 +3753,7 @@ int __fastcall sub_8147C20(int a1, int a2, int a3)
         case 0x10:
             if ( !byte_200FE02 )
             {
-                sub_814A4CC(*(dword_2010CC0 + 3) | *(dword_2010CC0 + 2));
+                rfu_REQ_disconnect(*(dword_2010CC0 + 3) | *(dword_2010CC0 + 2));
                 sub_8149568();
             }
             break;
@@ -4170,7 +4170,7 @@ int __fastcall sub_8148234(unsigned __int16 *a1)
         case 0x10:
             if ( !byte_200FE02 )
             {
-                sub_814A4CC(*(dword_2010CC0 + 3) | *(dword_2010CC0 + 2));
+                rfu_REQ_disconnect(*(dword_2010CC0 + 3) | *(dword_2010CC0 + 2));
                 sub_8149568();
             }
             return v6;
@@ -5102,7 +5102,7 @@ int __fastcall sub_81494F8(unsigned __int8 a1, int a2)
         do
         {
             if ( (v3 >> v4) & 1 )
-                sub_814A41C(v4, 1);
+                rfu_STC_removeLinkData(v4, 1);
             v4 = (v4 + 1) & 0xFF;
         }
         while ( v4 <= 3 );
@@ -5886,7 +5886,7 @@ LABEL_10:
 
 
 // 0x8149f14
-signed int __fastcall sub_8149F14(_BYTE *a1, _BYTE *a2)
+signed int __fastcall rfu_getConnectParentStatus(_BYTE *a1, _BYTE *a2)
 {
     unsigned __int8 *v2; // r2
     _BYTE *v4; // r2
@@ -5903,7 +5903,7 @@ signed int __fastcall sub_8149F14(_BYTE *a1, _BYTE *a2)
 
 
 // 0x8149f48
-int sub_8149F48()
+int rfu_REQ_endConnectParent()
 {
     int v0; // r1
     int v2; // [sp+0h] [bp-4h]
@@ -5918,7 +5918,7 @@ int sub_8149F48()
 
 
 // 0x8149f80
-signed int sub_8149F80()
+signed int rfu_syncVBlank()
 {
     int v0; // r3
     char v1; // r1
@@ -5972,7 +5972,7 @@ LABEL_12:
     do
     {
         if ( (v4 >> v5) & 1 )
-            sub_814A41C(v5, 1);
+            rfu_STC_removeLinkData(v5, 1);
         v5 = (v5 + 1) & 0xFF;
     }
     while ( v5 <= 3 );
@@ -5982,7 +5982,7 @@ LABEL_12:
 
 
 // 0x814a060
-int __fastcall sub_814A060(__int16 a1, _BYTE *a2, char *a3, _BYTE *a4)
+int __fastcall rfu_REQBN_watchLink(__int16 a1, _BYTE *a2, char *a3, _BYTE *a4)
 {
     _BYTE *v4; // r8
     int v5; // r1
@@ -6050,7 +6050,7 @@ int __fastcall sub_814A060(__int16 a1, _BYTE *a2, char *a3, _BYTE *a4)
                 if ( (*v4 >> v7) & 1 )
                 {
                     *(dword_2010CC0 + 10 + v7) = 0;
-                    sub_814A41C(v7, 0);
+                    rfu_STC_removeLinkData(v7, 0);
                 }
                 v7 = (v7 + 1) & 0xFF;
             }
@@ -6176,7 +6176,7 @@ LABEL_51:
                 }
             }
             if ( v14 & (*v4 & *(dword_2010CC0 + 2)) )
-                sub_814A41C(v12, 0);
+                rfu_STC_removeLinkData(v12, 0);
             v12 = (v12 + 1);
             if ( v19 > 3u )
             {
@@ -6197,7 +6197,7 @@ LABEL_51:
 
 
 // 0x814a41c
-int __fastcall sub_814A41C(unsigned __int8 a1, char a2)
+int __fastcall rfu_STC_removeLinkData(unsigned __int8 a1, char a2)
 {
     int v2; // r7
     unsigned int v3; // r5
@@ -6227,7 +6227,7 @@ int __fastcall sub_814A41C(unsigned __int8 a1, char a2)
 
 
 // 0x814a4cc
-int __fastcall sub_814A4CC(unsigned __int8 a1)
+int __fastcall rfu_REQ_disconnect(unsigned __int8 a1)
 {
     unsigned __int8 v1; // r4
     unsigned __int16 v2; // r0
@@ -6240,7 +6240,7 @@ int __fastcall sub_814A4CC(unsigned __int8 a1)
         if ( *dword_2010CC0 == 255 && *dword_2010CC4 & 0x80 )
         {
             if ( *(dword_2010CC0 + 3) & a1 )
-                sub_814A55C(0x30u, 0);
+                rfu_CB_disconnect(0x30u, 0);
         }
         else if ( *(dword_2010CC4 + 9) && (STWI_set_Callback_M(sub_81494F8), STWI_send_SC_EndREQ(), (v2 = STWI_poll_CommandEnd()) != 0) )
         {
@@ -6248,7 +6248,7 @@ int __fastcall sub_814A4CC(unsigned __int8 a1)
         }
         else
         {
-            STWI_set_Callback_M(sub_814A55C);
+            STWI_set_Callback_M(rfu_CB_disconnect);
             STWI_send_DisconnectREQ(v1);
         }
     }
@@ -6257,7 +6257,7 @@ int __fastcall sub_814A4CC(unsigned __int8 a1)
 
 
 // 0x814a55c
-int __fastcall sub_814A55C(unsigned __int8 a1, unsigned __int16 a2)
+int __fastcall rfu_CB_disconnect(unsigned __int8 a1, unsigned __int16 a2)
 {
     unsigned __int8 v2; // r6
     int v3; // r5
@@ -6282,7 +6282,7 @@ int __fastcall sub_814A55C(unsigned __int8 a1, unsigned __int16 a2)
         do
         {
             if ( ((0x1000000 << v4) >> 24) & *(dword_2010CC4 + 5) )
-                sub_814A41C(v4, 1);
+                rfu_STC_removeLinkData(v4, 1);
             v4 = (v4 + 1) & 0xFF;
         }
         while ( v4 <= 3 );
@@ -6303,7 +6303,7 @@ int __fastcall sub_814A55C(unsigned __int8 a1, unsigned __int16 a2)
 
 
 // 0x814a63c
-int __fastcall sub_814A63C(unsigned __int8 a1)
+int __fastcall rfu_REQ_CHILD_startConnectRecovery(unsigned __int8 a1)
 {
     unsigned __int8 v1; // r5
     unsigned int v2; // r4

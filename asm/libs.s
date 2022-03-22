@@ -2290,7 +2290,7 @@ sub_8145210:
 	mov r1, sp
 	mov r2, r5
 	mov r3, r4
-	bl sub_814A060
+	bl rfu_REQBN_watchLink
 	mov r0, sp
 	ldrb r0, [r0]
 	mov r7, r4
@@ -2509,7 +2509,7 @@ off_81453D0: .word eStruct200FE00
 	thumb_local_start
 sub_81453D4:
 	push {lr}
-	bl sub_8149F80
+	bl rfu_syncVBlank
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	beq loc_81453EC
@@ -2690,13 +2690,13 @@ loc_8145568:
 	bl sub_8149DE0
 	b def_814543E
 loc_814556E:
-	bl sub_8149F48
+	bl rfu_REQ_endConnectParent
 	b def_814543E
 loc_8145574:
 	ldr r0, off_8145580 // =dword_2010CC0 
 	ldr r0, [r0]
 	ldrb r0, [r0,#3]
-	bl sub_814A63C
+	bl rfu_REQ_CHILD_startConnectRecovery
 	b def_814543E
 off_8145580: .word dword_2010CC0
 loc_8145584:
@@ -3100,7 +3100,7 @@ loc_81458BC:
 	ldr r4, off_81458FC // =byte_200FE10 
 	mov r0, sp
 	mov r1, r4
-	bl sub_8149F14
+	bl rfu_getConnectParentStatus
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	bne loc_81458E0
@@ -3139,7 +3139,7 @@ loc_814590A:
 	ldr r4, off_814593C // =byte_200FE10 
 	mov r0, sp
 	mov r1, r4
-	bl sub_8149F14
+	bl rfu_getConnectParentStatus
 	lsl r0, r0, #0x10
 	cmp r0, #0
 	beq loc_814591C
@@ -4299,7 +4299,7 @@ sub_81461D8:
 	ldrb r5, [r4,#0xe] // (byte_200FE0E - 0x200fe00)
 	mov r1, #1
 	strb r1, [r4,#0xe] // (byte_200FE0E - 0x200fe00)
-	bl sub_814A4CC
+	bl rfu_REQ_disconnect
 	bl sub_8149568
 	strb r5, [r4,#0xe] // (byte_200FE0E - 0x200fe00)
 	pop {r4,r5}
@@ -6154,7 +6154,7 @@ loc_8146FB0:
 	ldrb r0, [r4]
 	cmp r0, #0
 	beq loc_8146FD0
-	bl sub_814A4CC
+	bl rfu_REQ_disconnect
 	bl sub_8149568
 	mov r0, #0
 	strb r0, [r4]
@@ -6896,7 +6896,7 @@ loc_81475DA:
 	ldrb r0, [r4]
 	cmp r0, #0
 	beq loc_81475FC
-	bl sub_814A4CC
+	bl rfu_REQ_disconnect
 	bl sub_8149568
 	mov r0, #0
 	strb r0, [r4]
@@ -7742,7 +7742,7 @@ loc_8147D88:
 	ldrb r1, [r0,#2]
 	ldrb r0, [r0,#3]
 	orr r0, r1
-	bl sub_814A4CC
+	bl rfu_REQ_disconnect
 	bl sub_8149568
 	b def_8147C6A
 off_8147DA4: .word eStruct200FE00
@@ -8614,7 +8614,7 @@ loc_81484E8:
 	ldrb r1, [r0,#2]
 	ldrb r0, [r0,#3]
 	orr r0, r1
-	bl sub_814A4CC
+	bl rfu_REQ_disconnect
 	bl sub_8149568
 	b def_814825A
 off_8148504: .word eStruct200FE00
@@ -10547,7 +10547,7 @@ loc_8149530:
 	cmp r0, #0
 	beq loc_8149542
 	mov r0, r4
-	bl sub_814A41C
+	bl rfu_STC_removeLinkData
 loc_8149542:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -11872,12 +11872,12 @@ loc_8149EF6:
 	pop {r4-r7}
 	pop {r0}
 	bx r0
-	.byte 0, 0
+	.balign 4, 0
 off_8149F10: .word dword_2010CC0
 	thumb_func_end sub_8149DF4
 
 	thumb_local_start
-sub_8149F14:
+rfu_getConnectParentStatus:
 	push {lr}
 	mov r3, r0
 	mov r0, #0xff
@@ -11906,10 +11906,10 @@ loc_8149F38:
 loc_8149F44:
 	pop {r1}
 	bx r1
-	thumb_func_end sub_8149F14
+	thumb_func_end rfu_getConnectParentStatus
 
 	thumb_local_start
-sub_8149F48:
+rfu_REQ_endConnectParent:
 	push {lr}
 	ldr r0, off_8149F74 // =sub_8149DF4+1 
 	bl STWI_set_Callback_M
@@ -11935,10 +11935,10 @@ loc_8149F70:
 off_8149F74: .word sub_8149DF4+1
 off_8149F78: .word dword_2010CC8
 off_8149F7C: .word dword_2010CC4
-	thumb_func_end sub_8149F48
+	thumb_func_end rfu_REQ_endConnectParent
 
 	thumb_local_start
-sub_8149F80:
+rfu_syncVBlank:
 	push {r4,r5,lr}
 	bl rfu_NI_checkCommFailCounter
 	ldr r0, off_8149FC8 // =dword_2010CC0 
@@ -12029,7 +12029,7 @@ loc_814A022:
 	cmp r0, #0
 	beq loc_814A034
 	mov r0, r4
-	bl sub_814A41C
+	bl rfu_STC_removeLinkData
 loc_814A034:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -12054,10 +12054,10 @@ loc_814A05A:
 	pop {r4,r5}
 	pop {r1}
 	bx r1
-	thumb_func_end sub_8149F80
+	thumb_func_end rfu_syncVBlank
 
 	thumb_local_start
-sub_814A060:
+rfu_REQBN_watchLink:
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -12183,7 +12183,7 @@ loc_814A136:
 	mov r1, #0
 	strb r1, [r0]
 	mov r0, r5
-	bl sub_814A41C
+	bl rfu_STC_removeLinkData
 loc_814A156:
 	add r0, r5, #1
 	lsl r0, r0, #0x18
@@ -12494,7 +12494,7 @@ loc_814A3B2:
 	beq loc_814A3CC
 	mov r0, r5
 	mov r1, #0
-	bl sub_814A41C
+	bl rfu_STC_removeLinkData
 loc_814A3CC:
 	mov r1, r10
 	lsl r0, r1, #0x18
@@ -12535,10 +12535,10 @@ loc_814A400:
 off_814A410: .word dword_2010CC4
 off_814A414: .word dword_2010CC0
 off_814A418: .word dword_2010CC8
-	thumb_func_end sub_814A060
+	thumb_func_end rfu_REQBN_watchLink
 
 	thumb_local_start
-sub_814A41C:
+rfu_STC_removeLinkData:
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -12627,10 +12627,10 @@ loc_814A4B4:
 off_814A4C0: .word dword_2010CC0
 dword_814A4C4: .word 0xFF00FF
 dword_814A4C8: .word 0x1000010
-	thumb_func_end sub_814A41C
+	thumb_func_end rfu_STC_removeLinkData
 
 	thumb_local_start
-sub_814A4CC:
+rfu_REQ_disconnect:
 	push {r4,lr}
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -12662,7 +12662,7 @@ sub_814A4CC:
 	beq loc_814A550
 	mov r0, #0x30 
 	mov r1, #0
-	bl sub_814A55C
+	bl rfu_CB_disconnect
 	b loc_814A550
 	.balign 4, 0
 off_814A510: .word dword_2010CC0
@@ -12686,7 +12686,7 @@ loc_814A518:
 	.byte 0, 0
 off_814A540: .word sub_81494F8+1
 loc_814A544:
-	ldr r0, off_814A558 // =sub_814A55C+1 
+	ldr r0, off_814A558 // =rfu_CB_disconnect+1 
 	bl STWI_set_Callback_M
 	mov r0, r4
 	bl STWI_send_DisconnectREQ
@@ -12695,11 +12695,11 @@ loc_814A550:
 	pop {r0}
 	bx r0
 	.balign 4, 0x00
-off_814A558: .word sub_814A55C+1
-	thumb_func_end sub_814A4CC
+off_814A558: .word rfu_CB_disconnect+1
+	thumb_func_end rfu_REQ_disconnect
 
 	thumb_local_start
-sub_814A55C:
+rfu_CB_disconnect:
 	push {r4-r6,lr}
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
@@ -12761,7 +12761,7 @@ loc_814A5C0:
 	beq loc_814A5DC
 	mov r0, r4
 	mov r1, #1
-	bl sub_814A41C
+	bl rfu_STC_removeLinkData
 loc_814A5DC:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -12806,10 +12806,10 @@ off_814A62C: .word dword_2010CC0
 off_814A630: .word sub_81494F8+1
 off_814A634: .word dword_2010CC8
 off_814A638: .word dword_2010CC4
-	thumb_func_end sub_814A55C
+	thumb_func_end rfu_CB_disconnect
 
 	thumb_local_start
-sub_814A63C:
+rfu_REQ_CHILD_startConnectRecovery:
 	push {r4,r5,lr}
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
@@ -12853,7 +12853,7 @@ loc_814A66A:
 off_814A68C: .word dword_2010CC4
 off_814A690: .word rfu_STC_REQ_callback+1
 off_814A694: .word dword_2010CC0
-	thumb_func_end sub_814A63C
+	thumb_func_end rfu_REQ_CHILD_startConnectRecovery
 
 	thumb_local_start
 rfu_REQ_CHILD_pollConnectRecovery:
