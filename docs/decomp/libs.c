@@ -4902,7 +4902,7 @@ signed int __fastcall sub_8149220(int a1, unsigned __int16 a2, int a3, char a4)
     while ( v7 <= 3 );
     v9 = dword_2010CAC + 28;
     *(dword_2010CC8 + 220) = dword_2010CAC + 28;
-    sub_814C10C(v9, a3, v4);
+    STWI_init_all(v9, a3, v4);
     sub_814935C();
     v10 = 0;
     do
@@ -5010,7 +5010,7 @@ int __fastcall sub_8149440(unsigned __int8 a1, int a2)
 {
     int v3; // [sp+0h] [bp-4h]
 
-    sub_814C1E4(a2, a1);
+    STWI_init_timer(a2, a1);
     return v3;
 }
 
@@ -5201,7 +5201,7 @@ int sub_8149644()
 
     if ( InterruptMasterEnableRegister )
     {
-        sub_814C220();
+        AgbRFU_SoftReset();
         sub_814935C();
         if ( AgbRFU_checkID(8u) == 32769 )
         {
@@ -5249,7 +5249,7 @@ signed int sub_8149718()
 
     if ( !InterruptMasterEnableRegister )
         return -1;
-    sub_814C220();
+    AgbRFU_SoftReset();
     sub_814935C();
     v1 = AgbRFU_checkID(0x1Eu);
     if ( !v1 )
@@ -6416,7 +6416,7 @@ int sub_814A7C4()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    if ( sub_814C2E8(1) == 1 )
+    if ( STWI_read_status(1) == 1 )
     {
         STWI_set_Callback_M(sub_81494B8);
         STWI_send_MS_ChangeREQ();
@@ -6435,7 +6435,7 @@ int sub_814A7F0()
     int v0; // r2
     int v1; // r0
 
-    v0 = sub_814C2E8(1);
+    v0 = STWI_read_status(1);
     if ( v0 == 1 )
     {
         if ( *(dword_2010CCC + 44) )
@@ -7907,7 +7907,7 @@ int sub_814C058()
 
 
 // 0x814c10c
-int __fastcall sub_814C10C(int a1, _DWORD *a2, char a3)
+int __fastcall STWI_init_all(int a1, _DWORD *a2, char a3)
 {
     int v3; // r3
     int v4; // r0
@@ -7965,7 +7965,7 @@ int __fastcall sub_814C10C(int a1, _DWORD *a2, char a3)
 
 
 // 0x814c1e4
-int __fastcall sub_814C1E4(_DWORD *a1, char a2)
+int __fastcall STWI_init_timer(_DWORD *a1, char a2)
 {
     __int16 v2; // r2
     int v4; // [sp+8h] [bp-4h]
@@ -7981,7 +7981,7 @@ int __fastcall sub_814C1E4(_DWORD *a1, char a2)
 
 
 // 0x814c220
-int sub_814C220()
+int AgbRFU_SoftReset()
 {
     int v0; // r0
     __int16 *v1; // r3
@@ -8028,7 +8028,7 @@ int sub_814C220()
 
 
 // 0x814c2e8
-int __fastcall sub_814C2E8(signed int a1)
+int __fastcall STWI_read_status(signed int a1)
 {
     a1 = a1;
     if ( a1 == 1 )

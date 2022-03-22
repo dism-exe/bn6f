@@ -10207,7 +10207,7 @@ loc_8149294:
 	str r0, [r1]
 	mov r1, r12
 	mov r2, r7
-	bl sub_814C10C
+	bl STWI_init_all
 	bl sub_814935C
 	mov r5, #0
 	ldr r3, off_8149348 // =dword_2010CB0 
@@ -10407,7 +10407,7 @@ sub_8149440:
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
 	mov r1, r2
-	bl sub_814C1E4
+	bl STWI_init_timer
 	pop {r0}
 	bx r0
 	thumb_func_end sub_8149440
@@ -10713,7 +10713,7 @@ sub_8149644:
 off_8149664: .word InterruptMasterEnableRegister
 off_8149668: .word dword_2010CCC
 loc_814966C:
-	bl sub_814C220
+	bl AgbRFU_SoftReset
 	bl sub_814935C
 	mov r0, #8
 	bl AgbRFU_checkID
@@ -10810,7 +10810,7 @@ sub_8149718:
 	.balign 4, 0
 off_8149728: .word InterruptMasterEnableRegister
 loc_814972C:
-	bl sub_814C220
+	bl AgbRFU_SoftReset
 	bl sub_814935C
 	mov r0, #0x1e
 	bl AgbRFU_checkID
@@ -13028,7 +13028,7 @@ loc_814A7B8:
 sub_814A7C4:
 	push {lr}
 	mov r0, #1
-	bl sub_814C2E8
+	bl STWI_read_status
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	cmp r0, #1
@@ -13052,7 +13052,7 @@ loc_814A7EC:
 sub_814A7F0:
 	push {lr}
 	mov r0, #1
-	bl sub_814C2E8
+	bl STWI_read_status
 	lsl r0, r0, #0x18
 	lsr r2, r0, #0x18
 	cmp r2, #1
@@ -16392,8 +16392,9 @@ off_814C0F0: .word dword_2010CB0
 	pop {r0}
 	bx r0
 off_814C108: .word sub_81494B8+1
+
 	thumb_local_start
-sub_814C10C:
+STWI_init_all:
 	push {r4,lr}
 	mov r3, r0
 	lsl r2, r2, #0x18
@@ -16492,10 +16493,10 @@ off_814C1D4: .word SIOModeSelect_GeneralPurposeData
 dword_814C1D8: .word 0x5003
 off_814C1DC: .word InterruptMasterEnableRegister
 off_814C1E0: .word InterruptEnableRegister
-	thumb_func_end sub_814C10C
+	thumb_func_end STWI_init_all
 
 	thumb_local_start
-sub_814C1E4:
+STWI_init_timer:
 	push {r4,r5,lr}
 	ldr r2, off_814C210 // =STWI_intr_timer+1 
 	str r2, [r0]
@@ -16523,10 +16524,10 @@ off_814C210: .word STWI_intr_timer+1
 off_814C214: .word dword_2010CCC
 off_814C218: .word InterruptMasterEnableRegister
 off_814C21C: .word InterruptEnableRegister
-	thumb_func_end sub_814C1E4
+	thumb_func_end STWI_init_timer
 
 	thumb_local_start
-sub_814C220:
+AgbRFU_SoftReset:
 	push {r4,r5,lr}
 	ldr r5, off_814C2B8 // =SIOModeSelect_GeneralPurposeData 
 	mov r1, #0x80
@@ -16568,7 +16569,7 @@ loc_814C260:
 	mov r0, r2
 	strh r0, [r1]
 	sub r1, #0xc
-	ldr r3, byte_814C2D0 // =0x3 
+	ldr r3, dword_814C2D0 // =0x3 
 	mov r0, r3
 	strh r0, [r1]
 	ldr r0, [r4]
@@ -16612,13 +16613,24 @@ off_814C2C0: .word dword_2010CCC
 off_814C2C4: .word Timer0Counter_Reload
 off_814C2C8: .word Timer0Control
 dword_814C2CC: .word 0x80A2
-byte_814C2D0: .byte 0x3, 0x50, 0x0, 0x0, 0x0, 0x6, 0x0, 0xE, 0x2, 0x49, 0x9, 0x68, 0xA
-	.byte 0x7D, 0x8, 0x75, 0x70, 0x47, 0x0, 0x0
-	.word dword_2010CCC
-	thumb_func_end sub_814C220
+dword_814C2D0: .word 0x5003
+	thumb_func_end AgbRFU_SoftReset
+
+	thumb_local_start 2
+STWI_set_MS_mode:
+	lsl r0, r0, #0x18
+	lsr r0, r0, #0x18
+	ldr r1, off_814C2E4
+	ldr r1, [r1]
+	ldrb r2, [r1,#0x14]
+	strb r0, [r1,#0x14]
+	bx r14
+	.balign 4, 0
+off_814C2E4: .word dword_2010CCC
+	thumb_func_end STWI_set_MS_mode
 
 	thumb_local_start
-sub_814C2E8:
+STWI_read_status:
 	push {lr}
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -16670,7 +16682,7 @@ loc_814C33E:
 	bx r1
 	.balign 4, 0x00
 dword_814C344: .word 0xFFFF
-	thumb_func_end sub_814C2E8
+	thumb_func_end STWI_read_status
 
 	thumb_local_start
 STWI_init_Callback_M:
