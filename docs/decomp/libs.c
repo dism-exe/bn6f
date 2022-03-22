@@ -5203,7 +5203,7 @@ int sub_8149644()
     {
         sub_814C220();
         sub_814935C();
-        if ( sub_814CC48(8u) == 32769 )
+        if ( AgbRFU_checkID(8u) == 32769 )
         {
             v1 = &Timer0Counter_Reload[2 * *(dword_2010CCC + 10)];
             *v1 = 0;
@@ -5251,7 +5251,7 @@ signed int sub_8149718()
         return -1;
     sub_814C220();
     sub_814935C();
-    v1 = sub_814CC48(0x1Eu);
+    v1 = AgbRFU_checkID(0x1Eu);
     if ( !v1 )
         SIOControlRegister = 0x2000;
     return v1;
@@ -8879,7 +8879,7 @@ int sub_814CC10()
 
 
 // 0x814cc48
-signed int __fastcall sub_814CC48(unsigned __int8 a1)
+signed int __fastcall AgbRFU_checkID(unsigned __int8 a1)
 {
     int v1; // r6
     int v2; // r5
@@ -8892,8 +8892,8 @@ signed int __fastcall sub_814CC48(unsigned __int8 a1)
         return -1;
     v4 = InterruptEnableRegister;
     *dword_2010CCC = 10;
-    sub_814C378(sub_814CE64);
-    sub_814CCFC();
+    sub_814C378(Sio32IDIntr);
+    Sio32IDInit();
     v5 = &Timer0Counter_Reload[2 * *(dword_2010CCC + 10)];
     v6 = 8 * v2 & 0xFF;
     while ( 1 )
@@ -8901,7 +8901,7 @@ signed int __fastcall sub_814CC48(unsigned __int8 a1)
         v6 = (v6 - 1) & 0xFF;
         if ( v6 == 255 )
             break;
-        v1 = sub_814CD70();
+        v1 = Sio32IDMain();
         if ( v1 )
             break;
         v5[1] = 0;
@@ -8921,7 +8921,7 @@ signed int __fastcall sub_814CC48(unsigned __int8 a1)
 
 
 // 0x814ccfc
-int sub_814CCFC()
+int Sio32IDInit()
 {
     int v1; // [sp+0h] [bp-10h]
     int v2; // [sp+Ch] [bp-4h]
@@ -8939,7 +8939,7 @@ int sub_814CCFC()
 
 
 // 0x814cd70
-int sub_814CD70()
+int Sio32IDMain()
 {
     if ( byte_2010CD1 )
     {
@@ -8981,7 +8981,7 @@ int sub_814CD70()
 
 
 // 0x814ce64
-int sub_814CE64()
+int Sio32IDIntr()
 {
     int v0; // r1
     int v1; // r5

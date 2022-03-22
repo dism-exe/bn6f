@@ -10716,7 +10716,7 @@ loc_814966C:
 	bl sub_814C220
 	bl sub_814935C
 	mov r0, #8
-	bl sub_814CC48
+	bl AgbRFU_checkID
 	ldr r1, dword_81496BC // =0x8001 
 	cmp r0, r1
 	bne loc_81496D0
@@ -10813,7 +10813,7 @@ loc_814972C:
 	bl sub_814C220
 	bl sub_814935C
 	mov r0, #0x1e
-	bl sub_814CC48
+	bl AgbRFU_checkID
 	mov r2, r0
 	cmp r2, #0
 	bne loc_814974A
@@ -17920,7 +17920,7 @@ dword_814CC44: .word 0x5003
 	thumb_func_end sub_814CC10
 
 	thumb_local_start
-sub_814CC48:
+AgbRFU_checkID:
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
@@ -17943,9 +17943,9 @@ loc_814CC64:
 	ldr r1, [r4]
 	mov r0, #0xa
 	str r0, [r1]
-	ldr r0, off_814CC98 // =sub_814CE64+1 
+	ldr r0, off_814CC98 // =Sio32IDIntr+1 
 	bl sub_814C378
-	bl sub_814CCFC
+	bl Sio32IDInit
 	ldr r0, [r4]
 	ldrb r0, [r0,#0xa]
 	lsl r0, r0, #2
@@ -17958,7 +17958,7 @@ loc_814CC64:
 	.byte 0, 0
 off_814CC90: .word InterruptEnableRegister
 off_814CC94: .word dword_2010CCC
-off_814CC98: .word sub_814CE64+1
+off_814CC98: .word Sio32IDIntr+1
 off_814CC9C: .word Timer0Counter_Reload
 loc_814CCA0:
 	strh r6, [r4,#2]
@@ -17977,7 +17977,7 @@ loc_814CCB2:
 	lsr r5, r0, #0x18
 	cmp r5, #0xff
 	beq loc_814CCC6
-	bl sub_814CD70
+	bl Sio32IDMain
 	mov r6, r0
 	cmp r6, #0
 	beq loc_814CCA0
@@ -18006,10 +18006,10 @@ loc_814CCE4:
 off_814CCF0: .word InterruptMasterEnableRegister
 off_814CCF4: .word InterruptEnableRegister
 off_814CCF8: .word dword_2010CCC
-	thumb_func_end sub_814CC48
+	thumb_func_end AgbRFU_checkID
 
 	thumb_local_start
-sub_814CCFC:
+Sio32IDInit:
 	push {r4,r5,lr}
 	sub sp, sp, #4
 	ldr r3, off_814CD54 // =InterruptMasterEnableRegister 
@@ -18061,10 +18061,10 @@ off_814CD60: .word SIOModeSelect_GeneralPurposeData
 off_814CD64: .word byte_2010CD0
 dword_814CD68: .word 0x5000003
 off_814CD6C: .word InterruptRequestFlags_IRQAcknowledge
-	thumb_func_end sub_814CCFC
+	thumb_func_end Sio32IDInit
 
 	thumb_local_start
-sub_814CD70:
+Sio32IDMain:
 	push {r4-r7,lr}
 	ldr r0, off_814CD84 // =byte_2010CD0 
 	ldrb r1, [r0,#0x1] // (byte_2010CD1 - 0x2010cd0)
@@ -18183,10 +18183,10 @@ loc_814CE5E:
 	pop {r4-r7}
 	pop {r1}
 	bx r1
-	thumb_func_end sub_814CD70
+	thumb_func_end Sio32IDMain
 
 	thumb_local_start
-sub_814CE64:
+Sio32IDIntr:
 	push {r4,r5,lr}
 	ldr r0, off_814CEAC // =SIOData0_Parent__Multi_PlayerMode_ 
 	ldr r5, [r0]
@@ -18579,7 +18579,7 @@ off_814CFB4: .word dword_2010CCC
 off_814D8A4: .word dword_2010CCC
 	.byte 0x12, 0xFF, 0x2F, 0xE1, 0x11, 0xFF, 0x2F, 0xE1, 0x10
 	.byte 0xFF, 0x2F, 0xE1
-	thumb_func_end sub_814CE64
+	thumb_func_end Sio32IDIntr
 
 // (u32 *src, u32 *dest, int mode) -> void
 	thumb_func_start SWI_CpuFastSet
