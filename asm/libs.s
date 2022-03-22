@@ -10345,13 +10345,13 @@ dword_81493E0: .word 0x100005A
 	thumb_local_start
 sub_81493E4:
 	push {lr}
-	ldr r0, off_81493F4 // =sub_81494B8+1 
+	ldr r0, off_81493F4 // =rfu_STC_REQ_callback+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_ResumeRetransmitAndChangeREQ
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_81493F4: .word sub_81494B8+1
+off_81493F4: .word rfu_STC_REQ_callback+1
 	thumb_func_end sub_81493E4
 
 	thumb_local_start
@@ -10477,7 +10477,7 @@ off_81494B4: .word dword_2010CC4
 	thumb_func_end sub_814948C
 
 	thumb_local_start
-sub_81494B8:
+rfu_STC_REQ_callback:
 	push {r4,r5,lr}
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
@@ -10507,7 +10507,7 @@ loc_81494E6:
 off_81494EC: .word sub_81494F8+1
 off_81494F0: .word dword_2010CC4
 off_81494F4: .word dword_2010CC8
-	thumb_func_end sub_81494B8
+	thumb_func_end rfu_STC_REQ_callback
 
 	thumb_local_start
 sub_81494F8:
@@ -10584,13 +10584,13 @@ off_8149578: .word dword_2010CC4
 	thumb_local_start
 sub_814957C:
 	push {lr}
-	ldr r0, off_814958C // =sub_81494B8+1 
+	ldr r0, off_814958C // =rfu_STC_REQ_callback+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_SystemStatusREQ
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_814958C: .word sub_81494B8+1
+off_814958C: .word rfu_STC_REQ_callback+1
 	thumb_func_end sub_814957C
 
 	thumb_local_start
@@ -10702,7 +10702,7 @@ sub_8149644:
 	bne loc_814966C
 	mov r0, #0x3d 
 	mov r1, #6
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	ldr r0, off_8149668 // =dword_2010CCC 
 	ldr r1, [r0]
 	ldrh r0, [r1,#0x12]
@@ -10763,7 +10763,7 @@ loc_81496D0:
 	strh r0, [r1]
 	mov r0, #0x3d 
 	mov r1, #0
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 loc_81496E2:
 	pop {r0}
 	bx r0
@@ -10789,7 +10789,7 @@ sub_81496EC:
 loc_8149706:
 	mov r0, r3
 	mov r1, r2
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -10856,7 +10856,7 @@ sub_8149768:
 loc_814977C:
 	mov r0, r5
 	mov r1, r4
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	pop {r4,r5}
 	pop {r0}
 	bx r0
@@ -10874,7 +10874,7 @@ sub_814978C:
 	lsr r5, r5, #0x18
 	lsl r2, r2, #0x18
 	lsr r6, r2, #0x18
-	ldr r0, off_81497C4 // =sub_81494B8+1 
+	ldr r0, off_81497C4 // =rfu_STC_REQ_callback+1 
 	bl STWI_set_Callback_M
 	mov r0, #3
 	and r4, r0
@@ -10892,7 +10892,7 @@ sub_814978C:
 	strh r0, [r1,#0x1a]
 	b loc_81497E6
 	.balign 4, 0
-off_81497C4: .word sub_81494B8+1
+off_81497C4: .word rfu_STC_REQ_callback+1
 off_81497C8: .word dword_2010CC4
 loc_81497CC:
 	ldr r5, off_81497EC // =InterruptMasterEnableRegister 
@@ -11068,7 +11068,7 @@ loc_81498F4:
 loc_814990A:
 	mov r0, r12
 	mov r1, r7
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	pop {r4-r7}
 	pop {r0}
 	bx r0
@@ -11101,7 +11101,7 @@ off_814994C: .word sub_81494F8+1
 off_8149950: .word dword_2010CC8
 loc_8149954:
 	mov r0, #0x19
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 loc_814995A:
 	ldr r0, off_8149968 // =sub_814996C+1 
 	bl STWI_set_Callback_M
@@ -11128,7 +11128,7 @@ sub_814996C:
 loc_8149984:
 	mov r0, r3
 	mov r1, r2
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	pop {r0}
 	bx r0
 	.balign 4, 0
@@ -11270,7 +11270,7 @@ loc_8149A88:
 loc_8149A90:
 	mov r0, r4
 	mov r1, r6
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	pop {r4-r6}
 	pop {r0}
 	bx r0
@@ -11468,7 +11468,7 @@ sub_8149BF8:
 loc_8149C0E:
 	mov r0, r5
 	mov r1, r4
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	pop {r4,r5}
 	pop {r0}
 	bx r0
@@ -11500,7 +11500,7 @@ sub_8149C30:
 loc_8149C44:
 	mov r0, r5
 	mov r1, r4
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	pop {r4,r5}
 	pop {r0}
 	bx r0
@@ -11510,13 +11510,13 @@ loc_8149C44:
 	thumb_local_start
 sub_8149C54:
 	push {lr}
-	ldr r0, off_8149C64 // =sub_81494B8+1 
+	ldr r0, off_8149C64 // =rfu_STC_REQ_callback+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_SP_EndREQ
 	pop {r0}
 	bx r0
 	.balign 4, 0
-off_8149C64: .word sub_81494B8+1
+off_8149C64: .word rfu_STC_REQ_callback+1
 	thumb_func_end sub_8149C54
 
 	thumb_local_start
@@ -11699,7 +11699,7 @@ loc_8149DAC:
 	ldr r0, off_8149DC8 // =dword_2010CC4 
 	ldr r0, [r0]
 	strh r4, [r0,#0x1e]
-	ldr r0, off_8149DCC // =sub_81494B8+1 
+	ldr r0, off_8149DCC // =rfu_STC_REQ_callback+1 
 	bl STWI_set_Callback_M
 	mov r0, r4
 	bl STWI_send_CP_StartREQ
@@ -11707,11 +11707,11 @@ loc_8149DAC:
 	.balign 4, 0
 off_8149DC4: .word dword_2010CC0
 off_8149DC8: .word dword_2010CC4
-off_8149DCC: .word sub_81494B8+1
+off_8149DCC: .word rfu_STC_REQ_callback+1
 loc_8149DD0:
 	mov r0, #0x1f
 	mov r1, r3
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 loc_8149DD8:
 	pop {r4,r5}
 	pop {r0}
@@ -11863,7 +11863,7 @@ loc_8149ED4:
 loc_8149EF6:
 	ldr r0, [sp,#0x24]
 	ldr r1, [sp,#0x28]
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	add sp, sp, #0x2c
 	pop {r3-r5}
 	mov r8, r3
@@ -11940,7 +11940,7 @@ off_8149F7C: .word dword_2010CC4
 	thumb_local_start
 sub_8149F80:
 	push {r4,r5,lr}
-	bl sub_814C058
+	bl rfu_NI_checkCommFailCounter
 	ldr r0, off_8149FC8 // =dword_2010CC0 
 	ldr r0, [r0]
 	ldrb r0, [r0]
@@ -12242,7 +12242,7 @@ off_814A1C4: .word sub_81494F8+1
 loc_814A1C8:
 	mov r0, #0x11
 	ldr r1, [sp,#0xc]
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	ldr r0, [sp,#0xc]
 	b loc_814A400
 loc_814A1D4:
@@ -12681,7 +12681,7 @@ loc_814A518:
 	cmp r1, #0
 	beq loc_814A544
 	mov r0, #0x1b
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	b loc_814A550
 	.byte 0, 0
 off_814A540: .word sub_81494F8+1
@@ -12781,7 +12781,7 @@ loc_814A5E6:
 loc_814A5F8:
 	mov r0, r6
 	mov r1, r5
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	ldr r0, off_814A638 // =dword_2010CC4 
 	ldr r0, [r0]
 	ldrb r0, [r0,#9]
@@ -12796,7 +12796,7 @@ loc_814A5F8:
 	beq loc_814A626
 	mov r0, #0x19
 	mov r1, r5
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 loc_814A626:
 	pop {r4-r6}
 	pop {r0}
@@ -12819,7 +12819,7 @@ sub_814A63C:
 	mov r4, #0
 	mov r0, #1
 	and r0, r5
-	ldr r2, off_814A690 // =sub_81494B8+1 
+	ldr r2, off_814A690 // =rfu_STC_REQ_callback+1 
 	cmp r0, #0
 	bne loc_814A66A
 	mov r1, #1
@@ -12851,7 +12851,7 @@ loc_814A66A:
 	bx r0
 	.balign 4, 0
 off_814A68C: .word dword_2010CC4
-off_814A690: .word sub_81494B8+1
+off_814A690: .word rfu_STC_REQ_callback+1
 off_814A694: .word dword_2010CC0
 	thumb_func_end sub_814A63C
 
@@ -12940,7 +12940,7 @@ loc_814A720:
 loc_814A730:
 	mov r0, r8
 	mov r1, r7
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	pop {r3}
 	mov r8, r3
 	pop {r4-r7}
@@ -13033,16 +13033,16 @@ sub_814A7C4:
 	lsr r0, r0, #0x10
 	cmp r0, #1
 	bne loc_814A7E4
-	ldr r0, off_814A7E0 // =sub_81494B8+1 
+	ldr r0, off_814A7E0 // =rfu_STC_REQ_callback+1 
 	bl STWI_set_Callback_M
 	bl STWI_send_MS_ChangeREQ
 	b loc_814A7EC
 	.balign 4, 0
-off_814A7E0: .word sub_81494B8+1
+off_814A7E0: .word rfu_STC_REQ_callback+1
 loc_814A7E4:
 	mov r0, #0x27 
 	mov r1, #0
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 loc_814A7EC:
 	pop {r0}
 	bx r0
@@ -14461,7 +14461,7 @@ loc_814B262:
 	strb r0, [r1,#0xe]
 	mov r0, #0x24 
 	mov r1, r7
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	pop {r3}
 	mov r8, r3
 	pop {r4-r7}
@@ -14480,7 +14480,7 @@ sub_814B290:
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	mov r0, #0x24 
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	pop {r0}
 	bx r0
 	thumb_func_end sub_814B290
@@ -14495,14 +14495,14 @@ sub_814B2A0:
 	cmp r1, #0
 	beq loc_814B2B6
 	mov r0, #0x24 
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	b loc_814B2C2
 loc_814B2B6:
 	cmp r0, #0xff
 	bne loc_814B2C2
 	mov r0, #0xff
 	mov r1, #0
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 loc_814B2C2:
 	pop {r0}
 	bx r0
@@ -15080,14 +15080,14 @@ sub_814B6D4:
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne loc_814B71C
-	bl sub_814B7C0
+	bl rfu_STC_PARENT_analyzeRecvPacket
 	b loc_814B720
 	.balign 4, 0
 off_814B710: .word dword_2010CC8
 off_814B714: .word dword_2010CC4
 off_814B718: .word dword_2010CC0
 loc_814B71C:
-	bl sub_814B858
+	bl rfu_STC_CHILD_analyzeRecvPacket
 loc_814B720:
 	mov r6, #0
 	ldr r0, dword_814B7B0 // =0x8043 
@@ -15154,7 +15154,7 @@ loc_814B77A:
 loc_814B798:
 	mov r0, r9
 	mov r1, r7
-	bl sub_81494B8
+	bl rfu_STC_REQ_callback
 	add sp, sp, #4
 	pop {r3,r4}
 	mov r8, r3
@@ -15170,7 +15170,7 @@ off_814B7BC: .word dword_2010CC4
 	thumb_func_end sub_814B6D4
 
 	thumb_local_start
-sub_814B7C0:
+rfu_STC_PARENT_analyzeRecvPacket:
 	push {r4-r7,lr}
 	sub sp, sp, #4
 	ldr r1, off_814B850 // =dword_2010CC8 
@@ -15224,7 +15224,7 @@ loc_814B81C:
 	ldrb r2, [r4]
 	mov r0, r5
 	mov r1, r6
-	bl sub_814B8B0
+	bl rfu_STC_analyzeLLSF
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r6, r6, r0
@@ -15250,10 +15250,10 @@ loc_814B840:
 	.balign 4, 0
 off_814B850: .word dword_2010CC8
 off_814B854: .word dword_2010CC4
-	thumb_func_end sub_814B7C0
+	thumb_func_end rfu_STC_PARENT_analyzeRecvPacket
 
 	thumb_local_start
-sub_814B858:
+rfu_STC_CHILD_analyzeRecvPacket:
 	push {r4-r6,lr}
 	ldr r0, off_814B8A8 // =dword_2010CC8 
 	ldr r0, [r0]
@@ -15280,7 +15280,7 @@ loc_814B87E:
 	mov r0, #0
 	mov r1, r5
 	mov r2, r4
-	bl sub_814B8B0
+	bl rfu_STC_analyzeLLSF
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	add r5, r5, r0
@@ -15298,10 +15298,10 @@ loc_814B8A0:
 	.balign 4, 0
 off_814B8A8: .word dword_2010CC8
 off_814B8AC: .word dword_2010CC4
-	thumb_func_end sub_814B858
+	thumb_func_end rfu_STC_CHILD_analyzeRecvPacket
 
 	thumb_local_start
-sub_814B8B0:
+rfu_STC_analyzeLLSF:
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -15460,7 +15460,7 @@ loc_814B9D2:
 	mov r0, r12
 	mov r1, sp
 	mov r2, r7
-	bl sub_814BAF4
+	bl rfu_STC_UNI_receive
 	b loc_814BADC
 	.balign 4, 0x00
 dword_814B9EC: .word 0xFFFFFF00
@@ -15477,7 +15477,7 @@ loc_814BA04:
 	mov r0, r12
 	mov r1, sp
 	mov r2, r7
-	bl sub_814BD94
+	bl rfu_STC_NI_receive_Receiver
 	b loc_814BADC
 loc_814BA18:
 	mov r4, #0
@@ -15524,7 +15524,7 @@ loc_814BA5A:
 	mov r1, r12
 	mov r2, sp
 	mov r3, r7
-	bl sub_814BBA8
+	bl rfu_STC_NI_receive_Sender
 	b loc_814BADC
 off_814BA74: .word dword_2010CC0
 loc_814BA78:
@@ -15549,7 +15549,7 @@ loc_814BA8A:
 	bne loc_814BAA6
 	mov r0, r4
 	mov r2, r7
-	bl sub_814BAF4
+	bl rfu_STC_UNI_receive
 	b loc_814BAD2
 loc_814BAA6:
 	ldrb r0, [r1,#3]
@@ -15558,7 +15558,7 @@ loc_814BAA6:
 	mov r0, r4
 	mov r1, sp
 	mov r2, r7
-	bl sub_814BD94
+	bl rfu_STC_NI_receive_Receiver
 	b loc_814BAD2
 loc_814BAB8:
 	ldr r0, off_814BAF0 // =dword_2010CC0 
@@ -15572,7 +15572,7 @@ loc_814BAB8:
 	mov r1, r4
 	mov r2, sp
 	mov r3, r7
-	bl sub_814BBA8
+	bl rfu_STC_NI_receive_Sender
 loc_814BAD2:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -15590,12 +15590,12 @@ loc_814BADE:
 	pop {r4-r7}
 	pop {r1}
 	bx r1
-	.byte 0, 0
+	.balign 4, 0
 off_814BAF0: .word dword_2010CC0
-	thumb_func_end sub_814B8B0
+	thumb_func_end rfu_STC_analyzeLLSF
 
 	thumb_local_start
-sub_814BAF4:
+rfu_STC_UNI_receive:
 	push {r4-r7,lr}
 	sub sp, sp, #8
 	mov r6, r1
@@ -15685,10 +15685,10 @@ loc_814BB92:
 dword_814BB9C: .word 0x8042
 off_814BBA0: .word dword_2010CC8
 off_814BBA4: .word dword_2010CC4
-	thumb_func_end sub_814BAF4
+	thumb_func_end rfu_STC_UNI_receive
 
 	thumb_local_start
-sub_814BBA8:
+rfu_STC_NI_receive_Sender:
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -15936,10 +15936,10 @@ dword_814BD84: .word 0x8020
 off_814BD88: .word InterruptMasterEnableRegister
 off_814BD8C: .word dword_2010CC4
 off_814BD90: .word dword_2010CB0
-	thumb_func_end sub_814BBA8
+	thumb_func_end rfu_STC_NI_receive_Sender
 
 	thumb_local_start
-sub_814BD94:
+rfu_STC_NI_receive_Receiver:
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -16004,7 +16004,7 @@ loc_814BE04:
 	bne loc_814BE1C
 	mov r0, r8
 	mov r1, r5
-	bl sub_814BFA0
+	bl rfu_STC_NI_initSlot_asRecvDataEntity
 loc_814BE1C:
 	ldrh r1, [r5]
 	ldr r0, dword_814BE2C // =0x8042 
@@ -16022,7 +16022,7 @@ loc_814BE30:
 	beq loc_814BE4E
 	mov r0, r8
 	mov r1, r5
-	bl sub_814BF10
+	bl rfu_STC_NI_initSlot_asRecvControllData
 	ldrh r0, [r4,#0x34]
 	cmp r0, r7
 	bne loc_814BEEA
@@ -16126,10 +16126,10 @@ off_814BF00: .word dword_2010CC8
 dword_814BF04: .word 0x8042
 off_814BF08: .word InterruptMasterEnableRegister
 off_814BF0C: .word dword_2010CC4
-	thumb_func_end sub_814BD94
+	thumb_func_end rfu_STC_NI_receive_Receiver
 
 	thumb_local_start
-sub_814BF10:
+rfu_STC_NI_initSlot_asRecvControllData:
 	push {r4-r7,lr}
 	mov r2, r1
 	lsl r0, r0, #0x18
@@ -16203,10 +16203,10 @@ loc_814BF96:
 	pop {r0}
 	bx r0
 dword_814BF9C: .word 0x8041
-	thumb_func_end sub_814BF10
+	thumb_func_end rfu_STC_NI_initSlot_asRecvControllData
 
 	thumb_local_start
-sub_814BFA0:
+rfu_STC_NI_initSlot_asRecvDataEntity:
 	push {r4-r7,lr}
 	mov r4, r1
 	lsl r0, r0, #0x18
@@ -16298,10 +16298,10 @@ loc_814C04C:
 	bx r0
 	.balign 4, 0x00
 dword_814C054: .word 0x8042
-	thumb_func_end sub_814BFA0
+	thumb_func_end rfu_STC_NI_initSlot_asRecvDataEntity
 
 	thumb_local_start
-sub_814C058:
+rfu_NI_checkCommFailCounter:
 	push {r4-r7,lr}
 	ldr r2, off_814C0E4 // =dword_2010CC0 
 	ldr r0, [r2]
@@ -16381,17 +16381,21 @@ off_814C0E4: .word dword_2010CC0
 off_814C0E8: .word InterruptMasterEnableRegister
 off_814C0EC: .word dword_2010CC4
 off_814C0F0: .word dword_2010CB0
-	thumb_func_end sub_814C058
+	thumb_func_end rfu_NI_checkCommFailCounter
 
+	thumb_local_start 2
+rfu_REQ_noise:
 	push {lr}
-	ldr r0, off_814C108 // =sub_81494B8+1 
+	ldr r0, off_814C108 // =rfu_STC_REQ_callback+1 
 	bl STWI_set_Callback_M
 	mov r0, #1
 	mov r1, #0
 	bl STWI_send_TestModeREQ
 	pop {r0}
 	bx r0
-off_814C108: .word sub_81494B8+1
+	.balign 4, 0
+off_814C108: .word rfu_STC_REQ_callback+1
+	thumb_func_end rfu_REQ_noise
 
 	thumb_local_start
 STWI_init_all:

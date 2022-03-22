@@ -4972,7 +4972,7 @@ int sub_81493E4()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    STWI_set_Callback_M(sub_81494B8);
+    STWI_set_Callback_M(rfu_STC_REQ_callback);
     STWI_send_ResumeRetransmitAndChangeREQ();
     return v1;
 }
@@ -5066,7 +5066,7 @@ int __fastcall sub_814948C(int a1)
 
 
 // 0x81494b8
-int __fastcall sub_81494B8(unsigned __int8 a1, unsigned __int16 a2)
+int __fastcall rfu_STC_REQ_callback(unsigned __int8 a1, unsigned __int16 a2)
 {
     int v2; // r5
     int v3; // r4
@@ -5125,7 +5125,7 @@ int sub_814957C()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    STWI_set_Callback_M(sub_81494B8);
+    STWI_set_Callback_M(rfu_STC_REQ_callback);
     STWI_send_SystemStatusREQ();
     return v1;
 }
@@ -5217,12 +5217,12 @@ int sub_8149644()
         else
         {
             SIOControlRegister = 0x2000;
-            sub_81494B8(0x3Du, 0);
+            rfu_STC_REQ_callback(0x3Du, 0);
         }
     }
     else
     {
-        sub_81494B8(0x3Du, 6u);
+        rfu_STC_REQ_callback(0x3Du, 6u);
         v0 = *(dword_2010CCC + 18);
         *(dword_2010CCC + 18) = 6;
     }
@@ -5237,7 +5237,7 @@ int __fastcall sub_81496EC(unsigned __int8 a1, unsigned __int16 a2)
 
     if ( !a2 )
         SIOControlRegister = 0x2000;
-    sub_81494B8(a1, a2);
+    rfu_STC_REQ_callback(a1, a2);
     return v3;
 }
 
@@ -5280,7 +5280,7 @@ int __fastcall sub_8149768(unsigned __int8 a1, unsigned __int16 a2)
     v3 = a2;
     if ( !a2 )
         sub_814935C();
-    sub_81494B8(v2, v3);
+    rfu_STC_REQ_callback(v2, v3);
     return v5;
 }
 
@@ -5297,7 +5297,7 @@ int __fastcall sub_814978C(char a1, unsigned __int8 a2, unsigned __int8 a3)
     v3 = a1;
     v4 = a2;
     v5 = a3;
-    STWI_set_Callback_M(sub_81494B8);
+    STWI_set_Callback_M(rfu_STC_REQ_callback);
     STWI_send_SystemConfigREQ(v3 & 3 | 0x3C, v4, v5);
     if ( v5 )
     {
@@ -5424,7 +5424,7 @@ int __fastcall sub_8149880(unsigned __int8 a1, unsigned __int16 a2)
         }
         while ( v14 <= 7 );
     }
-    sub_81494B8(v2, v3);
+    rfu_STC_REQ_callback(v2, v3);
     return v16;
 }
 
@@ -5440,7 +5440,7 @@ int sub_814991C()
     v0 = STWI_poll_CommandEnd();
     if ( v0 )
     {
-        sub_81494B8(0x19u, v0);
+        rfu_STC_REQ_callback(0x19u, v0);
     }
     else if ( !*(*(dword_2010CC8 + 220) + 7) )
     {
@@ -5459,7 +5459,7 @@ int __fastcall sub_814996C(unsigned __int8 a1, unsigned __int16 a2)
 
     if ( !a2 )
         *(dword_2010CC4 + 9) = 1;
-    sub_81494B8(a1, a2);
+    rfu_STC_REQ_callback(a1, a2);
     return v3;
 }
 
@@ -5544,7 +5544,7 @@ int __fastcall sub_8149A20(unsigned __int8 a1, unsigned __int16 a2)
             *(dword_2010CC0 + 148) = 0;
         *(dword_2010CC4 + 9) = 0;
     }
-    sub_81494B8(v2, v3);
+    rfu_STC_REQ_callback(v2, v3);
     return v5;
 }
 
@@ -5634,7 +5634,7 @@ int __fastcall sub_8149BF8(unsigned __int8 a1, unsigned __int16 a2)
     v3 = a2;
     if ( !a2 )
         sub_8149994(0);
-    sub_81494B8(v2, v3);
+    rfu_STC_REQ_callback(v2, v3);
     return v5;
 }
 
@@ -5661,7 +5661,7 @@ int __fastcall sub_8149C30(unsigned __int8 a1, unsigned __int16 a2)
     v3 = a2;
     if ( !a2 )
         sub_8149C68();
-    sub_81494B8(v2, v3);
+    rfu_STC_REQ_callback(v2, v3);
     return v5;
 }
 
@@ -5671,7 +5671,7 @@ int sub_8149C54()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    STWI_set_Callback_M(sub_81494B8);
+    STWI_set_Callback_M(rfu_STC_REQ_callback);
     STWI_send_SP_EndREQ();
     return v1;
 }
@@ -5788,12 +5788,12 @@ int __fastcall sub_8149D78(unsigned __int16 a1)
         v2 = 256;
     if ( v2 )
     {
-        sub_81494B8(0x1Fu, v2);
+        rfu_STC_REQ_callback(0x1Fu, v2);
     }
     else
     {
         *(dword_2010CC4 + 30) = a1;
-        STWI_set_Callback_M(sub_81494B8);
+        STWI_set_Callback_M(rfu_STC_REQ_callback);
         STWI_send_CP_StartREQ(v1);
     }
     return v5;
@@ -5880,7 +5880,7 @@ LABEL_10:
             }
         }
     }
-    sub_81494B8(v14, v15);
+    rfu_STC_REQ_callback(v14, v15);
     return v16;
 }
 
@@ -5927,7 +5927,7 @@ signed int sub_8149F80()
     int v4; // r5
     unsigned int v5; // r4
 
-    sub_814C058();
+    rfu_NI_checkCommFailCounter();
     if ( *dword_2010CC0 == 255 )
         return 0;
     if ( *(dword_2010CC4 + 6) )
@@ -6191,7 +6191,7 @@ LABEL_51:
             }
         }
     }
-    sub_81494B8(0x11u, v29);
+    rfu_STC_REQ_callback(0x11u, v29);
     return v29;
 }
 
@@ -6244,7 +6244,7 @@ int __fastcall sub_814A4CC(unsigned __int8 a1)
         }
         else if ( *(dword_2010CC4 + 9) && (STWI_set_Callback_M(sub_81494F8), STWI_send_SC_EndREQ(), (v2 = STWI_poll_CommandEnd()) != 0) )
         {
-            sub_81494B8(0x1Bu, v2);
+            rfu_STC_REQ_callback(0x1Bu, v2);
         }
         else
         {
@@ -6289,14 +6289,14 @@ int __fastcall sub_814A55C(unsigned __int8 a1, unsigned __int16 a2)
     }
     if ( !(*(dword_2010CC0 + 3) | *(dword_2010CC0 + 2)) )
         *dword_2010CC0 = -1;
-    sub_81494B8(v2, v3);
+    rfu_STC_REQ_callback(v2, v3);
     if ( *(dword_2010CC4 + 9) )
     {
         STWI_set_Callback_M(sub_81494F8);
         STWI_send_SC_StartREQ();
         v5 = STWI_poll_CommandEnd();
         if ( v5 )
-            sub_81494B8(0x19u, v5);
+            rfu_STC_REQ_callback(0x19u, v5);
     }
     return v7;
 }
@@ -6318,7 +6318,7 @@ int __fastcall sub_814A63C(unsigned __int8 a1)
             v2 = (v2 + 1) & 0xFF;
         while ( v2 <= 3 && !((a1 >> v2) & 1) );
     }
-    STWI_set_Callback_M(sub_81494B8);
+    STWI_set_Callback_M(rfu_STC_REQ_callback);
     STWI_send_CPR_StartREQ(*(dword_2010CC0 + 32 * v2 + 20), *(dword_2010CC0 + 148), v1);
     return v4;
 }
@@ -6361,7 +6361,7 @@ int __fastcall sub_814A6AC(unsigned __int8 a1, unsigned __int16 a2)
         while ( v2 <= 3 );
         *(dword_2010CC4 + 5) = 0;
     }
-    sub_81494B8(a1, a2);
+    rfu_STC_REQ_callback(a1, a2);
     return v5;
 }
 
@@ -6418,12 +6418,12 @@ int sub_814A7C4()
 
     if ( STWI_read_status(1) == 1 )
     {
-        STWI_set_Callback_M(sub_81494B8);
+        STWI_set_Callback_M(rfu_STC_REQ_callback);
         STWI_send_MS_ChangeREQ();
     }
     else
     {
-        sub_81494B8(0x27u, 0);
+        rfu_STC_REQ_callback(0x27u, 0);
     }
     return v1;
 }
@@ -7058,7 +7058,7 @@ int __fastcall sub_814B1F8(int a1, unsigned __int16 a2)
     }
     v7 = *(dword_2010CC0 + 14);
     *(dword_2010CC0 + 14) = 0;
-    sub_81494B8(0x24u, v2);
+    rfu_STC_REQ_callback(0x24u, v2);
     return v9;
 }
 
@@ -7068,7 +7068,7 @@ int __fastcall sub_814B290(int a1, unsigned __int16 a2)
 {
     int v3; // [sp+0h] [bp-4h]
 
-    sub_81494B8(0x24u, a2);
+    rfu_STC_REQ_callback(0x24u, a2);
     return v3;
 }
 
@@ -7081,11 +7081,11 @@ int __fastcall sub_814B2A0(int a1, unsigned __int16 a2)
     a1 = a1;
     if ( a2 )
     {
-        sub_81494B8(0x24u, a2);
+        rfu_STC_REQ_callback(0x24u, a2);
     }
     else if ( a1 == 255 )
     {
-        sub_81494B8(0xFFu, 0);
+        rfu_STC_REQ_callback(0xFFu, 0);
     }
     return v3;
 }
@@ -7329,9 +7329,9 @@ int __fastcall sub_814B6D4(unsigned __int8 a1, int a2, int a3, int a4)
         *(dword_2010CC4 + 1) = 0;
         v7 = *dword_2010CC0;
         if ( v7 == 1 )
-            sub_814B7C0();
+            rfu_STC_PARENT_analyzeRecvPacket();
         else
-            sub_814B858(v7, v5, a3, a4);
+            rfu_STC_CHILD_analyzeRecvPacket(v7, v5, a3, a4);
         v8 = 0;
         v9 = &dword_2010CC0;
         do
@@ -7354,13 +7354,13 @@ int __fastcall sub_814B6D4(unsigned __int8 a1, int a2, int a3, int a4)
         if ( *(dword_2010CC4 + 4) )
             LOWORD(v6) = *(dword_2010CC4 + 4) | 0x700;
     }
-    sub_81494B8(v4, v6);
+    rfu_STC_REQ_callback(v4, v6);
     return v14;
 }
 
 
 // 0x814b7c0
-int sub_814B7C0()
+int rfu_STC_PARENT_analyzeRecvPacket()
 {
     unsigned int v0; // r3
     unsigned int v1; // r5
@@ -7396,7 +7396,7 @@ int sub_814B7C0()
             v6 = &v10 + v4;
             do
             {
-                v7 = sub_814B8B0(v4, v3, *v6);
+                v7 = rfu_STC_analyzeLLSF(v4, v3, *v6);
                 v3 += v7;
                 v8 = *v6 - v7;
                 *v6 = v8;
@@ -7411,7 +7411,7 @@ int sub_814B7C0()
 
 
 // 0x814b858
-int __fastcall sub_814B858(int a1, int a2, int a3, int a4)
+int __fastcall rfu_STC_CHILD_analyzeRecvPacket(int a1, int a2, int a3, int a4)
 {
     int v4; // r4
     unsigned __int8 *v5; // r5
@@ -7426,7 +7426,7 @@ int __fastcall sub_814B858(int a1, int a2, int a3, int a4)
     {
         if ( !v4 )
             break;
-        v6 = sub_814B8B0(0, v5, v4);
+        v6 = rfu_STC_analyzeLLSF(0, v5, v4);
         v5 += v6;
         v4 = (v4 - v6) & 0xFFFF;
     }
@@ -7436,7 +7436,7 @@ int __fastcall sub_814B858(int a1, int a2, int a3, int a4)
 
 
 // 0x814b8b0
-unsigned int __fastcall sub_814B8B0(unsigned __int8 a1, unsigned __int8 *a2, unsigned __int16 a3)
+unsigned int __fastcall rfu_STC_analyzeLLSF(unsigned __int8 a1, unsigned __int8 *a2, unsigned __int16 a3)
 {
     unsigned __int8 *v3; // r7
     int v4; // r12
@@ -7484,7 +7484,7 @@ unsigned int __fastcall sub_814B8B0(unsigned __int8 a1, unsigned __int8 *a2, uns
             {
                 if ( ((v10 >> 16) & 0xFF) == 4 )
                 {
-                    sub_814BAF4(v4, &v17, v3);
+                    rfu_STC_UNI_receive(v4, &v17, v3);
                 }
                 else if ( HIBYTE(v17) )
                 {
@@ -7497,7 +7497,7 @@ LABEL_17:
                     if ( (v14 >> v13) & 1 )
                     {
                         if ( v12 <= 3 )
-                            sub_814BBA8(v12, v4, &v17);
+                            rfu_STC_NI_receive_Sender(v12, v4, &v17);
                     }
                     else
                     {
@@ -7518,7 +7518,7 @@ LABEL_14:
                 }
                 else
                 {
-                    sub_814BD94(v4, &v17, v3);
+                    rfu_STC_NI_receive_Receiver(v4, &v17, v3);
                 }
             }
         }
@@ -7534,16 +7534,16 @@ LABEL_14:
                     {
                         if ( BYTE2(v17) == 4 )
                         {
-                            sub_814BAF4(v16, &v17, v3);
+                            rfu_STC_UNI_receive(v16, &v17, v3);
                         }
                         else if ( HIBYTE(v17) )
                         {
                             if ( (*(dword_2010CC0 + 4) >> v16) & 1 )
-                                sub_814BBA8(v16, v16, &v17);
+                                rfu_STC_NI_receive_Sender(v16, v16, &v17);
                         }
                         else
                         {
-                            sub_814BD94(v16, &v17, v3);
+                            rfu_STC_NI_receive_Receiver(v16, &v17, v3);
                         }
                     }
                     v16 = (v16 + 1) & 0xFF;
@@ -7557,7 +7557,7 @@ LABEL_14:
 
 
 // 0x814baf4
-int __fastcall sub_814BAF4(unsigned __int8 a1, int a2, int a3)
+int __fastcall rfu_STC_UNI_receive(unsigned __int8 a1, int a2, int a3)
 {
     int v3; // r6
     char (**v4)[28]; // r1
@@ -7604,7 +7604,7 @@ LABEL_9:
 
 
 // 0x814bba8
-int __fastcall sub_814BBA8(int a1, unsigned __int8 a2, int a3)
+int __fastcall rfu_STC_NI_receive_Sender(int a1, unsigned __int8 a2, int a3)
 {
     int v3; // r6
     int v4; // r10
@@ -7705,7 +7705,7 @@ int __fastcall sub_814BBA8(int a1, unsigned __int8 a2, int a3)
 
 
 // 0x814bd94
-int __fastcall sub_814BD94(int a1, int a2, int a3)
+int __fastcall rfu_STC_NI_receive_Receiver(int a1, int a2, int a3)
 {
     int v3; // r6
     unsigned __int8 v4; // r8
@@ -7744,7 +7744,7 @@ int __fastcall sub_814BD94(int a1, int a2, int a3)
     if ( v10 == 2 )
     {
         if ( v8 == 32833 && !*(v7 + 5) )
-            sub_814BFA0(v4, v7);
+            rfu_STC_NI_initSlot_asRecvDataEntity(v4, v7);
         if ( *v7 == 32834 )
             goto LABEL_15;
         goto LABEL_14;
@@ -7777,7 +7777,7 @@ LABEL_15:
     }
     if ( v8 == 32833 )
         goto LABEL_15;
-    sub_814BF10(v4, v7);
+    rfu_STC_NI_initSlot_asRecvControllData(v4, v7);
     if ( *(v6 + 52) == 32833 )
     {
         v5 = 1;
@@ -7788,7 +7788,7 @@ LABEL_15:
 
 
 // 0x814bf10
-int __fastcall sub_814BF10(unsigned __int8 a1, int a2)
+int __fastcall rfu_STC_NI_initSlot_asRecvControllData(unsigned __int8 a1, int a2)
 {
     int v2; // r2
     unsigned int v3; // r5
@@ -7834,7 +7834,7 @@ int __fastcall sub_814BF10(unsigned __int8 a1, int a2)
 
 
 // 0x814bfa0
-int __fastcall sub_814BFA0(unsigned __int8 a1, int a2)
+int __fastcall rfu_STC_NI_initSlot_asRecvDataEntity(unsigned __int8 a1, int a2)
 {
     int v2; // r0
     int v3; // r2
@@ -7875,7 +7875,7 @@ int __fastcall sub_814BFA0(unsigned __int8 a1, int a2)
 
 
 // 0x814c058
-int sub_814C058()
+int rfu_NI_checkCommFailCounter()
 {
     __int16 v0; // r12
     unsigned int v1; // r7
