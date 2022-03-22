@@ -172,7 +172,7 @@ sub_801FF18:
 	mov r0, #0
 	bl sub_800A0D6
 	ldrb r1, [r5,#0x6] // (byte_20399F6 - 0x20399f0)
-	strb r1, [r6,#0x14]
+	strb r1, [r6,#oBattleState_Unk_14]
 	ldrh r1, [r5,#0xc] // (word_20399FC - 0x20399f0)
 	ldr r0, off_80200FC // =unk_2036120 
 	strh r1, [r0,#0x2c] // (word_203614C - 0x2036120)
@@ -198,7 +198,7 @@ loc_801FF66:
 	mov r0, #1
 	bl sub_800A0D6
 	ldrb r1, [r5,#0x6] // (byte_2039A06 - 0x2039a00)
-	strb r1, [r6,#0x15]
+	strb r1, [r6,#oBattleState_Unk_15]
 	ldrh r1, [r5,#0xc] // (word_2039A0C - 0x2039a00)
 	ldr r0, off_8020104 // =unk_20362F0 
 	strh r1, [r0,#0x2c] // (word_203631C - 0x20362f0)
@@ -213,12 +213,12 @@ loc_801FF84:
 	ldr r5, off_8020108 // =eStruct2036780
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r1, [r0]
+	ldrh r1, [r0,#oJoypad_Held]
 	strh r1, [r5,#0x2] // (eFlags2036782 - 0x2036780)
 	str r1, [sp]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldrb r1, [r0,#0x11]
+	ldrb r1, [r0,#oBattleState_Unk_11]
 	strb r1, [r5,#0x6] // (byte_2036786 - 0x2036780)
 	mov r0, #4
 	bl sub_803F740
@@ -279,7 +279,7 @@ loc_801FFEA:
 	mov r0, #0
 	bl sub_800A0D6
 	ldrb r1, [r5,#0x6] // (byte_20399F6 - 0x20399f0)
-	strb r1, [r6,#0x14]
+	strb r1, [r6,#oBattleState_Unk_14]
 	ldrh r1, [r5,#0xc] // (word_20399FC - 0x20399f0)
 	ldr r0, off_802011C // =unk_2036120 
 	strh r1, [r0,#0x2c] // (word_203614C - 0x2036120)
@@ -305,7 +305,7 @@ loc_8020030:
 	mov r0, #1
 	bl sub_800A0D6
 	ldrb r1, [r5,#0x6] // (byte_2039A06 - 0x2039a00)
-	strb r1, [r6,#0x15]
+	strb r1, [r6,#oBattleState_Unk_15]
 	ldrh r1, [r5,#0xc] // (word_2039A0C - 0x2039a00)
 	ldr r0, off_8020124 // =unk_20362F0 
 	strh r1, [r0,#0x2c] // (word_203631C - 0x20362f0)
@@ -327,12 +327,12 @@ loc_802005A:
 	ldr r5, off_8020128 // =eStruct2036780
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r1, [r0]
+	ldrh r1, [r0,#oJoypad_Held]
 	strh r1, [r5,#0x2] // (eFlags2036782 - 0x2036780)
 	str r1, [sp]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldrb r1, [r0,#0x11]
+	ldrb r1, [r0,#oBattleState_Unk_11]
 	strb r1, [r5,#0x6] // (byte_2036786 - 0x2036780)
 	mov r0, #4
 	bl sub_803F740

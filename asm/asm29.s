@@ -10256,7 +10256,7 @@ sub_80AA8E0:
 	str r0, [sp,#0x1c]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldrh r0, [r0,#0x36]
+	ldrh r0, [r0,#oBattleState_Unk_36]
 	str r0, [sp,#0x20]
 loc_80AA908:
 	ldr r0, [sp,#0x1c]

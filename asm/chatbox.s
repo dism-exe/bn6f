@@ -1437,7 +1437,7 @@ chatbox_8040818:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	mov r0, #0
-	strb r0, [r5]
+	strb r0, [r5,#oChatbox_Visible]
 	mov r0, #0xc8
 	bl chatbox_clear_eFlags2009F38 // (int a1) ->
 	pop {r5,pc}

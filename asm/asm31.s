@@ -28485,10 +28485,10 @@ sub_80C5B76:
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C5B8E
-	strb r1, [r0,#0x12]
-	strb r2, [r0,#0x13]
-	strb r3, [r0,#0xe]
-	str r6, [r0,#0x2c]
+	strb r1, [r0,#oBattleObject_PanelX]
+	strb r2, [r0,#oBattleObject_PanelY]
+	strb r3, [r0,#oBattleObject_Element]
+	str r6, [r0,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 locret_80C5B8E:
 	pop {pc}
 	.balign 4, 0
@@ -53908,16 +53908,16 @@ sub_80D2430:
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D2454
-	strb r1, [r0,#0x12]
-	strb r2, [r0,#0x13]
-	str r6, [r0,#0x2c]
-	strb r3, [r0,#0xe]
-	strb r4, [r0,#0x16]
-	str r7, [r0,#0x60]
+	strb r1, [r0,#oBattleObject_PanelX]
+	strb r2, [r0,#oBattleObject_PanelY]
+	str r6, [r0,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
+	strb r3, [r0,#oBattleObject_Element]
+	strb r4, [r0,#oBattleObject_Alliance]
+	str r7, [r0,#oBattleObject_ExtraVars]
 	ldrb r2, [r1]
 	mov r1, #0x14
 	orr r2, r1
-	strb r2, [r0]
+	strb r2, [r0,#oObjectHeader_Flags]
 locret_80D2454:
 	pop {pc}
 	.balign 4, 0
@@ -66267,16 +66267,16 @@ sub_80D85F0:
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D8614
-	strb r1, [r0,#0x12]
-	strb r2, [r0,#0x13]
-	strb r3, [r0,#0xe]
-	strb r4, [r0,#0x16]
-	str r6, [r0,#0x2c]
-	str r7, [r0,#0x60]
-	ldrb r2, [r0]
+	strb r1, [r0,#oBattleObject_PanelX]
+	strb r2, [r0,#oBattleObject_PanelY]
+	strb r3, [r0,#oBattleObject_Element]
+	strb r4, [r0,#oBattleObject_Alliance]
+	str r6, [r0,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
+	str r7, [r0,#oBattleObject_ExtraVars]
+	ldrb r2, [r0,#oObjectHeader_Flags]
 	mov r1, #0x14
 	orr r2, r1
-	strb r2, [r0]
+	strb r2, [r0,#oObjectHeader_Flags]
 locret_80D8614:
 	pop {pc}
 	.balign 4, 0
@@ -67241,15 +67241,15 @@ sub_80D8D5A:
 	mov r0, r5
 	pop {r1-r5}
 	beq locret_80D8D7C
-	strb r1, [r0,#0x12]
-	strb r2, [r0,#0x13]
-	strh r3, [r0,#0x24]
-	strh r3, [r0,#0x26]
-	strb r4, [r0,#0x16]
-	ldrb r1, [r0]
+	strb r1, [r0,#oBattleObject_PanelX]
+	strb r2, [r0,#oBattleObject_PanelY]
+	strh r3, [r0,#oBattleObject_HP]
+	strh r3, [r0,#oBattleObject_MaxHP]
+	strb r4, [r0,#oBattleObject_Alliance]
+	ldrb r1, [r0,#oObjectHeader_Flags]
 	mov r2, #0x14
 	orr r1, r2
-	strb r1, [r0]
+	strb r1, [r0,#oObjectHeader_Flags]
 locret_80D8D7C:
 	pop {pc}
 	thumb_func_end sub_80D8D5A
@@ -70884,13 +70884,13 @@ sub_80DA9DC:
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DA9FC
-	strb r1, [r0,#0x12]
-	strb r2, [r0,#0x13]
-	strb r3, [r0,#0xe]
-	ldrb r1, [r0]
+	strb r1, [r0,#oBattleObject_PanelX]
+	strb r2, [r0,#oBattleObject_PanelY]
+	strb r3, [r0,#oBattleObject_Element]
+	ldrb r1, [r0,#oObjectHeader_Flags]
 	mov r2, #0x14
 	orr r1, r2
-	strb r1, [r0]
+	strb r1, [r0,#oObjectHeader_Flags]
 locret_80DA9FC:
 	pop {pc}
 	thumb_func_end sub_80DA9DC
@@ -82584,10 +82584,10 @@ sub_80E06F8:
 	push {r4,r5,lr}
 	mov r0, #2
 	bl object_spawnType4
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #4
 	orr r0, r1
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, r5
 	pop {r4,r5,pc}
 	.balign 4, 0
@@ -92703,12 +92703,12 @@ sub_80E5368:
 	mov r0, r5
 	pop {r5}
 	beq locret_80E5384
-	ldrb r1, [r0,#5]
-	strb r1, [r0,#0x16]
-	ldrb r1, [r0]
+	ldrb r1, [r0,#oBattleObject_Param2]
+	strb r1, [r0,#oBattleObject_Alliance]
+	ldrb r1, [r0,#oObjectHeader_Flags]
 	mov r2, #0x10
 	bic r1, r2
-	strb r1, [r0]
+	strb r1, [r0,#oObjectHeader_Flags]
 locret_80E5384:
 	pop {pc}
 	thumb_func_end sub_80E5368

@@ -425,7 +425,7 @@ sub_8081308:
 	push {r4-r7,lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldr r1, [r0,#0x3c]
+	ldr r1, [r0,#oBattleState_Unk_3c]
 	ldrb r0, [r1,#4]
 	cmp r0, #0xff
 	bne locret_808135C

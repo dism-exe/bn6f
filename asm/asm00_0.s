@@ -2612,14 +2612,14 @@ renderInfo_8001788:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_RenderInfoPtr]
 	mov r1, #0
-	strh r1, [r0,#0xc]
-	strh r1, [r0,#0xe]
-	strh r1, [r0,#0x10]
-	strh r1, [r0,#0x12]
-	strh r1, [r0,#0x14]
-	strh r1, [r0,#0x16]
-	strh r1, [r0,#0x1a]
-	strh r1, [r0,#0x18]
+	strh r1, [r0,#oRenderInfo_Unk_0c]
+	strh r1, [r0,#oRenderInfo_Unk_0e]
+	strh r1, [r0,#oRenderInfo_Unk_10]
+	strh r1, [r0,#oRenderInfo_Unk_12]
+	strh r1, [r0,#oRenderInfo_Unk_14]
+	strh r1, [r0,#oRenderInfo_Unk_16]
+	strh r1, [r0,#oRenderInfo_Unk_1a]
+	strh r1, [r0,#oRenderInfo_Unk_18]
 	mov pc, lr
 	thumb_func_end renderInfo_8001788
 
@@ -2628,7 +2628,7 @@ renderInfo_80017A0:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_RenderInfoPtr]
 	mov r1, #0
-	strh r1, [r0,#2]
+	strh r1, [r0,#oRenderInfo_Unk_02]
 	mov pc, lr
 	thumb_func_end renderInfo_80017A0
 

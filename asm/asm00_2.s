@@ -1810,12 +1810,12 @@ sub_800FAE0:
 	push {r4,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_BattleStatePtr]
-	ldrb r0, [r4,#0xd]
+	ldrb r0, [r4,#oBattleState_Unk_0d]
 	bl sub_80103BC
 	tst r0, r0
 	beq locret_800FAF4
-	ldrh r1, [r0,#0x24]
-	strh r1, [r4,#0x34]
+	ldrh r1, [r0,#oBattleObject_HP]
+	strh r1, [r4,#oBattleState_Unk_34]
 locret_800FAF4:
 	pop {r4,pc}
 	thumb_func_end sub_800FAE0
@@ -2875,19 +2875,19 @@ sub_80102AC:
 	bl sub_80103BC
 	mov r5, r0
 	beq locret_80102F0
-	ldr r4, [r5,#0x58]
-	ldrh r0, [r5,#0x24]
+	ldr r4, [r5,#oBattleObject_AIDataPtr]
+	ldrh r0, [r5,#oBattleObject_HP]
 	cmp r0, #1
 	ble locret_80102F0
-	ldrb r3, [r4,#0xa]
+	ldrb r3, [r4,#oAIData_Unk_0a]
 	add r3, #1
-	strb r3, [r4,#0xa]
+	strb r3, [r4,#oAIData_Unk_0a]
 	cmp r3, r6
 	blt locret_80102F0
 	mov r0, #1
 	bl object_subtractHP
 	mov r0, #0
-	strb r0, [r4,#0xa]
+	strb r0, [r4,#oAIData_Unk_0a]
 locret_80102F0:
 	pop {r4-r6,pc}
 	.balign 4, 0
@@ -3249,8 +3249,8 @@ loc_801055A:
 sub_801055E:
 	push {lr}
 	bl sub_80103BC
-	ldr r0, [r0,#0x58]
-	ldrh r0, [r0,#0x20]
+	ldr r0, [r0,#oBattleObject_AIDataPtr]
+	ldrh r0, [r0,#oAIData_TotalDamageTaken]
 	pop {pc}
 	thumb_func_end sub_801055E
 
@@ -8689,42 +8689,42 @@ loc_8012E1E:
 	add r1, r1, r3
 	ldrh r6, [r1,#2]
 	mov r3, r6
-	ldrh r2, [r4,#0x22]
-	strh r2, [r4,#0x28]
-	strh r3, [r4,#0x22]
+	ldrh r2, [r4,#oAIData_JoypadHeld]
+	strh r2, [r4,#oAIData_JoypadReleased]
+	strh r3, [r4,#oAIData_JoypadHeld]
 	mvn r0, r2
 	and r0, r3
-	strh r0, [r4,#0x24]
+	strh r0, [r4,#oAIData_JoypadDown]
 	mvn r0, r3
 	and r0, r2
-	strh r0, [r4,#0x26]
+	strh r0, [r4,#oAIData_JoypadUp]
 	bl battle_isTimeStop
 	bne loc_8012E4E
 	mov r0, #0
-	strh r0, [r4,#0x30]
-	strh r0, [r4,#0x2a]
-	strh r0, [r4,#0x2c]
-	strh r0, [r4,#0x2e]
+	strh r0, [r4,#oAIData_Unk_30]
+	strh r0, [r4,#oAIData_Unk_2a]
+	strh r0, [r4,#oAIData_Unk_2c]
+	strh r0, [r4,#oAIData_Unk_2e]
 	b locret_8012E62
 loc_8012E4E:
 	mov r3, r6
-	ldrh r2, [r4,#0x2a]
-	strh r2, [r4,#0x30]
-	strh r3, [r4,#0x2a]
+	ldrh r2, [r4,#oAIData_Unk_2a]
+	strh r2, [r4,#oAIData_Unk_30]
+	strh r3, [r4,#oAIData_Unk_2a]
 	mvn r0, r2
 	and r0, r3
-	strh r0, [r4,#0x2c]
+	strh r0, [r4,#oAIData_Unk_2c]
 	mvn r0, r3
 	and r0, r2
-	strh r0, [r4,#0x2e]
+	strh r0, [r4,#oAIData_Unk_2e]
 locret_8012E62:
 	pop {r4,r6,pc}
 loc_8012E64:
 	mov r1, #0
-	strh r1, [r4,#0x22]
-	strh r1, [r4,#0x28]
-	strh r1, [r4,#0x24]
-	strh r1, [r4,#0x26]
+	strh r1, [r4,#oAIData_JoypadHeld]
+	strh r1, [r4,#oAIData_JoypadReleased]
+	strh r1, [r4,#oAIData_JoypadDown]
+	strh r1, [r4,#oAIData_JoypadUp]
 	pop {r4,r6,pc}
 	.balign 4, 0
 off_8012E70: .word dword_2036820
@@ -14446,14 +14446,14 @@ sub_8015A16:
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	bne locret_8015A36
-	ldr r1, [r5,#0x58]
-	ldrb r2, [r1,#0xf]
+	ldr r1, [r5,#oBattleObject_AIDataPtr]
+	ldrb r2, [r1,#oAIData_Unk_0f]
 	cmp r2, #0xff
 	beq locret_8015A36
 	tst r2, r2
 	beq locret_8015A36
 	sub r2, #1
-	strb r2, [r1,#0xf]
+	strb r2, [r1,#oAIData_Unk_0f]
 locret_8015A36:
 	pop {r5,pc}
 	thumb_func_end sub_8015A16
@@ -14665,22 +14665,22 @@ sub_8015BA8:
 	mov r0, r4
 	bl sub_80103BC
 	mov r5, r0
-	ldr r4, [r5,#0x58]
+	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	mov r1, #0x2c 
 	ldrb r1, [r6,r1]
 	ldrb r2, [r6,#0xe]
 	mov r0, #5
-	ldrh r3, [r4,#0x36]
+	ldrh r3, [r4,#oAIData_Unk_36]
 	tst r3, r3
 	beq loc_8015BE6
 	cmp r2, #0
 	beq loc_8015BE6
 	mov r0, #3
-	ldrh r3, [r4,#0x34]
+	ldrh r3, [r4,#oAIData_Anger]
 	tst r3, r3
 	bne loc_8015BE6
 	mov r0, #1
-	ldrh r3, [r4,#0x32]
+	ldrh r3, [r4,#oAIData_Unk_32]
 	tst r3, r3
 	beq loc_8015BE6
 	mov r0, #2
@@ -24387,7 +24387,7 @@ loc_801C08C:
 	mov r5, r3
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldrb r0, [r0,#0xd]
+	ldrb r0, [r0,#oBattleState_Unk_0d]
 	bl object_getAllianceDirection
 	push {r0}
 	ldr r0, [r4,#4]
@@ -24591,7 +24591,7 @@ loc_801C22C:
 	mov r0, #0
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_CameraPtr]
-	ldr r1, [r1,#0x34]
+	ldr r1, [r1,#oCamera_Y]
 	asr r1, r1, #0x10
 	neg r1, r1
 	ldrb r2, [r4]
@@ -24753,7 +24753,7 @@ sub_801C368:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldrb r0, [r0,#0xd]
+	ldrb r0, [r0,#oBattleState_Unk_0d]
 	bl sub_802D1B4
 	ldr r1, dword_801C444 // =0x600c980 
 	push {r0}
@@ -24764,7 +24764,7 @@ sub_801C368:
 	bl sub_801C3EE
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldrb r0, [r0,#0xd]
+	ldrb r0, [r0,#oBattleState_Unk_0d]
 	bl sub_802D1BE
 	ldr r1, dword_801C448 // =0x600ca40 
 	push {r0}
@@ -25747,7 +25747,7 @@ sub_801CADC:
 	bne loc_801CAF0
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldrb r0, [r0,#0xd]
+	ldrb r0, [r0,#oBattleState_Unk_0d]
 	mov r1, #0x29 
 	bl GetBattleNaviStatsByte
 loc_801CAF0:
@@ -26916,7 +26916,7 @@ sub_801D47A:
 	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldrb r0, [r0,#0xd]
+	ldrb r0, [r0,#oBattleState_Unk_0d]
 	bl sub_802E070
 	ldrh r1, [r0,#0x3e]
 	mov r4, #0x50 
@@ -27042,7 +27042,7 @@ sub_801D590:
 	push {r4,r6,r7,lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldrb r0, [r0,#0xd]
+	ldrb r0, [r0,#oBattleState_Unk_0d]
 	bl sub_802E070
 	ldrh r1, [r0,#0x36]
 	cmp r1, #0
@@ -27468,7 +27468,7 @@ sub_801DA24:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	ldr r0, dword_801DA44 // =0x1f09 
-	strh r0, [r1,#0xa]
+	strh r0, [r1,#oRenderInfo_Unk_0a]
 	// dataList
 	ldr r0, off_801DA40 // =off_801ECB4 
 	bl QueueGFXTransfersInList // (u32 *dataRefs) -> void

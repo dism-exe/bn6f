@@ -1037,7 +1037,7 @@ sub_800C01C:
 	sub sp, sp, #0x28
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_BattleStatePtr]
-	ldrb r4, [r6,#0xd]
+	ldrb r4, [r6,#oBattleState_Unk_0d]
 	cmp r4, #0
 	beq loc_800C038
 	cmp r2, #0xb
@@ -1105,7 +1105,7 @@ sub_800C0BA:
 	sub sp, sp, #0x28
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_BattleStatePtr]
-	ldrb r4, [r6,#0xd]
+	ldrb r4, [r6,#oBattleState_Unk_0d]
 	lsl r4, r4, #3
 	ldr r6, off_800C0FC // =byte_800C0AA 
 	add r6, r6, r4
@@ -1143,7 +1143,7 @@ sub_800C100:
 	sub sp, sp, #0x28
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_BattleStatePtr]
-	ldrb r4, [r6,#0xd]
+	ldrb r4, [r6,#oBattleState_Unk_0d]
 	eor r2, r4
 	lsl r4, r4, #3
 	ldr r6, off_800C174 // =byte_800C182 
@@ -1178,7 +1178,7 @@ sub_800C138:
 	sub sp, sp, #0x28
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_BattleStatePtr]
-	ldrb r4, [r6,#0xd]
+	ldrb r4, [r6,#oBattleState_Unk_0d]
 	eor r2, r4
 	lsl r4, r4, #3
 	ldr r6, off_800C174 // =byte_800C182 
@@ -1796,8 +1796,8 @@ loc_800C700:
 	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800C734
-	ldrb r1, [r0,#3]
-	ldrb r2, [r0,#4]
+	ldrb r1, [r0,#oPanelData_Alliance]
+	ldrb r2, [r0,#oPanelData_Unk_04]
 	cmp r1, r2
 	beq loc_800C734
 	add r6, #1
@@ -1806,7 +1806,7 @@ loc_800C700:
 	ldr r2, [sp]
 	orr r2, r1
 	str r2, [sp]
-	ldr r1, [r0,#0x14]
+	ldr r1, [r0,#oPanelData_Flags]
 	ldr r2, dword_800C8DC // =0xf880080 
 	tst r1, r2
 	bne loc_800C734
@@ -1924,19 +1924,19 @@ loc_800C7EC:
 	mov r0, r6
 	mov r1, r7
 	bl object_getPanelDataOffset
-	ldrb r3, [r0,#3]
-	strb r3, [r0,#7]
-	ldrh r1, [r0,#0x10]
+	ldrb r3, [r0,#oPanelData_Alliance]
+	strb r3, [r0,#oPanelData_Unk_07]
+	ldrh r1, [r0,#oPanelData_Unk_10]
 	tst r1, r1
 	beq loc_800C80E
 	sub r1, #1
-	strh r1, [r0,#0x10]
+	strh r1, [r0,#oPanelData_Unk_10]
 	mov r3, #4
 	and r3, r1
 	lsr r3, r3, #2
-	ldrb r4, [r0,#7]
+	ldrb r4, [r0,#oPanelData_Unk_07]
 	eor r4, r3
-	strb r4, [r0,#7]
+	strb r4, [r0,#oPanelData_Unk_07]
 loc_800C80E:
 	add r6, #1
 	cmp r6, #6

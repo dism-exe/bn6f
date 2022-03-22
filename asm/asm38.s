@@ -1035,13 +1035,13 @@ loc_3006336:
 	mov r9, r1
 loc_300633A:
 	mov r3, r10
-	ldr r3, [r3,#0xc]
+	ldr r3, [r3,#oToolkit_CameraPtr]
 	ldr r1, [r0]
-	ldr r4, [r3,#0x3c]
+	ldr r4, [r3,#oCamera_nextX_3c]
 	sub r1, r1, r4
 	mov r8, r1
 	ldr r6, [r0,#4]
-	ldr r4, [r3,#0x40]
+	ldr r4, [r3,#oCamera_nextY_40]
 	sub r6, r6, r4
 	add r1, r1, r6
 	asr r1, r1, #0x10
@@ -1051,7 +1051,7 @@ loc_300633A:
 	sub r6, r6, r2
 	asr r6, r6, #1
 	mov r7, r6
-	ldr r2, [r3,#0x44]
+	ldr r2, [r3,#oCamera_nextZ_44]
 	mov r4, #0x80
 	lsl r4, r4, #0x10
 	add r2, r2, r4
@@ -1060,14 +1060,14 @@ loc_300633A:
 	strh r4, [r5,#0xa]
 	ldr r4, [r0,#8]
 	sub r6, r6, r4
-	ldr r2, [r3,#0x44]
+	ldr r2, [r3,#oCamera_nextZ_44]
 	add r6, r6, r2
 	asr r6, r6, #0x10
 	add r6, #0x52 
 	strb r6, [r5,#0xe]
 	mov r4, r9
 	sub r7, r7, r4
-	ldr r2, [r3,#0x44]
+	ldr r2, [r3,#oCamera_nextZ_44]
 	add r7, r7, r2
 	asr r7, r7, #0x10
 	add r7, #0x52 
@@ -1081,12 +1081,12 @@ off_3006388: .word checkZCoordModifiers_8031612+1
 sub_300638C:
 	mov r6, r4
 	mov r3, r10
-	ldr r3, [r3,#0xc]
+	ldr r3, [r3,#oToolkit_CameraPtr]
 loc_3006392:
 	mov r2, #2
 	ldrsh r1, [r0,r2]
-	ldr r4, [r3,#0x3c]
-	ldr r7, [r3,#0x48]
+	ldr r4, [r3,#oCamera_nextX_3c]
+	ldr r7, [r3,#oCamera_Unk_48]
 	add r4, r4, r7
 	asr r4, r4, #0x10
 	sub r1, r1, r4
@@ -1119,7 +1119,7 @@ loc_30063CC:
 	strh r1, [r5,#0xc]
 	mov r2, #6
 	ldrsh r6, [r0,r2]
-	ldr r4, [r3,#0x40]
+	ldr r4, [r3,#oCamera_nextY_40]
 	asr r4, r4, #0x10
 	sub r6, r6, r4
 	add r6, #0x50 
@@ -1127,7 +1127,7 @@ loc_30063CC:
 	strh r7, [r5,#0xa]
 	mov r2, #0xa
 	ldrsh r4, [r0,r2]
-	ldr r2, [r3,#0x44]
+	ldr r2, [r3,#oCamera_nextZ_44]
 	asr r2, r2, #0x10
 	sub r4, r4, r2
 	sub r6, r6, r4
