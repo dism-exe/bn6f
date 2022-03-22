@@ -25,7 +25,7 @@ OFILES = $(addprefix $(OBJ),$(SFILES:.s=.o))
 BUILD_NAME = bn6f
 ROM = $(BUILD_NAME).gba
 ELF := $(ROM:.gba=.elf)
-SYM = $(ROM:.gba=.sym)
+SYM = $(ROM:.gba=.dump)
 
 # build flags
 COMPLIANCE_FLAGS = -g -I$(INC)
