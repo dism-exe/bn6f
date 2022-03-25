@@ -1955,7 +1955,7 @@ T3BattleObjectJumptable: .word sub_80C4E58+1
 	.word sub_80C8E08+1
 	.word sub_80C8FFC+1
 	.word sub_80C91A0+1
-	.word sub_80C93CC+1
+	.word battle_BDT_main_80c93cc+1
 	.word sub_80C96A0+1
 	.word nullsub_101+1
 	.word nullsub_94+1

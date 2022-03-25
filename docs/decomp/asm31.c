@@ -29775,7 +29775,7 @@ __int64 __fastcall sub_80C9360(int a1)
 
 
 // 0x80c93cc
-void sub_80C93CC()
+void battle_BDT_main_80c93cc()
 {
     int v0; // r5
 
@@ -29785,7 +29785,7 @@ void sub_80C93CC()
 
 
 // 0x80c93f0
-int sub_80C93F0()
+int battle_BDT_destroy_80c93f0()
 {
     int v0; // r5
     int result; // r0
@@ -29804,7 +29804,7 @@ int sub_80C93F0()
 
 
 // 0x80c940c
-int __noreturn sub_80C940C()
+int __noreturn battle_BDT_init_80c940c()
 {
     int v0; // r5
     u8 v1; // r0
@@ -29841,14 +29841,14 @@ int __noreturn sub_80C940C()
         if ( *(v0 + 7) )
             v7 = sub_801A4D0(v7, 1);
         object_presentCollisionData(v7, v6);
-        sub_80C956C();
+        battle_BDT_80c956c();
     }
     return object_freeMemory();
 }
 
 
 // 0x80c94bc
-int __noreturn sub_80C94BC()
+int __noreturn battle_BDT_update_80c94bc()
 {
     int v0; // r5
     int v1; // r0
@@ -29875,7 +29875,7 @@ int __noreturn sub_80C94BC()
 
 
 // 0x80c950c
-int sub_80C950C()
+int battle_BDT_update2_80c950c()
 {
     int v0; // r5
     int result; // r0
@@ -29892,7 +29892,7 @@ int sub_80C950C()
         v2 = *(v0 + 5) - 1;
         *(v0 + 5) = v2;
         if ( v2 )
-            sub_80C956C();
+            battle_BDT_80c956c();
         ++*(v0 + 16);
         object_clearCollisionRegion();
         result = 8;
@@ -29903,7 +29903,7 @@ int sub_80C950C()
 
 
 // 0x80c954c
-int __fastcall sub_80C954C(char a1, int a2, int a3, int a4)
+int __fastcall spawnThunderObjectMaybe_80c954c(char a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r6
@@ -29933,25 +29933,25 @@ int __fastcall sub_80C954C(char a1, int a2, int a3, int a4)
 
 
 // 0x80c956c
-void __noreturn sub_80C956C()
+void __noreturn battle_BDT_80c956c()
 {
-    sub_80C95EC();
+    battle_BDT_80c95ec();
 }
 
 
 // 0x80c95ec
-void __noreturn sub_80C95EC()
+void __noreturn battle_BDT_80c95ec()
 {
     int v0; // r5
 
     if ( !(*(v0 + 22) ^ *(v0 + 23)) )
-        sub_80C9620();
-    sub_80C9640();
+        battle_BDT_80c9620();
+    battle_BDT_80c9640();
 }
 
 
 // 0x80c9620
-int __noreturn sub_80C9620()
+int __noreturn battle_BDT_80c9620()
 {
     int v0; // r4
     int v1; // r5
@@ -29978,7 +29978,7 @@ LABEL_2:
 
 
 // 0x80c9640
-int __noreturn sub_80C9640()
+int __noreturn battle_BDT_80c9640()
 {
     int v0; // r4
     int v1; // r5
@@ -86087,7 +86087,7 @@ int sub_80EC7C0()
         v2 = object_getFrontDirection(v0);
         v3 = *(v1 + 12);
         v4 = *(v1 + 8) + *(v1 + 6);
-        sub_80C954C(v2 + v0->panelX, v0->panelY, *(v1 + 2), 655360);
+        spawnThunderObjectMaybe_80c954c(v2 + v0->panelX, v0->panelY, *(v1 + 2), 655360);
     }
     result = *(v1 + 16) + 1;
     *(v1 + 16) = result;
@@ -128042,7 +128042,7 @@ int sub_81070EC()
         object_setCounterTime(24);
         v2 = object_getFrontDirection(v0);
         v3 = *(v1 + 8);
-        sub_80C954C(v2 + v0->panelX, v0->panelY, *(v1 + 2), 655360);
+        spawnThunderObjectMaybe_80c954c(v2 + v0->panelX, v0->panelY, *(v1 + 2), 655360);
         result = 30;
         *(v1 + 16) = 30;
     }

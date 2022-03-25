@@ -35618,8 +35618,8 @@ off_80C93C0: .word byte_80C93C4
 byte_80C93C4: .byte 0x0, 0x3, 0x2, 0x1, 0x0, 0x1, 0x2, 0x3
 	thumb_func_end sub_80C9360
 
-	thumb_func_start sub_80C93CC
-sub_80C93CC:
+	thumb_func_start battle_BDT_main_80c93cc
+battle_BDT_main_80c93cc:
 	push {lr}
 	ldr r1, off_80C93E0 // =off_80C93E4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -35630,13 +35630,13 @@ sub_80C93CC:
 	pop {pc}
 	.balign 4, 0
 off_80C93E0: .word off_80C93E4
-off_80C93E4: .word sub_80C940C+1
-	.word sub_80C94BC+1
-	.word sub_80C93F0+1
-	thumb_func_end sub_80C93CC
+off_80C93E4: .word battle_BDT_init_80c940c+1
+	.word battle_BDT_update_80c94bc+1
+	.word battle_BDT_destroy_80c93f0+1
+	thumb_func_end battle_BDT_main_80c93cc
 
 	thumb_local_start
-sub_80C93F0:
+battle_BDT_destroy_80c93f0:
 	push {lr}
 	bl sprite_getFrameParameters
 	mov r1, #0x80
@@ -35651,10 +35651,11 @@ loc_80C9406:
 	bl object_genericDestroy
 locret_80C940A:
 	pop {pc}
-	thumb_func_end sub_80C93F0
+	thumb_func_end battle_BDT_destroy_80c93f0
 
 	thumb_local_start
-sub_80C940C:
+// actually might be for all thunder related objects
+battle_BDT_init_80c940c:
 	push {lr}
 	mov r1, #0x10
 	mov r2, #0x16
@@ -35711,7 +35712,7 @@ loc_80C9480:
 	bl sub_801A4D0
 loc_80C948C:
 	bl object_presentCollisionData
-	bl sub_80C956C
+	bl battle_BDT_80c956c
 	ldrb r1, [r5,#oBattleObject_Param2]
 	cmp r1, #0xc
 	bne loc_80C94A2
@@ -35730,12 +35731,12 @@ loc_80C94A8:
 loc_80C94B2:
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
-	bl sub_80C94BC
+	bl battle_BDT_update_80c94bc
 	pop {pc}
-	thumb_func_end sub_80C940C
+	thumb_func_end battle_BDT_init_80c940c
 
 	thumb_local_start
-sub_80C94BC:
+battle_BDT_update_80c94bc:
 	push {r4,r7,lr}
 	bl object_removeCollisionData
 	bl object_spawnCollisionEffect
@@ -35765,12 +35766,12 @@ loc_80C94F4:
 	pop {r4,r7,pc}
 	.balign 4, 0
 off_80C9500: .word off_80C9504
-off_80C9504: .word sub_80C950C+1
+off_80C9504: .word battle_BDT_update2_80c950c+1
 dword_80C9508: .word 0xFF800000
-	thumb_func_end sub_80C94BC
+	thumb_func_end battle_BDT_update_80c94bc
 
 	thumb_local_start
-sub_80C950C:
+battle_BDT_update2_80c950c:
 	push {r4,lr}
 	ldr r1, [r5,#oBattleObject_XVelocity]
 	ldr r0, [r5,#oBattleObject_X]
@@ -35798,13 +35799,13 @@ sub_80C950C:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80C954A
 loc_80C9546:
-	bl sub_80C956C
+	bl battle_BDT_80c956c
 locret_80C954A:
 	pop {r4,pc}
-	thumb_func_end sub_80C950C
+	thumb_func_end battle_BDT_update2_80c950c
 
 	thumb_local_start
-sub_80C954C:
+spawnThunderObjectMaybe_80c954c:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x2a 
@@ -35821,12 +35822,12 @@ sub_80C954C:
 	str r7, [r0,#oBattleObject_RelatedObject1Ptr]
 locret_80C956A:
 	pop {pc}
-	thumb_func_end sub_80C954C
+	thumb_func_end spawnThunderObjectMaybe_80c954c
 
 	thumb_local_start
-sub_80C956C:
+battle_BDT_80c956c:
 	push {lr}
-	bl sub_80C95EC
+	bl battle_BDT_80c95ec
 	cmp r0, #0
 	bne loc_80C957C
 	bl object_getFrontDirection // () -> int
@@ -35840,11 +35841,17 @@ loc_80C957C:
 	beq loc_80C9598
 loc_80C9588:
 	ldrb r2, [r5,#oBattleObject_PanelX]
+	// r0 = opponent panel X
+	// r2 = thunder panel X
 	cmp r0, r2
+	// if opponent panel X < thunder panel X, then set sign of thunder's velocity to negative
+	// else set it to positive
 	blt loc_80C9592
+	// set sign of thunder's velocity to positive
 	mov r0, #1
 	b loc_80C95BA
 loc_80C9592:
+	// set sign of thunder's velocity to negative
 	mov r0, #0
 	sub r0, #1
 	b loc_80C95BA
@@ -35894,10 +35901,10 @@ dword_80C95DC: .word 0xAAAB
 dword_80C95E0: .word 0x10000
 dword_80C95E4: .word 0x6666
 dword_80C95E8: .word 0x999A
-	thumb_func_end sub_80C956C
+	thumb_func_end battle_BDT_80c956c
 
 	thumb_local_start
-sub_80C95EC:
+battle_BDT_80c95ec:
 	push {r4,r6,r7,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	ldr r4, off_80C965C // =0x4000000
@@ -35909,46 +35916,51 @@ loc_80C95F8:
 	eor r0, r1
 	cmp r0, #0
 	bne loc_80C960E
-	bl sub_80C9620
+	bl battle_BDT_80c9620
 	cmp r6, #0
 	bne loc_80C961A
-	bl sub_80C9640
+	bl battle_BDT_80c9640
 	b loc_80C961A
 loc_80C960E:
-	bl sub_80C9640
+	bl battle_BDT_80c9640
 	cmp r6, #0
 	bne loc_80C961A
-	bl sub_80C9620
+	bl battle_BDT_80c9620
 loc_80C961A:
 	mov r0, r6
 	mov r1, r7
 	pop {r4,r6,r7,pc}
-	thumb_func_end sub_80C95EC
+	thumb_func_end battle_BDT_80c95ec
 
 	thumb_local_start
-sub_80C9620:
+// r6 = panel X
+// r7 = panel Y
+// returns r6
+battle_BDT_80c9620:
 	push {r4,lr}
 	ldrb r6, [r5,#oBattleObject_PanelX]
 loc_80C9624:
 	mov r7, #3
 loc_80C9626:
+	// check if opponent (I think) is on current XY pair
 	mov r0, r6
 	mov r1, r7
 	bl object_getPanelParameters
+	// if so, exit with r6 found
 	tst r0, r4
-	bne locret_80C963E
+	bne .foundOpponent_80C963E
 	sub r7, #1
 	bne loc_80C9626
 	add r6, #1
 	cmp r6, #7
 	bne loc_80C9624
 	mov r6, #0
-locret_80C963E:
+.foundOpponent_80C963E:
 	pop {r4,pc}
-	thumb_func_end sub_80C9620
+	thumb_func_end battle_BDT_80c9620
 
 	thumb_local_start
-sub_80C9640:
+battle_BDT_80c9640:
 	push {lr}
 	ldrb r6, [r5,#oBattleObject_PanelX]
 loc_80C9644:
@@ -35979,7 +35991,7 @@ byte_80C9664:
 	.byte 0xc, 0x1b, 0x6, 0x7, 0xe, 0x0
 	.byte 0xc, 0x1b, 0x8, 0x9, 0xe, 0x0
 	.byte 0xc, 0x0, 0xa, 0xb, 0xe, 0x0
-	thumb_func_end sub_80C9640
+	thumb_func_end battle_BDT_80c9640
 
 	thumb_func_start sub_80C96A0
 sub_80C96A0: // shield
@@ -107243,7 +107255,7 @@ loc_80EC7E6:
 	mov r7, #0
 	mov r3, #0xa
 	lsl r3, r3, #0x10
-	bl sub_80C954C
+	bl spawnThunderObjectMaybe_80c954c
 	pop {r7}
 loc_80EC80E:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
@@ -159321,7 +159333,7 @@ sub_81070EC:
 	orr r4, r6
 	ldr r6, [r7,#oAIAttackVars_Unk_08]
 	mov r7, #0
-	bl sub_80C954C
+	bl spawnThunderObjectMaybe_80c954c
 	pop {r4,r6,r7}
 	mov r0, #0x1e
 	strh r0, [r7,#oAIAttackVars_Unk_10]
