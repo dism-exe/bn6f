@@ -103,14 +103,14 @@ sprite_initialize:
 	str r0, [r5,#oObjectSprite_Unk_2c]
 	strh r0, [r5,#oObjectSprite_Unk_10]
 	strh r0, [r5,#oObjectSprite_Unk_12]
-	strb r0, [r5,#oObjectSprite_Unk_14]
+	strb r0, [r5,#oObjectSprite_PaletteAndPriority]
 	strb r0, [r5,#oObjectSprite_Unk_05]
 	str r0, [r5,#oObjectSprite_Unk_30]
 	str r0, [r5,#oObjectSprite_Unk_34]
 	mvn r0, r0
 	str r0, [r5,#oObjectSprite_Unk_28]
 	mov r0, #8
-	strb r0, [r5,#oObjectSprite_Unk_15]
+	strb r0, [r5,#oObjectSprite_PaletteAndPriorityHi]
 	mov r0, #8
 	strh r0, [r5,#oObjectSprite_Unk_16]
 	mov pc, lr
@@ -1089,20 +1089,33 @@ sprite_setAnimation:
 	mov pc, lr
 	thumb_func_end sprite_setAnimation
 
+	// Set a sprite's palette to white (palette 15).
+	//
+	// Inputs:
+	// r5: pointer to oObjectSprite
 	thumb_func_start sprite_forceWhitePalette
 sprite_forceWhitePalette:
 	mov r1, #0xf0
 	b sprite_setFinalPalette
+
+	// Set a sprite's palette.
+	//
+	// Inputs:
+	// r1: OBJ palette number << 4 (bottom 4 bits should be 0)
+	// r5: pointer to oObjectSprite
+	//
+	// Clobbers: r0, r2, r3
 sprite_setFinalPalette:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r0, [r3,#oObjectSprite_Unk_15]
+	// r0 = r1 | ([r3,#oObjectSprite_PaletteAndPriorityHi] & ~0xf0)
+	ldrb r0, [r3,#oObjectSprite_PaletteAndPriorityHi]
 	mov r2, #0xf0
 	bic r0, r2
 	orr r0, r1
-	strb r0, [r3,#oObjectSprite_Unk_15]
+	strb r0, [r3,#oObjectSprite_PaletteAndPriorityHi]
 	mov pc, lr
 	thumb_func_end sprite_forceWhitePalette
 
@@ -1112,22 +1125,29 @@ sprite_getFinalPalette:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r0
-	ldrb r0, [r3,#oObjectSprite_Unk_15]
+	ldrb r0, [r3,#oObjectSprite_PaletteAndPriorityHi]
 	mov r1, #0xf0
 	and r1, r0
 	mov pc, lr
 	thumb_func_end sprite_getFinalPalette
 
+	// Set a sprite's palette to palette 0.
+	//
+	// Inputs:
+	// r5: pointer to oObjectSprite
+	//
+	// Clobbers: r0, r1, r3
 	thumb_func_start sprite_clearFinalPalette
 sprite_clearFinalPalette:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r0, [r3,#oObjectSprite_Unk_15]
+	// r0 = [r3,#oObjectSprite_PaletteAndPriorityHi] & ~0xf0
+	ldrb r0, [r3,#oObjectSprite_PaletteAndPriorityHi]
 	mov r1, #0xf0
 	bic r0, r1
-	strb r0, [r3,#oObjectSprite_Unk_15]
+	strb r0, [r3,#oObjectSprite_PaletteAndPriorityHi]
 	mov pc, lr
 	thumb_func_end sprite_clearFinalPalette
 
@@ -1161,20 +1181,28 @@ sub_8002E04:
 	mov pc, lr
 	thumb_func_end sub_8002E04
 
-	thumb_func_start sub_8002E14
-sub_8002E14:
+	// Set a sprite's BG priority.
+	//
+	// Inputs:
+	// r0: BG priority (0-3)
+	// r5: pointer to oObjectSprite
+	//
+	// Clobbers: r0-r3
+	thumb_func_start sprite_setBGPriority
+sprite_setBGPriority:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	mov r2, #0xc
-	ldrb r1, [r3,#oObjectSprite_Unk_15]
+	// r1 = (r0 << (10-8)) | ([r3,#oObjectSprite_PaletteAndPriorityHi] & ~((3 << 10) >> 8))
+	mov r2, #(3 << 10) >> 8
+	ldrb r1, [r3,#oObjectSprite_PaletteAndPriorityHi]
 	bic r1, r2
-	lsl r0, r0, #2
+	lsl r0, r0, #10 - 8
 	orr r1, r0
-	strb r1, [r3,#oObjectSprite_Unk_15]
+	strb r1, [r3,#oObjectSprite_PaletteAndPriorityHi]
 	mov pc, lr
-	thumb_func_end sub_8002E14
+	thumb_func_end sprite_setBGPriority
 
 	thumb_local_start
 sub_8002E2A:

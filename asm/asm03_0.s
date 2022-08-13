@@ -18828,16 +18828,21 @@ dword_802FE20: .word 0x7000000
 off_802FE24: .word 0x400
 	thumb_func_end copyObjAttributesToIWRAM_802FE0C
 
-// (u32 a1, u16 a2, int notUsed, int a4) -> void
+	// Writes to iObjectAttr3001150. Just calls sub_30068E8.
+	//
+	// Inputs:
+	// r0: OAM 0 and OAM 1
+	// r1: OAM 2
+	// r2
+	// r3
 	thumb_func_start sub_802FE28
 sub_802FE28:
 	push {r4,lr}
-	ldr r4, off_802FE34 // =sub_30068E8+1 
+	ldr r4, =sub_30068E8+1
 	mov lr, pc
 	bx r4
 	pop {r4,pc}
-	.balign 4, 0x00
-off_802FE34: .word sub_30068E8+1
+	.pool
 	thumb_func_end sub_802FE28
 
 	thumb_local_start
@@ -20633,13 +20638,13 @@ decompressCoordEventData_8030aa4: // JP 0x8031A60
 	mov r3, r9
 	mov r4, r12
 	push {r2-r4}
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_8030AB6
 	ldr r3, off_8030B00 // =pt_8033530 
 	b loc_8030ABA
 loc_8030AB6:
 	ldr r3, off_8030B04 // =pt_803354C 
-	sub r0, #0x80
+	sub r0, #INTERNET_MAP_GROUP_START
 loc_8030ABA:
 	lsl r0, r0, #2 // map group
 	add r3, r3, r0
@@ -20655,18 +20660,23 @@ loc_8030ABA:
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	pop {r6}
 	ldr r7, off_8030B08 // =unk_2027A00 
-	ldr r0, [r6]
+
+	ldr r0, [r6,#oMapTriggersHeader_UnkOffset_00]
 	add r0, r0, r7
 	bl sub_8030B0C
-	ldr r0, [r6,#4]
+
+	ldr r0, [r6,#oMapTriggersHeader_UnkOffset_04]
 	add r0, r0, r7
 	bl sub_8031600
-	ldr r0, [r6,#8]
+
+	ldr r0, [r6,#oMapTriggersHeader_LayerPriorityTriggersOffset]
 	add r0, r0, r7
-	bl sub_803189C
-	ldr r0, [r6,#0xc]
+	bl initializeLayerPriorityTriggers
+
+	ldr r0, [r6,#oMapTriggersHeader_UnkOffset_0C]
 	add r0, r0, r7
 	bl sub_8031A68
+
 	pop {r2-r4}
 	mov r8, r2
 	mov r9, r3
@@ -20691,28 +20701,38 @@ sub_8030B0C:
 	mov pc, lr
 	thumb_func_end sub_8030B0C
 
+	// Find the first trigger entry for the given tile position.
+	//
+	// Inputs:
+	// r1: tile position (returned by getObjectTilePosition)
+	// r5: Unk_Ex2011a20 table to search
+	//
+	// Outputs:
+	// r2: pointer to found table entry, or NULL if no entry exists in the
+	//     table
+	//
+	// Clobbers: r3, r4, r6, r7, r8
 	thumb_local_start
-sub_8030B1E:
+findTriggerForTilePosition:
 	push {lr}
-	ldrh r2, [r5,#oUnk_Ex2011a20_Unk_04]
+	ldrh r2, [r5,#oUnk_Ex2011a20_EntryCount]
 	cmp r2, #0
-	beq .loc_8030B66
+	beq .notFound
 	mov r2, #0
-	ldrh r3, [r5,#oUnk_Ex2011a20_Unk_04]
-	ldr r6, [r5,#oUnk_Ex2011a20_UnkPtr_00]
+	ldrh r3, [r5,#oUnk_Ex2011a20_EntryCount]
+	ldr r6, [r5,#oUnk_Ex2011a20_EntriesPtr]
 	mov r8, r6
 
 // this is a binary search
 // will document later
-// r3 = unk04
+// r3 = EntryCount
 .loop
-	.align 1, 0
 	add r4, r2, r3
 	lsr r4, r4, #1
 	lsl r7, r4, #2
 	mov r6, r8
 	add r6, r6, r7
-	// read hword from [UnkPtr_00 + ((r2 + r3) & ~1) * 2]
+	// read hword from [EntriesPtr + ((r2 + r3) & ~1) * 2]
 	ldrh r7, [r6]
 	cmp r1, r7
 	beq .loc_8030B4C
@@ -20721,21 +20741,17 @@ sub_8030B1E:
 	mov r3, r4
 	b .loc_8030B48
 .loc_8030B44:
-	.align 1, 0
 	mov r2, r4
 	add r2, #1
 .loc_8030B48:
-	.align 1, 0
 	cmp r2, r3
 	blt .loop
 
 .loc_8030B4C:
-	.align 1, 0
 	cmp r1, r7
-	bne .loc_8030B66
+	bne .notFound
 	ldr r2, [r5]
 .loc_8030B52:
-	.align 1, 0
 	sub r6, #4
 	cmp r6, r2
 	blt .loc_8030B60
@@ -20744,15 +20760,13 @@ sub_8030B1E:
 	bne .loc_8030B60
 	b .loc_8030B52
 .loc_8030B60:
-	.align 1, 0
 	add r6, #4
 	mov r2, r6
 	pop {pc}
-.loc_8030B66:
-	.align 1, 0
+.notFound
 	mov r2, #NULL
 	pop {pc}
-	thumb_func_end sub_8030B1E
+	thumb_func_end findTriggerForTilePosition
 
 	thumb_func_start checkCollision_8030b6a
 checkCollision_8030b6a:
@@ -20785,7 +20799,7 @@ loc_8030B98: .align 1, 0
 	cmp r2, r1
 	beq loc_8030C0E
 	ldrh r1, [r2]
-	bl sub_8030B1E
+	bl findTriggerForTilePosition
 	cmp r2, #0
 	bne loc_8030BB0
 loc_8030BA8: .align 1, 0
@@ -22214,8 +22228,8 @@ checkZCoordModifiers_8031612:
 	ldr r5, off_8031780 // =dword_2011A20
 	ldr r2, off_8031688 // =dword_200F3D0 
 	str r0, [r2]
-	bl sub_80316F8
-	bl sub_8030B1E
+	bl getObjectTilePosition
+	bl findTriggerForTilePosition
 	cmp r2, #0
 	beq loc_8031678
 	mov r3, #0
@@ -22302,8 +22316,22 @@ dword_8031690:
 	.word NULL // 0x19
 	thumb_func_end checkZCoordModifiers_8031612
 
+	// Calculate the object's tile position for use by
+	// FindTriggerForTilePosition.
+	//
+	// Inputs:
+	// r0: pointer to OWObjectCoords
+	// r5: pointer to Unk_Ex2011a20
+	//
+	// Outputs:
+	// r1: tile position
+	// [r5,#oUnk_Ex2011a20_TilePosition]: tile position
+	// [r5,#oUnk_Ex2011a20_Unk_0c]
+	// [r5,#oUnk_Ex2011a20_Unk_10]
+	//
+	// Clobbers: r1, r2, r3
 	thumb_local_start
-sub_80316F8:
+getObjectTilePosition:
 	mov r2, #oOWObjectCoords_X
 	ldrsh r1, [r0,r2]
 	mov r2, #oOWObjectCoords_Y
@@ -22312,13 +22340,13 @@ sub_80316F8:
 	asr r2, r2, #3
 
 	// at a glance, unk07 and unk06 seem to be always 0xfe
-	ldrb r3, [r5,#oUnk_Ex2011a20_Unk_07]
+	ldrb r3, [r5,#oUnk_Ex2011a20_MaxY]
 	lsr r3, r3, #1
 
 	// y/8 + unk07/2
 	add r2, r2, r3
 
-	ldrb r3, [r5,#oUnk_Ex2011a20_Unk_06]	
+	ldrb r3, [r5,#oUnk_Ex2011a20_MaxX]
 	lsr r3, r3, #1
 
 	// x/8 + unk06/2
@@ -22329,7 +22357,7 @@ sub_80316F8:
 
 	// r2 = unk06 * (y/8 + unk07/2) + x/8 + unk06/2
 	add r2, r2, r1
-	strh r2, [r5,#oUnk_Ex2011a20_Unk_08]
+	strh r2, [r5,#oUnk_Ex2011a20_TilePosition]
 
 	mov r2, #oOWObjectCoords_X
 	ldrsh r1, [r0,r2]
@@ -22344,9 +22372,9 @@ sub_80316F8:
 	str r2, [r5,#oUnk_Ex2011a20_Unk_10]
 
 	// return value
-	ldrh r1, [r5,#oUnk_Ex2011a20_Unk_08]
+	ldrh r1, [r5,#oUnk_Ex2011a20_TilePosition]
 	mov pc, lr
-	thumb_func_end sub_80316F8
+	thumb_func_end getObjectTilePosition
 
 	thumb_local_start
 sub_803172E:
@@ -22566,20 +22594,26 @@ sub_8031874:
 	pop {pc}
 	thumb_func_end sub_8031874
 
+	// Initialize eLayerPriorityTriggers.
+	//
+	// Inputs:
+	// r0: pointer to header of decompressed layer priority trigger table
+	//
+	// Clobbers: r0, r1, r5
 	thumb_local_start
-sub_803189C:
-	ldr r5, off_8031994 // =dword_2013940 
-	ldr r1, [r0]
-	strh r1, [r5,#0x4] // (word_2013944 - 0x2013940)
-	add r0, #4
-	str r0, [r5]
+initializeLayerPriorityTriggers:
+	ldr r5, off_8031994 // =eLayerPriorityTriggers
+	ldr r1, [r0] // header (entry count)
+	strh r1, [r5,#oUnk_Ex2011a20_EntryCount]
+	add r0, #4 // skip header (entry count)
+	str r0, [r5,#oUnk_Ex2011a20_EntriesPtr]
 	mov r0, #0xfe
-	strb r0, [r5,#0x6] // (byte_2013946 - 0x2013940)
-	strb r0, [r5,#0x7] // (byte_2013947 - 0x2013940)
+	strb r0, [r5,#oUnk_Ex2011a20_MaxX]
+	strb r0, [r5,#oUnk_Ex2011a20_MaxY]
 	mov pc, lr
-	.byte 0, 0
-	thumb_func_end sub_803189C
+	thumb_func_end initializeLayerPriorityTriggers
 
+	.balign 4, 0
 	thumb_func_start checkLayerPriority_80318b0
 checkLayerPriority_80318b0:
 	push {r4-r7,lr}
@@ -22587,18 +22621,17 @@ checkLayerPriority_80318b0:
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
-	ldr r5, off_8031994 // =dword_2013940 
+	ldr r5, off_8031994 // =eLayerPriorityTriggers
 	ldr r2, off_8031910 // =dword_200F3D0 
 	str r0, [r2]
-	bl sub_80316F8
-	bl sub_8030B1E
+	bl getObjectTilePosition
+	bl findTriggerForTilePosition
 	cmp r2, #0
-	beq loc_8031904
-	.balign 4, 0
-loc_80318CC: .align 1, 0
-	ldrh r4, [r2]
+	beq .returnLayer2
+.loc_80318CC:
+	ldrh r4, [r2,#0]
 	cmp r1, r4
-	bne loc_8031904
+	bne .returnLayer2
 	ldrh r7, [r2,#2]
 	ldr r4, [r5]
 	add r7, r7, r4
@@ -22607,16 +22640,16 @@ loc_80318CC: .align 1, 0
 	mov r6, #0xa
 	ldrsh r6, [r0,r6]
 	cmp r6, r4
-	blt loc_80318EE
+	blt .next
 	ldrb r3, [r7,#2]
 	add r4, r4, r3
 	cmp r6, r4
-	bgt loc_80318EE
-	b loc_80318F2
-loc_80318EE: .align 1, 0
+	bgt .next
+	b .loc_80318F2
+.next
 	add r2, #4
-	b loc_80318CC
-loc_80318F2: .align 1, 0
+	b .loc_80318CC
+.loc_80318F2:
 	str r7, [r5,#0x14] // (dword_2013954 - 0x2013940)
 	ldrb r6, [r7,#3]
 	lsl r6, r6, #2
@@ -22626,9 +22659,9 @@ loc_80318F2: .align 1, 0
 	mov lr, pc
 	bx r4
 	b loc_8031906
-loc_8031904: .align 1, 0
+.returnLayer2
 	mov r0, #2
-loc_8031906: .align 1, 0
+loc_8031906:
 	pop {r1-r3}
 	mov r8, r1
 	mov r9, r2
@@ -22667,7 +22700,7 @@ dword_8031918: .word NULL
 	thumb_local_start
 sub_8031980:
 	push {lr}
-	ldr r5, off_8031994 // =dword_2013940 
+	ldr r5, off_8031994 // =eLayerPriorityTriggers
 	cmp r0, #1
 	beq loc_803198A
 	b loc_803198E
@@ -22678,7 +22711,7 @@ loc_803198E:
 	mov r0, #2
 	pop {pc}
 	.balign 4, 0
-off_8031994: .word dword_2013940
+off_8031994: .word eLayerPriorityTriggers
 	thumb_func_end sub_8031980
 
 	thumb_local_start
@@ -22823,8 +22856,8 @@ checkCoordinateTrigger_8031a7a:
 	ldr r5, off_8031B90 // =dword_2013920 
 	ldr r2, off_8031B08 // =dword_200F3D0 
 	str r0, [r2]
-	bl sub_80316F8
-	bl sub_8030B1E
+	bl getObjectTilePosition
+	bl findTriggerForTilePosition
 	cmp r2, #NULL
 	beq loc_8031AF6
 loc_8031A96:

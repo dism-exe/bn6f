@@ -2628,7 +2628,7 @@ unsigned int sub_809D348()
     v5 = *(v0 + 22);
     if ( !*(v0 + 22) )
         v5 = sub_8035694((v0 + 28));
-    sub_8002E14(v5);
+    sprite_setBGPriority(v5);
     if ( sub_809DFA0() && !s_2011C50_ptr_1C_isNull() )
     {
         v6 = *(v0 + 19);
@@ -3030,7 +3030,7 @@ int sub_809D800()
     v5 = *(v0 + 22);
     if ( !*(v0 + 22) )
         v5 = sub_8035694((v0 + 28));
-    return sub_8002E14(v5);
+    return sprite_setBGPriority(v5);
 }
 
 
