@@ -2063,7 +2063,7 @@ loc_810D6AE::
 	ldr r4, off_810D6C4 // =byte_810D6C8 
 	ldr r3, off_810D6D0 // =byte_810D6D4 
 	bl GetAllianceDependentPanelParamArgs
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	tst r0, r0
 	beq loc_810D6A8
 locret_810D6C2::

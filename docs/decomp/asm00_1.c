@@ -6853,9 +6853,9 @@ int sub_800840C()
     {
         if ( *(v0 + 2) )
         {
-            v2 = sub_80103BC(0);
+            v2 = battle_findPlayer(0);
             sub_8015A38(v2);
-            v3 = sub_80103BC(1);
+            v3 = battle_findPlayer(1);
             sub_8015A38(v3);
             result = 4;
             *v0 = 4;
@@ -6889,9 +6889,9 @@ int __fastcall sub_8008452(int a1)
     if ( !*(v1 + 3) )
     {
         sub_802D6A0();
-        v3 = sub_80103BC(0);
+        v3 = battle_findPlayer(0);
         sub_8015A16(v3);
-        v4 = sub_80103BC(1);
+        v4 = battle_findPlayer(1);
         sub_8015A16(v4);
         *(v1 + 3) = 4;
     }
@@ -8607,10 +8607,10 @@ int sub_8009338()
         }
         else
         {
-            v5 = sub_80103BC(0);
+            v5 = battle_findPlayer(0);
             if ( v5 )
                 *(*(v5 + 88) + 15) = 1;
-            v6 = sub_80103BC(1);
+            v6 = battle_findPlayer(1);
             if ( v6 )
                 *(*(v6 + 88) + 15) = 1;
             *(v0 + 1) = 12;
@@ -11898,7 +11898,7 @@ signed int __fastcall sub_800AC20(int a1, int a2)
     v40 = v39 >> 1;
     if ( _CF )
     {
-        v15 = sub_80103BC(v44);
+        v15 = battle_findPlayer(v44);
         if ( v15 )
         {
             v16 = *(v15 + 36);
@@ -11945,11 +11945,11 @@ signed int __fastcall sub_800AC20(int a1, int a2)
     v42 = v41 >> 1;
     if ( _CF )
     {
-        v22 = sub_80103BC(v44);
+        v22 = battle_findPlayer(v44);
         if ( v22 )
         {
             v23 = *(v22 + 38);
-            v24 = sub_80103BC(v44 ^ 1);
+            v24 = battle_findPlayer(v44 ^ 1);
             if ( v24 )
             {
                 v25 = *(v24 + 38);

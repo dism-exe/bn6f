@@ -9788,10 +9788,10 @@ loc_8008420:
 	pop {pc}
 loc_8008438:
 	mov r0, #0
-	bl sub_80103BC
+	bl battle_findPlayer
 	bl sub_8015A38
 	mov r0, #1
-	bl sub_80103BC
+	bl battle_findPlayer
 	bl sub_8015A38
 	mov r0, #4
 	str r0, [r5]
@@ -9813,10 +9813,10 @@ loc_8008462:
 	bne loc_8008484
 	bl sub_802D6A0
 	mov r0, #0
-	bl sub_80103BC
+	bl battle_findPlayer
 	bl sub_8015A16
 	mov r0, #1
-	bl sub_80103BC
+	bl battle_findPlayer
 	bl sub_8015A16
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -11795,7 +11795,7 @@ loc_800934E:
 	b locret_8009388
 loc_8009360:
 	mov r0, #0
-	bl sub_80103BC
+	bl battle_findPlayer
 	cmp r0, #0
 	beq loc_8009370
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
@@ -11803,7 +11803,7 @@ loc_8009360:
 	strb r1, [r0,#oAIData_Unk_0f]
 loc_8009370:
 	mov r0, #1
-	bl sub_80103BC
+	bl battle_findPlayer
 	cmp r0, #0
 	beq loc_8009380
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
@@ -15435,7 +15435,7 @@ loc_800ACC6:
 	str r0, [sp,#0x10]
 	bcc loc_800ACFE
 	ldr r0, [sp,#0x14]
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	beq loc_800ACFE
 	ldrh r2, [r0,#oBattleObject_HP]
@@ -15493,14 +15493,14 @@ loc_800AD30:
 	str r0, [sp,#0x10]
 	bcc loc_800AD7E
 	ldr r0, [sp,#0x14]
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	beq loc_800AD7E
 	ldrh r6, [r0,#oBattleObject_MaxHP]
 	ldr r0, [sp,#0x14]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	beq loc_800AD7E
 	ldrh r7, [r0,#oBattleObject_MaxHP]

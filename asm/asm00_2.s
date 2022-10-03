@@ -1811,7 +1811,7 @@ sub_800FAE0:
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_BattleStatePtr]
 	ldrb r0, [r4,#oBattleState_Unk_0d]
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	beq locret_800FAF4
 	ldrh r1, [r0,#oBattleObject_HP]
@@ -2527,7 +2527,7 @@ sub_8010018:
 	thumb_local_start
 sub_8010022:
 	push {lr}
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
 	pop {pc}
 	thumb_func_end sub_8010022
@@ -2626,7 +2626,7 @@ locret_801010A:
 sub_801010C:
 	push {lr}
 	ldrb r0, [r5,#0x16]
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldr r0, [r0,#0x58]
 	str r0, [r5,#0x58]
 	pop {pc}
@@ -2872,7 +2872,7 @@ sub_80102AC:
 	tst r6, r6
 	beq locret_80102F0
 	mov r0, r4
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r5, r0
 	beq locret_80102F0
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
@@ -3007,9 +3007,9 @@ loc_80103B8:
 	pop {pc}
 	thumb_func_end sub_80103A8
 
-	thumb_func_start sub_80103BC
+	thumb_func_start battle_findPlayer
 // r0 = alliance
-sub_80103BC:
+battle_findPlayer:
 	push {r4-r6,lr}
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_BattleStatePtr]
@@ -3036,13 +3036,13 @@ loc_80103DC:
 loc_80103E8:
 	mov r0, r5
 	pop {r4-r6,pc}
-	thumb_func_end sub_80103BC
+	thumb_func_end battle_findPlayer
 
 	thumb_func_start sub_80103EC
 sub_80103EC:
 	push {lr}
 	bl sub_800A7E2
-	bl sub_80103BC
+	bl battle_findPlayer
 	pop {pc}
 	thumb_func_end sub_80103EC
 
@@ -3248,7 +3248,7 @@ loc_801055A:
 	thumb_func_start sub_801055E
 sub_801055E:
 	push {lr}
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
 	ldrh r0, [r0,#oAIData_TotalDamageTaken]
 	pop {pc}
@@ -3458,7 +3458,7 @@ loc_80106F6:
 	mov r0, r6
 	bl SetBattleNaviStatsByte
 	mov r0, r6
-	bl sub_80103BC
+	bl battle_findPlayer
 	push {r5}
 	mov r5, r0
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -3519,7 +3519,7 @@ sub_8010740:
 	mov r0, r6
 	bl SetBattleNaviStatsByte
 	mov r0, r6
-	bl sub_80103BC
+	bl battle_findPlayer
 	push {r5}
 	mov r5, r0
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -3900,7 +3900,7 @@ loc_8010ACA:
 loc_8010ACE:
 	mov r0, #1
 	eor r0, r4
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldrh r0, [r0,#oBattleObject_HP]
 	mov r1, #0xfa
 	add r1, r1, r1
@@ -4013,7 +4013,7 @@ sub_8010BD0:
 	mov r6, r0
 	mov r7, r1
 	mov r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	beq locret_8010BEE
 	ldrh r1, [r0,#oBattleObject_HP]
@@ -4031,7 +4031,7 @@ locret_8010BEE:
 sub_8010BF0:
 	push {lr}
 	mov r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	beq locret_8010C04
 	ldrh r0, [r0,#oBattleObject_HP]
@@ -4072,7 +4072,7 @@ loc_8010C2C:
 loc_8010C36:
 	mov r0, #1
 	eor r0, r4
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	beq locret_8010C4E
 	ldrh r0, [r0,#oBattleObject_MaxHP]
@@ -4092,7 +4092,7 @@ sub_8010C50:
 	mov r4, r0
 	mov r6, r1
 	mov r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r5, r0
 	tst r5, r5
 	beq locret_8010C74
@@ -11145,7 +11145,7 @@ locret_8013FCE:
 	thumb_func_start sub_8013FD0
 sub_8013FD0:
 	push {r5,lr}
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r5, r0
 	beq locret_8013FF6
 	mov r1, #0x54 
@@ -11216,7 +11216,7 @@ CurPETNaviToNaviStatsIndexTable: .byte 0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0
 	thumb_func_start sub_8014040
 sub_8014040:
 	push {r4,r5,lr}
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r5, r0
 	bl GetBattleEffects // () -> int
 	mov r1, #8
@@ -11455,7 +11455,7 @@ sub_8014216:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r5, r0
 	beq loc_8014254
 	bl sub_801DC36
@@ -11752,7 +11752,7 @@ sub_8014446:
 	thumb_local_start
 sub_801444E:
 	push {lr}
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldr r3, [r0,#0x58]
 	mov r0, #0
 	strh r0, [r3,#0x32]
@@ -11796,7 +11796,7 @@ sub_8014478:
 	thumb_local_start
 sub_8014482:
 	push {lr}
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldr r3, [r0,#0x58]
 	mov r0, #0
 	strh r0, [r3,#0x36]
@@ -11864,7 +11864,7 @@ loc_80144CE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r5, r0
 	beq loc_801450A
 	bl sub_801DC36
@@ -14626,7 +14626,7 @@ sub_8015B64:
 	bl GetBattleNaviStatsAddr // (int idx) -> void*
 	mov r6, r0
 	mov r0, r4
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r5, r0
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	mov r1, #0x2c 
@@ -14663,7 +14663,7 @@ sub_8015BA8:
 	bl GetBattleNaviStats2034A60Addr
 	mov r6, r0
 	mov r0, r4
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r5, r0
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	mov r1, #0x2c 
@@ -14698,7 +14698,7 @@ sub_8015BEC:
 	push {r4-r6,lr}
 	mov r6, r0
 	mov r4, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	cmp r0, #0
 	beq locret_8015C10
 	mov r5, r0
@@ -14911,8 +14911,13 @@ off_8015D74: .word byte_8015D78
 byte_8015D78: .byte 0x0, 0x0, 0x80, 0x1, 0x0, 0x0, 0x80, 0x2
 	thumb_func_end sub_8015CC0
 
-	thumb_func_start sub_8015D80
-sub_8015D80:
+	thumb_func_start panelFlagCheck_8015D80
+// r0 - panel X
+// r1 - panel Y
+// r2 - panel set flags
+// r3 - panel clear flags
+// r4 - relative panel offsets
+panelFlagCheck_8015D80:
 	push {r4,lr}
 	sub sp, sp, #0x38
 	str r0, [sp,#0x1c]
@@ -14970,7 +14975,7 @@ loc_8015DD4:
 loc_8015DEC:
 	add sp, sp, #0x38
 	pop {r4,pc}
-	thumb_func_end sub_8015D80
+	thumb_func_end panelFlagCheck_8015D80
 
 	thumb_local_start
 sub_8015DF0:
@@ -16269,7 +16274,7 @@ loc_8016964:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	beq locret_80169BC
 	push {r5}
@@ -16323,7 +16328,7 @@ loc_80169CE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	beq locret_8016A26
 	push {r5}
@@ -17070,7 +17075,7 @@ loc_8017034:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	bl sub_800F318
 	bl GetBattlePanelColumnPattern
 	cmp r0, #0x38 
@@ -19159,7 +19164,7 @@ loc_8018206:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	beq locret_801823A
 	push {r5}

@@ -9564,7 +9564,7 @@ int __fastcall sub_802D0C8(int a1)
 
     v1 = sub_802D064(a1);
     v2 = sub_800A7E2();
-    v3 = sub_80103BC(v2);
+    v3 = battle_findPlayer(v2);
     __asm { SVC         6 }
     v1[12] = 100 * *(v3 + 36) + *(v3 + 38) - 1;
     v8 = sub_800A7E2();
@@ -10214,8 +10214,8 @@ signed int sub_802D6A0()
     signed int result; // r0
 
     dword_203C970 = 0;
-    dword_203C978 = sub_80103BC(0);
-    dword_203C97C = sub_80103BC(1);
+    dword_203C978 = battle_findPlayer(0);
+    dword_203C97C = battle_findPlayer(1);
     result = 1;
     byte_203C974[0] = 1;
     return result;
@@ -11649,7 +11649,7 @@ signed int __fastcall sub_802E62A(int a1, int a2, int a3)
         SetEventFlag(&loc_2020 + v5);
         sub_80070BC();
     }
-    sub_80103BC(v4);
+    battle_findPlayer(v4);
     sub_800FFE4(0x10000);
     return 1;
 }
@@ -12440,7 +12440,7 @@ int __fastcall sub_802F006(int a1, int a2)
 
     v3 = a1;
     v4 = a2;
-    v5 = sub_80103BC(*(v2 + 22) ^ 1);
+    v5 = battle_findPlayer(*(v2 + 22) ^ 1);
     if ( !v5 )
         goto LABEL_17;
     v6 = v5[18] + object_getEnemyDirection();

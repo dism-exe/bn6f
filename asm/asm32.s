@@ -2142,7 +2142,7 @@ sub_810EBB8:
 	ldr r3, off_810EC78 // =byte_810EC30
 	bl GetAllianceDependentPanelParamArgs
 	ldr r4, off_810EBE0 // =byte_810EBE4
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 locret_810EBDA:
 	pop {r4-r7,pc}
 	.word 0x0
@@ -5925,7 +5925,7 @@ sub_8110FA2:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_811111C // =byte_8111020
 	bl GetAllianceDependentPanelParamArgs
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	pop {r4-r7,pc}
 	.word 0x0
 	.balign 4, 0
@@ -5948,7 +5948,7 @@ sub_8110FF4:
 	ldr r3, off_8111120 // =byte_8111020
 	bl GetAllianceDependentPanelParamArgs
 	ldr r4, off_8111010 // =byte_8111014
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	pop {r4-r7,pc}
 	.word 0
 	.byte 0, 0, 0, 0
@@ -6514,7 +6514,7 @@ loc_8111564:
 	bl GetAllianceDependentPanelParamArgs
 	ldr r4, off_8111620 // =off_8111624
 	ldr r4, [r4,#0x4] // (off_8111628 - 0x8111624)
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	b locret_811161A
 loc_8111578:
 	ldrb r0, [r5,#oBattleObject_PanelY]
@@ -6531,7 +6531,7 @@ loc_8111578:
 	bl GetAllianceDependentPanelParamArgs
 	ldr r4, off_8111620 // =off_8111624
 	ldr r4, [r4]
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	b locret_811161A
 loc_81115A0:
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -6562,7 +6562,7 @@ loc_81115D0:
 	bl GetAllianceDependentPanelParamArgs
 	ldr r4, off_8111620 // =off_8111624
 	ldr r4, [r4,#0x4] // (off_8111628 - 0x8111624)
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	b locret_811161A
 loc_81115E4:
 	ldrb r0, [r5,#oBattleObject_PanelY]
@@ -6587,7 +6587,7 @@ loc_8111608:
 	bl GetAllianceDependentPanelParamArgs
 	ldr r4, off_8111620 // =off_8111624
 	ldr r4, [r4,#0x4] // (off_8111628 - 0x8111624)
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 locret_811161A:
 	pop {r4-r7,pc}
 	.word 0x0
@@ -8326,7 +8326,7 @@ sub_8112562:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_81126D0 // =byte_81125E0
 	bl GetAllianceDependentPanelParamArgs
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	pop {pc}
 	.word 0, 0
 	.byte 0, 0, 0, 0
@@ -11282,7 +11282,7 @@ sub_8114040:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_81143B4 // =byte_8114160
 	bl GetAllianceDependentPanelParamArgs
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	pop {r4-r7,pc}
 	thumb_func_end sub_8114040
 
@@ -11294,7 +11294,7 @@ sub_8114060:
 	ldr r3, off_81143B8 // =byte_8114160
 	bl GetAllianceDependentPanelParamArgs
 	ldr r4, off_81143BC // =byte_8114150
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	pop {r4-r7,pc}
 	thumb_func_end sub_8114060
 
@@ -12415,7 +12415,7 @@ sub_8114AC4:
 	ldr r3, off_8114AE0 // =byte_8114C60
 	bl GetAllianceDependentPanelParamArgs
 	ldr r4, off_8114AE4 // =byte_8114AE8
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	pop {r4-r7,pc}
 	.word 0
 	.byte 0, 0, 0, 0
@@ -12525,7 +12525,7 @@ sub_8114BB4:
 loc_8114BC4:
 	ldr r3, off_8114BEC // =byte_8114C70
 	bl GetAllianceDependentPanelParamArgs
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8114BD0: .word byte_8114BD4
@@ -12552,7 +12552,7 @@ sub_8114C04:
 	ldr r3, off_8114C20 // =byte_8114C80
 	bl GetAllianceDependentPanelParamArgs
 	ldr r4, off_8114C24 // =byte_8114C28
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	pop {r4-r7,pc}
 	.word 0, 0
 	.byte 0, 0, 0, 0
@@ -13281,7 +13281,7 @@ loc_8115294:
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1
 	ldrb r1, [r5,#oBattleObject_PanelY]
-	ldr r3, off_81154DC // =byte_8115330
+	ldr r3, off_81154DC // =allianceDependentPanelFlags_8115330
 	bl GetAllianceDependentPanelParamArgs
 	push {r0,r1}
 	bl object_checkPanelParameters
@@ -13342,8 +13342,11 @@ loc_8115322:
 	pop {pc}
 	.word 0
 	.byte 0, 0, 0, 0
-byte_8115330: .byte 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x3, 0x10, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x80, 0x3
+allianceDependentPanelFlags_8115330:
+	.word 0x00000010
+	.word 0x03800000
+	.word 0x00000010
+	.word 0x03800000
 	thumb_func_end sub_8115272
 
 	thumb_local_start
@@ -13562,7 +13565,7 @@ locret_81154D4:
 	pop {pc}
 	.balign 4, 0
 dword_81154D8: .word 0xC000000
-off_81154DC: .word byte_8115330
+off_81154DC: .word allianceDependentPanelFlags_8115330
 dword_81154E0: .word 0x280000
 dword_81154E4: .word 0xFFFF6000
 byte_81154E8: .byte 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -13696,7 +13699,7 @@ loc_811561C:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	str r0, [r7,#oAIAttackVars_Unk_30]
-	ldr r3, off_81156F8 // =byte_81156D0
+	ldr r3, off_81156F8 // =allianceDependentPanelFlags_81156D0
 	bl GetAllianceDependentPanelParamArgs
 	str r2, [r7,#oAIAttackVars_Unk_34]
 	str r3, [r7,#oAIAttackVars_Unk_38]
@@ -13757,7 +13760,7 @@ loc_8115690:
 	str r0, [r5,#oBattleObject_ExtraVars]
 	add r1, r1, r0
 	ldrb r0, [r5,#oBattleObject_PanelX]
-	ldr r3, off_81156FC // =byte_81156D0
+	ldr r3, off_81156FC // =allianceDependentPanelFlags_81156D0
 	bl GetAllianceDependentPanelParamArgs
 	push {r0,r1}
 	bl object_checkPanelParameters
@@ -13774,25 +13777,34 @@ sub_81156AC:
 	push {r4-r7,lr}
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
-	ldr r3, off_8115700 // =byte_81156D0
+	ldr r3, off_8115700 // =allianceDependentPanelFlags_81156D0
 	bl GetAllianceDependentPanelParamArgs
 	ldr r4, off_81156C0 // =byte_81156C4
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_81156C0: .word byte_81156C4
-byte_81156C4: .byte 0x0, 0xFF, 0x0, 0x1, 0x7F, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-byte_81156D0: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0x0, 0x80
-	.byte 0x0, 0x88, 0xF
+byte_81156C4:
+	.byte 0, -1
+	.byte 0, 1
+	.byte 0x7F
+
+	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.balign 4, 0
+allianceDependentPanelFlags_81156D0:
+	.word 0x00000010
+	.word 0x0f8800a0
+	.word 0x00000030
+	.word 0x0f880080
 dword_81156E0: .word 0xA000
 off_81156E4: .word byte_8115556
 off_81156E8: .word byte_8115550
 off_81156EC: .word byte_8115538
 dword_81156F0: .word 0x8000
 off_81156F4: .word byte_8115520
-off_81156F8: .word byte_81156D0
-off_81156FC: .word byte_81156D0
-off_8115700: .word byte_81156D0
+off_81156F8: .word allianceDependentPanelFlags_81156D0
+off_81156FC: .word allianceDependentPanelFlags_81156D0
+off_8115700: .word allianceDependentPanelFlags_81156D0
 byte_8115704: .byte 0x4, 0x1C, 0x1, 0x0, 0x1C, 0x0, 0x0, 0x1
 byte_811570C: .byte 0x78, 0x0, 0x0, 0x8, 0x1E, 0x0, 0xA0, 0x0, 0x1, 0x8, 0x3C, 0x0, 0xC8
 	.byte 0x0, 0x2, 0x8, 0x5A, 0x0, 0xF0, 0x0, 0x3, 0x8, 0x78, 0x0, 0xC8, 0x0
@@ -14787,7 +14799,7 @@ sub_8116044:
 	ldrb r0, [r0,#0x12]
 	ldr r3, off_81162E4 // =byte_8116190
 	bl GetAllianceDependentPanelParamArgs
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	pop {r4-r7,pc}
 	thumb_func_end sub_8116044
 
@@ -14807,7 +14819,7 @@ sub_811606A:
 	ldrb r0, [r0,#0x12]
 	ldr r3, off_81162E8 // =byte_8116190
 	bl GetAllianceDependentPanelParamArgs
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	pop {r4-r7,pc}
 	thumb_func_end sub_811606A
 
@@ -14823,7 +14835,7 @@ sub_8116090:
 	ldr r3, off_81162EC // =byte_8116190
 	bl GetAllianceDependentPanelParamArgs
 	ldr r4, off_81160F8 // =byte_8116180
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	pop {r4-r7,pc}
 	.byte 0, 0
 	thumb_func_end sub_8116090

@@ -1767,7 +1767,7 @@ signed int object_getEnemyPlayerPanelY()
     u32 v2; // r1
     signed int result; // r0
 
-    v1 = sub_80103BC(*(v0 + 22) ^ 1);
+    v1 = battle_findPlayer(*(v0 + 22) ^ 1);
     v2 = v1;
     if ( !v1 )
         return *(v0 + 19);
@@ -1787,7 +1787,7 @@ int object_getEnemyPlayerPanels()
     int result; // r0
     int v4; // r1
 
-    v1 = sub_80103BC(v0[22] ^ 1);
+    v1 = battle_findPlayer(v0[22] ^ 1);
     if ( v1 )
     {
         v2 = *(v1 + 19);
@@ -3611,7 +3611,7 @@ BOOL __fastcall sub_800EB6C(int a1)
 
     v2 = *(v1 + oToolkit_S2034880_Ptr);
     v4 = a1;
-    return !battle_networkInvert(a1) || !sub_80103BC(v4 ^ 1) || !(object_getFlag() & 0x2000);
+    return !battle_networkInvert(a1) || !battle_findPlayer(v4 ^ 1) || !(object_getFlag() & 0x2000);
 }
 
 

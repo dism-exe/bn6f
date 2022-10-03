@@ -22914,7 +22914,7 @@ locret_80C2EAE:
 sub_80C2EB0:
 	push {lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
 	mov r2, #0x2c 
 	ldrh r1, [r0,r2]
@@ -23543,7 +23543,7 @@ sub_80C3368:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	beq loc_80C33A8
 	ldrb r1, [r0,#oBattleObject_PanelX]
@@ -23606,7 +23606,7 @@ sub_80C33CA:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r5, r0
 	beq loc_80C33F4
 	bl sub_800FC7C
@@ -23677,7 +23677,7 @@ sub_80C3460:
 	push {r4,r6,r7,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	push {r0}
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r7, r0
 	pop {r4}
 	beq loc_80C348A
@@ -23887,7 +23887,7 @@ sub_80C35CE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r5, r0
 	beq loc_80C3616
 	bl sub_800FC7C
@@ -23993,7 +23993,7 @@ sub_80C36AE:
 	mov r6, r0
 	pop {r0}
 	push {r6}
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r7, r0
 	pop {r6}
 	mov r4, #0x34 
@@ -24213,7 +24213,7 @@ sub_80C3852:
 	bl object_getEnemyDirection
 	push {r0}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	pop {r6}
 	beq loc_80C3890
@@ -24319,7 +24319,7 @@ sub_80C3900:
 sub_80C390E:
 	push {lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldrh r0, [r0,#oBattleObject_PanelXY]
 	strh r0, [r5,#oBattleObject_PanelXY]
 	bl object_setCoordinatesFromPanels // () -> void
@@ -26591,7 +26591,7 @@ sub_80C4AEC:
 	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
 	push {r0}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r1, r0
 	pop {r0}
 	str r1, [r0,#oBattleObject_RelatedObject1Ptr]
@@ -55252,7 +55252,7 @@ sub_80D2E38:
 	ldrb r0, [r5,#0xd]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r6, r0
 	ldr r0, [r6,#0x34]
 	ldr r1, [r6,#0x38]
@@ -62334,7 +62334,7 @@ sub_80D65FC:
 	strh r0, [r5,#oBattleObject_Timer2]
 	blt loc_80D6620
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	beq loc_80D6624
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
@@ -71170,7 +71170,7 @@ sub_80DABE8:
 	bl GetAllianceDependentPanelParamArgs
 	pop {r0,r1}
 	ldr r4, off_80DACD8 // =byte_80DACC0 
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	pop {pc}
 	.balign 4, 0
 off_80DABFC: .word 0x4000000
@@ -75057,7 +75057,7 @@ sub_80DCA38:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	beq loc_80DCAAA
 	ldrb r1, [r0,#oBattleObject_PanelX]
@@ -76575,7 +76575,7 @@ loc_80DD616:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_80DD6B8 // =off_80DD6BC 
 	bl sub_800EC48
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	cmp r0, #0
 	beq locret_80DD6A2
 loc_80DD628:
@@ -77904,7 +77904,7 @@ loc_80DE098:
 	bl SpawnT4BattleObjectWithId0
 	push {r5}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r5, r0
 	mov r0, #0x96
 	lsl r0, r0, #1
@@ -91778,7 +91778,7 @@ sub_80E4C78:
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r6, r0
 	ldrh r0, [r6,#0x24]
 	tst r0, r0
@@ -95175,7 +95175,7 @@ sub_80E6580:
 	mov r0, #0xff
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	bne loc_80E65B2
 	ldr r1, [r5,#oBattleObject_RelatedObject1Ptr]
@@ -95324,7 +95324,7 @@ sub_80E667C:
 	cmp r1, r2
 	bne loc_80E6716
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
 	add r0, #0xa0
 	ldrb r0, [r0,#oAIAttackVars_Unk_1b]
@@ -99139,7 +99139,7 @@ sub_80E8378:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r6, r0
 	ldrh r0, [r6,#oBattleObject_HP]
 	tst r0, r0
@@ -101973,7 +101973,7 @@ sub_80E9810:
 	bl sprite_setUnk0x2c
 loc_80E985C:
 	ldrb r0, [r5,#oBattleObject_Param2]
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldr r1, [r0,#oBattleObject_X]
 	str r1, [r5,#oBattleObject_ExtraVars]
@@ -112570,7 +112570,7 @@ loc_80EF05E:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	bgt locret_80EF09E
 	ldrb r0, [r5,#oBattleObject_PanelY]
-	bl sub_8109746
+	bl CheckIfOpposingAllianceInObjectRow
 	cmp r0, #0
 	bne loc_80EF082
 	ldrb r0, [r5,#oBattleObject_Alliance]
@@ -119671,7 +119671,7 @@ loc_80F2BD0:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -119702,7 +119702,7 @@ sub_80F2BEE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -119725,7 +119725,7 @@ loc_80F2C32:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0x6c 
 	add r0, r0, r5
@@ -121484,7 +121484,7 @@ loc_80F3A5C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -121507,7 +121507,7 @@ loc_80F3A94:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r0, off_80F3D18 // =sub_80F4658+1
 	str r0, [r7,#oAIAttackVars_Unk_28]
@@ -121543,7 +121543,7 @@ loc_80F3AF6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xd
 	bl object_setAttack0
@@ -123462,7 +123462,7 @@ sub_80F4AC6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -123487,7 +123487,7 @@ sub_80F4AFE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -123516,7 +123516,7 @@ sub_80F4B34:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -125210,7 +125210,7 @@ sub_80F594C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -125235,7 +125235,7 @@ loc_80F59B4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -125360,7 +125360,7 @@ sub_80F5AA0:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -126694,7 +126694,7 @@ sub_80F65A4:
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#0x2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -126715,7 +126715,7 @@ sub_80F65C4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -126738,7 +126738,7 @@ sub_80F65EE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -128871,7 +128871,7 @@ sub_80F7830:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -128892,7 +128892,7 @@ sub_80F7856:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r0, off_80F79E8 // =sub_80F81C0+1
 	str r0, [r7,#oAIAttackVars_Unk_28]
@@ -128918,7 +128918,7 @@ sub_80F7886:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r0, off_80F79EC // =sub_80F8256+1 
 	str r0, [r7,#oAIAttackVars_Unk_28]
@@ -128948,7 +128948,7 @@ sub_80F78C4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -130354,7 +130354,7 @@ loc_80F8458:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r0, off_80F86F8 // =sub_80F8DA8+1
 	str r0, [r7,#oAIAttackVars_Unk_28]
@@ -130373,7 +130373,7 @@ loc_80F84AC:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r0, off_80F86FC // =sub_80F8D3E+1 
 	str r0, [r7,#oAIAttackVars_Unk_28]
@@ -130397,7 +130397,7 @@ loc_80F84E0:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r0, off_80F8700 // =sub_80F8DFE+1 
 	str r0, [r7,#oAIAttackVars_Unk_28]
@@ -130434,7 +130434,7 @@ sub_80F8540:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r6, r0
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	lsl r0, r0, #1
@@ -130536,7 +130536,7 @@ sub_80F8610:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldrb r4, [r0,#oBattleObject_PanelX]
 	ldrb r6, [r0,#oBattleObject_PanelY]
 	ldrb r0, [r5,#oBattleObject_Alliance]
@@ -131945,7 +131945,7 @@ sub_80F9168:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -131987,7 +131987,7 @@ loc_80F91C6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -132008,7 +132008,7 @@ sub_80F91F6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -133539,7 +133539,7 @@ sub_80F9F24:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -133562,7 +133562,7 @@ sub_80F9F44:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -133616,7 +133616,7 @@ sub_80F9FA6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -135524,7 +135524,7 @@ sub_80FAFB4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -135549,7 +135549,7 @@ sub_80FAFF2:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -135576,7 +135576,7 @@ sub_80FB028:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -137255,7 +137255,7 @@ sub_80FBDF4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldrb r1, [r0,#oBattleObject_PanelX]
 	ldrb r2, [r0,#oBattleObject_PanelY]
 	str r1, [sp]
@@ -137326,7 +137326,7 @@ sub_80FBE60:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -137361,7 +137361,7 @@ sub_80FBE9C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -137389,7 +137389,7 @@ sub_80FBEE8:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -137440,7 +137440,7 @@ sub_80FBF54:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xe
 	bl object_setAttack0
@@ -139634,7 +139634,7 @@ loc_80FD184:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -139655,7 +139655,7 @@ loc_80FD1B8:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -139690,7 +139690,7 @@ loc_80FD216:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -139820,7 +139820,7 @@ sub_80FD31C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldrb r1, [r0,#oBattleObject_PanelX]
 	ldrb r2, [r0,#oBattleObject_PanelY]
 	str r1, [sp]
@@ -141146,7 +141146,7 @@ loc_80FDE3C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -141180,7 +141180,7 @@ loc_80FDE94:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r0, [r5,#oBattleObject_ExtraVars+4]
 	str r0, [r7,#oAIAttackVars_Unk_30]
@@ -141202,7 +141202,7 @@ sub_80FDEC4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r2, #2
 	push {r7}
 	mov r7, #0x60 
@@ -142675,7 +142675,7 @@ loc_80FEAF4:
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#0x2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -142705,7 +142705,7 @@ sub_80FEB20:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -142732,7 +142732,7 @@ sub_80FEB64:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -142763,7 +142763,7 @@ sub_80FEB9E:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -144207,7 +144207,7 @@ sub_80FF6E0:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldrb r6, [r0,#oBattleObject_PanelY]
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, r6
@@ -144428,7 +144428,7 @@ loc_80FF95E:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -144449,7 +144449,7 @@ loc_80FF998:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -144467,7 +144467,7 @@ loc_80FF9CC:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -144483,7 +144483,7 @@ loc_80FF9F6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -145955,7 +145955,7 @@ sub_81005A6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -145980,7 +145980,7 @@ sub_81005DE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -146006,7 +146006,7 @@ sub_8100614:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xd
 	bl object_setAttack0
@@ -146029,7 +146029,7 @@ sub_810064C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xe
 	bl object_setAttack0
@@ -147977,7 +147977,7 @@ sub_8101584:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldrb r1, [r0,#oBattleObject_PanelX]
 	ldrb r2, [r0,#oBattleObject_PanelY]
 	str r1, [sp]
@@ -148031,7 +148031,7 @@ sub_81015E4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	ldrh r4, [r0,#oBattleObject_HP]
 	mov r0, #4
 	bl sub_810179C
@@ -148076,7 +148076,7 @@ sub_810161A:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -148103,7 +148103,7 @@ sub_8101652:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -148130,7 +148130,7 @@ sub_810168C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -148155,7 +148155,7 @@ sub_81016C8:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -148184,7 +148184,7 @@ sub_81016FE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xd
 	bl object_setAttack0
@@ -153131,7 +153131,7 @@ sub_8103F54:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -153156,7 +153156,7 @@ sub_8103F80:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -153181,7 +153181,7 @@ sub_8103FB4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -153205,7 +153205,7 @@ sub_8103FE8:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -153230,7 +153230,7 @@ sub_810401C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xd
 	bl object_setAttack0
@@ -153252,7 +153252,7 @@ sub_8104050:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xe
 	bl object_setAttack0
@@ -156140,7 +156140,7 @@ sub_8105784:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -156165,7 +156165,7 @@ sub_81057C0:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -156190,7 +156190,7 @@ sub_81057F4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -156215,7 +156215,7 @@ sub_8105828:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xd
 	bl object_setAttack0
@@ -156239,7 +156239,7 @@ sub_810585C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xe
 	bl object_setAttack0
@@ -158498,7 +158498,7 @@ sub_8106A60:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	push {r5}
 	mov r5, r0
 	bl object_getFlag // () -> int
@@ -158685,7 +158685,7 @@ sub_8106BB8:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -158708,7 +158708,7 @@ sub_8106BB8:
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#0x2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -158750,7 +158750,7 @@ sub_8106C34:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -158779,7 +158779,7 @@ sub_8106C6C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xd
 	bl object_setAttack0
@@ -158807,7 +158807,7 @@ sub_8106CAC:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xe
 	bl object_setAttack0
@@ -161242,7 +161242,7 @@ sub_8107FF4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -161265,7 +161265,7 @@ sub_8108014:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -161310,7 +161310,7 @@ sub_810806E:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -161339,7 +161339,7 @@ sub_81080A6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xd
 	bl object_setAttack0
@@ -161367,7 +161367,7 @@ sub_81080E6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xe
 	bl object_setAttack0
@@ -163759,6 +163759,8 @@ locret_81096F8:
 	pop {r4,pc}
 
 	thumb_func_start GetAllianceDependentPanelParamArgs
+// first four bytes of r3 are for player alliance
+// next four bytes are for enemy alliance
 GetAllianceDependentPanelParamArgs:
 	ldrb r2, [r5,#oBattleObject_Alliance]
 	lsl r2, r2, #3
@@ -163805,7 +163807,7 @@ loc_8109742:
 	thumb_func_end sub_810971A
 
 	thumb_local_start
-sub_8109746:
+CheckIfOpposingAllianceInObjectRow:
 	push {r4,r6,r7,lr}
 	bl object_getFrontDirection // () -> int
 	mov r4, r0
@@ -163832,13 +163834,14 @@ loc_8109770:
 locret_8109774:
 	pop {r4,r6,r7,pc}
 	.word 0, 0
-	.byte 0, 0
+	.balign 4, 0
 off_8109780: .word off_8109784
-off_8109784: .word 0x4000000
+off_8109784:
+	.word 0x4000000
 	.word 0x0
 	.word 0x8000000
 	.word 0x0
-	thumb_func_end sub_8109746
+	thumb_func_end CheckIfOpposingAllianceInObjectRow
 
 	thumb_local_start
 sub_8109794:
@@ -167427,7 +167430,7 @@ sub_810B6B4:
 	ldr r3, off_810B788 // =byte_810B6E0
 	bl GetAllianceDependentPanelParamArgs
 	ldr r4, off_810B6D0 // =byte_810B6D4
-	bl sub_8015D80
+	bl panelFlagCheck_8015D80
 	pop {r4-r7,pc}
 	.word 0
 	.byte 0, 0, 0, 0

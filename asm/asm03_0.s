@@ -13281,7 +13281,7 @@ sub_802D0C8:
 	bl sub_802D064
 	mov r7, r0
 	bl sub_800A7E2
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r2, r0
 	ldrh r0, [r2,#0x24]
 	mov r1, #0x64 
@@ -14121,10 +14121,10 @@ sub_802D6A0:
 	mov r0, #0
 	str r0, [r5]
 	mov r0, #0
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r5,#0x8] // (dword_203C978 - 0x203c970)
 	mov r0, #1
-	bl sub_80103BC
+	bl battle_findPlayer
 	str r0, [r5,#0xc] // (dword_203C97C - 0x203c970)
 	mov r0, #1
 	strb r0, [r5,#0x4] // (byte_203C974 - 0x203c970)
@@ -16002,7 +16002,7 @@ sub_802E62A:
 	bl encryption_80070bc
 loc_802E65A:
 	ldr r0, [sp]
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r5, r0
 	ldr r0, dword_802E944 // =0x10000 
 	bl SetAIData_Unk_44_Flag
@@ -17139,7 +17139,7 @@ sub_802F006:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r5, r0
 	beq loc_802F05E
 	bl object_getEnemyDirection

@@ -1427,7 +1427,7 @@ int sub_810D69A()
     int v7; // r3
 
     if ( object_getFlag() & 0x4000
-        || (sub_81096FA(*(v0 + 18), *(v0 + 19), v1, byte_810D6D4), (result = sub_8015D80(v4, v5, v6, v7)) == 0) )
+        || (sub_81096FA(*(v0 + 18), *(v0 + 19), v1, byte_810D6D4), (result = panelFlagCheck_8015D80(v4, v5, v6, v7)) == 0) )
     {
         result = *(v0 + 18);
         v3 = *(v0 + 19);

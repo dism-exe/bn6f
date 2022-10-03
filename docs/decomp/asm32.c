@@ -1644,7 +1644,7 @@ int __noreturn sub_810EBB8()
     if ( result )
     {
         sub_81096FA(result, v2, v3, byte_810EC30);
-        result = sub_8015D80(v4, v5, v6, v7);
+        result = panelFlagCheck_8015D80(v4, v5, v6, v7);
     }
     return result;
 }
@@ -4142,7 +4142,7 @@ int __fastcall sub_8110FA2(int a1, int a2, int a3)
 
     v4 = off_8110FC4[*(v3 + 104)];
     sub_81096FA(*(v3 + 18), *(v3 + 19), a3, byte_8111020);
-    return sub_8015D80(v5, v6, v7, v8);
+    return panelFlagCheck_8015D80(v5, v6, v7, v8);
 }
 
 
@@ -4156,7 +4156,7 @@ int __fastcall sub_8110FF4(int a1, int a2, int a3)
     int v7; // r3
 
     sub_81096FA(*(v3 + 18), *(v3 + 19), a3, byte_8111020);
-    return sub_8015D80(v4, v5, v6, v7);
+    return panelFlagCheck_8015D80(v4, v5, v6, v7);
 }
 
 
@@ -4555,7 +4555,7 @@ int __fastcall sub_811152C(int a1, int a2, int a3)
                                                                                                                              (result = sub_8015E46(v8, v9, v10, v11)) == 0) )
             {
                 sub_81096FA(v3[18], v3[19], v6, byte_8111740);
-                result = sub_8015D80(v12, v13, v14, v15);
+                result = panelFlagCheck_8015D80(v12, v13, v14, v15);
             }
             break;
         case 2:
@@ -4569,13 +4569,13 @@ int __fastcall sub_811152C(int a1, int a2, int a3)
                     return result;
 LABEL_17:
                 sub_81096FA(v3[18], v3[19], v29, byte_8111740);
-                return sub_8015D80(v36, v37, v38, v39);
+                return panelFlagCheck_8015D80(v36, v37, v38, v39);
             }
             sub_810971A(v3[19] + 1, v16, v17);
             if ( v28 )
             {
                 sub_81096FA(v3[18], v3[19], v18, byte_8111740);
-                return sub_8015D80(v19, v20, v21, v22);
+                return panelFlagCheck_8015D80(v19, v20, v21, v22);
             }
             sub_81096FA(v3[18], v3[19] - 1, v18, byte_8111740);
             v30 = v3[22];
@@ -4590,7 +4590,7 @@ LABEL_17:
                         (result = sub_8015E46(v42, v43, v44, v45)) == 0) )
             {
                 sub_81096FA(v3[18], v3[19], v40, byte_8111740);
-                result = sub_8015D80(v46, v47, v48, v49);
+                result = panelFlagCheck_8015D80(v46, v47, v48, v49);
             }
             return result;
         default:
@@ -5913,7 +5913,7 @@ int __fastcall sub_8112562(int a1, int a2, int a3)
     int v7; // r3
 
     sub_81096FA(*(v3 + 18), *(v3 + 19), a3, byte_81125E0);
-    return sub_8015D80(v4, v5, v6, v7);
+    return panelFlagCheck_8015D80(v4, v5, v6, v7);
 }
 
 
@@ -8115,7 +8115,7 @@ int sub_8114040()
     GetPositiveSignedRNG2();
     v2 = off_8114100[v1 & 0xF];
     sub_81096FA(*(v0 + 18), *(v0 + 19), v3, byte_8114160);
-    return sub_8015D80(v4, v5, v6, v7);
+    return panelFlagCheck_8015D80(v4, v5, v6, v7);
 }
 
 
@@ -8129,7 +8129,7 @@ int __fastcall sub_8114060(int a1, int a2, int a3)
     int v7; // r3
 
     sub_81096FA(*(v3 + 18), *(v3 + 19), a3, byte_8114160);
-    return sub_8015D80(v4, v5, v6, v7);
+    return panelFlagCheck_8015D80(v4, v5, v6, v7);
 }
 
 
@@ -8775,7 +8775,7 @@ int __fastcall sub_8114AC4(int a1, int a2, int a3)
     int v7; // r3
 
     sub_81096FA(*(v3 + 18), *(v3 + 19), a3, byte_8114C60);
-    return sub_8015D80(v4, v5, v6, v7);
+    return panelFlagCheck_8015D80(v4, v5, v6, v7);
 }
 
 
@@ -8835,7 +8835,7 @@ int __fastcall sub_8114BB4(int a1, int a2, int a3)
     int v6; // r3
 
     sub_81096FA(a1, a2, 5 * a3 + 1, byte_8114C70);
-    return sub_8015D80(v3, v4, v5, v6);
+    return panelFlagCheck_8015D80(v3, v4, v5, v6);
 }
 
 
@@ -8861,7 +8861,7 @@ int __fastcall sub_8114C04(int a1, int a2, int a3)
     int v6; // r3
 
     sub_81096FA(a1, a2, a3, byte_8114C80);
-    return sub_8015D80(v3, v4, v5, v6);
+    return panelFlagCheck_8015D80(v3, v4, v5, v6);
 }
 
 
@@ -9690,7 +9690,7 @@ int __fastcall sub_81156AC(int a1, int a2, int a3)
     int v7; // r3
 
     sub_81096FA(*(v3 + 18), *(v3 + 19), a3, byte_81156D0);
-    return sub_8015D80(v4, v5, v6, v7);
+    return panelFlagCheck_8015D80(v4, v5, v6, v7);
 }
 
 
@@ -10429,7 +10429,7 @@ int sub_8116044()
     v1 = sub_80103F8(*(v0 + 22) ^ 1);
     v2 = off_81160C4[*(v0 + 104)];
     sub_81096FA(*(v1 + 18), *(v1 + 19), v3, byte_8116190);
-    return sub_8015D80(v4, v5, v6, v7);
+    return panelFlagCheck_8015D80(v4, v5, v6, v7);
 }
 
 
@@ -10448,7 +10448,7 @@ int sub_811606A()
     v1 = sub_80103F8(*(v0 + 22) ^ 1);
     v2 = off_81160E0[*(v0 + 104)];
     sub_81096FA(*(v1 + 18), *(v1 + 19), v3, byte_8116190);
-    return sub_8015D80(v4, v5, v6, v7);
+    return panelFlagCheck_8015D80(v4, v5, v6, v7);
 }
 
 
@@ -10465,7 +10465,7 @@ int sub_8116090()
 
     v1 = sub_80103F8(*(v0 + 22) ^ 1);
     sub_81096FA(*(v1 + 18), *(v1 + 19), v2, byte_8116190);
-    return sub_8015D80(v3, v4, v5, v6);
+    return panelFlagCheck_8015D80(v3, v4, v5, v6);
 }
 
 

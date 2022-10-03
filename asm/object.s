@@ -3160,7 +3160,7 @@ object_getEnemyPlayerPanelY:
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r1, r0
 	beq loc_800D066
 	ldrb r0, [r1,#0x13]
@@ -3183,7 +3183,7 @@ object_getEnemyPlayerPanels:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	tst r0, r0
 	beq loc_800D080
 	ldrb r1, [r0,#oBattleObject_PanelY]
@@ -5721,7 +5721,7 @@ sub_800EB6C:
 	beq loc_800EB9A
 	mov r1, #1
 	eor r0, r1
-	bl sub_80103BC
+	bl battle_findPlayer
 	mov r5, r0
 	bne loc_800EB8C
 	b loc_800EB9A

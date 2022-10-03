@@ -19431,7 +19431,7 @@ signed int sub_80C2EB0()
     int v0; // r5
     __int16 v1; // r1
 
-    v1 = *(*(sub_80103BC(*(v0 + 22)) + 88) + 44);
+    v1 = *(*(battle_findPlayer(*(v0 + 22)) + 88) + 44);
     return 1;
 }
 
@@ -19977,7 +19977,7 @@ int sub_80C3368()
     *(v0 + 32) = result;
     if ( !result )
     {
-        v2 = sub_80103BC(*(v0 + 22) ^ 1);
+        v2 = battle_findPlayer(*(v0 + 22) ^ 1);
         if ( v2 )
         {
             v3 = *(v2 + 18);
@@ -20034,7 +20034,7 @@ void sub_80C33CA()
         if ( *(v0 + 6) != 382 )
         {
             v1 = v0;
-            v0 = sub_80103BC(*(v0 + 22) ^ 1);
+            v0 = battle_findPlayer(*(v0 + 22) ^ 1);
             if ( v0 )
             {
                 sub_800FC7C();
@@ -20102,7 +20102,7 @@ int sub_80C3460()
     int v8; // [sp-4h] [bp-14h]
 
     v8 = v0->Alliance;
-    v1 = sub_80103BC(v8);
+    v1 = battle_findPlayer(v8);
     if ( !v1
         || (v2 = *(v1 + 18),
                 v3 = *(v1 + 19),
@@ -20260,7 +20260,7 @@ int sub_80C35CE()
     if ( !result )
     {
         *(v0 + 16) = 2;
-        if ( sub_80103BC(*(v0 + 22) ^ 1) )
+        if ( battle_findPlayer(*(v0 + 22) ^ 1) )
             sub_800FC7C();
         PlaySoundEffect(294, v5, v6);
         result = 12;
@@ -20358,7 +20358,7 @@ int sub_80C36AE()
 
     v1 = *(v0 + 22) ^ 1;
     v2 = object_getAllianceDirection(v1);
-    v3 = sub_80103BC(v1);
+    v3 = battle_findPlayer(v1);
     v4 = v3[14];
     v5 = v3[15];
     *(v0 + 52) = v3[13] + 15728640 * v2;
@@ -20540,7 +20540,7 @@ int sub_80C3852()
     if ( result & 0x80 )
     {
         v6 = object_getEnemyDirection();
-        v2 = sub_80103BC(*(v0 + 22));
+        v2 = battle_findPlayer(*(v0 + 22));
         if ( v2 )
         {
             v5 = *(v2 + 18) << 16;
@@ -20636,7 +20636,7 @@ int sub_80C390E()
     int v0; // r5
     int result; // r0
 
-    *(v0 + 18) = *(sub_80103BC(*(v0 + 22)) + 18);
+    *(v0 + 18) = *(battle_findPlayer(*(v0 + 22)) + 18);
     object_setCoordinatesFromPanels(v0);
     *(v0 + 52) += 2162688 * object_getEnemyDirection();
     *(v0 + 60) = 3932160;
@@ -22481,7 +22481,7 @@ int __fastcall sub_80C4AEC(_BYTE *a1, int a2, int a3, int a4)
         *v10 = 1;
         *(result + 22) = *(v11 + 22);
         v8 = result;
-        v9 = sub_80103BC(*(v7 + 22));
+        v9 = battle_findPlayer(*(v7 + 22));
         result = v8;
         *(v8 + 76) = v9;
     }
@@ -45154,7 +45154,7 @@ int sub_80D2E38()
     int result; // r0
 
     v2 = *(v1 + oToolkit_S2034880_Ptr);
-    v3 = sub_80103BC(*(v0 + 13) ^ 1);
+    v3 = battle_findPlayer(*(v0 + 13) ^ 1);
     v4 = *(v3 + 56);
     result = sub_800E258(*(v3 + 52));
     *(v0 + 22);
@@ -50819,7 +50819,7 @@ int sub_80D65FC()
         v1 = *(v0 + 34);
         v2 = __OFSUB__(v1, 1);
         *(v0 + 34) = --v1;
-        if ( (v1 < 0) ^ v2 || (v3 = sub_80103BC(*(v0 + 22))) != 0 && *(*(v3 + 88) + 44) & 1 )
+        if ( (v1 < 0) ^ v2 || (v3 = battle_findPlayer(*(v0 + 22))) != 0 && *(*(v3 + 88) + 44) & 1 )
             *(v0 + 12) = *(v0 + 5);
     }
     v4 = *(v0 + 18);
@@ -57762,7 +57762,7 @@ int __fastcall sub_80DABE8(int a1, int a2, int a3)
     v3 = a1;
     v4 = a2;
     sub_81096FA(a1, a2, a3, &off_80DABFC);
-    return sub_8015D80(v3, v4, v5, v6);
+    return panelFlagCheck_8015D80(v3, v4, v5, v6);
 }
 
 
@@ -60751,7 +60751,7 @@ __int64 sub_80DCA38()
     int v13; // [sp+8h] [bp-1Ch]
     int v14; // [sp+Ch] [bp-18h]
 
-    v1 = sub_80103BC(v0->Alliance ^ 1);
+    v1 = battle_findPlayer(v0->Alliance ^ 1);
     if ( !v1 )
         goto LABEL_14;
     v11 = *(v1 + 18);
@@ -61930,7 +61930,7 @@ int sub_80DD5E2()
             {
                 *(v0 + 5);
                 sub_800EC48(*(v0 + 18), *(v0 + 19), v2, &off_80DD6BC);
-                result = sub_8015D80(v3, v4, v5, v6);
+                result = panelFlagCheck_8015D80(v3, v4, v5, v6);
                 if ( !result )
                     return result;
             }
@@ -62952,7 +62952,7 @@ int __usercall sub_80DE088@<R0>(Battle *obj@<R5>)
         *obj->parent = 0;
         *&obj->currState = 8;
         SpawnT4BattleObjectWithId0(obj, &obj->vx, obj->x, obj->y, obj->z);
-        v3 = sub_80103BC(obj->Alliance);
+        v3 = battle_findPlayer(obj->Alliance);
         object_addHP(v3, 300);
         PlaySoundEffect(138, v4, v5);
         sub_801A7CC(5);
@@ -73997,7 +73997,7 @@ signed int sub_80E4C78()
     signed int result; // r0
     int v3; // r1
 
-    v1 = sub_80103BC(*(v0 + 22) ^ 1);
+    v1 = battle_findPlayer(*(v0 + 22) ^ 1);
     if ( !*(v1 + 36) )
         return 255;
     result = *(v1 + 18);
@@ -76717,7 +76717,7 @@ int __noreturn sub_80E6580()
     sprite_noShadow(v0);
     *(v0 + 16) = 1;
     *(v0 + 17) = -1;
-    v1 = sub_80103BC(*(v0 + 22));
+    v1 = battle_findPlayer(*(v0 + 22));
     if ( v1 )
     {
         *(v0 + 6) = *(v1 + 18);
@@ -76836,7 +76836,7 @@ int sub_80E667C()
     }
     else
     {
-        if ( *(*(sub_80103BC(*(v0 + 22)) + 88) + 187) )
+        if ( *(*(battle_findPlayer(*(v0 + 22)) + 88) + 187) )
         {
             v12 = sub_802E070(*(v0 + 22));
             v8 = *(v0 + 5);
@@ -80016,7 +80016,7 @@ signed int sub_80E8378()
     signed int result; // r0
     int v3; // r1
 
-    v1 = sub_80103BC(*(v0 + 22) ^ 1);
+    v1 = battle_findPlayer(*(v0 + 22) ^ 1);
     if ( !*(v1 + 36) )
         return 255;
     result = *(v1 + 18);
@@ -82438,7 +82438,7 @@ void __noreturn sub_80E9810()
     sprite_setFlip(v0, v2);
     if ( *(v0 + 4) == 2 )
         sprite_setUnk0x2c(*(v0 + 104));
-    v3 = sub_80103BC(*(v0 + 5));
+    v3 = battle_findPlayer(*(v0 + 5));
     *(v0 + 76) = v3;
     *(v0 + 96) = *(v3 + 52);
     *(v0 + 100) = *(v3 + 56);
@@ -90659,7 +90659,7 @@ int sub_80EF004()
     if ( ((result < 0) ^ v5) | (result == 0) )
     {
         v6 = v0->panelY;
-        v7 = sub_8109746();
+        v7 = CheckIfOpposingAllianceInObjectRow();
         if ( !v7 )
         {
             sub_81096FA(v0->Alliance ^ 1, v0->panelY, v9, byte_80EF0A4);
@@ -96306,7 +96306,7 @@ signed int sub_80F2B6C()
             ++v1[4];
         *(v2 + 40) = sub_80F36A2;
         *(v2 + 24) = sub_80F2CC2();
-        *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+        *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
         result = (object_setAttack4)(9);
     }
     else
@@ -96356,7 +96356,7 @@ int sub_80F2BEE()
         sub_80F2DDC(2);
         *(v2 + 24) = sub_80F2D2C();
         *(v2 + 40) = sub_80F3784;
-        *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+        *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
         *(v2 + 48) = v0 + 108;
     }
     else
@@ -96368,7 +96368,7 @@ int sub_80F2BEE()
         *(v2 + 2) = 1;
         sub_80F2DDC(1);
         *(v2 + 24) = sub_80F2D08();
-        *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+        *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     }
     object_setAttack0();
     result = 0;
@@ -97856,7 +97856,7 @@ void sub_80F3A24()
         *(v2 + 24) = sub_80F3BB0();
         *(v2 + 48) = v0 + 96;
         *(v2 + 52) = v0 + 100;
-        *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+        *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
         *(v2 + 40) = sub_80F4658;
         object_setAttack0();
     }
@@ -97876,7 +97876,7 @@ void sub_80F3A24()
         *(v2 + 2) = 3;
         sub_80F3C2C(2);
         *(v2 + 24) = sub_80F3BF8();
-        *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+        *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
         object_setAttack0();
     }
     else
@@ -97884,7 +97884,7 @@ void sub_80F3A24()
         *(v2 + 3) = sub_800FE36();
         *(v2 + 40) = sub_80F45B8;
         *(v2 + 24) = sub_80F3B7A();
-        *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+        *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
         (object_setAttack4)(9);
     }
 }
@@ -99344,7 +99344,7 @@ void sub_80F4AC6()
     *(v1 + 12) = sub_80F49F8();
     *(v1 + 13) = v2;
     *(v1 + 40) = sub_80F5484;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -99361,7 +99361,7 @@ void sub_80F4AFE()
     *(v1 + 40) = sub_80F5518;
     *(v1 + 24) = sub_80F4A30();
     *(v1 + 12) = sub_80F4A1C();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -99383,7 +99383,7 @@ void sub_80F4B34()
     *(v1 + 12) = sub_80F4A8C();
     *(v1 + 13) = v2;
     *(v1 + 14) = v3;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -100766,7 +100766,7 @@ void sub_80F594C()
         *(v2 + 3) = sub_800FE36();
         *(v2 + 40) = sub_80F60C4;
         *(v2 + 24) = sub_80F5A58();
-        *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+        *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
         (object_setAttack4)(9);
     }
     else
@@ -100786,7 +100786,7 @@ void sub_80F594C()
             sub_80F5AD4(0);
             *(v2 + 40) = sub_80F6154;
             *(v2 + 24) = sub_80F5A8C();
-            *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+            *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
             object_setAttack0();
             *v1 = 4;
         }
@@ -100878,7 +100878,7 @@ void sub_80F5AA0()
     *(v1 + 40) = sub_80F61B6;
     *(v1 + 48) = sub_80F61E4;
     *(v1 + 52) = v0 + 96;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -102003,7 +102003,7 @@ int sub_80F65A4()
 
     *(v1 + 3) = sub_800FE36();
     *(v1 + 40) = sub_80F6FD0;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     return (object_setAttack4)(9);
 }
 
@@ -102018,7 +102018,7 @@ void sub_80F65C4()
     *(v1 + 2) = 1;
     sub_80F663C(1);
     *(v1 + 40) = sub_80F6FD0;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -102034,7 +102034,7 @@ void sub_80F65EE()
     sub_80F663C(0);
     *(v1 + 24) = sub_80F6592();
     *(v1 + 40) = sub_80F6FEC;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -103378,7 +103378,7 @@ int sub_80F7830()
     *(v1 + 3) = sub_800FE36();
     *(v1 + 40) = sub_80F811A;
     *(v1 + 24) = sub_80F7732();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     return (object_setAttack4)(9);
 }
 
@@ -103393,7 +103393,7 @@ void sub_80F7856()
     *(v1 + 2) = 2;
     sub_80F78FA(0);
     *(v1 + 24) = sub_80F7744();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     *(v1 + 40) = sub_80F81C0;
     object_setAttack0();
 }
@@ -103412,7 +103412,7 @@ void sub_80F7886()
     *(v1 + 12) = sub_80F778C();
     *(v1 + 13) = v2;
     sub_80F78FA(1);
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     *(v1 + 40) = sub_80F8256;
     *(v1 + 48) = v0 + 96;
     object_setAttack0();
@@ -103432,7 +103432,7 @@ void __fastcall sub_80F78C4(char a1, char a2)
     sub_80F78FA(2);
     *(v3 + 24) = sub_80F77B0();
     *(v3 + 12) = sub_80F77D4();
-    *(v3 + 44) = sub_80103BC(*(v2 + 22) ^ 1);
+    *(v3 + 44) = battle_findPlayer(*(v2 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -104586,7 +104586,7 @@ void sub_80F8448()
         *(v2 + 2) = 0;
         sub_80F865C(2);
         *(v2 + 24) = sub_80F85FC();
-        *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+        *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
         *(v2 + 40) = sub_80F8DFE;
         *(v2 + 48) = v0 + 96;
         object_setAttack0();
@@ -104607,7 +104607,7 @@ _BYTE *sub_80F8540()
     int v7; // r3
 
     sub_800FE36();
-    sub_80103BC(*(v0 + 22) ^ 1);
+    battle_findPlayer(*(v0 + 22) ^ 1);
     v1 = &byte_80F8578[2 * *(v0 + 22)];
     v2 = *v1;
     v3 = v1[1];
@@ -104684,7 +104684,7 @@ int __noreturn sub_80F8610()
     int v2; // r4
     int result; // r0
 
-    v1 = sub_80103BC(*(v0 + 22) ^ 1);
+    v1 = battle_findPlayer(*(v0 + 22) ^ 1);
     v2 = *(v1 + 18);
     result = object_getClosestPanelMatchingRowFiltered(
                          *(v0 + 22),
@@ -105852,7 +105852,7 @@ int sub_80F9168()
     *(v1 + 24) = sub_80F9118();
     *(v1 + 12) = sub_80F9104();
     *(v1 + 40) = sub_80F9980;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
     return sub_80F93C2();
 }
@@ -105881,7 +105881,7 @@ void sub_80F91A2()
     sub_80F9222(1);
     *(v1 + 12) = sub_80F912C();
     *(v1 + 40) = sub_80F9992;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -105896,7 +105896,7 @@ void sub_80F91F6()
     *(v1 + 2) = 0;
     sub_80F9222(2);
     *(v1 + 24) = sub_80F9140();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -107092,7 +107092,7 @@ int sub_80F9F24()
 
     *(v1 + 40) = sub_80FAA04;
     *(v1 + 24) = sub_80F9E34();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     return (object_setAttack4)(9);
 }
 
@@ -107108,7 +107108,7 @@ void sub_80F9F44()
     sub_80F9FEC(0);
     *(v1 + 24) = sub_80F9E6C();
     *(v1 + 12) = sub_80F9E58();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -107146,7 +107146,7 @@ void sub_80F9FA6()
     *(v1 + 14) = v2;
     *(v1 + 48) = sub_80FA01A(3);
     *(v1 + 40) = byte_80FAAD5;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -108673,7 +108673,7 @@ void sub_80FAFB4()
     *(v1 + 13) = v2;
     *(v1 + 48) = v0 + 96;
     *(v1 + 40) = sub_80FB76A;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -108690,7 +108690,7 @@ void sub_80FAFF2()
     *(v1 + 24) = sub_80FAF0C();
     *(v1 + 12) = sub_80FAF30();
     *(v1 + 40) = sub_80FB7B4;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -108712,7 +108712,7 @@ void sub_80FB028()
     *(v1 + 13) = BYTE4(v2);
     *(v1 + 14) = v3;
     *(v1 + 40) = sub_80FB812;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -109949,7 +109949,7 @@ signed int sub_80FBDF4()
     int v7; // [sp+0h] [bp-10h]
     int v8; // [sp+4h] [bp-Ch]
 
-    v1 = sub_80103BC(*(v0 + 22) ^ 1);
+    v1 = battle_findPlayer(*(v0 + 22) ^ 1);
     v7 = *(v1 + 18);
     v8 = *(v1 + 19);
     v2 = 0;
@@ -109991,7 +109991,7 @@ void sub_80FBE60()
     *(v1 + 24) = sub_80FBD04();
     *(v1 + 12) = sub_80FBD18();
     *(v1 + 48) = v0 + 100;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -110012,7 +110012,7 @@ void sub_80FBE9C()
     *(v1 + 13) = sub_80FBD54();
     *(v1 + 48) = v0 + 100;
     *(v1 + 52) = v0 + 96;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -110030,7 +110030,7 @@ void sub_80FBEE8()
     *(v1 + 24) = sub_80FBD68();
     *(v1 + 12) = sub_80FBD7C();
     *(v1 + 48) = v0 + 100;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -110065,7 +110065,7 @@ void sub_80FBF54()
     *(v1 + 12) = sub_80FBDCC();
     *(v1 + 13) = sub_80FBDE0();
     *(v1 + 48) = v0 + 100;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -111923,7 +111923,7 @@ void sub_80FD158()
         *(v2 + 3) = sub_800FE36();
         *(v2 + 40) = sub_80FDA62;
         *(v2 + 24) = sub_80FD27A();
-        *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+        *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
         (object_setAttack4)(9);
     }
     else
@@ -111939,7 +111939,7 @@ void sub_80FD158()
                 *(v2 + 40) = sub_80FDAC4;
                 *(v2 + 24) = sub_80FD29C();
                 sub_80FD3CC(0);
-                *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+                *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
                 object_setAttack0();
                 return;
             }
@@ -111964,7 +111964,7 @@ void sub_80FD158()
         *(v2 + 24) = sub_80FD2C0();
         *(v2 + 12) = sub_80FD2E4();
         sub_80FD3CC(1);
-        *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+        *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
         object_setAttack0();
     }
 }
@@ -112045,7 +112045,7 @@ signed int sub_80FD31C()
     int v8; // [sp+0h] [bp-14h]
     int v9; // [sp+4h] [bp-10h]
 
-    v2 = sub_80103BC(*(v0 + 22) ^ 1);
+    v2 = battle_findPlayer(*(v0 + 22) ^ 1);
     v8 = *(v2 + 18);
     v9 = *(v2 + 19);
     v3 = *(v1 + oToolkit_S2034880_Ptr) + 160;
@@ -113180,7 +113180,7 @@ void sub_80FDE04()
         *(v2 + 3) = sub_800FE36();
         *(v2 + 40) = sub_80FE4D0;
         *(v2 + 24) = sub_80FDF4C();
-        *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+        *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
         *(v2 + 48) = *(v0 + 100);
         (object_setAttack4)(9);
     }
@@ -113208,7 +113208,7 @@ void sub_80FDE04()
                 sub_80FDFE4(0);
                 *(v2 + 24) = sub_80FDF60();
                 *(v2 + 12) = sub_80FDF84();
-                *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+                *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
             }
             else
             {
@@ -113232,7 +113232,7 @@ int sub_80FDEC4()
 
     sub_800FE36();
     sub_80FE05C(2);
-    v1 = sub_80103BC(*(v0 + 22) ^ 1);
+    v1 = battle_findPlayer(*(v0 + 22) ^ 1);
     sub_80CAC58(v1, v2, 2, v3);
     *(v0 + 100) = 0;
     result = *(v0 + 18) | 16 * *(v0 + 19);
@@ -114344,7 +114344,7 @@ int sub_80FEAFC()
     *(v1 + 40) = sub_80FF528;
     *(v1 + 24) = sub_80FE98A();
     *(v1 + 12) = *(v0 + 100);
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     return (object_setAttack4)(9);
 }
 
@@ -114365,7 +114365,7 @@ void sub_80FEB20()
     *(v1 + 13) = v2;
     *(v1 + 48) = v0 + 116;
     *(v1 + 52) = v0 + 120;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -114387,7 +114387,7 @@ void sub_80FEB64()
     *(v1 + 12) = v2;
     *(v1 + 13) = BYTE4(v2);
     *(v1 + 14) = v3;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -114408,7 +114408,7 @@ void sub_80FEB9E()
     *(v1 + 13) = sub_80FEAD8();
     *(v1 + 14) = v2;
     *(v1 + 52) = v0 + 124;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -115695,7 +115695,7 @@ int __noreturn sub_80FF6E0()
     int v10; // ST00_4
     bool v11; // zf
 
-    v1 = *(sub_80103BC(v0->Alliance ^ 1) + 19);
+    v1 = *(battle_findPlayer(v0->Alliance ^ 1) + 19);
     result = object_getClosestPanelMatchingRowFiltered(
                          v0->Alliance,
                          v1,
@@ -115795,7 +115795,7 @@ void sub_80FF904()
             *(v2 + 2) = 0;
             *(v2 + 12) = sub_80FFAD8();
             *(v2 + 48) = v0 + 96;
-            *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+            *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
             object_setAttack0();
             return;
         }
@@ -115819,7 +115819,7 @@ LABEL_11:
         *(v2 + 24) = sub_80FFAA0();
         *(v2 + 12) = sub_80FFAC4();
         *(v2 + 48) = v0 + 96;
-        *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+        *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
         object_setAttack0();
         return;
     }
@@ -115833,7 +115833,7 @@ LABEL_12:
         *(v2 + 12) = sub_80FFA78();
         *(v2 + 13) = sub_80FFA8C();
         *(v2 + 40) = sub_8100070;
-        *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+        *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
         object_setAttack0();
         return;
     }
@@ -115841,7 +115841,7 @@ LABEL_13:
     ++v1[4];
     *(v2 + 40) = sub_80FFFBC;
     *(v2 + 24) = sub_80FFA54();
-    *(v2 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v2 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     (object_setAttack4)(9);
 }
 
@@ -116928,7 +116928,7 @@ void sub_81005A6()
     *(v1 + 24) = sub_8100420();
     *(v1 + 12) = sub_8100444();
     *(v1 + 13) = sub_810040C();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -116945,7 +116945,7 @@ void sub_81005DE()
     *(v1 + 24) = sub_8100480();
     *(v1 + 12) = sub_810046C();
     *(v1 + 40) = sub_8100F8A;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -116964,7 +116964,7 @@ void sub_8100614()
     *(v1 + 24) = sub_81004C8();
     *(v1 + 12) = sub_81004A4();
     *(v1 + 13) = v2;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -116980,7 +116980,7 @@ void sub_810064C()
     sub_810067E(3);
     *(v1 + 24) = sub_8100500();
     *(v1 + 12) = sub_81004EC();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -118726,7 +118726,7 @@ int sub_8101584()
     int v7; // [sp+0h] [bp-14h]
     int v8; // [sp+4h] [bp-10h]
 
-    v1 = sub_80103BC(*(v0 + 22) ^ 1);
+    v1 = battle_findPlayer(*(v0 + 22) ^ 1);
     v7 = *(v1 + 18);
     v8 = *(v1 + 19);
     v2 = 0;
@@ -118754,7 +118754,7 @@ signed int sub_81015E4()
     int v2; // r1
     signed int result; // r0
 
-    v1 = *(sub_80103BC(*(v0 + 22) ^ 1) + 36);
+    v1 = *(battle_findPlayer(*(v0 + 22) ^ 1) + 36);
     v2 = sub_810179C(4);
     result = 0;
     if ( v1 <= v2 )
@@ -118787,7 +118787,7 @@ void __fastcall sub_810161A(char a1)
     *(v2 + 24) = sub_8101498();
     *(v2 + 13) = sub_81014AC();
     *(v2 + 40) = sub_81038A4;
-    *(v2 + 44) = sub_80103BC(*(v1 + 22) ^ 1);
+    *(v2 + 44) = battle_findPlayer(*(v1 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -118805,7 +118805,7 @@ void sub_8101652()
     *(v1 + 24) = sub_81014C0();
     *(v1 + 13) = sub_81014D4();
     *(v1 + 40) = sub_81038A4;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -118823,7 +118823,7 @@ void sub_810168C()
     *(v1 + 12) = sub_81014E8();
     *(v1 + 13) = sub_8101510();
     *(v1 + 40) = sub_81038FE;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -118840,7 +118840,7 @@ void sub_81016C8()
     *(v1 + 24) = sub_8101524();
     *(v1 + 12) = sub_8101538();
     *(v1 + 40) = sub_81038FE;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -118860,7 +118860,7 @@ void sub_81016FE()
     *(v1 + 24) = sub_8101570();
     *(v1 + 48) = v0 + 96;
     *(v1 + 40) = sub_8103936;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -122655,7 +122655,7 @@ int sub_8103F54()
     *(v1 + 12) = BYTE4(v2);
     *(v1 + 13) = v3;
     *(v1 + 14) = v4;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     return (object_setAttack4)(9);
 }
 
@@ -122675,7 +122675,7 @@ void sub_8103F80()
     *(v1 + 12) = BYTE4(v2);
     *(v1 + 13) = BYTE4(v2);
     *(v1 + 40) = sub_8104F6C;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -122695,7 +122695,7 @@ void sub_8103FB4()
     *(v1 + 12) = BYTE4(v2);
     *(v1 + 13) = BYTE4(v2);
     *(v1 + 40) = sub_8104EF8;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -122711,7 +122711,7 @@ void sub_8103FE8()
     sub_810407E(3);
     *(v1 + 48) = sub_81040AC(4);
     *(v1 + 12) = sub_8103EE4();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -122732,7 +122732,7 @@ void sub_810401C()
     *(v1 + 12) = BYTE4(v2);
     *(v1 + 13) = v3;
     *(v1 + 48) = *(v0 + 96);
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -122749,7 +122749,7 @@ void sub_8104050()
     sub_810407E(6);
     *(v1 + 12) = sub_8103F30();
     *(v1 + 13) = v2;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -125196,7 +125196,7 @@ void sub_8105784()
     *(v1 + 13) = v3;
     *(v1 + 14) = v4;
     *(v1 + 48) = v0 + 100;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -125217,7 +125217,7 @@ void sub_81057C0()
     *(v1 + 24) = v2;
     *(v1 + 12) = BYTE4(v2);
     *(v1 + 13) = v3;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -125238,7 +125238,7 @@ void sub_81057F4()
     *(v1 + 24) = v2;
     *(v1 + 12) = BYTE4(v2);
     *(v1 + 13) = v3;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -125259,7 +125259,7 @@ void sub_8105828()
     *(v1 + 24) = v2;
     *(v1 + 12) = BYTE4(v2);
     *(v1 + 13) = v3;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -125277,7 +125277,7 @@ void sub_810585C()
     *(v1 + 24) = sub_810574C();
     *(v1 + 12) = v2;
     *(v1 + 48) = *(v0 + 96);
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -127372,7 +127372,7 @@ signed int sub_8106A60()
     signed int v1; // r4
 
     v1 = 0;
-    sub_80103BC(*(v0 + 22) ^ 1);
+    battle_findPlayer(*(v0 + 22) ^ 1);
     if ( object_getFlag() & 0x800 )
         v1 = 1;
     return v1;
@@ -127491,7 +127491,7 @@ int sub_8106BB8()
 
     *(v1 + 40) = sub_81078C2;
     *(v1 + 24) = sub_8106A84();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     return (object_setAttack4)(9);
 }
 
@@ -127508,7 +127508,7 @@ void sub_8106BD8()
     *(v1 + 40) = sub_8107914;
     *(v1 + 24) = sub_8106AA8();
     *(v1 + 12) = sub_8106ABC();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -127541,7 +127541,7 @@ void sub_8106C34()
     *(v1 + 24) = sub_8106B0C();
     *(v1 + 12) = sub_8106B20();
     *(v1 + 13) = v2;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -127561,7 +127561,7 @@ void sub_8106C6C()
     *(v1 + 24) = sub_8106B44();
     *(v1 + 12) = sub_8106B58();
     *(v1 + 13) = v2;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -127579,7 +127579,7 @@ void sub_8106CAC()
     *(v1 + 24) = sub_8106B7C();
     *(v1 + 12) = sub_8106B90();
     *(v1 + 13) = sub_8106BA4();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -129751,7 +129751,7 @@ int sub_8107FF4()
 
     *(v1 + 40) = sub_8108C10;
     *(v1 + 24) = sub_8107EB0();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     return (object_setAttack4)(9);
 }
 
@@ -129767,7 +129767,7 @@ void sub_8108014()
     sub_8108124(0);
     *(v1 + 24) = sub_8107EE8();
     *(v1 + 12) = sub_8107EFC();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -129803,7 +129803,7 @@ void sub_810806E()
     *(v1 + 24) = sub_8107F48();
     *(v1 + 12) = sub_8107F5C();
     *(v1 + 13) = v2;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -129823,7 +129823,7 @@ void sub_81080A6()
     *(v1 + 24) = sub_8107F80();
     *(v1 + 12) = sub_8107F94();
     *(v1 + 13) = v2;
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -129841,7 +129841,7 @@ void sub_81080E6()
     *(v1 + 24) = sub_8107FB8();
     *(v1 + 12) = sub_8107FCC();
     *(v1 + 13) = sub_8107FE0();
-    *(v1 + 44) = sub_80103BC(*(v0 + 22) ^ 1);
+    *(v1 + 44) = battle_findPlayer(*(v0 + 22) ^ 1);
     object_setAttack0();
 }
 
@@ -131844,7 +131844,7 @@ int __fastcall sub_810971A(int a1, int a2, int a3)
 
 
 // 0x8109746
-int sub_8109746()
+int CheckIfOpposingAllianceInObjectRow()
 {
     Battle *v0; // r5
     int v1; // r2
@@ -134721,7 +134721,7 @@ int __fastcall sub_810B6B4(int a1, int a2, int a3)
     int v7; // r3
 
     sub_81096FA(*(v3 + 18), *(v3 + 19), a3, byte_810B6E0);
-    return sub_8015D80(v4, v5, v6, v7);
+    return panelFlagCheck_8015D80(v4, v5, v6, v7);
 }
 
 

@@ -1338,7 +1338,7 @@ u32 sub_800FAE0()
     u32 result; // r0
 
     v1 = *(v0 + oToolkit_S2034880_Ptr);
-    result = sub_80103BC(*(v1 + 13));
+    result = battle_findPlayer(*(v1 + 13));
     if ( result )
         *(v1 + 52) = *(result + 36);
     return result;
@@ -1916,7 +1916,7 @@ char *__fastcall sub_8010018(int a1)
 // 0x8010022
 int __fastcall sub_8010022(int a1)
 {
-    return *(sub_80103BC(a1) + 88);
+    return *(battle_findPlayer(a1) + 88);
 }
 
 
@@ -1988,7 +1988,7 @@ int sub_801010C()
     int v0; // r5
     int result; // r0
 
-    result = *(sub_80103BC(*(v0 + 22)) + 88);
+    result = *(battle_findPlayer(*(v0 + 22)) + 88);
     *(v0 + 88) = result;
     return result;
 }
@@ -2243,7 +2243,7 @@ int __fastcall sub_80102AC(int a1)
         v3 = byte_80102F8[result];
         if ( byte_80102F8[result] )
         {
-            result = sub_80103BC(v1);
+            result = battle_findPlayer(v1);
             v4 = result;
             if ( result )
             {
@@ -2372,7 +2372,7 @@ signed int __fastcall sub_80103A8(int a1)
 
 
 // 0x80103bc
-u32 __fastcall sub_80103BC(int a1)
+u32 __fastcall battle_findPlayer(int a1)
 {
     Toolkit *tk; // r10
     u32 *v2; // r6
@@ -2402,7 +2402,7 @@ u32 sub_80103EC()
     int v0; // r0
 
     v0 = sub_800A7E2();
-    return sub_80103BC(v0);
+    return battle_findPlayer(v0);
 }
 
 
@@ -2586,7 +2586,7 @@ int __fastcall sub_8010548(int a1)
 // 0x801055e
 int __fastcall sub_801055E(int a1)
 {
-    return *(*(sub_80103BC(a1) + 88) + 32);
+    return *(*(battle_findPlayer(a1) + 88) + 32);
 }
 
 
@@ -2730,7 +2730,7 @@ signed int __fastcall sub_80106C0(int a1)
         return 0;
     v6 = sub_80136CC(v3, 13);
     sub_80136B0(v3, 13, v6 & 0xFD);
-    v7 = sub_80103BC(v3);
+    v7 = battle_findPlayer(v3);
     v8 = v7;
     v9 = sub_80E90FE(*(v7 + 18), *(v7 + 19), 0, 0);
     sub_800BF16(*(v8 + 22), 1, v9);
@@ -2759,7 +2759,7 @@ signed int __fastcall sub_8010740(int a1)
         return 0;
     v5 = sub_80136CC(v3, 13);
     sub_80136B0(v3, 13, v5 & 0xFE);
-    v6 = sub_80103BC(v3);
+    v6 = battle_findPlayer(v3);
     v7 = v6;
     v8 = sub_80E90FE(*(v6 + 18), *(v6 + 19), 0, 0);
     sub_800BF16(*(v7 + 22), 1, v8);
@@ -2957,7 +2957,7 @@ signed int __fastcall sub_8010A90(int a1, int a2)
     v3 = a2;
     if ( sub_802D246() & 8 )
     {
-        result = *(sub_80103BC(v3 ^ 1) + 36);
+        result = *(battle_findPlayer(v3 ^ 1) + 36);
         if ( result > 500 )
             result = 500;
     }
@@ -3060,7 +3060,7 @@ char *__fastcall sub_8010BD0(int a1, int a2)
 {
     char *result; // r0
 
-    result = sub_80103BC(a2);
+    result = battle_findPlayer(a2);
     if ( result )
     {
         result = (*(result + 19) - *(result + 18));
@@ -3077,7 +3077,7 @@ u32 __fastcall sub_8010BF0(int a1, int a2)
     u32 result; // r0
     __int16 v3; // t1
 
-    result = sub_80103BC(a2);
+    result = battle_findPlayer(a2);
     if ( result )
     {
         v3 = *(result + 36);
@@ -3101,7 +3101,7 @@ int __fastcall sub_8010C06(int a1, int a2)
     v3 = a2;
     if ( sub_802D246() & 8 )
     {
-        result = sub_80103BC(v3 ^ 1);
+        result = battle_findPlayer(v3 ^ 1);
         if ( !result )
             return result;
         v4 = *(result + 38);
@@ -3135,7 +3135,7 @@ int __fastcall sub_8010C50(int a1, int a2)
     unsigned __int16 *v4; // r0
 
     v2 = a1;
-    result = sub_80103BC(a2);
+    result = battle_findPlayer(a2);
     if ( result )
     {
         v4 = getChip8021DA8(v2);
@@ -8303,7 +8303,7 @@ Battle *__fastcall sub_8013FD0(int a1)
     int v4; // r1
     int v5; // r2
 
-    result = sub_80103BC(a1);
+    result = battle_findPlayer(a1);
     v2 = result;
     if ( result )
     {
@@ -8368,7 +8368,7 @@ int __fastcall sub_8014040(int a1)
     int v8; // r1
     int v9; // r2
 
-    v1 = sub_80103BC(a1);
+    v1 = battle_findPlayer(a1);
     result = sub_802D246();
     if ( !(result & 8) )
     {
@@ -8564,7 +8564,7 @@ int sub_8014216()
         v4 = battle_networkInvert(*(v0 + 22));
         if ( !v4 )
         {
-            v4 = sub_80103BC(*(v0 + 22) ^ 1);
+            v4 = battle_findPlayer(*(v0 + 22) ^ 1);
             if ( v4 )
                 v4 = sub_801DC36();
         }
@@ -8836,7 +8836,7 @@ int __fastcall sub_801444E(int a1)
     int v1; // r3
     int result; // r0
 
-    v1 = *(sub_80103BC(a1) + 88);
+    v1 = *(battle_findPlayer(a1) + 88);
     result = 0;
     *(v1 + 50) = 0;
     return result;
@@ -8887,7 +8887,7 @@ int __fastcall sub_8014482(int a1)
     int v1; // r3
     int result; // r0
 
-    v1 = *(sub_80103BC(a1) + 88);
+    v1 = *(battle_findPlayer(a1) + 88);
     result = 0;
     *(v1 + 54) = 0;
     return result;
@@ -8949,7 +8949,7 @@ int sub_80144C0()
         v4 = battle_networkInvert(v0->Alliance);
         if ( !v4 )
         {
-            v4 = sub_80103BC(v0->Alliance ^ 1);
+            v4 = battle_findPlayer(v0->Alliance ^ 1);
             if ( v4 )
                 v4 = sub_801DC36();
         }
@@ -11178,7 +11178,7 @@ signed int __fastcall sub_8015B64(int a1)
 
     v1 = a1;
     v2 = sub_8013682(a1);
-    v3 = *(sub_80103BC(v1) + 88);
+    v3 = *(battle_findPlayer(v1) + 88);
     v4 = v2[44];
     result = 5;
     if ( !v3[27] )
@@ -11215,7 +11215,7 @@ signed int __fastcall sub_8015BA8(int a1)
 
     v1 = a1;
     v2 = GetBattleNaviStats2034A60Addr(a1);
-    v3 = *(sub_80103BC(v1) + 88);
+    v3 = *(battle_findPlayer(v1) + 88);
     v4 = v2[44];
     result = 5;
     if ( v3[27] )
@@ -11250,7 +11250,7 @@ char *__fastcall sub_8015BEC(int a1, char a2)
 
     v2 = a1;
     v3 = a2;
-    result = sub_80103BC(a1);
+    result = battle_findPlayer(a1);
     if ( result )
     {
         result = sub_801445C();
@@ -11433,7 +11433,7 @@ int __fastcall __noreturn sub_8015CC0(int a1, int a2, int a3, int a4)
 
 
 // 0x8015d80
-int __fastcall sub_8015D80(int a1, int a2, int a3, int a4)
+int __fastcall panelFlagCheck_8015D80(int a1, int a2, int a3, int a4)
 {
     char *v4; // r4
     int v5; // r0
@@ -12448,7 +12448,7 @@ int sub_8016934()
         }
         else
         {
-            result = sub_80103BC(*(v0 + 22) ^ 1);
+            result = battle_findPlayer(*(v0 + 22) ^ 1);
             if ( result )
             {
                 result = object_getFlag();
@@ -12492,7 +12492,7 @@ int sub_80169BE()
     }
     else
     {
-        result = sub_80103BC(*(v0 + 22) ^ 1);
+        result = battle_findPlayer(*(v0 + 22) ^ 1);
         if ( result )
         {
             result = object_getFlag();
@@ -13039,7 +13039,7 @@ int __noreturn sub_8016F56()
     if ( v7 & 1 )
         object_setFlag1(0x20000);
     sub_801DB84();
-    v9 = sub_80103BC(*(v0 + 22) ^ 1);
+    v9 = battle_findPlayer(*(v0 + 22) ^ 1);
     sub_800F318(v9);
     v10 = sub_802D26A();
     if ( v10 == 56 || v10 == 48 || v10 == 60 )
@@ -14675,7 +14675,7 @@ int sub_80181F6()
     result = *(*(v1 + oToolkit_S2034880_Ptr) + 13) ^ v3;
     if ( *(*(v1 + oToolkit_S2034880_Ptr) + 13) != v3 )
     {
-        result = sub_80103BC(v0[22] ^ 1);
+        result = battle_findPlayer(v0[22] ^ 1);
         if ( result )
         {
             result = object_getFlag();
