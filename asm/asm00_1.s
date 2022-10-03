@@ -1916,7 +1916,7 @@ off_8003EC0: .word dword_2039A10
 T3BattleObjectJumptable: .word sub_80C4E58+1
 	.word sub_80C50B8+1
 	.word sub_80C51AC+1
-	.word sub_80C52B0+1
+	.word battle_t3id3_main_80c52b0+1
 	.word sub_80C53C0+1
 	.word sub_80C55B0+1
 	.word sub_80C57C0+1
@@ -15929,6 +15929,8 @@ loc_800B058:
 	mov r1, #0xa
 	add r1, r1, r6
 	bl GetBattleNaviStatsByte
+	// game seems to actually keep track how many mega/giga chips you've used (or drawn?)
+	// if you've used/drawn too much, then it'll replace the chip with an error chip
 	ldr r1, off_800B108 // =dword_20367E0
 	ldrb r1, [r1,r6]
 	cmp r1, r0

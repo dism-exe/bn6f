@@ -3800,7 +3800,7 @@ int sub_800ED00()
     signed int v2; // r2
     int result; // r0
 
-    v0 = &unk_2034080;
+    v0 = &eAIData;
     v1 = 2147483648;
     v2 = 0;
     do
@@ -3812,7 +3812,7 @@ int sub_800ED00()
     }
     while ( v2 < 8 );
     result = 0;
-    *byte_203F6A0 = 0;
+    *eUsedAIDataBitfield = 0;
     return result;
 }
 
@@ -3825,10 +3825,10 @@ char *object_createAIData()
     int v2; // r4
     char *v4; // r4
 
-    v0 = &unk_2034080;
+    v0 = &eAIData;
     v1 = 2147483648;
     v2 = 0;
-    while ( *byte_203F6A0 & v1 )
+    while ( *eUsedAIDataBitfield & v1 )
     {
         if ( ++v2 < 8 )
         {
@@ -3839,7 +3839,7 @@ char *object_createAIData()
         }
         return 0;
     }
-    *byte_203F6A0 |= v1;
+    *eUsedAIDataBitfield |= v1;
     v4 = v0;
     ZeroFillByWord(v0, 124);
     ZeroFillByWord(v4 + 128, 32);

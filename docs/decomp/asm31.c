@@ -23110,7 +23110,7 @@ int __fastcall sub_80C529A(char a1, int a2, int a3, int a4)
 
 
 // 0x80c52b0
-int sub_80C52B0()
+int battle_t3id3_main_80c52b0()
 {
     int v0; // r5
 
@@ -25186,7 +25186,7 @@ int __fastcall sub_80C6726(int a1)
 {
     int v1; // r5
 
-    sub_801A082(a1, 4, 5, 1);
+    object_updateCollisionData(a1, 4, 5, 1);
     return sub_8019F8C(*(v1 + 14));
 }
 
@@ -25536,7 +25536,7 @@ int __fastcall sub_80C6AB8(int a1)
     int v2; // r3
     int result; // r0
 
-    sub_801A082(a1, 4, 5, *(*(v1 + 96) + 1));
+    object_updateCollisionData(a1, 4, 5, *(*(v1 + 96) + 1));
     sub_8019F8C(*(v1 + 14));
     v2 = *(v1 + 96);
     result = *(v2 + 3);
@@ -31676,7 +31676,7 @@ int sub_80CA834()
     if ( !*(v0 + 100) && 5 * (*(v0 + 22) ^ 1) + 1 == *(v0 + 18) )
     {
         *(v0 + 100) = 1;
-        sub_801A082(1, 6, 5, 1);
+        object_updateCollisionData(1, 6, 5, 1);
     }
     result = *(v0 + 32) - 1;
     *(v0 + 32) = result;
@@ -31730,7 +31730,7 @@ int sub_80CA88E()
                 v4 = 0x40000;
                 *(v0 + 72) = 0x40000;
             }
-            sub_801A082(v4, 6, 5, 3);
+            object_updateCollisionData(v4, 6, 5, 3);
             *(v0 + 9) = 8;
             result = 0;
             *(v0 + 10) = 0;
@@ -47869,7 +47869,7 @@ int sub_80D4870()
     if ( !*(v0 + 10) )
     {
         *(v0 + 10) = 1;
-        result = sub_801A082(1, 14, 15, 3);
+        result = object_updateCollisionData(1, 14, 15, 3);
     }
     return result;
 }
@@ -56171,7 +56171,7 @@ int __noreturn sub_80D9C1C()
     int result; // r0
 
     *(v0 + 60) = 0;
-    sub_801A082(0, 12, 13, 3);
+    object_updateCollisionData(0, 12, 13, 3);
     *(v0 + 16) = 1;
     v1 = *(v0 + 96);
     *(v0 + 32) = *v1 + 1;
@@ -56456,7 +56456,7 @@ int sub_80D9F2C()
     if ( (result < 0) ^ v2 )
     {
         v4 = object_setCollisionRegion(16);
-        sub_801A082(v4, 4, 5, 0);
+        object_updateCollisionData(v4, 4, 5, 0);
         v5 = *(v0 + 22);
         sub_801BD3C(*(v0 + 18), *(v0 + 19), 74, 15);
         camera_initShakeEffect_80302a8(1, 15);
@@ -82230,7 +82230,7 @@ int __fastcall sub_80E95D8(int a1, int a2, int a3)
         v23[28] = 1;
         v23[29] = 1;
         v24 = sub_80107C0(v23);
-        sub_801A082(v24, 16, 2, v25);
+        object_updateCollisionData(v24, 16, 2, v25);
         v3 = v29;
     }
     if ( v3->Timer == 28 )
@@ -94129,7 +94129,7 @@ int sub_80F11BC()
         object_setFlag1(64);
         object_setFlag1(0x400000);
         v4 = object_setInvulnerableTime(0xFFFF);
-        sub_801A082(v4, 1, 2, 0);
+        object_updateCollisionData(v4, 1, 2, 0);
         v5 = v0->collisionData;
         *(v5 + 46) = 0;
         *(v5 + 7) = 0;
@@ -94216,7 +94216,7 @@ int sub_80F12AC()
         object_clearFlag(64);
         object_clearFlag(0x400000);
         v4 = sub_800EB08();
-        sub_801A082(v4, 1, 2, 3);
+        object_updateCollisionData(v4, 1, 2, 3);
         v5 = *(v0 + 44);
         v6 = *(v0 + 84);
         *(v6 + 46) = v5;
@@ -96402,7 +96402,7 @@ int sub_80F2C90()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 16, 2, 3);
+    object_updateCollisionData(v1, 16, 2, 3);
     object_setCollisionRegion(1);
     result = *(v0 + 44) & 0xFFFF;
     v3 = *(v0 + 84);
@@ -97189,7 +97189,7 @@ int sub_80F3396()
         object_removePanelReserve(v2, v3);
         object_setCoordinatesFromPanels(v0);
         v4 = object_updateCollisionPanels(v0);
-        sub_801A082(v4, 16, 2, 3);
+        object_updateCollisionData(v4, 16, 2, 3);
         v5 = *(v0 + 44);
         v6 = *(v0 + 84);
         *(v6 + 46) = v5;
@@ -99213,7 +99213,7 @@ signed int __noreturn sub_80F4964()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 1, 2, 3);
+    object_updateCollisionData(v1, 1, 2, 3);
     object_setCollisionRegion(1);
     v2 = v0[11] & 0xFFFF;
     v3 = v0[21];
@@ -99996,7 +99996,7 @@ int __fastcall sub_80F50E2(int a1, int a2, int a3)
         {
             v3->currAnimation = 19;
             v8 = PlaySoundEffect(356, a2, a3);
-            sub_801A082(v8, 83, 2, 3);
+            object_updateCollisionData(v8, 83, 2, 3);
             v9 = *(v4 + 8);
             v10 = v3->collisionData;
             v10->selfDamage = v9;
@@ -100114,7 +100114,7 @@ int sub_80F5208()
     {
         *(v1 + 1) = 4;
         *(v0 + 16) = 7;
-        sub_801A082(7, 1, 2, 3);
+        object_updateCollisionData(7, 1, 2, 3);
         v2 = *(v0 + 44);
         v3 = *(v0 + 84);
         *(v3 + 46) = v2;
@@ -100835,7 +100835,7 @@ signed int __noreturn sub_80F5A1A()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 1, 2, 3);
+    object_updateCollisionData(v1, 1, 2, 3);
     object_setCollisionRegion(1);
     v2 = v0[11] & 0xFFFF;
     v3 = v0[21];
@@ -101927,7 +101927,7 @@ int sub_80F64F4()
     v2 = *(v0 + 19);
     *(v0 + 96) = v1;
     *(v0 + 100) = v2;
-    return sub_801A082(v1, 53, 2, 3);
+    return object_updateCollisionData(v1, 53, 2, 3);
 }
 
 
@@ -101978,7 +101978,7 @@ int sub_80F6560()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 53, 2, 3);
+    object_updateCollisionData(v1, 53, 2, 3);
     object_setCollisionRegion(1);
     result = *(v0 + 44) & 0xFFFF;
     v3 = *(v0 + 84);
@@ -102329,7 +102329,7 @@ void __fastcall __noreturn sub_80F6994(int a1, int a2, int a3)
         *(v4 + 1) = 4;
         v5 = sub_80F7500(10, a2, a3);
         *(v4 + 48) = v5;
-        sub_801A082(v5, 81, 2, 3);
+        object_updateCollisionData(v5, 81, 2, 3);
         v6 = *(v4 + 8);
         v7 = *(v3 + 84);
         *(v7 + 46) = v6;
@@ -103128,7 +103128,7 @@ int sub_80F73FA()
     object_clearFlag(64);
     object_setFlag1(0x80000);
     v1 = object_clearFlag(0x400000);
-    sub_801A082(v1, 53, 2, 3);
+    object_updateCollisionData(v1, 53, 2, 3);
     result = *(v0 + 44) & 0xFFFF;
     v3 = *(v0 + 84);
     *(v3 + 46) = result;
@@ -103271,7 +103271,7 @@ signed int __noreturn sub_80F76F4()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 1, 2, 3);
+    object_updateCollisionData(v1, 1, 2, 3);
     object_setCollisionRegion(1);
     v2 = v0[11] & 0xFFFF;
     v3 = v0[21];
@@ -104633,7 +104633,7 @@ int sub_80F8580()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 1, 2, 3);
+    object_updateCollisionData(v1, 1, 2, 3);
     object_setCollisionRegion(1);
     result = *(v0 + 44) & 0xFFFF;
     v3 = *(v0 + 84);
@@ -105764,7 +105764,7 @@ int sub_80F9088()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 16, 2, 3);
+    object_updateCollisionData(v1, 16, 2, 3);
     object_setCollisionRegion(1);
     result = *(v0 + 44) & 0xFFFF;
     v3 = *(v0 + 84);
@@ -106600,7 +106600,7 @@ int sub_80F97C0()
     else
     {
         *(v1 + 1) = 4;
-        sub_801A082(4, 53, 2, 3);
+        object_updateCollisionData(4, 53, 2, 3);
         v2 = *(v1 + 8);
         v3 = *(v0 + 84);
         *(v3 + 46) = v2;
@@ -106666,7 +106666,7 @@ int sub_80F98C0()
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
         v6 = object_setFlag1(0x80000);
-        sub_801A082(v6, 16, 2, 3);
+        object_updateCollisionData(v6, 16, 2, 3);
         object_setCollisionRegion(1);
         v7 = *(v0 + 44);
         v8 = *(v0 + 84);
@@ -106994,7 +106994,7 @@ int sub_80F9DF2()
     sub_801DC7C(0, 0);
     sprite_hasShadow();
     *(v0 + 62) = 0;
-    sub_801A082(0, 1, 2, 3);
+    object_updateCollisionData(0, 1, 2, 3);
     object_setCollisionRegion(1);
     result = *(v0 + 44) & 0xFFFF;
     v2 = *(v0 + 84);
@@ -107430,7 +107430,7 @@ int __fastcall sub_80FA284(int a1, int a2, int a3)
         *(v4 + 1) = 4;
         v3->currAnimation = 19;
         v5 = PlaySoundEffect(447, a2, a3);
-        sub_801A082(v5, 58, 2, 3);
+        object_updateCollisionData(v5, 58, 2, 3);
         v6 = *(v4 + 8);
         v7 = v3->collisionData;
         v7->selfDamage = v6;
@@ -107551,7 +107551,7 @@ int sub_80FA37C()
         object_removePanelReserve(v2, v3);
         object_setCoordinatesFromPanels(v0);
         v4 = object_updateCollisionPanels(v0);
-        sub_801A082(v4, 1, 2, 3);
+        object_updateCollisionData(v4, 1, 2, 3);
         v5 = *(v0 + 44);
         v6 = *(v0 + 84);
         *(v6 + 46) = v5;
@@ -107762,7 +107762,7 @@ int sub_80FA540()
         object_updateCollisionPanels(v0);
         *(v0 + 16) = 21;
         *(v0 + 62) = 20;
-        sub_801A082(20, 53, 2, 3);
+        object_updateCollisionData(20, 53, 2, 3);
         v3 = *(v1 + 8);
         v4 = *(v0 + 84);
         *(v4 + 46) = v3;
@@ -107865,7 +107865,7 @@ int sub_80FA644()
         object_clearFlag(64);
         object_setFlag1(0x80000);
         v4 = object_clearFlag(0x400000);
-        sub_801A082(v4, 1, 2, 3);
+        object_updateCollisionData(v4, 1, 2, 3);
         v5 = *(v0 + 44);
         v6 = *(v0 + 84);
         *(v6 + 46) = v5;
@@ -108110,7 +108110,7 @@ int __fastcall sub_80FA81E(int a1, int a2, int a3)
     {
         *(v4 + 1) = 4;
         v5 = PlaySoundEffect(449, a2, a3);
-        sub_801A082(v5, 53, 2, 3);
+        object_updateCollisionData(v5, 53, 2, 3);
         v6 = *(v4 + 8);
         v7 = v3->collisionData;
         v7->selfDamage = v6;
@@ -108224,7 +108224,7 @@ int sub_80FA968()
         object_clearFlag(64);
         object_setFlag1(0x80000);
         v4 = object_clearFlag(0x400000);
-        sub_801A082(v4, 1, 2, 3);
+        object_updateCollisionData(v4, 1, 2, 3);
         object_setCollisionRegion(1);
         v5 = *(v0 + 44);
         v6 = *(v0 + 84);
@@ -108552,7 +108552,7 @@ int sub_80FAE60()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 1, 2, 3);
+    object_updateCollisionData(v1, 1, 2, 3);
     object_setCollisionRegion(1);
     v2 = v0[11];
     v3 = v0[21];
@@ -109830,7 +109830,7 @@ int __noreturn sub_80FBCA2()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 1, 2, 3);
+    object_updateCollisionData(v1, 1, 2, 3);
     object_setCollisionRegion(1);
     v2 = *(v0 + 44);
     v3 = *(v0 + 84);
@@ -111336,7 +111336,7 @@ int sub_80FCA4E()
             object_reservePanel(v6, v7);
             object_setFlag1(64);
             v8 = object_setFlag1(0x400000);
-            sub_801A082(v8, 83, 2, 1);
+            object_updateCollisionData(v8, 83, 2, 1);
             v9 = *(v1 + 8);
             v10 = *(v0 + 84);
             *(v10 + 46) = v9;
@@ -111569,7 +111569,7 @@ void sub_80FCC4C()
         *(v0 + 16) = 3;
         v2 = object_getFlip(v0);
         v3 = sprite_setFlip(v0, v2);
-        sub_801A082(v3, 1, 2, 3);
+        object_updateCollisionData(v3, 1, 2, 3);
         v4 = *(v0 + 44);
         v5 = *(v0 + 84);
         *(v5 + 46) = v4;
@@ -114221,7 +114221,7 @@ int sub_80FE958()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 1, 2, 3);
+    object_updateCollisionData(v1, 1, 2, 3);
     object_setCollisionRegion(1);
     result = *(v0 + 44) & 0xFFFF;
     v3 = *(v0 + 84);
@@ -115863,7 +115863,7 @@ int sub_80FFA22()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 1, 2, 3);
+    object_updateCollisionData(v1, 1, 2, 3);
     object_setCollisionRegion(1);
     result = *(v0 + 44) & 0xFFFF;
     v3 = *(v0 + 84);
@@ -116746,7 +116746,7 @@ signed int __noreturn sub_81003AC()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 1, 2, 3);
+    object_updateCollisionData(v1, 1, 2, 3);
     object_setCollisionRegion(1);
     v2 = v0[11] & 0xFFFF;
     v3 = v0[21];
@@ -118875,7 +118875,7 @@ int sub_810173C()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 1, 2, 3);
+    object_updateCollisionData(v1, 1, 2, 3);
     object_setCollisionRegion(1);
     result = *(v0 + 44) & 0xFFFF;
     v3 = *(v0 + 84);
@@ -122509,7 +122509,7 @@ int sub_8103DC4()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 1, 2, 3);
+    object_updateCollisionData(v1, 1, 2, 3);
     object_setCollisionRegion(2);
     v0[15] = 0;
     result = v0[11] & 0xFFFF;
@@ -123832,7 +123832,7 @@ int sub_81048AA()
     {
         *(v1 + 1) = 4;
         *(v0 + 16) = 79;
-        sub_801A082(79, 53, 2, 3);
+        object_updateCollisionData(79, 53, 2, 3);
         v2 = *(v1 + 48);
         v3 = *(v0 + 84);
         *(v3 + 46) = v2;
@@ -123983,7 +123983,7 @@ int sub_8104A30()
         object_clearFlag(64);
         object_setFlag1(0x80000);
         v3 = object_clearFlag(0x400000);
-        sub_801A082(v3, 1, 2, 3);
+        object_updateCollisionData(v3, 1, 2, 3);
         v4 = *(v0 + 44);
         v5 = *(v0 + 84);
         *(v5 + 46) = v4;
@@ -124328,7 +124328,7 @@ int __fastcall sub_8104CC6(int a1, int a2, int a3)
         v3->currAnimation = 77;
         PlaySoundEffect(455, a2, a3);
         v5 = object_setCollisionRegion(29);
-        sub_801A082(v5, 58, 2, 3);
+        object_updateCollisionData(v5, 58, 2, 3);
         v6 = *(v4 + 8);
         v7 = v3->collisionData;
         v7->selfDamage = v6;
@@ -124435,7 +124435,7 @@ int sub_8104DC8()
         object_setFlag1(0x80000);
         object_clearFlag(0x400000);
         v3 = object_setCollisionRegion(2);
-        sub_801A082(v3, 1, 2, 3);
+        object_updateCollisionData(v3, 1, 2, 3);
         v4 = *(v0 + 44);
         v5 = *(v0 + 84);
         *(v5 + 46) = v4;
@@ -127355,7 +127355,7 @@ signed int __noreturn sub_8106A22()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 1, 2, 3);
+    object_updateCollisionData(v1, 1, 2, 3);
     object_setCollisionRegion(1);
     v2 = v0[11] & 0xFFFF;
     v3 = v0[21];
@@ -129627,7 +129627,7 @@ signed int __noreturn sub_8107E72()
 
     object_clearFlag(64);
     v1 = sub_801DC7C(0, 0);
-    sub_801A082(v1, 16, 2, 3);
+    object_updateCollisionData(v1, 16, 2, 3);
     object_setCollisionRegion(1);
     v2 = v0[11] & 0xFFFF;
     v3 = v0[21];

@@ -2570,57 +2570,18 @@ eActiveT1BattleObjectsBitfield:: // 0x2034000
 unk_2034010:: // 0x2034010
 	.space 8
 unk_2034018:: // 0x2034018
-	.space 1
-byte_2034019:: // 0x2034019
-	.space 1
-byte_203401A:: // 0x203401a
-	.space 1
-byte_203401B:: // 0x203401b
-	.space 1
-byte_203401C:: // 0x203401c
-	.space 1
-byte_203401D:: // 0x203401d
-	.space 1
-word_203401E:: // 0x203401e
-	.space 98
+	.space 104
 // eAIData
-unk_2034080:: // 0x2034080
-	.space 124
-	.space 740
-unk_20343E0:: // 0x20343e0
-	.space 32
-unk_2034400:: // 0x2034400
-	.space 88
-unk_2034458:: // 0x2034458
-	.space 224
-unk_2034538:: // 0x2034538
-	.space 56
-unk_2034570:: // 0x2034570
-	.space 56
-unk_20345A8:: // 0x20345a8
-	.space 28
-unk_20345C4:: // 0x20345c4
-	.space 56
-eTileIds20345FC:: // 0x20345fc
-	.space 224
-eTileIds20346DC:: // 0x20346dc
-	.space 56
-eTileIds2034714:: // 0x2034714
-	.space 56
-eTileIds203474C:: // 0x203474c
-	.space 28
-eTileIds2034768:: // 0x2034768
-	.space 56
-eTileIds20347A0:: // 0x20347a0
-	.space 56
-unk_20347D8:: // 0x20347d8
-	.space 40
-dword_2034800:: // 0x2034800
-	.space 20
-unk_2034814:: // 0x2034814
-	.space 88
-unk_203486C:: // 0x203486c
-	.space 20
+
+eAIData:: // 0x2034080
+	ai_data_struct eAIData0
+	ai_data_struct eAIData1
+	ai_data_struct eAIData2
+	ai_data_struct eAIData3
+	ai_data_struct eAIData4
+	ai_data_struct eAIData5
+	ai_data_struct eAIData6
+	ai_data_struct eAIData7
 
 eBattleState:: // 0x2034880
 	battle_state_struct eBattleState
@@ -3405,7 +3366,7 @@ byte_203F66C:: // 0x203f66c
 	.space 40
 byte_203F694:: // 0x203f694
 	.space 12
-byte_203F6A0:: // 0x203f6a0
+eUsedAIDataBitfield:: // 0x203f6a0
 	.space 16
 byte_203F6B0:: // 0x203f6b0
 	.space 1
@@ -3426,7 +3387,44 @@ dword_203F7E0:: // 0x203f7e0
 
 	.section ewram_2034000
 
-	.space 13964
+	.space 0x3e0
+
+unk_20343E0:: // 0x20343e0
+	.space 32
+unk_2034400:: // 0x2034400
+	.space 88
+unk_2034458:: // 0x2034458
+	.space 224
+unk_2034538:: // 0x2034538
+	.space 56
+unk_2034570:: // 0x2034570
+	.space 56
+unk_20345A8:: // 0x20345a8
+	.space 28
+unk_20345C4:: // 0x20345c4
+	.space 56
+eTileIds20345FC:: // 0x20345fc
+	.space 224
+eTileIds20346DC:: // 0x20346dc
+	.space 56
+eTileIds2034714:: // 0x2034714
+	.space 56
+eTileIds203474C:: // 0x203474c
+	.space 28
+eTileIds2034768:: // 0x2034768
+	.space 56
+eTileIds20347A0:: // 0x20347a0
+	.space 56
+unk_20347D8:: // 0x20347d8
+	.space 40
+dword_2034800:: // 0x2034800
+	.space 20
+unk_2034814:: // 0x2034814
+	.space 88
+unk_203486C:: // 0x203486c
+	.space 20
+
+	.space 11788
 
 // this intersects t4 battle objects
 unk_203768C:: // 0x203768c

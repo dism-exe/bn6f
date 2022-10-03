@@ -2,12 +2,12 @@
 	thumb_func_start sub_800ED80
 sub_800ED80:
 	ldr r1, [r0,#oAIData_Unk_7c]
-	ldr r2, off_800ED8C // =byte_203F6A0 
+	ldr r2, off_800ED8C // =eUsedAIDataBitfield 
 	ldr r3, [r2]
 	bic r3, r1
 	str r3, [r2]
 	mov pc, lr
-off_800ED8C: .word byte_203F6A0
+off_800ED8C: .word eUsedAIDataBitfield
 	thumb_func_end sub_800ED80
 
 	thumb_func_start sub_800ED90
@@ -10292,14 +10292,14 @@ loc_8013956:
 	bl sub_80107C0
 	mov r1, #0x10
 	mov r2, #2
-	bl sub_801A082
+	bl object_updateCollisionData
 	b loc_8013980
 loc_8013970:
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_80107C0
 	mov r1, #1
 	mov r2, #2
-	bl sub_801A082
+	bl object_updateCollisionData
 loc_8013980:
 	mov r0, #0x10
 	ldrb r1, [r6,#0x1c]
@@ -11261,7 +11261,7 @@ sub_8014080:
 	bl sub_80107C0
 	mov r1, #1
 	mov r2, #2
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r1, #0x1b
 	mov r2, #0
 	bl SetBattleNaviStatsByte_AllianceFromBattleObject
@@ -11308,7 +11308,7 @@ sub_80140EE:
 	bl sub_80107C0
 	mov r1, #1
 	mov r2, #2
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r1, #0x1b
 	mov r2, #0
 	bl SetBattleNaviStatsByte_AllianceFromBattleObject
@@ -12024,7 +12024,7 @@ sub_8014606:
 	bl sub_80107C0
 	mov r1, #0x10
 	mov r2, #2
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r7, #0x40 
 	add r7, r7, r6
 	ldr r0, [r7]
@@ -12086,7 +12086,7 @@ sub_8014674:
 	bl sub_80107C0
 	mov r1, #0x10
 	mov r2, #2
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r7, #0x40 
 	add r7, r7, r6
 	ldr r0, [r7]
@@ -12226,7 +12226,7 @@ sub_8014760:
 	bl sub_80107C0
 	mov r1, #0x10
 	mov r2, #2
-	bl sub_801A082
+	bl object_updateCollisionData
 	pop {pc}
 	thumb_func_end sub_8014760
 
@@ -12274,7 +12274,7 @@ sub_80147B2:
 	bl sub_80107C0
 	mov r1, #0x10
 	mov r2, #2
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, dword_80147E0 // =0x8000000
 	bl object_setFlag1 // (int a1) -> void
 	ldr r0, dword_80147D8 // =0xffff 
@@ -20259,8 +20259,8 @@ object_setCollisionRegion:
 	mov pc, lr
 	thumb_func_end object_setCollisionRegion
 
-	thumb_func_start sub_801A082
-sub_801A082:
+	thumb_func_start object_updateCollisionData
+object_updateCollisionData:
 	push {r4,r7,lr}
 	ldr r7, [r5,#oBattleObject_CollisionDataPtr]
 	strb r3, [r7,#oCollisionData_HitModifierBase]
@@ -20286,7 +20286,7 @@ loc_801A0B2:
 	mov r0, r7
 	bl sub_8019F44
 	pop {r4,r7,pc}
-	thumb_func_end sub_801A082
+	thumb_func_end object_updateCollisionData
 
 	thumb_local_start
 sub_801A0BA:
@@ -22115,7 +22115,7 @@ sub_801AEB0:
 	push {r4,r7,lr}
 	ldrb r4, [r7,#oCollisionData_HitModifierFinal]
 	bl object_getFlag // () -> int
-	ldr r1, dword_801AF40 // =0x220000 
+	ldr r1, dword_801AF40 // =0x220000 superarmor or anger
 	tst r0, r1
 	bne loc_801AECA
 	mov r1, #1
@@ -22130,7 +22130,7 @@ loc_801AECA:
 	mov r0, #2
 	bl object_setFlag2
 loc_801AED6:
-	mov r1, #0x3c 
+	mov r1, #0x3c
 	tst r4, r1
 	beq locret_801AF0C
 	mov r1, #0x40 

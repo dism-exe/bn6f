@@ -241,7 +241,7 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
     base_stack_offset = funcstate.regs["sp"].data.ref.offset
     function_name = funcstate.function.name
     function_filename = funcstate.function.filename
-    #function_tree = collections.OrderedDict()
+    function_tree = collections.OrderedDict()
 
     debug_print("funcstart: base stack offset: %s, function: %s (%s:%s)" % (base_stack_offset, function_name, function_filename, funcstate.function.line_num + 1))
     return_regs = None
@@ -316,8 +316,8 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
                                 if sym.value not in problem_functions:
                                     debug_print("Start of jumptable function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
                                     function_total_time += time.time() - function_start_time
-                                    #subroutine_return_regs, function_tree["!" + sym.name] = run_analyzer_from_sym(sym, funcstate.regs, time.time())
-                                    subroutine_return_regs = run_analyzer_from_sym(sym, funcstate.regs, time.time())
+                                    subroutine_return_regs, function_tree["!" + sym.name] = run_analyzer_from_sym(sym, funcstate.regs, time.time())
+                                    #subroutine_return_regs = run_analyzer_from_sym(sym, funcstate.regs, time.time())
                                     function_start_time = time.time()
                                     debug_print("End of jumptable function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
                                     if jumptable_already_executed:
@@ -346,8 +346,8 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
                                 debug_print("Start of regular function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
                                 remove_function_specific_callbacks(funcstate.function.value)
                                 function_total_time = time.time() - function_start_time
-                                #subroutine_return_regs, function_tree[possible_syms[0].name] = run_analyzer_from_sym(possible_syms[0], funcstate.regs, time.time())
-                                subroutine_return_regs = run_analyzer_from_sym(possible_syms[0], funcstate.regs, time.time())
+                                subroutine_return_regs, function_tree[possible_syms[0].name] = run_analyzer_from_sym(possible_syms[0], funcstate.regs, time.time())
+                                #subroutine_return_regs = run_analyzer_from_sym(possible_syms[0], funcstate.regs, time.time())
                                 function_start_time = time.time()
                                 debug_print("End of regular function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
                                 add_function_specific_callbacks(funcstate.function.value)
@@ -416,8 +416,8 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
         function_total_time += time.time() - function_start_time
         function_trackers[function_name] = FunctionTracker(function_total_time)
 
-    #return (return_regs, function_tree)
-    return return_regs
+    return (return_regs, function_tree)
+    #return return_regs
 
 class ReturnValue:
     __slots__ = ("regname", "datatype")
@@ -871,8 +871,8 @@ def read_battle_object_jumptables():
         Thrown if the jumptable was not found.
     """
 
-    #jumptables = ("T1BattleObjectJumptable", "T3BattleObjectJumptable", "T4BattleObjectJumptable", ("battle_8007800",))
-    jumptables = (("battle_8007800",),)
+    jumptables = ("T1BattleObjectJumptable", "T3BattleObjectJumptable", "T4BattleObjectJumptable", ("battle_8007800",))
+    #jumptables = (("battle_8007800",),)
 
     registers = RegisterState()
     fileline = default_fileline
@@ -882,7 +882,7 @@ def read_battle_object_jumptables():
     global function_specific_callbacks
     function_specific_callbacks.update(battle_object_specific_callbacks)
 
-    #global global_function_tree
+    global global_function_tree
     #global_function_tree = run_analyzer_from_label(parser.strip_plus1(words[0]), registers, time.time())[1]
     set_template_functions()
     for jumptable in jumptables:
@@ -911,7 +911,7 @@ def read_battle_object_jumptables():
                 datatypes.Stack.datatypes = {}
                 function_name = parser.strip_plus1(word)
                 debug_print("function: %s" % function_name)
-                run_analyzer_from_label(function_name, registers, time.time())
+                global_function_tree[function_name] = run_analyzer_from_label(function_name, registers, time.time())[1]
 
 def read_ow_npc_object_function():
     registers = RegisterState()
@@ -1115,8 +1115,8 @@ def print_post_output_info(start_time, analyzer_start_time, analyzer_end_time, s
 
     post_output += "\n" + datatypes.output_discovered_struct_fields() + "\n"
 
-    #with open("trace_path.txt", "w+") as f:
-    #    recursive_print_function_tree(f, analyzer.global_function_tree)
+    with open("trace_path.txt", "w+") as f:
+        recursive_print_function_tree(f, analyzer.global_function_tree)
 
     # with open("function_tracker_output.pickle", "wb+") as f:
     #     pickle.dump(analyzer.function_trackers, f)

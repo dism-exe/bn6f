@@ -3660,7 +3660,7 @@ sub_810FB30:
 	ldr r2, [r2,r0]
 	ldr r3, off_810FBA0 // =byte_810FBA4
 	ldr r3, [r3,r0]
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldrb r0, [r4,#oAIData_Version_16]
 	lsl r0, r0, #2
 	ldr r1, off_810FBBC // =byte_810FBC0
@@ -3675,7 +3675,7 @@ sub_810FB54:
 	mov r1, #0x10
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #0
 	bl object_setCollisionStatusEffect1
 	pop {r4-r7,pc}
@@ -12786,7 +12786,7 @@ sub_8114DF2:
 	mov r1, #0x3a
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #0x6a
@@ -13168,8 +13168,8 @@ sub_81151A0:
 	.byte 0, 0
 off_81151B0: .word off_81151B4
 off_81151B4: .word sub_81151CC+1
-	.word loc_811523C+1
-	.word loc_8115272+1
+	.word sub_811523C+1
+	.word sub_8115272+1
 	.word sub_8115340+1
 	.word sub_8115398+1
 	.word sub_8115404+1
@@ -13191,7 +13191,7 @@ loc_81151E4:
 	mov r1, #0x35
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
@@ -13204,7 +13204,7 @@ loc_81151E4:
 	bl object_setCounterTime
 loc_811520A:
 	ldrb r0, [r7,#oAIAttackVars_Unk_0c]
-	ldr r1, off_8115230 // =loc_8115234
+	ldr r1, off_8115230 // =off_8115234
 	ldrb r0, [r1,r0]
 	str r0, [r7,#oAIAttackVars_Unk_34]
 	mov r0, #2
@@ -13221,13 +13221,13 @@ locret_8115228:
 	pop {pc}
 	.word 0
 	.balign 4, 0
-off_8115230: .word loc_8115234
-loc_8115234:
-	lsl r1, r0, #4
-	lsl r2, r0, #0x18
-	mov r0, #7
-	lsr r0, r1, #0x20
-loc_811523C:
+off_8115230: .word off_8115234
+off_8115234:
+	.byte 0x1, 0x1, 0x2, 0x6, 0x7, 0x20, 0x8, 0x8
+	thumb_func_end sub_81151CC
+
+	thumb_local_start
+sub_811523C:
 	push {lr}
 	bl sub_8115432
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
@@ -13251,7 +13251,10 @@ loc_811523C:
 loc_811526C:
 	bl sub_8115492
 	pop {pc}
-loc_8115272:
+	thumb_func_end sub_811523C
+
+	thumb_local_start
+sub_8115272:
 	push {lr}
 	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
 	ldr r0, [r3,#oCollisionData_FlagsFromCollision]
@@ -13341,7 +13344,7 @@ loc_8115322:
 	.byte 0, 0, 0, 0
 byte_8115330: .byte 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x3, 0x10, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x80, 0x3
-	thumb_func_end sub_81151CC
+	thumb_func_end sub_8115272
 
 	thumb_local_start
 sub_8115340:
@@ -13456,7 +13459,7 @@ loc_811541A:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	bl object_exitAttackState
 locret_8115430:
 	pop {pc}
@@ -34156,21 +34159,43 @@ loc_81209B2:
 	thumb_func_end sub_8120900
 
 	thumb_func_start sub_81209DC
+// input:
+// r0 (a0) - 0, 1, 2
+// 
 sub_81209DC:
 	push {r6,r7,lr}
+	// block:
+	// r7 = a0
+	// r6 = off_8120A14[a0]
 	mov r7, r0
 	ldr r1, off_8120A0C // =off_8120A14
 	lsl r0, r0, #2
 	ldr r6, [r1,r0]
+
+	// block:
+	// r1 = GetPositiveSignedRNG1() % r6
 	bl GetPositiveSignedRNG1
 	mov r1, r6
 	svc 6
+	// end block
+
+	// block:
+	// if (a0 >= 2) {
+	//     r1 += 96;
+	// }
+	// r6 = r1
 	cmp r7, #2
 	blt loc_81209F6
 	mov r0, #0x60
 	add r1, r1, r0
 loc_81209F6:
 	mov r6, r1
+	// endblock
+
+	// block:
+	// r1 = GetPositiveSignedRNG2() % 21
+	// r0 = r6 & 0xff
+	// r1 = byte_8120A20[r1]
 	bl GetPositiveSignedRNG2
 	mov r1, #0x15 // (byte_8120A35 - 0x8120a20)
 	svc 6

@@ -1,7 +1,7 @@
 // 0x800ed80
 int __fastcall sub_800ED80(int result)
 {
-    *byte_203F6A0 &= ~*(result + 124);
+    *eUsedAIDataBitfield &= ~*(result + 124);
     return result;
 }
 
@@ -7634,13 +7634,13 @@ int sub_801393A()
     {
         v3 = object_setFlag1(32);
         v4 = sub_80107C0(v3);
-        sub_801A082(v4, 16, 2, v5);
+        object_updateCollisionData(v4, 16, 2, v5);
     }
     else
     {
         v6 = object_clearFlag(32);
         v7 = sub_80107C0(v6);
-        sub_801A082(v7, 1, 2, v8);
+        object_updateCollisionData(v7, 1, 2, v8);
     }
     if ( v1[28] )
         object_setFlag1(16);
@@ -8408,7 +8408,7 @@ int __fastcall sub_8014080(int a1)
         sub_8013754(v3, 35, 0);
         v4 = object_clearFlag(32);
         v5 = sub_80107C0(v4);
-        v7 = sub_801A082(v5, 1, 2, v6);
+        v7 = object_updateCollisionData(v5, 1, 2, v6);
         sub_8013754(v7, 27, 0);
         v8 = object_clearFlag(0x40000);
         sub_8013754(v8, 29, 0);
@@ -8448,7 +8448,7 @@ int __fastcall sub_80140EE(int a1)
         sub_8013754(v3, 35, 0);
         v4 = object_clearFlag(32);
         v5 = sub_80107C0(v4);
-        v7 = sub_801A082(v5, 1, 2, v6);
+        v7 = object_updateCollisionData(v5, 1, 2, v6);
         sub_8013754(v7, 27, 0);
         v8 = object_clearFlag(16);
         v9 = sub_8013754(v8, 28, 0);
@@ -9092,7 +9092,7 @@ int sub_8014606()
 
     v1 = object_setFlag1(48);
     v2 = sub_80107C0(v1);
-    sub_801A082(v2, 16, 2, v3);
+    object_updateCollisionData(v2, 16, 2, v3);
     result = *(v0 + 64);
     if ( !result )
         result = sub_80E1620(0, v4, v5, v6);
@@ -9148,7 +9148,7 @@ _DWORD *sub_8014674()
 
     v1 = object_setFlag1(134217776);
     v2 = sub_80107C0(v1);
-    sub_801A082(v2, 16, 2, v3);
+    object_updateCollisionData(v2, 16, 2, v3);
     if ( !*(v0 + 64) )
         sub_80E1620(0, v4, v5, v6);
     return sub_802D310();
@@ -9218,7 +9218,7 @@ int sub_8014760()
 
     v0 = object_setFlag1(48);
     v1 = sub_80107C0(v0);
-    return sub_801A082(v1, 16, 2, v2);
+    return object_updateCollisionData(v1, 16, 2, v2);
 }
 
 
@@ -9259,7 +9259,7 @@ _DWORD *sub_80147B2()
 
     v0 = object_setFlag1(48);
     v1 = sub_80107C0(v0);
-    sub_801A082(v1, 16, 2, v2);
+    object_updateCollisionData(v1, 16, 2, v2);
     object_setFlag1(0x8000000);
     object_setInvulnerableTime(0xFFFF);
     return sub_802D310();
@@ -15084,7 +15084,7 @@ int __fastcall object_setCollisionRegion(int result)
 
 
 // 0x801a082
-int __fastcall sub_801A082(int a1, int a2, int a3, char a4)
+int __fastcall object_updateCollisionData(int a1, int a2, int a3, char a4)
 {
     int v4; // r5
     int v5; // r7

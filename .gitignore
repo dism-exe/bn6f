@@ -58,3 +58,4 @@ tools/binutils/
 temp/
 *.cfg
 *.rsync
+*.sym

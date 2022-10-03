@@ -167,7 +167,7 @@ sub_810C544::
 	mov r1, #0x35 
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r1, [r7,#oAIAttackVars_Unk_28]
 	mov lr, pc
@@ -307,7 +307,7 @@ loc_810C63E::
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	bl object_exitAttackState
 locret_810C684::
 	pop {pc}

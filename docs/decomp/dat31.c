@@ -125,7 +125,7 @@ void __fastcall sub_810C544(int a1)
     unsigned int v14; // r1
 
     object_canMove(a1);
-    if ( _ZF || (v6 = PlaySoundEffect(200, v3, v4), sub_801A082(v6, 53, 2, 3), (v7 = (*(v2 + 40))(*(v2 + 44))) == 0) )
+    if ( _ZF || (v6 = PlaySoundEffect(200, v3, v4), object_updateCollisionData(v6, 53, 2, 3), (v7 = (*(v2 + 40))(*(v2 + 44))) == 0) )
     {
         *(v2 + 26) = 0;
         object_exitAttackState(v1);
@@ -206,7 +206,7 @@ void sub_810C604()
         object_setCollisionRegion(1);
         *(v1 + 26) = 1;
         *(v0 + 16) = 0;
-        sub_801A082(0, 1, 2, 3);
+        object_updateCollisionData(0, 1, 2, 3);
         object_exitAttackState(v0);
     }
 }

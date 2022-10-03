@@ -2581,7 +2581,7 @@ int sub_810FB30()
 {
     int v0; // r4
 
-    sub_801A082(
+    object_updateCollisionData(
         4 * *(v0 + 22),
         *&byte_810FB88[4 * *(v0 + 22)],
         *&byte_810FB6C[4 * *(v0 + 22)],
@@ -2593,7 +2593,7 @@ int sub_810FB30()
 // 0x810fb54
 int __fastcall sub_810FB54(int a1)
 {
-    sub_801A082(a1, 16, 2, 3);
+    object_updateCollisionData(a1, 16, 2, 3);
     return object_setCollisionStatusEffect1(0);
 }
 
@@ -9023,7 +9023,7 @@ int sub_8114DF2()
     *(v0 + 116) = 0;
     *(v0 + 105) = 0;
     v1 = *(v0 + 97);
-    sub_801A082(97, 58, 2, 3);
+    object_updateCollisionData(97, 58, 2, 3);
     v2 = *(v0 + 19);
     *(v0 + 106) = *(v0 + 18);
     *(v0 + 107) = v2;
@@ -9312,7 +9312,7 @@ void sub_81151CC()
         }
         else
         {
-            sub_801A082(v2, 53, 2, 3);
+            object_updateCollisionData(v2, 53, 2, 3);
             object_setFlag1(64);
             object_setFlag1(0x400000);
             if ( sub_802D234() != 6 )
@@ -9430,7 +9430,7 @@ void sub_8115404()
     *(v1 + 16) = v4;
     if ( (v4 < 0) ^ v3 )
     {
-        sub_801A082(v4, 1, 2, 3);
+        object_updateCollisionData(v4, 1, 2, 3);
         object_exitAttackState(v0);
     }
 }

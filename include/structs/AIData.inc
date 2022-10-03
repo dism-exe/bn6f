@@ -73,6 +73,7 @@
 	u0 AIState // loc=0x80
 	struct_org 0xa0
 	u8_arr AttackVars, 0x50 // loc=0xa0
+	struct_org 0x100
 	u0 Size // loc=0x100
 	u0 End // loc=0x100
 	restore_struct_label

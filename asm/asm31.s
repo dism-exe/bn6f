@@ -27362,8 +27362,8 @@ locret_80C52AE:
 	pop {pc}
 	thumb_func_end sub_80C529A
 
-	thumb_func_start sub_80C52B0
-sub_80C52B0:
+	thumb_func_start battle_t3id3_main_80c52b0
+battle_t3id3_main_80c52b0:
 	push {lr}
 	ldr r1, off_80C52C0 // =off_80C52C4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -27376,7 +27376,7 @@ off_80C52C0: .word off_80C52C4
 off_80C52C4: .word sub_80C52D0+1
 	.word sub_80C532E+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C52B0
+	thumb_func_end battle_t3id3_main_80c52b0
 
 	thumb_local_start
 sub_80C52D0:
@@ -29924,7 +29924,7 @@ sub_80C6726:
 	mov r1, #4
 	mov r2, #5
 	mov r3, #1
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldrb r0, [r5,#oBattleObject_Element]
 	bl sub_8019F8C
 	pop {pc}
@@ -30354,7 +30354,7 @@ sub_80C6AB8:
 	ldrb r3, [r3,#1]
 	mov r1, #4
 	mov r2, #5
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldrb r0, [r5,#oBattleObject_Element]
 	bl sub_8019F8C
 	ldr r3, [r5,#oBattleObject_ExtraVars]
@@ -38186,7 +38186,7 @@ sub_80CA834:
 	mov r1, #6
 	mov r2, #5
 	mov r3, #1
-	bl sub_801A082
+	bl object_updateCollisionData
 loc_80CA86C:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -38245,7 +38245,7 @@ loc_80CA8CE:
 	mov r1, #6
 	mov r2, #5
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -58639,7 +58639,7 @@ sub_80D4870:
 	mov r1, #0xe
 	mov r2, #0xf
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 locret_80D4886:
 	pop {pc}
 	thumb_func_end sub_80D4870
@@ -69141,7 +69141,7 @@ sub_80D9C1C:
 	mov r1, #0xc
 	mov r2, #0xd
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_CurAnim]
 	ldr r0, [r5,#oBattleObject_ExtraVars]
@@ -69527,7 +69527,7 @@ loc_80D9F3C:
 	mov r1, #4
 	mov r2, #5
 	mov r3, #0
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #0x4a 
@@ -101746,7 +101746,7 @@ loc_80E9686:
 	bl sub_80107C0
 	mov r1, #0x10
 	mov r2, #2
-	bl sub_801A082
+	bl object_updateCollisionData
 	pop {r5}
 loc_80E96A8:
 	ldrh r0, [r5,#oBattleObject_Timer]
@@ -116759,7 +116759,7 @@ sub_80F11BC:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #0
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strh r0, [r1,#oCollisionData_SelfDamage]
@@ -116879,7 +116879,7 @@ sub_80F12AC:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -119766,7 +119766,7 @@ loc_80F2C92:
 	mov r1, #0x10
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -120491,7 +120491,7 @@ loc_80F325A:
 	mov r1, #0x39 
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r7,#oAIAttackVars_Unk_08]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -120662,7 +120662,7 @@ sub_80F3396:
 	mov r1, #0x10
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -121580,7 +121580,7 @@ sub_80F3B24:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#0x2c]
@@ -123268,7 +123268,7 @@ sub_80F4964:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -124218,7 +124218,7 @@ loc_80F50F8:
 	mov r1, #0x53 
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r7,#oAIAttackVars_Unk_08]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -124345,7 +124345,7 @@ sub_80F5208:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -125287,7 +125287,7 @@ sub_80F5A1A:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -126600,7 +126600,7 @@ sub_80F64F4:
 	mov r1, #0x35 
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	pop {pc}
 	thumb_func_end sub_80F64F4
 
@@ -126659,7 +126659,7 @@ sub_80F6560:
 	mov r1, #0x35 
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -127167,7 +127167,7 @@ sub_80F6994:
 	mov r1, #0x51 
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r7,#oAIAttackVars_Unk_08]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -128459,7 +128459,7 @@ sub_80F73FA:
 	mov r1, #0x35 
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -128710,7 +128710,7 @@ sub_80F76F4:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -130467,7 +130467,7 @@ loc_80F8578:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#0x2c]
@@ -131820,7 +131820,7 @@ sub_80F9088:
 	mov r1, #0x10
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -132730,7 +132730,7 @@ sub_80F97C0:
 	mov r1, #0x35 
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r7,#oAIAttackVars_Unk_08]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -132850,7 +132850,7 @@ sub_80F98C0:
 	mov r1, #0x10
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -133389,7 +133389,7 @@ loc_80F9DF4:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -133944,7 +133944,7 @@ sub_80FA284:
 	mov r1, #0x3a 
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r7,#oAIAttackVars_Unk_08]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -134079,7 +134079,7 @@ sub_80FA37C:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -134296,7 +134296,7 @@ sub_80FA540:
 	mov r1, #0x35 
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r7,#oAIAttackVars_Unk_08]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -134432,7 +134432,7 @@ sub_80FA644:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -134659,7 +134659,7 @@ sub_80FA81E:
 	mov r1, #0x35 
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r7,#oAIAttackVars_Unk_08]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -134836,7 +134836,7 @@ sub_80FA968:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -135341,7 +135341,7 @@ sub_80FAE60:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -137079,7 +137079,7 @@ sub_80FBCA2:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -138831,7 +138831,7 @@ loc_80FCA7A:
 	mov r1, #0x53 
 	mov r2, #2
 	mov r3, #1
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r7,#oAIAttackVars_Unk_08]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -139064,7 +139064,7 @@ sub_80FCC4C:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -139715,7 +139715,7 @@ sub_80FD240:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#0x2c]
@@ -142473,7 +142473,7 @@ loc_80FE95A:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -144510,7 +144510,7 @@ sub_80FFA22:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -145680,7 +145680,7 @@ sub_81003AC:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -148202,7 +148202,7 @@ sub_810173C:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -152932,7 +152932,7 @@ loc_8103DB4:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #2
 	bl object_setCollisionRegion
 	mov r0, #0
@@ -154310,7 +154310,7 @@ sub_81048AA:
 	mov r1, #0x35 
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r7,#oAIAttackVars_Unk_30]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -154521,7 +154521,7 @@ sub_8104A30:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -154860,7 +154860,7 @@ sub_8104CC6:
 	mov r1, #0x3a 
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r7,#oAIAttackVars_Unk_08]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -154999,7 +154999,7 @@ sub_8104DC8:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r1, r0
 	lsl r0, r0, #0x10
@@ -158472,7 +158472,7 @@ sub_8106A22:
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -161043,7 +161043,7 @@ loc_8107E74:
 	mov r1, #0x10
 	mov r2, #2
 	mov r3, #3
-	bl sub_801A082
+	bl object_updateCollisionData
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldr r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]

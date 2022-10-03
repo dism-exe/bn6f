@@ -5942,7 +5942,7 @@ off_800ECF0: .word TextScriptNaviChipNames
 
 	thumb_func_start sub_800ED00
 sub_800ED00:
-	ldr r0, off_800ED20 // =unk_2034080 
+	ldr r0, off_800ED20 // =eAIData 
 	ldr r1, dword_800ED24 // =0x80000000 
 	mov r2, #0
 	mov r3, #0x80
@@ -5955,40 +5955,40 @@ loc_800ED0A:
 	cmp r2, #8
 	blt loc_800ED0A
 	mov r0, #0
-	ldr r1, off_800ED28 // =byte_203F6A0 
+	ldr r1, off_800ED28 // =eUsedAIDataBitfield 
 	str r0, [r1]
 	mov pc, lr
 	.balign 4, 0
-off_800ED20: .word unk_2034080
+off_800ED20: .word eAIData
 dword_800ED24: .word 0x80000000
-off_800ED28: .word byte_203F6A0
+off_800ED28: .word eUsedAIDataBitfield
 	thumb_func_end sub_800ED00
 
 	thumb_func_start object_createAIData
 object_createAIData:
 	push {r4,r5,lr}
 	// memBlock
-	ldr r0, off_800ED78 // =unk_2034080 
-	ldr r3, off_800ED7C // =byte_203F6A0 
+	ldr r0, off_800ED78 // =eAIData 
+	ldr r3, off_800ED7C // =eUsedAIDataBitfield 
 	ldr r2, [r3]
 	mov r1, #1
 	lsl r1, r1, #0x1f
 	mov r4, #0
-	mov r5, #0x80
+	mov r5, #oAIData_Size/2
 	add r5, r5, r5
-loc_800ED3E:
+.findEmptyAIDataSlot
 	tst r2, r1
-	beq loc_800ED52
+	beq .gotEmptyAIDataSlot
 	add r4, #1
 	cmp r4, #8
-	bge loc_800ED4E
+	bge .noAIDataSlotAvailable
 	add r0, r0, r5
 	lsr r1, r1, #1
-	bne loc_800ED3E
-loc_800ED4E:
+	bne .findEmptyAIDataSlot
+.noAIDataSlotAvailable
 	mov r0, #0
 	pop {r4,r5,pc}
-loc_800ED52:
+.gotEmptyAIDataSlot
 	orr r2, r1
 	str r2, [r3]
 	mov r4, r0
@@ -6010,8 +6010,8 @@ loc_800ED52:
 	mov r0, r4
 	pop {r4,r5,pc}
 	.balign 4, 0
-off_800ED78: .word unk_2034080
-off_800ED7C: .word byte_203F6A0
+off_800ED78: .word eAIData
+off_800ED7C: .word eUsedAIDataBitfield
 	thumb_func_end object_createAIData
 
 /*For debugging purposes, connect comment at any range!*/
