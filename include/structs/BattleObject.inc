@@ -50,7 +50,11 @@
 	u8 Unk_0c // loc=0xc
 	u8 Unk_0d // loc=0xd
 	u8 Element // loc=0xe
-	u8 Unk_0f // loc=0xf
+	enum8 SlideType // loc=0xf
+		struct_const SLIDE_TYPE_NONE, 0x00
+		struct_const SLIDE_TYPE_WIND, 0x01
+		struct_const SLIDE_TYPE_ICE,  0x02
+		struct_const SLIDE_TYPE_ROAD, 0x03
 
 	union
 	u8 CurAnim // loc=0x10
@@ -84,15 +88,15 @@
 	u8 PreventAnim // loc=0x18
 	u8 Unk_19 // loc=0x19
 	u8 ChipsHeld  // loc=0x1a
-	u8 Unk_1b // loc=0x1b
-	u8 Unk_1c // loc=0x1c
-	u8 Unk_1d // loc=0x1d
+	u8 NumSlideTiles // loc=0x1b
+	u8 SlideDeltaX // loc=0x1c
+	u8 SlideDeltaY // loc=0x1d
 
 	union
-	u8 Unk_1e // loc=0x1e
-	u8 Unk_1f // loc=0x1f
+	u8 SlidePerTileTimer // loc=0x1e
+	u8 SlideState // loc=0x1f
 	nextu
-	u16 Unk_1e_Unk_1f // loc=0x1e
+	u16 SlidePerTileTimerAndSlideState // loc=0x1e
 	endu
 
 	union
