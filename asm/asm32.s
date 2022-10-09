@@ -4580,7 +4580,7 @@ sub_8110416:
 	mov r2, #3
 	mov r3, #0
 	ldr r7, [r7,#oAIAttackVars_Unk_34]
-	bl sub_80D5890
+	bl spawnDollThunderObject_80D5890
 	pop {r7}
 	mov r0, #0
 	mov r1, #0

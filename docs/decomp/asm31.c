@@ -49350,7 +49350,7 @@ int __fastcall sub_80D5718(char a1, int a2, int a3, int a4)
 
 
 // 0x80d5740
-void sub_80D5740()
+void dollThunderObject_80D5740()
 {
     int v0; // r5
 
@@ -49360,7 +49360,7 @@ void sub_80D5740()
 
 
 // 0x80d5764
-signed int __noreturn sub_80D5764()
+signed int __noreturn dollThunderObject_init_80D5764()
 {
     int v0; // r5
     int v1; // r0
@@ -49399,7 +49399,7 @@ signed int __noreturn sub_80D5764()
 
 
 // 0x80d5806
-signed int sub_80D5806()
+signed int dollThunderObject_update_80D5806()
 {
     int v0; // r5
     int v1; // r0
@@ -49481,7 +49481,7 @@ void __fastcall sub_80D5874(char a1)
 
 
 // 0x80d5890
-int __fastcall sub_80D5890(char a1, int a2, int a3, int a4)
+int __fastcall spawnDollThunderObject_80D5890(char a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r6
@@ -54765,7 +54765,7 @@ int sub_80D8DEE()
 
 
 // 0x80d8e10
-void sub_80D8E10()
+void eraseBeamObject_80D8E10()
 {
     int v0; // r5
 
@@ -66958,7 +66958,7 @@ int __fastcall sub_80E0DD0(int result)
 
 
 // 0x80e0df0
-int sub_80E0DF0()
+int chargeShotChargeObject_80E0DF0()
 {
     int v0; // r5
 
@@ -66967,18 +66967,18 @@ int sub_80E0DF0()
 
 
 // 0x80e0e10
-void sub_80E0E10()
+void chargeShotChargeObject_init_80E0E10()
 {
     int v0; // r5
 
     *(v0 + 100) = 1;
     *(v0 + 8) = 4;
-    sub_80E0E20();
+    chargeShotChargeObject_update_80E0E20();
 }
 
 
 // 0x80e0e20
-void sub_80E0E20()
+void chargeShotChargeObject_update_80E0E20()
 {
     int v0; // r5
     int v1; // r4
@@ -67058,7 +67058,7 @@ void sub_80E0E20()
 
 
 // 0x80e0f02
-int __fastcall sub_80E0F02(int a1, int a2, int a3, int a4)
+int __fastcall spawnChargeShotChargeObject_80E0F02(int a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int *v5; // r7
@@ -71349,7 +71349,7 @@ int __fastcall sub_80E349E(char a1, int a2, int a3, int a4)
 
 
 // 0x80e34c0
-int sub_80E34C0()
+int battleTrapObjectMaybe_80E34C0()
 {
     int v0; // r5
 
@@ -71397,7 +71397,7 @@ int sub_80E3504()
 
 
 // 0x80e353e
-int __fastcall sub_80E353E(char a1, int a2, int a3, int a4)
+int __fastcall spawnBattleTrapMaybe_80E353E(char a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r6
@@ -83965,7 +83965,7 @@ void sub_80EAF36()
     v3 = v0->currAction;
     if ( v3 < 16 )
         goto LABEL_11;
-    (*(&JumpTable80EAC60 + v3 - 16))();
+    (*(&AIAttackJumptable + v3 - 16))();
     if ( v0->currAction != 8 )
         return;
     if ( *(v2 + 34) && sub_800FC30() != 0xFFFF )
@@ -88901,7 +88901,7 @@ int sub_80EE060()
 
 
 // 0x80ee0bc
-int sub_80EE0BC()
+int dollThunderAttack_80EE0BC()
 {
     unsigned __int8 *v0; // r7
 
@@ -88910,7 +88910,7 @@ int sub_80EE0BC()
 
 
 // 0x80ee0dc
-signed int sub_80EE0DC()
+signed int dollThunderAttack_init_80EE0DC()
 {
     Battle *v0; // r5
     int v1; // r7
@@ -88934,7 +88934,7 @@ signed int sub_80EE0DC()
 
 
 // 0x80ee110
-int sub_80EE110()
+int dollThunderAttack_update_80EE110()
 {
     Battle *v0; // r5
     int v1; // r7
@@ -88962,7 +88962,7 @@ int sub_80EE110()
         v5 = object_getFrontDirection(v0);
         v6 = *(v1 + 8) + *(v1 + 6);
         v7 = *(v1 + 12);
-        sub_80D5890(v5 + v0->panelX, v0->panelY, *(v1 + 2), 0);
+        spawnDollThunderObject_80D5890(v5 + v0->panelX, v0->panelY, *(v1 + 2), 0);
         PlaySoundEffect(410, v8, v9);
     }
     v10 = *(v1 + 18);
@@ -88979,7 +88979,7 @@ int sub_80EE110()
 
 
 // 0x80ee162
-void sub_80EE162()
+void dollThunderAttack_exit_80EE162()
 {
     Battle *v0; // r5
     int v1; // r7

@@ -12783,7 +12783,7 @@ off_802CCB4: .word sub_80E07E0+1
 	.word sub_80E4164+1
 	.word sub_80E76D4+1
 	.word sub_80E7600+1
-	.word sub_80E353E+1
+	.word spawnBattleTrapMaybe_80E353E+1
 	.word sub_80E7008+1
 	.word sub_80E7FBA+1
 	.word sub_80E70A6+1

@@ -3229,7 +3229,7 @@ signed int sub_8110416()
     v3 = *(v1 + 8);
     v4 = (*(v1 + 18) << 8) + 1;
     v5 = *(v1 + 52);
-    sub_80D5890(v2 + v0->panelX, v0->panelY, 3, 0);
+    spawnDollThunderObject_80D5890(v2 + v0->panelX, v0->panelY, 3, 0);
     v6 = sub_80C4038(0, 0, 4, 0);
     *(*(v10 + 52) + 4) = v6;
     sub_80C4090(v6);

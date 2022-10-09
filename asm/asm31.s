@@ -60473,8 +60473,8 @@ locret_80D5736:
 byte_80D5738: .byte 0x0, 0x0, 0x28, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80D5718
 
-	thumb_func_start sub_80D5740
-sub_80D5740:
+	thumb_func_start dollThunderObject_80D5740
+dollThunderObject_80D5740:
 	push {lr}
 	ldr r1, off_80D5754 // =off_80D5758 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -60485,13 +60485,13 @@ sub_80D5740:
 	pop {pc}
 	.balign 4, 0
 off_80D5754: .word off_80D5758
-off_80D5758: .word sub_80D5764+1
-	.word sub_80D5806+1
+off_80D5758: .word dollThunderObject_init_80D5764+1
+	.word dollThunderObject_update_80D5806+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D5740
+	thumb_func_end dollThunderObject_80D5740
 
 	thumb_local_start
-sub_80D5764:
+dollThunderObject_init_80D5764:
 	push {lr}
 	mov r1, #0x10
 	mov r2, #0x12
@@ -60563,10 +60563,10 @@ loc_80D57F6:
 	.word byte_80D5804
 	.balign 4, 0
 byte_80D5804: .byte 0x4E, 0x78
-	thumb_func_end sub_80D5764
+	thumb_func_end dollThunderObject_init_80D5764
 
 	thumb_local_start
-sub_80D5806:
+dollThunderObject_update_80D5806:
 	push {r7,lr}
 	bl sub_80D584E
 	ldrh r0, [r5,#oBattleObject_Timer]
@@ -60607,7 +60607,7 @@ loc_80D5848:
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
-	thumb_func_end sub_80D5806
+	thumb_func_end dollThunderObject_update_80D5806
 
 	thumb_local_start
 sub_80D584E:
@@ -60650,8 +60650,8 @@ locret_80D588E:
 	pop {r0,r4,r6,pc}
 	thumb_func_end sub_80D5874
 
-	thumb_func_start sub_80D5890
-sub_80D5890:
+	thumb_func_start spawnDollThunderObject_80D5890
+spawnDollThunderObject_80D5890:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x82
@@ -60670,7 +60670,7 @@ sub_80D5890:
 locret_80D58B0:
 	pop {pc}
 	.balign 4, 0x00
-	thumb_func_end sub_80D5890
+	thumb_func_end spawnDollThunderObject_80D5890
 
 	thumb_func_start sub_80D58B4
 sub_80D58B4:
@@ -67345,8 +67345,8 @@ sub_80D8DEE:
 	.byte 0, 0, 0, 0
 	thumb_func_end sub_80D8DEE
 
-	thumb_func_start sub_80D8E10
-sub_80D8E10:
+	thumb_func_start eraseBeamObject_80D8E10
+eraseBeamObject_80D8E10:
 	push {lr}
 	ldr r1, off_80D8E24 // =off_80D8E28 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -67360,7 +67360,7 @@ off_80D8E24: .word off_80D8E28
 off_80D8E28: .word sub_80D8E34+1
 	.word sub_80D8EB0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D8E10
+	thumb_func_end eraseBeamObject_80D8E10
 
 	thumb_local_start
 sub_80D8E34:
@@ -83411,8 +83411,8 @@ dword_80E0DE8: .word 0xFFF80000
 dword_80E0DEC: .word 0xFFFD8000
 	thumb_func_end sub_80E0DD0
 
-	thumb_func_start sub_80E0DF0
-sub_80E0DF0:
+	thumb_func_start chargeShotChargeObject_80E0DF0
+chargeShotChargeObject_80E0DF0:
 	push {lr}
 	ldr r1, off_80E0E00 // =off_80E0E04 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -83422,24 +83422,24 @@ sub_80E0DF0:
 	pop {pc}
 	.byte 0, 0
 off_80E0E00: .word off_80E0E04
-off_80E0E04: .word sub_80E0E10+1
-	.word sub_80E0E20+1
+off_80E0E04: .word chargeShotChargeObject_init_80E0E10+1
+	.word chargeShotChargeObject_update_80E0E20+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E0DF0
+	thumb_func_end chargeShotChargeObject_80E0DF0
 
 	thumb_local_start
-sub_80E0E10:
+chargeShotChargeObject_init_80E0E10:
 	push {lr}
 	mov r0, #1
 	str r0, [r5,#oBattleObject_ExtraVars+4]
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
-	bl sub_80E0E20
+	bl chargeShotChargeObject_update_80E0E20
 	pop {pc}
-	thumb_func_end sub_80E0E10
+	thumb_func_end chargeShotChargeObject_init_80E0E10
 
 	thumb_local_start
-sub_80E0E20:
+chargeShotChargeObject_update_80E0E20:
 	push {r4,r6,r7,lr}
 	ldr r4, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl battle_isPaused
@@ -83556,10 +83556,10 @@ loc_80E0ED8:
 	bl object_updateSprite
 locret_80E0F00:
 	pop {r4,r6,r7,pc}
-	thumb_func_end sub_80E0E20
+	thumb_func_end chargeShotChargeObject_update_80E0E20
 
-	thumb_func_start sub_80E0F02
-sub_80E0F02:
+	thumb_func_start spawnChargeShotChargeObject_80E0F02
+spawnChargeShotChargeObject_80E0F02:
 	push {lr}
 	push {r5}
 	mov r0, #8
@@ -83576,7 +83576,7 @@ sub_80E0F02:
 	strb r1, [r0,#oObjectHeader_Flags]
 locret_80E0F20:
 	pop {pc}
-	thumb_func_end sub_80E0F02
+	thumb_func_end spawnChargeShotChargeObject_80E0F02
 
 	thumb_local_start
 sub_80E0F22:
@@ -88569,8 +88569,8 @@ locret_80E34BE:
 	pop {pc}
 	thumb_func_end sub_80E349E
 
-	thumb_func_start sub_80E34C0
-sub_80E34C0:
+	thumb_func_start battleTrapObjectMaybe_80E34C0
+battleTrapObjectMaybe_80E34C0:
 	push {lr}
 	ldr r1, off_80E34D0 // =off_80E34D4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -88583,7 +88583,7 @@ off_80E34D0: .word off_80E34D4
 off_80E34D4: .word object_timefreezeBegin+1
 	.word sub_80E34E0+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E34C0
+	thumb_func_end battleTrapObjectMaybe_80E34C0
 
 	thumb_local_start
 sub_80E34E0:
@@ -88634,8 +88634,8 @@ locret_80E353C:
 	pop {r4,r6,pc}
 	thumb_func_end sub_80E3504
 
-	thumb_func_start sub_80E353E
-sub_80E353E:
+	thumb_func_start spawnBattleTrapMaybe_80E353E
+spawnBattleTrapMaybe_80E353E:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x2a 
@@ -88653,7 +88653,7 @@ sub_80E353E:
 	str r7, [r0,#oBattleObject_Unk_30]
 locret_80E355E:
 	pop {pc}
-	thumb_func_end sub_80E353E
+	thumb_func_end spawnBattleTrapMaybe_80E353E
 
 	thumb_local_start
 sub_80E3560:
@@ -103954,7 +103954,7 @@ off_80EABF8: .word sub_80F06CE+1, nullsub_105+1, nullsub_105+1, nullsub_105+1
 nullsub_105:
 	mov pc, lr
 	.balign 4, 0x00
-JumpTable80EAC60: .word sub_80EB04C+1
+AIAttackJumptable: .word sub_80EB04C+1
 	.word sub_80EB436+1
 	.word sub_80EB628+1
 	.word sub_80EB776+1
@@ -104000,7 +104000,7 @@ JumpTable80EAC60: .word sub_80EB04C+1
 	.word sub_80EDF0C+1
 	.word sub_80EDF5C+1
 	.word sub_80EE044+1
-	.word sub_80EE0BC+1
+	.word dollThunderAttack_80EE0BC+1
 	.word sub_80EE192+1
 	.word sub_80EE2A0+1
 	.word sub_80EE34A+1
@@ -104251,7 +104251,7 @@ sub_80EAF36:
 	cmp r1, #0x10
 	blt loc_80EAF80
 	sub r1, #0x10
-	ldr r0, off_80EB044 // =JumpTable80EAC60
+	ldr r0, off_80EB044 // =AIAttackJumptable
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 	mov lr, pc
@@ -104362,7 +104362,7 @@ byte_80EB028: .byte 0x2, 0x3, 0x4, 0x3, 0x4, 0x6, 0x6, 0x6, 0x4, 0x5, 0x2, 0x6, 
 	.byte 0x12, 0x6, 0x0
 dword_80EB03C: .word 0x1040
 dword_80EB040: .word 0xA000
-off_80EB044: .word JumpTable80EAC60
+off_80EB044: .word AIAttackJumptable
 dword_80EB048: .word 0xFFFF
 	thumb_func_end sub_80EAFC2
 
@@ -110508,7 +110508,7 @@ locret_80EE0BA:
 	thumb_func_end sub_80EE060
 
 	thumb_local_start
-sub_80EE0BC:
+dollThunderAttack_80EE0BC:
 	push {lr}
 	ldr r1, off_80EE0CC // =off_80EE0D0 
 	ldrb r0, [r7,#oAIAttackVars_Unk_00]
@@ -110518,13 +110518,13 @@ sub_80EE0BC:
 	pop {pc}
 	.balign 4, 0x00
 off_80EE0CC: .word off_80EE0D0
-off_80EE0D0: .word sub_80EE0DC+1
-	.word sub_80EE110+1
-	.word sub_80EE162+1
-	thumb_func_end sub_80EE0BC
+off_80EE0D0: .word dollThunderAttack_init_80EE0DC+1
+	.word dollThunderAttack_update_80EE110+1
+	.word dollThunderAttack_exit_80EE162+1
+	thumb_func_end dollThunderAttack_80EE0BC
 
 	thumb_local_start
-sub_80EE0DC:
+dollThunderAttack_init_80EE0DC:
 	push {lr}
 	mov r0, #0xa
 	bl object_setAnimation
@@ -110548,10 +110548,10 @@ loc_80EE0F4:
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	pop {pc}
-	thumb_func_end sub_80EE0DC
+	thumb_func_end dollThunderAttack_init_80EE0DC
 
 	thumb_local_start
-sub_80EE110:
+dollThunderAttack_update_80EE110:
 	push {lr}
 	ldrb r0, [r7,#oAIAttackVars_Unk_01]
 	tst r0, r0
@@ -110579,7 +110579,7 @@ sub_80EE110:
 	ldr r4, [r7,#oAIAttackVars_Unk_0c]
 	ldrb r2, [r7,#oAIAttackVars_Unk_02]
 	mov r3, #0
-	bl sub_80D5890
+	bl spawnDollThunderObject_80D5890
 	mov r0, #0x9b
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -110592,10 +110592,10 @@ loc_80EE154:
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80EE160:
 	pop {pc}
-	thumb_func_end sub_80EE110
+	thumb_func_end dollThunderAttack_update_80EE110
 
 	thumb_local_start
-sub_80EE162:
+dollThunderAttack_exit_80EE162:
 	push {lr}
 	ldrb r0, [r7,#oAIAttackVars_Unk_01]
 	tst r0, r0
@@ -110621,7 +110621,7 @@ loc_80EE17C:
 	bl object_exitAttackState
 locret_80EE190:
 	pop {pc}
-	thumb_func_end sub_80EE162
+	thumb_func_end dollThunderAttack_exit_80EE162
 
 	thumb_local_start
 sub_80EE192:
@@ -114842,8 +114842,7 @@ loc_80F02B8:
 	pop {r4,pc}
 	.balign 4, 0
 dword_80F02BC: .word 0x8000
-off_80F02C0: .word unk_2010000
-	.byte 0x0
+off_80F02C0: .byte 0x0, 0x0, 0x1, 0x2, 0x0
 byte_80F02C5: .byte 0x0, 0x1, 0x1, 0x2, 0x0
 byte_80F02CA: .byte 0x0, 0x2, 0x1, 0x2, 0x0
 byte_80F02CF: .byte 0x0, 0x3, 0x1, 0x2, 0x0

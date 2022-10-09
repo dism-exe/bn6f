@@ -17465,7 +17465,7 @@ loc_80173C6: .align 1, 0
 	bl sub_80141F4
 	mov r7, #0x58 
 	add r7, r7, r4
-	bl sub_80E0F02
+	bl spawnChargeShotChargeObject_80E0F02
 	bl sub_800F378
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x2c 
@@ -19333,6 +19333,10 @@ byte_80182C4: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x1, 0x0, 0x1, 0x2, 0x0, 0x1, 
 	thumb_func_end sub_80182B4
 
 	thumb_func_start sub_8018810
+// r0 - name id
+// r1 - ???
+// r2 - alliance
+// r3 - direction flip
 sub_8018810:
 	push {r4-r6,lr}
 	cmp r0, #0xcd
@@ -23457,7 +23461,7 @@ sub_801B9E6:
 	cmp r1, #0x10
 	blt loc_801BA08
 	sub r1, #0x10
-	ldr r0, off_801BB10 // =JumpTable80EAC60
+	ldr r0, off_801BB10 // =AIAttackJumptable
 	ldrb r2, [r7,#oAIAttackVars_Unk_1d]
 	cmp r2, #1
 	bne loc_801BA08
@@ -23600,7 +23604,7 @@ off_801BB00: .word LCDControl
 off_801BB04: .word 0x3000
 dword_801BB08: .word 0x30000000
 off_801BB0C: .word 0x100
-off_801BB10: .word JumpTable80EAC60
+off_801BB10: .word AIAttackJumptable
 dword_801BB14: .word 0x40000
 off_801BB18: .word 0x8000000
 	thumb_func_end sub_801BADE

@@ -2043,7 +2043,7 @@ T3BattleObjectJumptable: .word sub_80C4E58+1
 	.word sub_80D5138+1
 	.word sub_80D535C+1
 	.word sub_80D5580+1
-	.word sub_80D5740+1
+	.word dollThunderObject_80D5740+1
 	.word sub_80D58B4+1
 	.word sub_80D5ABC+1
 	.word sub_80D5C48+1
@@ -2070,7 +2070,7 @@ T3BattleObjectJumptable: .word sub_80C4E58+1
 	.word sub_80D879C+1
 	.word sub_80D88E0+1
 	.word sub_80D8C5C+1
-	.word sub_80D8E10+1
+	.word eraseBeamObject_80D8E10+1
 	.word sub_80D8FC4+1
 	.word sub_80D9154+1
 	.word sub_80D9350+1
@@ -2230,7 +2230,7 @@ T4BattleObjectJumptable: .word loc_80E0548+1
 	.word nullsub_99+1
 	.word sub_80E08FC+1
 	.word sub_80E0AD4+1
-	.word sub_80E0DF0+1
+	.word chargeShotChargeObject_80E0DF0+1
 	.word sub_80E0FA0+1
 	.word sub_80E10A4+1
 	.word loc_80E0548+1
@@ -2264,7 +2264,7 @@ T4BattleObjectJumptable: .word loc_80E0548+1
 	.word sub_80E31D8+1
 	.word sub_80E32B8+1
 	.word sub_80E342C+1
-	.word sub_80E34C0+1
+	.word battleTrapObjectMaybe_80E34C0+1
 	.word sub_80E35A4+1
 	.word sub_80E3728+1
 	.word sub_80E37F4+1
@@ -13934,6 +13934,8 @@ battle_clearFlags:
 	thumb_func_end battle_clearFlags
 
 	thumb_func_start battle_getFlags
+// 0x2 - cust gauge full
+// 0x4 - timestop
 battle_getFlags:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]

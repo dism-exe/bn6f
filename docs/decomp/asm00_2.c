@@ -13398,7 +13398,7 @@ int __noreturn sub_80172F0()
     if ( sub_802D246() & 8 && battle_networkInvert(*(v0 + 22)) )
         sub_801DC36();
     v24 = sub_80141F4();
-    sub_80E0F02(v24, v25, v26, v27);
+    spawnChargeShotChargeObject_80E0F02(v24, v25, v26, v27);
     sub_800F378();
     if ( !sub_80136CC(*(v0 + 22), 44) )
         sub_8010DD0();
@@ -17594,7 +17594,7 @@ int __fastcall sub_801B9E6(void **a1)
     int result; // r0
 
     v2 = *(v1 + 9);
-    if ( v2 < 16 || (v2 -= 16, a1 = &JumpTable80EAC60, *(*(v1 + 88) + 189) != 1) )
+    if ( v2 < 16 || (v2 -= 16, a1 = &AIAttackJumptable, *(*(v1 + 88) + 189) != 1) )
         result = (a1[v2])();
     else
         result = sub_80EAD9C();
