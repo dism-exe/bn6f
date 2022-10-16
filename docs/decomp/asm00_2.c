@@ -1424,7 +1424,7 @@ signed int __usercall sub_800FB54@<R0>(Battle *obj@<R5>, int a1@<R0>)
             goto LABEL_22;
         case 255:
 LABEL_22:
-            v10 = sub_80127C0(obj, v6);
+            v10 = useChipRelated_80127C0(obj, v6);
             object_setAttack2(v10);
             if ( v2[27] || (v11 = sub_8013774(v2[27], 44), v11 >= 11) && v11 <= 24 )
                 v2[29] = *(getChip8021DA8(*(v2 + 10)) + 15);
@@ -1471,7 +1471,7 @@ int sub_800FC30()
         else
         {
             v2 = v0->ai->attackVarRegion;
-            result = sub_80127C0(v0, 0);
+            result = useChipRelated_80127C0(v0, 0);
             if ( result != byte_800FCD5 )
             {
                 object_setAttack2(result);
@@ -4413,7 +4413,7 @@ int sub_8011CB4()
     int v1; // r7
     int result; // r0
 
-    result = sub_80127C0(v0, 0);
+    result = useChipRelated_80127C0(v0, 0);
     if ( result != 83 && result != 84 )
     {
         if ( result == 64 )
@@ -5763,7 +5763,7 @@ int __fastcall sub_801265A(int a1)
 
 
 // 0x80126e4
-int __fastcall sub_80126E4(int a1)
+int __fastcall somethingWriteChipParams_80126E4(int a1)
 {
     int v1; // r5
     int v2; // r7
@@ -5871,7 +5871,7 @@ unsigned int __fastcall sub_8012792(unsigned int a1, int a2, int a3, _BYTE *a4)
 
 
 // 0x80127c0
-int __usercall sub_80127C0@<R0>(Battle *obj@<R5>, int a1@<R0>)
+int __usercall useChipRelated_80127C0@<R0>(Battle *obj@<R5>, int a1@<R0>)
 {
     int v2; // r4
     int v3; // r7
@@ -5926,7 +5926,7 @@ int __usercall sub_80127C0@<R0>(Battle *obj@<R5>, int a1@<R0>)
         v8 = getChip8021DA8(v9);
     }
     *(v3 + 20) = v28;
-    sub_80126E4(v28);
+    somethingWriteChipParams_80126E4(v28);
     *(v3 + 4) = v27;
     *(v3 + 8) = v29;
     v12 = sub_8012C7C(v27);
@@ -13322,7 +13322,7 @@ char *__fastcall sub_801728E(int a1)
 
 
 // 0x80172f0
-int __noreturn sub_80172F0()
+int __noreturn playerObject_init_80172F0()
 {
     int v0; // r5
     int v1; // r0
@@ -14019,7 +14019,7 @@ int sub_8017AB4()
         v1 = sub_8010004();
         if ( !((v1 + 1) & 0xFFFF) || !(*(getChip8021DA8(v1) + 9) & 1) )
             goto LABEL_13;
-        v2 = sub_80127C0(v0, 0);
+        v2 = useChipRelated_80127C0(v0, 0);
         if ( v2 == 21 )
         {
             v3 = (*(&off_802CCB4 + v13))(*(v0 + 18), *(v0 + 19), v12);
@@ -15154,7 +15154,7 @@ void sub_801A100()
     if ( v2 & 0x3F800000 && !(v2 & 1) && *(v1 + 9) != 255 )
     {
         v3 = v0[14];
-        v4 = sub_800E258(v0[13]);
+        v4 = convertXYToPanelXY_800E258(v0[13]);
         object_getCoordinatesForPanels(v4);
         v5 = sub_801BDDE(0xFu);
         sub_80E08C4(v5, v6, v7, v8);
@@ -16824,7 +16824,7 @@ int sub_801AF0E()
 
 
 // 0x801af44
-void __fastcall sub_801AF44(int a1)
+void __fastcall ai_eventuallyRunsAIAttack_801AF44(int a1)
 {
     int v1; // r5
     int v2; // r6
@@ -16892,7 +16892,7 @@ LABEL_42:
     if ( sub_801032C() & &loc_2000 || sub_801032C() & 0x10000 || sub_801032C() & 0x20000 )
     {
 LABEL_48:
-        sub_801B9E6(v16);
+        RunAIAttack(v16);
         return;
     }
     if ( !(sub_801032C() & 0x40000) || !sub_8015766() )
@@ -17116,7 +17116,7 @@ LABEL_40:
     sub_8016934();
     sub_8016CA4();
     if ( object_getFlag() & 0x100 || (battle_isTimeStop(), v9) )
-        result = sub_801B9E6(v17);
+        result = RunAIAttack(v17);
     else
         result = sub_8016BFC();
     return result;
@@ -17587,7 +17587,7 @@ void sub_801B9BC()
 
 
 // 0x801b9e6
-int __fastcall sub_801B9E6(void **a1)
+int __fastcall RunAIAttack(void **a1)
 {
     int v1; // r5
     signed int v2; // r1
@@ -17889,7 +17889,7 @@ void sub_801BC24()
 
 
 // 0x801bc64
-void sub_801BC64()
+void UpdateBattleObjectSprite()
 {
     Battle *v0; // r5
     char v1; // zf

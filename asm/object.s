@@ -4438,17 +4438,17 @@ byte_800D730: .byte 0x22, 0x22, 0x22, 0x0, 0x22, 0x22, 0x22, 0x0, 0x22, 0x22
 	.byte 0x22, 0x2, 0x0, 0x0
 	thumb_func_end sub_800D700
 
-	thumb_func_start sub_800E24C
-sub_800E24C:
+	thumb_func_start convertBattleObjectXYToPanelXY_800E24C
+convertBattleObjectXYToPanelXY_800E24C:
 	push {lr}
 	ldr r0, [r5,#oBattleObject_X]
 	ldr r1, [r5,#oBattleObject_Y]
-	bl sub_800E258
+	bl convertXYToPanelXY_800E258
 	pop {pc}
-	thumb_func_end sub_800E24C
+	thumb_func_end convertBattleObjectXYToPanelXY_800E24C
 
-	thumb_func_start sub_800E258
-sub_800E258:
+	thumb_func_start convertXYToPanelXY_800E258
+convertXYToPanelXY_800E258:
 	push {r5,r6,lr}
 	mov r6, r1
 	asr r0, r0, #0x10
@@ -4464,7 +4464,7 @@ sub_800E258:
 	mov r1, r0
 	pop {r0}
 	pop {r5,r6,pc}
-	thumb_func_end sub_800E258
+	thumb_func_end convertXYToPanelXY_800E258
 
 // (int a1, int a2) -> (int n1, int n2)
 	thumb_func_start object_getCoordinatesForPanels
@@ -4508,7 +4508,7 @@ object_setPanelsFromCoordinates:
 	ldr r1, [r5,#oBattleObject_Y]
 	mov r2, #0
 	ldr r2, [r5,#oBattleObject_Z]
-	bl sub_800E258
+	bl convertXYToPanelXY_800E258
 	strb r0, [r5,#oBattleObject_PanelX]
 	strb r1, [r5,#oBattleObject_PanelY]
 	pop {pc}
@@ -5766,33 +5766,39 @@ dword_800EBD0: .word 0x20000
 	thumb_func_end object_spawnHiteffect
 
 	thumb_func_start object_getEnemyByNameRange
+// r0 - caller provided scratch space, 0x10 bytes
+// r1 - name ID lower bound, inclusive
+// r2 - name ID upper bound, inclusive
+// r3 - alliance
+// returns number of matching actors found in r0
+// and the battle object pointers to them in the scratch space
 object_getEnemyByNameRange:
 	push {r4-r7,lr}
-	mov r4, #0x10
+	mov r4, #oBattleState_AliveOpponentActors - oBattleState_AlivePlayerActors
 	mul r3, r4
-	add r3, #0x80
+	add r3, #oBattleState_AliveBattleActors
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_BattleStatePtr]
 	add r4, r4, r3
 	mov r3, #0
 	mov r5, #0
-loc_800EBE6:
+.findNameIDInRange
 	ldr r7, [r4]
 	tst r7, r7
-	beq loc_800EBFC
+	beq .notFound
 	ldrh r6, [r7,#oBattleObject_NameID]
 	cmp r6, r1
-	blt loc_800EBFC
+	blt .notFound
 	cmp r6, r2
-	bgt loc_800EBFC
+	bgt .notFound
 	str r7, [r0]
 	add r0, #4
 	add r5, #1
-loc_800EBFC:
+.notFound
 	add r4, #4
 	add r3, #1
 	cmp r3, #4
-	blt loc_800EBE6
+	blt .findNameIDInRange
 	mov r0, r5
 	pop {r4-r7,pc}
 	thumb_func_end object_getEnemyByNameRange

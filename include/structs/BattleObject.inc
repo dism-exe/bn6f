@@ -128,6 +128,7 @@
 
 	u16 Unk_30 // loc=0x30
 	u16 Unk_32 // loc=0x32
+	u0 Coords // loc=0x34
 	u16 X // loc=0x34 size 4
 	u16 X16 // loc=0x36
 	u16 Y // loc=0x38 size 4
@@ -151,6 +152,11 @@
 	u0 End // loc=0xd8 OR 0xc8
 	restore_struct_label
 	.endm
+
+	.set SNAKEARM_EV_1, 1
+	.set SNAKEARM_EV_2, 2
+	.set SNAKEARM_EV_3, 3
+	.set SNAKEARM_EV_0x20, 0x20
 
 	// hacking size values for now until I can figure out this mess of how battle object structs are defined
 	battle_object_struct oBattleObject, offset_struct_entry, set_offset_struct_start_address

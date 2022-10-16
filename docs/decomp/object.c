@@ -2631,18 +2631,18 @@ int __fastcall sub_800D700(int a1, int a2)
 
 
 // 0x800e24c
-int sub_800E24C()
+int convertBattleObjectXYToPanelXY_800E24C()
 {
     int v0; // r5
     int v1; // r1
 
     v1 = *(v0 + 56);
-    return sub_800E258(*(v0 + 52));
+    return convertXYToPanelXY_800E258(*(v0 + 52));
 }
 
 
 // 0x800e258
-int __fastcall sub_800E258(int a1)
+int __fastcall convertXYToPanelXY_800E258(int a1)
 {
     __asm
     {
@@ -2687,7 +2687,7 @@ int __usercall object_setPanelsFromCoordinates@<R0>(Battle *obj@<R5>)
 
     v1 = obj->y;
     v2 = obj->z;
-    result = sub_800E258(obj->x);
+    result = convertXYToPanelXY_800E258(obj->x);
     obj->panelX = result;
     obj->panelY = v4;
     return result;

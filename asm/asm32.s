@@ -226,7 +226,7 @@ sub_810DAF0:
 	cmp r0, r1
 	blt loc_810DB1C
 	mov r0, r4
-	bl sub_80126E4
+	bl somethingWriteChipParams_80126E4
 	bl object_setAttack0
 	bl sub_800F322
 	mov r6, #1
@@ -518,7 +518,7 @@ locret_810DE28:
 off_810DE2C: .word off_810DE30
 off_810DE30: .word sub_810DE3C+1
 	.word sub_810DE96+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	thumb_func_end sub_810DE00
 
 	thumb_local_start
@@ -647,7 +647,7 @@ loc_810DEE8:
 	lsr r0, r0, #0x18
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 	pop {r2,r3}
 	add r3, #1
 	cmp r3, #4
@@ -875,9 +875,9 @@ off_810E120: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_810E17A+1
-	.word sub_81097B4+1
+	.word genericAI_exitAttackStateAffterDelay_81097B4+1
 	.word sub_810DE00+1
-	.word sub_8109952+1
+	.word genericAI_movementRelated_8109952+1
 	.word sub_8109804+1
 byte_810E154: .byte 0x32, 0x50, 0x82, 0x96, 0x64, 0x96, 0x0, 0x0
 byte_810E15C: .byte 0xA, 0xA, 0xA, 0xA, 0xA, 0xA, 0x0, 0x0, 0x78, 0x78, 0x78
@@ -939,7 +939,7 @@ sub_810E1BC:
 	mov r0, #0x60
 	mov r1, #0x43
 	mov r2, #0x48
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #0
 	bne locret_810E1EE
 	mov r0, #1
@@ -1168,7 +1168,7 @@ sub_810E34A:
 	cmp r0, r1
 	blt loc_810E376
 	mov r0, r4
-	bl sub_80126E4
+	bl somethingWriteChipParams_80126E4
 	bl object_setAttack0
 	bl sub_800F322
 	mov r6, #1
@@ -1351,7 +1351,7 @@ off_810E590: .word sub_810E5B0+1
 	.word sub_810E6D2+1
 	.word sub_810E6E2+1
 	.word sub_810E6F6+1
-	.word sub_81097B4+1
+	.word genericAI_exitAttackStateAffterDelay_81097B4+1
 	thumb_func_end sub_810E57C
 
 	thumb_local_start
@@ -1631,9 +1631,9 @@ off_810E7B0: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_810EA4E+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	.word sub_810E4D4+1
-	.word sub_8109952+1
+	.word genericAI_movementRelated_8109952+1
 	.word sub_810E57C+1
 byte_810E7E4: .byte 0x64, 0x0, 0xA, 0x0, 0x96, 0x0, 0xA, 0x0, 0xC8, 0x0, 0xA, 0x0
 	.byte 0xFA, 0x0, 0xA, 0x0, 0x64, 0x0, 0xA, 0x0, 0x96, 0x0, 0xA, 0x0
@@ -1957,7 +1957,7 @@ sub_810EA70:
 	mov r0, #0x7c
 	mov r1, #0x49
 	mov r2, #0x4e
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #0
 	bne loc_810EA9C
 	mov r0, #1
@@ -2002,7 +2002,7 @@ sub_810EAA6:
 	str r0, [r7,#oAIAttackVars_Unk_34]
 	mov r0, #0xb
 	bl object_setAttack0
-	bl sub_8109952
+	bl genericAI_movementRelated_8109952
 	mov r0, #0
 	strb r0, [r6,#oAIState_Unk_00]
 	pop {r4-r7,pc}
@@ -2089,7 +2089,7 @@ sub_810EB5C:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #0x10
 	mov r3, #0
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 locret_810EB74:
 	pop {r4-r7,pc}
 	thumb_func_end sub_810EB5C
@@ -2691,7 +2691,7 @@ sub_810F1B6:
 	cmp r0, r1
 	blt loc_810F1E2
 	mov r0, r4
-	bl sub_80126E4
+	bl somethingWriteChipParams_80126E4
 	bl object_setAttack0
 	bl sub_800F322
 	mov r6, #1
@@ -2759,7 +2759,7 @@ off_810F2FC: .word off_810F300
 off_810F300: .word sub_810F310+1
 	.word sub_810F33C+1
 	.word sub_810F376+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	thumb_func_end sub_810F2EC
 
 	thumb_local_start
@@ -2854,7 +2854,7 @@ off_810F39C: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_810F434+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	.word sub_810F2EC+1
 byte_810F3C8: .byte 0x0, 0x50, 0x1, 0x0, 0x0, 0x60, 0x1, 0x0, 0x0, 0x70, 0x1, 0x0, 0x0, 0x80
 	.byte 0x1, 0x0, 0x0, 0x90, 0x1, 0x0, 0x0, 0xA0, 0x1, 0x0
@@ -3059,7 +3059,7 @@ off_810F620: .word sub_810F660+1
 	.word sub_810F7EC+1
 	.word sub_810F898+1
 	.word sub_810F96C+1
-	.word sub_81097B4+1
+	.word genericAI_exitAttackStateAffterDelay_81097B4+1
 off_810F63C: .word byte_810F640
 byte_810F640: .byte 0x8, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0x9, 0x0, 0x0, 0x0, 0xB, 0x0, 0x0, 0x0
 	.byte 0xD, 0x0, 0x0, 0x0, 0xD, 0x0, 0x0, 0x0
@@ -3095,7 +3095,7 @@ loc_810F678:
 	bl sub_811016C
 	mov r0, #1
 	str r0, [r5,#oBattleObject_ExtraVars+0x10]
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x7f
 	mov r1, #0
@@ -3215,7 +3215,7 @@ sub_810F770:
 	ldrb r2, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	mov r2, #1
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 	mov r0, #0
 	bl sub_810FBD8
 	bl sub_810FC30
@@ -3331,7 +3331,7 @@ loc_810F86C:
 	ldrb r2, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	mov r2, #1
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
 	.balign 4, 0
@@ -3362,7 +3362,7 @@ sub_810F898:
 	ldrb r2, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	mov r2, #1
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 	mov r0, #0
 	bl sub_810FBD8
 	bl sub_810FC30
@@ -3712,7 +3712,7 @@ loc_810FBE8:
 loc_810FBF0:
 	mov r2, #0
 	ldr r2, [r5,#oBattleObject_Z]
-	bl sub_800E258
+	bl convertXYToPanelXY_800E258
 	push {r0,r1}
 	bl object_getPanelParameters
 	ldr r1, dword_810FCDC // =0x800000
@@ -3841,9 +3841,9 @@ off_810FCE0: .word sub_8016380+1
 	.word sub_810FD90+1
 	.word sub_810FDB0+1
 	.word sub_810FDD0+1
-	.word sub_81097B4+1
+	.word genericAI_exitAttackStateAffterDelay_81097B4+1
 	.word sub_810F5D0+1
-	.word sub_8109952+1
+	.word genericAI_movementRelated_8109952+1
 	.word sub_8109804+1
 byte_810FD14: .byte 0x3C, 0x3C, 0x3C, 0x3C, 0x1E, 0x1E
 byte_810FD1A: .byte 0x50, 0x50, 0x32, 0x32, 0x64, 0xC8
@@ -3957,7 +3957,7 @@ sub_810FE18:
 	mov r0, #0x60
 	mov r1, #0x5b
 	mov r2, #0x60
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #0
 	bne locret_810FE5A
 	mov r0, #0x7d
@@ -4049,7 +4049,7 @@ loc_810FEBA:
 	ldr r0, off_810FF18 // =byte_810FD28
 	ldrb r0, [r0,r1]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xa
 	bl object_setAttack0
@@ -4112,7 +4112,7 @@ loc_810FF46:
 	str r0, [r7,#oAIAttackVars_Unk_34]
 	mov r0, #0xb
 	bl object_setAttack0
-	bl sub_8109952
+	bl genericAI_movementRelated_8109952
 	mov r0, #0
 	strb r0, [r6,#oAIState_Unk_00]
 	pop {pc}
@@ -4544,7 +4544,7 @@ loc_81103DC:
 	ldrb r3, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	mov r2, #8
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 loc_81103FE:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -4664,7 +4664,7 @@ off_81104D4: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_811055C+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	.word sub_811037C+1
 byte_8110500: .byte 0x1E, 0x3C, 0x50, 0x64, 0x46, 0x6E
 	thumb_func_end sub_81104B2
@@ -4765,7 +4765,7 @@ loc_8110598:
 	ldrb r2, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	mov r2, #1
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 loc_81105BA:
 	ldrh r0, [r6,#oAIState_Unk_08]
 	sub r0, #1
@@ -4892,7 +4892,7 @@ sub_811072C:
 	mov r0, #0x6c
 	mov r1, #0x67
 	mov r2, #0x6c
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #0
 	bne loc_8110794
 	mov r0, #1
@@ -5078,7 +5078,7 @@ off_81108B4: .word sub_81108E4+1
 	.word sub_8110B50+1
 	.word sub_8110B70+1
 	.word sub_8110C26+1
-	.word sub_81097B4+1
+	.word genericAI_exitAttackStateAffterDelay_81097B4+1
 dword_81108E0: .word 0xC000000
 	thumb_func_end sub_811088A
 
@@ -5332,7 +5332,7 @@ loc_8110AC4:
 	ldrb r2, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	mov r2, #0x15
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 locret_8110AE2:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8110A8E
@@ -5658,7 +5658,7 @@ sub_8110D34:
 	ldr r1, [r5,#oBattleObject_Y]
 	mov r2, #0
 	ldr r2, [r5,#oBattleObject_Z]
-	bl sub_800E258
+	bl convertXYToPanelXY_800E258
 	bl object_getPanelParameters
 	ldr r1, byte_8110DB0 // =0x0
 	and r0, r1
@@ -5680,7 +5680,7 @@ sub_8110D58:
 	add r1, r1, r2
 	mov r2, #0
 	ldr r2, [r5,#oBattleObject_Z]
-	bl sub_800E258
+	bl convertXYToPanelXY_800E258
 	bl object_getPanelParameters
 	ldr r1, byte_8110DB0 // =0x0
 	and r0, r1
@@ -5730,7 +5730,7 @@ off_8110DC0: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_8110E90+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	.word sub_8110714+1
 	.word sub_811088A+1
 	.word sub_81107A0+1
@@ -5755,7 +5755,7 @@ sub_8110E76:
 	push {lr}
 	mov r0, #OBJECT_FLAGS_GUARD
 	bl object_setFlag1 // (int a1) -> void
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	bl GetPositiveSignedRNG2
 	mov r1, #3
@@ -5832,7 +5832,7 @@ sub_8110EF8:
 	mov r0, #0x6c
 	mov r1, #0x67
 	mov r2, #0x6c
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #0
 	bne loc_8110F2C
 	ldrb r1, [r4,#oAIData_Version_16]
@@ -6120,7 +6120,7 @@ sub_811121C:
 off_811122C: .word off_8111230
 off_8111230: .word sub_811123C+1
 	.word sub_811128C+1
-	.word sub_81097B4+1
+	.word genericAI_exitAttackStateAffterDelay_81097B4+1
 	thumb_func_end sub_811121C
 
 	thumb_local_start
@@ -6157,7 +6157,7 @@ loc_8111264:
 	ldrb r2, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	mov r2, #1
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 locret_8111280:
 	pop {r4,pc}
 	.balign 4, 0
@@ -6253,7 +6253,7 @@ off_8111330: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_8111384+1
-	.word sub_81097B4+1
+	.word genericAI_exitAttackStateAffterDelay_81097B4+1
 	.word sub_811121C+1
 	.word sub_8109974+1
 	.word sub_8109804+1
@@ -6323,7 +6323,7 @@ sub_81113DE:
 	mov r0, #0x60
 	mov r1, #0x6d
 	mov r2, #0x72
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #0
 	bne loc_8111428
 	ldrb r1, [r4,#oAIData_Version_16]
@@ -6345,7 +6345,7 @@ sub_81113DE:
 	strb r0, [r7,#oAIAttackVars_Unk_0c]
 	mov r0, #1
 	str r0, [r5,#oBattleObject_ExtraVars]
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xa
 	bl object_setAttack0
@@ -7019,7 +7019,7 @@ sub_8111A28:
 	ldrb r1, [r7,#oAIAttackVars_Unk_17]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -7173,7 +7173,7 @@ off_8111B5C: .word sub_8111B70+1
 	.word sub_8111B88+1
 	.word sub_8111BB2+1
 	.word sub_8111BC8+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	thumb_func_end sub_8111B4A
 
 	thumb_local_start
@@ -7480,7 +7480,7 @@ off_8111DC0: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_8111DFC+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	.word sub_8111A00+1
 	.word sub_8111B4A+1
 	thumb_func_end sub_8111D46
@@ -7529,7 +7529,7 @@ loc_8111E20:
 	mov r0, #0x60
 	mov r1, #0x73
 	mov r2, #0x78
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #2
 	bge loc_8111E8C
 	mov r0, #0xa
@@ -7691,7 +7691,7 @@ sub_8111F94:
 	mov r0, #0x60
 	mov r1, #0x73
 	mov r2, #0x78
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #2
 	bge loc_8111FA8
 	mov r0, #0
@@ -7717,7 +7717,7 @@ sub_8111FAE:
 	cmp r0, r1
 	blt loc_8111FDA
 	mov r0, r4
-	bl sub_80126E4
+	bl somethingWriteChipParams_80126E4
 	bl object_setAttack0
 	bl sub_800F322
 	mov r6, #1
@@ -7773,7 +7773,7 @@ sub_81120E4:
 off_81120F4: .word off_81120F8
 off_81120F8: .word sub_8112104+1
 	.word sub_811219C+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	thumb_func_end sub_81120E4
 
 	thumb_local_start
@@ -7837,7 +7837,7 @@ loc_811216A:
 	ldrb r1, [r7,#oAIAttackVars_Unk_0f]
 loc_8112170:
 	push {r0-r3}
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 	pop {r0-r3}
 	add r0, r0, r4
 	beq loc_8112180
@@ -7910,9 +7910,9 @@ off_81121F0: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_8112278+1
-	.word sub_81097B4+1
+	.word genericAI_exitAttackStateAffterDelay_81097B4+1
 	.word sub_81120E4+1
-	.word sub_8109952+1
+	.word genericAI_movementRelated_8109952+1
 	.word sub_8109804+1
 byte_8112224: .byte 0x0, 0x0, 0x4, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0
 	.byte 0x0, 0x4, 0x0, 0x0, 0x0, 0x4, 0x0
@@ -8002,7 +8002,7 @@ loc_8112302:
 	mov r0, #0x6c
 	mov r1, #0x79
 	mov r2, #0x7e
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #0
 	bne locret_811233E
 	mov r0, #1
@@ -8372,7 +8372,7 @@ sub_8112600:
 	cmp r0, r1
 	blt loc_811262C
 	mov r0, r4
-	bl sub_80126E4
+	bl somethingWriteChipParams_80126E4
 	bl object_setAttack0
 	bl sub_800F322
 	mov r6, #1
@@ -8511,7 +8511,7 @@ sub_81127E8:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -8615,7 +8615,7 @@ off_81128C0: .word off_81128C4
 off_81128C4: .word sub_81128DA+1
 	.word sub_81128FA+1
 	.word sub_8112928+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	thumb_func_end sub_81128B2
 
 	bl object_exitAttackState
@@ -8742,7 +8742,7 @@ off_81129A0: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_8112A4A+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	.word sub_81127C8+1
 	.word sub_81128B2+1
 byte_81129D0: .byte 0x5, 0xA, 0x14, 0x19, 0xF, 0x19
@@ -8860,13 +8860,13 @@ loc_8112A9A:
 	mov r0, #0x74
 	mov r1, #0x7f
 	mov r2, #0x84
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #0
 	bne locret_8112B04
 	mov r0, #0x64
 	mov r1, #0x7f
 	mov r2, #0x84
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #0
 	bne locret_8112B04
 	bl object_getFlag // () -> int
@@ -9531,7 +9531,7 @@ off_8113078: .word sub_8016380+1
 	.word sub_81130FC+1
 	.word sub_8113108+1
 	.word sub_8113124+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	.word sub_8112F4E+1
 	.word sub_8112D9C+1
 byte_81130A8: .byte 0x0, 0x0, 0x3, 0x0, 0x0, 0x50, 0x1, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x50, 0x2
@@ -9697,7 +9697,7 @@ sub_81131D8:
 	cmp r0, r1
 	bgt loc_8113204
 	mov r0, r4
-	bl sub_80126E4
+	bl somethingWriteChipParams_80126E4
 	bl object_setAttack0
 	bl sub_800F322
 	mov r6, #1
@@ -9759,7 +9759,7 @@ sub_8113330:
 off_8113340: .word off_8113344
 off_8113344: .word sub_8113350+1
 	.word sub_811339A+1
-	.word sub_81097B4+1
+	.word genericAI_exitAttackStateAffterDelay_81097B4+1
 	thumb_func_end sub_8113330
 
 	thumb_local_start
@@ -9767,7 +9767,7 @@ sub_8113350:
 	push {r4,r6,r7,lr}
 	bl object_canMove
 	beq loc_8113394
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r6,#oAIState_Unk_04]
 	cmp r0, #1
@@ -9931,7 +9931,7 @@ off_811349C: .word off_81134A0
 off_81134A0: .word sub_81134B0+1
 	.word sub_8113510+1
 	.word sub_81135A4+1
-	.word sub_81097B4+1
+	.word genericAI_exitAttackStateAffterDelay_81097B4+1
 	thumb_func_end sub_811348E
 
 	thumb_local_start
@@ -10084,7 +10084,7 @@ off_81135CC: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_811365A+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	.word sub_8113330+1
 	.word sub_811348E+1
 byte_81135FC: .byte 0x0, 0x50, 0x2, 0x0, 0x0, 0x60, 0x2, 0x0, 0x0, 0x70, 0x2, 0x0, 0x0, 0x80
@@ -10183,7 +10183,7 @@ loc_81136BE:
 	mov r0, #0x64
 	mov r1, #0x8b
 	mov r2, #0x90
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #0
 	bne loc_81136F0
 	mov r0, #1
@@ -10291,7 +10291,7 @@ off_8113854: .word sub_811387C+1
 	.word sub_8113A1C+1
 	.word sub_8113A76+1
 	.word sub_8113AB8+1
-	.word sub_81097B4+1
+	.word genericAI_exitAttackStateAffterDelay_81097B4+1
 	thumb_func_end sub_8113840
 
 	thumb_local_start
@@ -10552,7 +10552,7 @@ loc_8113A56:
 	ldrb r2, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	mov r2, #1
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 locret_8113A74:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8113A1C
@@ -10944,7 +10944,7 @@ off_8113D50: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_8113DD8+1
-	.word sub_81097B4+1
+	.word genericAI_exitAttackStateAffterDelay_81097B4+1
 	.word sub_8113840+1
 	.word sub_8114214+1
 	.word sub_8109804+1
@@ -11006,7 +11006,7 @@ loc_8113E2C:
 	mov r0, #0x60
 	mov r1, #0x91
 	mov r2, #0x96
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #0
 	pop {r1}
 	bne locret_8113E4E
@@ -11050,7 +11050,7 @@ sub_8113E54:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0
 	strb r0, [r7,#oAIAttackVars_Unk_0c]
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xa
 	bl object_setAttack0
@@ -11094,7 +11094,7 @@ sub_8113EAC:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_0c]
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xa
 	bl object_setAttack0
@@ -11501,7 +11501,7 @@ off_8114224: .word off_8114228
 off_8114228: .word sub_8114238+1
 	.word sub_811427A+1
 	.word sub_81142F0+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	thumb_func_end sub_8114214
 
 	thumb_local_start
@@ -11518,7 +11518,7 @@ sub_8114238:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r7,#oAIAttackVars_Unk_03]
 	mov r1, #1
@@ -11737,7 +11737,7 @@ byte_81143F4: .byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	thumb_func_end sub_811438E
 
 	thumb_local_start
-sub_81144B4:
+snakearmAI_attack0xa_81144B4:
 	push {lr}
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
 	ldr r0, [r0,#oCollisionData_FlagsFromCollision]
@@ -11756,14 +11756,14 @@ loc_81144C8:
 	pop {pc}
 	.balign 4, 0
 off_81144D4: .word off_81144D8
-off_81144D8: .word sub_81144E8+1
-	.word sub_811456A+1
-	.word sub_8114612+1
-	.word sub_81146BC+1
-	thumb_func_end sub_81144B4
+off_81144D8: .word snakearmAI_attack0xa_0x0_81144E8+1
+	.word snakearmAI_attack0xa_0x4_811456A+1
+	.word snakearmAI_attack0xa_0x8_8114612+1
+	.word snakearmAI_attack0xa_0xc_81146BC+1
+	thumb_func_end snakearmAI_attack0xa_81144B4
 
 	thumb_local_start
-sub_81144E8:
+snakearmAI_attack0xa_0x0_81144E8:
 	push {r4-r7,lr}
 	ldrb r0, [r7,#oAIAttackVars_Unk_01]
 	tst r0, r0
@@ -11799,13 +11799,13 @@ loc_8114510:
 loc_811452C:
 	ldr r0, dword_81146FC // =0x160000
 	mov r1, #1
-	bl sub_8114FB8
+	bl snakearmAI_8114FB8
 	mov r0, #0
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, r5
-	bl sub_80BC998
+	bl spawnSnakearmRelatedObject_t1_0x1c_80BC998
 	str r0, [r5,#oBattleObject_ExtraVars+0x1c]
 	mov r0, #0xe1
 	bl PlaySoundEffect
@@ -11823,13 +11823,13 @@ loc_811455C:
 	mov r1, #4
 	tst r0, r1
 	bne locret_8114568
-	bl sub_8114694
+	bl snakearmAI_highlightPanelIfSomeCondition_8114694
 locret_8114568:
 	pop {r4-r7,pc}
-	thumb_func_end sub_81144E8
+	thumb_func_end snakearmAI_attack0xa_0x0_81144E8
 
 	thumb_local_start
-sub_811456A:
+snakearmAI_attack0xa_0x4_811456A:
 	push {r4-r7,lr}
 	mov r0, #0x84
 	ldrh r1, [r5,r0]
@@ -11840,7 +11840,7 @@ sub_811456A:
 	mov r1, #0
 	strh r1, [r5,r0]
 	ldr r0, [r5,#oBattleObject_ExtraVars+0x1c]
-	bl sub_80BC9BE
+	bl snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+0x1c]
 loc_8114586:
@@ -11863,7 +11863,7 @@ loc_8114586:
 	ldrh r0, [r5,r1]
 	mov r1, #0x66
 	ldrh r1, [r5,r1]
-	bl sub_8114F52
+	bl snakearmRelated_divideR0By4_StoreIntoR1_SetR0To3If4_8114F52
 	add r0, #1
 	mov r1, #0x68
 	ldrb r2, [r5,r1]
@@ -11889,7 +11889,7 @@ loc_81145BE:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, r5
-	bl sub_80BC998
+	bl spawnSnakearmRelatedObject_t1_0x1c_80BC998
 	mov r1, #0x80
 	str r0, [r5,r1]
 	mov r0, #0xbf
@@ -11906,13 +11906,13 @@ loc_81145BE:
 loc_8114600:
 	bl object_setPanelsFromCoordinates
 	bl object_updateCollisionPanels
-	bl sub_81146CC
-	bl sub_8115028
-	thumb_func_end sub_811456A
-
+	bl snakearmAI_setCollisionRegionIfSomePanelXYComparison_81146CC
+	bl snakearmAI_spawnCollisionRegionIfPanelTest_8115028
 	pop {r4-r7,pc}
+	thumb_func_end snakearmAI_attack0xa_0x4_811456A
+
 	thumb_local_start
-sub_8114612:
+snakearmAI_attack0xa_0x8_8114612:
 	push {r4-r7,lr}
 	mov r0, #0x84
 	ldrh r1, [r5,r0]
@@ -11923,7 +11923,7 @@ sub_8114612:
 	mov r1, #0
 	strh r1, [r5,r0]
 	ldr r0, [r5,#oBattleObject_ExtraVars+0x1c]
-	bl sub_80BC9BE
+	bl snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+0x1c]
 loc_811462E:
@@ -11937,7 +11937,7 @@ loc_811462E:
 	strh r1, [r5,r0]
 	mov r0, #0x80
 	ldr r0, [r5,r0]
-	bl sub_80BC9BE
+	bl snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE
 	mov r0, #0
 	mov r1, #0x80
 	str r0, [r5,r1]
@@ -11972,10 +11972,10 @@ loc_811462E:
 	bl object_updateCollisionPanels
 locret_8114692:
 	pop {r4-r7,pc}
-	thumb_func_end sub_8114612
+	thumb_func_end snakearmAI_attack0xa_0x8_8114612
 
 	thumb_local_start
-sub_8114694:
+snakearmAI_highlightPanelIfSomeCondition_8114694:
 	push {r4-r7,lr}
 	bl object_getFrontDirection // () -> int
 	mov r6, r0
@@ -11990,26 +11990,26 @@ loc_811469E:
 	ldrb r2, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	mov r2, #1
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 	add r4, #1
 	cmp r4, #3
 	bne loc_811469E
 	pop {r4-r7,pc}
-	thumb_func_end sub_8114694
+	thumb_func_end snakearmAI_highlightPanelIfSomeCondition_8114694
 
 	thumb_local_start
-sub_81146BC:
+snakearmAI_attack0xa_0xc_81146BC:
 	push {r4-r7,lr}
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	bl sub_81097BA
+	bl genericAI_exitAttackStateAfterDelay_81097BA
 	pop {r4-r7,pc}
-	thumb_func_end sub_81146BC
+	thumb_func_end snakearmAI_attack0xa_0xc_81146BC
 
 	thumb_local_start
-sub_81146CC:
+snakearmAI_setCollisionRegionIfSomePanelXYComparison_81146CC:
 	push {r4-r7,lr}
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -12038,19 +12038,19 @@ dword_81146FC: .word 0x160000
 off_8114700: .word math_sinTable
 	.word 0, 0
 	.byte 0, 0, 0, 0
-off_8114710: .word sub_8016380+1
-	.word sub_8114FAA+1
-	.word sub_80165C2+1
-	.word sub_80166AE+1
-	.word sub_8016B02+1
-	.word sub_8016CE8+1
-	.word sub_8016B36+1
-	.word sub_8016B72+1
-	.word sub_81147F4+1
-	.word sub_8114EFC+1
-	.word sub_81144B4+1
-	.word sub_8109952+1
-	.word sub_8114E44+1
+snakearmAttackTable_8114710: .word sub_8016380+1 // 0x0
+	.word snakearmAI_setMovingThenCall_sub_80165B8_8114FAA+1 // 0x1
+	.word sub_80165C2+1 // 0x2
+	.word sub_80166AE+1 // 0x3
+	.word sub_8016B02+1 // 0x4
+	.word sub_8016CE8+1 // 0x5
+	.word sub_8016B36+1 // 0x6
+	.word sub_8016B72+1 // 0x7
+	.word snakearmAI_main_update_81147F4+1 // 0x8
+	.word snakearmAI_attack0x9_8114EFC+1 // 0x9
+	.word snakearmAI_attack0xa_81144B4+1 // 0xa
+	.word genericAI_movementRelated_8109952+1 // 0xb
+	.word snakearmAI_attack0xc_8114E44+1 // 0xc
 byte_8114744: .byte 0x1C, 0x0, 0x1A, 0x0, 0x18, 0x0, 0x16, 0x0, 0x16, 0x0, 0x16
 	.byte 0x0
 byte_8114750: .byte 0x3C, 0x5A, 0x78, 0x96, 0x78, 0xB4, 0x0, 0x0
@@ -12074,10 +12074,10 @@ byte_81147C4: .byte 0x28, 0x0, 0x28, 0x0, 0x23, 0x0, 0x23, 0x0, 0x1E, 0x0, 0x1E
 byte_81147DC: .byte 0x2A, 0x0, 0x2A, 0x0, 0x23, 0x0, 0x23, 0x0, 0x1C, 0x0, 0x1C
 	.byte 0x0, 0x1C, 0x0, 0x1C, 0x0, 0x1C, 0x0, 0x1C, 0x0, 0x1C, 0x0
 	.byte 0x1C, 0x0
-	thumb_func_end sub_81146CC
+	thumb_func_end snakearmAI_setCollisionRegionIfSomePanelXYComparison_81146CC
 
 	thumb_local_start
-sub_81147F4:
+snakearmAI_main_update_81147F4:
 	push {r4-r7,lr}
 	mov r0, #0x61
 	ldrb r1, [r5,r0]
@@ -12096,26 +12096,27 @@ loc_8114806:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8114814: .word off_8114818
-off_8114818: .word sub_8114824+1
-	.word sub_8114856+1
-	.word sub_8114910+1
-	thumb_func_end sub_81147F4
+off_8114818: .word snakearmAI_update_0x0_8114824+1
+	.word snakearmAI_update_0x4_8114856+1
+	.word snakearmAI_update_0x8_8114910+1
+	thumb_func_end snakearmAI_main_update_81147F4
 
 	thumb_local_start
-sub_8114824:
+snakearmAI_update_0x0_8114824:
 	push {r4-r7,lr}
 	mov r0, #0
-	mov r1, #0x7c
-	mov r2, #0x80
+	mov r1, #oBattleObject_ExtraVars+0x1c
+	mov r2, #oBattleObject_ExtraVars+0x20
 	str r0, [r5,r1]
 	str r0, [r5,r2]
-	bl sub_8114CF2
+	bl snakearmAI_8114CF2
 	tst r0, r0
 	beq loc_8114850
-	mov r0, #0x74
+	// might be set when a snakearm is targeting an actor?
+	mov r0, #oBattleObject_ExtraVars+0x14
 	mov r1, #0x97
 	mov r2, #0x9c
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #0
 	bne loc_8114850
 	mov r0, #1
@@ -12128,14 +12129,14 @@ loc_8114850:
 	strb r0, [r6,#oAIState_Unk_00]
 locret_8114854:
 	pop {r4-r7,pc}
-	thumb_func_end sub_8114824
+	thumb_func_end snakearmAI_update_0x0_8114824
 
 	thumb_local_start
-sub_8114856:
+snakearmAI_update_0x4_8114856:
 	push {r4-r7,lr}
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_DirectionFlip]
-	bl sub_81149E0
+	bl snakearmAI_81149E0
 	tst r0, r0
 	beq loc_81148EC
 	ldrb r1, [r4,#oAIData_Version_16]
@@ -12143,10 +12144,10 @@ sub_8114856:
 	ldr r0, off_8114908 // =byte_81147C4
 	add r0, r0, r1
 	ldrh r1, [r0]
-	mov r2, #0x84
+	mov r2, #oBattleObject_ExtraVars+0x24
 	strh r1, [r5,r2]
 	ldrh r1, [r0,#2]
-	mov r2, #0x86
+	mov r2, #oBattleObject_ExtraVars+0x26
 	strh r1, [r5,r2]
 	ldrb r1, [r4,#oAIData_Version_16]
 	ldr r0, off_811490C // =byte_8114750
@@ -12156,57 +12157,57 @@ sub_8114856:
 	ldrb r1, [r4,#oAIData_Version_16]
 	lsl r1, r1, #1
 	ldrh r0, [r0,r1]
-	mov r1, #0x70
+	mov r1, #oBattleObject_ExtraVars+0x10
 	strh r0, [r5,r1]
 	push {r4}
-	mov r2, #0x62
+	mov r2, #oBattleObject_ExtraVars+2
 	ldrb r0, [r5,r2]
-	mov r2, #0x63
+	mov r2, #oBattleObject_ExtraVars+3
 	ldrb r1, [r5,r2]
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	mov r2, r1
 	mov r1, r0
 	mov r3, #0
-	mov r0, #0x34
+	mov r0, #oBattleObject_Coords
 	add r0, r0, r5
-	mov r4, #0x70
+	mov r4, #oBattleObject_ExtraVars+0x10
 	ldrh r4, [r5,r4]
-	bl sub_8114F6A
+	bl battleCoordCalc_8114F6A
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
-	mov r0, #0x6c
+	mov r0, #oBattleObject_ExtraVars+0xc
 	strh r3, [r5,r0]
 	pop {r4}
 	mov r0, #0
-	mov r1, #0x64
+	mov r1, #oBattleObject_ExtraVars+4
 	strh r0, [r5,r1]
-	mov r0, #0x70
+	mov r0, #oBattleObject_ExtraVars+0x10
 	ldrh r0, [r5,r0]
-	mov r1, #0x66
+	mov r1, #oBattleObject_ExtraVars+6
 	strh r0, [r5,r1]
-	mov r0, #0x6e
+	mov r0, #oBattleObject_ExtraVars+0xe
 	mov r1, #0
 	strh r1, [r5,r0]
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_CurAnim]
-	mov r1, #0x68
+	mov r1, #oBattleObject_ExtraVars+8
 	strb r0, [r5,r1]
 	ldr r0, dword_8114904 // =0x160000
 	mov r1, #0
-	bl sub_8114FB8
+	bl snakearmAI_8114FB8
 	mov r0, #0xc
 	bl object_setAttack0
 	mov r0, #0
 	strb r0, [r6,#oAIState_Unk_00]
-	bl sub_8115028
+	bl snakearmAI_spawnCollisionRegionIfPanelTest_8115028
 	b loc_81148F0
 loc_81148EC:
 	mov r0, #0
 	strb r0, [r6,#oAIState_Unk_00]
 loc_81148F0:
 	bl sub_800F2C6
-	bl sub_8115074
+	bl snakearmAI_8115074
 	pop {r4-r7,pc}
 	.word 0
 	.balign 4, 0
@@ -12214,10 +12215,10 @@ off_8114900: .word byte_8114744
 dword_8114904: .word 0x160000
 off_8114908: .word byte_81147C4
 off_811490C: .word byte_8114750
-	thumb_func_end sub_8114856
+	thumb_func_end snakearmAI_update_0x4_8114856
 
 	thumb_local_start
-sub_8114910:
+snakearmAI_update_0x8_8114910:
 	push {r4-r7,lr}
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_DirectionFlip]
@@ -12253,7 +12254,7 @@ sub_8114910:
 	add r0, r0, r5
 	mov r4, #0x70
 	ldrh r4, [r5,r4]
-	bl sub_8114F6A
+	bl battleCoordCalc_8114F6A
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -12292,14 +12293,14 @@ sub_8114910:
 	bl object_setAttack0
 	mov r0, #0
 	strb r0, [r6,#oAIState_Unk_00]
-	bl sub_8115028
+	bl snakearmAI_spawnCollisionRegionIfPanelTest_8115028
 	b loc_81149B8
 loc_81149B4:
 	mov r0, #0
 	strb r0, [r6,#oAIState_Unk_00]
 loc_81149B8:
 	bl sub_800F2C6
-	bl sub_8115074
+	bl snakearmAI_8115074
 	pop {r4-r7,pc}
 	.word 0, 0, 0
 	.balign 4, 0
@@ -12307,10 +12308,10 @@ off_81149D0: .word byte_8114750
 off_81149D4: .word byte_8114758
 off_81149D8: .word byte_8114760
 off_81149DC: .word byte_81147DC
-	thumb_func_end sub_8114910
+	thumb_func_end snakearmAI_update_0x8_8114910
 
 	thumb_local_start
-sub_81149E0:
+snakearmAI_81149E0:
 	push {r4-r7,lr}
 	bl sub_8114A4A
 	tst r0, r0
@@ -12349,14 +12350,14 @@ loc_8114A02:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, r5
-	bl sub_80BC998
+	bl spawnSnakearmRelatedObject_t1_0x1c_80BC998
 	str r0, [r5,#oBattleObject_ExtraVars+0x1c]
 	mov r0, #0xe1
 	bl PlaySoundEffect
 	pop {r0,r1}
 locret_8114A48:
 	pop {r4-r7,pc}
-	thumb_func_end sub_81149E0
+	thumb_func_end snakearmAI_81149E0
 
 	thumb_local_start
 sub_8114A4A:
@@ -12439,10 +12440,10 @@ sub_8114AF0:
 	tst r0, r0
 	beq locret_8114BA2
 	str r0, [r7,#oAIAttackVars_Unk_2c]
-	ldrb r2, [r0,#0x16]
-	ldrb r1, [r0,#0x13]
-	ldrb r0, [r0,#0x12]
-	bl sub_8114BB4
+	ldrb r2, [r0,#oBattleObject_Alliance]
+	ldrb r1, [r0,#oBattleObject_PanelY]
+	ldrb r0, [r0,#oBattleObject_PanelX]
+	bl snakearmAI_panelTest_8114BB4
 	tst r0, r0
 	beq loc_8114B54
 	push {r0,r1}
@@ -12460,13 +12461,13 @@ sub_8114AF0:
 	strb r1, [r5,#oBattleObject_PanelY]
 	bl object_setCoordinatesFromPanels // () -> void
 	bl object_updateCollisionPanels
-	bl sub_8114D8E
-	mov r2, #0x62
+	bl snakearmAI_getPanelXYBasedOnEnemyActorPanelX_8114D8E
+	mov r2, #oBattleObject_ExtraVars+SNAKEARM_EV_2
 	strb r0, [r5,r2]
-	mov r2, #0x63
+	mov r2, #oBattleObject_ExtraVars+SNAKEARM_EV_3
 	strb r1, [r5,r2]
 	push {r0,r1}
-	bl sub_8114DAC
+	bl snakearmAI_setDirectionFlipBasedOffEnemyPanelX_8114DAC
 	pop {r0,r1}
 	b locret_8114BA2
 loc_8114B54:
@@ -12502,7 +12503,7 @@ loc_8114B6C:
 	strb r1, [r5,#oBattleObject_PanelY]
 	bl object_setCoordinatesFromPanels // () -> void
 	bl object_updateCollisionPanels
-	bl sub_8114DAC
+	bl snakearmAI_setDirectionFlipBasedOffEnemyPanelX_8114DAC
 	pop {r0,r1}
 locret_8114BA2:
 	pop {r4-r7,pc}
@@ -12513,7 +12514,7 @@ dword_8114BB0: .word 0x2000
 	thumb_func_end sub_8114AF0
 
 	thumb_local_start
-sub_8114BB4:
+snakearmAI_panelTest_8114BB4:
 	push {r4-r7,lr}
 	mov r3, #5
 	mul r2, r3
@@ -12533,7 +12534,7 @@ byte_8114BD4: .byte 0x2, 0x0, 0xFE, 0x0, 0x7F, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 off_8114BE0: .word byte_8114BE4
 byte_8114BE4: .byte 0x1, 0x0, 0xFF, 0x0, 0x7F, 0x0, 0x0, 0x0
 off_8114BEC: .word byte_8114C70
-	thumb_func_end sub_8114BB4
+	thumb_func_end snakearmAI_panelTest_8114BB4
 
 	thumb_local_start
 sub_8114BF0:
@@ -12632,7 +12633,7 @@ loc_8114CE6:
 	thumb_func_end sub_8114CBC
 
 	thumb_local_start
-sub_8114CF2:
+snakearmAI_8114CF2:
 	push {r4-r7,lr}
 	bl object_getFlag // () -> int
 	ldr r1, dword_811509C // =0x8000
@@ -12657,7 +12658,7 @@ off_8114D14: .word sub_8114D2C+1
 	.word sub_8114D44+1
 	.word sub_8114D2C+1
 	.word sub_8114D44+1
-	thumb_func_end sub_8114CF2
+	thumb_func_end snakearmAI_8114CF2
 
 	thumb_local_start
 sub_8114D2C:
@@ -12710,11 +12711,11 @@ loc_8114D8A:
 	thumb_func_end sub_8114D74
 
 	thumb_local_start
-sub_8114D8E:
+snakearmAI_getPanelXYBasedOnEnemyActorPanelX_8114D8E:
 	push {r4-r7,lr}
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldr r1, [r7,#oAIAttackVars_Unk_2c]
-	ldrb r1, [r1,#0x12]
+	ldrb r1, [r1,#oBattleObject_PanelX]
 	sub r0, r1, r0
 	cmp r0, #0
 	bge loc_8114DA4
@@ -12728,10 +12729,10 @@ loc_8114DA4:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 locret_8114DAA:
 	pop {r4-r7,pc}
-	thumb_func_end sub_8114D8E
+	thumb_func_end snakearmAI_getPanelXYBasedOnEnemyActorPanelX_8114D8E
 
 	thumb_local_start
-sub_8114DAC:
+snakearmAI_setDirectionFlipBasedOffEnemyPanelX_8114DAC:
 	push {r4-r7,lr}
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_DirectionFlip]
@@ -12748,7 +12749,7 @@ sub_8114DAC:
 loc_8114DC8:
 	strb r3, [r5,#oBattleObject_DirectionFlip]
 	pop {r4-r7,pc}
-	thumb_func_end sub_8114DAC
+	thumb_func_end snakearmAI_setDirectionFlipBasedOffEnemyPanelX_8114DAC
 
 	push {r4-r7,lr}
 	mov r6, r0
@@ -12815,7 +12816,7 @@ off_8114E40: .word byte_8114758
 	thumb_func_end sub_8114E30
 
 	thumb_local_start
-sub_8114E44:
+snakearmAI_attack0xc_8114E44:
 	push {r4-r7,lr}
 	mov r0, #0x84
 	ldrh r1, [r5,r0]
@@ -12826,7 +12827,7 @@ sub_8114E44:
 	mov r1, #0
 	strh r1, [r5,r0]
 	ldr r0, [r5,#oBattleObject_ExtraVars+0x1c]
-	bl sub_80BC9BE
+	bl snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+0x1c]
 loc_8114E60:
@@ -12851,7 +12852,7 @@ loc_8114E60:
 	ldrh r0, [r5,r1]
 	mov r1, #0x66
 	ldrh r1, [r5,r1]
-	bl sub_8114F52
+	bl snakearmRelated_divideR0By4_StoreIntoR1_SetR0To3If4_8114F52
 	add r0, #1
 	mov r1, #0x68
 	ldrb r2, [r5,r1]
@@ -12877,8 +12878,8 @@ loc_8114E9E:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, r5
-	bl sub_80BC998
-	mov r1, #0x80
+	bl spawnSnakearmRelatedObject_t1_0x1c_80BC998
+	mov r1, #oBattleObject_ExtraVars+SNAKEARM_EV_0x20
 	str r0, [r5,r1]
 	mov r0, #0xbf
 	add r0, #0xff
@@ -12899,14 +12900,14 @@ loc_8114E9E:
 loc_8114EEE:
 	bl object_setPanelsFromCoordinates
 	bl object_updateCollisionPanels
-	bl sub_8115028
-	thumb_func_end sub_8114E44
-
+	bl snakearmAI_spawnCollisionRegionIfPanelTest_8115028
 	pop {r4-r7,pc}
+	thumb_func_end snakearmAI_attack0xc_8114E44
+
 	thumb_local_start
-sub_8114EFC:
+snakearmAI_attack0x9_8114EFC:
 	push {r4-r7,lr}
-	mov r0, #0x84
+	mov r0, #oBattleObject_ExtraVars+0x24
 	ldrh r1, [r5,r0]
 	sub r1, #1
 	strh r1, [r5,r0]
@@ -12915,7 +12916,7 @@ sub_8114EFC:
 	mov r1, #0
 	strh r1, [r5,r0]
 	ldr r0, [r5,#oBattleObject_ExtraVars+0x1c]
-	bl sub_80BC9BE
+	bl snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+0x1c]
 loc_8114F18:
@@ -12926,11 +12927,11 @@ loc_8114F18:
 	and r0, r1
 	bne loc_8114F2E
 	ldrb r0, [r5,#oObjectHeader_Flags]
-	mov r1, #2
+	mov r1, #OBJECT_FLAG_VISIBLE
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 loc_8114F2E:
-	mov r0, #0x86
+	mov r0, #oBattleObject_ExtraVars+0x26
 	ldrh r1, [r5,r0]
 	sub r1, #1
 	strh r1, [r5,r0]
@@ -12938,19 +12939,19 @@ loc_8114F2E:
 	bgt locret_8114F50
 	mov r1, #0
 	strh r1, [r5,r0]
-	mov r0, #0x80
+	mov r0, #oBattleObject_ExtraVars+0x20
 	ldr r0, [r5,r0]
-	bl sub_80BC9BE
+	bl snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE
 	mov r0, #0
-	mov r1, #0x80
+	mov r1, #oBattleObject_ExtraVars+0x20
 	str r0, [r5,r1]
-	bl sub_81097B4
+	bl genericAI_exitAttackStateAffterDelay_81097B4
 locret_8114F50:
 	pop {r4-r7,pc}
-	thumb_func_end sub_8114EFC
+	thumb_func_end snakearmAI_attack0x9_8114EFC
 
-	thumb_func_start sub_8114F52
-sub_8114F52:
+	thumb_func_start snakearmRelated_divideR0By4_StoreIntoR1_SetR0To3If4_8114F52
+snakearmRelated_divideR0By4_StoreIntoR1_SetR0To3If4_8114F52:
 	push {lr}
 	push {r0}
 	mov r0, r1
@@ -12964,10 +12965,10 @@ sub_8114F52:
 	mov r0, #3
 locret_8114F68:
 	pop {pc}
-	thumb_func_end sub_8114F52
+	thumb_func_end snakearmRelated_divideR0By4_StoreIntoR1_SetR0To3If4_8114F52
 
-	thumb_func_start sub_8114F6A
-sub_8114F6A:
+	thumb_func_start battleCoordCalc_8114F6A
+battleCoordCalc_8114F6A:
 	push {r5-r7,lr}
 	ldr r5, [r0]
 	sub r1, r1, r5
@@ -13000,19 +13001,19 @@ sub_8114F6A:
 	pop {r1}
 	pop {r0}
 	pop {r5-r7,pc}
-	thumb_func_end sub_8114F6A
+	thumb_func_end battleCoordCalc_8114F6A
 
 	thumb_local_start
-sub_8114FAA:
+snakearmAI_setMovingThenCall_sub_80165B8_8114FAA:
 	push {r4-r7,lr}
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	bl sub_80165B8
 	pop {r4-r7,pc}
-	thumb_func_end sub_8114FAA
+	thumb_func_end snakearmAI_setMovingThenCall_sub_80165B8_8114FAA
 
 	thumb_local_start
-sub_8114FB8:
+snakearmAI_8114FB8:
 	push {r4-r7,lr}
 	ldrb r2, [r4,#oAIData_Version_16]
 	mov r6, r0
@@ -13038,7 +13039,7 @@ loc_8114FC2:
 	mov r1, #0x63
 	ldrb r1, [r5,r1]
 	mov r2, r7
-	bl sub_80BE6D8
+	bl spawnSnakearmRelatedObject_t1_0x22_80BE6D8
 loc_8114FEC:
 	pop {r0,r1}
 	add r0, #1
@@ -13055,30 +13056,30 @@ off_8115010: .word byte_8115018
 	.word byte_811501F
 byte_8115018: .byte 0x0, 0x0, 0x0, 0x10, 0x1, 0xFF, 0xFF
 byte_811501F: .byte 0x0, 0x0, 0x10, 0x0, 0x0, 0x10, 0x1, 0x0, 0x0
-	thumb_func_end sub_8114FB8
+	thumb_func_end snakearmAI_8114FB8
 
 	thumb_local_start
-sub_8115028:
+snakearmAI_spawnCollisionRegionIfPanelTest_8115028:
 	push {r4-r7,lr}
 	ldr r0, [r5,#oBattleObject_X]
 	ldr r1, [r5,#oBattleObject_Y]
 	ldr r2, [r5,#oBattleObject_XVelocity]
 	add r0, r0, r2
 	ldr r2, [r5,#oBattleObject_Z]
-	bl sub_800E258
+	bl convertXYToPanelXY_800E258
 	push {r0,r1}
 	bl object_getPanelParameters
 	ldr r1, dword_81150A8 // =0x800000
 	tst r0, r1
 	pop {r0,r1}
 	beq locret_811504A
-	bl sub_811504C
+	bl snakearmAI_spawnCollisionRegion_811504C
 locret_811504A:
 	pop {r4-r7,pc}
-	thumb_func_end sub_8115028
+	thumb_func_end snakearmAI_spawnCollisionRegionIfPanelTest_8115028
 
 	thumb_local_start
-sub_811504C:
+snakearmAI_spawnCollisionRegion_811504C:
 	push {r4-r7,lr}
 	push {r0,r1}
 	ldr r4, dword_811506C // =0x605ff01
@@ -13096,12 +13097,12 @@ sub_811504C:
 	.balign 4, 0
 dword_811506C: .word 0x605FF01
 dword_8115070: .word 0x0
-	thumb_func_end sub_811504C
+	thumb_func_end snakearmAI_spawnCollisionRegion_811504C
 
 	thumb_local_start
-sub_8115074:
+snakearmAI_8115074:
 	push {r4-r7,lr}
-	mov r0, #0x61
+	mov r0, #oBattleObject_ExtraVars+SNAKEARM_EV_1
 	ldrb r1, [r5,r0]
 	tst r1, r1
 	beq locret_8115096
@@ -13111,13 +13112,13 @@ sub_8115074:
 	mov r1, #0
 	bl sub_801DC7C
 	ldrb r0, [r5,#oObjectHeader_Flags]
-	mov r1, #2
+	mov r1, #OBJECT_FLAG_VISIBLE
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl sub_8016934
 locret_8115096:
 	pop {r4-r7,pc}
-	thumb_func_end sub_8115074
+	thumb_func_end snakearmAI_8115074
 
 	thumb_func_start sub_8115098
 sub_8115098:
@@ -13192,7 +13193,7 @@ loc_81151E4:
 	mov r2, #2
 	mov r3, #3
 	bl object_updateCollisionData
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -13542,7 +13543,7 @@ sub_8115492:
 	ldrb r2, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	ldr r2, [r7,#oAIAttackVars_Unk_34]
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 locret_81154B6:
 	pop {pc}
 	thumb_func_end sub_8115492
@@ -13578,7 +13579,7 @@ off_81154F0: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_811557C+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	.word sub_8109804+1
 	.word sub_81151A0+1
 byte_8115520: .byte 0x0, 0x70, 0x0, 0x0, 0x0, 0x80, 0x0, 0x0, 0x0, 0x90, 0x0, 0x0, 0x0, 0xA0
@@ -13634,7 +13635,7 @@ sub_8115598:
 	mov r0, #0x68
 	mov r1, #0x9d
 	mov r2, #0xa2
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	ldrb r2, [r5,#oBattleObject_PanelY]
 	mov r0, #1
 	lsl r0, r2
@@ -13849,7 +13850,7 @@ off_8115804: .word sub_811581C+1
 	.word sub_81158A4+1
 	.word sub_81158C2+1
 	.word sub_81158DC+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	thumb_func_end sub_81157F0
 
 	thumb_local_start
@@ -14005,7 +14006,7 @@ sub_811590A:
 	ldrb r3, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	mov r2, #4
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 locret_8115928:
 	pop {pc}
 	thumb_func_end sub_811590A
@@ -14032,9 +14033,9 @@ off_8115950: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_8115A02+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	.word sub_81157F0+1
-	.word sub_8109952+1
+	.word genericAI_movementRelated_8109952+1
 byte_8115980: .byte 0x32, 0x0, 0xA, 0x0, 0x78, 0x0, 0xA, 0x0, 0xC8, 0x0, 0xA, 0x0
 	.byte 0xDC, 0x0, 0xA, 0x0, 0x96, 0x0, 0xA, 0x0, 0xDC, 0x0, 0xA, 0x0
 byte_8115998: .byte 0x64, 0x64, 0x64, 0x64, 0x64, 0x64
@@ -14164,7 +14165,7 @@ loc_8115A7E:
 	str r0, [r7,#oAIAttackVars_Unk_34]
 	mov r0, #0xb
 	bl object_setAttack0
-	bl sub_8109952
+	bl genericAI_movementRelated_8109952
 loc_8115A90:
 	mov r0, #8
 	strb r0, [r6,#oAIState_Unk_00]
@@ -14375,7 +14376,7 @@ sub_8115CD8:
 off_8115CE8: .word off_8115CEC
 off_8115CEC: .word sub_8115CF8+1
 	.word sub_8115D58+1
-	.word sub_81097B4+1
+	.word genericAI_exitAttackStateAffterDelay_81097B4+1
 	thumb_func_end sub_8115CD8
 
 	thumb_local_start
@@ -14422,7 +14423,7 @@ loc_8115D38:
 	ldrb r2, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	mov r2, #4
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 locret_8115D56:
 	pop {r4,pc}
 	thumb_func_end sub_8115CF8
@@ -14501,7 +14502,7 @@ off_8115DE0: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_8115E4C+1
-	.word sub_81097B4+1
+	.word genericAI_exitAttackStateAffterDelay_81097B4+1
 	.word sub_8115CD8+1
 	.word sub_8109974+1
 	.word sub_8109804+1
@@ -14646,7 +14647,7 @@ sub_8115F2E:
 	mov r0, #0x64
 	mov r1, #0xa9
 	mov r2, #0xae
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #0
 	bne loc_8115F6E
 	ldrb r1, [r4,#oAIData_Version_16]
@@ -15025,7 +15026,7 @@ sub_811627A:
 	strb r1, [r5,r0]
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars]
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	pop {r4-r7,pc}
 	thumb_func_end sub_811627A

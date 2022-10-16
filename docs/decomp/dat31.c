@@ -325,7 +325,7 @@ signed int sub_810C7B6()
     __int16 v5; // r0
     char v6; // r2
 
-    if ( *(v1 + 96) || sub_8109630(96, 37, 42) )
+    if ( *(v1 + 96) || FindBattleActorsWithNonzeroParam_ReturnCountAndSum(96, 37, 42) )
     {
         *(v1 + 16) = 0;
         v5 = object_getFlag();
@@ -365,7 +365,7 @@ signed int sub_810C820()
         v4 = v2 & 0x1FF;
         if ( sub_800A704() >= byte_12C )
         {
-            sub_80126E4(v4);
+            somethingWriteChipParams_80126E4(v4);
             object_setAttack0();
             sub_800F322();
             v1 = 1;
@@ -1499,7 +1499,7 @@ int sub_810D808()
     if ( !(result & 4) )
     {
         v11 = object_getFrontDirection(v1);
-        result = sub_8109660(v11 + v1->panelX, v1->panelY, *(v2 + 13), v1->Alliance ^ v1->directionFlip);
+        result = highlightPanelIfSomeCondition_8109660(v11 + v1->panelX, v1->panelY, *(v2 + 13), v1->Alliance ^ v1->directionFlip);
     }
     return result;
 }

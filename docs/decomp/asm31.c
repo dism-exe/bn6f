@@ -5533,8 +5533,8 @@ int sub_80BB1D8()
     result = *(v0 + 34);
     if ( !(result & 4) )
     {
-        sub_8109660(*(v0 + 116), *(v0 + 120), 2, *(v0 + 22));
-        result = sub_8109660(*(v0 + 116), *(v0 + 120) + 1, 2, *(v0 + 22));
+        highlightPanelIfSomeCondition_8109660(*(v0 + 116), *(v0 + 120), 2, *(v0 + 22));
+        result = highlightPanelIfSomeCondition_8109660(*(v0 + 116), *(v0 + 120) + 1, 2, *(v0 + 22));
     }
     return result;
 }
@@ -6513,7 +6513,7 @@ int __fastcall sub_80BBA26(int a1, int a2, int a3)
     v5 = v3->panelX;
     v3->x += v3->vx;
     v6 = v3->y;
-    v10 = sub_800E258(v3->x);
+    v10 = convertXYToPanelXY_800E258(v3->x);
     v11 = v7;
     if ( object_isValidPanel(v10, v7) )
     {
@@ -7691,7 +7691,7 @@ signed int sub_80BC434()
                 battle_isTimeStop();
                 if ( v2 )
                 {
-                    sub_801BC64();
+                    UpdateBattleObjectSprite();
                     v1 = 1;
                 }
             }
@@ -8052,7 +8052,7 @@ int __fastcall sub_80BC844(char a1, int a2, int a3, int a4)
 
 
 // 0x80bc87c
-int sub_80BC87C()
+int snakearmRelatedObject_80BC87C()
 {
     int v0; // r5
 
@@ -8063,7 +8063,7 @@ int sub_80BC87C()
 
 
 // 0x80bc8a8
-void __noreturn sub_80BC8A8()
+void __noreturn snakearmRelatedObject_init_80BC8A8()
 {
     int v0; // r5
     int v1; // r0
@@ -8079,12 +8079,12 @@ void __noreturn sub_80BC8A8()
     sprite_update(v0);
     object_setCoordinatesFromPanels(v0);
     *(v0 + 8) = 4;
-    sub_80BC8EC();
+    snakearmRelatedObject_update_80BC8EC();
 }
 
 
 // 0x80bc8ec
-int sub_80BC8EC()
+int snakearmRelatedObject_update_80BC8EC()
 {
     int v0; // r5
     int result; // r0
@@ -8097,14 +8097,14 @@ int sub_80BC8EC()
 
 
 // 0x80bc920
-int sub_80BC920()
+int snakearmRelatedObject_action0x0_80BC920()
 {
     _BYTE *v0; // r5
     int result; // r0
 
-    if ( sub_80BC9F8() )
+    if ( GetRelatedObject1HP() )
     {
-        result = sub_80BC9D2();
+        result = UpdateBattleObjectSpriteIfStatusPermits();
         if ( result )
         {
             result = sprite_getFrameParameters();
@@ -8129,13 +8129,13 @@ int sub_80BC920()
 
 
 // 0x80bc958
-int sub_80BC958()
+int snakearmRelatedObject_action0x4_80BC958()
 {
     _BYTE *v0; // r5
     int result; // r0
 
-    if ( sub_80BC9F8() )
-        return sub_80BC9D2();
+    if ( GetRelatedObject1HP() )
+        return UpdateBattleObjectSpriteIfStatusPermits();
     v0[16] = 2;
     v0[9] = 8;
     result = 0;
@@ -8145,7 +8145,7 @@ int sub_80BC958()
 
 
 // 0x80bc976
-int sub_80BC976()
+int snakearmRelatedObject_action0x8_80BC976()
 {
     int v0; // r5
     int result; // r0
@@ -8157,7 +8157,7 @@ int sub_80BC976()
         result = battle_isTimeStop();
         if ( v2 )
         {
-            sub_801BC64();
+            UpdateBattleObjectSprite();
             result = sprite_getFrameParameters();
             if ( result & 0x80 )
             {
@@ -8171,7 +8171,7 @@ int sub_80BC976()
 
 
 // 0x80bc998
-int __fastcall sub_80BC998(int a1, int a2, int a3)
+int __fastcall spawnSnakearmRelatedObject_t1_0x1c_80BC998(int a1, int a2, int a3)
 {
     int v3; // r5
     int result; // r0
@@ -8198,7 +8198,7 @@ int __fastcall sub_80BC998(int a1, int a2, int a3)
 
 
 // 0x80bc9be
-int __fastcall sub_80BC9BE(int result)
+int __fastcall snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE(int result)
 {
     if ( result )
     {
@@ -8213,7 +8213,7 @@ int __fastcall sub_80BC9BE(int result)
 
 
 // 0x80bc9d2
-signed int sub_80BC9D2()
+signed int UpdateBattleObjectSpriteIfStatusPermits()
 {
     int v0; // r5
     signed int v1; // r4
@@ -8228,7 +8228,7 @@ signed int sub_80BC9D2()
             battle_isTimeStop();
             if ( v2 )
             {
-                sub_801BC64();
+                UpdateBattleObjectSprite();
                 v1 = 1;
             }
         }
@@ -8238,7 +8238,7 @@ signed int sub_80BC9D2()
 
 
 // 0x80bc9f8
-int sub_80BC9F8()
+int GetRelatedObject1HP()
 {
     int v0; // r5
 
@@ -8372,7 +8372,7 @@ signed int sub_80BCB34()
         battle_isTimeStop();
         if ( v1 )
         {
-            sub_801BC64();
+            UpdateBattleObjectSprite();
             v0 = 1;
         }
     }
@@ -11204,7 +11204,7 @@ __int64 __noreturn sub_80BE434()
 
 
 // 0x80be4d8
-int sub_80BE4D8()
+int snakearmRelatedObject_t1_0x22_80BE4D8()
 {
     int v0; // r5
 
@@ -11213,7 +11213,7 @@ int sub_80BE4D8()
 
 
 // 0x80be4f8
-void __noreturn sub_80BE4F8()
+void __noreturn snakearmRelatedObject_t1_0x22_init_80BE4F8()
 {
     int v0; // r5
     int v1; // r0
@@ -11233,12 +11233,12 @@ void __noreturn sub_80BE4F8()
     sprite_loadAnimationData(v0);
     sprite_update(v0);
     *(v0 + 8) = 4;
-    sub_80BE55C();
+    snakearmRelatedObject_t1_0x22_update_80BE55C();
 }
 
 
 // 0x80be55c
-int sub_80BE55C()
+int snakearmRelatedObject_t1_0x22_update_80BE55C()
 {
     int v0; // r5
     int v1; // r0
@@ -11270,7 +11270,7 @@ int sub_80BE55C()
 
 
 // 0x80be5cc
-int __fastcall sub_80BE5CC(int a1, int a2, int a3, int a4)
+int __fastcall snakearmRelatedObject_t1_0x22_update_0x0_80BE5CC(int a1, int a2, int a3, int a4)
 {
     Battle *obj; // r5
     int result; // r0
@@ -11283,10 +11283,10 @@ int __fastcall sub_80BE5CC(int a1, int a2, int a3, int a4)
     u32 v12; // r2
     __int16 v13; // r3
 
-    result = sub_80BE76A(a1, a2, a3, a4);
+    result = snakearmRelatedObject_t1_0x22_sub_80BE76A(a1, a2, a3, a4);
     if ( result )
     {
-        result = sub_80BE73E();
+        result = snakearmRelatedObject_t1_0x22_sub_80BE73E();
         if ( result )
         {
             obj->objFlags &= 0xFDu;
@@ -11299,7 +11299,7 @@ int __fastcall sub_80BE5CC(int a1, int a2, int a3, int a4)
                 v7 = obj->extraVars[9];
                 v8 = object_getCoordinatesForPanels(obj->extraVars[8]);
                 v9 = *(obj->parent + 56);
-                obj->vx = sub_8114F6A(&obj->x, v8, v10, 0);
+                obj->vx = battleCoordCalc_8114F6A(&obj->x, v8, v10, 0);
                 obj->vy = v11;
                 obj->vz = v12;
                 *&obj->extraVars[12] = v13;
@@ -11318,24 +11318,24 @@ int __fastcall sub_80BE5CC(int a1, int a2, int a3, int a4)
 
 
 // 0x80be648
-int __fastcall sub_80BE648(int a1, int a2, int a3, int a4)
+int __fastcall snakearmRelatedObject_t1_0x22_update_0x4_80BE648(int a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int result; // r0
     int v6; // r1
     int v7; // r0
 
-    result = sub_80BE76A(a1, a2, a3, a4);
+    result = snakearmRelatedObject_t1_0x22_sub_80BE76A(a1, a2, a3, a4);
     if ( result )
     {
-        result = sub_80BE73E();
+        result = snakearmRelatedObject_t1_0x22_sub_80BE73E();
         if ( result )
         {
             *(v4 + 52) += *(v4 + 64);
             *(v4 + 60) = *&math_sinTable[2 * (*(v4 + 110) >> 8)] * (*(v4 + 112) >> 16) << 8;
             object_setPanelsFromCoordinates(v4);
             v6 = *(v4 + 102);
-            v7 = sub_8114F52(*(v4 + 100)) + *(v4 + 99);
+            v7 = snakearmRelated_divideR0By4_StoreIntoR1_SetR0To3If4_8114F52(*(v4 + 100)) + *(v4 + 99);
             if ( v7 != *(v4 + 97) )
             {
                 *(v4 + 16) = v7;
@@ -11356,12 +11356,12 @@ int __fastcall sub_80BE648(int a1, int a2, int a3, int a4)
 
 
 // 0x80be6bc
-int sub_80BE6BC()
+int snakearmRelatedObject_t1_0x22_update_0x8_80BE6BC()
 {
     int v0; // r5
     int result; // r0
 
-    sub_80BE73E();
+    snakearmRelatedObject_t1_0x22_sub_80BE73E();
     result = *(v0 + 32) - 1;
     *(v0 + 32) = result;
     if ( !result )
@@ -11375,7 +11375,7 @@ int sub_80BE6BC()
 
 
 // 0x80be6d8
-int __fastcall __spoils<R0,R2,R3,R12> sub_80BE6D8(int a1, int a2, char a3, __int16 a4)
+int __fastcall __spoils<R0,R2,R3,R12> spawnSnakearmRelatedObject_t1_0x22_80BE6D8(int a1, int a2, char a3, __int16 a4)
 {
     int v4; // r5
     int result; // r0
@@ -11420,7 +11420,7 @@ int __fastcall sub_80BE734(int result)
 
 
 // 0x80be73e
-signed int sub_80BE73E()
+signed int snakearmRelatedObject_t1_0x22_sub_80BE73E()
 {
     int v0; // r5
     signed int v1; // r4
@@ -11439,7 +11439,7 @@ signed int sub_80BE73E()
                 battle_isTimeStop();
                 if ( v2 )
                 {
-                    sub_801BC64();
+                    UpdateBattleObjectSprite();
                     v1 = 1;
                 }
             }
@@ -11450,7 +11450,7 @@ signed int sub_80BE73E()
 
 
 // 0x80be76a
-int __fastcall sub_80BE76A(int a1, int a2, int a3, int a4)
+int __fastcall snakearmRelatedObject_t1_0x22_sub_80BE76A(int a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int result; // r0
@@ -12780,7 +12780,7 @@ int sub_80BF464()
         *(v0 + 16) = 3;
         sprite_setPallete(0);
         v1 = (*(v0 + 44) >> 12 << 12) + 2;
-        sub_80DC22C(*(v0 + 18), *(v0 + 19), 0, 0);
+        spawnType3_0xb6_80DC22C(*(v0 + 18), *(v0 + 19), 0, 0);
         *(v0 + 11) = 4;
     }
     v2 = *(v0 + 32);
@@ -13055,7 +13055,7 @@ int sub_80BF69C()
 
 
 // 0x80bf6ae
-int __fastcall sub_80BF6AE(char a1, int a2, int a3, int a4)
+int __fastcall spawnType1Object_0x24_80BF6AE(char a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r6
@@ -14186,7 +14186,7 @@ signed int sub_80C00EA()
             {
                 if ( !(*(*(v3 + 84) + 60) & 0x80110C00) )
                 {
-                    sub_801BC64();
+                    UpdateBattleObjectSprite();
                     v1 = 1;
                 }
             }
@@ -14431,7 +14431,7 @@ signed int sub_80C02F8()
         {
             if ( !(*(*(v3 + 84) + 60) & 0x80110C00) )
             {
-                sub_801BC64();
+                UpdateBattleObjectSprite();
                 v1 = 1;
             }
         }
@@ -16151,7 +16151,7 @@ signed int sub_80C114E()
                 battle_isTimeStop();
                 if ( v2 )
                 {
-                    sub_801BC64();
+                    UpdateBattleObjectSprite();
                     v1 = 1;
                 }
             }
@@ -16475,7 +16475,7 @@ signed int sub_80C1466()
                 battle_isTimeStop();
                 if ( v2 )
                 {
-                    sub_801BC64();
+                    UpdateBattleObjectSprite();
                     v1 = 1;
                 }
             }
@@ -22501,7 +22501,7 @@ void sub_80C4B18()
     {
         battle_isPaused();
         if ( v1 )
-            sub_801BC64();
+            UpdateBattleObjectSprite();
     }
 }
 
@@ -24147,7 +24147,7 @@ int sub_80C5C9C()
     if ( !v7 )
     {
         *v0 &= 0xFDu;
-        v8 = sub_800E24C();
+        v8 = convertBattleObjectXYToPanelXY_800E24C();
         *(v0 + 18) = v8;
         *(v0 + 19) = v9;
         v10 = *(v0 + 84);
@@ -30361,7 +30361,7 @@ signed int sub_80C9964()
     {
         v11 = v10;
         v12 = *(v0 + 112);
-        v13 = sub_800E258(*(v0 + 108));
+        v13 = convertXYToPanelXY_800E258(*(v0 + 108));
         v14 = *(v0 + 84);
         *(v14 + 10) = v13;
         *(v14 + 11) = v15;
@@ -33883,7 +33883,7 @@ signed int __fastcall sub_80CBE82(int a1, _DWORD *a2)
         if ( object_getFrontDirection(v2) != ((a2[13] >> 16) - (a1 >> 16) + 2) >> 31 )
         {
             v4 = v3[14];
-            v5 = sub_800E258(v12);
+            v5 = convertXYToPanelXY_800E258(v12);
             if ( object_checkPanelParameters(v5, v6, 16, 109051904) )
             {
                 v7 = object_getFrontDirection(v2);
@@ -33928,7 +33928,7 @@ signed int __fastcall sub_80CBF04(int a1, _DWORD *a2)
         else
         {
             v4 = v3[14];
-            v5 = sub_800E258(v9);
+            v5 = convertXYToPanelXY_800E258(v9);
             v7 = object_checkPanelParameters(v5, v6, 16, 109051904);
             a2 = v9;
             if ( !v7 )
@@ -36017,7 +36017,7 @@ signed int sub_80CD414()
     if ( *(*(v0 + 84) + 112) & 0x800000 )
         goto LABEL_11;
     *(v0 + 52) += *(v0 + 64);
-    v1 = sub_800E24C();
+    v1 = convertBattleObjectXYToPanelXY_800E24C();
     *(v0 + 18) = v1;
     *(v0 + 19) = v2;
     v3 = *(v0 + 84);
@@ -37420,7 +37420,7 @@ int sub_80CE308()
     if ( !v7 )
     {
         *v0 &= 0xFDu;
-        v8 = sub_800E24C();
+        v8 = convertBattleObjectXYToPanelXY_800E24C();
         *(v0 + 18) = v8;
         *(v0 + 19) = v9;
         v10 = *(v0 + 84);
@@ -38026,7 +38026,7 @@ int sub_80CE932()
     {
         v5 = *(v0 + 52) + *(v0 + 64);
         *(v0 + 52) = v5;
-        result = sub_800E258(v5);
+        result = convertXYToPanelXY_800E258(v5);
         if ( result != *(v0 + 18) )
         {
             *(v0 + 18) = result;
@@ -38168,7 +38168,7 @@ signed int sub_80CEA42()
     {
         v5 = *(v0 + 52) + *(v0 + 64);
         *(v0 + 52) = v5;
-        result = sub_800E258(v5);
+        result = convertXYToPanelXY_800E258(v5);
         if ( result != *(v0 + 18) )
         {
             *(v0 + 18) = result;
@@ -44170,7 +44170,7 @@ int sub_80D2514()
     v1 = *(v0 + 52) + *(v0 + 64);
     *(v0 + 52) = v1;
     v2 = *(v0 + 56);
-    *(v0 + 18) = sub_800E258(v1);
+    *(v0 + 18) = convertXYToPanelXY_800E258(v1);
     *(v0 + 19) = v3;
     if ( *(v0 + 32) == 2 )
     {
@@ -45156,7 +45156,7 @@ int sub_80D2E38()
     v2 = *(v1 + oToolkit_S2034880_Ptr);
     v3 = battle_findPlayer(*(v0 + 13) ^ 1);
     v4 = *(v3 + 56);
-    result = sub_800E258(*(v3 + 52));
+    result = convertXYToPanelXY_800E258(*(v3 + 52));
     *(v0 + 22);
     return result;
 }
@@ -49250,7 +49250,7 @@ int sub_80D55F8()
         object_highlightPanel(v4);
         LODWORD(v6) = v5 + v3;
         object_highlightPanel(v6);
-        result = sub_8109660(v6 + v3, SHIDWORD(v6), 4, 0);
+        result = highlightPanelIfSomeCondition_8109660(v6 + v3, SHIDWORD(v6), 4, 0);
     }
     return result;
 }
@@ -50729,7 +50729,7 @@ BOOL __noreturn sub_80D650C()
     int v6; // [sp-4h] [bp-8h]
 
     v1 = *(v0 + 56);
-    v5 = sub_800E258(*(v0 + 52));
+    v5 = convertXYToPanelXY_800E258(*(v0 + 52));
     v6 = v2;
     v3 = object_checkPanelParameters(v5, v2, 65552, 0) == 0;
     result = v5;
@@ -52756,7 +52756,7 @@ int __fastcall sub_80D79AC(int a1, int a2, int a3)
     v9 = __CFSHR__(v8, 3);
     result = v8 >> 3;
     if ( !v9 )
-        result = sub_8109660(*(v3 + 18), *(v3 + 19), 16, 0);
+        result = highlightPanelIfSomeCondition_8109660(*(v3 + 18), *(v3 + 19), 16, 0);
     return result;
 }
 
@@ -53156,7 +53156,7 @@ signed int sub_80D7DC0()
 
     v1 = 0;
     v2 = v0[14];
-    if ( sub_800E258(v0[13]) == v0[25] && v3 == v0[26] )
+    if ( convertXYToPanelXY_800E258(v0[13]) == v0[25] && v3 == v0[26] )
         v1 = 1;
     return v1;
 }
@@ -54374,7 +54374,7 @@ void __noreturn sub_80D8A3C()
         sub_80D8C10(*(v0 + 20), *(v0 + 21));
     }
     v1 = *(v0 + 56);
-    v2 = sub_800E24C();
+    v2 = convertBattleObjectXYToPanelXY_800E24C();
     sub_80D8C10(v2, v3);
 }
 
@@ -55982,7 +55982,7 @@ signed int __noreturn sub_80D995C()
     v1 = *(v0 + 64) + *(v0 + 52);
     *(v0 + 52) = v1;
     v2 = *(v0 + 56);
-    v3 = sub_800E258(v1);
+    v3 = convertXYToPanelXY_800E258(v1);
     if ( object_getPanelParameters(v3, v4) & 0x10 )
     {
         object_setPanelsFromCoordinates(v0);
@@ -56143,7 +56143,7 @@ int sub_80D9B2C()
     *(v0 + 32) = v8;
     if ( !v8 )
     {
-        v9 = sub_800E24C();
+        v9 = convertBattleObjectXYToPanelXY_800E24C();
         *(v0 + 18) = v9;
         *(v0 + 19) = v10;
         v11 = *(v0 + 84);
@@ -58122,7 +58122,7 @@ int sub_80DAF98()
     v2 = *(v0 + 18);
     *(v0 + 52) += *(v0 + 64);
     v3 = *(v0 + 56);
-    v7 = sub_800E258(*(v0 + 52));
+    v7 = convertXYToPanelXY_800E258(*(v0 + 52));
     v8 = v4;
     if ( object_isValidPanel(v7, v4)
         && !object_checkPanelParameters(v7, v8, *&byte_80DB004[8 * *(v0 + 4)], *&byte_80DB004[8 * *(v0 + 4) + 4]) )
@@ -59882,7 +59882,7 @@ int __fastcall sub_80DC1A2(int a1, int a2, int a3)
 
 
 // 0x80dc22c
-int __fastcall sub_80DC22C(char a1, int a2, int a3, int a4)
+int __fastcall spawnType3_0xb6_80DC22C(char a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r6
@@ -60569,7 +60569,7 @@ BOOL __noreturn sub_80DC872()
     {
         v7 = v6;
         v8 = *(v0 + 100);
-        v9 = sub_800E258(*(v0 + 96));
+        v9 = convertXYToPanelXY_800E258(*(v0 + 96));
         v10 = *(v0 + 84);
         *(v10 + 10) = v9;
         *(v10 + 11) = v11;
@@ -63771,7 +63771,7 @@ int sub_80DE9E4()
 
 
 // 0x80dea7c
-void sub_80DEA7C()
+void sandwormObject_80DEA7C()
 {
     int v0; // r5
 
@@ -63781,14 +63781,14 @@ void sub_80DEA7C()
 
 
 // 0x80deaa0
-int sub_80DEAA0()
+int snakearmRelated_destroy_80DEAA0()
 {
     return object_genericDestroy();
 }
 
 
 // 0x80deaa8
-int __noreturn sub_80DEAA8()
+int __noreturn snakearmRelated_80DEAA8()
 {
     int v0; // r5
     _BYTE *v1; // r0
@@ -63818,14 +63818,14 @@ int __noreturn sub_80DEAA8()
         v6 = object_getFlip(v0);
         sprite_setFlip(v0, v6);
         *(v0 + 8) = 4;
-        sub_80DEB1C();
+        snakearmRelated_80DEB1C();
     }
     return object_freeMemory();
 }
 
 
 // 0x80deb1c
-int __noreturn sub_80DEB1C()
+int __noreturn snakearmRelated_80DEB1C()
 {
     int v0; // r5
     int result; // r0
@@ -63857,7 +63857,7 @@ int __noreturn sub_80DEB1C()
 
 
 // 0x80deb70
-int sub_80DEB70()
+int snakearmRelated_action0x0_80DEB70()
 {
     int v0; // r5
     int v1; // r0
@@ -63873,7 +63873,7 @@ int sub_80DEB70()
     v2 = *(v0 + 19);
     v3 = v0;
     v4 = *(v0 + 76);
-    *(v8 + 112) = sub_80BC998(v1, v2, v3);
+    *(v8 + 112) = spawnSnakearmRelatedObject_t1_0x1c_80BC998(v1, v2, v3);
     PlaySoundEffect(225, v5, v6);
     *(v8 + 9) = 4;
     result = 0;
@@ -63883,7 +63883,7 @@ int sub_80DEB70()
 
 
 // 0x80deb94
-signed int sub_80DEB94()
+signed int snakearmRelated_action0x4_80DEB94()
 {
     int v0; // r5
     int v1; // r1
@@ -63903,13 +63903,13 @@ signed int sub_80DEB94()
     if ( v1 <= 0 )
     {
         *(v0 + 120) = 0;
-        sub_80BC9BE(*(v0 + 112));
+        snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE(*(v0 + 112));
         *(v0 + 112) = 0;
     }
     *(v0 + 52) += *(v0 + 64);
     *(v0 + 60) = 5632 * *&math_sinTable[2 * (*(v0 + 106) >> 8)];
     v2 = *(v0 + 102);
-    v3 = sub_8114F52(*(v0 + 100)) + 1;
+    v3 = snakearmRelated_divideR0By4_StoreIntoR1_SetR0To3If4_8114F52(*(v0 + 100)) + 1;
     if ( v3 != *(v0 + 99) )
     {
         *(v0 + 16) = v3;
@@ -63926,7 +63926,7 @@ signed int sub_80DEB94()
         v8 = v0;
         v9 = *(v0 + 76);
         v0 = v8;
-        *(v8 + 116) = sub_80BC998(v5, v6, v7);
+        *(v8 + 116) = spawnSnakearmRelatedObject_t1_0x1c_80BC998(v5, v6, v7);
         *(v8 + 16) = 0;
         PlaySoundEffect(446, v10, v11);
         *(v8 + 60) = 0;
@@ -63934,13 +63934,13 @@ signed int sub_80DEB94()
         *(v8 + 10) = 0;
     }
     object_setPanelsFromCoordinates(v0);
-    sub_80DED58();
+    snakearmRelated_80DED58();
     return object_updateCollisionPanels(v0);
 }
 
 
 // 0x80dec3c
-signed int sub_80DEC3C()
+signed int snakearmRelated_action0x8_80DEC3C()
 {
     int v0; // r5
     int v1; // r1
@@ -63952,7 +63952,7 @@ signed int sub_80DEC3C()
     if ( v1 <= 0 )
     {
         *(v0 + 120) = 0;
-        sub_80BC9BE(*(v0 + 112));
+        snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE(*(v0 + 112));
         *(v0 + 112) = 0;
     }
     object_clearCollisionRegion();
@@ -63963,7 +63963,7 @@ signed int sub_80DEC3C()
     if ( v3 <= 0 )
     {
         *(v0 + 122) = 0;
-        sub_80BC9BE(*(v0 + 116));
+        snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE(*(v0 + 116));
         *(v0 + 116) = 0;
         result = 8;
         *(v0 + 8) = 8;
@@ -63973,7 +63973,7 @@ signed int sub_80DEC3C()
 
 
 // 0x80dec84
-int __fastcall sub_80DEC84(char a1, int a2, int a3, int a4)
+int __fastcall spawnSandwormObject_80DEC84(char a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r6
@@ -64029,7 +64029,7 @@ int sub_80DECBC()
     v2 = *(v0 + 97);
     v3 = object_getCoordinatesForPanels(*(v0 + 96));
     v4 = *(v0 + 108);
-    *(v0 + 64) = sub_8114F6A((v0 + 52), v3, v5, 0);
+    *(v0 + 64) = battleCoordCalc_8114F6A((v0 + 52), v3, v5, 0);
     *(v0 + 68) = v6;
     *(v0 + 72) = v7;
     *(v0 + 104) = v8;
@@ -64044,7 +64044,7 @@ int sub_80DECBC()
 
 
 // 0x80ded58
-int sub_80DED58()
+int snakearmRelated_80DED58()
 {
     unsigned __int8 *v0; // r5
     int result; // r0
@@ -64179,7 +64179,7 @@ signed int sub_80DEF3C()
     *(v0 + 52) += *(v0 + 64);
     *(v0 + 60) = 5632 * *&math_sinTable[2 * (*(v0 + 106) >> 8)];
     v1 = *(v0 + 102);
-    v2 = sub_8114F52(*(v0 + 100)) + byte_80DEFC4[*(v0 + 110)];
+    v2 = snakearmRelated_divideR0By4_StoreIntoR1_SetR0To3If4_8114F52(*(v0 + 100)) + byte_80DEFC4[*(v0 + 110)];
     if ( v2 != *(v0 + 99) )
     {
         *(v0 + 16) = v2;
@@ -64266,7 +64266,7 @@ int sub_80DF016()
     v1 = *(v0 + 97);
     v2 = object_getCoordinatesForPanels(*(v0 + 96));
     v3 = *(v0 + 108);
-    *(v0 + 64) = sub_8114F6A((v0 + 52), v2, v4, 0);
+    *(v0 + 64) = battleCoordCalc_8114F6A((v0 + 52), v2, v4, 0);
     *(v0 + 68) = v5;
     *(v0 + 72) = v6;
     *(v0 + 104) = v7;
@@ -66018,7 +66018,7 @@ BOOL __noreturn sub_80E0118()
     if ( v4 == 3 )
     {
         v5 = *(v0 + 100);
-        v6 = sub_800E258(*(v0 + 96));
+        v6 = convertXYToPanelXY_800E258(*(v0 + 96));
         v7 = *(v0 + 84);
         *(v7 + 10) = v6;
         *(v7 + 11) = v8;
@@ -66672,7 +66672,7 @@ void sub_80E0AD4()
 
     (*(&off_80E0AFC + *(v0 + 8)))();
     if ( !(battle_getFlags() & 1) || (battle_isPaused(), v1) )
-        sub_801BC64();
+        UpdateBattleObjectSprite();
 }
 
 
@@ -72297,7 +72297,7 @@ void __fastcall __noreturn sub_80E3D1A(int a1)
     int v4; // r0
     void (__noreturn *v5)(); // r1
 
-    v2 = sub_800E258(a1);
+    v2 = convertXYToPanelXY_800E258(a1);
     v4 = object_getPanelParameters(v2, v3);
     v5 = &LCDControl;
     if ( *(v1 + 22) )
@@ -74205,7 +74205,7 @@ void sub_80E4E84()
     else
     {
         (*(&off_80E4EA8 + *(v0 + 9)))();
-        sub_801BC64();
+        UpdateBattleObjectSprite();
     }
 }
 
@@ -74320,7 +74320,7 @@ int sub_80E4FE8()
 {
     unsigned __int8 *v0; // r5
 
-    return sub_8109660(v0[18], v0[19], 4, v0[22] ^ v0[23]);
+    return highlightPanelIfSomeCondition_8109660(v0[18], v0[19], 4, v0[22] ^ v0[23]);
 }
 
 
@@ -75340,7 +75340,7 @@ BOOL sub_80E58F4()
 
     v1 = object_getFrontDirection(v0);
     v2 = *(v0 + 112);
-    v3 = sub_800E258(7864320 * v1 + *(v0 + 108));
+    v3 = convertXYToPanelXY_800E258(7864320 * v1 + *(v0 + 108));
     return object_isValidPanel(v3, v4);
 }
 
@@ -79222,7 +79222,7 @@ int __fastcall sub_80E7CA8(char a1, int a2, int a3, int a4)
 
 
 // 0x80e7ccc
-int sub_80E7CCC()
+int type3Object_0xb6_80E7CCC()
 {
     int v0; // r5
 
@@ -80797,7 +80797,7 @@ int __fastcall sub_80E8A52(int result, char a2)
 
 
 // 0x80e8a60
-int sub_80E8A60()
+int sunMoonObject_80E8A60()
 {
     int v0; // r5
 
@@ -80836,7 +80836,7 @@ int sub_80E8AA4()
         v5 = *(v0 + 50);
         v6 = *(v0 + 44) + v5;
         v7 = *(v0 + 76);
-        sub_80BF6AE(v2, v3, v4, v5);
+        spawnType1Object_0x24_80BF6AE(v2, v3, v4, v5);
         v0 = v1;
         *(v1 + 11) = 4;
     }
@@ -80852,7 +80852,7 @@ int sub_80E8AA4()
 
 
 // 0x80e8adc
-int __fastcall sub_80E8ADC(char a1, int a2, int a3, int a4)
+int __fastcall spawnSunMoonObject_80E8ADC(char a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r6
@@ -83681,7 +83681,7 @@ int __fastcall sub_80EA438(int a1, int a2, int a3, int a4)
 
 
 // 0x80ea460
-int __usercall sub_80EA460@<R0>(Battle *obj@<R5>)
+int __usercall playerObject_main_80EA460@<R0>(Battle *obj@<R5>)
 {
     int result; // r0
 
@@ -83692,7 +83692,7 @@ int __usercall sub_80EA460@<R0>(Battle *obj@<R5>)
 
 
 // 0x80ea484
-void __usercall sub_80EA484(Battle *obj@<R5>)
+void __usercall playerObject_update_80EA484(Battle *obj@<R5>)
 {
     int v1; // r4
     int v2; // r0
@@ -83704,8 +83704,8 @@ void __usercall sub_80EA484(Battle *obj@<R5>)
     sub_8013DA0();
     sub_801AC6C();
     v1 = obj->ai->AI_index;
-    sub_801AF44(off_80EA4C8[v1]);
-    (off_80EA93C[v1])();
+    ai_eventuallyRunsAIAttack_801AF44(PlayerObjectAIAttackJumptables[v1]);
+    (playerObjectUpdateJumptable_80EA93C[v1])();
     sub_80107D4();
     v2 = sub_80139C4();
     sub_80100EC(v2);
@@ -83716,7 +83716,7 @@ void __usercall sub_80EA484(Battle *obj@<R5>)
 
 
 // 0x80ea734
-void __usercall sub_80EA734(Battle *obj@<R5>)
+void __usercall playerAI_update_80EA734(Battle *obj@<R5>)
 {
     int v1; // r7
     int v2; // r0
@@ -83881,14 +83881,14 @@ int __fastcall sub_80EAE28(int a1, int a2, int a3, int a4)
             v10 = sub_80EAF1A();
             if ( !v10 )
             {
-                v10 = sub_80EAF26();
+                v10 = getSlashBeastWaveAttackLockonTypeMaybe_80EAF26();
                 if ( !v10 )
                     v10 = *(getChip8021DA8(*(v5 + 20)) + 23);
             }
         }
         v11 = v10;
         v12 = sub_80E164A();
-        v14 = ho_8026554(v12, v13, v11);
+        v14 = battle_beastJumpLockOn_8026554(v12, v13, v11);
         if ( !v14 )
         {
             v14 = v4->panelX;
@@ -83938,7 +83938,7 @@ signed int sub_80EAF1A()
 
 
 // 0x80eaf26
-int sub_80EAF26()
+int getSlashBeastWaveAttackLockonTypeMaybe_80EAF26()
 {
     int v0; // r5
     int v1; // r7
@@ -90597,7 +90597,7 @@ int sub_80EEFBC()
         v2 = *(v0 + 19);
         v3 = 11;
     }
-    return ho_8026554(v1, v2, v3);
+    return battle_beastJumpLockOn_8026554(v1, v2, v3);
 }
 
 
@@ -90665,7 +90665,7 @@ int sub_80EF004()
             sub_81096FA(v0->Alliance ^ 1, v0->panelY, v9, byte_80EF0A4);
             v7 = object_getClosestPanelMatchingRowFiltered(v10, v11, v12, v13);
         }
-        v0->panelX = ho_8026554(v7, v8, 12);
+        v0->panelX = battle_beastJumpLockOn_8026554(v7, v8, 12);
         v0->panelY = v14;
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
@@ -92473,7 +92473,7 @@ signed int sub_80F02A2()
 
 
 // 0x80f0354
-int __usercall sub_80F0354@<R0>(Battle *obj@<R5>)
+int __usercall playerAI_sub_80F0354@<R0>(Battle *obj@<R5>)
 {
     AI *v1; // r6
     int v2; // r0
@@ -93588,7 +93588,7 @@ signed int __noreturn sub_80F0D64()
     v16 = v6;
     v17 = v9;
     v18 = v8;
-    v10 = sub_800E258(v7);
+    v10 = convertXYToPanelXY_800E258(v7);
     if ( !object_checkPanelParameters(v10, v11, 65552, 0x800000)
         || (*(v1 + 12) & 1 ? (v12 = v16, v13 = v15) : (v12 = v18, v13 = v17),
                 v5 != v12 && sub_800E708(v13, v12, v5) && (object_setCoordinatesFromPanels(v0), sub_80F0EC0())) )
@@ -94094,7 +94094,7 @@ int sub_80F11BC()
         if ( v9 != v11 && sub_800E708(v12, v11, v9) )
             sub_80F14BC(393216);
         v13 = v0->y;
-        v17 = sub_800E258(v0->x);
+        v17 = convertXYToPanelXY_800E258(v0->x);
         v18 = v14;
         if ( object_isValidPanel(v17, v14) && !object_isPanelSolid(v17, v18) )
         {
@@ -95416,7 +95416,7 @@ int __noreturn sub_80F1C78()
         v10 = v0->panelX;
         v0->x += v0->vx;
         v11 = v0->y;
-        v12 = sub_800E258(v0->x);
+        v12 = convertXYToPanelXY_800E258(v0->x);
         if ( v12 != v10 )
         {
             v14 = v12;
@@ -96216,7 +96216,7 @@ void sub_80F2354()
     (*(&off_80F2474 + v1))();
     if ( sub_802D234() == 10 )
         sub_800E9FA();
-    sub_801AF44(off_80F23AC[v1 / 4]);
+    ai_eventuallyRunsAIAttack_801AF44(off_80F23AC[v1 / 4]);
     (*(&off_80F25A0 + v1))();
     v2 = *(v0 + 88);
     v3 = *(v2 + 25);
@@ -98882,7 +98882,7 @@ LABEL_9:
     }
     v0->x += v0->vx;
     v11 = v0->y;
-    v12 = sub_800E258(v0->x);
+    v12 = convertXYToPanelXY_800E258(v0->x);
     if ( !object_checkPanelParameters(v12, v13, 0, 58720256) )
         goto LABEL_10;
     object_setPanelsFromCoordinates(v0);
@@ -100064,7 +100064,7 @@ signed int __noreturn sub_80F5168()
     v18 = v6;
     v19 = v9;
     v20 = v8;
-    v10 = sub_800E258(v7);
+    v10 = convertXYToPanelXY_800E258(v7);
     if ( !object_checkPanelParameters(v10, v11, 65552, 0x800000)
         || (*(v1 + 13) & 1 ? (v12 = v20, v13 = v19) : (v12 = v18, v13 = v17),
                 v5 != v12 && sub_800E708(v13, v12, v5) && (object_setCoordinatesFromPanels(v0), sub_80F5704())) )
@@ -102935,7 +102935,7 @@ BOOL __noreturn sub_80F716E()
     int v6; // [sp-4h] [bp-8h]
 
     v1 = *(v0 + 56);
-    v5 = sub_800E258(*(v0 + 52));
+    v5 = convertXYToPanelXY_800E258(*(v0 + 52));
     v6 = v2;
     v3 = object_checkPanelParameters(v5, v2, 65552, 0x800000) == 0;
     result = v5;
@@ -102957,7 +102957,7 @@ BOOL __noreturn sub_80F71A8()
     int v6; // [sp-4h] [bp-8h]
 
     v1 = *(v0 + 56);
-    v5 = sub_800E258(*(v0 + 52));
+    v5 = convertXYToPanelXY_800E258(*(v0 + 52));
     v6 = v2;
     v3 = object_checkPanelParameters(v5, v2, 65552, 0) == 0;
     result = v5;
@@ -131707,7 +131707,7 @@ void nullsub_13()
 
 
 // 0x8109630
-int __fastcall sub_8109630(int a1, int a2, int a3)
+int __fastcall FindBattleActorsWithNonzeroParam_ReturnCountAndSum(int a1, int a2, int a3)
 {
     int v3; // r5
     int *v4; // r7
@@ -131743,7 +131743,7 @@ int __fastcall sub_8109630(int a1, int a2, int a3)
 
 
 // 0x8109660
-int __fastcall sub_8109660(int a1, int a2, int a3, int a4)
+int __fastcall highlightPanelIfSomeCondition_8109660(int a1, int a2, int a3, int a4)
 {
     int v4; // r6
     int v5; // r7
@@ -131888,14 +131888,14 @@ void __fastcall __noreturn sub_8109794(int a1, int a2)
 
 
 // 0x81097b4
-void sub_81097B4()
+void genericAI_exitAttackStateAffterDelay_81097B4()
 {
     JUMPOUT(&loc_81097BE);
 }
 
 
 // 0x81097ba
-void sub_81097BA()
+void genericAI_exitAttackStateAfterDelay_81097BA()
 {
     Battle *v0; // r5
     int v1; // r7
@@ -132093,7 +132093,7 @@ int sub_810990E()
 
 
 // 0x8109952
-int sub_8109952()
+int genericAI_movementRelated_8109952()
 {
     unsigned __int8 *v0; // r7
 
@@ -132781,7 +132781,7 @@ int sub_810A126()
         {
             if ( *(v1 + 36) <= (*(v1 + 38) >> 2) || sub_810A1B4() )
             {
-                sub_80126E4(159);
+                somethingWriteChipParams_80126E4(159);
                 object_setAttack0();
                 sub_800F322();
 LABEL_8:
@@ -132793,7 +132793,7 @@ LABEL_8:
         }
         else if ( sub_800A704() >= byte_12C )
         {
-            sub_80126E4(v6);
+            somethingWriteChipParams_80126E4(v6);
             object_setAttack0();
             sub_800F322();
             goto LABEL_8;
@@ -133131,7 +133131,7 @@ void sub_810A51E()
 // 0x810a534
 int sub_810A534()
 {
-    return sub_8109630(104, 7, 12);
+    return FindBattleActorsWithNonzeroParam_ReturnCountAndSum(104, 7, 12);
 }
 
 
@@ -133196,7 +133196,7 @@ signed int sub_810A610()
     *(v2 + 48) = 3;
     *(v2 + 52) = 3;
     object_setAttack0();
-    sub_8109952();
+    genericAI_movementRelated_8109952();
     result = 4;
     *v1 = 4;
     return result;
@@ -133300,7 +133300,7 @@ signed int sub_810A6F4()
         v4 = v2 & 0x1FF;
         if ( sub_800A704() >= byte_12C )
         {
-            sub_80126E4(v4);
+            somethingWriteChipParams_80126E4(v4);
             object_setAttack0();
             sub_800F322();
             v1 = 1;
@@ -133464,7 +133464,7 @@ int sub_810A94C()
         if ( !(result & 4) )
         {
             v6 = object_getFrontDirection(v0);
-            result = sub_8109660(v6 + *(v0 + 18), *(v0 + 19), 6, *(v0 + 22) ^ *(v0 + 23));
+            result = highlightPanelIfSomeCondition_8109660(v6 + *(v0 + 18), *(v0 + 19), 6, *(v0 + 22) ^ *(v0 + 23));
         }
     }
     else
@@ -133950,7 +133950,7 @@ int __fastcall sub_810AF90(int a1, int a2, int a3)
         v6 = 4;
         if ( *(v4 + 3) )
             v6 = 2;
-        sub_8109660(v5, v3->panelY, v6, v3->directionFlip ^ v3->Alliance);
+        highlightPanelIfSomeCondition_8109660(v5, v3->panelY, v6, v3->directionFlip ^ v3->Alliance);
     }
     result = *(v4 + 16) - 1;
     *(v4 + 16) = result;
@@ -134521,7 +134521,7 @@ void sub_810B49C()
             *(v2 + 48) = 3;
             *(v2 + 52) = 3;
             object_setAttack0();
-            sub_8109952();
+            genericAI_movementRelated_8109952();
         }
         else
         {
@@ -134556,7 +134556,7 @@ signed int sub_810B54C()
         v4 = v2 & 0x1FF;
         if ( sub_800A704() >= byte_12C && sub_810B584() >= 3 )
         {
-            sub_80126E4(v4);
+            somethingWriteChipParams_80126E4(v4);
             object_setAttack0();
             sub_800F322();
             v1 = 1;
@@ -134576,7 +134576,7 @@ signed int sub_810B584()
 // 0x810b58a
 int sub_810B58A()
 {
-    return sub_8109630(100, 19, 24);
+    return FindBattleActorsWithNonzeroParam_ReturnCountAndSum(100, 19, 24);
 }
 
 
@@ -135216,7 +135216,7 @@ signed int sub_810BDC4()
         v4 = v2 & 0x1FF;
         if ( sub_800A704() >= 300 )
         {
-            sub_80126E4(v4);
+            somethingWriteChipParams_80126E4(v4);
             object_setAttack0();
             sub_800F322();
             v1 = 1;
@@ -135574,7 +135574,7 @@ signed int sub_810C282()
         v4 = v2 & 0x1FF;
         if ( sub_800A704() >= byte_12C )
         {
-            sub_80126E4(v4);
+            somethingWriteChipParams_80126E4(v4);
             object_setAttack0();
             sub_800F322();
             v1 = 1;

@@ -1,6 +1,7 @@
 
 // (int chip_idx) -> ChipData*
 	thumb_func_start getChip8021DA8
+// exe6g: 8021eb8	
 getChip8021DA8:
 	ldr r1, off_8021AB0 // =ChipDataArr_8021DA8
 	mov r2, #44
@@ -9,7 +10,7 @@ getChip8021DA8:
 	// return &u8_8021DA8[44*idx]
 	mov pc, lr
 	.byte 0, 0
-off_8021AB0: .word ChipDataArr_8021DA8
+off_8021AB0: .word ChipDataArr_8021DA8 // exe6g: 80221bc
 	thumb_func_end getChip8021DA8
 
 	thumb_func_start sub_8021AB4

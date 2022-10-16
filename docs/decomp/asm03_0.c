@@ -131,7 +131,7 @@ signed int __fastcall __noreturn sub_8026510(int a1, int a2, int a3)
 
 
 // 0x8026554
-int __fastcall ho_8026554(signed int a1, signed int a2, int a3)
+int __fastcall battle_beastJumpLockOn_8026554(signed int a1, signed int a2, int a3)
 {
     if ( a1 < 1 || a1 > 6 || a2 < 1 || a2 > 3 )
         a3 = 0;

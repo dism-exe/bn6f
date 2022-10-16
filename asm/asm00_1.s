@@ -1726,101 +1726,102 @@ loc_8003C7E:
 off_8003C90: .word eActiveOWPlayerObjectBitfield
 off_8003C94: .word eOWPlayerObject
 off_8003C98: .word eOWPlayerObjectEnd
-T1BattleObjectJumptable: .word sub_80B81EC+1
-	.word sub_80B8210+1
-	.word sub_80B85E0+1
-	.word sub_80B88D0+1
-	.word sub_80B8A18+1
-	.word sub_80B8CD8+1
-	.word sub_80B8EA0+1
-	.word sub_80B9078+1
-	.word sub_80B92B8+1
-	.word sub_80B94BC+1
-	.word sub_80B97C0+1
-	.word sub_80B99C0+1
-	.word sub_80B9C14+1
-	.word sub_80B9F44+1
-	.word sub_80BA364+1
-	.word sub_80BA708+1
-	.word sub_80BAA8C+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80BAF50+1
-	.word sub_80BB2A0+1
-	.word sub_80BB608+1
-	.word sub_80BB914+1
-	.word sub_80BBB98+1
-	.word sub_80BBF0C+1
-	.word sub_80BC17C+1
-	.word sub_80BC4FC+1
-	.word sub_80BC650+1
-	.word sub_80BC87C+1
-	.word sub_80BCA04+1
-	.word sub_80BCB50+1
-	.word sub_80BCD14+1
-	.word sub_80BD388+1
-	.word sub_80BDBA4+1
-	.word sub_80BE4D8+1
-	.word sub_80BE798+1
-	.word sub_80BF260+1
-	.word sub_80BF6EC+1
-	.word sub_80BFDFC+1
-	.word sub_80BFF68+1
-	.word sub_80C0178+1
-	.word sub_80C0334+1
-	.word sub_80C04AC+1
-	.word sub_80C065C+1
-	.word sub_80C07BC+1
-	.word sub_80C0E04+1
-	.word sub_80C0F6C+1
-	.word sub_80C11AC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80C1570+1
-	.word sub_80C1A10+1
-	.word sub_80C2138+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80C26F0+1
-	.word sub_80C2A78+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80C3000+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80C3218+1
-	.word sub_80C34E0+1
-	.word sub_80C3734+1
-	.word sub_80B81EC+1
-	.word sub_80C3970+1
-	.word sub_80C3CE8+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80C3EE0+1
-	.word sub_80C40D8+1
-	.word sub_80C4348+1
-	.word sub_80C4530+1
-	.word sub_80C46FC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80B81EC+1
-	.word sub_80C4828+1
-	.word sub_80C4B18+1
+T1BattleObjectJumptable: .word sub_80B81EC+1 // 0x0
+	.word sub_80B8210+1 // 0x1
+	.word sub_80B85E0+1 // 0x2
+	.word sub_80B88D0+1 // 0x3
+	.word sub_80B8A18+1 // 0x4
+	.word sub_80B8CD8+1 // 0x5
+	.word sub_80B8EA0+1 // 0x6
+	.word sub_80B9078+1 // 0x7
+	.word sub_80B92B8+1 // 0x8
+	.word sub_80B94BC+1 // 0x9
+	.word sub_80B97C0+1 // 0xa
+	.word sub_80B99C0+1 // 0xb
+	.word sub_80B9C14+1 // 0xc
+	.word sub_80B9F44+1 // 0xd
+	.word sub_80BA364+1 // 0xe
+	.word sub_80BA708+1 // 0xf
+	.word sub_80BAA8C+1 // 0x10
+	.word sub_80B81EC+1 // 0x11
+	.word sub_80B81EC+1 // 0x12
+	.word sub_80BAF50+1 // 0x13
+	.word sub_80BB2A0+1 // 0x14
+	.word sub_80BB608+1 // 0x15
+	.word sub_80BB914+1 // 0x16
+	.word sub_80BBB98+1 // 0x17
+	.word sub_80BBF0C+1 // 0x18
+	.word sub_80BC17C+1 // 0x19
+	.word sub_80BC4FC+1 // 0x1a
+	.word sub_80BC650+1 // 0x1b
+	.word snakearmRelatedObject_80BC87C+1 // 0x1c
+	.word sub_80BCA04+1 // 0x1d
+	.word sub_80BCB50+1 // 0x1e
+	.word sub_80BCD14+1 // 0x1f
+	.word sub_80BD388+1 // 0x20
+	.word sub_80BDBA4+1 // 0x21
+	.word snakearmRelatedObject_t1_0x22_80BE4D8+1 // 0x22
+	.word sub_80BE798+1 // 0x23
+	.word sub_80BF260+1 // 0x24
+	.word sub_80BF6EC+1 // 0x25
+	.word sub_80BFDFC+1 // 0x26
+	.word sub_80BFF68+1 // 0x27
+	.word sub_80C0178+1 // 0x28
+	.word sub_80C0334+1 // 0x29
+	.word sub_80C04AC+1 // 0x2a
+	.word sub_80C065C+1 // 0x2b
+	.word sub_80C07BC+1 // 0x2c
+	.word sub_80C0E04+1 // 0x2d
+	.word sub_80C0F6C+1 // 0x2e
+	.word sub_80C11AC+1 // 0x2f
+	.word sub_80B81EC+1 // 0x30
+	.word sub_80B81EC+1 // 0x31
+	.word sub_80C1570+1 // 0x32
+	.word sub_80C1A10+1 // 0x33
+	.word sub_80C2138+1 // 0x34
+	.word sub_80B81EC+1 // 0x35
+	.word sub_80B81EC+1 // 0x36
+	.word sub_80B81EC+1 // 0x37
+	.word sub_80B81EC+1 // 0x38
+	.word sub_80B81EC+1 // 0x39
+	.word sub_80B81EC+1 // 0x3a
+	.word sub_80B81EC+1 // 0x3b
+	.word sub_80C26F0+1 // 0x3c
+	.word sub_80C2A78+1 // 0x3d
+	.word sub_80B81EC+1 // 0x3e
+	.word sub_80B81EC+1 // 0x3f
+	.word sub_80B81EC+1 // 0x40
+	.word sub_80B81EC+1 // 0x41
+	.word sub_80B81EC+1 // 0x42
+	.word sub_80B81EC+1 // 0x43
+	.word sub_80B81EC+1 // 0x44
+	.word sub_80C3000+1 // 0x45
+	.word sub_80B81EC+1 // 0x46
+	.word sub_80B81EC+1 // 0x47
+	.word sub_80B81EC+1 // 0x48
+	.word sub_80B81EC+1 // 0x49
+	.word sub_80B81EC+1 // 0x4a
+	.word sub_80C3218+1 // 0x4b
+	.word sub_80C34E0+1 // 0x4c
+	.word sub_80C3734+1 // 0x4d
+	.word sub_80B81EC+1 // 0x4e
+	.word sub_80C3970+1 // 0x4f
+	.word sub_80C3CE8+1 // 0x50
+	.word sub_80B81EC+1 // 0x51
+	.word sub_80B81EC+1 // 0x52
+	.word sub_80B81EC+1 // 0x53
+	.word sub_80C3EE0+1 // 0x54
+	.word sub_80C40D8+1 // 0x55
+	.word sub_80C4348+1 // 0x56
+	.word sub_80C4530+1 // 0x57
+	.word sub_80C46FC+1 // 0x58
+	.word sub_80B81EC+1 // 0x59
+	.word sub_80B81EC+1 // 0x5a
+	.word sub_80B81EC+1 // 0x5b
+	.word sub_80B81EC+1 // 0x5c
+	.word sub_80C4828+1 // 0x5d
+	.word sub_80C4B18+1 // 0x5e
+
 	thumb_func_end sub_8003C7A
 
 	thumb_local_start
@@ -1913,219 +1914,219 @@ loc_8003EA6:
 off_8003EB8: .word eT1BattleObject0
 off_8003EBC: .word byte_2036778
 off_8003EC0: .word dword_2039A10
-T3BattleObjectJumptable: .word sub_80C4E58+1
-	.word sub_80C50B8+1
-	.word sub_80C51AC+1
-	.word battle_t3id3_main_80c52b0+1
-	.word sub_80C53C0+1
-	.word sub_80C55B0+1
-	.word sub_80C57C0+1
-	.word sub_80C5A34+1
-	.word sub_80C5BB0+1
-	.word sub_80C5DDC+1
-	.word sub_80C5F60+1
-	.word sub_80C60A8+1
-	.word sub_80C4E58+1
-	.word sub_80C4E58+1
-	.word sub_80C6280+1
-	.word sub_80C6414+1
-	.word sub_80C6580+1
-	.word sub_80C67F8+1
-	.word sub_80C6946+1
-	.word sub_80C4E58+1
-	.word sub_80C4E58+1
-	.word sub_80C4E58+1
-	.word sub_80C6B40+1
-	.word sub_80C6DCC+1
-	.word sub_80C7074+1
-	.word sub_80C71A4+1
-	.word sub_80C740C+1
-	.word sub_80C793C+1
-	.word sub_80C7C18+1
-	.word sub_80C7D78+1
-	.word sub_80C7F40+1
-	.word sub_80C8098+1
-	.word sub_80C81CC+1
-	.word sub_80C8388+1
-	.word sub_80C853C+1
-	.word loc_80C86D8+1
-	.word sub_80C882C+1
-	.word sub_80C8AA4+1
-	.word sub_80C8C74+1
-	.word sub_80C8E08+1
-	.word sub_80C8FFC+1
-	.word sub_80C91A0+1
-	.word battle_BDT_main_80c93cc+1
-	.word sub_80C96A0+1
-	.word nullsub_101+1
-	.word nullsub_94+1
-	.word sub_80C9824+1
-	.word sub_80C9BC4+1
-	.word sub_80C9D00+1
-	.word sub_80C9F78+1
-	.word sub_80CA2A8+1
-	.word sub_80CA544+1
-	.word sub_80CA6B8+1
-	.word sub_80CA938+1
-	.word sub_80CAB68+1
-	.word sub_80CAD28+1
-	.word sub_80CAEF0+1
-	.word sub_80CB0DC+1
-	.word sub_80CB284+1
-	.word sub_80CB49C+1
-	.word sub_80CB6F8+1
-	.word sub_80CB900+1
-	.word sub_80CBB44+1
-	.word sub_80CC044+1
-	.word sub_80CC0E8+1
-	.word sub_80CC4C4+1
-	.word sub_80CC5A8+1
-	.word sub_80CC76C+1
-	.word sub_80CC944+1
-	.word sub_80CCA40+1
-	.word sub_80CCC48+1
-	.word sub_80CCD70+1
-	.word sub_80CCFDC+1
-	.word sub_80CD2EC+1
-	.word sub_80CD4EC+1
-	.word sub_80CD8EC+1
-	.word sub_80CDD44+1
-	.word sub_80CDF84+1
-	.word sub_80CE118+1
-	.word sub_80CE24C+1
-	.word sub_80CE530+1
-	.word sub_80CE70C+1
-	.word sub_80CE81C+1
-	.word sub_80CEB00+1
-	.word sub_80CEE78+1
-	.word sub_80CF0D0+1
-	.word sub_80CF3BE+1
-	.word sub_80CF5C8+1
-	.word sub_80CF7F0+1
-	.word sub_80CF954+1
-	.word sub_80CFC08+1
-	.word sub_80CFCF8+1
-	.word sub_80CFEC4+1
-	.word sub_80D00A0+1
-	.word sub_80D0268+1
-	.word sub_80D0394+1
-	.word sub_80D0500+1
-	.word sub_80D0610+1
-	.word sub_80D07CC+1
-	.word sub_80D0AA8+1
-	.word sub_80D0D7C+1
-	.word sub_80D0F8C+1
-	.word sub_80D1218+1
-	.word sub_80D1514+1
-	.word sub_80D17A4+1
-	.word sub_80D18D8+1
-	.word sub_80D1A08+1
-	.word sub_80D1B48+1
-	.word sub_80D1C20+1
-	.word sub_80D2034+1
-	.word sub_80D2290+1
-	.word sub_80D2460+1
-	.word sub_80D25D4+1
-	.word sub_80D2A94+1
-	.word sub_80D2BDC+1
-	.word sub_80D2EBC+1
-	.word sub_80D30D0+1
-	.word sub_80D34CC+1
-	.word sub_80D385C+1
-	.word sub_80D39BC+1
-	.word sub_80D4088+1
-	.word sub_80D4440+1
-	.word sub_80D46B8+1
-	.word sub_80D4A28+1
-	.word sub_80D4B68+1
-	.word sub_80D4C84+1
-	.word sub_80D5028+1
-	.word sub_80D5138+1
-	.word sub_80D535C+1
-	.word sub_80D5580+1
-	.word dollThunderObject_80D5740+1
-	.word sub_80D58B4+1
-	.word sub_80D5ABC+1
-	.word sub_80D5C48+1
-	.word sub_80D5D54+1
-	.word sub_80D5F08+1
-	.word sub_80D622C+1
-	.word sub_80D655C+1
-	.word sub_80D67EC+1
-	.word sub_80D6924+1
-	.word sub_80D6A20+1
-	.word sub_80D6BD4+1
-	.word sub_80D6D80+1
-	.word sub_80D6EE0+1
-	.word sub_80D7068+1
-	.word sub_80D7278+1
-	.word sub_80D7400+1
-	.word sub_80D75FC+1
-	.word sub_80D7ACC+1
-	.word sub_80D7DE4+1
-	.word sub_80D807C+1
-	.word sub_80D825C+1
-	.word sub_80D8444+1
-	.word sub_80D8620+1
-	.word sub_80D879C+1
-	.word sub_80D88E0+1
-	.word sub_80D8C5C+1
-	.word eraseBeamObject_80D8E10+1
-	.word sub_80D8FC4+1
-	.word sub_80D9154+1
-	.word sub_80D9350+1
-	.word sub_80D96A4+1
-	.word sub_80D954C+1
-	.word sub_80D984C+1
-	.word sub_80D9A50+1
-	.word sub_80D9D4C+1
-	.word sub_80DA050+1
-	.word sub_80DA470+1
-	.word sub_80DA5FC+1
-	.word sub_80DA80C+1
-	.word sub_80DAA28+1
-	.word sub_80DACE4+1
-	.word sub_80DAE94+1
-	.word sub_80DB0E4+1
-	.word sub_80DB304+1
-	.word sub_80DB570+1
-	.word sub_80DB6A4+1
-	.word sub_80DB8CC+1
-	.word sub_80DB994+1
-	.word sub_80DBB40+1
-	.word sub_80DBCEC+1
-	.word sub_80DBEE6+1
-	.word sub_80DC0E8+1
-	.word sub_80DC260+1
-	.word sub_80DC3F8+1
-	.word sub_80DC4FC+1
-	.word sub_80DC5F8+1
-	.word sub_80DC70C+1
-	.word sub_80DCB1C+1
-	.word sub_80DCCD4+1
-	.word sub_80DCE38+1
-	.word sub_80DCEF4+1
-	.word sub_80DD0AC+1
-	.word sub_80DD34C+1
-	.word sub_80DD764+1
-	.word sub_80DD940+1
-	.word sub_80DDA84+1
-	.word sub_80DDC10+1
-	.word sub_80DDDF0+1
-	.word sub_80DE000+1
-	.word sub_80DE13C+1
-	.word sub_80DE404+1
-	.word sub_80DE7F4+1
-	.word sub_80DEA7C+1
-	.word sub_80DEE60+1
-	.word sub_80DF0A4+1
-	.word sub_80DF188+1
-	.word sub_80DF328+1
-	.word sub_80DF4FC+1
-	.word sub_80DF90C+1
-	.word sub_80DFC38+1
-	.word sub_80DFE40+1
-	.word sub_80DFFB8+1
+T3BattleObjectJumptable: .word sub_80C4E58+1 // 0x0
+	.word sub_80C50B8+1 // 0x1
+	.word sub_80C51AC+1 // 0x2
+	.word battle_t3id3_main_80c52b0+1 // 0x3
+	.word sub_80C53C0+1 // 0x4
+	.word sub_80C55B0+1 // 0x5
+	.word sub_80C57C0+1 // 0x6
+	.word sub_80C5A34+1 // 0x7
+	.word sub_80C5BB0+1 // 0x8
+	.word sub_80C5DDC+1 // 0x9
+	.word sub_80C5F60+1 // 0xa
+	.word sub_80C60A8+1 // 0xb
+	.word sub_80C4E58+1 // 0xc
+	.word sub_80C4E58+1 // 0xd
+	.word sub_80C6280+1 // 0xe
+	.word sub_80C6414+1 // 0xf
+	.word sub_80C6580+1 // 0x10
+	.word sub_80C67F8+1 // 0x11
+	.word sub_80C6946+1 // 0x12
+	.word sub_80C4E58+1 // 0x13
+	.word sub_80C4E58+1 // 0x14
+	.word sub_80C4E58+1 // 0x15
+	.word sub_80C6B40+1 // 0x16
+	.word sub_80C6DCC+1 // 0x17
+	.word sub_80C7074+1 // 0x18
+	.word sub_80C71A4+1 // 0x19
+	.word sub_80C740C+1 // 0x1a
+	.word sub_80C793C+1 // 0x1b
+	.word sub_80C7C18+1 // 0x1c
+	.word sub_80C7D78+1 // 0x1d
+	.word sub_80C7F40+1 // 0x1e
+	.word sub_80C8098+1 // 0x1f
+	.word sub_80C81CC+1 // 0x20
+	.word sub_80C8388+1 // 0x21
+	.word sub_80C853C+1 // 0x22
+	.word loc_80C86D8+1 // 0x23
+	.word sub_80C882C+1 // 0x24
+	.word sub_80C8AA4+1 // 0x25
+	.word sub_80C8C74+1 // 0x26
+	.word sub_80C8E08+1 // 0x27
+	.word sub_80C8FFC+1 // 0x28
+	.word sub_80C91A0+1 // 0x29
+	.word battle_BDT_main_80c93cc+1 // 0x2a
+	.word sub_80C96A0+1 // 0x2b
+	.word nullsub_101+1 // 0x2c
+	.word nullsub_94+1 // 0x2d
+	.word sub_80C9824+1 // 0x2e
+	.word sub_80C9BC4+1 // 0x2f
+	.word sub_80C9D00+1 // 0x30
+	.word sub_80C9F78+1 // 0x31
+	.word sub_80CA2A8+1 // 0x32
+	.word sub_80CA544+1 // 0x33
+	.word sub_80CA6B8+1 // 0x34
+	.word sub_80CA938+1 // 0x35
+	.word sub_80CAB68+1 // 0x36
+	.word sub_80CAD28+1 // 0x37
+	.word sub_80CAEF0+1 // 0x38
+	.word sub_80CB0DC+1 // 0x39
+	.word sub_80CB284+1 // 0x3a
+	.word sub_80CB49C+1 // 0x3b
+	.word sub_80CB6F8+1 // 0x3c
+	.word sub_80CB900+1 // 0x3d
+	.word sub_80CBB44+1 // 0x3e
+	.word sub_80CC044+1 // 0x3f
+	.word sub_80CC0E8+1 // 0x40
+	.word sub_80CC4C4+1 // 0x41
+	.word sub_80CC5A8+1 // 0x42
+	.word sub_80CC76C+1 // 0x43
+	.word sub_80CC944+1 // 0x44
+	.word sub_80CCA40+1 // 0x45
+	.word sub_80CCC48+1 // 0x46
+	.word sub_80CCD70+1 // 0x47
+	.word sub_80CCFDC+1 // 0x48
+	.word sub_80CD2EC+1 // 0x49
+	.word sub_80CD4EC+1 // 0x4a
+	.word sub_80CD8EC+1 // 0x4b
+	.word sub_80CDD44+1 // 0x4c
+	.word sub_80CDF84+1 // 0x4d
+	.word sub_80CE118+1 // 0x4e
+	.word sub_80CE24C+1 // 0x4f
+	.word sub_80CE530+1 // 0x50
+	.word sub_80CE70C+1 // 0x51
+	.word sub_80CE81C+1 // 0x52
+	.word sub_80CEB00+1 // 0x53
+	.word sub_80CEE78+1 // 0x54
+	.word sub_80CF0D0+1 // 0x55
+	.word sub_80CF3BE+1 // 0x56
+	.word sub_80CF5C8+1 // 0x57
+	.word sub_80CF7F0+1 // 0x58
+	.word sub_80CF954+1 // 0x59
+	.word sub_80CFC08+1 // 0x5a
+	.word sub_80CFCF8+1 // 0x5b
+	.word sub_80CFEC4+1 // 0x5c
+	.word sub_80D00A0+1 // 0x5d
+	.word sub_80D0268+1 // 0x5e
+	.word sub_80D0394+1 // 0x5f
+	.word sub_80D0500+1 // 0x60
+	.word sub_80D0610+1 // 0x61
+	.word sub_80D07CC+1 // 0x62
+	.word sub_80D0AA8+1 // 0x63
+	.word sub_80D0D7C+1 // 0x64
+	.word sub_80D0F8C+1 // 0x65
+	.word sub_80D1218+1 // 0x66
+	.word sub_80D1514+1 // 0x67
+	.word sub_80D17A4+1 // 0x68
+	.word sub_80D18D8+1 // 0x69
+	.word sub_80D1A08+1 // 0x6a
+	.word sub_80D1B48+1 // 0x6b
+	.word sub_80D1C20+1 // 0x6c
+	.word sub_80D2034+1 // 0x6d
+	.word sub_80D2290+1 // 0x6e
+	.word sub_80D2460+1 // 0x6f
+	.word sub_80D25D4+1 // 0x70
+	.word sub_80D2A94+1 // 0x71
+	.word sub_80D2BDC+1 // 0x72
+	.word sub_80D2EBC+1 // 0x73
+	.word sub_80D30D0+1 // 0x74
+	.word sub_80D34CC+1 // 0x75
+	.word sub_80D385C+1 // 0x76
+	.word sub_80D39BC+1 // 0x77
+	.word sub_80D4088+1 // 0x78
+	.word sub_80D4440+1 // 0x79
+	.word sub_80D46B8+1 // 0x7a
+	.word sub_80D4A28+1 // 0x7b
+	.word sub_80D4B68+1 // 0x7c
+	.word sub_80D4C84+1 // 0x7d
+	.word sub_80D5028+1 // 0x7e
+	.word sub_80D5138+1 // 0x7f
+	.word sub_80D535C+1 // 0x80
+	.word sub_80D5580+1 // 0x81
+	.word dollThunderObject_80D5740+1 // 0x82
+	.word sub_80D58B4+1 // 0x83
+	.word sub_80D5ABC+1 // 0x84
+	.word sub_80D5C48+1 // 0x85
+	.word sub_80D5D54+1 // 0x86
+	.word sub_80D5F08+1 // 0x87
+	.word sub_80D622C+1 // 0x88
+	.word sub_80D655C+1 // 0x89
+	.word sub_80D67EC+1 // 0x8a
+	.word sub_80D6924+1 // 0x8b
+	.word sub_80D6A20+1 // 0x8c
+	.word sub_80D6BD4+1 // 0x8d
+	.word sub_80D6D80+1 // 0x8e
+	.word sub_80D6EE0+1 // 0x8f
+	.word sub_80D7068+1 // 0x90
+	.word sub_80D7278+1 // 0x91
+	.word sub_80D7400+1 // 0x92
+	.word sub_80D75FC+1 // 0x93
+	.word sub_80D7ACC+1 // 0x94
+	.word sub_80D7DE4+1 // 0x95
+	.word sub_80D807C+1 // 0x96
+	.word sub_80D825C+1 // 0x97
+	.word sub_80D8444+1 // 0x98
+	.word sub_80D8620+1 // 0x99
+	.word sub_80D879C+1 // 0x9a
+	.word sub_80D88E0+1 // 0x9b
+	.word sub_80D8C5C+1 // 0x9c
+	.word eraseBeamObject_80D8E10+1 // 0x9d
+	.word sub_80D8FC4+1 // 0x9e
+	.word sub_80D9154+1 // 0x9f
+	.word sub_80D9350+1 // 0xa0
+	.word sub_80D96A4+1 // 0xa1
+	.word sub_80D954C+1 // 0xa2
+	.word sub_80D984C+1 // 0xa3
+	.word sub_80D9A50+1 // 0xa4
+	.word sub_80D9D4C+1 // 0xa5
+	.word sub_80DA050+1 // 0xa6
+	.word sub_80DA470+1 // 0xa7
+	.word sub_80DA5FC+1 // 0xa8
+	.word sub_80DA80C+1 // 0xa9
+	.word sub_80DAA28+1 // 0xaa
+	.word sub_80DACE4+1 // 0xab
+	.word sub_80DAE94+1 // 0xac
+	.word sub_80DB0E4+1 // 0xad
+	.word sub_80DB304+1 // 0xae
+	.word sub_80DB570+1 // 0xaf
+	.word sub_80DB6A4+1 // 0xb0
+	.word sub_80DB8CC+1 // 0xb1
+	.word sub_80DB994+1 // 0xb2
+	.word sub_80DBB40+1 // 0xb3
+	.word sub_80DBCEC+1 // 0xb4
+	.word sub_80DBEE6+1 // 0xb5
+	.word sub_80DC0E8+1 // 0xb6
+	.word sub_80DC260+1 // 0xb7
+	.word sub_80DC3F8+1 // 0xb8
+	.word sub_80DC4FC+1 // 0xb9
+	.word sub_80DC5F8+1 // 0xba
+	.word sub_80DC70C+1 // 0xbb
+	.word sub_80DCB1C+1 // 0xbc
+	.word sub_80DCCD4+1 // 0xbd
+	.word sub_80DCE38+1 // 0xbe
+	.word sub_80DCEF4+1 // 0xbf
+	.word sub_80DD0AC+1 // 0xc0
+	.word sub_80DD34C+1 // 0xc1
+	.word sub_80DD764+1 // 0xc2
+	.word sub_80DD940+1 // 0xc3
+	.word sub_80DDA84+1 // 0xc4
+	.word sub_80DDC10+1 // 0xc5
+	.word sub_80DDDF0+1 // 0xc6
+	.word sub_80DE000+1 // 0xc7
+	.word sub_80DE13C+1 // 0xc8
+	.word sub_80DE404+1 // 0xc9
+	.word sub_80DE7F4+1 // 0xca
+	.word sandwormObject_80DEA7C+1 // 0xcb
+	.word sub_80DEE60+1 // 0xcc
+	.word sub_80DF0A4+1 // 0xcd
+	.word sub_80DF188+1 // 0xce
+	.word sub_80DF328+1 // 0xcf
+	.word sub_80DF4FC+1 // 0xd0
+	.word sub_80DF90C+1 // 0xd1
+	.word sub_80DFC38+1 // 0xd2
+	.word sub_80DFE40+1 // 0xd3
+	.word sub_80DFFB8+1 // 0xd4
 	thumb_func_end sub_8003E98
 
 	thumb_local_start
@@ -2222,152 +2223,152 @@ sub_80042A6:
 off_80042BC: .word eT3BattleObject0_LinkedList
 off_80042C0: .word dword_203CA7C
 off_80042C4: .word dword_203A010
-T4BattleObjectJumptable: .word loc_80E0548+1
-	.word loc_80E0548+1
-	.word sub_80E0638+1
-	.word sub_80E0710+1
-	.word sub_80E0844+1
-	.word nullsub_99+1
-	.word sub_80E08FC+1
-	.word sub_80E0AD4+1
-	.word chargeShotChargeObject_80E0DF0+1
-	.word sub_80E0FA0+1
-	.word sub_80E10A4+1
-	.word loc_80E0548+1
-	.word sub_80E11FC+1
-	.word loc_80E0548+1
-	.word loc_80E0548+1
-	.word sub_80E1520+1
-	.word sub_80E17E8+1
-	.word sub_80E19BC+1
-	.word sub_80E1A90+1
-	.word sub_80E1B48+1
-	.word sub_80E1CF8+1
-	.word sub_80E1D88+1
-	.word sub_80E1E4C+1
-	.word loc_80E0548+1
-	.word loc_80E0548+1
-	.word sub_80E2080+1
-	.word sub_80E21D8+1
-	.word sub_80E225C+1
-	.word sub_80E23A4+1
-	.word sub_80E24E4+1
-	.word sub_80E25D0+1
-	.word sub_80E28A8+1
-	.word sub_80E2AE8+1
-	.word sub_80E2B7C+1
-	.word sub_80E2CA4+1
-	.word sub_80E2E34+1
-	.word sub_80E2F56+1
-	.word sub_80E309C+1
-	.word sub_80E3150+1
-	.word sub_80E31D8+1
-	.word sub_80E32B8+1
-	.word sub_80E342C+1
-	.word battleTrapObjectMaybe_80E34C0+1
-	.word sub_80E35A4+1
-	.word sub_80E3728+1
-	.word sub_80E37F4+1
-	.word sub_80E39A0+1
-	.word sub_80E3AB8+1
-	.word sub_80E3B70+1
-	.word sub_80E3D68+1
-	.word sub_80E3FD0+1
-	.word sub_80E40EC+1
-	.word sub_80E4188+1
-	.word sub_80E4344+1
-	.word sub_80E440C+1
-	.word sub_80E4634+1
-	.word sub_80E46D8+1
-	.word sub_80E47B4+1
-	.word sub_80E4848+1
-	.word sub_80E4910+1
-	.word sub_80E4A1C+1
-	.word loc_80E0548+1
-	.word sub_80E4CB8+1
-	.word sub_80E4DB0+1
-	.word sub_80E50C4+1
-	.word sub_80E5244+1
-	.word sub_80E5470+1
-	.word sub_80E55C0+1
-	.word sub_80E5710+1
-	.word sub_80E5944+1
-	.word sub_80E59E8+1
-	.word locret_80E5B60+1
-	.word sub_80E5C2C+1
-	.word sub_80E5D44+1
-	.word sub_80E5E00+1
-	.word sub_80E5ECC+1
-	.word sub_80E5F9C+1
-	.word sub_80E5FBC+1
-	.word sub_80E6088+1
-	.word sub_80E6254+1
-	.word sub_80E6480+1
-	.word sub_80E655C+1
-	.word sub_80E6758+1
-	.word sub_80E680C+1
-	.word sub_80E689C+1
-	.word sub_80E6A90+1
-	.word sub_80E6BDC+1
-	.word sub_80E6E44+1
-	.word sub_80E6F88+1
-	.word sub_80E702C+1
-	.word sub_80E70C8+1
-	.word sub_80E71C4+1
-	.word sub_80E7260+1
-	.word sub_80E74D4+1
-	.word sub_80E7568+1
-	.word sub_80E7624+1
-	.word sub_80E76F8+1
-	.word sub_80E7788+1
-	.word sub_80E78BC+1
-	.word sub_80E795C+1
-	.word sub_80E7ACC+1
-	.word sub_80E7BFC+1
-	.word sub_80E7CCC+1
-	.word sub_80E7DC4+1
-	.word sub_80E7E9C+1
-	.word sub_80E7F38+1
-	.word sub_80E7FDC+1
-	.word sub_80E807C+1
-	.word sub_80E8138+1
-	.word sub_80E81D8+1
-	.word sub_80E8268+1
-	.word sub_80E83B8+1
-	.word sub_80E857C+1
-	.word sub_80E8688+1
-	.word sub_80E8794+1
-	.word sub_80E88A0+1
-	.word sub_80E8938+1
-	.word sub_80E8A60+1
-	.word sub_80E8B00+1
-	.word sub_80E8DF0+1
-	.word sub_80E8EE0+1
-	.word sub_80E8FE0+1
-	.word loc_80E0548+1
-	.word loc_80E0548+1
-	.word sub_80E9120+1
-	.word loc_80E0548+1
-	.word sub_80E91E4+1
-	.word sub_80E9310+1
-	.word sub_80E9460+1
-	.word loc_80E0548+1
-	.word loc_80E0548+1
-	.word loc_80E0548+1
-	.word sub_80E9570+1
-	.word loc_80E0548+1
-	.word loc_80E0548+1
-	.word sub_80E97F0+1
-	.word sub_80E9994+1
-	.word sub_80E9AF0+1
-	.word sub_80E9C88+1
-	.word sub_80E9DF0+1
-	.word sub_80EA010+1
-	.word sub_80EA14C+1
-	.word loc_80E0548+1
-	.word sub_80EA258+1
-	.word sub_80EA364+1
-	.word loc_80E0548+1
+T4BattleObjectJumptable: .word loc_80E0548+1 // 0x0
+	.word loc_80E0548+1 // 0x1
+	.word sub_80E0638+1 // 0x2
+	.word sub_80E0710+1 // 0x3
+	.word sub_80E0844+1 // 0x4
+	.word nullsub_99+1 // 0x5
+	.word sub_80E08FC+1 // 0x6
+	.word sub_80E0AD4+1 // 0x7
+	.word chargeShotChargeObject_80E0DF0+1 // 0x8
+	.word sub_80E0FA0+1 // 0x9
+	.word sub_80E10A4+1 // 0xa
+	.word loc_80E0548+1 // 0xb
+	.word sub_80E11FC+1 // 0xc
+	.word loc_80E0548+1 // 0xd
+	.word loc_80E0548+1 // 0xe
+	.word sub_80E1520+1 // 0xf
+	.word sub_80E17E8+1 // 0x10
+	.word sub_80E19BC+1 // 0x11
+	.word sub_80E1A90+1 // 0x12
+	.word sub_80E1B48+1 // 0x13
+	.word sub_80E1CF8+1 // 0x14
+	.word sub_80E1D88+1 // 0x15
+	.word sub_80E1E4C+1 // 0x16
+	.word loc_80E0548+1 // 0x17
+	.word loc_80E0548+1 // 0x18
+	.word sub_80E2080+1 // 0x19
+	.word sub_80E21D8+1 // 0x1a
+	.word sub_80E225C+1 // 0x1b
+	.word sub_80E23A4+1 // 0x1c
+	.word sub_80E24E4+1 // 0x1d
+	.word sub_80E25D0+1 // 0x1e
+	.word sub_80E28A8+1 // 0x1f
+	.word sub_80E2AE8+1 // 0x20
+	.word sub_80E2B7C+1 // 0x21
+	.word sub_80E2CA4+1 // 0x22
+	.word sub_80E2E34+1 // 0x23
+	.word sub_80E2F56+1 // 0x24
+	.word sub_80E309C+1 // 0x25
+	.word sub_80E3150+1 // 0x26
+	.word sub_80E31D8+1 // 0x27
+	.word sub_80E32B8+1 // 0x28
+	.word sub_80E342C+1 // 0x29
+	.word battleTrapObjectMaybe_80E34C0+1 // 0x2a
+	.word sub_80E35A4+1 // 0x2b
+	.word sub_80E3728+1 // 0x2c
+	.word sub_80E37F4+1 // 0x2d
+	.word sub_80E39A0+1 // 0x2e
+	.word sub_80E3AB8+1 // 0x2f
+	.word sub_80E3B70+1 // 0x30
+	.word sub_80E3D68+1 // 0x31
+	.word sub_80E3FD0+1 // 0x32
+	.word sub_80E40EC+1 // 0x33
+	.word sub_80E4188+1 // 0x34
+	.word sub_80E4344+1 // 0x35
+	.word sub_80E440C+1 // 0x36
+	.word sub_80E4634+1 // 0x37
+	.word sub_80E46D8+1 // 0x38
+	.word sub_80E47B4+1 // 0x39
+	.word sub_80E4848+1 // 0x3a
+	.word sub_80E4910+1 // 0x3b
+	.word sub_80E4A1C+1 // 0x3c
+	.word loc_80E0548+1 // 0x3d
+	.word sub_80E4CB8+1 // 0x3e
+	.word sub_80E4DB0+1 // 0x3f
+	.word sub_80E50C4+1 // 0x40
+	.word sub_80E5244+1 // 0x41
+	.word sub_80E5470+1 // 0x42
+	.word sub_80E55C0+1 // 0x43
+	.word sub_80E5710+1 // 0x44
+	.word sub_80E5944+1 // 0x45
+	.word sub_80E59E8+1 // 0x46
+	.word locret_80E5B60+1 // 0x47
+	.word sub_80E5C2C+1 // 0x48
+	.word sub_80E5D44+1 // 0x49
+	.word sub_80E5E00+1 // 0x4a
+	.word sub_80E5ECC+1 // 0x4b
+	.word sub_80E5F9C+1 // 0x4c
+	.word sub_80E5FBC+1 // 0x4d
+	.word sub_80E6088+1 // 0x4e
+	.word sub_80E6254+1 // 0x4f
+	.word sub_80E6480+1 // 0x50
+	.word sub_80E655C+1 // 0x51
+	.word sub_80E6758+1 // 0x52
+	.word sub_80E680C+1 // 0x53
+	.word sub_80E689C+1 // 0x54
+	.word sub_80E6A90+1 // 0x55
+	.word sub_80E6BDC+1 // 0x56
+	.word sub_80E6E44+1 // 0x57
+	.word sub_80E6F88+1 // 0x58
+	.word sub_80E702C+1 // 0x59
+	.word sub_80E70C8+1 // 0x5a
+	.word sub_80E71C4+1 // 0x5b
+	.word sub_80E7260+1 // 0x5c
+	.word sub_80E74D4+1 // 0x5d
+	.word sub_80E7568+1 // 0x5e
+	.word sub_80E7624+1 // 0x5f
+	.word sub_80E76F8+1 // 0x60
+	.word sub_80E7788+1 // 0x61
+	.word sub_80E78BC+1 // 0x62
+	.word sub_80E795C+1 // 0x63
+	.word sub_80E7ACC+1 // 0x64
+	.word sub_80E7BFC+1 // 0x65
+	.word type3Object_0xb6_80E7CCC+1 // 0x66
+	.word sub_80E7DC4+1 // 0x67
+	.word sub_80E7E9C+1 // 0x68
+	.word sub_80E7F38+1 // 0x69
+	.word sub_80E7FDC+1 // 0x6a
+	.word sub_80E807C+1 // 0x6b
+	.word sub_80E8138+1 // 0x6c
+	.word sub_80E81D8+1 // 0x6d
+	.word sub_80E8268+1 // 0x6e
+	.word sub_80E83B8+1 // 0x6f
+	.word sub_80E857C+1 // 0x70
+	.word sub_80E8688+1 // 0x71
+	.word sub_80E8794+1 // 0x72
+	.word sub_80E88A0+1 // 0x73
+	.word sub_80E8938+1 // 0x74
+	.word sunMoonObject_80E8A60+1 // 0x75
+	.word sub_80E8B00+1 // 0x76
+	.word sub_80E8DF0+1 // 0x77
+	.word sub_80E8EE0+1 // 0x78
+	.word sub_80E8FE0+1 // 0x79
+	.word loc_80E0548+1 // 0x7a
+	.word loc_80E0548+1 // 0x7b
+	.word sub_80E9120+1 // 0x7c
+	.word loc_80E0548+1 // 0x7d
+	.word sub_80E91E4+1 // 0x7e
+	.word sub_80E9310+1 // 0x7f
+	.word sub_80E9460+1 // 0x80
+	.word loc_80E0548+1 // 0x81
+	.word loc_80E0548+1 // 0x82
+	.word loc_80E0548+1 // 0x83
+	.word sub_80E9570+1 // 0x84
+	.word loc_80E0548+1 // 0x85
+	.word loc_80E0548+1 // 0x86
+	.word sub_80E97F0+1 // 0x87
+	.word sub_80E9994+1 // 0x88
+	.word sub_80E9AF0+1 // 0x89
+	.word sub_80E9C88+1 // 0x8a
+	.word sub_80E9DF0+1 // 0x8b
+	.word sub_80EA010+1 // 0x8c
+	.word sub_80EA14C+1 // 0x8d
+	.word loc_80E0548+1 // 0x8e
+	.word sub_80EA258+1 // 0x8f
+	.word sub_80EA364+1 // 0x90
+	.word loc_80E0548+1 // 0x91
 	thumb_func_end sub_80042A6
 
 	thumb_local_start
@@ -7088,7 +7089,7 @@ loc_8006EE4:
 
 // (int idx_8021DA8, int a2) -> bool
 	thumb_local_start
-sub_8006EE8:
+validateChipCode_8006EE8:
 	push {r1-r7,lr}
 	mov r7, r0
 	mov r4, r1
@@ -7117,7 +7118,7 @@ loc_8006F16:
 loc_8006F1A:
 	mov r0, #1
 	pop {r1-r7,pc}
-	thumb_func_end sub_8006EE8
+	thumb_func_end validateChipCode_8006EE8
 
 	thumb_func_start sub_8006F1E
 sub_8006F1E:
@@ -15953,7 +15954,7 @@ loc_800B080:
 	blt loc_800B088
 	mov r1, #0xff
 loc_800B088:
-	bl sub_8006EE8 // (int idx_8021DA8, int a2) -> bool
+	bl validateChipCode_8006EE8 // (int idx_8021DA8, int a2) -> bool
 loc_800B08C:
 	pop {r0}
 	pop {r1-r7,pc}
@@ -15987,7 +15988,7 @@ sub_800B090:
 	cmp r0, r1
 	beq loc_800B0FA
 	mov r1, #0xff
-	bl sub_8006EE8 // (int idx_8021DA8, int a2) -> bool
+	bl validateChipCode_8006EE8 // (int idx_8021DA8, int a2) -> bool
 	bne loc_800B0F6
 	// idx
 	mov r0, r4

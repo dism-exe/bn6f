@@ -53,7 +53,7 @@ sub_810C46C::
 	beq loc_810C49E
 	mov r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_01]
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -208,7 +208,7 @@ loc_810C59C::
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 loc_810C5AC::
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
@@ -373,7 +373,7 @@ off_810C6F0:: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_810C72E+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	.word sub_810C524+1
 	.word sub_810C448+1
 	thumb_func_end sub_810C686
@@ -465,7 +465,7 @@ sub_810C7B6::
 	mov r0, #0x60 
 	mov r1, #0x25 
 	mov r2, #0x2a 
-	bl sub_8109630
+	bl FindBattleActorsWithNonzeroParam_ReturnCountAndSum
 	cmp r0, #0
 	bne loc_810C7E4
 	ldrb r0, [r4,#oAIData_Version_16]
@@ -521,7 +521,7 @@ sub_810C820::
 	cmp r0, r1
 	blt loc_810C84C
 	mov r0, r4
-	bl sub_80126E4
+	bl somethingWriteChipParams_80126E4
 	bl object_setAttack0
 	bl sub_800F322
 	mov r6, #1
@@ -624,7 +624,7 @@ off_810C9CC:: .word sub_810C9F4+1
 	.word sub_810CC0A+1
 	.word sub_810CC54+1
 	.word sub_810CCDC+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	thumb_func_end sub_810C9B8
 
 	thumb_local_start
@@ -635,7 +635,7 @@ sub_810C9F4::
 	bl object_exitAttackState
 	b locret_810CA4A
 loc_810CA02::
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_01]
@@ -1095,8 +1095,8 @@ off_810CD60:: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_810CE1A+1
-	.word sub_81097BA+1
-	.word sub_8109952+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
+	.word genericAI_movementRelated_8109952+1
 	.word sub_810C9B8+1
 	.byte 0x6, 0x6, 0x6, 0x6, 0x6, 0x6
 byte_810CD96:: .byte 0x15, 0x12, 0xC, 0x6, 0x6, 0x6
@@ -1337,7 +1337,7 @@ loc_810CF74::
 	blt loc_810CF8E
 loc_810CF7E::
 	mov r0, r4
-	bl sub_80126E4
+	bl somethingWriteChipParams_80126E4
 	bl object_setAttack0
 	bl sub_800F322
 	mov r6, #1
@@ -1516,7 +1516,7 @@ sub_810D280::
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
+	mov r0, #OBJECT_FLAGS_CANNOT_SLIDE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -1889,8 +1889,8 @@ off_810D554:: .word sub_8016380+1
 	.word sub_810D5CE+1
 	.word sub_810D5F6+1
 	.word sub_810D61E+1
-	.word sub_81097BA+1
-	.word sub_8109952+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
+	.word genericAI_movementRelated_8109952+1
 	.word sub_810D258+1
 byte_810D584:: .byte 0x18, 0x18, 0x18, 0x12, 0x12, 0x12
 byte_810D58A:: .byte 0x78, 0x78, 0x78, 0x78, 0x78, 0xF0
@@ -2121,7 +2121,7 @@ off_810D7F4:: .word off_810D7F8
 off_810D7F8:: .word sub_810D808+1
 	.word sub_810D8B2+1
 	.word sub_810D8EA+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	thumb_func_end sub_810D7E4
 
 	thumb_local_start
@@ -2205,7 +2205,7 @@ loc_810D892::
 	ldrb r2, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	ldrb r2, [r7,#oAIAttackVars_Unk_0d]
-	bl sub_8109660
+	bl highlightPanelIfSomeCondition_8109660
 locret_810D8B0::
 	pop {r4,r6,pc}
 	thumb_func_end sub_810D808
@@ -2274,7 +2274,7 @@ off_810D910:: .word sub_8016380+1
 	.word sub_8016B36+1
 	.word sub_8016B72+1
 	.word sub_810D998+1
-	.word sub_81097BA+1
+	.word genericAI_exitAttackStateAfterDelay_81097BA+1
 	.word sub_8109804+1
 	.word sub_810D7E4+1
 	thumb_func_end sub_810D8EA

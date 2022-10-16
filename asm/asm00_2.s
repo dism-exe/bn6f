@@ -1947,7 +1947,7 @@ loc_800FBE6:
 loc_800FBEC:
 	mov r0, #1
 loc_800FBEE:
-	bl sub_80127C0
+	bl useChipRelated_80127C0
 	bl object_setAttack2
 	ldrb r0, [r7,#oAIAttackVars_Unk_1b]
 	cmp r0, #0
@@ -2005,7 +2005,7 @@ loc_800FC5C:
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0xa0
 	mov r0, #0
-	bl sub_80127C0
+	bl useChipRelated_80127C0
 	ldr r1, off_800FCB8 // =byte_800FCD5
 	// comparing with pointer???
 	cmp r0, r1
@@ -3122,7 +3122,7 @@ sub_8010474:
 	push {lr}
 	ldr r2, [r5,#oBattleObject_CollisionDataPtr]
 	strh r4, [r2,#oCollisionData_Unk_24]
-	mov r0, #OBJECT_FLAGS_UNK_2
+	mov r0, #OBJECT_FLAGS_INVIS
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x93
 	bl PlaySoundEffect
@@ -6077,7 +6077,7 @@ sub_8011CA8:
 sub_8011CB4:
 	push {r4,lr}
 	mov r0, #0
-	bl sub_80127C0
+	bl useChipRelated_80127C0
 	cmp r0, #0x53 
 	beq loc_8011CC4
 	cmp r0, #0x54 
@@ -7698,8 +7698,8 @@ dword_80126DC: .word 0x17E
 off_80126E0: .word 0x11E
 	thumb_func_end sub_801265A
 
-	thumb_func_start sub_80126E4
-sub_80126E4:
+	thumb_func_start somethingWriteChipParams_80126E4
+somethingWriteChipParams_80126E4:
 	push {r4,r6,r7,lr}
 	mov r4, #1
 	b loc_80126F6
@@ -7745,7 +7745,7 @@ loc_80126F6:
 loc_801273A:
 	ldrb r0, [r6,#0xb]
 	pop {r4,r6,r7,pc}
-	thumb_func_end sub_80126E4
+	thumb_func_end somethingWriteChipParams_80126E4
 
 	thumb_local_start
 sub_801273E:
@@ -7818,7 +7818,7 @@ loc_80127BC:
 	thumb_func_end sub_8012792
 
 	thumb_local_start
-sub_80127C0: // called when you use a chip
+useChipRelated_80127C0: // called when you use a chip
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x1c
 	str r0, [sp]
@@ -7867,7 +7867,7 @@ loc_80127E4:
 loc_8012822:
 	ldr r0, [sp,#4]
 	strh r0, [r7,#oAIAttackVars_Unk_14]
-	bl sub_80126E4
+	bl somethingWriteChipParams_80126E4
 	ldr r0, [sp]
 	strb r0, [r7,#oAIAttackVars_Unk_04]
 	ldr r0, [sp,#8]
@@ -7925,6 +7925,7 @@ loc_8012880:
 	cmp r0, #0x12
 	bne loc_80128C0
 loc_80128A2:
+	// spoutcross chip heal?
 	ldrb r0, [r4,#4]
 	cmp r0, #2
 	bne loc_80128C0
@@ -7968,7 +7969,7 @@ loc_80128E8:
 	.balign 4, 0
 dword_80128F4: .word 0x10000
 dword_80128F8: .word 0xFFFF
-	thumb_func_end sub_80127C0
+	thumb_func_end useChipRelated_80127C0
 
 	thumb_local_start
 sub_80128FC:
@@ -9132,7 +9133,7 @@ loc_8013176:
 	cmp r1, #3
 	bne loc_80131B4
 loc_801318E:
-	mov r1, #0x2c 
+	mov r1, #oNaviStats_Transformation 
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0x14
 	beq loc_801319C
@@ -17386,8 +17387,8 @@ dword_80172E8: .word 0x173
 dword_80172EC: .word 0x17E
 	thumb_func_end sub_801728E
 
-	thumb_func_start sub_80172F0
-sub_80172F0:
+	thumb_func_start playerObject_init_80172F0
+playerObject_init_80172F0:
 	push {r4,r7,lr}
 	bl sub_800F35C
 	ldrb r0, [r5,#oBattleObject_Alliance]
@@ -17480,7 +17481,7 @@ loc_80173E6:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80173F2:
 	pop {r4,r7,pc}
-	thumb_func_end sub_80172F0
+	thumb_func_end playerObject_init_80172F0
 
 	thumb_func_start sub_80173F4
 sub_80173F4:
@@ -18269,7 +18270,7 @@ sub_8017AB4:
 	beq loc_8017B5E
 	mov r0, #0
 	add r7, sp, #0
-	bl sub_80127C0
+	bl useChipRelated_80127C0
 	cmp r0, #0x15
 	bne loc_8017B26
 	push {r7}
@@ -20353,7 +20354,7 @@ sub_801A100:
 	mov r4, r0
 	ldr r0, [r5,#oBattleObject_X]
 	ldr r1, [r5,#oBattleObject_Y]
-	bl sub_800E258
+	bl convertXYToPanelXY_800E258
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	mov r2, r1
 	mov r1, r0
@@ -22194,8 +22195,8 @@ off_801AF3C: .word 0x1000
 dword_801AF40: .word 0x220000
 	thumb_func_end sub_801AF0E
 
-	thumb_func_start sub_801AF44
-sub_801AF44:
+	thumb_func_start ai_eventuallyRunsAIAttack_801AF44
+ai_eventuallyRunsAIAttack_801AF44:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #4
 	str r0, [sp]
@@ -22443,7 +22444,7 @@ loc_801B188:
 	bne loc_801B196
 loc_801B18E:
 	ldr r0, [sp]
-	bl sub_801B9E6
+	bl RunAIAttack
 	b loc_801B1A0
 loc_801B196:
 	bl sub_8017AB4
@@ -22462,7 +22463,7 @@ dword_801B1B4: .word 0x10000
 dword_801B1B8: .word 0x20000
 dword_801B1BC: .word 0x40000
 dword_801B1C0: .word 0x80000000
-	thumb_func_end sub_801AF44
+	thumb_func_end ai_eventuallyRunsAIAttack_801AF44
 
 	thumb_func_start sub_801B1C4
 sub_801B1C4:
@@ -22650,7 +22651,7 @@ loc_801B338:
 	bne loc_801B376
 loc_801B36E:
 	ldr r0, [sp]
-	bl sub_801B9E6
+	bl RunAIAttack
 	b loc_801B37A
 loc_801B376:
 	bl sub_8016BFC
@@ -23450,7 +23451,7 @@ locret_801B9E4:
 	thumb_func_end sub_801B9BC
 
 	thumb_local_start
-sub_801B9E6:
+RunAIAttack:
 	push {r4,r6,r7,lr}
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	mov r6, #oAIData_AIState
@@ -23474,7 +23475,7 @@ loc_801BA08:
 	bx r0
 locret_801BA10:
 	pop {r4,r6,r7,pc}
-	thumb_func_end sub_801B9E6
+	thumb_func_end RunAIAttack
 
 	thumb_local_start
 applyDamageToPlayer_801ba12:
@@ -23798,42 +23799,42 @@ locret_801BC62:
 	pop {pc}
 	thumb_func_end sub_801BC24
 
-	thumb_func_start sub_801BC64
-sub_801BC64:
+	thumb_func_start UpdateBattleObjectSprite
+UpdateBattleObjectSprite:
 	push {lr}
 	ldrb r0, [r5,#oObjectHeader_Flags]
-	mov r1, #1
+	mov r1, #OBJECT_FLAG_ACTIVE
 	tst r0, r1
-	beq locret_801BCA4
-	mov r1, #8
+	beq .doNotUpdateSprite
+	mov r1, #OBJECT_FLAG_STOP_SPRITE_UPDATE
 	tst r0, r1
-	bne locret_801BCA4
-	mov r1, #0x10
+	bne .doNotUpdateSprite
+	mov r1, #OBJECT_FLAG_UPDATE_DURING_TIMESTOP
 	tst r0, r1
-	bne loc_801BC80
+	bne .notTimestop
 	bl battle_isTimeStop
-	bne locret_801BCA4
-loc_801BC80:
+	bne .doNotUpdateSprite
+.notTimestop
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
 	tst r0, r0
-	beq loc_801BC8C
+	beq .noCollision
 	ldrb r0, [r5,#oBattleObject_PreventAnim]
 	tst r0, r0
-	bne locret_801BCA4
-loc_801BC8C:
+	bne .doNotUpdateSprite
+.noCollision
 	ldrb r0, [r5,#oBattleObject_CurAnim]
 	ldrb r1, [r5,#oBattleObject_CurAnimCopy]
 	cmp r0, r1
-	beq loc_801BCA0
+	beq .animNotChanged
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	ldrb r0, [r5,#oBattleObject_CurAnim]
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
-loc_801BCA0:
+.animNotChanged
 	bl sprite_update
-locret_801BCA4:
+.doNotUpdateSprite
 	pop {pc}
-	thumb_func_end sub_801BC64
+	thumb_func_end UpdateBattleObjectSprite
 
 	thumb_func_start object_updateSpritePaused
 object_updateSpritePaused:

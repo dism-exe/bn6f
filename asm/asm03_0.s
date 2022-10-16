@@ -138,11 +138,13 @@ byte_8026544: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x0, 0x0,
 	.byte 0xA
 	thumb_func_end sub_8026510
 
-	thumb_func_start ho_8026554
-ho_8026554:
+	thumb_func_start battle_beastJumpLockOn_8026554
+// exe6g: 8026964
+battle_beastJumpLockOn_8026554:
 	push {r6,r7,lr}
 	mov r6, r0
 	mov r7, r1
+	// panel check
 	cmp r0, #1
 	blt loc_802656A
 	cmp r0, #6
@@ -155,7 +157,7 @@ loc_802656A:
 	mov r2, #0
 loc_802656C:
 	lsl r2, r2, #2
-	ldr r3, off_8026580 // =jt_8026584 
+	ldr r3, off_8026580 // =jt_8026584 exe6g 8026994
 	ldr r2, [r3,r2]
 	mov lr, pc
 	bx r2
@@ -183,7 +185,7 @@ jt_8026584: .word sub_802661C+1
 	.word sub_802670E+1
 	.word sub_802671C+1
 	.word sub_8026726+1
-	thumb_func_end ho_8026554
+	thumb_func_end battle_beastJumpLockOn_8026554
 
 	thumb_local_start
 sub_80265D0:
@@ -12796,7 +12798,7 @@ off_802CCB4: .word sub_80E07E0+1
 	.word sub_80E8058+1
 	.word sub_80E81B4+1
 	.word sub_80E8BC0+1
-	.word sub_80E8ADC+1
+	.word spawnSunMoonObject_80E8ADC+1
 	.word 0x0
 	.word 0x0
 	.word sub_80E91B8+1
@@ -12830,7 +12832,7 @@ off_802CD5C: .word sub_80C0DD8+1
 	.word sub_80BF160+1
 	.word sub_80EA11C+1
 	.word sub_80BFCD0+1
-	.word sub_80BF6AE+1
+	.word spawnType1Object_0x24_80BF6AE+1
 	.word sub_80C3B30+1
 	.word sub_80C3E98+1
 	.word sub_80C2F96+1

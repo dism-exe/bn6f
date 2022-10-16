@@ -1,23 +1,45 @@
 	.macro ObjectFlags1 field:req // type: enum ObjectFlags1
 		enum32 \field
-		struct_const OBJECT_FLAGS_GUARD,                  0x0000001
-		struct_const OBJECT_FLAGS_UNK_2,                  0x0000002
-		struct_const OBJECT_FLAGS_UNK_4,                  0x0000004
-		struct_const OBJECT_FLAGS_INVULNERABLE,           0x0000008
-		struct_const OBJECT_FLAGS_AIRSHOE,                0x0000010
-		struct_const OBJECT_FLAGS_FLOATSHOE,              0x0000020
-		struct_const OBJECT_FLAGS_CURRENTLY_MOVING,       0x0000040
-		struct_const OBJECT_FLAGS_PARALYZED,              0x0000800
+		struct_const OBJECT_FLAGS_GUARD,                  0x00000001
+		struct_const OBJECT_FLAGS_INVIS,                  0x00000002
+		struct_const OBJECT_FLAGS_UNK_4,                  0x00000004
+		struct_const OBJECT_FLAGS_INVULNERABLE,           0x00000008
+		struct_const OBJECT_FLAGS_AIRSHOE,                0x00000010
+		struct_const OBJECT_FLAGS_FLOATSHOE,              0x00000020
+		struct_const OBJECT_FLAGS_CANNOT_SLIDE,           0x00000040
+		struct_const OBJECT_FLAGS_UNK_8,                  0x00000080
+		struct_const OBJECT_FLAGS_DEAD,                   0x00000100
+		struct_const OBJECT_FLAGS_FLASHING,               0x00000200
+		struct_const OBJECT_FLAGS_FLINCHING,              0x00000400
+		struct_const OBJECT_FLAGS_PARALYZED,              0x00000800
+		struct_const OBJECT_FLAGS_SLIDING,                0x00001000
+		struct_const OBJECT_FLAGS_BLIND,                  0x00002000
+		struct_const OBJECT_FLAGS_IMMOBILIZED,            0x00004000
+		struct_const OBJECT_FLAGS_CONFUSED,               0x00008000
+		struct_const OBJECT_FLAGS_FROZEN,                 0x00010000
+		struct_const OBJECT_FLAGS_SUPERARMOR,             0x00020000
+		struct_const OBJECT_FLAGS_UNDERSHIRT,             0x00040000
+		struct_const OBJECT_FLAGS_MOVE_COMPLETE,          0x00080000
+		struct_const OBJECT_FLAGS_DRAG,                   0x00100000
+		struct_const OBJECT_FLAGS_ANGER,                  0x00200000
+		struct_const OBJECT_FLAGS_USING_ACTION,           0x00400000
+		struct_const OBJECT_FLAGS_UNK_24,                 0x00800000
+		struct_const OBJECT_FLAGS_UNK_25,                 0x01000000
+		struct_const OBJECT_FLAGS_AFFECTED_BY_ICE,        0x02000000
+		struct_const OBJECT_FLAGS_UNK_26,                 0x04000000
+		struct_const OBJECT_FLAGS_UNAFFECTED_BY_POISON,   0x08000000
+		struct_const OBJECT_FLAGS_UNK_28,                 0x10000000
+		struct_const OBJECT_FLAGS_UNK_29,                 0x20000000
+		struct_const OBJECT_FLAGS_UNK_30,                 0x40000000
+		struct_const OBJECT_FLAGS_BUBBLED,                0x80000000
+
 		struct_const OBJECT_FLAGS_IMMOBILIZED_BIT,        14
 		struct_const OBJECT_FLAGS_FROZEN_BIT,             16
 		struct_const OBJECT_FLAGS_SUPERARMOR_BIT,         17
-		struct_const OBJECT_FLAGS_UNDERSHIRT,             0x0040000
 		struct_const OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT, 19
 		struct_const OBJECT_FLAGS_UNK_BIT_20_BIT,         20
 		struct_const OBJECT_FLAGS_UNK_BIT_21_BIT,         21
 		struct_const OBJECT_FLAGS_UNK_BIT_22_BIT,         22
-		struct_const OBJECT_FLAGS_AFFECTED_BY_ICE,        0x2000000
-		struct_const OBJECT_FLAGS_UNAFFECTED_BY_POISON,   0x8000000
 	.endm
 
 	.macro collision_data_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address

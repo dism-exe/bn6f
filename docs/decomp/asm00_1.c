@@ -4713,7 +4713,7 @@ BOOL __fastcall sub_8006EA4(signed int chipIdx, int a2)
 
 // 0x8006ee8
 // (int idx_8021DA8, int a2) -> bool
-BOOL __fastcall sub_8006EE8(signed int a1, int a2)
+BOOL __fastcall validateChipCode_8006EE8(signed int a1, int a2)
 {
     int v2; // r7
     int v3; // r4
@@ -12248,7 +12248,7 @@ int __fastcall sub_800B022(unsigned int a1)
             HIDWORD(v5) = 255;
         if ( v5 >= 411 )
             HIDWORD(v5) = 255;
-        sub_8006EE8(v5, SHIDWORD(v5));
+        validateChipCode_8006EE8(v5, SHIDWORD(v5));
     }
     return v7;
 }
@@ -12275,7 +12275,7 @@ void sub_800B090()
         v5 = v4;
         if ( v4 != 0xFFFF )
         {
-            sub_8006EE8(v4, 255);
+            validateChipCode_8006EE8(v4, 255);
             if ( !v6
                 || ((v7 = *(getChip8021DA8(v5) + offsetof(ChipData, elemIdx)), v7 == 1) || v7 == 2)
                 && (sub_80136CC(*(*(v0 + oToolkit_S2034880_Ptr) + 13), v7 + 10), *(&dword_20367E0 + v7) >= v2) )
