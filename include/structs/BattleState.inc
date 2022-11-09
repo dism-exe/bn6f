@@ -77,6 +77,8 @@
 	u8_arr AlivePlayerActors, 0x10 // loc=0x80
 	u8_arr AliveOpponentActors, 0x10 // loc=0x90
 	u0 Unk_a0 // loc=0xa0
+	struct_org 0xc0
+	u0 Unk_c0 // loc=0xc0
 	struct_org 0xd0
 	u0 BattleActors // loc=0xd0
 	u8_arr PlayerActors, 0x10 // loc=0xd0

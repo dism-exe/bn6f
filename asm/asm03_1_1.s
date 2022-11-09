@@ -2265,7 +2265,7 @@ loc_8039EB4:
 	thumb_local_start
 sub_8039EBA:
 	push {r4-r7,lr}
-	bl battle_8007800
+	bl battle_main_8007800
 	bne locret_8039ECA
 	strb r1, [r5,#0x14]
 	strb r2, [r5,#0x15]
@@ -3167,7 +3167,7 @@ sub_803A58C:
 	bne loc_803A5B6
 	cmp r0, #1
 	beq loc_803A5A6
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne loc_803A5B6
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -3198,7 +3198,7 @@ dword_803A5C4: .word 0x0
 sub_803A5DC:
 	push {r4-r7,lr}
 	bl sub_803C620
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne loc_803A5EC
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -10610,7 +10610,7 @@ sub_803E978:
 	bl sub_813DA94
 	tst r0, r0
 	bne loc_803E9A8
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	beq loc_803EA0A
 	cmp r0, #1
 	beq loc_803E99C
@@ -12657,15 +12657,15 @@ loc_803F7A2:
 	bne loc_803F7C2
 	mov r7, r10
 	ldr r6, [r7,#oToolkit_GameStatePtr]
-	ldr r7, [r6,#0x18]
-	ldr r0, [r7,#0x1c]
-	str r0, [r6,#0x24]
-	ldr r0, [r7,#0x20]
-	str r0, [r6,#0x28]
-	ldr r0, [r7,#0x24]
-	str r0, [r6,#0x2c]
-	ldrb r0, [r7,#0x10]
-	str r0, [r6,#0x30]
+	ldr r7, [r6,#oGameState_OverworldPlayerObjectPtr]
+	ldr r0, [r7,#oOWPlayerObject_X]
+	str r0, [r6,#oGameState_PlayerX]
+	ldr r0, [r7,#oOWPlayerObject_Y]
+	str r0, [r6,#oGameState_PlayerY]
+	ldr r0, [r7,#oOWPlayerObject_Z]
+	str r0, [r6,#oGameState_PlayerZ]
+	ldrb r0, [r7,#oOWPlayerObject_FacingDirection]
+	str r0, [r6,#oGameState_FacingDirectionAfterWarp]
 loc_803F7C2:
 	bl encryption_8006e26
 	bl sub_803F8B2

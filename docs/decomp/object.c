@@ -247,7 +247,7 @@ signed int __fastcall sub_800BF88(int a1, unsigned int a2)
 
 
 // 0x800bfc4
-int sub_800BFC4()
+int panel_800BFC4()
 {
     int result; // r0
     char v1; // zf
@@ -3020,7 +3020,7 @@ BOOL __fastcall sub_800E5FC(int a1)
 
 
 // 0x800e618
-BOOL __fastcall sub_800E618(int a1, int a2)
+BOOL __fastcall playerObjectMovingToPanelValidityRelated_800E618(int a1, int a2)
 {
     unsigned __int8 *v2; // r5
     int v3; // r6

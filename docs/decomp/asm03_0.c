@@ -403,7 +403,7 @@ char *__fastcall sub_8026840(int a1, int a2, int a3, int a4)
         ZeroFillByWord(&dword_20349A0, 20);
         sub_802A210();
     }
-    sub_801DF92();
+    ClearCustGauge();
     sub_801DACC(196978);
     sub_801DACC(&byte_400);
     sub_801BED6(131376);
@@ -797,7 +797,7 @@ signed int sub_8026DC4()
     if ( result )
     {
         v2 = sub_800B460();
-        sub_800B3D8(v2);
+        transferBattleHandNaviStats_800B3D8(v2);
         if ( sub_802D246() & 8 )
         {
             sub_801BED6(&loc_1000);
@@ -2295,7 +2295,7 @@ int sub_8027D78()
         }
         else
         {
-            sub_801DF92();
+            ClearCustGauge();
             if ( sub_802D234() == 1 )
             {
                 sub_801DA48(32);
@@ -10433,8 +10433,8 @@ void sub_802D8F0()
     if ( (v2 < 0) ^ v3 )
     {
         sub_801E0D0(0);
-        sub_8010312(0x4000);
-        sub_801031C(&loc_1800);
+        SetAIDataUnk0x48Flag(0x4000);
+        ClearAIDataUnk0x48Flag(&loc_1800);
         sub_800FFEE(34304);
         object_exitAttackState(v0);
     }
@@ -10586,7 +10586,7 @@ void sub_802DA78()
     if ( (v2 < 0) ^ v3 )
     {
         sub_801E0D0(0);
-        sub_801031C(26624);
+        ClearAIDataUnk0x48Flag(26624);
         sub_800FFEE(67143168);
         object_exitAttackState(v0);
     }
@@ -10784,7 +10784,7 @@ void sub_802DC66()
     if ( ((v2 < 0) ^ v3) | (v2 == 0) )
     {
         sub_801E0D0(0);
-        sub_801031C(26624);
+        ClearAIDataUnk0x48Flag(26624);
         sub_800FFEE(201360896);
         battle_clearFlags(4);
         object_exitAttackState(v0);
@@ -10924,7 +10924,7 @@ char *sub_802DE74()
     signed int v5; // r3
     char *result; // r0
 
-    v1 = sub_8010018(*(v0 + 22));
+    v1 = getBattleHandAddr_8010018(*(v0 + 22));
     v2 = v1;
     v3 = v1[1];
     if ( v3 )
@@ -10956,7 +10956,7 @@ signed int sub_802DEAE()
 
     v1 = 0xFFFF;
     if ( !*(*(v0 + 88) + 25) && !(object_getFlag() & &loc_1000) )
-        v1 = *(sub_8010018(*(v0 + 22)) + 1);
+        v1 = *(getBattleHandAddr_8010018(*(v0 + 22)) + 1);
     return v1;
 }
 
@@ -10978,7 +10978,7 @@ int sub_802DED8()
     int v11; // [sp-4h] [bp-14h]
 
     v1 = sub_802E070(*(v0 + 22));
-    v2 = sub_8010018(*(v0 + 22));
+    v2 = getBattleHandAddr_8010018(*(v0 + 22));
     v3 = v2[13];
     v4 = v2[7];
     result = v2[1];
@@ -11262,7 +11262,7 @@ int sub_802E156()
     if ( !v2 )
     {
         v3 = sub_802E070(*(*(v0 + oToolkit_S2034880_Ptr) + 13));
-        result = sub_801DFA2(*(v3 + 20));
+        result = SetCustGauge(*(v3 + 20));
     }
     return result;
 }
@@ -11588,7 +11588,7 @@ signed int __fastcall sub_802E588(int a1, int a2, int a3)
     v8 = a1;
     v9 = a2;
     v10 = a3;
-    v3 = sub_8010018(a1);
+    v3 = getBattleHandAddr_8010018(a1);
     sub_802E070(v8);
     v4 = getChip8021DA8(v9);
     v5 = v3[1];
@@ -13692,7 +13692,7 @@ void __fastcall camera_802FF4C(int x, int y, int a3, int mapGroup)
 
 
 // 0x802fff4
-int sub_802FFF4()
+int camera_802FFF4()
 {
     int v0; // r8
     int v1; // r10

@@ -138,7 +138,7 @@ void __cdecl main_static_8000454()
     IsPaletteFadeActive();
     if ( !zf )
     {
-        sub_813D60C();
+        test0x200bc50_0x5_813D60C();
         if ( zf )
         {
             if ( *tk->jo_gameSubsysSel != 16 )

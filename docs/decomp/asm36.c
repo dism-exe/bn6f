@@ -2373,7 +2373,7 @@ int __fastcall sub_813202C(int a1)
     char v3; // zf
     int v4; // r0
 
-    sub_813D60C();
+    test0x200bc50_0x5_813D60C();
     v1 = sub_803C620();
     if ( !v2 )
     {
@@ -2383,7 +2383,7 @@ int __fastcall sub_813202C(int a1)
         }
         else
         {
-            sub_813D60C();
+            test0x200bc50_0x5_813D60C();
             if ( v3 )
                 sSubmenu.unk_0C = 16;
         }
@@ -2515,7 +2515,7 @@ int __fastcall sub_8132168(int a1)
     int result; // r0
     char v3; // zf
 
-    result = sub_813D60C();
+    result = test0x200bc50_0x5_813D60C();
     if ( v3 )
     {
         v1[1] = 8;
@@ -11102,7 +11102,7 @@ int __fastcall sub_8138848(int a1, int a2, int a3, int a4)
     npc_800461E();
     sub_80048D2();
     checkOWObjectInteractions_80037f4();
-    sub_802FFF4();
+    camera_802FFF4();
     sub_80027B4();
     sub_800286C();
     sub_8003BF4();

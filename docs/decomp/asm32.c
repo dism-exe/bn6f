@@ -977,7 +977,7 @@ signed int sub_810E4F0()
     v0->chip = -1;
     v0->parent = 0;
     sub_801A7F4();
-    sub_80077B4(v0);
+    RemoveGivenAliveBattleActorFromList(v0);
     sub_801DD34();
     sub_800AAE8();
     v2 = 15728640 * object_getFrontDirection(v0);
@@ -3934,7 +3934,7 @@ Battle *sub_8110D18()
     int v1; // r0
     int v2; // r1
 
-    v1 = sub_8018810(*(v0 + 40), 5, *(v0 + 22), *(v0 + 23));
+    v1 = getBattleArmPositionMaybe_8018810(*(v0 + 40), 5, *(v0 + 22), *(v0 + 23));
     return sub_80E8124(v1, v1 << 16, 0, v2 << 16);
 }
 
@@ -10630,8 +10630,8 @@ signed int sub_811648C()
     int v0; // r5
     signed int result; // r0
 
-    sub_800A11C();
-    sub_80077B4(v0);
+    relatedToIsBattleOver_800A11C();
+    RemoveGivenAliveBattleActorFromList(v0);
     result = 8;
     *(v0 + 8) = 8;
     return result;
@@ -10654,7 +10654,7 @@ signed int sub_811649E()
         }
     }
     *v0 &= 0xFDu;
-    return sub_801DFA2(*(v0 + 96) * *(v0 + 102));
+    return SetCustGauge(*(v0 + 96) * *(v0 + 102));
 }
 
 
@@ -10771,8 +10771,8 @@ signed int sub_811670E()
     int v0; // r5
     signed int result; // r0
 
-    sub_800A11C();
-    sub_80077B4(v0);
+    relatedToIsBattleOver_800A11C();
+    RemoveGivenAliveBattleActorFromList(v0);
     result = 8;
     *(v0 + 8) = 8;
     return result;
@@ -10786,7 +10786,7 @@ signed int sub_8116720()
 
     (*(&off_8116754 + *(*(v0 + 88) + 128)))();
     *v0 &= 0xFDu;
-    return sub_801DFA2((*(v0 + 38) - *(v0 + 36)) * *(v0 + 128));
+    return SetCustGauge((*(v0 + 38) - *(v0 + 36)) * *(v0 + 128));
 }
 
 

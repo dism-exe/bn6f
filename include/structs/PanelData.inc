@@ -29,7 +29,7 @@
 	// 0x20000000 - ally attack object
 	// 0x40000000 - enemy attack
 	// 0x80000000 - ally attack
-	struct_org 0x1c
+	u32 Unk_18 // loc=0x18
 	ptr ReserverObjectPtr // loc=0x1c
 	u0 Size // loc=0x20
 	u0 End // loc=0x20

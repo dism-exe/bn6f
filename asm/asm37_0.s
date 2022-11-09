@@ -1655,7 +1655,11 @@ loc_813C394:
 off_813C398: .word byte_813B522
 off_813C39C: .word byte_813C3A4
 dword_813C3A0: .word 0x2660
-byte_813C3A4: .byte 0x0, 0x2, 0x0, 0x1, 0x1, 0x0, 0x2, 0x0
+byte_813C3A4:
+	.hword JOYPAD_L // 0x0
+	.hword JOYPAD_R // 0x2
+	.hword JOYPAD_A // 0x4
+	.hword JOYPAD_B // 0x6
 	thumb_func_end sub_813C334
 
 	thumb_func_start reloadCurNaviStatBoosts_813c3ac
@@ -3672,8 +3676,9 @@ sub_813D5E8:
 	tst r2, r0
 	mov pc, lr
 off_813D608: .word byte_200AF80
-	thumb_func_start sub_813D60C
-sub_813D60C:
+
+	thumb_func_start test0x200bc50_0x5_813D60C
+test0x200bc50_0x5_813D60C:
 	push {lr}
 	ldr r1, off_813D618 // =byte_200BC50 
 	ldrb r0, [r1,#0x5] // (byte_200BC55 - 0x200bc50)
@@ -3681,7 +3686,7 @@ sub_813D60C:
 	pop {pc}
 	.balign 4, 0x00
 off_813D618: .word byte_200BC50
-	thumb_func_end sub_813D60C
+	thumb_func_end test0x200bc50_0x5_813D60C
 
 	push {lr}
 	ldr r1, off_813D628 // =byte_200BC50 

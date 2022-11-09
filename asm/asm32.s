@@ -1280,7 +1280,7 @@ sub_810E4F0:
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sub_801A7F4
 	mov r0, r5
-	bl sub_80077B4
+	bl RemoveGivenAliveBattleActorFromList
 	bl sub_801DD34
 	bl sub_800AAE8
 	bl object_getFrontDirection // () -> int
@@ -5640,7 +5640,7 @@ sub_8110D18:
 	mov r1, #5
 	ldrb r2, [r5,#oBattleObject_Alliance]
 	ldrb r3, [r5,#oBattleObject_DirectionFlip]
-	bl sub_8018810
+	bl getBattleArmPositionMaybe_8018810
 	lsl r3, r1, #0x10
 	lsl r1, r0, #0x10
 	mov r2, #0
@@ -11634,7 +11634,7 @@ sub_8114316:
 	ldr r6, [r6,#oToolkit_BattleStatePtr]
 	mov r1, #0x10
 	mul r0, r1
-	add r0, #0xd0
+	add r0, #oBattleState_BattleActors
 	add r6, r6, r0
 	mov r4, #4
 	mov r7, #0
@@ -15149,9 +15149,9 @@ locret_811648A:
 	thumb_local_start
 sub_811648C:
 	push {lr}
-	bl sub_800A11C
+	bl relatedToIsBattleOver_800A11C
 	mov r0, r5
-	bl sub_80077B4
+	bl RemoveGivenAliveBattleActorFromList
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
@@ -15190,7 +15190,7 @@ loc_81164CC:
 	mov r1, #0x66
 	ldrh r1, [r5,r1]
 	mul r0, r1
-	bl sub_801DFA2
+	bl SetCustGauge
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_81164E4: .word off_81164E8
@@ -15345,9 +15345,9 @@ locret_811670C:
 	thumb_local_start
 sub_811670E:
 	push {lr}
-	bl sub_800A11C
+	bl relatedToIsBattleOver_800A11C
 	mov r0, r5
-	bl sub_80077B4
+	bl RemoveGivenAliveBattleActorFromList
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
@@ -15375,7 +15375,7 @@ sub_8116720:
 	sub r1, r1, r0
 	mov r0, r1
 	mul r0, r2
-	bl sub_801DFA2
+	bl SetCustGauge
 	pop {r4,r6,pc}
 	.balign 4, 0
 off_8116750: .word off_8116754

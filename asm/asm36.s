@@ -3618,7 +3618,7 @@ off_8132028: .word byte_200A290
 sub_813202C:
 	push {r4-r7,lr}
 	ldr r5, off_8132068 // =sSubmenu 
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	beq loc_8132036
 loc_8132036:
 	bl sub_803C620
@@ -3627,7 +3627,7 @@ loc_8132036:
 	bne loc_8132058
 	cmp r0, #1
 	beq loc_8132050
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne loc_8132058
 	mov r0, #0x10
 	strb r0, [r5,#0xc] // (sSubmenu.unk_0C - 0x2009a30)
@@ -3776,7 +3776,7 @@ loc_8132154:
 	thumb_local_start
 sub_8132168:
 	push {lr}
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne locret_8132192
 	mov r0, #8
 	strb r0, [r5,#1]
@@ -16256,7 +16256,7 @@ sub_8138848:
 	bl npc_800461E
 	bl sub_80048D2
 	bl checkOWObjectInteractions_80037f4
-	bl sub_802FFF4
+	bl camera_802FFF4
 	bl sub_80027B4
 	bl sub_800286C
 	bl sub_8003BF4

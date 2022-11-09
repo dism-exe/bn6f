@@ -82,6 +82,8 @@ loc_8021B00:
 	pop {r3}
 	mov r0, r3
 	pop {r4,pc}
+	thumb_func_end GiveChips
+
 	thumb_func_start sub_8021B2A
 sub_8021B2A:
 	push {lr}
@@ -297,6 +299,7 @@ getOffsetToQuantityOfChipCodeMaybe_8021c7c:
 	mov r3, #0
 loc_8021C8C:
 	// index of r1_searchItem in r0_ptr or 0
+	// codes
 	ldrb r4, [r0,r3]
 	cmp r1, r4
 	beq loc_8021C9A

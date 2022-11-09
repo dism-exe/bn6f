@@ -688,7 +688,7 @@ loc_30060B8:
 	strh r0, [r5,#8]
 	mov r0, r12
 	str r0, [r5,#0x24]
-loc_30060BE: .align 1, 0
+loc_30060BE:
 	ldrb r1, [r5,#oObjectSprite_Unk_15]
 	mov r2, #0xf0
 	and r1, r2
@@ -732,7 +732,7 @@ sub_3006108:
 	add r1, r1, r2 // r1 = r1 + r2
 	lsl r1, r1, #5 // r1 = 32 * (r1 + r2)
 	add r0, r0, r1
-	ldrh r7, [r5,#6]
+	ldrh r7, [r5,#oObjectSprite_Unk_06]
 	tst r7, r7
 	beq loc_3006140
 	ldr r7, off_300619C // =iPallete3001750
@@ -742,7 +742,7 @@ loc_3006128:
 	ldr r3, [r0,r2]
 	str r3, [r7,r2]
 	bne loc_3006128
-	ldrh r0, [r5,#6]
+	ldrh r0, [r5,#oObjectSprite_Unk_06]
 	lsr r2, r0, #0xf
 	lsl r2, r2, #2
 	mov r6, #0x20 
@@ -3521,8 +3521,7 @@ _object_removeCollisionData:
 	mov lr, pc
 	bx r2
 	mov r6, r0
-	.balign 4, 0
-loc_3007570: .align 1, 0
+loc_3007570:
 	mov r0, #0
 	ldrsb r0, [r4,r0]
 	cmp r0, #0x7f
@@ -3555,14 +3554,14 @@ loc_3007570: .align 1, 0
 	ldr r1, [sp,#4]
 	mov r2, r5
 	bl sub_3007708
-loc_30075B8: .align 1, 0
+loc_30075B8:
 	add r4, #2
 	b loc_3007570
-loc_30075BC: .align 1, 0
+loc_30075BC:
 	mov r7, #1
-loc_30075BE: .align 1, 0
+loc_30075BE:
 	mov r6, #1
-loc_30075C0: .align 1, 0
+loc_30075C0:
 	mov r0, r6
 	mov r1, r7
 	mov r2, r5
@@ -3579,14 +3578,14 @@ loc_30075C0: .align 1, 0
 	mov r1, r7
 	mov r2, r5
 	bl sub_3007708
-loc_30075E8: .align 1, 0
+loc_30075E8:
 	add r6, #1
 	cmp r6, #6
 	ble loc_30075C0
 	add r7, #1
 	cmp r7, #3
 	ble loc_30075BE
-loc_30075F4: .align 1, 0
+loc_30075F4:
 	add sp, sp, #8
 	pop {r4-r7,pc}
 off_30075F8: .word PanelOffsetListsPointerTable
@@ -4077,7 +4076,7 @@ loc_3007988:
 	beq locret_300799C
 	b loc_3007998
 loc_3007990:
-	ldr r3, [r1,#0x30]
+	ldr r3, [r1,#oCollisionData_SelfCollisionTypeFlags]
 	lsr r3, r3, #0x10
 	lsl r3, r3, #0x10
 	orr r0, r3

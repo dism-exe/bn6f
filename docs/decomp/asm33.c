@@ -8287,7 +8287,7 @@ int __fastcall sub_812A350(int a1)
     int v3; // r4
     int result; // r0
 
-    sub_813D60C();
+    test0x200bc50_0x5_813D60C();
     if ( v2 || sub_81468BC() < 2 )
     {
         v3 = 41;
@@ -8327,7 +8327,7 @@ void __fastcall sub_812A3C8(int a1)
     int v1; // r5
     char v2; // zf
 
-    sub_813D60C();
+    test0x200bc50_0x5_813D60C();
     if ( v2 )
     {
         sub_813D978();
@@ -8355,7 +8355,7 @@ int __fastcall sub_812A3FC(int a1)
     int result; // r0
     char v3; // zf
 
-    result = sub_813D60C();
+    result = test0x200bc50_0x5_813D60C();
     if ( v3 )
     {
         chatbox_mask_eFlags2009F38(128);
@@ -8380,7 +8380,7 @@ int __fastcall sub_812A424(int a1)
     int v5; // r2
     int v6; // r3
 
-    result = sub_813D60C();
+    result = test0x200bc50_0x5_813D60C();
     if ( v2 )
     {
         result = IsPaletteFadeActive();
@@ -8403,7 +8403,7 @@ int __fastcall sub_812A494(int a1)
     int result; // r0
     char v3; // zf
 
-    result = sub_813D60C();
+    result = test0x200bc50_0x5_813D60C();
     if ( v3 )
     {
         result = chatbox_mask_eFlags2009F38(8);
@@ -8613,7 +8613,7 @@ int __fastcall sub_812A67C(int a1)
     int result; // r0
     char v3; // zf
 
-    result = sub_813D60C();
+    result = test0x200bc50_0x5_813D60C();
     if ( v3 )
     {
         engine_setScreeneffect(12, 16);
@@ -8633,7 +8633,7 @@ int __fastcall sub_812A694(int a1)
     int v4; // r2
     int v5; // r3
 
-    result = sub_813D60C();
+    result = test0x200bc50_0x5_813D60C();
     if ( v2 )
     {
         result = IsPaletteFadeActive();
@@ -8663,7 +8663,7 @@ void *sub_812A6F8()
     sub_803CB18();
     if ( v1 )
     {
-        result = sub_813D60C();
+        result = test0x200bc50_0x5_813D60C();
         if ( v1 )
         {
             result = &dword_18;
@@ -9188,7 +9188,7 @@ signed int sub_812AC1A()
             *(v0 + 3) = 4;
             return result;
         }
-        result = sub_813D60C();
+        result = test0x200bc50_0x5_813D60C();
         if ( !result )
             goto LABEL_15;
     }
@@ -10014,7 +10014,7 @@ void sub_812B698()
 
     if ( *(v0 + 27) & 2 )
         eStruct203F7D8[1] = 4;
-    v1 = battle_8007800();
+    v1 = battle_main_8007800();
     if ( !v1 )
     {
         *(v0 + 34) = v2;

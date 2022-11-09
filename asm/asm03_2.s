@@ -3254,7 +3254,7 @@ sub_8047B88:
 	ldr r5, [r7,#0xc]
 	ldr r7, [r7,#8]
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_Unk20032c8_Ptr]
+	ldr r6, [r6,#oToolkit_ShopDataPtr]
 	add r7, r7, r6
 	ldr r6, off_8047C98 // =byte_2019A00 
 	sub r6, #8
@@ -3850,7 +3850,7 @@ sub_8048C24:
 	ldr r4, [r2,#0xc]
 	ldr r2, [r2,#8]
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk20032c8_Ptr]
+	ldr r0, [r0,#oToolkit_ShopDataPtr]
 	add r2, r2, r0
 	mov r0, #0
 loc_8048C3A:
@@ -3885,13 +3885,13 @@ sub_8048C68:
 	push {lr}
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#oToolkit_Unk20032c8_Ptr]
+	ldr r0, [r0,#oToolkit_ShopDataPtr]
 	// size
 	ldr r1, dword_8048CC8 // =0xe80 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldr r0, off_8048CC4 // =byte_8047DA0 
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk20032c8_Ptr]
+	ldr r1, [r1,#oToolkit_ShopDataPtr]
 	ldr r2, dword_8048CC8 // =0xe80 
 loc_8048C7C:
 	sub r2, #8
@@ -3916,7 +3916,7 @@ sub_8048C98:
 	push {lr}
 	ldr r0, off_8048CC4 // =byte_8047DA0 
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk20032c8_Ptr]
+	ldr r1, [r1,#oToolkit_ShopDataPtr]
 	ldr r2, dword_8048CC8 // =0xe80 
 loc_8048CA2:
 	sub r2, #8
@@ -3958,7 +3958,7 @@ sub_8048CCC:
 	ldr r5, [r7,#0xc]
 	ldr r7, [r7,#8]
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk20032c8_Ptr]
+	ldr r0, [r0,#oToolkit_ShopDataPtr]
 	add r7, r7, r0
 	mov r8, r7
 	mov r0, #0
@@ -4038,7 +4038,7 @@ sub_8048D60:
 	ldr r5, [r7,#0xc]
 	ldr r7, [r7,#8]
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk20032c8_Ptr]
+	ldr r1, [r1,#oToolkit_ShopDataPtr]
 	add r7, r7, r1
 	mov r1, #0
 loc_8048D78:
@@ -4073,7 +4073,7 @@ sub_8048D9C:
 	add r2, r2, r0
 	ldr r0, [r2,#8]
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk20032c8_Ptr]
+	ldr r1, [r1,#oToolkit_ShopDataPtr]
 	add r0, r0, r1
 	mov pc, lr
 	thumb_func_end sub_8048D9C
@@ -4088,7 +4088,7 @@ sub_8048DAE:
 	ldr r5, [r7,#0xc]
 	ldr r7, [r7,#8]
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_Unk20032c8_Ptr]
+	ldr r6, [r6,#oToolkit_ShopDataPtr]
 	add r7, r7, r6
 	mov r6, #0
 loc_8048DC4:
@@ -4137,7 +4137,7 @@ sub_8048DF8:
 	ldr r4, [r7,#0xc]
 	ldr r7, [r7,#8]
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20032c8_Ptr]
+	ldr r3, [r3,#oToolkit_ShopDataPtr]
 	add r7, r7, r3
 	cmp r0, #2
 	beq loc_8048E24
@@ -4984,7 +4984,7 @@ sub_80494DE:
 	mov r0, #0x10
 	bl sub_803CB18
 	bne loc_8049516
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne loc_8049522
 	mov r0, #SOUND_EXIT_SUBMENU
 	bl PlaySoundEffect
@@ -5230,7 +5230,7 @@ sub_80496B4:
 	bne loc_80496DE
 	cmp r0, #1
 	beq loc_80496CE
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne loc_80496DE
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -5261,7 +5261,7 @@ dword_80496EC: .word 0x0
 sub_8049704:
 	push {r4-r7,lr}
 	bl sub_803C620
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne loc_8049714
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -8599,12 +8599,13 @@ byte_804BB92: .byte 0x8, 0x0, 0x15, 0xFF, 0xFF, 0xFF, 0x11, 0x0, 0xD, 0x10, 0x16
 sub_804BD00:
 	push {r4-r7,lr}
 	ldr r5, off_804BD70 // =eS200AC80 
-	bl sub_804BFF0
+	bl selectChipTraderRewardList_804BFF0
+	// 0x4c - chip list, 0x50 - rarity weighting
 	str r0, [r5,#0x4c] // (dword_200ACCC - 0x200ac80)
 	str r1, [r5,#0x50] // (dword_200ACD0 - 0x200ac80)
 	ldr r0, off_804BD74 // =dword_804B008
 	mov r1, #2
-	bl sub_804BD7C
+	bl chipTraderWeightedRandomMaybe_804BD7C
 	cmp r0, #0
 	bne loc_804BD26
 loc_804BD18:
@@ -8624,7 +8625,7 @@ loc_804BD26:
 loc_804BD34:
 	ldr r0, [r5,#0x50] // (dword_200ACD0 - 0x200ac80)
 	mov r1, #5
-	bl sub_804BD7C
+	bl chipTraderWeightedRandomMaybe_804BD7C
 	mov r2, r0
 	lsl r0, r0, #2
 	ldr r7, off_804BD78 // =off_804B018 
@@ -8634,10 +8635,10 @@ loc_804BD34:
 	bl sub_804BE88
 	push {r0,r1}
 	bl getChip8021DA8 // (int chip_idx) -> ChipData*
-	ldrb r2, [r0,#5]
+	ldrb r2, [r0,#5] // rarity
 	pop {r0,r1}
 	push {r0,r1}
-	bl sub_804BEEC
+	bl chipTraderRedrawChance_804BEEC
 	pop {r0,r1}
 	beq loc_804BD68
 	ldr r2, [r5,#0x4c] // (dword_200ACCC - 0x200ac80)
@@ -8645,7 +8646,7 @@ loc_804BD34:
 	b locret_804BD6E
 loc_804BD68:
 	ldr r0, [r5,#0x4c] // (dword_200ACCC - 0x200ac80)
-	bl sub_804BF94
+	bl chipTraderGetRewardFromRedraw_804BF94
 locret_804BD6E:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -8655,7 +8656,7 @@ off_804BD78: .word off_804B018
 	thumb_func_end sub_804BD00
 
 	thumb_local_start
-sub_804BD7C:
+chipTraderWeightedRandomMaybe_804BD7C:
 	push {r5,lr}
 	push {r0,r1}
 	bl GetRNG2 // () -> int
@@ -8686,7 +8687,7 @@ loc_804BDA4:
 loc_804BDB0:
 	mov r0, r2
 	pop {r5,pc}
-	thumb_func_end sub_804BD7C
+	thumb_func_end chipTraderWeightedRandomMaybe_804BD7C
 
 	thumb_local_start
 sub_804BDB4:
@@ -8722,7 +8723,7 @@ loc_804BDD6:
 	strb r3, [r7,#2]
 	push {r0,r1,r3,r6,r7}
 	bl getChip8021DA8 // (int chip_idx) -> ChipData*
-	ldrb r2, [r0,#5]
+	ldrb r2, [r0,#5] // rarity
 	mov r4, r8
 	ldrb r6, [r4,r2]
 	add r6, #1
@@ -8804,6 +8805,7 @@ dword_804BE84: .word 0x1E20
 	thumb_func_end sub_804BE1C
 
 	thumb_local_start
+// r1 = rarity histogram
 sub_804BE88:
 	push {r5,lr}
 	mov r7, r8
@@ -8859,7 +8861,7 @@ off_804BEE8: .word dword_2034800
 	thumb_func_end sub_804BE88
 
 	thumb_local_start
-sub_804BEEC:
+chipTraderRedrawChance_804BEEC:
 	push {r5,lr}
 	cmp r2, #3
 	blt loc_804BF10
@@ -8872,7 +8874,7 @@ loc_804BEFC:
 	lsl r0, r0, #2
 	ldr r0, [r7,r0]
 	mov r1, #2
-	bl sub_804BD7C
+	bl chipTraderWeightedRandomMaybe_804BD7C
 	tst r0, r0
 	bne loc_804BF10
 	mov r0, #0
@@ -8882,7 +8884,7 @@ loc_804BF10:
 	pop {r5,pc}
 	.balign 4, 0
 off_804BF14: .word off_804B048
-	thumb_func_end sub_804BEEC
+	thumb_func_end chipTraderRedrawChance_804BEEC
 
 	thumb_local_start
 sub_804BF18:
@@ -8925,7 +8927,7 @@ loc_804BF56:
 	ldr r0, off_804BF8C // =byte_804B068 
 	mov r1, #2
 	push {r3,r4}
-	bl sub_804BD7C
+	bl chipTraderWeightedRandomMaybe_804BD7C
 	pop {r3,r4}
 	tst r0, r0
 	beq loc_804BF78
@@ -8934,7 +8936,7 @@ loc_804BF56:
 loc_804BF6A:
 	ldr r0, off_804BF90 // =byte_804B06A 
 	mov r1, r3
-	bl sub_804BD7C
+	bl chipTraderWeightedRandomMaybe_804BD7C
 	add r0, #0x38 
 	ldrb r1, [r5,r0]
 	b locret_804BF88
@@ -8944,7 +8946,7 @@ loc_804BF78:
 loc_804BF7C:
 	ldr r0, off_804BF90 // =byte_804B06A 
 	mov r1, r4
-	bl sub_804BD7C
+	bl chipTraderWeightedRandomMaybe_804BD7C
 	add r0, #0x40 
 	ldrb r1, [r5,r0]
 locret_804BF88:
@@ -8955,7 +8957,7 @@ off_804BF90: .word byte_804B06A
 	thumb_func_end sub_804BF18
 
 	thumb_local_start
-sub_804BF94:
+chipTraderGetRewardFromRedraw_804BF94:
 	push {r5,lr}
 	mov r7, r8
 	push {r7}
@@ -9005,10 +9007,10 @@ loc_804BFC8:
 	pop {r5,pc}
 	.balign 4, 0
 off_804BFEC: .word dword_2035800
-	thumb_func_end sub_804BF94
+	thumb_func_end chipTraderGetRewardFromRedraw_804BF94
 
 	thumb_local_start
-sub_804BFF0:
+selectChipTraderRewardList_804BFF0:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldrb r1, [r3,#oGameState_MapGroup]
@@ -9048,7 +9050,7 @@ off_804C024: .word byte_804B00C
 	.word 0x9301
 	.word byte_804BB92
 	.word byte_804B011
-	thumb_func_end sub_804BFF0
+	thumb_func_end selectChipTraderRewardList_804BFF0
 
 	thumb_func_start sub_804C058
 sub_804C058:

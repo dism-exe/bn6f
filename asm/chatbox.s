@@ -1348,7 +1348,7 @@ off_804076C: .word off_8040770
 off_8040770: 
 	.word off_realWorld_8044470
 	.word off_internet_80444C4
-	
+	// these are L button textscripts
 	.word off_realWorld_80444A8
 	.word off_internet_804457C
 	
@@ -3189,7 +3189,7 @@ loc_804152A:
 	ldrb r1, [r4,#3]
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_CutsceneStatePtr]
-	add r2, #8
+	add r2, #oCutsceneState_Unk_08
 	add r2, r2, r0
 	ldrb r0, [r2]
 	cmp r0, r1
@@ -8505,14 +8505,18 @@ off_internet_80444C4: .word off_8044A70
 	.word off_8044AB8
 	.word off_8044B1C
 	.word off_8044B80
-	.word 0x0
+	.word NULL
 	.word off_8044BE4
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word NULL
+	.word NULL
 	.word off_8044C80
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word NULL
+	.word NULL
+	.word NULL
 	.word off_8044D2C
 	.word off_8044EFC
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word NULL
+	.word NULL
 	.word off_80450CC
 	.word off_8045130
 	.word off_8045194

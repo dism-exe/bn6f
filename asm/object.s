@@ -983,8 +983,8 @@ sub_800BF88:
 off_800BFC0: .word byte_2036740
 	thumb_func_end sub_800BF88
 
-	thumb_func_start sub_800BFC4
-sub_800BFC4:
+	thumb_func_start panel_800BFC4
+panel_800BFC4:
 	push {r4,r5,r7,lr}
 	bl battle_isPaused
 	tst r0, r0
@@ -1000,7 +1000,7 @@ sub_800BFC4:
 	mov r2, #0x8c
 	str r2, [r0]
 loc_800BFE6:
-	ldr r7, off_800C018 // =ePanelData9 
+	ldr r7, off_800C018 // =ePanelData1_1 
 	mov r5, #1
 loc_800BFEA:
 	mov r4, #1
@@ -1009,27 +1009,27 @@ loc_800BFEC:
 	mov r1, r5
 	bl sub_800C380
 	mov r0, #0
-	ldrb r1, [r7,#2]
+	ldrb r1, [r7,#oPanelData_Type]
 	cmp r1, #3
 	bne loc_800C004
 	mov r0, r4
 	mov r1, r5
 	bl object_getPanelParameters
 loc_800C004:
-	str r0, [r7,#0x18]
-	add r7, #0x20 
+	str r0, [r7,#oPanelData_Unk_18]
+	add r7, #oPanelData_Size 
 	add r4, #1
 	cmp r4, #6
 	ble loc_800BFEC
-	add r7, #0x40 
+	add r7, #oPanelData_Size * 2
 	add r5, #1
 	cmp r5, #3
 	ble loc_800BFEA
 locret_800C016:
 	pop {r4,r5,r7,pc}
 	.balign 4, 0
-off_800C018: .word ePanelData9
-	thumb_func_end sub_800BFC4
+off_800C018: .word ePanelData1_1
+	thumb_func_end panel_800BFC4
 
 	thumb_local_start
 sub_800C01C:
@@ -2899,6 +2899,10 @@ loc_800CE94:
 	thumb_func_end object_getPanelsExceptCurrentFiltered
 
 	thumb_func_start object_getPanelsFiltered
+// r2 - panel flags wanted
+// r3 - panel flags not wanted
+// r7 - scratch space, must be at least 18 bytes
+// returns successful panels in r0
 object_getPanelsFiltered:
 	push {r4,r6,lr}
 	mov r6, #0
@@ -4468,6 +4472,8 @@ convertXYToPanelXY_800E258:
 
 // (int a1, int a2) -> (int n1, int n2)
 	thumb_func_start object_getCoordinatesForPanels
+// X = panelX * 40 - 140
+// Y = panelY * 24 - 20
 object_getCoordinatesForPanels:
 	mov r2, #0x28 
 	lsl r0, r0, #0x18
@@ -4517,7 +4523,6 @@ object_setPanelsFromCoordinates:
 	thumb_func_start object_getEnemyDirection
 object_getEnemyDirection:
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	thumb_func_end object_getEnemyDirection
 
 	thumb_func_start object_getAllianceDirection
 object_getAllianceDirection:
@@ -4526,13 +4531,13 @@ object_getAllianceDirection:
 	neg r0, r0
 	mov pc, lr
 	thumb_func_end object_getAllianceDirection
+	thumb_func_end object_getEnemyDirection
 
 // () -> int
 	thumb_func_start object_getFrontDirection
 object_getFrontDirection:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	ldrb r1, [r5,#oBattleObject_DirectionFlip]
-	thumb_func_end object_getFrontDirection
 
 // (int a1, int a2) -> int
 	thumb_func_start object_getFlipDirection
@@ -4543,6 +4548,7 @@ object_getFlipDirection:
 	neg r0, r0
 	mov pc, lr
 	thumb_func_end object_getFlipDirection
+	thumb_func_end object_getFrontDirection
 
 	thumb_func_start object_subtractHP
 object_subtractHP:
@@ -4989,8 +4995,8 @@ loc_800E60E:
 off_800E614: .word 0x1040
 	thumb_func_end sub_800E5FC
 
-	thumb_func_start sub_800E618
-sub_800E618:
+	thumb_func_start playerObjectMovingToPanelValidityRelated_800E618
+playerObjectMovingToPanelValidityRelated_800E618:
 	push {r6,r7,lr}
 	mov r6, r0
 	mov r7, r1
@@ -5025,10 +5031,19 @@ loc_800E656:
 	pop {r6,r7,pc}
 	.balign 4, 0
 off_800E65C: .word byte_800E660
-byte_800E660: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xB, 0x30, 0x0, 0x0, 0x0, 0x80
-	.byte 0x0, 0x88, 0x7, 0x0, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xB, 0x20, 0x0
-	.byte 0x0, 0x0, 0x80, 0x0, 0x88, 0x7
-	thumb_func_end sub_800E618
+byte_800E660:
+	.byte 0x10, 0x0, 0x0, 0x0
+	.byte 0xA0, 0x0, 0x88, 0xB
+
+	.byte 0x30, 0x0, 0x0, 0x0
+	.byte 0x80, 0x0, 0x88, 0x7
+
+	.byte 0x0, 0x0, 0x0, 0x0
+	.byte 0xA0, 0x0, 0x88, 0xB
+
+	.byte 0x20, 0x0, 0x0, 0x0
+	.byte 0x80, 0x0, 0x88, 0x7
+	thumb_func_end playerObjectMovingToPanelValidityRelated_800E618
 
 	thumb_func_start sub_800E680
 sub_800E680:

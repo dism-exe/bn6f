@@ -190,7 +190,7 @@ main_static_8000454:
 	push {r4-r7,lr}
 	bl IsScreenFadeActive // () -> zf
 	beq locret_80004A2
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne locret_80004A2
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]

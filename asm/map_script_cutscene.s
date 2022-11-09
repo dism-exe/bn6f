@@ -6003,7 +6003,7 @@ RunCutscene:
 	// read current script pointer
 	ldr r1, [r5,r0]
 	// ??? comparing against 1?
-	cmp r1, #1
+	cmp r1, #CUTSCENE_SCRIPT_UNK_MAGIC_SCRIPT_VALUE_0x1
 	beq .loc_8038556
 	// store new pointer
 	str r7, [r5,r0]

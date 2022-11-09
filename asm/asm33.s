@@ -13080,7 +13080,7 @@ off_812A34C: .word byte_2023BC8
 	thumb_local_start
 sub_812A350:
 	push {r4-r7,lr}
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	beq loc_812A360
 	bl sub_81468BC
 	cmp r0, #2
@@ -13134,7 +13134,7 @@ off_812A3BC: .word byte_200AF80
 	thumb_local_start
 sub_812A3C8:
 	push {lr}
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne loc_812A3E8
 	bl sub_813D978
 	mov r0, #0x3c 
@@ -13162,7 +13162,7 @@ locret_812A3F8:
 	thumb_local_start
 sub_812A3FC:
 	push {lr}
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne locret_812A420
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
@@ -13184,7 +13184,7 @@ locret_812A420:
 	thumb_local_start
 sub_812A424:
 	push {lr}
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne locret_812A488
 	bl IsScreenFadeActive // () -> zf
 	beq locret_812A488
@@ -13236,7 +13236,7 @@ off_812A490: .word byte_8129150
 	thumb_local_start
 sub_812A494:
 	push {lr}
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne locret_812A4A8
 	mov r0, #8
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
@@ -13473,7 +13473,7 @@ locret_812A676:
 	thumb_local_start
 sub_812A67C:
 	push {lr}
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne locret_812A690
 	mov r0, #0xc
 	mov r1, #0x10
@@ -13488,7 +13488,7 @@ locret_812A690:
 	thumb_local_start
 sub_812A694:
 	push {lr}
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne locret_812A6EC
 	bl IsScreenFadeActive // () -> zf
 	beq locret_812A6EC
@@ -13572,7 +13572,7 @@ loc_812A742:
 	bl sub_81469E8
 	b locret_812A756
 loc_812A74C:
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	bne locret_812A756
 	mov r0, #0x18
 	strb r0, [r5,#0xc]
@@ -14224,7 +14224,7 @@ loc_812AC2A:
 	strb r0, [r5,#3]
 	b locret_812AC7E
 loc_812AC4C:
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	tst r0, r0
 	bne locret_812AC7E
 	b loc_812AC7A
@@ -15488,7 +15488,7 @@ sub_812B698:
 	mov r0, #4
 	strb r0, [r1,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 loc_812B6A8:
-	bl battle_8007800
+	bl battle_main_8007800
 	tst r0, r0
 	bne locret_812B706
 	strh r1, [r5,#0x22]

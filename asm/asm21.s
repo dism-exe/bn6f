@@ -236,11 +236,12 @@ off_8080FF0: .word off_8614DE0
 	.word palette_3001960
 	.word 0x20
 off_808100C: .word off_8615360
-dword_8081010: .word 0x6000020
+	.word 0x6000020
 	.word dword_86154A8
 	.word 0x800
 	.word dword_86155E8
-	.byte 0x60, 0x19, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0
+	.word palette_3001960
+	.word 0x20
 off_8081028: .word off_861578C
 	.word 0x6000020
 	.word dword_861595C

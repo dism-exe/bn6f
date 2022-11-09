@@ -2770,7 +2770,7 @@ int __fastcall sub_813D5E8(int result)
 
 
 // 0x813d60c
-int sub_813D60C()
+int test0x200bc50_0x5_813D60C()
 {
     return byte_200BC55;
 }

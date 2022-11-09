@@ -1841,7 +1841,7 @@ int __fastcall sub_8047B88(int a1, int a2, int a3, int a4)
     else
     {
         v7 = v6[3];
-        v8 = (v6[2] + *(v5 + oToolkit_Unk20032c8_Ptr));
+        v8 = (v6[2] + *(v5 + oToolkit_ShopDataPtr));
         v9 = &unk_20199F8;
         v10 = 0;
         v11 = 0;
@@ -2037,7 +2037,7 @@ signed int __fastcall sub_8048C24(int a1)
 
     v2 = &dword_8046B98[4 * a1];
     v3 = v2[3];
-    v4 = v2[2] + *(v1 + oToolkit_Unk20032c8_Ptr);
+    v4 = v2[2] + *(v1 + oToolkit_ShopDataPtr);
     v5 = 0;
     do
     {
@@ -2108,7 +2108,7 @@ char *sub_8048C98()
     unsigned __int8 v4; // vf
 
     result = byte_8047DA0;
-    v2 = *(v0 + oToolkit_Unk20032c8_Ptr);
+    v2 = *(v0 + oToolkit_ShopDataPtr);
     v3 = 3712;
     while ( 1 )
     {
@@ -2149,7 +2149,7 @@ int __fastcall sub_8048CCC(int a1, unsigned __int8 *a2)
     v3 = a2;
     v4 = &dword_8046B98[4 * a1];
     v5 = v4[3];
-    v6 = v4[2] + *(v2 + oToolkit_Unk20032c8_Ptr);
+    v6 = v4[2] + *(v2 + oToolkit_ShopDataPtr);
     result = 0;
     do
     {
@@ -2203,7 +2203,7 @@ int __fastcall sub_8048D60(int a1, int a2)
 
     v3 = a2;
     LODWORD(v5) = 16 * a1;
-    v4 = *(&dword_8046B98[2] + v5) + *(v2 + oToolkit_Unk20032c8_Ptr);
+    v4 = *(&dword_8046B98[2] + v5) + *(v2 + oToolkit_ShopDataPtr);
     v5 = v5;
     while ( !*v4 || v3 != *(v4 + 2) )
     {
@@ -2224,7 +2224,7 @@ int __fastcall sub_8048D9C(int a1)
 {
     int v1; // r10
 
-    return dword_8046B98[4 * a1 + 2] + *(v1 + oToolkit_Unk20032c8_Ptr);
+    return dword_8046B98[4 * a1 + 2] + *(v1 + oToolkit_ShopDataPtr);
 }
 
 
@@ -2238,7 +2238,7 @@ signed int __fastcall sub_8048DAE(int a1, int a2, int a3, int a4)
     int v8; // r4
 
     v5 = 4 * a1;
-    v6 = (dword_8046B98[v5 + 2] + *(v4 + oToolkit_Unk20032c8_Ptr));
+    v6 = (dword_8046B98[v5 + 2] + *(v4 + oToolkit_ShopDataPtr));
     v7 = 0;
     while ( 1 )
     {
@@ -2286,7 +2286,7 @@ int __fastcall sub_8048DF8(int a1, int a2, unsigned __int8 *a3)
     v4 = &dword_8046B98[4 * a1];
     result = *v4;
     v6 = v4[3];
-    v7 = v4[2] + *(v3 + oToolkit_Unk20032c8_Ptr);
+    v7 = v4[2] + *(v3 + oToolkit_ShopDataPtr);
     if ( result == 2 )
     {
         v8 = a2;
@@ -2969,7 +2969,7 @@ void sub_80494DE()
     sub_803CB18();
     if ( v1 )
     {
-        sub_813D60C();
+        test0x200bc50_0x5_813D60C();
         if ( v1 )
         {
             PlaySoundEffect(131, v2, v3);
@@ -3239,7 +3239,7 @@ signed int sub_80496B4()
         }
         else
         {
-            sub_813D60C();
+            test0x200bc50_0x5_813D60C();
             if ( v3 )
                 return 1;
         }
@@ -3255,7 +3255,7 @@ signed int sub_8049704()
     char v0; // zf
 
     sub_803C620();
-    sub_813D60C();
+    test0x200bc50_0x5_813D60C();
     if ( v0 )
         return 1;
     sub_8148224();
@@ -5178,9 +5178,9 @@ void sub_804BD00()
     signed int v10; // [sp-8h] [bp-1Ch]
     int v11; // [sp-4h] [bp-18h]
 
-    dword_200ACCC = sub_804BFF0();
+    dword_200ACCC = selectChipTraderRewardList_804BFF0();
     dword_200ACD0 = v0;
-    if ( sub_804BD7C(&dword_804B008, 2) )
+    if ( chipTraderWeightedRandomMaybe_804BD7C(&dword_804B008, 2) )
         goto LABEL_3;
     while ( !sub_804BDB4(dword_200ACCC, algn_200ACB4) )
     {
@@ -5188,21 +5188,21 @@ LABEL_3:
         if ( sub_804BE1C(dword_200ACCC, algn_200ACB4, v1, v2) )
             break;
     }
-    v3 = sub_804BD7C(dword_200ACD0, 5);
+    v3 = chipTraderWeightedRandomMaybe_804BD7C(dword_200ACD0, 5);
     v4 = sub_804BE88(off_804B018[v3], algn_200ACB4, v3);
     v10 = v4;
     v11 = v5;
     v6 = getChip8021DA8(v4);
-    sub_804BEEC(v10, v11, v6[5]);
+    chipTraderRedrawChance_804BEEC(v10, v11, v6[5]);
     if ( v9 )
-        sub_804BF94(dword_200ACCC, v11, v7, v8);
+        chipTraderGetRewardFromRedraw_804BF94(dword_200ACCC, v11, v7, v8);
     else
         sub_804BF18(v10, v11, dword_200ACCC);
 }
 
 
 // 0x804bd7c
-int __fastcall sub_804BD7C(int a1, int a2)
+int __fastcall chipTraderWeightedRandomMaybe_804BD7C(int a1, int a2)
 {
     int v2; // ST08_4
     int v3; // r7
@@ -5378,7 +5378,7 @@ int __fastcall sub_804BE88(int a1, int a2, int a3)
 
 
 // 0x804beec
-signed int __fastcall sub_804BEEC(signed int a1, int a2, signed int a3)
+signed int __fastcall chipTraderRedrawChance_804BEEC(signed int a1, int a2, signed int a3)
 {
     int v3; // r0
     signed int result; // r0
@@ -5388,7 +5388,7 @@ signed int __fastcall sub_804BEEC(signed int a1, int a2, signed int a3)
     v3 = GetTotalChipCount(a1);
     if ( v3 >= 4 )
         v3 = 4;
-    if ( sub_804BD7C(off_804B048[v3], 2) )
+    if ( chipTraderWeightedRandomMaybe_804BD7C(off_804B048[v3], 2) )
 LABEL_9:
         result = 1;
     else
@@ -5446,12 +5446,12 @@ void __fastcall sub_804BF18(signed int a1, int a2, unsigned __int16 *a3)
     }
     while ( v14 + 1 <= 5 );
     v16 = v6;
-    if ( sub_804BD7C(byte_804B068, 2) )
+    if ( chipTraderWeightedRandomMaybe_804BD7C(byte_804B068, 2) )
     {
         if ( v16 )
         {
 LABEL_11:
-            v11 = *(v3 + sub_804BD7C(byte_804B06A, v16) + 56);
+            v11 = *(v3 + chipTraderWeightedRandomMaybe_804BD7C(byte_804B06A, v16) + 56);
             return;
         }
     }
@@ -5459,12 +5459,12 @@ LABEL_11:
     {
         goto LABEL_11;
     }
-    v12 = *(v3 + sub_804BD7C(byte_804B06A, v7) + 64);
+    v12 = *(v3 + chipTraderWeightedRandomMaybe_804BD7C(byte_804B06A, v7) + 64);
 }
 
 
 // 0x804bf94
-int __fastcall sub_804BF94(__int16 *a1, int a2, int a3, int a4)
+int __fastcall chipTraderGetRewardFromRedraw_804BF94(__int16 *a1, int a2, int a3, int a4)
 {
     int v4; // r5
     __int16 *v5; // r8
@@ -5511,7 +5511,7 @@ int __fastcall sub_804BF94(__int16 *a1, int a2, int a3, int a4)
 
 
 // 0x804bff0
-int sub_804BFF0()
+int selectChipTraderRewardList_804BFF0()
 {
     int v0; // r10
     int *v1; // r2

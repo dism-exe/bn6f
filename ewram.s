@@ -346,13 +346,7 @@ unk_200231C:: // 0x200231c
 eKeyItems:: // 0x2003134
 	.space 404
 unk_20032C8:: // 0x20032c8
-	.space 108
-unk_2003334:: // 0x2003334
-	.space 232
-unk_200341C:: // 0x200341c
-	.space 1024
-unk_200381C:: // 0x200381c
-	.space 2352
+	.space 3716
 unk_200414C:: // 0x200414c
 	.space 68
 unk_2004190:: // 0x2004190
@@ -3022,46 +3016,46 @@ unk_2039ADC:: // 0x2039adc
 	.space 4
 
 ePanelData:: // 0x2039ae0
-	panel_data_struct ePanelData0 // 0x2039ae0
-	panel_data_struct ePanelData1
-	panel_data_struct ePanelData2
-	panel_data_struct ePanelData3
-	panel_data_struct ePanelData4
-	panel_data_struct ePanelData5
-	panel_data_struct ePanelData6
-	panel_data_struct ePanelData7
-	panel_data_struct ePanelData8
-	panel_data_struct ePanelData9 // 0x2039c00 // start of on-screen panels
-	panel_data_struct ePanelData10
-	panel_data_struct ePanelData11
-	panel_data_struct ePanelData12
-	panel_data_struct ePanelData13
-	panel_data_struct ePanelData14
-	panel_data_struct ePanelData15
-	panel_data_struct ePanelData16
-	panel_data_struct ePanelData17
-	panel_data_struct ePanelData18
-	panel_data_struct ePanelData19
-	panel_data_struct ePanelData20
-	panel_data_struct ePanelData21
-	panel_data_struct ePanelData22
-	panel_data_struct ePanelData23
-	panel_data_struct ePanelData24
-	panel_data_struct ePanelData25
-	panel_data_struct ePanelData26
-	panel_data_struct ePanelData27
-	panel_data_struct ePanelData28
-	panel_data_struct ePanelData29
-	panel_data_struct ePanelData30
-	panel_data_struct ePanelData31
-	panel_data_struct ePanelData32
-	panel_data_struct ePanelData33
-	panel_data_struct ePanelData34
-	panel_data_struct ePanelData35
-	panel_data_struct ePanelData36
-	panel_data_struct ePanelData37
-	panel_data_struct ePanelData38
-	panel_data_struct ePanelData39
+	panel_data_struct ePanelData0_0 // 0x2039ae0
+	panel_data_struct ePanelData1_0
+	panel_data_struct ePanelData2_0
+	panel_data_struct ePanelData3_0
+	panel_data_struct ePanelData4_0
+	panel_data_struct ePanelData5_0
+	panel_data_struct ePanelData6_0
+	panel_data_struct ePanelData7_0
+	panel_data_struct ePanelData0_1
+	panel_data_struct ePanelData1_1 // 0x2039c00 // start of on-screen panels
+	panel_data_struct ePanelData2_1
+	panel_data_struct ePanelData3_1
+	panel_data_struct ePanelData4_1
+	panel_data_struct ePanelData5_1
+	panel_data_struct ePanelData6_1
+	panel_data_struct ePanelData7_1
+	panel_data_struct ePanelData0_2
+	panel_data_struct ePanelData1_2
+	panel_data_struct ePanelData2_2
+	panel_data_struct ePanelData3_2
+	panel_data_struct ePanelData4_2
+	panel_data_struct ePanelData5_2
+	panel_data_struct ePanelData6_2
+	panel_data_struct ePanelData7_2
+	panel_data_struct ePanelData0_3
+	panel_data_struct ePanelData1_3
+	panel_data_struct ePanelData2_3
+	panel_data_struct ePanelData3_3
+	panel_data_struct ePanelData4_3
+	panel_data_struct ePanelData5_3
+	panel_data_struct ePanelData6_3
+	panel_data_struct ePanelData7_3
+	panel_data_struct ePanelData0_4
+	panel_data_struct ePanelData1_4
+	panel_data_struct ePanelData2_4
+	panel_data_struct ePanelData3_4
+	panel_data_struct ePanelData4_4
+	panel_data_struct ePanelData5_4
+	panel_data_struct ePanelData6_4
+	panel_data_struct ePanelData7_4
 ePanelDataEnd:: // 0x2039fe0
 
 	.space 48

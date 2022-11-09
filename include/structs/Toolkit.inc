@@ -25,7 +25,7 @@
 	ptr S_Chip_2002178_Ptr // loc=0x48
 	ptr Unk2002230_Ptr // loc=0x4c
 	ptr KeyItemsPtr // loc=0x50
-	ptr Unk20032c8_Ptr // loc=0x54
+	ptr ShopDataPtr // loc=0x54
 	ptr Unk200414c_Ptr // loc=0x58
 	ptr Unk2004190_Ptr // loc=0x5c
 	ptr Unk200431c_Ptr // loc=0x60

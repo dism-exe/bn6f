@@ -6938,7 +6938,7 @@ int sub_8039EBA()
     char v3; // r2
     char v4; // zf
 
-    result = battle_8007800();
+    result = battle_main_8007800();
     if ( v4 )
     {
         v0[20] = v2;
@@ -7619,7 +7619,7 @@ signed int __fastcall sub_803A58C(int a1)
         }
         else
         {
-            sub_813D60C();
+            test0x200bc50_0x5_813D60C();
             if ( v4 )
                 return 1;
         }
@@ -7635,7 +7635,7 @@ signed int __fastcall sub_803A5DC(int a1)
     char v1; // zf
 
     sub_803C620();
-    sub_813D60C();
+    test0x200bc50_0x5_813D60C();
     if ( v1 )
         return 1;
     sub_8148214();
@@ -13129,7 +13129,7 @@ signed int sub_803E978()
     {
         if ( !sub_813DA94() )
         {
-            v2 = sub_813D60C();
+            v2 = test0x200bc50_0x5_813D60C();
             if ( v1 )
                 return v0;
             if ( v2 == 1 )

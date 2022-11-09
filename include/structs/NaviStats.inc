@@ -17,6 +17,8 @@
 	u8 GigaLevel // loc=0xc
 	struct_org 0xe
 	u8 Mood // loc=0xe
+	struct_org 0x19
+	u8 CustHPBug // loc=0x19
 	struct_org 0x21
 	u8 BeastOutCounter // loc=0x21
 	struct_org 0x23

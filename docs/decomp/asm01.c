@@ -262,7 +262,7 @@ int __fastcall sub_8020140(int a1)
     int result; // r0
     char v2; // zf
 
-    result = sub_813D60C();
+    result = test0x200bc50_0x5_813D60C();
     if ( !v2 )
     {
         result = eStruct200BC30_getJumpOffset00();

@@ -95,7 +95,7 @@
 	u16 Unk_1e // loc=0x1e
 	u16 Unk_20 // loc=0x20
 	u16 Unk_22 // loc=0x22
-	u16 Unk_24 // loc=0x24
+	u16 FlashingInvisTimer // loc=0x24
 	u16 Unk_26 // loc=0x26
 	u16 Unk_28 // loc=0x28
 	u16 Unk_2a // loc=0x2a

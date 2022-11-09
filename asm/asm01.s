@@ -422,7 +422,7 @@ eStruct2038160_clearStruct:
 	thumb_func_start sub_8020140
 sub_8020140:
 	push {r7,lr}
-	bl sub_813D60C
+	bl test0x200bc50_0x5_813D60C
 	beq locret_802015C
 	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0xc

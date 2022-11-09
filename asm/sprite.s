@@ -1070,11 +1070,11 @@ sprite_getPalette:
 
 	thumb_local_start
 sprite_setAnimationAlt:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	strb r0, [r3]
+	strb r0, [r3,#oObjectSprite_Unk_00]
 	mov pc, lr
 	thumb_func_end sprite_setAnimationAlt
 
