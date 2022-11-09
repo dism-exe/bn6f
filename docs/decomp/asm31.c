@@ -1,12 +1,12 @@
 // 0x80b81ec
-int __usercall sub_80B81EC@<R0>(Battle *obj@<R5>)
+int __usercall t1_0x0_80B81EC@<R0>(Battle *obj@<R5>)
 {
     return (*(&off_80B8204 + obj->ai->naviVirusIndicator))();
 }
 
 
 // 0x80b8210
-int sub_80B8210()
+int t1_0x1_80B8210()
 {
     int v0; // r5
 
@@ -406,7 +406,7 @@ int sub_80B8564()
 
 
 // 0x80b85e0
-int sub_80B85E0()
+int t1_0x2_80B85E0()
 {
     int v0; // r5
 
@@ -711,7 +711,7 @@ void __fastcall __noreturn sub_80B8870(int a1, int a2)
 
 
 // 0x80b88d0
-int sub_80B88D0()
+int t1_0x3_80B88D0()
 {
     int v0; // r5
 
@@ -832,7 +832,7 @@ int __fastcall sub_80B8A0A(int result)
 
 
 // 0x80b8a18
-void sub_80B8A18()
+void t1_0x4_80B8A18()
 {
     int v0; // r5
 
@@ -1226,7 +1226,7 @@ int __fastcall sub_80B8E7C(int result)
 
 
 // 0x80b8ea0
-void sub_80B8EA0()
+void t1_0x6_80B8EA0()
 {
     int v0; // r5
 
@@ -1499,7 +1499,7 @@ int sub_80B903A()
 
 
 // 0x80b9078
-void sub_80B9078()
+void t1_0x7_80B9078()
 {
     int v0; // r5
 
@@ -1773,7 +1773,7 @@ int __fastcall __noreturn sub_80B9288(int a1, int a2)
 
 
 // 0x80b92b8
-void sub_80B92B8()
+void t1_0x8_80B92B8()
 {
     int v0; // r5
 
@@ -2047,7 +2047,7 @@ int __fastcall sub_80B9458(int a1)
 
 
 // 0x80b94bc
-void sub_80B94BC()
+void t1_0x9_80B94BC()
 {
     int v0; // r5
 
@@ -2412,7 +2412,7 @@ int __noreturn sub_80B9776()
 
 
 // 0x80b97c0
-void sub_80B97C0()
+void t1_0xa_80B97C0()
 {
     int v0; // r5
 
@@ -2670,7 +2670,7 @@ int __fastcall sub_80B999A(char a1, int a2, int a3, int a4)
 
 
 // 0x80b99c0
-void sub_80B99C0()
+void t1_0xb_80B99C0()
 {
     int v0; // r5
 
@@ -2969,7 +2969,7 @@ int __noreturn sub_80B9B94()
 
 
 // 0x80b9c14
-void sub_80B9C14()
+void t1_0xc_80B9C14()
 {
     int v0; // r5
 
@@ -3309,7 +3309,7 @@ int __fastcall sub_80B9F0E(char a1, int a2, int a3, int a4)
 
 
 // 0x80b9f44
-void sub_80B9F44()
+void t1_0xd_80B9F44()
 {
     int v0; // r5
 
@@ -3791,7 +3791,7 @@ void sub_80BA31C()
 
 
 // 0x80ba364
-void sub_80BA364()
+void t1_0xe_80BA364()
 {
     int v0; // r5
 
@@ -4272,7 +4272,7 @@ void sub_80BA6B6()
 
 
 // 0x80ba708
-void sub_80BA708()
+void t1_0xf_80BA708()
 {
     int v0; // r5
 
@@ -4635,7 +4635,7 @@ void __noreturn sub_80BAA4C()
 
 
 // 0x80baa8c
-void sub_80BAA8C()
+void t1_0x10_80BAA8C()
 {
     int v0; // r5
 
@@ -5207,7 +5207,7 @@ unsigned __int64 __noreturn sub_80BAF06()
 
 
 // 0x80baf50
-void sub_80BAF50()
+void t1_0x13_80BAF50()
 {
     int v0; // r5
 
@@ -5611,7 +5611,7 @@ void __fastcall sub_80BB278(int a1, int a2, int a3, int a4)
 
 
 // 0x80bb2a0
-void sub_80BB2A0()
+void t1_0x14_80BB2A0()
 {
     int v0; // r5
 
@@ -5981,7 +5981,7 @@ void __fastcall sub_80BB5DC(int a1, int a2, int a3, int a4)
 
 
 // 0x80bb608
-void sub_80BB608()
+void t1_0x15_80BB608()
 {
     int v0; // r5
 
@@ -6383,7 +6383,7 @@ int sub_80BB8B0()
 
 
 // 0x80bb914
-void sub_80BB914()
+void t1_0x16_80BB914()
 {
     int v0; // r5
 
@@ -6678,7 +6678,7 @@ signed int __noreturn sub_80BBB38()
 
 
 // 0x80bbb98
-void sub_80BBB98()
+void t1_0x17_80BBB98()
 {
     int v0; // r5
 
@@ -7050,7 +7050,7 @@ int __noreturn sub_80BBE58()
 
 
 // 0x80bbf0c
-void sub_80BBF0C()
+void t1_0x18_80BBF0C()
 {
     int v0; // r5
 
@@ -7389,7 +7389,7 @@ int __fastcall sub_80BC160(int a1, int a2, int a3, int a4)
 
 
 // 0x80bc17c
-int sub_80BC17C()
+int t1_0x19_80BC17C()
 {
     int v0; // r5
 
@@ -7764,7 +7764,7 @@ int __fastcall sub_80BC4B4(int a1, int a2, int a3)
 
 
 // 0x80bc4fc
-void sub_80BC4FC()
+void t1_0x1a_80BC4FC()
 {
     int v0; // r5
     char v1; // zf
@@ -7901,7 +7901,7 @@ int __fastcall sub_80BC644(int result)
 
 
 // 0x80bc650
-int sub_80BC650()
+int t1_0x1b_80BC650()
 {
     int v0; // r5
 
@@ -8247,7 +8247,7 @@ int GetRelatedObject1HP()
 
 
 // 0x80bca04
-int sub_80BCA04()
+int t1_0x1d_80BCA04()
 {
     int v0; // r5
 
@@ -8381,7 +8381,7 @@ signed int sub_80BCB34()
 
 
 // 0x80bcb50
-void sub_80BCB50()
+void t1_0x1e_80BCB50()
 {
     int v0; // r5
 
@@ -8588,7 +8588,7 @@ int __fastcall sub_80BCCDC(char a1, int a2, int a3, int a4)
 
 
 // 0x80bcd14
-void sub_80BCD14()
+void t1_0x1f_80BCD14()
 {
     int v0; // r5
 
@@ -9308,7 +9308,7 @@ int sub_80BD374()
 
 
 // 0x80bd388
-void sub_80BD388()
+void t1_0x20_80BD388()
 {
     int v0; // r5
 
@@ -10196,7 +10196,7 @@ void nullsub_9()
 
 
 // 0x80bdba4
-void sub_80BDBA4()
+void t1_0x21_80BDBA4()
 {
     int v0; // r5
 
@@ -11470,7 +11470,7 @@ int __fastcall snakearmRelatedObject_t1_0x22_sub_80BE76A(int a1, int a2, int a3,
 
 
 // 0x80be798
-void sub_80BE798()
+void t1_0x23_80BE798()
 {
     int v0; // r5
 
@@ -12521,7 +12521,7 @@ void __fastcall __noreturn sub_80BF192(int a1)
 
 
 // 0x80bf260
-void sub_80BF260()
+void t1_0x24_80BF260()
 {
     int v0; // r5
 
@@ -13089,7 +13089,7 @@ int __fastcall spawnType1Object_0x24_80BF6AE(char a1, int a2, int a3, int a4)
 
 
 // 0x80bf6ec
-void sub_80BF6EC()
+void t1_0x25_80BF6EC()
 {
     int v0; // r5
 
@@ -13811,7 +13811,7 @@ int __fastcall sub_80BFD90(int a1)
 
 
 // 0x80bfdfc
-void sub_80BFDFC()
+void t1_0x26_80BFDFC()
 {
     int v0; // r5
     char v1; // zf
@@ -13970,7 +13970,7 @@ signed int __fastcall sub_80BFF56(signed int result)
 
 
 // 0x80bff68
-int sub_80BFF68()
+int t1_0x27_80BFF68()
 {
     int v0; // r5
 
@@ -14243,7 +14243,7 @@ int sub_80C0144()
 
 
 // 0x80c0178
-int sub_80C0178()
+int t1_0x28_80C0178()
 {
     int v0; // r5
 
@@ -14457,7 +14457,7 @@ int sub_80C031E()
 
 
 // 0x80c0334
-void sub_80C0334()
+void t1_0x29_80C0334()
 {
     int v0; // r5
 
@@ -14632,7 +14632,7 @@ int __fastcall sub_80C04A2(int result)
 
 
 // 0x80c04ac
-int sub_80C04AC()
+int t1_0x2a_80C04AC()
 {
     int v0; // r5
 
@@ -14821,7 +14821,7 @@ int __fastcall sub_80C063C(int a1, int a2, int a3, int a4)
 
 
 // 0x80c065c
-void sub_80C065C()
+void t1_0x2b_80C065C()
 {
     int v0; // r5
 
@@ -14970,7 +14970,7 @@ int __fastcall sub_80C0790(int a1, int a2, int a3, int a4)
 
 
 // 0x80c07bc
-int sub_80C07BC()
+int t1_0x2c_80C07BC()
 {
     int v0; // r5
 
@@ -15768,7 +15768,7 @@ int __fastcall sub_80C0DD8(char a1, int a2, int a3, int a4)
 
 
 // 0x80c0e04
-int sub_80C0E04()
+int t1_0x2d_80C0E04()
 {
     int v0; // r5
 
@@ -15920,7 +15920,7 @@ int __fastcall sub_80C0F52(int a1, int a2, int a3, int a4)
 
 
 // 0x80c0f6c
-int sub_80C0F6C()
+int t1_0x2e_80C0F6C()
 {
     int v0; // r5
 
@@ -16182,7 +16182,7 @@ int __fastcall sub_80C1182(int a1, int a2, int a3, int a4)
 
 
 // 0x80c11ac
-int sub_80C11AC()
+int t1_0x2f_80C11AC()
 {
     int v0; // r5
 
@@ -16576,7 +16576,7 @@ int sub_80C1538()
 
 
 // 0x80c1570
-int sub_80C1570()
+int t1_0x32_80C1570()
 {
     int v0; // r5
 
@@ -17123,7 +17123,7 @@ int sub_80C18B0()
 
 
 // 0x80c1a10
-void sub_80C1A10()
+void t1_0x33_80C1A10()
 {
     int v0; // r5
 
@@ -17913,7 +17913,7 @@ void sub_80C2110()
 
 
 // 0x80c2138
-void sub_80C2138()
+void t1_0x34_80C2138()
 {
     int v0; // r5
 
@@ -18541,7 +18541,7 @@ int sub_80C26C8()
 
 
 // 0x80c26f0
-int sub_80C26F0()
+int t1_0x3c_80C26F0()
 {
     int v0; // r5
 
@@ -18961,7 +18961,7 @@ int __fastcall sub_80C2A4C(char a1, int a2, int a3, int a4)
 
 
 // 0x80c2a78
-int sub_80C2A78()
+int t1_0x3d_80C2A78()
 {
     int v0; // r5
 
@@ -19574,7 +19574,7 @@ int __fastcall sub_80C2FBC(char a1)
 
 
 // 0x80c3000
-void sub_80C3000()
+void t1_0x45_80C3000()
 {
     int v0; // r5
 
@@ -19835,7 +19835,7 @@ int __fastcall sub_80C31F0(char a1, int a2, int a3, int a4)
 
 
 // 0x80c3218
-void sub_80C3218()
+void t1_0x4b_80C3218()
 {
     int v0; // r5
 
@@ -20145,7 +20145,7 @@ int __fastcall sub_80C34B8(int a1, int a2, int a3, int a4)
 
 
 // 0x80c34e0
-void sub_80C34E0()
+void t1_0x4c_80C34E0()
 {
     int v0; // r5
 
@@ -20411,7 +20411,7 @@ int __fastcall sub_80C3710(int a1, int a2, int a3, int a4)
 
 
 // 0x80c3734
-void sub_80C3734()
+void t1_0x4d_80C3734()
 {
     int v0; // r5
 
@@ -20668,7 +20668,7 @@ int __fastcall sub_80C3946(int a1, int a2, int a3, int a4)
 
 
 // 0x80c3970
-void sub_80C3970()
+void t1_0x4f_80C3970()
 {
     int v0; // r5
 
@@ -21050,7 +21050,7 @@ int sub_80C3CD0()
 
 
 // 0x80c3ce8
-void sub_80C3CE8()
+void t1_0x50_80C3CE8()
 {
     int v0; // r5
 
@@ -21294,7 +21294,7 @@ _BYTE *sub_80C3EBC()
 
 
 // 0x80c3ee0
-int sub_80C3EE0()
+int t1_0x54_80C3EE0()
 {
     int v0; // r5
 
@@ -21497,7 +21497,7 @@ int sub_80C409C()
 
 
 // 0x80c40d8
-int sub_80C40D8()
+int t1_0x55_80C40D8()
 {
     int v0; // r5
 
@@ -21621,7 +21621,7 @@ int __fastcall sub_80C4204(int result)
 
 
 // 0x80c4348
-int sub_80C4348()
+int t1_0x56_80C4348()
 {
     int v0; // r5
 
@@ -21833,7 +21833,7 @@ int __fastcall sub_80C4526(int result, int a2)
 
 
 // 0x80c4530
-int sub_80C4530()
+int t1_0x57_80C4530()
 {
     int v0; // r5
 
@@ -22043,7 +22043,7 @@ int sub_80C46CC()
 
 
 // 0x80c46fc
-int sub_80C46FC()
+int t1_0x58_80C46FC()
 {
     int v0; // r5
 
@@ -22165,7 +22165,7 @@ int __fastcall sub_80C481C(int result)
 
 
 // 0x80c4828
-int sub_80C4828()
+int t1_0x5d_80C4828()
 {
     int v0; // r5
 
@@ -22490,7 +22490,7 @@ int __fastcall sub_80C4AEC(_BYTE *a1, int a2, int a3, int a4)
 
 
 // 0x80c4b18
-void sub_80C4B18()
+void t1_0x5e_80C4B18()
 {
     int v0; // r5
     char v1; // zf
@@ -22643,7 +22643,7 @@ int sub_80C4C52()
 
 
 // 0x80c4e58
-void sub_80C4E58()
+void t3_0x0_80C4E58()
 {
     int v0; // r5
 
@@ -22896,7 +22896,7 @@ int sub_80C5090()
 
 
 // 0x80c50b8
-void sub_80C50B8()
+void t3_0x1_80C50B8()
 {
     int v0; // r5
 
@@ -23010,7 +23010,7 @@ int sub_80C518C()
 
 
 // 0x80c51ac
-int sub_80C51AC()
+int t3_0x2_80C51AC()
 {
     int v0; // r5
 
@@ -23233,7 +23233,7 @@ _BYTE *__fastcall sub_80C53A6(char a1, int a2, int a3, int a4)
 
 
 // 0x80c53c0
-void sub_80C53C0()
+void t3_0x4_80C53C0()
 {
     int v0; // r5
 
@@ -23432,7 +23432,7 @@ void __fastcall sub_80C5590(char a1, int a2)
 
 
 // 0x80c55b0
-void sub_80C55B0()
+void t3_0x5_80C55B0()
 {
     int v0; // r5
 
@@ -23635,7 +23635,7 @@ int __fastcall sub_80C579E(int a1, int a2, int a3, int a4)
 
 
 // 0x80c57c0
-void sub_80C57C0()
+void t3_0x6_80C57C0()
 {
     int v0; // r5
 
@@ -23881,7 +23881,7 @@ int __fastcall sub_80C59F6(int a1, int a2, int a3, int a4)
 
 
 // 0x80c5a34
-void sub_80C5A34()
+void t3_0x7_80C5A34()
 {
     int v0; // r5
 
@@ -24031,7 +24031,7 @@ int __fastcall sub_80C5B76(char a1, int a2, int a3, int a4)
 
 
 // 0x80c5bb0
-void sub_80C5BB0()
+void t3_0x8_80C5BB0()
 {
     int v0; // r5
 
@@ -24212,7 +24212,7 @@ int __fastcall sub_80C5DBC(int a1, int a2, int a3, int a4)
 
 
 // 0x80c5ddc
-void sub_80C5DDC()
+void t3_0x9_80C5DDC()
 {
     int v0; // r5
 
@@ -24391,7 +24391,7 @@ _BYTE *__fastcall sub_80C5F4A(char a1, int a2, int a3, int a4)
 
 
 // 0x80c5f60
-void sub_80C5F60()
+void t3_0xa_80C5F60()
 {
     int v0; // r5
 
@@ -24485,7 +24485,7 @@ int __fastcall sub_80C6018(char a1, int a2, int a3, int a4)
 
 
 // 0x80c60a8
-void sub_80C60A8()
+void t3_0xb_80C60A8()
 {
     int v0; // r5
 
@@ -24677,7 +24677,7 @@ _BYTE *__fastcall sub_80C6264(int a1, int a2, int a3, int a4)
 
 
 // 0x80c6280
-int sub_80C6280()
+int t3_0xe_80C6280()
 {
     int v0; // r5
 
@@ -24862,7 +24862,7 @@ _BYTE *sub_80C63AE()
 
 
 // 0x80c6414
-void sub_80C6414()
+void t3_0xf_80C6414()
 {
     int v0; // r5
 
@@ -25277,7 +25277,7 @@ int __fastcall sub_80C67D8(char a1, int a2, int a3, int a4)
 
 
 // 0x80c67f8
-void sub_80C67F8()
+void t3_0x11_80C67F8()
 {
     int v0; // r5
 
@@ -25384,7 +25384,7 @@ int __fastcall sub_80C68B0(char a1, int a2, int a3, int a4)
 
 
 // 0x80c6946
-int sub_80C6946()
+int t3_0x12_80C6946()
 {
     int v0; // r5
 
@@ -25567,7 +25567,7 @@ int __fastcall sub_80C6ADA(char a1, int a2, int a3, int a4)
 
 
 // 0x80c6b40
-void sub_80C6B40()
+void t3_0x16_80C6B40()
 {
     int v0; // r5
 
@@ -25806,7 +25806,7 @@ LABEL_13:
 
 
 // 0x80c6dcc
-void sub_80C6DCC()
+void t3_0x17_80C6DCC()
 {
     int v0; // r5
 
@@ -26082,7 +26082,7 @@ int __fastcall sub_80C7030(int a1)
 
 
 // 0x80c7074
-void sub_80C7074()
+void t3_0x18_80C7074()
 {
     int v0; // r5
 
@@ -26209,7 +26209,7 @@ int __fastcall sub_80C7132(int a1, int a2, int a3, int a4)
 
 
 // 0x80c71a4
-int sub_80C71A4()
+int t3_0x19_80C71A4()
 {
     int v0; // r5
 
@@ -26455,7 +26455,7 @@ int sub_80C73BE()
 
 
 // 0x80c740c
-int sub_80C740C()
+int t3_0x1a_80C740C()
 {
     int v0; // r5
 
@@ -26972,7 +26972,7 @@ signed int sub_80C791E()
 
 
 // 0x80c793c
-int sub_80C793C()
+int t3_0x1b_80C793C()
 {
     int v0; // r5
 
@@ -27283,7 +27283,7 @@ int __fastcall sub_80C7BCC(int a1, int a2, int a3, int a4)
 
 
 // 0x80c7c18
-void sub_80C7C18()
+void t3_0x1c_80C7C18()
 {
     int v0; // r5
 
@@ -27438,7 +27438,7 @@ int __fastcall sub_80C7D50(char a1, int a2, int a3, int a4)
 
 
 // 0x80c7d78
-int sub_80C7D78()
+int t3_0x1d_80C7D78()
 {
     int v0; // r5
 
@@ -27616,7 +27616,7 @@ int __fastcall sub_80C7F20(char a1, int a2, int a3, int a4)
 
 
 // 0x80c7f40
-void sub_80C7F40()
+void t3_0x1e_80C7F40()
 {
     int v0; // r5
 
@@ -27757,7 +27757,7 @@ int __fastcall sub_80C8070(char a1, int a2, int a3, int a4)
 
 
 // 0x80c8098
-int sub_80C8098()
+int t3_0x1f_80C8098()
 {
     int v0; // r5
 
@@ -27895,7 +27895,7 @@ int __fastcall sub_80C81A6(char a1, int a2, int a3, int a4)
 
 
 // 0x80c81cc
-void sub_80C81CC()
+void t3_0x20_80C81CC()
 {
     int v0; // r5
 
@@ -28124,7 +28124,7 @@ int sub_80C8368()
 
 
 // 0x80c8388
-void sub_80C8388()
+void t3_0x21_80C8388()
 {
     int v0; // r5
 
@@ -28266,7 +28266,7 @@ int __fastcall sub_80C8514(char a1, int a2, int a3, int a4)
 
 
 // 0x80c853c
-void sub_80C853C()
+void t3_0x22_80C853C()
 {
     int v0; // r5
 
@@ -28562,7 +28562,7 @@ int __fastcall sub_80C8806(char a1, int a2, int a3, int a4)
 
 
 // 0x80c882c
-void sub_80C882C()
+void t3_0x24_80C882C()
 {
     int v0; // r5
 
@@ -28762,7 +28762,7 @@ signed int __fastcall sub_80C8A7A(int a1, int a2, int a3, int a4)
 
 
 // 0x80c8aa4
-void sub_80C8AA4()
+void t3_0x25_80C8AA4()
 {
     int v0; // r5
 
@@ -28937,7 +28937,7 @@ int __fastcall sub_80C8C4C(char a1, int a2, int a3, int a4)
 
 
 // 0x80c8c74
-void sub_80C8C74()
+void t3_0x26_80C8C74()
 {
     int v0; // r5
 
@@ -29139,7 +29139,7 @@ int __fastcall sub_80C8DE0(char a1, int a2, int a3, int a4)
 
 
 // 0x80c8e08
-void sub_80C8E08()
+void t3_0x27_80C8E08()
 {
     int v0; // r5
 
@@ -29385,7 +29385,7 @@ char *sub_80C8FDC()
 
 
 // 0x80c8ffc
-void sub_80C8FFC()
+void t3_0x28_80C8FFC()
 {
     int v0; // r5
 
@@ -29560,7 +29560,7 @@ int __fastcall sub_80C9184(char a1, int a2, int a3, int a4)
 
 
 // 0x80c91a0
-void sub_80C91A0()
+void t3_0x29_80C91A0()
 {
     int v0; // r5
 
@@ -30005,7 +30005,7 @@ LABEL_2:
 
 
 // 0x80c96a0
-void sub_80C96A0()
+void t3_0x2b_80C96A0()
 {
     int v0; // r5
     char v1; // zf
@@ -30182,7 +30182,7 @@ void nullsub_95()
 
 
 // 0x80c9824
-void sub_80C9824()
+void t3_0x2e_80C9824()
 {
     int v0; // r5
 
@@ -30614,7 +30614,7 @@ int __fastcall sub_80C9BA4(char a1, int a2, int a3, int a4)
 
 
 // 0x80c9bc4
-void sub_80C9BC4()
+void t3_0x2f_80C9BC4()
 {
     int v0; // r5
 
@@ -30743,7 +30743,7 @@ int __fastcall sub_80C9CDA(char a1, int a2, int a3, int a4)
 
 
 // 0x80c9d00
-void sub_80C9D00()
+void t3_0x30_80C9D00()
 {
     int v0; // r5
 
@@ -30982,7 +30982,7 @@ void __noreturn sub_80C9F18()
 
 
 // 0x80c9f78
-int sub_80C9F78()
+int t3_0x31_80C9F78()
 {
     int v0; // r5
 
@@ -31233,7 +31233,7 @@ int __noreturn sub_80CA234()
 
 
 // 0x80ca2a8
-void sub_80CA2A8()
+void t3_0x32_80CA2A8()
 {
     int v0; // r5
 
@@ -31482,7 +31482,7 @@ int sub_80CA510()
 
 
 // 0x80ca544
-void sub_80CA544()
+void t3_0x33_80CA544()
 {
     int v0; // r5
 
@@ -31595,7 +31595,7 @@ _BYTE *__fastcall sub_80CA69C(char a1, int a2, int a3, int a4)
 
 
 // 0x80ca6b8
-int sub_80CA6B8()
+int t3_0x34_80CA6B8()
 {
     int v0; // r5
 
@@ -31782,7 +31782,7 @@ int __fastcall sub_80CA90E(char a1, int a2, int a3, int a4)
 
 
 // 0x80ca938
-void sub_80CA938()
+void t3_0x35_80CA938()
 {
     int v0; // r5
 
@@ -31952,7 +31952,7 @@ int __fastcall sub_80CAB44(int a1, int a2, int a3, int a4)
 
 
 // 0x80cab68
-int sub_80CAB68()
+int t3_0x36_80CAB68()
 {
     int v0; // r5
 
@@ -32159,7 +32159,7 @@ int __fastcall sub_80CAD14(int result, int a2, int a3, int a4)
 
 
 // 0x80cad28
-void sub_80CAD28()
+void t3_0x37_80CAD28()
 {
     int v0; // r5
 
@@ -32332,7 +32332,7 @@ int __fastcall sub_80CAEC8(char a1, int a2, int a3, int a4)
 
 
 // 0x80caef0
-void sub_80CAEF0()
+void t3_0x38_80CAEF0()
 {
     int v0; // r5
 
@@ -32517,7 +32517,7 @@ int sub_80CB0AE()
 
 
 // 0x80cb0dc
-void sub_80CB0DC()
+void t3_0x39_80CB0DC()
 {
     int v0; // r5
 
@@ -32698,7 +32698,7 @@ void __fastcall sub_80CB248(int a1)
 
 
 // 0x80cb284
-void sub_80CB284()
+void t3_0x3a_80CB284()
 {
     int v0; // r5
 
@@ -32902,7 +32902,7 @@ int sub_80CB45C()
 
 
 // 0x80cb49c
-void sub_80CB49C()
+void t3_0x3b_80CB49C()
 {
     int v0; // r5
 
@@ -33125,7 +33125,7 @@ int sub_80CB6CA()
 
 
 // 0x80cb6f8
-void sub_80CB6F8()
+void t3_0x3c_80CB6F8()
 {
     int v0; // r5
 
@@ -33331,7 +33331,7 @@ int __fastcall sub_80CB8DE(char a1, int a2, int a3, int a4)
 
 
 // 0x80cb900
-void sub_80CB900()
+void t3_0x3d_80CB900()
 {
     int v0; // r5
 
@@ -33552,7 +33552,7 @@ int sub_80CBAFA()
 
 
 // 0x80cbb44
-int sub_80CBB44()
+int t3_0x3e_80CBB44()
 {
     int v0; // r5
 
@@ -34011,7 +34011,7 @@ BOOL __fastcall __noreturn sub_80CC006(int a1, int a2, int a3)
 
 
 // 0x80cc044
-int sub_80CC044()
+int t3_0x3f_80CC044()
 {
     int v0; // r5
 
@@ -34077,7 +34077,7 @@ int __fastcall sub_80CC0B2(char a1, int a2, int a3, int a4)
 
 
 // 0x80cc0e8
-void sub_80CC0E8()
+void t3_0x40_80CC0E8()
 {
     int v0; // r5
 
@@ -34503,7 +34503,7 @@ int __fastcall sub_80CC486(char a1, int a2, int a3, int a4)
 
 
 // 0x80cc4c4
-void sub_80CC4C4()
+void t3_0x41_80CC4C4()
 {
     int v0; // r5
 
@@ -34597,7 +34597,7 @@ _BYTE *__fastcall sub_80CC584(char a1, int a2, int a3, int a4)
 
 
 // 0x80cc5a8
-int sub_80CC5A8()
+int t3_0x42_80CC5A8()
 {
     int v0; // r5
 
@@ -34711,7 +34711,7 @@ int __fastcall sub_80CC73C(char a1, int a2, int a3, int a4)
 
 
 // 0x80cc76c
-void sub_80CC76C()
+void t3_0x43_80CC76C()
 {
     int v0; // r5
 
@@ -34912,7 +34912,7 @@ int __fastcall sub_80CC918(char a1, int a2, int a3, int a4)
 
 
 // 0x80cc944
-int sub_80CC944()
+int t3_0x44_80CC944()
 {
     int v0; // r5
 
@@ -35012,7 +35012,7 @@ int __fastcall sub_80CC9FC(char a1, int a2, int a3, int a4)
 
 
 // 0x80cca40
-int sub_80CCA40()
+int t3_0x45_80CCA40()
 {
     int v0; // r5
 
@@ -35203,7 +35203,7 @@ int __fastcall sub_80CCC26(char a1, int a2, int a3, int a4)
 
 
 // 0x80ccc48
-int sub_80CCC48()
+int t3_0x46_80CCC48()
 {
     int v0; // r5
 
@@ -35343,7 +35343,7 @@ int __fastcall sub_80CCD4A(char a1, int a2, int a3, int a4)
 
 
 // 0x80ccd70
-void sub_80CCD70()
+void t3_0x47_80CCD70()
 {
     int v0; // r5
 
@@ -35609,7 +35609,7 @@ int __fastcall sub_80CCFAC(char a1, int a2, int a3, int a4)
 
 
 // 0x80ccfdc
-int sub_80CCFDC()
+int t3_0x48_80CCFDC()
 {
     int v0; // r5
 
@@ -35919,7 +35919,7 @@ int __fastcall sub_80CD2B4(char a1, int a2, int a3, int a4)
 
 
 // 0x80cd2ec
-void sub_80CD2EC()
+void t3_0x49_80CD2EC()
 {
     int v0; // r5
 
@@ -36092,7 +36092,7 @@ int __fastcall sub_80CD4AC(int a1, int a2, int a3, int a4)
 
 
 // 0x80cd4ec
-int sub_80CD4EC()
+int t3_0x4a_80CD4EC()
 {
     int v0; // r5
 
@@ -36461,7 +36461,7 @@ int __fastcall sub_80CD886(int a1, int a2, int a3, int a4)
 
 
 // 0x80cd8ec
-int sub_80CD8EC()
+int t3_0x4b_80CD8EC()
 {
     int v0; // r5
 
@@ -36868,7 +36868,7 @@ signed int sub_80CDCBC()
 
 
 // 0x80cdd44
-int sub_80CDD44()
+int t3_0x4c_80CDD44()
 {
     int v0; // r5
 
@@ -37053,7 +37053,7 @@ int __fastcall sub_80CDF60(int a1, int a2, int a3, int a4)
 
 
 // 0x80cdf84
-int sub_80CDF84()
+int t3_0x4d_80CDF84()
 {
     int v0; // r5
 
@@ -37200,7 +37200,7 @@ int __fastcall sub_80CE0EC(int a1, int a2, int a3, int a4)
 
 
 // 0x80ce118
-int sub_80CE118()
+int t3_0x4e_80CE118()
 {
     int v0; // r5
 
@@ -37335,7 +37335,7 @@ int __fastcall sub_80CE224(char a1, int a2, int a3, int a4)
 
 
 // 0x80ce24c
-void sub_80CE24C()
+void t3_0x4f_80CE24C()
 {
     int v0; // r5
 
@@ -37629,7 +37629,7 @@ int __fastcall sub_80CE468(int a1, int a2, int a3, int a4)
 
 
 // 0x80ce530
-void sub_80CE530()
+void t3_0x50_80CE530()
 {
     int v0; // r5
 
@@ -37823,7 +37823,7 @@ int __fastcall sub_80CE6E6(char a1, int a2, int a3, int a4)
 
 
 // 0x80ce70c
-void sub_80CE70C()
+void t3_0x51_80CE70C()
 {
     int v0; // r5
 
@@ -37921,7 +37921,7 @@ int __fastcall sub_80CE7EE(char a1, int a2, int a3, int a4)
 
 
 // 0x80ce81c
-int sub_80CE81C()
+int t3_0x52_80CE81C()
 {
     int v0; // r5
 
@@ -38272,7 +38272,7 @@ int __fastcall sub_80CEAEE(int result)
 
 
 // 0x80ceb00
-void sub_80CEB00()
+void t3_0x53_80CEB00()
 {
     int v0; // r5
 
@@ -38607,7 +38607,7 @@ int sub_80CEE38()
 
 
 // 0x80cee78
-void sub_80CEE78()
+void t3_0x54_80CEE78()
 {
     int v0; // r5
 
@@ -38890,7 +38890,7 @@ int sub_80CF080()
 
 
 // 0x80cf0d0
-int sub_80CF0D0()
+int t3_0x55_80CF0D0()
 {
     int v0; // r5
 
@@ -39140,7 +39140,7 @@ int __fastcall sub_80CF374(char a1, int a2, int a3, int a4)
 
 
 // 0x80cf3be
-int sub_80CF3BE()
+int t3_0x56_80CF3BE()
 {
     int v0; // r5
 
@@ -39344,7 +39344,7 @@ _BYTE *__fastcall sub_80CF5B2(char a1, int a2, int a3, int a4)
 
 
 // 0x80cf5c8
-void sub_80CF5C8()
+void t3_0x57_80CF5C8()
 {
     int v0; // r5
 
@@ -39550,7 +39550,7 @@ int sub_80CF7A4()
 
 
 // 0x80cf7f0
-int sub_80CF7F0()
+int t3_0x58_80CF7F0()
 {
     int v0; // r5
 
@@ -39680,7 +39680,7 @@ int __fastcall sub_80CF91E(char a1, int a2, int a3, int a4)
 
 
 // 0x80cf954
-int sub_80CF954()
+int t3_0x59_80CF954()
 {
     int v0; // r5
 
@@ -39915,7 +39915,7 @@ int __fastcall sub_80CFBC4(char a1, int a2, int a3, int a4)
 
 
 // 0x80cfc08
-int sub_80CFC08()
+int t3_0x5a_80CFC08()
 {
     int v0; // r5
 
@@ -40024,7 +40024,7 @@ int __fastcall sub_80CFCD6(int a1, int a2, int a3, int a4)
 
 
 // 0x80cfcf8
-void sub_80CFCF8()
+void t3_0x5b_80CFCF8()
 {
     int v0; // r5
 
@@ -40215,7 +40215,7 @@ int __fastcall __noreturn sub_80CFE5C(int a1, char a2, int a3, int a4)
 
 
 // 0x80cfec4
-int sub_80CFEC4()
+int t3_0x5c_80CFEC4()
 {
     int v0; // r5
 
@@ -40422,7 +40422,7 @@ _BYTE *__fastcall sub_80D008C(char a1, int a2, int a3, int a4)
 
 
 // 0x80d00a0
-void sub_80D00A0()
+void t3_0x5d_80D00A0()
 {
     int v0; // r5
 
@@ -40625,7 +40625,7 @@ void __fastcall sub_80D0230(int a1)
 
 
 // 0x80d0268
-void sub_80D0268()
+void t3_0x5e_80D0268()
 {
     int v0; // r5
 
@@ -40779,7 +40779,7 @@ int __fastcall sub_80D036C(char a1, int a2, int a3, int a4)
 
 
 // 0x80d0394
-void sub_80D0394()
+void t3_0x5f_80D0394()
 {
     int v0; // r5
 
@@ -40911,7 +40911,7 @@ int __fastcall sub_80D04DA(char a1, int a2, int a3, int a4)
 
 
 // 0x80d0500
-void sub_80D0500()
+void t3_0x60_80D0500()
 {
     int v0; // r5
 
@@ -41044,7 +41044,7 @@ int sub_80D05EC()
 
 
 // 0x80d0610
-void sub_80D0610()
+void t3_0x61_80D0610()
 {
     int v0; // r5
 
@@ -41216,7 +41216,7 @@ int __fastcall sub_80D07A0(char a1, int a2, int a3, int a4)
 
 
 // 0x80d07cc
-void sub_80D07CC()
+void t3_0x62_80D07CC()
 {
     int v0; // r5
 
@@ -41482,7 +41482,7 @@ int __fastcall sub_80D0A80(int a1, int a2, int a3)
 
 
 // 0x80d0aa8
-int sub_80D0AA8()
+int t3_0x63_80D0AA8()
 {
     int v0; // r5
 
@@ -41765,7 +41765,7 @@ void sub_80D0D28()
 
 
 // 0x80d0d7c
-void sub_80D0D7C()
+void t3_0x64_80D0D7C()
 {
     int v0; // r5
 
@@ -41986,7 +41986,7 @@ _BYTE *sub_80D0F32()
 
 
 // 0x80d0f8c
-void sub_80D0F8C()
+void t3_0x65_80D0F8C()
 {
     int v0; // r5
 
@@ -42250,7 +42250,7 @@ int sub_80D11B4()
 
 
 // 0x80d1218
-void sub_80D1218()
+void t3_0x66_80D1218()
 {
     int v0; // r5
 
@@ -42523,7 +42523,7 @@ int sub_80D149E()
 
 
 // 0x80d1514
-void sub_80D1514()
+void t3_0x67_80D1514()
 {
     int v0; // r5
 
@@ -42769,7 +42769,7 @@ int sub_80D1784()
 
 
 // 0x80d17a4
-void sub_80D17A4()
+void t3_0x68_80D17A4()
 {
     int v0; // r5
 
@@ -42889,7 +42889,7 @@ int __fastcall sub_80D18AE(char a1, int a2, int a3, int a4)
 
 
 // 0x80d18d8
-int sub_80D18D8()
+int t3_0x69_80D18D8()
 {
     int v0; // r5
 
@@ -43027,7 +43027,7 @@ int __fastcall sub_80D1A00(int result)
 
 
 // 0x80d1a08
-int sub_80D1A08()
+int t3_0x6a_80D1A08()
 {
     int v0; // r5
 
@@ -43178,7 +43178,7 @@ int __fastcall sub_80D1B22(char a1, int a2, int a3, int a4)
 
 
 // 0x80d1b48
-int sub_80D1B48()
+int t3_0x6b_80D1B48()
 {
     int v0; // r5
 
@@ -43260,7 +43260,7 @@ int __fastcall sub_80D1BF4(int a1, int a2, int a3, int a4)
 
 
 // 0x80d1c20
-void sub_80D1C20()
+void t3_0x6c_80D1C20()
 {
     int v0; // r5
 
@@ -43693,7 +43693,7 @@ void sub_80D200C()
 
 
 // 0x80d2034
-void sub_80D2034()
+void t3_0x6d_80D2034()
 {
     int v0; // r5
 
@@ -43929,7 +43929,7 @@ int sub_80D2222()
 
 
 // 0x80d2290
-int sub_80D2290()
+int t3_0x6e_80D2290()
 {
     int v0; // r5
 
@@ -44105,7 +44105,7 @@ int __fastcall sub_80D2430(_BYTE *a1, int a2, int a3, int a4)
 
 
 // 0x80d2460
-int sub_80D2460()
+int t3_0x6f_80D2460()
 {
     int v0; // r5
 
@@ -44259,7 +44259,7 @@ int __fastcall sub_80D2596(int a1, int a2, int a3, int a4)
 
 
 // 0x80d25d4
-void sub_80D25D4()
+void t3_0x70_80D25D4()
 {
     int v0; // r5
 
@@ -44748,7 +44748,7 @@ int sub_80D2A68()
 
 
 // 0x80d2a94
-int sub_80D2A94()
+int t3_0x71_80D2A94()
 {
     int v0; // r5
 
@@ -44900,7 +44900,7 @@ signed int sub_80D2BC0()
 
 
 // 0x80d2bdc
-void sub_80D2BDC()
+void t3_0x72_80D2BDC()
 {
     int v0; // r5
 
@@ -45202,7 +45202,7 @@ int __fastcall sub_80D2E94(char a1, int a2, int a3, int a4)
 
 
 // 0x80d2ebc
-int sub_80D2EBC()
+int t3_0x73_80D2EBC()
 {
     int v0; // r5
 
@@ -45456,7 +45456,7 @@ int __fastcall sub_80D30A4(char a1, int a2, int a3, int a4)
 
 
 // 0x80d30d0
-void sub_80D30D0()
+void t3_0x74_80D30D0()
 {
     int v0; // r5
 
@@ -45870,7 +45870,7 @@ void sub_80D3496()
 
 
 // 0x80d34cc
-int sub_80D34CC()
+int t3_0x75_80D34CC()
 {
     int v0; // r5
 
@@ -46223,7 +46223,7 @@ int sub_80D37F4()
 
 
 // 0x80d385c
-int sub_80D385C()
+int t3_0x76_80D385C()
 {
     int v0; // r5
 
@@ -46370,7 +46370,7 @@ int __fastcall sub_80D398E(char a1, int a2, int a3, int a4)
 
 
 // 0x80d39bc
-void sub_80D39BC()
+void t3_0x77_80D39BC()
 {
     int v0; // r5
 
@@ -47098,7 +47098,7 @@ int sub_80D4030()
 
 
 // 0x80d4088
-int sub_80D4088()
+int t3_0x78_80D4088()
 {
     int v0; // r5
 
@@ -47459,7 +47459,7 @@ int __fastcall sub_80D4408(char a1, int a2, int a3, int a4)
 
 
 // 0x80d4440
-void sub_80D4440()
+void t3_0x79_80D4440()
 {
     int v0; // r5
 
@@ -47736,7 +47736,7 @@ signed int sub_80D4674()
 
 
 // 0x80d46b8
-int sub_80D46B8()
+int t3_0x7a_80D46B8()
 {
     int v0; // r5
 
@@ -48031,7 +48031,7 @@ int __fastcall sub_80D49F6(int a1, int a2, int a3, int a4)
 
 
 // 0x80d4a28
-int sub_80D4A28()
+int t3_0x7b_80D4A28()
 {
     int v0; // r5
 
@@ -48127,7 +48127,7 @@ int __fastcall sub_80D4B44(char a1, int a2, int a3, int a4)
 
 
 // 0x80d4b68
-int sub_80D4B68()
+int t3_0x7c_80D4B68()
 {
     int v0; // r5
 
@@ -48278,7 +48278,7 @@ signed int sub_80D4C6C()
 
 
 // 0x80d4c84
-int sub_80D4C84()
+int t3_0x7d_80D4C84()
 {
     int v0; // r5
 
@@ -48609,7 +48609,7 @@ signed int __fastcall sub_80D4FF6(int a1)
 
 
 // 0x80d5028
-void sub_80D5028()
+void t3_0x7e_80D5028()
 {
     int v0; // r5
 
@@ -48733,7 +48733,7 @@ int sub_80D5128()
 
 
 // 0x80d5138
-void sub_80D5138()
+void t3_0x7f_80D5138()
 {
     int v0; // r5
 
@@ -48963,7 +48963,7 @@ int sub_80D5348()
 
 
 // 0x80d535c
-void sub_80D535C()
+void t3_0x80_80D535C()
 {
     int v0; // r5
 
@@ -49184,7 +49184,7 @@ u32 sub_80D5516()
 
 
 // 0x80d5580
-void sub_80D5580()
+void t3_0x81_80D5580()
 {
     int v0; // r5
 
@@ -49512,7 +49512,7 @@ int __fastcall spawnDollThunderObject_80D5890(char a1, int a2, int a3, int a4)
 
 
 // 0x80d58b4
-void sub_80D58B4()
+void t3_0x83_80D58B4()
 {
     int v0; // r5
 
@@ -49735,7 +49735,7 @@ int sub_80D5A9C()
 
 
 // 0x80d5abc
-void sub_80D5ABC()
+void t3_0x84_80D5ABC()
 {
     int v0; // r5
 
@@ -49897,7 +49897,7 @@ int sub_80D5C26()
 
 
 // 0x80d5c48
-void sub_80D5C48()
+void t3_0x85_80D5C48()
 {
     int v0; // r5
 
@@ -50018,7 +50018,7 @@ int __fastcall sub_80D5D34(char a1, int a2, int a3, int a4)
 
 
 // 0x80d5d54
-void sub_80D5D54()
+void t3_0x86_80D5D54()
 {
     int v0; // r5
 
@@ -50200,7 +50200,7 @@ int sub_80D5EDE()
 
 
 // 0x80d5f08
-void sub_80D5F08()
+void t3_0x87_80D5F08()
 {
     int v0; // r5
 
@@ -50509,7 +50509,7 @@ int sub_80D61FC()
 
 
 // 0x80d622c
-void sub_80D622C()
+void t3_0x88_80D622C()
 {
     int v0; // r5
 
@@ -50749,7 +50749,7 @@ void __fastcall sub_80D6544(int a1)
 
 
 // 0x80d655c
-void sub_80D655C()
+void t3_0x89_80D655C()
 {
     int v0; // r5
 
@@ -51029,7 +51029,7 @@ int sub_80D67D2()
 
 
 // 0x80d67ec
-void sub_80D67EC()
+void t3_0x8a_80D67EC()
 {
     int v0; // r5
 
@@ -51135,7 +51135,7 @@ int __fastcall sub_80D68E0(char a1, int a2, int a3, int a4)
 
 
 // 0x80d6924
-int sub_80D6924()
+int t3_0x8b_80D6924()
 {
     int v0; // r5
 
@@ -51257,7 +51257,7 @@ _BYTE *__fastcall sub_80D6A02(char a1, int a2, int a3, int a4)
 
 
 // 0x80d6a20
-void sub_80D6A20()
+void t3_0x8c_80D6A20()
 {
     int v0; // r5
 
@@ -51442,7 +51442,7 @@ void __fastcall sub_80D6BC2(char a1, int a2, int a3, int a4)
 
 
 // 0x80d6bd4
-void sub_80D6BD4()
+void t3_0x8d_80D6BD4()
 {
     int v0; // r5
 
@@ -51608,7 +51608,7 @@ _BYTE *sub_80D6D3E()
 
 
 // 0x80d6d80
-void sub_80D6D80()
+void t3_0x8e_80D6D80()
 {
     int v0; // r5
 
@@ -51749,7 +51749,7 @@ int __fastcall sub_80D6EB0(char a1, int a2, int a3, int a4)
 
 
 // 0x80d6ee0
-void sub_80D6EE0()
+void t3_0x8f_80D6EE0()
 {
     int v0; // r5
 
@@ -51916,7 +51916,7 @@ int __fastcall sub_80D703A(char a1, int a2, int a3, int a4)
 
 
 // 0x80d7068
-void sub_80D7068()
+void t3_0x90_80D7068()
 {
     int v0; // r5
 
@@ -52123,7 +52123,7 @@ int sub_80D71FE()
 
 
 // 0x80d7278
-void sub_80D7278()
+void t3_0x91_80D7278()
 {
     int v0; // r5
 
@@ -52297,7 +52297,7 @@ int __fastcall sub_80D73D6(char a1, int a2, int a3, int a4)
 
 
 // 0x80d7400
-int sub_80D7400()
+int t3_0x92_80D7400()
 {
     int v0; // r5
 
@@ -52431,7 +52431,7 @@ int __fastcall sub_80D75D4(char a1, int a2, int a3, int a4)
 
 
 // 0x80d75fc
-int sub_80D75FC()
+int t3_0x93_80D75FC()
 {
     int v0; // r5
 
@@ -52843,7 +52843,7 @@ int __fastcall sub_80D7A96(int a1, int a2, int a3, int a4)
 
 
 // 0x80d7acc
-void sub_80D7ACC()
+void t3_0x94_80D7ACC()
 {
     int v0; // r5
 
@@ -53163,7 +53163,7 @@ signed int sub_80D7DC0()
 
 
 // 0x80d7de4
-void sub_80D7DE4()
+void t3_0x95_80D7DE4()
 {
     int v0; // r5
 
@@ -53313,7 +53313,7 @@ int __fastcall __noreturn sub_80D7EF6(int a1, int a2)
 
 
 // 0x80d807c
-void sub_80D807C()
+void t3_0x96_80D807C()
 {
     int v0; // r5
 
@@ -53501,7 +53501,7 @@ _BYTE *__fastcall sub_80D8242(char a1, int a2, int a3, int a4)
 
 
 // 0x80d825c
-void sub_80D825C()
+void t3_0x97_80D825C()
 {
     int v0; // r5
 
@@ -53771,7 +53771,7 @@ int __fastcall sub_80D842E(int a1)
 
 
 // 0x80d8444
-int sub_80D8444()
+int t3_0x98_80D8444()
 {
     int v0; // r5
 
@@ -53951,7 +53951,7 @@ int __fastcall sub_80D85F0(char a1, int a2, int a3, int a4)
 
 
 // 0x80d8620
-void sub_80D8620()
+void t3_0x99_80D8620()
 {
     int v0; // r5
 
@@ -54152,7 +54152,7 @@ int __fastcall sub_80D876E(char a1, int a2, int a3, int a4)
 
 
 // 0x80d879c
-void sub_80D879C()
+void t3_0x9a_80D879C()
 {
     int v0; // r5
 
@@ -54591,7 +54591,7 @@ BOOL __fastcall __noreturn sub_80D8C10(int a1, int a2)
 
 
 // 0x80d8c5c
-int sub_80D8C5C()
+int t3_0x9c_80D8C5C()
 {
     int v0; // r5
 
@@ -54972,7 +54972,7 @@ int __fastcall sub_80D8FB8(int result)
 
 
 // 0x80d8fc4
-int sub_80D8FC4()
+int t3_0x9e_80D8FC4()
 {
     int v0; // r5
 
@@ -55135,7 +55135,7 @@ int __fastcall sub_80D9130(char a1, int a2, int a3, int a4)
 
 
 // 0x80d9154
-void sub_80D9154()
+void t3_0x9f_80D9154()
 {
     int v0; // r5
 
@@ -55341,7 +55341,7 @@ signed int __fastcall sub_80D9298(int a1, int a2, int a3)
 
 
 // 0x80d9350
-void sub_80D9350()
+void t3_0xa0_80D9350()
 {
     int v0; // r5
     char v1; // zf
@@ -55552,7 +55552,7 @@ signed int __fastcall sub_80D9532(signed int result)
 
 
 // 0x80d954c
-int sub_80D954C()
+int t3_0xa2_80D954C()
 {
     int v0; // r5
 
@@ -55729,7 +55729,7 @@ signed int sub_80D9690()
 
 
 // 0x80d96a4
-void sub_80D96A4()
+void t3_0xa1_80D96A4()
 {
     int v0; // r5
 
@@ -55879,7 +55879,7 @@ int __fastcall sub_80D981C(int a1, int a2, int a3, int a4)
 
 
 // 0x80d984c
-void sub_80D984C()
+void t3_0xa3_80D984C()
 {
     int v0; // r5
 
@@ -56059,7 +56059,7 @@ int __fastcall sub_80D99EC(char a1, int a2, int a3, int a4)
 
 
 // 0x80d9a50
-void sub_80D9A50()
+void t3_0xa4_80D9A50()
 {
     int v0; // r5
 
@@ -56282,7 +56282,7 @@ int sub_80D9CE4()
 
 
 // 0x80d9d4c
-int sub_80D9D4C()
+int t3_0xa5_80D9D4C()
 {
     int v0; // r5
 
@@ -56554,7 +56554,7 @@ signed int sub_80D9FC2()
 
 
 // 0x80da050
-int sub_80DA050()
+int t3_0xa6_80DA050()
 {
     int v0; // r5
 
@@ -57015,7 +57015,7 @@ int sub_80DA448()
 
 
 // 0x80da470
-void sub_80DA470()
+void t3_0xa7_80DA470()
 {
     int v0; // r5
 
@@ -57163,7 +57163,7 @@ int __fastcall sub_80DA5D2(char a1, int a2, int a3, int a4)
 
 
 // 0x80da5fc
-void sub_80DA5FC()
+void t3_0xa8_80DA5FC()
 {
     int v0; // r5
 
@@ -57366,7 +57366,7 @@ int sub_80DA7EC()
 
 
 // 0x80da80c
-void sub_80DA80C()
+void t3_0xa9_80DA80C()
 {
     int v0; // r5
     char v1; // zf
@@ -57566,7 +57566,7 @@ int __fastcall sub_80DA9FE(int a1)
 
 
 // 0x80daa28
-int sub_80DAA28()
+int t3_0xaa_80DAA28()
 {
     int v0; // r5
 
@@ -57826,7 +57826,7 @@ int __fastcall sub_80DAC0C(int a1, int a2, int a3)
 
 
 // 0x80dace4
-void sub_80DACE4()
+void t3_0xab_80DACE4()
 {
     int v0; // r5
 
@@ -57997,7 +57997,7 @@ signed int sub_80DAE70()
 
 
 // 0x80dae94
-void sub_80DAE94()
+void t3_0xac_80DAE94()
 {
     int v0; // r5
 
@@ -58259,7 +58259,7 @@ void __fastcall sub_80DB0D0(int a1)
 
 
 // 0x80db0e4
-void sub_80DB0E4()
+void t3_0xad_80DB0E4()
 {
     int v0; // r5
 
@@ -58460,7 +58460,7 @@ int __fastcall sub_80DB2C6(char a1, int a2, int a3, int a4)
 
 
 // 0x80db304
-int sub_80DB304()
+int t3_0xae_80DB304()
 {
     int v0; // r5
 
@@ -58623,7 +58623,7 @@ void sub_80DB4CE()
 
 
 // 0x80db570
-int sub_80DB570()
+int t3_0xaf_80DB570()
 {
     int v0; // r5
 
@@ -58750,7 +58750,7 @@ int sub_80DB684()
 
 
 // 0x80db6a4
-void sub_80DB6A4()
+void t3_0xb0_80DB6A4()
 {
     int v0; // r5
 
@@ -58977,7 +58977,7 @@ _BYTE *sub_80DB890()
 
 
 // 0x80db8cc
-int sub_80DB8CC()
+int t3_0xb1_80DB8CC()
 {
     int v0; // r5
 
@@ -59084,7 +59084,7 @@ int __fastcall sub_80DB970(char a1, int a2, int a3, int a4)
 
 
 // 0x80db994
-void sub_80DB994()
+void t3_0xb2_80DB994()
 {
     int v0; // r5
 
@@ -59225,7 +59225,7 @@ int __fastcall sub_80DBB0C(int a1, int a2, int a3, int a4)
 
 
 // 0x80dbb40
-void sub_80DBB40()
+void t3_0xb3_80DBB40()
 {
     int v0; // r5
 
@@ -59398,7 +59398,7 @@ int sub_80DBCBA()
 
 
 // 0x80dbcec
-void sub_80DBCEC()
+void t3_0xb4_80DBCEC()
 {
     int v0; // r5
 
@@ -59580,7 +59580,7 @@ _BYTE *__fastcall sub_80DBEBA(char a1, int a2)
 
 
 // 0x80dbee6
-int sub_80DBEE6()
+int t3_0xb5_80DBEE6()
 {
     int v0; // r5
 
@@ -59769,7 +59769,7 @@ int __fastcall sub_80DC0C0(char a1, int a2, int a3, int a4)
 
 
 // 0x80dc0e8
-int sub_80DC0E8()
+int t3_0xb6_80DC0E8()
 {
     int v0; // r5
 
@@ -59911,7 +59911,7 @@ int __fastcall spawnType3_0xb6_80DC22C(char a1, int a2, int a3, int a4)
 
 
 // 0x80dc260
-int sub_80DC260()
+int t3_0xb7_80DC260()
 {
     int v0; // r5
 
@@ -60081,7 +60081,7 @@ int sub_80DC3B2()
 
 
 // 0x80dc3f8
-void sub_80DC3F8()
+void t3_0xb8_80DC3F8()
 {
     int v0; // r5
 
@@ -60197,7 +60197,7 @@ _BYTE *sub_80DC4DE()
 
 
 // 0x80dc4fc
-void sub_80DC4FC()
+void t3_0xb9_80DC4FC()
 {
     int v0; // r5
 
@@ -60306,7 +60306,7 @@ _BYTE *sub_80DC5DA()
 
 
 // 0x80dc5f8
-void sub_80DC5F8()
+void t3_0xba_80DC5F8()
 {
     int v0; // r5
 
@@ -60397,7 +60397,7 @@ int sub_80DC6D2()
 
 
 // 0x80dc70c
-void sub_80DC70C()
+void t3_0xbb_80DC70C()
 {
     int v0; // r5
 
@@ -60811,7 +60811,7 @@ int __fastcall sub_80DCAFA(char a1)
 
 
 // 0x80dcb1c
-void sub_80DCB1C()
+void t3_0xbc_80DCB1C()
 {
     int v0; // r5
 
@@ -60972,7 +60972,7 @@ _BYTE *sub_80DCC96()
 
 
 // 0x80dccd4
-void sub_80DCCD4()
+void t3_0xbd_80DCCD4()
 {
     int v0; // r5
 
@@ -61133,7 +61133,7 @@ void sub_80DCE18()
 
 
 // 0x80dce38
-void sub_80DCE38()
+void t3_0xbe_80DCE38()
 {
     int v0; // r5
 
@@ -61214,7 +61214,7 @@ int __fastcall sub_80DCEC6(char a1, int a2, int a3, int a4)
 
 
 // 0x80dcef4
-void sub_80DCEF4()
+void t3_0xbf_80DCEF4()
 {
     int v0; // r5
 
@@ -61377,7 +61377,7 @@ int sub_80DD062()
 
 
 // 0x80dd0ac
-void sub_80DD0AC()
+void t3_0xc0_80DD0AC()
 {
     int v0; // r5
 
@@ -61648,7 +61648,7 @@ BOOL sub_80DD322()
 
 
 // 0x80dd34c
-void sub_80DD34C()
+void t3_0xc1_80DD34C()
 {
     int v0; // r5
 
@@ -62019,7 +62019,7 @@ int sub_80DD738()
 
 
 // 0x80dd764
-int sub_80DD764()
+int t3_0xc2_80DD764()
 {
     int v0; // r5
 
@@ -62216,7 +62216,7 @@ _BYTE *__fastcall sub_80DD930(char a1, int a2, int a3, int a4)
 
 
 // 0x80dd940
-void sub_80DD940()
+void t3_0xc3_80DD940()
 {
     int v0; // r5
 
@@ -62341,7 +62341,7 @@ int __fastcall sub_80DDA5A(char a1, int a2, int a3, int a4)
 
 
 // 0x80dda84
-void sub_80DDA84()
+void t3_0xc4_80DDA84()
 {
     int v0; // r5
 
@@ -62492,7 +62492,7 @@ int sub_80DDBDE()
 
 
 // 0x80ddc10
-int sub_80DDC10()
+int t3_0xc5_80DDC10()
 {
     int v0; // r5
 
@@ -62657,7 +62657,7 @@ int __fastcall sub_80DDDCC(char a1, int a2, int a3, int a4)
 
 
 // 0x80dddf0
-void sub_80DDDF0()
+void t3_0xc6_80DDDF0()
 {
     int v0; // r5
 
@@ -62879,7 +62879,7 @@ int sub_80DDFDE()
 
 
 // 0x80de000
-void sub_80DE000()
+void t3_0xc7_80DE000()
 {
     int v0; // r5
 
@@ -62996,7 +62996,7 @@ int __fastcall sub_80DE112(int a1, int a2, int a3, int a4)
 
 
 // 0x80de13c
-void sub_80DE13C()
+void t3_0xc8_80DE13C()
 {
     int v0; // r5
 
@@ -63261,7 +63261,7 @@ int sub_80DE3B0()
 
 
 // 0x80de404
-void sub_80DE404()
+void t3_0xc9_80DE404()
 {
     int v0; // r5
 
@@ -63614,7 +63614,7 @@ char *sub_80DE7C8()
 
 
 // 0x80de7f4
-void sub_80DE7F4()
+void t3_0xca_80DE7F4()
 {
     int v0; // r5
 
@@ -64085,7 +64085,7 @@ int sub_80DED80()
 
 
 // 0x80dee60
-void sub_80DEE60()
+void t3_0xcc_80DEE60()
 {
     int v0; // r5
 
@@ -64280,7 +64280,7 @@ int sub_80DF016()
 
 
 // 0x80df0a4
-void sub_80DF0A4()
+void t3_0xcd_80DF0A4()
 {
     int v0; // r5
 
@@ -64357,7 +64357,7 @@ void __noreturn sub_80DF132()
 
 
 // 0x80df188
-void sub_80DF188()
+void t3_0xce_80DF188()
 {
     int v0; // r5
 
@@ -64510,7 +64510,7 @@ void __fastcall sub_80DF2A0(int a1)
 
 
 // 0x80df328
-void sub_80DF328()
+void t3_0xcf_80DF328()
 {
     int v0; // r5
 
@@ -64751,7 +64751,7 @@ int __fastcall sub_80DF4D4(char a1, int a2, int a3, int a4)
 
 
 // 0x80df4fc
-void sub_80DF4FC()
+void t3_0xd0_80DF4FC()
 {
     int v0; // r5
 
@@ -65260,7 +65260,7 @@ void sub_80DF8D2()
 
 
 // 0x80df90c
-void sub_80DF90C()
+void t3_0xd1_80DF90C()
 {
     int v0; // r5
 
@@ -65509,7 +65509,7 @@ int sub_80DFBE4()
 
 
 // 0x80dfc38
-int sub_80DFC38()
+int t3_0xd2_80DFC38()
 {
     int v0; // r5
 
@@ -65721,7 +65721,7 @@ int __fastcall sub_80DFE28(int result)
 
 
 // 0x80dfe40
-void sub_80DFE40()
+void t3_0xd3_80DFE40()
 {
     int v0; // r5
 
@@ -65871,7 +65871,7 @@ _BYTE *__fastcall sub_80DFFA2(char a1, int a2, int a3, int a4)
 
 
 // 0x80dffb8
-void sub_80DFFB8()
+void t3_0xd4_80DFFB8()
 {
     int v0; // r5
 
@@ -66278,7 +66278,7 @@ int sub_80E0616()
 
 
 // 0x80e0638
-int sub_80E0638()
+int t4_0x2_80E0638()
 {
     int v0; // r5
 
@@ -66375,7 +66375,7 @@ Battle *__fastcall sub_80E06F8(int a1, int a2, int a3, int a4)
 
 
 // 0x80e0710
-int sub_80E0710()
+int t4_0x3_80E0710()
 {
     int v0; // r5
 
@@ -66469,7 +66469,7 @@ int __fastcall sub_80E07E0(char a1, int a2, int a3, int a4)
 
 
 // 0x80e0844
-int sub_80E0844()
+int t4_0x4_80E0844()
 {
     int v0; // r5
 
@@ -66540,7 +66540,7 @@ void nullsub_99()
 
 
 // 0x80e08fc
-int sub_80E08FC()
+int t4_0x6_80E08FC()
 {
     int v0; // r5
 
@@ -66665,7 +66665,7 @@ int __fastcall sub_80E0A0A(int result)
 
 
 // 0x80e0ad4
-void sub_80E0AD4()
+void t4_0x7_80E0AD4()
 {
     int v0; // r5
     char v1; // zf
@@ -67155,7 +67155,7 @@ int sub_80E0F5E()
 
 
 // 0x80e0fa0
-int sub_80E0FA0()
+int t4_0x9_80E0FA0()
 {
     int v0; // r5
 
@@ -67267,7 +67267,7 @@ u32 __fastcall sub_80E1084(char a1, int a2, int a3, int a4)
 
 
 // 0x80e10a4
-int sub_80E10A4()
+int t4_0xa_80E10A4()
 {
     int v0; // r5
 
@@ -67385,7 +67385,7 @@ int __fastcall sub_80E11E0(int a1, int a2, int a3, int a4)
 
 
 // 0x80e11fc
-int sub_80E11FC()
+int t4_0xc_80E11FC()
 {
     int v0; // r5
 
@@ -67685,7 +67685,7 @@ int __fastcall sub_80E1502(int a1)
 
 
 // 0x80e1520
-int sub_80E1520()
+int t4_0xf_80E1520()
 {
     int v0; // r5
 
@@ -68013,7 +68013,7 @@ int __fastcall sub_80E17AC(int a1, int a2, int a3)
 
 
 // 0x80e17e8
-int sub_80E17E8()
+int t4_0x10_80E17E8()
 {
     int v0; // r5
 
@@ -68248,7 +68248,7 @@ int __fastcall sub_80E199A(__int16 a1)
 
 
 // 0x80e19bc
-int sub_80E19BC()
+int t4_0x11_80E19BC()
 {
     int v0; // r5
 
@@ -68369,7 +68369,7 @@ int __fastcall sub_80E1A86(int result)
 
 
 // 0x80e1a90
-void sub_80E1A90()
+void t4_0x12_80E1A90()
 {
     int v0; // r5
 
@@ -68469,7 +68469,7 @@ int __fastcall sub_80E1B3C(int result)
 
 
 // 0x80e1b48
-int sub_80E1B48()
+int t4_0x13_80E1B48()
 {
     int v0; // r5
 
@@ -68655,7 +68655,7 @@ Battle *__fastcall sub_80E1CD6(int a1, int a2, int a3, int a4)
 
 
 // 0x80e1cf8
-int sub_80E1CF8()
+int t4_0x14_80E1CF8()
 {
     int v0; // r5
 
@@ -68712,7 +68712,7 @@ Battle *__fastcall sub_80E1D7A(int a1, int a2, int a3, int a4)
 
 
 // 0x80e1d88
-void sub_80E1D88()
+void t4_0x15_80E1D88()
 {
     int v0; // r5
 
@@ -68814,7 +68814,7 @@ int __fastcall sub_80E1E3E(int result)
 
 
 // 0x80e1e4c
-int sub_80E1E4C()
+int t4_0x16_80E1E4C()
 {
     int v0; // r5
 
@@ -69120,7 +69120,7 @@ Battle *__fastcall sub_80E2068(char a1, int a2, int a3, int a4)
 
 
 // 0x80e2080
-void sub_80E2080()
+void t4_0x19_80E2080()
 {
     int v0; // r5
 
@@ -69236,7 +69236,7 @@ int __fastcall sub_80E21AC(char a1, int a2, int a3, int a4)
 
 
 // 0x80e21d8
-int sub_80E21D8()
+int t4_0x1a_80E21D8()
 {
     int v0; // r5
 
@@ -69316,7 +69316,7 @@ int __fastcall sub_80E2244(int a1, int a2, int a3, int a4)
 
 
 // 0x80e225c
-void sub_80E225C()
+void t4_0x1b_80E225C()
 {
     int v0; // r5
 
@@ -69434,7 +69434,7 @@ int __fastcall sub_80E2388(int a1, int a2, int a3, int a4)
 
 
 // 0x80e23a4
-int sub_80E23A4()
+int t4_0x1c_80E23A4()
 {
     int v0; // r5
 
@@ -69549,7 +69549,7 @@ int __fastcall sub_80E24B8(char a1, int a2, int a3, int a4)
 
 
 // 0x80e24e4
-int sub_80E24E4()
+int t4_0x1d_80E24E4()
 {
     int v0; // r5
 
@@ -69627,7 +69627,7 @@ int __fastcall sub_80E2566(char a1, int a2, int a3, int a4)
 
 
 // 0x80e25d0
-int sub_80E25D0()
+int t4_0x1e_80E25D0()
 {
     int v0; // r5
 
@@ -69822,7 +69822,7 @@ Battle *__fastcall sub_80E2712(int a1, int a2, int a3, int a4)
 
 
 // 0x80e28a8
-int sub_80E28A8()
+int t4_0x1f_80E28A8()
 {
     int v0; // r5
 
@@ -70127,7 +70127,7 @@ int __fastcall sub_80E2ACA(char a1, int a2, int a3, int a4)
 
 
 // 0x80e2ae8
-int sub_80E2AE8()
+int t4_0x20_80E2AE8()
 {
     int v0; // r5
 
@@ -70205,7 +70205,7 @@ int __fastcall sub_80E2B5A(char a1, int a2, int a3, int a4)
 
 
 // 0x80e2b7c
-int sub_80E2B7C()
+int t4_0x21_80E2B7C()
 {
     int v0; // r5
 
@@ -70343,7 +70343,7 @@ int __fastcall sub_80E2C80(char a1, int a2, int a3, int a4)
 
 
 // 0x80e2ca4
-int sub_80E2CA4()
+int t4_0x22_80E2CA4()
 {
     int v0; // r5
 
@@ -70554,7 +70554,7 @@ int sub_80E2DFA() { // could not decompile
 }
 
 // 0x80e2e34
-int sub_80E2E34()
+int t4_0x23_80E2E34()
 {
     int v0; // r5
 
@@ -70682,7 +70682,7 @@ int __fastcall sub_80E2F24(char a1, int a2, int a3, int a4)
 
 
 // 0x80e2f56
-int sub_80E2F56()
+int t4_0x24_80E2F56()
 {
     int v0; // r5
 
@@ -70829,7 +70829,7 @@ int __fastcall sub_80E3038(int a1, int a2, int a3, int a4)
 
 
 // 0x80e309c
-int sub_80E309C()
+int t4_0x25_80E309C()
 {
     int v0; // r5
 
@@ -70917,7 +70917,7 @@ int __fastcall sub_80E3128(char a1, int a2, int a3, int a4)
 
 
 // 0x80e3150
-void sub_80E3150()
+void t4_0x26_80E3150()
 {
     int v0; // r5
 
@@ -70987,7 +70987,7 @@ int __fastcall sub_80E31C0(int a1, int a2, int a3, int a4)
 
 
 // 0x80e31d8
-int sub_80E31D8()
+int t4_0x27_80E31D8()
 {
     int v0; // r5
 
@@ -71090,7 +71090,7 @@ void __noreturn sub_80E3290()
 
 
 // 0x80e32b8
-int sub_80E32B8()
+int t4_0x28_80E32B8()
 {
     int v0; // r5
 
@@ -71268,7 +71268,7 @@ int __fastcall sub_80E3428(int result, int a2)
 
 
 // 0x80e342c
-int sub_80E342C()
+int t4_0x29_80E342C()
 {
     int v0; // r5
 
@@ -71459,7 +71459,7 @@ int sub_80E359E()
 
 
 // 0x80e35a4
-int sub_80E35A4()
+int t4_0x2b_80E35A4()
 {
     int v0; // r5
 
@@ -71601,7 +71601,7 @@ int __noreturn sub_80E362C()
 
 
 // 0x80e3728
-int sub_80E3728()
+int t4_0x2c_80E3728()
 {
     int v0; // r5
 
@@ -71688,7 +71688,7 @@ int __fastcall sub_80E37D2(char a1, int a2, int a3, int a4)
 
 
 // 0x80e37f4
-void sub_80E37F4()
+void t4_0x2d_80E37F4()
 {
     int v0; // r5
 
@@ -71909,7 +71909,7 @@ int __fastcall sub_80E3976(char a1, int a2, int a3, int a4)
 
 
 // 0x80e39a0
-void sub_80E39A0()
+void t4_0x2e_80E39A0()
 {
     int v0; // r5
 
@@ -72022,7 +72022,7 @@ int __fastcall sub_80E3A92(char a1, int a2, int a3, int a4)
 
 
 // 0x80e3ab8
-int sub_80E3AB8()
+int t4_0x2f_80E3AB8()
 {
     int v0; // r5
 
@@ -72108,7 +72108,7 @@ int __fastcall sub_80E3B50(int a1, int a2, int a3, int a4)
 
 
 // 0x80e3b70
-void sub_80E3B70()
+void t4_0x30_80E3B70()
 {
     int v0; // r5
 
@@ -72308,7 +72308,7 @@ void __fastcall __noreturn sub_80E3D1A(int a1)
 
 
 // 0x80e3d68
-void sub_80E3D68()
+void t4_0x31_80E3D68()
 {
     int v0; // r5
 
@@ -72599,7 +72599,7 @@ int __fastcall sub_80E3FC4(int result)
 
 
 // 0x80e3fd0
-void sub_80E3FD0()
+void t4_0x32_80E3FD0()
 {
     int v0; // r5
 
@@ -72714,7 +72714,7 @@ int __fastcall sub_80E40C2(int a1, int a2, int a3, int a4)
 
 
 // 0x80e40ec
-int sub_80E40EC()
+int t4_0x33_80E40EC()
 {
     int v0; // r5
 
@@ -72799,7 +72799,7 @@ int __fastcall sub_80E4164(char a1, int a2, int a3, int a4)
 
 
 // 0x80e4188
-int sub_80E4188()
+int t4_0x34_80E4188()
 {
     int v0; // r5
 
@@ -72946,7 +72946,7 @@ void __fastcall __noreturn sub_80E42AA(int a1, int a2, int a3)
 
 
 // 0x80e4344
-int sub_80E4344()
+int t4_0x35_80E4344()
 {
     int v0; // r5
 
@@ -73025,7 +73025,7 @@ Battle *__fastcall sub_80E43F6(int a1, int a2, int a3, int a4)
 
 
 // 0x80e440c
-int sub_80E440C()
+int t4_0x36_80E440C()
 {
     int v0; // r5
 
@@ -73299,7 +73299,7 @@ signed int __fastcall sub_80E4612(int a1)
 
 
 // 0x80e4634
-int sub_80E4634()
+int t4_0x37_80E4634()
 {
     int v0; // r5
 
@@ -73386,7 +73386,7 @@ int __fastcall sub_80E46B6(char a1, int a2, int a3, int a4)
 
 
 // 0x80e46d8
-int sub_80E46D8()
+int t4_0x38_80E46D8()
 {
     int v0; // r5
 
@@ -73466,7 +73466,7 @@ int *__fastcall sub_80E47A4(int a1, int a2, int a3, int a4)
 
 
 // 0x80e47b4
-int sub_80E47B4()
+int t4_0x39_80E47B4()
 {
     int v0; // r5
 
@@ -73539,7 +73539,7 @@ int __fastcall sub_80E4824(char a1, int a2, int a3, int a4)
 
 
 // 0x80e4848
-int sub_80E4848()
+int t4_0x3a_80E4848()
 {
     int v0; // r5
 
@@ -73613,7 +73613,7 @@ int __fastcall sub_80E48F8(int a1, int a2, int a3, int a4)
 
 
 // 0x80e4910
-int sub_80E4910()
+int t4_0x3b_80E4910()
 {
     int v0; // r5
 
@@ -73723,7 +73723,7 @@ char *__fastcall sub_80E49C4(int a1)
 
 
 // 0x80e4a1c
-void sub_80E4A1C()
+void t4_0x3c_80E4A1C()
 {
     int v0; // r5
 
@@ -74032,7 +74032,7 @@ int __fastcall sub_80E4C96(int a1, int a2, int a3, int a4)
 
 
 // 0x80e4cb8
-void sub_80E4CB8()
+void t4_0x3e_80E4CB8()
 {
     int v0; // r5
 
@@ -74139,7 +74139,7 @@ int __fastcall sub_80E4DA2(int result)
 
 
 // 0x80e4db0
-int sub_80E4DB0()
+int t4_0x3f_80E4DB0()
 {
     int v0; // r5
 
@@ -74376,7 +74376,7 @@ void __fastcall __noreturn sub_80E5068(int a1, int a2)
 
 
 // 0x80e50c4
-int sub_80E50C4()
+int t4_0x40_80E50C4()
 {
     int v0; // r5
 
@@ -74573,7 +74573,7 @@ LABEL_7:
 
 
 // 0x80e5244
-int sub_80E5244()
+int t4_0x41_80E5244()
 {
     int v0; // r5
 
@@ -74841,7 +74841,7 @@ int __fastcall sub_80E544C(int result)
 
 
 // 0x80e5470
-void sub_80E5470()
+void t4_0x42_80E5470()
 {
     int v0; // r5
 
@@ -74991,7 +74991,7 @@ int __fastcall sub_80E558A(char a1, int a2, int a3, int a4)
 
 
 // 0x80e55c0
-int sub_80E55C0()
+int t4_0x43_80E55C0()
 {
     int v0; // r5
 
@@ -75155,7 +75155,7 @@ void sub_80E5700()
 
 
 // 0x80e5710
-void sub_80E5710()
+void t4_0x44_80E5710()
 {
     int v0; // r5
 
@@ -75353,7 +75353,7 @@ int __fastcall sub_80E5910(char a1, int a2)
 
 
 // 0x80e5944
-int sub_80E5944()
+int t4_0x45_80E5944()
 {
     int v0; // r5
 
@@ -75439,7 +75439,7 @@ int __fastcall sub_80E59C6(char a1, int a2, int a3, int a4)
 
 
 // 0x80e59e8
-int sub_80E59E8()
+int t4_0x46_80E59E8()
 {
     int v0; // r5
 
@@ -75743,7 +75743,7 @@ int sub_80E5C0C()
 
 
 // 0x80e5c2c
-int sub_80E5C2C()
+int t4_0x48_80E5C2C()
 {
     int v0; // r5
 
@@ -75851,7 +75851,7 @@ int __fastcall sub_80E5D3E(int result)
 
 
 // 0x80e5d44
-void sub_80E5D44()
+void t4_0x49_80E5D44()
 {
     int v0; // r5
 
@@ -75935,7 +75935,7 @@ Battle *__fastcall sub_80E5DDC(int a1, int a2, int a3, int a4)
 
 
 // 0x80e5e00
-int sub_80E5E00()
+int t4_0x4a_80E5E00()
 {
     int v0; // r5
 
@@ -76027,7 +76027,7 @@ int __fastcall sub_80E5EA8(char a1, int a2, int a3, int a4)
 
 
 // 0x80e5ecc
-int sub_80E5ECC()
+int t4_0x4b_80E5ECC()
 {
     int v0; // r5
 
@@ -76119,7 +76119,7 @@ int __fastcall sub_80E5F78(char a1, int a2, int a3, int a4)
 
 
 // 0x80e5f9c
-int sub_80E5F9C()
+int t4_0x4c_80E5F9C()
 {
     int v0; // r5
 
@@ -76128,7 +76128,7 @@ int sub_80E5F9C()
 
 
 // 0x80e5fbc
-int sub_80E5FBC()
+int t4_0x4d_80E5FBC()
 {
     int v0; // r5
 
@@ -76189,7 +76189,7 @@ int sub_80E6000()
 
 
 // 0x80e6088
-int sub_80E6088()
+int t4_0x4e_80E6088()
 {
     int v0; // r5
 
@@ -76391,7 +76391,7 @@ void __fastcall __noreturn sub_80E621C(unsigned int a1)
 
 
 // 0x80e6254
-int sub_80E6254()
+int t4_0x4f_80E6254()
 {
     int v0; // r5
 
@@ -76576,7 +76576,7 @@ BOOL __fastcall __noreturn sub_80E6458(int a1, int a2)
 
 
 // 0x80e6480
-int sub_80E6480()
+int t4_0x50_80E6480()
 {
     int v0; // r5
 
@@ -76694,7 +76694,7 @@ int sub_80E650A()
 
 
 // 0x80e655c
-void sub_80E655C()
+void t4_0x51_80E655C()
 {
     int v0; // r5
 
@@ -76901,7 +76901,7 @@ int __fastcall sub_80E6720(char a1, int a2, int a3, int a4)
 
 
 // 0x80e6758
-int sub_80E6758()
+int t4_0x52_80E6758()
 {
     int v0; // r5
 
@@ -76987,7 +76987,7 @@ int __fastcall sub_80E67E6(char a1, int a2, int a3, int a4)
 
 
 // 0x80e680c
-int sub_80E680C()
+int t4_0x53_80E680C()
 {
     int v0; // r5
 
@@ -77060,7 +77060,7 @@ int __fastcall sub_80E6878(char a1, int a2, int a3, int a4)
 
 
 // 0x80e689c
-int sub_80E689C()
+int t4_0x54_80E689C()
 {
     int v0; // r5
 
@@ -77219,7 +77219,7 @@ void sub_80E6A7C()
 
 
 // 0x80e6a90
-int sub_80E6A90()
+int t4_0x55_80E6A90()
 {
     int v0; // r5
 
@@ -77393,7 +77393,7 @@ void sub_80E6BA6()
 
 
 // 0x80e6bdc
-int sub_80E6BDC()
+int t4_0x56_80E6BDC()
 {
     int v0; // r5
 
@@ -77528,7 +77528,7 @@ void __fastcall sub_80E6DFC(int result, int a2, int a3)
 
 
 // 0x80e6e44
-int sub_80E6E44()
+int t4_0x57_80E6E44()
 {
     int v0; // r5
 
@@ -77714,7 +77714,7 @@ LABEL_7:
 
 
 // 0x80e6f88
-int sub_80E6F88()
+int t4_0x58_80E6F88()
 {
     int v0; // r5
 
@@ -77806,7 +77806,7 @@ int __fastcall sub_80E7008(char a1, int a2, int a3, int a4)
 
 
 // 0x80e702c
-int sub_80E702C()
+int t4_0x59_80E702C()
 {
     int v0; // r5
 
@@ -77892,7 +77892,7 @@ int __fastcall sub_80E70A6(char a1, int a2, int a3, int a4)
 
 
 // 0x80e70c8
-void sub_80E70C8()
+void t4_0x5a_80E70C8()
 {
     int v0; // r5
 
@@ -78029,7 +78029,7 @@ int __fastcall sub_80E71B8(int result)
 
 
 // 0x80e71c4
-int sub_80E71C4()
+int t4_0x5b_80E71C4()
 {
     int v0; // r5
 
@@ -78115,7 +78115,7 @@ int __fastcall sub_80E723E(char a1, int a2, int a3, int a4)
 
 
 // 0x80e7260
-int sub_80E7260()
+int t4_0x5c_80E7260()
 {
     int v0; // r5
 
@@ -78301,7 +78301,7 @@ int __fastcall __noreturn sub_80E7486(int a1, int a2, int a3)
 
 
 // 0x80e74d4
-int sub_80E74D4()
+int t4_0x5d_80E74D4()
 {
     int v0; // r5
 
@@ -78385,7 +78385,7 @@ int __fastcall sub_80E7546(char a1, int a2, int a3, int a4)
 
 
 // 0x80e7568
-int sub_80E7568()
+int t4_0x5e_80E7568()
 {
     int v0; // r5
 
@@ -78453,7 +78453,7 @@ int __fastcall sub_80E7600(char a1, int a2, int a3, int a4)
 
 
 // 0x80e7624
-int sub_80E7624()
+int t4_0x5f_80E7624()
 {
     int v0; // r5
 
@@ -78556,7 +78556,7 @@ int __fastcall sub_80E76D4(char a1, int a2, int a3, int a4)
 
 
 // 0x80e76f8
-int sub_80E76F8()
+int t4_0x60_80E76F8()
 {
     int v0; // r5
 
@@ -78618,7 +78618,7 @@ Battle *__fastcall sub_80E7774(int a1, int a2, int a3, int a4)
 
 
 // 0x80e7788
-void sub_80E7788()
+void t4_0x61_80E7788()
 {
     int v0; // r5
 
@@ -78744,7 +78744,7 @@ int __fastcall sub_80E78AE(int result)
 
 
 // 0x80e78bc
-void sub_80E78BC()
+void t4_0x62_80E78BC()
 {
     int v0; // r5
 
@@ -78824,7 +78824,7 @@ int __fastcall sub_80E7942(char a1, int a2, int a3, int a4)
 
 
 // 0x80e795c
-void sub_80E795C()
+void t4_0x63_80E795C()
 {
     int v0; // r5
 
@@ -78992,7 +78992,7 @@ int sub_80E7AB0()
 
 
 // 0x80e7acc
-void sub_80E7ACC()
+void t4_0x64_80E7ACC()
 {
     int v0; // r5
 
@@ -79130,7 +79130,7 @@ int __fastcall sub_80E7BF0(int result)
 
 
 // 0x80e7bfc
-int sub_80E7BFC()
+int t4_0x65_80E7BFC()
 {
     int v0; // r5
 
@@ -79295,7 +79295,7 @@ int __fastcall sub_80E7DA4(int *a1)
 
 
 // 0x80e7dc4
-int sub_80E7DC4()
+int t4_0x67_80E7DC4()
 {
     int v0; // r5
 
@@ -79467,7 +79467,7 @@ int __fastcall sub_80E7F16(char a1, int a2, int a3, int a4)
 
 
 // 0x80e7f38
-int sub_80E7F38()
+int t4_0x69_80E7F38()
 {
     int v0; // r5
 
@@ -79555,7 +79555,7 @@ int __fastcall sub_80E7FBA(char a1, int a2, int a3, int a4)
 
 
 // 0x80e7fdc
-int sub_80E7FDC()
+int t4_0x6a_80E7FDC()
 {
     int v0; // r5
 
@@ -79641,7 +79641,7 @@ int __fastcall sub_80E8058(char a1, int a2, int a3, int a4)
 
 
 // 0x80e807c
-int sub_80E807C()
+int t4_0x6b_80E807C()
 {
     int v0; // r5
 
@@ -79716,7 +79716,7 @@ Battle *__fastcall sub_80E8124(int a1, int a2, int a3, int a4)
 
 
 // 0x80e8138
-int sub_80E8138()
+int t4_0x6c_80E8138()
 {
     int v0; // r5
 
@@ -79802,7 +79802,7 @@ int __fastcall sub_80E81B4(char a1, int a2, int a3, int a4)
 
 
 // 0x80e81d8
-int sub_80E81D8()
+int t4_0x6d_80E81D8()
 {
     int v0; // r5
 
@@ -79877,7 +79877,7 @@ int __fastcall sub_80E8244(char a1, int a2, int a3, int a4)
 
 
 // 0x80e8268
-int sub_80E8268()
+int t4_0x6e_80E8268()
 {
     int v0; // r5
 
@@ -80051,7 +80051,7 @@ int __fastcall sub_80E8396(int a1, int a2, int a3, int a4)
 
 
 // 0x80e83b8
-int sub_80E83B8()
+int t4_0x6f_80E83B8()
 {
     int v0; // r5
 
@@ -80212,7 +80212,7 @@ signed int __fastcall __noreturn sub_80E84D0(unsigned __int8 *a1)
 
 
 // 0x80e857c
-int sub_80E857C()
+int t4_0x70_80E857C()
 {
     int v0; // r5
 
@@ -80340,7 +80340,7 @@ int sub_80E8656()
 
 
 // 0x80e8688
-void sub_80E8688()
+void t4_0x71_80E8688()
 {
     int v0; // r5
 
@@ -80458,7 +80458,7 @@ int __fastcall sub_80E8788(int result)
 
 
 // 0x80e8794
-void sub_80E8794()
+void t4_0x72_80E8794()
 {
     int v0; // r5
 
@@ -80578,7 +80578,7 @@ int __fastcall sub_80E8894(int result)
 
 
 // 0x80e88a0
-int sub_80E88A0()
+int t4_0x73_80E88A0()
 {
     int v0; // r5
 
@@ -80663,7 +80663,7 @@ int __fastcall sub_80E8912(int a1, int a2, int a3, int a4)
 
 
 // 0x80e8938
-void sub_80E8938()
+void t4_0x74_80E8938()
 {
     int v0; // r5
 
@@ -80883,7 +80883,7 @@ int __fastcall spawnSunMoonObject_80E8ADC(char a1, int a2, int a3, int a4)
 
 
 // 0x80e8b00
-int sub_80E8B00()
+int t4_0x76_80E8B00()
 {
     int v0; // r5
 
@@ -81145,7 +81145,7 @@ int __fastcall __noreturn sub_80E8D92(int a1, int a2, int a3, int a4)
 
 
 // 0x80e8df0
-int sub_80E8DF0()
+int t4_0x77_80E8DF0()
 {
     int v0; // r5
 
@@ -81277,7 +81277,7 @@ int __fastcall sub_80E8EA0(int a1, int a2, int a3, int a4)
 
 
 // 0x80e8ee0
-int sub_80E8EE0()
+int t4_0x78_80E8EE0()
 {
     int v0; // r5
 
@@ -81372,7 +81372,7 @@ signed int __fastcall sub_80E8FC8(int a1)
 
 
 // 0x80e8fe0
-int sub_80E8FE0()
+int t4_0x79_80E8FE0()
 {
     int v0; // r5
 
@@ -81539,7 +81539,7 @@ int __fastcall sub_80E90FE(char a1, int a2, int a3, int a4)
 
 
 // 0x80e9120
-int sub_80E9120()
+int t4_0x7c_80E9120()
 {
     int v0; // r5
 
@@ -81626,7 +81626,7 @@ int __fastcall sub_80E91B8(char a1, int a2, int a3, int a4)
 
 
 // 0x80e91e4
-int sub_80E91E4()
+int t4_0x7e_80E91E4()
 {
     int v0; // r5
 
@@ -81777,7 +81777,7 @@ int __fastcall sub_80E92EE(char a1, int a2, int a3, int a4)
 
 
 // 0x80e9310
-int sub_80E9310()
+int t4_0x7f_80E9310()
 {
     int v0; // r5
 
@@ -81973,7 +81973,7 @@ int __fastcall sub_80E943E(char a1, int a2, int a3, int a4)
 
 
 // 0x80e9460
-int sub_80E9460()
+int t4_0x80_80E9460()
 {
     int v0; // r5
 
@@ -82132,7 +82132,7 @@ void nullsub_12()
 
 
 // 0x80e9570
-int sub_80E9570()
+int t4_0x84_80E9570()
 {
     int v0; // r5
 
@@ -82406,7 +82406,7 @@ int __fastcall sub_80E97BE(int a1, char a2)
 
 
 // 0x80e97f0
-int sub_80E97F0()
+int t4_0x87_80E97F0()
 {
     int v0; // r5
 
@@ -82527,7 +82527,7 @@ int __fastcall sub_80E996E(int a1, int a2, int a3, int a4)
 
 
 // 0x80e9994
-int sub_80E9994()
+int t4_0x88_80E9994()
 {
     int v0; // r5
 
@@ -82689,7 +82689,7 @@ LABEL_8:
 
 
 // 0x80e9af0
-void sub_80E9AF0()
+void t4_0x89_80E9AF0()
 {
     int v0; // r5
 
@@ -82812,7 +82812,7 @@ int sub_80E9C06()
 
 
 // 0x80e9c88
-int sub_80E9C88()
+int t4_0x8a_80E9C88()
 {
     int v0; // r5
 
@@ -82991,7 +82991,7 @@ LABEL_14:
 
 
 // 0x80e9df0
-int sub_80E9DF0()
+int t4_0x8b_80E9DF0()
 {
     int v0; // r5
 
@@ -83229,7 +83229,7 @@ void sub_80E9FBC()
 
 
 // 0x80ea010
-int sub_80EA010()
+int t4_0x8c_80EA010()
 {
     int v0; // r5
 
@@ -83402,7 +83402,7 @@ int __usercall sub_80EA11C@<R0>(Battle *p1@<R5>, void *p2@<R7>, char a1@<R0>, in
 
 
 // 0x80ea14c
-void sub_80EA14C()
+void t4_0x8d_80EA14C()
 {
     int v0; // r5
 
@@ -83480,7 +83480,7 @@ int sub_80EA1BC()
 
 
 // 0x80ea258
-int sub_80EA258()
+int t4_0x8f_80EA258()
 {
     int v0; // r5
 
@@ -83593,7 +83593,7 @@ signed int sub_80EA31E()
 
 
 // 0x80ea364
-int sub_80EA364()
+int t4_0x90_80EA364()
 {
     int v0; // r5
 

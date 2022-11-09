@@ -1,7 +1,7 @@
 
-	thumb_func_start sub_80B81EC
+	thumb_func_start t1_0x0_80B81EC
 // some sort of generic function for enemies?
-sub_80B81EC:
+t1_0x0_80B81EC:
 	push {r4,lr}
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	ldr r1, off_80B8200 // =off_80B8204 
@@ -16,10 +16,10 @@ off_80B8200: .word off_80B8204
 off_80B8204: .word sub_8108F50+1
 	.word sub_80F2330+1
 	.word playerObject_main_80EA460+1
-	thumb_func_end sub_80B81EC
+	thumb_func_end t1_0x0_80B81EC
 
-	thumb_func_start sub_80B8210
-sub_80B8210:
+	thumb_func_start t1_0x1_80B8210
+t1_0x1_80B8210:
 	push {lr}
 	ldr r1, off_80B822C // =off_80B8220 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -32,7 +32,7 @@ off_80B8220: .word sub_80B8230+1
 	.word sub_80B829C+1
 	.word sub_80B843C+1
 off_80B822C: .word off_80B8220
-	thumb_func_end sub_80B8210
+	thumb_func_end t1_0x1_80B8210
 
 	thumb_local_start
 sub_80B8230:
@@ -519,8 +519,8 @@ dword_80B85D8: .word 0x705FF01
 dword_80B85DC: .word 0x12800
 	thumb_func_end sub_80B8564
 
-	thumb_func_start sub_80B85E0
-sub_80B85E0:
+	thumb_func_start t1_0x2_80B85E0
+t1_0x2_80B85E0:
 	push {lr}
 	ldr r1, off_80B85F0 // =off_80B85F4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -533,7 +533,7 @@ off_80B85F0: .word off_80B85F4
 off_80B85F4: .word sub_80B8600+1
 	.word sub_80B863A+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80B85E0
+	thumb_func_end t1_0x2_80B85E0
 
 	thumb_local_start
 sub_80B8600:
@@ -902,8 +902,8 @@ dword_80B88C8: .word 0xD5555
 dword_80B88CC: .word 0x80110C00
 	thumb_func_end sub_80B8870
 
-	thumb_func_start sub_80B88D0
-sub_80B88D0:
+	thumb_func_start t1_0x3_80B88D0
+t1_0x3_80B88D0:
 	push {lr}
 	ldr r1, off_80B88E0 // =off_80B88E4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -916,7 +916,7 @@ off_80B88E0: .word off_80B88E4
 off_80B88E4: .word sub_80B88F0+1
 	.word sub_80B8932+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80B88D0
+	thumb_func_end t1_0x3_80B88D0
 
 	thumb_local_start
 sub_80B88F0:
@@ -1060,8 +1060,8 @@ locret_80B8A12:
 dword_80B8A14: .word 0x80110C00
 	thumb_func_end sub_80B8A0A
 
-	thumb_func_start sub_80B8A18
-sub_80B8A18:
+	thumb_func_start t1_0x4_80B8A18
+t1_0x4_80B8A18:
 	push {lr}
 	ldr r1, off_80B8A2C // =off_80B8A30 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -1075,7 +1075,7 @@ off_80B8A2C: .word off_80B8A30
 off_80B8A30: .word sub_80B8A3C+1
 	.word sub_80B8AD4+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80B8A18
+	thumb_func_end t1_0x4_80B8A18
 
 	thumb_local_start
 sub_80B8A3C:
@@ -1541,8 +1541,8 @@ dword_80B8E98: .word 0x1B6
 off_80B8E9C: .word byte_80B8BD4
 	thumb_func_end sub_80B8E7C
 
-	thumb_func_start sub_80B8EA0
-sub_80B8EA0:
+	thumb_func_start t1_0x6_80B8EA0
+t1_0x6_80B8EA0:
 	push {lr}
 	ldr r1, off_80B8EB4 // =off_80B8EB8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -1556,7 +1556,7 @@ off_80B8EB4: .word off_80B8EB8
 off_80B8EB8: .word sub_80B8EC4+1
 	.word sub_80B8F0A+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80B8EA0
+	thumb_func_end t1_0x6_80B8EA0
 
 	thumb_local_start
 sub_80B8EC4:
@@ -1804,8 +1804,8 @@ loc_80B906E:
 	.balign 4, 0x00
 	thumb_func_end sub_80B903A
 
-	thumb_func_start sub_80B9078
-sub_80B9078:
+	thumb_func_start t1_0x7_80B9078
+t1_0x7_80B9078:
 	push {lr}
 	ldr r1, off_80B908C // =off_80B9090 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -1819,7 +1819,7 @@ off_80B908C: .word off_80B9090
 off_80B9090: .word sub_80B909C+1
 	.word sub_80B90E4+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80B9078
+	thumb_func_end t1_0x7_80B9078
 
 	thumb_local_start
 sub_80B909C:
@@ -2119,8 +2119,8 @@ locret_80B92B0:
 dword_80B92B4: .word 0x10010
 	thumb_func_end sub_80B9288
 
-	thumb_func_start sub_80B92B8
-sub_80B92B8:
+	thumb_func_start t1_0x8_80B92B8
+t1_0x8_80B92B8:
 	push {lr}
 	ldr r1, off_80B92CC // =off_80B92D0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -2134,7 +2134,7 @@ off_80B92CC: .word off_80B92D0
 off_80B92D0: .word sub_80B92DC+1
 	.word sub_80B931A+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80B92B8
+	thumb_func_end t1_0x8_80B92B8
 
 	thumb_local_start
 sub_80B92DC:
@@ -2397,8 +2397,8 @@ byte_80B94AC: .byte 0x0, 0x0, 0x1, 0x4, 0x0, 0x0, 0x1, 0x8, 0x0, 0x0, 0x81, 0x0,
 	.byte 0x0
 	thumb_func_end sub_80B9458
 
-	thumb_func_start sub_80B94BC
-sub_80B94BC:
+	thumb_func_start t1_0x9_80B94BC
+t1_0x9_80B94BC:
 	push {lr}
 	ldr r1, off_80B94D0 // =off_80B94D4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -2412,7 +2412,7 @@ off_80B94D0: .word off_80B94D4
 off_80B94D4: .word sub_80B94E0+1
 	.word sub_80B951E+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80B94BC
+	thumb_func_end t1_0x9_80B94BC
 
 	thumb_local_start
 sub_80B94E0:
@@ -2814,8 +2814,8 @@ off_80B97B8: .word 0x4000000
 	.word 0x8000000
 	thumb_func_end sub_80B9776
 
-	thumb_func_start sub_80B97C0
-sub_80B97C0:
+	thumb_func_start t1_0xa_80B97C0
+t1_0xa_80B97C0:
 	push {lr}
 	ldr r1, off_80B97D4 // =off_80B97D8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -2829,7 +2829,7 @@ off_80B97D4: .word off_80B97D8
 off_80B97D8: .word sub_80B97E4+1
 	.word sub_80B9822+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80B97C0
+	thumb_func_end t1_0xa_80B97C0
 
 	thumb_local_start
 sub_80B97E4:
@@ -3087,8 +3087,8 @@ locret_80B99BE:
 	pop {pc}
 	thumb_func_end sub_80B999A
 
-	thumb_func_start sub_80B99C0
-sub_80B99C0:
+	thumb_func_start t1_0xb_80B99C0
+t1_0xb_80B99C0:
 	push {lr}
 	ldr r1, off_80B99D4 // =off_80B99D8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -3102,7 +3102,7 @@ off_80B99D4: .word off_80B99D8
 off_80B99D8: .word sub_80B99E4+1
 	.word sub_80B9A34+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80B99C0
+	thumb_func_end t1_0xb_80B99C0
 
 	thumb_local_start
 sub_80B99E4:
@@ -3399,8 +3399,8 @@ byte_80B9C04: .byte 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x3, 0x10, 0x0, 0x0, 0x
 	.byte 0x80, 0x3
 	thumb_func_end sub_80B9B94
 
-	thumb_func_start sub_80B9C14
-sub_80B9C14:
+	thumb_func_start t1_0xc_80B9C14
+t1_0xc_80B9C14:
 	push {lr}
 	ldr r1, off_80B9C28 // =off_80B9C2C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -3414,7 +3414,7 @@ off_80B9C28: .word off_80B9C2C
 off_80B9C2C: .word sub_80B9C38+1
 	.word sub_80B9C9C+1
 	.word sub_80B9F00+1
-	thumb_func_end sub_80B9C14
+	thumb_func_end t1_0xc_80B9C14
 
 	thumb_local_start
 sub_80B9C38:
@@ -3804,8 +3804,8 @@ dword_80B9F3C: .word 0xC0000
 dword_80B9F40: .word 0x73333
 	thumb_func_end sub_80B9F0E
 
-	thumb_func_start sub_80B9F44
-sub_80B9F44:
+	thumb_func_start t1_0xd_80B9F44
+t1_0xd_80B9F44:
 	push {lr}
 	ldr r1, off_80B9F58 // =off_80B9F5C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -3819,7 +3819,7 @@ off_80B9F58: .word off_80B9F5C
 off_80B9F5C: .word sub_80B9F68+1
 	.word sub_80B9FA6+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80B9F44
+	thumb_func_end t1_0xd_80B9F44
 
 	thumb_local_start
 sub_80B9F68:
@@ -4360,8 +4360,8 @@ dword_80BA35C: .word 0x700FF04
 dword_80BA360: .word 0x3
 	thumb_func_end sub_80BA31C
 
-	thumb_func_start sub_80BA364
-sub_80BA364:
+	thumb_func_start t1_0xe_80BA364
+t1_0xe_80BA364:
 	push {lr}
 	ldr r1, off_80BA378 // =off_80BA37C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -4375,7 +4375,7 @@ off_80BA378: .word off_80BA37C
 off_80BA37C: .word sub_80BA388+1
 	.word sub_80BA3D8+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BA364
+	thumb_func_end t1_0xe_80BA364
 
 	thumb_local_start
 sub_80BA388:
@@ -4873,8 +4873,8 @@ loc_80BA6EE:
 dword_80BA704: .word 0x100000
 	thumb_func_end sub_80BA6B6
 
-	thumb_func_start sub_80BA708
-sub_80BA708:
+	thumb_func_start t1_0xf_80BA708
+t1_0xf_80BA708:
 	push {lr}
 	ldr r1, off_80BA71C // =off_80BA720 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -4888,7 +4888,7 @@ off_80BA71C: .word off_80BA720
 off_80BA720: .word sub_80BA72C+1
 	.word sub_80BA772+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BA708
+	thumb_func_end t1_0xf_80BA708
 
 	thumb_local_start
 sub_80BA72C:
@@ -5356,8 +5356,8 @@ off_80BAA84: .word byte_2030405
 	.word 0x5040302
 	thumb_func_end sub_80BAA4C
 
-	thumb_func_start sub_80BAA8C
-sub_80BAA8C:
+	thumb_func_start t1_0x10_80BAA8C
+t1_0x10_80BAA8C:
 	push {lr}
 	ldr r1, off_80BAAA0 // =off_80BAAA4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -5371,7 +5371,7 @@ off_80BAAA0: .word off_80BAAA4
 off_80BAAA4: .word sub_80BAAB0+1
 	.word sub_80BAB00+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BAA8C
+	thumb_func_end t1_0x10_80BAA8C
 
 	thumb_local_start
 sub_80BAAB0:
@@ -6018,8 +6018,8 @@ loc_80BAF40:
 	.byte 0, 0
 	thumb_func_end sub_80BAF06
 
-	thumb_func_start sub_80BAF50
-sub_80BAF50:
+	thumb_func_start t1_0x13_80BAF50
+t1_0x13_80BAF50:
 	push {lr}
 	ldr r1, off_80BAF64 // =off_80BAF68 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -6033,7 +6033,7 @@ off_80BAF64: .word off_80BAF68
 off_80BAF68: .word sub_80BAF74+1
 	.word sub_80BB00C+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BAF50
+	thumb_func_end t1_0x13_80BAF50
 
 	thumb_local_start
 sub_80BAF74:
@@ -6454,8 +6454,8 @@ dword_80BB290: .word 0x280000
 byte_80BB294: .byte 0x0, 0x0, 0x18, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80BB278
 
-	thumb_func_start sub_80BB2A0
-sub_80BB2A0:
+	thumb_func_start t1_0x14_80BB2A0
+t1_0x14_80BB2A0:
 	push {lr}
 	ldr r1, off_80BB2B4 // =off_80BB2B8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -6469,7 +6469,7 @@ off_80BB2B4: .word off_80BB2B8
 off_80BB2B8: .word sub_80BB2C4+1
 	.word sub_80BB35C+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BB2A0
+	thumb_func_end t1_0x14_80BB2A0
 
 	thumb_local_start
 sub_80BB2C4:
@@ -6899,8 +6899,8 @@ dword_80BB600: .word 0x280000
 dword_80BB604: .word 0x500000
 	thumb_func_end sub_80BB5DC
 
-	thumb_func_start sub_80BB608
-sub_80BB608:
+	thumb_func_start t1_0x15_80BB608
+t1_0x15_80BB608:
 	push {lr}
 	ldr r1, off_80BB61C // =off_80BB620 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -6914,7 +6914,7 @@ off_80BB61C: .word off_80BB620
 off_80BB620: .word sub_80BB62C+1
 	.word sub_80BB66A+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BB608
+	thumb_func_end t1_0x15_80BB608
 
 	thumb_local_start
 sub_80BB62C:
@@ -7316,8 +7316,8 @@ byte_80BB908: .byte 0x1, 0xFF, 0x1, 0x0, 0x1, 0x1, 0x0, 0x0
 off_80BB910: .word 0x168
 	thumb_func_end sub_80BB8B0
 
-	thumb_func_start sub_80BB914
-sub_80BB914:
+	thumb_func_start t1_0x16_80BB914
+t1_0x16_80BB914:
 	push {lr}
 	ldr r1, off_80BB928 // =off_80BB92C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -7331,7 +7331,7 @@ off_80BB928: .word off_80BB92C
 off_80BB92C: .word sub_80BB938+1
 	.word sub_80BB976+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BB914
+	thumb_func_end t1_0x16_80BB914
 
 	thumb_local_start
 sub_80BB938:
@@ -7662,8 +7662,8 @@ dword_80BBB90: .word 0xF800000
 dword_80BBB94: .word 0x40000
 	thumb_func_end sub_80BBB38
 
-	thumb_func_start sub_80BBB98
-sub_80BBB98:
+	thumb_func_start t1_0x17_80BBB98
+t1_0x17_80BBB98:
 	push {lr}
 	ldr r1, off_80BBBAC // =off_80BBBB0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -7677,7 +7677,7 @@ off_80BBBAC: .word off_80BBBB0
 off_80BBBB0: .word sub_80BBBBC+1
 	.word sub_80BBC04+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BBB98
+	thumb_func_end t1_0x17_80BBB98
 
 	thumb_local_start
 sub_80BBBBC:
@@ -8108,8 +8108,8 @@ dword_80BBF04: .word 0x8000
 dword_80BBF08: .word 0x80000
 	thumb_func_end sub_80BBE58
 
-	thumb_func_start sub_80BBF0C
-sub_80BBF0C:
+	thumb_func_start t1_0x18_80BBF0C
+t1_0x18_80BBF0C:
 	push {lr}
 	ldr r1, off_80BBF20 // =off_80BBF24 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -8123,7 +8123,7 @@ off_80BBF20: .word off_80BBF24
 off_80BBF24: .word sub_80BBF30+1
 	.word sub_80BBF6E+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BBF0C
+	thumb_func_end t1_0x18_80BBF0C
 
 	thumb_local_start
 sub_80BBF30:
@@ -8451,8 +8451,8 @@ sub_80BC160:
 	.balign 4, 0x00
 	thumb_func_end sub_80BC160
 
-	thumb_func_start sub_80BC17C
-sub_80BC17C:
+	thumb_func_start t1_0x19_80BC17C
+t1_0x19_80BC17C:
 	push {lr}
 	ldr r1, off_80BC18C // =off_80BC190 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -8465,7 +8465,7 @@ off_80BC18C: .word off_80BC190
 off_80BC190: .word sub_80BC19C+1
 	.word sub_80BC1DA+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BC17C
+	thumb_func_end t1_0x19_80BC17C
 
 	thumb_local_start
 sub_80BC19C:
@@ -8915,8 +8915,8 @@ off_80BC4F4: .word byte_810AA3C
 off_80BC4F8: .word byte_810AA54
 	thumb_func_end sub_80BC4B4
 
-	thumb_func_start sub_80BC4FC
-sub_80BC4FC:
+	thumb_func_start t1_0x1a_80BC4FC
+t1_0x1a_80BC4FC:
 	push {lr}
 	ldr r1, off_80BC514 // =off_80BC518 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -8933,7 +8933,7 @@ off_80BC514: .word off_80BC518
 off_80BC518: .word sub_80BC524+1
 	.word sub_80BC56E+1
 	.word sub_8016C4E+1
-	thumb_func_end sub_80BC4FC
+	thumb_func_end t1_0x1a_80BC4FC
 
 	thumb_local_start
 sub_80BC524:
@@ -9092,8 +9092,8 @@ locret_80BC64C:
 	.byte 0, 0
 	thumb_func_end sub_80BC644
 
-	thumb_func_start sub_80BC650
-sub_80BC650:
+	thumb_func_start t1_0x1b_80BC650
+t1_0x1b_80BC650:
 	push {lr}
 	ldr r1, off_80BC660 // =off_80BC664 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -9106,7 +9106,7 @@ off_80BC660: .word off_80BC664
 off_80BC664: .word sub_80BC670+1
 	.word sub_80BC78C+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BC650
+	thumb_func_end t1_0x1b_80BC650
 
 	thumb_local_start
 sub_80BC670:
@@ -9537,8 +9537,8 @@ GetRelatedObject1HP:
 	.pool
 	thumb_func_end GetRelatedObject1HP
 
-	thumb_func_start sub_80BCA04
-sub_80BCA04:
+	thumb_func_start t1_0x1d_80BCA04
+t1_0x1d_80BCA04:
 	push {lr}
 	ldr r1, off_80BCA14 // =off_80BCA18 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -9551,7 +9551,7 @@ off_80BCA14: .word off_80BCA18
 off_80BCA18: .word sub_80BCA24+1
 	.word sub_80BCA72+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BCA04
+	thumb_func_end t1_0x1d_80BCA04
 
 	thumb_local_start
 sub_80BCA24:
@@ -9700,8 +9700,8 @@ loc_80BCB4A:
 	.byte 0, 0
 	thumb_func_end sub_80BCB34
 
-	thumb_func_start sub_80BCB50
-sub_80BCB50:
+	thumb_func_start t1_0x1e_80BCB50
+t1_0x1e_80BCB50:
 	push {lr}
 	ldr r1, off_80BCB64 // =off_80BCB68 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -9715,7 +9715,7 @@ off_80BCB64: .word off_80BCB68
 off_80BCB68: .word sub_80BCB74+1
 	.word sub_80BCC0C+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BCB50
+	thumb_func_end t1_0x1e_80BCB50
 
 	thumb_local_start
 sub_80BCB74:
@@ -9926,8 +9926,8 @@ locret_80BCD0C:
 dword_80BCD10: .word 0x10018
 	thumb_func_end sub_80BCCDC
 
-	thumb_func_start sub_80BCD14
-sub_80BCD14:
+	thumb_func_start t1_0x1f_80BCD14
+t1_0x1f_80BCD14:
 	push {lr}
 	ldr r1, off_80BCD28 // =off_80BCD2C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -9941,7 +9941,7 @@ off_80BCD28: .word off_80BCD2C
 off_80BCD2C: .word sub_80BCD38+1
 	.word sub_80BCE4C+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BCD14
+	thumb_func_end t1_0x1f_80BCD14
 
 	thumb_local_start
 sub_80BCD38:
@@ -10785,8 +10785,8 @@ sub_80BD374:
 	.byte 0x0, 0x0
 	thumb_func_end sub_80BD374
 
-	thumb_func_start sub_80BD388
-sub_80BD388:
+	thumb_func_start t1_0x20_80BD388
+t1_0x20_80BD388:
 	push {lr}
 	ldr r1, off_80BD39C // =off_80BD3A0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -10800,7 +10800,7 @@ off_80BD39C: .word off_80BD3A0
 off_80BD3A0: .word sub_80BD3AC+1
 	.word sub_80BD478+1
 	.word sub_80BD984+1
-	thumb_func_end sub_80BD388
+	thumb_func_end t1_0x20_80BD388
 
 	thumb_local_start
 sub_80BD3AC:
@@ -11866,8 +11866,8 @@ nullsub_9:
 dword_80BDBA0: .word 0x7FFF
 	thumb_func_end nullsub_9
 
-	thumb_func_start sub_80BDBA4
-sub_80BDBA4:
+	thumb_func_start t1_0x21_80BDBA4
+t1_0x21_80BDBA4:
 	push {lr}
 	ldr r1, off_80BDBB8 // =off_80BDBBC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -11881,7 +11881,7 @@ off_80BDBB8: .word off_80BDBBC
 off_80BDBBC: .word sub_80BDBC8+1
 	.word sub_80BDCFC+1
 	.word sub_80BE3C4+1
-	thumb_func_end sub_80BDBA4
+	thumb_func_end t1_0x21_80BDBA4
 
 	thumb_local_start
 sub_80BDBC8:
@@ -13447,8 +13447,8 @@ dword_80BE790: .word 0x80110C00
 dword_80BE794: .word 0x10000
 	thumb_func_end snakearmRelatedObject_t1_0x22_sub_80BE76A
 
-	thumb_func_start sub_80BE798
-sub_80BE798:
+	thumb_func_start t1_0x23_80BE798
+t1_0x23_80BE798:
 	push {lr}
 	ldr r1, off_80BE7AC // =off_80BE7B0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -13462,7 +13462,7 @@ off_80BE7AC: .word off_80BE7B0
 off_80BE7B0: .word sub_80BE7BC+1
 	.word sub_80BE834+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BE798
+	thumb_func_end t1_0x23_80BE798
 
 	thumb_local_start
 sub_80BE7BC:
@@ -14836,8 +14836,8 @@ off_80BF258: .word off_80BF224
 dword_80BF25C: .word 0xF800000
 	thumb_func_end sub_80BF192
 
-	thumb_func_start sub_80BF260
-sub_80BF260:
+	thumb_func_start t1_0x24_80BF260
+t1_0x24_80BF260:
 	push {lr}
 	ldr r1, off_80BF274 // =off_80BF278 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -14851,7 +14851,7 @@ off_80BF274: .word off_80BF278
 off_80BF278: .word sub_80BF284+1
 	.word sub_80BF2D0+1
 	.word sub_80BF69C+1
-	thumb_func_end sub_80BF260
+	thumb_func_end t1_0x24_80BF260
 
 	thumb_local_start
 sub_80BF284:
@@ -15481,8 +15481,8 @@ dword_80BF6E4: .word 0xA05FF0F
 dword_80BF6E8: .word 0x11E00
 	thumb_func_end spawnType1Object_0x24_80BF6AE
 
-	thumb_func_start sub_80BF6EC
-sub_80BF6EC:
+	thumb_func_start t1_0x25_80BF6EC
+t1_0x25_80BF6EC:
 	push {lr}
 	ldr r1, off_80BF700 // =off_80BF704 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -15496,7 +15496,7 @@ off_80BF700: .word off_80BF704
 off_80BF704: .word sub_80BF710+1
 	.word sub_80BF7BC+1
 	.word sub_80BFCB2+1
-	thumb_func_end sub_80BF6EC
+	thumb_func_end t1_0x25_80BF6EC
 
 	thumb_local_start
 sub_80BF710:
@@ -16425,8 +16425,8 @@ dword_80BFDF4: .word 0x1308
 dword_80BFDF8: .word 0x101000F
 	thumb_func_end sub_80BFD90
 
-	thumb_func_start sub_80BFDFC
-sub_80BFDFC:
+	thumb_func_start t1_0x26_80BFDFC
+t1_0x26_80BFDFC:
 	push {lr}
 	ldr r1, off_80BFE14 // =off_80BFE18 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -16443,7 +16443,7 @@ off_80BFE14: .word off_80BFE18
 off_80BFE18: .word sub_80BFE24+1
 	.word sub_80BFE6E+1
 	.word sub_8016C4E+1
-	thumb_func_end sub_80BFDFC
+	thumb_func_end t1_0x26_80BFDFC
 
 	thumb_local_start
 sub_80BFE24:
@@ -16620,8 +16620,8 @@ locret_80BFF66:
 	pop {r5,pc}
 	thumb_func_end sub_80BFF56
 
-	thumb_func_start sub_80BFF68
-sub_80BFF68:
+	thumb_func_start t1_0x27_80BFF68
+t1_0x27_80BFF68:
 	push {lr}
 	ldr r1, off_80BFF78 // =off_80BFF7C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -16634,7 +16634,7 @@ off_80BFF78: .word off_80BFF7C
 off_80BFF7C: .word sub_80BFF88+1
 	.word sub_80BFFC0+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80BFF68
+	thumb_func_end t1_0x27_80BFF68
 
 	thumb_local_start
 sub_80BFF88:
@@ -16908,8 +16908,8 @@ dword_80C0170: .word 0x80110C00
 dword_80C0174: .word 0x10000
 	thumb_func_end sub_80C0144
 
-	thumb_func_start sub_80C0178
-sub_80C0178:
+	thumb_func_start t1_0x28_80C0178
+t1_0x28_80C0178:
 	push {lr}
 	ldr r1, off_80C0188 // =off_80C018C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -16922,7 +16922,7 @@ off_80C0188: .word off_80C018C
 off_80C018C: .word sub_80C0198+1
 	.word sub_80C01D8+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C0178
+	thumb_func_end t1_0x28_80C0178
 
 	thumb_local_start
 sub_80C0198:
@@ -17147,8 +17147,8 @@ locret_80C032E:
 dword_80C0330: .word 0x80110C00
 	thumb_func_end sub_80C031E
 
-	thumb_func_start sub_80C0334
-sub_80C0334:
+	thumb_func_start t1_0x29_80C0334
+t1_0x29_80C0334:
 	push {lr}
 	ldr r1, off_80C0348 // =off_80C034C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -17162,7 +17162,7 @@ off_80C0348: .word off_80C034C
 off_80C034C: .word sub_80C0358+1
 	.word sub_80C03AE+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C0334
+	thumb_func_end t1_0x29_80C0334
 
 	thumb_local_start
 sub_80C0358:
@@ -17362,8 +17362,8 @@ locret_80C04AA:
 	mov pc, lr
 	thumb_func_end sub_80C04A2
 
-	thumb_func_start sub_80C04AC
-sub_80C04AC:
+	thumb_func_start t1_0x2a_80C04AC
+t1_0x2a_80C04AC:
 	push {lr}
 	ldr r1, off_80C04BC // =off_80C04C0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -17376,7 +17376,7 @@ off_80C04BC: .word off_80C04C0
 off_80C04C0: .word sub_80C04CC+1
 	.word sub_80C0526+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C04AC
+	thumb_func_end t1_0x2a_80C04AC
 
 	thumb_local_start
 sub_80C04CC:
@@ -17591,8 +17591,8 @@ off_80C0654: .word math_cosTable
 off_80C0658: .word math_sinTable
 	thumb_func_end sub_80C063C
 
-	thumb_func_start sub_80C065C
-sub_80C065C:
+	thumb_func_start t1_0x2b_80C065C
+t1_0x2b_80C065C:
 	push {lr}
 	ldr r1, off_80C0670 // =off_80C0674 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -17606,7 +17606,7 @@ off_80C0670: .word off_80C0674
 off_80C0674: .word sub_80C0680+1
 	.word sub_80C06BC+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C065C
+	thumb_func_end t1_0x2b_80C065C
 
 	thumb_local_start
 sub_80C0680:
@@ -17789,8 +17789,8 @@ off_80C07B4: .word math_cosTable
 off_80C07B8: .word math_sinTable
 	thumb_func_end sub_80C0790
 
-	thumb_func_start sub_80C07BC
-sub_80C07BC:
+	thumb_func_start t1_0x2c_80C07BC
+t1_0x2c_80C07BC:
 	push {lr}
 	ldr r1, JumpTable80C07CC_p // =JumpTable80C07CC
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -17803,7 +17803,7 @@ JumpTable80C07CC: .word sub_80C07DC+1
 	.word sub_80C0840+1
 	.word sub_80C0C8C+1
 JumpTable80C07CC_p: .word JumpTable80C07CC
-	thumb_func_end sub_80C07BC
+	thumb_func_end t1_0x2c_80C07BC
 
 	thumb_local_start
 sub_80C07DC:
@@ -18677,8 +18677,8 @@ locret_80C0DFE:
 dword_80C0E00: .word 0xF800000
 	thumb_func_end sub_80C0DD8
 
-	thumb_func_start sub_80C0E04
-sub_80C0E04:
+	thumb_func_start t1_0x2d_80C0E04
+t1_0x2d_80C0E04:
 	push {lr}
 	ldr r1, off_80C0E14 // =off_80C0E18 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -18691,7 +18691,7 @@ off_80C0E14: .word off_80C0E18
 off_80C0E18: .word sub_80C0E24+1
 	.word sub_80C0EE2+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C0E04
+	thumb_func_end t1_0x2d_80C0E04
 
 	thumb_local_start
 sub_80C0E24:
@@ -18854,8 +18854,8 @@ locret_80C0F6A:
 	pop {pc}
 	thumb_func_end sub_80C0F52
 
-	thumb_func_start sub_80C0F6C
-sub_80C0F6C:
+	thumb_func_start t1_0x2e_80C0F6C
+t1_0x2e_80C0F6C:
 	push {lr}
 	ldr r1, off_80C0F7C // =off_80C0F80 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -18868,7 +18868,7 @@ off_80C0F7C: .word off_80C0F80
 off_80C0F80: .word sub_80C0F8C+1
 	.word sub_80C0FE8+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C0F6C
+	thumb_func_end t1_0x2e_80C0F6C
 
 	thumb_local_start
 sub_80C0F8C:
@@ -19158,8 +19158,8 @@ dword_80C11A4: .word 0x80110C00
 dword_80C11A8: .word 0x10000
 	thumb_func_end sub_80C1182
 
-	thumb_func_start sub_80C11AC
-sub_80C11AC:
+	thumb_func_start t1_0x2f_80C11AC
+t1_0x2f_80C11AC:
 	push {lr}
 	ldr r1, off_80C11BC // =off_80C11C0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -19172,7 +19172,7 @@ off_80C11BC: .word off_80C11C0
 off_80C11C0: .word sub_80C11CC+1
 	.word sub_80C1204+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C11AC
+	thumb_func_end t1_0x2f_80C11AC
 
 	thumb_local_start
 sub_80C11CC:
@@ -19648,8 +19648,8 @@ off_80C1568: .word math_sinTable
 	.word 0x0
 	thumb_func_end sub_80C1538
 
-	thumb_func_start sub_80C1570
-sub_80C1570:
+	thumb_func_start t1_0x32_80C1570
+t1_0x32_80C1570:
 	push {lr}
 	ldr r1, off_80C158C // =off_80C1580 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -19662,7 +19662,7 @@ off_80C1580: .word sub_80C1590+1
 	.word sub_80C15EC+1
 	.word sub_80C17E6+1
 off_80C158C: .word off_80C1580
-	thumb_func_end sub_80C1570
+	thumb_func_end t1_0x32_80C1570
 
 	thumb_local_start
 sub_80C1590:
@@ -20278,8 +20278,8 @@ off_80C1A04: .word 0x90
 dword_80C1A0C: .word 0xF800000
 	thumb_func_end sub_80C18B0
 
-	thumb_func_start sub_80C1A10
-sub_80C1A10:
+	thumb_func_start t1_0x33_80C1A10
+t1_0x33_80C1A10:
 	push {lr}
 	ldr r1, off_80C1A24 // =off_80C1A28 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -20293,7 +20293,7 @@ off_80C1A24: .word off_80C1A28
 off_80C1A28: .word sub_80C1A34+1
 	.word sub_80C1A7C+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C1A10
+	thumb_func_end t1_0x33_80C1A10
 
 	thumb_local_start
 sub_80C1A34:
@@ -21158,8 +21158,8 @@ sub_80C2110:
 	pop {r4,pc}
 	thumb_func_end sub_80C2110
 
-	thumb_func_start sub_80C2138
-sub_80C2138:
+	thumb_func_start t1_0x34_80C2138
+t1_0x34_80C2138:
 	push {lr}
 	ldr r1, off_80C214C // =off_80C2150 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -21173,7 +21173,7 @@ off_80C214C: .word off_80C2150
 off_80C2150: .word sub_80C215C+1
 	.word sub_80C21AC+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C2138
+	thumb_func_end t1_0x34_80C2138
 
 	thumb_local_start
 sub_80C215C:
@@ -21876,8 +21876,8 @@ sub_80C26C8:
 	.byte 0, 0
 	thumb_func_end sub_80C26C8
 
-	thumb_func_start sub_80C26F0
-sub_80C26F0:
+	thumb_func_start t1_0x3c_80C26F0
+t1_0x3c_80C26F0:
 	push {lr}
 	ldr r1, JumpTable80C2700_p // =JumpTable80C2700
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -21890,7 +21890,7 @@ JumpTable80C2700: .word sub_80C2710+1
 	.word sub_80C2770+1
 	.word sub_80C2A2C+1
 JumpTable80C2700_p: .word JumpTable80C2700
-	thumb_func_end sub_80C26F0
+	thumb_func_end t1_0x3c_80C26F0
 
 	thumb_local_start
 sub_80C2710:
@@ -22349,8 +22349,8 @@ locret_80C2A70:
 dword_80C2A74: .word 0xF800000
 	thumb_func_end sub_80C2A4C
 
-	thumb_func_start sub_80C2A78
-sub_80C2A78:
+	thumb_func_start t1_0x3d_80C2A78
+t1_0x3d_80C2A78:
 	push {lr}
 	mov r7, #0x60 
 	add r7, r7, r5
@@ -22365,7 +22365,7 @@ JumpTable80C2A8C: .word sub_80C2A9C+1
 	.word sub_80C2AF8+1
 	.word sub_80C2F76+1
 JumpTable80C2A8C_p: .word JumpTable80C2A8C
-	thumb_func_end sub_80C2A78
+	thumb_func_end t1_0x3d_80C2A78
 
 	thumb_local_start
 sub_80C2A9C:
@@ -23092,8 +23092,8 @@ dword_80C2FF8: .word 0x10500
 dword_80C2FFC: .word 0x11400
 	thumb_func_end sub_80C2FBC
 
-	thumb_func_start sub_80C3000
-sub_80C3000:
+	thumb_func_start t1_0x45_80C3000
+t1_0x45_80C3000:
 	push {lr}
 	ldr r1, off_80C3014 // =off_80C3018 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -23107,7 +23107,7 @@ off_80C3014: .word off_80C3018
 off_80C3018: .word sub_80C3024+1
 	.word sub_80C30C2+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C3000
+	thumb_func_end t1_0x45_80C3000
 
 	thumb_local_start
 sub_80C3024:
@@ -23367,8 +23367,8 @@ locret_80C3214:
 	.balign 4, 0x00
 	thumb_func_end sub_80C31F0
 
-	thumb_func_start sub_80C3218
-sub_80C3218:
+	thumb_func_start t1_0x4b_80C3218
+t1_0x4b_80C3218:
 	push {lr}
 	ldr r1, off_80C322C // =off_80C3230 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -23382,7 +23382,7 @@ off_80C322C: .word off_80C3230
 off_80C3230: .word sub_80C323C+1
 	.word sub_80C32B6+1
 	.word sub_80C3448+1
-	thumb_func_end sub_80C3218
+	thumb_func_end t1_0x4b_80C3218
 
 	thumb_local_start
 sub_80C323C:
@@ -23737,8 +23737,8 @@ locret_80C34DA:
 dword_80C34DC: .word 0x17E
 	thumb_func_end sub_80C34B8
 
-	thumb_func_start sub_80C34E0
-sub_80C34E0:
+	thumb_func_start t1_0x4c_80C34E0
+t1_0x4c_80C34E0:
 	push {lr}
 	ldr r1, off_80C34F4 // =off_80C34F8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -23752,7 +23752,7 @@ off_80C34F4: .word off_80C34F8
 off_80C34F8: .word sub_80C3504+1
 	.word sub_80C3550+1
 	.word sub_80C36A0+1
-	thumb_func_end sub_80C34E0
+	thumb_func_end t1_0x4c_80C34E0
 
 	thumb_local_start
 sub_80C3504:
@@ -24059,8 +24059,8 @@ locret_80C3732:
 	pop {pc}
 	thumb_func_end sub_80C3710
 
-	thumb_func_start sub_80C3734
-sub_80C3734:
+	thumb_func_start t1_0x4d_80C3734
+t1_0x4d_80C3734:
 	push {lr}
 	ldr r1, off_80C3748 // =off_80C374C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -24074,7 +24074,7 @@ off_80C3748: .word off_80C374C
 off_80C374C: .word sub_80C3758+1
 	.word sub_80C37AC+1
 	.word sub_80C3900+1
-	thumb_func_end sub_80C3734
+	thumb_func_end t1_0x4d_80C3734
 
 	thumb_local_start
 sub_80C3758:
@@ -24367,8 +24367,8 @@ locret_80C3968:
 dword_80C396C: .word 0x40000
 	thumb_func_end sub_80C3946
 
-	thumb_func_start sub_80C3970
-sub_80C3970:
+	thumb_func_start t1_0x4f_80C3970
+t1_0x4f_80C3970:
 	push {lr}
 	ldr r1, off_80C3984 // =off_80C3988 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -24382,7 +24382,7 @@ off_80C3984: .word off_80C3988
 off_80C3988: .word sub_80C39BA+1
 	.word sub_80C3A24+1
 	.word sub_80C3994+1
-	thumb_func_end sub_80C3970
+	thumb_func_end t1_0x4f_80C3970
 
 	thumb_local_start
 sub_80C3994:
@@ -24832,8 +24832,8 @@ loc_80C3CDE:
 dword_80C3CE4: .word 0x1001400
 	thumb_func_end sub_80C3CD0
 
-	thumb_func_start sub_80C3CE8
-sub_80C3CE8:
+	thumb_func_start t1_0x50_80C3CE8
+t1_0x50_80C3CE8:
 	push {lr}
 	ldr r1, off_80C3CFC // =off_80C3D00 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -24847,7 +24847,7 @@ off_80C3CFC: .word off_80C3D00
 off_80C3D00: .word sub_80C3D32+1
 	.word sub_80C3D9C+1
 	.word sub_80C3D0C+1
-	thumb_func_end sub_80C3CE8
+	thumb_func_end t1_0x50_80C3CE8
 
 	thumb_local_start
 sub_80C3D0C:
@@ -25106,8 +25106,8 @@ sub_80C3EBC:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80C3EBC
 
-	thumb_func_start sub_80C3EE0
-sub_80C3EE0:
+	thumb_func_start t1_0x54_80C3EE0
+t1_0x54_80C3EE0:
 	push {lr}
 	ldr r1, off_80C3EF0 // =off_80C3EF4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -25120,7 +25120,7 @@ off_80C3EF0: .word off_80C3EF4
 off_80C3EF4: .word sub_80C3F00+1
 	.word sub_80C3F52+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C3EE0
+	thumb_func_end t1_0x54_80C3EE0
 
 	thumb_local_start
 sub_80C3F00:
@@ -25371,8 +25371,8 @@ dword_80C40D0: .word 0x180000
 dword_80C40D4: .word 0x2110
 	thumb_func_end sub_80C409C
 
-	thumb_func_start sub_80C40D8
-sub_80C40D8:
+	thumb_func_start t1_0x55_80C40D8
+t1_0x55_80C40D8:
 	push {lr}
 	ldr r1, off_80C40E8 // =off_80C40EC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -25385,7 +25385,7 @@ off_80C40E8: .word off_80C40EC
 off_80C40EC: .word sub_80C40F8+1
 	.word sub_80C4146+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C40D8
+	thumb_func_end t1_0x55_80C40D8
 
 	thumb_local_start
 sub_80C40F8:
@@ -25561,8 +25561,8 @@ byte_80C4320: .byte 0x8, 0x12, 0xC, 0x0, 0x10, 0x19, 0x8, 0xD, 0xC, 0x4, 0xC, 0x
 	.byte 0xC, 0x11, 0x0, 0x0
 	thumb_func_end sub_80C4204
 
-	thumb_func_start sub_80C4348
-sub_80C4348:
+	thumb_func_start t1_0x56_80C4348
+t1_0x56_80C4348:
 	push {lr}
 	ldr r1, off_80C4358 // =off_80C435C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -25575,7 +25575,7 @@ off_80C4358: .word off_80C435C
 off_80C435C: .word sub_80C4368+1
 	.word sub_80C43C4+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C4348
+	thumb_func_end t1_0x56_80C4348
 
 	thumb_local_start
 sub_80C4368:
@@ -25834,8 +25834,8 @@ sub_80C4526:
 dword_80C452C: .word 0x10000
 	thumb_func_end sub_80C4526
 
-	thumb_func_start sub_80C4530
-sub_80C4530:
+	thumb_func_start t1_0x57_80C4530
+t1_0x57_80C4530:
 	push {lr}
 	ldr r1, off_80C4540 // =off_80C4544 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -25848,7 +25848,7 @@ off_80C4540: .word off_80C4544
 off_80C4544: .word sub_80C4550+1
 	.word sub_80C458C+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C4530
+	thumb_func_end t1_0x57_80C4530
 
 	thumb_local_start
 sub_80C4550:
@@ -26080,8 +26080,8 @@ dword_80C46F4: .word 0x10000
 dword_80C46F8: .word 0x100800
 	thumb_func_end sub_80C46CC
 
-	thumb_func_start sub_80C46FC
-sub_80C46FC:
+	thumb_func_start t1_0x58_80C46FC
+t1_0x58_80C46FC:
 	push {lr}
 	ldr r1, off_80C470C // =off_80C4710 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -26094,7 +26094,7 @@ off_80C470C: .word off_80C4710
 off_80C4710: .word sub_80C471C+1
 	.word sub_80C4766+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C46FC
+	thumb_func_end t1_0x58_80C46FC
 
 	thumb_local_start
 sub_80C471C:
@@ -26222,8 +26222,8 @@ locret_80C4824:
 	.balign 4, 0x00
 	thumb_func_end sub_80C481C
 
-	thumb_func_start sub_80C4828
-sub_80C4828:
+	thumb_func_start t1_0x5d_80C4828
+t1_0x5d_80C4828:
 	push {lr}
 	ldr r1, off_80C4838 // =off_80C483C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -26236,7 +26236,7 @@ off_80C4838: .word off_80C483C
 off_80C483C: .word sub_80C4848+1
 	.word sub_80C48FC+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C4828
+	thumb_func_end t1_0x5d_80C4828
 
 	thumb_local_start
 sub_80C4848:
@@ -26601,8 +26601,8 @@ locret_80C4B14:
 	.balign 4, 0x00
 	thumb_func_end sub_80C4AEC
 
-	thumb_func_start sub_80C4B18
-sub_80C4B18:
+	thumb_func_start t1_0x5e_80C4B18
+t1_0x5e_80C4B18:
 	push {lr}
 	ldr r1, off_80C4B38 // =off_80C4B3C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -26621,7 +26621,7 @@ off_80C4B38: .word off_80C4B3C
 off_80C4B3C: .word sub_80C4B48+1
 	.word sub_80C4B84+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C4B18
+	thumb_func_end t1_0x5e_80C4B18
 
 	thumb_local_start
 sub_80C4B48:
@@ -26829,8 +26829,8 @@ off_80C4C78: .word 0x504
 	.byte 0x0, 0x0, 0x4, 0x5, 0x0, 0x0, 0x5, 0xFF, 0xFF, 0x0, 0x7, 0x0, 0x0, 0x0
 	thumb_func_end sub_80C4C52
 
-	thumb_func_start sub_80C4E58
-sub_80C4E58:
+	thumb_func_start t3_0x0_80C4E58
+t3_0x0_80C4E58:
 	push {lr}
 	ldr r1, off_80C4E6C // =off_80C4E70 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -26844,7 +26844,7 @@ off_80C4E6C: .word off_80C4E70
 off_80C4E70: .word sub_80C4E7C+1
 	.word sub_80C4F02+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C4E58
+	thumb_func_end t3_0x0_80C4E58
 
 	thumb_local_start
 sub_80C4E7C:
@@ -27124,8 +27124,8 @@ dword_80C50A8: .word 0x10000
 byte_80C50AC: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1
 	thumb_func_end sub_80C5090
 
-	thumb_func_start sub_80C50B8
-sub_80C50B8:
+	thumb_func_start t3_0x1_80C50B8
+t3_0x1_80C50B8:
 	push {lr}
 	ldr r1, off_80C50CC // =off_80C50D0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -27139,7 +27139,7 @@ off_80C50CC: .word off_80C50D0
 off_80C50D0: .word sub_80C50DC+1
 	.word sub_80C5116+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C50B8
+	thumb_func_end t3_0x1_80C50B8
 
 	thumb_local_start
 sub_80C50DC:
@@ -27242,8 +27242,8 @@ byte_80C51A0: .byte 0xA, 0x10, 0xB3, 0xE, 0x11, 0xB3, 0x12, 0x12, 0xB3
 	.byte 0x0, 0x0, 0x0
 	thumb_func_end sub_80C518C
 
-	thumb_func_start sub_80C51AC
-sub_80C51AC:
+	thumb_func_start t3_0x2_80C51AC
+t3_0x2_80C51AC:
 	push {lr}
 	ldr r1, off_80C51BC // =off_80C51C0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -27256,7 +27256,7 @@ off_80C51BC: .word off_80C51C0
 off_80C51C0: .word sub_80C51CC+1
 	.word sub_80C524C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C51AC
+	thumb_func_end t3_0x2_80C51AC
 
 	thumb_local_start
 sub_80C51CC:
@@ -27513,8 +27513,8 @@ locret_80C53B8:
 dword_80C53BC: .word 0xC000000
 	thumb_func_end sub_80C53A6
 
-	thumb_func_start sub_80C53C0
-sub_80C53C0:
+	thumb_func_start t3_0x4_80C53C0
+t3_0x4_80C53C0:
 	push {lr}
 	ldr r1, off_80C53D4 // =off_80C53D8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -27528,7 +27528,7 @@ off_80C53D4: .word off_80C53D8
 off_80C53D8: .word sub_80C53FA+1
 	.word sub_80C54E0+1
 	.word sub_80C53E4+1
-	thumb_func_end sub_80C53C0
+	thumb_func_end t3_0x4_80C53C0
 
 	thumb_local_start
 sub_80C53E4:
@@ -27753,8 +27753,8 @@ off_80C55A8: .word byte_80C54DC
 off_80C55AC: .word byte_80C54D0
 	thumb_func_end sub_80C5590
 
-	thumb_func_start sub_80C55B0
-sub_80C55B0:
+	thumb_func_start t3_0x5_80C55B0
+t3_0x5_80C55B0:
 	push {lr}
 	ldr r1, off_80C55C4 // =off_80C55C8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -27768,7 +27768,7 @@ off_80C55C4: .word off_80C55C8
 off_80C55C8: .word sub_80C55E4+1
 	.word sub_80C5654+1
 	.word sub_80C55D4+1
-	thumb_func_end sub_80C55B0
+	thumb_func_end t3_0x5_80C55B0
 
 	thumb_local_start
 sub_80C55D4:
@@ -28012,8 +28012,8 @@ locret_80C57BA:
 dword_80C57BC: .word 0xFFFFA000
 	thumb_func_end sub_80C579E
 
-	thumb_func_start sub_80C57C0
-sub_80C57C0:
+	thumb_func_start t3_0x6_80C57C0
+t3_0x6_80C57C0:
 	push {lr}
 	ldr r1, off_80C57D4 // =off_80C57D8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -28027,7 +28027,7 @@ off_80C57D4: .word off_80C57D8
 off_80C57D8: .word sub_80C57F4+1
 	.word sub_80C5886+1
 	.word sub_80C57E4+1
-	thumb_func_end sub_80C57C0
+	thumb_func_end t3_0x6_80C57C0
 
 	thumb_local_start
 sub_80C57E4:
@@ -28318,8 +28318,8 @@ dword_80C5A2C: .word 0xFFFFB000
 dword_80C5A30: .word 0x30000
 	thumb_func_end sub_80C59F6
 
-	thumb_func_start sub_80C5A34
-sub_80C5A34:
+	thumb_func_start t3_0x7_80C5A34
+t3_0x7_80C5A34:
 	push {lr}
 	ldr r1, off_80C5A48 // =off_80C5A4C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -28333,7 +28333,7 @@ off_80C5A48: .word off_80C5A4C
 off_80C5A4C: .word sub_80C5A58+1
 	.word sub_80C5AD4+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C5A34
+	thumb_func_end t3_0x7_80C5A34
 
 	thumb_local_start
 sub_80C5A58:
@@ -28501,8 +28501,8 @@ byte_80C5BA0: .byte 0xA, 0x5, 0x0, 0x0, 0x4, 0x5, 0x3, 0x1, 0xA, 0x5, 0x1, 0x0, 
 	.byte 0x3
 	thumb_func_end sub_80C5B76
 
-	thumb_func_start sub_80C5BB0
-sub_80C5BB0:
+	thumb_func_start t3_0x8_80C5BB0
+t3_0x8_80C5BB0:
 	push {lr}
 	ldr r1, off_80C5BC4 // =off_80C5BC8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -28516,7 +28516,7 @@ off_80C5BC4: .word off_80C5BC8
 off_80C5BC8: .word sub_80C5BD4+1
 	.word sub_80C5C40+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C5BB0
+	thumb_func_end t3_0x8_80C5BB0
 
 	thumb_local_start
 sub_80C5BD4:
@@ -28766,8 +28766,8 @@ locret_80C5DD8:
 	.balign 4, 0x00
 	thumb_func_end sub_80C5DBC
 
-	thumb_func_start sub_80C5DDC
-sub_80C5DDC:
+	thumb_func_start t3_0x9_80C5DDC
+t3_0x9_80C5DDC:
 	push {lr}
 	ldr r1, off_80C5DF0 // =off_80C5DF4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -28781,7 +28781,7 @@ off_80C5DF0: .word off_80C5DF4
 off_80C5DF4: .word sub_80C5E00+1
 	.word sub_80C5E44+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C5DDC
+	thumb_func_end t3_0x9_80C5DDC
 
 	thumb_local_start
 sub_80C5E00:
@@ -28966,8 +28966,8 @@ locret_80C5F5C:
 	.byte 0, 0
 	thumb_func_end sub_80C5F4A
 
-	thumb_func_start sub_80C5F60
-sub_80C5F60:
+	thumb_func_start t3_0xa_80C5F60
+t3_0xa_80C5F60:
 	push {lr}
 	ldr r1, off_80C5F74 // =off_80C5F78 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -28981,7 +28981,7 @@ off_80C5F74: .word off_80C5F78
 off_80C5F78: .word sub_80C5F84+1
 	.word sub_80C5FDE+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C5F60
+	thumb_func_end t3_0xa_80C5F60
 
 	thumb_local_start
 sub_80C5F84:
@@ -29080,8 +29080,8 @@ byte_80C6038: .byte 0x17, 0x5, 0x3, 0x0, 0x0, 0xC, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0,
 	.byte 0x6, 0x5, 0x3, 0x10, 0xA, 0xC, 0x21, 0x0, 0x1, 0x8, 0x0, 0x0, 0x0, 0x0, 0xA, 0x0
 	thumb_func_end sub_80C6018
 
-	thumb_func_start sub_80C60A8
-sub_80C60A8:
+	thumb_func_start t3_0xb_80C60A8
+t3_0xb_80C60A8:
 	push {lr}
 	ldr r1, off_80C60BC // =off_80C60C0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -29095,7 +29095,7 @@ off_80C60BC: .word off_80C60C0
 off_80C60C0: .word sub_80C60CC+1
 	.word sub_80C619C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C60A8
+	thumb_func_end t3_0xb_80C60A8
 
 	thumb_local_start
 sub_80C60CC:
@@ -29315,8 +29315,8 @@ off_80C6278: .word byte_80C6038
 dword_80C627C: .word 0xFFFEE000
 	thumb_func_end sub_80C6264
 
-	thumb_func_start sub_80C6280
-sub_80C6280:
+	thumb_func_start t3_0xe_80C6280
+t3_0xe_80C6280:
 	push {lr}
 	ldr r1, off_80C6290 // =off_80C6294 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -29329,7 +29329,7 @@ off_80C6290: .word off_80C6294
 off_80C6294: .word sub_80C62A0+1
 	.word sub_80C62B0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C6280
+	thumb_func_end t3_0xe_80C6280
 
 	thumb_local_start
 sub_80C62A0:
@@ -29529,8 +29529,8 @@ locret_80C640C:
 dword_80C6410: .word 0x400FF0F
 	thumb_func_end sub_80C63AE
 
-	thumb_func_start sub_80C6414
-sub_80C6414:
+	thumb_func_start t3_0xf_80C6414
+t3_0xf_80C6414:
 	push {lr}
 	ldr r1, off_80C6428 // =off_80C642C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -29544,7 +29544,7 @@ off_80C6428: .word off_80C642C
 off_80C642C: .word sub_80C6438+1
 	.word sub_80C647C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C6414
+	thumb_func_end t3_0xf_80C6414
 
 	thumb_local_start
 sub_80C6438:
@@ -30036,8 +30036,8 @@ off_80C67F0: .word eBattleObjectsLinkedListStart
 off_80C67F4: .word eBattleObjectsLinkedListSentinel
 	thumb_func_end sub_80C67D8
 
-	thumb_func_start sub_80C67F8
-sub_80C67F8:
+	thumb_func_start t3_0x11_80C67F8
+t3_0x11_80C67F8:
 	push {lr}
 	ldr r1, off_80C680C // =off_80C6810 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -30051,7 +30051,7 @@ off_80C680C: .word off_80C6810
 off_80C6810: .word sub_80C681C+1
 	.word sub_80C6854+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C67F8
+	thumb_func_end t3_0x11_80C67F8
 
 	thumb_local_start
 sub_80C681C:
@@ -30161,8 +30161,8 @@ byte_80C68D4: .byte 0x2, 0x0, 0x21, 0x0, 0xAF, 0x0, 0xD, 0x0, 0x21, 0x0, 0xAF, 0
 	.byte 0x20, 0x12, 0x0, 0x0, 0x2, 0x1, 0x20, 0x10, 0x0, 0x0
 	thumb_func_end sub_80C68B0
 
-	thumb_func_start sub_80C6946
-sub_80C6946:
+	thumb_func_start t3_0x12_80C6946
+t3_0x12_80C6946:
 	push {lr}
 	ldr r1, off_80C6954 // =off_80C6958 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -30174,7 +30174,7 @@ off_80C6954: .word off_80C6958
 off_80C6958: .word sub_80C6964+1
 	.word sub_80C69AC+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C6946
+	thumb_func_end t3_0x12_80C6946
 
 	thumb_local_start
 sub_80C6964:
@@ -30391,8 +30391,8 @@ byte_80C6B00: .byte 0x3, 0x0, 0x16, 0xFF, 0x3, 0x1, 0x10, 0xFF, 0x3, 0x1, 0xB, 0
 	.byte 0x3, 0x1, 0x6, 0xFF
 	thumb_func_end sub_80C6ADA
 
-	thumb_func_start sub_80C6B40
-sub_80C6B40:
+	thumb_func_start t3_0x16_80C6B40
+t3_0x16_80C6B40:
 	push {lr}
 	ldr r1, off_80C6B54 // =off_80C6B58 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -30406,7 +30406,7 @@ off_80C6B54: .word off_80C6B58
 off_80C6B58: .word sub_80C6B64+1
 	.word sub_80C6C14+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C6B40
+	thumb_func_end t3_0x16_80C6B40
 
 	thumb_local_start
 sub_80C6B64:
@@ -30710,8 +30710,8 @@ byte_80C6DB8: .byte 0x8, 0x20, 0x7, 0x6, 0x2, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x2
 dword_80C6DC8: .word 0x1FF
 	thumb_func_end sub_80C6D1E
 
-	thumb_func_start sub_80C6DCC
-sub_80C6DCC:
+	thumb_func_start t3_0x17_80C6DCC
+t3_0x17_80C6DCC:
 	push {lr}
 	ldr r1, off_80C6DEC // =off_80C6DF0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -30732,7 +30732,7 @@ off_80C6DEC: .word off_80C6DF0
 off_80C6DF0: .word sub_80C6DFC+1
 	.word sub_80C6E50+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C6DCC
+	thumb_func_end t3_0x17_80C6DCC
 
 	thumb_local_start
 sub_80C6DFC:
@@ -31063,8 +31063,8 @@ locret_80C7072:
 	pop {r4,r6,pc}
 	thumb_func_end sub_80C7030
 
-	thumb_func_start sub_80C7074
-sub_80C7074:
+	thumb_func_start t3_0x18_80C7074
+t3_0x18_80C7074:
 	push {lr}
 	ldr r1, off_80C7088 // =off_80C708C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -31078,7 +31078,7 @@ off_80C7088: .word off_80C708C
 off_80C708C: .word sub_80C7098+1
 	.word sub_80C70D8+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C7074
+	thumb_func_end t3_0x18_80C7074
 
 	thumb_local_start
 sub_80C7098:
@@ -31212,8 +31212,8 @@ byte_80C7197: .byte 0x0, 0x0, 0x1, 0x0, 0x7F
 byte_80C719C: .byte 0x0, 0x0, 0x0, 0xFF, 0x0, 0x1, 0x7F, 0x0
 	thumb_func_end sub_80C7132
 
-	thumb_func_start sub_80C71A4
-sub_80C71A4:
+	thumb_func_start t3_0x19_80C71A4
+t3_0x19_80C71A4:
 	push {lr}
 	ldr r1, off_80C71B4 // =off_80C71B8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -31226,7 +31226,7 @@ off_80C71B4: .word off_80C71B8
 off_80C71B8: .word sub_80C71C4+1
 	.word sub_80C7250+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C71A4
+	thumb_func_end t3_0x19_80C71A4
 
 	thumb_local_start
 sub_80C71C4:
@@ -31513,8 +31513,8 @@ off_80C73FC: .word 0x48
 	.word 0x48
 	thumb_func_end sub_80C73BE
 
-	thumb_func_start sub_80C740C
-sub_80C740C:
+	thumb_func_start t3_0x1a_80C740C
+t3_0x1a_80C740C:
 	push {lr}
 	ldr r1, off_80C741C // =off_80C7420 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -31527,7 +31527,7 @@ off_80C741C: .word off_80C7420
 off_80C7420: .word sub_80C742C+1
 	.word sub_80C7450+1
 	.word sub_80C7530+1
-	thumb_func_end sub_80C740C
+	thumb_func_end t3_0x1a_80C740C
 
 	thumb_local_start
 sub_80C742C:
@@ -32201,8 +32201,8 @@ loc_80C7932:
 	.balign 4, 0x00
 	thumb_func_end sub_80C791E
 
-	thumb_func_start sub_80C793C
-sub_80C793C:
+	thumb_func_start t3_0x1b_80C793C
+t3_0x1b_80C793C:
 	push {lr}
 	ldr r1, off_80C794C // =off_80C7950 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -32215,7 +32215,7 @@ off_80C794C: .word off_80C7950
 off_80C7950: .word sub_80C795C+1
 	.word sub_80C7980+1
 	.word sub_80C7A58+1
-	thumb_func_end sub_80C793C
+	thumb_func_end t3_0x1b_80C793C
 
 	thumb_local_start
 sub_80C795C:
@@ -32589,8 +32589,8 @@ loc_80C7BF2:
 	.balign 4, 0x00
 	thumb_func_end sub_80C7BCC
 
-	thumb_func_start sub_80C7C18
-sub_80C7C18:
+	thumb_func_start t3_0x1c_80C7C18
+t3_0x1c_80C7C18:
 	push {lr}
 	ldr r1, off_80C7C2C // =off_80C7C30 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -32604,7 +32604,7 @@ off_80C7C2C: .word off_80C7C30
 off_80C7C30: .word sub_80C7C3C+1
 	.word sub_80C7CC0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C7C18
+	thumb_func_end t3_0x1c_80C7C18
 
 	thumb_local_start
 sub_80C7C3C:
@@ -32764,8 +32764,8 @@ locret_80C7D74:
 	.balign 4, 0x00
 	thumb_func_end sub_80C7D50
 
-	thumb_func_start sub_80C7D78
-sub_80C7D78:
+	thumb_func_start t3_0x1d_80C7D78
+t3_0x1d_80C7D78:
 	push {lr}
 	ldr r1, off_80C7D88 // =off_80C7D8C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -32778,7 +32778,7 @@ off_80C7D88: .word off_80C7D8C
 off_80C7D8C: .word sub_80C7D98+1
 	.word sub_80C7E24+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C7D78
+	thumb_func_end t3_0x1d_80C7D78
 
 	thumb_local_start
 sub_80C7D98:
@@ -32981,8 +32981,8 @@ locret_80C7F3E:
 	pop {pc}
 	thumb_func_end sub_80C7F20
 
-	thumb_func_start sub_80C7F40
-sub_80C7F40:
+	thumb_func_start t3_0x1e_80C7F40
+t3_0x1e_80C7F40:
 	push {lr}
 	ldr r1, off_80C7F54 // =off_80C7F58 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -32996,7 +32996,7 @@ off_80C7F54: .word off_80C7F58
 off_80C7F58: .word sub_80C7F64+1
 	.word sub_80C7FDC+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C7F40
+	thumb_func_end t3_0x1e_80C7F40
 
 	thumb_local_start
 sub_80C7F64:
@@ -33147,8 +33147,8 @@ locret_80C8096:
 	pop {pc}
 	thumb_func_end sub_80C8070
 
-	thumb_func_start sub_80C8098
-sub_80C8098:
+	thumb_func_start t3_0x1f_80C8098
+t3_0x1f_80C8098:
 	push {lr}
 	ldr r1, off_80C80A8 // =off_80C80AC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -33161,7 +33161,7 @@ off_80C80A8: .word off_80C80AC
 off_80C80AC: .word sub_80C80B8+1
 	.word sub_80C8100+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C8098
+	thumb_func_end t3_0x1f_80C8098
 
 	thumb_local_start
 sub_80C80B8:
@@ -33302,8 +33302,8 @@ locret_80C81CA:
 	pop {pc}
 	thumb_func_end sub_80C81A6
 
-	thumb_func_start sub_80C81CC
-sub_80C81CC:
+	thumb_func_start t3_0x20_80C81CC
+t3_0x20_80C81CC:
 	push {lr}
 	ldr r1, off_80C81E0 // =off_80C81E4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -33317,7 +33317,7 @@ off_80C81E0: .word off_80C81E4
 off_80C81E4: .word sub_80C81F0+1
 	.word sub_80C8232+1
 	.word sub_80C829C+1
-	thumb_func_end sub_80C81CC
+	thumb_func_end t3_0x20_80C81CC
 
 	thumb_local_start
 sub_80C81F0:
@@ -33544,8 +33544,8 @@ loc_80C837E:
 	.balign 4, 0x00
 	thumb_func_end sub_80C8368
 
-	thumb_func_start sub_80C8388
-sub_80C8388:
+	thumb_func_start t3_0x21_80C8388
+t3_0x21_80C8388:
 	push {lr}
 	ldr r1, off_80C83A8 // =off_80C83AC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -33566,7 +33566,7 @@ off_80C83A8: .word off_80C83AC
 off_80C83AC: .word sub_80C83B8+1
 	.word sub_80C8498+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C8388
+	thumb_func_end t3_0x21_80C8388
 
 	thumb_local_start
 sub_80C83B8:
@@ -33739,8 +33739,8 @@ locret_80C8538:
 	.balign 4, 0x00
 	thumb_func_end sub_80C8514
 
-	thumb_func_start sub_80C853C
-sub_80C853C:
+	thumb_func_start t3_0x22_80C853C
+t3_0x22_80C853C:
 	push {lr}
 	ldr r1, off_80C855C // =off_80C8560 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -33761,7 +33761,7 @@ off_80C855C: .word off_80C8560
 off_80C8560: .word sub_80C856C+1
 	.word sub_80C85C0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C853C
+	thumb_func_end t3_0x22_80C853C
 
 	thumb_local_start
 sub_80C856C:
@@ -33949,7 +33949,7 @@ sub_80C86B0:
 locret_80C86D4:
 	pop {pc}
 	.balign 4, 0
-loc_80C86D8:
+t3_0x23_80C86D8:
 	push {lr}
 	ldr r1, off_80C86F8 // =off_80C86FC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -34123,8 +34123,8 @@ locret_80C882A:
 	pop {pc}
 	thumb_func_end sub_80C8806
 
-	thumb_func_start sub_80C882C
-sub_80C882C:
+	thumb_func_start t3_0x24_80C882C
+t3_0x24_80C882C:
 	push {lr}
 	ldr r1, off_80C8840 // =off_80C8844 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -34138,7 +34138,7 @@ off_80C8840: .word off_80C8844
 off_80C8844: .word sub_80C8850+1
 	.word sub_80C8892+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C882C
+	thumb_func_end t3_0x24_80C882C
 
 	thumb_local_start
 sub_80C8850:
@@ -34426,8 +34426,8 @@ dword_80C8A9C: .word 0xFFFFD000
 dword_80C8AA0: .word 0xA05FF04
 	thumb_func_end sub_80C8A7A
 
-	thumb_func_start sub_80C8AA4
-sub_80C8AA4:
+	thumb_func_start t3_0x25_80C8AA4
+t3_0x25_80C8AA4:
 	push {lr}
 	ldr r1, off_80C8AB8 // =off_80C8ABC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -34441,7 +34441,7 @@ off_80C8AB8: .word off_80C8ABC
 off_80C8ABC: .word sub_80C8AC8+1
 	.word sub_80C8B3E+1
 	.word sub_80C8C44+1
-	thumb_func_end sub_80C8AA4
+	thumb_func_end t3_0x25_80C8AA4
 
 	thumb_local_start
 sub_80C8AC8:
@@ -34651,8 +34651,8 @@ locret_80C8C70:
 	.balign 4, 0x00
 	thumb_func_end sub_80C8C4C
 
-	thumb_func_start sub_80C8C74
-sub_80C8C74:
+	thumb_func_start t3_0x26_80C8C74
+t3_0x26_80C8C74:
 	push {lr}
 	ldr r1, off_80C8C94 // =off_80C8C98 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -34673,7 +34673,7 @@ off_80C8C94: .word off_80C8C98
 off_80C8C98: .word sub_80C8CA4+1
 	.word sub_80C8D10+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C8C74
+	thumb_func_end t3_0x26_80C8C74
 
 	thumb_local_start
 sub_80C8CA4:
@@ -34866,8 +34866,8 @@ locret_80C8E04:
 	.balign 4, 0x00
 	thumb_func_end sub_80C8DE0
 
-	thumb_func_start sub_80C8E08
-sub_80C8E08:
+	thumb_func_start t3_0x27_80C8E08
+t3_0x27_80C8E08:
 	push {lr}
 	ldr r1, off_80C8E1C // =off_80C8E20 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -34881,7 +34881,7 @@ off_80C8E1C: .word off_80C8E20
 off_80C8E20: .word sub_80C8E2C+1
 	.word sub_80C8E6E+1
 	.word sub_80C8F60+1
-	thumb_func_end sub_80C8E08
+	thumb_func_end t3_0x27_80C8E08
 
 	thumb_local_start
 sub_80C8E2C:
@@ -35138,8 +35138,8 @@ loc_80C8FE0:
 	.balign 4, 0x00
 	thumb_func_end sub_80C8FDC
 
-	thumb_func_start sub_80C8FFC
-sub_80C8FFC:
+	thumb_func_start t3_0x28_80C8FFC
+t3_0x28_80C8FFC:
 	push {lr}
 	ldr r1, off_80C9010 // =off_80C9014 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -35154,7 +35154,7 @@ off_80C9014: .word sub_80C9024+1
 	.word sub_80C9074+1
 	.word sub_80C90DC+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C8FFC
+	thumb_func_end t3_0x28_80C8FFC
 
 	thumb_local_start
 sub_80C9024:
@@ -35342,8 +35342,8 @@ locret_80C919E:
 	pop {pc}
 	thumb_func_end sub_80C9184
 
-	thumb_func_start sub_80C91A0
-sub_80C91A0:
+	thumb_func_start t3_0x29_80C91A0
+t3_0x29_80C91A0:
 	push {lr}
 	ldr r1, off_80C91B4 // =off_80C91B8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -35357,7 +35357,7 @@ off_80C91B4: .word off_80C91B8
 off_80C91B8: .word sub_80C91C4+1
 	.word sub_80C91FE+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C91A0
+	thumb_func_end t3_0x29_80C91A0
 
 	thumb_local_start
 sub_80C91C4:
@@ -35996,8 +35996,8 @@ byte_80C9664:
 	.byte 0xc, 0x0, 0xa, 0xb, 0xe, 0x0
 	thumb_func_end CheckIfThunderObjectFindsOpponentByGoingLeft
 
-	thumb_func_start sub_80C96A0
-sub_80C96A0: // shield
+	thumb_func_start t3_0x2b_80C96A0
+t3_0x2b_80C96A0: // shield
 	push {lr}
 	ldr r1, off_80C96B8 // =off_80C96BC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -36014,7 +36014,7 @@ off_80C96B8: .word off_80C96BC
 off_80C96BC: .word sub_80C96C8+1
 	.word sub_80C9726+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80C96A0
+	thumb_func_end t3_0x2b_80C96A0
 
 	thumb_local_start
 sub_80C96C8:
@@ -36215,8 +36215,8 @@ nullsub_95:
 byte_80C9818: .byte 0x6, 0x1, 0x6, 0xA, 0x1, 0x6, 0xA, 0x1, 0x6, 0x12, 0x1, 0x6
 	thumb_func_end nullsub_95
 
-	thumb_func_start sub_80C9824
-sub_80C9824:
+	thumb_func_start t3_0x2e_80C9824
+t3_0x2e_80C9824:
 	push {lr}
 	ldr r1, off_80C9838 // =off_80C983C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -36230,7 +36230,7 @@ off_80C9838: .word off_80C983C
 off_80C983C: .word sub_80C9848+1
 	.word sub_80C98DC+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C9824
+	thumb_func_end t3_0x2e_80C9824
 
 	thumb_local_start
 sub_80C9848:
@@ -36678,8 +36678,8 @@ locret_80C9BC0:
 	.balign 4, 0x00
 	thumb_func_end sub_80C9BA4
 
-	thumb_func_start sub_80C9BC4
-sub_80C9BC4:
+	thumb_func_start t3_0x2f_80C9BC4
+t3_0x2f_80C9BC4:
 	push {lr}
 	ldr r1, off_80C9BD8 // =off_80C9BDC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -36693,7 +36693,7 @@ off_80C9BD8: .word off_80C9BDC
 off_80C9BDC: .word sub_80C9BE8+1
 	.word sub_80C9C5C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C9BC4
+	thumb_func_end t3_0x2f_80C9BC4
 
 	thumb_local_start
 sub_80C9BE8:
@@ -36826,8 +36826,8 @@ locret_80C9CF0:
 	.byte 0, 0
 	thumb_func_end sub_80C9CDA
 
-	thumb_func_start sub_80C9D00
-sub_80C9D00:
+	thumb_func_start t3_0x30_80C9D00
+t3_0x30_80C9D00:
 	push {lr}
 	ldr r1, off_80C9D14 // =off_80C9D18 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -36841,7 +36841,7 @@ off_80C9D14: .word off_80C9D18
 off_80C9D18: .word sub_80C9D24+1
 	.word sub_80C9D9E+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80C9D00
+	thumb_func_end t3_0x30_80C9D00
 
 	thumb_local_start
 sub_80C9D24:
@@ -37141,8 +37141,8 @@ off_80C9F64: .word 0x4000000
 dword_80C9F74: .word 0x348000
 	thumb_func_end sub_80C9F18
 
-	thumb_func_start sub_80C9F78
-sub_80C9F78:
+	thumb_func_start t3_0x31_80C9F78
+t3_0x31_80C9F78:
 	push {lr}
 	ldr r1, JumpTable80C9F88_p // =JumpTable80C9F88
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -37155,7 +37155,7 @@ JumpTable80C9F88: .word sub_80C9F98+1
 	.word sub_80CA074+1
 	.word object_genericDestroy+1
 JumpTable80C9F88_p: .word JumpTable80C9F88
-	thumb_func_end sub_80C9F78
+	thumb_func_end t3_0x31_80C9F78
 
 	thumb_local_start
 sub_80C9F98:
@@ -37477,8 +37477,8 @@ byte_80CA26C: .byte 0x0, 0x1E, 0x1E, 0x1, 0x0, 0x0, 0x8, 0x0, 0xCD, 0xCC, 0x4, 0
 	.byte 0x0, 0x0, 0x8, 0x0, 0xCD, 0xCC, 0x4, 0x0
 	thumb_func_end sub_80CA234
 
-	thumb_func_start sub_80CA2A8
-sub_80CA2A8:
+	thumb_func_start t3_0x32_80CA2A8
+t3_0x32_80CA2A8:
 	push {lr}
 	ldr r1, off_80CA2BC // =off_80CA2C0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -37492,7 +37492,7 @@ off_80CA2BC: .word off_80CA2C0
 off_80CA2C0: .word sub_80CA2D4+1
 	.word sub_80CA3A0+1
 	.word sub_80CA2CC+1
-	thumb_func_end sub_80CA2A8
+	thumb_func_end t3_0x32_80CA2A8
 
 	thumb_local_start
 sub_80CA2CC:
@@ -37808,8 +37808,8 @@ locret_80CA53E:
 dword_80CA540: .word 0xFF800000
 	thumb_func_end sub_80CA510
 
-	thumb_func_start sub_80CA544
-sub_80CA544:
+	thumb_func_start t3_0x33_80CA544
+t3_0x33_80CA544:
 	push {lr}
 	ldr r1, off_80CA558 // =off_80CA55C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -37823,7 +37823,7 @@ off_80CA558: .word off_80CA55C
 off_80CA55C: .word sub_80CA568+1
 	.word sub_80CA61A+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CA544
+	thumb_func_end t3_0x33_80CA544
 
 	thumb_local_start
 sub_80CA568:
@@ -37987,8 +37987,8 @@ dword_80CA6B0: .word 0xF880080
 dword_80CA6B4: .word 0x80000
 	thumb_func_end sub_80CA69C
 
-	thumb_func_start sub_80CA6B8
-sub_80CA6B8:
+	thumb_func_start t3_0x34_80CA6B8
+t3_0x34_80CA6B8:
 	push {lr}
 	ldr r1, off_80CA6C8 // =off_80CA6CC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -38001,7 +38001,7 @@ off_80CA6C8: .word off_80CA6CC
 off_80CA6CC: .word sub_80CA6D8+1
 	.word sub_80CA7AC+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CA6B8
+	thumb_func_end t3_0x34_80CA6B8
 
 	thumb_local_start
 sub_80CA6D8:
@@ -38300,8 +38300,8 @@ dword_80CA930: .word 0x280000
 dword_80CA934: .word 0x40000
 	thumb_func_end sub_80CA90E
 
-	thumb_func_start sub_80CA938
-sub_80CA938:
+	thumb_func_start t3_0x35_80CA938
+t3_0x35_80CA938:
 	push {lr}
 	ldr r1, off_80CA94C // =off_80CA950 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -38315,7 +38315,7 @@ off_80CA94C: .word off_80CA950
 off_80CA950: .word sub_80CA95C+1
 	.word sub_80CA9CA+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CA938
+	thumb_func_end t3_0x35_80CA938
 
 	thumb_local_start
 sub_80CA95C:
@@ -38573,8 +38573,8 @@ sub_80CAB44:
 dword_80CAB64: .word 0xFFFFD000
 	thumb_func_end sub_80CAB44
 
-	thumb_func_start sub_80CAB68
-sub_80CAB68:
+	thumb_func_start t3_0x36_80CAB68
+t3_0x36_80CAB68:
 	push {lr}
 	ldr r1, off_80CAB78 // =off_80CAB7C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -38587,7 +38587,7 @@ off_80CAB78: .word off_80CAB7C
 off_80CAB7C: .word sub_80CAB88+1
 	.word sub_80CAB90+1
 	.word sub_80CAC44+1
-	thumb_func_end sub_80CAB68
+	thumb_func_end t3_0x36_80CAB68
 
 	thumb_local_start
 sub_80CAB88:
@@ -38817,8 +38817,8 @@ locret_80CAD24:
 	.balign 4, 0x00
 	thumb_func_end sub_80CAD14
 
-	thumb_func_start sub_80CAD28
-sub_80CAD28:
+	thumb_func_start t3_0x37_80CAD28
+t3_0x37_80CAD28:
 	push {lr}
 	ldr r1, off_80CAD3C // =off_80CAD40 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -38832,7 +38832,7 @@ off_80CAD3C: .word off_80CAD40
 off_80CAD40: .word sub_80CAD4C+1
 	.word sub_80CADE0+1
 	.word sub_80CAEC0+1
-	thumb_func_end sub_80CAD28
+	thumb_func_end t3_0x37_80CAD28
 
 	thumb_local_start
 sub_80CAD4C:
@@ -39038,8 +39038,8 @@ locret_80CAEEC:
 	.byte 0, 0
 	thumb_func_end sub_80CAEC8
 
-	thumb_func_start sub_80CAEF0
-sub_80CAEF0:
+	thumb_func_start t3_0x38_80CAEF0
+t3_0x38_80CAEF0:
 	push {lr}
 	ldr r1, off_80CAF04 // =off_80CAF08 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -39053,7 +39053,7 @@ off_80CAF04: .word off_80CAF08
 off_80CAF08: .word sub_80CAF14+1
 	.word sub_80CAF9C+1
 	.word sub_80CB078+1
-	thumb_func_end sub_80CAEF0
+	thumb_func_end t3_0x38_80CAEF0
 
 	thumb_local_start
 sub_80CAF14:
@@ -39273,8 +39273,8 @@ dword_80CB0D4: .word 0x140000
 dword_80CB0D8: .word 0x280000
 	thumb_func_end sub_80CB0AE
 
-	thumb_func_start sub_80CB0DC
-sub_80CB0DC:
+	thumb_func_start t3_0x39_80CB0DC
+t3_0x39_80CB0DC:
 	push {lr}
 	ldr r1, off_80CB0FC // =off_80CB100 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -39295,7 +39295,7 @@ off_80CB0FC: .word off_80CB100
 off_80CB100: .word sub_80CB10C+1
 	.word sub_80CB154+1
 	.word sub_80CB1DA+1
-	thumb_func_end sub_80CB0DC
+	thumb_func_end t3_0x39_80CB0DC
 
 	thumb_local_start
 sub_80CB10C:
@@ -39495,8 +39495,8 @@ locret_80CB280:
 	.balign 4, 0x00
 	thumb_func_end sub_80CB248
 
-	thumb_func_start sub_80CB284
-sub_80CB284:
+	thumb_func_start t3_0x3a_80CB284
+t3_0x3a_80CB284:
 	push {lr}
 	ldr r1, off_80CB298 // =off_80CB29C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -39510,7 +39510,7 @@ off_80CB298: .word off_80CB29C
 off_80CB29C: .word sub_80CB2A8+1
 	.word sub_80CB368+1
 	.word sub_80CB3FC+1
-	thumb_func_end sub_80CB284
+	thumb_func_end t3_0x3a_80CB284
 
 	thumb_local_start
 sub_80CB2A8:
@@ -39751,8 +39751,8 @@ off_80CB494: .word math_cosTable
 off_80CB498: .word math_sinTable
 	thumb_func_end sub_80CB45C
 
-	thumb_func_start sub_80CB49C
-sub_80CB49C:
+	thumb_func_start t3_0x3b_80CB49C
+t3_0x3b_80CB49C:
 	push {lr}
 	ldr r1, off_80CB4B0 // =off_80CB4B4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -39766,7 +39766,7 @@ off_80CB4B0: .word off_80CB4B4
 off_80CB4B4: .word sub_80CB4D4+1
 	.word sub_80CB5B4+1
 	.word sub_80CB4C0+1
-	thumb_func_end sub_80CB49C
+	thumb_func_end t3_0x3b_80CB49C
 
 	thumb_local_start
 sub_80CB4C0:
@@ -40035,8 +40035,8 @@ dword_80CB6EC: .word 0xC3FF
 byte_80CB6F0: .byte 0x4, 0x5, 0x4B, 0x4, 0x5, 0x63, 0x0, 0x0
 	thumb_func_end sub_80CB6CA
 
-	thumb_func_start sub_80CB6F8
-sub_80CB6F8:
+	thumb_func_start t3_0x3c_80CB6F8
+t3_0x3c_80CB6F8:
 	push {lr}
 	ldr r1, off_80CB70C // =off_80CB710 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -40050,7 +40050,7 @@ off_80CB70C: .word off_80CB710
 off_80CB710: .word sub_80CB71C+1
 	.word sub_80CB762+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CB6F8
+	thumb_func_end t3_0x3c_80CB6F8
 
 	thumb_local_start
 sub_80CB71C:
@@ -40289,8 +40289,8 @@ locret_80CB8FA:
 off_80CB8FC: .word byte_80CB6F0
 	thumb_func_end sub_80CB8DE
 
-	thumb_func_start sub_80CB900
-sub_80CB900:
+	thumb_func_start t3_0x3d_80CB900
+t3_0x3d_80CB900:
 	push {lr}
 	ldr r1, off_80CB914 // =off_80CB918 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -40304,7 +40304,7 @@ off_80CB914: .word off_80CB918
 off_80CB918: .word sub_80CB964+1
 	.word sub_80CB9E2+1
 	.word sub_80CB924+1
-	thumb_func_end sub_80CB900
+	thumb_func_end t3_0x3d_80CB900
 
 	thumb_local_start
 sub_80CB924:
@@ -40588,8 +40588,8 @@ dword_80CBB3C: .word 0x280000
 dword_80CBB40: .word 0xF800000
 	thumb_func_end sub_80CBAFA
 
-	thumb_func_start sub_80CBB44
-sub_80CBB44:
+	thumb_func_start t3_0x3e_80CBB44
+t3_0x3e_80CBB44:
 	push {lr}
 	ldr r1, off_80CBB54 // =off_80CBB58 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -40602,7 +40602,7 @@ off_80CBB54: .word off_80CBB58
 off_80CBB58: .word sub_80CBB76+1
 	.word sub_80CBC38+1
 	.word sub_80CBB64+1
-	thumb_func_end sub_80CBB44
+	thumb_func_end t3_0x3e_80CBB44
 
 	thumb_local_start
 sub_80CBB64:
@@ -41211,8 +41211,8 @@ dword_80CC03C: .word 0x8000
 dword_80CC040: .word 0x300000
 	thumb_func_end sub_80CC006
 
-	thumb_func_start sub_80CC044
-sub_80CC044:
+	thumb_func_start t3_0x3f_80CC044
+t3_0x3f_80CC044:
 	push {lr}
 	ldr r1, off_80CC054 // =off_80CC058 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -41225,7 +41225,7 @@ off_80CC054: .word off_80CC058
 off_80CC058: .word sub_80CC064+1
 	.word sub_80CC090+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80CC044
+	thumb_func_end t3_0x3f_80CC044
 
 	thumb_local_start
 sub_80CC064:
@@ -41291,8 +41291,8 @@ byte_80CC0D8: .byte 0x14, 0x0, 0xA, 0x0, 0x28, 0x0, 0xA, 0x0, 0x3C, 0x0, 0xA, 0x
 	.byte 0x3C, 0x0, 0xA, 0x0
 	thumb_func_end sub_80CC0B2
 
-	thumb_func_start sub_80CC0E8
-sub_80CC0E8:
+	thumb_func_start t3_0x40_80CC0E8
+t3_0x40_80CC0E8:
 	push {lr}
 	ldr r1, off_80CC100 // =off_80CC104 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -41307,7 +41307,7 @@ off_80CC100: .word off_80CC104
 off_80CC104: .word sub_80CC110+1
 	.word sub_80CC1A0+1
 	.word sub_80CC472+1
-	thumb_func_end sub_80CC0E8
+	thumb_func_end t3_0x40_80CC0E8
 
 	thumb_local_start
 sub_80CC110:
@@ -41797,8 +41797,8 @@ off_80CC4BC: .word byte_80CC0D8
 off_80CC4C0: .word byte_80CC0D0
 	thumb_func_end sub_80CC486
 
-	thumb_func_start sub_80CC4C4
-sub_80CC4C4:
+	thumb_func_start t3_0x41_80CC4C4
+t3_0x41_80CC4C4:
 	push {lr}
 	ldr r1, off_80CC4DC // =off_80CC4E0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -41813,7 +41813,7 @@ off_80CC4DC: .word off_80CC4E0
 off_80CC4E0: .word sub_80CC4EC+1
 	.word sub_80CC562+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CC4C4
+	thumb_func_end t3_0x41_80CC4C4
 
 	thumb_local_start
 sub_80CC4EC:
@@ -41905,8 +41905,8 @@ locret_80CC5A6:
 	pop {pc}
 	thumb_func_end sub_80CC584
 
-	thumb_func_start sub_80CC5A8
-sub_80CC5A8:
+	thumb_func_start t3_0x42_80CC5A8
+t3_0x42_80CC5A8:
 	push {lr}
 	ldr r1, off_80CC5B8 // =off_80CC5BC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -41919,7 +41919,7 @@ off_80CC5B8: .word off_80CC5BC
 off_80CC5BC: .word sub_80CC5C8+1
 	.word sub_80CC668+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CC5A8
+	thumb_func_end t3_0x42_80CC5A8
 
 	thumb_local_start
 sub_80CC5C8:
@@ -42115,8 +42115,8 @@ off_80CC760: .word math_sinTable
 byte_80CC764: .byte 0xA, 0x0, 0xA, 0x0, 0xA, 0x0, 0xA, 0x0
 	thumb_func_end sub_80CC73C
 
-	thumb_func_start sub_80CC76C
-sub_80CC76C:
+	thumb_func_start t3_0x43_80CC76C
+t3_0x43_80CC76C:
 	push {lr}
 	ldr r1, off_80CC780 // =off_80CC784 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -42130,7 +42130,7 @@ off_80CC780: .word off_80CC784
 off_80CC784: .word sub_80CC790+1
 	.word sub_80CC800+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CC76C
+	thumb_func_end t3_0x43_80CC76C
 
 	thumb_local_start
 sub_80CC790:
@@ -42344,8 +42344,8 @@ locret_80CC93E:
 off_80CC940: .word byte_80CC764
 	thumb_func_end sub_80CC918
 
-	thumb_func_start sub_80CC944
-sub_80CC944:
+	thumb_func_start t3_0x44_80CC944
+t3_0x44_80CC944:
 	push {lr}
 	ldr r1, off_80CC954 // =off_80CC958 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -42358,7 +42358,7 @@ off_80CC954: .word off_80CC958
 off_80CC958: .word sub_80CC964+1
 	.word sub_80CC9AA+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CC944
+	thumb_func_end t3_0x44_80CC944
 
 	thumb_local_start
 sub_80CC964:
@@ -42471,8 +42471,8 @@ locret_80CCA3C:
 	.byte 0, 0
 	thumb_func_end sub_80CC9FC
 
-	thumb_func_start sub_80CCA40
-sub_80CCA40:
+	thumb_func_start t3_0x45_80CCA40
+t3_0x45_80CCA40:
 	push {lr}
 	ldr r1, off_80CCA50 // =off_80CCA54 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -42485,7 +42485,7 @@ off_80CCA50: .word off_80CCA54
 off_80CCA54: .word sub_80CCA60+1
 	.word sub_80CCAB8+1
 	.word sub_80CCC1E+1
-	thumb_func_end sub_80CCA40
+	thumb_func_end t3_0x45_80CCA40
 
 	thumb_local_start
 sub_80CCA60:
@@ -42727,8 +42727,8 @@ locret_80CCC46:
 	pop {pc}
 	thumb_func_end sub_80CCC26
 
-	thumb_func_start sub_80CCC48
-sub_80CCC48:
+	thumb_func_start t3_0x46_80CCC48
+t3_0x46_80CCC48:
 	push {lr}
 	ldr r1, off_80CCC58 // =off_80CCC5C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -42741,7 +42741,7 @@ off_80CCC58: .word off_80CCC5C
 off_80CCC5C: .word sub_80CCC68+1
 	.word sub_80CCCBC+1
 	.word sub_80CCD42+1
-	thumb_func_end sub_80CCC48
+	thumb_func_end t3_0x46_80CCC48
 
 	thumb_local_start
 sub_80CCC68:
@@ -42892,8 +42892,8 @@ locret_80CCD6E:
 	pop {pc}
 	thumb_func_end sub_80CCD4A
 
-	thumb_func_start sub_80CCD70
-sub_80CCD70:
+	thumb_func_start t3_0x47_80CCD70
+t3_0x47_80CCD70:
 	push {lr}
 	ldr r1, off_80CCD84 // =off_80CCD88 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -42907,7 +42907,7 @@ off_80CCD84: .word off_80CCD88
 off_80CCD88: .word sub_80CCD94+1
 	.word sub_80CCDFC+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CCD70
+	thumb_func_end t3_0x47_80CCD70
 
 	thumb_local_start
 sub_80CCD94:
@@ -43195,8 +43195,8 @@ locret_80CCFD2:
 byte_80CCFD4: .byte 0x1, 0x0, 0x28, 0x0, 0x1, 0x1, 0x28, 0x0
 	thumb_func_end sub_80CCFAC
 
-	thumb_func_start sub_80CCFDC
-sub_80CCFDC:
+	thumb_func_start t3_0x48_80CCFDC
+t3_0x48_80CCFDC:
 	push {lr}
 	ldr r1, off_80CCFEC // =off_80CCFF0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -43209,7 +43209,7 @@ off_80CCFEC: .word off_80CCFF0
 off_80CCFF0: .word sub_80CCFFC+1
 	.word sub_80CD08C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CCFDC
+	thumb_func_end t3_0x48_80CCFDC
 
 	thumb_local_start
 sub_80CCFFC:
@@ -43586,8 +43586,8 @@ dword_80CD2E4: .word 0x300000
 dword_80CD2E8: .word 0x800000
 	thumb_func_end sub_80CD2B4
 
-	thumb_func_start sub_80CD2EC
-sub_80CD2EC:
+	thumb_func_start t3_0x49_80CD2EC
+t3_0x49_80CD2EC:
 	push {lr}
 	ldr r1, off_80CD300 // =off_80CD304 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -43601,7 +43601,7 @@ off_80CD300: .word off_80CD304
 off_80CD304: .word sub_80CD310+1
 	.word sub_80CD3B0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CD2EC
+	thumb_func_end t3_0x49_80CD2EC
 
 	thumb_local_start
 sub_80CD310:
@@ -43838,8 +43838,8 @@ loc_80CD4C0:
 dword_80CD4E8: .word 0x800000
 	thumb_func_end sub_80CD4AC
 
-	thumb_func_start sub_80CD4EC
-sub_80CD4EC:
+	thumb_func_start t3_0x4a_80CD4EC
+t3_0x4a_80CD4EC:
 	push {lr}
 	ldr r1, off_80CD4FC // =off_80CD500 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -43852,7 +43852,7 @@ off_80CD4FC: .word off_80CD500
 off_80CD500: .word sub_80CD50C+1
 	.word sub_80CD5F8+1
 	.word sub_80CD78E+1
-	thumb_func_end sub_80CD4EC
+	thumb_func_end t3_0x4a_80CD4EC
 
 	thumb_local_start
 sub_80CD50C:
@@ -44300,8 +44300,8 @@ byte_80CD8AC: .byte 0x0, 0x1, 0x32, 0x0, 0x0, 0x1, 0xE, 0xF, 0x2, 0x3, 0xC8, 0x0
 	.byte 0x1, 0x0, 0x3, 0x0, 0xC, 0xD, 0x4, 0x4, 0xA, 0x0, 0x2, 0x0, 0xC, 0xD
 	.byte 0x5, 0x6, 0x1, 0x0, 0x3, 0x0, 0xC, 0xD
 
-	thumb_func_start sub_80CD8EC
-sub_80CD8EC:
+	thumb_func_start t3_0x4b_80CD8EC
+t3_0x4b_80CD8EC:
 	push {lr}
 	ldr r1, off_80CD8FC // =off_80CD900 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -44314,7 +44314,7 @@ off_80CD8FC: .word off_80CD900
 off_80CD900: .word sub_80CD91E+1
 	.word sub_80CD9CA+1
 	.word sub_80CD90C+1
-	thumb_func_end sub_80CD8EC
+	thumb_func_end t3_0x4b_80CD8EC
 
 	thumb_local_start
 sub_80CD90C:
@@ -44839,8 +44839,8 @@ dword_80CDD3C: .word 0x300000
 off_80CDD40: .word byte_80CD8AC
 	thumb_func_end sub_80CDCBC
 
-	thumb_func_start sub_80CDD44
-sub_80CDD44:
+	thumb_func_start t3_0x4c_80CDD44
+t3_0x4c_80CDD44:
 	push {lr}
 	ldr r1, off_80CDD54 // =off_80CDD58 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -44853,7 +44853,7 @@ off_80CDD54: .word off_80CDD58
 off_80CDD58: .word sub_80CDD64+1
 	.word sub_80CDDFC+1
 	.word sub_80CDEF8+1
-	thumb_func_end sub_80CDD44
+	thumb_func_end t3_0x4c_80CDD44
 
 	thumb_local_start
 sub_80CDD64:
@@ -45115,8 +45115,8 @@ locret_80CDF82:
 	pop {pc}
 	thumb_func_end sub_80CDF60
 
-	thumb_func_start sub_80CDF84
-sub_80CDF84:
+	thumb_func_start t3_0x4d_80CDF84
+t3_0x4d_80CDF84:
 	push {lr}
 	ldr r1, off_80CDF94 // =off_80CDF98 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -45129,7 +45129,7 @@ off_80CDF94: .word off_80CDF98
 off_80CDF98: .word sub_80CDFA4+1
 	.word sub_80CDFEE+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CDF84
+	thumb_func_end t3_0x4d_80CDF84
 
 	thumb_local_start
 sub_80CDFA4:
@@ -45318,8 +45318,8 @@ locret_80CE112:
 dword_80CE114: .word 0x1000000
 	thumb_func_end sub_80CE0EC
 
-	thumb_func_start sub_80CE118
-sub_80CE118:
+	thumb_func_start t3_0x4e_80CE118
+t3_0x4e_80CE118:
 	push {lr}
 	ldr r1, off_80CE128 // =off_80CE12C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -45332,7 +45332,7 @@ off_80CE128: .word off_80CE12C
 off_80CE12C: .word sub_80CE138+1
 	.word sub_80CE178+1
 	.word sub_80CE21C+1
-	thumb_func_end sub_80CE118
+	thumb_func_end t3_0x4e_80CE118
 
 	thumb_local_start
 sub_80CE138:
@@ -45485,8 +45485,8 @@ locret_80CE248:
 	.balign 4, 0x00
 	thumb_func_end sub_80CE224
 
-	thumb_func_start sub_80CE24C
-sub_80CE24C:
+	thumb_func_start t3_0x4f_80CE24C
+t3_0x4f_80CE24C:
 	push {lr}
 	ldr r1, off_80CE260 // =off_80CE264 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -45500,7 +45500,7 @@ off_80CE260: .word off_80CE264
 off_80CE264: .word sub_80CE270+1
 	.word sub_80CE2B4+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CE24C
+	thumb_func_end t3_0x4f_80CE24C
 
 	thumb_local_start
 sub_80CE270:
@@ -45845,8 +45845,8 @@ off_80CE528: .word PanelOffsetListsPointerTable
 off_80CE52C: .word byte_8019C34
 	thumb_func_end sub_80CE468
 
-	thumb_func_start sub_80CE530
-sub_80CE530:
+	thumb_func_start t3_0x50_80CE530
+t3_0x50_80CE530:
 	push {lr}
 	ldr r1, off_80CE544 // =off_80CE548 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -45860,7 +45860,7 @@ off_80CE544: .word off_80CE548
 off_80CE548: .word sub_80CE554+1
 	.word sub_80CE5F0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CE530
+	thumb_func_end t3_0x50_80CE530
 
 	thumb_local_start
 sub_80CE554:
@@ -46077,8 +46077,8 @@ dword_80CE704: .word 0xC0000
 dword_80CE708: .word 0x40000
 	thumb_func_end sub_80CE6E6
 
-	thumb_func_start sub_80CE70C
-sub_80CE70C:
+	thumb_func_start t3_0x51_80CE70C
+t3_0x51_80CE70C:
 	push {lr}
 	ldr r1, off_80CE720 // =off_80CE724 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -46092,7 +46092,7 @@ off_80CE720: .word off_80CE724
 off_80CE724: .word sub_80CE730+1
 	.word sub_80CE782+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CE70C
+	thumb_func_end t3_0x51_80CE70C
 
 	thumb_local_start
 sub_80CE730:
@@ -46211,8 +46211,8 @@ dword_80CE814: .word 0x4050300
 dword_80CE818: .word 0xF800000
 	thumb_func_end sub_80CE7EE
 
-	thumb_func_start sub_80CE81C
-sub_80CE81C:
+	thumb_func_start t3_0x52_80CE81C
+t3_0x52_80CE81C:
 	push {lr}
 	ldr r1, off_80CE82C // =off_80CE830 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -46225,7 +46225,7 @@ off_80CE82C: .word off_80CE830
 off_80CE830: .word sub_80CE83C+1
 	.word sub_80CE87C+1
 	.word sub_80CEA88+1
-	thumb_func_end sub_80CE81C
+	thumb_func_end t3_0x52_80CE81C
 
 	thumb_local_start
 sub_80CE83C:
@@ -46621,8 +46621,8 @@ dword_80CEAF8: .word 0x1000C0B
 dword_80CEAFC: .word 0x7050100
 	thumb_func_end sub_80CEAEE
 
-	thumb_func_start sub_80CEB00
-sub_80CEB00:
+	thumb_func_start t3_0x53_80CEB00
+t3_0x53_80CEB00:
 	push {lr}
 	ldr r1, off_80CEB14 // =off_80CEB18 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -46636,7 +46636,7 @@ off_80CEB14: .word off_80CEB18
 off_80CEB18: .word sub_80CEB24+1
 	.word sub_80CEB66+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CEB00
+	thumb_func_end t3_0x53_80CEB00
 
 	thumb_local_start
 sub_80CEB24:
@@ -47043,8 +47043,8 @@ dword_80CEE6C: .word 0xC00000
 byte_80CEE70: .byte 0x2, 0x0, 0x5, 0x0, 0xA, 0x0, 0x14, 0x0
 	thumb_func_end sub_80CEE38
 
-	thumb_func_start sub_80CEE78
-sub_80CEE78:
+	thumb_func_start t3_0x54_80CEE78
+t3_0x54_80CEE78:
 	push {lr}
 	ldr r1, off_80CEE8C // =off_80CEE90 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -47058,7 +47058,7 @@ off_80CEE8C: .word off_80CEE90
 off_80CEE90: .word sub_80CEE9C+1
 	.word sub_80CEF0A+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CEE78
+	thumb_func_end t3_0x54_80CEE78
 
 	thumb_local_start
 sub_80CEE9C:
@@ -47350,8 +47350,8 @@ byte_80CF0C0: .byte 0xC, 0x30, 0x6, 0x0, 0x64, 0x0, 0xB8, 0xB, 0xC, 0x30, 0x1
 	.byte 0x1, 0x64, 0x0, 0xA1, 0x5
 	thumb_func_end sub_80CF080
 
-	thumb_func_start sub_80CF0D0
-sub_80CF0D0:
+	thumb_func_start t3_0x55_80CF0D0
+t3_0x55_80CF0D0:
 	push {lr}
 	ldr r1, off_80CF0E0 // =off_80CF0E4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -47364,7 +47364,7 @@ off_80CF0E0: .word off_80CF0E4
 off_80CF0E4: .word sub_80CF0F0+1
 	.word sub_80CF18C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CF0D0
+	thumb_func_end t3_0x55_80CF0D0
 
 	thumb_local_start
 sub_80CF0F0:
@@ -47694,8 +47694,8 @@ byte_80CF3AC: .byte 0x31, 0x0, 0xA, 0x5, 0x1, 0x0, 0x31, 0x0, 0xA, 0x5, 0x1, 0x0
 	.byte 0x0, 0xA, 0x5, 0x1, 0x0
 	thumb_func_end sub_80CF374
 
-	thumb_func_start sub_80CF3BE
-sub_80CF3BE:
+	thumb_func_start t3_0x56_80CF3BE
+t3_0x56_80CF3BE:
 	push {lr}
 	ldr r1, off_80CF3CC // =off_80CF3D0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -47707,7 +47707,7 @@ off_80CF3CC: .word off_80CF3D0
 off_80CF3D0: .word sub_80CF3DC+1
 	.word sub_80CF488+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CF3BE
+	thumb_func_end t3_0x56_80CF3BE
 
 	thumb_local_start
 sub_80CF3DC:
@@ -47954,8 +47954,8 @@ locret_80CF5C4:
 	.balign 4, 0x00
 	thumb_func_end sub_80CF5B2
 
-	thumb_func_start sub_80CF5C8
-sub_80CF5C8:
+	thumb_func_start t3_0x57_80CF5C8
+t3_0x57_80CF5C8:
 	push {lr}
 	ldr r1, off_80CF5DC // =off_80CF5E0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -47969,7 +47969,7 @@ off_80CF5DC: .word off_80CF5E0
 off_80CF5E0: .word sub_80CF5EC+1
 	.word sub_80CF658+1
 	.word sub_80CF76C+1
-	thumb_func_end sub_80CF5C8
+	thumb_func_end t3_0x57_80CF5C8
 
 	thumb_local_start
 sub_80CF5EC:
@@ -48223,8 +48223,8 @@ off_80CF7E8: .word 0x4000000
 	.word 0x8000000
 	thumb_func_end sub_80CF7A4
 
-	thumb_func_start sub_80CF7F0
-sub_80CF7F0:
+	thumb_func_start t3_0x58_80CF7F0
+t3_0x58_80CF7F0:
 	push {lr}
 	ldr r1, off_80CF800 // =off_80CF804 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -48237,7 +48237,7 @@ off_80CF800: .word off_80CF804
 off_80CF804: .word sub_80CF810+1
 	.word sub_80CF8B0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CF7F0
+	thumb_func_end t3_0x58_80CF7F0
 
 	thumb_local_start
 sub_80CF810:
@@ -48381,8 +48381,8 @@ byte_80CF934: .byte 0x1, 0xC8, 0x0, 0x0, 0x97, 0x0, 0xD0, 0x0, 0x1, 0xC8, 0x64, 
 	.byte 0x2, 0xC8, 0x64, 0x1, 0xD9, 0x0, 0xD1, 0x0
 	thumb_func_end sub_80CF91E
 
-	thumb_func_start sub_80CF954
-sub_80CF954:
+	thumb_func_start t3_0x59_80CF954
+t3_0x59_80CF954:
 	push {lr}
 	ldr r1, off_80CF964 // =off_80CF968 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -48395,7 +48395,7 @@ off_80CF964: .word off_80CF968
 off_80CF968: .word sub_80CF974+1
 	.word sub_80CFA18+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CF954
+	thumb_func_end t3_0x59_80CF954
 
 	thumb_local_start
 sub_80CF974:
@@ -48712,8 +48712,8 @@ dword_80CFC00: .word 0x8000
 dword_80CFC04: .word 0x300000
 	thumb_func_end sub_80CFBC4
 
-	thumb_func_start sub_80CFC08
-sub_80CFC08:
+	thumb_func_start t3_0x5a_80CFC08
+t3_0x5a_80CFC08:
 	push {lr}
 	ldr r1, off_80CFC18 // =off_80CFC1C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -48726,7 +48726,7 @@ off_80CFC18: .word off_80CFC1C
 off_80CFC1C: .word sub_80CFC28+1
 	.word sub_80CFC5E+1
 	.word sub_80CFC96+1
-	thumb_func_end sub_80CFC08
+	thumb_func_end t3_0x5a_80CFC08
 
 	thumb_local_start
 sub_80CFC28:
@@ -48842,8 +48842,8 @@ locret_80CFCF4:
 	.balign 4, 0x00
 	thumb_func_end sub_80CFCD6
 
-	thumb_func_start sub_80CFCF8
-sub_80CFCF8:
+	thumb_func_start t3_0x5b_80CFCF8
+t3_0x5b_80CFCF8:
 	push {lr}
 	ldr r1, off_80CFD0C // =off_80CFD10 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -48857,7 +48857,7 @@ off_80CFD0C: .word off_80CFD10
 off_80CFD10: .word sub_80CFD1C+1
 	.word sub_80CFD64+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CFCF8
+	thumb_func_end t3_0x5b_80CFCF8
 
 	thumb_local_start
 sub_80CFD1C:
@@ -49085,8 +49085,8 @@ off_80CFEB8: .word 0x4000000
 dword_80CFEC0: .word 0x4050101
 	thumb_func_end sub_80CFE5C
 
-	thumb_func_start sub_80CFEC4
-sub_80CFEC4:
+	thumb_func_start t3_0x5c_80CFEC4
+t3_0x5c_80CFEC4:
 	push {lr}
 	ldr r1, off_80CFED4 // =off_80CFED8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -49099,7 +49099,7 @@ off_80CFED4: .word off_80CFED8
 off_80CFED8: .word sub_80CFEE4+1
 	.word sub_80CFF62+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80CFEC4
+	thumb_func_end t3_0x5c_80CFEC4
 
 	thumb_local_start
 sub_80CFEE4:
@@ -49333,8 +49333,8 @@ sub_80D008C:
 dword_80D009C: .word 0xC0000
 	thumb_func_end sub_80D008C
 
-	thumb_func_start sub_80D00A0
-sub_80D00A0:
+	thumb_func_start t3_0x5d_80D00A0
+t3_0x5d_80D00A0:
 	push {lr}
 	ldr r1, off_80D00B4 // =off_80D00B8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -49348,7 +49348,7 @@ off_80D00B4: .word off_80D00B8
 off_80D00B8: .word sub_80D00C4+1
 	.word sub_80D0132+1
 	.word sub_80D01BC+1
-	thumb_func_end sub_80D00A0
+	thumb_func_end t3_0x5d_80D00A0
 
 	thumb_local_start
 sub_80D00C4:
@@ -49578,8 +49578,8 @@ off_80D0260: .word dword_80D0264
 dword_80D0264: .word 0x1213
 	thumb_func_end sub_80D0230
 
-	thumb_func_start sub_80D0268
-sub_80D0268:
+	thumb_func_start t3_0x5e_80D0268
+t3_0x5e_80D0268:
 	push {lr}
 	ldr r1, off_80D027C // =off_80D0280 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -49593,7 +49593,7 @@ off_80D027C: .word off_80D0280
 off_80D0280: .word sub_80D028C+1
 	.word sub_80D02D6+1
 	.word sub_80D035C+1
-	thumb_func_end sub_80D0268
+	thumb_func_end t3_0x5e_80D0268
 
 	thumb_local_start
 sub_80D028C:
@@ -49740,8 +49740,8 @@ locret_80D0390:
 	.balign 4, 0x00
 	thumb_func_end sub_80D036C
 
-	thumb_func_start sub_80D0394
-sub_80D0394:
+	thumb_func_start t3_0x5f_80D0394
+t3_0x5f_80D0394:
 	push {lr}
 	ldr r1, off_80D03A8 // =off_80D03AC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -49755,7 +49755,7 @@ off_80D03A8: .word off_80D03AC
 off_80D03AC: .word sub_80D03B8+1
 	.word sub_80D0454+1
 	.word sub_80D04D2+1
-	thumb_func_end sub_80D0394
+	thumb_func_end t3_0x5f_80D0394
 
 	thumb_local_start
 sub_80D03B8:
@@ -49913,8 +49913,8 @@ locret_80D04FE:
 	pop {pc}
 	thumb_func_end sub_80D04DA
 
-	thumb_func_start sub_80D0500
-sub_80D0500:
+	thumb_func_start t3_0x60_80D0500
+t3_0x60_80D0500:
 	push {lr}
 	ldr r1, off_80D0514 // =off_80D0518 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -49928,7 +49928,7 @@ off_80D0514: .word off_80D0518
 off_80D0518: .word sub_80D0524+1
 	.word sub_80D0566+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D0500
+	thumb_func_end t3_0x60_80D0500
 
 	thumb_local_start
 sub_80D0524:
@@ -50056,8 +50056,8 @@ dword_80D0604: .word 0x1200FF01
 byte_80D0608: .byte 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80D05EC
 
-	thumb_func_start sub_80D0610
-sub_80D0610:
+	thumb_func_start t3_0x61_80D0610
+t3_0x61_80D0610:
 	push {lr}
 	ldr r1, off_80D0624 // =off_80D0628 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -50071,7 +50071,7 @@ off_80D0624: .word off_80D0628
 off_80D0628: .word sub_80D0634+1
 	.word sub_80D072C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D0610
+	thumb_func_end t3_0x61_80D0610
 
 	thumb_local_start
 sub_80D0634:
@@ -50274,8 +50274,8 @@ dword_80D07C4: .word 0x70000
 dword_80D07C8: .word 0x20000
 	thumb_func_end sub_80D07A0
 
-	thumb_func_start sub_80D07CC
-sub_80D07CC:
+	thumb_func_start t3_0x62_80D07CC
+t3_0x62_80D07CC:
 	push {lr}
 	ldr r1, off_80D07EC // =off_80D07F0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -50296,7 +50296,7 @@ off_80D07EC: .word off_80D07F0
 off_80D07F0: .word sub_80D07FC+1
 	.word sub_80D0868+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D07CC
+	thumb_func_end t3_0x62_80D07CC
 
 	thumb_local_start
 sub_80D07FC:
@@ -50640,8 +50640,8 @@ locret_80D0AA4:
 	.balign 4, 0x00
 	thumb_func_end sub_80D0A80
 
-	thumb_func_start sub_80D0AA8
-sub_80D0AA8:
+	thumb_func_start t3_0x63_80D0AA8
+t3_0x63_80D0AA8:
 	push {lr}
 	ldr r1, off_80D0AB8 // =off_80D0ABC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -50654,7 +50654,7 @@ off_80D0AB8: .word off_80D0ABC
 off_80D0ABC: .word sub_80D0AC8+1
 	.word sub_80D0B0E+1
 	.word sub_80D0C1C+1
-	thumb_func_end sub_80D0AA8
+	thumb_func_end t3_0x63_80D0AA8
 
 	thumb_local_start
 sub_80D0AC8:
@@ -51011,8 +51011,8 @@ loc_80D0D60:
 dword_80D0D78: .word 0x100000
 	thumb_func_end sub_80D0D28
 
-	thumb_func_start sub_80D0D7C
-sub_80D0D7C:
+	thumb_func_start t3_0x64_80D0D7C
+t3_0x64_80D0D7C:
 	push {lr}
 	ldr r1, off_80D0D9C // =off_80D0DA0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -51033,7 +51033,7 @@ off_80D0D9C: .word off_80D0DA0
 off_80D0DA0: .word sub_80D0DAC+1
 	.word sub_80D0E14+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D0D7C
+	thumb_func_end t3_0x64_80D0D7C
 
 	thumb_local_start
 sub_80D0DAC:
@@ -51272,8 +51272,8 @@ byte_80D0F75: .byte 0xFF, 0xFF, 0x0, 0xFF, 0x1, 0x0, 0xFF, 0x0, 0x1, 0x1, 0xFF, 
 byte_80D0F84: .byte 0x1, 0x0, 0x1, 0x0, 0x1, 0x0, 0x1, 0x0
 	thumb_func_end sub_80D0F32
 
-	thumb_func_start sub_80D0F8C
-sub_80D0F8C:
+	thumb_func_start t3_0x65_80D0F8C
+t3_0x65_80D0F8C:
 	push {lr}
 	ldr r1, off_80D0FA0 // =off_80D0FA4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -51287,7 +51287,7 @@ off_80D0FA0: .word off_80D0FA4
 off_80D0FA4: .word sub_80D0FB0+1
 	.word sub_80D102E+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D0F8C
+	thumb_func_end t3_0x65_80D0F8C
 
 	thumb_local_start
 sub_80D0FB0:
@@ -51600,8 +51600,8 @@ sub_80D11FC:
 	thumb_func_end sub_80D11FC
 off_80D1214: .word byte_80D0F84
 
-	thumb_func_start sub_80D1218
-sub_80D1218:
+	thumb_func_start t3_0x66_80D1218
+t3_0x66_80D1218:
 	push {lr}
 	ldr r1, off_80D122C // =off_80D1230 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -51615,7 +51615,7 @@ off_80D122C: .word off_80D1230
 off_80D1230: .word sub_80D124E+1
 	.word sub_80D12CA+1
 	.word sub_80D123C+1
-	thumb_func_end sub_80D1218
+	thumb_func_end t3_0x66_80D1218
 
 	thumb_local_start
 sub_80D123C:
@@ -51994,8 +51994,8 @@ dword_80D150C: .word 0x1C000
 dword_80D1510: .word 0xFFFE0000
 	thumb_func_end sub_80D149E
 
-	thumb_func_start sub_80D1514
-sub_80D1514:
+	thumb_func_start t3_0x67_80D1514
+t3_0x67_80D1514:
 	push {lr}
 	ldr r1, off_80D1528 // =off_80D152C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -52009,7 +52009,7 @@ off_80D1528: .word off_80D152C
 off_80D152C: .word sub_80D1538+1
 	.word sub_80D15A4+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D1514
+	thumb_func_end t3_0x67_80D1514
 
 	thumb_local_start
 sub_80D1538:
@@ -52320,8 +52320,8 @@ dword_80D179C: .word 0x405FF01
 dword_80D17A0: .word 0x1000
 	thumb_func_end sub_80D1784
 
-	thumb_func_start sub_80D17A4
-sub_80D17A4:
+	thumb_func_start t3_0x68_80D17A4
+t3_0x68_80D17A4:
 	push {lr}
 	ldr r1, off_80D17B8 // =off_80D17BC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -52335,7 +52335,7 @@ off_80D17B8: .word off_80D17BC
 off_80D17BC: .word sub_80D17C8+1
 	.word sub_80D1860+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D17A4
+	thumb_func_end t3_0x68_80D17A4
 
 	thumb_local_start
 sub_80D17C8:
@@ -52465,8 +52465,8 @@ locret_80D18D4:
 	.balign 4, 0x00
 	thumb_func_end sub_80D18AE
 
-	thumb_func_start sub_80D18D8
-sub_80D18D8:
+	thumb_func_start t3_0x69_80D18D8
+t3_0x69_80D18D8:
 	push {lr}
 	ldr r1, off_80D18E8 // =off_80D18EC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -52479,7 +52479,7 @@ off_80D18E8: .word off_80D18EC
 off_80D18EC: .word sub_80D18F8+1
 	.word sub_80D1934+1
 	.word sub_80D19C0+1
-	thumb_func_end sub_80D18D8
+	thumb_func_end t3_0x69_80D18D8
 
 	thumb_local_start
 sub_80D18F8:
@@ -52620,8 +52620,8 @@ sub_80D1A00:
 	.balign 4, 0x00
 	thumb_func_end sub_80D1A00
 
-	thumb_func_start sub_80D1A08
-sub_80D1A08:
+	thumb_func_start t3_0x6a_80D1A08
+t3_0x6a_80D1A08:
 	push {lr}
 	ldr r1, off_80D1A18 // =off_80D1A1C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -52634,7 +52634,7 @@ off_80D1A18: .word off_80D1A1C
 off_80D1A1C: .word sub_80D1A28+1
 	.word sub_80D1A64+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D1A08
+	thumb_func_end t3_0x6a_80D1A08
 
 	thumb_local_start
 sub_80D1A28:
@@ -52786,8 +52786,8 @@ locret_80D1B46:
 	pop {pc}
 	thumb_func_end sub_80D1B22
 
-	thumb_func_start sub_80D1B48
-sub_80D1B48:
+	thumb_func_start t3_0x6b_80D1B48
+t3_0x6b_80D1B48:
 	push {lr}
 	ldr r1, off_80D1B58 // =off_80D1B5C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -52800,7 +52800,7 @@ off_80D1B58: .word off_80D1B5C
 off_80D1B5C: .word sub_80D1B68+1
 	.word sub_80D1B9A+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D1B48
+	thumb_func_end t3_0x6b_80D1B48
 
 	thumb_local_start
 sub_80D1B68:
@@ -52891,8 +52891,8 @@ locret_80D1C10:
 	.byte 0, 0
 	thumb_func_end sub_80D1BF4
 
-	thumb_func_start sub_80D1C20
-sub_80D1C20:
+	thumb_func_start t3_0x6c_80D1C20
+t3_0x6c_80D1C20:
 	push {lr}
 	ldr r1, off_80D1C34 // =off_80D1C38 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -52906,7 +52906,7 @@ off_80D1C34: .word off_80D1C38
 off_80D1C38: .word sub_80D1C5A+1
 	.word sub_80D1D14+1
 	.word sub_80D1C44+1
-	thumb_func_end sub_80D1C20
+	thumb_func_end t3_0x6c_80D1C20
 
 	thumb_local_start
 sub_80D1C44:
@@ -53430,8 +53430,8 @@ dword_80D2028: .word 0xC000000
 byte_80D202C: .byte 0x8, 0x0, 0xC, 0x0, 0x10, 0x0, 0x14, 0x0
 	thumb_func_end sub_80D200C
 
-	thumb_func_start sub_80D2034
-sub_80D2034:
+	thumb_func_start t3_0x6d_80D2034
+t3_0x6d_80D2034:
 	push {lr}
 	ldr r1, off_80D2048 // =off_80D204C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -53445,7 +53445,7 @@ off_80D2048: .word off_80D204C
 off_80D204C: .word sub_80D2058+1
 	.word sub_80D20E8+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D2034
+	thumb_func_end t3_0x6d_80D2034
 
 	thumb_local_start
 sub_80D2058:
@@ -53719,8 +53719,8 @@ byte_80D227C: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x80, 0x1, 0x0, 0x0, 0x0, 0x2, 0x0,
 off_80D228C: .word byte_80D202C
 	thumb_func_end sub_80D2222
 
-	thumb_func_start sub_80D2290
-sub_80D2290:
+	thumb_func_start t3_0x6e_80D2290
+t3_0x6e_80D2290:
 	push {lr}
 	ldr r1, off_80D22A0 // =off_80D22A4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -53733,7 +53733,7 @@ off_80D22A0: .word off_80D22A4
 off_80D22A4: .word sub_80D22B0+1
 	.word sub_80D2320+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D2290
+	thumb_func_end t3_0x6e_80D2290
 
 	thumb_local_start
 sub_80D22B0:
@@ -53940,8 +53940,8 @@ dword_80D2458: .word 0x8000
 dword_80D245C: .word 0x300000
 	thumb_func_end sub_80D2430
 
-	thumb_func_start sub_80D2460
-sub_80D2460:
+	thumb_func_start t3_0x6f_80D2460
+t3_0x6f_80D2460:
 	push {lr}
 	ldr r1, off_80D2470 // =jt_80D2474 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -53954,7 +53954,7 @@ off_80D2470: .word jt_80D2474
 jt_80D2474: .word sub_80D2480+1
 	.word sub_80D24F0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D2460
+	thumb_func_end t3_0x6f_80D2460
 
 	thumb_local_start
 sub_80D2480:
@@ -54130,8 +54130,8 @@ dword_80D25C8: .word 0x4040401
 byte_80D25CC: .byte 0x8, 0x0, 0xC, 0x0, 0x10, 0x0, 0x18, 0x0
 	thumb_func_end sub_80D2596
 
-	thumb_func_start sub_80D25D4
-sub_80D25D4:
+	thumb_func_start t3_0x70_80D25D4
+t3_0x70_80D25D4:
 	push {lr}
 	ldr r1, off_80D25E8 // =off_80D25EC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -54145,7 +54145,7 @@ off_80D25E8: .word off_80D25EC
 off_80D25EC: .word sub_80D25F8+1
 	.word sub_80D2684+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D25D4
+	thumb_func_end t3_0x70_80D25D4
 
 	thumb_local_start
 sub_80D25F8:
@@ -54748,8 +54748,8 @@ sub_80D2A68:
 dword_80D2A90: .word 0xB333
 	thumb_func_end sub_80D2A68
 
-	thumb_func_start sub_80D2A94
-sub_80D2A94:
+	thumb_func_start t3_0x71_80D2A94
+t3_0x71_80D2A94:
 	push {lr}
 	ldr r1, off_80D2AA4 // =off_80D2AA8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -54762,7 +54762,7 @@ off_80D2AA4: .word off_80D2AA8
 off_80D2AA8: .word sub_80D2AB4+1
 	.word sub_80D2B2C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D2A94
+	thumb_func_end t3_0x71_80D2A94
 
 	thumb_local_start
 sub_80D2AB4:
@@ -54923,8 +54923,8 @@ sub_80D2BC0:
 	pop {pc}
 	thumb_func_end sub_80D2BC0
 
-	thumb_func_start sub_80D2BDC
-sub_80D2BDC:
+	thumb_func_start t3_0x72_80D2BDC
+t3_0x72_80D2BDC:
 	push {lr}
 	ldr r1, off_80D2BF0 // =off_80D2BF4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -54938,7 +54938,7 @@ off_80D2BF0: .word off_80D2BF4
 off_80D2BF4: .word sub_80D2C00+1
 	.word sub_80D2C10+1
 	.word sub_80D2E86+1
-	thumb_func_end sub_80D2BDC
+	thumb_func_end t3_0x72_80D2BDC
 
 	thumb_local_start
 sub_80D2C00:
@@ -55321,8 +55321,8 @@ locret_80D2EBA:
 	pop {pc}
 	thumb_func_end sub_80D2E94
 
-	thumb_func_start sub_80D2EBC
-sub_80D2EBC:
+	thumb_func_start t3_0x73_80D2EBC
+t3_0x73_80D2EBC:
 	push {lr}
 	ldr r1, off_80D2ECC // =off_80D2ED0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -55335,7 +55335,7 @@ off_80D2ECC: .word off_80D2ED0
 off_80D2ED0: .word sub_80D2EDC+1
 	.word sub_80D2F3C+1
 	.word sub_80D3048+1
-	thumb_func_end sub_80D2EBC
+	thumb_func_end t3_0x73_80D2EBC
 
 	thumb_local_start
 sub_80D2EDC:
@@ -55607,8 +55607,8 @@ locret_80D30C4:
 	.byte 0, 0
 	thumb_func_end sub_80D30A4
 
-	thumb_func_start sub_80D30D0
-sub_80D30D0:
+	thumb_func_start t3_0x74_80D30D0
+t3_0x74_80D30D0:
 	push {lr}
 	ldr r1, off_80D30E4 // =off_80D30E8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -55622,7 +55622,7 @@ off_80D30E4: .word off_80D30E8
 off_80D30E8: .word sub_80D30F4+1
 	.word sub_80D317C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D30D0
+	thumb_func_end t3_0x74_80D30D0
 
 	thumb_local_start
 sub_80D30F4:
@@ -56133,8 +56133,8 @@ byte_80D34C0: .byte 0x4B, 0xA, 0x0, 0x1E, 0x5F, 0xE, 0x1, 0x28, 0x73, 0x12
 	.byte 0x2, 0x32
 	thumb_func_end sub_80D3496
 
-	thumb_func_start sub_80D34CC
-sub_80D34CC:
+	thumb_func_start t3_0x75_80D34CC
+t3_0x75_80D34CC:
 	push {lr}
 	ldr r1, off_80D34DC // =off_80D34E0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -56147,7 +56147,7 @@ off_80D34DC: .word off_80D34E0
 off_80D34E0: .word sub_80D3500+1
 	.word sub_80D358C+1
 	.word sub_80D34EC+1
-	thumb_func_end sub_80D34CC
+	thumb_func_end t3_0x75_80D34CC
 
 	thumb_local_start
 sub_80D34EC:
@@ -56574,8 +56574,8 @@ dword_80D3854: .word 0x300000
 dword_80D3858: .word 0x20600
 	thumb_func_end sub_80D37F4
 
-	thumb_func_start sub_80D385C
-sub_80D385C:
+	thumb_func_start t3_0x76_80D385C
+t3_0x76_80D385C:
 	push {lr}
 	ldr r1, off_80D3878 // =off_80D386C
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -56588,7 +56588,7 @@ off_80D386C: .word sub_80D387C+1
 	.word sub_80D390A+1
 	.word object_genericDestroy+1
 off_80D3878: .word off_80D386C
-	thumb_func_end sub_80D385C
+	thumb_func_end t3_0x76_80D385C
 
 	thumb_local_start
 sub_80D387C:
@@ -56742,8 +56742,8 @@ dword_80D39B0: .word 0x140000
 byte_80D39B4: .byte 0x32, 0x0, 0x46, 0x0, 0x5A, 0x0, 0x6E, 0x0
 	thumb_func_end sub_80D398E
 
-	thumb_func_start sub_80D39BC
-sub_80D39BC:
+	thumb_func_start t3_0x77_80D39BC
+t3_0x77_80D39BC:
 	push {lr}
 	ldr r1, off_80D39D0 // =off_80D39D4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -56757,7 +56757,7 @@ off_80D39D0: .word off_80D39D4
 off_80D39D4: .word sub_80D39E0+1
 	.word sub_80D3A7C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D39BC
+	thumb_func_end t3_0x77_80D39BC
 
 	thumb_local_start
 sub_80D39E0:
@@ -57625,8 +57625,8 @@ byte_80D4078: .byte 0x55, 0x3, 0x0, 0x40, 0x37
 	.byte 0x3, 0x2, 0x40, 0x3C, 0x3, 0x4, 0x40, 0x78, 0x3, 0x6, 0x40
 	thumb_func_end sub_80D4030
 
-	thumb_func_start sub_80D4088
-sub_80D4088:
+	thumb_func_start t3_0x78_80D4088
+t3_0x78_80D4088:
 	push {lr}
 	ldr r1, off_80D4098 // =off_80D409C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -57639,7 +57639,7 @@ off_80D4098: .word off_80D409C
 off_80D409C: .word sub_80D40A8+1
 	.word sub_80D4144+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D4088
+	thumb_func_end t3_0x78_80D4088
 
 	thumb_local_start
 sub_80D40A8:
@@ -58100,8 +58100,8 @@ dword_80D4438: .word 0x8000
 dword_80D443C: .word 0x300000
 	thumb_func_end sub_80D4408
 
-	thumb_func_start sub_80D4440
-sub_80D4440:
+	thumb_func_start t3_0x79_80D4440
+t3_0x79_80D4440:
 	push {lr}
 	ldr r1, off_80D4454 // =off_80D4458 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -58115,7 +58115,7 @@ off_80D4454: .word off_80D4458
 off_80D4458: .word sub_80D4472+1
 	.word sub_80D44D2+1
 	.word sub_80D4464+1
-	thumb_func_end sub_80D4440
+	thumb_func_end t3_0x79_80D4440
 
 	thumb_local_start
 sub_80D4464:
@@ -58437,8 +58437,8 @@ dword_80D46B0: .word 0xC0D0300
 dword_80D46B4: .word 0xF800000
 	thumb_func_end sub_80D4674
 
-	thumb_func_start sub_80D46B8
-sub_80D46B8:
+	thumb_func_start t3_0x7a_80D46B8
+t3_0x7a_80D46B8:
 	push {lr}
 	ldr r1, off_80D46C8 // =off_80D46CC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -58451,7 +58451,7 @@ off_80D46C8: .word off_80D46CC
 off_80D46CC: .word sub_80D46D8+1
 	.word sub_80D4754+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D46B8
+	thumb_func_end t3_0x7a_80D46B8
 
 	thumb_local_start
 sub_80D46D8:
@@ -58849,8 +58849,8 @@ byte_80D4A20: .byte 0x0, 0x80, 0x0, 0x0
 byte_80D4A24: .byte 0x0, 0x0, 0x30, 0x0
 	thumb_func_end sub_80D49F6
 
-	thumb_func_start sub_80D4A28
-sub_80D4A28:
+	thumb_func_start t3_0x7b_80D4A28
+t3_0x7b_80D4A28:
 	push {lr}
 	ldr r1, off_80D4A38 // =off_80D4A3C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -58863,7 +58863,7 @@ off_80D4A38: .word off_80D4A3C
 off_80D4A3C: .word sub_80D4A48+1
 	.word sub_80D4A98+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D4A28
+	thumb_func_end t3_0x7b_80D4A28
 
 	thumb_local_start
 sub_80D4A48:
@@ -59006,8 +59006,8 @@ dword_80D4B60: .word 0x6050300
 dword_80D4B64: .word 0x80000
 	thumb_func_end sub_80D4B44
 
-	thumb_func_start sub_80D4B68
-sub_80D4B68:
+	thumb_func_start t3_0x7c_80D4B68
+t3_0x7c_80D4B68:
 	push {lr}
 	ldr r1, off_80D4B78 // =off_80D4B7C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -59020,7 +59020,7 @@ off_80D4B78: .word off_80D4B7C
 off_80D4B7C: .word sub_80D4B88+1
 	.word sub_80D4BC0+1
 	.word sub_80D4BF6+1
-	thumb_func_end sub_80D4B68
+	thumb_func_end t3_0x7c_80D4B68
 
 	thumb_local_start
 sub_80D4B88:
@@ -59163,8 +59163,8 @@ loc_80D4C80:
 	pop {pc}
 	thumb_func_end sub_80D4C6C
 
-	thumb_func_start sub_80D4C84
-sub_80D4C84:
+	thumb_func_start t3_0x7d_80D4C84
+t3_0x7d_80D4C84:
 	push {lr}
 	ldr r1, off_80D4C94 // =off_80D4C98 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -59177,7 +59177,7 @@ off_80D4C94: .word off_80D4C98
 off_80D4C98: .word sub_80D4CA4+1
 	.word sub_80D4D34+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D4C84
+	thumb_func_end t3_0x7d_80D4C84
 
 	thumb_local_start
 sub_80D4CA4:
@@ -59614,8 +59614,8 @@ dword_80D5020: .word 0x55000000
 dword_80D5024: .word 0xAA000000
 	thumb_func_end sub_80D4FF6
 
-	thumb_func_start sub_80D5028
-sub_80D5028:
+	thumb_func_start t3_0x7e_80D5028
+t3_0x7e_80D5028:
 	push {lr}
 	ldr r1, off_80D5040 // =off_80D5044 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -59630,7 +59630,7 @@ off_80D5040: .word off_80D5044
 off_80D5044: .word sub_80D5050+1
 	.word sub_80D50C6+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D5028
+	thumb_func_end t3_0x7e_80D5028
 
 	thumb_local_start
 sub_80D5050:
@@ -59749,8 +59749,8 @@ locret_80D5136:
 	pop {pc}
 	thumb_func_end sub_80D5128
 
-	thumb_func_start sub_80D5138
-sub_80D5138:
+	thumb_func_start t3_0x7f_80D5138
+t3_0x7f_80D5138:
 	push {lr}
 	ldr r1, off_80D5150 // =off_80D5154 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -59765,7 +59765,7 @@ off_80D5150: .word off_80D5154
 off_80D5154: .word sub_80D5160+1
 	.word sub_80D51E4+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D5138
+	thumb_func_end t3_0x7f_80D5138
 
 	thumb_local_start
 sub_80D5160:
@@ -60018,8 +60018,8 @@ locret_80D5356:
 dword_80D5358: .word 0x49000
 	thumb_func_end sub_80D5348
 
-	thumb_func_start sub_80D535C
-sub_80D535C:
+	thumb_func_start t3_0x80_80D535C
+t3_0x80_80D535C:
 	push {lr}
 	ldr r1, off_80D537C // =off_80D5380 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -60040,7 +60040,7 @@ off_80D537C: .word off_80D5380
 off_80D5380: .word sub_80D538C+1
 	.word sub_80D53F4+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D535C
+	thumb_func_end t3_0x80_80D535C
 
 	thumb_local_start
 sub_80D538C:
@@ -60281,8 +60281,8 @@ dword_80D5570: .word 0xA00000
 byte_80D5574: .byte 0x0, 0x50, 0x6, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80D5516
 
-	thumb_func_start sub_80D5580
-sub_80D5580:
+	thumb_func_start t3_0x81_80D5580
+t3_0x81_80D5580:
 	push {lr}
 	ldr r1, off_80D5594 // =off_80D5598 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -60296,7 +60296,7 @@ off_80D5594: .word off_80D5598
 off_80D5598: .word sub_80D55A4+1
 	.word sub_80D55F8+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D5580
+	thumb_func_end t3_0x81_80D5580
 
 	thumb_local_start
 sub_80D55A4:
@@ -60675,8 +60675,8 @@ locret_80D58B0:
 	.balign 4, 0x00
 	thumb_func_end spawnDollThunderObject_80D5890
 
-	thumb_func_start sub_80D58B4
-sub_80D58B4:
+	thumb_func_start t3_0x83_80D58B4
+t3_0x83_80D58B4:
 	push {lr}
 	ldr r1, off_80D58C8 // =off_80D58CC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -60690,7 +60690,7 @@ off_80D58C8: .word off_80D58CC
 off_80D58CC: .word sub_80D58D8+1
 	.word sub_80D592C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D58B4
+	thumb_func_end t3_0x83_80D58B4
 
 	thumb_local_start
 sub_80D58D8:
@@ -60947,8 +60947,8 @@ dword_80D5AB4: .word 0x15050A01
 dword_80D5AB8: .word 0x3
 	thumb_func_end sub_80D5A9C
 
-	thumb_func_start sub_80D5ABC
-sub_80D5ABC:
+	thumb_func_start t3_0x84_80D5ABC
+t3_0x84_80D5ABC:
 	push {lr}
 	ldr r1, off_80D5AD0 // =off_80D5AD4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -60962,7 +60962,7 @@ off_80D5AD0: .word off_80D5AD4
 off_80D5AD4: .word sub_80D5AE0+1
 	.word sub_80D5B84+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D5ABC
+	thumb_func_end t3_0x84_80D5ABC
 
 	thumb_local_start
 sub_80D5AE0:
@@ -61138,8 +61138,8 @@ loc_80D5C42:
 	pop {r4,pc}
 	thumb_func_end sub_80D5C26
 
-	thumb_func_start sub_80D5C48
-sub_80D5C48:
+	thumb_func_start t3_0x85_80D5C48
+t3_0x85_80D5C48:
 	push {lr}
 	ldr r1, off_80D5C5C // =off_80D5C60 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -61153,7 +61153,7 @@ off_80D5C5C: .word off_80D5C60
 off_80D5C60: .word sub_80D5C6C+1
 	.word sub_80D5C9A+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D5C48
+	thumb_func_end t3_0x85_80D5C48
 
 	thumb_local_start
 sub_80D5C6C:
@@ -61275,8 +61275,8 @@ dword_80D5D4C: .word 0x705FF01
 dword_80D5D50: .word 0x1180003
 	thumb_func_end sub_80D5D34
 
-	thumb_func_start sub_80D5D54
-sub_80D5D54:
+	thumb_func_start t3_0x86_80D5D54
+t3_0x86_80D5D54:
 	push {lr}
 	ldr r1, off_80D5D68 // =off_80D5D6C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -61290,7 +61290,7 @@ off_80D5D68: .word off_80D5D6C
 off_80D5D6C: .word sub_80D5D78+1
 	.word sub_80D5DC8+1
 	.word sub_80D5EA8+1
-	thumb_func_end sub_80D5D54
+	thumb_func_end t3_0x86_80D5D54
 
 	thumb_local_start
 sub_80D5D78:
@@ -61496,8 +61496,8 @@ dword_80D5F00: .word 0x3
 dword_80D5F04: .word 0xFFFFC000
 	thumb_func_end sub_80D5EDE
 
-	thumb_func_start sub_80D5F08
-sub_80D5F08:
+	thumb_func_start t3_0x87_80D5F08
+t3_0x87_80D5F08:
 	push {lr}
 	ldr r1, off_80D5F1C // =off_80D5F20 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -61511,7 +61511,7 @@ off_80D5F1C: .word off_80D5F20
 off_80D5F20: .word sub_80D5F2C+1
 	.word sub_80D5FA0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D5F08
+	thumb_func_end t3_0x87_80D5F08
 
 	thumb_local_start
 sub_80D5F2C:
@@ -61877,8 +61877,8 @@ byte_80D6214: .byte 0x5, 0x0, 0xA, 0x0, 0xF, 0x0, 0x14, 0x0, 0x1, 0x0
 	.byte 0x2, 0x0, 0x3, 0x0, 0x4, 0x0, 0x1, 0x0, 0x1, 0x0, 0x1, 0x0, 0x1, 0x0
 	thumb_func_end sub_80D61FC
 
-	thumb_func_start sub_80D622C
-sub_80D622C:
+	thumb_func_start t3_0x88_80D622C
+t3_0x88_80D622C:
 	push {lr}
 	ldr r1, off_80D6240 // =off_80D6244 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -61892,7 +61892,7 @@ off_80D6240: .word off_80D6244
 off_80D6244: .word sub_80D6250+1
 	.word sub_80D62E8+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D622C
+	thumb_func_end t3_0x88_80D622C
 
 	thumb_local_start
 sub_80D6250:
@@ -62254,8 +62254,8 @@ off_80D6554: .word byte_80D6214
 dword_80D6558: .word 0x100000
 	thumb_func_end sub_80D6544
 
-	thumb_func_start sub_80D655C
-sub_80D655C:
+	thumb_func_start t3_0x89_80D655C
+t3_0x89_80D655C:
 	push {lr}
 	ldr r1, off_80D6570 // =off_80D6574 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -62269,7 +62269,7 @@ off_80D6570: .word off_80D6574
 off_80D6574: .word sub_80D6580+1
 	.word sub_80D65E0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D655C
+	thumb_func_end t3_0x89_80D655C
 
 	thumb_local_start
 sub_80D6580:
@@ -62591,8 +62591,8 @@ off_80D67E4: .word 0x168
 dword_80D67E8: .word 0x80000
 	thumb_func_end sub_80D67D2
 
-	thumb_func_start sub_80D67EC
-sub_80D67EC:
+	thumb_func_start t3_0x8a_80D67EC
+t3_0x8a_80D67EC:
 	push {lr}
 	ldr r1, off_80D6800 // =off_80D6804 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -62606,7 +62606,7 @@ off_80D6800: .word off_80D6804
 off_80D6804: .word sub_80D6810+1
 	.word sub_80D685A+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D67EC
+	thumb_func_end t3_0x8a_80D67EC
 
 	thumb_local_start
 sub_80D6810:
@@ -62741,8 +62741,8 @@ dword_80D6910: .word 0x2B050001
 byte_80D6914: .byte 0x4, 0x5, 0x3, 0x1, 0x3, 0x0, 0x0, 0x0, 0xB, 0x5, 0x0, 0x1, 0x3, 0x0, 0x0, 0x0
 	thumb_func_end sub_80D68E0
 
-	thumb_func_start sub_80D6924
-sub_80D6924:
+	thumb_func_start t3_0x8b_80D6924
+t3_0x8b_80D6924:
 	push {lr}
 	ldr r1, off_80D6934 // =off_80D6938 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -62755,7 +62755,7 @@ off_80D6934: .word off_80D6938
 off_80D6938: .word sub_80D6952+1
 	.word sub_80D69B8+1
 	.word sub_80D6944+1
-	thumb_func_end sub_80D6924
+	thumb_func_end t3_0x8b_80D6924
 
 	thumb_local_start
 sub_80D6944:
@@ -62875,8 +62875,8 @@ off_80D6A18: .word byte_80D6914
 	.word 0x0
 	thumb_func_end sub_80D6A02
 
-	thumb_func_start sub_80D6A20
-sub_80D6A20:
+	thumb_func_start t3_0x8c_80D6A20
+t3_0x8c_80D6A20:
 	push {lr}
 	ldr r1, off_80D6A34 // =off_80D6A38 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -62890,7 +62890,7 @@ off_80D6A34: .word off_80D6A38
 off_80D6A38: .word sub_80D6A44+1
 	.word sub_80D6B28+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D6A20
+	thumb_func_end t3_0x8c_80D6A20
 
 	thumb_local_start
 sub_80D6A44:
@@ -63090,8 +63090,8 @@ locret_80D6BD0:
 	.balign 4, 0x00
 	thumb_func_end sub_80D6BC2
 
-	thumb_func_start sub_80D6BD4
-sub_80D6BD4:
+	thumb_func_start t3_0x8d_80D6BD4
+t3_0x8d_80D6BD4:
 	push {lr}
 	ldr r1, off_80D6BF4 // =off_80D6BF8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -63112,7 +63112,7 @@ off_80D6BF4: .word off_80D6BF8
 off_80D6BF8: .word sub_80D6C04+1
 	.word sub_80D6C56+1
 	.word sub_80D6D10+1
-	thumb_func_end sub_80D6BD4
+	thumb_func_end t3_0x8d_80D6BD4
 
 	thumb_local_start
 sub_80D6C04:
@@ -63308,8 +63308,8 @@ dword_80D6D78: .word 0xC00000
 dword_80D6D7C: .word 0xB0000
 	thumb_func_end sub_80D6D3E
 
-	thumb_func_start sub_80D6D80
-sub_80D6D80:
+	thumb_func_start t3_0x8e_80D6D80
+t3_0x8e_80D6D80:
 	push {lr}
 	ldr r1, off_80D6DA0 // =off_80D6DA4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -63330,7 +63330,7 @@ off_80D6DA0: .word off_80D6DA4
 off_80D6DA4: .word sub_80D6DB0+1
 	.word sub_80D6E1E+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D6D80
+	thumb_func_end t3_0x8e_80D6D80
 
 	thumb_local_start
 sub_80D6DB0:
@@ -63479,8 +63479,8 @@ locret_80D6ED4:
 byte_80D6ED8: .byte 0x2, 0x0, 0x4, 0x0, 0x6, 0x0, 0xA, 0x0
 	thumb_func_end sub_80D6EB0
 
-	thumb_func_start sub_80D6EE0
-sub_80D6EE0:
+	thumb_func_start t3_0x8f_80D6EE0
+t3_0x8f_80D6EE0:
 	push {lr}
 	ldr r1, off_80D6EF4 // =off_80D6EF8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -63494,7 +63494,7 @@ off_80D6EF4: .word off_80D6EF8
 off_80D6EF8: .word sub_80D6F04+1
 	.word sub_80D6F74+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D6EE0
+	thumb_func_end t3_0x8f_80D6EE0
 
 	thumb_local_start
 sub_80D6F04:
@@ -63673,8 +63673,8 @@ locret_80D7060:
 off_80D7064: .word byte_80D6ED8
 	thumb_func_end sub_80D703A
 
-	thumb_func_start sub_80D7068
-sub_80D7068:
+	thumb_func_start t3_0x90_80D7068
+t3_0x90_80D7068:
 	push {lr}
 	ldr r1, off_80D707C // =off_80D7080 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -63688,7 +63688,7 @@ off_80D707C: .word off_80D7080
 off_80D7080: .word sub_80D708C+1
 	.word sub_80D7100+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D7068
+	thumb_func_end t3_0x90_80D7068
 
 	thumb_local_start
 sub_80D708C:
@@ -63920,8 +63920,8 @@ off_80D7268: .word byte_80D726C
 byte_80D726C: .byte 0x1, 0x0, 0x0, 0x1, 0xFF, 0x0, 0x1, 0x0, 0x0, 0xFF, 0xFF, 0x0
 	thumb_func_end sub_80D71FE
 
-	thumb_func_start sub_80D7278
-sub_80D7278:
+	thumb_func_start t3_0x91_80D7278
+t3_0x91_80D7278:
 	push {lr}
 	ldr r1, off_80D728C // =off_80D7290 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -63935,7 +63935,7 @@ off_80D728C: .word off_80D7290
 off_80D7290: .word sub_80D729C+1
 	.word sub_80D730A+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D7278
+	thumb_func_end t3_0x91_80D7278
 
 	thumb_local_start
 sub_80D729C:
@@ -64117,8 +64117,8 @@ locret_80D73FA:
 	.word 0x0
 	thumb_func_end sub_80D73D6
 
-	thumb_func_start sub_80D7400
-sub_80D7400:
+	thumb_func_start t3_0x92_80D7400
+t3_0x92_80D7400:
 	push {lr}
 	ldr r1, off_80D7410 // =off_80D7414 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -64131,7 +64131,7 @@ off_80D7410: .word off_80D7414
 off_80D7414: .word sub_80D7420+1
 	.word sub_80D74DC+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D7400
+	thumb_func_end t3_0x92_80D7400
 
 	thumb_local_start
 sub_80D7420:
@@ -64365,8 +64365,8 @@ dword_80D75F4: .word 0x6050100
 dword_80D75F8: .word 0x280000
 	thumb_func_end sub_80D75D4
 
-	thumb_func_start sub_80D75FC
-sub_80D75FC:
+	thumb_func_start t3_0x93_80D75FC
+t3_0x93_80D75FC:
 	push {lr}
 	ldr r1, off_80D760C // =off_80D7610 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -64379,7 +64379,7 @@ off_80D760C: .word off_80D7610
 off_80D7610: .word sub_80D761C+1
 	.word sub_80D774C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D75FC
+	thumb_func_end t3_0x93_80D75FC
 
 	thumb_local_start
 sub_80D761C:
@@ -64954,8 +64954,8 @@ dword_80D7AC4: .word 0x405FF10
 dword_80D7AC8: .word 0x7000
 	thumb_func_end sub_80D7A96
 
-	thumb_func_start sub_80D7ACC
-sub_80D7ACC:
+	thumb_func_start t3_0x94_80D7ACC
+t3_0x94_80D7ACC:
 	push {lr}
 	ldr r1, off_80D7AE0 // =off_80D7AE4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -64969,7 +64969,7 @@ off_80D7AE0: .word off_80D7AE4
 off_80D7AE4: .word sub_80D7AF0+1
 	.word sub_80D7B5C+1
 	.word sub_80D7C6E+1
-	thumb_func_end sub_80D7ACC
+	thumb_func_end t3_0x94_80D7ACC
 
 	thumb_local_start
 sub_80D7AF0:
@@ -65366,8 +65366,8 @@ loc_80D7DDA:
 dword_80D7DE0: .word 0x24000
 	thumb_func_end sub_80D7DC0
 
-	thumb_func_start sub_80D7DE4
-sub_80D7DE4:
+	thumb_func_start t3_0x95_80D7DE4
+t3_0x95_80D7DE4:
 	push {lr}
 	ldr r1, off_80D7DF8 // =off_80D7DFC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -65381,7 +65381,7 @@ off_80D7DF8: .word off_80D7DFC
 off_80D7DFC: .word sub_80D7E08+1
 	.word sub_80D7E7A+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D7DE4
+	thumb_func_end t3_0x95_80D7DE4
 
 	thumb_local_start
 sub_80D7E08:
@@ -65571,8 +65571,8 @@ byte_80D7F4C: .byte 0x7, 0x5, 0x3, 0x1, 0xC, 0x14, 0x2, 0x0, 0x0, 0x8, 0x0, 0x0,
 	.byte 0x7, 0x5, 0x3, 0x11, 0xC, 0x15, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x0, 0x8, 0x0
 	thumb_func_end sub_80D7EF6
 
-	thumb_func_start sub_80D807C
-sub_80D807C:
+	thumb_func_start t3_0x96_80D807C
+t3_0x96_80D807C:
 	push {lr}
 	ldr r1, off_80D80A4 // =off_80D80A8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -65598,7 +65598,7 @@ off_80D80A4: .word off_80D80A8
 off_80D80A8: .word sub_80D80B4+1
 	.word sub_80D8172+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D807C
+	thumb_func_end t3_0x96_80D807C
 
 	thumb_local_start
 sub_80D80B4:
@@ -65809,8 +65809,8 @@ locret_80D8254:
 off_80D8258: .word byte_80D7F4C
 	thumb_func_end sub_80D8242
 
-	thumb_func_start sub_80D825C
-sub_80D825C:
+	thumb_func_start t3_0x97_80D825C
+t3_0x97_80D825C:
 	push {lr}
 	ldr r1, off_80D8270 // =off_80D8274 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -65824,7 +65824,7 @@ off_80D8270: .word off_80D8274
 off_80D8274: .word sub_80D8280+1
 	.word sub_80D8310+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D825C
+	thumb_func_end t3_0x97_80D825C
 
 	thumb_local_start
 sub_80D8280:
@@ -66071,8 +66071,8 @@ locret_80D8440:
 	.balign 4, 0x00
 	thumb_func_end sub_80D842E
 
-	thumb_func_start sub_80D8444
-sub_80D8444:
+	thumb_func_start t3_0x98_80D8444
+t3_0x98_80D8444:
 	push {lr}
 	ldr r1, off_80D8454 // =off_80D8458 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -66085,7 +66085,7 @@ off_80D8454: .word off_80D8458
 off_80D8458: .word sub_80D8464+1
 	.word sub_80D84DE+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D8444
+	thumb_func_end t3_0x98_80D8444
 
 	thumb_local_start
 sub_80D8464:
@@ -66299,8 +66299,8 @@ dword_80D8618: .word 0x8000
 dword_80D861C: .word 0x300000
 	thumb_func_end sub_80D85F0
 
-	thumb_func_start sub_80D8620
-sub_80D8620:
+	thumb_func_start t3_0x99_80D8620
+t3_0x99_80D8620:
 	push {lr}
 	ldr r1, off_80D8634 // =off_80D8638 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -66314,7 +66314,7 @@ off_80D8634: .word off_80D8638
 off_80D8638: .word sub_80D8644+1
 	.word sub_80D868E+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D8620
+	thumb_func_end t3_0x99_80D8620
 
 	thumb_local_start
 sub_80D8644:
@@ -66508,8 +66508,8 @@ locret_80D8798:
 	.balign 4, 0x00
 	thumb_func_end sub_80D876E
 
-	thumb_func_start sub_80D879C
-sub_80D879C:
+	thumb_func_start t3_0x9a_80D879C
+t3_0x9a_80D879C:
 	push {lr}
 	ldr r1, off_80D87B0 // =off_80D87B4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -66523,7 +66523,7 @@ off_80D87B0: .word off_80D87B4
 off_80D87B4: .word sub_80D87C0+1
 	.word sub_80D881C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D879C
+	thumb_func_end t3_0x9a_80D879C
 
 	thumb_local_start
 sub_80D87C0:
@@ -67128,8 +67128,8 @@ dword_80D8C54: .word 0x1205FF10
 dword_80D8C58: .word 0xF800000
 	thumb_func_end sub_80D8C10
 
-	thumb_func_start sub_80D8C5C
-sub_80D8C5C:
+	thumb_func_start t3_0x9c_80D8C5C
+t3_0x9c_80D8C5C:
 	push {lr}
 	ldr r1, off_80D8C6C // =off_80D8C70 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -67142,7 +67142,7 @@ off_80D8C6C: .word off_80D8C70
 off_80D8C70: .word sub_80D8C7C+1
 	.word sub_80D8CF0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D8C5C
+	thumb_func_end t3_0x9c_80D8C5C
 
 	thumb_local_start
 sub_80D8C7C:
@@ -67586,8 +67586,8 @@ locret_80D8FC2:
 	mov pc, lr
 	thumb_func_end sub_80D8FB8
 
-	thumb_func_start sub_80D8FC4
-sub_80D8FC4:
+	thumb_func_start t3_0x9e_80D8FC4
+t3_0x9e_80D8FC4:
 	push {lr}
 	ldr r1, off_80D8FD4 // =off_80D8FD8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -67600,7 +67600,7 @@ off_80D8FD4: .word off_80D8FD8
 off_80D8FD8: .word sub_80D8FE4+1
 	.word sub_80D9024+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D8FC4
+	thumb_func_end t3_0x9e_80D8FC4
 
 	thumb_local_start
 sub_80D8FE4:
@@ -67797,8 +67797,8 @@ locret_80D914C:
 dword_80D9150: .word 0x1000
 	thumb_func_end sub_80D9130
 
-	thumb_func_start sub_80D9154
-sub_80D9154:
+	thumb_func_start t3_0x9f_80D9154
+t3_0x9f_80D9154:
 	push {lr}
 	ldr r1, off_80D9168 // =off_80D916C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -67812,7 +67812,7 @@ off_80D9168: .word off_80D916C
 off_80D916C: .word sub_80D9178+1
 	.word sub_80D91C8+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D9154
+	thumb_func_end t3_0x9f_80D9154
 
 	thumb_local_start
 sub_80D9178:
@@ -68056,8 +68056,8 @@ dword_80D9348: .word 0x1800000
 dword_80D934C: .word 0x2800000
 	thumb_func_end sub_80D9298
 
-	thumb_func_start sub_80D9350
-sub_80D9350:
+	thumb_func_start t3_0xa0_80D9350
+t3_0xa0_80D9350:
 	push {lr}
 	ldr r1, off_80D936C // =off_80D9370 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -68075,7 +68075,7 @@ off_80D936C: .word off_80D9370
 off_80D9370: .word sub_80D937C+1
 	.word sub_80D9434+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D9350
+	thumb_func_end t3_0xa0_80D9350
 
 	thumb_local_start
 sub_80D937C:
@@ -68298,8 +68298,8 @@ locret_80D9544:
 dword_80D9548: .word 0xF880080
 	thumb_func_end sub_80D9532
 
-	thumb_func_start sub_80D954C
-sub_80D954C:
+	thumb_func_start t3_0xa2_80D954C
+t3_0xa2_80D954C:
 	push {lr}
 	ldr r1, off_80D955C // =off_80D9560 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -68312,7 +68312,7 @@ off_80D955C: .word off_80D9560
 off_80D9560: .word sub_80D956C+1
 	.word sub_80D95B0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D954C
+	thumb_func_end t3_0xa2_80D954C
 
 	thumb_local_start
 sub_80D956C:
@@ -68487,8 +68487,8 @@ loc_80D96A0:
 	pop {pc}
 	thumb_func_end sub_80D9690
 
-	thumb_func_start sub_80D96A4
-sub_80D96A4:
+	thumb_func_start t3_0xa1_80D96A4
+t3_0xa1_80D96A4:
 	push {lr}
 	ldr r1, off_80D96B8 // =off_80D96BC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -68502,7 +68502,7 @@ off_80D96B8: .word off_80D96BC
 off_80D96BC: .word sub_80D96C8+1
 	.word sub_80D9746+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D96A4
+	thumb_func_end t3_0xa1_80D96A4
 
 	thumb_local_start
 sub_80D96C8:
@@ -68701,8 +68701,8 @@ dword_80D9844: .word 0xB050001
 dword_80D9848: .word 0x1180003
 	thumb_func_end sub_80D981C
 
-	thumb_func_start sub_80D984C
-sub_80D984C:
+	thumb_func_start t3_0xa3_80D984C
+t3_0xa3_80D984C:
 	push {lr}
 	ldr r1, off_80D9860 // =off_80D9864 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -68716,7 +68716,7 @@ off_80D9860: .word off_80D9864
 off_80D9864: .word sub_80D9870+1
 	.word sub_80D98E8+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D984C
+	thumb_func_end t3_0xa3_80D984C
 
 	thumb_local_start
 sub_80D9870:
@@ -68928,8 +68928,8 @@ byte_80D9A20: .byte 0x3C, 0xA, 0x10, 0x0, 0x0, 0x3C, 0xF, 0x12, 0x0, 0x3, 0x3C
 	.byte 0xF, 0x0, 0x0, 0x0
 	thumb_func_end sub_80D99EC
 
-	thumb_func_start sub_80D9A50
-sub_80D9A50:
+	thumb_func_start t3_0xa4_80D9A50
+t3_0xa4_80D9A50:
 	push {lr}
 	ldr r1, off_80D9A64 // =off_80D9A68 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -68943,7 +68943,7 @@ off_80D9A64: .word off_80D9A68
 off_80D9A68: .word sub_80D9A74+1
 	.word sub_80D9ABA+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D9A50
+	thumb_func_end t3_0xa4_80D9A50
 
 	thumb_local_start
 sub_80D9A74:
@@ -69292,8 +69292,8 @@ off_80D9D44: .word 0x4000000
 off_80D9D48: .word 0x601
 	thumb_func_end sub_80D9CE4
 
-	thumb_func_start sub_80D9D4C
-sub_80D9D4C:
+	thumb_func_start t3_0xa5_80D9D4C
+t3_0xa5_80D9D4C:
 	push {lr}
 	ldr r1, off_80D9D5C // =off_80D9D60 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -69306,7 +69306,7 @@ off_80D9D5C: .word off_80D9D60
 off_80D9D60: .word sub_80D9D6C+1
 	.word sub_80D9E24+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80D9D4C
+	thumb_func_end t3_0xa5_80D9D4C
 
 	thumb_local_start
 sub_80D9D6C:
@@ -69663,8 +69663,8 @@ dword_80DA03C: .word 0x3F800000
 byte_80DA040: .byte 0x0, 0x1, 0x2, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80D9FC2
 
-	thumb_func_start sub_80DA050
-sub_80DA050:
+	thumb_func_start t3_0xa6_80DA050
+t3_0xa6_80DA050:
 	push {lr}
 	ldr r1, off_80DA060 // =off_80DA064 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -69677,7 +69677,7 @@ off_80DA060: .word off_80DA064
 off_80DA064: .word sub_80DA07C+1
 	.word sub_80DA108+1
 	.word sub_80DA070+1
-	thumb_func_end sub_80DA050
+	thumb_func_end t3_0xa6_80DA050
 
 	thumb_local_start
 sub_80DA070:
@@ -70206,8 +70206,8 @@ dword_80DA468: .word 0x8000
 dword_80DA46C: .word 0x300000
 	thumb_func_end sub_80DA448
 
-	thumb_func_start sub_80DA470
-sub_80DA470:
+	thumb_func_start t3_0xa7_80DA470
+t3_0xa7_80DA470:
 	push {lr}
 	ldr r1, off_80DA484 // =off_80DA488 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -70221,7 +70221,7 @@ off_80DA484: .word off_80DA488
 off_80DA488: .word sub_80DA494+1
 	.word sub_80DA53A+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DA470
+	thumb_func_end t3_0xa7_80DA470
 
 	thumb_local_start
 sub_80DA494:
@@ -70398,8 +70398,8 @@ locret_80DA5F8:
 	.byte 0x0, 0x0
 	thumb_func_end sub_80DA5D2
 
-	thumb_func_start sub_80DA5FC
-sub_80DA5FC:
+	thumb_func_start t3_0xa8_80DA5FC
+t3_0xa8_80DA5FC:
 	push {lr}
 	ldr r1, off_80DA610 // =off_80DA614 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -70413,7 +70413,7 @@ off_80DA610: .word off_80DA614
 off_80DA614: .word sub_80DA620+1
 	.word sub_80DA662+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DA5FC
+	thumb_func_end t3_0xa8_80DA5FC
 
 	thumb_local_start
 sub_80DA620:
@@ -70667,8 +70667,8 @@ dword_80DA804: .word 0xA05FF01
 dword_80DA808: .word 0x3
 	thumb_func_end sub_80DA7EC
 
-	thumb_func_start sub_80DA80C
-sub_80DA80C:
+	thumb_func_start t3_0xa9_80DA80C
+t3_0xa9_80DA80C:
 	push {lr}
 	ldr r1, off_80DA824 // =off_80DA828 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -70685,7 +70685,7 @@ off_80DA824: .word off_80DA828
 off_80DA828: .word sub_80DA834+1
 	.word sub_80DA886+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DA80C
+	thumb_func_end t3_0xa9_80DA80C
 
 	thumb_local_start
 sub_80DA834:
@@ -70932,8 +70932,8 @@ dword_80DAA20: .word 0xFF80000
 dword_80DAA24: .word 0x3F800000
 	thumb_func_end sub_80DA9FE
 
-	thumb_func_start sub_80DAA28
-sub_80DAA28:
+	thumb_func_start t3_0xaa_80DAA28
+t3_0xaa_80DAA28:
 	push {lr}
 	ldr r1, off_80DAA38 // =off_80DAA3C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -70946,7 +70946,7 @@ off_80DAA38: .word off_80DAA3C
 off_80DAA3C: .word sub_80DAA48+1
 	.word sub_80DAA86+1
 	.word sub_80DAB8A+1
-	thumb_func_end sub_80DAA28
+	thumb_func_end t3_0xaa_80DAA28
 
 	thumb_local_start
 sub_80DAA48:
@@ -71304,8 +71304,8 @@ off_80DACDC: .word byte_80DACC0
 off_80DACE0: .word dword_80DACB0
 	thumb_func_end sub_80DAC0C
 
-	thumb_func_start sub_80DACE4
-sub_80DACE4:
+	thumb_func_start t3_0xab_80DACE4
+t3_0xab_80DACE4:
 	push {lr}
 	ldr r1, off_80DACFC // =off_80DAD00 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -71323,7 +71323,7 @@ off_80DACFC: .word off_80DAD00
 off_80DAD00: .word sub_80DAD0C+1
 	.word sub_80DAD84+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DACE4
+	thumb_func_end t3_0xab_80DACE4
 
 	thumb_local_start
 sub_80DAD0C:
@@ -71517,8 +71517,8 @@ loc_80DAE7E:
 dword_80DAE90: .word 0xA0000
 	thumb_func_end sub_80DAE70
 
-	thumb_func_start sub_80DAE94
-sub_80DAE94:
+	thumb_func_start t3_0xac_80DAE94
+t3_0xac_80DAE94:
 	push {lr}
 	ldr r1, off_80DAEB4 // =off_80DAEB8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -71539,7 +71539,7 @@ off_80DAEB4: .word off_80DAEB8
 off_80DAEB8: .word sub_80DAEC4+1
 	.word sub_80DAF2A+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DAE94
+	thumb_func_end t3_0xac_80DAE94
 
 	thumb_local_start
 sub_80DAEC4:
@@ -71833,8 +71833,8 @@ sub_80DB0D0:
 	.balign 4, 0x00
 	thumb_func_end sub_80DB0D0
 
-	thumb_func_start sub_80DB0E4
-sub_80DB0E4:
+	thumb_func_start t3_0xad_80DB0E4
+t3_0xad_80DB0E4:
 	push {lr}
 	ldr r1, off_80DB0F8 // =off_80DB0FC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -71848,7 +71848,7 @@ off_80DB0F8: .word off_80DB0FC
 off_80DB0FC: .word sub_80DB108+1
 	.word sub_80DB148+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DB0E4
+	thumb_func_end t3_0xad_80DB0E4
 
 	thumb_local_start
 sub_80DB108:
@@ -72097,8 +72097,8 @@ dword_80DB2FC: .word 0xF800000
 dword_80DB300: .word 0x300000
 	thumb_func_end sub_80DB2C6
 
-	thumb_func_start sub_80DB304
-sub_80DB304:
+	thumb_func_start t3_0xae_80DB304
+t3_0xae_80DB304:
 	push {lr}
 	ldr r1, off_80DB314 // =off_80DB318 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -72111,7 +72111,7 @@ off_80DB314: .word off_80DB318
 off_80DB318: .word sub_80DB324+1
 	.word sub_80DB376+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DB304
+	thumb_func_end t3_0xae_80DB304
 
 	thumb_local_start
 sub_80DB324:
@@ -72401,8 +72401,8 @@ dword_80DB568: .word 0xFFFFF000
 dword_80DB56C: .word 0x405FF0C
 	thumb_func_end sub_80DB4CE
 
-	thumb_func_start sub_80DB570
-sub_80DB570:
+	thumb_func_start t3_0xaf_80DB570
+t3_0xaf_80DB570:
 	push {lr}
 	ldr r1, off_80DB580 // =jt_80DB584 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -72415,7 +72415,7 @@ off_80DB580: .word jt_80DB584
 jt_80DB584: .word sub_80DB590+1
 	.word sub_80DB5E8+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DB570
+	thumb_func_end t3_0xaf_80DB570
 
 	thumb_local_start
 sub_80DB590:
@@ -72558,8 +72558,8 @@ sub_80DB684:
 dword_80DB6A0: .word 0x3A0000
 	thumb_func_end sub_80DB684
 
-	thumb_func_start sub_80DB6A4
-sub_80DB6A4:
+	thumb_func_start t3_0xb0_80DB6A4
+t3_0xb0_80DB6A4:
 	push {lr}
 	ldr r1, off_80DB6C4 // =off_80DB6C8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -72580,7 +72580,7 @@ off_80DB6C4: .word off_80DB6C8
 off_80DB6C8: .word sub_80DB6D4+1
 	.word sub_80DB726+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DB6A4
+	thumb_func_end t3_0xb0_80DB6A4
 
 	thumb_local_start
 sub_80DB6D4:
@@ -72847,8 +72847,8 @@ dword_80DB8C4: .word 0x3
 dword_80DB8C8: .word 0x60000
 	thumb_func_end sub_80DB890
 
-	thumb_func_start sub_80DB8CC
-sub_80DB8CC:
+	thumb_func_start t3_0xb1_80DB8CC
+t3_0xb1_80DB8CC:
 	push {lr}
 	ldr r1, off_80DB8DC // =off_80DB8E0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -72861,7 +72861,7 @@ off_80DB8DC: .word off_80DB8E0
 off_80DB8E0: .word sub_80DB8EC+1
 	.word sub_80DB934+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DB8CC
+	thumb_func_end t3_0xb1_80DB8CC
 
 	thumb_local_start
 sub_80DB8EC:
@@ -72947,8 +72947,8 @@ locret_80DB98C:
 dword_80DB990: .word 0xC000000
 	thumb_func_end sub_80DB970
 
-	thumb_func_start sub_80DB994
-sub_80DB994:
+	thumb_func_start t3_0xb2_80DB994
+t3_0xb2_80DB994:
 	push {lr}
 	ldr r1, off_80DB9A8 // =off_80DB9AC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -72962,7 +72962,7 @@ off_80DB9A8: .word off_80DB9AC
 off_80DB9AC: .word sub_80DB9B8+1
 	.word sub_80DBA50+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DB994
+	thumb_func_end t3_0xb2_80DB994
 
 	thumb_local_start
 sub_80DB9B8:
@@ -73148,8 +73148,8 @@ locret_80DBB38:
 dword_80DBB3C: .word 0x30000
 	thumb_func_end sub_80DBB0C
 
-	thumb_func_start sub_80DBB40
-sub_80DBB40:
+	thumb_func_start t3_0xb3_80DBB40
+t3_0xb3_80DBB40:
 	push {lr}
 	ldr r1, off_80DBB54 // =off_80DBB58 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -73163,7 +73163,7 @@ off_80DBB54: .word off_80DBB58
 off_80DBB58: .word sub_80DBB64+1
 	.word sub_80DBC0A+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DBB40
+	thumb_func_end t3_0xb3_80DBB40
 
 	thumb_local_start
 sub_80DBB64:
@@ -73365,8 +73365,8 @@ loc_80DBCE0:
 dword_80DBCE8: .word 0x60000
 	thumb_func_end sub_80DBCBA
 
-	thumb_func_start sub_80DBCEC
-sub_80DBCEC:
+	thumb_func_start t3_0xb4_80DBCEC
+t3_0xb4_80DBCEC:
 	push {lr}
 	ldr r1, off_80DBD00 // =off_80DBD04 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -73380,7 +73380,7 @@ off_80DBD00: .word off_80DBD04
 off_80DBD04: .word sub_80DBD10+1
 	.word sub_80DBDA0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DBCEC
+	thumb_func_end t3_0xb4_80DBCEC
 
 	thumb_local_start
 sub_80DBD10:
@@ -73616,8 +73616,8 @@ dword_80DBEDC: .word 0x15050001
 byte_80DBEE0: .byte 0x31, 0x0, 0xA, 0x5, 0x1, 0x0
 	thumb_func_end sub_80DBEBA
 
-	thumb_func_start sub_80DBEE6
-sub_80DBEE6:
+	thumb_func_start t3_0xb5_80DBEE6
+t3_0xb5_80DBEE6:
 	push {lr}
 	ldr r1, off_80DBEF4 // =off_80DBEF8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -73629,7 +73629,7 @@ off_80DBEF4: .word off_80DBEF8
 off_80DBEF8: .word sub_80DBF04+1
 	.word sub_80DBFC0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DBEE6
+	thumb_func_end t3_0xb5_80DBEE6
 
 	thumb_local_start
 sub_80DBF04:
@@ -73865,8 +73865,8 @@ locret_80DC0E4:
 	.balign 4, 0x00
 	thumb_func_end sub_80DC0C0
 
-	thumb_func_start sub_80DC0E8
-sub_80DC0E8:
+	thumb_func_start t3_0xb6_80DC0E8
+t3_0xb6_80DC0E8:
 	push {lr}
 	ldr r1, off_80DC0F8 // =off_80DC0FC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -73879,7 +73879,7 @@ off_80DC0F8: .word off_80DC0FC
 off_80DC0FC: .word sub_80DC108+1
 	.word sub_80DC160+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DC0E8
+	thumb_func_end t3_0xb6_80DC0E8
 
 	thumb_local_start
 sub_80DC108:
@@ -74051,8 +74051,8 @@ dword_80DC258: .word 0x2000
 dword_80DC25C: .word 0x3005FF01
 	thumb_func_end spawnType3_0xb6_80DC22C
 
-	thumb_func_start sub_80DC260
-sub_80DC260:
+	thumb_func_start t3_0xb7_80DC260
+t3_0xb7_80DC260:
 	push {lr}
 	ldr r1, off_80DC270 // =off_80DC274 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -74065,7 +74065,7 @@ off_80DC270: .word off_80DC274
 off_80DC274: .word sub_80DC280+1
 	.word sub_80DC2D4+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DC260
+	thumb_func_end t3_0xb7_80DC260
 
 	thumb_local_start
 sub_80DC280:
@@ -74260,8 +74260,8 @@ loc_80DC3F4:
 	pop {r4,r6,pc}
 	thumb_func_end sub_80DC3B2
 
-	thumb_func_start sub_80DC3F8
-sub_80DC3F8:
+	thumb_func_start t3_0xb8_80DC3F8
+t3_0xb8_80DC3F8:
 	push {lr}
 	ldr r1, off_80DC40C // =off_80DC410 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -74275,7 +74275,7 @@ off_80DC40C: .word off_80DC410
 off_80DC410: .word sub_80DC41C+1
 	.word sub_80DC45E+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DC3F8
+	thumb_func_end t3_0xb8_80DC3F8
 
 	thumb_local_start
 sub_80DC41C:
@@ -74397,8 +74397,8 @@ dword_80DC4F4: .word 0xA050301
 dword_80DC4F8: .word 0x3
 	thumb_func_end sub_80DC4DE
 
-	thumb_func_start sub_80DC4FC
-sub_80DC4FC:
+	thumb_func_start t3_0xb9_80DC4FC
+t3_0xb9_80DC4FC:
 	push {lr}
 	ldr r1, off_80DC510 // =off_80DC514 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -74412,7 +74412,7 @@ off_80DC510: .word off_80DC514
 off_80DC514: .word sub_80DC520+1
 	.word loc_80DC562+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DC4FC
+	thumb_func_end t3_0xb9_80DC4FC
 
 	thumb_local_start
 sub_80DC520:
@@ -74528,8 +74528,8 @@ dword_80DC5F0: .word 0xA050401
 dword_80DC5F4: .word 0x1
 	thumb_func_end sub_80DC5DA
 
-	thumb_func_start sub_80DC5F8
-sub_80DC5F8:
+	thumb_func_start t3_0xba_80DC5F8
+t3_0xba_80DC5F8:
 	push {lr}
 	ldr r1, off_80DC60C // =off_80DC610 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -74543,7 +74543,7 @@ off_80DC60C: .word off_80DC610
 off_80DC610: .word sub_80DC61C+1
 	.word sub_80DC668+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DC5F8
+	thumb_func_end t3_0xba_80DC5F8
 
 	thumb_local_start
 sub_80DC61C:
@@ -74665,8 +74665,8 @@ byte_80DC6FD: .byte 0x0, 0x1, 0x0, 0x2, 0x0, 0x2, 0x1, 0x2, 0xFF, 0x7F, 0x0
 off_80DC708: .word byte_80DC6FC
 	thumb_func_end sub_80DC6D2
 
-	thumb_func_start sub_80DC70C
-sub_80DC70C:
+	thumb_func_start t3_0xbb_80DC70C
+t3_0xbb_80DC70C:
 	push {lr}
 	ldr r1, off_80DC720 // =off_80DC724 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -74680,7 +74680,7 @@ off_80DC720: .word off_80DC724
 off_80DC724: .word sub_80DC730+1
 	.word sub_80DC778+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DC70C
+	thumb_func_end t3_0xbb_80DC70C
 
 	thumb_local_start
 sub_80DC730:
@@ -75197,8 +75197,8 @@ dword_80DCB14: .word 0x40000
 dword_80DCB18: .word 0xFFF80000
 	thumb_func_end sub_80DCAFA
 
-	thumb_func_start sub_80DCB1C
-sub_80DCB1C:
+	thumb_func_start t3_0xbc_80DCB1C
+t3_0xbc_80DCB1C:
 	push {lr}
 	ldr r1, off_80DCB3C // =off_80DCB40 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -75219,7 +75219,7 @@ off_80DCB3C: .word off_80DCB40
 off_80DCB40: .word sub_80DCB4C+1
 	.word sub_80DCB9C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DCB1C
+	thumb_func_end t3_0xbc_80DCB1C
 
 	thumb_local_start
 sub_80DCB4C:
@@ -75408,8 +75408,8 @@ dword_80DCCCC: .word 0x3
 dword_80DCCD0: .word 0xC00000
 	thumb_func_end sub_80DCC96
 
-	thumb_func_start sub_80DCCD4
-sub_80DCCD4:
+	thumb_func_start t3_0xbd_80DCCD4
+t3_0xbd_80DCCD4:
 	push {lr}
 	ldr r1, off_80DCCE8 // =off_80DCCEC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -75423,7 +75423,7 @@ off_80DCCE8: .word off_80DCCEC
 off_80DCCEC: .word sub_80DCCF8+1
 	.word sub_80DCD48+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DCCD4
+	thumb_func_end t3_0xbd_80DCCD4
 
 	thumb_local_start
 sub_80DCCF8:
@@ -75591,8 +75591,8 @@ dword_80DCE30: .word 0x300000
 dword_80DCE34: .word 0x80000
 	thumb_func_end sub_80DCE18
 
-	thumb_func_start sub_80DCE38
-sub_80DCE38:
+	thumb_func_start t3_0xbe_80DCE38
+t3_0xbe_80DCE38:
 	push {lr}
 	ldr r1, off_80DCE4C // =off_80DCE50 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -75606,7 +75606,7 @@ off_80DCE4C: .word off_80DCE50
 off_80DCE50: .word sub_80DCE5C+1
 	.word sub_80DCE9E+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DCE38
+	thumb_func_end t3_0xbe_80DCE38
 
 	thumb_local_start
 sub_80DCE5C:
@@ -75686,8 +75686,8 @@ locret_80DCEE8:
 byte_80DCEEC: .byte 0x3, 0x0, 0x3, 0x0, 0xA, 0x0, 0xA, 0x0
 	thumb_func_end sub_80DCEC6
 
-	thumb_func_start sub_80DCEF4
-sub_80DCEF4:
+	thumb_func_start t3_0xbf_80DCEF4
+t3_0xbf_80DCEF4:
 	push {lr}
 	ldr r1, off_80DCF08 // =off_80DCF0C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -75701,7 +75701,7 @@ off_80DCF08: .word off_80DCF0C
 off_80DCF0C: .word sub_80DCF18+1
 	.word sub_80DCF88+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DCEF4
+	thumb_func_end t3_0xbf_80DCEF4
 
 	thumb_local_start
 sub_80DCF18:
@@ -75895,8 +75895,8 @@ byte_80DD098: .byte 0x0, 0x80, 0x3, 0x0, 0x0, 0x80, 0x3, 0x0, 0x0, 0x80, 0x3, 0x
 off_80DD0A8: .word byte_80DCEEC
 	thumb_func_end sub_80DD062
 
-	thumb_func_start sub_80DD0AC
-sub_80DD0AC:
+	thumb_func_start t3_0xc0_80DD0AC
+t3_0xc0_80DD0AC:
 	push {lr}
 	ldr r1, off_80DD0C0 // =off_80DD0C4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -75910,7 +75910,7 @@ off_80DD0C0: .word off_80DD0C4
 off_80DD0C4: .word sub_80DD0D0+1
 	.word sub_80DD15C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DD0AC
+	thumb_func_end t3_0xc0_80DD0AC
 
 	thumb_local_start
 sub_80DD0D0:
@@ -76235,8 +76235,8 @@ off_80DD344: .word byte_8113DC0
 dword_80DD348: .word 0x30000
 	thumb_func_end sub_80DD322
 
-	thumb_func_start sub_80DD34C
-sub_80DD34C:
+	thumb_func_start t3_0xc1_80DD34C
+t3_0xc1_80DD34C:
 	push {lr}
 	ldr r1, off_80DD360 // =off_80DD364 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -76250,7 +76250,7 @@ off_80DD360: .word off_80DD364
 off_80DD364: .word sub_80DD382+1
 	.word sub_80DD438+1
 	.word sub_80DD370+1
-	thumb_func_end sub_80DD34C
+	thumb_func_end t3_0xc1_80DD34C
 
 	thumb_local_start
 sub_80DD370:
@@ -76748,8 +76748,8 @@ locret_80DD75C:
 dword_80DD760: .word 0x1E800000
 	thumb_func_end sub_80DD738
 
-	thumb_func_start sub_80DD764
-sub_80DD764:
+	thumb_func_start t3_0xc2_80DD764
+t3_0xc2_80DD764:
 	push {lr}
 	ldr r1, off_80DD774 // =off_80DD778 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -76762,7 +76762,7 @@ off_80DD774: .word off_80DD778
 off_80DD778: .word sub_80DD784+1
 	.word sub_80DD7FC+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DD764
+	thumb_func_end t3_0xc2_80DD764
 
 	thumb_local_start
 sub_80DD784:
@@ -76995,8 +76995,8 @@ sub_80DD930:
 	pop {pc}
 	thumb_func_end sub_80DD930
 
-	thumb_func_start sub_80DD940
-sub_80DD940:
+	thumb_func_start t3_0xc3_80DD940
+t3_0xc3_80DD940:
 	push {lr}
 	ldr r1, off_80DD960 // =off_80DD964 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -77017,7 +77017,7 @@ off_80DD960: .word off_80DD964
 off_80DD964: .word sub_80DD970+1
 	.word sub_80DDA08+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DD940
+	thumb_func_end t3_0xc3_80DD940
 
 	thumb_local_start
 sub_80DD970:
@@ -77151,8 +77151,8 @@ locret_80DDA80:
 	.balign 4, 0x00
 	thumb_func_end sub_80DDA5A
 
-	thumb_func_start sub_80DDA84
-sub_80DDA84:
+	thumb_func_start t3_0xc4_80DDA84
+t3_0xc4_80DDA84:
 	push {lr}
 	ldr r1, off_80DDA98 // =off_80DDA9C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -77166,7 +77166,7 @@ off_80DDA98: .word off_80DDA9C
 off_80DDA9C: .word sub_80DDAA8+1
 	.word sub_80DDB24+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DDA84
+	thumb_func_end t3_0xc4_80DDA84
 
 	thumb_local_start
 sub_80DDAA8:
@@ -77342,8 +77342,8 @@ dword_80DDC08: .word 0x10000
 dword_80DDC0C: .word 0xCA8F
 	thumb_func_end sub_80DDBDE
 
-	thumb_func_start sub_80DDC10
-sub_80DDC10:
+	thumb_func_start t3_0xc5_80DDC10
+t3_0xc5_80DDC10:
 	push {lr}
 	ldr r1, off_80DDC20 // =off_80DDC24 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -77356,7 +77356,7 @@ off_80DDC20: .word off_80DDC24
 off_80DDC24: .word sub_80DDC30+1
 	.word sub_80DDCF4+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DDC10
+	thumb_func_end t3_0xc5_80DDC10
 
 	thumb_local_start
 sub_80DDC30:
@@ -77571,8 +77571,8 @@ locret_80DDDE8:
 dword_80DDDEC: .word 0xD0000
 	thumb_func_end sub_80DDDCC
 
-	thumb_func_start sub_80DDDF0
-sub_80DDDF0:
+	thumb_func_start t3_0xc6_80DDDF0
+t3_0xc6_80DDDF0:
 	push {lr}
 	ldr r1, off_80DDE04 // =off_80DDE08 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -77586,7 +77586,7 @@ off_80DDE04: .word off_80DDE08
 off_80DDE08: .word sub_80DDE14+1
 	.word sub_80DDE82+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DDDF0
+	thumb_func_end t3_0xc6_80DDDF0
 
 	thumb_local_start
 sub_80DDE14:
@@ -77838,8 +77838,8 @@ dword_80DDFF8: .word 0x1
 dword_80DDFFC: .word 0x80000
 	thumb_func_end sub_80DDFDE
 
-	thumb_func_start sub_80DE000
-sub_80DE000:
+	thumb_func_start t3_0xc7_80DE000
+t3_0xc7_80DE000:
 	push {lr}
 	ldr r1, off_80DE014 // =off_80DE018 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -77853,7 +77853,7 @@ off_80DE014: .word off_80DE018
 off_80DE018: .word sub_80DE024+1
 	.word sub_80DE080+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DE000
+	thumb_func_end t3_0xc7_80DE000
 
 	thumb_local_start
 sub_80DE024:
@@ -77995,8 +77995,8 @@ locret_80DE134:
 dword_80DE138: .word 0xFFFF7778
 	thumb_func_end sub_80DE112
 
-	thumb_func_start sub_80DE13C
-sub_80DE13C:
+	thumb_func_start t3_0xc8_80DE13C
+t3_0xc8_80DE13C:
 	push {lr}
 	ldr r1, off_80DE150 // =off_80DE154 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -78010,7 +78010,7 @@ off_80DE150: .word off_80DE154
 off_80DE154: .word sub_80DE168+1
 	.word sub_80DE1B8+1
 	.word sub_80DE160+1
-	thumb_func_end sub_80DE13C
+	thumb_func_end t3_0xc8_80DE13C
 
 	thumb_local_start
 sub_80DE160:
@@ -78355,8 +78355,8 @@ byte_80DE3F4: .byte 0x3, 0x6, 0x9, 0xC, 0x3, 0x6, 0x9, 0xC, 0x3, 0x6
 	.byte 0x9, 0xC, 0x3, 0x6, 0x9, 0xC
 	thumb_func_end sub_80DE3B0
 
-	thumb_func_start sub_80DE404
-sub_80DE404:
+	thumb_func_start t3_0xc9_80DE404
+t3_0xc9_80DE404:
 	push {lr}
 	ldr r1, off_80DE418 // =off_80DE41C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -78370,7 +78370,7 @@ off_80DE418: .word off_80DE41C
 off_80DE41C: .word sub_80DE430+1
 	.word sub_80DE4EC+1
 	.word sub_80DE428+1
-	thumb_func_end sub_80DE404
+	thumb_func_end t3_0xc9_80DE404
 
 	thumb_local_start
 sub_80DE428:
@@ -78847,8 +78847,8 @@ off_80DE7EC: .word math_sinTable
 off_80DE7F0: .word byte_80DE3F4
 	thumb_func_end sub_80DE7C8
 
-	thumb_func_start sub_80DE7F4
-sub_80DE7F4:
+	thumb_func_start t3_0xca_80DE7F4
+t3_0xca_80DE7F4:
 	push {lr}
 	ldr r1, off_80DE808 // =off_80DE80C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -78862,7 +78862,7 @@ off_80DE808: .word off_80DE80C
 off_80DE80C: .word sub_80DE818+1
 	.word sub_80DE8C0+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DE7F4
+	thumb_func_end t3_0xca_80DE7F4
 
 	thumb_local_start
 sub_80DE818:
@@ -79619,8 +79619,8 @@ byte_80DEE44: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x1, 0x0,
 off_80DEE54: .word math_sinTable
 byte_80DEE58: .byte 0x0, 0x0, 0x16, 0x0, 0x0, 0x0, 0x0, 0x0
 
-	thumb_func_start sub_80DEE60
-sub_80DEE60:
+	thumb_func_start t3_0xcc_80DEE60
+t3_0xcc_80DEE60:
 	push {lr}
 	ldr r1, off_80DEE74 // =off_80DEE78 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -79634,7 +79634,7 @@ off_80DEE74: .word off_80DEE78
 off_80DEE78: .word sub_80DEE8C+1
 	.word sub_80DEEE8+1
 	.word sub_80DEE84+1
-	thumb_func_end sub_80DEE60
+	thumb_func_end t3_0xcc_80DEE60
 
 	thumb_local_start
 sub_80DEE84:
@@ -79906,8 +79906,8 @@ off_80DF09C: .word math_sinTable
 dword_80DF0A0: .word 0x160000
 	thumb_func_end sub_80DF016
 
-	thumb_func_start sub_80DF0A4
-sub_80DF0A4:
+	thumb_func_start t3_0xcd_80DF0A4
+t3_0xcd_80DF0A4:
 	push {lr}
 	ldr r1, off_80DF0B8 // =off_80DF0BC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -79921,7 +79921,7 @@ off_80DF0B8: .word off_80DF0BC
 off_80DF0BC: .word sub_80DF0C8+1
 	.word sub_80DF132+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DF0A4
+	thumb_func_end t3_0xcd_80DF0A4
 
 	thumb_local_start
 sub_80DF0C8:
@@ -80013,8 +80013,8 @@ locret_80DF184:
 	.balign 4, 0x00
 	thumb_func_end sub_80DF132
 
-	thumb_func_start sub_80DF188
-sub_80DF188:
+	thumb_func_start t3_0xce_80DF188
+t3_0xce_80DF188:
 	push {lr}
 	ldr r1, off_80DF19C // =off_80DF1A0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -80028,7 +80028,7 @@ off_80DF19C: .word off_80DF1A0
 off_80DF1A0: .word sub_80DF1AC+1
 	.word sub_80DF1FC+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DF188
+	thumb_func_end t3_0xce_80DF188
 
 	thumb_local_start
 sub_80DF1AC:
@@ -80202,8 +80202,8 @@ dword_80DF320: .word 0x3
 dword_80DF324: .word 0x280000
 	thumb_func_end sub_80DF2A0
 
-	thumb_func_start sub_80DF328
-sub_80DF328:
+	thumb_func_start t3_0xcf_80DF328
+t3_0xcf_80DF328:
 	push {lr}
 	ldr r1, off_80DF33C // =off_80DF340 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -80217,7 +80217,7 @@ off_80DF33C: .word off_80DF340
 off_80DF340: .word sub_80DF34C+1
 	.word loc_80DF390+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DF328
+	thumb_func_end t3_0xcf_80DF328
 
 	thumb_local_start
 sub_80DF34C:
@@ -80454,8 +80454,8 @@ locret_80DF4F8:
 	.balign 4, 0x00
 	thumb_func_end sub_80DF4D4
 
-	thumb_func_start sub_80DF4FC
-sub_80DF4FC:
+	thumb_func_start t3_0xd0_80DF4FC
+t3_0xd0_80DF4FC:
 	push {lr}
 	ldr r1, off_80DF510 // =off_80DF514 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -80469,7 +80469,7 @@ off_80DF510: .word off_80DF514
 off_80DF514: .word sub_80DF520+1
 	.word sub_80DF574+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80DF4FC
+	thumb_func_end t3_0xd0_80DF4FC
 
 	thumb_local_start
 sub_80DF520:
@@ -81011,8 +81011,8 @@ dword_80DF904: .word 0x1090B
 dword_80DF908: .word 0x180000
 	thumb_func_end sub_80DF8D2
 
-	thumb_func_start sub_80DF90C
-sub_80DF90C:
+	thumb_func_start t3_0xd1_80DF90C
+t3_0xd1_80DF90C:
 	push {lr}
 	ldr r1, off_80DF920 // =off_80DF924 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -81026,7 +81026,7 @@ off_80DF920: .word off_80DF924
 off_80DF924: .word sub_80DF930+1
 	.word sub_80DFA58+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DF90C
+	thumb_func_end t3_0xd1_80DF90C
 
 	thumb_local_start
 sub_80DF930:
@@ -81376,8 +81376,8 @@ dword_80DFC30: .word 0x2000
 dword_80DFC34: .word 0x180000
 	thumb_func_end sub_80DFBE4
 
-	thumb_func_start sub_80DFC38
-sub_80DFC38:
+	thumb_func_start t3_0xd2_80DFC38
+t3_0xd2_80DFC38:
 	push {lr}
 	ldr r1, off_80DFC48 // =off_80DFC4C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -81390,7 +81390,7 @@ off_80DFC48: .word off_80DFC4C
 off_80DFC4C: .word sub_80DFC58+1
 	.word sub_80DFC8C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DFC38
+	thumb_func_end t3_0xd2_80DFC38
 
 	thumb_local_start
 sub_80DFC58:
@@ -81656,8 +81656,8 @@ dword_80DFE38: .word 0x1000
 dword_80DFE3C: .word 0x2000
 	thumb_func_end sub_80DFE28
 
-	thumb_func_start sub_80DFE40
-sub_80DFE40:
+	thumb_func_start t3_0xd3_80DFE40
+t3_0xd3_80DFE40:
 	push {lr}
 	ldr r1, off_80DFE54 // =off_80DFE58 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -81671,7 +81671,7 @@ off_80DFE54: .word off_80DFE58
 off_80DFE58: .word sub_80DFE64+1
 	.word sub_80DFEA8+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DFE40
+	thumb_func_end t3_0xd3_80DFE40
 
 	thumb_local_start
 sub_80DFE64:
@@ -81845,8 +81845,8 @@ locret_80DFFB4:
 	.balign 4, 0x00
 	thumb_func_end sub_80DFFA2
 
-	thumb_func_start sub_80DFFB8
-sub_80DFFB8:
+	thumb_func_start t3_0xd4_80DFFB8
+t3_0xd4_80DFFB8:
 	push {lr}
 	ldr r1, off_80DFFCC // =off_80DFFD0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -81860,7 +81860,7 @@ off_80DFFCC: .word off_80DFFD0
 off_80DFFD0: .word sub_80DFFDC+1
 	.word sub_80E002C+1
 	.word object_genericDestroy+1
-	thumb_func_end sub_80DFFB8
+	thumb_func_end t3_0xd4_80DFFB8
 
 	thumb_local_start
 sub_80DFFDC:
@@ -82379,7 +82379,10 @@ off_80E0408: .word unk_200150C
 	.byte 0x0, 0x6, 0xC, 0x14, 0x1, 0x4, 0xC, 0x14, 0x0, 0x4, 0xC, 0x14, 0x3
 	.byte 0x4, 0x14, 0x14, 0x0, 0x0, 0x14, 0x1E, 0x1, 0x0, 0x14, 0xF, 0x0, 0x1
 	.byte 0x14, 0x0, 0x0, 0x0
-loc_80E0548:
+	thumb_func_end sub_80E0376
+
+	thumb_func_start t4_0x0_80E0548
+t4_0x0_80E0548:
 	push {lr}
 	ldr r1, off_80E0558 // =off_80E055C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -82392,7 +82395,7 @@ off_80E0558: .word off_80E055C
 off_80E055C: .word sub_80E0568+1
 	.word sub_80E05C4+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E0376
+	thumb_func_end t4_0x0_80E0548
 
 	thumb_local_start
 sub_80E0568:
@@ -82512,8 +82515,8 @@ locret_80E0630:
 off_80E0634: .word byte_80E0398
 	thumb_func_end sub_80E0616
 
-	thumb_func_start sub_80E0638
-sub_80E0638:
+	thumb_func_start t4_0x2_80E0638
+t4_0x2_80E0638:
 	push {lr}
 	ldr r1, off_80E0648 // =off_80E064C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -82525,7 +82528,7 @@ sub_80E0638:
 off_80E0648: .word off_80E064C
 off_80E064C: .word sub_80E0654+1
 	.word sub_80E0668+1
-	thumb_func_end sub_80E0638
+	thumb_func_end t4_0x2_80E0638
 
 	thumb_local_start
 sub_80E0654:
@@ -82633,8 +82636,8 @@ sub_80E06F8:
 off_80E070C: .word 0x400
 	thumb_func_end sub_80E06F8
 
-	thumb_func_start sub_80E0710
-sub_80E0710:
+	thumb_func_start t4_0x3_80E0710
+t4_0x3_80E0710:
 	push {lr}
 	ldr r1, off_80E0720 // =off_80E0724 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -82647,7 +82650,7 @@ off_80E0720: .word off_80E0724
 off_80E0724: .word object_timefreezeBegin+1
 	.word sub_80E0730+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E0710
+	thumb_func_end t4_0x3_80E0710
 
 	thumb_local_start
 sub_80E0730:
@@ -82765,8 +82768,8 @@ off_80E0804: .word 0x514
 byte_80E083F: .byte 0x0, 0x14, 0x18, 0x0, 0x0
 	thumb_func_end sub_80E07E0
 
-	thumb_func_start sub_80E0844
-sub_80E0844:
+	thumb_func_start t4_0x4_80E0844
+t4_0x4_80E0844:
 	push {lr}
 	ldr r1, off_80E0854 // =off_80E0858 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -82779,7 +82782,7 @@ off_80E0854: .word off_80E0858
 off_80E0858: .word sub_80E0864+1
 	.word sub_80E08A6+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E0844
+	thumb_func_end t4_0x4_80E0844
 
 	thumb_local_start
 sub_80E0864:
@@ -82855,8 +82858,8 @@ byte_80E08E4: .byte 0x14, 0xB, 0x0, 0x0, 0x0, 0x80, 0x0, 0x0, 0x14, 0x9, 0x0, 0x
 	.byte 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x0, 0x40, 0x0, 0x0
 	thumb_func_end nullsub_99
 
-	thumb_func_start sub_80E08FC
-sub_80E08FC:
+	thumb_func_start t4_0x6_80E08FC
+t4_0x6_80E08FC:
 	push {lr}
 	ldr r1, off_80E090C // =off_80E0910 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -82869,7 +82872,7 @@ off_80E090C: .word off_80E0910
 off_80E0910: .word sub_80E091C+1
 	.word sub_80E0954+1
 	.word sub_8016C9C+1
-	thumb_func_end sub_80E08FC
+	thumb_func_end t4_0x6_80E08FC
 
 	thumb_local_start
 sub_80E091C:
@@ -83017,8 +83020,8 @@ byte_80E0A14: .byte 0xC, 0x7, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80E0A0A
 
-	thumb_func_start sub_80E0AD4
-sub_80E0AD4:
+	thumb_func_start t4_0x7_80E0AD4
+t4_0x7_80E0AD4:
 	push {lr}
 	ldr r1, off_80E0AF8 // =off_80E0AFC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -83040,7 +83043,7 @@ off_80E0AF8: .word off_80E0AFC
 off_80E0AFC: .word sub_80E0B08+1
 	.word sub_80E0B8C+1
 	.word sub_8016C9C+1
-	thumb_func_end sub_80E0AD4
+	thumb_func_end t4_0x7_80E0AD4
 
 	thumb_local_start
 sub_80E0B08:
@@ -83684,8 +83687,8 @@ locret_80E0F9E:
 	pop {pc}
 	thumb_func_end sub_80E0F5E
 
-	thumb_func_start sub_80E0FA0
-sub_80E0FA0:
+	thumb_func_start t4_0x9_80E0FA0
+t4_0x9_80E0FA0:
 	push {lr}
 	ldr r1, off_80E0FB0 // =off_80E0FB4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -83698,7 +83701,7 @@ off_80E0FB0: .word off_80E0FB4
 off_80E0FB4: .word sub_80E0FC0+1
 	.word sub_80E100A+1
 	.word sub_80E107C+1
-	thumb_func_end sub_80E0FA0
+	thumb_func_end t4_0x9_80E0FA0
 
 	thumb_local_start
 sub_80E0FC0:
@@ -83826,8 +83829,8 @@ loc_80E109E:
 	.balign 4, 0x00
 	thumb_func_end sub_80E1084
 
-	thumb_func_start sub_80E10A4
-sub_80E10A4:
+	thumb_func_start t4_0xa_80E10A4
+t4_0xa_80E10A4:
 	push {lr}
 	ldr r1, off_80E10B4 // =off_80E10B8 
 	ldrb r0, [r5,#oBattleObject_Param1]
@@ -83839,7 +83842,7 @@ sub_80E10A4:
 off_80E10B4: .word off_80E10B8
 off_80E10B8: .word sub_80E10C0+1
 	.word sub_80E114C+1
-	thumb_func_end sub_80E10A4
+	thumb_func_end t4_0xa_80E10A4
 
 	thumb_local_start
 sub_80E10C0:
@@ -83999,8 +84002,8 @@ locret_80E11FA:
 	pop {pc}
 	thumb_func_end sub_80E11E0
 
-	thumb_func_start sub_80E11FC
-sub_80E11FC:
+	thumb_func_start t4_0xc_80E11FC
+t4_0xc_80E11FC:
 	push {lr}
 	ldr r1, off_80E120C // =off_80E1210 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -84013,7 +84016,7 @@ off_80E120C: .word off_80E1210
 off_80E1210: .word sub_80E121C+1
 	.word sub_80E12BA+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E11FC
+	thumb_func_end t4_0xc_80E11FC
 
 	thumb_local_start
 sub_80E121C:
@@ -84415,8 +84418,8 @@ loc_80E1512:
 byte_80E1518: .byte 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80E1502
 
-	thumb_func_start sub_80E1520
-sub_80E1520:
+	thumb_func_start t4_0xf_80E1520
+t4_0xf_80E1520:
 	push {lr}
 	ldr r1, off_80E1530 // =off_80E1534 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -84429,7 +84432,7 @@ off_80E1530: .word off_80E1534
 off_80E1534: .word sub_80E1540+1
 	.word sub_80E1566+1
 	.word sub_8016C9C+1
-	thumb_func_end sub_80E1520
+	thumb_func_end t4_0xf_80E1520
 
 	thumb_local_start
 sub_80E1540:
@@ -84825,8 +84828,8 @@ off_80E17E0: .word 0x178
 dword_80E17E4: .word 0x1C3
 	thumb_func_end sub_80E17AC
 
-	thumb_func_start sub_80E17E8
-sub_80E17E8:
+	thumb_func_start t4_0x10_80E17E8
+t4_0x10_80E17E8:
 	push {lr}
 	ldr r1, off_80E17F8 // =off_80E17FC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -84839,7 +84842,7 @@ off_80E17F8: .word off_80E17FC
 off_80E17FC: .word object_timefreezeBegin+1
 	.word sub_80E1808+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E17E8
+	thumb_func_end t4_0x10_80E17E8
 
 	thumb_local_start
 sub_80E1808:
@@ -85084,8 +85087,8 @@ off_80E19B4: .word byte_203C960
 dword_80E19B8: .word 0x87FF
 	thumb_func_end sub_80E199A
 
-	thumb_func_start sub_80E19BC
-sub_80E19BC:
+	thumb_func_start t4_0x11_80E19BC
+t4_0x11_80E19BC:
 	push {lr}
 	ldr r1, JumpTable80E19CC_p // =JumpTable80E19CC
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -85098,7 +85101,7 @@ JumpTable80E19CC: .word sub_80E19DC+1
 	.word sub_80E19F4+1
 	.word sub_80E1A5E+1
 JumpTable80E19CC_p: .word JumpTable80E19CC
-	thumb_func_end sub_80E19BC
+	thumb_func_end t4_0x11_80E19BC
 
 	thumb_local_start
 sub_80E19DC:
@@ -85213,8 +85216,8 @@ locret_80E1A8E:
 	mov pc, lr
 	thumb_func_end sub_80E1A86
 
-	thumb_func_start sub_80E1A90
-sub_80E1A90:
+	thumb_func_start t4_0x12_80E1A90
+t4_0x12_80E1A90:
 	push {lr}
 	ldr r1, off_80E1AA4 // =off_80E1AA8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -85228,7 +85231,7 @@ off_80E1AA4: .word off_80E1AA8
 off_80E1AA8: .word sub_80E1AB4+1
 	.word sub_80E1AFA+1
 	.word sub_80E1B0A+1
-	thumb_func_end sub_80E1A90
+	thumb_func_end t4_0x12_80E1A90
 
 	thumb_local_start
 sub_80E1AB4:
@@ -85316,8 +85319,8 @@ locret_80E1B46:
 	pop {pc}
 	thumb_func_end sub_80E1B3C
 
-	thumb_func_start sub_80E1B48
-sub_80E1B48:
+	thumb_func_start t4_0x13_80E1B48
+t4_0x13_80E1B48:
 	push {lr}
 	ldr r1, off_80E1B58 // =off_80E1B5C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -85330,7 +85333,7 @@ off_80E1B58: .word off_80E1B5C
 off_80E1B5C: .word sub_80E1B68+1
 	.word sub_80E1BBE+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E1B48
+	thumb_func_end t4_0x13_80E1B48
 
 	thumb_local_start
 sub_80E1B68:
@@ -85542,8 +85545,8 @@ off_80E1CF0: .word math_cosTable
 off_80E1CF4: .word math_sinTable
 	thumb_func_end sub_80E1CD6
 
-	thumb_func_start sub_80E1CF8
-sub_80E1CF8:
+	thumb_func_start t4_0x14_80E1CF8
+t4_0x14_80E1CF8:
 	push {lr}
 	ldr r1, off_80E1D08 // =off_80E1D0C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -85556,7 +85559,7 @@ off_80E1D08: .word off_80E1D0C
 off_80E1D0C: .word sub_80E1D18+1
 	.word sub_80E1D54+1
 	.word sub_80E1D72+1
-	thumb_func_end sub_80E1CF8
+	thumb_func_end t4_0x14_80E1CF8
 
 	thumb_local_start
 sub_80E1D18:
@@ -85621,8 +85624,8 @@ sub_80E1D7A:
 	.balign 4, 0x00
 	thumb_func_end sub_80E1D7A
 
-	thumb_func_start sub_80E1D88
-sub_80E1D88:
+	thumb_func_start t4_0x15_80E1D88
+t4_0x15_80E1D88:
 	push {lr}
 	ldr r1, off_80E1D9C // =off_80E1DA0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -85636,7 +85639,7 @@ off_80E1D9C: .word off_80E1DA0
 off_80E1DA0: .word sub_80E1DAC+1
 	.word sub_80E1DFC+1
 	.word sub_80E1E0C+1
-	thumb_func_end sub_80E1D88
+	thumb_func_end t4_0x15_80E1D88
 
 	thumb_local_start
 sub_80E1DAC:
@@ -85733,8 +85736,8 @@ locret_80E1E48:
 	.balign 4, 0x00
 	thumb_func_end sub_80E1E3E
 
-	thumb_func_start sub_80E1E4C
-sub_80E1E4C:
+	thumb_func_start t4_0x16_80E1E4C
+t4_0x16_80E1E4C:
 	push {lr}
 	ldr r1, off_80E1E5C // =off_80E1E60 
 	ldrb r0, [r5,#oBattleObject_Param2]
@@ -85748,7 +85751,7 @@ off_80E1E60: .word sub_80E1E70+1
 	.word sub_80E1EC6+1
 	.word sub_80E1F32+1
 	.word sub_80E1FB6+1
-	thumb_func_end sub_80E1E4C
+	thumb_func_end t4_0x16_80E1E4C
 
 	thumb_local_start
 sub_80E1E70:
@@ -86044,8 +86047,8 @@ sub_80E2068:
 	pop {pc}
 	thumb_func_end sub_80E2068
 
-	thumb_func_start sub_80E2080
-sub_80E2080:
+	thumb_func_start t4_0x19_80E2080
+t4_0x19_80E2080:
 	push {lr}
 	ldr r1, off_80E20A0 // =off_80E20A4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -86066,7 +86069,7 @@ off_80E20A0: .word off_80E20A4
 off_80E20A4: .word sub_80E20B0+1
 	.word sub_80E213C+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E2080
+	thumb_func_end t4_0x19_80E2080
 
 	thumb_local_start
 sub_80E20B0:
@@ -86210,8 +86213,8 @@ dword_80E21D0: .word 0x800000
 dword_80E21D4: .word 0xFFF77778
 	thumb_func_end sub_80E21AC
 
-	thumb_func_start sub_80E21D8
-sub_80E21D8:
+	thumb_func_start t4_0x1a_80E21D8
+t4_0x1a_80E21D8:
 	push {lr}
 	ldr r1, off_80E21E8 // =off_80E21EC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -86224,7 +86227,7 @@ off_80E21E8: .word off_80E21EC
 off_80E21EC: .word sub_80E21F8+1
 	.word sub_80E2208+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E21D8
+	thumb_func_end t4_0x1a_80E21D8
 
 	thumb_local_start
 sub_80E21F8:
@@ -86286,8 +86289,8 @@ locret_80E225A:
 	pop {pc}
 	thumb_func_end sub_80E2244
 
-	thumb_func_start sub_80E225C
-sub_80E225C:
+	thumb_func_start t4_0x1b_80E225C
+t4_0x1b_80E225C:
 	push {lr}
 	ldr r1, off_80E2270 // =off_80E2274 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -86301,7 +86304,7 @@ off_80E2270: .word off_80E2274
 off_80E2274: .word sub_80E2280+1
 	.word sub_80E2358+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E225C
+	thumb_func_end t4_0x1b_80E225C
 
 	thumb_local_start
 sub_80E2280:
@@ -86442,8 +86445,8 @@ locret_80E239C:
 dword_80E23A0: .word 0x3FFFF
 	thumb_func_end sub_80E2388
 
-	thumb_func_start sub_80E23A4
-sub_80E23A4:
+	thumb_func_start t4_0x1c_80E23A4
+t4_0x1c_80E23A4:
 	push {lr}
 	ldr r1, off_80E23B4 // =off_80E23B8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -86456,7 +86459,7 @@ off_80E23B4: .word off_80E23B8
 off_80E23B8: .word object_timefreezeBegin+1
 	.word sub_80E23C4+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E23A4
+	thumb_func_end t4_0x1c_80E23A4
 
 	thumb_local_start
 sub_80E23C4:
@@ -86597,8 +86600,8 @@ off_80E24DC: .word 0x1E0
 off_80E24E0: .word 0x438
 	thumb_func_end sub_80E24B8
 
-	thumb_func_start sub_80E24E4
-sub_80E24E4:
+	thumb_func_start t4_0x1d_80E24E4
+t4_0x1d_80E24E4:
 	push {lr}
 	ldr r1, off_80E24F4 // =off_80E24F8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -86611,7 +86614,7 @@ off_80E24F4: .word off_80E24F8
 off_80E24F8: .word object_timefreezeBegin+1
 	.word sub_80E2504+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E24E4
+	thumb_func_end t4_0x1d_80E24E4
 
 	thumb_local_start
 sub_80E2504:
@@ -86697,8 +86700,8 @@ byte_80E2588: .byte 0x0, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
 	.word object_panel_setPoison+1
 	thumb_func_end sub_80E2566
 
-	thumb_func_start sub_80E25D0
-sub_80E25D0:
+	thumb_func_start t4_0x1e_80E25D0
+t4_0x1e_80E25D0:
 	push {lr}
 	ldr r1, off_80E25E0 // =off_80E25E4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -86711,7 +86714,7 @@ off_80E25E0: .word off_80E25E4
 off_80E25E4: .word sub_80E25F0+1
 	.word sub_80E2628+1
 	.word sub_80E268C+1
-	thumb_func_end sub_80E25D0
+	thumb_func_end t4_0x1e_80E25D0
 
 	thumb_local_start
 sub_80E25F0:
@@ -86920,8 +86923,8 @@ byte_80E272C: .byte 0x2, 0x0, 0x3, 0x40, 0x0, 0x0, 0x0, 0x0, 0x20, 0x80, 0x0, 0x
 	.byte 0x80, 0x0, 0x0
 	thumb_func_end sub_80E2712
 
-	thumb_func_start sub_80E28A8
-sub_80E28A8:
+	thumb_func_start t4_0x1f_80E28A8
+t4_0x1f_80E28A8:
 	push {lr}
 	ldr r1, off_80E28B8 // =off_80E28BC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -86934,7 +86937,7 @@ off_80E28B8: .word off_80E28BC
 off_80E28BC: .word sub_80E28C8+1
 	.word sub_80E292C+1
 	.word sub_80E29E6+1
-	thumb_func_end sub_80E28A8
+	thumb_func_end t4_0x1f_80E28A8
 
 	thumb_local_start
 sub_80E28C8:
@@ -87242,8 +87245,8 @@ locret_80E2AE4:
 	.balign 4, 0x00
 	thumb_func_end sub_80E2ACA
 
-	thumb_func_start sub_80E2AE8
-sub_80E2AE8:
+	thumb_func_start t4_0x20_80E2AE8
+t4_0x20_80E2AE8:
 	push {lr}
 	ldr r1, off_80E2AF8 // =off_80E2AFC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -87256,7 +87259,7 @@ off_80E2AF8: .word off_80E2AFC
 off_80E2AFC: .word object_timefreezeBegin+1
 	.word sub_80E2B08+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E2AE8
+	thumb_func_end t4_0x20_80E2AE8
 
 	thumb_local_start
 sub_80E2B08:
@@ -87324,8 +87327,8 @@ locret_80E2B7A:
 	pop {pc}
 	thumb_func_end sub_80E2B5A
 
-	thumb_func_start sub_80E2B7C
-sub_80E2B7C:
+	thumb_func_start t4_0x21_80E2B7C
+t4_0x21_80E2B7C:
 	push {lr}
 	ldr r1, off_80E2B8C // =off_80E2B90 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -87338,7 +87341,7 @@ off_80E2B8C: .word off_80E2B90
 off_80E2B90: .word object_timefreezeBegin+1
 	.word sub_80E2B9C+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E2B7C
+	thumb_func_end t4_0x21_80E2B7C
 
 	thumb_local_start
 sub_80E2B9C:
@@ -87482,8 +87485,8 @@ locret_80E2CA0:
 	.balign 4, 0x00
 	thumb_func_end sub_80E2C80
 
-	thumb_func_start sub_80E2CA4
-sub_80E2CA4:
+	thumb_func_start t4_0x22_80E2CA4
+t4_0x22_80E2CA4:
 	push {lr}
 	ldr r1, off_80E2CB4 // =off_80E2CB8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -87496,7 +87499,7 @@ off_80E2CB4: .word off_80E2CB8
 off_80E2CB8: .word object_timefreezeBegin+1
 	.word sub_80E2CC4+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E2CA4
+	thumb_func_end t4_0x22_80E2CA4
 
 	thumb_local_start
 sub_80E2CC4:
@@ -87700,8 +87703,8 @@ byte_80E2E24: .byte 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x40, 0x0
 	.byte 0x0
 	thumb_func_end sub_80E2DE0
 
-	thumb_func_start sub_80E2E34
-sub_80E2E34:
+	thumb_func_start t4_0x23_80E2E34
+t4_0x23_80E2E34:
 	push {lr}
 	ldr r1, off_80E2E44 // =off_80E2E48 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -87714,7 +87717,7 @@ off_80E2E44: .word off_80E2E48
 off_80E2E48: .word object_timefreezeBegin+1
 	.word sub_80E2E54+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E2E34
+	thumb_func_end t4_0x23_80E2E34
 
 	thumb_local_start
 sub_80E2E54:
@@ -87845,8 +87848,8 @@ byte_80E2F48: .byte 0x1F, 0x0, 0x0, 0x0, 0x45, 0x0, 0x22, 0x0, 0xB, 0x0, 0x6B, 0
 	.byte 0x0
 	thumb_func_end sub_80E2F24
 
-	thumb_func_start sub_80E2F56
-sub_80E2F56:
+	thumb_func_start t4_0x24_80E2F56
+t4_0x24_80E2F56:
 	push {lr}
 	ldr r1, off_80E2F64 // =off_80E2F68 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -87858,7 +87861,7 @@ off_80E2F64: .word off_80E2F68
 off_80E2F68: .word sub_80E2F74+1
 	.word sub_80E2F8C+1
 	.word sub_80E2FE0+1
-	thumb_func_end sub_80E2F56
+	thumb_func_end t4_0x24_80E2F56
 
 	thumb_local_start
 sub_80E2F74:
@@ -88023,8 +88026,8 @@ off_80E3094: .word PanelOffsetListsPointerTable
 dword_80E3098: .word 0x10000
 	thumb_func_end sub_80E3038
 
-	thumb_func_start sub_80E309C
-sub_80E309C:
+	thumb_func_start t4_0x25_80E309C
+t4_0x25_80E309C:
 	push {lr}
 	ldr r1, off_80E30AC // =off_80E30B0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -88037,7 +88040,7 @@ off_80E30AC: .word off_80E30B0
 off_80E30B0: .word object_timefreezeBegin+1
 	.word sub_80E30BC+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E309C
+	thumb_func_end t4_0x25_80E309C
 
 	thumb_local_start
 sub_80E30BC:
@@ -88119,8 +88122,8 @@ locret_80E3148:
 dword_80E314C: .word 0xF880080
 	thumb_func_end sub_80E3128
 
-	thumb_func_start sub_80E3150
-sub_80E3150:
+	thumb_func_start t4_0x26_80E3150
+t4_0x26_80E3150:
 	push {lr}
 	ldr r1, off_80E3164 // =off_80E3168 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -88134,7 +88137,7 @@ off_80E3164: .word off_80E3168
 off_80E3168: .word sub_80E3174+1
 	.word sub_80E318E+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E3150
+	thumb_func_end t4_0x26_80E3150
 
 	thumb_local_start
 sub_80E3174:
@@ -88198,8 +88201,8 @@ locret_80E31D6:
 	pop {pc}
 	thumb_func_end sub_80E31C0
 
-	thumb_func_start sub_80E31D8
-sub_80E31D8:
+	thumb_func_start t4_0x27_80E31D8
+t4_0x27_80E31D8:
 	push {lr}
 	ldr r1, off_80E31E8 // =off_80E31EC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -88212,7 +88215,7 @@ off_80E31E8: .word off_80E31EC
 off_80E31EC: .word object_timefreezeBegin+1
 	.word sub_80E31F8+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E31D8
+	thumb_func_end t4_0x27_80E31D8
 
 	thumb_local_start
 sub_80E31F8:
@@ -88313,8 +88316,8 @@ loc_80E32AC:
 	.byte 0x10, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80, 0xF
 	thumb_func_end sub_80E3290
 
-	thumb_func_start sub_80E32B8
-sub_80E32B8:
+	thumb_func_start t4_0x28_80E32B8
+t4_0x28_80E32B8:
 	push {lr}
 	ldr r1, off_80E32C8 // =off_80E32CC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -88327,7 +88330,7 @@ off_80E32C8: .word off_80E32CC
 off_80E32CC: .word sub_80E32D8+1
 	.word sub_80E336E+1
 	.word sub_80E33D2+1
-	thumb_func_end sub_80E32B8
+	thumb_func_end t4_0x28_80E32B8
 
 	thumb_local_start
 sub_80E32D8:
@@ -88514,8 +88517,8 @@ sub_80E3428:
 	mov pc, lr
 	thumb_func_end sub_80E3428
 
-	thumb_func_start sub_80E342C
-sub_80E342C:
+	thumb_func_start t4_0x29_80E342C
+t4_0x29_80E342C:
 	push {lr}
 	ldr r1, off_80E343C // =off_80E3440 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -88528,7 +88531,7 @@ off_80E343C: .word off_80E3440
 off_80E3440: .word object_timefreezeBegin+1
 	.word sub_80E344C+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E342C
+	thumb_func_end t4_0x29_80E342C
 
 	thumb_local_start
 sub_80E344C:
@@ -88720,8 +88723,8 @@ sub_80E359E:
 	.balign 4, 0x00
 	thumb_func_end sub_80E359E
 
-	thumb_func_start sub_80E35A4
-sub_80E35A4:
+	thumb_func_start t4_0x2b_80E35A4
+t4_0x2b_80E35A4:
 	push {lr}
 	ldr r1, off_80E35B4 // =off_80E35B8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -88734,7 +88737,7 @@ off_80E35B4: .word off_80E35B8
 off_80E35B8: .word object_timefreezeBegin+1
 	.word sub_80E35C4+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E35A4
+	thumb_func_end t4_0x2b_80E35A4
 
 	thumb_local_start
 sub_80E35C4:
@@ -88897,8 +88900,8 @@ byte_80E371E: .byte 0x3, 0x3, 0x0, 0x2, 0x4
 byte_80E3723: .byte 0x82, 0x81, 0x0, 0x0, 0x0
 	thumb_func_end sub_80E362C
 
-	thumb_func_start sub_80E3728
-sub_80E3728:
+	thumb_func_start t4_0x2c_80E3728
+t4_0x2c_80E3728:
 	push {lr}
 	ldr r1, off_80E3738 // =off_80E373C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -88911,7 +88914,7 @@ off_80E3738: .word off_80E373C
 off_80E373C: .word object_timefreezeBegin+1
 	.word sub_80E3748+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E3728
+	thumb_func_end t4_0x2c_80E3728
 
 	thumb_local_start
 sub_80E3748:
@@ -89003,8 +89006,8 @@ locret_80E37F2:
 	pop {pc}
 	thumb_func_end sub_80E37D2
 
-	thumb_func_start sub_80E37F4
-sub_80E37F4:
+	thumb_func_start t4_0x2d_80E37F4
+t4_0x2d_80E37F4:
 	push {lr}
 	ldr r1, off_80E3814 // =off_80E3818 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -89025,7 +89028,7 @@ off_80E3814: .word off_80E3818
 off_80E3818: .word sub_80E3824+1
 	.word sub_80E386A+1
 	.word sub_80E3962+1
-	thumb_func_end sub_80E37F4
+	thumb_func_end t4_0x2d_80E37F4
 
 	thumb_local_start
 sub_80E3824:
@@ -89249,8 +89252,8 @@ locret_80E399C:
 	.byte 0, 0
 	thumb_func_end sub_80E3976
 
-	thumb_func_start sub_80E39A0
-sub_80E39A0:
+	thumb_func_start t4_0x2e_80E39A0
+t4_0x2e_80E39A0:
 	push {lr}
 	ldr r1, off_80E39C0 // =off_80E39C4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -89271,7 +89274,7 @@ off_80E39C0: .word off_80E39C4
 off_80E39C4: .word sub_80E39D0+1
 	.word sub_80E3A32+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E39A0
+	thumb_func_end t4_0x2e_80E39A0
 
 	thumb_local_start
 sub_80E39D0:
@@ -89397,8 +89400,8 @@ locret_80E3AB4:
 	.balign 4, 0x00
 	thumb_func_end sub_80E3A92
 
-	thumb_func_start sub_80E3AB8
-sub_80E3AB8:
+	thumb_func_start t4_0x2f_80E3AB8
+t4_0x2f_80E3AB8:
 	push {lr}
 	ldr r1, off_80E3AC8 // =off_80E3ACC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -89411,7 +89414,7 @@ off_80E3AC8: .word off_80E3ACC
 off_80E3ACC: .word object_timefreezeBegin+1
 	.word sub_80E3AD8+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E3AB8
+	thumb_func_end t4_0x2f_80E3AB8
 
 	thumb_local_start
 sub_80E3AD8:
@@ -89493,8 +89496,8 @@ locret_80E3B6C:
 	.byte 0, 0
 	thumb_func_end sub_80E3B50
 
-	thumb_func_start sub_80E3B70
-sub_80E3B70:
+	thumb_func_start t4_0x30_80E3B70
+t4_0x30_80E3B70:
 	push {lr}
 	ldr r1, off_80E3B84 // =off_80E3B88 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -89508,7 +89511,7 @@ off_80E3B84: .word off_80E3B88
 off_80E3B88: .word sub_80E3B94+1
 	.word sub_80E3BEA+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E3B70
+	thumb_func_end t4_0x30_80E3B70
 
 	thumb_local_start
 sub_80E3B94:
@@ -89733,8 +89736,8 @@ byte_80E3D44: .byte 0x10, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x
 	.byte 0xC, 0x38, 0xF, 0x0, 0x10, 0x4A, 0x1, 0x0
 	thumb_func_end sub_80E3D1A
 
-	thumb_func_start sub_80E3D68
-sub_80E3D68:
+	thumb_func_start t4_0x31_80E3D68
+t4_0x31_80E3D68:
 	push {lr}
 	ldr r1, off_80E3D80 // =off_80E3D84 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -89752,7 +89755,7 @@ off_80E3D80: .word off_80E3D84
 off_80E3D84: .word sub_80E3D90+1
 	.word sub_80E3DE0+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E3D68
+	thumb_func_end t4_0x31_80E3D68
 
 	thumb_local_start
 sub_80E3D90:
@@ -90079,8 +90082,8 @@ sub_80E3FC4:
 off_80E3FCC: .word byte_80E3D44
 	thumb_func_end sub_80E3FC4
 
-	thumb_func_start sub_80E3FD0
-sub_80E3FD0:
+	thumb_func_start t4_0x32_80E3FD0
+t4_0x32_80E3FD0:
 	push {lr}
 	ldr r1, off_80E3FEC // =off_80E3FF0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -90098,7 +90101,7 @@ off_80E3FEC: .word off_80E3FF0
 off_80E3FF0: .word sub_80E3FFC+1
 	.word sub_80E403E+1
 	.word sub_8016C9C+1
-	thumb_func_end sub_80E3FD0
+	thumb_func_end t4_0x32_80E3FD0
 
 	thumb_local_start
 sub_80E3FFC:
@@ -90218,8 +90221,8 @@ locret_80E40E8:
 	.balign 4, 0x00
 	thumb_func_end sub_80E40C2
 
-	thumb_func_start sub_80E40EC
-sub_80E40EC:
+	thumb_func_start t4_0x33_80E40EC
+t4_0x33_80E40EC:
 	push {lr}
 	ldr r1, off_80E40FC // =off_80E4100 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -90232,7 +90235,7 @@ off_80E40FC: .word off_80E4100
 off_80E4100: .word object_timefreezeBegin+1
 	.word sub_80E410C+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E40EC
+	thumb_func_end t4_0x33_80E40EC
 
 	thumb_local_start
 sub_80E410C:
@@ -90303,8 +90306,8 @@ locret_80E4184:
 	.balign 4, 0x00
 	thumb_func_end sub_80E4164
 
-	thumb_func_start sub_80E4188
-sub_80E4188:
+	thumb_func_start t4_0x34_80E4188
+t4_0x34_80E4188:
 	push {lr}
 	ldr r1, off_80E4198 // =off_80E419C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -90317,7 +90320,7 @@ off_80E4198: .word off_80E419C
 off_80E419C: .word object_timefreezeBegin+1
 	.word sub_80E41A8+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E4188
+	thumb_func_end t4_0x34_80E4188
 
 	thumb_local_start
 sub_80E41A8:
@@ -90543,8 +90546,8 @@ byte_80E4334: .byte 0x2D, 0xA, 0x5, 0x0, 0x1E, 0xA, 0x5, 0x0, 0x28, 0xA, 0x5, 0x
 	.byte 0xF, 0x6, 0x3, 0x0
 	thumb_func_end sub_80E42AA
 
-	thumb_func_start sub_80E4344
-sub_80E4344:
+	thumb_func_start t4_0x35_80E4344
+t4_0x35_80E4344:
 	push {lr}
 	ldr r1, off_80E4354 // =off_80E4358 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -90557,7 +90560,7 @@ off_80E4354: .word off_80E4358
 off_80E4358: .word sub_80E4364+1
 	.word sub_80E43A8+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E4344
+	thumb_func_end t4_0x35_80E4344
 
 	thumb_local_start
 sub_80E4364:
@@ -90655,8 +90658,8 @@ locret_80E440A:
 	pop {r5,pc}
 	thumb_func_end sub_80E43F6
 
-	thumb_func_start sub_80E440C
-sub_80E440C:
+	thumb_func_start t4_0x36_80E440C
+t4_0x36_80E440C:
 	push {lr}
 	ldr r1, off_80E441C // =off_80E4420 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -90669,7 +90672,7 @@ off_80E441C: .word off_80E4420
 off_80E4420: .word object_timefreezeBegin+1
 	.word sub_80E442C+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E440C
+	thumb_func_end t4_0x36_80E440C
 
 	thumb_local_start
 sub_80E442C:
@@ -90954,8 +90957,8 @@ locret_80E462E:
 dword_80E4630: .word 0xFFFF
 	thumb_func_end sub_80E4612
 
-	thumb_func_start sub_80E4634
-sub_80E4634:
+	thumb_func_start t4_0x37_80E4634
+t4_0x37_80E4634:
 	push {lr}
 	ldr r1, off_80E4644 // =off_80E4648 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -90968,7 +90971,7 @@ off_80E4644: .word off_80E4648
 off_80E4648: .word object_timefreezeBegin+1
 	.word sub_80E4654+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E4634
+	thumb_func_end t4_0x37_80E4634
 
 	thumb_local_start
 sub_80E4654:
@@ -91042,8 +91045,8 @@ locret_80E46D6:
 	pop {pc}
 	thumb_func_end sub_80E46B6
 
-	thumb_func_start sub_80E46D8
-sub_80E46D8:
+	thumb_func_start t4_0x38_80E46D8
+t4_0x38_80E46D8:
 	push {lr}
 	ldr r1, off_80E46F4 // =off_80E46E8
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -91056,7 +91059,7 @@ off_80E46E8: .word sub_80E46F8+1
 	.word sub_80E475C+1
 	.word sub_80E4790+1
 off_80E46F4: .word off_80E46E8
-	thumb_func_end sub_80E46D8
+	thumb_func_end t4_0x38_80E46D8
 
 	thumb_local_start
 sub_80E46F8:
@@ -91157,8 +91160,8 @@ sub_80E47A4:
 	pop {pc}
 	thumb_func_end sub_80E47A4
 
-	thumb_func_start sub_80E47B4
-sub_80E47B4:
+	thumb_func_start t4_0x39_80E47B4
+t4_0x39_80E47B4:
 	push {lr}
 	ldr r1, off_80E47C4 // =off_80E47C8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -91171,7 +91174,7 @@ off_80E47C4: .word off_80E47C8
 off_80E47C8: .word object_timefreezeBegin+1
 	.word sub_80E47D4+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E47B4
+	thumb_func_end t4_0x39_80E47B4
 
 	thumb_local_start
 sub_80E47D4:
@@ -91239,8 +91242,8 @@ locret_80E4844:
 	.balign 4, 0x00
 	thumb_func_end sub_80E4824
 
-	thumb_func_start sub_80E4848
-sub_80E4848:
+	thumb_func_start t4_0x3a_80E4848
+t4_0x3a_80E4848:
 	push {lr}
 	ldr r1, off_80E4858 // =off_80E485C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -91253,7 +91256,7 @@ off_80E4858: .word off_80E485C
 off_80E485C: .word sub_80E4868+1
 	.word sub_80E48C0+1
 	.word sub_80E48F0+1
-	thumb_func_end sub_80E4848
+	thumb_func_end t4_0x3a_80E4848
 
 	thumb_local_start
 sub_80E4868:
@@ -91343,8 +91346,8 @@ locret_80E490C:
 	.byte 0, 0
 	thumb_func_end sub_80E48F8
 
-	thumb_func_start sub_80E4910
-sub_80E4910:
+	thumb_func_start t4_0x3b_80E4910
+t4_0x3b_80E4910:
 	push {lr}
 	ldr r1, off_80E4920 // =off_80E4924 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -91357,7 +91360,7 @@ off_80E4920: .word off_80E4924
 off_80E4924: .word object_timefreezeBegin+1
 	.word sub_80E4930+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E4910
+	thumb_func_end t4_0x3b_80E4910
 
 	thumb_local_start
 sub_80E4930:
@@ -91476,8 +91479,8 @@ sub_80E49C4:
 	.balign 4, 0x00
 	thumb_func_end sub_80E49C4
 
-	thumb_func_start sub_80E4A1C
-sub_80E4A1C:
+	thumb_func_start t4_0x3c_80E4A1C
+t4_0x3c_80E4A1C:
 	push {lr}
 	ldr r1, off_80E4A3C // =off_80E4A40 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -91498,7 +91501,7 @@ off_80E4A3C: .word off_80E4A40
 off_80E4A40: .word sub_80E4A6E+1
 	.word sub_80E4AAE+1
 	.word sub_80E4A4C+1
-	thumb_func_end sub_80E4A1C
+	thumb_func_end t4_0x3c_80E4A1C
 
 	thumb_local_start
 sub_80E4A4C:
@@ -91839,8 +91842,8 @@ locret_80E4CB4:
 	.balign 4, 0x00
 	thumb_func_end sub_80E4C96
 
-	thumb_func_start sub_80E4CB8
-sub_80E4CB8:
+	thumb_func_start t4_0x3e_80E4CB8
+t4_0x3e_80E4CB8:
 	push {lr}
 	ldr r1, off_80E4CCC // =off_80E4CD0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -91854,7 +91857,7 @@ off_80E4CCC: .word off_80E4CD0
 off_80E4CD0: .word sub_80E4CDC+1
 	.word sub_80E4D1E+1
 	.word sub_8016C9C+1
-	thumb_func_end sub_80E4CB8
+	thumb_func_end t4_0x3e_80E4CB8
 
 	thumb_local_start
 sub_80E4CDC:
@@ -91968,8 +91971,8 @@ sub_80E4DA2:
 	.byte 0, 0, 0, 0
 	thumb_func_end sub_80E4DA2
 
-	thumb_func_start sub_80E4DB0
-sub_80E4DB0:
+	thumb_func_start t4_0x3f_80E4DB0
+t4_0x3f_80E4DB0:
 	push {lr}
 	ldr r1, off_80E4DC0 // =off_80E4DC4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -91982,7 +91985,7 @@ off_80E4DC0: .word off_80E4DC4
 off_80E4DC4: .word sub_80E4DD0+1
 	.word sub_80E4E84+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E4DB0
+	thumb_func_end t4_0x3f_80E4DB0
 
 	thumb_local_start
 sub_80E4DD0:
@@ -92346,8 +92349,8 @@ dword_80E50BC: .word 0x1505FF01
 dword_80E50C0: .word 0x40000
 	thumb_func_end sub_80E5068
 
-	thumb_func_start sub_80E50C4
-sub_80E50C4:
+	thumb_func_start t4_0x40_80E50C4
+t4_0x40_80E50C4:
 	push {lr}
 	ldr r1, off_80E50D4 // =off_80E50D8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -92360,7 +92363,7 @@ off_80E50D4: .word off_80E50D8
 off_80E50D8: .word sub_80E50E4+1
 	.word sub_80E50FE+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E50C4
+	thumb_func_end t4_0x40_80E50C4
 
 	thumb_local_start
 sub_80E50E4:
@@ -92563,8 +92566,8 @@ off_80E523C: .word 0x100
 dword_80E5240: .word 0x1C3
 	thumb_func_end sub_80E5208
 
-	thumb_func_start sub_80E5244
-sub_80E5244:
+	thumb_func_start t4_0x41_80E5244
+t4_0x41_80E5244:
 	push {lr}
 	ldr r1, off_80E5254 // =off_80E5258 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -92577,7 +92580,7 @@ off_80E5254: .word off_80E5258
 off_80E5258: .word sub_80E5264+1
 	.word sub_80E527A+1
 	.word sub_80E5314+1
-	thumb_func_end sub_80E5244
+	thumb_func_end t4_0x41_80E5244
 
 	thumb_local_start
 sub_80E5264:
@@ -92881,8 +92884,8 @@ loc_80E5460:
 dword_80E546C: .word 0x80010000
 	thumb_func_end sub_80E544C
 
-	thumb_func_start sub_80E5470
-sub_80E5470:
+	thumb_func_start t4_0x42_80E5470
+t4_0x42_80E5470:
 	push {lr}
 	ldr r1, off_80E5484 // =off_80E5488 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -92896,7 +92899,7 @@ off_80E5484: .word off_80E5488
 off_80E5488: .word sub_80E5494+1
 	.word sub_80E54DC+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E5470
+	thumb_func_end t4_0x42_80E5470
 
 	thumb_local_start
 sub_80E5494:
@@ -93060,8 +93063,8 @@ off_80E55B8: .word 0x4000000
 off_80E55BC: .word 0x8000000
 	thumb_func_end sub_80E558A
 
-	thumb_func_start sub_80E55C0
-sub_80E55C0:
+	thumb_func_start t4_0x43_80E55C0
+t4_0x43_80E55C0:
 	push {lr}
 	ldr r1, off_80E55D0 // =off_80E55D4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -93074,7 +93077,7 @@ off_80E55D0: .word off_80E55D4
 off_80E55D4: .word object_timefreezeBegin+1
 	.word sub_80E55E0+1
 	.word sub_80E569C+1
-	thumb_func_end sub_80E55C0
+	thumb_func_end t4_0x43_80E55C0
 
 	thumb_local_start
 sub_80E55E0:
@@ -93239,8 +93242,8 @@ locret_80E570E:
 	pop {r5,pc}
 	thumb_func_end sub_80E5700
 
-	thumb_func_start sub_80E5710
-sub_80E5710:
+	thumb_func_start t4_0x44_80E5710
+t4_0x44_80E5710:
 	push {lr}
 	ldr r1, off_80E5724 // =off_80E5728 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -93254,7 +93257,7 @@ off_80E5724: .word off_80E5728
 off_80E5728: .word sub_80E5734+1
 	.word sub_80E57A0+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E5710
+	thumb_func_end t4_0x44_80E5710
 
 	thumb_local_start
 sub_80E5734:
@@ -93529,8 +93532,8 @@ dword_80E593C: .word 0x405FF01
 dword_80E5940: .word 0x1100
 	thumb_func_end sub_80E5910
 
-	thumb_func_start sub_80E5944
-sub_80E5944:
+	thumb_func_start t4_0x45_80E5944
+t4_0x45_80E5944:
 	push {lr}
 	ldr r1, off_80E5954 // =off_80E5958 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -93543,7 +93546,7 @@ off_80E5954: .word off_80E5958
 off_80E5958: .word object_timefreezeBegin+1
 	.word sub_80E5964+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E5944
+	thumb_func_end t4_0x45_80E5944
 
 	thumb_local_start
 sub_80E5964:
@@ -93619,8 +93622,8 @@ locret_80E59E6:
 	pop {pc}
 	thumb_func_end sub_80E59C6
 
-	thumb_func_start sub_80E59E8
-sub_80E59E8:
+	thumb_func_start t4_0x46_80E59E8
+t4_0x46_80E59E8:
 	push {lr}
 	ldr r1, off_80E59F8 // =off_80E59FC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -93633,7 +93636,7 @@ off_80E59F8: .word off_80E59FC
 off_80E59FC: .word sub_80E5A08+1
 	.word sub_80E5A22+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E59E8
+	thumb_func_end t4_0x46_80E59E8
 
 	thumb_local_start
 sub_80E5A08:
@@ -93965,8 +93968,8 @@ sub_80E5C0C:
 dword_80E5C28: .word 0x470C3C0C
 	thumb_func_end sub_80E5C0C
 
-	thumb_func_start sub_80E5C2C
-sub_80E5C2C:
+	thumb_func_start t4_0x48_80E5C2C
+t4_0x48_80E5C2C:
 	push {lr}
 	ldr r1, off_80E5C3C // =off_80E5C40 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -93979,7 +93982,7 @@ off_80E5C3C: .word off_80E5C40
 off_80E5C40: .word sub_80E5C4C+1
 	.word sub_80E5CA0+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E5C2C
+	thumb_func_end t4_0x48_80E5C2C
 
 	thumb_local_start
 sub_80E5C4C:
@@ -94111,8 +94114,8 @@ sub_80E5D3E:
 	mov pc, lr
 	thumb_func_end sub_80E5D3E
 
-	thumb_func_start sub_80E5D44
-sub_80E5D44:
+	thumb_func_start t4_0x49_80E5D44
+t4_0x49_80E5D44:
 	push {lr}
 	ldr r1, off_80E5D58 // =off_80E5D5C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -94126,7 +94129,7 @@ off_80E5D58: .word off_80E5D5C
 off_80E5D5C: .word sub_80E5D68+1
 	.word sub_80E5DAA+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E5D44
+	thumb_func_end t4_0x49_80E5D44
 
 	thumb_local_start
 sub_80E5D68:
@@ -94206,8 +94209,8 @@ locret_80E5DFE:
 	pop {pc}
 	thumb_func_end sub_80E5DDC
 
-	thumb_func_start sub_80E5E00
-sub_80E5E00:
+	thumb_func_start t4_0x4a_80E5E00
+t4_0x4a_80E5E00:
 	push {lr}
 	ldr r1, off_80E5E10 // =off_80E5E14 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -94220,7 +94223,7 @@ off_80E5E10: .word off_80E5E14
 off_80E5E14: .word object_timefreezeBegin+1
 	.word sub_80E5E20+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E5E00
+	thumb_func_end t4_0x4a_80E5E00
 
 	thumb_local_start
 sub_80E5E20:
@@ -94309,8 +94312,8 @@ locret_80E5EC8:
 	.balign 4, 0x00
 	thumb_func_end sub_80E5EA8
 
-	thumb_func_start sub_80E5ECC
-sub_80E5ECC:
+	thumb_func_start t4_0x4b_80E5ECC
+t4_0x4b_80E5ECC:
 	push {lr}
 	ldr r1, off_80E5EDC // =off_80E5EE0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -94323,7 +94326,7 @@ off_80E5EDC: .word off_80E5EE0
 off_80E5EE0: .word object_timefreezeBegin+1
 	.word sub_80E5EEC+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E5ECC
+	thumb_func_end t4_0x4b_80E5ECC
 
 	thumb_local_start
 sub_80E5EEC:
@@ -94414,8 +94417,8 @@ locret_80E5F98:
 	.balign 4, 0x00
 	thumb_func_end sub_80E5F78
 
-	thumb_func_start sub_80E5F9C
-sub_80E5F9C:
+	thumb_func_start t4_0x4c_80E5F9C
+t4_0x4c_80E5F9C:
 	push {lr}
 	ldr r1, off_80E5FAC // =off_80E5FB0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -94425,13 +94428,13 @@ sub_80E5F9C:
 	pop {pc}
 	.balign 4, 0x00
 off_80E5FAC: .word off_80E5FB0
-off_80E5FB0: .word sub_80E5FBC+1
-	.word sub_80E5FBC+1
+off_80E5FB0: .word t4_0x4d_80E5FBC+1
+	.word t4_0x4d_80E5FBC+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E5F9C
+	thumb_func_end t4_0x4c_80E5F9C
 
-	thumb_func_start sub_80E5FBC
-sub_80E5FBC:
+	thumb_func_start t4_0x4d_80E5FBC
+t4_0x4d_80E5FBC:
 	push {lr}
 	ldr r1, off_80E5FCC // =off_80E5FD0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -94444,7 +94447,7 @@ off_80E5FCC: .word off_80E5FD0
 off_80E5FD0: .word object_timefreezeBegin+1
 	.word sub_80E5FDC+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E5FBC
+	thumb_func_end t4_0x4d_80E5FBC
 
 	thumb_local_start
 sub_80E5FDC:
@@ -94513,8 +94516,8 @@ byte_80E6054: .byte 0x10, 0x0, 0x0, 0x0, 0x80, 0x0, 0x88, 0xF, 0x10, 0x0, 0x0, 0
 	.byte 0x64, 0xA9, 0x7D, 0x81, 0x75, 0xC6, 0x62, 0x7, 0x63, 0x0, 0xBD, 0x0, 0x0
 	thumb_func_end sub_80E6000
 
-	thumb_func_start sub_80E6088
-sub_80E6088:
+	thumb_func_start t4_0x4e_80E6088
+t4_0x4e_80E6088:
 	push {lr}
 	ldr r1, off_80E6098 // =off_80E609C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -94527,7 +94530,7 @@ off_80E6098: .word off_80E609C
 off_80E609C: .word object_timefreezeBegin+1
 	.word sub_80E60A8+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E6088
+	thumb_func_end t4_0x4e_80E6088
 
 	thumb_local_start
 sub_80E60A8:
@@ -94749,8 +94752,8 @@ locret_80E624C:
 dword_80E6250: .word 0x19050601
 	thumb_func_end sub_80E621C
 
-	thumb_func_start sub_80E6254
-sub_80E6254:
+	thumb_func_start t4_0x4f_80E6254
+t4_0x4f_80E6254:
 	push {lr}
 	ldr r1, off_80E6264 // =off_80E6268 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -94763,7 +94766,7 @@ off_80E6264: .word off_80E6268
 off_80E6268: .word object_timefreezeBegin+1
 	.word sub_80E6274+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E6254
+	thumb_func_end t4_0x4f_80E6254
 
 	thumb_local_start
 sub_80E6274:
@@ -95052,8 +95055,8 @@ byte_80E6470: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x30, 0x0, 0x0, 0
 	.byte 0x0, 0x88, 0xF
 	thumb_func_end sub_80E6458
 
-	thumb_func_start sub_80E6480
-sub_80E6480:
+	thumb_func_start t4_0x50_80E6480
+t4_0x50_80E6480:
 	push {lr}
 	ldr r1, off_80E6490 // =off_80E6494 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -95066,7 +95069,7 @@ off_80E6490: .word off_80E6494
 off_80E6494: .word object_timefreezeBegin+1
 	.word sub_80E64A0+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E6480
+	thumb_func_end t4_0x50_80E6480
 
 	thumb_local_start
 sub_80E64A0:
@@ -95171,8 +95174,8 @@ loc_80E654E:
 dword_80E6558: .word 0xF880080
 	thumb_func_end sub_80E650A
 
-	thumb_func_start sub_80E655C
-sub_80E655C:
+	thumb_func_start t4_0x51_80E655C
+t4_0x51_80E655C:
 	push {lr}
 	ldr r1, off_80E6570 // =off_80E6574 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -95186,7 +95189,7 @@ off_80E6570: .word off_80E6574
 off_80E6574: .word sub_80E6580+1
 	.word sub_80E65E0+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E655C
+	thumb_func_end t4_0x51_80E655C
 
 	thumb_local_start
 sub_80E6580:
@@ -95433,8 +95436,8 @@ dword_80E6750: .word 0xFFFF
 dword_80E6754: .word 0x4000
 	thumb_func_end sub_80E6720
 
-	thumb_func_start sub_80E6758
-sub_80E6758:
+	thumb_func_start t4_0x52_80E6758
+t4_0x52_80E6758:
 	push {lr}
 	ldr r1, off_80E6768 // =off_80E676C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -95447,7 +95450,7 @@ off_80E6768: .word off_80E676C
 off_80E676C: .word object_timefreezeBegin+1
 	.word sub_80E6778+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E6758
+	thumb_func_end t4_0x52_80E6758
 
 	thumb_local_start
 sub_80E6778:
@@ -95530,8 +95533,8 @@ locret_80E6806:
 dword_80E6808: .word 0xF880080
 	thumb_func_end sub_80E67E6
 
-	thumb_func_start sub_80E680C
-sub_80E680C:
+	thumb_func_start t4_0x53_80E680C
+t4_0x53_80E680C:
 	push {lr}
 	ldr r1, off_80E681C // =off_80E6820 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -95544,7 +95547,7 @@ off_80E681C: .word off_80E6820
 off_80E6820: .word object_timefreezeBegin+1
 	.word sub_80E682C+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E680C
+	thumb_func_end t4_0x53_80E680C
 
 	thumb_local_start
 sub_80E682C:
@@ -95611,8 +95614,8 @@ locret_80E6898:
 	.balign 4, 0x00
 	thumb_func_end sub_80E6878
 
-	thumb_func_start sub_80E689C
-sub_80E689C:
+	thumb_func_start t4_0x54_80E689C
+t4_0x54_80E689C:
 	push {lr}
 	ldr r1, off_80E68AC // =off_80E68B0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -95625,7 +95628,7 @@ off_80E68AC: .word off_80E68B0
 off_80E68B0: .word object_timefreezeBegin+1
 	.word sub_80E68BC+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E689C
+	thumb_func_end t4_0x54_80E689C
 
 	thumb_local_start
 sub_80E68BC:
@@ -95874,8 +95877,8 @@ locret_80E6A8A:
 dword_80E6A8C: .word 0xF880080
 	thumb_func_end sub_80E6A7C
 
-	thumb_func_start sub_80E6A90
-sub_80E6A90:
+	thumb_func_start t4_0x55_80E6A90
+t4_0x55_80E6A90:
 	push {lr}
 	ldr r1, off_80E6AA0 // =off_80E6AA4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -95888,7 +95891,7 @@ off_80E6AA0: .word off_80E6AA4
 off_80E6AA4: .word object_timefreezeBegin+1
 	.word sub_80E6AB0+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E6A90
+	thumb_func_end t4_0x55_80E6A90
 
 	thumb_local_start
 sub_80E6AB0:
@@ -96060,8 +96063,8 @@ dword_80E6BD4: .word 0x4020201
 	.word loc_8030604
 	thumb_func_end sub_80E6BA6
 
-	thumb_func_start sub_80E6BDC
-sub_80E6BDC:
+	thumb_func_start t4_0x56_80E6BDC
+t4_0x56_80E6BDC:
 	push {lr}
 	ldr r1, off_80E6BEC // =off_80E6BF0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -96074,7 +96077,7 @@ off_80E6BEC: .word off_80E6BF0
 off_80E6BF0: .word object_timefreezeBegin+1
 	.word sub_80E6BFC+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E6BDC
+	thumb_func_end t4_0x56_80E6BDC
 
 	thumb_local_start
 sub_80E6BFC:
@@ -96277,8 +96280,8 @@ byte_80E6E34: .byte 0x2, 0x0, 0x3, 0x2, 0x7, 0x3, 0x6, 0x5, 0x8, 0x6, 0x0, 0x0
 off_80E6E40: .word byte_80E6D0C
 	thumb_func_end sub_80E6DFC
 
-	thumb_func_start sub_80E6E44
-sub_80E6E44:
+	thumb_func_start t4_0x57_80E6E44
+t4_0x57_80E6E44:
 	push {lr}
 	ldr r1, off_80E6E54 // =off_80E6E58 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -96291,7 +96294,7 @@ off_80E6E54: .word off_80E6E58
 off_80E6E58: .word sub_80E6E64+1
 	.word sub_80E6E74+1
 	.word sub_8016C9C+1
-	thumb_func_end sub_80E6E44
+	thumb_func_end t4_0x57_80E6E44
 
 	thumb_local_start
 sub_80E6E64:
@@ -96465,8 +96468,8 @@ locret_80E6F84:
 	.balign 4, 0x00
 	thumb_func_end sub_80E6F32
 
-	thumb_func_start sub_80E6F88
-sub_80E6F88:
+	thumb_func_start t4_0x58_80E6F88
+t4_0x58_80E6F88:
 	push {lr}
 	ldr r1, off_80E6F98 // =off_80E6F9C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -96479,7 +96482,7 @@ off_80E6F98: .word off_80E6F9C
 off_80E6F9C: .word object_timefreezeBegin+1
 	.word sub_80E6FA8+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E6F88
+	thumb_func_end t4_0x58_80E6F88
 
 	thumb_local_start
 sub_80E6FA8:
@@ -96555,8 +96558,8 @@ locret_80E7028:
 	.balign 4, 0x00
 	thumb_func_end sub_80E7008
 
-	thumb_func_start sub_80E702C
-sub_80E702C:
+	thumb_func_start t4_0x59_80E702C
+t4_0x59_80E702C:
 	push {lr}
 	ldr r1, off_80E703C // =off_80E7040 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -96569,7 +96572,7 @@ off_80E703C: .word off_80E7040
 off_80E7040: .word object_timefreezeBegin+1
 	.word sub_80E704C+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E702C
+	thumb_func_end t4_0x59_80E702C
 
 	thumb_local_start
 sub_80E704C:
@@ -96641,8 +96644,8 @@ locret_80E70C6:
 	pop {pc}
 	thumb_func_end sub_80E70A6
 
-	thumb_func_start sub_80E70C8
-sub_80E70C8:
+	thumb_func_start t4_0x5a_80E70C8
+t4_0x5a_80E70C8:
 	push {lr}
 	ldr r1, off_80E70E8 // =off_80E70EC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -96663,7 +96666,7 @@ off_80E70E8: .word off_80E70EC
 off_80E70EC: .word sub_80E70F8+1
 	.word sub_80E7142+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E70C8
+	thumb_func_end t4_0x5a_80E70C8
 
 	thumb_local_start
 sub_80E70F8:
@@ -96782,8 +96785,8 @@ locret_80E71C2:
 	pop {pc}
 	thumb_func_end sub_80E71B8
 
-	thumb_func_start sub_80E71C4
-sub_80E71C4:
+	thumb_func_start t4_0x5b_80E71C4
+t4_0x5b_80E71C4:
 	push {lr}
 	ldr r1, off_80E71D4 // =off_80E71D8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -96796,7 +96799,7 @@ off_80E71D4: .word off_80E71D8
 off_80E71D8: .word object_timefreezeBegin+1
 	.word sub_80E71E4+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E71C4
+	thumb_func_end t4_0x5b_80E71C4
 
 	thumb_local_start
 sub_80E71E4:
@@ -96868,8 +96871,8 @@ locret_80E725E:
 	pop {pc}
 	thumb_func_end sub_80E723E
 
-	thumb_func_start sub_80E7260
-sub_80E7260:
+	thumb_func_start t4_0x5c_80E7260
+t4_0x5c_80E7260:
 	push {lr}
 	ldr r1, off_80E7270 // =off_80E7274 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -96882,7 +96885,7 @@ off_80E7270: .word off_80E7274
 off_80E7274: .word object_timefreezeBegin+1
 	.word sub_80E7280+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E7260
+	thumb_func_end t4_0x5c_80E7260
 
 	thumb_local_start
 sub_80E7280:
@@ -97185,8 +97188,8 @@ off_80E74CC: .word 0x119
 dword_80E74D0: .word 0x11A
 	thumb_func_end sub_80E7486
 
-	thumb_func_start sub_80E74D4
-sub_80E74D4: // invis
+	thumb_func_start t4_0x5d_80E74D4
+t4_0x5d_80E74D4: // invis
 	push {lr}
 	ldr r1, off_80E74E4 // =off_80E74E8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -97199,7 +97202,7 @@ off_80E74E4: .word off_80E74E8
 off_80E74E8: .word object_timefreezeBegin+1
 	.word sub_80E74F4+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E74D4
+	thumb_func_end t4_0x5d_80E74D4
 
 	thumb_local_start
 sub_80E74F4:
@@ -97267,8 +97270,8 @@ locret_80E7566:
 	pop {pc}
 	thumb_func_end sub_80E7546
 
-	thumb_func_start sub_80E7568
-sub_80E7568:
+	thumb_func_start t4_0x5e_80E7568
+t4_0x5e_80E7568:
 	push {lr}
 	ldr r1, off_80E7578 // =off_80E757C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -97281,7 +97284,7 @@ off_80E7578: .word off_80E757C
 off_80E757C: .word object_timefreezeBegin+1
 	.word sub_80E7588+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E7568
+	thumb_func_end t4_0x5e_80E7568
 
 	thumb_local_start
 sub_80E7588:
@@ -97368,8 +97371,8 @@ locret_80E7620:
 	.balign 4, 0x00
 	thumb_func_end sub_80E7600
 
-	thumb_func_start sub_80E7624
-sub_80E7624:
+	thumb_func_start t4_0x5f_80E7624
+t4_0x5f_80E7624:
 	push {lr}
 	ldr r1, off_80E7634 // =off_80E7638 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -97382,7 +97385,7 @@ off_80E7634: .word off_80E7638
 off_80E7638: .word object_timefreezeBegin+1
 	.word sub_80E7644+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E7624
+	thumb_func_end t4_0x5f_80E7624
 
 	thumb_local_start
 sub_80E7644:
@@ -97474,8 +97477,8 @@ locret_80E76F4:
 	.balign 4, 0x00
 	thumb_func_end sub_80E76D4
 
-	thumb_func_start sub_80E76F8
-sub_80E76F8:
+	thumb_func_start t4_0x60_80E76F8
+t4_0x60_80E76F8:
 	push {lr}
 	ldr r1, off_80E7708 // =off_80E770C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -97488,7 +97491,7 @@ off_80E7708: .word off_80E770C
 off_80E770C: .word sub_80E7718+1
 	.word sub_80E7756+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E76F8
+	thumb_func_end t4_0x60_80E76F8
 
 	thumb_local_start
 sub_80E7718:
@@ -97551,8 +97554,8 @@ locret_80E7784:
 	.balign 4, 0x00
 	thumb_func_end sub_80E7774
 
-	thumb_func_start sub_80E7788
-sub_80E7788:
+	thumb_func_start t4_0x61_80E7788
+t4_0x61_80E7788:
 	push {lr}
 	ldr r1, off_80E77A8 // =off_80E77AC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -97573,7 +97576,7 @@ off_80E77A8: .word off_80E77AC
 off_80E77AC: .word sub_80E77B8+1
 	.word sub_80E7816+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E7788
+	thumb_func_end t4_0x61_80E7788
 
 	thumb_local_start
 sub_80E77B8:
@@ -97703,8 +97706,8 @@ locret_80E78B8:
 	.balign 4, 0x00
 	thumb_func_end sub_80E78AE
 
-	thumb_func_start sub_80E78BC
-sub_80E78BC:
+	thumb_func_start t4_0x62_80E78BC
+t4_0x62_80E78BC:
 	push {lr}
 	ldr r1, off_80E78D0 // =off_80E78D4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -97718,7 +97721,7 @@ off_80E78D0: .word off_80E78D4
 off_80E78D4: .word sub_80E78E0+1
 	.word sub_80E792A+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E78BC
+	thumb_func_end t4_0x62_80E78BC
 
 	thumb_local_start
 sub_80E78E0:
@@ -97785,8 +97788,8 @@ locret_80E795A:
 	pop {pc}
 	thumb_func_end sub_80E7942
 
-	thumb_func_start sub_80E795C
-sub_80E795C:
+	thumb_func_start t4_0x63_80E795C
+t4_0x63_80E795C:
 	push {lr}
 	ldr r1, off_80E797C // =off_80E7980 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -97807,7 +97810,7 @@ off_80E797C: .word off_80E7980
 off_80E7980: .word sub_80E798C+1
 	.word sub_80E79CE+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E795C
+	thumb_func_end t4_0x63_80E795C
 
 	thumb_local_start
 sub_80E798C:
@@ -97976,8 +97979,8 @@ sub_80E7AB0:
 	pop {pc}
 	thumb_func_end sub_80E7AB0
 
-	thumb_func_start sub_80E7ACC
-sub_80E7ACC:
+	thumb_func_start t4_0x64_80E7ACC
+t4_0x64_80E7ACC:
 	push {lr}
 	ldr r1, off_80E7AEC // =off_80E7AF0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -97998,7 +98001,7 @@ off_80E7AEC: .word off_80E7AF0
 off_80E7AF0: .word sub_80E7AFC+1
 	.word sub_80E7B4A+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E7ACC
+	thumb_func_end t4_0x64_80E7ACC
 
 	thumb_local_start
 sub_80E7AFC:
@@ -98127,8 +98130,8 @@ locret_80E7BFA:
 	pop {pc}
 	thumb_func_end sub_80E7BF0
 
-	thumb_func_start sub_80E7BFC
-sub_80E7BFC:
+	thumb_func_start t4_0x65_80E7BFC
+t4_0x65_80E7BFC:
 	push {lr}
 	ldr r1, off_80E7C0C // =off_80E7C10 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -98141,7 +98144,7 @@ off_80E7C0C: .word off_80E7C10
 off_80E7C10: .word object_timefreezeBegin+1
 	.word sub_80E7C1C+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E7BFC
+	thumb_func_end t4_0x65_80E7BFC
 
 	thumb_local_start
 sub_80E7C1C:
@@ -98366,8 +98369,8 @@ sub_80E7DA4:
 	.balign 4, 0x00
 	thumb_func_end sub_80E7DA4
 
-	thumb_func_start sub_80E7DC4
-sub_80E7DC4:
+	thumb_func_start t4_0x67_80E7DC4
+t4_0x67_80E7DC4:
 	push {lr}
 	ldr r1, off_80E7DD4 // =off_80E7DD8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -98380,7 +98383,7 @@ off_80E7DD4: .word off_80E7DD8
 off_80E7DD8: .word object_timefreezeBegin+1
 	.word sub_80E7DE4+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E7DC4
+	thumb_func_end t4_0x67_80E7DC4
 
 	thumb_local_start
 sub_80E7DE4:
@@ -98564,8 +98567,8 @@ locret_80E7F36:
 	pop {pc}
 	thumb_func_end sub_80E7F16
 
-	thumb_func_start sub_80E7F38
-sub_80E7F38:
+	thumb_func_start t4_0x69_80E7F38
+t4_0x69_80E7F38:
 	push {lr}
 	ldr r1, off_80E7F48 // =off_80E7F4C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -98578,7 +98581,7 @@ off_80E7F48: .word off_80E7F4C
 off_80E7F4C: .word object_timefreezeBegin+1
 	.word sub_80E7F58+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E7F38
+	thumb_func_end t4_0x69_80E7F38
 
 	thumb_local_start
 sub_80E7F58:
@@ -98653,8 +98656,8 @@ locret_80E7FDA:
 	pop {pc}
 	thumb_func_end sub_80E7FBA
 
-	thumb_func_start sub_80E7FDC
-sub_80E7FDC:
+	thumb_func_start t4_0x6a_80E7FDC
+t4_0x6a_80E7FDC:
 	push {lr}
 	ldr r1, off_80E7FEC // =off_80E7FF0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -98667,7 +98670,7 @@ off_80E7FEC: .word off_80E7FF0
 off_80E7FF0: .word object_timefreezeBegin+1
 	.word sub_80E7FFC+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E7FDC
+	thumb_func_end t4_0x6a_80E7FDC
 
 	thumb_local_start
 sub_80E7FFC:
@@ -98741,8 +98744,8 @@ locret_80E8078:
 	.balign 4, 0x00
 	thumb_func_end sub_80E8058
 
-	thumb_func_start sub_80E807C
-sub_80E807C:
+	thumb_func_start t4_0x6b_80E807C
+t4_0x6b_80E807C:
 	push {lr}
 	ldr r1, off_80E808C // =off_80E8090 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -98755,7 +98758,7 @@ off_80E808C: .word off_80E8090
 off_80E8090: .word sub_80E809C+1
 	.word sub_80E80E0+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E807C
+	thumb_func_end t4_0x6b_80E807C
 
 	thumb_local_start
 sub_80E809C:
@@ -98839,8 +98842,8 @@ locret_80E8136:
 	pop {pc}
 	thumb_func_end sub_80E8124
 
-	thumb_func_start sub_80E8138
-sub_80E8138:
+	thumb_func_start t4_0x6c_80E8138
+t4_0x6c_80E8138:
 	push {lr}
 	ldr r1, off_80E8148 // =off_80E814C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -98853,7 +98856,7 @@ off_80E8148: .word off_80E814C
 off_80E814C: .word object_timefreezeBegin+1
 	.word sub_80E8158+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E8138
+	thumb_func_end t4_0x6c_80E8138
 
 	thumb_local_start
 sub_80E8158:
@@ -98927,8 +98930,8 @@ locret_80E81D4:
 	.balign 4, 0x00
 	thumb_func_end sub_80E81B4
 
-	thumb_func_start sub_80E81D8
-sub_80E81D8:
+	thumb_func_start t4_0x6d_80E81D8
+t4_0x6d_80E81D8:
 	push {lr}
 	ldr r1, off_80E81E8 // =off_80E81EC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -98941,7 +98944,7 @@ off_80E81E8: .word off_80E81EC
 off_80E81EC: .word object_timefreezeBegin+1
 	.word sub_80E81F8+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E81D8
+	thumb_func_end t4_0x6d_80E81D8
 
 	thumb_local_start
 sub_80E81F8:
@@ -99007,8 +99010,8 @@ locret_80E8264:
 	.balign 4, 0x00
 	thumb_func_end sub_80E8244
 
-	thumb_func_start sub_80E8268
-sub_80E8268:
+	thumb_func_start t4_0x6e_80E8268
+t4_0x6e_80E8268:
 	push {lr}
 	ldr r1, off_80E8278 // =off_80E827C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -99021,7 +99024,7 @@ off_80E8278: .word off_80E827C
 off_80E827C: .word sub_80E8288+1
 	.word sub_80E829E+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E8268
+	thumb_func_end t4_0x6e_80E8268
 
 	thumb_local_start
 sub_80E8288:
@@ -99200,8 +99203,8 @@ locret_80E83B4:
 	.balign 4, 0x00
 	thumb_func_end sub_80E8396
 
-	thumb_func_start sub_80E83B8
-sub_80E83B8:
+	thumb_func_start t4_0x6f_80E83B8
+t4_0x6f_80E83B8:
 	push {lr}
 	ldr r1, off_80E83C8 // =off_80E83CC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -99214,7 +99217,7 @@ off_80E83C8: .word off_80E83CC
 off_80E83CC: .word object_timefreezeBegin+1
 	.word sub_80E83D8+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E83B8
+	thumb_func_end t4_0x6f_80E83B8
 
 	thumb_local_start
 sub_80E83D8:
@@ -99437,8 +99440,8 @@ loc_80E8572:
 dword_80E8578: .word 0xF880080
 	thumb_func_end sub_80E84D0
 
-	thumb_func_start sub_80E857C
-sub_80E857C:
+	thumb_func_start t4_0x70_80E857C
+t4_0x70_80E857C:
 	push {lr}
 	ldr r1, off_80E858C // =off_80E8590 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -99451,7 +99454,7 @@ off_80E858C: .word off_80E8590
 off_80E8590: .word sub_80E859C+1
 	.word sub_80E85A8+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E857C
+	thumb_func_end t4_0x70_80E857C
 
 	thumb_local_start
 sub_80E859C:
@@ -99587,8 +99590,8 @@ dword_80E8680: .word 0xFFFF00FF
 off_80E8684: .word 0x200
 	thumb_func_end sub_80E8656
 
-	thumb_func_start sub_80E8688
-sub_80E8688:
+	thumb_func_start t4_0x71_80E8688
+t4_0x71_80E8688:
 	push {lr}
 	ldr r1, off_80E869C // =off_80E86A0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -99602,7 +99605,7 @@ off_80E869C: .word off_80E86A0
 off_80E86A0: .word sub_80E86AC+1
 	.word sub_80E86F6+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E8688
+	thumb_func_end t4_0x71_80E8688
 
 	thumb_local_start
 sub_80E86AC:
@@ -99718,8 +99721,8 @@ locret_80E8792:
 	pop {pc}
 	thumb_func_end sub_80E8788
 
-	thumb_func_start sub_80E8794
-sub_80E8794:
+	thumb_func_start t4_0x72_80E8794
+t4_0x72_80E8794:
 	push {lr}
 	ldr r1, off_80E87A8 // =off_80E87AC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -99733,7 +99736,7 @@ off_80E87A8: .word off_80E87AC
 off_80E87AC: .word sub_80E87B8+1
 	.word sub_80E8802+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E8794
+	thumb_func_end t4_0x72_80E8794
 
 	thumb_local_start
 sub_80E87B8:
@@ -99849,8 +99852,8 @@ locret_80E889E:
 	pop {pc}
 	thumb_func_end sub_80E8894
 
-	thumb_func_start sub_80E88A0
-sub_80E88A0:
+	thumb_func_start t4_0x73_80E88A0
+t4_0x73_80E88A0:
 	push {lr}
 	ldr r1, off_80E88B0 // =off_80E88B4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -99863,7 +99866,7 @@ off_80E88B0: .word off_80E88B4
 off_80E88B4: .word sub_80E88C0+1
 	.word sub_80E88D8+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E88A0
+	thumb_func_end t4_0x73_80E88A0
 
 	thumb_local_start
 sub_80E88C0:
@@ -99935,8 +99938,8 @@ locret_80E8930:
 off_80E8934: .word 0x201
 	thumb_func_end sub_80E8912
 
-	thumb_func_start sub_80E8938
-sub_80E8938:
+	thumb_func_start t4_0x74_80E8938
+t4_0x74_80E8938:
 	push {lr}
 	ldr r1, off_80E894C // =off_80E8950 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -99950,7 +99953,7 @@ off_80E894C: .word off_80E8950
 off_80E8950: .word sub_80E895C+1
 	.word sub_80E89BA+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E8938
+	thumb_func_end t4_0x74_80E8938
 
 	thumb_local_start
 sub_80E895C:
@@ -100178,8 +100181,8 @@ locret_80E8AFC:
 	.byte 0, 0
 	thumb_func_end spawnSunMoonObject_80E8ADC
 
-	thumb_func_start sub_80E8B00
-sub_80E8B00:
+	thumb_func_start t4_0x76_80E8B00
+t4_0x76_80E8B00:
 	push {lr}
 	ldr r1, off_80E8B10 // =off_80E8B14 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -100192,7 +100195,7 @@ off_80E8B10: .word off_80E8B14
 off_80E8B14: .word object_timefreezeBegin+1
 	.word sub_80E8B20+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E8B00
+	thumb_func_end t4_0x76_80E8B00
 
 	thumb_local_start
 sub_80E8B20:
@@ -100562,8 +100565,8 @@ loc_80E8DEA:
 	.byte 0, 0
 	thumb_func_end sub_80E8D92
 
-	thumb_func_start sub_80E8DF0
-sub_80E8DF0:
+	thumb_func_start t4_0x77_80E8DF0
+t4_0x77_80E8DF0:
 	push {lr}
 	ldr r1, off_80E8E00 // =off_80E8E04 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -100576,7 +100579,7 @@ off_80E8E00: .word off_80E8E04
 off_80E8E04: .word sub_80E8E10+1
 	.word sub_80E8E18+1
 	.word sub_80E8E92+1
-	thumb_func_end sub_80E8DF0
+	thumb_func_end t4_0x77_80E8DF0
 
 	thumb_local_start
 sub_80E8E10:
@@ -100698,8 +100701,8 @@ locret_80E8EDE:
 	pop {r4,r6,pc}
 	thumb_func_end sub_80E8EA0
 
-	thumb_func_start sub_80E8EE0
-sub_80E8EE0:
+	thumb_func_start t4_0x78_80E8EE0
+t4_0x78_80E8EE0:
 	push {lr}
 	ldr r1, off_80E8EF0 // =off_80E8EF4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -100712,7 +100715,7 @@ off_80E8EF0: .word off_80E8EF4
 off_80E8EF4: .word sub_80E8F00+1
 	.word sub_80E8F5C+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E8EE0
+	thumb_func_end t4_0x78_80E8EE0
 
 	thumb_local_start
 sub_80E8F00:
@@ -100840,8 +100843,8 @@ sub_80E8FC8:
 	pop {r5,pc}
 	thumb_func_end sub_80E8FC8
 
-	thumb_func_start sub_80E8FE0
-sub_80E8FE0:
+	thumb_func_start t4_0x79_80E8FE0
+t4_0x79_80E8FE0:
 	push {lr}
 	ldr r1, off_80E8FF0 // =off_80E8FF4 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -100854,7 +100857,7 @@ off_80E8FF0: .word off_80E8FF4
 off_80E8FF4: .word object_timefreezeBegin+1
 	.word sub_80E9000+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E8FE0
+	thumb_func_end t4_0x79_80E8FE0
 
 	thumb_local_start
 sub_80E9000:
@@ -101022,8 +101025,8 @@ locret_80E911E:
 	pop {pc}
 	thumb_func_end sub_80E90FE
 
-	thumb_func_start sub_80E9120
-sub_80E9120:
+	thumb_func_start t4_0x7c_80E9120
+t4_0x7c_80E9120:
 	push {lr}
 	ldr r1, off_80E9130 // =off_80E9134 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -101036,7 +101039,7 @@ off_80E9130: .word off_80E9134
 off_80E9134: .word object_timefreezeBegin+1
 	.word sub_80E9140+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E9120
+	thumb_func_end t4_0x7c_80E9120
 
 	thumb_local_start
 sub_80E9140:
@@ -101126,8 +101129,8 @@ locret_80E91DE:
 dword_80E91E0: .word 0xF800010
 	thumb_func_end sub_80E91B8
 
-	thumb_func_start sub_80E91E4
-sub_80E91E4:
+	thumb_func_start t4_0x7e_80E91E4
+t4_0x7e_80E91E4:
 	push {lr}
 	ldr r1, off_80E91F4 // =off_80E91F8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -101140,7 +101143,7 @@ off_80E91F4: .word off_80E91F8
 off_80E91F8: .word object_timefreezeBegin+1
 	.word sub_80E9204+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E91E4
+	thumb_func_end t4_0x7e_80E91E4
 
 	thumb_local_start
 sub_80E9204:
@@ -101289,8 +101292,8 @@ locret_80E930E:
 	pop {pc}
 	thumb_func_end sub_80E92EE
 
-	thumb_func_start sub_80E9310
-sub_80E9310:
+	thumb_func_start t4_0x7f_80E9310
+t4_0x7f_80E9310:
 	push {lr}
 	ldr r1, off_80E9320 // =off_80E9324 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -101303,7 +101306,7 @@ off_80E9320: .word off_80E9324
 off_80E9324: .word object_timefreezeBegin+1
 	.word sub_80E9330+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E9310
+	thumb_func_end t4_0x7f_80E9310
 
 	thumb_local_start
 sub_80E9330:
@@ -101479,8 +101482,8 @@ locret_80E945E:
 	pop {pc}
 	thumb_func_end sub_80E943E
 
-	thumb_func_start sub_80E9460
-sub_80E9460:
+	thumb_func_start t4_0x80_80E9460
+t4_0x80_80E9460:
 	push {lr}
 	ldr r1, off_80E9470 // =off_80E9474 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -101493,7 +101496,7 @@ off_80E9470: .word off_80E9474
 off_80E9474: .word sub_80E9480+1
 	.word sub_80E9498+1
 	.word sub_8016C9C+1
-	thumb_func_end sub_80E9460
+	thumb_func_end t4_0x80_80E9460
 
 	thumb_local_start
 sub_80E9480:
@@ -101634,8 +101637,8 @@ nullsub_12:
 	mov pc, lr
 	thumb_func_end nullsub_12
 
-	thumb_func_start sub_80E9570
-sub_80E9570:
+	thumb_func_start t4_0x84_80E9570
+t4_0x84_80E9570:
 	push {lr}
 	ldr r1, off_80E9580 // =off_80E9584 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -101648,7 +101651,7 @@ off_80E9580: .word off_80E9584
 off_80E9584: .word object_timefreezeBegin+1
 	.word sub_80E9590+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E9570
+	thumb_func_end t4_0x84_80E9570
 
 	thumb_local_start
 sub_80E9590:
@@ -101953,8 +101956,8 @@ dword_80E97E0: .word 0x40030
 byte_80E97E4: .byte 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80E97BE
 
-	thumb_func_start sub_80E97F0
-sub_80E97F0:
+	thumb_func_start t4_0x87_80E97F0
+t4_0x87_80E97F0:
 	push {lr}
 	ldr r1, off_80E9800 // =off_80E9804 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -101967,7 +101970,7 @@ off_80E9800: .word off_80E9804
 off_80E9804: .word sub_80E9810+1
 	.word sub_80E98DE+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80E97F0
+	thumb_func_end t4_0x87_80E97F0
 
 	thumb_local_start
 sub_80E9810:
@@ -102148,8 +102151,8 @@ locret_80E998C:
 off_80E9990: .word byte_80E98C0
 	thumb_func_end sub_80E996E
 
-	thumb_func_start sub_80E9994
-sub_80E9994:
+	thumb_func_start t4_0x88_80E9994
+t4_0x88_80E9994:
 	push {lr}
 	ldr r1, off_80E99A4 // =off_80E99A8 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -102162,7 +102165,7 @@ off_80E99A4: .word off_80E99A8
 off_80E99A8: .word sub_80E99B4+1
 	.word sub_80E99C0+1
 	.word sub_8016C9C+1
-	thumb_func_end sub_80E9994
+	thumb_func_end t4_0x88_80E9994
 
 	thumb_local_start
 sub_80E99B4:
@@ -102320,8 +102323,8 @@ dword_80E9ADC: .word 0xA000
 byte_80E9AE0: .byte 0x2, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80E9A38
 
-	thumb_func_start sub_80E9AF0
-sub_80E9AF0:
+	thumb_func_start t4_0x89_80E9AF0
+t4_0x89_80E9AF0:
 	push {lr}
 	ldr r1, off_80E9B04 // =off_80E9B08 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -102335,7 +102338,7 @@ off_80E9B04: .word off_80E9B08
 off_80E9B08: .word sub_80E9B14+1
 	.word sub_80E9B56+1
 	.word sub_8016C9C+1
-	thumb_func_end sub_80E9AF0
+	thumb_func_end t4_0x89_80E9AF0
 
 	thumb_local_start
 sub_80E9B14:
@@ -102486,8 +102489,8 @@ dword_80E9C80: .word 0x60000
 dword_80E9C84: .word 0x10000
 	thumb_func_end sub_80E9C06
 
-	thumb_func_start sub_80E9C88
-sub_80E9C88:
+	thumb_func_start t4_0x8a_80E9C88
+t4_0x8a_80E9C88:
 	push {lr}
 	ldr r1, off_80E9C98 // =off_80E9C9C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -102500,7 +102503,7 @@ off_80E9C98: .word off_80E9C9C
 off_80E9C9C: .word sub_80E9CA8+1
 	.word sub_80E9CBA+1
 	.word sub_8016C9C+1
-	thumb_func_end sub_80E9C88
+	thumb_func_end t4_0x8a_80E9C88
 
 	thumb_local_start
 sub_80E9CA8:
@@ -102684,8 +102687,8 @@ byte_80E9DE0: .byte 0x20, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0,
 	.byte 0x0
 	thumb_func_end sub_80E9D2A
 
-	thumb_func_start sub_80E9DF0
-sub_80E9DF0:
+	thumb_func_start t4_0x8b_80E9DF0
+t4_0x8b_80E9DF0:
 	push {lr}
 	ldr r1, off_80E9E00 // =off_80E9E04 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -102698,7 +102701,7 @@ off_80E9E00: .word off_80E9E04
 off_80E9E04: .word object_timefreezeBegin+1
 	.word sub_80E9E10+1
 	.word object_timefreezeEnd+1
-	thumb_func_end sub_80E9DF0
+	thumb_func_end t4_0x8b_80E9DF0
 
 	thumb_local_start
 sub_80E9E10:
@@ -102970,8 +102973,8 @@ loc_80E9FF4:
 dword_80EA00C: .word 0x100000
 	thumb_func_end sub_80E9FBC
 
-	thumb_func_start sub_80EA010
-sub_80EA010:
+	thumb_func_start t4_0x8c_80EA010
+t4_0x8c_80EA010:
 	push {lr}
 	ldr r1, off_80EA02C // =off_80EA020
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -102984,7 +102987,7 @@ off_80EA020: .word sub_80EA030+1
 	.word sub_80EA03C+1
 	.word sub_80EA10A+1
 off_80EA02C: .word off_80EA020
-	thumb_func_end sub_80EA010
+	thumb_func_end t4_0x8c_80EA010
 
 	thumb_local_start
 sub_80EA030:
@@ -103157,8 +103160,8 @@ locret_80EA14A:
 	pop {pc}
 	thumb_func_end sub_80EA11C
 
-	thumb_func_start sub_80EA14C
-sub_80EA14C:
+	thumb_func_start t4_0x8d_80EA14C
+t4_0x8d_80EA14C:
 	push {lr}
 	ldr r1, off_80EA160 // =off_80EA164 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -103172,7 +103175,7 @@ off_80EA160: .word off_80EA164
 off_80EA164: .word sub_80EA170+1
 	.word sub_80EA1BC+1
 	.word sub_8016C9C+1
-	thumb_func_end sub_80EA14C
+	thumb_func_end t4_0x8d_80EA14C
 
 	thumb_local_start
 sub_80EA170:
@@ -103287,8 +103290,8 @@ locret_80EA24E:
 	str r1, [r0,#8]
 	mov pc, lr
 	.balign 4, 0x00
-	thumb_func_start sub_80EA258
-sub_80EA258:
+	thumb_func_start t4_0x8f_80EA258
+t4_0x8f_80EA258:
 	push {lr}
 	ldr r1, off_80EA268 // =loc_80EA26C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -103301,7 +103304,7 @@ off_80EA268: .word loc_80EA26C
 loc_80EA26C: .word sub_80EA278
 	.word sub_80EA288
 	.word sub_8016C9C
-	thumb_func_end sub_80EA258
+	thumb_func_end t4_0x8f_80EA258
 
 	thumb_local_start
 sub_80EA278:
@@ -103435,8 +103438,8 @@ loc_80EA33A:
 locret_80EA35E:
 	pop {pc}
 dword_80EA360: .word 0x202
-	thumb_func_start sub_80EA364
-sub_80EA364:
+	thumb_func_start t4_0x90_80EA364
+t4_0x90_80EA364:
 	push {lr}
 	ldr r1, off_80EA374 // =off_80EA378 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -103449,7 +103452,7 @@ off_80EA374: .word off_80EA378
 off_80EA378: .word sub_80EA384+1
 	.word sub_80EA3A4+1
 	.word object_freeMemory+1
-	thumb_func_end sub_80EA364
+	thumb_func_end t4_0x90_80EA364
 
 	thumb_local_start
 sub_80EA384:
