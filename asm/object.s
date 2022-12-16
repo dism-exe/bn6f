@@ -4673,26 +4673,26 @@ locret_800E3BC:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_800E360
 
-	thumb_func_start sub_800E3BE
-sub_800E3BE:
+	thumb_func_start calcFinalDamageAsPanelDamage1to5SumReturnFinalDamage_r0_PanelDamage6_r1_800E3BE
+calcFinalDamageAsPanelDamage1to5SumReturnFinalDamage_r0_PanelDamage6_r1_800E3BE:
 	push {r4,lr}
 	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
-	add r3, #0x82
+	add r3, #oCollisionData_PanelDamage1
 	mov r1, #5
 	mov r0, #0
-loc_800E3C8:
+.addPanelDamageLoop
 	ldrh r2, [r3]
 	add r0, r0, r2
 	add r3, #2
 	sub r1, #1
-	bgt loc_800E3C8
+	bgt .addPanelDamageLoop
 	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
-	add r1, #0x80
+	add r1, #oCollisionData_FinalDamage
 	strh r0, [r3,r1]
-	mov r1, #0x8c
+	mov r1, #oCollisionData_PanelDamage6
 	ldrh r1, [r3,r1]
 	pop {r4,pc}
-	thumb_func_end sub_800E3BE
+	thumb_func_end calcFinalDamageAsPanelDamage1to5SumReturnFinalDamage_r0_PanelDamage6_r1_800E3BE
 
 	thumb_func_start object_calculateFinalDamage1
 object_calculateFinalDamage1:

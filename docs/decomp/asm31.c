@@ -170,7 +170,7 @@ int sub_80B8390()
     {
         *(v0 + 16) = 5;
         *(v0 + 10) = 4;
-        result = sub_80B8E30(4);
+        result = spawn_t1_0x5_80B8E30(4);
     }
     return result;
 }
@@ -1153,10 +1153,10 @@ void sub_80B8DA6()
 
 
 // 0x80b8e30
-int sub_80B8E30() { // could not decompile
+int spawn_t1_0x5_80B8E30() { // could not decompile
     asm(".func\
     .thumb_func\
-    sub_80B8E30:\
+    spawn_t1_0x5_80B8E30:\
         push {lr}\
         push {r0,r5-r7}\
         mov r0, #5\
@@ -1177,7 +1177,7 @@ int sub_80B8E30() { // could not decompile
     loc_80B8E54:\
         str r0, [r7]\
         pop {pc}\
-    .endfunc // sub_80B8E30"
+    .endfunc // spawn_t1_0x5_80B8E30"
     );
 }
 
@@ -8481,7 +8481,7 @@ int sub_80BCC2C()
     if ( !*(v0 + 11) )
     {
         *(v0 + 16) = 10;
-        sub_80B8E30(10);
+        spawn_t1_0x5_80B8E30(10);
         *(v0 + 32) = 0;
         *(v0 + 11) = 4;
     }
@@ -8853,7 +8853,7 @@ int __fastcall sub_80BCF7A(int a1, int a2, int a3)
         sub_80B8E58(*(v3 + 100));
         sub_80EB572(v3 + 100, 1);
         v4 = sub_80B8E58(*(v3 + 108));
-        sub_80B8E30(v4);
+        spawn_t1_0x5_80B8E30(v4);
         sub_80C44D2(*(v3 + 80));
         sub_80BD24C(v5);
         sub_80BD2D8();
@@ -9080,7 +9080,7 @@ int sub_80BD156()
         *(v0 + 16) = 5;
         *(v0 + 17) = -1;
         v1 = sub_80B8E58(*(v0 + 100));
-        sub_80B8E30(v1);
+        spawn_t1_0x5_80B8E30(v1);
         PlaySoundEffect(176, v2, v3);
         *(v0 + 32) = 15;
         sub_80BD2D8();
@@ -9684,7 +9684,7 @@ int sub_80BD6B6()
     {
         *(v0 + 16) = 5;
         *(v0 + 17) = 6;
-        sub_80B8E30(6);
+        spawn_t1_0x5_80B8E30(6);
         PlaySoundEffect(176, v1, v2);
         *(v0 + 32) = 10;
         sub_80BDA7C(5);
@@ -9953,7 +9953,7 @@ int sub_80BD8BC()
         {
             *(v0 + 11) = 4;
             *(v0 + 16) = 5;
-            sub_80B8E30(5);
+            spawn_t1_0x5_80B8E30(5);
             v2 = sub_80BDA08();
             v3 = *(v0 + 44);
             sub_80C53A6(v2, SHIDWORD(v2), 0, 0);
@@ -10438,9 +10438,9 @@ int __fastcall sub_80BDDCA(int a1, int a2, int a3)
         if ( *(v3 + 112) )
             sub_80EB572(v3 + 104, 1);
         else
-            sub_80B8E30(0);
+            spawn_t1_0x5_80B8E30(0);
         v4 = sub_80B8E58(*(v3 + 108));
-        sub_80B8E30(v4);
+        spawn_t1_0x5_80B8E30(v4);
         sub_80C44D2(*(v3 + 80));
         v5 = object_getFrontDirection(v3);
         v7 = sub_80C4FFE(v5 + *(v3 + 18), *(v3 + 19), v6, 0x100000);
@@ -10675,7 +10675,7 @@ int __fastcall sub_80BDFA6(int a1, int a2, int a3)
         v5 = ((sub_80EBB78() << 8) + 1) << 8;
         v6 = (v5 + sub_80EBAE8()) << 8;
         v7 = sub_80EBB34();
-        sub_80B8E30(v7);
+        spawn_t1_0x5_80B8E30(v7);
         v8 = *(*(v3 + 76) + 88);
         *v8 = *(v3 + 116);
         v8[1] = *(v3 + 117);
@@ -10863,7 +10863,7 @@ int sub_80BE190()
     {
         *(v0 + 16) = 3;
         *(v0 + 32) = 10;
-        sub_80B8E30(10);
+        spawn_t1_0x5_80B8E30(10);
         PlaySoundEffect(248, v1, v2);
         *(v0 + 11) = 4;
     }
@@ -12021,7 +12021,7 @@ int __fastcall sub_80BED0C(int a1, int a2, int a3)
     {
         *(v3 + 16) = 5;
         PlaySoundEffect(176, a2, a3);
-        *(v3 + 100) = sub_80B8E30(byte_80BEDC6[*(v3 + 6)]);
+        *(v3 + 100) = spawn_t1_0x5_80B8E30(byte_80BEDC6[*(v3 + 6)]);
         *(v3 + 32) = 0;
         *(v3 + 11) = 4;
     }
@@ -12175,7 +12175,7 @@ int sub_80BEEA2()
     if ( !*(v0 + 11) )
     {
         *(v0 + 16) = 10;
-        v1 = sub_80B8E30(10);
+        v1 = spawn_t1_0x5_80B8E30(10);
         v2 = *(v0 + 44);
         v4 = sub_80D2B8E(v1, v3, *(v0 + 14), 0x100000);
         v5 = *v4 | 0x10;
@@ -12259,7 +12259,7 @@ int __fastcall sub_80BEF48(int a1, int a2, int a3)
     {
         *(v3 + 16) = 5;
         v4 = PlaySoundEffect(287, a2, a3);
-        sub_80B8E30(v4);
+        spawn_t1_0x5_80B8E30(v4);
         object_getFlip(v3);
         v5 = *(v3 + 19);
         v6 = object_getCoordinatesForPanels(*(v3 + 18));
@@ -13261,7 +13261,7 @@ int sub_80BF8A8()
     {
         *(v0 + 16) = 10;
         *(v0 + 32) = 30;
-        sub_80B8E30(30);
+        spawn_t1_0x5_80B8E30(30);
         PlaySoundEffect(148, v1, v2);
         *(v0 + 11) = 4;
     }
@@ -13590,7 +13590,7 @@ int sub_80BFB74()
     {
         *(v0 + 16) = 5;
         *(v0 + 32) = 0;
-        sub_80B8E30(0);
+        spawn_t1_0x5_80B8E30(0);
         PlaySoundEffect(206, v1, v2);
         *(v0 + 11) = 4;
     }
@@ -15361,7 +15361,7 @@ _BYTE *__fastcall sub_80C0A90(int a1, int a2, int a3)
     }
     else
     {
-        v4 = sub_80B8E30(*(v3 + 4));
+        v4 = spawn_t1_0x5_80B8E30(*(v3 + 4));
         *v4 |= 0x10u;
         *(v3 + 32) = 10;
         *(v3 + 34) = 3;
@@ -17298,7 +17298,7 @@ _BYTE *sub_80C1B2E()
         object_reservePanel(v5, v6);
         *(v0 + 16) = 5;
         v9 = PlaySoundEffect(176, v7, v8);
-        result = sub_80B8E30(v9);
+        result = spawn_t1_0x5_80B8E30(v9);
     }
     else
     {
@@ -17378,7 +17378,7 @@ _BYTE *sub_80C1BEC()
             *(v0 + 21) = v6;
             object_reservePanel(v5, v6);
             *(v0 + 16) = 10;
-            sub_80B8E30(10);
+            spawn_t1_0x5_80B8E30(10);
             sub_80C2000(1);
             PlaySoundEffect(240, v7, v8);
             result = (&dword_8 + 2);
@@ -17502,8 +17502,8 @@ int sub_80C1CC4()
             object_reservePanel(v5, v6);
             *(v0 + 16) = 14;
             v7 = sub_80C20B4();
-            v8 = sub_80B8E30(v7);
-            sub_80B8E30(v8);
+            v8 = spawn_t1_0x5_80B8E30(v7);
+            spawn_t1_0x5_80B8E30(v8);
             PlaySoundEffect(185, v9, v10);
             result = 5;
             *(v0 + 34) = 5;
@@ -18060,7 +18060,7 @@ _BYTE *sub_80C2256()
             *(v0 + 21) = v6;
             object_reservePanel(v5, v6);
             *(v0 + 16) = 10;
-            sub_80B8E30(10);
+            spawn_t1_0x5_80B8E30(10);
             sub_80C26C8();
             sub_80C2600(0);
             PlaySoundEffect(184, v7, v8);
@@ -18208,7 +18208,7 @@ _BYTE *sub_80C2324()
         object_reservePanel(v5, v6);
         PlaySoundEffect(176, v7, v8);
         *(v0 + 16) = 5;
-        result = sub_80B8E30(5);
+        result = spawn_t1_0x5_80B8E30(5);
     }
     else
     {
@@ -18316,7 +18316,7 @@ _BYTE *sub_80C23F0()
         object_reservePanel(v5, v6);
         PlaySoundEffect(176, v7, v8);
         *(v0 + 16) = 5;
-        result = sub_80B8E30(5);
+        result = spawn_t1_0x5_80B8E30(5);
     }
     else
     {
@@ -18866,7 +18866,7 @@ int sub_80C296C()
         *(v0 + 17) = 6;
         v1 = 4 * *(v0 + 4);
         v2 = *&byte_80C29F0[v1];
-        sub_80B8E30(v1);
+        spawn_t1_0x5_80B8E30(v1);
         PlaySoundEffect(176, v3, v4);
         *(v0 + 32) = 20;
         result = 4;
@@ -19345,7 +19345,7 @@ int __fastcall sub_80C2D8C(int a1, int a2, int a3, int a4)
     {
         *(v4 + 16) = 5;
         *(v4 + 17) = 6;
-        sub_80B8E30(6);
+        spawn_t1_0x5_80B8E30(6);
         PlaySoundEffect(176, v6, v7);
         *(v4 + 32) = 20;
         result = 4;
@@ -19696,7 +19696,7 @@ int sub_80C3100()
             if ( !v4 )
             {
 LABEL_9:
-                sub_80B8E30(v4);
+                spawn_t1_0x5_80B8E30(v4);
                 goto LABEL_10;
             }
             if ( v4 >= 25 )
@@ -22571,7 +22571,7 @@ int sub_80C4B84()
     sprite_setFlip(v9, v7);
     if ( **(v9 + 100) )
     {
-        result = sub_8015B54(*(v9 + 22));
+        result = callPossiblyGetBattleEmotion_8015B54(*(v9 + 22));
         if ( result == 2 )
             return result;
         **(v9 + 100) = 0;
@@ -25547,7 +25547,7 @@ int __fastcall sub_80C6AB8(int a1)
 
 
 // 0x80c6ada
-int __fastcall sub_80C6ADA(char a1, int a2, int a3, int a4)
+int __fastcall spawn_t3_0x12_80C6ADA(char a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int result; // r0
@@ -30061,7 +30061,7 @@ int sub_80C9726()
         *v0 &= 0xFDu;
     v3 = v0;
     v1 = *(v0 + 76);
-    result = sub_801032C();
+    result = GetAIDataUnk0x48Flag();
     if ( result & 0x100000 )
     {
         result = *v3 & 0xFD;
@@ -30841,7 +30841,7 @@ int sub_80C9E20()
         v2 = *(&dword_80C9E84 + (v1 & 3)) << 16;
         v3 = object_getFrontDirection(v0);
         v4 = *(v0 + 44);
-        sub_80C6ADA(v3 + *(v0 + 18), *(v0 + 19), *(v0 + 14), v2);
+        spawn_t3_0x12_80C6ADA(v3 + *(v0 + 18), *(v0 + 19), *(v0 + 14), v2);
         PlaySoundEffect(185, v5, v6);
     }
     v7 = *(v0 + 32);
@@ -33389,7 +33389,7 @@ void __noreturn sub_80CB9E2()
 
     object_removeCollisionData();
     object_spawnCollisionEffect();
-    if ( battle_isBattleOver() || sub_801156A(0) == -1 || *(*(v0 + 84) + 112) & 0xF800000 )
+    if ( battle_isBattleOver() || basicHandleBattleObjectDamage_801156A(0) == -1 || *(*(v0 + 84) + 112) & 0xF800000 )
     {
         object_clearCollisionRegion();
         *(v0 + 8) = 8;
@@ -38745,7 +38745,7 @@ int sub_80CEF90()
         v5 = *(&dword_80CEFF8 + (v4 & 3)) << 16;
         v6 = object_getFrontDirection(v0);
         v7 = *(v0 + 44);
-        sub_80C6ADA(v6 + *(v0 + 18), *(v0 + 19), *(v0 + 14), v5);
+        spawn_t3_0x12_80C6ADA(v6 + *(v0 + 18), *(v0 + 19), *(v0 + 14), v5);
         PlaySoundEffect(185, v8, v9);
         v10 = *(v0 + 34);
         v2 = __OFSUB__(v10, 1);
@@ -42047,7 +42047,7 @@ void __noreturn sub_80D102E()
 
     object_removeCollisionData();
     object_spawnCollisionEffect();
-    if ( battle_isBattleOver() || (v1 = sub_801156A(0), (v1 < 0) ^ v2) || *(*(v0 + 84) + 112) )
+    if ( battle_isBattleOver() || (v1 = basicHandleBattleObjectDamage_801156A(0), (v1 < 0) ^ v2) || *(*(v0 + 84) + 112) )
     {
         object_removePanelReserve(*(v0 + 18), *(v0 + 19));
         JUMPOUT(*byte_80D1070);
@@ -42302,7 +42302,7 @@ void sub_80D12CA()
         goto LABEL_14;
     if ( *(v0 + 9) != 12 )
     {
-        if ( sub_801156A(0) == -1 )
+        if ( basicHandleBattleObjectDamage_801156A(0) == -1 )
         {
             SpawnT4BattleObjectWithId0(v0, *(v0 + 4), *(v0 + 52), *(v0 + 56), (12 * *(v0 + 4) + 16) << 16);
             PlaySoundEffect(112, v1, v2);
@@ -43394,7 +43394,7 @@ void __noreturn sub_80D1E08()
 {
     unsigned __int8 *v0; // r5
 
-    sub_80E7486(v0[18], v0[19], v0[22]);
+    ifPanelFlagSetFindBattleActorWithCollisionOnPanelXY_80E7486(v0[18], v0[19], v0[22]);
 }
 
 
@@ -44332,7 +44332,7 @@ void __noreturn sub_80D2684()
     object_spawnCollisionEffect();
     if ( battle_isBattleOver() || *(v0 + 80) )
         goto LABEL_12;
-    if ( *(v0 + 9) != 16 && sub_801156A(1) )
+    if ( *(v0 + 9) != 16 && basicHandleBattleObjectDamage_801156A(1) )
     {
         v1 = *(v0 + 36);
         v2 = __OFSUB__(v1--, 1);
@@ -44477,7 +44477,7 @@ signed int sub_80D27E2()
     unsigned __int8 v2; // vf
     signed int result; // r0
 
-    if ( sub_801156A(1) && (v1 = *(v0 + 36), v2 = __OFSUB__(v1, 1), --v1, *(v0 + 36) = v1, ((v1 < 0) ^ v2) | (v1 == 0)) )
+    if ( basicHandleBattleObjectDamage_801156A(1) && (v1 = *(v0 + 36), v2 = __OFSUB__(v1, 1), --v1, *(v0 + 36) = v1, ((v1 < 0) ^ v2) | (v1 == 0)) )
     {
         sub_80D2A68();
         result = 8;
@@ -45456,7 +45456,7 @@ int __fastcall sub_80D30A4(char a1, int a2, int a3, int a4)
 
 
 // 0x80d30d0
-void t3_0x74_80D30D0()
+void riskyHoneyObject_80D30D0()
 {
     int v0; // r5
 
@@ -45466,7 +45466,7 @@ void t3_0x74_80D30D0()
 
 
 // 0x80d30f4
-void __noreturn sub_80D30F4()
+void __noreturn riskyHoneyObject_init_80D30F4()
 {
     Battle *v0; // r5
 
@@ -45476,7 +45476,7 @@ void __noreturn sub_80D30F4()
 
 
 // 0x80d317c
-void __noreturn sub_80D317C()
+void __noreturn riskyHoneyObject_update_80D317C()
 {
     int v0; // r5
     int v1; // r0
@@ -45518,7 +45518,7 @@ LABEL_8:
 
 
 // 0x80d31ec
-int sub_80D31EC()
+int riskyHoneyObject_update_0x0_80D31EC()
 {
     int v0; // r5
     int result; // r0
@@ -45530,7 +45530,7 @@ int sub_80D31EC()
         if ( !*(v0 + 10) )
         {
             *(v0 + 10) = 1;
-            sub_80D3326();
+            riskyHoneyObject_update_0x0_sub_80D3326();
         }
         *(v0 + 52) += *(v0 + 64);
         *(v0 + 56) += *(v0 + 68);
@@ -45558,7 +45558,7 @@ int sub_80D31EC()
 
 
 // 0x80d3240
-int ho_80D3240()
+int riskyHoneyObject_update_0x4_80D3240()
 {
     int v0; // r5
 
@@ -45567,16 +45567,16 @@ int ho_80D3240()
 
 
 // 0x80d325c
-void __noreturn sub_80D325C()
+void __noreturn riskyHoneyObject_update_0x4_0x0_80D325C()
 {
     unsigned __int8 *v0; // r5
 
-    sub_80E7486(v0[18], v0[19], v0[22]);
+    ifPanelFlagSetFindBattleActorWithCollisionOnPanelXY_80E7486(v0[18], v0[19], v0[22]);
 }
 
 
 // 0x80d3278
-int sub_80D3278()
+int riskyHoneyObject_update_0x4_0x4_80D3278()
 {
     int v0; // r5
     int v1; // r1
@@ -45629,7 +45629,7 @@ int sub_80D3278()
 
 
 // 0x80d32c4
-int sub_80D32C4()
+int riskyHoneyObject_update_0x8_80D32C4()
 {
     int v0; // r5
     int result; // r0
@@ -45685,14 +45685,14 @@ int __fastcall spawnRiskyHoneyObject_80D32FE(char a1, int a2, int a3, int a4)
 
 
 // 0x80d3326
-void __noreturn sub_80D3326()
+void __noreturn riskyHoneyObject_update_0x0_sub_80D3326()
 {
-    sub_80D3342();
+    riskyHoneyObject_update_0x0_sub_80D3342();
 }
 
 
 // 0x80d3342
-void __noreturn sub_80D3342()
+void __noreturn riskyHoneyObject_update_0x0_sub_80D3342()
 {
     Battle *v0; // r5
     int v1; // r0
@@ -45759,7 +45759,7 @@ LABEL_21:
 
 
 // 0x80d3404
-void __fastcall sub_80D3404(int a1, int a2)
+void __fastcall riskyHoneyObject_update_0x0_sub_80D3404(int a1, int a2)
 {
     int v2; // r5
     int v3; // r2
@@ -45799,7 +45799,7 @@ void __fastcall sub_80D3404(int a1, int a2)
 
 
 // 0x80d343c
-void __fastcall sub_80D343C(int result)
+void __fastcall riskyHoneyObject_update_0x0_sub_80D343C(int result)
 {
     int v1; // r5
     int v2; // r2
@@ -45839,7 +45839,7 @@ void __fastcall sub_80D343C(int result)
 
 
 // 0x80d3474
-AI *sub_80D3474()
+AI *riskyHoneyObject_update_0x0_sub_80D3474()
 {
     int v0; // r5
     AI *result; // r0
@@ -47500,7 +47500,7 @@ void __noreturn sub_80D44D2()
     object_spawnCollisionEffect();
     if ( battle_isBattleOver() )
         goto LABEL_9;
-    if ( sub_801156A(2) == -1 )
+    if ( basicHandleBattleObjectDamage_801156A(2) == -1 )
     {
         SpawnT4BattleObjectWithId0(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60));
         goto LABEL_9;
@@ -50581,7 +50581,7 @@ void __noreturn sub_80D62E8()
     object_spawnCollisionEffect();
     if ( battle_isBattleOver() )
         goto LABEL_12;
-    v1 = sub_801156A(0);
+    v1 = basicHandleBattleObjectDamage_801156A(0);
     if ( (v1 < 0) ^ v4 )
     {
         sub_80D644E(v1, v2, v3);
@@ -54336,7 +54336,7 @@ void __noreturn airspinObject_update_80D8988()
     int v8; // r1
 
     object_removeCollisionData();
-    v1 = sub_801156A(0);
+    v1 = basicHandleBattleObjectDamage_801156A(0);
     if ( !((v1 < 0) ^ v2) )
     {
         v6 = *(v0 + 84);
@@ -54720,7 +54720,7 @@ signed int __fastcall __noreturn sub_80D8D7E(int a1)
     v12 = a1;
     v11 = 0;
     v2 = *(v1 + 84);
-    v3 = sub_800E3BE();
+    v3 = calcFinalDamageAsPanelDamage1to5SumReturnFinalDamage_r0_PanelDamage6_r1_800E3BE();
     if ( object_getPanelDataOffset(*(v1 + 18), *(v1 + 19))[2] == 5 )
         v3 = (v3 + 1) >> 1;
     if ( !v12 && (v4 = *(v1 + 36), v5 = __OFSUB__(v4, v3), v6 = v4 - v3, *(v1 + 36) = v6, ((v6 < 0) ^ v5) | (v6 == 0)) )
@@ -55619,7 +55619,7 @@ void __noreturn sub_80D95B0()
         sub_80D9682();
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
-        if ( sub_801156A(0) == -1 )
+        if ( basicHandleBattleObjectDamage_801156A(0) == -1 )
         {
             *(*(*(v0 + 76) + 76) + 36) = 0;
             object_clearCollisionRegion();
@@ -56358,7 +56358,7 @@ void __noreturn sub_80D9E24()
     object_removeCollisionData();
     if ( battle_isBattleOver() )
         goto LABEL_9;
-    v1 = sub_801156A(0);
+    v1 = basicHandleBattleObjectDamage_801156A(0);
     if ( (v1 < 0) ^ v2 || obj->collisionData->collisionFlags & 0x3F800000 )
     {
         SpawnT4BattleObjectWithId0(obj, &obj->vx, obj->x, obj->y, obj->z);
@@ -57403,7 +57403,7 @@ void __noreturn sub_80DA886()
 
     object_removeCollisionData();
     object_spawnCollisionEffect();
-    v1 = sub_801156A(0);
+    v1 = basicHandleBattleObjectDamage_801156A(0);
     if ( (v1 < 0) ^ v2 || *(*(v0 + 84) + 112) & 0x3F800000 )
     {
         SpawnT4BattleObjectWithId0(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60));
@@ -61275,7 +61275,7 @@ void __noreturn sub_80DCF88()
     object_spawnCollisionEffect();
     if ( battle_isBattleOver() )
         goto LABEL_9;
-    v1 = sub_801156A(0);
+    v1 = basicHandleBattleObjectDamage_801156A(0);
     if ( (v1 < 0) ^ v2 || *&byte_80DCFEC[4 * v0->Alliance] & v0->collisionData->collisionFlags )
     {
         SpawnT4BattleObjectWithId0(v0, &v0->vx, v0->x, v0->y, v0->z);
@@ -64641,7 +64641,7 @@ int sub_80DF41C()
         v5 = *(&dword_80DF484 + (v4 & 3)) << 16;
         v6 = object_getFrontDirection(v0);
         v7 = *(v0 + 44);
-        sub_80C6ADA(v6 + *(v0 + 18), *(v0 + 19), *(v0 + 14), v5);
+        spawn_t3_0x12_80C6ADA(v6 + *(v0 + 18), *(v0 + 19), *(v0 + 14), v5);
         PlaySoundEffect(185, v8, v9);
         v10 = *(v0 + 34);
         v2 = __OFSUB__(v10, 1);
@@ -64995,8 +64995,8 @@ int sub_80DF6CE()
     {
         *(v0 + 11) = 4;
         *(v0 + 16) = 14;
-        v1 = sub_80B8E30(14);
-        sub_80B8E30(v1);
+        v1 = spawn_t1_0x5_80B8E30(14);
+        spawn_t1_0x5_80B8E30(v1);
         PlaySoundEffect(106, v2, v3);
         result = 120;
         *(v0 + 32) = 120;
@@ -65049,7 +65049,7 @@ void __fastcall sub_80DF742(int a1, int a2, int a3)
         PlaySoundEffect(248, 4, a3);
         PlaySoundEffect(249, v4, v5);
         *(v3 + 104) = 11;
-        sub_80B8E30(11);
+        spawn_t1_0x5_80B8E30(11);
         object_getFlip(v3);
         v6 = object_getEnemyDirection();
         v7 = *(v3 + 19);
@@ -76386,7 +76386,7 @@ void __fastcall __noreturn sub_80E621C(unsigned int a1)
     v3 = a1 & 7;
     v4 = a1 >> 4;
     sub_80C53A6(a1 & 7, a1 >> 4, 0, 0);
-    sub_80E7486(v3, v4, *(v1 + 22));
+    ifPanelFlagSetFindBattleActorWithCollisionOnPanelXY_80E7486(v3, v4, *(v1 + 22));
 }
 
 
@@ -78180,7 +78180,7 @@ void __fastcall sub_80E72C8(int a1, int a2, int a3, int a4, int a5, int a6, int 
         v8 = object_getCoordinatesForPanels(v30);
         *(v7 + 116) = sub_80E7774(v8, v8, v9, 0);
         PlaySoundEffect(189, v10, v11);
-        sub_80E7486(v30, v31, *(v7 + 22));
+        ifPanelFlagSetFindBattleActorWithCollisionOnPanelXY_80E7486(v30, v31, *(v7 + 22));
     }
     v12 = (v7 + 100);
     v13 = 0;
@@ -78266,7 +78266,7 @@ int __fastcall sub_80E7464(char a1, int a2, int a3, int a4)
 
 
 // 0x80e7486
-int __fastcall __noreturn sub_80E7486(int a1, int a2, int a3)
+int __fastcall __noreturn ifPanelFlagSetFindBattleActorWithCollisionOnPanelXY_80E7486(int a1, int a2, int a3)
 {
     int v3; // r10
     int v4; // r6
@@ -84484,7 +84484,7 @@ int __fastcall sub_80EB450(int a1, int a2, int a3)
         v11 = v3->panelY;
         v12 = object_getCoordinatesForPanels(v10 + v3->panelX);
         v14 = sub_80C6248(v12, v12, v13, 786432);
-        sub_80B8E30(v14);
+        spawn_t1_0x5_80B8E30(v14);
         v4 = v7;
     }
     result = *(v4 + 16) + 1;
@@ -84595,17 +84595,17 @@ int __fastcall sub_80EB572(int a1, int a2)
             if ( v5 )
             {
                 if ( v5 == 11 || v5 == 12 )
-                    sub_8015B54(*(v2 + 22)) != 2;
+                    callPossiblyGetBattleEmotion_8015B54(*(v2 + 22)) != 2;
             }
             else
             {
-                v8 = sub_801032C();
+                v8 = GetAIDataUnk0x48Flag();
                 if ( !(v8 & byte_200) )
                     sub_8013774(v8, 16);
             }
         }
     }
-    return sub_80B8E30(v3 << 16);
+    return spawn_t1_0x5_80B8E30(v3 << 16);
 }
 
 
@@ -84653,7 +84653,7 @@ int sub_80EB644()
                 v4 = 3 * *(v1 + 12);
         }
         v5 = *&byte_80EB738[v3] | (v4 << 24);
-        sub_80B8E30(v3);
+        spawn_t1_0x5_80B8E30(v3);
         PlaySoundEffect(178, v6, v7);
         object_setFlag1(0x400000);
         *(v1 + 16) = 0;
@@ -84797,7 +84797,7 @@ int sub_80EB862()
         v6 = sub_80EBB78() << 16;
         v7 = (v6 + sub_80EBAE8()) << 8;
         v8 = sub_80EBB34();
-        sub_80B8E30(v8);
+        spawn_t1_0x5_80B8E30(v8);
         object_setFlag1(0x400000);
         *(v1 + 16) = 21;
         object_getFrontDirection(v0);
@@ -85037,7 +85037,7 @@ int __fastcall sub_80EBC28(int a1, int a2, int a3)
         *(v4 + 16) = 0;
         v5 = sub_80EBD68() << 8;
         v6 = byte_80EBD2C[*(v4 + 3)] + v5;
-        sub_80B8E30(v5);
+        spawn_t1_0x5_80B8E30(v5);
         object_setFlag1(0x400000);
         result = 4;
         *(v4 + 1) = 4;
@@ -85130,7 +85130,7 @@ void sub_80EBD9C()
 
 
 // 0x80ebe00
-int sub_80EBE00()
+int megamanChargeShotAiAttack_80EBE00()
 {
     unsigned __int8 *v0; // r7
 
@@ -85285,7 +85285,7 @@ int sub_80EBF30()
         v2 = object_setDefaultCounterTime();
         v3 = v1;
         v4 = &v0->ai->unk_68;
-        sub_80B8E30(v2);
+        spawn_t1_0x5_80B8E30(v2);
         v1 = v3;
         object_setFlag1(0x400000);
         *(v3 + 1) = 4;
@@ -85341,7 +85341,7 @@ int sub_80EBF6E()
         v7 = object_getFrontDirection(v0);
         v8 = *(v1 + 12);
         v9 = *(v1 + 8) + *(v1 + 6);
-        sub_80C6ADA(v7 + v0->panelX, v0->panelY, *(v1 + 2), v6);
+        spawn_t3_0x12_80C6ADA(v7 + v0->panelX, v0->panelY, *(v1 + 2), v6);
         PlaySoundEffect(185, v10, v11);
         v12 = *(v1 + 18);
         v3 = __OFSUB__(v12, 1);
@@ -85413,7 +85413,7 @@ u32 *sub_80EC044()
         v2 = object_setDefaultCounterTime();
         v9 = v1;
         v3 = &v0->ai->unk_68;
-        sub_80B8E30(v2);
+        spawn_t1_0x5_80B8E30(v2);
         v1 = v9;
         object_setFlag1(0x400000);
         v4 = object_getFrontDirection(v0) + v0->panelX;
@@ -85538,7 +85538,7 @@ int __fastcall sub_80EC11C(int a1, int a2, int a3)
         object_setDefaultCounterTime();
         *(v4 + 16) = 0;
         v6 = sub_80B8E58(*(v3 + 76));
-        sub_80B8E30(v6);
+        spawn_t1_0x5_80B8E30(v6);
         object_setFlag1(0x400000);
         result = 4;
         *(v4 + 1) = 4;
@@ -86187,7 +86187,7 @@ int sub_80EC8A0()
         v2 = v1;
         v3 = sub_80EC934();
         v4 = &v0->ai->unk_68;
-        sub_80B8E30(v3);
+        spawn_t1_0x5_80B8E30(v3);
         PlaySoundEffect(175, v5, v6);
         result = 4;
         *(v2 + 1) = 4;
@@ -86434,7 +86434,7 @@ int sub_80ECAE8()
         *(v1 + 16) = 15;
         v2 = v1;
         v3 = &v0->ai->unk_68;
-        sub_80B8E30(15);
+        spawn_t1_0x5_80B8E30(15);
         object_setFlag1(0x400000);
         result = 4;
         *(v2 + 1) = 4;
@@ -86508,7 +86508,7 @@ void sub_80ECB84()
 
 
 // 0x80ecbb0
-int sub_80ECBB0()
+int bubbleShotAttack_80ECBB0()
 {
     unsigned __int8 *v0; // r7
 
@@ -86540,7 +86540,7 @@ int __fastcall sub_80ECBCC(int a1, int a2, int a3)
         v6 = sub_80ECC86() << 8;
         v7 = *(&dword_80ECC54 + *(v4 + 3));
         v8 = &v3->ai->unk_68;
-        sub_80B8E30(v7);
+        spawn_t1_0x5_80B8E30(v7);
         v4 = v5;
         object_setFlag1(0x400000);
         *(v5 + 1) = 4;
@@ -86557,7 +86557,7 @@ int __fastcall sub_80ECBCC(int a1, int a2, int a3)
         v12 = object_getFrontDirection(v3);
         v13 = *(v4 + 12);
         v14 = *(v4 + 8) + *(v4 + 6);
-        sub_80C6ADA(v12 + v3->panelX, v3->panelY, *(v4 + 2), *(&dword_80ECC5C + *(v4 + 3)) << 16);
+        spawn_t3_0x12_80C6ADA(v12 + v3->panelX, v3->panelY, *(v4 + 2), *(&dword_80ECC5C + *(v4 + 3)) << 16);
         result = 4;
         *v4 = 4;
     }
@@ -86687,7 +86687,7 @@ int __fastcall sub_80ECD44(int a1, int a2, int a3)
         if ( *(v4 + 3) )
             v9 = 30;
         v10 = &v3->ai->unk_68;
-        sub_80B8E30(v9);
+        spawn_t1_0x5_80B8E30(v9);
         v4 = v14;
         object_setFlag1(0x400000);
         *(v14 + 16) = 0;
@@ -86782,7 +86782,7 @@ int sub_80ECE18()
         v11 = object_setDefaultCounterTime();
         v12 = v1;
         v13 = &v0->ai->unk_68;
-        sub_80B8E30(v11);
+        spawn_t1_0x5_80B8E30(v11);
         v1 = v12;
         object_setFlag1(0x400000);
         *(v12 + 16) = 0;
@@ -86884,7 +86884,7 @@ signed int sub_80ECF48()
     v2 = object_setDefaultCounterTime();
     v3 = v1;
     v4 = *(v0 + 88) + 104;
-    sub_80B8E30(v2);
+    spawn_t1_0x5_80B8E30(v2);
     object_setFlag1(0x400000);
     *(v3 + 14) = 9;
     *(v3 + 48) = -1;
@@ -87049,7 +87049,7 @@ int sub_80ED0AC()
         v2 = object_setDefaultCounterTime();
         v3 = v1;
         v4 = *(v0 + 88) + 104;
-        sub_80B8E30(v2);
+        spawn_t1_0x5_80B8E30(v2);
         v1 = v3;
         object_setFlag1(0x400000);
         *(v3 + 16) = 0;
@@ -87381,7 +87381,7 @@ int sub_80ED3B6()
         v2 = *(v1 + 3);
         v3 = v1;
         v4 = &v0->ai->unk_68;
-        v5 = sub_80B8E30(v2);
+        v5 = spawn_t1_0x5_80B8E30(v2);
         v6 = *(v3 + 12);
         v7 = *(v3 + 8) + *(v3 + 6);
         sub_80D2B8E(v5, v8, *(v3 + 2), 0x100000);
@@ -87432,7 +87432,7 @@ void sub_80ED41C()
 
 
 // 0x80ed454
-int sub_80ED454()
+int tornadoAiAttack_80ED454()
 {
     unsigned __int8 *v0; // r7
 
@@ -87473,7 +87473,7 @@ int sub_80ED470()
         if ( v3 != 2 && v3 == 3 )
             v2 = 0x1000000;
         v4 = &v0->ai->unk_68;
-        sub_80B8E30(v2);
+        spawn_t1_0x5_80B8E30(v2);
         v1 = v18;
         object_setFlag1(0x400000);
         *(v18 + 1) = 4;
@@ -87570,7 +87570,7 @@ signed int sub_80ED57C()
     v2 = v1;
     v3 = *(v1 + 3);
     v4 = &v0->ai->unk_68;
-    sub_80B8E30(v3);
+    spawn_t1_0x5_80B8E30(v3);
     object_setFlag1(0x400000);
     *v2 = 4;
     *(v2 + 18) = byte_80ED5BC[*(v2 + 3)];
@@ -87892,7 +87892,7 @@ int __fastcall sub_80ED82C(int a1, int a2, int a3)
         v5 = object_setDefaultCounterTime();
         v6 = v4;
         v7 = &v3->ai->unk_68;
-        sub_80B8E30(v5);
+        spawn_t1_0x5_80B8E30(v5);
         v4 = v6;
         object_setFlag1(0x400000);
         *(v6 + 1) = 4;
@@ -87944,7 +87944,7 @@ void sub_80ED896()
 
 
 // 0x80ed8c4
-int sub_80ED8C4()
+int greatfirePossiblyOthersAiAttack_80ED8C4()
 {
     unsigned __int8 *v0; // r7
 
@@ -88102,7 +88102,7 @@ int sub_80ED9CC()
         v2 = object_setDefaultCounterTime();
         v3 = v1;
         v4 = &v0->ai->unk_68;
-        sub_80B8E30(v2);
+        spawn_t1_0x5_80B8E30(v2);
         v1 = v3;
         object_setFlag1(0x400000);
         *(v3 + 1) = 4;
@@ -88287,7 +88287,7 @@ int sub_80EDB14()
         v3 = v1;
         v4 = *(v1 + 3) + 7;
         v5 = &v0->ai->unk_68;
-        sub_80B8E30(v2);
+        spawn_t1_0x5_80B8E30(v2);
         PlaySoundEffect(248, v6, v7);
         *(v3 + 16) = 6;
         result = 4;
@@ -88519,7 +88519,7 @@ int riskyHoneyAttack_init_80EDDA0()
         object_setAnimation(v0);
         v2 = v1;
         v3 = &v0->ai->unk_68;
-        sub_80B8E30(v4);
+        spawn_t1_0x5_80B8E30(v4);
         v1 = v2;
         object_setFlag1(0x400000);
         SetAIDataUnk0x48Flag(0x200000);
@@ -88628,7 +88628,7 @@ int riskyHoneyAttack_update_sub_80EDE4A()
 
 
 // 0x80ede7e
-int sub_80EDE7E()
+int aquaSpiralAiAttack_80EDE7E()
 {
     unsigned __int8 *v0; // r7
 
@@ -88924,7 +88924,7 @@ signed int dollThunderAttack_init_80EE0DC()
     v2 = v1;
     v3 = *(v1 + 14);
     v4 = &v0->ai->unk_68;
-    sub_80B8E30(v3);
+    spawn_t1_0x5_80B8E30(v3);
     object_setFlag1(0x400000);
     v2[8] = 10;
     result = 4;
@@ -89045,7 +89045,7 @@ int sub_80EE1AC()
         PlaySoundEffect(287, v2, v3);
         v4 = sub_80EBAE8() << 8;
         *(v1 + 3);
-        sub_80B8E30(v4);
+        spawn_t1_0x5_80B8E30(v4);
         object_setFlag1(0x400000);
         object_getFlip(v0);
         v5 = *(v0 + 19);
@@ -89281,7 +89281,7 @@ int __fastcall sub_80EE406(int a1, int a2, int a3, int a4, int a5)
             v13 = sub_80EBB78() << 16;
             v14 = (v13 + sub_80EBAE8()) << 8;
             v15 = sub_80EBB34();
-            sub_80B8E30(v15);
+            spawn_t1_0x5_80B8E30(v15);
         }
         object_setFlag1(0x400000);
         *(v6 + 16) = 21;
@@ -89399,7 +89399,7 @@ signed int sub_80EE57C()
     v2 = object_setDefaultCounterTime();
     v3 = v1;
     v4 = &v0->ai->unk_68;
-    sub_80B8E30(v2);
+    spawn_t1_0x5_80B8E30(v2);
     object_setFlag1(0x400000);
     v3[8] = 1;
     result = 4;
@@ -89595,7 +89595,7 @@ signed int sub_80EE71C()
     v2 = object_setDefaultCounterTime();
     v3 = v1;
     v4 = &v0->ai->unk_68;
-    sub_80B8E30(v2);
+    spawn_t1_0x5_80B8E30(v2);
     object_setFlag1(0x400000);
     v3[8] = 1;
     result = 4;
@@ -89994,7 +89994,7 @@ int sub_80EEA78()
         PlaySoundEffect(176, v2, v3);
         sub_80EBB34();
         v4 = sub_80EBAE8();
-        sub_80B8E30(v4 << 8);
+        spawn_t1_0x5_80B8E30(v4 << 8);
         object_setFlag1(0x400000);
         *(v1 + 16) = 21;
         *(v1 + 1) = 4;
@@ -90093,7 +90093,7 @@ int sub_80EEB68()
         PlaySoundEffect(176, v3, v4);
         sub_80EBB34();
         v5 = sub_80EBAE8();
-        sub_80B8E30(v5 << 8);
+        spawn_t1_0x5_80B8E30(v5 << 8);
         object_setFlag1(0x400000);
         *(v1 + 16) = 21;
         *(v1 + 1) = 4;
@@ -90731,7 +90731,7 @@ int sub_80EF0E2()
         v2 = *(v1 + 3);
         v3 = v1;
         v4 = &v0->ai->unk_68;
-        v5 = sub_80B8E30(v2);
+        v5 = spawn_t1_0x5_80B8E30(v2);
         v6 = *(v3 + 12);
         v7 = *(v3 + 8) + *(v3 + 6);
         sub_80D2B8E(v5, v8, *(v3 + 2), 0x100000);
@@ -91540,7 +91540,7 @@ int sub_80EF9A2()
         PlaySoundEffect(176, v2, v3);
         sub_80EBB34();
         v4 = sub_80EBAE8();
-        sub_80B8E30(v4 << 8);
+        spawn_t1_0x5_80B8E30(v4 << 8);
         object_setFlag1(0x400000);
         *(v1 + 16) = 21;
         *(v1 + 1) = 4;
@@ -92148,7 +92148,7 @@ int sub_80EFF28()
         sub_80EBB34();
         v8 = sub_80EBAE8();
         v9 = &v0->ai->unk_68;
-        sub_80B8E30(v8 << 8);
+        spawn_t1_0x5_80B8E30(v8 << 8);
         v1 = v7;
         *(v7 + 16) = 21;
         *(v7 + 1) = 4;
@@ -92342,7 +92342,7 @@ int __fastcall sub_80F014C(int a1, int a2, int a3)
         v12 = *(v4 + 12);
         v13 = *(v4 + 8);
         v15 = sub_80C4FFE(v11 + *(v3 + 18), v10, v14, 1572864);
-        sub_80B8E30(v15);
+        spawn_t1_0x5_80B8E30(v15);
     }
     result = *(v4 + 16) + 1;
     *(v4 + 16) = result;
@@ -92466,7 +92466,7 @@ signed int sub_80F02A2()
     signed int v1; // r4
 
     v1 = 1;
-    if ( *(v0 + 13) && sub_801032C() & 0x8000 )
+    if ( *(v0 + 13) && GetAIDataUnk0x48Flag() & 0x8000 )
         v1 = 0;
     return v1;
 }
@@ -92593,7 +92593,7 @@ LABEL_34:
         ClearAIDataUnk0x48Flag(16);
         if ( !battle_networkInvert(obj->Alliance) )
             sub_801DACC(64);
-        sub_8011764();
+        calledOnBAtkProbInit_8011764();
         object_setAttack1();
         return 1;
     }
@@ -111863,7 +111863,7 @@ int sub_80FCF36()
 // 0x80fcf90
 int __fastcall sub_80FCF90(int a1)
 {
-    return sub_80B8E30(a1);
+    return spawn_t1_0x5_80B8E30(a1);
 }
 
 
@@ -113248,7 +113248,7 @@ int sub_80FDEFC()
     int v1; // r1
     int result; // r0
 
-    if ( sub_801032C() & 0x20 )
+    if ( GetAIDataUnk0x48Flag() & 0x20 )
         object_setFlag1(4);
     v1 = *(v0 + 104) >> 4;
     result = *(v0 + 104) & 7;
@@ -113371,7 +113371,7 @@ int sub_80FE0F8()
     if ( !*(v1 + 1) )
     {
         *(v1 + 1) = 4;
-        if ( !(sub_801032C() & 0x20) )
+        if ( !(GetAIDataUnk0x48Flag() & 0x20) )
         {
             SetAIDataUnk0x48Flag(32);
             *(v0 + 16) = 8;
@@ -113529,7 +113529,7 @@ int sub_80FE240()
         *(v1 + 1) = 4;
         *(v1 + 22) = 0;
         *(v1 + 23) = 0;
-        if ( sub_801032C() & 0x20 )
+        if ( GetAIDataUnk0x48Flag() & 0x20 )
         {
             ClearAIDataUnk0x48Flag(32);
             *(v0 + 16) = 7;
@@ -113694,7 +113694,7 @@ int sub_80FE354()
     if ( !*(v1 + 1) )
     {
         *(v1 + 1) = 4;
-        if ( sub_801032C() & 0x20 )
+        if ( GetAIDataUnk0x48Flag() & 0x20 )
         {
             ClearAIDataUnk0x48Flag(32);
             *(v0 + 16) = 7;
@@ -113841,7 +113841,7 @@ int sub_80FE46C()
     if ( !*(v1 + 1) )
     {
         *(v1 + 1) = 4;
-        if ( sub_801032C() & 0x20 )
+        if ( GetAIDataUnk0x48Flag() & 0x20 )
         {
             ClearAIDataUnk0x48Flag(32);
             *(v0 + 16) = 7;
@@ -119946,7 +119946,7 @@ int sub_81025A8()
         *(v1 + 16) = v2;
         v3 = v1;
         v4 = *(v0 + 88) + 104;
-        sub_80B8E30(v2);
+        spawn_t1_0x5_80B8E30(v2);
         result = 4;
         *(v3 + 1) = 4;
     }
@@ -120135,7 +120135,7 @@ int sub_81026EE()
     {
         v0->currAnimation = 5;
         *(v1 + 16) = 0;
-        sub_80B8E30(0);
+        spawn_t1_0x5_80B8E30(0);
         object_setCounterTime(16);
         PlaySoundEffect(206, v2, v3);
         result = 4;
@@ -120193,7 +120193,7 @@ int sub_81027C4()
     {
         *(v1 + 16) = *(v1 + 48);
         *(v0 + 16) = 18;
-        sub_80B8E30(18);
+        spawn_t1_0x5_80B8E30(18);
         *(v1 + 1) = 4;
     }
     v2 = *(v1 + 16);
@@ -120457,7 +120457,7 @@ int __fastcall sub_81029CE(int a1, int a2, int a3)
         *(v3 + 16) = 15;
         v5 = v4;
         v6 = *(v3 + 88) + 104;
-        sub_80B8E30(15);
+        spawn_t1_0x5_80B8E30(15);
         v4 = v5;
         *(v5 + 16) = 0;
         PlaySoundEffect(253, v7, v8);
@@ -127893,7 +127893,7 @@ int sub_8106FE6()
         PlaySoundEffect(176, v2, v3);
         *(v1 + 16) = 21;
         v4 = sub_81079DC();
-        result = sub_80B8E30(v4);
+        result = spawn_t1_0x5_80B8E30(v4);
         *(v1 + 48) = result;
     }
     return result;
@@ -128038,7 +128038,7 @@ int sub_81070EC()
     {
         *(v1 + 1) = 4;
         v0->currAnimation = 14;
-        *(v1 + 48) = sub_80B8E30(14);
+        *(v1 + 48) = spawn_t1_0x5_80B8E30(14);
         object_setCounterTime(24);
         v2 = object_getFrontDirection(v0);
         v3 = *(v1 + 8);
@@ -128766,9 +128766,9 @@ int sub_8107644()
         *(v1 + 1) = 4;
         *(v0 + 16) = 14;
         v2 = sub_8107B06();
-        v3 = sub_80B8E30(v2);
+        v3 = spawn_t1_0x5_80B8E30(v2);
         *(v1 + 52) = v3;
-        *(v1 + 56) = sub_80B8E30(v3);
+        *(v1 + 56) = spawn_t1_0x5_80B8E30(v3);
         PlaySoundEffect(174, v4, v5);
         *(v1 + 16) = 90;
         *(v1 + 18) = 5;
@@ -130928,9 +130928,9 @@ int sub_81089A6()
         *(v1 + 1) = 4;
         *(v0 + 16) = 14;
         v2 = sub_8108EE6();
-        v3 = sub_80B8E30(v2);
+        v3 = spawn_t1_0x5_80B8E30(v2);
         *(v1 + 52) = v3;
-        *(v1 + 56) = sub_80B8E30(v3);
+        *(v1 + 56) = spawn_t1_0x5_80B8E30(v3);
         PlaySoundEffect(174, v4, v5);
         *(v1 + 16) = 90;
         *(v1 + 18) = 3;

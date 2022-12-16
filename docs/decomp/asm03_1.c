@@ -529,7 +529,7 @@ int navi_80340F6()
     ClearEventFlagFromImmediate(4, 233);
     ClearEventFlagFromImmediate(5, 242);
     SetEventFlagFromImmediate(5, 223);
-    sub_80351C8();
+    enableGhostNavi_80351C8();
     ClearEventFlagFromImmediate(23, 33);
     ClearEventFlagFromImmediate(23, 0);
     v3 = *(v0 + oToolkit_Unk2001c04_Ptr);
@@ -825,7 +825,7 @@ int __fastcall sub_8034BB8(int a1)
             sub_8034DB0();
             sub_8034CB6();
             sub_8034D7C();
-            sub_8035274();
+            ghostNaviCheck_8035274();
             sub_8035054();
             sub_8035084();
             sub_809CF2C();
@@ -1463,7 +1463,7 @@ _DWORD *sub_80351B4()
 
 
 // 0x80351c8
-unsigned int sub_80351C8()
+unsigned int enableGhostNavi_80351C8()
 {
     __int16 *i; // r4
     unsigned int result; // r0
@@ -1505,7 +1505,7 @@ unsigned int __fastcall sub_803522E(unsigned int result)
 
 
 // 0x8035274
-int sub_8035274()
+int ghostNaviCheck_8035274()
 {
     int v0; // r10
     int result; // r0

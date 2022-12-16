@@ -2816,7 +2816,7 @@ signed int __fastcall sub_800E360(int a1, int a2)
 
 
 // 0x800e3be
-int sub_800E3BE()
+int calcFinalDamageAsPanelDamage1to5SumReturnFinalDamage_r0_PanelDamage6_r1_800E3BE()
 {
     int v0; // r5
     unsigned __int16 *v1; // r3

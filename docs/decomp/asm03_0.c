@@ -2344,7 +2344,7 @@ int sub_8027E2C()
     sub_8027EE8();
     v6 = *(*(v1 + oToolkit_S2034880_Ptr) + 13);
     if ( v0[16] || v0[16] == v0[21] )
-        v7 = sub_8015B54(v6);
+        v7 = callPossiblyGetBattleEmotion_8015B54(v6);
     else
         v7 = sub_8015B5C(v6);
     sub_8027F10(v7, v8);
@@ -5768,7 +5768,7 @@ int __fastcall sub_802A040(int a1)
         if ( !eStruct2035280_NaviStatusGfxIdx17 || byte_2035296 )
             sub_8015B5C(v2);
         else
-            sub_8015B54(v2);
+            callPossiblyGetBattleEmotion_8015B54(v2);
         if ( v3 )
             v1 = v3 + 12;
     }
@@ -5791,7 +5791,7 @@ int __fastcall sub_802A088(int a1)
     if ( !eStruct2035280_NaviStatusGfxIdx17 || byte_2035296 )
         sub_8015B5C(v2);
     else
-        sub_8015B54(v2);
+        callPossiblyGetBattleEmotion_8015B54(v2);
     if ( v3 >= 11 )
         v1 += 12;
     result = sub_801E660(v1);
@@ -6059,7 +6059,7 @@ int __fastcall sub_802A40C(int a1)
     v5 = sub_802D234();
     if ( v5 != 2 && v5 != 3 && v5 != 4 && v5 != 5 && v5 != 8 )
     {
-        sub_8015B54(*(v4 + 13));
+        callPossiblyGetBattleEmotion_8015B54(*(v4 + 13));
         v8 = 1;
         if ( v7 != 10 && v7 != 22 )
             v8 = 0;
@@ -6123,7 +6123,7 @@ int __fastcall sub_802A49C(int a1)
         || v3 == 5
         || v3 == 8
         || *(v1 + 16)
-        || (*(v1 + 16) != *(v1 + 21) ? sub_8015B5C(*(*(v2 + oToolkit_S2034880_Ptr) + 13)) : sub_8015B54(*(*(v2 + oToolkit_S2034880_Ptr) + 13)),
+        || (*(v1 + 16) != *(v1 + 21) ? sub_8015B5C(*(*(v2 + oToolkit_S2034880_Ptr) + 13)) : callPossiblyGetBattleEmotion_8015B54(*(*(v2 + oToolkit_S2034880_Ptr) + 13)),
                 v4 != 5 && v4 != 17) )
     {
         result = 0;
@@ -6211,7 +6211,7 @@ int sub_802A564()
     if ( *(v0 + 21) )
         result = sub_8015B5C(v2);
     else
-        result = sub_8015B54(v2);
+        result = callPossiblyGetBattleEmotion_8015B54(v2);
     return result;
 }
 
@@ -9379,7 +9379,7 @@ char *sub_802CEC8()
 
 
 // 0x802cef4
-unsigned int sub_802CEF4()
+unsigned int hiveBlockHappensHere_802CEF4()
 {
     int v0; // r5
     int v1; // r4
@@ -9395,7 +9395,7 @@ unsigned int sub_802CEF4()
     unsigned int v11; // [sp-4h] [bp-14h]
 
     v1 = *(v0 + 84);
-    if ( sub_801032C() & 0x200000 && !*(v1 + 132) )
+    if ( GetAIDataUnk0x48Flag() & 0x200000 && !*(v1 + 132) )
     {
         v2 = *(v1 + 138);
         v3 = *(v1 + 130) | *(v1 + 134) | *(v1 + 136) | v2;
@@ -9412,7 +9412,7 @@ unsigned int sub_802CEF4()
     if ( v5 != 187 && v5 != 343 )
     {
         v11 = v5;
-        v7 = (sub_801032C() & &loc_800) == 0;
+        v7 = (GetAIDataUnk0x48Flag() & &loc_800) == 0;
         result = v11;
         if ( v7 )
         {
@@ -9940,7 +9940,7 @@ signed int __usercall sub_802D358@<R0>(Battle *obj@<R5>)
     if ( v1[2] <= 3 )
     {
         v2 = sub_80E164A();
-        sub_80E7486(v2, v3, obj->Alliance);
+        ifPanelFlagSetFindBattleActorWithCollisionOnPanelXY_80E7486(v2, v3, obj->Alliance);
     }
     if ( sub_8010004() == 0xFFFF || (v4 = sub_800FFE4(4), sub_800FB54(obj, v4) == 0xFFFF) )
     {
@@ -10085,7 +10085,7 @@ signed int __fastcall sub_802D4F0(int a1, int a2, int a3)
     if ( *(v4 + 4) <= 3 )
     {
         v6 = sub_80E164A();
-        sub_80E7486(v6, v7, *(v3 + 22));
+        ifPanelFlagSetFindBattleActorWithCollisionOnPanelXY_80E7486(v6, v7, *(v3 + 22));
     }
     *(v4 + 4) = 0;
     v8 = sub_802D5A8(0);
@@ -10825,7 +10825,7 @@ signed int __fastcall sub_802DCEC(int a1)
     if ( a1 )
     {
         v1 = 1;
-        if ( !(sub_801032C() & &loc_1000) && !(sub_800FFFE() & &LCDControl) )
+        if ( !(GetAIDataUnk0x48Flag() & &loc_1000) && !(sub_800FFFE() & &LCDControl) )
             v1 = 0;
     }
     return v1;
@@ -10854,7 +10854,7 @@ signed int __fastcall sub_802DD2A(int a1)
     signed int v1; // r7
 
     v1 = 0;
-    if ( sub_8013774(a1, 41) && sub_801032C() & 0x4000 )
+    if ( sub_8013774(a1, 41) && GetAIDataUnk0x48Flag() & 0x4000 )
         v1 = 1;
     return v1;
 }
@@ -10868,7 +10868,7 @@ signed int __fastcall sub_802DD4A(signed int result)
 
     if ( result )
     {
-        v1 = sub_801032C();
+        v1 = GetAIDataUnk0x48Flag();
         v2 = 0;
         if ( v1 & &loc_2000 )
             v2 = 1;

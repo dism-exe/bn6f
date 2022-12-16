@@ -23,6 +23,8 @@
 	u8 BeastOutCounter // loc=0x21
 	struct_org 0x23
 	u8 SuperArmor // loc=0x23
+	struct_org 0x29
+	u8 Unk_29 // loc=0x29
 	struct_org 0x2c
 	u8 Transformation // loc=0x2c
 	struct_org 0x2e
@@ -36,7 +38,8 @@
 	u16 MaxHP // loc=0x42
 	struct_org 0x4c
 	u8 Unk_4c // loc=0x4c
-	struct_org 0x50
+	struct_org 0x4f
+	u8 Unk_4f // loc=0x4f
 	u16 ChipRecovery // loc=0x50
 	struct_org 0x56
 	u8 Folder1Tag1 // loc=0x56

@@ -1726,6 +1726,7 @@ loc_8003C7E:
 off_8003C90: .word eActiveOWPlayerObjectBitfield
 off_8003C94: .word eOWPlayerObject
 off_8003C98: .word eOWPlayerObjectEnd
+// JP: 0x8003c80
 T1BattleObjectJumptable: .word t1_0x0_80B81EC+1 // 0x0
 	.word t1_0x1_80B8210+1 // 0x1
 	.word t1_0x2_80B85E0+1 // 0x2
@@ -1914,6 +1915,7 @@ loc_8003EA6:
 off_8003EB8: .word eT1BattleObject0
 off_8003EBC: .word byte_2036778
 off_8003EC0: .word dword_2039A10
+// JP: 0x8003ea8
 T3BattleObjectJumptable: .word t3_0x0_80C4E58+1 // 0x0
 	.word t3_0x1_80C50B8+1 // 0x1
 	.word t3_0x2_80C51AC+1 // 0x2
@@ -2030,7 +2032,7 @@ T3BattleObjectJumptable: .word t3_0x0_80C4E58+1 // 0x0
 	.word t3_0x71_80D2A94+1 // 0x71
 	.word t3_0x72_80D2BDC+1 // 0x72
 	.word t3_0x73_80D2EBC+1 // 0x73
-	.word t3_0x74_80D30D0+1 // 0x74
+	.word riskyHoneyObject_80D30D0+1 // 0x74
 	.word t3_0x75_80D34CC+1 // 0x75
 	.word t3_0x76_80D385C+1 // 0x76
 	.word t3_0x77_80D39BC+1 // 0x77
@@ -2223,6 +2225,7 @@ sub_80042A6:
 off_80042BC: .word eT3BattleObject0_LinkedList
 off_80042C0: .word dword_203CA7C
 off_80042C4: .word dword_203A010
+// JP: 0x80042ac
 T4BattleObjectJumptable: .word t4_0x0_80E0548+1 // 0x0
 	.word t4_0x0_80E0548+1 // 0x1
 	.word t4_0x2_80E0638+1 // 0x2
@@ -8970,7 +8973,7 @@ loc_8007D72:
 	tst r0, r1
 	bne loc_8007D8A
 	ldrb r0, [r5,#oBattleState_Unk_0d]
-	bl sub_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54
 loc_8007D8A:
 	push {r2}
 	bl GetCurPETNavi // () -> u8

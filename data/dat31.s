@@ -102,7 +102,7 @@ sub_810C4B4::
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	ldr r4, dword_810C6E4 // =0x10000 
-	ldr r6, [r7,#oAIAttackVars_Unk_08]
+	ldr r6, [r7,#oAIAttackVars_Damage]
 	bl sub_80CB8DE
 	mov r0, #8
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -471,7 +471,7 @@ sub_810C7B6::
 	ldrb r0, [r4,#oAIData_Version_16]
 	ldr r1, off_810C810 // =byte_810C81A 
 	ldrb r0, [r1,r0]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
 	mov r0, #0xb
@@ -1071,7 +1071,7 @@ locret_810CD36::
 sub_810CD38::
 	push {r4,r6,r7,lr}
 	ldr r4, dword_810CD58 // =0x4050101 
-	ldr r6, [r7,#oAIAttackVars_Unk_08]
+	ldr r6, [r7,#oAIAttackVars_Damage]
 	mov r7, r0
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
@@ -1181,7 +1181,7 @@ loc_810CE38::
 	cmp r0, #0
 	beq loc_810CEAA
 	ldrb r2, [r5,#oBattleObject_Alliance]
-	bl sub_80E7486
+	bl ifPanelFlagSetFindBattleActorWithCollisionOnPanelXY_80E7486
 	str r0, [sp]
 	bl sub_810CF4A
 	cmp r0, #0
@@ -1215,7 +1215,7 @@ loc_810CE38::
 	strb r1, [r7,#oAIAttackVars_Unk_0d]
 	ldr r1, off_810D000 // =byte_810CDAE 
 	ldrb r1, [r1,r0]
-	strh r1, [r7,#oAIAttackVars_Unk_08]
+	strh r1, [r7,#oAIAttackVars_Damage]
 	mov r1, #0xa
 	strh r1, [r7,#oAIAttackVars_Unk_0a]
 	mov r0, #0xb
@@ -2170,7 +2170,7 @@ loc_810D836::
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #1
 	mov r3, #0
-	ldr r6, [r7,#oAIAttackVars_Unk_08]
+	ldr r6, [r7,#oAIAttackVars_Damage]
 	ldr r7, [r7,#oAIAttackVars_Unk_30]
 	bl sub_80C5578
 	pop {r7}

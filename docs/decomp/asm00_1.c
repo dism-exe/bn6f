@@ -6191,7 +6191,7 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
         {
             v26 = -128;
             if ( !(v25 & 0x10000) )
-                sub_8015B54(*(v3 + 13));
+                callPossiblyGetBattleEmotion_8015B54(*(v3 + 13));
             v27 = v26;
             v28 = getPETNaviSelect();
             SetCurPETNaviStatsByte(v28, 14, v27);

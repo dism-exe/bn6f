@@ -1555,11 +1555,11 @@ int __fastcall sub_800FD0A(int a1)
 
     v2 = *(v1 + 88);
     v3 = byte_80212BB[sub_8013774(a1, 41)];
-    if ( sub_8015B54(*(v1 + 22)) == 2 )
+    if ( callPossiblyGetBattleEmotion_8015B54(*(v1 + 22)) == 2 )
     {
         v4 = 4;
     }
-    else if ( *v2 == 2 && sub_801032C() & 0x200 )
+    else if ( *v2 == 2 && GetAIDataUnk0x48Flag() & 0x200 )
     {
         v4 = 1;
     }
@@ -1936,7 +1936,7 @@ int sub_801002C()
     v1 = sub_8013774(2, 41);
     if ( v1 )
         return sub_800FD0A(v1);
-    v2 = sub_801032C();
+    v2 = GetAIDataUnk0x48Flag();
     if ( v2 & byte_200 )
     {
         v3 = 1;
@@ -2307,7 +2307,7 @@ int __fastcall sub_8010326(int result)
 
 
 // 0x801032c
-int sub_801032C()
+int GetAIDataUnk0x48Flag()
 {
     int v0; // r5
 
@@ -3821,7 +3821,7 @@ int __fastcall BasicBattleObjectInitialize(int result, char a2, char a3, char a4
 
 
 // 0x801156a
-signed int __fastcall sub_801156A(int a1)
+signed int __fastcall basicHandleBattleObjectDamage_801156A(int a1)
 {
     int v1; // r5
     int v2; // r0
@@ -3837,7 +3837,7 @@ signed int __fastcall sub_801156A(int a1)
     v12 = a1;
     v11 = 0;
     object_spawnHiteffect();
-    v2 = sub_800E3BE();
+    v2 = calcFinalDamageAsPanelDamage1to5SumReturnFinalDamage_r0_PanelDamage6_r1_800E3BE();
     v10 = v2;
     if ( v12 != 1 )
     {
@@ -3887,7 +3887,7 @@ signed int __fastcall sub_80115CE(int a1)
     v13 = a1;
     v12 = 0;
     object_spawnHiteffect();
-    v11 = sub_800E3BE();
+    v11 = calcFinalDamageAsPanelDamage1to5SumReturnFinalDamage_r0_PanelDamage6_r1_800E3BE();
     v3 = v11 + v2;
     if ( !v13 )
     {
@@ -3926,7 +3926,7 @@ signed int __fastcall object_applyDamage(int a1)
     int v4; // r1
     int v5; // r2
 
-    result = sub_801156A(a1);
+    result = basicHandleBattleObjectDamage_801156A(a1);
     if ( result )
     {
         v3 = result;
@@ -4059,7 +4059,7 @@ void __usercall object_exitAttackState(Battle *a1@<R5>)
 
 
 // 0x8011764
-int sub_8011764()
+int calledOnBAtkProbInit_8011764()
 {
     int v0; // r5
 
@@ -4113,7 +4113,7 @@ void nullsub_44()
 
 
 // 0x8011a26
-int __fastcall sub_8011A26(int a1)
+int __fastcall megamanChargeShotBPwrAtk_init_8011A26(int a1)
 {
     int v1; // r7
     int v2; // r0
@@ -4129,7 +4129,7 @@ int __fastcall sub_8011A26(int a1)
         case 1:
             return sub_8011ADA();
         case 2:
-            return sub_8011A7E(2);
+            return busterBugChargeShotDamageCalcHappensHere_8011A7E(2);
     }
     *(v1 + 8) = sub_801265A(v2);
     *(v1 + 2) = 0;
@@ -4154,7 +4154,7 @@ int __fastcall sub_8011A26(int a1)
 
 
 // 0x8011a7e
-signed int __fastcall sub_8011A7E(int a1)
+signed int __fastcall busterBugChargeShotDamageCalcHappensHere_8011A7E(int a1)
 {
     int v1; // r5
     int v2; // r7
@@ -4168,7 +4168,7 @@ signed int __fastcall sub_8011A7E(int a1)
     signed int v10; // r1
 
     v3 = sub_8013774(a1, 1) + 1;
-    v4 = sub_8015B54(*(v1 + 22)) == 5;
+    v4 = callPossiblyGetBattleEmotion_8015B54(*(v1 + 22)) == 5;
     v5 = v3;
     if ( v4 )
         v5 = 1;
@@ -4304,7 +4304,7 @@ signed int sub_8011BA2()
 
 
 // 0x8011bd0
-signed int sub_8011BD0()
+signed int greatfireAPwrAtk_init_8011BD0()
 {
     int v0; // r7
 
@@ -4367,7 +4367,7 @@ signed int sub_8011C38()
 
 
 // 0x8011c5e
-signed int sub_8011C5E()
+signed int spoutcrossBPwrAtk_init_8011C5E()
 {
     int v0; // r7
 
@@ -4429,7 +4429,7 @@ int sub_8011CB4()
 
 
 // 0x8011cd6
-signed int sub_8011CD6()
+signed int slashcrossBPwrAtk_init_8011CD6()
 {
     int v0; // r7
 
@@ -4770,7 +4770,7 @@ int sub_8011F8C()
 
     v2 = *(v0 + 13);
     if ( !*(v0 + 13) )
-        return sub_8011A26(v2);
+        return megamanChargeShotBPwrAtk_init_8011A26(v2);
     v4 = v2 - 1;
     *(v0 + 13) = v4;
     *(v1 + 48) = *(v0 + v4 + 108) | (*&byte_80E98C0[2 * (*(v0 + v4 + 108) & 0xF)] << 16);
@@ -5095,7 +5095,7 @@ signed int sub_8012240()
 
 
 // 0x8012258
-signed int sub_8012258()
+signed int tomahawkmanBPwrAtk_init_8012258()
 {
     int v0; // r5
     int v1; // r7
@@ -5303,7 +5303,7 @@ int sub_80123A0()
 
 
 // 0x80123aa
-signed int sub_80123AA()
+signed int bubbleSpreadBPwrAtk_init_80123AA()
 {
     int v0; // r7
 
@@ -5690,7 +5690,7 @@ int __fastcall sub_8012612(int a1)
     int v1; // r7
     int result; // r0
 
-    result = sub_8011A26(a1);
+    result = megamanChargeShotBPwrAtk_init_8011A26(a1);
     *(v1 + 3) = 1;
     return result;
 }
@@ -5751,7 +5751,7 @@ int __fastcall sub_801265A(int a1)
 
     v2 = sub_8013774(a1, 41);
     v5 = sub_8013774(v2, 1) + *(dword_80126A4 + v2);
-    v3 = sub_8015B54(*(v1 + 22));
+    v3 = callPossiblyGetBattleEmotion_8015B54(*(v1 + 22));
     if ( v3 == 5 )
         result = 1;
     else
@@ -6103,7 +6103,7 @@ int __fastcall sub_8012A38(int a1, int a2, int a3, int a4)
     v9 = a4;
     if ( *(getChip8021DA8(a2) + 9) & 2 )
     {
-        v5 = sub_8015B54(*(v4 + 22));
+        v5 = callPossiblyGetBattleEmotion_8015B54(*(v4 + 22));
         if ( v5 == 2 || v5 == 3 || sub_8012AFA(v7, v9) || sub_8012B4E(v7, v9) || sub_8012BA2(v7, v9) || sub_8012ABC(v7) )
             v8 |= 0x8000u;
     }
@@ -6637,7 +6637,7 @@ BOOL sub_8012F3E()
     result = 0;
     if ( !(sub_800FFFE() & 0x1000002F) )
     {
-        v0 = sub_801032C();
+        v0 = GetAIDataUnk0x48Flag();
         if ( !(v0 & byte_200) )
         {
             if ( v0 & 0x10 )
@@ -6745,7 +6745,7 @@ int sub_8012FC8()
     if ( sub_802D234() != 1 )
     {
         v9 = *(v2 + 34);
-        if ( sub_801032C() & &byte_400 )
+        if ( GetAIDataUnk0x48Flag() & &byte_400 )
         {
             if ( *(v2 + 36) & byte_300 )
             {
@@ -7677,7 +7677,7 @@ int sub_80139C4()
             result = v1[1];
             if ( result <= 11 )
             {
-                result = sub_8015B54(*(v0 + 22));
+                result = callPossiblyGetBattleEmotion_8015B54(*(v0 + 22));
                 if ( result == 2 )
                 {
                     result = *(v1 + 23);
@@ -8671,7 +8671,7 @@ int sub_8014326()
     {
         v2 = *(v0 + 88);
         v3 = *(v2 + 1);
-        v4 = sub_8015B54(*(v0 + 22));
+        v4 = callPossiblyGetBattleEmotion_8015B54(*(v0 + 22));
         if ( v4 == 5 || v4 == 1 )
         {
             object_clearFlag2(512);
@@ -9563,7 +9563,7 @@ void sub_8014A38()
         {
             (*(&off_8014AF0 + *v1))();
         }
-        if ( !(sub_801032C() & 0x80000) )
+        if ( !(GetAIDataUnk0x48Flag() & 0x80000) )
             sub_801BCD0();
     }
 }
@@ -9932,7 +9932,7 @@ int __cdecl sub_8014E08(int a1, int a2, int a3)
     *(v4 + 16) = result;
     if ( ((result < 0) ^ v26) | (result == 0) )
     {
-        v28 = sub_8015B54(v3->Alliance);
+        v28 = callPossiblyGetBattleEmotion_8015B54(v3->Alliance);
         v29 = 0;
         if ( v28 == 2 )
             v29 = 1;
@@ -10951,7 +10951,7 @@ signed int __fastcall sub_801597C(signed int result)
 
     if ( result )
     {
-        v1 = sub_801032C();
+        v1 = GetAIDataUnk0x48Flag();
         v2 = 0;
         if ( v1 & 0x80 )
             v2 = 1;
@@ -10979,7 +10979,7 @@ signed int __fastcall sub_80159A2(int a1)
     if ( a1 )
     {
         v1 = 1;
-        if ( !(sub_801032C() & byte_100) && !(sub_800FFFE() & 0x40) )
+        if ( !(GetAIDataUnk0x48Flag() & byte_100) && !(sub_800FFFE() & 0x40) )
             v1 = 0;
     }
     return v1;
@@ -11153,9 +11153,9 @@ int __fastcall sub_8015B22(int result)
 
 
 // 0x8015b54
-int __fastcall sub_8015B54(int a1)
+int __fastcall callPossiblyGetBattleEmotion_8015B54(int a1)
 {
-    return sub_8015B64(a1);
+    return possiblyGetBattleEmotion_8015B64(a1);
 }
 
 
@@ -11167,7 +11167,7 @@ int __fastcall sub_8015B5C(int a1)
 
 
 // 0x8015b64
-signed int __fastcall sub_8015B64(int a1)
+signed int __fastcall possiblyGetBattleEmotion_8015B64(int a1)
 {
     int v1; // r4
     unsigned __int8 *v2; // r6
@@ -12729,7 +12729,7 @@ signed int sub_8016CA4()
         result = v0->Alliance;
         if ( *(*(v1 + oToolkit_S2034880_Ptr) + 13) != result )
         {
-            result = sub_8015B54(result ^ 1);
+            result = callPossiblyGetBattleEmotion_8015B54(result ^ 1);
             if ( result == 2 )
             {
                 v3 = v0->collisionData;
@@ -14075,19 +14075,19 @@ void sub_8017BC0()
     int v1; // r6
 
     v1 = v0[22];
-    if ( sub_801032C() & 0x80 )
+    if ( GetAIDataUnk0x48Flag() & 0x80 )
     {
         sub_8014A38();
     }
-    else if ( sub_801032C() & byte_100 )
+    else if ( GetAIDataUnk0x48Flag() & byte_100 )
     {
         sub_8015614();
     }
-    else if ( sub_801032C() & &loc_1000 )
+    else if ( GetAIDataUnk0x48Flag() & &loc_1000 )
     {
         sub_802D714();
     }
-    else if ( sub_801032C() & &loc_2000 )
+    else if ( GetAIDataUnk0x48Flag() & &loc_2000 )
     {
         *(v1 + 163) = 0;
         sub_802D926();
@@ -16326,7 +16326,7 @@ int sub_801A9B8()
                 sub_801A36A();
                 sub_8010230();
                 sub_802CFF8();
-                sub_802CEF4();
+                hiveBlockHappensHere_802CEF4();
                 v3 = sub_801A6B4();
                 v4 = sub_801A720(v3);
                 sub_8013AE4(v4);
@@ -16371,7 +16371,7 @@ int sub_801AA48()
                 sub_801A36A();
                 sub_8010230();
                 sub_802CFF8();
-                sub_802CEF4();
+                hiveBlockHappensHere_802CEF4();
                 v3 = sub_801A6B4();
                 v4 = sub_801A720(v3);
                 sub_8013AE4(v4);
@@ -16415,7 +16415,7 @@ int sub_801AAC0()
                 if ( sub_802D234() != 10 )
                     sub_8010230();
                 sub_802CFF8();
-                sub_802CEF4();
+                hiveBlockHappensHere_802CEF4();
                 v3 = sub_801A6B4();
                 v4 = sub_801A720(v3);
                 sub_8013AE4(v4);
@@ -16458,7 +16458,7 @@ int sub_801AB40()
                 sub_801A36A();
                 sub_8010230();
                 sub_802CFF8();
-                sub_802CEF4();
+                hiveBlockHappensHere_802CEF4();
                 v3 = sub_801A6B4();
                 v4 = sub_801A720(v3);
                 sub_8013AE4(v4);
@@ -16566,7 +16566,7 @@ int sub_801AC6C()
                 sub_801A36A();
                 sub_8010230();
                 sub_802CFF8();
-                sub_802CEF4();
+                hiveBlockHappensHere_802CEF4();
                 v3 = sub_801A6B4();
                 v4 = sub_801A720(v3);
                 sub_80139F6(v4);
@@ -16889,13 +16889,13 @@ LABEL_42:
         }
         goto LABEL_48;
     }
-    if ( sub_801032C() & &loc_2000 || sub_801032C() & 0x10000 || sub_801032C() & 0x20000 )
+    if ( GetAIDataUnk0x48Flag() & &loc_2000 || sub_801032C() & 0x10000 || sub_801032C() & 0x20000 )
     {
 LABEL_48:
         RunAIAttack(v16);
         return;
     }
-    if ( !(sub_801032C() & 0x40000) || !sub_8015766() )
+    if ( !(GetAIDataUnk0x48Flag() & 0x40000) || !sub_8015766() )
     {
         battle_isTimeStop();
         if ( !v5 )
@@ -18434,7 +18434,7 @@ int __fastcall sub_801C082(int a1)
             {
                 v7 = v1;
                 v8 = v3[1];
-                result = sub_801032C();
+                result = GetAIDataUnk0x48Flag();
                 v1 = v7;
                 if ( !(result & 0x100000) )
                 {
@@ -21405,7 +21405,7 @@ int __fastcall sub_801E660(signed int a1)
 
     v2 = a1;
     v3 = *(word_801E700 + a1);
-    v4 = sub_8015B54(*(*(v1 + 72) + 22));
+    v4 = callPossiblyGetBattleEmotion_8015B54(*(*(v1 + 72) + 22));
     if ( v2 != 11 && v2 != 12 )
     {
         if ( v2 >= 1 && v2 <= 10 && byte_801E6F4[v4] == 2 )
@@ -21437,7 +21437,7 @@ int sub_801E6A8()
     signed int v2; // r1
     int v4; // r6
 
-    v1 = sub_8015B54(*(*(v0 + 72) + 22));
+    v1 = callPossiblyGetBattleEmotion_8015B54(*(*(v0 + 72) + 22));
     if ( !v2 )
         return byte_801E6F4[v1];
     v4 = *(word_801E700 + v2);

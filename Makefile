@@ -26,6 +26,7 @@ BUILD_NAME = bn6f
 ROM = $(BUILD_NAME).gba
 ELF := $(ROM:.gba=.elf)
 SYM = $(ROM:.gba=.sym)
+NOGBASYM = bn6f_nogba.sym
 
 # build flags
 COMPLIANCE_FLAGS = -g -I$(INC)
@@ -82,3 +83,8 @@ syms: $(SYM)
 
 $(SYM): $(ELF)
 	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389]" | perl -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@
+
+nogbasyms: $(NOGBASYM)
+
+$(NOGBASYM): $(ELF)
+	$(OBJDUMP) -t $< | sort -u | grep -E "^0" | perl -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \4/g' > $@

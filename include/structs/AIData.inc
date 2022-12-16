@@ -12,7 +12,7 @@
 	u8 Unk_04 // loc=0x4
 	u8 Unk_05 // loc=0x5
 	u8 Unk_06 // loc=0x6
-	u8 Unk_07 // loc=0x7
+	u8 BPwrAtk // loc=0x7
 	u8 Unk_08 // loc=0x8
 	u8 Unk_09 // loc=0x9
 	u8 Unk_0a // loc=0xa
@@ -114,8 +114,8 @@
 	u8 Unk_03 // loc=0x3
 	u8 Unk_04 // loc=0x4
 	u8 Unk_05 // loc=0x5
-	u16 Unk_06 // loc=0x6
-	u16 Unk_08 // loc=0x8
+	u16 AttackBoost // loc=0x6
+	u16 Damage // loc=0x8
 	u16 Unk_0a // loc=0xa
 	u8 Unk_0c // loc=0xc
 	u8 Unk_0d // loc=0xd

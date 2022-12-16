@@ -386,7 +386,7 @@ sub_810DC4C:
 	ldrb r2, [r4,#oAIData_Version_16]
 	ldr r1, off_810DCB0 // =byte_810DCBC
 	ldrb r0, [r1,r2]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
 	ldr r1, off_810DCB4 // =byte_810DCC2
@@ -686,7 +686,7 @@ loc_810DF44:
 	mov r0, r1
 	mov r1, r3
 	push {r0,r1}
-	ldrh r0, [r7,#oAIAttackVars_Unk_08]
+	ldrh r0, [r7,#oAIAttackVars_Damage]
 	ldrh r1, [r7,#oAIAttackVars_Unk_0a]
 	lsl r1, r1, #0x10
 	orr r0, r1
@@ -966,7 +966,7 @@ sub_810E1F0:
 	strh r0, [r7,#oAIAttackVars_Unk_18]
 	ldr r0, off_810E3CC // =byte_810E154
 	ldrb r0, [r0,r1]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	ldr r0, off_810E3D0 // =byte_810E15C
 	ldrb r0, [r0,r1]
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
@@ -1462,7 +1462,7 @@ sub_810E666:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #2
-	ldr r6, [r7,#oAIAttackVars_Unk_08]
+	ldr r6, [r7,#oAIAttackVars_Damage]
 	ldr r4, byte_810E7A8 // =0x10
 	mov r3, #0
 	mov r7, #3
@@ -2041,7 +2041,7 @@ sub_810EADE:
 	ldr r0, off_810EC6C // =byte_810E7E4
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
-	str r0, [r7,#oAIAttackVars_Unk_08]
+	str r0, [r7,#oAIAttackVars_Damage]
 	mov r0, #0xc
 	bl object_setAttack0
 	mov r0, #0
@@ -2296,7 +2296,7 @@ loc_810EE0C:
 	orr r4, r0
 	ldrb r0, [r7,#oAIAttackVars_Unk_0d]
 	orr r4, r0
-	ldr r6, [r7,#oAIAttackVars_Unk_08]
+	ldr r6, [r7,#oAIAttackVars_Damage]
 	bl sub_810EF40
 	bl sub_80C59F6
 	mov r0, #0x87
@@ -2635,7 +2635,7 @@ loc_810F0F4:
 	ldrb r0, [r4,#oAIData_Version_16]
 	ldr r1, off_810F180 // =byte_810F18C
 	ldrb r0, [r1,r0]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
 	bl sub_810F1E6
 	ldr r1, off_810F184 // =byte_810F192
@@ -2815,7 +2815,7 @@ loc_810F360:
 	ldr r6, [r7,#oAIAttackVars_Unk_38]
 	lsl r6, r6, #8
 	orr r4, r6
-	ldr r6, [r7,#oAIAttackVars_Unk_08]
+	ldr r6, [r7,#oAIAttackVars_Damage]
 	ldr r7, [r7,#oAIAttackVars_Unk_28]
 	bl sub_80CBAB8
 	pop {r4,r6,r7,pc}
@@ -2942,7 +2942,7 @@ loc_810F470:
 	strh r0, [r7,#oAIAttackVars_Unk_0e]
 	ldr r0, off_810F4D8 // =byte_810F3E0
 	ldrb r0, [r0,r3]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
 	lsl r3, r3, #2
@@ -3626,7 +3626,7 @@ sub_810FACA:
 	ldr r4, off_810FAF8 // =byte_810FAFC
 	ldr r4, [r4,r0]
 	push {r0}
-	ldrh r0, [r7,#oAIAttackVars_Unk_08]
+	ldrh r0, [r7,#oAIAttackVars_Damage]
 	ldrh r1, [r7,#oAIAttackVars_Unk_0a]
 	lsl r1, r1, #0x10
 	orr r0, r1
@@ -4012,7 +4012,7 @@ sub_810FE5C:
 	strh r0, [r7,#oAIAttackVars_Unk_18]
 	ldr r0, off_810FF04 // =byte_810FD1A
 	ldrb r0, [r0,r1]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	ldr r0, off_810FF08 // =byte_810FD38
 	lsl r2, r1, #2
 	ldr r0, [r0,r2]
@@ -4573,7 +4573,7 @@ sub_8110416:
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1
 	ldrb r1, [r5,#oBattleObject_PanelY]
-	ldr r6, [r7,#oAIAttackVars_Unk_08]
+	ldr r6, [r7,#oAIAttackVars_Damage]
 	ldrh r4, [r7,#oAIAttackVars_Unk_12]
 	lsl r4, r4, #8
 	add r4, #1
@@ -4782,7 +4782,7 @@ loc_81105D4:
 	ldrb r1, [r4,#oAIData_Version_16]
 	ldr r0, off_811061C // =byte_8110500
 	ldrb r0, [r0,r1]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
 	ldr r0, off_8110620 // =byte_811050C
@@ -5357,7 +5357,7 @@ sub_8110AE4:
 	mov r2, #3
 	mov r3, #0
 	ldr r4, [r7,#oAIAttackVars_Unk_0c]
-	ldr r6, [r7,#oAIAttackVars_Unk_08]
+	ldr r6, [r7,#oAIAttackVars_Damage]
 	ldr r7, [r7,#oAIAttackVars_Unk_28]
 	bl sub_80D6B78
 locret_8110B14:
@@ -5883,7 +5883,7 @@ sub_8110F36:
 	strh r0, [r7,#oAIAttackVars_Unk_36]
 	ldr r0, off_8111114 // =byte_8110E30
 	ldrb r0, [r0,r1]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
 	ldr r0, off_8111118 // =byte_8110E24
@@ -6208,7 +6208,7 @@ off_81112D8: .word 0x300
 	thumb_local_start
 sub_81112DC:
 	push {r4-r7,lr}
-	ldrh r0, [r7,#oAIAttackVars_Unk_08]
+	ldrh r0, [r7,#oAIAttackVars_Damage]
 	ldrh r1, [r7,#oAIAttackVars_Unk_0a]
 	lsl r1, r1, #0x10
 	orr r0, r1
@@ -6331,7 +6331,7 @@ sub_81113DE:
 	strh r0, [r7,#oAIAttackVars_Unk_18]
 	ldr r0, off_8111430 // =byte_8111374
 	ldrb r0, [r0,r1]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	ldr r0, off_8111434 // =byte_811137C
 	ldrb r0, [r0,r1]
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
@@ -7312,7 +7312,7 @@ loc_8111C1E:
 	ldr r3, [r5,#oBattleObject_Z]
 	ldr r6, dword_8111D98 // =0xc0000
 	add r3, r3, r6
-	ldr r6, [r7,#oAIAttackVars_Unk_08]
+	ldr r6, [r7,#oAIAttackVars_Damage]
 	ldr r7, [r7,#oAIAttackVars_Unk_28]
 	bl sub_80C579E
 	mov r0, #1
@@ -7537,7 +7537,7 @@ loc_8111E20:
 	ldrb r2, [r4,#oAIData_Version_16]
 	ldr r1, off_8111EEC // =byte_8111F02
 	ldrb r0, [r1,r2]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	ldr r1, off_8111EE4 // =byte_8111EF6
 	ldrb r0, [r1,r2]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -7879,7 +7879,7 @@ sub_811219C:
 	ldr r4, [r7,#oAIAttackVars_Unk_0c]
 	lsl r4, r4, #8
 	lsr r4, r4, #8
-	ldr r6, [r7,#oAIAttackVars_Unk_08]
+	ldr r6, [r7,#oAIAttackVars_Damage]
 	ldr r7, [r7,#oAIAttackVars_Unk_28]
 	bl sub_80D1442
 	pop {r7}
@@ -8098,7 +8098,7 @@ loc_81123A8:
 	strb r0, [r7,#oAIAttackVars_Unk_0e]
 	ldr r0, off_81126B0 // =byte_8112254
 	ldrb r0, [r0,r1]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
 	mov r0, #0x6c
@@ -8727,7 +8727,7 @@ loc_8112984:
 	ldrb r6, [r7,#oAIAttackVars_Unk_0e]
 	lsl r6, r6, #8
 	orr r4, r6
-	ldr r6, [r7,#oAIAttackVars_Unk_08]
+	ldr r6, [r7,#oAIAttackVars_Damage]
 	ldrb r7, [r7,#oAIAttackVars_Unk_0c]
 	add r7, r7, r5
 	bl sub_80D1EB8
@@ -8888,7 +8888,7 @@ loc_8112A9A:
 	strh r0, [r7,#oAIAttackVars_Unk_18]
 	ldr r0, off_8112B88 // =byte_81129D0
 	ldrb r0, [r1,r0]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
 	mov r0, #0x64
@@ -9357,7 +9357,7 @@ sub_8112F34:
 	add r4, r4, r2
 	mov r2, #0
 	mov r3, #0
-	ldr r6, [r7,#oAIAttackVars_Unk_08]
+	ldr r6, [r7,#oAIAttackVars_Damage]
 	bl sub_80DFF84
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_8112F34
@@ -10000,7 +10000,7 @@ sub_8113510:
 	mov r3, #0
 	ldrb r4, [r7,#oAIAttackVars_Unk_0c]
 	lsl r4, r4, #8
-	ldr r6, [r7,#oAIAttackVars_Unk_08]
+	ldr r6, [r7,#oAIAttackVars_Damage]
 	bl sub_80DFF84
 	ldrb r0, [r7,#oAIAttackVars_Unk_0c]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -10197,7 +10197,7 @@ loc_81136BE:
 	strh r0, [r7,#oAIAttackVars_Unk_18]
 	ldr r0, off_8113744 // =byte_8113614
 	ldrb r0, [r0,r1]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
 	mov r0, #0xb
@@ -10723,7 +10723,7 @@ loc_8113BA8:
 	thumb_local_start
 sub_8113BAC:
 	push {r4-r7,lr}
-	ldrh r0, [r7,#oAIAttackVars_Unk_08]
+	ldrh r0, [r7,#oAIAttackVars_Damage]
 	ldrh r1, [r7,#oAIAttackVars_Unk_0a]
 	lsl r1, r1, #0x10
 	orr r0, r1
@@ -10753,7 +10753,7 @@ sub_8113BAC:
 	thumb_local_start
 sub_8113BEC:
 	push {r4-r7,lr}
-	ldrh r0, [r7,#oAIAttackVars_Unk_08]
+	ldrh r0, [r7,#oAIAttackVars_Damage]
 	ldrh r1, [r7,#oAIAttackVars_Unk_0a]
 	lsl r1, r1, #0x10
 	orr r0, r1
@@ -11041,7 +11041,7 @@ sub_8113E54:
 	strh r0, [r7,#oAIAttackVars_Unk_18]
 	ldr r0, off_8113EA0 // =byte_8113D8A
 	ldrb r0, [r0,r1]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	ldr r0, off_8113EA4 // =byte_8113D98
 	ldrb r0, [r0,r1]
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
@@ -11085,7 +11085,7 @@ sub_8113EAC:
 	strh r0, [r7,#oAIAttackVars_Unk_18]
 	ldr r0, off_8113F04 // =byte_8113D90
 	ldrb r0, [r0,r1]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	ldr r0, off_8113F08 // =byte_8113D98
 	ldrb r0, [r0,r1]
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
@@ -12152,7 +12152,7 @@ snakearmAI_update_0x4_8114856:
 	ldrb r1, [r4,#oAIData_Version_16]
 	ldr r0, off_811490C // =byte_8114750
 	ldrb r0, [r0,r1]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	ldr r0, off_8114900 // =byte_8114744
 	ldrb r1, [r4,#oAIData_Version_16]
 	lsl r1, r1, #1
@@ -12280,7 +12280,7 @@ snakearmAI_update_0x8_8114910:
 	strh r0, [r7,#oAIAttackVars_Unk_18]
 	ldr r0, off_81149D0 // =byte_8114750
 	ldrb r0, [r0,r1]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	ldr r0, off_81149D4 // =byte_8114758
 	ldrb r0, [r0,r1]
 	strh r0, [r7,#oAIAttackVars_Unk_0a]
@@ -13083,7 +13083,7 @@ snakearmAI_spawnCollisionRegion_811504C:
 	push {r4-r7,lr}
 	push {r0,r1}
 	ldr r4, dword_811506C // =0x605ff01
-	ldrh r0, [r7,#oAIAttackVars_Unk_08]
+	ldrh r0, [r7,#oAIAttackVars_Damage]
 	ldrh r1, [r7,#oAIAttackVars_Unk_0a]
 	lsl r1, r1, #0x10
 	orr r0, r1
@@ -13914,7 +13914,7 @@ loc_8115882:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	bne loc_811589E
 	ldr r0, [r7,#oAIAttackVars_Unk_28]
-	ldr r1, [r7,#oAIAttackVars_Unk_08]
+	ldr r1, [r7,#oAIAttackVars_Damage]
 	ldrb r2, [r7,#oAIAttackVars_Unk_16]
 	ldrb r3, [r7,#oAIAttackVars_Unk_17]
 	bl sub_80B87AC
@@ -14188,7 +14188,7 @@ sub_8115A96:
 	lsl r1, r1, #2
 	ldr r0, off_8115BE0 // =byte_8115980
 	ldr r0, [r0,r1]
-	str r0, [r7,#oAIAttackVars_Unk_08]
+	str r0, [r7,#oAIAttackVars_Damage]
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	str r0, [r7,#oAIAttackVars_Unk_28]
 	ldrb r0, [r5,#oBattleObject_Alliance]
@@ -14450,7 +14450,7 @@ locret_8115D74:
 	thumb_local_start
 sub_8115D76:
 	push {r4-r7,lr}
-	ldrh r0, [r7,#oAIAttackVars_Unk_08]
+	ldrh r0, [r7,#oAIAttackVars_Damage]
 	ldrh r1, [r7,#oAIAttackVars_Unk_0a]
 	lsl r1, r1, #0x10
 	orr r0, r1
@@ -14656,7 +14656,7 @@ sub_8115F2E:
 	strh r0, [r7,#oAIAttackVars_Unk_18]
 	ldr r0, off_81162CC // =byte_8115E14
 	ldrb r0, [r0,r1]
-	strh r0, [r7,#oAIAttackVars_Unk_08]
+	strh r0, [r7,#oAIAttackVars_Damage]
 	ldr r0, off_81162D0 // =byte_8115E1C
 	ldrb r0, [r0,r1]
 	strh r0, [r7,#oAIAttackVars_Unk_0a]

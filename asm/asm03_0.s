@@ -3181,7 +3181,7 @@ loc_8027E52:
 	bl sub_8015B5C
 	b loc_8027E74
 loc_8027E70:
-	bl sub_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54
 loc_8027E74:
 	mov r7, r1
 	bl sub_8027F10
@@ -7683,7 +7683,7 @@ sub_802A040:
 	ldrb r1, [r5,#0x16] // (byte_2035296 - 0x2035280)
 	cmp r1, #0
 	bne loc_802A064
-	bl sub_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54
 	b loc_802A068
 loc_802A064:
 	bl sub_8015B5C
@@ -7721,7 +7721,7 @@ sub_802A088:
 	ldrb r1, [r5,#0x16] // (byte_2035296 - 0x2035280)
 	cmp r1, #0
 	bne loc_802A0A8
-	bl sub_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54
 	b loc_802A0AC
 loc_802A0A8:
 	bl sub_8015B5C
@@ -8116,7 +8116,7 @@ loc_802A42C:
 	b loc_802A498
 loc_802A430:
 	ldrb r0, [r6,#oBattleState_Unk_0d]
-	bl sub_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54
 	mov r4, #1
 	cmp r1, #0xa
 	beq loc_802A442
@@ -8194,7 +8194,7 @@ sub_802A49C:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#oBattleState_Unk_0d]
-	bl sub_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54
 	b loc_802A4D8
 loc_802A4CE:
 	mov r0, r10
@@ -8301,7 +8301,7 @@ sub_802A564:
 	ldrb r1, [r5,#0x15]
 	cmp r1, #0
 	bne loc_802A578
-	bl sub_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54
 	b locret_802A57C
 loc_802A578:
 	bl sub_8015B5C
@@ -13041,12 +13041,12 @@ locret_802CEF2:
 	pop {pc}
 	thumb_func_end sub_802CEC8
 
-	thumb_func_start sub_802CEF4
-sub_802CEF4:
+	thumb_func_start hiveBlockHappensHere_802CEF4
+hiveBlockHappensHere_802CEF4:
 	push {r4,r6,r7,lr}
 	ldr r4, [r5,#oBattleObject_CollisionDataPtr]
-	bl sub_801032C
-	ldr r1, dword_802D038 // =0x200000 
+	bl GetAIDataUnk0x48Flag
+	ldr r1, dword_802D038 // =0x200000 riskyhoney hive up
 	tst r0, r1
 	beq loc_802CF30
 	mov r1, #oCollisionData_PanelDamage2
@@ -13082,7 +13082,7 @@ loc_802CF30:
 	cmp r0, r1
 	beq loc_802CF56
 	push {r0}
-	bl sub_801032C
+	bl GetAIDataUnk0x48Flag
 	ldr r1, off_802D040 // =0x800 
 	tst r0, r1
 	pop {r0}
@@ -13136,7 +13136,7 @@ loc_802CF96:
 	ldr r1, dword_802D05C // =0x20000 
 	tst r0, r1
 	bne locret_802CFF6
-	ldr r0, off_802D054 // =0x400 
+	ldr r0, off_802D054 // =0x400 // AntiSword triggered flag?
 	bl SetAIData_Unk_44_Flag
 loc_802CFB8:
 	mov r0, #0
@@ -13172,7 +13172,7 @@ loc_802CFB8:
 	str r0, [r4,#oCollisionData_ObjectFlags2]
 locret_802CFF6:
 	pop {r4,r6,r7,pc}
-	thumb_func_end sub_802CEF4
+	thumb_func_end hiveBlockHappensHere_802CEF4
 
 	thumb_func_start sub_802CFF8
 sub_802CFF8:
@@ -13712,7 +13712,7 @@ sub_802D358:
 	bgt loc_802D37A
 	bl sub_80E164A
 	ldrb r2, [r5,#oBattleObject_Alliance]
-	bl sub_80E7486
+	bl ifPanelFlagSetFindBattleActorWithCollisionOnPanelXY_80E7486
 	mov r4, r0
 	beq loc_802D37A
 	ldr r0, [r4,#oBattleObject_CollisionDataPtr]
@@ -13924,7 +13924,7 @@ loc_802D504:
 	bgt loc_802D524
 	bl sub_80E164A
 	ldrb r2, [r5,#oBattleObject_Alliance]
-	bl sub_80E7486
+	bl ifPanelFlagSetFindBattleActorWithCollisionOnPanelXY_80E7486
 	mov r4, r0
 	beq loc_802D524
 	ldr r0, [r4,#oBattleObject_CollisionDataPtr]
@@ -13945,7 +13945,7 @@ loc_802D524:
 	ldr r1, [r4,#0x10]
 	str r1, [r7,#oAIAttackVars_Unk_0c]
 	ldrh r1, [r4,#0x1a]
-	strh r1, [r7,#oAIAttackVars_Unk_08]
+	strh r1, [r7,#oAIAttackVars_Damage]
 	ldrb r1, [r4,#0xa]
 	mov r0, #0x80
 	orr r1, r0
@@ -13958,7 +13958,7 @@ loc_802D524:
 	mov r0, #0x52 
 	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrh r1, [r0,#0x1a]
-	strh r1, [r7,#oAIAttackVars_Unk_08]
+	strh r1, [r7,#oAIAttackVars_Damage]
 loc_802D55A:
 	ldrb r0, [r4,#0xb]
 	bl object_setAttack5
@@ -14832,7 +14832,7 @@ sub_802DCEC:
 	mov r5, r0
 	beq loc_802DD0C
 	mov r7, #1
-	bl sub_801032C
+	bl GetAIDataUnk0x48Flag
 	ldr r1, off_802DE4C // =0x1000 
 	tst r0, r1
 	bne loc_802DD0C
@@ -14876,7 +14876,7 @@ sub_802DD2A:
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
 	beq loc_802DD46
-	bl sub_801032C
+	bl GetAIDataUnk0x48Flag
 	ldr r1, dword_802DE54 // =0x4000 
 	tst r0, r1
 	beq loc_802DD46
@@ -14892,7 +14892,7 @@ sub_802DD4A:
 	push {r5,lr}
 	mov r5, r0
 	beq locret_802DD60
-	bl sub_801032C
+	bl GetAIDataUnk0x48Flag
 	mov r2, #0
 	ldr r1, off_802DE58 // =0x2000 
 	tst r0, r1
