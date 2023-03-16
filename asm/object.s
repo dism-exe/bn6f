@@ -5859,8 +5859,8 @@ sub_800EC3C:
 	pop {r5,pc}
 	thumb_func_end sub_800EC3C
 
-	thumb_func_start sub_800EC48
-sub_800EC48:
+	thumb_func_start GetAllianceDependentPanelParamArgs2
+GetAllianceDependentPanelParamArgs2:
 	ldrb r2, [r5,#oBattleObject_Alliance]
 	lsl r2, r2, #3
 	add r3, r3, r2
@@ -5868,7 +5868,7 @@ sub_800EC48:
 	add r3, #4
 	ldr r3, [r3]
 	mov pc, lr
-	thumb_func_end sub_800EC48
+	thumb_func_end GetAllianceDependentPanelParamArgs2
 
 	thumb_func_start sub_800EC56
 sub_800EC56:

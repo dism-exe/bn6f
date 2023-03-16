@@ -1806,7 +1806,7 @@ T1BattleObjectJumptable: .word t1_0x0_80B81EC+1 // 0x0
 	.word t1_0x4c_80C34E0+1 // 0x4c
 	.word t1_0x4d_80C3734+1 // 0x4d
 	.word t1_0x0_80B81EC+1 // 0x4e
-	.word t1_0x4f_80C3970+1 // 0x4f
+	.word bassChipObject_80C3970+1 // 0x4f
 	.word t1_0x50_80C3CE8+1 // 0x50
 	.word t1_0x0_80B81EC+1 // 0x51
 	.word t1_0x0_80B81EC+1 // 0x52

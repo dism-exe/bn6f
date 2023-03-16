@@ -37,7 +37,7 @@ signed int __noreturn sub_80B8230()
     sprite_setFlip(v0, v1);
     sprite_setPallete(byte_80B8294[*(v0 + 4)]);
     v2 = sprite_setColorShader(v0, 0x7FFF);
-    *(v0 + 96) = sub_80C468C(v2, v3, 0, 255);
+    *(v0 + 96) = spawn_t1_0x47_probablyGeneric_80C468C(v2, v3, 0, 255);
     result = 4;
     *(v0 + 8) = 4;
     return result;
@@ -20668,7 +20668,7 @@ int __fastcall sub_80C3946(int a1, int a2, int a3, int a4)
 
 
 // 0x80c3970
-void t1_0x4f_80C3970()
+void bassChipObject_80C3970()
 {
     int v0; // r5
 
@@ -20711,7 +20711,7 @@ int __noreturn sub_80C39BA()
     sprite_setFlip(v0, v1);
     object_setCoordinatesFromPanels(v0);
     *(v0 + 60) = 0;
-    *(v0 + 76) = sub_80C468C(0, v2, 0, 0);
+    *(v0 + 76) = spawn_t1_0x47_probablyGeneric_80C468C(0, v2, 0, 0);
     PlaySoundEffect(148, v3, v4);
     *(v0 + 32) = 100;
     *(v0 + 8) = 4;
@@ -20796,18 +20796,18 @@ int sub_80C3A98()
 
 
 // 0x80c3aca
-int sub_80C3ACA()
+int bassChipObject_80C3ACA()
 {
     int v0; // r5
     int v1; // r0
     int result; // r0
 
-    sub_80C3CD0();
+    bassChipObject_decrementUnkPanelCounts_80C3CD0();
     if ( !*(v0 + 11) )
     {
         *(v0 + 11) = 1;
-        sub_80C3B54();
-        sub_80C3B54();
+        bassChipObject_80C3B54();
+        bassChipObject_80C3B54();
         v1 = *(v0 + 34) - 1;
         *(v0 + 34) = v1;
         if ( !v1 )
@@ -20858,7 +20858,7 @@ int sub_80C3B06()
 
 
 // 0x80c3b30
-int __fastcall sub_80C3B30(char a1, int a2, int a3, int a4)
+int __fastcall spawnBassChipObject_80C3B30(char a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r6
@@ -20889,7 +20889,7 @@ int __fastcall sub_80C3B30(char a1, int a2, int a3, int a4)
 
 
 // 0x80c3b54
-void sub_80C3B54()
+void bassChipObject_80C3B54()
 {
     int v0; // r5
     int v1; // r2
@@ -20902,13 +20902,13 @@ void sub_80C3B54()
     int v8; // r3
     int v9; // r6
 
-    if ( sub_80C3C2C() )
+    if ( bassChipObject_findColumnsInFrontOfBassOr3x3WithOpposingAlliance_80C3C2C() )
     {
         GetPositiveSignedRNG2();
         v2 = 7;
         v4 = v3 & 7;
-        if ( v4 < 3 || (sub_800EC48(v4, 7, v1, &off_80C3BB0), (v4 = sub_80C3BC0(v5, v6, v7, v8)) == 0) )
-            v4 = sub_80C3BC0(v4, v2, 0x10000, 0);
+        if ( v4 < 3 || (GetAllianceDependentPanelParamArgs2(v4, 7, v1, &off_80C3BB0), (v4 = bassChipObject_somePanelLoop_80C3BC0(v5, v6, v7, v8)) == 0) )
+            v4 = bassChipObject_somePanelLoop_80C3BC0(v4, v2, 0x10000, 0);
         if ( v4 )
         {
             *(v0 + 6 * v2 - 6 + v4 + 95) = 22;
@@ -20921,7 +20921,7 @@ void sub_80C3B54()
 
 
 // 0x80c3bc0
-int __fastcall sub_80C3BC0(int a1, int a2, int a3, int a4)
+int __fastcall bassChipObject_somePanelLoop_80C3BC0(int a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r6
@@ -20973,7 +20973,7 @@ int __fastcall sub_80C3BC0(int a1, int a2, int a3, int a4)
 
 
 // 0x80c3c2c
-int sub_80C3C2C()
+int bassChipObject_findColumnsInFrontOfBassOr3x3WithOpposingAlliance_80C3C2C()
 {
     Battle *v0; // r5
     int v1; // r4
@@ -20999,7 +20999,7 @@ int sub_80C3C2C()
     while ( 5 * (v0->Alliance ^ v0->directionFlip ^ 1) + 1 != v1 )
     {
         v1 += object_getFrontDirection(v0);
-        sub_800EC48(v1, v3, v4, byte_80C3C90);
+        GetAllianceDependentPanelParamArgs2(v1, v3, v4, byte_80C3C90);
         if ( object_getPanelsInColumnFiltered(v5, v6, v7, v8) )
             *v2++ = v1;
     }
@@ -21028,7 +21028,7 @@ void sub_80C3CA0()
 
 
 // 0x80c3cd0
-int sub_80C3CD0()
+int bassChipObject_decrementUnkPanelCounts_80C3CD0()
 {
     int v0; // r5
     int v1; // r2
@@ -21093,7 +21093,7 @@ int __noreturn sub_80C3D32()
     sprite_setFlip(v0, v1);
     object_setCoordinatesFromPanels(v0);
     *(v0 + 60) = 0;
-    *(v0 + 76) = sub_80C468C(0, v2, 0, 0);
+    *(v0 + 76) = spawn_t1_0x47_probablyGeneric_80C468C(0, v2, 0, 0);
     PlaySoundEffect(148, v3, v4);
     *(v0 + 32) = 50;
     *(v0 + 8) = 4;
@@ -21964,7 +21964,7 @@ void sub_80C464C()
 
 
 // 0x80c468c
-int __fastcall sub_80C468C(int a1, int a2, int a3, int a4)
+int __fastcall spawn_t1_0x47_probablyGeneric_80C468C(int a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int result; // r0
@@ -34002,7 +34002,7 @@ BOOL __fastcall __noreturn sub_80CC006(int a1, int a2, int a3)
     int v7; // r3
     BOOL result; // r0
 
-    sub_800EC48(v3[18], v3[19], a3, byte_80CC024);
+    GetAllianceDependentPanelParamArgs2(v3[18], v3[19], a3, byte_80CC024);
     result = object_checkPanelParameters(v4, v5, v6, v7);
     if ( !result )
         v3[5] = 1;
@@ -61929,7 +61929,7 @@ int sub_80DD5E2()
             else
             {
                 *(v0 + 5);
-                sub_800EC48(*(v0 + 18), *(v0 + 19), v2, &off_80DD6BC);
+                GetAllianceDependentPanelParamArgs2(*(v0 + 18), *(v0 + 19), v2, &off_80DD6BC);
                 result = panelFlagCheck_8015D80(v3, v4, v5, v6);
                 if ( !result )
                     return result;
@@ -68068,7 +68068,7 @@ int __fastcall sub_80E1854(int a1, int a2, int a3, int a4)
 
 
 // 0x80e1880
-signed int sub_80E1880()
+signed int timefreezeObjectRunFunction_80E1880()
 {
     int v0; // r5
     void (__fastcall *v1)(int, int, int); // r3
@@ -81013,7 +81013,7 @@ void __fastcall __noreturn sub_80E8C44(int a1, int a2, int a3)
     int v5; // r2
     int v6; // r3
 
-    sub_800EC48(a1, a2, a3, byte_80E8D6C);
+    GetAllianceDependentPanelParamArgs2(a1, a2, a3, byte_80E8D6C);
     object_getPanelsFiltered(v3, v4, v5, v6);
 }
 
@@ -81031,7 +81031,7 @@ void __fastcall __noreturn sub_80E8C84(int a1, int a2, int a3, int a4)
     int v11; // r3
 
     ZeroFillByHalfword(v4 + 100, 0x28u, a3, a4);
-    sub_800EC48(v5, v6, v7, byte_80E8D6C);
+    GetAllianceDependentPanelParamArgs2(v5, v6, v7, byte_80E8D6C);
     object_getPanelsFiltered(v8, v9, v10, v11);
 }
 
@@ -81082,7 +81082,7 @@ void __fastcall __noreturn sub_80E8CFA(int a1, int a2, int a3, int a4)
     int v11; // r3
 
     ZeroFillByHalfword(v4 + 100, 0x28u, a3, a4);
-    sub_800EC48(v5, v6, v7, byte_80E8D58);
+    GetAllianceDependentPanelParamArgs2(v5, v6, v7, byte_80E8D58);
     object_getPanelsFiltered(v8, v9, v10, v11);
 }
 
@@ -134321,7 +134321,7 @@ signed int __fastcall sub_810B30C(int a1, int a2)
     char v4; // r0
     signed int result; // r0
 
-    v3 = sub_80C468C(a1, a2, 0, 255);
+    v3 = spawn_t1_0x47_probablyGeneric_80C468C(a1, a2, 0, 255);
     *(v2 + 96) = v3;
     sub_80C46C6(v3);
     GetPositiveSignedRNG2();

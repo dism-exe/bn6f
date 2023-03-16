@@ -10562,7 +10562,7 @@ unsigned int sub_814E528()
 
 
 // 0x814e558
-int __fastcall sub_814E558(int a1, int a2, unsigned int a3)
+int __fastcall ply_note(int a1, int a2, unsigned int a3)
 {
     unsigned int v3; // r5
     unsigned __int8 *v4; // r3
@@ -11296,7 +11296,7 @@ int __fastcall sub_814ECC8(_DWORD *a1)
     SWI_CpuSet(&v3, a1, 83887084);
     *(v1 + 6) = 8;
     *(v1 + 7) = 15;
-    v1[14] = sub_814E558;
+    v1[14] = ply_note;
     v1[10] = nullsub_23;
     v1[11] = nullsub_23;
     v1[12] = nullsub_23;

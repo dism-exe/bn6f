@@ -3679,7 +3679,7 @@ int __fastcall sub_8011352(int a1, int a2)
     int v2; // r5
     int result; // r0
 
-    result = sub_80C468C(a1, a2, 1, 2);
+    result = spawn_t1_0x47_probablyGeneric_80C468C(a1, a2, 1, 2);
     *(v2 + 80) = result;
     return result;
 }
@@ -6550,7 +6550,7 @@ signed int sub_8012E74()
 // 0x8012ea0
 int sub_8012EA0()
 {
-    return sub_8012FC8();
+    return pwrAtkRelated_readsFromJoypad_8012FC8();
 }
 
 
@@ -6584,7 +6584,7 @@ int sub_8012EBC()
     result = battle_isTimeStop();
     if ( !v3 )
         return result;
-    sub_8012F3E();
+    returnBoolIfAIDataFlagsAreSet_8012F3E();
     if ( v3 || (v4 = sub_8012F62(v1[30]), v5 = sub_800FFFE(), v6 = 0, !(v5 & 0x60000)) )
     {
         result = 0;
@@ -6629,7 +6629,7 @@ LABEL_13:
 
 
 // 0x8012f3e
-BOOL sub_8012F3E()
+BOOL returnBoolIfAIDataFlagsAreSet_8012F3E()
 {
     int v0; // r0
     BOOL result; // r0
@@ -6686,7 +6686,7 @@ signed int __fastcall sub_8012F62(int a1)
 
 
 // 0x8012fc8
-int sub_8012FC8()
+int pwrAtkRelated_readsFromJoypad_8012FC8()
 {
     int v0; // r5
     int v1; // r10
@@ -6990,7 +6990,7 @@ signed int sub_801336C()
     signed int result; // r0
 
     v1 = *(v0 + 88);
-    if ( *(v1 + 5) == 255 && *(v1 + 17) == 255 || (sub_8012F3E(), v2) || (v3 = sub_8010004(), v3 == 0xFFFF) )
+    if ( *(v1 + 5) == 255 && *(v1 + 17) == 255 || (returnBoolIfAIDataFlagsAreSet_8012F3E(), v2) || (v3 = sub_8010004(), v3 == 0xFFFF) )
         result = 0;
     else
         result = sub_8013236(v3);
@@ -7008,7 +7008,7 @@ BOOL sub_8013396()
     result = 0;
     if ( *(*(v0 + 88) + 7) != 255 )
     {
-        sub_8012F3E();
+        returnBoolIfAIDataFlagsAreSet_8012F3E();
         if ( !v1 )
             result = 1;
     }

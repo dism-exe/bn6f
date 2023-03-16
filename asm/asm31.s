@@ -65,7 +65,7 @@ sub_80B8230:
 	ldr r4, dword_80B85C4 // =0xd011208 
 	mov r2, #0
 	mov r3, #0xff
-	bl sub_80C468C
+	bl spawn_t1_0x47_probablyGeneric_80C468C
 	str r0, [r5,#oBattleObject_ExtraVars]
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
@@ -24367,8 +24367,8 @@ locret_80C3968:
 dword_80C396C: .word 0x40000
 	thumb_func_end sub_80C3946
 
-	thumb_func_start t1_0x4f_80C3970
-t1_0x4f_80C3970:
+	thumb_func_start bassChipObject_80C3970
+bassChipObject_80C3970:
 	push {lr}
 	ldr r1, off_80C3984 // =off_80C3988 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -24382,7 +24382,7 @@ off_80C3984: .word off_80C3988
 off_80C3988: .word sub_80C39BA+1
 	.word sub_80C3A24+1
 	.word sub_80C3994+1
-	thumb_func_end t1_0x4f_80C3970
+	thumb_func_end bassChipObject_80C3970
 
 	thumb_local_start
 sub_80C3994:
@@ -24434,7 +24434,7 @@ sub_80C39BA:
 	mov r2, #0
 	mov r3, #0
 	ldr r4, dword_80C3A20 // =0x14011308 
-	bl sub_80C468C
+	bl spawn_t1_0x47_probablyGeneric_80C468C
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r0, #0x94
 	bl PlaySoundEffect
@@ -24508,7 +24508,7 @@ sub_80C3A78:
 	.balign 4, 0x00
 off_80C3A88: .word off_80C3A8C
 off_80C3A8C: .word sub_80C3A98+1
-	.word sub_80C3ACA+1
+	.word bassChipObject_80C3ACA+1
 	.word sub_80C3B06+1
 	thumb_func_end sub_80C3A78
 
@@ -24529,11 +24529,11 @@ loc_80C3AA8:
 	beq locret_80C3AC8
 	mov r0, #0xc
 	strb r0, [r5,#oBattleObject_CurAnim]
-	mov r0, #0x18
+	mov r0, #24
 	strh r0, [r5,#oBattleObject_Timer2]
-	mov r0, #0x60 
+	mov r0, #oBattleObject_ExtraVars 
 	add r0, r0, r5
-	mov r1, #0x12
+	mov r1, #BASS_CHIP_EV_UNK_PANEL_COUNTS_SIZE
 	bl ZeroFillByHalfword
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
@@ -24542,38 +24542,40 @@ locret_80C3AC8:
 	thumb_func_end sub_80C3A98
 
 	thumb_local_start
-sub_80C3ACA:
+	// every 8 frames, spawn buster rake object twice
+	// do this 24 times?
+bassChipObject_80C3ACA:
 	push {lr}
-	bl sub_80C3CD0
+	bl bassChipObject_decrementUnkPanelCounts_80C3CD0
 	ldrb r0, [r5,#oBattleObject_PhaseInitialized]
 	cmp r0, #0
-	bne loc_80C3AF8
+	bne .phaseInitialized
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
-	bl sub_80C3B54
-	bl sub_80C3B54
+	bl bassChipObject_80C3B54
+	bl bassChipObject_80C3B54
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer2]
-	bne loc_80C3AF4
-	mov r0, #0xc
+	bne .timerStillActive
+	mov r0, #12
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
-	b locret_80C3B04
-loc_80C3AF4:
+	b .done
+.timerStillActive
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_Timer]
-loc_80C3AF8:
+.phaseInitialized
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
-	bne locret_80C3B04
+	bne .done
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
-locret_80C3B04:
+.done
 	pop {pc}
-	thumb_func_end sub_80C3ACA
+	thumb_func_end bassChipObject_80C3ACA
 
 	thumb_local_start
 sub_80C3B06:
@@ -24602,8 +24604,8 @@ locret_80C3B2E:
 	pop {pc}
 	thumb_func_end sub_80C3B06
 
-	thumb_func_start sub_80C3B30
-sub_80C3B30:
+	thumb_func_start spawnBassChipObject_80C3B30
+spawnBassChipObject_80C3B30:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x4f 
@@ -24622,39 +24624,47 @@ sub_80C3B30:
 	strb r1, [r7]
 locret_80C3B52:
 	pop {pc}
-	thumb_func_end sub_80C3B30
+	thumb_func_end spawnBassChipObject_80C3B30
 
 	thumb_local_start
-sub_80C3B54:
+	// logic:
+	// make a list of all columns in the 3x3 enemy area or further (TODO elaborate)
+	// 3/8 chance to hit any valid panel which was not chosen in the last 22 frames
+	// 5/8 chance to hit an enemy which was not chosen in the last 22 frames
+	//   if no enemies follow this criteria it defaults to any valid panel not chosen in the last 22 frames
+bassChipObject_80C3B54:
 	push {r4,r6,r7,lr}
-	bl sub_80C3C2C
+	bl bassChipObject_findColumnsInFrontOfBassOr3x3WithOpposingAlliance_80C3C2C
 	cmp r0, #0
-	beq locret_80C3BA6
+	beq .noValidColumns
 	bl GetPositiveSignedRNG2
 	mov r1, #7
 	and r0, r1
 	cmp r0, #3
-	blt loc_80C3B78
+	// 3/8 to do what?
+	blt .hitAnyValidPanel
 	ldr r3, off_80C3BAC // =off_80C3BB0 
-	bl sub_800EC48
-	bl sub_80C3BC0
+	bl GetAllianceDependentPanelParamArgs2
+	bl bassChipObject_somePanelLoop_80C3BC0
 	cmp r0, #0
-	bne loc_80C3B80
-loc_80C3B78:
+	bne .gotRandomPanelXY
+.hitAnyValidPanel
 	ldr r2, dword_80C3BA8 // =0x10000 
 	mov r3, #0
-	bl sub_80C3BC0
-loc_80C3B80:
+	bl bassChipObject_somePanelLoop_80C3BC0
+.gotRandomPanelXY
 	cmp r0, #0
-	beq locret_80C3BA6
+	beq .noValidColumns
 	mov r2, #6
 	mul r2, r1
 	sub r2, #6
 	add r2, r2, r0
 	sub r2, #1
-	mov r3, #0x60 
+	// r2 = (panelY - 1) * 6 + panelX - 1
+	// whenever panel 
+	mov r3, #oBattleObject_ExtraVars+BASS_CHIP_EV_UNK_PANEL_COUNTS
 	add r3, r3, r2
-	mov r2, #0x16
+	mov r2, #22
 	strb r2, [r5,r3]
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r2, #0
@@ -24662,7 +24672,7 @@ loc_80C3B80:
 	ldr r4, dword_80C3CE4 // =0x1001400 
 	bl sub_80C5F4A
 	bl sub_80C3CA0
-locret_80C3BA6:
+.noValidColumns
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80C3BA8: .word 0x10000
@@ -24671,103 +24681,140 @@ off_80C3BB0: .word 0x4000000
 	.word 0x0
 	.word 0x8000000
 	.word 0x0
-	thumb_func_end sub_80C3B54
+	thumb_func_end bassChipObject_80C3B54
 
 	thumb_local_start
-sub_80C3BC0:
+	// logic:
+	// returns random panelx, y
+	
+bassChipObject_somePanelLoop_80C3BC0:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x18
 	mov r7, sp
+	// r6 - desired panels count
 	mov r6, #0
-	mov r4, #0x74 
+	mov r4, #oBattleObject_ExtraVars+BASS_CHIP_DESIRED_COLUMNS 
 	add r4, r4, r5
-loc_80C3BCC:
+.panelXLoop
 	ldrb r0, [r4]
 	cmp r0, #0
-	beq loc_80C3C14
+	beq .donePanelLoop
 	push {r4}
 	mov r1, #3
-loc_80C3BD6:
+.panelYLoop
+	// r0 - panelx
+	// r1 - panely
+	// r2 - wantedFlags
+	// r3 - unwantedFlags
 	push {r0-r3,r6,r7}
 	bl object_getPanelParameters
 	mov r4, r0
 	pop {r0-r3,r6,r7}
+	// test if panel has unwanted flags
 	tst r4, r3
-	bne loc_80C3C0A
+	bne .notDesiredPanel
+	// test if panel has wanted flags
 	and r4, r2
 	cmp r4, r2
-	bne loc_80C3C0A
+	bne .notDesiredPanel
 	push {r0-r3}
 	mov r2, #6
 	mul r2, r1
 	sub r2, #6
 	add r2, r2, r0
 	sub r2, #1
-	mov r3, #0x60 
+	// r2 = (panely - 1) * 6 + panelx - 1
+	mov r3, #oBattleObject_ExtraVars+BASS_CHIP_EV_UNK_PANEL_COUNTS
 	add r3, r3, r2
+	// indexing it as eBattleObject_ExtraVars[panely - 1][panelx - 1]
+	// where it's u8[6][6]
+	// so test if ??? is marked with panelx, y
 	ldrb r2, [r5,r3]
 	cmp r2, #0
 	pop {r0-r3}
-	bne loc_80C3C0A
+	bne .notDesiredPanel
+	// r7 - stack
+	// store xy pair into stack space
 	lsl r4, r1, #4
 	orr r4, r0
 	strb r4, [r7,r6]
+	// increase desired panels count
 	add r6, #1
-loc_80C3C0A:
+.notDesiredPanel
 	sub r1, #1
-	bne loc_80C3BD6
+	bne .panelYLoop
 	pop {r4}
 	add r4, #1
-	b loc_80C3BCC
-loc_80C3C14:
+	b .panelXLoop
+.donePanelLoop
+	// check if desired panels count is nonzero
 	mov r0, r6
-	beq loc_80C3C28
+	beq .returnFailure_80C3C28
 	bl GetPositiveSignedRNG2
 	mov r1, r6
 	svc 6
+	// r0 = rand() % desiredPanelsCount
 	ldrb r0, [r7,r1]
 	lsr r1, r0, #4
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1d
-loc_80C3C28:
+	// r0, r1 - found panelx, y
+.returnFailure_80C3C28:
 	add sp, sp, #0x18
 	pop {r4,r6,r7,pc}
-	thumb_func_end sub_80C3BC0
+	thumb_func_end bassChipObject_somePanelLoop_80C3BC0
 
 	thumb_local_start
-sub_80C3C2C:
+bassChipObject_findColumnsInFrontOfBassOr3x3WithOpposingAlliance_80C3C2C:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x20
 	ldrb r4, [r5,#oBattleObject_PanelX]
-	mov r6, #0x74 
+	mov r6, #oBattleObject_ExtraVars+BASS_CHIP_DESIRED_COLUMNS 
 	add r6, r6, r5
+	// r6 - scratch space for some panels
+
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	ldrb r1, [r5,#oBattleObject_DirectionFlip]
 	eor r0, r1
+	// this block of code is related to
+	// whether bass has the full attacking area
+
+	// is object facing front?
 	cmp r0, #0
-	bne loc_80C3C48
+	bne .notFacingForward
+	// is panelX >= 3
 	cmp r4, #3
-	bge loc_80C3C6C
+	bge .gotPanelX
+	
 	mov r4, #3
-	b loc_80C3C6C
-loc_80C3C48:
+	b .gotPanelX
+.notFacingForward
+	// is panelX <= 4
 	cmp r4, #4
-	ble loc_80C3C6C
+	ble .gotPanelX
 	mov r4, #4
-	b loc_80C3C6C
-loc_80C3C50:
+	b .gotPanelX
+.loop
+	// basically checking which columns (panelXs)
+	// have opposing alliance panels
+	// and storing the results in &extraVars[0x14]
+
+	// r4 - panelX
 	bl object_getFrontDirection // () -> int
 	add r4, r4, r0
+	// r4 - panel in front of panelX
 	mov r0, r4
-	ldr r3, off_80C3C8C // =byte_80C3C90
-	bl sub_800EC48
+	ldr r3, =alliancePanelParams_enemyPanel_allyPanel_80C3C90
+	// test if column for panelX has ANY opposing alliance panels
+	bl GetAllianceDependentPanelParamArgs2
 	add r7, sp, #0
 	bl object_getPanelsInColumnFiltered
 	cmp r0, #0
-	beq loc_80C3C6C
+	beq .noDesiredEnemyOrAllyPanels
 	strb r4, [r6]
 	add r6, #1
-loc_80C3C6C:
+.gotPanelX
+.noDesiredEnemyOrAllyPanels
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	ldrb r1, [r5,#oBattleObject_DirectionFlip]
 	eor r0, r1
@@ -24775,20 +24822,27 @@ loc_80C3C6C:
 	eor r0, r2
 	mov r2, #5
 	mul r0, r2
+	// r0 = panelX "endBoundary"
+	// i.e. 6 for facing forwards
+	// 0 for facing backwards
 	add r0, #1
 	cmp r0, r4
-	bne loc_80C3C50
+	bne .loop
 	mov r0, #0
 	strb r0, [r6]
-	mov r0, #0x74 
+	mov r0, #oBattleObject_ExtraVars+BASS_CHIP_DESIRED_COLUMNS
+	// return the first column X found
+	// something something TODO
+
 	ldrb r0, [r5,r0]
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
-off_80C3C8C: .word byte_80C3C90
-byte_80C3C90: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
-	.byte 0x0
-	thumb_func_end sub_80C3C2C
+	.pool
+alliancePanelParams_enemyPanel_allyPanel_80C3C90:
+	.word 0x20, 0x0 // enemy, ally
+	.word 0x0, 0x20 // ally, enemy
+	thumb_func_end bassChipObject_findColumnsInFrontOfBassOr3x3WithOpposingAlliance_80C3C2C
 
 	thumb_local_start
 sub_80C3CA0:
@@ -24816,21 +24870,22 @@ sub_80C3CA0:
 	thumb_func_end sub_80C3CA0
 
 	thumb_local_start
-sub_80C3CD0:
-	mov r2, #0x60 
+bassChipObject_decrementUnkPanelCounts_80C3CD0:
+	mov r2, #oBattleObject_ExtraVars
 	add r2, r2, r5
-	mov r3, #0x11
-loc_80C3CD6:
+	mov r3, #BASS_CHIP_EV_UNK_PANEL_COUNTS_LAST_ENTRY
+	// iterate from extraVars[17..0]
+.panelVarLoop_80C3CD6:
 	ldrb r0, [r2,r3]
 	sub r1, r0, #1
-	bmi loc_80C3CDE
+	bmi .isZero
 	strb r1, [r2,r3]
-loc_80C3CDE:
+.isZero
 	sub r3, #1
-	bpl loc_80C3CD6
+	bpl .panelVarLoop_80C3CD6
 	mov pc, lr
 dword_80C3CE4: .word 0x1001400
-	thumb_func_end sub_80C3CD0
+	thumb_func_end bassChipObject_decrementUnkPanelCounts_80C3CD0
 
 	thumb_func_start t1_0x50_80C3CE8
 t1_0x50_80C3CE8:
@@ -24899,7 +24954,7 @@ sub_80C3D32:
 	mov r2, #0
 	mov r3, #0
 	ldr r4, dword_80C3D98 // =0x14011308 
-	bl sub_80C468C
+	bl spawn_t1_0x47_probablyGeneric_80C468C
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r0, #0x94
 	bl PlaySoundEffect
@@ -25999,8 +26054,8 @@ locret_80C468A:
 	pop {pc}
 	thumb_func_end sub_80C464C
 
-	thumb_func_start sub_80C468C
-sub_80C468C:
+	thumb_func_start spawn_t1_0x47_probablyGeneric_80C468C
+spawn_t1_0x47_probablyGeneric_80C468C:
 	push {lr}
 	push {r2,r3,r5}
 	mov r0, #0x57 
@@ -26019,7 +26074,7 @@ sub_80C468C:
 	strb r1, [r0,#oObjectHeader_Flags]
 locret_80C46AE:
 	pop {pc}
-	thumb_func_end sub_80C468C
+	thumb_func_end spawn_t1_0x47_probablyGeneric_80C468C
 
 	thumb_func_start sub_80C46B0
 sub_80C46B0:
@@ -41192,7 +41247,7 @@ sub_80CC006:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_80CC020 // =byte_80CC024
-	bl sub_800EC48
+	bl GetAllianceDependentPanelParamArgs2
 	bl object_checkPanelParameters
 	cmp r0, #0
 	bne locret_80CC01E
@@ -76599,7 +76654,7 @@ loc_80DD616:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_80DD6B8 // =off_80DD6BC 
-	bl sub_800EC48
+	bl GetAllianceDependentPanelParamArgs2
 	bl panelFlagCheck_8015D80
 	cmp r0, #0
 	beq locret_80DD6A2
@@ -83475,7 +83530,7 @@ chargeShotChargeObject_update_80E0E20:
 	bl battle_isPaused
 	beq loc_80E0E3C
 	ldr r0, [r4,#oBattleObject_AIDataPtr]
-	ldrb r0, [r0,#oAIData_Unk_1e]
+	ldrb r0, [r0,#oAIData_PwrAtkButton]
 	cmp r0, #0
 	bne loc_80E0E3A
 	ldrb r0, [r5,#oObjectHeader_Flags]
@@ -83534,7 +83589,7 @@ loc_80E0E7E:
 	strb r0, [r5,#oObjectHeader_Flags]
 loc_80E0E98:
 	ldr r6, [r4,#oBattleObject_AIDataPtr]
-	ldrb r0, [r6,#oAIData_Unk_1e]
+	ldrb r0, [r6,#oAIData_PwrAtkButton]
 	cmp r0, #0
 	push {r0}
 	beq loc_80E0EB4
@@ -83557,7 +83612,7 @@ loc_80E0EBC:
 	bl sub_80E0F2E
 	ldr r1, [r5,#oBattleObject_ExtraVars+0x14]
 	str r1, [r5,#oBattleObject_ExtraVars+0x18]
-	ldrb r0, [r6,#oAIData_Unk_1d]
+	ldrb r0, [r6,#oAIData_PwrAtkState]
 	str r0, [r5,#oBattleObject_ExtraVars+0x14]
 	strb r0, [r5,#oBattleObject_CurAnim]
 	cmp r0, #0
@@ -83654,7 +83709,7 @@ sub_80E0F5E:
 	push {lr}
 	ldr r1, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldr r2, [r1,#oBattleObject_AIDataPtr]
-	ldrb r0, [r2,#oAIData_Unk_1e]
+	ldrb r0, [r2,#oAIData_PwrAtkButton]
 	cmp r0, #1
 	beq loc_80E0F6E
 	cmp r0, #2
@@ -84874,7 +84929,7 @@ sub_80E1830:
 	.byte 0, 0
 off_80E1840: .word off_80E1844
 off_80E1844: .word sub_80E1854+1
-	.word sub_80E1880+1
+	.word timefreezeObjectRunFunction_80E1880+1
 	.word sub_80E18DA+1
 	.word sub_80E18F8+1
 	thumb_func_end sub_80E1830
@@ -84907,7 +84962,7 @@ locret_80E187E:
 	thumb_func_end sub_80E1854
 
 	thumb_local_start
-sub_80E1880:
+timefreezeObjectRunFunction_80E1880:
 	push {r4,r6,r7,lr}
 	ldrb r0, [r5,#oBattleObject_PhaseInitialized]
 	tst r0, r0
@@ -84956,7 +85011,7 @@ loc_80E18CE:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80E18D8:
 	pop {r4,r6,r7,pc}
-	thumb_func_end sub_80E1880
+	thumb_func_end timefreezeObjectRunFunction_80E1880
 
 	thumb_local_start
 sub_80E18DA:
@@ -100367,13 +100422,13 @@ sub_80E8C44:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x18
 	ldr r3, off_80E8D68 // =byte_80E8D6C
-	bl sub_800EC48
+	bl GetAllianceDependentPanelParamArgs2
 	add r7, sp, #0
 	bl object_getPanelsFiltered
 	cmp r0, #0
 	bne loc_80E8C68
 	ldr r3, off_80E8D54 // =byte_80E8D58
-	bl sub_800EC48
+	bl GetAllianceDependentPanelParamArgs2
 	add r7, sp, #0
 	bl object_getPanelsFiltered
 	cmp r0, #0
@@ -100404,7 +100459,7 @@ sub_80E8C84:
 	mov r1, #0x28 
 	bl ZeroFillByHalfword
 	ldr r3, off_80E8D68 // =byte_80E8D6C
-	bl sub_800EC48
+	bl GetAllianceDependentPanelParamArgs2
 	add r7, sp, #0
 	bl object_getPanelsFiltered
 	cmp r0, #0
@@ -100471,7 +100526,7 @@ sub_80E8CFA:
 	mov r1, #0x28 
 	bl ZeroFillByHalfword
 	ldr r3, off_80E8D54 // =byte_80E8D58
-	bl sub_800EC48
+	bl GetAllianceDependentPanelParamArgs2
 	add r7, sp, #0
 	bl object_getPanelsFiltered
 	cmp r0, #0
@@ -115275,7 +115330,7 @@ loc_80F0640:
 	bge loc_80F068C
 	mov r1, #0
 	ldr r2, [r5,#oBattleObject_AIDataPtr]
-	ldrb r0, [r2,#oAIData_Unk_1e]
+	ldrb r0, [r2,#oAIData_PwrAtkButton]
 	cmp r0, #1
 	bne loc_80F068A
 	ldrb r0, [r2,#oAIData_Unk_1b]
@@ -167000,7 +167055,7 @@ sub_810B30C:
 	ldr r4, dword_810B334 // =0x7000404 
 	mov r2, #0
 	mov r3, #0xff
-	bl sub_80C468C
+	bl spawn_t1_0x47_probablyGeneric_80C468C
 	str r0, [r5,#oBattleObject_ExtraVars]
 	bl sub_80C46C6
 	bl GetPositiveSignedRNG2

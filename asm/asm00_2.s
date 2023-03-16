@@ -1885,6 +1885,8 @@ sub_800FB54:
 	bne loc_800FB70
 	bl GetAIData_Unk_44_Flag
 	mov r4, r0
+	// 0x4, 0x8 set when A is pressed or held
+	// see pwrAtkRelated_readsFromJoypad_8012FC8
 	ldr r1, dword_800FED4 // =0x1000c 
 	and r4, r1
 	bne loc_800FB74
@@ -4951,7 +4953,7 @@ loc_8011368:
 	lsl r2, r2, #0x10
 	orr r4, r2
 	mov r2, #1
-	bl sub_80C468C
+	bl spawn_t1_0x47_probablyGeneric_80C468C
 	str r0, [r5,#oBattleObject_RelatedObject2Ptr]
 	cmp r6, #0
 	bne locret_8011382
@@ -8282,10 +8284,10 @@ loc_8012B1A:
 	cmp r4, #0
 	bne loc_8012B48
 	ldr r1, [r5,#oBattleObject_AIDataPtr]
-	ldrb r0, [r1,#oAIData_Unk_1d]
+	ldrb r0, [r1,#oAIData_PwrAtkState]
 	cmp r0, #2
 	bne loc_8012B4A
-	ldrb r0, [r1,#oAIData_Unk_1e]
+	ldrb r0, [r1,#oAIData_PwrAtkButton]
 	cmp r0, #1
 	bne loc_8012B4A
 loc_8012B48:
@@ -8329,10 +8331,10 @@ loc_8012B6E:
 	cmp r4, #0
 	bne loc_8012B9C
 	ldr r1, [r5,#oBattleObject_AIDataPtr]
-	ldrb r0, [r1,#oAIData_Unk_1d]
+	ldrb r0, [r1,#oAIData_PwrAtkState]
 	cmp r0, #2
 	bne loc_8012B9E
-	ldrb r0, [r1,#oAIData_Unk_1e]
+	ldrb r0, [r1,#oAIData_PwrAtkButton]
 	cmp r0, #1
 	bne loc_8012B9E
 loc_8012B9C:
@@ -8369,10 +8371,10 @@ sub_8012BA2:
 	cmp r4, #0
 	bne loc_8012BE2
 	ldr r1, [r5,#oBattleObject_AIDataPtr]
-	ldrb r0, [r1,#oAIData_Unk_1d]
+	ldrb r0, [r1,#oAIData_PwrAtkState]
 	cmp r0, #2
 	bne loc_8012BE4
-	ldrb r0, [r1,#oAIData_Unk_1e]
+	ldrb r0, [r1,#oAIData_PwrAtkButton]
 	cmp r0, #1
 	bne loc_8012BE4
 loc_8012BE2:
@@ -8763,7 +8765,7 @@ loc_8012E90:
 	thumb_local_start
 sub_8012EA0:
 	push {lr}
-	bl sub_8012FC8
+	bl pwrAtkRelated_readsFromJoypad_8012FC8
 	pop {pc}
 	thumb_func_end sub_8012EA0
 
@@ -8772,9 +8774,9 @@ sub_8012EA8:
 	push {lr}
 	ldr r3, [r5,#oBattleObject_AIDataPtr]
 	mov r0, #0
-	strb r0, [r3,#oAIData_Unk_1d]
+	strb r0, [r3,#oAIData_PwrAtkState]
 	strb r0, [r3,#oAIData_Unk_1b]
-	strb r0, [r3,#oAIData_Unk_1e]
+	strb r0, [r3,#oAIData_PwrAtkButton]
 	ldr r0, dword_8012FAC // =0x60000 
 	bl ClearAIData_Unk_44_Flag
 	pop {pc}
@@ -8786,9 +8788,9 @@ sub_8012EBC:
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	bl battle_isTimeStop
 	bne locret_8012F3C
-	bl sub_8012F3E
+	bl returnBoolIfAIDataFlagsAreSet_8012F3E
 	beq loc_8012F34
-	ldrb r0, [r4,#oAIData_Unk_1e]
+	ldrb r0, [r4,#oAIData_PwrAtkButton]
 	bl sub_8012F62
 	mov r7, r0
 	bl GetAIData_Unk_44_Flag
@@ -8801,9 +8803,9 @@ loc_8012EE2:
 	ldr r1, dword_8012FB0 // =0x20000 
 	tst r0, r1
 	beq loc_8012EF8
-	ldrb r0, [r4,#oAIData_Unk_1e]
+	ldrb r0, [r4,#oAIData_PwrAtkButton]
 	mov r1, #1
-	strb r1, [r4,#oAIData_Unk_1e]
+	strb r1, [r4,#oAIData_PwrAtkButton]
 	cmp r0, #1
 	beq loc_8012F14
 	cmp r0, #0
@@ -8813,9 +8815,9 @@ loc_8012EF8:
 	ldr r1, dword_8012FB4 // =0x40000 
 	tst r0, r1
 	beq loc_8012F14
-	ldrb r0, [r4,#oAIData_Unk_1e]
+	ldrb r0, [r4,#oAIData_PwrAtkButton]
 	mov r1, #2
-	strb r1, [r4,#oAIData_Unk_1e]
+	strb r1, [r4,#oAIData_PwrAtkButton]
 	cmp r0, #2
 	beq loc_8012F14
 	cmp r0, #0
@@ -8824,7 +8826,7 @@ loc_8012EF8:
 loc_8012F0E:
 	mov r0, #0
 	strb r0, [r4,#oAIData_Unk_1b]
-	strb r0, [r4,#oAIData_Unk_1d]
+	strb r0, [r4,#oAIData_PwrAtkState]
 loc_8012F14:
 	ldrb r0, [r4,#oAIData_Unk_1b]
 	add r0, #1
@@ -8841,20 +8843,21 @@ loc_8012F14:
 	strb r0, [r4,#0x1b]
 	mov r3, #0
 loc_8012F30:
-	strb r3, [r4,#oAIData_Unk_1d]
+	strb r3, [r4,#oAIData_PwrAtkState]
 	pop {r4,r6,r7,pc}
 loc_8012F34:
 	mov r0, #0
-	strb r0, [r4,#oAIData_Unk_1e]
+	strb r0, [r4,#oAIData_PwrAtkButton]
 	strb r0, [r4,#oAIData_Unk_1b]
-	strb r0, [r4,#oAIData_Unk_1d]
+	strb r0, [r4,#oAIData_PwrAtkState]
 locret_8012F3C:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_8012EBC
 
 	thumb_local_start
-sub_8012F3E:
+returnBoolIfAIDataFlagsAreSet_8012F3E:
 	push {lr}
+	// reads flag set when A is pressed
 	bl GetAIData_Unk_44_Flag
 	ldr r1, dword_8012FB8 // =0x1000002f 
 	tst r0, r1
@@ -8871,7 +8874,7 @@ sub_8012F3E:
 loc_8012F5E:
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_8012F3E
+	thumb_func_end returnBoolIfAIDataFlagsAreSet_8012F3E
 
 	thumb_local_start
 sub_8012F62:
@@ -8921,7 +8924,7 @@ off_8012FC4: .word byte_8020404
 	thumb_func_end sub_8012F62
 
 	thumb_local_start
-sub_8012FC8:
+pwrAtkRelated_readsFromJoypad_8012FC8:
 	push {r4,r6,r7,lr}
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	bl GetAIData_Unk_44_Flag
@@ -9168,10 +9171,10 @@ loc_80131BE:
 	tst r0, r1
 	beq loc_80131D8
 	mov r0, #1
-	ldrb r1, [r4,#oAIData_Unk_1e]
+	ldrb r1, [r4,#oAIData_PwrAtkButton]
 	cmp r1, #2
 	bne loc_80131D4
-	ldrb r1, [r4,#oAIData_Unk_1d]
+	ldrb r1, [r4,#oAIData_PwrAtkState]
 	cmp r1, #2
 	bne loc_80131D4
 	mov r0, #2
@@ -9179,7 +9182,7 @@ loc_80131D4:
 	bl SetAIData_Unk_44_Flag
 loc_80131D8:
 	bl GetBattleMode
-	cmp r0, #9
+	cmp r0, #9 // dustman minigame
 	bne loc_80131EE
 	ldrh r0, [r4,#oAIData_JoypadPressed]
 	mov r1, #1
@@ -9213,10 +9216,10 @@ loc_8013218:
 	beq locret_8013234
 loc_8013220:
 	mov r0, #4
-	ldrb r1, [r4,#oAIData_Unk_1e]
+	ldrb r1, [r4,#oAIData_PwrAtkButton]
 	cmp r1, #1
 	bne loc_8013230
-	ldrb r1, [r4,#oAIData_Unk_1d]
+	ldrb r1, [r4,#oAIData_PwrAtkState]
 	cmp r1, #2
 	bne loc_8013230
 	mov r0, #8
@@ -9224,7 +9227,7 @@ loc_8013230:
 	bl SetAIData_Unk_44_Flag
 locret_8013234:
 	pop {r4,r6,r7,pc}
-	thumb_func_end sub_8012FC8
+	thumb_func_end pwrAtkRelated_readsFromJoypad_8012FC8
 
 	thumb_local_start
 sub_8013236:
@@ -9414,7 +9417,7 @@ sub_801336C:
 	cmp r0, #0xff
 	beq loc_8013392
 loc_801337C:
-	bl sub_8012F3E
+	bl returnBoolIfAIDataFlagsAreSet_8012F3E
 	beq loc_8013392
 	bl sub_8010004
 	ldr r1, dword_80133E0 // =0xffff 
@@ -9434,7 +9437,7 @@ sub_8013396:
 	ldrb r0, [r1,#oAIData_BPwrAtk]
 	cmp r0, #0xff
 	beq loc_80133AA
-	bl sub_8012F3E
+	bl returnBoolIfAIDataFlagsAreSet_8012F3E
 	beq loc_80133AA
 	mov r0, #1
 	pop {pc}

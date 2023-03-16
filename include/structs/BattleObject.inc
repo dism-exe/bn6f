@@ -158,6 +158,12 @@
 	.set SNAKEARM_EV_3, 3
 	.set SNAKEARM_EV_0x20, 0x20
 
+	.set BASS_CHIP_EV_UNK_PANEL_COUNTS, 0
+	.set BASS_CHIP_EV_UNK_PANEL_COUNTS_LAST_ENTRY, 17
+	.set BASS_CHIP_EV_UNK_PANEL_COUNTS_SIZE, 18
+	.set BASS_CHIP_DESIRED_COLUMNS, 20 // next word boundary from panel counts
+	
+
 	// hacking size values for now until I can figure out this mess of how battle object structs are defined
 	battle_object_struct oBattleObject, offset_struct_entry, set_offset_struct_start_address
 	.set oBattleObject_Size, oBattleObject_SizeWithoutLinkedList + oBattleObject_LinkedList_Size

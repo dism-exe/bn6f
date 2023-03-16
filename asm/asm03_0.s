@@ -1010,7 +1010,7 @@ sub_8026CCC:
 loc_8026CE6:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_JoypadPtr]
-	bl sub_8028B74
+	bl custMenuSomeHandler_8028B74
 	bl sub_8028820
 	bl sub_8029C08
 	bl sub_802899C
@@ -4707,7 +4707,7 @@ loc_8028ABA:
 	mov r1, #1
 	tst r0, r1
 	beq loc_8028B00
-	bl sub_80298F4
+	bl custMenu_80298F4
 	cmp r0, #0
 	bne locret_8028B66
 	mov r0, r4
@@ -4795,7 +4795,7 @@ dword_8028B70: .word 0x55
 	thumb_func_end sub_8028A78
 
 	thumb_local_start
-sub_8028B74:
+custMenuSomeHandler_8028B74:
 	push {r4,lr}
 	ldrb r0, [r5,#7]
 	bl getLocOfActiveChips_8027E1C // (int a1) -> void*
@@ -4860,11 +4860,11 @@ loc_8028BE6:
 	bl sub_8028476
 	b locret_8028C96
 loc_8028BEC:
-	ldrh r0, [r7,#2]
+	ldrh r0, [r7,#oJoypad_Pressed]
 	mov r1, #1
 	tst r0, r1
 	beq loc_8028C18
-	bl sub_80298F4
+	bl custMenu_80298F4
 	cmp r0, #0
 	bne locret_8028C96
 	ldrb r0, [r4]
@@ -4946,7 +4946,7 @@ locret_8028C96:
 	.balign 4, 0
 off_8028C98: .word off_8028C9C
 off_8028C9C: .word sub_8028CCC+1
-	.word sub_8028D3A+1
+	.word custMenuPressOK_8028D3A+1
 	.word sub_8028D6C+1
 	.word sub_8028DBC+1
 	.word sub_8028DD6+1
@@ -4957,7 +4957,7 @@ off_8028C9C: .word sub_8028CCC+1
 	.word sub_8028E04+1
 off_8028CC4: .word 0x100
 off_8028CC8: .word 0x200
-	thumb_func_end sub_8028B74
+	thumb_func_end custMenuSomeHandler_8028B74
 
 	thumb_local_start
 sub_8028CCC:
@@ -5013,7 +5013,7 @@ locret_8028D38:
 	thumb_func_end sub_8028CCC
 
 	thumb_local_start
-sub_8028D3A:
+custMenuPressOK_8028D3A:
 	push {lr}
 	bl sub_8029110
 	bl sub_80293F8
@@ -5036,7 +5036,7 @@ loc_8028D5A:
 	bl PlaySoundEffect
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_8028D3A
+	thumb_func_end custMenuPressOK_8028D3A
 
 	thumb_local_start
 sub_8028D6C:
@@ -5088,7 +5088,7 @@ sub_8028DBC:
 	strb r1, [r0,#8]
 	ldr r0, off_8028F80 // =dword_20349A0 
 	strb r1, [r0,#0x4] // (byte_20349A4 - 0x20349a0)
-	bl sub_8028D3A
+	bl custMenuPressOK_8028D3A
 	mov r0, #0
 	pop {pc}
 	thumb_func_end sub_8028DBC
@@ -6699,7 +6699,7 @@ dword_80298F0: .word 0xD796
 	thumb_func_end sub_80298D8
 
 	thumb_local_start
-sub_80298F4:
+custMenu_80298F4:
 	push {lr}
 	ldrb r0, [r5,#0xc]
 	cmp r0, #0xff
@@ -6762,7 +6762,7 @@ loc_8029952:
 	mov r0, #1
 locret_802996C:
 	pop {pc}
-	thumb_func_end sub_80298F4
+	thumb_func_end custMenu_80298F4
 
 	thumb_local_start
 sub_802996E:
@@ -12836,7 +12836,7 @@ off_802CD5C: .word sub_80C0DD8+1
 	.word sub_80EA11C+1
 	.word sub_80BFCD0+1
 	.word spawnType1Object_0x24_80BF6AE+1
-	.word sub_80C3B30+1
+	.word spawnBassChipObject_80C3B30+1
 	.word sub_80C3E98+1
 	.word sub_80C2F96+1
 	thumb_func_end sub_802CCAE

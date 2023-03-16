@@ -20444,7 +20444,7 @@ loc_814E554:
 	thumb_func_end sub_814E528
 
 	thumb_local_start
-sub_814E558:
+ply_note:
 	push {r4-r7,lr}
 	mov r4, r8
 	mov r5, r9
@@ -20722,7 +20722,7 @@ loc_814E73E:
 	.balign 4, 0
 off_814E750: .word byte_3007FF0
 off_814E754: .word byte_81C068C
-	thumb_func_end sub_814E558
+	thumb_func_end ply_note
 
 	thumb_func_start sub_814E758
 sub_814E758:
@@ -21550,7 +21550,7 @@ loc_814ECF2:
 	strb r0, [r5,#6]
 	mov r0, #0xf
 	strb r0, [r5,#7]
-	ldr r0, off_814EDB0 // =sub_814E558+1 
+	ldr r0, off_814EDB0 // =ply_note+1 
 	str r0, [r5,#0x38]
 	ldr r0, off_814EDB4 // =nullsub_23+1 
 	str r0, [r5,#0x28]
@@ -21583,7 +21583,7 @@ off_814EDA0: .word ChannelAFIFO_Data0_3
 off_814EDA4: .word ChannelBFIFO_Data0_3
 off_814EDA8: .word byte_3007FF0
 dword_814EDAC: .word 0x50003EC
-off_814EDB0: .word sub_814E558+1
+off_814EDB0: .word ply_note+1
 off_814EDB4: .word nullsub_23+1
 off_814EDB8: .word off_3005570
 dword_814EDBC: .word 0x68736D53

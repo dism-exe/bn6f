@@ -34,8 +34,8 @@
 	u8 Unk_1a // loc=0x1a
 	u8 Unk_1b // loc=0x1b
 	u8 Unk_1c // loc=0x1c
-	u8 Unk_1d // loc=0x1d
-	u8 Unk_1e // loc=0x1e
+	u8 PwrAtkState // loc=0x1d
+	u8 PwrAtkButton // loc=0x1e
 	struct_org 0x20
 	u16 TotalDamageTaken // loc=0x20
 	u16 JoypadHeld // loc=0x22

@@ -693,7 +693,7 @@ int __usercall sub_8026CCC@<R0>(void *r5@<R5>)
     if ( v2 == 255 )
     {
         v4 = *(v1 + oToolkit_JoypadPtr);
-        sub_8028B74(r5);
+        custMenuSomeHandler_8028B74(r5);
         sub_8028820();
         sub_8029C08();
         v5 = sub_802899C();
@@ -3451,7 +3451,7 @@ LABEL_25:
     }
     else
     {
-        result = sub_80298F4();
+        result = custMenu_80298F4();
         if ( !result )
         {
             v11 = v5 + 85;
@@ -3476,7 +3476,7 @@ LABEL_25:
 
 
 // 0x8028b74
-char *__usercall sub_8028B74@<R0>(void *r5@<R5>)
+char *__usercall custMenuSomeHandler_8028B74@<R0>(void *r5@<R5>)
 {
     int v1; // r7
     int v2; // r2
@@ -3545,7 +3545,7 @@ LABEL_15:
     result = *(v1 + 2);
     if ( result & 1 )
     {
-        result = sub_80298F4();
+        result = custMenu_80298F4();
         if ( !result )
         {
             result = (*(&off_8028C9C + *v3))();
@@ -3659,7 +3659,7 @@ int __fastcall sub_8028CCC(int a1, int a2, int a3)
 
 
 // 0x8028d3a
-int __fastcall sub_8028D3A(int a1, int a2, int a3, int a4)
+int __fastcall custMenuPressOK_8028D3A(int a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r1
@@ -3728,7 +3728,7 @@ int sub_8028DBC()
     v0 = sub_800A7E2();
     sub_802D064(v0)[8] = 1;
     byte_20349A4 = 1;
-    sub_8028D3A(&dword_20349A0, 1, v1, v2);
+    custMenuPressOK_8028D3A(&dword_20349A0, 1, v1, v2);
     return 0;
 }
 
@@ -5081,7 +5081,7 @@ int sub_80298D8()
 
 
 // 0x80298f4
-int sub_80298F4()
+int custMenu_80298F4()
 {
     int v0; // r5
     int v1; // r0

@@ -20,6 +20,7 @@
 	u16 Unk_12 // loc=0x12
 	u32 Flags // loc=0x14
 	// 0x00000002 - blocks movement
+	// 0x00000020 - enemy panel
 	// 0x00800000 - neutral support object
 	// 0x01000000 - enemy support object
 	// 0x02000000 - ally support object

@@ -3720,7 +3720,7 @@ int sub_800EC3C()
 
 
 // 0x800ec48
-void __fastcall sub_800EC48(int a1, int a2, int a3, int a4)
+void __fastcall GetAllianceDependentPanelParamArgs2(int a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int *v5; // r3

@@ -8321,7 +8321,8 @@ byte_804B05C: .byte 0xC0, 0x40
 byte_804B05E: .byte 0xA0, 0x60
 byte_804B060: .byte 0x80, 0x80
 byte_804B062: .byte 0x40, 0xC0
-dword_804B064: .word 0xFF00
+dword_804B064: .byte 0x0, 0xFF
+	.byte 0x0, 0x0
 byte_804B068: .byte 0xC0, 0x40
 byte_804B06A: .byte 0x20, 0x20, 0x20, 0x20, 0x0, 0x0
 byte_804B070: .byte 0x1, 0x0, 0x0, 0x1, 0x2, 0x1A, 0x2, 0x0, 0xB, 0xC, 0xD, 0x1A, 0x4
@@ -8677,6 +8678,7 @@ loc_804BD90:
 	mov r2, #0
 	pop {r6,r7}
 	mov r0, #0
+	// r1 - GetRNG2() % sumOfWeights
 loc_804BDA4:
 	ldrb r3, [r6,r2]
 	add r0, r0, r3
@@ -8924,6 +8926,7 @@ loc_804BF50:
 	cmp r2, #5
 	ble loc_804BF2C
 loc_804BF56:
+	// 75% new code 25% old code
 	ldr r0, off_804BF8C // =byte_804B068 
 	mov r1, #2
 	push {r3,r4}
