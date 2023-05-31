@@ -260,7 +260,7 @@
 // byte1 - number of flags to test
 // hword2 - starting flag to test
 // destination4 - script to jump to
-	.macro cs_jump_if_flag_range_clear
+	.macro cs_jump_if_flag_range_clear byte1:req, hword2:req, destination4:req
 	.byte cs_jump_if_flag_range_clear_cmd
 	.byte \byte1
 	.hword \hword2
@@ -305,7 +305,7 @@
 // word2 - pointer to read from
 // destination6 - script to jump to
 // word10 - value to compare [word2] with
-	.macro cs_jump_if_word_equals_subcmd word2:req destination6:req word10:req
+	.macro cs_jump_if_word_equals word2:req destination6:req word10:req
 	.byte cs_jump_if_mem_equals_cmd
 	.byte cs_jump_if_word_equals_subcmd
 	.word \word2
@@ -467,8 +467,8 @@
 // byte1 - memory param (base index, memory for byte3 is [eMapScriptState + byte1 + 1])
 // byte2 or mem1 - argument 1 for screen fade
 // byte3 or mem2 - argument 2 for screen fade
-	.macro cs_set_screen_fade
-	.byte cs_set_screen_fade_cmd byte1:req byte2:req byte3:req
+	.macro cs_set_screen_fade byte1:req byte2:req byte3:req
+	.byte cs_set_screen_fade_cmd
 	.byte \byte1
 	.byte \byte2
 	.byte \byte3
@@ -1523,7 +1523,7 @@
 
 	enum cs_encryption_cmd_80382de_cmd // 0x68
 // 0x68 hword1
-// call encryption_8006e70 with r0=hword1
+// call encryption_applyPack_8006e70 with r0=hword1
 	.macro cs_encryption_cmd_80382de hword1:req
 	.byte cs_encryption_cmd_80382de_cmd
 	.hword \hword1
@@ -1693,7 +1693,7 @@
 	.word \word2
 	.endm
 
-	subenum cs_cutscene_end_secondary_continuous_map_script_subcmd // 0x0
+	subenum cs_cutscene_end_secondary_continuous_map_script_subcmd // 0x1
 // 0x75 0x1
 // end execution of the secondary continuous map script pointer
 	.macro cs_cutscene_end_secondary_continuous_map_script

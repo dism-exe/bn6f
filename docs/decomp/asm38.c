@@ -882,7 +882,7 @@ int sub_3006730()
 
 
 // 0x3006792
-int sub_3006792()
+int _sprite_update()
 {
     int v0; // r5
     int v1; // r0

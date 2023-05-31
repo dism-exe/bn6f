@@ -1609,8 +1609,8 @@ loc_3006778:
 	pop {pc}
 	thumb_func_end sub_3006730
 
-	thumb_func_start sub_3006792
-sub_3006792:
+	thumb_func_start _sprite_update
+_sprite_update:
 	push {r4,lr}
 loc_3006794:
 	ldrb r0, [r5,#oObjectSprite_Unk_01]
@@ -1681,7 +1681,7 @@ loc_30067F8:
 	strb r1, [r5,#oObjectSprite_Unk_05]
 	pop {r4,pc}
 	.balign 4, 0x00
-	thumb_func_end sub_3006792
+	thumb_func_end _sprite_update
 
 	thumb_func_start copyTo_iObjectAttr3001D70_3006814
 copyTo_iObjectAttr3001D70_3006814: // () -> void

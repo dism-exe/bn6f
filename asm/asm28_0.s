@@ -227,7 +227,7 @@ RunLMessageTextScript:
 
 loc_809924A:
 	bl GetCurPETNavi // () -> u8
-	mov r1, #0x25 
+	mov r1, #oNaviStats_Humor 
 	bl GetNaviStatsByte
 
 	cmp r0, #1
@@ -240,7 +240,7 @@ loc_809924A:
 
 loc_8099266
 	bl GetCurPETNavi // () -> u8
-	mov r1, #0x5f 
+	mov r1, #oNaviStats_Poem 
 	bl GetNaviStatsByte
 
 	cmp r0, #1

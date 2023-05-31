@@ -1667,10 +1667,10 @@ reloadCurNaviStatBoosts_813c3ac:
 	push {r4-r7,lr}
 	bl GetCurPETNavi // () -> u8
 	tst r0, r0
-	beq .IfNoNaviSelected
+	beq .isMegaMan
 	b .loc_813C3CC
-.IfNoNaviSelected:
-	bl sub_813C458
+.isMegaMan
+	bl applyNaviStatsMaybe_813C458
 	movflag EVENT_163
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq .loc_813C3CC
@@ -1739,7 +1739,7 @@ reloadCurNaviStatBoosts_813c3ac:
 	thumb_func_end reloadCurNaviStatBoosts_813c3ac
 
 	thumb_local_start
-sub_813C458:
+applyNaviStatsMaybe_813C458:
 	push {r4,lr}
 	bl sub_813BBD4
 	bl sub_8136C24
@@ -1750,14 +1750,14 @@ sub_813C458:
 	bl sub_813C678
 	movflag EVENT_170D
 	bl ClearEventFlagFromImmediate
-	bl sub_813C684
+	bl applyNavicustPrograms_813C684
 	bl sub_813CBCC
 	mov r0, r4
 	bl SetCurPETNavi
 	bl sub_803CE44
 	pop {r4,pc}
 	.byte 0, 0
-	thumb_func_end sub_813C458
+	thumb_func_end applyNaviStatsMaybe_813C458
 
 	thumb_local_start
 sub_813C490:
@@ -1944,7 +1944,7 @@ sub_813C678:
 	thumb_func_end sub_813C678
 
 	thumb_local_start
-sub_813C684:
+applyNavicustPrograms_813C684:
 	push {r4-r7,lr}
 	sub sp, sp, #4
 	ldr r0, off_813C744 // =byte_2006DD8 
@@ -2088,7 +2088,7 @@ navicust_jt_NCPs: .word sub_813C808+1
 	.word navicust_NCP_HPPlus300+1
 	.word navicust_NCP_HPPlus400+1
 	.word navicust_NCP_HPPlus500+1
-	thumb_func_end sub_813C684
+	thumb_func_end applyNavicustPrograms_813C684
 
 	thumb_local_start
 sub_813C808:
@@ -2241,7 +2241,7 @@ navicust_NCP_AntiDmg:
 navicust_NCP_FlotShoe:
 	push {lr}
 	mov r0, #0
-	mov r1, #0x1b
+	mov r1, #oNaviStats_FloatShoes
 	mov r2, #1
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
@@ -2252,7 +2252,7 @@ navicust_NCP_FlotShoe:
 navicust_NCP_AirShoes:
 	push {lr}
 	mov r0, #0
-	mov r1, #0x1c
+	mov r1, #oNaviStats_AirShoes
 	mov r2, #1
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}
@@ -2263,7 +2263,7 @@ navicust_NCP_AirShoes:
 navicust_NCP_UnderSht:
 	push {lr}
 	mov r0, #0
-	mov r1, #0x1d
+	mov r1, #oNaviStats_UnderShirt
 	mov r2, #1
 	bl SetCurPETNaviStatsByte // (int a1, int a2, int a3) -> void
 	pop {pc}

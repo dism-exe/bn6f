@@ -550,7 +550,7 @@ int sub_8026A6C()
 
 
 // 0x8026a88
-int sub_8026A88()
+int custMenuMainMaybe_8026A88()
 {
     (*(&off_8026AA4 + BYTE1(dword_20364C0)))();
     sub_802A2B0();
@@ -6190,7 +6190,7 @@ unsigned int __fastcall getChipID_802A54E(unsigned int a1)
     unsigned int result; // r0
 
     v1 = a1;
-    sub_800B022(a1);
+    tooManyGigasMegasAntiCheatHappensHere_800B022(a1);
     if ( v2 )
         result = v1;
     else
@@ -13126,7 +13126,7 @@ int sub_802F756()
     else
     {
         sub_800260C();
-        reqBBS_init_8004DF0();
+        initNewGameData_8004DF0();
         sub_8004D48();
         sub_81440D8();
         rfu_REQ_stopMode();

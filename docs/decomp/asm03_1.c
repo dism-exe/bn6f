@@ -910,7 +910,7 @@ BOOL sub_8034C6E()
 
 
 // 0x8034c9c
-BOOL isFlag173DClearAndCutsceneScriptNull_8034c9c()
+BOOL IsNotSlipRunningAndNotInCutscene()
 {
     char v0; // zf
     BOOL result; // r0
@@ -952,7 +952,7 @@ signed int sub_8034CB6()
     int v20; // [sp-8h] [bp-1Ch]
     int v21; // [sp-4h] [bp-18h]
 
-    isFlag173DClearAndCutsceneScriptNull_8034c9c();
+    IsNotSlipRunningAndNotInCutscene();
     if ( !v1 )
     {
         if ( byte_100 & *(*(v0 + oToolkit_JoypadPtr) + 2) )
@@ -1019,7 +1019,7 @@ signed int sub_8034D7C()
     int v3; // r2
     int v4; // r3
 
-    isFlag173DClearAndCutsceneScriptNull_8034c9c();
+    IsNotSlipRunningAndNotInCutscene();
     if ( v1 )
         return 1;
     if ( !(byte_200 & *(*(v0 + oToolkit_JoypadPtr) + 2)) )
@@ -1053,7 +1053,7 @@ signed int sub_8034DB0()
     int v16; // r2
     int v17; // r3
 
-    isFlag173DClearAndCutsceneScriptNull_8034c9c();
+    IsNotSlipRunningAndNotInCutscene();
     if ( zf )
         return 1;
     if ( word_200AC84 )
@@ -1153,7 +1153,7 @@ void *HandleCoordinateInteractionCutscene()
     char (*(**v11)[2])[16]; // r1
     int v12; // r1
 
-    result = isFlag173DClearAndCutsceneScriptNull_8034c9c();
+    result = IsNotSlipRunningAndNotInCutscene();
     if ( !v4 )
     {
         v5 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_CoordInteractionValue);
@@ -1302,7 +1302,7 @@ signed int sub_8035054()
     int v3; // r2
     int v4; // r3
 
-    isFlag173DClearAndCutsceneScriptNull_8034c9c();
+    IsNotSlipRunningAndNotInCutscene();
     if ( v1 )
         return 1;
     if ( *(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_12) == 255 )
@@ -1323,7 +1323,7 @@ signed int sub_8035084()
     int v2; // r2
     int v3; // r3
 
-    isFlag173DClearAndCutsceneScriptNull_8034c9c();
+    IsNotSlipRunningAndNotInCutscene();
     if ( v0 )
         return 1;
     v1 = sub_8035756();
@@ -1359,7 +1359,7 @@ signed int npc_80350BC()
 
     if ( *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) >= 128 )
     {
-        isFlag173DClearAndCutsceneScriptNull_8034c9c();
+        IsNotSlipRunningAndNotInCutscene();
         if ( !v1 )
         {
             TestEventFlagFromImmediate(23, 8);
@@ -1517,7 +1517,7 @@ int ghostNaviCheck_8035274()
     int v7; // r2
     int v8; // r3
 
-    result = isFlag173DClearAndCutsceneScriptNull_8034c9c();
+    result = IsNotSlipRunningAndNotInCutscene();
     if ( !v2 )
     {
         result = TestEventFlagFromImmediate(23, 0);

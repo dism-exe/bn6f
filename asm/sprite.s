@@ -30,7 +30,7 @@ sprite_update:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
-	ldr r4, off_80026E0 // =sub_3006792+1
+	ldr r4, off_80026E0 // =_sprite_update+1
 	mov lr, pc
 	bx r4
 	pop {r4,r5,pc}
@@ -39,11 +39,11 @@ sprite_update:
 	thumb_func_start sprite_chatbox_80026D6
 sprite_chatbox_80026D6:
 	push {r4,lr}
-	ldr r4, off_80026E0 // =sub_3006792+1
+	ldr r4, off_80026E0 // =_sprite_update+1
 	mov lr, pc
 	bx r4
 	pop {r4,pc}
-off_80026E0: .word sub_3006792+1
+off_80026E0: .word _sprite_update+1
 	thumb_func_end sprite_chatbox_80026D6
 
 // (int a1, int a2, int a3) ->

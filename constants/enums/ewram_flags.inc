@@ -7416,7 +7416,7 @@
 		enum_start 0x1720 // 0x2E4
 	enum EVENT_1720
 	enum EVENT_1721
-	enum EVENT_1722
+	enum EVENT_1722_BEAST_LINK_GATE_RELATED
 	enum EVENT_1723
 	enum EVENT_1724
 	enum EVENT_1725
@@ -7450,7 +7450,7 @@
 	enum EVENT_173A
 	enum EVENT_173B
 	enum EVENT_173C
-	enum EVENT_173D
+	enum EVENT_IN_SLIPRUN_STATE
 	enum EVENT_173E
 	enum EVENT_173F
 
@@ -10313,5 +10313,7 @@
 	enum EVENT_202D
 	enum EVENT_202E
 	enum EVENT_202F
+
+	// missing constants, ends at 0x2d40 exclusive
 
 // eFlags2009F38

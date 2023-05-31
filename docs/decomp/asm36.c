@@ -4298,7 +4298,7 @@ void __fastcall __noreturn sub_81337E8(int a1)
             sub_81355D8();
             if ( v3 )
             {
-                sub_8133E3C(3, v6);
+                checkLeftRightInputForFolderEdit_8133E3C(3, v6);
                 if ( v3 )
                 {
                     sub_8133E7C();
@@ -4331,7 +4331,7 @@ void __fastcall __noreturn sub_813388C(int a1)
             {
                 if ( !*(v1 + 40) || !sub_811F7F8(*(*(v2 + oToolkit_JoypadPtr) + 4), 7u, 0, 10) )
                 {
-                    sub_8133E3C(3, v4);
+                    checkLeftRightInputForFolderEdit_8133E3C(3, v4);
                     if ( v3 )
                         sub_8133E7C();
                 }
@@ -4831,7 +4831,7 @@ LABEL_8:
 
 
 // 0x8133e3c
-signed int __fastcall sub_8133E3C(int a1, int a2)
+signed int __fastcall checkLeftRightInputForFolderEdit_8133E3C(int a1, int a2)
 {
     int v2; // r5
     int v3; // r10
@@ -9684,7 +9684,7 @@ signed int sub_8137700()
 
 
 // 0x8137718
-int __fastcall sub_8137718(signed int a1)
+int __fastcall GiveFolder(signed int a1)
 {
     int v1; // r10
     signed int v2; // r7
@@ -9700,14 +9700,14 @@ int __fastcall sub_8137718(signed int a1)
     v2 = a1;
     v3 = off_8137868[a1 & 0xF];
     v4 = 1;
-    v5 = sub_81377EC(a1);
+    v5 = isFolderSlotInUse_81377EC(a1);
     if ( v5 == 3 )
     {
         v4 = 0;
         v5 = *(*(v1 + oToolkit_Unk2001c04_Ptr) + 5);
     }
     v10 = v5;
-    sub_813781C(v2);
+    takeChipsWhenGivingFolderIfFolderSlotInUseMaybe_813781C(v2);
     if ( !sub_8137790() )
     {
         sub_8021AB4(v3, v10);
@@ -9753,7 +9753,7 @@ signed int sub_8137790()
 
 
 // 0x81377ec
-signed int __fastcall sub_81377EC(unsigned int a1)
+signed int __fastcall isFolderSlotInUse_81377EC(unsigned int a1)
 {
     unsigned int v1; // r0
     int v2; // r1
@@ -9773,12 +9773,12 @@ signed int __fastcall sub_81377EC(unsigned int a1)
 int sub_8137808()
 {
     ZeroFillByByte(&unk_20018EC, 4);
-    return sub_813781C(0);
+    return takeChipsWhenGivingFolderIfFolderSlotInUseMaybe_813781C(0);
 }
 
 
 // 0x813781c
-signed int __fastcall sub_813781C(unsigned int a1)
+signed int __fastcall takeChipsWhenGivingFolderIfFolderSlotInUseMaybe_813781C(unsigned int a1)
 {
     int v1; // r10
     unsigned int v2; // r4
@@ -9791,7 +9791,7 @@ signed int __fastcall sub_813781C(unsigned int a1)
     signed int v9; // [sp-4h] [bp-18h]
 
     v2 = a1;
-    result = sub_81377EC(a1);
+    result = isFolderSlotInUse_81377EC(a1);
     v4 = result;
     if ( result == 3 )
     {

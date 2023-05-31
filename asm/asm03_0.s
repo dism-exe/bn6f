@@ -712,7 +712,7 @@ sub_8026A28:
 	.balign 4, 0
 off_8026A38: .word off_8026A3C
 off_8026A3C: .word sub_8026A50+1
-	.word sub_8026A88+1
+	.word custMenuMainMaybe_8026A88+1
 	.word sub_8026A6C+1
 	.word 0x100
 	.word eStruct200F360
@@ -748,7 +748,7 @@ sub_8026A6C:
 	thumb_func_end sub_8026A6C
 
 	thumb_local_start
-sub_8026A88:
+custMenuMainMaybe_8026A88:
 	push {r5,lr}
 	ldr r5, off_8026BF0 // =dword_20364C0 
 	ldr r1, off_8026AA0 // =off_8026AA4 
@@ -785,7 +785,7 @@ off_8026AA4: .word sub_8026B04+1
 	.word sub_802794A+1
 	.word sub_8026E78+1
 	.word sub_8027A58+1
-	thumb_func_end sub_8026A88
+	thumb_func_end custMenuMainMaybe_8026A88
 
 	thumb_local_start
 sub_8026B04:
@@ -6312,7 +6312,7 @@ locret_802963A:
 	thumb_local_start
 sub_802963C:
 	push {r0-r3,lr}
-	bl encryption_8006e70 // (int idx_20008A0) -> void
+	bl encryption_applyPack_8006e70 // (int idx_20008A0) -> void
 	ldr r1, off_802967C // =0x140 
 	sub r0, r0, r1
 	ldr r1, off_8029680 // =0x1f60 
@@ -8281,7 +8281,7 @@ loc_802A54A:
 getChipID_802A54E:
 	push {r1-r7,lr}
 	mov r4, r0
-	bl sub_800B022 // (int a1) ->
+	bl tooManyGigasMegasAntiCheatHappensHere_800B022 // (int a1) ->
 	bne loc_802A55C
 	mov r0, r4
 	pop {r1-r7,pc}
@@ -12798,7 +12798,7 @@ off_802CCB4: .word sub_80E07E0+1 // 0x0
 	.word sub_80E64E8+1 // 0x1b
 	.word sub_80E7CA8+1 // 0x1c
 	.word sub_80E7F16+1 // 0x1d
-	.word sub_80E8058+1 // 0x1e
+	.word spawnDblHeroSetupObject_80E8058+1 // 0x1e
 	.word sub_80E81B4+1 // 0x1f
 	.word sub_80E8BC0+1 // 0x20
 	.word spawnSunMoonObject_80E8ADC+1 // 0x21
@@ -15341,15 +15341,16 @@ sub_802E0D4:
 sub_802E112:
 	push {lr}
 	bl GetBattleMode
-	cmp r0, #1
+	cmp r0, #1 // crossover
 	beq locret_802E154
-	cmp r0, #7
+	cmp r0, #7 // tomahawk minigame
 	beq locret_802E154
-	cmp r0, #9
+	cmp r0, #9 // dustman minigame
 	beq locret_802E154
-	cmp r0, #6
+	cmp r0, #6 // virus battler
 	beq locret_802E154
 	bl GetBattleEffects // () -> int
+	// ???
 	ldr r1, dword_802E22C // =0x200000 
 	tst r0, r1
 	bne locret_802E154
@@ -15357,10 +15358,10 @@ sub_802E112:
 	cmp r0, #0
 	bne loc_802E14E
 	bl GetBattleEffects // () -> int
-	mov r1, #8
+	mov r1, #8 // network battle
 	tst r0, r1
 	beq locret_802E154
-	movflag EVENT_1722
+	movflag EVENT_1722_BEAST_LINK_GATE_RELATED
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_802E154
 loc_802E14E:
@@ -15940,7 +15941,7 @@ loc_802E5CE:
 	ldr r0, [sp,#8]
 	cmp r0, #0
 	bne loc_802E5F2
-	ldr r0, off_802E5F8 // =0x2020 
+	ldr r0, off_802E5F8 // =EVENT_2020 
 	ldr r1, [sp,#4]
 	add r0, r0, r1
 	mov r0, r0
@@ -15952,7 +15953,7 @@ loc_802E5F4:
 	add sp, sp, #0xc
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_802E5F8: .word 0x2020
+off_802E5F8: .word EVENT_2020
 	thumb_func_end sub_802E588
 
 	thumb_local_start
@@ -15999,7 +16000,7 @@ sub_802E62A:
 	ldr r0, [sp,#8]
 	cmp r0, #0
 	bne loc_802E65A
-	ldr r0, off_802E670 // =0x2020 
+	ldr r0, off_802E670 // =EVENT_2020 
 	ldr r1, [sp,#4]
 	add r0, r0, r1
 	mov r0, r0
@@ -16015,7 +16016,7 @@ loc_802E65A:
 	add sp, sp, #0xc
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_802E670: .word 0x2020
+off_802E670: .word EVENT_2020
 	thumb_func_end sub_802E62A
 
 	thumb_local_start
@@ -18218,7 +18219,7 @@ sub_802F756:
 	b loc_802F7B6
 loc_802F776:
 	bl sub_800260C
-	bl reqBBS_init_8004DF0
+	bl initNewGameData_8004DF0
 	bl sub_8004D48
 	bl sub_81440D8 // static () -> void
 	bl rfu_REQ_stopMode

@@ -12416,7 +12416,7 @@ int __fastcall sub_801690A(int a1)
 
 
 // 0x8016934
-int sub_8016934()
+int blindVisualHandledHere_8016934()
 {
     int v0; // r5
     int v1; // r10
@@ -12465,7 +12465,7 @@ int sub_8016934()
 
 
 // 0x80169be
-int sub_80169BE()
+int handleRenderBlindForSpecificObjectsMaybe_80169BE()
 {
     int v0; // r5
     int v1; // r10
@@ -12829,7 +12829,7 @@ int sub_8016D8C()
     v5 = *(v0 + 52);
     v6 = *(v0 + 64) + v5;
     *(v0 + 52) = v6;
-    if ( sub_800E6E8(v6, v5, v2) || (v7 = *(v0 + 56), v8 = *(v0 + 68) + v7, *(v0 + 56) = v8, sub_800E6E8(v8, v7, v4)) )
+    if ( IsR2BetweenR0AndR1(v6, v5, v2) || (v7 = *(v0 + 56), v8 = *(v0 + 68) + v7, *(v0 + 56) = v8, sub_800E6E8(v8, v7, v4)) )
     {
         object_removePanelReserve(*(v0 + 20), *(v0 + 21));
         if ( object_getPanelDataOffset(*(v0 + 20), *(v0 + 21))[2] == 7 && *(*(v0 + 84) + 2) != 2 )
@@ -13922,7 +13922,7 @@ int sub_8017992()
     v5 = *(v0 + 52);
     v6 = *(v0 + 64) + v5;
     *(v0 + 52) = v6;
-    if ( sub_800E6E8(v6, v5, v2) || (v7 = *(v0 + 56), v8 = *(v0 + 68) + v7, *(v0 + 56) = v8, sub_800E6E8(v8, v7, v4)) )
+    if ( IsR2BetweenR0AndR1(v6, v5, v2) || (v7 = *(v0 + 56), v8 = *(v0 + 68) + v7, *(v0 + 56) = v8, sub_800E6E8(v8, v7, v4)) )
     {
         object_removePanelReserve(*(v0 + 20), *(v0 + 21));
         if ( object_getPanelDataOffset(*(v0 + 20), *(v0 + 21))[2] == 7 && *(*(v0 + 84) + 2) != 2 )
@@ -14199,7 +14199,7 @@ int sub_8017D64()
     v5 = *(v0 + 52);
     v6 = *(v0 + 64) + v5;
     *(v0 + 52) = v6;
-    if ( sub_800E6E8(v6, v5, v2) || (v7 = *(v0 + 56), v8 = *(v0 + 68) + v7, *(v0 + 56) = v8, sub_800E6E8(v8, v7, v4)) )
+    if ( IsR2BetweenR0AndR1(v6, v5, v2) || (v7 = *(v0 + 56), v8 = *(v0 + 68) + v7, *(v0 + 56) = v8, sub_800E6E8(v8, v7, v4)) )
     {
         object_removePanelReserve(*(v0 + 20), *(v0 + 21));
         if ( *(*(v0 + 84) + 2) != 2 && object_getPanelDataOffset(*(v0 + 20), *(v0 + 21))[2] == 7 )
@@ -14366,7 +14366,7 @@ int sub_8017F38()
     v5 = *(v0 + 52);
     v6 = *(v0 + 64) + v5;
     *(v0 + 52) = v6;
-    if ( sub_800E6E8(v6, v5, v2) || (v7 = *(v0 + 56), v8 = *(v0 + 68) + v7, *(v0 + 56) = v8, sub_800E6E8(v8, v7, v4)) )
+    if ( IsR2BetweenR0AndR1(v6, v5, v2) || (v7 = *(v0 + 56), v8 = *(v0 + 68) + v7, *(v0 + 56) = v8, sub_800E6E8(v8, v7, v4)) )
     {
         object_removePanelReserve(*(v0 + 20), *(v0 + 21));
         if ( *(*(v0 + 84) + 2) != 2 && object_getPanelDataOffset(*(v0 + 20), *(v0 + 21))[2] == 7 )
@@ -14660,7 +14660,7 @@ int sub_8018186()
 
 
 // 0x80181f6
-int sub_80181F6()
+int hideSummonsWhenBlind_80181F6()
 {
     _BYTE *v0; // r5
     int v1; // r10
@@ -14703,7 +14703,7 @@ int sub_801823C()
     int v7; // r2
     int v8; // r3
 
-    sub_80181F6();
+    hideSummonsWhenBlind_80181F6();
     if ( !*(v0 + 24) )
     {
         *(v0 + 48) = *(v0 + 54);
@@ -16869,7 +16869,7 @@ LABEL_42:
         v13 = sub_8016860(v12);
         v14 = sub_80168C8(v13);
         sub_80168F0(v14);
-        sub_8016934();
+        blindVisualHandledHere_8016934();
         v15 = sub_8016CA4();
         sub_801728E(v15);
         if ( !(object_getFlag() & 0x100) )
@@ -17113,7 +17113,7 @@ LABEL_40:
     v15 = sub_8016860(v14);
     v16 = sub_80168C8(v15);
     sub_80168F0(v16);
-    sub_8016934();
+    blindVisualHandledHere_8016934();
     sub_8016CA4();
     if ( object_getFlag() & 0x100 || (battle_isTimeStop(), v9) )
         result = RunAIAttack(v17);
@@ -17211,7 +17211,7 @@ LABEL_8:
     }
 LABEL_29:
     sprite_zeroColorShader();
-    sub_80181F6();
+    hideSummonsWhenBlind_80181F6();
     return (*(v10 + 4 * *(v1 + 9)))();
 }
 
@@ -17292,7 +17292,7 @@ int __fastcall sub_801B4D4(int a1)
     }
 LABEL_28:
     sprite_zeroColorShader();
-    sub_80181F6();
+    hideSummonsWhenBlind_80181F6();
     return (*(v10 + 4 * *(v1 + 9)))();
 }
 
@@ -17385,7 +17385,7 @@ LABEL_8:
     }
 LABEL_29:
     sprite_zeroColorShader();
-    sub_80181F6();
+    hideSummonsWhenBlind_80181F6();
     return (*(v10 + 4 * *(v1 + 9)))();
 }
 
@@ -17473,7 +17473,7 @@ LABEL_8:
     }
 LABEL_28:
     sprite_zeroColorShader();
-    sub_80181F6();
+    hideSummonsWhenBlind_80181F6();
     return (*(v10 + 4 * *(v1 + 9)))();
 }
 
@@ -17566,7 +17566,7 @@ LABEL_9:
     }
 LABEL_30:
     sprite_zeroColorShader();
-    sub_80181F6();
+    hideSummonsWhenBlind_80181F6();
     return (*(v10 + 4 * *(v1 + 9)))();
 }
 

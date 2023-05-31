@@ -22,14 +22,14 @@ void __usercall sprite_update(Battle *obj@<R5>)
     char *v1; // r5
 
     v1 = obj + 16 * (obj->objTypeSpriteOff >> 4);
-    sub_3006792();
+    _sprite_update();
 }
 
 
 // 0x80026d6
 int sprite_chatbox_80026D6()
 {
-    return sub_3006792();
+    return _sprite_update();
 }
 
 

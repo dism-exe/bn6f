@@ -2288,7 +2288,7 @@ int sub_810F6C4()
             PlaySoundEffect(247, v7, v8);
             object_setCollisionRegion(1);
             *v0 |= 2u;
-            sub_8016934();
+            blindVisualHandledHere_8016934();
             *(v0 + 16) = 2;
             *v1 = 8;
             result = 0;
@@ -2424,7 +2424,7 @@ int sub_810F898()
             *(v0 + 60) = 0;
             object_setCollisionRegion(1);
             *v0 |= 2u;
-            sub_8016934();
+            blindVisualHandledHere_8016934();
             object_clearFlag(64);
             sub_811013C(*(v0 + 100), *(v0 + 101), 0x200000);
             object_removePanelReserve(*(v0 + 100), *(v0 + 101));
@@ -9234,7 +9234,7 @@ int snakearmAI_8115074()
         v0[97] = 0;
         sub_801DC7C(0, 0);
         *v0 |= 2u;
-        result = sub_8016934();
+        result = blindVisualHandledHere_8016934();
     }
     return result;
 }
@@ -23884,15 +23884,15 @@ int __fastcall sub_8120D10(int a1)
     {
         if ( *(*(v1 + oToolkit_Unk2001c04_Ptr) + 5) == 1 )
         {
-            sub_8137718(34);
+            GiveFolder(34);
             LOBYTE(v5) = *(*(v1 + oToolkit_Unk2001c04_Ptr) + 5) - 1;
         }
         else
         {
-            v5 = sub_81377EC(0x22u);
+            v5 = isFolderSlotInUse_81377EC(0x22u);
             if ( v5 >= 3 || !v9 && (v6 = v5, v7 = sub_8137890(v5), sub_8120DAC(v7), LOBYTE(v5) = v6, !v8) )
             {
-                sub_8137718(34);
+                GiveFolder(34);
                 LOBYTE(v5) = *(*(v1 + oToolkit_Unk2001c04_Ptr) + 5) - 1;
             }
         }

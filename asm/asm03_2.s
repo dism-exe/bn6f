@@ -8597,7 +8597,7 @@ byte_804BB92: .byte 0x8, 0x0, 0x15, 0xFF, 0xFF, 0xFF, 0x11, 0x0, 0xD, 0x10, 0x16
 	thumb_func_end sub_804AFE4
 
 	thumb_func_start sub_804BD00
-sub_804BD00:
+sub_804BD00: // EXE6F: 0x804d770
 	push {r4-r7,lr}
 	ldr r5, off_804BD70 // =eS200AC80 
 	bl selectChipTraderRewardList_804BFF0

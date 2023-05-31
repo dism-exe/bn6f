@@ -57,7 +57,7 @@ split9BitsFromBitfield_8021AE0: // 8021AE0
 GiveChips:
 	push {r4,lr}
 	push {r0-r2}
-	bl encryption_8006e70 // (int idx_20008A0) -> void
+	bl encryption_applyPack_8006e70 // (int idx_20008A0) -> void
 	pop {r0-r2}
 	tst r2, r2
 	bne loc_8021B00
@@ -88,7 +88,7 @@ loc_8021B00:
 sub_8021B2A:
 	push {lr}
 	push {r0-r2}
-	bl encryption_8006e70 // (int idx_20008A0) -> void
+	bl encryption_applyPack_8006e70 // (int idx_20008A0) -> void
 	pop {r0-r2}
 	tst r2, r2
 	bne loc_8021B3C
@@ -138,7 +138,7 @@ sub_8021B78:
 	push {r0-r2}
 	tst r2, r2
 	beq loc_8021B84
-	bl encryption_8006e70 // (int idx_20008A0) -> void
+	bl encryption_applyPack_8006e70 // (int idx_20008A0) -> void
 loc_8021B84:
 	pop {r0-r2}
 	push {r2}
@@ -151,6 +151,10 @@ loc_8021B84:
 
 // (int idx, int searchItem, int off) -> void*
 	thumb_func_start TakeChips
+// returns in r0
+// - 0 if taking chips was successful
+// - 1 if no chips of the specified code are in the pack
+// - 2 if taking chips would cause underflow
 TakeChips:
 	push {r4,lr}
 	push {r2}
@@ -197,7 +201,7 @@ loc_8021BD4:
 GetTotalChipCount:
 	push {r7,lr}
 	push {r0}
-	bl encryption_8006e84
+	bl encryption_testPack_8006e84
 	pop {r0}
 	bne loc_8021BFE
 	mov r7, r10
@@ -289,6 +293,9 @@ dword_8021C78: .word 0xF00
 
 // (int chip_idx, int searchItem, int off) -> void*
 	thumb_func_start getOffsetToQuantityOfChipCodeMaybe_8021c7c
+// returns:
+// r0 - offset to chip code quantity
+// r3 - index of chip code in pack
 getOffsetToQuantityOfChipCodeMaybe_8021c7c:
 	push {r4,r7,lr}
 	mov r2, r0
@@ -333,7 +340,7 @@ loc_8021CB0:
 	pop {r2}
 	push {r0,r2}
 	mov r0, r2
-	bl encryption_8006e84
+	bl encryption_testPack_8006e84
 	pop {r0,r2}
 	bne loc_8021CF4
 	mov r3, #0

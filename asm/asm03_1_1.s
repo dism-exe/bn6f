@@ -8154,14 +8154,17 @@ GiveZenny:
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
 	ldr r1, [r2,#oGameState_ProtectedZenny]
-	ldr r4, dword_803D028 // =0xf423f
+	ldr r4, =999999
+	// has max zenny
 	mov r3, #1
 	cmp r1, r4
 	beq loc_803D01A
+	// didn't exceed max zenny
 	mov r3, #0
 	add r1, r1, r0
 	cmp r1, r4
 	ble loc_803D01A
+	// exceeded max zenny
 	mov r3, #2
 	mov r1, r4
 loc_803D01A:
@@ -8173,7 +8176,7 @@ loc_803D024:
 	mov r0, #1
 	pop {r4-r7,pc}
 	.balign 4, 0
-dword_803D028: .word 0xF423F
+	.pool
 	thumb_func_end GiveZenny
 
 	thumb_func_start sub_803D02C

@@ -4452,6 +4452,8 @@ convertBattleObjectXYToPanelXY_800E24C:
 	thumb_func_end convertBattleObjectXYToPanelXY_800E24C
 
 	thumb_func_start convertXYToPanelXY_800E258
+// panelX = (X + 160) / 40
+// panelY = (Y + 32) / 24
 convertXYToPanelXY_800E258:
 	push {r5,r6,lr}
 	mov r6, r1
@@ -5086,27 +5088,33 @@ byte_800E6C8: .byte 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x7, 0x10, 0x0, 0x0, 0x
 	.byte 0x0, 0x0, 0x80, 0xB
 	thumb_func_end sub_800E680
 
-	thumb_func_start sub_800E6E8
-sub_800E6E8:
+	thumb_func_start IsR2BetweenR0AndR1
+// return (r0 <= r1 && r2 > r0 && r2 <= r1) || (r0 > r1 && r2 > r1 && r2 <= r0)
+// if (r0 <= r1) {
+//     return r0 < r2 <= r1;
+// } else {
+//     return r1 < r2 <= r0;
+// }
+IsR2BetweenR0AndR1:
 	mov r3, #0
 	cmp r0, r1
-	bgt loc_800E6FA
+	bgt .loc_800E6FA
 	cmp r2, r0
-	ble loc_800E704
+	ble .done
 	cmp r2, r1
-	bgt loc_800E704
+	bgt .done
 	mov r3, #1
-	b loc_800E704
-loc_800E6FA:
+	b .done
+.loc_800E6FA:
 	cmp r2, r1
-	ble loc_800E704
+	ble .done
 	cmp r2, r0
-	bgt loc_800E704
+	bgt .done
 	mov r3, #1
-loc_800E704:
+.done
 	mov r0, r3
 	mov pc, lr
-	thumb_func_end sub_800E6E8
+	thumb_func_end IsR2BetweenR0AndR1
 
 	thumb_func_start sub_800E708
 sub_800E708:
@@ -5365,14 +5373,14 @@ loc_800E8F6:
 	ldr r0, dword_800E98C // =0x4000 
 	bl object_setFlag1 // (int a1) -> void
 loc_800E908:
-	ldrh r0, [r6,#oCollisionData_Unk_20]
+	ldrh r0, [r6,#oCollisionData_BlindTimer]
 	sub r0, #1
-	strh r0, [r6,#oCollisionData_Unk_20]
+	strh r0, [r6,#oCollisionData_BlindTimer]
 	bgt loc_800E920
 	ldr r0, off_800E990 // =0x2000 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #0
-	strh r0, [r6,#oCollisionData_Unk_20]
+	strh r0, [r6,#oCollisionData_BlindTimer]
 	mov r1, #0x4c 
 	str r0, [r6,r1]
 	b loc_800E942

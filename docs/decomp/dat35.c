@@ -1254,7 +1254,7 @@ signed int sub_812FC50()
 
     if ( *(v0 + 44) & 0x7FFF )
     {
-        v2 = sub_81377EC(0x22u);
+        v2 = isFolderSlotInUse_81377EC(0x22u);
         if ( v2 == 3 )
         {
             v13 = *(v1 + oToolkit_Unk2001c04_Ptr);

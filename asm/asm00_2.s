@@ -7662,7 +7662,7 @@ loc_8012652:
 	thumb_func_start sub_801265A
 sub_801265A:
 	push {lr}
-	mov r1, #oNaviStats_Unk_29 
+	mov r1, #oNaviStats_NaviIndex
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	push {r0}
 	mov r1, #1
@@ -10566,7 +10566,7 @@ loc_8013B56:
 	mov r4, r1
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_NaviStatsPtr]
-	mov r2, #0x64 
+	mov r2, #oNaviStats_Size 
 	mul r0, r2
 	add r7, r7, r0
 	b loc_8013B6E
@@ -10586,38 +10586,38 @@ loc_8013B6E:
 	mul r0, r4
 	ldr r6, off_8013CB4 // =byte_80210DD 
 	add r6, r6, r0
-	mov r1, #0x29 
+	mov r1, #oNaviStats_NaviIndex 
 	strb r4, [r7,r1]
 	ldrb r0, [r6]
 	add r0, r0, r0
-	mov r1, #0x40 
+	mov r1, #oNaviStats_CurHP 
 	strh r0, [r7,r1]
-	mov r1, #0x42 
+	mov r1, #oNaviStats_MaxHP 
 	strh r0, [r7,r1]
-	mov r1, #0x3e 
+	mov r1, #oNaviStats_MaxBaseHP 
 	strh r0, [r7,r1]
 	ldrb r0, [r6,#1]
-	mov r1, #0x23 
+	mov r1, #oNaviStats_SuperArmor 
 	strb r0, [r7,r1]
 	ldrb r0, [r6,#2]
-	strb r0, [r7,#0x1b]
+	strb r0, [r7,#oNaviStats_FloatShoes]
 	ldrb r0, [r6,#3]
-	strb r0, [r7,#0x1c]
+	strb r0, [r7,#oNaviStats_AirShoes]
 	ldrb r0, [r6,#4]
-	mov r1, #0x1d
+	mov r1, #oNaviStats_UnderShirt
 	strb r0, [r7,r1]
 	ldrb r0, [r6,#5]
-	strb r0, [r7,#6]
+	strb r0, [r7,#oNaviStats_FstBarr]
 	ldrb r0, [r6,#6]
-	strb r0, [r7,#0xb]
+	strb r0, [r7,#oNaviStats_MegaLevel]
 	ldrb r0, [r6,#7]
-	strb r0, [r7,#0xc]
+	strb r0, [r7,#oNaviStats_GigaLevel]
 	ldrb r0, [r6,#8]
-	strb r0, [r7,#4]
+	strb r0, [r7,#oNaviStats_APwrAtk]
 	ldrb r0, [r6,#9]
-	strb r0, [r7,#5]
+	strb r0, [r7,#oNaviStats_BPwrAtk]
 	ldrb r0, [r6,#0xa]
-	strb r0, [r7,#7]
+	strb r0, [r7,#oNaviStats_BLeftAbility]
 	ldrb r0, [r6,#0xb]
 	mov r1, #0x46 
 	strh r0, [r7,r1]
@@ -10994,7 +10994,7 @@ sub_8013ED6:
 	push {lr}
 	ldr r0, off_80141BC // =0x12c 
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
-	strh r0, [r1,#oCollisionData_Unk_20]
+	strh r0, [r1,#oCollisionData_BlindTimer]
 	mov r0, #0x20 
 	bl object_setFlag2
 	pop {pc}
@@ -11030,7 +11030,7 @@ sub_8013F04:
 	push {lr}
 	ldr r0, off_80141C0 // =0x258 
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
-	strh r0, [r1,#oCollisionData_Unk_20]
+	strh r0, [r1,#oCollisionData_BlindTimer]
 	mov r0, #0x20 
 	bl object_setFlag2
 	pop {pc}
@@ -12298,28 +12298,43 @@ dword_80147E0: .word 0x8000000
 	thumb_func_end sub_80147B2
 
 	thumb_func_start sub_80147E4
+// r0 - byte_203F558
+// r1 - byte_203F658
 sub_80147E4:
 	push {r5-r7,lr}
 	ldr r5, off_8014820 // =dword_20367F0 
 	mov r6, r0
 	mov r7, r1
+
+	// r5 - dword_20367F0
+	// r6 - byte_203F558
+	// r7 - byte_203F658
+
+	// CopyWords(byte_203F558, dword_20367F0+8, 0x10)
 	mov r1, #8
 	add r1, r1, r5
 	mov r2, #0x10
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+
+	// CopyWords(byte_203F558, unk_203A980, 0x10)
 	mov r0, r6
 	ldr r1, off_8014824 // =unk_203A980 
 	mov r2, #0x10
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+
+	// CopyWords(byte_203F658, dword_20367F0+0x18, 0x10)
 	mov r0, r7
 	mov r1, #0x18
 	add r1, r1, r5
 	mov r2, #0x10
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+
+	// CopyWords(byte_203F658, unk_203A990
 	mov r0, r7
 	ldr r1, off_8014828 // =unk_203A990 
 	mov r2, #0x10
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+
 	mov r0, #0
 	str r0, [r5]
 	mov r0, #1
@@ -14411,38 +14426,38 @@ sub_80159C6:
 	push {r5,r6,lr}
 	mov r6, #0
 	mov r5, r0
-	beq loc_8015A12
+	beq .failure
 	bl GetBattleMode
 	cmp r0, #1
-	beq loc_80159F0
-	ldr r0, [r5,#0x58]
-	ldrb r1, [r0,#0xf]
+	beq .isCrossoverBattle
+	ldr r0, [r5,#oBattleObject_AIDataPtr]
+	ldrb r1, [r0,#oAIData_Unk_0f]
 	tst r1, r1
-	bne loc_8015A12
+	bne .failure
 	mov r1, #2
-	strb r1, [r0,#0xf]
-	mov r1, #0x21 
+	strb r1, [r0,#oAIData_Unk_0f]
+	mov r1, #oNaviStats_BeastOutCounter 
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
-	bne loc_8015A12
+	bne .failure
 	bl sub_801443C
-loc_80159F0:
-	mov r1, #0x2c 
+.isCrossoverBattle
+	mov r1, #oNaviStats_Transformation 
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0xb
-	blt loc_8015A12
+	blt .failure
 	cmp r0, #0x18
-	bgt loc_8015A12
+	bgt .failure
 	bl GetBattleMode
 	cmp r0, #1
-	beq loc_8015A10
-	mov r1, #0x21 
+	beq .isCrossoverBattle_2
+	mov r1, #oNaviStats_BeastOutCounter 
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	cmp r0, #0
-	bne loc_8015A12
-loc_8015A10:
+	bne .failure
+.isCrossoverBattle_2
 	mov r6, #1
-loc_8015A12:
+.failure
 	mov r0, r6
 	pop {r5,r6,pc}
 	thumb_func_end sub_80159C6
@@ -16249,8 +16264,8 @@ off_801692C: .word word_8016930
 word_8016930: .hword 0x0, 0xFFFF
 	thumb_func_end sub_801690A
 
-	thumb_func_start sub_8016934
-sub_8016934:
+	thumb_func_start blindVisualHandledHere_8016934
+blindVisualHandledHere_8016934:
 	push {lr}
 	bl battle_isTimeStop
 	bne loc_8016944
@@ -16271,7 +16286,7 @@ loc_8016944:
 	lsr r0, r0, #2
 	bcc loc_8016964
 	ldrb r0, [r5,#oObjectHeader_Flags]
-	mov r1, #2
+	mov r1, #OBJECT_FLAG_VISIBLE
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 loc_8016964:
@@ -16295,7 +16310,7 @@ loc_8016964:
 	pop {r5}
 	beq locret_80169BC
 	ldrb r0, [r5,#oObjectHeader_Flags]
-	mov r1, #2
+	mov r1, #OBJECT_FLAG_VISIBLE
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	b locret_80169BC
@@ -16317,10 +16332,10 @@ loc_8016998:
 	bl sub_801DACC
 locret_80169BC:
 	pop {pc}
-	thumb_func_end sub_8016934
+	thumb_func_end blindVisualHandledHere_8016934
 
-	thumb_func_start sub_80169BE
-sub_80169BE:
+	thumb_func_start handleRenderBlindForSpecificObjectsMaybe_80169BE
+handleRenderBlindForSpecificObjectsMaybe_80169BE:
 	push {lr}
 	bl battle_isTimeStop
 	bne loc_80169CE
@@ -16376,7 +16391,7 @@ off_8016A28: .word 0x100
 dword_8016A2C: .word 0x202
 off_8016A30: .word 0x2000
 off_8016A34: .word 0x2000
-	thumb_func_end sub_80169BE
+	thumb_func_end handleRenderBlindForSpecificObjectsMaybe_80169BE
 
 	thumb_local_start
 sub_8016A38:
@@ -16766,7 +16781,7 @@ sub_8016D8C:
 	ldr r0, [r5,#oBattleObject_XVelocity]
 	add r0, r0, r1
 	str r0, [r5,#oBattleObject_X]
-	bl sub_800E6E8
+	bl IsR2BetweenR0AndR1
 	tst r0, r0
 	bne loc_8016DBC
 	mov r2, r4
@@ -16774,7 +16789,7 @@ sub_8016D8C:
 	ldr r0, [r5,#oBattleObject_YVelocity]
 	add r0, r0, r1
 	str r0, [r5,#oBattleObject_Y]
-	bl sub_800E6E8
+	bl IsR2BetweenR0AndR1
 	tst r0, r0
 	beq loc_8016E2A
 loc_8016DBC:
@@ -18127,7 +18142,7 @@ sub_8017992:
 	ldr r0, [r5,#oBattleObject_XVelocity]
 	add r0, r0, r1
 	str r0, [r5,#oBattleObject_X]
-	bl sub_800E6E8
+	bl IsR2BetweenR0AndR1
 	tst r0, r0
 	bne loc_80179C2
 	mov r2, r4
@@ -18135,7 +18150,7 @@ sub_8017992:
 	ldr r0, [r5,#oBattleObject_YVelocity]
 	add r0, r0, r1
 	str r0, [r5,#oBattleObject_Y]
-	bl sub_800E6E8
+	bl IsR2BetweenR0AndR1
 	tst r0, r0
 	beq loc_8017A2E
 loc_80179C2:
@@ -18573,7 +18588,7 @@ sub_8017D64:
 	ldr r0, [r5,#oBattleObject_XVelocity]
 	add r0, r0, r1
 	str r0, [r5,#oBattleObject_X]
-	bl sub_800E6E8
+	bl IsR2BetweenR0AndR1
 	tst r0, r0
 	bne loc_8017D94
 	mov r2, r4
@@ -18581,7 +18596,7 @@ sub_8017D64:
 	ldr r0, [r5,#oBattleObject_YVelocity]
 	add r0, r0, r1
 	str r0, [r5,#oBattleObject_Y]
-	bl sub_800E6E8
+	bl IsR2BetweenR0AndR1
 	tst r0, r0
 	beq loc_8017E00
 loc_8017D94:
@@ -18797,7 +18812,7 @@ sub_8017F38:
 	ldr r0, [r5,#oBattleObject_XVelocity]
 	add r0, r0, r1
 	str r0, [r5,#oBattleObject_X]
-	bl sub_800E6E8
+	bl IsR2BetweenR0AndR1
 	tst r0, r0
 	bne loc_8017F68
 	mov r2, r4
@@ -18805,7 +18820,7 @@ sub_8017F38:
 	ldr r0, [r5,#oBattleObject_YVelocity]
 	add r0, r0, r1
 	str r0, [r5,#oBattleObject_Y]
-	bl sub_800E6E8
+	bl IsR2BetweenR0AndR1
 	tst r0, r0
 	beq loc_8017FDC
 loc_8017F68:
@@ -19156,7 +19171,7 @@ locret_80181F4:
 	thumb_func_end sub_8018186
 
 	thumb_local_start
-sub_80181F6:
+hideSummonsWhenBlind_80181F6:
 	push {lr}
 	bl battle_isTimeStop
 	bne loc_8018206
@@ -19191,12 +19206,12 @@ loc_8018206:
 	b locret_801823A
 locret_801823A:
 	pop {pc}
-	thumb_func_end sub_80181F6
+	thumb_func_end hideSummonsWhenBlind_80181F6
 
 	thumb_local_start
 sub_801823C:
 	push {lr}
-	bl sub_80181F6
+	bl hideSummonsWhenBlind_80181F6
 	ldrb r0, [r5,#oBattleObject_PreventAnim]
 	tst r0, r0
 	bne loc_8018258
@@ -20954,7 +20969,7 @@ sub_801A264:
 	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
 	strh r0, [r3,#oCollisionData_Unk_1c]
 	strh r0, [r3,#oCollisionData_Unk_1e]
-	strh r0, [r3,#oCollisionData_Unk_20]
+	strh r0, [r3,#oCollisionData_BlindTimer]
 	strh r0, [r3,#oCollisionData_Unk_22]
 	strh r0, [r3,#oCollisionData_Unk_2a]
 	strh r0, [r3,#oCollisionData_Unk_2c]
@@ -21706,7 +21721,7 @@ loc_801A79C:
 	mov r0, #0x20 
 	bl object_setFlag2
 	ldr r0, off_801A7C8 // =0x4b0 
-	strh r0, [r4,#oCollisionData_Unk_20]
+	strh r0, [r4,#oCollisionData_BlindTimer]
 loc_801A7A6:
 	mov r0, #0
 	mov r1, #0xa4
@@ -22807,7 +22822,7 @@ loc_801B142:
 	bl sub_8016860
 	bl sub_80168C8
 	bl sub_80168F0
-	bl sub_8016934
+	bl blindVisualHandledHere_8016934
 	bl sub_8016CA4
 	bl sub_801728E
 	bl object_getFlag // () -> int
@@ -23022,7 +23037,7 @@ loc_801B338:
 	bl sub_8016860
 	bl sub_80168C8
 	bl sub_80168F0
-	bl sub_8016934
+	bl blindVisualHandledHere_8016934
 	bl sub_8016CA4
 	bl object_getFlag // () -> int
 	mov r1, #1
@@ -23182,7 +23197,7 @@ loc_801B49E:
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B4A2:
 	bl sprite_zeroColorShader
-	bl sub_80181F6
+	bl hideSummonsWhenBlind_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2
 	ldr r1, [sp]
@@ -23333,7 +23348,7 @@ loc_801B5DA:
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B5DE:
 	bl sprite_zeroColorShader
-	bl sub_80181F6
+	bl hideSummonsWhenBlind_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2
 	ldr r1, [sp]
@@ -23486,7 +23501,7 @@ loc_801B71A:
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B71E:
 	bl sprite_zeroColorShader
-	bl sub_80181F6
+	bl hideSummonsWhenBlind_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2
 	ldr r1, [sp]
@@ -23636,7 +23651,7 @@ loc_801B854:
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B858:
 	bl sprite_zeroColorShader
-	bl sub_80181F6
+	bl hideSummonsWhenBlind_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2
 	ldr r1, [sp]
@@ -23788,7 +23803,7 @@ loc_801B988:
 	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B98C:
 	bl sprite_zeroColorShader
-	bl sub_80181F6
+	bl hideSummonsWhenBlind_80181F6
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	lsl r0, r0, #2
 	ldr r1, [sp]

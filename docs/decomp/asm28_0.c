@@ -2450,7 +2450,7 @@ void *sub_809CF2C()
 
 
 // 0x809d19c
-void sub_809D19C()
+void owPlayer_main()
 {
     Battle *v0; // r5
     int v1; // r10
@@ -2852,7 +2852,7 @@ LABEL_8:
 
 
 // 0x809d6bc
-signed int sub_809D6BC()
+signed int calledWhenUsingSlipRun_809D6BC()
 {
     int v0; // r5
     int v1; // r10

@@ -3068,7 +3068,7 @@ BOOL __fastcall sub_800E680(int a1, int a2)
 
 
 // 0x800e6e8
-signed int __fastcall sub_800E6E8(int a1, int a2, int a3)
+signed int __fastcall IsR2BetweenR0AndR1(int a1, int a2, int a3)
 {
     signed int v3; // r3
 

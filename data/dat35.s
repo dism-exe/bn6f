@@ -1564,7 +1564,7 @@ sub_812FC50::
 	tst r0, r0
 	beq loc_812FCEC
 	mov r0, #0x22 
-	bl sub_81377EC
+	bl isFolderSlotInUse_81377EC
 	cmp r0, #3
 	beq loc_812FCCC
 	mov r2, #0x26 

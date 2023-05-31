@@ -1530,7 +1530,7 @@ loc_8003B3A:
 	.balign 4, 0
 off_8003B40: .word eStruct2001010
 off_8003B44: .word off_80039F8
-off_8003B48: .word sub_809D19C+1
+off_8003B48: .word owPlayer_main+1
 	thumb_func_end sub_8003B24
 
 	thumb_func_start SpawnOWPlayerObject
@@ -1758,7 +1758,7 @@ T1BattleObjectJumptable: .word t1_0x0_80B81EC+1 // 0x0
 	.word snakearmRelatedObject_80BC87C+1 // 0x1c
 	.word t1_0x1d_80BCA04+1 // 0x1d
 	.word t1_0x1e_80BCB50+1 // 0x1e
-	.word t1_0x1f_80BCD14+1 // 0x1f
+	.word dblHeroObject_t1_0x1f_80BCD14+1 // 0x1f
 	.word t1_0x20_80BD388+1 // 0x20
 	.word t1_0x21_80BDBA4+1 // 0x21
 	.word snakearmRelatedObject_t1_0x22_80BE4D8+1 // 0x22
@@ -2332,7 +2332,7 @@ T4BattleObjectJumptable: .word t4_0x0_80E0548+1 // 0x0
 	.word t4_0x67_80E7DC4+1 // 0x67
 	.word cornfiestaObject_80E7E9C+1 // 0x68
 	.word t4_0x69_80E7F38+1 // 0x69
-	.word t4_0x6a_80E7FDC+1 // 0x6a
+	.word dblHeroSetupObject_t4_0x6a_80E7FDC+1 // 0x6a
 	.word t4_0x6b_80E807C+1 // 0x6b
 	.word t4_0x6c_80E8138+1 // 0x6c
 	.word t4_0x6d_80E81D8+1 // 0x6d
@@ -3532,8 +3532,8 @@ off_8004DE8: .word eCamera+0x4C // eCamera.unk_4C
 off_8004DEC: .word dword_20096D0
 	thumb_func_end sub_8004D48
 
-	thumb_func_start reqBBS_init_8004DF0
-reqBBS_init_8004DF0:
+	thumb_func_start initNewGameData_8004DF0
+initNewGameData_8004DF0:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -3578,7 +3578,7 @@ reqBBS_init_8004DF0:
 	mov r0, #0xff
 	strb r0, [r5,#oGameState_Unk_12]
 	bl sub_802F0C4
-	bl encryption_8006d00
+	bl encryption_initAll_8006d00
 	bl sub_803CD74
 	mov r0, #0
 	strb r0, [r5,#oGameState_Unk_13]
@@ -3764,7 +3764,7 @@ reqBBS_init_8004DF0:
 	bl reqBBS_initMemory_813F9DA
 	movflag EVENT_173A
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_173E
 	bl ClearEventFlagFromImmediate
@@ -3775,7 +3775,7 @@ reqBBS_init_8004DF0:
 	.balign 4, 0
 off_80050E4: .word 0x100
 off_80050E8: .word byte_80213AC
-	thumb_func_end reqBBS_init_8004DF0
+	thumb_func_end initNewGameData_8004DF0
 
 // () -> void
 	thumb_func_start cbGameState_80050EC
@@ -3815,9 +3815,9 @@ GameStateJumptable:
 EnterMap: // JP 0x8005118
 	push {lr}
 	bl IsScreenFadeActive // () -> zf
-	bne .waitScreenFade
+	bne .noScreenFade
 	pop {pc}
-.waitScreenFade
+.noScreenFade
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
@@ -3883,7 +3883,7 @@ loc_80051AA:
 	bl map_8034B4C
 	ldrb r0, [r5,#oGameState_MapGroup]
 	bl EnterMap_RunMapGroupAsmFunction_8030A00
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_173E
 	bl ClearEventFlagFromImmediate
@@ -4738,7 +4738,7 @@ sub_8005AF4:
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne locret_8005B68
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne locret_8005B68
 	bl sub_809E462
@@ -6806,7 +6806,7 @@ ToolkitExtraPtrsOffsets: .word 0x0
 ToolkitExtraPtrsOffsetsEnd:
 
 	thumb_local_start
-encryption_8006d00:
+encryption_initAll_8006d00:
 	push {r4-r7,lr}
 	ldr r5, off_8006E38 // =eUnusedExtraToolkitPtrsOffset
 	ldr r4, [r5]
@@ -6905,7 +6905,7 @@ loc_8006DA8:
 	beq loc_8006DA8
 	str r0, [r4]
 	bl encryption_bugfrags_8006fac
-	bl encryption_8007036
+	bl anticheat_modCardsInit_8007036
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8006DC4: .word byte_20004E0
@@ -6918,7 +6918,7 @@ off_8006DDC: .word dword_2000060
 off_8006DE0: .word dword_802412C
 off_8006DE4: .word dword_20018B8
 off_8006DE8: .word loc_803ED90
-	thumb_func_end encryption_8006d00
+	thumb_func_end encryption_initAll_8006d00
 
 	thumb_func_start sub_8006DEC
 sub_8006DEC:
@@ -7015,8 +7015,8 @@ off_8006E6C: .word byte_20004E0
 	thumb_func_end encryption_navicustMaybe_8006e50
 
 // (int idx_20008A0) -> void
-	thumb_func_start encryption_8006e70
-encryption_8006e70:
+	thumb_func_start encryption_applyPack_8006e70
+encryption_applyPack_8006e70:
 	push {r1-r7,lr}
 	ldr r5, off_8006EA0 // =byte_20008A0
 	mov r7, r10
@@ -7027,10 +7027,10 @@ encryption_8006e70:
 	eor r1, r2
 	strb r1, [r7,r0]
 	pop {r1-r7,pc}
-	thumb_func_end encryption_8006e70
+	thumb_func_end encryption_applyPack_8006e70
 
-	thumb_func_start encryption_8006e84
-encryption_8006e84:
+	thumb_func_start encryption_testPack_8006e84
+encryption_testPack_8006e84:
 	push {r1-r7,lr}
 	ldr r5, off_8006EA0 // =byte_20008A0
 	mov r7, r10
@@ -7047,14 +7047,14 @@ locret_8006E9C:
 	pop {r1-r7,pc}
 	.balign 4, 0
 off_8006EA0: .word byte_20008A0
-	thumb_func_end encryption_8006e84
+	thumb_func_end encryption_testPack_8006e84
 
 	thumb_func_start sub_8006EA4
 sub_8006EA4:
 	push {r1-r7,lr}
 	mov r7, r0
 	mov r4, r1
-	bl encryption_8006e84
+	bl encryption_testPack_8006e84
 	bne loc_8006EE4
 	cmp r4, #0xff
 	beq loc_8006EE0
@@ -7096,7 +7096,7 @@ validateChipCode_8006EE8:
 	push {r1-r7,lr}
 	mov r7, r0
 	mov r4, r1
-	bl encryption_8006e84
+	bl encryption_testPack_8006e84
 	bne loc_8006F1A
 	cmp r4, #0xff
 	beq loc_8006F16
@@ -7197,7 +7197,7 @@ loc_8006F90:
 	ldr r1, [r1]
 	eor r0, r1
 	mov r1, r10
-	mov r2, #0x84
+	mov r2, #oToolkit_Unk2005028_Ptr
 	ldr r1, [r1,r2]
 	ldr r1, [r1]
 	cmp r0, r1
@@ -7251,7 +7251,7 @@ loc_8006FE8:
 	ldr r1, [r1]
 	eor r0, r1
 	mov r1, r10
-	mov r2, #0x88
+	mov r2, #oToolkit_Unk2005030_Ptr
 	ldr r1, [r1,r2]
 	ldr r1, [r1]
 	cmp r0, r1
@@ -7264,7 +7264,7 @@ off_8007000: .word dword_20018B8
 	thumb_func_end encryption_bugfrags_8006fd0
 
 	thumb_local_start
-encryption_8007004:
+anticheat_modCardsSet_8007004:
 	push {r1-r7,lr}
 	bl encryption_800708c
 	ldr r5, off_8007088 // =byte_2000670
@@ -7276,10 +7276,10 @@ encryption_8007004:
 	eor r1, r2
 	strb r1, [r7,r0]
 	pop {r1-r7,pc}
-	thumb_func_end encryption_8007004
+	thumb_func_end anticheat_modCardsSet_8007004
 
 	thumb_local_start
-encryption_800701c:
+anticheat_modCardsUnset_800701c:
 	push {r1-r7,lr}
 	bl encryption_800708c
 	ldr r5, off_8007088 // =byte_2000670
@@ -7292,10 +7292,10 @@ encryption_800701c:
 	mvn r1, r1
 	strb r1, [r7,r0]
 	pop {r1-r7,pc}
-	thumb_func_end encryption_800701c
+	thumb_func_end anticheat_modCardsUnset_800701c
 
 	thumb_local_start
-encryption_8007036:
+anticheat_modCardsInit_8007036:
 	push {r1-r7,lr}
 	mov r6, r10
 	mov r0, #oToolkit_Unk2005038_Ptr
@@ -7322,10 +7322,10 @@ locret_800705E:
 	.balign 4, 0
 off_8007060: .word byte_2000670
 off_8007064: .word 0x100
-	thumb_func_end encryption_8007036
+	thumb_func_end anticheat_modCardsInit_8007036
 
 	thumb_local_start
-encryption_8007068:
+anticheat_modCardsTest_8007068:
 	push {r1-r7,lr}
 	bl encryption_800708c
 	ldr r5, off_8007088 // =byte_2000670
@@ -7343,7 +7343,7 @@ locret_8007084:
 	pop {r1-r7,pc}
 	.balign 4, 0
 off_8007088: .word byte_2000670
-	thumb_func_end encryption_8007068
+	thumb_func_end anticheat_modCardsTest_8007068
 
 	thumb_local_start
 encryption_800708c:
@@ -7366,15 +7366,14 @@ loc_80070A2:
 	pop {r1-r7,pc}
 	.balign 4, 0
 off_80070A8: .word word_80070AC
-word_80070AC: .hword 0x1000
-Short_80070AE: .hword 0x0, 0x1010, 0x50, 0x1020, 0xDC, 0x1040, 0xE6
+word_80070AC: .hword 0x1000, 0x0, 0x1010, 0x50, 0x1020, 0xDC, 0x1040, 0xE6
 	thumb_func_end encryption_800708c
 
 	thumb_func_start encryption_80070bc
 encryption_80070bc:
 	push {r1-r7,lr}
 	ldr r5, off_8007170 // =byte_2001600
-	ldr r4, dword_8007174 // =0x2020
+	ldr r4, dword_8007174 // =EVENT_2020
 	ldr r6, off_8007178 // =0x200
 	mov r7, #0
 loc_80070C6:
@@ -7400,7 +7399,7 @@ loc_80070DC:
 encryption_80070e6:
 	push {r1-r7,lr}
 	push {r0}
-	bl encryption_8006e84
+	bl encryption_testPack_8006e84
 	pop {r0}
 	beq locret_8007108
 	ldr r5, off_8007170 // =byte_2001600
@@ -7421,7 +7420,7 @@ locret_8007108:
 	thumb_func_start encryption_800710a
 encryption_800710a:
 	push {r1-r7,lr}
-	ldr r4, dword_8007174 // =0x2020
+	ldr r4, dword_8007174 // =EVENT_2020
 	ldr r6, off_8007178 // =0x200
 	mov r7, #0
 loc_8007112:
@@ -7451,7 +7450,7 @@ loc_8007140:
 	add r7, #1
 	cmp r7, r6
 	blt loc_8007130
-	ldr r4, dword_8007184 // =0x1e20
+	ldr r4, dword_8007184 // =EVENT_1E20
 	ldr r6, off_8007188 // =0x200
 	mov r7, #0
 loc_800714E:
@@ -7459,7 +7458,7 @@ loc_800714E:
 	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_800715E
 	mov r0, r7
-	bl encryption_8006e84
+	bl encryption_testPack_8006e84
 	bne loc_800716A
 loc_800715E:
 	add r4, #1
@@ -9059,7 +9058,7 @@ loc_8007E38:
 	bl sub_800A892
 	mov r0, #1
 	bl clear_flags32_20093A4 // (flags32 flags) -> void
-	movflag EVENT_1722
+	movflag EVENT_1722_BEAST_LINK_GATE_RELATED
 	bl ClearEventFlagFromImmediate
 	mov r0, #0
 	strb r0, [r5,#oBattleState_Unk_0a]
@@ -11833,7 +11832,7 @@ sub_800938A:
 	strb r0, [r5,#oBattleState_Unk_03]
 loc_800939A:
 	bl sub_800801C
-	bl chip_800B090
+	bl someChipHandValidationHappensHere_800B090
 	cmp r0, #6
 	bne loc_80093B0
 	mov r0, #8
@@ -12429,7 +12428,7 @@ sub_800980E:
 	strb r0, [r5,#oBattleState_Unk_03]
 loc_800981E:
 	bl sub_80084F0
-	bl chip_800B090
+	bl someChipHandValidationHappensHere_800B090
 	cmp r0, #0
 	beq locret_80098BA
 	push {r0}
@@ -12835,7 +12834,7 @@ sub_8009B20:
 	strb r0, [r5,#oBattleState_Unk_03]
 loc_8009B30:
 	bl sub_8008950
-	bl chip_800B090
+	bl someChipHandValidationHappensHere_800B090
 	cmp r0, #0
 	beq locret_8009BAA
 	push {r0}
@@ -13270,7 +13269,7 @@ sub_8009E56:
 	strb r0, [r5,#oBattleState_Unk_03]
 loc_8009E66:
 	bl sub_8008D60
-	bl chip_800B090
+	bl someChipHandValidationHappensHere_800B090
 	cmp r0, #0
 	beq locret_8009EE0
 	push {r0}
@@ -14709,7 +14708,7 @@ loc_800A7F0:
 	lsr r0, r0, #0x17
 	mov r2, #0
 	push {r0}
-	bl encryption_8006e70 // (int idx_20008A0) -> void
+	bl encryption_applyPack_8006e70 // (int idx_20008A0) -> void
 	pop {r0}
 	add r4, #2
 	add r6, #1
@@ -15902,7 +15901,7 @@ loc_800B00C:
 	ldr r1, dword_800B104 // =0x19b
 	cmp r0, r1
 	bge loc_800B01C
-	bl encryption_8006e84
+	bl encryption_testPack_8006e84
 	b loc_800B01E
 loc_800B01C:
 	cmp r0, r0
@@ -15912,8 +15911,8 @@ loc_800B01E:
 	thumb_func_end sub_800AFBA
 
 // (int a1) ->
-	thumb_func_start sub_800B022
-sub_800B022:
+	thumb_func_start tooManyGigasMegasAntiCheatHappensHere_800B022
+tooManyGigasMegasAntiCheatHappensHere_800B022:
 	push {r1-r7,lr}
 	mov r4, r0
 	mov r6, #0
@@ -15943,7 +15942,7 @@ loc_800B058:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#oBattleState_Unk_0d]
-	mov r1, #0xa
+	mov r1, #oNaviStats_MegaLevel - 1
 	add r1, r1, r6
 	bl GetBattleNaviStatsByte
 	// game seems to actually keep track how many mega/giga chips you've used (or drawn?)
@@ -15972,10 +15971,10 @@ loc_800B088:
 loc_800B08C:
 	pop {r0}
 	pop {r1-r7,pc}
-	thumb_func_end sub_800B022
+	thumb_func_end tooManyGigasMegasAntiCheatHappensHere_800B022
 
 	thumb_local_start
-chip_800B090:
+someChipHandValidationHappensHere_800B090:
 	push {r0-r7,lr}
 	mov r0, r8
 	mov r1, r9
@@ -16036,7 +16035,7 @@ loc_800B0FA:
 dword_800B104: .word 0x19B
 off_800B108: .word dword_20367E0
 dword_800B10C: .word 0x185
-	thumb_func_end chip_800B090
+	thumb_func_end someChipHandValidationHappensHere_800B090
 
 	thumb_local_start
 sub_800B110:
@@ -16047,7 +16046,7 @@ loc_800B114:
 	ldrh r0, [r4]
 	cmp r0, #0
 	beq locret_800B122
-	bl encryption_8006e70 // (int idx_20008A0) -> void
+	bl encryption_applyPack_8006e70 // (int idx_20008A0) -> void
 	add r4, #2
 	b loc_800B114
 locret_800B122:

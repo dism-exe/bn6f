@@ -125,7 +125,7 @@ loc_809E658:
 	cmp r0, r1
 	beq loc_809E66E
 	bl sprite_setUnk0x2c
-loc_809E66E: .align 1, 0
+loc_809E66E:
 	ldrb r0, [r5,#oOverworldNPCObject_MovementDirection]
 	strb r0, [r5,#oOverworldNPCObject_Unk_0f]
 	ldrb r0, [r5,#oOverworldNPCObject_AnimationSelect]

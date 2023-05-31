@@ -1402,7 +1402,7 @@ int reloadCurNaviStatBoosts_813c3ac()
 
     if ( !getPETNaviSelect() )
     {
-        sub_813C458();
+        applyNaviStatsMaybe_813C458();
         v1 = TestEventFlagFromImmediate(1, 99);
         if ( !v5 )
             sub_8121154(v1, v2, v3, v4);
@@ -1440,7 +1440,7 @@ int reloadCurNaviStatBoosts_813c3ac()
 
 
 // 0x813c458
-int sub_813C458()
+int applyNaviStatsMaybe_813C458()
 {
     int v0; // r4
 
@@ -1450,7 +1450,7 @@ int sub_813C458()
     sub_80010BE(0);
     sub_813C678();
     ClearEventFlagFromImmediate(23, 13);
-    sub_813C684();
+    applyNavicustPrograms_813C684();
     sub_813CBCC();
     sub_80010BE(v0);
     return sub_803CE44();
@@ -1587,7 +1587,7 @@ int sub_813C678()
 
 
 // 0x813c684
-int sub_813C684()
+int applyNavicustPrograms_813C684()
 {
     int v0; // r7
     signed int v1; // r6

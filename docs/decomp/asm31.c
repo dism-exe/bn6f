@@ -8588,7 +8588,7 @@ int __fastcall sub_80BCCDC(char a1, int a2, int a3, int a4)
 
 
 // 0x80bcd14
-void t1_0x1f_80BCD14()
+void dblHeroObject_t1_0x1f_80BCD14()
 {
     int v0; // r5
 
@@ -8700,7 +8700,7 @@ int __noreturn sub_80BCD38()
         v27 = *(v0 + 14);
         v28 = *(v0 + 44);
         v29 = *(v0 + 76);
-        v30 = sub_80BD20A(v25, v26, v27, v23);
+        v30 = spawnDblHeroObject_80BD20A(v25, v26, v27, v23);
         v0 = v24;
         *(v30 + 112) = v24;
         *(v24 + 112) = v30;
@@ -9171,7 +9171,7 @@ int sub_80BD1DA()
 
 
 // 0x80bd20a
-int __fastcall sub_80BD20A(char a1, int a2, int a3, int a4)
+int __fastcall spawnDblHeroObject_80BD20A(char a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r6
@@ -16029,7 +16029,7 @@ int __fastcall sub_80C1094(int a1, int a2, int a3, int a4)
     {
         sub_80C114E();
         sub_80C10FE();
-        result = sub_80169BE();
+        result = handleRenderBlindForSpecificObjectsMaybe_80169BE();
     }
     return result;
 }
@@ -16232,7 +16232,7 @@ int __usercall sub_80C1204@<R0>(Battle *obj@<R5>)
     v6 = sprite_getMosaicScalingParameters(obj->parent);
     (sprite_setAlpha)(v6);
     (*(&off_80C1254 + obj->currAction))();
-    return sub_80169BE();
+    return handleRenderBlindForSpecificObjectsMaybe_80169BE();
 }
 
 
@@ -24562,14 +24562,14 @@ int __noreturn sub_80C60CC()
             v12 = -73728;
         *(v0 + 72) = v12;
         *(v0 + 8) = 4;
-        sub_80C619C();
+        trainArrow_80C619C();
     }
     return object_freeMemory();
 }
 
 
 // 0x80c619c
-int __noreturn sub_80C619C()
+int __noreturn trainArrow_80C619C()
 {
     int v0; // r5
     int v1; // r2
@@ -24606,7 +24606,7 @@ LABEL_15:
         v6 = *(v0 + 52);
         v7 = *(v0 + 64) + v6;
         *(v0 + 52) = v7;
-        if ( sub_800E6E8(v7, v6, v5)
+        if ( IsR2BetweenR0AndR1(v7, v6, v5)
             && (v8 = *(v0 + 7), v9 = __OFSUB__(v8, 1), --v8, *(v0 + 7) = v8, ((v8 < 0) ^ v9) | (v8 == 0)) )
         {
             if ( *(v0 + 4) == 5 )
@@ -31538,7 +31538,7 @@ void __noreturn sub_80CA61A()
     v5 = *(v0 + 52);
     v6 = *(v0 + 64) + v5;
     *(v0 + 52) = v6;
-    if ( sub_800E6E8(v6, v5, v4) )
+    if ( IsR2BetweenR0AndR1(v6, v5, v4) )
     {
         v7 = *(v0 + 4);
         v8 = __OFSUB__(v7--, 1);
@@ -34082,7 +34082,7 @@ void t3_0x40_80CC0E8()
     int v0; // r5
 
     (*(&off_80CC104 + *(v0 + 8)))();
-    sub_80169BE();
+    handleRenderBlindForSpecificObjectsMaybe_80169BE();
     object_updateSpritePaused();
 }
 
@@ -34508,7 +34508,7 @@ void t3_0x41_80CC4C4()
     int v0; // r5
 
     (*(&off_80CC4E0 + *(v0 + 8)))();
-    sub_80169BE();
+    handleRenderBlindForSpecificObjectsMaybe_80169BE();
     object_updateSprite();
 }
 
@@ -48614,7 +48614,7 @@ void t3_0x7e_80D5028()
     int v0; // r5
 
     (*(&off_80D5044 + *(v0 + 8)))();
-    sub_80169BE();
+    handleRenderBlindForSpecificObjectsMaybe_80169BE();
     object_updateSpritePaused();
 }
 
@@ -48738,7 +48738,7 @@ void t3_0x7f_80D5138()
     int v0; // r5
 
     (*(&off_80D5154 + *(v0 + 8)))();
-    sub_80169BE();
+    handleRenderBlindForSpecificObjectsMaybe_80169BE();
     object_updateSpritePaused();
 }
 
@@ -50232,7 +50232,7 @@ int __noreturn sub_80D5F2C()
     sprite_setPallete(0);
     v1 = object_getFlip(v0);
     sprite_setFlip(v0, v1);
-    sub_80169BE();
+    handleRenderBlindForSpecificObjectsMaybe_80169BE();
     v2 = object_createCollisionData();
     if ( !v2 )
         return object_freeMemory();
@@ -50260,7 +50260,7 @@ void __noreturn sub_80D5FA0()
     object_spawnCollisionEffect();
     if ( battle_isBattleOver() )
         goto LABEL_10;
-    sub_80169BE();
+    handleRenderBlindForSpecificObjectsMaybe_80169BE();
     v1 = *(v0->parent + 9);
     if ( v1 != 10 )
     {
@@ -50547,7 +50547,7 @@ int __noreturn sub_80D6250()
     sprite_setPallete(0);
     v3 = object_getFlip(v0);
     sprite_setFlip(v0, v3);
-    sub_80169BE();
+    handleRenderBlindForSpecificObjectsMaybe_80169BE();
     v4 = object_createCollisionData();
     if ( !v4 )
         return object_freeMemory();
@@ -50587,7 +50587,7 @@ void __noreturn sub_80D62E8()
         sub_80D644E(v1, v2, v3);
         goto LABEL_12;
     }
-    sub_80169BE();
+    handleRenderBlindForSpecificObjectsMaybe_80169BE();
     v5 = *(*(v0 + 76) + 9);
     if ( v5 != 12 )
     {
@@ -53410,7 +53410,7 @@ void __noreturn sub_80D8172()
         *(v0 + 13) = v7;
         if ( *(v0 + 24) )
         {
-            if ( sub_800E6E8(v7, v6, v5) )
+            if ( IsR2BetweenR0AndR1(v7, v6, v5) )
             {
                 v8 = v0[7];
                 v9 = __OFSUB__(v8--, 1);
@@ -54368,7 +54368,7 @@ void __noreturn sub_80D8A3C()
 
     if ( !*(v0 + 11) )
         sub_80D8C10(*(v0 + 20), *(v0 + 21));
-    if ( sub_800E6E8(*(v0 + 64) + *(v0 + 52), *(v0 + 52), *(v0 + 96)) )
+    if ( IsR2BetweenR0AndR1(*(v0 + 64) + *(v0 + 52), *(v0 + 52), *(v0 + 96)) )
     {
         sub_80D8BBC();
         sub_80D8C10(*(v0 + 20), *(v0 + 21));
@@ -58029,7 +58029,7 @@ int __noreturn sub_80DAEC4()
     sprite_setPallete(0);
     v1 = object_getFlip(v0);
     sprite_setFlip(v0, v1);
-    sub_80169BE();
+    handleRenderBlindForSpecificObjectsMaybe_80169BE();
     if ( *(v0 + 4) )
     {
         *(v0 + 8) = 4;
@@ -58056,7 +58056,7 @@ int sub_80DAF2A()
     char v4; // zf
 
     v1 = battle_isBattleOver();
-    if ( v1 || (sub_80169BE(), v1 = *(*(v0 + 76) + 9), v2 = *(v0 + 7), v2 != 255) && v1 != v2 )
+    if ( v1 || (handleRenderBlindForSpecificObjectsMaybe_80169BE(), v1 = *(*(v0 + 76) + 9), v2 = *(v0 + 7), v2 != 255) && v1 != v2 )
     {
         sub_80DB0D0(v1);
         result = 8;
@@ -61792,7 +61792,7 @@ int sub_80DD4E8()
     object_updateCollisionPanels(v0);
     v1 = *(v0 + 19);
     v2 = object_getCoordinatesForPanels(*(v0 + 18));
-    if ( !sub_800E6E8(*(v0 + 52), *(v0 + 52) - *(v0 + 64), v2) || !*(v0 + 7) )
+    if ( !IsR2BetweenR0AndR1(*(v0 + 52), *(v0 + 52) - *(v0 + 64), v2) || !*(v0 + 7) )
         sub_80DD5C8();
     *(v0 + 32) = *(v0 + 7);
     *(v0 + 9) = 8;
@@ -79555,7 +79555,7 @@ int __fastcall sub_80E7FBA(char a1, int a2, int a3, int a4)
 
 
 // 0x80e7fdc
-int t4_0x6a_80E7FDC()
+int dblHeroSetupObject_t4_0x6a_80E7FDC()
 {
     int v0; // r5
 
@@ -79594,7 +79594,7 @@ int sub_80E8020()
         v5 = *(v0 + 50);
         v6 = *(v0 + 44) + v5;
         v7 = *(v0 + 76);
-        sub_80BD20A(v2, v3, v4, v5);
+        spawnDblHeroObject_80BD20A(v2, v3, v4, v5);
         v0 = v1;
         *(v1 + 11) = 4;
     }
@@ -79610,7 +79610,7 @@ int sub_80E8020()
 
 
 // 0x80e8058
-int __fastcall sub_80E8058(char a1, int a2, int a3, int a4)
+int __fastcall spawnDblHeroSetupObject_80E8058(char a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r6

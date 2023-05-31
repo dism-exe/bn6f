@@ -5447,7 +5447,7 @@ loc_80425DA:
 chatbox_80425E0:
 	push {lr}
 	ldrb r0, [r4,#2]
-	bl sub_8137718
+	bl GiveFolder
 	add r4, #3
 	mov r0, #0
 	pop {pc}

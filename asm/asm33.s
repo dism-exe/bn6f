@@ -13912,12 +13912,12 @@ loc_812A9DA:
 	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	bne loc_812AA14
-	movflag EVENT_1722
+	movflag EVENT_1722_BEAST_LINK_GATE_RELATED
 	bl ClearEventFlagFromImmediate
 	bl sub_803F674
 	cmp r1, #2
 	bne loc_812AA04
-	movflag EVENT_1722
+	movflag EVENT_1722_BEAST_LINK_GATE_RELATED
 	bl SetEventFlagFromImmediate
 	b loc_812AA14
 loc_812AA04:
@@ -15521,7 +15521,7 @@ loc_812B6D8:
 	bl SetCurPETNavi
 	bl reloadCurNaviStatBoosts_813c3ac
 	bl PlayMapMusic
-	movflag EVENT_1722
+	movflag EVENT_1722_BEAST_LINK_GATE_RELATED
 	bl ClearEventFlagFromImmediate
 	bl sub_803F798
 locret_812B706:
@@ -16260,12 +16260,12 @@ loc_812BCA8:
 	mov r1, #0x40 
 	tst r0, r1
 	beq loc_812BCDA
-	ldr r0, dword_812BD24 // =0x2020 
+	ldr r0, dword_812BD24 // =EVENT_2020 
 	add r0, r0, r6
 	mov r0, r0
 	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_812BCDA
-	ldr r0, dword_812BD28 // =0x1e20 
+	ldr r0, dword_812BD28 // =EVENT_1E20 
 	add r0, r0, r6
 	mov r0, r0
 	bl TestEventFlag // (u16 flag) -> !zf
@@ -16296,7 +16296,7 @@ loc_812BCF0:
 	mov r1, #0x40 
 	tst r0, r1
 	bne loc_812BD08
-	ldr r0, dword_812BD24 // =0x2020 
+	ldr r0, dword_812BD24 // =EVENT_2020 
 	add r0, r0, r6
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void

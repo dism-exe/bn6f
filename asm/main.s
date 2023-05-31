@@ -259,7 +259,7 @@ loc_80004C0:
 	bl clearWord_e200AC1C
 	bl clearChatboxAndEvent
 	bl cleareMemory_802FF2C
-	bl reqBBS_init_8004DF0
+	bl initNewGameData_8004DF0
 	bl sub_8004D48
 	bl cutscene_8036ED4
 	bl clearCutsceneScriptPosIfMagicValue0x1_8036F24

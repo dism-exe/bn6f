@@ -2365,7 +2365,7 @@ loc_8036E58:
 	bne loc_8036E6A
 	ldr r7, [r7,#4]
 	ldrb r0, [r7,r2]
-	strb r0, [r4,#4]
+	strb r0, [r4,#oS2001c04_MapMusic]
 	b locret_8036E72
 loc_8036E6A:
 	add r7, #8
@@ -5567,14 +5567,14 @@ MapScriptCutsceneCmd_add_bbs_message_range:
 
 	thumb_local_start
 // 0x68 hword1
-// call encryption_8006e70 with r0=hword1
+// call encryption_applyPack_8006e70 with r0=hword1
 CutsceneCmd_encryption_cmd_80382de:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	// idx_20008A0
 	mov r0, r4
-	bl encryption_8006e70 // (int idx_20008A0) -> void
+	bl encryption_applyPack_8006e70 // (int idx_20008A0) -> void
 	add r7, #3
 	mov r0, #1
 	pop {pc}

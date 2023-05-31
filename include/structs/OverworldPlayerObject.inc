@@ -38,6 +38,7 @@
 	u32 Unk_40 // loc=0x40
 	u32 Unk_44 // loc=0x44
 	u32 Unk_48 // loc=0x48
+	u16 Unk_4c // loc=0x4c
 	struct_org 0x50
 	u32 Unk_50 // loc=0x50
 	struct_org 0x58

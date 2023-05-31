@@ -44,8 +44,8 @@ byte_809D13C: .byte 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x0, 0xFC, 0xF
 	.byte 0xFE, 0xFF, 0x0, 0x0, 0xFE, 0xFF, 0x17, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0xFC, 0xFF
 
-	thumb_func_start sub_809D19C
-sub_809D19C:
+	thumb_func_start owPlayer_main
+owPlayer_main: // JP: 0x809f6e4
 	push {lr}
 	movflag EVENT_1716
 	bl ClearEventFlagFromImmediate
@@ -53,7 +53,7 @@ sub_809D19C:
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809D1D2
 	bl GetCurPETNavi // () -> u8
-	mov r1, #0x35 
+	mov r1, #oNaviStats_SlipRun 
 	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	tst r0, r0
 	beq loc_809D1D2
@@ -118,7 +118,7 @@ loc_809D234:
 loc_809D238:
 	ldrb r0, [r7,#oS2000aa0_OWPlayerNaviPaletteIndex] // (byte_2000AA5 - 0x2000aa0)
 	bl sprite_setPalette // (int pallete) -> void
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D252
 	mov r0, r10
@@ -137,12 +137,12 @@ off_809D25C: .word sub_809D270+1
 	.word sub_809D7F8+1
 off_809D268: .word eStruct2000aa0
 	.word eStruct200ace0
-	thumb_func_end sub_809D19C
+	thumb_func_end owPlayer_main
 
 	thumb_local_start
 sub_809D270:
 	push {r4,lr}
-	mov r0, #3
+	mov r0, #OBJECT_FLAG_ACTIVE | OBJECT_FLAG_VISIBLE
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl GetCurPETNavi // () -> u8
 	ldr r4, off_809D324 // =PETNaviToNPCSpriteTable
@@ -275,13 +275,13 @@ sub_809D348:
 	movflag EVENT_1716
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D3BC
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D3A8
 	movflag EVENT_173F
 	bl SetEventFlagFromImmediate
 loc_809D3A8:
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_173E
 	bl ClearEventFlagFromImmediate
@@ -579,7 +579,7 @@ sub_809D61A:
 	movflag EVENT_1716
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809D630
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809D646
 loc_809D630:
@@ -642,13 +642,13 @@ loc_809D6AA:
 locret_809D6AE:
 	pop {pc}
 	.balign 4, 0
-off_809D6B0: .word sub_809D6BC+1
+off_809D6B0: .word calledWhenUsingSlipRun_809D6BC+1
 	.word sub_809D730+1
 off_809D6B8: .word off_809D6B0
 	thumb_func_end sub_809D61A
 
 	thumb_local_start
-sub_809D6BC:
+calledWhenUsingSlipRun_809D6BC:
 	push {lr}
 	mov r1, #0
 	ldr r7, off_809D714 // =eStruct2000aa0 
@@ -665,7 +665,7 @@ sub_809D6BC:
 	movflag EVENT_1716
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq .loc_809D6F4
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .loc_809D6F2
 	movflag EVENT_173F
@@ -697,7 +697,7 @@ off_809D71C: .word byte_809CFBC
 off_809D724: .word off_809D728
 off_809D728: .word byte_809D13C
 	.word byte_809D0DC
-	thumb_func_end sub_809D6BC
+	thumb_func_end calledWhenUsingSlipRun_809D6BC
 
 	thumb_local_start
 sub_809D730:
@@ -1147,7 +1147,7 @@ loc_809DA7E:
 	mov r1, #0x10
 	orr r0, r1
 loc_809DA82:
-	mov r3, #0x4c 
+	mov r3, #oOWPlayerObject_Unk_4c 
 	strh r0, [r5,r3]
 	mov r1, #0xf
 	and r1, r0
@@ -1184,7 +1184,7 @@ loc_809DABE:
 	mov r1, #0x10
 	orr r0, r1
 loc_809DAC2:
-	mov r3, #0x4c 
+	mov r3, #oOWPlayerObject_Unk_4c 
 	strh r0, [r5,r3]
 	mov r1, #0xf
 	and r1, r0
@@ -1222,7 +1222,7 @@ sub_809DB02:
 	and r0, r1
 	tst r0, r0
 	beq loc_809DB4A
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809DB4A
 	movflag EVENT_173F
@@ -1231,7 +1231,7 @@ sub_809DB02:
 	movflag EVENT_1716
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809DB4A
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl SetEventFlagFromImmediate
 	movflag EVENT_173E
 	bl SetEventFlagFromImmediate
@@ -1263,7 +1263,7 @@ sub_809DB60:
 	mov r1, #oOWPlayerObject_Unk_34
 	add r1, r1, r5
 	bl sub_809DBC4
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809DB82
 	mov r0, r10
@@ -1552,14 +1552,14 @@ sub_809DDF0:
 	movflag EVENT_1716
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_809DE2A
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_809DE2A
 	ldr r1, [r5,#oOWPlayerObject_Unk_50]
 	ldr r2, dword_809DE2C // =0xc00000 
 	tst r2, r1
 	beq locret_809DE2A
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_173E
 	bl ClearEventFlagFromImmediate
@@ -1578,13 +1578,13 @@ sub_809DE30:
 	movflag EVENT_1716
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq locret_809DE5E
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_809DE4E
 	movflag EVENT_173F
 	bl SetEventFlagFromImmediate
 loc_809DE4E:
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_173E
 	bl ClearEventFlagFromImmediate
@@ -1628,7 +1628,7 @@ sub_809DE98:
 	movflag EVENT_1716
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809DEBE
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_173E
 	bl ClearEventFlagFromImmediate

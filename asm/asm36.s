@@ -6390,7 +6390,7 @@ loc_8133830:
 	bl sub_81355D8
 	bne loc_8133864
 	mov r0, #3
-	bl sub_8133E3C
+	bl checkLeftRightInputForFolderEdit_8133E3C
 	bne loc_8133864
 	bl sub_8133E7C
 	mov r0, #1
@@ -6435,7 +6435,7 @@ sub_813388C:
 	bne loc_81338C6
 loc_81338BA:
 	mov r0, #3
-	bl sub_8133E3C
+	bl checkLeftRightInputForFolderEdit_8133E3C
 	bne loc_81338C6
 	bl sub_8133E7C
 loc_81338C6:
@@ -7092,15 +7092,16 @@ byte_8133E34: .byte 0x5, 0x0, 0x0, 0x0, 0x6, 0x0, 0x0, 0x0
 	thumb_func_end sub_8133D64
 
 	thumb_local_start
-sub_8133E3C:
+checkLeftRightInputForFolderEdit_8133E3C:
 	push {r4-r7,lr}
 	mov r7, #2
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_JoypadPtr]
-	ldrh r4, [r4,#4]
+	ldrh r4, [r4,#oJoypad_LowSensitivityHeld]
 	ldrb r6, [r5,r0]
+	// 0 = folder view, 1 = pack view
 	lsr r6, r6, #2
-	mov r2, #0x20 
+	mov r2, #JOYPAD_LEFT 
 	tst r2, r4
 	beq loc_8133E5A
 	mov r7, #0
@@ -7109,7 +7110,7 @@ sub_8133E3C:
 	mov r7, #1
 	b loc_8133E68
 loc_8133E5A:
-	mov r2, #0x10
+	mov r2, #JOYPAD_RIGHT
 	tst r2, r4
 	beq loc_8133E68
 	mov r7, #0
@@ -7127,7 +7128,7 @@ loc_8133E72:
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_8133E78: .word 0x7A
-	thumb_func_end sub_8133E3C
+	thumb_func_end checkLeftRightInputForFolderEdit_8133E3C
 
 	thumb_local_start
 sub_8133E7C:
@@ -8552,7 +8553,7 @@ loc_8134A16:
 loc_8134A20:
 	ldrb r0, [r5,#0x14]
 	bl GetNaviStatsAddrGivenCurPETNavi
-	ldrb r1, [r0,#9]
+	ldrb r1, [r0,#oNaviStats_RegUP]
 loc_8134A28:
 	cmp r1, r4
 	blt loc_8134A30
@@ -14215,19 +14216,21 @@ off_8137710: .word byte_20065B4
 off_8137714: .word 0x140
 	thumb_func_end sub_8137700
 
-	thumb_func_start sub_8137718
-sub_8137718:
+	thumb_func_start GiveFolder
+// r0 0X: folder to give
+// r0 X0: slot to give in
+GiveFolder:
 	push {r4-r7,lr}
 	sub sp, sp, #4
 	mov r7, r0
-	ldr r1, off_8137864 // =off_8137868 
+	ldr r1, off_8137864 // =FolderTable 
 	mov r2, #0xf
 	and r0, r2
 	lsl r0, r0, #2
 	ldr r4, [r1,r0]
 	mov r6, #1
 	mov r0, r7
-	bl sub_81377EC
+	bl isFolderSlotInUse_81377EC
 	mov r1, r0
 	cmp r1, #3
 	bne loc_813773E
@@ -14238,7 +14241,7 @@ sub_8137718:
 loc_813773E:
 	str r1, [sp]
 	mov r0, r7
-	bl sub_813781C
+	bl takeChipsWhenGivingFolderIfFolderSlotInUseMaybe_813781C
 	bl sub_8137790
 	tst r0, r0
 	bne loc_8137762
@@ -14273,9 +14276,10 @@ loc_813778A:
 	add sp, sp, #4
 	pop {r4-r7,pc}
 	.byte 0, 0
-	thumb_func_end sub_8137718
+	thumb_func_end GiveFolder
 
 	thumb_local_start
+// r7 input not used here
 sub_8137790:
 	push {r4-r7,lr}
 	mov r6, r7
@@ -14322,8 +14326,8 @@ loc_81377E8:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8137790
 
-	thumb_func_start sub_81377EC
-sub_81377EC:
+	thumb_func_start isFolderSlotInUse_81377EC
+isFolderSlotInUse_81377EC:
 	push {lr}
 	lsr r0, r0, #4
 	ldr r3, off_8137880 // =unk_20018EC 
@@ -14340,7 +14344,7 @@ loc_81377F4:
 loc_8137804:
 	mov r0, r1
 	pop {pc}
-	thumb_func_end sub_81377EC
+	thumb_func_end isFolderSlotInUse_81377EC
 
 	thumb_func_start sub_8137808
 sub_8137808:
@@ -14350,15 +14354,15 @@ sub_8137808:
 	mov r1, #4
 	bl ZeroFillByByte // (void *mem, int size) -> void
 	mov r0, #0
-	bl sub_813781C
+	bl takeChipsWhenGivingFolderIfFolderSlotInUseMaybe_813781C
 	pop {r4,pc}
 	thumb_func_end sub_8137808
 
 	thumb_local_start
-sub_813781C:
+takeChipsWhenGivingFolderIfFolderSlotInUseMaybe_813781C:
 	push {r4-r7,lr}
 	mov r4, r0
-	bl sub_81377EC
+	bl isFolderSlotInUse_81377EC
 	mov r1, r0
 	cmp r1, #3
 	beq loc_8137858
@@ -14393,15 +14397,15 @@ loc_813785E:
 	strb r4, [r3,r1]
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8137864: .word off_8137868
-off_8137868: .word byte_80213AC
+off_8137864: .word FolderTable
+FolderTable: .word byte_80213AC
 	.word byte_80213E8
 	.word byte_802158C
 	.word byte_8021604
 	.word byte_80215C8
 	.word byte_8021640
 off_8137880: .word unk_20018EC
-	thumb_func_end sub_813781C
+	thumb_func_end takeChipsWhenGivingFolderIfFolderSlotInUseMaybe_813781C
 
 	thumb_func_start sub_8137884
 sub_8137884:

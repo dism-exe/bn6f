@@ -9926,8 +9926,8 @@ locret_80BCD0C:
 dword_80BCD10: .word 0x10018
 	thumb_func_end sub_80BCCDC
 
-	thumb_func_start t1_0x1f_80BCD14
-t1_0x1f_80BCD14:
+	thumb_func_start dblHeroObject_t1_0x1f_80BCD14
+dblHeroObject_t1_0x1f_80BCD14:
 	push {lr}
 	ldr r1, off_80BCD28 // =off_80BCD2C 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -9941,7 +9941,7 @@ off_80BCD28: .word off_80BCD2C
 off_80BCD2C: .word sub_80BCD38+1
 	.word sub_80BCE4C+1
 	.word object_freeMemory+1
-	thumb_func_end t1_0x1f_80BCD14
+	thumb_func_end dblHeroObject_t1_0x1f_80BCD14
 
 	thumb_local_start
 sub_80BCD38:
@@ -10052,10 +10052,10 @@ loc_80BCDF8:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldrb r2, [r5,#oBattleObject_Element]
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
-	mov r7, #0
+	mov r7, #NULL
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r4, #1
-	bl sub_80BD20A
+	bl spawnDblHeroObject_80BD20A
 	pop {r5}
 	str r5, [r0,#oBattleObject_ExtraVars+0x10]
 	str r0, [r5,#oBattleObject_ExtraVars+0x10]
@@ -10589,7 +10589,7 @@ locret_80BD208:
 	thumb_func_end sub_80BD1DA
 
 	thumb_local_start
-sub_80BD20A:
+spawnDblHeroObject_80BD20A:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x1f
@@ -10622,7 +10622,7 @@ locret_80BD23E:
 dword_80BD240: .word 0x10005
 dword_80BD244: .word 0x7FFF
 dword_80BD248: .word 0x10B03
-	thumb_func_end sub_80BD20A
+	thumb_func_end spawnDblHeroObject_80BD20A
 
 	thumb_local_start
 sub_80BD24C:
@@ -13667,7 +13667,7 @@ locret_80BE978:
 sub_80BE97A:
 	push {r4,r6,r7,lr}
 	ldr r7, off_80BEA48 // =byte_80BE9D8
-	mov r1, #0x20 
+	mov r1, #0x20 // game version????
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	tst r0, r0
 	beq loc_80BE98A
@@ -18998,7 +18998,7 @@ sub_80C1094:
 	beq locret_80C10AA
 	bl sub_80C114E
 	bl sub_80C10FE
-	bl sub_80169BE
+	bl handleRenderBlindForSpecificObjectsMaybe_80169BE
 locret_80C10AA:
 	pop {pc}
 	thumb_func_end sub_80C1094
@@ -19223,7 +19223,7 @@ sub_80C1204:
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_80169BE
+	bl handleRenderBlindForSpecificObjectsMaybe_80169BE
 	pop {pc}
 	.balign 4, 0
 off_80C1250: .word off_80C1254
@@ -29148,7 +29148,7 @@ t3_0xb_80C60A8:
 	.balign 4, 0
 off_80C60BC: .word off_80C60C0
 off_80C60C0: .word sub_80C60CC+1
-	.word sub_80C619C+1
+	.word trainArrow_80C619C+1
 	.word object_genericDestroy+1
 	thumb_func_end t3_0xb_80C60A8
 
@@ -29248,12 +29248,12 @@ loc_80C6190:
 	str r0, [r5,#oBattleObject_ZVelocity]
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
-	bl sub_80C619C
+	bl trainArrow_80C619C
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80C60CC
 
 	thumb_local_start
-sub_80C619C:
+trainArrow_80C619C:
 	push {r4,r6,lr}
 	bl object_removeCollisionData
 	ldrb r0, [r5,#oBattleObject_Param1]
@@ -29294,7 +29294,7 @@ loc_80C61D6:
 	ldr r0, [r5,#oBattleObject_XVelocity]
 	add r0, r0, r1
 	str r0, [r5,#oBattleObject_X]
-	bl sub_800E6E8
+	bl IsR2BetweenR0AndR1
 	tst r0, r0
 	beq loc_80C6218
 	ldrb r0, [r5,#oBattleObject_Param4]
@@ -29333,7 +29333,7 @@ loc_80C6238:
 	bl object_highlightCurrentCollisionPanels
 locret_80C6246:
 	pop {r4,r6,pc}
-	thumb_func_end sub_80C619C
+	thumb_func_end trainArrow_80C619C
 
 	thumb_local_start
 sub_80C6248:
@@ -35883,7 +35883,7 @@ locret_80C956A:
 	thumb_local_start
 battle_BDT_80c956c:
 	push {lr}
-	bl FindOpponentForThunderObject
+	bl FindOpponentPanelXYForThunderObject
 	cmp r0, #0
 	bne .opponentFound
 	bl object_getFrontDirection // () -> int
@@ -35896,7 +35896,7 @@ battle_BDT_80c956c:
 	cmp r0, r2
 	beq .opponentPanelXEqualsThunderPanelX
 .opponentPanelYEqualsThunderPanelY
-// also case where neither panelXY match
+	// also case where neither panelXY match
 	ldrb r2, [r5,#oBattleObject_PanelX]
 	// r0 = opponent panel X
 	// r2 = thunder panel X
@@ -35962,7 +35962,7 @@ dword_80C95E8: .word 0x999A
 	thumb_func_end battle_BDT_80c956c
 
 	thumb_local_start
-FindOpponentForThunderObject:
+FindOpponentPanelXYForThunderObject:
 	push {r4,r6,r7,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	ldr r4, off_80C965C // =0x4000000
@@ -35988,7 +35988,7 @@ FindOpponentForThunderObject:
 	mov r0, r6
 	mov r1, r7
 	pop {r4,r6,r7,pc}
-	thumb_func_end FindOpponentForThunderObject
+	thumb_func_end FindOpponentPanelXYForThunderObject
 
 	thumb_local_start
 // r6 = panel X
@@ -37984,7 +37984,7 @@ loc_80CA63C:
 	ldr r0, [r5,#oBattleObject_XVelocity]
 	add r0, r0, r1
 	str r0, [r5,#oBattleObject_X]
-	bl sub_800E6E8
+	bl IsR2BetweenR0AndR1
 	tst r0, r0
 	beq loc_80CA660
 	ldrb r0, [r5,#oBattleObject_Param1]
@@ -41354,7 +41354,7 @@ t3_0x40_80CC0E8:
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_80169BE
+	bl handleRenderBlindForSpecificObjectsMaybe_80169BE
 	bl object_updateSpritePaused
 	pop {pc}
 	.balign 4, 0
@@ -41860,7 +41860,7 @@ t3_0x41_80CC4C4:
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_80169BE
+	bl handleRenderBlindForSpecificObjectsMaybe_80169BE
 	bl object_updateSprite
 	pop {pc}
 	.balign 4, 0
@@ -59677,7 +59677,7 @@ t3_0x7e_80D5028:
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_80169BE
+	bl handleRenderBlindForSpecificObjectsMaybe_80169BE
 	bl object_updateSpritePaused
 	pop {pc}
 	.balign 4, 0
@@ -59812,7 +59812,7 @@ t3_0x7f_80D5138:
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_80169BE
+	bl handleRenderBlindForSpecificObjectsMaybe_80169BE
 	bl object_updateSpritePaused
 	pop {pc}
 	.balign 4, 0
@@ -61593,7 +61593,7 @@ sub_80D5F2C:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	bl sub_80169BE
+	bl handleRenderBlindForSpecificObjectsMaybe_80169BE
 	bl object_createCollisionData
 	tst r0, r0
 	bne loc_80D5F7E
@@ -61624,7 +61624,7 @@ sub_80D5FA0:
 	bl battle_isBattleOver
 	tst r0, r0
 	bne loc_80D5FF6
-	bl sub_80169BE
+	bl handleRenderBlindForSpecificObjectsMaybe_80169BE
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrb r0, [r0,#oBattleObject_CurAction]
 	mov r1, #0xa
@@ -61982,7 +61982,7 @@ sub_80D6250:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	bl sub_80169BE
+	bl handleRenderBlindForSpecificObjectsMaybe_80169BE
 	bl object_createCollisionData
 	tst r0, r0
 	bne loc_80D62B0
@@ -62027,7 +62027,7 @@ sub_80D62E8:
 	bl basicHandleBattleObjectDamage_801156A
 	tst r0, r0
 	blt loc_80D6342
-	bl sub_80169BE
+	bl handleRenderBlindForSpecificObjectsMaybe_80169BE
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrb r0, [r0,#oBattleObject_CurAction]
 	mov r1, #0xc
@@ -65788,7 +65788,7 @@ loc_80D81BA:
 	ldr r3, [r5,#oBattleObject_ExtraVars]
 	cmp r3, #0
 	beq loc_80D81E4
-	bl sub_800E6E8
+	bl IsR2BetweenR0AndR1
 	tst r0, r0
 	beq loc_80D81E8
 	ldrb r0, [r5,#oBattleObject_Param4]
@@ -66916,7 +66916,7 @@ loc_80D8A54:
 	add r0, r0, r1
 	mov r4, r0
 	ldr r2, [r5,#oBattleObject_ExtraVars]
-	bl sub_800E6E8
+	bl IsR2BetweenR0AndR1
 	tst r0, r0
 	beq loc_80D8A90
 	bl sub_80D8BBC
@@ -71621,7 +71621,7 @@ sub_80DAEC4:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	bl sub_80169BE
+	bl handleRenderBlindForSpecificObjectsMaybe_80169BE
 	ldrb r0, [r5,#oBattleObject_Param1]
 	tst r0, r0
 	bne loc_80DAF1C
@@ -71649,7 +71649,7 @@ sub_80DAF2A:
 	bl battle_isBattleOver
 	tst r0, r0
 	bne loc_80DAF5E
-	bl sub_80169BE
+	bl handleRenderBlindForSpecificObjectsMaybe_80169BE
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrb r0, [r0,#oBattleObject_CurAction]
 	ldrb r1, [r5,#oBattleObject_Param4]
@@ -76502,7 +76502,7 @@ sub_80DD4E8:
 	ldr r1, [r5,#oBattleObject_X]
 	sub r1, r1, r0
 	ldr r0, [r5,#oBattleObject_X]
-	bl sub_800E6E8
+	bl IsR2BetweenR0AndR1
 	tst r0, r0
 	beq loc_80DD52E
 	ldrb r0, [r5,#oBattleObject_Param4]
@@ -98713,8 +98713,8 @@ locret_80E7FDA:
 	pop {pc}
 	thumb_func_end sub_80E7FBA
 
-	thumb_func_start t4_0x6a_80E7FDC
-t4_0x6a_80E7FDC:
+	thumb_func_start dblHeroSetupObject_t4_0x6a_80E7FDC
+dblHeroSetupObject_t4_0x6a_80E7FDC:
 	push {lr}
 	ldr r1, off_80E7FEC // =off_80E7FF0 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -98727,7 +98727,7 @@ off_80E7FEC: .word off_80E7FF0
 off_80E7FF0: .word object_timefreezeBegin+1
 	.word sub_80E7FFC+1
 	.word object_timefreezeEnd+1
-	thumb_func_end t4_0x6a_80E7FDC
+	thumb_func_end dblHeroSetupObject_t4_0x6a_80E7FDC
 
 	thumb_local_start
 sub_80E7FFC:
@@ -98763,7 +98763,7 @@ sub_80E8020:
 	add r7, r7, r5
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r4, #0
-	bl sub_80BD20A
+	bl spawnDblHeroObject_80BD20A
 	pop {r5}
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
@@ -98779,8 +98779,8 @@ locret_80E8056:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80E8020
 
-	thumb_func_start sub_80E8058
-sub_80E8058:
+	thumb_func_start spawnDblHeroSetupObject_80E8058
+spawnDblHeroSetupObject_80E8058:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x6a 
@@ -98799,7 +98799,7 @@ sub_80E8058:
 locret_80E8078:
 	pop {pc}
 	.balign 4, 0x00
-	thumb_func_end sub_80E8058
+	thumb_func_end spawnDblHeroSetupObject_80E8058
 
 	thumb_func_start t4_0x6b_80E807C
 t4_0x6b_80E807C:

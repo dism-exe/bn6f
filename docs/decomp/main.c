@@ -192,7 +192,7 @@ void __cdecl main_initToolkitAndOtherSubsystems()
     clearWord_e200AC1C();
     clearChatboxAndEvent();
     cleareMemory_802FF2C();
-    reqBBS_init_8004DF0();
+    initNewGameData_8004DF0();
     sub_8004D48();
     sub_8036ED4();
     sub_8036F24();

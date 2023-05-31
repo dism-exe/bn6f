@@ -2044,7 +2044,7 @@ char *sub_8004D48()
 
 
 // 0x8004df0
-void __cdecl reqBBS_init_8004DF0()
+void __cdecl initNewGameData_8004DF0()
 {
     int v0; // r2
     int v1; // r3
@@ -8646,7 +8646,7 @@ void __fastcall sub_800938A(int a1, int a2, int a3, int a4)
         *(v4 + 3) = 4;
     }
     sub_800801C();
-    chip_800B090();
+    someChipHandValidationHappensHere_800B090();
     if ( v5 == 6 )
     {
         *(v4 + 1) = 8;
@@ -9228,7 +9228,7 @@ void __fastcall sub_800980E(int a1, int a2, int a3, int a4)
         *(v4 + 3) = 4;
     }
     sub_80084F0();
-    chip_800B090();
+    someChipHandValidationHappensHere_800B090();
     if ( v5 )
     {
         v17 = v5;
@@ -9618,7 +9618,7 @@ void __fastcall sub_8009B20(int a1, int a2, int a3, int a4)
         *(v4 + 3) = 4;
     }
     sub_8008950();
-    chip_800B090();
+    someChipHandValidationHappensHere_800B090();
     if ( v5 )
     {
         v15 = v5;
@@ -10036,7 +10036,7 @@ void __fastcall sub_8009E56(int a1, int a2, int a3, int a4)
         *(v4 + 3) = 4;
     }
     sub_8008D60();
-    chip_800B090();
+    someChipHandValidationHappensHere_800B090();
     if ( v5 )
     {
         v15 = v5;
@@ -12223,7 +12223,7 @@ int __fastcall sub_800AFBA(unsigned int a1)
 
 // 0x800b022
 // (int a1) ->
-int __fastcall sub_800B022(unsigned int a1)
+int __fastcall tooManyGigasMegasAntiCheatHappensHere_800B022(unsigned int a1)
 {
     int v1; // r10
     unsigned int v2; // r4
@@ -12255,7 +12255,7 @@ int __fastcall sub_800B022(unsigned int a1)
 
 
 // 0x800b090
-void chip_800B090()
+void someChipHandValidationHappensHere_800B090()
 {
     int v0; // r10
     char *v1; // r0

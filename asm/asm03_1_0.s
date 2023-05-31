@@ -1705,7 +1705,7 @@ sub_8034C36:
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8034C6A
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8034C6A
 	bl sub_809E462
@@ -1745,9 +1745,9 @@ loc_8034C98:
 	thumb_func_end sub_8034C6E
 
 	thumb_local_start
-isFlag173DClearAndCutsceneScriptNull_8034c9c:
+IsNotSlipRunningAndNotInCutscene:
 	push {r4-r7,lr}
-	movflag EVENT_173D
+	movflag EVENT_IN_SLIPRUN_STATE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .returnFalse
 	bl IsCutsceneScriptNonNull // () -> zf
@@ -1757,12 +1757,12 @@ isFlag173DClearAndCutsceneScriptNull_8034c9c:
 .returnFalse
 	mov r0, #FALSE
 	pop {r4-r7,pc}
-	thumb_func_end isFlag173DClearAndCutsceneScriptNull_8034c9c
+	thumb_func_end IsNotSlipRunningAndNotInCutscene
 
 	thumb_local_start
 sub_8034CB6:
 	push {r4-r7,lr}
-	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
+	bl IsNotSlipRunningAndNotInCutscene
 	beq loc_8034D52
 	mov r7, r10
 	ldr r2, [r7,#oToolkit_JoypadPtr]
@@ -1852,7 +1852,7 @@ byte_8034D70: .byte 0x0, 0x0, 0xC, 0x0, 0xFF, 0x0, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0
 	thumb_local_start
 sub_8034D7C:
 	push {r4-r7,lr}
-	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
+	bl IsNotSlipRunningAndNotInCutscene
 	beq loc_8034DA4
 	mov r7, r10
 	ldr r2, [r7,#oToolkit_JoypadPtr]
@@ -1878,7 +1878,7 @@ off_8034DAC: .word CutsceneScript_80991F4
 	thumb_local_start
 sub_8034DB0:
 	push {r4-r7,lr}
-	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
+	bl IsNotSlipRunningAndNotInCutscene
 	beq loc_8034E22
 	ldr r7, off_8034E28 // =eS200AC80
 	ldrh r0, [r7,#0x4] // (word_200AC84 - 0x200ac80)
@@ -2027,7 +2027,7 @@ byte_8034EEF: .byte 0xF8
 	thumb_local_start
 HandleCoordinateInteractionCutscene:
 	push {r4-r7,lr}
-	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
+	bl IsNotSlipRunningAndNotInCutscene
 	beq .done
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
@@ -2199,7 +2199,7 @@ off_8035050: .word UnkInternetMapGroupJumptable_8034784
 	thumb_local_start
 sub_8035054:
 	push {r4-r7,lr}
-	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
+	bl IsNotSlipRunningAndNotInCutscene
 	beq loc_803507A
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -2223,7 +2223,7 @@ off_8035080: .word byte_809AE68
 	thumb_local_start
 sub_8035084:
 	push {r4-r7,lr}
-	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
+	bl IsNotSlipRunningAndNotInCutscene
 	beq loc_803509E
 	bl sub_8035756
 	beq loc_803509E
@@ -2259,7 +2259,7 @@ npc_80350BC:
 	ldrb r0, [r0,#oGameState_MapGroup]
 	cmp r0, #0x80
 	blt loc_8035126
-	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
+	bl IsNotSlipRunningAndNotInCutscene
 	beq loc_8035126
 	movflag EVENT_1708
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
@@ -2474,7 +2474,7 @@ word_8035250: .hword 0x1, 0x21A
 	thumb_local_start
 ghostNaviCheck_8035274:
 	push {r4-r7,lr}
-	bl isFlag173DClearAndCutsceneScriptNull_8034c9c
+	bl IsNotSlipRunningAndNotInCutscene
 	beq locret_80352D4
 	movflag EVENT_1700
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf

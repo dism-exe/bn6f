@@ -180,9 +180,12 @@ sub_801FF18:
 	ldrsb r0, [r5,r0]
 	tst r0, r0
 	blt loc_801FF52
+
+	// transfer buffer store 1
 	lsl r0, r0, #2
 	ldr r1, [r5,#0x8] // (dword_20399F8 - 0x20399f0)
 	str r1, [r7,r0]
+
 loc_801FF52:
 	add r5, #0x10
 	ldr r7, off_8020100 // =dword_203F5A0 
@@ -206,9 +209,12 @@ loc_801FF66:
 	ldrsb r0, [r5,r0]
 	tst r0, r0
 	blt loc_801FF84
+
+	// transfer buffer store 2
 	lsl r0, r0, #2
 	ldr r1, [r5,#0x8] // (dword_2039A08 - 0x2039a00)
 	str r1, [r7,r0]
+
 loc_801FF84:
 	ldr r5, off_8020108 // =eStruct2036780
 	mov r0, r10
@@ -235,6 +241,8 @@ loc_801FF84:
 	sub r0, #1
 	strb r0, [r4,#0x3] // (eStruct203F7D8+3 - 0x203f7d8)
 	blt loc_801FFC6
+
+	// transfer buffer store 3
 	strb r0, [r5,#0x4] // (byte_2036784 - 0x2036780)
 	lsl r0, r0, #2
 	ldr r1, off_802010C // =dword_203CBE0 
@@ -287,9 +295,12 @@ loc_801FFEA:
 	ldrsb r0, [r5,r0]
 	tst r0, r0
 	blt loc_802001C
+
+	// transfer buffer store 1
 	lsl r0, r0, #2
 	ldr r1, [r5,#0x8] // (dword_20399F8 - 0x20399f0)
 	str r1, [r7,r0]
+
 loc_802001C:
 	add r5, #0x10
 	ldr r7, off_8020120 // =dword_203F5A0 
@@ -313,9 +324,12 @@ loc_8020030:
 	ldrsb r0, [r5,r0]
 	tst r0, r0
 	blt loc_802004E
+
+	// transfer buffer store 2
 	lsl r0, r0, #2
 	ldr r1, [r5,#0x8] // (dword_2039A08 - 0x2039a00)
 	str r1, [r7,r0]
+
 loc_802004E:
 	ldr r1, [sp,#4]
 	mov r2, #0x10
@@ -346,6 +360,8 @@ loc_802005A:
 	sub r0, #1
 	strb r0, [r4,#3]
 	blt loc_8020094
+
+	// transfer buffer store 3
 	strb r0, [r5,#0x4] // (byte_2036784 - 0x2036780)
 	lsl r0, r0, #2
 	ldr r1, off_802012C // =dword_203CBE0 

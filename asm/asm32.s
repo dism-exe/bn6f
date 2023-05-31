@@ -3183,7 +3183,7 @@ loc_810F738:
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	bl sub_8016934
+	bl blindVisualHandledHere_8016934
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #8
@@ -3410,7 +3410,7 @@ loc_810F8E4:
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	bl sub_8016934
+	bl blindVisualHandledHere_8016934
 	mov r0, #0x40
 	bl object_clearFlag // (int bitfield) -> void
 	mov r2, #0x64
@@ -13115,7 +13115,7 @@ snakearmAI_8115074:
 	mov r1, #OBJECT_FLAG_VISIBLE
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	bl sub_8016934
+	bl blindVisualHandledHere_8016934
 locret_8115096:
 	pop {r4-r7,pc}
 	thumb_func_end snakearmAI_8115074
@@ -34617,7 +34617,7 @@ loc_8120D46:
 	bne loc_8120D64
 	mov r6, #0x10
 	mov r0, #0x22
-	bl sub_8137718
+	bl GiveFolder
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r2, [r0,#5]
@@ -34625,7 +34625,7 @@ loc_8120D46:
 	b loc_8120D9A
 loc_8120D64:
 	mov r0, #0x22
-	bl sub_81377EC
+	bl isFolderSlotInUse_81377EC
 	mov r2, r0
 	cmp r2, #3
 	bge loc_8120D8A
@@ -34644,7 +34644,7 @@ loc_8120D8A:
 	mov r6, #0x10
 loc_8120D8C:
 	mov r0, #0x22
-	bl sub_8137718
+	bl GiveFolder
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r2, [r0,#5]

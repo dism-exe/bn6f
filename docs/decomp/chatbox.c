@@ -3266,7 +3266,7 @@ int chatbox_80425E0()
 {
     int v0; // r4
 
-    sub_8137718(*(v0 + 2));
+    GiveFolder(*(v0 + 2));
     return 0;
 }
 
