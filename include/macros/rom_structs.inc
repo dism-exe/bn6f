@@ -9,3 +9,4 @@
 	.include "include/rom_structs/BGScrollCallbacksData.inc"
 	.include "include/rom_structs/BGAnimData.inc"
 	.include "include/rom_structs/WarpData.inc"
+	.include "include/rom_structs/ChipData.inc"

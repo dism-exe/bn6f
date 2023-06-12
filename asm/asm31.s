@@ -101993,7 +101993,7 @@ sub_80E97BE:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
 	strb r1, [r0,#oAIData_BPwrAtk]
-	ldrb r0, [r0,#oAIData_Unk_06]
+	ldrb r0, [r0,#oAIData_BButton]
 	mov r2, #0
 	cmp r0, #4
 	beq loc_80E97D8
@@ -102005,7 +102005,7 @@ sub_80E97BE:
 loc_80E97D8:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
-	strb r2, [r0,#oAIData_Unk_06]
+	strb r2, [r0,#oAIData_BButton]
 locret_80E97DE:
 	pop {pc}
 	.balign 4, 0
@@ -115013,7 +115013,7 @@ loc_80F03AE:
 loc_80F03CA:
 	b locret_80F0604
 loc_80F03CC:
-	bl sub_8010004
+	bl getCurChipInBattleHand_8010004
 	b loc_80F057C
 loc_80F03D2:
 	bl sub_802E4E4
@@ -115333,11 +115333,11 @@ loc_80F0640:
 	ldrb r0, [r2,#oAIData_PwrAtkButton]
 	cmp r0, #1
 	bne loc_80F068A
-	ldrb r0, [r2,#oAIData_Unk_1b]
+	ldrb r0, [r2,#oAIData_PwrAtkCurChargeTime]
 	cmp r0, r3
 	blt loc_80F068C
 	mov r0, #0xa
-	strb r0, [r2,#oAIData_Unk_1b]
+	strb r0, [r2,#oAIData_PwrAtkCurChargeTime]
 	ldrh r1, [r4]
 	add r1, #1
 loc_80F068A:

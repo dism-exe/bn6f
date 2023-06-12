@@ -92541,7 +92541,7 @@ int __usercall playerAI_sub_80F0354@<R0>(Battle *obj@<R5>)
                 return v5 != 0;
             goto LABEL_34;
         }
-        v7 = sub_8010004();
+        v7 = getCurChipInBattleHand_8010004();
         goto LABEL_61;
     }
     sub_802E4E4();

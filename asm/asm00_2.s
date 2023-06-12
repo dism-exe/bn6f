@@ -1909,10 +1909,10 @@ loc_800FB74:
 	add r2, r2, r1
 	mov r0, #0
 	strh r0, [r2,#oAIAttackVars_Unk_14]
-	ldrb r1, [r1,#oAIData_Unk_11]
+	ldrb r1, [r1,#oAIData_BeastOutAPwrAtk]
 	b loc_800FB9C
 loc_800FB9A:
-	ldrb r1, [r1,#oAIData_Unk_05]
+	ldrb r1, [r1,#oAIData_APwrAtk]
 loc_800FB9C:
 	cmp r1, #0x18
 	beq loc_800FBE6
@@ -2367,18 +2367,18 @@ loc_800FF0C:
 	strb r0, [r4,#oAIData_Unk_04]
 	mov r1, #4
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
-	strb r0, [r4,#oAIData_Unk_06]
+	strb r0, [r4,#oAIData_BButton]
 	mov r1, #5
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	bl sub_800FFAA
 	mov r1, #0x39 
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
-	strb r0, [r4,#oAIData_Unk_05]
+	strb r0, [r4,#oAIData_APwrAtk]
 	mov r1, #7
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
-	strb r0, [r4,#oAIData_Unk_08]
+	strb r0, [r4,#oAIData_BLeftAbility]
 	mov r0, #0xff
-	strb r0, [r4,#oAIData_Unk_11]
+	strb r0, [r4,#oAIData_BeastOutAPwrAtk]
 	pop {r4,pc}
 loc_800FF36:
 	mov r2, #6
@@ -2388,17 +2388,17 @@ loc_800FF36:
 	ldrb r1, [r0]
 	strb r1, [r4,#oAIData_Unk_04]
 	ldrb r1, [r0,#1]
-	strb r1, [r4,#oAIData_Unk_05]
+	strb r1, [r4,#oAIData_APwrAtk]
 	ldrb r1, [r0,#2]
-	strb r1, [r4,#oAIData_Unk_06]
+	strb r1, [r4,#oAIData_BButton]
 	push {r0}
 	ldrb r0, [r0,#3]
 	bl sub_800FFAA
 	pop {r0}
 	ldrb r1, [r0,#4]
-	strb r1, [r4,#oAIData_Unk_08]
+	strb r1, [r4,#oAIData_BLeftAbility]
 	ldrb r1, [r0,#5]
-	strb r1, [r4,#oAIData_Unk_11]
+	strb r1, [r4,#oAIData_BeastOutAPwrAtk]
 	pop {r4,pc}
 	thumb_func_end sub_800FEEC
 
@@ -2422,18 +2422,18 @@ loc_800FF7E:
 	strb r0, [r4,#oAIData_Unk_04]
 	mov r1, #4
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
-	strb r0, [r4,#oAIData_Unk_06]
+	strb r0, [r4,#oAIData_BButton]
 	mov r1, #5
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	bl sub_800FFAA
 	mov r1, #0x39 
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
-	strb r0, [r4,#oAIData_Unk_05]
+	strb r0, [r4,#oAIData_APwrAtk]
 	mov r1, #7
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
-	strb r0, [r4,#oAIData_Unk_08]
+	strb r0, [r4,#oAIData_BLeftAbility]
 	mov r0, #0xff
-	strb r0, [r4,#oAIData_Unk_11]
+	strb r0, [r4,#oAIData_BeastOutAPwrAtk]
 	pop {r4,pc}
 locret_800FFA8:
 	pop {r4,pc}
@@ -2460,7 +2460,7 @@ loc_800FFC0:
 	blt locret_800FFDE
 	cmp r0, #0x26 
 	bgt locret_800FFDE
-	ldrb r0, [r4,#oAIData_Unk_06]
+	ldrb r0, [r4,#oAIData_BButton]
 	mov r2, #0
 	cmp r0, #4
 	beq loc_800FFDC
@@ -2470,7 +2470,7 @@ loc_800FFC0:
 	cmp r0, #0x2c 
 	bne locret_800FFDE
 loc_800FFDC:
-	strb r2, [r4,#oAIData_Unk_06]
+	strb r2, [r4,#oAIData_BButton]
 locret_800FFDE:
 	pop {pc}
 	.balign 4, 0
@@ -2509,8 +2509,8 @@ GetAIData_Unk_44_Flag:
 	mov pc, lr
 	thumb_func_end GetAIData_Unk_44_Flag
 
-	thumb_func_start sub_8010004
-sub_8010004:
+	thumb_func_start getCurChipInBattleHand_8010004
+getCurChipInBattleHand_8010004:
 	push {lr}
 loc_8010006:
 	ldrb r0, [r5,#oBattleObject_Alliance]
@@ -2521,7 +2521,7 @@ loc_8010006:
 	add r1, #2
 	ldrh r0, [r2,r1]
 	pop {pc}
-	thumb_func_end sub_8010004
+	thumb_func_end getCurChipInBattleHand_8010004
 
 	thumb_func_start getBattleHandAddr_8010018
 getBattleHandAddr_8010018:
@@ -5490,7 +5490,7 @@ calledOnBAtkProbInit_8011764:
 	mov r7, #oAIData_AttackVars
 	add r7, r7, r6
 	ldr r1, off_80117D0 // =off_80117D4 
-	ldrb r0, [r6,#oAIData_Unk_06]
+	ldrb r0, [r6,#oAIData_BButton]
 	lsl r0, r0, #2
 	ldr r1, [r1,r0]
 	mov lr, pc
@@ -5519,7 +5519,7 @@ sub_8011790:
 	mov r7, #oAIData_AttackVars
 	add r7, r7, r6
 	ldr r1, off_80117D0 // =off_80117D4 
-	ldrb r0, [r6,#oAIData_Unk_08]
+	ldrb r0, [r6,#oAIData_BLeftAbility]
 	lsl r0, r0, #2
 	ldr r1, [r1,r0]
 	mov lr, pc
@@ -8775,7 +8775,7 @@ sub_8012EA8:
 	ldr r3, [r5,#oBattleObject_AIDataPtr]
 	mov r0, #0
 	strb r0, [r3,#oAIData_PwrAtkState]
-	strb r0, [r3,#oAIData_Unk_1b]
+	strb r0, [r3,#oAIData_PwrAtkCurChargeTime]
 	strb r0, [r3,#oAIData_PwrAtkButton]
 	ldr r0, dword_8012FAC // =0x60000 
 	bl ClearAIData_Unk_44_Flag
@@ -8791,7 +8791,7 @@ sub_8012EBC:
 	bl returnBoolIfAIDataFlagsAreSet_8012F3E
 	beq loc_8012F34
 	ldrb r0, [r4,#oAIData_PwrAtkButton]
-	bl sub_8012F62
+	bl DeterminePowerAttackChargeTime
 	mov r7, r0
 	bl GetAIData_Unk_44_Flag
 	mov r3, #0
@@ -8825,22 +8825,23 @@ loc_8012EF8:
 	b loc_8012F14
 loc_8012F0E:
 	mov r0, #0
-	strb r0, [r4,#oAIData_Unk_1b]
+	strb r0, [r4,#oAIData_PwrAtkCurChargeTime]
 	strb r0, [r4,#oAIData_PwrAtkState]
 loc_8012F14:
-	ldrb r0, [r4,#oAIData_Unk_1b]
+	ldrb r0, [r4,#oAIData_PwrAtkCurChargeTime]
 	add r0, #1
-	strb r0, [r4,#oAIData_Unk_1b]
+	strb r0, [r4,#oAIData_PwrAtkCurChargeTime]
 	cmp r0, #0xa
 	blt loc_8012F30
 	mov r3, #1
 	cmp r0, r7
 	blt loc_8012F30
-	strb r7, [r4,#oAIData_Unk_1b]
+	strb r7, [r4,#oAIData_PwrAtkCurChargeTime]
 	mov r3, #2
 	b loc_8012F30
+// dead code
 	mov r0, #0
-	strb r0, [r4,#0x1b]
+	strb r0, [r4,#oAIData_PwrAtkCurChargeTime]
 	mov r3, #0
 loc_8012F30:
 	strb r3, [r4,#oAIData_PwrAtkState]
@@ -8848,7 +8849,7 @@ loc_8012F30:
 loc_8012F34:
 	mov r0, #0
 	strb r0, [r4,#oAIData_PwrAtkButton]
-	strb r0, [r4,#oAIData_Unk_1b]
+	strb r0, [r4,#oAIData_PwrAtkCurChargeTime]
 	strb r0, [r4,#oAIData_PwrAtkState]
 locret_8012F3C:
 	pop {r4,r6,r7,pc}
@@ -8877,41 +8878,51 @@ loc_8012F5E:
 	thumb_func_end returnBoolIfAIDataFlagsAreSet_8012F3E
 
 	thumb_local_start
-sub_8012F62:
+DeterminePowerAttackChargeTime:
 	push {r4,r7,lr}
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
-	mov r7, #7
-	cmp r0, #2
-	beq loc_8012F90
-	mov r7, #5
-	mov r1, #0x2c 
+
+	mov r7, #oAIData_BPwrAtk
+	cmp r0, #JOYPAD_B
+	beq .gotAIDataPwrAtkStructOffset
+
+	mov r7, #oAIData_APwrAtk
+	mov r1, #oNaviStats_Transformation 
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
-	cmp r0, #0xb
-	blt loc_8012F90
-	cmp r0, #0x18
-	bgt loc_8012F90
-	bl sub_8010004
+	cmp r0, #TF_GREGARBEAST
+	blt .gotAIDataPwrAtkStructOffset
+	cmp r0, #TF_FALZARBEASTOVER
+	bgt .gotAIDataPwrAtkStructOffset
+
+	bl getCurChipInBattleHand_8010004
 	ldr r1, dword_8012FC0 // =0xffff 
-	beq loc_8012F90
+	// will never succeed
+	// the operation which reads the current chip
+	// does not set control codes
+	// and the previous instruction that sets control
+	// codes will always set nonzero
+	beq .gotAIDataPwrAtkStructOffset
+
 	bl getChip8021DA8 // (int chip_idx) -> ChipData*
-	ldrb r0, [r0,#6]
-	cmp r0, #0xa
-	bne loc_8012F90
-	mov r7, #0x11
-loc_8012F90:
+	ldrb r0, [r0,#oChipData_ChipElement]
+	cmp r0, #CHIP_ELEM_NONE
+	bne .gotAIDataPwrAtkStructOffset
+	mov r7, #oAIData_BeastOutAPwrAtk
+
+.gotAIDataPwrAtkStructOffset
 	mov r1, #3
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	lsl r3, r0, #1
 	mov r0, #0xff
 	ldrb r1, [r4,r7]
 	cmp r1, #0xff
-	beq locret_8012FAA
+	beq .returnMaxChargeTime
 	mov r2, #0xa
 	mul r1, r2
 	add r1, r1, r3
-	ldr r2, off_8012FC4 // =byte_8020404 
+	ldr r2, off_8012FC4 // =powerAttackChargeTimes_8020404 
 	ldrh r0, [r2,r1]
-locret_8012FAA:
+.returnMaxChargeTime
 	pop {r4,r7,pc}
 	.balign 4, 0
 dword_8012FAC: .word 0x60000
@@ -8920,8 +8931,8 @@ dword_8012FB4: .word 0x40000
 dword_8012FB8: .word 0x1000002F
 off_8012FBC: .word 0x200
 dword_8012FC0: .word 0xFFFF
-off_8012FC4: .word byte_8020404
-	thumb_func_end sub_8012F62
+off_8012FC4: .word powerAttackChargeTimes_8020404
+	thumb_func_end DeterminePowerAttackChargeTime
 
 	thumb_local_start
 pwrAtkRelated_readsFromJoypad_8012FC8:
@@ -8940,7 +8951,7 @@ loc_8012FE4:
 	ldr r1, off_80133B0 // =0x800 
 	tst r1, r6
 	bne locret_8013006
-	bl sub_8010004
+	bl getCurChipInBattleHand_8010004
 	add r1, r0, #1
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
@@ -9090,7 +9101,7 @@ loc_801312A:
 	ldr r0, dword_80133CC // =0x60000 
 	bl ClearAIData_Unk_44_Flag
 loc_8013130:
-	ldrb r0, [r4,#oAIData_Unk_08]
+	ldrb r0, [r4,#oAIData_BLeftAbility]
 	cmp r0, #0xff
 	beq loc_8013176
 	ldrb r0, [r4,#oAIData_Unk_15]
@@ -9129,7 +9140,7 @@ loc_8013172:
 	mov r0, #0
 	strb r0, [r4,#oAIData_Unk_13]
 loc_8013176:
-	ldrb r1, [r4,#oAIData_Unk_06]
+	ldrb r1, [r4,#oAIData_BButton]
 	cmp r1, #0xff
 	beq loc_80131D8
 	mov r2, #3
@@ -9144,9 +9155,9 @@ loc_8013176:
 loc_801318E:
 	mov r1, #oNaviStats_Transformation 
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
-	cmp r0, #0x14
+	cmp r0, #TF_TENGUBEAST
 	beq loc_801319C
-	cmp r0, #0x16
+	cmp r0, #TF_DUSTBEAST
 	bne loc_80131A6
 loc_801319C:
 	bl GetAIData_Unk_44_Flag
@@ -9167,12 +9178,12 @@ loc_80131B4:
 	beq loc_80131BE
 	ldrh r0, [r4,#oAIData_JoypadUp]
 loc_80131BE:
-	mov r1, #2
+	mov r1, #JOYPAD_B
 	tst r0, r1
 	beq loc_80131D8
 	mov r0, #1
 	ldrb r1, [r4,#oAIData_PwrAtkButton]
-	cmp r1, #2
+	cmp r1, #JOYPAD_B
 	bne loc_80131D4
 	ldrb r1, [r4,#oAIData_PwrAtkState]
 	cmp r1, #2
@@ -9198,7 +9209,7 @@ loc_80131EE:
 	mov r1, #0xc
 	tst r1, r6
 	bne locret_8013234
-	bl sub_8010004
+	bl getCurChipInBattleHand_8010004
 	ldr r1, dword_80133E0 // =0xffff 
 	cmp r0, r1
 	beq locret_8013234
@@ -9410,16 +9421,16 @@ loc_8013366:
 sub_801336C:
 	push {lr}
 	ldr r1, [r5,#oBattleObject_AIDataPtr]
-	ldrb r0, [r1,#oAIData_Unk_05]
+	ldrb r0, [r1,#oAIData_APwrAtk]
 	cmp r0, #0xff
 	bne loc_801337C
-	ldrb r0, [r1,#oAIData_Unk_11]
+	ldrb r0, [r1,#oAIData_BeastOutAPwrAtk]
 	cmp r0, #0xff
 	beq loc_8013392
 loc_801337C:
 	bl returnBoolIfAIDataFlagsAreSet_8012F3E
 	beq loc_8013392
-	bl sub_8010004
+	bl getCurChipInBattleHand_8010004
 	ldr r1, dword_80133E0 // =0xffff 
 	cmp r0, r1
 	beq loc_8013392
@@ -10264,7 +10275,7 @@ loc_8013918:
 	ldrb r0, [r6,#5]
 	strb r0, [r7,#oAIData_BPwrAtk]
 	ldrb r0, [r6,#7]
-	strb r0, [r7,#oAIData_Unk_08]
+	strb r0, [r7,#oAIData_BLeftAbility]
 	ldr r0, off_8013CA8 // =0x8000000
 	bl object_clearFlag // (int bitfield) -> void
 	bl object_clearInvulnerableTime
@@ -10292,7 +10303,7 @@ sub_801393A:
 	ldrb r0, [r6,#5]
 	strb r0, [r7,#oAIData_BPwrAtk]
 	ldrb r0, [r6,#7]
-	strb r0, [r7,#oAIData_Unk_08]
+	strb r0, [r7,#oAIData_BLeftAbility]
 loc_8013956:
 	mov r0, #0x20 
 	ldrb r1, [r6,#0x1b]
@@ -10613,7 +10624,7 @@ loc_8013B6E:
 	ldrb r0, [r6,#7]
 	strb r0, [r7,#oNaviStats_GigaLevel]
 	ldrb r0, [r6,#8]
-	strb r0, [r7,#oNaviStats_APwrAtk]
+	strb r0, [r7,#oNaviStats_BButton]
 	ldrb r0, [r6,#9]
 	strb r0, [r7,#oNaviStats_BPwrAtk]
 	ldrb r0, [r6,#0xa]
@@ -11295,7 +11306,7 @@ sub_8014080:
 	bne locret_80140EC
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	mov r1, #0xff
-	strb r1, [r0,#oAIData_Unk_08]
+	strb r1, [r0,#oAIData_BLeftAbility]
 locret_80140EC:
 	pop {pc}
 	thumb_func_end sub_8014080
@@ -11336,7 +11347,7 @@ sub_80140EE:
 	bne loc_801414A
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	mov r1, #0xff
-	strb r1, [r0,#oAIData_Unk_08]
+	strb r1, [r0,#oAIData_BLeftAbility]
 loc_801414A:
 	bl sub_801469C
 locret_801414E:
@@ -18282,7 +18293,7 @@ sub_8017AB4:
 	bl sub_800BEDA
 	tst r0, r0
 	beq loc_8017B5E
-	bl sub_8010004
+	bl getCurChipInBattleHand_8010004
 	add r1, r0, #1
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10

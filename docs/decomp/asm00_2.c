@@ -1896,7 +1896,7 @@ int sub_800FFFE()
 
 
 // 0x8010004
-int sub_8010004()
+int getCurChipInBattleHand_8010004()
 {
     int v0; // r5
     char *v1; // r0
@@ -6585,7 +6585,7 @@ int sub_8012EBC()
     if ( !v3 )
         return result;
     returnBoolIfAIDataFlagsAreSet_8012F3E();
-    if ( v3 || (v4 = sub_8012F62(v1[30]), v5 = sub_800FFFE(), v6 = 0, !(v5 & 0x60000)) )
+    if ( v3 || (v4 = DeterminePowerAttackChargeTime(v1[30]), v5 = sub_800FFFE(), v6 = 0, !(v5 & 0x60000)) )
     {
         result = 0;
         v1[30] = 0;
@@ -6649,7 +6649,7 @@ BOOL returnBoolIfAIDataFlagsAreSet_8012F3E()
 
 
 // 0x8012f62
-signed int __fastcall sub_8012F62(int a1)
+signed int __fastcall DeterminePowerAttackChargeTime(int a1)
 {
     int v1; // r5
     int v2; // r4
@@ -6667,7 +6667,7 @@ signed int __fastcall sub_8012F62(int a1)
         a1 = sub_8013774(a1, 44);
         if ( a1 >= 11 && a1 <= 24 )
         {
-            a1 = sub_8010004();
+            a1 = getCurChipInBattleHand_8010004();
             if ( !v4 )
             {
                 a1 = *(getChip8021DA8(a1) + 6);
@@ -6680,7 +6680,7 @@ signed int __fastcall sub_8012F62(int a1)
     result = 255;
     v7 = *(v2 + v3);
     if ( v7 != 255 )
-        result = *&byte_8020404[10 * v7 + v5];
+        result = *&powerAttackChargeTimes_8020404[10 * v7 + v5];
     return result;
 }
 
@@ -6719,7 +6719,7 @@ int pwrAtkRelated_readsFromJoypad_8012FC8()
         {
             if ( !(&loc_800 & v3) )
             {
-                result = sub_8010004();
+                result = getCurChipInBattleHand_8010004();
                 if ( (result + 1) & 0xFFFF )
                 {
                     result = *(v2 + 44);
@@ -6877,7 +6877,7 @@ LABEL_71:
     {
         if ( !(v3 & 0xC) )
         {
-            result = sub_8010004();
+            result = getCurChipInBattleHand_8010004();
             if ( result != 0xFFFF )
             {
                 sub_801336C();
@@ -6990,7 +6990,7 @@ signed int sub_801336C()
     signed int result; // r0
 
     v1 = *(v0 + 88);
-    if ( *(v1 + 5) == 255 && *(v1 + 17) == 255 || (returnBoolIfAIDataFlagsAreSet_8012F3E(), v2) || (v3 = sub_8010004(), v3 == 0xFFFF) )
+    if ( *(v1 + 5) == 255 && *(v1 + 17) == 255 || (returnBoolIfAIDataFlagsAreSet_8012F3E(), v2) || (v3 = getCurChipInBattleHand_8010004(), v3 == 0xFFFF) )
         result = 0;
     else
         result = sub_8013236(v3);
@@ -14016,7 +14016,7 @@ int sub_8017AB4()
     {
         if ( !sub_800BEDA() )
             goto LABEL_13;
-        v1 = sub_8010004();
+        v1 = getCurChipInBattleHand_8010004();
         if ( !((v1 + 1) & 0xFFFF) || !(*(getChip8021DA8(v1) + 9) & 1) )
             goto LABEL_13;
         v2 = useChipRelated_80127C0(v0, 0);

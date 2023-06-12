@@ -9942,7 +9942,7 @@ signed int __usercall sub_802D358@<R0>(Battle *obj@<R5>)
         v2 = sub_80E164A();
         ifPanelFlagSetFindBattleActorWithCollisionOnPanelXY_80E7486(v2, v3, obj->Alliance);
     }
-    if ( sub_8010004() == 0xFFFF || (v4 = sub_800FFE4(4), sub_800FB54(obj, v4) == 0xFFFF) )
+    if ( getCurChipInBattleHand_8010004() == 0xFFFF || (v4 = sub_800FFE4(4), sub_800FB54(obj, v4) == 0xFFFF) )
     {
         *v1 = 4;
         result = 0;

@@ -7,7 +7,7 @@
 	u8 Attack // loc=0x1
 	u8 Speed // loc=0x2
 	u8 Charge // loc=0x3
-	u8 APwrAtk // loc=0x4
+	u8 BButton // loc=0x4
 	u8 BPwrAtk // loc=0x5
 	u8 FstBarr // loc=0x6
 	u8 BLeftAbility // loc=0x7

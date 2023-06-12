@@ -124,5 +124,10 @@
 			\struct_entry \label\()_\field, 1, \value
 		.endm
 
+		// TODO arrays in structs
+		//.macro u8_arr field:req, arr_size:req
+		//	struct_entry \label\()_\field, \arr_size
+		//.endm
+
 		.set __defined_types, 1
 	.endm

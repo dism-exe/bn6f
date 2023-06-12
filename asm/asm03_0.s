@@ -13722,7 +13722,7 @@ sub_802D358:
 	tst r0, r1
 	bne loc_802D3A0
 loc_802D37A:
-	bl sub_8010004
+	bl getCurChipInBattleHand_8010004
 	ldr r3, dword_802D628 // =0xffff 
 	cmp r0, r3
 	beq loc_802D3A0

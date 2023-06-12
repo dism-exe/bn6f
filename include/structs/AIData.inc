@@ -10,10 +10,10 @@
 	u8 Unk_02 // loc=0x2
 	u8 Unk_03 // loc=0x3
 	u8 Unk_04 // loc=0x4
-	u8 Unk_05 // loc=0x5
-	u8 Unk_06 // loc=0x6
+	u8 APwrAtk // loc=0x5
+	u8 BButton // loc=0x6
 	u8 BPwrAtk // loc=0x7
-	u8 Unk_08 // loc=0x8
+	u8 BLeftAbility // loc=0x8
 	u8 Unk_09 // loc=0x9
 	u8 Unk_0a // loc=0xa
 	u8 Unk_0b // loc=0xb
@@ -22,7 +22,7 @@
 	u8 Unk_0e // loc=0xe
 	u8 Unk_0f // loc=0xf
 	u8 Unk_10 // loc=0x10
-	u8 Unk_11 // loc=0x11
+	u8 BeastOutAPwrAtk // loc=0x11
 	u8 Unk_12 // loc=0x12
 	u8 Unk_13 // loc=0x13
 	.space 0x1
@@ -32,7 +32,7 @@
 	u8 Unk_18 // loc=0x18
 	u8 ChipLockoutTimer // loc=0x19
 	u8 Unk_1a // loc=0x1a
-	u8 Unk_1b // loc=0x1b
+	u8 PwrAtkCurChargeTime // loc=0x1b
 	u8 Unk_1c // loc=0x1c
 	u8 PwrAtkState // loc=0x1d
 	u8 PwrAtkButton // loc=0x1e
