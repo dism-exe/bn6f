@@ -9796,7 +9796,7 @@ signed int __noreturn sub_8014D08()
         *v4 |= 0x14u;
     }
     v1[8] = 6;
-    sprite_decompress(12, 5);
+    sprite_decompressTemp(12, 5);
     result = 4;
     *v1 = 4;
     return result;
@@ -10011,7 +10011,7 @@ signed int __noreturn sub_8014F40()
         *v4 |= 0x14u;
     }
     v1[8] = 6;
-    sprite_decompress(12, 5);
+    sprite_decompressTemp(12, 5);
     result = 4;
     *v1 = 4;
     return result;
@@ -10220,7 +10220,7 @@ signed int __noreturn sub_801516C()
         *v4 |= 0x14u;
     }
     v1[8] = 6;
-    sprite_decompress(12, 5);
+    sprite_decompressTemp(12, 5);
     result = 4;
     *v1 = 4;
     return result;

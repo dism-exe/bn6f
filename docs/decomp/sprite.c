@@ -5,14 +5,14 @@ int __usercall sprite_loadAnimationData@<R0>(Battle *obj@<R5>)
     char *v1; // r5
 
     v1 = obj + 16 * (obj->objTypeSpriteOff >> 4);
-    return sub_3006730();
+    return _sprite_loadAnimationData();
 }
 
 
 // 0x80026b6
-int sprite_80026B6()
+int sprite_loadAnimationData_spritePtrProvidedDirectly()
 {
-    return sub_3006730();
+    return _sprite_loadAnimationData();
 }
 
 
@@ -414,7 +414,7 @@ signed int __fastcall sub_80029A8(_BYTE *a1)
 
 
 // 0x8002a64
-signed int __fastcall sub_8002A64(int a1, int a2)
+signed int __fastcall sprite_decompress(int a1, int a2)
 {
     unsigned int v2; // r0
     int v3; // r1
@@ -476,7 +476,7 @@ unsigned int sub_8002ADE()
 
 
 // 0x8002b30
-signed int __fastcall sprite_decompress(int a1, int a2)
+signed int __fastcall sprite_decompressTemp(int a1, int a2)
 {
     unsigned int v2; // r0
     char *v3; // r9

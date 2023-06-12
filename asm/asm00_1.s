@@ -14343,13 +14343,13 @@ loc_800A5C4:
 	sub r1, #2
 	sub r2, #2
 loc_800A5CE:
-	bl sub_8000D12
+	bl ShuffleHwordList_SecondaryRNG
 loc_800A5D2:
 	ldr r0, off_800A920 // =word_2033040
 	mov r1, r6 // num gigas
 	beq loc_800A634
 	mov r2, r6
-	bl sub_8000D12
+	bl ShuffleHwordList_SecondaryRNG
 	bl GetBattleMode
 	cmp r0, #1 // crossover
 	beq loc_800A610

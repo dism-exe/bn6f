@@ -10932,11 +10932,11 @@ void __fastcall sub_800A570(__int16 *a1, int a2, int a3)
             v9 -= 2;
             v10 -= 2;
         }
-        sub_8000D12(v8, v9, v10);
+        ShuffleHwordList_SecondaryRNG(v8, v9, v10);
     }
     if ( v6 )
     {
-        sub_8000D12(word_2033040, v6, v6);
+        ShuffleHwordList_SecondaryRNG(word_2033040, v6, v6);
         if ( sub_802D234() == 1 )
         {
             v16 = 0;

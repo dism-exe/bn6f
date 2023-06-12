@@ -23,7 +23,7 @@ signed int __noreturn sub_80B8230()
     int v3; // r1
     signed int result; // r0
 
-    sprite_decompress(8, 18);
+    sprite_decompressTemp(8, 18);
     sprite_load(v0, 128, 8, 18);
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
@@ -1244,7 +1244,7 @@ signed int __noreturn sub_80B8EC4()
 
     object_setCoordinatesFromPanels(v0);
     *(v0 + 60) = 0;
-    sprite_decompress(8, 12);
+    sprite_decompressTemp(8, 12);
     sprite_load(v0, 128, 8, 12);
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
@@ -2688,7 +2688,7 @@ signed int __noreturn sub_80B99E4()
 
     object_setCoordinatesFromPanels(v0);
     *(v0 + 62) = 0;
-    sprite_decompress(8, 13);
+    sprite_decompressTemp(8, 13);
     sprite_load(v0, 128, 8, 13);
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
@@ -3809,7 +3809,7 @@ signed int __noreturn sub_80BA388()
 
     object_setCoordinatesFromPanels(v0);
     *(v0 + 62) = 0;
-    sprite_decompress(8, 14);
+    sprite_decompressTemp(8, 14);
     sprite_load(v0, 128, 8, 14);
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
@@ -4290,7 +4290,7 @@ signed int __noreturn sub_80BA72C()
 
     object_setCoordinatesFromPanels(v0);
     *(v0 + 62) = 0;
-    sprite_decompress(8, 15);
+    sprite_decompressTemp(8, 15);
     sprite_load(v0, 128, 8, 15);
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
@@ -4653,7 +4653,7 @@ signed int __noreturn sub_80BAAB0()
 
     object_setCoordinatesFromPanels(v0);
     *(v0 + 60) = 0;
-    sprite_decompress(8, 16);
+    sprite_decompressTemp(8, 16);
     sprite_load(v0, 128, 8, 16);
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
@@ -9347,7 +9347,7 @@ int __noreturn sub_80BD3AC()
     *(v0 + 40) = *&byte_80BD464[v1 + 2];
     v3 = byte_80BD464[v1];
     if ( v3 & 0x80 )
-        sprite_decompress(v3 & 0x7F, v2[1]);
+        sprite_decompressTemp(v3 & 0x7F, v2[1]);
     sprite_load(v0, 128, *v2 & 0x7F, v2[1]);
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
@@ -10231,7 +10231,7 @@ int __noreturn sub_80BDBC8()
 
     if ( *(v0 + 4) )
     {
-        sprite_decompress(12, 15);
+        sprite_decompressTemp(12, 15);
         v4 = 12;
         v5 = 15;
     }
@@ -12536,7 +12536,7 @@ int __noreturn sub_80BF284()
     int v0; // r5
     int v1; // r0
 
-    sprite_decompress(12, 100);
+    sprite_decompressTemp(12, 100);
     sprite_load(v0, 128, 12, 100);
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
@@ -13120,7 +13120,7 @@ int __noreturn sub_80BF710()
     *(v0 + 40) = *&byte_80BF7A8[v1 + 2];
     v3 = byte_80BF7A8[v1];
     if ( v3 & 0x80 )
-        sprite_decompress(v3 & 0x7F, v2[1]);
+        sprite_decompressTemp(v3 & 0x7F, v2[1]);
     sprite_load(v0, 128, *v2 & 0x7F, v2[1]);
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
@@ -14985,7 +14985,7 @@ int sub_80C07DC()
     int v1; // r0
     int v2; // r0
 
-    sprite_decompress(12, 80);
+    sprite_decompressTemp(12, 80);
     *v0 |= 2u;
     sprite_load(v0, 128, 12, 80);
     sprite_loadAnimationData(v0);
@@ -16590,7 +16590,7 @@ void sub_80C1590()
     int v0; // r5
     int v1; // r0
 
-    sprite_decompress(4, 29);
+    sprite_decompressTemp(4, 29);
     sprite_load(v0, 128, 4, 29);
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
@@ -19853,7 +19853,7 @@ int __noreturn sub_80C323C()
     int v3; // r2
     _BYTE *v4; // r0
 
-    sprite_decompress(12, 72);
+    sprite_decompressTemp(12, 72);
     sprite_load(v0, 128, 12, 72);
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
@@ -20160,7 +20160,7 @@ int __noreturn sub_80C3504()
     int v0; // r5
     int v1; // r0
 
-    sprite_decompress(12, 75);
+    sprite_decompressTemp(12, 75);
     sprite_load(v0, 128, 12, 75);
     sprite_loadAnimationData(v0);
     sprite_hasShadow();
@@ -20428,7 +20428,7 @@ void __noreturn sub_80C3758()
     int v2; // r1
     int v3; // r2
 
-    sprite_decompress(12, 76);
+    sprite_decompressTemp(12, 76);
     sprite_load(v0, 128, 12, 76);
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
@@ -20698,7 +20698,7 @@ int __noreturn sub_80C39BA()
     int v3; // r1
     int v4; // r2
 
-    sprite_decompress(8, 19);
+    sprite_decompressTemp(8, 19);
     sprite_load(v0, 128, 8, 19);
     sprite_hasShadow();
     *v0 |= 2u;
@@ -21080,7 +21080,7 @@ int __noreturn sub_80C3D32()
     int v3; // r1
     int v4; // r2
 
-    sprite_decompress(8, 19);
+    sprite_decompressTemp(8, 19);
     sprite_load(v0, 128, 8, 19);
     sprite_hasShadow();
     *v0 |= 2u;
@@ -23540,7 +23540,7 @@ char *sub_80C56B4()
         v1 = *(v0 + 7);
         v2 = object_getCoordinatesForPanels(*(v0 + 6));
         v3 = *(v0 + 5);
-        *(v0 + 64) = sub_8001330((v0 + 52), v2, v4);
+        *(v0 + 64) = math_getThrowSpeeds((v0 + 52), v2, v4);
         *(v0 + 68) = v5;
         *(v0 + 72) = v6;
         *(v0 + 32) = *(v0 + 5);
@@ -23765,7 +23765,7 @@ char *sub_80C58E0()
         v1 = *(v0 + 7);
         v2 = object_getCoordinatesForPanels(*(v0 + 6));
         *(v0 + 32) = 48;
-        *(v0 + 64) = sub_8001330((v0 + 52), v2, v3);
+        *(v0 + 64) = math_getThrowSpeeds((v0 + 52), v2, v3);
         *(v0 + 68) = v4;
         *(v0 + 72) = v5;
     }
@@ -27200,7 +27200,7 @@ unsigned __int8 *__noreturn sub_80C7A94()
         v6 = result;
         if ( result )
         {
-            sub_8000C72(&v15, result, result);
+            ShuffleByteList_PrimaryRNG(&v15, result, result);
             v7 = 0;
             do
             {
@@ -28633,7 +28633,7 @@ signed int sub_80C88C8()
         v1 = *(v0 + 7);
         v2 = object_getCoordinatesForPanels(*(v0 + 6));
         v3 = *(v0 + 5);
-        *(v0 + 64) = sub_8001330((v0 + 52), v2, v4);
+        *(v0 + 64) = math_getThrowSpeeds((v0 + 52), v2, v4);
         *(v0 + 68) = v5;
         *(v0 + 72) = v6;
         *(v0 + 32) = *(v0 + 5);
@@ -31873,7 +31873,7 @@ signed int sub_80CAA2C()
     {
         v1 = *(v0 + 7);
         v2 = object_getCoordinatesForPanels(*(v0 + 6));
-        *(v0 + 64) = sub_8001330((v0 + 52), v2, v3);
+        *(v0 + 64) = math_getThrowSpeeds((v0 + 52), v2, v3);
         *(v0 + 68) = v4;
         *(v0 + 72) = v5;
         *(v0 + 32) = 50;
@@ -32452,7 +32452,7 @@ int sub_80CAFC8()
         v2 = object_getCoordinatesForPanels(*(v0 + 20));
         v3 = *(v0 + 96);
         v4 = *(v0 + 100);
-        *(v0 + 64) = sub_8001330((v0 + 52), v2, v5);
+        *(v0 + 64) = math_getThrowSpeeds((v0 + 52), v2, v5);
         *(v0 + 68) = v6;
         *(v0 + 72) = v7;
         *(v0 + 32) = *(v0 + 96);
@@ -33240,7 +33240,7 @@ int sub_80CB7BC()
                 v11 -= 16;
                 *(v0 + 6) = v11;
                 *(v0 + 7) = v11 + 32;
-                sub_8000C72(v0 + 5, 3, 3);
+                ShuffleByteList_PrimaryRNG(v0 + 5, 3, 3);
                 *(v0 + 34) = 3;
                 *(v0 + 32) = 14;
                 *(v0 + 9) = 4;
@@ -37025,7 +37025,7 @@ int __fastcall __noreturn sub_80CDF18(int a1, int a2)
     if ( !v3 )
         return 0;
     *(v2 + 116) = v3;
-    sub_8000C72(v2 + 96, v3, 20);
+    ShuffleByteList_PrimaryRNG(v2 + 96, v3, 20);
     return *(v2 + 96) & 7;
 }
 
@@ -42502,7 +42502,7 @@ int sub_80D149E()
         v2 = *(v0 + 19);
         v3 = object_getCoordinatesForPanels(v1);
         *(v0 + 34) = 13;
-        result = sub_8001330((v0 + 52), v3, v4);
+        result = math_getThrowSpeeds((v0 + 52), v3, v4);
         *(v0 + 64) = result;
         *(v0 + 68) = v6;
         *(v0 + 72) = v7;
@@ -47833,7 +47833,7 @@ int sub_80D47C0()
         {
             v3 = *(v0 + 7);
             v4 = object_getCoordinatesForPanels(*(v0 + 6));
-            *(v0 + 64) = sub_8001330((v0 + 52), v4, v5);
+            *(v0 + 64) = math_getThrowSpeeds((v0 + 52), v4, v5);
             *(v0 + 68) = v6;
             *(v0 + 72) = v7;
             *(v0 + 34) = 60;
@@ -50135,7 +50135,7 @@ int sub_80D5DF4()
         *(v0 + 10) = 4;
         v1 = *(v0 + 21);
         v2 = object_getCoordinatesForPanels(*(v0 + 20));
-        *(v0 + 64) = sub_8001330((v0 + 52), v2, v3);
+        *(v0 + 64) = math_getThrowSpeeds((v0 + 52), v2, v3);
         *(v0 + 68) = v4;
         *(v0 + 72) = v5;
         *(v0 + 32) = 45;
@@ -52140,7 +52140,7 @@ void __noreturn sub_80D729C()
     int v2; // r0
     int v3; // r1
 
-    sprite_decompress(16, 70);
+    sprite_decompressTemp(16, 70);
     sprite_load(v0, 128, 16, 70);
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
@@ -56126,7 +56126,7 @@ int sub_80D9B2C()
     {
         v2 = *(v0 + 7);
         v3 = object_getCoordinatesForPanels(*(v0 + 6));
-        *(v0 + 64) = sub_8001330((v0 + 52), v3, v4);
+        *(v0 + 64) = math_getThrowSpeeds((v0 + 52), v3, v4);
         *(v0 + 68) = v5;
         *(v0 + 72) = v6;
         *(v0 + 32) = 40;
@@ -59108,7 +59108,7 @@ signed int __noreturn sub_80DB9B8()
     int v9; // r0
     int v10; // r1
 
-    sprite_decompress(16, 71);
+    sprite_decompressTemp(16, 71);
     object_setPanelsFromCoordinates(v0);
     sprite_load(v0, 128, 16, 71);
     sprite_hasShadow();
@@ -62910,7 +62910,7 @@ void __noreturn sub_80DE024()
     sprite_setFlip(v0, v1);
     v2 = *(v0 + 7);
     v3 = object_getCoordinatesForPanels(*(v0 + 6));
-    *(v0 + 64) = sub_8001330((v0 + 52), v3, v4);
+    *(v0 + 64) = math_getThrowSpeeds((v0 + 52), v3, v4);
     *(v0 + 68) = v5;
     *(v0 + 72) = v6;
     *(v0 + 32) = 20;
@@ -64770,7 +64770,7 @@ signed int __noreturn sub_80DF520()
 
     object_setCoordinatesFromPanels(v0);
     if ( *(v0 + 7) )
-        sprite_decompress(*(v0 + 4), *(v0 + 5));
+        sprite_decompressTemp(*(v0 + 4), *(v0 + 5));
     sprite_load(v0, 128, *(v0 + 4), *(v0 + 5));
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
@@ -64836,7 +64836,7 @@ int sub_80DF5C0()
         v1 = object_getEnemyDirection();
         v2 = *(v0 + 19);
         v3 = object_getCoordinatesForPanels(v1 + *(v0 + 18));
-        *(v0 + 64) = sub_8001330((v0 + 52), v3, v4);
+        *(v0 + 64) = math_getThrowSpeeds((v0 + 52), v3, v4);
         *(v0 + 68) = v5;
         *(v0 + 72) = v6;
         *(v0 + 32) = 10;
@@ -69758,7 +69758,7 @@ void __noreturn sub_80E269A()
     while ( v12 != 1 );
     *(v0 + 100) = v5;
     if ( v5 )
-        sub_8000C72(v6, v5, v5);
+        ShuffleByteList_PrimaryRNG(v6, v5, v5);
 }
 
 
@@ -69797,7 +69797,7 @@ void __noreturn sub_80E26D8()
     while ( v9 != 1 );
     *(v0 + 100) = v5;
     if ( v5 )
-        sub_8000C72(v6, v5, v5);
+        ShuffleByteList_PrimaryRNG(v6, v5, v5);
 }
 
 
@@ -70240,7 +70240,7 @@ signed int sub_80E2BE0()
     *(v0 + 96) = 3;
     *(v0 + 104) = 0;
     *(v0 + 100) = 197121;
-    sub_8000C72(v0 + 100, 3, 4);
+    ShuffleByteList_PrimaryRNG(v0 + 100, 3, 4);
     *(v0 + 32) = 12;
     result = 4;
     *(v0 + 10) = 4;
@@ -70695,7 +70695,7 @@ int sub_80E2F74()
 {
     int v0; // r5
 
-    sub_8000C72(v0 + 96, *(v0 + 5), *(v0 + 5));
+    ShuffleByteList_PrimaryRNG(v0 + 96, *(v0 + 5), *(v0 + 5));
     *(v0 + 8) = 4;
     return sub_80E2F8C();
 }
@@ -82645,7 +82645,7 @@ int sub_80E9A38()
 
     v16 = 0;
     v19 = 258;
-    sub_8000C72(&v19, 3, 3);
+    ShuffleByteList_PrimaryRNG(&v19, 3, 3);
     v1 = 8 * *(v0 + 22);
     v17 = *&byte_80E9ACC[v1];
     v18 = *&byte_80E9ACC[v1 + 4];
@@ -91097,9 +91097,9 @@ int *sub_80EF3F4()
         while ( v5 );
         v4 = v12;
         if ( v6 != &v13 )
-            sub_8000C72(v6, v11 - (v6 - &v13), 10);
+            ShuffleByteList_PrimaryRNG(v6, v11 - (v6 - &v13), 10);
     }
-    sub_8000C72(&v13, 6, 10);
+    ShuffleByteList_PrimaryRNG(&v13, 6, 10);
     result = &v13;
     v10 = (v4 + 48);
     *v10 = v13;
@@ -92952,7 +92952,7 @@ int sub_80F0798()
         v4 = object_getFrontDirection(v0);
         v5 = *(v0 + 19);
         v6 = object_getCoordinatesForPanels(3 * v4 + *(v0 + 18));
-        *(v0 + 64) = sub_8001330((v0 + 52), v6, v7);
+        *(v0 + 64) = math_getThrowSpeeds((v0 + 52), v6, v7);
         *(v0 + 68) = v8;
         *(v0 + 72) = v9;
         result = 20;
@@ -94345,7 +94345,7 @@ int __noreturn sub_80F13B4()
                  *&byte_80F1448[8 * *(v0 + 22)],
                  *&byte_80F1448[8 * *(v0 + 22) + 4]);
     if ( v3 )
-        sub_8000C72(&v8 + v1, v3, v3);
+        ShuffleByteList_PrimaryRNG(&v8 + v1, v3, v3);
     v4 = v1 + v3;
     v5 = 1;
     do
@@ -99314,7 +99314,7 @@ int sub_80F4A8C()
         ++v0;
     }
     while ( v0 <= 7 );
-    sub_8000C72(&v2, 8, 8);
+    ShuffleByteList_PrimaryRNG(&v2, 8, 8);
     return v2;
 }
 
@@ -103050,9 +103050,9 @@ int __fastcall __noreturn sub_80F7238(int a1)
     }
     while ( v10 < 9 );
     if ( v23 > 1 )
-        sub_8000C72((&v24 + v22), v23, v23);
+        ShuffleByteList_PrimaryRNG((&v24 + v22), v23, v23);
     if ( v9 > 1 )
-        sub_8000C72((&v24 + v22 + v23), v9, v9);
+        ShuffleByteList_PrimaryRNG((&v24 + v22 + v23), v9, v9);
     v13 = 0;
     result = v22 + v23;
     v15 = v9 + v22 + v23;
@@ -108446,7 +108446,7 @@ int sub_80FAC34()
     v4 = result;
     if ( result )
     {
-        sub_8000C72(&v6, result, result);
+        ShuffleByteList_PrimaryRNG(&v6, result, result);
         v5 = 1;
         do
         {
@@ -114546,7 +114546,7 @@ int sub_80FED28()
         v2 = *(v0 + 21);
         v3 = object_getCoordinatesForPanels(*(v0 + 20));
         v4 = *(v1 + 16);
-        result = sub_8001330((v0 + 52), v3, v5);
+        result = math_getThrowSpeeds((v0 + 52), v3, v5);
         *(v0 + 64) = result;
         *(v0 + 68) = v7;
         *(v0 + 72) = v8;
@@ -114729,7 +114729,7 @@ int sub_80FEEB8()
         v2 = *(v0 + 21);
         v3 = object_getCoordinatesForPanels(*(v0 + 20));
         v4 = *(v1 + 16);
-        result = sub_8001330((v0 + 52), v3, v5);
+        result = math_getThrowSpeeds((v0 + 52), v3, v5);
         *(v0 + 64) = result;
         *(v0 + 68) = v7;
         *(v0 + 72) = v8;
@@ -115013,7 +115013,7 @@ int sub_80FF0DC()
         v2 = *(v0 + 21);
         v3 = object_getCoordinatesForPanels(*(v0 + 20));
         v4 = *(v1 + 16);
-        result = sub_8001330((v0 + 52), v3, v5);
+        result = math_getThrowSpeeds((v0 + 52), v3, v5);
         *(v0 + 64) = result;
         *(v0 + 68) = v7;
         *(v0 + 72) = v8;
@@ -120811,7 +120811,7 @@ LABEL_8:
         v12 = v11;
         if ( v11 )
         {
-            sub_8000C72(&v31, v11, v11);
+            ShuffleByteList_PrimaryRNG(&v31, v11, v11);
             v13 = v23 - v5;
             if ( v23 - v5 > v12 )
                 v13 = v12;
@@ -120830,7 +120830,7 @@ LABEL_8:
             v16 = &v30 + 1;
             v17 = v5 - 1;
         }
-        sub_8000C72(v16, v17, v17);
+        ShuffleByteList_PrimaryRNG(v16, v17, v17);
         v18 = v23;
         if ( v23 > v5 )
             v18 = v5;
@@ -122303,7 +122303,7 @@ int *__fastcall sub_8103A20(int a1, int a2, int a3, int a4)
     }
     v18 = v8;
     if ( v8 )
-        sub_8000C72(&v20, v8, v8);
+        ShuffleByteList_PrimaryRNG(&v20, v8, v8);
     v9 = 0;
     v10 = 1;
     while ( 1 )
@@ -122324,7 +122324,7 @@ int *__fastcall sub_8103A20(int a1, int a2, int a3, int a4)
     }
     v11 = v18;
     if ( v8 != v18 )
-        sub_8000C72(&v20 + v18, v8 - v18, v8 - v18);
+        ShuffleByteList_PrimaryRNG(&v20 + v18, v8 - v18, v8 - v18);
     result = &v20;
     v13 = 0;
     do
@@ -124631,7 +124631,7 @@ int __fastcall sub_8104F94(int a1)
         result = object_getPanelRegion(v10, v11, (&off_8105040)[2 * v9], (&off_8105040)[2 * v9 + 1]);
         if ( result )
         {
-            sub_8000C72(&v13, result, result);
+            ShuffleByteList_PrimaryRNG(&v13, result, result);
             sub_8109794(v13 & 7, v13 >> 4);
         }
     }
@@ -127063,7 +127063,7 @@ LABEL_6:
         result = 0;
         if ( v7 )
         {
-            sub_8000C72(&v13, v7, v7);
+            ShuffleByteList_PrimaryRNG(&v13, v7, v7);
             v9 = 0;
             while ( 1 )
             {

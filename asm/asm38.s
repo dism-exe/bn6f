@@ -1554,8 +1554,8 @@ off_3006728: .word math_sinTable
 off_300672C: .word math_cosTable
 	thumb_func_end sub_3006594
 
-	thumb_func_start sub_3006730
-sub_3006730:
+	thumb_func_start _sprite_loadAnimationData
+_sprite_loadAnimationData:
 	push {lr}
 	ldrb r0, [r5,#oObjectSprite_Unk_03]
 	mov r1, #0x80
@@ -1607,7 +1607,7 @@ loc_3006778:
 	lsr r1, r1, #4
 	strb r1, [r5,#oObjectSprite_Unk_05]
 	pop {pc}
-	thumb_func_end sub_3006730
+	thumb_func_end _sprite_loadAnimationData
 
 	thumb_func_start _sprite_update
 _sprite_update:
@@ -1664,7 +1664,7 @@ loc_30067E6:
 	strb r4, [r5,#oObjectSprite_Unk_01]
 	b loc_3006794
 loc_30067F2:
-	bl sub_3006730
+	bl _sprite_loadAnimationData
 	b loc_3006794
 loc_30067F8:
 	ldr r1, [r5,#oObjectSprite_Unk_20]

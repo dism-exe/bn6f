@@ -958,7 +958,7 @@ LABEL_13:
             {
                 *(v5 + 499) = v8;
                 *v7 = byte_1F0[v5];
-                sprite_80026B6();
+                sprite_loadAnimationData_spritePtrProvidedDirectly();
             }
             sprite_chatbox_80026D6();
             *(v7 + 3) = v3;

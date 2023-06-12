@@ -1067,8 +1067,8 @@ loc_8000C6E:
 	mov pc, lr
 	thumb_func_end sub_8000C5C
 
-	thumb_func_start sub_8000C72
-sub_8000C72:
+	thumb_func_start ShuffleByteList_PrimaryRNG
+ShuffleByteList_PrimaryRNG:
 	push {r4-r6,lr}
 loc_8000C74:
 	push {r0,r2}
@@ -1094,10 +1094,10 @@ loc_8000C74:
 	sub r2, #1
 	bne loc_8000C74
 	pop {r4-r6,pc}
-	thumb_func_end sub_8000C72
+	thumb_func_end ShuffleByteList_PrimaryRNG
 
 	thumb_local_start
-sub_8000CA6:
+ShuffleByteList_SecondaryRNG:
 	push {r4-r6,lr}
 loc_8000CA8:
 	push {r0,r2}
@@ -1123,10 +1123,10 @@ loc_8000CA8:
 	sub r2, #1
 	bne loc_8000CA8
 	pop {r4-r6,pc}
-	thumb_func_end sub_8000CA6
+	thumb_func_end ShuffleByteList_SecondaryRNG
 
-	thumb_func_start sub_8000CDA
-sub_8000CDA:
+	thumb_func_start ShuffleHwordList_PrimaryRNG
+ShuffleHwordList_PrimaryRNG:
 	push {r4-r6,lr}
 loc_8000CDC:
 	push {r0,r2}
@@ -1154,10 +1154,10 @@ loc_8000CDC:
 	sub r2, #1
 	bne loc_8000CDC
 	pop {r4-r6,pc}
-	thumb_func_end sub_8000CDA
+	thumb_func_end ShuffleHwordList_PrimaryRNG
 
-	thumb_func_start sub_8000D12
-sub_8000D12:
+	thumb_func_start ShuffleHwordList_SecondaryRNG
+ShuffleHwordList_SecondaryRNG:
 	push {r4-r6,lr}
 loc_8000D14:
 	push {r0,r2}
@@ -1185,7 +1185,7 @@ loc_8000D14:
 	sub r2, #1
 	bne loc_8000D14
 	pop {r4-r6,pc}
-	thumb_func_end sub_8000D12
+	thumb_func_end ShuffleHwordList_SecondaryRNG
 
 	thumb_local_start
 sub_8000D4A:
@@ -2083,8 +2083,8 @@ sub_80012C6:
 	pop {pc}
 	thumb_func_end sub_80012C6
 
-	thumb_func_start sub_8001330
-sub_8001330:
+	thumb_func_start math_getThrowSpeeds
+math_getThrowSpeeds:
 	push {r4-r6,lr}
 	push {r3,r4,r6}
 	mov r6, r4
@@ -2124,7 +2124,7 @@ sub_8001330:
 	mov r2, r0
 	pop {r0,r1}
 	pop {r4-r6,pc}
-	thumb_func_end sub_8001330
+	thumb_func_end math_getThrowSpeeds
 
 	thumb_func_start sub_8001382
 sub_8001382:

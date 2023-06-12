@@ -984,7 +984,7 @@ signed int sub_810E4F0()
     v3 = v0->panelY;
     v4 = object_getCoordinatesForPanels(v0->panelX);
     v1[8] = 40;
-    v0->vx = sub_8001330(&v0->x, v4 - v2, v5);
+    v0->vx = math_getThrowSpeeds(&v0->x, v4 - v2, v5);
     v0->vz = v6;
     result = 4;
     *v1 = 4;
@@ -9355,7 +9355,7 @@ int sub_8115340()
         v5 = *(v0 + 21);
         v6 = object_getCoordinatesForPanels(*(v0 + 20));
         v1[8] = 30;
-        *(v0 + 64) = sub_8001330((v0 + 52), v6, v7);
+        *(v0 + 64) = math_getThrowSpeeds((v0 + 52), v6, v7);
         *(v0 + 72) = v8;
         object_clearCollisionRegion();
         object_clearFlag(1);

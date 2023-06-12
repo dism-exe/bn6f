@@ -7,21 +7,21 @@ sprite_loadAnimationData:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
-	ldr r4, off_80026C0 // =sub_3006730+1
+	ldr r4, off_80026C0 // =_sprite_loadAnimationData+1
 	mov lr, pc
 	bx r4
 	pop {r4,r5,pc}
 	thumb_func_end sprite_loadAnimationData
 
-	thumb_func_start sprite_80026B6
-sprite_80026B6:
+	thumb_func_start sprite_loadAnimationData_spritePtrProvidedDirectly
+sprite_loadAnimationData_spritePtrProvidedDirectly:
 	push {r4,lr}
-	ldr r4, off_80026C0 // =sub_3006730+1
+	ldr r4, off_80026C0 // =_sprite_loadAnimationData+1
 	mov lr, pc
 	bx r4
 	pop {r4,pc}
-off_80026C0: .word sub_3006730+1
-	thumb_func_end sprite_80026B6
+off_80026C0: .word _sprite_loadAnimationData+1
+	thumb_func_end sprite_loadAnimationData_spritePtrProvidedDirectly
 
 	thumb_func_start sprite_update
 sprite_update:
@@ -584,8 +584,8 @@ loc_8002A58:
 	pop {r4-r7,pc}
 	thumb_func_end sub_80029A8
 
-	thumb_func_start sub_8002A64
-sub_8002A64:
+	thumb_func_start sprite_decompress
+sprite_decompress:
 	push {r4-r7,lr}
 	lsl r0, r0, #8
 	orr r0, r1
@@ -649,7 +649,7 @@ loc_8002AD2:
 	mov r9, r2
 	mov r12, r3
 	pop {r4-r7,pc}
-	thumb_func_end sub_8002A64
+	thumb_func_end sprite_decompress
 
 	thumb_func_start sub_8002ADE
 sub_8002ADE:
@@ -697,8 +697,10 @@ locret_8002B2E:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8002ADE
 
-	thumb_func_start sprite_decompress
-sprite_decompress:
+	thumb_func_start sprite_decompressTemp
+// only one sprite can be decompressed with this function at a time
+// e.g. certain objects in dimming attacks
+sprite_decompressTemp:
 	push {r4-r7,lr}
 	lsl r0, r0, #8
 	orr r0, r1
@@ -776,7 +778,7 @@ loc_8002BB2:
 off_8002BC0: .word SpritePointersList
 dword_8002BC4: .word 0x2040000
 off_8002BC8: .word dword_2033000
-	thumb_func_end sprite_decompress
+	thumb_func_end sprite_decompressTemp
 
 	thumb_local_start
 sub_8002BCC:

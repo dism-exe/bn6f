@@ -6433,7 +6433,7 @@ loc_802970C:
 	ldr r0, off_8029784 // =dword_2033000 
 	mov r7, r0
 	mov r1, r2
-	bl sub_8000D12
+	bl ShuffleHwordList_SecondaryRNG
 	ldrb r4, [r5,#6]
 	cmp r4, #0
 	beq loc_8029750
@@ -6585,7 +6585,7 @@ loc_802980E:
 	mov r1, r4
 	mov r2, r4
 	push {r3}
-	bl sub_8000D12
+	bl ShuffleHwordList_SecondaryRNG
 	pop {r3}
 loc_802982A:
 	pop {r0,r2}
@@ -6593,7 +6593,7 @@ loc_802982A:
 	lsl r3, r3, #1
 	add r0, r0, r3
 	mov r1, r2
-	bl sub_8000D12
+	bl ShuffleHwordList_SecondaryRNG
 loc_8029838:
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
@@ -9366,7 +9366,7 @@ sub_802AEEA:
 	bl enemy_getStruct1
 	ldrb r1, [r0,#1]
 	ldrb r0, [r0]
-	bl sub_8002A64
+	bl sprite_decompress
 	mov r7, r0
 	mov r0, r6
 	mov r1, #2
@@ -11058,7 +11058,7 @@ loc_802BF72:
 	mov r0, r7
 	mov r1, #0x2a 
 	mov r2, #0x2a 
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	ldrh r0, [r5,#0x10]
 	ldr r1, dword_802C040 // =0xffff 
 	cmp r0, r1
@@ -11382,7 +11382,7 @@ loc_802C1F6:
 	mov r0, r7
 	mov r1, #0x2a 
 	mov r2, #0x2a 
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	mov r0, #0
 	strb r0, [r5,#0xb]
 	mov r0, #4
@@ -16135,7 +16135,7 @@ loc_802E73C:
 	mov r1, r3
 	mov r2, r3
 	push {r3}
-	bl sub_8000CDA
+	bl ShuffleHwordList_PrimaryRNG
 	pop {r3}
 	add r6, sp, #0
 	ldr r2, dword_802E948 // =0xffff 

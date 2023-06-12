@@ -4854,7 +4854,7 @@ char *__fastcall sub_8029688(int a1, int a2, int a3)
     if ( a3 )
     {
         v14 = dword_2033000;
-        sub_8000D12(dword_2033000, a3, a3);
+        ShuffleHwordList_SecondaryRNG(dword_2033000, a3, a3);
         v16 = *(v3 + 6);
         if ( *(v3 + 6) )
         {
@@ -4990,10 +4990,10 @@ void sub_8029788()
         if ( byte_80298C8[v7] )
         {
             v12 = byte_80298C8[v7];
-            sub_8000D12(word_2036660, v7, v7);
+            ShuffleHwordList_SecondaryRNG(word_2036660, v7, v7);
             v11 = v12;
         }
-        sub_8000D12(&word_2036660[v11], v15 - v11, v15 - v11);
+        ShuffleHwordList_SecondaryRNG(&word_2036660[v11], v15 - v11, v15 - v11);
     }
 }
 
@@ -6905,7 +6905,7 @@ int *__fastcall sub_802AEEA(int a1)
 
     v1 = a1;
     v2 = enemy_getStruct1(a1);
-    sub_8002A64(*v2, (*v2)[1]);
+    sprite_decompress(*v2, (*v2)[1]);
     return sub_80076A0(v1, 2, 2, 0);
 }
 
@@ -8016,7 +8016,7 @@ signed int sub_802BF6C()
         ++v1;
     }
     while ( v1 - 42 < 0 );
-    sub_8000C72(byte_2035320, 42, 42);
+    ShuffleByteList_PrimaryRNG(byte_2035320, 42, 42);
     v2 = *(v0 + 16);
     v3 = 0xFFFF;
     if ( v2 == 0xFFFF )
@@ -8238,7 +8238,7 @@ signed int sub_802C1F0()
         ++v1;
     }
     while ( v1 - 42 < 0 );
-    sub_8000C72(byte_2035320, 42, 42);
+    ShuffleByteList_PrimaryRNG(byte_2035320, 42, 42);
     *(v0 + 11) = 0;
     result = 4;
     *(v0 + 3) = 4;
@@ -11747,7 +11747,7 @@ int __fastcall sub_802E6EC(int a1)
     if ( v3 )
     {
         v13 = v3;
-        sub_8000CDA(&v14, v3, v3);
+        ShuffleHwordList_PrimaryRNG(&v14, v3, v3);
         v9 = v13;
         v10 = &v14;
         if ( *v1 != 0xFFFF )

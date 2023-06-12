@@ -846,7 +846,7 @@ int __fastcall sub_3006594(int a1, int a2, _BYTE *a3)
 
 
 // 0x3006730
-int sub_3006730()
+int _sprite_loadAnimationData()
 {
     unsigned __int8 *v0; // r5
     _DWORD *v1; // r1
@@ -925,7 +925,7 @@ int _sprite_update()
             {
 LABEL_8:
                 if ( v3 & 0x40 )
-                    sub_3006730();
+                    _sprite_loadAnimationData();
                 else
                     *(v0 + 1) = 1;
             }

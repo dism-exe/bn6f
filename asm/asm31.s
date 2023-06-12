@@ -39,7 +39,7 @@ sub_80B8230:
 	push {r4,lr}
 	mov r0, #8
 	mov r1, #0x12
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r0, #0x80
 	mov r1, #8
 	mov r2, #0x12
@@ -1566,7 +1566,7 @@ sub_80B8EC4:
 	str r0, [r5,#oBattleObject_Z]
 	mov r0, #8
 	mov r1, #0xc
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r1, #8
 	mov r2, #0xc
 	mov r0, #0x80
@@ -3112,7 +3112,7 @@ sub_80B99E4:
 	strh r0, [r5,#oBattleObject_Z16]
 	mov r0, #8
 	mov r1, #0xd
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r1, #8
 	mov r2, #0xd
 	mov r0, #0x80
@@ -4385,7 +4385,7 @@ sub_80BA388:
 	strh r0, [r5,#oBattleObject_Z16]
 	mov r0, #8
 	mov r1, #0xe
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r1, #8
 	mov r2, #0xe
 	mov r0, #0x80
@@ -4898,7 +4898,7 @@ sub_80BA72C:
 	strh r0, [r5,#oBattleObject_Z16]
 	mov r0, #8
 	mov r1, #0xf
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r1, #8
 	mov r2, #0xf
 	mov r0, #0x80
@@ -5381,7 +5381,7 @@ sub_80BAAB0:
 	str r0, [r5,#oBattleObject_Z]
 	mov r0, #8
 	mov r1, #0x10
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r1, #8
 	mov r2, #0x10
 	mov r0, #0x80
@@ -10818,7 +10818,7 @@ sub_80BD3AC:
 	mov r2, #0x7f
 	and r0, r2
 	ldrb r1, [r7,#1]
-	bl sprite_decompress
+	bl sprite_decompressTemp
 loc_80BD3CC:
 	ldrb r1, [r7]
 	mov r2, #0x7f
@@ -11939,7 +11939,7 @@ loc_80BDC30:
 loc_80BDC32:
 	mov r0, #0xc
 	mov r1, #0xf
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r1, #0xc
 	mov r2, #0xf
 loc_80BDC3E:
@@ -14858,7 +14858,7 @@ sub_80BF284:
 	push {r4,r6,r7,lr}
 	mov r0, #0xc
 	mov r1, #0x64 
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r1, #0xc
 	mov r2, #0x64 
 	mov r0, #0x80
@@ -15514,7 +15514,7 @@ sub_80BF710:
 	mov r2, #0x7f
 	and r0, r2
 	ldrb r1, [r7,#1]
-	bl sprite_decompress
+	bl sprite_decompressTemp
 loc_80BF730:
 	ldrb r1, [r7]
 	mov r2, #0x7f
@@ -17810,7 +17810,7 @@ sub_80C07DC:
 	push {lr}
 	mov r0, #0xc
 	mov r1, #0x50 
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -19669,7 +19669,7 @@ sub_80C1590:
 	push {lr}
 	mov r0, #4
 	mov r1, #0x1d
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r0, #0x80
 	mov r1, #4
 	mov r2, #0x1d
@@ -23389,7 +23389,7 @@ sub_80C323C:
 	push {lr}
 	mov r0, #0xc
 	mov r1, #0x48 
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r0, #0x80
 	mov r1, #0xc
 	mov r2, #0x48 
@@ -23759,7 +23759,7 @@ sub_80C3504:
 	push {lr}
 	mov r0, #0xc
 	mov r1, #0x4b 
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r0, #0x80
 	mov r1, #0xc
 	mov r2, #0x4b 
@@ -24081,7 +24081,7 @@ sub_80C3758:
 	push {lr}
 	mov r0, #0xc
 	mov r1, #0x4c 
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r0, #0x80
 	mov r1, #0xc
 	mov r2, #0x4c 
@@ -24409,7 +24409,7 @@ sub_80C39BA:
 	push {lr}
 	mov r0, #8
 	mov r1, #0x13
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r0, #0x80
 	mov r1, #8
 	mov r2, #0x13
@@ -24929,7 +24929,7 @@ sub_80C3D32:
 	push {lr}
 	mov r0, #8
 	mov r1, #0x13
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r0, #0x80
 	mov r1, #8
 	mov r2, #0x13
@@ -27942,7 +27942,7 @@ sub_80C56B4:
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldr r6, dword_80C57BC // =0xffffa000 
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -28224,7 +28224,7 @@ sub_80C58E0:
 	ldr r6, dword_80C5A2C // =0xffffb000 
 	mov r4, #0x30 
 	strh r4, [r5,#oBattleObject_Timer]
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -32487,7 +32487,7 @@ loc_80C7AA6:
 	add r0, sp, #0
 	mov r1, r6
 	mov r2, r6
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	mov r7, #0
 loc_80C7AD8:
 	add r0, sp, #0
@@ -34266,7 +34266,7 @@ sub_80C88C8:
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldr r6, dword_80C8A9C // =0xffffd000 
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -38483,7 +38483,7 @@ sub_80CAA2C:
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldr r6, dword_80CAB64 // =0xffffd000 
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -39202,7 +39202,7 @@ sub_80CAFC8:
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldr r6, [r5,#oBattleObject_ExtraVars+4]
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -40268,7 +40268,7 @@ loc_80CB866:
 	add r0, r0, r5
 	mov r1, #3
 	mov r2, #3
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	mov r0, #3
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0xe
@@ -41219,7 +41219,7 @@ sub_80CBFAE:
 	mov r1, r0
 	mov r2, #8
 	mov r0, sp
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	cmp r6, r4
 	blt loc_80CBFE6
 	sub r6, r4, #1
@@ -45134,7 +45134,7 @@ sub_80CDF18:
 	str r1, [r5,#oBattleObject_ExtraVars+0x14]
 	mov r0, r7
 	mov r2, #0x14
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	ldrb r0, [r7]
 	lsr r1, r0, #4
 	lsl r0, r0, #0x1d
@@ -52014,7 +52014,7 @@ sub_80D149E:
 	ldr r6, dword_80D1504 // =0xffff8000 
 	mov r4, #0xd
 	strh r4, [r5,#oBattleObject_Timer2]
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -58618,7 +58618,7 @@ sub_80D47C0:
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldr r6, dword_80D4A18 // =0xffffe000 
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -61424,7 +61424,7 @@ sub_80D5DF4:
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldr r6, dword_80D5F04 // =0xffffc000 
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -63997,7 +63997,7 @@ sub_80D729C:
 	push {lr}
 	mov r0, #0x10
 	mov r1, #0x46 
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r1, #0x10
 	mov r2, #0x46 
 	mov r0, #0x80
@@ -69104,7 +69104,7 @@ sub_80D9B2C:
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldr r6, dword_80D9D3C // =0xffffd000 
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -73024,7 +73024,7 @@ sub_80DB9B8:
 	push {r7,lr}
 	mov r0, #0x10
 	mov r1, #0x47 
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	bl object_setPanelsFromCoordinates
 	mov r1, #0x10
 	mov r2, #0x47 
@@ -77939,7 +77939,7 @@ sub_80DE024:
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldr r6, dword_80DE138 // =0xffff7778 
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -80535,7 +80535,7 @@ sub_80DF520:
 	beq loc_80DF534
 	ldrb r0, [r5,#oBattleObject_Param1]
 	ldrb r1, [r5,#oBattleObject_Param2]
-	bl sprite_decompress
+	bl sprite_decompressTemp
 loc_80DF534:
 	ldrb r1, [r5,#oBattleObject_Param1]
 	ldrb r2, [r5,#oBattleObject_Param2]
@@ -80623,7 +80623,7 @@ sub_80DF5C0:
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldr r6, dword_80DF8F4 // =0xffffa000 
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -86892,7 +86892,7 @@ loc_80E26C0:
 	beq locret_80E26D6
 	mov r2, r1
 	mov r0, r7
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 locret_80E26D6:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80E269A
@@ -86926,7 +86926,7 @@ loc_80E26FE:
 	beq locret_80E2710
 	mov r2, r1
 	mov r0, r7
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 locret_80E2710:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80E26D8
@@ -87444,7 +87444,7 @@ sub_80E2BE0:
 	add r0, #0x64 
 	mov r1, #3
 	mov r2, #4
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	mov r0, #0xc
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -87925,7 +87925,7 @@ sub_80E2F74:
 	add r0, r0, r5
 	ldrb r1, [r5,#oBattleObject_Param2]
 	mov r2, r1
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80E2F8C
@@ -102310,7 +102310,7 @@ sub_80E9A38:
 	add r0, sp, #0xc
 	mov r1, #3
 	mov r2, r1
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	lsl r0, r0, #3
 	ldr r1, off_80E9AC8 // =byte_80E9ACC
@@ -113170,12 +113170,12 @@ loc_80EF444:
 	sub r1, r0, r1
 	mov r0, r6
 	mov r2, #0xa
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 loc_80EF45E:
 	mov r0, sp
 	mov r1, #6
 	mov r2, #0xa
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	mov r0, sp
 	mov r1, #0x30 
 	add r1, r1, r7
@@ -115518,7 +115518,7 @@ sub_80F0798:
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldr r6, dword_80F0938 // =0xfffe8000 
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -117121,7 +117121,7 @@ sub_80F13B4:
 	add r0, r0, r6
 	mov r1, r7
 	mov r2, r1
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 loc_80F13F4:
 	add r6, r6, r7
 	mov r3, #1
@@ -123511,7 +123511,7 @@ loc_80F4A92:
 	add r0, sp, #0
 	mov r1, #8
 	mov r2, r1
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	add r3, sp, #0
 	ldrb r0, [r3]
 	ldrb r1, [r3,#1]
@@ -126485,7 +126485,7 @@ sub_80F6254:
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, r4
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	mov r7, r6
 	mov r6, #0
 loc_80F62AC:
@@ -128450,7 +128450,7 @@ loc_80F7308:
 	add r0, r0, r1
 	ldr r1, [sp,#0x10]
 	mov r2, r1
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 loc_80F733E:
 	cmp r6, #1
 	ble loc_80F7354
@@ -128461,7 +128461,7 @@ loc_80F733E:
 	add r0, r0, r1
 	mov r1, r6
 	mov r2, r6
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 loc_80F7354:
 	mov r4, #0
 	ldr r0, [sp,#0xc]
@@ -135250,7 +135250,7 @@ sub_80FAC34:
 	add r0, sp, #4
 	mov r1, r4
 	mov r2, r4
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	ldr r7, [sp]
 	mov r6, #1
 loc_80FAC6C:
@@ -143010,7 +143010,7 @@ sub_80FED28:
 	add r0, r0, r5
 	ldrh r4, [r7,#oAIAttackVars_Unk_10]
 	ldr r6, dword_80FEDC8 // =0xffff6000 
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -143204,7 +143204,7 @@ sub_80FEEB8:
 	add r0, r0, r5
 	ldrh r4, [r7,#oAIAttackVars_Unk_10]
 	ldr r6, dword_80FEF4C // =0xffff6000 
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -143497,7 +143497,7 @@ sub_80FF0DC:
 	add r0, r0, r5
 	ldrh r4, [r7,#oAIAttackVars_Unk_10]
 	ldr r6, dword_80FF170 // =0xffff6000 
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_YVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
@@ -151042,7 +151042,7 @@ loc_8102DDC:
 	mov r1, r0
 	mov r2, r0
 	add r0, sp, #0x40
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	add r0, sp, #0x40
 	add r1, sp, #0x28
 	add r1, r1, r6
@@ -151067,7 +151067,7 @@ loc_8102E1C:
 	sub r1, #1
 loc_8102E2E:
 	mov r2, r1
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	add r0, sp, #0x28
 	ldr r1, [sp,#8]
 	ldr r2, [sp,#0xc]
@@ -152694,7 +152694,7 @@ loc_8103A60:
 	add r0, sp, #0xc
 	mov r1, r7
 	mov r2, r7
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 loc_8103A7E:
 	mov r4, #0
 	mov r6, #1
@@ -152737,7 +152737,7 @@ loc_8103AB0:
 	add r0, r0, r2
 	mov r1, r1
 	mov r2, r1
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 loc_8103AD2:
 	add r0, sp, #0xc
 	mov r4, #0
@@ -155363,7 +155363,7 @@ loc_8104FDE:
 	add r0, sp, #0xc
 	mov r1, r6
 	mov r2, r6
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	mov r4, #0
 loc_8105018:
 	add r0, sp, #0xc
@@ -158130,7 +158130,7 @@ loc_81065E0:
 	add r0, sp, #0
 	mov r1, r6
 	mov r2, r6
-	bl sub_8000C72
+	bl ShuffleByteList_PrimaryRNG
 	mov r4, #0
 loc_8106620:
 	add r0, sp, #0

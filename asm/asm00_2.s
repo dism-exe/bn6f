@@ -12978,7 +12978,7 @@ loc_8014D5A:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0xc
 	mov r1, #5
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	pop {r4,pc}
@@ -13233,7 +13233,7 @@ loc_8014F92:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0xc
 	mov r1, #5
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	pop {r4,pc}
@@ -13480,7 +13480,7 @@ loc_80151BE:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0xc
 	mov r1, #5
-	bl sprite_decompress
+	bl sprite_decompressTemp
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	pop {r4,pc}

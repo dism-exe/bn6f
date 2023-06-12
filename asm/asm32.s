@@ -1297,7 +1297,7 @@ sub_810E4F0:
 	mov r0, #0x34
 	add r0, r0, r5
 	ldr r6, dword_810E7A4 // =0xffff8000
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
 	mov r0, #4
@@ -13377,7 +13377,7 @@ loc_8115350:
 	mov r0, #0x34
 	add r0, r0, r5
 	ldr r6, dword_81154E4 // =0xffff6000
-	bl sub_8001330
+	bl math_getThrowSpeeds
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r2, [r5,#oBattleObject_ZVelocity]
 	bl object_clearCollisionRegion // () -> void

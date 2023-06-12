@@ -1839,7 +1839,7 @@ loc_8040B66:
 	ldr r0, [r7,r2]
 	lsl r0, r0, #4
 	strb r0, [r5,#0x15]
-	bl sprite_80026B6
+	bl sprite_loadAnimationData_spritePtrProvidedDirectly
 	ldr r1, off_8040B84 // =0x3c0
 	strh r1, [r5,#8]
 	mov r1, #0x84
@@ -1921,7 +1921,7 @@ loc_8040BE4:
 	ldr r1, off_8040C3C // =0x1f0
 	ldrb r1, [r7,r1]
 	strb r1, [r5]
-	bl sprite_80026B6
+	bl sprite_loadAnimationData_spritePtrProvidedDirectly
 loc_8040C0C:
 	bl sprite_chatbox_80026D6
 	strh r6, [r5,#6]

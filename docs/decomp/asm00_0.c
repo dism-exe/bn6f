@@ -753,7 +753,7 @@ signed int __fastcall sub_8000C5C(unsigned int a1)
 
 
 // 0x8000c72
-void __fastcall sub_8000C72(int a1, int a2, int a3)
+void __fastcall ShuffleByteList_PrimaryRNG(int a1, int a2, int a3)
 {
     int v3; // ST08_4
     int v4; // ST0C_4
@@ -781,7 +781,7 @@ void __fastcall sub_8000C72(int a1, int a2, int a3)
 
 
 // 0x8000ca6
-void __fastcall sub_8000CA6(int result, int a2, int a3)
+void __fastcall ShuffleByteList_SecondaryRNG(int result, int a2, int a3)
 {
     int v3; // ST08_4
     int v4; // ST0C_4
@@ -809,7 +809,7 @@ void __fastcall sub_8000CA6(int result, int a2, int a3)
 
 
 // 0x8000cda
-void __fastcall sub_8000CDA(int a1, int a2, int a3)
+void __fastcall ShuffleHwordList_PrimaryRNG(int a1, int a2, int a3)
 {
     int v3; // ST08_4
     int v4; // ST0C_4
@@ -837,7 +837,7 @@ void __fastcall sub_8000CDA(int a1, int a2, int a3)
 
 
 // 0x8000d12
-void __fastcall sub_8000D12(int result, int a2, int a3)
+void __fastcall ShuffleHwordList_SecondaryRNG(int result, int a2, int a3)
 {
     int v3; // ST08_4
     int v4; // ST0C_4
@@ -1574,7 +1574,7 @@ __int64 __fastcall sub_80012C6(_DWORD *a1, int a2, int a3)
 
 
 // 0x8001330
-int __fastcall sub_8001330(_DWORD *a1, int a2, int a3)
+int __fastcall math_getThrowSpeeds(_DWORD *a1, int a2, int a3)
 {
     int v3; // ST00_4
     int v4; // ST04_4
