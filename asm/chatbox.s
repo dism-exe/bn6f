@@ -5223,7 +5223,7 @@ loc_804245C:
 	mov r2, #0x1f
 	bl sub_80AA5F4
 	mov r1, #1
-	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
+	bl StartBattle // (BattleSettings *r0Bt, bool r1) -> void
 	mov r0, #0x2c
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
@@ -5254,7 +5254,7 @@ loc_804248C:
 	mov r7, r0
 	bl getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
 	mov r1, #1
-	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
+	bl StartBattle // (BattleSettings *r0Bt, bool r1) -> void
 	mov r0, r7
 	bl sub_803522E
 	mov r0, #0x2c

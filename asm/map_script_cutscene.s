@@ -5352,7 +5352,7 @@ CutsceneCmd_start_fixed_battle:
 	mov r0, r4
 	bl getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
 	mov r1, #1
-	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
+	bl StartBattle // (BattleSettings *r0Bt, bool r1) -> void
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
@@ -5372,7 +5372,7 @@ CutsceneCmd_start_random_battle:
 	push {lr}
 	bl chooseRandomEncounterMaybe_80aa5e4
 	mov r1, #1
-	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
+	bl StartBattle // (BattleSettings *r0Bt, bool r1) -> void
 	mov r0, #0x2c
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void

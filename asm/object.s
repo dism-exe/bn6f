@@ -86,7 +86,7 @@ sub_800B8EE:
 	mov r3, #0x78
 	lsl r3, r3, #0x10
 	mov r4, #0x1e
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0xa5
 	bl PlaySoundEffect
 	pop {r4,pc}
@@ -4599,7 +4599,7 @@ loc_800E314:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #6
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_UNK_8A
 	bl PlaySoundEffect
 	mov r0, #0
@@ -4648,7 +4648,7 @@ loc_800E378:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #6
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0
 	b locret_800E3BC
 loc_800E38E:
@@ -5669,8 +5669,8 @@ object_setInvulnerableTime:
 	pop {pc}
 	thumb_func_end object_setInvulnerableTime
 
-	thumb_func_start sub_800EB08
-sub_800EB08:
+	thumb_func_start object_clearInvulnerableTime
+object_clearInvulnerableTime:
 	push {lr}
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	mov r0, #0
@@ -5678,7 +5678,7 @@ sub_800EB08:
 	mov r0, #8
 	bl object_clearFlag // (int bitfield) -> void
 	pop {pc}
-	thumb_func_end sub_800EB08
+	thumb_func_end object_clearInvulnerableTime
 
 	thumb_local_start
 sub_800EB18:

@@ -1591,7 +1591,7 @@ sub_810E746:
 	pop {r0}
 	ldr r4, dword_810E770 // =0x15
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4-r7,pc}
 	.byte 0, 0
 dword_810E770: .word 0x15
@@ -1615,7 +1615,7 @@ sub_810E774:
 	pop {r0}
 	ldr r4, dword_810E79C // =0x14
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_810E79C: .word 0x14
@@ -3739,7 +3739,7 @@ sub_810FC0C:
 	mov r3, #0
 	ldr r4, dword_810FC2C // =0x2
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_810FC2A:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -4363,7 +4363,7 @@ sub_811013C:
 	pop {r0}
 	ldr r4, dword_8110168 // =0x15
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
 	.balign 4, 0
@@ -4389,7 +4389,7 @@ sub_811016C:
 	pop {r0}
 	ldr r4, byte_8110198 // =0x14
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
 	.balign 4, 0
@@ -4429,7 +4429,7 @@ sub_8110222:
 	orr r4, r0
 	pop {r0}
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
 	.balign 4, 0
@@ -4515,7 +4515,7 @@ sub_81103A0:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x45
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldr r0, dword_81104CC // =0x200000
 	mov r1, #1
 	mov r2, #5
@@ -6036,7 +6036,7 @@ sub_811109C:
 	pop {r0}
 	ldr r4, dword_81110C4 // =0x15
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_81110C4: .word 0x15
@@ -6060,7 +6060,7 @@ sub_81110C8:
 	pop {r0}
 	ldr r4, dword_81110F0 // =0x14
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_81110F0: .word 0x14
@@ -8551,7 +8551,7 @@ loc_811283A:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_8112850:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -8564,7 +8564,7 @@ loc_8112850:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
@@ -9029,7 +9029,7 @@ loc_8112CBC:
 	mov r3, #0xc
 	lsl r3, r3, #0x10
 	mov r4, #0x58
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	cmp r0, #0
 	beq loc_8112CE2
 	ldrb r1, [r7,#0xd]
@@ -9841,7 +9841,7 @@ loc_81133BC:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x3c
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0
@@ -10791,7 +10791,7 @@ sub_8113C18:
 	pop {r0}
 	ldr r4, dword_8113C44 // =0x16
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_8113C44: .word 0x16
@@ -10818,7 +10818,7 @@ sub_8113C48:
 	pop {r0}
 	ldr r4, off_8113C80 // =0x55
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	cmp r0, #0
 	beq locret_8113C7C
 	bl sub_80E060E
@@ -10852,7 +10852,7 @@ sub_8113C84:
 	mov r0, r4
 	ldr r4, dword_8113CC4 // =0x20056
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	cmp r0, #0
 	beq locret_8113CC2
 	mov r2, #0x6e
@@ -11431,7 +11431,7 @@ sub_8114192:
 	ldr r3, [r5,#oBattleObject_Z]
 	ldr r6, dword_81141B0 // =0x83e0
 	ldr r7, dword_81141B4 // =0x1010008
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_81141B0: .word 0x83E0
@@ -11457,7 +11457,7 @@ sub_81141BC:
 	pop {r0}
 	ldr r4, dword_81141E4 // =0x15
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_81141E4: .word 0x15
@@ -11481,7 +11481,7 @@ sub_81141E8:
 	pop {r0}
 	ldr r4, dword_8114210 // =0x14
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_8114210: .word 0x14
@@ -11558,7 +11558,7 @@ sub_811427A:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	ldrb r4, [r7,#oAIAttackVars_Unk_0d]
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_81142A0:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -11575,7 +11575,7 @@ loc_81142A0:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	ldrb r4, [r7,#oAIAttackVars_Unk_0c]
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_81142C2:
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r0, [r5,#oBattleObject_PanelX]
@@ -12765,7 +12765,7 @@ loc_8114DC8:
 	mov r1, r0
 	mov r3, #0
 	mov r4, #0x50
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_8114DF0:
 	pop {r4-r7,pc}
 	thumb_func_start sub_8114DF2
@@ -13497,7 +13497,7 @@ sub_8115446:
 	ldr r4, byte_81154E8 // =0x0
 	add r3, r3, r4
 	mov r4, #1
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	thumb_func_end sub_8115446
 
@@ -13521,7 +13521,7 @@ sub_8115466:
 	ldr r4, byte_81154E8 // =0x0
 	add r3, r3, r4
 	mov r4, #1
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_8115490:
 	pop {r4,pc}
 	thumb_func_end sub_8115466
@@ -14489,7 +14489,7 @@ sub_8115DA4:
 	pop {r0}
 	ldr r4, byte_8115DD0 // =0x16
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4-r7,pc}
 	.balign 4, 0
 byte_8115DD0: .byte 0x16, 0x2, 0x6, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0

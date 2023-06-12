@@ -3083,7 +3083,7 @@ int chatbox_804244C()
     if ( !*(v0 + 4) )
     {
         v2 = sub_80AA5F4(*(v0 + 4), v1, 31);
-        gameState_8005BC8(v2, 1);
+        StartBattle(v2, 1);
         engine_setScreeneffect(44, 16);
         *(v0 + 4) = 1;
     }
@@ -3104,7 +3104,7 @@ int chatbox_804247C()
     {
         v2 = *(v0 + 2) | (*(v0 + 3) << 8);
         v3 = getBattleSettingsFromList0(v2);
-        gameState_8005BC8(v3, 1);
+        StartBattle(v3, 1);
         sub_803522E(v2);
         engine_setScreeneffect(44, 16);
         *(v1 + 4) = 1;

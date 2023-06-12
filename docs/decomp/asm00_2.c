@@ -2553,7 +2553,7 @@ int sub_801050C()
             if ( *(result + 36) )
             {
                 *(result + 36) = *(result + 38);
-                SpawnT4BattleObjectWithId0(v0, result + 64, *(result + 52), *(result + 56), *(result + 60));
+                spawn_t1_0x0_EffectObject(v0, result + 64, *(result + 52), *(result + 56), *(result + 60));
                 result = PlaySoundEffect(138, v5, v6);
             }
         }
@@ -2833,7 +2833,7 @@ int sub_8010820()
     v5 = v1->y;
     v6 = v1->z;
     v7 = getBattleArmPositionMaybe_8018810(v1->nameID, 32, v1->Alliance, v1->directionFlip);
-    SpawnT4BattleObjectWithId0(v1, v7 << 16, v4 + (v7 << 16), v5, v6 + (v8 << 16));
+    spawn_t1_0x0_EffectObject(v1, v7 << 16, v4 + (v7 << 16), v5, v6 + (v8 << 16));
     return PlaySoundEffect(281, v9, v10);
 }
 
@@ -3930,7 +3930,7 @@ signed int __fastcall object_applyDamage(int a1)
     if ( result )
     {
         v3 = result;
-        SpawnT4BattleObjectWithId0(v1, &v1->vx, v1->x, v1->y, v1->z);
+        spawn_t1_0x0_EffectObject(v1, &v1->vx, v1->x, v1->y, v1->z);
         PlaySoundEffect(112, v4, v5);
         result = v3;
     }
@@ -7598,7 +7598,7 @@ void sub_801390C()
     *(v2 + 7) = v1[5];
     *(v2 + 8) = v1[7];
     object_clearFlag(GameEntryPoint);
-    sub_800EB08();
+    object_clearInvulnerableTime();
     v3 = *(v2 + 80);
     if ( v3 )
     {
@@ -8378,7 +8378,7 @@ int __fastcall sub_8014040(int a1)
             v3 = sub_8013790(1, 62);
             __asm { SVC         6 }
             object_addHP(v1, v3 + 9);
-            SpawnT4BattleObjectWithId0(v1, &v1->vx, v1->x, v1->y, v1->z);
+            spawn_t1_0x0_EffectObject(v1, &v1->vx, v1->x, v1->y, v1->z);
             result = PlaySoundEffect(138, v8, v9);
         }
     }
@@ -9587,7 +9587,7 @@ signed int __noreturn sub_8014B18()
     object_removePanelReserve(v2, v3);
     object_setCoordinatesFromPanels(v0);
     object_updateCollisionPanels(v0);
-    sub_800EB08();
+    object_clearInvulnerableTime();
     v0->directionFlip = sub_800F46C();
     sub_800F2C6();
     sub_8012EA8(v0);
@@ -9727,7 +9727,7 @@ int __cdecl sub_8014BEE(int a1, int a2, int a3)
         sub_80144C0();
         sub_80143A6();
         sub_8015BEC(v3->Alliance, 128);
-        sub_800EB08();
+        object_clearInvulnerableTime();
         result = 12;
         *v4 = 12;
     }
@@ -9780,7 +9780,7 @@ signed int __noreturn sub_8014D08()
     object_removePanelReserve(v2, v3);
     object_setCoordinatesFromPanels(v0);
     object_updateCollisionPanels(v0);
-    sub_800EB08();
+    object_clearInvulnerableTime();
     v0->directionFlip = sub_800F46C();
     sub_800F2C6();
     sub_8012EA8(v0);
@@ -9828,7 +9828,7 @@ int sub_8014D70()
         SetAIDataUnk0x48Flag(0x80000);
         PlaySoundEffect(247, v3, v4);
         v5 = (v0->Alliance << 8) | 0x2E;
-        SpawnT4BattleObjectWithId0(v0, &v0->vx, v0->x, v0->y, v0->z);
+        spawn_t1_0x0_EffectObject(v0, &v0->vx, v0->x, v0->y, v0->z);
         if ( v6 )
         {
             *(v6 + 32) = 54;
@@ -9941,7 +9941,7 @@ int __cdecl sub_8014E08(int a1, int a2, int a3)
         sub_80143A6();
         if ( v30 )
             sub_8015BEC(v3->Alliance, 255);
-        sub_800EB08();
+        object_clearInvulnerableTime();
         if ( v3->childobject2 )
             sprite_clearFinalPalette();
         result = 12;
@@ -9995,7 +9995,7 @@ signed int __noreturn sub_8014F40()
     object_removePanelReserve(v2, v3);
     object_setCoordinatesFromPanels(v0);
     object_updateCollisionPanels(v0);
-    sub_800EB08();
+    object_clearInvulnerableTime();
     v0->directionFlip = sub_800F46C();
     sub_800F2C6();
     sub_8012EA8(v0);
@@ -10043,7 +10043,7 @@ int sub_8014FA8()
         SetAIDataUnk0x48Flag(0x80000);
         PlaySoundEffect(247, v3, v4);
         v5 = (v0->Alliance << 8) | 0x2E;
-        SpawnT4BattleObjectWithId0(v0, &v0->vx, v0->x, v0->y, v0->z);
+        spawn_t1_0x0_EffectObject(v0, &v0->vx, v0->x, v0->y, v0->z);
         if ( v6 )
         {
             *(v6 + 32) = 54;
@@ -10151,7 +10151,7 @@ int sub_8015040()
         sub_80144C0();
         sub_80143A6();
         sub_8015BEC(v0->Alliance, 128);
-        sub_800EB08();
+        object_clearInvulnerableTime();
         result = 12;
         *v1 = 12;
     }
@@ -10204,7 +10204,7 @@ signed int __noreturn sub_801516C()
     object_removePanelReserve(v2, v3);
     object_setCoordinatesFromPanels(v0);
     object_updateCollisionPanels(v0);
-    sub_800EB08();
+    object_clearInvulnerableTime();
     v0->directionFlip = sub_800F46C();
     sub_800F2C6();
     sub_8012EA8(v0);
@@ -10260,7 +10260,7 @@ int __fastcall sub_80151D4(int a1, int a2, int a3)
         v6 = sub_801595E(v3->Alliance) - 23;
         v7 = v6 << 17;
         v8 = (v6 + 63) | (v3->Alliance << 8);
-        SpawnT4BattleObjectWithId0(v3, 0x200000, v3->x, v3->y, v3->z + 0x200000);
+        spawn_t1_0x0_EffectObject(v3, 0x200000, v3->x, v3->y, v3->z + 0x200000);
         if ( v9 )
         {
             *(v9 + 16) = 54;
@@ -10268,7 +10268,7 @@ int __fastcall sub_80151D4(int a1, int a2, int a3)
             *v9 = v13;
             PlaySoundEffect(410, v13, 4);
             v14 = v7 | 0x3E | (v3->Alliance << 8);
-            SpawnT4BattleObjectWithId0(v3, 0x200000, v3->x, v3->y, v3->z + 0x200000);
+            spawn_t1_0x0_EffectObject(v3, 0x200000, v3->x, v3->y, v3->z + 0x200000);
             if ( v15 )
             {
                 *(v15 + 32) = 69;
@@ -10432,7 +10432,7 @@ signed int __noreturn sub_80153EC()
     object_removePanelReserve(v2, v3);
     object_setCoordinatesFromPanels(v0);
     object_updateCollisionPanels(v0);
-    sub_800EB08();
+    object_clearInvulnerableTime();
     v0->directionFlip = sub_800F46C();
     sub_800F2C6();
     sub_8012EA8(v0);
@@ -10581,7 +10581,7 @@ int sub_80154C8()
         sub_80144C0();
         sub_80143A6();
         sub_8015BEC(v0->Alliance, 128);
-        sub_800EB08();
+        object_clearInvulnerableTime();
         if ( v0->childobject2 )
             sprite_clearFinalPalette();
         result = 12;
@@ -10678,7 +10678,7 @@ void sub_801562C()
         object_updateCollisionPanels(v0);
         *(v0 + 23) = sub_800F46C();
         sub_800F2C6();
-        SpawnT4BattleObjectWithId0(v0, 1310720, *(v0 + 52), *(v0 + 56), *(v0 + 60) + 1310720);
+        spawn_t1_0x0_EffectObject(v0, 1310720, *(v0 + 52), *(v0 + 56), *(v0 + 60) + 1310720);
         *v8 |= 4u;
         object_clearFlag(&loc_8001440);
         object_clearFlag2(16);
@@ -10701,7 +10701,7 @@ void sub_801562C()
         sub_8015B22(0);
         v14 = sub_80144C0();
         (loc_80143B4)(v14);
-        v15 = sub_800EB08();
+        v15 = object_clearInvulnerableTime();
         v16 = sub_8013774(v15, 44);
         sub_8011268(v16);
         v17 = sub_8018856(3);
@@ -10781,7 +10781,7 @@ signed int sub_8015766()
         sub_8011450(v0);
         v0->directionFlip = sub_800F46C();
         sub_800F2C6();
-        SpawnT4BattleObjectWithId0(v0, 1310720, v0->x, v0->y, v0->z + 1310720);
+        spawn_t1_0x0_EffectObject(v0, 1310720, v0->x, v0->y, v0->z + 1310720);
         *v7 |= 4u;
         object_clearFlag(-2146362304);
         object_clearFlag2(16);
@@ -10827,7 +10827,7 @@ signed int sub_8015766()
         }
         v19 = sub_8018856(3);
         sub_801DC06(v19, -v20);
-        sub_800EB08();
+        object_clearInvulnerableTime();
         v0->parent = 0;
         v0->ai->unk_68 = 0;
         object_clearCollisionRegion();
@@ -11990,7 +11990,7 @@ int __usercall __noreturn sub_80164C0@<R0>(Battle *obj@<R5>)
     obj->Timer2 = 30;
     sprite_setColorShader(obj, 0x7FFF);
     object_setInvulnerableTime(0xFFFF);
-    SpawnT4BattleObjectWithId0(obj, &obj->vx, obj->x, obj->y, obj->z);
+    spawn_t1_0x0_EffectObject(obj, &obj->vx, obj->x, obj->y, obj->z);
     *v5 |= 4u;
     result = 4;
     obj->currPhase = 4;
@@ -12020,7 +12020,7 @@ LABEL_5:
             *v0 = result;
             return result;
         }
-        SpawnT4BattleObjectWithId0(v0, (v0 + 64), *(v0 + 13), *(v0 + 14), *(v0 + 15) + 0x100000);
+        spawn_t1_0x0_EffectObject(v0, (v0 + 64), *(v0 + 13), *(v0 + 14), *(v0 + 15) + 0x100000);
         v3 = *v2 | 4;
         *v2 = v3;
         PlaySoundEffect(297, v3, 4);
@@ -12045,7 +12045,7 @@ int __fastcall __noreturn sub_801657E(int a1)
 
     if ( sub_802D234() == 6 || *(v1 + 22) != *(*(v2 + oToolkit_S2034880_Ptr) + 13) )
         sub_801DC7C(0, 0);
-    sub_800EB08();
+    object_clearInvulnerableTime();
     object_removePanelReserve(*(v1 + 20), *(v1 + 21));
     object_setCollisionRegion(1);
     *(v1 + 9) = 1;
@@ -12969,7 +12969,7 @@ int sub_8016F1A()
     result = battle_isTimeStop();
     if ( v2 )
     {
-        SpawnT4BattleObjectWithId0(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60));
+        spawn_t1_0x0_EffectObject(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60));
         *v3 |= 4u;
         sub_802CDD0();
         object_removePanelReserve(*(v0 + 20), *(v0 + 21));
@@ -13141,7 +13141,7 @@ int sub_8017122()
         *(v0 + 16) = 2;
         v6 = *(v0 + 88) + 116;
         sub_80E1A6A(2, v2, v5, v3);
-        SpawnT4BattleObjectWithId0(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60) + 0x200000);
+        spawn_t1_0x0_EffectObject(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60) + 0x200000);
         *(v7 + 32) = 90;
         *(v0 + 32) = 90;
         *(v0 + 11) = 4;
@@ -13238,7 +13238,7 @@ int sub_80171D8()
         }
         v7 = *(v0 + 88) + 116;
         sub_80E1A6A(v5, v6, v4, v2);
-        SpawnT4BattleObjectWithId0(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60) + 0x200000);
+        spawn_t1_0x0_EffectObject(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60) + 0x200000);
         *(v8 + 32) = 90;
         *(v0 + 32) = 90;
         *(v0 + 11) = 4;
@@ -13476,8 +13476,8 @@ int sub_801746E()
         *(v4 + 92) = 0;
         *(v4 + 104) = 0;
         PlaySoundEffect(108, v4, v2);
-        SpawnT4BattleObjectWithId0(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60));
-        SpawnT4BattleObjectWithId0(v0, v5, v6, v7, v8);
+        spawn_t1_0x0_EffectObject(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60));
+        spawn_t1_0x0_EffectObject(v0, v5, v6, v7, v8);
         *(v0 + 32) = 21;
         result = 8;
         *(v0 + 10) = 8;
@@ -13680,7 +13680,7 @@ int sub_8017688()
         object_clearFlag(1049665);
         sub_801A67E();
         sub_80101C4(v0);
-        sub_800EB08();
+        object_clearInvulnerableTime();
         PlaySoundEffect(280, v1, v2);
         ClearAIDataUnk0x48Flag(2097247);
         sub_8012EA8(v0);
@@ -13752,7 +13752,7 @@ int sub_8017768()
         object_setFlag1(0x400000);
         object_clearFlag(1049665);
         sub_80101C4(v0);
-        sub_800EB08();
+        object_clearInvulnerableTime();
         PlaySoundEffect(301, v1, v2);
         ClearAIDataUnk0x48Flag(2097247);
         sub_8012EA8(v0);
@@ -14570,7 +14570,7 @@ int sub_80180EC()
         *(v0 + 19) = v5;
         object_setCoordinatesFromPanels(v0);
         v6 = *(v0 + 44);
-        sub_80C53A6(*(v0 + 18), *(v0 + 19), *(v0 + 14), 0);
+        object_spawnDimmingCollisionRegion(*(v0 + 18), *(v0 + 19), *(v0 + 14), 0);
         *(v0 + 36) = 0;
         *(v0 + 9) = 2;
         result = 0;
@@ -14633,7 +14633,7 @@ int sub_8018186()
     if ( !__CFSHR__(*(v0 + 25), 2) )
     {
         *v0 &= 0xFDu;
-        SpawnT4BattleObjectWithId0(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60));
+        spawn_t1_0x0_EffectObject(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60));
     }
     result = *(v0 + 25) - 1;
     *(v0 + 25) = result;
@@ -15495,7 +15495,7 @@ int sub_801A324()
     if ( result )
     {
         object_addHP(v0, result);
-        SpawnT4BattleObjectWithId0(v0, &v0->vx, v0->x, v0->y, v0->z);
+        spawn_t1_0x0_EffectObject(v0, &v0->vx, v0->x, v0->y, v0->z);
         result = PlaySoundEffect(138, v9, v10);
     }
     return result;
@@ -18071,7 +18071,7 @@ int __fastcall sub_801BD3C(int a1, int a2, int a3, int a4)
                 if ( !v19 )
                 {
                     v29 = object_getCoordinatesForPanels(v33);
-                    SpawnT4BattleObjectWithId0(v5, v29, v29, v30, 0);
+                    spawn_t1_0x0_EffectObject(v5, v29, v29, v30, 0);
                     v28 = v33;
                     v24 = v35;
                     v25 = v37;
@@ -18108,7 +18108,7 @@ int __fastcall sub_801BD3C(int a1, int a2, int a3, int a4)
                 if ( !v19 )
                 {
                     v20 = object_getCoordinatesForPanels(v31);
-                    SpawnT4BattleObjectWithId0(v5, v20, v20, v21, v7);
+                    spawn_t1_0x0_EffectObject(v5, v20, v20, v21, v7);
                     v14 = v32;
                     v16 = v34;
                 }

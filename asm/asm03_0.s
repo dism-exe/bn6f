@@ -14369,7 +14369,7 @@ loc_802D8C0:
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_801086C
 	bl sub_8014216
-	bl sub_800EB08
+	bl object_clearInvulnerableTime
 	mov r0, #8
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	pop {r4,pc}
@@ -14538,7 +14538,7 @@ sub_802D9B0:
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_801086C
 	bl sub_8014216
-	bl sub_800EB08
+	bl object_clearInvulnerableTime
 	mov r0, #8
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	pop {r4,pc}
@@ -14622,8 +14622,8 @@ sub_802DACC:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #3
-	bl SpawnT4BattleObjectWithId0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0
 	str r0, [r5,#0x4c]
 	ldr r1, [r5,#0x58]
@@ -14742,7 +14742,7 @@ sub_802DB80:
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_801086C
 	bl sub_8014216
-	bl sub_800EB08
+	bl object_clearInvulnerableTime
 	ldrb r0, [r5,#0x16]
 	bl battle_networkInvert
 	tst r0, r0

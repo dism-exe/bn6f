@@ -234,7 +234,7 @@ loc_80B83A0:
 	ldr r4, dword_80B85C8 // =0x11c1f 
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 locret_80B83BE:
 	pop {r4,r7,pc}
 	thumb_func_end sub_80B8390
@@ -445,7 +445,7 @@ sub_80B8512:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r2, #0
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	bl object_getFrontDirection // () -> int
 	mov r2, r0
 	pop {r0,r1}
@@ -458,7 +458,7 @@ sub_80B8512:
 	lsl r4, r4, #8
 	mov r0, #0x38 
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldr r4, dword_80B85D0 // =0x11400 
 	bl sub_80E11E0
 locret_80B8562:
@@ -485,11 +485,11 @@ sub_80B8564:
 	mov r2, #0
 	mov r7, #3
 	push {r0-r3}
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r0-r3}
 	push {r0,r1}
 	ldr r4, dword_80B85D8 // =0x705ff01 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r0,r1}
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	mov r2, r1
@@ -501,10 +501,10 @@ sub_80B8564:
 	mov r0, #0x36 
 	orr r4, r0
 	push {r1-r3}
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r1-r3}
 	add r4, #1
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldr r4, dword_80B85DC // =0x12800 
 	bl sub_80E11E0
 locret_80B85C2:
@@ -680,7 +680,7 @@ sub_80B86F8:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x15
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_PanelXY]
 	bl object_setCoordinatesFromPanels // () -> void
@@ -888,7 +888,7 @@ sub_80B8870:
 	mov r1, r0
 	mov r3, #0
 	mov r4, #0x34 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_80B88A4:
 	pop {r0,r1,r4,r6,r7,pc}
 	.balign 4, 0
@@ -1300,8 +1300,8 @@ byte_80B8BD4: .byte 0xC, 0x1, 0x0, 0x0, 0x7, 0xC, 0x1, 0x1, 0x0, 0x7, 0xC, 0x1, 
 	.byte 0xC, 0x5C, 0x0, 0x0, 0x0
 	thumb_func_end sub_80B8BA0
 
-	thumb_func_start t1_0x5_80B8CD8
-t1_0x5_80B8CD8:
+	thumb_func_start t1_0x5_tempAttackObject_80B8CD8
+t1_0x5_tempAttackObject_80B8CD8:
 	push {lr}
 	ldr r1, off_80B8CE8 // =off_80B8CEC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -1314,7 +1314,7 @@ off_80B8CE8: .word off_80B8CEC
 off_80B8CEC: .word sub_80B8CF8+1
 	.word sub_80B8DA6+1
 	.word object_freeMemory+1
-	thumb_func_end t1_0x5_80B8CD8
+	thumb_func_end t1_0x5_tempAttackObject_80B8CD8
 
 	thumb_local_start
 sub_80B8CF8:
@@ -1469,7 +1469,7 @@ locret_80B8E2E:
 	thumb_func_end sub_80B8DA6
 
 	thumb_local_start
-spawn_t1_0x5_80B8E30:
+spawn_t1_0x5_tempAttackObject_80B8E30:
 	push {lr}
 	push {r0,r5-r7}
 	mov r0, #5
@@ -1490,7 +1490,7 @@ spawn_t1_0x5_80B8E30:
 loc_80B8E54:
 	str r0, [r7]
 	pop {pc}
-	thumb_func_end spawn_t1_0x5_80B8E30
+	thumb_func_end spawn_t1_0x5_tempAttackObject_80B8E30
 
 	thumb_local_start
 sub_80B8E58:
@@ -2603,7 +2603,7 @@ sub_80B961A:
 	ldr r1, [r5,#oBattleObject_X]
 	ldr r2, [r5,#oBattleObject_Y]
 	mov r3, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x2e 
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -3009,7 +3009,7 @@ loc_80B991A:
 	ldr r4, dword_80B9968 // =0x700ff11 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80B996C // =0x1 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	bl object_getFlip // () -> int
 	lsl r4, r0, #8
 	mov r0, #0x33 
@@ -3023,7 +3023,7 @@ loc_80B991A:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0xb
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -3383,7 +3383,7 @@ loc_80B9BBA:
 	ldrb r2, [r5,#oBattleObject_Element]
 	mov r4, #4
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
-	bl sub_80CB1E2
+	bl spawnDivemanWaveObject_80CB1E2
 	pop {r4,r6}
 loc_80B9BE2:
 	add r4, #1
@@ -4339,7 +4339,7 @@ sub_80BA31C:
 	ldr r4, dword_80BA35C // =0x700ff04 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80BA360 // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	bl object_getFlip // () -> int
 	lsl r4, r0, #8
 	mov r0, #0x39 
@@ -4353,7 +4353,7 @@ sub_80BA31C:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80BA35C: .word 0x700FF04
@@ -4810,7 +4810,7 @@ sub_80BA686:
 	ldr r4, dword_80BA69C // =0x1605ff01 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80BA6A0 // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80BA69C: .word 0x1605FF01
@@ -4867,7 +4867,7 @@ loc_80BA6EE:
 	add r2, r2, r4
 	add r3, r3, r4
 	mov r4, #0x21 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80BA704: .word 0x100000
@@ -5202,7 +5202,7 @@ sub_80BA946:
 	ldr r4, dword_80BA99C // =0x19050301 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80BA9A0 // =0x1101 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	bl object_getFrontDirection // () -> int
 	mov r1, #2
 	mul r0, r1
@@ -5214,7 +5214,7 @@ sub_80BA946:
 	ldr r4, dword_80BA99C // =0x19050301 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80BA9A0 // =0x1101 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	bl object_getFrontDirection // () -> int
 	mov r1, #3
 	mul r0, r1
@@ -5226,7 +5226,7 @@ sub_80BA946:
 	ldr r4, dword_80BA99C // =0x19050301 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80BA9A0 // =0x1101 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80BA99C: .word 0x19050301
@@ -6005,7 +6005,7 @@ loc_80BAF0C:
 	mov r6, #5
 	lsl r6, r6, #0x10
 	orr r4, r6
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,r6}
 loc_80BAF40:
 	add r6, #1
@@ -6440,7 +6440,7 @@ sub_80BB23E:
 	thumb_local_start
 sub_80BB278:
 	push {r1-r3,lr}
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	cmp r0, #0
 	beq locret_80BB286
 	mov r1, #6
@@ -6824,7 +6824,7 @@ loc_80BB546:
 	ldr r4, dword_80BB5F4 // =0xa050601 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r0,r1,r7}
 	push {r0,r1}
 	bl object_breakPanel_dup2
@@ -6834,7 +6834,7 @@ loc_80BB546:
 	mov r1, r0
 	mov r3, #0
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	add r7, #2
 	b loc_80BB546
 loc_80BB588:
@@ -6883,7 +6883,7 @@ locret_80BB5DA:
 	thumb_local_start
 sub_80BB5DC:
 	push {r1-r3,lr}
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	cmp r0, #0
 	beq locret_80BB5E8
 	strh r7, [r0,#oBattleObject_Timer]
@@ -7607,7 +7607,7 @@ sub_80BBB18:
 	ldr r4, dword_80BBB30 // =0x6050a01 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80BBB34 // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80BBB30: .word 0x6050A01
@@ -8023,7 +8023,7 @@ sub_80BBE3A:
 	ldr r4, dword_80BBE50 // =0x15050a01 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80BBE54 // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80BBE50: .word 0x15050A01
@@ -9284,7 +9284,7 @@ loc_80BC81C:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #3
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r1, [r0,#oObjectHeader_Flags]
 	mov r2, #4
 	orr r1, r2
@@ -9810,7 +9810,7 @@ sub_80BCC2C:
 	ldr r4, dword_80BCD10 // =0x10018 
 	mov r7, #0x64 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
@@ -10144,7 +10144,7 @@ sub_80BCEB2:
 	add r1, r1, r0
 	ldr r2, [r5,#oBattleObject_Y]
 	mov r4, #0x4e 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r1, #0x28 
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #SOUND_BUSTER_CHARGE
@@ -10170,7 +10170,7 @@ loc_80BCEF0:
 	add r1, r1, r0
 	ldr r2, [r5,#oBattleObject_Y]
 	mov r4, #0x4f 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r1, #0x14
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #SOUND_UNK_72
@@ -10255,7 +10255,7 @@ sub_80BCF7A:
 	ldr r4, dword_80BD240 // =0x10005 
 	mov r7, #0x6c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	ldr r0, [r5,#oBattleObject_RelatedObject2Ptr]
 	bl sub_80C44D2
 	bl sub_80BD24C
@@ -10499,7 +10499,7 @@ sub_80BD156:
 	ldr r4, dword_80BD248 // =0x10b03 
 	mov r7, #0x64 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	mov r0, #0xb0
 	bl PlaySoundEffect
 	mov r0, #0xf
@@ -10638,7 +10638,7 @@ loc_80BD250:
 	mov r3, #0
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r7}
 	add r7, #1
 	cmp r7, #3
@@ -10765,7 +10765,7 @@ loc_80BD32A:
 	mov r4, #0x16
 loc_80BD35A:
 	add r4, r4, r7
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	add sp, sp, #0x28
 	pop {r4,r6,r7,pc}
 	.byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
@@ -11208,7 +11208,7 @@ sub_80BD6B6:
 	ldr r4, dword_80BD9EC // =0x10b11 
 	mov r7, #0x68 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	mov r0, #0xb0
 	bl PlaySoundEffect
 	mov r0, #0xa
@@ -11233,7 +11233,7 @@ loc_80BD6E6:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldrb r2, [r5,#oBattleObject_Element]
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r0,r1}
 	push {r0,r1}
 	bl object_getFlip // () -> int
@@ -11245,7 +11245,7 @@ loc_80BD6E6:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #1
 	mov r1, #0xa
 	bl camera_initShakeEffect_80302a8
@@ -11499,7 +11499,7 @@ sub_80BD8BC:
 	ldr r4, dword_80BD9F8 // =0x11c1f 
 	mov r7, #0x68 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	bl sub_80BDA08
 	push {r0,r1}
 	mov r3, #0
@@ -11507,7 +11507,7 @@ sub_80BD8BC:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r2, #0
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r0,r1}
 	push {r0,r1}
 	mov r3, #0
@@ -11515,7 +11515,7 @@ sub_80BD8BC:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r2, #0
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r0,r1}
 	push {r0,r1}
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
@@ -11526,7 +11526,7 @@ sub_80BD8BC:
 	lsl r4, r4, #8
 	mov r0, #0x36 
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r0,r1}
 	push {r0,r1}
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
@@ -11537,7 +11537,7 @@ sub_80BD8BC:
 	lsl r4, r4, #8
 	mov r0, #0x37 
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r0,r1}
 	mov r0, #0xc7
 	bl PlaySoundEffect
@@ -11732,7 +11732,7 @@ sub_80BDA7C:
 	ldmia r0!, {r1-r3}
 	ldr r6, dword_80BDAD8 // =0x8318 
 	mov r7, #0x1e
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 loc_80BDAAC:
 	bl object_getFlip // () -> int
 	mov r4, r0
@@ -11750,7 +11750,7 @@ loc_80BDAAC:
 	ldmia r0!, {r1-r3}
 	ldr r6, dword_80BDAD8 // =0x8318 
 	ldr r7, dword_80BDADC // =0x101001e 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
@@ -11791,7 +11791,7 @@ sub_80BDB04:
 	add r1, r1, r0
 	ldr r2, [r5,#oBattleObject_Y]
 	mov r4, #0x4e 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	str r0, [r5,#oBattleObject_ExtraVars+0x14]
 	ldr r1, dword_80BDBA0 // =0x7fff 
 	strh r1, [r0,#oBattleObject_Timer]
@@ -11833,7 +11833,7 @@ sub_80BDB3C:
 	add r1, r1, r0
 	ldr r2, [r5,#oBattleObject_Y]
 	mov r4, #0x4f 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r1, #0x1e
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #SOUND_UNK_72
@@ -12172,14 +12172,14 @@ loc_80BDDFC:
 	mov r7, #0x68 
 	add r7, r7, r5
 	ldr r4, dword_80BDEB0 // =0x10006 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 loc_80BDE06:
 	ldr r0, [r5,#oBattleObject_ExtraVars+0xc]
 	bl sub_80B8E58
 	ldr r4, dword_80BDEB4 // =0x10005 
 	mov r7, #0x6c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	ldr r0, [r5,#oBattleObject_RelatedObject2Ptr]
 	bl sub_80C44D2
 	bl object_getFrontDirection // () -> int
@@ -12429,7 +12429,7 @@ sub_80BDFA6:
 	add r4, r4, r0
 	mov r7, #0x68 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
 	mov r1, #0x74 
@@ -12481,7 +12481,7 @@ loc_80BE032:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1
@@ -12491,7 +12491,7 @@ loc_80BE032:
 	ldr r4, [sp,#4]
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	ldr r0, [sp,#8]
 	ldr r1, [sp,#0xc]
 	bl camera_initShakeEffect_80302a8
@@ -12661,7 +12661,7 @@ sub_80BE190:
 	ldr r4, dword_80BE41C // =0x1080b 
 	mov r7, #0x68 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	mov r0, #0xf8
 	bl PlaySoundEffect
 	mov r0, #4
@@ -12714,7 +12714,7 @@ loc_80BE1F8:
 	ldr r4, dword_80BE424 // =0x1705ff04 
 	mov r6, #3
 	mov r7, #0
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
@@ -12905,7 +12905,7 @@ loc_80BE348:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1
@@ -12915,7 +12915,7 @@ loc_80BE348:
 	ldr r4, [sp,#4]
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 loc_80BE388:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	add r0, #1
@@ -14158,7 +14158,7 @@ sub_80BED0C:
 	add r4, r4, r0
 	mov r7, #0x64 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	str r0, [r5,#oBattleObject_ExtraVars+4]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
@@ -14181,7 +14181,7 @@ loc_80BED3A:
 	mov r7, #3
 	ldrb r2, [r5,#oBattleObject_Element]
 	mov r3, #0
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r0,r1}
 	push {r0,r1}
 	bl object_getFlip // () -> int
@@ -14202,7 +14202,7 @@ loc_80BED7C:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldr r4, dword_80BEE00 // =0x10a00 
 	bl sub_80E11E0
 loc_80BED94:
@@ -14350,7 +14350,7 @@ sub_80BEEA2:
 	ldr r4, dword_80BF238 // =0x10120 
 	mov r7, #0x64 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	ldrb r2, [r5,#oBattleObject_Element]
 	ldr r4, dword_80BF23C // =0x11e00 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -14444,7 +14444,7 @@ sub_80BEF48:
 	ldr r4, dword_80BF244 // =0x1002a 
 	mov r7, #0x64 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	bl object_getFlip // () -> int
 	lsl r4, r0, #8
 	add r4, #0x44 
@@ -14455,7 +14455,7 @@ sub_80BEF48:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x15
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -14474,7 +14474,7 @@ loc_80BEF8A:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	push {r0,r1}
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r0,r1}
 	ldr r4, dword_80BF234 // =0x10a00 
 	bl sub_80E11E0
@@ -14548,7 +14548,7 @@ sub_80BF000:
 	add r1, r1, r0
 	ldr r2, [r5,#oBattleObject_Y]
 	mov r4, #0x4e 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r1, #0x46 
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #SOUND_BUSTER_CHARGE
@@ -14572,7 +14572,7 @@ loc_80BF03A:
 	add r1, r1, r0
 	ldr r2, [r5,#oBattleObject_Y]
 	mov r4, #0x4f 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r1, #0x14
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #SOUND_UNK_72
@@ -14619,7 +14619,7 @@ loc_80BF08E:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #3
 	push {r4}
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r4}
 	mov r0, r4
 	mov r1, #2
@@ -15361,7 +15361,7 @@ sub_80BF5E0:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x12
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80BF656
 loc_80BF614:
 	mov r0, #0xc3
@@ -15377,7 +15377,7 @@ loc_80BF614:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #3
 	push {r0,r1}
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r0,r1}
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -15709,7 +15709,7 @@ sub_80BF8A8:
 	ldr r4, dword_80BF978 // =0x10032 
 	mov r7, #0x60 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	mov r0, #0x94
 	bl PlaySoundEffect
 	mov r0, #4
@@ -16053,7 +16053,7 @@ sub_80BFAF8:
 	add r1, r1, r0
 	ldr r2, [r5,#oBattleObject_Y]
 	mov r4, #0x4e 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r1, #0x1e
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #SOUND_BUSTER_CHARGE
@@ -16079,7 +16079,7 @@ loc_80BFB36:
 	add r1, r1, r0
 	ldr r2, [r5,#oBattleObject_Y]
 	mov r4, #0x4f 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r1, #0xa
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #SOUND_UNK_72
@@ -16108,7 +16108,7 @@ sub_80BFB74:
 	ldr r4, dword_80BFC1C // =0x10e03 
 	mov r7, #0x60 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	mov r0, #0xce
 	bl PlaySoundEffect
 	mov r0, #4
@@ -16127,7 +16127,7 @@ loc_80BFB98:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	push {r0,r1,r7}
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r0,r1,r7}
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	mov r2, r1
@@ -16142,7 +16142,7 @@ loc_80BFB98:
 	pop {r1,r2}
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #2
 	mov r1, #0x28 
 	bl camera_initShakeEffect_80302a8
@@ -16397,7 +16397,7 @@ sub_80BFD90:
 	sub r3, r3, r0
 	ldr r6, dword_80BFDF0 // =0x8108 
 	mov r7, #0xf
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	bl object_getFlip // () -> int
 	mov r4, r0
 	lsl r4, r4, #0x18
@@ -16414,7 +16414,7 @@ sub_80BFD90:
 	sub r3, r3, r0
 	ldr r6, dword_80BFDF0 // =0x8108 
 	ldr r7, dword_80BFDF8 // =0x101000f 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
@@ -16898,7 +16898,7 @@ sub_80C0144:
 	ldr r3, [r5,#oBattleObject_Z]
 	ldr r6, dword_80C0164 // =0x83e0 
 	ldr r7, dword_80C0168 // =0x1010008 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_80C0164: .word 0x83E0
@@ -17896,7 +17896,7 @@ sub_80C088C:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x26 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x1f
 	strb r0, [r5,#oBattleObject_Unk_19]
 	mov r0, #0x94
@@ -18121,7 +18121,7 @@ sub_80C0A0E:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x26 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -18204,7 +18204,7 @@ loc_80C0AA6:
 	add r4, #0x12
 	mov r7, #0x6c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	ldrb r1, [r0,#oObjectHeader_Flags]
 	mov r2, #0x10
 	orr r1, r2
@@ -18620,7 +18620,7 @@ sub_80C0D98:
 	ldr r4, dword_80C0DAC // =0x4050001 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {pc}
 	.balign 4, 0
 dword_80C0DAC: .word 0x4050001
@@ -18647,7 +18647,7 @@ sub_80C0DC2:
 	ldr r3, [r5,#oBattleObject_Z]
 	bl AddRandomVarianceToTwoCoords
 	mov r4, #0x26 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {pc}
 	thumb_func_end sub_80C0DC2
 
@@ -19616,7 +19616,7 @@ sub_80C1514:
 	mov r3, #0
 	ldr r4, dword_80C1534 // =0x2 
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_80C1532:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -20044,7 +20044,7 @@ sub_80C1820:
 	lsl r4, r4, #2
 	ldr r4, [r6,r4]
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_80C1850: .word byte_80C1854
@@ -20070,7 +20070,7 @@ sub_80C185C:
 	pop {r0}
 	ldr r4, dword_80C1888 // =0x60216 
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_80C1888: .word 0x60216
@@ -20088,7 +20088,7 @@ sub_80C188C:
 	mov r3, #0
 	ldr r4, dword_80C18A8 // =0x705ff04 
 	ldr r7, dword_80C18AC // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_80C18A8: .word 0x705FF04
@@ -20450,7 +20450,7 @@ sub_80C1B2E:
 	ldr r4, dword_80C1BC4 // =0x10c03 
 	mov r7, #0x64 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	b locret_80C1BC2
 loc_80C1B7C:
 	ldrb r0, [r5,#oBattleObject_Param3]
@@ -20552,7 +20552,7 @@ sub_80C1BEC:
 	ldr r4, dword_80C1C9C // =0x10120 
 	mov r7, #0x64 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	mov r0, #1
 	bl sub_80C2000
 	mov r0, #0xf0
@@ -20664,11 +20664,11 @@ sub_80C1CC4:
 	ldr r4, dword_80C1D98 // =0x10b06 
 	mov r7, #0x64 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	ldr r4, dword_80C1D9C // =0x10005 
 	mov r7, #0x68 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	mov r0, #0xb9
 	bl PlaySoundEffect
 	mov r0, #5
@@ -21037,7 +21037,7 @@ sub_80C2000:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldrb r2, [r5,#oBattleObject_Element]
 	mov r3, #0
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 off_80C2028: .word byte_80C202C
@@ -21087,7 +21087,7 @@ sub_80C2082:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	.balign 4, 0
 off_80C20AC: .word dword_80C20B0
@@ -21128,7 +21128,7 @@ loc_80C20E4:
 	ldr r7, [r5,#oBattleObject_ExtraVars]
 	add r6, r6, r7
 	ldr r7, dword_80C2100 // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 locret_80C20F8:
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
@@ -21154,7 +21154,7 @@ sub_80C2110:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	thumb_func_end sub_80C2110
 
@@ -21330,7 +21330,7 @@ sub_80C2256:
 	ldr r4, dword_80C22FC // =0x10121 
 	mov r7, #0x64 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	bl sub_80C26C8
 	mov r0, #0
 	bl sub_80C2600
@@ -21443,7 +21443,7 @@ sub_80C2324:
 	ldr r4, dword_80C23C8 // =0x10d03 
 	mov r7, #0x64 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	b locret_80C23C6
 loc_80C237A:
 	ldrb r0, [r5,#oBattleObject_Param3]
@@ -21549,7 +21549,7 @@ sub_80C23F0:
 	ldr r4, dword_80C2494 // =0x10d03 
 	mov r7, #0x64 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	b locret_80C2492
 loc_80C2446:
 	ldrb r0, [r5,#oBattleObject_Param3]
@@ -21799,7 +21799,7 @@ sub_80C2600:
 	add r6, r6, r3
 	ldr r7, dword_80C264C // =0x3 
 	mov r3, #0
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 off_80C263C: .word byte_80C2640
@@ -21851,7 +21851,7 @@ sub_80C26A0:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	thumb_func_end sub_80C26A0
 
@@ -21869,7 +21869,7 @@ sub_80C26C8:
 	mov r1, r0
 	mov r3, #0
 	mov r4, #0x59 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r1, #0x1e
 	strh r1, [r0,#oBattleObject_Timer]
 	pop {r4,pc}
@@ -22222,7 +22222,7 @@ sub_80C296C:
 	ldr r4, [r4,r0]
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	mov r0, #0xb0
 	bl PlaySoundEffect
 	mov r0, #0x14
@@ -22245,7 +22245,7 @@ loc_80C299C:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r2, #0
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r0,r1}
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	mov r2, r1
@@ -22256,7 +22256,7 @@ loc_80C299C:
 	lsl r4, r4, #8
 	mov r0, #0x27 
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80C29D8:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -22499,7 +22499,7 @@ sub_80C2B8C:
 	lsl r0, r0, #0x10
 	add r3, r3, r0
 	mov r4, #3
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_LOG_IN_77
 	bl PlaySoundEffect
 	mov r0, #4
@@ -22657,7 +22657,7 @@ loc_80C2CCA:
 	mov r1, r0
 	mov r3, #0
 	mov r4, #0x28 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrh r1, [r5,#oBattleObject_Timer]
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #0xbd
@@ -22771,7 +22771,7 @@ sub_80C2D8C:
 	ldr r4, dword_80C2E2C // =0x10b03 
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #0xb0
 	bl PlaySoundEffect
@@ -22810,7 +22810,7 @@ loc_80C2DCA:
 	mov r2, #0
 	push {r7}
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r7}
 	pop {r0,r1}
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
@@ -22822,7 +22822,7 @@ loc_80C2DCA:
 	lsl r4, r4, #8
 	mov r0, #0x27 
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80C2E18:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -23243,7 +23243,7 @@ loc_80C3132:
 	add r4, #6
 	mov r7, #0x64 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 loc_80C3144:
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -23526,7 +23526,7 @@ sub_80C3348:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #3
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -23651,7 +23651,7 @@ loc_80C341C:
 	mul r6, r0
 	sub r1, r1, r6
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C3446:
@@ -24149,7 +24149,7 @@ sub_80C37EC:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x15
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x10
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -24299,7 +24299,7 @@ loc_80C38EE:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C38FE:
@@ -24394,7 +24394,7 @@ sub_80C3994:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x12
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sub_80C46B0
 	mov r0, #0
@@ -24865,7 +24865,7 @@ sub_80C3CA0:
 	eor r4, r6
 	lsl r4, r4, #8
 	add r4, #0x57 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,r6,pc}
 	thumb_func_end sub_80C3CA0
 
@@ -24914,7 +24914,7 @@ sub_80C3D0C:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x12
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sub_80C46B0
 	mov r0, #0
@@ -27552,21 +27552,21 @@ locret_80C53A4:
 	pop {pc}
 	thumb_func_end object_spawnCollisionRegion
 
-	thumb_func_start sub_80C53A6
-sub_80C53A6:
+	thumb_func_start object_spawnDimmingCollisionRegion
+object_spawnDimmingCollisionRegion:
 	push {lr}
 	bl object_spawnCollisionRegion
 	cmp r0, #0
 	beq locret_80C53B8
 	ldrb r1, [r0,#oObjectHeader_Flags]
-	mov r2, #0x10
+	mov r2, #OBJECT_FLAG_UPDATE_DURING_TIMESTOP
 	orr r1, r2
 	strb r1, [r0,#oObjectHeader_Flags]
 locret_80C53B8:
 	pop {pc}
 	.balign 4, 0
 dword_80C53BC: .word 0xC000000
-	thumb_func_end sub_80C53A6
+	thumb_func_end object_spawnDimmingCollisionRegion
 
 	thumb_func_start t3_0x4_80C53C0
 t3_0x4_80C53C0:
@@ -27911,7 +27911,7 @@ loc_80C5688:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
@@ -27964,7 +27964,7 @@ loc_80C56E4:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
@@ -28031,7 +28031,7 @@ loc_80C5774:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x23 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x1a
 	strh r0, [r5,#oBattleObject_Timer]
 loc_80C578C:
@@ -28189,7 +28189,7 @@ loc_80C58B6:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80C58C2:
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -28650,7 +28650,7 @@ loc_80C5C70:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80C5C7C:
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -28746,7 +28746,7 @@ loc_80C5D36:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #1
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80C5D42:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #CUR_STATE_DESTROY
@@ -29309,7 +29309,7 @@ loc_80C61D6:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #7
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80C6228
 loc_80C6218:
 	bl object_setPanelsFromCoordinates
@@ -29567,7 +29567,7 @@ loc_80C63E6:
 	ldr r4, dword_80C6410 // =0x400ff0f 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #1
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	b locret_80C640C
 loc_80C63FA:
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -29926,7 +29926,7 @@ loc_80C66BC:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x23 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	mov r0, #0xc
@@ -30381,7 +30381,7 @@ loc_80C6A84:
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80C6A9A:
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	ldrh r0, [r0,#4]
@@ -30990,7 +30990,7 @@ loc_80C6F5A:
 	push {r6}
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80C6FC4 // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r6}
 	ldr r1, [sp]
 	strh r1, [r0,#oBattleObject_Timer]
@@ -31014,7 +31014,7 @@ loc_80C6F8E:
 	push {r6}
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80C6FC4 // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r6}
 	ldr r1, [sp]
 	strh r1, [r0,#oBattleObject_Timer]
@@ -31477,7 +31477,7 @@ sub_80C734E:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	bl object_clearCollisionRegion // () -> void
@@ -32635,7 +32635,7 @@ loc_80C7BF2:
 	ldrb r2, [r5,#oBattleObject_Element]
 	mov r4, #0
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
-	bl sub_80C7D50
+	bl spawnThunderboltObject_80C7D50
 	pop {r4,r6}
 	add r4, #1
 	cmp r4, r6
@@ -32796,7 +32796,7 @@ locret_80C7D4E:
 	thumb_func_end sub_80C7D08
 
 	thumb_local_start
-sub_80C7D50:
+spawnThunderboltObject_80C7D50:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x1c
@@ -32817,7 +32817,7 @@ sub_80C7D50:
 locret_80C7D74:
 	pop {pc}
 	.balign 4, 0x00
-	thumb_func_end sub_80C7D50
+	thumb_func_end spawnThunderboltObject_80C7D50
 
 	thumb_func_start t3_0x1d_80C7D78
 t3_0x1d_80C7D78:
@@ -32964,7 +32964,7 @@ loc_80C7EA2:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80C7EAE:
 	bl object_clearCollisionRegion // () -> void
 	ldr r0, [r5,#oBattleObject_ExtraVars]
@@ -33242,7 +33242,7 @@ loc_80C80D0:
 	mov r3, #0x20 
 	lsl r3, r3, #0x10
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #7
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -33317,7 +33317,7 @@ loc_80C8154:
 	mov r3, #0x20 
 	lsl r3, r3, #0x10
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #7
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -34240,7 +34240,7 @@ loc_80C88A8:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
@@ -34288,7 +34288,7 @@ loc_80C88F8:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
@@ -34299,7 +34299,7 @@ loc_80C8920:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80C8946
 loc_80C8934:
 	bl sub_80C89C8
@@ -36406,7 +36406,7 @@ loc_80C9946:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
@@ -36529,7 +36529,7 @@ loc_80C9A42:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
@@ -36704,7 +36704,7 @@ sub_80C9B64:
 	ldmia r0!, {r1-r3}
 	ldr r6, dword_80C9B98 // =0x8318 
 	ldr r7, dword_80C9B9C // =0x8 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 locret_80C9B94:
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
@@ -37891,7 +37891,7 @@ sub_80CA568:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x30 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getPanelParameters
@@ -38095,7 +38095,7 @@ loc_80CA712:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_freeMemory
 	pop {r4,pc}
 loc_80CA72A:
@@ -38206,7 +38206,7 @@ loc_80CA806:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
@@ -38445,7 +38445,7 @@ loc_80CA9F4:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80CAA14
 loc_80CAA02:
 	ldrb r0, [r5,#oBattleObject_Param1]
@@ -38455,7 +38455,7 @@ loc_80CAA02:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x11
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80CAA14:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #CUR_STATE_DESTROY
@@ -38505,7 +38505,7 @@ loc_80CAA5C:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
@@ -38520,7 +38520,7 @@ loc_80CAA84:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80CAAA0:
 	ldrb r0, [r5,#oBattleObject_Param1]
 	cmp r0, #2
@@ -38543,7 +38543,7 @@ loc_80CAABE:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x11
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x97
 	bl PlaySoundEffect
 loc_80CAAD8:
@@ -38996,7 +38996,7 @@ sub_80CAE28:
 	ldr r1, [r5,#oBattleObject_X]
 	ldr r2, [r5,#oBattleObject_Y]
 	mov r3, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0xeb
 	bl PlaySoundEffect
 	mov r0, #0x2a 
@@ -39229,7 +39229,7 @@ loc_80CAFFE:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl sub_80CB0AE
 loc_80CB02A:
 	mov r0, #CUR_STATE_DESTROY
@@ -39465,7 +39465,7 @@ sub_80CB1DA:
 	thumb_func_end sub_80CB1DA
 
 	thumb_local_start
-sub_80CB1E2:
+spawnDivemanWaveObject_80CB1E2:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x39 
@@ -39485,7 +39485,7 @@ sub_80CB1E2:
 	strb r2, [r0,#oObjectHeader_Flags]
 locret_80CB206:
 	pop {pc}
-	thumb_func_end sub_80CB1E2
+	thumb_func_end spawnDivemanWaveObject_80CB1E2
 
 	thumb_local_start
 sub_80CB208:
@@ -39508,7 +39508,7 @@ sub_80CB208:
 	push {r6}
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80CB244 // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r6}
 	tst r0, r0
 	beq locret_80CB23E
@@ -39544,7 +39544,7 @@ sub_80CB248:
 	mov r2, r1
 	mov r1, r0
 	mov r3, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_80CB280:
 	pop {r4,r6,pc}
 	.balign 4, 0x00
@@ -40082,7 +40082,7 @@ sub_80CB6CA:
 	ldmia r0!, {r1-r3}
 	ldr r6, dword_80CB6EC // =0xc3ff 
 	mov r7, #0x14
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80CB6E8: .word 0x10010
@@ -40169,7 +40169,7 @@ loc_80CB792:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x22
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80CB7A4:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #CUR_STATE_DESTROY
@@ -40230,7 +40230,7 @@ loc_80CB7CE:
 	mov r2, r1
 	mov r1, r0
 	mov r3, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r0,r1}
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldrb r2, [r5,#oBattleObject_Param3]
@@ -40307,7 +40307,7 @@ sub_80CB898:
 	mov r3, #6
 	lsl r3, r3, #0x10
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80CB8CA:
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	sub r0, #1
@@ -40412,7 +40412,7 @@ sub_80CB964:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_freeMemory
 	pop {r4,pc}
 loc_80CB98E:
@@ -40744,7 +40744,7 @@ loc_80CBC00:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #6
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x13
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -40982,7 +40982,7 @@ sub_80CBDE6:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80CBE38
 loc_80CBE20:
 	mov r0, #SOUND_HIT_BOMB_1
@@ -40994,7 +40994,7 @@ loc_80CBE20:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0xe
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80CBE38:
 	bl object_clearCollisionRegion // () -> void
 	bl clearEntryOfBattleStateBattleObjectList_800F656
@@ -41233,7 +41233,7 @@ loc_80CBFE6:
 	mov r1, r0
 	mov r3, #0
 	mov r4, #0x22 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	sub r6, #1
 	bpl loc_80CBFE6
 loc_80CC002:
@@ -41996,7 +41996,7 @@ loc_80CC5E2:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_freeMemory
 	pop {r4,pc}
 loc_80CC5FA:
@@ -42095,7 +42095,7 @@ loc_80CC6C2:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
@@ -42629,7 +42629,7 @@ sub_80CCAF4:
 	ldr r4, dword_80CCBA8 // =0xa050201 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	tst r0, r0
 	beq loc_80CCB2A
 	ldrb r0, [r7]
@@ -42687,7 +42687,7 @@ loc_80CCB84:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldr r1, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0
 	strb r0, [r1]
@@ -42747,7 +42747,7 @@ sub_80CCBF6:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80CCC1C:
@@ -42878,7 +42878,7 @@ loc_80CCCFC:
 	ldr r4, dword_80CCD20 // =0x1905ff01 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #0x4b 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	tst r0, r0
 	beq loc_80CCD1A
 	ldrb r0, [r7]
@@ -43519,7 +43519,7 @@ loc_80CD1DC:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80CD20E
 loc_80CD1FC:
 	mov r0, #SOUND_HIT_BOMB_1
@@ -43528,7 +43528,7 @@ loc_80CD1FC:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80CD20E:
 	bl sub_802EF5C
 	bl clearEntryOfBattleStateBattleObjectList_800F656
@@ -44158,7 +44158,7 @@ loc_80CD71E:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80CD778
 loc_80CD73E:
 	ldrb r0, [r5,#oBattleObject_PhaseInitialized]
@@ -44177,7 +44177,7 @@ loc_80CD73E:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	tst r0, r0
 	bne loc_80CD770
@@ -44409,7 +44409,7 @@ sub_80CD91E:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80CD9A8
 loc_80CD958:
 	ldrb r0, [r5,#oObjectHeader_Flags]
@@ -44521,7 +44521,7 @@ loc_80CDA3A:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_removePanelReserve
@@ -44777,7 +44777,7 @@ loc_80CDC34:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80CDC66
 loc_80CDC54:
 	mov r0, #SOUND_HIT_BOMB_1
@@ -44786,7 +44786,7 @@ loc_80CDC54:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80CDC66:
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -45110,7 +45110,7 @@ sub_80CDEF8:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x47 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
 	bl object_freeCollisionData
 	bl object_freeMemory
@@ -45450,7 +45450,7 @@ sub_80CE198:
 	ldr r3, [r5,#oBattleObject_Z]
 	bl AddRandomVarianceToTwoCoords
 	mov r4, #0x26 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80CE1BA:
 	ldrh r0, [r5,#oBattleObject_Z16]
 	sub r0, #3
@@ -45492,7 +45492,7 @@ loc_80CE1EA:
 	add r0, #0x34 
 	ldmia r0!, {r1-r3}
 	mov r4, #6
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -45612,7 +45612,7 @@ loc_80CE2DC:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
@@ -45695,7 +45695,7 @@ loc_80CE388:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #1
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80CE394:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #CUR_STATE_DESTROY
@@ -45849,7 +45849,7 @@ loc_80CE48A:
 	mov r2, r1
 	mov r1, r0
 	mov r3, r8
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r0-r3}
 loc_80CE4D0:
 	pop {r0,r1}
@@ -45881,7 +45881,7 @@ loc_80CE4EC:
 	mov r2, r1
 	mov r1, r0
 	mov r3, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r0-r3}
 loc_80CE50A:
 	sub r0, #1
@@ -46010,7 +46010,7 @@ loc_80CE620:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80CE62C:
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -46165,7 +46165,7 @@ sub_80CE730:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_freeMemory
 	pop {r4,pc}
 loc_80CE75A:
@@ -46928,7 +46928,7 @@ loc_80CECAC:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	bl sub_80CEE38
@@ -47548,7 +47548,7 @@ loc_80CF202:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80CF23A
 loc_80CF222:
 	mov r0, #SOUND_HIT_BOMB_1
@@ -47560,7 +47560,7 @@ loc_80CF222:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80CF23A:
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -47904,7 +47904,7 @@ sub_80CF4E6:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #5
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	ldr r7, [r5,#oBattleObject_ExtraVars]
@@ -48695,7 +48695,7 @@ loc_80CFB5A:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80CFBB6
 loc_80CFB7A:
 	mov r0, #0x34 
@@ -48718,7 +48718,7 @@ loc_80CFB7A:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #2
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldr r1, [r5,#oBattleObject_ExtraVars]
 	ldrh r0, [r1,#4]
 	bl PlaySoundEffect
@@ -49276,7 +49276,7 @@ sub_80CFFBC:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #2
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80CFFE8:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -49626,7 +49626,7 @@ loc_80D0250:
 	ldr r3, [r5,#0x3c]
 	ldr r4, off_80D0260 // =dword_80D0264 
 	ldrb r4, [r4,r6]
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,r6,pc}
 	.balign 4, 0
 off_80D0260: .word dword_80D0264
@@ -51060,7 +51060,7 @@ loc_80D0D60:
 	add r2, r2, r4
 	add r3, r3, r4
 	mov r4, #0x21 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80D0D78: .word 0x100000
@@ -51311,7 +51311,7 @@ loc_80D0F36:
 	push {r6}
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80D0F6C // =0x1201 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r6}
 	add r6, #1
 	cmp r6, #8
@@ -51650,7 +51650,7 @@ sub_80D11FC:
 	mov r0, #1
 	lsl r0, r0, #0x10
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	thumb_func_end sub_80D11FC
 off_80D1214: .word byte_80D0F84
@@ -51707,7 +51707,7 @@ loc_80D126A:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_freeMemory
 	pop {r4,pc}
 loc_80D1282:
@@ -51772,7 +51772,7 @@ sub_80D12CA:
 	ldr r1, [r5,#oBattleObject_X]
 	ldr r2, [r5,#oBattleObject_Y]
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	bl object_clearCollisionRegion // () -> void
@@ -51824,7 +51824,7 @@ loc_80D135E:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	bl object_clearCollisionRegion // () -> void
@@ -52798,7 +52798,7 @@ sub_80D1AD2:
 	mov r2, r1
 	mov r1, r0
 	mov r3, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_breakPanel_dup3
@@ -52993,7 +52993,7 @@ sub_80D1C5A:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_freeMemory
 	pop {r4,pc}
 loc_80D1C84:
@@ -53936,7 +53936,7 @@ loc_80D23D0:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80D2426
 loc_80D23F0:
 	mov r7, #0x34 
@@ -53960,7 +53960,7 @@ loc_80D23F0:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #1
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80D2426:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #CUR_STATE_DESTROY
@@ -54789,7 +54789,7 @@ sub_80D2A68:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	bl object_clearCollisionRegion // () -> void
@@ -55580,7 +55580,7 @@ sub_80D3004:
 	ldr r4, dword_80D3044 // =0x4050501 
 	ldr r6, [r5,#0x2c]
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	mov r0, #8
 	str r0, [r5,#8]
 locret_80D3042:
@@ -55695,7 +55695,7 @@ riskyHoneyObject_init_80D30F4:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_freeMemory
 	pop {r4,pc}
 loc_80D311E:
@@ -56468,7 +56468,7 @@ loc_80D36E8:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80D3720
 loc_80D3708:
 	mov r0, #SOUND_HIT_BOMB_1
@@ -56480,7 +56480,7 @@ loc_80D3708:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80D3720:
 	bl sub_802EF5C
 	bl clearEntryOfBattleStateBattleObjectList_800F656
@@ -57144,7 +57144,7 @@ sub_80D3C6C:
 	mov r3, #0x20 
 	lsl r3, r3, #0x10
 	mov r4, #0x1e
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0xa5
 	bl PlaySoundEffect
 	mov r0, #0x1c
@@ -57305,7 +57305,7 @@ sub_80D3D90:
 	ldr r2, [r5,#oBattleObject_Y]
 	ldr r3, [r5,#oBattleObject_Z]
 	mov r4, #0x12
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #5
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80D3DC2
@@ -57667,7 +57667,7 @@ loc_80D4034:
 	ldrb r2, [r5,#oBattleObject_Element]
 	mov r4, #1
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
-	bl sub_80C7D50
+	bl spawnThunderboltObject_80C7D50
 loc_80D4062:
 	add r7, #1
 	cmp r7, #4
@@ -58004,7 +58004,7 @@ loc_80D4302:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80D433A
 loc_80D4322:
 	mov r0, #SOUND_HIT_BOMB_1
@@ -58016,7 +58016,7 @@ loc_80D4322:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80D433A:
 	bl sub_802EF5C
 	bl clearEntryOfBattleStateBattleObjectList_800F656
@@ -58198,7 +58198,7 @@ sub_80D4472:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_freeMemory
 	pop {r4,pc}
 loc_80D449C:
@@ -58263,7 +58263,7 @@ loc_80D450E:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0xe
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80D4520:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #8
@@ -58428,7 +58428,7 @@ loc_80D461E:
 	mov r3, #0
 	mov r4, #0
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
-	bl sub_80C7D50
+	bl spawnThunderboltObject_80C7D50
 loc_80D4644:
 	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
@@ -58776,7 +58776,7 @@ loc_80D48E2:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80D493C
 	mov r0, #0x34 
 	add r0, r0, r5
@@ -58785,7 +58785,7 @@ loc_80D48E2:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x24 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #8
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -58818,7 +58818,7 @@ loc_80D496C:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80D497E:
 	bl sub_802EF5C
 	bl clearEntryOfBattleStateBattleObjectList_800F656
@@ -58936,7 +58936,7 @@ sub_80D4A48:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_freeMemory
 	pop {r4,pc}
 loc_80D4A72:
@@ -58996,7 +58996,7 @@ loc_80D4AD2:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #8
 	str r0, [r5,#8]
@@ -59275,7 +59275,7 @@ sub_80D4CA4:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x15
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80D4D08:
 	bl object_createCollisionData
 	tst r0, r0
@@ -59425,7 +59425,7 @@ loc_80D4E40:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
@@ -59452,7 +59452,7 @@ sub_80D4E64:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #3
 	push {r1,r2,r4}
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r0,r1,r3}
 	ldrb r4, [r5,#oBattleObject_Alliance]
 	mov r2, #0x45 
@@ -59490,7 +59490,7 @@ sub_80D4EBC:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0xc
 	strb r0, [r5,#oBattleObject_CurPhase]
 locret_80D4EDE:
@@ -59545,7 +59545,7 @@ loc_80D4F26:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80D4F70
 loc_80D4F46:
 	ldrh r0, [r5,#oBattleObject_HP]
@@ -59576,7 +59576,7 @@ loc_80D4F70:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r7, #0x34 
 	add r7, r7, r5
 	ldmia r7!, {r1-r3}
@@ -61453,7 +61453,7 @@ loc_80D5E2A:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl sub_80D5EDE
 loc_80D5E5C:
 	mov r0, #CUR_STATE_DESTROY
@@ -61655,7 +61655,7 @@ loc_80D5FEA:
 	ldr r2, [r5,#oBattleObject_Y]
 	ldr r3, byte_80D6210 // =0x0
 	mov r4, #0x12
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80D5FF6:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #CUR_STATE_DESTROY
@@ -62205,7 +62205,7 @@ sub_80D644E:
 	mov r1, r0
 	ldr r3, [r5,#oBattleObject_Z]
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oBattleObject_Param2]
 	cmp r0, #2
 	bne locret_80D64CA
@@ -62244,7 +62244,7 @@ loc_80D6478:
 	mov r1, r0
 	ldr r3, [r5,#oBattleObject_Z]
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80D64C4:
 	add r6, #1
 	cmp r6, #8
@@ -62302,7 +62302,7 @@ sub_80D6544:
 	ldr r2, [r5,#oBattleObject_Y]
 	ldr r3, dword_80D6558 // =0x100000 
 	mov r4, #0x12
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	.balign 4, 0
 off_80D6554: .word byte_80D6214
@@ -62746,12 +62746,12 @@ loc_80D68A0:
 	ldrb r2, [r5,#oBattleObject_Element]
 	mov r3, #0
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x21 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0xb9
 	bl PlaySoundEffect
 loc_80D68C6:
@@ -63278,7 +63278,7 @@ loc_80D6CAE:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl sub_80D6D3E
 loc_80D6CEA:
 	mov r0, #CUR_STATE_DESTROY
@@ -63353,7 +63353,7 @@ loc_80D6D5A:
 	ldr r4, dword_80D6D70 // =0xa050101 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80D6D74 // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 locret_80D6D6C:
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
@@ -64059,7 +64059,7 @@ loc_80D732C:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_UNK_85
 	bl PlaySoundEffect
 	bl object_clearCollisionRegion // () -> void
@@ -64213,7 +64213,7 @@ loc_80D7442:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_freeMemory
 	pop {r4,pc}
 loc_80D745A:
@@ -64336,7 +64336,7 @@ loc_80D7546:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #8
 	str r0, [r5,#8]
@@ -64746,7 +64746,7 @@ loc_80D78BA:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80D790E
 loc_80D78DA:
 	ldrb r0, [r5,#oBattleObject_PhaseInitialized]
@@ -64765,7 +64765,7 @@ loc_80D78DA:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	b loc_80D790E
@@ -66295,7 +66295,7 @@ loc_80D8590:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80D85E6
 loc_80D85B0:
 	mov r7, #0x34 
@@ -66319,7 +66319,7 @@ loc_80D85B0:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #1
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80D85E6:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #CUR_STATE_DESTROY
@@ -66693,7 +66693,7 @@ loc_80D887C:
 	ldr r4, dword_80D88B4 // =0x16050c01 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer2]
@@ -66773,7 +66773,7 @@ loc_80D8926:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl clearEntryOfBattleStateBattleObjectList_800F656
 	bl object_freeMemory
 	b locret_80D8986
@@ -66823,7 +66823,7 @@ loc_80D8998:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	b loc_80D8A0E
@@ -66853,7 +66853,7 @@ loc_80D89CC:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80D8A0E
 loc_80D89E2:
 	bl object_getFlag2
@@ -67026,7 +67026,7 @@ sub_80D8B18:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -67068,7 +67068,7 @@ loc_80D8B66:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80D8B84:
 	bl sub_802EF5C
 	bl clearEntryOfBattleStateBattleObjectList_800F656
@@ -67132,7 +67132,7 @@ sub_80D8BD4:
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	tst r0, r0
 	beq locret_80D8C04
 	ldrb r1, [r0,#oBattleObject_Param3]
@@ -68608,7 +68608,7 @@ sub_80D96C8:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x15
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D9788
@@ -68635,7 +68635,7 @@ loc_80D9762:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
@@ -68682,7 +68682,7 @@ sub_80D9788:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80D97D6
 loc_80D97CE:
 	mov r0, #2
@@ -68907,7 +68907,7 @@ loc_80D9980:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
@@ -68940,7 +68940,7 @@ sub_80D99A4:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #2
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0xd9
 	bl PlaySoundEffect
 	ldrb r0, [r5,#oObjectHeader_Flags]
@@ -69069,7 +69069,7 @@ loc_80D9AFC:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80D9B08:
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -69172,7 +69172,7 @@ loc_80D9BDA:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #1
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80D9BE6:
 	bl object_clearCollisionRegion // () -> void
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
@@ -69472,7 +69472,7 @@ loc_80D9E60:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x4a
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 loc_80D9E72:
@@ -70070,7 +70070,7 @@ loc_80DA306:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80DA358
 loc_80DA326:
 	ldr r0, [r5,#oBattleObject_ExtraVars+0x18]
@@ -70096,7 +70096,7 @@ loc_80DA340:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80DA358:
 	bl sub_802EF5C
 	bl clearEntryOfBattleStateBattleObjectList_800F656
@@ -70571,7 +70571,7 @@ loc_80DA6C2:
 	mov r3, #4
 	lsl r3, r3, #0x10
 	mov r4, #5
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl sub_80DA7EC
 	mov r0, #1
 	mov r1, #0xf
@@ -70810,7 +70810,7 @@ loc_80DA8BA:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_UNK_85
 	bl PlaySoundEffect
 	bl object_clearCollisionRegion // () -> void
@@ -70895,7 +70895,7 @@ sub_80DA956:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
@@ -71851,7 +71851,7 @@ loc_80DB096:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, off_80DB0B0 // =dword_80DB0B4 
 	ldr r7, [r7,#0x4] // (dword_80DB0B8 - 0x80db0b4)
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 locret_80DB0AA:
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
@@ -71883,7 +71883,7 @@ sub_80DB0D0:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x12
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_80DB0D0
@@ -72100,7 +72100,7 @@ loc_80DB27A:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80DB2B8
 loc_80DB2A0:
 	mov r0, #0x34 
@@ -72110,7 +72110,7 @@ loc_80DB2A0:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #2
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x90
 	bl PlaySoundEffect
 loc_80DB2B8:
@@ -72254,7 +72254,7 @@ sub_80DB3B4:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #5
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -72299,7 +72299,7 @@ loc_80DB42A:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80DB46A
 loc_80DB43E:
 	ldrb r0, [r5,#oBattleObject_PhaseInitialized]
@@ -72406,7 +72406,7 @@ sub_80DB4CE:
 	and r6, r7
 	add r6, #0x64 
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #0
@@ -72417,7 +72417,7 @@ sub_80DB4CE:
 	and r6, r7
 	add r6, #0x64 
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	mov r6, #0
 	ldr r7, off_80DB53C // =byte_80DB540 
 loc_80DB50C:
@@ -72436,7 +72436,7 @@ loc_80DB50C:
 	mov r1, r0
 	mov r3, #0
 	mov r4, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	add r7, #2
 	add r6, #1
 	cmp r6, #9
@@ -72893,7 +72893,7 @@ loc_80DB8AC:
 	ldr r4, dword_80DB8C0 // =0x15050a01 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80DB8C4 // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 locret_80DB8BE:
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
@@ -73537,7 +73537,7 @@ sub_80DBDBC:
 	mov r0, #3
 	bl AddRandomVarianceToTwoCoords
 	mov r4, #5
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl sub_80DBEBA
@@ -73830,7 +73830,7 @@ sub_80DC018:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #5
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	ldr r7, [r5,#oBattleObject_ExtraVars]
@@ -74034,7 +74034,7 @@ sub_80DC1A2:
 	ldr r4, dword_80DC254 // =0x1705ff01 
 	ldr r6, dword_80DC258 // =0x2000 
 	mov r7, #0
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80DC1D2:
@@ -74064,7 +74064,7 @@ loc_80DC1EE:
 	ldr r4, dword_80DC25C // =0x3005ff01 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
@@ -74445,7 +74445,7 @@ sub_80DC4DE:
 	ldr r4, dword_80DC4F4 // =0xa050301 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80DC4F8 // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80DC4F4: .word 0xA050301
@@ -74576,7 +74576,7 @@ sub_80DC5DA:
 	ldr r4, dword_80DC5F0 // =0xa050401 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80DC5F4 // =0x1 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80DC5F0: .word 0xA050401
@@ -75381,7 +75381,7 @@ loc_80DCBFC:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #7
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #2
 	mov r1, #0xf
 	bl camera_initShakeEffect_80302a8
@@ -75454,7 +75454,7 @@ loc_80DCCB2:
 	ldr r4, dword_80DCCC8 // =0xa050701 
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80DCCCC // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 locret_80DCCC4:
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
@@ -75639,7 +75639,7 @@ sub_80DCE18:
 	mov r1, r0
 	mov r3, #0
 	mov r4, #0x34 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	.balign 4, 0
 dword_80DCE30: .word 0x300000
@@ -75842,7 +75842,7 @@ loc_80DCFCA:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0xe
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80DCFD6:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #CUR_STATE_DESTROY
@@ -76766,7 +76766,7 @@ sub_80DD6F4:
 	ldr r3, [r5,#oBattleObject_Z]
 	ldr r6, dword_80DD730 // =0xa94a 
 	ldr r7, dword_80DD734 // =0xc 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	mov r0, #0
 loc_80DD72A:
 	str r0, [r5,#oBattleObject_ExtraVars+8]
@@ -76928,7 +76928,7 @@ sub_80DD848:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #2
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
 	pop {r4,r6,r7,pc}
@@ -77293,7 +77293,7 @@ sub_80DDB24:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x53
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80DDB52:
 	ldr r1, off_80DDB90 // =off_80DDB94
 	ldrb r0, [r5,#oBattleObject_CurAction]
@@ -77388,7 +77388,7 @@ sub_80DDBDE:
 	sub r3, r3, r6
 	ldr r6, dword_80DDC0C // =0xca8f 
 	mov r7, #0x14
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80DDC00: .word 0xC0000
@@ -77545,7 +77545,7 @@ sub_80DDD30:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #5
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	mov r0, #1
@@ -77981,7 +77981,7 @@ loc_80DE098:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #6
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	push {r5}
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl battle_findPlayer
@@ -78377,7 +78377,7 @@ sub_80DE38C:
 	mov r3, #0
 	ldr r4, dword_80DE3AC // =0x2 
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_80DE3AA:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -78788,7 +78788,7 @@ sub_80DE70C:
 	mov r3, #0
 	ldr r4, dword_80DE72C // =0x2 
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_80DE72A:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -79161,7 +79161,7 @@ sub_80DE9E4:
 	ldr r6, dword_80DEA1C // =0xa1ef 
 loc_80DEA06:
 	ldr r7, dword_80DEA20 // =0xe 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	ldrb r1, [r5,#oBattleObject_Param2]
 	cmp r1, #1
 	bne locret_80DEA16
@@ -80238,7 +80238,7 @@ sub_80DF2A0:
 	ldr r4, [r7,#4]
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80DF320 // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 locret_80DF2C6:
 	pop {r0,r4,r6,r7,pc}
 	.balign 4, 0
@@ -80716,7 +80716,7 @@ sub_80DF66A:
 	mov r3, #0x18
 	lsl r3, r3, #0x10
 	mov r4, #0xc
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x28 
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80DF6CC
@@ -80760,11 +80760,11 @@ sub_80DF6CE:
 	ldr r4, dword_80DF8FC // =0x10006 
 	mov r7, #0x60 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	ldr r4, dword_80DF900 // =0x10005 
 	mov r7, #0x64 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	mov r0, #SOUND_BUSTER_6A
 	bl PlaySoundEffect
 	mov r0, #0x78 
@@ -80827,7 +80827,7 @@ sub_80DF742:
 	ldr r4, dword_80DF904 // =0x1090b 
 	mov r7, #0x60 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	bl object_getFlip // () -> int
 	lsl r4, r0, #8
 	mov r0, #0x5d 
@@ -80845,7 +80845,7 @@ sub_80DF742:
 	ldr r6, dword_80DF908 // =0x180000 
 	add r2, r2, r6
 	add r3, r3, r6
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrh r1, [r5,#oBattleObject_Timer]
 	strh r1, [r0,#oBattleObject_Timer]
 	b locret_80DF7D4
@@ -81054,7 +81054,7 @@ sub_80DF8D2:
 	mov r0, #0x1f
 	bl AddRandomVarianceToTwoCoords
 	mov r4, #0xc
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	.balign 4, 0
 off_80DF8F0: .word 0x100
@@ -81416,7 +81416,7 @@ sub_80DFBE4:
 	ldr r3, [r5,#oBattleObject_Z]
 	ldr r0, dword_80DFC34 // =0x180000 
 	add r3, r3, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0xa3
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -82521,14 +82521,14 @@ loc_80E05F0:
 	pop {pc}
 	thumb_func_end sub_80E05C4
 
-	thumb_func_start SpawnT4BattleObjectWithId0
-SpawnT4BattleObjectWithId0:
+	thumb_func_start spawn_t1_0x0_EffectObject
+spawn_t1_0x0_EffectObject:
 	push {r5,lr}
 	mov r0, #0
 	bl object_spawnType4
 	mov r0, r5
 	pop {r5,pc}
-	thumb_func_end SpawnT4BattleObjectWithId0
+	thumb_func_end spawn_t1_0x0_EffectObject
 
 	thumb_local_start
 sub_80E0602:
@@ -85223,7 +85223,7 @@ loc_80E1A30:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	ldrb r4, [r5,#oBattleObject_Param2]
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oBattleObject_Param3]
 	tst r0, r0
 	bne locret_80E1A5C
@@ -86833,7 +86833,7 @@ sub_80E2628:
 	cmp r4, #2
 	beq loc_80E2678
 	mov r4, #2
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x97
 	bl PlaySoundEffect
 	b locret_80E2684
@@ -87701,7 +87701,7 @@ loc_80E2DA0:
 	mov r3, #0
 	push {r4}
 	mov r4, #0x3b 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4}
 	mov r0, r6
 	bl object_setPanelAllianceTimerShort
@@ -87853,7 +87853,7 @@ sub_80E2EBC:
 	mov r3, #0
 	mov r6, #0
 	ldr r7, dword_80E2F20 // =0x3000 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80E2EF0:
@@ -87961,7 +87961,7 @@ sub_80E2F8C:
 	add r7, r7, r4
 	ldrb r4, [r7]
 	push {r7}
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r7}
 	ldrb r0, [r7,#1]
 	tst r0, r0
@@ -88531,8 +88531,8 @@ loc_80E33E8:
 	pop {pc}
 	thumb_func_end sub_80E33D2
 
-	thumb_func_start sub_80E33FA
-sub_80E33FA:
+	thumb_func_start spawnIllusionObject_80E33FA
+spawnIllusionObject_80E33FA:
 	push {lr}
 	push {r5-r7}
 	mov r0, #0x28 
@@ -88551,7 +88551,7 @@ sub_80E33FA:
 	strb r1, [r0,#oObjectHeader_Flags]
 locret_80E341C:
 	pop {pc}
-	thumb_func_end sub_80E33FA
+	thumb_func_end spawnIllusionObject_80E33FA
 
 	thumb_local_start
 sub_80E341E:
@@ -88560,11 +88560,11 @@ sub_80E341E:
 	thumb_func_end sub_80E341E
 
 	thumb_local_start
-sub_80E3422:
+illusionObjectNoFlicker_80E3422:
 	mov r1, #1
-	str r1, [r0,#0x68]
+	str r1, [r0,#oBattleObject_ExtraVars+0x8]
 	mov pc, lr
-	thumb_func_end sub_80E3422
+	thumb_func_end illusionObjectNoFlicker_80E3422
 
 	thumb_local_start
 sub_80E3428:
@@ -88925,7 +88925,7 @@ loc_80E368C:
 	ldrh r3, [r5,#oBattleObject_Unk_32]
 	add r6, r6, r3
 	mov r3, #0
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	ldr r6, [sp,#0x18]
 	ldr r7, [sp,#0x1c]
 	b loc_80E368C
@@ -90960,7 +90960,7 @@ loc_80E45B0:
 	add r6, r6, r3
 	mov r3, #0
 	mov r7, #3
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r0-r4}
 	add r4, #1
 loc_80E45D4:
@@ -91199,7 +91199,7 @@ sub_80E4790:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #1
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_freeMemory
 	pop {pc}
 	thumb_func_end sub_80E4790
@@ -91994,7 +91994,7 @@ loc_80E4D72:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x5d 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 locret_80E4D88:
@@ -92224,7 +92224,7 @@ sub_80E4F18:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x15
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b loc_80E4FB0
@@ -92323,7 +92323,7 @@ sub_80E4FFC:
 	ldr r3, [r5,#oBattleObject_Z]
 	ldr r6, dword_80E5018 // =0x83e0 
 	ldr r7, dword_80E501C // =0xe 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80E5018: .word 0x83E0
@@ -92345,7 +92345,7 @@ sub_80E5024:
 	ldr r3, [r5,#oBattleObject_Z]
 	ldr r6, dword_80E5044 // =0x83e0 
 	ldr r7, dword_80E5048 // =0xe 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80E5044: .word 0x83E0
@@ -92388,7 +92388,7 @@ sub_80E5068:
 	mov r1, r0
 	mov r3, #0
 	mov r4, #0x34 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_80E509A:
 	pop {r0,r1,r4,r6,r7,pc}
 	.balign 4, 0
@@ -93182,7 +93182,7 @@ loc_80E5616:
 	ldr r4, off_80E5694 // =byte_805FF01
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	ldr r7, dword_80E5698 // =0x3 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -94790,7 +94790,7 @@ sub_80E621C:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #3
 	push {r0,r1}
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r0,r1}
 	ldrb r2, [r5,#oBattleObject_Alliance]
 	bl ifPanelFlagSetFindBattleActorWithCollisionOnPanelXY_80E7486
@@ -96000,7 +96000,7 @@ sub_80E6AF0:
 	mov r1, r0
 	mov r3, #0x20 
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_LOG_IN_77
 	bl PlaySoundEffect
 	mov r0, #0x14
@@ -96321,7 +96321,7 @@ loc_80E6E00:
 	mov r4, #2
 	lsl r6, r6, #0x10
 	orr r4, r6
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b locret_80E6E2C
 loc_80E6E26:
 	add r4, #1
@@ -96439,7 +96439,7 @@ loc_80E6EF6:
 	ldrb r2, [r5,#oBattleObject_Element]
 	mov r4, #0
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
-	bl sub_80C7D50
+	bl spawnThunderboltObject_80C7D50
 	pop {r4,r6}
 	b locret_80E6F0E
 loc_80E6F0A:
@@ -101770,7 +101770,7 @@ sub_80E95D8:
 	add r1, r1, r0
 	add r3, r3, r4
 	mov r4, #0x5a 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x1a
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -101869,7 +101869,7 @@ sub_80E96C6:
 	ldr r2, [r0,#oBattleObject_Y]
 	mov r3, #0
 	mov r4, #0x5b 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x44 
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -101923,7 +101923,7 @@ sub_80E9714:
 	ldrb r0, [r5,#oBattleObject_Param3]
 	lsl r0, r0, #0x10
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r2, [r5,#oBattleObject_Param2]
 	mov r1, #5
 	bl SetBattleNaviStatsByte_AllianceFromBattleObject
@@ -102133,7 +102133,7 @@ loc_80E98FC:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x12
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
@@ -102961,7 +102961,7 @@ sub_80E9F64:
 	ldr r4, dword_80E9F84 // =0xb05ff01 
 	ldrh r6, [r5,#oBattleObject_StaminaDamageCounterDisabler]
 	lsl r6, r6, #0x10
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80E9F84: .word 0xB05FF01
@@ -102980,7 +102980,7 @@ sub_80E9F9C:
 	ldr r4, dword_80E9FB4 // =0xb05ff01 
 	ldrh r6, [r5,#oBattleObject_Damage]
 	ldr r7, dword_80E9FB8 // =0x0 
-	bl sub_80C53A6
+	bl object_spawnDimmingCollisionRegion
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80E9FB4: .word 0xB05FF01
@@ -103024,7 +103024,7 @@ loc_80E9FF4:
 	add r2, r2, r4
 	add r3, r3, r4
 	mov r4, #0x21 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80EA00C: .word 0x100000
@@ -103425,7 +103425,7 @@ loc_80EA2C6:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x68 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4}
 	ldrb r1, [r0,#oObjectHeader_Flags]
 	mov r2, #4
@@ -103570,7 +103570,7 @@ loc_80EA3E6:
 	mov r1, r0
 	mov r3, #0
 	mov r4, #0x68 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	tst r0, r0
 	beq locret_80EA410
 	ldrb r1, [r0,#oObjectHeader_Flags]
@@ -104420,7 +104420,7 @@ loc_80EAFDE:
 	ldr r6, dword_80EB01C // =0x83e0 
 	ldr r7, dword_80EB020 // =0x1010014 
 	sub r7, r7, r0
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	cmp r0, #0
 	beq locret_80EB01A
 	mov r4, r0
@@ -105039,7 +105039,7 @@ loc_80EB4E6:
 	push {r7}
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 loc_80EB4F2:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
@@ -105197,7 +105197,7 @@ loc_80EB606:
 	lsl r0, r0, #0x10
 	add r4, r4, r0
 	mov r7, r8
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 loc_80EB61A:
 	pop {r2,r3}
 	mov r8, r2
@@ -105253,7 +105253,7 @@ loc_80EB676:
 	orr r4, r1
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #0xb2
 	bl PlaySoundEffect
@@ -105418,7 +105418,7 @@ loc_80EB7D6:
 	ldmia r0!, {r1-r3}
 	ldr r6, dword_80EB844 // =0xffe0 
 	ldr r7, dword_80EB848 // =0x1010014 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r0,r1,r4,r7}
 	strb r0, [r5,#oBattleObject_PanelX]
 	strb r1, [r5,#oBattleObject_PanelY]
@@ -105501,7 +105501,7 @@ loc_80EB88E:
 	add r4, r4, r0
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -105541,7 +105541,7 @@ loc_80EB8DC:
 	ldmia r0!, {r1-r3}
 	ldr r6, dword_80EBA0C // =0xffe0 
 	ldr r7, dword_80EBA10 // =0x101001e 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r7}
 	push {r7}
 	bl object_getFlip // () -> int
@@ -105560,7 +105560,7 @@ loc_80EB8DC:
 	ldmia r0!, {r1-r3}
 	ldr r6, dword_80EBA0C // =0xffe0 
 	ldr r7, dword_80EBA14 // =0x1e 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r7}
 loc_80EB93E:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
@@ -105623,7 +105623,7 @@ loc_80EB9AE:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80EB9C0:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -105878,7 +105878,7 @@ sub_80EBC28:
 	add r4, r4, r0
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -105921,7 +105921,7 @@ loc_80EBC66:
 	add r3, r3, r7
 	ldr r6, dword_80EBD20 // =0x8318 
 	ldr r7, dword_80EBD28 // =0x1e 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r7}
 	push {r7}
 	bl object_getFlip // () -> int
@@ -105937,7 +105937,7 @@ loc_80EBC66:
 	ldmia r0!, {r1-r3}
 	ldr r6, dword_80EBD20 // =0x8318 
 	ldr r7, dword_80EBD24 // =0x101001e 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r7}
 loc_80EBCDC:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
@@ -106157,7 +106157,7 @@ loc_80EBE76:
 	add r4, #5
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 loc_80EBEA2:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
@@ -106246,7 +106246,7 @@ sub_80EBF30:
 	mov r4, #0xd
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -106389,7 +106389,7 @@ sub_80EC044:
 	mov r4, #0xe
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -106515,7 +106515,7 @@ loc_80EC134:
 	mov r4, #0xf
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -106737,7 +106737,7 @@ sub_80EC2EA:
 	mov r3, #0x1e
 	lsl r3, r3, #0x10
 	mov r4, #0x13
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80EC308:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -106755,7 +106755,7 @@ loc_80EC308:
 	mov r0, #1
 	lsl r0, r0, #0x16
 	bl object_clearFlag // (int bitfield) -> void
-	bl sub_800EB08
+	bl object_clearInvulnerableTime
 	bl sub_80142C2
 	mov r0, #1
 	bl object_setCollisionRegion
@@ -106959,7 +106959,7 @@ loc_80EC4BC:
 	mov r4, #5
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	b loc_80EC4FE
 	mov r0, #SONG_NO_MUSIC
@@ -107440,7 +107440,7 @@ sub_80EC8A0:
 	add r4, #0x13
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #0xaf
 	bl PlaySoundEffect
@@ -107733,7 +107733,7 @@ sub_80ECAE8:
 	mov r4, #0x14
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -107859,7 +107859,7 @@ sub_80ECBCC:
 	add r4, r4, r0
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #oAIData_Unk_68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -108067,7 +108067,7 @@ loc_80ECD8A:
 	add r4, r4, r0
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -108179,7 +108179,7 @@ loc_80ECE52:
 	add r4, #0x17
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -108313,7 +108313,7 @@ sub_80ECF48:
 	add r4, #0x1d
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -108365,7 +108365,7 @@ loc_80ECFA8:
 	mov r1, r0
 	mov r3, #0
 	mov r4, #0x2f 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	cmp r0, #0
 	beq loc_80ECFE4
 	ldrb r1, [r7,#oAIAttackVars_Unk_0d]
@@ -108493,7 +108493,7 @@ sub_80ED0AC:
 	add r4, #0x18
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -108888,7 +108888,7 @@ sub_80ED3B6:
 	push {r7}
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	ldrb r2, [r7,#oAIAttackVars_Unk_02]
 	ldr r4, [r7,#oAIAttackVars_Unk_0c]
@@ -108992,7 +108992,7 @@ loc_80ED498:
 	add r4, r4, r0
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -109123,7 +109123,7 @@ sub_80ED57C:
 loc_80ED594:
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -109482,7 +109482,7 @@ sub_80ED82C:
 	mov r4, #0x15
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -109704,7 +109704,7 @@ sub_80ED9CC:
 	mov r4, #0x27 
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -109874,7 +109874,7 @@ sub_80EDB14:
 	add r4, r4, r1
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #0xf8
 	bl PlaySoundEffect
@@ -110193,7 +110193,7 @@ riskyHoneyAttack_init_80EDDA0:
 	mov r4, #0x28 
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #oAIData_Unk_68
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -110628,7 +110628,7 @@ dollThunderAttack_init_80EE0DC:
 loc_80EE0F4:
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -110751,7 +110751,7 @@ loc_80EE1D8:
 	add r4, r4, r0
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -110766,7 +110766,7 @@ loc_80EE1D8:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x15
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #4
@@ -110995,7 +110995,7 @@ sub_80EE370:
 	ldmia r0!, {r1-r3}
 	ldr r6, dword_80EE3E8 // =0xffe0 
 	ldr r7, dword_80EE3EC // =0x1010014 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r0,r1,r4,r7}
 	strb r0, [r5,#oBattleObject_PanelX]
 	strb r1, [r5,#oBattleObject_PanelY]
@@ -111083,7 +111083,7 @@ loc_80EE452:
 	add r4, r4, r0
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 loc_80EE474:
 	mov r0, #1
@@ -111233,7 +111233,7 @@ sub_80EE57C:
 	mov r4, #0x2b 
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -111461,7 +111461,7 @@ sub_80EE71C:
 	mov r4, #0x2c 
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -111760,7 +111760,7 @@ loc_80EE96E:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #2
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #8
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -111908,7 +111908,7 @@ sub_80EEA78:
 	add r4, r4, r0
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -111972,7 +111972,7 @@ sub_80EEB18:
 	bne loc_80EEB32
 	ldr r0, off_80EEB48 // =0x400 
 	bl ClearAIData_Unk_44_Flag
-	bl sub_800EB08
+	bl object_clearInvulnerableTime
 	mov r0, #5
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #4
@@ -112028,7 +112028,7 @@ sub_80EEB68:
 	add r4, r4, r0
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -112142,7 +112142,7 @@ loc_80EEC34:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	lsl r0, r0, #8
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80EEC6C:
 	add sp, sp, #8
 	pop {r4,r6,r7,pc}
@@ -112227,7 +112227,7 @@ sub_80EECCC:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80EED14:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -112324,7 +112324,7 @@ loc_80EEDB6:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #2
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #8
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -112497,7 +112497,7 @@ sub_80EEF02:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x52 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1
@@ -112640,7 +112640,7 @@ loc_80EF034:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #4
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	cmp r0, #0
 	beq loc_80EF05A
 	mov r1, #0x1b
@@ -112735,7 +112735,7 @@ sub_80EF0E2:
 	push {r7}
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	ldrb r2, [r7,#oAIAttackVars_Unk_02]
 	ldr r4, [r7,#oAIAttackVars_Unk_0c]
@@ -112795,7 +112795,7 @@ loc_80EF164:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x12
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
@@ -112804,7 +112804,7 @@ loc_80EF164:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x13
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x10
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #3
@@ -113348,7 +113348,7 @@ loc_80EF596:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldr r6, [r7,#oAIAttackVars_Damage]
 	ldrb r1, [r7,#oAIAttackVars_Unk_12]
 	mov r0, #2
@@ -113796,7 +113796,7 @@ sub_80EF9A2:
 	add r4, r4, r0
 	mov r7, #0x4c
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -114018,7 +114018,7 @@ loc_80EFB74:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x12
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldr r0, dword_80EFC18 // =0xb40000 
 	str r0, [r5,#oBattleObject_X]
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
@@ -114048,7 +114048,7 @@ sub_80EFBA0:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x13
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_80EFBBE:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -114066,7 +114066,7 @@ loc_80EFBBE:
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
-	bl sub_800EB08
+	bl object_clearInvulnerableTime
 	bl sub_80142C2
 	bl sub_80107C0
 	mov r0, r3
@@ -114228,7 +114228,7 @@ loc_80EFD14:
 	lsl r3, r3, #0x10
 	add r2, r2, r3
 	ldr r3, [r5,#oBattleObject_Z]
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	str r0, [r7,#oAIAttackVars_Unk_30]
 	ldrb r1, [r0,#oObjectHeader_Flags]
 	mov r2, #0x14
@@ -114337,7 +114337,7 @@ sub_80EFDB2:
 	lsl r0, r0, #0x10
 	add r3, r3, r0
 	mov r4, #3
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r1, [r0,#oObjectHeader_Flags]
 	mov r2, #4
 	orr r1, r2
@@ -114367,7 +114367,7 @@ loc_80EFE2C:
 	bl object_removePanelReserve
 	ldr r0, dword_80EFE78 // =0x1001003d 
 	bl ClearAIData_Unk_44_Flag
-	bl sub_800EB08
+	bl object_clearInvulnerableTime
 	bl sub_801A66C
 	mov r1, #0x18
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
@@ -114521,7 +114521,7 @@ loc_80EFF50:
 	add r4, r4, r0
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #0x15
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -114573,7 +114573,7 @@ loc_80EFFAC:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b loc_80F0022
 loc_80EFFFC:
 	bl object_getFrontDirection // () -> int
@@ -114791,7 +114791,7 @@ loc_80F0188:
 	mov r4, #5
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 loc_80F01C8:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
@@ -116039,7 +116039,7 @@ sub_80F0BA4:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	thumb_func_end sub_80F0BA4
 
@@ -116766,7 +116766,7 @@ sub_80F111C:
 	mov r1, r0
 	mov r3, #0x18
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	thumb_func_end sub_80F111C
 
@@ -116964,7 +116964,7 @@ sub_80F12AC:
 	mov r0, #1
 	lsl r0, r0, #0x16
 	bl object_clearFlag // (int bitfield) -> void
-	bl sub_800EB08
+	bl object_clearInvulnerableTime
 	mov r1, #1
 	mov r2, #2
 	mov r3, #3
@@ -117338,7 +117338,7 @@ loc_80F156E:
 	ldr r1, [r5,#oBattleObject_X]
 	ldr r2, [r5,#oBattleObject_Y]
 	mov r3, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x2e 
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -117726,7 +117726,7 @@ loc_80F183A:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_80F187E:
 	pop {r4,r6,pc}
 	.balign 4, 0
@@ -118026,7 +118026,7 @@ sub_80F1A60:
 	mov r1, r0
 	mov r3, #0x20 
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0x1e
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_80F1AB4
@@ -118439,7 +118439,7 @@ sub_80F1D9A:
 	mov r0, #1
 	lsl r0, r0, #0x16
 	bl object_clearFlag // (int bitfield) -> void
-	bl sub_800EB08
+	bl object_clearInvulnerableTime
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #9
@@ -118918,7 +118918,7 @@ sub_80F2142:
 	ldr r2, [r5,#oBattleObject_Y]
 	ldr r3, [r5,#oBattleObject_Z]
 	mov r4, #0x5e 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #8
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	b locret_80F217E
@@ -119042,7 +119042,7 @@ sub_80F222C:
 	ldr r2, [r5,#oBattleObject_Y]
 	ldr r3, [r5,#oBattleObject_Z]
 	mov r4, #0x5e 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #8
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	b locret_80F2266
@@ -123218,7 +123218,7 @@ sub_80F4778:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	.balign 4, 0x00
 byte_80F47A8: .byte 0x8, 0x3, 0x1, 0x1, 0x3, 0x80, 0x10, 0x1
@@ -123991,7 +123991,7 @@ sub_80F4E44:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b locret_80F4EC0
 loc_80F4EA8:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
@@ -124094,7 +124094,7 @@ sub_80F4F14:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b locret_80F4F7C
 loc_80F4F70:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
@@ -125199,7 +125199,7 @@ sub_80F57DE:
 	ldmia r0!, {r1-r3}
 	ldr r6, dword_80F5804 // =0xbc0f 
 	ldr r7, dword_80F5808 // =0x10014 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 off_80F5800: .word 0x308
@@ -126464,7 +126464,7 @@ sub_80F6254:
 	mov r1, r0
 	mov r3, #0x18
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	thumb_func_end sub_80F6254
 
@@ -129409,7 +129409,7 @@ loc_80F7BFA:
 	ldr r1, [r5,#oBattleObject_X]
 	ldr r2, [r5,#oBattleObject_Y]
 	mov r3, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4}
 	mov r0, #0x2e 
 	add r0, #0xff
@@ -131248,7 +131248,7 @@ loc_80F8AD4:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_80F8B14:
 	pop {r4,r6,pc}
 	.balign 4, 0
@@ -132643,7 +132643,7 @@ loc_80F9650:
 	mov r1, r0
 	mov r3, #0x20 
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F9688:
@@ -133341,7 +133341,7 @@ sub_80F9C28:
 	ldmia r0!, {r1-r3}
 	ldr r6, dword_80F9C4C // =0x8318 
 	ldr r7, dword_80F9C50 // =0x101000f 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_80F9C48: .word 0x808
@@ -137385,7 +137385,7 @@ byte_80FBE40: .byte 0x3, 0x2, 0x4, 0x2, 0x5, 0x2, 0x4, 0x2, 0x3, 0x2, 0x2, 0x2
 	thumb_local_start
 sub_80FBE4C:
 	push {r4,lr}
-	ldr r0, off_80FC060 // =sub_80FCCBC+1 
+	ldr r0, off_80FC060 // =judgemanChoosePanel_80FCCBC+1 
 	str r0, [r7,#oAIAttackVars_Unk_28]
 	bl sub_80FBCF2
 	strh r0, [r7,#oAIAttackVars_Unk_18]
@@ -137599,7 +137599,7 @@ byte_80FC040: .byte 0xA, 0x0, 0xA, 0x0, 0xA, 0x0, 0xA, 0x0
 byte_80FC048: .byte 0xA, 0x0, 0xA, 0x0, 0xA, 0x0, 0xA, 0x0
 byte_80FC050: .byte 0xA, 0x0, 0xA, 0x0, 0xA, 0x0, 0xA, 0x0
 byte_80FC058: .byte 0xA, 0x0, 0xA, 0x0, 0xA, 0x0, 0xA, 0x0
-off_80FC060: .word sub_80FCCBC+1
+off_80FC060: .word judgemanChoosePanel_80FCCBC+1
 off_80FC064: .word byte_80FCD71
 off_80FC068: .word sub_80FCD92+1
 off_80FC06C: .word sub_80FCDBA+1
@@ -137908,7 +137908,7 @@ loc_80FC2A6:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_80FC2DA:
 	pop {r4,pc}
 	thumb_func_end sub_80FC26A
@@ -138251,7 +138251,7 @@ loc_80FC558:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_80FC58C:
 	pop {r4,pc}
 	thumb_func_end sub_80FC51C
@@ -138504,7 +138504,7 @@ loc_80FC73C:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_80FC770:
 	pop {r4,pc}
 	thumb_func_end sub_80FC700
@@ -138769,7 +138769,7 @@ loc_80FC93E:
 	mov r2, r1
 	mov r1, r0
 	mov r3, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	b locret_80FC9A0
 loc_80FC97A:
 	bl object_getFlip // () -> int
@@ -138786,7 +138786,7 @@ loc_80FC97A:
 	mov r2, r1
 	mov r1, r0
 	mov r3, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_80FC9A0:
 	pop {r4,pc}
 	thumb_func_end sub_80FC8FE
@@ -138853,7 +138853,7 @@ sub_80FC9F8:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #SOUND_LOG_IN_77
 	bl PlaySoundEffect
 	mov r0, #0x14
@@ -139191,7 +139191,7 @@ locret_80FCCBA:
 	thumb_func_end sub_80FCC4C
 
 	thumb_local_start
-sub_80FCCBC:
+judgemanChoosePanel_80FCCBC:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x24
 	str r2, [sp,#4]
@@ -139283,7 +139283,7 @@ byte_80FCD71: .byte 0xB5, 0x4, 0x1C, 0xA8, 0x7D, 0xE1, 0x7C, 0x10, 0xF7
 	.byte 0x85, 0xF9, 0x0, 0x42, 0x7, 0xD0, 0xA2, 0x7C, 0x12
 	.byte 0x1A, 0x0, 0x2A, 0x0, 0xDA, 0x52, 0x42, 0x3, 0x2A
 	.byte 0x0, 0xDD, 0x0, 0x20, 0x10, 0xBD
-	thumb_func_end sub_80FCCBC
+	thumb_func_end judgemanChoosePanel_80FCCBC
 
 	thumb_local_start
 sub_80FCD92:
@@ -139557,7 +139557,7 @@ sub_80FCF90:
 	push {r4,r7,lr}
 	ldr r4, dword_80FD008 // =0xb11 
 	mov r7, r0
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r4,r7,pc}
 	thumb_func_end sub_80FCF90
 
@@ -139591,7 +139591,7 @@ sub_80FCFA8:
 	ldmia r0!, {r1-r3}
 	ldr r6, dword_80FD00C // =0x8318 
 	ldr r7, dword_80FD010 // =0x101001e 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80FCFA8
 
@@ -139614,7 +139614,7 @@ sub_80FCFD2:
 	ldr r6, dword_80FD00C // =0x8318 
 	push {r7}
 	ldr r7, dword_80FD014 // =0x101000f 
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r7}
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
@@ -142364,7 +142364,7 @@ loc_80FE6F4:
 	ldrb r2, [r7,#oAIAttackVars_Unk_02]
 	ldrb r4, [r7,#oAIAttackVars_Unk_03]
 	ldr r6, [r7,#oAIAttackVars_Damage]
-	bl sub_80CB1E2
+	bl spawnDivemanWaveObject_80CB1E2
 	pop {r4,r6}
 	ldr r0, [sp]
 	add r0, #1
@@ -147707,7 +147707,7 @@ sub_8101218:
 	mov r1, r0
 	mov r3, #0x20 
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	.balign 4, 0
 byte_810123C: .byte 0x8, 0x12, 0x1, 0x1, 0x12, 0x0, 0x0, 0x1
@@ -149932,7 +149932,7 @@ sub_81025A8:
 	mov r4, #0x30 
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
@@ -150107,7 +150107,7 @@ sub_81026EE:
 	ldr r4, dword_810279C // =0xe03 
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #0x10
 	bl object_setCounterTime
@@ -150145,7 +150145,7 @@ loc_810271E:
 	pop {r1,r2}
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_8102762:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	add r0, #1
@@ -150217,7 +150217,7 @@ sub_81027C4:
 	mov r7, #0x4c 
 	add r7, r7, r5
 	mov r4, #0x16
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
@@ -150510,7 +150510,7 @@ sub_81029CE:
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x68 
 	ldr r4, dword_8102C1C // =0x2831 
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r7}
 	mov r0, #0
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -151135,7 +151135,7 @@ loc_8102E7E:
 	mov r2, r1
 	mov r1, r0
 	mov r3, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4}
 	add r4, #1
 	b loc_8102E7E
@@ -152601,7 +152601,7 @@ sub_81039A4:
 	ldr r0, off_81039D0 // =dword_81039D4
 	ldrb r0, [r0,r6]
 	orr r4, r0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,r6,pc}
 	.balign 4, 0
 off_81039D0: .word dword_81039D4
@@ -154763,7 +154763,7 @@ loc_8104B84:
 	ldr r1, [r5,#oBattleObject_X]
 	ldr r2, [r5,#oBattleObject_Y]
 	ldr r3, [r5,#oBattleObject_Z]
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldr r0, [r7,#oAIAttackVars_Unk_30]
 	tst r0, r0
 	beq loc_8104BAA
@@ -155680,7 +155680,7 @@ sub_8105254:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,r6,pc}
 	.balign 4, 0
 off_8105288: .word byte_810528C
@@ -155804,7 +155804,7 @@ sub_8105354:
 	ldr r1, [r5,#oBattleObject_X]
 	ldr r2, [r5,#oBattleObject_Y]
 	ldr r3, [r5,#oBattleObject_Z]
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 locret_810537E:
 	pop {r4,pc}
 	.balign 4, 0
@@ -159264,7 +159264,7 @@ sub_8106FE6:
 	orr r4, r3
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r4,r7}
 	str r0, [r7,#oAIAttackVars_Unk_30]
 	b locret_810702E
@@ -159400,7 +159400,7 @@ sub_81070EC:
 	orr r4, r3
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r4,r7}
 	str r0, [r7,#oAIAttackVars_Unk_30]
 	mov r0, #0x18
@@ -160136,14 +160136,14 @@ sub_8107644:
 	orr r4, r3
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r4,r7}
 	str r0, [r7,#oAIAttackVars_Unk_34]
 	push {r4,r7}
 	mov r4, #5
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r4,r7}
 	str r0, [r7,#oAIAttackVars_Unk_38]
 	mov r0, #0xae
@@ -160661,7 +160661,7 @@ sub_8107A30:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	.balign 4, 0
 off_8107A5C: .word dword_8107A60
@@ -162595,14 +162595,14 @@ sub_81089A6:
 	orr r4, r3
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r4,r7}
 	str r0, [r7,#oAIAttackVars_Unk_34]
 	push {r4,r7}
 	mov r4, #5
 	mov r7, #0x4c 
 	add r7, r7, r5
-	bl spawn_t1_0x5_80B8E30
+	bl spawn_t1_0x5_tempAttackObject_80B8E30
 	pop {r4,r7}
 	str r0, [r7,#oAIAttackVars_Unk_38]
 	mov r0, #0xae
@@ -163215,7 +163215,7 @@ sub_8108E64:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	pop {r4,pc}
 	.balign 4, 0
 off_8108E90: .word dword_8108E94
@@ -163693,7 +163693,7 @@ sub_81095D0:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x26 
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r1, [r0,#oObjectHeader_Flags]
 	mov r2, #4
 	orr r1, r2
@@ -164277,7 +164277,7 @@ sub_81099DA:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	ldrb r4, [r7,#oAIAttackVars_Unk_0d]
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_8109A00:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -164294,7 +164294,7 @@ loc_8109A00:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	ldrb r4, [r7,#oAIAttackVars_Unk_0c]
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_8109A22:
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r0, [r5,#oBattleObject_PanelX]
@@ -164520,7 +164520,7 @@ sub_8109D08:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #3
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #4
@@ -166670,7 +166670,7 @@ loc_810AFF8:
 	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldr r4, dword_810B2C0 // =0x705ff00
 	mov r0, #4
 	ldrb r1, [r7,#oAIAttackVars_Unk_03]
@@ -166913,7 +166913,7 @@ sub_810B198:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	b locret_810B1F2
@@ -166956,7 +166956,7 @@ sub_810B21C:
 	ldr r3, [r5,#oBattleObject_Z]
 	ldr r6, dword_810B238 // =0x83e0
 	ldr r7, dword_810B23C // =0x1010014
-	bl sub_80E33FA
+	bl spawnIllusionObject_80E33FA
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
 dword_810B238: .word 0x83E0
@@ -166979,7 +166979,7 @@ sub_810B244:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #3
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	mov r0, #0xc

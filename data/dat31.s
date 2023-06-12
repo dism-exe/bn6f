@@ -95,7 +95,7 @@ sub_810C4B4::
 	lsl r4, r4, #8
 	add r4, #0x61 
 	mov r3, #0
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #0
@@ -654,7 +654,7 @@ loc_810CA02::
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	bl object_clearCollisionRegion // () -> void
 	bl sub_801DD34
 	ldrb r0, [r7,#oAIAttackVars_Unk_0d]
@@ -722,7 +722,7 @@ sub_810CA8E::
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_810CAAC::
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -866,7 +866,7 @@ loc_810CBA4::
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_810CBB6::
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -888,7 +888,7 @@ loc_810CBCE::
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_810CBE0::
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r2, [r7,#oAIAttackVars_Unk_16]
@@ -978,7 +978,7 @@ loc_810CC6C::
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_810CC82::
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -1000,7 +1000,7 @@ loc_810CC9A::
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_810CCAC::
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -1036,7 +1036,7 @@ sub_810CCDC::
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_810CCFA::
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -1554,7 +1554,7 @@ sub_810D2E4::
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 loc_810D302::
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -1567,7 +1567,7 @@ loc_810D302::
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
@@ -1840,7 +1840,7 @@ sub_810D4E8::
 loc_810D502::
 	push {r0-r3,r5}
 	ldr r5, [r3]
-	bl sub_800EB08
+	bl object_clearInvulnerableTime
 	pop {r0-r3,r5}
 	add r3, #4
 	sub r0, #1
@@ -1866,7 +1866,7 @@ loc_810D526::
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #6
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	ldrh r0, [r5,#oBattleObject_MaxHP]
 	bl object_addHP
 	pop {r0-r3,r5}

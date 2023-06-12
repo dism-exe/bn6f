@@ -3189,7 +3189,7 @@ void sub_8005A8C()
                                             v2 = sub_80AA4C0();
                                             if ( !v1 )
                                             {
-                                                gameState_8005BC8(v2, 1);
+                                                StartBattle(v2, 1);
                                                 engine_setScreeneffect(44, 16);
                                             }
                                         }
@@ -3329,7 +3329,7 @@ int __fastcall sub_8005B6E(int a1, int a2, int a3, int a4, int a5, int (__fastca
 
 // 0x8005bc8
 // (BattleSettings *r0Bt, bool r1) -> void
-int __fastcall gameState_8005BC8(int a1, int a2)
+int __fastcall StartBattle(int a1, int a2)
 {
     int v2; // r10
     int v3; // r7
@@ -11790,7 +11790,7 @@ int __fastcall sub_800ABC6(int a1, int a2)
 
     v4 = object_getCoordinatesForPanels(a1);
     v6 = (*(*(v3 + oToolkit_S2034880_Ptr) + 13) << 8) + 70;
-    SpawnT4BattleObjectWithId0(v2, 1, v4, v5 + 0x100000, 0x200000);
+    spawn_t1_0x0_EffectObject(v2, 1, v4, v5 + 0x100000, 0x200000);
     return PlaySoundEffect(165, v7, v8);
 }
 
@@ -13010,7 +13010,7 @@ int __fastcall sub_800B8EE(int a1)
     int v5; // r2
 
     v2 = object_getCoordinatesForPanels(3 * (a1 ^ 1) + 2);
-    SpawnT4BattleObjectWithId0(v1, v2, v2, v3, 7864320);
+    spawn_t1_0x0_EffectObject(v1, v2, v2, v3, 7864320);
     return PlaySoundEffect(165, v4, v5);
 }
 

@@ -1732,7 +1732,7 @@ T1BattleObjectJumptable: .word t1_0x0_80B81EC+1 // 0x0
 	.word t1_0x2_80B85E0+1 // 0x2
 	.word t1_0x3_80B88D0+1 // 0x3
 	.word t1_0x4_80B8A18+1 // 0x4
-	.word t1_0x5_80B8CD8+1 // 0x5
+	.word t1_0x5_tempAttackObject_80B8CD8+1 // 0x5
 	.word t1_0x6_80B8EA0+1 // 0x6
 	.word t1_0x7_80B9078+1 // 0x7
 	.word t1_0x8_80B92B8+1 // 0x8
@@ -4719,7 +4719,7 @@ sub_8005A8C:
 	bl sub_80AA4C0
 	beq locret_8005AF2
 	mov r1, #1
-	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
+	bl StartBattle // (BattleSettings *r0Bt, bool r1) -> void
 	mov r0, #0x2c
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
@@ -4820,8 +4820,8 @@ locret_8005BC6:
 	thumb_func_end sub_8005B6E
 
 // (BattleSettings *r0Bt, bool r1) -> void
-	thumb_func_start gameState_8005BC8
-gameState_8005BC8:
+	thumb_func_start StartBattle
+StartBattle:
 	push {r4-r7,lr}
 	mov r7, r1
 	mov r5, r10
@@ -4850,7 +4850,7 @@ loc_8005BF0:
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_8005C00: .word 0x4000
-	thumb_func_end gameState_8005BC8
+	thumb_func_end StartBattle
 
 	thumb_func_start sub_8005C04
 sub_8005C04:
@@ -15336,7 +15336,7 @@ sub_800ABC6:
 	lsl r4, r4, #8
 	add r4, #0x46
 	mov r0, #1
-	bl SpawnT4BattleObjectWithId0
+	bl spawn_t1_0x0_EffectObject
 	mov r0, #0xa5
 	bl PlaySoundEffect
 	pop {r4,pc}

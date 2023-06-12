@@ -2779,7 +2779,7 @@ signed int __usercall sub_800E2FC@<R0>(Battle *obj@<R5>, int HP@<R0>, int a2@<R1
     else
     {
         object_addHP(obj, vHP);
-        SpawnT4BattleObjectWithId0(obj, &obj->vx, obj->x, obj->y, obj->z);
+        spawn_t1_0x0_EffectObject(obj, &obj->vx, obj->x, obj->y, obj->z);
         PlaySoundEffect(138, v5, v6);
         result = 0;
     }
@@ -2808,7 +2808,7 @@ signed int __fastcall sub_800E360(int a1, int a2)
     else
     {
         object_addHP(v2, v3);
-        SpawnT4BattleObjectWithId0(v2, &v2->vx, v2->x, v2->y, v2->z);
+        spawn_t1_0x0_EffectObject(v2, &v2->vx, v2->x, v2->y, v2->z);
         result = 0;
     }
     return result;
@@ -3541,7 +3541,7 @@ int __fastcall object_setInvulnerableTime(__int16 a1)
 
 
 // 0x800eb08
-int sub_800EB08()
+int object_clearInvulnerableTime()
 {
     int v0; // r5
 

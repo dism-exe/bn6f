@@ -57,7 +57,7 @@ signed int sub_810C4B4()
     v2 = v0->panelY;
     v3 = object_getCoordinatesForPanels(v0->panelX);
     v4 = ((v0->Alliance ^ v0->directionFlip) << 8) + 97;
-    SpawnT4BattleObjectWithId0(v0, v3, v3, v5, 0);
+    spawn_t1_0x0_EffectObject(v0, v3, v3, v5, 0);
     v6 = *(v1 + 8);
     sub_80CB8DE(v0->panelX, v0->panelY, 0, 0x100000);
     result = 8;
@@ -451,7 +451,7 @@ void __fastcall sub_810C9F4(int a1)
         v5 = v1->panelY;
         v1->futurePanelY = v5;
         object_reservePanel(v4, v5);
-        SpawnT4BattleObjectWithId0(v1, &v1->vx, v1->x, v1->y, v1->z + 0x100000);
+        spawn_t1_0x0_EffectObject(v1, &v1->vx, v1->x, v1->y, v1->z + 0x100000);
         object_clearCollisionRegion();
         sub_801DD34();
         v6 = *(v2 + 13) - 10;
@@ -511,7 +511,7 @@ int sub_810CA8E()
     {
         v2 = *(v1 + 23);
         v3 = object_getCoordinatesForPanels(*(v1 + 22));
-        SpawnT4BattleObjectWithId0(v0, v3, v3, v4, 0x100000);
+        spawn_t1_0x0_EffectObject(v0, v3, v3, v4, 0x100000);
     }
     v0->objFlags &= 0xFDu;
     result = *(v1 + 16) - 1;
@@ -624,7 +624,7 @@ int sub_810CB78()
         if ( v4 != v0->panelX || *(v1 + 23) != v0->panelY )
         {
             v5 = object_getCoordinatesForPanels(v4);
-            SpawnT4BattleObjectWithId0(v0, v5, v5, v6, 0x100000);
+            spawn_t1_0x0_EffectObject(v0, v5, v5, v6, 0x100000);
         }
     }
     result = *(v1 + 16) - 1;
@@ -632,7 +632,7 @@ int sub_810CB78()
     if ( !result )
     {
         if ( *(v1 + 22) != v0->panelX || *(v1 + 23) != v0->panelY )
-            SpawnT4BattleObjectWithId0(v0, &v0->vx, v0->x, v0->y, v0->z + 0x100000);
+            spawn_t1_0x0_EffectObject(v0, &v0->vx, v0->x, v0->y, v0->z + 0x100000);
         v8 = v0->panelX;
         v9 = v0->panelY;
         if ( v8 != *(v1 + 22) || v9 != *(v1 + 23) )
@@ -704,14 +704,14 @@ int sub_810CC54()
     {
         v2 = v0->futurePanelY;
         v3 = object_getCoordinatesForPanels(v0->futurePanelX);
-        SpawnT4BattleObjectWithId0(v0, v3, v3, v4, 0x100000);
+        spawn_t1_0x0_EffectObject(v0, v3, v3, v4, 0x100000);
     }
     result = *(v1 + 16) - 1;
     *(v1 + 16) = result;
     if ( !result )
     {
         if ( v0->futurePanelX != v0->panelX || v0->futurePanelY != v0->panelY )
-            SpawnT4BattleObjectWithId0(v0, &v0->vx, v0->x, v0->y, v0->z + 0x100000);
+            spawn_t1_0x0_EffectObject(v0, &v0->vx, v0->x, v0->y, v0->z + 0x100000);
         object_removePanelReserve(v0->panelX, v0->panelY);
         JUMPOUT(*byte_810CCB4);
     }
@@ -733,7 +733,7 @@ int sub_810CCDC()
     {
         v2 = v0->panelY;
         v3 = object_getCoordinatesForPanels(v0->panelX);
-        SpawnT4BattleObjectWithId0(v0, v3, v3, v4, 0x100000);
+        spawn_t1_0x0_EffectObject(v0, v3, v3, v4, 0x100000);
     }
     v0->objFlags &= 0xFDu;
     result = *(v1 + 16) - 1;
@@ -961,13 +961,13 @@ int sub_810D2E4()
     {
         v2 = v0->futurePanelY;
         v3 = object_getCoordinatesForPanels(v0->futurePanelX);
-        SpawnT4BattleObjectWithId0(v0, v3, v3, v4, 0x100000);
+        spawn_t1_0x0_EffectObject(v0, v3, v3, v4, 0x100000);
     }
     result = v1[8] - 1;
     v1[8] = result;
     if ( !result )
     {
-        SpawnT4BattleObjectWithId0(v0, &v0->vx, v0->x, v0->y, v0->z + 0x100000);
+        spawn_t1_0x0_EffectObject(v0, &v0->vx, v0->x, v0->y, v0->z + 0x100000);
         v6 = v0->futurePanelX;
         v0->panelX = v6;
         v7 = v0->futurePanelY;
@@ -1237,7 +1237,7 @@ int sub_810D4E8()
                 v9 = v5;
                 v10 = v0;
                 v11 = *v5;
-                sub_800EB08();
+                object_clearInvulnerableTime();
                 v3 = v7;
                 v4 = v8;
                 v0 = v10;
@@ -1279,7 +1279,7 @@ int sub_810D516()
             v6 = v4;
             v7 = v0;
             v8 = *v4;
-            SpawnT4BattleObjectWithId0(*v4, &(*v4)->vx, (*v4)->x, (*v4)->y, (*v4)->z);
+            spawn_t1_0x0_EffectObject(*v4, &(*v4)->vx, (*v4)->x, (*v4)->y, (*v4)->z);
             object_addHP(v8, v8->maxHP);
             v2 = v9;
             v3 = v10;

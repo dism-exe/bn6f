@@ -4671,7 +4671,7 @@ signed int CutsceneCmd_start_fixed_battle()
     }
     v2 = ReadMapScriptHalfword(1, v0);
     v3 = getBattleSettingsFromList0(v2);
-    gameState_8005BC8(v3, 1);
+    StartBattle(v3, 1);
     v4 = ReadMapScriptHalfword(1, v0);
     sub_803522E(v4);
     engine_setScreeneffect(44, 16);
@@ -4685,7 +4685,7 @@ signed int __fastcall CutsceneCmd_start_random_battle(int a1, int a2)
     int v2; // r0
 
     v2 = chooseRandomEncounterMaybe_80aa5e4(a1, a2);
-    gameState_8005BC8(v2, 1);
+    StartBattle(v2, 1);
     engine_setScreeneffect(44, 16);
     return 1;
 }

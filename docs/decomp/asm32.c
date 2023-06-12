@@ -1233,7 +1233,7 @@ void __fastcall sub_810E746(char a1)
 
     v2 = (v1->Alliance ^ v1->directionFlip) << 8;
     v3 = object_getCoordinatesForPanels(a1);
-    SpawnT4BattleObjectWithId0(v1, v2, v3, v4, 0);
+    spawn_t1_0x0_EffectObject(v1, v2, v3, v4, 0);
 }
 
 
@@ -1247,7 +1247,7 @@ void __fastcall sub_810E774(char a1)
 
     v2 = (v1->Alliance ^ v1->directionFlip) << 8;
     v3 = object_getCoordinatesForPanels(a1);
-    SpawnT4BattleObjectWithId0(v1, v2, v3, v4, 0);
+    spawn_t1_0x0_EffectObject(v1, v2, v3, v4, 0);
 }
 
 
@@ -2644,7 +2644,7 @@ void __fastcall sub_810FC0C(int result)
     if ( result )
     {
         v2 = v1->z;
-        SpawnT4BattleObjectWithId0(v1, (v1->Alliance ^ v1->directionFlip) << 8, v1->x, v1->y, 0);
+        spawn_t1_0x0_EffectObject(v1, (v1->Alliance ^ v1->directionFlip) << 8, v1->x, v1->y, 0);
     }
 }
 
@@ -3102,7 +3102,7 @@ void __fastcall sub_811013C(char a1, int a2, int a3)
     v4 = a3;
     v5 = (v3->Alliance ^ v3->directionFlip) << 8;
     v6 = object_getCoordinatesForPanels(a1);
-    SpawnT4BattleObjectWithId0(v3, v5, v6, v7, v4);
+    spawn_t1_0x0_EffectObject(v3, v5, v6, v7, v4);
 }
 
 
@@ -3118,7 +3118,7 @@ void __fastcall sub_811016C(char a1, int a2, int a3)
     v4 = a3;
     v5 = (v3->Alliance ^ v3->directionFlip) << 8;
     v6 = object_getCoordinatesForPanels(a1);
-    SpawnT4BattleObjectWithId0(v3, v5, v6, v7, v4);
+    spawn_t1_0x0_EffectObject(v3, v5, v6, v7, v4);
 }
 
 
@@ -3136,7 +3136,7 @@ void __fastcall sub_8110222(int a1)
     v3 = (v1->Alliance ^ v1->directionFlip) << 8;
     v4 = v1->panelY;
     v5 = object_getCoordinatesForPanels(v1->panelX);
-    SpawnT4BattleObjectWithId0(v1, v2, v5, v6, 0);
+    spawn_t1_0x0_EffectObject(v1, v2, v5, v6, 0);
 }
 
 
@@ -3181,7 +3181,7 @@ int sub_81103A0()
     {
         *(v1 + 1) = 1;
         v0->currAnimation = 1;
-        SpawnT4BattleObjectWithId0(v0, &v0->vx, v0->x, v0->y, v0->z);
+        spawn_t1_0x0_EffectObject(v0, &v0->vx, v0->x, v0->y, v0->z);
         v2 = sub_80C4038(0x200000, 1, 5, 0);
         v3 = *(v1 + 40);
         *v3 = v2;
@@ -4216,7 +4216,7 @@ void __fastcall sub_811109C(char a1)
 
     v2 = (v1->Alliance ^ v1->directionFlip) << 8;
     v3 = object_getCoordinatesForPanels(a1);
-    SpawnT4BattleObjectWithId0(v1, v2, v3, v4, 0);
+    spawn_t1_0x0_EffectObject(v1, v2, v3, v4, 0);
 }
 
 
@@ -4230,7 +4230,7 @@ void __fastcall sub_81110C8(char a1)
 
     v2 = (v1->Alliance ^ v1->directionFlip) << 8;
     v3 = object_getCoordinatesForPanels(a1);
-    SpawnT4BattleObjectWithId0(v1, v2, v3, v4, 0);
+    spawn_t1_0x0_EffectObject(v1, v2, v3, v4, 0);
 }
 
 
@@ -6050,7 +6050,7 @@ int sub_8112820()
         {
             v4 = v0->futurePanelY;
             v5 = object_getCoordinatesForPanels(v0->futurePanelX);
-            SpawnT4BattleObjectWithId0(v0, v5, v5, v6, 0x100000);
+            spawn_t1_0x0_EffectObject(v0, v5, v5, v6, 0x100000);
         }
         else if ( !(v2 & 4) )
         {
@@ -6063,7 +6063,7 @@ int sub_8112820()
     v1[8] = result;
     if ( !result )
     {
-        SpawnT4BattleObjectWithId0(v0, &v0->vx, v0->x, v0->y, v0->z + 0x100000);
+        spawn_t1_0x0_EffectObject(v0, &v0->vx, v0->x, v0->y, v0->z + 0x100000);
         v8 = v0->futurePanelX;
         v0->panelX = v8;
         v9 = v0->futurePanelY;
@@ -6416,7 +6416,7 @@ int sub_8112CA4()
     {
         v5 = *(v1 + 23);
         v6 = object_getCoordinatesForPanels(*(v1 + 22));
-        SpawnT4BattleObjectWithId0(v0, v6, v6, v7, 786432);
+        spawn_t1_0x0_EffectObject(v0, v6, v6, v7, 786432);
         if ( v8 )
         {
             v9 = *(v1 + 13);
@@ -7068,7 +7068,7 @@ int sub_811339A()
     }
     else
     {
-        SpawnT4BattleObjectWithId0(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60) + 0x100000);
+        spawn_t1_0x0_EffectObject(v0, v0 + 64, *(v0 + 52), *(v0 + 56), *(v0 + 60) + 0x100000);
         *(v2 + 8) = 60;
         *(v1 + 4) = 0;
         *v2 = 8;
@@ -7731,7 +7731,7 @@ void sub_8113C18()
     v2 = object_getFrontDirection(v0);
     v3 = v0->panelY;
     v4 = object_getCoordinatesForPanels(v2 + v0->panelX);
-    SpawnT4BattleObjectWithId0(v0, v1, v4, v5, 0);
+    spawn_t1_0x0_EffectObject(v0, v1, v4, v5, 0);
 }
 
 
@@ -7749,7 +7749,7 @@ void sub_8113C48()
     v2 = ((v1->Alliance ^ v1->directionFlip) << 8) | ((*(v0 + 22) + 16) << 16);
     v3 = v1->panelY;
     v4 = object_getCoordinatesForPanels(v1->panelX);
-    SpawnT4BattleObjectWithId0(v1, v2, v4, v5, 0);
+    spawn_t1_0x0_EffectObject(v1, v2, v4, v5, 0);
     if ( v6 )
         sub_80E060E(v6);
 }
@@ -7770,7 +7770,7 @@ void __fastcall sub_8113C84(int result)
         v2 = (v1->Alliance ^ v1->directionFlip) << 8;
         v3 = *(result + 19);
         v4 = object_getCoordinatesForPanels(*(result + 18));
-        SpawnT4BattleObjectWithId0(v1, v2, v4, v5, 1114112);
+        spawn_t1_0x0_EffectObject(v1, v2, v4, v5, 1114112);
         if ( v6 )
             *(v6 + 32) = v1->extraVars[14] + 32;
     }
@@ -8219,7 +8219,7 @@ int sub_8114192()
     Battle *v0; // r5
 
     object_getFlip(v0);
-    return sub_80E33FA(268548, v0->x, v0->y, v0->z);
+    return spawnIllusionObject_80E33FA(268548, v0->x, v0->y, v0->z);
 }
 
 
@@ -8233,7 +8233,7 @@ void __fastcall sub_81141BC(char a1)
 
     v2 = (v1->Alliance ^ v1->directionFlip) << 8;
     v3 = object_getCoordinatesForPanels(a1);
-    SpawnT4BattleObjectWithId0(v1, v2, v3, v4, 0);
+    spawn_t1_0x0_EffectObject(v1, v2, v3, v4, 0);
 }
 
 
@@ -8247,7 +8247,7 @@ void __fastcall sub_81141E8(char a1)
 
     v2 = (v1->Alliance ^ v1->directionFlip) << 8;
     v3 = object_getCoordinatesForPanels(a1);
-    SpawnT4BattleObjectWithId0(v1, v2, v3, v4, 0);
+    spawn_t1_0x0_EffectObject(v1, v2, v3, v4, 0);
 }
 
 
@@ -8308,7 +8308,7 @@ int sub_811427A()
         v2 = v0->futurePanelY;
         v3 = object_getCoordinatesForPanels(v0->futurePanelX);
         v4 = *(v1 + 13);
-        SpawnT4BattleObjectWithId0(v0, v3, v3, v5, 0x100000);
+        spawn_t1_0x0_EffectObject(v0, v3, v3, v5, 0x100000);
     }
     result = *(v1 + 16) - 1;
     *(v1 + 16) = result;
@@ -8317,7 +8317,7 @@ int sub_811427A()
         if ( *(v1 + 3) & 2 )
         {
             v7 = *(v1 + 12);
-            SpawnT4BattleObjectWithId0(v0, &v0->vx, v0->x, v0->y, v0->z + 0x100000);
+            spawn_t1_0x0_EffectObject(v0, &v0->vx, v0->x, v0->y, v0->z + 0x100000);
         }
         v8 = v0->futurePanelX;
         v0->panelX = v8;
@@ -9459,7 +9459,7 @@ void sub_8115446()
     int v1; // r0
 
     v1 = object_getFrontDirection(v0);
-    SpawnT4BattleObjectWithId0(v0, &v0->vx, v0->x - 917504 * v1, v0->y, v0->z + 0x80000);
+    spawn_t1_0x0_EffectObject(v0, &v0->vx, v0->x - 917504 * v1, v0->y, v0->z + 0x80000);
 }
 
 
@@ -9477,7 +9477,7 @@ void sub_8115466()
     {
         *(v1 + 14) = 4;
         v3 = object_getFrontDirection(v0);
-        SpawnT4BattleObjectWithId0(v0, &v0->vx, v0->x + 917504 * v3, v0->y, v0->z + 0x80000);
+        spawn_t1_0x0_EffectObject(v0, &v0->vx, v0->x + 917504 * v3, v0->y, v0->z + 0x80000);
     }
 }
 
@@ -10204,7 +10204,7 @@ void sub_8115DA4()
     v2 = object_getFrontDirection(v0);
     v3 = v0->panelY;
     v4 = object_getCoordinatesForPanels(v2 + v0->panelX);
-    SpawnT4BattleObjectWithId0(v0, v1, v4, v5, 0);
+    spawn_t1_0x0_EffectObject(v0, v1, v4, v5, 0);
 }
 
 

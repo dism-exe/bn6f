@@ -10407,7 +10407,7 @@ signed int __fastcall __noreturn sub_802D7A0(int a1)
     v27 = object_clearFlag(GameEntryPoint);
     sub_801086C(v27);
     sub_8014216();
-    sub_800EB08();
+    object_clearInvulnerableTime();
     result = 8;
     *v2 = 8;
     return result;
@@ -10560,7 +10560,7 @@ signed int __noreturn sub_802D9B0()
     v17 = object_clearFlag(GameEntryPoint);
     sub_801086C(v17);
     sub_8014216();
-    sub_800EB08();
+    object_clearInvulnerableTime();
     result = 8;
     *v1 = 8;
     return result;
@@ -10639,8 +10639,8 @@ int sub_802DACC()
         v4 = object_clearFlag(7233);
         object_clearFlag2(v4);
         object_setAnimation(v0);
-        SpawnT4BattleObjectWithId0(v0, &v0->vx, v0->x, v0->y, v0->z);
-        SpawnT4BattleObjectWithId0(v0, v5, v6, v7, v8);
+        spawn_t1_0x0_EffectObject(v0, &v0->vx, v0->x, v0->y, v0->z);
+        spawn_t1_0x0_EffectObject(v0, v5, v6, v7, v8);
         v0->parent = 0;
         v0->ai->unk_68 = 0;
         v9 = v0->ai;
@@ -10755,7 +10755,7 @@ signed int __noreturn sub_802DB80()
     v17 = object_clearFlag(GameEntryPoint);
     sub_801086C(v17);
     sub_8014216();
-    sub_800EB08();
+    object_clearInvulnerableTime();
     if ( battle_networkInvert(v0->Alliance) )
         sub_801DC7C(0, 0);
     result = 12;
