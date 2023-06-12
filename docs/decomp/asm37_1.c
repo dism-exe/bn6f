@@ -1797,7 +1797,7 @@ int __fastcall sub_8143204(int a1)
     int result; // r0
 
     v1 = sub_81431F8(a1);
-    GetRNG2();
+    GetRNG();
     result = (v2 & 0x3F) + 30;
     *(v1 + 3) = result;
     return result;
@@ -1813,7 +1813,7 @@ int __fastcall sub_8143220(int a1)
 
     v1 = a1;
     v2 = sub_81431F8(a1);
-    GetRNG2();
+    GetRNG();
     *(v2 + 1) = (v3 & 0x3F) + 30;
     return sub_81432FA(v1, 1);
 }
@@ -1966,11 +1966,11 @@ int sub_8143314()
         }
         *v1 = 1;
         v1[1] = 0;
-        GetRNG2();
+        GetRNG();
         *(v1 + 2) = v5;
         sub_8143204(v4);
         sub_8143220(v4);
-        GetRNG2();
+        GetRNG();
         v7 = 2 * (v6 & 0xF0);
         v8 = *&math_cosTable[v7] << 16;
         v9 = *&math_sinTable[v7] << 16;
@@ -2057,7 +2057,7 @@ int sub_8143406()
     char v0; // r0
     int result; // r0
 
-    GetRNG2();
+    GetRNG();
     result = v0 & 3;
     byte_200101A = result;
     return result;

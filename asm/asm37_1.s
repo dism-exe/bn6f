@@ -2598,7 +2598,7 @@ sub_8143204:
 	push {r4-r7,lr}
 	bl sub_81431F8
 	mov r5, r0
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	mov r1, #0x3f 
 	and r1, r0
 	ldr r0, dword_814321C // =0x1e 
@@ -2615,7 +2615,7 @@ sub_8143220:
 	mov r4, r0
 	bl sub_81431F8
 	mov r5, r0
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	mov r1, #0x3f 
 	and r1, r0
 	ldr r0, dword_8143244 // =0x1e 
@@ -2767,14 +2767,14 @@ loc_8143324:
 	strb r0, [r5]
 	mov r0, #0
 	strb r0, [r5,#1]
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	strh r0, [r5,#4]
 	mov r0, r4
 	bl sub_8143204
 	mov r0, r4
 	bl sub_8143220
 	push {r4-r7}
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	mov r1, #0xf0
 	and r0, r1
 	lsl r0, r0, #1
@@ -2901,7 +2901,7 @@ loc_8143402:
 sub_8143406:
 	push {r4-r7,lr}
 	ldr r5, off_81434E0 // =eStruct2001010 
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	mov r1, #3
 	and r0, r1
 	strb r0, [r5,#0xa] // (byte_200101A - 0x2001010)

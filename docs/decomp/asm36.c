@@ -2107,7 +2107,7 @@ int sub_8131C2C()
     v1 = 8;
     do
     {
-        GetRNG1();
+        GetRNGSecondary();
         v3 = 4 * (v2 & 0xF);
         v4 = dword_202522C[v3 / 4];
         v5 = v3 + 4;
@@ -2141,7 +2141,7 @@ int sub_8131CAC()
     {
         do
         {
-            GetRNG1();
+            GetRNGSecondary();
             v2 = 4 * (v1 & 0xF);
         }
         while ( v2 == v8 );
@@ -2150,7 +2150,7 @@ int sub_8131CAC()
         ++v0;
     }
     while ( v0 < 2 );
-    GetRNG1();
+    GetRNGSecondary();
     v4 = off_8131D40[v3 & 0xF];
     dword_202522C[v0] = v4;
     return sub_8131EB0(v4, off_8131D40, v5, v6);
@@ -2166,11 +2166,11 @@ int sub_8131D80()
     int v3; // r2
     int v4; // r3
 
-    GetRNG1();
+    GetRNGSecondary();
     dword_202522C[0] = off_8131DC8[v0 & 0xF];
-    GetRNG1();
+    GetRNGSecondary();
     unk_2025230 = off_8131E0C[v1 & 0xF];
-    GetRNG1();
+    GetRNGSecondary();
     dword_2025234[0] = off_8131E50[v2 & 7];
     return sub_8131EB0(dword_2025234[0], off_8131E50, v3, v4);
 }
@@ -2188,7 +2188,7 @@ int __fastcall sub_8131E70(int a1, int a2, int a3, int a4)
     signed int v10; // r2
 
     ZeroFillByWord(dword_20251A0, 60);
-    GetRNG1();
+    GetRNGSecondary();
     v5 = 4 * (v4 & 0xF);
     v6 = 0;
     v7 = 0;

@@ -4140,7 +4140,7 @@ int __fastcall megamanChargeShotBPwrAtk_init_8011A26(int a1)
     v4 = sub_8013774(0, 77);
     if ( v4 )
     {
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         v6 = 1;
         if ( v4 >= 30 )
             v6 = 7;
@@ -4180,7 +4180,7 @@ signed int __fastcall busterBugChargeShotDamageCalcHappensHere_8011A7E(int a1)
         goto LABEL_14;
     if ( v7 != 6 )
     {
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         v10 = 1;
         if ( v8 == 9 || v8 == 35 )
             v10 = 7;
@@ -7963,7 +7963,7 @@ char *__fastcall sub_8013CC4(int a1, int a2)
         v6 = result;
         if ( result )
         {
-            GetPositiveSignedRNG2();
+            GetPositiveSignedRNG();
             result = (v7 & 7);
             if ( result <= (v6 - 1) )
             {
@@ -8021,7 +8021,7 @@ int __fastcall sub_8013D5E(int a1)
             break;
         *(&v7 + v1++) = 2;
     }
-    GetRNG2();
+    GetRNG();
     return *(&v7 + (v5 & 0xF));
 }
 
@@ -8079,7 +8079,7 @@ char *sub_8013DA0()
                             ++v5;
                         }
                         while ( v5 < 16 );
-                        GetPositiveSignedRNG2();
+                        GetPositiveSignedRNG();
                         __asm { SVC         6 }
                         v11 = *(&v12 + v6);
                         *(v3 + 11) = v11;
@@ -8119,7 +8119,7 @@ int __fastcall sub_8013E58(int a1)
     v3 = 0;
     if ( v2 == 9 || (v3 = 4, v2 == 10) )
     {
-        GetRNG2();
+        GetRNG();
         v2 = (v4 & 3) + v3 + 1;
     }
     return (*(&off_8013E9C + v2))();
@@ -8287,7 +8287,7 @@ int __fastcall sub_8013FAE(int a1)
     v2 = result;
     if ( result )
     {
-        GetRNG2();
+        GetRNG();
         result = (v3 & 7) <= v2 - 1;
     }
     return result;
@@ -11325,7 +11325,7 @@ int __noreturn sub_8015C48()
     if ( v2 )
     {
         v3 = v2;
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         result = *(&v10 + v3) & 7;
     }
@@ -11352,7 +11352,7 @@ int __fastcall __noreturn sub_8015C94(int a1, int a2, int a3, int a4)
     if ( v5 )
     {
         v6 = v5;
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         result = *(&v13 + v6) & 7;
     }
@@ -11424,7 +11424,7 @@ int __fastcall __noreturn sub_8015CC0(int a1, int a2, int a3, int a4)
     result = v22;
     if ( v22 )
     {
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         result = *(&v15 + v22) & 7;
     }
@@ -11475,7 +11475,7 @@ int __fastcall panelFlagCheck_8015D80(int a1, int a2, int a3, int a4)
     result = v19;
     if ( v19 )
     {
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         result = *(&v13 + v19) & 7;
     }
@@ -11520,7 +11520,7 @@ int __fastcall sub_8015DF0(int a1, int a2, int a3, int a4)
     result = v16;
     if ( v16 )
     {
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         result = *(&v13 + v16) & 7;
     }
@@ -11578,7 +11578,7 @@ int __fastcall sub_8015E58(int a1, int a2, int a3, int a4)
     result = v6;
     if ( v6 )
     {
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         result = *(&v14 + v6) & 7;
     }
@@ -11626,7 +11626,7 @@ int sub_8015EC6()
         v7 = result;
         if ( result )
         {
-            GetPositiveSignedRNG2();
+            GetPositiveSignedRNG();
             __asm { SVC         6 }
             result = v11[v7] & 7;
         }
@@ -11649,7 +11649,7 @@ int sub_8016004()
     v2 = result;
     if ( result )
     {
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         result = *(&v9 + v2) & 7;
         v7 = 1;
@@ -11702,7 +11702,7 @@ __int64 __fastcall sub_80161C4(int a1, int a2, int a3, int a4)
     if ( v6 || (LODWORD(v6) = object_getPanelsInRowFiltered(*(v4 + 19), SHIDWORD(v6), v15, v16), v6) )
     {
         v7 = v6;
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         v12 = *(&v17 + v7);
         HIDWORD(v6) = v12 >> 4;
@@ -11786,7 +11786,7 @@ int __fastcall sub_80162AA(int a1, int a2, int a3, int a4)
         result = v6;
         if ( v6 )
         {
-            GetPositiveSignedRNG2();
+            GetPositiveSignedRNG();
             __asm { SVC         6 }
             result = *(&v14 + v6) & 7;
         }
@@ -18128,7 +18128,7 @@ unsigned int __fastcall sub_801BDDE(unsigned int a1)
     unsigned int v1; // ST00_4
 
     v1 = a1;
-    GetRNG2();
+    GetRNG();
     return v1 >> 1;
 }
 
@@ -19590,7 +19590,7 @@ LABEL_9:
             goto LABEL_10;
         }
 LABEL_8:
-        *(v0 + 29) = (GetPositiveSignedRNG1() & 1) + 1;
+        *(v0 + 29) = (GetPositiveSignedRNGSecondary() & 1) + 1;
         result = 12;
         *(v0 + 15) = 12;
         goto LABEL_9;

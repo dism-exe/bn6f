@@ -128,7 +128,7 @@ int __fastcall sub_8072B70(int a1)
         result = v6 - 1;
         if ( (result < 0) ^ v7 )
         {
-            GetRNG2();
+            GetRNG();
             *(v2 + 60) = dword_258 + (v8 & 0x1FF);
             result = PlaySoundEffect(*&byte_8072BC0[2 * v3], dword_258, v9);
         }

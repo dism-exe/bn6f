@@ -238,7 +238,7 @@ eActiveOverworldNPCObjectsBitfield:: // 0x20010e0
 	.space 16
 gameProgressBuffer_20010f0:: // 0x20010f0
 	.space 48
-rngSeed_2001120:: // 0x2001120
+eSecondaryRngSeed:: // 0x2001120
 	.space 16
 byte_2001130:: // 0x2001130
 	.space 16
@@ -259,7 +259,7 @@ unk_200119C:: // 0x200119c
 unk_200119E:: // 0x200119E
 	.space 382
 	.space 212
-eRngSeed20013F0:: // 0x20013f0
+ePrimaryRngSeed:: // 0x20013f0
 	.space 16
 byte_2001400:: // 0x2001400
 	.space 268

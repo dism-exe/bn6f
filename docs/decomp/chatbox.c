@@ -2345,7 +2345,7 @@ signed int __fastcall chatbox_F0_jump(int a1, int a2, int a3, int a4)
             v11 = (*tk->currFrame & 3) + 2;
             do
             {
-                GetRNG2();
+                GetRNG();
                 _VF = __OFSUB__(v11--, 1);
             }
             while ( !(((v11 < 0) ^ _VF) | (v11 == 0)) );
@@ -3199,7 +3199,7 @@ signed int __fastcall sub_8042554(int a1, int a2, int a3)
     int v7; // r4
 
     PlaySoundEffect(115, a2, a3);
-    GetRNG2();
+    GetRNG();
     v6 = *((*(v3 + 2) & v5) + v3 + 3);
     *(v4 + 76) = v6;
     GiveItem(v6, 1);

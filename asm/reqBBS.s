@@ -4448,7 +4448,7 @@ off_81409CC: .word eReqBBSGui
 reqBBS_81409D0:
 	push {r6,lr}
 	mov r6, r0
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	mov r1, #0xff
 	and r0, r1
 	mov r1, r6

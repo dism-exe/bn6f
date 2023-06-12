@@ -9,7 +9,7 @@ void __noreturn main_()
     char zf; // zf
 
     main_initToolkitAndOtherSubsystems();
-    SeedRNG2();
+    SeedRNG();
     clear_e200AD04();
     sub_803D1A8();
     while ( 1 )
@@ -30,7 +30,7 @@ void __noreturn main_()
         ++*tk->currFrame;
         CapIncrementGameTimeFrames();
         (*(&main_subsystemJumpTable + *tk->jo_gameSubsysSel))();
-        GetRNG1();
+        GetRNGSecondary();
         isSameSubsystem_800A732();
         if ( !zf )
             subsystem_triggerTransition_800630A();

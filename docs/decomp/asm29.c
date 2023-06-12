@@ -127,9 +127,9 @@ int sub_80A4ACC()
         *(v0 + 36) = *(v0 + 5);
         v4 = *(&off_80A4B88 + ((*(v0 + 7) & 0xC0u) >> 3))
              + (*(v0 + 7) & 0x3F) * *(&off_80A4B88 + ((*(v0 + 7) & 0xC0u) >> 3) + 4);
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         SpawnOverworldMapObject(
             2,
             ((*sub_80A4BD4 + (v8 & 0xF) - 7) << 16) + *v4 + *(v0 + 12),
@@ -5111,10 +5111,10 @@ int sub_80A8CCC()
     *(v1 + 2) = result;
     if ( ((result < 0) ^ _VF) | (result == 0) )
     {
-        GetRNG2();
+        GetRNG();
         __asm { SVC         6 }
         v8 = 24576;
-        GetRNG2();
+        GetRNG();
         if ( (v9 & 7) < 4 )
             v8 = -24576;
         *(v1 + 4) += v8;
@@ -6284,7 +6284,7 @@ int sub_80A9858()
     if ( ((result < 0) ^ v2) | (result == 0) )
     {
         *(v0 + 36) = *(v0 + 5);
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         SpawnOverworldMapObject(
             2,
             (*(v0 + 14) + (v4 & 0xF) - 7) << 16,
@@ -6355,10 +6355,10 @@ int sub_80A9908()
     if ( ((result < 0) ^ _VF) | (result == 0) )
     {
         *(v0 + 36) = *(v0 + 5);
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         v7 = *(off_80A999C + *(v0 + 4)) + 1;
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         SpawnOverworldMapObject(
             32,
             ((*v7 + (v8 & 0xF) - 7) << 16) + *(v0 + 12),
@@ -7101,7 +7101,7 @@ void __noreturn sub_80AA282()
     if ( sprite_getFrameParameters() & 0x80 )
     {
         *v0 = 1;
-        GetRNG2();
+        GetRNG();
         *(v0 + 36) = (v1 & 0x1F) + 8;
         *(v0 + 8) = 12;
     }
@@ -7346,12 +7346,12 @@ unsigned int sub_80AA4C0()
                 if ( (v8 - 17) >= 0 )
                     v8 = 16;
                 v9 = byte_8020C5C[8 * v8 + v6];
-                GetRNG2();
+                GetRNG();
                 v11 = v10;
                 result = 0;
                 if ( (v11 & 0x1F) < v9 )
                 {
-                    if ( *(v2 + 40) && (GetPositiveSignedRNG2(), !(v12 & 1)) && (result = *(v2 + 44)) != 0 && result >> 24 == 8 )
+                    if ( *(v2 + 40) && (GetPositiveSignedRNG(), !(v12 & 1)) && (result = *(v2 + 44)) != 0 && result >> 24 == 8 )
                     {
                         *(v1 + oGameState_CurBattleDataPtr) = result;
                     }
@@ -7361,7 +7361,7 @@ unsigned int sub_80AA4C0()
                             || dword_2000B30 < 8
                             || (result = sub_80AA5F4(dword_2000B30, &dword_2000B30, 64)) == 0 )
                         {
-                            GetPositiveSignedRNG2();
+                            GetPositiveSignedRNG();
                             __asm { SVC         6 }
                             v17 = getPETNaviSelect();
                             v18 = GetCurPETNaviStatsByte(v17);
@@ -7600,7 +7600,7 @@ signed int sub_80AA78C()
     TestEventFlagFromImmediate(2, 20);
     if ( !v1 )
     {
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         if ( v2 <= 192 )
             v0 = 1;
     }
@@ -7746,7 +7746,7 @@ int sub_80AA88C()
     int v11; // [sp+0h] [bp-1Ch]
     __int16 v12; // [sp+4h] [bp-18h]
 
-    GetPositiveSignedRNG2();
+    GetPositiveSignedRNG();
     v2 = v1;
     v11 = 0;
     v3 = (*(v0 + oToolkit_S2034880_Ptr) + 144);
@@ -7894,7 +7894,7 @@ int __fastcall sub_80AA910(int a1, int a2, int a3, int a4)
                 }
             }
 LABEL_24:
-            GetPositiveSignedRNG2();
+            GetPositiveSignedRNG();
             __asm { SVC         6 }
             result = *(&v30 + v31);
         }
@@ -7970,14 +7970,14 @@ int __fastcall sub_80AAA3C(int a1, int a2, int a3)
         result = v15;
         if ( v15 )
         {
-            GetPositiveSignedRNG2();
+            GetPositiveSignedRNG();
             __asm { SVC         6 }
             result = *(&v13 + v15);
         }
     }
     else
     {
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         result = *(v3 + 2 * v4);
     }
@@ -8002,7 +8002,7 @@ int __fastcall sub_80AAA98(int a1, int a2, unsigned int a3, int a4)
     if ( a2 > (3 * (a3 >> 3)) )
         v5 = 0;
     v11 = v5;
-    GetPositiveSignedRNG2();
+    GetPositiveSignedRNG();
     v7 = v6 >> 8;
     v10 = 2 * (v7 & 1);
     if ( !v4 )
@@ -8052,13 +8052,13 @@ int __fastcall sub_80AAB04(int a1, int a2, unsigned int a3)
     while ( v4 < 10 );
     if ( v5 )
     {
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         result = *(&v15 + v5);
     }
     else
     {
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         result = *(v14 + 2 * (v7 & 1));
     }
     return result;
@@ -8072,7 +8072,7 @@ unsigned int __fastcall sub_80AAB68(int a1)
     char v2; // r0
 
     v1 = a1;
-    GetRNG2();
+    GetRNG();
     return byte_8020B9C[16 * v1 + (v2 & 0xF)] >> 2;
 }
 
@@ -8163,7 +8163,7 @@ char *__fastcall sub_80AABA4(int a1)
         }
     }
     v22 = v5;
-    GetPositiveSignedRNG2();
+    GetPositiveSignedRNG();
     __asm { SVC         6 }
     v11 = &dword_2033000[64 * v22];
     v12 = 2 * *(&v22 + v22 + 4);
@@ -8188,7 +8188,7 @@ char *__fastcall sub_80AABA4(int a1)
     v20 = 26;
     if ( v15 )
     {
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         v20 = v19[v18];
     }
@@ -8211,7 +8211,7 @@ signed int __fastcall sub_80AAC8C(int a1)
     int v15; // [sp+4h] [bp-1Ch]
 
     v14 = a1;
-    GetPositiveSignedRNG2();
+    GetPositiveSignedRNG();
     if ( v1 < 8 && !sub_80AAE36() )
         return 0xFFFF;
     sub_80AADA6();
@@ -8244,7 +8244,7 @@ signed int __fastcall sub_80AAC8C(int a1)
     }
     v9 = *(&v15 + v4);
     v10 = v4 >> 1;
-    GetPositiveSignedRNG2();
+    GetPositiveSignedRNG();
     __asm { SVC         6 }
     v6 = sub_80AAD04(v10, v9);
     return v6 | (v7 << 9);
@@ -8304,7 +8304,7 @@ int __fastcall sub_80AAD04(int a1, int a2)
     }
     while ( v10 - 4 < 0 );
     v11 = v9;
-    GetPositiveSignedRNG2();
+    GetPositiveSignedRNG();
     __asm { SVC         6 }
     v15 = v17[*(&v18 + v11)];
     return v5;

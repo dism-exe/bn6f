@@ -2227,8 +2227,8 @@ void __cdecl cbGameState_80050EC()
     Toolkit *tk; // r10
 
     (*(GameStateJumptable + tk->gamestate->subSystemSelect))();
-    GetRNG2();
-    GetRNG1();
+    GetRNG();
+    GetRNGSecondary();
 }
 
 
@@ -4449,7 +4449,7 @@ void __cdecl RandomizeExtraToolkitPointers()
     signed int idx; // r1
     u8 *v2; // r2
 
-    GetRNG2();
+    GetRNG();
     eUnusedExtraToolkitPtrsOffset = 0;
     copyWords_80014EC(&eGameState, &eGameState, 0x35BC);
     idx = 0;
@@ -4507,7 +4507,7 @@ int __fastcall sub_8006D00(int a1, int a2, int a3, int a4)
 
     ZeroFillByWord(&eUnusedExtraToolkitPtrsOffset, 128);
     eUnusedExtraToolkitPtrsOffset = 0;
-    GetRNG2();
+    GetRNG();
     dword_2001064 = v5;
     v6 = tk->unk_2004A8C;
     for ( i = byte_200; ; v6[i] = ~v10 )
@@ -4517,7 +4517,7 @@ int __fastcall sub_8006D00(int a1, int a2, int a3, int a4)
             break;
         do
         {
-            GetRNG2();
+            GetRNG();
             v10 = v9 ^ 0x6F;
         }
         while ( !v10 );
@@ -4531,7 +4531,7 @@ int __fastcall sub_8006D00(int a1, int a2, int a3, int a4)
             break;
         do
         {
-            GetRNG2();
+            GetRNG();
             v14 = v13 ^ 0x81;
         }
         while ( !v14 );
@@ -4545,7 +4545,7 @@ int __fastcall sub_8006D00(int a1, int a2, int a3, int a4)
             break;
         do
         {
-            GetRNG2();
+            GetRNG();
             v18 = v17 ^ 0xFE;
         }
         while ( !v18 );
@@ -4553,7 +4553,7 @@ int __fastcall sub_8006D00(int a1, int a2, int a3, int a4)
     }
     do
     {
-        GetRNG2();
+        GetRNG();
         v20 = v19 & 0xFFFFF ^ &dword_802412C;
     }
     while ( !v20 );
@@ -4561,7 +4561,7 @@ int __fastcall sub_8006D00(int a1, int a2, int a3, int a4)
     sub_8006F54();
     do
     {
-        GetRNG2();
+        GetRNG();
         v22 = v21 & 0xFFFFF ^ &loc_803ED90;
     }
     while ( !v22 );
@@ -4633,7 +4633,7 @@ int save_8006E26()
 
     do
     {
-        GetRNG2();
+        GetRNG();
         result = ~v0;
     }
     while ( !result );
@@ -4868,7 +4868,7 @@ int sub_8007036()
             break;
         do
         {
-            GetRNG2();
+            GetRNG();
             v6 = v5 ^ 0x8D;
         }
         while ( !v6 );
@@ -5248,7 +5248,7 @@ unsigned int sub_8007424()
     int v0; // r6
     unsigned int result; // r0
 
-    GetPositiveSignedRNG2();
+    GetPositiveSignedRNG();
     __asm { SVC         6 }
     result = *(v0 + 2);
     if ( result > 15 )
@@ -10942,7 +10942,7 @@ void __fastcall sub_800A570(__int16 *a1, int a2, int a3)
             v16 = 0;
             do
             {
-                GetPositiveSignedRNG1();
+                GetPositiveSignedRNGSecondary();
                 __asm { SVC         6 }
                 v5 = sub_800A672(dword_2033000, v5, word_2033040[v16++], 19);
             }
@@ -10953,7 +10953,7 @@ void __fastcall sub_800A570(__int16 *a1, int a2, int a3)
             v11 = 0;
             do
             {
-                GetPositiveSignedRNG1();
+                GetPositiveSignedRNGSecondary();
                 __asm { SVC         6 }
                 v5 = sub_800A672(dword_2033000, v5, word_2033040[v11++], v5 - 2);
             }
@@ -10962,7 +10962,7 @@ void __fastcall sub_800A570(__int16 *a1, int a2, int a3)
     }
     if ( v21 )
     {
-        GetPositiveSignedRNG1();
+        GetPositiveSignedRNGSecondary();
         __asm { SVC         6 }
         *(*(v3 + oToolkit_S2034880_Ptr) + 69) = 20;
         v17 = word_2033038;
@@ -12326,7 +12326,7 @@ int sub_800B144()
     char v16; // r1
     int v17; // r0
 
-    dword_203CBE4 = eRngSeed20013F0;
+    dword_203CBE4 = ePrimaryRngSeed;
     *byte_203CBE8 = *(*(v0 + oToolkit_S2034880_Ptr) + 60);
     if ( sub_802D246() & 0x200000 )
     {
@@ -12435,7 +12435,7 @@ int battle_copyStructsIncludingBattleStats_800b2d8()
         CopyWords(byte_203F5AC, &eBattleNaviStats2034AC4, 0x64u);
         CopyWords(byte_203F5AC, eBattleNaviStats203C980, 0x64u);
     }
-    eRngSeed20013F0 = *byte_203F4A4;
+    ePrimaryRngSeed = *byte_203F4A4;
     CopyWords(byte_203F510, byte_203EB00, 0x28u);
     CopyWords(byte_203F610, byte_203EB28, 0x28u);
     CopyWords(byte_203F538, byte_2036790, 0x28u);

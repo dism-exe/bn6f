@@ -961,7 +961,7 @@ LABEL_12:
     v12 = off_8027014[v9];
     v13 = dword_20349A8++;
     v14 = (*v12)[v13];
-    GetRNG1();
+    GetRNGSecondary();
     if ( (v15 & 0xF) < v14 )
 LABEL_15:
         cb->chatPageState = 2;
@@ -8716,7 +8716,7 @@ int __fastcall sub_802C8B0(int a1, int a2)
 
     v10 = a1;
     v2 = a2;
-    GetPositiveSignedRNG2();
+    GetPositiveSignedRNG();
     v3 = v2;
     __asm { SVC         6 }
     for ( result = 0; ; ++result )
@@ -9118,7 +9118,7 @@ signed int sub_802CC1A()
     *(v0 + 5) = v1;
     if ( v1 )
     {
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         *(v0 + 12) = 9998;
         __asm { SVC         6 }
@@ -10038,7 +10038,7 @@ __int64 __fastcall __noreturn sub_802D430(int a1, int a2, int a3, int a4)
     while ( v10 <= 3 );
     if ( v11 )
     {
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         v18 = *(&v23 + v11);
         HIDWORD(v13) = v18 >> 4;
@@ -10143,7 +10143,7 @@ int __fastcall sub_802D5A8(int a1)
     }
     v7 = v6;
     v8 = &byte_802D5E4[6 * v6];
-    GetPositiveSignedRNG2();
+    GetPositiveSignedRNG();
     v9 = 3;
     if ( v7 == 9 )
         v9 = 6;
@@ -11199,7 +11199,7 @@ int sub_802E0A6()
 {
     int v0; // r0
 
-    GetPositiveSignedRNG2();
+    GetPositiveSignedRNG();
     return byte_802E0C4[sub_8013774(v0, 41)] + (v0 & 7);
 }
 
@@ -11922,7 +11922,7 @@ signed int __fastcall sub_802E8A4(int a1)
                 v6 = v1;
                 v7 = v1[v4];
                 v8 = v4;
-                GetRNG1();
+                GetRNGSecondary();
                 v10 = __CFSHR__(v9, v9 >> 28);
                 v1 = v6;
                 v5 = v7;
@@ -12260,7 +12260,7 @@ int sub_802EE18()
 {
     int v0; // r0
 
-    GetPositiveSignedRNG2();
+    GetPositiveSignedRNG();
     return byte_802EE34[sub_8013774(v0, 41)] + (v0 & 7);
 }
 
@@ -12854,7 +12854,7 @@ void startscreen_render_802F544()
 {
     startScreen_AnimationControl_803E938();
     (*(JumpTable802F560 + eStartScreen.jo_00))();
-    GetRNG2();
+    GetRNG();
 }
 
 
@@ -13968,13 +13968,13 @@ int camera_doShakeEffect_80301e8()
         v2 = &byte_8030284[8 * *(v0 + 18)];
         *(v0 + 16) = result - 1;
     }
-    GetRNG1();
+    GetRNGSecondary();
     v5 = ((v4 & *v2) << 16) - *(v2 + 1);
     *(v0 + 60) = *(v0 + 48) + v5;
     *(v0 + 72) = 0;
     if ( sCamera.unk_4C )
         *(v0 + 72) = -2 * v5;
-    GetRNG1();
+    GetRNGSecondary();
     result = ((v6 & *v2) << 16) - *(v2 + 1);
     *(v0 + 64) = *(v0 + 52) + result;
     *(v0 + 68) = *(v0 + 56);

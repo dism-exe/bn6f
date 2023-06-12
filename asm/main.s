@@ -2,7 +2,7 @@
 	thumb_func_start main_
 main_:
 	bl main_initToolkitAndOtherSubsystems
-	bl SeedRNG2 // () -> void
+	bl SeedRNG // () -> void
 	bl clear_e200AD04 // () -> void
 	bl sub_803D1A8 // () -> void
 main_gameRoutine:
@@ -38,7 +38,7 @@ main_gameRoutine:
 	bx r0
 
     // update frame rng
-	bl GetRNG1 // () -> void
+	bl GetRNGSecondary // () -> void
 
 	bl isSameSubsystem_800A732 // () -> !zf
 	beq loc_800032A

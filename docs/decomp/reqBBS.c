@@ -2513,7 +2513,7 @@ int __fastcall reqBBS_81409D0(int a1)
     int v1; // r6
 
     v1 = a1;
-    GetRNG2();
+    GetRNG();
     __asm { SVC         6 }
     return v1;
 }

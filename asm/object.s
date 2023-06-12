@@ -2954,7 +2954,7 @@ loc_800CEE6:
 	tst r0, r0
 	beq loc_800CF0E
 	push {r0}
-	bl GetPositiveSignedRNG2
+	bl GetPositiveSignedRNG
 	pop {r1}
 	svc 6
 	add r0, sp, #0

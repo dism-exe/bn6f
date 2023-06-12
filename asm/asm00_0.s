@@ -1073,14 +1073,14 @@ sub_8000C72:
 loc_8000C74:
 	push {r0,r2}
 	push {r1}
-	bl GetPositiveSignedRNG2
+	bl GetPositiveSignedRNG
 	pop {r1}
 	push {r1}
 	svc 6
 	mov r3, r1
 	pop {r1}
 	push {r1,r3}
-	bl GetPositiveSignedRNG2
+	bl GetPositiveSignedRNG
 	pop {r1}
 	push {r1}
 	svc 6
@@ -1102,14 +1102,14 @@ sub_8000CA6:
 loc_8000CA8:
 	push {r0,r2}
 	push {r1}
-	bl GetPositiveSignedRNG1
+	bl GetPositiveSignedRNGSecondary
 	pop {r1}
 	push {r1}
 	svc 6
 	mov r3, r1
 	pop {r1}
 	push {r1,r3}
-	bl GetPositiveSignedRNG1
+	bl GetPositiveSignedRNGSecondary
 	pop {r1}
 	push {r1}
 	svc 6
@@ -1131,14 +1131,14 @@ sub_8000CDA:
 loc_8000CDC:
 	push {r0,r2}
 	push {r1}
-	bl GetPositiveSignedRNG2
+	bl GetPositiveSignedRNG
 	pop {r1}
 	push {r1}
 	svc 6
 	mov r3, r1
 	pop {r1}
 	push {r1,r3}
-	bl GetPositiveSignedRNG2
+	bl GetPositiveSignedRNG
 	pop {r1}
 	push {r1}
 	svc 6
@@ -1162,14 +1162,14 @@ sub_8000D12:
 loc_8000D14:
 	push {r0,r2}
 	push {r1}
-	bl GetPositiveSignedRNG1
+	bl GetPositiveSignedRNGSecondary
 	pop {r1}
 	push {r1}
 	svc 6
 	mov r3, r1
 	pop {r1}
 	push {r1,r3}
-	bl GetPositiveSignedRNG1
+	bl GetPositiveSignedRNGSecondary
 	pop {r1}
 	push {r1}
 	svc 6
@@ -1192,7 +1192,7 @@ sub_8000D4A:
 	push {r7,lr}
 	mov r7, r0
 	push {r1,r7}
-	bl GetPositiveSignedRNG2
+	bl GetPositiveSignedRNG
 	pop {r1,r7}
 	bl SWI_Div
 	ldrb r0, [r7,r1]
@@ -1340,7 +1340,7 @@ sub_8000E3A:
 	mov r4, r1
 	push {r0,r1}
 	push {r4}
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	lsr r4, r0, #0x1e
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CurFramePtr]
@@ -1349,7 +1349,7 @@ sub_8000E3A:
 	and r0, r1
 	add r4, r4, r0
 loc_8000E54:
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	sub r4, #1
 	bge loc_8000E54
 	pop {r4}
@@ -2363,20 +2363,18 @@ copyWords_80014EC: // 80014EC
 	pop {r0-r7,pc}
 	thumb_func_end copyWords_80014EC
 
-
-	thumb_func_start SeedRNG2
-SeedRNG2: // () -> void
+	thumb_func_start SeedRNG
+SeedRNG: // () -> void
 	ldr r0, rng_8001594 // =0xa338244f
-	ldr r1, off_8001598 // =eRngSeed20013F0
+	ldr r1, off_8001598 // =ePrimaryRngSeed
 	str r0, [r1]
 	mov pc, lr
-	thumb_func_end SeedRNG2
+	thumb_func_end SeedRNG
 
-
-	thumb_func_start GetRNG2
-GetRNG2: // () -> int
+	thumb_func_start GetRNG
+GetRNG: // () -> int
 	push {r7,lr}
-	ldr r7, off_800159C // =eRngSeed20013F0
+	ldr r7, off_800159C // =ePrimaryRngSeed
 	ldr r0, [r7]
 	ldr r1, rng_80015A0 // =0x873ca9e5
 	lsl r2, r0, #1
@@ -2386,45 +2384,12 @@ GetRNG2: // () -> int
 	eor r0, r1
 	str r0, [r7]
 	pop {r7,pc}
-	thumb_func_end GetRNG2
+	thumb_func_end GetRNG
 
-
-	thumb_func_start GetPositiveSignedRNG2
-GetPositiveSignedRNG2:
+	thumb_func_start GetPositiveSignedRNG
+GetPositiveSignedRNG:
 	push {r7,lr}
-	ldr r7, off_80015A4 // =eRngSeed20013F0
-	ldr r0, [r7]
-	ldr r1, rng_80015A0 // =0x873ca9e5
-	lsl r2, r0, #1
-	lsr r3, r0, #0x1f
-	add r0, r2, r3
-	add r0, #1
-	eor r0, r1
-	str r0, [r7]
-	lsl r0, r0, #1
-	lsr r0, r0, #1
-	pop {r7,pc}
-	thumb_func_end GetPositiveSignedRNG2
-
-	thumb_func_start GetRNG1
-GetRNG1: // () -> void
-	push {r7,lr}
-	ldr r7, off_80015A8 // =rngSeed_2001120
-	ldr r0, [r7]
-	ldr r1, rng_80015A0 // =0x873ca9e5
-	lsl r2, r0, #1
-	lsr r3, r0, #0x1f
-	add r0, r2, r3
-	add r0, #1
-	eor r0, r1
-	str r0, [r7]
-	pop {r7,pc}
-	thumb_func_end GetRNG1
-
-	thumb_func_start GetPositiveSignedRNG1
-GetPositiveSignedRNG1:
-	push {r7,lr}
-	ldr r7, off_80015AC // =rngSeed_2001120
+	ldr r7, off_80015A4 // =ePrimaryRngSeed
 	ldr r0, [r7]
 	ldr r1, rng_80015A0 // =0x873ca9e5
 	lsl r2, r0, #1
@@ -2436,7 +2401,39 @@ GetPositiveSignedRNG1:
 	lsl r0, r0, #1
 	lsr r0, r0, #1
 	pop {r7,pc}
-	thumb_func_end GetPositiveSignedRNG1
+	thumb_func_end GetPositiveSignedRNG
+
+	thumb_func_start GetRNGSecondary
+GetRNGSecondary: // () -> void
+	push {r7,lr}
+	ldr r7, off_80015A8 // =eSecondaryRngSeed
+	ldr r0, [r7]
+	ldr r1, rng_80015A0 // =0x873ca9e5
+	lsl r2, r0, #1
+	lsr r3, r0, #0x1f
+	add r0, r2, r3
+	add r0, #1
+	eor r0, r1
+	str r0, [r7]
+	pop {r7,pc}
+	thumb_func_end GetRNGSecondary
+
+	thumb_func_start GetPositiveSignedRNGSecondary
+GetPositiveSignedRNGSecondary:
+	push {r7,lr}
+	ldr r7, off_80015AC // =eSecondaryRngSeed
+	ldr r0, [r7]
+	ldr r1, rng_80015A0 // =0x873ca9e5
+	lsl r2, r0, #1
+	lsr r3, r0, #0x1f
+	add r0, r2, r3
+	add r0, #1
+	eor r0, r1
+	str r0, [r7]
+	lsl r0, r0, #1
+	lsr r0, r0, #1
+	pop {r7,pc}
+	thumb_func_end GetPositiveSignedRNGSecondary
 
 	thumb_local_start
 dead_rng_800157C:
@@ -2453,12 +2450,12 @@ dead_rng_800157C:
 	pop {r7,pc}
 	.balign 4, 0
 rng_8001594: .word 0xA338244F
-off_8001598: .word eRngSeed20013F0
-off_800159C: .word eRngSeed20013F0
+off_8001598: .word ePrimaryRngSeed
+off_800159C: .word ePrimaryRngSeed
 rng_80015A0: .word 0x873CA9E5
-off_80015A4: .word eRngSeed20013F0
-off_80015A8: .word rngSeed_2001120
-off_80015AC: .word rngSeed_2001120
+off_80015A4: .word ePrimaryRngSeed
+off_80015A8: .word eSecondaryRngSeed
+off_80015AC: .word eSecondaryRngSeed
 off_80015B0: .word dword_20018E8
 	thumb_func_end dead_rng_800157C
 

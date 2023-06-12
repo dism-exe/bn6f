@@ -40,7 +40,7 @@ int sub_808C378()
         v11 = v4 + 0x100000;
         do
         {
-            GetRNG2();
+            GetRNG();
             v6 = v5 >> 5;
         }
         while ( v6 == *(v0 + 124) );

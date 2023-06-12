@@ -10093,7 +10093,7 @@ int sub_803C40C()
 {
     int result; // r0
 
-    GetRNG2();
+    GetRNG();
     word_2006770 = result;
     return result;
 }
@@ -14609,7 +14609,7 @@ signed int sub_803F838()
     {
         v1 = 1;
         ClearEventFlagFromImmediate(23, 4);
-        SeedRNG2();
+        SeedRNG();
     }
     RandomizeExtraToolkitPointers();
     return v1;
@@ -14891,7 +14891,7 @@ void sub_803FAEE()
     v0 = 0;
     do
     {
-        GetRNG2();
+        GetRNG();
         dword_20067C0[v0 / 4u] = v1;
         v0 += 4;
     }

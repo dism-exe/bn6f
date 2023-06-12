@@ -1511,7 +1511,7 @@ int __fastcall object_getRandomPanelFromCurrentColumn(int a1, int a2, int a3)
     if ( result )
     {
         v7 = result;
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         result = *(&v13 + v7) & 7;
     }

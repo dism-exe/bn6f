@@ -3788,8 +3788,8 @@ cbGameState_80050EC:
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-	bl GetRNG2 // () -> int
-	bl GetRNG1 // () -> void
+	bl GetRNG // () -> int
+	bl GetRNGSecondary // () -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
 GameStateJumptable_p: .word GameStateJumptable
@@ -6701,7 +6701,7 @@ SetPrimaryToolkitPointersWrapper:
 RandomizeExtraToolkitPointers: // 8006C22
 	push {lr}
 	push {r4-r7}
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	// anti-cheat stuff? this block up to the copy
 	// seems to do nothing due to the ands which zero
 	// r5 was supposedly an offset to be added to the pointers
@@ -6818,7 +6818,7 @@ encryption_initAll_8006d00:
 	mov r0, #0
 	and r4, r0
 	str r4, [r5]
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	str r0, [r5,#0x4] // (dword_2001064 - 0x2001060)
 	mov r6, r10
 	mov r0, #oToolkit_Unk2004a8c_Ptr
@@ -6829,7 +6829,7 @@ loc_8006D24:
 	sub r7, #1
 	blt loc_8006D40
 loc_8006D28:
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	mov r1, #0xff
 	and r0, r1
 	mov r1, #0x6f
@@ -6850,7 +6850,7 @@ loc_8006D4A:
 	sub r7, #1
 	blt loc_8006D66
 loc_8006D4E:
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	mov r1, #0xff
 	and r0, r1
 	mov r1, #0x81
@@ -6871,7 +6871,7 @@ loc_8006D70:
 	sub r7, #1
 	blt loc_8006D8C
 loc_8006D74:
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	mov r1, #0xff
 	and r0, r1
 	mov r1, #0xfe
@@ -6886,7 +6886,7 @@ loc_8006D8C:
 	ldr r4, off_8006DDC // =dword_2000060
 	ldr r6, off_8006DE0 // =dword_802412C
 loc_8006D90:
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	lsl r0, r0, #0xc
 	lsr r0, r0, #0xc
 	eor r0, r6
@@ -6897,7 +6897,7 @@ loc_8006D90:
 	ldr r4, off_8006DE4 // =dword_20018B8
 	ldr r6, off_8006DE8 // =loc_803ED90
 loc_8006DA8:
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	lsl r0, r0, #0xc
 	lsr r0, r0, #0xc
 	eor r0, r6
@@ -6970,7 +6970,7 @@ encryption_8006e26:
 	push {r4-r7,lr}
 	ldr r7, off_8006E38 // =eUnusedExtraToolkitPtrsOffset
 loc_8006E2A:
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	mvn r0, r0
 	tst r0, r0
 	beq loc_8006E2A
@@ -7306,7 +7306,7 @@ loc_8007042:
 	sub r7, #1
 	blt locret_800705E
 loc_8007046:
-	bl GetRNG2 // () -> int
+	bl GetRNG // () -> int
 	mov r1, #0xff
 	and r0, r1
 	mov r1, #0x8d
@@ -7798,7 +7798,7 @@ dword_8007420: .word 0x8000
 	thumb_local_start
 sub_8007424:
 	push {r4,lr}
-	bl GetPositiveSignedRNG2
+	bl GetPositiveSignedRNG
 	mov r1, #0xf
 	svc 6
 	ldrb r0, [r6,#2]
@@ -14356,7 +14356,7 @@ loc_800A5D2:
 	mov r4, #0
 loc_800A5E8:
 // r5 = chips in main shuffled folder
-	bl GetPositiveSignedRNG1
+	bl GetPositiveSignedRNGSecondary
 	mov r1, #0xc
 	neg r1, r1
 	add r1, r1, r5
@@ -14381,7 +14381,7 @@ loc_800A5E8:
 loc_800A610:
 	mov r4, #0
 loc_800A612:
-	bl GetPositiveSignedRNG1
+	bl GetPositiveSignedRNGSecondary
 	mov r1, #0xb
 	svc 6
 	mov r3, #8
@@ -14400,7 +14400,7 @@ loc_800A634:
 	ldr r0, [sp,#8]
 	tst r0, r0
 	beq loc_800A664
-	bl GetPositiveSignedRNG1
+	bl GetPositiveSignedRNGSecondary
 	mov r1, #0x13
 	svc 6
 	mov r0, #1
@@ -16065,7 +16065,7 @@ dword_800B140: .word 0x1555
 sub_800B144:
 	push {r4,r6,lr}
 	ldr r4, off_800B2BC // =dword_203CBE0
-	ldr r0, off_800B2C0 // =eRngSeed20013F0
+	ldr r0, off_800B2C0 // =ePrimaryRngSeed
 	ldr r0, [r0]
 	str r0, [r4,#0x4] // (dword_203CBE4 - 0x203cbe0)
 	mov r0, r10
@@ -16236,7 +16236,7 @@ loc_800B2A2:
 	pop {r4,r6,pc}
 	.balign 4, 0
 off_800B2BC: .word dword_203CBE0
-off_800B2C0: .word eRngSeed20013F0
+off_800B2C0: .word ePrimaryRngSeed
 dword_800B2C4: .word 0x200000
 off_800B2C8: .word 0x474
 off_800B2CC: .word unk_20018C0
@@ -16286,7 +16286,7 @@ battle_copyStructsIncludingBattleStats_800b2d8:
 loc_800B334:
 	ldr r0, off_800B5A0 // =byte_203F4A4
 	ldr r0, [r0]
-	ldr r1, off_800B5A4 // =eRngSeed20013F0
+	ldr r1, off_800B5A4 // =ePrimaryRngSeed
 	str r0, [r1]
 	ldr r0, off_800B5A8 // =byte_203F510
 	ldr r1, off_800B5AC // =byte_203EB00
@@ -16605,7 +16605,7 @@ off_800B594: .word eBattleNaviStats2034AC4
 off_800B598: .word byte_203F5AC
 off_800B59C: .word eBattleNaviStats203C980
 off_800B5A0: .word byte_203F4A4
-off_800B5A4: .word eRngSeed20013F0
+off_800B5A4: .word ePrimaryRngSeed
 off_800B5A8: .word byte_203F510
 off_800B5AC: .word byte_203EB00
 off_800B5B0: .word byte_203F610

@@ -783,7 +783,7 @@ int sub_810CDC0()
             v3 = 1;
             if ( v4 != 1 )
             {
-                GetPositiveSignedRNG2();
+                GetPositiveSignedRNG();
                 v3 = v5 & 1;
             }
         }

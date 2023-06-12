@@ -1122,7 +1122,7 @@ sub_810CDC0::
 	mov r0, #1
 	cmp r1, #1
 	beq loc_810CDE2
-	bl GetPositiveSignedRNG2
+	bl GetPositiveSignedRNG
 	mov r1, #1
 	and r0, r1
 loc_810CDE2::
@@ -1220,7 +1220,7 @@ loc_810CE38::
 	strh r1, [r7,#oAIAttackVars_Unk_0a]
 	mov r0, #0xb
 	bl object_setAttack0
-	bl GetPositiveSignedRNG2
+	bl GetPositiveSignedRNG
 	mov r1, #1
 	and r0, r1
 	strb r0, [r6,#oAIState_Unk_06]

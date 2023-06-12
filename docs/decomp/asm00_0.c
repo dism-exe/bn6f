@@ -765,9 +765,9 @@ void __fastcall sub_8000C72(int a1, int a2, int a3)
         v3 = a1;
         v4 = a3;
         v5 = a2;
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         a2 = v5;
         a1 = v3;
@@ -793,9 +793,9 @@ void __fastcall sub_8000CA6(int result, int a2, int a3)
         v3 = result;
         v4 = a3;
         v5 = a2;
-        GetPositiveSignedRNG1();
+        GetPositiveSignedRNGSecondary();
         __asm { SVC         6 }
-        GetPositiveSignedRNG1();
+        GetPositiveSignedRNGSecondary();
         __asm { SVC         6 }
         a2 = v5;
         result = v3;
@@ -821,9 +821,9 @@ void __fastcall sub_8000CDA(int a1, int a2, int a3)
         v3 = a1;
         v4 = a3;
         v5 = a2;
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
         __asm { SVC         6 }
         a2 = v5;
         a1 = v3;
@@ -849,9 +849,9 @@ void __fastcall sub_8000D12(int result, int a2, int a3)
         v3 = result;
         v4 = a3;
         v5 = a2;
-        GetPositiveSignedRNG1();
+        GetPositiveSignedRNGSecondary();
         __asm { SVC         6 }
-        GetPositiveSignedRNG1();
+        GetPositiveSignedRNGSecondary();
         __asm { SVC         6 }
         a2 = v5;
         result = v3;
@@ -874,7 +874,7 @@ int __fastcall sub_8000D4A(int a1, int a2)
 
     v3 = a2;
     v2 = a1;
-    GetPositiveSignedRNG2();
+    GetPositiveSignedRNG();
     SWI_Div(v4, v3);
     return *(v2 + v5);
 }
@@ -1003,11 +1003,11 @@ int __fastcall sub_8000E3A(int a1, int a2)
     v16 = a1;
     v17 = a2;
     v15 = a2;
-    GetRNG2();
+    GetRNG();
     v4 = (v3 >> 30) + (**(v2 + oToolkit_CurFramePtr) & 3);
     do
     {
-        GetRNG2();
+        GetRNG();
         _VF = __OFSUB__(v4--, 1);
     }
     while ( !((v4 < 0) ^ _VF) );
@@ -1752,40 +1752,40 @@ void __fastcall __spoils<R2> copyWords_80014EC(_DWORD *src, _DWORD *dest, int si
 
 // 0x8001514
 // () -> void
-void __cdecl SeedRNG2()
+void __cdecl SeedRNG()
 {
-    eRngSeed20013F0 = 0xA338244F;
+    ePrimaryRngSeed = 0xA338244F;
 }
 
 
 // 0x800151c
 // () -> void
-void __cdecl GetRNG2()
+void __cdecl GetRNG()
 {
-    eRngSeed20013F0 = (2 * eRngSeed20013F0 + (eRngSeed20013F0 >> 31) + 1) ^ 0x873CA9E5;
+    ePrimaryRngSeed = (2 * eRngSeed20013F0 + (eRngSeed20013F0 >> 31) + 1) ^ 0x873CA9E5;
 }
 
 
 // 0x8001532
-void __cdecl GetPositiveSignedRNG2()
+void __cdecl GetPositiveSignedRNG()
 {
-    eRngSeed20013F0 = (2 * eRngSeed20013F0 + (eRngSeed20013F0 >> 31) + 1) ^ 0x873CA9E5;
+    ePrimaryRngSeed = (2 * eRngSeed20013F0 + (eRngSeed20013F0 >> 31) + 1) ^ 0x873CA9E5;
 }
 
 
 // 0x800154c
 // () -> void
-void __cdecl GetRNG1()
+void __cdecl GetRNGSecondary()
 {
-    rngSeed_2001120 = (2 * rngSeed_2001120 + (rngSeed_2001120 >> 31) + 1) ^ 0x873CA9E5;
+    eSecondaryRngSeed = (2 * rngSeed_2001120 + (rngSeed_2001120 >> 31) + 1) ^ 0x873CA9E5;
 }
 
 
 // 0x8001562
-unsigned int GetPositiveSignedRNG1()
+unsigned int GetPositiveSignedRNGSecondary()
 {
-    rngSeed_2001120 = (2 * rngSeed_2001120 + (rngSeed_2001120 >> 31) + 1) ^ 0x873CA9E5;
-    return (2 * rngSeed_2001120) >> 1;
+    eSecondaryRngSeed = (2 * rngSeed_2001120 + (rngSeed_2001120 >> 31) + 1) ^ 0x873CA9E5;
+    return (2 * eSecondaryRngSeed) >> 1;
 }
 
 

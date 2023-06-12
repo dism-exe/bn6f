@@ -2622,7 +2622,7 @@ signed int __fastcall sub_813D48C(int a1)
     sub_802D158(v4);
     v5 = 1;
     v6 = off_813D4E4[v9];
-    GetRNG2();
+    GetRNG();
     (*(&off_813D4D4 + byte_813D500[v7 & 0xF]))();
     return v5;
 }
@@ -2642,7 +2642,7 @@ __int64 sub_813D510()
     int v8; // r6
     __int64 v10; // [sp-10h] [bp-24h]
 
-    GetRNG2();
+    GetRNG();
     v2 = v1 & 0xF;
     for ( i = 0; ; ++i )
     {
@@ -2660,7 +2660,7 @@ __int64 sub_813D510()
     LODWORD(v10) = v5;
     HIDWORD(v10) = *v4;
     v6 = getChip8021DA8(*(v4 + 1));
-    GetRNG2();
+    GetRNG();
     v8 = v7 & 3;
     while ( v6[v8] == 255 )
     {
@@ -2683,7 +2683,7 @@ int sub_813D568()
     int v6; // r1
     int v7; // r2
 
-    GetRNG2();
+    GetRNG();
     v2 = v1 & 0xF;
     for ( i = 0; ; ++i )
     {
@@ -2717,7 +2717,7 @@ int sub_813D598()
     int v7; // r2
     int v8; // r3
 
-    GetRNG2();
+    GetRNG();
     v2 = v1 & 0xF;
     for ( i = 0; ; ++i )
     {

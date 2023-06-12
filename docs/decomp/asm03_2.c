@@ -1126,7 +1126,7 @@ void __fastcall sub_804733C(int a1)
 
     v2 = a1;
     do
-        GetPositiveSignedRNG2();
+        GetPositiveSignedRNG();
     while ( !v3 );
     *(v1 + 48) = ~(((v2 + v3) << 8) | (v3 >> 4 << 28) | v3 & 0xF ^ (v3 >> 4));
 }
@@ -3707,7 +3707,7 @@ int sub_8049D70()
 {
     int result; // r0
 
-    GetRNG2();
+    GetRNG();
     word_2001800 = result;
     return result;
 }
@@ -4198,7 +4198,7 @@ int __noreturn ChipTraderControl()
     sub_80465F8();
     sub_804AFB8();
     sub_804AFE4();
-    GetRNG2();
+    GetRNG();
     return v0;
 }
 
@@ -5213,7 +5213,7 @@ int __fastcall chipTraderWeightedRandomMaybe_804BD7C(int a1, int a2)
 
     v12 = a1;
     v2 = a2;
-    GetRNG2();
+    GetRNG();
     v3 = v2 - 1;
     v4 = 0;
     do
@@ -5368,7 +5368,7 @@ int __fastcall sub_804BE88(int a1, int a2, int a3)
     }
     while ( !(((v6 < 0) ^ _VF) | (v6 == 0)) );
     *(v3 + 72) = v7;
-    GetRNG2();
+    GetRNG();
     __asm { SVC         6 }
     v14 = &dword_2034800[*(v3 + 72)];
     result = *v14;
@@ -5501,7 +5501,7 @@ int __fastcall chipTraderGetRewardFromRedraw_804BF94(__int16 *a1, int a2, int a3
         v6 += 3;
     }
     *(v4 + 72) = (v7 - dword_2035800) >> 2;
-    GetRNG2();
+    GetRNG();
     __asm { SVC         6 }
     v15 = &dword_2035800[*(v4 + 72)];
     result = *v15;
@@ -6207,7 +6207,7 @@ int sub_804C818()
     result = v1 - 1;
     if ( (result < 0) ^ v2 )
     {
-        GetRNG2();
+        GetRNG();
         *(v0 + 20) = &byte_12C[v5];
         v6 = *(v0 + 14);
         result = *&byte_804C858[v6];
