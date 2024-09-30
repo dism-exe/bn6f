@@ -3479,7 +3479,7 @@ signed int __fastcall __spoils<R0,R2,R3,R12> chatbox_8042A14(int a1, int a2, boo
     char v14; // [sp+0h] [bp-14h]
 
     v3 = a3;
-    v4 = sub_8000C00(a1);
+    v4 = memory_bcdConvert(a1);
     v5 = sub_8000C5C(v4);
     v6 = v3;
     v7 = (v14 & 0x40) != 0;

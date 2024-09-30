@@ -6026,7 +6026,7 @@ sub_80429D8: // 0x80429D8
 chatbox_8042A14:
 	push {r4,r5,lr}
 	push {r1,r2}
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r8, r0
 	bl sub_8000C5C
 	pop {r1,r2}

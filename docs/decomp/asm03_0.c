@@ -3076,7 +3076,7 @@ void __fastcall __noreturn sub_80284E2(unsigned int a1)
             v19 = 3;
             goto LABEL_15;
         }
-        v10 = sub_8000C00(v20);
+        v10 = memory_bcdConvert(v20);
         v4 = v10;
         v9 = sub_8000C5C(v10);
         v19 = v9;
@@ -5946,8 +5946,8 @@ int sub_802A30C()
     int result; // r0
 
     v1 = *(v0 + 19);
-    sub_8000642(31, 0xFFFF, *&byte_802A3F4[v1]);
-    sub_8000642(22, 0xFFFF, *&byte_802A400[v1]);
+    sound_8000642(31, 0xFFFF, *&byte_802A3F4[v1]);
+    sound_8000642(22, 0xFFFF, *&byte_802A400[v1]);
     *(v0 + 19) = v1 + 2;
     v2 = IsPaletteFadeActive();
     result = (loc_80062FC)(v2);
@@ -5988,8 +5988,8 @@ int sub_802A362()
     int result; // r0
 
     v1 = *(v0 + 19);
-    sub_8000642(31, 0xFFFF, *&byte_802A400[v1]);
-    sub_8000642(22, 0xFFFF, *&byte_802A3F4[v1]);
+    sound_8000642(31, 0xFFFF, *&byte_802A400[v1]);
+    sound_8000642(22, 0xFFFF, *&byte_802A3F4[v1]);
     *(v0 + 19) = v1 + 2;
     v2 = IsPaletteFadeActive();
     result = (loc_80062FC)(v2);
@@ -6030,8 +6030,8 @@ signed int sub_802A394()
 // 0x802a3cc
 int sub_802A3CC()
 {
-    sub_8000642(31, 0xFFFF, 256);
-    return sub_8000642(22, 0xFFFF, 256);
+    sound_8000642(31, 0xFFFF, 256);
+    return sound_8000642(22, 0xFFFF, 256);
 }
 
 
@@ -7284,7 +7284,7 @@ int __fastcall sub_802B438(int a1, int a2)
         if ( v3 == 0xFFFF )
             v4 = 0;
         else
-            v4 = sub_8000C00(*&byte_802B5FC[8 * v3 + 2 * v11]);
+            v4 = memory_bcdConvert(*&byte_802B5FC[8 * v3 + 2 * v11]);
         v5 = v4;
         v6 = 16;
         do
@@ -8484,7 +8484,7 @@ int __fastcall sub_802C4E8(signed int a1, int a2)
     __int16 v8; // [sp+6h] [bp-Ah]
 
     v6 = a2;
-    result = sub_8000D84(a1);
+    result = memory_bcd_8000D84(a1);
     if ( result > 612761 )
         result = 612761;
     v3 = 0;
@@ -8578,7 +8578,7 @@ int __fastcall __noreturn sub_802C5E6(int a1)
     if ( a1 )
     {
         v2 = a1;
-        v3 = sub_8000C00(a1);
+        v3 = memory_bcdConvert(a1);
         sub_8000C5C(v3);
         *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = v2;
         renderTextGfx_8045F8C(&TextScriptBattleDialog8736D74, 6, &unk_20354E0, 100711488);
@@ -8599,7 +8599,7 @@ int __fastcall __noreturn sub_802C646(int a1)
     if ( a1 )
     {
         v2 = a1;
-        v3 = sub_8000C00(a1);
+        v3 = memory_bcdConvert(a1);
         v5 = sub_8000C5C(v3);
         *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = v2;
         renderTextGfx_8045F8C(&TextScriptBattleDialog8736D74, 6, &unk_20354E0, 100711488);
@@ -8645,7 +8645,7 @@ int __fastcall sub_802C6EC(signed int a1)
     v5 = 37024;
     if ( v12 < 11 )
     {
-        v6 = sub_8000C00(v12);
+        v6 = memory_bcdConvert(v12);
         v7 = sub_8000C5C(v6);
     }
     else

@@ -1597,8 +1597,9 @@ byte_8123F40: .byte 0xA, 0x0, 0x0, 0x0, 0xA, 0x1, 0x1, 0x0, 0xA, 0x2, 0x2, 0x0, 
 	.byte 0x0, 0xA, 0x4, 0x4, 0x0, 0xA, 0x5, 0x5, 0x0, 0xFF, 0xFF, 0xFF, 0xFF
 	thumb_func_end sub_8123E58
 
-	thumb_func_start HandleSubChipMenu8123F5C
-HandleSubChipMenu8123F5C:
+// (struct ?* state_a5) -> void
+	thumb_func_start DispatchSubChipMenu8123F5C
+DispatchSubChipMenu8123F5C:
 	push {lr}
 	ldr r0, off_8123F6C // =jt_8123F70 
 	ldrb r1, [r5,#1]
@@ -1608,23 +1609,28 @@ HandleSubChipMenu8123F5C:
 	pop {pc}
 	.balign 4, 0x00
 off_8123F6C: .word jt_8123F70
-jt_8123F70: .word sub_8123F7C+1
-	.word sub_812407C+1
-	.word sub_8124350+1
-	thumb_func_end HandleSubChipMenu8123F5C
+jt_8123F70: .word submenu_subchip_init_8123F7C+1 // (struct ?* state_a5) -> void
+	.word submenu_subchip_dispatch_812407C+1 // (struct ?* state_a5) -> void
+	.word submenu_subchip_8124350+1 // (struct ?* state_a5) -> void
+	thumb_func_end DispatchSubChipMenu8123F5C
 
+// (struct ?* state_a5) -> void
 	thumb_local_start
-sub_8123F7C:
+submenu_subchip_init_8123F7C:
 	push {r4-r7,lr}
+
 	bl zeroFillVRAM
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
+
 	mov r0, #0x10
 	bl sub_80015FC
+
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_8124048 // =0x1f40 
 	strh r1, [r0]
+
 	mov r1, #0
 	strh r1, [r0,#0x10]
 	strh r1, [r0,#0x12]
@@ -1632,18 +1638,24 @@ sub_8123F7C:
 	strh r1, [r0,#0x16]
 	strh r1, [r0,#0x18]
 	strh r1, [r0,#0x1a]
+
 	mov r0, #4
 	strb r0, [r5,#1]
+
 	mov r0, #0
 	strb r0, [r5,#2]
+
 	mov r0, #8
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
+
 	bl sub_8046664 // () -> void
 	bl sub_8124384
+
 	mov r0, #6
 	strb r0, [r5,#0xc]
 	bl subchip_initGfx_81243B0
+
 	ldr r0, off_8124054 // =unk_201EC2C 
 	mov r1, #8
 	mov r2, #6
@@ -1651,19 +1663,24 @@ sub_8123F7C:
 	bl sub_8120C94
 	bl sub_81247EC
 	bl sub_81245BC
+
 	mov r0, #0
 	strb r0, [r5,#0x14]
 	strb r0, [r5,#0xd]
 	strb r0, [r5,#0xf]
 	strb r0, [r5,#0x11]
+
 	bl GetCurPETNavi // () -> u8
+
 	mov r4, r0
 	mov r1, #oNaviStats_CurHP
 	bl GetCurPETNaviStatsHword
+
 	strh r0, [r5,#0x18]
 	mov r0, r4
 	mov r1, #oNaviStats_MaxHP
 	bl GetCurPETNaviStatsHword
+
 	strh r0, [r5,#0x1a]
 	ldr r0, off_812404C // =unk_201EBDC 
 	mov r1, #0xb
@@ -1671,30 +1688,36 @@ sub_8123F7C:
 	ldr r3, dword_8124050 // =0x30b380 
 	bl sub_8120C94
 	bl sub_812453C
+
 	ldr r0, off_812405C // =unk_201EC8C 
 	mov r1, #8
 	mov r2, #1
 	ldr r3, dword_8124060 // =0x306220 
 	bl sub_8120C94
+
 	ldr r0, off_8124064 // =unk_201ECAC 
 	mov r1, #8
 	mov r2, #1
 	ldr r3, dword_8124068 // =0x306230 
 	bl sub_8120C94
+
 	ldr r0, off_812406C // =unk_201ECCC 
 	mov r1, #8
 	mov r2, #1
 	ldr r3, dword_8124070 // =0x306240 
 	bl sub_8120C94
 	bl sub_8124870
-	// a1
+
 	ldr r0, off_8124074 // =byte_8123F40
 	bl sub_80465A0 // (void *a1) -> void
+
 	mov r0, #0
 	ldr r1, off_8124078 // =dword_8123F3C
 	bl sub_8120CC8
+
 	strb r0, [r5,#0xd]
 	strb r1, [r5,#0x12]
+
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_8124048: .word 0x1F40
@@ -1710,12 +1733,12 @@ off_812406C: .word unk_201ECCC
 dword_8124070: .word 0x306240
 off_8124074: .word byte_8123F40
 off_8124078: .word dword_8123F3C
-	thumb_func_end sub_8123F7C
+	thumb_func_end submenu_subchip_init_8123F7C
 
 	thumb_local_start
-sub_812407C:
+submenu_subchip_dispatch_812407C: // (struct ?* state_a5) -> void
 	push {lr}
-	ldr r0, off_812409C // =off_81240A0 
+	ldr r0, off_812409C // =jt_81240A0 
 	ldrb r1, [r5,#2]
 	ldr r0, [r0,r1]
 	mov lr, pc
@@ -1726,18 +1749,18 @@ sub_812407C:
 	bl sub_812475C
 	pop {pc}
 	.balign 4, 0
-off_812409C: .word off_81240A0
-off_81240A0: .word sub_81240BC+1
-	.word sub_81240D0+1
-	.word sub_8124134+1
-	.word sub_8124144+1
-	.word sub_81242D8+1
-	.word sub_8124308+1
-	.word sub_8124340+1
-	thumb_func_end sub_812407C
+off_812409C: .word jt_81240A0
+jt_81240A0: .word submenu_subchip_81240BC+1 // (struct ?* state_a5) -> void
+	.word submenu_subchip_81240D0+1 // (struct ?* state_a5) -> void
+	.word submenu_subchip_8124134+1 // (struct ?* state_a5) -> void
+	.word submenu_subchip_dispatch_8124144+1 // (struct ?* state_a5) -> void
+	.word submenu_subchip_81242D8+1 // (struct ?* state_a5) -> void
+	.word submenu_subchip_8124308+1 // (struct ?* state_a5) -> void
+	.word submenu_subchip_8124340+1 // (struct ?* state_a5) -> void
+	thumb_func_end submenu_subchip_dispatch_812407C
 
 	thumb_local_start
-sub_81240BC:
+submenu_subchip_81240BC: // (struct ?* state_a5) -> void
 	push {lr}
 	bl sub_81244EC
 	bl IsScreenFadeActive // () -> zf
@@ -1747,10 +1770,10 @@ sub_81240BC:
 locret_81240CC:
 	pop {pc}
 	.byte 0, 0
-	thumb_func_end sub_81240BC
+	thumb_func_end submenu_subchip_81240BC
 
 	thumb_local_start
-sub_81240D0:
+submenu_subchip_81240D0: // (struct ?* state_a5) -> void
 	push {lr}
 	mov r0, #JOYPAD_START | JOYPAD_B
 	bl IsButtonPressed
@@ -1796,10 +1819,10 @@ loc_8124128:
 	pop {pc}
 	.balign 4, 0
 off_8124130: .word unk_201C400
-	thumb_func_end sub_81240D0
+	thumb_func_end submenu_subchip_81240D0
 
 	thumb_local_start
-sub_8124134:
+submenu_subchip_8124134: // (struct ?* state_a5) -> void
 	push {lr}
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
@@ -1808,10 +1831,10 @@ sub_8124134:
 	strb r0, [r5,#2]
 locret_8124142:
 	pop {pc}
-	thumb_func_end sub_8124134
+	thumb_func_end submenu_subchip_8124134
 
 	thumb_local_start
-sub_8124144:
+submenu_subchip_dispatch_8124144: // (struct ?* state_a5) -> void
 	push {lr}
 	ldrb r0, [r5,#0x11]
 	mov r1, #1
@@ -1835,7 +1858,7 @@ loc_8124170:
 	strb r0, [r5,#2]
 	b locret_8124180
 loc_8124176:
-	ldr r0, off_8124184 // =off_8124188 
+	ldr r0, off_8124184 // =jt_8124188 
 	ldrb r1, [r5,#3]
 	ldr r0, [r0,r1]
 	mov lr, pc
@@ -1843,14 +1866,14 @@ loc_8124176:
 locret_8124180:
 	pop {pc}
 	.balign 4, 0
-off_8124184: .word off_8124188
-off_8124188: .word sub_81241A0+1
+off_8124184: .word jt_8124188
+jt_8124188: .word sub_81241A0+1
 	.word sub_81241A0+1
 	.word sub_8124230+1
 	.word sub_812425C+1
 	.word sub_812427C+1
 	.word sub_81242AC+1
-	thumb_func_end sub_8124144
+	thumb_func_end submenu_subchip_dispatch_8124144
 
 	thumb_local_start
 sub_81241A0:
@@ -2014,7 +2037,7 @@ sub_81242AC:
 	thumb_func_end sub_81242AC
 
 	thumb_local_start
-sub_81242D8:
+submenu_subchip_81242D8: // (struct ?* state_a5) -> void
 	push {lr}
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
@@ -2036,10 +2059,10 @@ loc_8124300:
 	bl sub_8124870
 	pop {pc}
 	.balign 4, 0x00
-	thumb_func_end sub_81242D8
+	thumb_func_end submenu_subchip_81242D8
 
 	thumb_local_start
-sub_8124308:
+submenu_subchip_8124308: // (struct ?* state_a5) -> void
 	push {lr}
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
@@ -2066,10 +2089,10 @@ loc_812432A:
 	strb r0, [r5,#2]
 locret_812433E:
 	pop {pc}
-	thumb_func_end sub_8124308
+	thumb_func_end submenu_subchip_8124308
 
 	thumb_local_start
-sub_8124340:
+submenu_subchip_8124340: // (struct ?* state_a5) -> void
 	push {lr}
 	bl IsScreenFadeActive // () -> zf
 	beq locret_812434C
@@ -2078,31 +2101,41 @@ sub_8124340:
 locret_812434C:
 	pop {pc}
 	.byte 0, 0
-	thumb_func_end sub_8124340
+	thumb_func_end submenu_subchip_8124340
 
 	thumb_local_start
-sub_8124350:
+submenu_subchip_8124350: // (struct ?* state_a5) -> void
 	push {lr}
 	bl sub_81244EC
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
+
+  // if (IsScreenFadeActive()) return
 	bl IsScreenFadeActive // () -> zf
 	beq locret_8124380
+
 	bl sub_8046664 // () -> void
+
+  // 0 if (cond1)
 	ldrb r0, [r5,#0x11]
 	mov r1, #2
 	tst r0, r1
 	beq loc_812437C
+
+  // 0 then
 	mov r0, #1
 	bl ClearPETMenuDataFlag
+
 	bl sub_811F728
+
 	b locret_8124380
+  // 0 else
 loc_812437C:
 	bl sub_811F708
 locret_8124380:
 	pop {pc}
 	.balign 4, 0x00
-	thumb_func_end sub_8124350
+	thumb_func_end submenu_subchip_8124350
 
 	thumb_local_start
 sub_8124384:
@@ -5592,7 +5625,7 @@ loc_8126210:
 	str r0, [sp]
 	mov r0, r5
 	add r0, #1
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r2, #8
 loc_812621E:
 	mov r3, r0

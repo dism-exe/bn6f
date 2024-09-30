@@ -14712,7 +14712,7 @@ void __fastcall sub_8119594(int a1, int a2, int a3, int a4)
     }
     else
     {
-        v7 = sub_8000C00(v10);
+        v7 = memory_bcdConvert(v10);
         v6 = sub_8000C5C(v7);
     }
     do
@@ -23534,8 +23534,8 @@ void __fastcall __noreturn sub_8120900(_WORD *a1, int a2, int a3, int a4)
     v23 = v5;
     v7 = a1;
     v8 = a1 + 11;
-    v19 = sub_8000C00(a2);
-    v20 = sub_8000C00(v6);
+    v19 = memory_bcdConvert(a2);
+    v20 = memory_bcdConvert(v6);
     *v7 = v21;
     *v8 = v21 + 1;
     v9 = 1;

@@ -841,7 +841,7 @@ int sub_8123E58()
 
 
 // 0x8123f5c
-int HandleSubChipMenu8123F5C()
+int DispatchSubChipMenu8123F5C()
 {
     int v0; // r5
 
@@ -850,7 +850,7 @@ int HandleSubChipMenu8123F5C()
 
 
 // 0x8123f7c
-void __fastcall sub_8123F7C(int a1, int a2, int a3, int a4)
+void __fastcall submenu_subchip_init_8123F7C(int a1, int a2, int a3, int a4)
 {
     _BYTE *v4; // r5
     int v5; // r10
@@ -885,11 +885,11 @@ void __fastcall sub_8123F7C(int a1, int a2, int a3, int a4)
 
 
 // 0x812407c
-void __noreturn sub_812407C()
+void __noreturn submenu_subchip_dispatch_812407C()
 {
     int v0; // r5
 
-    (*(&off_81240A0 + *(v0 + 2)))();
+    (*(&jt_81240A0 + *(v0 + 2)))();
     sub_80465BC();
     sub_80465F8();
     sub_812453C();
@@ -897,7 +897,7 @@ void __noreturn sub_812407C()
 
 
 // 0x81240bc
-int sub_81240BC()
+int submenu_subchip_81240BC()
 {
     int v0; // r5
     int result; // r0
@@ -915,7 +915,7 @@ int sub_81240BC()
 
 
 // 0x81240d0
-void sub_81240D0()
+void submenu_subchip_81240D0()
 {
     int v0; // r5
     int v1; // r10
@@ -962,7 +962,7 @@ void sub_81240D0()
 
 
 // 0x8124134
-int sub_8124134()
+int submenu_subchip_8124134()
 {
     int v0; // r5
     int result; // r0
@@ -979,14 +979,14 @@ int sub_8124134()
 
 
 // 0x8124144
-int sub_8124144()
+int submenu_subchip_dispatch_8124144()
 {
     _BYTE *v0; // r5
     int result; // r0
     char v2; // zf
 
     if ( v0[17] & 1 )
-        return (*(&off_8124188 + v0[3]))();
+        return (*(&jt_8124188 + v0[3]))();
     result = chatbox_mask_eFlags2009F38(128);
     if ( !result )
         return result;
@@ -997,7 +997,7 @@ int sub_8124144()
     if ( v2 )
         return result;
     if ( !chatbox_8045F4C() )
-        return (*(&off_8124188 + v0[3]))();
+        return (*(&jt_8124188 + v0[3]))();
 LABEL_12:
     result = 4;
     v0[2] = 4;
@@ -1113,7 +1113,7 @@ signed int sub_81242AC()
 
 
 // 0x81242d8
-void __noreturn sub_81242D8()
+void __noreturn submenu_subchip_81242D8()
 {
     int v0; // r5
     int v1; // r0
@@ -1132,7 +1132,7 @@ void __noreturn sub_81242D8()
 
 
 // 0x8124308
-int sub_8124308()
+int submenu_subchip_8124308()
 {
     int v0; // r5
     int result; // r0
@@ -1157,7 +1157,7 @@ int sub_8124308()
 
 
 // 0x8124340
-int sub_8124340()
+int submenu_subchip_8124340()
 {
     int v0; // r5
     int result; // r0
@@ -1174,7 +1174,7 @@ int sub_8124340()
 
 
 // 0x8124350
-int __fastcall sub_8124350(int a1)
+int __fastcall submenu_subchip_8124350(int a1)
 {
     int v1; // r5
     int result; // r0
@@ -3294,7 +3294,7 @@ unsigned int __fastcall sub_81261FC(int a1, int a2)
     do
     {
         v12 = 0;
-        result = sub_8000C00(v4 + 1);
+        result = memory_bcdConvert(v4 + 1);
         v8 = 8;
         do
         {

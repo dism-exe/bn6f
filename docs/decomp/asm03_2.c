@@ -335,7 +335,7 @@ int __fastcall sub_80463A0(int a1)
     int v18; // [sp+Ch] [bp-Ch]
 
     v17 = a1;
-    v1 = sub_8000C00(*&byte_200A220[4 * *(a1 + 1) + 8]);
+    v1 = memory_bcdConvert(*&byte_200A220[4 * *(a1 + 1) + 8]);
     v2 = sub_8000C5C(v1);
     v3 = 4 * (v2 - 1);
     v4 = *(v17 + 2);

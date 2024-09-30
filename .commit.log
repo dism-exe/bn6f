@@ -1,0 +1,68 @@
+Author: Lan <lanhikarixx@gmail.com>
+Date: Mon Sep 30 20:10:11 2024 +0300
+
+
+- Removed the misleading copypasted docs in tools/doc_scripts/replacesig.sh
+
+- Documenting asm00_0.s file divisions
+
+- Documenting sub_8000822
+- /replace.sh 'sub_8000822' 'sound_8000822'
+- /tools/doc_scripts/replacesig.sh 'sound_8000822' '(? *struct1_a5, unk8 bgMusInd_a0, unk8 a1, unk8 *a2) -> ?'
+
+- Document body of
+- sub_8000C5C, SubMenuControl, submenu_subchip_8123F7C, submenu_subchip_8124350
+
+- Mark sound functions
+- ./replace.sh 'sub_800065A' 'sound_800065A'
+- ./replace.sh 'sub_8000630' 'sound_8000630'
+
+- Mark memory functions
+- ./replace.sh 'sub_80009CC' 'memory_80009CC'
+- ./replace.sh 'sub_80009FC' 'memory_80009FC'
+
+- Mark Unused functions
+- ./replace.sh 'sub_8000B18' 'unused_8000B18'
+- ./replace.sh 'sub_8000BEC' 'unused_8000BEC'
+- ./replace.sh 'sub_8000D4A' 'unused_8000D4A'
+- ./replace.sh 'sub_8000D5E' 'unused_8000D5E'
+- ./replace.sh 'sub_8000E90' 'unused_8000E90'
+
+- Mark Jumptables
+- ./replace.sh 'off_81240A0' 'jt_81240A0'
+
+- Updating DispatchSubChipMenu8123F5C signature alongside its jumptable
+- ./replace.sh 'HandleSubChipMenu8123F5C' 'DispatchSubChipMenu8123F5C'
+- ./tools/doc_scripts/replacesig.sh 'DispatchSubChipMenu8123F5C' '(struct ?* state_a5) -> void'
+- ./tools/doc_scripts/replacesig.sh 'submenu_subchip_init_8123F7C' '(struct ?* state_a5) -> void'
+- ./tools/doc_scripts/replacesig.sh 'submenu_subchip_8124350' '(struct ?* state_a5) -> void'
+
+- Renaming its callbacks
+- ./replace.sh 'submenu_subchip_8123F7C' 'submenu_subchip_init_8123F7C'
+- ./replace.sh 'sub_8123F7C' 'submenu_subchip_8123F7C'
+- ./replace.sh 'submenu_subchip_812407C' 'submenu_subchip_dispatch_812407C'
+- ./replace.sh 'sub_812407C' 'submenu_subchip_812407C'
+
+- Updating submenu_subchip_dispatch_812407C jumptable name and signatures
+- ./replace.sh 'sub_81240BC' 'submenu_subchip_81240BC'
+- ./replace.sh 'sub_81240D0' 'submenu_subchip_81240D0'
+- ./replace.sh 'sub_8124134' 'submenu_subchip_8124134'
+- ./replace.sh 'sub_8124144' 'submenu_subchip_8124144'
+- ./replace.sh 'sub_81242D8' 'submenu_subchip_81242D8'
+- ./replace.sh 'sub_8124308' 'submenu_subchip_8124308'
+- ./replace.sh 'sub_8124340' 'submenu_subchip_8124340'
+- ./tools/doc_scripts/replacesig.sh 'submenu_subchip_81240BC' '(struct ?* state_a5) -> void' && \
+./tools/doc_scripts/replacesig.sh 'submenu_subchip_81240D0' '(struct ?* state_a5) -> void' && \
+./tools/doc_scripts/replacesig.sh 'submenu_subchip_8124134' '(struct ?* state_a5) -> void' && \
+./tools/doc_scripts/replacesig.sh 'submenu_subchip_8124144' '(struct ?* state_a5) -> void' && \
+./tools/doc_scripts/replacesig.sh 'submenu_subchip_81242D8' '(struct ?* state_a5) -> void' && \
+./tools/doc_scripts/replacesig.sh 'submenu_subchip_8124308' '(struct ?* state_a5) -> void' && \
+./tools/doc_scripts/replacesig.sh 'submenu_subchip_8124340' '(struct ?* state_a5) -> void'
+- ./replace.sh 'submenu_subchip_8124144' 'submenu_subchip_dispatch_8124144'
+
+- Updating submenu_subchip_dispatch_8124144 and its jumptable
+- ./replace.sh 'off_8124188' 'jt_8124188'
+
+- Other
+- ./replace.sh 'sub_8000C00' 'memory_bcdConvert'
+- ./replace.sh 'sub_8000D84' 'memory_bcd_8000D84'

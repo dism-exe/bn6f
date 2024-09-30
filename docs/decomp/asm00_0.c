@@ -34,7 +34,7 @@ int __fastcall PlaySong(int result, int a2, int a3)
     {
         *(v4 + oGameState_BGMusicIndicator) = result;
         if ( result == 99 )
-            result = sub_8000630(99, v5, a3);
+            result = sound_8000630(99, v5, a3);
         else
             result = m4a_800061E(result, v5, a3);
     }
@@ -50,7 +50,7 @@ int __fastcall sub_80005F2(int a1, int a2, int a3)
 
     *(*(v3 + oToolkit_GameStatePtr) + oGameState_BGMusicIndicator) = a1;
     if ( a1 == 99 )
-        result = sub_8000630(99, a2, a3);
+        result = sound_8000630(99, a2, a3);
     else
         result = m4a_800061E(a1, a2, a3);
     return result;
@@ -65,7 +65,7 @@ int __fastcall sub_800060A(int a1, int a2, int a3)
     v3 = byte_2010B90[0];
     if ( !byte_2010B90[0] )
         v3 = 255;
-    return sound_8000808(a1, v3, a3, sub_8000822);
+    return sound_8000808(a1, v3, a3, sound_8000822);
 }
 
 
@@ -80,7 +80,7 @@ int __fastcall m4a_800061E(int a1, int a2, int a3)
 
 
 // 0x8000630
-int __fastcall sub_8000630(int a1, int a2, int a3)
+int __fastcall sound_8000630(int a1, int a2, int a3)
 {
     int v3; // r10
 
@@ -89,14 +89,14 @@ int __fastcall sub_8000630(int a1, int a2, int a3)
 
 
 // 0x8000642
-int __fastcall sub_8000642(int a1, int a2, int a3)
+int __fastcall sound_8000642(int a1, int a2, int a3)
 {
     return sound_8000808(off_8000704[a1], a2, a3, sub_814F9AC);
 }
 
 
 // 0x800065a
-int __fastcall sub_800065A(int a1, int a2, int a3)
+int __fastcall sound_800065A(int a1, int a2, int a3)
 {
     return sound_8000808(off_8000704[a1], a2, a3, sub_814FA14);
 }
@@ -239,7 +239,7 @@ int __fastcall sound_8000808(int result, int a2, int a3, int a4)
 
 
 // 0x8000822
-int __fastcall sub_8000822(int result, int a2)
+int __fastcall sound_8000822(int result, int a2)
 {
     int v2; // r5
     int v3; // r6
@@ -451,7 +451,7 @@ void __cdecl FillByEightWords(void *src, int size, int fill)
 
 
 // 0x80009cc
-int __fastcall sub_80009CC(int result, int a2, int a3, int a4)
+int __fastcall memory_80009CC(int result, int a2, int a3, int a4)
 {
     int v4; // r4
     int *v5; // r5
@@ -467,7 +467,7 @@ int __fastcall sub_80009CC(int result, int a2, int a3, int a4)
 
 
 // 0x80009fc
-int __fastcall sub_80009FC(int result)
+int __fastcall memory_80009FC(int result)
 {
     int v1; // r1
 
@@ -524,8 +524,8 @@ void __cdecl objRender_8000A44()
         else
         {
             v7 = i[3];
-            sub_80009CC(*i, i[1], i[2] >> 2, 3);
-            sub_80009FC(8);
+            memory_80009CC(*i, i[1], i[2] >> 2, 3);
+            memory_80009FC(8);
         }
         v0 = v4;
     }
@@ -555,7 +555,7 @@ int __fastcall sub_8000AB8(int result, int a2, int a3)
 
 
 // 0x8000b18
-int __fastcall sub_8000B18(int *a1)
+int __fastcall unused_8000B18(int *a1)
 {
     int *i; // r7
     int result; // r0
@@ -693,14 +693,14 @@ int __fastcall decomp_initGfx_8000B8E(int *a1)
 
 
 // 0x8000bec
-int sub_8000BEC()
+int unused_8000BEC()
 {
     return VerticalCounter_LY_ + dword_2009CC0;
 }
 
 
 // 0x8000c00
-signed int __fastcall sub_8000C00(int a1)
+signed int __fastcall memory_bcdConvert(int a1)
 {
     char *v2; // r7
     int v3; // r2
@@ -865,7 +865,7 @@ void __fastcall ShuffleHwordList_SecondaryRNG(int result, int a2, int a3)
 
 
 // 0x8000d4a
-int __fastcall sub_8000D4A(int a1, int a2)
+int __fastcall unused_8000D4A(int a1, int a2)
 {
     int v2; // ST04_4
     int v3; // ST00_4
@@ -881,7 +881,7 @@ int __fastcall sub_8000D4A(int a1, int a2)
 
 
 // 0x8000d5e
-int __fastcall sub_8000D5E(int result, int a2)
+int __fastcall unused_8000D5E(int result, int a2)
 {
     signed int v2; // r3
     unsigned int v3; // r2
@@ -915,7 +915,7 @@ int __fastcall sub_8000D5E(int result, int a2)
 
 
 // 0x8000d84
-int __fastcall sub_8000D84(signed int a1)
+int __fastcall memory_bcd_8000D84(signed int a1)
 {
     int v2; // r1
     int v3; // ST04_4
@@ -934,11 +934,11 @@ int __fastcall sub_8000D84(signed int a1)
     v3 = v2;
     v5 = v4;
     v7 = v6;
-    v9 = sub_8000C00(v8);
-    v10 = sub_8000C00(v3);
-    v11 = sub_8000C00(v5);
+    v9 = memory_bcdConvert(v8);
+    v10 = memory_bcdConvert(v3);
+    v11 = memory_bcdConvert(v5);
     __asm { SVC         6 }
-    return sub_8000C00(100 * v7) + (v9 << 24) + (v10 << 16) + (v11 << 8);
+    return memory_bcdConvert(100 * v7) + (v9 << 24) + (v10 << 16) + (v11 << 8);
 }
 
 
@@ -1036,7 +1036,7 @@ int __fastcall sub_8000E3A(int a1, int a2)
 
 
 // 0x8000e90
-unsigned __int8 *__fastcall sub_8000E90(unsigned __int8 *result, int a2)
+unsigned __int8 *__fastcall unused_8000E90(unsigned __int8 *result, int a2)
 {
     unsigned __int8 *v2; // r5
     unsigned __int8 *v3; // r6

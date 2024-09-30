@@ -675,7 +675,7 @@ loc_8033E5E:
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 loc_8033E6A:
 	ldrh r0, [r5,#8]
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r2, r0
 	mov r4, #0
 	mov r8, r4

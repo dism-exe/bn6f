@@ -2386,7 +2386,7 @@ loc_3006CE8:
 	ldr r7, [r7,#0x38]
 	ldr r0, [r7,r1]
 loc_3006CF2:
-	ldr r6, off_3006D98 // =sub_8000C00+1
+	ldr r6, off_3006D98 // =memory_bcdConvert+1
 	mov lr, pc
 	bx r6
 	mov r8, r0
@@ -2474,7 +2474,7 @@ loc_3006D92:
 	add r0, #3
 	pop {r3,pc}
 	.balign 4, 0
-off_3006D98: .word sub_8000C00+1
+off_3006D98: .word memory_bcdConvert+1
 off_3006D9C: .word sub_8000C5C+1
 off_3006DA0: .word off_8043C8C
 	thumb_func_end sub_3006CD0

@@ -11560,7 +11560,7 @@ sub_8009158:
 	mov r0, #0x1f
 	ldr r1, dword_80091E4 // =0xffff
 	ldr r2, off_80091E8 // =0x100
-	bl sub_800065A
+	bl sound_800065A
 	mov r0, #0x1f
 	ldr r1, dword_80091EC // =0x11a
 	bl sound_8000672
@@ -11574,7 +11574,7 @@ loc_800919A:
 	mov r0, #0x1f
 	ldr r1, dword_80091E4 // =0xffff
 	mov r2, #0
-	bl sub_800065A
+	bl sound_800065A
 	mov r0, #0x1f
 	ldr r1, off_80091E8 // =0x100
 	bl sound_8000672
@@ -15374,7 +15374,7 @@ loc_800AC2C:
 	str r0, [sp,#0x10]
 	bcc loc_800AC6C
 	bl sub_800A704
-	bl sub_8000D84
+	bl memory_bcd_8000D84
 	ldr r2, [sp]
 	mov r1, #0xc
 	mul r1, r2

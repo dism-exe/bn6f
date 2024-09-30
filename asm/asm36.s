@@ -4855,7 +4855,7 @@ sub_8132A14:
 	lsl r2, r2, #0xc
 	orr r5, r2
 	mov r0, r3
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r6, r0
 	mov r7, #0x1c
 loc_8132A2C:
@@ -5395,7 +5395,7 @@ sub_8132F78:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_Unk200a220_Ptr]
 	ldr r0, [r6,#0x18]
-	bl sub_8000D84
+	bl memory_bcd_8000D84
 	lsr r0, r0, #0x10
 	mov r1, #0xf
 	and r1, r0
@@ -15105,7 +15105,7 @@ sub_8137EF0:
 	ldrb r0, [r7,r4]
 	ldrh r1, [r1,r0]
 	mov r0, r1
-	bl sub_8000D84
+	bl memory_bcd_8000D84
 	pop {r4-r7,pc}
 off_8137F04: .word unk_201CF00
 	thumb_func_end sub_8137EF0
@@ -15280,7 +15280,7 @@ sub_813802C:
 	ldr r3, off_813803C // =byte_8138040
 	ldrh r0, [r3,r0]
 	bl sub_8010C76
-	bl sub_8000C00
+	bl memory_bcdConvert
 	pop {pc}
 	.balign 4, 0
 off_813803C: .word byte_8138040
@@ -15442,7 +15442,7 @@ sub_8138170:
 	mov r6, r2
 loc_8138196:
 	mov r0, r6
-	bl sub_8000D84
+	bl memory_bcd_8000D84
 	mov r6, r0
 	ldr r1, dword_8138208 // =0x95999 
 	cmp r0, r1

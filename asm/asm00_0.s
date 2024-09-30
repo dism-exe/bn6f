@@ -1,4 +1,7 @@
 
+
+// FILE module sound
+
 	thumb_func_start call_m4aSoundMain
 call_m4aSoundMain:
 	push {lr}
@@ -40,7 +43,7 @@ PlayMusic: // (int song) -> void
 	strb r0, [r7,#oGameState_BGMusicIndicator]
 	cmp r0, #0x63
 	bne loc_80005EC
-	bl sub_8000630
+	bl sound_8000630
 	b locret_80005F0
 loc_80005EC:
 	bl m4a_800061E // () -> void
@@ -56,7 +59,7 @@ sub_80005F2:
 	strb r0, [r7,#oGameState_BGMusicIndicator]
 	cmp r0, #0x63
 	bne loc_8000604
-	bl sub_8000630
+	bl sound_8000630
 	b locret_8000608
 loc_8000604:
 	bl m4a_800061E // () -> void
@@ -73,7 +76,7 @@ sub_800060A:
 	bne loc_8000616
 	mov r1, #0xff
 loc_8000616:
-	ldr r3, off_8000868 // =sub_8000822+1
+	ldr r3, off_8000868 // =sound_8000822+1
 	bl sound_8000808 // () -> void
 	pop {r1-r7,pc}
 	thumb_func_end sub_800060A
@@ -92,7 +95,7 @@ m4a_800061E:
 	thumb_func_end m4a_800061E
 
 	thumb_local_start
-sub_8000630:
+sound_8000630:
 	push {lr}
 	mov r1, r10
 	push {r1}
@@ -101,10 +104,10 @@ sub_8000630:
 	pop {r1}
 	mov r10, r1
 	pop {pc}
-	thumb_func_end sub_8000630
+	thumb_func_end sound_8000630
 
-	thumb_func_start sub_8000642
-sub_8000642:
+	thumb_func_start sound_8000642
+sound_8000642:
 	push {r4-r7,lr}
 	lsl r0, r0, #2
 	ldr r7, off_8000700 // =off_8000704
@@ -116,10 +119,10 @@ sub_8000642:
 	pop {r3}
 	mov r10, r3
 	pop {r4-r7,pc}
-	thumb_func_end sub_8000642
+	thumb_func_end sound_8000642
 
-	thumb_func_start sub_800065A
-sub_800065A:
+	thumb_func_start sound_800065A
+sound_800065A:
 	push {r4-r7,lr}
 	lsl r0, r0, #2
 	ldr r7, off_8000700 // =off_8000704
@@ -131,7 +134,7 @@ sub_800065A:
 	pop {r3}
 	mov r10, r3
 	pop {r4-r7,pc}
-	thumb_func_end sub_800065A
+	thumb_func_end sound_800065A
 
 	thumb_func_start sound_8000672
 sound_8000672:
@@ -348,25 +351,45 @@ locret_8000820:
 	pop {r4-r7,pc}
 	thumb_func_end sound_8000808
 
+// (struct ? *a5, unk8 bgMusInd_a0, unk8 a1, unk8 *a2) -> ?
 	thumb_local_start
-sub_8000822:
+sound_8000822:
 	push {r4-r7,lr}
+
+  # u8 v1_r2
 	ldr r3, off_80008A4 // =byte_2010B90
 	ldrb r2, [r3]
+
+  # 0 if !(a1 == v1_r2)
 	cmp r1, r2
 	beq loc_8000854
+
+  # 0 then
+
 	mov r2, #0
 	strb r2, [r3]
+
+  # u8 vBGMusicIndicator_r1
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r1, [r7,#oGameState_BGMusicIndicator]
+
+  # if (bgMusInd_a0 == vBGMusicIndicator_r1) return;
 	cmp r0, r1
 	beq locret_800085A
+
+  # Write new bgMusInd_a0
 	strb r0, [r7,#oGameState_BGMusicIndicator]
+
+  # 1 if (bgMusInd_a0 == 0x63)
 	cmp r0, #0x63
 	bne loc_8000844
+
+  # 1 then
 	ldr r3, off_80008A8 // =sub_814EA58+1
 	b loc_8000846
+
+  # 0 else 1 else
 loc_8000844:
 	ldr r3, off_80008AC // =m4a_SongNumStart+1
 loc_8000846:
@@ -381,14 +404,20 @@ loc_800084E:
 loc_8000854:
 	mov r0, r6
 	sub r0, #0x10
+
+  # Writes to struct a5
 	str r0, [r5,#8]
+ 
 locret_800085A:
 	pop {r4-r7,pc}
 	.balign 4, 0
+	thumb_func_end sound_8000822
+
+// FILE table
 dword_200A490_p: .word dword_200A490
 	.word unk_200F390
 off_8000864: .word byte_2010B90
-off_8000868: .word sub_8000822+1
+off_8000868: .word sound_8000822+1 // (struct ? *a5, unk8 bgMusInd_a0, unk8 a1, unk8 *a2) -> ?
 off_800086C: .word m4a_SongNumStart+1
 off_8000870: .word sub_814EA58+1
 off_8000874: .word sub_814F9AC+1
@@ -407,7 +436,8 @@ off_80008A4: .word byte_2010B90
 off_80008A8: .word sub_814EA58+1
 off_80008AC: .word m4a_SongNumStart+1
 off_80008B0: .word loc_800084E+1
-	thumb_func_end sub_8000822
+
+// FILE module memory
 
 // (void *mem, int size) -> void
 
@@ -523,7 +553,7 @@ CopyHalfwords:
 .HalfwordCopyCpuSetMask_8000938: .word 0x0
 	thumb_func_end CopyHalfwords
 
-// (u32 *src, u32 *dest, int size) -> void
+// (CopyWordsu32 *src, u32 *dest, int size) -> void
 
 // Copy r2 bytes from r0 to r1, in units of words.
 // Note r2 represents byte count, which is then converted to word count in function
@@ -640,7 +670,8 @@ FillByEightWords:
 	thumb_func_end FillByEightWords
 
 	thumb_local_start
-sub_80009CC:
+
+memory_80009CC:
 	push {r4-r7,lr}
 	lsl r3, r3, #2
 	ldr r5, off_80009E8 // =off_80009EC
@@ -662,10 +693,10 @@ off_80009EC: .word DMA0SourceAddress
 	.word DMA1SourceAddress
 	.word DMA2SourceAddress
 	.word DMA3SourceAddress
-	thumb_func_end sub_80009CC
+	thumb_func_end memory_80009CC
 
 	thumb_local_start
-sub_80009FC:
+memory_80009FC:
 	push {r4,lr}
 	ldr r3, off_8000A34 // =DMA0SourceAddress
 loc_8000A00:
@@ -701,7 +732,7 @@ loc_8000A2A:
 	.balign 4, 0
 off_8000A34: .word DMA0SourceAddress
 dword_8000A38: .word 0x80000000
-	thumb_func_end sub_80009FC
+	thumb_func_end memory_80009FC
 
 	thumb_func_start clearWord_e200AC1C
 clearWord_e200AC1C:
@@ -734,9 +765,9 @@ loc_8000A52:
 	ldr r2, [r2,#8]
 	lsr r2, r2, #2
 	mov r3, #3
-	bl sub_80009CC
+	bl memory_80009CC
 	mov r0, #8
-	bl sub_80009FC
+	bl memory_80009FC
 	mov r1, r8
 	mov r2, r9
 	b loc_8000A92
@@ -843,7 +874,7 @@ off_8000B14: .word fiveWordArr200B4B0
 
 
 	thumb_local_start
-sub_8000B18:
+unused_8000B18:
 	push {r4-r7,lr}
 	mov r7, r0
 loc_8000B1C:
@@ -857,7 +888,7 @@ loc_8000B1C:
 	b loc_8000B1C
 locret_8000B2E:
 	pop {r4-r7,pc}
-	thumb_func_end sub_8000B18
+	thumb_func_end unused_8000B18
 
 // (u32 *initRefs) -> void
 // This processes an array and performs different actions based on
@@ -992,7 +1023,7 @@ locret_8000BEA:
 	thumb_func_end QueueGFXTransfersInList
 
 	thumb_local_start
-sub_8000BEC:
+unused_8000BEC:
 	ldr r0, off_8000BF8 // =VerticalCounter_LY_
 	ldrh r0, [r0]
 	ldr r1, off_8000BFC // =dword_2009CC0
@@ -1002,10 +1033,11 @@ sub_8000BEC:
 	.balign 4, 0
 off_8000BF8: .word VerticalCounter_LY_
 off_8000BFC: .word dword_2009CC0
-	thumb_func_end sub_8000BEC
+	thumb_func_end unused_8000BEC
 
-	thumb_func_start sub_8000C00
-sub_8000C00: // converts a number to BCD for printing?
+// converts a number to BCD for printing?
+	thumb_func_start memory_bcdConvert
+memory_bcdConvert: 
 	push {r4,r7,lr}
 	ldr r1, dword_8000C54 // =0x5f5e0ff
 	cmp r0, r1
@@ -1047,25 +1079,40 @@ off_8000C34:
 	.word 1
 dword_8000C54: .word   99999999
 dword_8000C58: .word 0x99999999
-	thumb_func_end sub_8000C00
+	thumb_func_end memory_bcdConvert
 
 	thumb_func_start sub_8000C5C
 // get num bcd digits?
 sub_8000C5C:
 	mov r1, #1
+
+  // 0 if (a0)
 	tst r0, r0
 	beq loc_8000C6E
+
+  // 0 then
+  // u32 i = 0
 	mov r1, #0
 loc_8000C64:
+  // 0.0 while (a0)
 	tst r0, r0
 	beq loc_8000C6E
+
+  // a0 <<= 4
+  // i++
 	add r1, #1
 	lsr r0, r0, #4
+
+  // 0.0 do
 	b loc_8000C64
+
+// 0 endif
 loc_8000C6E:
 	mov r0, r1
 	mov pc, lr
 	thumb_func_end sub_8000C5C
+
+// FILE segment shifts to RNG here
 
 	thumb_func_start ShuffleByteList_PrimaryRNG
 ShuffleByteList_PrimaryRNG:
@@ -1188,7 +1235,7 @@ loc_8000D14:
 	thumb_func_end ShuffleHwordList_SecondaryRNG
 
 	thumb_local_start
-sub_8000D4A:
+unused_8000D4A:
 	push {r7,lr}
 	mov r7, r0
 	push {r1,r7}
@@ -1197,10 +1244,10 @@ sub_8000D4A:
 	bl SWI_Div
 	ldrb r0, [r7,r1]
 	pop {r7,pc}
-	thumb_func_end sub_8000D4A
+	thumb_func_end unused_8000D4A
 
 	thumb_local_start
-sub_8000D5E:
+unused_8000D5E:
 	push {r4,r6,lr}
 	cmp r1, #2
 	bmi locret_8000D82
@@ -1224,10 +1271,10 @@ loc_8000D74:
 	bmi loc_8000D66
 locret_8000D82:
 	pop {r4,r6,pc}
-	thumb_func_end sub_8000D5E
+	thumb_func_end unused_8000D5E
 
-	thumb_func_start sub_8000D84
-sub_8000D84:
+	thumb_func_start memory_bcd_8000D84
+memory_bcd_8000D84:
 	push {lr}
 	sub sp, sp, #0x10
 	ldr r1, dword_8000DD8 // =0x1499727
@@ -1241,20 +1288,20 @@ loc_8000D92:
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	str r3, [sp,#0xc]
-	bl sub_8000C00
+	bl memory_bcdConvert
 	str r0, [sp]
 	ldr r0, [sp,#4]
-	bl sub_8000C00
+	bl memory_bcdConvert
 	str r0, [sp,#4]
 	ldr r0, [sp,#8]
-	bl sub_8000C00
+	bl memory_bcdConvert
 	str r0, [sp,#8]
 	ldr r0, [sp,#0xc]
 	mov r1, #0x64
 	mul r0, r1
 	mov r1, #0x3c
 	svc 6
-	bl sub_8000C00
+	bl memory_bcdConvert
 	ldr r1, [sp]
 	ldr r2, [sp,#4]
 	ldr r3, [sp,#8]
@@ -1270,7 +1317,7 @@ loc_8000DD4:
 	.balign 4, 0
 dword_8000DD8: .word 0x1499727
 dword_8000DDC: .word 0x99595999
-	thumb_func_end sub_8000D84
+	thumb_func_end memory_bcd_8000D84
 
 	thumb_func_start sub_8000DE0
 sub_8000DE0:
@@ -1384,7 +1431,7 @@ loc_8000E8C:
 	thumb_func_end sub_8000E3A
 
 	thumb_local_start
-sub_8000E90:
+unused_8000E90:
 	push {r5,r6,lr}
 	add r5, r0, r1
 	mov r6, r0
@@ -1408,7 +1455,7 @@ loc_8000EAA:
 	b loc_8000EAA
 locret_8000EB4:
 	pop {r5,r6,pc}
-	thumb_func_end sub_8000E90
+	thumb_func_end unused_8000E90
 
 	thumb_func_start sub_8000EB6
 sub_8000EB6:
