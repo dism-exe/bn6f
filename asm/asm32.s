@@ -31702,32 +31702,32 @@ off_811F770: .word ePETMenuData
 SubMenuControl:
 	push {r4-r7,lr}
 
-  // u8* submenuIdxArr_r5
+  // struct UnkSubMenuPtr* submenu_r5
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_SubmenuPtr]
 
   // func* jt_r0
 	ldr r0, off_811F79C // =JumpTable811F7A0
 
-  // call jt_r0[submenuIdxArr_r5[0]]
+  // call jt_r0[submenu_r5[0]]
 	ldrb r1, [r5]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
 
-  // 0 if (submenuIdxArr_r5[0] == 0x18)
+  // 0 if (submenu_r5[0] == 0x18)
 	ldrb r0, [r5]
 	cmp r0, #0x18
 	bne loc_811F794
 
   // 0 then
 
-  // 0.0 if (submenuIdxArr_r5[1] == 0x18) return
+  // 0.0 if (submenu_r5[1] == 0x18) return
 	ldrb r0, [r5,#1]
 	cmp r0, #0x18
 	beq locret_811F798
 
-  // 0.0 if (submenuIdxArr_r5[1] == 0x1c) return
+  // 0.0 if (submenu_r5[1] == 0x1c) return
 	cmp r0, #0x1c
 	beq locret_811F798
 
@@ -31740,7 +31740,7 @@ locret_811F798:
 off_811F79C: .word JumpTable811F7A0
 // SubmenuPtr* r5
 JumpTable811F7A0: .word HandleChipFolderMenu8123434+1
-	.word DispatchSubChipMenu8123F5C+1 // (struct ?* state_a5) -> void
+	.word DispatchSubChipMenu8123F5C+1 // (struct UnkSubMenu* state_a5) -> void
 	.word HandleLibraryMenu8124B3C+1
 	.word HandleMegaManStatusMenu8126B4C+1
 	.word HandleEmailMenu81279F8+1

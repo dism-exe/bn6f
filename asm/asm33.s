@@ -1597,9 +1597,8 @@ byte_8123F40: .byte 0xA, 0x0, 0x0, 0x0, 0xA, 0x1, 0x1, 0x0, 0xA, 0x2, 0x2, 0x0, 
 	.byte 0x0, 0xA, 0x4, 0x4, 0x0, 0xA, 0x5, 0x5, 0x0, 0xFF, 0xFF, 0xFF, 0xFF
 	thumb_func_end sub_8123E58
 
-// (struct ?* state_a5) -> void
 	thumb_func_start DispatchSubChipMenu8123F5C
-DispatchSubChipMenu8123F5C:
+DispatchSubChipMenu8123F5C: // (struct UnkSubMenu* state_a5) -> void
 	push {lr}
 	ldr r0, off_8123F6C // =jt_8123F70 
 	ldrb r1, [r5,#1]
@@ -1609,14 +1608,14 @@ DispatchSubChipMenu8123F5C:
 	pop {pc}
 	.balign 4, 0x00
 off_8123F6C: .word jt_8123F70
-jt_8123F70: .word submenu_subchip_init_8123F7C+1 // (struct ?* state_a5) -> void
-	.word submenu_subchip_dispatch_812407C+1 // (struct ?* state_a5) -> void
-	.word submenu_subchip_8124350+1 // (struct ?* state_a5) -> void
+jt_8123F70: .word submenu_subchip_init_8123F7C+1 // (struct UnkSubMenu* state_a5) -> void
+	.word submenu_subchip_dispatch_812407C+1 // (struct UnkSubMenu* state_a5) -> void
+	.word submenu_subchip_8124350+1 // (struct UnkSubMenu* state_a5) -> void
 	thumb_func_end DispatchSubChipMenu8123F5C
 
 // (struct ?* state_a5) -> void
 	thumb_local_start
-submenu_subchip_init_8123F7C:
+submenu_subchip_init_8123F7C: // (struct UnkSubMenu* state_a5) -> void
 	push {r4-r7,lr}
 
 	bl zeroFillVRAM
@@ -1736,7 +1735,7 @@ off_8124078: .word dword_8123F3C
 	thumb_func_end submenu_subchip_init_8123F7C
 
 	thumb_local_start
-submenu_subchip_dispatch_812407C: // (struct ?* state_a5) -> void
+submenu_subchip_dispatch_812407C: // (struct UnkSubMenu* state_a5) -> void
 	push {lr}
 	ldr r0, off_812409C // =jt_81240A0 
 	ldrb r1, [r5,#2]
@@ -1750,17 +1749,17 @@ submenu_subchip_dispatch_812407C: // (struct ?* state_a5) -> void
 	pop {pc}
 	.balign 4, 0
 off_812409C: .word jt_81240A0
-jt_81240A0: .word submenu_subchip_81240BC+1 // (struct ?* state_a5) -> void
-	.word submenu_subchip_81240D0+1 // (struct ?* state_a5) -> void
-	.word submenu_subchip_8124134+1 // (struct ?* state_a5) -> void
-	.word submenu_subchip_dispatch_8124144+1 // (struct ?* state_a5) -> void
-	.word submenu_subchip_81242D8+1 // (struct ?* state_a5) -> void
-	.word submenu_subchip_8124308+1 // (struct ?* state_a5) -> void
-	.word submenu_subchip_8124340+1 // (struct ?* state_a5) -> void
+jt_81240A0: .word submenu_subchip_81240BC+1 // (struct UnkSubMenu* state_a5) -> void
+	.word submenu_subchip_81240D0+1 // (struct UnkSubMenu* state_a5) -> void
+	.word submenu_subchip_8124134+1 // (struct UnkSubMenu* state_a5) -> void
+	.word submenu_subchip_dispatch_8124144+1 // (struct UnkSubMenu* state_a5) -> void
+	.word submenu_subchip_81242D8+1 // (struct UnkSubMenu* state_a5) -> void
+	.word submenu_subchip_8124308+1 // (struct UnkSubMenu* state_a5) -> void
+	.word submenu_subchip_8124340+1 // (struct UnkSubMenu* state_a5) -> void
 	thumb_func_end submenu_subchip_dispatch_812407C
 
 	thumb_local_start
-submenu_subchip_81240BC: // (struct ?* state_a5) -> void
+submenu_subchip_81240BC: // (struct UnkSubMenu* state_a5) -> void
 	push {lr}
 	bl sub_81244EC
 	bl IsScreenFadeActive // () -> zf
@@ -1773,7 +1772,7 @@ locret_81240CC:
 	thumb_func_end submenu_subchip_81240BC
 
 	thumb_local_start
-submenu_subchip_81240D0: // (struct ?* state_a5) -> void
+submenu_subchip_81240D0: // (struct UnkSubMenu* state_a5) -> void
 	push {lr}
 	mov r0, #JOYPAD_START | JOYPAD_B
 	bl IsButtonPressed
@@ -1822,7 +1821,7 @@ off_8124130: .word unk_201C400
 	thumb_func_end submenu_subchip_81240D0
 
 	thumb_local_start
-submenu_subchip_8124134: // (struct ?* state_a5) -> void
+submenu_subchip_8124134: // (struct UnkSubMenu* state_a5) -> void
 	push {lr}
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
@@ -1834,7 +1833,7 @@ locret_8124142:
 	thumb_func_end submenu_subchip_8124134
 
 	thumb_local_start
-submenu_subchip_dispatch_8124144: // (struct ?* state_a5) -> void
+submenu_subchip_dispatch_8124144: // (struct UnkSubMenu* state_a5) -> void
 	push {lr}
 	ldrb r0, [r5,#0x11]
 	mov r1, #1
@@ -1867,17 +1866,19 @@ locret_8124180:
 	pop {pc}
 	.balign 4, 0
 off_8124184: .word jt_8124188
-jt_8124188: .word sub_81241A0+1
-	.word sub_81241A0+1
-	.word sub_8124230+1
-	.word sub_812425C+1
-	.word sub_812427C+1
-	.word sub_81242AC+1
+jt_8124188: .word submenu_subchip_81241A0+1 // (struct UnkSubMenu* state_a5) -> void
+	.word submenu_subchip_81241A0+1 // (struct UnkSubMenu* state_a5) -> void
+	.word submenu_subchip_8124230+1 // (struct UnkSubMenu* state_a5) -> void
+	.word submenu_subchip_812425C+1 // (struct UnkSubMenu* state_a5) -> void
+	.word submenu_subchip_812427C+1 // (struct UnkSubMenu* state_a5) -> void
+	.word submenu_subchip_81242AC+1 // (struct UnkSubMenu* state_a5) -> void
 	thumb_func_end submenu_subchip_dispatch_8124144
 
 	thumb_local_start
-sub_81241A0:
+submenu_subchip_81241A0: // (struct UnkSubMenu* state_a5) -> void
 	push {r4-r7,lr}
+
+  # 0 if (isPressed JOYPAD_B)
 	mov r4, #1
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
@@ -1885,52 +1886,85 @@ sub_81241A0:
 	mov r1, #JOYPAD_B
 	tst r0, r1
 	beq loc_81241B2
+
+  # 0 then
 	ldrh r4, [r5,#0x16]
+
+  // 0 endif
 loc_81241B2:
+
+  // 0 if (cond1)
 	ldrb r0, [r5,#0x11]
 	mov r1, #1
 	tst r0, r1
 	bne loc_81241C4
+
+  // 0 then
 	orr r0, r1
 	strb r0, [r5,#0x11]
 	mov r0, #SOUND_UNK_8A
 	bl PlaySoundEffect
+
+  // 0 endif
 loc_81241C4:
+
+  // 0 if (cond2)
 	mov r7, #8
 	mov r1, r4
 	ldrh r0, [r5,#0x16]
 	cmp r0, r1
 	bgt loc_81241D2
+
+  // 0 then
 	mov r0, #0x10
 	strb r0, [r5,#2]
+
+  // 0 endif
 loc_81241D2:
+
+  // 0 if (cond3)
 	ldrh r0, [r5,#0x18]
 	add r0, r0, r1
 	ldrh r1, [r5,#0x1a]
 	cmp r0, r1
 	bgt loc_81241E6
+
+  // 0 then 
 	strh r0, [r5,#0x18]
 	ldrh r0, [r5,#0x16]
 	sub r0, r0, r4
 	strh r0, [r5,#0x16]
+
 	b loc_81241EE
+
+  // 0 else
 loc_81241E6:
+
 	strh r1, [r5,#0x18]
 	mov r0, #0x10
 	strb r0, [r5,#2]
 	mov r7, #9
+
+  // 0 endif
 loc_81241EE:
+
+  // 0 if (cond4)
 	mov r0, #0x10
 	ldrb r1, [r5,#2]
 	cmp r0, r1
 	bne loc_8124204
+
+  // 0 then
 	mov r0, r7
 	bl sub_812474C
 	ldrb r0, [r5,#0x11]
 	mov r1, #1
 	bic r0, r1
 	strb r0, [r5,#0x11]
+
+  // 0 endif
 loc_8124204:
+
 	push {r4,r6}
 	ldr r0, off_8124228 // =unk_201C4B0 
 	ldrh r1, [r5,#0x18]
@@ -1941,17 +1975,19 @@ loc_8124204:
 	bl sub_8120900
 	pop {r4,r6}
 	bl GetCurPETNavi // () -> u8
+
 	mov r1, #0x40 
 	ldrh r2, [r5,#0x18]
 	bl SetCurPETNaviStatsHword
+
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8124228: .word unk_201C4B0
 dword_812422C: .word 0x3091E0
-	thumb_func_end sub_81241A0
+	thumb_func_end submenu_subchip_81241A0
 
 	thumb_local_start
-sub_8124230:
+submenu_subchip_8124230: // (struct UnkSubMenu* state_a5) -> void
 	push {r4,lr}
 	movflag EVENT_170A
 	bl SetEventFlagFromImmediate
@@ -1970,10 +2006,10 @@ sub_8124230:
 	pop {r4,pc}
 	.balign 4, 0
 dword_8124258: .word 0x1770
-	thumb_func_end sub_8124230
+	thumb_func_end submenu_subchip_8124230
 
 	thumb_local_start
-sub_812425C:
+submenu_subchip_812425C: // (struct UnkSubMenu* state_a5) -> void
 	push {r4,lr}
 	movflag EVENT_1709
 	bl SetEventFlagFromImmediate
@@ -1987,10 +2023,10 @@ sub_812425C:
 	bl sub_812474C
 	pop {r4,pc}
 	.balign 4, 0x00
-	thumb_func_end sub_812425C
+	thumb_func_end submenu_subchip_812425C
 
 	thumb_local_start
-sub_812427C:
+submenu_subchip_812427C: // (struct UnkSubMenu* state_a5) -> void
 	push {r4,lr}
 	movflag EVENT_170B
 	bl SetEventFlagFromImmediate
@@ -2011,10 +2047,10 @@ sub_812427C:
 	pop {r4,pc}
 	.balign 4, 0
 dword_81242A8: .word 0x1770
-	thumb_func_end sub_812427C
+	thumb_func_end submenu_subchip_812427C
 
 	thumb_local_start
-sub_81242AC:
+submenu_subchip_81242AC: // (struct UnkSubMenu* state_a5) -> void
 	push {r4,r7,lr}
 	movflag EVENT_1708
 	bl SetEventFlagFromImmediate
@@ -2034,10 +2070,10 @@ sub_81242AC:
 	strb r0, [r4,#oGameState_EnterMapFadeParam2]
 	pop {r4,r7,pc}
 	.balign 4, 0x00
-	thumb_func_end sub_81242AC
+	thumb_func_end submenu_subchip_81242AC
 
 	thumb_local_start
-submenu_subchip_81242D8: // (struct ?* state_a5) -> void
+submenu_subchip_81242D8: // (struct UnkSubMenu* state_a5) -> void
 	push {lr}
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
@@ -2062,7 +2098,7 @@ loc_8124300:
 	thumb_func_end submenu_subchip_81242D8
 
 	thumb_local_start
-submenu_subchip_8124308: // (struct ?* state_a5) -> void
+submenu_subchip_8124308: // (struct UnkSubMenu* state_a5) -> void
 	push {lr}
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
@@ -2092,7 +2128,7 @@ locret_812433E:
 	thumb_func_end submenu_subchip_8124308
 
 	thumb_local_start
-submenu_subchip_8124340: // (struct ?* state_a5) -> void
+submenu_subchip_8124340: // (struct UnkSubMenu* state_a5) -> void
 	push {lr}
 	bl IsScreenFadeActive // () -> zf
 	beq locret_812434C
@@ -2104,7 +2140,7 @@ locret_812434C:
 	thumb_func_end submenu_subchip_8124340
 
 	thumb_local_start
-submenu_subchip_8124350: // (struct ?* state_a5) -> void
+submenu_subchip_8124350: // (struct UnkSubMenu* state_a5) -> void
 	push {lr}
 	bl sub_81244EC
 	bl sub_80465BC

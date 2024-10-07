@@ -1006,7 +1006,7 @@ LABEL_12:
 
 
 // 0x81241a0
-void __fastcall __noreturn sub_81241A0(int a1, int a2, int a3)
+void __fastcall __noreturn submenu_subchip_81241A0(int a1, int a2, int a3)
 {
     int v3; // r5
     int v4; // r10
@@ -1049,7 +1049,7 @@ void __fastcall __noreturn sub_81241A0(int a1, int a2, int a3)
 
 
 // 0x8124230
-void sub_8124230()
+void submenu_subchip_8124230()
 {
     int v0; // r5
     int v1; // r10
@@ -1063,7 +1063,7 @@ void sub_8124230()
 
 
 // 0x812425c
-void sub_812425C()
+void submenu_subchip_812425C()
 {
     int v0; // r5
     int v1; // r10
@@ -1076,7 +1076,7 @@ void sub_812425C()
 
 
 // 0x812427c
-void sub_812427C()
+void submenu_subchip_812427C()
 {
     int v0; // r5
     int v1; // r10
@@ -1093,7 +1093,7 @@ void sub_812427C()
 
 
 // 0x81242ac
-signed int sub_81242AC()
+signed int submenu_subchip_81242AC()
 {
     int v0; // r5
     int v1; // r10

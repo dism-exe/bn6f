@@ -1,0 +1,24 @@
+Table Funcs {
+  addr int [pk]
+  name text [unique, not null]
+  opt_signature text
+  is_pure bool
+  filename text
+}
+
+Table FuncCalls {
+  id int [pk]
+  level int
+  branch_id int [ref: > FuncCallBranch.id ]
+  caller_addr int [ref: > Funcs.addr]
+  callee_addr int [ref: > Funcs.addr]
+  thru_dispatch bool
+}
+
+Table FuncCallBranch {
+  id int [pk]
+  branch_id int
+  sequence int
+  addr int [ref: > Functions.addr]
+  thru_dispatch bool
+}
