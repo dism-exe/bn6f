@@ -1,6 +1,6 @@
 """
 Author: Lan <lanhikarixx@gmail.com>
-Created: Oct 2nd 2024
+Created: Oct 2 2024
 
 For proper parsing of the assembly source we need lexical correspondence with all syntax we have.
 """
@@ -8,29 +8,15 @@ For proper parsing of the assembly source we need lexical correspondence with al
 import enum
 from dataclasses import dataclass, replace, field
 from functools import lru_cache
-from typing import List, Optional, Dict, Callable, Tuple, Type, Set
+from typing import Any, Generator, Iterable, List, Optional, Dict, Callable, Self, Tuple, Type, Set, Union, cast
 from result import Result, Ok, Err
-import itertools
-import functools
 import regex
-import pipe
-from ..pipe_util import PipeUtil as pu
-from .common_traits import SupportsAspects
+from ..pipe_util import PipeUtil as pu, stop_iter
+from .common_traits import SupportsAspects, Error, SortsBefore, Helper_SortsBefore
 
+# Lexons
 
-class ErrorType(enum.Enum):
-    LexerError = enum.auto()
-    pass
-
-@dataclass
-class Error:
-    module: ErrorType
-    errno: enum.Enum
-    details: Optional[str] = field(default=None)
-    data: Optional[dict] = field(default=None)
-
-
-class Lexons:
+class LexonData:
     class LexonType(enum.Enum):
         IDENT = enum.auto()
         THUMB_FUNC_START = enum.auto()
@@ -63,667 +49,700 @@ class Lexons:
         LPAREN = enum.auto()
         RPAREN = enum.auto()
 
-    @dataclass
-    class LexonParsingAspect:
+    @dataclass(frozen=True)
+    class LexonParser:
         regex_group_code: str
-        regex_parser: regex.Pattern
+        regex_parser: regex.Pattern[str]
 
-    @dataclass
-    class Lexon(SupportsAspects):
+    @dataclass(frozen=True)
+    class Lexon(SupportsAspects['LexonData.LexonAspect']):
         """
-        Data understood by a LexerRuleTrait. 
+        Data understood by a RunsLexerRule. All Lexons have a specific code and preserve the characters
+        that they have scanned. They also support different aspects of their data. Behavior differs
+        based on the order of scanners run, so they support specifying the order as well.
         """
-        lexon_type: 'Lexons.LexonType' = field(default=None)
-        scanned_text: str = field(default=None)
-        aspects: Set['Lexons.LexonAspect'] = field(default=None)
+        lexon_type: 'LexonData.LexonType' = field(default=None) # type: ignore
+        scanned_text: str = field(default=None) # type: ignore
+        aspects: Set['LexonData.LexonAspect'] = field(default=None) # type: ignore
     
-    @dataclass
+    @dataclass(frozen=True)
     class LexonAspect:
         pass
 
-    @dataclass
+    @dataclass(frozen=True)
     class WordLexonAspect(LexonAspect):
-        word: str = field(default=None)
+        word: str = field(default=None) # type: ignore
     
-    @dataclass
+    @dataclass(frozen=True)
     class TextLexonAspect(LexonAspect):
-        text: str = field(default=None)
+        text: str = field(default=None) # type: ignore
 
-    @dataclass
+    @dataclass(frozen=True)
     class IntLexonAspect(LexonAspect):
-        n: int = field(default=None)
-        base: int = field(default=None)
+        n: int = field(default=None) # type: ignore
+        base: int = field(default=None) # type: ignore
 
-    @dataclass
+    @dataclass(frozen=True)
     class SignLexonAspect(LexonAspect):
         pass
 
     
 class LexonTraits:
-    class RunsLexerRule:
+    class RunsLexerRule(SortsBefore['LexonData.LexonType']):
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return None
-        
-        def scan_before(self) -> List['Lexons.LexonType']:
-            return []
     
     class Helper_RunsLexerRule:
-
         @staticmethod
         @lru_cache(maxsize=None)
-        def _cached_compile_regex(regex_group_code: str) -> regex.Pattern:
+        def _cached_compile_regex(regex_group_code: str) -> regex.Pattern[str]:
             """
             Cache results since it is expensive to recompute this
             """
             return regex.compile(regex_group_code)
 
         @staticmethod
-        def cached_compile_regex(regex_group_code: str) -> Lexons.LexonParsingAspect:
-            return Lexons.LexonParsingAspect(
+        def cached_compile_regex(regex_group_code: str) -> LexonData.LexonParser:
+            return LexonData.LexonParser(
                 regex_group_code, 
                 LexonTraits.Helper_RunsLexerRule._cached_compile_regex(regex_group_code)
             )
         
         @staticmethod
-        def scan_any_grouped(s: str, parser: Lexons.LexonParsingAspect, lexon: Lexons.Lexon,
-                             builder: Callable[[Lexons.Lexon, list], Lexons.Lexon]
-                             ) -> Optional[Lexons.Lexon]:
+        def scan_any_grouped(s: str, parser: LexonData.LexonParser, lexon: LexonData.Lexon,
+                             builder: Callable[[LexonData.Lexon, List[str]], LexonData.Lexon]
+                             ) -> Optional[LexonData.Lexon]:
             """
             Uses the given group parser to give the builder the list of groups parsed and also set
             the scanned_text part of the lexon
+
+            :param s: The string to be parsed
+            :param parser: Contains Regex parser to parse the string into groups
+            :param lexon: Lexon data to be further built with parsed details using `builder`
+            :param builder: Handles logic of building the lexon given the parsed group list of text
+
+            :returns: some Lexon if parsing is successful or None
             """
             return (
                 parser.regex_parser.match(s)
-                | pu.ensure(lambda m: m != None)
-                | pu.ensure(lambda m: m.span()[0] == 0)
-                | pu.on_ok(lambda m:
-                    m
-                    | pipe.Pipe(lambda m: (m.groups(), m.span()[1]))
-                    | pu.unpack_tup(lambda groups, chars_scanned: (groups, replace(lexon, scanned_text=s[:chars_scanned])))
-                    | pu.unpack_tup(lambda groups, lexon: builder(lexon, groups))
+
+                # Check valid match
+                | pu.Of[regex.Match[str]].check_not_none()
+                | pu.Of[regex.Match[str]].then_check(lambda m: m.span()[0] == 0)
+
+                | pu.OfResult[regex.Match[str], Tuple[()]]
+                .on_ok(lambda match:
+                    match
+
+                    # Capture scanned text in Lexon
+                    | pu.Of[regex.Match[str]]
+                    .to(lambda match: 
+                        (list(match.groups()), match.span()[1])
+                    )
+                    | pu.OfUnpack2[List[str], int]
+                    .unpack(lambda groups, chars_scanned: 
+                        (groups, replace(lexon, scanned_text=s[:chars_scanned]))
+                    )
+
+                    # Call user specified Lexon building logic
+                    | pu.OfUnpack2[List[str], LexonData.Lexon]
+                    .unpack(lambda groups, lexon: 
+                        builder(lexon, groups)
+                    )
                 )
-                | pu.unwrap_ok_or_none()
+
+                # Turn into None on Error
+                | pu.OfResult[LexonData.Lexon, Tuple[()]]
+                .unwrap_ok_or_none()
             )
         
         @staticmethod
-        def scan_any_grouped_from(s: str, regex_code: str, create_lexon: Callable[[], 'Lexons.Lexon'],
-                                  opt_builder: Optional[Callable[[Lexons.Lexon, list], Lexons.Lexon]]=None
-                                  ) -> Optional[Lexons.Lexon]:
-            def builder(lexon: Lexons.Lexon) -> Callable[[Lexons.Lexon, list], Lexons.Lexon]:
-                def replace_(lexon: SupportsAspects, aspect_type, **kwargs):
-                    return lexon.replace_of(aspect_type, **kwargs)
+        def scan_any_grouped_from(s: str, regex_code: str, create_lexon: Callable[[], 'LexonData.Lexon'],
+                                  opt_builder: Optional[Callable[[LexonData.Lexon, List[str]], LexonData.Lexon]]=None
+                                  ) -> Optional[LexonData.Lexon]:
+            """
+            General method to scanning groups given a string, regex, and specific lexon data.
+            Figures out how to parse groups based on the LexonAspect of the lexon
+
+            :param s: string to be parsed
+            :param regex_code: A regex specifying the groups of interest for this Lexon. Should have
+                               a atleast one group (...) to be extracted and parsed according to the 
+                               aspects of the lexon
+            :param create_lexon: callable to create the initial lexon data with the aspects specified
+            :param opt_builder: None by default. Overrides the internal builder logic of this function.
+            """
+
+            def replace_(lexon: LexonData.Lexon, aspect_type: Type[LexonData.LexonAspect], 
+                         **kwargs: Any) -> LexonData.Lexon:
+                return lexon.replace_of(aspect_type, **kwargs)
+
+            def builder(lexon: LexonData.Lexon) -> Callable[[LexonData.Lexon, List[str]], LexonData.Lexon]:
+                """
+                The builder handles how a Lexon is to be further built given the parsed list of groups
+                """
 
                 if opt_builder:
                     return opt_builder
                 elif isinstance(lexon, SupportsAspects):
                     return (
-                        (lambda lexon, groups: replace_(lexon, Lexons.WordLexonAspect, word=groups[0]))
-                            if lexon.supports(Lexons.WordLexonAspect) else
-                        (lambda lexon, groups: replace_(lexon, Lexons.TextLexonAspect, text=groups[0]))
-                            if lexon.supports(Lexons.TextLexonAspect) else
-                        (lambda lexon, groups: replace_(lexon, Lexons.IntLexonAspect, 
-                                                        n=int(groups[0], lexon.of(Lexons.IntLexonAspect).base)))
-                            if lexon.supports(Lexons.IntLexonAspect) else
+                        (lambda lexon, groups: replace_(lexon, LexonData.WordLexonAspect, word=groups[0]))
+                            if lexon.supports(LexonData.WordLexonAspect) else
+                        (lambda lexon, groups: replace_(lexon, LexonData.TextLexonAspect, text=groups[0]))
+                            if lexon.supports(LexonData.TextLexonAspect) else
+                        (lambda lexon, groups: replace_(lexon, LexonData.IntLexonAspect, 
+                                                        n=int(groups[0], lexon.of(LexonData.IntLexonAspect).base)))
+                            if lexon.supports(LexonData.IntLexonAspect) else
                         (lambda lexon, _: lexon)
-                            if lexon.supports(Lexons.SignLexonAspect) else
+                            if lexon.supports(LexonData.SignLexonAspect) else
                         (lambda lexon, _: lexon)
                     )
                 else:
                     return lambda lexon, _: lexon
             
-            def _create_lexon():
+            def _create_lexon() -> LexonData.Lexon:
                 return create_lexon().build_aspects()
 
             return (
-                (LexonTraits.Helper_RunsLexerRule.cached_compile_regex(regex_code), _create_lexon())
-                | pu.unpack_tup(lambda parser, lexon: 
+                (LexonTraits.Helper_RunsLexerRule.cached_compile_regex(regex_code), 
+                 _create_lexon())
+
+                | pu.OfUnpack2[LexonData.LexonParser, LexonData.Lexon]
+                .unpack(lambda parser, lexon: 
                     LexonTraits.Helper_RunsLexerRule.scan_any_grouped(
                         s, parser, lexon, builder(lexon)))
             )
         
 
-class LexonsImpl:
-    class IdentLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+class LexonImpl:
+    class Impl(LexonData.Lexon, LexonTraits.RunsLexerRule):
+        # implements SortsBefore
+        def get_sort_key(self) -> LexonData.LexonType:
+            return self.lexon_type
+
+    class IdentLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.WordLexonAspect()], 
-                           lexon_type=Lexons.LexonType.IDENT)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.WordLexonAspect()}, 
+                           lexon_type=LexonData.LexonType.IDENT)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'([a-zA-Z_][a-zA-Z0-9_]*)\s*', lambda: cls())
 
-    class OpcodeLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class OpcodeLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.WordLexonAspect()], 
-                           lexon_type=Lexons.LexonType.OPCODE)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.WordLexonAspect()}, 
+                           lexon_type=LexonData.LexonType.OPCODE)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
-                s.lower(),
-                [
-                    'push', 'pop', 'mov', 'lsl', 'bl', 'b', 'bx', 'beq', 'bne', 'blt', 'bgt', 'add', 'sub', 'mul',
-                    'lsr', 'asr', 'tst', 'cmp', 'and', 'orr', 'eor', 'bic', 'ldr', 'ldrb', 'ldrh', 'str', 'strb', 'strh',
-                    'swi', 'neg', 'nop',
-                    # some ARM opcodes
-                    'adr',
-                ]
-                | pipe.map(lambda l: '|'.join(l))
-                | pipe.map(lambda rgx: rf'({rgx})\s*')
-                | pipe.Pipe(str), lambda: cls())
+                s.lower(), (
+                    [ 'push', 'pop', 'mov', 'lsl', 'bl', 'b', 'bx', 'beq', 'bne', 'blt', 'bgt', 'add', 'sub', 'mul',
+                      'lsr', 'asr', 'tst', 'cmp', 'and', 'orr', 'eor', 'bic', 'ldr', 'ldrb', 'ldrh', 'str', 'strb', 'strh',
+                      'swi', 'neg', 'nop',
+                      # some ARM opcodes
+                      'adr',
+                    ]
+                    | pu.Of[List[str]].to(lambda l: '|'.join(l))
+                    | pu.Of[str].to(lambda rgx: rf'({rgx})\s*')
+                ), 
+                lambda: cls())
 
-        def scan_before(self) -> List['Lexons.LexonType']:
-            return [Lexons.LexonType.IDENT]
+        # implements SortsBefore
+        def sort_before(self) -> Set['LexonData.LexonType']:
+            return {LexonData.LexonType.IDENT}
 
-    class RegLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class RegLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.WordLexonAspect(), ],
-                           lexon_type=Lexons.LexonType.REG)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.WordLexonAspect(), },
+                           lexon_type=LexonData.LexonType.REG)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
-                s.lower(),
-                ['r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'r7', 'r8', 'r9', 'r10', 'r12', 'lr', 'sp', 'pc']
-                | pipe.map(lambda l: '|'.join(l))
-                | pipe.map(lambda rgx: rf'({rgx})\s*')
-                | pipe.Pipe(str), lambda: cls())
+                s.lower(), (
+                    ['r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'r7', 'r8', 'r9', 'r10', 'r12', 'lr', 'sp', 'pc']
+                    | pu.Of[List[str]].to(lambda l: '|'.join(l))
+                    | pu.Of[str].to(lambda rgx: rf'({rgx})\s*')
+                ),
+                lambda: cls())
 
-        def scan_before(self) -> List['Lexons.LexonType']:
-            return [Lexons.LexonType.IDENT]
+        # implements SortsBefore
+        def sort_before(self) -> Set['LexonData.LexonType']:
+            return {LexonData.LexonType.IDENT}
 
-    class ThumbFuncStartLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class ThumbFuncStartLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.THUMB_FUNC_START)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.THUMB_FUNC_START)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
-                s, 'thumb_func_start' | pipe.map(lambda rgx: rf'({rgx})\s*') | pipe.Pipe(str), lambda: cls())
+                s, (
+                    'thumb_func_start' | pu.Of[str].to(lambda rgx: rf'({rgx})\s*') 
+                ), 
+                lambda: cls())
 
-        def scan_before(self) -> List['Lexons.LexonType']:
-            return [Lexons.LexonType.IDENT]
+        # implements SortsBefore
+        def sort_before(self) -> Set['LexonData.LexonType']:
+            return {LexonData.LexonType.IDENT}
 
-    class ThumbFuncEndLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class ThumbFuncEndLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.THUMB_FUNC_END)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.THUMB_FUNC_END)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
-                s, 'thumb_func_end' | pipe.map(lambda rgx: rf'({rgx})\s*') | pipe.Pipe(str), lambda: cls())
+                s, (
+                    'thumb_func_end' | pu.Of[str].to(lambda rgx: rf'({rgx})\s*') 
+                ), lambda: cls())
 
-        def scan_before(self) -> List['Lexons.LexonType']:
-            return [Lexons.LexonType.IDENT]
+        # implements SortsBefore
+        def sort_before(self) -> Set['LexonData.LexonType']:
+            return {LexonData.LexonType.IDENT}
 
-    class ColonLabelLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class ColonLabelLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.WordLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.COLON_LABEL)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.WordLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.COLON_LABEL)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'([a-zA-Z][a-zA-Z0-9_]*)\:\s*', lambda: cls())
 
-        def scan_before(self) -> List['Lexons.LexonType']:
-            return [Lexons.LexonType.COLON, Lexons.LexonType.DOUBLE_COLON, Lexons.LexonType.IDENT]
+        # implements SortsBefore
+        def sort_before(self) -> Set['LexonData.LexonType']:
+            return {LexonData.LexonType.COLON, LexonData.LexonType.DOUBLE_COLON, LexonData.LexonType.IDENT}
 
-    class DoubleColonLabelLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class DoubleColonLabelLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.WordLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.DOUBLE_COLON_LABEL)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.WordLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.DOUBLE_COLON_LABEL)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'([a-zA-Z][a-zA-Z0-9_]*)\:\:\s*', lambda: cls())
 
-        def scan_before(self) -> List['Lexons.LexonType']:
-            return [Lexons.LexonType.COLON_LABEL]
+        # implements SortsBefore
+        def sort_before(self) -> Set['LexonData.LexonType']:
+            return {LexonData.LexonType.COLON_LABEL}
 
-    class DirectiveLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class DirectiveLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.WordLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.DIRECTIVE)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.WordLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.DIRECTIVE)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'\.([a-zA-Z][a-zA-Z0-9_]*)\s*', lambda: cls())
 
-    class MacroParamLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class MacroParamLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.WordLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.MACRO_PARAM)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.WordLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.MACRO_PARAM)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'\\([a-zA-Z][a-zA-Z0-9_]*)\s*', lambda: cls())
 
-    class MacroParenLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class MacroParenLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.WordLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.MACRO_PAREN)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.WordLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.MACRO_PAREN)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(\\\(\))', lambda: cls())
 
-    class MacroPercVarLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class MacroPercVarLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.WordLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.MACRO_PERC_VAR)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.WordLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.MACRO_PERC_VAR)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'\%([a-zA-Z][a-zA-Z0-9_]*)\s*', lambda: cls())
 
-    class LiteralHashLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class LiteralHashLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.LITERAL_HASH)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.LITERAL_HASH)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(\#)', lambda: cls())
 
-    class CommaLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class CommaLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.COMMA)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.COMMA)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(\,)\s*', lambda: cls())
 
-    class ColonLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class ColonLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.COLON)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.COLON)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(\:)\s*', lambda: cls())
 
-    class DoubleColonLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class DoubleColonLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.DOUBLE_COLON)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.DOUBLE_COLON)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(\:\:)\s*', lambda: cls())
 
-        def scan_before(self) -> List['Lexons.LexonType']:
-            return [Lexons.LexonType.COLON]
+        # implements SortsBefore
+        def sort_before(self) -> Set['LexonData.LexonType']:
+            return {LexonData.LexonType.COLON}
 
-    class EqualsLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class EqualsLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.EQUALS)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.EQUALS)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(=)', lambda: cls())
 
-    class PlusLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class PlusLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.PLUS)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.PLUS)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(\+)', lambda: cls())
 
-    class MinusLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class MinusLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.MINUS)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.MINUS)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(\-)', lambda: cls())
 
-    class MathInfix(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class MathInfix(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.WordLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.MATH_INFIX)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.WordLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.MATH_INFIX)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(>|<|==|\*|\/|<<|>>|\||\&|\^|\!)\s*', lambda: cls())
 
-    class IntLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class IntLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.IntLexonAspect(base=10), ], 
-                           lexon_type=Lexons.LexonType.INT)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.IntLexonAspect(base=10), }, 
+                           lexon_type=LexonData.LexonType.INT)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'([-]?[0-9][0-9]*)\s*', lambda: cls())
 
-        def scan_before(self) -> List['Lexons.LexonType']:
-            return [Lexons.LexonType.MINUS]
+        # implements SortsBefore
+        def sort_before(self) -> Set['LexonData.LexonType']:
+            return {LexonData.LexonType.MINUS}
 
-    class HexLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class HexLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.IntLexonAspect(base=16), ], 
-                           lexon_type=Lexons.LexonType.HEX)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.IntLexonAspect(base=16), }, 
+                           lexon_type=LexonData.LexonType.HEX)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'0x([-]?[0-9a-fA-F][0-9a-fA-F]*)\s*', lambda: cls())
 
-        def scan_before(self) -> List['Lexons.LexonType']:
-            return [Lexons.LexonType.INT]
+        # implements SortsBefore
+        def sort_before(self) -> Set['LexonData.LexonType']:
+            return {LexonData.LexonType.INT}
 
-    class InlineCommentLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class InlineCommentLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.TextLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.INLINE_COMMENT)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.TextLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.INLINE_COMMENT)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'//([^\n]*)\s*', lambda: cls())
 
-        def scan_before(self) -> List['Lexons.LexonType']:
-            return [Lexons.LexonType.MATH_INFIX]
+        # implements SortsBefore
+        def sort_before(self) -> Set['LexonData.LexonType']:
+            return {LexonData.LexonType.MATH_INFIX}
 
-    class MultilineCommentLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class MultilineCommentLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.TextLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.MULTILINE_COMMENT)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.TextLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.MULTILINE_COMMENT)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'/\*([\s\S]*?)\*/\s*', lambda: cls())
 
-        def scan_before(self) -> List['Lexons.LexonType']:
-            return [Lexons.LexonType.MATH_INFIX]
+        # implements SortsBefore
+        def sort_before(self) -> Set['LexonData.LexonType']:
+            return {LexonData.LexonType.MATH_INFIX}
     
-    class StringLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class StringLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.TextLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.STRING)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.TextLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.STRING)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'"(.*?)"\s*', lambda: cls())
 
-    class LBracLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class LBracLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.LBRAC)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.LBRAC)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(\[)\s*', lambda: cls())
 
-    class RBracLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class RBracLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.RBRAC)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.RBRAC)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(\])\s*', lambda: cls())
 
-    class LCurlyLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class LCurlyLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.LCURLY)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.LCURLY)
 
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(\{)\s*', lambda: cls())
 
-    class RCurlyLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class RCurlyLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.RCURLY)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.RCURLY)
             
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(\})\s*', lambda: cls())
 
-    class LParenLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class LParenLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.LPAREN)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.LPAREN)
             
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(\()\s*', lambda: cls())
 
-    class RParenLexon(Lexons.Lexon, LexonTraits.RunsLexerRule):
+    class RParenLexon(Impl):
         # implements SupportsAspects
-        def build_aspects(self):
-            return replace(self, aspects=[Lexons.SignLexonAspect(), ], 
-                           lexon_type=Lexons.LexonType.LPAREN)
+        def build_aspects(self) -> Self:
+            return replace(self, aspects={LexonData.SignLexonAspect(), }, 
+                           lexon_type=LexonData.LexonType.LPAREN)
             
         # implements RunsLexerRule
         @classmethod
-        def lexer_scan(cls, s: str) -> Optional['Lexons.Lexon']:
+        def lexer_scan(cls, s: str) -> Optional['LexonData.Lexon']:
             return LexonTraits.Helper_RunsLexerRule.scan_any_grouped_from(
                 s, r'(\))\s*', lambda: cls())
 
+# Lexers
 
-class Lexers:
-    @dataclass
+class LexerData:
+    @dataclass(frozen=True)
     class Lexer:
-        lexer_rules: List[LexonTraits.RunsLexerRule] = field(default=None)
+        lexer_rules: List[LexonTraits.RunsLexerRule] = field(default=None) # type: ignore
 
         
 class LexerTraits:
     class Lexalizes:
         @classmethod
-        def lexalize(cls, s: str) -> Tuple[List['Lexons.Lexon'], Result[None, Error]]:
-            pass
+        def lexalize(cls, s: str) -> Tuple[List['LexonData.Lexon'], Result[Tuple[()], Error['LexerTraits.Errno_Lexalizes']]]:
+            """
+            Takes a character stream `s` and turns it into a stream of lexons. If it encounters
+            an error during this process, it returns the scanned lexons + the error, otherwise it
+            returns the entire lexons the string represents + Ok
+            """
+            raise NotImplementedError()
 
-    class Helper_Lexalizes:
-        @staticmethod
-        def sort_lexer_rules_by_specified_priority(l: List[LexonTraits.RunsLexerRule]):
-            def find_index(l, elem):
-                try:
-                    return l.index(elem)
-                except ValueError:
-                    return -1
-            
-            def typ_order_to_find_indices(build_list: List[LexonTraits.RunsLexerRule], typ_order: List[Lexons.LexonType]):
-                return (
-                    typ_order
-                    # | pu.echo(lambda o: print(f'o is {o} ', end=''))
-                    | pipe.map(lambda typ: find_index(
-                        build_list
-                        | pipe.map(lambda rule: rule.lexon_type)
-                        | pipe.Pipe(list),
-                        typ))
-                    | pipe.Pipe(list)
-                    # | pu.echo(lambda l: print(f'l is {l}'))
-                )
-            
-            def get_index_to_insert_behind(find_indices: List[int]) -> int:
-                return (
-                    find_indices
-                    | pipe.filter(lambda idx: idx != -1)
-                    | pipe.Pipe(list)
-                    | pipe.Pipe(lambda l: -1 if len(l) == 0 else min(l))
-                )
-            
-            def rebuild_rule_list_order_sorted(l: List[LexonTraits.RunsLexerRule]):
-                return functools.reduce(
-                    lambda built_l, rule: 
-                        rule.scan_before()
-                        # | pu.echo(lambda _: 
-                        #             built_l 
-                        #             | pipe.map(lambda rule: rule.lexon_type)
-                        #             | pipe.Pipe(list)
-                        #             | pipe.Pipe(lambda l: print(f'built_l: {l}'))
-                        # )
-                        | pipe.Pipe(lambda typ_order: typ_order_to_find_indices(built_l, typ_order))
-                        | pipe.Pipe(lambda find_indices: get_index_to_insert_behind(find_indices))
-                        | pipe.Pipe(lambda i: 
-                                    [rule] + built_l if i == 0 else
-                                    built_l + [rule] if i == -1 else
-                                    built_l[:i] + [rule] + built_l[i:]),
-                    l, [])
-
-            return rebuild_rule_list_order_sorted(l)
-    
     class Errno_Lexalizes(enum.Enum):
         NO_VALID_LEXON_FOUND = enum.auto()
         
 
 class LexerImpl:
-    class Lexer(Lexers.Lexer):
+    class Impl(LexerData.Lexer, LexerTraits.Lexalizes):
+        pass
+    class Lexer(Impl):
         # implements Lexalizes 
         @classmethod
-        def lexalize(cls, s: str) -> Tuple[List['Lexons.Lexon'], Result[None, Error]]:
-            def make_rule_list() -> List[LexonTraits.RunsLexerRule]:
+        def lexalize(cls, s: str) -> Tuple[List['LexonData.Lexon'], Result[Tuple[()], Error[LexerTraits.Errno_Lexalizes]]]:
+            def make_rule_set() -> List[LexonTraits.RunsLexerRule]:
                 return (
                     [
-                        LexonsImpl.IdentLexon, LexonsImpl.OpcodeLexon, LexonsImpl.RegLexon,
-                        LexonsImpl.ThumbFuncStartLexon, LexonsImpl.ThumbFuncEndLexon, LexonsImpl.ColonLabelLexon, 
-                        LexonsImpl.DoubleColonLabelLexon, LexonsImpl.DirectiveLexon, LexonsImpl.MacroParamLexon, 
-                        LexonsImpl.MacroParenLexon, LexonsImpl.MacroPercVarLexon, LexonsImpl.LiteralHashLexon, 
-                        LexonsImpl.CommaLexon, LexonsImpl.ColonLexon, LexonsImpl.DoubleColonLexon, 
-                        LexonsImpl.EqualsLexon, LexonsImpl.PlusLexon, LexonsImpl.MinusLexon, 
-                        LexonsImpl.MathInfix, LexonsImpl.IntLexon, LexonsImpl.HexLexon, 
-                        LexonsImpl.InlineCommentLexon, LexonsImpl.MultilineCommentLexon, LexonsImpl.StringLexon, 
-                        LexonsImpl.LBracLexon, LexonsImpl.RBracLexon, LexonsImpl.LCurlyLexon, 
-                        LexonsImpl.RCurlyLexon, LexonsImpl.LParenLexon, LexonsImpl.RParenLexon
+                        LexonImpl.IdentLexon, LexonImpl.OpcodeLexon, LexonImpl.RegLexon,
+                        LexonImpl.ThumbFuncStartLexon, LexonImpl.ThumbFuncEndLexon, LexonImpl.ColonLabelLexon, 
+                        LexonImpl.DoubleColonLabelLexon, LexonImpl.DirectiveLexon, LexonImpl.MacroParamLexon, 
+                        LexonImpl.MacroParenLexon, LexonImpl.MacroPercVarLexon, LexonImpl.LiteralHashLexon, 
+                        LexonImpl.CommaLexon, LexonImpl.ColonLexon, LexonImpl.DoubleColonLexon, 
+                        LexonImpl.EqualsLexon, LexonImpl.PlusLexon, LexonImpl.MinusLexon, 
+                        LexonImpl.MathInfix, LexonImpl.IntLexon, LexonImpl.HexLexon, 
+                        LexonImpl.InlineCommentLexon, LexonImpl.MultilineCommentLexon, LexonImpl.StringLexon, 
+                        LexonImpl.LBracLexon, LexonImpl.RBracLexon, LexonImpl.LCurlyLexon, 
+                        LexonImpl.RCurlyLexon, LexonImpl.LParenLexon, LexonImpl.RParenLexon
                     ] 
-                    | pipe.map(lambda _cls: _cls().build_aspects()) | pipe.Pipe(list)
-                    # [LexonsImpl.IdentLexon]
+                    | pu.OfIter[Type[LexonImpl.Impl]].map(lambda _cls: _cls().build_aspects())
+                    | pu.OfIter[LexonTraits.RunsLexerRule].to_list()
                 )
             
-            def make_lexer() -> Lexers.Lexer:
-                # print('original_rule_list', make_rule_list() | pipe.map(lambda r: r.lexon_type) | pipe.Pipe(list))
-                return cls(LexerTraits.Helper_Lexalizes.sort_lexer_rules_by_specified_priority(
-                           make_rule_list()))
+            def make_lexer() -> LexerData.Lexer:
+                return cls(cast(List[LexonTraits.RunsLexerRule], 
+                                Helper_SortsBefore[LexonData.LexonType].sort_by_specified_priority( make_rule_set()))
+                )
             
-            def consume(s: str, orig_s: str, lexer: Lexers.Lexer
-                        ) -> Tuple[List['Lexons.Lexon'], Result[None, Error]]:
-                # print('\nsorted_rule_list', lexer.lexer_rules | pipe.map(lambda r: r.lexon_type) | pipe.Pipe(list))
-                result: List[Lexons.Lexon] = []
-                while True:
-                    res_lexon = (
+            def curry_scan_next_lexon(lexer: LexerData.Lexer, orig_s: str) -> Callable[[str], Tuple[Result[LexonData.Lexon, Error[LexerTraits.Errno_Lexalizes]], int]]:
+                def _compute(s: str) -> Tuple[Result[LexonData.Lexon, Error[LexerTraits.Errno_Lexalizes]], int]:
+                    return (
                         lexer.lexer_rules
-                        | pipe.Pipe(lambda rules: 
-                            functools.reduce(
-                                lambda res, rule:
-                                    res if res is not None else # found lexon, skip forward
-                                    rule.lexer_scan(s), 
-                                rules, None)
+
+                        | pu.OfIter[LexonTraits.RunsLexerRule]
+                        .map(lambda rule: rule.lexer_scan(s))
+
+                        | pu.OfIter[LexonData.Lexon]
+                        .first_not_none()
+
+                        # None in this context means all the above were Nones, no scanner worked.
+                        | pu.OfResult[LexonData.Lexon, Error[LexerTraits.Errno_Lexalizes]]
+                        .check_not_none(lambda: 
+                            Error[LexerTraits.Errno_Lexalizes](
+                                LexerTraits.Errno_Lexalizes.NO_VALID_LEXON_FOUND,
+                                f'No valid lexon found at char {len(orig_s) - len(s)}: "{s[:min(80, len(s)-1)]}..."'))
+
+                        # Advance by the amount of characters scanned
+                        | pu.Of[Result[LexonData.Lexon, Error[LexerTraits.Errno_Lexalizes]]]
+                        .to(lambda res_lexon: 
+                            (res_lexon, len(res_lexon.unwrap().scanned_text))
+                                if res_lexon.is_ok() else
+                            (res_lexon, 0)
                         )
-                        | pu.ensure_or_err(lambda opt_lexon: opt_lexon != None,
-                                        lambda _: Err(Error(
-                                            ErrorType.LexerError, 
-                                            LexerTraits.Errno_Lexalizes.NO_VALID_LEXON_FOUND,
-                                            f'No valid lexon found at char {len(orig_s) - len(s)}: "{s[:min(80, len(s)-1)]}..."')))
                     )
+                
+                return _compute
 
-                    if res_lexon.is_err():
-                        return (result, res_lexon)
+            def consume(s: str, orig_s: str, lexer: LexerData.Lexer
+                        ) -> Tuple[List[LexonData.Lexon], Result[Tuple[()], Error[LexerTraits.Errno_Lexalizes]]]:
+                return (
+                    s
 
-                    lexon = res_lexon.unwrap()
+                    # Scan the string and advance by different lengths of scanned text
+                    | pu.OfStr.scan_map(curry_scan_next_lexon(lexer, orig_s))
 
-                    result.append(lexon)
+                    | pu.OfResult[LexonData.Lexon, Error[LexerTraits.Errno_Lexalizes]]
+                    .unwrap_until_error_including()
+                )
 
-                    s = s[len(lexon.scanned_text):]
-
-                    if s.strip() == '':
-                        break
-                return (result, Ok(()))
-            
             return consume(s.strip(), s.strip(), make_lexer())
 
+# ---
 
-def read_file(file_path: str):
+def read_file(file_path: str) -> List['LexonData.Lexon']:
     with open(file_path, 'r') as fr:
         file_input_s = fr.read().strip()
 
@@ -748,8 +767,10 @@ def read_file(file_path: str):
             
     res.unwrap()
 
+    return lexons
 
-def read_repo(proj_path, elf_path, file_paths, verbose=False):
+
+def read_repo(proj_path: str, elf_path: str, file_paths: List[str], verbose: bool=False) -> None:
     import os
     cwd = os.getcwd()
     os.chdir(proj_path)
@@ -773,7 +794,7 @@ def read_repo(proj_path, elf_path, file_paths, verbose=False):
 
 if __name__ == '__main__':
     # for testing
-    from ...include import definitions
+    # from ...include import definitions
 
     MAIN_ASM_FILES = [
         'rom.s',
