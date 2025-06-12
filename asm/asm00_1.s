@@ -647,7 +647,7 @@ SpawnObjectsFromList: // (void *a1) -> int
 	tst r5, r5
 	beq .currentObjectFailedToSpawn
 
-	# i++
+	// i++
 	add r4, #1
 
 .currentObjectFailedToSpawn

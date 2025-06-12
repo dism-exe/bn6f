@@ -356,40 +356,40 @@ locret_8000820:
 sound_8000822:
 	push {r4-r7,lr}
 
-  # u8 v1_r2
+  // u8 v1_r2
 	ldr r3, off_80008A4 // =byte_2010B90
 	ldrb r2, [r3]
 
-  # 0 if !(a1 == v1_r2)
+  // 0 if !(a1 == v1_r2)
 	cmp r1, r2
 	beq loc_8000854
 
-  # 0 then
+  // 0 then
 
 	mov r2, #0
 	strb r2, [r3]
 
-  # u8 vBGMusicIndicator_r1
+  // u8 vBGMusicIndicator_r1
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r1, [r7,#oGameState_BGMusicIndicator]
 
-  # if (bgMusInd_a0 == vBGMusicIndicator_r1) return;
+  // if (bgMusInd_a0 == vBGMusicIndicator_r1) return;
 	cmp r0, r1
 	beq locret_800085A
 
-  # Write new bgMusInd_a0
+  // Write new bgMusInd_a0
 	strb r0, [r7,#oGameState_BGMusicIndicator]
 
-  # 1 if (bgMusInd_a0 == 0x63)
+  // 1 if (bgMusInd_a0 == 0x63)
 	cmp r0, #0x63
 	bne loc_8000844
 
-  # 1 then
+  // 1 then
 	ldr r3, off_80008A8 // =sub_814EA58+1
 	b loc_8000846
 
-  # 0 else 1 else
+  // 0 else 1 else
 loc_8000844:
 	ldr r3, off_80008AC // =m4a_SongNumStart+1
 loc_8000846:
@@ -405,7 +405,7 @@ loc_8000854:
 	mov r0, r6
 	sub r0, #0x10
 
-  # Writes to struct a5
+  // Writes to struct a5
 	str r0, [r5,#8]
  
 locret_800085A:

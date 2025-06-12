@@ -88,8 +88,8 @@ class PipeUtil:
 
         @Pipe
         @staticmethod
-        def filter(predicate: Callable[[T], bool]) -> Callable[[Iterable[T]], Generator[T, None, None]]:
-            def inner(iter: Iterable[T]) -> Generator[T, None, None]:
+        def filter(predicate: Callable[[T], bool]) -> Callable[[Iterable[T]], Iterable[T]]:
+            def inner(iter: Iterable[T]) -> Iterable[T]:
                 return (x for x in iter if predicate(x))
             return inner
 
@@ -178,11 +178,11 @@ class PipeUtil:
 
         @Pipe
         @staticmethod
-        def take(n: int) -> Callable[[Iterable[T]], Generator[T, None, None]]:
+        def take(n: int) -> Callable[[Iterable[T]], Iterable[T]]:
             """
             Consumes the next `n` items from the iterable or raises StopIteration
             """
-            def inner(iterable: Iterable[T]) -> Generator[T, None, None]:
+            def inner(iterable: Iterable[T]) -> Iterable[T]:
                 for _ in range(n):
                     yield next(iter(iterable))
             return inner
@@ -202,11 +202,11 @@ class PipeUtil:
 
         @Pipe
         @staticmethod
-        def check(cond_callback: Callable[[T], bool]) -> Callable[[Iterable[T]], Generator[Result[T, T], None, None]]:
+        def check(cond_callback: Callable[[T], bool]) -> Callable[[Iterable[T]], Iterable[Result[T, T]]]:
             """
             Checks that each item matches a condition, yielding an Ok[T] or Err[T]
             """
-            def inner(source: Iterable[T]) -> Generator[Result[T, T], None, None]:
+            def inner(source: Iterable[T]) -> Iterable[Result[T, T]]:
                 try:
                     while True:
                         item = next(iter(source))
@@ -221,12 +221,12 @@ class PipeUtil:
 
         @Pipe
         @staticmethod
-        def check_until_error(cond_callback: Callable[[T], bool]) -> Callable[[Iterable[T]], Generator[Result[T, T], None, None]]:
+        def check_until_error(cond_callback: Callable[[T], bool]) -> Callable[[Iterable[T]], Iterable[Result[T, T]]]:
             """
             Checks that each item matches a condition, yielding an Ok[T] or Err[T] and stops at the 
             first Err[T].
             """
-            def inner(source: Iterable[T]) -> Generator[Result[T, T], None, None]:
+            def inner(source: Iterable[T]) -> Iterable[Result[T, T]]:
                 try:
                     while True:
                         item = next(iter(source))
@@ -245,12 +245,12 @@ class PipeUtil:
         @staticmethod
         def check_or_fail(cond_callback: Callable[[T], bool], 
                           opt_error_message_callback: Optional[Callable[[T], str]]=None
-                          ) -> Callable[[Iterable[T]], Generator[Union[T, NoReturn], None, None]]:
+                          ) -> Callable[[Iterable[T]], Iterable[Union[T, NoReturn]]]:
             """
             Checks that a condition matches for source data T, or raises an assertion error with an optional 
             message. 
             """
-            def inner(source: Iterable[T]) -> Generator[Union[T, NoReturn], None, None]:
+            def inner(source: Iterable[T]) -> Iterable[Union[T, NoReturn]]:
                 for item in source:
                     if opt_error_message_callback is not None:
                         assert cond_callback(item), opt_error_message_callback(item)
@@ -265,12 +265,12 @@ class PipeUtil:
     class OfStr:
         @Pipe
         @staticmethod
-        def scan_map(scan: Callable[[str], Tuple[Y, int]]) -> Callable[[str], Generator[Y, None, None]]:
+        def scan_map(scan: Callable[[str], Tuple[Y, int]]) -> Callable[[str], Iterable[Y]]:
             """
             A generator pipe function that consumes by variable amounts per each scan. May be terminated
             early with stop_iter.
             """
-            def inner(buf: str)-> Generator[Y, None, None]:
+            def inner(buf: str)-> Iterable[Y]:
                 try:
                     while len(buf) != 0:
                         res, advance = scan(buf)
@@ -283,12 +283,12 @@ class PipeUtil:
     class OfList(Generic[T]):
         @Pipe
         @staticmethod
-        def scan_map(scan: Callable[[List[T]], Tuple[Y, int]]) -> Callable[[List[T]], Generator[Y, None, None]]:
+        def scan_map(scan: Callable[[List[T]], Tuple[Y, int]]) -> Callable[[List[T]], Iterable[Y]]:
             """
             A generator pipe function that consumes by variable amounts per each scan. May be terminated
             early with stop_iter.
             """
-            def inner(buf: List[T])-> Generator[Y, None, None]:
+            def inner(buf: List[T])-> Iterable[Y]:
                 try:
                     while len(buf) != 0:
                         res, advance = scan(buf)
@@ -912,6 +912,26 @@ class PipeUtil:
 def stop_iter(val: T) -> NoReturn:
     raise StopIteration(val)
 
+class Repeat(Generic[T]):
+    @staticmethod
+    @Pipe
+    def repeat(n: int) -> Callable[[Iterable[T]], Iterable[T]]:
+        def inner(source: Iterable[T]) -> Iterable[T]:
+            for item in source:
+                for _ in range(n):
+                    yield item
+        return inner
+
+def find_capitalized_word(s: str) -> Optional[str]:
+    words = s.split(' ')
+
+    for word in words:
+        if str.isupper(word):
+            return word
+    
+    return None
+
+
 if __name__ == '__main__':
     pu = PipeUtil
 
@@ -927,8 +947,13 @@ if __name__ == '__main__':
     pipe = PipeUtil
 
     print(
-        (4, 2, 'Hello ')
-        | pipe.OfUnpack3[int, str, int].unpack(
-            lambda num_spaces, repeat, text: '"' + ' ' * num_spaces + repeat * text + '"'
-        )
+        [ 
+            'this string contains no CAPITALIZED words!',
+            'this one is all good!'
+        ]
+
+        | pipe.OfResultIter[str, str].check_using(
+            find_capitalized_word,
+            lambda cap_word: f'Bad! You used a capitalized word: {cap_word}')
+        | pipe.OfIter[Result[str, str]].to_list()
     )
