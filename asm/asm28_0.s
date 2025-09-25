@@ -1941,7 +1941,7 @@ loc_809AB5A:
 	add r0, #0x4c 
 	mov r1, sp
 	mov r2, #8
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, sp
 	bl sub_813D41C
 	str r4, [r5,#0x78]
@@ -3970,7 +3970,7 @@ sub_809CC00:
 	bne loc_809CC1C
 	mov r0, #1
 	str r0, [r5,#0x70]
-	bl clear_e200AD04 // () -> void
+	bl clear_e200AD04 // () -> ()
 	mov r0, #0
 	bl sub_803F6B0
 	bl loc_803F512
@@ -4125,7 +4125,7 @@ sub_809CD60:
 	bne loc_809CD7C
 	mov r0, #1
 	str r0, [r5,#0x70]
-	bl clear_e200AD04 // () -> void
+	bl clear_e200AD04 // () -> ()
 	mov r0, #0
 	bl sub_803F6B0
 	bl loc_803F512

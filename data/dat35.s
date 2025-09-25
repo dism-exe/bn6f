@@ -1596,13 +1596,13 @@ loc_812FC9A::
 	add r0, r0, r6
 	mov r1, r7
 	mov r2, #0x3c 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, #2
 	bl sub_804A24C
 	mov r1, r0
 	mov r0, r6
 	mov r2, #0x20 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r6, #0
 loc_812FCB8::
 	ldrh r0, [r7,r6]
@@ -1745,7 +1745,7 @@ loc_812FDD8::
 	strb r0, [r5,#0x1e]
 	ldr r0, off_812FE04 // =unk_20251A0 
 	mov r1, #0x10
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl sub_812AFC8
 	// a1
 	ldr r0, off_812FE08 // =byte_8129150 

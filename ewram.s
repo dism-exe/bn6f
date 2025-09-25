@@ -716,7 +716,7 @@ dword_2009A28:: // 0x2009a28
 dword_2009A2C:: // 0x2009a2c
 	.space 4
 sSubmenu:: // 0x2009a30
-	.space 80
+	sub_menu_struct sSubmenu
 unk_2009A80:: // 0x2009a80
 	.space 2
 unk_2009A82:: // 0x2009a82

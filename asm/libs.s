@@ -31,13 +31,13 @@ sub_81440D8:
 	ldr r1, off_8144148 // =eTimerEnable200F460 
 	ldr r2, dword_814414C // =0x5000266 
 	mov r0, sp
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	add r0, sp, #4
 	strh r4, [r0]
 	ldr r4, off_8144150 // =unk_200F44C 
 	ldr r2, dword_8144154 // =0x1000002 
 	mov r1, r4
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	strb r5, [r4,#0x1] // (byte_200F44D - 0x200f44c)
 	add sp, sp, #8
 	pop {r4,r5}
@@ -103,12 +103,12 @@ sub_8144158:
 	ldr r1, off_8144210 // =eTimerEnable200F460 
 	ldr r2, dword_8144214 // =0x5000266 
 	mov r0, sp
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	add r0, sp, #4
 	strh r5, [r0]
 	ldr r1, off_8144218 // =unk_200F44C 
 	ldr r2, dword_814421C // =0x1000002 
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, off_8144220 // =byte_200F450 
 	strb r4, [r0]
 	ldr r0, off_8144224 // =byte_2006DFE 
@@ -1732,7 +1732,7 @@ sub_8144DF0:
 	ldr r2, dword_8144E2C // =0x1000024 
 	mov r0, sp
 	mov r1, r4
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	mov r0, #0xff
 	strb r0, [r4,#0x6] // (byte_200FE06 - 0x200fe00)
 	str r5, [r4,#0x40] // (dword_200FE40 - 0x200fe00)
@@ -1769,7 +1769,7 @@ sub_8144E44:
 	ldr r2, dword_8144E6C // =0x1000020 
 	mov r0, sp
 	mov r1, r4
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	mov r0, #0xff
 	strb r0, [r4,#0x6] // (byte_200FE06 - 0x200fe00)
 	add sp, sp, #4
@@ -5174,12 +5174,12 @@ loc_814685C:
 	mov r0, r6
 	// size
 	mov r1, #0x10
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	// memBlock
 	mov r0, r5
 	// size
 	mov r1, #8
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	add r6, #0x10
 	add r5, #8
 	add r0, r4, #1
@@ -5516,7 +5516,7 @@ sub_8146A70:
 	ldr r2, byte_8146A90 // =0x55 
 	mov r0, sp
 	mov r1, r4
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	mov r0, #1
 	strb r0, [r4]
 	add sp, sp, #4
@@ -5571,13 +5571,13 @@ sub_8146B70:
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0x10
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, r5
 	add r0, #0xc
 	add r4, #0x10
 	mov r1, r4
 	mov r2, #0x10
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, #2
 	b loc_8146BB2
 	.balign 4, 0
@@ -5774,7 +5774,7 @@ sub_8146CE4:
 	ldr r1, off_8146CF8 // =byte_200DD10 
 	ldr r2, [r0,#0x10]
 	mov r0, r3
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {r0}
 	bx r0
 	.balign 4, 0
@@ -5791,7 +5791,7 @@ sub_8146CFC:
 	ldr r1, off_8146D18 // =byte_200AF80 
 	ldr r2, dword_8146D1C // =0x100000c 
 	mov r0, sp
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	add sp, sp, #4
 	pop {r0}
 	bx r0
@@ -5945,7 +5945,7 @@ loc_8146DFC:
 	add r9, r0
 	// memBlock
 	ldr r0, [r6,#0xc]
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, r6
 	mov r1, r9
 	bl sub_8146E48
@@ -5967,7 +5967,7 @@ sub_8146E48:
 	ldr r1, [r0,#0xc]
 	ldr r2, [r0,#0x14]
 	mov r0, r3
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {r0}
 	bx r0
 	.balign 4, 0x00
@@ -6026,7 +6026,7 @@ sub_8146E90:
 	lsl r4, r4, #0x11
 	orr r2, r4
 	mov r1, r3
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	mov r0, sp
 	add r0, #2
 	strh r6, [r0]
@@ -6034,7 +6034,7 @@ sub_8146E90:
 	and r2, r5
 	orr r2, r4
 	mov r1, r8
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, off_8146F68 // =unk_200FFF0 
 	bl sub_8146A70
 	ldr r0, off_8146F6C // =unk_200FE90 
@@ -6471,7 +6471,7 @@ sub_814728C:
 	strh r0, [r2]
 	ldr r2, dword_81472E8 // =0x1000006 
 	mov r0, sp
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	mov r4, #0
 loc_81472A4:
 	ldr r0, off_81472EC // =byte_2010290 
@@ -6488,7 +6488,7 @@ loc_81472A4:
 	ldr r0, off_81472F4 // =byte_200DD10 
 	ldr r1, off_81472E4 // =byte_20101E0 
 	mov r2, #0xc
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 loc_81472C4:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -6589,7 +6589,7 @@ sub_8147350:
 	strh r4, [r0]
 	ldr r1, off_81473CC // =byte_2010290 
 	ldr r2, dword_81473D0 // =0x1000020 
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, off_81473D4 // =unk_2010350 
 	bl sub_81465FC
 	ldr r0, off_81473D8 // =sub_81473EC+1 
@@ -7267,7 +7267,7 @@ sub_814794C:
 	ldr r4, off_814798C // =byte_2010290 
 	ldr r2, dword_8147990 // =0x1000020 
 	mov r1, r4
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, off_8147994 // =byte_200AF80 
 	ldrb r0, [r0,#0x5] // (byte_200AF85 - 0x200af80)
 	sub r0, #1
@@ -7536,13 +7536,13 @@ sub_8147B54:
 	mov r0, sp
 	mov r1, r3
 	mov r2, r4
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	mov r0, sp
 	add r0, #2
 	strh r5, [r0]
 	mov r1, r7
 	mov r2, r4
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, off_8147BF4 // =unk_200FFF0 
 	bl sub_8146A70
 	ldr r0, off_8147BF8 // =unk_200FE90 
@@ -7938,7 +7938,7 @@ sub_8147F00:
 	orr r2, r0
 	mov r0, sp
 	mov r1, r4
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, off_8147F48 // =byte_20101B4 
 	ldrb r0, [r0]
 	cmp r0, #1
@@ -7948,7 +7948,7 @@ sub_8147F00:
 	ldr r0, off_8147F4C // =byte_200DD10 
 	mov r1, r7
 	mov r2, r5
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 loc_8147F3A:
 	add sp, sp, #4
 	pop {r4-r7}
@@ -8036,7 +8036,7 @@ sub_8147F98:
 	strh r5, [r0]
 	ldr r1, off_8148014 // =byte_2010290 
 	ldr r2, dword_8148018 // =0x1000020 
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	bl sub_8146CFC
 	mov r0, #0
 	add sp, sp, #4
@@ -8659,13 +8659,13 @@ sub_8148540:
 	ldr r1, off_81486B0 // =byte_20101E0 
 	ldr r5, dword_81486B4 // =0x1000020 
 	mov r2, r5
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	mov r0, sp
 	add r0, #2
 	strh r4, [r0]
 	ldr r1, off_81486B8 // =unk_2010230 
 	mov r2, r5
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, off_81486BC // =unk_200FFF0 
 	bl sub_8146A70
 	ldr r0, off_81486C0 // =unk_200FE90 
@@ -9261,7 +9261,7 @@ loc_8148AB6:
 	ldr r2, dword_8148B70 // =0x1000020 
 	mov r0, sp
 	mov r1, r4
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, off_8148B60 // =byte_2010290 
 	ldrb r0, [r0,#0x3] // (byte_2010293 - 0x2010290)
 	add r4, #0x3d 
@@ -9290,7 +9290,7 @@ loc_8148AD8:
 	ldr r2, off_8148B78 // =unk_20101EC 
 	add r1, r1, r2
 	mov r2, #0xc
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 loc_8148B08:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -9598,12 +9598,12 @@ loc_8148D6A:
 	strh r4, [r0]
 	ldr r1, off_8148E28 // =byte_2010390 
 	ldr r2, dword_8148E2C // =0x1000008 
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	strh r4, [r6]
 	ldr r1, off_8148E30 // =unk_20103A0 
 	ldr r2, dword_8148E34 // =0x1000020 
 	mov r0, r6
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, off_8148E38 // =unk_200FFF0 
 	bl sub_8146A70
 	ldr r0, off_8148E3C // =unk_200FE90 
@@ -10291,7 +10291,7 @@ rfu_STC_clearAPIVariables:
 	mov r0, sp
 	strh r6, [r0]
 	ldr r2, dword_81493D8 // =0x1000014 
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r2, [r5]
 	mov r0, #8
 	and r4, r0
@@ -10303,7 +10303,7 @@ rfu_STC_clearAPIVariables:
 	ldr r4, off_81493DC // =dword_2010CC0 
 	ldr r1, [r4]
 	ldr r2, dword_81493E0 // =0x100005a 
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r1, [r4]
 	mov r0, #4
 	strb r0, [r1,#9]
@@ -10672,7 +10672,7 @@ loc_81495F4:
 	ldr r1, off_8149634 // =dword_2010CC0 
 	ldr r1, [r1]
 	mov r2, #0x5a 
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, off_8149638 // =dword_2010CC4 
 	ldr r2, [r0]
 	ldrb r1, [r2]
@@ -11152,7 +11152,7 @@ rfu_STC_clearLinkStatus:
 	ldr r1, [r4]
 	add r1, #0x14
 	ldr r2, dword_81499F4 // =0x1000040 
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, [r4]
 	strb r5, [r0,#8]
 loc_81499BC:
@@ -11532,7 +11532,7 @@ rfu_STC_readParentCandidateList:
 	ldr r1, [r5]
 	add r1, #0x14
 	ldr r2, dword_8149D14 // =0x1000040 
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, off_8149D18 // =dword_2010CC8 
 	ldr r0, [r0]
 	add r0, #0xdc
@@ -11814,14 +11814,14 @@ loc_8149E72:
 	add r0, r2, r0
 	mov r1, sp
 	mov r2, #0x10
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	mov r1, r8
 	strh r1, [r6]
 	ldr r1, [r7]
 	add r1, #0x14
 	mov r0, r6
 	ldr r2, dword_8149EBC // =0x1000040 
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, [r7]
 	mov r1, r8
 	strb r1, [r0,#8]
@@ -11855,7 +11855,7 @@ loc_8149ED4:
 	add r1, r1, r0
 	mov r0, r9
 	mov r2, #0x10
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, [r4]
 	add r0, r0, r5
 	mov r1, r10
@@ -12600,7 +12600,7 @@ loc_814A476:
 	add r1, r1, r0
 	ldr r2, dword_814A4C8 // =0x1000010 
 	mov r0, sp
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	mov r0, r8
 	ldr r2, [r0]
 	ldrb r1, [r2,#3]
@@ -13105,14 +13105,14 @@ loc_814A844:
 	ldr r1, [r0]
 	mov r0, sp
 	ldr r2, dword_814A8B4 // =0x1000034 
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	strh r7, [r6]
 	ldr r0, off_814A8B8 // =off_2010CA0 
 	add r4, r4, r0
 	ldr r1, [r4]
 	mov r0, r6
 	ldr r2, dword_814A8BC // =0x100000a 
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r3, off_814A8C0 // =dword_2010CC0 
 	ldr r0, [r3]
 	add r0, #0x10
@@ -13340,7 +13340,7 @@ loc_814AA14:
 	mov r0, sp
 	mov r1, r4
 	ldr r2, dword_814AA6C // =0x100001a 
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 loc_814AA24:
 	lsl r0, r6, #0x10
 	lsr r3, r0, #0x10
@@ -13403,7 +13403,7 @@ loc_814AA94:
 	strh r1, [r0]
 	ldr r2, dword_814AAE0 // =0x1000006 
 	mov r1, r3
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 loc_814AAA2:
 	mov r0, #2
 	mov r1, r8
@@ -13420,7 +13420,7 @@ loc_814AAA2:
 	add r1, #0xc
 	ldr r2, dword_814AAE8 // =0x1000004 
 	mov r0, sp
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 loc_814AAC4:
 	ldr r0, off_814AAEC // =InterruptMasterEnableRegister 
 	mov r2, r10
@@ -17175,7 +17175,7 @@ loc_814C68C:
 	lsl r0, r0, #0x13
 	orr r2, r0
 	mov r0, r6
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	bl STWI_start_Command
 loc_814C6AA:
 	pop {r4-r6}
@@ -17214,7 +17214,7 @@ loc_814C6D4:
 	lsl r0, r0, #0x13
 	orr r2, r0
 	mov r0, r6
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	bl STWI_start_Command
 loc_814C6F2:
 	pop {r4-r6}
@@ -18068,7 +18068,7 @@ Sio32IDInit:
 	ldr r1, off_814CD64 // =byte_2010CD0 
 	ldr r2, dword_814CD68 // =0x5000003 
 	mov r0, sp
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, off_814CD6C // =InterruptRequestFlags_IRQAcknowledge 
 	strh r5, [r0]
 	add sp, sp, #4
@@ -18603,9 +18603,8 @@ off_814D8A4: .word dword_2010CCC
 	.byte 0xFF, 0x2F, 0xE1
 	thumb_func_end Sio32IDIntr
 
-// (u32 *src, u32 *dest, int mode) -> void
 	thumb_func_start SWI_CpuFastSet
-SWI_CpuFastSet:
+SWI_CpuFastSet: // (src: *const u32, mut_dest: *mut u32, mode: u32) -> ()
 	//   r0	Source address		(must be aligned by 4)
 	//   r1	Destination address   (must be aligned by 4)
 	//   r2	Length/Mode
@@ -18616,9 +18615,8 @@ SWI_CpuFastSet:
 	bx lr
 	thumb_func_end SWI_CpuFastSet
 
-// (void *src, void *dest, int mode) -> void
 	thumb_func_start SWI_CpuSet
-SWI_CpuSet:
+SWI_CpuSet: // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	//   r0	Source address		(must be aligned by 4 for 32bit, by 2 for 16bit)
 	//   r1	Destination address   (must be aligned by 4 for 32bit, by 2 for 16bit)
 	//   r2	Length/Mode
@@ -20932,7 +20930,7 @@ sub_814E8A0:
 	and r0, r1
 	ldr r1, off_814E8F8 // =byte_3005700 
 	ldr r2, off_814E8FC // =Timer0Counter_Reload 
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	ldr r0, off_814E900 // =byte_30045C0 
 	bl sub_814ECC8
 	ldr r0, off_814E904 // =byte_3005600 
@@ -21401,7 +21399,7 @@ sub_814EB84:
 	ldr r2, byte_814EC98 // =0x40 
 	mov r0, sp
 	mov r1, r5
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	mov r0, #1
 	strb r0, [r5,#1]
 	mov r0, #0x11
@@ -21545,7 +21543,7 @@ loc_814ECF2:
 	ldr r2, dword_814EDAC // =0x50003ec 
 	mov r0, sp
 	mov r1, r5
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	mov r0, #8
 	strb r0, [r5,#6]
 	mov r0, #0xf
@@ -21817,7 +21815,7 @@ loc_814EF52:
 	add r1, r2, r0
 	ldr r2, dword_814EF90 // =0x5000318 
 	mov r0, sp
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 loc_814EF72:
 	add sp, sp, #4
 	pop {r0}

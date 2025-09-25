@@ -115,7 +115,7 @@ sub_8033948:
 	mov r0, r5
 	// size
 	mov r1, #0x10
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r0, [r7,#oGameState_MapGroup]
@@ -672,7 +672,7 @@ loc_8033E5E:
 	add r0, r0, r2
 	ldr r1, off_8033ED4 // =byte_30016D0
 	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 loc_8033E6A:
 	ldrh r0, [r5,#8]
 	bl memory_bcdConvert
@@ -756,7 +756,7 @@ loc_8033EFC:
 	ldr r0, off_8033F44 // =dword_86BEAE0
 	ldr r1, off_8033F48 // =unk_3001B20
 	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, #0x1e
 	// j
 	sub r0, r0, r4
@@ -989,7 +989,7 @@ sub_80341AA:
 	ldr r0, off_80341F4 // =byte_2011A40
 	// size
 	mov r1, #0xc
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end sub_80341AA
 
@@ -1615,7 +1615,7 @@ map_8034B4C: // JP 0x8035b08
 	ldr r0, off_8034BB4 // =unk_2011EA0
 	// size
 	mov r1, #0x40
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl playCertainMapMusicBasedOnEventByte_8036e44
 	bl sub_8035028
 	bl owPlayer_80350a8
@@ -2888,7 +2888,7 @@ sub_80356EC:
 	ldr r0, off_8035784 // =dword_2000DC0
 	// size
 	ldr r1, off_8035788 // =0x100
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end sub_80356EC
 

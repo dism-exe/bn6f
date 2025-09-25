@@ -2404,7 +2404,7 @@ sub_8086DF8::
 	ldr r0, [r0]
 	mov r5, r0
 	mov r1, #0x94
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #0xa
 	strb r0, [r5,#0x4] // (byte_2011A94 - 0x2011a90)
 	mov r0, #0xf

@@ -1520,7 +1520,7 @@ loc_812E6E4::
 	strb r0, [r5,#0x1e]
 	ldr r0, off_812E70C // =unk_20251A0 
 	mov r1, #0x10
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl sub_812AFC8
 	// a1
 	ldr r0, off_812E710 // =byte_8129150 

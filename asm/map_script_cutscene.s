@@ -1336,7 +1336,7 @@ StoreMapScriptsThenRunOnInitMapScript:
 	mov r0, r5
 	// size
 	mov r1, #0x14
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	str r4, [r5,#oMapScriptState_OnInitMapScriptPtr] // (dword_2011E68 - 0x2011e60)
 	str r6, [r5,#oMapScriptState_ContinuousMapScriptPtr] // (dword_2011E6C - 0x2011e60)
 	ldr r6, off_803608C // =MapScriptCommandJumptable
@@ -2407,7 +2407,7 @@ StartCutscene:
 	push {r0,r1}
 	mov r0, r5
 	mov r1, #oCutsceneState_Size
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r0,r1}
 	str r0, [r5,#oCutsceneState_CutsceneScriptPos] // s_02011C50.ptr_1C
 	str r0, [r5,#oCutsceneState_originalCutsceneScriptPos_40] // s_02011C50.unk_40

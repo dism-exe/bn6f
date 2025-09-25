@@ -192,7 +192,7 @@ sub_809D270:
 	add r0, r0, r5
 	// size
 	mov r1, #0x20 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #TRUE
 	strb r0, [r5,#oOWPlayerObject_InteractionLocked]
 	strb r0, [r5,#oOWPlayerObject_wallCollision_0c]

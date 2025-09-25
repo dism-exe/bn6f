@@ -121,9 +121,9 @@ dword_8000204: .word 0x45B4
 mem: .word IWRAMRoutinesROMLocation
 off_800020C: .word sub_3005B00
 IWRAMRoutinesSize_p: .word 0x1ED4
-off_8000214: .word SetPrimaryToolkitPointers+1
-off_8000218: .word RandomizeExtraToolkitPointers+1
-off_800021C: .word start_800023C+1
+off_8000214: .word SetPrimaryToolkitPointers+1 // () -> ()
+off_8000218: .word RandomizeExtraToolkitPointers+1 // () -> ?
+off_800021C: .word start_800023C+1 // () -> ()
 off_8000220: .word byte_20081B0
 off_8000224: .word dword_2009930
 off_8000228: .word dword_200A870
@@ -135,11 +135,13 @@ off_8000238: .word main_+1
 
 // () -> void
 	thumb_func_start start_800023C
-start_800023C:
+start_800023C: // () -> ()
 	push {lr}
+
 	ldr r0, off_8000248 // =sub_3005DA0+1 
 	mov lr, pc
 	bx r0
+
 	pop {r0}
 	bx r0
 off_8000248: .word sub_3005DA0+1

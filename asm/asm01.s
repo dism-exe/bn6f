@@ -118,11 +118,11 @@ loc_801FED2:
 	ldr r0, off_80200DC // =eStruct2036780
 	ldr r1, off_80200E0 // =unk_20399F0 
 	mov r2, #0x10
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, off_80200E4 // =eStruct2036780
 	ldr r1, off_80200E8 // =unk_2039A00 
 	mov r2, #0x10
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 locret_801FEE6:
 	pop {r4,r6,pc}
 	thumb_func_end sub_801FE6C
@@ -431,7 +431,7 @@ eStruct2038160_clearStruct:
 	ldr r0, off_8020164 // =eStruct2038160
 	// size
 	mov r1, #4
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end eStruct2038160_clearStruct
 

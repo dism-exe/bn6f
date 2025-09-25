@@ -2244,7 +2244,7 @@ loc_3006C04:
 	.balign 4, 0
 off_3006C08: .word off_3006B18
 off_3006C0C: .word QueueEightWordAlignedGFXTransfer+1 // (void *queuedSource, void *queuedDest, int queuedSize) -> void
-	.word ZeroFillByByte+1
+	.word ZeroFillByByte+1 // (mut_mem: *mut (), num_bytes: usize) -> ()
 off_3006C14: .word dword_3006B84
 	thumb_func_end sub_3006B94
 

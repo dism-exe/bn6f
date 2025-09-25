@@ -10936,7 +10936,7 @@ loc_80AADB6:
 	ldr r0, [r0,#oToolkit_Unk2002230_Ptr]
 	ldr r1, off_80AAE7C // =dword_2033000 
 	ldr r2, off_80AAE80 // =0xf00 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#5]

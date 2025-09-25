@@ -23,7 +23,7 @@ sub_8021AB4:
 	add r1, r1, r3
 	mov r2, #0x3c
 	push {r1}
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {r7}
 	mov r6, #0
 loc_8021ACC:
@@ -285,7 +285,7 @@ zeroFill_e2002230:
 	ldr r0, [r0,#oToolkit_Unk2002230_Ptr]
 	// size
 	ldr r1, dword_8021C78 // =0xf00
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.balign 4, 0
 dword_8021C78: .word 0xF00
@@ -424,19 +424,19 @@ sub_8021D36:
 	ldr r0, off_8021D80 // =TextScriptJap8021D88
 	ldr r1, off_8021D70 // =unk_2001184
 	mov r2, #8
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, off_8021D80 // =TextScriptJap8021D88
 	ldr r1, off_8021D74 // =unk_200119C
 	mov r2, #8
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, off_8021D84 // =byte_8021D8A
 	ldr r1, off_8021D78 // =byte_20007D6
 	mov r2, #8
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, off_8021D84 // =byte_8021D8A
 	ldr r1, off_8021D7C // =byte_200083A
 	mov r2, #8
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_8021D36

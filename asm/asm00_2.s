@@ -8074,7 +8074,7 @@ sub_801299C:
 	push {lr}
 	// size
 	mov r1, #0x10
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end sub_801299C
 
@@ -9518,7 +9518,7 @@ initNaviStats_WithDefaultStatsMaybe_8013438:
 	mov r0, r4
 	// size
 	mov r1, #0x64 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #1
 	mov r1, #0x20 
 	strb r0, [r4,r1]
@@ -9597,7 +9597,7 @@ sub_80134C8:
 	mov r0, r4
 	// size
 	mov r1, #0x64 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #1
 	mov r1, #0x20 
 	strb r0, [r4,r1]
@@ -9672,7 +9672,7 @@ sub_8013554:
 	mov r0, r4
 	// size
 	mov r1, #0x64 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #0x46 
 	strb r0, [r4,#4]
 	mov r0, #0xff
@@ -9752,7 +9752,7 @@ sub_80135E8:
 	mov r0, r4
 	// size
 	mov r1, #0x64 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #0x4c 
 	strb r0, [r4,#4]
 	mov r0, #0x4b 
@@ -12325,26 +12325,26 @@ sub_80147E4:
 	mov r1, #8
 	add r1, r1, r5
 	mov r2, #0x10
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 
 	// CopyWords(byte_203F558, unk_203A980, 0x10)
 	mov r0, r6
 	ldr r1, off_8014824 // =unk_203A980 
 	mov r2, #0x10
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 
 	// CopyWords(byte_203F658, dword_20367F0+0x18, 0x10)
 	mov r0, r7
 	mov r1, #0x18
 	add r1, r1, r5
 	mov r2, #0x10
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 
 	// CopyWords(byte_203F658, unk_203A990
 	mov r0, r7
 	ldr r1, off_8014828 // =unk_203A990 
 	mov r2, #0x10
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 
 	mov r0, #0
 	str r0, [r5]
@@ -20184,7 +20184,7 @@ loc_801987C:
 	mov r0, r4
 	// size
 	mov r1, #oCollisionData_Size
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	str r5, [r4,#oCollisionData_CollisionIndexBit]
 	add r4, #oCollisionData_Size
 	lsr r5, r5, #1
@@ -20217,13 +20217,13 @@ loc_80198AE:
 	mov r4, r0
 	// size
 	mov r1, #0x44
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #0x48
 	// memBlock
 	add r0, r0, r4
 	// size
 	mov r1, #0x60
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, r4
 	mov r1, #1
 	strb r1, [r0]
@@ -20540,7 +20540,7 @@ sub_8019FA4:
 	ldr r0, off_8019FB0 // =unk_2034F60 
 	// size
 	mov r1, #0xa0
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8019FB0: .word unk_2034F60
@@ -24515,7 +24515,7 @@ sub_801BE70:
 	ldr r0, off_801BFE8 // =eStruct2035280
 	// size
 	mov r1, #0x60 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r2, #0x20 
 	ldr r1, off_801BFE8 // =eStruct2035280
 	strh r2, [r1,#0x22] // (word_20352A2 - 0x2035280)
@@ -24526,12 +24526,12 @@ sub_801BE70:
 	ldr r0, off_801BEA8 // =dword_20352E0 
 	// size
 	mov r1, #0x30 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	// memBlock
 	ldr r0, off_801BEAC // =byte_203EB50 
 	// size
 	mov r1, #0x50 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r0, off_801BEB0 // =dword_203CA48 
 	mov r1, #0
 	str r1, [r0]

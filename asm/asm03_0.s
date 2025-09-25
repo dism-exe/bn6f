@@ -489,7 +489,7 @@ sub_8026840:
 	ldr r0, off_80269CC // =dword_20349A0 
 	// size
 	mov r1, #0x14
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl sub_802A210
 loc_8026858:
 	bl ClearCustGauge
@@ -524,7 +524,7 @@ loc_8026898:
 loc_80268A0:
 	ldr r1, off_80269C8 // =unk_2035000 
 	ldr r2, off_80269A8 // =0x258 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r2, #0x9b
 	ldr r6, off_80269AC // =byte_8027B2C 
 loc_80268AC:
@@ -547,7 +547,7 @@ loc_80268AC:
 	ldr r0, off_8026BF0 // =dword_20364C0 
 	// size
 	mov r1, #0x70 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r5, off_8026BF0 // =dword_20364C0 
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
@@ -2552,7 +2552,7 @@ loc_802786A:
 loc_8027876:
 	ldr r1, off_8027B24 // =unk_2035000 
 	ldr r2, off_8027900 // =0x258 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	push {r4-r6}
 	mov r2, #0xe1
 	ldr r6, off_8027904 // =byte_8027B4A 
@@ -2750,7 +2750,7 @@ sub_80279FC:
 	ldr r0, off_8027A48 // =byte_86E64B4 
 	ldr r1, off_8027B24 // =unk_2035000 
 	ldr r2, off_8027A4C // =0x258 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	push {r4-r6}
 	mov r2, #0x9b
 	ldr r6, off_8027A50 // =byte_8027B2C 
@@ -3156,7 +3156,7 @@ sub_8027E2C:
 	mov r4, r0
 	// size
 	mov r1, #0x90
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl sub_802A40C
 	bl sub_8027E90
 	mov r0, r10
@@ -5571,7 +5571,7 @@ sub_8029110:
 	ldr r0, off_80293D4 // =dword_2033000 
 	// size
 	mov r1, #0x48 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r4, off_80293D4 // =dword_2033000 
 	ldr r6, off_80293CC // =byte_20366C0 
 	mov r3, #6
@@ -8544,7 +8544,7 @@ sub_802A866:
 	bl sub_802B298
 	// size
 	mov r1, #0x40 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl sub_802B298
 	mov r1, #1
 	strb r1, [r0,#7]
@@ -8636,7 +8636,7 @@ sub_802A934:
 	add r1, #0xd0
 	lsl r2, r2, #2
 	beq loc_802A966
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, dword_802A96C // =0x820080 
 	bl sub_801DA48
 	ldr r0, dword_802A96C // =0x820080 
@@ -10190,7 +10190,7 @@ loc_802B6F6:
 	ldr r0, off_802BA44 // =word_2036660 
 	// size
 	mov r1, #0x20 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r7, #0
 	cmp r6, #0
 	beq loc_802B708
@@ -11578,7 +11578,7 @@ sub_802C34E:
 	ldr r0, off_802C3F4 // =dword_20364C0 
 	mov r7, r0
 	mov r1, #0x20 
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldrb r0, [r4]
 	strb r0, [r7,#0x4] // (dword_20364C4 - 0x20364c0)
 	ldrb r0, [r4,#1]
@@ -11602,7 +11602,7 @@ sub_802C34E:
 	ldr r1, off_802C440 // =unk_2034B30 
 	mov r2, #0x36 
 	lsl r2, r2, #4
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldrb r0, [r7,#0x4] // (dword_20364C4 - 0x20364c0)
 	ldr r7, off_802C3F8 // =off_802C3FC 
 	mov r1, #0xc
@@ -12942,7 +12942,7 @@ sub_802CE54:
 	ldr r0, off_802D020 // =unk_2036720 
 	// size
 	mov r1, #0x20 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end sub_802CE54
 
@@ -13230,7 +13230,7 @@ sub_802D070:
 	push {r0}
 	// size
 	mov r1, #0x20 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r3}
 	mov r0, #0
 	strb r0, [r3,#0x10]
@@ -13579,7 +13579,7 @@ copyBattleSettingsTo_200AF60:
 	push {lr}
 	ldr r1, off_802D2E8 // =BattleSettings_200AF60 
 	mov r2, #0x10
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	thumb_func_end copyBattleSettingsTo_200AF60
 
@@ -14059,7 +14059,7 @@ sub_802D638:
 	ldr r0, off_802D68C // =byte_2000070
 	// size
 	mov r1, #0x20 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end sub_802D638
 
@@ -14273,7 +14273,7 @@ sub_802D7A0:
 	ldr r1, off_802D8EC // =eBattleNaviStats2034A60 
 	add r1, r1, r2
 	mov r2, #0x64 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 loc_802D7E8:
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	ldrb r0, [r5,#oBattleObject_Alliance]
@@ -14294,7 +14294,7 @@ loc_802D7E8:
 	ldr r0, off_802D8EC // =eBattleNaviStats2034A60 
 	add r0, r0, r2
 	mov r2, #0x64 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	b loc_802D822
 loc_802D81A:
 	mov r1, r0
@@ -14485,7 +14485,7 @@ sub_802D9B0:
 	ldr r0, off_802DCB8 // =eBattleNaviStats2034A60 
 	add r0, r0, r2
 	mov r2, #0x64 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x29 
@@ -14685,7 +14685,7 @@ sub_802DB80:
 	ldr r0, off_802DCC4 // =eBattleNaviStats2034A60 
 	add r0, r0, r2
 	mov r2, #0x64 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r4, [r5,#0x58]
 	ldrb r0, [r5,#0x16]
 	mov r1, #0x29 
@@ -15156,7 +15156,7 @@ sub_802DFC8:
 	mov r1, #0xe8
 	// size
 	add r1, r1, r1
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl sub_800A8F8
 	beq locret_802DFFA
 	mov r0, #1
@@ -15182,7 +15182,7 @@ sub_802DFFC:
 	ldr r0, off_802E208 // =unk_2036120 
 	mov r1, #0xe8
 	lsl r1, r1, #2
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r0, off_802E20C // =eT1BattleObject0 
 	ldr r1, off_802E210 // =unk_20362F0 
 	str r0, [r1,#0x44] // (dword_2036334 - 0x20362f0)
@@ -15197,12 +15197,12 @@ sub_802E014:
 	ldr r0, off_802E214 // =unk_2036120 
 	// size
 	mov r1, #0x60 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	// memBlock
 	ldr r0, off_802E218 // =unk_20362F0 
 	// size
 	mov r1, #0x60 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r0, off_802E21C // =eT1BattleObject0 
 	ldr r1, off_802E220 // =unk_20362F0 
 	str r0, [r1,#0x44] // (dword_2036334 - 0x20362f0)
@@ -15862,7 +15862,7 @@ sub_802E544:
 	ldr r0, off_802E554 // =unk_20000A0 
 	mov r1, #0x71 
 	add r1, #0xff
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.balign 4, 0
 off_802E554: .word unk_20000A0
@@ -16327,7 +16327,7 @@ sub_802E896:
 	ldr r0, off_802E950 // =unk_2000370 
 	mov r1, #0x71 
 	add r1, #0xff
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end sub_802E896
 
@@ -17935,7 +17935,7 @@ startScreen_init_802F530: // () -> void
 
 	ldr r0, off_802F570 // =eStartScreen
 	mov r1, #0x20 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
@@ -17966,7 +17966,7 @@ off_802F55C: .word jt_802F560
 jt_802F560: .word startScreen_802F574+1
 	.word startscreen_802F60C+1
 	.word ho_802F63C+1
-	.word sub_802F756+1
+	.word load_game_802F756+1
 off_802F570: .word eStartScreen
 	thumb_func_end startscreen_render_802F544
 
@@ -18189,10 +18189,10 @@ loc_802F71C:
 loc_802F72E:
 	bl zeroFill_e20094C0
 	bl sub_80023A8
-	bl loc_803D1AC // () -> void
+	bl call_803D1AC // () -> void
 	bl sub_81440D8 // static () -> void
 	bl sub_813D960
-	bl clear_e200AD04 // () -> void
+	bl clear_e200AD04 // () -> ()
 	mov r0, #0
 	bl sub_803F6B0
 	bl loc_803F512
@@ -18201,31 +18201,49 @@ locret_802F754:
 	pop {pc}
 	thumb_func_end sub_802F710
 
+/// Breaks on pressing "Load Game" 
+/// Disabling this causes "Load Game" to click, sound effect to play, but then we get stuck in a black screen.
 	thumb_local_start
-sub_802F756:
+load_game_802F756:
 	push {lr}
+
 	mov r7, r10
+
+  // Disabling this causes "Load Game" to click, sound effect to play, but then we get stuck in a black screen.
 	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]
 	mov r1, #4
 	strb r1, [r0]
+
 	ldr r0, off_802F7E4 // =0x1140 
 	bl SetRenderInfoLCDControl
+
 	bl sub_813D960
+
 	ldrb r0, [r5,#8]
+
 	cmp r0, #0
 	beq loc_802F776
+
 	cmp r0, #1
 	beq loc_802F79A
+
 	b loc_802F7B6
 loc_802F776:
+
 	bl sub_800260C
+
 	bl initNewGameData_8004DF0
+
 	bl sub_8004D48
+
 	bl sub_81440D8 // static () -> void
+
 	bl rfu_REQ_stopMode
+
 	ldrb r0, [r5,#2]
 	tst r0, r0
 	beq locret_802F7E0
+
 	movflag EVENT_1704
 	bl SetEventFlagFromImmediate
 	b locret_802F7E0
@@ -18233,23 +18251,35 @@ loc_802F79A:
 	ldrb r0, [r5,#2]
 	tst r0, r0
 	beq loc_802F7B6
+
 	bl sub_8004D48
+
 	movflag EVENT_1704
 	bl SetEventFlagFromImmediate
+
 	bl sub_81440D8 // static () -> void
+
 	bl rfu_REQ_stopMode
+
 	b locret_802F7E0
+
 loc_802F7B6:
 	mov r0, #0
 	bl sub_813D90C
+
 	bl sub_8004D48
+
 	bl sub_8039570
+
 	bl sub_803EBAC
+
 	mov r0, #0xc
 	bl eStruct200BC30_setJumpOffset00
+
 	ldrb r0, [r5,#2]
 	tst r0, r0
 	beq loc_802F7DC
+
 	movflag EVENT_1704
 	bl SetEventFlagFromImmediate
 loc_802F7DC:
@@ -18258,7 +18288,7 @@ locret_802F7E0:
 	pop {pc}
 	.balign 4, 0
 off_802F7E4: .word 0x1140
-	thumb_func_end sub_802F756
+	thumb_func_end load_game_802F756
 
 	thumb_local_start
 sub_802F7E8:
@@ -18786,7 +18816,7 @@ loc_802FDB6:
     
     ldr r1, off_802FE08 // =tupleArr_3002590 
 	mov r2, #0x20 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	
     mov r2, #0
 	mvn r2, r2
@@ -18826,7 +18856,7 @@ copyObjAttributesToIWRAM_802FE0C:
 	ldr r0, off_802FE1C // =iObjectAttr3001D70
 	ldr r1, dword_802FE20 // =0x7000000 
 	ldr r2, off_802FE24 // =0x400 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	.balign 4, 0
 off_802FE1C: .word iObjectAttr3001D70
@@ -19027,7 +19057,7 @@ camera_802FF4C:
 	ldr r0, [r0,#oToolkit_CameraPtr]
 	// size
 	mov r1, #0x4c 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r0,r1,r5}
 	strb r0, [r5,#oCamera_Unk_03]
 	str r1, [r5,#oCamera_Unk_14]
@@ -19790,7 +19820,7 @@ decompAndCopyMapTiles_8030472:
 	lsl r2, r2, #5 // r2 = 0x1a0
 	add r0, #4
 	ldr r1, off_80304E0 // =palette_3001960 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 
 	// Load two tilesets into VRAM: one for BG1 and one for BG2.
 	mov r0, #0
@@ -19811,7 +19841,7 @@ decompAndCopyMapTiles_8030472:
 	add r1, r1, r2
 	ldr r2, [r7,#oMapBGTilesetHeader_WordCount]
 	lsl r2, r2, #2
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 
 	add r7, #oMapBGTilesetHeader_Size
 	pop {r0,r6}
@@ -19824,7 +19854,7 @@ decompAndCopyMapTiles_8030472:
 	ldr r1, off_803057C // =eDecompBuffer2013A00
 	mov r2, #oMapBGTilemapHeader_Size
 	push {r0,r1}
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {r0,r1}
 	// src
 	add r0, #oMapBGTilemapHeader_Size
@@ -19875,7 +19905,7 @@ LoadBGAnimData:
 	ldr r2, [r7]
 	lsl r2, r2, #2
 	// copy gfx to vram
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 
 	// read tilemap source
 	ldr r0, [r5,#oBGAnimData_TilemapSrc]
@@ -19899,7 +19929,7 @@ LoadBGAnimData:
 	mul r2, r3
 	lsl r2, r2, #1
 	// copy to BG tilemap
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 .noGFX
 	pop {r4-r7,pc}
 	.balign 4, 0

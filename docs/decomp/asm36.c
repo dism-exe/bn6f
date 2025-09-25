@@ -3390,7 +3390,7 @@ void __noreturn OpenSaveMenu8132BA8(int a1, int a2, int a3, int a4)
     *(v4 + 16) = sub_81207F8(2);
     v11 = sub_8021CA8();
     *(v4 + 20) = v11;
-    saveMenu_8132CB8();
+    saveMenu_config_textscript_8132CB8();
 }
 
 
@@ -3452,7 +3452,7 @@ void __noreturn ExitSaveMenu8132CA0()
 
 
 // 0x8132cb8
-void __noreturn saveMenu_8132CB8()
+void __noreturn saveMenu_config_textscript_8132CB8()
 {
     int v0; // r6
     int v1; // r7

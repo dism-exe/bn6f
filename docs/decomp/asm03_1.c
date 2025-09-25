@@ -5297,7 +5297,7 @@ int sub_80386B2()
     if ( !v1 )
     {
         v2 = SetRenderInfoLCDControl(&byte_40);
-        result = (loc_803D1AC)(v2);
+        result = (call_803D1AC)(v2);
     }
     return result;
 }
@@ -5330,7 +5330,7 @@ _BYTE *sub_8038A9C()
     else
     {
         v3 = SetRenderInfoLCDControl(&byte_40);
-        result = (loc_803D1AC)(v3);
+        result = (call_803D1AC)(v3);
     }
     return result;
 }
@@ -5783,7 +5783,7 @@ int sub_8038F0C()
     result = IsPaletteFadeActive();
     if ( !v1 )
     {
-        (loc_803D1AC)(result);
+        (call_803D1AC)(result);
         clear_e200AD04();
         init_eStartScreenAnimationControl200B1A0_2();
         result = SetRenderInfoLCDControl(&byte_40);
@@ -11614,7 +11614,7 @@ int __fastcall sub_803D180(int a1)
 
 // 0x803d1a8
 // () -> void
-void __cdecl sub_803D1A8()
+void __cdecl init_803D1A8()
 {
     Toolkit *tk; // r10
 

@@ -7,7 +7,7 @@ sub_80385F0:
 	mov r0, r5
 	// size
 	mov r1, #0x10
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	mov r0, #0xc
@@ -106,7 +106,7 @@ sub_80386B2:
 	beq locret_80386C4
 	ldr r0, off_80386C8 // =0x40
 	bl SetRenderInfoLCDControl
-	bl loc_803D1AC // () -> void
+	bl call_803D1AC // () -> void
 locret_80386C4:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -221,7 +221,7 @@ sub_8038A9C:
 	ldr r0, off_8038B00 // =byte_2011E40
 	// size
 	mov r1, #0x10
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_MainJumptableIndexPtr]
 	mov r1, #0xc
@@ -230,7 +230,7 @@ sub_8038A9C:
 loc_8038ABC:
 	ldr r0, off_8038AC8 // =0x40
 	bl SetRenderInfoLCDControl
-	bl loc_803D1AC // () -> void
+	bl call_803D1AC // () -> void
 locret_8038AC6:
 	pop {pc}
 	.balign 4, 0
@@ -770,8 +770,8 @@ sub_8038F0C:
 	bl sub_8039198
 	bl IsScreenFadeActive // () -> zf
 	beq locret_8038F2A
-	bl loc_803D1AC // () -> void
-	bl clear_e200AD04 // () -> void
+	bl call_803D1AC // () -> void
+	bl clear_e200AD04 // () -> ()
 	bl init_eStartScreenAnimationControl200B1A0_1
 	ldr r0, off_8038F2C // =0x40
 	bl SetRenderInfoLCDControl
@@ -1154,7 +1154,7 @@ loc_803957E:
 	mov r0, r5
 	// size
 	ldr r1, off_80395A0 // =0x1b0
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	mov r0, #0x18
@@ -2250,7 +2250,7 @@ sub_8039E80:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl RandomizeExtraToolkitPointers
+	bl RandomizeExtraToolkitPointers // () -> ?
 	mov r0, #0
 	bl getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
 	bl sub_80071D4
@@ -2775,7 +2775,7 @@ sub_803A25C:
 	ldr r0, off_803A29C // =byte_87E672C
 	ldr r1, off_803A2A0 // =unk_3001AE0
 	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_803A298: .word 0x1F40
@@ -5460,7 +5460,7 @@ loc_803BB4A:
 	b locret_803BB64
 loc_803BB52:
 	push {r1}
-	bl sub_8123360
+	bl sub_8123360 // () -> bool
 	lsl r1, r0, #2
 	ldr r0, TextScriptNetworkEnterFolderNamePtrs_p // =TextScriptNetworkEnterFolderNamePtrs
 	ldr r0, [r0,r1]
@@ -6246,13 +6246,13 @@ sub_803C26A:
 	add r0, r0, r5
 	mov r1, #4
 	lsl r1, r1, #2
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #0x54
 	lsl r0, r0, #2
 	add r0, r0, r5
 	mov r1, #4
 	lsl r1, r1, #2
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end sub_803C26A
 
@@ -6399,7 +6399,7 @@ sub_803C352:
 	mov r0, r5
 	// size
 	mov r1, #0x48
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, r5
 	add r0, #8
 	mov r1, #0x20
@@ -7319,7 +7319,7 @@ sub_803C9DC:
 	mov r0, r4
 	// size
 	mov r1, #0x10
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #1
 	strb r0, [r4]
 	ldr r1, off_803CA0C // =byte_200AF80
@@ -7389,7 +7389,7 @@ sub_803CA64:
 	mov r0, r4
 	// size
 	mov r1, #0x10
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #1
 	strb r0, [r4]
 	ldr r1, off_803CAB0 // =byte_200AF80
@@ -7562,7 +7562,7 @@ sub_803CB8C:
 	mov r0, r5
 	// size
 	mov r1, #8
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	str r4, [r5,#0x4] // (dword_200897C - 0x2008978)
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
@@ -7713,7 +7713,7 @@ sub_803CCC0:
 	mov r0, r5
 	// size
 	mov r1, #8
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	mov r0, #0x20
@@ -7811,7 +7811,7 @@ sub_803CD74:
 	ldr r0, [r0,#oToolkit_KeyItemsPtr]
 	// size
 	ldr r1, off_803CD94 // =0x190
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #0x75
 	mov r1, #4
 	bl sub_803CDF8
@@ -8418,29 +8418,40 @@ locret_803D1A6:
 	thumb_func_end sub_803D180
 
 // () -> void
-	thumb_func_start sub_803D1A8
-sub_803D1A8:
+	thumb_func_start init_803D1A8
+init_803D1A8: // () -> ()
+  // let v0: bool?;
 	mov r0, #1
 	b loc_803D1AE
-loc_803D1AC:
+
+call_803D1AC:
 	mov r0, #0
+
 loc_803D1AE:
 	push {r4-r7,lr}
+
 	push {r0}
+
 	// memBlock
 	ldr r0, off_803D1F8 // =byte_2011800
 	// size
 	mov r1, #8
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
+  // v0
 	pop {r0}
+
 	ldr r1, off_803D1F8 // =byte_2011800
 	strb r0, [r1,#0x5] // (byte_2011805 - 0x2011800)
+
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
+
 	mov r0, #0x10
 	strb r0, [r1]
+
 	pop {r4-r7,pc}
-	thumb_func_end sub_803D1A8
+	thumb_func_end init_803D1A8
 
 	thumb_func_start cb_803D1CA
 cb_803D1CA:
@@ -8812,10 +8823,10 @@ sub_803DCE8:
 	strh r1, [r7,#0x16] // (eCamera.unk_66 - 0x20099d0)
 	ldr r0, [r7,#0x38] // (eCamera.unk_88 - 0x20099d0)
 	ldr r1, [r7,#0x24] // (eCamera.unk_74 - 0x20099d0)
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r0, [r7,#0x3c] // (eCamera.unk_8C - 0x20099d0)
 	ldr r1, [r7,#0x24] // (eCamera.unk_74 - 0x20099d0)
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end sub_803DCE8
 
@@ -10518,7 +10529,7 @@ init_eStartScreenAnimationControl200B1A0_1:
 	ldr r0, off_803E960 // =eStartScreenAnimationControl200B1A0
 	mov r4, r0
 	mov r1, #8
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 
 	mov r0, #0xb4
 	strb r0, [r4,#0x3]
@@ -10532,7 +10543,7 @@ init_eStartScreenAnimationControl200B1A0_2:
 	ldr r0, off_803E960 // =eStartScreenAnimationControl200B1A0
 	mov r4, r0
 	mov r1, #8
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #1
 	strb r0, [r4,#0x3] // (byte_200B1A3 - 0x200b1a0)
 	pop {r4,pc}
@@ -10633,7 +10644,7 @@ loc_803E9A8:
 	bne loc_803E9C8
 	mov r0, #1
 	strb r0, [r5,#0x1] // (byte_200B1A1 - 0x200b1a0)
-	bl clear_e200AD04 // () -> void
+	bl clear_e200AD04 // () -> ()
 	mov r0, #0
 	bl sub_803F6B0
 	bl sub_803F50C
@@ -10930,7 +10941,7 @@ sub_803EBAC:
 	ldr r0, off_803EBF8 // =eStruct200BC30
 	// size
 	mov r1, #0x20
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end sub_803EBAC
 
@@ -10941,7 +10952,7 @@ sub_803EBB8:
 	mov r1, #2
 	add r0, r0, r1
 	mov r1, #0x20
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end sub_803EBB8
 
@@ -10954,7 +10965,7 @@ sub_803EBC8:
 	ldr r0, off_803EBF8 // =eStruct200BC30
 	// size
 	mov r1, #0x20
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl sub_803EF60
 	pop {pc}
 	.balign 4, 0
@@ -11254,8 +11265,10 @@ loc_803EDD6:
 	ldr r1, dword_803EE8C // =0x800
 	cmp r0, r1
 	bne loc_803EE08
+
 	ldr r0, off_803EE90 // =sSubmenu
 	ldrb r0, [r0]
+
 	cmp r0, #0xc
 	bne loc_803EE6A
 loc_803EE08:
@@ -11268,10 +11281,13 @@ loc_803EE08:
 	mov r4, r0
 	ldrh r0, [r4,r1]
 	ldr r1, dword_803EE94 // =0x1000
+
 	tst r0, r1
 	beq loc_803EE28
+
 	ldr r0, off_803EE90 // =sSubmenu
 	ldrb r0, [r0]
+
 	cmp r0, #0xc
 	bne loc_803EE6A
 loc_803EE28:
@@ -11476,7 +11492,7 @@ sub_803EF90:
 	push {lr}
 	ldr r0, off_803EF9C // =unk_200F380
 	mov r1, #4
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.balign 4, 0
 off_803EF9C: .word unk_200F380
@@ -11515,22 +11531,22 @@ sub_803EFCC:
 	ldr r0, off_803F268 // =byte_200AC20
 	// size
 	mov r1, #0x20
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	// memBlock
 	ldr r0, off_803F260 // =unk_2009AC0
 	// size
 	mov r1, #0x40
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	// memBlock
 	ldr r0, off_803F264 // =byte_200BC70
 	// size
 	ldr r1, off_803EFF8 // =0x200
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	// memBlock
 	ldr r0, off_803F258 // =word_200A010
 	// size
 	ldr r1, off_803EFF8 // =0x200
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.byte 0x0, 0x15, 0x0, 0x0, 0x0, 0x15, 0x0, 0x0
 	.balign 4, 0
@@ -11565,7 +11581,7 @@ sub_803F00C:
 	add r1, r1, r2
 	mov r6, r1
 	mov r2, r7
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	add r4, #1
 	mov r0, #7
 	and r4, r0
@@ -11594,7 +11610,7 @@ loc_803F044:
 	mov r0, r1
 	mov r1, r6
 	mov r2, r7
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r1, #0
 loc_803F058:
 	mov r0, r1
@@ -11676,7 +11692,7 @@ loc_803F0C2:
 	mul r2, r4
 	add r1, r1, r2
 	mov r2, r6
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	add r4, #1
 	mov r1, #7
 	and r4, r1
@@ -11702,12 +11718,12 @@ sub_803F0E8:
 	add r6, r6, r2
 	mov r1, r6
 	mov r2, #0xc
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, r7
 	mov r1, r6
 	add r1, #0xc
 	mov r2, #0xc
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	add r4, #1
 	mov r1, #7
 	and r4, r1
@@ -11729,7 +11745,7 @@ sub_803F118:
 	add r0, #0
 	mov r1, r7
 	mov r2, r6
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	add r7, #0x10
 	ldr r0, off_803F264 // =byte_200BC70
 	ldr r5, off_803F268 // =byte_200AC20
@@ -11740,7 +11756,7 @@ sub_803F118:
 	add r0, #0xc
 	mov r1, r7
 	mov r2, r6
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	add r4, #1
 	mov r1, #7
 	and r4, r1
@@ -12244,13 +12260,14 @@ off_803F4C0: .word byte_200BC70
 off_803F4C4: .word byte_200AC20
 	thumb_func_end sub_803F460
 
-// () -> void
 	thumb_func_start clear_e200AD04
-clear_e200AD04:
+clear_e200AD04: // () -> ()
 	push {lr}
+
 	ldr r0, off_803F55C // =word_200AD04
 	mov r1, #4
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
+
 	pop {pc}
 	thumb_func_end clear_e200AD04
 
@@ -12753,7 +12770,7 @@ loc_803F870:
 	bl ClearEventFlagFromImmediate
 	bl SeedRNG // () -> ()
 loc_803F87E:
-	bl RandomizeExtraToolkitPointers
+	bl RandomizeExtraToolkitPointers // () -> ?
 	mov r0, r4
 	tst r0, r0
 	pop {r1-r7,pc}
@@ -13123,7 +13140,7 @@ sub_803FB28:
 	ldr r0, off_803FB60 // =byte_200F348
 	// size
 	mov r1, #8
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_MainJumptableIndexPtr]
 	mov r1, #0x14
@@ -13204,7 +13221,7 @@ sub_803FBC2:
 	beq locret_803FBE0
 	bl sub_8006910
 	bl startScreen_init_802F530 // () -> void
-	bl clear_e200AD04 // () -> void
+	bl clear_e200AD04 // () -> ()
 	bl init_eStartScreenAnimationControl200B1A0_2
 	ldr r0, off_803FBE4 // =0x40
 	bl SetRenderInfoLCDControl
@@ -13336,7 +13353,7 @@ clearChatboxAndEvent:
 	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	// size
 	ldr r1, off_803FD04 // =0x230
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #0xc8
 	bl chatbox_clear_eFlags2009F38 // (int a1) ->
 	pop {pc}

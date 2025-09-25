@@ -283,7 +283,7 @@ zeroFill_80007B2:
 	ldr r0, dword_200A490_p
 	// size
 	ldr r1, numWords // =0x20c
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end zeroFill_80007B2
 
@@ -439,19 +439,20 @@ off_80008B0: .word loc_800084E+1
 
 // FILE module memory
 
-// (void *mem, int size) -> void
-
-// Fill r0 with zero.
-// Size is in r1, in bytes.
-// Does a backwards fill for speed
+/// Fill r0 with zero.
+/// Size is in r1, in bytes.
+/// Does a backwards fill for speed
+/// tags: "#mod_memory, "
 	thumb_func_start ZeroFillByByte
-ZeroFillByByte:
+ZeroFillByByte: // (mut_mem: *mut (), num_bytes: usize) -> ()
 	push {r0-r2,lr}
 	mov r2, #0
-loc_80008B8:
+
+loc_loop_80008B8:
 	sub r1, #1
 	strb r2, [r0,r1]
-	bne loc_80008B8
+	bne loc_loop_80008B8
+
 	pop {r0-r2,pc}
 	thumb_func_end ZeroFillByByte
 
@@ -469,20 +470,18 @@ ZeroFillByHalfword:
 	mov r0, #0
 	str r0, [sp]
 	mov r0, sp
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0
 .HalfwordFillCpuSetMask_80008DC: .word 0x1000000
 	thumb_func_end ZeroFillByHalfword
 
-// (void *memBlock, int size) -> void
-
-// Fill r0 with zero, using words.
-// Size is in r1, in bytes.
-// Source, destination, and size must be word compatible
+/// Fill r0 with zero, using words.
+/// Size is in r1, in bytes.
+/// Source, destination, and size must be word compatible
 	thumb_func_start ZeroFillByWord
-ZeroFillByWord:
+ZeroFillByWord: // (mut_mem: *mut (), num_bytes: usize) -> ()
 	push {r0-r3,lr}
 	ldr r2, .WordFillCpuSetMask_80008FC // =0x5000000
 	lsr r1, r1, #2
@@ -492,7 +491,7 @@ ZeroFillByWord:
 	mov r0, #0
 	str r0, [sp]
 	mov r0, sp
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0
@@ -517,7 +516,7 @@ ZeroFillByEightWords:
 	mov r0, #0
 	str r0, [sp]
 	mov r0, sp
-	bl SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
+	bl SWI_CpuFastSet // (src: *const u32, mut_dest: *mut u32, mode: u32) -> ()
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0
@@ -547,30 +546,32 @@ CopyHalfwords:
 	ldr r3, .HalfwordCopyCpuSetMask_8000938 // =0x0
 	lsr r2, r2, #1
 	orr r2, r3
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	pop {r0-r3,pc}
 	.balign 4, 0
 .HalfwordCopyCpuSetMask_8000938: .word 0x0
 	thumb_func_end CopyHalfwords
 
-// (CopyWordsu32 *src, u32 *dest, int size) -> void
-
-// Copy r2 bytes from r0 to r1, in units of words.
-// Note r2 represents byte count, which is then converted to word count in function
-// Source, destination, and size must be word compatible.
+/// Copy r2 bytes from r0 to r1, in units of words.
+/// Note r2 represents byte count, which is then converted to word count in function
+/// Source, destination, and size must be word compatible.
 	thumb_func_start CopyWords
-CopyWords:
+CopyWords: // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	push {r0-r3,lr}
+  
 	ldr r3, .WordCopyCpuSetMask_800094C
+
+  // let num_words: u32 = size / 4;
 	lsr r2, r2, #2
+
 	orr r2, r3
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
+
 	pop {r0-r3,pc}
 	.balign 4, 0
 .WordCopyCpuSetMask_800094C: .word 0x4000000
 	thumb_func_end CopyWords
-
-// (u32 *src, u32 *dest, int byteCount) -> void
 
 // Copy r2 bytes from r0 to r1, in units of eight words, rounded up.
 // Note r2 represents byte count, which is then converted to word count in function
@@ -579,12 +580,17 @@ CopyWords:
 // Source and destination must be word compatible.
 // Size must be a multiple of eight words
 	thumb_func_start CopyByEightWords
-CopyByEightWords:
+CopyByEightWords: // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	push {r0-r3,lr}
-	ldr r3, .CopyFastCpuSetMask_8000960 // =0x0
+  ldr r3, .CopyFastCpuSetMask_8000960 // =0x0
+
+  // let num_words: u32 = size / 4;
 	lsr r2, r2, #2
+
 	orr r2, r3
-	bl SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
+
+	bl SWI_CpuFastSet // (src: *const u32, mut_dest: *mut u32, mode: u32) -> ()
+
 	pop {r0-r3,pc}
 	.balign 4, 0
 .CopyFastCpuSetMask_8000960: .word 0x0
@@ -617,7 +623,7 @@ HalfwordFill:
 	sub sp, sp, #4
 	str r3, [sp]
 	mov r0, sp
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0
@@ -638,7 +644,7 @@ WordFill:
 	sub sp, sp, #4
 	str r3, [sp]
 	mov r0, sp
-	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0
@@ -662,7 +668,7 @@ FillByEightWords:
 	sub sp, sp, #4
 	str r3, [sp]
 	mov r0, sp
-	bl SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
+	bl SWI_CpuFastSet // (src: *const u32, mut_dest: *mut u32, mode: u32) -> ()
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0
@@ -796,8 +802,8 @@ loc_8000A96:
 off_8000AA4: .word CopyJumpTable8000AA8
 CopyJumpTable8000AA8: .word CopyBytes+1
 	.word CopyHalfwords+1
-	.word CopyWords+1
-	.word CopyByEightWords+1
+	.word CopyWords+1 // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
+	.word CopyByEightWords+1 // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	thumb_func_end ProcessGFXTransferQueue
 
 	thumb_local_start
@@ -953,10 +959,10 @@ bit1_set_8000B78:
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	b continue_advance3Elements_8000B88
 bits5to0_set_8000B7E:
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	b continue_advance3Elements_8000B88
 default_8000B84:
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 continue_advance3Elements_8000B88:
 	add r7, #0xc
 	b loop_processArr_8000B34
@@ -2534,7 +2540,7 @@ copyToVRAMAndClear_iBGTileIdBlocks_Ptr:
 	// copies
 	ldr r1, dword_80015EC // =0x600e000
 	ldr r2, dword_80015F0 // =0x2000
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_iBGTileIdBlocks_Ptr]
 	ldr r1, dword_80015F4 // =0x800
@@ -2614,7 +2620,7 @@ render_800172C:
 	add r0, #4
 	ldr r1, off_800176C // =BG0Control
 	mov r2, #0x38
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	// src
 	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	// dest
@@ -2736,7 +2742,7 @@ copyPalletesToIWRAM_8001808:
 	ldr r1, dword_800181C // =0x5000000
 	mov r2, #0x20
 	lsl r2, r2, #4
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8001818: .word iPalette3001B60
@@ -2751,7 +2757,7 @@ zeroFill_e2009740:
 	ldr r0, [r2,#oToolkit_Unk2009740_Ptr]
 	// size
 	mov r1, #8
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end zeroFill_e2009740
 
@@ -2763,7 +2769,7 @@ zeroFill_e200F3A0:
 	ldr r0, [r2,#oToolkit_Unk200f3a0_Ptr]
 	// size
 	mov r1, #0xc
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end zeroFill_e200F3A0
 
@@ -2785,11 +2791,11 @@ copyMemory_8001850:
 	ldr r0, off_8001868 // =dword_86A5520
 	ldr r1, dword_800186C // =0x600d400
 	ldr r2, dword_8001870 // =0x800
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, off_8001874 // =byte_86BEC80
 	ldr r1, off_8001878 // =unk_3001B40
 	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8001868: .word dword_86A5520
@@ -3216,7 +3222,7 @@ zeroFill_e20094C0:
 	ldr r0, off_8001C40 // =eGFXAnimStates
 	// size
 	ldr r1, off_8001B08 // =0x1b0
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8001B08: .word 0x1B0
@@ -4425,7 +4431,7 @@ zeroFill_e20097A0:
 	ldr r0, off_8002464 // =ePalette20097a0
 	// size
 	ldr r1, off_8002374 // =0x108
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8002374: .word 0x108
@@ -4471,7 +4477,7 @@ sub_80023A8:
 	ldr r0, off_8002464 // =ePalette20097a0
 	// size
 	ldr r1, off_80023B4 // =0xd8
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.balign 4, 0
 off_80023B4: .word 0xd8
@@ -4513,12 +4519,12 @@ getPalleteAndTransition_80023E0:
 	ldr r1, off_8002440 // =iPalette3001B60
 	mov r2, #0x20
 	lsl r2, r2, #4
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, off_8002444 // =byte_3001550
 	ldr r1, off_8002448 // =iPallete3001750
 	mov r2, #0x20
 	lsl r2, r2, #4
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r5, off_8002464 // =ePalette20097a0
 loc_80023FC:
 	ldrb r0, [r5,#oPalette20097a0_Unk_00]
@@ -4577,7 +4583,7 @@ Initialize_eStruct200a6a0:
 	mov r0, r5
 	// size
 	mov r1, #0x50
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r0-r2}
 	str r0, [r5,#0x4] // (dword_200A6A4 - 0x200a6a0)
 	str r1, [r5,#0x8] // (dword_200A6A8 - 0x200a6a0)
@@ -4604,7 +4610,7 @@ loc_8002498:
 	mov r0, r5
 	// size
 	mov r1, #0x50
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end run_eStruct200a6a0_Callback_8002484
 
@@ -4615,7 +4621,7 @@ zeroFill_80024A2:
 	ldr r0, off_80024C8 // =eStruct200a6a0
 	// size
 	mov r1, #0x50
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end zeroFill_80024A2
 
@@ -4814,7 +4820,7 @@ sub_800260C:
 	bl sprite_resetObjVars_800289C
 	ldr r0, off_800264C // =unk_200F388
 	mov r1, #7
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r4,pc}
 	.balign 4, 0
 dword_800263C: .word 0x7000000
@@ -4831,7 +4837,7 @@ copyPalletesToIWRAM_8002650:
 	ldr r1, dword_8002664 // =0x5000200
 	mov r2, #0x20
 	lsl r2, r2, #4
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8002660: .word iPallete3001750
@@ -4844,7 +4850,7 @@ sub_8002668:
 	ldr r0, off_800268C // =dword_86A5500
 	ldr r1, off_8002690 // =byte_3001710
 	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	b loc_8002678
 loc_8002676:
 	push {lr}
@@ -4852,7 +4858,7 @@ loc_8002678:
 	ldr r0, off_8002684 // =byte_80025CC
 	ldr r1, off_8002688 // =byte_3001730
 	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8002684: .word byte_80025CC

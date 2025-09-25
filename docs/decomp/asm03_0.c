@@ -13066,7 +13066,7 @@ int sub_802F710()
         {
             zeroFill_e20094C0();
             sub_80023A8(v3, v4, v5, v6);
-            (loc_803D1AC)();
+            (call_803D1AC)();
             sub_81440D8();
             sub_813D960();
             clear_e200AD04();
@@ -13085,7 +13085,7 @@ int sub_802F710()
 
 
 // 0x802f756
-int sub_802F756()
+int load_game_802F756()
 {
     int v0; // r5
     _BYTE **v1; // r10

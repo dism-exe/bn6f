@@ -1874,7 +1874,7 @@ loc_8130F90:
 	ldr r0, off_8130FBC // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl sub_812AFC8
 	// a1
 	ldr r0, off_8130FC0 // =byte_8129150
@@ -2836,8 +2836,10 @@ off_8131750: .word 0x4B0
 	thumb_local_start
 sub_8131754:
 	ldr r0, off_8131764 // =sSubmenu 
+
 	mov r1, #8
 	strh r1, [r0,#0x26] // (sSubmenu.unk_26 - 0x2009a30)
+
 	mov pc, lr
 	thumb_func_end sub_8131754
 
@@ -2893,12 +2895,12 @@ sub_81317A8:
 	ldr r0, off_81317E8 // =unk_202527C 
 	// size
 	mov r1, #0x40 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	// memBlock
 	ldr r0, off_81317EC // =unk_20252BC 
 	// size
 	mov r1, #0x40 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r7, off_81317E0 // =unk_202523C 
 	ldr r4, off_81317E4 // =unk_20251A0 
 	mov r0, #0
@@ -3000,7 +3002,7 @@ sub_8131864:
 	mov r4, r0
 	// size
 	mov r1, #0x80
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #0
 	strb r0, [r4,#0xc] // (byte_203770C - 0x2037700)
 	mov r0, #1
@@ -3392,7 +3394,7 @@ sub_8131E70:
 	ldr r0, off_8131EE0 // =unk_20251A0 
 	// size
 	mov r1, #0x3c 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl GetRNGSecondary // () -> void
 	mov r1, #0xf
 	and r0, r1
@@ -3431,7 +3433,7 @@ sub_8131EB0:
 	ldr r0, off_8131EE0 // =unk_20251A0 
 	// size
 	mov r1, #0x3c 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r4, off_8131EDC // =dword_202522C 
 	ldr r7, off_8131EE0 // =unk_20251A0 
 	mov r3, #0
@@ -3617,9 +3619,12 @@ off_8132028: .word byte_200A290
 	thumb_local_start
 sub_813202C:
 	push {r4-r7,lr}
+
 	ldr r5, off_8132068 // =sSubmenu 
+
 	bl test0x200bc50_0x5_813D60C
 	beq loc_8132036
+
 loc_8132036:
 	bl sub_803C620
 	mov r4, r0
@@ -3801,20 +3806,28 @@ locret_8132192:
 	thumb_local_start
 sub_8132194:
 	push {r4-r7,lr}
+
 	ldr r5, off_8132274 // =sSubmenu 
+
 	mov r0, #0
 	strb r0, [r5,#0x10] // (sSubmenu.unk_10 - 0x2009a30)
+
 	bl sub_803EAE4
 	cmp r0, #4
 	beq loc_8132266
+
 	cmp r0, #1
 	beq locret_8132272
+
 	mov r0, #1
 	strb r0, [r5,#0x10] // (sSubmenu.unk_10 - 0x2009a30)
+
 	mov r4, r0
+
 	mov r1, #0x10
 	tst r4, r1
 	beq loc_81321B6
+
 	b loc_81321C0
 loc_81321B6:
 	bl sub_81325CC
@@ -4059,7 +4072,7 @@ sub_81323B0:
 	add r1, r1, r0
 	mov r0, r7
 	mov r2, #0x10
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 loc_81323D8:
 	add r7, #0x10
 	ldrb r1, [r7]
@@ -4077,7 +4090,7 @@ loc_81323D8:
 	add r1, r1, r0
 	mov r0, r7
 	mov r2, #0x10
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r4, off_813242C // =unk_2033800 
 	ldrb r3, [r5,#0xf]
 	mov r0, #0x20 
@@ -4426,13 +4439,19 @@ loc_8132640:
 	thumb_func_start sub_8132648
 sub_8132648:
 	push {r5,lr}
+
 	bl sub_803EA78
+
 	ldr r5, off_8132660 // =sSubmenu 
+
 	mov r0, #0x10
 	strb r0, [r5,#0x1] // (sSubmenu.jo_01 - 0x2009a30)
+
 	mov r0, #0
 	strb r0, [r5,#0x2] // (sSubmenu.unk_02 - 0x2009a30)
+
 	bl sub_8132398
+
 	pop {r5,pc}
 	.balign 4, 0
 off_8132660: .word sSubmenu
@@ -4971,18 +4990,26 @@ SaveMenuJumpTable8132B9C: .word OpenSaveMenu8132BA8+1
 	.word ExitSaveMenu8132CA0+1 // continuous calls as screen dims
 	thumb_func_end HandleSaveMenu8132B88
 
+/// Disabling this causes irresponsive black screen on entering save menu. But sound is functional.
 	thumb_local_start
 OpenSaveMenu8132BA8:
 	push {lr}
+
 	bl zeroFillVRAM
+
 	bl ZeroFill_byte_3001960
+
+  // Disabling this causes some save menu tiles to be in wrong location
 	bl ZeroFillGFX30025c0
+
 	mov r0, #0x10
 	bl sub_80015FC
+
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_8132C2C // =0x1f40 
 	strh r1, [r0]
+
 	mov r1, #0
 	strh r1, [r0,#0x10]
 	strh r1, [r0,#0x12]
@@ -4990,42 +5017,60 @@ OpenSaveMenu8132BA8:
 	strh r1, [r0,#0x16]
 	strh r1, [r0,#0x18]
 	strh r1, [r0,#0x1a]
+
+  // Disabling this causes irresponsive black screen on entering save menu. But sound is functional.
 	mov r0, #4
 	strb r0, [r5,#1]
+
 	mov r0, #0
 	strb r0, [r5,#2]
+
 	mov r0, #8
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
+
 	bl sub_8046664 // () -> void
+
 	mov r0, #0
 	bl sub_81207F8
+
 	strh r0, [r5,#0xc]
+
 	mov r0, #1
 	bl sub_81207F8
+
 	strh r0, [r5,#0xe]
+
 	mov r0, #2
 	bl sub_81207F8
+
 	strh r0, [r5,#0x10]
+
 	bl sub_8021CA8
 	str r0, [r5,#0x14]
-	bl saveMenu_8132CB8
+
+	bl saveMenu_config_textscript_8132CB8
 	bl saveMenu_8132D9C
 	bl sub_81330AC
 	bl saveMenu_8132EF4
 	bl saveMenuTextGfx_8132F4C
 	bl sub_8132FD0
+
+  // Disabling this causes the save menu to have no dialog
 	ldr r0, off_8132C30 // =eTextScript201BF00
 	mov r1, #0xa
 	bl chatbox_runScript_803FD9C // (TextScriptArchive *archive, u8 scriptIdx) -> void
+
 	mov r0, #0x40 
 	bl chatbox_set_eFlags2009F38
+
 	pop {pc}
 	.balign 4, 0
 dword_8132C2C: .word 0x1F40
 off_8132C30: .word eTextScript201BF00
 	thumb_func_end OpenSaveMenu8132BA8
 
+/// Called on each frame update while in the save submenu
 	thumb_local_start
 SaveMenuUpdate8132C34:
 	push {lr}
@@ -5041,6 +5086,7 @@ JumpTable8132C48: .word SaveMenuOpenUpdate8132C50+1
 	.word SaveMenuUpdate8132C68+1
 	thumb_func_end SaveMenuUpdate8132C34
 
+/// Disabling this causes user interaction to be irresponsive but yields identical save menu scene
 	thumb_local_start
 SaveMenuOpenUpdate8132C50:
 	push {lr}
@@ -5055,6 +5101,7 @@ loc_8132C62:
 	pop {pc}
 	thumb_func_end SaveMenuOpenUpdate8132C50
 
+/// Disabling this causes save menu scene to be irresponsive after making Yes/No choice. Saving still occurs on Yes.
 	thumb_local_start
 SaveMenuUpdate8132C68:
 	push {lr}
@@ -5095,21 +5142,30 @@ loc_8132CB2:
 	bl saveMenuTextGfx_8132F4C
 	thumb_func_end ExitSaveMenu8132CA0
 
+/// breaks on entering Save submenu and continues in it before confirming save.
+/// If disabled, game crashes on entering save menu
 	pop {pc}
 	thumb_local_start
-saveMenu_8132CB8:
+saveMenu_config_textscript_8132CB8:
 	push {r4-r7,lr}
+
 	ldr r4, off_8132D78 // =unk_20096E0 
 	mov r6, #0
 	mov r7, #0
 	ldr r5, off_8132D54 // =off_8132D58
+
 loc_8132CC2:
 	ldr r0, [r5,r7]
+
 	add r7, #4
 	ldr r1, [r5,r7]
+
 	add r7, #4
-	bl sub_811FB84
+
+	bl sub_811FB84 // (a0: u32?, a1: usize) -> u32?
+
 	str r0, [r4,r6]
+
 	add r6, #4
 	mov r1, #0
 loc_8132CD4:
@@ -5117,23 +5173,34 @@ loc_8132CD4:
 	str r0, [r4,r6]
 	add r6, #4
 	add r7, #4
+
 	add r1, #1
 	cmp r1, #2
 	blt loc_8132CD4
+
 	cmp r7, #0x20 
 	blt loc_8132CC2
+
 	mov r0, #0
 	str r0, [r4,r6]
+
+  // Disabling this causes partial background in save menu
 	// initRefs
 	ldr r0, off_8132D78 // =unk_20096E0 
 	bl decompAndCopyData // (u32 *initRefs) -> void
+
+  // Disabling this causes the save menu to have a black background
 	// initRefs
 	ldr r0, off_8132D7C // =off_8132D80
 	bl decompAndCopyData // (u32 *initRefs) -> void
+
+  // Disabling this causes system crash on entering save menu
 	ldr r0, TextScriptNetworkPtrs8132D18_p // =TextScriptNetworkPtrs8132D18
 	ldr r1, eTextScript201BF00_p // =eTextScript201BF00
 	ldr r2, off_8132D50 // =eDecompBuffer2013A00
 	bl sub_8123300
+
+  // Disabling this causes the save menu to have a black background
 	// j
 	mov r0, #0
 	// i
@@ -5145,7 +5212,8 @@ loc_8132CD4:
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl CopyBackgroundTiles
-	thumb_func_end saveMenu_8132CB8
+
+	thumb_func_end saveMenu_config_textscript_8132CB8
 
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -6348,25 +6416,34 @@ sub_81337E8:
 	push {lr}
 	bl sub_81355D8
 	beq loc_813381E
+
 	ldr r0, off_8133888 // =sSubmenu 
+
 	ldrb r1, [r0,#0x2] // (sSubmenu.unk_02 - 0x2009a30)
+
 	cmp r1, #0x24 
 	beq loc_8133864
+
 	ldrb r1, [r0,#0x1b] // (sSubmenu.unk_1B - 0x2009a30)
+
 	mov r2, #0x40 
 	tst r1, r2
 	bne loc_8133864
+
 	mov r0, #JOYPAD_START | JOYPAD_B | JOYPAD_A
 	bl IsButtonPressed
 	beq loc_8133830
+
 	mov r0, #0x10
 	strb r0, [r5,#1]
 	mov r0, #0
 	strb r0, [r5,#2]
 	mov r0, #0x17
 	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
+
 	mov r0, #SOUND_UNSELECT_7B
 	bl PlaySoundEffect
+
 	b loc_8133864
 loc_813381E:
 	bl sub_8133BB4
@@ -7182,7 +7259,7 @@ loc_8133ECA:
 	add r7, #4
 	ldr r1, [r5,r7]
 	add r7, #4
-	bl sub_811FB84
+	bl sub_811FB84 // (a0: u32?, a1: usize) -> u32?
 	str r0, [r4,r6]
 	add r6, #4
 	mov r1, #0
@@ -8761,7 +8838,7 @@ loc_8134B74:
 	mov r0, r4
 	mov r1, r6
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, r4
 	add r0, #0x20 
 	mov r1, r4
@@ -8794,7 +8871,7 @@ loc_8134BE8:
 	mov r0, r4
 	mov r1, r6
 	mov r2, #0x14
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	b loc_8134CD6
 loc_8134C00:
 	ldrh r0, [r6,#0x1c]
@@ -8804,7 +8881,7 @@ loc_8134C00:
 	mov r0, r4
 	mov r1, r6
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, [r4,#0x14]
 	lsr r1, r0, #0x10
 	sub r1, #1
@@ -8846,15 +8923,15 @@ loc_8134C58:
 	ldr r1, off_8134EA4 // =unk_2035C6C 
 	mov r0, r6
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, r4
 	mov r1, r6
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, off_8134EA4 // =unk_2035C6C 
 	mov r1, r4
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, [r4,#0x14]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -8873,11 +8950,11 @@ loc_8134C8E:
 	ldr r1, off_8134EA4 // =unk_2035C6C 
 	mov r0, r6
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, r4
 	mov r1, r6
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldrh r0, [r5,#0x28]
 	add r0, #1
 	strh r0, [r5,#0x28]
@@ -8889,7 +8966,7 @@ loc_8134C8E:
 	mov r4, r1
 	ldr r0, off_8134EA4 // =unk_2035C6C 
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, [r4,#0x14]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -8958,7 +9035,7 @@ loc_8134D28:
 	mov r2, #1
 	strh r2, [r3,#0x14]
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldrh r0, [r5,#0x28]
 	add r0, #1
 	strh r0, [r5,#0x28]
@@ -9028,7 +9105,7 @@ loc_8134DC8:
 	ldr r1, off_8134E98 // =word_202A020 
 	add r1, r1, r4
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldrh r0, [r5,#0x1e]
 	bl sub_8134EA8
 	strb r0, [r5,#0x17]
@@ -9061,7 +9138,7 @@ loc_8134E10:
 	mov r0, r7
 	add r1, r1, r4
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldrh r0, [r5,#0x1e]
 	bl sub_8134EA8
 	strb r0, [r5,#0x17]
@@ -9086,15 +9163,15 @@ loc_8134E58:
 	ldr r1, off_8134EA4 // =unk_2035C6C 
 	mov r0, r4
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, r6
 	mov r1, r4
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, off_8134EA4 // =unk_2035C6C 
 	mov r1, r6
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, #SOUND_MENU_SELECT
 	bl PlaySoundEffect
 	bl sub_8134F78
@@ -9672,7 +9749,7 @@ sub_813527C:
 	beq loc_8135294
 	mov r3, #0x20 
 	mul r2, r3
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r1, #0x20 
 	mul r1, r6
 	add r4, r4, r1
@@ -9873,7 +9950,7 @@ sub_8135404:
 	add r0, r0, r1
 	ldr r1, off_81354F8 // =unk_203768C 
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r4, [r5,#0x5c]
 	ldr r6, [r5,#0x60]
 	cmp r4, r6
@@ -9889,7 +9966,7 @@ loc_8135426:
 	ldr r2, off_81354F4 // =word_202A020 
 	add r0, r0, r2
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	add r6, #1
 	cmp r4, r6
 	bgt loc_8135426
@@ -9899,7 +9976,7 @@ loc_8135426:
 	add r1, r1, r0
 	ldr r0, off_81354F8 // =unk_203768C 
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldrh r0, [r5,#0x1c]
 	ldr r1, dword_81354FC // =0xffff 
 	cmp r0, r1
@@ -9935,7 +10012,7 @@ loc_813547C:
 	ldr r2, off_81354F4 // =word_202A020 
 	add r0, r0, r2
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	sub r6, #1
 	b loc_813547C
 loc_813549C:
@@ -9945,7 +10022,7 @@ loc_813549C:
 	add r1, r1, r0
 	ldr r0, off_81354F8 // =unk_203768C 
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldrh r0, [r5,#0x1c]
 	ldr r1, dword_81354FC // =0xffff 
 	cmp r0, r1
@@ -10117,9 +10194,11 @@ off_81355D4: .word 0x3C0
 	thumb_func_start sub_81355D8
 sub_81355D8:
 	mov r1, #0
+
 	ldr r0, off_81355E8 // =sSubmenu 
 	ldrb r0, [r0]
 	cmp r0, #0x20 
+
 	beq loc_81355E4
 	mov r1, #1
 loc_81355E4:
@@ -10753,7 +10832,7 @@ sub_8135B54:
 	ldr r0, [r0,#oToolkit_SubmenuPtr]
 	// size
 	mov r1, #0x80
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	cmp r4, #0x28 
 	bne loc_8135B88
 	bl owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
@@ -10782,7 +10861,7 @@ loc_8135BA2:
 	add r7, #4
 	ldr r1, [r5,r7]
 	add r7, #4
-	bl sub_811FB84
+	bl sub_811FB84 // (a0: u32?, a1: usize) -> u32?
 	str r0, [r4,r6]
 	add r6, #4
 	mov r1, #0
@@ -10807,7 +10886,7 @@ loc_8135BB4:
 	ldr r0, off_8135C20 // =unk_201CF80 
 	ldr r1, off_8135C1C // =unk_30019E0 
 	ldr r2, off_8135C24 // =0x100 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	// j
 	mov r0, #0
 	// i
@@ -10951,7 +11030,7 @@ sub_8135D9C:
 	ldr r0, off_8135ECC // =word_201DA80 
 	ldr r1, off_8135ED4 // =0xbc 
 	lsl r1, r1, #2
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldrb r0, [r5]
 	cmp r0, #0x28 
 	bne loc_8135DB6
@@ -12058,7 +12137,7 @@ sub_813660C:
 	ldr r0, off_8136638 // =unk_201CF80 
 	ldr r1, off_813663C // =unk_30019E0 
 	ldr r2, off_8136640 // =0x100 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, #1
 	b loc_8136632
 loc_8136620:
@@ -12068,7 +12147,7 @@ loc_8136620:
 	add r0, r0, r1
 	ldr r1, off_813663C // =unk_30019E0 
 	ldr r2, off_8136640 // =0x100 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, #0
 loc_8136632:
 	bl sub_8136644
@@ -12256,7 +12335,7 @@ sub_813677C:
 	push {lr}
 	ldr r0, off_8136798 // =unk_2022B70 
 	mov r1, #8
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 off_8136798: .word unk_2022B70
 off_813679C: .word unk_2000090
@@ -12978,7 +13057,7 @@ sub_8136D8C:
 	bl SetEventFlagFromImmediate
 	ldr r0, off_8136EC0 // =byte_2009390 
 	mov r1, #0x10
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	// initRefs
 	ldr r0, off_8136EC4 // =off_8136EC8
 	bl decompAndCopyData // (u32 *initRefs) -> void
@@ -13000,7 +13079,7 @@ sub_8136DC8:
 	ldr r0, off_8136DD8 // =byte_86A5D20 
 	ldr r1, off_8136DDC // =unk_30019A0 
 	mov r2, #0x20 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8136DD8: .word byte_86A5D20
@@ -14308,7 +14387,7 @@ sub_8137790:
 	ldr r3, [r3,#oToolkit_S_Chip_2002178_Ptr]
 	add r1, r1, r3
 	mov r2, #0x3c 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, r4
 	mov r1, #1
 	bl sub_8021AB4
@@ -14352,7 +14431,7 @@ sub_8137808:
 	ldr r0, off_8137880 // =unk_20018EC 
 	mov r4, r0
 	mov r1, #4
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #0
 	bl takeChipsWhenGivingFolderIfFolderSlotInUseMaybe_813781C
 	pop {r4,pc}
@@ -14663,7 +14742,7 @@ loc_8137ABA:
 	ldr r0, [r0,#oToolkit_SubmenuPtr]
 	// size
 	mov r1, #0x80
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #0xc
 	strb r0, [r5]
 loc_8137AC8:
@@ -14684,7 +14763,7 @@ loc_8137AD6:
 	add r7, #4
 	ldr r1, [r5,r7]
 	add r7, #4
-	bl sub_811FB84
+	bl sub_811FB84 // (a0: u32?, a1: usize) -> u32?
 	str r0, [r4,r6]
 	add r6, #4
 	mov r1, #0
@@ -14782,7 +14861,7 @@ sub_8137BF0:
 	ldr r0, off_8137C44 // =unk_201CF00 
 	// size
 	mov r1, #0x24 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r5, #0
 	mov r6, #0
 	mov r7, #0
@@ -15538,7 +15617,7 @@ sub_8138294:
 	bl sub_8138750
 	// size
 	mov r1, #0x24 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	mov r0, #0x38 

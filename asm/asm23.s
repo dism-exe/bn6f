@@ -233,7 +233,7 @@ sub_8089244:
 	add r0, r0, r1
 	ldr r1, off_808927C // =byte_30016F0
 	mov r2, #0x20
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	// initRefs
 	ldr r0, off_8089264 // =byte_8089268
 	bl decompAndCopyData // (u32 *initRefs) -> void

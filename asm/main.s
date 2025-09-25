@@ -1,12 +1,12 @@
 
 	thumb_func_start main_
 main_:
-	bl main_initToolkitAndOtherSubsystems
+	bl main_initToolkitAndOtherSubsystems // () -> ()
 	bl SeedRNG // () -> ()
-	bl clear_e200AD04 // () -> void
-	bl sub_803D1A8 // () -> void
+	bl clear_e200AD04 // () -> ()
+	bl init_803D1A8 // () -> ()
 main_gameRoutine:
-	bl main_pollGeneralLCDStatus_STAT_LYC_ // () -> void
+	bl main_pollGeneralLCDStatus_STAT_LYC_ // () -> ()
 	bl main_awaitFrame
 	bl sub_80007BE
 	bl CallBGScrollCallback1
@@ -20,15 +20,15 @@ main_gameRoutine:
 	bl copyToVRAMAndClear_iBGTileIdBlocks_Ptr
 	bl main_static_80003E4
 
-    // advance cur frame
+  // advance cur frame
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CurFramePtr]
 	ldrh r1, [r0]
 	add r1, #1
 	strh r1, [r0]
-    bl CapIncrementGameTimeFrames // () -> void
+  bl CapIncrementGameTimeFrames // () -> void
 
-    // (*main_subsystemJumptable[*tk->oToolkit_MainJumptableIndexPtr])()
+  // (*main_subsystemJumptable[*tk->oToolkit_MainJumptableIndexPtr])()
 	ldr r0, off_8000348 // =main_subsystemJumpTable
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
@@ -37,12 +37,14 @@ main_gameRoutine:
 	mov lr, pc
 	bx r0
 
-    // update frame rng
+  // update frame rng
 	bl GetRNGSecondary // () -> void
 
 	bl isSameSubsystem_800A732 // () -> !zf
 	beq loc_800032A
-    bl subsystem_triggerTransition_800630A
+
+  bl subsystem_triggerTransition_800630A
+
 loc_800032A:
 
 	bl chatbox_onUpdate // () -> void
@@ -51,7 +53,8 @@ loc_800032A:
 	ldr r0, off_8000344 // =copyTo_iObjectAttr3001D70_3006814+1
 	mov lr, pc
 	bx r0	
-    bl main_static_8000454
+
+  bl main_static_screen_fade_8000454
 
 	b main_gameRoutine
 	.balign 4, 0
@@ -68,7 +71,7 @@ main_subsystemJumpTable:
 	.word cb_803CBA6+1
 	.word cb_803CCD6+1
 	.word reqBBS_cb_draw_813E0A4+1
-	.word SubMenuControl+1
+	.word SubMenuControl+1 // () -> ()
 	.word ShopControl+1
 	.word cb_8048FD4+1
 	.word ChipTraderControl+1
@@ -108,7 +111,7 @@ off_80003CC: .word GeneralLCDStatus_STAT_LYC_
 	thumb_func_end main_awaitFrame
 
 	thumb_local_start
-main_pollGeneralLCDStatus_STAT_LYC_: // () -> void
+main_pollGeneralLCDStatus_STAT_LYC_: // () -> ()
 	push {lr}
 	ldr r0, off_80003E0 // =GeneralLCDStatus_STAT_LYC_
 	mov r2, #1
@@ -186,61 +189,94 @@ dword_8000450: .word 0x3FF
 	thumb_func_end main_static_80003E4
 
 	thumb_local_start
-main_static_8000454:
+main_static_screen_fade_8000454:
 	push {r4-r7,lr}
+
 	bl IsScreenFadeActive // () -> zf
 	beq locret_80004A2
+
 	bl test0x200bc50_0x5_813D60C
 	bne locret_80004A2
+
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]
 	ldrb r0, [r0]
+
 	cmp r0, #0x10
 	beq locret_80004A2
+
 	ldr r0, [r7,#oToolkit_JoypadPtr]
 	ldrh r2, [r0,#oJoypad_Pressed]
 	ldrh r0, [r0,#oJoypad_Held]
+
 	ldr r1, [r7,#oToolkit_MainJumptableIndexPtr]
 	add r1, #4
 	ldrb r4, [r1]
 	sub r4, #1
+
 	cmp r4, #0
 	bgt loc_80004A0
+
 	mov r4, #0
 	mov r3, #0xf
 	and r0, r3
+
 	cmp r0, r3
 	bne loc_80004A0
+
 	and r2, r3
+
 	tst r2, r2
 	beq loc_80004A0
+
 	push {r1}
-	bl start_800023C // () -> void
-	bl main_initToolkitAndOtherSubsystems
-	bl clear_e200AD04 // () -> void
+
+	bl start_800023C // () -> ()
+	bl main_initToolkitAndOtherSubsystems // () -> ()
+	bl clear_e200AD04 // () -> ()
 	pop {r1}
+
 	mov r4, #0xa
+
 loc_80004A0:
 	strb r4, [r1]
+
 locret_80004A2:
 	pop {r4-r7,pc}
-	thumb_func_end main_static_8000454
+	thumb_func_end main_static_screen_fade_8000454
 
+/// critical: Game won't boot if this is skipped
+/// tags: "#critical, "
 	thumb_local_start
-main_initToolkitAndOtherSubsystems:
+main_initToolkitAndOtherSubsystems: // () -> ()
+
+  // let v0: ?;
 	mov r0, #1
+
 	b loc_80004AA
+
+  // seems ununused
 	mov r0, #0
+
 loc_80004AA:
 	push {r5,lr}
+
 	push {r0}
-	bl SetPrimaryToolkitPointers // () -> void
-	bl RandomizeExtraToolkitPointers
+	bl SetPrimaryToolkitPointers // () -> ()
+
+	bl RandomizeExtraToolkitPointers // () -> ?
+
 	pop {r1}
+
+  // let v0: u32?
 	ldr r0, off_8000564 // =0x40
+
+  // v1
 	tst r1, r1
 	beq loc_80004C0
+
 	ldr r0, off_8000568 // =0xc0
+
 loc_80004C0:
 	bl SetRenderInfoLCDControl
 	bl main_zeroFill_80017EC
@@ -284,8 +320,8 @@ loc_80004C0:
 	ldr r0, [r0,#oToolkit_MainJumptableIndexPtr]
 	// size
 	mov r1, #8
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	bl sub_803D1A8 // () -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+	bl init_803D1A8 // () -> ()
 	bl init_eStartScreenAnimationControl200B1A0_1
 	pop {r5,pc}
 	.balign 4, 0

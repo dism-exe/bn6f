@@ -357,7 +357,7 @@ initUncompSpriteState_80028d4:
 	mov r0, r5
 	// size
 	mov r1, #0x50
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r0}
 	str r0, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
 	mov r0, r5

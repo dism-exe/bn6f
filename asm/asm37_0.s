@@ -9,7 +9,7 @@ sub_813B768:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk200431c_Ptr]
 	mov r1, #0x10
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end sub_813B768
@@ -293,13 +293,13 @@ zeroFill_813B934:
 	ldr r0, [r0,#oToolkit_Unk2004190_Ptr]
 	// size
 	ldr r1, off_813B94C // =0x188 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, r10
 	// memBlock
 	ldr r0, [r0,#oToolkit_Unk200414c_Ptr]
 	// size
 	mov r1, #0x40 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.balign 4, 0
 off_813B94C: .word 0x188
@@ -482,12 +482,12 @@ sub_813BA64:
 	ldr r0, [r0,#oToolkit_Unk200414c_Ptr]
 	ldr r1, off_813BA9C // =eTextScript201BA00
 	mov r2, #0x40 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk2004190_Ptr]
 	ldr r1, off_813BAA0 // =byte_201BA40
 	ldr r2, off_813BAA4 // =0x188 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	thumb_func_end sub_813BA64
 
@@ -498,12 +498,12 @@ sub_813BA80:
 	ldr r1, [r1,#oToolkit_Unk200414c_Ptr]
 	ldr r0, off_813BA9C // =eTextScript201BA00
 	mov r2, #0x40 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_Unk2004190_Ptr]
 	ldr r0, off_813BAA0 // =byte_201BA40
 	ldr r2, off_813BAA4 // =0x188 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	.balign 4, 0
 off_813BA9C: .word eTextScript201BA00
@@ -518,12 +518,12 @@ sub_813BAA8:
 	ldr r0, [r0,#oToolkit_Unk200414c_Ptr]
 	ldr r1, off_813BAE0 // =byte_201BC40
 	mov r2, #0x40 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk2004190_Ptr]
 	ldr r1, off_813BAE4 // =byte_201BC80
 	ldr r2, off_813BAE8 // =0x188 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	thumb_func_end sub_813BAA8
 
@@ -534,12 +534,12 @@ sub_813BAC4:
 	ldr r1, [r1,#oToolkit_Unk200414c_Ptr]
 	ldr r0, off_813BAE0 // =byte_201BC40
 	mov r2, #0x40 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_Unk2004190_Ptr]
 	ldr r0, off_813BAE4 // =byte_201BC80
 	ldr r2, off_813BAE8 // =0x188 
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	.balign 4, 0
 off_813BAE0: .word byte_201BC40
@@ -689,16 +689,16 @@ sub_813BBD4:
 	ldr r0, [r0,#oToolkit_Unk200431c_Ptr]
 	mov r7, r0
 	mov r1, #0x10
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r0, off_813BD18 // =unk_2006CF8 
 	mov r1, #0x31 
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r0, off_813BD1C // =unk_2006C88 
 	mov r1, #0x31 
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r0, off_813BD20 // =unk_2006CC0 
 	mov r1, #0x31 
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, r7
 	bl sub_813BC1C
 	mov r0, r7
@@ -875,7 +875,7 @@ sub_813BD24:
 loc_813BD2C:
 	ldr r0, off_813BE88 // =byte_2006C50 
 	mov r1, #0x31 
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r0, off_813BE88 // =byte_2006C50 
 	mov r8, r0
 	mov r0, r6
@@ -1299,7 +1299,7 @@ sub_813C020:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk200431c_Ptr]
 	mov r1, #0x10
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end sub_813C020
@@ -1592,7 +1592,7 @@ sub_813C324:
 	push {lr}
 	ldr r0, off_813C330 // =unk_2000090 
 	mov r1, #8
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.balign 4, 0
 off_813C330: .word unk_2000090
@@ -1832,10 +1832,10 @@ sub_813C584:
 	str r0, [sp]
 	ldr r0, off_813C638 // =byte_2006D68 
 	mov r1, #0x31 
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r0, off_813C63C // =byte_2006DA0 
 	mov r1, #0x31 
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r7, #0
 	mov r5, #0
 loc_813C59E:
@@ -1949,7 +1949,7 @@ applyNavicustPrograms_813C684:
 	sub sp, sp, #4
 	ldr r0, off_813C744 // =byte_2006DD8 
 	mov r1, #8
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r6, #6
 	bl sub_813BD0C
 	str r7, [sp]
@@ -3743,7 +3743,7 @@ sub_813D66C:
 	push {lr}
 	ldr r0, off_813D68C // =byte_200AF80 
 	mov r1, #0x18
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 off_813D68C: .word byte_200AF80
 	push {lr}
@@ -4161,7 +4161,7 @@ sub_813D960:
 	mov r0, r7
 	// size
 	mov r1, #0x10
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	strb r4, [r7,#0x7] // (byte_200BC57 - 0x200bc50)
 	pop {r4,r7,pc}
 	.balign 4, 0x00
@@ -4274,11 +4274,11 @@ loc_813DA22:
 	ldr r0, off_813DB10 // =eStruct2036780 
 	ldr r1, off_813DB14 // =unk_20399F0 
 	mov r2, #0x10
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, off_813DB18 // =eStruct2036780 
 	ldr r1, off_813DB1C // =unk_2039A00 
 	mov r2, #0x10
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 locret_813DA36:
 	pop {r4,pc}
 	thumb_func_end sub_813DA0C
@@ -4291,12 +4291,12 @@ locret_813DA36:
 	mov r2, r1
 	mov r1, r0
 	ldr r0, [r3,#0x34]
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 locret_813DA4C:
 	pop {pc}
 	.byte 0, 0
 	push {lr}
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	push {r4,lr}
 	mov r2, r1
@@ -4326,7 +4326,7 @@ sub_813DA84:
 	ldr r0, off_813DA90 // =byte_2010290 
 	// size
 	mov r1, #0x10
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.balign 4, 0
 off_813DA90: .word byte_2010290

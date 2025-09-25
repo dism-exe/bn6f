@@ -3645,7 +3645,7 @@ int __noreturn dead_8005E54()
     zeroFill_80024A2();
     sub_8003962();
     zeroFill_8003AB2();
-    (loc_803D1AC)();
+    (call_803D1AC)();
     return reloadCurNaviStatBoosts_813c3ac();
 }
 

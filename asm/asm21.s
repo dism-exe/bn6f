@@ -4,7 +4,7 @@ sub_8080D90:
 	push {lr}
 	ldr r0, off_8080D9C // =eBGScrollCBCounters 
 	mov r1, #8
-	bl ZeroFillByByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8080D9C: .word eBGScrollCBCounters

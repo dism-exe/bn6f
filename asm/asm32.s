@@ -16381,10 +16381,13 @@ loc_8116FA8:
 	bl sub_81170AC
 	ldrh r0, [r5,#0xe]
 	bl sub_81170C0
+
 	ldr r0, off_8116FD0 // =sSubmenu
 	ldrb r0, [r0]
+
 	cmp r0, #0x18
 	beq loc_8116FC0
+
 	cmp r0, #8
 	bne locret_8116FCC
 loc_8116FC0:
@@ -16444,14 +16447,18 @@ loc_8117016:
 	ldr r6, [r2,r3]
 	ldr r1, [sp,#4]
 	add r1, r1, r6
+
 	bl sprite_setCoordinates
 	ldr r0, [sp]
+
 	cmp r0, #0x38
 	bge loc_8117042
+
 	ldr r0, off_8117080 // =sSubmenu
 	ldrb r0, [r0]
 	cmp r0, #0x18
 	beq loc_8117038
+
 	cmp r0, #8
 	bne loc_8117042
 loc_8117038:
@@ -17709,7 +17716,7 @@ sub_8117A84:
 	add r0, r0, r1
 	mov r1, r6
 	mov r2, #0x40
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 loc_8117A98:
 	add r6, #0x40
 	pop {pc}
@@ -17845,7 +17852,7 @@ sub_8117B94:
 	add r0, r0, r1
 	mov r1, r6
 	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 loc_8117BAE:
 	add r6, #0x20
 	lsl r0, r7, #5
@@ -17853,7 +17860,7 @@ loc_8117BAE:
 	add r0, r0, r1
 	mov r1, r6
 	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	add r6, #0x20
 	pop {r7,pc}
 	.balign 4, 0
@@ -17994,10 +18001,14 @@ sub_8117CCC:
 	thumb_local_start
 sub_8117CD4:
 	push {r7,lr}
+
 	ldr r7, off_8117D00 // =sSubmenu
+
 	bl sub_81355D8
 	beq loc_8117CE4
+
 	bl sub_81312F4
+
 	mov r7, r0
 loc_8117CE4:
 	mov r1, #0x18
@@ -18369,13 +18380,18 @@ off_8117FE0: .word sub_8117FF8+1
 	thumb_local_start
 sub_8117FF8:
 	push {lr}
+
 	bl sub_81182A4
+
 	ldrb r0, [r5,#0xa]
+
 	cmp r0, #0
 	bne locret_811800A
+
 	ldr r0, off_8118310 // =sSubmenu
 	mov r1, #0
 	strb r1, [r0,#0xd] // (sSubmenu.unk_0D - 0x2009a30)
+
 locret_811800A:
 	pop {pc}
 	thumb_func_end sub_8117FF8
@@ -18790,12 +18806,17 @@ loc_8118340:
 	thumb_func_start sub_8118344
 sub_8118344:
 	push {lr}
+
 	ldr r6, off_8118364 // =sSubmenu
+
 	ldr r0, off_8118354 // =off_8118358
+
 	ldrb r1, [r5,#8]
 	ldr r0, [r0,r1]
+
 	mov lr, pc
 	bx r0
+
 	pop {pc}
 	.balign 4, 0
 off_8118354: .word off_8118358
@@ -19402,12 +19423,17 @@ sub_81187DC:
 	thumb_func_start sub_81187E8
 sub_81187E8:
 	push {lr}
+
 	ldr r6, off_8118808 // =sSubmenu
+
 	ldr r0, off_81187F8 // =off_81187FC
+
 	ldrb r1, [r5,#8]
 	ldr r0, [r0,r1]
+
 	mov lr, pc
 	bx r0
+
 	pop {pc}
 	.balign 4, 0
 off_81187F8: .word off_81187FC
@@ -20109,12 +20135,17 @@ sub_8118D54:
 	thumb_func_start sub_8118D60
 sub_8118D60:
 	push {lr}
+
 	ldr r6, off_8118D80 // =sSubmenu
+
 	ldr r0, off_8118D70 // =off_8118D74
+
 	ldrb r1, [r5,#8]
+
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
+
 	pop {pc}
 	.balign 4, 0
 off_8118D70: .word off_8118D74
@@ -20257,12 +20288,15 @@ sub_8118E78:
 	thumb_func_start sub_8118E84
 sub_8118E84:
 	push {lr}
+
 	ldr r6, off_8118EA4 // =sSubmenu
 	ldr r0, off_8118E94 // =off_8118E98
 	ldrb r1, [r5,#8]
 	ldr r0, [r0,r1]
+
 	mov lr, pc
 	bx r0
+
 	pop {pc}
 	.balign 4, 0
 off_8118E94: .word off_8118E98
@@ -20827,7 +20861,7 @@ loc_8119478:
 	add r1, r1, r0
 	mov r2, #0x20
 	ldr r0, [r7,#0x28]
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldrb r0, [r5,#0xc]
 	mov r1, #0x40
 	mul r0, r1
@@ -20848,7 +20882,7 @@ loc_8119478:
 	add r1, r1, r0
 	mov r2, #0x20
 	ldr r0, off_8119668 // =byte_86E587C
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldrb r0, [r7,#6]
 	mov r1, #0x80
 	mul r0, r1
@@ -20869,7 +20903,7 @@ loc_8119478:
 	add r1, r1, r0
 	mov r2, #0x20
 	ldr r0, off_8119674 // =dword_86E43DC
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldrh r0, [r7,#0x1a]
 	ldrb r1, [r7,#9]
 	mov r2, #0x10
@@ -20981,7 +21015,7 @@ loc_81195C6:
 	ldr r1, off_811967C // =dword_86E411C
 	add r0, r0, r1
 	mov r1, r7
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	sub r7, #0x40
 	sub r6, #1
 	bgt loc_81195C6
@@ -21339,9 +21373,12 @@ sub_8119880:
 	ldr r1, off_81198AC // =byte_811935C
 	ldrb r0, [r1,r0]
 	beq locret_811989E
+
 	ldr r6, off_81198A8 // =sSubmenu
+
 	bl sub_81355D8
 	beq loc_8119898
+
 	bl sub_81312F4
 	mov r6, r0
 loc_8119898:
@@ -21372,9 +21409,12 @@ sub_81198B0:
 	beq loc_81198DE
 	cmp r0, #5
 	beq loc_81198DE
+
 	ldr r6, off_81198E4 // =sSubmenu
+
 	bl sub_81355D8
 	beq loc_81198D6
+
 	bl sub_81312F4
 	mov r6, r0
 loc_81198D6:
@@ -22488,15 +22528,21 @@ loc_811A240:
 	thumb_local_start
 sub_811A24C:
 	push {lr}
+
 	ldrb r0, [r5,#5]
+
 	cmp r0, #2
 	beq locret_811A260
+
 	cmp r0, #3
 	beq locret_811A260
+
 	ldr r6, off_811A264 // =sSubmenu
 	ldrb r0, [r6,#0xe] // (sSubmenu.unk_0E - 0x2009a30)
 	ldrb r1, [r6,#0xf] // (sSubmenu.unk_0F - 0x2009a30)
+
 	cmp r0, r1
+
 locret_811A260:
 	pop {pc}
 	.balign 4, 0
@@ -22507,10 +22553,13 @@ off_811A264: .word sSubmenu
 sub_811A268:
 	push {r4-r7,lr}
 	ldr r3, off_811A290 // =dword_201FC20
+
 	ldr r6, off_811A294 // =sSubmenu
 	ldrb r0, [r6]
+
 	cmp r0, #8
 	beq loc_811A276
+
 	ldr r6, off_811A298 // =unk_2037780
 loc_811A276:
 	mov r1, #0x40
@@ -22736,12 +22785,17 @@ sub_811A434:
 	mov r0, #0x23
 	strb r0, [r5]
 	mov r4, #0x24
+
 	ldr r7, off_811A4C8 // =byte_20231A0
+
 	ldr r0, off_811A4B4 // =sSubmenu
 	ldrb r0, [r0,#0x1] // (sSubmenu.jo_01 - 0x2009a30)
+
 	cmp r0, #0x1c
 	bne loc_811A448
+
 	ldr r7, off_811A4D0 // =byte_20231A0
+
 loc_811A448:
 	ldrb r2, [r5,#4]
 	tst r2, r2
@@ -22972,10 +23026,13 @@ locret_811A63C:
 	thumb_local_start
 sub_811A640:
 	push {r4-r7,lr}
+
 	ldr r7, off_811A664 // =sSubmenu
 	ldrb r0, [r7,#0x1] // (sSubmenu.jo_01 - 0x2009a30)
+
 	cmp r0, #0x1c
 	bne loc_811A652
+
 	ldrb r1, [r5,#6]
 	bl sub_811A704
 	b locret_811A662
@@ -29242,7 +29299,7 @@ sub_811E0BA:
 	mov r7, r0
 	mov r1, #0xa
 	lsl r1, r1, #5
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r1, off_811E164 // =eStruct2001010
 	ldrb r4, [r1,#0x10] // (dword_2001020 - 0x2001010)
 	cmp r4, #0
@@ -30069,7 +30126,7 @@ sub_811E744:
 	ldr r0, off_811E798 // =unk_2027000
 	mov r1, #0x34
 	lsl r1, r1, #4
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl sub_8144010
 	mov r6, r0
 	ldr r7, off_811E798 // =unk_2027000
@@ -30500,7 +30557,7 @@ sub_811EC00:
 	mov r4, r0
 	// size
 	mov r1, #0x18
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.balign 4, 0
 	thumb_func_end sub_811EC00
@@ -30513,13 +30570,13 @@ sub_811EC10:
 	ldr r0, [r0,#oToolkit_SubmenuPtr]
 	// size
 	mov r1, #0x80
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	// memBlock
 	ldr r0, off_811EC4C // =ePETMenuData
 	mov r4, r0
 	// size
 	mov r1, #0x18
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #1
 	bl SetPETMenuDataFlag
 	ldr r0, dword_811EC44 // =0xffffffe0
@@ -30560,7 +30617,7 @@ loc_811EC72:
 	add r7, #4
 	ldr r1, [r5,r7]
 	add r7, #4
-	bl sub_811FB84
+	bl sub_811FB84 // (a0: u32?, a1: usize) -> u32?
 	str r0, [r4,r6]
 	add r6, #4
 	mov r1, #0
@@ -30921,7 +30978,7 @@ sub_811EFB8:
 	push {r4-r7,lr}
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_Unk200a220_Ptr]
-	bl sub_8123360
+	bl sub_8123360 // () -> bool
 	tst r0, r0
 	bne loc_811EFCE
 	mov r0, #0
@@ -31602,7 +31659,7 @@ sub_811F6C0:
 	mov r4, r0
 	// size
 	mov r1, #0x80
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r5, off_811F704 // =ePETMenuData
 	ldrb r0, [r5,#0x4] // (byte_200DF24 - 0x200df20)
 	lsl r0, r0, #2
@@ -31623,7 +31680,7 @@ sub_811F6E0:
 	mov r4, r0
 	// size
 	mov r1, #0x80
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	ldr r5, off_811F704 // =ePETMenuData
 	mov r0, #0x10
 	strb r0, [r4]
@@ -31696,44 +31753,45 @@ off_811F76C: .word 0x40
 off_811F770: .word ePETMenuData
 	thumb_func_end sub_811F758
 
-// () -> void
-// Passes on control to the specific menu based on JumpTable811F7A0
+/// Passes on control to the specific menu based on JumpTable811F7A0
 	thumb_func_start SubMenuControl
-SubMenuControl:
+SubMenuControl: // () -> ()
 	push {r4-r7,lr}
 
-  // struct UnkSubMenuPtr* submenu_r5
+  // let submenu: *const UnkSubMenu;
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_SubmenuPtr]
 
-  // func* jt_r0
+  // let jt: *const (?) -> ?;
 	ldr r0, off_811F79C // =JumpTable811F7A0
 
-  // call jt_r0[submenu_r5[0]]
+  // call jt[submenu[0]]
 	ldrb r1, [r5]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
 
-  // 0 if (submenu_r5[0] == 0x18)
+  // 0 if (submenu[0] == 0x18)
 	ldrb r0, [r5]
 	cmp r0, #0x18
 	bne loc_811F794
 
   // 0 then
 
-  // 0.0 if (submenu_r5[1] == 0x18) return
+  // if (submenu[1] == 0x18) return;
 	ldrb r0, [r5,#1]
 	cmp r0, #0x18
 	beq locret_811F798
 
-  // 0.0 if (submenu_r5[1] == 0x1c) return
+  // if (submenu[1] == 0x1c) return;
 	cmp r0, #0x1c
 	beq locret_811F798
 
   // 0 endif
+
 loc_811F794:
 	bl GetRNG // () -> u32?
+
 locret_811F798:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -32276,33 +32334,43 @@ sub_811FB78:
 	thumb_func_end sub_811FB78
 
 	thumb_func_start sub_811FB84
-sub_811FB84:
+sub_811FB84: // (a0: u32?, a1: usize) -> u32?
 	push {r4-r7,lr}
+
 	ldr r4, dword_811FC0C // =0xffffffff
 	lsl r1, r1, #2
 	mov r7, r1
+
 	ldr r3, off_811FBB8 // =off_811FBBC
 	ldr r3, [r3,r1]
+
 	mov r6, #0
 	mov r1, #0
+
 loc_811FB94:
 	ldr r2, [r3,r1]
+
 	cmp r2, r0
 	bne loc_811FBAC
+
 	ldr r3, off_811FBD0 // =off_811FBD4
 	ldr r3, [r3,r7]
 	ldr r3, [r3,r1]
+
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldrb r1, [r1,#6]
 	lsl r1, r1, #2
+
 	ldr r4, [r3,r1]
 	b loc_811FBB4
 loc_811FBAC:
 	add r1, #4
 	ldr r2, dword_811FC0C // =0xffffffff
+
 	cmp r2, r0
 	bne loc_811FB94
+
 loc_811FBB4:
 	mov r0, r4
 	pop {r4-r7,pc}
@@ -33330,7 +33398,7 @@ sub_8120390:
 	mov r0, r3
 	mov r1, r2
 	mov r2, #0x38
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	mov r5, #0x20
 	ldr r0, [sp]
 	mul r0, r5
@@ -33378,7 +33446,7 @@ sub_81203E4:
 	mov r0, r2
 	// size
 	mov r1, #0x38
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r5, #0x20
 	ldr r0, [sp]
 	mul r0, r5

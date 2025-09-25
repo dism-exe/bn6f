@@ -6,7 +6,7 @@ sub_814187C:
 	mov r0, r5
 	add r0, #8
 	mov r1, #0x10
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #0x50 
 	strb r0, [r5,#0x10] // (dword_2001020 - 0x2001010)
 	movflag EVENT_700
@@ -508,7 +508,7 @@ loc_8141FA4:
 	push {r0-r7}
 	ldr r0, off_8142130 // =unk_2000BE0 
 	ldr r1, dword_8142038 // =0x140 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl sub_814189A
 	pop {r0-r7}
 loc_8141FB4:
@@ -717,7 +717,7 @@ sub_8142134:
 	mov r0, r5
 	add r0, #8
 	mov r1, #0x40 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	movflag EVENT_740
 	bl SetEventFlagFromImmediate
 	mov r0, #0
@@ -1315,7 +1315,7 @@ loc_8142746:
 loc_8142754:
 	ldr r0, off_81428D0 // =byte_2006670 
 	ldr r1, byte_8142774+20 // =0xa0 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl sub_81427F2
 	mov r0, r0
 	bl TestEventFlag // (u16 flag) -> !zf
@@ -1625,7 +1625,7 @@ sub_81429CA:
 	mov r6, r0
 	// size
 	mov r1, #0x10
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl sub_8142990
 	mov r4, r0
 	bl sub_81421D0
@@ -2567,7 +2567,7 @@ sub_81431C6:
 	bl sub_814339C
 	mov r0, r5
 	ldr r1, off_81431F4 // =0xa0 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #0
 	bl sub_81430B6
 	mov r0, r0
@@ -2828,7 +2828,7 @@ sub_814339C:
 	add r0, #8
 	// size
 	mov r1, #0x40 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #5
 	bl sub_81433D2
 	bl sub_8143406
@@ -3846,7 +3846,7 @@ sub_8143F20:
 	add r0, #8
 	// size
 	mov r1, #0x40 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 	thumb_func_end sub_8143F20

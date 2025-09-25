@@ -11,7 +11,7 @@ void __noreturn main_()
     main_initToolkitAndOtherSubsystems();
     SeedRNG();
     clear_e200AD04();
-    sub_803D1A8();
+    init_803D1A8();
     while ( 1 )
     {
         main_pollGeneralLCDStatus_STAT_LYC_();
@@ -38,7 +38,7 @@ void __noreturn main_()
         CallBGScrollCallback0();
         ProcessGFXAnims();
         copyTo_iObjectAttr3001D70_3006814();
-        main_static_8000454();
+        main_static_screen_fade_8000454();
     }
 }
 
@@ -125,7 +125,7 @@ LABEL_10:
 
 
 // 0x8000454
-void __cdecl main_static_8000454()
+void __cdecl main_static_screen_fade_8000454()
 {
     Toolkit *tk; // r10
     char zf; // zf
@@ -211,7 +211,7 @@ void __cdecl main_initToolkitAndOtherSubsystems()
     sub_80467D8();
     LOWORD(dword_2009930) = 1;
     ZeroFillByWord(tk->jo_gameSubsysSel, 8);
-    sub_803D1A8();
+    init_803D1A8();
     init_eStartScreenAnimationControl200B1A0_2();
 }
 

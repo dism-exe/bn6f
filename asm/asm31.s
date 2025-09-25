@@ -150926,7 +150926,7 @@ sub_8102CF8:
 	add r0, sp, #0x28
 	// size
 	mov r1, #0x30 
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	bl object_getFrontDirection // () -> int
 	ldr r2, [sp]
 	ldrb r2, [r2,#0x12]

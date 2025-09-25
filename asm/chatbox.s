@@ -118,14 +118,14 @@ loc_803FDA8:
 		ldr r0, off_803FDFC // =byte_86BFE20
 		ldr r1, off_803FE00 // =unk_3001B40
 		mov r2, #0x20
-		bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+		bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	b .fi_803FDD0
 .if_803FDC6
 	// else
 		ldr r0, off_803FE04 // =byte_86BFE40
 		ldr r1, off_803FE00 // =unk_3001B40
 		mov r2, #0x20
-		bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+		bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 .fi_803FDD0
 
 	ldr r0, off_803FDE0 // =byte_803FDE4
@@ -178,14 +178,14 @@ loc_803FE14:
 		ldr r0, off_803FE68 // =byte_86C0900
 		ldr r1, off_803FE6C // =unk_3001B40
 		mov r2, #0x20
-		bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+		bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	b .fi_803FE3C
 .if_803FE32
 	// else
 		ldr r0, off_803FE70 // =byte_86C0920
 		ldr r1, off_803FE6C // =unk_3001B40
 		mov r2, #0x20
-		bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+		bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 .fi_803FE3C
 
 	ldr r0, off_803FE4C // =byte_803FE50
@@ -222,7 +222,7 @@ chatbox_runScriptAndSetWhiteDot803FE74: // (TextScriptArchive *archive, u8 scrip
 	ldr r0, off_803FEAC // =spriteWhiteDot 
 	ldr r1, off_803FEB0 // =unk_3001B40 
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	
 	pop {r4,r5,pc}
 	.balign 4, 0
@@ -890,7 +890,7 @@ chatbox_runScript: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	// size
 	ldr r1, off_80404A4 // =0x230
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r0-r3}
 	str r2, [r5,#oChatbox_Unk_4C] // ChatBoxPropreties.unk_4C
 	str r3, [r5,#oChatbox_Unk_50] // ChatBoxPropreties.unk_50
@@ -987,11 +987,11 @@ chatbox_runScript: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	ldr r0, off_804047C // =byte_86BEC80 
 	ldr r1, off_8040480 // =unk_3001B40 
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, off_8040484 // =dword_86B7AC0
 	ldr r1, off_8040488 // =byte_3001710
 	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {r4-r6,pc}
 	.balign 4, 0
 off_804046C: .word dword_86BEB20
@@ -1032,7 +1032,7 @@ chatbox_reqBBS_80404C0:
 	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	// size
 	ldr r1, off_80405DC // =0x230
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r0-r3}
 	str r2, [r5,#0x4c] // ChatBoxPropreties.unk_4C
 	str r3, [r5,#0x50] // ChatBoxPropreties.unk_50
@@ -1126,11 +1126,11 @@ chatbox_reqBBS_80404C0:
 	ldr r0, off_80405B4 // =byte_86BEC80 
 	ldr r1, off_80405B8 // =unk_3001B40 
 	mov r2, #0x20 
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {r0}
 	ldr r1, off_80405C0 // =byte_3001710
 	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {r4-r6,pc}
 	.balign 4, 0
 off_80405A8: .word dword_86BEB20
@@ -1170,7 +1170,7 @@ dead_80405F8:
 	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	// size
 	ldr r1, off_8040714 // =0x230
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r0-r3}
 	str r2, [r5,#0x4c]
 	str r3, [r5,#0x50]
@@ -1263,11 +1263,11 @@ dead_80405F8:
 	pop {r0}
 	ldr r1, off_80406F0 // =unk_3001B40
 	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, off_80406F4 // =dword_86B7AC0
 	ldr r1, off_80406F8 // =byte_3001710
 	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {r4-r6,pc}
 	.balign 4, 0
 	.word dword_86BEB20
@@ -2139,7 +2139,7 @@ chatbox_8040DBC:
 	mov r2, #0
 loc_8040DC4:
 	push {r0-r2}
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r0-r2}
 	add r0, #0x60
 	add r2, #1
@@ -2166,7 +2166,7 @@ chatbox_8040DDC:
 	mov r2, #0
 loc_8040DEC:
 	push {r0-r2}
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r0-r2}
 	add r0, #0x60
 	add r2, #1
@@ -4366,7 +4366,7 @@ chatbox_F6_textcolor:
 	add r0, r0, r1
 	ldr r1, off_8041DF0 // =byte_3001710
 	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	b loc_8041DE6
 loc_8041DD6:
 	ldrb r0, [r4,#2]
@@ -4375,7 +4375,7 @@ loc_8041DD6:
 	ldr r0, [r5,r0]
 	ldr r1, off_8041DF0 // =byte_3001710
 	mov r2, #0x20
-	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 loc_8041DE6:
 	add r4, #3
 	mov r0, #1
@@ -4940,7 +4940,7 @@ chatbox_804222C:
 	add r1, r1, r2
 	pop {r2}
 	push {r1}
-	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {r0}
 	mov r7, r5
 	add r7, #0x64

@@ -399,7 +399,7 @@ sub_808CA68:
 	ldr r0, [r0]
 	mov r5, r0
 	mov r1, #0x98
-	bl ZeroFillByWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	mov r0, #0x20 
 	strb r0, [r5,#0x3] // (byte_2000B43 - 0x2000b40)
 	bl sub_808CC84
