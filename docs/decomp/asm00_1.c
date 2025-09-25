@@ -8386,7 +8386,7 @@ int sub_8009158()
             if ( *(v0 + 32) )
             {
                 *(v0 + 32) = 0;
-                sub_800065A(31, 0xFFFF, 0);
+                sound_800065A(31, 0xFFFF, 0);
                 result = sound_8000672(31, byte_100, v4);
             }
         }
@@ -8396,7 +8396,7 @@ int sub_8009158()
             if ( !*(v0 + 32) )
             {
                 *(v0 + 32) = 1;
-                sub_800065A(31, 0xFFFF, byte_100);
+                sound_800065A(31, 0xFFFF, byte_100);
                 result = sound_8000672(31, 282, v3);
             }
         }
@@ -11849,7 +11849,7 @@ signed int __fastcall sub_800AC20(int a1, int a2)
     if ( v3 & 1 )
     {
         v5 = sub_800A704();
-        v6 = sub_8000D84(v5);
+        v6 = memory_bcd_8000D84(v5);
         v7 = &(&off_800ADDC)[3 * v34];
         v8 = 0;
         do

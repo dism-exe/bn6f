@@ -2997,7 +2997,7 @@ int __fastcall sub_8010AE4(int a1, int a2)
     v3 = *(getChip8021DA8(a1) + 13) - byte_3E9;
     v4 = *&byte_203EB00[40 * v2 + 2 * v3];
     v5 = v3;
-    v6 = sub_8000D84(v4);
+    v6 = memory_bcd_8000D84(v4);
     v7 = 0;
     v8 = byte_8010B2C;
     do
@@ -3160,7 +3160,7 @@ int __fastcall sub_8010C76(int a1)
     if ( v2 < byte_3E9 )
         return v1[13];
     v3 = 2 * (v2 - byte_3E9);
-    v4 = sub_8000D84(*(&unk_20018C0 + v3));
+    v4 = memory_bcd_8000D84(*(&unk_20018C0 + v3));
     v5 = 0;
     v6 = byte_8010CB8;
     do
@@ -15980,7 +15980,7 @@ signed int sub_801A6E8()
     v3 = *(v0 + 164);
     if ( v3 == 247 )
     {
-        v4 = sub_8000C00(*(v1 + 36));
+        v4 = memory_bcdConvert(*(v1 + 36));
         v5 = 0;
         do
         {
@@ -18645,7 +18645,7 @@ unsigned int sub_801C296()
     v2 = *(v0 + 2);
     if ( *v0 & 0x10 )
         v2 = *(*(v0 + 12) + 38) - v2;
-    v3 = sub_8000C00(v2);
+    v3 = memory_bcdConvert(v2);
     *v1 = v3 & 0xF;
     *(v1 + 1) = (v3 >> 4) & 0xF;
     *(v1 + 2) = BYTE1(v3) & 0xF;
@@ -18736,7 +18736,7 @@ int __fastcall sub_801C3A4(int a1, int a2)
     }
     else if ( a1 >= 10 )
     {
-        v3 = sub_8000C00(a1) | 0xA00;
+        v3 = memory_bcdConvert(a1) | 0xA00;
     }
     else
     {
@@ -19033,7 +19033,7 @@ void __noreturn sub_801C6EE()
         sub_80018E0(0, 19, 3, word_801D954);
         if ( *(getChip8021DA8(v16) + 9) & 2 )
         {
-            v7 = sub_8000C00(v17);
+            v7 = memory_bcdConvert(v17);
             v8 = sub_8000C5C(v7);
             v9 = v8;
             v10 = (&v19 + 2 * v8 - 2);
@@ -19048,7 +19048,7 @@ void __noreturn sub_801C6EE()
             while ( v8 );
             if ( v18 )
             {
-                v11 = sub_8000C00(v18);
+                v11 = memory_bcdConvert(v18);
                 v12 = sub_8000C5C(v11);
                 v13 = (&v16 + 2 * v9 + 12);
                 *v13 = -11826;
@@ -19176,7 +19176,7 @@ int __noreturn sub_801C906()
     int v7; // [sp+0h] [bp-20h]
     int v8; // [sp+8h] [bp-18h]
 
-    v1 = sub_8000C00(*(v0 + 36));
+    v1 = memory_bcdConvert(*(v0 + 36));
     v2 = sub_8000C5C(v1);
     v4 = v3 | (43690 << 4 * v2);
     v5 = 6;
@@ -20166,7 +20166,7 @@ char *sub_801D590()
     }
     (loc_8000AC8)(&dword_86E966C, 100759296, 32);
     v2 = 0;
-    v3 = sub_8000C00(v7);
+    v3 = memory_bcdConvert(v7);
     v4 = v3 & 0xF;
     v3 >>= 4;
     v5 = v3 & 0xF;
@@ -20312,7 +20312,7 @@ int __noreturn sub_801D792()
     int v7; // [sp+0h] [bp-20h]
     int v8; // [sp+8h] [bp-18h]
 
-    v1 = sub_8000C00(*(v0 + 80));
+    v1 = memory_bcdConvert(*(v0 + 80));
     v2 = sub_8000C5C(v1);
     v4 = v3 | (43690 << 4 * v2);
     v5 = 6;
@@ -21576,7 +21576,7 @@ int sub_801E838()
         if ( *v2 == byte_801FDC0 )
             ++v2;
         *(v1 + 4) = *v2;
-        v7 = sub_8000C00(*(v1 + 9));
+        v7 = memory_bcdConvert(*(v1 + 9));
         v8 = v7 >> 4;
         if ( !(v7 >> 4) )
         {
@@ -21624,8 +21624,8 @@ signed int sub_801E8FA()
 
     sub_801EAEC();
     v2 = v1;
-    *(v0 + 10) = sub_8000C00(v3);
-    result = sub_8000C00(v2);
+    *(v0 + 10) = memory_bcdConvert(v3);
+    result = memory_bcdConvert(v2);
     *(v0 + 12) = v5;
     return result;
 }
@@ -21683,13 +21683,13 @@ int __fastcall __noreturn sub_801E95C(int a1, unsigned int a2, int a3, __int16 a
         v12 = v10 & 0xFFFF87FF;
         if ( v12 )
         {
-            v13 = sub_8000C00(v12);
+            v13 = memory_bcdConvert(v12);
             v14 = sub_8000C5C(v13);
             *(v21 + 10) = v14;
             sub_801EA34(4 * v14, dword_801EA7C[v20]);
             if ( v19 & 0xFFFF87FF )
             {
-                v15 = sub_8000C00(v19 & 0xFFFF87FF);
+                v15 = memory_bcdConvert(v19 & 0xFFFF87FF);
                 v16 = sub_8000C5C(v15);
                 *(v21 + 11) = v16 + 1;
                 sub_801EA34(4 * v16, dword_801EA88[v20]);

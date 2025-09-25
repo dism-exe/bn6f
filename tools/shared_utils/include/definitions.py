@@ -1,13 +1,12 @@
 import os
 
-
-def parent_dir(filepath, num_parents_up):
+def parent_dir(filepath: str, num_parents_up: int) -> str:
     out = os.path.dirname(os.path.abspath(filepath))
     for i in range(0, num_parents_up):
         out = os.path.dirname(out)
     return out
 
-def parent_dir_of_dir(dirname, num_parents_up):
+def parent_dir_of_dir(dirname: str, num_parents_up: int) -> str:
     out = dirname
     for i in range(0, num_parents_up):
         out = os.path.dirname(out)

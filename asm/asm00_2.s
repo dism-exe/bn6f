@@ -3934,7 +3934,7 @@ sub_8010AE4:
 	add r2, r1, r1
 	ldrh r0, [r3,r2]
 	mov r4, r1
-	bl sub_8000D84
+	bl memory_bcd_8000D84
 	mov r1, #0
 	ldr r2, off_8010B24 // =byte_8010B2C 
 loc_8010B08:
@@ -4128,7 +4128,7 @@ sub_8010C76:
 	ldr r3, off_8010D44 // =unk_20018C0 
 	add r4, r1, r1
 	ldrh r0, [r3,r4]
-	bl sub_8000D84
+	bl memory_bcd_8000D84
 	mov r1, #0
 	ldr r2, off_8010CB4 // =byte_8010CB8
 loc_8010C94:
@@ -21637,7 +21637,7 @@ sub_801A6E8:
 	b locret_801A71E
 loc_801A6FC:
 	ldrh r0, [r5,#oBattleObject_HP]
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r3, #0
 loc_801A704:
 	mov r1, #0xf
@@ -25075,7 +25075,7 @@ sub_801C296:
 	ldrh r1, [r1,#0x26]
 	sub r0, r1, r0
 loc_801C2A8:
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r2, #0xf
 	mov r1, r0
 	and r1, r2
@@ -25211,7 +25211,7 @@ loc_801C3B2:
 	orr r0, r1
 	b loc_801C3C8
 loc_801C3BE:
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r1, #0xa
 	lsl r1, r1, #8
 	orr r0, r1
@@ -25674,7 +25674,7 @@ sub_801C6EE:
 	tst r1, r2
 	beq loc_801C818
 	ldr r0, [sp,#4]
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r4, r0
 	bl sub_8000C5C
 	mov r3, r0
@@ -25699,7 +25699,7 @@ loc_801C786:
 	ldr r0, [sp,#8]
 	cmp r0, #0
 	beq loc_801C7DE
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r4, r0
 	bl sub_8000C5C
 	mov r3, r0
@@ -25893,7 +25893,7 @@ sub_801C906:
 	sub sp, sp, #0x10
 	mov r6, sp
 	ldrh r0, [r5,#0x24]
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r2, r0
 	bl sub_8000C5C
 	lsl r0, r0, #2
@@ -27493,7 +27493,7 @@ loc_801D5CE:
 	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
 	mov r4, #0
 	pop {r0}
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r7, #0xf
 	and r7, r0
 	lsr r0, r0, #4
@@ -27713,7 +27713,7 @@ sub_801D792:
 	mov r6, sp
 	mov r4, #0x50 
 	ldrh r0, [r5,r4]
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r2, r0
 	bl sub_8000C5C
 	lsl r0, r0, #2
@@ -29889,7 +29889,7 @@ loc_801E876:
 	ldrh r0, [r7]
 	strh r0, [r5,#4]
 	ldrb r0, [r5,#9]
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r7, #0xf
 	and r7, r0
 	lsr r6, r0, #4
@@ -29962,10 +29962,10 @@ sub_801E8FA:
 	bl sub_801EAEC
 	mov r4, r2
 	mov r0, r1
-	bl sub_8000C00
+	bl memory_bcdConvert
 	strh r0, [r5,#0xa]
 	mov r0, r4
-	bl sub_8000C00
+	bl memory_bcdConvert
 	strh r2, [r5,#0xc]
 	pop {r4,pc}
 	thumb_func_end sub_801E8FA
@@ -30039,7 +30039,7 @@ loc_801E9A6:
 	push {r3-r5}
 	lsl r6, r4, #2
 	mov r0, r2
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r4, r0
 	bl sub_8000C5C
 	strb r0, [r5,#0xa]
@@ -30056,7 +30056,7 @@ loc_801E9A6:
 	cmp r0, #0
 	beq loc_801E9FC
 	push {r4}
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r4, r0
 	bl sub_8000C5C
 	add r1, r0, #1

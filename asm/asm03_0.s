@@ -4177,7 +4177,7 @@ loc_8028564:
 	b loc_80285D4
 loc_80285B8:
 	ldr r0, [sp,#0xc]
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r4, r0
 	bl sub_8000C5C
 	str r0, [sp,#8]
@@ -7977,12 +7977,12 @@ sub_802A30C:
 	ldrh r2, [r2,r4]
 	ldr r1, dword_802A3F0 // =0xffff 
 	mov r0, #0x1f
-	bl sub_8000642
+	bl sound_8000642
 	ldr r2, off_802A3EC // =byte_802A400 
 	ldrh r2, [r2,r4]
 	ldr r1, dword_802A3F0 // =0xffff 
 	mov r0, #0x16
-	bl sub_8000642
+	bl sound_8000642
 	add r4, #2
 	strb r4, [r5,#0x13]
 	bl IsScreenFadeActive // () -> zf
@@ -8023,12 +8023,12 @@ sub_802A362:
 	ldrh r2, [r2,r4]
 	ldr r1, dword_802A3F0 // =0xffff 
 	mov r0, #0x1f
-	bl sub_8000642
+	bl sound_8000642
 	ldr r2, off_802A3E8 // =byte_802A3F4 
 	ldrh r2, [r2,r4]
 	ldr r1, dword_802A3F0 // =0xffff 
 	mov r0, #0x16
-	bl sub_8000642
+	bl sound_8000642
 	add r4, #2
 	strb r4, [r5,#0x13]
 	bl IsScreenFadeActive // () -> zf
@@ -8079,12 +8079,12 @@ sub_802A3CC:
 	ldr r1, dword_802A3F0 // =0xffff 
 	mov r2, #0x80
 	add r2, #0x80
-	bl sub_8000642
+	bl sound_8000642
 	mov r0, #0x16
 	ldr r1, dword_802A3F0 // =0xffff 
 	mov r2, #0x80
 	add r2, #0x80
-	bl sub_8000642
+	bl sound_8000642
 	pop {pc}
 	.balign 4, 0
 off_802A3E8: .word byte_802A3F4
@@ -9932,7 +9932,7 @@ loc_802B45E:
 	add r1, r1, r2
 	ldr r4, off_802B4C8 // =byte_802B5FC
 	ldrh r0, [r4,r1]
-	bl sub_8000C00
+	bl memory_bcdConvert
 loc_802B46E:
 	mov r7, r0
 	mov r6, #0x10
@@ -11759,7 +11759,7 @@ sub_802C4E8:
 	sub sp, sp, #4
 	mov r6, sp
 	push {r1}
-	bl sub_8000D84
+	bl memory_bcd_8000D84
 	ldr r1, dword_802C548 // =0x95999 
 	cmp r0, r1
 	ble loc_802C4FC
@@ -11910,7 +11910,7 @@ sub_802C5E6:
 	b loc_802C61C
 loc_802C5F4:
 	str r0, [sp]
-	bl sub_8000C00
+	bl memory_bcdConvert
 	bl sub_8000C5C
 	str r0, [sp,#4]
 	ldr r0, [sp]
@@ -11959,7 +11959,7 @@ sub_802C646:
 	b loc_802C67C
 loc_802C654:
 	str r0, [sp]
-	bl sub_8000C00
+	bl memory_bcdConvert
 	bl sub_8000C5C
 	str r0, [sp,#4]
 	ldr r0, [sp]
@@ -12043,7 +12043,7 @@ loc_802C700:
 	mov r0, #1
 	b loc_802C72E
 loc_802C724:
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r5, r0
 	bl sub_8000C5C
 loc_802C72E:

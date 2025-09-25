@@ -5133,7 +5133,7 @@ sub_803B880:
 	mov r6, #0xf
 	mov r7, #0
 	bl sub_803C398
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r4, r0
 	lsr r2, r4, #8
 	and r2, r6
@@ -5159,7 +5159,7 @@ loc_803B8B0:
 	mov r7, #0
 	bl sub_803C398
 	mov r0, r1
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r4, r0
 	lsr r2, r4, #8
 	and r2, r6
@@ -5247,7 +5247,7 @@ sub_803B9C0:
 	lsl r2, r2, #0xc
 	orr r5, r2
 	mov r0, r3
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r6, r0
 	mov r7, #0x1c
 loc_803B9DA:

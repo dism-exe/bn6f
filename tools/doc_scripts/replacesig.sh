@@ -1,12 +1,11 @@
 #!/bin/bash
 
-# replaces labels and any possible pool labels (suffixed with _p[optional number])
-# $1: label to find
-# $2: label to replace $1
+# Subroutine calls of the pattern `bl sub_xxx` or `bl DoWellDocumentedThing`, etc benefit from also self-documenting their own signatures as functions.
+# This script allows that signature string "(T param ...) -> T" to be set. So for example
+# replacesig.sh "CopyWords" "(u32 *src, u32 *dest, int size) -> void"
 
 SCRIPT_PATH=$(dirname $(realpath -s $0))
 source ${SCRIPT_PATH}/common.sh
-
 
 if [ "$1" = "" -o "$2" = "" ]; then
 	echo "usage: replacesig.sh <function_name> <signature>"

@@ -3315,7 +3315,7 @@ void __fastcall __noreturn sub_8132A14(int a1, int a2, int a3, int a4)
 
     v5 = ((a1 << 16) | a2) + 4096;
     v6 = v4 | (a3 << 12);
-    v7 = sub_8000C00(a4);
+    v7 = memory_bcdConvert(a4);
     sub_802FE28(v5 + 1835008, v6 + (v7 & 0xF), 2, 7);
     JUMPOUT(loc_8132A42);
 }
@@ -3527,7 +3527,7 @@ unsigned int sub_8132F78()
     unsigned int result; // r0
 
     v1 = *(v0 + oToolkit_Unk200a220_Ptr);
-    v2 = sub_8000D84(*(*(v0 + oToolkit_Unk2001c04_Ptr) + 24)) >> 16;
+    v2 = memory_bcd_8000D84(*(*(v0 + oToolkit_Unk2001c04_Ptr) + 24)) >> 16;
     v3 = v2 & 0xF;
     v2 >>= 4;
     *(v1 + 12) = 10 * (v2 & 0xF) + v3;
@@ -10242,7 +10242,7 @@ void __fastcall __noreturn sub_8137EE0(int a1, int a2, u16 *a3)
 // 0x8137ef0
 int __fastcall sub_8137EF0(int a1, int a2)
 {
-    return sub_8000D84(*(a2 + byte_201CF00[a1 + 1]));
+    return memory_bcd_8000D84(*(a2 + byte_201CF00[a1 + 1]));
 }
 
 
@@ -10386,7 +10386,7 @@ signed int __fastcall sub_813802C(int a1)
     int v1; // r0
 
     v1 = sub_8010C76(*&byte_8138040[a1]);
-    return sub_8000C00(v1);
+    return memory_bcdConvert(v1);
 }
 
 
@@ -10487,7 +10487,7 @@ signed int sub_8138170()
         v6 = 0;
         v7 = *(&unk_2000260 + v5);
     }
-    v8 = sub_8000D84(v7);
+    v8 = memory_bcd_8000D84(v7);
     if ( v8 <= 612761 )
     {
         v9 = *(v1 + oToolkit_ChatboxPtr);

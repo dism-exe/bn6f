@@ -20968,7 +20968,7 @@ sub_8119594:
 	mov r4, r0
 	b loc_81195C6
 loc_81195BA:
-	bl sub_8000C00
+	bl memory_bcdConvert
 	mov r4, r0
 	bl sub_8000C5C
 	mov r6, r0
@@ -31697,24 +31697,41 @@ off_811F770: .word ePETMenuData
 	thumb_func_end sub_811F758
 
 // () -> void
+// Passes on control to the specific menu based on JumpTable811F7A0
 	thumb_func_start SubMenuControl
 SubMenuControl:
 	push {r4-r7,lr}
+
+  // struct UnkSubMenuPtr* submenu_r5
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_SubmenuPtr]
+
+  // func* jt_r0
 	ldr r0, off_811F79C // =JumpTable811F7A0
+
+  // call jt_r0[submenu_r5[0]]
 	ldrb r1, [r5]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
+
+  // 0 if (submenu_r5[0] == 0x18)
 	ldrb r0, [r5]
 	cmp r0, #0x18
 	bne loc_811F794
+
+  // 0 then
+
+  // 0.0 if (submenu_r5[1] == 0x18) return
 	ldrb r0, [r5,#1]
 	cmp r0, #0x18
 	beq locret_811F798
+
+  // 0.0 if (submenu_r5[1] == 0x1c) return
 	cmp r0, #0x1c
 	beq locret_811F798
+
+  // 0 endif
 loc_811F794:
 	bl GetRNG // () -> u32?
 locret_811F798:
@@ -31723,7 +31740,7 @@ locret_811F798:
 off_811F79C: .word JumpTable811F7A0
 // SubmenuPtr* r5
 JumpTable811F7A0: .word HandleChipFolderMenu8123434+1
-	.word HandleSubChipMenu8123F5C+1
+	.word DispatchSubChipMenu8123F5C+1 // (struct UnkSubMenu* state_a5) -> void
 	.word HandleLibraryMenu8124B3C+1
 	.word HandleMegaManStatusMenu8126B4C+1
 	.word HandleEmailMenu81279F8+1
@@ -34064,10 +34081,10 @@ sub_8120900:
 	lsl r6, r6, #1
 	add r6, r6, r7
 	ldr r0, [sp]
-	bl sub_8000C00
+	bl memory_bcdConvert
 	str r0, [sp]
 	ldr r0, [sp,#4]
-	bl sub_8000C00
+	bl memory_bcdConvert
 	str r0, [sp,#4]
 	mov r4, #0
 	ldr r0, [sp,#8]

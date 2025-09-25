@@ -358,7 +358,7 @@ signed int __noreturn sub_8033E0C()
         }
         CopyByEightWords(&byte_86C1F20[v10], byte_30016D0, 0x20u);
     }
-    v11 = sub_8000C00(*(v0 + 8));
+    v11 = memory_bcdConvert(*(v0 + 8));
     v12 = 0;
     v13 = 12;
     v14 = 8;
@@ -9110,7 +9110,7 @@ void __noreturn sub_803B880()
     int v2; // r2
 
     v0 = sub_803C398();
-    v1 = sub_8000C00(v0);
+    v1 = memory_bcdConvert(v0);
     v2 = (v1 >> 8) & 0xF;
     if ( v2 )
         sub_803B8F8(104, 80, v2);
@@ -9153,7 +9153,7 @@ signed int __fastcall __noreturn sub_803B9C0(int a1, int a2, int a3, int a4)
 
     v4 = ((a1 << 16) | a2) + 4096;
     v5 = dword_414 | (a3 << 12);
-    v6 = sub_8000C00(a4);
+    v6 = memory_bcdConvert(a4);
     v7 = 28;
     do
     {
