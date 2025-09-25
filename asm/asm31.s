@@ -32989,7 +32989,7 @@ sub_80C7EC8:
 	ldr r6, off_80C7EFC // =dword_80C7F00 
 loc_80C7ECE:
 	push {r3,r6}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r4, #3
 	and r4, r0
 	add r4, #1
@@ -48853,7 +48853,7 @@ sub_80CFC96:
 	thumb_local_start
 sub_80CFCA8:
 	push {lr}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0x1f
 	and r1, r0
 	sub r1, #0x98
@@ -71204,7 +71204,7 @@ locret_80DABC2:
 	thumb_local_start
 chooseCornfiestaPanelXY_80DABC4:
 	push {lr}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0xf
 	and r0, r1
 	cmp r0, #6
@@ -91127,7 +91127,7 @@ sub_80E46F8:
 	mov r1, #0x10
 	mov r2, #1
 	bl sprite_load // (int a1, int a2, int a3) ->
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #1
 	and r0, r1
 	bl sprite_setAnimation // (u8 a1) -> void
@@ -91136,7 +91136,7 @@ sub_80E46F8:
 	bl sprite_noShadow // () -> void
 	ldrb r0, [r5,#oBattleObject_Param1]
 	bl sprite_setPalette // (int pallete) -> void
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0xf
 	and r1, r0
 	sub r1, #7
@@ -168322,7 +168322,7 @@ sub_810BDF4:
 	strb r0, [r5,r2]
 	mov r2, #0x61 
 	strb r1, [r5,r2]
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #3
 	and r0, r1
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -168352,7 +168352,7 @@ sub_810BE2A:
 	strb r0, [r5,r2]
 	mov r2, #0x61 
 	strb r1, [r5,r2]
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #3
 	and r0, r1
 	ldrb r1, [r5,#oBattleObject_PanelY]

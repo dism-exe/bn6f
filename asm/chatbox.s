@@ -3989,7 +3989,7 @@ loc_8041B00:
 	and r6, r0
 	add r6, #2
 loc_8041B0C:
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	sub r6, #1
 	bgt loc_8041B0C
 	lsl r0, r0, #0x16
@@ -5362,7 +5362,7 @@ sub_8042554:
 	push {lr}
 	mov r0, #SOUND_UNK_73
 	bl PlaySoundEffect
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	ldrb r1, [r4,#2]
 	and r1, r0
 	add r0, r1, r4

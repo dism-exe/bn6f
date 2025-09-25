@@ -1340,7 +1340,7 @@ sub_8000E3A:
 	mov r4, r1
 	push {r0,r1}
 	push {r4}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	lsr r4, r0, #0x1e
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CurFramePtr]
@@ -1349,7 +1349,7 @@ sub_8000E3A:
 	and r0, r1
 	add r4, r4, r0
 loc_8000E54:
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	sub r4, #1
 	bge loc_8000E54
 	pop {r4}
@@ -2325,11 +2325,11 @@ sub_80014D4:
 	.balign 4, 0x00
 	thumb_func_end sub_80014D4
 
-// Another function for copying words
-// except it will do a backwards copy if
-// source < dest, otherwise it will do a
-// forwards copy. This may possibly be
-// for when the source and dest overlap
+/// Another function for copying words
+/// except it will do a backwards copy if
+/// source < dest, otherwise it will do a
+/// forwards copy. This may possibly be
+/// for when the source and dest overlap
 
 /* (r0:uint * src, r1:uint * dest, r2:int size) -> void
    preserves: r0-r7,lr
@@ -2363,16 +2363,18 @@ copyWords_80014EC: // 80014EC
 	pop {r0-r7,pc}
 	thumb_func_end copyWords_80014EC
 
+/// tags: "#mod_rng, "
 	thumb_func_start SeedRNG
-SeedRNG: // () -> void
+SeedRNG: // () -> ()
 	ldr r0, rng_8001594 // =0xa338244f
 	ldr r1, off_8001598 // =ePrimaryRngSeed
 	str r0, [r1]
 	mov pc, lr
 	thumb_func_end SeedRNG
 
+/// tags: "#mod_rng, "
 	thumb_func_start GetRNG
-GetRNG: // () -> int
+GetRNG: // () -> u32?
 	push {r7,lr}
 	ldr r7, off_800159C // =ePrimaryRngSeed
 	ldr r0, [r7]
@@ -2386,6 +2388,7 @@ GetRNG: // () -> int
 	pop {r7,pc}
 	thumb_func_end GetRNG
 
+/// tags: "#mod_rng, "
 	thumb_func_start GetPositiveSignedRNG
 GetPositiveSignedRNG:
 	push {r7,lr}
@@ -2403,6 +2406,7 @@ GetPositiveSignedRNG:
 	pop {r7,pc}
 	thumb_func_end GetPositiveSignedRNG
 
+/// tags: "#mod.rng, "
 	thumb_func_start GetRNGSecondary
 GetRNGSecondary: // () -> void
 	push {r7,lr}
@@ -2418,6 +2422,7 @@ GetRNGSecondary: // () -> void
 	pop {r7,pc}
 	thumb_func_end GetRNGSecondary
 
+/// tags: "#mod.rng, "
 	thumb_func_start GetPositiveSignedRNGSecondary
 GetPositiveSignedRNGSecondary:
 	push {r7,lr}
@@ -2435,6 +2440,7 @@ GetPositiveSignedRNGSecondary:
 	pop {r7,pc}
 	thumb_func_end GetPositiveSignedRNGSecondary
 
+/// tags: "#mod.rng, #dead, "
 	thumb_local_start
 dead_rng_800157C:
 	push {r7,lr}

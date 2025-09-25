@@ -10845,7 +10845,7 @@ loc_8013D88:
 	add r4, #1
 	b loc_8013D88
 loc_8013D92:
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0xf
 	and r0, r1
 	ldrb r0, [r7,r0]
@@ -10954,7 +10954,7 @@ loc_8013E6C:
 	cmp r0, #0xa
 	bne loc_8013E8A
 loc_8013E7E:
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #3
 	and r0, r1
 	add r0, r0, r4
@@ -11149,7 +11149,7 @@ sub_8013FAE:
 	bl GetBattleNaviStatsByte_AllianceFromBattleObject
 	mov r4, r0
 	beq locret_8013FCE
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #7
 	and r0, r1
 	sub r1, r4, #1
@@ -24420,7 +24420,7 @@ loc_801BDD0:
 AddRandomVarianceToTwoCoords:
 	push {r4,r6,r7,lr}
 	push {r0-r3}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r7, r0
 	pop {r0-r3}
 	mov r4, r7

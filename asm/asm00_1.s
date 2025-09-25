@@ -647,7 +647,7 @@ SpawnObjectsFromList: // (void *a1) -> int
 	tst r5, r5
 	beq .currentObjectFailedToSpawn
 
-	# i++
+	// i++
 	add r4, #1
 
 .currentObjectFailedToSpawn
@@ -3788,7 +3788,7 @@ cbGameState_80050EC:
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	bl GetRNGSecondary // () -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -6701,7 +6701,7 @@ SetPrimaryToolkitPointersWrapper:
 RandomizeExtraToolkitPointers: // 8006C22
 	push {lr}
 	push {r4-r7}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	// anti-cheat stuff? this block up to the copy
 	// seems to do nothing due to the ands which zero
 	// r5 was supposedly an offset to be added to the pointers
@@ -6818,7 +6818,7 @@ encryption_initAll_8006d00:
 	mov r0, #0
 	and r4, r0
 	str r4, [r5]
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	str r0, [r5,#0x4] // (dword_2001064 - 0x2001060)
 	mov r6, r10
 	mov r0, #oToolkit_Unk2004a8c_Ptr
@@ -6829,7 +6829,7 @@ loc_8006D24:
 	sub r7, #1
 	blt loc_8006D40
 loc_8006D28:
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0xff
 	and r0, r1
 	mov r1, #0x6f
@@ -6850,7 +6850,7 @@ loc_8006D4A:
 	sub r7, #1
 	blt loc_8006D66
 loc_8006D4E:
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0xff
 	and r0, r1
 	mov r1, #0x81
@@ -6871,7 +6871,7 @@ loc_8006D70:
 	sub r7, #1
 	blt loc_8006D8C
 loc_8006D74:
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0xff
 	and r0, r1
 	mov r1, #0xfe
@@ -6886,7 +6886,7 @@ loc_8006D8C:
 	ldr r4, off_8006DDC // =dword_2000060
 	ldr r6, off_8006DE0 // =dword_802412C
 loc_8006D90:
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	lsl r0, r0, #0xc
 	lsr r0, r0, #0xc
 	eor r0, r6
@@ -6897,7 +6897,7 @@ loc_8006D90:
 	ldr r4, off_8006DE4 // =dword_20018B8
 	ldr r6, off_8006DE8 // =loc_803ED90
 loc_8006DA8:
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	lsl r0, r0, #0xc
 	lsr r0, r0, #0xc
 	eor r0, r6
@@ -6970,7 +6970,7 @@ encryption_8006e26:
 	push {r4-r7,lr}
 	ldr r7, off_8006E38 // =eUnusedExtraToolkitPtrsOffset
 loc_8006E2A:
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mvn r0, r0
 	tst r0, r0
 	beq loc_8006E2A
@@ -7306,7 +7306,7 @@ loc_8007042:
 	sub r7, #1
 	blt locret_800705E
 loc_8007046:
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0xff
 	and r0, r1
 	mov r1, #0x8d

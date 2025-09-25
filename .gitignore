@@ -3,7 +3,7 @@
 *.map
 *.elf
 
-# ROMS and ROM files
+# ROMS and ROM related files
 *.gba
 *.sav
 *.ss?

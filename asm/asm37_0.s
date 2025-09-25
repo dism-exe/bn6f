@@ -3489,7 +3489,7 @@ loc_813D4A4:
 	ldr r4, off_813D4E0 // =off_813D4E4 
 	lsl r0, r0, #2
 	ldr r4, [r4,r0]
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0xf
 	and r0, r1
 	ldr r1, off_813D4F8 // =byte_813D500 
@@ -3521,7 +3521,7 @@ byte_813D500: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 
 	thumb_local_start
 sub_813D510:
 	push {r4-r7,lr}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0xf
 	and r0, r1
 	mov r6, r0
@@ -3551,7 +3551,7 @@ loc_813D538:
 	mov r0, r2
 	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r7, r0
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #3
 	and r0, r1
 	add r6, r6, r0
@@ -3572,7 +3572,7 @@ loc_813D564:
 	thumb_local_start
 sub_813D568:
 	push {r4-r7,lr}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0xf
 	and r0, r1
 	mov r6, r0
@@ -3602,7 +3602,7 @@ loc_813D590:
 	thumb_local_start
 sub_813D598:
 	push {r4-r7,lr}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0xf
 	and r0, r1
 	mov r6, r0
@@ -4064,7 +4064,7 @@ sub_813D8D0:
 	thumb_func_end sub_813D8D0
 
 	push {lr}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	ldr r0, off_813D908 // =unk_2010150 

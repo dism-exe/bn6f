@@ -756,7 +756,7 @@ loc_810E004:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	push {r0}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	pop {r1}
 	mov r2, #7
 	and r0, r2
@@ -775,7 +775,7 @@ loc_810E02A:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	push {r0}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	pop {r1}
 	mov r2, #7
 	and r0, r2
@@ -796,7 +796,7 @@ loc_810E054:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	push {r0}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	pop {r1}
 	mov r2, #7
 	and r0, r2
@@ -804,7 +804,7 @@ loc_810E054:
 	push {r0}
 	ldr r0, off_810E0C8 // =byte_810E0CC
 	push {r0}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	pop {r1}
 	mov r2, #7
 	and r0, r2
@@ -6615,7 +6615,7 @@ sub_8111650:
 	mov r2, #0x66
 	strb r1, [r5,r2]
 	push {r0,r1}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #3
 	and r0, r1
 	mov r1, #0x64
@@ -6654,7 +6654,7 @@ sub_8111674:
 	mov r2, #0x66
 	strb r1, [r5,r2]
 	push {r0,r1}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #3
 	and r0, r1
 	mov r1, #0x64
@@ -6849,7 +6849,7 @@ sub_8111816:
 	push {r4,lr}
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars]
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #3
 	and r0, r1
 	mov r1, #0x64
@@ -15010,7 +15010,7 @@ sub_811627A:
 	push {r4-r7,lr}
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+4]
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #3
 	and r0, r1
 	mov r1, #0x68
@@ -29789,7 +29789,7 @@ sub_811E510:
 	thumb_local_start
 sub_811E51C:
 	push {lr}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0x1f
 	and r0, r1
 	mov r1, #0x20
@@ -29812,7 +29812,7 @@ dword_811E544: .word 0x180000
 	thumb_local_start
 sub_811E548:
 	push {lr}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0x3f
 	and r0, r1
 	strb r0, [r5,#7]
@@ -31716,7 +31716,7 @@ SubMenuControl:
 	cmp r0, #0x1c
 	beq locret_811F798
 loc_811F794:
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 locret_811F798:
 	pop {r4-r7,pc}
 	.balign 4, 0

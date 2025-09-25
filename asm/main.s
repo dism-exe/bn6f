@@ -2,7 +2,7 @@
 	thumb_func_start main_
 main_:
 	bl main_initToolkitAndOtherSubsystems
-	bl SeedRNG // () -> void
+	bl SeedRNG // () -> ()
 	bl clear_e200AD04 // () -> void
 	bl sub_803D1A8 // () -> void
 main_gameRoutine:

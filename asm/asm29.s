@@ -6799,11 +6799,11 @@ sub_80A8CCC:
 	sub r0, #1
 	strh r0, [r7,#2]
 	bgt locret_80A8D00
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0x60 
 	svc 6
 	lsl r6, r1, #8
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #7
 	and r0, r1
 	cmp r0, #4
@@ -9432,7 +9432,7 @@ sub_80AA282:
 	beq loc_80AA2A2
 	mov r0, #1
 	strb r0, [r5]
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0x1f
 	and r0, r1
 	add r0, #8
@@ -9718,7 +9718,7 @@ loc_80AA514:
 	add r4, r4, r3
 	ldrb r3, [r4,r2]
 	push {r0,r3}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r2, r0
 	pop {r0,r3}
 	mov r1, #0x1f
@@ -10599,7 +10599,7 @@ loc_80AAB64:
 sub_80AAB68:
 	push {r4,lr}
 	mov r4, r0
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	mov r1, #0xf
 	and r1, r0
 	mov r0, r4

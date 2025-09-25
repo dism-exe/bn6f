@@ -5969,7 +5969,7 @@ off_8049D6C: .word byte_200A290
 	thumb_local_start
 sub_8049D70:
 	push {r4-r7,lr}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	ldr r1, off_8049D94 // =word_2001800 
 	strh r0, [r1]
 	pop {r4-r7,pc}
@@ -6653,7 +6653,7 @@ ChipTraderControl:
 	bl sub_80465F8 // () -> void
 	bl sub_804AFB8
 	bl sub_804AFE4
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	pop {r0-r2}
 	mov r8, r0
 	mov r9, r1
@@ -8660,7 +8660,7 @@ off_804BD78: .word off_804B018
 chipTraderWeightedRandomMaybe_804BD7C:
 	push {r5,lr}
 	push {r0,r1}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	lsl r0, r0, #0x16
 	lsr r0, r0, #0x16
 	pop {r6,r7}
@@ -8844,7 +8844,7 @@ loc_804BEBE:
 	sub r0, #1
 	bgt loc_804BEB0
 	str r2, [r5,#0x48]
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	lsl r0, r0, #0x16
 	lsr r0, r0, #0x16
 	ldr r1, [r5,#0x48]
@@ -8995,7 +8995,7 @@ loc_804BFC8:
 	sub r0, r7, r6
 	lsr r0, r0, #2
 	str r0, [r5,#0x48]
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	lsl r0, r0, #0x16
 	lsr r0, r0, #0x16
 	ldr r1, [r5,#0x48]
@@ -10022,7 +10022,7 @@ sub_804C818:
 	str r0, [r5,#0x14]
 	b locret_804C840
 loc_804C824:
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	ldr r1, dword_804C84C // =0xff 
 	and r0, r1
 	ldr r1, off_804C850 // =0x12c 

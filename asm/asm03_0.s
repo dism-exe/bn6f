@@ -17959,7 +17959,7 @@ startscreen_render_802F544: // () ->
     mov lr, pc
 	bx r0
 	
-    bl GetRNG // () -> int
+    bl GetRNG // () -> u32?
     pop {r4-r7,pc}
 	.balign 4, 0
 off_802F55C: .word jt_802F560

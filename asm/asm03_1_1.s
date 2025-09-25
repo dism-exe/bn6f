@@ -6511,7 +6511,7 @@ off_803C408: .word byte_200A290
 	thumb_local_start
 sub_803C40C:
 	push {r4-r7,lr}
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	ldr r1, off_803C430 // =word_2006770
 	strh r0, [r1]
 	pop {r4-r7,pc}
@@ -12751,7 +12751,7 @@ loc_803F870:
 	mov r4, #1
 	movflag EVENT_1704
 	bl ClearEventFlagFromImmediate
-	bl SeedRNG // () -> void
+	bl SeedRNG // () -> ()
 loc_803F87E:
 	bl RandomizeExtraToolkitPointers
 	mov r0, r4
@@ -13091,7 +13091,7 @@ sub_803FAEE:
 	ldr r6, off_803FB24 // =0x80
 	ldr r4, off_803FB18 // =dword_20067C0
 loc_803FAF6:
-	bl GetRNG // () -> int
+	bl GetRNG // () -> u32?
 	str r0, [r4,r7]
 	add r7, #4
 	cmp r7, r6
