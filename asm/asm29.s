@@ -1729,7 +1729,7 @@ sub_80A5C74:
 	mov r7, r0
 	mov r0, #0xc
 	add r0, r0, r5
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
 	mov r1, r0
 	mov r4, #0
 	cmp r7, r1
@@ -4904,7 +4904,7 @@ sub_80A7C58:
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_80A7C7E
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne loc_80A7C7E
 	bl sub_809E462
 	bne loc_80A7C7E
@@ -5009,7 +5009,7 @@ sub_80A7CFE:
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_80A7D70
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne locret_80A7D70
 	bl sub_809E462
 	bne locret_80A7D70
@@ -5725,7 +5725,7 @@ sub_80A8424:
 	strb r0, [r5,#7]
 	b loc_80A8478
 loc_80A843A:
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne loc_80A8478
 	bl sub_809E462
 	bne loc_80A8478
@@ -6954,7 +6954,7 @@ sub_80A8DF0:
 	ldr r0, byte_80A8E20 // =0xf0
 	bl cutscene_checkOriginalCutsceneScriptPos_8036F70
 	bne loc_80A8E0A
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne loc_80A8E18
 loc_80A8E0A:
 	bl sub_809E462
@@ -7293,7 +7293,7 @@ sub_80A90CC:
 	mov r4, #0
 	mov r0, #0xc
 	add r0, r0, r5
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
 	cmp r0, #0xc0
 	bne loc_80A90DE
 	mov r4, #1

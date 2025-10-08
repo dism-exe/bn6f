@@ -4464,7 +4464,7 @@ reqBBS_81409E4:
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldr r0, [r0,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #0x1c // NPC.scriptArrayOffset
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
 	pop {pc}
 	thumb_func_end reqBBS_81409E4
 

@@ -63,7 +63,7 @@ typedef struct {
 		u8 pad_0B[0x01];
 	u8 unk_0C;				  // loc=0xC
 	/*
-	Linked with offset 0x05 somehow? equated to it in sub_8005C04
+	Linked with offset 0x05 somehow? equated to it in map_triggerEnterMapOnWarp_8005C04
 	*/
 	u8 unk_0D;				  // loc=0xD
 	u8 unk_0E;				  // loc=0xE

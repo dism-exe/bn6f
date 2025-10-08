@@ -3897,6 +3897,7 @@ cbGameState_80050EC:
 	mov r5, r10
 
 	ldr r5, [r5,#oToolkit_GameStatePtr]
+
 	ldrb r1, [r5,#oGameState_SubsystemIndex]
 	ldr r0, [r0,r1]
 
@@ -3910,25 +3911,25 @@ cbGameState_80050EC:
 	.balign 4, 0
 GameStateJumptable_p: .word GameStateJumptable
 GameStateJumptable: 
-	.word EnterMap+1
-	.word gamestate_8005268+1
-	.word battle_80052D8+1
-	.word sub_8005360+1
-	.word sub_800536E+1
-	.word sub_80053E4+1
-	.word sub_8005462+1
-	.word sub_800555A+1
-	.word sub_8005642+1
-	.word sub_80056B8+1
-	.word sub_800572C+1
-	.word sub_80057A0+1
-	.word sub_80055CE+1
-	.word sub_8005814+1
-	.word sub_800585A+1
+	.word EnterMap+1 // (self: * GameState $r5) -> ()
+	.word gamestate_on_map_update_8005268+1 // (self: * GameState $r5) -> ()
+	.word battle_80052D8+1 // (self: * GameState $r5) -> ()
+	.word sub_8005360+1 // (self: * GameState $r5) -> ()
+	.word sub_800536E+1 // (self: * GameState $r5) -> ()
+	.word sub_80053E4+1 // (self: * GameState $r5) -> ()
+	.word sub_8005462+1 // (self: * GameState $r5) -> ()
+	.word sub_800555A+1 // (self: * GameState $r5) -> ()
+	.word sub_8005642+1 // (self: * GameState $r5) -> ()
+	.word sub_80056B8+1 // (self: * GameState $r5) -> ()
+	.word sub_800572C+1 // (self: * GameState $r5) -> ()
+	.word sub_80057A0+1 // (self: * GameState $r5) -> ()
+	.word sub_80055CE+1 // (self: * GameState $r5) -> ()
+	.word sub_8005814+1 // (self: * GameState $r5) -> ()
+	.word sub_800585A+1 // (self: * GameState $r5) -> ()
 	thumb_func_end cbGameState_80050EC
 
 	thumb_local_start
-EnterMap: // JP 0x8005118
+EnterMap: // (self: * GameState $r5) -> ()
 	push {lr}
 	bl IsScreenFadeActive // () -> zf
 	bne .noScreenFade
@@ -4018,8 +4019,11 @@ loc_80051AA:
 	ldr r0, [r0,#oToolkit_Warp2011bb0_Ptr]
 	mov r1, #0
 	strb r1, [r0,#oWarp2011bb0_Unk_10]
+
+  // trigger gamestate_on_map_update_8005268 via cbGameState_80050EC
 	mov r0, #4
 	strb r0, [r5,#oGameState_SubsystemIndex]
+
 	pop {pc}
 	.balign 4, 0
 off_8005264: .word 0x1740
@@ -4027,12 +4031,16 @@ off_8005264: .word 0x1740
 
 // on load game, we trigger EnterMap, and then we stay here a long time
 	thumb_local_start
-gamestate_8005268:
+gamestate_on_map_update_8005268: // (self: * GameState $r5) -> ()
 	push {lr}
+
 	bl clearCutsceneScriptPosIfMagicValue0x1_8036F24
-	bl sub_8034BB8
+
+	bl cutscene_8034BB8
+
 	mov r0, #0
 	strb r0, [r5,#0xe]
+
 	bl sub_800378C
 	bl sub_8003BA2
 	bl npc_800461E
@@ -4058,10 +4066,10 @@ gamestate_8005268:
 	bl sub_8005B6A
 	bl sub_8005AF4
 	pop {pc}
-	thumb_func_end gamestate_8005268
+	thumb_func_end gamestate_on_map_update_8005268
 
 	thumb_local_start
-battle_80052D8:
+battle_80052D8: // (self: * GameState $r5) -> ()
 	push {lr}
 	bl sub_80339CC
 	bl sub_80039AA
@@ -4113,7 +4121,7 @@ off_800535C: .word 0x2180
 	thumb_func_end sub_800531C
 
 	thumb_local_start
-sub_8005360:
+sub_8005360: // (self: * GameState $r5) -> ()
 	push {lr}
 	bl battle_main_8007800
 	bne locret_800536C
@@ -4124,7 +4132,7 @@ locret_800536C:
 	thumb_func_end sub_8005360
 
 	thumb_local_start
-sub_800536E:
+sub_800536E: // (self: * GameState $r5) -> ()
 	push {lr}
 	bl sub_80339CC
 	bl sub_80039AA
@@ -4163,7 +4171,7 @@ loc_80053BC:
 	b locret_80053DA
 loc_80053D2:
 	bl chatbox_8040818
-	bl sub_8005C04
+	bl map_triggerEnterMapOnWarp_8005C04
 locret_80053DA:
 	pop {pc}
 	.balign 4, 0
@@ -4172,7 +4180,7 @@ hword_80053E0: .hword 0xE7, 0xEC
 	thumb_func_end sub_800536E
 
 	thumb_local_start
-sub_80053E4:
+sub_80053E4: // (self: * GameState $r5) -> ()
 	push {lr}
 	bl sub_80339CC
 	bl sub_80039AA
@@ -4216,7 +4224,7 @@ word_8005460: .hword 0x40
 
 // () -> void
 	thumb_local_start
-sub_8005462:
+sub_8005462: // (self: * GameState $r5) -> ()
 	push {r7,lr}
 	ldr r7, off_8005520 // =ePETMenuData
 	ldrb r0, [r7,#0x8] // (byte_200DF28 - 0x200df20)
@@ -4308,7 +4316,7 @@ sub_8005524:
 	thumb_func_end sub_8005524
 
 	thumb_local_start
-sub_800555A:
+sub_800555A: // (self: * GameState $r5) -> ()
 	push {lr}
 	bl sub_80339CC
 	bl sub_80039AA
@@ -4347,7 +4355,7 @@ locret_80055CC:
 	thumb_func_end sub_800555A
 
 	thumb_local_start
-sub_80055CE:
+sub_80055CE: // (self: * GameState $r5) -> ()
 	push {lr}
 	bl sub_80339CC
 	bl sub_80039AA
@@ -4386,7 +4394,7 @@ locret_8005640:
 	thumb_func_end sub_80055CE
 
 	thumb_local_start
-sub_8005642:
+sub_8005642: // (self: * GameState $r5) -> ()
 	push {lr}
 	bl sub_80339CC
 	bl sub_80039AA
@@ -4426,7 +4434,7 @@ locret_80056B4:
 	thumb_func_end sub_8005642
 
 	thumb_local_start
-sub_80056B8:
+sub_80056B8: // (self: * GameState $r5) -> ()
 	push {lr}
 	bl sub_80339CC
 	bl sub_80039AA
@@ -4465,7 +4473,7 @@ locret_800572A:
 	thumb_func_end sub_80056B8
 
 	thumb_local_start
-sub_800572C:
+sub_800572C: // (self: * GameState $r5) -> ()
 	push {lr}
 	bl sub_80339CC
 	bl sub_80039AA
@@ -4504,7 +4512,7 @@ locret_800579E:
 	thumb_func_end sub_800572C
 
 	thumb_local_start
-sub_80057A0:
+sub_80057A0: // (self: * GameState $r5) -> ()
 	push {lr}
 	bl sub_80339CC
 	bl sub_80039AA
@@ -4543,7 +4551,7 @@ locret_8005812:
 	thumb_func_end sub_80057A0
 
 	thumb_local_start
-sub_8005814:
+sub_8005814: // (self: * GameState $r5) -> ()
 	push {lr}
 	bl sub_80339CC
 	bl sub_80039AA
@@ -4567,7 +4575,7 @@ locret_8005858:
 	thumb_func_end sub_8005814
 
 	thumb_local_start
-sub_800585A:
+sub_800585A: // (self: * GameState $r5) -> ()
 	push {lr}
 	bl sub_80339CC
 	bl sub_80039AA
@@ -4609,115 +4617,164 @@ locret_80058CC:
 	thumb_local_start
 sub_80058D0:
 	push {r5,lr}
+
 	mov r5, r10
+
 	ldr r5, [r5,#oToolkit_GameStatePtr]
+
 	ldrb r0, [r5,#oGameState_SubsystemIndex]
+
+  // branch if gamestate_on_map_update_8005268 not triggered
 	cmp r0, #4
 	bne .doNotCheckWarp
+
 	bl sub_809E462
 	bne .doNotCheckWarp
+
 	bl sub_8005F28
 	bne .doNotCheckWarp
+
 	mov r0, #1
 	bl TestPETMenuDataFlag
 	bne .doNotCheckWarp
+
 	bl IsScreenFadeActive // () -> zf
 	beq .doNotCheckWarp
-	bl IsCutsceneScriptNonNull // () -> zf
+
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne .doNotCheckWarp
+
 	ldr r0, [r5,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #oOWPlayerObject_Coords
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
+
 	mov r4, r1
 	cmp r4, #1
 	blt .doNotCheckWarp
+
 	cmp r4, #0xf
 	bgt .doNotCheckWarp
+
 	ldr r1, off_8005940 // =EVENT_16F0
 	add r1, r1, r4
 	mov r0, r1
 	bl TestEventFlag // (u16 flag) -> !zf
 	bne .doNotCheckWarp
+
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_Warp2011bb0_Ptr]
+
 	mov r0, #1
 	strb r0, [r2,#oWarp2011bb0_Unk_10]
 	strb r4, [r2,#oWarp2011bb0_WarpIndex]
+
 	mov r0, #0
 	strb r0, [r2,#oWarp2011bb0_MapGroupTransitionType]
+
 	ldr r2, [r2,#oWarp2011bb0_WarpDataPtr]
 	mov r0, #oWarpData_Size
 	sub r4, #1
 	mul r4, r0
 	add r2, r2, r4
+
 	ldrb r0, [r2,#oWarpData_warpType_02]
-	ldr r1, off_8005944 // =off_8005948
+	ldr r1, off_8005944 // =JumpTable8005948
 	ldr r0, [r0,r1]
+
 	mov lr, pc
 	bx r0
+
 .doNotCheckWarp
 	pop {r5,pc}
 	.balign 4, 0
 off_8005940: .word EVENT_16F0
-off_8005944: .word off_8005948
-off_8005948: .word sub_800596C+1 // fade to black warp
-	.word sub_8005990+1 // fade to white warp
-	.word sub_80059B4+1 // jack out anim, fade to black, fade from black, jack in anim, walk in direction
-	.word sub_80059D0+1 // jack out anim, auto camera scroll to another area in the same map, jack in anim, walk in direction
-	.word sub_80059EC+1 // jack out warp
-	.word sub_8005A00+1 // levbus warp
-	.word sub_8005A0C+1 // underground warp
-	.word sub_8005A28+1 // todo check this one with sound. like 0x0, but has a delay + plays a hardcoded sound
-	.word sub_8005A50+1 // same as above, but with a different delay
+off_8005944: .word JumpTable8005948
+JumpTable8005948: 
+  // fade to black warp
+  .word sub_800596C+1 // (self: * GameState $r5) -> ()
+  // fade to white warp
+	.word sub_8005990+1 // (self: * GameState $r5) -> ()
+  // jack out anim, fade to black, fade from black, jack in anim, walk in direction
+	.word sub_80059B4+1 // (self: * GameState $r5) -> ()
+  // jack out anim, auto camera scroll to another area in the same map, jack in anim, walk in direction
+	.word sub_80059D0+1 // (self: * GameState $r5) -> ()
+  // jack out warp
+	.word sub_80059EC+1 // (self: * GameState $r5) -> ()
+  // levbus warp
+	.word sub_8005A00+1 // (self: * GameState $r5) -> ()
+  // underground warp
+	.word sub_8005A0C+1 // (self: * GameState $r5) -> ()
+  // todo check this one with sound. like 0x0, but has a delay + plays a hardcoded sound
+	.word sub_8005A28+1 // (self: * GameState $r5) -> ()
+  // same as above, but with a different delay
+	.word sub_8005A50+1 // (self: * GameState $r5) -> ()
 	thumb_func_end sub_80058D0
 
 	thumb_local_start
-sub_800596C:
+sub_800596C: // (self: * GameState $r5) -> ()
 	push {lr}
+
 	movflag EVENT_1703
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
+
 	mov r0, #0xc
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
+
 	bl sub_8035738
+
+  // trigger sub_800536E via cbGameState_80050EC
 	mov r0, #0x10
 	strb r0, [r5,#oGameState_SubsystemIndex]
+
 	pop {pc}
 	thumb_func_end sub_800596C
 
 	thumb_local_start
-sub_8005990:
+sub_8005990: // (self: * GameState $r5) -> ()
 	push {lr}
 	movflag EVENT_1703
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
+
 	mov r0, #4
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
+
 	bl sub_8035738
+
+  // trigger sub_800536E via cbGameState_80050EC
 	mov r0, #0x10
 	strb r0, [r5,#oGameState_SubsystemIndex]
+
 	pop {pc}
 	thumb_func_end sub_8005990
 
 	thumb_local_start
-sub_80059B4:
+sub_80059B4: // (self: * GameState $r5) -> ()
 	push {lr}
 	movflag EVENT_1703
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
+
+  // Disabling this causes warps like in Lan's HP to no longer interact (but they animate)
+  // This reproduces in Lan's HP, but NOT RoboDogComp for example.
 	ldr r0, off_8005A78 // =CutsceneScript_8098a02
 	mov r1, #0
 	bl StartCutscene
+
 	pop {pc}
 	thumb_func_end sub_80059B4
 
 	thumb_local_start
-sub_80059D0:
+sub_80059D0: // (self: * GameState $r5) -> ()
 	push {lr}
 	movflag EVENT_1703
 	bl SetEventFlagFromImmediate
@@ -4730,7 +4787,7 @@ sub_80059D0:
 	thumb_func_end sub_80059D0
 
 	thumb_local_start
-sub_80059EC:
+sub_80059EC: // (self: * GameState $r5) -> ()
 	push {lr}
 	movflag EVENT_1703
 	bl ClearEventFlagFromImmediate
@@ -4741,7 +4798,7 @@ sub_80059EC:
 	thumb_func_end sub_80059EC
 
 	thumb_local_start
-sub_8005A00:
+sub_8005A00: // (self: * GameState $r5) -> ()
 	push {lr}
 	ldr r0, off_8005A84 // =CutsceneScript_809b5ad
 	mov r1, #0
@@ -4750,7 +4807,7 @@ sub_8005A00:
 	thumb_func_end sub_8005A00
 
 	thumb_local_start
-sub_8005A0C:
+sub_8005A0C: // (self: * GameState $r5) -> ()
 	push {lr}
 	movflag EVENT_1703
 	bl ClearEventFlagFromImmediate
@@ -4763,38 +4820,53 @@ sub_8005A0C:
 	thumb_func_end sub_8005A0C
 
 	thumb_local_start
-sub_8005A28:
+sub_8005A28: // (self: * GameState $r5) -> ()
 	push {lr}
+
 	movflag EVENT_1703
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
+
 	mov r0, #0xc
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
+
 	bl sub_8035738
+
 	mov r0, #0x3c
 	str r0, [r5,#oGameState_Unk_68]
+
+  // trigger sub_800536E via cbGameState_80050EC
 	mov r0, #0x10
 	strb r0, [r5,#oGameState_SubsystemIndex]
+
 	pop {pc}
 	thumb_func_end sub_8005A28
 
 	thumb_local_start
-sub_8005A50:
+sub_8005A50: // (self: * GameState $r5) -> ()
 	push {lr}
+
 	movflag EVENT_1703
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
+
 	mov r0, #0xc
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
+
 	bl sub_8035738
 	mov r0, #0xa0
 	str r0, [r5,#oGameState_Unk_68]
+
+  // trigger sub_800536E via cbGameState_80050EC
 	mov r0, #0x10
 	strb r0, [r5,#oGameState_SubsystemIndex]
+
 	pop {pc}
 	.balign 4, 0
 off_8005A78: .word CutsceneScript_8098a02
@@ -4830,7 +4902,7 @@ sub_8005A8C:
 	bne locret_8005AF2
 	bl IsScreenFadeActive // () -> zf
 	beq locret_8005AF2
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne locret_8005AF2
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
@@ -4869,7 +4941,7 @@ sub_8005AF4:
 	bne loc_8005B64
 	bl IsScreenFadeActive // () -> zf
 	beq locret_8005B68
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne locret_8005B68
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
@@ -4918,7 +4990,7 @@ sub_8005B6E:
 	bne locret_8005BC6
 	bl IsScreenFadeActive // () -> zf
 	beq locret_8005BC6
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne locret_8005BC6
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
@@ -4971,8 +5043,8 @@ loc_8005BF0:
 dword_8005C00: .word 0x4000
 	thumb_func_end StartBattle
 
-	thumb_func_start sub_8005C04
-sub_8005C04:
+	thumb_func_start map_triggerEnterMapOnWarp_8005C04
+map_triggerEnterMapOnWarp_8005C04:
 	push {r4-r7,lr}
 
 	mov r5, r10
@@ -5128,7 +5200,7 @@ sub_8005C04:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8005CE4: .word 0x40
-	thumb_func_end sub_8005C04
+	thumb_func_end map_triggerEnterMapOnWarp_8005C04
 
 	thumb_func_start subsystem_launchBBS
 subsystem_launchBBS:
@@ -5392,10 +5464,13 @@ sub_8005EEC:
 warp_setSubsystemIndexTo0x10AndOthers_8005f00:
 	push {r4-r7,lr}
 	bl sub_8005EEC
+
+  // trigger sub_800536E via cbGameState_80050EC
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
 	mov r0, #0x10
 	strb r0, [r4,#oGameState_SubsystemIndex]
+
 	bl sub_8035738
 	pop {r4-r7,pc}
 	thumb_func_end warp_setSubsystemIndexTo0x10AndOthers_8005f00

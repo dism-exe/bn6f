@@ -109,7 +109,7 @@ loc_809D222:
 	bl sprite_zeroColorShader
 	mov r0, #oOWPlayerObject_Coords
 	add r0, r0, r5
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
 	cmp r0, #0x3c 
 	bne loc_809D238
 	ldr r0, dword_809D344 // =0xa108 
@@ -321,7 +321,7 @@ loc_809D40A:
 	bl sub_809DFA0
 	tst r0, r0
 	beq loc_809D446
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	tst r0, r0
 	bne loc_809D446
 	ldrb r1, [r5,#oOWPlayerObject_Unk_13]
@@ -768,7 +768,7 @@ off_809D7A4: .word off_809D798
 // chat triggered
 sub_809D7A8:
 	push {lr}
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	tst r0, r0
 	bne loc_809D7E2
 	ldrb r0, [r5,#oOWPlayerObject_FacingDirection]
@@ -1039,7 +1039,7 @@ sub_809D9A0:
 	push {lr}
 	mov r0, r5
 	add r0, #0x1c
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
 	cmp r0, #0x4c 
 	blt loc_809D9C4
 	cmp r0, #0x4f 
@@ -1087,7 +1087,7 @@ sub_809D9E0:
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_809DA94
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne loc_809DA94
 	ldrb r0, [r5,#oOWPlayerObject_FacingDirection]
 	strb r0, [r5,#oOWPlayerObject_Unk_11]
@@ -1120,7 +1120,7 @@ sub_809D9E0:
 	add r0, r0, r1
 	str r0, [r6,#8]
 	mov r0, r6
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
 	mov r2, r0
 	strb r2, [r5,#oOWPlayerObject_Unk_0d]
 	mov r7, r10
@@ -1654,7 +1654,7 @@ sub_809DED4:
 	mov r0, #1
 	bl TestPETMenuDataFlag
 	bne loc_809DEE4
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	beq loc_809DEEA
 loc_809DEE4:
 	mov r0, #0
@@ -2584,7 +2584,7 @@ sub_809E46E:
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldr r0, [r7,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #0x1c
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
 	cmp r0, #0x48 
 	blt locret_809E494
 	cmp r0, #0x4f 

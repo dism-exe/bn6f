@@ -416,7 +416,7 @@ MapScriptCutsceneCmd_coordinate_trigger_equals_cmd_8035afa: // 8035afa
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	mov r0, sp
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
 	add sp, sp, #0xc
 	tst r0, r0
 	bne loc_8035B28
@@ -461,7 +461,7 @@ MapScriptCutsceneCmd_coordinate_trigger_not_equal_cmd_8035b44: // 8035b44
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	mov r0, sp
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
 	add sp, sp, #0xc
 	tst r0, r0
 	bne loc_8035B72
@@ -2485,7 +2485,7 @@ clearCutsceneScriptPosIfMagicValue0x1_8036F24:
 	thumb_func_end clearCutsceneScriptPosIfMagicValue0x1_8036F24
 
 	thumb_func_start IsCutsceneScriptNonNull
-IsCutsceneScriptNonNull: // () -> zf
+IsCutsceneScriptNonNull: // () -> !zf
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	ldr r0, [r0,#oCutsceneState_CutsceneScriptPos] // s_02011C50.ptr_1C
@@ -3403,130 +3403,255 @@ ReadCutsceneCameraScriptWord:
 	.balign 4, 0
 // 803844c in JP
 CutsceneCommandJumptable:
+  // 0x000
 	.word CutsceneCmd_end_for_map_reload_maybe_8037c64+1
+  // 0x004
 	.word CutsceneCmd_end_for_map_reload_maybe_80376dc+1
+  // 0x008
 	.word CutsceneCmd_pause+1
+  // 0x00C
 	.word CutsceneCmd_long_pause+1
+  // 0x010
 	.word CutsceneCmd_wait_chatbox+1
+  // 0x014
 	.word CutsceneCmd_wait_if_player_sprite_cur_frame_not_equal_maybe+1
+  // 0x018
 	.word CutsceneCmd_nop_80377d0+1
+  // 0x01C
 	.word CutsceneCmd_wait_screen_fade+1
+  // 0x020
 	.word CutsceneCmd_wait_camera_script+1
+  // 0x024
 	.word CutsceneCmd_wait_var_equal+1
+  // 0x028
 	.word CutsceneCmd_wait_cutscene_process+1
+  // 0x02C
 	.word CutsceneCmd_wait_if_eStruct200a6a0_initialized+1
+  // 0x030
 	.word CutsceneCmd_wait_if_in_pet_menu+1
+  // 0x034
 	.word CutsceneCmd_wait_if_flag_clear+1
+  // 0x038
 	.word CutsceneCmd_wait_if_flag_set+1
+  // 0x03C
 	.word CutsceneCmd_wait_if_scenario_effect_state_initialized+1
+  // 0x040
 	.word CutsceneCmd_wait_if_eStruct2001010_initialized+1
+  // 0x044
 	.word CutsceneCmd_cutscene_end+1
+  // 0x048
 	.word CutsceneCmd_spawn_cutscene_process+1
+  // 0x04C
 	.word CutsceneCmd_kill_cutscene_process+1
+  // 0x050
 	.word CutsceneCmd_set_cutscene_skip_script+1
+  // 0x054
 	.word MapScriptCutsceneCmd_jump+1
+  // 0x058
 	.word MapScriptCutsceneCmd_jump_if_progress_in_range+1
+  // 0x05C
 	.word MapScriptCutsceneCmd_jump_if_flag_set+1
+  // 0x060
 	.word MapScriptCutsceneCmd_jump_if_flag_range_set+1
+  // 0x064
 	.word MapScriptCutsceneCmd_jump_if_flag_clear+1
+  // 0x068
 	.word MapScriptCutsceneCmd_jump_if_flag_range_clear+1
+  // 0x06C
 	.word MapScriptCutsceneCmd_jump_if_mem_equals+1
+  // 0x070
 	.word CutsceneCmd_jump_if_var_equal+1
+  // 0x074
 	.word MapScriptCutsceneCmd_jump_if_key_item_in_range+1
+  // 0x078
 	.word MapScriptCutsceneCmd_jump_if_chip_count_in_range+1
+  // 0x07C
 	.word MapScriptCutsceneCmd_jump_if_battle_result_equals+1
+  // 0x080
 	.word MapScriptCutsceneCmd_jump_if_battle_result_not_equal+1
+  // 0x084
 	.word MapScriptCutsceneCmd_coordinate_trigger_equals_cmd_8035afa+1
+  // 0x088
 	.word MapScriptCutsceneCmd_coordinate_trigger_not_equal_cmd_8035b44+1
+  // 0x08C
 	.word MapScriptCutsceneCmd_jump_if_current_navi_equals+1
+  // 0x090
 	.word MapScriptCutsceneCmd_jump_if_current_navi_not_equal+1
+  // 0x094
 	.word CutsceneCmd_jump_if_title_screen_icon_count_equals+1
+  // 0x098
 	.word CutsceneCmd_jump_if_title_screen_icon_count_not_equal+1
+  // 0x09C
 	.word MapScriptCutsceneCmd_set_screen_fade+1
+  // 0x0A0
 	.word MapScriptCutsceneCmd_set_enter_map_screen_fade+1
+  // 0x0A4
 	.word MapScriptCutsceneCmd_set_event_flag+1
+  // 0x0A8
 	.word MapScriptCutsceneCmd_clear_event_flag+1
+  // 0x0AC
 	.word MapScriptCutsceneCmd_set_event_flag_range+1
+  // 0x0B0
 	.word MapScriptCutsceneCmd_clear_event_flag_range+1
+  // 0x0B4
 	.word MapScriptCutsceneCmd_set_event_flag_list+1
+  // 0x0B8
 	.word MapScriptCutsceneCmd_clear_event_flag_list+1
+  // 0x0BC
 	.word MapScriptCutsceneCmd_write_byte+1
+  // 0x0C0
 	.word MapScriptCutsceneCmd_write_hword+1
+  // 0x0C4
 	.word MapScriptCutsceneCmd_write_word+1
+  // 0x0C8
 	.word MapScriptCutsceneCmd_write_gamestate_byte+1
+  // 0x0CC
 	.word MapScriptCutsceneCmd_write_eStruct2001c04_byte+1
+  // 0x0D0
 	.word CutsceneCmd_write_byte_to_extended_var_plus_param+1
+  // 0x0D4
 	.word CutsceneCmd_set_var+1
+  // 0x0D8
 	.word MapScriptCutsceneCmd_load_gfx_anim+1
+  // 0x0DC
 	.word MapScriptCutsceneCmd_load_gfx_anims+1
+  // 0x0E0
 	.word MapScriptCutsceneCmd_load_map_gfx_anims_bg_anim+1
+  // 0x0E4
 	.word MapScriptCutsceneCmd_terminate_one_or_all_gfx_anims+1
+  // 0x0E8
 	.word CutsceneCmd_run_text_script+1
+  // 0x0EC
 	.word CutsceneCmd_chatbox_cmd_8037a70+1
+  // 0x0F0
 	.word CutsceneCmd_set_or_clear_chatbox_flags+1
+  // 0x0F4
 	.word CutsceneCmd_switch_case_from_chatbox_flags_bit0_to_2+1
+  // 0x0F8
 	.word CutsceneCmd_decomp_text_archive+1
+  // 0x0FC
 	.word CutsceneCmd_ow_player_sprite_special+1
+  // 0x110
 	.word CutsceneCmd_ow_player_sprite_special_with_arg+1
+  // 0x114
 	.word CutsceneCmd_ow_player_coord_special+1
+  // 0x118
 	.word CutsceneCmd_move_player_in_facing_direction+1
+  // 0x11C
 	.word CutsceneCmd_ow_player_cmd_8037cc4+1
+  // 0x120
 	.word CutsceneCmd_write_S200ace0_unk_20+1
+  // 0x124
 	.word CutsceneCmd_transform_player_navi_sprite+1
+  // 0x128
 	.word CutsceneCmd_set_ow_player_navi_color_shader+1
+  // 0x12C
 	.word CutsceneCmd_write_or_offset_ow_player_fixed_anim_select_8037dac+1
+  // 0x130
 	.word CutsceneCmd_set_player_coords_anim_facing_as_npc+1
+  // 0x134
 	.word CutsceneCmd_spawn_free_ow_map_object_specials+1
+  // 0x138
 	.word CutsceneCmd_spawn_or_free_ow_map_or_npc_objects+1
+  // 0x13C
 	.word CutsceneCmd_call_native_with_return_value+1
+  // 0x140
 	.word CutsceneCmd_warp_cmd_8038040+1
+  // 0x144
 	.word MapScriptCutsceneCmd_play_sound+1
+  // 0x148
 	.word MapScriptCutsceneCmd_play_music+1
+  // 0x14C
 	.word MapScriptCutsceneCmd_sound_cmd_80380ea+1
+  // 0x150
 	.word MapScriptCutsceneCmd_sound_cmd_803810e+1
+  // 0x154
 	.word MapScriptCutsceneCmd_stop_sound+1
+  // 0x158
 	.word MapScriptCutsceneCmd_give_or_take_item+1
+  // 0x15C
 	.word MapScriptCutsceneCmd_do_pet_effect+1
+  // 0x160
 	.word CutsceneCmd_run_or_stop_cutscene_camera_script+1
+  // 0x164
 	.word CutsceneCmd_start_fixed_battle+1
+  // 0x168
 	.word CutsceneCmd_start_random_battle+1
+  // 0x16C
 	.word NULL
+  // 0x170
 	.word MapScriptCutsceneCmd_init_eStruct200a6a0+1
+  // 0x174
 	.word MapScriptCutsceneCmd_run_eStruct200a6a0_callback+1
+  // 0x178
 	.word CutsceneCmd_do_camera_shake+1
+  // 0x17C
 	.word CutsceneCmd_nop_8038246+1
+  // 0x180
 	.word CutsceneCmd_nop_8038256+1
+  // 0x184
 	.word CutsceneCmd_nop_803825e+1
+  // 0x188
 	.word CutsceneCmd_nop_8038266+1
+  // 0x18C
 	.word CutsceneCmd_terminate_bg_scroll_effect+1
+  // 0x190
 	.word MapScriptCutsceneCmd_init_scenario_effect+1
+  // 0x194
 	.word MapScriptCutsceneCmd_end_scenario_effect+1
+  // 0x198
 	.word MapScriptCutsceneCmd_init_minigame_effect+1
+  // 0x19C
 	.word MapScriptCutsceneCmd_end_minigame_effect+1
+  // 0x1A0
 	.word NULL
+  // 0x1A4
 	.word NULL
+  // 0x1A8
 	.word NULL
+  // 0x1AC
 	.word MapScriptCutsceneCmd_add_bbs_message_range+1
+  // 0x1B0
 	.word CutsceneCmd_encryption_cmd_80382de+1
+  // 0x1B4
 	.word CutsceneCmd_navi_cmd_80340f6+1
+  // 0x1B8
 	.word CutsceneCmd_change_navi_maybe_80382fe+1
+  // 0x1BC
 	.word MapScriptCutsceneCmd_add_mail_range+1
+  // 0x1C0
 	.word MapScriptCutsceneCmd_cmd_8038346+1
+  // 0x1C4
 	.word NULL
+  // 0x1C8
 	.word NULL
+  // 0x1CC
 	.word CutsceneCmd_give_or_take_zenny+1
+  // 0x1D0
 	.word CutsceneCmd_give_or_take_bugfrags+1
+  // 0x1D4
 	.word NULL
+  // 0x1D8
 	.word NULL
+  // 0x1DC
 	.word CutsceneCmd_give_or_take_chips+1
+  // 0x1E0
 	.word CutsceneCmd_give_or_take_navicust_programs+1
+  // 0x1E4
 	.word CutsceneCmd_cutscene_run_or_end_secondary_continuous_map_script+1
+  // 0x1E8
 	.word CutsceneCmd_store_or_load_game_progress_buffer_maybe_803843c+1
+  // 0x1EC
 	.word CutsceneCmd_flag_cmd_8038466+1
+  // 0x1F0
 	.word MapScriptCutsceneCmd_add_request_range+1
+  // 0x1F4
 	.word MapScriptCutsceneCmd_rush_food_cmd_80384A8+1
+  // 0x1F8
 	.word CutsceneCmd_set_beast_out_counter_to_3+1
+  // 0x1FC
 	.word CutsceneCmd_jump_if_req_bbs_master_rank+1
+  // 0x200
 	.word CutsceneCmd_if_in_real_world_jump_else_jump+1
 DummyCutsceneScript: .word 0x11
 byte_8037694: .byte 0x0, 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
@@ -5965,17 +6090,22 @@ RunCutscene:
 	mov r4, r8
 	mov r5, r12
 	push {r4,r5}
+
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_CutsceneStatePtr]
+
 	mov r0, #0
 	strb r0, [r5,#oCutsceneState_WhichCutsceneScript]
+
 	mov r0, #oCutsceneState_CutsceneScriptPos
 	mov r8, r0
+
 .executeCutsceneScriptsLoop
 	ldr r6, =CutsceneCommandJumptable
 	mov r12, r6
 	mov r7, r8
 	ldr r7, [r5,r7]
+
 .cutsceneCommandLoop
 	// retrieve the jumptable pointer
 	mov r6, r12
@@ -6015,14 +6145,19 @@ RunCutscene:
 	// loop if we haven't executed all scripts
 	cmp r0, #oCutsceneState_CutsceneScriptPos4
 	ble .executeCutsceneScriptsLoop
+
 	ldr r0, [r5,#oCutsceneState_CutsceneCameraScriptPtr]
 	tst r0, r0
 	beq .cutsceneCameraScriptNull
+
 	bl RunCutsceneCameraCommand
 	strb r0, [r5,#oCutsceneState_CutsceneCameraScriptActive]
+
 .cutsceneCameraScriptNull
+
 	bl TryCutsceneSkip
 	beq .doneCutsceneIteration
+
 	ldr r0, [r5,#oCutsceneState_CutsceneScriptAfterCutsceneSkip]
 	tst r0, r0
 	beq .doneCutsceneIteration
@@ -6051,6 +6186,7 @@ RunCutscene:
 	bl ClearCutsceneFlag
 	mov r0, #CUTSCENE_FLAG_SCRIPT_4_PAUSED_LONG
 	bl ClearCutsceneFlag
+
 .doneCutsceneIteration
 	pop {r4,r5}
 	mov r8, r4

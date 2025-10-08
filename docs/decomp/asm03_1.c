@@ -606,7 +606,7 @@ signed int __fastcall sub_803423C(int a1, int a2, int a3, int a4)
     ZeroFillGFX30025c0();
     sub_8006910();
     *(*(v4 + oToolkit_GameStatePtr) + 22) = 0;
-    v5 = sub_8005C04();
+    v5 = map_triggerEnterMapOnWarp_8005C04();
     v6 = sub_8033FDC(v5);
     return musicGameState_8000784(v6, v7, v8);
 }
@@ -707,7 +707,7 @@ int __fastcall sub_80342EC(int a1, int a2, int a3, int a4)
     v5 = *(v4 + oToolkit_GameStatePtr);
     *(v5 + 22) = 0;
     *(v5 + 23) = 16;
-    sub_8005C04();
+    map_triggerEnterMapOnWarp_8005C04();
     return navi_80340F6();
 }
 
@@ -805,7 +805,7 @@ int __fastcall map_8034B4C(int mapGroup, int mapNumber)
 
 
 // 0x8034bb8
-int __fastcall sub_8034BB8(int a1)
+int __fastcall cutscene_8034BB8(int a1)
 {
     char zf; // zf
     void *v2; // r0

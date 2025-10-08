@@ -2357,7 +2357,7 @@ sub_809B00C:
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldr r0, [r7,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #0x1c
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
 	sub r0, #0xc0
 	ldr r1, off_809B04C // =dword_809B050
 	ldrb r0, [r1,r0]
@@ -2518,7 +2518,7 @@ sub_809B130:
 	ldr r7, [r7,#0x3c]
 	ldr r0, [r7,#0x18]
 	add r0, #0x1c
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
 	sub r0, #0xc0
 	blt loc_809B162
 	cmp r0, #0xf
@@ -3717,7 +3717,7 @@ sub_809C968:
 	ldrb r6, [r7,#oGameState_MapGroup]
 	cmp r6, #0x80
 	blt loc_809CA26
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne loc_809CA26
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]

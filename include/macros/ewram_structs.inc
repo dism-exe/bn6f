@@ -246,7 +246,7 @@ this weird set of boilerplate functions revolving around structs in asm00_1.s
 
 /*
 document Warp2011bb0
-sub_8005C04 is a good function to start
+map_triggerEnterMapOnWarp_8005C04 is a good function to start
 */
 
 /*

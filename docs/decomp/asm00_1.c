@@ -2324,7 +2324,7 @@ int __fastcall EnterMap(int a1)
 
 
 // 0x8005268
-void __usercall gamestate_8005268(GameState *gs@<R5>, int a1@<R0>)
+void __usercall gamestate_on_map_update_8005268(GameState *gs@<R5>, int a1@<R0>)
 {
     int v2; // r0
     int v3; // r1
@@ -2332,7 +2332,7 @@ void __usercall gamestate_8005268(GameState *gs@<R5>, int a1@<R0>)
     int v5; // r3
 
     sub_8036F24();
-    sub_8034BB8(v2);
+    cutscene_8034BB8(v2);
     gs->unk_0E = 0;
     sub_800378C(0, v3, v4, v5);
     sub_8003BA2();
@@ -2461,7 +2461,7 @@ int __fastcall sub_800536E(int a1)
         if ( (result < 0) ^ v7 )
         {
             chatbox_8040818();
-            result = sub_8005C04();
+            result = map_triggerEnterMapOnWarp_8005C04();
         }
         else
         {
@@ -3018,7 +3018,7 @@ void sub_80058D0()
                                     *(v5 + 16) = 1;
                                     *(v5 + 17) = v4;
                                     *(v5 + 18) = 0;
-                                    (*(&off_8005948 + *(*(v5 + 20) + 16 * (v4 - 1) + 2)))();
+                                    (*(&JumpTable8005948 + *(*(v5 + 20) + 16 * (v4 - 1) + 2)))();
                                 }
                             }
                         }
@@ -3359,7 +3359,7 @@ int __fastcall StartBattle(int a1, int a2)
 
 
 // 0x8005c04
-int sub_8005C04()
+int map_triggerEnterMapOnWarp_8005C04()
 {
     int *v0; // r10
     int v1; // r7

@@ -170,7 +170,7 @@ loc_81419CC:
 	bl sub_8046818
 	bl sub_8046854
 	bl sub_811E0BA
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne loc_8141A0C
 	bl sub_809E462
 	bne loc_8141A0C

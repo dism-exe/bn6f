@@ -738,7 +738,7 @@ sub_8033EE8:
 	movflag EVENT_1731
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8033EFC
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	cmp r0, #1
 	bgt locret_8033F32
 loc_8033EFC:
@@ -1073,7 +1073,7 @@ sub_803423C:
 	ldr r0, [r7,#oToolkit_GameStatePtr]
 	mov r1, #0
 	strb r1, [r0,#oGameState_EnterMapFadeParam1]
-	bl sub_8005C04
+	bl map_triggerEnterMapOnWarp_8005C04
 	bl sub_8033FDC
 	bl musicGameState_8000784 // () -> void
 	pop {pc}
@@ -1170,7 +1170,7 @@ sub_80342EC:
 	strb r1, [r0,#oGameState_EnterMapFadeParam1]
 	mov r1, #0x10
 	strb r1, [r0,#oGameState_EnterMapFadeParam2]
-	bl sub_8005C04
+	bl map_triggerEnterMapOnWarp_8005C04
 	bl navi_80340F6
 	pop {pc}
 	thumb_func_end sub_80342EC
@@ -1653,19 +1653,24 @@ off_8034BB0: .word InternetMapScriptPointers
 off_8034BB4: .word unk_2011EA0
 	thumb_func_end map_8034B4C
 
-	thumb_func_start sub_8034BB8
-sub_8034BB8:
+	thumb_func_start cutscene_8034BB8
+cutscene_8034BB8:
 	push {r4-r7,lr}
 	mov r2, r8
 	mov r3, r9
 	mov r4, r12
 	push {r2-r4}
-	bl IsCutsceneScriptNonNull // () -> zf
-	bne loc_8034BFE
+
+  // branch if IsCutsceneScriptNonNull
+	bl IsCutsceneScriptNonNull // () -> !zf
+	bne .doRunCutscene
+
 	bl RunContinuousMapScript
 	bl sub_809C968
+
 	bl sub_8034C6E
-	beq loc_8034BFE
+	beq .doRunCutscene
+
 	bl HandleCoordinateInteractionCutscene
 	bl sub_8034F68
 	bl npc_80350BC
@@ -1676,26 +1681,35 @@ sub_8034BB8:
 	bl sub_8035054
 	bl sub_8035084
 	bl sub_809CF2C
-loc_8034BFE:
+
+.doRunCutscene:
 	bl RunSecondaryContinuousMapScript
-	bl IsCutsceneScriptNonNull // () -> zf
-	beq loc_8034C2C
+
+  // branch if !IsCutsceneScriptNonNull
+	bl IsCutsceneScriptNonNull // () -> !zf
+	beq .ret
+
 	bl RunCutscene // () -> void
+
 	movflag EVENT_742
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_743
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_962
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_963
 	bl ClearEventFlagFromImmediate
-loc_8034C2C:
+
+.ret:
 	pop {r2-r4}
 	mov r8, r2
 	mov r9, r3
 	mov r12, r4
 	pop {r4-r7,pc}
-	thumb_func_end sub_8034BB8
+	thumb_func_end cutscene_8034BB8
 
 	thumb_func_start sub_8034C36
 sub_8034C36:
@@ -1713,7 +1727,7 @@ sub_8034C36:
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_8034C6A
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne loc_8034C6A
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -1735,7 +1749,7 @@ sub_8034C6E:
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_8034C98
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne loc_8034C98
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -1750,7 +1764,7 @@ IsNotSlipRunningAndNotInCutscene:
 	movflag EVENT_IN_SLIPRUN_STATE
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne .returnFalse
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne .returnFalse
 	mov r0, #TRUE
 	pop {r4-r7,pc}
@@ -1805,7 +1819,7 @@ loc_8034CF6:
 	add r2, r2, r6
 	str r2, [sp,#8]
 	mov r0, sp
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
 	add sp, sp, #0xc
 	sub r0, #0x40
 	blt loc_8034D44
@@ -2090,13 +2104,13 @@ off_8034F64: .word byte_8098358
 	thumb_local_start
 sub_8034F68:
 	push {r4-r7,lr}
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne locret_8034FA8
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r0, [r5,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #0x1c
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
 	mov r4, r1
 	cmp r4, #1
 	blt locret_8034FA8
@@ -2142,7 +2156,7 @@ loc_8034FCE:
 	movflag EVENT_1703
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	bne loc_8035004
-	bl IsCutsceneScriptNonNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> !zf
 	bne loc_8035004
 	ldr r4, off_8035020 // =byte_809895C
 	movflag EVENT_127
@@ -2486,7 +2500,7 @@ ghostNaviCheck_8035274:
 	blt locret_80352D4
 	ldr r0, [r7,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #0x1c
-	bl checkCoordinateTrigger_8031a7a
+	bl checkCoordinateTrigger_8031a7a // (coords: * ?) -> ?
 	mov r6, r0
 	cmp r6, #0xd0
 	blt locret_80352D4

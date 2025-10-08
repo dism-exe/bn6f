@@ -22962,7 +22962,7 @@ sub_8031A68:
 	thumb_func_end sub_8031A68
 
 	thumb_func_start checkCoordinateTrigger_8031a7a
-checkCoordinateTrigger_8031a7a:
+checkCoordinateTrigger_8031a7a: // (coords: * ?) -> ?
 	push {r4-r7,lr}
 	mov r3, r8
 	mov r4, r9
