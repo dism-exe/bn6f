@@ -26143,7 +26143,7 @@ locret_811C10C:
 	thumb_local_start
 sub_811C10E:
 	push {lr}
-	bl loc_8002676
+	bl call_8002676
 	bl sub_804668A
 	pop {pc}
 	.balign 4, 0x00

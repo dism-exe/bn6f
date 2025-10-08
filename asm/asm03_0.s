@@ -17929,14 +17929,19 @@ off_802F4E0: .word unk_3001B20
 	.word 0x1
 	thumb_func_end sub_802F2C8
 
+// Start Module StartScreen_
+
+/// Breaks on partial Capcom logo fade from sub_803D2A6
 	thumb_func_start startScreen_init_802F530
 startScreen_init_802F530: // () -> void
 	push {lr}
 
+  // implies eStartScreen size
 	ldr r0, off_802F570 // =eStartScreen
 	mov r1, #0x20 
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 
+  // trigger startscreen_render_802F544 via main_
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	mov r0, #0
@@ -17945,7 +17950,6 @@ startScreen_init_802F530: // () -> void
 	pop {pc}
 	thumb_func_end startScreen_init_802F530
 
-
 	thumb_func_start startscreen_render_802F544
 startscreen_render_802F544: // () ->
 	push {r4-r7,lr}
@@ -17953,74 +17957,102 @@ startscreen_render_802F544: // () ->
 
 	ldr r5, off_802F570 // =eStartScreen
 	ldr r0, off_802F55C // =jt_802F560 
+
 	ldrb r1, [r5, #oStartScreen_JumpTableOff_00]
 	ldr r0, [r0,r1]
 	
-    mov lr, pc
-	bx r0
+  mov lr, pc
+  bx r0
 	
-    bl GetRNG // () -> u32?
-    pop {r4-r7,pc}
-	.balign 4, 0
+  bl GetRNG // () -> u32?
+  pop {r4-r7,pc}
+  .balign 4, 0
 off_802F55C: .word jt_802F560
-jt_802F560: .word startScreen_802F574+1
-	.word startscreen_802F60C+1
-	.word ho_802F63C+1
-	.word load_game_802F756+1
+jt_802F560: .word startScreen_initGfx_802F574+1 // (self: *mut StartScreen $r5) -> ()
+	.word startscreen_802F60C+1 // (self: * StartScreen $r5) -> ()
+	.word ho_802F63C+1 // (self: * StartScreen $r5) -> ()
+	.word load_game_802F756+1 // (self: * StartScreen $r5) -> ()
 off_802F570: .word eStartScreen
 	thumb_func_end startscreen_render_802F544
 
+/// Disabling this causes black screen after Capcom Logo
 	thumb_local_start
-startScreen_802F574:
+startScreen_initGfx_802F574: // (self: *mut StartScreen $r5) -> ()
 	push {lr}
+
 	mov r0, #0xb
 	bl sub_80015FC
+
 	ldr r0, off_802F7E4 // =0x1140 
 	bl SetRenderInfoLCDControl
+
 	bl renderInfo_8001788
+
 	bl renderInfo_80017A0
+
+  /// Disabling this causes responsive black start screen with some graphics noise
 	bl startScreen_initGfx_802FCC0
+
 	mov r0, #0xc
 	mov r1, #0xff
 	bl SetScreenFade // (int a1, int a2) -> void
+
 	bl musicGameState_8000784 // () -> void
+
 	ldr r0, off_802F5EC // =pt_802F5F0 
 	bl LoadGFXAnims
+
+  // trigger startscreen_802F60C via startscreen_render_802F544
 	mov r0, #4
-	strb r0, [r5]
+	strb r0, [r5, #oStartScreen_JumpTableOff_00]
+
 	mov r0, #0
-	strb r0, [r5,#2]
+	strb r0, [r5, #oStartScreen_Unk_02]
+
 	bl sub_803FA42
-	bl sub_803F838
+
+	bl sub_803F838 // () -> !zf
 	bne loc_802F5BE
+
 	mov r0, #1
-	strb r0, [r5,#2]
-	bl GetTitleScreenIconCount
-	strb r0, [r5,#0xc]
-	strh r1, [r5,#0xa]
+	strb r0, [r5, #oStartScreen_Unk_02]
+
+	bl GetTitleScreenIconCount // () -> (u8, u16)
+	strb r0, [r5, #oStartScreen_Unk_0C]
+	strh r1, [r5, #oStartScreen_AchievmentFlags]
+
 loc_802F5BE:
-	ldrb r0, [r5,#2]
+	ldrb r0, [r5, #oStartScreen_Unk_02]
 	tst r0, r0
 	bne loc_802F5D4
+
 	mov r6, #0
 	mov r7, #1
+
+  // Was this a condition stubbed out?
 	bl startScreen_TstZero // () -> !zf
 	beq loc_802F5E2
+
 	mov r0, #0
 	mov r7, #2
 	b loc_802F5E2
 loc_802F5D4:
 	mov r6, #1
 	mov r7, #2
+
 	bl startScreen_TstZero // () -> !zf
 	beq loc_802F5E2
+
 	mov r6, #1
 	mov r7, #3
+
 loc_802F5E2:
-	strb r6, [r5,#8]
-	strb r7, [r5,#9]
+	strb r6, [r5,#oStartScreen_CurrCursorPos]
+	strb r7, [r5,#oStartScreen_NumChoices]
+
 	mov r0, #0
-	strb r0, [r5,#3]
+	strb r0, [r5,#oStartScreen_Unk_03]
+
 	pop {pc}
 	.balign 4, 0
 off_802F5EC: .word pt_802F5F0
@@ -18031,79 +18063,111 @@ pt_802F5F0: .word off_802F350
 	.word off_802F490
 	.word off_802F4E0
 	.word 0xFFFFFFFF
-	thumb_func_end startScreen_802F574
+	thumb_func_end startScreen_initGfx_802F574
 
 	thumb_local_start
-startscreen_802F60C:
+startscreen_802F60C: // (self: * StartScreen $r5) -> ()
 	push {lr}
+
 	ldr r0, off_802F61C // =off_802F620 
-	ldrb r1, [r5,#1]
+
+  // There is only one valid choice!
+	ldrb r1, [r5, #oStartScreen_JumpTableOff_01]
 	ldr r0, [r0,r1]
+
 	mov lr, pc
 	bx r0
+
 	pop {pc}
 	.balign 4, 0x00
 off_802F61C: .word off_802F620
-off_802F620: .word sub_802F624+1
+off_802F620: .word startscreen_render_trigger_802F624+1 // (self: *mut StartScreen $r5) -> ()
 	thumb_func_end startscreen_802F60C
 
 	thumb_local_start
-sub_802F624:
+startscreen_render_trigger_802F624: // (self: *mut StartScreen $r5) -> ()
 	push {lr}
+
 	ldr r0, dword_802F638 // =0x1741 
 	bl SetRenderInfoLCDControl
+
+  // trigger ho_802F63C via startscreen_render_802F544
 	mov r0, #8
-	strb r0, [r5]
+	strb r0, [r5, #oStartScreen_JumpTableOff_00]
+
 	mov r0, #0
-	strb r0, [r5,#1]
+	strb r0, [r5, #oStartScreen_JumpTableOff_01]
+
 	pop {pc}
 	.balign 4, 0
 dword_802F638: .word 0x1741
-	thumb_func_end sub_802F624
+	thumb_func_end startscreen_render_trigger_802F624
 
-// () -> void
 	thumb_local_start
-ho_802F63C:
+ho_802F63C: // (self: * StartScreen $r5) -> ()
 	push {lr}
+
 	ldr r0, off_802F650 // =jt_802F654 
-	ldrb r1, [r5,#1]
+
+	ldrb r1, [r5, #oStartScreen_JumpTableOff_01]
 	ldr r0, [r0,r1]
+
 	mov lr, pc
 	bx r0
+
 	bl sub_802FB10 // () -> void
+
 	pop {pc}
 	.balign 4, 0
 off_802F650: .word jt_802F654
 jt_802F654:
-	.word sub_802F668+1
-	.word sub_802F6A4+1
-	.word sub_802F6B2+1
-	.word sub_802F704+1
-	.word sub_802F710+1
+
+  // where is it triggered?
+	.word sub_802F668+1 // (self: *mut StartScreen $r5) -> ()
+
+	.word sub_802F6A4+1 // (self: *mut StartScreen $r5) -> ()
+	.word sub_802F6B2+1 // (self: *mut StartScreen $r5) -> ()
+
+  // where is it triggered?
+	.word sub_802F704+1 // (self: *mut StartScreen $r5) -> ()
+
+	.word sub_802F710+1 // (self: *mut StartScreen $r5) -> ()
 	thumb_func_end ho_802F63C
 
+/// breaks right after Capcom logo
 	thumb_local_start
-sub_802F668:
+sub_802F668: // (self: *mut StartScreen $r5) -> ()
 	push {lr}
+
 	mov r0, #0
 	strb r0, [r5,#0xe]
 	strb r0, [r5,#0xf]
+
 	ldr r0, dword_802F69C // =0xa46 
 	strh r0, [r5,#4]
+
 	mov r0, #1
-	bl sub_80005F2
+	bl music_80005F2 // (bg_music_indicator: u8) -> ()
+
 	mov r0, #0xa
 	bl sub_80015FC
+
 	ldr r0, off_802F6A0 // =0x1340 
 	bl SetRenderInfoLCDControl
+
 	mov r0, #0
 	strb r0, [r5,#6]
-	bl sub_802FD3C
+
+	bl copyBGTiles_802FD3C
+
 	mov r0, #8
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
+
+  // trigger sub_802F6A4 via ho_802F63C
 	mov r0, #4
-	strb r0, [r5,#1]
+	strb r0, [r5, #oStartScreen_JumpTableOff_01]
+
 	pop {pc}
 	.balign 4, 0
 dword_802F69C: .word 0xA46
@@ -18111,50 +18175,70 @@ off_802F6A0: .word 0x1340
 	thumb_func_end sub_802F668
 
 	thumb_local_start
-sub_802F6A4:
+sub_802F6A4: // (self: *mut StartScreen $r5) -> ()
 	push {r4,lr}
+
 	bl IsScreenFadeActive // () -> zf
 	beq locret_802F6B0
+
+  // trigger sub_802F6B2 via ho_802F63C
 	mov r0, #8
-	strb r0, [r5,#1]
+	strb r0, [r5, #oStartScreen_JumpTableOff_01]
+
 locret_802F6B0:
 	pop {r4,pc}
 	thumb_func_end sub_802F6A4
 
 	thumb_local_start
-sub_802F6B2:
+sub_802F6B2: // (self: *mut StartScreen $r5) -> ()
 	push {r4,lr}
+
 	ldrh r0, [r5,#4]
 	cmp r0, #0
 	bgt loc_802F6C8
+
+  // trigger sub_802F710 via ho_802F63C
 	mov r0, #0x10
-	strb r0, [r5,#1]
+	strb r0, [r5, #oStartScreen_JumpTableOff_01]
+
 	mov r0, #0xc
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
+
 	b locret_802F6FA
+
 loc_802F6C8:
+
 	sub r0, #1
 	strh r0, [r5,#4]
+
 	ldr r1, off_802F6FC // =0x12c 
 	cmp r0, r1
 	bne loc_802F6E0
+
 	push {r0,r5}
 	mov r0, #0x1f
 	mov r1, #0x10
 	bl sound_800068A
+
 	pop {r0,r5}
+
 	b locret_802F6FA
+
 loc_802F6E0:
 	ldrh r0, [r5,#4]
 	ldr r1, dword_802F700 // =0xa0a 
 	cmp r0, r1
 	bge locret_802F6FA
+
 	bl sub_803E928
+
 	bne locret_802F6FA
-	bl sub_802FD54
+
+	bl sub_802FD54 // (self: *mut StartScreen $r5) -> ()
 	bl sub_802F7E8
 	bl sub_802F88E
+
 locret_802F6FA:
 	pop {r4,pc}
 	.balign 4, 0
@@ -18162,54 +18246,66 @@ off_802F6FC: .word 0x12C
 dword_802F700: .word 0xA0A
 	thumb_func_end sub_802F6B2
 
+/// Breaks right after interacting with "PRESS START"
 	thumb_local_start
-sub_802F704:
+sub_802F704: // (self: *mut StartScreen $r5) -> ()
 	push {lr}
 	bl sub_802F81C
-	bl sub_802F8D8
+	bl sub_802F8D8 // (self: *mut StartScreen $r5) -> ()
 	pop {pc}
 	thumb_func_end sub_802F704
 
 	thumb_local_start
-sub_802F710:
+sub_802F710: // (self: *mut StartScreen $r5) -> ()
 	push {lr}
+
 	ldrh r0, [r5,#4]
 	cmp r0, #0
 	ble loc_802F71C
-	bl sub_802F8D8
+
+	bl sub_802F8D8 // (self: *mut StartScreen $r5) -> ()
+
 loc_802F71C:
+
 	bl IsScreenFadeActive // () -> zf
 	beq locret_802F754
+
 	ldrh r0, [r5,#4]
 	cmp r0, #0
 	ble loc_802F72E
+
+  // This seems to be for quickly writing 0x0C to JO00, and 0x00 to JO01
+  // trigger load_game_802F756 via startscreen_render_802F544
 	mov r0, #0xc
-	strh r0, [r5]
+	strh r0, [r5, #oStartScreen_JumpTableOff_00]
+
 	b locret_802F754
 loc_802F72E:
 	bl zeroFill_e20094C0
 	bl sub_80023A8
 	bl call_803D1AC // () -> void
 	bl sub_81440D8 // static () -> void
-	bl sub_813D960
+	bl zeroFill_813D960
 	bl clear_e200AD04 // () -> ()
 	mov r0, #0
 	bl sub_803F6B0
 	bl loc_803F512
 	bl init_eStartScreenAnimationControl200B1A0_1
+
 locret_802F754:
 	pop {pc}
 	thumb_func_end sub_802F710
 
-/// Breaks on pressing "Load Game" 
-/// Disabling this causes "Load Game" to click, sound effect to play, but then we get stuck in a black screen.
+/// Breaks on pressing Main screen "Continue" once.
+/// Disabling this causes "Continue" to click, sound effect to play, but then we get stuck in a black screen.
 	thumb_local_start
-load_game_802F756:
+load_game_802F756: // (self: * StartScreen $r5) -> ()
 	push {lr}
 
 	mov r7, r10
 
-  // Disabling this causes "Load Game" to click, sound effect to play, but then we get stuck in a black screen.
+  // Disabling this causes "Continue" to click, sound effect to play, but then we get stuck in a black screen.
+  // trigger cbGameState_80050EC via main_
 	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]
 	mov r1, #4
 	strb r1, [r0]
@@ -18217,23 +18313,24 @@ load_game_802F756:
 	ldr r0, off_802F7E4 // =0x1140 
 	bl SetRenderInfoLCDControl
 
-	bl sub_813D960
+	bl zeroFill_813D960
 
 	ldrb r0, [r5,#8]
 
-	cmp r0, #0
+	cmp r0, #FALSE
 	beq loc_802F776
 
-	cmp r0, #1
+	cmp r0, #TRUE
 	beq loc_802F79A
 
 	b loc_802F7B6
 loc_802F776:
 
-	bl sub_800260C
+	bl copy_800260C
 
 	bl initNewGameData_8004DF0
 
+  // EnterMap is triggered via cbGameState_80050EC here
 	bl sub_8004D48
 
 	bl sub_81440D8 // static () -> void
@@ -18299,7 +18396,7 @@ sub_802F7E8:
 	mov r1, #8
 	tst r1, r0
 	beq locret_802F810
-	bl sub_813D960
+	bl zeroFill_813D960
 	mov r0, #0xc
 	strb r0, [r5,#1]
 	mov r0, #SOUND_SELECT_67
@@ -18399,7 +18496,7 @@ byte_802F8AC: .byte 0x78, 0x40, 0x34, 0x80, 0x1, 0x20, 0x0, 0x0, 0x78, 0x40
 	thumb_func_end sub_802F88E
 
 	thumb_local_start
-sub_802F8D8:
+sub_802F8D8: // (self: *mut StartScreen $r5) -> ()
 	push {r4-r7,lr}
 	ldrb r0, [r5,#6]
 	add r0, #1
@@ -18444,15 +18541,15 @@ loc_802F924:
 	bl startScreen_TstZero // () -> !zf
 	beq loc_802F936
 loc_802F936:
-	bl sub_802FC9C
-	bl sub_802FC70
-	bl sub_802FB64
-	bl sub_802FB90
-	bl sub_802FBB4
-	bl sub_802FBD8
-	bl sub_802FBFC
-	bl sub_802FC28
-	bl sub_802FC4C
+	bl sub_802FC9C // (self: *const StartScreen $r5) -> ()
+	bl sub_802FC70 // (self: *const StartScreen $r5) -> ()
+	bl sub_802FB64 // (self: *const StartScreen $r5) -> ()
+	bl sub_802FB90 // (self: *const StartScreen $r5) -> ()
+	bl sub_802FBB4 // (self: *const StartScreen $r5) -> ()
+	bl sub_802FBD8 // (self: *const StartScreen $r5) -> ()
+	bl sub_802FBFC // (self: *const StartScreen $r5) -> ()
+	bl sub_802FC28 // (self: *const StartScreen $r5) -> ()
+	bl sub_802FC4C // (self: *const StartScreen $r5) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_802F95C: .word byte_802F960
@@ -18508,7 +18605,7 @@ byte_802FA28: .byte 0x7F, 0x40, 0x58, 0x80, 0x37, 0x40, 0x0, 0x0, 0x7F, 0x40
 	thumb_func_end sub_802F9EC
 
 	thumb_local_start
-sub_802FA44:
+dead_802FA44: // (self: *const StartScreen? $r5) -> ()
 	push {r4-r7,lr}
 	ldrb r1, [r5,#9]
 	cmp r1, #3
@@ -18549,7 +18646,7 @@ byte_802FAEC: .byte 0x70, 0x40, 0x58, 0x80, 0x4B, 0x40, 0x0, 0x0, 0x70, 0x40
 	.byte 0x78, 0x80, 0x53, 0x40, 0x0, 0x0, 0x70, 0x0, 0x98, 0x40
 	.byte 0x5B, 0x40, 0x0, 0x0, 0x70, 0x80, 0xA8, 0x0, 0x5F, 0x40
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	thumb_func_end sub_802FA44
+	thumb_func_end dead_802FA44
 
 // () -> void
 	thumb_local_start
@@ -18570,7 +18667,7 @@ byte_802FB20: .byte 0x7E, 0x0, 0x0, 0x80, 0x80, 0x61, 0x0, 0x0, 0x7E, 0x0, 0x20
 	thumb_func_end sub_802FB10
 
 	thumb_local_start
-sub_802FB64:
+sub_802FB64: // (self: *const StartScreen $r5) -> ()
 	push {lr}
 	ldrh r0, [r5,#0xa]
 	mov r1, #0x80
@@ -18587,7 +18684,7 @@ byte_802FB7C: .byte 0x2, 0x40, 0x4, 0x80, 0x80, 0x92, 0x0, 0x0, 0x12, 0x40, 0x4
 	thumb_func_end sub_802FB64
 
 	thumb_local_start
-sub_802FB90:
+sub_802FB90: // (self: *const StartScreen $r5) -> ()
 	push {lr}
 	ldrh r0, [r5,#0xa]
 	mov r1, #0x40 
@@ -18603,7 +18700,7 @@ byte_802FBA8: .byte 0x4, 0x40, 0x2C, 0x80, 0x20, 0x82, 0x0, 0x0, 0x0, 0x0, 0x0, 
 	thumb_func_end sub_802FB90
 
 	thumb_local_start
-sub_802FBB4:
+sub_802FBB4: // (self: *const StartScreen $r5) -> ()
 	push {lr}
 	ldrh r0, [r5,#0xa]
 	mov r1, #0x20 
@@ -18619,7 +18716,7 @@ byte_802FBCC: .byte 0x4, 0x40, 0x54, 0x80, 0x30, 0x82, 0x0, 0x0, 0x0, 0x0, 0x0, 
 	thumb_func_end sub_802FBB4
 
 	thumb_local_start
-sub_802FBD8:
+sub_802FBD8: // (self: *const StartScreen $r5) -> ()
 	push {lr}
 	ldrh r0, [r5,#0xa]
 	mov r1, #0x10
@@ -18635,7 +18732,7 @@ byte_802FBF0: .byte 0x4, 0x40, 0x7C, 0x80, 0x40, 0x82, 0x0, 0x0, 0x0, 0x0, 0x0, 
 	thumb_func_end sub_802FBD8
 
 	thumb_local_start
-sub_802FBFC:
+sub_802FBFC: // (self: *const StartScreen $r5) -> ()
 	push {lr}
 	ldrh r0, [r5,#0xa]
 	mov r1, #8
@@ -18652,7 +18749,7 @@ byte_802FC14: .byte 0x14, 0x40, 0x8E, 0x80, 0x10, 0x72, 0x0, 0x0, 0x24, 0x40
 	thumb_func_end sub_802FBFC
 
 	thumb_local_start
-sub_802FC28:
+sub_802FC28: // (self: *const StartScreen $r5) -> ()
 	push {lr}
 	ldrh r0, [r5,#0xa]
 	mov r1, #4
@@ -18668,7 +18765,7 @@ byte_802FC40: .byte 0x4, 0x40, 0xA4, 0x80, 0x50, 0x82, 0x0, 0x0, 0x0, 0x0, 0x0, 
 	thumb_func_end sub_802FC28
 
 	thumb_local_start
-sub_802FC4C:
+sub_802FC4C: // (self: *const StartScreen $r5) -> ()
 	push {lr}
 	ldrh r0, [r5,#0xa]
 	mov r1, #2
@@ -18684,7 +18781,7 @@ byte_802FC64: .byte 0x4, 0x40, 0xCC, 0x80, 0x60, 0x82, 0x0, 0x0, 0x0, 0x0, 0x0, 
 	thumb_func_end sub_802FC4C
 
 	thumb_local_start
-sub_802FC70:
+sub_802FC70: // (self: *const StartScreen $r5) -> ()
 	push {lr}
 	ldrh r0, [r5,#0xa]
 	mov r1, #0x10
@@ -18702,7 +18799,7 @@ byte_802FC88: .byte 0x14, 0x40, 0x40, 0x80, 0x0, 0x72, 0x0, 0x0, 0x24, 0x40
 	thumb_func_end sub_802FC70
 
 	thumb_local_start
-sub_802FC9C:
+sub_802FC9C: // (self: *const StartScreen $r5) -> ()
 	push {lr}
 	ldrh r0, [r5,#0xa]
 	mov r1, #0x20 
@@ -18758,7 +18855,7 @@ initRefs_802FCD8: .word comp_87F36A0 + 1<<31
 	thumb_func_end startScreen_initGfx_802FCC0
 
 	thumb_local_start
-sub_802FD3C:
+copyBGTiles_802FD3C:
 	push {r5,lr}
 	// j
 	mov r0, #0
@@ -18774,10 +18871,10 @@ sub_802FD3C:
 	pop {r5,pc}
 	.balign 4, 0
 off_802FD50: .word byte_87F8EB0
-	thumb_func_end sub_802FD3C
+	thumb_func_end copyBGTiles_802FD3C
 
 	thumb_local_start
-sub_802FD54:
+sub_802FD54: // (self: *mut StartScreen $r5) -> ()
 	push {r4-r7,lr}
 	bl startScreen_TstZero // () -> !zf
 	beq locret_802FD68
@@ -18802,6 +18899,11 @@ byte_802FD90: .byte 0xB0, 0x25, 0x0, 0x3, 0x8, 0x0, 0x0, 0x0, 0x80, 0x25, 0x0, 0
 	.byte 0x0, 0x3, 0x4, 0x0, 0x0, 0x0
 	thumb_func_end sub_802FD54
 
+// End Module StartScreen_
+
+/// Breaks on reset twice
+/// Breaks on "Continue"
+/// Breaks on entering and existing PET menus
 	thumb_func_start sub_802FDB0
 sub_802FDB0:
 	mov r0, #0
@@ -19033,6 +19135,8 @@ off_802FF40: .word 0x180
 off_802FF44: .word dword_2009A2C
 off_802FF48: .word word_200A6F0
 	thumb_func_end cleareMemory_802FF2C
+
+// file bounds: Here we enter clearly camera territory
 
 	thumb_func_start camera_802FF4C
 // r3 - map group
@@ -20565,22 +20669,30 @@ nullsub_62:
 	mov pc, lr
 	thumb_func_end nullsub_62
 
+// 8030A00
 	thumb_func_start EnterMap_RunMapGroupAsmFunction_8030A00
-EnterMap_RunMapGroupAsmFunction_8030A00: // 8030A00
+EnterMap_RunMapGroupAsmFunction_8030A00:
 	push {lr}
+
 	cmp r0, #UNKNOWN_MAP_GROUP_START // 0xf0
 	bge .unknownMapGroupRange
+
 	cmp r0, #INTERNET_MAP_GROUP_START
 	bge .isInternetMap
+
 	ldr r1, =EnterMap_RealWorldMapGroupJumptable
+
 	b .runMapGroupFunction
+
 .isInternetMap
 	ldr r1, =EnterMap_InternetMapGroupJumptable
 	sub r0, #INTERNET_MAP_GROUP_START
 	b .runMapGroupFunction
+
 .unknownMapGroupRange
 	ldr r1, =EnterMap_UnkMapGroupJumptable
 	sub r0, #UNKNOWN_MAP_GROUP_START
+
 .runMapGroupFunction
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]

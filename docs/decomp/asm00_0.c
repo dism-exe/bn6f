@@ -43,7 +43,7 @@ int __fastcall PlaySong(int result, int a2, int a3)
 
 
 // 0x80005f2
-int __fastcall sub_80005F2(int a1, int a2, int a3)
+int __fastcall music_80005F2(int a1, int a2, int a3)
 {
     int v3; // r10
     int result; // r0
@@ -3022,7 +3022,7 @@ __int64 __fastcall sub_80024CC(int a1, int a2, unsigned int a3, unsigned int a4)
 
 
 // 0x800260c
-void __cdecl sub_800260C()
+void __cdecl copy_800260C()
 {
     int v0; // r0
     int v1; // r1
@@ -3043,7 +3043,7 @@ void __cdecl sub_800260C()
 
     ZeroFillByEightWords(0x7000000, &byte_400);
     ZeroFillByEightWords(0x6010000, 0x8000);
-    sub_8002668();
+    copy_8002668();
     v4 = InitializeOWPlayerObjectStruct(v0, v1, v2, v3);
     v8 = InitializeOverworldNPCObjectStructs(v4, v5, v6, v7);
     v12 = InitializeOverworldMapObjectStructs(v8, v9, v10, v11);
@@ -3060,7 +3060,7 @@ void copyPalletesToIWRAM_8002650()
 
 
 // 0x8002668
-void sub_8002668()
+void copy_8002668()
 {
     CopyByEightWords(dword_86A5500, byte_3001710, 0x20u);
     CopyByEightWords(byte_80025CC, byte_3001730, 0x20u);

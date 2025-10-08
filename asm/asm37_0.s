@@ -4152,9 +4152,10 @@ loc_813D95A:
 	.byte 0, 0
 	thumb_func_end sub_813D94C
 
-	thumb_func_start sub_813D960
-sub_813D960:
+	thumb_func_start zeroFill_813D960
+zeroFill_813D960:
 	push {r4,r7,lr}
+
 	ldr r7, off_813D974 // =byte_200BC50 
 	ldrb r4, [r7,#0x7] // (byte_200BC57 - 0x200bc50)
 	// memBlock
@@ -4162,11 +4163,12 @@ sub_813D960:
 	// size
 	mov r1, #0x10
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
 	strb r4, [r7,#0x7] // (byte_200BC57 - 0x200bc50)
 	pop {r4,r7,pc}
 	.balign 4, 0x00
 off_813D974: .word byte_200BC50
-	thumb_func_end sub_813D960
+	thumb_func_end zeroFill_813D960
 
 	thumb_func_start sub_813D978
 sub_813D978:

@@ -37,6 +37,7 @@ __pycache__/
 # vim files
 *.swp
 *.swo
+*.sw*
 tags
 
 # intentionally ignore those junk/temp files

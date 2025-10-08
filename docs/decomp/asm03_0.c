@@ -12859,7 +12859,7 @@ void startscreen_render_802F544()
 
 
 // 0x802f574
-int __usercall startScreen_802F574@<R0>(StartScreen *scr@<R5>)
+int __usercall startScreen_initGfx_802F574@<R0>(StartScreen *scr@<R5>)
 {
     int v1; // r0
     int v2; // r1
@@ -12929,7 +12929,7 @@ int startscreen_802F60C()
 
 
 // 0x802f624
-int sub_802F624()
+int startscreen_render_trigger_802F624()
 {
     _BYTE *v0; // r5
     int result; // r0
@@ -12961,11 +12961,11 @@ void __fastcall __noreturn sub_802F668(int a1, int a2, int a3)
     *(v3 + 14) = 0;
     *(v3 + 15) = 0;
     *(v3 + 4) = 2630;
-    sub_80005F2(1, a2, a3);
+    music_80005F2(1, a2, a3);
     sub_80015FC(10);
     SetRenderInfoLCDControl(&loc_1340);
     *(v3 + 6) = 0;
-    sub_802FD3C();
+    copyBGTiles_802FD3C();
 }
 
 
@@ -13068,7 +13068,7 @@ int sub_802F710()
             sub_80023A8(v3, v4, v5, v6);
             (call_803D1AC)();
             sub_81440D8();
-            sub_813D960();
+            zeroFill_813D960();
             clear_e200AD04();
             sub_803F6B0(0, v7, v8, v9);
             (loc_803F512)();
@@ -13101,7 +13101,7 @@ int load_game_802F756()
 
     **v1 = 4;
     SetRenderInfoLCDControl(&loc_1140);
-    sub_813D960();
+    zeroFill_813D960();
     if ( *(v0 + 8) )
     {
         if ( *(v0 + 8) == 1 && *(v0 + 2) )
@@ -13125,7 +13125,7 @@ int load_game_802F756()
     }
     else
     {
-        sub_800260C();
+        copy_800260C();
         initNewGameData_8004DF0();
         sub_8004D48();
         sub_81440D8();
@@ -13150,7 +13150,7 @@ int __fastcall sub_802F7E8(int a1, int a2, int a3, int a4)
     result = *(*(v5 + oToolkit_JoypadPtr) + 2);
     if ( result & 8 )
     {
-        sub_813D960();
+        zeroFill_813D960();
         *(v4 + 1) = 12;
         PlaySoundEffect(103, v7, v8);
         LoadGFXAnim(byte_802F2E4);
@@ -13294,7 +13294,7 @@ int __fastcall sub_802F9EC(int a1)
 
 
 // 0x802fa44
-int __fastcall sub_802FA44(int a1)
+int __fastcall dead_802FA44(int a1)
 {
     int v1; // r5
     int result; // r0
@@ -13442,7 +13442,7 @@ void __fastcall startScreen_initGfx_802FCC0(int a1, int a2, int a3, int a4)
 
 
 // 0x802fd3c
-void __noreturn sub_802FD3C()
+void __noreturn copyBGTiles_802FD3C()
 {
     CopyBackgroundTiles(0, 0, 1, byte_87F8EB0, 32, dword_14);
 }

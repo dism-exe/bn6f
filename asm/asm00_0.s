@@ -51,21 +51,26 @@ locret_80005F0:
 	pop {r1-r7,pc}
 	thumb_func_end PlayMusic
 
-	thumb_func_start sub_80005F2
-sub_80005F2:
+	thumb_func_start music_80005F2
+music_80005F2: // (bg_music_indicator: u8) -> ()
 	push {r1-r7,lr}
+
 	mov r7, r10
+
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	strb r0, [r7,#oGameState_BGMusicIndicator]
+
 	cmp r0, #0x63
 	bne loc_8000604
+
 	bl sound_8000630
+
 	b locret_8000608
 loc_8000604:
 	bl m4a_800061E // () -> void
 locret_8000608:
 	pop {r1-r7,pc}
-	thumb_func_end sub_80005F2
+	thumb_func_end music_80005F2
 
 	thumb_func_start sub_800060A
 sub_800060A:
@@ -1494,91 +1499,119 @@ dword_8000EE0: .word 0xFFFF
 	thumb_func_end sub_8000EB6
 
 	thumb_func_start GetTitleScreenIconCount
-GetTitleScreenIconCount:
+GetTitleScreenIconCount: // () -> (u8, u16)
 	push {r4-r7,lr}
+
 	mov r4, #0
 	mov r7, #0
+
 	movflag EVENT_E00
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8000EFA
+
 	add r4, #1
 	mov r0, #0x80
 	orr r7, r0
+
 loc_8000EFA:
 	mov r0, #0
 	bl sub_81207F8
+
 	cmp r0, #0xc8
 	blt loc_8000F0A
+
 	add r4, #1
 	mov r0, #0x40
 	orr r7, r0
+
 loc_8000F0A:
 	mov r0, #1
 	bl sub_81207F8
+
 	cmp r0, #0x27
 	blt loc_8000F1A
+
 	add r4, #1
 	mov r0, #0x20
 	orr r7, r0
+
 loc_8000F1A:
 	mov r0, #2
 	bl sub_81207F8
+
 	cmp r0, #5
 	blt loc_8000F2A
+
 	add r4, #1
 	mov r0, #0x10
 	orr r7, r0
+
 loc_8000F2A:
 	mov r0, #5
 	bl sub_81207F8
+
 	cmp r0, #0xf
 	blt loc_8000F3A
+
 	add r4, #1
 	mov r0, #8
 	orr r7, r0
+
 loc_8000F3A:
 	mov r0, #4
 	bl sub_81207F8
+
 	cmp r0, #0x1d
 	blt loc_8000F4A
+
 	add r4, #1
 	mov r0, #4
 	orr r7, r0
+
 loc_8000F4A:
 	movflag EVENT_370
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8000F5A
+
 	add r4, #1
 	mov r0, #2
 	orr r7, r0
+
 loc_8000F5A:
 	movflag EVENT_340
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
 	beq loc_8000F6C
+
 	add r4, #1
 	mov r0, #0x10
 	lsl r0, r0, #4
 	orr r7, r0
+
 loc_8000F6C:
 	movflag EVENT_3BD
 	mov r2, #5
 	bl TestEventFlagRangeFromImmediate // (int a3, int a2) ->
 	beq loc_8000F80
+
 	add r4, #1
 	mov r0, #0x20
 	lsl r0, r0, #4
 	orr r7, r0
+
 loc_8000F80:
+
 	mov r0, r4
 	mov r1, r7
+
 	pop {r4-r7,pc}
+
 	thumb_func_end GetTitleScreenIconCount
 
 	thumb_func_start sub_8000F86
 sub_8000F86:
 	push {r4-r7,lr}
 	mov r4, r0
-	bl sub_803F838
+	bl sub_803F838 // () -> !zf
 	bne locret_8000FAA
 	// flag 7 @ 0x2001C88[0xE<<5 + 0x0] (=2001E48)
 	movflag EVENT_E00
@@ -4804,23 +4837,33 @@ byte_80025CC: .byte 0x0, 0x0, 0xFF, 0x7F, 0xFF, 0x7F, 0xFF, 0x7F, 0xFF, 0x7F
 	.byte 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_80024CC
 
-	thumb_func_start sub_800260C
-sub_800260C:
+/// tags: "#mcu, "
+	thumb_func_start copy_800260C
+copy_800260C:
 	push {r4,lr}
+
 	ldr r0, dword_800263C // =0x7000000
 	ldr r1, off_8002640 // =0x400
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
+
 	ldr r0, dword_8002644 // =0x6010000
 	ldr r1, dword_8002648 // =0x8000
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
-	bl sub_8002668
+
+	bl copy_8002668
+
 	bl InitializeOWPlayerObjectStruct
+
 	bl InitializeOverworldNPCObjectStructs
+
 	bl InitializeOverworldMapObjectStructs
+
 	bl sprite_resetObjVars_800289C
+
 	ldr r0, off_800264C // =unk_200F388
 	mov r1, #7
 	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
+
 	pop {r4,pc}
 	.balign 4, 0
 dword_800263C: .word 0x7000000
@@ -4828,7 +4871,7 @@ off_8002640: .word 0x400
 dword_8002644: .word 0x6010000
 dword_8002648: .word 0x8000
 off_800264C: .word unk_200F388
-	thumb_func_end sub_800260C
+	thumb_func_end copy_800260C
 
 	thumb_func_start copyPalletesToIWRAM_8002650
 copyPalletesToIWRAM_8002650:
@@ -4844,28 +4887,34 @@ off_8002660: .word iPallete3001750
 dword_8002664: .word 0x5000200
 	thumb_func_end copyPalletesToIWRAM_8002650
 
-	thumb_func_start sub_8002668
-sub_8002668:
+	thumb_func_start copy_8002668
+copy_8002668:
 	push {lr}
+
 	ldr r0, off_800268C // =dword_86A5500
 	ldr r1, off_8002690 // =byte_3001710
 	mov r2, #0x20
 	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
+
 	b loc_8002678
-loc_8002676:
+
+// copy both or copy one variants
+call_8002676:
 	push {lr}
+
 loc_8002678:
 	ldr r0, off_8002684 // =byte_80025CC
 	ldr r1, off_8002688 // =byte_3001730
 	mov r2, #0x20
 	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
+
 	pop {pc}
 	.balign 4, 0
 off_8002684: .word byte_80025CC
 off_8002688: .word byte_3001730
 off_800268C: .word dword_86A5500
 off_8002690: .word byte_3001710
-	thumb_func_end sub_8002668
+	thumb_func_end copy_8002668
 
 	thumb_func_start sub_8002694
 sub_8002694:

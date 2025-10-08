@@ -11072,11 +11072,11 @@ unsigned int __fastcall __noreturn sub_81387D8(int a1, int a2, int a3, int a4)
     int v17; // r3
 
     *(*(v4 + oToolkit_GameStatePtr) + oGameState_Unk_20) = 0;
-    sub_800260C();
+    copy_800260C();
     sub_8005F40(v5, v6, v7, v8);
     sub_8005F6C();
     sub_80027F4();
-    sub_8002668();
+    copy_8002668();
     sub_80303F2();
     decompressCoordEventData_8030aa4(0, 2);
     camera_802FF4C(0, 0, 0, 208);

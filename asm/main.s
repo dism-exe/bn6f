@@ -61,7 +61,7 @@ loc_800032A:
 off_8000344: .word copyTo_iObjectAttr3001D70_3006814+1 // () -> void
 off_8000348: .word main_subsystemJumpTable
 main_subsystemJumpTable: 
-    .word startscreen_render_802F544+1 // () ->
+  .word startscreen_render_802F544+1 // () ->
 	.word cbGameState_80050EC+1
 	.word ho_jackIn_80341B6+1
 	.word cb_8038AD0+1
@@ -289,7 +289,7 @@ loc_80004C0:
 	bl sub_8003962
 	bl zeroFill_8003AB2
 	bl sub_80015B4
-	bl sub_800260C
+	bl copy_800260C
 	bl sub_80027C4
 	bl sub_802FDB0
 	bl clearWord_e200AC1C
@@ -308,7 +308,7 @@ loc_80004C0:
 	bl sub_803DE5C
 	bl sub_8144240
 	bl sub_803EBC8
-	bl sub_813D960
+	bl zeroFill_813D960
 	bl reset_flags32_20093A4 // () -> void
 	bl sub_804657C // () -> void
 	bl sub_80467D8

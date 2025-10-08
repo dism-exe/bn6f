@@ -3310,7 +3310,7 @@ int __fastcall sub_8147350(int a1, int a2, int a3, int a4)
     byte_2010340 = 0;
     byte_2010328 = 0;
     byte_2010368 = 0;
-    sub_813D960();
+    zeroFill_813D960();
     v5 = 0;
     SWI_CpuSet(&v5, &byte_2010290, 16777248);
     sub_81465FC(&unk_2010350);
@@ -3934,7 +3934,7 @@ int __fastcall sub_8147F98(int a1, int a2, int a3, int a4)
     sub_803DE88(4, a2, a3, a4);
     sub_81465FC(&unk_2010350);
     word_2010352 = 0;
-    sub_813D960();
+    zeroFill_813D960();
     sub_8144DF0(sub_814801C, sub_8148208);
     Timer2Counter_Reload = 0;
     Timer2Control = 131;

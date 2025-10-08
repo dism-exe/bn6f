@@ -3095,7 +3095,7 @@ signed int __fastcall sub_813D94C(int a1)
 
 
 // 0x813d960
-void __cdecl sub_813D960()
+void __cdecl zeroFill_813D960()
 {
     char v0; // r4
 

@@ -18076,7 +18076,7 @@ void __noreturn sub_811C0F8()
 // 0x811c10e
 int sub_811C10E()
 {
-    (loc_8002676)();
+    (call_8002676)();
     return sub_804668A();
 }
 

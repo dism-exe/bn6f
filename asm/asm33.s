@@ -11285,7 +11285,7 @@ loc_81294B2:
 	bl SetScreenFade // (int a1, int a2) -> void
 	b loc_8129514
 loc_81294D4:
-	bl sub_813D960
+	bl zeroFill_813D960
 	mov r0, #8
 	ldrb r1, [r5,#0xd]
 	tst r1, r1

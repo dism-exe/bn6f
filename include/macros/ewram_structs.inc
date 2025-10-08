@@ -33,6 +33,8 @@
 	.include "structs/MapTilesState200be70.inc"
 	.include "structs/PanelData.inc"
 	.include "structs/SubMenu.inc"
+  .include "structs/S2011800.inc"
+
 
 /*
 rough notes for now

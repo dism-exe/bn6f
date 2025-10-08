@@ -5230,7 +5230,7 @@ signed int __fastcall __noreturn sub_8038630(int a1)
     sub_8005F6C();
     v6 = sub_80027C4();
     initGfx_80386CC(v6, v7, v8, v9);
-    sub_80005F2(99, v10, v11);
+    music_80005F2(99, v10, v11);
     engine_setScreeneffect(8, 8);
     result = 4;
     *v1 = 4;
@@ -5986,7 +5986,7 @@ int __noreturn sub_80395E4()
     copyData_803B216(v5, v6, v7, v8);
     sub_803BEC0();
     sub_803BA28();
-    sub_80005F2(34, v9, v10);
+    music_80005F2(34, v9, v10);
     v11 = 8;
     result = sub_803C3E0();
     if ( v13 )
@@ -11022,7 +11022,7 @@ signed int __fastcall __noreturn sub_803CCFC(int a1)
     sub_8005F6C();
     v6 = sub_80027C4();
     sub_803CD58(v6, v7, v8, v9);
-    sub_80005F2(99, v10, v11);
+    music_80005F2(99, v10, v11);
     engine_setScreeneffect(8, 8);
     result = 4;
     *v1 = 4;
@@ -11618,7 +11618,7 @@ void __cdecl init_803D1A8()
 {
     Toolkit *tk; // r10
 
-    ZeroFillByWord(&byte_2011800, 8);
+    ZeroFillByWord(&eS2011800, 8);
     byte_2011805 = 1;
     *tk->jo_gameSubsysSel = 16;
 }
@@ -11628,7 +11628,7 @@ void __cdecl init_803D1A8()
 // set R5=2011800
 int cb_803D1CA()
 {
-    (*(&JumpTable803D1E4 + byte_2011800))();
+    (*(&JumpTable803D1E4 + eS2011800))();
     return startScreen_AnimationControl_803E938();
 }
 
@@ -13076,7 +13076,7 @@ int startScreen_AnimationControl_803E938()
 
     if ( eStartScreenAnimationControl200B1A0 == 1 )
     {
-        result = sub_803E978();
+        result = startScreen_AnimatePressStart_803E978();
         if ( zf )
         {
             result = 2;
@@ -13113,7 +13113,7 @@ int startScreen_DecrementPressStartPauseAnimationTimer()
 
 
 // 0x803e978
-signed int sub_803E978()
+signed int startScreen_AnimatePressStart_803E978()
 {
     signed int v0; // r6
     char v1; // zf

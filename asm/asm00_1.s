@@ -3466,60 +3466,83 @@ byte_8004D34: .byte 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38
 	.byte 0x0, 0x0
 	thumb_func_end sub_8004CCC
 
+/// breaks on reset
+/// breaks on "Continue" via load_game_802F756
 	thumb_func_start sub_8004D48
 sub_8004D48:
 	push {r4-r7,lr}
+
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
+
+  // trigger EnterMap via cbGameState_80050EC
 	mov r0, #0
 	strb r0, [r5,#oGameState_SubsystemIndex]
+
 	mov r0, #8
 	strb r0, [r5,#oGameState_EnterMapFadeParam1]
+
 	mov r0, #0x10
 	strb r0, [r5,#oGameState_EnterMapFadeParam2]
+
 	mov r0, #0
 	strb r0, [r5,#oGameState_CoordInteractionValue]
 	strb r0, [r5,#oGameState_Unk_03]
 	strb r0, [r5,#oGameState_Unk_15]
 	strb r0, [r5,#oGameState_BattlePaused]
 	str r0, [r5,#oGameState_Unk_74]
+
 	mov r0, #0x63
 	strb r0, [r5,#oGameState_BGMusicIndicator]
+
 	mov r0, #0
 	strb r0, [r5,#oGameState_Unk_11]
 	strb r0, [r5,#oGameState_Unk_10]
 	ldr r1, off_8004DE4 // =byte_200F410
 	strb r0, [r1]
+
 	ldr r1, off_8004DE0 // =eStruct200ace0
 	mov r0, #0
 	strb r0, [r1]
 	str r0, [r1,#0x18] // (dword_200ACF8 - 0x200ace0)
 	str r0, [r1,#0x20] // (dword_200AD00 - 0x200ace0)
+
 	mov r0, #0xff
 	strb r0, [r1,#0x1c] // (byte_200ACFC - 0x200ace0)
+
 	bl SetPlayerCanMoveEventFlag
+
 	mov r0, #0
 	ldr r1, off_8004DE8 // =eCamera+76
 	strb r0, [r1]
 	ldr r1, off_8004DEC // =dword_20096D0
 	strb r0, [r1]
+
 	bl sub_8004702
+
 	movflag EVENT_1703
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_171B
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_EVENT_CUR_DIR_LOCKED
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_172D
 	bl ClearEventFlagFromImmediate
+
 	bl sub_800399A
 	bl sub_8003AEA
 	bl sub_811EC00
 	bl sub_800B110
+
 	movflag EVENT_91
 	bl ClearEventFlagFromImmediate
+
 	bl sub_803C3E0
 	beq loc_8004DDA
+
 	movflag EVENT_91
 	bl SetEventFlagFromImmediate
 loc_8004DDA:
@@ -3536,25 +3559,34 @@ off_8004DEC: .word dword_20096D0
 	thumb_func_start initNewGameData_8004DF0
 initNewGameData_8004DF0:
 	push {r4-r7,lr}
+
 	mov r5, r10
+
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
 	str r0, [r5,#oGameState_Ptr_20]
+
 	mvn r0, r0
 	strh r0, [r5,#oGameState_LastMapGroup]
+
 	mov r0, #0
 	str r0, [r5,#oGameState_ProtectedZenny]
 	str r0, [r5,#oGameState_ProtectedBugfrags]
 	str r0, [r5,#oGameState_Unk_74]
+
 	mvn r0, r0
 	str r0, [r5,#oGameState_Unk_6c]
 	str r0, [r5,#oGameState_Unk_70]
+
 	mov r1, r10
+
 	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	str r0, [r1,#0x18]
+
 	mov r0, #1
 	strb r0, [r1,#5]
+
 	mov r0, #0
 	strh r0, [r1,#0x12]
 	strh r0, [r1,#0x14]
@@ -3566,24 +3598,34 @@ initNewGameData_8004DF0:
 	strh r0, [r1,#0x10]
 	str r0, [r1]
 	str r0, [r1,#0x30]
+
 	mov r0, #0
 	strb r0, [r5,#oGameState_Unk_02]
 	str r0, [r1,#0x24]
 	str r0, [r1,#0x28]
+
 	mov r0, #0x63
 	strb r0, [r1,#4]
+
 	mov r0, #0
 	strb r0, [r5,#oGameState_CurPETNavi]
+
 	mov r0, #0
 	strh r0, [r1,#0x16]
+
 	mov r0, #0xff
 	strb r0, [r5,#oGameState_Unk_12]
+
 	bl sub_802F0C4
+
 	bl encryption_initAll_8006d00
+
 	bl sub_803CD74
+
 	mov r0, #0
 	strb r0, [r5,#oGameState_Unk_13]
 	str r0, [r5,#0x78]
+
 	bl sub_802F2C8
 	bl sub_81284A4
 	bl owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2
@@ -3602,126 +3644,178 @@ initNewGameData_8004DF0:
 	bl sub_804A17A
 	bl sub_811FB78
 	bl sub_8048C68
+
 	movflag EVENT_PET_NAVI_ACTIVE
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_401
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_4E7
 	mov r2, #2
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_46D
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_483
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_1
 	mov r2, #3
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_4
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_6
 	mov r2, #8
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_F
 	mov r2, #2
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_5EE
 	mov r2, #3
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_31
 	mov r2, #2
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_3B
 	mov r2, #3
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_72
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_73
 	mov r2, #7
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_9F6
 	mov r2, #9
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_87
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_89
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_87D
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_A99
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_BFD
 	mov r2, #3
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_70
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_8A
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_CD7
 	mov r2, #4
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_8C
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_CE6
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_FF9
 	mov r2, #7
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_136
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_138
 	mov r2, #2
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_13A
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_164
 	mov r2, #0x19
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_7B
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_7F
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_81
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_18E
 	mov r2, #9
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_86
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_1CE
 	mov r2, #6
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_1001
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_68E
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_68F
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_82
 	mov r2, #2
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+
 	movflag EVENT_85
 	bl SetEventFlagFromImmediate
+
 	bl clearSetFlags_80355a8
+
 	movflag EVENT_38
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_39
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_11
 	bl SetEventFlagFromImmediate
+
 	mov r0, #0
 	bl sub_80AA004
+
 	mov r0, #0
 	bl sub_80AA104
+
 	bl sub_802D638
+
 	bl sub_80356EC
+
 	ldr r0, off_80050E4 // =0x100
 	strh r0, [r5,#oGameState_MapGroup]
 	str r0, [r5,#oGameState_SavedRealWorldMapId]
 	str r0, [r5,#0x58]
+
 	mov r0, #0
 	strb r0, [r5,#oGameState_GameProgress]
 	strb r0, [r5,#oGameState_Unk_07]
 	strb r0, [r5,#oGameState_Unk_08]
+
 	mov r0, #0
 	str r0, [r5,#oGameState_PlayerX]
 	str r0, [r5,#oGameState_SavedRealWorldX]
@@ -3732,22 +3826,30 @@ initNewGameData_8004DF0:
 	str r0, [r5,#oGameState_PlayerZ]
 	str r0, [r5,#oGameState_SavedRealWorldZ]
 	str r0, [r5,#0x50]
+
 	mov r0, #4
 	str r0, [r5,#oGameState_FacingDirectionAfterWarp]
 	str r0, [r5,#oGameState_SavedRealWorldFacingDirection]
 	str r0, [r5,#0x54]
+
 	bl initGameProgressBuffer_803532c
+
 	bl sub_8021D36
+
 	mov r0, r10
+
 	// memBlock
 	ldr r0, [r0,#oToolkit_S_Chip_2002178_Ptr]
 	mov r1, #0x3c
 	mov r2, #3
 	mul r1, r2
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
 	bl zeroFill_e2002230
+
 	ldr r0, off_80050E8 // =byte_80213AC
 	mov r1, #0
+
 	bl sub_8021AB4
 	bl sub_81376E8
 	bl sub_8137700
@@ -3759,19 +3861,28 @@ initNewGameData_8004DF0:
 	bl sub_8121144
 	bl sub_800AAF2
 	bl sub_800AB22
+
 	mov r0, #1
 	bl sub_802E240
+
 	bl reqBBS_813E616
+
 	bl reqBBS_initMemory_813F9DA
+
 	movflag EVENT_173A
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_IN_SLIPRUN_STATE
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_173E
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_173F
 	bl ClearEventFlagFromImmediate
+
 	bl reqBBS_8140984
+
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_80050E4: .word 0x100
@@ -3784,13 +3895,17 @@ cbGameState_80050EC:
 	push {r4-r7,lr}
 	ldr r0, GameStateJumptable_p // =GameStateJumptable
 	mov r5, r10
+
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldrb r1, [r5,#oGameState_SubsystemIndex]
 	ldr r0, [r0,r1]
+
 	mov lr, pc
 	bx r0
+
 	bl GetRNG // () -> u32?
 	bl GetRNGSecondary // () -> void
+
 	pop {r4-r7,pc}
 	.balign 4, 0
 GameStateJumptable_p: .word GameStateJumptable
@@ -3823,7 +3938,7 @@ EnterMap: // JP 0x8005118
 	bl sub_8005F6C
 	bl sub_80027C4
 	bl InitializeOverworldMapObjectStructs
-	bl sub_8002668
+	bl copy_8002668
 	bl zeroFill_80024A2
 	bl sub_8003962
 	bl zeroFill_8003AB2
@@ -3882,8 +3997,10 @@ loc_80051AA:
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl map_8034B4C
+
 	ldrb r0, [r5,#oGameState_MapGroup]
 	bl EnterMap_RunMapGroupAsmFunction_8030A00
+
 	movflag EVENT_IN_SLIPRUN_STATE
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_173E
@@ -3908,6 +4025,7 @@ loc_80051AA:
 off_8005264: .word 0x1740
 	thumb_func_end EnterMap
 
+// on load game, we trigger EnterMap, and then we stay here a long time
 	thumb_local_start
 gamestate_8005268:
 	push {lr}
@@ -3983,14 +4101,14 @@ sub_800531C:
 	strb r0, [r5,#oGameState_SubsystemIndex]
 	ldr r0, [r5,#oGameState_CurBattleDataPtr]
 	bl sub_80071D4
-	ldr r0, off_8005358 // =byte_2011800
+	ldr r0, off_8005358 // =eS2011800
 	ldr r1, off_800535C // =0x2180
 	mov r2, #0
 	mvn r2, r2
 	bl WordFill
 	pop {pc}
 	.balign 4, 0
-off_8005358: .word byte_2011800
+off_8005358: .word eS2011800
 off_800535C: .word 0x2180
 	thumb_func_end sub_800531C
 
@@ -4856,12 +4974,16 @@ dword_8005C00: .word 0x4000
 	thumb_func_start sub_8005C04
 sub_8005C04:
 	push {r4-r7,lr}
+
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
+
 	mov r0, #0
 	str r0, [r5,#oGameState_Ptr_20]
+
 	mov r0, #0x25 
 	bl FreeAllObjectsOfSpecifiedTypes
+
 	mov r5, r10
 	ldr r1, [r5,#oToolkit_Warp2011bb0_Ptr]
 	ldr r0, [r1,#oWarp2011bb0_WarpDataPtr]
@@ -4871,59 +4993,82 @@ sub_8005C04:
 	mul r3, r2
 	add r0, r0, r3
 	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
+
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
+
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl map_8001708
+
 	ldr r0, off_8005CE4 // =0x40
 	bl SetRenderInfoLCDControl
+
 	mov r5, r10
 	ldr r7, [r5,#oToolkit_Warp2011bb0_Ptr]
 	ldr r5, [r5,#oToolkit_GameStatePtr]
+
 	movflag EVENT_171B
 	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+
 	bne .loc_8005C80
+
 	ldrb r1, [r7,#oWarp2011bb0_MapGroup]
 	ldrb r2, [r5,#oGameState_MapGroup]
 	mov r3, #0x80
 	mov r4, r1
 	// r4 = unk_00 ^ mapGroup
 	eor r4, r2
+
 	// check transition from real world to internet or vice versa
 	tst r4, r3
 	beq .loc_8005C80
+
 	// is the map to warp to is internet or real world?
 	tst r1, r3
 	bne .warpingToInternet // jump if warping to internet
+
 	mov r6, #oGameState_SavedInternetCoords_FacingDirection_MapId
+
 	b .gotSavedOWPlayerInfoOffset
+
 .warpingToInternet
 	mov r6, #oGameState_SavedRealWorldCoords_FacingDirection_MapId
+
 .gotSavedOWPlayerInfoOffset
 	ldr r0, [r5,#oGameState_OverworldPlayerObjectPtr]
+
 	ldr r1, [r0,#oOWPlayerObject_X]
 	ldr r2, [r0,#oOWPlayerObject_Y]
 	ldr r3, [r0,#oOWPlayerObject_Z]
+
 	ldrb r4, [r0,#oOWPlayerObject_FacingDirection]
+
 	add r6, r6, r5
+
 	str r1, [r6,#oSavedOWPlayerInfo_X]
 	str r2, [r6,#oSavedOWPlayerInfo_Y]
 	str r3, [r6,#oSavedOWPlayerInfo_Z]
+
 	str r4, [r6,#oSavedOWPlayerInfo_FacingDirection]
+
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #8
 	orr r1, r0
 	str r1, [r6,#oSavedOWPlayerInfo_MapId]
+
 .loc_8005C80:
 	movflag EVENT_171B
 	bl ClearEventFlagFromImmediate
+
 	ldrb r0, [r7,#oWarp2011bb0_MapGroupTransitionType]
 	cmp r0, #MAP_GROUP_TRANSITION_TYPE_INTERNET_TO_REAL_WORLD
 	beq .internetToRealWorld
+
 	cmp r0, #MAP_GROUP_TRANSITION_TYPE_REAL_WORLD_TO_INTERNET
 	beq .realWorldToInternet
+
 	mov r1, #2
 	strb r1, [r7,#oWarp2011bb0_Unk_10]
 	ldr r1, [r7,#oWarp2011bb0_X]
@@ -4931,7 +5076,9 @@ sub_8005C04:
 	ldr r3, [r7,#oWarp2011bb0_Z]
 	ldrb r4, [r7,#oWarp2011bb0_FacingDirection]
 	ldrh r6, [r7,#oWarp2011bb0_MapId]
+
 	b .gotWarpInfo
+
 .internetToRealWorld
 	ldr r1, [r5,#oGameState_SavedRealWorldX]
 	ldr r2, [r5,#oGameState_SavedRealWorldY]
@@ -4939,22 +5086,29 @@ sub_8005C04:
 	ldr r4, [r5,#oGameState_SavedRealWorldFacingDirection]
 	ldr r6, [r5,#oGameState_SavedRealWorldMapId]
 	b .gotWarpInfo
+
 .realWorldToInternet
 	ldr r1, [r5,#oGameState_SavedInternetX]
 	ldr r2, [r5,#oGameState_SavedInternetY]
 	ldr r3, [r5,#oGameState_SavedInternetZ]
 	ldr r4, [r5,#oGameState_SavedInternetFacingDirection]
 	ldr r6, [r5,#oGameState_SavedInternetMapId]
+
 .gotWarpInfo
 	str r1, [r5,#oGameState_PlayerX]
 	str r2, [r5,#oGameState_PlayerY]
 	str r3, [r5,#oGameState_PlayerZ]
 	str r4, [r5,#oGameState_FacingDirectionAfterWarp]
+
 	lsr r7, r6, #8
 	mov r0, #0xff
 	and r6, r0
+
+  // trigger EnterMap via cbGameState_80050EC
+  // Disabling this causes white screen after warp animation
 	mov r1, #0
 	strb r1, [r5,#oGameState_SubsystemIndex]
+
 	ldrb r1, [r5,#oGameState_MapNumber]
 	strb r1, [r5,#oGameState_LastMapNumber]
 	ldrb r1, [r5,#oGameState_MapGroup]
@@ -4962,11 +5116,15 @@ sub_8005C04:
 	strb r1, [r5,#oGameState_LastMapGroup]
 	strb r6, [r5,#oGameState_MapGroup]
 	strb r7, [r5,#oGameState_MapNumber]
+
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
+
 	mov r0, #0
 	strh r0, [r7,#oS2001c04_Unk_12]
+
 	strh r0, [r7,#oS2001c04_Unk_14]
+
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8005CE4: .word 0x40
@@ -8509,7 +8667,7 @@ sub_800794C:
 	bl sub_8007338
 	bl sub_800A0C6
 	bl sub_801BE70
-	bl sub_8002668
+	bl copy_8002668
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_01]
 	pop {pc}
@@ -8604,7 +8762,7 @@ sub_8007A0C:
 	bl sub_800C8F0
 	bl sub_800318C
 	bl panel_800BFC4
-	ldr r0, off_8007A40 // =byte_2011800
+	ldr r0, off_8007A40 // =eS2011800
 	bl initUncompSpriteState_80028d4
 	bl GetBattleEffects // () -> int
 	mov r1, #8
@@ -8619,7 +8777,7 @@ loc_8007A36:
 	str r0, [r5,#oBattleState_Unk_00]
 	pop {pc}
 	.balign 4, 0
-off_8007A40: .word byte_2011800
+off_8007A40: .word eS2011800
 	thumb_func_end sub_8007A0C
 
 	thumb_local_start

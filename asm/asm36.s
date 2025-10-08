@@ -15647,11 +15647,17 @@ JumpTable81382C4: .word playCreditsScene_81382D0+1
 	thumb_local_start
 playCreditsScene_81382D0:
 	push {lr}
+
 	bl zeroFillVRAM
+
 	bl ZeroFill_byte_3001960
+
 	bl ZeroFillGFX30025c0
+
 	bl sub_81387D8
+
 	bl sub_8138758
+
 	mov r1, #0
 	strh r1, [r0,#0x10]
 	strh r1, [r0,#0x12]
@@ -15659,34 +15665,48 @@ playCreditsScene_81382D0:
 	strh r1, [r0,#0x16]
 	strh r1, [r0,#0x18]
 	strh r1, [r0,#0x1a]
+
 	bl sub_8046664 // () -> void
+
 	bl sub_8138768
+
 	bl sub_8000E28
+
 	str r0, [r5,#0x20]
+
 	ldr r1, dword_8138340 // =0x34bc0 
 	svc 6
 	strb r0, [r5,#0xa]
+
 	mov r0, r1
 	ldr r1, dword_8138344 // =0xe10 
 	svc 6
 	strb r0, [r5,#0xb]
+
 	mov r0, #0
 	bl sub_81207F8
 	strh r0, [r5,#0xe]
+
 	mov r0, #1
 	bl sub_81207F8
 	strh r0, [r5,#0x10]
+
 	mov r0, #2
 	bl sub_81207F8
 	strh r0, [r5,#0x12]
+
 	mov r0, #SONG_CREDITS
 	bl PlayMusic // (int song) -> void
+
 	mov r0, #0x78 
 	strh r0, [r5,#4]
+
 	mov r0, #4
 	strb r0, [r5]
+
 	mov r0, #0
 	strb r0, [r5,#1]
+
 	pop {pc}
 	.word byte_8138288
 	.balign 4, 0
@@ -16294,30 +16314,37 @@ dword_81387D4: .word 0x6006000
 	thumb_local_start
 sub_81387D8:
 	push {lr}
+
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #0
 	str r0, [r1,#oGameState_Ptr_20]
-	bl sub_800260C
+
+	bl copy_800260C
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027F4
-	bl sub_8002668
+	bl copy_8002668
 	bl sub_80303F2
+
 	movflag EVENT_2
 	bl decompressCoordEventData_8030aa4
+
 	mov r0, #0
 	mov r1, #0
 	mov r2, #0
 	mov r3, #0xd0
 	mov r4, #0
 	bl camera_802FF4C
+
 	mov r0, #0
 	bl camera_writeUnk03_14_80301b2
+
 	mov r0, #0
 	mov r1, #0
 	mov r2, #0
 	bl SetCameraXYZ
+
 	bl zeroFill_80024A2
 	bl sub_8003962
 	bl zeroFill_8003AB2
@@ -16326,8 +16353,10 @@ sub_81387D8:
 	bl cutscene_8036EFE
 	bl clearCutsceneScriptPosIfMagicValue0x1_8036F24
 	bl sub_809F90C
+
 	mov r0, #0x25 
 	bl FreeAllObjectsOfSpecifiedTypes
+
 	pop {pc}
 	thumb_func_end sub_81387D8
 

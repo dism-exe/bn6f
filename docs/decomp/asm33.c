@@ -6681,7 +6681,7 @@ void sub_8129454()
                     PlaySoundEffect(129, v9, v10);
                     if ( v0[13] <= 1 )
                     {
-                        sub_813D960();
+                        zeroFill_813D960();
                         v11 = 8;
                         if ( !v0[13] )
                             v11 = 4;

@@ -19,3 +19,5 @@ files=$(grep -Elwr --include="*.s" --include="*.h" --include="*.inc" --exclude-d
 if [ "$files" != "" ]; then
 	sed -i 's/\<'"$1"'\(_p[0-9]*\)\>/'"$2"'\1/' $files
 fi
+
+ctags -R ewram.s *.s asm/* data/dat* docs/decomp/*.c include/* maps/*

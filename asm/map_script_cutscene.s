@@ -4102,7 +4102,7 @@ CutsceneCmd_jump_if_title_screen_icon_count_equals:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
-	bl GetTitleScreenIconCount
+	bl GetTitleScreenIconCount // () -> (u8, u16)
 	cmp r0, r4
 	bne .countNotEqual
 	mov r6, #2
@@ -4125,7 +4125,7 @@ CutsceneCmd_jump_if_title_screen_icon_count_not_equal:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
-	bl GetTitleScreenIconCount
+	bl GetTitleScreenIconCount // () -> (u8, u16)
 	cmp r0, r4
 	beq .countEqual
 	mov r6, #2

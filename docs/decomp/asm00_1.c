@@ -2270,7 +2270,7 @@ int __fastcall EnterMap(int a1)
         sub_8005F6C();
         v6 = sub_80027C4();
         InitializeOverworldMapObjectStructs(v6, v7, v8, v9);
-        sub_8002668();
+        copy_8002668();
         zeroFill_80024A2();
         sub_8003962();
         zeroFill_8003AB2();
@@ -5771,7 +5771,7 @@ signed int sub_800794C()
     sub_8007338();
     v13 = sub_800A0C6();
     sub_801BE70(v13, v14, v15, v16);
-    sub_8002668();
+    copy_8002668();
     result = 4;
     *(v0 + 1) = 4;
     return result;

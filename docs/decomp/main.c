@@ -186,7 +186,7 @@ void __cdecl main_initToolkitAndOtherSubsystems()
     sub_8003962();
     zeroFill_8003AB2();
     sub_80015B4();
-    sub_800260C();
+    copy_800260C();
     sub_80027C4();
     sub_802FDB0();
     clearWord_e200AC1C();
@@ -205,7 +205,7 @@ void __cdecl main_initToolkitAndOtherSubsystems()
     sub_803DE5C();
     sub_8144240();
     sub_803EBC8();
-    sub_813D960();
+    zeroFill_813D960();
     reset_flags32_20093A4();
     sub_804657C();
     sub_80467D8();

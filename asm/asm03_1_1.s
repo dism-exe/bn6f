@@ -49,7 +49,7 @@ sub_8038630:
 	bl sub_80027C4
 	bl initGfx_80386CC
 	mov r0, #0x63
-	bl sub_80005F2
+	bl music_80005F2 // (bg_music_indicator: u8) -> ()
 	mov r0, #8
 	mov r1, #8
 	bl SetScreenFade // (int a1, int a2) -> void
@@ -212,7 +212,7 @@ byte_8038A84: .byte 0x8, 0x0, 0x0, 0x0, 0x50, 0x17, 0x0, 0x3, 0xC, 0x1, 0xC, 0xF
 	thumb_func_start sub_8038A9C
 sub_8038A9C:
 	push {lr}
-	bl GetTitleScreenIconCount
+	bl GetTitleScreenIconCount // () -> (u8, u16)
 	ldr r2, dword_8038ACC // =0xf6
 	and r1, r2
 	cmp r1, r2
@@ -1213,7 +1213,7 @@ sub_80395E4:
 	bl sub_803BEC0
 	bl sub_803BA28
 	mov r0, #0x22
-	bl sub_80005F2
+	bl music_80005F2 // (bg_music_indicator: u8) -> ()
 	mov r6, #8
 	mov r7, #0
 	bl sub_803C3E0
@@ -7605,7 +7605,7 @@ sub_803CBD0:
 	bl sub_80027C4
 	bl copyData_803CC60
 	mov r0, #0x63
-	bl sub_80005F2
+	bl music_80005F2 // (bg_music_indicator: u8) -> ()
 	mov r0, #8
 	mov r1, #8
 	bl SetScreenFade // (int a1, int a2) -> void
@@ -7754,7 +7754,7 @@ sub_803CCFC:
 	bl sub_80027C4
 	bl sub_803CD58
 	mov r0, #0x63
-	bl sub_80005F2
+	bl music_80005F2 // (bg_music_indicator: u8) -> ()
 	mov r0, #8
 	mov r1, #8
 	bl SetScreenFade // (int a1, int a2) -> void
@@ -8417,7 +8417,7 @@ locret_803D1A6:
 	pop {r4-r7,pc}
 	thumb_func_end sub_803D180
 
-// () -> void
+/// triggers cascade towards start screen initialization and rendering
 	thumb_func_start init_803D1A8
 init_803D1A8: // () -> ()
   // let v0: bool?;
@@ -8433,7 +8433,7 @@ loc_803D1AE:
 	push {r0}
 
 	// memBlock
-	ldr r0, off_803D1F8 // =byte_2011800
+	ldr r0, off_803D1F8 // =eS2011800
 	// size
 	mov r1, #8
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
@@ -8441,12 +8441,12 @@ loc_803D1AE:
   // v0
 	pop {r0}
 
-	ldr r1, off_803D1F8 // =byte_2011800
-	strb r0, [r1,#0x5] // (byte_2011805 - 0x2011800)
+	ldr r1, off_803D1F8 // =eS2011800
+	strb r0, [r1,#0x5]
 
+  // trigger cb_803D1CA via main_
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
-
 	mov r0, #0x10
 	strb r0, [r1]
 
@@ -8456,26 +8456,30 @@ loc_803D1AE:
 	thumb_func_start cb_803D1CA
 cb_803D1CA:
 	push {r4-r7,lr}
-	ldr r5, off_803D1F8 // =byte_2011800
+
+	ldr r5, off_803D1F8 // =eS2011800
+
 	ldr r0, off_803D1E0 // =off_803D1E4
-	ldrb r1, [r5]
+	ldrb r1, [r5, #oS2011800_Index_00]
 	ldr r0, [r0,r1]
+
 	mov lr, pc
 	bx r0
+
 	bl startScreen_AnimatePressStart_803E938
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803D1E0: .word off_803D1E4
-off_803D1E4: .word sub_803D1FC+1
-	.word sub_803D24C+1
-	.word sub_803D274+1
-	.word sub_803D298+1
-	.word sub_803D2A6+1
-off_803D1F8: .word byte_2011800
+off_803D1E4: .word sub_803D1FC+1 // (self: *mut S2011800 $r5) -> ()
+	.word sub_803D24C+1 // (self: *mut S2011800 $r5) -> ()
+	.word sub_803D274+1 // (self: *mut S2011800 $r5) -> ()
+	.word sub_803D298+1 // (self: *mut S2011800 $r5) -> ()
+	.word sub_803D2A6+1 // (self: *const S2011800 $r5) -> ()
+off_803D1F8: .word eS2011800
 	thumb_func_end cb_803D1CA
 
 	thumb_local_start
-sub_803D1FC:
+sub_803D1FC: // (self: *mut S2011800 $r5) -> ()
 	push {lr}
 	mov r0, #0xe
 	bl sub_80015FC
@@ -8498,9 +8502,12 @@ loc_803D212:
 	bl sub_80027C4
 	bl copyTileData_803D2B8
 	mov r0, #0x63
-	bl sub_80005F2
+	bl music_80005F2 // (bg_music_indicator: u8) -> ()
+
+  // trigger sub_803D24C via cb_803D1CA
 	mov r0, #4
-	strb r0, [r5]
+	strb r0, [r5, #oS2011800_Index_00]
+
 	pop {pc}
 	.balign 4, 0
 off_803D244: .word 0x40
@@ -8508,7 +8515,7 @@ off_803D248: .word 0xC0
 	thumb_func_end sub_803D1FC
 
 	thumb_local_start
-sub_803D24C:
+sub_803D24C: // (self: *mut S2011800 $r5) -> ()
 	push {lr}
 	ldr r0, dword_803D270 // =0x1f40
 	bl SetRenderInfoLCDControl
@@ -8522,15 +8529,18 @@ loc_803D25E:
 	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0xb4
 	strb r0, [r5,#4]
+
+  // trigger sub_803D274 via cb_803D1CA
 	mov r0, #8
-	strb r0, [r5]
+	strb r0, [r5, #oS2011800_Index_00]
+
 	pop {pc}
 	.balign 4, 0
 dword_803D270: .word 0x1F40
 	thumb_func_end sub_803D24C
 
 	thumb_local_start
-sub_803D274:
+sub_803D274: // (self: *mut S2011800 $r5) -> ()
 	push {lr}
 	bl IsScreenFadeActive // () -> zf
 	beq locret_803D292
@@ -8542,26 +8552,32 @@ sub_803D274:
 	mov r0, #0xc
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
+
+  // trigger sub_803D298 via cb_803D1CA
 	mov r0, #0xc
-	strb r0, [r5]
+	strb r0, [r5, #oS2011800_Index_00]
+
 locret_803D292:
 	pop {pc}
 	.word 0x3FF
 	thumb_func_end sub_803D274
 
 	thumb_local_start
-sub_803D298:
+sub_803D298: // (self: *mut S2011800 $r5) -> ()
 	push {lr}
 	bl IsScreenFadeActive // () -> zf
 	beq locret_803D2A4
+
+  // trigger sub_803D2A6 via cb_803D1CA
 	mov r0, #0x10
-	strb r0, [r5]
+	strb r0, [r5, #oS2011800_Index_00]
+
 locret_803D2A4:
 	pop {pc}
 	thumb_func_end sub_803D298
 
 	thumb_local_start
-sub_803D2A6:
+sub_803D2A6: // (self: *const S2011800 $r5) -> ()
 	push {lr}
 	ldr r0, off_803D2B4 // =0x40
 	bl SetRenderInfoLCDControl
@@ -10566,6 +10582,7 @@ startScreen_TstZero: // () -> !zf
 	.balign 4, 0x00
 	thumb_func_end startScreen_TstZero
 
+/// Disabling this causes "Press Start" to disappear
 	thumb_func_start startScreen_AnimatePressStart_803E938
 startScreen_AnimatePressStart_803E938:
 	push {r4,lr}
@@ -10580,15 +10597,22 @@ startScreen_AnimatePressStart_803E938:
 
 	// state 0 -- pause PressStart animation till timer runs out
 	bl startScreen_DecrementPressStartPauseAnimationTimer
+
 	b .ret
 .nonBlinkingState803E94C
-	bl sub_803E978
+
+  // Disabling this causes "Press Start" to disappear
+	bl startScreen_AnimatePressStart_803E978
+
 	bne .ret
-		// enable blinking Press Start
-		mov r0, #2
-		strb r0, [r4]
+
+  // enable blinking Press Start
+  mov r0, #2
+  strb r0, [r4]
+
 	b .ret
 .blinkingState803E958
+  // no change noticed on disable
 	bl sub_803EA1C
 .ret:
 	pop {r4,pc}
@@ -10615,7 +10639,7 @@ locret_803E974:
 	thumb_func_end startScreen_DecrementPressStartPauseAnimationTimer
 
 	thumb_local_start
-sub_803E978:
+startScreen_AnimatePressStart_803E978:
 	push {r4-r7,lr}
 	ldr r5, off_803EA14 // =eStartScreenAnimationControl200B1A0
 	mov r6, #1
@@ -10685,7 +10709,7 @@ loc_803EA0A:
 	.balign 4, 0
 off_803EA14: .word eStartScreenAnimationControl200B1A0
 off_803EA18: .word word_200AD04
-	thumb_func_end sub_803E978
+	thumb_func_end startScreen_AnimatePressStart_803E978
 
 	thumb_local_start
 sub_803EA1C:
@@ -12740,7 +12764,7 @@ loc_803F814:
 	thumb_func_end sub_803F79E
 
 	thumb_func_start sub_803F838
-sub_803F838:
+sub_803F838: // () -> !zf
 	push {r1-r7,lr}
 	ldr r0, dword_803F88C // =0xe000100
 	ldr r1, off_803F888 // =timer_2000000
@@ -12760,12 +12784,12 @@ sub_803F838:
 	bne loc_803F870
 	bl sub_803F8F4
 	bne loc_803F870
-	mov r4, #0
+	mov r4, #FALSE
 	movflag EVENT_1704
 	bl SetEventFlagFromImmediate
 	b loc_803F87E
 loc_803F870:
-	mov r4, #1
+	mov r4, #TRUE
 	movflag EVENT_1704
 	bl ClearEventFlagFromImmediate
 	bl SeedRNG // () -> ()

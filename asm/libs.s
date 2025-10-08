@@ -6583,7 +6583,7 @@ sub_8147350:
 	strb r1, [r0]
 	ldr r0, off_81473C8 // =byte_2010368 
 	strb r1, [r0]
-	bl sub_813D960
+	bl zeroFill_813D960
 	mov r0, sp
 	mov r4, #0
 	strh r4, [r0]
@@ -8014,7 +8014,7 @@ sub_8147F98:
 	mov r6, #0
 	mov r5, #0
 	strh r5, [r4,#0x2] // (word_2010352 - 0x2010350)
-	bl sub_813D960
+	bl zeroFill_813D960
 	ldr r0, off_8147FF8 // =sub_814801C+1 
 	ldr r1, off_8147FFC // =sub_8148208+1 
 	bl sub_8144DF0
