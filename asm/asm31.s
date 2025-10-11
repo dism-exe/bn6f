@@ -86585,10 +86585,10 @@ loc_80E2444:
 loc_80E2448:
 	ldr r3, off_80E2498 // =off_80E24A0
 	ldmia r3!, {r0-r2}
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r3, off_80E249C // =off_80E24AC
 	ldmia r3!, {r0-r2}
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	mov r0, #0x46 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -90767,10 +90767,10 @@ sub_80E4470:
 	push {lr}
 	ldr r3, off_80E449C // =off_80E44A4
 	ldmia r3!, {r0-r2}
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r3, off_80E44A0 // =off_80E44B0
 	ldmia r3!, {r0-r2}
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	bl sub_80E4532
 	str r0, [r5,#oBattleObject_ExtraVars]
 	tst r0, r0
@@ -94639,10 +94639,10 @@ sub_80E60EC:
 loc_80E610A:
 	ldr r3, off_80E6160 // =off_80E6168
 	ldmia r3!, {r0-r2}
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r3, off_80E6164 // =off_80E6174
 	ldmia r3!, {r0-r2}
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -97094,10 +97094,10 @@ sub_80E73A2:
 	bne loc_80E73C4
 	ldr r3, off_80E7430 // =off_80E7438
 	ldmia r3!, {r0-r2}
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r3, off_80E7434 // =off_80E7444
 	ldmia r3!, {r0-r2}
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	mov r0, #0x3c
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4

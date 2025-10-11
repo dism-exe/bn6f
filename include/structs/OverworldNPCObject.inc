@@ -136,7 +136,7 @@
 	// loc=0x98
 	.space 8 // align to nearest power of 4 relative to struct
 	object_sprite_struct \label\()_SpriteData, \struct_entry // loc=0xa0
-	u0 Size
+	u0 Size // loc=0xd8
 	u0 End // loc=0xd8
 	restore_struct_label
 	.endm

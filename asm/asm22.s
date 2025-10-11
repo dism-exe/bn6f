@@ -124,14 +124,14 @@ sub_8086FD8:
 	b loc_808704C
 loc_8086FF4:
 	movflag EVENT_5F1
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8087004
 	mov r0, #1
 	strb r0, [r5,#9]
 	b loc_8087048
 loc_8087004:
 	movflag EVENT_5F3
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_808702C
 	mov r0, #1
 	strb r0, [r5,#5]
@@ -146,7 +146,7 @@ loc_8087004:
 	b loc_80870F2
 loc_808702C:
 	movflag EVENT_5F4
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_80870F6
 	mov r0, #2
 	strb r0, [r5,#5]
@@ -162,7 +162,7 @@ loc_808704C:
 	bl sub_80871C0
 	bne loc_808705C
 	movflag EVENT_5F2
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8087062
 loc_808705C:
 	mov r1, r4
@@ -184,7 +184,7 @@ loc_8087068:
 	cmp r0, #0
 	bne loc_8087092
 	movflag EVENT_5E1
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_80870D8
 	movflag EVENT_5E1
 	bl SetEventFlagFromImmediate
@@ -194,7 +194,7 @@ loc_8087092:
 	cmp r0, #1
 	bne loc_80870AC
 	movflag EVENT_5E2
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_80870D8
 	movflag EVENT_5E2
 	bl SetEventFlagFromImmediate
@@ -202,7 +202,7 @@ loc_8087092:
 	b loc_80870F2
 loc_80870AC:
 	movflag EVENT_5E3
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_80870D8
 	movflag EVENT_5E3
 	bl SetEventFlagFromImmediate
@@ -210,7 +210,7 @@ loc_80870AC:
 	b loc_80870F2
 loc_80870C2:
 	movflag EVENT_FC0
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_80870D8
 	movflag EVENT_FC0
 	bl SetEventFlagFromImmediate
@@ -229,7 +229,7 @@ loc_80870E8:
 	bl sub_8086F5C
 	b locret_80870F6
 loc_80870F2:
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 locret_80870F6:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -258,7 +258,7 @@ loc_808712A:
 	beq loc_8087130
 	ldr r0, off_808713C // =byte_8086678+32 
 loc_8087130:
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8087138: .word byte_80868C8+0x20

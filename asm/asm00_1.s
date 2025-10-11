@@ -935,23 +935,25 @@ off_8003784: .word dword_203CA7C
 off_8003788: .word byte_2036830
 	thumb_func_end object_800372A
 
-	thumb_func_start sub_800378C
-sub_800378C:
+	thumb_func_start ZeroFillObjectInteractionAreas_800378C
+ZeroFillObjectInteractionAreas_800378C: // () -> ()
 	push {lr}
 	// memBlock
 	ldr r0, off_80037A0 // =eOWObjectInteractionAreas
 	// size
 	ldr r1, off_80037A4 // =0x280
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
 	ldr r0, off_80037A8 // =eNumOWObjectInteractionAreas
 	mov r1, #0
 	str r1, [r0]
+
 	pop {pc}
 	.balign 4, 0
 off_80037A0: .word eOWObjectInteractionAreas
 off_80037A4: .word 0x280
 off_80037A8: .word eNumOWObjectInteractionAreas
-	thumb_func_end sub_800378C
+	thumb_func_end ZeroFillObjectInteractionAreas_800378C
 
 	thumb_func_start createOWObjectInteractionArea_80037ac
 // something to do with interacting with npcs? maybe other objects too
@@ -1586,8 +1588,8 @@ FreeOWPlayerObject:
 	pop {pc}
 	thumb_func_end FreeOWPlayerObject
 
-	thumb_func_start sub_8003BA2
-sub_8003BA2:
+	thumb_func_start TryUpdateEachOWPlayerObject_8003BA2
+TryUpdateEachOWPlayerObject_8003BA2: // () -> ()
 	push {r4-r7,lr}
 	mov r4, r8
 	mov r5, r9
@@ -1599,31 +1601,43 @@ sub_8003BA2:
 	ldr r1, off_8003C98 // =eOWPlayerObjectEnd
 	str r0, [sp]
 	str r1, [sp,#4]
-loc_8003BB8:
-	mov r1, #1
-	ldrb r0, [r5]
+
+.forEachOWPlayerObject:
+
+	mov r1, #OBJECT_FLAG_ACTIVE
+	ldrb r0, [r5, #oObjectHeader_Flags]
+
+  // branch if !OBJECT_FLAG_ACTIVE
 	tst r0, r1
-	beq loc_8003BDC
+	beq .endcheck
+
+  // branch if !BattlePaused
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r1, [r7,#oGameState_BattlePaused]
 	tst r1, r1
-	beq loc_8003BD0
-	mov r1, #4
+	beq .update
+
+  // branch if !OBJECT_FLAG_PAUSE_UPDATE
+	mov r1, #OBJECT_FLAG_PAUSE_UPDATE
 	tst r0, r1
-	beq loc_8003BDC
-loc_8003BD0:
+	beq .endcheck
+
+.update:
 	ldr r0, [sp]
 	ldrb r1, [r5,#0x1] // (byte_2009F41 - 0x2009f40)
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-loc_8003BDC:
-	add r5, #0xc8
+
+.endcheck:
+
+	add r5, #oOWPlayerObject_Size
 	ldr r0, [sp,#4]
 	cmp r5, r0
-	blt loc_8003BB8
+	blt .forEachOWPlayerObject
+
 	add sp, sp, #8
 	pop {r4-r6}
 	mov r8, r4
@@ -1632,7 +1646,7 @@ loc_8003BDC:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8003BF0: .word off_8003B48
-	thumb_func_end sub_8003BA2
+	thumb_func_end TryUpdateEachOWPlayerObject_8003BA2
 
 	thumb_func_start sub_8003BF4
 sub_8003BF4:
@@ -2531,36 +2545,48 @@ FreeOverworldNPCObject:
 // [break] continuously called
 // [disable] - NPCs are no longer loaded, if they were already loaded, they are not interactable. Some are exceptions, like Central Robo Dog.
 // - Scenes don't seem to load, either
-	thumb_func_start npc_800461E
-npc_800461E:
+	thumb_func_start TryUpdateEachOverworldNPCObject_800461E
+TryUpdateEachOverworldNPCObject_800461E: // () -> ()
 	push {r4-r7,lr}
 	mov r4, r8
 	mov r5, r9
 	mov r6, r12
 	push {r4-r6}
+
+  // return if EVENT_NPC_OBJECTS_DISABLED
 	movflag EVENT_NPC_OBJECTS_DISABLED
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
-	bne loc_800466C
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bne .ret_800466C
+
 	sub sp, sp, #8
 	ldr r5, off_800471C // =eOverworldNPCObjects
 	ldr r0, off_8004678 // =off_80045BC
 	ldr r1, off_8004720 // =byte_2006530
 	str r0, [sp]
 	str r1, [sp,#4]
-loc_800463E:
+
+.forEachOverworldNPCObject_800463E:
 	mov r1, #OBJECT_FLAG_ACTIVE
 	ldrb r0, [r5,#oObjectHeader_Flags]
+
+  // branch if !OBJECT_FLAG_ACTIVE
 	tst r0, r1
-	beq loc_8004662
+	beq .endcheck_8004662
+
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
+
+  // branch if !BattlePaused
 	ldrb r1, [r7,#oGameState_BattlePaused]
 	tst r1, r1
-	beq loc_8004656
-	mov r1, #4
+	beq .update_8004656
+
+  // branch if !OBJECT_FLAG_PAUSE_UPDATE
+	mov r1, #OBJECT_FLAG_PAUSE_UPDATE
 	tst r0, r1
-	beq loc_8004662
-loc_8004656:
+	beq .endcheck_8004662
+
+.update_8004656:
 	ldr r0, [sp]
 	ldrb r1, [r5,#1]
 	lsl r1, r1, #2
@@ -2568,13 +2594,18 @@ loc_8004656:
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-loc_8004662:
-	add r5, #0xd8
+
+.endcheck_8004662:
+
+	add r5, #oOverworldNPCObject_Size
 	ldr r0, [sp,#4]
 	cmp r5, r0
-	blt loc_800463E
+	blt .forEachOverworldNPCObject_800463E
+
 	add sp, sp, #8
-loc_800466C:
+
+.ret_800466C:
+
 	pop {r4-r6}
 	mov r8, r4
 	mov r9, r5
@@ -2582,7 +2613,7 @@ loc_800466C:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8004678: .word off_80045BC
-	thumb_func_end npc_800461E
+	thumb_func_end TryUpdateEachOverworldNPCObject_800461E
 
 	thumb_func_start sub_800467C
 sub_800467C:
@@ -2870,49 +2901,65 @@ FreeOverworldMapObject:
 	pop {pc}
 	thumb_func_end FreeOverworldMapObject
 
-	thumb_func_start sub_80048D2
-sub_80048D2:
+	thumb_func_start TryUpdateEachOverworldMapObject_80048D2
+TryUpdateEachOverworldMapObject_80048D2: // () -> ()
 	push {r4-r7,lr}
 	mov r4, r8
 	mov r5, r9
 	mov r6, r12
 	push {r4-r6}
+
+  // return if EVENT_NON_NPC_ANIMATION_LOCKED
 	movflag EVENT_NON_NPC_ANIMATION_LOCKED
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
-	bne loc_8004920
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bne .ret_8004920
+
 	sub sp, sp, #8
 	ldr r5, off_80049D4 // =eOverworldMapObjects
 	ldr r0, off_800492C // =off_8004724
 	ldr r1, off_80049D8 // =dword_2013920
 	str r0, [sp]
 	str r1, [sp,#4]
-loc_80048F2:
-	mov r1, #1
-	ldrb r0, [r5]
+
+.ForEachOverworldMapObject_80048F2:
+
+	mov r1, #OBJECT_FLAG_ACTIVE
+	ldrb r0, [r5, #oObjectHeader_Flags]
+
+  // branch if !OBJECT_FLAG_ACTIVE
 	tst r0, r1
-	beq loc_8004916
+	beq .endcheck_8004916
+
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
+
+  // branch if !BattlePaused
 	ldrb r1, [r7,#oGameState_BattlePaused]
 	tst r1, r1
-	beq loc_800490A
-	mov r1, #4
+	beq .loc_800490A
+
+  // branch if !OBJECT_FLAG_PAUSE_UPDATE
+	mov r1, #OBJECT_FLAG_PAUSE_UPDATE
 	tst r0, r1
-	beq loc_8004916
-loc_800490A:
+	beq .endcheck_8004916
+
+.loc_800490A:
 	ldr r0, [sp]
 	ldrb r1, [r5,#1]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-loc_8004916:
-	add r5, #0x78
+
+.endcheck_8004916:
+
+	add r5, #oOverworldMapObject_Size
 	ldr r0, [sp,#4]
 	cmp r5, r0
-	blt loc_80048F2
+	blt .ForEachOverworldMapObject_80048F2
 	add sp, sp, #8
-loc_8004920:
+
+.ret_8004920:
 	pop {r4-r6}
 	mov r8, r4
 	mov r9, r5
@@ -2921,7 +2968,7 @@ loc_8004920:
 	.balign 4, 0
 off_800492C: .word off_8004724
 	.word dword_2013920
-	thumb_func_end sub_80048D2
+	thumb_func_end TryUpdateEachOverworldMapObject_80048D2
 
 	thumb_func_start sub_8004934
 sub_8004934:
@@ -3912,7 +3959,7 @@ cbGameState_80050EC:
 GameStateJumptable_p: .word GameStateJumptable
 GameStateJumptable: 
 	.word EnterMap+1 // (self: * GameState $r5) -> ()
-	.word gamestate_on_map_update_8005268+1 // (self: * GameState $r5) -> ()
+	.word gamestate_OnMapUpdate_8005268+1 // (self: * GameState $r5) -> ()
 	.word battle_80052D8+1 // (self: * GameState $r5) -> ()
 	.word sub_8005360+1 // (self: * GameState $r5) -> ()
 	.word sub_800536E+1 // (self: * GameState $r5) -> ()
@@ -3931,10 +3978,13 @@ GameStateJumptable:
 	thumb_local_start
 EnterMap: // (self: * GameState $r5) -> ()
 	push {lr}
+
+  // return if IsScreenFadeActive
 	bl IsScreenFadeActive // () -> zf
-	bne .noScreenFade
+	bne .endif1
 	pop {pc}
-.noScreenFade
+.endif1:
+
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
@@ -3948,79 +3998,111 @@ EnterMap: // (self: * GameState $r5) -> ()
 	bl cutscene_8036EFE
 	bl clearCutsceneScriptPosIfMagicValue0x1_8036F24
 	bl sub_809F90C
+
 	movflag EVENT_1731
 	bl ClearEventFlagFromImmediate
+
 	mov r0, #0
 	bl sub_803F6B0
+
 	bl sub_803F500
+
 	bl RandomizeExtraToolkitPointers // () -> ?
+
+  // if !EVENT_1741
 	movflag EVENT_1741
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
-	bne loc_80051AA
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bne .endif2
+
 	bl reloadCurNaviStatBoosts_813c3ac
-loc_80051AA:
+
+.endif2:
+
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
+
 	bl sub_8000FAC
+
 	bl sub_80355EC
+
 	mov r0, #0
 	bl sub_8001172
+
 	mov r0, #0
 	strb r0, [r5,#oGameState_Unk_15]
 	strb r0, [r5,#oGameState_CoordInteractionValue]
 	strb r0, [r5,#oGameState_Unk_03]
 	str r0, [r5,#oGameState_Unk_68]
+
 	movflag EVENT_1719
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_NPC_OBJECTS_DISABLED
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_NON_NPC_ANIMATION_LOCKED
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_1700
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_PET_DISABLED
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_1739
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_1732
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_1BB
 	bl ClearEventFlagFromImmediate
+
 	bl sub_8033948
+
 	ldr r0, off_8005264 // =0x1740
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl LoadGFXAnimsForMapGroup
+	bl LoadGFXAnimsForMapGroup // (map_group: u8, map_number: u8) -> ()
+
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl map_8001708
+	bl map_8001708 // (map_group: u8, map_number: u8) -> ()
+
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl map_8034B4C
+	bl map_8034B4C // (map_group: u8, map_number: u8) -> ()
 
 	ldrb r0, [r5,#oGameState_MapGroup]
 	bl EnterMap_RunMapGroupAsmFunction_8030A00
 
 	movflag EVENT_IN_SLIPRUN_STATE
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_173E
 	bl ClearEventFlagFromImmediate
+
 	movflag EVENT_173F
 	bl ClearEventFlagFromImmediate
+
 	ldrb r0, [r5,#oGameState_EnterMapFadeParam1]
 	ldrb r1, [r5,#oGameState_EnterMapFadeParam2]
 	bl SetScreenFade // (int a1, int a2) -> void
+
 	mov r0, #8
 	strb r0, [r5,#oGameState_EnterMapFadeParam1]
+
 	mov r0, #0x10
 	strb r0, [r5,#oGameState_EnterMapFadeParam2]
+
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Warp2011bb0_Ptr]
 	mov r1, #0
 	strb r1, [r0,#oWarp2011bb0_Unk_10]
 
-  // trigger gamestate_on_map_update_8005268 via cbGameState_80050EC
+  // trigger gamestate_OnMapUpdate_8005268 via cbGameState_80050EC
 	mov r0, #4
 	strb r0, [r5,#oGameState_SubsystemIndex]
 
@@ -4031,7 +4113,7 @@ off_8005264: .word 0x1740
 
 // on load game, we trigger EnterMap, and then we stay here a long time
 	thumb_local_start
-gamestate_on_map_update_8005268: // (self: * GameState $r5) -> ()
+gamestate_OnMapUpdate_8005268: // (self: * GameState $r5) -> ()
 	push {lr}
 
 	bl clearCutsceneScriptPosIfMagicValue0x1_8036F24
@@ -4039,14 +4121,20 @@ gamestate_on_map_update_8005268: // (self: * GameState $r5) -> ()
 	bl cutscene_8034BB8
 
 	mov r0, #0
-	strb r0, [r5,#0xe]
+	strb r0, [r5, #oGameState_CoordInteractionValue]
 
-	bl sub_800378C
-	bl sub_8003BA2
-	bl npc_800461E
-	bl sub_80048D2
-	bl sub_809F942
-	bl sub_80339CC
+	bl ZeroFillObjectInteractionAreas_800378C // () -> ()
+
+	bl TryUpdateEachOWPlayerObject_8003BA2 // () -> ()
+
+	bl TryUpdateEachOverworldNPCObject_800461E // () -> ()
+
+	bl TryUpdateEachOverworldMapObject_80048D2 // () -> ()
+
+	bl sub_809F942 // () -> * nullable ?
+
+	bl dispatch_80339CC // () -> ()
+
 	bl sub_80039AA
 	bl sub_8003AFA
 	bl checkOWObjectInteractions_80037f4
@@ -4065,13 +4153,14 @@ gamestate_on_map_update_8005268: // (self: * GameState $r5) -> ()
 	bl sub_8005A8C
 	bl sub_8005B6A
 	bl sub_8005AF4
+
 	pop {pc}
-	thumb_func_end gamestate_on_map_update_8005268
+	thumb_func_end gamestate_OnMapUpdate_8005268
 
 	thumb_local_start
 battle_80052D8: // (self: * GameState $r5) -> ()
 	push {lr}
-	bl sub_80339CC
+	bl dispatch_80339CC // () -> ()
 	bl sub_80039AA
 	bl sub_8003AFA
 	bl sub_80027B4
@@ -4134,7 +4223,7 @@ locret_800536C:
 	thumb_local_start
 sub_800536E: // (self: * GameState $r5) -> ()
 	push {lr}
-	bl sub_80339CC
+	bl dispatch_80339CC // () -> ()
 	bl sub_80039AA
 	bl sub_8003AFA
 	bl sub_80027B4
@@ -4182,7 +4271,7 @@ hword_80053E0: .hword 0xE7, 0xEC
 	thumb_local_start
 sub_80053E4: // (self: * GameState $r5) -> ()
 	push {lr}
-	bl sub_80339CC
+	bl dispatch_80339CC // () -> ()
 	bl sub_80039AA
 	bl sub_8003AFA
 	bl sub_80027B4
@@ -4215,7 +4304,7 @@ sub_80053E4: // (self: * GameState $r5) -> ()
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r0, word_8005460 // =0x40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 locret_800545C:
 	pop {pc}
 	.balign 4, 0
@@ -4234,7 +4323,7 @@ sub_8005462: // (self: * GameState $r5) -> ()
 	strb r0, [r7,#0x8] // (byte_200DF28 - 0x200df20)
 	bl sub_811EC50
 loc_8005474:
-	bl sub_80339CC
+	bl dispatch_80339CC // () -> ()
 	bl sub_80039AA
 	bl sub_8003AFA
 	bl sub_80027B4
@@ -4318,7 +4407,7 @@ sub_8005524:
 	thumb_local_start
 sub_800555A: // (self: * GameState $r5) -> ()
 	push {lr}
-	bl sub_80339CC
+	bl dispatch_80339CC // () -> ()
 	bl sub_80039AA
 	bl sub_8003AFA
 	bl sub_80027B4
@@ -4357,7 +4446,7 @@ locret_80055CC:
 	thumb_local_start
 sub_80055CE: // (self: * GameState $r5) -> ()
 	push {lr}
-	bl sub_80339CC
+	bl dispatch_80339CC // () -> ()
 	bl sub_80039AA
 	bl sub_8003AFA
 	bl sub_80027B4
@@ -4396,7 +4485,7 @@ locret_8005640:
 	thumb_local_start
 sub_8005642: // (self: * GameState $r5) -> ()
 	push {lr}
-	bl sub_80339CC
+	bl dispatch_80339CC // () -> ()
 	bl sub_80039AA
 	bl sub_8003AFA
 	bl sub_80027B4
@@ -4436,7 +4525,7 @@ locret_80056B4:
 	thumb_local_start
 sub_80056B8: // (self: * GameState $r5) -> ()
 	push {lr}
-	bl sub_80339CC
+	bl dispatch_80339CC // () -> ()
 	bl sub_80039AA
 	bl sub_8003AFA
 	bl sub_80027B4
@@ -4475,7 +4564,7 @@ locret_800572A:
 	thumb_local_start
 sub_800572C: // (self: * GameState $r5) -> ()
 	push {lr}
-	bl sub_80339CC
+	bl dispatch_80339CC // () -> ()
 	bl sub_80039AA
 	bl sub_8003AFA
 	bl sub_80027B4
@@ -4514,7 +4603,7 @@ locret_800579E:
 	thumb_local_start
 sub_80057A0: // (self: * GameState $r5) -> ()
 	push {lr}
-	bl sub_80339CC
+	bl dispatch_80339CC // () -> ()
 	bl sub_80039AA
 	bl sub_8003AFA
 	bl sub_80027B4
@@ -4553,7 +4642,7 @@ locret_8005812:
 	thumb_local_start
 sub_8005814: // (self: * GameState $r5) -> ()
 	push {lr}
-	bl sub_80339CC
+	bl dispatch_80339CC // () -> ()
 	bl sub_80039AA
 	bl sub_8003AFA
 	bl sub_80027B4
@@ -4577,7 +4666,7 @@ locret_8005858:
 	thumb_local_start
 sub_800585A: // (self: * GameState $r5) -> ()
 	push {lr}
-	bl sub_80339CC
+	bl dispatch_80339CC // () -> ()
 	bl sub_80039AA
 	bl sub_8003AFA
 	bl sub_80027B4
@@ -4624,7 +4713,7 @@ sub_80058D0:
 
 	ldrb r0, [r5,#oGameState_SubsystemIndex]
 
-  // branch if gamestate_on_map_update_8005268 not triggered
+  // branch if gamestate_OnMapUpdate_8005268 not triggered
 	cmp r0, #4
 	bne .doNotCheckWarp
 
@@ -4758,6 +4847,7 @@ sub_8005990: // (self: * GameState $r5) -> ()
 	thumb_local_start
 sub_80059B4: // (self: * GameState $r5) -> ()
 	push {lr}
+
 	movflag EVENT_1703
 	bl ClearEventFlagFromImmediate
 
@@ -4765,10 +4855,10 @@ sub_80059B4: // (self: * GameState $r5) -> ()
 	bl SetEventFlagFromImmediate
 
   // Disabling this causes warps like in Lan's HP to no longer interact (but they animate)
-  // This reproduces in Lan's HP, but NOT RoboDogComp for example.
+  // This reproduces in Lan's HP, but NOT RoboDogComp for example. Might be because it applies to HomePages
 	ldr r0, off_8005A78 // =CutsceneScript_8098a02
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 
 	pop {pc}
 	thumb_func_end sub_80059B4
@@ -4780,9 +4870,11 @@ sub_80059D0: // (self: * GameState $r5) -> ()
 	bl SetEventFlagFromImmediate
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
+
 	ldr r0, off_8005A80 // =CutsceneScript_8098a78
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
+
 	pop {pc}
 	thumb_func_end sub_80059D0
 
@@ -4791,18 +4883,22 @@ sub_80059EC: // (self: * GameState $r5) -> ()
 	push {lr}
 	movflag EVENT_1703
 	bl ClearEventFlagFromImmediate
+
 	ldr r0, off_8005A7C // =CutsceneScript_8098a2e
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
+
 	pop {pc}
 	thumb_func_end sub_80059EC
 
 	thumb_local_start
 sub_8005A00: // (self: * GameState $r5) -> ()
 	push {lr}
+
 	ldr r0, off_8005A84 // =CutsceneScript_809b5ad
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
+
 	pop {pc}
 	thumb_func_end sub_8005A00
 
@@ -4813,9 +4909,11 @@ sub_8005A0C: // (self: * GameState $r5) -> ()
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
+
 	ldr r0, off_8005A88 // =CutsceneScript_8098b1c
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
+
 	pop {pc}
 	thumb_func_end sub_8005A0C
 
@@ -4860,6 +4958,7 @@ sub_8005A50: // (self: * GameState $r5) -> ()
 	bl SetScreenFade // (int a1, int a2) -> void
 
 	bl sub_8035738
+
 	mov r0, #0xa0
 	str r0, [r5,#oGameState_Unk_68]
 
@@ -4885,15 +4984,15 @@ sub_8005A8C:
 	cmp r0, #4
 	bne locret_8005AF2
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne locret_8005AF2
 	bl sub_809E462
 	bne locret_8005AF2
 	movflag EVENT_1700
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne locret_8005AF2
 	movflag EVENT_173E
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne locret_8005AF2
 	bl sub_8005F28
 	bne locret_8005AF2
@@ -4927,10 +5026,10 @@ sub_8005AF4:
 	cmp r0, #4
 	bne locret_8005B68
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne locret_8005B68
 	movflag EVENT_IN_SLIPRUN_STATE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne locret_8005B68
 	bl sub_809E462
 	bne locret_8005B68
@@ -4950,7 +5049,7 @@ sub_8005AF4:
 	bl IsButtonPressed
 	beq locret_8005B68
 	movflag EVENT_PET_DISABLED
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne locret_8005B68
 	mov r0, #SOUND_SELECT_79
 	bl PlaySoundEffect
@@ -4979,7 +5078,7 @@ sub_8005B6E:
 	cmp r0, #4
 	bne locret_8005BC6
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne locret_8005BC6
 	bl sub_809E462
 	bne locret_8005BC6
@@ -4996,7 +5095,7 @@ sub_8005B6E:
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_8005BC6
 	movflag EVENT_1739
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne locret_8005BC6
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
@@ -5071,17 +5170,17 @@ map_triggerEnterMapOnWarp_8005C04:
 
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl map_8001708
+	bl map_8001708 // (map_group: u8, map_number: u8) -> ()
 
 	ldr r0, off_8005CE4 // =0x40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 
 	mov r5, r10
 	ldr r7, [r5,#oToolkit_Warp2011bb0_Ptr]
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 
 	movflag EVENT_171B
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 
 	bne .loc_8005C80
 
@@ -5511,7 +5610,7 @@ warp_8005f32:
 	thumb_func_start sub_8005F40
 sub_8005F40:
 	push {r4-r7,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl SetDummyBGScrollCallbacks
 	bl zeroFill_e20094C0
@@ -5519,8 +5618,8 @@ sub_8005F40:
 	bl zeroFill_e2009740
 	bl zeroFill_e200F3A0
 	bl zeroFill_80024A2
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	pop {r4-r7,pc}
 	thumb_func_end sub_8005F40
 
@@ -5544,7 +5643,7 @@ sub_8005F78:
 sub_8005F84:
 	push {r4-r7,lr}
 	ldr r0, off_8005FB0 // =0x40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	bl sub_809F68C
 	bl chatbox_8040818
 	mov r0, #0x40
@@ -7946,7 +8045,7 @@ sub_8007338:
 	mov r2, #0
 	mov r3, #0xf0
 	mov r4, #0
-	bl camera_802FF4C
+	bl camera_init_802FF4C // (player_x: u32, player_y: u32, player_z: u32, map_group: u8, map_number: u8) -> ()
 	mov r0, #0
 	bl camera_writeUnk03_14_80301b2
 	pop {pc}
@@ -8838,7 +8937,7 @@ sub_8007A0C:
 	bl sub_800318C
 	bl panel_800BFC4
 	ldr r0, off_8007A40 // =eS2011800
-	bl initUncompSpriteState_80028d4
+	bl initUncompSpriteState_80028d4 // (a0: *const ?) -> ()
 	bl GetBattleEffects // () -> int
 	mov r1, #8
 	tst r0, r1
@@ -9199,7 +9298,7 @@ loc_8007D2A:
 	mov r0, #0
 	bl sub_803F4EC
 	movflag EVENT_1733
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8007E38
 	bl SetDummyBGScrollCallbacks
 	bl zeroFill_e20094C0
@@ -9314,7 +9413,7 @@ loc_8007E38:
 	strb r0, [r7,#oGameState_BattlePaused]
 	bl zeroFill_e20097A0
 	mov r0, #0x40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	bl sub_800A892
 	mov r0, #1
 	bl clear_flags32_20093A4 // (flags32 flags) -> void
@@ -9759,7 +9858,7 @@ loc_80081F4:
 	mov r4, #0x66
 loc_8008206:
 	mov r0, r2
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 	strh r4, [r5,#8]
 	mov r6, #4
 	bl GetBattleEffects // () -> int
@@ -9820,7 +9919,7 @@ sub_800825A:
 	tst r0, r1
 	beq loc_800828A
 	mov r0, #SONG_LOSER
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 loc_800828A:
 	bl GetBattleEffects // () -> int
 	mov r1, #2
@@ -10379,7 +10478,7 @@ sub_8008688:
 	mov r2, #SONG_ACDC_TOWN
 .playSong:
 	mov r0, r2
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 	strh r4, [r5,#8]
 	mov r0, #0x14
 	bl sub_801E792
@@ -10490,7 +10589,7 @@ sub_8008764:
 	tst r0, r1
 	beq loc_8008794
 	mov r0, #SONG_LOSER
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 loc_8008794:
 	bl GetBattleEffects // () -> int
 	mov r1, #2
@@ -10913,7 +11012,7 @@ loc_8008AE0:
 	mov r2, #SONG_ACDC_TOWN
 loc_8008AE6:
 	mov r0, r2
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 	strh r4, [r5,#8]
 	mov r0, #0x14
 	bl sub_801E792
@@ -11024,7 +11123,7 @@ sub_8008B7C:
 	tst r0, r1
 	beq loc_8008BAC
 	mov r0, #SONG_LOSER
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 loc_8008BAC:
 	bl GetBattleEffects // () -> int
 	mov r1, #2
@@ -11444,7 +11543,7 @@ loc_8008EE0:
 	mov r2, #0x24
 loc_8008EE6:
 	mov r0, r2
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 	strh r4, [r5,#8]
 	mov r0, #0x14
 	bl sub_801E792
@@ -11555,7 +11654,7 @@ sub_8008F7C:
 	tst r0, r1
 	beq loc_8008FAC
 	mov r0, #SONG_LOSER
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 loc_8008FAC:
 	bl GetBattleEffects // () -> int
 	mov r1, #2
@@ -11892,7 +11991,7 @@ loc_800922E:
 loc_8009232:
 	cmp r0, #0x63
 	beq loc_800923A
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 loc_800923A:
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_03]
@@ -11914,7 +12013,7 @@ loc_800924E:
 	bl sub_801BECC
 	mov r4, #4
 	movflag EVENT_1735
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8009270
 	mov r4, #0x24
 loc_8009270:
@@ -12471,7 +12570,7 @@ loc_8009696:
 loc_800969A:
 	cmp r0, #0x63
 	beq loc_80096A2
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 loc_80096A2:
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_03]
@@ -12493,7 +12592,7 @@ loc_80096B6:
 	bl sub_801BECC
 	mov r4, #4
 	movflag EVENT_1735
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_80096D8
 	mov r4, #0x24
 loc_80096D8:
@@ -12941,7 +13040,7 @@ loc_8009A1E:
 loc_8009A22:
 	cmp r0, #0x63
 	beq loc_8009A2A
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 loc_8009A2A:
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_03]
@@ -12963,7 +13062,7 @@ loc_8009A3E:
 	bl sub_801BECC
 	mov r4, #4
 	movflag EVENT_1735
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8009A60
 	mov r4, #0x24
 loc_8009A60:
@@ -13333,7 +13432,7 @@ loc_8009D0E:
 loc_8009D12:
 	cmp r0, #0x63
 	beq loc_8009D1A
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 loc_8009D1A:
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_03]
@@ -13355,7 +13454,7 @@ loc_8009D2E:
 	bl sub_801BECC
 	mov r4, #4
 	movflag EVENT_1735
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8009D50
 	mov r4, #0x24
 loc_8009D50:
@@ -16372,7 +16471,7 @@ loc_800B1A8:
 	cmp r0, #0
 	beq loc_800B242
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_800B242
 	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
@@ -16477,7 +16576,7 @@ loc_800B25A:
 	mov r1, #0xf4 // (byte_203CCD4 - 0x203cbe0)
 	str r0, [r4,r1]
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_800B2A0
 	bl sub_8121198
 	b loc_800B2A2

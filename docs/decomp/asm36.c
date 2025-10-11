@@ -11079,7 +11079,7 @@ unsigned int __fastcall __noreturn sub_81387D8(int a1, int a2, int a3, int a4)
     copy_8002668();
     sub_80303F2();
     decompressCoordEventData_8030aa4(0, 2);
-    camera_802FF4C(0, 0, 0, 208);
+    camera_init_802FF4C(0, 0, 0, 208);
     sub_80301B2(0, v9);
     SetCameraXYZ(0, 0, 0);
     zeroFill_80024A2();
@@ -11097,10 +11097,10 @@ unsigned int __fastcall __noreturn sub_81387D8(int a1, int a2, int a3, int a4)
 // 0x8138848
 int __fastcall sub_8138848(int a1, int a2, int a3, int a4)
 {
-    sub_800378C(a1, a2, a3, a4);
-    sub_8003BA2();
-    npc_800461E();
-    sub_80048D2();
+    ZeroFillObjectInteractionAreas_800378C(a1, a2, a3, a4);
+    TryUpdateEachOWPlayerObject_8003BA2();
+    TryUpdateEachOverworldNPCObject_800461E();
+    TryUpdateEachOverworldMapObject_80048D2();
     checkOWObjectInteractions_80037f4();
     camera_802FFF4();
     sub_80027B4();

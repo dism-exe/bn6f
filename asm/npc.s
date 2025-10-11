@@ -970,7 +970,7 @@ dword_809EBB8: .word OW_NPC_UNK_FLAGS_60_CHATBOX_FLAG_0x800
 npc_inChatbox_curAction_waitClose_809EBBC:
 	push {lr}
 	movflag EVENT_EVENT_CUR_DIR_LOCKED
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne locret_809EBDA
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -2447,7 +2447,7 @@ NPCCommand_play_music:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 	add r6, #3
 	pop {pc}
 	thumb_func_end NPCCommand_play_music
@@ -3157,7 +3157,7 @@ sub_809F904:
 sub_809F90C:
 	push {lr}
 	movflag EVENT_1708
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne locret_809F920
 	ldr r0, off_809F9C4 // =byte_2000210 
 	mov r1, #0
@@ -3171,7 +3171,7 @@ locret_809F920:
 sub_809F922:
 	push {r4,r6,r7,lr}
 	movflag EVENT_1708
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne locret_809F940
 	ldr r7, off_809F9C4 // =byte_2000210 
 	ldrb r6, [r7]
@@ -3187,61 +3187,78 @@ locret_809F940:
 	thumb_func_end sub_809F922
 
 	thumb_func_start sub_809F942
-sub_809F942:
+sub_809F942: // () -> * nullable ?
 	push {r4-r7,lr}
+
+  // return if EVENT_1708
 	movflag EVENT_1708
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne locret_809F9BC
+
 	ldr r7, off_809F9C4 // =byte_2000210 
 	ldrb r6, [r7]
+
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
 	ldr r4, [r4,#oGameState_OverworldPlayerObjectPtr]
+
 	add r7, #0x10
-loc_809F95A:
+.loop_809F95A:
 	sub r6, #1
-	blt loc_809F9A6
+
+	blt .break_809F9A6
+
 	ldr r5, [r7]
+
 	ldr r2, [r4,#0x24]
 	ldr r0, [r5,#0x2c]
 	cmp r0, r2
-	bne loc_809F9A2
+	bne .continue_809F9A2
+
 	ldr r2, [r4,#0x1c]
 	ldr r3, [r4,#0x20]
 	ldr r0, [r5,#0x24]
 	ldr r1, [r5,#0x28]
 	sub r0, r0, r2
 	sub r1, r1, r3
+
 	mov r3, #0x24 
 	lsl r3, r3, #0x10
 	sub r2, r0, r1
 	cmp r2, r3
-	bgt loc_809F9A2
+	bgt .continue_809F9A2
+
 	mov r3, #0x38 
 	lsl r3, r3, #0x10
 	neg r3, r3
 	sub r2, r0, r1
 	cmp r2, r3
-	blt loc_809F9A2
+	blt .continue_809F9A2
+
 	mov r3, #0x1c
 	lsl r3, r3, #0x10
 	add r2, r0, r1
 	cmp r2, r3
-	bgt loc_809F9A2
+	bgt .continue_809F9A2
+
 	mov r3, #0x1c
 	lsl r3, r3, #0x10
 	neg r3, r3
 	add r2, r0, r1
 	cmp r2, r3
-	blt loc_809F9A2
+	blt .continue_809F9A2
+
 	b loc_809F9AE
-loc_809F9A2:
+.continue_809F9A2:
 	add r7, #4
-	b loc_809F95A
-loc_809F9A6:
+	b .loop_809F95A
+
+.break_809F9A6:
+
 	bl sub_809F90C
-	mov r0, #0
+	mov r0, #NULL
 	pop {r4-r7,pc}
+
 loc_809F9AE:
 	push {r5}
 	bl sub_809F90C
@@ -3249,6 +3266,7 @@ loc_809F9AE:
 	ldr r7, off_809F9C4 // =byte_2000210 
 	str r0, [r7,#0x8]
 	pop {r4-r7,pc}
+
 locret_809F9BC:
 	pop {r4-r7,pc}
 	thumb_func_end sub_809F942

@@ -21323,7 +21323,7 @@ void __noreturn sub_811EED0()
     char v3; // zf
 
     copyMemory_8001850();
-    sub_8033978();
+    gfxTransfer_8033978();
     sub_811EBF4(1);
     PlaySoundEffect(124, v1, v2);
     TestEventFlagFromImmediate(1, 99);

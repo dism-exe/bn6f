@@ -22,14 +22,14 @@ sub_8080DA0:
 	ldr r1, [r7,#4]
 	ldr r2, [r7,#8]
 	bl SetBGScrollCallbacks
-	bl GetRenderInfoLCDControl
+	bl GetRenderInfoLCDControl // () -> u16
 	ldr r1, [r7,#0xc]
 	orr r0, r1
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	ldr r6, off_8080F94 // =off_8080F98 
 	lsl r1, r4, #2
 	ldr r0, [r6,r1]
-	bl LoadBGAnimData
+	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	lsl r1, r4, #2
 	ldr r0, off_8080E2C // =off_8081220 
 	ldr r0, [r0,r1]
@@ -55,14 +55,14 @@ sub_8080DEA:
 	ldr r1, [r7,#4]
 	ldr r2, [r7,#8]
 	bl SetBGScrollCallbacks
-	bl GetRenderInfoLCDControl
+	bl GetRenderInfoLCDControl // () -> u16
 	ldr r1, [r7,#0xc]
 	orr r0, r1
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	ldr r6, off_8080F94 // =off_8080F98 
 	lsl r1, r4, #2
 	ldr r0, [r6,r1]
-	bl LoadBGAnimData
+	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	lsl r1, r4, #2
 	ldr r0, off_8080E2C // =off_8081220 
 	ldr r0, [r0,r1]

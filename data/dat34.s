@@ -1877,7 +1877,7 @@ sub_812E9AC::
 	push {r7,lr}
 	bl sub_812ED2C
 	mov r7, r0
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
 	mov r0, #0x10

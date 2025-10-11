@@ -1688,14 +1688,8 @@ dword_2011D24:: // 0x2011d24
 	.space 4
 word_2011D28:: // 0x2011d28
 	.space 264
-unk_2011E30:: // 0x2011e30
-	.space 4
-byte_2011E34:: // 0x2011e34
-	.space 3
-byte_2011E37:: // 0x2011e37
-	.space 1
-word_2011E38:: // 0x2011e38
-	.space 8
+eS2011E30:: // 0x2011e30
+  s_2011E30_struct eS2011E30
 byte_2011E40:: // 0x2011e40
 	.space 2
 byte_2011E42:: // 0x2011e42

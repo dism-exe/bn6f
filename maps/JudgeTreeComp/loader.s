@@ -13,24 +13,24 @@ JudgeTreeComp_EnterMapGroup:
 	bl JudgeTreeComp_LoadBGAnim
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl initMapTilesState_803037c
+	bl initMapTilesState_803037c // (map_group: u8, map_number: u8) -> ()
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl decompressCoordEventData_8030aa4
+	bl decompressCoordEventData_8030aa4 // (map_group: u8, map_number: u8) -> ()
 	ldr r0, [r5,#oGameState_PlayerX]
 	ldr r1, [r5,#oGameState_PlayerY]
 	ldr r2, [r5,#oGameState_PlayerZ]
 	ldrb r3, [r5,#oGameState_MapGroup]
 	ldrb r4, [r5,#oGameState_MapNumber]
-	bl camera_802FF4C
-	bl decompAndCopyMapTiles_8030472
+	bl camera_init_802FF4C // (player_x: u32, player_y: u32, player_z: u32, map_group: u8, map_number: u8) -> ()
+	bl decompAndCopyMapTiles_8030472 // () -> ()
 	ldr r0, off_8069094 // =unk_2037800 
-	bl initUncompSpriteState_80028d4
+	bl initUncompSpriteState_80028d4 // (a0: *const ?) -> ()
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, off_8069098 // =off_806909C 
 	ldr r0, [r0,r1]
-	bl uncompSprite_8002906
+	bl uncompSprite_8002906 // (sprite_load_data: *const SpriteLoadData) -> bool
 	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
 	bl JudgeTreeComp_SpawnMapObjectsForMap
 	bl sub_8034FB8
@@ -100,15 +100,15 @@ JudgeTreeComp_LoadBGAnim:
 	ldr r1, [r7,#4]
 	ldr r2, [r7,#8]
 	bl SetBGScrollCallbacks
-	bl GetRenderInfoLCDControl
+	bl GetRenderInfoLCDControl // () -> u16
 	ldr r1, [r7,#0xc]
 	orr r0, r1
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	ldr r0, off_80691A8 // =off_80691AC 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
-	bl LoadBGAnimData
+	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8069174: .word off_8069178

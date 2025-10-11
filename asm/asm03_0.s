@@ -1480,7 +1480,7 @@ loc_8027096:
 	add r0, r0, r1
 	ldr r1, dword_80270C0 // =0x60172c0 
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldrb r0, [r5,#8]
 	mov r1, #0x10
 	mul r0, r1
@@ -1489,7 +1489,7 @@ loc_8027096:
 	ldr r0, off_80270C4 // =byte_872CF94 
 	ldr r1, off_80270C8 // =byte_30016F0 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	mov r0, #4
 	strh r0, [r5,#2]
 	pop {r4,pc}
@@ -3589,15 +3589,15 @@ sub_802812C:
 	bl sub_8028164
 	ldr r1, dword_8028158 // =0x60170e0 
 	mov r2, #0x40 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	add r0, r0, r2
 	ldr r1, dword_802815C // =0x6017160 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	mov r0, r4
 	bl sub_8028172
 	ldr r1, off_8028160 // =byte_30016B0 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r4,pc}
 	.balign 4, 0
 off_8028154: .word off_802A744
@@ -3658,7 +3658,7 @@ sub_80281C4:
 	push {r2,r3,lr}
 	bl sub_80281A8
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	add r1, #0x80
 	pop {r2,r3,pc}
 	thumb_func_end sub_80281C4
@@ -3684,7 +3684,7 @@ sub_80281E4:
 	mul r0, r2
 	ldr r3, off_8028200 // =byte_8725894 
 	add r0, r0, r3
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r1-r3,pc}
 	.balign 4, 0
 dword_80281FC: .word 0x600A4A0
@@ -3696,7 +3696,7 @@ sub_8028204:
 	push {r2,r3,lr}
 	bl sub_8028214
 	mov r2, #0x40 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	add r1, #0x40 
 	pop {r2,r3,pc}
 	thumb_func_end sub_8028204
@@ -3804,7 +3804,7 @@ sub_80282AE:
 	beq loc_80282BC
 	add r0, r0, r2
 loc_80282BC:
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {pc}
 	thumb_func_end sub_80282AE
 
@@ -3815,7 +3815,7 @@ sub_80282C2:
 	ldr r2, off_80283A4 // =0x100 
 	add r0, r0, r2
 	add r0, r0, r2
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {pc}
 	thumb_func_end sub_80282C2
 
@@ -3827,7 +3827,7 @@ sub_80282D2:
 	ldrb r3, [r4,#7]
 	mul r3, r2
 	add r0, r0, r3
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	add r1, #0xc0
 	add r1, #0xc0
 	pop {pc}
@@ -3874,7 +3874,7 @@ sub_8028320:
 	ldr r2, off_80283A8 // =0x300 
 	add r0, r0, r2
 	ldr r2, off_80283A4 // =0x100 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	b locret_802833E
 loc_8028334:
 	ldr r0, off_8028368 // =byte_802A700 
@@ -3893,7 +3893,7 @@ sub_8028340:
 	ldrb r3, [r4,#7]
 	mul r3, r2
 	add r0, r0, r3
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	add r1, #0xc0
 	add r1, #0xc0
 	pop {pc}
@@ -4104,12 +4104,12 @@ sub_80284E2:
 	beq loc_8028536
 	ldr r1, dword_802865C // =0x6009560 
 	ldr r2, dword_8028660 // =0x540
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r0, [sp,#4]
 	ldr r0, [r0,#0x28]
 	ldr r1, off_8028664 // =unk_3001AA0 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 loc_8028536:
 	ldr r1, [sp,#4]
 	ldrb r0, [r1,#7]
@@ -4129,7 +4129,7 @@ loc_802854C:
 	ldr r1, off_8028818 // =byte_86E587C 
 	add r0, r0, r1
 	ldr r1, off_802881C // =unk_3001A80 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r0, [sp]
 	lsr r0, r0, #9
 	cmp r0, #0x1c
@@ -4142,7 +4142,7 @@ loc_8028564:
 	add r0, r0, r1
 	ldr r1, dword_8028644 // =0x6009aa0 
 	mov r2, #0x40 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r0, [sp,#4]
 	ldrb r1, [r0,#9]
 	mov r2, #0x12
@@ -4155,14 +4155,14 @@ loc_8028564:
 	ldr r1, off_8028648 // =dword_86E3598 
 	add r0, r0, r1
 	ldr r1, dword_802864C // =0x6009ae0 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r0}
 	mov r2, #0xc
 	mul r0, r2
 	ldr r1, off_8028680 // =dword_86E3B18 
 	add r0, r0, r1
 	ldr r1, off_8028684 // =unk_3001AD4 
-	bl QueueWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r0, [sp,#8]
 	cmp r0, #0
 	beq loc_80285C6
@@ -4203,7 +4203,7 @@ loc_80285DC:
 	add r0, r0, r2
 	mov r2, #0x40 
 	push {r3}
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r3}
 	sub r1, #0x40 
 	sub r3, #1
@@ -4235,11 +4235,11 @@ sub_80285FE:
 	beq loc_802863A
 	ldr r1, dword_802865C // =0x6009560 
 	ldr r2, dword_8028660 // =0x540
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r0, [r4,#0x28]
 	ldr r1, off_8028664 // =unk_3001AA0 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 loc_802863A:
 	bl sub_802869E
 	pop {r4,pc}
@@ -4271,7 +4271,7 @@ sub_802868C:
 	mov r4, r3
 	mov r2, #0x40 
 loc_8028692:
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	add r1, r1, r2
 	sub r4, #1
 	bne loc_8028692
@@ -4316,13 +4316,13 @@ loc_80286E4:
 	ldr r0, [r0,r1]
 	ldr r1, dword_80287F0 // =0x6009560 
 	ldr r2, dword_80287F4 // =0x540
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r1}
 	ldr r0, off_8028710 // =off_8028714 
 	ldr r0, [r0,r1]
 	ldr r1, off_80287FC // =unk_3001AA0 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	bl sub_802869E
 	pop {pc}
 	.balign 4, 0
@@ -4341,7 +4341,7 @@ sub_802871C:
 	ldr r0, off_802874C // =byte_8723034 
 	ldr r1, dword_80287F0 // =0x6009560 
 	ldr r2, dword_80287F4 // =0x540
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	mov r0, #0xb
 	bl getLocOfActiveChips_8027E1C // (int a1) -> void*
 	ldrb r0, [r0,#6]
@@ -4351,7 +4351,7 @@ sub_802871C:
 	add r0, r0, r1
 	ldr r1, off_80287FC // =unk_3001AA0 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	bl sub_802869E
 	pop {pc}
 	.balign 4, 0
@@ -4366,11 +4366,11 @@ sub_8028754:
 	ldr r0, off_8028774 // =dword_87225B4 
 	ldr r1, dword_80287F0 // =0x6009560 
 	ldr r2, dword_80287F4 // =0x540
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r0, off_8028778 // =dword_87257D4 
 	ldr r1, off_80287FC // =unk_3001AA0 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	bl sub_802869E
 	pop {pc}
 	.balign 4, 0
@@ -4385,11 +4385,11 @@ sub_802877C:
 	ldr r0, off_802879C // =dword_8733E74 
 	ldr r1, dword_80287F0 // =0x6009560 
 	ldr r2, dword_80287F4 // =0x540
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r0, off_80287A0 // =dword_87343D4 
 	ldr r1, off_80287FC // =unk_3001AA0 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	bl sub_802869E
 	pop {pc}
 	.balign 4, 0
@@ -4411,11 +4411,11 @@ loc_80287AE:
 	ldr r0, off_80287EC // =dword_8722AF4 
 	ldr r1, dword_80287F0 // =0x6009560 
 	ldr r2, dword_80287F4 // =0x540
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r0, off_80287F8 // =dword_8725854 
 	ldr r1, off_80287FC // =unk_3001AA0 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	bl sub_802869E
 	pop {r0}
 	pop {pc}
@@ -4431,7 +4431,7 @@ sub_80287D2:
 	ldr r0, off_8028818 // =byte_86E587C 
 	ldr r1, off_802881C // =unk_3001A80 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {pc}
 	.balign 4, 0
 off_80287EC: .word dword_8722AF4
@@ -4601,7 +4601,7 @@ sub_802899C:
 	ldr r1, dword_80289DC // =0x6016cc0 
 	ldr r2, dword_80289E0 // =0x200
 	add r0, r0, r3
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 loc_80289C2:
 	ldr r0, dword_80289D0 // =0x80020064 
 	ldr r1, dword_80289D4 // =0xb766 
@@ -7405,7 +7405,7 @@ loc_8029DA2:
 	ldr r2, dword_8029DE0 // =0x600a720 
 	add r1, r1, r2
 	ldr r2, off_8029DDC // =0x240 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	mov r0, #1
 	mov r1, #1
 	lsl r6, r6, #1
@@ -7459,7 +7459,7 @@ sub_8029EAC:
 	add r0, r0, r1
 	ldr r1, off_8029EC4 // =unk_3001AA0 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8029EC0: .word dword_86E944C
@@ -7565,7 +7565,7 @@ loc_8029F88:
 	tst r0, r1
 	bne loc_8029FAC
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8029FA4
 	ldrb r0, [r5,#0x10]
 	cmp r0, #0
@@ -7594,7 +7594,7 @@ sub_8029FB4:
 	cmp r0, #0
 	bne loc_8029FEC
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8029FEC
 	bl TestBattleFlag_0x40
 	bne loc_8029FEC
@@ -7603,7 +7603,7 @@ sub_8029FB4:
 	tst r0, r1
 	bne loc_8029FEC
 	movflag EVENT_E0
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8029FEC
 loc_8029FEA:
 	mov r4, #1
@@ -7853,7 +7853,7 @@ sub_802A220:
 	push {r4,r6,r7,lr}
 	mov r4, #0xff
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_802A2A2
 	bl GetBattleEffects // () -> int
 	ldr r1, dword_802A2A8 // =0x200000 
@@ -9966,7 +9966,7 @@ loc_802B496:
 	mov r2, #0x20 
 	mul r3, r2
 	add r1, r1, r3
-	bl QueueWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r0, [sp]
 	add r0, #1
 	str r0, [sp]
@@ -10606,7 +10606,7 @@ sub_802B9FE:
 	add r0, r0, r1
 	ldr r1, off_802BA14 // =unk_3001AA0 
 	mov r2, #8
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r1-r3,pc}
 	.balign 4, 0
 off_802BA10: .word byte_802BA48
@@ -11118,12 +11118,12 @@ loc_802BFE4:
 	ldr r1, dword_802C00C // =0x600bd00 
 	mov r2, #0x2a 
 	lsl r2, r2, #6
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r1}
 	mov r0, r1
 	ldr r1, off_802C010 // =unk_3001AE0 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r5}
 	mov r0, #0
 	strb r0, [r5,#0xb]
@@ -11611,7 +11611,7 @@ sub_802C34E:
 	ldr r0, [r7]
 	ldr r1, [r7,#4]
 	ldr r2, [r7,#8]
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	mov r0, #0
 	mov r1, #0x60 
 	mul r0, r1
@@ -11620,22 +11620,22 @@ sub_802C34E:
 	add r0, r0, r1
 	ldr r1, [r7,#0x4] // (off_802C428 - 0x802c424)
 	ldr r2, [r7,#0x8] // (off_802C42C - 0x802c424)
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r7, off_802C444 // =off_802C448 
 	ldr r0, [r7]
 	ldr r1, [r7,#0x4] // (dword_802C44C - 0x802c448)
 	ldr r2, [r7,#0x8] // (off_802C450 - 0x802c448)
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	bl GetCurPETNavi // () -> u8
 	bl sub_8028164
 	ldr r1, dword_802C458 // =0x6014000 
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	bl GetCurPETNavi // () -> u8
 	bl sub_8028172
 	ldr r1, off_802C45C // =byte_30016B0 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_802C3F4: .word dword_20364C0
@@ -14094,7 +14094,7 @@ sub_802D65E:
 	push {r4,lr}
 	mov r4, r0
 	movflag EVENT_1D8
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_802D68A
 	ldr r1, dword_802D69C // =0x196 
 	add r1, r1, r4
@@ -15362,7 +15362,7 @@ sub_802E112:
 	tst r0, r1
 	beq locret_802E154
 	movflag EVENT_1722_BEAST_LINK_GATE_RELATED
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_802E154
 loc_802E14E:
 	mov r0, #0x40 
@@ -17411,7 +17411,7 @@ ToggleEventFlag:
    clobbers: r0,r1,r3
    ignores: r2,r4-r9,r11,r12 */
 	thumb_func_start TestEventFlagFromImmediate
-TestEventFlagFromImmediate: // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+TestEventFlagFromImmediate: // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
@@ -17984,11 +17984,11 @@ startScreen_initGfx_802F574: // (self: *mut StartScreen $r5) -> ()
 	bl sub_80015FC
 
 	ldr r0, off_802F7E4 // =0x1140 
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 
-	bl renderInfo_8001788
+	bl renderInfo_8001788 // () -> ()
 
-	bl renderInfo_80017A0
+	bl renderInfo_80017A0 // () -> ()
 
   /// Disabling this causes responsive black start screen with some graphics noise
 	bl startScreen_initGfx_802FCC0
@@ -18089,7 +18089,7 @@ startscreen_render_trigger_802F624: // (self: *mut StartScreen $r5) -> ()
 	push {lr}
 
 	ldr r0, dword_802F638 // =0x1741 
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 
   // trigger ho_802F63C via startscreen_render_802F544
 	mov r0, #8
@@ -18153,7 +18153,7 @@ sub_802F668: // (self: *mut StartScreen $r5) -> ()
 	bl sub_80015FC
 
 	ldr r0, off_802F6A0 // =0x1340 
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 
 	mov r0, #0
 	strb r0, [r5,#6]
@@ -18311,7 +18311,7 @@ load_game_802F756: // (self: * StartScreen $r5) -> ()
 	strb r1, [r0]
 
 	ldr r0, off_802F7E4 // =0x1140 
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 
 	bl zeroFill_813D960
 
@@ -18819,7 +18819,7 @@ byte_802FCB4: .byte 0x16, 0x40, 0x6C, 0x80, 0x70, 0xA2, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_local_start
 startScreen_initGfx_802FCC0:
 	push {r4-r7,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	// initRefs
 	ldr r0, off_802FCD4 // =initRefs_802FCD8 
 	bl decompAndCopyData // (u32 *initRefs) -> void
@@ -19138,19 +19138,21 @@ off_802FF48: .word word_200A6F0
 
 // file bounds: Here we enter clearly camera territory
 
-	thumb_func_start camera_802FF4C
+	thumb_func_start camera_init_802FF4C
 // r3 - map group
 // r4 - map number
 // only map related data is a jumptable index
 // that's the same for every map group type
-camera_802FF4C:
+camera_init_802FF4C: // (player_x: u32, player_y: u32, player_z: u32, map_group: u8, map_number: u8) -> ()
 	push {r5-r7,lr}
 	mov r5, r8
 	mov r6, r9
 	mov r7, r12
 	push {r5-r7}
 	push {r3,r4}
+
 	push {r0-r2}
+
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_CameraPtr]
 	ldrb r0, [r5,#oCamera_Unk_03]
@@ -19162,9 +19164,11 @@ camera_802FF4C:
 	// size
 	mov r1, #0x4c 
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
 	pop {r0,r1,r5}
 	strb r0, [r5,#oCamera_Unk_03]
 	str r1, [r5,#oCamera_Unk_14]
+
 	ldr r0, off_802FFF0 // =eMapTilesState200be70
 	ldrb r3, [r0,#oMapTilesState200be70_MapWidth]
 	sub r3, #0x1e
@@ -19231,7 +19235,7 @@ loc_802FFCA:
 off_802FFE8: .word off_8033770
 off_802FFEC: .word off_803378C
 off_802FFF0: .word eMapTilesState200be70
-	thumb_func_end camera_802FF4C
+	thumb_func_end camera_init_802FF4C
 
 	thumb_func_start camera_802FFF4
 camera_802FFF4:
@@ -19760,7 +19764,7 @@ nullsub_60:
 	thumb_func_start initMapTilesState_803037c
 // r0 - map group
 // r1 - map number
-initMapTilesState_803037c:
+initMapTilesState_803037c: // (map_group: u8, map_number: u8) -> ()
 	push {r4-r7,lr}
 	mov r2, r8
 	mov r3, r9
@@ -19911,7 +19915,7 @@ loc_8030468:
 	thumb_func_end sub_80303FC
 
 	thumb_func_start decompAndCopyMapTiles_8030472
-decompAndCopyMapTiles_8030472:
+decompAndCopyMapTiles_8030472: // () -> ()
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
@@ -19937,7 +19941,7 @@ decompAndCopyMapTiles_8030472:
 	add r0, r0, r6
 	// dest
 	ldr r1, off_803057C // =eDecompBuffer2013A00
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	
 	ldr r0, off_803057C // =eDecompBuffer2013A00
 	ldr r1, [r7,#oMapBGTilesetHeader_VRAMOffset]
@@ -19964,7 +19968,7 @@ decompAndCopyMapTiles_8030472:
 	add r0, #oMapBGTilemapHeader_Size
 	// dest
 	add r1, #oMapBGTilemapHeader_Size
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	ldr r0, [r5,#oMapTilesState200be70_UnkCallback_1c] // (dword_200BE8C - 0x200be70)
 	mov lr, pc
 	bx r0
@@ -19979,7 +19983,7 @@ dword_80304E4: .word 0x6000000
 	thumb_func_end decompAndCopyMapTiles_8030472
 
 	thumb_func_start LoadBGAnimData
-LoadBGAnimData:
+LoadBGAnimData: // (bg_anim_data: BGAnimData) -> ()
 	push {r4-r7,lr}
 	mov r5, r0
 	ldr r0, [r5,#oBGAnimData_PaletteSrc]
@@ -19988,7 +19992,7 @@ LoadBGAnimData:
 	add r0, #4
 	ldr r1, [r5,#oBGAnimData_PaletteDest]
 	ldr r2, [r5,#oBGAnimData_PaletteSize]
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 .noPalette
 	ldr r7, [r5,#oBGAnimData_GFXSrc]
 	tst r7, r7
@@ -20001,7 +20005,7 @@ LoadBGAnimData:
 	// dest
 	ldr r1, =eDecompressionBuf2034A00 
 	// decompress gfx to buffer
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 
 	ldr r0, =eDecompressionBuf2034A00 
 	ldr r1, [r5,#oBGAnimData_GFXDest]
@@ -20017,7 +20021,7 @@ LoadBGAnimData:
 	ldr r1, =eDecompressionBuf2034A00 
 	// add offset to compressed tilemap
 	add r0, #0xc
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 
 	ldr r0, =eDecompressionBuf2034A00 
 	ldr r1, [r5,#oBGAnimData_TilemapDestOffset]
@@ -20050,14 +20054,14 @@ sub_8030540:
 	add r0, #4
 	ldr r1, [r5,#0x14]
 	ldr r2, [r5,#0x18]
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 loc_8030554:
 	ldr r0, [r5,#8]
 	// dest
 	ldr r1, off_8030578 // =eDecompressionBuf2034A00 
 	// src
 	add r0, #0xc
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	ldr r0, off_8030578 // =eDecompressionBuf2034A00 
 	ldr r1, [r5,#0xc]
 	mov r2, r10
@@ -20068,7 +20072,7 @@ loc_8030554:
 	ldrb r3, [r3,#1]
 	mul r2, r3
 	lsl r2, r2, #1
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8030578: .word eDecompressionBuf2034A00
@@ -20705,7 +20709,7 @@ EnterMap_RunMapGroupAsmFunction_8030A00:
 
 	thumb_func_start LoadGFXAnimsForMapGroup
 // r0 map group, r1 map number
-LoadGFXAnimsForMapGroup:
+LoadGFXAnimsForMapGroup: // (map_group: u8, map_number: u8) -> ()
 	push {lr}
 	cmp r0, #UNKNOWN_MAP_GROUP_START
 	bge .unknownMapGroupRange
@@ -20775,7 +20779,7 @@ npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c:
 
 	thumb_func_start decompressCoordEventData_8030aa4
 // coordinate effect 
-decompressCoordEventData_8030aa4: // JP 0x8031A60
+decompressCoordEventData_8030aa4: // (map_group: u8, map_number: u8) -> ()
 	push {r4-r7,lr}
 	mov r2, r8
 	mov r3, r9
@@ -20800,7 +20804,7 @@ loc_8030ABA:
 	add r0, #0x10
 	// dest
 	ldr r1, off_8030B08 // =unk_2027A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	pop {r6}
 	ldr r7, off_8030B08 // =unk_2027A00 
 	ldr r0, [r6]

@@ -10,30 +10,41 @@ HomePages_EnterMapGroup:
 	add r0, r0, r4
 	ldr r0, [r0]
 	str r0, [r1,#oWarp2011bb0_WarpDataPtr]
-	bl HomePages_LoadBGAnim
+
+	bl HomePages_LoadBGAnim // () -> ()
+
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl initMapTilesState_803037c
+	bl initMapTilesState_803037c // (map_group: u8, map_number: u8) -> ()
+
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl decompressCoordEventData_8030aa4
+	bl decompressCoordEventData_8030aa4 // (map_group: u8, map_number: u8) -> ()
+
 	ldr r0, [r5,#oGameState_PlayerX]
 	ldr r1, [r5,#oGameState_PlayerY]
 	ldr r2, [r5,#oGameState_PlayerZ]
 	ldrb r3, [r5,#oGameState_MapGroup]
 	ldrb r4, [r5,#oGameState_MapNumber]
-	bl camera_802FF4C
-	bl decompAndCopyMapTiles_8030472
+	bl camera_init_802FF4C // (player_x: u32, player_y: u32, player_z: u32, map_group: u8, map_number: u8) -> ()
+
+	bl decompAndCopyMapTiles_8030472 // () -> ()
+
 	ldr r0, off_806C298 // =unk_2037800 
-	bl initUncompSpriteState_80028d4
+	bl initUncompSpriteState_80028d4 // (a0: *const ?) -> ()
+
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, off_806C29C // =off_806C2A0 
 	ldr r0, [r0,r1]
-	bl uncompSprite_8002906
+	bl uncompSprite_8002906 // (sprite_load_data: *const SpriteLoadData) -> bool
+
 	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
+
 	bl HomePages_SpawnMapObjectsForMap
+
 	bl sub_8034FB8
+
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_806C294: .word off_806BFF8
@@ -93,31 +104,38 @@ off_806C350: .word off_806C194
 	thumb_func_end HomePages_LoadGFXAnims
 
 	thumb_func_start HomePages_LoadBGAnim
-HomePages_LoadBGAnim:
+HomePages_LoadBGAnim: // () -> ()
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
+
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #4
-	ldr r7, off_806C390 // =off_806C394 
+
+	ldr r7, off_806C390 // =JumpTable806C394 
 	add r7, r7, r1
+
 	ldr r0, [r7]
 	ldr r1, [r7,#4]
 	ldr r2, [r7,#8]
 	bl SetBGScrollCallbacks
-	bl GetRenderInfoLCDControl
+
+	bl GetRenderInfoLCDControl // () -> u16
+
 	ldr r1, [r7,#0xc]
 	orr r0, r1
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+
 	ldr r0, off_806C404 // =off_806C408 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
-	bl LoadBGAnimData
+	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
+
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_806C390: .word off_806C394
-off_806C394: .word nullsub_39+1
+off_806C390: .word JumpTable806C394
+JumpTable806C394: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
 	.word 0x800

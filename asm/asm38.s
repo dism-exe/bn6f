@@ -716,7 +716,7 @@ off_30060E8: .word dword_200F350
 	.word dword_200F350
 	.word dword_200F350
 dword_3006100: .word 0x6010000
-off_3006104: .word QueueEightWordAlignedGFXTransfer+1 // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+off_3006104: .word QueueEightWordAlignedGFXTransfer+1 // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	thumb_func_end sub_3006028
 
 	thumb_local_start
@@ -2243,7 +2243,7 @@ loc_3006C04:
 	pop {pc}
 	.balign 4, 0
 off_3006C08: .word off_3006B18
-off_3006C0C: .word QueueEightWordAlignedGFXTransfer+1 // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+off_3006C0C: .word QueueEightWordAlignedGFXTransfer+1 // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	.word ZeroFillByByte+1 // (mut_mem: *mut (), num_bytes: usize) -> ()
 off_3006C14: .word dword_3006B84
 	thumb_func_end sub_3006B94
@@ -3058,7 +3058,7 @@ locret_30071E8:
 off_30071F0: .word dword_200CDA0
 dword_30071F4: .word 0x6015700
 dword_30071F8: .word 0xF00
-off_30071FC: .word QueueEightWordAlignedGFXTransfer+1 // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+off_30071FC: .word QueueEightWordAlignedGFXTransfer+1 // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 Flags3007200: .word FLAGS_3E_UNK_0400
 off_3007204: .word chatbox_maskFlags_3e+1
 off_3007208: .word off_300720C

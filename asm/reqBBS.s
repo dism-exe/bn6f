@@ -77,8 +77,8 @@ reqBBS_static_draw_813E0F8:
 	bl reqBBS_813E8CC
 	bl reqBBS_813EEF4
 	mov r7, r10
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	mov r0, #0x17
 	bl sub_80015FC
 	mov r0, #8
@@ -128,7 +128,7 @@ byte_813E180: .byte 0x40, 0x5E, 0x0, 0x0, 0xA0, 0x17, 0x0, 0x0
 reqBBS_draw_813E188:
 	push {lr}
 	ldr r0, dword_813E1C4 // =0x1f40 
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
@@ -668,18 +668,18 @@ reqBBS_uncomp_813E5A0:
 	ldr r0, [r3]
 	// dest
 	ldr r1, off_813E5CC // =unk_2025A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	pop {r3}
 	// src
 	ldr r0, [r3,#4]
 	// dest
 	ldr r1, off_813E5D0 // =unk_2029A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	// src
 	ldr r0, off_813E5D4 // =CompText87EE1AC 
 	// dest
 	ldr r1, off_813E5D8 // =unk_2033A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	pop {r5,pc}
 	.balign 4, 0
 off_813E5C8: .word off_813E04C
@@ -816,7 +816,7 @@ off_813E6CC: .word unk_2000FF0
 	thumb_local_start
 reqBBS_vram_813E6D0:
 	push {r5,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	// initRefs
 	ldr r0, off_813E6F8 // =byte_813E6FC 
@@ -1413,7 +1413,7 @@ reqBBS_813ED40:
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_813ED58: .word byte_813DEC4
@@ -1516,7 +1516,7 @@ reqBBS_813EDE4:
 	add r0, r0, r2
 	ldr r1, dword_813EE38 // =0x6017f80 
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldrh r1, [r5,#0x20]
 	mov r0, #3
 	mov r3, #0x10
@@ -1863,7 +1863,7 @@ ReqBBSSubSystemJumpTable:
 OpenReqBBSMenu813F474:
 	push {lr}
 	movflag EVENT_173A
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_813F4B6
 	ldr r0, off_813F548 // =eReqBBSGui
 	ldr r1, dword_813F544 // =0xf 
@@ -1905,8 +1905,8 @@ loc_813F4B6:
 	bl reqBBS_renderRequestNames
 	bl reqBBS_81405C0
 	mov r7, r10
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	mov r0, #0x17
 	bl sub_80015FC
 	mov r0, #8
@@ -1957,7 +1957,7 @@ off_813F54C: .word reqBBS_textualPointers
 UpdateReqBBSMenu813F550:
 	push {lr}
 	ldr r0, dword_813F58C // =0x1f40 
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
@@ -2492,18 +2492,18 @@ reqBBS_copyTextDataToRAM:
 	ldr r0, [r3]
 	// dest
 	ldr r1, off_813F990 // =unk_2025A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	pop {r3}
 	// src
 	ldr r0, [r3,#4]
 	// dest
 	ldr r1, off_813F994 // =unk_2029A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	// src
 	ldr r0, off_813F998 // =CompText87EFE14 
 	// dest
 	ldr r1, off_813F99C // =unk_2033A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	pop {r5,pc}
 	.balign 4, 0
 off_813F98C: .word off_813F378
@@ -2747,7 +2747,7 @@ loc_813FB40:
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	beq loc_813FB98
 	movflag EVENT_173A
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_813FB6E
 	ldr r0, off_813FBB4 // =reqBBS_requestInfo_textOffsets 
 	ldr r1, off_813FDA4 // =eReqBBSGui
@@ -3029,7 +3029,7 @@ off_813FDA4: .word eReqBBSGui
 	thumb_local_start
 reqBBS_813FDA8:
 	push {r5,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	// initRefs
 	ldr r0, off_813FDC8 // =byte_813FDCC 
@@ -3862,7 +3862,7 @@ reqBBS_8140588:
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_81405A0: .word byte_813F22C
@@ -3878,7 +3878,7 @@ reqBBS_81405A4:
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_81405BC: .word byte_813F2AC
@@ -4020,7 +4020,7 @@ reqBBS_animateCursor:
 	add r0, r0, r2
 	ldr r1, dword_81406DC // =0x6017f80 
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldrh r1, [r5,#0x20]
 	mov r0, #3
 	mov r3, #0x10
@@ -4197,7 +4197,7 @@ dword_81407D4: .word 0xD
 reqBBS_81407D8:
 	push {r4-r7,lr}
 	movflag EVENT_173A
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8140814
 	ldr r0, off_81409B4 // =eReqBBSGui
 	ldr r1, dword_8140820 // =0xf 
@@ -4362,14 +4362,14 @@ reqBBS_81408F0:
 	bne loc_814095E
 	// flag 5 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
 	movflag EVENT_173A
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8140962
 	bl reqBBS_81408C8
 	bl reqBBS_8140884
 	tst r0, r0
 	bne loc_8140966
 	movflag EVENT_PET_NAVI_ACTIVE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_814095A
 	bl GetCurPETNavi // () -> u8
 	cmp r0, #0

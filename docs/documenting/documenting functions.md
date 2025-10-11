@@ -11,6 +11,7 @@ Valid data types include:
 - Pointers can be marked with `*` as in `* i32`. 
     - You can document whether it's a mutable pointer as in `*mut i32` or constant pointer as in `*const i32`. Not including `const` or `mut` would be taken as unsure.
     - If the pointer is generic, use `* ()` 
+    - If there is indication the pointer may be null, use `* nullable T`
 - For unknowns, use ?. So i8? i32?, etc. If nothing is known, you can use just ?. 
 - Names of structs as found in the filenames in `include/structs/` and `include/rom_structs/`,
 - Names of enums as found in the filenames in `constants/enums/`,

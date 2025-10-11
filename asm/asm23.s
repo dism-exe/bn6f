@@ -966,7 +966,7 @@ sub_8089A60:
 	mov r1, #0
 	strb r1, [r0,#oGameState_Unk_15]
 	movflag EVENT_28
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8089ABA
 	bl GetSoulWeaponsMapIndex
 	cmp r0, #6
@@ -976,7 +976,7 @@ sub_8089A60:
 	add r0, #0xff
 	bl PlaySoundEffect
 	bl playCertainMapMusicBasedOnEventByte_8036e44
-	bl PlayMapMusic
+	bl PlayMapMusic // () -> ()
 loc_8089ABA:
 	mov r0, #0x1e
 	bl sub_8089CB0

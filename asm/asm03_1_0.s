@@ -107,59 +107,75 @@ byte_8033939: .byte 0x5, 0x5
 byte_803393B: .byte 0x5, 0x5, 0x5
 dword_803393E: .word 0x5050505
 byte_8033942: .byte 0x5, 0x5, 0x5, 0x0, 0x0, 0x0
+
 	thumb_func_start sub_8033948
 sub_8033948:
 	push {r4-r7,lr}
-	ldr r5, off_8033A78 // =unk_2011E30
+
+	ldr r5, off_8033A78 // =eS2011E30
 	// memBlock
 	mov r0, r5
 	// size
 	mov r1, #0x10
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r0, [r7,#oGameState_MapGroup]
 	cmp r0, #0x80
 	bge loc_8033964
 	mov r7, #1
-	strb r7, [r5,#0x4] // (byte_2011E34 - 0x2011e30)
+	strb r7, [r5,#0x4]
 	b loc_8033972
 loc_8033964:
 	bl GetCurPETNavi // () -> u8
 	bl sub_80010D4
-	strh r0, [r5,#0x8] // (word_2011E38 - 0x2011e30)
+	strh r0, [r5,#oS2011E30_Unk_08]
+
+  // trigger onUpdate_8033B1E via dispatch_80339CC if internet
+  // trigger onUpdate_8033A96 via dispatch_80339CC if real world
 	mov r0, #1
-	strb r0, [r5,#0x4] // (byte_2011E34 - 0x2011e30)
+	strb r0, [r5,#oS2011E30_Idx_04]
+
 loc_8033972:
-	bl sub_8033978
+	bl gfxTransfer_8033978 // () -> ()
 	pop {r4-r7,pc}
 	thumb_func_end sub_8033948
 
-	thumb_func_start sub_8033978
-sub_8033978:
+	thumb_func_start gfxTransfer_8033978
+gfxTransfer_8033978: // () -> ()
 	push {r4-r7,lr}
-	ldr r5, off_8033A78 // =unk_2011E30
+
+  // Doesn't do anything with this
+	ldr r5, off_8033A78 // =eS2011E30
+
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r0, [r7,#oGameState_MapGroup]
-	cmp r0, #0x80
+
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_8033998
+
 	ldr r0, off_80339B0 // =dword_86C0D20
 	ldr r1, dword_80339B4 // =0x6017200
 	ldr r2, off_80339B8 // =0x100
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
+
 	mov r0, #0
-	bl sub_8033DA0
+	bl gfxTransfer_8033DA0 // (a0: u32?) -> ()
+
 	pop {r4-r7,pc}
+
 loc_8033998:
+
 	ldr r0, off_80339C0 // =byte_86C1F80 
 	ldr r1, dword_80339B4 // =0x6017200 
 	ldr r2, off_80339C4 // =0x340 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r0, off_80339C8 // =byte_86C1F20 
 	ldr r1, off_80339BC // =byte_30016D0 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_80339B0: .word dword_86C0D20
@@ -169,95 +185,112 @@ off_80339BC: .word byte_30016D0
 off_80339C0: .word byte_86C1F80
 off_80339C4: .word 0x340
 off_80339C8: .word byte_86C1F20
-	thumb_func_end sub_8033978
+	thumb_func_end gfxTransfer_8033978
 
-	thumb_func_start sub_80339CC
-sub_80339CC:
+	thumb_func_start dispatch_80339CC
+dispatch_80339CC: // () -> ()
 	push {r4-r7,lr}
+
 	mov r0, #1
 	bl TestPETMenuDataFlag
 	bne locret_8033A16
-	ldr r5, off_8033A78 // =unk_2011E30
+
+	ldr r5, off_8033A78 // =eS2011E30
+
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
+
 	ldrb r1, [r0,#oGameState_MapGroup]
-	cmp r1, #0x80
-	bge loc_8033A0A
-	ldrb r4, [r5,#0x4] // (byte_2011E34 - 0x2011e30)
+	cmp r1, #INTERNET_MAP_GROUP_START
+	bge internet_8033A0A
+
+	ldrb r4, [r5,#oS2011E30_Idx_04]
 	cmp r4, #0
 	beq loc_8033A00
+
 	lsl r4, r4, #3
+
+  // branch if EVENT_COPYBOT_ACTIVE
 	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_80339FE
+
+  // branch if EVENT_PET_NAVI_ACTIVE
 	movflag EVENT_PET_NAVI_ACTIVE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8033A00
+
 loc_80339FE:
 	sub r4, #4
+
 loc_8033A00:
-	ldr r0, off_8033A18 // =off_8033A1C
+
+	ldr r0, off_8033A18 // =JumpTable8033A1C
 	ldr r0, [r0,r4]
 	mov lr, pc
 	bx r0
+
 	b locret_8033A16
-loc_8033A0A:
-	ldr r0, off_8033A48 // =off_8033A4C
-	ldrb r1, [r5,#0x4] // (byte_2011E34 - 0x2011e30)
+
+internet_8033A0A:
+	ldr r0, off_8033A48 // =JumpTableInternet8033A4C
+	ldrb r1, [r5,#oS2011E30_Idx_04]
 	lsl r1, r1, #3
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
+
 locret_8033A16:
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8033A18: .word off_8033A1C
-off_8033A1C: .word sub_8033A7C+1
-	.word sub_8033A80+1
-	.word sub_8033A96+1
-	.word sub_8033AB0+1
-	.word sub_8033AC4+1
-	.word sub_8033ADC+1
-	.word sub_8033AF0+1
-	.word sub_8033A96+1
-	.word sub_8033A96+1
-	.word sub_8033A80+1
-	.word sub_8033A80+1
-off_8033A48: .word off_8033A4C
-off_8033A4C: .word sub_8033B08+1
-	.word sub_8033B0C+1
-	.word sub_8033B1E+1
-	.word sub_8033B30+1
-	.word sub_8033B46+1
-	.word sub_8033B5C+1
-	.word sub_8033B6E+1
-	.word sub_8033B1E+1
-	.word sub_8033B1E+1
-	.word sub_8033B0C+1
-	.word sub_8033B0C+1
-off_8033A78: .word unk_2011E30
-	thumb_func_end sub_80339CC
+off_8033A18: .word JumpTable8033A1C
+JumpTable8033A1C: .word noop_8033A7C+1 // (self: *const S2011E30 $r5) -> ()
+	.word sub_8033A80+1 // (self: * S2011E30 $r5) -> ()
+	.word onUpdate_8033A96+1 // (self: * S2011E30 $r5) -> ()
+	.word sub_8033AB0+1 // (self: * S2011E30 $r5) -> ()
+	.word sub_8033AC4+1 // (self: * S2011E30 $r5) -> ()
+	.word sub_8033ADC+1 // (self: * S2011E30 $r5) -> ()
+	.word sub_8033AF0+1 // (self: * S2011E30 $r5) -> ()
+	.word onUpdate_8033A96+1 // (self: * S2011E30 $r5) -> ()
+	.word onUpdate_8033A96+1 // (self: * S2011E30 $r5) -> ()
+	.word sub_8033A80+1 // (self: * S2011E30 $r5) -> ()
+	.word sub_8033A80+1 // (self: * S2011E30 $r5) -> ()
+off_8033A48: .word JumpTableInternet8033A4C
+JumpTableInternet8033A4C: .word noop_8033B08+1 // (self: * S2011E30 $r5) -> ()
+	.word sub_8033B0C+1 // (self: * S2011E30 $r5) -> ()
+	.word onUpdate_8033B1E+1 // (self: * S2011E30 $r5) -> ()
+	.word sub_8033B30+1 // (self: * S2011E30 $r5) -> ()
+	.word sub_8033B46+1 // (self: * S2011E30 $r5) -> ()
+	.word sub_8033B5C+1 // (self: * S2011E30 $r5) -> ()
+	.word sub_8033B6E+1 // (self: * S2011E30 $r5) -> ()
+	.word onUpdate_8033B1E+1 // (self: * S2011E30 $r5) -> ()
+	.word onUpdate_8033B1E+1 // (self: * S2011E30 $r5) -> ()
+	.word sub_8033B0C+1 // (self: * S2011E30 $r5) -> ()
+	.word sub_8033B0C+1 // (self: * S2011E30 $r5) -> ()
+off_8033A78: .word eS2011E30
+	thumb_func_end dispatch_80339CC
 
+/// Might be put for null checks, do not do anything on index 0
 	thumb_local_start
-sub_8033A7C:
+noop_8033A7C: // (self: *const S2011E30 $r5) -> ()
 	push {lr}
 	pop {pc}
-	thumb_func_end sub_8033A7C
+	thumb_func_end noop_8033A7C
 
 	thumb_local_start
-sub_8033A80:
+sub_8033A80: // (self: * S2011E30 $r5) -> ()
 	push {lr}
 	mov r0, #0
 	bl sub_8033B80
 	mov r0, #0
 	bl sub_8033F80
 	mov r0, #0
-	bl sub_8033DA0
+	bl gfxTransfer_8033DA0 // (a0: u32?) -> ()
 	pop {pc}
 	thumb_func_end sub_8033A80
 
 	thumb_local_start
-sub_8033A96:
+onUpdate_8033A96: // (self: * S2011E30 $r5) -> ()
 	push {lr}
 	mov r0, #0
 	bl sub_8033B80
@@ -265,12 +298,12 @@ sub_8033A96:
 	bl sub_8033F80
 	bl sub_8033BE8
 	mov r0, #0
-	bl sub_8033DA0
+	bl gfxTransfer_8033DA0 // (a0: u32?) -> ()
 	pop {pc}
-	thumb_func_end sub_8033A96
+	thumb_func_end onUpdate_8033A96
 
 	thumb_local_start
-sub_8033AB0:
+sub_8033AB0: // (self: * S2011E30 $r5) -> ()
 	push {lr}
 	mov r0, #0
 	bl sub_8033B80
@@ -281,7 +314,7 @@ sub_8033AB0:
 	thumb_func_end sub_8033AB0
 
 	thumb_local_start
-sub_8033AC4:
+sub_8033AC4: // (self: * S2011E30 $r5) -> ()
 	push {lr}
 	mov r0, #0
 	bl sub_8033B80
@@ -293,7 +326,7 @@ sub_8033AC4:
 	thumb_func_end sub_8033AC4
 
 	thumb_local_start
-sub_8033ADC:
+sub_8033ADC: // (self: * S2011E30 $r5) -> ()
 	push {lr}
 	mov r0, #1
 	bl sub_8033B80
@@ -304,7 +337,7 @@ sub_8033ADC:
 	thumb_func_end sub_8033ADC
 
 	thumb_local_start
-sub_8033AF0:
+sub_8033AF0: // (self: * S2011E30 $r5) -> ()
 	push {lr}
 	mov r0, #1
 	bl sub_8033B80
@@ -316,13 +349,13 @@ sub_8033AF0:
 	thumb_func_end sub_8033AF0
 
 	thumb_local_start
-sub_8033B08:
+noop_8033B08: // (self: * S2011E30 $r5) -> ()
 	push {lr}
 	pop {pc}
-	thumb_func_end sub_8033B08
+	thumb_func_end noop_8033B08
 
 	thumb_local_start
-sub_8033B0C:
+sub_8033B0C: // (self: * S2011E30 $r5) -> ()
 	push {lr}
 	bl sub_8033E0C
 	mov r0, #1
@@ -332,17 +365,17 @@ sub_8033B0C:
 	thumb_func_end sub_8033B0C
 
 	thumb_local_start
-sub_8033B1E:
+onUpdate_8033B1E: // (self: * S2011E30 $r5) -> ()
 	push {lr}
 	bl sub_8033E0C
 	mov r0, #1
 	bl sub_8033F80
 	bl sub_8033EE8
 	pop {pc}
-	thumb_func_end sub_8033B1E
+	thumb_func_end onUpdate_8033B1E
 
 	thumb_local_start
-sub_8033B30:
+sub_8033B30: // (self: * S2011E30 $r5) -> ()
 	push {lr}
 	bl sub_8033E0C
 	mov r0, #1
@@ -353,7 +386,7 @@ sub_8033B30:
 	thumb_func_end sub_8033B30
 
 	thumb_local_start
-sub_8033B46:
+sub_8033B46: // (self: * S2011E30 $r5) -> ()
 	push {lr}
 	bl sub_8033E0C
 	mov r0, #1
@@ -364,7 +397,7 @@ sub_8033B46:
 	thumb_func_end sub_8033B46
 
 	thumb_local_start
-sub_8033B5C:
+sub_8033B5C: // (self: * S2011E30 $r5) -> ()
 	push {lr}
 	bl sub_8033E0C
 	mov r0, #1
@@ -374,7 +407,7 @@ sub_8033B5C:
 	thumb_func_end sub_8033B5C
 
 	thumb_local_start
-sub_8033B6E:
+sub_8033B6E: // (self: * S2011E30 $r5) -> ()
 	push {lr}
 	bl sub_8033E0C
 	mov r0, #1
@@ -422,7 +455,7 @@ sub_8033BE8:
 	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8033C02
 	bl notZero_eByte200AD04
 	beq loc_8033C02
@@ -433,7 +466,7 @@ loc_8033C02:
 	ldr r0, [r1,r4]
 	ldr r1, dword_8033C58 // =0x6017380 
 	ldr r2, off_8033C5C // =0x80 
-	bl QueueWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r0, dword_8033C60 // =0x40120006 
 	ldr r1, dword_8033C64 // =0xc79c 
 	mov r2, #1
@@ -470,11 +503,11 @@ sub_8033C68:
 	ldr r0, [r1,r0]
 	ldr r1, dword_8033CD8 // =0x6017400 
 	ldr r2, off_8033CDC // =0x100 
-	bl QueueWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldrb r0, [r5,#6]
 	ldr r1, off_8033CC0 // =byte_8033CC4
 	ldrb r0, [r1,r0]
-	bl sub_8033DA0
+	bl gfxTransfer_8033DA0 // (a0: u32?) -> ()
 	ldrb r0, [r5,#6]
 	add r0, #1
 	cmp r0, #0x12
@@ -525,7 +558,7 @@ sub_8033CF0:
 	ldr r0, [r1,r0]
 	ldr r1, dword_8033D74 // =0x6017400 
 	ldr r2, off_8033D78 // =0x100 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldrb r0, [r5,#6]
 	add r0, #1
 	cmp r0, #0x12
@@ -589,25 +622,31 @@ locret_8033D9E:
 	thumb_func_end sub_8033D88
 
 	thumb_local_start
-sub_8033DA0:
+gfxTransfer_8033DA0: // (a0: u32?) -> ()
 	push {r4-r7,lr}
 	mov r6, r0
+
 	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8033DBC
+
 	bl notZero_eByte200AD04
 	beq loc_8033DBC
+
 	mov r4, #0xc
+
 loc_8033DBC:
+
 	ldr r0, off_8033DD0 // =off_8033DD4
 	lsl r4, r4, #2
 	ldr r0, [r0,r4]
 	add r0, r0, r6
 	ldr r1, off_8033E08 // =byte_30016D0 
 	mov r2, #0x20 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
+
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8033DD0: .word off_8033DD4
@@ -625,13 +664,13 @@ off_8033DD4: .word byte_86C18A0
 	.word byte_86C1A60
 	.word byte_86C1A20
 off_8033E08: .word byte_30016D0
-	thumb_func_end sub_8033DA0
+	thumb_func_end gfxTransfer_8033DA0
 
 	thumb_local_start
 sub_8033E0C:
 	push {r5,lr}
 	movflag EVENT_1732
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8033E6A
 	bl GetCurPETNavi // () -> u8
 	bl sub_80010D4
@@ -736,7 +775,7 @@ dword_8033EE4: .word 0x10288000
 sub_8033EE8:
 	push {r4-r7,lr}
 	movflag EVENT_1731
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8033EFC
 	bl IsCutsceneScriptNonNull // () -> !zf
 	cmp r0, #1
@@ -796,7 +835,7 @@ sub_8033F80:
 	ldr r0, off_8033FA8 // =byte_86C1AA0
 	ldr r1, dword_8033FAC // =0x6017580
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldr r0, off_8033FB0 // =byte_8033FB4
 	lsl r4, r4, #2
 	ldr r0, [r0,r4]
@@ -817,18 +856,23 @@ dword_8033FBC: .word 0xC7AC
 	thumb_func_start doPETEffect_8033fc0
 doPETEffect_8033fc0:
 	push {r5,lr}
-	ldr r5, off_8033FD8 // =unk_2011E30
+	ldr r5, off_8033FD8 // =eS2011E30
+
+  // trigger noop_8033B08 via dispatch_80339CC
 	mov r1, #0
-	strb r1, [r5,#0x7] // (byte_2011E37 - 0x2011e30)
-	strb r0, [r5,#0x4] // (byte_2011E34 - 0x2011e30)
+	strb r1, [r5,#oS2011E30_Unk_07]
+	strb r0, [r5,#oS2011E30_Idx_04]
+
 	cmp r0, #3
 	bne locret_8033FD4
+
 	mov r0, #0x9b
 	bl PlaySoundEffect
+
 locret_8033FD4:
 	pop {r5,pc}
 	.balign 4, 0
-off_8033FD8: .word unk_2011E30
+off_8033FD8: .word eS2011E30
 	thumb_func_end doPETEffect_8033fc0
 
 	thumb_func_start sub_8033FDC
@@ -858,7 +902,7 @@ sub_8033FDC:
 	movflag EVENT_225
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_224
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_803405A
 	movflag EVENT_12A
 	mov r2, #0xa
@@ -904,7 +948,7 @@ loc_8034064:
 	mov r2, #6
 	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	movflag EVENT_1008
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_80340F4
 	movflag EVENT_101C
 	bl SetEventFlagFromImmediate
@@ -930,7 +974,7 @@ navi_80340F6:
 	bl loadGameProgressFromGameProgressBuffer_8035354
 loc_8034108:
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_803412A
 	bl writeCurPETNaviToS2001c04_Unk07_80010c6
 	mov r0, #0
@@ -943,7 +987,7 @@ loc_803412A:
 	bl reloadCurNaviStatBoosts_813c3ac
 loc_803412E:
 	movflag EVENT_172A
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8034140
 	movflag EVENT_PET_NAVI_ACTIVE
 	bl SetEventFlagFromImmediate
@@ -1030,11 +1074,11 @@ sub_80341F8:
 	mov r0, #4
 	strb r0, [r5]
 	ldr r0, off_8034214 // =0x40
-	bl SetRenderInfoLCDControl
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	mov r0, #SONG_TRANSMISSION
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8034214: .word 0x40
@@ -1066,7 +1110,7 @@ sub_803423C:
 	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]
 	mov r1, #4
 	strb r1, [r0]
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFillGFX30025c0
 	bl sub_8006910
 	mov r7, r10
@@ -1085,11 +1129,11 @@ sub_8034268:
 	push {lr}
 	mov r0, #9
 	bl sub_80015FC
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFillGFX30025c0
 	bl decompJackInAnimationGfx_8034314 // () -> void
 	ldr r0, dword_803429C // =0x1341
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	ldr r0, off_80342A0 // =0x50
 	strh r0, [r5,#4]
 	mov r0, #0
@@ -1162,7 +1206,7 @@ sub_80342EC:
 	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]
 	mov r1, #4
 	strb r1, [r0]
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFillGFX30025c0
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_GameStatePtr]
@@ -1243,7 +1287,7 @@ loc_80343D0:
 	ldr r0, [r7,#4]
 	ldr r1, off_8034458 // =palette_3001960 
 	mov r2, #0x20 
-	bl QueueWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	// j
 	mov r0, #0
 	// i
@@ -1497,7 +1541,7 @@ InternetLoadBGAnimJumptable: .word RobotControlComp_LoadBGAnim+1
 	.word PavilionComp_LoadBGAnim+1
 	.word NULL
 	.word NULL
-	.word HomePages_LoadBGAnim+1
+	.word HomePages_LoadBGAnim+1 // () -> ()
 	.word NULL
 	.word NULL
 	.word NULL
@@ -1603,8 +1647,8 @@ byte_8034AFC: .byte 0x4, 0x0, 0x0, 0x0, 0x60, 0x1B, 0x0, 0x3, 0xC, 0x8, 0x1, 0xF
 	thumb_func_end sub_80343B0
 
 	thumb_func_start map_8034B4C
-	// (int mapGroup, int mapNumber) -> int
-map_8034B4C: // JP 0x8035b08
+// JP 0x8035b08
+map_8034B4C: // (map_group: u8, map_number: u8) -> ()
 	push {r4-r7,lr}
 	mov r2, r8
 	mov r3, r9
@@ -1641,7 +1685,7 @@ loc_8034B8A:
 	ldr r0, [r0,r3]
 	ldr r1, [r1,r3]
 	bl StoreMapScriptsThenRunOnInitMapScript
-	bl PlayMapMusic
+	bl PlayMapMusic // () -> ()
 	pop {r2-r4}
 	mov r8, r2
 	mov r9, r3
@@ -1717,10 +1761,10 @@ sub_8034C36:
 	bl IsScreenFadeActive // () -> zf
 	beq loc_8034C6A
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8034C6A
 	movflag EVENT_IN_SLIPRUN_STATE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8034C6A
 	bl sub_809E462
 	bne loc_8034C6A
@@ -1742,7 +1786,7 @@ sub_8034C6E:
 	bl IsScreenFadeActive // () -> zf
 	beq loc_8034C98
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8034C98
 	bl sub_809E462
 	bne loc_8034C98
@@ -1762,7 +1806,7 @@ loc_8034C98:
 IsNotSlipRunningAndNotInCutscene:
 	push {r4-r7,lr}
 	movflag EVENT_IN_SLIPRUN_STATE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne .returnFalse
 	bl IsCutsceneScriptNonNull // () -> !zf
 	bne .returnFalse
@@ -1785,7 +1829,7 @@ sub_8034CB6:
 	tst r3, r2
 	beq loc_8034D52
 	movflag EVENT_1727
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8034D52
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -1840,7 +1884,7 @@ loc_8034CF6:
 	lsl r4, r4, #8
 	orr r1, r4
 	ldr r0, off_8034D60 // =byte_8098824
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034D44:
@@ -1849,7 +1893,7 @@ loc_8034D44:
 	b loc_8034D52
 loc_8034D4C:
 	ldr r0, off_8034D64 // =CutsceneScript_80988E4
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 loc_8034D52:
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -1875,10 +1919,10 @@ sub_8034D7C:
 	tst r3, r2
 	beq loc_8034DA4
 	movflag EVENT_L_MESSAGE_ACTIVE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8034DA4
 	ldr r0, off_8034DAC // =CutsceneScript_80991F4
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034DA4:
@@ -1899,7 +1943,7 @@ sub_8034DB0:
 	cmp r0, #0
 	beq loc_8034DCA
 	ldr r0, off_8034E30 // =byte_809A8A8
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034DCA:
@@ -1915,7 +1959,7 @@ loc_8034DCA:
 	bl sub_8034E88
 	bne loc_8034DEE
 	ldr r0, off_8034E2C // =byte_8099EA0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034DEE:
@@ -1926,7 +1970,7 @@ loc_8034DEE:
 	bl sub_8034E88
 	bne loc_8034E08
 	ldr r0, off_8034E34 // =byte_809AA34
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034E08:
@@ -1937,7 +1981,7 @@ loc_8034E08:
 	bl sub_8034E88
 	bne loc_8034E22
 	ldr r0, off_8034E38 // =byte_809CAD8
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034E22:
@@ -1997,7 +2041,7 @@ sub_8034E88:
 	cmp r6, #6
 	bne loc_8034EAC
 	movflag EVENT_E00
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8034EAC
 	mov r1, #1
 	tst r1, r1
@@ -2017,7 +2061,7 @@ loc_8034EB6:
 	cmp r6, #8
 	bne loc_8034ECE
 	movflag EVENT_84
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8034ED2
 loc_8034ECE:
 	mov r1, #0
@@ -2091,7 +2135,7 @@ HandleCoordinateInteractionCutscene:
 	cmp r1, #0xff
 	beq .done
 	ldr r0, off_8034F64 // =byte_8098358
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 .done
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -2130,7 +2174,7 @@ sub_8034F68:
 	beq locret_8034FA8
 	ldr r0, off_8034FB0 // =byte_8098384
 	ldr r1, [r3]
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 locret_8034FA8:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -2154,18 +2198,18 @@ sub_8034FB8:
 	beq loc_8035004
 loc_8034FCE:
 	movflag EVENT_1703
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8035004
 	bl IsCutsceneScriptNonNull // () -> !zf
 	bne loc_8035004
 	ldr r4, off_8035020 // =byte_809895C
 	movflag EVENT_127
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8034FEC
 	ldr r4, off_8035024 // =byte_80989C1
 loc_8034FEC:
 	mov r0, r4
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	movflag EVENT_1703
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_127
@@ -2221,10 +2265,10 @@ sub_8035054:
 	cmp r0, #0xff
 	beq loc_803507A
 	movflag EVENT_171A
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_803507A
 	ldr r0, off_8035080 // =byte_809AE68
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_803507A:
@@ -2243,7 +2287,7 @@ sub_8035084:
 	beq loc_803509E
 	mov r1, r0
 	ldr r0, off_80350A4 // =byte_8098BB8
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_803509E:
@@ -2276,17 +2320,17 @@ npc_80350BC:
 	bl IsNotSlipRunningAndNotInCutscene
 	beq loc_8035126
 	movflag EVENT_1708
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_80350E2
 	ldr r0, off_8035130 // =byte_8099E04
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	mov r0, #0
 	pop {r4,pc}
 loc_80350E2:
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_S2001c04_Ptr]
 	movflag EVENT_170A
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8035102
 	ldr r0, [r4,#0x24]
 	tst r0, r0
@@ -2297,7 +2341,7 @@ loc_80350E2:
 	b loc_803511C
 loc_8035102:
 	movflag EVENT_170B
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8035126
 	ldr r0, [r4,#0x28]
 	tst r0, r0
@@ -2307,7 +2351,7 @@ loc_8035102:
 	mov r1, #0
 loc_803511C:
 	ldr r0, off_803512C // =byte_8099DC0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	mov r0, #0
 	pop {r4,pc}
 loc_8035126:
@@ -2322,7 +2366,7 @@ off_8035130: .word byte_8099E04
 npc_spawnOverworldNPCObjectsForMap:
 	push {r4-r7,lr}
 	movflag EVENT_1721
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne .flagSet
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
@@ -2491,7 +2535,7 @@ ghostNaviCheck_8035274:
 	bl IsNotSlipRunningAndNotInCutscene
 	beq locret_80352D4
 	movflag EVENT_1700
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne locret_80352D4
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -2524,7 +2568,7 @@ loc_80352A6:
 	bne loc_80352CE
 	ldr r0, off_8035328 // =byte_80990B8
 	ldr r1, [r5]
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	b locret_80352D4
 loc_80352CE:
 	add r4, #6
@@ -2642,7 +2686,7 @@ word_80353B8: .hword 0x90, 0x29
 sub_80353DA:
 	push {r4-r7,lr}
 	movflag EVENT_28
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_80353EC
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -2678,7 +2722,7 @@ off_8035418: .word byte_8034A6C
 sub_8035424:
 	push {r4-r7,lr}
 	movflag EVENT_28
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_8035440
 	bl GetBattleEffects // () -> int
 	mov r1, #8
@@ -2720,31 +2764,31 @@ testSetClearFlags_803553c:
 	push {r4-r7,lr}
 	bl clearSetFlags_80355a8
 	movflag EVENT_67B
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8035554
 	movflag EVENT_682
 	bl SetEventFlagFromImmediate
 loc_8035554:
 	movflag EVENT_856
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8035566
 	movflag EVENT_85F
 	bl SetEventFlagFromImmediate
 loc_8035566:
 	movflag EVENT_A44
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8035578
 	movflag EVENT_ABA
 	bl SetEventFlagFromImmediate
 loc_8035578:
 	movflag EVENT_C6D
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_803558A
 	movflag EVENT_CDC
 	bl SetEventFlagFromImmediate
 loc_803558A:
 	movflag EVENT_CA7
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_803559C
 	movflag EVENT_CE0
 	bl SetEventFlagFromImmediate

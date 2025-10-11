@@ -1151,11 +1151,11 @@ sub_813BF1C:
 	push {r4-r7,lr}
 	mov r6, #1
 	movflag EVENT_1720
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_813BF36
 	b loc_813BF38
 	movflag EVENT_1723
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_813BF38
 loc_813BF36:
 	mov r6, #0
@@ -1672,7 +1672,7 @@ reloadCurNaviStatBoosts_813c3ac:
 .isMegaMan
 	bl applyNaviStatsMaybe_813C458
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq .loc_813C3CC
     // if (!EVENT_163)
 	bl sub_8121154
@@ -1685,7 +1685,7 @@ reloadCurNaviStatBoosts_813c3ac:
 	bge .IfInternetMap
     // if (real world map)
 	movflag EVENT_PET_NAVI_ACTIVE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq .ret
     // if (EVENT_PET_NAVI_ACTIVE)
 	mov r0, #0

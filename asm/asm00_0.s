@@ -33,7 +33,7 @@ PlaySoundEffect:
 	thumb_func_end PlaySoundEffect
 
 	thumb_func_start PlayMusic
-PlayMusic: // (int song) -> void
+PlayMusic: // (song: u8) -> ()
 	push {r1-r7,lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -812,27 +812,27 @@ CopyJumpTable8000AA8: .word CopyBytes+1
 	thumb_func_end ProcessGFXTransferQueue
 
 	thumb_local_start
-QueueUnk00GFXTransfer:
+QueueUnk00GFXTransfer: // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	mov r3, #0
 	b loc_8000ACA
 
 	thumb_local_start
-QueueByteAlignedGFXTransfer:
+QueueByteAlignedGFXTransfer: // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	mov r3, #1
 	b loc_8000ACA
 
 	thumb_local_start
-QueueHwordAlignedGFXTransfer:
+QueueHwordAlignedGFXTransfer: // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	mov r3, #2
 	b loc_8000ACA
 
 	thumb_func_start QueueWordAlignedGFXTransfer
-QueueWordAlignedGFXTransfer: // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+QueueWordAlignedGFXTransfer: // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	mov r3, #3
 	b loc_8000ACA
 
 	thumb_func_start QueueEightWordAlignedGFXTransfer
-QueueEightWordAlignedGFXTransfer: // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+QueueEightWordAlignedGFXTransfer: // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	mov r3, #4
 
 // r0 - queued source
@@ -840,7 +840,7 @@ QueueEightWordAlignedGFXTransfer: // (void *queuedSource, void *queuedDest, int 
 // r2 - queued size
 // r3 - copy type (preset)
 // preserves r0-r2
-loc_8000ACA: // (void *queuedSource, void *queuedDest, int queuedSize, unk copyType) -> void
+loc_8000ACA: // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32, copy_type: int) -> ()
 	push {r4-r7}
 	mov r7, r3
 	ldr r3, off_8000B10 // =dword_200AC1C 
@@ -894,7 +894,7 @@ loc_8000B1C:
 	beq locret_8000B2E
 	ldr r1, [r7,#4]
 	ldr r2, [r7,#8]
-	bl QueueUnk00GFXTransfer
+	bl QueueUnk00GFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	add r7, #0xc
 	b loc_8000B1C
 locret_8000B2E:
@@ -931,7 +931,7 @@ isCompressedRef_8000B46:
 	// dest: a1[2]
 	ldr r1, [r7,#8]
 	mov r4, r1
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	// dest
 	ldr r1, [r7,#4]
 	tst r1, r1
@@ -996,7 +996,7 @@ loc_8000BA4:
 	// dest
 	ldr r1, [r7,#8]
 	mov r4, r1
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	ldr r1, [r7,#4]
 	tst r1, r1
 	beq loc_8000BE6
@@ -1016,16 +1016,16 @@ loc_8000BBC:
 	bne loc_8000BDC
 	b loc_8000BE2
 loc_8000BD0:
-	bl QueueByteAlignedGFXTransfer
+	bl QueueByteAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	b loc_8000BE6
 loc_8000BD6:
-	bl QueueHwordAlignedGFXTransfer
+	bl QueueHwordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	b loc_8000BE6
 loc_8000BDC:
-	bl QueueWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	b loc_8000BE6
 loc_8000BE2:
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 loc_8000BE6:
 	add r7, #0xc
 	b loc_8000B92
@@ -1506,7 +1506,7 @@ GetTitleScreenIconCount: // () -> (u8, u16)
 	mov r7, #0
 
 	movflag EVENT_E00
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8000EFA
 
 	add r4, #1
@@ -1570,7 +1570,7 @@ loc_8000F3A:
 
 loc_8000F4A:
 	movflag EVENT_370
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8000F5A
 
 	add r4, #1
@@ -1579,7 +1579,7 @@ loc_8000F4A:
 
 loc_8000F5A:
 	movflag EVENT_340
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8000F6C
 
 	add r4, #1
@@ -1634,7 +1634,7 @@ sub_8000FAC:
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	// flag 3 @ 0x2001C88[0x17<<5 + 0x1] (=2001F69)
 	movflag EVENT_170C
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8000FCE
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_LastMapGroup]
@@ -2620,7 +2620,7 @@ byte_8001618: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x8, 0x3C, 0x0, 0x0,
 	thumb_func_end sub_80015FC
 
 	thumb_func_start map_8001708
-map_8001708:
+map_8001708: // (map_group: u8, map_number: u8) -> ()
 	push {lr}
 	cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_8001712
@@ -2681,7 +2681,7 @@ off_8001774: .word ColorSpecialEffectsSelection
 	thumb_func_end render_800172C
 
 	thumb_func_start SetRenderInfoLCDControl
-SetRenderInfoLCDControl:
+SetRenderInfoLCDControl: // (a_00: u16) -> ()
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	strh r0, [r1,#oRenderInfo_Unk_00]
@@ -2689,7 +2689,7 @@ SetRenderInfoLCDControl:
 	thumb_func_end SetRenderInfoLCDControl
 
 	thumb_func_start GetRenderInfoLCDControl
-GetRenderInfoLCDControl:
+GetRenderInfoLCDControl: // () -> u16
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	ldrh r0, [r1,#oRenderInfo_Unk_00]
@@ -2697,7 +2697,7 @@ GetRenderInfoLCDControl:
 	thumb_func_end GetRenderInfoLCDControl
 
 	thumb_func_start renderInfo_8001788
-renderInfo_8001788:
+renderInfo_8001788: // () -> ()
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_RenderInfoPtr]
 	mov r1, #0
@@ -2713,7 +2713,7 @@ renderInfo_8001788:
 	thumb_func_end renderInfo_8001788
 
 	thumb_func_start renderInfo_80017A0
-renderInfo_80017A0:
+renderInfo_80017A0: // () -> ()
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_RenderInfoPtr]
 	mov r1, #0
@@ -2722,7 +2722,7 @@ renderInfo_80017A0:
 	thumb_func_end renderInfo_80017A0
 
 	thumb_func_start zeroFillVRAM
-zeroFillVRAM:
+zeroFillVRAM: // () -> ()
 	push {lr}
 	ldr r0, dword_80017D0 // =0x6000000
 	mov r1, #0x40
@@ -3448,7 +3448,7 @@ sub_8001C44:
 	ldr r0, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
 	ldr r1, [r7,#oGFXAnimState_Param0]
 	ldr r2, [r7,#oGFXAnimState_Param1]
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {pc}
 	thumb_func_end sub_8001C44
 
@@ -3551,7 +3551,7 @@ loc_8001CA6:
 	// size
 	ldrb r2, [r7,#oGFXAnimState_Param2]
 	lsl r2, r2, #5
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r4,r7,pc}
 	.balign 4, 0
 off_8001CE4: .word off_8001AB8
@@ -3625,7 +3625,7 @@ loc_8001D0E:
 	// size
 	ldrb r2, [r7,#oGFXAnimState_Param2]
 	lsl r2, r2, #6
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {r4,r7,pc}
 	.balign 4, 0
 off_8001D4C: .word off_8001AB8

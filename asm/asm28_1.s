@@ -715,7 +715,7 @@ sub_809FE5E:
 sub_809FE7A:
 	push {r4-r7,lr}
 	movflag EVENT_1740
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_809FE8E
 	ldr r3, off_809FE9C // =byte_2000210 
 	ldrb r1, [r3,#0x4]

@@ -13,7 +13,7 @@ unsigned int JudgeTreeComp_EnterMapGroup()
 	initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
 	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
-	camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
+	camera_init_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
 	decompAndCopyMapTiles_8030472();
 	initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(off_806909C[*(v0 + 5)]);
@@ -101,7 +101,7 @@ unsigned int MrWeatherComp_EnterMapGroup()
 	initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
 	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
-	camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
+	camera_init_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
 	decompAndCopyMapTiles_8030472();
 	initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(off_806A04C[*(v0 + 5)]);
@@ -189,7 +189,7 @@ unsigned int PavilionComp_EnterMapGroup()
 	initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
 	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
-	camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
+	camera_init_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
 	decompAndCopyMapTiles_8030472();
 	initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(off_806AA64[*(v0 + 5)]);
@@ -291,7 +291,7 @@ unsigned int HomePages_EnterMapGroup()
 	initMapTilesState_803037c(*(v0 + 4), *(v0 + 5));
 	decompressCoordEventData_8030aa4(*(v0 + 4), *(v0 + 5));
 	v2 = *(v0 + 5);
-	camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
+	camera_init_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
 	decompAndCopyMapTiles_8030472();
 	initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
 	uncompSprite_8002906(*(&off_806C2A0 + *(v0 + 5)));
@@ -317,7 +317,7 @@ void HomePages_LoadBGAnim()
 	int v3; // r0
 
 	v1 = *(v0 + oToolkit_GameStatePtr);
-	v2 = &off_806C394 + 4 * *(v1 + oGameState_MapNumber);
+	v2 = &JumpTable806C394 + 4 * *(v1 + oGameState_MapNumber);
 	SetBGScrollCallbacks(*v2, v2[1], v2[2]);
 	v3 = GetRenderInfoLCDControl();
 	SetRenderInfoLCDControl(v3 | v2[3]);

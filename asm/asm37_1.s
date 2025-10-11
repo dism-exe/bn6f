@@ -243,7 +243,7 @@ loc_8141A5C:
 	mov r1, #7
 loc_8141A62:
 	ldr r0, off_8141A6C // =byte_808A128 
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	bne loc_8141ABC
 locret_8141A6A:
 	pop {r4-r7,pc}
@@ -317,7 +317,7 @@ loc_8141ACE:
 sub_8141AD2:
 	push {r4-r7,lr}
 	movflag EVENT_701
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8141B00
 	ldrb r0, [r5,#0x11]
 	tst r0, r0
@@ -497,7 +497,7 @@ sub_8141F7C:
 	lsl r1, r1, #2
 	push {r0-r3}
 	movflag EVENT_700
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	pop {r0-r3}
 	bne loc_8141FA4
 	cmp r2, r3
@@ -546,11 +546,11 @@ loc_8141FE4:
 	ldr r0, [r7,r0]
 	bl SpawnObjectsFromList // (void *a1) -> int
 	movflag EVENT_702
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_814201A
 	ldr r0, off_8142048 // =byte_8089DF4 
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	movflag EVENT_702
 	bl ClearEventFlagFromImmediate
 loc_814201A:
@@ -1072,7 +1072,7 @@ sub_8142510:
 	bl sub_814278C
 	mov r6, #1
 	movflag EVENT_740
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_814253E
 	mov r6, #0
 	bl sub_8142734
@@ -1121,7 +1121,7 @@ loc_8142594:
 	mov r0, #0x21 
 	bl sub_8036E86
 	movflag EVENT_28
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_81425B4
 	bl GetSoulWeaponsMapIndex
 	cmp r0, #6
@@ -1135,11 +1135,11 @@ loc_81425B4:
 	ldr r0, [r0,#0x3c]
 	strb r1, [r0,#0x15]
 	movflag EVENT_744
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_81425D4
 	ldr r0, off_8142608 // =byte_8089448 
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 loc_81425D4:
 	movflag EVENT_740
 	bl ClearEventFlagFromImmediate
@@ -1172,7 +1172,7 @@ sub_8142618:
 	bl TestEventFlag // (u16 flag) -> !zf
 	beq loc_814266C
 	movflag EVENT_742
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_814264A
 	mov r3, r10
 	ldr r3, [r3,#0x3c]
@@ -1184,7 +1184,7 @@ sub_8142618:
 	b loc_814267C
 loc_814264A:
 	movflag EVENT_743
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_814265E
 	movflag EVENT_743
 	bl SetEventFlagFromImmediate
@@ -1194,7 +1194,7 @@ loc_814265E:
 	bne loc_814266C
 	ldr r0, off_81426B8 // =byte_8089554 
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 loc_814266C:
 	movflag EVENT_742
 	bl ClearEventFlagFromImmediate
@@ -1202,19 +1202,19 @@ loc_814266C:
 	bl ClearEventFlagFromImmediate
 loc_814267C:
 	movflag EVENT_746
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8142690
 	ldr r0, off_81426BC // =byte_80893CC 
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	beq loc_8142690
 loc_8142690:
 	movflag EVENT_747
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_81426A4
 	ldr r0, off_81426C0 // =dword_8089128 
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	beq loc_81426A4
 loc_81426A4:
 	movflag EVENT_746
@@ -1982,7 +1982,7 @@ sub_8142C94:
 	ldr r0, off_8142CA4 // =dword_8619730 
 	ldr r1, dword_8142CA8 // =0x6006c00 
 	ldr r2, off_8142CAC // =0x420 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8142CA4: .word dword_8619730
@@ -2227,7 +2227,7 @@ sub_8142ECC:
 	lsl r1, r1, #2
 	push {r0-r3}
 	movflag EVENT_960
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	pop {r0-r3}
 	bne loc_8142F00
 	cmp r2, r3
@@ -2344,7 +2344,7 @@ sub_8142FC8:
 	bl sub_8143314
 	bl sub_8143248
 	movflag EVENT_962
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8143010
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
@@ -2362,7 +2362,7 @@ loc_8143008:
 	b loc_8143048
 loc_8143010:
 	movflag EVENT_963
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8143024
 	movflag EVENT_963
 	bl SetEventFlagFromImmediate
@@ -2372,7 +2372,7 @@ loc_8143024:
 	bne loc_8143038
 	ldr r0, off_8143080 // =byte_808C2F0 
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	mov r0, #1
 	bl sub_81433F6
 loc_8143038:
@@ -2388,7 +2388,7 @@ loc_8143048:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 loc_814305E:
 	movflag EVENT_962
 	bl ClearEventFlagFromImmediate
@@ -3172,7 +3172,7 @@ sub_8143978:
 	lsl r1, r1, #2
 	push {r0-r3}
 	movflag EVENT_D30
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	pop {r0-r3}
 	bne loc_81439B6
 	cmp r2, r3
@@ -3220,11 +3220,11 @@ loc_8143A02:
 	bl sub_8143C88
 	bl sub_8143C62
 	movflag EVENT_D36
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8143A2E
 	ldr r0, off_8143A50 // =byte_8093358 
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	bl sub_8143F38
 	movflag EVENT_D36
 	bl ClearEventFlagFromImmediate
@@ -3253,7 +3253,7 @@ sub_8143A54:
 	bl TestEventFlag // (u16 flag) -> !zf
 	bne loc_8143B04
 	movflag EVENT_D34
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8143A86
 	mov r3, r10
 	ldr r3, [r3,#0x3c]
@@ -3265,7 +3265,7 @@ sub_8143A54:
 	b loc_8143AD6
 loc_8143A86:
 	movflag EVENT_D35
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8143A9A
 	movflag EVENT_D35
 	bl SetEventFlagFromImmediate
@@ -3281,12 +3281,12 @@ loc_8143A9A:
 	bne loc_8143ABE
 	ldr r0, off_8143B24 // =byte_8092DE8 
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	b loc_8143AC6
 loc_8143ABE:
 	ldr r0, off_8143B2C // =byte_80933B8 
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 loc_8143AC6:
 	movflag EVENT_D34
 	bl ClearEventFlagFromImmediate
@@ -3301,7 +3301,7 @@ loc_8143AD6:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	mov r1, #0
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	bne loc_8143B04
 loc_8143AF0:
 	bl sub_8143F72
@@ -3309,7 +3309,7 @@ loc_8143AF0:
 	bl GetGroundmanMinigameMapIndex
 	mov r1, r0
 	ldr r0, off_8143B28 // =byte_809326C 
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	bne loc_8143B04
 loc_8143B04:
 	movflag EVENT_D34

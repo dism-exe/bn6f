@@ -13617,7 +13617,7 @@ void __cdecl cleareMemory_802FF2C()
 
 
 // 0x802ff4c
-void __fastcall camera_802FF4C(int x, int y, int a3, int mapGroup)
+void __fastcall camera_init_802FF4C(int x, int y, int a3, int mapGroup)
 {
     Toolkit *tk; // r10
     int v5_x; // ST0C_4

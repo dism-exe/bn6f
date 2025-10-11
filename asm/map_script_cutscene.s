@@ -1042,7 +1042,7 @@ MapScriptCmd_start_cutscene: // 8035E8E
 	mov r6, #1
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 	add r7, #9
 	mov r0, #1
 	pop {pc}
@@ -1192,7 +1192,7 @@ MapScriptCutsceneCmd_load_map_gfx_anims_bg_anim: // 8035F52
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	ldrb r0, [r1,#oGameState_MapGroup]
 	ldrb r1, [r1,#oGameState_MapNumber]
-	bl LoadGFXAnimsForMapGroup
+	bl LoadGFXAnimsForMapGroup // (map_group: u8, map_number: u8) -> ()
 	bl LoadBGAnimForMapGroup
 	add r7, #1
 	mov r0, #1
@@ -2379,12 +2379,12 @@ locret_8036E72:
 	thumb_func_end playCertainMapMusicBasedOnEventByte_8036e44
 
 	thumb_func_start PlayMapMusic
-PlayMapMusic:
+PlayMapMusic: // () -> ()
 	push {r4-r7,lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#oS2001c04_MapMusic]
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end PlayMapMusic
 
@@ -2400,7 +2400,7 @@ sub_8036E86:
 	thumb_func_start StartCutscene
 // r0 - cutscene script to run
 // r1 - parameter
-StartCutscene:
+StartCutscene: // (script: *const (), param: u32) -> ()
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_CutsceneStatePtr]
@@ -3318,7 +3318,7 @@ CutsceneCameraCmd_play_music:
 	push {r1}
 	mov r0, #1
 	bl ReadCutsceneCameraScriptHalfword
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 	pop {r1}
 	mov r0, #1
 	add r1, #3
@@ -3668,7 +3668,7 @@ byte_8037694: .byte 0x0, 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
 CutsceneCmd_end_for_map_reload_maybe_8037c64:
 	push {lr}
 	movflag EVENT_1741
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne .eventActive
 	bl reloadCurNaviStatBoosts_813c3ac
 .eventActive
@@ -3683,7 +3683,7 @@ CutsceneCmd_end_for_map_reload_maybe_8037c64:
 CutsceneCmd_end_for_map_reload_maybe_80376dc:
 	push {lr}
 	movflag EVENT_1741
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne .eventActive
 	bl reloadCurNaviStatBoosts_813c3ac
 .eventActive
@@ -4418,7 +4418,7 @@ DecompressTextArchiveForCutscene: // (CompText *archive) -> TextScriptArchive*
 	lsr r0, r0, #1
 	// dest
 	ldr r1, =eDecompressionBuf2034A00
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	ldr r0, =eDecompressionBuf2034A00
 	add r0, #4
 .uncompressedPtr
@@ -4437,7 +4437,7 @@ DecompressTextArchiveForCutscene2:
 	lsr r0, r0, #1
 
 	ldr r1, =DecompressionBuf2033400
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	ldr r0, =DecompressionBuf2033400
 	add r0, #4
 .uncompressedPtr
@@ -5333,11 +5333,11 @@ MapScriptCutsceneCmd_play_music:
 	cmp r4, #0
 	bge .regularPlayMusic
 	bl playCertainMapMusicBasedOnEventByte_8036e44
-	bl PlayMapMusic
+	bl PlayMapMusic // () -> ()
 	b .done
 .regularPlayMusic
 	mov r0, r4
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 .done
 	add r7, #3
 	mov r0, #1

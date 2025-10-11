@@ -247,7 +247,7 @@ loc_812331A:
 	ldr r0, [r1,r7]
 	// dest
 	ldr r1, [sp,#8]
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 
 	ldr r1, [sp,#8]
 	// src
@@ -297,7 +297,7 @@ sub_8123360: // () -> bool
 	bne loc_8123376
 
 	movflag EVENT_172A
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8123390
 loc_8123376:
 	mov r4, #TRUE
@@ -311,7 +311,7 @@ loc_8123376:
 
 	mov r4, #FALSE
 	movflag EVENT_PET_NAVI_ACTIVE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8123390
 
 	mov r4, #TRUE
@@ -828,7 +828,7 @@ sub_81237E0:
 	strb r0, [r5,#0x14]
 	tst r4, r4
 	beq loc_8123830
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	ldrb r0, [r5,#0x14]
 	mov r1, #0x2d 
@@ -1640,7 +1640,7 @@ jt_8123F70: .word submenu_subchip_init_8123F7C+1 // (struct UnkSubMenu* state_a5
 submenu_subchip_init_8123F7C: // (struct UnkSubMenu* state_a5) -> void
 	push {r4-r7,lr}
 
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
 
@@ -2564,7 +2564,7 @@ sub_812469C:
 	push {r4,lr}
 	strb r0, [r5,#0x10]
 	movflag EVENT_1709
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_81246C2
 	mov r0, #0xc
 	strb r0, [r5,#2]
@@ -2699,7 +2699,7 @@ loc_812477A:
 	bl call_sub_3005EBA
 loc_812478A:
 	movflag EVENT_1709
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_81247A6
 	mov r0, #0x15
 	mov r1, #5
@@ -2904,7 +2904,7 @@ off_8124B50: .word sub_8124B5C+1
 	thumb_local_start
 sub_8124B5C:
 	push {lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
 	mov r0, #0x10
@@ -3744,7 +3744,7 @@ loc_8125248:
 sub_8125254:
 	push {lr}
 	movflag EVENT_1711
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8125276
 	bl chatbox_8040818
 	mov r0, #0x40 
@@ -4597,7 +4597,7 @@ loc_8125958:
 	beq loc_8125978
 	strh r4, [r6]
 	movflag EVENT_1711
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8125974
 	mov r0, #1
 	b loc_8125976
@@ -4683,7 +4683,7 @@ loc_81259FC:
 	add r5, #1
 	strh r4, [r2]
 	movflag EVENT_1711
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8125A1A
 	mov r0, #1
 	b loc_8125A1C
@@ -4795,7 +4795,7 @@ loc_8125ACC:
 	add r5, #1
 	strh r4, [r2]
 	movflag EVENT_1711
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8125AEA
 	mov r0, #1
 	b loc_8125AEC
@@ -4907,7 +4907,7 @@ loc_8125B9C:
 	add r5, #1
 	strh r4, [r2]
 	movflag EVENT_1711
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8125BBA
 	mov r0, #1
 	b loc_8125BBC
@@ -5027,7 +5027,7 @@ loc_8125C72:
 	add r3, r3, r4
 	strh r3, [r2]
 	movflag EVENT_1711
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8125C9E
 	mov r0, #1
 	strb r0, [r2,#2]
@@ -6723,7 +6723,7 @@ off_8126B60: .word sub_8126B6C+1
 	thumb_local_start
 sub_8126B6C:
 	push {r4-r7,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
 	mov r0, #0x1a
@@ -6802,7 +6802,7 @@ sub_8126B6C:
 	cmp r0, #0
 	bne loc_8126C38
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8126C3E
 loc_8126C38:
 	mov r4, #2
@@ -7236,7 +7236,7 @@ loc_8126FC4:
 	strb r0, [r5,#2]
 	mov r6, #0x35 
 	movflag EVENT_PET_COMM_SAVE_DISABLED
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8126FE6
 	mov r6, #0x39 
 loc_8126FE6:
@@ -7489,13 +7489,13 @@ sub_8127264:
 	beq loc_81272BE
 	mov r7, #0
 	movflag EVENT_F2
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8127280
 	mov r1, #1
 	orr r7, r1
 loc_8127280:
 	movflag EVENT_F7
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_812728E
 	mov r1, #2
 	orr r7, r1
@@ -7659,7 +7659,7 @@ byte_81273AC: .byte 0x4C, 0xC2, 0x0, 0x0, 0xDA, 0x1, 0x0, 0x0
 sub_81273B4:
 	push {r4-r7,lr}
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_81273E2
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_Unk200a220_Ptr]
@@ -7690,7 +7690,7 @@ off_81273EC: .word unk_201A600
 sub_81273F0:
 	push {r4-r7,lr}
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_8127414
 	mov r7, r5
 	mov r2, #0xd
@@ -7761,7 +7761,7 @@ sub_812741C:
 	bl notZero_eByte200AD04
 	beq loc_812749A
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_812749A
 	mov r0, #0x51 
 	b loc_81274CE
@@ -7969,7 +7969,7 @@ loc_8127672:
 	cmp r4, #0x19
 	blt loc_812764E
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_81276B6
 loc_8127682:
 	bl sub_81276E4
@@ -8403,7 +8403,7 @@ off_8127A10: .word sub_8127A1C+1
 	thumb_local_start
 sub_8127A1C:
 	push {lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
 	mov r0, #0x10
@@ -9776,7 +9776,7 @@ off_8128744: .word sub_8128750+1
 	thumb_local_start
 sub_8128750:
 	push {lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
 	mov r0, #0x10
@@ -10431,7 +10431,7 @@ sub_8128CD8:
 	bl SetEventFlagFromImmediate
 	movflag EVENT_1AD
 	bl SetEventFlagFromImmediate
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
 	mov r0, #8
@@ -10988,7 +10988,7 @@ CommMenuJumpTable81291FC: .word sub_8129248+1
 	thumb_func_start sub_8129248
 sub_8129248:
 	push {r4-r7,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
 	mov r0, #0x10
@@ -11950,7 +11950,7 @@ loc_81299D0:
 	cmp r0, #1
 	bne loc_81299F6
 	movflag EVENT_F2
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_81299F6
 	mov r0, #5
 	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
@@ -15407,12 +15407,12 @@ sub_812B530:
 	ldr r0, [r1,r0]
 	// dest
 	ldr r1, off_812B568 // =eDecompBuffer2013A00
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	ldr r0, off_812B568 // =eDecompBuffer2013A00
 	add r0, #4
 	ldr r1, dword_812B56C // =0x6014700 
 	ldr r2, off_812B570 // =0x100 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	ldrb r0, [r5,#0x1b]
 	mov r1, #0x10
 	orr r0, r1
@@ -15512,7 +15512,7 @@ sub_812B608:
 	bl GetCurPETNavi // () -> u8
 	strb r0, [r5,#0x1a]
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_812B620
 	mov r0, #0
 	bl SetCurPETNavi
@@ -15613,7 +15613,7 @@ loc_812B6D8:
 	ldrb r0, [r5,#0x1a]
 	bl SetCurPETNavi
 	bl reloadCurNaviStatBoosts_813c3ac
-	bl PlayMapMusic
+	bl PlayMapMusic // () -> ()
 	movflag EVENT_1722_BEAST_LINK_GATE_RELATED
 	bl ClearEventFlagFromImmediate
 	bl sub_803F798

@@ -606,7 +606,7 @@ int object_800372A()
 
 
 // 0x800378c
-int *__fastcall sub_800378C(int a1, int a2, int a3, int a4)
+int *__fastcall ZeroFillObjectInteractionAreas_800378C(int a1, int a2, int a3, int a4)
 {
 	int *result; // r0
 
@@ -1018,7 +1018,7 @@ int FreeOWPlayerObject()
 
 
 // 0x8003ba2
-char *sub_8003BA2()
+char *TryUpdateEachOWPlayerObject_8003BA2()
 {
 	Toolkit *tk; // r10
 	NPC *player; // r5
@@ -1311,7 +1311,7 @@ int FreeOverworldNPCObject()
 // [break] continuously called
 // [disable] - NPCs are no longer loaded, if they were already loaded, they are not interactable. Some are exceptions, like Central Robo Dog.
 // - Scenes don't seem to load, either
-char *npc_800461E()
+char *TryUpdateEachOverworldNPCObject_800461E()
 {
 	Toolkit *tk; // r10
 	char *result; // r0
@@ -1549,7 +1549,7 @@ int FreeOverworldMapObject()
 
 
 // 0x80048d2
-int *sub_80048D2()
+int *TryUpdateEachOverworldMapObject_80048D2()
 {
 	Toolkit *tk; // r10
 	int *result; // r0
@@ -2324,7 +2324,7 @@ int __fastcall EnterMap(int a1)
 
 
 // 0x8005268
-void __usercall gamestate_on_map_update_8005268(GameState *gs@<R5>, int a1@<R0>)
+void __usercall gamestate_OnMapUpdate_8005268(GameState *gs@<R5>, int a1@<R0>)
 {
     int v2; // r0
     int v3; // r1
@@ -2334,12 +2334,12 @@ void __usercall gamestate_on_map_update_8005268(GameState *gs@<R5>, int a1@<R0>)
     sub_8036F24();
     cutscene_8034BB8(v2);
     gs->unk_0E = 0;
-    sub_800378C(0, v3, v4, v5);
-    sub_8003BA2();
-    npc_800461E();
-    sub_80048D2();
+    ZeroFillObjectInteractionAreas_800378C(0, v3, v4, v5);
+    TryUpdateEachOWPlayerObject_8003BA2();
+    TryUpdateEachOverworldNPCObject_800461E();
+    TryUpdateEachOverworldMapObject_80048D2();
     sub_809F942();
-    sub_80339CC();
+    dispatch_80339CC();
     sub_80039AA();
     sub_8003AFA();
     checkOWObjectInteractions_80037f4();
@@ -2367,7 +2367,7 @@ int __fastcall battle_80052D8(int a1)
     int result; // r0
     char v2; // zf
 
-    sub_80339CC();
+    dispatch_80339CC();
     sub_80039AA();
     sub_8003AFA();
     sub_80027B4();
@@ -2440,7 +2440,7 @@ int __fastcall sub_800536E(int a1)
     int v6; // r0
     unsigned __int8 v7; // vf
 
-    sub_80339CC();
+    dispatch_80339CC();
     sub_80039AA();
     sub_8003AFA();
     sub_80027B4();
@@ -2497,7 +2497,7 @@ int __fastcall sub_80053E4(int a1)
     int v10; // r3
     int v11; // r5
 
-    sub_80339CC();
+    dispatch_80339CC();
     sub_80039AA();
     sub_8003AFA();
     sub_80027B4();
@@ -2549,7 +2549,7 @@ int sub_8005462()
         byte_200DF28 = 1;
         sub_811EC50();
     }
-    sub_80339CC();
+    dispatch_80339CC();
     sub_80039AA();
     sub_8003AFA();
     sub_80027B4();
@@ -2636,7 +2636,7 @@ _BYTE *__fastcall sub_800555A(int a1)
     int v7; // r3
     int v8; // r5
 
-    sub_80339CC();
+    dispatch_80339CC();
     sub_80039AA();
     sub_8003AFA();
     sub_80027B4();
@@ -2682,7 +2682,7 @@ _BYTE *__fastcall sub_80055CE(int a1)
     int v7; // r3
     int v8; // r5
 
-    sub_80339CC();
+    dispatch_80339CC();
     sub_80039AA();
     sub_8003AFA();
     sub_80027B4();
@@ -2728,7 +2728,7 @@ _BYTE *__fastcall sub_8005642(int a1)
     int v7; // r3
     int v8; // r5
 
-    sub_80339CC();
+    dispatch_80339CC();
     sub_80039AA();
     sub_8003AFA();
     sub_80027B4();
@@ -2774,7 +2774,7 @@ _BYTE *__fastcall sub_80056B8(int a1)
     int v7; // r3
     int v8; // r5
 
-    sub_80339CC();
+    dispatch_80339CC();
     sub_80039AA();
     sub_8003AFA();
     sub_80027B4();
@@ -2820,7 +2820,7 @@ _BYTE *__fastcall sub_800572C(int a1)
     int v7; // r3
     int v8; // r5
 
-    sub_80339CC();
+    dispatch_80339CC();
     sub_80039AA();
     sub_8003AFA();
     sub_80027B4();
@@ -2866,7 +2866,7 @@ _BYTE *__fastcall sub_80057A0(int a1)
     int v7; // r3
     int v8; // r5
 
-    sub_80339CC();
+    dispatch_80339CC();
     sub_80039AA();
     sub_8003AFA();
     sub_80027B4();
@@ -2910,7 +2910,7 @@ _BYTE *__fastcall sub_8005814(int a1)
     int v5; // r2
     int v6; // r3
 
-    sub_80339CC();
+    dispatch_80339CC();
     sub_80039AA();
     sub_8003AFA();
     sub_80027B4();
@@ -2945,7 +2945,7 @@ _BYTE *__fastcall sub_800585A(int a1)
     int v7; // r3
     int v8; // r5
 
-    sub_80339CC();
+    dispatch_80339CC();
     sub_80039AA();
     sub_8003AFA();
     sub_80027B4();
@@ -5181,7 +5181,7 @@ int sub_8007338()
     int v0; // r1
 
     sub_80303E8();
-    camera_802FF4C(0, 0, 0, 240);
+    camera_init_802FF4C(0, 0, 0, 240);
     return sub_80301B2(0, v0);
 }
 

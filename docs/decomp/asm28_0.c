@@ -364,7 +364,7 @@ int __fastcall sub_809A260(int a1, int a2, int a3)
 {
     doPETEffect_8033fc0(1, a2, a3);
     copyMemory_8001850();
-    sub_8033978();
+    gfxTransfer_8033978();
     sub_8003962();
     zeroFill_8003AB2();
     sub_800399A();
@@ -553,7 +553,7 @@ int sub_809A4EC()
     ClearEventFlagFromImmediate(23, 37);
     doPETEffect_8033fc0(1, v0, v1);
     copyMemory_8001850();
-    sub_8033978();
+    gfxTransfer_8033978();
     sub_8003962();
     zeroFill_8003AB2();
     sub_800399A();

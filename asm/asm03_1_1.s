@@ -41,9 +41,9 @@ sub_8038630:
 	mov r0, #0xd
 	bl sub_80015FC
 	ldr r0, dword_8038670 // =0x1340
-	bl SetRenderInfoLCDControl
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
@@ -105,7 +105,7 @@ sub_80386B2:
 	bl IsScreenFadeActive // () -> zf
 	beq locret_80386C4
 	ldr r0, off_80386C8 // =0x40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	bl call_803D1AC // () -> void
 locret_80386C4:
 	pop {r4-r7,pc}
@@ -116,7 +116,7 @@ off_80386C8: .word 0x40
 	thumb_local_start
 initGfx_80386CC:
 	push {r4-r7,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFillGFX30025c0
 	// initRefs
 	ldr r0, off_80386E0 // =initRefs_80386E4
@@ -229,7 +229,7 @@ sub_8038A9C:
 	b locret_8038AC6
 loc_8038ABC:
 	ldr r0, off_8038AC8 // =0x40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	bl call_803D1AC // () -> void
 locret_8038AC6:
 	pop {pc}
@@ -263,15 +263,15 @@ off_8038B00: .word byte_2011E40
 	thumb_local_start
 sub_8038B04:
 	push {lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
 	mov r0, #0x14
 	bl sub_80015FC
 	ldr r0, dword_8038B5C // =0x1f40
-	bl SetRenderInfoLCDControl
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
@@ -774,7 +774,7 @@ sub_8038F0C:
 	bl clear_e200AD04 // () -> ()
 	bl init_eStartScreenAnimationControl200B1A0_1
 	ldr r0, off_8038F2C // =0x40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 locret_8038F2A:
 	pop {pc}
 	.balign 4, 0
@@ -899,7 +899,7 @@ loc_8039032:
 	ldr r0, dest // =comp_82E8470
 	// dest
 	ldr r1, off_8039070 // =unk_201AA00
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	pop {r4,pc}
 	.balign 4, 0
 dword_8039050: .word 0x607
@@ -1203,9 +1203,9 @@ sub_80395E4:
 	bl sub_803FA42
 	bl chatbox_8040818
 	ldr r0, off_803962C // =0x40
-	bl SetRenderInfoLCDControl
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	mov r0, #0x11
 	bl sub_80015FC
 	bl sub_8005F40
@@ -1233,13 +1233,13 @@ sub_8039630:
 	push {r4-r7,lr}
 	bl IsScreenFadeActive // () -> zf
 	beq locret_8039652
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	bl chatbox_8040818
 	bl startScreen_init_802F530 // () -> void
 	ldr r0, off_8039654 // =0x40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 locret_8039652:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -1275,9 +1275,9 @@ sub_8039694:
 	bl sub_8005F40
 	bl ZeroFillGFX30025c0
 	ldr r0, dword_8039708 // =0x1f40
-	bl SetRenderInfoLCDControl
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	bl cleareMemory_802FF2C
 	mov r0, #0x11
 	bl sub_80015FC
@@ -1503,7 +1503,7 @@ off_8039858: .word sub_8039864+1
 sub_8039864:
 	push {r4-r7,lr}
 	ldr r0, dword_8039880 // =0x1240
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	mov r0, #1
 	strb r0, [r5,#0x17]
 	mov r0, #0
@@ -1545,7 +1545,7 @@ locret_80398AE:
 sub_80398B0:
 	push {r4-r7,lr}
 	ldr r0, dword_80398D8 // =0x1f40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	ldrb r0, [r5,#4]
 	bl sub_803BB2C
 	bl sub_8046664 // () -> void
@@ -1747,9 +1747,9 @@ off_80399E8: .word sub_8039A58+1
 sub_8039A58:
 	push {r4-r7,lr}
 	ldr r0, dword_8039AB0 // =0x1f40
-	bl SetRenderInfoLCDControl
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	mov r0, #0x12
 	bl sub_80015FC
 	bl copyData_803B2E4
@@ -2758,7 +2758,7 @@ sub_803A25C:
 	mov r0, #0
 	strb r0, [r5,#0x18]
 	ldr r0, dword_803A298 // =0x1f40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	mov r0, #0
 	bl TerminateGFXAnim
 	mov r0, #1
@@ -2808,7 +2808,7 @@ sub_803A2CC:
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_803A31C
 	ldr r0, dword_803A324 // =0x7f40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_Unk200f3a0_Ptr]
 	mov r0, #0
@@ -2945,7 +2945,7 @@ sub_803A3C4:
 	cmp r0, #0x91
 	bne loc_803A3FC
 	ldr r0, dword_803A404 // =0x1f40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	ldr r0, off_803A408 // =off_8039308
 	bl LoadGFXAnim
 	ldr r0, off_803A40C // =byte_8039350
@@ -3329,9 +3329,9 @@ off_803A6A4: .word sub_803A6E4+1
 sub_803A6E4:
 	push {r4-r7,lr}
 	ldr r0, dword_803A73C // =0x1f40
-	bl SetRenderInfoLCDControl
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	mov r0, #0x13
 	bl sub_80015FC
 	bl copyData_803B3C8
@@ -4614,9 +4614,9 @@ off_803B174: .word sub_803B184+1
 sub_803B184:
 	push {r4-r7,lr}
 	ldr r0, dword_803B1C0 // =0x1f40
-	bl SetRenderInfoLCDControl
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	mov r0, #0x14
 	bl sub_80015FC
 	mov r3, r10
@@ -4688,7 +4688,7 @@ loc_803B210:
 	thumb_local_start
 copyData_803B216:
 	push {r4-r7,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	// initRefs
@@ -4748,7 +4748,7 @@ initRefs_803B244: .word comp_87E4500 + 1<<31
 	thumb_local_start
 copyData_803B2E4:
 	push {r4-r7,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	// initRefs
@@ -4814,7 +4814,7 @@ initRefs_803B310: .word comp_87E57BC + 1<<31
 	thumb_local_start
 copyData_803B3C8:
 	push {r4-r7,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	// initRefs
@@ -4866,7 +4866,7 @@ initRefs_803B404: .word comp_87E50D4 + 1<<31
 	thumb_local_start
 copyData_803B45C:
 	push {r4-r7,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	// initRefs
@@ -5719,7 +5719,7 @@ loc_803BE78:
 	ldr r0, [sp,#4]
 	ldr r1, [sp,#8]
 	ldr r2, [sp,#0xc]
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	add sp, sp, #0x10
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -6780,7 +6780,7 @@ loc_803C5DE:
 	add r0, r0, r1
 	ldr r1, dword_803C5FC // =0x6017e80
 	mov r2, #0x80
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 locret_803C5EC:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -7597,9 +7597,9 @@ sub_803CBD0:
 	mov r0, #0x15
 	bl sub_80015FC
 	ldr r0, dword_803CC10 // =0x1f40
-	bl SetRenderInfoLCDControl
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
@@ -7651,7 +7651,7 @@ sub_803CC40:
 	beq locret_803CC58
 	bl chatbox_8040818
 	ldr r0, off_803CC5C // =0x40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	ldr r0, [r5,#4]
 	mov lr, pc
 	bx r0
@@ -7664,7 +7664,7 @@ off_803CC5C: .word 0x40
 	thumb_local_start
 copyData_803CC60:
 	push {r4-r7,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFillGFX30025c0
 	// initRefs
 	ldr r0, off_803CC84 // =initRefs803CC88
@@ -7746,9 +7746,9 @@ sub_803CCFC:
 	mov r0, #0x16
 	bl sub_80015FC
 	ldr r0, dword_803CD3C // =0x1f40
-	bl SetRenderInfoLCDControl
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
@@ -7787,7 +7787,7 @@ sub_803CD54:
 	thumb_local_start
 sub_803CD58:
 	push {r4-r7,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFillGFX30025c0
 	pop {r4-r7,pc}
 	thumb_func_end sub_803CD58
@@ -7950,7 +7950,7 @@ sub_803CE44:
 	mov r2, r7
 	bl SetCurPETNaviStatsHword
 	movflag EVENT_PET_NAVI_ACTIVE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_803CEB4
 	mov r0, #0
 	mov r1, #0x40
@@ -8491,9 +8491,9 @@ sub_803D1FC: // (self: *mut S2011800 $r5) -> ()
 	mov r4, #4
 	ldr r0, off_803D248 // =0xc0
 loc_803D212:
-	bl SetRenderInfoLCDControl
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	mov r0, r4
 	mov r1, #0xff
 	bl SetScreenFade // (int a1, int a2) -> void
@@ -8518,7 +8518,7 @@ off_803D248: .word 0xC0
 sub_803D24C: // (self: *mut S2011800 $r5) -> ()
 	push {lr}
 	ldr r0, dword_803D270 // =0x1f40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	mov r0, #8
 	ldrb r1, [r5,#5]
 	tst r1, r1
@@ -8580,7 +8580,7 @@ locret_803D2A4:
 sub_803D2A6: // (self: *const S2011800 $r5) -> ()
 	push {lr}
 	ldr r0, off_803D2B4 // =0x40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	bl startScreen_init_802F530 // () -> void
 	pop {pc}
 	.balign 4, 0
@@ -8590,7 +8590,7 @@ off_803D2B4: .word 0x40
 	thumb_local_start
 copyTileData_803D2B8:
 	push {r4-r7,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFillGFX30025c0
 	// initRefs
 	ldr r0, off_803D2EC // =initRefs803D2F0
@@ -9112,7 +9112,7 @@ loc_803DED6:
 	cmp r0, #1
 	bne loc_803DEFE
 	movflag EVENT_172F
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_803DEF8
 	ldrh r0, [r7,#0xc] // (eCamera.unk_5C - 0x20099d0)
 	tst r0, r0
@@ -10695,7 +10695,7 @@ loc_803E9E6:
 	tst r4, r4
 	beq loc_803EA0A
 	movflag EVENT_1E3
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_803EA0A
 	movflag EVENT_7A
 	bl SetEventFlagFromImmediate
@@ -13199,9 +13199,9 @@ sub_803FB64:
 	bl sub_80015FC
 	bl copyTileData_803FC64
 	ldr r0, dword_803FB98 // =0x1f40
-	bl SetRenderInfoLCDControl
-	bl renderInfo_8001788
-	bl renderInfo_80017A0
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+	bl renderInfo_8001788 // () -> ()
+	bl renderInfo_80017A0 // () -> ()
 	bl sub_803FBE8
 	mov r0, #8
 	mov r1, #0x20 
@@ -13226,7 +13226,7 @@ playGameOver_803FB9C:
 	cmp r0, r1
 	bne locret_803FBC0
 	mov r0, #SONG_GAME_OVER
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 	b locret_803FBC0
 loc_803FBB4:
 	mov r0, #0xc
@@ -13248,7 +13248,7 @@ sub_803FBC2:
 	bl clear_e200AD04 // () -> ()
 	bl init_eStartScreenAnimationControl200B1A0_2
 	ldr r0, off_803FBE4 // =0x40
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 locret_803FBE0:
 	pop {pc}
 	.balign 4, 0

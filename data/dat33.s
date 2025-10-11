@@ -2010,7 +2010,7 @@ sub_812D298::
 	push {r7,lr}
 	bl sub_812D6F8
 	mov r7, r0
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
 	mov r0, #0x10

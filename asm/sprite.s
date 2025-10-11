@@ -311,7 +311,7 @@ sub_8002874:
 	ldrh r3, [r5,#8]
 	lsl r3, r3, #5
 	add r1, r1, r3
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 locret_8002896:
 	pop {r5,pc}
 	.balign 4, 0
@@ -349,17 +349,22 @@ off_80028D0: .word byte_200F389
 	thumb_func_end sub_80028C0
 
 	thumb_func_start initUncompSpriteState_80028d4
-initUncompSpriteState_80028d4:
+initUncompSpriteState_80028d4: // (a0: *const ?) -> ()
 	push {r5,lr}
 	ldr r5, off_8002BF0 // =byte_200DCA0
+
 	push {r0}
+
 	// memBlock
 	mov r0, r5
 	// size
 	mov r1, #0x50
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
 	pop {r0}
+
 	str r0, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
+
 	mov r0, r5
 	add r0, #4
 	mov r1, #0x18
@@ -368,6 +373,7 @@ initUncompSpriteState_80028d4:
 	mvn r2, r2
 	lsr r2, r2, #0x10
 	bl HalfwordFill
+
 	mov r0, r5
 	// mem
 	add r0, #0x1c
@@ -376,22 +382,26 @@ initUncompSpriteState_80028d4:
 	// byte
 	mov r2, #0xff
 	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
+
 	pop {r5,pc}
 	thumb_func_end initUncompSpriteState_80028d4
 
 	// Load the sprite tilesets and palettes according to the map group's
 	// sprite_load_data_struct list (e.g. byte_804E6AC).
 	thumb_func_start uncompSprite_8002906
-uncompSprite_8002906:
+uncompSprite_8002906: // (sprite_load_data: *const SpriteLoadData) -> bool
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
 	push {r1,r2}
+
 	ldr r5, off_8002BF0 // =byte_200DCA0
+
 	ldr r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
 	ldr r4, off_8002BC0 // =SpritePointersList
 	ldr r6, dword_8002BC4 // =0x2040000
 	mov r7, r0
+
 .loadNextSprite
 	ldrb r0, [r7,#oSpriteLoadData_SpriteTypeOffset]
 	cmp r0, #0xff
@@ -416,20 +426,25 @@ uncompSprite_8002906:
 	add r3, r1, r2
 	cmp r3, r6
 	bge loc_800297C
+  
 	mov r9, r0
 	ldrb r0, [r5]
 	cmp r0, #0xc
 	mov r0, r9
 	bge loc_800297C
+
 	push {r7}
+
 	ldrb r3, [r5]
 	lsl r7, r3, #1
 	add r7, #4
 	strh r0, [r5,r7]
+
 	lsl r7, r3, #2
 	add r7, #0x1c
 	add r1, #4
 	str r1, [r5,r7]
+
 	// dest
 	sub r1, #4
 	add r3, #1
@@ -437,21 +452,23 @@ uncompSprite_8002906:
 	push {r1,r2,r4-r6}
 	// src
 	mov r0, r8
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+
 	pop {r1,r2,r4-r6}
 	add r1, r1, r2
 	str r1, [r5,#0x4c]
 	pop {r7}
+
 	add r7, #oSpriteLoadData_Size
 	b .loadNextSprite
 .doneLoadingSprites
-	mov r0, #1
+	mov r0, #TRUE
 	pop {r1,r2}
 	mov r8, r1
 	mov r9, r2
 	pop {r4-r7,pc}
 loc_800297C:
-	mov r0, #0
+	mov r0, #FALSE
 	pop {r1,r2}
 	mov r8, r1
 	mov r9, r2
@@ -560,7 +577,7 @@ loc_80029E8:
 	push {r1,r2,r4-r6}
 	// src
 	mov r0, r8
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	pop {r1,r2,r4-r6}
 	add r1, r1, r2
 	str r1, [r5,#0x4c]
@@ -632,7 +649,7 @@ sprite_decompress:
 	push {r1,r2}
 	// src
 	mov r0, r8
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	pop {r1,r2}
 	add r1, r1, r2
 	str r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
@@ -759,7 +776,7 @@ loc_8002B52:
 	push {r1,r2}
 	// src
 	mov r0, r8
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
 	pop {r1,r2}
 	mov r0, #1
 	pop {r1-r3}

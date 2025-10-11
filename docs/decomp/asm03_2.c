@@ -6581,7 +6581,7 @@ char (*ACDCTown_EnterMapGroup())[8]
     initMapTilesState_803037c(gs->MapSelect, gs->MapSubOffset);
     decompressCoordEventData_8030aa4(gs->MapSelect, gs->MapSubOffset);
     v2 = gs->MapSubOffset;
-    camera_802FF4C(gs->player_x, gs->player_y, gs->unk_2C, gs->MapSelect);
+    camera_init_802FF4C(gs->player_x, gs->player_y, gs->unk_2C, gs->MapSelect);
     decompAndCopyMapTiles_8030472();
     initUncompSpriteState_80028d4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(off_804CEFC[gs->MapSubOffset]);

@@ -2415,17 +2415,17 @@ sub_8086DF8::
 	bl sub_8086ED8
 	bl sub_8086EEC
 	movflag EVENT_5F2
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_8086E6A
 	bl sub_8087238
 	movflag EVENT_5E4
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_8086E50
 	bl sub_8086FA4
 	cmp r0, #0
 	beq locret_8086E6A
 	movflag EVENT_5FF
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8086E50
 	movflag EVENT_5E5
 	bl SetEventFlagFromImmediate

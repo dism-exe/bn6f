@@ -278,7 +278,7 @@ loc_80004AA:
 	ldr r0, off_8000568 // =0xc0
 
 loc_80004C0:
-	bl SetRenderInfoLCDControl
+	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	bl main_zeroFill_80017EC
 	bl render_800172C
 	bl copyMemory_8001850

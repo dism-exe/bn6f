@@ -18665,7 +18665,7 @@ SWI_LZ77UnCompReadNormalWrite16bit:
 
 // (void *src, void *dest) -> void
 	thumb_func_start SWI_LZ77UnCompReadNormalWrite8bit
-SWI_LZ77UnCompReadNormalWrite8bit:
+SWI_LZ77UnCompReadNormalWrite8bit: // (src: *const (), mut_dest: *mut ()) -> ()
 	//   r0  Source address, pointing to data as such:
 	//		Data header (32bit)
 	//		  Bit 0-3   Reserved

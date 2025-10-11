@@ -4,19 +4,19 @@ int __fastcall sub_8033948(int a1, int a2, int a3, int a4)
     int v4; // r10
     int v5; // r0
 
-    ZeroFillByWord(&unk_2011E30, 16);
+    ZeroFillByWord(&eS2011E30, 16);
     if ( *(*(v4 + oToolkit_GameStatePtr) + oGameState_MapGroup) >= 128 )
     {
         v5 = getPETNaviSelect();
         word_2011E38 = sub_80010D4(v5);
     }
     byte_2011E34 = 1;
-    return sub_8033978();
+    return gfxTransfer_8033978();
 }
 
 
 // 0x8033978
-int sub_8033978()
+int gfxTransfer_8033978()
 {
     int v0; // r10
     int result; // r0
@@ -29,14 +29,14 @@ int sub_8033978()
     else
     {
         (loc_8000AC8)(dword_86C0D20, 100758016, byte_100);
-        result = sub_8033DA0(0);
+        result = gfxTransfer_8033DA0(0);
     }
     return result;
 }
 
 
 // 0x80339cc
-void sub_80339CC()
+void dispatch_80339CC()
 {
     Toolkit *tk; // r10
     char v1; // zf
@@ -47,7 +47,7 @@ void sub_80339CC()
     {
         if ( tk->gamestate->MapSelect >= 128 )
         {
-            (*(&off_8033A4C + 2 * byte_2011E34))();
+            (*(&JumpTableInternet8033A4C + 2 * byte_2011E34))();
         }
         else
         {
@@ -59,14 +59,14 @@ void sub_80339CC()
                 if ( !v1 || (TestEventFlagFromImmediate(23, 29), v1) )
                     v2 -= 4;
             }
-            (*(&off_8033A1C + v2))();
+            (*(&JumpTable8033A1C + v2))();
         }
     }
 }
 
 
 // 0x8033a7c
-void sub_8033A7C()
+void noop_8033A7C()
 {
     ;
 }
@@ -80,7 +80,7 @@ void __noreturn sub_8033A80()
 
 
 // 0x8033a96
-void __noreturn sub_8033A96()
+void __noreturn onUpdate_8033A96()
 {
     sub_8033B80(0);
 }
@@ -115,7 +115,7 @@ void __noreturn sub_8033AF0()
 
 
 // 0x8033b08
-void sub_8033B08()
+void noop_8033B08()
 {
     ;
 }
@@ -129,7 +129,7 @@ void __noreturn sub_8033B0C()
 
 
 // 0x8033b1e
-void __noreturn sub_8033B1E()
+void __noreturn onUpdate_8033B1E()
 {
     sub_8033E0C();
 }
@@ -209,7 +209,7 @@ int sub_8033C68()
     int result; // r0
 
     (loc_8000AC4)(off_8033D2C[*(v0 + 6)], 100758528, byte_100);
-    sub_8033DA0(byte_8033CC4[*(v0 + 6)]);
+    gfxTransfer_8033DA0(byte_8033CC4[*(v0 + 6)]);
     v1 = *(v0 + 6) + 1;
     if ( v1 >= 18 )
         LOBYTE(v1) = 0;
@@ -275,7 +275,7 @@ int __fastcall sub_8033D88(int a1, int a2, int a3)
 
 
 // 0x8033da0
-int __fastcall sub_8033DA0(int a1)
+int __fastcall gfxTransfer_8033DA0(int a1)
 {
     int v1; // r6
     signed int v2; // r4

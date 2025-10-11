@@ -53,7 +53,7 @@ sub_8130084:
 	push {r7,lr}
 	bl sub_8130404
 	mov r7, r0
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
 	mov r0, #0x10
@@ -2308,7 +2308,7 @@ sub_81312FC:
 	push {r4,r7,lr}
 	bl sub_81312EC
 	mov r7, r0
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
 	mov r0, #0x10
@@ -4486,7 +4486,7 @@ loc_813268A:
 	bl GetCurPETNavi // () -> u8
 	mov r6, r0
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_81326A0
 	mov r6, #0
 loc_81326A0:
@@ -4995,7 +4995,7 @@ SaveMenuJumpTable8132B9C: .word OpenSaveMenu8132BA8+1
 OpenSaveMenu8132BA8:
 	push {lr}
 
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 
 	bl ZeroFill_byte_3001960
 
@@ -10274,7 +10274,7 @@ off_81356E8: .word sub_81356F4+1
 	thumb_local_start
 sub_81356F4:
 	push {lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
 	mov r0, #0x10
@@ -10353,7 +10353,7 @@ sub_81356F4:
 	ldr r0, off_81357C0 // =byte_8135628
 	bl sub_80465A0 // (void *a1) -> void
 	mov r0, #SONG_NAVI_CUSTOMIZER
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 	pop {pc}
 dword_81357BC: .word 0xDF40
 off_81357C0: .word byte_8135628
@@ -10841,7 +10841,7 @@ sub_8135B54:
 loc_8135B88:
 	mov r0, #0xc
 	strb r0, [r5]
-	bl PlayMapMusic
+	bl PlayMapMusic // () -> ()
 locret_8135B90:
 	pop {r4,pc}
 	.balign 4, 0x00
@@ -13202,7 +13202,7 @@ sub_8136EF8:
 sub_8136F0C:
 	push {lr}
 	movflag EVENT_EE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_8136F3C
 	mov r0, #0x48 
 	mov r1, #0x40 
@@ -13226,7 +13226,7 @@ locret_8136F3C:
 sub_8136F40:
 	push {lr}
 	movflag EVENT_EE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_8136F70
 	mov r0, #0x7a 
 	mov r1, #0x30 
@@ -13250,7 +13250,7 @@ locret_8136F70:
 sub_8136F74:
 	push {lr}
 	movflag EVENT_EE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_8136FA2
 	mov r0, #0x48 
 	mov r1, #0x61 
@@ -13518,7 +13518,7 @@ locret_813716E:
 sub_8137170:
 	push {lr}
 	movflag EVENT_EE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_813719E
 	mov r0, #0x40 
 	mov r1, #0x40 
@@ -13722,7 +13722,7 @@ locret_81372F2:
 sub_81372F4:
 	push {lr}
 	movflag EVENT_EE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_8137332
 	ldrb r0, [r5,#5]
 	mov r1, #0x14
@@ -13752,7 +13752,7 @@ locret_8137332:
 sub_8137334:
 	push {lr}
 	movflag EVENT_EE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_8137366
 	mov r0, #0x48 
 	mov r1, #0x52 
@@ -14052,7 +14052,7 @@ locret_813756A:
 sub_813756C:
 	push {lr}
 	movflag EVENT_EE
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_813759A
 	mov r0, #0x3c 
 	mov r1, #0x20 
@@ -14344,7 +14344,7 @@ loc_8137762:
 	strb r1, [r0,#5]
 loc_8137774:
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8137786
 	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
@@ -14529,7 +14529,7 @@ off_81378C8: .word sub_81378D4+1
 	thumb_local_start
 sub_81378D4:
 	push {r4-r7,lr}
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 	bl ZeroFill_byte_3001960
 	bl ZeroFillGFX30025c0
 	mov r0, #0x10
@@ -14620,7 +14620,7 @@ locret_813799C:
 sub_81379A0:
 	push {lr}
 	movflag EVENT_1710
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_81379D0
 	mov r0, #JOYPAD_A
 	bl IsButtonPressed
@@ -14730,7 +14730,7 @@ sub_8137A7C:
 	mov r2, #0x13
 	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	movflag EVENT_1710
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_8137ABA
 	movflag EVENT_1710
 	bl ClearEventFlagFromImmediate
@@ -15648,7 +15648,7 @@ JumpTable81382C4: .word playCreditsScene_81382D0+1
 playCreditsScene_81382D0:
 	push {lr}
 
-	bl zeroFillVRAM
+	bl zeroFillVRAM // () -> ()
 
 	bl ZeroFill_byte_3001960
 
@@ -15696,7 +15696,7 @@ playCreditsScene_81382D0:
 	strh r0, [r5,#0x12]
 
 	mov r0, #SONG_CREDITS
-	bl PlayMusic // (int song) -> void
+	bl PlayMusic // (song: u8) -> ()
 
 	mov r0, #0x78 
 	strh r0, [r5,#4]
@@ -15892,7 +15892,7 @@ sub_81384AC:
 	add r1, r1, r2
 	ldr r0, off_81384CC // =unk_2014A00 
 	ldr r2, off_81384C4 // =0x600 
-	bl QueueEightWordAlignedGFXTransfer // (void *queuedSource, void *queuedDest, int queuedSize) -> void
+	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	thumb_func_end sub_81384AC
 
 	pop {r3-r7,pc}
@@ -16128,10 +16128,10 @@ loc_813863A:
 	lsl r4, r4, #2
 	push {r3}
 	ldr r0, off_813868C // =unk_202A000 
-	bl initUncompSpriteState_80028d4
+	bl initUncompSpriteState_80028d4 // (a0: *const ?) -> ()
 	ldr r0, off_8138690 // =off_8138694 
 	ldr r0, [r0,r4]
-	bl uncompSprite_8002906
+	bl uncompSprite_8002906 // (sprite_load_data: *const SpriteLoadData) -> bool
 	ldr r0, off_8138668 // =off_813866C 
 	ldr r0, [r0,r4]
 	bl npc_freeAllObjectsThenSpawnObjectsFromList
@@ -16328,14 +16328,14 @@ sub_81387D8:
 	bl sub_80303F2
 
 	movflag EVENT_2
-	bl decompressCoordEventData_8030aa4
+	bl decompressCoordEventData_8030aa4 // (map_group: u8, map_number: u8) -> ()
 
 	mov r0, #0
 	mov r1, #0
 	mov r2, #0
 	mov r3, #0xd0
 	mov r4, #0
-	bl camera_802FF4C
+	bl camera_init_802FF4C // (player_x: u32, player_y: u32, player_z: u32, map_group: u8, map_number: u8) -> ()
 
 	mov r0, #0
 	bl camera_writeUnk03_14_80301b2
@@ -16363,10 +16363,10 @@ sub_81387D8:
 	thumb_local_start
 sub_8138848:
 	push {lr}
-	bl sub_800378C
-	bl sub_8003BA2
-	bl npc_800461E
-	bl sub_80048D2
+	bl ZeroFillObjectInteractionAreas_800378C // () -> ()
+	bl TryUpdateEachOWPlayerObject_8003BA2 // () -> ()
+	bl TryUpdateEachOverworldNPCObject_800461E // () -> ()
+	bl TryUpdateEachOverworldMapObject_80048D2 // () -> ()
 	bl checkOWObjectInteractions_80037f4
 	bl camera_802FFF4
 	bl sub_80027B4

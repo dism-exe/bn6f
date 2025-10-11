@@ -410,7 +410,7 @@ sub_808CA68:
 	mov r0, #0
 	bl sub_8001172
 	movflag EVENT_9D3
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_808CAA2
 	bl sub_808CF50
 loc_808CAA2:
@@ -441,7 +441,7 @@ sub_808CAD4:
 	bl SetEventFlagFromImmediate
 	bl sub_808CBA0
 	movflag EVENT_9D8
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_808CB06
 	movflag EVENT_9D7
 	bl SetEventFlagFromImmediate
@@ -461,11 +461,11 @@ sub_808CB0C:
 	ldr r5, off_808CB9C // =dword_808CA44
 	ldr r5, [r5]
 	movflag EVENT_9D6
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_808CB3C
 	bl sub_808D11C
 	movflag EVENT_9D8
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq locret_808CB96
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -513,7 +513,7 @@ loc_808CB8A:
 	bl sub_808CC34
 	cmp r0, #0
 	beq locret_808CB96
-	bl StartCutscene
+	bl StartCutscene // (script: *const (), param: u32) -> ()
 locret_808CB96:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -590,7 +590,7 @@ sub_808CC10:
 	cmp r0, #2
 	bne loc_808CC2E
 	movflag EVENT_9D8
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne loc_808CC2E
 	movflag EVENT_9D8
 	bl SetEventFlagFromImmediate
@@ -607,7 +607,7 @@ sub_808CC34:
 	mov r4, #0
 	mov r6, #0
 	movflag EVENT_9D4
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_808CC48
 	ldr r4, off_808CC80 // =byte_808C930
 	b loc_808CC6C
@@ -759,7 +759,7 @@ sub_808CD24:
 	mov r0, r4
 	bl SetEventFlag
 	movflag EVENT_BF1
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	bne locret_808CD62
 	mov r0, #0xd4
 	bl PlaySoundEffect
@@ -982,7 +982,7 @@ sub_808CF8C:
 	push {r4,lr}
 	mov r4, #0
 	movflag EVENT_9D9
-	bl TestEventFlagFromImmediate // (u8 eventGroupOffset, u8 byteAndFlagOffset) -> !zf
+	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
 	beq loc_808CFAC
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_ChatboxPtr]
