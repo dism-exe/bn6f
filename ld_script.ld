@@ -42,10 +42,10 @@ SECTIONS
         iwram.o(.text);
     } >iwram_region AT>rom_region
     
-    .rodata :
+    .data :
     ALIGN(4)
     {
-        data.o(.rodata);
+        data.o(.data);
     } >rom_region
 
     .fill :
