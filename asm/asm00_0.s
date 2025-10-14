@@ -1506,7 +1506,7 @@ GetTitleScreenIconCount: // () -> (u8, u16)
 	mov r7, #0
 
 	movflag EVENT_E00
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_8000EFA
 
 	add r4, #1
@@ -1570,7 +1570,7 @@ loc_8000F3A:
 
 loc_8000F4A:
 	movflag EVENT_370
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_8000F5A
 
 	add r4, #1
@@ -1579,7 +1579,7 @@ loc_8000F4A:
 
 loc_8000F5A:
 	movflag EVENT_340
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_8000F6C
 
 	add r4, #1
@@ -1634,7 +1634,7 @@ sub_8000FAC:
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	// flag 3 @ 0x2001C88[0x17<<5 + 0x1] (=2001F69)
 	movflag EVENT_170C
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_8000FCE
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_LastMapGroup]
@@ -1655,7 +1655,7 @@ loc_8000FCE:
 	str r0, [r6,#0x28]
 loc_8000FDC:
 	movflag EVENT_170C
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end sub_8000FAC
 
@@ -1666,7 +1666,7 @@ sub_8000FE6:
 	mov r4, r1
 loc_8000FEC:
 	mov r0, r6
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne loc_8000FFA
 	mov r0, r6
 	bl reqBBS_addBBSMessage_813e5dc
@@ -1695,7 +1695,7 @@ sub_8001014:
 	mov r4, r1
 loc_800101A:
 	mov r0, r6
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne loc_8001028
 	mov r0, r6
 	bl reqBBS_addRequest_813F9A0
@@ -1819,19 +1819,24 @@ writeCurPETNaviToS2001c04_Unk07_80010c6:
 	pop {pc}
 	thumb_func_end writeCurPETNaviToS2001c04_Unk07_80010c6
 
-	thumb_func_start sub_80010D4
-sub_80010D4:
+	thumb_func_start GetMaxAndCurHPForCurPETNavi_80010D4
+GetMaxAndCurHPForCurPETNavi_80010D4: // (which_navi: u8) -> (u16, u16)
 	push {r4-r7,lr}
+
 	mov r4, r0
-	mov r1, #0x42
-	bl GetCurPETNaviStatsHword
+	mov r1, #oNaviStats_MaxHP
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
+
 	mov r6, r0
+
 	mov r0, r4
-	mov r1, #0x40
-	bl GetCurPETNaviStatsHword
+	mov r1, #oNaviStats_CurHP
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
+
 	mov r1, r6
+
 	pop {r4-r7,pc}
-	thumb_func_end sub_80010D4
+	thumb_func_end GetMaxAndCurHPForCurPETNavi_80010D4
 
 	thumb_func_start sub_80010EC
 sub_80010EC:
@@ -1839,7 +1844,7 @@ sub_80010EC:
 	mov r4, r0
 	mov r6, r1
 	mov r1, #0x42
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	cmp r6, r0
 	ble loc_80010FE
 	mov r6, r0

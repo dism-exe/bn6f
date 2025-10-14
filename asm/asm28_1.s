@@ -250,7 +250,7 @@ sub_809FB4C:
 .blueOrPurpleMysteryData
 	push {r6,r7}
 	mov r0, r5
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	pop {r6,r7}
 	beq .eventFlagSet
 	mov r4, #0
@@ -715,7 +715,7 @@ sub_809FE5E:
 sub_809FE7A:
 	push {r4-r7,lr}
 	movflag EVENT_1740
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq locret_809FE8E
 	ldr r3, off_809FE9C // =byte_2000210 
 	ldrb r1, [r3,#0x4]

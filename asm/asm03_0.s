@@ -1286,7 +1286,7 @@ loc_8026F04:
 loc_8026F0C:
 	ldr r0, off_8027008 // =TextScriptBattleRunDialog
 loc_8026F0E:
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #SOUND_UNSELECT_7B
 	bl PlaySoundEffect
 	pop {pc}
@@ -1406,7 +1406,7 @@ loc_8026FD0:
 loc_8026FE8:
 	add r1, r1, r4
 	ldr r0, off_8027008 // =TextScriptBattleRunDialog
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	b locret_8027004
 loc_8026FF2:
 	mov r0, #0x80
@@ -1648,7 +1648,7 @@ sub_80271C2:
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
 	mov r1, #0xa
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #4
 	strb r0, [r5,#0xd]
 	mov r0, #0x34 
@@ -1793,7 +1793,7 @@ loc_80272E6:
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 	ldrb r1, [r4,#1]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	add r4, #2
 	str r4, [r5,#0x40]
 	b locret_8027318
@@ -2347,7 +2347,7 @@ sub_80276D6:
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
 	mov r1, #0xa
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #4
 	strb r0, [r5,#0xd]
 	mov r0, #0x34 
@@ -2882,7 +2882,7 @@ sub_8027ADE:
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
 	mov r1, #2
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #4
 	strb r0, [r5,#0xd]
 	mov r0, #0x34 
@@ -4779,7 +4779,7 @@ loc_8028B3C:
 	add r2, r2, r1
 	ldrb r1, [r5,r2]
 	add r1, #5
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #0x9c
 	bl PlaySoundEffect
 	mov r0, #0x58 
@@ -4922,7 +4922,7 @@ loc_8028C60:
 	ldrh r0, [r0]
 	bl getChipID_802A54E // (int a1) -> int
 	bl chip_getScript_8027D34 // (int chipID) -> void*
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #0x9c
 	bl PlaySoundEffect
 	mov r0, #0x18
@@ -6752,7 +6752,7 @@ loc_8029952:
 	ldrb r2, [r5,#0xc]
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	ldrb r0, [r5,#1]
 	strb r0, [r5,#0xd]
 	mov r0, #0x34 
@@ -6955,7 +6955,7 @@ loc_8029A90:
 	ldrb r2, [r5,#0xc]
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	ldrb r0, [r5,#1]
 	strb r0, [r5,#0xd]
 	mov r0, #0x34 
@@ -7092,7 +7092,7 @@ loc_8029B6A:
 	ldrb r2, [r5,#0xc]
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	ldrb r0, [r5,#1]
 	strb r0, [r5,#0xd]
 	mov r0, #0x34 
@@ -7477,7 +7477,7 @@ loc_8029ECE:
 	ldr r1, off_8029F48 // =byte_8029F4C
 	ldr r0, [r1,r0]
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_8029EEE
 	ldr r3, off_8029F6C // =dword_20349A0 
 	ldr r3, [r3]
@@ -7506,7 +7506,7 @@ loc_8029EFE:
 	ldr r1, off_8029F48 // =byte_8029F4C
 	ldr r0, [r1,r0]
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_8029F3C
 	ldr r3, off_8029F6C // =dword_20349A0 
 	ldr r3, [r3]
@@ -7565,7 +7565,7 @@ loc_8029F88:
 	tst r0, r1
 	bne loc_8029FAC
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_8029FA4
 	ldrb r0, [r5,#0x10]
 	cmp r0, #0
@@ -7594,7 +7594,7 @@ sub_8029FB4:
 	cmp r0, #0
 	bne loc_8029FEC
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_8029FEC
 	bl TestBattleFlag_0x40
 	bne loc_8029FEC
@@ -7603,7 +7603,7 @@ sub_8029FB4:
 	tst r0, r1
 	bne loc_8029FEC
 	movflag EVENT_E0
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_8029FEC
 loc_8029FEA:
 	mov r4, #1
@@ -7853,7 +7853,7 @@ sub_802A220:
 	push {r4,r6,r7,lr}
 	mov r4, #0xff
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_802A2A2
 	bl GetBattleEffects // () -> int
 	ldr r1, dword_802A2A8 // =0x200000 
@@ -9113,7 +9113,7 @@ loc_802ACF2:
 loc_802AD0A:
 	ldr r0, off_802AD78 // =TextScript8736D74
 	mov r1, #0x28 
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #0x14
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -9784,7 +9784,7 @@ loc_802B2B2:
 	lsl r1, r4, #2
 	ldr r0, [r0,r1]
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_802B2CE
 	ldr r1, dword_802B354 // =0x197 
 	ldr r0, off_802B2DC // =byte_802B2E0
@@ -10138,7 +10138,7 @@ sub_802B5DC:
 	push {lr}
 	mov r1, r0
 	ldr r0, off_802B5E8 // =eTextScript2030860
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	pop {pc}
 	.balign 4, 0
 off_802B5E8: .word eTextScript2030860
@@ -10149,7 +10149,7 @@ RunTextScriptBattleRunDialog:
 	push {lr}
 	mov r1, r0
 	ldr r0, off_802B5F8 // =TextScriptBattleRunDialog
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	pop {pc}
 	.balign 4, 0
 off_802B5F8: .word TextScriptBattleRunDialog
@@ -11510,7 +11510,7 @@ sub_802C2D0:
 	bl sub_800AB3A
 	mov r1, r0
 	ldr r0, off_802C324 // =TextScriptYouGotNewVirusData
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #1
 	strb r0, [r5,#2]
 	b locret_802C320
@@ -14094,12 +14094,12 @@ sub_802D65E:
 	push {r4,lr}
 	mov r4, r0
 	movflag EVENT_1D8
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq locret_802D68A
 	ldr r1, dword_802D69C // =0x196 
 	add r1, r1, r4
 	mov r0, r1
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne locret_802D68A
 	cmp r4, #0xd
 	beq locret_802D68A
@@ -15362,7 +15362,7 @@ sub_802E112:
 	tst r0, r1
 	beq locret_802E154
 	movflag EVENT_1722_BEAST_LINK_GATE_RELATED
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq locret_802E154
 loc_802E14E:
 	mov r0, #0x40 
@@ -17331,7 +17331,7 @@ SetEventFlag:
    clobbers: r0,r1,r3
    ignores: r2,r4-r9,r11-r12 */
 	thumb_func_start ClearEventFlagFromImmediate
-ClearEventFlagFromImmediate:
+ClearEventFlagFromImmediate: // (flag: u16) -> ()
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
@@ -17411,7 +17411,7 @@ ToggleEventFlag:
    clobbers: r0,r1,r3
    ignores: r2,r4-r9,r11,r12 */
 	thumb_func_start TestEventFlagFromImmediate
-TestEventFlagFromImmediate: // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+TestEventFlagFromImmediate: // (flag: u16) -> !zf
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
@@ -17425,7 +17425,7 @@ TestEventFlagFromImmediate: // (event_group_off: u8, byte_and_flag_off: u8) -> !
    clobbers: r0,r1,r3
    ignores: r2,r4-r9,r11,r12 */
 	thumb_func_start TestEventFlag
-TestEventFlag: // (u16 flag) -> !zf
+TestEventFlag: // (flag: u16) -> !zf
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_EventFlagsPtr]
 
@@ -20973,7 +20973,7 @@ loc_8030BB0: .align 1, 0
 	ldr r0, dword_8030CA8 // =0x1640 
 	add r0, r0, r6
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	pop {r0-r2}
 	bne loc_8030C0A
 loc_8030BEE: .align 1, 0
@@ -23027,7 +23027,7 @@ loc_8031ABC:
 	ldr r1, dword_8031B78 // =0x16ef 
 	add r0, r0, r1
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	pop {r0-r2}
 	bne loc_8031AFC
 	mov r0, #0

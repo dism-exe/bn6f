@@ -95727,7 +95727,7 @@ sub_80E68F8:
 	ldr r0, off_80E6920 // =TextScript8736D74
 	ldrb r1, [r5,#oBattleObject_Param2]
 	add r1, #0x1e
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	b locret_80E691E
 loc_80E6910:
 	mov r0, #0x80

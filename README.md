@@ -12,6 +12,7 @@ To contribute, see [CONTRIBUTE.md](CONTRIBUTE.md).
 
 
 ## See also
-* Discord: [**pret**][Discord]
+- Discord: [**pret**][Discord]
+- [gh LanHikari22/bn6f-modding](https://github.com/LanHikari22/bn6f-modding)
 
 [Discord]: https://discord.gg/vdTW48Q

@@ -655,7 +655,7 @@ sub_80931EE::
 	push {r4-r7,lr}
 	mov r1, r0
 	ldr r0, [r5,#0x30]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end sub_80931EE
 

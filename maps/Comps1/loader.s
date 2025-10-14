@@ -231,7 +231,7 @@ Comps1_UnkFunction_806dc0c:
 	movflag EVENT_8E
 	bl SetEventFlagFromImmediate
 	movflag EVENT_8F
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	pop {r0,r1}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -277,7 +277,7 @@ sub_806DC7A:
 	pop {pc}
 loc_806DC86:
 	movflag EVENT_8E
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
@@ -293,7 +293,7 @@ sub_806DC98:
 	pop {pc}
 loc_806DCA4:
 	movflag EVENT_8E
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}
@@ -309,7 +309,7 @@ sub_806DCB6:
 	pop {pc}
 loc_806DCC2:
 	movflag EVENT_8E
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_8F
 	bl SetEventFlagFromImmediate
 	pop {pc}

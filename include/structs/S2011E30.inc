@@ -9,10 +9,10 @@
 
   struct_org 0x7
   u8 Unk_07 // loc=0x7
-  u16 Unk_08 // loc=0x8
+  u16 CurPETNaviMaxHP // loc=0x8
 
 
-  // sub_8033948 implies 0x10
+  // triggerSomeUpdateForInternetOrRealWorld_8033948 implies 0x10
   struct_org 0x10
   u0 Size // loc=0x10
 

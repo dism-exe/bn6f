@@ -872,7 +872,7 @@ loc_80899B2:
 	b loc_80899D4
 loc_80899C2:
 	bl GetCurPETNavi // () -> u8
-	bl sub_80010D4
+	bl GetMaxAndCurHPForCurPETNavi_80010D4 // (which_navi: u8) -> (u16, u16)
 	tst r0, r0
 	beq loc_80899B2
 	mov r0, #0x1e
@@ -960,13 +960,13 @@ sub_8089A60:
 	movflag EVENT_740
 	bl SetEventFlagFromImmediate
 	movflag EVENT_225
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	mov r1, #0
 	strb r1, [r0,#oGameState_Unk_15]
 	movflag EVENT_28
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_8089ABA
 	bl GetSoulWeaponsMapIndex
 	cmp r0, #6
@@ -1180,7 +1180,7 @@ sub_8089C16:
 	mov r0, #1
 	strb r0, [r5,#8]
 	bl GetCurPETNavi // () -> u8
-	bl sub_80010D4
+	bl GetMaxAndCurHPForCurPETNavi_80010D4 // (which_navi: u8) -> (u16, u16)
 	tst r0, r0
 	bne loc_8089C4A
 	strb r0, [r5,#8]
@@ -1245,7 +1245,7 @@ sub_8089CA4:
 	push {r4-r7,lr}
 	mov r1, r0
 	ldr r0, [r5,#0x30]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end sub_8089CA4
 

@@ -1395,7 +1395,7 @@ int __fastcall sub_8142C46(int a1)
 
     v1 = a1;
     v2 = getPETNaviSelect();
-    v3 = sub_80010D4(v2);
+    v3 = GetMaxAndCurHPForCurPETNavi_80010D4(v2);
     v4 = __OFSUB__(v3, v1);
     v5 = v3 - v1;
     if ( (v5 < 0) ^ v4 )

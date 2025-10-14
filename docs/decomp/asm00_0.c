@@ -1331,7 +1331,7 @@ int writeCurPETNaviToS2001c04_Unk07_80010c6()
 
 
 // 0x80010d4
-int __fastcall sub_80010D4(int a1)
+int __fastcall GetMaxAndCurHPForCurPETNavi_80010D4(int a1)
 {
     int v1; // r4
 

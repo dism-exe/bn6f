@@ -2302,7 +2302,7 @@ int __fastcall EnterMap(int a1)
         ClearEventFlagFromImmediate(23, 57);
         ClearEventFlagFromImmediate(23, 50);
         v23 = ClearEventFlagFromImmediate(1, 187);
-        sub_8033948(v23, v24, v25, v26);
+        triggerSomeUpdateForInternetOrRealWorld_8033948(v23, v24, v25, v26);
         SetRenderInfoLCDControl(&loc_1740);
         v27 = gs->MapSubOffset;
         LoadGFXAnimsForMapGroup(gs->MapSelect);

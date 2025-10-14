@@ -1,5 +1,5 @@
 // 0x8033948
-int __fastcall sub_8033948(int a1, int a2, int a3, int a4)
+int __fastcall triggerSomeUpdateForInternetOrRealWorld_8033948(int a1, int a2, int a3, int a4)
 {
     int v4; // r10
     int v5; // r0
@@ -8,7 +8,7 @@ int __fastcall sub_8033948(int a1, int a2, int a3, int a4)
     if ( *(*(v4 + oToolkit_GameStatePtr) + oGameState_MapGroup) >= 128 )
     {
         v5 = getPETNaviSelect();
-        word_2011E38 = sub_80010D4(v5);
+        word_2011E38 = GetMaxAndCurHPForCurPETNavi_80010D4(v5);
     }
     byte_2011E34 = 1;
     return gfxTransfer_8033978();
@@ -80,7 +80,7 @@ void __noreturn sub_8033A80()
 
 
 // 0x8033a96
-void __noreturn onUpdate_8033A96()
+void __noreturn onUpdateInRealWorld_8033A96()
 {
     sub_8033B80(0);
 }
@@ -129,7 +129,7 @@ void __noreturn sub_8033B0C()
 
 
 // 0x8033b1e
-void __noreturn onUpdate_8033B1E()
+void __noreturn onUpdateInInternet_8033B1E()
 {
     sub_8033E0C();
 }
@@ -322,7 +322,7 @@ signed int __noreturn sub_8033E0C()
     if ( v1 )
     {
         v2 = getPETNaviSelect();
-        v3 = sub_80010D4(v2);
+        v3 = GetMaxAndCurHPForCurPETNavi_80010D4(v2);
         v4 = *(v0 + 8);
         v5 = 0;
         if ( v3 != v4 )
@@ -344,7 +344,7 @@ signed int __noreturn sub_8033E0C()
         }
         *(v0 + 8) = v4;
         v6 = getPETNaviSelect();
-        v7 = sub_80010D4(v6);
+        v7 = GetMaxAndCurHPForCurPETNavi_80010D4(v6);
         v9 = v8 >> 2;
         if ( v5 )
         {

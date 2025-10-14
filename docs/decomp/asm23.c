@@ -597,7 +597,7 @@ signed int __fastcall sub_808999C(int a1)
     if ( !v2 )
     {
         v3 = sub_8142224();
-        if ( v3 && (sub_8142C46(v3), v4 = getPETNaviSelect(), sub_80010D4(v4)) )
+        if ( v3 && (sub_8142C46(v3), v4 = getPETNaviSelect(), GetMaxAndCurHPForCurPETNavi_80010D4(v4)) )
         {
             sub_8089CB0(30);
         }
@@ -912,7 +912,7 @@ signed int sub_8089C16()
     {
         v0[8] = 1;
         v1 = getPETNaviSelect();
-        if ( sub_80010D4(v1) )
+        if ( GetMaxAndCurHPForCurPETNavi_80010D4(v1) )
         {
             v2 = sub_809E2B8();
             sub_809E13C(v2);

@@ -1539,7 +1539,7 @@ sub_8046D4C:
 	bl sub_80465A0 // (void *a1) -> void
 	ldr r0, [r5,#0x24]
 	mov r1, #0
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	ldr r0, dword_8046DD4 // =0x1f40 
 	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	bl renderInfo_8001788 // () -> ()
@@ -1684,7 +1684,7 @@ loc_8046E9E:
 	beq loc_8046EBC
 	ldr r0, [r5,#0x24]
 	mov r1, #1
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #8
 	strb r0, [r5]
 	b loc_8046ECE
@@ -1693,7 +1693,7 @@ loc_8046EBC:
 	bl chatbox_set_eFlags2009F38
 	ldr r0, [r5,#0x24]
 	mov r1, #3
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #0xc
 	strb r0, [r5]
 loc_8046ECE:
@@ -1785,7 +1785,7 @@ loc_8046F6E:
 	mov r0, #0x28 
 	strb r0, [r5]
 	ldr r0, [r5,#0x24]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	b loc_8047020
 loc_8046F84:
 	cmp r2, #1
@@ -1836,7 +1836,7 @@ loc_8046FBE:
 	mov r0, #0x1c
 	strb r0, [r5]
 	ldr r0, [r5,#0x24]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r7, #0xff
 	strb r7, [r5,#0xd]
 	mov r0, #SOUND_UNK_73
@@ -1845,13 +1845,13 @@ loc_8046FBE:
 loc_8047000:
 	ldr r0, [r5,#0x24]
 	mov r1, #1
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #8
 	strb r0, [r5]
 	b loc_8047020
 loc_804700E:
 	ldr r0, [r5,#0x24]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #SOUND_CANT_JACK_IN
 	bl PlaySoundEffect
 	mov r0, #0x1c
@@ -1881,7 +1881,7 @@ sub_8047028:
 loc_8047044:
 	strb r2, [r5]
 	ldr r0, [r5,#0x24]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 loc_804704C:
 	mov r0, #0
 	pop {pc}
@@ -1921,7 +1921,7 @@ sub_8047066:
 	strb r0, [r5]
 	ldr r0, [r5,#0x24]
 	ldrb r1, [r5,#6]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 loc_8047094:
 	mov r0, #0
 	pop {pc}
@@ -1969,7 +1969,7 @@ sub_804709C:
 	strb r0, [r5]
 	mov r1, #7
 	ldr r0, [r5,#0x24]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r7, #0xff
 	strb r7, [r5,#0xd]
 	mov r0, #SOUND_UNK_73
@@ -1978,7 +1978,7 @@ sub_804709C:
 loc_804710A:
 	ldr r0, [r5,#0x24]
 	mov r1, #1
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #8
 	strb r0, [r5]
 	b loc_8047130
@@ -1987,7 +1987,7 @@ loc_8047118:
 	str r0, [r5,#0x2c]
 	bl sub_804733C
 	ldr r0, [r5,#0x24]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #SOUND_CANT_JACK_IN
 	bl PlaySoundEffect
 	mov r0, #0x1c
@@ -2615,14 +2615,14 @@ loc_8047698:
 	ldr r2, dword_8047704 // =0x1e20 
 	add r1, r1, r2
 	mov r0, r1
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	pop {r1-r3}
 	bne loc_80476C4
 	push {r1-r3}
 	ldr r2, dword_80477FC // =0x2420 
 	add r1, r1, r2
 	mov r0, r1
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	pop {r1-r3}
 	bne loc_80476C4
 	mov r3, #0x1b
@@ -2744,7 +2744,7 @@ loc_80477B4:
 	ldr r2, dword_80477FC // =0x2420 
 	add r3, r3, r2
 	mov r0, r3
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	pop {r0,r1}
 	bne loc_80477D2
 	mov r1, #0x10
@@ -2835,21 +2835,21 @@ sub_8047834:
 	bl sub_8119854
 	ldr r0, off_80478A8 // =eTextScript202BA04
 	mov r1, #0x7f
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	b locret_80478A0
 loc_804787A:
 	cmp r3, #1
 	bne loc_804788C
 	ldr r0, off_80478A8 // =eTextScript202BA04
 	ldrh r1, [r7,#2]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	bl sub_80478B8
 	b locret_80478A0
 loc_804788C:
 	ldr r0, off_80478AC // =eTextScript202DA04
 	ldrh r1, [r7,#2]
 	lsr r1, r1, #2
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	bl sub_80478B8
 	// a1
 	ldr r0, off_80478B4 // =byte_8046B84 
@@ -2982,7 +2982,7 @@ loc_8047988:
 	bne loc_80479A6
 	ldr r0, [r5,#0x24]
 	mov r1, #1
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	bl sub_80478B8
 loc_80479A6:
 	mov r0, #0xff
@@ -3110,7 +3110,7 @@ sub_8047A80:
 	strb r0, [r5]
 	ldr r0, [r5,#0x24]
 	mov r1, #2
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #SOUND_UNSELECT_68
 	bl PlaySoundEffect
 	pop {pc}
@@ -3176,7 +3176,7 @@ loc_8047AF8:
 	ldr r2, dword_8047B80 // =0x1e20 
 	add r2, r2, r4
 	mov r0, r2
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_8047B1C
 loc_8047B10:
 	tst r6, r6
@@ -3189,7 +3189,7 @@ loc_8047B1C:
 	ldr r2, dword_8047B84 // =0x2420 
 	add r2, r2, r4
 	mov r0, r2
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne loc_8047B10
 	mov r7, #0x18
 	mov r0, #0x1b
@@ -3225,7 +3225,7 @@ loc_8047B62:
 loc_8047B68:
 	ldr r0, [r5,#0x24]
 	mov r1, r7
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	pop {r4-r7,pc}
 loc_8047B72:
 	mov r0, #SOUND_CANT_JACK_IN
@@ -4177,7 +4177,7 @@ loc_8048E46:
 	add r0, r0, r1
 	push {r3}
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	pop {r3}
 	bne loc_8048E8A
 	mov r3, #0
@@ -4186,7 +4186,7 @@ loc_8048E46:
 	add r0, r0, r1
 	push {r3}
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	pop {r3}
 	bne loc_8048E8A
 	ldrh r0, [r7,#2]
@@ -4194,7 +4194,7 @@ loc_8048E46:
 	add r0, r0, r1
 	push {r3}
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	pop {r3}
 	bne loc_8048E8A
 	mov r4, r5
@@ -8718,7 +8718,7 @@ loc_804BDD6:
 	ldr r1, dword_804BE84 // =0x1e20 
 	add r0, r0, r1
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	pop {r0,r3}
 	beq loc_804BE06
 	strh r0, [r7]
@@ -8774,7 +8774,7 @@ loc_804BE3C:
 	ldr r1, dword_804BE84 // =0x1e20 
 	add r0, r0, r1
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	pop {r0,r3,r6,r7}
 	bne loc_804BE6C
 	strh r0, [r7]
@@ -9074,7 +9074,7 @@ off_804C06C: .word sub_804C08C+1
 sub_804C074:
 	push {r4-r7,lr}
 	movflag EVENT_4FE
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	mov r4, r10
 	ldr r1, [r4,#oToolkit_RenderInfoPtr]
 	ldrh r0, [r1]
@@ -9122,10 +9122,10 @@ sub_804C08C:
 	mov r0, #2
 	strb r0, [r5,#0x18]
 	movflag EVENT_4FB
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_804C0EE
 	movflag EVENT_4FE
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_804C0EE
 	bl sub_804C2D0
 loc_804C0EE:
@@ -10505,7 +10505,7 @@ sub_804CDD4:
 	orr r0, r2
 	strh r0, [r4]
 	movflag EVENT_BF0
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_804CDF0
 	bl sub_804CE3C
 loc_804CDF0:

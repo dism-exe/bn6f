@@ -83,7 +83,7 @@ loc_80A4A2A:
 	tst r3, r3
 	beq loc_80A4A38
 	mov r0, r3
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_80A4A74
 loc_80A4A38:
 	mov r0, #1
@@ -104,7 +104,7 @@ loc_80A4A4C:
 loc_80A4A58:
 	ldrb r4, [r7,#9]
 	movflag EVENT_171C
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_80A4A66
 	ldrb r4, [r7,#8]
 loc_80A4A66:
@@ -505,7 +505,7 @@ sub_80A51F8:
 	push {lr}
 	ldrh r0, [r7]
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_80A524E
 	mov r0, #3
 	strb r0, [r5]
@@ -552,7 +552,7 @@ sub_80A5268:
 	push {lr}
 	ldrh r0, [r7]
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne loc_80A52DA
 	bl screenFade_80062C8
 	lsr r0, r0, #2
@@ -883,10 +883,10 @@ sub_80A5588:
 	bne locret_80A55CA
 	bl sub_80A55D4
 	movflag EVENT_4EA
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_80A55C6
 	movflag EVENT_4EB
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_80A55C6
 	ldrb r0, [r6,#8]
 	cmp r0, #2
@@ -958,7 +958,7 @@ loc_80A561E:
 	bne loc_80A5670
 loc_80A5632:
 	movflag EVENT_4EB
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_80A5642
 	ldrb r0, [r6,#8]
 	cmp r0, #2
@@ -1185,7 +1185,7 @@ sub_80A57D0:
 	mov r0, #1
 	ldrb r0, [r5,#7]
 	movflag EVENT_5F2
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80A581E
 	bl sub_80A5A1C
 loc_80A581E:
@@ -1454,7 +1454,7 @@ loc_80A59D6:
 	cmp r3, #2
 	beq loc_80A59FA
 	movflag EVENT_1716
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_80A59FA
 	mov r1, r4
 	ldr r0, off_80A5A04 // =byte_80A5A0C
@@ -1589,7 +1589,7 @@ sub_80A5AF8:
 	str r0, [r5,#0x24]
 	bl sub_80A5F84
 	movflag EVENT_5F2
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80A5B64
 	bl sub_80A5FD0
 loc_80A5B64:
@@ -1643,9 +1643,9 @@ loc_80A5BB0:
 	mov r7, #0
 	strb r7, [r5,#9]
 	movflag EVENT_PET_DISABLED
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_L_MESSAGE_ACTIVE
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	b loc_80A5C62
 loc_80A5BDA:
 	mov r7, #0
@@ -1666,7 +1666,7 @@ loc_80A5BDA:
 	ldr r0, [r5,#0x14]
 	str r0, [r6,r1]
 	movflag EVENT_5F2
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_80A5C18
 	movflag EVENT_5F3
 	bl SetEventFlagFromImmediate
@@ -1679,9 +1679,9 @@ loc_80A5C18:
 	b loc_80A5C62
 loc_80A5C22:
 	movflag EVENT_PET_DISABLED
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_L_MESSAGE_ACTIVE
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	cmp r4, #1
 	bne loc_80A5C48
 	mov r0, #1
@@ -2038,7 +2038,7 @@ byte_80A5EB8: .byte 0x41, 0x16, 0x0, 0x0, 0x42, 0x16, 0x0, 0x0, 0x43, 0x16, 0x0
 sub_80A5EC8:
 	push {r4,lr}
 	movflag EVENT_5F1
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_80A5F46
 	bl sub_80A5F84
 	cmp r0, #0
@@ -2066,7 +2066,7 @@ loc_80A5EE2:
 	strb r4, [r5,#0xb]
 loc_80A5F12:
 	movflag EVENT_5E0
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_80A5F46
 	ldrb r0, [r5,#5]
 	str r0, [r5,#0x34]
@@ -2140,7 +2140,7 @@ loc_80A5F8E:
 	ldrh r2, [r1,r0]
 	mov r4, #1
 	mov r0, r2
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_80A5FAA
 	mov r0, #1
 	strb r0, [r5]
@@ -3170,7 +3170,7 @@ sub_80A6EBC:
 	mov r0, #0x11
 	str r0, [r5,#0x38]
 	movflag EVENT_5E5
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80A6F20
 	bl sub_80A7208
 loc_80A6F20:
@@ -3420,7 +3420,7 @@ off_80A70EC: .word dword_80A6E7C
 sub_80A70FC:
 	push {r4-r7,lr}
 	movflag EVENT_5F1
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_80A715C
 	bl ReadOWPlayerObjectCoords
 	cmp r2, #0
@@ -3675,7 +3675,7 @@ sub_80A72D8:
 	mov r0, #0x11
 	str r0, [r5,#0x34]
 	movflag EVENT_5E5
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80A7342
 	bl sub_80A76E8
 loc_80A7342:
@@ -4053,7 +4053,7 @@ off_80A75CC: .word byte_80A726C
 sub_80A75DC:
 	push {r4-r7,lr}
 	movflag EVENT_5F1
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_80A763C
 	bl ReadOWPlayerObjectCoords
 	cmp r2, #0
@@ -4237,7 +4237,7 @@ loc_80A774C:
 	cmp r0, r2
 	bne locret_80A775A
 	movflag EVENT_5E5
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 locret_80A775A:
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A76E8
@@ -5585,7 +5585,7 @@ loc_80A82EE:
 	ldrh r3, [r0,r2]
 	mov r4, #0
 	mov r0, r3
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_80A830C
 	mov r4, #1
 	mov r0, #3
@@ -5605,7 +5605,7 @@ off_80A8314: .word byte_80A81BE
 sub_80A8324:
 	push {r4-r7,lr}
 	movflag EVENT_9D6
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq locret_80A8368
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -5627,7 +5627,7 @@ loc_80A8340:
 	ldr r0, [r2,r4]
 	ldrh r6, [r0,r6]
 	mov r0, r7
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne loc_80A8362
 	// bitfield
 	mov r0, r6
@@ -5689,9 +5689,9 @@ sub_80A83B8:
 	bl applyLayerEffectToOWObject_8035694
 	bl sub_8002E14
 	movflag EVENT_9FF
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_9D7
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80A8418
 	ldrh r0, [r6,#0x16]
 	ldrh r1, [r6,#0x18]
@@ -5704,7 +5704,7 @@ sub_80A83B8:
 	mov r0, #1
 	strb r0, [r5,#9]
 	movflag EVENT_9D7
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 loc_80A8418:
 	mov r0, #4
 	strb r0, [r5,#8]
@@ -5717,7 +5717,7 @@ loc_80A8418:
 sub_80A8424:
 	push {r4-r7,lr}
 	movflag EVENT_9FF
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80A843A
 	mov r0, #8
 	strb r0, [r5,#8]
@@ -5733,7 +5733,7 @@ loc_80A843A:
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne loc_80A8478
 	movflag EVENT_9D4
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_80A8478
 	mov r0, #1
 	bl TestPETMenuDataFlag
@@ -5768,11 +5768,11 @@ sub_80A8484:
 	mov r0, #0
 	bl sub_8001172
 	movflag EVENT_9D8
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_9FF
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_9D9
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	bl reqBBS_clearFlag_8140A0C
 	bl FreeOverworldMapObject
 locret_80A84BC:
@@ -5966,7 +5966,7 @@ loc_80A8608:
 sub_80A860C:
 	push {r4,lr}
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_80A8640
 	bl ReadOWPlayerObjectCoords
 	mov r2, r0
@@ -6255,7 +6255,7 @@ loc_80A8858:
 sub_80A8860:
 	push {lr}
 	movflag EVENT_5E0
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A8860
@@ -7013,7 +7013,7 @@ sub_80A8E9C:
 	bl sub_8002E14
 	bl sub_80A90B0
 	movflag EVENT_BFB
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80A8EEA
 	bl sub_80A91D4
 	beq loc_80A8EE4
@@ -7045,7 +7045,7 @@ loc_80A8EF8:
 sub_80A8F08:
 	push {r4-r7,lr}
 	movflag EVENT_BEF
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80A8F1E
 	mov r0, #8
 	strb r0, [r5,#8]
@@ -7131,7 +7131,7 @@ sub_80A8FA0:
 	b loc_80A8FD8
 loc_80A8FC6:
 	movflag EVENT_BEF
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_80A8FD8
 	mov r0, #4
 	strb r0, [r5,#8]
@@ -7414,7 +7414,7 @@ off_80A9194: .word byte_81436B4
 sub_80A91A4:
 	push {r4,lr}
 	movflag EVENT_BE4
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq locret_80A91D0
 	bl ReadOWPlayerObjectCoords
 	mov r2, r0
@@ -7441,7 +7441,7 @@ sub_80A91D4:
 	lsl r1, r1, #1
 	ldrh r0, [r0,r1]
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	pop {pc}
 	.balign 4, 0
 off_80A91E8: .word byte_80A91EC
@@ -7452,7 +7452,7 @@ byte_80A91EC: .byte 0xE9, 0xB, 0xEA, 0xB, 0xEB, 0xB, 0x0, 0x0
 sub_80A91F4:
 	push {lr}
 	movflag EVENT_BE6
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80A9208
 	mov r0, #1
 	bl sub_8002E14
@@ -7605,7 +7605,7 @@ sub_80A92E0:
 sub_80A931C:
 	push {r4-r7,lr}
 	movflag EVENT_BE6
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80A933E
 	mov r0, #3
 	bl sub_8002E14
@@ -7617,7 +7617,7 @@ sub_80A931C:
 	b loc_80A935A
 loc_80A933E:
 	movflag EVENT_BE4
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80A9352
 	mov r0, #0xc
 	strb r0, [r5,#8]
@@ -7799,11 +7799,11 @@ sub_80A9458:
 	bl sub_80A95EC
 loc_80A94AC:
 	movflag EVENT_BFC
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	mov r0, #0
 	str r0, [r5,#0x24]
 	movflag EVENT_BFB
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80A94D2
 	bl sub_80A9628
 	beq loc_80A94D2
@@ -7822,7 +7822,7 @@ loc_80A94D2:
 sub_80A94DC:
 	push {r4-r7,lr}
 	movflag EVENT_BFC
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_80A94EC
 	bl sub_80A95A8
 loc_80A94EC:
@@ -7859,7 +7859,7 @@ sub_80A94F8:
 	b loc_80A9534
 loc_80A9528:
 	movflag EVENT_BFC
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	bl sub_80A9568
 loc_80A9534:
 	ldr r0, [r5,#0x24]
@@ -7987,7 +7987,7 @@ sub_80A9628:
 	ldr r1, off_80A9644 // =byte_80A9648
 	ldrh r0, [r1,r0]
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_80A963E
 	mov r4, #1
 loc_80A963E:
@@ -8080,11 +8080,11 @@ sub_80A96FC:
 	push {lr}
 	bl FreeOverworldMapObject
 	movflag EVENT_BE8
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_PET_DISABLED
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_1739
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	pop {pc}
 	thumb_func_end sub_80A96FC
 
@@ -8093,10 +8093,10 @@ sub_80A971C:
 	push {r4,lr}
 	mov r4, #0
 	movflag EVENT_BE5
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80A9744
 	movflag EVENT_BE8
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_80A9744
 	ldrb r0, [r6,#6]
 	mov r1, #0x19
@@ -8155,7 +8155,7 @@ byte_80A978C: .byte 0x4, 0x6, 0x8, 0xA, 0xC, 0xE, 0x10, 0x12, 0x14, 0x16, 0x18
 sub_80A979C:
 	push {r4,lr}
 	movflag EVENT_BE8
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_80A97F0
 	ldrb r0, [r6,#6]
 	cmp r0, #5
@@ -8171,7 +8171,7 @@ loc_80A97BC:
 	cmp r2, r3
 	bne locret_80A97F0
 	movflag EVENT_BE4
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq locret_80A97F0
 	bl ReadOWPlayerObjectCoords
 	mov r2, r0
@@ -8567,7 +8567,7 @@ sub_80A9B9C:
 	str r0, [r5,#0x24]
 	ldrh r0, [r7]
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne loc_80A9BBE
 	mov r0, #1
 	strb r0, [r5]
@@ -8624,7 +8624,7 @@ sub_80A9C26:
 	push {lr}
 	ldrh r0, [r7]
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne loc_80A9C40
 	mov r0, #1
 	strb r0, [r5]
@@ -8644,7 +8644,7 @@ loc_80A9C40:
 loc_80A9C54:
 	ldrh r0, [r7]
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_80A9CA0
 	bl sub_80A9CAE
 	tst r0, r0
@@ -9114,7 +9114,7 @@ loc_80A9FD8:
 	cmp r0, #0x20 
 	beq loc_80A9FF6
 	movflag EVENT_1640
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 loc_80A9FF6:
 	bl sprite_update
 	pop {pc}
@@ -9230,7 +9230,7 @@ loc_80AA0D8:
 	cmp r0, #0x20 
 	beq loc_80AA0F6
 	movflag EVENT_1640
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 loc_80AA0F6:
 	bl sprite_update
 	pop {pc}
@@ -9315,7 +9315,7 @@ sub_80AA194:
 	ldrb r0, [r5,#4]
 	bl sub_8143B5E
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_80AA1C2
 	mov r0, #1
 	bl sprite_setAnimation // (u8 a1) -> void
@@ -9570,7 +9570,7 @@ sub_80AA394:
 	strb r0, [r5]
 	mov r4, #0
 	movflag EVENT_COPYBOT_ACTIVE
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_80AA3A8
 	mov r4, #2
 loc_80AA3A8:
@@ -9794,7 +9794,7 @@ loc_80AA5B8:
 	mov r4, r0
 	bl GetCurPETNavi // () -> u8
 	mov r1, #0x3e 
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	add r0, #4
 	mov r1, #5
 	svc 6
@@ -9827,19 +9827,19 @@ sub_80AA5F4:
 	sub sp, sp, #0xec
 	str r2, [sp,#0xe8]
 	movflag EVENT_67F
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA608
 	ldr r3, off_80AA698 // =off_8020178 
 	b loc_80AA626
 loc_80AA608:
 	movflag EVENT_680
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA616
 	ldr r3, off_80AA69C // =off_8020180 
 	b loc_80AA626
 loc_80AA616:
 	movflag EVENT_681
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA624
 	ldr r3, off_80AA6A0 // =off_8020188 
 	b loc_80AA626
@@ -9949,7 +9949,7 @@ sub_80AA6EC:
 	push {r4-r7,lr}
 	mov r6, #0
 	movflag EVENT_1D8
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA746
 	mov r4, #0
 	mov r5, #0
@@ -10016,7 +10016,7 @@ sub_80AA764:
 	push {r4,lr}
 	mov r4, #0
 	movflag EVENT_212
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA774
 	mov r4, #1
 loc_80AA774:
@@ -10029,7 +10029,7 @@ sub_80AA778:
 	push {r4,lr}
 	mov r4, #0
 	movflag EVENT_213
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA788
 	mov r4, #1
 loc_80AA788:
@@ -10042,7 +10042,7 @@ sub_80AA78C:
 	push {r4,lr}
 	mov r4, #0
 	movflag EVENT_214
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA7A8
 	bl GetPositiveSignedRNG
 	mov r1, #0xff
@@ -10060,7 +10060,7 @@ sub_80AA7AC:
 	push {r4,lr}
 	mov r4, #0
 	movflag EVENT_215
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA7BC
 	mov r4, #1
 loc_80AA7BC:
@@ -10073,7 +10073,7 @@ sub_80AA7C0:
 	push {r4,lr}
 	mov r4, #0
 	movflag EVENT_216
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA7D0
 	mov r4, #1
 loc_80AA7D0:
@@ -10086,7 +10086,7 @@ sub_80AA7D4:
 	push {r4,lr}
 	mov r4, #0
 	movflag EVENT_217
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA7E4
 	mov r4, #1
 loc_80AA7E4:
@@ -10099,7 +10099,7 @@ sub_80AA7E8:
 	push {r4,lr}
 	mov r4, #0
 	movflag EVENT_218
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA7F8
 	mov r4, #1
 loc_80AA7F8:
@@ -10112,7 +10112,7 @@ sub_80AA7FC:
 	push {r4,lr}
 	mov r4, #0
 	movflag EVENT_219
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA80C
 	mov r4, #1
 loc_80AA80C:
@@ -10125,7 +10125,7 @@ sub_80AA810:
 	push {r4,lr}
 	mov r4, #0
 	movflag EVENT_222
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA820
 	mov r4, #1
 loc_80AA820:

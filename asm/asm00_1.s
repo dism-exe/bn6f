@@ -2555,7 +2555,7 @@ TryUpdateEachOverworldNPCObject_800461E: // () -> ()
 
   // return if EVENT_NPC_OBJECTS_DISABLED
 	movflag EVENT_NPC_OBJECTS_DISABLED
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne .ret_800466C
 
 	sub sp, sp, #8
@@ -2911,7 +2911,7 @@ TryUpdateEachOverworldMapObject_80048D2: // () -> ()
 
   // return if EVENT_NON_NPC_ANIMATION_LOCKED
 	movflag EVENT_NON_NPC_ANIMATION_LOCKED
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne .ret_8004920
 
 	sub sp, sp, #8
@@ -3568,16 +3568,16 @@ sub_8004D48:
 	bl sub_8004702
 
 	movflag EVENT_1703
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_171B
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_EVENT_CUR_DIR_LOCKED
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_172D
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	bl sub_800399A
 	bl sub_8003AEA
@@ -3585,7 +3585,7 @@ sub_8004D48:
 	bl sub_800B110
 
 	movflag EVENT_91
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	bl sub_803C3E0
 	beq loc_8004DDA
@@ -3823,7 +3823,7 @@ initNewGameData_8004DF0:
 	bl SetEventFlagFromImmediate
 
 	movflag EVENT_68F
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_82
 	mov r2, #2
@@ -3917,16 +3917,16 @@ initNewGameData_8004DF0:
 	bl reqBBS_initMemory_813F9DA
 
 	movflag EVENT_173A
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_IN_SLIPRUN_STATE
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_173E
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_173F
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	bl reqBBS_8140984
 
@@ -4000,7 +4000,7 @@ EnterMap: // (self: * GameState $r5) -> ()
 	bl sub_809F90C
 
 	movflag EVENT_1731
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	mov r0, #0
 	bl sub_803F6B0
@@ -4011,7 +4011,7 @@ EnterMap: // (self: * GameState $r5) -> ()
 
   // if !EVENT_1741
 	movflag EVENT_1741
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne .endif2
 
 	bl reloadCurNaviStatBoosts_813c3ac
@@ -4035,30 +4035,30 @@ EnterMap: // (self: * GameState $r5) -> ()
 	str r0, [r5,#oGameState_Unk_68]
 
 	movflag EVENT_1719
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_NPC_OBJECTS_DISABLED
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_NON_NPC_ANIMATION_LOCKED
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_1700
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_PET_DISABLED
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_1739
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_1732
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_1BB
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
-	bl sub_8033948
+	bl triggerSomeUpdateForInternetOrRealWorld_8033948
 
 	ldr r0, off_8005264 // =0x1740
 	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
@@ -4079,13 +4079,13 @@ EnterMap: // (self: * GameState $r5) -> ()
 	bl EnterMap_RunMapGroupAsmFunction_8030A00
 
 	movflag EVENT_IN_SLIPRUN_STATE
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_173E
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_173F
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	ldrb r0, [r5,#oGameState_EnterMapFadeParam1]
 	ldrb r1, [r5,#oGameState_EnterMapFadeParam2]
@@ -4370,13 +4370,13 @@ loc_80054EA:
 	strb r0, [r5,#0xe]
 	bl sub_809E04C
 	movflag EVENT_742
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_743
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_962
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_963
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 locret_800551C:
 	pop {r7,pc}
 	.balign 4, 0
@@ -4747,7 +4747,7 @@ sub_80058D0:
 	ldr r1, off_8005940 // =EVENT_16F0
 	add r1, r1, r4
 	mov r0, r1
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne .doNotCheckWarp
 
 	mov r2, r10
@@ -4849,7 +4849,7 @@ sub_80059B4: // (self: * GameState $r5) -> ()
 	push {lr}
 
 	movflag EVENT_1703
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
@@ -4882,7 +4882,7 @@ sub_80059D0: // (self: * GameState $r5) -> ()
 sub_80059EC: // (self: * GameState $r5) -> ()
 	push {lr}
 	movflag EVENT_1703
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	ldr r0, off_8005A7C // =CutsceneScript_8098a2e
 	mov r1, #0
@@ -4906,7 +4906,7 @@ sub_8005A00: // (self: * GameState $r5) -> ()
 sub_8005A0C: // (self: * GameState $r5) -> ()
 	push {lr}
 	movflag EVENT_1703
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
 
@@ -4984,15 +4984,15 @@ sub_8005A8C:
 	cmp r0, #4
 	bne locret_8005AF2
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_8005AF2
 	bl sub_809E462
 	bne locret_8005AF2
 	movflag EVENT_1700
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_8005AF2
 	movflag EVENT_173E
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_8005AF2
 	bl sub_8005F28
 	bne locret_8005AF2
@@ -5026,10 +5026,10 @@ sub_8005AF4:
 	cmp r0, #4
 	bne locret_8005B68
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_8005B68
 	movflag EVENT_IN_SLIPRUN_STATE
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_8005B68
 	bl sub_809E462
 	bne locret_8005B68
@@ -5049,7 +5049,7 @@ sub_8005AF4:
 	bl IsButtonPressed
 	beq locret_8005B68
 	movflag EVENT_PET_DISABLED
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_8005B68
 	mov r0, #SOUND_SELECT_79
 	bl PlaySoundEffect
@@ -5078,7 +5078,7 @@ sub_8005B6E:
 	cmp r0, #4
 	bne locret_8005BC6
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_8005BC6
 	bl sub_809E462
 	bne locret_8005BC6
@@ -5095,7 +5095,7 @@ sub_8005B6E:
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_8005BC6
 	movflag EVENT_1739
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_8005BC6
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
@@ -5180,7 +5180,7 @@ map_triggerEnterMapOnWarp_8005C04:
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 
 	movflag EVENT_171B
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 
 	bne .loc_8005C80
 
@@ -5231,7 +5231,7 @@ map_triggerEnterMapOnWarp_8005C04:
 
 .loc_8005C80:
 	movflag EVENT_171B
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
 	ldrb r0, [r7,#oWarp2011bb0_MapGroupTransitionType]
 	cmp r0, #MAP_GROUP_TRANSITION_TYPE_INTERNET_TO_REAL_WORLD
@@ -7737,7 +7737,7 @@ encryption_80070bc:
 	mov r7, #0
 loc_80070C6:
 	mov r0, r4
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_80070DC
 	mov r0, r10
 	mov r1, #oToolkit_Unk2004e24_Ptr
@@ -7784,7 +7784,7 @@ encryption_800710a:
 	mov r7, #0
 loc_8007112:
 	mov r0, r4
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_8007122
 	mov r0, r7
 	bl encryption_80070e6
@@ -7799,7 +7799,7 @@ loc_8007122:
 	mov r7, #0
 loc_8007130:
 	mov r0, r4
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_8007140
 	mov r0, r7
 	bl encryption_80070e6
@@ -7814,7 +7814,7 @@ loc_8007140:
 	mov r7, #0
 loc_800714E:
 	mov r0, r4
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_800715E
 	mov r0, r7
 	bl encryption_testPack_8006e84
@@ -8003,11 +8003,11 @@ loc_80072BE:
 	add r1, #8
 	str r1, [r0,#0x4] // (dword_20364C4 - 0x20364c0)
 	movflag EVENT_1733
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	cmp r7, #1
 	beq loc_80072E2
 	movflag EVENT_1735
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 loc_80072E2:
 	mov r0, #0
 	bl eStruct200A008_setUnk04
@@ -9298,7 +9298,7 @@ loc_8007D2A:
 	mov r0, #0
 	bl sub_803F4EC
 	movflag EVENT_1733
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_8007E38
 	bl SetDummyBGScrollCallbacks
 	bl zeroFill_e20094C0
@@ -9418,7 +9418,7 @@ loc_8007E38:
 	mov r0, #1
 	bl clear_flags32_20093A4 // (flags32 flags) -> void
 	movflag EVENT_1722_BEAST_LINK_GATE_RELATED
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	mov r0, #0
 	strb r0, [r5,#oBattleState_Unk_0a]
 	bl SetPrimaryToolkitPointers // () -> ()
@@ -9495,7 +9495,7 @@ loc_8007F04:
 	add r1, r1, r4
 loc_8007F08:
 	ldr r0, off_8008014 // =TextScriptCommError87370C0
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_01]
 	pop {r4,pc}
@@ -12013,7 +12013,7 @@ loc_800924E:
 	bl sub_801BECC
 	mov r4, #4
 	movflag EVENT_1735
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_8009270
 	mov r4, #0x24
 loc_8009270:
@@ -12393,7 +12393,7 @@ sub_800951E:
 	bne loc_8009534
 	ldr r0, =TextScriptBattleTutFullSynchro
 	mov r1, #0xa
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_03]
 	b locret_8009550
@@ -12432,7 +12432,7 @@ loc_8009568:
 	mov r1, #0x20
 loc_800956A:
 	ldr r0, =TextScriptDadCybeastTut
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_03]
 	b locret_8009592
@@ -12462,7 +12462,7 @@ sub_8009594:
 	bne loc_80095AA
 	ldr r0, =TextScriptShukoCrossTut
 	mov r1, #3
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_03]
 	b locret_80095C6
@@ -12494,7 +12494,7 @@ sub_80095C8:
 	mov r1, #0x73
 	add r1, r1, r0
 	ldr r0, =TextScriptCommError87370C0
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #4
 	strb r0, [r5,#oBattleState_Unk_03]
 	b locret_80095F4
@@ -12592,7 +12592,7 @@ loc_80096B6:
 	bl sub_801BECC
 	mov r4, #4
 	movflag EVENT_1735
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80096D8
 	mov r4, #0x24
 loc_80096D8:
@@ -12961,7 +12961,7 @@ sub_8009966:
 	mov r1, #0x73
 	add r1, r1, r0
 	ldr r0, off_80099A0 // =TextScriptCommError87370C0
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_8009992
@@ -13062,7 +13062,7 @@ loc_8009A3E:
 	bl sub_801BECC
 	mov r4, #4
 	movflag EVENT_1735
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_8009A60
 	mov r4, #0x24
 loc_8009A60:
@@ -13353,7 +13353,7 @@ sub_8009C56:
 	mov r1, #0x73
 	add r1, r1, r0
 	ldr r0, off_8009C90 // =TextScriptCommError87370C0
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_8009C82
@@ -13454,7 +13454,7 @@ loc_8009D2E:
 	bl sub_801BECC
 	mov r4, #4
 	movflag EVENT_1735
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_8009D50
 	mov r4, #0x24
 loc_8009D50:
@@ -13596,7 +13596,7 @@ RunTextScriptDustManUndernetTut_8009E2C:
 	ldr r0, [r5,r0]
 	ldrb r1, [r0,#4]
 	ldr r0, off_8009FBC // =TextScriptDustManUndernetTut
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #4
 	strh r0, [r5,#oBattleState_Unk_02_03]
 	pop {pc}
@@ -13787,7 +13787,7 @@ sub_8009F8A:
 	mov r1, #0x73
 	add r1, r1, r0
 	ldr r0, off_8009FC8 // =TextScriptCommError87370C0
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_8009FB6
@@ -16471,7 +16471,7 @@ loc_800B1A8:
 	cmp r0, #0
 	beq loc_800B242
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_800B242
 	bl GetCurPETNavi // () -> u8
 	cmp r0, #0
@@ -16576,7 +16576,7 @@ loc_800B25A:
 	mov r1, #0xf4 // (byte_203CCD4 - 0x203cbe0)
 	str r0, [r4,r1]
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_800B2A0
 	bl sub_8121198
 	b loc_800B2A2

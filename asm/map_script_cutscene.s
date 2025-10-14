@@ -145,7 +145,7 @@ MapScriptCutsceneCmd_jump_if_flag_set: // 8035962
 	bl ReadMapScriptHalfword
 .gotEventFlag
 	mov r0, r4
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq .eventFlagNotSet
 	mov r6, #4
 	bl ReadMapScriptWord
@@ -205,7 +205,7 @@ MapScriptCutsceneCmd_jump_if_flag_clear: // 80359BE
 	bl ReadMapScriptHalfword
 .gotEventFlag
 	mov r0, r4
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne .eventFlagSet
 	mov r6, #4
 	bl ReadMapScriptWord
@@ -2446,7 +2446,7 @@ cutscene_8036ED4:
 	strh r0, [r1,#oS2001c04_Unk_12]
 	strh r0, [r1,#oS2001c04_Unk_14]
 	movflag EVENT_1731
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end cutscene_8036ED4
 
@@ -2464,7 +2464,7 @@ cutscene_8036EFE:
 	mov r0, #NULL
 	str r0, [r1,#oCutsceneState_CutsceneScriptAfterCutsceneSkip] // s_02011C50.unk_38
 	movflag EVENT_1731
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8036F20: .word DummyCutsceneScript
@@ -3165,7 +3165,7 @@ CutsceneCameraCmd_run_text_script:
 	mov r0, #2
 	bl ReadCutsceneCameraScriptWord
 	mov r1, r4
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	pop {r1}
 	mov r0, #1
 	add r1, #6
@@ -3668,7 +3668,7 @@ byte_8037694: .byte 0x0, 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
 CutsceneCmd_end_for_map_reload_maybe_8037c64:
 	push {lr}
 	movflag EVENT_1741
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne .eventActive
 	bl reloadCurNaviStatBoosts_813c3ac
 .eventActive
@@ -3683,7 +3683,7 @@ CutsceneCmd_end_for_map_reload_maybe_8037c64:
 CutsceneCmd_end_for_map_reload_maybe_80376dc:
 	push {lr}
 	movflag EVENT_1741
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne .eventActive
 	bl reloadCurNaviStatBoosts_813c3ac
 .eventActive
@@ -3966,7 +3966,7 @@ CutsceneCmd_wait_if_flag_clear:
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq .flagClear
 	add r7, #3
 	mov r0, #1
@@ -3985,7 +3985,7 @@ CutsceneCmd_wait_if_flag_set:
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne .flagSet
 	add r7, #3
 	mov r0, #1
@@ -4320,7 +4320,7 @@ CutsceneCmd_run_text_script:
 	beq .notFromMem
 	ldr r0, [r5,#oCutsceneState_TextArchivePtr]
 	ldrb r1, [r5,r4]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	add r7, #2
 	mov r0, #1
 	pop {pc}
@@ -4329,7 +4329,7 @@ CutsceneCmd_run_text_script:
 	bl ReadMapScriptByte
 	mov r1, r4
 	ldr r0, [r5,#oCutsceneState_TextArchivePtr]
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	add r7, #3
 	mov r0, #1
 	pop {pc}

@@ -7797,7 +7797,7 @@ RunTextScriptCommError_803CD64:
 	push {r4-r7,lr}
 	mov r1, r0
 	ldr r0, off_803CD70 // =TextScriptCommError873B9E0
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803CD70: .word TextScriptCommError873B9E0
@@ -7938,7 +7938,7 @@ sub_803CE44:
 	mov r4, r0
 	mov r4, r0
 	mov r1, #0x3e
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	mov r7, r0
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_Unk2004334_Ptr]
@@ -7950,7 +7950,7 @@ sub_803CE44:
 	mov r2, r7
 	bl SetCurPETNaviStatsHword
 	movflag EVENT_PET_NAVI_ACTIVE
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq locret_803CEB4
 	mov r0, #0
 	mov r1, #0x40
@@ -7962,7 +7962,7 @@ sub_803CE44:
 	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	mov r1, #0x3e
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	mov r7, r0
 	bl GetCurPETNavi // () -> u8
 	mov r1, #0x42
@@ -7983,7 +7983,7 @@ SetCurNaviHPToFull:
 	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	mov r1, #oNaviStats_MaxHP
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	mov r2, r0
 	mov r0, r4
 	mov r1, #oNaviStats_CurHP
@@ -7998,7 +7998,7 @@ sub_803CED4:
 	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	mov r1, #0x3e
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	mov r7, r0
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_Unk2004334_Ptr]
@@ -8016,7 +8016,7 @@ sub_803CEF8:
 	push {r4-r7,lr}
 	mov r4, r0
 	mov r1, #0x42
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	mov r2, r0
 	mov r0, r4
 	mov r1, #0x40
@@ -8031,7 +8031,7 @@ sub_803CF10:
 	bl GetCurPETNavi // () -> u8
 	mov r4, r0
 	mov r1, #0x3e
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	mov r7, r0
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_Unk2004334_Ptr]
@@ -8059,7 +8059,7 @@ sub_803CF3C:
 	mov r0, #0
 	mov r4, r0
 	mov r1, #0x3e
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	add r0, r0, r7
 	ldr r1, off_803CF70 // =0x3e8
 	cmp r0, r1
@@ -8089,7 +8089,7 @@ sub_803CF74:
 	bl reloadCurNaviStatBoosts_813c3ac
 	mov r0, r4
 	mov r1, #0x40
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	add r7, r7, r0
 	mov r0, r4
 	mov r1, #0x40
@@ -8097,7 +8097,7 @@ sub_803CF74:
 	bl SetCurPETNaviStatsHword
 	mov r0, r4
 	mov r1, #0x42
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	cmp r0, r7
 	bge locret_803CFAE
 	mov r2, r0
@@ -9112,7 +9112,7 @@ loc_803DED6:
 	cmp r0, #1
 	bne loc_803DEFE
 	movflag EVENT_172F
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_803DEF8
 	ldrh r0, [r7,#0xc] // (eCamera.unk_5C - 0x20099d0)
 	tst r0, r0
@@ -10695,12 +10695,12 @@ loc_803E9E6:
 	tst r4, r4
 	beq loc_803EA0A
 	movflag EVENT_1E3
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_803EA0A
 	movflag EVENT_7A
 	bl SetEventFlagFromImmediate
 	movflag EVENT_7B
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 loc_803EA0A:
 	mov r0, r6
 	tst r0, r0
@@ -12742,7 +12742,7 @@ loc_803F7DC:
 	pop {r0-r2}
 loc_803F808:
 	movflag EVENT_1704
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	mov r0, #1
 	pop {r1-r7,pc}
 loc_803F814:
@@ -12791,7 +12791,7 @@ sub_803F838: // () -> !zf
 loc_803F870:
 	mov r4, #TRUE
 	movflag EVENT_1704
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	bl SeedRNG // () -> ()
 loc_803F87E:
 	bl RandomizeExtraToolkitPointers // () -> ?
@@ -12927,7 +12927,7 @@ loc_803F93C:
 	cmp r7, #3
 	blt loc_803F93C
 	movflag EVENT_172E
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	mov r0, #1
 	pop {r1-r7,pc}
 loc_803F96A:
@@ -12978,7 +12978,7 @@ loc_803F9B0:
 	pop {r1-r7,pc}
 loc_803F9C0:
 	movflag EVENT_172E
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	mov r0, #1
 	pop {r1-r7,pc}
 	.balign 4, 0
@@ -13028,7 +13028,7 @@ loc_803FA08:
 	cmp r7, #3
 	blt loc_803FA08
 	movflag EVENT_1737
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	mov r0, #1
 	pop {r1-r7,pc}
 loc_803FA36:
@@ -13079,7 +13079,7 @@ loc_803FA7C:
 	pop {r1-r7,pc}
 loc_803FA8C:
 	movflag EVENT_1737
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	bl sub_803C352
 	mov r0, #1
 	pop {r1-r7,pc}

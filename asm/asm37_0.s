@@ -47,7 +47,7 @@ sub_813B7A0:
 	ldr r1, dword_813B7E8 // =0x2660 
 	add r1, r1, r4
 	mov r0, r1
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_813B7BC
 	mov r2, #0xc
 loc_813B7BC:
@@ -1151,11 +1151,11 @@ sub_813BF1C:
 	push {r4-r7,lr}
 	mov r6, #1
 	movflag EVENT_1720
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_813BF36
 	b loc_813BF38
 	movflag EVENT_1723
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_813BF38
 loc_813BF36:
 	mov r6, #0
@@ -1635,7 +1635,7 @@ loc_813C366:
 	ldr r2, dword_813C3A0 // =0x2660 
 	add r2, r2, r3
 	mov r0, r2
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_813C386
 	mov r0, r2
 	mov r2, #4
@@ -1672,7 +1672,7 @@ reloadCurNaviStatBoosts_813c3ac:
 .isMegaMan
 	bl applyNaviStatsMaybe_813C458
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq .loc_813C3CC
     // if (!EVENT_163)
 	bl sub_8121154
@@ -1685,12 +1685,12 @@ reloadCurNaviStatBoosts_813c3ac:
 	bge .IfInternetMap
     // if (real world map)
 	movflag EVENT_PET_NAVI_ACTIVE
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq .ret
     // if (EVENT_PET_NAVI_ACTIVE)
 	mov r0, #0
 	mov r1, #oNaviStats_MaxHP
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	mov r7, r0
 	mov r0, #0
 	mov r1, #oNaviStats_CurHP
@@ -1698,7 +1698,7 @@ reloadCurNaviStatBoosts_813c3ac:
 	bl SetCurPETNaviStatsHword
 	bl GetCurPETNavi // () -> u8
 	mov r1, #oNaviStats_MaxHP
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	mov r7, r0
 	bl GetCurPETNavi // () -> u8
 	mov r1, #oNaviStats_CurHP
@@ -1708,11 +1708,11 @@ reloadCurNaviStatBoosts_813c3ac:
 .IfInternetMap:
 	mov r0, #0
 	mov r1, #oNaviStats_MaxHP
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	mov r4, r0
 	mov r0, #0
 	mov r1, #oNaviStats_CurHP
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	cmp r0, r4
 	ble .loc_813C42E
 	mov r0, #0
@@ -1722,11 +1722,11 @@ reloadCurNaviStatBoosts_813c3ac:
 .loc_813C42E:
 	bl GetCurPETNavi // () -> u8
 	mov r1, #oNaviStats_MaxHP
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	mov r4, r0
 	bl GetCurPETNavi // () -> u8
 	mov r1, #oNaviStats_CurHP
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	cmp r0, r4
 	ble .ret
 	bl GetCurPETNavi // () -> u8
@@ -1749,7 +1749,7 @@ applyNaviStatsMaybe_813C458:
 	bl SetCurPETNavi
 	bl sub_813C678
 	movflag EVENT_170D
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	bl applyNavicustPrograms_813C684
 	bl sub_813CBCC
 	mov r0, r4
@@ -2707,7 +2707,7 @@ off_813CBC8: .word 0x1F4
 sub_813CBCC:
 	push {r4-r7,lr}
 	movflag EVENT_1720
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	bl sub_813C490
 	cmp r0, #1
 	bne loc_813CBE4
@@ -3437,7 +3437,7 @@ loc_813D44A:
 	ldr r4, dword_813D488 // =0x2620 
 	add r4, r4, r5
 	mov r0, r4
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne loc_813D466
 	// bitfield
 	mov r0, r4

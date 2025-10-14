@@ -404,18 +404,18 @@ sub_808CA68:
 	strb r0, [r5,#0x3] // (byte_2000B43 - 0x2000b40)
 	bl sub_808CC84
 	movflag EVENT_9D8
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_9D9
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	mov r0, #0
 	bl sub_8001172
 	movflag EVENT_9D3
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_808CAA2
 	bl sub_808CF50
 loc_808CAA2:
 	movflag EVENT_9D3
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	bl sub_8142C94
 	bl sub_808CBA0
 	bl sub_808CF34
@@ -441,7 +441,7 @@ sub_808CAD4:
 	bl SetEventFlagFromImmediate
 	bl sub_808CBA0
 	movflag EVENT_9D8
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_808CB06
 	movflag EVENT_9D7
 	bl SetEventFlagFromImmediate
@@ -461,11 +461,11 @@ sub_808CB0C:
 	ldr r5, off_808CB9C // =dword_808CA44
 	ldr r5, [r5]
 	movflag EVENT_9D6
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_808CB3C
 	bl sub_808D11C
 	movflag EVENT_9D8
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq locret_808CB96
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -504,7 +504,7 @@ loc_808CB6A:
 	b loc_808CB8A
 loc_808CB76:
 	movflag EVENT_BF1
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	bl sub_808CFB8
 	cmp r0, #1
 	bne loc_808CB8A
@@ -590,7 +590,7 @@ sub_808CC10:
 	cmp r0, #2
 	bne loc_808CC2E
 	movflag EVENT_9D8
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_808CC2E
 	movflag EVENT_9D8
 	bl SetEventFlagFromImmediate
@@ -607,7 +607,7 @@ sub_808CC34:
 	mov r4, #0
 	mov r6, #0
 	movflag EVENT_9D4
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_808CC48
 	ldr r4, off_808CC80 // =byte_808C930
 	b loc_808CC6C
@@ -753,13 +753,13 @@ sub_808CD24:
 	lsl r0, r0, #1
 	ldrh r4, [r4,r0]
 	mov r0, r4
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne locret_808CD62
 	// bitfield
 	mov r0, r4
 	bl SetEventFlag
 	movflag EVENT_BF1
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne locret_808CD62
 	mov r0, #0xd4
 	bl PlaySoundEffect
@@ -801,7 +801,7 @@ loc_808CDDA:
 	lsl r3, r3, #3
 	ldrh r0, [r6,r3]
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_808CE02
 	mov r3, r7
 	lsl r3, r3, #3
@@ -856,7 +856,7 @@ loc_808CE3C:
 	lsl r6, r6, #3
 	ldrh r0, [r4,r6]
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_808CE5A
 	add r6, #2
 	ldrh r0, [r4,r6]
@@ -944,7 +944,7 @@ sub_808CF34:
 	ldr r1, off_808CF78 // =byte_808CF84 
 	ldrh r1, [r1,r0]
 	mov r0, r1
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_808CF4C
 	mov r4, #1
 loc_808CF4C:
@@ -961,7 +961,7 @@ sub_808CF50:
 	ldr r1, off_808CF74 // =byte_808CF7C 
 	ldrh r1, [r1,r4]
 	mov r0, r1
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne locret_808CF70
 	ldr r1, off_808CF78 // =byte_808CF84 
 	ldrh r1, [r1,r4]
@@ -982,7 +982,7 @@ sub_808CF8C:
 	push {r4,lr}
 	mov r4, #0
 	movflag EVENT_9D9
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_808CFAC
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_ChatboxPtr]
@@ -1226,7 +1226,7 @@ loc_808D152:
 	cmp r6, #0x1e
 	blt loc_808D126
 	movflag EVENT_9D6
-	bl ClearEventFlagFromImmediate
+	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_808D16C: .word dword_808CA44

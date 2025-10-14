@@ -8,7 +8,7 @@
 IWRAMRoutinesEnd::
 
 
-	.section .rodata
+	.section .data
 
 battleSpriteMegaMan::
 	.incbin "data/sprites/battleSpriteMegaMan.spr"

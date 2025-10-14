@@ -3183,7 +3183,7 @@ int __fastcall chatbox_804252C(int a1, int a2, int a3)
     v4 = *(v3 + 2) | (*(v3 + 3) << 8);
     v5 = getPETNaviSelect();
     v6 = v5;
-    v7 = sub_80010D4(v5);
+    v7 = GetMaxAndCurHPForCurPETNavi_80010D4(v5);
     sub_80010EC(v6, v7 + v4);
     return 0;
 }

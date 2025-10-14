@@ -60,7 +60,7 @@ chatbox_runScript_202da04: // (u8 scriptID) -> void
 	push {r4,r5,lr}
 	mov r1, r0
 	ldr r0, off_803FD74 // =eTextScript202DA04
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	pop {r4,r5,pc}
 	.balign 4, 0
 off_803FD74: .word eTextScript202DA04
@@ -70,7 +70,7 @@ off_803FD74: .word eTextScript202DA04
 	thumb_func_start chatbox_runScript_803FD78
 chatbox_runScript_803FD78: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	push {r4,r5,lr}
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 
 	// u16 src[4]: r0 = byte_803FD94
 	// dest: r1 = &r10->oToolkit_ChatboxPtr->oChatbox_Unk_68
@@ -105,7 +105,7 @@ chatbox_runScript_803FDA4: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r4, #TRUE
 
 loc_803FDA8:
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 
 	ldr r0, off_803FDEC // =byte_86BFBA0
 	ldr r1, dword_803FDF0 // =0x600dc80 
@@ -165,7 +165,7 @@ chatbox_runScript_803FE10: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	mov r4, #TRUE
 
 loc_803FE14:
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 
 	ldr r0, off_803FE58 // =byte_86C05E0
 	ldr r1, dword_803FE5C // =0x600dc80 
@@ -212,7 +212,7 @@ off_803FE70: .word byte_86C0920
 	thumb_func_start chatbox_runScriptAndSetWhiteDot803FE74
 chatbox_runScriptAndSetWhiteDot803FE74: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 	push {r4,r5,lr}
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 
 	ldr r0, off_803FE9C // =spriteWhiteDot 
 	ldr r1, dword_803FEA0 // =0x600dc80 
@@ -868,7 +868,7 @@ chatbox_runTrainScript:
 	push {r4,r5,lr}
 	mov r1, r0
 	ldr r0, off_8040380 // =eTextScript2034A04
-	bl chatbox_runScript // (TextScriptArchive *archive, u8 scriptIdx) -> void
+	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	pop {r4,r5,pc}
 	.balign 4, 0
 off_8040380: .word eTextScript2034A04
@@ -876,7 +876,7 @@ off_8040380: .word eTextScript2034A04
 
 
 	thumb_func_start chatbox_runScript
-chatbox_runScript: // (TextScriptArchive *archive, u8 scriptIdx) -> void
+chatbox_runScript: // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	push {r4-r6,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_ChatboxPtr]
@@ -3177,7 +3177,7 @@ loc_8041510:
 	lsl r1, r1, #8
 	orr r0, r1
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne loc_80414F0
 	// mask
 	mov r0, #FLAGS_3E_UNK_0001
@@ -3204,7 +3204,7 @@ loc_8041546:
 	lsl r1, r1, #8
 	orr r0, r1
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	beq loc_80414F0
 	// mask
 	mov r0, #FLAGS_3E_UNK_0001
@@ -3402,7 +3402,7 @@ chatbox_804171C:
 	orr r0, r2
 	mov r2, #0
 	mov r0, r0
-	bl TestEventFlag // (u16 flag) -> !zf
+	bl TestEventFlag // (flag: u16) -> !zf
 	bne loc_8041732
 	mov r2, #1
 loc_8041732:
@@ -3828,7 +3828,7 @@ chatbox_80419F8:
 	push {lr}
 	bl GetCurPETNavi // () -> u8
 	mov r1, #0x3e
-	bl GetCurPETNaviStatsHword
+	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	ldrb r1, [r4,#2]
 	ldrb r2, [r4,#3]
 	lsl r2, r2, #8
@@ -4000,7 +4000,7 @@ loc_8041B1A:
 	lsr r6, r2, #7
 	push {r0,r2}
 	movflag EVENT_1709
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	pop {r0,r2}
 	bne loc_8041B2E
 	mov r6, #0
@@ -5348,7 +5348,7 @@ chatbox_804252C:
 	orr r7, r0
 	bl GetCurPETNavi // () -> u8
 	mov r6, r0
-	bl sub_80010D4
+	bl GetMaxAndCurHPForCurPETNavi_80010D4 // (which_navi: u8) -> (u16, u16)
 	add r1, r0, r7
 	mov r0, r6
 	bl sub_80010EC

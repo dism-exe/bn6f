@@ -2784,7 +2784,7 @@ sub_80101F8:
 	cmp r4, #0
 	bne loc_8010216
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_8010216
 	bl notZero_eByte200AD04
 	beq loc_8010216
@@ -10104,19 +10104,24 @@ SetCurPETNaviStatsHword:
 	thumb_func_end SetCurPETNaviStatsHword
 
 	thumb_func_start GetCurPETNaviStatsHword
-// (int structSelectIdx, int structOffset) -> u16
-GetCurPETNaviStatsHword:
+GetCurPETNaviStatsHword: // (which_navi: u8, which_stat: u8) -> u16
 	push {lr}
+  
 	// return Toolkit->S20047CC_Ptrs[100*GetNaviStatsIndexGivenCurPETNavi(a1)+a2]
+
 	push {r1}
 	bl GetNaviStatsIndexGivenCurPETNavi // (int idx) -> bool8
 	pop {r1}
+
 	mov r3, #oNaviStats_Size
 	mul r0, r3
+
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_NaviStatsPtr]
 	add r3, r3, r0
+
 	ldrh r0, [r3,r1]
+
 	pop {pc}
 	thumb_func_end GetCurPETNaviStatsHword
 
@@ -27780,7 +27785,7 @@ sub_801D814:
 	cmp r0, #5
 	beq loc_801D848
 	movflag EVENT_163
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_801D84A
 	bl TestBattleFlag_0x40
 	bne loc_801D84A
@@ -27789,7 +27794,7 @@ sub_801D814:
 	tst r0, r1
 	bne loc_801D84A
 	movflag EVENT_E0
-	bl TestEventFlagFromImmediate // (event_group_off: u8, byte_and_flag_off: u8) -> !zf
+	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_801D84A
 loc_801D848:
 	mov r4, #1
