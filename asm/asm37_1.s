@@ -243,7 +243,7 @@ loc_8141A5C:
 	mov r1, #7
 loc_8141A62:
 	ldr r0, off_8141A6C // =byte_808A128 
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	bne loc_8141ABC
 locret_8141A6A:
 	pop {r4-r7,pc}
@@ -550,7 +550,7 @@ loc_8141FE4:
 	beq loc_814201A
 	ldr r0, off_8142048 // =byte_8089DF4 
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	movflag EVENT_702
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 loc_814201A:
@@ -1139,7 +1139,7 @@ loc_81425B4:
 	beq loc_81425D4
 	ldr r0, off_8142608 // =byte_8089448 
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 loc_81425D4:
 	movflag EVENT_740
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
@@ -1194,7 +1194,7 @@ loc_814265E:
 	bne loc_814266C
 	ldr r0, off_81426B8 // =byte_8089554 
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 loc_814266C:
 	movflag EVENT_742
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
@@ -1204,9 +1204,11 @@ loc_814267C:
 	movflag EVENT_746
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_8142690
-	ldr r0, off_81426BC // =byte_80893CC 
+
+	ldr r0, off_81426BC // =byte_80893CC // CutsceneScript
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
+
 	beq loc_8142690
 loc_8142690:
 	movflag EVENT_747
@@ -1214,7 +1216,7 @@ loc_8142690:
 	beq loc_81426A4
 	ldr r0, off_81426C0 // =dword_8089128 
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	beq loc_81426A4
 loc_81426A4:
 	movflag EVENT_746
@@ -1225,7 +1227,7 @@ loc_81426A4:
 	.byte 0x0, 0x0
 	.balign 4, 0
 off_81426B8: .word byte_8089554
-off_81426BC: .word byte_80893CC
+off_81426BC: .word byte_80893CC // CutsceneScript
 off_81426C0: .word dword_8089128
 	.byte 0x82, 0x4E, 0x8, 0x21, 0x48, 0x43, 0x36, 0x18
 	thumb_func_end sub_8142618
@@ -2372,7 +2374,7 @@ loc_8143024:
 	bne loc_8143038
 	ldr r0, off_8143080 // =byte_808C2F0 
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #1
 	bl sub_81433F6
 loc_8143038:
@@ -2388,7 +2390,7 @@ loc_8143048:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 loc_814305E:
 	movflag EVENT_962
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
@@ -3224,7 +3226,7 @@ loc_8143A02:
 	beq loc_8143A2E
 	ldr r0, off_8143A50 // =byte_8093358 
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	bl sub_8143F38
 	movflag EVENT_D36
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
@@ -3281,12 +3283,12 @@ loc_8143A9A:
 	bne loc_8143ABE
 	ldr r0, off_8143B24 // =byte_8092DE8 
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	b loc_8143AC6
 loc_8143ABE:
 	ldr r0, off_8143B2C // =byte_80933B8 
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 loc_8143AC6:
 	movflag EVENT_D34
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
@@ -3301,7 +3303,7 @@ loc_8143AD6:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	bne loc_8143B04
 loc_8143AF0:
 	bl sub_8143F72
@@ -3309,7 +3311,7 @@ loc_8143AF0:
 	bl GetGroundmanMinigameMapIndex
 	mov r1, r0
 	ldr r0, off_8143B28 // =byte_809326C 
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	bne loc_8143B04
 loc_8143B04:
 	movflag EVENT_D34
@@ -3495,7 +3497,7 @@ sub_8143C62:
 	ldr r1, off_8143C7C // =off_8143C80 
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
-	bl npc_freeAllObjectsThenSpawnObjectsFromList
+	bl npc_freeAllObjectsThenSpawnObjectsFromList // (ptr: (*const NPCScript)[]) -> ()
 	movflag EVENT_1721
 	bl SetEventFlagFromImmediate
 	pop {r4-r7,pc}

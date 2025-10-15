@@ -59,11 +59,12 @@ off_807D2F0:: .word byte_807D378
 off_807D300:: .word byte_807D48C
 	.word byte_807D5B1
 	.word byte_807D80B
-	.word 0x0
-off_807D310:: .word off_807D918
+	.word NULL
+NPCScriptsUndernet_807D310:: // Nullable<(*const NPCScript)[]>[UNDERNET_NUM_MAPS]
+  .word off_807D918
 	.word off_807DF40
 	.word off_807E19C
-	.word 0x0
+	.word NULL
 off_807D320:: .word byte_807D330
 	.word byte_807D340
 	.word byte_807D350

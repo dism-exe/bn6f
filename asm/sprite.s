@@ -452,7 +452,7 @@ uncompSprite_8002906: // (sprite_load_data: *const SpriteLoadData) -> bool
 	push {r1,r2,r4-r6}
 	// src
 	mov r0, r8
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 
 	pop {r1,r2,r4-r6}
 	add r1, r1, r2
@@ -577,7 +577,7 @@ loc_80029E8:
 	push {r1,r2,r4-r6}
 	// src
 	mov r0, r8
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	pop {r1,r2,r4-r6}
 	add r1, r1, r2
 	str r1, [r5,#0x4c]
@@ -649,7 +649,7 @@ sprite_decompress:
 	push {r1,r2}
 	// src
 	mov r0, r8
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	pop {r1,r2}
 	add r1, r1, r2
 	str r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
@@ -776,7 +776,7 @@ loc_8002B52:
 	push {r1,r2}
 	// src
 	mov r0, r8
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	pop {r1,r2}
 	mov r0, #1
 	pop {r1-r3}

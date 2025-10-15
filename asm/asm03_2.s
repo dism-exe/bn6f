@@ -2096,17 +2096,17 @@ uncomp_80471F8:
 	ldr r0, [r0,#4]
 	// dest
 	ldr r1, off_8047218 // =unk_2029A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	// src
 	ldr r0, off_804721C // =CompText873DE4C 
 	// dest
 	ldr r1, off_8047220 // =eDecomp202BA00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	// src
 	ldr r0, off_8047224 // =CompText873ECC8 
 	// dest
 	ldr r1, off_8047228 // =eDecompressedTextArchive202DA00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8047218: .word unk_2029A00

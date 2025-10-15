@@ -899,7 +899,7 @@ loc_8039032:
 	ldr r0, dest // =comp_82E8470
 	// dest
 	ldr r1, off_8039070 // =unk_201AA00
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	pop {r4,pc}
 	.balign 4, 0
 dword_8039050: .word 0x607

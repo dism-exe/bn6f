@@ -24,9 +24,11 @@ dword_804D09C:: .word 0xFF
 dword_804D0A0:: .word 0xFF
 map00_ACDC_804D0A4:: .word MapScriptACDC804D104
 	.word byte_804D334
-off_804D0AC:: .word MapScript804D2A0
+off_804D0AC:: 
+  .word MapScript804D2A0
 	.word dword_804D3B0
-npc_map00_ACDC_804D0B4:: .word off_804D3B4
+NPCScriptsACDC_804D0B4:: // (*const NPCScript)[][ACDC_TOWN_NUM_MAPS]
+  .word off_804D3B4
 	.word dword_804DEEC
 off_804D0BC:: .word byte_804D0C4
 	.word byte_804D0D4

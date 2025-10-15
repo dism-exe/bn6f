@@ -26372,7 +26372,7 @@ loc_811C2CC:
 	lsr r0, r0, #1
 	// dest
 	ldr r1, off_811C39C // =unk_201D2F8
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	ldr r1, off_811C39C // =unk_201D2F8
 	add r1, #4
 loc_811C2D8:
@@ -26578,7 +26578,7 @@ loc_811C578:
 	lsr r0, r0, #1
 	// dest
 	ldr r1, off_811C5F4 // =unk_2018A00
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	ldr r1, off_811C5F4 // =unk_2018A00
 	add r1, #4
 loc_811C584:
@@ -28032,7 +28032,7 @@ loc_811D312:
 	ldr r7, [r1,r6]
 	// dest
 	mov r1, r7
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	add r1, r7, #4
 loc_811D320:
 	ldr r0, off_811D398 // =byte_811D39C
@@ -28273,7 +28273,7 @@ sub_811D5F8:
 	// dest
 	ldr r1, off_811D630 // =unk_201AA00
 	mov r7, r1
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	add r1, r7, #4
 	ldr r0, dword_811D628 // =0x8f
 	bl initGuiSprite_8002770 // (int a1, int a2) -> void
@@ -28975,7 +28975,7 @@ loc_811DCB0:
 	lsr r0, r0, #1
 	// dest
 	ldr r1, off_811DD8C // =unk_20212F8
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	ldr r1, off_811DD8C // =unk_20212F8
 	add r1, #4
 loc_811DCBC:

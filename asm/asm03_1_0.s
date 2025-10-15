@@ -1362,12 +1362,12 @@ Struct8034460:
 	.word 0x0285, 0x0, 0x0, 0x3, 0xfe840000, 0x640000, 0xffba0000, 0x3c0000
 	.word 0x0285, 0x0, 0x0, 0x3, 0xfe840000, 0x1540000, 0x3c0000, 0x1ae0000
 	.word 0xffffffff
-RealWorldMapScriptPointers: // (* const MapScript)[][2][REAL_WORLD_NUM_GROUPS]
+RealWorldMapScriptPointers: // (*const MapScript)[][2][REAL_WORLD_NUM_GROUPS]
 	.word map00_ACDC_804D0A4
 	.word off_804D0AC
 
-	.word off_804E92C // (* const MapScript)[CENTRAL_TOWN_NUM_MAPS]
-	.word off_804E940 // (* const MapScript)[CENTRAL_TOWN_NUM_MAPS]
+	.word off_804E92C // (*const MapScript)[CENTRAL_TOWN_NUM_MAPS]
+	.word off_804E940 // (*const MapScript)[CENTRAL_TOWN_NUM_MAPS]
 
 	.word off_8052D88
 	.word off_8052DB4
@@ -1390,13 +1390,14 @@ off_803461C: .word off_804D0BC
 	.word off_805E198
 	.word off_806066C
 	.word off_8062F90
-NPCList_maps00: .word npc_map00_ACDC_804D0B4
-	.word npc_map00_804E954
-	.word off_8052DE0
-	.word off_8059D70
-	.word off_805E184
-	.word off_806065C
-	.word off_8062F78
+NPCList_maps00: // (*const NPCScript)[][][REAL_WORLD_NUM_GROUPS]
+  .word NPCScriptsACDC_804D0B4 // (*const NPCScript)[][ACDC_TOWN_NUM_MAPS]
+	.word NPCScriptsCentralTown_804E954 // (*const NPCScript)[][CENTRAL_TOWN_NUM_MAPS]
+	.word NPCScriptsCyberAcademy_8052DE0 // (*const NPCScript)[][CYBER_ACADEMY_NUM_MAPS]
+	.word NPCScriptsSeasideTown_8059D70 // (*const NPCScript)[][SEASIDE_TOWN_NUM_MAPS]
+	.word NPCScriptsGreenTown_805E184 // (*const NPCScript)[][GREEN_TOWN_NUM_MAPS]
+	.word NPCScriptsSkyTown_806065C // (*const NPCScript)[][SKY_TOWN_NUM_MAPS]
+	.word NPCScriptsExpoSite_8062F78 // (*const NPCScript)[][EXPO_SITE_NUM_MAPS]
 RealWorldSpawnMapObjectJumptable:
 	.word ACDCTown_SpawnMapObjectsForMap+1
 	.word CentralTown_SpawnMapObjectsForMap+1
@@ -1406,7 +1407,7 @@ RealWorldSpawnMapObjectJumptable:
 	.word SkyTown_SpawnMapObjectsForMap+1
 	.word ExpoSite_SpawnMapObjectsForMap+1
 
-InternetMapScriptPointers: // (* const MapScript)[][2][INTERNET_NUM_GROUPS]
+InternetMapScriptPointers: // (*const MapScript)[][2][INTERNET_NUM_GROUPS]
   .word off_80665A4
 	.word off_80665AC
 	.word off_8067DC8
@@ -1500,30 +1501,32 @@ UnkInternetMapGroupJumptable_8034784: .word RobotControlComp_UnkFunction_806651c
 	.word SkyACDCArea_UnkFunction_807aaac+1
 	.word Undernet_UnkFunction_807cfcc+1
 	.word GraveyardImmortalArea_UnkFunction_807ee68+1
-NPCList_maps80: .word off_80665B4
-	.word off_8067DE0
-	.word off_8069310
-	.word off_806A278
+NPCList_maps80: // Nullable<(*const NPCScript)[][]>[INTERNET_NUM_GROUPS]
+  .word NPCScriptsRobotControlComp_80665B4 // (*const NPCScript)[][ROBOT_CONTROL_COMP_NUM_MAPS]
+	.word NPCScriptsAquariumComp_8067DE0 // (*const NPCScript)[][AQUARIUM_COMP_NUM_MAPS]
+	.word NPCScriptsJudgetreeComp_8069310 // (*const NPCScript)[][JUDGETREE_COMP_NUM_MAPS]
+	.word NPCScriptsMrWeather_806A278 // (*const NPCScript)[][MR_WEATHER_COMP_NUM_MAPS]
 	.word NULL
-	.word off_806AE30
-	.word NULL
-	.word NULL
-	.word off_806C7E8
+	.word NPCScriptsPvavilionComp_806AE30 // (*const NPCScript)[][PAVILION_COMP_NUM_MAPS]
 	.word NULL
 	.word NULL
-	.word NULL
-	.word off_806E030
-	.word off_80702AC
+	.word NPCScriptsHomePages_806C7E8 // Nullable<(*const NPCScript)[]>[HOMEPAGES_NUM_MAPS]
 	.word NULL
 	.word NULL
-	.word off_8071EC8
-	.word off_80758B8
-	.word off_8078114
-	.word off_807953C
-	.word off_807AE04
-	.word off_807D310
-	.word dword_807F210
-InternetSpawnMapObjectJumptable: .word RobotControlComp_SpawnMapObjectsForMap+1
+	.word NULL
+	.word NPCScriptsComps_806E030 // (*const NPCScript)[][COMPS_NUM_MAPS]
+	.word NPCScriptsComps2_80702AC // (*const NPCScript)[][COMPS_2_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word NPCScriptsCentralArea_8071EC8 // (*const NPCScript)[][CENTRAL_AREA_NUM_MAPS]
+	.word NPCScriptsSeasideArea_80758B8 // (*const NPCScript)[][SEASIDE_AREA_NUM_MAPS]
+	.word NPCScriptsGreenArea_8078114 // (*const NPCScript)[][GREEN_AREA_NUM_MAPS]
+	.word NPCScriptsUnderground_807953C // (*const NPCScript)[][UNDERGROUND_NUM_MAPS]
+	.word NPCScriptsSkyACDCArea_807AE04 // (*const NPCScript)[][SKY_ACDC_AREA_NUM_MAPS]
+	.word NPCScriptsUndernet_807D310 // Nullable<(*const NPCScript)[]>[UNDERNET_NUM_MAPS]
+	.word NPCScriptsGraveyardImmortalArea_807F210 // Nullable<(*const NPCScript)[]>[GRAVEYARD_NUM_MAPS]
+InternetSpawnMapObjectJumptable: 
+  .word RobotControlComp_SpawnMapObjectsForMap+1
 	.word AquariumComp_SpawnMapObjectsForMap+1
 	.word JudgeTreeComp_SpawnMapObjectsForMap+1
 	.word MrWeatherComp_SpawnMapObjectsForMap+1
@@ -1546,7 +1549,8 @@ InternetSpawnMapObjectJumptable: .word RobotControlComp_SpawnMapObjectsForMap+1
 	.word SkyACDCArea_SpawnMapObjectsForMap+1
 	.word Undernet_SpawnMapObjectsForMap+1
 	.word GraveyardImmortalArea_SpawnMapObjectsForMap+1
-InternetLoadBGAnimJumptable: .word RobotControlComp_LoadBGAnim+1
+InternetLoadBGAnimJumptable: 
+  .word RobotControlComp_LoadBGAnim+1
 	.word AquariumComp_LoadBGAnim+1
 	.word JudgeTreeComp_LoadBGAnim+1
 	.word MrWeatherComp_LoadBGAnim+1
@@ -1697,12 +1701,12 @@ map_8034B4C: // (map_group: u8, map_number: u8) -> ()
 	cmp r0, #INTERNET_MAP_GROUP_START
 	bge else_8034B86
 
-	ldr r4, off_8034BAC // =RealWorldMapScriptPointers // (* const MapScript)[][2][REAL_WORLD_NUM_GROUPS]
+	ldr r4, off_8034BAC // =RealWorldMapScriptPointers // (*const MapScript)[][2][REAL_WORLD_NUM_GROUPS]
 	b endif_8034B8A
 
 else_8034B86:
 
-	ldr r4, off_8034BB0 // =InternetMapScriptPointers // (* const MapScript)[][2][INTERNET_NUM_GROUPS]
+	ldr r4, off_8034BB0 // =InternetMapScriptPointers // (*const MapScript)[][2][INTERNET_NUM_GROUPS]
 	sub r0, #INTERNET_MAP_GROUP_START
 
 endif_8034B8A:
@@ -1729,8 +1733,8 @@ endif_8034B8A:
 	mov r12, r4
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8034BAC: .word RealWorldMapScriptPointers // (* const MapScript)[][2][REAL_WORLD_NUM_GROUPS]
-off_8034BB0: .word InternetMapScriptPointers // (* const MapScript)[][2][INTERNET_NUM_GROUPS]
+off_8034BAC: .word RealWorldMapScriptPointers // (*const MapScript)[][2][REAL_WORLD_NUM_GROUPS]
+off_8034BB0: .word InternetMapScriptPointers // (*const MapScript)[][2][INTERNET_NUM_GROUPS]
 off_8034BB4: .word unk_2011EA0
 	thumb_func_end map_8034B4C
 
@@ -1921,7 +1925,7 @@ loc_8034CF6:
 	lsl r4, r4, #8
 	orr r1, r4
 	ldr r0, off_8034D60 // =byte_8098824
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034D44:
@@ -1930,7 +1934,7 @@ loc_8034D44:
 	b loc_8034D52
 loc_8034D4C:
 	ldr r0, off_8034D64 // =CutsceneScript_80988E4
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 loc_8034D52:
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -1959,7 +1963,7 @@ sub_8034D7C:
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_8034DA4
 	ldr r0, off_8034DAC // =CutsceneScript_80991F4
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034DA4:
@@ -1980,7 +1984,7 @@ sub_8034DB0:
 	cmp r0, #0
 	beq loc_8034DCA
 	ldr r0, off_8034E30 // =byte_809A8A8
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034DCA:
@@ -1996,7 +2000,7 @@ loc_8034DCA:
 	bl sub_8034E88
 	bne loc_8034DEE
 	ldr r0, off_8034E2C // =byte_8099EA0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034DEE:
@@ -2007,7 +2011,7 @@ loc_8034DEE:
 	bl sub_8034E88
 	bne loc_8034E08
 	ldr r0, off_8034E34 // =byte_809AA34
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034E08:
@@ -2018,7 +2022,7 @@ loc_8034E08:
 	bl sub_8034E88
 	bne loc_8034E22
 	ldr r0, off_8034E38 // =byte_809CAD8
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_8034E22:
@@ -2172,7 +2176,7 @@ HandleCoordinateInteractionCutscene:
 	cmp r1, #0xff
 	beq .done
 	ldr r0, off_8034F64 // =byte_8098358
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 .done
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -2211,7 +2215,7 @@ sub_8034F68:
 	beq locret_8034FA8
 	ldr r0, off_8034FB0 // =byte_8098384
 	ldr r1, [r3]
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 locret_8034FA8:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -2246,7 +2250,7 @@ loc_8034FCE:
 	ldr r4, off_8035024 // =byte_80989C1
 loc_8034FEC:
 	mov r0, r4
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	movflag EVENT_1703
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	movflag EVENT_127
@@ -2305,7 +2309,7 @@ sub_8035054:
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_803507A
 	ldr r0, off_8035080 // =byte_809AE68
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_803507A:
@@ -2324,7 +2328,7 @@ sub_8035084:
 	beq loc_803509E
 	mov r1, r0
 	ldr r0, off_80350A4 // =byte_8098BB8
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_803509E:
@@ -2360,7 +2364,7 @@ npc_80350BC:
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80350E2
 	ldr r0, off_8035130 // =byte_8099E04
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0
 	pop {r4,pc}
 loc_80350E2:
@@ -2387,43 +2391,57 @@ loc_8035102:
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	mov r1, #0
 loc_803511C:
-	ldr r0, off_803512C // =byte_8099DC0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	ldr r0, off_803512C // =byte_8099DC0 // CutsceneScript
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0
 	pop {r4,pc}
 loc_8035126:
 	mov r0, #1
 	pop {r4,pc}
 	.balign 4, 0
-off_803512C: .word byte_8099DC0
+off_803512C: .word byte_8099DC0 // CutsceneScript
 off_8035130: .word byte_8099E04
 	thumb_func_end npc_80350BC
 
 	thumb_func_start npc_spawnOverworldNPCObjectsForMap
 npc_spawnOverworldNPCObjectsForMap:
 	push {r4-r7,lr}
+
 	movflag EVENT_1721
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne .flagSet
+
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
+
 	ldrb r0, [r3,#oGameState_MapGroup]
 	ldrb r1, [r3,#oGameState_MapNumber]
+
 	cmp r0, #INTERNET_MAP_GROUP_START
 	bge .internetMapGroup
-	ldr r2, =NPCList_maps00
+
+  // real world
+
+	ldr r2, =NPCList_maps00 // (*const NPCScript)[][][REAL_WORLD_NUM_GROUPS]
 	b .realWorldMapGroup
+
 .internetMapGroup
-	ldr r2, =NPCList_maps80
+	ldr r2, =NPCList_maps80 // Nullable<(*const NPCScript)[][]>[INTERNET_NUM_GROUPS]
 	sub r0, #INTERNET_MAP_GROUP_START
 .realWorldMapGroup
+
 	// area
 	lsl r0, r0, #2
 	// subarea
 	lsl r1, r1, #2
+
+  // Index by MapGroup
 	ldr r2, [r2,r0]
+
+  // Index by MapNumber
 	ldr r0, [r2,r1]
-	bl npc_freeAllObjectsThenSpawnObjectsFromList
+	bl npc_freeAllObjectsThenSpawnObjectsFromList // (ptr: (*const NPCScript)[]) -> ()
+
 .flagSet
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -2478,7 +2496,7 @@ locret_80351AE:
 npc_freeAllObjectsIfDifferentMap_80351b4:
 	push {r4-r7,lr}
 	ldr r0, =dword_80351C4
-	bl npc_freeAllObjectsThenSpawnObjectsFromList
+	bl npc_freeAllObjectsThenSpawnObjectsFromList // (ptr: (*const NPCScript)[]) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 	.pool // 80351C0
@@ -2603,9 +2621,11 @@ loc_80352A6:
 	mov r0, r7
 	bl TestEventFlag // (flag: u16) -> !zf
 	bne loc_80352CE
-	ldr r0, off_8035328 // =byte_80990B8
+
+	ldr r0, off_8035328 // =byte_80990B8 // CutsceneScript
 	ldr r1, [r5]
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
+
 	b locret_80352D4
 loc_80352CE:
 	add r4, #6
@@ -2625,7 +2645,7 @@ word_80352DC: .hword 0xD0
 off_8035308: .word byte_803530C
 byte_803530C: .byte 0x1, 0x0, 0xFF, 0x1, 0x2, 0x0, 0xFF, 0x1, 0x3, 0x0, 0xFF, 0x1, 0x4, 0x0
 	.byte 0xFF, 0x1, 0x5, 0x0, 0xFF, 0x1, 0x6, 0x0, 0xFF, 0x1, 0x7, 0x0, 0xFF, 0x1
-off_8035328: .word byte_80990B8
+off_8035328: .word byte_80990B8 // CutsceneScript
 	thumb_func_end ghostNaviCheck_8035274
 
 	thumb_func_start initGameProgressBuffer_803532c

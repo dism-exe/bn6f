@@ -14,7 +14,8 @@ off_807952C:: .word byte_8079570
 	.word byte_807960C
 off_8079534:: .word byte_80795C4
 	.word byte_8079706
-off_807953C:: .word off_8079798
+NPCScriptsUnderground_807953C:: // (*const NPCScript)[][UNDERGROUND_NUM_MAPS]
+  .word off_8079798
 	.word off_807994C
 off_8079544:: .word byte_807954C
 	.word byte_807955C

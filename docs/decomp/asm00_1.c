@@ -1336,7 +1336,7 @@ char *TryUpdateEachOverworldNPCObject_800461E()
 
 
 // 0x800467c
-int sub_800467C()
+int npc_init_800467C()
 {
 	signed int v0; // r0
 	signed int v1; // r1
@@ -2349,7 +2349,7 @@ void __usercall gamestate_OnMapUpdate_8005268(GameState *gs@<R5>, int a1@<R0>)
     sub_800286C();
     sub_8003BF4();
     sub_8003E98();
-    sub_800467C();
+    npc_init_800467C();
     sub_8004298();
     sub_8004590();
     sub_8004934();
@@ -2374,7 +2374,7 @@ int __fastcall battle_80052D8(int a1)
     sub_800286C();
     sub_8003BF4();
     sub_8003E98();
-    sub_800467C();
+    npc_init_800467C();
     sub_8004298();
     sub_8004590();
     sub_8004934();
@@ -2447,7 +2447,7 @@ int __fastcall sub_800536E(int a1)
     sub_800286C();
     sub_8003BF4();
     sub_8003E98();
-    sub_800467C();
+    npc_init_800467C();
     sub_8004298();
     sub_8004590();
     sub_8004934();
@@ -2504,7 +2504,7 @@ int __fastcall sub_80053E4(int a1)
     sub_800286C();
     sub_8003BF4();
     sub_8003E98();
-    sub_800467C();
+    npc_init_800467C();
     sub_8004298();
     sub_8004590();
     sub_8004934();
@@ -2556,7 +2556,7 @@ int sub_8005462()
     sub_800286C();
     sub_8003BF4();
     sub_8003E98();
-    sub_800467C();
+    npc_init_800467C();
     sub_8004298();
     sub_8004590();
     sub_8004934();
@@ -2643,7 +2643,7 @@ _BYTE *__fastcall sub_800555A(int a1)
     sub_800286C();
     sub_8003BF4();
     sub_8003E98();
-    sub_800467C();
+    npc_init_800467C();
     sub_8004298();
     sub_8004590();
     sub_8004934();
@@ -2689,7 +2689,7 @@ _BYTE *__fastcall sub_80055CE(int a1)
     sub_800286C();
     sub_8003BF4();
     sub_8003E98();
-    sub_800467C();
+    npc_init_800467C();
     sub_8004298();
     sub_8004590();
     sub_8004934();
@@ -2735,7 +2735,7 @@ _BYTE *__fastcall sub_8005642(int a1)
     sub_800286C();
     sub_8003BF4();
     sub_8003E98();
-    sub_800467C();
+    npc_init_800467C();
     sub_8004298();
     sub_8004590();
     sub_8004934();
@@ -2781,7 +2781,7 @@ _BYTE *__fastcall sub_80056B8(int a1)
     sub_800286C();
     sub_8003BF4();
     sub_8003E98();
-    sub_800467C();
+    npc_init_800467C();
     sub_8004298();
     sub_8004590();
     sub_8004934();
@@ -2827,7 +2827,7 @@ _BYTE *__fastcall sub_800572C(int a1)
     sub_800286C();
     sub_8003BF4();
     sub_8003E98();
-    sub_800467C();
+    npc_init_800467C();
     sub_8004298();
     sub_8004590();
     sub_8004934();
@@ -2873,7 +2873,7 @@ _BYTE *__fastcall sub_80057A0(int a1)
     sub_800286C();
     sub_8003BF4();
     sub_8003E98();
-    sub_800467C();
+    npc_init_800467C();
     sub_8004298();
     sub_8004590();
     sub_8004934();
@@ -2917,7 +2917,7 @@ _BYTE *__fastcall sub_8005814(int a1)
     sub_800286C();
     sub_8003BF4();
     sub_8003E98();
-    sub_800467C();
+    npc_init_800467C();
     sub_8004298();
     sub_8004590();
     sub_8004934();
@@ -2952,7 +2952,7 @@ _BYTE *__fastcall sub_800585A(int a1)
     sub_800286C();
     sub_8003BF4();
     sub_8003E98();
-    sub_800467C();
+    npc_init_800467C();
     sub_8004298();
     sub_8004590();
     sub_8004934();

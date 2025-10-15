@@ -75,7 +75,8 @@ off_807026C:: .word byte_8070497
 	.word byte_8070CA6
 	.word byte_8070CB2
 	.word byte_8070CBE
-off_80702AC:: .word off_8070CC0
+NPCScriptsComps2_80702AC:: // (*const NPCScript)[][COMPS_2_NUM_MAPS]
+  .word off_8070CC0
 	.word off_8070D1C
 	.word off_8070D78
 	.word off_8070DD0

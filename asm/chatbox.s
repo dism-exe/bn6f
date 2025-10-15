@@ -5,15 +5,15 @@ chatbox_uncompMapTextArchives_803FD08: // () -> int
 	mov r0, #0
 	bl chatbox_selectCompTextByMap_8040730 // (u8 idx) -> CompText*
 	ldr r1, off_803FD30 // =eDecompressedTextArchive202DA00
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 
 	bl chatbox_selectCompTextByMap_8040794 // () -> CompText*
 	ldr r1, off_803FD34 // =DecompressionBuf2033400
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 
-	bl chatbox_selectCompTextByMap_80407C8 // () -> CompText*
+	bl chatbox_selectCompTextByMap_80407C8 // () -> *const LZ77Compressed<TextScriptArchive>
 	ldr r1, off_803FD38 // =eDecompressedTextArchive202FA00
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -31,7 +31,7 @@ chatbox_uncompMapTextArchives_803FD3C: // () -> int
     mov r0, #1
 	bl chatbox_selectCompTextByMap_8040730 // (u8 idx) -> CompText*
 	ldr r1, off_803FD50 // =eDecompressionBuf2034A00
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	
     mov r0, #0
 	pop {r4-r7,pc}
@@ -46,7 +46,7 @@ chatbox_uncompMapTextArchives_803FD54: // () -> int
 	
     bl chatbox_selectCompTextByMap_8040794 // () -> CompText*
 	ldr r1, off_803FD64 // =DecompressionBuf2033400
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -1346,11 +1346,11 @@ loc_804074C:
 	.balign 4, 0
 off_804076C: .word off_8040770
 off_8040770: 
-	.word off_realWorld_8044470
-	.word off_internet_80444C4
+	.word off_realWorld_8044470 // (*const LZ77Compressed<TextScriptArchive>)[5][][REAL_WORLD_NUM_GROUPS]
+	.word off_internet_80444C4 // Nullable<(*const LZ77Compressed<TextScriptArchive>)[5][]>[INTERNET_NUM_GROUPS]
 	// these are L button textscripts
 	.word off_realWorld_80444A8
-	.word off_internet_804457C
+	.word off_internet_804457C // Nullable<(*const LZ77Compressed<TextScriptArchive>)[]>[INTERNET_NUM_GROUPS]
 	
 	.word byte_8040784
 byte_8040784: .byte 0x60, 0x3, 0x50, 0x2, 0x40, 0x2, 0x30, 0x1, 0x20, 0x1, 0x10
@@ -1371,63 +1371,96 @@ chatbox_selectCompTextByMap_8040794: // () -> CompText*
 	ldrb r2, [r2,#oGameState_GameProgress]
 
     // vMapWorldSel: r6 = INTERNET_MAP_GROUP_START ? 0 : 4
+
 	mov r6, #0
 	cmp r0, #INTERNET_MAP_GROUP_START
 	bmi loc_80407AA
+
+  // internet
+
 	mov r6, #4
 	sub r0, #INTERNET_MAP_GROUP_START
+
 loc_80407AA:
 
     // v0: r3 = mapPtrs80407C0[vMapWorldSel][4*vMapGroup]
 	ldr r5, off_80407BC // =mapPtrs80407C0
+
 	ldr r3, [r5,r6]
+
 	lsl r0, r0, #2
 	add r3, r3, r0
 	ldr r3, [r3]
 	
     // return v0[4*vMapNumber] <=> mapPtrs80407C0[vMapWorldSel][4*vMapGroup][4*vMapNumber]
-    lsl r1, r1, #2
+  lsl r1, r1, #2
 	add r3, r3, r1
 	ldr r0, [r3]
 	
     pop {r4-r7,pc}
 off_80407BC: .word mapPtrs80407C0
-mapPtrs80407C0: .word off_804448C
-	.word off_8044520
+mapPtrs80407C0: 
+  .word inRealWorld_8044520 // (*const LZ77Compressed<TextScriptArchive>)[][REAL_WORLD_NUM_GROUPS]
+	.word inInternet_8044520 // Nullable<(*const LZ77Compressed<TextScriptArchive>)[]>[INTERNET_NUM_GROUPS]
 	thumb_func_end chatbox_selectCompTextByMap_8040794
 
 	thumb_local_start
-chatbox_selectCompTextByMap_80407C8: // () -> CompText*
+chatbox_selectCompTextByMap_80407C8: // () -> *const LZ77Compressed<TextScriptArchive>
 	push {r4-r7,lr}
+
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
+
 	ldrb r0, [r2,#oGameState_MapGroup]
 	ldrb r1, [r2,#oGameState_MapNumber]
+
 	mov r2, #4
 	mov r6, #0
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bmi loc_80407DE
+
+  // internet
 	mov r6, #4
 	sub r0, #0x80
+
 loc_80407DE:
+
 	ldr r5, off_80407F8 // =mapPtrs80407FC
+
 	ldr r3, [r5,r6]
+
+  // Index map group
+  // r3: Nullable<(*const LZ77Compressed<TextScriptArchive>)[5][]>
 	lsl r0, r0, #2
 	add r3, r3, r0
 	ldr r3, [r3]
+
+  // Index map number
+  // Is there some invariant that ensures this is not dereferencing null?
+  // Like a selective set of maps?
+  // r3: (*const LZ77Compressed<TextScriptArchive>)[5]
 	lsl r1, r1, #2
 	add r3, r3, r1
 	ldr r3, [r3]
+
+  // Indexes last (last game progress?)
+  // r0: *const LZ77Compressed<TextScriptArchive>
 	lsl r2, r2, #2
 	add r3, r3, r2
 	ldr r0, [r3]
+
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_80407F8: .word mapPtrs80407FC
-mapPtrs80407FC: .word off_realWorld_8044470
-	.word off_internet_80444C4
+off_80407F8: 
+  .word mapPtrs80407FC
+mapPtrs80407FC: 
+  .word off_realWorld_8044470 // (*const LZ77Compressed<TextScriptArchive>)[5][][REAL_WORLD_NUM_GROUPS]
+	.word off_internet_80444C4 // Nullable<(*const LZ77Compressed<TextScriptArchive>)[5][]>[INTERNET_NUM_GROUPS]
+
+// unused data?
 	.word byte_8040808
-byte_8040808: .byte 0x60, 0x4, 0x50, 0x4, 0x40, 0x4, 0x30, 0x4, 0x20, 0x4, 0x10
+byte_8040808: 
+  .byte 0x60, 0x4, 0x50, 0x4, 0x40, 0x4, 0x30, 0x4, 0x20, 0x4, 0x10
 	.byte 0x4, 0x0, 0x4, 0x0, 0x0
 	thumb_func_end chatbox_selectCompTextByMap_80407C8
 
@@ -8480,29 +8513,33 @@ off_804440C:: .word byte_200C7A0
 	.byte 0x0, 0x2, 0x20, 0x20, 0x20, 0x20, 0xE0, 0xCA, 0x0, 0x2
 	.byte 0x20, 0x20, 0x20, 0x20, 0xF0, 0xCA, 0x0, 0x2, 0x20, 0x20
 	.byte 0x20, 0x20, 0x0, 0x0, 0x0, 0x0
-off_realWorld_8044470: .word off_80445D8
+off_realWorld_8044470: // (*const LZ77Compressed<TextScriptArchive>)[5][][REAL_WORLD_NUM_GROUPS]
+  .word off_80445D8
 	.word off_8044620
 	.word off_80446BC
 	.word off_8044800
 	.word off_804489C
 	.word off_8044938
 	.word off_80449B8
-off_804448C: .word off_8044608
+inRealWorld_8044520: // (*const LZ77Compressed<TextScriptArchive>)[][REAL_WORLD_NUM_GROUPS]
+  .word off_8044608
 	.word off_8044698
 	.word off_80447C4
 	.word off_8044878
 	.word off_8044914
 	.word off_8044998
 	.word off_8044A48
-off_realWorld_80444A8: .word off_8044610
+off_realWorld_80444A8:
+  .word off_8044610
 	.word off_80446AC
 	.word off_80447F0
 	.word off_804488C
 	.word off_8044928
 	.word off_80449A8
 	.word off_8044A60
-off_internet_80444C4: .word off_8044A70
-	.word off_8044AB8
+off_internet_80444C4: // Nullable<(*const LZ77Compressed<TextScriptArchive>)[5][]>[INTERNET_NUM_GROUPS]
+  .word off_8044A70
+	.word off_8044AB8 // (*const LZ77Compressed<TextScriptArchive>)[5][3]
 	.word off_8044B1C
 	.word off_8044B80
 	.word NULL
@@ -8513,7 +8550,7 @@ off_internet_80444C4: .word off_8044A70
 	.word NULL
 	.word NULL
 	.word NULL
-	.word off_8044D2C
+	.word off_8044D2C // (*const LZ77Compressed<TextScriptArchive>)[5][16]
 	.word off_8044EFC
 	.word NULL
 	.word NULL
@@ -8524,21 +8561,23 @@ off_internet_80444C4: .word off_8044A70
 	.word off_8045224
 	.word off_8045288
 	.word off_8045308
-off_8044520: .word off_8044AA0
+inInternet_8044520: // Nullable<(*const LZ77Compressed<TextScriptArchive>)[]>[INTERNET_NUM_GROUPS]
+  .word off_8044AA0
 	.word off_8044B00
 	.word off_8044B64
 	.word off_8044BC8
-	.word 0x0
+	.word NULL
 	.word off_8044C5C
-	.word 0
-	.byte 0, 0, 0, 0
+	.word NULL
+	.word NULL
 	.word off_8044D00
-	.word 0, 0
-	.byte 0, 0, 0, 0
-	.word off_8044EAC
+	.word NULL
+	.word NULL
+	.word NULL
+	.word off_8044EAC // (*const LZ77Compressed<TextScriptArchive>)[16]
 	.word off_804507C
-	.word 0
-	.byte 0, 0, 0, 0
+	.word NULL
+	.word NULL
 	.word off_8045114
 	.word off_8045178
 	.word off_80451C4
@@ -8546,18 +8585,23 @@ off_8044520: .word off_8044AA0
 	.word off_804526C
 	.word off_80452E8
 	.word off_8045350
-off_internet_804457C: .word off_8044AA8
+off_internet_804457C: // Nullable<(*const LZ77Compressed<TextScriptArchive>)[]>[INTERNET_NUM_GROUPS]
+  .word off_8044AA8
 	.word off_8044B0C
 	.word off_8044B70
 	.word off_8044BD4
-	.word 0x0
+	.word NULL
 	.word off_8044C70
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word NULL
+	.word NULL
 	.word off_8044D1C
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word off_8044EEC
+	.word NULL
+	.word NULL
+	.word NULL
+	.word off_8044EEC // (*const LZ77Compressed<TextScriptArchive>)[4]
 	.word off_80450BC
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word NULL
+	.word NULL
 	.word off_8045120
 	.word off_8045184
 	.word off_80451CC
@@ -8859,14 +8903,17 @@ off_8044A60: .word CompText8745DEC
 	.word CompText8745DEC
 	.word CompText8745DEC
 	.word CompText8745DEC
-off_8044A70: .word off_8044A78
+off_8044A70: 
+  .word off_8044A78
 	.word off_8044A8C
-off_8044A78: .word CompText8797310
+off_8044A78: 
+  .word CompText8797310
 	.word CompText879748C
 	.word CompText8797498
 	.word CompText87974A4
 	.word CompText87974B0
-off_8044A8C: .word CompText87979CC
+off_8044A8C: 
+  .word CompText87979CC
 	.word CompText87979F0
 	.word CompText87979FC
 	.word CompText8797A08
@@ -8877,25 +8924,30 @@ off_8044AA8: .word CompText87461A0
 	.word CompText87462D0
 	.word CompText87463F4
 	.word CompText87464AC
-off_8044AB8: .word off_8044AC4
-	.word off_8044AD8
-	.word off_8044AEC
-off_8044AC4: .word CompText8797A20
+off_8044AB8: // (*const LZ77Compressed<TextScriptArchive>)[5][3]
+  .word off_8044AC4 // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044AD8 // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044AEC // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044AC4: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word CompText8797A20
 	.word EmptyCompText8797E70
 	.word CompText8797E7C
 	.word CompText8797E88
 	.word CompText8797E94
-off_8044AD8: .word CompText87982AC
+off_8044AD8: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word CompText87982AC
 	.word EmptyCompText87982B8
 	.word CompText87982C4
 	.word CompText87982D0
 	.word CompText87982DC
-off_8044AEC: .word EmptyCompText8798474
+off_8044AEC: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word EmptyCompText8798474
 	.word EmptyCompText8798480
 	.word CompText879848C
 	.word CompText8798498
 	.word CompText87984A4
-off_8044B00: .word CompText875D974
+off_8044B00: 
+  .word CompText875D974
 	.word CompText875D9C0
 	.word CompText875DA0C
 off_8044B0C: .word CompText87466F8
@@ -9034,103 +9086,121 @@ off_8044D1C: .word CompText87477F4
 	.word CompText8747D30
 	.word CompText8748650
 	.word CompText8748F44
-off_8044D2C: .word off_8044D6C
-	.word off_8044D80
-	.word off_8044D94
-	.word off_8044DA8
-	.word off_8044DBC
-	.word off_8044DD0
-	.word off_8044DE4
-	.word off_8044DF8
-	.word off_8044E0C
-	.word off_8044E20
-	.word off_8044E34
-	.word off_8044E48
-	.word off_8044E5C
-	.word off_8044E70
-	.word off_8044E84
-	.word off_8044E98
-off_8044D6C: .word CompText879DA44
+off_8044D2C: // (*const LZ77Compressed<TextScriptArchive>)[5][16]
+  .word off_8044D6C // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044D80 // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044D94 // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044DA8 // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044DBC // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044DD0 // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044DE4 // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044DF8 // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044E0C // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044E20 // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044E34 // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044E48 // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044E5C // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044E70 // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044E84 // (*const LZ77Compressed<TextScriptArchive>)[5]
+	.word off_8044E98 // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044D6C: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word CompText879DA44
 	.word CompText879DA50
 	.word CompText879DA5C
 	.word CompText879DA68
 	.word CompText879DA74
-off_8044D80: .word CompText879E3D0
+off_8044D80: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word CompText879E3D0
 	.word CompText879E3D0
 	.word CompText879E3DC
 	.word CompText879E3E8
 	.word CompText879E3F4
-off_8044D94: .word CompText879E4C4
+off_8044D94: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word CompText879E4C4
 	.word CompText879E574
 	.word CompText879E580
 	.word CompText879E58C
 	.word CompText879E598
-off_8044DA8: .word EmptyCompText879E62C
+off_8044DA8: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word EmptyCompText879E62C
 	.word CompText879E638
 	.word CompText879E644
 	.word CompText879E650
 	.word CompText879E65C
-off_8044DBC: .word EmptyCompText879EB78
+off_8044DBC: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word EmptyCompText879EB78
 	.word EmptyCompText879EB84
 	.word CompText879EB90
 	.word CompText879EB9C
 	.word CompText879EBA8
-off_8044DD0: .word EmptyCompText879F194
+off_8044DD0: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word EmptyCompText879F194
 	.word EmptyCompText879F194
 	.word CompText879F1A0
 	.word CompText879F1AC
 	.word CompText879F1B8
-off_8044DE4: .word EmptyCompText879F5CC
+off_8044DE4: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word EmptyCompText879F5CC
 	.word EmptyCompText879F5D8
 	.word CompText879F5E4
 	.word CompText879F5F0
 	.word CompText879F5FC
-off_8044DF8: .word CompText879F6A0
+off_8044DF8: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word CompText879F6A0
 	.word CompText879F6A0
 	.word CompText879F6A0
 	.word CompText879F734
 	.word CompText879F740
-off_8044E0C: .word CompText879FB18
+off_8044E0C: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word CompText879FB18
 	.word CompText879FB24
 	.word CompText879FD9C
 	.word CompText879FDA8
 	.word CompText879FDB4
-off_8044E20: .word CompText87A00D8
+off_8044E20: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word CompText87A00D8
 	.word CompText87A00D8
 	.word CompText87A0434
 	.word CompText87A0440
 	.word CompText87A044C
-off_8044E34: .word CompText87A04C0
+off_8044E34: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word CompText87A04C0
 	.word CompText87A04C0
 	.word CompText87A04CC
 	.word CompText87A04D8
 	.word CompText87A04E4
-off_8044E48: .word CompText87A05E0
+off_8044E48: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word CompText87A05E0
 	.word CompText87A05E0
 	.word CompText87A05E0
 	.word CompText87A0698
 	.word CompText87A06A4
-off_8044E5C: .word CompText87A0700
+off_8044E5C: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word CompText87A0700
 	.word CompText87A0700
 	.word CompText87A0700
 	.word CompText87A07D0
 	.word CompText87A07DC
-off_8044E70: .word CompText87A0AA8
+off_8044E70: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word CompText87A0AA8
 	.word CompText87A0AA8
 	.word CompText87A0AA8
 	.word CompText87A0B14
 	.word CompText87A0B20
-off_8044E84: .word CompText87A0B88
+off_8044E84: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word CompText87A0B88
 	.word CompText87A0B88
 	.word CompText87A0B88
 	.word CompText87A0C18
 	.word CompText87A0C24
-off_8044E98: .word CompText87A0EF4
+off_8044E98: // (*const LZ77Compressed<TextScriptArchive>)[5]
+  .word CompText87A0EF4
 	.word CompText87A0EF4
 	.word CompText87A0EF4
 	.word CompText87A0F00
 	.word CompText87A0F0C
-off_8044EAC: .word CompText875DFA4
+off_8044EAC: // (*const LZ77Compressed<TextScriptArchive>)[16]
+  .word CompText875DFA4
 	.word CompText875DFB0
 	.word CompText875DFBC
 	.word CompText875DFC8
@@ -9146,11 +9216,13 @@ off_8044EAC: .word CompText875DFA4
 	.word CompText875E4AC
 	.word CompText875E52C
 	.word CompText875E5C4
-off_8044EEC: .word CompText8749514
+off_8044EEC: // (*const LZ77Compressed<TextScriptArchive>)[4]
+  .word CompText8749514
 	.word CompText8749C38
 	.word CompText874A638
 	.word CompText874B154
-off_8044EFC: .word off_8044F3C
+off_8044EFC: 
+  .word off_8044F3C
 	.word off_8044F50
 	.word off_8044F64
 	.word off_8044F78

@@ -1,6 +1,6 @@
+//! type: OverworldNPCObject
 
 	.macro overworld_npc_object_struct, label=oOverworldNPCObject, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
-    // type: struct OverworldNPCObject
 	set_struct_label \struct_entry, \label
 	object_header_struct \label, \struct_entry, \set_struct_start_address
 
@@ -52,7 +52,7 @@
 
 	u8 MovementDirection // loc=0xe
 	u8 Unk_0f // loc=0xf
-	u8 Unk_10 // loc=0x10
+	u8 WhichNPCScript // loc=0x10
 	u8 CenterOffsetX // loc=0x11
 	u8 CenterOffsetY // loc=0x12
 	u8 CenterOffsetZ // loc=0x13
@@ -95,6 +95,7 @@
 	u32 Unk_54 // loc=0x54
 	u32 Unk_58 // loc=0x58
 	ptr UnkNPCScriptPtr_5c // loc=0x5c
+  // Also accessed as a `*const NPCScript` ?
 	flags32 UnkFlags_60 // loc=0x60
 		struct_const OW_NPC_UNK_FLAGS_60_DISABLE_INTERACTION, 0x1
 		struct_const OW_NPC_UNK_FLAGS_60_FACE_PLAYER_WHEN_INTERACTED, 0x2
@@ -135,7 +136,8 @@
 	ptr TextScriptPtr // loc=0x94
 	// loc=0x98
 	.space 8 // align to nearest power of 4 relative to struct
-	object_sprite_struct \label\()_SpriteData, \struct_entry // loc=0xa0
+	u0 SizeBeforeObjectSprite // loc=0xa0
+	object_sprite_struct \label\()_SpriteData, \struct_entry // loc=0xa1
 	u0 Size // loc=0xd8
 	u0 End // loc=0xd8
 	restore_struct_label

@@ -12,7 +12,8 @@ off_806A260: .word byte_806A2C4
 off_806A26C: .word byte_806A35A
 	.word byte_806A449
 	.word byte_806A54A
-off_806A278: .word off_806A5C0
+NPCScriptsMrWeather_806A278: // (*const NPCScript)[][MR_WEATHER_COMP_NUM_MAPS]
+  .word off_806A5C0
 	.word off_806A650
 	.word off_806A690
 off_806A284: .word byte_806A290

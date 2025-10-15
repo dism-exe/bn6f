@@ -1,6 +1,6 @@
 
-	thumb_func_start npc_809E570
-npc_809E570:
+	thumb_func_start npc_dispatch_809E570
+npc_dispatch_809E570: // (self: * OverworldNPCObject $r5) -> ()
 	push {lr}
 	ldr r7, off_809E58C // =jt_809E580 
 	ldrb r0, [r5,#oOverworldNPCObject_CurState]
@@ -9,17 +9,21 @@ npc_809E570:
 	bx r7
 	pop {pc}
 	.balign 4, 0
-jt_809E580: .word npc_init_809E590+1
-	.word npc_standard_809E5E2+1
-	.word npc_inChatbox_809EADA+1
+jt_809E580: 
+  .word npc_init_809E590+1 // (self: *mut OverworldNPCObject $r5) -> ()
+	.word npc_standard_809E5E2+1 // (self: * OverworldNPCObject $r5) -> ()
+	.word npc_inChatbox_809EADA+1 // (self: * OverworldNPCObject $r5) -> ()
 off_809E58C: .word jt_809E580
-	thumb_func_end npc_809E570
+	thumb_func_end npc_dispatch_809E570
 
 	thumb_local_start
-npc_init_809E590:
+npc_init_809E590: // (self: *mut OverworldNPCObject $r5) -> ()
 	push {lr}
+
+  // This gets written by npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c
 	ldr r0, [r5,#oOverworldNPCObject_UnkFlags_60]
-	bl sub_809F506
+	bl setNPCScript_809F506 // (self: *mut OverworldNPCObject $r5, script: *const NPCScript) -> ()
+
 	mov r0, #0
 	str r0, [r5,#oOverworldNPCObject_HiddenOAMPieces]
 	str r0, [r5,#oOverworldNPCObject_HiddenOAMPiecesUpdate]
@@ -36,28 +40,36 @@ npc_init_809E590:
 	strb r0, [r5,#oOverworldNPCObject_CenterOffsetX]
 	strb r0, [r5,#oOverworldNPCObject_CenterOffsetY]
 	strb r0, [r5,#oOverworldNPCObject_CenterOffsetZ]
+
 	mov r0, #0xff
 	strh r0, [r5,#oOverworldNPCObject_NPCSprite]
 	strh r0, [r5,#oOverworldNPCObject_NPCSpriteUpdate]
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelect]
 	strb r0, [r5,#oOverworldNPCObject_AnimationSelectUpdate]
+
 	mov r0, #NPC_CUR_STATE_STANDARD
 	strb r0, [r5,#oOverworldNPCObject_CurState]
+
 	mov r0, #4
 	strb r0, [r5,#oOverworldNPCObject_CollisionRadius]
+
 	mov r0, #8
 	strb r0, [r5,#oOverworldNPCObject_ZReach]
+
 	mov r0, #0x80
 	mov r1, #0x1c
 	mov r2, #0xa0
 	bl sprite_load // (int a1, int a2, int a3) ->
+
 	bl sprite_loadAnimationData // () -> void
-	bl npc_standard_809E5E2
+
+	bl npc_standard_809E5E2 // (self: * OverworldNPCObject $r5) -> ()
+
 	pop {pc}
 	thumb_func_end npc_init_809E590
 
 	thumb_local_start
-npc_standard_809E5E2:
+npc_standard_809E5E2: // (self: * OverworldNPCObject $r5) -> ()
 	push {lr}
 	ldrb r0, [r5,#oOverworldNPCObject_ChatTriggered]
 	tst r0, r0
@@ -841,7 +853,7 @@ npc_waitMysteryDataTaken_809eaa0:
 	thumb_func_end npc_waitMysteryDataTaken_809eaa0
 
 	thumb_local_start
-npc_inChatbox_809EADA:
+npc_inChatbox_809EADA: // (self: * OverworldNPCObject $r5) -> ()
 	push {lr}
 	ldr r7, off_809EB00 // =off_809EAFC 
 	ldrb r0, [r5,#oOverworldNPCObject_CurAction]
@@ -988,17 +1000,22 @@ locret_809EBDA:
 npc_runPrimaryScript_809ebdc:
 	push {lr}
 .runScriptCommandLoop
+
 	ldrb r0, [r5,#oOverworldNPCObject_TerminateScript_19]
 	tst r0, r0
 	bne .done
+
 	ldr r6, [r5,#oOverworldNPCObject_AnimationScriptPtr]
 	ldrb r0, [r6]
+
 	lsl r0, r0, #2
 	ldr r7, =NPCCommandsJumptable
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
+
 	str r6, [r5,#oOverworldNPCObject_AnimationScriptPtr]
+
 	b .runScriptCommandLoop
 .done
 	pop {pc}
@@ -2534,8 +2551,8 @@ NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer:
 	.balign 4, 0
 off_809F3D8: .word byte_202FA04
 	.word off_809F3E0
-off_809F3E0: .word off_realWorld_8044470
-	.word off_internet_80444C4
+off_809F3E0: .word off_realWorld_8044470 // (*const LZ77Compressed<TextScriptArchive>)[5][][REAL_WORLD_NUM_GROUPS]
+	.word off_internet_80444C4 // Nullable<(*const LZ77Compressed<TextScriptArchive>)[5][]>[INTERNET_NUM_GROUPS]
 	thumb_func_end NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer
 
 	thumb_local_start
@@ -2808,16 +2825,19 @@ NPCCommand_jump_if_screen_fade_active:
 	thumb_func_end NPCCommand_jump_if_screen_fade_active
 
 	thumb_local_start
-sub_809F506:
+setNPCScript_809F506: // (self: *mut OverworldNPCObject $r5, script: *const NPCScript) -> ()
 	push {lr}
+
 	str r0, [r5,#oOverworldNPCObject_AnimationScriptPtr]
+
 	mov r0, #0
 	strb r0, [r5,#oOverworldNPCObject_TerminateScript_19]
 	strb r0, [r5,#oOverworldNPCObject_ChatTriggered]
 	strb r0, [r5,#oOverworldNPCObject_TerminateScript_1f]
 	str r0, [r5,#oOverworldNPCObject_UnkNPCScriptPtr_5c]
+
 	pop {pc}
-	thumb_func_end sub_809F506
+	thumb_func_end setNPCScript_809F506
 
 	thumb_local_start
 npc_enableScript0x19_809f516:
@@ -3187,7 +3207,7 @@ locret_809F940:
 	thumb_func_end sub_809F922
 
 	thumb_func_start sub_809F942
-sub_809F942: // () -> * nullable ?
+sub_809F942: // () -> Nullable<* ?>
 	push {r4-r7,lr}
 
   // return if EVENT_1708

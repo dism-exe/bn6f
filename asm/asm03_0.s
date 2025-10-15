@@ -19941,7 +19941,7 @@ decompAndCopyMapTiles_8030472: // () -> ()
 	add r0, r0, r6
 	// dest
 	ldr r1, off_803057C // =eDecompBuffer2013A00
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	
 	ldr r0, off_803057C // =eDecompBuffer2013A00
 	ldr r1, [r7,#oMapBGTilesetHeader_VRAMOffset]
@@ -19968,7 +19968,7 @@ decompAndCopyMapTiles_8030472: // () -> ()
 	add r0, #oMapBGTilemapHeader_Size
 	// dest
 	add r1, #oMapBGTilemapHeader_Size
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	ldr r0, [r5,#oMapTilesState200be70_UnkCallback_1c] // (dword_200BE8C - 0x200be70)
 	mov lr, pc
 	bx r0
@@ -20005,7 +20005,7 @@ LoadBGAnimData: // (bg_anim_data: BGAnimData) -> ()
 	// dest
 	ldr r1, =eDecompressionBuf2034A00 
 	// decompress gfx to buffer
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 
 	ldr r0, =eDecompressionBuf2034A00 
 	ldr r1, [r5,#oBGAnimData_GFXDest]
@@ -20021,7 +20021,7 @@ LoadBGAnimData: // (bg_anim_data: BGAnimData) -> ()
 	ldr r1, =eDecompressionBuf2034A00 
 	// add offset to compressed tilemap
 	add r0, #0xc
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 
 	ldr r0, =eDecompressionBuf2034A00 
 	ldr r1, [r5,#oBGAnimData_TilemapDestOffset]
@@ -20061,7 +20061,7 @@ loc_8030554:
 	ldr r1, off_8030578 // =eDecompressionBuf2034A00 
 	// src
 	add r0, #0xc
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	ldr r0, off_8030578 // =eDecompressionBuf2034A00 
 	ldr r1, [r5,#0xc]
 	mov r2, r10
@@ -20735,24 +20735,32 @@ LoadGFXAnimsForMapGroup: // (map_group: u8, map_number: u8) -> ()
 	thumb_func_end LoadGFXAnimsForMapGroup
 
 	thumb_func_start npc_freeAllObjectsThenSpawnObjectsFromList
-npc_freeAllObjectsThenSpawnObjectsFromList:
+npc_freeAllObjectsThenSpawnObjectsFromList: // (ptr: (*const NPCScript)[]) -> ()
 	push {r4-r6,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
+
 	ldr r1, [r4,#oGameState_Ptr_20]
 	cmp r0, r1
 	beq .done
+
 	str r0, [r4,#oGameState_Ptr_20]
+
 	push {r0}
 	mov r0, #OVERWORLD_NPC_OBJECT_F
 	bl FreeAllObjectsOfSpecifiedTypes
 	pop {r0}
+
 	mov r1, #0
 .loop
+
+  # Index by nth
 	ldr r2, [r0]
 	cmp r2, #0xff
 	beq .done
-	bl npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c
+
+	bl npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c // (_l: (*const NPCScript)[], which: isize, script: *const NPCScript) -> ()
+
 	add r1, #1
 	add r0, #4
 	b .loop
@@ -20761,17 +20769,23 @@ npc_freeAllObjectsThenSpawnObjectsFromList:
 	thumb_func_end npc_freeAllObjectsThenSpawnObjectsFromList
 
 	thumb_local_start
-npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c:
+npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c: // (_l: (*const NPCScript)[], which: isize, script: *const NPCScript) -> ()
 	push {lr}
+
 	push {r0-r2}
 	mov r0, #0
 	// writes garbage to xyz, unk_04 but is overwritten later by the npc script
 	bl SpawnOverworldNPCObject
 	pop {r0-r2}
+
 	tst r5, r5
 	beq .objectSpawnFailed
-	strb r1, [r5,#oOverworldNPCObject_Unk_10]
+
+	strb r1, [r5,#oOverworldNPCObject_WhichNPCScript]
+
+  // This gets set by npc_init_809E590
 	str r2, [r5,#oOverworldNPCObject_UnkFlags_60] // this is actually temp storage for the animation script pointer
+
 .objectSpawnFailed
 	pop {pc}
 	.balign 4, 0x00
@@ -20804,7 +20818,7 @@ loc_8030ABA:
 	add r0, #0x10
 	// dest
 	ldr r1, off_8030B08 // =unk_2027A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	pop {r6}
 	ldr r7, off_8030B08 // =unk_2027A00 
 	ldr r0, [r6]

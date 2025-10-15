@@ -1042,7 +1042,7 @@ MapScriptCmd_start_cutscene: // 8035E8E
 	mov r6, #1
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	add r7, #9
 	mov r0, #1
 	pop {pc}
@@ -2405,7 +2405,7 @@ sub_8036E86:
 	thumb_func_start StartCutscene
 // r0 - cutscene script to run
 // r1 - parameter
-StartCutscene: // (script: *const (), param: u32) -> ()
+StartCutscene: // (script: *const CutsceneScript, param: u32) -> ()
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_CutsceneStatePtr]
@@ -4423,7 +4423,7 @@ DecompressTextArchiveForCutscene: // (CompText *archive) -> TextScriptArchive*
 	lsr r0, r0, #1
 	// dest
 	ldr r1, =eDecompressionBuf2034A00
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	ldr r0, =eDecompressionBuf2034A00
 	add r0, #4
 .uncompressedPtr
@@ -4442,7 +4442,7 @@ DecompressTextArchiveForCutscene2:
 	lsr r0, r0, #1
 
 	ldr r1, =DecompressionBuf2033400
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	ldr r0, =DecompressionBuf2033400
 	add r0, #4
 .uncompressedPtr
@@ -5199,7 +5199,7 @@ CutsceneCmd_spawn_or_free_ow_map_or_npc_objects:
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl npc_freeAllObjectsThenSpawnObjectsFromList
+	bl npc_freeAllObjectsThenSpawnObjectsFromList // (ptr: (*const NPCScript)[]) -> ()
 	add r7, #6
 	mov r0, #1
 	pop {pc}

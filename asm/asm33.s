@@ -247,7 +247,7 @@ loc_812331A:
 	ldr r0, [r1,r7]
 	// dest
 	ldr r1, [sp,#8]
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 
 	ldr r1, [sp,#8]
 	// src
@@ -15407,7 +15407,7 @@ sub_812B530:
 	ldr r0, [r1,r0]
 	// dest
 	ldr r1, off_812B568 // =eDecompBuffer2013A00
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	ldr r0, off_812B568 // =eDecompBuffer2013A00
 	add r0, #4
 	ldr r1, dword_812B56C // =0x6014700 

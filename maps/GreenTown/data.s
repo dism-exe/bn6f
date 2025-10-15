@@ -24,22 +24,26 @@ byte_805E118:: .byte 0x5, 0x0, 0x0, 0x0, 0x0, 0x0, 0x6, 0x0, 0x0, 0x0, 0xAC, 0xF
 	.byte 0x0, 0x6, 0x0, 0x0, 0x0, 0xBA, 0x0, 0x0, 0x0, 0x0, 0x0, 0x88, 0x0, 0x0, 0x0
 	.byte 0xFF, 0x0, 0x0, 0x0
 dword_805E158:: .word 0xFF
-off_805E15C:: .word byte_805E248
+off_805E15C:: 
+  .word byte_805E248
 	.word byte_805E490
 	.word byte_805E6B8
 	.word byte_805E8E4
 	.word byte_805E940
-off_805E170:: .word off_805E36C
+off_805E170:: 
+  .word off_805E36C
 	.word byte_805E5FC
 	.word byte_805E804
 	.word byte_805E93E
 	.word byte_805E952
-off_805E184:: .word off_805E9AC
+NPCScriptsGreenTown_805E184:: // (*const NPCScript)[][GREEN_TOWN_NUM_MAPS]
+  .word off_805E9AC
 	.word off_805EEE4
 	.word off_805F3B0
 	.word off_805FEBC
 	.word off_80600C4
-off_805E198:: .word byte_805E1AC
+off_805E198:: 
+  .word byte_805E1AC
 	.word byte_805E1BC
 	.word byte_805E1CC
 	.word byte_805E1DC

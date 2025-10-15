@@ -513,7 +513,7 @@ loc_808CB8A:
 	bl sub_808CC34
 	cmp r0, #0
 	beq locret_808CB96
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 locret_808CB96:
 	pop {r4-r7,pc}
 	.balign 4, 0

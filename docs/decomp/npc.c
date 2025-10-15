@@ -1,5 +1,5 @@
 // 0x809e570
-int npc_809E570()
+int npc_dispatch_809E570()
 {
     int v0; // r5
 
@@ -12,7 +12,7 @@ void npc_init_809E590()
 {
     int v0; // r5
 
-    sub_809F506(*(v0 + 96));
+    setNPCScript_809F506(*(v0 + 96));
     *(v0 + 104) = 0;
     *(v0 + 108) = 0;
     *(v0 + 14) = 0;
@@ -1750,7 +1750,7 @@ int NPCCommand_jump_if_screen_fade_active()
 
 
 // 0x809f506
-int __fastcall sub_809F506(int a1)
+int __fastcall setNPCScript_809F506(int a1)
 {
     int v1; // r5
     int result; // r0

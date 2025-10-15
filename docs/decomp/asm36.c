@@ -11107,7 +11107,7 @@ int __fastcall sub_8138848(int a1, int a2, int a3, int a4)
     sub_800286C();
     sub_8003BF4();
     sub_8003E98();
-    sub_800467C();
+    npc_init_800467C();
     sub_8004298();
     sub_8004590();
     return sub_8004934();

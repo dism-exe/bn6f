@@ -668,18 +668,18 @@ reqBBS_uncomp_813E5A0:
 	ldr r0, [r3]
 	// dest
 	ldr r1, off_813E5CC // =unk_2025A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	pop {r3}
 	// src
 	ldr r0, [r3,#4]
 	// dest
 	ldr r1, off_813E5D0 // =unk_2029A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	// src
 	ldr r0, off_813E5D4 // =CompText87EE1AC 
 	// dest
 	ldr r1, off_813E5D8 // =unk_2033A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	pop {r5,pc}
 	.balign 4, 0
 off_813E5C8: .word off_813E04C
@@ -2492,18 +2492,18 @@ reqBBS_copyTextDataToRAM:
 	ldr r0, [r3]
 	// dest
 	ldr r1, off_813F990 // =unk_2025A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	pop {r3}
 	// src
 	ldr r0, [r3,#4]
 	// dest
 	ldr r1, off_813F994 // =unk_2029A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	// src
 	ldr r0, off_813F998 // =CompText87EFE14 
 	// dest
 	ldr r1, off_813F99C // =unk_2033A00 
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	pop {r5,pc}
 	.balign 4, 0
 off_813F98C: .word off_813F378

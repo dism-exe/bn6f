@@ -2482,7 +2482,7 @@ loc_800459E:
 off_80045B0: .word eT4BattleObject0
 off_80045B4: .word byte_2036830
 off_80045B8: .word byte_203F750
-off_80045BC: .word npc_809E570+1
+off_80045BC: .word npc_dispatch_809E570+1 // (self: * OverworldNPCObject $r5) -> ()
 	thumb_func_end dead_800459A
 
 	thumb_func_start SpawnOverworldNPCObject
@@ -2591,6 +2591,7 @@ TryUpdateEachOverworldNPCObject_800461E: // () -> ()
 	ldrb r1, [r5,#1]
 	lsl r1, r1, #2
 	// jumptable has only one entry
+  // dispatches npc_dispatch_809E570
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
@@ -2615,8 +2616,8 @@ TryUpdateEachOverworldNPCObject_800461E: // () -> ()
 off_8004678: .word off_80045BC
 	thumb_func_end TryUpdateEachOverworldNPCObject_800461E
 
-	thumb_func_start sub_800467C
-sub_800467C:
+	thumb_func_start npc_init_800467C
+npc_init_800467C:
 	push {r4-r7,lr}
 	mov r4, r8
 	mov r5, r9
@@ -2624,38 +2625,53 @@ sub_800467C:
 	push {r4-r6}
 	mov r0, #0x10
 	mov r1, #0
+
 	ldr r5, off_800471C // =eOverworldNPCObjects
-loc_800468C:
+
+loop_800468C:
 	ldrb r2, [r5]
+
 	mov r3, #2
 	tst r2, r3
 	beq loc_80046B8
+
 	push {r0,r1,r5}
 	mov r0, r5
 	add r0, #0x24
+
 	ldr r1, off_80046F0 // =sub_30061E8+1
 	mov lr, pc
 	bx r1
+
 	mov r0, #2
+
 	ldr r1, off_80046EC // =sub_3006028+1
 	mov lr, pc
 	bx r1
+
 	mov r0, #2
 	mov r1, #0x60
-	add r5, #0xa0
+	add r5, #oOverworldNPCObject_SizeBeforeObjectSprite
+
 	ldr r2, off_80046F4 // =sub_3006440+1
 	mov lr, pc
 	bx r2
+
 	pop {r0,r1,r5}
 	b loc_80046D4
+
 loc_80046B8:
+
 	mov r4, r5
-	add r4, #0xa0
+	add r4, #oOverworldNPCObject_SizeBeforeObjectSprite
+
 	mov r3, #0
 	str r3, [r4,#0x24]
+
 	mov r3, #1
 	tst r2, r3
 	beq loc_80046D4
+
 	push {r0,r1,r5}
 	mov r0, r5
 	add r0, #0x24
@@ -2663,13 +2679,17 @@ loc_80046B8:
 	mov lr, pc
 	bx r1
 	pop {r0,r1,r5}
+
 loc_80046D4:
+
 	add r1, #1
-	add r5, #0xd8
+	add r5, #oOverworldNPCObject_Size
 	cmp r1, r0
-	blt loc_800468C
+	blt loop_800468C
+
 	mov r0, #2
 	bl sub_80028C0
+
 	pop {r4-r6}
 	mov r8, r4
 	mov r9, r5
@@ -2679,7 +2699,7 @@ loc_80046D4:
 off_80046EC: .word sub_3006028+1
 off_80046F0: .word sub_30061E8+1
 off_80046F4: .word sub_3006440+1
-	thumb_func_end sub_800467C
+	thumb_func_end npc_init_800467C
 
 	thumb_local_start
 sub_80046F8:
@@ -4131,7 +4151,7 @@ gamestate_OnMapUpdate_8005268: // (self: * GameState $r5) -> ()
 
 	bl TryUpdateEachOverworldMapObject_80048D2 // () -> ()
 
-	bl sub_809F942 // () -> * nullable ?
+	bl sub_809F942 // () -> Nullable<* ?>
 
 	bl dispatch_80339CC // () -> ()
 
@@ -4144,7 +4164,7 @@ gamestate_OnMapUpdate_8005268: // (self: * GameState $r5) -> ()
 	bl sub_800286C
 	bl sub_8003BF4
 	bl sub_8003E98
-	bl sub_800467C
+	bl npc_init_800467C
 	bl sub_8004298
 	bl sub_8004590
 	bl sub_8004934
@@ -4167,7 +4187,7 @@ battle_80052D8: // (self: * GameState $r5) -> ()
 	bl sub_800286C
 	bl sub_8003BF4
 	bl sub_8003E98
-	bl sub_800467C
+	bl npc_init_800467C
 	bl sub_8004298
 	bl sub_8004590
 	bl sub_8004934
@@ -4230,7 +4250,7 @@ sub_800536E: // (self: * GameState $r5) -> ()
 	bl sub_800286C
 	bl sub_8003BF4
 	bl sub_8003E98
-	bl sub_800467C
+	bl npc_init_800467C
 	bl sub_8004298
 	bl sub_8004590
 	bl sub_8004934
@@ -4278,7 +4298,7 @@ sub_80053E4: // (self: * GameState $r5) -> ()
 	bl sub_800286C
 	bl sub_8003BF4
 	bl sub_8003E98
-	bl sub_800467C
+	bl npc_init_800467C
 	bl sub_8004298
 	bl sub_8004590
 	bl sub_8004934
@@ -4330,7 +4350,7 @@ loc_8005474:
 	bl sub_800286C
 	bl sub_8003BF4
 	bl sub_8003E98
-	bl sub_800467C
+	bl npc_init_800467C
 	bl sub_8004298
 	bl sub_8004590
 	bl sub_8004934
@@ -4414,7 +4434,7 @@ sub_800555A: // (self: * GameState $r5) -> ()
 	bl sub_800286C
 	bl sub_8003BF4
 	bl sub_8003E98
-	bl sub_800467C
+	bl npc_init_800467C
 	bl sub_8004298
 	bl sub_8004590
 	bl sub_8004934
@@ -4453,7 +4473,7 @@ sub_80055CE: // (self: * GameState $r5) -> ()
 	bl sub_800286C
 	bl sub_8003BF4
 	bl sub_8003E98
-	bl sub_800467C
+	bl npc_init_800467C
 	bl sub_8004298
 	bl sub_8004590
 	bl sub_8004934
@@ -4492,7 +4512,7 @@ sub_8005642: // (self: * GameState $r5) -> ()
 	bl sub_800286C
 	bl sub_8003BF4
 	bl sub_8003E98
-	bl sub_800467C
+	bl npc_init_800467C
 	bl sub_8004298
 	bl sub_8004590
 	bl sub_8004934
@@ -4532,7 +4552,7 @@ sub_80056B8: // (self: * GameState $r5) -> ()
 	bl sub_800286C
 	bl sub_8003BF4
 	bl sub_8003E98
-	bl sub_800467C
+	bl npc_init_800467C
 	bl sub_8004298
 	bl sub_8004590
 	bl sub_8004934
@@ -4571,7 +4591,7 @@ sub_800572C: // (self: * GameState $r5) -> ()
 	bl sub_800286C
 	bl sub_8003BF4
 	bl sub_8003E98
-	bl sub_800467C
+	bl npc_init_800467C
 	bl sub_8004298
 	bl sub_8004590
 	bl sub_8004934
@@ -4610,7 +4630,7 @@ sub_80057A0: // (self: * GameState $r5) -> ()
 	bl sub_800286C
 	bl sub_8003BF4
 	bl sub_8003E98
-	bl sub_800467C
+	bl npc_init_800467C
 	bl sub_8004298
 	bl sub_8004590
 	bl sub_8004934
@@ -4649,7 +4669,7 @@ sub_8005814: // (self: * GameState $r5) -> ()
 	bl sub_800286C
 	bl sub_8003BF4
 	bl sub_8003E98
-	bl sub_800467C
+	bl npc_init_800467C
 	bl sub_8004298
 	bl sub_8004590
 	bl sub_8004934
@@ -4673,7 +4693,7 @@ sub_800585A: // (self: * GameState $r5) -> ()
 	bl sub_800286C
 	bl sub_8003BF4
 	bl sub_8003E98
-	bl sub_800467C
+	bl npc_init_800467C
 	bl sub_8004298
 	bl sub_8004590
 	bl sub_8004934
@@ -4858,7 +4878,7 @@ sub_80059B4: // (self: * GameState $r5) -> ()
   // This reproduces in Lan's HP, but NOT RoboDogComp for example. Might be because it applies to HomePages
 	ldr r0, off_8005A78 // =CutsceneScript_8098a02
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 
 	pop {pc}
 	thumb_func_end sub_80059B4
@@ -4873,7 +4893,7 @@ sub_80059D0: // (self: * GameState $r5) -> ()
 
 	ldr r0, off_8005A80 // =CutsceneScript_8098a78
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 
 	pop {pc}
 	thumb_func_end sub_80059D0
@@ -4886,7 +4906,7 @@ sub_80059EC: // (self: * GameState $r5) -> ()
 
 	ldr r0, off_8005A7C // =CutsceneScript_8098a2e
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 
 	pop {pc}
 	thumb_func_end sub_80059EC
@@ -4897,7 +4917,7 @@ sub_8005A00: // (self: * GameState $r5) -> ()
 
 	ldr r0, off_8005A84 // =CutsceneScript_809b5ad
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 
 	pop {pc}
 	thumb_func_end sub_8005A00
@@ -4912,7 +4932,7 @@ sub_8005A0C: // (self: * GameState $r5) -> ()
 
 	ldr r0, off_8005A88 // =CutsceneScript_8098b1c
 	mov r1, #0
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 
 	pop {pc}
 	thumb_func_end sub_8005A0C

@@ -28,7 +28,8 @@ off_806AE1C: .word dword_806AED0
 	.word byte_806B0B5
 	.word byte_806B1E3
 	.word byte_806B2AC
-off_806AE30: .word off_806B310
+NPCScriptsPvavilionComp_806AE30: // (*const NPCScript)[][PAVILION_COMP_NUM_MAPS]
+  .word off_806B310
 	.word off_806B6B8
 	.word off_806B83C
 	.word off_806B940

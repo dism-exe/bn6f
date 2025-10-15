@@ -53,7 +53,8 @@ off_80758A0:: .word byte_8075908
 off_80758AC:: .word byte_8075A0C
 	.word byte_8075C25
 	.word byte_8075D93
-off_80758B8:: .word off_8075E24
+NPCScriptsSeasideArea_80758B8:: // (*const NPCScript)[][SEASIDE_AREA_NUM_MAPS]
+  .word off_8075E24
 	.word off_80766FC
 	.word off_8076E30
 off_80758C4:: .word byte_80758D0

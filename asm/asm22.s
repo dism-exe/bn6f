@@ -229,7 +229,7 @@ loc_80870E8:
 	bl sub_8086F5C
 	b locret_80870F6
 loc_80870F2:
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 locret_80870F6:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -258,7 +258,7 @@ loc_808712A:
 	beq loc_8087130
 	ldr r0, off_808713C // =byte_8086678+32 
 loc_8087130:
-	bl StartCutscene // (script: *const (), param: u32) -> ()
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8087138: .word byte_80868C8+0x20

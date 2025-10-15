@@ -931,7 +931,7 @@ isCompressedRef_8000B46:
 	// dest: a1[2]
 	ldr r1, [r7,#8]
 	mov r4, r1
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	// dest
 	ldr r1, [r7,#4]
 	tst r1, r1
@@ -996,7 +996,7 @@ loc_8000BA4:
 	// dest
 	ldr r1, [r7,#8]
 	mov r4, r1
-	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const (), mut_dest: *mut ()) -> ()
+	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
 	ldr r1, [r7,#4]
 	tst r1, r1
 	beq loc_8000BE6
