@@ -2833,20 +2833,20 @@ sub_8047834:
 	mov r1, #0x50 
 	mov r2, #0
 	bl sub_8119854
-	ldr r0, off_80478A8 // =eTextScript202BA04
+	ldr r0, off_80478A8 // =eTextScript202BA04 // *mut TextScriptArchive
 	mov r1, #0x7f
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	b locret_80478A0
 loc_804787A:
 	cmp r3, #1
 	bne loc_804788C
-	ldr r0, off_80478A8 // =eTextScript202BA04
+	ldr r0, off_80478A8 // =eTextScript202BA04 // *mut TextScriptArchive
 	ldrh r1, [r7,#2]
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	bl sub_80478B8
 	b locret_80478A0
 loc_804788C:
-	ldr r0, off_80478AC // =eTextScript202DA04
+	ldr r0, off_80478AC // =eTextScript202DA04 // *mut TextScriptArchive
 	ldrh r1, [r7,#2]
 	lsr r1, r1, #2
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
@@ -2858,8 +2858,8 @@ locret_80478A0:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_80478A4: .word byte_8046B74
-off_80478A8: .word eTextScript202BA04
-off_80478AC: .word eTextScript202DA04
+off_80478A8: .word eTextScript202BA04 // *mut TextScriptArchive
+off_80478AC: .word eTextScript202DA04 // *mut TextScriptArchive
 off_80478B0: .word byte_2019A00
 off_80478B4: .word byte_8046B84
 	thumb_func_end sub_8047834
@@ -4202,7 +4202,7 @@ loc_8048E8A:
 	mov r12, r3
 	// idx
 	ldrh r0, [r7,#2]
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrh r0, [r0,#0x1c]
 	add r0, r12
 	mov r1, #8
@@ -5811,7 +5811,7 @@ loc_8049BC4:
 	mov r2, #2
 	mov r3, #0
 	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
-	ldr r0, off_8049CB4 // =eTextScript202BA04
+	ldr r0, off_8049CB4 // =eTextScript202BA04 // *mut TextScriptArchive
 	lsl r1, r7, #9
 	add r0, r0, r1
 	ldr r1, dword_8049CB8 // =0x6016e00 
@@ -5861,7 +5861,7 @@ off_8049C84: .word byte_86C0B20
 	.word byte_86C19A0
 	.word byte_86C19E0
 	.word byte_86C1A60
-off_8049CB4: .word eTextScript202BA04
+off_8049CB4: .word eTextScript202BA04 // *mut TextScriptArchive
 dword_8049CB8: .word 0x6016E00
 	thumb_func_end sub_8049BC0
 
@@ -8635,7 +8635,7 @@ loc_804BD34:
 	add r1, #0x34 
 	bl sub_804BE88
 	push {r0,r1}
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r2, [r0,#5] // rarity
 	pop {r0,r1}
 	push {r0,r1}
@@ -8724,7 +8724,7 @@ loc_804BDD6:
 	strh r0, [r7]
 	strb r3, [r7,#2]
 	push {r0,r1,r3,r6,r7}
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r2, [r0,#5] // rarity
 	mov r4, r8
 	ldrb r6, [r4,r2]
@@ -8780,7 +8780,7 @@ loc_804BE3C:
 	strh r0, [r7]
 	strb r3, [r7,#2]
 	push {r0,r1,r3,r6,r7}
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r2, [r0,#5]
 	mov r4, r8
 	ldrb r6, [r4,r2]

@@ -3167,7 +3167,7 @@ sub_813CEA0:
 	add r0, r0, r1
 	ldrh r0, [r0]
 	bl split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r0, [r0,#8]
 	cmp r0, r7
 	ble loc_813CEF2
@@ -3549,7 +3549,7 @@ loc_813D538:
 	mov r6, #0
 	// idx
 	mov r0, r2
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	mov r7, r0
 	bl GetRNG // () -> u32?
 	mov r1, #3

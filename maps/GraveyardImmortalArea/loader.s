@@ -28,7 +28,7 @@ GraveyardImmortalArea_EnterMapGroup:
 	bl initUncompSpriteState_80028d4 // (a0: *const ?) -> ()
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
-	ldr r0, off_807ED30 // =off_807ED34 
+	ldr r0, off_807ED30 // =off_807ED34 // (*const SpriteLoadData)[3]
 	ldr r0, [r0,r1]
 	bl uncompSprite_8002906 // (sprite_load_data: *const SpriteLoadData) -> bool
 	bl chatbox_uncompMapTextArchives_803FD08 // () -> int
@@ -38,8 +38,9 @@ GraveyardImmortalArea_EnterMapGroup:
 	.balign 4, 0
 off_807ED28: .word off_807EA6C
 off_807ED2C: .word unk_2037800
-off_807ED30: .word off_807ED34
-off_807ED34: .word byte_807ED40
+off_807ED30: .word off_807ED34 // (*const SpriteLoadData)[3]
+off_807ED34: // (*const SpriteLoadData)[3]
+  .word byte_807ED40
 	.word byte_807ED4E
 	.word byte_807ED60
 byte_807ED40: .byte 0x1C, 0xE, 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x4B, 0x1C
@@ -175,7 +176,7 @@ GraveyardImmortalArea_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, off_807EEA8 // =pt_807EEAC 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList // (void *a1) -> int
+	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
 off_807EEA8: .word pt_807EEAC

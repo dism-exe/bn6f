@@ -205,7 +205,7 @@ loc_800B9D4:
 	lsl r0, r0, #0x10
 	bl sub_801DACC
 	ldrh r0, [r5,#oBattleObject_Unk_30] // idx
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	mov r1, #0
 	mov r2, #0
 	ldrb r3, [r0,#9]
@@ -314,7 +314,7 @@ loc_800BAB8:
 	bl sub_801DACC
 	// idx
 	ldrh r0, [r5,#oBattleObject_Unk_30]
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	mov r1, #0
 	mov r2, #0
 	ldrb r3, [r0,#9]
@@ -450,7 +450,7 @@ loc_800BBCC:
 	bl sub_801DACC
 	// idx
 	ldrh r0, [r5,#oBattleObject_Unk_30]
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	mov r1, #0
 	mov r2, #0
 	ldrb r3, [r0,#9]

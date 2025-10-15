@@ -59,11 +59,11 @@ off_803FD64: .word DecompressionBuf2033400
 chatbox_runScript_202da04: // (u8 scriptID) -> void
 	push {r4,r5,lr}
 	mov r1, r0
-	ldr r0, off_803FD74 // =eTextScript202DA04
+	ldr r0, off_803FD74 // =eTextScript202DA04 // *mut TextScriptArchive
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	pop {r4,r5,pc}
 	.balign 4, 0
-off_803FD74: .word eTextScript202DA04
+off_803FD74: .word eTextScript202DA04 // *mut TextScriptArchive
 	thumb_func_end chatbox_runScript_202da04
 
 

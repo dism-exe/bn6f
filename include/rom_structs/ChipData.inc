@@ -1,6 +1,6 @@
+//! type: ChipData
 
 	.macro chip_data_struct codes, attack_element, chip_rarity, chip_element, library_type, mb, effect_flags, stamina_damage_counter_frames, attack_family, attack_subfamily, dark_soul_usage, unk_0e, lock_on_enable, attack_param_1, attack_param_2, attack_param_3, attack_param_4, lockout_frames, library_num, library_flags, lock_on_type, alphabet_sort_pos, attack_power, id_sort_pos, chip_gate_usage_limit, dark_chip_id, chip_icon_ptr, chip_image_ptr, chip_palette_ptr
-    // type: struct ChipData
 	init_rom_struct chip_data_struct
 	// todo use u8_arr
 	u32 Codes, \codes // loc=0x0

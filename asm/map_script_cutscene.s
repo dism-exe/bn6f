@@ -1309,7 +1309,7 @@ MapScriptCmd_spawn_or_free_objects: // 8035FDE
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl SpawnObjectsFromList // (void *a1) -> int
+	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	add r7, #6
 	mov r0, #1
 	pop {pc}
@@ -1325,20 +1325,25 @@ MapScriptCmd_spawn_or_free_objects: // 8035FDE
 
 	thumb_func_start StoreMapScriptsThenRunOnInitMapScript
 // called once
-StoreMapScriptsThenRunOnInitMapScript:
+StoreMapScriptsThenRunOnInitMapScript: // (on_init: *const MapScript, on_update: *const MapScript) -> ()
 	push {r4-r7,lr}
 	mov r4, r12
 	push {r4}
+
 	mov r4, r0
 	mov r6, r1
+
 	ldr r5, off_8036090 // =eMapScriptState
+
 	// memBlock
 	mov r0, r5
 	// size
 	mov r1, #0x14
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
 	str r4, [r5,#oMapScriptState_OnInitMapScriptPtr] // (dword_2011E68 - 0x2011e60)
 	str r6, [r5,#oMapScriptState_ContinuousMapScriptPtr] // (dword_2011E6C - 0x2011e60)
+
 	ldr r6, off_803608C // =MapScriptCommandJumptable
 	mov r12, r6
 	mov r7, r4
@@ -2416,7 +2421,7 @@ StartCutscene: // (script: *const (), param: u32) -> ()
 	str r0, [r5,#oCutsceneState_CutsceneScriptPos2] // s_02011C50.ptr_20
 	str r0, [r5,#oCutsceneState_CutsceneScriptPos3] // s_02011C50.ptr_24
 	str r0, [r5,#oCutsceneState_CutsceneScriptPos4] // s_02011C50.ptr_28
-	ldr r0, =eTextScript202DA04
+	ldr r0, =eTextScript202DA04 // *mut TextScriptArchive
 	str r0, [r5,#oCutsceneState_TextArchivePtr] // s_02011C50.ptr_30
 	ldr r0, =off_8036EC4
 	str r0, [r5,#oCutsceneState_Unk_34] // s_02011C50.ptr_34
@@ -5178,7 +5183,7 @@ CutsceneCmd_spawn_or_free_ow_map_or_npc_objects:
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl SpawnObjectsFromList // (void *a1) -> int
+	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	add r7, #6
 	mov r0, #1
 	pop {pc}

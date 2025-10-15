@@ -72027,7 +72027,7 @@ loc_80DB1F4:
 	strh r0, [r5,#oBattleObject_Timer2]
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sub_800ED90
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -95426,7 +95426,7 @@ sub_80E667C:
 	ldr r1, dword_80E6750 // =0xffff 
 	cmp r0, r1
 	beq loc_80E6704
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -104237,7 +104237,7 @@ loc_80EAE78:
 	bne loc_80EAE90
 	// idx
 	ldrh r0, [r7,#oAIAttackVars_Unk_14]
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r0, [r0,#0x17]
 loc_80EAE90:
 	mov r4, r0
@@ -113532,7 +113532,7 @@ loc_80EF782:
 	ldrh r0, [r1,r0]
 loc_80EF788:
 	strh r0, [r7,#oAIAttackVars_Unk_14]
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	mov r4, r0
 	ldrb r1, [r4,#0xc]
 	strb r1, [r7,#oAIAttackVars_Unk_03]
@@ -113702,7 +113702,7 @@ loc_80EF902:
 	ldrh r0, [r1,r0]
 loc_80EF908:
 	strh r0, [r7,#oAIAttackVars_Unk_14]
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	mov r4, r0
 	ldrb r1, [r4,#0xc]
 	strb r1, [r7,#oAIAttackVars_Unk_03]
@@ -115224,7 +115224,7 @@ loc_80F059C:
 	mov r0, r7
 	lsl r0, r0, #0x11
 	lsr r0, r0, #0x11
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	mov r4, r0
 	mov r0, #0x10
 	bl ClearAIDataUnk0x48Flag
@@ -115312,7 +115312,7 @@ loc_80F0640:
 	lsl r1, r1, #1
 	add r1, #2
 	ldrh r0, [r4,r1]
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2

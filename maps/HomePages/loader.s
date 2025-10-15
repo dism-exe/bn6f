@@ -333,7 +333,7 @@ HomePages_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, off_806C5B0 // =pt_806C5B4 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList // (void *a1) -> int
+	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
 off_806C5B0: .word pt_806C5B4

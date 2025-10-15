@@ -10654,7 +10654,7 @@ loc_80AABB8:
 	beq loc_80AABEA
 	// idx
 	mov r0, r4
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r1, [r0,#9]
 	mov r2, #8
 	tst r1, r2
@@ -10714,7 +10714,7 @@ loc_80AAC1E:
 	// idx
 	ldrh r0, [r6,r1]
 	str r0, [sp,#0xc]
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	mov r2, #0
 	mov r3, #0
 loc_80AAC42:
@@ -10831,7 +10831,7 @@ loc_80AAD10:
 	beq loc_80AAD26
 	// idx
 	mov r0, r5
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r1, [r0,#5]
 	cmp r1, r7
 	bne loc_80AAD26
@@ -10895,7 +10895,7 @@ loc_80AAD80:
 	beq loc_80AAD9A
 	// idx
 	mov r0, r4
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r1, [r0,#5]
 	cmp r1, #0xff
 	beq loc_80AAD9A
@@ -10959,7 +10959,7 @@ loc_80AADE4:
 loc_80AADFC:
 	// idx
 	mov r0, r4
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r1, [r0,#7]
 	cmp r1, #2
 	beq loc_80AAE24
@@ -10998,7 +10998,7 @@ sub_80AAE36:
 loc_80AAE3C:
 	// idx
 	mov r0, r4
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r0, [r0,#9]
 	mov r1, #8
 	tst r0, r1

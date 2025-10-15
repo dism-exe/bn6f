@@ -1362,19 +1362,25 @@ Struct8034460:
 	.word 0x0285, 0x0, 0x0, 0x3, 0xfe840000, 0x640000, 0xffba0000, 0x3c0000
 	.word 0x0285, 0x0, 0x0, 0x3, 0xfe840000, 0x1540000, 0x3c0000, 0x1ae0000
 	.word 0xffffffff
-RealWorldMapScriptPointers:
+RealWorldMapScriptPointers: // (* const MapScript)[][2][REAL_WORLD_NUM_GROUPS]
 	.word map00_ACDC_804D0A4
 	.word off_804D0AC
-	.word off_804E92C
-	.word off_804E940
+
+	.word off_804E92C // (* const MapScript)[CENTRAL_TOWN_NUM_MAPS]
+	.word off_804E940 // (* const MapScript)[CENTRAL_TOWN_NUM_MAPS]
+
 	.word off_8052D88
 	.word off_8052DB4
+
 	.word off_8059D48
 	.word off_8059D5C
+
 	.word off_805E15C
 	.word off_805E170
+
 	.word off_806063C
 	.word off_806064C
+
 	.word off_8062F48
 	.word off_8062F60
 off_803461C: .word off_804D0BC
@@ -1400,7 +1406,8 @@ RealWorldSpawnMapObjectJumptable:
 	.word SkyTown_SpawnMapObjectsForMap+1
 	.word ExpoSite_SpawnMapObjectsForMap+1
 
-InternetMapScriptPointers: .word off_80665A4
+InternetMapScriptPointers: // (* const MapScript)[][2][INTERNET_NUM_GROUPS]
+  .word off_80665A4
 	.word off_80665AC
 	.word off_8067DC8
 	.word off_8067DD4
@@ -1656,50 +1663,74 @@ byte_8034AFC: .byte 0x4, 0x0, 0x0, 0x0, 0x60, 0x1B, 0x0, 0x3, 0xC, 0x8, 0x1, 0xF
 // JP 0x8035b08
 map_8034B4C: // (map_group: u8, map_number: u8) -> ()
 	push {r4-r7,lr}
+
 	mov r2, r8
 	mov r3, r9
 	mov r4, r12
+
 	push {r2-r4}
 	push {r0,r1}
+
 	// memBlock
 	ldr r0, off_8034BB4 // =unk_2011EA0
 	// size
 	mov r1, #0x40
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
 	bl playCertainMapMusicBasedOnEventByte_8036e44
+
 	bl sub_8035028
+
 	bl owPlayer_80350a8
+
 	bl npc_spawnOverworldNPCObjectsForMap
+
 	pop {r0,r1}
 	push {r0,r1}
+
 	bl sub_803537C
+
 	bl sub_80353DA
+
 	pop {r0,r1}
+
 	cmp r0, #INTERNET_MAP_GROUP_START
-	bge loc_8034B86
-	ldr r4, off_8034BAC // =RealWorldMapScriptPointers
-	b loc_8034B8A
-loc_8034B86:
-	ldr r4, off_8034BB0 // =InternetMapScriptPointers
+	bge else_8034B86
+
+	ldr r4, off_8034BAC // =RealWorldMapScriptPointers // (* const MapScript)[][2][REAL_WORLD_NUM_GROUPS]
+	b endif_8034B8A
+
+else_8034B86:
+
+	ldr r4, off_8034BB0 // =InternetMapScriptPointers // (* const MapScript)[][2][INTERNET_NUM_GROUPS]
 	sub r0, #INTERNET_MAP_GROUP_START
-loc_8034B8A:
+
+endif_8034B8A:
+
 	lsl r0, r0, #3
 	lsl r3, r1, #2
+
+  // map_scripts[8*map_group]
+  // *8 because each is a tuple of two pointers
 	add r4, r4, r0
-	ldr r0, [r4]
+
+	ldr r0, [r4,#0]
 	ldr r1, [r4,#4]
+
 	ldr r0, [r0,r3]
 	ldr r1, [r1,r3]
-	bl StoreMapScriptsThenRunOnInitMapScript
+	bl StoreMapScriptsThenRunOnInitMapScript // (on_init: *const MapScript, on_update: *const MapScript) -> ()
+
 	bl PlayMapMusic // () -> ()
+
 	pop {r2-r4}
 	mov r8, r2
 	mov r9, r3
 	mov r12, r4
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8034BAC: .word RealWorldMapScriptPointers
-off_8034BB0: .word InternetMapScriptPointers
+off_8034BAC: .word RealWorldMapScriptPointers // (* const MapScript)[][2][REAL_WORLD_NUM_GROUPS]
+off_8034BB0: .word InternetMapScriptPointers // (* const MapScript)[][2][INTERNET_NUM_GROUPS]
 off_8034BB4: .word unk_2011EA0
 	thumb_func_end map_8034B4C
 

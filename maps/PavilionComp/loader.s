@@ -268,7 +268,7 @@ PavilionComp_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, off_806AD14 // =off_806AD18 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList // (void *a1) -> int
+	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
 off_806AD14: .word off_806AD18

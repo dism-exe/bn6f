@@ -2,15 +2,16 @@
 // (int chip_idx) -> ChipData*
 	thumb_func_start getChip8021DA8
 // exe6g: 8021eb8	
-getChip8021DA8:
-	ldr r1, off_8021AB0 // =ChipDataArr_8021DA8
+getChip8021DA8: // (which_chip: i32) -> *const ChipData
+	ldr r1, off_8021AB0 // =ChipDataArr_8021DA8 // (*const ChipData)[206]
 	mov r2, #44
 	mul r0, r2
 	add r0, r0, r1
 	// return &u8_8021DA8[44*idx]
 	mov pc, lr
 	.byte 0, 0
-off_8021AB0: .word ChipDataArr_8021DA8 // exe6g: 80221bc
+off_8021AB0: 
+  .word ChipDataArr_8021DA8 // (*const ChipData)[206]
 	thumb_func_end getChip8021DA8
 
 	thumb_func_start sub_8021AB4
@@ -300,7 +301,7 @@ getOffsetToQuantityOfChipCodeMaybe_8021c7c:
 	push {r4,r7,lr}
 	mov r2, r0
 	push {r1,r2}
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	pop {r1,r2}
 	add r0, #0
 	mov r3, #0
@@ -336,7 +337,7 @@ loc_8021CB0:
 	// idx
 	mov r0, r2
 	push {r2}
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	pop {r2}
 	push {r0,r2}
 	mov r0, r2

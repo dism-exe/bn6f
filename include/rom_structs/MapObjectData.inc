@@ -1,4 +1,5 @@
 
+  // type: MapObjectData
 	.macro map_object_data_struct unk_00, sprite_index, unk_02, unk_03, unk_04, palette, unk_09, unk_0a, unk_0c, unk_0e
 	init_rom_struct map_object_data_struct
 	u8 Unk_00, \unk_00 // loc=0x0
@@ -16,6 +17,7 @@
 
 	def_rom_struct_offsets map_object_data_struct, oMapObjectData
 
+  // type: SpriteLoadData
 	// A sprite whose palette and tileset needs to be loaded into memory.
 	// Used by uncompSprite_8002906 during overworld map loading.
 	.macro sprite_load_data_struct sprite_type_offset, sprite_index

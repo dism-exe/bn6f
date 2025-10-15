@@ -609,7 +609,7 @@ InitializeOverworldMapObjectStructs:
 
 
 	thumb_func_start SpawnObjectsFromList
-SpawnObjectsFromList: // (void *a1) -> int
+SpawnObjectsFromList: // (data: *const MapObjectSpawnData) -> i32
 	push {r4-r7,lr}
 	
 	// void* vA1: r7
@@ -7419,7 +7419,7 @@ sub_8006EA4:
 	beq loc_8006EE0
 	// idx
 	mov r0, r7
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r3, [r0]
 	cmp r3, r4
 	beq loc_8006ED2
@@ -7461,7 +7461,7 @@ validateChipCode_8006EE8:
 	beq loc_8006F16
 	// idx
 	mov r0, r7
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r3, [r0]
 	cmp r3, r4
 	beq loc_8006F16
@@ -7493,7 +7493,7 @@ sub_8006F1E:
 	beq loc_8006F4C
 	// idx
 	mov r0, r7
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r3, [r0]
 	cmp r3, r4
 	beq loc_8006F4C
@@ -14662,7 +14662,7 @@ loc_800A582:
 	ldrh r0, [r7]
 	lsl r0, r0, #0x17
 	lsr r0, r0, #0x17
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r1, [r0,#0x7] // ChipData.elemIdx
 	cmp r1, #2 // giga
 	beq loc_800A59E
@@ -15085,7 +15085,7 @@ loc_800A812:
 	ldrh r0, [r4]
 	lsl r0, r0, #0x17
 	lsr r0, r0, #0x17
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r0, [r0,#7]
 	cmp r0, #2
 	beq loc_800A82E
@@ -16100,7 +16100,7 @@ handleVariableDamageChip_800AEE8:
 	// idx
 	ldrh r0, [r5]
 	mov r6, r0
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r1, [r0,#9]
 	mov r2, #0x80
 	tst r1, r2
@@ -16118,7 +16118,7 @@ loc_800AF0E:
 	// idx
 	ldrh r0, [r5]
 	mov r6, r0
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r1, [r0,#9]
 	mov r2, #0x80
 	tst r1, r2
@@ -16234,7 +16234,7 @@ loc_800AFCC:
 	beq loc_800B00C
 	lsl r0, r4, #0x17
 	lsr r0, r0, #0x17
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r6, [r0,#7]
 	cmp r6, #1
 	beq loc_800AFF0
@@ -16291,7 +16291,7 @@ loc_800B034:
 	beq loc_800B074
 	lsl r0, r4, #0x17
 	lsr r0, r0, #0x17
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r6, [r0,#7]
 	cmp r6, #1
 	beq loc_800B058
@@ -16364,7 +16364,7 @@ someChipHandValidationHappensHere_800B090:
 	bne loc_800B0F6
 	// idx
 	mov r0, r4
-	bl getChip8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	ldrb r7, [r0,#0x7] // ChipData.elemIdx
 	cmp r7, #1
 	beq loc_800B0DE

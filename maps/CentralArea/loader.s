@@ -163,7 +163,7 @@ CentralArea_SpawnMapObjectsForMap:
 	lsl r0, r0, #2
 	ldr r1, off_8071D04 // =off_8071D08 
 	ldr r0, [r1,r0]
-	bl SpawnObjectsFromList // (void *a1) -> int
+	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
 off_8071D04: .word off_8071D08

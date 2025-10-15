@@ -2410,7 +2410,7 @@ byte_202AF00:: // 0x202af00
 	.space 2816
 eDecomp202BA00:: // 0x202ba00
 	.space 4
-eTextScript202BA04:: // 0x202ba04
+eTextScript202BA04:: // *mut TextScriptArchive
 	.space 4092
 unk_202CA00:: // 0x202ca00
 	.space 512
@@ -2430,7 +2430,8 @@ byte_202D800:: // 0x202d800
 	.space 512
 eDecompressedTextArchive202DA00:: // 0x202da00
 	.space 4
-eTextScript202DA04:: // 0x202da04
+// 0x202da04
+eTextScript202DA04:: // *mut TextScriptArchive
 	.space 508
 byte_202DC00:: // 0x202dc00
 	.space 512
@@ -2532,7 +2533,8 @@ word_2033042:: // 0x2033042
 	.space 958
 DecompressionBuf2033400:: // 0x2033400
 	.space 4
-eTextScript2033404:: // 0x2033404
+// 0x2033404
+eTextScript2033404:: // *mut TextScriptArchive
 	.space 764
 unk_2033700:: // 0x2033700
 	.space 256
@@ -2542,7 +2544,7 @@ unk_203381C:: // 0x203381c
 	.space 484
 unk_2033A00:: // 0x2033a00
 	.space 4
-reqBBS_eTextScript:: // 0x2033a04
+reqBBS_eTextScript:: // *mut TextScriptArchive
 	.space 508
 unk_2033C00:: // 0x2033c00
 	.space 44
