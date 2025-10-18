@@ -10,4 +10,4 @@ Note that ROM data pointers should be typed `*const T` while EWRAM/IWRAM pointer
 
 Notice the indexing patterns use, and see if you can infer the sizes. 
 
-For example: `(*const SomeROMStruct)[2][NUM_OBJECTS]` would index by object id into a pair of 2 pointers, then into `SomeROMStruct`.
+For example: `[*const [*const SomeROMStruct; 2]; NUM_OBJECTS]` would index by object id into a pair of 2 pointers, then into `SomeROMStruct`.

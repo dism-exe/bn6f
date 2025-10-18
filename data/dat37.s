@@ -48626,9 +48626,11 @@ LibInfoText_aSramV113_1:: .asciz "SRAM_V113"
 	.byte 0x56, 0x31, 0x30, 0x32, 0x34, 0x0, 0x0, 0x0, 0x52
 	.byte 0x46, 0x55, 0x2D, 0x4D, 0x42, 0x4F, 0x4F, 0x54, 0x0
 	.byte 0x0, 0x0
-LibInfoText_aNintendosio32i_2:: .asciz "NINTENDOSio32ID_030820"
+LibInfoText_aNintendosio32i_2:: 
+  .asciz "NINTENDOSio32ID_030820"                                                                                                        
 	.byte 0x0
-LibInfoText_aSramV113_2:: .asciz "SRAM_V113"
+LibInfoText_aSramV113_2:: 
+  .asciz "SRAM_V113"
 	.byte 0, 0
 	.word byte_8157909
 	.word byte_815792D

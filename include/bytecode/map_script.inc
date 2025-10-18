@@ -1,3 +1,4 @@
+//! type: MapScript
 
 	enum_start
 

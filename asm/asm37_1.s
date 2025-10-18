@@ -242,13 +242,13 @@ loc_8141A5C:
 	bne loc_8141ACA
 	mov r1, #7
 loc_8141A62:
-	ldr r0, off_8141A6C // =byte_808A128 
+	ldr r0, off_8141A6C // =byte_808A128 // CutsceneScript
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	bne loc_8141ABC
 locret_8141A6A:
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8141A6C: .word byte_808A128
+off_8141A6C: .word byte_808A128 // CutsceneScript
 	thumb_func_end sub_8141A10
 
 	thumb_local_start
@@ -548,7 +548,7 @@ loc_8141FE4:
 	movflag EVENT_702
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_814201A
-	ldr r0, off_8142048 // =byte_8089DF4 
+	ldr r0, off_8142048 // =byte_8089DF4 // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	movflag EVENT_702
@@ -569,7 +569,7 @@ dword_8142038: .word 0x140
 off_814203C: .word off_8141B24
 off_8142040: .word dword_8142044
 dword_8142044: .word 0xFF050505
-off_8142048: .word byte_8089DF4
+off_8142048: .word byte_8089DF4 // CutsceneScript
 	thumb_func_end sub_8141F7C
 
 	thumb_local_start
@@ -1137,9 +1137,9 @@ loc_81425B4:
 	movflag EVENT_744
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_81425D4
-	ldr r0, off_8142608 // =byte_8089448 
-	mov r1, #0
-	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
+	ldr r0, off_8142608 // =byte_8089448 // CutsceneScript
+	mov r1, #0                                                                                                        
+	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()                                                                                                        
 loc_81425D4:
 	movflag EVENT_740
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
@@ -1157,7 +1157,7 @@ locret_81425FC:
 	.balign 4, 0
 off_8142600: .word off_814230C
 dword_8142604: .word 0x1650
-off_8142608: .word byte_8089448
+off_8142608: .word byte_8089448 // CutsceneScript
 off_814260C: .word byte_8142610
 byte_8142610: .byte 0x2D, 0x2D, 0x2D, 0x3C, 0x3C, 0x3C, 0x96, 0x96
 	thumb_func_end sub_8142510
@@ -1192,7 +1192,7 @@ loc_814264A:
 loc_814265E:
 	bl sub_80357AE
 	bne loc_814266C
-	ldr r0, off_81426B8 // =byte_8089554 
+	ldr r0, off_81426B8 // =byte_8089554 // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 loc_814266C:
@@ -1214,7 +1214,7 @@ loc_8142690:
 	movflag EVENT_747
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_81426A4
-	ldr r0, off_81426C0 // =dword_8089128 
+	ldr r0, off_81426C0 // =dword_8089128 // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	beq loc_81426A4
@@ -1226,9 +1226,9 @@ loc_81426A4:
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
 	.balign 4, 0
-off_81426B8: .word byte_8089554
+off_81426B8: .word byte_8089554 // CutsceneScript
 off_81426BC: .word byte_80893CC // CutsceneScript
-off_81426C0: .word dword_8089128
+off_81426C0: .word dword_8089128 // CutsceneScript
 	.byte 0x82, 0x4E, 0x8, 0x21, 0x48, 0x43, 0x36, 0x18
 	thumb_func_end sub_8142618
 
@@ -2372,7 +2372,7 @@ loc_8143010:
 loc_8143024:
 	bl sub_80357AE
 	bne loc_8143038
-	ldr r0, off_8143080 // =byte_808C2F0 
+	ldr r0, off_8143080 // =byte_808C2F0 // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #1
@@ -2400,10 +2400,12 @@ loc_814306E:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8143074: .word off_8143078
-off_8143078: .word byte_808C004
+off_8143074: 
+  .word off_8143078
+off_8143078: 
+  .word byte_808C004
 	.word byte_808C0F4
-off_8143080: .word byte_808C2F0
+off_8143080: .word byte_808C2F0 // CutsceneScript
 off_8143084: .word byte_2000D20
 	thumb_func_end sub_8142FC8
 
@@ -3224,7 +3226,7 @@ loc_8143A02:
 	movflag EVENT_D36
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_8143A2E
-	ldr r0, off_8143A50 // =byte_8093358 
+	ldr r0, off_8143A50 // =byte_8093358 // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	bl sub_8143F38
@@ -3242,7 +3244,7 @@ loc_8143A46:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8143A4C: .word off_8143804
-off_8143A50: .word byte_8093358
+off_8143A50: .word byte_8093358 // CutsceneScript
 	thumb_func_end sub_8143978
 
 	thumb_local_start
@@ -3281,12 +3283,12 @@ loc_8143A9A:
 	bl sub_8143EA4
 	bl sub_8143BB0
 	bne loc_8143ABE
-	ldr r0, off_8143B24 // =byte_8092DE8 
+	ldr r0, off_8143B24 // =byte_8092DE8 // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	b loc_8143AC6
 loc_8143ABE:
-	ldr r0, off_8143B2C // =byte_80933B8 
+	ldr r0, off_8143B2C // =byte_80933B8 // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 loc_8143AC6:
@@ -3310,7 +3312,7 @@ loc_8143AF0:
 	bne locret_8143B14
 	bl GetGroundmanMinigameMapIndex
 	mov r1, r0
-	ldr r0, off_8143B28 // =byte_809326C 
+	ldr r0, off_8143B28 // =byte_809326C // CutsceneScript
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	bne loc_8143B04
 loc_8143B04:
@@ -3322,11 +3324,12 @@ locret_8143B14:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8143B18: .word dword_8143B1C
-dword_8143B1C: .word 0x8092C78
+dword_8143B1C: 
+  .word 0x8092C78
 	.word byte_8092A98
-off_8143B24: .word byte_8092DE8
-off_8143B28: .word byte_809326C
-off_8143B2C: .word byte_80933B8
+off_8143B24: .word byte_8092DE8 // CutsceneScript
+off_8143B28: .word byte_809326C // CutsceneScript
+off_8143B2C: .word byte_80933B8 // CutsceneScript
 	thumb_func_end sub_8143A54
 
 	thumb_local_start

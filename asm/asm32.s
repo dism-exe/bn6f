@@ -29574,7 +29574,7 @@ loc_811E2E4:
 	mov r0, #0xdc
 	mov r1, #0x24
 	push {r0,r1}
-	ldr r0, off_811E308 // =dword_8089128
+	ldr r0, off_811E308 // =dword_8089128 // CutsceneScript
 	bl cutscene_checkOriginalCutsceneScriptPos_8036F70
 	pop {r0,r1}
 	beq loc_811E2F8
@@ -29586,7 +29586,7 @@ loc_811E2F8:
 	bl sprite_update
 	pop {pc}
 	.balign 4, 0
-off_811E308: .word dword_8089128
+off_811E308: .word dword_8089128 // CutsceneScript
 	thumb_func_end sub_811E2B4
 
 	thumb_local_start
@@ -29699,7 +29699,7 @@ loc_811E3DE:
 	add r1, #0xc
 	mov r0, #0xdc
 	push {r0,r1}
-	ldr r0, off_811E408 // =dword_8089128
+	ldr r0, off_811E408 // =dword_8089128 // CutsceneScript
 	bl cutscene_checkOriginalCutsceneScriptPos_8036F70
 	pop {r0,r1}
 	beq loc_811E3FC
@@ -29710,7 +29710,7 @@ loc_811E3FC:
 	bl sprite_update
 	pop {pc}
 	.balign 4, 0
-off_811E408: .word dword_8089128
+off_811E408: .word dword_8089128 // CutsceneScript
 	thumb_func_end sub_811E3CC
 
 	thumb_local_start

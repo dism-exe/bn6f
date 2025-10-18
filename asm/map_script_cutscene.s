@@ -2505,7 +2505,7 @@ cutscene_checkOriginalCutsceneScriptPos_8036F40:
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	mov r2, #TRUE
 	ldr r0, [r0,#oCutsceneState_originalCutsceneScriptPos_40] // s_02011C50.unk_40
-	ldr r1, off_8036F54 // =CutsceneScript_80991F4
+	ldr r1, off_8036F54 // =CutsceneScript_80991F4 // CutsceneScript
 	cmp r0, r1
 	beq loc_8036F50
 	mov r2, #FALSE
@@ -2513,7 +2513,7 @@ loc_8036F50:
 	tst r2, r2
 	mov pc, lr
 	.balign 4, 0
-off_8036F54: .word CutsceneScript_80991F4
+off_8036F54: .word CutsceneScript_80991F4 // CutsceneScript
 	thumb_func_end cutscene_checkOriginalCutsceneScriptPos_8036F40
 
 	thumb_func_start cutscene_checkOriginalCutsceneScriptPos_8036F58
@@ -2522,7 +2522,7 @@ cutscene_checkOriginalCutsceneScriptPos_8036F58:
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	mov r2, #TRUE
 	ldr r0, [r0,#oCutsceneState_originalCutsceneScriptPos_40]
-	ldr r1, off_8036F6C // =CutsceneScript_80988E4
+	ldr r1, off_8036F6C // =CutsceneScript_80988E4 // CutsceneScript
 	cmp r0, r1
 	beq loc_8036F68
 	mov r2, #FALSE
@@ -2530,7 +2530,7 @@ loc_8036F68:
 	tst r2, r2
 	mov pc, lr
 	.balign 4, 0
-off_8036F6C: .word CutsceneScript_80988E4
+off_8036F6C: .word CutsceneScript_80988E4 // CutsceneScript
 	thumb_func_end cutscene_checkOriginalCutsceneScriptPos_8036F58
 
 	thumb_func_start cutscene_checkOriginalCutsceneScriptPos_8036F70
@@ -2602,26 +2602,48 @@ RunCutsceneCameraCommand:
 	pop {r4-r7,pc}
 	.balign 4, 0
 	.pool // off_8036FD4
-CutsceneCameraCommandJumptable: .word CutsceneCameraCmd_set_camera_pos+1
+CutsceneCameraCommandJumptable: 
+  // 0x00
+  .word CutsceneCameraCmd_set_camera_pos+1
+  // 0x04
 	.word CutsceneCameraCmd_simple_scroll+1
+  // 0x08
 	.word CutsceneCameraCmd_end+1
+  // 0x0C
 	.word CutsceneCameraCmd_wait+1
+  // 0x10
 	.word CutsceneCameraCmd_init_shake_effect+1
+  // 0x14
 	.word CutsceneCameraCmd_auto_scroll_to_player+1
+  // 0x18
 	.word CutsceneCameraCmd_smooth_auto_scroll_to_pos+1
+  // 0x1C
 	.word CutsceneCameraCmd_smooth_auto_scroll_to_pos_relative_to_ow_player+1
+  // 0x20
 	.word CutsceneCameraCmd_smooth_auto_scroll_to_soul_weapons_cursor+1
+  // 0x24
 	.word CutsceneCameraCmd_smooth_auto_scroll_cmd_80372ec+1
+  // 0x28
 	.word CutsceneCameraCmd_run_text_script+1
+  // 0x2C
 	.word CutsceneCameraCmd_wait_chatbox+1
+  // 0x30
 	.word CutsceneCameraCmd_call_sub_8001B1C+1
+  // 0x34
 	.word CutsceneCameraCmd_call_sub_8001B6C+1
+  // 0x38
 	.word CutsceneCameraCmd_set_screen_fade+1
+  // 0x3C
 	.word CutsceneCameraCmd_wait_screen_fade+1
+  // 0x40
 	.word CutsceneCameraCmd_set_event_flag+1
+  // 0x44
 	.word CutsceneCameraCmd_clear_event_flag+1
+  // 0x48
 	.word CutsceneCameraCmd_sound_cmd_80373fc+1
+  // 0x4C
 	.word CutsceneCameraCmd_play_music+1
+  // 0x50
 	.word CutsceneCameraCmd_write_camera_field_03_14+1
 	thumb_func_end RunCutsceneCameraCommand
 

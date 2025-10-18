@@ -4876,7 +4876,7 @@ sub_80059B4: // (self: * GameState $r5) -> ()
 
   // Disabling this causes warps like in Lan's HP to no longer interact (but they animate)
   // This reproduces in Lan's HP, but NOT RoboDogComp for example. Might be because it applies to HomePages
-	ldr r0, off_8005A78 // =CutsceneScript_8098a02
+	ldr r0, off_8005A78 // =CutsceneScript_8098a02 // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 
@@ -4891,7 +4891,7 @@ sub_80059D0: // (self: * GameState $r5) -> ()
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
 
-	ldr r0, off_8005A80 // =CutsceneScript_8098a78
+	ldr r0, off_8005A80 // =CutsceneScript_8098a78 // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 
@@ -4904,7 +4904,7 @@ sub_80059EC: // (self: * GameState $r5) -> ()
 	movflag EVENT_1703
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
-	ldr r0, off_8005A7C // =CutsceneScript_8098a2e
+	ldr r0, off_8005A7C // =CutsceneScript_8098a2e // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 
@@ -4915,7 +4915,7 @@ sub_80059EC: // (self: * GameState $r5) -> ()
 sub_8005A00: // (self: * GameState $r5) -> ()
 	push {lr}
 
-	ldr r0, off_8005A84 // =CutsceneScript_809b5ad
+	ldr r0, off_8005A84 // =CutsceneScript_809b5ad // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 
@@ -4930,7 +4930,7 @@ sub_8005A0C: // (self: * GameState $r5) -> ()
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
 
-	ldr r0, off_8005A88 // =CutsceneScript_8098b1c
+	ldr r0, off_8005A88 // =CutsceneScript_8098b1c // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 
@@ -4988,11 +4988,11 @@ sub_8005A50: // (self: * GameState $r5) -> ()
 
 	pop {pc}
 	.balign 4, 0
-off_8005A78: .word CutsceneScript_8098a02
-off_8005A7C: .word CutsceneScript_8098a2e
-off_8005A80: .word CutsceneScript_8098a78
-off_8005A84: .word CutsceneScript_809b5ad
-off_8005A88: .word CutsceneScript_8098b1c
+off_8005A78: .word CutsceneScript_8098a02 // CutsceneScript
+off_8005A7C: .word CutsceneScript_8098a2e // CutsceneScript
+off_8005A80: .word CutsceneScript_8098a78 // CutsceneScript
+off_8005A84: .word CutsceneScript_809b5ad // CutsceneScript
+off_8005A88: .word CutsceneScript_8098b1c // CutsceneScript
 	thumb_func_end sub_8005A50
 
 	thumb_local_start

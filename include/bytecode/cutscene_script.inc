@@ -1,4 +1,5 @@
-	
+//! type: CutsceneScript	
+
 	enum_start
 
 	enum cs_end_for_map_reload_maybe_8037c64_cmd // 0x00

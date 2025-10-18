@@ -4884,7 +4884,7 @@ sub_80A7BC0:
 	bl SetEventFlagFromImmediate
 	bl sub_8142080
 	mov r1, r0
-	ldr r0, off_80A7C54 // =byte_8089DD8
+	ldr r0, off_80A7C54 // =byte_8089DD8 // CutsceneScript
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 locret_80A7C3C:
 	pop {r4-r7,pc}
@@ -4894,7 +4894,7 @@ dword_80A7C44: .word 0x80000
 dword_80A7C48: .word 0x80000
 dword_80A7C4C: .word 0x100000
 dword_80A7C50: .word 0x100000
-off_80A7C54: .word byte_8089DD8
+off_80A7C54: .word byte_8089DD8 // CutsceneScript
 	thumb_func_end sub_80A7BC0
 
 	thumb_local_start
@@ -5021,7 +5021,7 @@ sub_80A7CFE:
 	ldr r0, [r5,#0x14]
 	cmp r0, r4
 	bne loc_80A7D60
-	ldr r0, off_80A7D88 // =byte_8089E44
+	ldr r0, off_80A7D88 // =byte_8089E44 // CutsceneScript
 	mov r1, r5
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	b locret_80A7D70
@@ -5029,7 +5029,7 @@ loc_80A7D60:
 	bl sub_81420B0
 	cmp r0, r4
 	bne locret_80A7D70
-	ldr r0, off_80A7D8C // =byte_8089FD8
+	ldr r0, off_80A7D8C // =byte_8089FD8 // CutsceneScript
 	mov r1, r5
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 locret_80A7D70:
@@ -5040,8 +5040,8 @@ dword_80A7D78: .word 0xE0000
 dword_80A7D7C: .word 0xE0000
 dword_80A7D80: .word 0x1C0000
 dword_80A7D84: .word 0x1C0000
-off_80A7D88: .word byte_8089E44
-off_80A7D8C: .word byte_8089FD8
+off_80A7D88: .word byte_8089E44 // CutsceneScript
+off_80A7D8C: .word byte_8089FD8 // CutsceneScript
 	thumb_func_end sub_80A7CFE
 
 	thumb_func_start sub_80A7D90
@@ -6928,7 +6928,7 @@ sub_80A8DB0:
 	beq locret_80A8DE6
 	bl sub_8143088
 	mov r1, r0
-	ldr r0, dword_80A8DEC // =byte_808C2F0
+	ldr r0, dword_80A8DEC // =byte_808C2F0 // CutsceneScript
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0x23 
 	add r0, #0xff
