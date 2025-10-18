@@ -1362,7 +1362,7 @@ Struct8034460:
 	.word 0x0285, 0x0, 0x0, 0x3, 0xfe840000, 0x640000, 0xffba0000, 0x3c0000
 	.word 0x0285, 0x0, 0x0, 0x3, 0xfe840000, 0x1540000, 0x3c0000, 0x1ae0000
 	.word 0xffffffff
-RealWorldMapScriptPointers: // (*const MapScript)[][2][REAL_WORLD_NUM_GROUPS]
+RealWorldMapScriptPointers: // [*const [*const [*const MapScript]; 2]; REAL_WORLD_NUM_GROUPS]
 	.word map00_ACDC_804D0A4
 	.word off_804D0AC
 
@@ -1390,14 +1390,14 @@ off_803461C: .word off_804D0BC
 	.word off_805E198
 	.word off_806066C
 	.word off_8062F90
-NPCList_maps00: // (*const NPCScript)[][][REAL_WORLD_NUM_GROUPS]
-  .word NPCScriptsACDC_804D0B4 // (*const NPCScript)[][ACDC_TOWN_NUM_MAPS]
-	.word NPCScriptsCentralTown_804E954 // (*const NPCScript)[][CENTRAL_TOWN_NUM_MAPS]
-	.word NPCScriptsCyberAcademy_8052DE0 // (*const NPCScript)[][CYBER_ACADEMY_NUM_MAPS]
-	.word NPCScriptsSeasideTown_8059D70 // (*const NPCScript)[][SEASIDE_TOWN_NUM_MAPS]
-	.word NPCScriptsGreenTown_805E184 // (*const NPCScript)[][GREEN_TOWN_NUM_MAPS]
-	.word NPCScriptsSkyTown_806065C // (*const NPCScript)[][SKY_TOWN_NUM_MAPS]
-	.word NPCScriptsExpoSite_8062F78 // (*const NPCScript)[][EXPO_SITE_NUM_MAPS]
+NPCList_maps00: // [*const [*const [*const NPCScript]]; REAL_WORLD_NUM_GROUPS]
+  .word NPCScriptsACDC_804D0B4 // [*const [*const NPCScript]; ACDC_TOWN_NUM_MAPS]
+	.word NPCScriptsCentralTown_804E954 // [*const [*const NPCScript]; CENTRAL_TOWN_NUM_MAPS]
+	.word NPCScriptsCyberAcademy_8052DE0 // [*const [*const NPCScript]; CYBER_ACADEMY_NUM_MAPS]
+	.word NPCScriptsSeasideTown_8059D70 // [*const [*const NPCScript]; SEASIDE_TOWN_NUM_MAPS]
+	.word NPCScriptsGreenTown_805E184 // [*const [*const NPCScript]; GREEN_TOWN_NUM_MAPS]
+	.word NPCScriptsSkyTown_806065C // [*const [*const NPCScript]; SKY_TOWN_NUM_MAPS]
+	.word NPCScriptsExpoSite_8062F78 // [*const [*const NPCScript]; EXPO_SITE_NUM_MAPS]
 RealWorldSpawnMapObjectJumptable:
 	.word ACDCTown_SpawnMapObjectsForMap+1
 	.word CentralTown_SpawnMapObjectsForMap+1
@@ -1407,7 +1407,7 @@ RealWorldSpawnMapObjectJumptable:
 	.word SkyTown_SpawnMapObjectsForMap+1
 	.word ExpoSite_SpawnMapObjectsForMap+1
 
-InternetMapScriptPointers: // (*const MapScript)[][2][INTERNET_NUM_GROUPS]
+InternetMapScriptPointers: // [*const [*const [*const MapScript]; 2]; INTERNET_NUM_GROUPS]
   .word off_80665A4
 	.word off_80665AC
 	.word off_8067DC8
@@ -1501,30 +1501,30 @@ UnkInternetMapGroupJumptable_8034784: .word RobotControlComp_UnkFunction_806651c
 	.word SkyACDCArea_UnkFunction_807aaac+1
 	.word Undernet_UnkFunction_807cfcc+1
 	.word GraveyardImmortalArea_UnkFunction_807ee68+1
-NPCList_maps80: // Nullable<(*const NPCScript)[][]>[INTERNET_NUM_GROUPS]
-  .word NPCScriptsRobotControlComp_80665B4 // (*const NPCScript)[][ROBOT_CONTROL_COMP_NUM_MAPS]
-	.word NPCScriptsAquariumComp_8067DE0 // (*const NPCScript)[][AQUARIUM_COMP_NUM_MAPS]
-	.word NPCScriptsJudgetreeComp_8069310 // (*const NPCScript)[][JUDGETREE_COMP_NUM_MAPS]
-	.word NPCScriptsMrWeather_806A278 // (*const NPCScript)[][MR_WEATHER_COMP_NUM_MAPS]
+NPCList_maps80: // [Nullable<*const [*const [*const NPCScript]]>; INTERNET_NUM_GROUPS]
+  .word NPCScriptsRobotControlComp_80665B4 // [*const [*const NPCScript]; ROBOT_CONTROL_COMP_NUM_MAPS]
+	.word NPCScriptsAquariumComp_8067DE0 // [*const [*const NPCScript]; AQUARIUM_COMP_NUM_MAPS]
+	.word NPCScriptsJudgetreeComp_8069310 // [*const [*const NPCScript]; JUDGETREE_COMP_NUM_MAPS]
+	.word NPCScriptsMrWeather_806A278 // [*const [*const NPCScript]; MR_WEATHER_COMP_NUM_MAPS]
 	.word NULL
-	.word NPCScriptsPvavilionComp_806AE30 // (*const NPCScript)[][PAVILION_COMP_NUM_MAPS]
-	.word NULL
-	.word NULL
-	.word NPCScriptsHomePages_806C7E8 // Nullable<(*const NPCScript)[]>[HOMEPAGES_NUM_MAPS]
+	.word NPCScriptsPvavilionComp_806AE30 // [*const [*const NPCScript]; PAVILION_COMP_NUM_MAPS]
 	.word NULL
 	.word NULL
-	.word NULL
-	.word NPCScriptsComps_806E030 // (*const NPCScript)[][COMPS_NUM_MAPS]
-	.word NPCScriptsComps2_80702AC // (*const NPCScript)[][COMPS_2_NUM_MAPS]
+	.word NPCScriptsHomePages_806C7E8 // [Nullable<*const [*const NPCScript]>]; HOMEPAGES_NUM_MAPS]
 	.word NULL
 	.word NULL
-	.word NPCScriptsCentralArea_8071EC8 // (*const NPCScript)[][CENTRAL_AREA_NUM_MAPS]
-	.word NPCScriptsSeasideArea_80758B8 // (*const NPCScript)[][SEASIDE_AREA_NUM_MAPS]
-	.word NPCScriptsGreenArea_8078114 // (*const NPCScript)[][GREEN_AREA_NUM_MAPS]
-	.word NPCScriptsUnderground_807953C // (*const NPCScript)[][UNDERGROUND_NUM_MAPS]
-	.word NPCScriptsSkyACDCArea_807AE04 // (*const NPCScript)[][SKY_ACDC_AREA_NUM_MAPS]
-	.word NPCScriptsUndernet_807D310 // Nullable<(*const NPCScript)[]>[UNDERNET_NUM_MAPS]
-	.word NPCScriptsGraveyardImmortalArea_807F210 // Nullable<(*const NPCScript)[]>[GRAVEYARD_NUM_MAPS]
+	.word NULL
+	.word NPCScriptsComps_806E030 // [*const [*const NPCScript]; COMPS_NUM_MAPS]
+	.word NPCScriptsComps2_80702AC // [*const [*const NPCScript]; COMPS_2_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word NPCScriptsCentralArea_8071EC8 // [*const [*const NPCScript]; CENTRAL_AREA_NUM_MAPS]
+	.word NPCScriptsSeasideArea_80758B8 // [*const [*const NPCScript]; SEASIDE_AREA_NUM_MAPS]
+	.word NPCScriptsGreenArea_8078114 // [*const [*const NPCScript]; GREEN_AREA_NUM_MAPS]
+	.word NPCScriptsUnderground_807953C // [*const [*const NPCScript]; UNDERGROUND_NUM_MAPS]
+	.word NPCScriptsSkyACDCArea_807AE04 // [*const [*const NPCScript]; SKY_ACDC_AREA_NUM_MAPS]
+	.word NPCScriptsUndernet_807D310 // [Nullable<*const [*const NPCScript]>]; UNDERNET_NUM_MAPS]
+	.word NPCScriptsGraveyardImmortalArea_807F210 // [Nullable<*const [*const NPCScript]>]; GRAVEYARD_NUM_MAPS]
 InternetSpawnMapObjectJumptable: 
   .word RobotControlComp_SpawnMapObjectsForMap+1
 	.word AquariumComp_SpawnMapObjectsForMap+1
@@ -1701,12 +1701,12 @@ map_8034B4C: // (map_group: u8, map_number: u8) -> ()
 	cmp r0, #INTERNET_MAP_GROUP_START
 	bge else_8034B86
 
-	ldr r4, off_8034BAC // =RealWorldMapScriptPointers // (*const MapScript)[][2][REAL_WORLD_NUM_GROUPS]
+	ldr r4, off_8034BAC // =RealWorldMapScriptPointers // [*const [*const [*const MapScript]; 2]; REAL_WORLD_NUM_GROUPS]
 	b endif_8034B8A
 
 else_8034B86:
 
-	ldr r4, off_8034BB0 // =InternetMapScriptPointers // (*const MapScript)[][2][INTERNET_NUM_GROUPS]
+	ldr r4, off_8034BB0 // =InternetMapScriptPointers // [*const [*const [*const MapScript]; 2]; INTERNET_NUM_GROUPS]
 	sub r0, #INTERNET_MAP_GROUP_START
 
 endif_8034B8A:
@@ -1733,8 +1733,8 @@ endif_8034B8A:
 	mov r12, r4
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8034BAC: .word RealWorldMapScriptPointers // (*const MapScript)[][2][REAL_WORLD_NUM_GROUPS]
-off_8034BB0: .word InternetMapScriptPointers // (*const MapScript)[][2][INTERNET_NUM_GROUPS]
+off_8034BAC: .word RealWorldMapScriptPointers // [*const [*const [*const MapScript]; 2]; REAL_WORLD_NUM_GROUPS]
+off_8034BB0: .word InternetMapScriptPointers // [*const [*const [*const MapScript]; 2]; INTERNET_NUM_GROUPS]
 off_8034BB4: .word unk_2011EA0
 	thumb_func_end map_8034B4C
 
@@ -2422,11 +2422,11 @@ npc_spawnOverworldNPCObjectsForMap:
 
   // real world
 
-	ldr r2, =NPCList_maps00 // (*const NPCScript)[][][REAL_WORLD_NUM_GROUPS]
+	ldr r2, =NPCList_maps00 // [*const [*const [*const NPCScript]]; REAL_WORLD_NUM_GROUPS]
 	b .realWorldMapGroup
 
 .internetMapGroup
-	ldr r2, =NPCList_maps80 // Nullable<(*const NPCScript)[][]>[INTERNET_NUM_GROUPS]
+	ldr r2, =NPCList_maps80 // [Nullable<*const [*const [*const NPCScript]]>; INTERNET_NUM_GROUPS]
 	sub r0, #INTERNET_MAP_GROUP_START
 .realWorldMapGroup
 
@@ -2440,7 +2440,7 @@ npc_spawnOverworldNPCObjectsForMap:
 
   // Index by MapNumber
 	ldr r0, [r2,r1]
-	bl npc_freeAllObjectsThenSpawnObjectsFromList // (ptr: (*const NPCScript)[]) -> ()
+	bl npc_freeAllObjectsThenSpawnObjectsFromList // (ptr: [*const NPCScript]) -> ()
 
 .flagSet
 	pop {r4-r7,pc}
@@ -2496,7 +2496,7 @@ locret_80351AE:
 npc_freeAllObjectsIfDifferentMap_80351b4:
 	push {r4-r7,lr}
 	ldr r0, =dword_80351C4
-	bl npc_freeAllObjectsThenSpawnObjectsFromList // (ptr: (*const NPCScript)[]) -> ()
+	bl npc_freeAllObjectsThenSpawnObjectsFromList // (ptr: [*const NPCScript]) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 	.pool // 80351C0

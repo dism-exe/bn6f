@@ -1,5 +1,5 @@
 
-CentralTownObjectSpawns:: // MapObjectSpawnData[15]
+CentralTownObjectSpawns:: // [MapObjectSpawnData; 15]]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: -0x840000,
@@ -107,7 +107,7 @@ CentralTownObjectSpawns:: // MapObjectSpawnData[15]
 	]
 	.word 0xFF
 
-LansHouseObjectSpawns:: // MapObjectSpawnData[4]
+LansHouseObjectSpawns:: // [MapObjectSpawnData; 4]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: -0x380000,
@@ -138,13 +138,13 @@ LansHouseObjectSpawns:: // MapObjectSpawnData[4]
 	]
 	.word 0xFF
 
-LansRoomObjectSpawns:: // MapObjectSpawnData[0]
+LansRoomObjectSpawns:: // [MapObjectSpawnData; 0]
 	.word 0xFF
 
-BathroomObjectSpawns:: // MapObjectSpawnData[0]
+BathroomObjectSpawns:: // [MapObjectSpawnData; 0]
 	.word 0xFF
 
-AsterLandObjectSpawns:: // MapObjectSpawnData[4]
+AsterLandObjectSpawns:: // [MapObjectSpawnData; 4]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: -0x3e0000,
@@ -187,12 +187,12 @@ off_804E940:: // (*const MapScript)[CENTRAL_TOWN_NUM_MAPS]
 	.word MapScriptOnUpdateLanRoom_804F744 // MapScript
 	.word MapScriptOnUpdateBathroom_804F96E // MapScript
 	.word MapScriptOnUpdateAsterLand_804F9C5 // MapScript
-NPCScriptsCentralTown_804E954:: // (*const NPCScript)[][CENTRAL_TOWN_NUM_MAPS]
-  .word NPCScriptsForCentralTown_804F9D8 // (*const NPCScript)[16]
+NPCScriptsCentralTown_804E954:: // [*const [*const NPCScript]; CENTRAL_TOWN_NUM_MAPS]
+  .word NPCScriptsForCentralTown_804F9D8 // [*const NPCScript; 16]
 	.word NPCScriptsForLanHouse_8051624 // (*const NPCScript)[5]
-	.word NPCScriptsForLanRoom_8051B5C // (*const NPCScript)[1]
-	.word NPCScriptsForBathroom_8051F48 // (*const NPCScript)[2]
-	.word NPCScriptsForAsterland_8051FB0 // (*const NPCScript)[9]
+	.word NPCScriptsForLanRoom_8051B5C // [*const NPCScript; 1]
+	.word NPCScriptsForBathroom_8051F48 // [*const NPCScript; 2]
+	.word NPCScriptsForAsterland_8051FB0 // [*const NPCScript; 9]
 off_804E968:: 
   .word byte_804E97C
 	.word byte_804E98C
@@ -783,7 +783,7 @@ byte_804F9C4:: .byte 0x0
 MapScriptOnUpdateAsterLand_804F9C5:: // MapScript
   .byte 0x5, 0xFF, 0x3C, 0x17, 0xD6, 0xF9, 0x4, 0x8, 0x26, 0x68
 	.byte 0xC0, 0x9, 0x8, 0x14, 0x2, 0x18, 0x0, 0x0, 0x0
-NPCScriptsForCentralTown_804F9D8:: // (*const NPCScript)[16]
+NPCScriptsForCentralTown_804F9D8:: // [*const NPCScript; 16]
   .word dword_804FA1C
 	.word byte_804FAF9
 	.word byte_804FB83
@@ -1988,7 +1988,7 @@ byte_8051B36::
 	.byte 0x31, 0xC, 0x33, 0x1, 0x31, 0xA, 0x33, 0x1, 0x31, 0x8
 	.byte 0x33, 0x1, 0x31, 0x6, 0x33, 0x1, 0x31, 0x4, 0x33, 0x1
 	.byte 0x31, 0x2, 0x33, 0x1, 0x9, 0x34, 0x0, 0x0
-NPCScriptsForLanRoom_8051B5C:: // (*const NPCScript)[1]
+NPCScriptsForLanRoom_8051B5C:: // [*const NPCScript; 1]
   .word dword_8051B64
 	.word 0xFF
 dword_8051B64:: .word 0x25253B08
@@ -2130,7 +2130,7 @@ byte_8051EC0:: .byte 0x9, 0x1F, 0x27, 0x1B, 0x17, 0x3, 0x14, 0xC0, 0xFF, 0x66
 	.byte 0x1, 0x31, 0x8, 0x33, 0x1, 0x31, 0xA, 0x33, 0x1, 0x31, 0xC
 	.byte 0x33, 0x1, 0x31, 0xE, 0x33, 0x1, 0x31, 0x10, 0x33, 0x1, 0x31
 	.byte 0x0, 0x34, 0x0
-NPCScriptsForBathroom_8051F48:: 
+NPCScriptsForBathroom_8051F48:: // [*const NPCScript; 2]
   .word byte_8051F54
 	.word npc_script_8051F77
 	.word 0xFF
@@ -2149,7 +2149,7 @@ byte_8051FA3:: .byte 0x10, 0x1, 0x5, 0xAB, 0x11
 	.word byte_8051FA3
 	.byte 0x3
 byte_8051FAD:: .byte 0x3, 0x0, 0x0
-NPCScriptsForAsterland_8051FB0:: // (*const NPCScript)[9]
+NPCScriptsForAsterland_8051FB0:: // [*const NPCScript; 9]
   .word byte_8051FD8
 	.word byte_805202E
 	.word byte_8052065

@@ -13,7 +13,7 @@ off_8067DC8: .word byte_8067E2C
 off_8067DD4: .word byte_8067E8D
 	.word byte_8067F4F
 	.word byte_8067FDF
-NPCScriptsAquariumComp_8067DE0: // (*const NPCScript)[][AQUARIUM_COMP_NUM_MAPS]
+NPCScriptsAquariumComp_8067DE0: // [*const [*const NPCScript]; AQUARIUM_COMP_NUM_MAPS]
   .word off_8068044
 	.word off_8068400
 	.word off_8068734

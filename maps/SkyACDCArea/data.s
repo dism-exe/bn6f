@@ -63,7 +63,7 @@ off_807ADEC:: .word byte_807AE54
 off_807ADF8:: .word byte_807B167
 	.word byte_807B5E9
 	.word byte_807B738
-NPCScriptsSkyACDCArea_807AE04:: // (*const NPCScript)[][SKY_ACDC_AREA_NUM_MAPS]
+NPCScriptsSkyACDCArea_807AE04:: // [*const [*const NPCScript]; SKY_ACDC_AREA_NUM_MAPS]
   .word off_807B7D4
 	.word off_807BE08
 	.word off_807C380

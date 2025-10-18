@@ -132,7 +132,7 @@ off_8059D5C:: .word byte_805A06A
 	.word byte_805A802
 	.word byte_805AA76
 	.word byte_805AC10
-NPCScriptsSeasideTown_8059D70:: // (*const NPCScript)[][SEASIDE_TOWN_NUM_MAPS]
+NPCScriptsSeasideTown_8059D70:: // [*const [*const NPCScript]; SEASIDE_TOWN_NUM_MAPS]
   .word off_805AC6C
 	.word off_805C1FC
 	.word off_805CB38

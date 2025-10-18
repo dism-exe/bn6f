@@ -21,7 +21,7 @@ off_80692F8: .word byte_806935C
 off_8069304: .word byte_806937A
 	.word byte_80693E6
 	.word byte_8069462
-NPCScriptsJudgetreeComp_8069310: // (*const NPCScript)[][JUDGETREE_COMP_NUM_MAPS]
+NPCScriptsJudgetreeComp_8069310: // [*const [*const NPCScript]; JUDGETREE_COMP_NUM_MAPS]
   .word off_80694B8
 	.word off_8069590
 	.word off_8069648

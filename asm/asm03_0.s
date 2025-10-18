@@ -20735,7 +20735,7 @@ LoadGFXAnimsForMapGroup: // (map_group: u8, map_number: u8) -> ()
 	thumb_func_end LoadGFXAnimsForMapGroup
 
 	thumb_func_start npc_freeAllObjectsThenSpawnObjectsFromList
-npc_freeAllObjectsThenSpawnObjectsFromList: // (ptr: (*const NPCScript)[]) -> ()
+npc_freeAllObjectsThenSpawnObjectsFromList: // (ptr: [*const NPCScript]) -> ()
 	push {r4-r6,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
@@ -20759,7 +20759,7 @@ npc_freeAllObjectsThenSpawnObjectsFromList: // (ptr: (*const NPCScript)[]) -> ()
 	cmp r2, #0xff
 	beq .done
 
-	bl npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c // (_l: (*const NPCScript)[], which: isize, script: *const NPCScript) -> ()
+	bl npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c // (_l: *const [*const NPCScript], which: isize, script: *const NPCScript) -> ()
 
 	add r1, #1
 	add r0, #4
@@ -20769,7 +20769,7 @@ npc_freeAllObjectsThenSpawnObjectsFromList: // (ptr: (*const NPCScript)[]) -> ()
 	thumb_func_end npc_freeAllObjectsThenSpawnObjectsFromList
 
 	thumb_local_start
-npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c: // (_l: (*const NPCScript)[], which: isize, script: *const NPCScript) -> ()
+npc_spawnObjectThenSetUnk10_TempAnimScriptPtr_8030a8c: // (_l: *const [*const NPCScript], which: isize, script: *const NPCScript) -> ()
 	push {lr}
 
 	push {r0-r2}

@@ -3,7 +3,7 @@
 	thumb_func_start getChip8021DA8
 // exe6g: 8021eb8	
 getChip8021DA8: // (which_chip: i32) -> *const ChipData
-	ldr r1, off_8021AB0 // =ChipDataArr_8021DA8 // (*const ChipData)[206]
+	ldr r1, off_8021AB0 // =ChipDataArr_8021DA8 // [*const ChipData; 206]
 	mov r2, #44
 	mul r0, r2
 	add r0, r0, r1
@@ -11,7 +11,7 @@ getChip8021DA8: // (which_chip: i32) -> *const ChipData
 	mov pc, lr
 	.byte 0, 0
 off_8021AB0: 
-  .word ChipDataArr_8021DA8 // (*const ChipData)[206]
+  .word ChipDataArr_8021DA8 // [*const ChipData; 206]
 	thumb_func_end getChip8021DA8
 
 	thumb_func_start sub_8021AB4

@@ -135,7 +135,7 @@ off_8052DB4::
 	.word byte_8053EFF
 	.word byte_8054041
 	.word byte_80541D3
-NPCScriptsCyberAcademy_8052DE0:: // (*const NPCScript)[][CYBER_ACADEMY_NUM_MAPS]
+NPCScriptsCyberAcademy_8052DE0:: // [*const [*const NPCScript]; CYBER_ACADEMY_NUM_MAPS]
   .word off_80542A0
 	.word off_80568D0
 	.word off_8056AF8

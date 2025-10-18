@@ -9,7 +9,7 @@ off_80665A4: .word byte_80665E8
 	.word byte_8066754
 off_80665AC: .word byte_8066639
 	.word byte_8066807
-NPCScriptsRobotControlComp_80665B4: // (*const NPCScript)[][ROBOT_CONTROL_COMP_NUM_MAPS]
+NPCScriptsRobotControlComp_80665B4: // [*const [*const NPCScript]; ROBOT_CONTROL_COMP_NUM_MAPS]
   .word off_8066988
 	.word off_8066E10
 off_80665BC: .word byte_80665C4

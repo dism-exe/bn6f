@@ -1346,11 +1346,11 @@ loc_804074C:
 	.balign 4, 0
 off_804076C: .word off_8040770
 off_8040770: 
-	.word off_realWorld_8044470 // (*const LZ77Compressed<TextScriptArchive>)[5][][REAL_WORLD_NUM_GROUPS]
-	.word off_internet_80444C4 // Nullable<(*const LZ77Compressed<TextScriptArchive>)[5][]>[INTERNET_NUM_GROUPS]
+	.word off_realWorld_8044470 // [*const [*const [*const LZ77Compressed<TextScriptArchive; 5]]; REAL_WORLD_NUM_GROUPS]
+	.word off_internet_80444C4 // [Nullable<*const [*const [*const LZ77Compressed<TextScriptArchive>; 5]]>; INTERNET_NUM_GROUPS]
 	// these are L button textscripts
 	.word off_realWorld_80444A8
-	.word off_internet_804457C // Nullable<(*const LZ77Compressed<TextScriptArchive>)[]>[INTERNET_NUM_GROUPS]
+	.word off_internet_804457C // [Nullable<*const [*const LZ77Compressed<TextScriptArchive>]>; INTERNET_NUM_GROUPS]
 	
 	.word byte_8040784
 byte_8040784: .byte 0x60, 0x3, 0x50, 0x2, 0x40, 0x2, 0x30, 0x1, 0x20, 0x1, 0x10
@@ -1400,8 +1400,8 @@ loc_80407AA:
     pop {r4-r7,pc}
 off_80407BC: .word mapPtrs80407C0
 mapPtrs80407C0: 
-  .word inRealWorld_8044520 // (*const LZ77Compressed<TextScriptArchive>)[][REAL_WORLD_NUM_GROUPS]
-	.word inInternet_8044520 // Nullable<(*const LZ77Compressed<TextScriptArchive>)[]>[INTERNET_NUM_GROUPS]
+  .word inRealWorld_8044520 // [*const [*const LZ77Compressed<TextScriptArchive>]; REAL_WORLD_NUM_GROUPS]
+	.word inInternet_8044520 // [Nullable<*const [*const LZ77Compressed<TextScriptArchive>]>; INTERNET_NUM_GROUPS]
 	thumb_func_end chatbox_selectCompTextByMap_8040794
 
 	thumb_local_start
@@ -1454,8 +1454,8 @@ loc_80407DE:
 off_80407F8: 
   .word mapPtrs80407FC
 mapPtrs80407FC: 
-  .word off_realWorld_8044470 // (*const LZ77Compressed<TextScriptArchive>)[5][][REAL_WORLD_NUM_GROUPS]
-	.word off_internet_80444C4 // Nullable<(*const LZ77Compressed<TextScriptArchive>)[5][]>[INTERNET_NUM_GROUPS]
+  .word off_realWorld_8044470 // [*const [*const [*const LZ77Compressed<TextScriptArchive; 5]]; REAL_WORLD_NUM_GROUPS]
+	.word off_internet_80444C4 // [Nullable<*const [*const [*const LZ77Compressed<TextScriptArchive>; 5]]>; INTERNET_NUM_GROUPS]
 
 // unused data?
 	.word byte_8040808
@@ -8513,7 +8513,7 @@ off_804440C:: .word byte_200C7A0
 	.byte 0x0, 0x2, 0x20, 0x20, 0x20, 0x20, 0xE0, 0xCA, 0x0, 0x2
 	.byte 0x20, 0x20, 0x20, 0x20, 0xF0, 0xCA, 0x0, 0x2, 0x20, 0x20
 	.byte 0x20, 0x20, 0x0, 0x0, 0x0, 0x0
-off_realWorld_8044470: // (*const LZ77Compressed<TextScriptArchive>)[5][][REAL_WORLD_NUM_GROUPS]
+off_realWorld_8044470: // [*const [*const [*const LZ77Compressed<TextScriptArchive; 5]]; REAL_WORLD_NUM_GROUPS]
   .word off_80445D8
 	.word off_8044620
 	.word off_80446BC
@@ -8521,7 +8521,7 @@ off_realWorld_8044470: // (*const LZ77Compressed<TextScriptArchive>)[5][][REAL_W
 	.word off_804489C
 	.word off_8044938
 	.word off_80449B8
-inRealWorld_8044520: // (*const LZ77Compressed<TextScriptArchive>)[][REAL_WORLD_NUM_GROUPS]
+inRealWorld_8044520: // [*const [*const LZ77Compressed<TextScriptArchive>]; REAL_WORLD_NUM_GROUPS]
   .word off_8044608
 	.word off_8044698
 	.word off_80447C4
@@ -8537,9 +8537,9 @@ off_realWorld_80444A8:
 	.word off_8044928
 	.word off_80449A8
 	.word off_8044A60
-off_internet_80444C4: // Nullable<(*const LZ77Compressed<TextScriptArchive>)[5][]>[INTERNET_NUM_GROUPS]
+off_internet_80444C4: // [Nullable<*const [*const [*const LZ77Compressed<TextScriptArchive>; 5]]>; INTERNET_NUM_GROUPS]
   .word off_8044A70
-	.word off_8044AB8 // (*const LZ77Compressed<TextScriptArchive>)[5][3]
+	.word off_8044AB8 // [*const [*const LZ77Compressed<TextScriptArchive>; 5]; 3]
 	.word off_8044B1C
 	.word off_8044B80
 	.word NULL
@@ -8550,7 +8550,7 @@ off_internet_80444C4: // Nullable<(*const LZ77Compressed<TextScriptArchive>)[5][
 	.word NULL
 	.word NULL
 	.word NULL
-	.word off_8044D2C // (*const LZ77Compressed<TextScriptArchive>)[5][16]
+	.word off_8044D2C // [*const [*const LZ77Compressed<TextScriptArchive>; 5]; 16]
 	.word off_8044EFC
 	.word NULL
 	.word NULL
@@ -8561,7 +8561,7 @@ off_internet_80444C4: // Nullable<(*const LZ77Compressed<TextScriptArchive>)[5][
 	.word off_8045224
 	.word off_8045288
 	.word off_8045308
-inInternet_8044520: // Nullable<(*const LZ77Compressed<TextScriptArchive>)[]>[INTERNET_NUM_GROUPS]
+inInternet_8044520: // [Nullable<*const [*const LZ77Compressed<TextScriptArchive>]>; INTERNET_NUM_GROUPS]
   .word off_8044AA0
 	.word off_8044B00
 	.word off_8044B64
@@ -8574,7 +8574,7 @@ inInternet_8044520: // Nullable<(*const LZ77Compressed<TextScriptArchive>)[]>[IN
 	.word NULL
 	.word NULL
 	.word NULL
-	.word off_8044EAC // (*const LZ77Compressed<TextScriptArchive>)[16]
+	.word off_8044EAC // [*const LZ77Compressed<TextScriptArchive>; 16]
 	.word off_804507C
 	.word NULL
 	.word NULL
@@ -8585,7 +8585,7 @@ inInternet_8044520: // Nullable<(*const LZ77Compressed<TextScriptArchive>)[]>[IN
 	.word off_804526C
 	.word off_80452E8
 	.word off_8045350
-off_internet_804457C: // Nullable<(*const LZ77Compressed<TextScriptArchive>)[]>[INTERNET_NUM_GROUPS]
+off_internet_804457C: // [Nullable<*const [*const LZ77Compressed<TextScriptArchive>]>; INTERNET_NUM_GROUPS]
   .word off_8044AA8
 	.word off_8044B0C
 	.word off_8044B70
@@ -8598,7 +8598,7 @@ off_internet_804457C: // Nullable<(*const LZ77Compressed<TextScriptArchive>)[]>[
 	.word NULL
 	.word NULL
 	.word NULL
-	.word off_8044EEC // (*const LZ77Compressed<TextScriptArchive>)[4]
+	.word off_8044EEC // [*const LZ77Compressed<TextScriptArchive>; 4]
 	.word off_80450BC
 	.word NULL
 	.word NULL
@@ -8924,23 +8924,23 @@ off_8044AA8: .word CompText87461A0
 	.word CompText87462D0
 	.word CompText87463F4
 	.word CompText87464AC
-off_8044AB8: // (*const LZ77Compressed<TextScriptArchive>)[5][3]
-  .word off_8044AC4 // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044AD8 // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044AEC // (*const LZ77Compressed<TextScriptArchive>)[5]
-off_8044AC4: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044AB8: // [*const [*const LZ77Compressed<TextScriptArchive>; 5]; 3]
+  .word off_8044AC4 // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044AD8 // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044AEC // [*const LZ77Compressed<TextScriptArchive>; 5]
+off_8044AC4: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word CompText8797A20
 	.word EmptyCompText8797E70
 	.word CompText8797E7C
 	.word CompText8797E88
 	.word CompText8797E94
-off_8044AD8: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044AD8: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word CompText87982AC
 	.word EmptyCompText87982B8
 	.word CompText87982C4
 	.word CompText87982D0
 	.word CompText87982DC
-off_8044AEC: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044AEC: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word EmptyCompText8798474
 	.word EmptyCompText8798480
 	.word CompText879848C
@@ -9086,120 +9086,120 @@ off_8044D1C: .word CompText87477F4
 	.word CompText8747D30
 	.word CompText8748650
 	.word CompText8748F44
-off_8044D2C: // (*const LZ77Compressed<TextScriptArchive>)[5][16]
-  .word off_8044D6C // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044D80 // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044D94 // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044DA8 // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044DBC // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044DD0 // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044DE4 // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044DF8 // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044E0C // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044E20 // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044E34 // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044E48 // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044E5C // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044E70 // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044E84 // (*const LZ77Compressed<TextScriptArchive>)[5]
-	.word off_8044E98 // (*const LZ77Compressed<TextScriptArchive>)[5]
-off_8044D6C: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044D2C: // [*const [*const LZ77Compressed<TextScriptArchive>; 5]; 16]
+  .word off_8044D6C // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044D80 // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044D94 // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044DA8 // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044DBC // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044DD0 // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044DE4 // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044DF8 // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044E0C // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044E20 // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044E34 // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044E48 // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044E5C // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044E70 // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044E84 // [*const LZ77Compressed<TextScriptArchive>; 5]
+	.word off_8044E98 // [*const LZ77Compressed<TextScriptArchive>; 5]
+off_8044D6C: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word CompText879DA44
 	.word CompText879DA50
 	.word CompText879DA5C
 	.word CompText879DA68
 	.word CompText879DA74
-off_8044D80: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044D80: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word CompText879E3D0
 	.word CompText879E3D0
 	.word CompText879E3DC
 	.word CompText879E3E8
 	.word CompText879E3F4
-off_8044D94: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044D94: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word CompText879E4C4
 	.word CompText879E574
 	.word CompText879E580
 	.word CompText879E58C
 	.word CompText879E598
-off_8044DA8: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044DA8: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word EmptyCompText879E62C
 	.word CompText879E638
 	.word CompText879E644
 	.word CompText879E650
 	.word CompText879E65C
-off_8044DBC: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044DBC: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word EmptyCompText879EB78
 	.word EmptyCompText879EB84
 	.word CompText879EB90
 	.word CompText879EB9C
 	.word CompText879EBA8
-off_8044DD0: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044DD0: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word EmptyCompText879F194
 	.word EmptyCompText879F194
 	.word CompText879F1A0
 	.word CompText879F1AC
 	.word CompText879F1B8
-off_8044DE4: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044DE4: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word EmptyCompText879F5CC
 	.word EmptyCompText879F5D8
 	.word CompText879F5E4
 	.word CompText879F5F0
 	.word CompText879F5FC
-off_8044DF8: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044DF8: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word CompText879F6A0
 	.word CompText879F6A0
 	.word CompText879F6A0
 	.word CompText879F734
 	.word CompText879F740
-off_8044E0C: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044E0C: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word CompText879FB18
 	.word CompText879FB24
 	.word CompText879FD9C
 	.word CompText879FDA8
 	.word CompText879FDB4
-off_8044E20: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044E20: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word CompText87A00D8
 	.word CompText87A00D8
 	.word CompText87A0434
 	.word CompText87A0440
 	.word CompText87A044C
-off_8044E34: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044E34: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word CompText87A04C0
 	.word CompText87A04C0
 	.word CompText87A04CC
 	.word CompText87A04D8
 	.word CompText87A04E4
-off_8044E48: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044E48: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word CompText87A05E0
 	.word CompText87A05E0
 	.word CompText87A05E0
 	.word CompText87A0698
 	.word CompText87A06A4
-off_8044E5C: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044E5C: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word CompText87A0700
 	.word CompText87A0700
 	.word CompText87A0700
 	.word CompText87A07D0
 	.word CompText87A07DC
-off_8044E70: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044E70: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word CompText87A0AA8
 	.word CompText87A0AA8
 	.word CompText87A0AA8
 	.word CompText87A0B14
 	.word CompText87A0B20
-off_8044E84: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044E84: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word CompText87A0B88
 	.word CompText87A0B88
 	.word CompText87A0B88
 	.word CompText87A0C18
 	.word CompText87A0C24
-off_8044E98: // (*const LZ77Compressed<TextScriptArchive>)[5]
+off_8044E98: // [*const LZ77Compressed<TextScriptArchive>; 5]
   .word CompText87A0EF4
 	.word CompText87A0EF4
 	.word CompText87A0EF4
 	.word CompText87A0F00
 	.word CompText87A0F0C
-off_8044EAC: // (*const LZ77Compressed<TextScriptArchive>)[16]
+off_8044EAC: // [*const LZ77Compressed<TextScriptArchive>; 16]
   .word CompText875DFA4
 	.word CompText875DFB0
 	.word CompText875DFBC
@@ -9216,7 +9216,7 @@ off_8044EAC: // (*const LZ77Compressed<TextScriptArchive>)[16]
 	.word CompText875E4AC
 	.word CompText875E52C
 	.word CompText875E5C4
-off_8044EEC: // (*const LZ77Compressed<TextScriptArchive>)[4]
+off_8044EEC: // [*const LZ77Compressed<TextScriptArchive>; 4]
   .word CompText8749514
 	.word CompText8749C38
 	.word CompText874A638

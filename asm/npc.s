@@ -2551,8 +2551,8 @@ NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer:
 	.balign 4, 0
 off_809F3D8: .word byte_202FA04
 	.word off_809F3E0
-off_809F3E0: .word off_realWorld_8044470 // (*const LZ77Compressed<TextScriptArchive>)[5][][REAL_WORLD_NUM_GROUPS]
-	.word off_internet_80444C4 // Nullable<(*const LZ77Compressed<TextScriptArchive>)[5][]>[INTERNET_NUM_GROUPS]
+off_809F3E0: .word off_realWorld_8044470 // [*const [*const [*const LZ77Compressed<TextScriptArchive; 5]]; REAL_WORLD_NUM_GROUPS]
+	.word off_internet_80444C4 // [Nullable<*const [*const [*const LZ77Compressed<TextScriptArchive>; 5]]>; INTERNET_NUM_GROUPS]
 	thumb_func_end NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer
 
 	thumb_local_start

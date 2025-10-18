@@ -5221,7 +5221,7 @@ CutsceneCmd_spawn_or_free_ow_map_or_npc_objects:
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl npc_freeAllObjectsThenSpawnObjectsFromList // (ptr: (*const NPCScript)[]) -> ()
+	bl npc_freeAllObjectsThenSpawnObjectsFromList // (ptr: [*const NPCScript]) -> ()
 	add r7, #6
 	mov r0, #1
 	pop {pc}

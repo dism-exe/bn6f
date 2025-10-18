@@ -36,7 +36,7 @@ off_8071EB0: .word byte_8071F18
 off_8071EBC: .word byte_8072221
 	.word byte_807254C
 	.word byte_80728DC
-NPCScriptsCentralArea_8071EC8: // (*const NPCScript)[][CENTRAL_AREA_NUM_MAPS]
+NPCScriptsCentralArea_8071EC8: // [*const [*const NPCScript]; CENTRAL_AREA_NUM_MAPS]
   .word off_8072BC8
 	.word off_807360C
 	.word off_8073F1C

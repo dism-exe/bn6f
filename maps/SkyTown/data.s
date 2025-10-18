@@ -44,7 +44,7 @@ off_806064C::
 	.word byte_8060B2F
 	.word byte_8060D71
 	.word byte_8060F00
-NPCScriptsSkyTown_806065C:: // (*const NPCScript)[][SKY_TOWN_NUM_MAPS]
+NPCScriptsSkyTown_806065C:: // [*const [*const NPCScript]; SKY_TOWN_NUM_MAPS]
   .word off_8060F70
 	.word off_8061448
 	.word off_8061D00

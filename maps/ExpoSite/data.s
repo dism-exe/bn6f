@@ -79,7 +79,7 @@ off_8062F60::
 	.word byte_806358F
 	.word byte_80636A8
 	.word dword_80637B0
-NPCScriptsExpoSite_8062F78:: // (*const NPCScript)[][EXPO_SITE_NUM_MAPS]
+NPCScriptsExpoSite_8062F78:: // [*const [*const NPCScript]; EXPO_SITE_NUM_MAPS]
   .word off_80637B4
 	.word off_8063FF0
 	.word off_80652EC

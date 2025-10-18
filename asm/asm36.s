@@ -16134,7 +16134,7 @@ loc_813863A:
 	bl uncompSprite_8002906 // (sprite_load_data: *const SpriteLoadData) -> bool
 	ldr r0, off_8138668 // =off_813866C 
 	ldr r0, [r0,r4]
-	bl npc_freeAllObjectsThenSpawnObjectsFromList // (ptr: (*const NPCScript)[]) -> ()
+	bl npc_freeAllObjectsThenSpawnObjectsFromList // (ptr: [*const NPCScript]) -> ()
 	mov r0, #0x7c 
 	mov r1, #8
 	bl SetScreenFade // (int a1, int a2) -> void

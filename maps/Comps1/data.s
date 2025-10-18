@@ -82,7 +82,7 @@ off_806DFF0:: .word byte_806E32F
 	.word byte_806E9E6
 	.word byte_806EA72
 	.word byte_806EB07
-NPCScriptsComps_806E030:: // (*const NPCScript)[][COMPS_NUM_MAPS]
+NPCScriptsComps_806E030:: // [*const [*const NPCScript]; COMPS_NUM_MAPS]
   .word off_806EB08
 	.word off_806ECB8
 	.word off_806ED14

@@ -60,7 +60,7 @@ off_807D300:: .word byte_807D48C
 	.word byte_807D5B1
 	.word byte_807D80B
 	.word NULL
-NPCScriptsUndernet_807D310:: // Nullable<(*const NPCScript)[]>[UNDERNET_NUM_MAPS]
+NPCScriptsUndernet_807D310:: // [Nullable<*const [*const NPCScript]>]; UNDERNET_NUM_MAPS]
   .word off_807D918
 	.word off_807DF40
 	.word off_807E19C

@@ -36,7 +36,7 @@ off_805E170::
 	.word byte_805E804
 	.word byte_805E93E
 	.word byte_805E952
-NPCScriptsGreenTown_805E184:: // (*const NPCScript)[][GREEN_TOWN_NUM_MAPS]
+NPCScriptsGreenTown_805E184:: // [*const [*const NPCScript]; GREEN_TOWN_NUM_MAPS]
   .word off_805E9AC
 	.word off_805EEE4
 	.word off_805F3B0

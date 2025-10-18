@@ -69,7 +69,7 @@ dword_807F204::
   .word NULL
 	.word byte_807F39F
 	.word NULL
-NPCScriptsGraveyardImmortalArea_807F210:: // Nullable<(*const NPCScript)[]>[GRAVEYARD_NUM_MAPS]
+NPCScriptsGraveyardImmortalArea_807F210:: // [Nullable<*const [*const NPCScript]>]; GRAVEYARD_NUM_MAPS]
   .word NULL
 	.word off_807F4BC
 	.word NULL

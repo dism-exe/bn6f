@@ -51,7 +51,7 @@ off_806C7CC::
 	.word 0x0
 	.word byte_806CAB0
 	.word byte_806CAF6
-NPCScriptsHomePages_806C7E8:: // Nullable<(*const NPCScript)[]>[HOMEPAGES_NUM_MAPS]
+NPCScriptsHomePages_806C7E8:: // [Nullable<*const [*const NPCScript]>]; HOMEPAGES_NUM_MAPS]
   .word off_806CAF8
 	.word off_806CCB0
 	.word NULL

@@ -2386,7 +2386,7 @@ loc_8143048:
 	bl sub_8143198
 	bne loc_814306E
 	bl sub_8143088
-	ldr r1, off_8143074 // =off_8143078 
+	ldr r1, off_8143074 // =off_8143078 // [*const CutsceneScript; 2]
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	mov r1, #0
@@ -2401,8 +2401,8 @@ loc_814306E:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8143074: 
-  .word off_8143078
-off_8143078: 
+  .word off_8143078 // [*const CutsceneScript; 2]
+off_8143078: // [*const CutsceneScript; 2]
   .word byte_808C004
 	.word byte_808C0F4
 off_8143080: .word byte_808C2F0 // CutsceneScript
@@ -3301,7 +3301,7 @@ loc_8143AD6:
 	cmp r0, r1
 	bne loc_8143AF0
 	bl GetGroundmanMinigameMapIndex
-	ldr r1, off_8143B18 // =dword_8143B1C 
+	ldr r1, off_8143B18 // =dword_8143B1C // [*const CutsceneScript; 2]
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	mov r1, #0
@@ -3323,8 +3323,8 @@ loc_8143B04:
 locret_8143B14:
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8143B18: .word dword_8143B1C
-dword_8143B1C: 
+off_8143B18: .word dword_8143B1C // [*const CutsceneScript; 2]
+dword_8143B1C: // [*const CutsceneScript; 2]
   .word 0x8092C78
 	.word byte_8092A98
 off_8143B24: .word byte_8092DE8 // CutsceneScript
@@ -3500,7 +3500,7 @@ sub_8143C62:
 	ldr r1, off_8143C7C // =off_8143C80 
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
-	bl npc_freeAllObjectsThenSpawnObjectsFromList // (ptr: (*const NPCScript)[]) -> ()
+	bl npc_freeAllObjectsThenSpawnObjectsFromList // (ptr: [*const NPCScript]) -> ()
 	movflag EVENT_1721
 	bl SetEventFlagFromImmediate
 	pop {r4-r7,pc}

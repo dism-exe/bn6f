@@ -49,7 +49,7 @@ off_8078104:: .word byte_8078148
 	.word byte_80782F0
 off_807810C:: .word byte_807826F
 	.word byte_807844C
-NPCScriptsGreenArea_8078114:: // (*const NPCScript)[][GREEN_AREA_NUM_MAPS]
+NPCScriptsGreenArea_8078114:: // [*const [*const NPCScript]; GREEN_AREA_NUM_MAPS]
   .word off_8078598
 	.word off_80789BC
 off_807811C:: .word byte_8078124
