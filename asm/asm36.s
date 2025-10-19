@@ -3609,11 +3609,11 @@ dword_8132018: .word 0x2000
 	thumb_local_start
 sub_813201C:
 	push {r5,lr}
-	ldr r5, off_8132028 // =byte_200A290 
+	ldr r5, off_8132028 // =eS200A290 
 	bl cb_8048FD4
 	pop {r5,pc}
 	.balign 4, 0
-off_8132028: .word byte_200A290
+off_8132028: .word eS200A290
 	thumb_func_end sub_813201C
 
 	thumb_local_start

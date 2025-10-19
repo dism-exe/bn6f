@@ -405,7 +405,7 @@ byte_809929C: .byte 0x0, 0x0, 0x0, 0x0, 0x34, 0x1, 0xFF, 0x1, 0x76, 0x0, 0x44, 0
 	.byte 0x54, 0x0, 0xDC, 0xFF, 0x0, 0x0, 0x54, 0x0, 0xD0, 0xFF, 0x0, 0x0, 0x4
 	.byte 0xDA, 0x2, 0x2, 0x1B, 0x1, 0xFF, 0x1, 0x9C, 0xFF, 0x0, 0x0, 0x0, 0x0
 	.byte 0xA8, 0xFF, 0x0, 0x0, 0x0, 0x0
-	.word eTextScript202DA04 // *mut TextScriptArchive
+	.word eTextScript202DA04 // TextScriptArchive
 	.byte 0x1C, 0x3, 0xFF, 0x1, 0x50, 0xFF, 0xCE, 0x0, 0x0, 0x0, 0x50
 	.byte 0xFF, 0xDA, 0x0, 0x0, 0x0, 0x4, 0xDA, 0x2, 0x2, 0x1D, 0x7
 	.byte 0xFF, 0x1, 0xD4, 0xFF, 0x70, 0xFF, 0x0, 0x0, 0xD4, 0xFF, 0x64
@@ -453,28 +453,28 @@ byte_809929C: .byte 0x0, 0x0, 0x0, 0x0, 0x34, 0x1, 0xFF, 0x1, 0x76, 0x0, 0x44, 0
 	.byte 0x52, 0xFF, 0x96, 0x0, 0x0, 0x0, 0x5E, 0xFF, 0x96, 0x0, 0x0
 	.byte 0x0, 0x4, 0xDA, 0x2, 0x2, 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word eTextScript202DA04 // *mut TextScriptArchive
+	.word eTextScript202DA04 // TextScriptArchive
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word eTextScript202DA04 // *mut TextScriptArchive
+	.word eTextScript202DA04 // TextScriptArchive
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word eTextScript202DA04 // *mut TextScriptArchive
+	.word eTextScript202DA04 // TextScriptArchive
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word eTextScript202DA04 // *mut TextScriptArchive
+	.word eTextScript202DA04 // TextScriptArchive
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word eTextScript202DA04 // *mut TextScriptArchive
+	.word eTextScript202DA04 // TextScriptArchive
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word eTextScript202DA04 // *mut TextScriptArchive
+	.word eTextScript202DA04 // TextScriptArchive
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word eTextScript202DA04 // *mut TextScriptArchive
+	.word eTextScript202DA04 // TextScriptArchive
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word eTextScript202DA04 // *mut TextScriptArchive
+	.word eTextScript202DA04 // TextScriptArchive
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
 	.word byte_202FA04
@@ -1637,7 +1637,7 @@ sub_809A80C:
 	mov r5, #2
 	bl CopyBackgroundTiles
 
-	ldr r0, off_809A858 // =eTextScript2033404 // *mut TextScriptArchive
+	ldr r0, off_809A858 // =eTextScript2033404 // TextScriptArchive
 	mov r1, #6
 	ldr r2, off_809A85C // =unk_200EF40 
 	ldr r3, dword_809A860 // =0x600d400 
@@ -1651,7 +1651,7 @@ sub_809A80C:
 	.balign 4, 0
 off_809A850: .word tileIds86C5790
 off_809A854: .word tileIds8099E78
-off_809A858: .word eTextScript2033404 // *mut TextScriptArchive
+off_809A858: .word eTextScript2033404 // TextScriptArchive
 off_809A85C: .word unk_200EF40
 dword_809A860: .word 0x600D400
 off_809A864: .word dword_86A5D60
@@ -1879,7 +1879,7 @@ sub_809AAB8:
 	bl doPETEffect_8033fc0
 	bl sub_8003984
 	bl sub_8003AD4
-	ldr r0, off_809AD78 // =eTextScript2033404 // *mut TextScriptArchive
+	ldr r0, off_809AD78 // =eTextScript2033404 // TextScriptArchive
 	mov r1, #0xa
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	bl sub_8046664 // () -> void
@@ -1898,7 +1898,7 @@ sub_809AADC:
 	bl chatbox_8045F4C
 	cmp r0, #0
 	bne loc_809AB0C
-	ldr r0, off_809AD78 // =eTextScript2033404 // *mut TextScriptArchive
+	ldr r0, off_809AD78 // =eTextScript2033404 // TextScriptArchive
 	mov r1, #0xc
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #1
@@ -1911,7 +1911,7 @@ sub_809AADC:
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_809AB0C:
-	ldr r0, off_809AD78 // =eTextScript2033404 // *mut TextScriptArchive
+	ldr r0, off_809AD78 // =eTextScript2033404 // TextScriptArchive
 	mov r1, #0xb
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #0
@@ -1947,7 +1947,7 @@ loc_809AB3A:
 	strb r0, [r5,#8]
 	mov r0, #SOUND_UNSELECT_68
 	bl PlaySoundEffect
-	ldr r0, off_809AD78 // =eTextScript2033404 // *mut TextScriptArchive
+	ldr r0, off_809AD78 // =eTextScript2033404 // TextScriptArchive
 	mov r1, #0xb
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	b loc_809AC20
@@ -1970,7 +1970,7 @@ loc_809AB5A:
 	beq loc_809AB92
 	cmp r0, #2
 	beq loc_809AC14
-	ldr r0, off_809AD78 // =eTextScript2033404 // *mut TextScriptArchive
+	ldr r0, off_809AD78 // =eTextScript2033404 // TextScriptArchive
 	mov r1, #0xd
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #1
@@ -2042,7 +2042,7 @@ loc_809AC06:
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	b loc_809AC20
 loc_809AC14:
-	ldr r0, off_809AD78 // =eTextScript2033404 // *mut TextScriptArchive
+	ldr r0, off_809AD78 // =eTextScript2033404 // TextScriptArchive
 	mov r1, #0x14
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #1
@@ -2226,7 +2226,7 @@ sub_809AD4C:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_809AD78: .word eTextScript2033404 // *mut TextScriptArchive
+off_809AD78: .word eTextScript2033404 // TextScriptArchive
 off_809AD7C: .word TextScriptLottery86C67E4
 	.byte 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17, 0x7, 0x2, 0xFF, 0x14
 	.byte 0x3E, 0xE0, 0xB9, 0x73, 0x8, 0x3A, 0xFF, 0xF, 0x4, 0x80, 0x2

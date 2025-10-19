@@ -10964,24 +10964,44 @@ HandleCommMenu81291E8:
 	pop {pc}
 	.hword 0x0
 off_81291F8: .word CommMenuJumpTable81291FC
-CommMenuJumpTable81291FC: .word sub_8129248+1
+CommMenuJumpTable81291FC: 
+  // 0x00
+  .word sub_8129248+1
+  // 0x04
 	.word sub_81292A8+1
+  // 0x08
 	.word sub_8129598+1
+  // 0x0C
 	.word sub_8129F04+1
+  // 0x10
 	.word sub_812A76C+1
+  // 0x14
 	.word sub_812A8A4+1
+  // 0x18
 	.word sub_812B5C8+1
+  // 0x1C
 	.word byte_8130905
+  // 0x20
 	.word sub_812B80C+1
+  // 0x24
 	.word sub_812B874+1
+  // 0x28
 	.word sub_812C2C0+1
+  // 0x2C
 	.word sub_812DAE4+1
+  // 0x30
 	.word sub_812F094+1
+  // 0x34
 	.word sub_812ABEC+1
+  // 0x38
 	.word sub_812AD04+1
+  // 0x3C
 	.word sub_812ADFC+1
+  // 0x40
 	.word sub_812AEC8+1
+  // 0x44
 	.word sub_812AEE0+1
+  // 0x48
 	.word sub_812AF14+1
 	thumb_func_end HandleCommMenu81291E8
 
@@ -12928,13 +12948,13 @@ dword_812A130: .word 0x2000
 sub_812A134:
 	push {lr}
 	push {r5}
-	ldr r5, off_812A148 // =byte_200A290 
+	ldr r5, off_812A148 // =eS200A290 
 	bl cb_8048FD4
 	pop {r5}
 	bl sub_812A1D4
 	pop {pc}
 	.balign 4, 0
-off_812A148: .word byte_200A290
+off_812A148: .word eS200A290
 	thumb_func_end sub_812A134
 
 	thumb_local_start
@@ -12997,7 +13017,7 @@ sub_812A1C4:
 	bl sub_812A1D4
 	bl sub_8132764
 	pop {pc}
-	.word byte_200A290
+	.word eS200A290
 	thumb_func_end sub_812A1C4
 
 	thumb_local_start
@@ -13834,7 +13854,7 @@ loc_812A88E:
 	bl sub_812B504
 locret_812A892:
 	pop {r4-r7,pc}
-	.word byte_200A290
+	.word eS200A290
 	.balign 4, 0
 dword_812A898: .word 0xFFFFFFFF
 dword_812A89C: .word 0x2000
@@ -13848,7 +13868,7 @@ sub_812A8A4:
 	cmp r0, #8
 	bne loc_812A8B8
 	push {r5}
-	ldr r5, off_812A8DC // =byte_200A290 
+	ldr r5, off_812A8DC // =eS200A290 
 	bl cb_8048FD4
 	pop {r5}
 loc_812A8B8:
@@ -13869,7 +13889,7 @@ loc_812A8D4:
 locret_812A8D8:
 	pop {pc}
 	.balign 4, 0
-off_812A8DC: .word byte_200A290
+off_812A8DC: .word eS200A290
 off_812A8E0: .word off_812A8E4
 off_812A8E4: .word sub_812A8EC+1
 	.word sub_812AAC0+1
@@ -15499,10 +15519,16 @@ locret_812B5EC:
 	pop {r4,pc}
 	.balign 4, 0
 JumpTable812B5F4_p: .word JumpTable812B5F4
-JumpTable812B5F4: .word sub_812B608+1
+JumpTable812B5F4: 
+  // 0x00
+  .word sub_812B608+1
+  // 0x04
 	.word sub_812B640+1
+  // 0x08
 	.word sub_812B698+1
+  // 0x0C
 	.word sub_812B708+1
+  // 0x10
 	.word sub_812B758+1
 	thumb_func_end sub_812B5C8
 
@@ -16131,7 +16157,7 @@ off_812BAF4: .word unk_2033C00
 dword_812BAF8: .word 0x800
 dword_812BAFC: .word 0x4321
 dword_812BB00: .word 0x8888
-	.word byte_200A290
+	.word eS200A290
 	thumb_func_end sub_812B9F8
 
 	thumb_local_start

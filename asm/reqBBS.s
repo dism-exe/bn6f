@@ -515,7 +515,7 @@ reqBBS_draw_813E450:
 	mov r0, #1
 loc_813E48A:
 	mov r1, r0
-	ldr r0, off_813E4A4 // =reqBBS_eTextScript // *mut TextScriptArchive
+	ldr r0, off_813E4A4 // =reqBBS_eTextScript // TextScriptArchive
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	bl reqBBS_drawHeaderText
 	mov r0, #0x20 
@@ -525,7 +525,7 @@ loc_813E49A:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0
-off_813E4A4: .word reqBBS_eTextScript // *mut TextScriptArchive
+off_813E4A4: .word reqBBS_eTextScript // TextScriptArchive
 dword_813E4A8: .word 0x5F40
 	thumb_func_end reqBBS_draw_813E450
 
@@ -1647,7 +1647,7 @@ off_813EEF0: .word eStructArr2008450
 	thumb_local_start
 reqBBS_813EEF4:
 	push {r4-r7,lr}
-	ldr r0, off_813EF10 // =reqBBS_eTextScript // *mut TextScriptArchive
+	ldr r0, off_813EF10 // =reqBBS_eTextScript // TextScriptArchive
 	ldr r1, off_813EF20 // =byte_813EF24 
 	ldrb r2, [r5,#4]
 	ldrb r1, [r1,r2]
@@ -1660,7 +1660,7 @@ reqBBS_813EEF4:
 	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_813EF10: .word reqBBS_eTextScript // *mut TextScriptArchive
+off_813EF10: .word reqBBS_eTextScript // TextScriptArchive
 off_813EF14: .word byte_201CA00
 dword_813EF18: .word 0x6003C00
 off_813EF1C: .word dword_86B7AE0
@@ -2138,7 +2138,7 @@ loc_813F6A6:
 loc_813F6C0:
 	mov r1, #0x11
 loc_813F6C2:
-	ldr r0, off_813F6F4 // =reqBBS_eTextScript // *mut TextScriptArchive
+	ldr r0, off_813F6F4 // =reqBBS_eTextScript // TextScriptArchive
 	ldr r2, off_813F6F0 // =reqBBS_textualShades 
 	bl chatbox_reqBBS_80404C0
 	mov r0, #0x40 
@@ -2156,7 +2156,7 @@ loc_813F6CE:
 	.balign 4, 0
 off_813F6EC: .word reqBBS_eRequestEntriesIDs
 off_813F6F0: .word reqBBS_textualShades
-off_813F6F4: .word reqBBS_eTextScript // *mut TextScriptArchive
+off_813F6F4: .word reqBBS_eTextScript // TextScriptArchive
 	thumb_func_end reqBBS_813F65C
 
 	thumb_local_start
@@ -2339,7 +2339,7 @@ reqBBS_813F80C:
 	mov r0, #1
 loc_813F846:
 	mov r1, r0
-	ldr r0, off_813F860 // =reqBBS_eTextScript // *mut TextScriptArchive
+	ldr r0, off_813F860 // =reqBBS_eTextScript // TextScriptArchive
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	bl reqBBS_renderSelectedEntry_HeaderText
 	mov r0, #0x20 
@@ -2351,7 +2351,7 @@ loc_813F856:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-off_813F860: .word reqBBS_eTextScript // *mut TextScriptArchive
+off_813F860: .word reqBBS_eTextScript // TextScriptArchive
 dword_813F864: .word 0x5F40
 	thumb_local_start
 reqBBS_813F868:
@@ -2705,7 +2705,7 @@ reqBBS_813FAB0:
 	ldr r3, off_813FB20 // =0x50 
 	ldrb r1, [r1,r2]
 	str r1, [r0,r3]
-	ldr r0, off_813FB18 // =reqBBS_eTextScript // *mut TextScriptArchive
+	ldr r0, off_813FB18 // =reqBBS_eTextScript // TextScriptArchive
 	mov r1, #6
 	ldr r2, off_813FB10 // =reqBBS_textualShades 
 	bl chatbox_reqBBS_80404C0
@@ -2721,7 +2721,7 @@ loc_813FB02:
 	.word 0x800
 off_813FB10: .word reqBBS_textualShades
 dword_813FB14: .word 0x5F40
-off_813FB18: .word reqBBS_eTextScript // *mut TextScriptArchive
+off_813FB18: .word reqBBS_eTextScript // TextScriptArchive
 dword_813FB1C: .word 0xF
 off_813FB20: .word 0x50
 	thumb_func_end reqBBS_813FAB0
@@ -2921,7 +2921,7 @@ loc_813FCA8:
 	tst r0, r0
 	beq loc_813FCBE
 	mov r1, r0
-	ldr r0, off_813FD0C // =reqBBS_eTextScript // *mut TextScriptArchive
+	ldr r0, off_813FD0C // =reqBBS_eTextScript // TextScriptArchive
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #0x44 
 	strb r0, [r5]
@@ -2962,7 +2962,7 @@ loc_813FD00:
 	bl reqBBS_813FEB0
 	mov r0, #0
 	pop {pc}
-off_813FD0C: .word reqBBS_eTextScript // *mut TextScriptArchive
+off_813FD0C: .word reqBBS_eTextScript // TextScriptArchive
 	.word reqBBS_eRequestEntriesIDs
 	thumb_local_start
 reqBBS_813FD14:
@@ -3835,7 +3835,7 @@ reqBBS_changeChatboxHeader:
 	bl reqBBS_getRequestBBSRank // () -> u8
 	mov r1, #8
 	add r1, r1, r0
-	ldr r0, off_8140574 // =reqBBS_eTextScript // *mut TextScriptArchive
+	ldr r0, off_8140574 // =reqBBS_eTextScript // TextScriptArchive
 	ldr r2, off_8140578 // =byte_201B200
 	ldr r3, dword_814057C // =0x6008400 
 	mov r4, #0xc
@@ -3845,7 +3845,7 @@ reqBBS_changeChatboxHeader:
 	bl sub_8045FC6
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8140574: .word reqBBS_eTextScript // *mut TextScriptArchive
+off_8140574: .word reqBBS_eTextScript // TextScriptArchive
 off_8140578: .word byte_201B200
 dword_814057C: .word 0x6008400
 off_8140580: .word byte_86ACD60
@@ -3887,7 +3887,7 @@ off_81405BC: .word byte_813F2AC
 	thumb_local_start
 reqBBS_81405C0:
 	push {r4-r7,lr}
-	ldr r0, off_81405D8 // =reqBBS_eTextScript // *mut TextScriptArchive
+	ldr r0, off_81405D8 // =reqBBS_eTextScript // TextScriptArchive
 	mov r1, #0x12
 	ldr r2, off_81405DC // =byte_201CA00
 	ldr r3, dword_81405E0 // =0x6003c00 
@@ -3898,7 +3898,7 @@ reqBBS_81405C0:
 	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_81405D8: .word reqBBS_eTextScript // *mut TextScriptArchive
+off_81405D8: .word reqBBS_eTextScript // TextScriptArchive
 off_81405DC: .word byte_201CA00
 dword_81405E0: .word 0x6003C00
 off_81405E4: .word dword_86B7AE0

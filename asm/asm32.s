@@ -31797,25 +31797,45 @@ locret_811F798:
 	.balign 4, 0
 off_811F79C: .word JumpTable811F7A0
 // SubmenuPtr* r5
-JumpTable811F7A0: .word HandleChipFolderMenu8123434+1
+JumpTable811F7A0: 
+  // 0x00
+  .word HandleChipFolderMenu8123434+1
+  // 0x04
 	.word DispatchSubChipMenu8123F5C+1 // (struct UnkSubMenu* state_a5) -> void
+  // 0x08
 	.word HandleLibraryMenu8124B3C+1
+  // 0x0C
 	.word HandleMegaManStatusMenu8126B4C+1
+  // 0x10
 	.word HandleEmailMenu81279F8+1
+  // 0x14
 	.word HandleKeyItemMenu8128730+1
+  // 0x18
 	.word HandleCommMenu81291E8+1
+  // 0x1C
 	.word HandleSaveMenu8132B88+1
+  // 0x20
 	.word sub_8133200+1
+  // 0x24
 	.word sub_81356D4+1
+  // 0x28
 	.word sub_8136DE0+1
+  // 0x2C
 	.word sub_81378B4+1
+  // 0x30
 	.word sub_8128CBC+1
-	.word 0
-	.word 0
-	.word 0
-	.word 0
-	.word 0
-	.word 0
+  // 0x34
+	.word NULL
+  // 0x38
+	.word NULL
+  // 0x3C
+	.word NULL
+  // 0x40
+	.word NULL
+  // 0x44
+	.word NULL
+  // 0x48
+	.word NULL
 	thumb_func_end SubMenuControl
 
 	thumb_func_start IsButtonPressed

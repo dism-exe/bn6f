@@ -269,7 +269,7 @@ dword_3005DD0: .word 0x2005
 
 	thumb_func_start _SetInterruptCallback
 // set the callback for interrupt r0/4 to callback r1
-_SetInterruptCallback: // (int interruptIdx, void *callback) -> void
+_SetInterruptCallback: // (interrupt_idx: u8, callback: *const ()) -> ()
 	push {r4,lr}
 
 	// save old IME state and temporarily disable
@@ -355,10 +355,10 @@ sub_3005E2C:
 	push {r3}
 	mov r0, #0x18
 	ldr r1, off_3005E78 // =libSIO814469C+1
-	bl _SetInterruptCallback // (int interruptIdx, void *callback) -> void
+	bl _SetInterruptCallback // (interrupt_idx: u8, callback: *const ()) -> ()
 	mov r0, #0x1c
 	ldr r1, off_3005E7C // =sub_81446AC+1
-	bl _SetInterruptCallback // (int interruptIdx, void *callback) -> void
+	bl _SetInterruptCallback // (interrupt_idx: u8, callback: *const ()) -> ()
 	pop {r3}
 	
 	// restore interrupt master enable state

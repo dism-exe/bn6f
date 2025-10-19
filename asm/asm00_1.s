@@ -4218,14 +4218,14 @@ sub_800531C:
 	strb r0, [r5,#oGameState_SubsystemIndex]
 	ldr r0, [r5,#oGameState_CurBattleDataPtr]
 	bl sub_80071D4
-	ldr r0, off_8005358 // =eS2011800
+	ldr r0, off_8005358 // =LogoScreenState
 	ldr r1, off_800535C // =0x2180
 	mov r2, #0
 	mvn r2, r2
 	bl WordFill
 	pop {pc}
 	.balign 4, 0
-off_8005358: .word eS2011800
+off_8005358: .word LogoScreenState
 off_800535C: .word 0x2180
 	thumb_func_end sub_800531C
 
@@ -4234,8 +4234,11 @@ sub_8005360: // (self: * GameState $r5) -> ()
 	push {lr}
 	bl battle_main_8007800
 	bne locret_800536C
+
+  // trigger EnterMap via cbGameState_80050EC
 	mov r0, #0
 	strb r0, [r5,#oGameState_SubsystemIndex]
+
 locret_800536C:
 	pop {pc}
 	thumb_func_end sub_8005360
@@ -8700,39 +8703,54 @@ dword_80077FC: .word 0xFFFF
 	thumb_func_start battle_main_8007800
 battle_main_8007800:
 	push {r4,r5,lr}
+
 	bl sub_801FE6C
+
 	bl sub_8020140
+
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_BattleStatePtr]
+
 	ldr r1, off_8007834 // =JumpTable8007838
-	ldrb r0, [r5,#oBattleState_Unk_00]
+	ldrb r0, [r5,#oBattleState_Index_00]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
+
 	ldr r0, [r5,#oBattleState_Unk_60]
 	add r0, #1
 	str r0, [r5,#oBattleState_Unk_60]
+
 	bl GetBattleEffects // () -> int
 	mov r4, r0
 	bl sub_800A832
+
 	mov r2, r1
 	mov r1, r0
 	ldrb r0, [r5,#oBattleState_Unk_0a]
 	mov r3, r4
 	tst r0, r0
+
 	pop {r4,r5,pc}
 	.balign 4, 0
 off_8007834: .word JumpTable8007838
-JumpTable8007838: .word sub_8007850+1
-	.word battle_update_8007A44+1
-	.word sub_8007B80+1
-	.word sub_8007E62+1
-	.word sub_8007F4E+1
-	.word removed_8007FEA+1
+JumpTable8007838: 
+  // 0x00
+  .word sub_8007850+1 // (self: * BattleState $r5) -> ()
+  // 0x04
+	.word battle_update_8007A44+1 // (self: * BattleState $r5) -> ()
+  // 0x08
+	.word sub_8007B80+1 // (self: * BattleState $r5) -> ()
+  // 0x0C
+	.word sub_8007E62+1 // (self: * BattleState $r5) -> ()
+  // 0x10
+	.word sub_8007F4E+1 // (self: * BattleState $r5) -> ()
+  // 0x14
+	.word removed_8007FEA+1 // (self: * BattleState $r5) -> ()
 	thumb_func_end battle_main_8007800
 
 	thumb_local_start
-sub_8007850:
+sub_8007850: // (self: * BattleState $r5) -> ()
 	push {r4,lr}
 	bl eStruct203F7D8_getUnk01
 	mov r4, r0
@@ -8769,20 +8787,30 @@ loc_8007892:
 loc_8007898:
 	mov r0, r4
 	bl setTwoStructs_800A840
+
+  // trigger sub_8007B80 via battle_main_8007800
 	mov r0, #8
-	strb r0, [r5,#oBattleState_Unk_00]
+	strb r0, [r5,#oBattleState_Index_00]
+
+  // This can eventually lead to triggering gameover and moving to start screen
+  // trigger sub_8007CA0 via sub_8007B80
 	mov r0, #4
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
+
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
+
 	bl GetBattleEffects // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne locret_8007936
+
 	movflag EVENT_1733
 	bl SetEventFlagFromImmediate
+
 	movflag EVENT_1735
 	bl SetEventFlagFromImmediate
+
 	b locret_8007936
 loc_80078C6:
 	cmp r4, #2
@@ -8793,59 +8821,79 @@ loc_80078C6:
 	bne loc_80078D6
 	b loc_8007918
 loc_80078D6:
+
 	bl eStruct2038160_getBattleTerminate01
 	cmp r0, #0
 	beq loc_8007900
+
 	mov r1, #9
 	cmp r0, #1
 	beq loc_80078EC
+
 	mov r1, #0xa
 	cmp r0, #1
 	beq loc_80078EC
+
 	b loc_80078EC
 loc_80078EC:
 	mov r0, r1
 	bl setTwoStructs_800A840
+
+  // trigger sub_8007B80 via battle_main_8007800
 	mov r0, #8
-	strb r0, [r5,#oBattleState_Unk_00]
+	strb r0, [r5,#oBattleState_Index_00]
+
+  // trigger sub_8007CA0 via sub_8007B80
 	mov r0, #4
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
+
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
+
 	b locret_8007936
 loc_8007900:
 	mov r0, r4
 	bl sub_801FEEE
+
 	mov r0, #8
 	and r4, r0
 	bne locret_8007936
+
 	ldr r1, off_8007938 // =off_8007940
-	ldrb r0, [r5,#oBattleState_Unk_01]
+	ldrb r0, [r5,#oBattleState_Index_01]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
+
 	pop {r4,pc}
 loc_8007918:
 	bl eStruct200BC30_getJumpOffset00
+
 	cmp r0, #4
 	beq locret_8007936
+
 	cmp r0, #8
 	beq locret_8007936
+
 	ldrh r0, [r5,#oBattleState_Unk_20]
 	add r0, #1
 	strh r0, [r5,#oBattleState_Unk_20]
+
 	cmp r0, #0xb4
 	blt locret_8007936
+
 	ldr r1, off_800793C // =dword_200F3B0
 	mov r0, #0xee
 	str r0, [r1]
+
 	b loc_8007862
 locret_8007936:
 	pop {r4,pc}
 	.balign 4, 0
 off_8007938: .word off_8007940
 off_800793C: .word dword_200F3B0
-off_8007940: .word sub_800794C+1
+off_8007940: 
+  .word sub_800794C+1
 	.word sub_8007978+1
 	.word sub_8007A0C+1
 	thumb_func_end sub_8007850
@@ -8863,7 +8911,7 @@ sub_800794C:
 	bl sub_801BE70
 	bl copy_8002668
 	mov r0, #4
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	pop {pc}
 	thumb_func_end sub_800794C
 
@@ -8943,7 +8991,7 @@ sub_80079F0:
 	bl sub_800BF88
 	bl sub_800A3E4
 	mov r0, #8
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 	pop {pc}
@@ -8956,7 +9004,7 @@ sub_8007A0C:
 	bl sub_800C8F0
 	bl sub_800318C
 	bl panel_800BFC4
-	ldr r0, off_8007A40 // =eS2011800
+	ldr r0, off_8007A40 // =eLogoScreenState
 	bl initUncompSpriteState_80028d4 // (a0: *const ?) -> ()
 	bl GetBattleEffects // () -> int
 	mov r1, #8
@@ -8968,14 +9016,14 @@ sub_8007A0C:
 loc_8007A36:
 	bl battle_clearEnemyFadeinList
 	mov r0, #4
-	str r0, [r5,#oBattleState_Unk_00]
+	str r0, [r5,#oBattleState_Index_00]
 	pop {pc}
 	.balign 4, 0
-off_8007A40: .word eS2011800
+off_8007A40: .word LogoScreenState
 	thumb_func_end sub_8007A0C
 
 	thumb_local_start
-battle_update_8007A44:
+battle_update_8007A44: // (self: * BattleState $r5) -> ()
 	push {r4,lr}
 	bl eStruct203F7D8_getUnk01
 	cmp r0, #4
@@ -8994,7 +9042,7 @@ loc_8007A62:
 	b loc_8007A8E
 loc_8007A66:
 	mov r0, #0xc
-	str r0, [r5,#oBattleState_Unk_00]
+	str r0, [r5,#oBattleState_Index_00]
 	b loc_8007B10
 loc_8007A6C:
 	mov r4, r0
@@ -9016,7 +9064,7 @@ loc_8007A8E:
 	mov r0, r1
 	bl setTwoStructs_800A840
 	mov r0, #0x10
-	str r0, [r5,#oBattleState_Unk_00]
+	str r0, [r5,#oBattleState_Index_00]
 	b loc_8007B10
 loc_8007A9A:
 	bl sub_800A01C
@@ -9103,22 +9151,25 @@ off_8007B50: .word sub_8009158+1
 	thumb_func_end battle_update_8007A44
 
 	thumb_local_start
-sub_8007B80:
+sub_8007B80: // (self: * BattleState $r5) -> ()
 	push {lr}
 	ldr r1, off_8007B90 // =off_8007B94
-	ldrb r0, [r5,#oBattleState_Unk_01]
+	ldrb r0, [r5,#oBattleState_Index_01]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
 	pop {pc}
 	.byte 0, 0
 off_8007B90: .word off_8007B94
-off_8007B94: .word sub_8007B9C+1
-	.word sub_8007CA0+1
+off_8007B94: 
+  # 0x00
+  .word sub_8007B9C+1 // (self: *mut BattleState $r5) -> ()
+  # 0x04
+	.word sub_8007CA0+1 // (self: *mut BattleState $r5) -> ()
 	thumb_func_end sub_8007B80
 
 	thumb_local_start
-sub_8007B9C:
+sub_8007B9C: // (self: *mut BattleState $r5) -> ()
 	push {lr}
 	bl sub_800A01C
 	ldr r1, off_8007BC4 // =off_8007BC8
@@ -9202,7 +9253,7 @@ loc_8007C3C:
 	bl sub_801FE64
 loc_8007C44:
 	mov r0, #4
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8007C4C:
@@ -9242,7 +9293,7 @@ loc_8007C84:
 	bl sub_801FE64
 loc_8007C90:
 	mov r0, #4
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8007C98:
@@ -9252,7 +9303,7 @@ off_8007C9C: .word 0x400
 	thumb_func_end sub_8007C50
 
 	thumb_local_start
-sub_8007CA0:
+sub_8007CA0: // (self: *mut BattleState $r5) -> ()
 	push {r4,r6,r7,lr}
 	bl musicGameState_8000784 // () -> void
 	mov r4, r10
@@ -9447,10 +9498,10 @@ locret_8007E60:
 	thumb_func_end sub_8007CA0
 
 	thumb_local_start
-sub_8007E62:
+sub_8007E62: // (self: * BattleState $r5) -> ()
 	push {lr}
 	ldr r1, off_8007EA8 // =off_8007EAC
-	ldrb r0, [r5,#oBattleState_Unk_01]
+	ldrb r0, [r5,#oBattleState_Index_01]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
@@ -9517,7 +9568,7 @@ loc_8007F08:
 	ldr r0, off_8008014 // =TextScriptCommError87370C0
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	mov r0, #4
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	pop {r4,pc}
 	thumb_func_end sub_8007EB8
 
@@ -9531,7 +9582,7 @@ sub_8007F14:
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 locret_8007F2A:
 	pop {pc}
 	thumb_func_end sub_8007F14
@@ -9546,9 +9597,9 @@ sub_8007F2C:
 	mov r0, #0x1a
 	bl FreeAllObjectsOfSpecifiedTypes
 	mov r0, #8
-	strb r0, [r5,#oBattleState_Unk_00]
+	strb r0, [r5,#oBattleState_Index_00]
 	mov r0, #4
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8007F4C:
@@ -9556,7 +9607,7 @@ locret_8007F4C:
 	thumb_func_end sub_8007F2C
 
 	thumb_local_start
-sub_8007F4E:
+sub_8007F4E: // (self: * BattleState $r5) -> ()
 	push {lr}
 	bl sub_800A01C
 	ldr r1, off_8007F98 // =off_8007F9C
@@ -9617,9 +9668,9 @@ sub_8007FD2:
 	tst r0, r0
 	bne locret_8007FE8
 	mov r0, #8
-	strb r0, [r5,#oBattleState_Unk_00]
+	strb r0, [r5,#oBattleState_Index_00]
 	mov r0, #4
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8007FE8:
@@ -9627,7 +9678,7 @@ locret_8007FE8:
 
 	thumb_local_start
 // non-existent
-removed_8007FEA:
+removed_8007FEA: // (self: * BattleState $r5) -> ()
 	thumb_func_end removed_8007FEA
 	.balign 4, 0
 
@@ -11917,7 +11968,7 @@ off_8009154: .word 0x400
 sub_8009158:
 	push {lr}
 	ldr r1, off_80091B8 // =off_80091BC
-	ldrb r0, [r5,#oBattleState_Unk_01]
+	ldrb r0, [r5,#oBattleState_Index_01]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
@@ -12037,7 +12088,7 @@ loc_800924E:
 	beq loc_8009270
 	mov r4, #0x24
 loc_8009270:
-	strb r4, [r5,#oBattleState_Unk_01]
+	strb r4, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009276:
@@ -12103,7 +12154,7 @@ loc_80092D8:
 	pop {pc}
 loc_80092E6:
 	mov r0, #8
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80092EE:
@@ -12149,7 +12200,7 @@ loc_8009326:
 	strh r0, [r5,#oBattleState_Unk_28]
 	bge locret_8009336
 	mov r0, #8
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009336:
@@ -12193,7 +12244,7 @@ loc_8009370:
 	strb r1, [r0,#oAIData_Unk_0f]
 loc_8009380:
 	mov r0, #0xc
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009388:
@@ -12215,7 +12266,7 @@ loc_800939A:
 	cmp r0, #6
 	bne loc_80093B0
 	mov r0, #8
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 	b locret_800945A
@@ -12291,7 +12342,7 @@ loc_8009414:
 loc_8009452:
 	mov r2, #0x14
 loc_8009454:
-	strb r2, [r5,#oBattleState_Unk_01]
+	strb r2, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_800945A:
@@ -12342,7 +12393,7 @@ loc_80094A6:
 	cmp r0, #0xb4
 	ble locret_80094B4
 	mov r0, #0xc
-	str r0, [r5,#oBattleState_Unk_00]
+	str r0, [r5,#oBattleState_Index_00]
 locret_80094B4:
 	pop {pc}
 	thumb_func_end sub_8009478
@@ -12362,7 +12413,7 @@ loc_80094C8:
 	tst r0, r0
 	bne locret_80094D8
 	mov r0, #0x14
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80094D8:
@@ -12400,7 +12451,7 @@ loc_8009508:
 	mov r0, #0x1a
 	bl FreeAllObjectsOfSpecifiedTypes
 	mov r0, #8
-	str r0, [r5,#oBattleState_Unk_00]
+	str r0, [r5,#oBattleState_Index_00]
 locret_800951C:
 	pop {pc}
 	thumb_func_end sub_80094DA
@@ -12428,7 +12479,7 @@ loc_8009534:
 	bne loc_800954A
 	mov r2, #0x14
 loc_800954A:
-	strb r2, [r5,#oBattleState_Unk_01]
+	strb r2, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009550:
@@ -12467,7 +12518,7 @@ loc_8009576:
 	bne loc_800958C
 	mov r2, #0x14
 loc_800958C:
-	strb r2, [r5,#oBattleState_Unk_01]
+	strb r2, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009592:
@@ -12497,7 +12548,7 @@ loc_80095AA:
 	bne loc_80095C0
 	mov r2, #0x14
 loc_80095C0:
-	strb r2, [r5,#oBattleState_Unk_01]
+	strb r2, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80095C6:
@@ -12523,7 +12574,7 @@ loc_80095E4:
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
 	bne locret_80095F4
 	mov r0, #4
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80095F4:
@@ -12536,7 +12587,7 @@ locret_80095F4:
 sub_800961C:
 	push {lr}
 	ldr r1, off_800962C // =off_8009630
-	ldrb r0, [r5,#oBattleState_Unk_01]
+	ldrb r0, [r5,#oBattleState_Index_01]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
@@ -12616,7 +12667,7 @@ loc_80096B6:
 	beq loc_80096D8
 	mov r4, #0x24
 loc_80096D8:
-	strb r4, [r5,#oBattleState_Unk_01]
+	strb r4, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80096DE:
@@ -12710,7 +12761,7 @@ loc_800976C:
 	pop {pc}
 loc_800977A:
 	mov r0, #8
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009782:
@@ -12756,7 +12807,7 @@ loc_80097BA:
 	strh r0, [r5,#oBattleState_Unk_28]
 	bge locret_80097CA
 	mov r0, #8
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80097CA:
@@ -12789,7 +12840,7 @@ loc_80097FA:
 	bl sub_800A9D6
 	bl sub_8009704
 	mov r0, #0xc
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_800980C:
@@ -12869,7 +12920,7 @@ loc_80098A8:
 loc_80098B2:
 	mov r2, #0x14
 loc_80098B4:
-	strb r2, [r5,#oBattleState_Unk_01]
+	strb r2, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_80098BA:
@@ -12920,7 +12971,7 @@ loc_8009906:
 	cmp r0, #0xb4
 	ble locret_8009914
 	mov r0, #0xc
-	str r0, [r5,#oBattleState_Unk_00]
+	str r0, [r5,#oBattleState_Index_00]
 locret_8009914:
 	pop {pc}
 	thumb_func_end sub_80098D8
@@ -12940,7 +12991,7 @@ loc_8009928:
 	tst r0, r0
 	bne locret_8009938
 	mov r0, #0x14
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009938:
@@ -12966,7 +13017,7 @@ loc_8009950:
 	mov r0, #0x1a
 	bl FreeAllObjectsOfSpecifiedTypes
 	mov r0, #8
-	str r0, [r5,#oBattleState_Unk_00]
+	str r0, [r5,#oBattleState_Index_00]
 locret_8009964:
 	pop {pc}
 	thumb_func_end sub_800993A
@@ -13006,7 +13057,7 @@ off_80099A0: .word TextScriptCommError87370C0
 sub_80099A4:
 	push {lr}
 	ldr r1, off_80099B4 // =off_80099B8
-	ldrb r0, [r5,#oBattleState_Unk_01]
+	ldrb r0, [r5,#oBattleState_Index_01]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
@@ -13086,7 +13137,7 @@ loc_8009A3E:
 	beq loc_8009A60
 	mov r4, #0x24
 loc_8009A60:
-	strb r4, [r5,#oBattleState_Unk_01]
+	strb r4, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009A66:
@@ -13149,7 +13200,7 @@ loc_8009AC0:
 	pop {pc}
 loc_8009ACE:
 	mov r0, #0xc
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009AD6:
@@ -13195,7 +13246,7 @@ loc_8009B0E:
 	strh r0, [r5,#oBattleState_Unk_28]
 	bge locret_8009B1E
 	mov r0, #0xc
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009B1E:
@@ -13261,7 +13312,7 @@ loc_8009B98:
 loc_8009BA2:
 	mov r2, #0x14
 loc_8009BA4:
-	strb r2, [r5,#oBattleState_Unk_01]
+	strb r2, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009BAA:
@@ -13312,7 +13363,7 @@ loc_8009BF6:
 	cmp r0, #0xb4
 	ble locret_8009C04
 	mov r0, #0xc
-	str r0, [r5,#oBattleState_Unk_00]
+	str r0, [r5,#oBattleState_Index_00]
 locret_8009C04:
 	pop {pc}
 	thumb_func_end sub_8009BC8
@@ -13332,7 +13383,7 @@ loc_8009C18:
 	tst r0, r0
 	bne locret_8009C28
 	mov r0, #0x14
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009C28:
@@ -13358,7 +13409,7 @@ loc_8009C40:
 	mov r0, #0x1a
 	bl FreeAllObjectsOfSpecifiedTypes
 	mov r0, #8
-	str r0, [r5,#oBattleState_Unk_00]
+	str r0, [r5,#oBattleState_Index_00]
 locret_8009C54:
 	pop {pc}
 	thumb_func_end sub_8009C2A
@@ -13398,7 +13449,7 @@ off_8009C90: .word TextScriptCommError87370C0
 sub_8009C94:
 	push {lr}
 	ldr r1, off_8009CA4 // =off_8009CA8
-	ldrb r0, [r5,#oBattleState_Unk_01]
+	ldrb r0, [r5,#oBattleState_Index_01]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
@@ -13478,7 +13529,7 @@ loc_8009D2E:
 	beq loc_8009D50
 	mov r4, #0x24
 loc_8009D50:
-	strb r4, [r5,#oBattleState_Unk_01]
+	strb r4, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009D56:
@@ -13541,7 +13592,7 @@ loc_8009DB0:
 	pop {pc}
 loc_8009DBE:
 	mov r0, #8
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009DC6:
@@ -13587,7 +13638,7 @@ loc_8009DFE:
 	strh r0, [r5,#oBattleState_Unk_28]
 	bge locret_8009E0E
 	mov r0, #0xc
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009E0E:
@@ -13630,7 +13681,7 @@ sub_8009E40:
 	cmp r0, #0
 	bne locret_8009E54
 	mov r0, #0xc
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009E54:
@@ -13696,7 +13747,7 @@ loc_8009ECE:
 loc_8009ED8:
 	mov r2, #0x14
 loc_8009EDA:
-	strb r2, [r5,#oBattleState_Unk_01]
+	strb r2, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009EE0:
@@ -13746,7 +13797,7 @@ loc_8009F2A:
 	cmp r0, #0xb4
 	ble locret_8009F38
 	mov r0, #0xc
-	str r0, [r5,#oBattleState_Unk_00]
+	str r0, [r5,#oBattleState_Index_00]
 locret_8009F38:
 	pop {pc}
 	thumb_func_end sub_8009EFC
@@ -13766,7 +13817,7 @@ loc_8009F4C:
 	tst r0, r0
 	bne locret_8009F5C
 	mov r0, #0x14
-	strb r0, [r5,#oBattleState_Unk_01]
+	strb r0, [r5,#oBattleState_Index_01]
 	mov r0, #0
 	strh r0, [r5,#oBattleState_Unk_02_03]
 locret_8009F5C:
@@ -13792,7 +13843,7 @@ loc_8009F74:
 	mov r0, #0x1a
 	bl FreeAllObjectsOfSpecifiedTypes
 	mov r0, #8
-	str r0, [r5,#oBattleState_Unk_00]
+	str r0, [r5,#oBattleState_Index_00]
 locret_8009F88:
 	pop {pc}
 	thumb_func_end sub_8009F5E
@@ -15535,7 +15586,7 @@ sub_800AABC:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	mov r1, #0x14
-	strb r1, [r0,#oBattleState_Unk_01]
+	strb r1, [r0,#oBattleState_Index_01]
 	mov r1, #0
 	strh r1, [r0,#oBattleState_Unk_02_03]
 	pop {r5,pc}

@@ -5932,7 +5932,7 @@ signed int __fastcall sub_8039570(int a1, int a2, int a3, int a4)
     _BYTE **v4; // r10
     signed int result; // r0
 
-    ZeroFillByWord(&byte_200A290, &loc_1B0);
+    ZeroFillByWord(&eS200A290, &loc_1B0);
     **v4 = 24;
     byte_200A2A4 = 0;
     byte_200A2A7 = 0;
@@ -5950,7 +5950,7 @@ signed int cb_80395A4()
     signed int result; // r0
     char zf; // zf
 
-    (*(&JumpTable80395C8 + byte_200A290))();
+    (*(&JumpTable80395C8 + eS200A290))();
     result = IsCurSubsystemInUse();
     if ( zf )
         result = sub_803C59C(218, 2);
@@ -11614,11 +11614,11 @@ int __fastcall sub_803D180(int a1)
 
 // 0x803d1a8
 // () -> void
-void __cdecl init_803D1A8()
+void __cdecl logoScreen_init_803D1A8()
 {
     Toolkit *tk; // r10
 
-    ZeroFillByWord(&eS2011800, 8);
+    ZeroFillByWord(&LogoScreenState, 8);
     byte_2011805 = 1;
     *tk->jo_gameSubsysSel = 16;
 }
@@ -11626,9 +11626,9 @@ void __cdecl init_803D1A8()
 
 // 0x803d1ca
 // set R5=2011800
-int cb_803D1CA()
+int logoScreen_dispatch_803D1CA()
 {
-    (*(&JumpTable803D1E4 + eS2011800))();
+    (*(&JumpTable803D1E4 + LogoScreenState))();
     return startScreen_AnimationControl_803E938();
 }
 
@@ -11727,7 +11727,7 @@ int sub_803D298()
 
 
 // 0x803d2a6
-int sub_803D2A6()
+int logoScreen_finish_803D2A6()
 {
     int v0; // r0
     int v1; // r1
@@ -14913,7 +14913,7 @@ _BYTE *__fastcall sub_803FB28(int a1, int a2, int a3, int a4)
     _BYTE **v4; // r10
     _BYTE *result; // r0
 
-    ZeroFillByWord(&byte_200F348, 8);
+    ZeroFillByWord(&eS200F348, 8);
     result = *v4;
     **v4 = 20;
     return result;
@@ -14924,7 +14924,7 @@ _BYTE *__fastcall sub_803FB28(int a1, int a2, int a3, int a4)
 // set R5 = 0x200F348
 int cb_803FB3C()
 {
-    (*(&off_803FB54 + byte_200F348))();
+    (*(&off_803FB54 + eS200F348))();
     return sub_803FC14();
 }
 

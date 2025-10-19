@@ -2833,20 +2833,20 @@ sub_8047834:
 	mov r1, #0x50 
 	mov r2, #0
 	bl sub_8119854
-	ldr r0, off_80478A8 // =eTextScript202BA04 // *mut TextScriptArchive
+	ldr r0, off_80478A8 // =eTextScript202BA04 // TextScriptArchive
 	mov r1, #0x7f
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	b locret_80478A0
 loc_804787A:
 	cmp r3, #1
 	bne loc_804788C
-	ldr r0, off_80478A8 // =eTextScript202BA04 // *mut TextScriptArchive
+	ldr r0, off_80478A8 // =eTextScript202BA04 // TextScriptArchive
 	ldrh r1, [r7,#2]
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	bl sub_80478B8
 	b locret_80478A0
 loc_804788C:
-	ldr r0, off_80478AC // =eTextScript202DA04 // *mut TextScriptArchive
+	ldr r0, off_80478AC // =eTextScript202DA04 // TextScriptArchive
 	ldrh r1, [r7,#2]
 	lsr r1, r1, #2
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
@@ -2858,8 +2858,8 @@ locret_80478A0:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_80478A4: .word byte_8046B74
-off_80478A8: .word eTextScript202BA04 // *mut TextScriptArchive
-off_80478AC: .word eTextScript202DA04 // *mut TextScriptArchive
+off_80478A8: .word eTextScript202BA04 // TextScriptArchive
+off_80478AC: .word eTextScript202DA04 // TextScriptArchive
 off_80478B0: .word byte_2019A00
 off_80478B4: .word byte_8046B84
 	thumb_func_end sub_8047834
@@ -4358,7 +4358,7 @@ off_8048F98: .word dword_8046B98
 sub_8048F9C:
 	push {r4-r7,lr}
 	mov r4, r0
-	ldr r5, off_8049008 // =byte_200A290 
+	ldr r5, off_8049008 // =eS200A290 
 	// memBlock
 	mov r0, r5
 	// size
@@ -4381,7 +4381,7 @@ off_8048FC0: .word 0x1B0
 	thumb_func_start sub_8048FC4
 sub_8048FC4:
 	push {r4-r7,lr}
-	ldr r5, off_8049008 // =byte_200A290 
+	ldr r5, off_8049008 // =eS200A290 
 	ldrb r0, [r5]
 	ldrb r1, [r5,#0x1] // (byte_200A291 - 0x200a290)
 	pop {r4-r7,pc}
@@ -4392,7 +4392,7 @@ sub_8048FC4:
 	thumb_func_start cb_8048FD4
 cb_8048FD4:
 	push {r4-r7,lr}
-	ldr r5, off_8049008 // =byte_200A290 
+	ldr r5, off_8049008 // =eS200A290 
 	ldr r0, off_8048FF4 // =off_8048FF8 
 	ldrb r1, [r5]
 	ldr r0, [r0,r1]
@@ -4411,7 +4411,7 @@ off_8048FF8: .word sub_804900C+1
 	.word sub_8049058+1
 	.word sub_8049080+1
 	.word sub_804971C+1
-off_8049008: .word byte_200A290
+off_8049008: .word eS200A290
 	thumb_func_end cb_8048FD4
 
 	thumb_local_start
@@ -5811,7 +5811,7 @@ loc_8049BC4:
 	mov r2, #2
 	mov r3, #0
 	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
-	ldr r0, off_8049CB4 // =eTextScript202BA04 // *mut TextScriptArchive
+	ldr r0, off_8049CB4 // =eTextScript202BA04 // TextScriptArchive
 	lsl r1, r7, #9
 	add r0, r0, r1
 	ldr r1, dword_8049CB8 // =0x6016e00 
@@ -5861,7 +5861,7 @@ off_8049C84: .word byte_86C0B20
 	.word byte_86C19A0
 	.word byte_86C19E0
 	.word byte_86C1A60
-off_8049CB4: .word eTextScript202BA04 // *mut TextScriptArchive
+off_8049CB4: .word eTextScript202BA04 // TextScriptArchive
 dword_8049CB8: .word 0x6016E00
 	thumb_func_end sub_8049BC0
 
@@ -5949,13 +5949,13 @@ sub_8049D42:
 	thumb_local_start
 sub_8049D4A:
 	push {r4-r7,lr}
-	ldr r0, off_8049D6C // =byte_200A290 
+	ldr r0, off_8049D6C // =eS200A290 
 	add r0, #0x70 
 	ldr r1, off_8049D94 // =word_2001800 
 	add r1, #8
 	mov r2, #0x20 
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-	ldr r0, off_8049D6C // =byte_200A290 
+	ldr r0, off_8049D6C // =eS200A290 
 	add r0, #0xd0
 	ldr r1, off_8049D94 // =word_2001800 
 	add r1, #0x28 
@@ -5963,7 +5963,7 @@ sub_8049D4A:
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8049D6C: .word byte_200A290
+off_8049D6C: .word eS200A290
 	thumb_func_end sub_8049D4A
 
 	thumb_local_start
@@ -6039,7 +6039,7 @@ sub_8049DC4:
 sub_8049DDC:
 	push {r4-r7,lr}
 	mov r4, r0
-	ldr r5, off_8049E24 // =byte_200A290 
+	ldr r5, off_8049E24 // =eS200A290 
 	// memBlock
 	mov r0, r5
 	// size
@@ -6062,7 +6062,7 @@ off_8049E00: .word 0x1B0
 	thumb_func_start cb_8049E04
 cb_8049E04:
 	push {r4-r7,lr}
-	ldr r5, off_8049E24 // =byte_200A290 
+	ldr r5, off_8049E24 // =eS200A290 
 	ldr r0, off_8049E14 // =off_8049E18 
 	ldrb r1, [r5]
 	ldr r0, [r0,r1]
@@ -6074,7 +6074,7 @@ off_8049E14: .word off_8049E18
 off_8049E18: .word sub_8049E28+1
 	.word sub_8049E5C+1
 	.word sub_8049E84+1
-off_8049E24: .word byte_200A290
+off_8049E24: .word eS200A290
 	thumb_func_end cb_8049E04
 
 	thumb_local_start
@@ -6564,7 +6564,7 @@ sub_804A230:
 	push {r4-r7,lr}
 	ldr r1, off_804A258 // =dword_804A25C 
 	ldrb r1, [r1,r0]
-	ldr r0, off_804A248 // =byte_200A290 
+	ldr r0, off_804A248 // =eS200A290 
 	add r0, #0x70 
 	ldr r2, off_804A260 // =unk_2001850 
 	add r1, r1, r2
@@ -6572,7 +6572,7 @@ sub_804A230:
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_804A248: .word byte_200A290
+off_804A248: .word eS200A290
 	thumb_func_end sub_804A230
 
 	thumb_func_start sub_804A24C

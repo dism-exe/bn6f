@@ -33,8 +33,10 @@
 	.include "structs/MapTilesState200be70.inc"
 	.include "structs/PanelData.inc"
 	.include "structs/SubMenu.inc"
-  .include "structs/S2011800.inc"
+  .include "structs/LogoScreenState.inc"
   .include "structs/S2011E30.inc"
+  .include "structs/S200F348.inc"
+  .include "structs/S200A290.inc"
 
 
 /*

@@ -4,7 +4,9 @@ main_:
 	bl main_initToolkitAndOtherSubsystems // () -> ()
 	bl SeedRNG // () -> ()
 	bl clear_e200AD04 // () -> ()
-	bl init_803D1A8 // () -> ()
+
+	bl logoScreen_init_803D1A8 // () -> ()
+
 main_gameRoutine:
 	bl main_pollGeneralLCDStatus_STAT_LYC_ // () -> ()
 	bl main_awaitFrame
@@ -61,27 +63,48 @@ loc_800032A:
 off_8000344: .word copyTo_iObjectAttr3001D70_3006814+1 // () -> void
 off_8000348: .word main_subsystemJumpTable
 main_subsystemJumpTable: 
+  // 0x00
   .word startscreen_render_802F544+1 // () ->
+  // 0x04
 	.word cbGameState_80050EC+1
+  // 0x08
 	.word ho_jackIn_80341B6+1
+  // 0x0C
 	.word cb_8038AD0+1
-	.word cb_803D1CA+1
+  // 0x10
+	.word logoScreen_dispatch_803D1CA+1
+  // 0x14
 	.word cb_803FB3C+1
+  // 0x18
 	.word cb_80395A4+1
+  // 0x1C
 	.word cb_803CBA6+1
+  // 0x20
 	.word cb_803CCD6+1
+  // 0x24
 	.word reqBBS_cb_draw_813E0A4+1
+  // 0x28
 	.word SubMenuControl+1 // () -> ()
+  // 0x2C
 	.word ShopControl+1
+  // 0x30
 	.word cb_8048FD4+1
+  // 0x34
 	.word ChipTraderControl+1
+  // 0x38
 	.word cb_81382AC+1
-	.word 0x0
-	.word 0x0
+  // 0x3C
+	.word NULL
+  // 0x40
+	.word NULL
+  // 0x44
 	.word reqBBS_subsystemCotnrol+1
+  // 0x48
 	.word HandleEmailMenu81279F8+1
+  // 0x4C
 	.word cb_8049E04+1
-	.word 0x0
+  // 0x50
+	.word NULL
 	thumb_func_end main_
 
 	thumb_local_start
@@ -321,7 +344,7 @@ loc_80004C0:
 	// size
 	mov r1, #8
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
-	bl init_803D1A8 // () -> ()
+	bl logoScreen_init_803D1A8 // () -> ()
 	bl init_eStartScreenAnimationControl200B1A0_1
 	pop {r5,pc}
 	.balign 4, 0

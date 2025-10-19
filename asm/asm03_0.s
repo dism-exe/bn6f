@@ -17931,7 +17931,7 @@ off_802F4E0: .word unk_3001B20
 
 // Start Module StartScreen_
 
-/// Breaks on partial Capcom logo fade from sub_803D2A6
+/// Breaks on partial Capcom logo fade from logoScreen_finish_803D2A6
 	thumb_func_start startScreen_init_802F530
 startScreen_init_802F530: // () -> void
 	push {lr}

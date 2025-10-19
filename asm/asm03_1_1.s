@@ -1149,7 +1149,7 @@ loc_8039578:
 	mov r4, r0
 	mov r6, #1
 loc_803957E:
-	ldr r5, off_80395E0 // =byte_200A290
+	ldr r5, off_80395E0 // =eS200A290
 	// memBlock
 	mov r0, r5
 	// size
@@ -1173,12 +1173,14 @@ off_80395A0: .word 0x1B0
 	thumb_func_start cb_80395A4
 cb_80395A4:
 	push {r4-r7,lr}
-	ldr r5, off_80395E0 // =byte_200A290
+	ldr r5, off_80395E0 // =eS200A290
+
 	ldr r0, off_80395C4 // =off_80395C8
-	ldrb r1, [r5]
+	ldrb r1, [r5, #oS200A290_Index_00]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
+
 	bl IsCurSubsystemInUse // () -> (bool, !zf)
 	bne locret_80395C0
 	mov r0, #0xda
@@ -1188,13 +1190,20 @@ locret_80395C0:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_80395C4: .word off_80395C8
-off_80395C8: .word sub_80395E4+1
+off_80395C8:
+  // 0x00
+  .word sub_80395E4+1
+  // 0x04
 	.word sub_8039630+1
+  // 0x08
 	.word sub_8039658+1
+  // 0x0C
 	.word sub_80399CE+1
+  // 0x10
 	.word sub_803A690+1
+  // 0x14
 	.word sub_803B160+1
-off_80395E0: .word byte_200A290
+off_80395E0: .word eS200A290
 	thumb_func_end cb_80395A4
 
 	thumb_local_start
@@ -1713,33 +1722,62 @@ sub_80399CE:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_80399E4: .word off_80399E8
-off_80399E8: .word sub_8039A58+1
+off_80399E8:
+  // 0x00
+  .word sub_8039A58+1
+  // 0x04
 	.word sub_8039AB8+1
+  // 0x08
 	.word sub_8039AE4+1
+  // 0x0C
 	.word sub_8039B0A+1
+  // 0x10
 	.word sub_8039B60+1
+  // 0x14
 	.word sub_8039B82+1
+  // 0x18
 	.word sub_8039B98+1
+  // 0x1C
 	.word sub_8039BC0+1
+  // 0x20
 	.word sub_8039C14+1
+  // 0x24
 	.word sub_8039C32+1
+  // 0x28
 	.word sub_8039D08+1
+  // 0x2C
 	.word sub_8039D66+1
+  // 0x30
 	.word sub_8039D9A+1
+  // 0x34
 	.word sub_8039DB4+1
+  // 0x38
 	.word sub_8039E2C+1
+  // 0x3C
 	.word sub_8039E80+1
+  // 0x40
 	.word sub_8039EBA+1
+  // 0x44
 	.word sub_8039ECC+1
+  // 0x48
 	.word sub_8039F78+1
+  // 0x4C
 	.word sub_8039FEC+1
+  // 0x50
 	.word sub_803A03A+1
+  // 0x54
 	.word sub_803A054+1
+  // 0x58
 	.word sub_803A06C+1
+  // 0x5C
 	.word sub_803A086+1
+  // 0x60
 	.word sub_803A0A4+1
+  // 0x64
 	.word sub_803A0BE+1
+  // 0x68
 	.word sub_803A0D4+1
+  // 0x6C
 	.word sub_803A0EE+1
 	thumb_func_end sub_80399CE
 
@@ -6330,7 +6368,7 @@ sub_803C2FE:
 
 	thumb_local_start
 sub_803C302:
-	ldr r2, off_803C32C // =byte_200A290
+	ldr r2, off_803C32C // =eS200A290
 	ldrh r1, [r2,#0x20] // (word_200A2B0 - 0x200a290)
 	orr r1, r0
 	strh r1, [r2,#0x20] // (word_200A2B0 - 0x200a290)
@@ -6339,7 +6377,7 @@ sub_803C302:
 
 	thumb_local_start
 sub_803C30C:
-	ldr r2, off_803C32C // =byte_200A290
+	ldr r2, off_803C32C // =eS200A290
 	ldrh r1, [r2,#0x20] // (word_200A2B0 - 0x200a290)
 	bic r1, r0
 	strh r1, [r2,#0x20] // (word_200A2B0 - 0x200a290)
@@ -6349,7 +6387,7 @@ sub_803C30C:
 	thumb_func_start sub_803C316
 sub_803C316:
 	push {lr}
-	ldr r2, off_803C32C // =byte_200A290
+	ldr r2, off_803C32C // =eS200A290
 	ldrh r1, [r2,#0x20] // (word_200A2B0 - 0x200a290)
 	tst r1, r0
 	pop {pc}
@@ -6357,13 +6395,13 @@ sub_803C316:
 
 	thumb_func_start sub_803C320
 sub_803C320:
-	ldr r2, off_803C32C // =byte_200A290
+	ldr r2, off_803C32C // =eS200A290
 	mov r0, #0
 	strh r0, [r2,#0x20] // (word_200A2B0 - 0x200a290)
 	strb r0, [r2,#0x16] // (byte_200A2A6 - 0x200a290)
 	mov pc, lr
 	.balign 4, 0x00
-off_803C32C: .word byte_200A290
+off_803C32C: .word eS200A290
 	thumb_func_end sub_803C320
 
 	thumb_func_start sub_803C330
@@ -6491,13 +6529,13 @@ sub_803C3E0:
 	thumb_local_start
 sub_803C3E8:
 	push {r4-r7,lr}
-	ldr r0, off_803C408 // =byte_200A290
+	ldr r0, off_803C408 // =eS200A290
 	add r0, #0x70
 	ldr r1, off_803C430 // =word_2006770
 	add r1, #8
 	mov r2, #0x20
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-	ldr r0, off_803C408 // =byte_200A290
+	ldr r0, off_803C408 // =eS200A290
 	add r0, #0xd0
 	ldr r1, off_803C430 // =word_2006770
 	add r1, #0x28
@@ -6505,7 +6543,7 @@ sub_803C3E8:
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803C408: .word byte_200A290
+off_803C408: .word eS200A290
 	thumb_func_end sub_803C3E8
 
 	thumb_local_start
@@ -6579,7 +6617,7 @@ byte_803C47C: .byte 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x0, 
 	thumb_local_start
 sub_803C48C:
 	push {r4-r7,lr}
-	ldr r5, off_803C4AC // =byte_200A290
+	ldr r5, off_803C4AC // =eS200A290
 	mov r4, #0xfe
 	mov r0, #8
 	bl sub_803CB18
@@ -6594,18 +6632,18 @@ loc_803C4A6:
 	tst r0, r0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803C4AC: .word byte_200A290
+off_803C4AC: .word eS200A290
 	thumb_func_end sub_803C48C
 
 	thumb_local_start
 sub_803C4B0:
 	push {r4-r7,lr}
-	ldr r5, off_803C4BC // =byte_200A290
+	ldr r5, off_803C4BC // =eS200A290
 	mov r0, #0x10
 	bl sub_803CB00
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803C4BC: .word byte_200A290
+off_803C4BC: .word eS200A290
 	thumb_func_end sub_803C4B0
 
 	thumb_local_start
@@ -6625,7 +6663,7 @@ off_803C4D8: .word unk_200A420
 	thumb_local_start
 sub_803C4DC:
 	push {r4-r7,lr}
-	ldr r5, off_803C510 // =byte_200A290
+	ldr r5, off_803C510 // =eS200A290
 	bl sub_813D978
 	mov r0, #8
 	bl sub_803CB00
@@ -6635,7 +6673,7 @@ sub_803C4DC:
 	thumb_local_start
 sub_803C4EC:
 	push {r4-r7,lr}
-	ldr r5, off_803C510 // =byte_200A290
+	ldr r5, off_803C510 // =eS200A290
 	bl sub_813D978
 	mov r0, #8
 	bl sub_803CB00
@@ -6647,18 +6685,18 @@ sub_803C4EC:
 	thumb_local_start
 sub_803C502:
 	push {r4-r7,lr}
-	ldr r5, off_803C510 // =byte_200A290
+	ldr r5, off_803C510 // =eS200A290
 	mov r0, #8
 	bl sub_803CB18
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803C510: .word byte_200A290
+off_803C510: .word eS200A290
 	thumb_func_end sub_803C502
 
 	thumb_func_start sub_803C514
 sub_803C514:
 	push {r4-r7,lr}
-	ldr r5, off_803C52C // =byte_200A290
+	ldr r5, off_803C52C // =eS200A290
 	mov r4, #0
 	mov r0, #0x10
 	lsl r0, r0, #4
@@ -6670,13 +6708,13 @@ loc_803C526:
 	tst r0, r0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803C52C: .word byte_200A290
+off_803C52C: .word eS200A290
 	thumb_func_end sub_803C514
 
 	thumb_local_start
 sub_803C530:
 	push {r4-r7,lr}
-	ldr r5, off_803C54C // =byte_200A290
+	ldr r5, off_803C54C // =eS200A290
 	mov r4, #0
 	ldr r0, off_803C554 // =0x200
 	bl sub_803CB18
@@ -6689,7 +6727,7 @@ loc_803C546:
 	tst r0, r0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803C54C: .word byte_200A290
+off_803C54C: .word eS200A290
 off_803C550: .word off_8039370
 off_803C554: .word 0x200
 	thumb_func_end sub_803C530
@@ -6705,7 +6743,7 @@ sub_803C558:
 	thumb_local_start
 sub_803C564:
 	push {r4-r7,lr}
-	ldr r5, off_803C57C // =byte_200A290
+	ldr r5, off_803C57C // =eS200A290
 	mov r0, #2
 	bl sub_803CB00
 	pop {r4-r7,pc}
@@ -6714,18 +6752,18 @@ sub_803C564:
 	thumb_local_start
 sub_803C570:
 	push {r4-r7,lr}
-	ldr r5, off_803C57C // =byte_200A290
+	ldr r5, off_803C57C // =eS200A290
 	mov r0, #2
 	bl sub_803CB0C
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803C57C: .word byte_200A290
+off_803C57C: .word eS200A290
 	thumb_func_end sub_803C570
 
 	thumb_local_start
 sub_803C580:
 	push {r4-r7,lr}
-	ldr r5, off_803C598 // =byte_200A290
+	ldr r5, off_803C598 // =eS200A290
 	mov r0, #0x40
 	bl sub_803CB00
 	pop {r4-r7,pc}
@@ -6734,12 +6772,12 @@ sub_803C580:
 	thumb_local_start
 sub_803C58C:
 	push {r4-r7,lr}
-	ldr r5, off_803C598 // =byte_200A290
+	ldr r5, off_803C598 // =eS200A290
 	mov r0, #0x40
 	bl sub_803CB0C
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803C598: .word byte_200A290
+off_803C598: .word eS200A290
 	thumb_func_end sub_803C58C
 
 	thumb_func_start sub_803C59C
@@ -6794,7 +6832,7 @@ off_803C600: .word byte_200BC60
 	thumb_func_start sub_803C604
 sub_803C604:
 	push {r4-r7,lr}
-	ldr r5, off_803C61C // =byte_200A290
+	ldr r5, off_803C61C // =eS200A290
 	bl sub_803A104
 	bl sub_8049BC0
 	pop {r4-r7,pc}
@@ -6803,11 +6841,11 @@ sub_803C604:
 	thumb_func_start sub_803C612
 sub_803C612:
 	push {r4-r7,lr}
-	ldr r5, off_803C61C // =byte_200A290
+	ldr r5, off_803C61C // =eS200A290
 	bl sub_803A1B0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803C61C: .word byte_200A290
+off_803C61C: .word eS200A290
 	thumb_func_end sub_803C612
 
 	thumb_func_start sub_803C620
@@ -8418,8 +8456,8 @@ locret_803D1A6:
 	thumb_func_end sub_803D180
 
 /// triggers cascade towards start screen initialization and rendering
-	thumb_func_start init_803D1A8
-init_803D1A8: // () -> ()
+	thumb_func_start logoScreen_init_803D1A8
+logoScreen_init_803D1A8: // () -> ()
   // let v0: bool?;
 	mov r0, #1
 	b loc_803D1AE
@@ -8433,7 +8471,7 @@ loc_803D1AE:
 	push {r0}
 
 	// memBlock
-	ldr r0, off_803D1F8 // =eS2011800
+	ldr r0, off_803D1F8 // =eLogoScreenState
 	// size
 	mov r1, #8
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
@@ -8441,26 +8479,26 @@ loc_803D1AE:
   // v0
 	pop {r0}
 
-	ldr r1, off_803D1F8 // =eS2011800
-	strb r0, [r1,#0x5]
+	ldr r1, off_803D1F8 // =eLogoScreenState
+	strb r0, [r1,#oLogoScreenState_Unk_05]
 
-  // trigger cb_803D1CA via main_
+  // trigger logoScreen_dispatch_803D1CA via main_
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	mov r0, #0x10
 	strb r0, [r1]
 
 	pop {r4-r7,pc}
-	thumb_func_end init_803D1A8
+	thumb_func_end logoScreen_init_803D1A8
 
-	thumb_func_start cb_803D1CA
-cb_803D1CA:
+	thumb_func_start logoScreen_dispatch_803D1CA
+logoScreen_dispatch_803D1CA:
 	push {r4-r7,lr}
 
-	ldr r5, off_803D1F8 // =eS2011800
+	ldr r5, off_803D1F8 // =eLogoScreenState
 
 	ldr r0, off_803D1E0 // =off_803D1E4
-	ldrb r1, [r5, #oS2011800_Index_00]
+	ldrb r1, [r5, #oLogoScreenState_Index_00]
 	ldr r0, [r0,r1]
 
 	mov lr, pc
@@ -8470,16 +8508,22 @@ cb_803D1CA:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803D1E0: .word off_803D1E4
-off_803D1E4: .word sub_803D1FC+1 // (self: *mut S2011800 $r5) -> ()
-	.word sub_803D24C+1 // (self: *mut S2011800 $r5) -> ()
-	.word sub_803D274+1 // (self: *mut S2011800 $r5) -> ()
-	.word sub_803D298+1 // (self: *mut S2011800 $r5) -> ()
-	.word sub_803D2A6+1 // (self: *const S2011800 $r5) -> ()
-off_803D1F8: .word eS2011800
-	thumb_func_end cb_803D1CA
+off_803D1E4:
+  // 0x00
+  .word sub_803D1FC+1 // (self: *mut LogoScreenState $r5) -> ()
+  // 0x04
+	.word sub_803D24C+1 // (self: *mut LogoScreenState $r5) -> ()
+  // 0x08
+	.word sub_803D274+1 // (self: *mut LogoScreenState $r5) -> ()
+  // 0x0C
+	.word sub_803D298+1 // (self: *mut LogoScreenState $r5) -> ()
+  // 0x10
+	.word logoScreen_finish_803D2A6+1 // (self: *const LogoScreenState $r5) -> ()
+off_803D1F8: .word LogoScreenState
+	thumb_func_end logoScreen_dispatch_803D1CA
 
 	thumb_local_start
-sub_803D1FC: // (self: *mut S2011800 $r5) -> ()
+sub_803D1FC: // (self: *mut LogoScreenState $r5) -> ()
 	push {lr}
 	mov r0, #0xe
 	bl sub_80015FC
@@ -8501,12 +8545,13 @@ loc_803D212:
 	bl sub_8005F6C
 	bl sub_80027C4
 	bl copyTileData_803D2B8
+
 	mov r0, #0x63
 	bl music_80005F2 // (bg_music_indicator: u8) -> ()
 
-  // trigger sub_803D24C via cb_803D1CA
+  // trigger sub_803D24C via logoScreen_dispatch_803D1CA
 	mov r0, #4
-	strb r0, [r5, #oS2011800_Index_00]
+	strb r0, [r5, #oLogoScreenState_Index_00]
 
 	pop {pc}
 	.balign 4, 0
@@ -8515,7 +8560,7 @@ off_803D248: .word 0xC0
 	thumb_func_end sub_803D1FC
 
 	thumb_local_start
-sub_803D24C: // (self: *mut S2011800 $r5) -> ()
+sub_803D24C: // (self: *mut LogoScreenState $r5) -> ()
 	push {lr}
 	ldr r0, dword_803D270 // =0x1f40
 	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
@@ -8530,9 +8575,9 @@ loc_803D25E:
 	mov r0, #0xb4
 	strb r0, [r5,#4]
 
-  // trigger sub_803D274 via cb_803D1CA
+  // trigger sub_803D274 via logoScreen_dispatch_803D1CA
 	mov r0, #8
-	strb r0, [r5, #oS2011800_Index_00]
+	strb r0, [r5, #oLogoScreenState_Index_00]
 
 	pop {pc}
 	.balign 4, 0
@@ -8540,7 +8585,7 @@ dword_803D270: .word 0x1F40
 	thumb_func_end sub_803D24C
 
 	thumb_local_start
-sub_803D274: // (self: *mut S2011800 $r5) -> ()
+sub_803D274: // (self: *mut LogoScreenState $r5) -> ()
 	push {lr}
 	bl IsScreenFadeActive // () -> zf
 	beq locret_803D292
@@ -8553,9 +8598,9 @@ sub_803D274: // (self: *mut S2011800 $r5) -> ()
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
 
-  // trigger sub_803D298 via cb_803D1CA
+  // trigger sub_803D298 via logoScreen_dispatch_803D1CA
 	mov r0, #0xc
-	strb r0, [r5, #oS2011800_Index_00]
+	strb r0, [r5, #oLogoScreenState_Index_00]
 
 locret_803D292:
 	pop {pc}
@@ -8563,21 +8608,21 @@ locret_803D292:
 	thumb_func_end sub_803D274
 
 	thumb_local_start
-sub_803D298: // (self: *mut S2011800 $r5) -> ()
+sub_803D298: // (self: *mut LogoScreenState $r5) -> ()
 	push {lr}
 	bl IsScreenFadeActive // () -> zf
 	beq locret_803D2A4
 
-  // trigger sub_803D2A6 via cb_803D1CA
+  // trigger logoScreen_finish_803D2A6 via logoScreen_dispatch_803D1CA
 	mov r0, #0x10
-	strb r0, [r5, #oS2011800_Index_00]
+	strb r0, [r5, #oLogoScreenState_Index_00]
 
 locret_803D2A4:
 	pop {pc}
 	thumb_func_end sub_803D298
 
 	thumb_local_start
-sub_803D2A6: // (self: *const S2011800 $r5) -> ()
+logoScreen_finish_803D2A6: // (self: *const LogoScreenState $r5) -> ()
 	push {lr}
 	ldr r0, off_803D2B4 // =0x40
 	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
@@ -8585,7 +8630,7 @@ sub_803D2A6: // (self: *const S2011800 $r5) -> ()
 	pop {pc}
 	.balign 4, 0
 off_803D2B4: .word 0x40
-	thumb_func_end sub_803D2A6
+	thumb_func_end logoScreen_finish_803D2A6
 
 	thumb_local_start
 copyTileData_803D2B8:
@@ -13161,79 +13206,109 @@ off_803FB24: .word 0x80
 sub_803FB28:
 	push {lr}
 	// memBlock
-	ldr r0, off_803FB60 // =byte_200F348
+	ldr r0, off_803FB60 // =eS200F348
 	// size
 	mov r1, #8
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
+  // trigger cb_803FB3C via main_
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_MainJumptableIndexPtr]
 	mov r1, #0x14
 	strb r1, [r0]
+
 	pop {pc}
 	thumb_func_end sub_803FB28
 
 	thumb_func_start cb_803FB3C
 cb_803FB3C:
 	push {r4-r7,lr}
-	ldr r5, off_803FB60 // =byte_200F348
+	ldr r5, off_803FB60 // =eS200F348
 	ldr r0, off_803FB50 // =off_803FB54
-	ldrb r1, [r5]
+
+	ldrb r1, [r5, #oS200F348_Index_00]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
+
 	bl sub_803FC14
+
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803FB50: .word off_803FB54
-off_803FB54: .word sub_803FB64+1
-	.word playGameOver_803FB9C+1
+off_803FB54: 
+  // 0x00
+  .word sub_803FB64+1 // (self: *mut S200F348 $r5) -> ()
+  // 0x04
+	.word playGameOver_803FB9C+1 // (self: *mut S200F348 $r5) -> ()
+  // 0x08
 	.word sub_803FBC2+1
-off_803FB60: .word byte_200F348
+off_803FB60: .word eS200F348
 	thumb_func_end cb_803FB3C
 
 	thumb_local_start
-sub_803FB64:
+sub_803FB64: // (self: *mut S200F348 $r5) -> ()
 	push {lr}
+
 	bl chatbox_8040818
+
 	mov r0, #0xf
 	bl sub_80015FC
+
 	bl copyTileData_803FC64
+
 	ldr r0, dword_803FB98 // =0x1f40
 	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+
 	bl renderInfo_8001788 // () -> ()
+
 	bl renderInfo_80017A0 // () -> ()
+
 	bl sub_803FBE8
+
 	mov r0, #8
 	mov r1, #0x20 
 	bl SetScreenFade // (int a1, int a2) -> void
+
+  // trigger playGameOver_803FB9C via cb_803FB3C
 	mov r0, #4
-	strb r0, [r5]
+	strb r0, [r5, #oS200F348_Index_00]
+
 	mov r0, #0xb4
-	strh r0, [r5,#4]
+	strh r0, [r5,#oS200F348_DownCounter]
+
 	pop {pc}
 	.balign 4, 0
 dword_803FB98: .word 0x1F40
 	thumb_func_end sub_803FB64
 
 	thumb_local_start
-playGameOver_803FB9C:
+playGameOver_803FB9C: // (self: *mut S200F348 $r5) -> ()
 	push {lr}
-	ldrh r0, [r5,#4]
+
+	ldrh r0, [r5,#oS200F348_DownCounter]
 	sub r0, #1
-	strh r0, [r5,#4]
+	strh r0, [r5,#oS200F348_DownCounter]
+
 	beq loc_803FBB4
+
 	mov r1, #0xaf
 	cmp r0, r1
 	bne locret_803FBC0
+
 	mov r0, #SONG_GAME_OVER
 	bl PlayMusic // (song: u8) -> ()
 	b locret_803FBC0
+
 loc_803FBB4:
 	mov r0, #0xc
 	mov r1, #8
 	bl SetScreenFade // (int a1, int a2) -> void
+
+  // trigger sub_803FBC2 via cb_803FB3C
 	mov r0, #8
-	strb r0, [r5]
+	strb r0, [r5, #oS200F348_Index_00]
+
 locret_803FBC0:
 	pop {pc}
 	thumb_func_end playGameOver_803FB9C
@@ -13241,14 +13316,21 @@ locret_803FBC0:
 	thumb_local_start
 sub_803FBC2:
 	push {lr}
+
 	bl IsScreenFadeActive // () -> zf
 	beq locret_803FBE0
+
 	bl sub_8006910
+
 	bl startScreen_init_802F530 // () -> void
+
 	bl clear_e200AD04 // () -> ()
+
 	bl init_eStartScreenAnimationControl200B1A0_2
+
 	ldr r0, off_803FBE4 // =0x40
 	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+
 locret_803FBE0:
 	pop {pc}
 	.balign 4, 0

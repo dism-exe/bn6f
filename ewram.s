@@ -797,7 +797,7 @@ unk_200A284:: // 0x200a284
 	.space 4
 
 	.space 8
-byte_200A290:: // 0x200a290
+eS200A290:: // 0x200a290
 	.space 1
 byte_200A291:: // 0x200a291
 	.space 2
@@ -1174,8 +1174,9 @@ unk_200EF40:: // 0x200ef40
 	.space 1024
 dword_200F340:: // 0x200f340
 	.space 8
-byte_200F348:: // 0x200f348
-	.space 8
+// 0x200f348
+eS200F348::
+  s_200F348_struct eS200F348
 dword_200F350:: // 0x200f350
 	.space 16
 eStruct200F360:: // 0x200f360
@@ -1602,8 +1603,8 @@ word_2010CD6:: // 0x2010cd6
 	.space 4
 word_2010CDA:: // 0x2010cda
 	.space 2854
-eS2011800:: // 0x2011800
-  s_2011800_struct eS2011800
+eLogoScreenState:: // 0x2011800
+  LogoScreenState_struct LogoScreenState
 unused_2011808:: // 0x2011808
 	.space 88
 byte_2011860:: // 0x2011860
@@ -2410,7 +2411,7 @@ byte_202AF00:: // 0x202af00
 	.space 2816
 eDecomp202BA00:: // 0x202ba00
 	.space 4
-eTextScript202BA04:: // *mut TextScriptArchive
+eTextScript202BA04:: // TextScriptArchive
 	.space 4092
 unk_202CA00:: // 0x202ca00
 	.space 512
@@ -2431,7 +2432,7 @@ byte_202D800:: // 0x202d800
 eDecompressedTextArchive202DA00:: // 0x202da00
 	.space 4
 // 0x202da04
-eTextScript202DA04:: // *mut TextScriptArchive
+eTextScript202DA04:: // TextScriptArchive
 	.space 508
 byte_202DC00:: // 0x202dc00
 	.space 512
@@ -2534,7 +2535,7 @@ word_2033042:: // 0x2033042
 DecompressionBuf2033400:: // 0x2033400
 	.space 4
 // 0x2033404
-eTextScript2033404:: // *mut TextScriptArchive
+eTextScript2033404:: // TextScriptArchive
 	.space 764
 unk_2033700:: // 0x2033700
 	.space 256
@@ -2544,7 +2545,7 @@ unk_203381C:: // 0x203381c
 	.space 484
 unk_2033A00:: // 0x2033a00
 	.space 4
-reqBBS_eTextScript:: // *mut TextScriptArchive
+reqBBS_eTextScript:: // TextScriptArchive
 	.space 508
 unk_2033C00:: // 0x2033c00
 	.space 44

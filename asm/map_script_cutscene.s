@@ -2421,7 +2421,7 @@ StartCutscene: // (script: *const CutsceneScript, param: u32) -> ()
 	str r0, [r5,#oCutsceneState_CutsceneScriptPos2] // s_02011C50.ptr_20
 	str r0, [r5,#oCutsceneState_CutsceneScriptPos3] // s_02011C50.ptr_24
 	str r0, [r5,#oCutsceneState_CutsceneScriptPos4] // s_02011C50.ptr_28
-	ldr r0, =eTextScript202DA04 // *mut TextScriptArchive
+	ldr r0, =eTextScript202DA04 // TextScriptArchive
 	str r0, [r5,#oCutsceneState_TextArchivePtr] // s_02011C50.ptr_30
 	ldr r0, =off_8036EC4
 	str r0, [r5,#oCutsceneState_Unk_34] // s_02011C50.ptr_34

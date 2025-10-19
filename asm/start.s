@@ -3,7 +3,8 @@
 GameEntryPoint:
 	b _GameEntryPoint
 	.balign 4, 0
-GameHeader: .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B2411
+GameHeader:
+  .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B2411
 	.word 0x217F81C0, 0x19BE52A3, 0x20CE0993, 0x4A4A4610, 0xEC3127F8
 	.word 0x33E8C758, 0xBFCEE382, 0x94DFF485, 0xC1094BCE, 0xC08A5694
 	.word 0xFCA77213, 0x734D849F, 0x619ACAA3, 0x27A39758, 0x769803FC
@@ -156,7 +157,7 @@ SetInterruptCallback:
 	bx r2
 	pop {r0}
 	bx r0
-off_8000258: .word _SetInterruptCallback+1 // (int interruptIdx, void *callback) -> void
+off_8000258: .word _SetInterruptCallback+1 // (interrupt_idx: u8, callback: *const ()) -> ()
 	thumb_func_end SetInterruptCallback
 
 	thumb_local_start

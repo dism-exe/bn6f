@@ -11,7 +11,7 @@ void __noreturn main_()
     main_initToolkitAndOtherSubsystems();
     SeedRNG();
     clear_e200AD04();
-    init_803D1A8();
+    logoScreen_init_803D1A8();
     while ( 1 )
     {
         main_pollGeneralLCDStatus_STAT_LYC_();
@@ -211,7 +211,7 @@ void __cdecl main_initToolkitAndOtherSubsystems()
     sub_80467D8();
     LOWORD(dword_2009930) = 1;
     ZeroFillByWord(tk->jo_gameSubsysSel, 8);
-    init_803D1A8();
+    logoScreen_init_803D1A8();
     init_eStartScreenAnimationControl200B1A0_2();
 }
 

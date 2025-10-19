@@ -2410,7 +2410,7 @@ signed int __fastcall sub_8048F9C(__int16 a1, int a2, int a3, int a4)
     signed int result; // r0
 
     v5 = a1;
-    ZeroFillByWord(&byte_200A290, &loc_1B0);
+    ZeroFillByWord(&eS200A290, &loc_1B0);
     **v4 = 48;
     word_200A2B2 = v5;
     word_200A2B4 = 8;
@@ -2423,7 +2423,7 @@ signed int __fastcall sub_8048F9C(__int16 a1, int a2, int a3, int a4)
 // 0x8048fc4
 int sub_8048FC4()
 {
-    return byte_200A290;
+    return eS200A290;
 }
 
 
@@ -2433,7 +2433,7 @@ signed int cb_8048FD4()
     signed int result; // r0
     char v1; // zf
 
-    (*(&off_8048FF8 + byte_200A290))();
+    (*(&off_8048FF8 + eS200A290))();
     result = IsCurSubsystemInUse();
     if ( v1 )
         result = sub_803C59C(218, 2);
@@ -3764,7 +3764,7 @@ signed int __fastcall sub_8049DDC(__int16 a1, int a2, int a3, int a4)
     signed int result; // r0
 
     v5 = a1;
-    ZeroFillByWord(&byte_200A290, &loc_1B0);
+    ZeroFillByWord(&eS200A290, &loc_1B0);
     **v4 = 76;
     word_200A2B2 = v5;
     word_200A2B4 = 8;
@@ -3777,7 +3777,7 @@ signed int __fastcall sub_8049DDC(__int16 a1, int a2, int a3, int a4)
 // 0x8049e04
 int cb_8049E04()
 {
-    return (*(&off_8049E18 + byte_200A290))();
+    return (*(&off_8049E18 + eS200A290))();
 }
 
 

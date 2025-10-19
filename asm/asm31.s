@@ -8505,7 +8505,7 @@ sub_80BC1DA:
 	beq loc_80BC1FE
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldrb r0, [r0,#oBattleState_Unk_01]
+	ldrb r0, [r0,#oBattleState_Index_01]
 	cmp r0, #0xc
 	bne loc_80BC1FE
 	ldrb r0, [r5,#oObjectHeader_Flags]
@@ -18923,7 +18923,7 @@ sub_80C0FE8:
 	beq loc_80C100C
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldrb r0, [r0,#oBattleState_Unk_01]
+	ldrb r0, [r0,#oBattleState_Index_01]
 	cmp r0, #0xc
 	bne loc_80C100C
 	ldrb r0, [r5,#oObjectHeader_Flags]
