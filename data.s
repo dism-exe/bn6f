@@ -598,12 +598,12 @@ comp_86C2E2C::
 	.incbin "data/compressed/comp_86C2E2C.lz77"
 comp_86C33B4::
 	.incbin "data/compressed/comp_86C33B4.lz77"
-comp_86C3528::
-	.incbin "data/compressed/comp_86C3528.lz77"
+CompCapcomLogoTileset_86C3528::
+	.incbin "data/compressed/CompCapcomLogoTileset_86C3528.lz77"
 dat38_61::
 	.include "data/dat38_61.s"
-comp_86C3E94::
-	.incbin "data/compressed/comp_86C3E94.lz77"
+CompCapcomLogoTilemap_86C3E94::
+	.incbin "data/compressed/CompCapcomLogoTilemap_86C3E94.lz77"
 dat38_62::
 	.include "data/dat38_62.s"
 comp_86C41D0::

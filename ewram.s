@@ -1825,7 +1825,7 @@ unk_2013C40:: // 0x2013c40
 	.space 960
 unk_2014000:: // 0x2014000
 	.space 2560
-unk_2014A00:: // 0x2014a00
+eDecompBuffer2014A00:: // 0x2014a00
 	.space 4096
 unk_2015A00:: // 0x2015a00
 	.space 1024

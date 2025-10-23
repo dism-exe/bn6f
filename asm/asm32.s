@@ -21650,7 +21650,7 @@ loc_8119A76:
 	ldr r3, off_8119A9C // =loc_8119904
 	mov r4, #0xa
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r2,r5}
 	ldrb r0, [r5,#4]
 	tst r0, r0
@@ -21677,7 +21677,7 @@ loc_8119AA6:
 	mov r2, #0
 	mov r4, #1
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r0-r4}
 	sub r2, #1
 	bgt loc_8119ABA
@@ -30949,7 +30949,7 @@ CopyBackgroundTiles_PET_811EF70:
 	ldr r3, off_811EF88 // =PET_Gfx_tileIds
 	mov r4, #0x1e
 	mov r5, #0x14
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4,r5,r7,pc}
 	.balign 4, 0
 off_811EF88: .word PET_Gfx_tileIds
@@ -31505,7 +31505,7 @@ loc_811F598:
 	mov r2, #0
 	mov r4, #9
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	ldr r3, [sp]
 	sub r3, #1
 	str r3, [sp]
@@ -34271,7 +34271,7 @@ loc_81209B2:
 	mov r3, r7
 	mov r4, #0xb
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	add sp, sp, #0x14
 	pop {r4-r7,pc}
 	thumb_func_end sub_8120900

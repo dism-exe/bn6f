@@ -311,7 +311,7 @@ off_8069C80: .word palette_3001960
 	.word byte_8614424
 	.word 0x8
 	.word 0x1
-off_8069E10: .word unk_3001980
+off_8069E10: .word palette_3001980
 	.word 0x20
 	.word 0xFFFF0200
 	.word byte_85B8244

@@ -1035,7 +1035,7 @@ sub_809A360:
 	ldr r3, off_809A3A4 // =byte_86C54D4 
 	mov r4, #9
 	mov r5, #5
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	// j
 	add r0, r7, #1
 	// i
@@ -1046,7 +1046,7 @@ sub_809A360:
 	ldr r3, off_809A3A8 // =byte_8099E5C
 	mov r4, #7
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	ldr r0, off_809A3AC // =TextScriptChipTrader86C580C
 	mov r1, #0x40 
 	ldr r2, off_809A3B0 // =unk_200EF40 
@@ -1624,7 +1624,7 @@ sub_809A80C:
 	ldr r3, off_809A850 // =tileIds86C5790
 	mov r4, #9
 	mov r5, #5
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	// j
 	add r0, r7, #2
 	// i
@@ -1635,7 +1635,7 @@ sub_809A80C:
 	ldr r3, off_809A854 // =tileIds8099E78
 	mov r4, #6
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 
 	ldr r0, off_809A858 // =eTextScript2033404 // TextScriptArchive
 	mov r1, #6

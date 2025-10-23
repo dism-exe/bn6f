@@ -1127,7 +1127,7 @@ sub_800C0BA:
 	mov r2, #2
 	mov r4, #5
 	mov r5, #3
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	add sp, sp, #0x28
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -1167,7 +1167,7 @@ sub_800C100:
 	mov r3, r6
 	mov r4, #5
 	mov r5, #1
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	add sp, sp, #0x28
 	pop {r4-r7,pc}
 	thumb_func_end sub_800C100
@@ -1200,7 +1200,7 @@ sub_800C138:
 	mov r3, r6
 	mov r4, #5
 	mov r5, #1
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	add sp, sp, #0x28
 	pop {r4-r7,pc}
 	.balign 4, 0

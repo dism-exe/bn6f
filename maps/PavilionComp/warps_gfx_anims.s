@@ -42,7 +42,7 @@ off_806A810: .word palette_3001960
 	.word byte_8614D80
 	.word 0x20
 	.word 0x1
-off_806A870: .word unk_3001980
+off_806A870: .word palette_3001980
 	.word 0x20
 	.word 0xFFFF0100
 	.word byte_85D053C

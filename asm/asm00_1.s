@@ -8435,7 +8435,7 @@ sub_80075CA:
 	.balign 4, 0
 dataList: .word off_80075F0
 off_80075F0: .word dword_86E08F8
-	.word unk_3001980
+	.word palette_3001980
 	.word 0x100
 	.word dword_86E09F8
 	.word palette_3001960

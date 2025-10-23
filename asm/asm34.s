@@ -12,7 +12,7 @@ sub_812D378:
 	ldr r3, off_812D3A0 // =unk_201D620 
 	mov r4, #0x1e
 	mov r5, #0x14
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	mov r0, #0x1e
 	neg r0, r0
 	// i
@@ -23,7 +23,7 @@ sub_812D378:
 	ldr r3, off_812D3A4 // =unk_201DB20 
 	mov r4, #0x3c 
 	mov r5, #0x11
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_812D3A0: .word unk_201D620
@@ -76,7 +76,7 @@ sub_812D3E4:
 	ldr r3, off_812D4C8 // =unk_202DFA0 
 	mov r4, #8
 	mov r5, #0xe
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_812D4C4 // =word_2023FA0 
 	ldr r2, off_812D4CC // =unk_202E080 
@@ -90,7 +90,7 @@ sub_812D3E4:
 	ldr r3, off_812D4CC // =unk_202E080 
 	mov r4, #2
 	mov r5, #0xe
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_812D4C4 // =word_2023FA0 
 	ldr r2, off_812D4D8 // =unk_202E0B8 
@@ -107,7 +107,7 @@ sub_812D3E4:
 	ldr r3, off_812D4D8 // =unk_202E0B8 
 	mov r4, #2
 	mov r5, #0xe
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_812D4C4 // =word_2023FA0 
 	ldr r2, off_812D4E4 // =unk_202E0F0 
@@ -123,7 +123,7 @@ sub_812D3E4:
 	ldr r3, off_812D4E4 // =unk_202E0F0 
 	mov r4, #1
 	mov r5, #0xe
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_812D4C4 // =word_2023FA0 
 	ldr r2, off_812D4EC // =byte_202E10C 
@@ -139,7 +139,7 @@ sub_812D3E4:
 	ldr r3, off_812D4EC // =byte_202E10C 
 	mov r4, #2
 	mov r5, #0xe
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_812D4C4 // =word_2023FA0 
 	ldr r2, off_812D4F4 // =byte_202E144 
@@ -155,7 +155,7 @@ sub_812D3E4:
 	ldr r3, off_812D4F4 // =byte_202E144 
 	mov r4, #2
 	mov r5, #0xe
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	bl sub_812D5EC
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -550,7 +550,7 @@ sub_812D78C:
 	ldr r3, off_812D7A0 // =unk_20227A0 
 	mov r4, #8
 	mov r5, #0x11
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	thumb_func_end sub_812D78C
 
 	pop {r4-r7,pc}
@@ -732,7 +732,7 @@ sub_812D8C8:
 	ldr r3, off_812D914 // =dword_201E420 
 	mov r4, #0x1e
 	mov r5, #0x14
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	mov r5, r7
 	bl sub_812D52E
 	ldrh r0, [r5,#0x2a]
@@ -824,7 +824,7 @@ loc_812D970:
 	mov r2, #2
 	mov r4, #8
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	thumb_func_start sub_812D99C

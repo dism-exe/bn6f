@@ -839,7 +839,7 @@ sub_8038F9C:
 	ldr r3, off_8038FB0 // =byte_8038700
 	mov r4, #0x17
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8038FB0: .word byte_8038700
@@ -1032,7 +1032,7 @@ sub_8039180:
 	ldr r3, off_8039194 // =unk_2018A00
 	mov r4, #0x20
 	mov r5, #5
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8039194: .word unk_2018A00
@@ -3081,7 +3081,7 @@ loc_803A482:
 	ldr r3, off_803A4C8 // =reqBBS_requestInfo_textOffsets
 	mov r4, #0xe
 	mov r5, #4
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r5}
 	ldrb r0, [r5,#0x1b]
 	mov r1, #0x70
@@ -3098,7 +3098,7 @@ loc_803A482:
 	ldr r3, off_803A4CC // =unk_2029E04
 	mov r4, #0xe
 	mov r5, #4
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803A4C8: .word reqBBS_requestInfo_textOffsets
@@ -3640,7 +3640,7 @@ loc_803A8CC:
 	ldr r3, [r3,r6]
 	mov r4, #2
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end sub_803A8B4
 
@@ -3668,7 +3668,7 @@ loc_803A8F8:
 	ldr r3, [r3,r7]
 	mov r4, #2
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803A90C: .word off_803A910
@@ -4887,7 +4887,7 @@ initRefs_803B404: .word comp_87E50D4 + 1<<31
 	.word 0x600D600
 	.word unk_2027A00
 	.word dword_87E54B0
-	.word unk_3001980
+	.word palette_3001980
 	.word 0xA0
 	.word byte_86A4D40
 	.word 0x6010020
@@ -5079,7 +5079,7 @@ sub_803B674:
 	lsl r4, r4, #1
 	ldrb r5, [r7,#4]
 	lsl r5, r5, #1
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803B6A4: .word unk_2030A00
@@ -7718,7 +7718,7 @@ copyData_803CC60:
 	add r3, #4
 	mov r4, #0x1e
 	mov r5, #0x14
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803CC84: .word initRefs803CC88
@@ -8525,26 +8525,38 @@ off_803D1F8: .word LogoScreenState
 	thumb_local_start
 sub_803D1FC: // (self: *mut LogoScreenState $r5) -> ()
 	push {lr}
+
 	mov r0, #0xe
 	bl sub_80015FC
+
 	mov r4, #0xc
 	ldr r0, off_803D244 // =0x40
-	ldrb r1, [r5,#5]
+
+	ldrb r1, [r5,#oLogoScreenState_Unk_05]
 	tst r1, r1
 	beq loc_803D212
+
 	mov r4, #4
 	ldr r0, off_803D248 // =0xc0
+
 loc_803D212:
+
 	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+
 	bl renderInfo_8001788 // () -> ()
 	bl renderInfo_80017A0 // () -> ()
+
 	mov r0, r4
 	mov r1, #0xff
 	bl SetScreenFade // (int a1, int a2) -> void
+
 	bl sub_8005F40
+
 	bl sub_8005F6C
+
 	bl sub_80027C4
-	bl copyTileData_803D2B8
+
+	bl logoScreen_loadLogoTiles_803D2B8
 
 	mov r0, #0x63
 	bl music_80005F2 // (bg_music_indicator: u8) -> ()
@@ -8632,14 +8644,20 @@ logoScreen_finish_803D2A6: // (self: *const LogoScreenState $r5) -> ()
 off_803D2B4: .word 0x40
 	thumb_func_end logoScreen_finish_803D2A6
 
+// Disabling this causes logo screen to be all black. No graphics are loaded.
 	thumb_local_start
-copyTileData_803D2B8:
+logoScreen_loadLogoTiles_803D2B8:
 	push {r4-r7,lr}
+
 	bl zeroFillVRAM // () -> ()
+
 	bl ZeroFillGFX30025c0
+
 	// initRefs
 	ldr r0, off_803D2EC // =initRefs803D2F0
 	bl decompAndCopyData // (u32 *initRefs) -> void
+
+  // Disabling this causes "Capcom" in the logo screen to disappear
 	// j
 	mov r0, #0
 	// i
@@ -8651,7 +8669,9 @@ copyTileData_803D2B8:
 	add r3, #4
 	mov r4, #0x20
 	mov r5, #0x14
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
+
+  // Disabling this causes the license message in the logo screen to disappear
 	// j
 	mov r0, #8
 	// i
@@ -8659,29 +8679,49 @@ copyTileData_803D2B8:
 	// tileBlock32x32
 	mov r2, #2
 	// tileIds
-	ldr r3, off_803D330 // =dword_86C41B4
+	ldr r3, off_803D330 // =CapcomLogoLicenseTilemap_86C41B4
 	mov r4, #0xe
 	mov r5, #1
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
+
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803D2EC: .word initRefs803D2F0
-initRefs803D2F0: .byte 0x28, 0x35, 0x6C, 0x88, 0x20, 0x0, 0x0, 0x6
-	.word unk_2014A00
-	.word comp_86C3E94 + 1<<31
-	.word 0x0
-off_803D304: .word eDecompBuffer2013A00
-	.word byte_86C3C94
+off_803D2EC: 
+  .word initRefs803D2F0
+initRefs803D2F0: 
+  // 0x00
+  // Disabling this causes Capcom Logo to disappear
+  .word CompCapcomLogoTileset_86C3528 + COMPRESSED_PTR_FLAG
+  .word 0x06000020
+	.word eDecompBuffer2014A00
+  // 0x01
+	.word CompCapcomLogoTilemap_86C3E94 + 1<<31
+	.word NULL
+off_803D304: 
+  // also part of initRefs803D2F0
+  .word eDecompBuffer2013A00
+  // 0x02
+  // Disabling this causes Capcom logo to disappear
+  // 0x20 -> 0x10 produces glitchy blue palette for Capcom logo
+	.word CapcomLogoPalette_86C3C94
 	.word palette_3001960
 	.word 0x20
-	.word byte_86C3FD4
+  // 0x03
+  // Disabling this causes Capcom license message to disappear
+  // 0x1C0 -> 0x0C0 causes only the "LICENSE" part to be loaded of the message
+	.word CapcomLogoLicenseTileset_86C3FD4
 	.word 0x6001000
-	.word 0x1C0
-	.word byte_86C4194
-	.word unk_3001980
+	.word 0x1C0 // 14 tiles (each tile being 0x20 bytes)
+  // 0x04
+  // Disabling this causes Capcom license message to disappear
+  // 0x20 -> 0x05 causes the capcom license message to get a red shadow
+	.word CapcomLogoLicensePalette_86C4194
+	.word palette_3001980
 	.word 0x20
-	.word 0x0
-off_803D330: .word dword_86C41B4
+  // 0x05
+	.word NULL
+off_803D330: 
+  .word CapcomLogoLicenseTilemap_86C41B4
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -8840,7 +8880,7 @@ off_803DC78: .word eStruct2036780
 	.word unk_201F320
 	.word unk_201F5A0
 	.word 0x0
-	thumb_func_end copyTileData_803D2B8
+	thumb_func_end logoScreen_loadLogoTiles_803D2B8
 
 	thumb_func_start sub_803DCD8
 sub_803DCD8:
@@ -13418,7 +13458,7 @@ copyTileData_803FC64:
 	ldr r3, off_803FCDC // =eTileIds2018A04
 	mov r4, #0x20
 	mov r5, #0x14
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	// j
 	mov r0, #0
 	// i
@@ -13429,7 +13469,7 @@ copyTileData_803FC64:
 	ldr r3, off_803FCD8 // =eTileIds2017A04
 	mov r4, #0x1e
 	mov r5, #0x14
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r5,pc}
 	.balign 4, 0
 off_803FCA0: .word initRefs803FCA4

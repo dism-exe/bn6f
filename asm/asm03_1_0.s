@@ -813,7 +813,7 @@ loc_8033EFC:
 	ldr r3, off_8033F4C // =byte_8033F50
 	mov r4, #0xc
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 locret_8033F32:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -1304,7 +1304,7 @@ loc_80343D0:
 	ldr r3, off_803445C // =eTileIds2017A04
 	mov r4, #0x20
 	mov r5, #0x14
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
 	pop {r4-r7,pc}

@@ -11663,7 +11663,7 @@ void __noreturn sub_803D1FC()
     sub_8005F40(v3, v4, v5, v6);
     sub_8005F6C();
     v7 = sub_80027C4();
-    copyTileData_803D2B8(v7, v8, v9, v10);
+    logoScreen_loadLogoTiles_803D2B8(v7, v8, v9, v10);
 }
 
 
@@ -11740,7 +11740,7 @@ int logoScreen_finish_803D2A6()
 
 
 // 0x803d2b8
-void __fastcall __noreturn copyTileData_803D2B8(int a1, int a2, int a3, int a4)
+void __fastcall __noreturn logoScreen_loadLogoTiles_803D2B8(int a1, int a2, int a3, int a4)
 {
     zeroFillVRAM();
     ZeroFillGFX30025c0();

@@ -855,7 +855,7 @@ chatbox_CopyBackgroundTiles_8040344:
 	// dimensions
 	ldrb r4, [r5,#oChatbox_CurTileWidth16]
 	ldrb r5, [r5,#oChatbox_CurTileHeight16]
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r5}
 	pop {pc}
 	.balign 4, 0x00

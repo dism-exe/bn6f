@@ -25280,7 +25280,7 @@ sub_801C416:
 	ldr r3, tileIds // =byte_801D904
 	mov r4, #0xa
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	ldr r0, dword_801C45C // =0x40780090 
 	ldr r1, dword_801C460 // =0x9768 
 	mov r2, #1
@@ -25765,7 +25765,7 @@ loc_801C806:
 	add r3, sp, #0xc
 	mov r4, #9
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 loc_801C818:
 	add sp, sp, #0x30
 	pop {r4-r7,pc}
@@ -25933,7 +25933,7 @@ loc_801C92A:
 	mov r3, r6
 	mov r4, #4
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r5}
 	ldrb r0, [r5,#3]
 	lsl r0, r0, #5
@@ -26009,7 +26009,7 @@ sub_801C9C8:
 	mov r2, #3
 	mov r4, #4
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4,r5,pc}
 	.balign 4, 0
 off_801C9E0: .word byte_801D964
@@ -26085,7 +26085,7 @@ sub_801CA34:
 	mov r4, #8
 	add r4, r4, r6
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	b locret_801CA72
 loc_801CA5E:
 	mov r0, #0x16
@@ -26149,7 +26149,7 @@ loc_801CAAE:
 	mov r4, #9
 	mov r5, #2
 	push {r1}
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r1}
 	add r1, #2
 	add r6, #2
@@ -26869,7 +26869,7 @@ loc_801D070:
 	mov r2, #3
 	mov r4, #2
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4-r7}
 	ldrh r0, [r7,#0xc]
 	bl sub_801D12A
@@ -26935,7 +26935,7 @@ loc_801D0FE:
 	mov r3, sp
 	mov r4, #4
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r0-r3}
 	// j
 	mov r0, #0x11
@@ -26947,7 +26947,7 @@ loc_801D0FE:
 	mov r3, sp
 	mov r4, #4
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r0-r3}
 locret_801D128:
 	pop {r4-r7,pc}
@@ -27140,7 +27140,7 @@ sub_801D2A4:
 	ldr r3, off_801D340 // =byte_801D9B4
 	mov r4, #0x1c
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r5}
 	ldr r0, [r5,#0x48]
 	ldrb r0, [r0,#0x16]
@@ -27753,7 +27753,7 @@ loc_801D7B8:
 	mov r3, r6
 	mov r4, #4
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r5}
 	mov r4, #0x52 
 	ldrb r0, [r5,r4]
@@ -28425,7 +28425,7 @@ sub_801DDF6:
 	ldr r3, off_801DEBC // =word_801ED6C 
 	mov r4, #0x12
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	mov r0, #1
 	mov r1, #4
 	lsl r0, r1
@@ -28467,7 +28467,7 @@ sub_801DE3C:
 	ldr r3, off_801DEBC // =word_801ED6C 
 	mov r4, #0x12
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	mov r0, #1
 	mov r1, #5
 	lsl r0, r1
@@ -28518,7 +28518,7 @@ loc_801DE8C:
 	ldr r3, off_801DEC0 // =word_801EDB4 
 	mov r4, #0x12
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	mov r0, #1
 	mov r1, #0x11
 	lsl r0, r1
@@ -28751,7 +28751,7 @@ sub_801E03E:
 	ldr r3, off_801E05C // =byte_801EDFC
 	mov r4, #6
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	mov r0, #1
 	lsl r0, r0, #7
 	bl sub_801BEB8
@@ -28790,7 +28790,7 @@ sub_801E07C:
 	ldr r3, off_801E09C // =byte_801EDFC
 	mov r4, #6
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	mov r0, #1
 	lsl r0, r0, #0x17
 	bl sub_801BEB8
@@ -29002,7 +29002,7 @@ loc_801E20A:
 	mov r4, #0x11
 	sub r4, r4, r6
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	mov r0, #1
 	lsl r0, r0, #8
 	bl sub_801BEB8
@@ -29198,7 +29198,7 @@ sub_801E376:
 	ldr r3, off_801E394 // =byte_801EE78
 	mov r4, #8
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	mov r0, #1
 	lsl r0, r0, #0xb
 	bl sub_801BEB8
@@ -29260,7 +29260,7 @@ sub_801E3E4:
 	ldr r3, off_801E404 // =byte_801EF10
 	mov r4, #8
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	ldr r0, dword_801E400 // =0x100000 
 	bl sub_801BEB8
 	pop {r4,r5,pc}
@@ -29453,7 +29453,7 @@ loc_801E554:
 	sub r0, r0, r4
 	add r4, #1
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4}
 loc_801E560:
 	add r7, #2
@@ -30270,7 +30270,7 @@ sub_801EB7C:
 	ldr r3, off_801EB98 // =byte_801EE98
 	mov r4, #0x1e
 	mov r5, #2
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	mov r0, #1
 	lsl r0, r0, #0x12
 	bl sub_801BEB8

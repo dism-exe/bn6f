@@ -911,66 +911,107 @@ locret_8000B2E:
 //   .word src | 1<<32
 //   .word
 //   .word dest
+
+// For compressed tuple3[0] case, decompresses tuple3[0] into tuple3[2] and then 
+// copies content from tuple3[2] into tuple3[1] discounting the LZ77 data header. 
+// If tuple3[1] is NULL, the copying doesn't happen, only decompression from tuple3[0] to tuple3[2].
+// The copying into tuple3[1] is routed to an appropriate copy based on the number of bytes alignment.
+
+// For the uncompressed tuple3[0] case, it just copies tuple3[0] into tuple3[1] by tuple3[2] bytes, also routing to copies appropriately.
+// It terminates when it encounters a NULL after processing triplets.
 	thumb_func_start decompAndCopyData
 decompAndCopyData:
 	push {r4-r7,lr}
+
 	mov r7, r0
+
 loop_processArr_8000B34:
-	ldr r0, [r7]
+  // can be a compressed ptr
+	ldr r0, [r7,#0]
+
+  # NullStop check
 	tst r0, r0
 	beq ret_reachedTerminator_8000B8C
+  
+  // C flag is set on shifting compression bit
 	lsl r0, r0, #1
 	bcs isCompressedRef_8000B46
 	lsr r0, r0, #1
+
+  // copy dest
 	ldr r1, [r7,#4]
+
 	ldr r2, [r7,#8]
 	b switch_8000B5E
+
 isCompressedRef_8000B46:
-	// src: (a1[0]<<1)>>1 (carry flag) first itr
 	lsr r0, r0, #1
-	// dest: a1[2]
+
+  // 3rd is decompression dest
 	ldr r1, [r7,#8]
 	mov r4, r1
+
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
-	// dest
+
+  // 2nd in tuple can be null for compressed to skip additional copies
 	ldr r1, [r7,#4]
 	tst r1, r1
 	beq continue_advance3Elements_8000B88
-	// a1[1] != 0: perform additionaly copy operations
+  
+  // This is the portion after the LZ77 data header
 	add r0, r4, #4
+
+  // Loads first u32 from decomp buffer to get byte count
+  // LZ77 data header states
+  // Bit 8-31  Size of decompressed data
+  // Subtracts by four probably to discount the 32-bit header
 	ldr r2, [r4]
 	lsr r2, r2, #8
-	// halfwordCount
 	sub r2, #4
+  
 switch_8000B5E:
-	// determine operation based on enabled bits in a1[1]
+
+  // Determines whether r2 is aligned by 1, 2, 4 bytes (or else assumes 8) and routes to
+  // the appropriate copy function
+
 	mov r3, #1
 	tst r3, r2
 	bne bit0_set_8000B72
+
 	mov r3, #3
 	tst r3, r2
 	bne bit1_set_8000B78
+
+	// if any bit from 2 to 5 are set
 	mov r3, #0x1f
 	tst r3, r2
-	// if any bit from 2 to 5 are set
 	bne bits5to0_set_8000B7E
+
 	b default_8000B84
 bit0_set_8000B72:
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+
 	b continue_advance3Elements_8000B88
+
 bit1_set_8000B78:
 	// if bit 0 or bit 1 are set. Since bit 0 was checked already,
 	// this is for bit 1
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+
 	b continue_advance3Elements_8000B88
+
 bits5to0_set_8000B7E:
 	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
+
 	b continue_advance3Elements_8000B88
+
 default_8000B84:
 	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
+
 continue_advance3Elements_8000B88:
 	add r7, #0xc
 	b loop_processArr_8000B34
+
 ret_reachedTerminator_8000B8C:
 	pop {r4-r7,pc}
 	thumb_func_end decompAndCopyData
@@ -2890,7 +2931,7 @@ loc_80018A6:
 	thumb_func_start CopyBackgroundTiles
 // (int j, int i, int tileBlock32x32, u16 *tileIds, int j_size@R4, int i_size@R5) -> void
 // this is copying Tiles for BG0 and BG2
-CopyBackgroundTiles:
+CopyBackgroundTiles: // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	push {r6,r7,lr}
 	ldr r7, off_80018CC // =iCopyBackgroundTiles+1
 	mov lr, pc
@@ -4751,7 +4792,7 @@ loc_80024FE:
 	// i
 	mov r1, #0
 	lsr r5, r5, #3
-	bl CopyBackgroundTiles
+	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r0,r1}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_Unk200f3a0_Ptr]
