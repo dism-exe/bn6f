@@ -34,8 +34,10 @@ loc_8086F36:
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
 	.balign 4, 0
-off_8086F54: .word dword_8086F58
-dword_8086F58: .word 0x2030101
+off_8086F54:
+	.word dword_8086F58
+dword_8086F58:
+	.word 0x2030101
 	thumb_func_end sub_8086F18
 
 	thumb_func_start sub_8086F5C
@@ -73,9 +75,12 @@ loc_8086F7A:
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
 	.balign 4, 0
-off_8086F98: .word dword_8086F9C
-dword_8086F9C: .word 0x3020202
-off_8086FA0: .word off_8086D18
+off_8086F98:
+	.word dword_8086F9C
+dword_8086F9C:
+	.word 0x3020202
+off_8086FA0:
+	.word off_8086D18
 	thumb_func_end sub_8086F5C
 
 	thumb_func_start sub_8086FA4
@@ -103,8 +108,10 @@ loc_8086FC8:
 	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0
-off_8086FCC: .word byte_8086FD0
-byte_8086FD0: .byte 0xE1, 0x5, 0xE2, 0x5, 0xE3, 0x5, 0xC0, 0xF
+off_8086FCC:
+	.word byte_8086FD0
+byte_8086FD0:
+	.byte 0xE1, 0x5, 0xE2, 0x5, 0xE3, 0x5, 0xC0, 0xF
 	thumb_func_end sub_8086FA4
 
 	thumb_local_start
@@ -233,14 +240,22 @@ loc_80870F2:
 locret_80870F6:
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_80870F8: .word off_8086D1C+4
-off_80870FC: .word byte_8086D2C+4
-off_8087100: .word byte_8086D5C
-off_8087104: .word byte_8086D74
-off_8087108: .word byte_8086340+0x14
-off_808710C: .word byte_8086340+0x68
-off_8087110: .word byte_8086340+0xBC
-off_8087114: .word byte_8086460+8
+off_80870F8:
+	.word off_8086D1C+4
+off_80870FC:
+	.word byte_8086D2C+4
+off_8087100:
+	.word byte_8086D5C
+off_8087104:
+	.word byte_8086D74
+off_8087108:
+	.word byte_8086340+0x14
+off_808710C:
+	.word byte_8086340+0x68
+off_8087110:
+	.word byte_8086340+0xBC
+off_8087114:
+	.word byte_8086460+8
 	.word 0x13B
 	thumb_func_end sub_8086FD8
 
@@ -261,8 +276,10 @@ loc_8087130:
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	pop {pc}
 	.balign 4, 0
-off_8087138: .word byte_80868C8+0x20
-off_808713C: .word byte_8086678+0x20
+off_8087138:
+	.word byte_80868C8+0x20
+off_808713C:
+	.word byte_8086678+0x20
 	thumb_func_end sub_808711C
 
 	thumb_local_start

@@ -39,20 +39,30 @@ GreenTown_EnterMapGroup:
 	str r0, [r5,#oGameState_Unk_64]
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_805DF64: .word off_805DD24
-off_805DF68: .word unk_2037800
-off_805DF6C: .word off_805E1FC
-off_805DF70: .word off_805DF74
-off_805DF74: .word byte_805DF88
+off_805DF64:
+	.word off_805DD24
+off_805DF68:
+	.word unk_2037800
+off_805DF6C:
+	.word off_805E1FC
+off_805DF70:
+	.word off_805DF74
+off_805DF74:
+	.word byte_805DF88
 	.word dword_805DF90
 	.word byte_805DF94
 	.word byte_805DF9A
 	.word byte_805DFA0
-byte_805DF88: .byte 0x1C, 0x13, 0x18, 0x23, 0x1C, 0x9F, 0xFF, 0xFF
-dword_805DF90: .word 0xFFFF591C
-byte_805DF94: .byte 0x1C, 0x5A, 0x1C, 0x60, 0xFF, 0xFF
-byte_805DF9A: .byte 0x1C, 0x5D, 0x1C, 0x62, 0xFF, 0xFF
-byte_805DFA0: .byte 0xFF, 0xFF
+byte_805DF88:
+	.byte 0x1C, 0x13, 0x18, 0x23, 0x1C, 0x9F, 0xFF, 0xFF
+dword_805DF90:
+	.word 0xFFFF591C
+byte_805DF94:
+	.byte 0x1C, 0x5A, 0x1C, 0x60, 0xFF, 0xFF
+byte_805DF9A:
+	.byte 0x1C, 0x5D, 0x1C, 0x62, 0xFF, 0xFF
+byte_805DFA0:
+	.byte 0xFF, 0xFF
 	thumb_func_end GreenTown_EnterMapGroup
 
 	thumb_func_start GreenTown_LoadGFXAnims
@@ -64,21 +74,28 @@ GreenTown_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_805DFB0: .word off_805DFB4
-off_805DFB4: .word off_805DFC8
+off_805DFB0:
+	.word off_805DFB4
+off_805DFB4:
+	.word off_805DFC8
 	.word off_805DFD0
 	.word off_805DFD8
 	.word off_805DFE0
 	.word off_805DFE8
-off_805DFC8: .word off_805DE28
+off_805DFC8:
+	.word off_805DE28
 	.word 0xFFFFFFFF
-off_805DFD0: .word byte_805DE50
+off_805DFD0:
+	.word byte_805DE50
 	.word 0xFFFFFFFF
-off_805DFD8: .word byte_805DE78
+off_805DFD8:
+	.word byte_805DE78
 	.word 0xFFFFFFFF
-off_805DFE0: .word byte_805DEA8
+off_805DFE0:
+	.word byte_805DEA8
 	.word 0xFFFFFFFF
-off_805DFE8: .word byte_805DED8
+off_805DFE8:
+	.word byte_805DED8
 	.word 0xFFFFFFFF
 	thumb_func_end GreenTown_LoadGFXAnims
 
@@ -94,7 +111,8 @@ GreenTown_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_805E004: .word pt_805E008
+off_805E004:
+	.word pt_805E008
 pt_805E008:
 	// <endpool> <endfile>
 	.word byte_805E01C

@@ -51,7 +51,8 @@ split9BitsFromBitfield_8021AE0: // 8021AE0
 	and r0, r2 // r0 assumed to have bits 16-31 unset
 	pop {pc}
 	.balign 4, 0x00
-.Mask9Bits: .hword 0x01FF
+.Mask9Bits:
+	.hword 0x01FF
 	thumb_func_end split9BitsFromBitfield_8021AE0
 
 	thumb_func_start GiveChips
@@ -127,7 +128,8 @@ loc_8021B6E:
 	strb r1, [r0]
 	mov pc, lr
 	.balign 4, 0
-off_8021B74: .word 0x1E20
+off_8021B74:
+	.word 0x1E20
 	thumb_func_end addChipsToChipPackOffset_8021b5a
 
 // (int idx, int searchItem, int off) -> void*
@@ -274,8 +276,10 @@ loc_8021C48:
 	mov r0, r5
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8021C60: .word unk_20018EC
-dword_8021C64: .word 0x1FF
+off_8021C60:
+	.word unk_20018EC
+dword_8021C64:
+	.word 0x1FF
 	thumb_func_end sub_8021C02
 
 	thumb_func_start zeroFill_e2002230
@@ -289,7 +293,8 @@ zeroFill_e2002230:
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	.balign 4, 0
-dword_8021C78: .word 0xF00
+dword_8021C78:
+	.word 0xF00
 	thumb_func_end zeroFill_e2002230
 
 // (int chip_idx, int searchItem, int off) -> void*
@@ -378,7 +383,8 @@ loc_8021CF4:
 	mov r1, r5
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8021D04: .word 0x140
+off_8021D04:
+	.word 0x140
 	thumb_func_end sub_8021CA8
 
 	thumb_func_start sub_8021D08
@@ -442,22 +448,33 @@ sub_8021D36:
 	.balign 4, 0x00
 	thumb_func_end sub_8021D36
 
-off_8021D6C: .word unk_2000AF0
-off_8021D70: .word unk_2001184
-off_8021D74: .word unk_200119C
-off_8021D78: .word byte_20007D6
-off_8021D7C: .word byte_200083A
-off_8021D80: .word TextScriptJap8021D88
-off_8021D84: .word byte_8021D8A
+off_8021D6C:
+	.word unk_2000AF0
+off_8021D70:
+	.word unk_2001184
+off_8021D74:
+	.word unk_200119C
+off_8021D78:
+	.word byte_20007D6
+off_8021D7C:
+	.word byte_200083A
+off_8021D80:
+	.word TextScriptJap8021D88
+off_8021D84:
+	.word byte_8021D8A
 
 text_8021D88:
 	.include "data/textscript/TextScriptJap8021D88.s"
 	.word 0x0
 
-off_8021D94: .word unk_203A0A0
-off_8021D98: .word 0x2E0
-off_8021D9C: .word 0x170
-off_8021DA0: .word unk_203A0A0
+off_8021D94:
+	.word unk_203A0A0
+off_8021D98:
+	.word 0x2E0
+off_8021D9C:
+	.word 0x170
+off_8021DA0:
+	.word unk_203A0A0
 off_8021DA4:
 	// <endfile>
 	.word unk_203A0A0

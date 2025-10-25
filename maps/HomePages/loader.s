@@ -47,22 +47,32 @@ HomePages_EnterMapGroup:
 
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_806C294: .word off_806BFF8
-off_806C298: .word unk_2037800
-off_806C29C: .word off_806C2A0
-off_806C2A0: .word byte_806C2BC
+off_806C294:
+	.word off_806BFF8
+off_806C298:
+	.word unk_2037800
+off_806C29C:
+	.word off_806C2A0
+off_806C2A0:
+	.word byte_806C2BC
 	.word byte_806C2C2
 	.word byte_806C2CA
 	.word byte_806C2D0
 	.word 0x0
 	.word byte_806C2D6
 	.word byte_806C2DC
-byte_806C2BC: .byte 0x1C, 0x88, 0x1C, 0x98, 0xFF, 0xFF
-byte_806C2C2: .byte 0x1C, 0x6, 0x1C, 0x88, 0x18, 0x38, 0xFF, 0xFF
-byte_806C2CA: .byte 0x1C, 0x6, 0x1C, 0x88, 0xFF, 0xFF
-byte_806C2D0: .byte 0x1C, 0x6, 0x1C, 0x88, 0xFF, 0xFF
-byte_806C2D6: .byte 0x1C, 0x6, 0x1C, 0x88, 0xFF, 0xFF
-byte_806C2DC: .byte 0x1C, 0x6, 0x1C, 0x88, 0xFF, 0xFF
+byte_806C2BC:
+	.byte 0x1C, 0x88, 0x1C, 0x98, 0xFF, 0xFF
+byte_806C2C2:
+	.byte 0x1C, 0x6, 0x1C, 0x88, 0x18, 0x38, 0xFF, 0xFF
+byte_806C2CA:
+	.byte 0x1C, 0x6, 0x1C, 0x88, 0xFF, 0xFF
+byte_806C2D0:
+	.byte 0x1C, 0x6, 0x1C, 0x88, 0xFF, 0xFF
+byte_806C2D6:
+	.byte 0x1C, 0x6, 0x1C, 0x88, 0xFF, 0xFF
+byte_806C2DC:
+	.byte 0x1C, 0x6, 0x1C, 0x88, 0xFF, 0xFF
 	thumb_func_end HomePages_EnterMapGroup
 
 	thumb_func_start HomePages_LoadGFXAnims
@@ -74,31 +84,39 @@ HomePages_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_806C2F0: .word off_806C2F4
-off_806C2F4: .word off_806C310
+off_806C2F0:
+	.word off_806C2F4
+off_806C2F4:
+	.word off_806C310
 	.word off_806C31C
 	.word off_806C328
 	.word off_806C334
 	.word 0x0
 	.word off_806C344
 	.word off_806C350
-off_806C310: .word off_806C194
+off_806C310:
+	.word off_806C194
 	.word off_806C1DC
 	.word 0xFFFFFFFF
-off_806C31C: .word off_806C194
+off_806C31C:
+	.word off_806C194
 	.word off_806C1DC
 	.word 0xFFFFFFFF
-off_806C328: .word off_806C194
+off_806C328:
+	.word off_806C194
 	.word off_806C1DC
 	.word 0xFFFFFFFF
-off_806C334: .word off_806C194
+off_806C334:
+	.word off_806C194
 	.word off_806C1DC
 	.word off_806C20C
 	.word 0xFFFFFFFF
-off_806C344: .word off_806C194
+off_806C344:
+	.word off_806C194
 	.word off_806C1DC
 	.word 0xFFFFFFFF
-off_806C350: .word off_806C194
+off_806C350:
+	.word off_806C194
 	.word off_806C1DC
 	.word 0xFFFFFFFF
 	thumb_func_end HomePages_LoadGFXAnims
@@ -134,11 +152,9 @@ HomePages_LoadBGAnim: // () -> ()
 
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_806C390: .word JumpTable806C394
-JumpTable806C394: .word nullsub_39+1
-	.word BGScrollCB_BG3Diagonal3to2Scroll+1
-	.word nullsub_38+1
-	.word 0x800
+off_806C390:
+	.word JumpTable806C394
+JumpTable806C394:
 	.word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
@@ -152,6 +168,10 @@ JumpTable806C394: .word nullsub_39+1
 	.word nullsub_38+1
 	.word 0x800
 	.word nullsub_39+1
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
+	.word nullsub_39+1
 	.word nullsub_39+1
 	.word nullsub_38+1
 	.word 0x800
@@ -163,43 +183,50 @@ JumpTable806C394: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
 	.word 0x800
-off_806C404: .word off_806C408
-off_806C408: .word off_806C424
+off_806C404:
+	.word off_806C408
+off_806C408:
+	.word off_806C424
 	.word off_806C440
 	.word 0x0
 	.word off_806C45C
 	.word 0x0
 	.word off_806C478
 	.word off_806C494
-off_806C424: .word off_8614DE0
+off_806C424:
+	.word off_8614DE0
 	.word 0x6008020
 	.word dword_8615028
 	.word 0x1800
 	.word dword_86151BC
 	.word 0x3001960
 	.word 0x20
-off_806C440: .word off_8615360
+off_806C440:
+	.word off_8615360
 	.word 0x6008020
 	.word dword_86154A8
 	.word 0x1800
 	.word dword_86155E8
 	.word 0x3001960
 	.word 0x20
-off_806C45C: .word off_861578C
+off_806C45C:
+	.word off_861578C
 	.word 0x6008020
 	.word dword_861595C
 	.word 0x1800
 	.word 0x0
 	.word 0x0
 	.word 0x0
-off_806C478: .word off_8615BA4
+off_806C478:
+	.word off_8615BA4
 	.word 0x6008020
 	.word byte_8615D14
 	.word 0x1800
 	.word byte_8615E88
 	.word 0x3001960
 	.word 0x20
-off_806C494: .word off_861602C
+off_806C494:
+	.word off_861602C
 	.word 0x6008020
 	.word dword_8616264
 	.word 0x1800
@@ -227,8 +254,10 @@ HomePages_UnkFunction_806c4b0:
 	bx r7
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_806C4D8: .word off_806C4DC
-off_806C4DC: .word sub_806C4F8+1
+off_806C4D8:
+	.word off_806C4DC
+off_806C4DC:
+	.word sub_806C4F8+1
 	.word sub_806C514+1
 	.word NULL
 	.word sub_806C532+1
@@ -321,7 +350,8 @@ loc_806C584:
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	.balign 4, 0
-off_806C598: .word off_806C1C4
+off_806C598:
+	.word off_806C1C4
 	thumb_func_end sub_806C578
 
 	thumb_func_start HomePages_SpawnMapObjectsForMap
@@ -336,7 +366,8 @@ HomePages_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_806C5B0: .word pt_806C5B4
+off_806C5B0:
+	.word pt_806C5B4
 pt_806C5B4:
 	// <endpool>
 	.word byte_806C5D0

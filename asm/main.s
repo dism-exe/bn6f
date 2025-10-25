@@ -60,8 +60,10 @@ loc_800032A:
 
 	b main_gameRoutine
 	.balign 4, 0
-off_8000344: .word copyTo_iObjectAttr3001D70_3006814+1 // () -> void
-off_8000348: .word main_subsystemJumpTable
+off_8000344:
+	.word copyTo_iObjectAttr3001D70_3006814+1 // () -> void
+off_8000348:
+	.word main_subsystemJumpTable
 main_subsystemJumpTable: 
   // 0x00
   .word startscreen_render_802F544+1 // () ->
@@ -128,9 +130,12 @@ loc_80003A6:
 	pop {pc}
 	.balign 4, 0
 	.word dword_2009CC0
-off_80003C4: .word dword_200A870
-off_80003C8: .word dword_2009930
-off_80003CC: .word GeneralLCDStatus_STAT_LYC_
+off_80003C4:
+	.word dword_200A870
+off_80003C8:
+	.word dword_2009930
+off_80003CC:
+	.word GeneralLCDStatus_STAT_LYC_
 	thumb_func_end main_awaitFrame
 
 	thumb_local_start
@@ -144,7 +149,8 @@ loc_80003D6:
 	bne loc_80003D6
 	pop {pc}
 	.balign 4, 0
-off_80003E0: .word GeneralLCDStatus_STAT_LYC_
+off_80003E0:
+	.word GeneralLCDStatus_STAT_LYC_
 	thumb_func_end main_pollGeneralLCDStatus_STAT_LYC_
 
 	thumb_local_start
@@ -207,8 +213,10 @@ loc_8000438:
 	strh r4, [r0,#2]
 	mov pc, lr
 	.balign 4, 0
-off_800044C: .word KeyStatus
-dword_8000450: .word 0x3FF
+off_800044C:
+	.word KeyStatus
+dword_8000450:
+	.word 0x3FF
 	thumb_func_end main_static_80003E4
 
 	thumb_local_start
@@ -348,9 +356,12 @@ loc_80004C0:
 	bl init_eStartScreenAnimationControl200B1A0_1
 	pop {r5,pc}
 	.balign 4, 0
-off_8000564: .word 0x40
-off_8000568: .word 0xC0
-off_800056C: .word dword_2009930
+off_8000564:
+	.word 0x40
+off_8000568:
+	.word 0xC0
+off_800056C:
+	.word dword_2009930
 	thumb_func_end main_initToolkitAndOtherSubsystems
 
 	thumb_local_start
@@ -374,10 +385,13 @@ main_static_8000570:
 	strh r1, [r0]
 	pop {pc}
 	.balign 4, 0
-dword_800059C: .word 0x93040D
-off_80005A0: .word GeneralLCDStatus_STAT_LYC_
+dword_800059C:
+	.word 0x93040D
+off_80005A0:
+	.word GeneralLCDStatus_STAT_LYC_
 	.word off_3000E70
-off_80005A8: .word sub_3005D78+1
+off_80005A8:
+	.word sub_3005D78+1
 	thumb_func_end main_static_8000570
 
 /*For debugging purposes, connect comment at any range!*/

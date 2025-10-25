@@ -1410,8 +1410,10 @@ loc_8036086:
 	mov r12, r4
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803608C: .word MapScriptCommandJumptable
-off_8036090: .word eMapScriptState
+off_803608C:
+	.word MapScriptCommandJumptable
+off_8036090:
+	.word eMapScriptState
 	thumb_func_end RunSecondaryContinuousMapScript
 
 	thumb_local_start
@@ -1605,7 +1607,8 @@ off_80360E4:
 	.word NULL
 	.word NULL
 	.word NULL
-dword_80362A4: .word 0xFFFFFF00
+dword_80362A4:
+	.word 0xFFFFFF00
 	.word byte_804D0FC
 	.word 0xFFFFFF01
 	.word byte_804EA08
@@ -1623,7 +1626,8 @@ dword_80362A4: .word 0xFFFFFF00
 	.word dword_80665E4
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_80362EC: .word 0xFFFFFF00
+dword_80362EC:
+	.word 0xFFFFFF00
 	.word byte_804D0FC
 	.word 0xFFFFFF01
 	.word byte_804EA08
@@ -1641,7 +1645,8 @@ dword_80362EC: .word 0xFFFFFF00
 	.word dword_80665E4
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_8036334: .word 0xFFFFFF00
+dword_8036334:
+	.word 0xFFFFFF00
 	.word byte_804D0FC
 	.word 0xFFFFFF01
 	.word byte_804EA08
@@ -1665,7 +1670,8 @@ dword_8036334: .word 0xFFFFFF00
 	.word dword_8067E28
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_8036394: .word 0xFFFFFF00
+dword_8036394:
+	.word 0xFFFFFF00
 	.word byte_804D0FC
 	.word 0xFFFFFF01
 	.word byte_804EA08
@@ -1689,7 +1695,8 @@ dword_8036394: .word 0xFFFFFF00
 	.word dword_8067E28
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_80363F4: .word 0xFFFFFF00
+dword_80363F4:
+	.word 0xFFFFFF00
 	.word byte_804D0FC
 	.word 0xFFFFFF01
 	.word byte_804EA08
@@ -1713,7 +1720,8 @@ dword_80363F4: .word 0xFFFFFF00
 	.word dword_8067E28
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_8036454: .word 0xFFFFFF00
+dword_8036454:
+	.word 0xFFFFFF00
 	.word byte_804D0FE
 	.word 0xFFFFFF01
 	.word byte_804EA12
@@ -1737,7 +1745,8 @@ dword_8036454: .word 0xFFFFFF00
 	.word dword_8067E28
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_80364B4: .word 0xFFFFFF00
+dword_80364B4:
+	.word 0xFFFFFF00
 	.word byte_804D0FC
 	.word 0xFFFFFF01
 	.word byte_804EA1C
@@ -1761,7 +1770,8 @@ dword_80364B4: .word 0xFFFFFF00
 	.word dword_8067E28
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_8036514: .word 0xFFFFFF00
+dword_8036514:
+	.word 0xFFFFFF00
 	.word byte_804D0FE
 	.word 0xFFFFFF01
 	.word byte_804EA12
@@ -1785,7 +1795,8 @@ dword_8036514: .word 0xFFFFFF00
 	.word dword_8067E28
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_8036574: .word 0xFFFFFF00
+dword_8036574:
+	.word 0xFFFFFF00
 	.word byte_804D0FC
 	.word 0xFFFFFF01
 	.word byte_804EA08
@@ -1819,7 +1830,8 @@ dword_8036574: .word 0xFFFFFF00
 	.word dword_8069358
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_80365FC: .word 0xFFFFFF00
+dword_80365FC:
+	.word 0xFFFFFF00
 	.word dword_804D100
 	.word 0xFFFFFF01
 	.word byte_804EA1C
@@ -1853,7 +1865,8 @@ dword_80365FC: .word 0xFFFFFF00
 	.word dword_8069358
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_8036684: .word 0xFFFFFF00
+dword_8036684:
+	.word 0xFFFFFF00
 	.word byte_804D0FE
 	.word 0xFFFFFF01
 	.word byte_804EA12
@@ -1887,7 +1900,8 @@ dword_8036684: .word 0xFFFFFF00
 	.word dword_8069358
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_803670C: .word 0xFFFFFF00
+dword_803670C:
+	.word 0xFFFFFF00
 	.word byte_804D0FC
 	.word 0xFFFFFF01
 	.word byte_804EA08
@@ -1927,7 +1941,8 @@ dword_803670C: .word 0xFFFFFF00
 	.word dword_806A2C0
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_80367AC: .word 0xFFFFFF00
+dword_80367AC:
+	.word 0xFFFFFF00
 	.word byte_804D0FE
 	.word 0xFFFFFF01
 	.word byte_804EA12
@@ -1967,7 +1982,8 @@ dword_80367AC: .word 0xFFFFFF00
 	.word dword_806A2C0
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_803684C: .word 0xFFFFFF00
+dword_803684C:
+	.word 0xFFFFFF00
 	.word byte_804D0FC
 	.word 0xFFFFFF01
 	.word byte_804EA1C+5
@@ -2007,7 +2023,8 @@ dword_803684C: .word 0xFFFFFF00
 	.word dword_806A2C0
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_80368EC: .word 0xFFFFFF00
+dword_80368EC:
+	.word 0xFFFFFF00
 	.word byte_804D0FE
 	.word 0xFFFFFF01
 	.word byte_804EA12
@@ -2047,7 +2064,8 @@ dword_80368EC: .word 0xFFFFFF00
 	.word dword_806A2C0
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_803698C: .word 0xFFFFFF00
+dword_803698C:
+	.word 0xFFFFFF00
 	.word byte_804D0FC
 	.word 0xFFFFFF01
 	.word byte_804EA08
@@ -2089,7 +2107,8 @@ dword_803698C: .word 0xFFFFFF00
 	.word dword_806A2C0
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_8036A34: .word 0xFFFFFF00
+dword_8036A34:
+	.word 0xFFFFFF00
 	.word byte_804D0FE
 	.word 0xFFFFFF01
 	.word byte_804EA0D
@@ -2131,7 +2150,8 @@ dword_8036A34: .word 0xFFFFFF00
 	.word dword_806A2C0
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_8036ADC: .word 0xFFFFFF00
+dword_8036ADC:
+	.word 0xFFFFFF00
 	.word dword_804D100
 	.word 0xFFFFFF01
 	.word byte_804EA1C
@@ -2173,7 +2193,8 @@ dword_8036ADC: .word 0xFFFFFF00
 	.word dword_806A2C0
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_8036B84: .word 0xFFFFFF00
+dword_8036B84:
+	.word 0xFFFFFF00
 	.word byte_804D0FE
 	.word 0xFFFFFF01
 	.word byte_804EA12
@@ -2215,7 +2236,8 @@ dword_8036B84: .word 0xFFFFFF00
 	.word dword_806A2C0
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_8036C2C: .word 0xFFFFFF00
+dword_8036C2C:
+	.word 0xFFFFFF00
 	.word dword_804D100
 	.word 0xFFFFFF01
 	.word byte_804EA1C
@@ -2257,7 +2279,8 @@ dword_8036C2C: .word 0xFFFFFF00
 	.word dword_806A2C0
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_8036CD4: .word 0xFFFFFF00
+dword_8036CD4:
+	.word 0xFFFFFF00
 	.word byte_804D0FE
 	.word 0xFFFFFF01
 	.word byte_804EA12
@@ -2303,7 +2326,8 @@ dword_8036CD4: .word 0xFFFFFF00
 	.word byte_806AEA8
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-dword_8036D8C: .word 0xFFFFFF00
+dword_8036D8C:
+	.word 0xFFFFFF00
 	.word byte_804D0FC
 	.word 0xFFFFFF01
 	.word byte_804EA08
@@ -2428,7 +2452,8 @@ StartCutscene: // (script: *const CutsceneScript, param: u32) -> ()
 	pop {r5,pc}
 	.balign 4, 0
 	.pool // 8036EBC
-off_8036EC4: .word 0x4000000
+off_8036EC4:
+	.word 0x4000000
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end StartCutscene
 
@@ -2472,7 +2497,8 @@ cutscene_8036EFE:
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8036F20: .word DummyCutsceneScript
+off_8036F20:
+	.word DummyCutsceneScript
 	thumb_func_end cutscene_8036EFE
 
 	thumb_func_start clearCutsceneScriptPosIfMagicValue0x1_8036F24
@@ -2513,7 +2539,8 @@ loc_8036F50:
 	tst r2, r2
 	mov pc, lr
 	.balign 4, 0
-off_8036F54: .word CutsceneScript_80991F4 // CutsceneScript
+off_8036F54:
+	.word CutsceneScript_80991F4 // CutsceneScript
 	thumb_func_end cutscene_checkOriginalCutsceneScriptPos_8036F40
 
 	thumb_func_start cutscene_checkOriginalCutsceneScriptPos_8036F58
@@ -2530,7 +2557,8 @@ loc_8036F68:
 	tst r2, r2
 	mov pc, lr
 	.balign 4, 0
-off_8036F6C: .word CutsceneScript_80988E4 // CutsceneScript
+off_8036F6C:
+	.word CutsceneScript_80988E4 // CutsceneScript
 	thumb_func_end cutscene_checkOriginalCutsceneScriptPos_8036F58
 
 	thumb_func_start cutscene_checkOriginalCutsceneScriptPos_8036F70
@@ -3680,8 +3708,10 @@ CutsceneCommandJumptable:
 	.word CutsceneCmd_jump_if_req_bbs_master_rank+1
   // 0x200
 	.word CutsceneCmd_if_in_real_world_jump_else_jump+1
-DummyCutsceneScript: .word 0x11
-byte_8037694: .byte 0x0, 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
+DummyCutsceneScript:
+	.word 0x11
+byte_8037694:
+	.byte 0x0, 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
 	.byte 0x57, 0xFF, 0xFF, 0xFF, 0x4B, 0xFF, 0x35, 0xFF, 0x56
 	.byte 0xFF, 0x55, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
@@ -4541,7 +4571,8 @@ CutsceneCmd_ow_player_sprite_special_with_arg:
 	pop {pc}
 	.pool // 8037B98
 	.balign 4, 0
-off_8037B9C: .word WriteOWPlayerLayerIndexOverride+1
+off_8037B9C:
+	.word WriteOWPlayerLayerIndexOverride+1
 	.word SetOWPlayerFacingDirection+1
 	.word owPlayer_setPalette_809e2a0+1
 	.word owPlayer_setAlpha_8002c7a_809e4a0+1
@@ -4622,7 +4653,8 @@ CutsceneCmd_ow_player_coord_special:
 	pop {pc}
 	.balign 4, 0
 	.pool // 8037C30
-off_8037C34: .word owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4+1
+off_8037C34:
+	.word owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4+1
 	.word owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188+1
 	.word owPlayer_offsetS200ace0Coords_809e1fa+1
 	.word owPlayer_copyCoordsToNextCoordsAddOffsetToCoordsThenOffsetS200ace0Coords_809e1d8+1
@@ -4930,7 +4962,8 @@ CutsceneCmd_spawn_free_ow_map_object_specials:
 	pop {pc}
 	.balign 4, 0
 	.pool // 8037E34
-off_8037E38: .word MapScriptSubCmd_spawn_ow_map_object+1
+off_8037E38:
+	.word MapScriptSubCmd_spawn_ow_map_object+1
 	.word MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_player+1
 	.word MapScriptSubCmd_spawn_ow_map_object_relative_to_ow_npc+1
 	.word MapScriptSubCmd_free_ow_map_object+1
@@ -5153,7 +5186,8 @@ MapScriptSubCmd_free_all_spawned_ow_map_objects:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_8037FB4: .word eOverworldNPCObjects
+off_8037FB4:
+	.word eOverworldNPCObjects
 	thumb_func_end MapScriptSubCmd_free_all_spawned_ow_map_objects
 
 	thumb_local_start

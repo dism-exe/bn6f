@@ -8,7 +8,8 @@ zeroFill_e2004348:
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0
-dword_809F9D8: .word 0x480
+dword_809F9D8:
+	.word 0x480
 	thumb_func_end zeroFill_e2004348
 
 	thumb_func_start sub_809F9DC
@@ -171,7 +172,8 @@ sub_809FADE:
 	add r0, r0, r2
 	mov pc, lr
 	.byte 0, 0
-dword_809FAF0: .word 0x1400
+dword_809FAF0:
+	.word 0x1400
 	thumb_func_end sub_809FADE
 
 	thumb_func_start sub_809FAF4
@@ -350,8 +352,10 @@ loc_809FC0A:
 	mov r0, r1
 	pop {r2-r7,pc}
 	.balign 4, 0
-RealWorldMysteryDataMapGroupEntries_p1: .word RealWorldMysteryDataMapGroupEntries
-InternetMysteryDataMapGroupEntries_p1: .word InternetMysteryDataMapGroupEntries
+RealWorldMysteryDataMapGroupEntries_p1:
+	.word RealWorldMysteryDataMapGroupEntries
+InternetMysteryDataMapGroupEntries_p1:
+	.word InternetMysteryDataMapGroupEntries
 	.word byte_2000210
 	thumb_func_end sub_809FBF2
 
@@ -726,8 +730,12 @@ locret_809FE8E:
 	pop {r4-r7,pc}
 	thumb_func_end sub_809FE7A
 
-GoldMysteryDataEntries_p: .word GoldMysteryDataEntries
-RealWorldMysteryDataMapGroupEntries_p2: .word RealWorldMysteryDataMapGroupEntries
-InternetMysteryDataMapGroupEntries_p2: .word InternetMysteryDataMapGroupEntries
-off_809FE9C: .word byte_2000210
+GoldMysteryDataEntries_p:
+	.word GoldMysteryDataEntries
+RealWorldMysteryDataMapGroupEntries_p2:
+	.word RealWorldMysteryDataMapGroupEntries
+InternetMysteryDataMapGroupEntries_p2:
+	.word InternetMysteryDataMapGroupEntries
+off_809FE9C:
+	.word byte_2000210
 /*For debugging purposes, connect comment at any range!*/

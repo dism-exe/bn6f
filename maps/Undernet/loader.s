@@ -36,20 +36,28 @@ Undernet_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_807CE44: .word off_807C82C
-off_807CE48: .word unk_2037800
-off_807CE4C: .word off_807CE50
-off_807CE50: .word byte_807CE60
+off_807CE44:
+	.word off_807C82C
+off_807CE48:
+	.word unk_2037800
+off_807CE4C:
+	.word off_807CE50
+off_807CE50:
+	.word byte_807CE60
 	.word byte_807CE68
 	.word byte_807CE7C
 	.word byte_807CE8A
-byte_807CE60: .byte 0x1C, 0x71, 0x1C, 0x72, 0x18, 0x5A, 0xFF, 0xFF
-byte_807CE68: .byte 0x1C, 0xE, 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x72, 0x1C
+byte_807CE60:
+	.byte 0x1C, 0x71, 0x1C, 0x72, 0x18, 0x5A, 0xFF, 0xFF
+byte_807CE68:
+	.byte 0x1C, 0xE, 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x72, 0x1C
 	.byte 0x4B, 0x1C, 0x9B, 0x1C, 0x93, 0x1C, 0x9C, 0x18, 0x5B
 	.byte 0xFF, 0xFF
-byte_807CE7C: .byte 0x1C, 0x5F, 0x1C, 0x81, 0x1C, 0x95, 0x18, 0x38, 0x18
+byte_807CE7C:
+	.byte 0x1C, 0x5F, 0x1C, 0x81, 0x1C, 0x95, 0x18, 0x38, 0x18
 	.byte 0x39, 0x18, 0x3A, 0xFF, 0xFF
-byte_807CE8A: .byte 0x1C, 0x72, 0x1C, 0x86, 0xFF, 0xFF
+byte_807CE8A:
+	.byte 0x1C, 0x72, 0x1C, 0x86, 0xFF, 0xFF
 	thumb_func_end Undernet_EnterMapGroup
 
 	thumb_func_start Undernet_LoadGFXAnims
@@ -61,24 +69,29 @@ Undernet_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_807CEA0: .word off_807CEA4
-off_807CEA4: .word off_807CEB4
+off_807CEA0:
+	.word off_807CEA4
+off_807CEA4:
+	.word off_807CEB4
 	.word off_807CED0
 	.word off_807CEE4
 	.word off_807CF10
-off_807CEB4: .word off_807C94C
+off_807CEB4:
+	.word off_807C94C
 	.word off_807C974
 	.word byte_807CA04
 	.word byte_807CA54
 	.word byte_807CAA4
 	.word byte_807CACC
 	.word 0xFFFFFFFF
-off_807CED0: .word off_807C94C
+off_807CED0:
+	.word off_807C94C
 	.word off_807C974
 	.word byte_807CA04
 	.word byte_807CA54
 	.word 0xFFFFFFFF
-off_807CEE4: .word off_807C94C
+off_807CEE4:
+	.word off_807C94C
 	.word off_807C974
 	.word byte_807CB1C
 	.word byte_807CB6C
@@ -89,7 +102,8 @@ off_807CEE4: .word off_807C94C
 	.word byte_807CCAC
 	.word byte_807CCFC
 	.word 0xFFFFFFFF
-off_807CF10: .word off_807C94C
+off_807CF10:
+	.word off_807C94C
 	.word off_807C974
 	.word byte_807CD4C
 	.word byte_807CD9C
@@ -120,11 +134,9 @@ Undernet_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_807CF58: .word off_807CF5C
-off_807CF5C: .word nullsub_39+1
-	.word nullsub_36+1
-	.word nullsub_38+1
-	.word 0x800
+off_807CF58:
+	.word off_807CF5C
+off_807CF5C:
 	.word nullsub_39+1
 	.word nullsub_36+1
 	.word nullsub_38+1
@@ -137,12 +149,19 @@ off_807CF5C: .word nullsub_39+1
 	.word nullsub_36+1
 	.word nullsub_38+1
 	.word 0x800
-off_807CF9C: .word off_807CFA0
-off_807CFA0: .word off_807CFB0
+	.word nullsub_39+1
+	.word nullsub_36+1
+	.word nullsub_38+1
+	.word 0x800
+off_807CF9C:
+	.word off_807CFA0
+off_807CFA0:
 	.word off_807CFB0
 	.word off_807CFB0
 	.word off_807CFB0
-off_807CFB0: .word dword_8618DFC
+	.word off_807CFB0
+off_807CFB0:
+	.word dword_8618DFC
 	.word 0x6008020
 	.word byte_8618E40
 	.word 0x1800
@@ -163,8 +182,10 @@ Undernet_UnkFunction_807cfcc:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
-off_807CFE0: .word off_807CFE4
-off_807CFE4: .word nullsub_84+1
+off_807CFE0:
+	.word off_807CFE4
+off_807CFE4:
+	.word nullsub_84+1
 	.word nullsub_85+1
 	.word nullsub_86+1
 	.word nullsub_87+1
@@ -202,7 +223,8 @@ Undernet_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_807D010: .word pt_807D014
+off_807D010:
+	.word pt_807D014
 pt_807D014:
 	.word byte_807D024
 	.word byte_807D0B4

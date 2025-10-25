@@ -36,15 +36,22 @@ AquariumComp_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8067BB4: .word off_80676E8
-off_8067BB8: .word unk_2037800
-off_8067BBC: .word off_8067BC0
-off_8067BC0: .word byte_8067BCC
+off_8067BB4:
+	.word off_80676E8
+off_8067BB8:
+	.word unk_2037800
+off_8067BBC:
+	.word off_8067BC0
+off_8067BC0:
+	.word byte_8067BCC
 	.word byte_8067BD4
 	.word byte_8067BDC
-byte_8067BCC: .byte 0x1C, 0x45, 0x1C, 0x46, 0x1C, 0x2F, 0xFF, 0xFF
-byte_8067BD4: .byte 0x1C, 0x45, 0x1C, 0x46, 0x1C, 0x2F, 0xFF, 0xFF
-byte_8067BDC: .byte 0x1C, 0x45, 0x1C, 0x46, 0x1C, 0x2F, 0xFF, 0xFF
+byte_8067BCC:
+	.byte 0x1C, 0x45, 0x1C, 0x46, 0x1C, 0x2F, 0xFF, 0xFF
+byte_8067BD4:
+	.byte 0x1C, 0x45, 0x1C, 0x46, 0x1C, 0x2F, 0xFF, 0xFF
+byte_8067BDC:
+	.byte 0x1C, 0x45, 0x1C, 0x46, 0x1C, 0x2F, 0xFF, 0xFF
 	thumb_func_end AquariumComp_EnterMapGroup
 
 	thumb_func_start AquariumComp_LoadGFXAnims
@@ -56,11 +63,14 @@ AquariumComp_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_8067BF4: .word off_8067BF8
-off_8067BF8: .word off_8067C04
+off_8067BF4:
+	.word off_8067BF8
+off_8067BF8:
+	.word off_8067C04
 	.word off_8067C30
 	.word off_8067C5C
-off_8067C04: .word off_8067754
+off_8067C04:
+	.word off_8067754
 	.word off_8067914
 	.word off_8067944
 	.word off_80679A4
@@ -71,7 +81,8 @@ off_8067C04: .word off_8067754
 	.word off_8067A9C
 	.word off_8067ACC
 	.word 0xFFFFFFFF
-off_8067C30: .word off_8067754
+off_8067C30:
+	.word off_8067754
 	.word off_8067914
 	.word off_8067944
 	.word off_80679A4
@@ -82,7 +93,8 @@ off_8067C30: .word off_8067754
 	.word off_8067A9C
 	.word off_8067ACC
 	.word 0xFFFFFFFF
-off_8067C5C: .word off_8067754
+off_8067C5C:
+	.word off_8067754
 	.word off_8067914
 	.word off_8067944
 	.word off_80679A4
@@ -119,11 +131,9 @@ AquariumComp_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8067CBC: .word off_8067CC0
-off_8067CC0: .word nullsub_39+1
-	.word BGScrollCB_BG3FastLeftScroll+1
-	.word nullsub_38+1
-	.word 0x800
+off_8067CBC:
+	.word off_8067CC0
+off_8067CC0:
 	.word nullsub_39+1
 	.word BGScrollCB_BG3FastLeftScroll+1
 	.word nullsub_38+1
@@ -132,11 +142,18 @@ off_8067CC0: .word nullsub_39+1
 	.word BGScrollCB_BG3FastLeftScroll+1
 	.word nullsub_38+1
 	.word 0x800
-off_8067CF0: .word off_8067CF4
-off_8067CF4: .word off_8067D00
+	.word nullsub_39+1
+	.word BGScrollCB_BG3FastLeftScroll+1
+	.word nullsub_38+1
+	.word 0x800
+off_8067CF0:
+	.word off_8067CF4
+off_8067CF4:
 	.word off_8067D00
 	.word off_8067D00
-off_8067D00: .word off_86116C8
+	.word off_8067D00
+off_8067D00:
+	.word off_86116C8
 	.word 0x6008020
 	.word byte_861184C
 	.word 0x1800
@@ -157,8 +174,10 @@ AquariumComp_UnkFunction_8067d1c:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
-off_8067D30: .word off_8067D34
-off_8067D34: .word nullsub_64+1
+off_8067D30:
+	.word off_8067D34
+off_8067D34:
+	.word nullsub_64+1
 	.word nullsub_65+1
 	.word nullsub_66+1
 	thumb_func_end AquariumComp_UnkFunction_8067d1c
@@ -190,7 +209,8 @@ AquariumComp_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_8067D5C: .word pt_8067D60
+off_8067D5C:
+	.word pt_8067D60
 pt_8067D60:
 	// <endpool>
 	.word byte_8067D6C

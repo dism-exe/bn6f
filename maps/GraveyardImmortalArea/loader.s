@@ -36,18 +36,24 @@ GraveyardImmortalArea_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_807ED28: .word off_807EA6C
-off_807ED2C: .word unk_2037800
-off_807ED30: .word off_807ED34 // [*const SpriteLoadData; 3]
+off_807ED28:
+	.word off_807EA6C
+off_807ED2C:
+	.word unk_2037800
+off_807ED30:
+	.word off_807ED34 // [*const SpriteLoadData; 3]
 off_807ED34: // [*const SpriteLoadData; 3]
   .word byte_807ED40
 	.word byte_807ED4E
 	.word byte_807ED60
-byte_807ED40: .byte 0x1C, 0xE, 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x4B, 0x1C
+byte_807ED40:
+	.byte 0x1C, 0xE, 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x4B, 0x1C
 	.byte 0x86, 0x1C, 0x8F, 0xFF, 0xFF
-byte_807ED4E: .byte 0x1C, 0xE, 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x4B, 0x1C
+byte_807ED4E:
+	.byte 0x1C, 0xE, 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x4B, 0x1C
 	.byte 0x8E, 0x1C, 0x9B, 0x1C, 0x99, 0x18, 0x5B, 0xFF, 0xFF
-byte_807ED60: .byte 0x1C, 0x9C, 0x1C, 0x9A, 0x18, 0x34, 0x18, 0x36, 0x1C
+byte_807ED60:
+	.byte 0x1C, 0x9C, 0x1C, 0x9A, 0x18, 0x34, 0x18, 0x36, 0x1C
 	.byte 0x99, 0xFF, 0xFF
 	thumb_func_end GraveyardImmortalArea_EnterMapGroup
 
@@ -60,23 +66,28 @@ GraveyardImmortalArea_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_807ED7C: .word off_807ED80
-off_807ED80: .word off_807ED8C
+off_807ED7C:
+	.word off_807ED80
+off_807ED80:
+	.word off_807ED8C
 	.word off_807EDA8
 	.word off_807EDBC
-off_807ED8C: .word off_807EB18
+off_807ED8C:
+	.word off_807EB18
 	.word byte_807EB68
 	.word byte_807EBB8
 	.word byte_807EC08
 	.word off_807EC58
 	.word off_807ECA8
 	.word 0xFFFFFFFF
-off_807EDA8: .word off_807EB18
+off_807EDA8:
+	.word off_807EB18
 	.word byte_807EB68
 	.word byte_807EBB8
 	.word off_807ECA8
 	.word 0xFFFFFFFF
-off_807EDBC: .word off_807EB18
+off_807EDBC:
+	.word off_807EB18
 	.word byte_807EB68
 	.word byte_807EBB8
 	.word off_807EC58
@@ -108,11 +119,9 @@ GraveyardImmortalArea_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_807EE08: .word off_807EE0C
-off_807EE0C: .word nullsub_39+1
-	.word BGScrollCB_BG3SlowRightScroll+1
-	.word nullsub_38+1
-	.word 0x800
+off_807EE08:
+	.word off_807EE0C
+off_807EE0C:
 	.word nullsub_39+1
 	.word BGScrollCB_BG3SlowRightScroll+1
 	.word nullsub_38+1
@@ -121,11 +130,18 @@ off_807EE0C: .word nullsub_39+1
 	.word BGScrollCB_BG3SlowRightScroll+1
 	.word nullsub_38+1
 	.word 0x800
-off_807EE3C: .word off_807EE40
-off_807EE40: .word off_807EE4C
+	.word nullsub_39+1
+	.word BGScrollCB_BG3SlowRightScroll+1
+	.word nullsub_38+1
+	.word 0x800
+off_807EE3C:
+	.word off_807EE40
+off_807EE40:
 	.word off_807EE4C
 	.word off_807EE4C
-off_807EE4C: .word off_8619174
+	.word off_807EE4C
+off_807EE4C:
+	.word off_8619174
 	.word 0x6008020
 	.word dword_8619474
 	.word 0x1800
@@ -146,8 +162,10 @@ GraveyardImmortalArea_UnkFunction_807ee68:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
-off_807EE7C: .word off_807EE80
-off_807EE80: .word nullsub_88+1
+off_807EE7C:
+	.word off_807EE80
+off_807EE80:
+	.word nullsub_88+1
 	.word nullsub_89+1
 	.word nullsub_90+1
 	thumb_func_end GraveyardImmortalArea_UnkFunction_807ee68
@@ -179,7 +197,8 @@ GraveyardImmortalArea_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_807EEA8: .word pt_807EEAC
+off_807EEA8:
+	.word pt_807EEAC
 pt_807EEAC:
 	.word byte_807EEB8
 	.word byte_807EFD4

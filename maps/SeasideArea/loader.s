@@ -36,15 +36,21 @@ SeasideArea_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_80754A4: .word off_8074F30
-off_80754A8: .word unk_2037800
-off_80754AC: .word off_80754B0
-off_80754B0: .word byte_80754BC
+off_80754A4:
+	.word off_8074F30
+off_80754A8:
+	.word unk_2037800
+off_80754AC:
+	.word off_80754B0
+off_80754B0:
+	.word byte_80754BC
 	.word byte_80754C8
 	.word 0x80754D2
-byte_80754BC: .byte 0x1C, 0x3E, 0x1C, 0x49, 0x1C, 0x4A, 0x1C, 0x4B, 0x1C
+byte_80754BC:
+	.byte 0x1C, 0x3E, 0x1C, 0x49, 0x1C, 0x4A, 0x1C, 0x4B, 0x1C
 	.byte 0xE, 0xFF, 0xFF
-byte_80754C8: .byte 0x1C, 0xE, 0x1C, 0x49, 0x1C, 0x4A, 0x1C, 0x4B, 0xFF
+byte_80754C8:
+	.byte 0x1C, 0xE, 0x1C, 0x49, 0x1C, 0x4A, 0x1C, 0x4B, 0xFF
 	.byte 0xFF, 0x1C, 0x49, 0x1C, 0x4A, 0x1C, 0x4B, 0x1C, 0x38
 	.byte 0x1C, 0xE, 0x1C, 0x95, 0x1C, 0x25, 0xFF, 0xFF
 	thumb_func_end SeasideArea_EnterMapGroup
@@ -58,19 +64,24 @@ SeasideArea_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_80754F0: .word off_80754F4
-off_80754F4: .word off_8075500
+off_80754F0:
+	.word off_80754F4
+off_80754F4:
+	.word off_8075500
 	.word off_8075510
 	.word off_8075520
-off_8075500: .word byte_8074FDC
+off_8075500:
+	.word byte_8074FDC
 	.word byte_807500C
 	.word off_807505C
 	.word 0xFFFFFFFF
-off_8075510: .word byte_807534C
+off_8075510:
+	.word byte_807534C
 	.word byte_807537C
 	.word off_807505C
 	.word 0xFFFFFFFF
-off_8075520: .word byte_80753CC
+off_8075520:
+	.word byte_80753CC
 	.word byte_80753FC
 	.word off_807505C
 	.word 0xFFFFFFFF
@@ -100,18 +111,23 @@ SeasideArea_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8075564: .word off_8075568
-off_8075568: .word nullsub_39+1
+off_8075564:
+	.word off_8075568
+off_8075568:
+	.word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0, 0xB5, 0x1A, 0x0, 0x8, 0xD1
 	.byte 0x19, 0x0, 0x8, 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0, 0xB5, 0x1A
 	.byte 0x0, 0x8, 0xD1, 0x19, 0x0, 0x8, 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0
 	.byte 0x0
-off_8075598: .word off_807559C
-off_807559C: .word off_80755A8
+off_8075598:
+	.word off_807559C
+off_807559C:
 	.word off_80755A8
 	.word off_80755A8
-off_80755A8: .word off_8617068
+	.word off_80755A8
+off_80755A8:
+	.word off_8617068
 	.byte 0x20, 0x80, 0x0, 0x6, 0x90, 0x71, 0x61, 0x8, 0x0, 0x18, 0x0
 	.byte 0x0, 0xC8, 0x85, 0x61, 0x8, 0x60, 0x19, 0x0, 0x3, 0x20, 0x0
 	.byte 0x0, 0x0
@@ -129,8 +145,10 @@ SeasideArea_UnkFunction_80755c4:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
-off_80755D8: .word off_80755DC
-off_80755DC: .word nullsub_74+1
+off_80755D8:
+	.word off_80755DC
+off_80755DC:
+	.word nullsub_74+1
 	.word nullsub_75+1
 	.word nullsub_76+1
 	thumb_func_end SeasideArea_UnkFunction_80755c4
@@ -162,7 +180,8 @@ SeasideArea_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_8075604: .word off_8075608
+off_8075604:
+	.word off_8075608
 off_8075608:
 	// <endpool>
 	.word byte_8075614

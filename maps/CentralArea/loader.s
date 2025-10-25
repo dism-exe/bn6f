@@ -36,16 +36,23 @@ CentralArea_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8071BA8: .word off_8071584
-off_8071BAC: .word unk_2037800
-off_8071BB0: .word off_8071BB4
-off_8071BB4: .word byte_8071BC0
+off_8071BA8:
+	.word off_8071584
+off_8071BAC:
+	.word unk_2037800
+off_8071BB0:
+	.word off_8071BB4
+off_8071BB4:
+	.word byte_8071BC0
 	.word byte_8071BCA
 	.word byte_8071BD2
-byte_8071BC0: .byte 0x1C, 0x2B, 0x1C, 0xE, 0x1C, 0x7C, 0x1C, 0x82, 0xFF
+byte_8071BC0:
+	.byte 0x1C, 0x2B, 0x1C, 0xE, 0x1C, 0x7C, 0x1C, 0x82, 0xFF
 	.byte 0xFF
-byte_8071BCA: .byte 0x1C, 0xE, 0x1C, 0x7C, 0x1C, 0x82, 0xFF, 0xFF
-byte_8071BD2: .byte 0x1C, 0x27, 0x1C, 0x28, 0x1C, 0x1D, 0x1C, 0x1E, 0x1C
+byte_8071BCA:
+	.byte 0x1C, 0xE, 0x1C, 0x7C, 0x1C, 0x82, 0xFF, 0xFF
+byte_8071BD2:
+	.byte 0x1C, 0x27, 0x1C, 0x28, 0x1C, 0x1D, 0x1C, 0x1E, 0x1C
 	.byte 0x1F, 0x1C, 0x20, 0x1C, 0xE, 0x1C, 0x95, 0xFF, 0xFF
 	thumb_func_end CentralArea_EnterMapGroup
 
@@ -58,19 +65,24 @@ CentralArea_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_8071BF4: .word off_8071BF8
-off_8071BF8: .word off_8071C04
+off_8071BF4:
+	.word off_8071BF8
+off_8071BF8:
+	.word off_8071C04
 	.word off_8071C18
 	.word off_8071C24
-off_8071C04: .word off_8071680
+off_8071C04:
+	.word off_8071680
 	.word byte_8071970
 	.word byte_80719C0
 	.word byte_8071A10
 	.word 0xFFFFFFFF
-off_8071C18: .word off_8071680
+off_8071C18:
+	.word off_8071680
 	.word byte_8071A60
 	.word 0xFFFFFFFF
-off_8071C24: .word off_8071680
+off_8071C24:
+	.word off_8071680
 	.word byte_8071AB0
 	.word 0xFFFFFFFF
 	thumb_func_end CentralArea_LoadGFXAnims
@@ -99,21 +111,26 @@ CentralArea_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8071C64: .word off_8071C68
-off_8071C68: .word nullsub_39+1
-	.word BGScrollCB_BG3Diagonal3to2Scroll+1
-	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+off_8071C64:
+	.word off_8071C68
+off_8071C68:
 	.word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
 	.word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
-off_8071C98: .word off_8071C9C
-off_8071C9C: .word off_8071CA8
+	.word nullsub_39+1
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0
+off_8071C98:
+	.word off_8071C9C
+off_8071C9C:
 	.word off_8071CA8
 	.word off_8071CA8
-off_8071CA8: .word off_8617068
+	.word off_8071CA8
+off_8071CA8:
+	.word off_8617068
 	.word 0x6008020
 	.word dword_8617190
 	.word 0x1800
@@ -133,8 +150,10 @@ CentralArea_UnkFunction_8071cc4:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
-off_8071CD8: .word off_8071CDC
-off_8071CDC: .word nullsub_71+1
+off_8071CD8:
+	.word off_8071CDC
+off_8071CDC:
+	.word nullsub_71+1
 	.word nullsub_72+1
 	.word nullsub_73+1
 	thumb_func_end CentralArea_UnkFunction_8071cc4
@@ -166,8 +185,10 @@ CentralArea_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_8071D04: .word off_8071D08
-off_8071D08: .word byte_8071D14
+off_8071D04:
+	.word off_8071D08
+off_8071D08:
+	.word byte_8071D14
 	.word byte_8071D7C
 	.word byte_8071DF8
 	thumb_func_end CentralArea_SpawnMapObjectsForMap

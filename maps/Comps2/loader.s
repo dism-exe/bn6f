@@ -36,10 +36,14 @@ Comps2_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_806FC60: .word off_806FA98
-off_806FC64: .word unk_2037800
-off_806FC68: .word off_806FC6C
-off_806FC6C: .word dword_806FCAC
+off_806FC60:
+	.word off_806FA98
+off_806FC64:
+	.word unk_2037800
+off_806FC68:
+	.word off_806FC6C
+off_806FC6C:
+	.word dword_806FCAC
 	.word dword_806FCB0
 	.word dword_806FCB4
 	.word byte_806FCB8
@@ -48,10 +52,14 @@ off_806FC6C: .word dword_806FCAC
 	.byte 0x6, 0x8, 0xE0, 0xFC, 0x6, 0x8, 0xE4, 0xFC, 0x6, 0x8, 0xE8
 	.byte 0xFC, 0x6, 0x8, 0xEC, 0xFC, 0x6, 0x8, 0xF0, 0xFC, 0x6, 0x8
 	.byte 0xF4, 0xFC, 0x6, 0x8
-dword_806FCAC: .word 0xFFFF061C
-dword_806FCB0: .word 0xFFFF061C
-dword_806FCB4: .word 0xFFFF061C
-byte_806FCB8: .byte 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF, 0x1C, 0x6, 0xFF, 0xFF
+dword_806FCAC:
+	.word 0xFFFF061C
+dword_806FCB0:
+	.word 0xFFFF061C
+dword_806FCB4:
+	.word 0xFFFF061C
+byte_806FCB8:
+	.byte 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF, 0x1C, 0x6, 0xFF, 0xFF
 	.byte 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF, 0x1C, 0x6, 0x1C, 0x12
 	.byte 0x1C, 0x1B, 0xFF, 0xFF, 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF
 	.byte 0x1C, 0x6, 0xFF, 0xFF, 0x1C, 0x6, 0x18, 0x55, 0xFF, 0xFF
@@ -69,8 +77,9 @@ Comps2_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_806FD08: .word off_806FD0C
-off_806FD0C: .word off_806FD4C
+off_806FD08:
+	.word off_806FD0C
+off_806FD0C:
 	.word off_806FD4C
 	.word off_806FD4C
 	.word off_806FD4C
@@ -86,7 +95,9 @@ off_806FD0C: .word off_806FD4C
 	.word off_806FD4C
 	.word off_806FD4C
 	.word off_806FD4C
-off_806FD4C: .word byte_806D820
+	.word off_806FD4C
+off_806FD4C:
+	.word byte_806D820
 	.word 0xFFFFFFFF
 	thumb_func_end Comps2_LoadGFXAnims
 
@@ -114,11 +125,9 @@ Comps2_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_806FD88: .word off_806FD8C
-off_806FD8C: .word nullsub_39+1
-	.word BGScrollCB_BG3Diagonal3to2Scroll+1
-	.word nullsub_38+1
-	.word 0x800
+off_806FD88:
+	.word off_806FD8C
+off_806FD8C:
 	.word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
@@ -179,8 +188,14 @@ off_806FD8C: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
 	.word 0x800
-off_806FE8C: .word off_806FE90
-off_806FE90: .word off_806FEEC
+	.word nullsub_39+1
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
+off_806FE8C:
+	.word off_806FE90
+off_806FE90:
+	.word off_806FEEC
 	.word off_806FEEC
 	.word off_806FED0
 	.word off_806FED0
@@ -196,14 +211,16 @@ off_806FE90: .word off_806FEEC
 	.word off_806FED0
 	.word off_806FED0
 	.word off_806FED0
-off_806FED0: .word off_8616598
+off_806FED0:
+	.word off_8616598
 	.word 0x6008020
 	.word byte_8616634
 	.word 0x1800
 	.word byte_8616760
 	.word 0x3001960
 	.word 0x20
-off_806FEEC: .word off_8616598
+off_806FEEC:
+	.word off_8616598
 	.word 0x6008020
 	.word byte_8616634
 	.word 0x1800
@@ -231,8 +248,10 @@ Comps2_UnkFunction_806ff08:
 	bx r7
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_806FF30: .word jt_806FF34
-jt_806FF34: .word sub_806FF76+1
+off_806FF30:
+	.word jt_806FF34
+jt_806FF34:
+	.word sub_806FF76+1
 	.word sub_806FF94+1
 	.word nullsub_27+1
 	.word nullsub_27+1
@@ -320,7 +339,8 @@ Comps2_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_806FFF0: .word pt_806FFF4
+off_806FFF0:
+	.word pt_806FFF4
 pt_806FFF4:
 	// <endpool> <endfile>
 	.word byte_8070034

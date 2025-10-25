@@ -36,15 +36,22 @@ JudgeTreeComp_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8069090: .word off_8068CCC
-off_8069094: .word unk_2037800
-off_8069098: .word off_806909C
-off_806909C: .word byte_80690A8
+off_8069090:
+	.word off_8068CCC
+off_8069094:
+	.word unk_2037800
+off_8069098:
+	.word off_806909C
+off_806909C:
+	.word byte_80690A8
 	.word byte_80690B0
 	.word byte_80690B8
-byte_80690A8: .byte 0x1C, 0x56, 0x1C, 0x63, 0x1C, 0x52, 0xFF, 0xFF
-byte_80690B0: .byte 0x1C, 0x56, 0x1C, 0x63, 0x1C, 0x52, 0xFF, 0xFF
-byte_80690B8: .byte 0x1C, 0x56, 0x1C, 0x63, 0x1C, 0x52, 0x18, 0x55, 0xFF
+byte_80690A8:
+	.byte 0x1C, 0x56, 0x1C, 0x63, 0x1C, 0x52, 0xFF, 0xFF
+byte_80690B0:
+	.byte 0x1C, 0x56, 0x1C, 0x63, 0x1C, 0x52, 0xFF, 0xFF
+byte_80690B8:
+	.byte 0x1C, 0x56, 0x1C, 0x63, 0x1C, 0x52, 0x18, 0x55, 0xFF
 	.byte 0xFF
 	thumb_func_end JudgeTreeComp_EnterMapGroup
 
@@ -57,11 +64,14 @@ JudgeTreeComp_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_80690D0: .word off_80690D4
-off_80690D4: .word off_80690E0
+off_80690D0:
+	.word off_80690D4
+off_80690D4:
+	.word off_80690E0
 	.word off_8069100
 	.word off_8069120
-off_80690E0: .word off_8068D18
+off_80690E0:
+	.word off_8068D18
 	.word byte_8068E48
 	.word off_8068E88
 	.word off_8068ED0
@@ -69,7 +79,8 @@ off_80690E0: .word off_8068D18
 	.word off_8068F30
 	.word byte_8068FA0
 	.word 0xFFFFFFFF
-off_8069100: .word off_8068D18
+off_8069100:
+	.word off_8068D18
 	.word byte_8068E48
 	.word off_8068E88
 	.word off_8068ED0
@@ -77,7 +88,8 @@ off_8069100: .word off_8068D18
 	.word off_8068F30
 	.word byte_8068FA0
 	.word 0xFFFFFFFF
-off_8069120: .word off_8068D18
+off_8069120:
+	.word off_8068D18
 	.word byte_8068E48
 	.word off_8068E88
 	.word off_8068ED0
@@ -111,11 +123,9 @@ JudgeTreeComp_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8069174: .word off_8069178
-off_8069178: .word nullsub_39+1
-	.word BGScrollCB_BG3UpScroll+1
-	.word nullsub_38+1
-	.word 0x800
+off_8069174:
+	.word off_8069178
+off_8069178:
 	.word nullsub_39+1
 	.word BGScrollCB_BG3UpScroll+1
 	.word nullsub_38+1
@@ -124,11 +134,18 @@ off_8069178: .word nullsub_39+1
 	.word BGScrollCB_BG3UpScroll+1
 	.word nullsub_38+1
 	.word 0x800
-off_80691A8: .word off_80691AC
-off_80691AC: .word off_80691B8
+	.word nullsub_39+1
+	.word BGScrollCB_BG3UpScroll+1
+	.word nullsub_38+1
+	.word 0x800
+off_80691A8:
+	.word off_80691AC
+off_80691AC:
 	.word off_80691B8
 	.word off_80691B8
-off_80691B8: .word off_8612A28
+	.word off_80691B8
+off_80691B8:
+	.word off_8612A28
 	.word 0x6008020
 	.word dword_8612CF0
 	.word 0x1800
@@ -149,8 +166,10 @@ JudgeTreeComp_UnkFunction_80691d4:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
-off_80691E8: .word off_80691EC
-off_80691EC: .word nullsub_31+1
+off_80691E8:
+	.word off_80691EC
+off_80691EC:
+	.word nullsub_31+1
 	.word nullsub_32+1
 	.word nullsub_33+1
 	thumb_func_end JudgeTreeComp_UnkFunction_80691d4
@@ -182,8 +201,10 @@ JudgeTreeComp_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_8069214: .word off_8069218
-off_8069218: .word byte_8069224
+off_8069214:
+	.word off_8069218
+off_8069218:
+	.word byte_8069224
 	.word byte_8069264
 	.word byte_80692A4
 	thumb_func_end JudgeTreeComp_SpawnMapObjectsForMap

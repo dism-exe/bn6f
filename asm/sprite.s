@@ -20,7 +20,8 @@ sprite_loadAnimationData_spritePtrProvidedDirectly:
 	mov lr, pc
 	bx r4
 	pop {r4,pc}
-off_80026C0: .word _sprite_loadAnimationData+1
+off_80026C0:
+	.word _sprite_loadAnimationData+1
 	thumb_func_end sprite_loadAnimationData_spritePtrProvidedDirectly
 
 	thumb_func_start sprite_update
@@ -43,7 +44,8 @@ sprite_chatbox_80026D6:
 	mov lr, pc
 	bx r4
 	pop {r4,pc}
-off_80026E0: .word _sprite_update+1
+off_80026E0:
+	.word _sprite_update+1
 	thumb_func_end sprite_chatbox_80026D6
 
 // (int a1, int a2, int a3) ->
@@ -84,8 +86,10 @@ loc_8002716:
 	strb r1, [r5,#oObjectSprite_Unk_03]
 	pop {r4,r5,pc}
 	.balign 4, 0
-off_8002724: .word SpritePointersList
-sprite8002728: .word spriteWhiteDot
+off_8002724:
+	.word SpritePointersList
+sprite8002728:
+	.word spriteWhiteDot
 	thumb_func_end sprite_load
 
 // (void *a1) -> void
@@ -128,7 +132,8 @@ spriteLoadMugshot_800275A:
 	strh r0, [r5,#0x16]
 	pop {pc}
 	.balign 4, 0
-off_800276C: .word mugshotSpritePtrs
+off_800276C:
+	.word mugshotSpritePtrs
 	thumb_func_end spriteLoadMugshot_800275A
 
 // (int a1, int a2) -> void
@@ -156,7 +161,8 @@ loc_800278A:
 	strh r0, [r5,#0x16]
 	pop {r4-r6,pc}
 	.balign 4, 0
-off_8002798: .word guiSpritePtrs
+off_8002798:
+	.word guiSpritePtrs
 	thumb_func_end initGuiSprite_8002770
 
 	thumb_local_start
@@ -171,7 +177,8 @@ sub_800279C:
 	strh r0, [r5,#0x16]
 	pop {r5,pc}
 	.balign 4, 0
-off_80027B0: .word mugshotSpritePtrs
+off_80027B0:
+	.word mugshotSpritePtrs
 	thumb_func_end sub_800279C
 
 	thumb_func_start sub_80027B4
@@ -181,8 +188,10 @@ sub_80027B4:
 	str r1, [r0]
 	mov pc, lr
 	.balign 4, 0
-off_80027BC: .word dword_200F350
-dword_80027C0: .word 0x1
+off_80027BC:
+	.word dword_200F350
+dword_80027C0:
+	.word 0x1
 	thumb_func_end sub_80027B4
 
 	thumb_func_start sub_80027C4
@@ -232,10 +241,14 @@ sub_80027F4:
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
 	.balign 4, 0
-off_8002804: .word byte_20098A8
-dword_8002808: .word 0x32F
-dword_800280C: .word 0x2FF
-byte_8002810: .byte 0xFF, 0x2, 0x0, 0x0, 0xFF, 0x2, 0x0, 0x0
+off_8002804:
+	.word byte_20098A8
+dword_8002808:
+	.word 0x32F
+dword_800280C:
+	.word 0x2FF
+byte_8002810:
+	.byte 0xFF, 0x2, 0x0, 0x0, 0xFF, 0x2, 0x0, 0x0
 	thumb_func_end sub_80027F4
 
 	thumb_func_start sub_8002818
@@ -282,8 +295,10 @@ loc_8002840:
 locret_8002862:
 	pop {pc}
 	.balign 4, 0
-off_8002864: .word sub_3005EF0+1
-off_8002868: .word byte_3001550
+off_8002864:
+	.word sub_3005EF0+1
+off_8002868:
+	.word byte_3001550
 	thumb_func_end sub_8002818
 
 	thumb_func_start sub_800286C
@@ -315,7 +330,8 @@ sub_8002874:
 locret_8002896:
 	pop {r5,pc}
 	.balign 4, 0
-dword_8002898: .word 0x6010000
+dword_8002898:
+	.word 0x6010000
 	thumb_func_end sub_8002874
 
 	thumb_func_start sprite_resetObjVars_800289C
@@ -331,9 +347,12 @@ sprite_resetObjVars_800289C:
 	bl WordFill
 	pop {pc}
 	.balign 4, 0
-off_80028B4: .word dword_20093A8
-off_80028B8: .word dword_200A890
-off_80028BC: .word 0x388
+off_80028B4:
+	.word dword_20093A8
+off_80028B8:
+	.word dword_200A890
+off_80028BC:
+	.word 0x388
 	thumb_func_end sprite_resetObjVars_800289C
 
 	thumb_func_start sub_80028C0
@@ -344,8 +363,10 @@ sub_80028C0:
 	strb r1, [r2,r0]
 	mov pc, lr
 	.balign 4, 0
-off_80028CC: .word dword_200F340
-off_80028D0: .word byte_200F389
+off_80028CC:
+	.word dword_200F340
+off_80028D0:
+	.word byte_200F389
 	thumb_func_end sub_80028C0
 
 	thumb_func_start initUncompSpriteState_80028d4
@@ -792,9 +813,12 @@ loc_8002BB2:
 	mov r12, r3
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8002BC0: .word SpritePointersList
-dword_8002BC4: .word 0x2040000
-off_8002BC8: .word dword_2033000
+off_8002BC0:
+	.word SpritePointersList
+dword_8002BC4:
+	.word 0x2040000
+off_8002BC8:
+	.word dword_2033000
 	thumb_func_end sprite_decompressTemp
 
 	thumb_local_start
@@ -821,9 +845,11 @@ sub_8002BEA:
 	push {r4-r7,lr}
 	pop {r4-r7,pc}
 	.byte 0, 0
-off_8002BF0: .word byte_200DCA0
+off_8002BF0:
+	.word byte_200DCA0
 	.word dword_8002BF8
-dword_8002BF8: .word 0x4E550600
+dword_8002BF8:
+	.word 0x4E550600
 DebugStrSprite_8002BFC: .ascii "COMP\n"
 	.ascii "STR:%8x\n"
 	.ascii "END:%8x\n"
@@ -995,7 +1021,8 @@ sub_8002D06:
 	mov lr, pc
 	bx r3
 	pop {r5,pc}
-off_8002D10: .word sub_30061E8+1
+off_8002D10:
+	.word sub_30061E8+1
 	thumb_func_end sub_8002D06
 
 	thumb_func_start sprite_makeScalable

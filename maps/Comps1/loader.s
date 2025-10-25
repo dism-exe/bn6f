@@ -36,10 +36,14 @@ Comps1_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_806D950: .word off_806D6B0
-off_806D954: .word unk_2037800
-off_806D958: .word off_806D95C
-off_806D95C: .word byte_806D99C
+off_806D950:
+	.word off_806D6B0
+off_806D954:
+	.word unk_2037800
+off_806D958:
+	.word off_806D95C
+off_806D95C:
+	.word byte_806D99C
 	.word dword_806D9A2
 	.word byte_806D9A6
 	.word byte_806D9B0
@@ -55,23 +59,39 @@ off_806D95C: .word byte_806D99C
 	.word byte_806D9EC
 	.word byte_806D9F2
 	.word dword_806D9F8
-byte_806D99C: .byte 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF
-dword_806D9A2: .word 0xFFFF061C
-byte_806D9A6: .byte 0x1C, 0x1B, 0x1C, 0x1C, 0x1C, 0x6, 0x1C, 0x12, 0xFF
+byte_806D99C:
+	.byte 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF
+dword_806D9A2:
+	.word 0xFFFF061C
+byte_806D9A6:
+	.byte 0x1C, 0x1B, 0x1C, 0x1C, 0x1C, 0x6, 0x1C, 0x12, 0xFF
 	.byte 0xFF
-byte_806D9B0: .byte 0x1C, 0x29, 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF
-dword_806D9B8: .word 0xFFFF061C
-byte_806D9BC: .byte 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF
-byte_806D9C2: .byte 0x1C, 0x29, 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF
-byte_806D9CA: .byte 0x1C, 0x5E, 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF
-dword_806D9D2: .word 0xFFFF061C
-byte_806D9D6: .byte 0x1C, 0x5C, 0x1C, 0x6, 0xFF, 0xFF
-dword_806D9DC: .word 0xFFFF061C
-byte_806D9E0: .byte 0x1C, 0x5C, 0x1C, 0x6, 0xFF, 0xFF
-byte_806D9E6: .byte 0x1C, 0x5C, 0x1C, 0x6, 0xFF, 0xFF
-byte_806D9EC: .byte 0x1C, 0x5C, 0x1C, 0x6, 0xFF, 0xFF
-byte_806D9F2: .byte 0x1C, 0x5C, 0x1C, 0x6, 0xFF, 0xFF
-dword_806D9F8: .word 0xFFFF061C
+byte_806D9B0:
+	.byte 0x1C, 0x29, 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF
+dword_806D9B8:
+	.word 0xFFFF061C
+byte_806D9BC:
+	.byte 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF
+byte_806D9C2:
+	.byte 0x1C, 0x29, 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF
+byte_806D9CA:
+	.byte 0x1C, 0x5E, 0x1C, 0x6, 0x1C, 0x12, 0xFF, 0xFF
+dword_806D9D2:
+	.word 0xFFFF061C
+byte_806D9D6:
+	.byte 0x1C, 0x5C, 0x1C, 0x6, 0xFF, 0xFF
+dword_806D9DC:
+	.word 0xFFFF061C
+byte_806D9E0:
+	.byte 0x1C, 0x5C, 0x1C, 0x6, 0xFF, 0xFF
+byte_806D9E6:
+	.byte 0x1C, 0x5C, 0x1C, 0x6, 0xFF, 0xFF
+byte_806D9EC:
+	.byte 0x1C, 0x5C, 0x1C, 0x6, 0xFF, 0xFF
+byte_806D9F2:
+	.byte 0x1C, 0x5C, 0x1C, 0x6, 0xFF, 0xFF
+dword_806D9F8:
+	.word 0xFFFF061C
 	thumb_func_end Comps1_EnterMapGroup
 
 	thumb_func_start Comps1_LoadGFXAnims
@@ -83,8 +103,9 @@ Comps1_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_806DA0C: .word off_806DA10
-off_806DA10: .word off_806DA50
+off_806DA0C:
+	.word off_806DA10
+off_806DA10:
 	.word off_806DA50
 	.word off_806DA50
 	.word off_806DA50
@@ -100,7 +121,9 @@ off_806DA10: .word off_806DA50
 	.word off_806DA50
 	.word off_806DA50
 	.word off_806DA50
-off_806DA50: .word byte_806D820
+	.word off_806DA50
+off_806DA50:
+	.word byte_806D820
 	.word 0xFFFFFFFF
 	thumb_func_end Comps1_LoadGFXAnims
 
@@ -128,11 +151,9 @@ Comps1_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_806DA8C: .word off_806DA90
-off_806DA90: .word nullsub_39+1
-	.word BGScrollCB_BG3Diagonal3to2Scroll+1
-	.word nullsub_38+1
-	.word 0x800
+off_806DA8C:
+	.word off_806DA90
+off_806DA90:
 	.word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
@@ -193,30 +214,38 @@ off_806DA90: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
 	.word 0x800
-off_806DB90: .word off_806DB94
-off_806DB94: .word off_806DBD4
-	.word off_806DBF0
-	.word off_806DBD4
-	.word off_806DBD4
-	.word off_806DBD4
-	.word off_806DBD4
-	.word off_806DBD4
-	.word off_806DBD4
-	.word off_806DBD4
+	.word nullsub_39+1
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
+off_806DB90:
+	.word off_806DB94
+off_806DB94:
 	.word off_806DBD4
 	.word off_806DBF0
 	.word off_806DBD4
 	.word off_806DBD4
 	.word off_806DBD4
 	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBD4
 	.word off_806DBF0
-off_806DBD4: .word off_8616598
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBF0
+off_806DBD4:
+	.word off_8616598
 	.word 0x6008020
 	.word byte_8616634
 	.word 0x1800
 	.word byte_8616760
 	.byte 0x60, 0x19, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0
-off_806DBF0: .word off_8616598
+off_806DBF0:
+	.word off_8616598
 	.word 0x6008020
 	.word byte_8616634
 	.word 0x1800
@@ -243,8 +272,10 @@ Comps1_UnkFunction_806dc0c:
 	bx r7
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_806DC34: .word off_806DC38
-off_806DC38: .word nullsub_70+1
+off_806DC34:
+	.word off_806DC38
+off_806DC38:
+	.word nullsub_70+1
 	.word sub_806DC7A+1
 	.word nullsub_70+1
 	.word nullsub_70+1
@@ -327,7 +358,8 @@ Comps1_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_806DCE8: .word pt_806DCEC
+off_806DCE8:
+	.word pt_806DCEC
 pt_806DCEC:
 	// <endpool> <endfile>
 	.word byte_806DD2C

@@ -39,11 +39,16 @@ ACDCTown_EnterMapGroup:
 	str r0, [r5,#oGameState_Unk_64]
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_804CEEC: .word off_804CE68
-off_804CEF0: .word unk_2037800
-off_804CEF4: .word off_804D0E4
-off_804CEF8: .word off_804CEFC
-off_804CEFC: .word dword_804CF1C
+off_804CEEC:
+	.word off_804CE68
+off_804CEF0:
+	.word unk_2037800
+off_804CEF4:
+	.word off_804D0E4
+off_804CEF8:
+	.word off_804CEFC
+off_804CEFC:
+	.word dword_804CF1C
 	.word byte_804CF20
 	.word byte_804CF26
 	.word byte_804CF28
@@ -51,14 +56,22 @@ off_804CEFC: .word dword_804CF1C
 	.word byte_804CF2C
 	.word byte_804CF2E
 	.word byte_804CF30
-dword_804CF1C: .word 0xFFFF1318
-byte_804CF20: .byte 0x1C, 0xA, 0x18, 0x13, 0xFF, 0xFF
-byte_804CF26: .byte 0xFF, 0xFF
-byte_804CF28: .byte 0xFF, 0xFF
-byte_804CF2A: .byte 0xFF, 0xFF
-byte_804CF2C: .byte 0xFF, 0xFF
-byte_804CF2E: .byte 0xFF, 0xFF
-byte_804CF30: .byte 0xFF, 0xFF
+dword_804CF1C:
+	.word 0xFFFF1318
+byte_804CF20:
+	.byte 0x1C, 0xA, 0x18, 0x13, 0xFF, 0xFF
+byte_804CF26:
+	.byte 0xFF, 0xFF
+byte_804CF28:
+	.byte 0xFF, 0xFF
+byte_804CF2A:
+	.byte 0xFF, 0xFF
+byte_804CF2C:
+	.byte 0xFF, 0xFF
+byte_804CF2E:
+	.byte 0xFF, 0xFF
+byte_804CF30:
+	.byte 0xFF, 0xFF
 	thumb_func_end ACDCTown_EnterMapGroup
 
 	thumb_func_start ACDCTown_LoadGFXAnims
@@ -70,8 +83,10 @@ ACDCTown_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_804CF40: .word off_804CF44
-off_804CF44: .word dword_804CF64
+off_804CF40:
+	.word off_804CF44
+off_804CF44:
+	.word dword_804CF64
 	.word dword_804CF68
 	.word dword_804CF6C
 	.word dword_804CF70
@@ -79,14 +94,22 @@ off_804CF44: .word dword_804CF64
 	.word dword_804CF78
 	.word dword_804CF7C
 	.word dword_804CF80
-dword_804CF64: .word 0xFFFFFFFF
-dword_804CF68: .word 0xFFFFFFFF
-dword_804CF6C: .word 0xFFFFFFFF
-dword_804CF70: .word 0xFFFFFFFF
-dword_804CF74: .word 0xFFFFFFFF
-dword_804CF78: .word 0xFFFFFFFF
-dword_804CF7C: .word 0xFFFFFFFF
-dword_804CF80: .word 0xFFFFFFFF
+dword_804CF64:
+	.word 0xFFFFFFFF
+dword_804CF68:
+	.word 0xFFFFFFFF
+dword_804CF6C:
+	.word 0xFFFFFFFF
+dword_804CF70:
+	.word 0xFFFFFFFF
+dword_804CF74:
+	.word 0xFFFFFFFF
+dword_804CF78:
+	.word 0xFFFFFFFF
+dword_804CF7C:
+	.word 0xFFFFFFFF
+dword_804CF80:
+	.word 0xFFFFFFFF
 	thumb_func_end ACDCTown_LoadGFXAnims
 
 	thumb_func_start ACDCTown_SpawnMapObjectsForMap
@@ -101,7 +124,8 @@ ACDCTown_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_804CF98: .word off_804CF9C
+off_804CF98:
+	.word off_804CF9C
 off_804CF9C:
 	// <endpool> <endfile>
 	.word byte_804CFBC

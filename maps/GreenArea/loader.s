@@ -36,14 +36,20 @@ GreenArea_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8077D58: .word off_8077618
-off_8077D5C: .word unk_2037800
-off_8077D60: .word off_8077D64
-off_8077D64: .word byte_8077D6C
+off_8077D58:
+	.word off_8077618
+off_8077D5C:
+	.word unk_2037800
+off_8077D60:
+	.word off_8077D64
+off_8077D64:
+	.word byte_8077D6C
 	.word byte_8077D78
-byte_8077D6C: .byte 0x1C, 0x66, 0x1C, 0x67, 0x1C, 0x68, 0x1C, 0x6A, 0x1C
+byte_8077D6C:
+	.byte 0x1C, 0x66, 0x1C, 0x67, 0x1C, 0x68, 0x1C, 0x6A, 0x1C
 	.byte 0x1F, 0xFF, 0xFF
-byte_8077D78: .byte 0x1C, 0x2B, 0x1C, 0x53, 0x1C, 0x1F, 0x1C, 0x66, 0x1C
+byte_8077D78:
+	.byte 0x1C, 0x2B, 0x1C, 0x53, 0x1C, 0x1F, 0x1C, 0x66, 0x1C
 	.byte 0x67, 0x1C, 0x68, 0x1C, 0x6A, 0x18, 0x1C, 0xFF, 0xFF
 	thumb_func_end GreenArea_EnterMapGroup
 
@@ -56,10 +62,13 @@ GreenArea_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_8077D98: .word off_8077D9C
-off_8077D9C: .word off_8077DA4
+off_8077D98:
+	.word off_8077D9C
+off_8077D9C:
+	.word off_8077DA4
 	.word off_8077DC4
-off_8077DA4: .word off_8077720
+off_8077DA4:
+	.word off_8077720
 	.word byte_8077A10
 	.word byte_8077A60
 	.word byte_8077AB0
@@ -67,7 +76,8 @@ off_8077DA4: .word off_8077720
 	.word byte_8077B30
 	.word byte_8077B70
 	.word 0xFFFFFFFF
-off_8077DC4: .word off_8077720
+off_8077DC4:
+	.word off_8077720
 	.word byte_8077BC0
 	.word byte_8077BF0
 	.word byte_8077C20
@@ -100,8 +110,10 @@ GreenArea_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8077E14: .word off_8077E18
-off_8077E18: .word nullsub_39+1
+off_8077E14:
+	.word off_8077E18
+off_8077E18:
+	.word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
 	.word 0x800
@@ -109,10 +121,13 @@ off_8077E18: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
 	.word 0x800
-off_8077E38: .word off_8077E3C
-off_8077E3C: .word off_8077E44
+off_8077E38:
+	.word off_8077E3C
+off_8077E3C:
 	.word off_8077E44
-off_8077E44: .word off_8617068
+	.word off_8077E44
+off_8077E44:
+	.word off_8617068
 	.word 0x6008020
 	.word dword_8617190
 	.word 0x1800
@@ -133,8 +148,10 @@ GreenArea_UnkFunction_8077e60:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
-off_8077E74: .word off_8077E78
-off_8077E78: .word nullsub_77+1
+off_8077E74:
+	.word off_8077E78
+off_8077E78:
+	.word nullsub_77+1
 	.word nullsub_78+1
 	thumb_func_end GreenArea_UnkFunction_8077e60
 
@@ -165,7 +182,8 @@ GreenArea_SpawnMapObjectsForMap:
 
 	pop {pc}
 	.balign 4, 0
-off_8077E98: .word pt_8077E9C
+off_8077E98:
+	.word pt_8077E9C
 pt_8077E9C:
 	.word byte_8077EA4
 	.word byte_8077EF8

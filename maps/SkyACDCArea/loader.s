@@ -36,17 +36,24 @@ SkyACDCArea_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_807A938: .word off_8079F74
-off_807A93C: .word unk_2037800
-off_807A940: .word off_807A944
-off_807A944: .word byte_807A950
+off_807A938:
+	.word off_8079F74
+off_807A93C:
+	.word unk_2037800
+off_807A940:
+	.word off_807A944
+off_807A944:
+	.word byte_807A950
 	.word byte_807A95A
 	.word byte_807A964
-byte_807A950: .byte 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x2B, 0x1C, 0x79, 0xFF
+byte_807A950:
+	.byte 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x2B, 0x1C, 0x79, 0xFF
 	.byte 0xFF
-byte_807A95A: .byte 0x1C, 0x64, 0x1C, 0xE, 0x1C, 0x95, 0x1C, 0x79, 0xFF
+byte_807A95A:
+	.byte 0x1C, 0x64, 0x1C, 0xE, 0x1C, 0x95, 0x1C, 0x79, 0xFF
 	.byte 0xFF
-byte_807A964: .byte 0x1C, 0x7E, 0x1C, 0x7F, 0x1C, 0x80, 0x1C, 0x1F, 0x18
+byte_807A964:
+	.byte 0x1C, 0x7E, 0x1C, 0x7F, 0x1C, 0x80, 0x1C, 0x1F, 0x18
 	.byte 0x38, 0x18, 0x39, 0x18, 0x3A, 0xFF, 0xFF
 	thumb_func_end SkyACDCArea_EnterMapGroup
 
@@ -59,20 +66,25 @@ SkyACDCArea_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_807A984: .word off_807A988
-off_807A988: .word off_807A994
+off_807A984:
+	.word off_807A988
+off_807A988:
+	.word off_807A994
 	.word off_807A9A0
 	.word off_807A9B8
-off_807A994: .word off_807A080
+off_807A994:
+	.word off_807A080
 	.word byte_807A370
 	.word 0xFFFFFFFF
-off_807A9A0: .word off_807A080
+off_807A9A0:
+	.word off_807A080
 	.word byte_807A3C0
 	.word byte_807A410
 	.word byte_807A460
 	.word byte_807A4B0
 	.word 0xFFFFFFFF
-off_807A9B8: .word off_807A4E0
+off_807A9B8:
+	.word off_807A4E0
 	.word byte_807A7D0
 	.word byte_807A800
 	.word byte_807A850
@@ -128,11 +140,9 @@ sub_807A9FE:
 	bl sub_8030540
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_807AA30: .word off_807AA34
-off_807AA34: .word nullsub_39+1
-	.word BGScrollCB_BG3Diagonal3to2Scroll+1
-	.word nullsub_38+1
-	.word 0x800
+off_807AA30:
+	.word off_807AA34
+off_807AA34:
 	.word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
@@ -141,18 +151,26 @@ off_807AA34: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
 	.word 0x800
-off_807AA64: .word off_807AA68
-off_807AA68: .word off_807AA74
+	.word nullsub_39+1
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
+off_807AA64:
+	.word off_807AA68
+off_807AA68:
+	.word off_807AA74
 	.word off_807AA74
 	.word off_807AA90
-off_807AA74: .word off_8617068
+off_807AA74:
+	.word off_8617068
 	.word 0x6008020
 	.word dword_8617190
 	.word 0x1800
 	.word dword_8618AB4
 	.word palette_3001960
 	.word 0x20
-off_807AA90: .word off_8617068
+off_807AA90:
+	.word off_8617068
 	.word 0x6008020
 	.word dword_8617190
 	.word 0x1800
@@ -173,8 +191,10 @@ SkyACDCArea_UnkFunction_807aaac:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
-off_807AAC0: .word off_807AAC4
-off_807AAC4: .word nullsub_81+1
+off_807AAC0:
+	.word off_807AAC4
+off_807AAC4:
+	.word nullsub_81+1
 	.word nullsub_82+1
 	.word nullsub_83+1
 	thumb_func_end SkyACDCArea_UnkFunction_807aaac
@@ -206,7 +226,8 @@ SkyACDCArea_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_807AAEC: .word pt_807AAF0
+off_807AAEC:
+	.word pt_807AAF0
 pt_807AAF0:
 	.word byte_807AAFC
 	.word byte_807AC18

@@ -15,7 +15,8 @@ CopyBackgroundTiles812EAAC:
 	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_812EAC0: .word unk_201EE20
+off_812EAC0:
+	.word unk_201EE20
 	thumb_func_end CopyBackgroundTiles812EAAC
 
 	thumb_func_start sub_812EAC4
@@ -104,10 +105,13 @@ loc_812EB62:
 	add sp, sp, #4
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_812EB68: .word word_2023FA0
+off_812EB68:
+	.word word_2023FA0
 	.word word_2023FA4
-off_812EB70: .word 0x14C
-off_812EB74: .word 0xBC
+off_812EB70:
+	.word 0x14C
+off_812EB74:
+	.word 0xBC
 	thumb_func_end sub_812EAC4
 
 	thumb_func_start sub_812EB78
@@ -118,7 +122,8 @@ sub_812EB78:
 	bl sub_80465A0 // (void *a1) -> void
 	pop {pc}
 	.balign 4, 0
-off_812EB84: .word byte_812DA94
+off_812EB84:
+	.word byte_812DA94
 	thumb_func_end sub_812EB78
 
 	thumb_func_start sub_812EB88
@@ -147,8 +152,10 @@ loc_812EB9A:
 locret_812EBAC:
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_812EBB0: .word byte_812DABC
-off_812EBB4: .word byte_812DAC4
+off_812EBB0:
+	.word byte_812DABC
+off_812EBB4:
+	.word byte_812DAC4
 	thumb_func_end sub_812EB92
 
 	thumb_local_start
@@ -166,7 +173,8 @@ sub_812EBB8:
 locret_812EBD0:
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_812EBD4: .word byte_812DACC
+off_812EBD4:
+	.word byte_812DACC
 	thumb_func_end sub_812EBB8
 
 	thumb_local_start
@@ -214,7 +222,8 @@ sub_812EC04:
 	bl sub_811BC00
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_812EC28: .word word_2023FA0
+off_812EC28:
+	.word word_2023FA0
 	thumb_func_end sub_812EC04
 
 	thumb_func_start sub_812EC2C
@@ -282,7 +291,8 @@ loc_812EC90:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	.word byte_8129178
-off_812ECA8: .word dword_8129180
+off_812ECA8:
+	.word dword_8129180
 	thumb_func_start sub_812ECAC
 sub_812ECAC:
 	push {r4-r7,lr}
@@ -355,7 +365,8 @@ locret_812ED2A:
 sub_812ED2C:
 	ldr r0, off_812ED30 // =unk_2037780 
 	mov pc, lr
-off_812ED30: .word unk_2037780
+off_812ED30:
+	.word unk_2037780
 	thumb_func_end sub_812ED2C
 
 	thumb_func_start sub_812ED34
@@ -376,7 +387,8 @@ sub_812ED34:
 	orr r0, r2
 	pop {pc}
 	.balign 4, 0
-off_812ED54: .word word_2023FA0
+off_812ED54:
+	.word word_2023FA0
 	thumb_func_end sub_812ED34
 
 	thumb_func_start sub_812ED58
@@ -443,7 +455,8 @@ sub_812ED94:
 	bl sub_812EDE4
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_812EDE0: .word unk_201E920
+off_812EDE0:
+	.word unk_201E920
 	thumb_func_end sub_812ED94
 
 	thumb_func_start sub_812EDE4
@@ -459,8 +472,10 @@ loc_812EDEE:
 	bl sub_80465A0 // (void *a1) -> void
 	pop {pc}
 	.balign 4, 0
-off_812EDF4: .word byte_812DAD4
-off_812EDF8: .word byte_812DADC
+off_812EDF4:
+	.word byte_812DAD4
+off_812EDF8:
+	.word byte_812DADC
 	thumb_func_end sub_812EDE4
 
 	thumb_func_start sub_812EDFC
@@ -476,8 +491,10 @@ sub_812EDFC:
 	bl sub_8120280
 	pop {r4,pc}
 	.balign 4, 0
-off_812EE14: .word off_812EE18
-off_812EE18: .word unk_2024F90
+off_812EE14:
+	.word off_812EE18
+off_812EE18:
+	.word unk_2024F90
 	.word unk_2024FB0
 	thumb_func_end sub_812EDFC
 
@@ -558,17 +575,25 @@ loc_812EE94:
 	mov r5, #2
 	bl call_sub_3005EBA
 	pop {r4-r7,pc}
-off_812EEAC: .word off_812EEB0
-off_812EEB0: .word unk_2024F90
+off_812EEAC:
+	.word off_812EEB0
+off_812EEB0:
+	.word unk_2024F90
 	.word unk_2024FB0
-off_812EEB8: .word byte_812EEBC
-byte_812EEBC: .byte 0x3, 0x0, 0x0, 0x0, 0x12, 0x0, 0x0, 0x0, 0xB, 0x0, 0x0, 0x0, 0xB, 0x0, 0x0
+off_812EEB8:
+	.word byte_812EEBC
+byte_812EEBC:
+	.byte 0x3, 0x0, 0x0, 0x0, 0x12, 0x0, 0x0, 0x0, 0xB, 0x0, 0x0, 0x0, 0xB, 0x0, 0x0
 	.byte 0x0, 0x9, 0x0, 0x0, 0x0
-off_812EED0: .word off_812EED8
-off_812EED4: .word byte_812EEE1
-off_812EED8: .word byte_2030000
+off_812EED0:
+	.word off_812EED8
+off_812EED4:
+	.word byte_812EEE1
+off_812EED8:
+	.word byte_2030000
 	.byte 0x2, 0x2, 0x1, 0x1, 0x0
-byte_812EEE1: .byte 0x0, 0x0, 0x3, 0x2, 0x2, 0x2, 0x1, 0x1, 0x0, 0x0, 0x0
+byte_812EEE1:
+	.byte 0x0, 0x0, 0x3, 0x2, 0x2, 0x2, 0x1, 0x1, 0x0, 0x0, 0x0
 	thumb_func_end sub_812EE78
 
 	thumb_local_start
@@ -657,12 +682,18 @@ sub_812EF60:
 	mov r5, #6
 	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4-r7,pc}
-off_812EF8C: .word word_2023FA0
-off_812EF90: .word unk_2025070
-off_812EF94: .word byte_201B200
-dword_812EF98: .word 0x600B800
-off_812EF9C: .word dword_86A5D60
-off_812EFA0: .word unk_2025A70
+off_812EF8C:
+	.word word_2023FA0
+off_812EF90:
+	.word unk_2025070
+off_812EF94:
+	.word byte_201B200
+dword_812EF98:
+	.word 0x600B800
+off_812EF9C:
+	.word dword_86A5D60
+off_812EFA0:
+	.word unk_2025A70
 	thumb_local_start
 sub_812EFA4:
 	push {r4-r7,lr}
@@ -687,8 +718,10 @@ loc_812EFAE:
 	blt loc_812EFAE
 	pop {r4-r7,pc}
 	.balign 4, 0
-dword_812EFCC: .word 0x21C0
-off_812EFD0: .word unk_2025A70
+dword_812EFCC:
+	.word 0x21C0
+off_812EFD0:
+	.word unk_2025A70
 	thumb_func_end sub_812EFA4
 
 	thumb_func_start sub_812EFD4

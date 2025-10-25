@@ -39,19 +39,28 @@ SkyTown_EnterMapGroup:
 	str r0, [r5,#oGameState_Unk_64]
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_80603C8: .word off_8060184
-off_80603CC: .word unk_2037800
-off_80603D0: .word off_80606BC
-off_80603D4: .word off_80603D8
-off_80603D8: .word byte_80603E8
+off_80603C8:
+	.word off_8060184
+off_80603CC:
+	.word unk_2037800
+off_80603D0:
+	.word off_80606BC
+off_80603D4:
+	.word off_80603D8
+off_80603D8:
+	.word byte_80603E8
 	.word byte_80603EE
 	.word byte_80603FC
 	.word byte_80603FE
-byte_80603E8: .byte 0x1C, 0x13, 0x18, 0x21, 0xFF, 0xFF
-byte_80603EE: .byte 0x1C, 0x6E, 0x1C, 0x58, 0x1C, 0x41, 0x1C, 0x90, 0x1C
+byte_80603E8:
+	.byte 0x1C, 0x13, 0x18, 0x21, 0xFF, 0xFF
+byte_80603EE:
+	.byte 0x1C, 0x6E, 0x1C, 0x58, 0x1C, 0x41, 0x1C, 0x90, 0x1C
 	.byte 0x91, 0x1C, 0x4B, 0xFF, 0xFF
-byte_80603FC: .byte 0xFF, 0xFF
-byte_80603FE: .byte 0x1C, 0x65, 0x18, 0x24, 0x18, 0x25, 0xFF, 0xFF
+byte_80603FC:
+	.byte 0xFF, 0xFF
+byte_80603FE:
+	.byte 0x1C, 0x65, 0x18, 0x24, 0x18, 0x25, 0xFF, 0xFF
 	thumb_func_end SkyTown_EnterMapGroup
 
 	thumb_func_start SkyTown_LoadGFXAnims
@@ -63,7 +72,8 @@ SkyTown_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_8060414: .word off_8060418
+off_8060414:
+	.word off_8060418
 off_8060418:
 	.word off_8060428
 	.word off_8060430
@@ -96,7 +106,8 @@ SkyTown_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_8060460: .word pt_8060464
+off_8060460:
+	.word pt_8060464
 pt_8060464:
 	// <endpool> <endfile>
 	.word byte_8060474

@@ -112,26 +112,46 @@ start_copyMemory:
 	bne start_copyMemory
 	bx lr
 	.balign 4, 0
-off_80001EC: .word byte_3007F60
-off_80001F0: .word byte_3007FE0
-off_80001F4: .word iStack
-off_80001F8: .word byte_3007FFC
-off_80001FC: .word sub_3005B00
-off_8000200: .word GamePakWaitstateControl
-dword_8000204: .word 0x45B4
-mem: .word IWRAMRoutinesROMLocation
-off_800020C: .word sub_3005B00
-IWRAMRoutinesSize_p: .word 0x1ED4
-off_8000214: .word SetPrimaryToolkitPointers+1 // () -> ()
-off_8000218: .word RandomizeExtraToolkitPointers+1 // () -> ?
-off_800021C: .word start_800023C+1 // () -> ()
-off_8000220: .word byte_20081B0
-off_8000224: .word dword_2009930
-off_8000228: .word dword_200A870
-off_800022C: .word GeneralLCDStatus_STAT_LYC_
-off_8000230: .word KeyInterruptControl
-dword_8000234: .word 0x83FF
-off_8000238: .word main_+1
+off_80001EC:
+	.word byte_3007F60
+off_80001F0:
+	.word byte_3007FE0
+off_80001F4:
+	.word iStack
+off_80001F8:
+	.word byte_3007FFC
+off_80001FC:
+	.word sub_3005B00
+off_8000200:
+	.word GamePakWaitstateControl
+dword_8000204:
+	.word 0x45B4
+mem:
+	.word IWRAMRoutinesROMLocation
+off_800020C:
+	.word sub_3005B00
+IWRAMRoutinesSize_p:
+	.word 0x1ED4
+off_8000214:
+	.word SetPrimaryToolkitPointers+1 // () -> ()
+off_8000218:
+	.word RandomizeExtraToolkitPointers+1 // () -> ?
+off_800021C:
+	.word start_800023C+1 // () -> ()
+off_8000220:
+	.word byte_20081B0
+off_8000224:
+	.word dword_2009930
+off_8000228:
+	.word dword_200A870
+off_800022C:
+	.word GeneralLCDStatus_STAT_LYC_
+off_8000230:
+	.word KeyInterruptControl
+dword_8000234:
+	.word 0x83FF
+off_8000238:
+	.word main_+1
 	arm_func_end start_copyMemory
 
 // () -> void
@@ -145,7 +165,8 @@ start_800023C: // () -> ()
 
 	pop {r0}
 	bx r0
-off_8000248: .word sub_3005DA0+1
+off_8000248:
+	.word sub_3005DA0+1
 	thumb_func_end start_800023C
 
 	thumb_func_start SetInterruptCallback
@@ -157,7 +178,8 @@ SetInterruptCallback:
 	bx r2
 	pop {r0}
 	bx r0
-off_8000258: .word _SetInterruptCallback+1 // (interrupt_idx: u8, callback: *const ()) -> ()
+off_8000258:
+	.word _SetInterruptCallback+1 // (interrupt_idx: u8, callback: *const ()) -> ()
 	thumb_func_end SetInterruptCallback
 
 	thumb_local_start
@@ -178,8 +200,10 @@ start_dead_8000268:
 	bx r1
 	pop {r0}
 	bx r0
-off_8000274: .word sub_3005DEC+1
-off_8000278: .word sub_3005E02+1
+off_8000274:
+	.word sub_3005DEC+1
+off_8000278:
+	.word sub_3005E02+1
 	thumb_func_end start_dead_8000268
 
 	thumb_func_start start_800027C
@@ -200,8 +224,10 @@ start_8000288:
 	bx r1
 	pop {r0}
 	bx r0
-off_8000294: .word sub_3005E18+1
-off_8000298: .word sub_3005E2C+1
+off_8000294:
+	.word sub_3005E18+1
+off_8000298:
+	.word sub_3005E2C+1
 	thumb_func_end start_8000288
 
 	thumb_local_start
@@ -222,8 +248,10 @@ start_80002A8:
 	bx r1
 	pop {r0}
 	bx r0
-off_80002B4: .word sub_3005E60+1
-off_80002B8: .word sub_3005E6A+1
+off_80002B4:
+	.word sub_3005E60+1
+off_80002B8:
+	.word sub_3005E6A+1
 	thumb_func_end start_80002A8
 
 /*For debugging purposes, connect comment at any range!*/

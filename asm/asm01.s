@@ -146,8 +146,10 @@ sub_801FEEE:
 	bx r2
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_801FF04: .word off_801FF08
-off_801FF08: .word sub_801FF18+1
+off_801FF04:
+	.word off_801FF08
+off_801FF08:
+	.word sub_801FF18+1
 	.word sub_801FFD6+1
 	.word sub_801FFD6+1
 	.word sub_801FF18+1
@@ -390,38 +392,70 @@ sub_80200A4:
 	strb r0, [r3,#0x2] // (eStruct203F7D8+2 - 0x203f7d8)
 	mov pc, lr
 	.balign 4, 0x00
-off_80200B4: .word eStruct203F7D8
-off_80200B8: .word eStruct2036780
-off_80200BC: .word dword_203F4A0
-off_80200C0: .word 0x200
-off_80200C4: .word dword_203CBE0
-off_80200C8: .word 0x100
-off_80200CC: .word eStruct203F7D8
-off_80200D0: .word eStruct203F7D8
-off_80200D4: .word eStruct203F7D8
-off_80200D8: .word eStruct203F7D8
-off_80200DC: .word eStruct2036780
-off_80200E0: .word unk_20399F0
-off_80200E4: .word eStruct2036780
-off_80200E8: .word unk_2039A00
-off_80200EC: .word eStruct203F7D8
-off_80200F0: .word eStruct203F7D8
-off_80200F4: .word unk_20399F0
-off_80200F8: .word dword_203F4A0
-off_80200FC: .word unk_2036120
-off_8020100: .word dword_203F5A0
-off_8020104: .word unk_20362F0
-off_8020108: .word eStruct2036780
-off_802010C: .word dword_203CBE0
-off_8020110: .word eStruct203F7D8
-off_8020114: .word unk_20399F0
-off_8020118: .word dword_203F4A0
-off_802011C: .word unk_2036120
-off_8020120: .word dword_203F5A0
-off_8020124: .word unk_20362F0
-off_8020128: .word eStruct2036780
-off_802012C: .word dword_203CBE0
-off_8020130: .word eStruct203F7D8
+off_80200B4:
+	.word eStruct203F7D8
+off_80200B8:
+	.word eStruct2036780
+off_80200BC:
+	.word dword_203F4A0
+off_80200C0:
+	.word 0x200
+off_80200C4:
+	.word dword_203CBE0
+off_80200C8:
+	.word 0x100
+off_80200CC:
+	.word eStruct203F7D8
+off_80200D0:
+	.word eStruct203F7D8
+off_80200D4:
+	.word eStruct203F7D8
+off_80200D8:
+	.word eStruct203F7D8
+off_80200DC:
+	.word eStruct2036780
+off_80200E0:
+	.word unk_20399F0
+off_80200E4:
+	.word eStruct2036780
+off_80200E8:
+	.word unk_2039A00
+off_80200EC:
+	.word eStruct203F7D8
+off_80200F0:
+	.word eStruct203F7D8
+off_80200F4:
+	.word unk_20399F0
+off_80200F8:
+	.word dword_203F4A0
+off_80200FC:
+	.word unk_2036120
+off_8020100:
+	.word dword_203F5A0
+off_8020104:
+	.word unk_20362F0
+off_8020108:
+	.word eStruct2036780
+off_802010C:
+	.word dword_203CBE0
+off_8020110:
+	.word eStruct203F7D8
+off_8020114:
+	.word unk_20399F0
+off_8020118:
+	.word dword_203F4A0
+off_802011C:
+	.word unk_2036120
+off_8020120:
+	.word dword_203F5A0
+off_8020124:
+	.word unk_20362F0
+off_8020128:
+	.word eStruct2036780
+off_802012C:
+	.word dword_203CBE0
+off_8020130:
+	.word eStruct203F7D8
 	thumb_func_end sub_80200A4
 
 	thumb_func_start eStruct2038160_clearStruct
@@ -459,9 +493,12 @@ eStruct2038160_getBattleTerminate01:
 	mov pc, lr
 	thumb_func_end eStruct2038160_getBattleTerminate01
 
-off_8020164: .word eStruct2038160
-off_8020168: .word eStruct2038160
-off_802016C: .word eStruct2038160
+off_8020164:
+	.word eStruct2038160
+off_8020168:
+	.word eStruct2038160
+off_802016C:
+	.word eStruct2038160
 off_8020170:
 	.word off_8020190
 	.word off_80201E4
@@ -474,7 +511,7 @@ off_8020180:
 off_8020188:
 	.word off_8020190
 	.word off_80202F8
-off_8020190: .word off_80B1B7C
+off_8020190:
 	.word off_80B1B7C
 	.word off_80B1B7C
 	.word off_80B1B7C
@@ -495,7 +532,9 @@ off_8020190: .word off_80B1B7C
 	.word off_80B1B7C
 	.word off_80B1B7C
 	.word off_80B1B7C
-off_80201E4: .word off_80B1B7C
+	.word off_80B1B7C
+off_80201E4:
+	.word off_80B1B7C
 	.word off_80B1ED8
 	.word off_80B23C8
 	.word off_80B29CC
@@ -518,7 +557,8 @@ off_80201E4: .word off_80B1B7C
 	.word off_80B6C20
 	.word off_80B71D4
 	.word off_80B79C0
-pt_8020240: .word off_80B1B7C
+pt_8020240:
+	.word off_80B1B7C
 	.word off_80B1ED8
 	.word off_80B23C8
 	.word off_80B29CC
@@ -541,7 +581,8 @@ pt_8020240: .word off_80B1B7C
 	.word off_80B6C20
 	.word off_80B71D4
 	.word off_80B79C0
-pt_802029C: .word off_80B1B7C
+pt_802029C:
+	.word off_80B1B7C
 	.word off_80B1ED8
 	.word off_80B23C8
 	.word off_80B29CC
@@ -564,7 +605,8 @@ pt_802029C: .word off_80B1B7C
 	.word off_80B6C20
 	.word off_80B71D4
 	.word off_80B79C0
-off_80202F8: .word off_80B1B7C
+off_80202F8:
+	.word off_80B1B7C
 	.word off_80B1ED8
 	.word off_80B23C8
 	.word off_80B29CC

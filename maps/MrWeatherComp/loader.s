@@ -36,15 +36,22 @@ MrWeatherComp_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_806A040: .word off_80698DC
-off_806A044: .word unk_2037800
-off_806A048: .word off_806A04C
-off_806A04C: .word byte_806A058
+off_806A040:
+	.word off_80698DC
+off_806A044:
+	.word unk_2037800
+off_806A048:
+	.word off_806A04C
+off_806A04C:
+	.word byte_806A058
 	.word byte_806A060
 	.word byte_806A068
-byte_806A058: .byte 0x1C, 0x6B, 0x1C, 0x6C, 0x1C, 0x20, 0xFF, 0xFF
-byte_806A060: .byte 0x1C, 0x6B, 0x1C, 0x6C, 0x1C, 0x20, 0xFF, 0xFF
-byte_806A068: .byte 0x1C, 0x6B, 0x1C, 0x6C, 0x1C, 0x20, 0xFF, 0xFF
+byte_806A058:
+	.byte 0x1C, 0x6B, 0x1C, 0x6C, 0x1C, 0x20, 0xFF, 0xFF
+byte_806A060:
+	.byte 0x1C, 0x6B, 0x1C, 0x6C, 0x1C, 0x20, 0xFF, 0xFF
+byte_806A068:
+	.byte 0x1C, 0x6B, 0x1C, 0x6C, 0x1C, 0x20, 0xFF, 0xFF
 	thumb_func_end MrWeatherComp_EnterMapGroup
 
 	thumb_func_start MrWeatherComp_LoadGFXAnims
@@ -56,11 +63,14 @@ MrWeatherComp_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_806A080: .word off_806A084
-off_806A084: .word off_806A090
+off_806A080:
+	.word off_806A084
+off_806A084:
+	.word off_806A090
 	.word off_806A0C0
 	.word off_806A0F0
-off_806A090: .word off_8069928
+off_806A090:
+	.word off_8069928
 	.word byte_8069AF0
 	.word off_8069E10
 	.word off_8069E60
@@ -72,7 +82,8 @@ off_806A090: .word off_8069928
 	.word off_8069F80
 	.word off_8069FA0
 	.word 0xFFFFFFFF
-off_806A0C0: .word off_8069928
+off_806A0C0:
+	.word off_8069928
 	.word byte_8069AF0
 	.word off_8069E10
 	.word off_8069E60
@@ -84,7 +95,8 @@ off_806A0C0: .word off_8069928
 	.word off_8069F80
 	.word off_8069FA0
 	.word 0xFFFFFFFF
-off_806A0F0: .word off_8069928
+off_806A0F0:
+	.word off_8069928
 	.word byte_8069AF0
 	.word off_8069E10
 	.word off_8069E60
@@ -122,11 +134,9 @@ MrWeatherComp_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_806A154: .word off_806A158
-off_806A158: .word nullsub_39+1
-	.word BGScrollCB_BG3Diagonal3to2Scroll+1
-	.word nullsub_38+1
-	.word 0x800
+off_806A154:
+	.word off_806A158
+off_806A158:
 	.word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
@@ -135,11 +145,18 @@ off_806A158: .word nullsub_39+1
 	.word BGScrollCB_BG3Diagonal3to2Scroll+1
 	.word nullsub_38+1
 	.word 0x800
-off_806A188: .word off_806A18C
-off_806A18C: .word off_806A198
+	.word nullsub_39+1
+	.word BGScrollCB_BG3Diagonal3to2Scroll+1
+	.word nullsub_38+1
+	.word 0x800
+off_806A188:
+	.word off_806A18C
+off_806A18C:
 	.word off_806A198
 	.word off_806A198
-off_806A198: .word off_8613608
+	.word off_806A198
+off_806A198:
+	.word off_8613608
 	.word 0x6008020
 	.word dword_8613AAC
 	.word 0x1800
@@ -160,8 +177,10 @@ MrWeatherComp_UnkFunction_806a1b4:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
-off_806A1C8: .word off_806A1CC
-off_806A1CC: .word nullsub_67+1
+off_806A1C8:
+	.word off_806A1CC
+off_806A1CC:
+	.word nullsub_67+1
 	.word nullsub_68+1
 	.word nullsub_69+1
 	thumb_func_end MrWeatherComp_UnkFunction_806a1b4
@@ -193,8 +212,10 @@ MrWeatherComp_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_806A1F4: .word off_806A1F8
-off_806A1F8: .word byte_806A204
+off_806A1F4:
+	.word off_806A1F8
+off_806A1F8:
+	.word byte_806A204
 	.word byte_806A21C
 	.word byte_806A234
 	thumb_func_end MrWeatherComp_SpawnMapObjectsForMap

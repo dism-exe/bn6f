@@ -1,25 +1,32 @@
 
-off_806A7AC: .word off_806A7C0
+off_806A7AC:
+	.word off_806A7C0
 	.word off_806A7D0
 	.word off_806A7E0
 	.word off_806A7F0
 	.word off_806A800
-off_806A7C0: .word LCDControl
+off_806A7C0:
+	.word LCDControl
 	.word 0, 0
 	.byte 0, 0, 0, 0
-off_806A7D0: .word LCDControl
+off_806A7D0:
+	.word LCDControl
 	.word 0, 0
 	.byte 0, 0, 0, 0
-off_806A7E0: .word LCDControl
+off_806A7E0:
+	.word LCDControl
 	.word 0, 0
 	.byte 0, 0, 0, 0
-off_806A7F0: .word LCDControl
+off_806A7F0:
+	.word LCDControl
 	.word 0, 0
 	.byte 0, 0, 0, 0
-off_806A800: .word LCDControl
+off_806A800:
+	.word LCDControl
 	.word 0, 0
 	.byte 0, 0, 0, 0
-off_806A810: .word palette_3001960
+off_806A810:
+	.word palette_3001960
 	.byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0xFF, 0xFF
 	.word byte_8614D60
 	.word 0x20
@@ -42,7 +49,8 @@ off_806A810: .word palette_3001960
 	.word byte_8614D80
 	.word 0x20
 	.word 0x1
-off_806A870: .word palette_3001980
+off_806A870:
+	.word palette_3001980
 	.word 0x20
 	.word 0xFFFF0100
 	.word byte_85D053C
@@ -54,7 +62,8 @@ off_806A870: .word palette_3001980
 	.word byte_85D059C
 	.word 0x14
 	.word 0x1
-off_806A8A0: .word unk_30019A0
+off_806A8A0:
+	.word unk_30019A0
 	.word 0x20
 	.word 0xFFFF0200
 	.word byte_85D05C0
@@ -66,7 +75,8 @@ off_806A8A0: .word unk_30019A0
 	.word byte_85D05E0
 	.word 0xE
 	.word 0x1
-off_806A8D0: .word unk_30019E0
+off_806A8D0:
+	.word unk_30019E0
 	.word 0x20
 	.word 0xFFFF0300
 	.word byte_85D0624
@@ -78,7 +88,8 @@ off_806A8D0: .word unk_30019E0
 	.word byte_85D0644
 	.word 0x10
 	.word 0x1
-off_806A900: .word unk_3001A60
+off_806A900:
+	.word unk_3001A60
 	.word 0x20
 	.word 0xFFFF0400
 	.word byte_85D0688
@@ -94,7 +105,8 @@ off_806A900: .word unk_3001A60
 	.word byte_85D06A8
 	.word 0x8
 	.word 0x1
-off_806A940: .word unk_3001A80
+off_806A940:
+	.word unk_3001A80
 	.word 0x20
 	.word 0xFFFF0500
 	.word byte_85D070C
@@ -110,7 +122,8 @@ off_806A940: .word unk_3001A80
 	.word byte_85D072C
 	.word 0x8
 	.word 0x1
-off_806A980: .word unk_3001AA0
+off_806A980:
+	.word unk_3001AA0
 	.word 0x20
 	.word 0xFFFF0600
 	.word byte_85D0790
@@ -126,7 +139,8 @@ off_806A980: .word unk_3001AA0
 	.word byte_85D07B0
 	.word 0x8
 	.word 0x1
-byte_806A9C0: .byte 0xE0, 0x1A, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x7, 0xFF, 0xFF
+byte_806A9C0:
+	.byte 0xE0, 0x1A, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x7, 0xFF, 0xFF
 	.word byte_85D0814
 	.word 0x30
 	.word byte_85D0834

@@ -36,13 +36,19 @@ Underground_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8079374: .word off_80790A4
-off_8079378: .word unk_2037800
-off_807937C: .word off_8079380
-off_8079380: .word byte_8079388
+off_8079374:
+	.word off_80790A4
+off_8079378:
+	.word unk_2037800
+off_807937C:
+	.word off_8079380
+off_8079380:
+	.word byte_8079388
 	.word byte_8079390
-byte_8079388: .byte 0x1C, 0xE, 0x1C, 0x20, 0x1C, 0x4B, 0xFF, 0xFF
-byte_8079390: .byte 0x1C, 0xE, 0x18, 0x5A, 0x18, 0x5B, 0x1C, 0x99, 0xFF
+byte_8079388:
+	.byte 0x1C, 0xE, 0x1C, 0x20, 0x1C, 0x4B, 0xFF, 0xFF
+byte_8079390:
+	.byte 0x1C, 0xE, 0x18, 0x5A, 0x18, 0x5B, 0x1C, 0x99, 0xFF
 	.byte 0xFF
 	thumb_func_end Underground_EnterMapGroup
 
@@ -55,16 +61,20 @@ Underground_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_80793A8: .word off_80793AC
-off_80793AC: .word off_80793B4
+off_80793A8:
+	.word off_80793AC
+off_80793AC:
+	.word off_80793B4
 	.word off_80793CC
-off_80793B4: .word off_80790EC
+off_80793B4:
+	.word off_80790EC
 	.word off_807C974
 	.word byte_8079114
 	.word byte_8079164
 	.word byte_80791B4
 	.word 0xFFFFFFFF
-off_80793CC: .word off_80790EC
+off_80793CC:
+	.word off_80790EC
 	.word off_807C974
 	.word byte_8079204
 	.word byte_8079254
@@ -97,8 +107,10 @@ Underground_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_807941C: .word off_8079420
-off_8079420: .word nullsub_39+1
+off_807941C:
+	.word off_8079420
+off_8079420:
+	.word nullsub_39+1
 	.word nullsub_36+1
 	.word nullsub_38+1
 	.word 0x800
@@ -106,10 +118,13 @@ off_8079420: .word nullsub_39+1
 	.word nullsub_36+1
 	.word nullsub_38+1
 	.word 0x800
-off_8079440: .word off_8079444
-off_8079444: .word off_807944C
+off_8079440:
+	.word off_8079444
+off_8079444:
 	.word off_807944C
-off_807944C: .word dword_8618DFC
+	.word off_807944C
+off_807944C:
+	.word dword_8618DFC
 	.word 0x6008020
 	.word byte_8618E40
 	.word 0x1800
@@ -130,8 +145,10 @@ Underground_UnkFunction_8079468:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
-off_807947C: .word off_8079480
-off_8079480: .word nullsub_79+1
+off_807947C:
+	.word off_8079480
+off_8079480:
+	.word nullsub_79+1
 	.word nullsub_80+1
 	thumb_func_end Underground_UnkFunction_8079468
 
@@ -157,7 +174,8 @@ Underground_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_80794A0: .word pt_80794A4
+off_80794A0:
+	.word pt_80794A4
 pt_80794A4:
 	.word byte_80794AC
 	.word byte_80794EC

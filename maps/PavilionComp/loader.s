@@ -36,22 +36,31 @@ PavilionComp_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_806AA58: .word off_806A7AC
-off_806AA5C: .word unk_2037800
-off_806AA60: .word off_806AA64
-off_806AA64: .word byte_806AA78
+off_806AA58:
+	.word off_806A7AC
+off_806AA5C:
+	.word unk_2037800
+off_806AA60:
+	.word off_806AA64
+off_806AA64:
+	.word byte_806AA78
 	.word byte_806AA82
 	.word byte_806AA8C
 	.word byte_806AA94
 	.word byte_806AA9E
-byte_806AA78: .byte 0x1C, 0x2F, 0x1C, 0x45, 0x1C, 0x46, 0x1C, 0x49, 0xFF
+byte_806AA78:
+	.byte 0x1C, 0x2F, 0x1C, 0x45, 0x1C, 0x46, 0x1C, 0x49, 0xFF
 	.byte 0xFF
-byte_806AA82: .byte 0x1C, 0x56, 0x1C, 0x63, 0x1C, 0x52, 0x18, 0x55, 0xFF
+byte_806AA82:
+	.byte 0x1C, 0x56, 0x1C, 0x63, 0x1C, 0x52, 0x18, 0x55, 0xFF
 	.byte 0xFF
-byte_806AA8C: .byte 0x1C, 0x20, 0x1C, 0x6B, 0x1C, 0x6C, 0xFF, 0xFF
-byte_806AA94: .byte 0x1C, 0xC, 0x1C, 0xB, 0x1C, 0xE, 0x1C, 0x4E, 0xFF
+byte_806AA8C:
+	.byte 0x1C, 0x20, 0x1C, 0x6B, 0x1C, 0x6C, 0xFF, 0xFF
+byte_806AA94:
+	.byte 0x1C, 0xC, 0x1C, 0xB, 0x1C, 0xE, 0x1C, 0x4E, 0xFF
 	.byte 0xFF
-byte_806AA9E: .byte 0x1C, 0x83, 0x1C, 0x84, 0x1C, 0x94, 0x1C, 0x97, 0x1C
+byte_806AA9E:
+	.byte 0x1C, 0x83, 0x1C, 0x84, 0x1C, 0x94, 0x1C, 0x97, 0x1C
 	.byte 0x8D, 0xFF, 0xFF
 	thumb_func_end PavilionComp_EnterMapGroup
 
@@ -64,13 +73,16 @@ PavilionComp_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_806AAB8: .word off_806AABC
-off_806AABC: .word off_806AAD0
+off_806AAB8:
+	.word off_806AABC
+off_806AABC:
+	.word off_806AAD0
 	.word off_806AAFC
 	.word off_806AB20
 	.word off_806AB54
 	.word off_806AB70
-off_806AAD0: .word off_8067754
+off_806AAD0:
+	.word off_8067754
 	.word off_8067914
 	.word off_8067944
 	.word off_80679A4
@@ -81,7 +93,8 @@ off_806AAD0: .word off_8067754
 	.word off_8067A9C
 	.word off_8067ACC
 	.word 0xFFFFFFFF
-off_806AAFC: .word off_8068D18
+off_806AAFC:
+	.word off_8068D18
 	.word byte_8068E48
 	.word off_8068E88
 	.word off_8068ED0
@@ -90,7 +103,8 @@ off_806AAFC: .word off_8068D18
 	.word byte_8068FA0
 	.word off_8069010
 	.word 0xFFFFFFFF
-off_806AB20: .word off_8069928
+off_806AB20:
+	.word off_8069928
 	.word byte_8069AF0
 	.word off_8069E10
 	.word off_8069E60
@@ -103,14 +117,16 @@ off_806AB20: .word off_8069928
 	.word off_8069FA0
 	.word off_8069FC0
 	.word 0xFFFFFFFF
-off_806AB54: .word off_8066048
+off_806AB54:
+	.word off_8066048
 	.word byte_80662B8
 	.word byte_80662E8
 	.word byte_8066328
 	.word byte_8066368
 	.word byte_80663A8
 	.word 0xFFFFFFFF
-off_806AB70: .word off_806A810
+off_806AB70:
+	.word off_806A810
 	.word off_806A870
 	.word off_806A8A0
 	.word off_806A8D0
@@ -145,8 +161,10 @@ PavilionComp_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_806ABC8: .word off_806ABCC
-off_806ABCC: .word nullsub_39+1
+off_806ABC8:
+	.word off_806ABCC
+off_806ABCC:
+	.word nullsub_39+1
 	.word BGScrollCB_BG3FastLeftScroll+1
 	.word nullsub_38+1
 	.word 0x800
@@ -166,41 +184,48 @@ off_806ABCC: .word nullsub_39+1
 	.word BGScrollCB_BG3DownScroll+1
 	.word nullsub_38+1
 	.word 0x800
-off_806AC1C: .word off_806AC20
-off_806AC20: .word off_806AC34
+off_806AC1C:
+	.word off_806AC20
+off_806AC20:
+	.word off_806AC34
 	.word off_806AC50
 	.word off_806AC6C
 	.word off_806AC88
 	.word off_806ACA4
-off_806AC34: .word off_86116C8
+off_806AC34:
+	.word off_86116C8
 	.word 0x6008020
 	.word byte_861184C
 	.word 0x1800
 	.word byte_86119C4
 	.word palette_3001960
 	.word 0x20
-off_806AC50: .word off_8612A28
+off_806AC50:
+	.word off_8612A28
 	.word 0x6008020
 	.word dword_8612CF0
 	.word 0x1800
 	.word dword_8612E84
 	.word palette_3001960
 	.word 0x20
-off_806AC6C: .word off_8613608
+off_806AC6C:
+	.word off_8613608
 	.word 0x6008020
 	.word dword_8613AAC
 	.word 0x1800
 	.word 0x0
 	.word 0x0
 	.word 0x0
-off_806AC88: .word off_8610B04
+off_806AC88:
+	.word off_8610B04
 	.word 0x6008020
 	.word byte_8610C18
 	.word 0x1800
 	.word byte_8610D64
 	.word palette_3001960
 	.word 0x20
-off_806ACA4: .word off_8614444
+off_806ACA4:
+	.word off_8614444
 	.word 0x6008020
 	.word dword_8614A0C
 	.word 0x1800
@@ -221,8 +246,10 @@ PavilionComp_UnkFunction_806acc0:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
-off_806ACD4: .word off_806ACD8
-off_806ACD8: .word sub_806ACEC+1
+off_806ACD4:
+	.word off_806ACD8
+off_806ACD8:
+	.word sub_806ACEC+1
 	.word sub_806ACF0+1
 	.word sub_806ACF4+1
 	.word sub_806ACF8+1
@@ -271,8 +298,10 @@ PavilionComp_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_806AD14: .word off_806AD18
-off_806AD18: .word byte_806AD2C
+off_806AD14:
+	.word off_806AD18
+off_806AD18:
+	.word byte_806AD2C
 	.word byte_806AD44
 	.word byte_806ADAC
 	.word byte_806ADD8

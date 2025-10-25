@@ -217,10 +217,12 @@ loc_80891FE:
 	mov r0, #1
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8089204: .word byte_8089208
+off_8089204:
+	.word byte_8089208
 byte_8089208: 
   .byte 0x50, 0x90, 0xA0, 0x60, 0x40, 0x10, 0x80, 0x20
-off_8089210: .word off_8089214
+off_8089210:
+	.word off_8089214
 off_8089214: 
   .word GeneralLCDStatus_STAT_LYC_
 	.byte 0xFC, 0x0, 0x0, 0xFC, 0x4, 0xFC, 0x2, 0x2, 0xFC, 0x4, 0xFE, 0xFE
@@ -259,8 +261,10 @@ off_8089264:
 byte_8089268: 
   .byte 0x4C, 0xDD, 0x7D, 0x8, 0x0, 0x48, 0x1, 0x6, 0x0, 0x7, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0
-off_8089278: .word byte_87DE44C
-off_808927C: .word byte_30016F0
+off_8089278:
+	.word byte_87DE44C
+off_808927C:
+	.word byte_30016F0
 	thumb_func_end sub_8089244
 
 	thumb_local_start
@@ -410,8 +414,10 @@ sub_80895A8:
 loc_80895B8:
 	tst r0, r0
 	pop {r4-r7,pc}
-off_80895BC: .word jt_80895C0
-jt_80895C0: .word sub_808964C+1
+off_80895BC:
+	.word jt_80895C0
+jt_80895C0:
+	.word sub_808964C+1
 	.word sub_80896B0+1
 	.word sub_80896C4+1
 	.word sub_80896D4+1
@@ -483,8 +489,10 @@ loc_80896A0:
 	mov r0, #1
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_80896A4: .word byte_80896A8
-byte_80896A8: .byte 0xFF, 0x29, 0xFF, 0x2A, 0xFF, 0x2B, 0xFF, 0x2C
+off_80896A4:
+	.word byte_80896A8
+byte_80896A8:
+	.byte 0xFF, 0x29, 0xFF, 0x2A, 0xFF, 0x2B, 0xFF, 0x2C
 	thumb_func_end sub_808964C
 
 	thumb_local_start
@@ -852,8 +860,10 @@ loc_808994E:
 	mov r0, #1
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8089954: .word byte_8089958
-byte_8089958: .byte 0xFF, 0x2E, 0xFF, 0x2F, 0xFF, 0x30, 0xFF, 0x31
+off_8089954:
+	.word byte_8089958
+byte_8089958:
+	.byte 0xFF, 0x2E, 0xFF, 0x2F, 0xFF, 0x30, 0xFF, 0x31
 	thumb_func_end sub_808991C
 
 	thumb_local_start
@@ -973,8 +983,10 @@ loc_8089A36:
 	mov r0, #1
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8089A3C: .word off_8089A40
-off_8089A40: .word byte_8089494
+off_8089A3C:
+	.word off_8089A40
+off_8089A40:
+	.word byte_8089494
 	.word byte_808949C
 	.word byte_80894A4
 	.word byte_80894AC
@@ -1275,7 +1287,8 @@ loc_8089C9A:
 	mov r0, #1
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8089CA0: .word byte_80894D4
+off_8089CA0:
+	.word byte_80894D4
 	thumb_func_end sub_8089C78
 
 	thumb_local_start
@@ -1317,7 +1330,8 @@ sub_8089CC4:
 	strb r0, [r5,#0x13]
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8089CD8: .word byte_8089480
+off_8089CD8:
+	.word byte_8089480
 	thumb_func_end sub_8089CC4
 
 	thumb_local_start
@@ -1332,7 +1346,8 @@ sub_8089CDC:
 	bl sub_8089D44
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8089CF4: .word byte_808948A
+off_8089CF4:
+	.word byte_808948A
 	thumb_func_end sub_8089CDC
 
 	thumb_local_start

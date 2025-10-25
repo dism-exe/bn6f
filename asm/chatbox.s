@@ -18,9 +18,12 @@ chatbox_uncompMapTextArchives_803FD08: // () -> int
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803FD30: .word eDecompressedTextArchive202DA00
-off_803FD34: .word DecompressionBuf2033400
-off_803FD38: .word eDecompressedTextArchive202FA00
+off_803FD30:
+	.word eDecompressedTextArchive202DA00
+off_803FD34:
+	.word DecompressionBuf2033400
+off_803FD38:
+	.word eDecompressedTextArchive202FA00
 	thumb_func_end chatbox_uncompMapTextArchives_803FD08
 
 
@@ -36,7 +39,8 @@ chatbox_uncompMapTextArchives_803FD3C: // () -> int
     mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803FD50: .word eDecompressionBuf2034A00
+off_803FD50:
+	.word eDecompressionBuf2034A00
 	thumb_func_end chatbox_uncompMapTextArchives_803FD3C
 
 
@@ -51,7 +55,8 @@ chatbox_uncompMapTextArchives_803FD54: // () -> int
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803FD64: .word DecompressionBuf2033400
+off_803FD64:
+	.word DecompressionBuf2033400
 	thumb_func_end chatbox_uncompMapTextArchives_803FD54
 
 
@@ -63,7 +68,8 @@ chatbox_runScript_202da04: // (u8 scriptID) -> void
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	pop {r4,r5,pc}
 	.balign 4, 0
-off_803FD74: .word eTextScript202DA04 // TextScriptArchive
+off_803FD74:
+	.word eTextScript202DA04 // TextScriptArchive
 	thumb_func_end chatbox_runScript_202da04
 
 
@@ -84,8 +90,10 @@ chatbox_runScript_803FD78: // (TextScriptArchive *archive, u8 scriptIdx) -> void
 
 	pop {r4,r5,pc}
 	.balign 4, 0
-off_803FD90: .word byte_803FD94
-byte_803FD94: .hword 0x7E, 0x83, 0x7F, 0x81
+off_803FD90:
+	.word byte_803FD94
+byte_803FD94:
+	.hword 0x7E, 0x83, 0x7F, 0x81
 	thumb_func_end chatbox_runScript_803FD78
 
 
@@ -137,15 +145,23 @@ loc_803FDA8:
 
 	pop {r4,r5,pc}
 	.balign 4, 0
-off_803FDE0: .word byte_803FDE4
-byte_803FDE4: .byte 0x7E, 0x0, 0x83, 0x0, 0x7F, 0x0, 0x81, 0x0
-off_803FDEC: .word byte_86BFBA0
-dword_803FDF0: .word 0x600DC80
-off_803FDF4: .word 0x280
+off_803FDE0:
+	.word byte_803FDE4
+byte_803FDE4:
+	.byte 0x7E, 0x0, 0x83, 0x0, 0x7F, 0x0, 0x81, 0x0
+off_803FDEC:
+	.word byte_86BFBA0
+dword_803FDF0:
+	.word 0x600DC80
+off_803FDF4:
+	.word 0x280
 	.word 0x380
-off_803FDFC: .word byte_86BFE20
-off_803FE00: .word unk_3001B40
-off_803FE04: .word byte_86BFE40
+off_803FDFC:
+	.word byte_86BFE20
+off_803FE00:
+	.word unk_3001B40
+off_803FE04:
+	.word byte_86BFE40
 	thumb_func_end chatbox_runScript_803FDA4
 
 
@@ -197,15 +213,23 @@ loc_803FE14:
 
 	pop {r4,r5,pc}
 	.balign 4, 0
-off_803FE4C: .word byte_803FE50
-byte_803FE50: .byte 0x7E, 0x0, 0x83, 0x0, 0x7F, 0x0, 0x81, 0x0
-off_803FE58: .word byte_86C05E0
-dword_803FE5C: .word 0x600DC80
-off_803FE60: .word 0x320
+off_803FE4C:
+	.word byte_803FE50
+byte_803FE50:
+	.byte 0x7E, 0x0, 0x83, 0x0, 0x7F, 0x0, 0x81, 0x0
+off_803FE58:
+	.word byte_86C05E0
+dword_803FE5C:
+	.word 0x600DC80
+off_803FE60:
+	.word 0x320
 	.word 0x380
-off_803FE68: .word byte_86C0900
-off_803FE6C: .word unk_3001B40
-off_803FE70: .word byte_86C0920
+off_803FE68:
+	.word byte_86C0900
+off_803FE6C:
+	.word unk_3001B40
+off_803FE70:
+	.word byte_86C0920
 	thumb_func_end chatbox_runScript_803FE10
 
 
@@ -226,14 +250,21 @@ chatbox_runScriptAndSetWhiteDot803FE74: // (TextScriptArchive *archive, u8 scrip
 	
 	pop {r4,r5,pc}
 	.balign 4, 0
-off_803FE90: .word byte_803FE94
-byte_803FE94: .byte 0x7E, 0x0, 0x83, 0x0, 0x7F, 0x0, 0x81, 0x0
-off_803FE9C: .word spriteWhiteDot
-dword_803FEA0: .word 0x600DC80
-off_803FEA4: .word 0x6F8
+off_803FE90:
+	.word byte_803FE94
+byte_803FE94:
+	.byte 0x7E, 0x0, 0x83, 0x0, 0x7F, 0x0, 0x81, 0x0
+off_803FE9C:
+	.word spriteWhiteDot
+dword_803FEA0:
+	.word 0x600DC80
+off_803FEA4:
+	.word 0x6F8
 	.word 0x380
-off_803FEAC: .word spriteWhiteDot
-off_803FEB0: .word unk_3001B40
+off_803FEAC:
+	.word spriteWhiteDot
+off_803FEB0:
+	.word unk_3001B40
 	thumb_func_end chatbox_runScriptAndSetWhiteDot803FE74
 
 
@@ -330,13 +361,17 @@ chatbox_onUpdate: // () -> void
 
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_803FF28: .word 0x338
-off_803FF2C: .word jt_803FF30
+off_803FF28:
+	.word 0x338
+off_803FF2C:
+	.word jt_803FF30
 jt_803FF30: 
 	.word chatbox_interpreteAndDrawDialogChar_1+1
 	.word chatbox_interpreteAndDrawDialogChar+1 // (&self@r5) ->
-off_803FF38: .word off_803FF3C
-off_803FF3C: .word 0x1D4
+off_803FF38:
+	.word off_803FF3C
+off_803FF3C:
+	.word 0x1D4
 	.byte 0xD6, 0x1, 0x0, 0x0, 0xD8, 0x1, 0x0, 0x0, 0xE8, 0x1, 0x0, 0x0, 0xEC
 	.byte 0x1, 0x0, 0x0
 	thumb_func_end chatbox_onUpdate
@@ -471,14 +506,20 @@ loc_8040016:
 	bl chatbox_804082C
 	pop {pc}
 	.balign 4, 0
-off_8040020: .word TextScriptBytecodeJumptable
+off_8040020:
+	.word TextScriptBytecodeJumptable
 	.word byte_8040028
-byte_8040028: .byte 0x0, 0xB, 0x4D, 0x25, 0x44, 0x0, 0x0, 0x0
-off_8040030: .word FLAGS_3E_HIDE_CHATBOX
-off_8040034: .word sub_30070B4+1
-off_8040038: .word sub_3006F8C+1
+byte_8040028:
+	.byte 0x0, 0xB, 0x4D, 0x25, 0x44, 0x0, 0x0, 0x0
+off_8040030:
+	.word FLAGS_3E_HIDE_CHATBOX
+off_8040034:
+	.word sub_30070B4+1
+off_8040038:
+	.word sub_3006F8C+1
 	.word byte_8040040
-byte_8040040: .byte 0x0, 0xB, 0x4D, 0x25, 0x44, 0x2A, 0x0, 0x0
+byte_8040040:
+	.byte 0x0, 0xB, 0x4D, 0x25, 0x44, 0x2A, 0x0, 0x0
 	.word byte_8043CA4
 	.word 0x800
 	.word 0x138
@@ -586,16 +627,23 @@ loc_8040112:
 	strb r0, [r5,#oChatbox_JumpTableOffset_11]
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8040120: .word TextScriptBytecodeJumptable
+off_8040120:
+	.word TextScriptBytecodeJumptable
 	.word byte_8040128
-byte_8040128: .byte 0x0, 0xB, 0x4D, 0x25, 0x44, 0x0, 0x0, 0x0
-Flags8040130: .word FLAGS_3E_HIDE_CHATBOX
-off_8040134: .word sub_30070B4+1
-off_8040138: .word sub_3006F8C+1
+byte_8040128:
+	.byte 0x0, 0xB, 0x4D, 0x25, 0x44, 0x0, 0x0, 0x0
+Flags8040130:
+	.word FLAGS_3E_HIDE_CHATBOX
+off_8040134:
+	.word sub_30070B4+1
+off_8040138:
+	.word sub_3006F8C+1
 	.word byte_8040140
-byte_8040140: .byte 0x0, 0xB, 0x4D, 0x25, 0x44, 0x2A, 0x0, 0x0
+byte_8040140:
+	.byte 0x0, 0xB, 0x4D, 0x25, 0x44, 0x2A, 0x0, 0x0
 	.word byte_8043CA4
-Flags804014C: .word FLAGS_3E_UNK_0800 | FLAGS_3E_UNK_0040
+Flags804014C:
+	.word FLAGS_3E_UNK_0800 | FLAGS_3E_UNK_0040
 	.word 0x138
 	thumb_func_end chatbox_interpreteAndDrawDialogChar_1
 
@@ -690,12 +738,18 @@ loc_80401A4:
 	mov r12, r1
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
-dword_80401F8: .word 0xE2B8
-off_80401FC: .word byte_8040200
-byte_8040200: .byte 0x0, 0x40, 0x0, 0x80, 0x0, 0x40, 0x0, 0x80
-dword_8040208: .word 0x40004000
-off_804020C: .word byte_8040210
-byte_8040210: .byte 0x3, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0
+dword_80401F8:
+	.word 0xE2B8
+off_80401FC:
+	.word byte_8040200
+byte_8040200:
+	.byte 0x0, 0x40, 0x0, 0x80, 0x0, 0x40, 0x0, 0x80
+dword_8040208:
+	.word 0x40004000
+off_804020C:
+	.word byte_8040210
+byte_8040210:
+	.byte 0x3, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0
 	thumb_func_end chatbox_804017C
 
 	thumb_local_start
@@ -820,16 +874,24 @@ loc_8040242:
 	mov r12, r1
 	pop {r4,r6,r7,pc}
 	.balign 4, 0
-dword_804030C: .word 0xE2B8
-off_8040310: .word byte_8040314
-byte_8040314: .byte 0x0, 0x40, 0x0, 0x80, 0x0, 0x40, 0x0, 0x80, 0x0, 0x40, 0x0, 0x40
-off_8040320: .word byte_8040324
-byte_8040324: .byte 0x0, 0x8, 0x10, 0x18, 0x20, 0x28, 0x0, 0x0, 0x30, 0x38, 0x40
+dword_804030C:
+	.word 0xE2B8
+off_8040310:
+	.word byte_8040314
+byte_8040314:
+	.byte 0x0, 0x40, 0x0, 0x80, 0x0, 0x40, 0x0, 0x80, 0x0, 0x40, 0x0, 0x40
+off_8040320:
+	.word byte_8040324
+byte_8040324:
+	.byte 0x0, 0x8, 0x10, 0x18, 0x20, 0x28, 0x0, 0x0, 0x30, 0x38, 0x40
 	.byte 0x48, 0x50, 0x58, 0x0, 0x0, 0x60, 0x64, 0x68, 0x6C, 0x70, 0x74
 	.byte 0x0
-byte_804033B: .byte 0x0
-off_804033C: .word dword_8040340
-dword_8040340: .word 0x201000
+byte_804033B:
+	.byte 0x0
+off_804033C:
+	.word dword_8040340
+dword_8040340:
+	.word 0x201000
 	thumb_func_end chatbox_804021C
 
 	thumb_local_start
@@ -871,7 +933,8 @@ chatbox_runTrainScript:
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	pop {r4,r5,pc}
 	.balign 4, 0
-off_8040380: .word eTextScript2034A04
+off_8040380:
+	.word eTextScript2034A04
 	thumb_func_end chatbox_runTrainScript
 
 
@@ -994,26 +1057,45 @@ chatbox_runScript: // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {r4-r6,pc}
 	.balign 4, 0
-off_804046C: .word dword_86BEB20
-dword_8040470: .word 0x600DC80
-off_8040474: .word 0x160
+off_804046C:
+	.word dword_86BEB20
+dword_8040470:
+	.word 0x600DC80
+off_8040474:
+	.word 0x160
 	.word 0x380
-off_804047C: .word byte_86BEC80
-off_8040480: .word unk_3001B40
-off_8040484: .word dword_86B7AC0
-off_8040488: .word byte_3001710
-off_804048C: .word unk_200B2B0
-off_8040490: .word byte_8040494
-byte_8040494: .byte 0x65, 0x0, 0x68, 0x0, 0x66, 0x0, 0x67, 0x0
-Flags8040494: .word FLAGS_3E_HIDE_CHATBOX
-off_80404A0: .word eFlags2009F38
-off_80404A4: .word 0x230
-off_80404A8: .word 0x1F0
-dword_80404AC: .word 0x1F2
-dword_80404B0: .word 0x1F3
-off_80404B4: .word 0x1F1
-off_80404B8: .word 0x1F4
-off_80404BC: .word 0x1F5
+off_804047C:
+	.word byte_86BEC80
+off_8040480:
+	.word unk_3001B40
+off_8040484:
+	.word dword_86B7AC0
+off_8040488:
+	.word byte_3001710
+off_804048C:
+	.word unk_200B2B0
+off_8040490:
+	.word byte_8040494
+byte_8040494:
+	.byte 0x65, 0x0, 0x68, 0x0, 0x66, 0x0, 0x67, 0x0
+Flags8040494:
+	.word FLAGS_3E_HIDE_CHATBOX
+off_80404A0:
+	.word eFlags2009F38
+off_80404A4:
+	.word 0x230
+off_80404A8:
+	.word 0x1F0
+dword_80404AC:
+	.word 0x1F2
+dword_80404B0:
+	.word 0x1F3
+off_80404B4:
+	.word 0x1F1
+off_80404B8:
+	.word 0x1F4
+off_80404BC:
+	.word 0x1F5
 	thumb_func_end chatbox_runScript
 
 	thumb_func_start chatbox_reqBBS_80404C0
@@ -1133,25 +1215,43 @@ chatbox_reqBBS_80404C0:
 	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {r4-r6,pc}
 	.balign 4, 0
-off_80405A8: .word dword_86BEB20
-dword_80405AC: .word 0x600DC80
-off_80405B0: .word 0x160
-off_80405B4: .word byte_86BEC80
-off_80405B8: .word unk_3001B40
+off_80405A8:
+	.word dword_86BEB20
+dword_80405AC:
+	.word 0x600DC80
+off_80405B0:
+	.word 0x160
+off_80405B4:
+	.word byte_86BEC80
+off_80405B8:
+	.word unk_3001B40
 	.word dword_86B7AC0
-off_80405C0: .word byte_3001710
-off_80405C4: .word unk_200B2B0
-off_80405C8: .word byte_80405CC
-byte_80405CC: .byte 0x65, 0x0, 0x68, 0x0, 0x66, 0x0, 0x67, 0x0
-Flags80405D4: .word FLAGS_3E_HIDE_CHATBOX
-off_80405D8: .word eFlags2009F38
-off_80405DC: .word 0x230
-off_80405E0: .word 0x1F0
-dword_80405E4: .word 0x1F2
-dword_80405E8: .word 0x1F3
-off_80405EC: .word 0x1F1
-off_80405F0: .word 0x1F4
-off_80405F4: .word 0x1F5
+off_80405C0:
+	.word byte_3001710
+off_80405C4:
+	.word unk_200B2B0
+off_80405C8:
+	.word byte_80405CC
+byte_80405CC:
+	.byte 0x65, 0x0, 0x68, 0x0, 0x66, 0x0, 0x67, 0x0
+Flags80405D4:
+	.word FLAGS_3E_HIDE_CHATBOX
+off_80405D8:
+	.word eFlags2009F38
+off_80405DC:
+	.word 0x230
+off_80405E0:
+	.word 0x1F0
+dword_80405E4:
+	.word 0x1F2
+dword_80405E8:
+	.word 0x1F3
+off_80405EC:
+	.word 0x1F1
+off_80405F0:
+	.word 0x1F4
+off_80405F4:
+	.word 0x1F5
 	thumb_func_end chatbox_reqBBS_80404C0
 
 	thumb_local_start
@@ -1271,23 +1371,39 @@ dead_80405F8:
 	pop {r4-r6,pc}
 	.balign 4, 0
 	.word dword_86BEB20
-byte_80406E4: .byte 0x80, 0xDC, 0x0, 0x6, 0x60, 0x1, 0x0, 0x0
+byte_80406E4:
+	.byte 0x80, 0xDC, 0x0, 0x6, 0x60, 0x1, 0x0, 0x0
 	.word byte_86BEC80
-off_80406F0: .word unk_3001B40
-off_80406F4: .word dword_86B7AC0
-off_80406F8: .word byte_3001710
-off_80406FC: .word unk_200B2B0
-off_8040700: .word byte_8040704
-byte_8040704: .byte 0x65, 0x0, 0x68, 0x0, 0x66, 0x0, 0x67, 0x0
-Flags804070C: .word FLAGS_3E_HIDE_CHATBOX
-off_8040710: .word eFlags2009F38
-off_8040714: .word 0x230
-off_8040718: .word 0x1F0
-dword_804071C: .word 0x1F2
-dword_8040720: .word 0x1F3
-off_8040724: .word 0x1F1
-off_8040728: .word 0x1F4
-off_804072C: .word 0x1F5
+off_80406F0:
+	.word unk_3001B40
+off_80406F4:
+	.word dword_86B7AC0
+off_80406F8:
+	.word byte_3001710
+off_80406FC:
+	.word unk_200B2B0
+off_8040700:
+	.word byte_8040704
+byte_8040704:
+	.byte 0x65, 0x0, 0x68, 0x0, 0x66, 0x0, 0x67, 0x0
+Flags804070C:
+	.word FLAGS_3E_HIDE_CHATBOX
+off_8040710:
+	.word eFlags2009F38
+off_8040714:
+	.word 0x230
+off_8040718:
+	.word 0x1F0
+dword_804071C:
+	.word 0x1F2
+dword_8040720:
+	.word 0x1F3
+off_8040724:
+	.word 0x1F1
+off_8040728:
+	.word 0x1F4
+off_804072C:
+	.word 0x1F5
 	thumb_func_end dead_80405F8
 
 	thumb_local_start
@@ -1344,7 +1460,8 @@ loc_804074C:
 
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_804076C: .word off_8040770
+off_804076C:
+	.word off_8040770
 off_8040770: 
 	.word off_realWorld_8044470 // [*const [*const [*const LZ77Compressed<TextScriptArchive; 5]]; REAL_WORLD_NUM_GROUPS]
 	.word off_internet_80444C4 // [Nullable<*const [*const [*const LZ77Compressed<TextScriptArchive>; 5]]>; INTERNET_NUM_GROUPS]
@@ -1353,7 +1470,8 @@ off_8040770:
 	.word off_internet_804457C // [Nullable<*const [*const LZ77Compressed<TextScriptArchive>]>; INTERNET_NUM_GROUPS]
 	
 	.word byte_8040784
-byte_8040784: .byte 0x60, 0x3, 0x50, 0x2, 0x40, 0x2, 0x30, 0x1, 0x20, 0x1, 0x10
+byte_8040784:
+	.byte 0x60, 0x3, 0x50, 0x2, 0x40, 0x2, 0x30, 0x1, 0x20, 0x1, 0x10
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end chatbox_selectCompTextByMap_8040730
 
@@ -1398,7 +1516,8 @@ loc_80407AA:
 	ldr r0, [r3]
 	
     pop {r4-r7,pc}
-off_80407BC: .word mapPtrs80407C0
+off_80407BC:
+	.word mapPtrs80407C0
 mapPtrs80407C0: 
   .word inRealWorld_8044520 // [*const [*const LZ77Compressed<TextScriptArchive>]; REAL_WORLD_NUM_GROUPS]
 	.word inInternet_8044520 // [Nullable<*const [*const LZ77Compressed<TextScriptArchive>]>; INTERNET_NUM_GROUPS]
@@ -1526,14 +1645,21 @@ loc_8040870:
 locret_8040886:
 	pop {r4,r6,pc}
 	.balign 4, 0
-off_8040888: .word dword_86A4740
-dword_804088C: .word 0x6017F00
-dword_8040890: .word 0x40000000
-off_8040894: .word off_8040898
-off_8040898: .word byte_80408A4
+off_8040888:
+	.word dword_86A4740
+dword_804088C:
+	.word 0x6017F00
+dword_8040890:
+	.word 0x40000000
+off_8040894:
+	.word off_8040898
+off_8040898:
 	.word byte_80408A4
-dword_80408A0: .word 0xE3F8
-byte_80408A4: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x2, 0x2, 0x2, 0x2, 0x2
+	.word byte_80408A4
+dword_80408A0:
+	.word 0xE3F8
+byte_80408A4:
+	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x2, 0x2, 0x2, 0x2, 0x2
 	.byte 0x2, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x1
 	.byte 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0xFF
 	thumb_func_end chatbox_804082C
@@ -1576,8 +1702,10 @@ chatbox_config_80408D0:
 	pop {pc}
 	.byte 0x0, 0x0
 	.balign 4, 0
-Flags8040918: .word FLAGS_3E_UNK_0400
-Flags804091C: .word FLAGS_3E_UNK_0800
+Flags8040918:
+	.word FLAGS_3E_UNK_0400
+Flags804091C:
+	.word FLAGS_3E_UNK_0800
 	thumb_func_end chatbox_config_80408D0
 
 // (int mask) -> void
@@ -1661,11 +1789,16 @@ loc_8040986:
 	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 	pop {pc}
 	.balign 4, 0
-dword_80409A0: .word 0x40000000
-off_80409A4: .word byte_86A48C0
-dword_80409A8: .word 0x6017F80
-off_80409AC: .word dword_80409B2
-dword_80409B0: .hword 0xE3FC
+dword_80409A0:
+	.word 0x40000000
+off_80409A4:
+	.word byte_86A48C0
+dword_80409A8:
+	.word 0x6017F80
+off_80409AC:
+	.word dword_80409B2
+dword_80409B0:
+	.hword 0xE3FC
 dword_80409B2:
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x1, 0x1, 0x1, 0x1, 0x1, 0x1
@@ -1682,8 +1815,10 @@ chatbox_80409C8:
 	bl QueueEightWordAlignedGFXTransfer // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32) -> ()
 	pop {pc}
 	.balign 4, 0
-off_80409D8: .word dword_86A4A40
-dword_80409DC: .word 0x6017F80
+off_80409D8:
+	.word dword_86A4A40
+dword_80409DC:
+	.word 0x6017F80
 	thumb_func_end chatbox_80409C8
 
 	thumb_local_start
@@ -1762,14 +1897,21 @@ loc_8040A6C:
 	strb r2, [r5,#oChatbox_Unk_16]
 	pop {r4,r6,pc}
 	.balign 4, 0
-dword_8040A70: .word 0x8000
-off_8040A74: .word dword_86A4A40
-dword_8040A78: .word 0x6017F80
-off_8040A7C: .word byte_8040A80
-byte_8040A80: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1
+dword_8040A70:
+	.word 0x8000
+off_8040A74:
+	.word dword_86A4A40
+dword_8040A78:
+	.word 0x6017F80
+off_8040A7C:
+	.word byte_8040A80
+byte_8040A80:
+	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1
 	.byte 0x1, 0xFF, 0x0
-dword_8040A94: .word 0xE3FC
-byte_8040A98: .byte 0xFE, 0xE3
+dword_8040A94:
+	.word 0xE3FC
+byte_8040A98:
+	.byte 0xFE, 0xE3
 	thumb_func_end chatbox_80409E0
 
 	thumb_local_start
@@ -1831,16 +1973,23 @@ loc_8040B0A:
 	strb r2, [r5,#oChatbox_Unk_16]
 	pop {r4,r6,pc}
 	.balign 4, 0
-dword_8040B10: .word 0x8000
-off_8040B14: .word dword_86A4A40
-dword_8040B18: .word 0x6017F80
-off_8040B1C: .word word_8040B20
-word_8040B20: .hword 0x0
+dword_8040B10:
+	.word 0x8000
+off_8040B14:
+	.word dword_86A4A40
+dword_8040B18:
+	.word 0x6017F80
+off_8040B1C:
+	.word word_8040B20
+word_8040B20:
+	.hword 0x0
 	.word 0
 	.byte 0, 0
 	.byte 0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0xFF, 0x0
-dword_8040B34: .word 0xE3FC
-dword_8040B38: .hword 0xE3FE
+dword_8040B34:
+	.word 0xE3FC
+dword_8040B38:
+	.hword 0xE3FE
 	thumb_func_end chatbox_8040A9A
 
 	thumb_local_start
@@ -1883,8 +2032,10 @@ loc_8040B66:
 	strb r1, [r5,#0xe]
 	pop {r5,pc}
 	.balign 4, 0
-off_8040B84: .word 0x3C0
-off_8040B88: .word 0x1F8
+off_8040B84:
+	.word 0x3C0
+off_8040B88:
+	.word 0x1F8
 	thumb_func_end sub_8040B3A
 
 	thumb_local_start
@@ -1967,13 +2118,20 @@ loc_8040C0C:
 locret_8040C24:
 	pop {r4-r6,pc}
 	.balign 4, 0
-off_8040C28: .word 0x421
-dword_8040C2C: .word 0x842
-off_8040C30: .word 0x100
-off_8040C34: .word 0x1F8
-dword_8040C38: .word 0x1F2
-off_8040C3C: .word 0x1F0
-dword_8040C40: .word 0x1F3
+off_8040C28:
+	.word 0x421
+dword_8040C2C:
+	.word 0x842
+off_8040C30:
+	.word 0x100
+off_8040C34:
+	.word 0x1F8
+dword_8040C38:
+	.word 0x1F2
+off_8040C3C:
+	.word 0x1F0
+dword_8040C40:
+	.word 0x1F3
 	thumb_func_end chatbox_8040B8C
 
 	thumb_local_start
@@ -2021,9 +2179,12 @@ loc_8040C80:
 locret_8040C8E:
 	pop {r0,r1,r4,r5,pc}
 	.balign 4, 0
-dword_8040C90: .word 0x1F2
-off_8040C94: .word 0x1F1
-off_8040C98: .word 0x1F0
+dword_8040C90:
+	.word 0x1F2
+off_8040C94:
+	.word 0x1F1
+off_8040C98:
+	.word 0x1F0
 	thumb_func_end chatbox_8040C44
 
 	thumb_local_start
@@ -2050,9 +2211,12 @@ loc_8040CBC:
 	strb r0, [r5,r1]
 	pop {r0,r1,pc}
 	.balign 4, 0
-dword_8040CC4: .word 0x1F2
-off_8040CC8: .word 0x1F0
-off_8040CCC: .word 0x1F1
+dword_8040CC4:
+	.word 0x1F2
+off_8040CC8:
+	.word 0x1F0
+off_8040CCC:
+	.word 0x1F1
 	thumb_func_end chatbox_8040C9C
 
 	thumb_local_start
@@ -2115,10 +2279,14 @@ loc_8040CDA:
 locret_8040D42:
 	pop {pc}
 	.balign 4, 0
-off_8040D44: .word byte_8040D48
-byte_8040D48: .byte 0xD6, 0x1, 0x0, 0x0, 0xD8, 0x1, 0x0, 0x0, 0xE8, 0x1, 0x0, 0x0
-off_8040D54: .word 0x1EC
-off_8040D58: .word off_8045DD4
+off_8040D44:
+	.word byte_8040D48
+byte_8040D48:
+	.byte 0xD6, 0x1, 0x0, 0x0, 0xD8, 0x1, 0x0, 0x0, 0xE8, 0x1, 0x0, 0x0
+off_8040D54:
+	.word 0x1EC
+off_8040D58:
+	.word off_8045DD4
 	thumb_func_end chatbox_8040CD0
 
 	thumb_func_start chatbox_8040D5C
@@ -2156,8 +2324,10 @@ loc_8040D8A:
 locret_8040D92:
 	pop {r2,r3,pc}
 	.balign 4, 0
-off_8040D94: .word byte_8040D98
-byte_8040D98: .byte 0x1, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0x64, 0x0, 0x0, 0x0, 0xE8, 0x3, 0x0
+off_8040D94:
+	.word byte_8040D98
+byte_8040D98:
+	.byte 0x1, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0x64, 0x0, 0x0, 0x0, 0xE8, 0x3, 0x0
 	.byte 0x0, 0x10, 0x27, 0x0, 0x0, 0xA0, 0x86, 0x1, 0x0, 0x40, 0x42, 0xF, 0x0, 0x80, 0x96
 	.byte 0x98, 0x0, 0x0, 0xE1, 0xF5, 0x5
 	thumb_func_end chatbox_8040D5C
@@ -2181,7 +2351,8 @@ loc_8040DC4:
 	pop {r0-r5,pc}
 	.byte 0x0, 0x0
 	.balign 4, 0
-off_8040DD8: .word unk_200BEA0
+off_8040DD8:
+	.word unk_200BEA0
 	thumb_func_end chatbox_8040DBC
 
 // (int v3) ->
@@ -2208,7 +2379,8 @@ loc_8040DEC:
 	pop {r0-r5,pc}
 	.hword 0x0
 	.balign 4, 0
-off_8040E00: .word unk_200BEA0
+off_8040E00:
+	.word unk_200BEA0
 	.word 0x420
 	.word 0x540
 	.word 0x1C05B520
@@ -2309,8 +2481,10 @@ loc_8040EDC:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0
-Flags8040EEC: .word FLAGS_3E_HIDE_CHATBOX
-dword_8040EF0: .word 0x140
+Flags8040EEC:
+	.word FLAGS_3E_HIDE_CHATBOX
+dword_8040EF0:
+	.word 0x140
 	thumb_func_end chatbox_E6_end
 
 // E7 = buttonhalt
@@ -2388,8 +2562,10 @@ loc_8040F64:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0
-dword_8040F68: .word 0x3FF
-Flags8040F6C: .word FLAGS_3E_UNK_0400
+dword_8040F68:
+	.word 0x3FF
+Flags8040F6C:
+	.word FLAGS_3E_UNK_0400
 	thumb_func_end chatbox_E7_buttonhalt
 
 // () -> int
@@ -2477,12 +2653,11 @@ loc_8040FBC:
 locret_8040FD0:
 	pop {pc}
 	.balign 4, 0
-off_8040FD4: .word chatbox_EB_msgboxJumpTable
-off_8040FD8: .word byte_8045DCC
-chatbox_EB_msgboxJumpTable: .word chatbox_804103E+1
-	.word chatbox_8041090+1
-	.word chatbox_80410F8+1
-	.word chatbox_804110C+1
+off_8040FD4:
+	.word chatbox_EB_msgboxJumpTable
+off_8040FD8:
+	.word byte_8045DCC
+chatbox_EB_msgboxJumpTable:
 	.word chatbox_804103E+1
 	.word chatbox_8041090+1
 	.word chatbox_80410F8+1
@@ -2495,11 +2670,18 @@ chatbox_EB_msgboxJumpTable: .word chatbox_804103E+1
 	.word chatbox_8041090+1
 	.word chatbox_80410F8+1
 	.word chatbox_804110C+1
+	.word chatbox_804103E+1
+	.word chatbox_8041090+1
 	.word chatbox_80410F8+1
 	.word chatbox_804110C+1
-dword_8041024: .word 0x1D2
-off_8041028: .word byte_804102C
-byte_804102C: .byte 0x2, 0x2, 0x2, 0x2, 0x4, 0x4, 0x4, 0x4, 0x2, 0x2, 0x2, 0x2, 0x2, 0x2, 0x2, 0x2, 0x2
+	.word chatbox_80410F8+1
+	.word chatbox_804110C+1
+dword_8041024:
+	.word 0x1D2
+off_8041028:
+	.word byte_804102C
+byte_804102C:
+	.byte 0x2, 0x2, 0x2, 0x2, 0x4, 0x4, 0x4, 0x4, 0x2, 0x2, 0x2, 0x2, 0x2, 0x2, 0x2, 0x2, 0x2
 	.byte 0x2
 	thumb_func_end chatbox_E8_msgbox
 
@@ -2604,7 +2786,8 @@ loc_80410F0:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0
-Flags80410F4: .word FLAGS_3E_HIDE_CHATBOX
+Flags80410F4:
+	.word FLAGS_3E_HIDE_CHATBOX
 	thumb_func_end chatbox_8041090
 
 	thumb_local_start
@@ -2617,7 +2800,8 @@ chatbox_80410F8:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_8041108: .word 0x101
+off_8041108:
+	.word 0x101
 	thumb_func_end chatbox_80410F8
 
 	thumb_local_start
@@ -2639,7 +2823,8 @@ chatbox_804110C:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-Flags8041130: .word FLAGS_3E_HIDE_CHATBOX
+Flags8041130:
+	.word FLAGS_3E_HIDE_CHATBOX
 	thumb_func_end chatbox_804110C
 
 	thumb_local_start
@@ -2672,7 +2857,8 @@ loc_8041156:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0
-off_804115C: .word byte_803FCE4
+off_804115C:
+	.word byte_803FCE4
 	thumb_func_end chatbox_E9_newline
 
 	thumb_local_start
@@ -2708,8 +2894,10 @@ chatbox_EA_flag:
 	mov r0, #1
 	pop {pc}
 	.byte 0, 0
-off_8041180: .word off_8041184
-off_8041184: .word chatbox_80411B0+1
+off_8041180:
+	.word off_8041184
+off_8041184:
+	.word chatbox_80411B0+1
 	.word chatbox_80411BC+1
 	.word chatbox_80411C8+1
 	.word chatbox_80411E8+1
@@ -2914,7 +3102,8 @@ loc_80412AA:
 	mov r0, #1
 	pop {pc}
 	.word dword_80412C4
-dword_80412C4: .word 0x303
+dword_80412C4:
+	.word 0x303
 	thumb_func_end chatbox_EC_label
 
 	thumb_local_start
@@ -3135,16 +3324,22 @@ loc_8041468:
 	mov r0, #1
 	pop {r3,pc}
 	.balign 4, 0
-off_8041478: .word 0x130
-off_804147C: .word 0x110
-off_8041480: .word byte_8041484
-byte_8041484: .byte 0x40, 0x0, 0x80, 0x0, 0x20, 0x0, 0x10, 0x0
+off_8041478:
+	.word 0x130
+off_804147C:
+	.word 0x110
+off_8041480:
+	.word byte_8041484
+byte_8041484:
+	.byte 0x40, 0x0, 0x80, 0x0, 0x20, 0x0, 0x10, 0x0
 	.word off_8041490
-off_8041490: .word chatbox_ED_select_8040944+1
+off_8041490:
+	.word chatbox_ED_select_8040944+1
 	.word chatbox_80409E0+1
 	.word 0x100
 	.word off_80414A0
-off_80414A0: .word byte_8070605
+off_80414A0:
+	.word byte_8070605
 	.word 0xC0B0A09
 	thumb_func_end chatbox_ED_select
 
@@ -3259,8 +3454,10 @@ chatbox_EF_checkflag:
 	mov lr, pc
 	bx r0
 	pop {pc}
-off_804157C: .word jt_ctrl_8041580
-jt_ctrl_8041580: .word chatbox_804171C+1
+off_804157C:
+	.word jt_ctrl_8041580
+jt_ctrl_8041580:
+	.word chatbox_804171C+1
 	.word chatbox_8041748+1
 	.word chatbox_80416C4+1
 	.word chatbox_8041774+1
@@ -3340,7 +3537,8 @@ loc_8041688:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_8041690: .word off_8043C84
+off_8041690:
+	.word off_8043C84
 	thumb_func_end chatbox_8041670
 
 	thumb_local_start
@@ -3504,7 +3702,8 @@ loc_8041798:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_80417A0: .word off_8043C64
+off_80417A0:
+	.word off_8043C64
 	thumb_func_end chatbox_8041774
 
 	thumb_local_start
@@ -3812,7 +4011,8 @@ loc_80419A8:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_80419B0: .word off_8043C64
+off_80419B0:
+	.word off_8043C64
 	thumb_func_end chatbox_804198C
 
 	thumb_local_start
@@ -3962,8 +4162,10 @@ loc_8041AA8:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_8041AB0: .word byte_8041AB4
-byte_8041AB4: .byte 0x0, 0x1, 0x2, 0x4, 0x5, 0x6, 0x0, 0x0
+off_8041AB0:
+	.word byte_8041AB4
+byte_8041AB4:
+	.byte 0x0, 0x1, 0x2, 0x4, 0x5, 0x6, 0x0, 0x0
 	thumb_func_end chatbox_8041A7C
 
 	thumb_local_start
@@ -4130,8 +4332,10 @@ loc_8041BC8:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-Flags8041BD0: .word FLAGS_3E_UNK_0800
-dword_8041BD4: .word 0x1F3
+Flags8041BD0:
+	.word FLAGS_3E_UNK_0800
+dword_8041BD4:
+	.word 0x1F3
 	thumb_func_end chatbox_F1_textspeed
 
 	thumb_local_start
@@ -4183,12 +4387,18 @@ loc_8041BF2:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-Flags8041C3C: .word FLAGS_3E_UNK_0400
-Flags8041C40: .word FLAGS_3E_UNK_0800
-off_8041C44: .word off_8041C48
-off_8041C48: .word 0x1D4
-dword_8041C4C: .word 0x1D6
-Flags8041C50: .word 0x200
+Flags8041C3C:
+	.word FLAGS_3E_UNK_0400
+Flags8041C40:
+	.word FLAGS_3E_UNK_0800
+off_8041C44:
+	.word off_8041C48
+off_8041C48:
+	.word 0x1D4
+dword_8041C4C:
+	.word 0x1D6
+Flags8041C50:
+	.word 0x200
 	thumb_func_end chatbox_F2_clearmsgbox
 
 	thumb_local_start
@@ -4277,7 +4487,8 @@ loc_8041CD8:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-dword_8041CF0: .word 0x72
+dword_8041CF0:
+	.word 0x72
 	thumb_func_end chatbox_F4_unk
 
 	thumb_local_start
@@ -4378,13 +4589,19 @@ loc_8041D9C:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_8041DA0: .word byte_8044244
-off_8041DA4: .word byte_8044260
-dword_8041DA8: .word 0x18C6
+off_8041DA0:
+	.word byte_8044244
+off_8041DA4:
+	.word byte_8044260
+dword_8041DA8:
+	.word 0x18C6
 	.word i_joGameSubsysSel
-dword_8041DB0: .word 0x1000
-off_8041DB4: .word 0x1F0
-off_8041DB8: .word 0x1F1
+dword_8041DB0:
+	.word 0x1000
+off_8041DB4:
+	.word 0x1F0
+off_8041DB8:
+	.word 0x1F1
 	thumb_func_end chatbox_F5_mugshot
 
 	thumb_local_start
@@ -4414,8 +4631,10 @@ loc_8041DE6:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_8041DEC: .word dword_86B7AA0
-off_8041DF0: .word byte_3001710
+off_8041DEC:
+	.word dword_86B7AA0
+off_8041DF0:
+	.word byte_3001710
 	thumb_func_end chatbox_F6_textcolor
 
 	thumb_local_start
@@ -4489,7 +4708,8 @@ loc_8041E5A:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-dword_8041E7C: .word 0xFFFF
+dword_8041E7C:
+	.word 0xFFFF
 	thumb_func_end chatbox_8041DF4
 
 	thumb_local_start
@@ -4502,8 +4722,10 @@ chatbox_F8_playeranimation:
 	mov lr, pc
 	bx r0
 	pop {pc}
-off_8041E90: .word off_8041E94
-off_8041E94: .word chatbox_8041EB0+1
+off_8041E90:
+	.word off_8041E94
+off_8041E94:
+	.word chatbox_8041EB0+1
 	.word chatbox_8041EE8+1
 	.word chatbox_8041F10+1
 	.word chatbox_8041F1C+1
@@ -4631,8 +4853,10 @@ chatbox_FA_print:
 	mov lr, pc
 	bx r0
 	pop {pc}
-off_8041F78: .word jt_FA_print_8041F7C
-jt_FA_print_8041F7C: .word chatbox_8041FB4+1
+off_8041F78:
+	.word jt_FA_print_8041F7C
+jt_FA_print_8041F7C:
+	.word chatbox_8041FB4+1
 	.word chatbox_80420BC+1
 	.word chatbox_8042124+1
 	.word chatbox_8042128+1
@@ -4741,8 +4965,10 @@ loc_8042014:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_8042060: .word off_8042064
-off_8042064: .word TextScript873D9FC
+off_8042060:
+	.word off_8042064
+off_8042064:
+	.word TextScript873D9FC
 	.word TextScriptChipNames0
 	.word TextScriptChipNames1
 	.word TextScript86EF71C
@@ -4752,11 +4978,14 @@ off_8042064: .word TextScript873D9FC
 	.word TextScriptChipNames0
 	.word TextScriptNaviNames0
 	.word reqBBS_requestNames_textualData
-off_804208C: .word byte_8042090
-byte_8042090: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+off_804208C:
+	.word byte_8042090
+byte_8042090:
+	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x90, 0x0, 0x0, 0x0, 0x90, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-off_80420B8: .word 0x140
+off_80420B8:
+	.word 0x140
 	thumb_func_end chatbox_8041FB4
 
 	thumb_local_start
@@ -4804,10 +5033,13 @@ chatbox_80420BC:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_8042114: .word off_8042118
-off_8042118: .word TextScriptNaviNames0
+off_8042114:
+	.word off_8042118
+off_8042118:
+	.word TextScriptNaviNames0
 	.word TextScriptNaviNames1
-off_8042120: .word 0x140
+off_8042120:
+	.word 0x140
 	thumb_func_end chatbox_80420BC
 
 	thumb_local_start
@@ -4861,8 +5093,10 @@ loc_8042148:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_804217C: .word byte_200AFA0
-off_8042180: .word 0x140
+off_804217C:
+	.word byte_200AFA0
+off_8042180:
+	.word 0x140
 	thumb_func_end chatbox_8042128
 
 	thumb_local_start
@@ -4902,9 +5136,12 @@ chatbox_8042184:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_80421CC: .word byte_200AFA0
-off_80421D0: .word 0x140
-off_80421D4: .word off_8043C8C
+off_80421CC:
+	.word byte_200AFA0
+off_80421D0:
+	.word 0x140
+off_80421D4:
+	.word off_8043C8C
 	thumb_func_end chatbox_8042184
 
 	thumb_local_start
@@ -4949,7 +5186,8 @@ chatbox_80421D8:
 	mov r0, #1
 	pop {r7,pc}
 	.balign 4, 0
-off_8042228: .word 0x140
+off_8042228:
+	.word 0x140
 	thumb_func_end chatbox_80421D8
 
 	thumb_local_start
@@ -4996,9 +5234,12 @@ chatbox_804222C:
 	mov r0, #1
 	pop {r7,pc}
 	.balign 4, 0
-off_8042280: .word 0x140
-off_8042284: .word byte_200AFA0
-off_8042288: .word byte_8043B54
+off_8042280:
+	.word 0x140
+off_8042284:
+	.word byte_200AFA0
+off_8042288:
+	.word byte_8043B54
 	thumb_func_end chatbox_804222C
 
 	thumb_local_start
@@ -5017,8 +5258,10 @@ chatbox_FD_sound:
 	mov lr, pc
 	bx r0
 	pop {pc}
-off_80422A0: .word off_80422A4
-off_80422A4: .word chatbox_80422D4+1
+off_80422A0:
+	.word off_80422A4
+off_80422A4:
+	.word chatbox_80422D4+1
 	.word chatbox_80422E8+1
 	.word chatbox_80422FC+1
 	.word chatbox_804230C+1
@@ -5161,8 +5404,10 @@ chatbox_FB_special:
 	mov lr, pc
 	bx r0
 	pop {pc}
-off_8042398: .word jt_804239C
-jt_804239C: .word chatbox_80423DC+1
+off_8042398:
+	.word jt_804239C
+jt_804239C:
+	.word chatbox_80423DC+1
 	.word chatbox_8042418+1
 	.word chatbox_804244C+1
 	.word chatbox_804247C+1
@@ -5518,8 +5763,10 @@ chatbox_FC_interface:
 	mov lr, pc
 	bx r0
 	pop {pc}
-off_8042620: .word off_8042624
-off_8042624: .word chatbox_8042678+1
+off_8042620:
+	.word off_8042624
+off_8042624:
+	.word chatbox_8042678+1
 	.word NULL
 	.word NULL
 	.word chatbox_80426A8+1
@@ -5583,7 +5830,8 @@ chatbox_80426A8:
 	mov r0, #1
 	pop {pc}
 	.byte 0, 0
-off_80426C0: .word jt_8043B00
+off_80426C0:
+	.word jt_8043B00
 	thumb_func_end chatbox_80426A8
 
 	thumb_local_start
@@ -5618,7 +5866,8 @@ chatbox_80426E0:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-dword_80426F0: .word 0x1000
+dword_80426F0:
+	.word 0x1000
 	thumb_func_end chatbox_80426E0
 
 	thumb_local_start
@@ -5678,12 +5927,18 @@ loc_8042750:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_8042758: .word off_804275C
-off_804275C: .word 0x1D4
-dword_8042760: .word 0x1D6
-off_8042764: .word 0x1D8
-off_8042768: .word 0x1E8
-off_804276C: .word 0x1EC
+off_8042758:
+	.word off_804275C
+off_804275C:
+	.word 0x1D4
+dword_8042760:
+	.word 0x1D6
+off_8042764:
+	.word 0x1D8
+off_8042768:
+	.word 0x1E8
+off_804276C:
+	.word 0x1EC
 	thumb_func_end chatbox_804271C
 
 	thumb_local_start
@@ -5712,9 +5967,12 @@ chatbox_sprite_8042770:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_80427A8: .word eOWPlayerObject
-off_80427AC: .word dword_80427B0
-dword_80427B0: .word 0x37
+off_80427A8:
+	.word eOWPlayerObject
+off_80427AC:
+	.word dword_80427B0
+dword_80427B0:
+	.word 0x37
 	thumb_func_end chatbox_sprite_8042770
 
 	thumb_local_start
@@ -5738,9 +5996,12 @@ loc_80427CE:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-dword_80427D8: .word 0xD
-dword_80427DC: .word 0xF
-off_80427E0: .word byte_813F380
+dword_80427D8:
+	.word 0xD
+dword_80427DC:
+	.word 0xF
+off_80427E0:
+	.word byte_813F380
 	thumb_func_end chatbox_80427B4
 
 	thumb_local_start
@@ -5758,8 +6019,10 @@ chatbox_80427E4:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-dword_80427FC: .word 0xF
-off_8042800: .word byte_813F380
+dword_80427FC:
+	.word 0xF
+off_8042800:
+	.word byte_813F380
 	thumb_func_end chatbox_80427E4
 
 	thumb_local_start
@@ -5773,8 +6036,10 @@ chatbox_8042804:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_8042818: .word eReqBBSGui
-dword_804281C: .word 0xF
+off_8042818:
+	.word eReqBBSGui
+dword_804281C:
+	.word 0xF
 	thumb_func_end chatbox_8042804
 
 	thumb_local_start
@@ -5798,7 +6063,8 @@ chatbox_F7_move:
 	mov lr, pc
 	bx r0
 	pop {pc}
-off_8042840: .word off_8042844
+off_8042840:
+	.word off_8042844
 off_8042844:
 	.word sub_804286C
 	.word sub_80428B8
@@ -5839,7 +6105,8 @@ sub_804286C: // 0x804286C
 	mov r0, #1
 	mov pc, lr
 	.align 2, 0
-off_804289C: .word off_80428A0
+off_804289C:
+	.word off_80428A0
 off_80428A0:
 	.byte 0x1E, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00
 	.byte 0x1E, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00
@@ -6130,8 +6397,10 @@ loc_8042A86:
 	strb r7, [r2,#2]
 	pop {r4,r5,pc}
 	.balign 4, 0
-off_8042A94: .word eReqBBSGui
-off_8042A98: .word eReqBBSGui
+off_8042A94:
+	.word eReqBBSGui
+off_8042A98:
+	.word eReqBBSGui
 	thumb_func_end chatbox_8042A14
 
 	thumb_local_start
@@ -6332,7 +6601,8 @@ loc_8042C0C:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-dword_8042C14: .word 0xFFFFFFFF
+dword_8042C14:
+	.word 0xFFFFFFFF
 	thumb_func_end chatbox_8042B38
 
 	thumb_local_start
@@ -6448,7 +6718,8 @@ loc_8042CEC:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-dword_8042CF4: .word 0xFFFFFFFF
+dword_8042CF4:
+	.word 0xFFFFFFFF
 	thumb_func_end chatbox_8042C18
 
 	thumb_local_start
@@ -6461,8 +6732,10 @@ chatbox_FE_numberinput:
 	mov lr, pc
 	bx r0
 	pop {pc}
-off_8042D08: .word jt_8042D0C
-jt_8042D0C: .word sub_804312C+1
+off_8042D08:
+	.word jt_8042D0C
+jt_8042D0C:
+	.word sub_804312C+1
 	.word chatbox_8043164+1
 	.word chatbox_80432C8+1
 	.word chatbox_804330C+1
@@ -6715,7 +6988,8 @@ loc_8042F08:
 locret_8042F0A:
 	pop {r1-r7,pc}
 	.balign 4, 0
-off_8042F0C: .word byte_8045CCC
+off_8042F0C:
+	.word byte_8045CCC
 	thumb_func_end chatbox_8042EE8
 
 	thumb_local_start
@@ -6739,7 +7013,8 @@ loc_8042F2C:
 locret_8042F2E:
 	pop {r2,pc}
 	.balign 4, 0
-off_8042F30: .word byte_8044264
+off_8042F30:
+	.word byte_8044264
 	thumb_func_end chatbox_8042F10
 
 	thumb_local_start
@@ -6844,8 +7119,10 @@ sub_8042FC2:
 	str r0, [r5,#0x58]
 	pop {pc}
 	.balign 4, 0
-dword_8042FD0: .word 0x67625E6F
-dword_8042FD4: .word 0x687261
+dword_8042FD0:
+	.word 0x67625E6F
+dword_8042FD4:
+	.word 0x687261
 	thumb_func_end sub_8042FC2
 
 	thumb_local_start
@@ -6858,8 +7135,10 @@ chatbox_F9_storebyte:
 	mov lr, pc
 	bx r0
 	pop {pc}
-off_8042FE8: .word off_8042FEC
-off_8042FEC: .word chatbox_8042FF4+1
+off_8042FE8:
+	.word off_8042FEC
+off_8042FEC:
+	.word chatbox_8042FF4+1
 	.word chatbox_8043008+1
 	thumb_func_end chatbox_F9_storebyte
 
@@ -6889,7 +7168,8 @@ chatbox_8043008:
 	mov r0, #1
 	mov pc, lr
 	.balign 4, 0x00
-off_804301C: .word off_8043C64
+off_804301C:
+	.word off_8043C64
 	thumb_func_end chatbox_8043008
 
 	thumb_local_start
@@ -6902,8 +7182,10 @@ chatbox_FF_copytext:
 	mov lr, pc
 	bx r0
 	pop {pc}
-off_8043030: .word off_8043034
-off_8043034: .word chatbox_80430A0+1
+off_8043030:
+	.word off_8043034
+off_8043034:
+	.word chatbox_80430A0+1
 	.word chatbox_80430A0+1
 	thumb_func_end chatbox_FF_copytext
 
@@ -6945,8 +7227,10 @@ loc_8043050:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_8043084: .word off_8043088
-off_8043088: .word dword_20018F0
+off_8043084:
+	.word off_8043088
+off_8043088:
+	.word dword_20018F0
 	.word dword_200194C
 	.word dword_20019A8
 	.word dword_2001A04
@@ -7001,13 +7285,17 @@ loc_80430B4:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-off_80430F8: .word byte_80430FC
-byte_80430FC: .byte 0x86, 0x11, 0x0, 0x2, 0x9E, 0x11, 0x0, 0x2, 0xD6, 0x7, 0x0, 0x2
+off_80430F8:
+	.word byte_80430FC
+byte_80430FC:
+	.byte 0x86, 0x11, 0x0, 0x2, 0x9E, 0x11, 0x0, 0x2, 0xD6, 0x7, 0x0, 0x2
 	.byte 0x3A, 0x8, 0x0, 0x2, 0xF4, 0x18, 0x0, 0x2, 0x50, 0x19, 0x0, 0x2
 	.byte 0xAC, 0x19, 0x0, 0x2, 0x8, 0x1A, 0x0, 0x2, 0x64, 0x1A, 0x0, 0x2
 	.byte 0xC0, 0x1A, 0x0, 0x2
-off_8043124: .word 0x140
-off_8043128: .word byte_200AFA0
+off_8043124:
+	.word 0x140
+off_8043128:
+	.word byte_200AFA0
 	thumb_func_end chatbox_80430A0
 
 	thumb_local_start
@@ -7036,8 +7324,10 @@ sub_804312C:
 	mov r0, #1
 	mov pc, lr
 	.balign 4, 0
-off_804315C: .word 0x1CC
-off_8043160: .word 0x154
+off_804315C:
+	.word 0x1CC
+off_8043160:
+	.word 0x154
 	thumb_func_end sub_804312C
 
 	thumb_local_start
@@ -7209,12 +7499,17 @@ loc_8043276:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0
-off_80432AC: .word byte_803FCE4
-off_80432B0: .word sub_3007038+1
+off_80432AC:
+	.word byte_803FCE4
+off_80432B0:
+	.word sub_3007038+1
 	.word 0x1CC
-off_80432B8: .word 0x154
-off_80432BC: .word word_80432C0
-word_80432C0: .hword 0x40
+off_80432B8:
+	.word 0x154
+off_80432BC:
+	.word word_80432C0
+word_80432C0:
+	.hword 0x40
 	.word 0x200080
 	.hword 0x10
 	thumb_func_end chatbox_8043164
@@ -7253,8 +7548,10 @@ loc_80432DC:
 	mov r0, #1
 	mov pc, lr
 	.balign 4, 0
-off_8043304: .word 0x1CC
-off_8043308: .word 0x154
+off_8043304:
+	.word 0x1CC
+off_8043308:
+	.word 0x154
 	thumb_func_end chatbox_80432C8
 
 	thumb_local_start
@@ -7486,12 +7783,17 @@ loc_80434BE:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0
-off_80434C4: .word byte_803FCE4
-off_80434C8: .word sub_3007038+1
+off_80434C4:
+	.word byte_803FCE4
+off_80434C8:
+	.word sub_3007038+1
 	.word 0x1CC
-off_80434D0: .word 0x154
-off_80434D4: .word byte_80434D8
-byte_80434D8: .byte 0x40, 0x0, 0x80, 0x0, 0x20, 0x0, 0x10, 0x0
+off_80434D0:
+	.word 0x154
+off_80434D4:
+	.word byte_80434D8
+byte_80434D8:
+	.byte 0x40, 0x0, 0x80, 0x0, 0x20, 0x0, 0x10, 0x0
 	thumb_func_end chatbox_804330C
 
 	thumb_local_start
@@ -7720,12 +8022,17 @@ loc_804368C:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0
-off_8043694: .word byte_803FCE4
-off_8043698: .word sub_3007038+1
+off_8043694:
+	.word byte_803FCE4
+off_8043698:
+	.word sub_3007038+1
 	.word 0x1CC
-off_80436A0: .word 0x154
-off_80436A4: .word word_80436A8
-word_80436A8: .hword 0x40
+off_80436A0:
+	.word 0x154
+off_80436A4:
+	.word word_80436A8
+word_80436A8:
+	.hword 0x40
 	.word 0x200080
 	.hword 0x10
 	thumb_func_end chatbox_80434E0
@@ -7757,8 +8064,10 @@ chatbox_80436B0:
 	mov r0, #1
 	mov pc, lr
 	.balign 4, 0
-off_80436E0: .word 0x1CC
-off_80436E4: .word 0x154
+off_80436E0:
+	.word 0x1CC
+off_80436E4:
+	.word 0x154
 	thumb_func_end chatbox_80436B0
 
 	thumb_local_start
@@ -7986,12 +8295,18 @@ loc_804388C:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0
-off_8043894: .word byte_803FCE4
-byte_8043898: .byte 0x39, 0x70, 0x0, 0x3, 0xCC, 0x1, 0x0, 0x0
-dword_80438A0: .word 0x154
-off_80438A4: .word byte_80438A8
-byte_80438A8: .byte 0x40, 0x0, 0x80, 0x0, 0x20, 0x0, 0x10, 0x0
-dword_80438B0: .word 0x1B9
+off_8043894:
+	.word byte_803FCE4
+byte_8043898:
+	.byte 0x39, 0x70, 0x0, 0x3, 0xCC, 0x1, 0x0, 0x0
+dword_80438A0:
+	.word 0x154
+off_80438A4:
+	.word byte_80438A8
+byte_80438A8:
+	.byte 0x40, 0x0, 0x80, 0x0, 0x20, 0x0, 0x10, 0x0
+dword_80438B0:
+	.word 0x1B9
 	thumb_func_end chatbox_80436E8
 
 	thumb_local_start
@@ -8021,8 +8336,10 @@ chatbox_80438B4:
 	mov pc, lr
 	.byte 0x0, 0x0
 	.balign 4, 0
-off_80438E4: .word 0x1CC
-off_80438E8: .word 0x154
+off_80438E4:
+	.word 0x1CC
+off_80438E8:
+	.word 0x154
 	thumb_func_end chatbox_80438B4
 
 	thumb_local_start
@@ -8196,16 +8513,24 @@ loc_8043A04:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0
-off_8043A34: .word byte_803FCE4
-off_8043A38: .word sub_3007038+1
-off_8043A3C: .word 0x1CC
-off_8043A40: .word 0x154
-off_8043A44: .word word_8043A48
-word_8043A48: .hword 0x40
+off_8043A34:
+	.word byte_803FCE4
+off_8043A38:
+	.word sub_3007038+1
+off_8043A3C:
+	.word 0x1CC
+off_8043A40:
+	.word 0x154
+off_8043A44:
+	.word word_8043A48
+word_8043A48:
+	.hword 0x40
 	.hword 0x80
 	.word 0x100020
-off_8043A50: .word byte_8043A54
-byte_8043A54: .byte 0x1, 0x2, 0x3, 0x5, 0x0, 0x0, 0x0, 0x0
+off_8043A50:
+	.word byte_8043A54
+byte_8043A54:
+	.byte 0x1, 0x2, 0x3, 0x5, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end chatbox_80438EC
 
 	thumb_local_start
@@ -8294,7 +8619,8 @@ loc_8043AFA:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0
-jt_8043B00: .word doPETEffect_8033fc0+1
+jt_8043B00:
+	.word doPETEffect_8033fc0+1
 	.word NULL
 	.word initMinigameEffect_8003a64+1
 	.word sub_8001154+1
@@ -8315,7 +8641,8 @@ jt_8043B00: .word doPETEffect_8033fc0+1
 	.word reloadCurNaviStatBoosts_813c3ac+1
 	.word SetCurNaviHPToFull+1
 	.word sub_80AA86E+1
-byte_8043B54:: .byte 0xE0, 0xA2, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0, 0x40, 0xA3, 0x0, 0x2
+byte_8043B54::
+	.byte 0xE0, 0xA2, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0, 0x40, 0xA3, 0x0, 0x2
 	.byte 0x20, 0x0, 0x0, 0x0, 0x0, 0xA3, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0
 	.byte 0x60, 0xA3, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0, 0x0, 0xAA, 0x2, 0x2
 	.byte 0x20, 0x0, 0x0, 0x0, 0x20, 0xAA, 0x2, 0x2, 0x20, 0x0, 0x0, 0x0
@@ -8347,15 +8674,18 @@ off_8043C64:
 	.word 0x0
 	.word 0x0
 	.word sSubmenu+0x20 // sSubmenu.unk_20
-off_8043C84: .word byte_2011A9D
+off_8043C84:
+	.word byte_2011A9D
 	.word 0x0
-off_8043C8C:: .word unk_2009A80
+off_8043C8C::
+	.word unk_2009A80
 	.word unk_2009A82
 	.word unk_2009A84
 	.word unk_2009A86
 	.word unk_2009A88
 	.word unk_2009A8A
-byte_8043CA4:: .byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
+byte_8043CA4::
+	.byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
 	.byte 0x8, 0x8, 0x6, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
 	.byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x7, 0x7, 0x7, 0x8, 0x6, 0x7, 0x7, 0x6, 0x6, 0x7, 0x6, 0x8
 	.byte 0x7, 0x7, 0x7, 0x7, 0x7, 0x7, 0x7, 0x7, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
@@ -8384,7 +8714,8 @@ byte_8043CA4:: .byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8,
 	.byte 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB
 	.byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
 	.byte 0x8, 0x8, 0x8, 0x8
-byte_8043E84: .byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
+byte_8043E84:
+	.byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
 	.byte 0x8, 0x8, 0x6, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
 	.byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x7, 0x7, 0x7, 0x8, 0x6, 0x7, 0x7, 0x6, 0x6, 0x7, 0x6, 0x8
 	.byte 0x7, 0x7, 0x7, 0x7, 0x7, 0x7, 0x7, 0x7, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
@@ -8413,7 +8744,8 @@ byte_8043E84: .byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 
 	.byte 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB
 	.byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
 	.byte 0x8, 0x8, 0x8, 0x8
-byte_8044064: .byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
+byte_8044064:
+	.byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
 	.byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
 	.byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
 	.byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
@@ -8442,13 +8774,18 @@ byte_8044064: .byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 
 	.byte 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB
 	.byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
 	.byte 0x8, 0x8, 0x8, 0x8
-byte_8044244: .byte 0x3D
-byte_8044245: .byte 0x3, 0x5C, 0x9, 0x5D, 0xC, 0x5E, 0xF, 0x5F, 0x12, 0x3F
+byte_8044244:
+	.byte 0x3D
+byte_8044245:
+	.byte 0x3, 0x5C, 0x9, 0x5D, 0xC, 0x5E, 0xF, 0x5F, 0x12, 0x3F
 	.byte 0x1, 0x40, 0x2, 0x57, 0x3, 0x44, 0x1, 0x46, 0x1, 0x29
 	.byte 0x1, 0x31, 0x1, 0xFF, 0xFF, 0x0, 0x0
-byte_8044260: .byte 0xFF
-byte_8044261: .byte 0xFF, 0x0, 0x0
-byte_8044264: .byte 0x2D, 0x2D, 0x2D, 0x0, 0x41, 0x53, 0x53, 0x0, 0x43, 0x4F
+byte_8044260:
+	.byte 0xFF
+byte_8044261:
+	.byte 0xFF, 0x0, 0x0
+byte_8044264:
+	.byte 0x2D, 0x2D, 0x2D, 0x0, 0x41, 0x53, 0x53, 0x0, 0x43, 0x4F
 	.byte 0x4B, 0x0, 0x46, 0x55, 0x4B, 0x0, 0x46, 0x56, 0x4B, 0x0
 	.byte 0x47, 0x41, 0x59, 0x0, 0x44, 0x52, 0x45, 0x0, 0x4A, 0x41
 	.byte 0x50, 0x0, 0x4A, 0x49, 0x5A, 0x0, 0x4B, 0x4F, 0x43, 0x0
@@ -8466,7 +8803,8 @@ byte_8044264: .byte 0x2D, 0x2D, 0x2D, 0x0, 0x41, 0x53, 0x53, 0x0, 0x43, 0x4F
 	.byte 0x50, 0x0, 0x44, 0x31, 0x4B, 0x0, 0x4B, 0x30, 0x4B, 0x0
 	.byte 0x41, 0x35, 0x5A, 0x0, 0x53, 0x31, 0x54, 0x0, 0x48, 0x31
 	.byte 0x56, 0x0, 0x0, 0x0, 0x0, 0x0
-off_8044314:: .word unk_200BEA0
+off_8044314::
+	.word unk_200BEA0
 	.byte 0x20, 0x20, 0x20, 0x20, 0xA0, 0xC1, 0x0, 0x2, 0x20, 0x20
 	.byte 0x20, 0x20, 0xB0, 0xBE, 0x0, 0x2, 0x20, 0x20, 0x20, 0x20
 	.byte 0xB0, 0xC1, 0x0, 0x2, 0x20, 0x20, 0x20, 0x20, 0xC0, 0xBE
@@ -8477,7 +8815,8 @@ off_8044314:: .word unk_200BEA0
 	.byte 0x0, 0x2, 0x20, 0x20, 0x20, 0x20, 0xF0, 0xBE, 0x0, 0x2
 	.byte 0x20, 0x20, 0x20, 0x20, 0xF0, 0xC1, 0x0, 0x2, 0x20, 0x20
 	.byte 0x20, 0x20, 0x0, 0x0, 0x0, 0x0
-off_8044378:: .word unk_200C1A0
+off_8044378::
+	.word unk_200C1A0
 	.word 0xA0202020
 	.word unk_200C1B0
 	.byte 0x20, 0x20, 0x20, 0xA0, 0xC0, 0xC1, 0x0, 0x2, 0x20, 0x20
@@ -8502,7 +8841,8 @@ off_8044378:: .word unk_200C1A0
 	.word byte_200C7F0
 	.word 0x20202020
 	.word 0x0
-off_804440C:: .word byte_200C7A0
+off_804440C::
+	.word byte_200C7A0
 	.byte 0x20, 0x20, 0x20, 0xA0, 0xB0, 0xC7, 0x0, 0x2, 0x20, 0x20
 	.byte 0x20, 0xA0, 0xC0, 0xC7, 0x0, 0x2, 0x20, 0x20, 0x20, 0xA0
 	.byte 0xD0, 0xC7, 0x0, 0x2, 0x20, 0x20, 0x20, 0xA0, 0xE0, 0xC7
@@ -8609,64 +8949,78 @@ off_internet_804457C: // [Nullable<*const [*const LZ77Compressed<TextScriptArchi
 	.word off_8045278
 	.word off_80452F8
 	.word off_804535C
-off_80445D8: .word off_80445E0
+off_80445D8:
+	.word off_80445E0
 	.word off_80445F4
-off_80445E0: .word CompText8762F98
+off_80445E0:
+	.word CompText8762F98
 	.word CompText8762FE4
 	.word CompText8762FF0
 	.word CompText876381C
 	.word CompText8763B24
-off_80445F4: .word CompText87643A8
+off_80445F4:
+	.word CompText87643A8
 	.word CompText87643B4
 	.word CompText87643C0
 	.word EmptyCompText87643CC
 	.word EmptyCompText87643D8
-off_8044608: .word CompText87558D8
+off_8044608:
+	.word CompText87558D8
 	.word EmptyCompText8755C0C
-off_8044610: .word CompText873F008
+off_8044610:
+	.word CompText873F008
 	.word CompText873F028
 	.word CompText873F048
 	.word CompText873F430
-off_8044620: .word off_8044634
+off_8044620:
+	.word off_8044634
 	.word off_8044648
 	.word off_804465C
 	.word off_8044670
 	.word off_8044684
-off_8044634: .word CompText87643E4
+off_8044634:
+	.word CompText87643E4
 	.word CompText8764FAC
 	.word CompText87658F0
 	.word CompText87666B4
 	.word CompText8766BFC
-off_8044648: .word CompText87680AC
+off_8044648:
+	.word CompText87680AC
 	.word CompText8768558
 	.word CompText8768D28
 	.word CompText8768EEC
 	.word CompText8769148
-off_804465C: .word CompText87691D8
+off_804465C:
+	.word CompText87691D8
 	.word CompText87691E4
 	.word CompText8769264
 	.word CompText8769270
 	.word CompText876927C
-off_8044670: .word CompText87692AC
+off_8044670:
+	.word CompText87692AC
 	.word EmptyCompText87693BC
 	.word EmptyCompText87693C8
 	.word EmptyCompText87693D4
 	.word CompText87693E0
-off_8044684: .word EmptyCompText87694B4
+off_8044684:
+	.word EmptyCompText87694B4
 	.word CompText87694C0
 	.word CompText87698B0
 	.word CompText8769BA8
 	.word CompText8769DE8
-off_8044698: .word CompText8755C18
+off_8044698:
+	.word CompText8755C18
 	.word CompText8756124
 	.word CompText87565E8
 	.word CompText8756AA4
 	.word CompText8756C9C
-off_80446AC: .word CompText873F908
+off_80446AC:
+	.word CompText873F908
 	.word CompText873FD64
 	.word CompText874041C
 	.word CompText8740974
-off_80446BC: .word off_80446E8
+off_80446BC:
+	.word off_80446E8
 	.word off_80446FC
 	.word off_8044710
 	.word off_8044724
@@ -8677,62 +9031,74 @@ off_80446BC: .word off_80446E8
 	.word off_8044788
 	.word off_804479C
 	.word off_80447B0
-off_80446E8: .word CompText876A5B4
+off_80446E8:
+	.word CompText876A5B4
 	.word CompText876B0DC
 	.word CompText876B29C
 	.word CompText876B5A4
 	.word CompText876B7C4
-off_80446FC: .word CompText876B978
+off_80446FC:
+	.word CompText876B978
 	.word CompText876BD54
 	.word CompText876BF64
 	.word CompText876C0DC
 	.word CompText876C2A8
-off_8044710: .word CompText876C880
+off_8044710:
+	.word CompText876C880
 	.word CompText876CA38
 	.word CompText876CBE8
 	.word CompText876CD18
 	.word CompText876CE60
-off_8044724: .word CompText876D154
+off_8044724:
+	.word CompText876D154
 	.word CompText876D378
 	.word CompText876D48C
 	.word CompText876D580
 	.word CompText876D618
-off_8044738: .word CompText876D7E0
+off_8044738:
+	.word CompText876D7E0
 	.word CompText876DB88
 	.word CompText876DE70
 	.word CompText876E078
 	.word CompText876E144
-off_804474C: .word CompText876E538
+off_804474C:
+	.word CompText876E538
 	.word CompText876E698
 	.word CompText876E73C
 	.word CompText876E874
 	.word CompText876E900
-off_8044760: .word CompText876EE64
+off_8044760:
+	.word CompText876EE64
 	.word CompText876F2EC
 	.word CompText876F7E4
 	.word CompText876FD30
 	.word CompText876FE2C
-off_8044774: .word CompText8770084
+off_8044774:
+	.word CompText8770084
 	.word CompText87707EC
 	.word CompText87709CC
 	.word CompText8770D20
 	.word CompText8770EC0
-off_8044788: .word CompText877125C
+off_8044788:
+	.word CompText877125C
 	.word CompText877125C
 	.word CompText8771268
 	.word CompText877129C
 	.word EmptyCompText87712BC
-off_804479C: .word CompText87712C8
+off_804479C:
+	.word CompText87712C8
 	.word CompText87712C8
 	.word CompText8771844
 	.word CompText8771850
 	.word CompText877185C
-off_80447B0: .word CompText8771FAC
+off_80447B0:
+	.word CompText8771FAC
 	.word CompText8771FAC
 	.word CompText8771FB8
 	.word CompText8771FC4
 	.word CompText8771FD0
-off_80447C4: .word CompText875752C
+off_80447C4:
+	.word CompText875752C
 	.word CompText8757B7C
 	.word CompText8758018
 	.word CompText8758410
@@ -8743,163 +9109,196 @@ off_80447C4: .word CompText875752C
 	.word CompText8759480
 	.word CompText8759870
 	.word CompText8759C10
-off_80447F0: .word CompText8740E90
+off_80447F0:
+	.word CompText8740E90
 	.word CompText87414AC
 	.word CompText8741D04
 	.word CompText8742318
-off_8044800: .word off_8044814
+off_8044800:
+	.word off_8044814
 	.word off_8044828
 	.word off_804483C
 	.word off_8044850
 	.word off_8044864
-off_8044814: .word CompText8772974
+off_8044814:
+	.word CompText8772974
 	.word CompText8773068
 	.word CompText8773730
 	.word CompText877416C
 	.word CompText8774530
-off_8044828: .word CompText8774F48
+off_8044828:
+	.word CompText8774F48
 	.word CompText8775208
 	.word CompText877567C
 	.word CompText8775B60
 	.word CompText8775E00
-off_804483C: .word CompText8776A20
+off_804483C:
+	.word CompText8776A20
 	.word CompText8776C50
 	.word CompText8777078
 	.word CompText8777428
 	.word CompText877767C
-off_8044850: .word CompText8778400
+off_8044850:
+	.word CompText8778400
 	.word CompText87786EC
 	.word CompText8778810
 	.word CompText87789F4
 	.word CompText8778B40
-off_8044864: .word EmptyCompText87792A8
+off_8044864:
+	.word EmptyCompText87792A8
 	.word EmptyCompText87792B4
 	.word EmptyCompText87792C0
 	.word CompText87792CC
 	.word CompText87792DC
-off_8044878: .word CompText8759EF8
+off_8044878:
+	.word CompText8759EF8
 	.word CompText875A2C4
 	.word CompText875A918
 	.word CompText875B064
 	.word CompText875B30C
-off_804488C: .word CompText87428D4
+off_804488C:
+	.word CompText87428D4
 	.word CompText8742D64
 	.word TextScriptLevBus87433BC
 	.word CompText87439D8
-off_804489C: .word off_80448B0
+off_804489C:
+	.word off_80448B0
 	.word off_80448C4
 	.word off_80448D8
 	.word off_80448EC
 	.word off_8044900
-off_80448B0: .word CompText8779B1C
+off_80448B0:
+	.word CompText8779B1C
 	.word CompText8779B1C
 	.word CompText8779F28
 	.word CompText877A4A8
 	.word CompText877A7FC
-off_80448C4: .word CompText877C0FC
+off_80448C4:
+	.word CompText877C0FC
 	.word CompText877C0FC
 	.word CompText877C534
 	.word CompText877C7A4
 	.word CompText877C94C
-off_80448D8: .word CompText877CD94
+off_80448D8:
+	.word CompText877CD94
 	.word CompText877CD94
 	.word CompText877D7D4
 	.word CompText877D8CC
 	.word CompText877DAB4
-off_80448EC: .word CompText877DF6C
+off_80448EC:
+	.word CompText877DF6C
 	.word CompText877DF6C
 	.word CompText877E03C
 	.word CompText877E278
 	.word CompText877E3DC
-off_8044900: .word EmptyCompText877E554
+off_8044900:
+	.word EmptyCompText877E554
 	.word EmptyCompText877E554
 	.word EmptyCompText877E560
 	.word CompText877E56C
 	.word CompText877E620
-off_8044914: .word CompText875B4B0
+off_8044914:
+	.word CompText875B4B0
 	.word CompText875B934
 	.word CompText875BCB4
 	.word CompText875BE5C
 	.word CompText875BF80
-off_8044928: .word CompText8743F6C
+off_8044928:
+	.word CompText8743F6C
 	.word CompText8743F6C
 	.word CompText87444C8
 	.word CompText8744B38
-off_8044938: .word off_8044948
+off_8044938:
+	.word off_8044948
 	.word off_804495C
 	.word off_8044970
 	.word off_8044984
-off_8044948: .word CompText877EDD8
+off_8044948:
+	.word CompText877EDD8
 	.word CompText877EDD8
 	.word CompText877EDD8
 	.word CompText877F460
 	.word CompText877F594
-off_804495C: .word CompText8780104
+off_804495C:
+	.word CompText8780104
 	.word CompText8780104
 	.word CompText8780104
 	.word CompText8780724
 	.word CompText87808D0
-off_8044970: .word CompText8781048
+off_8044970:
+	.word CompText8781048
 	.word CompText8781048
 	.word CompText8781048
 	.word CompText87813CC
 	.word CompText8781564
-off_8044984: .word CompText8781784
+off_8044984:
+	.word CompText8781784
 	.word CompText8781784
 	.word CompText8781784
 	.word CompText8781B18
 	.word CompText8781CB4
-off_8044998: .word CompText875BFD8
+off_8044998:
+	.word CompText875BFD8
 	.word CompText875C22C
 	.word CompText875C4B8
 	.word CompText875C83C
-off_80449A8: .word CompText8745100
+off_80449A8:
+	.word CompText8745100
 	.word CompText8745100
 	.word CompText8745100
 	.word CompText874584C
-off_80449B8: .word off_80449D0
+off_80449B8:
+	.word off_80449D0
 	.word off_80449E4
 	.word off_80449F8
 	.word off_8044A0C
 	.word off_8044A20
 	.word off_8044A34
-off_80449D0: .word CompText8781ED4
+off_80449D0:
+	.word CompText8781ED4
 	.word CompText8781ED4
 	.word CompText8781ED4
 	.word CompText8781ED4
 	.word CompText8781FE4
-off_80449E4: .word CompText8782048
+off_80449E4:
+	.word CompText8782048
 	.word CompText8782048
 	.word CompText8782048
 	.word CompText8782048
 	.word CompText878205C
-off_80449F8: .word CompText87821B4
+off_80449F8:
+	.word CompText87821B4
 	.word CompText87821B4
 	.word CompText87821B4
 	.word CompText87821B4
 	.word EmptyCompText87822E8
-off_8044A0C: .word CompText87822F4
+off_8044A0C:
+	.word CompText87822F4
 	.word CompText87822F4
 	.word CompText87822F4
 	.word CompText87822F4
 	.word EmptyCompText8782414
-off_8044A20: .word CompText8782420
+off_8044A20:
+	.word CompText8782420
 	.word CompText8782420
 	.word CompText8782420
 	.word CompText8782420
 	.word CompText8782564
-off_8044A34: .word CompText87825B4
+off_8044A34:
+	.word CompText87825B4
 	.word CompText87825B4
 	.word CompText87825B4
 	.word CompText87825B4
 	.word EmptyCompText87825C0
-off_8044A48: .word CompText875CB68
+off_8044A48:
+	.word CompText875CB68
 	.word CompText875CE10
 	.word CompText875CFC4
 	.word CompText875D1FC
 	.word CompText875D5E0
 	.word EmptyCompText875D774
-off_8044A60: .word CompText8745DEC
+off_8044A60:
+	.word CompText8745DEC
 	.word CompText8745DEC
 	.word CompText8745DEC
 	.word CompText8745DEC
@@ -8918,9 +9317,11 @@ off_8044A8C:
 	.word CompText87979FC
 	.word CompText8797A08
 	.word EmptyCompText8797A14
-off_8044AA0: .word CompText875D780
+off_8044AA0:
+	.word CompText875D780
 	.word CompText875D800
-off_8044AA8: .word CompText87461A0
+off_8044AA8:
+	.word CompText87461A0
 	.word CompText87462D0
 	.word CompText87463F4
 	.word CompText87464AC
@@ -8950,139 +9351,168 @@ off_8044B00:
   .word CompText875D974
 	.word CompText875D9C0
 	.word CompText875DA0C
-off_8044B0C: .word CompText87466F8
+off_8044B0C:
+	.word CompText87466F8
 	.word CompText87469C4
 	.word CompText8746A34
 	.word CompText8746AE8
-off_8044B1C: .word off_8044B28
+off_8044B1C:
+	.word off_8044B28
 	.word off_8044B3C
 	.word off_8044B50
-off_8044B28: .word CompText8798660
+off_8044B28:
+	.word CompText8798660
 	.word CompText8798660
 	.word CompText879896C
 	.word CompText8798978
 	.word CompText8798984
-off_8044B3C: .word CompText8798990
+off_8044B3C:
+	.word CompText8798990
 	.word CompText8798990
 	.word CompText879899C
 	.word CompText87989A8
 	.word CompText87989B4
-off_8044B50: .word CompText87989C0
+off_8044B50:
+	.word CompText87989C0
 	.word CompText87989C0
 	.word CompText87989CC
 	.word CompText87989D8
 	.word CompText87989E4
-off_8044B64: .word CompText875DA58
+off_8044B64:
+	.word CompText875DA58
 	.word CompText875DAB8
 	.word CompText875DB18
-off_8044B70: .word CompText8746D34
+off_8044B70:
+	.word CompText8746D34
 	.word CompText8746D34
 	.word CompText8746E38
 	.word CompText8746EF0
-off_8044B80: .word off_8044B8C
+off_8044B80:
+	.word off_8044B8C
 	.word off_8044BA0
 	.word off_8044BB4
-off_8044B8C: .word CompText8798B28
+off_8044B8C:
+	.word CompText8798B28
 	.word CompText8798B28
 	.word CompText8798B28
 	.word CompText8798ED8
 	.word CompText8798EE4
-off_8044BA0: .word EmptyCompText87994A4
+off_8044BA0:
+	.word EmptyCompText87994A4
 	.word EmptyCompText87994A4
 	.word EmptyCompText87994A4
 	.word CompText87994B0
 	.word CompText87994BC
-off_8044BB4: .word EmptyCompText879951C
+off_8044BB4:
+	.word EmptyCompText879951C
 	.word EmptyCompText879951C
 	.word EmptyCompText879951C
 	.word CompText8799528
 	.word CompText8799534
-off_8044BC8: .word CompText875DBD8
+off_8044BC8:
+	.word CompText875DBD8
 	.word CompText875DC10
 	.word CompText875DC48
-off_8044BD4: .word CompText874713C
+off_8044BD4:
+	.word CompText874713C
 	.word CompText874713C
 	.word CompText874713C
 	.word CompText8747228
-off_8044BE4: .word off_8044BF8
+off_8044BE4:
+	.word off_8044BF8
 	.word off_8044C0C
 	.word off_8044C20
 	.word off_8044C34
 	.word off_8044C48
-off_8044BF8: .word CompText8799708
+off_8044BF8:
+	.word CompText8799708
 	.word CompText8799708
 	.word CompText8799708
 	.word CompText8799708
 	.word CompText8799AD4
-off_8044C0C: .word CompText8799AE0
+off_8044C0C:
+	.word CompText8799AE0
 	.word CompText8799AE0
 	.word CompText8799AE0
 	.word CompText8799AE0
 	.word CompText8799E5C
-off_8044C20: .word CompText8799E68
+off_8044C20:
+	.word CompText8799E68
 	.word CompText8799E68
 	.word CompText8799E68
 	.word CompText8799E68
 	.word CompText879A228
-off_8044C34: .word CompText879A28C
+off_8044C34:
+	.word CompText879A28C
 	.word CompText879A28C
 	.word CompText879A28C
 	.word CompText879A28C
 	.word CompText879A63C
-off_8044C48: .word CompText879A648
+off_8044C48:
+	.word CompText879A648
 	.word CompText879A648
 	.word CompText879A648
 	.word CompText879A648
 	.word CompText879A654
-off_8044C5C: .word CompText875DC80
+off_8044C5C:
+	.word CompText875DC80
 	.word CompText875DD4C
 	.word CompText875DDF8
 	.word CompText875DE80
 	.word EmptyCompText875DF20
-off_8044C70: .word CompText8747474
+off_8044C70:
 	.word CompText8747474
 	.word CompText8747474
 	.word CompText8747474
-off_8044C80: .word off_8044C9C
+	.word CompText8747474
+off_8044C80:
+	.word off_8044C9C
 	.word off_8044CB0
 	.word 0x0
 	.word off_8044CC4
 	.word 0x0
 	.word off_8044CD8
 	.word off_8044CEC
-off_8044C9C: .word CompText879A660
+off_8044C9C:
+	.word CompText879A660
 	.word CompText879A66C
 	.word CompText879A6DC
 	.word CompText879A6E8
 	.word CompText879A704
-off_8044CB0: .word CompText879A764
+off_8044CB0:
+	.word CompText879A764
 	.word CompText879A770
 	.word CompText879A77C
 	.word CompText879AAB0
 	.word CompText879AACC
-off_8044CC4: .word CompText879AF5C
+off_8044CC4:
+	.word CompText879AF5C
 	.word CompText879AF68
 	.word CompText879B28C
 	.word CompText879B298
 	.word CompText879B2B4
-off_8044CD8: .word CompText879BF6C
+off_8044CD8:
+	.word CompText879BF6C
 	.word CompText879BF6C
 	.word CompText879C700
 	.word CompText879C70C
 	.word CompText879C728
-off_8044CEC: .word CompText879D130
+off_8044CEC:
+	.word CompText879D130
 	.word CompText879D130
 	.word CompText879D130
 	.word CompText879D13C
 	.word CompText879D158
-off_8044D00: .word CompText875DF2C
+off_8044D00:
+	.word CompText875DF2C
 	.word CompText875DF38
 	.word 0x0
 	.word CompText875DF44
 	.word 0x0
 	.word CompText875DF50
 	.word CompText875DF78
-off_8044D1C: .word CompText87477F4
+off_8044D1C:
+	.word CompText87477F4
 	.word CompText8747D30
 	.word CompText8748650
 	.word CompText8748F44
@@ -9238,87 +9668,104 @@ off_8044EFC:
 	.word off_8045040
 	.word off_8045054
 	.word off_8045068
-off_8044F3C: .word CompText87A0FB8
+off_8044F3C:
+	.word CompText87A0FB8
 	.word CompText87A0FB8
 	.word CompText87A0FB8
 	.word CompText87A0FC4
 	.word CompText87A0FD0
-off_8044F50: .word CompText87A1078
+off_8044F50:
+	.word CompText87A1078
 	.word CompText87A1078
 	.word CompText87A1078
 	.word CompText87A1084
 	.word CompText87A1090
-off_8044F64: .word CompText87A1120
+off_8044F64:
+	.word CompText87A1120
 	.word CompText87A1120
 	.word CompText87A112C
 	.word CompText87A1138
 	.word CompText87A1144
-off_8044F78: .word CompText87A1570
+off_8044F78:
+	.word CompText87A1570
 	.word CompText87A157C
 	.word CompText87A1588
 	.word CompText87A1594
 	.word CompText87A15A0
-off_8044F8C: .word CompText87A1CC0
+off_8044F8C:
+	.word CompText87A1CC0
 	.word CompText87A1CC0
 	.word CompText87A1CCC
 	.word CompText87A1CD8
 	.word CompText87A1CE4
-off_8044FA0: .word CompText87A1EF4
+off_8044FA0:
+	.word CompText87A1EF4
 	.word CompText87A1EF4
 	.word CompText87A1F00
 	.word CompText87A1F0C
 	.word CompText87A1F18
-off_8044FB4: .word CompText87A243C
+off_8044FB4:
+	.word CompText87A243C
 	.word CompText87A243C
 	.word CompText87A2448
 	.word CompText87A2454
 	.word CompText87A2460
-off_8044FC8: .word CompText87A29B4
+off_8044FC8:
+	.word CompText87A29B4
 	.word CompText87A29B4
 	.word CompText87A29C0
 	.word CompText87A29CC
 	.word CompText87A29D8
-off_8044FDC: .word CompText87A2B20
+off_8044FDC:
+	.word CompText87A2B20
 	.word CompText87A2B2C
 	.word CompText87A2B38
 	.word CompText87A2B44
 	.word CompText87A2B50
-off_8044FF0: .word CompText87A2BEC
+off_8044FF0:
+	.word CompText87A2BEC
 	.word CompText87A2BEC
 	.word CompText87A2BEC
 	.word CompText87A2BF8
 	.word CompText87A2C04
-off_8045004: .word EmptyCompText87A3168
+off_8045004:
+	.word EmptyCompText87A3168
 	.word EmptyCompText87A3168
 	.word EmptyCompText87A3168
 	.word EmptyCompText87A3174
 	.word CompText87A3180
-off_8045018: .word CompText87A3624
+off_8045018:
+	.word CompText87A3624
 	.word CompText87A3624
 	.word CompText87A3624
 	.word CompText87A3630
 	.word CompText87A363C
-off_804502C: .word CompText87A36E8
+off_804502C:
+	.word CompText87A36E8
 	.word CompText87A36E8
 	.word CompText87A36E8
 	.word CompText87A36E8
 	.word CompText87A36F4
-off_8045040: .word CompText87A377C
+off_8045040:
+	.word CompText87A377C
 	.word CompText87A3788
 	.word CompText87A3794
 	.word CompText87A37A0
 	.word CompText87A37AC
-off_8045054: .word CompText87A39FC
+off_8045054:
+	.word CompText87A39FC
 	.word CompText87A39FC
 	.word CompText87A39FC
 	.word CompText87A3A08
 	.word CompText87A3A14
-off_8045068: .word CompText87A3AFC
+off_8045068:
+	.word CompText87A3AFC
 	.word CompText87A3AFC
 	.word CompText87A3AFC
 	.word CompText87A3AFC
 	.word CompText87A3B08
-off_804507C: .word CompText875E5D0
+off_804507C:
+	.word CompText875E5D0
 	.word CompText875E5DC
 	.word CompText875E5E8
 	.word CompText875E5F4
@@ -9334,175 +9781,217 @@ off_804507C: .word CompText875E5D0
 	.word CompText875E66C
 	.word CompText875E678
 	.word CompText875E684
-off_80450BC: .word CompText874B878
+off_80450BC:
+	.word CompText874B878
 	.word CompText874BC34
 	.word CompText874C5D0
 	.word CompText874D038
-off_80450CC: .word off_80450D8
+off_80450CC:
+	.word off_80450D8
 	.word off_80450EC
 	.word off_8045100
-off_80450D8: .word CompText87825CC
+off_80450D8:
+	.word CompText87825CC
 	.word CompText8782FEC
 	.word CompText8783ED0
 	.word CompText878460C
 	.word CompText8784908
-off_80450EC: .word CompText87859C0
+off_80450EC:
+	.word CompText87859C0
 	.word CompText8785FF4
 	.word CompText8786694
 	.word CompText8786C04
 	.word CompText8786EA0
-off_8045100: .word CompText87876E4
+off_8045100:
+	.word CompText87876E4
 	.word CompText8787C6C
 	.word CompText8788390
 	.word CompText8788F78
 	.word CompText87892BC
-off_8045114: .word CompText875E690
+off_8045114:
+	.word CompText875E690
 	.word CompText875E8DC
 	.word CompText875EA10
-off_8045120: .word CompText874D74C
+off_8045120:
+	.word CompText874D74C
 	.word CompText874DCF0
 	.word CompText874E6E0
 	.word CompText874EFE0
-off_8045130: .word off_804513C
+off_8045130:
+	.word off_804513C
 	.word off_8045150
 	.word off_8045164
-off_804513C: .word CompText8789780
+off_804513C:
+	.word CompText8789780
 	.word CompText8789A10
 	.word CompText878A004
 	.word CompText878A4E0
 	.word CompText878A898
-off_8045150: .word CompText878B46C
+off_8045150:
+	.word CompText878B46C
 	.word CompText878B690
 	.word CompText878BC64
 	.word CompText878C214
 	.word CompText878C5C8
-off_8045164: .word CompText878CE18
+off_8045164:
+	.word CompText878CE18
 	.word CompText878D038
 	.word CompText878D544
 	.word CompText878DAD4
 	.word CompText878DE08
-off_8045178: .word CompText875F038
+off_8045178:
+	.word CompText875F038
 	.word CompText875F424
 	.word CompText875F838
-off_8045184: .word CompText874F5C4
+off_8045184:
+	.word CompText874F5C4
 	.word CompText874F980
 	.word CompText87502B4
 	.word CompText8750B80
-off_8045194: .word off_804519C
+off_8045194:
+	.word off_804519C
 	.word off_80451B0
-off_804519C: .word CompText878E728
+off_804519C:
+	.word CompText878E728
 	.word CompText878E728
 	.word CompText878EA40
 	.word CompText878F110
 	.word CompText878F364
-off_80451B0: .word CompText878FA4C
+off_80451B0:
+	.word CompText878FA4C
 	.word CompText878FA4C
 	.word CompText878FFC8
 	.word CompText8790508
 	.word CompText879073C
-off_80451C4: .word CompText875FAB8
+off_80451C4:
+	.word CompText875FAB8
 	.word CompText875FF70
-off_80451CC: .word CompText8751150
+off_80451CC:
+	.word CompText8751150
 	.word CompText8751150
 	.word CompText87517E8
 	.word CompText8752174
-off_80451DC: .word off_80451E4
+off_80451DC:
+	.word off_80451E4
 	.word off_80451F8
-off_80451E4: .word CompText87913C8
+off_80451E4:
+	.word CompText87913C8
 	.word CompText87913C8
 	.word CompText87913C8
 	.word CompText8791604
 	.word CompText87917D4
-off_80451F8: .word CompText8791878
+off_80451F8:
+	.word CompText8791878
 	.word CompText8791878
 	.word CompText8791878
 	.word CompText8791A0C
 	.word CompText8791A28
-off_804520C: .word CompText87601FC
+off_804520C:
+	.word CompText87601FC
 	.word CompText87605E0
-off_8045214: .word CompText8752818
+off_8045214:
+	.word CompText8752818
 	.word CompText8752818
 	.word CompText8752818
 	.word CompText8752FBC
-off_8045224: .word off_8045230
+off_8045224:
+	.word off_8045230
 	.word off_8045244
 	.word off_8045258
-off_8045230: .word CompText8791AA8
+off_8045230:
+	.word CompText8791AA8
 	.word CompText8791AA8
 	.word CompText8791AA8
 	.word CompText87921F4
 	.word CompText8792478
-off_8045244: .word CompText8793DCC
+off_8045244:
+	.word CompText8793DCC
 	.word CompText8793DCC
 	.word CompText8793DCC
 	.word CompText8794604
 	.word CompText87948B8
-off_8045258: .word CompText8794EC0
+off_8045258:
+	.word CompText8794EC0
 	.word CompText8794EC0
 	.word CompText8794EC0
 	.word CompText8795234
 	.word CompText87956C4
-off_804526C: .word CompText8760910
+off_804526C:
+	.word CompText8760910
 	.word dword_8760D38
 	.word CompText8761234
-off_8045278: .word CompText875358C
+off_8045278:
+	.word CompText875358C
 	.word CompText875358C
 	.word CompText875358C
 	.word CompText8753F78
-off_8045288: .word off_8045298
+off_8045288:
+	.word off_8045298
 	.word off_80452AC
 	.word off_80452C0
 	.word off_80452D4
-off_8045298: .word CompText8795A38
+off_8045298:
+	.word CompText8795A38
 	.word CompText8795A38
 	.word CompText8795A44
 	.word CompText8795D58
 	.word CompText8795E14
-off_80452AC: .word CompText8796494
+off_80452AC:
+	.word CompText8796494
 	.word CompText8796494
 	.word CompText87964A0
 	.word CompText87964AC
 	.word CompText87964C8
-off_80452C0: .word CompText8796940
+off_80452C0:
+	.word CompText8796940
 	.word CompText8796940
 	.word CompText879694C
 	.word CompText87969DC
 	.word CompText8796AE4
-off_80452D4: .word CompText87A3B84
+off_80452D4:
 	.word CompText87A3B84
 	.word CompText87A3B84
 	.word CompText87A3B84
 	.word CompText87A3B84
-off_80452E8: .word CompText8761698
+	.word CompText87A3B84
+off_80452E8:
+	.word CompText8761698
 	.word CompText87618C0
 	.word CompText876210C
 	.word CompText87A3B84
-off_80452F8: .word CompText8754620
+off_80452F8:
+	.word CompText8754620
 	.word CompText8754620
 	.word CompText8754674
 	.word CompText87550BC
-off_8045308: .word off_8045314
+off_8045308:
+	.word off_8045314
 	.word off_8045328
 	.word off_804533C
-off_8045314: .word CompText87A3B84
+off_8045314:
 	.word CompText87A3B84
 	.word CompText87A3B84
 	.word CompText87A3B84
 	.word CompText87A3B84
-off_8045328: .word CompText8797208
+	.word CompText87A3B84
+off_8045328:
+	.word CompText8797208
 	.word CompText8797208
 	.word CompText8797208
 	.word CompText8797214
 	.word CompText8797220
-off_804533C: .word CompText87A3B84
+off_804533C:
 	.word CompText87A3B84
 	.word CompText87A3B84
 	.word CompText87A3B84
 	.word CompText87A3B84
-off_8045350: .word CompText87A3B84
+	.word CompText87A3B84
+off_8045350:
+	.word CompText87A3B84
 	.word CompText8762434
 	.word CompText87A3B84
-off_804535C: .word CompText87557A8
+off_804535C:
+	.word CompText87557A8
 	.word CompText87557A8
 	.word CompText87557A8
 	.word CompText8755834
@@ -9666,7 +10155,8 @@ off_804535C: .word CompText87557A8
 	.byte 0xFA, 0xBC, 0xFA, 0xBC, 0xFA, 0xBC, 0xFA, 0xBC, 0xFA
 	.byte 0xBC, 0xFA, 0xBC, 0xFA, 0xBC, 0xFA, 0xBC, 0xFA, 0xBC
 	.byte 0xFA, 0xBC, 0xFA, 0xBC, 0xFA, 0xBC, 0xFA, 0xBD, 0xFA
-byte_804590C: .byte 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0
+byte_804590C:
+	.byte 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0
 	.byte 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2
 	.byte 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0
 	.byte 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2
@@ -9702,7 +10192,8 @@ byte_804590C: .byte 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0
 	.byte 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2
 	.byte 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0
 	.byte 0xF2, 0xC0, 0xF2, 0xC0, 0xF2
-byte_8045A4C: .byte 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0
+byte_8045A4C:
+	.byte 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0
 	.byte 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2
 	.byte 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0
 	.byte 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2
@@ -9738,7 +10229,8 @@ byte_8045A4C: .byte 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0
 	.byte 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2
 	.byte 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0
 	.byte 0xF2, 0xC0, 0xF2, 0xC0, 0xF2
-byte_8045B8C: .byte 0xB8, 0xF2, 0xB9, 0xF2, 0xB9, 0xF2, 0xB9, 0xF2, 0xB9
+byte_8045B8C:
+	.byte 0xB8, 0xF2, 0xB9, 0xF2, 0xB9, 0xF2, 0xB9, 0xF2, 0xB9
 	.byte 0xF2, 0xB9, 0xF2, 0xBA, 0xF2, 0xBB, 0xF2, 0xBC, 0xF2
 	.byte 0xBC, 0xF2, 0xBC, 0xF2, 0xBC, 0xF2, 0xBC, 0xF2, 0xBC
 	.byte 0xF2, 0xBC, 0xF2, 0xBC, 0xF2, 0xBC, 0xF2, 0xBC, 0xF2
@@ -9774,9 +10266,11 @@ byte_8045B8C: .byte 0xB8, 0xF2, 0xB9, 0xF2, 0xB9, 0xF2, 0xB9, 0xF2, 0xB9
 	.byte 0xFA, 0xBC, 0xFA, 0xBC, 0xFA, 0xBC, 0xFA, 0xBC, 0xFA
 	.byte 0xBC, 0xFA, 0xBC, 0xFA, 0xBC, 0xFA, 0xBC, 0xFA, 0xBC
 	.byte 0xFA, 0xBC, 0xFA, 0xBD, 0xFA
-byte_8045CCC: .byte 0x1, 0x5, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x5, 0x6, 0x4, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+byte_8045CCC:
+	.byte 0x1, 0x5, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x5, 0x6, 0x4, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x1, 0x2, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7, 0x2, 0x9, 0x0, 0x0, 0x0, 0x0, 0x0
-spritePtrArr8045CEC: .word byte_86BECA0
+spritePtrArr8045CEC:
+	.word byte_86BECA0
 	.word byte_86BEE80
 	.word byte_86BF060
 	.word byte_86BF240
@@ -9832,57 +10326,67 @@ spritePtrArr8045CEC: .word byte_86BECA0
 	.word byte_86C0940
 	.word byte_86C0940
 	.word byte_86C0940
-byte_8045DCC: .byte 0xE2, 0x0, 0x8D, 0x0, 0xCA, 0x0, 0x8D, 0x0
-off_8045DD4: .word byte_8045DF0
+byte_8045DCC:
+	.byte 0xE2, 0x0, 0x8D, 0x0, 0xCA, 0x0, 0x8D, 0x0
+off_8045DD4:
+	.word byte_8045DF0
 	.word byte_8045E10
 	.word byte_8045E30
 	.word byte_8045E50
 	.word byte_8045E70
 	.word byte_8045E90
 	.word byte_8045EB0
-byte_8045DF0: .byte 0x1, 0x0, 0x0, 0x40, 0x10, 0x80, 0x0, 0x0
-off_8045DF8: .word byte_86F2980
+byte_8045DF0:
+	.byte 0x1, 0x0, 0x0, 0x40, 0x10, 0x80, 0x0, 0x0
+off_8045DF8:
+	.word byte_86F2980
 	.word 0x6010200
 	.word 0x80
 	.word byte_86F2960
 	.word byte_3001650
 	.word 0x20
-byte_8045E10: .byte 0x1, 0x0, 0x0, 0x40, 0x14, 0x80, 0x0, 0x0
+byte_8045E10:
+	.byte 0x1, 0x0, 0x0, 0x40, 0x14, 0x80, 0x0, 0x0
 	.word byte_86F2A00
 	.word 0x6010280
 	.word 0x80
 	.word byte_86F2960
 	.word byte_3001650
 	.word 0x20
-byte_8045E30: .byte 0x1, 0x0, 0x0, 0x40, 0x18, 0x80, 0x0, 0x0
+byte_8045E30:
+	.byte 0x1, 0x0, 0x0, 0x40, 0x18, 0x80, 0x0, 0x0
 	.word byte_86F2A80
 	.word 0x6010300
 	.word 0x80
 	.word byte_86F2960
 	.word byte_3001650
 	.word 0x20
-byte_8045E50: .byte 0x1, 0x0, 0x0, 0x40, 0x1C, 0x80, 0x0, 0x0
+byte_8045E50:
+	.byte 0x1, 0x0, 0x0, 0x40, 0x1C, 0x80, 0x0, 0x0
 	.word byte_86F2B00
 	.word 0x6010380
 	.word 0x80
 	.word byte_86F2960
 	.word byte_3001650
 	.word 0x20
-byte_8045E70: .byte 0x1, 0x0, 0x0, 0x40, 0x20, 0x80, 0x0, 0x0
+byte_8045E70:
+	.byte 0x1, 0x0, 0x0, 0x40, 0x20, 0x80, 0x0, 0x0
 	.word byte_86F2B80
 	.word 0x6010400
 	.word 0x80
 	.word byte_86F2960
 	.word byte_3001650
 	.word 0x20
-byte_8045E90: .byte 0x1, 0x0, 0x0, 0x40, 0x24, 0x80, 0x0, 0x0
+byte_8045E90:
+	.byte 0x1, 0x0, 0x0, 0x40, 0x24, 0x80, 0x0, 0x0
 	.word byte_86F2C00
 	.word 0x6010480
 	.word 0x80
 	.word byte_86F2960
 	.word byte_3001650
 	.word 0x20
-byte_8045EB0: .byte 0x1, 0x0, 0x0, 0x40, 0x28, 0x80, 0x0, 0x0
+byte_8045EB0:
+	.byte 0x1, 0x0, 0x0, 0x40, 0x28, 0x80, 0x0, 0x0
 	.word byte_86F2C80
 	.word 0x6010500
 	.word 0x80
@@ -9897,7 +10401,8 @@ chatbox_8045ED0:
 	ldr r1, off_8045ED8 // =byte_8043CA4
 	ldrb r0, [r1,r0]
 	pop {r1,pc}
-off_8045ED8: .word byte_8043CA4
+off_8045ED8:
+	.word byte_8043CA4
 	thumb_func_end chatbox_8045ED0
 
 	thumb_func_start chatbox_8045EDC
@@ -9982,7 +10487,8 @@ chatbox_mask_eFlags2009F38: // (int flag) -> int
 	and r0, r1
 	pop {r1}
 	mov pc, lr
-off_8045F48: .word eFlags2009F38
+off_8045F48:
+	.word eFlags2009F38
 	thumb_func_end chatbox_mask_eFlags2009F38
 
 
@@ -9996,7 +10502,8 @@ chatbox_8045F4C:
 	pop {r1}
 	mov pc, lr
 	.balign 4, 0x00
-off_8045F5C: .word eFlags2009F38
+off_8045F5C:
+	.word eFlags2009F38
 	thumb_func_end chatbox_8045F4C
 
 	thumb_local_start
@@ -10014,10 +10521,13 @@ chatbox_8045F60:
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {pc}
 	.balign 4, 0
-off_8045F7C: .word unk_200BEA0
-off_8045F80: .word 0xF00
+off_8045F7C:
+	.word unk_200BEA0
+off_8045F80:
+	.word 0xF00
 	.word 0x6015700
-off_8045F88: .word dword_200CDA0
+off_8045F88:
+	.word dword_200CDA0
 	thumb_func_end chatbox_8045F60
 
 /*For debugging purposes, connect comment at any range!*/

@@ -36,14 +36,20 @@ RobotControlComp_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8066428: .word off_8066020
-off_806642C: .word unk_2037800
-off_8066430: .word off_8066434
-off_8066434: .word byte_806643C
+off_8066428:
+	.word off_8066020
+off_806642C:
+	.word unk_2037800
+off_8066430:
+	.word off_8066434
+off_8066434:
+	.word byte_806643C
 	.word byte_8066446
-byte_806643C: .byte 0x1C, 0xB, 0x1C, 0xC, 0x1C, 0x1A, 0x1C, 0xE, 0xFF
+byte_806643C:
+	.byte 0x1C, 0xB, 0x1C, 0xC, 0x1C, 0x1A, 0x1C, 0xE, 0xFF
 	.byte 0xFF
-byte_8066446: .byte 0x1C, 0xB, 0x1C, 0xC, 0x1C, 0x1A, 0x1C, 0xE, 0xFF
+byte_8066446:
+	.byte 0x1C, 0xB, 0x1C, 0xC, 0x1C, 0x1A, 0x1C, 0xE, 0xFF
 	.byte 0xFF
 	thumb_func_end RobotControlComp_EnterMapGroup
 
@@ -56,16 +62,20 @@ RobotControlComp_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_8066460: .word off_8066464
-off_8066464: .word off_806646C
+off_8066460:
+	.word off_8066464
+off_8066464:
+	.word off_806646C
 	.word off_8066484
-off_806646C: .word off_8066048
+off_806646C:
+	.word off_8066048
 	.word byte_80662B8
 	.word byte_80662E8
 	.word byte_8066328
 	.word byte_8066368
 	.word 0xFFFFFFFF
-off_8066484: .word off_8066048
+off_8066484:
+	.word off_8066048
 	.word byte_80662B8
 	.word byte_80662E8
 	.word byte_8066328
@@ -97,7 +107,8 @@ RobotControlComp_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_80664D0: .word off_80664D4
+off_80664D0:
+	.word off_80664D4
 off_80664D4:
 	bg_scroll_callbacks_data_struct [
 		callback0: nullsub_39+1,
@@ -111,7 +122,8 @@ off_80664D4:
 		hblank_callback: nullsub_38+1,
 		lcd_control_flags: 0x800
 	]
-off_80664F4: .word off_80664F8
+off_80664F4:
+	.word off_80664F8
 off_80664F8:
 	.word off_8066500
 	.word off_8066500
@@ -139,9 +151,11 @@ RobotControlComp_UnkFunction_806651c: // JP 0x8067f94
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
-off_8066530: .word off_8066534
+off_8066530:
+	.word off_8066534
 // JP 0x8067fac
-off_8066534: .word nullsub_29+1
+off_8066534:
+	.word nullsub_29+1
 	.word nullsub_30+1
 	thumb_func_end RobotControlComp_UnkFunction_806651c
 
@@ -167,7 +181,9 @@ RobotControlComp_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
-off_8066554: .word off_8066558
-off_8066558: .word byte_8066560
+off_8066554:
+	.word off_8066558
+off_8066558:
+	.word byte_8066560
 	.word byte_8066578
 	thumb_func_end RobotControlComp_SpawnMapObjectsForMap

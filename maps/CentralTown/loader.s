@@ -59,10 +59,14 @@ CentralTown_EnterMapGroup:
 
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_804E688: .word off_804E38C
-off_804E68C: .word unk_2037800
-off_804E690: .word off_804E9CC
-off_804E694: .word off_804E698 // [*const SpriteLoadData; CENTRAL_TOWN_NUM_MAPS]
+off_804E688:
+	.word off_804E38C
+off_804E68C:
+	.word unk_2037800
+off_804E690:
+	.word off_804E9CC
+off_804E694:
+	.word off_804E698 // [*const SpriteLoadData; CENTRAL_TOWN_NUM_MAPS]
 off_804E698: // [*const SpriteLoadData; CENTRAL_TOWN_NUM_MAPS]
   .word byte_804E6AC // [SpriteLoadData; 8]
 	.word dword_804E6BE // [SpriteLoadData; 1]
@@ -142,21 +146,28 @@ CentralTown_LoadGFXAnims:
 	bl LoadGFXAnims
 	pop {pc}
 	.balign 4, 0
-off_804E6E0: .word off_804E6E4
-off_804E6E4: .word dword_804E6F8
+off_804E6E0:
+	.word off_804E6E4
+off_804E6E4:
+	.word dword_804E6F8
 	.word off_804E6FC
 	.word off_804E70C
 	.word dword_804E714
 	.word off_804E718
-dword_804E6F8: .word 0xFFFFFFFF
-off_804E6FC: .word off_804E450
+dword_804E6F8:
+	.word 0xFFFFFFFF
+off_804E6FC:
+	.word off_804E450
 	.word off_804E478
 	.word off_804E4A0
 	.word 0xFFFFFFFF
-off_804E70C: .word byte_804E5D4
+off_804E70C:
+	.word byte_804E5D4
 	.word 0xFFFFFFFF
-dword_804E714: .word 0xFFFFFFFF
-off_804E718: .word byte_804E604
+dword_804E714:
+	.word 0xFFFFFFFF
+off_804E718:
+	.word byte_804E604
 	.word 0xFFFFFFFF
 	thumb_func_end CentralTown_LoadGFXAnims
 

@@ -16,7 +16,8 @@ sub_80AED50:
 	add r0, r0, r3
 	pop {pc}
 	.balign 4, 0
-off_80AED70: .word off_80AED74
+off_80AED70:
+	.word off_80AED74
 off_80AED74:
 	// <endpool>
 	.word off_80AED80
@@ -24,7 +25,8 @@ off_80AED74:
 	.word off_80AEE0C
 	thumb_func_end sub_80AED50
 
-off_80AED80: .word byte_8109AA4
+off_80AED80:
+	.word byte_8109AA4
 	.word byte_8109BFC
 	.word byte_810A2EC
 	.word byte_810A86C
@@ -59,7 +61,8 @@ off_80AED80: .word byte_8109AA4
 	.word byte_8109AA4
 	.word byte_8109AA4
 	.word byte_8109AA4
-off_80AEE0C: .word byte_80F28F0
+off_80AEE0C:
+	.word byte_80F28F0
 	.word byte_80F2A54
 	.word byte_80F390C
 	.word byte_80F47D4

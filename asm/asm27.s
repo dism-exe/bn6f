@@ -8,8 +8,10 @@ sub_80946C4:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_80946D0: .word initRefs_80946D4
-initRefs_80946D4: .word comp_857CCC8 + 1<<31
+off_80946D0:
+	.word initRefs_80946D4
+initRefs_80946D4:
+	.word comp_857CCC8 + 1<<31
 	.word 0x600C000
 	.word unk_2024400
 	.word comp_857D43C + 1<<31
@@ -91,8 +93,10 @@ loc_8094752:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
-off_8094774: .word unk_2025404
-off_8094778: .word unk_2026404
+off_8094774:
+	.word unk_2025404
+off_8094778:
+	.word unk_2026404
 off_809477C:
 	// <endpool> <endfile>
 	.word eMapTilesState200be70
