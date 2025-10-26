@@ -4908,10 +4908,10 @@ off_803B240:
 initRefs_803B244:
 	.word comp_87E4500 + 1<<31
 	.word 0x6004000
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word compSpriteWhiteDot_84E0C4C + 1<<31
 	.word 0x6000020
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word compSpriteWhiteDot_84E0C4C + 1<<31
 	.word 0x0
 	.word unk_2028200
@@ -4929,7 +4929,7 @@ initRefs_803B244:
 	.word 0x40
 	.word compSpriteWhiteDot_84E0C4C + 1<<31
 	.word 0x6011000
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word byte_86A4D40
 	.word 0x6010020
 	.word 0x240
@@ -4970,10 +4970,10 @@ off_803B30C:
 initRefs_803B310:
 	.word comp_87E57BC + 1<<31
 	.word 0x6004000
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word compSpriteWhiteDot_84E0C4C + 1<<31
 	.word 0x6000020
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word comp_87E6840 + 1<<31
 	.word 0x0
 	.word unk_2028200
@@ -5006,7 +5006,7 @@ initRefs_803B310:
 	.word 0x180
 	.word comp_87E6924 + 1<<31
 	.word 0x6010280
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word dword_86A5500
 	.word 0x3001550
 	.word 0x20
@@ -5048,13 +5048,13 @@ off_803B400:
 initRefs_803B404:
 	.word comp_87E50D4 + 1<<31
 	.word 0x6004000
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word comp_87E5550 + 1<<31
 	.word 0x0
 	.word unk_2028200
 	.word comp_87E56A0 + 1<<31
 	.word 0x600D600
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word dword_87E54B0
 	.word palette_3001980
 	.word 0xA0
@@ -5094,10 +5094,10 @@ off_803B48C:
 initRefs_803B490:
 	.word comp_87E57BC + 1<<31
 	.word 0x6004000
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word compSpriteWhiteDot_84E0C4C + 1<<31
 	.word 0x600C000
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word compSpriteWhiteDot_84E0C4C + 1<<31
 	.word 0x0
 	.word unk_2028A00
@@ -8026,9 +8026,10 @@ copyData_803CC60:
 off_803CC84:
 	.word initRefs803CC88
 initRefs803CC88:
-	.byte 0x80, 0x69, 0x7E, 0x88, 0x20, 0x0, 0x0, 0x6
+  .word comp_87E6980 + COMPRESSED_PTR_FLAG
+  .word 0x06000020
 	.word eDecompBuffer2013A00
-	.word comp_87E6BFC + 1<<31
+	.word comp_87E6BFC + COMPRESSED_PTR_FLAG
 	.word 0x0
 off_803CC9C:
 	.word byte_2017A00

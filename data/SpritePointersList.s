@@ -835,38 +835,39 @@ guiSpritePtrs::
 	.word sprite_837D8E0 // 0xa0
 	.word sprite_838E194 // 0xa1
 	.word sprite_83A9190 // 0xa2
-off_80329A8::
-	.word off_8032A20
-	.word off_8032A38
-	.word off_8032A74
-	.word off_8032AF8
-	.word off_8032B34
-	.word off_8032B70
-	.word off_8032BA0
-off_80329C4::
-	.word off_8032BE8
-	.word off_8032C00
-	.word off_8032C24
-	.word off_8032C48
-	.word 0x0
-	.word off_8032C6C
-	.word 0x0
-	.word 0x0
-	.word off_8032CA8
-	.word 0x0
-	.word 0x0
-	.word 0x0
-	.word off_8032CFC
-	.word off_8032DBC
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word off_8032E7C
-	.word off_8032EA0
-	.word off_8032EC4
-	.word off_8032EDC
-	.word off_8032EF4
-	.word off_8032F18
-	.word off_8032F48
-off_8032A20::
+off_80329A8:: // [*const [MapBGDescriptor]; REAL_WORLD_NUM_GROUPS]
+	.word off_8032A20 // [MapBGDescriptor; ACDC_TOWN_NUM_MAPS]
+	.word off_8032A38 // [MapBGDescriptor; CENTRAL_TOWN_NUM_MAPS]
+	.word off_8032A74 // [MapBGDescriptor; CYBER_ACADEMY_NUM_MAPS]
+	.word off_8032AF8 // [MapBGDescriptor; SEASIDE_TOWN_NUM_MAPS]
+	.word off_8032B34 // [MapBGDescriptor; GREEN_TOWN_NUM_MAPS]
+	.word off_8032B70 // [MapBGDescriptor; SKY_TOWN_NUM_MAPS]
+	.word off_8032BA0 // [MapBGDescriptor; EXPO_SITE_NUM_MAPS]
+off_80329C4:: // [Nullable<*const [MapBGDescriptor]>; INTERNET_NUM_GROUPS]
+	.word off_8032BE8 // [MapBGDescriptor; ROBOT_CONTROL_COMP_NUM_MAPS]
+	.word off_8032C00 // [MapBGDescriptor; AQUARIUM_COMP_NUM_MAPS]
+	.word off_8032C24 // [MapBGDescriptor; JUDGETREE_COMP_NUM_MAPS]
+	.word off_8032C48 // [MapBGDescriptor; MR_WEATHER_COMP_NUM_MAPS]
+	.word NULL
+	.word off_8032C6C // [MapBGDescriptor; PAVILION_COMP_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word off_8032CA8 // [MapBGDescriptor; HOMEPAGES_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word NULL
+	.word off_8032CFC // [MapBGDescriptor; COMPS_NUM_MAPS]
+	.word off_8032DBC // [MapBGDescriptor; COMPS_2_NUM_MAPS]
+  .word NULL
+  .word NULL
+	.word off_8032E7C // [MapBGDescriptor; CENTRAL_AREA_NUM_MAPS]
+	.word off_8032EA0 // [MapBGDescriptor; SEASIDE_AREA_NUM_MAPS]
+	.word off_8032EC4 // [MapBGDescriptor; GREEN_AREA_NUM_MAPS]
+	.word off_8032EDC // [MapBGDescriptor; UNDERGROUND_NUM_MAPS]
+	.word off_8032EF4 // [MapBGDescriptor; SKY_ACDC_AREA_NUM_MAPS]
+	.word off_8032F18 // [MapBGDescriptor; UNDERNET_NUM_MAPS]
+	.word off_8032F48 // [MapBGDescriptor; GRAVEYARD_NUM_MAPS]
+off_8032A20:: // [MapBGDescriptor; ACDC_TOWN_NUM_MAPS]
 	map_bg_descriptor_struct [
 		tileset_ptr: ACDCTown_Map0_Tileset,
 		palette_ptr: ACDCTown_Map0_Palette,
@@ -877,792 +878,1222 @@ off_8032A20::
 		palette_ptr: byte_8503098,
 		tilemap_ptr: byte_850323C,
 	]
-off_8032A38::
-	.word byte_8503C90
-	.word byte_85077F8
-	.word byte_850799C
-	.word byte_8509354
-	.word byte_850C2C0
-	.word byte_850C464
-	.word byte_850E134
-	.word byte_85105CC
-	.word byte_8510770
-	.word byte_8510D54
-	.word byte_8511C40
-	.word byte_8511DE4
-	.word byte_85120AC
-	.word byte_8515394
-	.word byte_8515538
-off_8032A74::
-	.word byte_85162E0
-	.word byte_8519D64
-	.word byte_851A0AC
-	.word byte_85162E0
-	.word byte_851ADB0
-	.word byte_851A0AC
-	.word byte_85162E0
-	.word byte_8519D64
-	.word byte_851AFB8
-	.word byte_85162E0
-	.word byte_851ADB0
-	.word byte_851AFB8
-	.word byte_851BC60
-	.word byte_851D8D4
-	.word byte_851DA78
-	.word byte_851BC60
-	.word byte_851EC08
-	.word byte_851DA78
-	.word byte_851EDAC
-	.word byte_852213C
-	.word byte_85222E0
-	.word byte_852360C
-	.word byte_8526938
-	.word byte_8526ADC
-	.word byte_8527B88
-	.word byte_852B5DC
-	.word byte_852B924
-	.word byte_852C560
-	.word byte_852E5DC
-	.word byte_852E780
-	.word byte_852C560
-	.word byte_852EFA0
-	.word byte_852E780
-off_8032AF8::
-	.word byte_852F144
-	.word byte_85330DC
-	.word byte_8533280
-	.word byte_8535488
-	.word byte_85387FC
-	.word byte_85389A0
-	.word byte_853A5F8
-	.word byte_853DEC4
-	.word byte_853E068
-	.word byte_853FFD4
-	.word byte_8542FC8
-	.word byte_854316C
-	.word byte_8545468
-	.word byte_8547C24
-	.word byte_8547DC8
-off_8032B34::
-	.word byte_85495B4
-	.word byte_854D26C
-	.word byte_854D410
-	.word byte_8550B90
-	.word byte_8552F78
-	.word byte_855311C
-	.word byte_8554160
-	.word byte_8557210
-	.word byte_85573B4
-	.word byte_8558498
-	.word byte_8559ECC
-	.word byte_855A070
-	.word byte_855B17C
-	.word byte_855DBC0
-	.word byte_855DD64
-off_8032B70::
-	.word byte_855EE14
-	.word byte_85621EC
-	.word byte_8562390
-	.word byte_8564358
-	.word byte_8566F74
-	.word byte_8567118
-	.word byte_8569DFC
-	.word byte_856D0FC
-	.word byte_856D2A0
-	.word byte_856E4F8
-	.word byte_8570BBC
-	.word byte_8570D60
-off_8032BA0::
-	.word byte_8572DEC
-	.word byte_8576500
-	.word byte_85766A4
-	.word byte_8579340
-	.word byte_857B5E4
-	.word byte_857B788
-	.word byte_857D8D0
-	.word byte_8580D64
-	.word dword_8580F08
-	.word byte_8582308
-	.word byte_8585ED0
-	.word byte_8586074
-	.word byte_85878F4
-	.word byte_858AAE0
-	.word byte_858AC84
-	.word byte_858CDA4
-	.word byte_858E380
-	.word byte_858E524
-off_8032BE8::
-	.word dword_858F110
-	.word off_8592304
-	.word dword_85924A8
-	.word dword_858F110
-	.word off_8592304
-	.word dword_8594D80
-off_8032C00::
-	.word dword_8598328
-	.word byte_859B428
-	.word byte_859B5CC
-	.word dword_8598328
-	.word byte_859B428
-	.word dword_859E9D0
-	.word dword_8598328
-	.word byte_859B428
-	.word byte_85A2198
-off_8032C24::
-	.word byte_85A5590
-	.word byte_85A8B04
-	.word byte_85A8CA8
-	.word byte_85A5590
-	.word byte_85A8B04
-	.word byte_85ABE34
-	.word byte_85A5590
-	.word byte_85A8B04
-	.word dword_85AEFA8
-off_8032C48::
-	.word dword_85B22DC
-	.word off_85B5D28
-	.word dword_85B5ECC
-	.word dword_85B22DC
-	.word off_85B5D28
-	.word dword_85B86C8
-	.word dword_85B22DC
-	.word off_85B5D28
-	.word dword_85BB3D0
-off_8032C6C::
-	.word dword_8598328
-	.word byte_859B428
-	.word byte_85BE350
-	.word byte_85A5590
-	.word byte_85A8B04
-	.word dword_85C18E0
-	.word dword_85B22DC
-	.word off_85B5D28
-	.word byte_85C4750
-	.word dword_858F110
-	.word off_8592304
-	.word dword_85C7AA0
-	.word dword_85CB0A8
-	.word off_85CD6B4
-	.word dword_85CD858
-off_8032CA8::
-	.word off_85D0894
-	.word off_85D183C
-	.word dword_85D19E0
-	.word off_85D2EE0
-	.word off_85D2850
-	.word dword_85D44B0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word off_85D2EE0
-	.word off_85D29F4
-	.word dword_85D44B0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word off_85D2EE0
-	.word off_85D2B98
-	.word dword_85D44B0
-	.word off_85D2EE0
-	.word off_85D2D3C
-	.word dword_85D44B0
-off_8032CFC::
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D430C
-	.word dword_85D44B0
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D430C
-	.word dword_85D44B0
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D430C
-	.word dword_85D44B0
-off_8032DBC::
-	.word off_85D2EE0
-	.word off_85D430C
-	.word dword_85D44B0
-	.word off_85D2EE0
-	.word off_85D430C
-	.word dword_85D44B0
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D430C
-	.word dword_85D44B0
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-	.word off_85D2EE0
-	.word off_85D35B8
-	.word dword_85D375C
-off_8032E7C::
-	.word dword_85D4E48
-	.word off_85D895C
-	.word dword_85D8B00
-	.word dword_85D4E48
-	.word off_85D895C
-	.word dword_85DB160
-	.word dword_85D4E48
-	.word off_85DDB74
-	.word dword_85DDD18
-off_8032EA0::
-	.word dword_85D4E48
-	.word off_85E0670
-	.word dword_85E0814
-	.word dword_85D4E48
-	.word off_85E0670
-	.word dword_85E2F90
-	.word dword_85D4E48
-	.word off_85E0670
-	.word dword_85E519C
-off_8032EC4::
-	.word dword_85D4E48
-	.word off_85E79D0
-	.word dword_85E7B74
-	.word dword_85D4E48
-	.word off_85EAD2C
-	.word dword_85EAED0
-off_8032EDC::
-	.word dword_85FEF08
-	.word off_85EE2A4
-	.word dword_85EE448
-	.word dword_85FEF08
-	.word off_85EE2A4
-	.word dword_85F1B20
-off_8032EF4::
-	.word dword_85D4E48
-	.word off_85F4D84
-	.word dword_85F4F28
-	.word dword_85D4E48
-	.word off_85F4D84
-	.word dword_85F7C58
-	.word dword_85D4E48
-	.word off_85FB848
-	.word dword_85FB9EC
-off_8032F18::
-	.word dword_85FEF08
-	.word off_8602590
-	.word dword_8602734
-	.word dword_85FEF08
-	.word off_8602590
-	.word dword_8606438
-	.word dword_85FEF08
-	.word off_8602590
-	.word dword_8609770
-	.word dword_85FEF08
-	.word off_8602590
-	.word spriteWhiteDot
-off_8032F48::
-	.word dword_85FEF08
-	.word off_860D678
-	.word spriteWhiteDot
-	.word dword_85FEF08
-	.word off_860D678
-	.word dword_860DDD0
-	.word dword_85FEF08
-	.word off_860D678
-	.word spriteWhiteDot
-off_8032F6C::
-	.word off_8032FE4
-	.word off_8032FFC
-	.word off_8033038
-	.word off_80330BC
-	.word off_80330F8
-	.word off_8033134
-	.word off_8033164
-off_8032F88::
-	.word off_80331AC
-	.word off_80331C4
-	.word off_80331E8
-	.word off_803320C
-	.word 0x0
-	.word off_8033230
-	.word 0x0
-	.word 0x0
-	.word off_803326C
-	.word 0x0
-	.word 0x0
-	.word 0x0
-	.word jt_big_80332C0
-	.word off_8033380
-	.word 0x0
-	.word 0x0
-	.word off_8033440
-	.word off_8033464
-	.word off_8033488
-	.word off_80334A0
-	.word off_80334B8
-	.word off_80334DC
-	.word off_803350C
-off_8032FE4::
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
+off_8032A38:: // [MapBGDescriptor; CENTRAL_TOWN_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_8503C90,
+    palette_ptr: byte_85077F8,
+    tilemap_ptr: byte_850799C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_8509354,
+    palette_ptr: byte_850C2C0,
+    tilemap_ptr: byte_850C464,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_850E134,
+    palette_ptr: byte_85105CC,
+    tilemap_ptr: byte_8510770,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_8510D54,
+    palette_ptr: byte_8511C40,
+    tilemap_ptr: byte_8511DE4,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_85120AC,
+    palette_ptr: byte_8515394,
+    tilemap_ptr: byte_8515538,
+  ]
+off_8032A74:: // [MapBGDescriptor; CYBER_ACADEMY_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_85162E0,
+    palette_ptr: byte_8519D64,
+    tilemap_ptr: byte_851A0AC,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_85162E0,
+    palette_ptr: byte_851ADB0,
+    tilemap_ptr: byte_851A0AC,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_85162E0,
+    palette_ptr: byte_8519D64,
+    tilemap_ptr: byte_851AFB8,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_85162E0,
+    palette_ptr: byte_851ADB0,
+    tilemap_ptr: byte_851AFB8,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_851BC60,
+    palette_ptr: byte_851D8D4,
+    tilemap_ptr: byte_851DA78,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_851BC60,
+    palette_ptr: byte_851EC08,
+    tilemap_ptr: byte_851DA78,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_851EDAC,
+    palette_ptr: byte_852213C,
+    tilemap_ptr: byte_85222E0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_852360C,
+    palette_ptr: byte_8526938,
+    tilemap_ptr: byte_8526ADC,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_8527B88,
+    palette_ptr: byte_852B5DC,
+    tilemap_ptr: byte_852B924,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_852C560,
+    palette_ptr: byte_852E5DC,
+    tilemap_ptr: byte_852E780,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_852C560,
+    palette_ptr: byte_852EFA0,
+    tilemap_ptr: byte_852E780,
+  ]
+off_8032AF8:: // [MapBGDescriptor; SEASIDE_TOWN_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_852F144,
+    palette_ptr: byte_85330DC,
+    tilemap_ptr: byte_8533280,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_8535488,
+    palette_ptr: byte_85387FC,
+    tilemap_ptr: byte_85389A0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_853A5F8,
+    palette_ptr: byte_853DEC4,
+    tilemap_ptr: byte_853E068,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_853FFD4,
+    palette_ptr: byte_8542FC8,
+    tilemap_ptr: byte_854316C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_8545468,
+    palette_ptr: byte_8547C24,
+    tilemap_ptr: byte_8547DC8,
+  ]
+off_8032B34:: // [MapBGDescriptor; GREEN_TOWN_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_85495B4,
+    palette_ptr: byte_854D26C,
+    tilemap_ptr: byte_854D410,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_8550B90,
+    palette_ptr: byte_8552F78,
+    tilemap_ptr: byte_855311C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_8554160,
+    palette_ptr: byte_8557210,
+    tilemap_ptr: byte_85573B4,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_8558498,
+    palette_ptr: byte_8559ECC,
+    tilemap_ptr: byte_855A070,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_855B17C,
+    palette_ptr: byte_855DBC0,
+    tilemap_ptr: byte_855DD64,
+  ]
+off_8032B70:: // [MapBGDescriptor; SKY_TOWN_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_855EE14,
+    palette_ptr: byte_85621EC,
+    tilemap_ptr: byte_8562390,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_8564358,
+    palette_ptr: byte_8566F74,
+    tilemap_ptr: byte_8567118,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_8569DFC,
+    palette_ptr: byte_856D0FC,
+    tilemap_ptr: byte_856D2A0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_856E4F8,
+    palette_ptr: byte_8570BBC,
+    tilemap_ptr: byte_8570D60,
+  ]
+off_8032BA0:: // [MapBGDescriptor; EXPO_SITE_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_8572DEC,
+    palette_ptr: byte_8576500,
+    tilemap_ptr: byte_85766A4,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_8579340,
+    palette_ptr: byte_857B5E4,
+    tilemap_ptr: byte_857B788,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_857D8D0,
+    palette_ptr: byte_8580D64,
+    tilemap_ptr: dword_8580F08,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_8582308,
+    palette_ptr: byte_8585ED0,
+    tilemap_ptr: byte_8586074,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_85878F4,
+    palette_ptr: byte_858AAE0,
+    tilemap_ptr: byte_858AC84,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_858CDA4,
+    palette_ptr: byte_858E380,
+    tilemap_ptr: byte_858E524,
+  ]
+off_8032BE8:: // [MapBGDescriptor; ROBOT_CONTROL_COMP_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_858F110,
+    palette_ptr: off_8592304,
+    tilemap_ptr: dword_85924A8,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_858F110,
+    palette_ptr: off_8592304,
+    tilemap_ptr: dword_8594D80,
+  ]
+off_8032C00:: // [MapBGDescriptor; AQUARIUM_COMP_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_8598328,
+    palette_ptr: byte_859B428,
+    tilemap_ptr: byte_859B5CC,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_8598328,
+    palette_ptr: byte_859B428,
+    tilemap_ptr: dword_859E9D0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_8598328,
+    palette_ptr: byte_859B428,
+    tilemap_ptr: byte_85A2198,
+  ]
+off_8032C24:: // [MapBGDescriptor; JUDGETREE_COMP_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_85A5590,
+    palette_ptr: byte_85A8B04,
+    tilemap_ptr: byte_85A8CA8,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_85A5590,
+    palette_ptr: byte_85A8B04,
+    tilemap_ptr: byte_85ABE34,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_85A5590,
+    palette_ptr: byte_85A8B04,
+    tilemap_ptr: dword_85AEFA8,
+  ]
+off_8032C48:: // [MapBGDescriptor; MR_WEATHER_COMP_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85B22DC,
+    palette_ptr: off_85B5D28,
+    tilemap_ptr: dword_85B5ECC,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85B22DC,
+    palette_ptr: off_85B5D28,
+    tilemap_ptr: dword_85B86C8,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85B22DC,
+    palette_ptr: off_85B5D28,
+    tilemap_ptr: dword_85BB3D0,
+  ]
+off_8032C6C:: // [MapBGDescriptor; PAVILION_COMP_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_8598328,
+    palette_ptr: byte_859B428,
+    tilemap_ptr: byte_85BE350,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: byte_85A5590,
+    palette_ptr: byte_85A8B04,
+    tilemap_ptr: dword_85C18E0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85B22DC,
+    palette_ptr: off_85B5D28,
+    tilemap_ptr: byte_85C4750,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_858F110,
+    palette_ptr: off_8592304,
+    tilemap_ptr: dword_85C7AA0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85CB0A8,
+    palette_ptr: off_85CD6B4,
+    tilemap_ptr: dword_85CD858,
+  ]
+off_8032CA8:: // [MapBGDescriptor; HOMEPAGES_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D0894,
+    palette_ptr: off_85D183C,
+    tilemap_ptr: dword_85D19E0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D2850,
+    tilemap_ptr: dword_85D44B0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: NULL,
+    palette_ptr: NULL,
+    tilemap_ptr: NULL,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D29F4,
+    tilemap_ptr: dword_85D44B0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: NULL,
+    palette_ptr: NULL,
+    tilemap_ptr: NULL,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D2B98,
+    tilemap_ptr: dword_85D44B0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D2D3C,
+    tilemap_ptr: dword_85D44B0,
+  ]
+off_8032CFC:: // [MapBGDescriptor; COMPS_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D430C,
+    tilemap_ptr: dword_85D44B0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D430C,
+    tilemap_ptr: dword_85D44B0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D430C,
+    tilemap_ptr: dword_85D44B0,
+  ]
+off_8032DBC:: // [MapBGDescriptor; COMPS_2_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D430C,
+    tilemap_ptr: dword_85D44B0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D430C,
+    tilemap_ptr: dword_85D44B0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D430C,
+    tilemap_ptr: dword_85D44B0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: off_85D2EE0,
+    palette_ptr: off_85D35B8,
+    tilemap_ptr: dword_85D375C,
+  ]
+off_8032E7C:: // [MapBGDescriptor; CENTRAL_AREA_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85D4E48,
+    palette_ptr: off_85D895C,
+    tilemap_ptr: dword_85D8B00,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85D4E48,
+    palette_ptr: off_85D895C,
+    tilemap_ptr: dword_85DB160,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85D4E48,
+    palette_ptr: off_85DDB74,
+    tilemap_ptr: dword_85DDD18,
+  ]
+off_8032EA0:: // [MapBGDescriptor; SEASIDE_AREA_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85D4E48,
+    palette_ptr: off_85E0670,
+    tilemap_ptr: dword_85E0814,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85D4E48,
+    palette_ptr: off_85E0670,
+    tilemap_ptr: dword_85E2F90,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85D4E48,
+    palette_ptr: off_85E0670,
+    tilemap_ptr: dword_85E519C,
+  ]
+off_8032EC4:: // [MapBGDescriptor; GREEN_AREA_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85D4E48,
+    palette_ptr: off_85E79D0,
+    tilemap_ptr: dword_85E7B74,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85D4E48,
+    palette_ptr: off_85EAD2C,
+    tilemap_ptr: dword_85EAED0,
+  ]
+off_8032EDC:: // [MapBGDescriptor; UNDERGROUND_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85FEF08,
+    palette_ptr: off_85EE2A4,
+    tilemap_ptr: dword_85EE448,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85FEF08,
+    palette_ptr: off_85EE2A4,
+    tilemap_ptr: dword_85F1B20,
+  ]
+off_8032EF4:: // [MapBGDescriptor; SKY_ACDC_AREA_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85D4E48,
+    palette_ptr: off_85F4D84,
+    tilemap_ptr: dword_85F4F28,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85D4E48,
+    palette_ptr: off_85F4D84,
+    tilemap_ptr: dword_85F7C58,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85D4E48,
+    palette_ptr: off_85FB848,
+    tilemap_ptr: dword_85FB9EC,
+  ]
+off_8032F18:: // [MapBGDescriptor; UNDERNET_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85FEF08,
+    palette_ptr: off_8602590,
+    tilemap_ptr: dword_8602734,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85FEF08,
+    palette_ptr: off_8602590,
+    tilemap_ptr: dword_8606438,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85FEF08,
+    palette_ptr: off_8602590,
+    tilemap_ptr: dword_8609770,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85FEF08,
+    palette_ptr: off_8602590,
+    tilemap_ptr: spriteWhiteDot,
+  ]
+off_8032F48:: // [MapBGDescriptor; GRAVEYARD_NUM_MAPS]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85FEF08,
+    palette_ptr: off_860D678,
+    tilemap_ptr: spriteWhiteDot,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85FEF08,
+    palette_ptr: off_860D678,
+    tilemap_ptr: dword_860DDD0,
+  ]
+  map_bg_descriptor_struct [
+    tileset_ptr: dword_85FEF08,
+    palette_ptr: off_860D678,
+    tilemap_ptr: spriteWhiteDot,
+  ]
+off_8032F6C:: // [*const [[*const Fn; 3]]; REAL_WORLD_NUM_GROUPS]
+	.word off_8032FE4 // [[*const Fn; 3]; ACDC_TOWN_NUM_MAPS]
+	.word off_8032FFC // [[*const Fn; 3]; CENTRAL_TOWN_NUM_MAPS]
+	.word off_8033038 // [[*const Fn; 3]; CYBER_ACADEMY_NUM_MAPS]
+	.word off_80330BC // [[*const Fn; 3]; SEASIDE_TOWN_NUM_MAPS]
+	.word off_80330F8 // [[*const Fn; 3]; GREEN_TOWN_NUM_MAPS]
+	.word off_8033134 // [[*const Fn; 3]; SKY_TOWN_NUM_MAPS]
+	.word off_8033164 // [[*const Fn; 3]; EXPO_SITE_NUM_MAPS]
+off_8032F88:: // Nullable<[*const [[*const Fn; 3]]>; INTERNET_NUM_GROUPS]
+	.word off_80331AC // [[*const Fn; 3]; ROBOT_CONTROL_COMP_NUM_MAPS]
+	.word off_80331C4 // [[*const Fn; 3]; AQUARIUM_COMP_NUM_MAPS]
+	.word off_80331E8 // [[*const Fn; 3]; JUDGETREE_COMP_NUM_MAPS]
+	.word off_803320C // [[*const Fn; 3]; MR_WEATHER_COMP_NUM_MAPS]
+	.word NULL
+	.word off_8033230 // [[*const Fn; 3]; PAVILION_COMP_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word off_803326C // [[*const Fn; 3]; HOMEPAGES_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word NULL
+	.word jt_big_80332C0 // [[*const Fn; 3]; COMPS_NUM_MAPS]
+	.word off_8033380 // [[*const Fn; 3]; COMPS_2_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word off_8033440 // [[*const Fn; 3]; CENTRAL_AREA_NUM_MAPS]
+	.word off_8033464 // [[*const Fn; 3]; SEASIDE_AREA_NUM_MAPS]
+	.word off_8033488 // [[*const Fn; 3]; GREEN_AREA_NUM_MAPS]
+	.word off_80334A0 // [[*const Fn; 3]; UNDERGROUND_NUM_MAPS]
+	.word off_80334B8 // [[*const Fn; 3]; SKY_ACDC_AREA_NUM_MAPS]
+	.word off_80334DC // [[*const Fn; 3]; UNDERNET_NUM_MAPS]
+	.word off_803350C // [[*const Fn; 3]; GRAVEYARD_NUM_MAPS]
+off_8032FE4:: // [[*const Fn; 3]; ACDC_TOWN_NUM_MAPS]
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_8032FFC:: // [[*const Fn; 3]; CENTRAL_TOWN_NUM_MAPS]
+  // 0x00
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x01
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x02
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x03
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x04
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_8033038:: // [[*const Fn; 3]; CYBER_ACADEMY_NUM_MAPS]
+  // 0x00
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x01
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x02
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x03
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x04
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x05
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x06
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x07
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x08
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x09
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x0A
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+off_80330BC:: // [[*const Fn; 3]; SEASIDE_TOWN_NUM_MAPS]
+  // 0x00
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x01
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x02
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x03
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x04
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_80330F8:: // [[*const Fn; 3]; GREEN_TOWN_NUM_MAPS]
+  // 0x00
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x01
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x02
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x03
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x04
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_8033134:: // [[*const Fn; 3]; SKY_TOWN_NUM_MAPS]
+  // 0x00
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x01
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x02
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x03
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_8033164:: // [[*const Fn; 3]; EXPO_SITE_NUM_MAPS]
+  // 0x00
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x01
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x02
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x03
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x04
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x05
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_80331AC:: // [[*const Fn; 3]; ROBOT_CONTROL_COMP_NUM_MAPS]
+  // 0x00
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x01
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_80331C4:: // [[*const Fn; 3]; AQUARIUM_COMP_NUM_MAPS]
+  // 0x00
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x01
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x02
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_80331E8:: // [[*const Fn; 3]; JUDGETREE_COMP_NUM_MAPS]
+  // 0x00
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x01
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x02
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_803320C:: // [[*const Fn; 3]; MR_WEATHER_COMP_NUM_MAPS]
+  // 0x00
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x01
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x02
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_8033230:: // [[*const Fn; 3]; PAVILION_COMP_NUM_MAPS]
+  // 0x00
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x01
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x02
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x03
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+
+  // 0x04
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_803326C:: // [[*const Fn; 3]; HOMEPAGES_NUM_MAPS]
+  // 0x00
+	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_8032FFC::
+
+  // 0x01
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x02
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x03
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x04
+  .word NULL
+  .word NULL
+  .word NULL
+
+  // 0x05
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x06
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_8033038::
+jt_big_80332C0:: // [[*const Fn; 3]; COMPS_NUM_MAPS]
+  // 0x00
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x01
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x02
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x03
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x04
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x05
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x06
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x07
 	.word sub_8030628+1
-pt_8033090::
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x08
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x09
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x0A
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_80330BC::
+
+  // 0x0B
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x0C
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x0D
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x0E
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x0F
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_80330F8::
+
+off_8033380:: // [[*const Fn; 3]; COMPS_2_NUM_MAPS]
+  // 0x00
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x01
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x02
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x03
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x04
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_8033134::
+
+  // 0x05
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x06
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x07
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x08
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_8033164::
+
+  // 0x09
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x0A
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x0B
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x0C
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x0D
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x0E
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_80331AC::
+  
+  // 0x0F
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+off_8033440:: // [[*const Fn; 3]; CENTRAL_AREA_NUM_MAPS]
+  // 0x01
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_80331C4::
+
+  // 0x02
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x03
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+off_8033464:: // [[*const Fn; 3]; SEASIDE_AREA_NUM_MAPS]
+  // 0x00
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_80331E8::
+
+  // 0x01
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x02
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+off_8033488:: // [[*const Fn; 3]; GREEN_AREA_NUM_MAPS]
+  // 0x00
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_803320C::
+
+  // 0x01
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+off_80334A0:: // [[*const Fn; 3]; UNDERGROUND_NUM_MAPS]
+  // 0x00
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x01
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_8033230::
+off_80334B8:: // [[*const Fn; 3]; SKY_ACDC_AREA_NUM_MAPS]
+  // 0x00
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x01
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x02
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+off_80334DC:: // [[*const Fn; 3]; UNDERNET_NUM_MAPS]
+  // 0x00
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x01
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_803326C::
+
+  // 0x02
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x03
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+off_803350C:: // [[*const Fn; 3]; GRAVEYARD_NUM_MAPS]
+  // 0x00
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
+
+  // 0x01
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+
+  // 0x02
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-jt_big_80332C0::
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-off_8033318::
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_8033380::
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_8033440::
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_8033464::
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_8033488::
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_80334A0::
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_80334B8::
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_80334DC::
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_803350C::
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-pt_8033530::
-	.word off_80335A8
-	.word off_80335B4
-	.word off_80335C8
-	.word off_80335F4
-	.word off_8033608
-	.word off_803361C
-	.word off_803362C
-pt_803354C::
-	.word off_8033644
-	.word off_803364C
-	.word off_8033658
-	.word off_8033664
-	.word 0x0
-	.word off_8033670
-	.word 0x0
-	.word 0x0
-	.word off_8033684
-	.word 0x0
-	.word 0x0
-	.word 0x0
-	.word off_80336A0
-	.word off_80336E0
-	.word 0x0
-	.word 0x0
-	.word off_8033720
-	.word off_803372C
-	.word off_8033738
-	.word off_8033740
-	.word off_8033748
-	.word off_8033754
-	.word off_8033764
-off_80335A8::
+pt_8033530:: // [*const [*const ([u32; 4]?, LZ77Compressed<?>)]; REAL_WORLD_NUM_GROUPS]
+	.word off_80335A8 // [*const ([u32; 4]?, LZ77Compressed<?>); ACDC_TOWN_NUM_MAPS]
+	.word off_80335B4 // [*const ([u32; 4]?, LZ77Compressed<?>); CENTRAL_TOWN_NUM_MAPS]
+	.word off_80335C8 // [*const ([u32; 4]?, LZ77Compressed<?>); CYBER_ACADEMY_NUM_MAPS]
+	.word off_80335F4 // [*const ([u32; 4]?, LZ77Compressed<?>); SEASIDE_TOWN_NUM_MAPS]
+	.word off_8033608 // [*const ([u32; 4]?, LZ77Compressed<?>); GREEN_TOWN_NUM_MAPS]
+	.word off_803361C // [*const ([u32; 4]?, LZ77Compressed<?>); SKY_TOWN_NUM_MAPS]
+	.word off_803362C // [*const ([u32; 4]?, LZ77Compressed<?>); EXPO_SITE_NUM_MAPS]
+pt_803354C:: // Nullable<[*const [*const ([u32; 4]?, LZ77Compressed<?>)]>; INTERNET_NUM_GROUPS]
+	.word off_8033644 // [*const ([u32; 4]?, LZ77Compressed<?>); ROBOT_CONTROL_COMP_NUM_MAPS]
+	.word off_803364C // [*const ([u32; 4]?, LZ77Compressed<?>); AQUARIUM_COMP_NUM_MAPS]
+	.word off_8033658 // [*const ([u32; 4]?, LZ77Compressed<?>); JUDGETREE_COMP_NUM_MAPS]
+	.word off_8033664 // [*const ([u32; 4]?, LZ77Compressed<?>); MR_WEATHER_COMP_NUM_MAPS]
+	.word NULL
+	.word off_8033670 // [*const ([u32; 4]?, LZ77Compressed<?>); PAVILION_COMP_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word off_8033684 // [*const ([u32; 4]?, LZ77Compressed<?>); HOMEPAGES_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word NULL
+	.word off_80336A0 // [*const ([u32; 4]?, LZ77Compressed<?>); COMPS_NUM_MAPS]
+	.word off_80336E0 // [*const ([u32; 4]?, LZ77Compressed<?>); COMPS_2_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word off_8033720 // [*const ([u32; 4]?, LZ77Compressed<?>); CENTRAL_AREA_NUM_MAPS]
+	.word off_803372C // [*const ([u32; 4]?, LZ77Compressed<?>); SEASIDE_AREA_NUM_MAPS]
+	.word off_8033738 // [*const ([u32; 4]?, LZ77Compressed<?>); GREEN_AREA_NUM_MAPS]
+	.word off_8033740 // [*const ([u32; 4]?, LZ77Compressed<?>); UNDERGROUND_NUM_MAPS]
+	.word off_8033748 // [*const ([u32; 4]?, LZ77Compressed<?>); SKY_ACDC_AREA_NUM_MAPS]
+	.word off_8033754 // [*const ([u32; 4]?, LZ77Compressed<?>); UNDERNET_NUM_MAPS]
+	.word off_8033764 // [*const ([u32; 4]?, LZ77Compressed<?>); GRAVEYARD_NUM_MAPS]
+off_80335A8:: // [*const ([u32; 4]?, LZ77Compressed<?>); ACDC_TOWN_NUM_MAPS]
 	.word byte_8619BD0
 	.word byte_861AD84
 	.word byte_861B31C
-off_80335B4::
+off_80335B4:: // [*const ([u32; 4]?, LZ77Compressed<?>); CENTRAL_TOWN_NUM_MAPS]
 	.word byte_861B338
 	.word byte_861C770
 	.word byte_861CC50
 	.word byte_861CEE8
 	.word byte_861D05C
-off_80335C8::
+off_80335C8:: // [*const ([u32; 4]?, LZ77Compressed<?>); CYBER_ACADEMY_NUM_MAPS]
 	.word byte_861D4D8
 	.word byte_861D4D8
 	.word byte_861D4D8
@@ -1674,79 +2105,64 @@ off_80335C8::
 	.word dword_8620350
 	.word dword_8620A9C
 	.word dword_8620A9C
-off_80335F4::
+off_80335F4:: // [*const ([u32; 4]?, LZ77Compressed<?>); SEASIDE_TOWN_NUM_MAPS]
 	.word dword_8620E58
 	.word byte_8622CFC
 	.word byte_86246F0
 	.word byte_8625B10
 	.word byte_8627DF8
-off_8033608::
+off_8033608:: // [*const ([u32; 4]?, LZ77Compressed<?>); GREEN_TOWN_NUM_MAPS]
 	.word byte_8628968
 	.word byte_862AB08
 	.word dword_862B6E0
 	.word dword_862C160
 	.word dword_862C978
-off_803361C::
+off_803361C:: // [*const ([u32; 4]?, LZ77Compressed<?>); SKY_TOWN_NUM_MAPS]
 	.word dword_862D0A0
 	.word dword_862E15C
 	.word dword_863168C
 	.word dword_8632288
-off_803362C::
+off_803362C:: // [*const ([u32; 4]?, LZ77Compressed<?>); EXPO_SITE_NUM_MAPS]
 	.word dword_8633084
 	.word dword_8634E64
 	.word dword_8635EB4
 	.word dword_8636A7C
 	.word dword_86376B4
 	.word dword_8638E70
-off_8033644::
+off_8033644:: // [*const ([u32; 4]?, LZ77Compressed<?>); ROBOT_CONTROL_COMP_NUM_MAPS]
 	.word dword_863951C
 	.word dword_863B234
-off_803364C::
+off_803364C:: // [*const ([u32; 4]?, LZ77Compressed<?>); AQUARIUM_COMP_NUM_MAPS]
 	.word dword_863D1A4
 	.word dword_863F830
 	.word dword_8642B34
-off_8033658::
+off_8033658:: // [*const ([u32; 4]?, LZ77Compressed<?>); JUDGETREE_COMP_NUM_MAPS]
 	.word dword_86460FC
 	.word dword_86475CC
 	.word dword_8648BA8
-off_8033664::
+off_8033664:: // [*const ([u32; 4]?, LZ77Compressed<?>); MR_WEATHER_COMP_NUM_MAPS]
 	.word dword_864A484
 	.word dword_864D860
 	.word dword_8651B2C
-off_8033670::
+off_8033670:: // [*const ([u32; 4]?, LZ77Compressed<?>); PAVILION_COMP_NUM_MAPS]
 	.word dword_8656C0C
 	.word dword_865A08C
 	.word dword_865B77C
 	.word dword_8660604
 	.word byte_866296C
-off_8033684::
+off_8033684:: // [*const ([u32; 4]?, LZ77Compressed<?>); HOMEPAGES_NUM_MAPS]
 	.word byte_866446C
 	.word dword_8664F04
-	.word 0x0
+	.word NULL
 	.word dword_8664F04
-	.word 0x0
+	.word NULL
 	.word dword_8664F04
 	.word dword_8664F04
-off_80336A0::
-	.word dword_8664988
-	.word dword_8664F04
-	.word dword_8664988
-	.word dword_8664988
-	.word dword_8664988
-	.word dword_8664988
-	.word dword_8664988
-	.word dword_8664988
-	.word dword_8664988
+off_80336A0:: // [*const ([u32; 4]?, LZ77Compressed<?>); COMPS_NUM_MAPS]
 	.word dword_8664988
 	.word dword_8664F04
 	.word dword_8664988
 	.word dword_8664988
-	.word dword_8664988
-	.word dword_8664988
-	.word dword_8664F04
-off_80336E0::
-	.word dword_8664F04
-	.word dword_8664F04
 	.word dword_8664988
 	.word dword_8664988
 	.word dword_8664988
@@ -1758,28 +2174,43 @@ off_80336E0::
 	.word dword_8664988
 	.word dword_8664988
 	.word dword_8664988
+	.word dword_8664F04
+off_80336E0:: // [*const ([u32; 4]?, LZ77Compressed<?>); COMPS_2_NUM_MAPS]
+	.word dword_8664F04
+	.word dword_8664F04
 	.word dword_8664988
 	.word dword_8664988
 	.word dword_8664988
-off_8033720::
+	.word dword_8664988
+	.word dword_8664988
+	.word dword_8664988
+	.word dword_8664F04
+	.word dword_8664988
+	.word dword_8664988
+	.word dword_8664988
+	.word dword_8664988
+	.word dword_8664988
+	.word dword_8664988
+	.word dword_8664988
+off_8033720:: // [*const ([u32; 4]?, LZ77Compressed<?>); CENTRAL_AREA_NUM_MAPS]
 	.word dword_8665548
 	.word dword_8667820
 	.word dword_866B038
-off_803372C::
+off_803372C:: // [*const ([u32; 4]?, LZ77Compressed<?>); SEASIDE_AREA_NUM_MAPS]
 	.word byte_866D090
 	.word byte_8671A74
 	.word byte_8673418
-off_8033738::
+off_8033738:: // [*const ([u32; 4]?, LZ77Compressed<?>); GREEN_AREA_NUM_MAPS]
 	.word byte_8675094
 	.word byte_8678F4C
-off_8033740::
+off_8033740:: // [*const ([u32; 4]?, LZ77Compressed<?>); UNDERGROUND_NUM_MAPS]
 	.word byte_867D85C
 	.word byte_8680690
-off_8033748::
+off_8033748:: // [*const ([u32; 4]?, LZ77Compressed<?>); SKY_ACDC_AREA_NUM_MAPS]
 	.word byte_868316C
 	.word byte_8687DCC
 	.word byte_868CB78
-off_8033754::
+off_8033754:: // [*const ([u32; 4]?, LZ77Compressed<?>); UNDERNET_NUM_MAPS]
 	.word byte_868EBA0
 	.word byte_8691154
 	.word byte_8694FB4

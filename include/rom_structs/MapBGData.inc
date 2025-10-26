@@ -1,4 +1,5 @@
 
+  // type: MapBGDescriptor
 	.macro map_bg_descriptor_struct tileset_ptr, palette_ptr, tilemap_ptr
 	init_rom_struct map_bg_descriptor_struct
 	// Pointer to two map_bg_tileset_header_struct-s.

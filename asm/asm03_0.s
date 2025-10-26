@@ -20104,38 +20104,50 @@ camera_init_802FF4C: // (player_x: u32, player_y: u32, player_z: u32, map_group:
 	str r1, [r5,#oCamera_Unk_14]
 
 	ldr r0, off_802FFF0 // =eMapTilesState200be70
+
 	ldrb r3, [r0,#oMapTilesState200be70_MapWidth]
 	sub r3, #0x1e
 	lsl r3, r3, #0x12
 	str r3, [r5,#oCamera_Unk_1c]
+
 	neg r3, r3
 	str r3, [r5,#oCamera_Unk_18]
+
 	ldrb r3, [r0,#oMapTilesState200be70_MapHeight] // (byte_200BE71 - 0x200be70)
 	sub r3, #0x14
 	lsl r3, r3, #0x12
 	str r3, [r5,#oCamera_Unk_20]
+
 	neg r3, r3
 	str r3, [r5,#oCamera_Unk_24]
+
 	pop {r1-r3}
 	str r1, [r5,#oCamera_X]
 	str r2, [r5,#oCamera_Y]
 	str r3, [r5,#oCamera_Z]
+
 	mov r1, #0
 	strh r1, [r5,#oCamera_Unk_04]
 	strh r1, [r5,#oCamera_Unk_06]
+
 	pop {r0,r1}
+
 	cmp r0, #0xf0
 	bge loc_802FFB8
+
 	cmp r0, #0xe0
 	bge loc_802FFBC
+
 	cmp r0, #0xd0
 	bge loc_802FFC0
+
 	cmp r0, #0x80
 	bge loc_802FFB2
-	ldr r3, off_802FFE8 // =off_8033770 
+
+	ldr r3, off_802FFE8 // =off_8033770 // [*const [u8]; REAL_WORLD_NUM_GROUPS]
 	b loc_802FFC4
 loc_802FFB2:
-	ldr r3, off_802FFEC // =off_803378C 
+	ldr r3, off_802FFEC // =off_803378C // [Nullable<*const [u8]>; REAL_WORLD_NUM_GROUPS]
 	sub r0, #0x80
 	b loc_802FFC4
 loc_802FFB8:
@@ -20167,9 +20179,9 @@ loc_802FFCA:
 	pop {r5-r7,pc}
 	.balign 4, 0
 off_802FFE8:
-	.word off_8033770
+	.word off_8033770 // [*const [u8]; REAL_WORLD_NUM_GROUPS]
 off_802FFEC:
-	.word off_803378C
+	.word off_803378C // [Nullable<*const [u8]>; REAL_WORLD_NUM_GROUPS]
 off_802FFF0:
 	.word eMapTilesState200be70
 	thumb_func_end camera_init_802FF4C
@@ -20717,36 +20729,51 @@ initMapTilesState_803037c: // (map_group: u8, map_number: u8) -> ()
 	mov r3, r9
 	mov r4, r12
 	push {r2-r4}
+
 	ldr r5, off_80305E0 // =eMapTilesState200be70
+
 	cmp r0, #INTERNET_MAP_GROUP_START
 	bge .isInternetMap
+
 .isRealWorldMap
-	ldr r3, off_80303D8 // =off_80329A8 
-	ldr r4, off_80303DC // =off_8032F6C 
+	ldr r3, off_80303D8 // =off_80329A8 // [*const [MapBGDescriptor]; REAL_WORLD_NUM_GROUPS]
+	ldr r4, off_80303DC // =off_8032F6C // [*const [[*const Fn; 3]]; REAL_WORLD_NUM_GROUPS]
+
 	b loc_8030398
+
 .isInternetMap
-	ldr r3, off_80303E0 // =off_80329C4 
-	ldr r4, off_80303E4 // =off_8032F88 
+	ldr r3, off_80303E0 // =off_80329C4 // [Nullable<*const [MapBGDescriptor]>; INTERNET_NUM_GROUPS]
+	ldr r4, off_80303E4 // =off_8032F88 // Nullable<[*const [[*const Fn; 3]]>; INTERNET_NUM_GROUPS]
+
 	sub r0, #INTERNET_MAP_GROUP_START
+
 loc_8030398:
+
+  // Index by map_group
 	lsl r0, r0, #2
 	ldr r3, [r3,r0]
+
+  // Index by map_number
 	mov r2, #oMapBGDescriptor_Size
 	mul r2, r1
 	add r3, r3, r2
-	str r3, [r5,#oMapTilesState200be70_MapBGDescriptorPtr] // (dword_200BE78 - 0x200be70)
 
+	str r3, [r5,#oMapTilesState200be70_MapBGDescriptorPtr]
+
+  // Index by map_group
 	ldr r4, [r4,r0]
-	mov r2, #oMapBGTilesetHeader_Size
+
+  // Index by map_number (it is a 3-tuple of callback pointers, 12 bytes)
+	mov r2, #0x0c
 	mul r2, r1
 	add r4, r4, r2
 
 	ldr r2, [r4]
-	str r2, [r5,#oMapTilesState200be70_UnkCallback_18] // (dword_200BE88 - 0x200be70)
+	str r2, [r5,#oMapTilesState200be70_UnkCallback_18]
 	ldr r2, [r4,#4]
-	str r2, [r5,#oMapTilesState200be70_UnkCallback_1c] // (dword_200BE8C - 0x200be70)
+	str r2, [r5,#oMapTilesState200be70_UnkCallback_1c]
 	ldr r2, [r4,#8]
-	str r2, [r5,#oMapTilesState200be70_UnkCallback_20] // (dword_200BE90 - 0x200be70)
+	str r2, [r5,#oMapTilesState200be70_UnkCallback_20]
 
 	ldr r0, [r3,#oMapBGDescriptor_TilemapPtr]
 	ldr r1, off_803057C // =eDecompBuffer2013A00
@@ -20770,13 +20797,13 @@ loc_8030398:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_80303D8:
-	.word off_80329A8
+	.word off_80329A8 // [*const [MapBGDescriptor]; REAL_WORLD_NUM_GROUPS]
 off_80303DC:
-	.word off_8032F6C
+	.word off_8032F6C // [*const [[*const Fn; 3]]; REAL_WORLD_NUM_GROUPS]
 off_80303E0:
-	.word off_80329C4
+	.word off_80329C4 // [Nullable<*const [MapBGDescriptor]>; INTERNET_NUM_GROUPS]
 off_80303E4:
-	.word off_8032F88
+	.word off_8032F88 // Nullable<[*const [[*const Fn; 3]]>; INTERNET_NUM_GROUPS]
 	thumb_func_end initMapTilesState_803037c
 
 	thumb_func_start sub_80303E8
@@ -20908,7 +20935,7 @@ decompAndCopyMapTiles_8030472: // () -> ()
 	cmp r0, #2
 	blt .loadOneTileset
 
-	ldr r3, [r5,#oMapTilesState200be70_MapBGDescriptorPtr] // (dword_200BE78 - 0x200be70)
+	ldr r3, [r5,#oMapTilesState200be70_MapBGDescriptorPtr]
 	ldr r0, [r3,#oMapBGDescriptor_TilemapPtr]
 	ldr r1, off_803057C // =eDecompBuffer2013A00
 	mov r2, #oMapBGTilemapHeader_Size
@@ -20920,7 +20947,7 @@ decompAndCopyMapTiles_8030472: // () -> ()
 	// dest
 	add r1, #oMapBGTilemapHeader_Size
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
-	ldr r0, [r5,#oMapTilesState200be70_UnkCallback_1c] // (dword_200BE8C - 0x200be70)
+	ldr r0, [r5,#oMapTilesState200be70_UnkCallback_1c]
 	mov lr, pc
 	bx r0
 	pop {r1-r3}
@@ -21137,19 +21164,26 @@ loc_8030622:
 sub_8030628:
 	push {r0,r1}
 	mov r2, #1
-loc_803062C:
+
+  // Needs no more than two iterations to be valid due to the pop
+loop_803062C:
 	pop {r0}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_iBGTileIdBlocks_Ptr]
+
 	lsl r6, r2, #0xb
 	add r7, r7, r6
+
 	lsl r6, r3, #1
 	add r7, r7, r6
 	lsl r6, r4, #6
 	strh r0, [r7,r6]
 	add r2, #1
+
+  // Iterates for r2: 1 and 2
 	cmp r2, #2
-	ble loc_803062C
+	ble loop_803062C
+
 	mov pc, lr
 	thumb_func_end sub_8030628
 
@@ -21758,40 +21792,53 @@ decompressCoordEventData_8030aa4: // (map_group: u8, map_number: u8) -> ()
 	mov r3, r9
 	mov r4, r12
 	push {r2-r4}
-	cmp r0, #0x80
+
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_8030AB6
-	ldr r3, off_8030B00 // =pt_8033530 
+
+	ldr r3, off_8030B00 // =pt_8033530 // [*const [*const ([u32; 4]?, LZ77Compressed<?>)]; REAL_WORLD_NUM_GROUPS]
 	b loc_8030ABA
+
 loc_8030AB6:
-	ldr r3, off_8030B04 // =pt_803354C 
-	sub r0, #0x80
+	ldr r3, off_8030B04 // =pt_803354C // Nullable<[*const [*const ([u32; 4]?, LZ77Compressed<?>)]>; INTERNET_NUM_GROUPS]
+	sub r0, #INTERNET_MAP_GROUP_START
+
 loc_8030ABA:
+
 	lsl r0, r0, #2 // map group
 	add r3, r3, r0
 	ldr r3, [r3]
+
 	lsl r1, r1, #2 // map number
 	add r3, r3, r1
 	ldr r0, [r3]
+
 	push {r0}
-	// src
+
 	add r0, #0x10
-	// dest
-	ldr r1, off_8030B08 // =unk_2027A00 
+	ldr r1, off_8030B08 // =DecompBuf_2027A00 
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (src: *const LZ77Compressed<T>, mut_dest: *mut T -> ()
+
 	pop {r6}
-	ldr r7, off_8030B08 // =unk_2027A00 
-	ldr r0, [r6]
+
+	ldr r7, off_8030B08 // =DecompBuf_2027A00 
+
+	ldr r0, [r6,#0]
 	add r0, r0, r7
 	bl sub_8030B0C
+
 	ldr r0, [r6,#4]
 	add r0, r0, r7
 	bl sub_8031600
+
 	ldr r0, [r6,#8]
 	add r0, r0, r7
 	bl sub_803189C
+
 	ldr r0, [r6,#0xc]
 	add r0, r0, r7
 	bl sub_8031A68
+
 	pop {r2-r4}
 	mov r8, r2
 	mov r9, r3
@@ -21799,11 +21846,11 @@ loc_8030ABA:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8030B00:
-	.word pt_8033530 // JP Falzar 0x80344ec
+	.word pt_8033530 // [*const [*const ([u32; 4]?, LZ77Compressed<?>)]; REAL_WORLD_NUM_GROUPS]
 off_8030B04:
-	.word pt_803354C // JP Falzar 0x8034508
+	.word pt_803354C // Nullable<[*const [*const ([u32; 4]?, LZ77Compressed<?>)]>; INTERNET_NUM_GROUPS]
 off_8030B08:
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	thumb_func_end decompressCoordEventData_8030aa4
 
 	thumb_local_start

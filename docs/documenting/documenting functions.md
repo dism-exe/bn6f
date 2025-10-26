@@ -3,17 +3,23 @@
 In the assembly, use the tool under `tools/doc_scripts/replacesig.sh` to change signatures of functions.
 
 Valid data types include:
+
 - `()` (preferred over void),
 - `i8`, `i16`, `i32`, `u8`, `u16`, `u32`,
 - `bool`
   - We also have `zf` and `!zf` for functions that just set the zero flag as a return. Name of the function should reflect when the zero flag is set (`zf`) or cleared (`!zf`).
+
 - If it's addressing-related, use `usize`. 
+
 - Pointers can be marked with `*` as in `* i32`. 
   - You can document whether it's a mutable pointer as in `*mut i32` or constant pointer as in `*const i32`. Not including `const` or `mut` would be taken as unsure.
   - If the pointer is generic, use `* ()` 
-  - Arrays are marked with `[T]`, if they have a known size, then it could be `[T; SIZE]`. A pointer to an array is `* [T]`.
-  - If there is indication the pointer may be null, use a wrapping `Nullable`:  `Nullable<* T>`. 
-    - It can be used for arrays too: `[[Nullable<(* T); 5]>; 3]`.
+  - For callbacks, use `* Fn`
+
+- Arrays are marked with `[T]`, if they have a known size, then it could be `[T; SIZE]`. A pointer to an array is `* [T]`.
+- If there is indication the pointer may be null, use a wrapping `Nullable`:  `Nullable<* T>`. 
+  - It can be used for arrays too: `[[Nullable<(* T); 5]>; 3]`.
+
 - For unknowns, use ?. So i8? i32?, etc. If nothing is known, you can use just ?. 
 - Names of structs as found in the filenames in `include/structs/` and `include/rom_structs/`,
 - Names of enums as found in the filenames in `constants/enums/`,

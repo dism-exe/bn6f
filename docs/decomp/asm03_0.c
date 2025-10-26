@@ -14789,11 +14789,11 @@ int __fastcall decompressCoordEventData_8030aa4(signed int mapGroup, int mapNumb
         mapPtrs = pt_8033530;
     }
     v3 = mapPtrs[mapGroup][mapNumber];
-    SWI_LZ77UnCompReadNormalWrite8bit(&(*v3)[16], &unk_2027A00);
-    sub_8030B0C(&unk_2027A00 + *v3);
-    sub_8031600(&unk_2027A00 + *&(*v3)[4]);
-    sub_803189C(&unk_2027A00 + *&(*v3)[8]);
-    return sub_8031A68(&unk_2027A00 + *&(*v3)[12]);
+    SWI_LZ77UnCompReadNormalWrite8bit(&(*v3)[16], &DecompBuf_2027A00);
+    sub_8030B0C(&DecompBuf_2027A00 + *v3);
+    sub_8031600(&DecompBuf_2027A00 + *&(*v3)[4]);
+    sub_803189C(&DecompBuf_2027A00 + *&(*v3)[8]);
+    return sub_8031A68(&DecompBuf_2027A00 + *&(*v3)[12]);
 }
 
 

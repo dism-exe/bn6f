@@ -1,160 +1,161 @@
 
-off_8033764:
+off_8033764: // [*const ([u32; 4]?, LZ77Compressed<?>); GRAVEYARD_NUM_MAPS]
 	.word spriteWhiteDot
 	.word byte_8699EDC
 	.word spriteWhiteDot
-off_8033770:
-	.word word_80337E8
-	.word byte_80337EA
-	.word byte_80337EF
-	.word byte_80337FA
-	.word byte_80337FF
-	.word dword_8033804
-	.word byte_8033808
-off_803378C:
-	.word word_803380E
-	.word byte_8033810
-	.word byte_8033813
-	.word byte_8033816
-	.word 0x0
-	.word byte_8033819
-	.word 0x0
-	.word 0x0
-	.word byte_803381E
-	.word 0x0
-	.word 0x0
-	.word 0x0
-	.word byte_8033825
-	.word byte_8033835
-	.word 0x0
-	.word 0x0
-	.word byte_8033845
-	.word byte_8033848
-	.word byte_803384B
-	.word word_803384D
-	.word byte_803384F
-	.word dword_8033852
-	.word byte_8033856
-word_80337E8:
+off_8033770: // [*const [u8]; REAL_WORLD_NUM_GROUPS]
+	.word word_80337E8 // [u8; ACDC_TOWN_NUM_MAPS]
+	.word byte_80337EA // [u8; CENTRAL_TOWN_NUM_MAPS]
+	.word byte_80337EF // [u8; CYBER_ACADEMY_NUM_MAPS]
+	.word byte_80337FA // [u8; SEASIDE_TOWN_NUM_MAPS]
+	.word byte_80337FF // [u8; GREEN_TOWN_NUM_MAPS]
+	.word dword_8033804 // [u8; SKY_TOWN_NUM_MAPS]
+	.word byte_8033808 // [u8; EXPO_SITE_NUM_MAPS]
+off_803378C: // [Nullable<*const [u8]>; REAL_WORLD_NUM_GROUPS]
+	.word word_803380E // [u8; ROBOT_CONTROL_COMP_NUM_MAPS]
+	.word byte_8033810 // [u8; AQUARIUM_COMP_NUM_MAPS]
+	.word byte_8033813 // [u8; JUDGETREE_COMP_NUM_MAPS]
+	.word byte_8033816 // [u8; MR_WEATHER_COMP_NUM_MAPS]
+	.word NULL
+	.word byte_8033819 // [u8; PAVILION_COMP_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word byte_803381E // [u8; HOMEPAGES_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word NULL
+	.word byte_8033825 // [u8; COMPS_NUM_MAPS]
+	.word byte_8033835 // [u8; COMPS_2_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word byte_8033845 // [u8; CENTRAL_AREA_NUM_MAPS]
+	.word byte_8033848 // [u8; SEASIDE_AREA_NUM_MAPS]
+	.word byte_803384B // [u8; GREEN_AREA_NUM_MAPS]
+	.word word_803384D // [u8; UNDERGROUND_NUM_MAPS]
+	.word byte_803384F // [u8; SKY_ACDC_AREA_NUM_MAPS]
+	.word dword_8033852 // [u8; UNDERNET_NUM_MAPS]
+	.word byte_8033856 // [u8; GRAVEYARD_NUM_MAPS]
+word_80337E8: // [u8; ACDC_TOWN_NUM_MAPS]
 	.byte 0x0, 0x0
-byte_80337EA:
+/// Changing this to all 0x8 messes up with camera perspective, fragmenting it into multiple views
+byte_80337EA: // [u8; CENTRAL_TOWN_NUM_MAPS]
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0
-byte_80337EF:
+byte_80337EF: // [u8; CYBER_ACADEMY_NUM_MAPS]
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-byte_80337FA:
+byte_80337FA: // [u8; SEASIDE_TOWN_NUM_MAPS]
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0
-byte_80337FF:
+byte_80337FF: // [u8; GREEN_TOWN_NUM_MAPS]
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0
-dword_8033804:
+dword_8033804: // [u8; SKY_TOWN_NUM_MAPS]
 	.byte 0x0, 0x0, 0x0, 0x0
-byte_8033808:
+byte_8033808: // [u8; EXPO_SITE_NUM_MAPS]
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-word_803380E:
+word_803380E: // [u8; ROBOT_CONTROL_COMP_NUM_MAPS]
 	.byte 0x4, 0x4
-byte_8033810:
+byte_8033810: // [u8; AQUARIUM_COMP_NUM_MAPS]
 	.byte 0x4, 0x4, 0x4
-byte_8033813:
+byte_8033813: // [u8; JUDGETREE_COMP_NUM_MAPS]
 	.byte 0x4, 0x4, 0x4
-byte_8033816:
+byte_8033816: // [u8; MR_WEATHER_COMP_NUM_MAPS]
 	.byte 0x4, 0x4, 0x4
-byte_8033819:
+byte_8033819: // [u8; PAVILION_COMP_NUM_MAPS]
 	.byte 0x4, 0x4, 0x4, 0x4, 0x4
-byte_803381E:
+byte_803381E: // [u8; HOMEPAGES_NUM_MAPS]
 	.byte 0x4, 0x4, 0x4, 0x4, 0x0, 0x4, 0x4
-byte_8033825:
+byte_8033825: // [u8; COMPS_NUM_MAPS]
 	.byte 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4
-byte_8033835:
+byte_8033835: // [u8; COMPS_2_NUM_MAPS]
 	.byte 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4
-byte_8033845:
+byte_8033845: // [u8; CENTRAL_AREA_NUM_MAPS]
 	.byte 0x4, 0x4, 0x4
-byte_8033848:
+byte_8033848: // [u8; SEASIDE_AREA_NUM_MAPS]
 	.byte 0x4, 0x4, 0x4
-byte_803384B:
+byte_803384B: // [u8; GREEN_AREA_NUM_MAPS]
 	.byte 0x4, 0x4
-word_803384D:
+word_803384D: // [u8; UNDERGROUND_NUM_MAPS]
 	.byte 0x4, 0x4
-byte_803384F:
+byte_803384F: // [u8; SKY_ACDC_AREA_NUM_MAPS]
 	.byte 0x4, 0x4, 0x4
-dword_8033852:
+dword_8033852: // [u8; UNDERNET_NUM_MAPS]
 	.byte 0x4, 0x4, 0x4, 04
-byte_8033856:
+byte_8033856: // [u8; GRAVEYARD_NUM_MAPS]
 	.byte 0x4, 0x4, 0x4
 	.balign 4, 0
-off_803385C:
-	.word word_80338D4
-	.word byte_80338D6
-	.word byte_80338DB
-	.word byte_80338E6
-	.word byte_80338EB
-	.word dword_80338F0
-	.word byte_80338F4
-off_8033878:
-	.word word_80338FA
-	.word byte_80338FC
-	.word byte_80338FF
-	.word byte_8033902
-	.word 0x0
-	.word byte_8033905
-	.word 0x0
-	.word 0x0
-	.word byte_803390A
-	.word 0x0
-	.word 0x0
-	.word 0x0
-	.word byte_8033911
-	.word byte_8033921
-	.word 0x0
-	.word 0x0
-	.word byte_8033931
-	.word byte_8033934
-	.word byte_8033937
-	.word byte_8033939
-	.word byte_803393B
-	.word dword_803393E
-	.word byte_8033942
-word_80338D4:
-	.hword 0x606
-byte_80338D6:
+off_803385C: // [*const [u8]; REAL_WORLD_NUM_GROUPS]
+	.word word_80338D4 // [u8; ACDC_TOWN_NUM_MAPS]
+	.word byte_80338D6 // [u8; CENTRAL_TOWN_NUM_MAPS]
+	.word byte_80338DB // [u8; CYBER_ACADEMY_NUM_MAPS]
+	.word byte_80338E6 // [u8; SEASIDE_TOWN_NUM_MAPS]
+	.word byte_80338EB // [u8; GREEN_TOWN_NUM_MAPS]
+	.word dword_80338F0 // [u8; SKY_TOWN_NUM_MAPS]
+	.word byte_80338F4 // [u8; EXPO_SITE_NUM_MAPS]
+off_8033878: // [Nullable<*const [u8]>; REAL_WORLD_NUM_GROUPS]
+	.word word_80338FA // [u8; ROBOT_CONTROL_COMP_NUM_MAPS]
+	.word byte_80338FC // [u8; AQUARIUM_COMP_NUM_MAPS]
+	.word byte_80338FF // [u8; JUDGETREE_COMP_NUM_MAPS]
+	.word byte_8033902 // [u8; MR_WEATHER_COMP_NUM_MAPS]
+	.word NULL
+	.word byte_8033905 // [u8; PAVILION_COMP_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word byte_803390A // [u8; HOMEPAGES_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word NULL
+	.word byte_8033911 // [u8; COMPS_NUM_MAPS]
+	.word byte_8033921 // [u8; COMPS_2_NUM_MAPS]
+	.word NULL
+	.word NULL
+	.word byte_8033931 // [u8; CENTRAL_AREA_NUM_MAPS]
+	.word byte_8033934 // [u8; SEASIDE_AREA_NUM_MAPS]
+	.word byte_8033937 // [u8; GREEN_AREA_NUM_MAPS]
+	.word byte_8033939 // [u8; UNDERGROUND_NUM_MAPS]
+	.word byte_803393B // [u8; SKY_ACDC_AREA_NUM_MAPS]
+	.word dword_803393E // [u8; UNDERNET_NUM_MAPS]
+	.word byte_8033942 // [u8; GRAVEYARD_NUM_MAPS]
+word_80338D4: // [u8; ACDC_TOWN_NUM_MAPS]
+  .byte 0x6, 0x6
+byte_80338D6: // [u8; CENTRAL_TOWN_NUM_MAPS]
 	.byte 0x6, 0x6, 0x6, 0x6, 0x6
-byte_80338DB:
+byte_80338DB: // [u8; CYBER_ACADEMY_NUM_MAPS]
 	.byte 0x6, 0x6, 0x6, 0x6, 0x6, 0x6, 0x6, 0x6, 0x6, 0x6, 0x6
-byte_80338E6:
+byte_80338E6: // [u8; SEASIDE_TOWN_NUM_MAPS]
 	.byte 0x6, 0x6, 0x6, 0x6, 0x6
-byte_80338EB:
+byte_80338EB: // [u8; GREEN_TOWN_NUM_MAPS]
 	.byte 0x6, 0x6, 0x6, 0x6, 0x6
-dword_80338F0:
-	.word 0x6060606
-byte_80338F4:
+dword_80338F0: // [u8; SKY_TOWN_NUM_MAPS]
+  .byte 0x6, 0x6, 0x6, 0x6
+byte_80338F4: // [u8; EXPO_SITE_NUM_MAPS]
 	.byte 0x6, 0x7, 0x6, 0x6, 0x6, 0x6
-word_80338FA:
-	.hword 0x505
-byte_80338FC:
+word_80338FA: // [u8; ROBOT_CONTROL_COMP_NUM_MAPS]
+  .byte 0x5, 0x5
+byte_80338FC: // [u8; AQUARIUM_COMP_NUM_MAPS]
 	.byte 0x5, 0x5, 0x5
-byte_80338FF:
+byte_80338FF: // [u8; JUDGETREE_COMP_NUM_MAPS]
 	.byte 0x5, 0x5, 0x5
-byte_8033902:
+byte_8033902: // [u8; MR_WEATHER_COMP_NUM_MAPS]
 	.byte 0x5, 0x5, 0x5
-byte_8033905:
+byte_8033905: // [u8; PAVILION_COMP_NUM_MAPS]
 	.byte 0x5, 0x5, 0x5, 0x5, 0x5
-byte_803390A:
+byte_803390A: // [u8; HOMEPAGES_NUM_MAPS]
 	.byte 0x5, 0x5, 0x5, 0x5, 0x0, 0x5, 0x5
-byte_8033911:
+byte_8033911: // [u8; COMPS_NUM_MAPS]
 	.byte 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5
-byte_8033921:
+byte_8033921: // [u8; COMPS_2_NUM_MAPS]
 	.byte 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5, 0x5
-byte_8033931:
+byte_8033931: // [u8; CENTRAL_AREA_NUM_MAPS]
 	.byte 0x5, 0x5, 0x5
-byte_8033934:
+byte_8033934: // [u8; SEASIDE_AREA_NUM_MAPS]
 	.byte 0x5, 0x5, 0x5
-byte_8033937:
+byte_8033937: // [u8; GREEN_AREA_NUM_MAPS]
 	.byte 0x5, 0x5
-byte_8033939:
+byte_8033939: // [u8; UNDERGROUND_NUM_MAPS]
 	.byte 0x5, 0x5
-byte_803393B:
+byte_803393B: // [u8; SKY_ACDC_AREA_NUM_MAPS]
 	.byte 0x5, 0x5, 0x5
-dword_803393E:
-	.word 0x5050505
-byte_8033942:
+dword_803393E: // [u8; UNDERNET_NUM_MAPS]
+  .byte 0x5, 0x5, 0x5, 0x5
+byte_8033942: // [u8; GRAVEYARD_NUM_MAPS]
 	.byte 0x5, 0x5, 0x5, 0x0, 0x0, 0x0
 
 	thumb_func_start triggerSomeUpdateForInternetOrRealWorld_8033948

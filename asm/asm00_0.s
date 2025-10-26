@@ -2712,18 +2712,24 @@ fill:
 	.word 0x2FF02FF
 	thumb_func_end copyToVRAMAndClear_iBGTileIdBlocks_Ptr
 
+/// Disabling this causes a lot of glitchy overlayed graphics from logo screen and throughout.
+/// Game remains functional. In the net the background is very glitchy and animating you can't see MegaMan
 	thumb_func_start sub_80015FC
 sub_80015FC:
 	ldr r1, off_8001614 // =byte_8001618
 	lsl r0, r0, #3
 	add r1, r1, r0
+
 	mov r3, r10
 	ldr r2, [r3,#oToolkit_RenderInfoPtr]
 	add r2, #4
+
 	ldr r0, [r1]
 	str r0, [r2]
+
 	ldr r0, [r1,#4]
 	str r0, [r2,#4]
+
 	mov pc, lr
 	.balign 4, 0x00
 off_8001614:
@@ -2749,25 +2755,33 @@ byte_8001618:
 	thumb_func_start map_8001708
 map_8001708: // (map_group: u8, map_number: u8) -> ()
 	push {lr}
+
 	cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_8001712
-	ldr r3, off_8001724 // =off_803385C
+
+	ldr r3, off_8001724 // =off_803385C // [*const [u8]; REAL_WORLD_NUM_GROUPS]
+
 	b loc_8001716
+
 loc_8001712:
-	ldr r3, off_8001728 // =off_8033878
+	ldr r3, off_8001728 // =off_8033878 // [Nullable<*const [u8]>; REAL_WORLD_NUM_GROUPS]
 	sub r0, #INTERNET_MAP_GROUP_START
+
 loc_8001716:
 	lsl r0, r0, #2
 	ldr r3, [r3,r0]
+
 	add r3, r3, r1
 	ldrb r0, [r3]
+
 	bl sub_80015FC
+
 	pop {pc}
 	.balign 4, 0
 off_8001724:
-	.word off_803385C
+	.word off_803385C // [*const [u8]; REAL_WORLD_NUM_GROUPS]
 off_8001728:
-	.word off_8033878
+	.word off_8033878 // [Nullable<*const [u8]>; REAL_WORLD_NUM_GROUPS]
 	thumb_func_end map_8001708
 
 	thumb_func_start render_800172C

@@ -5834,13 +5834,13 @@ off_8049A50:
 initRefs_8049A54:
 	.word comp_87E50D4 + 1<<31
 	.word 0x6004000
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word comp_87E5550 + 1<<31
 	.word 0x0
 	.word unk_2028200
 	.word comp_87E56A0 + 1<<31
 	.word 0x600D600
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word dword_87F25B4
 	.word palette_3001980
 	.word 0xA0
@@ -5877,10 +5877,10 @@ off_8049AD4:
 	.word byte_8049AD8
 byte_8049AD8:
 	.byte 0xBC, 0x57, 0x7E, 0x88, 0x0, 0x40, 0x0, 0x6
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word compSpriteWhiteDot_84E0C4C + 1<<31
 	.word 0x6000020
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word comp_87E6840 + 1<<31
 	.word 0x0
 	.word unk_2028200
@@ -5913,7 +5913,7 @@ byte_8049AD8:
 	.word 0x180
 	.word comp_87E6924 + 1<<31
 	.word 0x6010280
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word dword_86A5500
 	.word byte_3001550
 	.word 0x20
@@ -6605,7 +6605,7 @@ off_804A0E4:
 	.word byte_804A0E8
 byte_804A0E8:
 	.byte 0xD4, 0x50, 0x7E, 0x88, 0x0, 0x40, 0x0, 0x6
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word comp_87E5550 + 1<<31
 	.word 0x0
 	.word unk_2028200
@@ -6614,7 +6614,7 @@ byte_804A0E8:
 	.word unk_2028200
 	.word comp_87E56A0 + 1<<31
 	.word 0x600D600
-	.word unk_2027A00
+	.word DecompBuf_2027A00
 	.word dword_87F25B4
 	.word palette_3001980
 	.word 0xA0

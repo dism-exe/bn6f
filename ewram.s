@@ -2355,7 +2355,7 @@ dword_20275A8:: // 0x20275a8
 	.space 4
 dword_20275AC:: // 0x20275ac
 	.space 1108
-unk_2027A00:: // 0x2027a00
+DecompBuf_2027A00:: // 0x2027a00
 	.space 1536
 unk_2028000:: // 0x2028000
 	.space 512
