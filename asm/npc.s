@@ -2581,7 +2581,7 @@ off_809F3E0:
 	thumb_func_end NPCCommand_set_text_script_index_and_ptr_to_decomp_buffer
 
 	thumb_local_start
-// 0x4d unused1to4 destination5
+// 0x4d unusedword1 destination5
 // jump to another script
 // the code suggests something was removed
 // unused1to4 - unused
