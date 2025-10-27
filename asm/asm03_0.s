@@ -9975,38 +9975,48 @@ decomp_802B060:
 initRefs:
 	.word initRefs_802B070
 initRefs_802B070:
-	.word comp_86DD59C + 1<<31
+	.word comp_86DD59C + COMPRESSED_PTR_FLAG
 	.word 0x6008020
 	.word decomp_2032000
-	.word comp_86DDAD0 + 1<<31
+
+	.word comp_86DDAD0 + COMPRESSED_PTR_FLAG
 	.word unk_2030E60
 	.word decomp_2032000
-	.word comp_86DD9B4 + 1<<31
+
+	.word comp_86DD9B4 + COMPRESSED_PTR_FLAG
 off_802B08C:
 	.word unk_2035000
 	.word decomp_2032000
+
 	.word byte_86DDB24
 	.word unk_3001A80
 	.word 0x20
+
 	.word byte_86C9D6C
 	.word byte_30016B0
 	.word 0x20
-	.word comp_86C9BD4 + 1<<31
+
+	.word comp_86C9BD4 + COMPRESSED_PTR_FLAG
 	.word 0x6016C80
 	.word decomp_2032000
-	.word comp_86C9D38 + 1<<31
+
+	.word comp_86C9D38 + COMPRESSED_PTR_FLAG
 	.word 0x6016E00
 	.word decomp_2032000
-	.word comp_86DDB44 + 1<<31
+
+	.word comp_86DDB44 + COMPRESSED_PTR_FLAG
 	.word 0x6016E40
 	.word decomp_2032000
-	.word comp_86DDB7C + 1<<31
+
+	.word comp_86DDB7C + COMPRESSED_PTR_FLAG
 	.word 0x6016E80
 	.word decomp_2032000
-	.word CompText86D6974 + 1<<31
+
+	.word CompText86D6974 + COMPRESSED_PTR_FLAG
 	.word eTextScript2030860
 	.word decomp_2032000
-	.word 0x0
+
+	.word NULL
 	thumb_func_end decomp_802B060
 
 	thumb_local_start
@@ -19741,31 +19751,39 @@ startScreen_initGfx_802FCC0:
 off_802FCD4:
 	.word initRefs_802FCD8
 initRefs_802FCD8:
-	.word comp_87F36A0 + 1<<31
+	.word comp_87F36A0 + COMPRESSED_PTR_FLAG
 	.word 0x6013000
 	.word eDecompBuffer2013A00
+
 	.word byte_87F40F4
 	.word byte_3001610
 	.word 0xA0
-	.word comp_87F3370 + 1<<31
+
+	.word comp_87F3370 + COMPRESSED_PTR_FLAG
 	.word 0x6010020
 	.word eDecompBuffer2013A00
+
 	.word dword_87F3620
 	.word byte_3001590
 	.word 0x80
-	.word comp_87F4394 + 1<<31
+
+	.word comp_87F4394 + COMPRESSED_PTR_FLAG
 	.word 0x6000000
 	.word eDecompBuffer2013A00
+
 	.word dword_87F4194
 	.word palette_3001960
 	.word 0x1C0
+
 	.word byte_86A48C0
 	.word 0x6012800
 	.word 0x180
+
 	.word dword_86A5500
 	.word byte_3001570
 	.word 0x20
-	.word 0x0
+
+	.word NULL
 	thumb_func_end startScreen_initGfx_802FCC0
 
 	thumb_local_start

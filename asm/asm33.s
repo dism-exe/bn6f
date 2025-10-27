@@ -989,7 +989,7 @@ off_812391C:
 	.word 0x2
 	.word unk_3001AC0
 	.word 0x20
-	.word comp_86C9AA4 + 1<<31
+	.word comp_86C9AA4 + COMPRESSED_PTR_FLAG
 	.word 0x2
 	.word unk_3001A80
 	.word 0x2013A00
@@ -1002,13 +1002,13 @@ off_812395C:
 off_8123960:
 	.word dword_8123964
 dword_8123964:
-	.word 0x886CEC3C
+	.word comp_86CEC3C + COMPRESSED_PTR_FLAG
 	.word unk_201D884
 	.word eDecompBuffer2013A00
-	.word comp_86CDEA8 + 1<<31
+	.word comp_86CDEA8 + COMPRESSED_PTR_FLAG
 	.word unk_201E284
 	.word eDecompBuffer2013A00
-	.word comp_86CE51C + 1<<31
+	.word comp_86CE51C + COMPRESSED_PTR_FLAG
 	.word unk_2020484
 	.word eDecompBuffer2013A00
 	.word dword_86B7AE0
@@ -1017,48 +1017,48 @@ dword_8123964:
 	.word dword_86C9B54
 	.word byte_30016B0
 	.word 0x20
-	.word comp_86C96C0 + 1<<31
+	.word comp_86C96C0 + COMPRESSED_PTR_FLAG
 	.word 0x6006800
 	.word eDecompBuffer2013A00
-	.word comp_86C980C + 1<<31
+	.word comp_86C980C + COMPRESSED_PTR_FLAG
 	.word 0x6006B80
 	.word eDecompBuffer2013A00
-	.word comp_86C9BD4 + 1<<31
+	.word comp_86C9BD4 + COMPRESSED_PTR_FLAG
 	.word 0x6014800
 	.word eDecompBuffer2013A00
-	.word comp_86C9D38 + 1<<31
+	.word comp_86C9D38 + COMPRESSED_PTR_FLAG
 	.word 0x6014980
 	.word eDecompBuffer2013A00
-	.word comp_86CE63C + 1<<31
+	.word comp_86CE63C + COMPRESSED_PTR_FLAG
 	.word 0x6014A00
 	.word eDecompBuffer2013A00
 	.word byte_86C9D6C
 	.word byte_30016D0
 	.word 0x20
-	.word comp_86C7E74 + 1<<31
+	.word comp_86C7E74 + COMPRESSED_PTR_FLAG
 	.word 0x6012800
 	.word eDecompBuffer2013A00
-	.word comp_86C7F70 + 1<<31
-	.word 0x30015F0
+	.word comp_86C7F70 + COMPRESSED_PTR_FLAG
+	.word byte_30015F0
 	.word eDecompBuffer2013A00
-	.word comp_86C7F98 + 1<<31
+	.word comp_86C7F98 + COMPRESSED_PTR_FLAG
 	.word 0x6012C00
 	.word eDecompBuffer2013A00
-	.word comp_86C8034 + 1<<31
-	.word 0x3001630
+	.word comp_86C8034 + COMPRESSED_PTR_FLAG
+	.word byte_3001630
 	.word eDecompBuffer2013A00
-	.word comp_86C8054 + 1<<31
+	.word comp_86C8054 + COMPRESSED_PTR_FLAG
 	.word 0x6000020
 	.word eDecompBuffer2013A00
-	.word comp_86CDCE4 + 1<<31
+	.word comp_86CDCE4 + COMPRESSED_PTR_FLAG
 off_8123A28:
 	.word eTextScript201BA20
 	.word eDecompBuffer2013A00
-	.word comp_86CDE2C + 1<<31
+	.word comp_86CDE2C + COMPRESSED_PTR_FLAG
 off_8123A34:
 	.word eTextScript201BF20
 	.word eDecompBuffer2013A00
-	.word 0x0
+	.word NULL
 	thumb_func_end chipFolder_initGfx_812386C
 
 	thumb_local_start
@@ -2453,31 +2453,32 @@ off_8124480:
 off_8124484:
 	.word byte_8124488
 byte_8124488:
-	.byte 0x54, 0x80, 0x6C, 0x88, 0x20, 0x0, 0x0, 0x6
+	.word comp_86C8054 + COMPRESSED_PTR_FLAG
+	.word 0x06000020
 	.word eDecompBuffer2013A00
-	.word comp_86CF82C + 1<<31
+	.word comp_86CF82C + COMPRESSED_PTR_FLAG
 off_8124498:
 	.word eTextScript201BA00
 	.word eDecompBuffer2013A00
-	.word comp_86C9BD4 + 1<<31
+	.word comp_86C9BD4 + COMPRESSED_PTR_FLAG
 	.word 0x6014840
 	.word eDecompBuffer2013A00
 	.word byte_86C9D6C
 	.word byte_30016D0
 	.word 0x20
-	.word comp_86C9148 + 1<<31
+	.word comp_86C9148 + COMPRESSED_PTR_FLAG
 	.word 0x6003C00
 	.word eDecompBuffer2013A00
-	.word comp_86C9240 + 1<<31
+	.word comp_86C9240 + COMPRESSED_PTR_FLAG
 	.word unk_3001A40
 	.word eDecompBuffer2013A00
-	.word comp_86CFC64 + 1<<31
+	.word comp_86CFC64 + COMPRESSED_PTR_FLAG
 	.word 0x6010000
 	.word eDecompBuffer2013A00
-	.word comp_86CFCFC + 1<<31
+	.word comp_86CFCFC + COMPRESSED_PTR_FLAG
 	.word byte_3001690
 	.word eDecompBuffer2013A00
-	.word 0x0
+	.word NULL
 	thumb_func_end subchip_initGfx_81243B0
 
 	thumb_local_start
@@ -4058,7 +4059,7 @@ off_8125310:
 	.word 0x2
 	.word unk_3001AC0
 	.word 0x20
-	.word comp_86C9AA4 + 1<<31
+	.word comp_86C9AA4 + COMPRESSED_PTR_FLAG
 	.word 0x2
 	.word unk_3001A60
 	.word eDecompBuffer2013A00
@@ -4071,26 +4072,27 @@ off_8125360:
 off_8125364:
 	.word byte_8125368
 byte_8125368:
-	.byte 0x54, 0x80, 0x6C, 0x88, 0x20, 0x0, 0x0, 0x6
+	.word comp_86C8054 + COMPRESSED_PTR_FLAG
+	.word 0x6000020
 	.word eDecompBuffer2013A00
-	.word comp_86D6C70 + 1<<31
+	.word comp_86D6C70 + COMPRESSED_PTR_FLAG
 off_8125378:
 	.word eTextScript201BA20
 	.word eDecompBuffer2013A00
-	.word comp_86D6D50 + 1<<31
+	.word comp_86D6D50 + COMPRESSED_PTR_FLAG
 off_8125384:
 	.word eTextScript201BF20
 	.word eDecompBuffer2013A00
-	.word comp_86C9BD4 + 1<<31
+	.word comp_86C9BD4 + COMPRESSED_PTR_FLAG
 	.word 0x6014800
 	.word eDecompBuffer2013A00
-	.word comp_86C9C80 + 1<<31
+	.word comp_86C9C80 + COMPRESSED_PTR_FLAG
 	.word 0x60149C0
 	.word eDecompBuffer2013A00
-	.word comp_86C7DCC + 1<<31
+	.word comp_86C7DCC + COMPRESSED_PTR_FLAG
 	.word 0x6014A20
 	.word eDecompBuffer2013A00
-	.word comp_86C9D38 + 1<<31
+	.word comp_86C9D38 + COMPRESSED_PTR_FLAG
 	.word 0x6014980
 	.word eDecompBuffer2013A00
 	.word byte_86C9D6C
@@ -4099,34 +4101,34 @@ off_8125384:
 	.word dword_86B7AE0
 	.word 0x6004000
 	.word 0x2800
-	.word comp_86C96C0 + 1<<31
+	.word comp_86C96C0 + COMPRESSED_PTR_FLAG
 	.word 0x6006800
 	.word eDecompBuffer2013A00
-	.word comp_86C7764 + 1<<31
+	.word comp_86C7764 + COMPRESSED_PTR_FLAG
 	.word unk_2020500
 	.word eDecompBuffer2013A00
-	.word comp_86C73D8 + 1<<31
+	.word comp_86C73D8 + COMPRESSED_PTR_FLAG
 	.word unk_2020C00
 	.word eDecompBuffer2013A00
-	.word comp_86C7980 + 1<<31
+	.word comp_86C7980 + COMPRESSED_PTR_FLAG
 	.word byte_2022C00
 	.word eDecompBuffer2013A00
-	.word comp_86C6B30 + 1<<31
+	.word comp_86C6B30 + COMPRESSED_PTR_FLAG
 	.word unk_2024C00
 	.word eDecompBuffer2013A00
-	.word comp_86C6FD0 + 1<<31
+	.word comp_86C6FD0 + COMPRESSED_PTR_FLAG
 	.word unk_2026C00
 	.word eDecompBuffer2013A00
-	.word CompText86D6F30 + 1<<31
+	.word CompText86D6F30 + COMPRESSED_PTR_FLAG
 	.word unk_2028000
 	.word eDecompBuffer2013A00
 	.word dword_86C9BB4
 	.word byte_30016B0
 	.word 0x20
-	.word CompText86D6EE4 + 1<<31
+	.word CompText86D6EE4 + COMPRESSED_PTR_FLAG
 	.word unk_201CC20
 	.word eDecompBuffer2013A00
-	.word 0x0
+	.word NULL
 	thumb_func_end sub_81252C0
 
 	thumb_local_start
@@ -7780,47 +7782,48 @@ off_8127180:
 off_8127184:
 	.word byte_8127188
 byte_8127188:
-	.byte 0x54, 0x80, 0x6C, 0x88, 0x20, 0x0, 0x0, 0x6
+	.word comp_86C8054 + COMPRESSED_PTR_FLAG
+	.word 0x6000020
 	.word eDecompBuffer2013A00
-	.word comp_86D74B0 + 1<<31
+	.word comp_86D74B0 + COMPRESSED_PTR_FLAG
 off_8127198:
 	.word eTextScript201BA20
 	.word eDecompBuffer2013A00
-	.word comp_86D737C + 1<<31
+	.word comp_86D737C + COMPRESSED_PTR_FLAG
 off_81271A4:
 	.word unk_201CF20
 	.word eDecompBuffer2013A00
-	.word comp_86D73D4 + 1<<31
+	.word comp_86D73D4 + COMPRESSED_PTR_FLAG
 off_81271B0:
 	.word unk_201D120
 	.word eDecompBuffer2013A00
-	.word comp_86D7424 + 1<<31
+	.word comp_86D7424 + COMPRESSED_PTR_FLAG
 off_81271BC:
 	.word unk_201D320
 	.word eDecompBuffer2013A00
-	.word comp_86D747C + 1<<31
+	.word comp_86D747C + COMPRESSED_PTR_FLAG
 off_81271C8:
 	.word unk_201D520
 	.word eDecompBuffer2013A00
-	.word comp_86C9C80 + 1<<31
+	.word comp_86C9C80 + COMPRESSED_PTR_FLAG
 	.word 0x60149C0
 	.word eDecompBuffer2013A00
-	.word comp_86C9D38 + 1<<31
+	.word comp_86C9D38 + COMPRESSED_PTR_FLAG
 	.word 0x6014980
 	.word eDecompBuffer2013A00
 	.word byte_86C9D6C
 	.word byte_30016D0
 	.word 0x20
-	.word comp_86C9148 + 1<<31
+	.word comp_86C9148 + COMPRESSED_PTR_FLAG
 	.word 0x6003C00
 	.word eDecompBuffer2013A00
-	.word comp_86C9240 + 1<<31
+	.word comp_86C9240 + COMPRESSED_PTR_FLAG
 	.word unk_3001A60
 	.word eDecompBuffer2013A00
-	.word comp_86D8C80 + 1<<31
+	.word comp_86D8C80 + COMPRESSED_PTR_FLAG
 	.word unk_201D774
 	.word eDecompBuffer2013A00
-	.word comp_86D9D10 + 1<<31
+	.word comp_86D9D10 + COMPRESSED_PTR_FLAG
 	.word unk_201F294
 	.word eDecompBuffer2013A00
 	.word byte_86A5D40
@@ -7835,10 +7838,10 @@ off_81271C8:
 	.word byte_86C1F80
 	.word 0x6011400
 	.word 0x340
-	.word comp_86C7764 + 1<<31
+	.word comp_86C7764 + COMPRESSED_PTR_FLAG
 	.word byte_2022B94
 	.word eDecompBuffer2013A00
-	.word 0x0
+	.word NULL
 	thumb_func_end sub_81270D0
 
 	thumb_local_start
@@ -9218,11 +9221,20 @@ loc_8127D28:
 off_8127D34:
 	.word byte_8127D38
 byte_8127D38:
-	.byte 0x60, 0x4, 0x6D, 0x8, 0x44, 0x5, 0x6D, 0x8, 0x44, 0x5, 0x6D
-	.byte 0x8, 0x44, 0x5, 0x6D, 0x8, 0x44, 0x5, 0x6D, 0x8, 0x44, 0x5
-	.byte 0x6D, 0x8, 0x44, 0x5, 0x6D, 0x8, 0x44, 0x5, 0x6D, 0x8, 0x44
-	.byte 0x5, 0x6D, 0x8, 0x44, 0x5, 0x6D, 0x8, 0x44, 0x5, 0x6D, 0x8
-	.byte 0x60, 0x4, 0x6D, 0x8, 0x44, 0x5, 0x6D, 0x8
+	// Compressed pointers but without compressed pointer flags
+	.word CompText86D0460
+	.word CompText86D0544
+	.word CompText86D0544
+	.word CompText86D0544
+	.word CompText86D0544
+	.word CompText86D0544
+	.word CompText86D0544
+	.word CompText86D0544
+	.word CompText86D0544
+	.word CompText86D0544
+	.word CompText86D0544
+	.word CompText86D0460
+	.word CompText86D0544
 off_8127D6C:
 	.word eTextScript201BA00
 off_8127D70:
@@ -9230,23 +9242,23 @@ off_8127D70:
 off_8127D74:
 	.word off_8127D78
 off_8127D78:
-	.word 0x886C9668
+	.word comp_86C9668 + COMPRESSED_PTR_FLAG
 	.word unk_3001A20
-	.word 0x2013A00
+	.word eDecompBuffer2013A00
 	.word dword_86C9108
 	.word palette_3001960
 	.word 0x20
-	.word 0x0
+	.word NULL
 off_8127D94:
 	.word dword_8127D98
 dword_8127D98:
-	.word 0x886C9694
-	.word 0x3001A20
-	.word 0x2013A00
+	.word comp_86C9694 + COMPRESSED_PTR_FLAG
+	.word unk_3001A20
+	.word eDecompBuffer2013A00
 	.word dword_86C9128
 	.word palette_3001960
 	.word 0x20
-	.word 0x0
+	.word NULL
 off_8127DB4:
 	.word off_8127DB8
 off_8127DB8:
@@ -9267,39 +9279,51 @@ off_8127DE8:
 off_8127DEC:
 	.word byte_8127DF0
 byte_8127DF0:
-	.byte 0x14, 0x6, 0x6D, 0x88, 0x0, 0xC7, 0x1, 0x2, 0x0, 0x3A, 0x1, 0x2
-	.byte 0x54, 0x80, 0x6C, 0x88, 0x20, 0x0, 0x0, 0x6, 0x0, 0x3A, 0x1, 0x2
-	.byte 0xA8, 0xFF, 0x6C, 0x88
+	.word CompText86D0614 + COMPRESSED_PTR_FLAG
+	.word eTextScript201C700
+	.word eDecompBuffer2013A00
+	.word comp_86C8054 + COMPRESSED_PTR_FLAG
+	.word 0x6000020
+	.word eDecompBuffer2013A00
+	.word comp_86CFFA8 + COMPRESSED_PTR_FLAG
 off_8127E0C:
 	.word unk_201C200
 	.word eDecompBuffer2013A00
-	.word 0x886D00C0
+	.word comp_86D00C0 + COMPRESSED_PTR_FLAG
 off_8127E18:
 	.word unk_2028690
 	.word eDecompBuffer2013A00
-	.byte 0x74, 0x92, 0x6C, 0x88, 0x20, 0x80, 0x0, 0x6, 0x0, 0x3A
-	.byte 0x1, 0x2, 0xDC, 0x1, 0x6D, 0x88, 0x90, 0x85, 0x2, 0x2
-	.byte 0x0, 0x3A, 0x1, 0x2, 0xD4, 0x2, 0x6D, 0x88, 0x0, 0x42
-	.byte 0x1, 0x6, 0x0, 0x3A, 0x1, 0x2, 0x64, 0x2, 0x6D, 0x88
-	.byte 0x0, 0x46, 0x1, 0x6, 0x0, 0x3A, 0x1, 0x2, 0xD4, 0x9B
-	.byte 0x6C, 0x88, 0x0, 0x48, 0x1, 0x6
+	.word comp_86C9274 + COMPRESSED_PTR_FLAG
+	.word 0x06008020
 	.word eDecompBuffer2013A00
-	.word 0x886C9D38
+	.word comp_86D01DC + COMPRESSED_PTR_FLAG
+	.word unk_2028590
+	.word eDecompBuffer2013A00
+	.word comp_86D02D4 + COMPRESSED_PTR_FLAG
+	.word 0x06014200
+	.word eDecompBuffer2013A00
+	.word comp_86D0264 + COMPRESSED_PTR_FLAG
+	.word 0x06014600
+	.word eDecompBuffer2013A00
+	.word comp_86C9BD4 + COMPRESSED_PTR_FLAG
+	.word 0x06014800
+	.word eDecompBuffer2013A00
+	.word comp_86C9D38 + COMPRESSED_PTR_FLAG
 	.word 0x6014980
 	.word eDecompBuffer2013A00
-	.word 0x886D3154
+	.word CompText86D3154 + COMPRESSED_PTR_FLAG
 	.word unk_2025700
 	.word eDecompBuffer2013A00
-	.word 0x886D0430
+	.word comp_86D0430 + COMPRESSED_PTR_FLAG
 	.word byte_3001690
 	.word eDecompBuffer2013A00
-	.word 0x886D02BC
+	.word comp_86D02BC + COMPRESSED_PTR_FLAG
 	.word byte_30016B0
 	.word eDecompBuffer2013A00
 	.word byte_86C9D6C
 	.word byte_30016D0
 	.word 0x20
-	.word 0x0
+	.word NULL
 	thumb_func_end sub_8127CB8
 
 	thumb_local_start
@@ -10590,22 +10614,26 @@ off_8128970:
 off_8128974:
 	.word byte_8128978
 byte_8128978:
-	.byte 0x54, 0x80, 0x6C, 0x88, 0x20, 0x0, 0x0, 0x6, 0x0, 0x3A, 0x1
-	.byte 0x2, 0x4C, 0xDE, 0x73, 0x88, 0xB0, 0xC1, 0x1, 0x2, 0x0, 0x3A
-	.byte 0x1, 0x2, 0xF0, 0x64, 0x6D, 0x88
+	.word comp_86C8054 + COMPRESSED_PTR_FLAG
+	.word 0x6000020
+	.word eDecompBuffer2013A00
+	.word CompText873DE4C + COMPRESSED_PTR_FLAG
+	.word unk_201C1B0
+	.word eDecompBuffer2013A00
+	.word comp_86D64F0 + COMPRESSED_PTR_FLAG
 off_8128994:
 	.word eTextScript201BA00
 	.word eDecompBuffer2013A00
-	.word 0x886C9BD4
+	.word comp_86C9BD4 + COMPRESSED_PTR_FLAG
 	.word 0x6014840
 	.word eDecompBuffer2013A00
-	.word 0x886C9D38
+	.word comp_86C9D38 + COMPRESSED_PTR_FLAG
 	.word 0x6014800
 	.word eDecompBuffer2013A00
 	.word byte_86C9D6C
 	.word byte_30016D0
 	.word 0x20
-	.word 0x0
+	.word NULL
 	thumb_func_end sub_81288FC
 
 	thumb_local_start
@@ -11302,25 +11330,26 @@ sub_8128F10:
 off_8128F34:
 	.word byte_8128F38
 byte_8128F38:
-	.byte 0x9C, 0xD5, 0x6D, 0x88, 0x20, 0x80, 0x0, 0x6
+	.word comp_86DD59C + COMPRESSED_PTR_FLAG
+	.word 0x06008020
 	.word eDecompBuffer2013A00
-	.word comp_86D6618 + 1<<31
+	.word comp_86D6618 + COMPRESSED_PTR_FLAG
 	.word 0x6000020
 	.word eDecompBuffer2013A00
 	.word dword_86D6754
-	.word 0x3001960
+	.word palette_3001960
 	.word 0x20
-	.word comp_86DDAD0 + 1<<31
-	.word 0x201BA00
-	.word 0x2013A00
+	.word comp_86DDAD0 + COMPRESSED_PTR_FLAG
+	.word eTextScript201BA00
+	.word eDecompBuffer2013A00
 	.word dword_86D6954
 	.word 0x6008C00
 	.word 0x20
-	.word comp_86DD9B4 + 1<<31
+	.word comp_86DD9B4 + COMPRESSED_PTR_FLAG
 off_8128F78:
 	.word byte_201BB60
 	.word eDecompBuffer2013A00
-	.word 0x886D66A8
+	.word comp_86D66A8 + COMPRESSED_PTR_FLAG
 off_8128F84:
 	.word byte_201BDF8
 	.word eDecompBuffer2013A00
@@ -11330,25 +11359,25 @@ off_8128F84:
 	.word byte_86C9D6C
 	.word byte_30016B0
 	.word 0x20
-	.word 0x886C9BD4
+	.word comp_86C9BD4 + COMPRESSED_PTR_FLAG
 	.word 0x6016C80
 	.word eDecompBuffer2013A00
-	.word 0x886C9D38
+	.word comp_86C9D38 + COMPRESSED_PTR_FLAG
 	.word 0x6016E00
 	.word eDecompBuffer2013A00
-	.word 0x886DDB44
+	.word comp_86DDB44 + COMPRESSED_PTR_FLAG
 	.word 0x6016E40
 	.word eDecompBuffer2013A00
-	.word 0x886DDB7C
+	.word comp_86DDB7C + COMPRESSED_PTR_FLAG
 	.word 0x6016E80
 	.word eDecompBuffer2013A00
-	.word 0x886D6974
+	.word CompText86D6974 + COMPRESSED_PTR_FLAG
 	.word unk_201C2F8
 	.word eDecompBuffer2013A00
 	.word dword_86C9B54
 	.word unk_30019A0
 	.word 0x20
-	.word 0x0
+	.word NULL
 	thumb_func_end sub_8128F10
 
 	thumb_local_start
@@ -15594,7 +15623,7 @@ off_812B024:
 	.word 0x2
 	.word byte_30016B0
 	.word 0x20
-	.word 0x886C9AA4
+	.word comp_86C9AA4 + COMPRESSED_PTR_FLAG
 	.word 0x2
 	.word unk_3001A60
 	.word eDecompBuffer2013A00
@@ -15611,115 +15640,100 @@ off_812B084:
 off_812B088:
 	.word off_812B08C
 off_812B08C:
-	.word 0x886D91FC
+	.word comp_86D91FC + COMPRESSED_PTR_FLAG
 	.word eGuiSprite2022AA0
 	.word eDecompBuffer2013A00
-	.word 0x886D93E0
+	.word comp_86D93E0 + COMPRESSED_PTR_FLAG
 	.word byte_20231A0
 	.word eDecompBuffer2013A00
-	.word 0x886DB208
+	.word comp_86DB208 + COMPRESSED_PTR_FLAG
 	.word unk_20251B0
 	.word eDecompBuffer2013A00
-	.word 0x886DB9C4
+	.word comp_86DB9C4 + COMPRESSED_PTR_FLAG
 	.word unk_20222A0
 	.word eDecompBuffer2013A00
-	.word 0x886D9104
+	.word comp_86D9104 + COMPRESSED_PTR_FLAG
 off_812B0C0:
 	.word unk_201D120
 	.word eDecompBuffer2013A00
-	.word 0x886DB014
+	.word comp_86DB014 + COMPRESSED_PTR_FLAG
 off_812B0CC:
 	.word unk_201FDA0
 	.word eDecompBuffer2013A00
-	.word 0x886DB014
+	.word comp_86DB014 + COMPRESSED_PTR_FLAG
 	.word unk_201FDA0
 	.word eDecompBuffer2013A00
-	.word 0x0
+	.word NULL
 off_812B0E4:
 	.word off_812B0E8
 off_812B0E8:
-	.word 0x886C8054
+	.word comp_86C8054 + COMPRESSED_PTR_FLAG
 	.word 0x6000020
 	.word eDecompBuffer2013A00
-	.word 0x886C9BD4
+	.word comp_86C9BD4 + COMPRESSED_PTR_FLAG
 	.word 0x6014800
 	.word eDecompBuffer2013A00
 	.word byte_86C9D6C
-	.byte 0xD0
-	.byte 0x16
-	.byte 0x0
-	.byte 0x3
-	.byte 0x20
-	.byte 0x0
-	.byte 0x0
-	.byte 0x0
+	.word byte_30016D0
+	.word 0x20
 	.word dword_86B7AE0
-	.byte 0x0
-	.byte 0x40
-	.byte 0x0
-	.byte 0x6
-	.byte 0x0
-	.byte 0x28
-	.byte 0x0
-	.byte 0x0
-	.byte 0xC0
-	.byte 0x96
-	.byte 0x6C
-	.byte 0x88
-	.byte 0x0
-	.byte 0x68
-	.byte 0x0
-	.byte 0x6
-	.byte 0x0
-	.byte 0x3A
-	.byte 0x1
-	.byte 0x2
-	.byte 0xC
-	.byte 0x98
-	.byte 0x6C
-	.byte 0x88
-	.byte 0x80
-	.byte 0x6B
-	.byte 0x0
-	.byte 0x6
-	.byte 0x0
-	.byte 0x3A
-	.byte 0x1
-	.byte 0x2
-	.byte 0xD4
-	.byte 0x9B
-	.byte 0x6C
-	.byte 0x88
-	.byte 0x0
-	.byte 0x48
-	.byte 0x1
-	.byte 0x6
+	.word 0x06004000
+	.word 0x2800
+	.word comp_86C96C0 + COMPRESSED_PTR_FLAG
+	.word 0x6006800
 	.word eDecompBuffer2013A00
-	.byte 0x38, 0x9D, 0x6C, 0x88, 0x80, 0x49, 0x1, 0x6, 0x0, 0x3A
-	.byte 0x1, 0x2, 0x74, 0x92, 0x6C, 0x88, 0x20, 0x80, 0x0, 0x6
-	.byte 0x0, 0x3A, 0x1, 0x2, 0x68, 0x96, 0x6C, 0x88, 0x20, 0x1A
-	.byte 0x0, 0x3, 0x0, 0x3A, 0x1, 0x2, 0x0, 0x0, 0x0, 0x0
+	.word comp_86C980C + COMPRESSED_PTR_FLAG
+	.word 0x6006B80
+	.word eDecompBuffer2013A00
+	.word comp_86C9BD4 + COMPRESSED_PTR_FLAG
+	.word 0x6014800
+	.word eDecompBuffer2013A00
+	.word comp_86C9D38 + COMPRESSED_PTR_FLAG
+	.word 0x6014980
+	.word eDecompBuffer2013A00
+	.word comp_86C9274 + COMPRESSED_PTR_FLAG
+	.word 0x6008020
+	.word eDecompBuffer2013A00
+	.word comp_86C9668 + COMPRESSED_PTR_FLAG
+	.word unk_3001A20
+	.word eDecompBuffer2013A00
+	.word NULL
 off_812B164:
 	.word byte_812B168
 byte_812B168:
-	.byte 0xD0, 0xE7, 0x6C, 0x88, 0x20, 0xD6, 0x1, 0x2, 0x0, 0x3A
-	.byte 0x1, 0x2, 0xAC, 0xE8, 0x6C, 0x88, 0x20, 0xDB, 0x1, 0x2
-	.byte 0x0, 0x3A, 0x1, 0x2, 0x18, 0xC4, 0x6D, 0x88, 0x20, 0xE4
-	.byte 0x1, 0x2, 0x0, 0x3A, 0x1, 0x2, 0xE8, 0xE9, 0x6C, 0x88
-	.byte 0xA0, 0x27, 0x2, 0x2, 0x0, 0x3A, 0x1, 0x2, 0x0, 0x0
-	.byte 0x0, 0x0
+	.word comp_86CE7D0 + COMPRESSED_PTR_FLAG
+	.word unk_201D620
+	.word eDecompBuffer2013A00
+	.word comp_86CE8AC + COMPRESSED_PTR_FLAG
+	.word unk_201DB20
+	.word eDecompBuffer2013A00
+	.word comp_86DC418 + COMPRESSED_PTR_FLAG
+	.word dword_201E420
+	.word eDecompBuffer2013A00
+	.word comp_86CE9E8 + COMPRESSED_PTR_FLAG
+	.word unk_20227A0
+	.word eDecompBuffer2013A00
+	.word NULL
 off_812B19C:
 	.word byte_812B1A0
 byte_812B1A0:
-	.byte 0x9C, 0xCA, 0x6D, 0x88, 0x20, 0xE9, 0x1, 0x2, 0x0, 0x3A
-	.byte 0x1, 0x2, 0xC8, 0xCB, 0x6D, 0x88, 0x20, 0xEE, 0x1, 0x2
-	.byte 0x0, 0x3A, 0x1, 0x2, 0x0, 0x0, 0x0, 0x0
+	.word comp_86DCA9C + COMPRESSED_PTR_FLAG
+	.word unk_201E920
+	.word eDecompBuffer2013A00
+	.word comp_86DCBC8 + COMPRESSED_PTR_FLAG
+	.word unk_201EE20
+	.word eDecompBuffer2013A00
+	.word NULL
 off_812B1BC:
 	.word byte_812B1C0
 byte_812B1C0:
-	.byte 0xAC, 0xD0, 0x6D, 0x88, 0x20, 0xF3, 0x1, 0x2, 0x0, 0x3A
-	.byte 0x1, 0x2, 0xCC, 0xD1, 0x6D, 0x88, 0x20, 0xF8, 0x1, 0x2
-	.byte 0x0, 0x3A, 0x1, 0x2, 0x0, 0x0, 0x0, 0x0
+	.word comp_86DD0AC + COMPRESSED_PTR_FLAG
+	.word unk_201F320
+	.word eDecompBuffer2013A00
+	.word comp_86DD1CC + COMPRESSED_PTR_FLAG
+	.word unk_201F820
+	.word eDecompBuffer2013A00
+	.word NULL
 	thumb_func_end sub_812AFC8
 
 	thumb_local_start

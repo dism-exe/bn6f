@@ -1991,22 +1991,28 @@ off_812EA60::
 	.word byte_86C9D6C
 	.word byte_30016D0
 	.word 0x20
-	.word 0x886DC688
+
+	.word comp_86DC688 + COMPRESSED_PTR_FLAG
 	.word eGuiSprite2022FA0
 	.word eDecompBuffer2013A00
-	.word 0x886DC518
+
+	.word comp_86DC518 + COMPRESSED_PTR_FLAG
 	.word eGuiSprite2022AA0
 	.word eDecompBuffer2013A00
-	.word 0x886DCCF0
+
+	.word comp_86DCCF0 + COMPRESSED_PTR_FLAG
 	.word unk_2024290
 	.word eDecompBuffer2013A00
-	.word 0x886D497C
+
+	.word comp_86D497C + COMPRESSED_PTR_FLAG
 	.word unk_2025AE8
 	.word eDecompBuffer2013A00
-	.word 0x8873ECC8
+
+	.word CompText873ECC8 + COMPRESSED_PTR_FLAG
 	.word unk_2025070
 	.word eDecompBuffer2013A00
-	.word 0x0
+
+	.word NULL
 	thumb_func_end sub_812EA44
 
 /*For debugging purposes, connect comment at any range!*/

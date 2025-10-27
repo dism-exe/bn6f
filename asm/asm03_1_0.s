@@ -1369,16 +1369,20 @@ initRefs_8034338:
 	.word compFile_86C23A0 + 1<<31
 	.word 0x6000020
 	.word eDecompBuffer2013A00
+
 	.word comp_86C2E2C + 1<<31
-	.word 0x0
+	.word NULL
 	.word byte_2017A00
+
 	.word comp_86C33B4 + 1<<31
-	.word 0x0
+	.word NULL
 	.word eTextScript201BA00
+
 	.word byte_86C22C0
-	.word 0x3001960
+	.word palette_3001960
 	.word 0x20
-	.word 0x0
+
+	.word NULL
 a1:
 	.word byte_8034370
 byte_8034370:

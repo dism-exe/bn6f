@@ -132,7 +132,7 @@ initGfx_80386CC:
 off_80386E0:
 	.word initRefs_80386E4
 initRefs_80386E4:
-	.word 0x0
+	.word NULL
 byte_80386E8:
 	.byte 0x6, 0x0, 0x0, 0x0, 0x6, 0x1, 0x0, 0x0, 0x6, 0x2, 0x0, 0x0, 0x6, 0x3, 0x0, 0x0, 0x6
 	.byte 0x4, 0x0, 0x0, 0xFF, 0xFF, 0xFF, 0xFF
@@ -846,16 +846,20 @@ initRefs_8038F40:
 	.word dword_86BEAE0
 	.word unk_30019E0
 	.word 0x20
-	.word comp_87E4500 + 1<<31
+
+	.word comp_87E4500 + COMPRESSED_PTR_FLAG
 	.word 0x6004000
 	.word eDecompBuffer2013A00
+
 	.word dword_87E4FE0
 	.word unk_30019A0
 	.word 0x40
-	.word comp_87E5020 + 1<<31
+
+	.word comp_87E5020 + COMPRESSED_PTR_FLAG
 	.word unk_2018A00
 	.word eDecompBuffer2013A00
-	.word 0x0
+
+	.word NULL
 	thumb_func_end decomp_initGfx_8038F30
 
 	thumb_local_start
@@ -4906,46 +4910,59 @@ copyData_803B216:
 off_803B240:
 	.word initRefs_803B244
 initRefs_803B244:
-	.word comp_87E4500 + 1<<31
+	.word comp_87E4500 + COMPRESSED_PTR_FLAG
 	.word 0x6004000
 	.word DecompBuf_2027A00
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
 	.word 0x6000020
 	.word DecompBuf_2027A00
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
-	.word 0x0
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2028200
-	.word comp_87E5020 + 1<<31
-	.word 0x0
+
+	.word comp_87E5020 + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2028A00
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
-	.word 0x0
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2029200
+
 	.word dword_87E4FE0
 	.word unk_30019A0
 	.word 0x40
+
 	.word spriteWhiteDot
 	.word palette_3001960
 	.word 0x40
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
 	.word 0x6011000
 	.word DecompBuf_2027A00
+
 	.word byte_86A4D40
 	.word 0x6010020
 	.word 0x240
+
 	.word dword_86A4A40
 	.word 0x6010300
 	.word 0x100
+
 	.word dword_86A5500
 	.word byte_3001550
 	.word 0x20
+
 	.word byte_87E5000
 	.word byte_30016D0
 	.word 0x20
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
-	.word 0x0
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2032A00
-	.word 0x0
+
+	.word NULL
 	thumb_func_end copyData_803B216
 
 	thumb_local_start
@@ -4968,52 +4985,67 @@ copyData_803B2E4:
 off_803B30C:
 	.word initRefs_803B310
 initRefs_803B310:
-	.word comp_87E57BC + 1<<31
+	.word comp_87E57BC + COMPRESSED_PTR_FLAG
 	.word 0x6004000
 	.word DecompBuf_2027A00
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
 	.word 0x6000020
 	.word DecompBuf_2027A00
-	.word comp_87E6840 + 1<<31
-	.word 0x0
+
+	.word comp_87E6840 + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2028200
-	.word comp_87E674C + 1<<31
-	.word 0x0
+
+	.word comp_87E674C + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2028A00
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
-	.word 0x0
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2029200
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
-	.word 0x0
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2029A00
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
-	.word 0x0
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2029E00
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
-	.word 0x0
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_202A200
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
-	.word 0x0
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_202A600
+
 	.word dword_87E660C
 	.word unk_30019C0
 	.word 0x140
+
 	.word spriteWhiteDot
-	.word 0x3001980
+	.word palette_3001980
 	.word 0x40
+
 	.word byte_86A5180
 	.word 0x6010020
 	.word 0x180
-	.word comp_87E6924 + 1<<31
+
+	.word comp_87E6924 + COMPRESSED_PTR_FLAG
 	.word 0x6010280
 	.word DecompBuf_2027A00
+
 	.word dword_86A5500
-	.word 0x3001550
+	.word byte_3001550
 	.word 0x20
+
 	.word dword_87E660C
 	.word byte_30015D0
 	.word 0x120
-	.word 0x0
+
+	.word NULL
 	thumb_func_end copyData_803B2E4
 
 	thumb_local_start
@@ -5046,28 +5078,35 @@ copyData_803B3C8:
 off_803B400:
 	.word initRefs_803B404
 initRefs_803B404:
-	.word comp_87E50D4 + 1<<31
+	.word comp_87E50D4 + COMPRESSED_PTR_FLAG
 	.word 0x6004000
 	.word DecompBuf_2027A00
-	.word comp_87E5550 + 1<<31
-	.word 0x0
+
+	.word comp_87E5550 + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2028200
-	.word comp_87E56A0 + 1<<31
+
+	.word comp_87E56A0 + COMPRESSED_PTR_FLAG
 	.word 0x600D600
 	.word DecompBuf_2027A00
+
 	.word dword_87E54B0
 	.word palette_3001980
 	.word 0xA0
+
 	.word byte_86A4D40
 	.word 0x6010020
 	.word 0x240
+
 	.word dword_86A4A40
 	.word 0x6010300
 	.word 0x100
+
 	.word dword_86A5500
 	.word byte_3001550
 	.word 0x20
-	.word 0x0
+
+	.word NULL
 	thumb_func_end copyData_803B3C8
 
 	thumb_local_start
@@ -5092,40 +5131,51 @@ copyData_803B45C:
 off_803B48C:
 	.word initRefs_803B490
 initRefs_803B490:
-	.word comp_87E57BC + 1<<31
+	.word comp_87E57BC + COMPRESSED_PTR_FLAG
 	.word 0x6004000
 	.word DecompBuf_2027A00
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
 	.word 0x600C000
 	.word DecompBuf_2027A00
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
-	.word 0x0
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2028A00
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
-	.word 0x0
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2029200
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
-	.word 0x0
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2029A00
-	.word compSpriteWhiteDot_84E0C4C + 1<<31
-	.word 0x0
+
+	.word compSpriteWhiteDot_84E0C4C + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2029E00
+
 	.word dword_87E660C
 	.word unk_30019C0
 	.word 0x140
+
 	.word spriteWhiteDot
 	.word unk_3001A40
 	.word 0x40
+
 	.word byte_86A4D40
 	.word 0x6010020
 	.word 0x240
+
 	.word dword_86A4A40
 	.word 0x6010300
 	.word 0x100
+
 	.word dword_86A5500
 	.word byte_3001550
 	.word 0x20
-	.word 0x0
+
+	.word NULL
 	thumb_func_end copyData_803B45C
 
 	thumb_local_start
@@ -8029,13 +8079,18 @@ initRefs803CC88:
   .word comp_87E6980 + COMPRESSED_PTR_FLAG
   .word 0x06000020
 	.word eDecompBuffer2013A00
+
 	.word comp_87E6BFC + COMPRESSED_PTR_FLAG
-	.word 0x0
+	.word NULL
 off_803CC9C:
 	.word byte_2017A00
+
 	.word byte_87E6BDC
 	.word palette_3001960
-	.byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+  .word 0x20
+
+  .word NULL
+
 	thumb_func_end copyData_803CC60
 
 	thumb_local_start
@@ -9016,7 +9071,7 @@ initRefs803D2F0:
   .word 0x06000020
 	.word eDecompBuffer2014A00
   // 0x01
-	.word CompCapcomLogoTilemap_86C3E94 + 1<<31
+	.word CompCapcomLogoTilemap_86C3E94 + COMPRESSED_PTR_FLAG
 	.word NULL
 off_803D304: 
   // also part of initRefs803D2F0
@@ -13942,18 +13997,23 @@ copyTileData_803FC64:
 off_803FCA0:
 	.word initRefs803FCA4
 initRefs803FCA4:
-	.byte 0xD0, 0x41, 0x6C, 0x88, 0x0, 0x0, 0x0, 0x6
+  .word comp_86C41D0 + COMPRESSED_PTR_FLAG
+  .word 0x06000000
 	.word eDecompBuffer2013A00
+
 	.word dword_86C4660
 	.word palette_3001960
 	.word 0x20
-	.word comp_86C4490 + 1<<31
+
+	.word comp_86C4490 + COMPRESSED_PTR_FLAG
 	.word 0x0
 	.word byte_2017A00
-	.word comp_86C45A8 + 1<<31
-	.word 0x0
+
+	.word comp_86C45A8 + COMPRESSED_PTR_FLAG
+	.word NULL
 	.word unk_2018A00
-	.word 0x0
+
+	.word NULL
 off_803FCD8:
 	.word eTileIds2017A04
 off_803FCDC:

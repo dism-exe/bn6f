@@ -1007,9 +1007,15 @@ sub_809A2DC:
 off_809A2E8:
 	.word byte_809A2EC
 byte_809A2EC:
-	.byte 0x30, 0x55, 0x6C, 0x8, 0x20, 0x1B, 0x0, 0x3, 0x20, 0x0, 0x0
-	.byte 0x0, 0xB4, 0x52, 0x6C, 0x8, 0x0, 0xD0, 0x0, 0x6, 0x20, 0x2
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+  .word byte_86C5530
+  .word unk_3001B20
+  .word 0x20
+
+  .word byte_86C52B4
+  .word 0x600D000
+  .word 0x220
+
+  .word NULL
 	thumb_func_end sub_809A2DC
 
 	thumb_local_start
@@ -1023,13 +1029,15 @@ sub_809A308:
 off_809A314:
 	.word initRefs_809A318
 initRefs_809A318:
-	.word comp_86C7980 + 1<<31
+	.word comp_86C7980 + COMPRESSED_PTR_FLAG
 	.word unk_2034E00
 	.word unk_2033700
-	.word comp_86C73D8 + 1<<31
+
+	.word comp_86C73D8 + COMPRESSED_PTR_FLAG
 	.word unk_2036500
 	.word unk_2033700
-	.word 0x0
+
+	.word NULL
 	thumb_func_end sub_809A308
 
 	thumb_local_start
@@ -1046,10 +1054,12 @@ initRefs_809A344:
 	.word dword_86C57EC
 	.word unk_3001B20
 	.word 0x20
+
 	.word byte_86C5550
 	.word 0x600D000
 	.word 0x220
-	.word 0x0
+
+	.word NULL
 	thumb_func_end sub_809A334
 
 	thumb_local_start
@@ -1797,9 +1807,15 @@ loc_809A90A:
 off_809A930:
 	.word byte_809A934
 byte_809A934:
-	.byte 0x80, 0x79, 0x6C, 0x88, 0x0, 0x4E, 0x3, 0x2, 0x0, 0x37, 0x3
-	.byte 0x2, 0xD8, 0x73, 0x6C, 0x88, 0x0, 0x65, 0x3, 0x2, 0x0, 0x37
-	.byte 0x3, 0x2, 0x0, 0x0, 0x0, 0x0
+  .word comp_86C7980 + COMPRESSED_PTR_FLAG
+  .word unk_2034E00
+  .word unk_2033700
+
+  .word comp_86C73D8 + COMPRESSED_PTR_FLAG
+  .word unk_2036500
+  .word unk_2033700
+
+  .word NULL
 	thumb_func_end sub_809A8E4
 
 	thumb_local_start
@@ -2120,13 +2136,15 @@ loc_809AC24:
 off_809AC28:
 	.word dword_809AC2C
 dword_809AC2C:
-	.word 0x886C7980
+  .word comp_86C7980 + COMPRESSED_PTR_FLAG
 	.word unk_2034E00
 	.word unk_2033700
-	.word comp_86C73D8 + 1<<31
+
+	.word comp_86C73D8 + COMPRESSED_PTR_FLAG
 	.word unk_2036500
 	.word unk_2033700
-	.word 0x0
+
+	.word NULL
 	thumb_func_end sub_809AB20
 
 	thumb_local_start

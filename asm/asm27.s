@@ -11,19 +11,19 @@ sub_80946C4:
 off_80946D0:
 	.word initRefs_80946D4
 initRefs_80946D4:
-	.word comp_857CCC8 + 1<<31
+	.word comp_857CCC8 + COMPRESSED_PTR_FLAG
 	.word 0x600C000
 	.word unk_2024400
-	.word comp_857D43C + 1<<31
+	.word comp_857D43C + COMPRESSED_PTR_FLAG
 	.word 0x0
 	.word unk_2025400
-	.word comp_857D63C + 1<<31
+	.word comp_857D63C + COMPRESSED_PTR_FLAG
 	.word 0x0
 	.word unk_2026400
 	.word byte_857CC88
 	.word byte_3001B00
 	.word 0x40
-	.word 0x0
+	.word NULL
 	thumb_func_end sub_80946C4
 
 	thumb_local_start

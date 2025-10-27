@@ -32514,15 +32514,21 @@ off_811ECB0:
 	.word off_811ECB4
 off_811ECB4:
 	.word byte_86C9DCC
-	.byte 0x0, 0xD0, 0x0, 0x6, 0x40, 0x3, 0x0, 0x0
+	.word 0x600D000
+	.word 0x340
 	.word dword_86CA10C
-	.byte 0x40, 0xD3, 0x0, 0x6, 0x40, 0xB, 0x0, 0x0
+	.word 0x600D340
+	.word 0xB40
 	.word dword_86C9AF4
-	.byte 0x10, 0x17, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0
+	.word byte_3001710
+	.word 0x20
 	.word dword_86CD924
-	.byte 0x80, 0x6E, 0x1, 0x6, 0x80, 0x1, 0x0, 0x0
+	.word 0x6016E80
+	.word 0x180
 	.word dword_86CD7C4
-	.byte 0x0, 0x70, 0x1, 0x6, 0x60, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x6017000
+	.word 0x160
+	.word NULL
 off_811ECF4:
 	.word unk_20096E0
 off_811ECF8:
@@ -32855,7 +32861,7 @@ off_811EF9C:
 	.word sprite_86CC13C
 	.word 0x60155C0
 	.word 0x12D4
-	.word 0x0
+	.word NULL
 	thumb_func_end sub_811EF8C
 
 	thumb_local_start
@@ -34408,7 +34414,7 @@ off_811FC1C:
 off_811FC20:
 	.word dword_86C9108
 	.word dword_86C9B54
-	.word 0x886C9AA4
+	.word comp_86C9AA4 + COMPRESSED_PTR_FLAG
 	.word byte_872CF94
 	.word dword_86C9AF4
 	.word dword_86C9B14
@@ -34429,7 +34435,7 @@ off_811FC64:
 off_811FC68:
 	.word dword_86C9B54
 off_811FC6C:
-	.word 0x886C9AA4
+	.word comp_86C9AA4 + COMPRESSED_PTR_FLAG
 off_811FC70:
 	.word byte_872CF94
 off_811FC74:
@@ -34441,12 +34447,12 @@ off_811FC7C:
 off_811FC80:
 	.word dword_86C9B94
 off_811FC84:
-	.word 0x886D3CF4
+	.word comp_86D3CF4 + COMPRESSED_PTR_FLAG
 	.word 0xFFFFFFFF
 off_811FC8C:
 	.word off_811FC90
 off_811FC90:
-	.word 0x886D3CF4
+	.word comp_86D3CF4 + COMPRESSED_PTR_FLAG
 off_811FC94:
 	.word byte_86DAC40
 	.word 0xFFFFFFFF
