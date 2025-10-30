@@ -10336,7 +10336,7 @@ locret_804C6FC:
 	.balign 4, 0x00
 	thumb_func_end sub_804C6C4
 
-	thumb_local_start
+	thumb_func_start sub_804C700
 sub_804C700:
 	push {r4-r7,lr}
 	ldr r0, off_804C710 // =off_804C714 
@@ -10353,7 +10353,7 @@ off_804C714:
 	.word sub_804C770+1
 	thumb_func_end sub_804C700
 
-	thumb_local_start
+	thumb_func_start sub_804C71C
 sub_804C71C:
 	push {r4-r7,lr}
 	mov r4, r10

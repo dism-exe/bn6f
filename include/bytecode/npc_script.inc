@@ -25,34 +25,34 @@
 	.byte ns_free_and_end_cmd
 	.endm
 
-	// 0x04 hword1 destination3
+	// 0x04 event16_1 destination3
 	enum ns_jump_if_flag_set_cmd // 0x04
-	.macro ns_jump_if_flag_set hword1:req destination3:req
+	.macro ns_jump_if_flag_set event16_1:req destination3:req
 	.byte ns_jump_if_flag_set_cmd
-	.hword \hword1
+	.hword \event16_1
 	.word \destination3
 	.endm
 
-	// 0x05 hword1 destination3
+	// 0x05 event16_1 destination3
 	enum ns_jump_if_flag_clear_cmd // 0x05
-	.macro ns_jump_if_flag_clear hword1:req destination3:req
+	.macro ns_jump_if_flag_clear event16_1:req destination3:req
 	.byte ns_jump_if_flag_clear_cmd
-	.hword \hword1
+	.hword \event16_1
 	.word \destination3
 	.endm
 
-	// 0x06 hword1
+	// 0x06 event16_1
 	enum ns_set_event_flag_cmd // 0x06
-	.macro ns_set_event_flag hword1:req
+	.macro ns_set_event_flag event16_1:req
 	.byte ns_set_event_flag_cmd
-	.hword \hword1
+	.hword \event16_1
 	.endm
 
-	// 0x07 hword1
+	// 0x07 event16_1
 	enum ns_clear_event_flag_cmd // 0x07
-	.macro ns_clear_event_flag hword1:req
+	.macro ns_clear_event_flag event16_1:req
 	.byte ns_clear_event_flag_cmd
-	.hword \hword1
+	.hword \event16_1
 	.endm
 
 	// 0x08 
@@ -338,11 +338,11 @@
 	.byte \byte1
 	.endm
 
-	// 0x32 word1
+	// 0x32 ptr1
 	enum ns_run_secondary_script_cmd // 0x32
-	.macro ns_run_secondary_script word1:req
+	.macro ns_run_secondary_script ptr1:req
 	.byte ns_run_secondary_script_cmd
-	.word \word1
+	.word \ptr1
 	.endm
 
 	// 0x33 byte1
@@ -358,11 +358,11 @@
 	.byte ns_end_secondary_script_cmd
 	.endm
 
-	// 0x35 word1
+	// 0x35 ptr1
 	enum ns_init_native_callback_cmd // 0x35
-	.macro ns_init_native_callback word1:req
+	.macro ns_init_native_callback ptr1:req
 	.byte ns_init_native_callback_cmd
-	.word \word1
+	.word \ptr1
 	.endm
 
 	// 0x36 destination1
@@ -468,12 +468,12 @@
 	// 0x43
 	enum ns_unused_cmd_43 // 0x43
 
-	// 0x44 byte1 word2
+	// 0x44 byte1 ptr2
 	enum ns_set_text_script_index_and_ptr_cmd // 0x44
-	.macro ns_set_text_script_index_and_ptr byte1:req word2:req
+	.macro ns_set_text_script_index_and_ptr byte1:req ptr2:req
 	.byte ns_set_text_script_index_and_ptr_cmd
 	.byte \byte1
-	.word \word2
+	.word \ptr2
 	.endm
 
 	// 0x45 hword1

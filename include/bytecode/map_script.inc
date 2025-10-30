@@ -34,57 +34,57 @@
 
 // shared command
 	enum ms_jump_if_flag_set_cmd // 0x03
-// 0x03/0x17 byte1 hword2 destination4
+// 0x03/0x17 byte1 event16_2 destination4
 // jump if event flag in mem or immediate is set
 // byte1 - memory param
-// hword2 - flag to test
+// event16_2 - flag to test
 // destination4 - script to jump to
-	.macro ms_jump_if_flag_set byte1:req, hword2:req, destination4:req
+	.macro ms_jump_if_flag_set byte1:req, event16_2:req, destination4:req
 	.byte ms_jump_if_flag_set_cmd
 	.byte \byte1
-	.hword \hword2
+	.hword \event16_2
 	.word \destination4
 	.endm
 
 // shared command
 	enum ms_jump_if_flag_range_set_cmd // 0x04
-// 0x04/0x18 byte1 hword2 destination4
+// 0x04/0x18 byte1 event16_2 destination4
 // jump if (all) event flags in the event flag range are set
 // byte1 - number of flags to test
-// hword2 - starting flag to test
+// event16_2 - starting flag to test
 // destination4 - script to jump to
-	.macro ms_jump_if_flag_range_set byte1:req, hword2:req, destination4:req
+	.macro ms_jump_if_flag_range_set byte1:req, event16_2:req, destination4:req
 	.byte ms_jump_if_flag_range_set_cmd
 	.byte \byte1
-	.hword \hword2
+	.hword \event16_2
 	.word \destination4
 	.endm
 
 // shared command
 	enum ms_jump_if_flag_clear_cmd // 0x05
-// 0x05/0x19 byte1 hword2 destination4
+// 0x05/0x19 byte1 event16_2 destination4
 // jump if event flag in mem or immediate is clear
 // byte1 - memory param
-// hword2 - flag to test
+// event16_2 - flag to test
 // destination4 - script to jump to
-	.macro ms_jump_if_flag_clear byte1:req, hword2:req, destination4:req
+	.macro ms_jump_if_flag_clear byte1:req, event16_2:req, destination4:req
 	.byte ms_jump_if_flag_clear_cmd
 	.byte \byte1
-	.hword \hword2
+	.hword \event16_2
 	.word \destination4
 	.endm
 
 // shared command
 	enum ms_jump_if_flag_range_clear_cmd // 0x06
-// 0x06/0x1a byte1 hword2 destination4
+// 0x06/0x1a byte1 event16_2 destination4
 // jump if not all event flags in the event flag range are set
 // byte1 - number of flags to test
-// hword2 - starting flag to test
+// event16_2 - starting flag to test
 // destination4 - script to jump to
 	.macro ms_jump_if_flag_range_clear
 	.byte ms_jump_if_flag_range_clear_cmd
 	.byte \byte1
-	.hword \hword2
+	.hword \event16_2
 	.word \destination4
 	.endm
 
@@ -121,22 +121,22 @@
 	.endm
 
 	subenum ms_jump_if_word_equals_subcmd // 0x2
-// 0x07/0x1b 0x02 word2 destination6 word10
-// jump if [word2] == word10
-// word2 - pointer to read from
+// 0x07/0x1b 0x02 ptr2 destination6 word10
+// jump if [ptr2] == word10
+// ptr2 - pointer to read from
 // destination6 - script to jump to
-// word10 - value to compare [word2] with
-	.macro ms_jump_if_word_equals_subcmd word2:req destination6:req word10:req
+// word10 - value to compare [ptr2] with
+	.macro ms_jump_if_word_equals_subcmd ptr2:req destination6:req word10:req
 	.byte ms_jump_if_mem_equals_cmd
 	.byte ms_jump_if_word_equals_subcmd
-	.word \word2
+	.word \ptr2
 	.word \destination6
 	.word \word10
 	.endm
 
 // shared command
 	enum ms_jump_if_key_item_in_range_cmd // 0x08
-// 0x08/0x1d byte1 byte2 byte3 destination
+// 0x08/0x1d byte1 byte2 byte3 destination4
 // jump if the specified key item is in the given range
 // i.e. byte2 <= CheckKeyItem(byte1) <= byte3
 // byte1 - key item to check
@@ -436,132 +436,132 @@
 
 // shared command
 	enum ms_set_event_flag_cmd // 0x1f
-// 0x1f/0x29 byte1 hword2
+// 0x1f/0x29 byte1 event16_2
 // set event flag
 // byte1 - memory param
-// hword2 or mem - event flag to set
-	.macro ms_set_event_flag byte1:req hword2:req
+// event16_2 or mem - event flag to set
+	.macro ms_set_event_flag byte1:req event16_2:req
 	.byte ms_set_event_flag_cmd
 	.byte \byte1
-	.hword \hword2
+	.hword \event16_2
 	.endm
 
 // shared command
 	enum ms_clear_event_flag_cmd // 0x20
-// 0x20/0x2a byte1 hword2
+// 0x20/0x2a byte1 event16_2
 // clear event flag
 // byte1 - memory param
-// hword2 or mem - event flag to clear
-	.macro ms_clear_event_flag byte1:req hword2:req
+// event16_2 or mem - event flag to clear
+	.macro ms_clear_event_flag byte1:req event16_2:req
 	.byte ms_clear_event_flag_cmd
 	.byte \byte1
-	.hword \hword2
+	.hword \event16_2
 	.endm
 
 // shared command
 	enum ms_set_event_flag_range_cmd // 0x21
-// 0x21/0x2b byte1 hword2
-// set byte1 event flags starting at the event flag hword2
-// event flags set are in the range [hword2, hword2+byte1) (interval notation)
+// 0x21/0x2b byte1 event16_2
+// set byte1 event flags starting at the event flag event16_2
+// event flags set are in the range [event16_2, event16_2+byte1) (interval notation)
 // byte1 - number of event flags to set
-// hword2 - starting event flag
-	.macro ms_set_event_flag_range byte1:req hword2:req
+// event16_2 - starting event flag
+	.macro ms_set_event_flag_range byte1:req event16_2:req
 	.byte ms_set_event_flag_range_cmd
 	.byte \byte1
-	.hword \hword2
+	.hword \event16_2
 	.endm
 
 // shared command
 	enum ms_clear_event_flag_range_cmd // 0x22
-// 0x22/0x2c byte1 hword2
-// clear byte1 event flags starting at the event flag hword2
-// event flags cleared are in the range [hword2, hword2+byte1) (interval notation)
+// 0x22/0x2c byte1 event16_2
+// clear byte1 event flags starting at the event flag event16_2
+// event flags cleared are in the range [event16_2, event16_2+byte1) (interval notation)
 // byte1 - number of event flags to clear
-// hword2 - starting event flag
-	.macro ms_clear_event_flag_range byte1:req hword2:req
+// event16_2 - starting event flag
+	.macro ms_clear_event_flag_range byte1:req event16_2:req
 	.byte ms_clear_event_flag_range_cmd
 	.byte \byte1
-	.hword \hword2
+	.hword \event16_2
 	.endm
 
 // shared command
 	enum ms_set_event_flag_list_cmd // 0x23
-// 0x23/0x2d word1
-// set the list of event flags at word1, terminated by (presumably) -1
-// word1 - list of event flags to set, terminated by a negative number (presumably -1)
-	.macro ms_set_event_flag_list word1:req
+// 0x23/0x2d ptr1
+// set the list of event flags at ptr1, terminated by (presumably) -1
+// ptr1 - list of event flags to set, terminated by a negative number (presumably -1)
+	.macro ms_set_event_flag_list ptr1:req
 	.byte ms_set_event_flag_list_cmd
-	.word \word1
+	.word \ptr1
 	.endm
 
 // shared command
 	enum ms_clear_event_flag_list_cmd // 0x24
-// 0x24/0x2e word1
-// clear the list of event flags at word1, terminated by (presumably) -1
-// word1 - list of event flags to clear, terminated by a negative number (presumably -1)
-	.macro ms_clear_event_flag_list word1:req
+// 0x24/0x2e ptr1
+// clear the list of event flags at ptr1, terminated by (presumably) -1
+// ptr1 - list of event flags to clear, terminated by a negative number (presumably -1)
+	.macro ms_clear_event_flag_list ptr1:req
 	.byte ms_clear_event_flag_list_cmd
-	.word \word1
+	.word \ptr1
 	.endm
 
 	enum ms_call_native_function_cmd // 0x25
-// 0x25 word1 word5
-// call the native function word1 with word5 in r0
-// word1 - native function to call
-// word5 - parameter to native function
-	.macro ms_call_native_function word1:req word5:req
+// 0x25 ptr1 ptr5
+// call the native function ptr1 with ptr5 in r0
+// ptr1 - native function to call
+// ptr5 - parameter to native function
+	.macro ms_call_native_function ptr1:req ptr5:req
 	.byte ms_call_native_function_cmd
-	.word \word1
-	.word \word5
+	.word \ptr1
+	.word \ptr5
 	.endm
 
 	enum ms_start_cutscene_cmd // 0x26
-// 0x26 word1 word5
+// 0x26 ptr1 ptr5
 // start a cutscene
-// word1 - cutscene script to start
-// word5 - cutscene parameter
-	.macro ms_start_cutscene word1:req word5:req
+// ptr1 - cutscene script to start
+// ptr5 - cutscene parameter
+	.macro ms_start_cutscene ptr1:req ptr5:req
 	.byte ms_start_cutscene_cmd
-	.word \word1
-	.word \word5
+	.word \ptr1
+	.word \ptr5
 	.endm
 
 // shared command
 	enum ms_write_byte_cmd // 0x27
-// 0x27/0x2f word1 byte5
-// write byte5 to the memory at word1
-// [word1] = byte5
-// word1 - pointer to write to
+// 0x27/0x2f ptr1 byte5
+// write byte5 to the memory at ptr1
+// [ptr1] = byte5
+// ptr1 - pointer to write to
 // byte5 - value to write
-	.macro ms_write_byte word1:req byte5:req
+	.macro ms_write_byte ptr1:req byte5:req
 	.byte ms_write_byte_cmd
-	.word \word1
+	.word \ptr1
 	.byte \byte5
 	.endm
 
 // shared command
 	enum ms_write_hword_cmd // 0x28
-// 0x28/0x30 word1 hword5
-// write hword5 to the memory at word1
-// [word1] = hword5
-// word1 - pointer to write to
+// 0x28/0x30 ptr1 hword5
+// write hword5 to the memory at ptr1
+// [ptr1] = hword5
+// ptr1 - pointer to write to
 // hword5 - value to write
-	.macro ms_write_hword word1:req hword5:req
+	.macro ms_write_hword ptr1:req hword5:req
 	.byte ms_write_hword_cmd
-	.word \word1
+	.word \ptr1
 	.hword \hword5
 	.endm
 
 // shared command
 	enum ms_write_word_cmd // 0x29
-// 0x29/0x31 word1 word5
-// write word5 to the memory at word1
-// [word1] = word5
-// word1 - pointer to write to
+// 0x29/0x31 ptr1 ptr5
+// write word5 to the memory at ptr1
+// [ptr1] = ptr5
+// ptr1 - pointer to write to
 // word5 - value to write
-	.macro ms_write_word word1:req word5:req
+	.macro ms_write_word ptr1:req word5:req
 	.byte ms_write_word_cmd
-	.word \word1
+	.word \ptr1
 	.word \word5
 	.endm
 
@@ -593,25 +593,25 @@
 
 // shared command
 	enum ms_load_gfx_anim_cmd // 0x2c
-// 0x2c/0x36 word1
+// 0x2c/0x36 ptr1
 // load a gfx anim
 // e.g. the animated tiles on the background of the net
 // gfx anims can also do palette animations
 // see include/bytecode/gfx_anim_script.inc
-// word1 - gfx anim to load
-	.macro ms_load_gfx_anim word1:req
+// ptr1 - gfx anim to load
+	.macro ms_load_gfx_anim ptr1:req
 	.byte ms_load_gfx_anim_cmd
-	.word \word1
+	.word \ptr1
 	.endm
 
 // shared command
 	enum ms_load_gfx_anims_cmd // 0x2d
-// 0x2d/0x37 word1
-// do LoadGFXAnims(r0=word1)
+// 0x2d/0x37 ptr1
+// do LoadGFXAnims(r0=ptr1)
 // r0 is a list of pointers for LoadGFXAnim, terminated by negative
-	.macro ms_load_gfx_anims word1:req
+	.macro ms_load_gfx_anims ptr1:req
 	.byte ms_load_gfx_anims_cmd
-	.word \word1
+	.word \ptr1
 	.endm
 
 // shared command
@@ -735,13 +735,13 @@
 
 // shared command
 	enum ms_init_eStruct200a6a0_cmd // 0x38
-// 0x38/0x58 word1 word5 word9
-// call Initialize_eStruct200a6a0 with r0=word1, r1=word5, r2=word9
-	.macro ms_init_eStruct200a6a0 word1:req word5:req word9:req
+// 0x38/0x58 ptr1 ptr5 ptr9
+// call Initialize_eStruct200a6a0 with r0=ptr1, r1=ptr5, r2=ptr9
+	.macro ms_init_eStruct200a6a0 ptr1:req ptr5:req ptr9:req
 	.byte ms_init_eStruct200a6a0_cmd
-	.word \word1
-	.word \word5
-	.word \word9
+	.word \ptr1
+	.word \ptr5
+	.word \ptr9
 	.endm
 
 // shared command
@@ -756,13 +756,13 @@
 	subenum_start
 
 	subenum ms_run_secondary_continuous_map_script_subcmd // 0x0
-// 0x3a 0x0 word2
+// 0x3a 0x0 ptr2
 // set the secondary continuous map script pointer
 // word2 - map script pointer to set the secondary continuous map script pointer to
-	.macro ms_run_secondary_continuous_map_script word2:req
+	.macro ms_run_secondary_continuous_map_script ptr2:req
 	.byte ms_run_or_end_secondary_continuous_map_script_cmd
 	.byte ms_run_secondary_continuous_map_script_subcmd
-	.word \word2
+	.word \ptr2
 	.endm
 
 	subenum ms_end_secondary_continuous_map_script_subcmd // 0x1
@@ -815,7 +815,7 @@
 	subenum_start
 
 	subenum ms_spawn_objects_subcmd // 0x0
-// 0x40 0x0 word2
+// 0x40 0x0 ptr2
 // spawn objects from list
 // word2 - list of structs corresponding to which objects to spawn and params
 // list terminated by 0xff
@@ -826,10 +826,10 @@
 // word8 - y coordinate
 // word0xc - z coordinate
 // word0x10 - param (written to field 0x4)
-	.macro ms_spawn_objects word2:req
+	.macro ms_spawn_objects ptr2:req
 	.byte ms_spawn_or_free_objects_cmd
 	.byte ms_spawn_objects_subcmd
-	.word \word2
+	.word \ptr2
 	.endm
 
 	subenum ms_free_objects_subcmd // 0x1

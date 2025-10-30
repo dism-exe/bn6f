@@ -1204,9 +1204,9 @@ NPCCommand_free_and_end:
 	thumb_func_end NPCCommand_free_and_end
 
 	thumb_local_start
-// 0x04 hword1 destination3
+// 0x04 event16_1 destination3
 // jump if the given event flag is set
-// hword1 - event flag to test
+// event16_1 - event flag to test
 // destination3 - script to jump to
 NPCCommand_jump_if_flag_set:
 	push {lr}
@@ -1225,9 +1225,9 @@ NPCCommand_jump_if_flag_set:
 	thumb_func_end NPCCommand_jump_if_flag_set
 
 	thumb_local_start
-// 0x05 hword1 destination3
+// 0x05 event16_1 destination3
 // jump if the given event flag is clear
-// hword1 - event flag to test
+// event16_1 - event flag to test
 // destination3 - script to jump to
 NPCCommand_jump_if_flag_clear:
 	push {lr}
@@ -1246,9 +1246,9 @@ NPCCommand_jump_if_flag_clear:
 	thumb_func_end NPCCommand_jump_if_flag_clear
 
 	thumb_local_start
-// 0x06 hword1
+// 0x06 event16_1
 // set event flag
-// hword1 - event flag to set
+// event16_1 - event flag to set
 NPCCommand_set_event_flag:
 	push {lr}
 	add r0, r6, #1
@@ -1260,9 +1260,9 @@ NPCCommand_set_event_flag:
 	thumb_func_end NPCCommand_set_event_flag
 
 	thumb_local_start
-// 0x07 hword1
+// 0x07 event16_1
 // clear event flag
-// hword1 - event flag to clear
+// event16_1 - event flag to clear
 NPCCommand_clear_event_flag:
 	push {lr}
 	add r0, r6, #1
@@ -3143,7 +3143,7 @@ byte_809F6B8:
 	.byte 0x22, 0x11, 0x9E, 0xDC, 0x21, 0x10, 0xF, 0x22, 0x11
 	.byte 0x9E, 0xDC, 0x21, 0x10, 0x78, 0x2, 0xB8, 0xF6, 0x9
 	.byte 0x8, 0x0
-byte_809F6CC:
+byte_809F6CC::
 	.byte 0x10, 0x1, 0x2, 0xCC, 0xF6, 0x9, 0x8, 0x0, 0x16, 0x9, 0x39, 0x0
 	.byte 0x16, 0x1, 0x10, 0x3C, 0x16, 0xD, 0x39, 0x4, 0x16, 0x5, 0x10, 0x3C
 	.byte 0x2, 0xD4, 0xF6, 0x9, 0x8, 0x0, 0x0, 0x0

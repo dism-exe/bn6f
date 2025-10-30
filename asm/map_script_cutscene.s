@@ -126,10 +126,10 @@ MapScriptCutsceneCmd_jump_if_progress_in_range: // 8035932
 	thumb_func_end MapScriptCutsceneCmd_jump_if_progress_in_range
 
 	thumb_local_start
-// 0x03/0x17 byte1 hword2 destination4
+// 0x03/0x17 byte1 event16_2 destination4
 // jump if event flag in mem or immediate is set
 // byte1 - memory param
-// hword2 - flag to test
+// event16_2 - flag to test
 // destination4 - script to jump to
 MapScriptCutsceneCmd_jump_if_flag_set: // 8035962
 	push {lr}
@@ -159,10 +159,10 @@ MapScriptCutsceneCmd_jump_if_flag_set: // 8035962
 	thumb_func_end MapScriptCutsceneCmd_jump_if_flag_set
 
 	thumb_local_start
-// 0x04/0x18 byte1 hword2 destination4
+// 0x04/0x18 byte1 event16_2 destination4
 // jump if (all) event flags in the event flag range are set
 // byte1 - number of flags to test
-// hword2 - starting flag to test
+// event16_2 - starting flag to test
 // destination4 - script to jump to
 MapScriptCutsceneCmd_jump_if_flag_range_set: // 8035992
 	push {lr}
@@ -187,10 +187,10 @@ MapScriptCutsceneCmd_jump_if_flag_range_set: // 8035992
 	thumb_func_end MapScriptCutsceneCmd_jump_if_flag_range_set
 
 	thumb_local_start
-// 0x05/0x19 byte1 hword2 destination4
+// 0x05/0x19 byte1 event16_2 destination4
 // jump if event flag in mem or immediate is clear
 // byte1 - memory param
-// hword2 - flag to test
+// event16_2 - flag to test
 // destination4 - script to jump to
 MapScriptCutsceneCmd_jump_if_flag_clear: // 80359BE
 	push {lr}
@@ -219,10 +219,10 @@ MapScriptCutsceneCmd_jump_if_flag_clear: // 80359BE
 	thumb_func_end MapScriptCutsceneCmd_jump_if_flag_clear
 
 	thumb_local_start
-// 0x06/0x1a byte1 hword2 destination4
+// 0x06/0x1a byte1 event16_2 destination4
 // jump if not all event flags in the event flag range are set
 // byte1 - number of flags to test
-// hword2 - starting flag to test
+// event16_2 - starting flag to test
 // destination4 - script to jump to
 MapScriptCutsceneCmd_jump_if_flag_range_clear: // 80359EE
 	push {lr}
@@ -247,21 +247,21 @@ MapScriptCutsceneCmd_jump_if_flag_range_clear: // 80359EE
 	thumb_func_end MapScriptCutsceneCmd_jump_if_flag_range_clear
 
 	thumb_local_start
-// 0x07/0x1b 0x00 word2 destination6 byte10
+// 0x07/0x1b 0x00 ptr2 destination6 byte10
 // jump if [word2] == byte10
-// word2 - pointer to read from
+// ptr2 - pointer to read from
 // destination6 - script to jump to
 // byte10 - value to compare [word2] with
 
-// 0x07/0x1b 0x01 word2 destination6 hword10
+// 0x07/0x1b 0x01 ptr2 destination6 hword10
 // jump if [word2] == hword10
-// word2 - pointer to read from
+// ptr2 - pointer to read from
 // destination6 - script to jump to
 // hword10 - value to compare [word2] with
 
-// 0x07/0x1b 0x02 word2 destination6 word10
+// 0x07/0x1b 0x02 ptr2 destination6 word10
 // jump if [word2] == word10
-// word2 - pointer to read from
+// ptr2 - pointer to read from
 // destination6 - script to jump to
 // word10 - value to compare [word2] with
 MapScriptCutsceneCmd_jump_if_mem_equals: // 8035A1A
@@ -874,10 +874,10 @@ MapScriptCutsceneCmd_set_enter_map_screen_fade: // 8035D98
 	thumb_func_end MapScriptCutsceneCmd_set_enter_map_screen_fade
 
 	thumb_local_start
-// 0x1f/0x29 byte1 hword2
+// 0x1f/0x29 byte1 event16_2
 // set event flag
 // byte1 - memory param
-// hword2 or mem - event flag to set
+// event16_2 or mem - event flag to set
 MapScriptCutsceneCmd_set_event_flag: // 8035DB4
 	push {lr}
 	mov r6, #1
@@ -899,10 +899,10 @@ MapScriptCutsceneCmd_set_event_flag: // 8035DB4
 	thumb_func_end MapScriptCutsceneCmd_set_event_flag
 
 	thumb_local_start
-// 0x20/0x2a byte1 hword2
+// 0x20/0x2a byte1 event16_2
 // clear event flag
 // byte1 - memory param
-// hword2 or mem - event flag to clear
+// event16_2 or mem - event flag to clear
 MapScriptCutsceneCmd_clear_event_flag: // 8035DD6
 	push {lr}
 	mov r6, #1
@@ -923,11 +923,11 @@ MapScriptCutsceneCmd_clear_event_flag: // 8035DD6
 	thumb_func_end MapScriptCutsceneCmd_clear_event_flag
 
 	thumb_local_start
-// 0x21/0x2b byte1 hword2
-// set byte1 event flags starting at the event flag hword2
-// event flags set are in the range [hword2, hword2+byte1) (interval notation)
+// 0x21/0x2b byte1 event16_2
+// set byte1 event flags starting at the event flag event16_2
+// event flags set are in the range [event16_2, event16_2+byte1) (interval notation)
 // byte1 - number of event flags to set
-// hword2 - starting event flag
+// event16_2 - starting event flag
 MapScriptCutsceneCmd_set_event_flag_range: // 8035DF8
 	push {lr}
 	mov r6, #1
@@ -944,11 +944,11 @@ MapScriptCutsceneCmd_set_event_flag_range: // 8035DF8
 	thumb_func_end MapScriptCutsceneCmd_set_event_flag_range
 
 	thumb_local_start
-// 0x22/0x2c byte1 hword2
-// clear byte1 event flags starting at the event flag hword2
-// event flags cleared are in the range [hword2, hword2+byte1) (interval notation)
+// 0x22/0x2c byte1 event16_2
+// clear byte1 event flags starting at the event flag event16_2
+// event flags cleared are in the range [event16_2, event16_2+byte1) (interval notation)
 // byte1 - number of event flags to clear
-// hword2 - starting event flag
+// event16_2 - starting event flag
 MapScriptCutsceneCmd_clear_event_flag_range: // 8035E16
 	push {lr}
 	mov r6, #1
@@ -965,9 +965,9 @@ MapScriptCutsceneCmd_clear_event_flag_range: // 8035E16
 	thumb_func_end MapScriptCutsceneCmd_clear_event_flag_range
 
 	thumb_local_start
-// 0x23/0x2d word1
+// 0x23/0x2d ptr1
 // set the list of event flags at word1, terminated by (presumably) -1
-// word1 - list of event flags to set, terminated by a negative number (presumably -1)
+// ptr1 - list of event flags to set, terminated by a negative number (presumably -1)
 MapScriptCutsceneCmd_set_event_flag_list: // 8035E34
 	push {lr}
 	mov r6, #1
@@ -988,9 +988,9 @@ MapScriptCutsceneCmd_set_event_flag_list: // 8035E34
 	thumb_func_end MapScriptCutsceneCmd_set_event_flag_list
 
 	thumb_local_start
-// 0x24/0x2e word1
+// 0x24/0x2e ptr1
 // clear the list of event flags at word1, terminated by (presumably) -1
-// word1 - list of event flags to clear, terminated by a negative number (presumably -1)
+// ptr1 - list of event flags to clear, terminated by a negative number (presumably -1)
 MapScriptCutsceneCmd_clear_event_flag_list: // 8035E54
 	push {lr}
 	mov r6, #1
@@ -1011,9 +1011,9 @@ MapScriptCutsceneCmd_clear_event_flag_list: // 8035E54
 	thumb_func_end MapScriptCutsceneCmd_clear_event_flag_list
 
 	thumb_local_start
-// 0x25 word1 word5
+// 0x25 ptr1 word5
 // call the native function word1 with word5 in r0
-// word1 - native function to call
+// ptr1 - native function to call
 // word5 - parameter to native function
 MapScriptCmd_call_native_function: // 8035E74
 	push {lr}
@@ -1030,7 +1030,7 @@ MapScriptCmd_call_native_function: // 8035E74
 	thumb_func_end MapScriptCmd_call_native_function
 
 	thumb_local_start
-// 0x26 word1 word5
+// 0x26 ptr1 word5
 // start a cutscene
 // word1 - cutscene script to start
 // word5 - cutscene parameter
@@ -1049,10 +1049,10 @@ MapScriptCmd_start_cutscene: // 8035E8E
 	thumb_func_end MapScriptCmd_start_cutscene
 
 	thumb_local_start
-// 0x27/0x2f word1 byte5
+// 0x27/0x2f ptr1 byte5
 // write byte5 to the memory at word1
 // [word1] = byte5
-// word1 - pointer to write to
+// ptr1 - pointer to write to
 // byte5 - value to write
 MapScriptCutsceneCmd_write_byte: // 8035EAA
 	push {lr}
@@ -1068,10 +1068,10 @@ MapScriptCutsceneCmd_write_byte: // 8035EAA
 	thumb_func_end MapScriptCutsceneCmd_write_byte
 
 	thumb_local_start
-// 0x28/0x30 word1 hword5
+// 0x28/0x30 ptr1 hword5
 // write hword5 to the memory at word1
 // [word1] = hword5
-// word1 - pointer to write to
+// ptr1 - pointer to write to
 // hword5 - value to write
 MapScriptCutsceneCmd_write_hword: // 8035EC2
 	push {lr}
@@ -1087,10 +1087,10 @@ MapScriptCutsceneCmd_write_hword: // 8035EC2
 	thumb_func_end MapScriptCutsceneCmd_write_hword
 
 	thumb_local_start
-// 0x29/0x31 word1 word5
+// 0x29/0x31 ptr1 word5
 // write word5 to the memory at word1
 // [word1] = word5
-// word1 - pointer to write to
+// ptr1 - pointer to write to
 // word5 - value to write
 MapScriptCutsceneCmd_write_word: // 8035EDA
 	push {lr}
@@ -1148,12 +1148,12 @@ MapScriptCutsceneCmd_write_eStruct2001c04_byte: // 8035F0E
 	thumb_func_end MapScriptCutsceneCmd_write_eStruct2001c04_byte
 
 	thumb_local_start
-// 0x2c/0x36 word1
+// 0x2c/0x36 ptr1
 // load a gfx anim
 // e.g. the animated tiles on the background of the net
 // gfx anims can also do palette animations
 // see include/bytecode/gfx_anim_script.inc
-// word1 - gfx anim to load
+// ptr1 - gfx anim to load
 MapScriptCutsceneCmd_load_gfx_anim: // 8035F2A
 	push {lr}
 	mov r6, #1
@@ -1166,12 +1166,12 @@ MapScriptCutsceneCmd_load_gfx_anim: // 8035F2A
 	thumb_func_end MapScriptCutsceneCmd_load_gfx_anim
 
 	thumb_local_start
-// 0x2d/0x37 word1
+// 0x2d/0x37 ptr1
 // load multiple gfx anims
 // e.g. the animated tiles on the background of the net
 // gfx anims can also do palette animations
 // see include/bytecode/gfx_anim_script.inc
-// word1 - list of gfx anims to load, terminated by negative
+// ptr1 - list of gfx anims to load, terminated by negative
 MapScriptCutsceneCmd_load_gfx_anims: // 8035F3E
 	push {lr}
 	mov r6, #1
@@ -1257,9 +1257,9 @@ MapScriptCutsceneCmd_do_pet_effect: // 8035F98
 	thumb_func_end MapScriptCutsceneCmd_do_pet_effect
 
 	thumb_local_start
-// 0x3a 0x0 word2
+// 0x3a 0x0 ptr2
 // set the secondary continuous map script pointer
-// word2 - map script pointer to set the secondary continuous map script pointer to
+// ptr2 - map script pointer to set the secondary continuous map script pointer to
 
 // 0x3a 0x1
 // end execution of the secondary continuous map script pointer
@@ -1284,9 +1284,9 @@ MapScriptCmd_run_or_end_secondary_continuous_map_script: // 8035FBA
 	thumb_func_end MapScriptCmd_run_or_end_secondary_continuous_map_script
 
 	thumb_local_start
-// 0x40 0x0 word2
+// 0x40 0x0 ptr2
 // spawn objects from list
-// word2 - list of structs corresponding to which objects to spawn and params
+// ptr2 - list of structs corresponding to which objects to spawn and params
 // list terminated by 0xff
 // struct format: byte0 byte1 word4 word8 word0xc word0x10
 // byte0 - object type
@@ -1986,7 +1986,7 @@ dword_803684C:
 	.word 0xFFFFFF00
 	.word byte_804D0FC
 	.word 0xFFFFFF01
-	.word byte_804EA1C+5
+	.word byte_804EA21
 	.word 0xFFFFFF02
 	.word byte_8052F6C
 	.word 0xFFFFFF03
@@ -2035,7 +2035,7 @@ dword_80368EC:
 	.word 0xFFFFFF04
 	.word byte_805E23D
 	.word 0xFFFFFF05
-	.word byte_80606F4+4
+	.word byte_80606F8
 	.word 0xFFFFFF90
 	.word byte_8071F10
 	.word 0xFFFFFF91
@@ -3207,10 +3207,10 @@ CutsceneCameraCmd_smooth_auto_scroll_cmd_80372ec:
 	thumb_func_end CutsceneCameraCmd_smooth_auto_scroll_cmd_80372ec
 
 	thumb_local_start
-// 0x28 byte1 word2
+// 0x28 byte1 ptr2
 // run the text script given the arguments
 // byte1 - script index
-// word2 - text archive
+// ptr2 - text archive
 CutsceneCameraCmd_run_text_script:
 	push {lr}
 	push {r1}
@@ -3246,8 +3246,8 @@ CutsceneCameraCmd_wait_chatbox:
 	thumb_func_end CutsceneCameraCmd_wait_chatbox
 
 	thumb_local_start
-// 0x30 word1
-// call LoadGFXAnim with r0=word1
+// 0x30 ptr1
+// call LoadGFXAnim with r0=ptr1
 CutsceneCameraCmd_call_sub_8001B1C:
 	push {lr}
 	push {r1}
@@ -3261,8 +3261,8 @@ CutsceneCameraCmd_call_sub_8001B1C:
 	thumb_func_end CutsceneCameraCmd_call_sub_8001B1C
 
 	thumb_local_start
-// 0x34 word1
-// call TerminateGFXAnim with r0=word1
+// 0x34 ptr1
+// call TerminateGFXAnim with r0=ptr1
 CutsceneCameraCmd_call_sub_8001B6C:
 	push {lr}
 	push {r1}
@@ -3312,9 +3312,9 @@ CutsceneCameraCmd_wait_screen_fade:
 	thumb_func_end CutsceneCameraCmd_wait_screen_fade
 
 	thumb_local_start
-// 0x40 hword1
+// 0x40 event16_1
 // set event flag
-// hword1 - event flag to set
+// event16_1 - event flag to set
 CutsceneCameraCmd_set_event_flag:
 	push {lr}
 	push {r1,r5}
@@ -3329,9 +3329,9 @@ CutsceneCameraCmd_set_event_flag:
 	thumb_func_end CutsceneCameraCmd_set_event_flag
 
 	thumb_local_start
-// 0x44 hword1
+// 0x44 event16_1
 // clear event flag
-// hword1 - event flag to clear
+// event16_1 - event flag to clear
 CutsceneCameraCmd_clear_event_flag:
 	push {lr}
 	push {r1}
@@ -3381,8 +3381,8 @@ CutsceneCameraCmd_play_music:
 	thumb_func_end CutsceneCameraCmd_play_music
 
 	thumb_local_start
-// 0x50 word1
-// call camera_writeUnk03_14_80301b2 with r0=1 and r1=word1
+// 0x50 ptr1
+// call camera_writeUnk03_14_80301b2 with r0=1 and r1=ptr1
 CutsceneCameraCmd_write_camera_field_03_14:
 	push {lr}
 	push {r1}
@@ -4015,9 +4015,9 @@ CutsceneCmd_wait_if_in_pet_menu:
 	thumb_func_end CutsceneCmd_wait_if_in_pet_menu
 
 	thumb_local_start
-// 0x0d hword1
+// 0x0d event16_1
 // wait if the given event flag is clear
-// hword1 - flag to test
+// event16_1 - flag to test
 CutsceneCmd_wait_if_flag_clear:
 	push {lr}
 	mov r6, #1
@@ -4034,9 +4034,9 @@ CutsceneCmd_wait_if_flag_clear:
 	thumb_func_end CutsceneCmd_wait_if_flag_clear
 
 	thumb_local_start
-// 0x0e hword1
+// 0x0e event16_1
 // wait if the given event flag is set
-// hword1 - flag to test
+// event16_1 - flag to test
 CutsceneCmd_wait_if_flag_set:
 	push {lr}
 	mov r6, #1
@@ -4093,10 +4093,10 @@ CutsceneCmd_cutscene_end:
 	thumb_func_end CutsceneCmd_cutscene_end
 
 	thumb_local_start
-// 0x12 byte1 word2
+// 0x12 byte1 ptr2
 // spawn a new cutscene process
 // byte1 - which cutscene process to spawn (cutscene state struct offset to the cutscene script pointer, e.g. oCutsceneState_CutsceneScriptPos2)
-// word2 - cutscene script of the cutscene process
+// ptr2 - cutscene script of the cutscene process
 CutsceneCmd_spawn_cutscene_process:
 	push {lr}
 	// read cutscene script pointer
@@ -4144,9 +4144,9 @@ CutsceneCmd_kill_cutscene_process:
 	thumb_func_end CutsceneCmd_kill_cutscene_process
 
 	thumb_local_start
-// 0x14 word1
+// 0x14 ptr1
 // set the script to execute for when a cutscene is skipped
-// word1 - script to execute
+// ptr1 - script to execute
 CutsceneCmd_set_cutscene_skip_script:
 	push {lr}
 	mov r6, #1
@@ -4447,10 +4447,10 @@ CutsceneCmd_switch_case_from_chatbox_flags_bit0_to_2:
 	thumb_func_end CutsceneCmd_switch_case_from_chatbox_flags_bit0_to_2
 
 	thumb_local_start
-// 0x3e word1
+// 0x3e ptr1
 // store text archive pointer
 // the text archive may be compressed
-// word1 - text archive pointer. bit 31 indicates if it is compressed
+// ptr1 - text archive pointer. bit 31 indicates if it is compressed
 CutsceneCmd_decomp_text_archive:
 	push {lr}
 	mov r6, #1
@@ -4755,8 +4755,8 @@ CutsceneCmd_ow_player_cmd_8037cc4:
 	thumb_func_end CutsceneCmd_ow_player_cmd_8037cc4
 
 	thumb_local_start
-// 0x44 word1
-// literal interpretation: [eStruct200ace0_Unk_20] = word1
+// 0x44 ptr1
+// literal interpretation: [eStruct200ace0_Unk_20] = ptr1
 CutsceneCmd_write_S200ace0_unk_20:
 	push {lr}
 	mov r6, #1
@@ -5191,9 +5191,9 @@ off_8037FB4:
 	thumb_func_end MapScriptSubCmd_free_all_spawned_ow_map_objects
 
 	thumb_local_start
-// 0x4a 0x0 word2
+// 0x4a 0x0 ptr2
 // spawn objects from list
-// word2 - list of structs corresponding to which objects to spawn and params
+// ptr2 - list of structs corresponding to which objects to spawn and params
 // list terminated by 0xff
 // struct format: byte0 byte1 word4 word8 word0xc word0x10
 // byte0 - object type
@@ -5208,10 +5208,10 @@ off_8037FB4:
 // byte2 - bitfield of objects to free
 // see constants/constants.inc for object type flags
 
-// 0x4a 0x2 word2
+// 0x4a 0x2 ptr2
 // free all npc objects, then spawn npc objects from a list. terminated by 0xff
-// struct format: word0
-// word0 - animation script pointer
+// struct format: ptr2
+// ptr2 - animation script pointer
 
 // 0x4a 0x3
 // spawn npc objects for the current map
@@ -5277,9 +5277,9 @@ CutsceneCmd_spawn_or_free_ow_map_or_npc_objects:
 	thumb_func_end CutsceneCmd_spawn_or_free_ow_map_or_npc_objects
 
 	thumb_local_start
-// 0x4b word1
+// 0x4b ptr1
 // call native function. if the return flags are nonzero, then wait
-// word1 - native function to call
+// ptr1 - native function to call
 CutsceneCmd_call_native_with_return_value:
 	push {lr}
 	mov r6, #1
@@ -5300,17 +5300,17 @@ CutsceneCmd_call_native_with_return_value:
 // 0x4c &0x40
 // literal interpretation: call warp_8005f32 and warp_setSubsystemIndexTo0x10AndOthers_8005f00
 
-// 0x4c &0x20 word2
+// 0x4c &0x20 ptr2
 // literal interpretation: [eCutsceneState_Unk_34] = word2
-// word2 - warp related pointer
+// ptr2 - warp related pointer
 
-// 0x4c !&0x60 byte2 word3
+// 0x4c !&0x60 byte2 ptr3
 // literal interpretation:
-// if bit7 of byte1 is set, word3 = [eCutsceneState_Unk_34]
+// if bit7 of byte1 is set, ptr3 = [eCutsceneState_Unk_34]
 // if bit0 of byte1 is set:
-// call warp_setSubsystemIndexTo0x14AndOthers_8005f14 with r0=word3, r1=0, r2=byte2
+// call warp_setSubsystemIndexTo0x14AndOthers_8005f14 with r0=ptr3, r1=0, r2=byte2
 // else:
-// call warp_setSubsystemIndexTo0x10AndOthers_8005f00 with r0=word3, r1=0, r2=byte2
+// call warp_setSubsystemIndexTo0x10AndOthers_8005f00 with r0=ptr3, r1=0, r2=byte2
 // byte2 = map group transition type
 CutsceneCmd_warp_cmd_8038040:
 	push {lr}
@@ -5486,9 +5486,9 @@ MapScriptCutsceneCmd_give_or_take_item:
 	thumb_func_end MapScriptCutsceneCmd_give_or_take_item
 
 	thumb_local_start
-// 0x54 0x0 word1
+// 0x54 0x0 ptr1
 // set cutscene camera script
-// word1 - cutscene camera script pointer
+// ptr1 - cutscene camera script pointer
 
 // 0x54 0x1
 // stop cutscene camera script
@@ -5568,8 +5568,8 @@ CutsceneCmd_start_random_battle:
 	thumb_func_end CutsceneCmd_start_random_battle
 
 	thumb_local_start
-// 0x38/0x58 word1 word5 word9
-// call Initialize_eStruct200a6a0 with r0=word1, r1=word5, r2=word9
+// 0x38/0x58 ptr1 ptr5 word9
+// call Initialize_eStruct200a6a0 with r0=ptr1, r1=ptr5, r2=word9
 MapScriptCutsceneCmd_init_eStruct200a6a0:
 	push {lr}
 	mov r6, #1
@@ -5951,9 +5951,9 @@ CutsceneCmd_give_or_take_navicust_programs:
 	thumb_func_end CutsceneCmd_give_or_take_navicust_programs
 
 	thumb_local_start
-// 0x75 0x0 word2
+// 0x75 0x0 ptr2
 // set the secondary continuous map script pointer
-// word2 - map script pointer to set the secondary continuous map script pointer to
+// ptr2 - map script pointer to set the secondary continuous map script pointer to
 
 // 0x75 0x1
 // end execution of the secondary continuous map script pointer
@@ -6098,9 +6098,9 @@ CutsceneCmd_set_beast_out_counter_to_3:
 	thumb_func_end CutsceneCmd_set_beast_out_counter_to_3
 
 	thumb_local_start
-// 0x7b unused1to3 destination4
+// 0x7b unusedbyte1 unusedbyte2 unusedbyte3 destination4
 // jump if the player is master rank for the request bbs
-// unused1to3 - unused
+// unusedbyte1 unusedbyte2 unusedbyte3 - unused
 // destination4 - script to jump to
 CutsceneCmd_jump_if_req_bbs_master_rank:
 	push {lr}
@@ -6119,9 +6119,9 @@ CutsceneCmd_jump_if_req_bbs_master_rank:
 	thumb_func_end CutsceneCmd_jump_if_req_bbs_master_rank
 
 	thumb_local_start
-// 0x7c unused1to3 destination4 destination8
+// 0x7c unusedbyte1 unusedbyte2 unusedbyte3 destination4 destination8
 // jump to another script depending on whether the player is in the real world or on the internet
-// unused1to3 - unused
+// unusedbyte1 unusedbyte2 unusedbyte3 - unused
 // destination4 - script to jump to if in the real world
 // destination8 - script to jump to if on the internet
 CutsceneCmd_if_in_real_world_jump_else_jump:

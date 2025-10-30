@@ -118,14 +118,14 @@
 	.endm
 
 	enum ccs_run_text_script_cmd // 0x28
-// 0x28 byte1 word2
+// 0x28 byte1 ptr2
 // run the text script given the arguments
 // byte1 - script index
-// word2 - text archive
-	.macro ccs_run_text_script byte1:req word2:req
+// ptr2 - text archive
+	.macro ccs_run_text_script byte1:req ptr2:req
 	.byte ccs_run_text_script_cmd
 	.byte \byte1
-	.word \word2
+	.word \ptr2
 	.endm
 
 	enum ccs_wait_chatbox_cmd // 0x2c
@@ -136,19 +136,19 @@
 	.endm
 
 	enum ccs_call_sub_8001B1C_cmd // 0x30
-// 0x30 word1
-// call LoadGFXAnim with r0=word1
-	.macro ccs_call_sub_8001B1C word1:req
+// 0x30 ptr1
+// call LoadGFXAnim with r0=ptr1
+	.macro ccs_call_sub_8001B1C ptr1:req
 	.byte ccs_call_sub_8001B1C_cmd
-	.word \word1
+	.word \ptr1
 	.endm
 
 	enum ccs_call_sub_8001B6C_cmd // 0x34
-// 0x34 word1
-// call TerminateGFXAnim with r0=word1
-	.macro ccs_call_sub_8001B6C word1:req
+// 0x34 ptr1
+// call TerminateGFXAnim with r0=ptr1
+	.macro ccs_call_sub_8001B6C ptr1:req
 	.byte ccs_call_sub_8001B6C_cmd
-	.word \word1
+	.word \ptr1
 	.endm
 
 	enum ccs_set_screen_fade_cmd // 0x38
@@ -168,21 +168,21 @@
 	.endm
 
 	enum ccs_set_event_flag_cmd // 0x40
-// 0x40 hword1
+// 0x40 event16_1
 // set event flag
-// hword1 - event flag to set
-	.macro ccs_set_event_flag hword1:req
+// event16_1 - event flag to set
+	.macro ccs_set_event_flag event16_1:req
 	.byte ccs_set_event_flag_cmd
-	.hword \hword1
+	.hword \event16_1
 	.endm
 
 	enum ccs_clear_event_flag_cmd // 0x44
-// 0x44 hword1
+// 0x44 event16_1
 // clear event flag
-// hword1 - event flag to clear
-	.macro ccs_clear_event_flag hword1:req
+// event16_1 - event flag to clear
+	.macro ccs_clear_event_flag event16_1:req
 	.byte ccs_clear_event_flag_cmd
-	.hword \hword1
+	.hword \event16_1
 	.endm
 
 	enum ccs_sound_cmd_80373fc_cmd // 0x48
@@ -204,10 +204,10 @@
 	.endm
 
 	enum ccs_write_camera_field_03_14_cmd // 0x50
-// 0x50 word1
-// call camera_writeUnk03_14_80301b2 with r0=1 and r1=word1
-	.macro ccs_write_camera_field_03_14 word1:req
+// 0x50 ptr1
+// call camera_writeUnk03_14_80301b2 with r0=1 and r1=ptr1
+	.macro ccs_write_camera_field_03_14 ptr1:req
 	.byte ccs_write_camera_field_03_14_cmd
-	.word \word1
+	.word \ptr1
 	.endm
 

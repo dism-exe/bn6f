@@ -1711,7 +1711,11 @@ eMapScriptStateEnd::
 unk_2011EA0:: // 0x2011ea0
 	.space 4
 unk_2011EA4:: // 0x2011ea4
-	.space 60
+	.space 4
+unk_2011EA8:: // 0x2011ea8
+	.space 12
+unk_2011EB4:: // 0x2011eb4
+	.space 44
 eOverworldMapObjects:: // 0x2011ee0
 	overworld_map_object_struct eOverworldMapObject0
 	overworld_map_object_struct eOverworldMapObject1
