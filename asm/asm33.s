@@ -2037,7 +2037,7 @@ jt_8124188:
 submenu_subchip_81241A0: // (struct UnkSubMenu* state_a5) -> void
 	push {r4-r7,lr}
 
-  # 0 if (isPressed JOYPAD_B)
+  // 0 if (isPressed JOYPAD_B)
 	mov r4, #1
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
@@ -2046,7 +2046,7 @@ submenu_subchip_81241A0: // (struct UnkSubMenu* state_a5) -> void
 	tst r0, r1
 	beq loc_81241B2
 
-  # 0 then
+  // 0 then
 	ldrh r4, [r5,#0x16]
 
   // 0 endif

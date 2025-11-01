@@ -973,7 +973,7 @@ loop_processArr_8000B34:
   // can be a compressed ptr
 	ldr r0, [r7,#0]
 
-  # NullStop check
+  // NullStop check
 	tst r0, r0
 	beq ret_reachedTerminator_8000B8C
   

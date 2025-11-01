@@ -12,7 +12,7 @@
 	.endm
 
 	.macro arm_func_end name:req
-	.size \name, .-\name
+	.size \name, . - \name
 	.type \name, function
 	.endm
 

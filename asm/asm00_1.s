@@ -9395,9 +9395,9 @@ sub_8007B80: // (self: * BattleState $r5) -> ()
 off_8007B90:
 	.word off_8007B94
 off_8007B94: 
-  # 0x00
+  // 0x00
   .word sub_8007B9C+1 // (self: *mut BattleState $r5) -> ()
-  # 0x04
+  // 0x04
 	.word sub_8007CA0+1 // (self: *mut BattleState $r5) -> ()
 	thumb_func_end sub_8007B80
 
