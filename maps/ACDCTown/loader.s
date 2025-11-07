@@ -80,7 +80,7 @@ ACDCTown_LoadGFXAnims:
 	lsl r1, r1, #2
 	ldr r0, off_804CF40 // =off_804CF44 
 	ldr r0, [r0,r1]
-	bl LoadGFXAnims
+	bl LoadGFXAnims // (gfx_anim_data_arr: * NullStop<[GFXAnimData]>) -> ()
 	pop {pc}
 	.balign 4, 0
 off_804CF40:

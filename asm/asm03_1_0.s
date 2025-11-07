@@ -2955,7 +2955,7 @@ loc_80353EA:
 	push {r4-r7,lr}
 loc_80353EC:
 	ldr r0, off_80353F8 // =off_80353FC
-	bl LoadGFXAnims
+	bl LoadGFXAnims // (gfx_anim_data_arr: * NullStop<[GFXAnimData]>) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -2971,7 +2971,7 @@ off_80353FC:
 sub_8035408:
 	push {r4-r7,lr}
 	ldr r0, off_8035414 // =off_8035418
-	bl LoadGFXAnims
+	bl LoadGFXAnims // (gfx_anim_data_arr: * NullStop<[GFXAnimData]>) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -2994,7 +2994,7 @@ sub_8035424:
 	tst r0, r1
 	bne locret_8035440
 	ldr r0, off_8035444 // =off_8035448
-	bl LoadGFXAnims
+	bl LoadGFXAnims // (gfx_anim_data_arr: * NullStop<[GFXAnimData]>) -> ()
 locret_8035440:
 	pop {r4-r7,pc}
 	.balign 4, 0

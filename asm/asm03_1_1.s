@@ -442,7 +442,7 @@ loc_8038C54:
 	strb r0, [r5,#2]
 	bl sub_8039074
 	ldr r0, off_8038C70 // =byte_803875C
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	mov r0, #4
 	strh r0, [r5,#4]
 locret_8038C6C:
@@ -652,9 +652,9 @@ sub_8038DE0:
 	ldr r0, off_8038E10 // =0x100
 	bl PlaySoundEffect
 	ldr r0, off_8038E08 // =byte_803891C
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	ldr r0, off_8038E0C // =byte_80389AC
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	mov r0, #0x2e
 	strh r0, [r5,#4]
 	mov r0, #0x24
@@ -678,9 +678,9 @@ sub_8038E14:
 	strh r0, [r5,#4]
 	bne locret_8038E3A
 	ldr r0, off_8038E3C // =byte_80387FC
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	ldr r0, off_8038E40 // =byte_803888C
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	bl sub_8046664 // () -> void
 	bl sub_80390D8
 	mov r0, #0x28
@@ -741,9 +741,9 @@ sub_8038E78:
 	bne locret_8038EA0
 	bl sub_8039180
 	ldr r0, off_8038EA4 // =byte_80389AC
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	ldr r0, off_8038EA8 // =byte_8038A3C
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	mov r0, #0x34
 	strb r0, [r5,#2]
 	mov r0, #6
@@ -768,9 +768,9 @@ sub_8038EAC:
 	bne loc_8038ECE
 	bl sub_8038F74
 	ldr r0, off_8038ED4 // =byte_8038A6C
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	ldr r0, off_8038ED8 // =byte_8038A84
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	mov r0, #0x38
 	strb r0, [r5,#2]
 	mov r0, #6
@@ -2995,7 +2995,7 @@ sub_803A2CC:
 	mov r0, #0x11
 	strb r0, [r3,#0xa]
 	ldr r0, off_803A328 // =byte_80392A8
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	ldr r0, off_803A32C // =word_87E672E
 	ldrh r0, [r0]
 	ldr r1, off_803A330 // =palette_3001960
@@ -3078,7 +3078,7 @@ sub_803A39C:
 	strb r0, [r5,#0x1a]
 	bgt loc_803A3B6
 	ldr r0, off_803A3C0 // =byte_80392D8
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	mov r0, #0xb7
 	bl PlaySoundEffect
 	mov r0, #0xc
@@ -3114,9 +3114,9 @@ sub_803A3C4:
 	ldr r0, dword_803A404 // =0x1f40
 	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
 	ldr r0, off_803A408 // =off_8039308
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	ldr r0, off_803A40C // =byte_8039350
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	mov r0, #0x10
 	strb r0, [r5,#2]
 loc_803A3FC:
@@ -7022,7 +7022,7 @@ sub_803C530:
 	bl sub_803CB18
 	beq loc_803C546
 	ldr r0, off_803C550 // =off_8039370
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	mov r4, #1
 loc_803C546:
 	mov r0, r4

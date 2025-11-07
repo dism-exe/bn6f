@@ -181,12 +181,12 @@
 	.endm
 
 // helper macro
-// 0x14 word1=0x0
+// 0x14 ptr1=0x0
 // clear the script that is run when a cutscene is skipped
 // effectively disabling cutscene skip
 	.macro cs_disable_cutscene_skip_script
 	.byte cs_set_cutscene_skip_script_cmd
-	.word 0x0
+	.word NULL
 	.endm
 
 // shared command
@@ -1202,12 +1202,12 @@
 	subenum cs_spawn_ow_npc_objects_from_list_subcmd // 0x2
 // 0x4a 0x2 ptr2
 // free all npc objects, then spawn npc objects from a list. terminated by 0xff
-// struct format: word0
-// word0 - animation script pointer
+// struct format: ptr2
+// ptr2 - animation script pointer
 	.macro cs_spawn_ow_npc_objects_from_list ptr2:req
 	.byte cs_spawn_or_free_ow_map_or_npc_objects_cmd
 	.byte cs_spawn_ow_npc_objects_from_list_subcmd
-	.byte \ptr2
+	.word \ptr2
 	.endm
 
 	subenum cs_spawn_ow_npc_objects_from_map_subcmd // 0x3
@@ -1404,14 +1404,14 @@
 	enum_skip 1 // 0x57
 
 // shared command
-	enum cs_init_eStruct200a6a0_cmd // 0x58
-// 0x38/0x58 ptr1 ptr5 ptr9
+	enum cs_init_eStruct201a6a0_cmd // 0x58
+// 0x38/0x58 ptr1 ptr5 word9
 // call Initialize_eStruct200a6a0 with r0=ptr1, r1=ptr5, r2=ptr9
-	.macro cs_init_eStruct200a6a0 ptr1:req ptr5:req ptr9:req
+	.macro cs_init_eStruct200a6a0 ptr1:req ptr5:req word9:req
 	.byte cs_init_eStruct200a6a0_cmd
 	.word \ptr1
 	.word \ptr5
-	.word \ptr9
+	.word \word9
 	.endm
 
 // shared command

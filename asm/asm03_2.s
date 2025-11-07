@@ -10127,9 +10127,9 @@ sub_804C53C:
 	tst r0, r0
 	beq loc_804C57C
 	ldr r0, off_804C5B8 // =dword_804C4B0 
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	ldr r0, off_804C5BC // =dword_804C4E0 
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 loc_804C57C:
 	mov r0, #4
 	strb r0, [r5,#0x10]

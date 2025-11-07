@@ -516,14 +516,14 @@
 	.endm
 
 	enum ms_start_cutscene_cmd // 0x26
-// 0x26 ptr1 ptr5
+// 0x26 ptr1 wort5
 // start a cutscene
 // ptr1 - cutscene script to start
-// ptr5 - cutscene parameter
+// word5 - cutscene parameter
 	.macro ms_start_cutscene ptr1:req ptr5:req
 	.byte ms_start_cutscene_cmd
 	.word \ptr1
-	.word \ptr5
+	.word \word5
 	.endm
 
 // shared command
@@ -737,11 +737,11 @@
 	enum ms_init_eStruct200a6a0_cmd // 0x38
 // 0x38/0x58 ptr1 ptr5 ptr9
 // call Initialize_eStruct200a6a0 with r0=ptr1, r1=ptr5, r2=ptr9
-	.macro ms_init_eStruct200a6a0 ptr1:req ptr5:req ptr9:req
+	.macro ms_init_eStruct200a6a0 ptr1:req ptr5:req word9:req
 	.byte ms_init_eStruct200a6a0_cmd
 	.word \ptr1
 	.word \ptr5
-	.word \ptr9
+	.word \word9
 	.endm
 
 // shared command
@@ -758,7 +758,7 @@
 	subenum ms_run_secondary_continuous_map_script_subcmd // 0x0
 // 0x3a 0x0 ptr2
 // set the secondary continuous map script pointer
-// word2 - map script pointer to set the secondary continuous map script pointer to
+// ptr2 - map script pointer to set the secondary continuous map script pointer to
 	.macro ms_run_secondary_continuous_map_script ptr2:req
 	.byte ms_run_or_end_secondary_continuous_map_script_cmd
 	.byte ms_run_secondary_continuous_map_script_subcmd

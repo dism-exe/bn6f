@@ -3445,7 +3445,7 @@ off_8001B18:
 
 	thumb_func_start LoadGFXAnim
 // r0 struct format: word0 word4 word8 byte9 (multiple fields depending on command)
-LoadGFXAnim:
+LoadGFXAnim: // (gfx_anim_data: * GFXAnimData) -> ()
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
@@ -3457,6 +3457,7 @@ LoadGFXAnim:
 	mov r2, #oGFXAnimState_Size
 	mul r2, r1
 	add r7, r7, r2
+
 	strb r1, [r7,#oGFXAnimState_Index]
 
 	ldr r1, [r0,#oGFXAnimData_Param0]
@@ -3468,22 +3469,29 @@ LoadGFXAnim:
 	ldr r3, [r0,#oGFXAnimData_Command]
 	str r3, [r7,#oGFXAnimState_Command_Param2to3]
 
+  // transitions to GFXAnimDataNext
 	add r0, #oGFXAnimData_ParamNext
+
 	mov r6, #1
+
 	cmp r3, #8
 	beq loc_8001B48
+  
 	ldr r6, [r0,#oGFXAnimData_Delay - oGFXAnimData_ParamNext]
 loc_8001B48:
+
 	strh r6, [r7,#oGFXAnimState_Timer]
 	mov r6, #1
 	strb r6, [r7,#oGFXAnimState_IsActive]
 	str r0, [r7,#oGFXAnimState_LoopAddress]
 	str r0, [r7,#oGFXAnimState_CommandPos]
+
 	ldr r6, off_8001B68 // =off_8001C24
 	ldrb r1, [r7,#oGFXAnimState_Command]
 	ldr r6, [r6,r1]
 	mov lr, pc
 	bx r6
+
 	pop {r1-r3}
 	mov r8, r1
 	mov r9, r2
@@ -3606,19 +3614,26 @@ byte_8001C08:
 	.word 0x8
 	.word 0x8
 off_8001C24:
-	.word sub_8001C44+1 // 0x0 copy palette
-	.word sub_8001C94+1 // 0x4 copy 0x20 sized tiles
-	.word sub_8001C52+1 // 0x8 ???
-	.word sub_8002310+1 // 0xc manual palette transform
-	.word sub_800232A+1 // 0x10 play sound effect
-	.word sub_8002338+1 // 0x14 set or clear event flag
-	.word sub_8001CFC+1 // 0x18 copy 0x40 sized tiles
+   // 0x0 copy palette
+	.word sub_8001C44+1 // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
+   // 0x4 copy 0x20 sized tiles
+	.word sub_8001C94+1 // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
+   // 0x8 ???
+	.word sub_8001C52+1 // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
+  // 0xc manual palette transform
+	.word sub_8002310+1 // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
+   // 0x10 play sound effect
+	.word sub_800232A+1 // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
+   // 0x14 set or clear event flag
+	.word sub_8002338+1 // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
+   // 0x18 copy 0x40 sized tiles
+	.word sub_8001CFC+1 // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
 off_8001C40:
 	.word eGFXAnimStates
 	thumb_func_end ProcessGFXAnims
 
 	thumb_local_start
-sub_8001C44:
+sub_8001C44: // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
 	push {lr}
 	ldr r0, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
 	ldr r1, [r7,#oGFXAnimState_Param0]
@@ -3628,20 +3643,24 @@ sub_8001C44:
 	thumb_func_end sub_8001C44
 
 	thumb_local_start
-sub_8001C52:
+sub_8001C52: // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
 	push {lr}
 	ldr r5, off_8001C90 // =eMapTilesState200be70
 	ldr r5, [r5,#0xc] // (dword_200BE7C - 0x200be70)
+
 	ldrb r2, [r7,#oGFXAnimState_Param3]
 	lsl r2, r2, #2
 	add r2, #4
 	ldr r2, [r5,r2]
 	add r5, r5, r2
+
 	mov r6, #0xf0
 	lsl r6, r6, #8
+
 	ldrb r2, [r7,#oGFXAnimState_Param2]
+
 	mov r8, r7
-loc_8001C6A:
+loop_8001C6A:
 	ldr r1, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
 	ldr r7, [r0,#oGFXAnimData_Delay - oGFXAnimData_ParamNext]
 	ldrh r3, [r5,r1]
@@ -3650,7 +3669,8 @@ loc_8001C6A:
 	strh r3, [r5,r1]
 	add r0, #8
 	sub r2, #1
-	bgt loc_8001C6A
+	bgt loop_8001C6A
+
 	mov r7, r8
 	push {r4,r7}
 	ldr r5, off_8001C90 // =eMapTilesState200be70
@@ -3665,7 +3685,7 @@ off_8001C90:
 	thumb_func_end sub_8001C52
 
 	thumb_local_start
-sub_8001C94:
+sub_8001C94: // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
 	push {r4,r7,lr}
 
 	// read pointer
@@ -3742,7 +3762,7 @@ off_8001CEC:
 	thumb_func_end sub_8001C94
 
 	thumb_local_start
-sub_8001CFC:
+sub_8001CFC: // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
 	push {r4,r7,lr}
 
 	// read pointer
@@ -4583,7 +4603,7 @@ sub_80021CE:
 // r2 = [oGFXAnimData_Param2] - num palettes
 // r3 = [oGFXAnimData_Index] - S20094c0 index
 // r4 = [oGFXAnimData_Param1] - dest?
-sub_8002310:
+sub_8002310: // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
 	push {lr}
 	push {r4,r7}
 	ldr r1, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
@@ -4599,7 +4619,7 @@ sub_8002310:
 	thumb_func_end sub_8002310
 
 	thumb_local_start
-sub_800232A:
+sub_800232A: // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
 	push {lr}
 	ldr r0, [r0,#oGFXAnimData_ParamNext - oGFXAnimData_ParamNext]
 	cmp r0, #0
@@ -4610,7 +4630,7 @@ sub_800232A:
 	thumb_func_end sub_800232A
 
 	thumb_local_start
-sub_8002338:
+sub_8002338: // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
 	push {lr}
 	ldr r0, [r0]
 	cmp r0, #0
@@ -4628,14 +4648,14 @@ sub_8002338:
 	thumb_func_end sub_8002338
 
 	thumb_func_start LoadGFXAnims
-LoadGFXAnims:
+LoadGFXAnims: // (gfx_anim_data_arr: * NullStop<[GFXAnimData]>) -> ()
 	push {r5,lr}
 	mov r5, r0
 .loadGFXAnimLoop
 	ldr r0, [r5]
-	cmp r0, #0
+	cmp r0, #NULL
 	blt .done
-	bl LoadGFXAnim
+	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
 	add r5, #4
 	b .loadGFXAnimLoop
 .done
