@@ -516,11 +516,11 @@
 	.endm
 
 	enum ms_start_cutscene_cmd // 0x26
-// 0x26 ptr1 wort5
+// 0x26 ptr1 word5
 // start a cutscene
 // ptr1 - cutscene script to start
 // word5 - cutscene parameter
-	.macro ms_start_cutscene ptr1:req ptr5:req
+	.macro ms_start_cutscene ptr1:req word5:req
 	.byte ms_start_cutscene_cmd
 	.word \ptr1
 	.word \word5

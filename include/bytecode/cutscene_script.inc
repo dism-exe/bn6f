@@ -82,8 +82,8 @@
 // wait for cutscene variable to be equal to byte2
 // byte1 - cutscene variable to read from
 // byte2 - value to compare cutscene variable with
-	.macro cs_wait_var_equal
-	.byte cs_wait_var_equal_cmd byte1:req byte2:req
+	.macro cs_wait_var_equal byte1:req byte2:req
+	.byte cs_wait_var_equal_cmd
 	.byte \byte1
 	.byte \byte2
 	.endm
@@ -698,12 +698,16 @@
 // byte1 - memory param
 // byte2 or mem - text script to run
 // the length of the command is 2 if from mem, otherwise 3
-	.macro cs_run_text_script byte1:req byte2:req
+
+	.macro cs_run_text_script_from_mem byte1:req
 	.byte cs_run_text_script_cmd
 	.byte \byte1
-	.if \byte1 != 0xff
-	.byte \byte2
-	.endif
+	.endm
+
+	.macro cs_run_text_script_not_from_mem byte2:req
+	.byte cs_run_text_script_cmd
+	.byte 0xff
+  .byte \byte2
 	.endm
 
 	enum cs_chatbox_cmd_8037a70_cmd // 0x3b
@@ -1065,7 +1069,7 @@
 
 // 0x47 0x1 byte2 byte3
 	subenum cs_offset_ow_player_fixed_anim_select_8037dac_subcmd // 0x1
-	.macro cs_offset_ow_player_fixed_anim_select_8037dac
+	.macro cs_offset_ow_player_fixed_anim_select_8037dac byte2:req byte3:req
 	.byte cs_write_or_offset_ow_player_fixed_anim_select_8037dac_cmd
 	.byte cs_offset_ow_player_fixed_anim_select_8037dac_subcmd
 	.byte \byte2
@@ -1341,7 +1345,7 @@
 	.endm
 
 	subenum cs_take_item_subcmd // 0x1
-// 0x35/0x52 byte1 byte2 byte3
+// 0x35/0x52 0x1 byte2 byte3
 // take items
 // byte2 - item to take
 // byte3 - quantity of item
@@ -1404,7 +1408,7 @@
 	enum_skip 1 // 0x57
 
 // shared command
-	enum cs_init_eStruct201a6a0_cmd // 0x58
+	enum cs_init_eStruct200a6a0_cmd // 0x58
 // 0x38/0x58 ptr1 ptr5 word9
 // call Initialize_eStruct200a6a0 with r0=ptr1, r1=ptr5, r2=ptr9
 	.macro cs_init_eStruct200a6a0 ptr1:req ptr5:req word9:req
