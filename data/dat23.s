@@ -692,20 +692,48 @@ byte_808B67C::
 	.word 0x00000000, 0x00000000, 0x00000000
 
 ccs_808B6E8:
-	.word 0x60050000, 0x080000FC
+	ccs_set_camera_pos hword1=0x0500 hword3=0xFC60 hword5=0x0000
+	ccs_end
+
 byte_808B6F0::
-	.word 0x3E06003F, CompText87BA318 + COMPRESSED_PTR_FLAG, 0x5401FF02, 0x08B6E800, 0x7C024A08, 0x3F08050C, 0x271C3F34, 0x070808FF
-	.word 0x08B75214, 0x1EFF0208, 0x0400FF3A, 0x78FF0280
+	cs_lock_player_for_non_npc_dialogue_809e0b0
+	cs_nop_80377d0
+	cs_decomp_text_archive ptr1=CompText87BA318 + COMPRESSED_PTR_FLAG
+	cs_pause byte1=0xFF byte2=0x01
+	cs_run_cutscene_camera_script ptr1=ccs_808B6E8
+	cs_spawn_ow_npc_objects_from_list ptr2=unk_8050C7C
+	cs_make_ow_player_invisible
+	cs_disable_ow_player_wall_collision_809e254
+	cs_set_screen_fade byte1=0xFF byte2=0x08 byte3=0x08
+	cs_wait_screen_fade
+	cs_set_cutscene_skip_script ptr1=cutscenescript_808B752
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_run_text_script_not_from_mem byte2=0x00
+	cs_wait_chatbox byte1=0x80
+	cs_pause byte1=0xFF byte2=0x78
 
 cutscenescript_808B720:
-	.word 0x00000014, 0x0CFF2700, 0xFF020708, 0xFF04403C, 0xFF004704, 0xFF004104, 0x00000001, 0x3F000000
-	.word 0x23FF2930, 0x00004C08, byte_808B75C, 0x3F183F3B
-	.byte 0x04
-	.byte 0x00
+	cs_disable_cutscene_skip_script
+	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
+	cs_wait_screen_fade
+	cs_pause byte1=0xFF byte2=0x3C
+	cs_ow_player_sprite_special_with_arg byte1=0x04 byte2=0xFF byte3=0x04
+	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x04
+	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=0x0000 signedhword6=0x0000 signedhword8=0x0000
+	cs_make_ow_player_visible
+	cs_set_event_flag byte1=0xFF event16_2=EVENT_823
+	cs_warp_cmd_8038040_2 byte1=0x0 byte2=0x00 ptr3=byte_808B75C
+	cs_chatbox_cmd_8037a70
+	cs_enable_ow_player_wall_collision_809e248
+	cs_unlock_player_after_non_npc_dialogue_809e122
+	cs_end_for_map_reload_maybe_8037c64
+
 cutscenescript_808B752:
-	.word 0x1540003C, 0x0808B720
-	.byte 0x00
-	.byte 0x00
+	cs_set_chatbox_flags byte2=0x40
+	cs_jump destination1=cutscenescript_808B720
+	cs_end_for_map_reload_maybe_8037c64
+	cs_end_for_map_reload_maybe_8037c64
+
 byte_808B75C::
 	.byte 0x4, 0x1, 0x0, 0x4, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x50
 	.byte 0xD4, 0x57, 0x0, 0x2, 0x8, 0x0, 0x0, 0x3F, 0x0, 0x6, 0x3E, 0x70, 0xA4, 0x7B, 0x88, 0x2, 0xFF

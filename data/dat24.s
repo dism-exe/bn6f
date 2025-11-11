@@ -198,26 +198,101 @@ unk_808DAE8:
 	.word 0x00000004, iPallete3001750, 0xFF0C0D0C, 0x800014A5, 0x00000004, 0x80001084, 0x00000004, 0x80000C63
 	.word 0x00000004, 0x80000842, 0x00000004, 0x80000421, 0x00000004, 0x80000000, 0x00000004, 0x00000000
 ccs_808DB28:
-	.word 0x0005C000, 0x080000F5
+	ccs_set_camera_pos hword1=0x05C0 hword3=0xF500 hword5=0x0000
+	ccs_end
+
 cutscenescript_808DB30:
-	.word 0x3E06003F, CompText87BEA78 + COMPRESSED_PTR_FLAG, 0x5401FF02, 0x08DB2800, 0xF0024A08, 0x3F08050D, 0x361C3F34, byte_808D9F8
-	.word 0x08DA4836, 0x08FF2708, 0x58140708, 0x020808DC, 0xFF3A1EFF, 0x02800400, 0x414D1EFF, 0xDA983601
-	.word 0xE8360808, 0x020808DA, 0xFF3A5AFF, 0x02800402, 0x08351EFF, 0x02080901, 0x3A1EFF02, 0x800404FF
-	.word 0x581EFF02, sub_804C510+1, sub_804C52C+1, 0x00000400, 0x351EFF02, 0x08090308, 0x1EFF0204, 0x0406FF3A
-	.word 0x1EFF0280, 0x09050835, 0xAD2F0608, 0x080200A6, 0x5978FF02, 0x04C70158, 0x04C71D08, 0x04040008
-	.word 0x01AC4D00, 0x3A1EFF02, 0x80040AFF, 0x351EFF02, off_8090708, 0x96FF0208, 0x09090835, 0xFF020A08
-	.word 0x0BFF3A1E, 0xFF028004
-	.byte 0x3C
+	cs_lock_player_for_non_npc_dialogue_809e0b0
+	cs_nop_80377d0
+	cs_decomp_text_archive ptr1=CompText87BEA78 + COMPRESSED_PTR_FLAG
+	cs_pause byte1=0xFF byte2=0x01
+	cs_run_cutscene_camera_script ptr1=ccs_808DB28
+	cs_spawn_ow_npc_objects_from_list ptr2=unk_8050DF0
+	cs_make_ow_player_invisible
+	cs_disable_ow_player_wall_collision_809e254
+	cs_load_gfx_anim ptr1=byte_808D9F8
+	cs_load_gfx_anim ptr1=unk_808DA48
+	cs_set_screen_fade byte1=0xFF byte2=0x08 byte3=0x08
+	cs_wait_screen_fade
+	cs_set_cutscene_skip_script ptr1=cutscenescript_808DC58
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_run_text_script_not_from_mem byte2=0x00
+	cs_wait_chatbox byte1=0x80
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_play_sound hword1=0x0141
+	cs_load_gfx_anim ptr1=unk_808DA98
+	cs_load_gfx_anim ptr1=unk_808DAE8
+	cs_pause byte1=0xFF byte2=0x5A
+	cs_run_text_script_not_from_mem byte2=0x02
+	cs_wait_chatbox byte1=0x80
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_set_var byte1=0x08 byte2=0x01
+	cs_wait_var_equal byte1=0x08 byte2=0x02
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_run_text_script_not_from_mem byte2=0x04
+	cs_wait_chatbox byte1=0x80
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_init_eStruct200a6a0 ptr1=sub_804C510+1 ptr5=sub_804C52C+1 word9=0x00000400
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_set_var byte1=0x08 byte2=0x03
+	cs_wait_var_equal byte1=0x08 byte2=0x04
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_run_text_script_not_from_mem byte2=0x06
+	cs_wait_chatbox byte1=0x80
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_set_var byte1=0x08 byte2=0x05
+	cs_wait_var_equal byte1=0x08 byte2=0x06
+	cs_write_byte ptr1=dword_200A6AC+1 byte5=0x08
+	cs_pause byte1=0xFF byte2=0x78
+	cs_run_eStruct200a6a0_callback
+	cs_init_eStruct200a6a0 ptr1=sub_804C700+1 ptr5=sub_804C71C+1 word9=0x00040400
+	cs_play_sound hword1=0x01AC
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_run_text_script_not_from_mem byte2=0x0A
+	cs_wait_chatbox byte1=0x80
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_set_var byte1=0x08 byte2=0x07
+	cs_wait_var_equal byte1=0x08 byte2=0x08
+	cs_pause byte1=0xFF byte2=0x96
+	cs_set_var byte1=0x08 byte2=0x09
+	cs_wait_var_equal byte1=0x08 byte2=0x0A
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_run_text_script_not_from_mem byte2=0x0B
+	cs_wait_chatbox byte1=0x80
+	cs_pause byte1=0xFF byte2=0x3C
+
 byte_808DBF9::
-	.word 0x00000014, 0x0CFF2700, 0xFF290708, 0xFF290A9C, 0xFF290A9B, 0x0C390A9C, 0x07320D39, 0x54034A43
-	.word 0x04403B01, 0x004701FF, 0x004101FF, 0xFE0001FF, 0x000010A0, 0xFF29303F, 0xE66B0A11, 0xE76B011C
-	.word 0xFF02011C, 0xFFFF4E3C, 0x04C70158, 0x04C71D08, 0x00000008, 0x08FF2700, 0x183F0708
-	.byte 0x3F
-	.byte 0x04
-	.byte 0x00
+	cs_disable_cutscene_skip_script
+	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
+	cs_wait_screen_fade
+	cs_set_event_flag byte1=0xFF event16_2=EVENT_A9C
+	cs_set_event_flag byte1=0xFF event16_2=EVENT_A9B
+	cs_set_event_flag byte1=0xFF event16_2=EVENT_A9C
+	cs_terminate_gfx_anim byte1=0x0C
+	cs_terminate_gfx_anim byte1=0x0D
+	cs_write_gamestate_byte byte1=0x07 byte2=0x43
+	cs_spawn_ow_npc_objects_from_map
+	cs_stop_cutscene_camera_script
+	cs_chatbox_cmd_8037a70
+	cs_ow_player_sprite_special_with_arg byte1=0x04 byte2=0xFF byte3=0x01
+	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x01
+	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=-0x0200 signedhword6=0x10A0 signedhword8=0x0000
+	cs_make_ow_player_visible
+	cs_set_event_flag byte1=0xFF event16_2=EVENT_A11
+	cs_add_mail_range hword1=0x1CE6 byte3=0x01
+	cs_add_mail_range hword1=0x1CE7 byte3=0x01
+	cs_pause byte1=0xFF byte2=0x3C
+	cs_play_music hword1=0xFFFF
+	cs_init_eStruct200a6a0 ptr1=sub_804C700+1 ptr5=sub_804C71C+1 word9=0x00000000
+	cs_set_screen_fade byte1=0xFF byte2=0x08 byte3=0x08
+	cs_wait_screen_fade
+	cs_enable_ow_player_wall_collision_809e248
+	cs_unlock_player_after_non_npc_dialogue_809e122
+	cs_end_for_map_reload_maybe_8037c64
 
 cutscenescript_808DC58:
-	.word 0x1540003C, byte_808DBF9
+	cs_set_chatbox_flags byte2=0x40
+	cs_jump destination1=byte_808DBF9
 
 end_cutscenescript_808DC60:
   .word 0x0057D450, 0x010C0802, 0x00400400, 0x00000100, 0x78040000, 0x00000000

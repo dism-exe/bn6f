@@ -248,6 +248,7 @@ MapScriptOnInitCentralTown_804EA28::
 byte_804EA41::
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_3A destination4=mapscript_804EA52
 	ms_start_cutscene ptr1=unk_809BBE9 word5=0x00000000
+
 mapscript_804EA52:
 	ms_jump_if_progress_in_range byte1=0x00 byte2=0x0F destination3=mapscript_804EA88
 	ms_jump_if_progress_in_range byte1=0x10 byte2=0x1F destination3=byte_804EB2D
@@ -257,6 +258,7 @@ mapscript_804EA52:
 	ms_jump_if_progress_in_range byte1=0x50 byte2=0x5F destination3=byte_804ECD6
 	ms_jump_if_progress_in_range byte1=0x60 byte2=0x6F destination3=mapscript_804EDE1
 	ms_jump destination1=byte_804EEF6
+
 mapscript_804EA88:
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F4
 	ms_write_word ptr1=unk_2011EB4 word5=0x08050402
@@ -266,18 +268,32 @@ mapscript_804EA88:
 	ms_jump destination1=byte_804EEF6
 
 byte_804EAAC::
-	.word 0x16D0FF20, 0x16D1FF1F, 0x011EA829, 0x03010202, 0xF2FF1F08, 0xEEF60116
-	.byte 0x04
-	.byte 0x08
+	ms_clear_event_flag byte1=0xFF event16_2=EVENT_16D0
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16D1
+	ms_write_word ptr1=unk_2011EA8 word5=0x08030102
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F2
+	ms_jump destination1=byte_804EEF6
 
 mapscript_804EAC6:
-	.word 0x16D0FF20, 0x16D1FF1F, 0x011EA429, 0x05000202, 0xF1FF1F08, 0xA0FF0516, 0x04EAF81C, 0x20FF0308
-	.word 0x04EAF81D, 0x1EA42908, 0x00000201, 0xFF200000, 0xA82916F1, 0x0202011E, 0x1F080301, 0x0516F2FF
-	.word 0xF60417FF, 0x030804EE, 0xF60418FF, 0x1F0804EE, 0x1E0418FF, 0x042BFF04, 0x1C842663, 0x00000808
-	.word 0xF6010000
-	.byte 0xEE
-	.byte 0x04
-	.byte 0x08
+	ms_clear_event_flag byte1=0xFF event16_2=EVENT_16D0
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16D1
+	ms_write_word ptr1=unk_2011EA4 word5=0x08050002
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F1
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_1CA0 destination4=mapscript_804EAF8
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_1D20 destination4=mapscript_804EAF8
+	ms_write_word ptr1=unk_2011EA4 word5=0x00000000
+	ms_clear_event_flag byte1=0xFF event16_2=EVENT_16F1
+mapscript_804EAF8:
+	ms_write_word ptr1=unk_2011EA8 word5=0x08030102
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F2
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_417 destination4=byte_804EEF6
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_418 destination4=byte_804EEF6
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_418
+	ms_set_enter_map_screen_fade byte1=0x04 byte2=0xFF
+	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
+	ms_start_cutscene ptr1=byte_8081C84 word5=0x00000000
+	ms_jump destination1=byte_804EEF6
+
 byte_804EB2D::
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F4
 	ms_jump_if_progress_in_range byte1=0x10 byte2=0x12 destination3=dword_804EB44
@@ -297,6 +313,7 @@ byte_804EB59::
 	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
 	ms_start_cutscene ptr1=byte_8099CEC word5=0x00000000
 	ms_jump destination1=byte_804EEF6
+
 mapscript_804EB84:
 	ms_clear_event_flag byte1=0xFF event16_2=EVENT_557
 	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
@@ -304,89 +321,182 @@ mapscript_804EB84:
 	ms_jump destination1=byte_804EEF6
 
 mapscript_804EB99:
-	.word 0x011EA829, 0x030C0202, 0xF2FF1F08, 0x1EB42916, 0x0B020201, 0xFF1F0805, 0xFF0516F5, 0xEEF60537
-	.word 0xFF030804, 0xEEF60538, 0xFF1F0804, 0x0C1E0538, 0x63042BFF, 0x0861D026, 0x00000008, 0xEEF60100
-	.byte 0x04
-	.byte 0x08
+	ms_write_word ptr1=unk_2011EA8 word5=0x08030C02
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F2
+	ms_write_word ptr1=unk_2011EB4 word5=0x08050B02
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F5
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_537 destination4=byte_804EEF6
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_538 destination4=byte_804EEF6
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_538
+	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
+	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
+	ms_start_cutscene ptr1=cutscenescript_80861D0 word5=0x00000000
+	ms_jump destination1=byte_804EEF6
+
 mapscript_804EBDB:
-	.word 0xEE212102, 0x020804EB, 0xEC132222, 0xF6010804, 0x050804EE, 0xF60609FF, 0x030804EE, 0xF6060AFF
-	.word 0x1F0804EE, 0x1E060AFF, 0x1426FF0C, 0x00080877, 0x01000000, byte_804EEF6, 0x0611FF05, byte_804EEF6
-	.word 0x0612FF03, byte_804EEF6, 0x0612FF1F, 0x2BFF0C1E, 0x98266304, 0x0008087F, 0x01000000, byte_804EEF6
+	ms_jump_if_progress_in_range byte1=0x21 byte2=0x21 destination3=mapscript_804EBEE
+	ms_jump_if_progress_in_range byte1=0x22 byte2=0x22 destination3=mapscript_804EC13
+	ms_jump destination1=byte_804EEF6
+mapscript_804EBEE:
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_609 destination4=byte_804EEF6
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_60A destination4=byte_804EEF6
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_60A
+	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
+	ms_start_cutscene ptr1=cutscenescript_8087714 word5=0x00000000
+	ms_jump destination1=byte_804EEF6
+mapscript_804EC13:
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_611 destination4=byte_804EEF6
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_612 destination4=byte_804EEF6
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_612
+	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
+	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
+	ms_start_cutscene ptr1=cutscenescript_8087F98 word5=0x00000000
+	ms_jump destination1=byte_804EEF6
 
 mapscript_804EC3B:
-	.word 0x4E323202, 0x020804EC, 0xEC683333, 0xF6010804, 0x030804EE, 0xF6086CFF, 0x290804EE, unk_2011EB4
-	.word 0x08051402, 0x16F5FF1F, 0x04EEF601, 0x21FF0508, 0x04EEF608, 0x22FF0308, 0x04EEF608, 0x22FF1F08
-	.word 0xFF0C1E08, 0x08B6F026, 0x00000008, 0xEEF60100
-	.byte 0x04
-	.byte 0x08
+	ms_jump_if_progress_in_range byte1=0x32 byte2=0x32 destination3=mapscript_804EC4E
+	ms_jump_if_progress_in_range byte1=0x33 byte2=0x33 destination3=mapscript_804EC68
+	ms_jump destination1=byte_804EEF6
+mapscript_804EC4E:
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_86C destination4=byte_804EEF6
+	ms_write_word ptr1=unk_2011EB4 word5=0x08051402
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F5
+	ms_jump destination1=byte_804EEF6
+mapscript_804EC68:
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_821 destination4=byte_804EEF6
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_822 destination4=byte_804EEF6
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_822
+	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
+	ms_start_cutscene ptr1=byte_808B6F0 word5=0x00000000
+	ms_jump destination1=byte_804EEF6
 
 mapscript_804EC8D:
-	.word 0x99434302, 0x010804EC, byte_804EEF6
-byte_804EC99:: // MapScript
-  .byte 0x3, 0xFF, 0x16, 0xA, 0xAE, 0xEC, 0x4, 0x8, 0x29, 0xB4, 0x1E
-	.byte 0x1, 0x2, 0x2, 0x1E, 0x5, 0x8, 0x1F, 0xFF, 0xF5, 0x16, 0x5
-	.byte 0xFF, 0xF, 0xA, 0xF6, 0xEE, 0x4, 0x8, 0x3, 0xFF, 0x10, 0xA
-	.byte 0xF6, 0xEE, 0x4, 0x8, 0x1F, 0xFF, 0x10, 0xA, 0x1E, 0xC, 0xFF
-	.byte 0x2B, 0x4, 0x63, 0x26, 0x30, 0xDB, 0x8, 0x8, 0x0, 0x0, 0x0
-	.byte 0x0, 0x1, 0xF6, 0xEE, 0x4, 0x8
-byte_804ECD6:: // MapScript
-  .byte 0x2, 0x50, 0x50, 0xE9, 0xEC, 0x4, 0x8, 0x2, 0x51, 0x51
-	.word byte_804EDB9 // MapScript
-	.byte 0x1, 0xF6, 0xEE, 0x4, 0x8, 0x5, 0xFF, 0xA, 0xC, 0x2D, 0xED
-	.byte 0x4, 0x8, 0x3, 0xFF, 0xEA, 0xC, 0x2D, 0xED, 0x4, 0x8, 0x29
-	.byte 0xB4, 0x1E, 0x1, 0x2, 0x2, 0x23, 0x5, 0x8, 0x1F, 0xFF, 0xF5
-	.byte 0x16, 0x29, 0xA8, 0x1E, 0x1, 0x2, 0x2, 0x24, 0x3, 0x8, 0x1F
-	.byte 0xFF, 0xF2, 0x16, 0x29, 0xA4, 0x1E, 0x1, 0x2
-	.word byte_8052502
-	.byte 0x1F, 0xFF, 0xF1, 0x16, 0x29, 0xB0, 0x1E, 0x1, 0x2, 0x2
-	.byte 0x26, 0x3, 0x8, 0x1F, 0xFF, 0xF4, 0x16, 0x5, 0xFF, 0x5
-	.byte 0xC, 0x55, 0xED, 0x4, 0x8, 0x3, 0xFF, 0x6, 0xC, 0x55
-	.byte 0xED, 0x4, 0x8, 0x1F, 0xFF, 0x6, 0xC, 0x1E, 0x1C, 0xFF
-	.byte 0x2B, 0x4, 0x63, 0x26
-	.word byte_80905BC
-	.byte 0x0, 0x0, 0x0, 0x0, 0x1, 0xF6, 0xEE, 0x4, 0x8, 0x5, 0xFF, 0xC8, 0xC
-	.byte 0xF6, 0xEE, 0x4, 0x8, 0x5, 0xFF, 0x9, 0xC, 0xF6, 0xEE, 0x4, 0x8, 0x3
-	.byte 0xFF, 0xA, 0xC, 0xF6, 0xEE, 0x4, 0x8, 0x1F, 0xFF, 0xA, 0xC, 0x1E, 0x1C
-	.byte 0xFF, 0x2B, 0x4, 0x63, 0x29
-	.word 0x2011EB4
-	.word byte_8052302
-	.byte 0x1F, 0xFF, 0xF5, 0x16, 0x29, 0xA8, 0x1E, 0x1, 0x2, 0x2
-	.byte 0x24, 0x3, 0x8, 0x1F, 0xFF, 0xF2, 0x16, 0x29, 0xA4, 0x1E
-	.byte 0x1, 0x2, 0x2, 0x25, 0x5, 0x8, 0x1F, 0xFF, 0xF1, 0x16
-	.byte 0x29, 0xB0, 0x1E, 0x1, 0x2, 0x2, 0x26, 0x3, 0x8, 0x1F
-	.byte 0xFF, 0xF4, 0x16, 0x26
-	.word byte_80908CC
-	.byte 0x0, 0x0, 0x0, 0x0, 0x1, 0xF6, 0xEE, 0x4, 0x8
+	ms_jump_if_progress_in_range byte1=0x43 byte2=0x43 destination3=byte_804EC99
+	ms_jump destination1=byte_804EEF6
+
+byte_804EC99::
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_A16 destination4=mapscript_804ECAE
+	ms_write_word ptr1=unk_2011EB4 word5=0x08051E02
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F5
+mapscript_804ECAE:
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_A0F destination4=byte_804EEF6
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_A10 destination4=byte_804EEF6
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_A10
+	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
+	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
+	ms_start_cutscene ptr1=cutscenescript_808DB30 word5=0x00000000
+	ms_jump destination1=byte_804EEF6
+
+byte_804ECD6::
+	ms_jump_if_progress_in_range byte1=0x50 byte2=0x50 destination3=mapscript_804ECE9
+	ms_jump_if_progress_in_range byte1=0x51 byte2=0x51 destination3=byte_804EDB9
+	ms_jump destination1=byte_804EEF6
+mapscript_804ECE9:
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_C0A destination4=mapscript_804ED2D
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_CEA destination4=mapscript_804ED2D
+	ms_write_word ptr1=unk_2011EB4 word5=0x08052302
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F5
+	ms_write_word ptr1=unk_2011EA8 word5=0x08032402
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F2
+	ms_write_word ptr1=unk_2011EA4 word5=0x08052502
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F1
+	ms_write_word ptr1=unk_2011EB0 word5=0x08032602
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F4
+mapscript_804ED2D:
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_C05 destination4=mapscript_804ED55
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_C06 destination4=mapscript_804ED55
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_C06
+	ms_set_enter_map_screen_fade byte1=0x1C byte2=0xFF
+	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
+	ms_start_cutscene ptr1=byte_80905BC word5=0x00000000
+	ms_jump destination1=byte_804EEF6
+mapscript_804ED55:
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_CC8 destination4=byte_804EEF6
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_C09 destination4=byte_804EEF6
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_C0A destination4=byte_804EEF6
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_C0A
+	ms_set_enter_map_screen_fade byte1=0x1C byte2=0xFF
+	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
+	ms_write_word ptr1=unk_2011EB4 word5=0x08052302
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F5
+	ms_write_word ptr1=unk_2011EA8 word5=0x08032402
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F2
+	ms_write_word ptr1=unk_2011EA4 word5=0x08052502
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F1
+	ms_write_word ptr1=unk_2011EB0 word5=0x08032602
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F4
+	ms_start_cutscene ptr1=byte_80908CC word5=0x00000000
+	ms_jump destination1=byte_804EEF6
+
 byte_804EDB9::
-	.word 0x0C1BFF05, byte_804EEF6, 0x0C1CFF03, byte_804EEF6, 0x0C31FF1F, 0x2BFF0C1E, 0x78266304, 0x0208098C
-	.word 0x01000000, byte_804EEF6
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_C1B destination4=byte_804EEF6
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_C1C destination4=byte_804EEF6
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_C31
+	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
+	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
+	ms_start_cutscene ptr1=byte_8098C78 word5=0x00000002
+	ms_jump destination1=byte_804EEF6
 
 mapscript_804EDE1:
-	.word 0xFB626202, 0x020804ED, 0xEE236363, 0x64020804, 0x04EE3D64, 0xEEF60108
-	.byte 0x04
-	.byte 0x08
+	ms_jump_if_progress_in_range byte1=0x62 byte2=0x62 destination3=byte_804EDFB
+	ms_jump_if_progress_in_range byte1=0x63 byte2=0x63 destination3=mapscript_804EE23
+	ms_jump_if_progress_in_range byte1=0x64 byte2=0x64 destination3=mapscript_804EE3D
+	ms_jump destination1=byte_804EEF6
+
 byte_804EDFB::
-	.word 0x0E1DFF05, byte_804EEF6, 0x0E1EFF03, byte_804EEF6, 0x0E1EFF1F, 0x2BFF1C1E, 0x94266304, 0x00080948
-	.word 0x01000000, byte_804EEF6
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_E1D destination4=byte_804EEF6
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_E1E destination4=byte_804EEF6
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_E1E
+	ms_set_enter_map_screen_fade byte1=0x1C byte2=0xFF
+	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
+	ms_start_cutscene ptr1=cutscenescript_8094894 word5=0x00000000
+	ms_jump destination1=byte_804EEF6
 
 mapscript_804EE23:
-	.word 0x0E36FF03, 0x0804EE3D, 0x011EAC29, 0x03280202, 0xF3FF1F08, 0xEE3D0116
-	.byte 0x04
-	.byte 0x08
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_E36 destination4=mapscript_804EE3D
+	ms_write_word ptr1=unk_2011EAC word5=0x08032802
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F3
+	ms_jump destination1=mapscript_804EE3D
 
 mapscript_804EE3D:
-	.word 0x0E6BFF05, 0x0804EE62, 0x0E6CFF03, 0x0804EE62, 0x0E6CFF1F, 0x26FF0C1E, byte_8099CEC, 0x00000058
-	.word 0x04EEF601, 0x6DFF0508, 0x04EE870E, 0x6EFF0308, 0x04EE870E, 0x6EFF1F08, 0xFF0C1E0E, 0x099CEC26
-	.word 0x00005908, 0xEEF60100, 0xFF050804, 0xEEAC0E6F, 0xFF030804, 0xEEAC0E70, 0xFF1F0804, 0x0C1E0E70
-	.word 0x9CEC26FF, 0x005A0809, 0xF6010000, 0x050804EE, 0xD10E71FF, 0x030804EE, 0xD10E72FF, 0x1F0804EE
-	.word 0x1E0E72FF, 0xEC26FF0C, 0x5B08099C, 0x01000000, byte_804EEF6
-byte_804EED1:: // MapScript
-  .byte 0x5, 0xFF, 0x73, 0xE, 0xF6, 0xEE, 0x4, 0x8, 0x3, 0xFF, 0x74
-	.byte 0xE, 0xF6, 0xEE, 0x4, 0x8, 0x1F, 0xFF, 0x74, 0xE, 0x1E, 0xC
-	.byte 0xFF, 0x26, 0xEC, 0x9C, 0x9, 0x8, 0x5C, 0x0, 0x0, 0x0, 0x1
-	.byte 0xF6, 0xEE, 0x4, 0x8
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_E6B destination4=mapscript_804EE62
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_E6C destination4=mapscript_804EE62
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_E6C
+	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
+	ms_start_cutscene ptr1=byte_8099CEC word5=0x00000058
+	ms_jump destination1=byte_804EEF6
+mapscript_804EE62:
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_E6D destination4=mapscript_804EE87
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_E6E destination4=mapscript_804EE87
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_E6E
+	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
+	ms_start_cutscene ptr1=byte_8099CEC word5=0x00000059
+	ms_jump destination1=byte_804EEF6
+mapscript_804EE87:
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_E6F destination4=mapscript_804EEAC
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_E70 destination4=mapscript_804EEAC
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_E70
+	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
+	ms_start_cutscene ptr1=byte_8099CEC word5=0x0000005A
+	ms_jump destination1=byte_804EEF6
+mapscript_804EEAC:
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_E71 destination4=byte_804EED1
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_E72 destination4=byte_804EED1
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_E72
+	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
+	ms_start_cutscene ptr1=byte_8099CEC word5=0x0000005B
+	ms_jump destination1=byte_804EEF6
+
+byte_804EED1::
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_E73 destination4=byte_804EEF6
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_E74 destination4=byte_804EEF6
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_E74
+	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
+	ms_start_cutscene ptr1=byte_8099CEC word5=0x0000005C
+	ms_jump destination1=byte_804EEF6
+
 byte_804EEF6::
-	ms_end 
+	ms_end
 
 MapScriptOnUpdateCentralTown_804EEF7:: // MapScript
   // 00
