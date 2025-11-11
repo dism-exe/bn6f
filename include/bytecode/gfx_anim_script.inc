@@ -24,9 +24,10 @@
 	enum GFX_ANIM_UNK_08 // 0x08
 	// no macro until I can find ROM data which uses this command
 
+  // Corresponds to command sub_8002310
 	enum GFX_ANIM_MANUAL_PAL_TRANSFORM // 0x0c
-	.macro gfx_anim_manual_pal_transform transform_type:req, dest:req, index:req, num_pals:req
-	gfx_anim_data_common_struct \transform_type, \dest, GFX_ANIM_MANUAL_PAL_TRANSFORM, \index, \num_pals
+	.macro gfx_anim_manual_pal_transform transform_type:req, ptr5:req, index:req, num_pals:req
+	gfx_anim_data_common_struct \transform_type, \ptr5, GFX_ANIM_MANUAL_PAL_TRANSFORM, \index, \num_pals
 	.endm
 
 	enum GFX_ANIM_PLAY_SOUND // 0x10
@@ -46,7 +47,8 @@
 	gfx_anim_data_common_struct \gfx_src, \gfx_dest, GFX_ANIM_8BIT_TILE_COPY, \index, \num_tiles, \buffer_index
 	.endm
 
-// data commands
+  // data commands, processed by ProcessGFXAnims after initial loading by LoadGFXAnim
+
 	enum_start
 	
 	enum GFX_ANIM_END // 0x0
@@ -68,7 +70,27 @@
 	.word \dest
 	.endm
 
+  // Commands that expect pointers in the data: 0x00, 0x04, and 0x18
+  // Commands that do not: 0x08, 0x0C, 0x10, 0x14
+
 	// generic command to specify data for a gfx anim after the initial command has been executed
+	.macro gfx_anim_data_ptr ptr:req, delay:req
+	.word \ptr, \delay
+	.endm
+
+  // This expects an event flag for command 0x14.
+	.macro gfx_anim_data_event event16:req, delay:req
+  .hword \event16
+  .hword 0x0000
+  .word \delay
+	.endm
+
+  // This expects a sound effect index or FFs for command 0x10.
+	.macro gfx_anim_data_sound sound_effect8:req, delay:req
+  .byte \sound_effect8, 0x0, 0x0, 0x0
+	.word \delay
+	.endm
+
 	.macro gfx_anim_data data:req, delay:req
 	.word \data, \delay
 	.endm

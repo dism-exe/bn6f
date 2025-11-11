@@ -18867,7 +18867,7 @@ startScreen_initGfx_802F574: // (self: *mut StartScreen $r5) -> ()
 	bl musicGameState_8000784 // () -> void
 
 	ldr r0, off_802F5EC // =pt_802F5F0 
-	bl LoadGFXAnims // (gfx_anim_data_arr: * NullStop<[GFXAnimData]>) -> ()
+	bl LoadGFXAnims // (gfx_anim_data_arr: * FFStop32<[GFXAnimScript]>) -> ()
 
   // trigger startscreen_802F60C via startscreen_render_802F544
 	mov r0, #4
@@ -19280,9 +19280,9 @@ sub_802F7E8:
 	mov r0, #SOUND_SELECT_67
 	bl PlaySoundEffect
 	ldr r0, off_802F814 // =byte_802F2E4 
-	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
+	bl LoadGFXAnim // (script: * GFXAnimScript) -> ()
 	ldr r0, off_802F818 // =dword_802F334 
-	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
+	bl LoadGFXAnim // (script: * GFXAnimScript) -> ()
 locret_802F810:
 	pop {pc}
 	.balign 4, 0

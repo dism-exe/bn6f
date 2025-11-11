@@ -1159,7 +1159,7 @@ MapScriptCutsceneCmd_load_gfx_anim: // 8035F2A
 	mov r6, #1
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
+	bl LoadGFXAnim // (script: * GFXAnimScript) -> ()
 	add r7, #5
 	mov r0, #1
 	pop {pc}
@@ -1177,7 +1177,7 @@ MapScriptCutsceneCmd_load_gfx_anims: // 8035F3E
 	mov r6, #1
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl LoadGFXAnims // (gfx_anim_data_arr: * NullStop<[GFXAnimData]>) -> ()
+	bl LoadGFXAnims // (gfx_anim_data_arr: * FFStop32<[GFXAnimScript]>) -> ()
 	add r7, #5
 	mov r0, #1
 	pop {pc}
@@ -3253,7 +3253,7 @@ CutsceneCameraCmd_call_sub_8001B1C:
 	push {r1}
 	mov r0, #1
 	bl ReadCutsceneCameraScriptWord
-	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
+	bl LoadGFXAnim // (script: * GFXAnimScript) -> ()
 	pop {r1}
 	mov r0, #1
 	add r1, #5

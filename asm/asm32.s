@@ -32582,9 +32582,9 @@ sub_811ED58:
 	strh r0, [r5,#0x10]
 	blt loc_811ED8E
 	ldr r0, off_811EDAC // =byte_811EA68
-	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
+	bl LoadGFXAnim // (script: * GFXAnimScript) -> ()
 	ldr r0, off_811EDB0 // =byte_811EAB8
-	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
+	bl LoadGFXAnim // (script: * GFXAnimScript) -> ()
 	mov r0, #0
 	strh r0, [r5,#0x10]
 	strb r0, [r5,#9]
@@ -32651,9 +32651,9 @@ loc_811EDF2:
 	mov r0, #1
 	strb r0, [r5,#0xd]
 	ldr r0, off_811EE90 // =byte_811EB04
-	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
+	bl LoadGFXAnim // (script: * GFXAnimScript) -> ()
 	ldr r0, off_811EE94 // =byte_811EB5C
-	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
+	bl LoadGFXAnim // (script: * GFXAnimScript) -> ()
 	b loc_811EE82
 loc_811EE08:
 	mov r4, r0
@@ -32801,9 +32801,9 @@ sub_811EF28:
 	mov r0, #4
 	strb r0, [r5]
 	ldr r0, off_811EF68 // =byte_811EAD4
-	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
+	bl LoadGFXAnim // (script: * GFXAnimScript) -> ()
 	ldr r0, off_811EF6C // =byte_811EAEC
-	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
+	bl LoadGFXAnim // (script: * GFXAnimScript) -> ()
 	bl sub_811F1B8
 	bl sub_811F214
 	bl sub_811F0C8

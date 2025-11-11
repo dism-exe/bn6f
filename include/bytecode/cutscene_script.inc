@@ -1106,7 +1106,7 @@
 // word9 - map object ID (written to field oOverworldMapObject_ObjectID)
 	.macro cs_spawn_ow_map_object nybble1:req byte2:req hword3:req hword5:req hword7:req word9:req
 	.byte cs_spawn_free_ow_map_object_specials_cmd
-	nybble cs_spawn_ow_map_object_subcmd, nybble1
+	nybble high=cs_spawn_ow_map_object_subcmd low=\nybble1
 	.byte \byte2
 	.hword \hword3
 	.hword \hword5
@@ -1125,7 +1125,7 @@
 // word9 - map object ID (written to field oOverworldMapObject_ObjectID)
 	.macro cs_spawn_ow_map_object_rel_to_ow_player nybble1:req byte2:req signedhword3:req signedhword5:req signedhword7:req word9:req
 	.byte cs_spawn_free_ow_map_object_specials_cmd
-	nybble cs_spawn_ow_map_object_rel_to_ow_player_subcmd, nybble1
+	nybble high=cs_spawn_ow_map_object_rel_to_ow_player_subcmd low=\nybble1
 	.byte \byte2
 	.hword \signedhword3
 	.hword \signedhword5
@@ -1145,7 +1145,7 @@
 // word10 - map object ID (written to field oOverworldMapObject_ObjectID)
 	.macro cs_spawn_ow_map_object_rel_to_ow_npc nybble1:req byte2:req byte3:req signedhword4:req signedhword6:req signedhword8:req word10:req
 	.byte cs_spawn_free_ow_map_object_specials_cmd
-	nybble cs_spawn_ow_map_object_rel_to_ow_npc_subcmd, nybble1
+	nybble high=cs_spawn_ow_map_object_rel_to_ow_npc_subcmd low=\nybble1
 	.byte \byte2
 	.byte \byte3
 	.hword \signedhword4
@@ -1160,7 +1160,7 @@
 // byte1 lower nybble - which map object to free, from the list of cutscene state map object ptrs
 	.macro cs_free_ow_map_object nybble1:req
 	.byte cs_spawn_free_ow_map_object_specials_cmd
-	nybble cs_free_ow_map_object_subcmd, nybble1
+	nybble high=cs_free_ow_map_object_subcmd low=\nybble1
 	.endm
 
 	subenum cs_free_all_ow_map_objects_subcmd // 0x4
@@ -1168,7 +1168,7 @@
 // free all overworld map objects created via a cutscene
 	.macro cs_free_all_ow_map_objects
 	.byte cs_spawn_free_ow_map_object_specials_cmd
-	nybble cs_free_all_ow_map_objects_subcmd, 0
+	nybble high=cs_free_all_ow_map_objects_subcmd low=0
 	.endm
 
 	enum cs_spawn_or_free_ow_map_or_npc_objects_cmd // 0x4a

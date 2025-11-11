@@ -81,7 +81,7 @@ HomePages_LoadGFXAnims:
 	lsl r1, r1, #2
 	ldr r0, off_806C2F0 // =off_806C2F4 
 	ldr r0, [r0,r1]
-	bl LoadGFXAnims // (gfx_anim_data_arr: * NullStop<[GFXAnimData]>) -> ()
+	bl LoadGFXAnims // (gfx_anim_data_arr: * FFStop32<[GFXAnimScript]>) -> ()
 	pop {pc}
 	.balign 4, 0
 off_806C2F0:
@@ -276,7 +276,7 @@ sub_806C4F8:
 	pop {pc}
 loc_806C504:
 	ldr r0, off_806C598 // =off_806C1C4 
-	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
+	bl LoadGFXAnim // (script: * GFXAnimScript) -> ()
 	movflag EVENT_16F1
 	bl SetEventFlagFromImmediate
 	pop {pc}

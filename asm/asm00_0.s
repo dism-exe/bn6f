@@ -3445,7 +3445,7 @@ off_8001B18:
 
 	thumb_func_start LoadGFXAnim
 // r0 struct format: word0 word4 word8 byte9 (multiple fields depending on command)
-LoadGFXAnim: // (gfx_anim_data: * GFXAnimData) -> ()
+LoadGFXAnim: // (script: * GFXAnimScript) -> ()
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
@@ -3592,7 +3592,7 @@ ProcessGFXAnims:
 	b .doneThisStruct
 .noMoreEntries
 	mov r1, #0
-	strb r1, [r7]
+	strb r1, [r7, #oGFXAnimState_IsActive]
 	b .doneThisStruct
 .doneAllStructs
 	pop {r1-r3}
@@ -4648,14 +4648,14 @@ sub_8002338: // (self: * GFXAnimState $r7, params: * GFXAnimDataNext) -> ()
 	thumb_func_end sub_8002338
 
 	thumb_func_start LoadGFXAnims
-LoadGFXAnims: // (gfx_anim_data_arr: * NullStop<[GFXAnimData]>) -> ()
+LoadGFXAnims: // (gfx_anim_data_arr: * FFStop32<[GFXAnimScript]>) -> ()
 	push {r5,lr}
 	mov r5, r0
 .loadGFXAnimLoop
 	ldr r0, [r5]
 	cmp r0, #NULL
 	blt .done
-	bl LoadGFXAnim // (gfx_anim_data: * GFXAnimData) -> ()
+	bl LoadGFXAnim // (script: * GFXAnimScript) -> ()
 	add r5, #4
 	b .loadGFXAnimLoop
 .done

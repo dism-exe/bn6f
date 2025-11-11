@@ -1,6 +1,6 @@
 
 	.macro nybble high:req, low:req
-	.byte (\high << 4) | \low
+	.byte (\high << 4) + \low
 	.endm
 
 	.macro movflag flag16:req

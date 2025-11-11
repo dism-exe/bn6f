@@ -532,10 +532,11 @@
 	.endm
 
 	// 0x4d unusedword1 destination5
+  // corresponds to NPCCommand_jump_alt
 	enum ns_jump_alt_cmd // 0x4d
-	.macro ns_jump_alt unusedword1:req destination5:req
+	.macro ns_jump_alt unuseddestination1:req destination5:req
 	.byte ns_jump_alt_cmd
-	.word \unusedword1
+	.word \unuseddestination1
 	.word \destination5
 	.endm
 

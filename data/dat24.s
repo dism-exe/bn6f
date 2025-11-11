@@ -180,23 +180,51 @@ byte_808D96A::
 	.byte 0x27, 0xFF, 0xC, 0x8, 0x7, 0x15
 	.word byte_808D96A
 byte_808D9F8::
-	.word 0x00000004, iPalette3001B60, 0xFF0D0C0C, 0x80002108, 0x0000001E, 0x80002529, 0x0000001E, 0x8000294A
-	.word 0x0000001E, 0x80002D6B, 0x0000001E, 0x8000318C, 0x0000001E, 0x80002D6B, 0x0000001E, 0x8000294A
-	.word 0x0000001E, 0x80002529, 0x0000001E, 0x00000001
+	gfx_anim_manual_pal_transform transform_type=0x00000004 ptr5=iPalette3001B60 index=0x0C num_pals=0x0D
+	gfx_anim_data data=0x80002108 delay=0x0000001E
+	gfx_anim_data data=0x80002529 delay=0x0000001E
+	gfx_anim_data data=0x8000294A delay=0x0000001E
+	gfx_anim_data data=0x80002D6B delay=0x0000001E
+	gfx_anim_data data=0x8000318C delay=0x0000001E
+	gfx_anim_data data=0x80002D6B delay=0x0000001E
+	gfx_anim_data data=0x8000294A delay=0x0000001E
+	gfx_anim_data data=0x80002529 delay=0x0000001E
+	gfx_anim_loop
 
 unk_808DA48:
-	.word 0x00000004, iPallete3001750, 0xFF0C0D0C, 0x80000C63, 0x0000001E, 0x80001084, 0x0000001E, 0x800014A5
-	.word 0x0000001E, 0x800018C6, 0x0000001E, 0x80001CE7, 0x0000001E, 0x800018C6, 0x0000001E, 0x800014A5
-	.word 0x0000001E, 0x80001084, 0x0000001E, 0x00000001
+	gfx_anim_manual_pal_transform transform_type=0x00000004 ptr5=iPallete3001750 index=0x0D num_pals=0x0C
+	gfx_anim_data data=0x80000C63 delay=0x0000001E
+	gfx_anim_data data=0x80001084 delay=0x0000001E
+	gfx_anim_data data=0x800014A5 delay=0x0000001E
+	gfx_anim_data data=0x800018C6 delay=0x0000001E
+	gfx_anim_data data=0x80001CE7 delay=0x0000001E
+	gfx_anim_data data=0x800018C6 delay=0x0000001E
+	gfx_anim_data data=0x800014A5 delay=0x0000001E
+	gfx_anim_data data=0x80001084 delay=0x0000001E
+	gfx_anim_loop
 
 unk_808DA98:
-	.word 0x00000004, iPalette3001B60, 0xFF0D0C0C, 0x80001CE7, 0x00000004, 0x800018C6, 0x00000004, 0x800014A5
-	.word 0x00000004, 0x80001084, 0x00000004, 0x80000C63, 0x00000004, 0x80000842, 0x00000004, 0x80000421
-	.word 0x00000004, 0x80000000, 0x00000004, 0x00000000
+	gfx_anim_manual_pal_transform transform_type=0x00000004 ptr5=iPalette3001B60 index=0x0C num_pals=0x0D
+	gfx_anim_data data=0x80001CE7 delay=0x00000004
+	gfx_anim_data data=0x800018C6 delay=0x00000004
+	gfx_anim_data data=0x800014A5 delay=0x00000004
+	gfx_anim_data data=0x80001084 delay=0x00000004
+	gfx_anim_data data=0x80000C63 delay=0x00000004
+	gfx_anim_data data=0x80000842 delay=0x00000004
+	gfx_anim_data data=0x80000421 delay=0x00000004
+	gfx_anim_data data=0x80000000 delay=0x00000004
+	gfx_anim_end
 
 unk_808DAE8:
-	.word 0x00000004, iPallete3001750, 0xFF0C0D0C, 0x800014A5, 0x00000004, 0x80001084, 0x00000004, 0x80000C63
-	.word 0x00000004, 0x80000842, 0x00000004, 0x80000421, 0x00000004, 0x80000000, 0x00000004, 0x00000000
+	gfx_anim_manual_pal_transform transform_type=0x00000004 ptr5=iPallete3001750 index=0x0D num_pals=0x0C
+	gfx_anim_data data=0x800014A5 delay=0x00000004
+	gfx_anim_data data=0x80001084 delay=0x00000004
+	gfx_anim_data data=0x80000C63 delay=0x00000004
+	gfx_anim_data data=0x80000842 delay=0x00000004
+	gfx_anim_data data=0x80000421 delay=0x00000004
+	gfx_anim_data data=0x80000000 delay=0x00000004
+	gfx_anim_end
+
 ccs_808DB28:
 	ccs_set_camera_pos hword1=0x05C0 hword3=0xF500 hword5=0x0000
 	ccs_end

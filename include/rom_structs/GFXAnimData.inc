@@ -10,9 +10,12 @@
 	u8 Index, \index            // 0x9
 	u8 Param2, \param2          // 0xA
 	u8 Param3, \param3          // 0xB
+
+  // There is typically then an array of (ParamNext, Delay) to process that is annotated with the type ProcessGFXAnimsNext
   // type: struct GFXAnimDataNext
 	u32 ParamNext, \param_next  // 0xC
 	u32 Delay, \delay           // 0x10
+
 	.endm
 
 	def_rom_struct_offsets gfx_anim_data_struct, oGFXAnimData

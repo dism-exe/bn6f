@@ -25,7 +25,7 @@ Valid data types include:
 - Names of enums as found in the filenames in `constants/enums/`,
 - A wrapping generic type for compression: `LZ77Compressed<T>`, and a generic paramter `T`. 
 - `FFStop8<[T; N]>` means that the array ends with a `.byte 0xFF`. `FFStop16<[T; N]>` with `.hword 0xFFFF`, and 
-  `FFStop32<[T; N]>` with `.word 0xFFFFFF`. 
+  `FFStop32<[T; N]>` with `.word 0xFFFFFFFF`.
 - Similarly there is `NullStop<[T; N]>` for arrays terminated with `NULL`. 
 - `Either<T, U>` can take either `T` or `U`
 

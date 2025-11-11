@@ -85,7 +85,9 @@ byte_3001710:: // 0x3001710
 byte_3001730:: // 0x3001730
 	.space 32
 iPallete3001750:: // 0x3001750
-	.space 0x120
+  .space 32
+unk_3001770:: // 0x3001770
+	.space 0x100
 iPalette3001870:: // 0x3001870
 	.space 0x20
 iPalette3001890:: // 0x3001890

@@ -1715,19 +1715,15 @@ off_80348FC:
 	.word dword_8034920
 	.word 0xFFFFFFFF
 dword_8034908:
-	.word 0xC
-	.word iPalette3001B60
-	.word 0xFF0E0F0C
-	.word 0x80004210
-	.word 0x1
-	.word 0x0
+	gfx_anim_manual_pal_transform transform_type=0x0000000C ptr5=iPalette3001B60 index=0x0F num_pals=0x0E
+	gfx_anim_data data=0x80004210 delay=0x00000001
+	gfx_anim_end
+
 dword_8034920:
-	.word 0xC
-	.word iPallete3001750
-	.word 0xFF0C0E0C
-	.word 0x80004210
-	.word 0x1
-	.word 0x0
+	gfx_anim_manual_pal_transform transform_type=0x0000000C ptr5=iPallete3001750 index=0x0E num_pals=0x0C
+	gfx_anim_data data=0x80004210 delay=0x00000001
+	gfx_anim_end
+
 off_8034938:
 	.word dword_8034944
 	.word dword_803495C
@@ -2955,7 +2951,7 @@ loc_80353EA:
 	push {r4-r7,lr}
 loc_80353EC:
 	ldr r0, off_80353F8 // =off_80353FC
-	bl LoadGFXAnims // (gfx_anim_data_arr: * NullStop<[GFXAnimData]>) -> ()
+	bl LoadGFXAnims // (gfx_anim_data_arr: * FFStop32<[GFXAnimScript]>) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -2971,7 +2967,7 @@ off_80353FC:
 sub_8035408:
 	push {r4-r7,lr}
 	ldr r0, off_8035414 // =off_8035418
-	bl LoadGFXAnims // (gfx_anim_data_arr: * NullStop<[GFXAnimData]>) -> ()
+	bl LoadGFXAnims // (gfx_anim_data_arr: * FFStop32<[GFXAnimScript]>) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -2994,7 +2990,7 @@ sub_8035424:
 	tst r0, r1
 	bne locret_8035440
 	ldr r0, off_8035444 // =off_8035448
-	bl LoadGFXAnims // (gfx_anim_data_arr: * NullStop<[GFXAnimData]>) -> ()
+	bl LoadGFXAnims // (gfx_anim_data_arr: * FFStop32<[GFXAnimScript]>) -> ()
 locret_8035440:
 	pop {r4-r7,pc}
 	.balign 4, 0

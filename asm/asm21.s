@@ -34,7 +34,7 @@ sub_8080DA0:
 	lsl r1, r4, #2
 	ldr r0, off_8080E2C // =off_8081220 
 	ldr r0, [r0,r1]
-	bl LoadGFXAnims // (gfx_anim_data_arr: * NullStop<[GFXAnimData]>) -> ()
+	bl LoadGFXAnims // (gfx_anim_data_arr: * FFStop32<[GFXAnimScript]>) -> ()
 	bl GetBattleMode
 	cmp r0, #1
 	beq locret_8080DE8
@@ -67,7 +67,7 @@ sub_8080DEA:
 	lsl r1, r4, #2
 	ldr r0, off_8080E2C // =off_8081220 
 	ldr r0, [r0,r1]
-	bl LoadGFXAnims // (gfx_anim_data_arr: * NullStop<[GFXAnimData]>) -> ()
+	bl LoadGFXAnims // (gfx_anim_data_arr: * FFStop32<[GFXAnimScript]>) -> ()
 	bl sub_803537C
 	bl sub_8035424
 	pop {r4-r7,pc}
