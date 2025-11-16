@@ -748,7 +748,64 @@
 // 0 jumps to destination1, 1 jumps to destination5, 2 jumps to destination9...
 // destinationX - script to jump to
 // the length of this command is unknown, but the max length should be 33
-	.macro cs_switch_case_from_chatbox_flags_bit0_to_2 destination1:req destination5:req destination9:req, destination13:req, destination17:req, destination21:req, destination25:req, destination29:req
+// corresponds to CutsceneCmd_switch_case_from_chatbox_flags_bit0_to_2
+	.macro cs_switch_case_from_chatbox_flags_bit0_to_2_1 destination1:req
+	.byte cs_switch_case_from_chatbox_flags_bit0_to_2_cmd
+	.word \destination1
+	.endm
+
+	.macro cs_switch_case_from_chatbox_flags_bit0_to_2_2 destination1:req destination5:req
+	.byte cs_switch_case_from_chatbox_flags_bit0_to_2_cmd
+	.word \destination1
+	.word \destination5
+	.endm
+
+	.macro cs_switch_case_from_chatbox_flags_bit0_to_2_3 destination1:req destination5:req destination9:req
+	.byte cs_switch_case_from_chatbox_flags_bit0_to_2_cmd
+	.word \destination1
+	.word \destination5
+	.word \destination9
+	.endm
+
+	.macro cs_switch_case_from_chatbox_flags_bit0_to_2_4 destination1:req destination5:req destination9:req destination13:req
+	.byte cs_switch_case_from_chatbox_flags_bit0_to_2_cmd
+	.word \destination1
+	.word \destination5
+	.word \destination9
+	.word \destination13
+	.endm
+
+	.macro cs_switch_case_from_chatbox_flags_bit0_to_2_5 destination1:req destination5:req destination9:req destination13:req destination17:req
+	.byte cs_switch_case_from_chatbox_flags_bit0_to_2_cmd
+	.word \destination1
+	.word \destination5
+	.word \destination9
+	.word \destination13
+	.word \destination17
+	.endm
+
+	.macro cs_switch_case_from_chatbox_flags_bit0_to_2_6 destination1:req destination5:req destination9:req destination13:req destination17:req destination21:req
+	.byte cs_switch_case_from_chatbox_flags_bit0_to_2_cmd
+	.word \destination1
+	.word \destination5
+	.word \destination9
+	.word \destination13
+	.word \destination17
+	.word \destination21
+	.endm
+
+	.macro cs_switch_case_from_chatbox_flags_bit0_to_2_7 destination1:req destination5:req destination9:req destination13:req destination17:req destination21:req destination25:req
+	.byte cs_switch_case_from_chatbox_flags_bit0_to_2_cmd
+	.word \destination1
+	.word \destination5
+	.word \destination9
+	.word \destination13
+	.word \destination17
+	.word \destination21
+	.word \destination25
+	.endm
+
+	.macro cs_switch_case_from_chatbox_flags_bit0_to_2_8 destination1:req destination5:req destination9:req destination13:req destination17:req destination21:req destination25:req destination29:req
 	.byte cs_switch_case_from_chatbox_flags_bit0_to_2_cmd
 	.word \destination1
 	.word \destination5
