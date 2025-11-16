@@ -15,7 +15,7 @@ CONST = constants
 INC = include
 
 # project files
-SFILES = rom.s data.s ewram.s iwram.s
+SFILES = rom.s data.s ewram.s iwram.s vram.s
 
 # to keep track of compressed files and to build decompressed versions into them
 # defines rules to build and compress lz files
@@ -82,7 +82,7 @@ clean:
 syms: $(SYM)
 
 $(SYM): $(ELF)
-	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389]" | perl -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@
+	$(OBJDUMP) -t $< | sort -u | grep -E "^0[23689]" | perl -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@
 
 nogbasyms: $(NOGBASYM)
 
