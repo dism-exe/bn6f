@@ -1543,50 +1543,73 @@ RealWorldSpawnMapObjectJumptable:
 InternetMapScriptPointers: // [*const [*const [*const MapScript]; 2]; INTERNET_NUM_GROUPS]
   .word off_80665A4
 	.word off_80665AC
+
 	.word off_8067DC8
 	.word off_8067DD4
+
 	.word off_80692F8
 	.word off_8069304
+
 	.word off_806A260
 	.word off_806A26C
+
 	.word NULL
 	.word NULL
+
 	.word off_806AE08
 	.word off_806AE1C
+
 	.word NULL
 	.word NULL
+
 	.word NULL
 	.word NULL
+
 	.word off_806C7B0
 	.word off_806C7CC
+
 	.word NULL
 	.word NULL
+
 	.word NULL
 	.word NULL
+
 	.word NULL
 	.word NULL
+
 	.word off_806DFB0
 	.word off_806DFF0
+
 	.word off_807022C
 	.word off_807026C
+
 	.word NULL
 	.word NULL
+
 	.word NULL
 	.word NULL
+
 	.word off_8071EB0
 	.word off_8071EBC
+
 	.word off_80758A0
 	.word off_80758AC
+
 	.word off_8078104
 	.word off_807810C
+
 	.word off_807952C
 	.word off_8079534
+
 	.word off_807ADEC
 	.word off_807ADF8
+
 	.word off_807D2F0
 	.word off_807D300
+
 	.word dword_807F1F8
 	.word dword_807F204
+
 off_8034728:
 	.word off_80665BC
 	.word pt_8067DEC
