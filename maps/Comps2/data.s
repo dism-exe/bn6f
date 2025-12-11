@@ -61,7 +61,7 @@ byte_8070202::
 byte_8070214::
 	.byte 0x5, 0x0, 0x0, 0x0, 0x0, 0x0, 0x4A, 0x0, 0x0, 0x0, 0xB8, 0xFF, 0x0, 0x0
 	.byte 0xC0, 0xFF, 0x10, 0x0, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0
-off_807022C::
+off_807022C:: // [*const MapScript; COMPS_2_NUM_MAPS]
 	.word byte_807043C
 	.word byte_8070498
 	.word byte_80704F4
@@ -78,7 +78,7 @@ off_807022C::
 	.word byte_8070C9C
 	.word byte_8070CA8
 	.word byte_8070CB4
-off_807026C::
+off_807026C:: // [*const MapScript; COMPS_2_NUM_MAPS]
 	.word byte_8070497
 	.word byte_80704F3
 	.word byte_80705C2

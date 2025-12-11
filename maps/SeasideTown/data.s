@@ -127,13 +127,13 @@ byte_8059C00::
 byte_8059D30::
 	.byte 0x5, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7A, 0x0, 0x0, 0x0, 0x36, 0x0, 0x0, 0x0, 0x20
 	.byte 0x0, 0x56, 0x0, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0
-off_8059D48::
+off_8059D48:: // [*const MapScript; SEASIDE_TOWN_NUM_MAPS]
 	.word dword_8059E34
 	.word byte_805A238
 	.word byte_805A414
 	.word byte_805A998
 	.word byte_805AB8C
-off_8059D5C::
+off_8059D5C:: // [*const MapScript; SEASIDE_TOWN_NUM_MAPS]
 	.word byte_805A06A
 	.word byte_805A348
 	.word byte_805A802

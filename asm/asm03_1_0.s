@@ -1495,26 +1495,26 @@ Struct8034460:
 	.word 0x0285, 0x0, 0x0, 0x3, 0xfe840000, 0x1540000, 0x3c0000, 0x1ae0000
 	.word 0xffffffff
 RealWorldMapScriptPointers: // [*const [*const [*const MapScript]; 2]; REAL_WORLD_NUM_GROUPS]
-	.word map00_ACDC_804D0A4
-	.word off_804D0AC
+	.word map00_ACDC_804D0A4 // [*const MapScript; ACDC_TOWN_NUM_MAPS]
+	.word off_804D0AC // [*const MapScript; ACDC_TOWN_NUM_MAPS]
 
-	.word off_804E92C // (*const MapScript)[CENTRAL_TOWN_NUM_MAPS]
-	.word off_804E940 // (*const MapScript)[CENTRAL_TOWN_NUM_MAPS]
+	.word off_804E92C // [*const MapScript; CENTRAL_TOWN_NUM_MAPS]
+	.word off_804E940 // [*const MapScript; CENTRAL_TOWN_NUM_MAPS]
 
-	.word off_8052D88
-	.word off_8052DB4
+	.word off_8052D88 // [*const MapScript; CYBER_ACADEMY_NUM_MAPS]
+	.word off_8052DB4 // [*const MapScript; CYBER_ACADEMY_NUM_MAPS]
 
-	.word off_8059D48
-	.word off_8059D5C
+	.word off_8059D48 // [*const MapScript; SEASIDE_TOWN_NUM_MAPS]
+	.word off_8059D5C // [*const MapScript; SEASIDE_TOWN_NUM_MAPS]
 
-	.word off_805E15C
-	.word off_805E170
+	.word off_805E15C // [*const MapScript; GREEN_TOWN_NUM_MAPS]
+	.word off_805E170 // [*const MapScript; GREEN_TOWN_NUM_MAPS]
 
-	.word off_806063C
-	.word off_806064C
+	.word off_806063C // [*const MapScript; SKY_TOWN_NUM_MAPS]
+	.word off_806064C // [*const MapScript; SKY_TOWN_NUM_MAPS]
 
-	.word off_8062F48
-	.word off_8062F60
+	.word off_8062F48 // [*const MapScript; EXPO_SITE_NUM_MAPS]
+	.word off_8062F60 // [*const MapScript; EXPO_SITE_NUM_MAPS]
 off_803461C:
 	.word off_804D0BC
 	.word off_804E968
@@ -1541,32 +1541,23 @@ RealWorldSpawnMapObjectJumptable:
 	.word ExpoSite_SpawnMapObjectsForMap+1
 
 InternetMapScriptPointers: // [*const [*const [*const MapScript]; 2]; INTERNET_NUM_GROUPS]
-  .word off_80665A4
-	.word off_80665AC
+  .word off_80665A4 // [*const MapScript; ROBOT_CONTROL_COMP_NUM_MAPS]
+	.word off_80665AC // [*const MapScript; ROBOT_CONTROL_COMP_NUM_MAPS]
 
-	.word off_8067DC8
-	.word off_8067DD4
+	.word off_8067DC8 // [*const MapScript; AQUARIUM_COMP_NUM_MAPS]
+	.word off_8067DD4 // [*const MapScript; AQUARIUM_COMP_NUM_MAPS]
 
-	.word off_80692F8
-	.word off_8069304
+	.word off_80692F8 // [*const MapScript; JUDGETREE_COMP_NUM_MAPS]
+	.word off_8069304 // [*const MapScript; JUDGETREE_COMP_NUM_MAPS]
 
-	.word off_806A260
-	.word off_806A26C
-
-	.word NULL
-	.word NULL
-
-	.word off_806AE08
-	.word off_806AE1C
+	.word off_806A260 // [*const MapScript; MR_WEATHER_COMP_NUM_MAPS]
+	.word off_806A26C // [*const MapScript; MR_WEATHER_COMP_NUM_MAPS]
 
 	.word NULL
 	.word NULL
 
-	.word NULL
-	.word NULL
-
-	.word off_806C7B0
-	.word off_806C7CC
+	.word off_806AE08 // [*const MapScript; PAVILION_COMP_NUM_MAPS]
+	.word off_806AE1C // [*const MapScript; PAVILION_COMP_NUM_MAPS]
 
 	.word NULL
 	.word NULL
@@ -1574,14 +1565,8 @@ InternetMapScriptPointers: // [*const [*const [*const MapScript]; 2]; INTERNET_N
 	.word NULL
 	.word NULL
 
-	.word NULL
-	.word NULL
-
-	.word off_806DFB0
-	.word off_806DFF0
-
-	.word off_807022C
-	.word off_807026C
+	.word off_806C7B0 // [*const MapScript; HOMEPAGES_NUM_MAPS]
+	.word off_806C7CC // [*const MapScript; HOMEPAGES_NUM_MAPS]
 
 	.word NULL
 	.word NULL
@@ -1589,26 +1574,41 @@ InternetMapScriptPointers: // [*const [*const [*const MapScript]; 2]; INTERNET_N
 	.word NULL
 	.word NULL
 
-	.word off_8071EB0
-	.word off_8071EBC
+	.word NULL
+	.word NULL
 
-	.word off_80758A0
-	.word off_80758AC
+	.word off_806DFB0 // [*const MapScript; COMPS_NUM_MAPS]
+	.word off_806DFF0 // [*const MapScript; COMPS_NUM_MAPS]
 
-	.word off_8078104
-	.word off_807810C
+	.word off_807022C // [*const MapScript; COMPS_2_NUM_MAPS]
+	.word off_807026C // [*const MapScript; COMPS_2_NUM_MAPS]
 
-	.word off_807952C
-	.word off_8079534
+	.word NULL
+	.word NULL
 
-	.word off_807ADEC
-	.word off_807ADF8
+	.word NULL
+	.word NULL
 
-	.word off_807D2F0
-	.word off_807D300
+	.word off_8071EB0 // [*const MapScript; CENTRAL_AREA_NUM_MAPS]
+	.word off_8071EBC // [*const MapScript; CENTRAL_AREA_NUM_MAPS]
 
-	.word dword_807F1F8
-	.word dword_807F204
+	.word off_80758A0 // [*const MapScript; SEASIDE_AREA_NUM_MAPS]
+	.word off_80758AC // [*const MapScript; SEASIDE_AREA_NUM_MAPS]
+
+	.word off_8078104 // [*const MapScript; GREEN_AREA_NUM_MAPS]
+	.word off_807810C // [*const MapScript; GREEN_AREA_NUM_MAPS]
+
+	.word off_807952C // [*const MapScript; UNDERGROUND_NUM_MAPS]
+	.word off_8079534 // [*const MapScript; UNDERGROUND_NUM_MAPS]
+
+	.word off_807ADEC // [*const MapScript; SKY_ACDC_AREA_NUM_MAPS]
+	.word off_807ADF8 // [*const MapScript; SKY_ACDC_AREA_NUM_MAPS]
+
+	.word off_807D2F0 // [*const MapScript; UNDERNET_NUM_MAPS]
+	.word off_807D300 // [*const MapScript; UNDERNET_NUM_MAPS]
+
+	.word dword_807F1F8 // [*const MapScript; GRAVEYARD_NUM_MAPS]
+	.word dword_807F204 // [*const MapScript; GRAVEYARD_NUM_MAPS]
 
 off_8034728:
 	.word off_80665BC

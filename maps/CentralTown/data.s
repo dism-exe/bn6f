@@ -175,13 +175,13 @@ AsterLandObjectSpawns:: // [MapObjectSpawnData; 4]
 	]
 	.word 0xFF
 
-off_804E92C:: // (*const MapScript)[CENTRAL_TOWN_NUM_MAPS]
+off_804E92C:: // [*const MapScript; CENTRAL_TOWN_NUM_MAPS]
   .word MapScriptOnInitCentralTown_804EA28 // MapScript
 	.word MapScriptOnInitLanHouse_804F1D4 // MapScript
 	.word MapScriptOnInitLanRoom_804F4F0 // MapScript
 	.word MapScriptOnInitBathroom_804F934 // MapScript
 	.word MapScriptOnInitAsterLand_804F998 // MapScript
-off_804E940:: // (*const MapScript)[CENTRAL_TOWN_NUM_MAPS]
+off_804E940:: // [*const MapScript; CENTRAL_TOWN_NUM_MAPS]
   .word MapScriptOnUpdateCentralTown_804EEF7 // MapScript
 	.word MapScriptOnUpdateLanHouse_804F3F0 // MapScript
 	.word MapScriptOnUpdateLanRoom_804F744 // MapScript

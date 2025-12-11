@@ -123,7 +123,7 @@ dword_8052D80::
 	.word 0xFF
 dword_8052D84::
 	.word 0xFF
-off_8052D88::
+off_8052D88:: // [*const MapScript; CYBER_ACADEMY_NUM_MAPS]
 	.word byte_8052F90
 	.word byte_805356C
 	.word byte_80535F4
@@ -135,7 +135,7 @@ off_8052D88::
 	.word byte_8053E54
 	.word byte_8053F44
 	.word byte_8054108
-off_8052DB4:: 
+off_8052DB4:: // [*const MapScript; CYBER_ACADEMY_NUM_MAPS]
   .word byte_8053371
 	.word byte_80535BA
 	.word byte_8053642

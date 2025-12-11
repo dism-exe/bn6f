@@ -29,13 +29,13 @@ byte_805E118::
 	.byte 0xFF, 0x0, 0x0, 0x0
 dword_805E158::
 	.word 0xFF
-off_805E15C:: 
+off_805E15C:: // [*const MapScript; GREEN_TOWN_NUM_MAPS]
   .word byte_805E248
 	.word byte_805E490
 	.word byte_805E6B8
 	.word byte_805E8E4
 	.word byte_805E940
-off_805E170:: 
+off_805E170:: // [*const MapScript; GREEN_TOWN_NUM_MAPS]
   .word off_805E36C
 	.word byte_805E5FC
 	.word byte_805E804

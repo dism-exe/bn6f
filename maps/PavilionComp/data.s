@@ -23,13 +23,13 @@ byte_806ADD8:
 	.byte 0x0, 0x0
 dword_806AE04:
 	.word 0xFF
-off_806AE08:
+off_806AE08: // [*const MapScript; PAVILION_COMP_NUM_MAPS]
 	.word dword_806AEB0
 	.word byte_806AF3C
 	.word byte_806AFF0
 	.word byte_806B10C
 	.word byte_806B268
-off_806AE1C: 
+off_806AE1C: // [*const MapScript; PAVILION_COMP_NUM_MAPS]
   .word dword_806AED0
 	.word MapScript_806AF9A
 	.word byte_806B0B5
