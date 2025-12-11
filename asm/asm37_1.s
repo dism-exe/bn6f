@@ -4053,6 +4053,7 @@ sub_8143F20:
 sub_8143F38:
 	mov r0, #1
 	b loc_8143F3E
+call_8143F3C::
 	mov r0, #0
 loc_8143F3E:
 	push {r4-r7,lr}
@@ -4062,6 +4063,8 @@ loc_8143F3E:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8143F38
 
+	thumb_local_start
+sub_8143F48:
 	push {r4-r7,lr}
 	ldr r5, off_81440D4 // =eStruct2001010 
 	strb r0, [r5,#0x8] // (byte_2001018 - 0x2001010)
@@ -4070,6 +4073,8 @@ loc_8143F3E:
 	ldr r5, off_81440D4 // =eStruct2001010 
 	ldrb r0, [r5,#0x8] // (byte_2001018 - 0x2001010)
 	pop {r4-r7,pc}
+	thumb_func_end sub_8143F48
+
 	thumb_local_start
 sub_8143F58:
 	push {r4-r7,lr}

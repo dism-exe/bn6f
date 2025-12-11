@@ -64,10 +64,26 @@ cutscenescript_8098C9F:
 	cs_end_for_map_reload_maybe_8037c64
 
 byte_8098CA2:
-	.byte 0x3F, 0x0, 0x6, 0x4B, 0xCD, 0x8C, 0x9, 0x8, 0x1C, 0x5, 0xFF
-	.byte 0xB5, 0x8C, 0x9, 0x8, 0x3A, 0x5, 0x4, 0x80, 0x2, 0xFF, 0x1E
-	.byte 0x27, 0x6, 0xFF, 0xFF, 0x7, 0x4C, 0x81, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x15, 0xC9, 0x8C, 0x9, 0x8, 0x3F, 0x4, 0x0, 0x29
+	cs_lock_player_for_non_npc_dialogue_809e0b0
+	cs_nop_80377d0
+	cs_call_native_with_return_value ptr1=byte_8098CCD
+	cs_jump_if_var_equal byte1=0x05 byte2=0xFF destination3=cutscenescript_8098CB5
+	cs_run_text_script_from_mem byte1=0x05
+	cs_wait_chatbox byte1=0x80
+
+cutscenescript_8098CB5:
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_set_screen_fade byte1=0x06 byte2=0xFF byte3=0xFF
+	cs_wait_screen_fade
+	cs_warp_cmd_8038040_2 byte1=0x81 byte2=0x00 ptr3=NULL
+	cs_jump destination1=cutscenescript_8098CC9
+
+cutscenescript_8098CC9:
+	cs_unlock_player_after_non_npc_dialogue_809e122
+	cs_end_for_map_reload_maybe_8037c64
+
+end_cutscenescript_8098CCC:
+	.byte 0x29
 byte_8098CCD:
 	.byte 0x79, 0xA, 0x48, 0x14, 0x22, 0x4A, 0x43, 0x80, 0x18
 	.byte 0x68, 0x63, 0xC1, 0x7C, 0x69, 0x71, 0x1, 0x7C, 0xA9
@@ -273,18 +289,18 @@ RunLMessageTextScript:
 	cmp r0, #0
 	bne loc_8099282
 	
-    mov r0, r10
+  mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_MapGroup]
 	
-    cmp r0, #INTERNET_MAP_GROUP_START
+  cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_809924A
 	
-    movflag EVENT_COPYBOT_ACTIVE
+  movflag EVENT_COPYBOT_ACTIVE
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
-    bne loc_8099282
+  bne loc_8099282
 	
-    movflag EVENT_PET_NAVI_ACTIVE
+  movflag EVENT_PET_NAVI_ACTIVE
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_8099282
 
@@ -299,23 +315,27 @@ loc_809924A:
 
 	cmp r0, #1
 	bne loc_8099266
-        ldr r0, MegamanJokesCompText8099294 // =CompText8738B24 + COMPRESSED_PTR_FLAG
-        bl DecompressTextArchiveForCutscene2
-        mov r1, #0
-        bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
+
+  ldr r0, MegamanJokesCompText8099294 // =CompText8738B24 + COMPRESSED_PTR_FLAG
+  bl DecompressTextArchiveForCutscene2
+  mov r1, #0
+  bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
 	b loc_8099290
 
-loc_8099266
+loc_8099266:
 	bl GetCurPETNavi // () -> u8
+
 	mov r1, #oNaviStats_Poem 
 	bl GetNaviStatsByte
 
 	cmp r0, #1
 	bne loc_8099282
-        ldr r0, dword_8099298 // =CompText873A528 + COMPRESSED_PTR_FLAG
-        bl DecompressTextArchiveForCutscene2
-        mov r1, #0
-        bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
+  ldr r0, dword_8099298 // =CompText873A528 + COMPRESSED_PTR_FLAG
+  bl DecompressTextArchiveForCutscene2
+
+  mov r1, #0
+  bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
+
 	b loc_8099290
 loc_8099282:
 	bl chatbox_uncompMapTextArchives_803FD3C // () -> int
@@ -594,7 +614,7 @@ byte_8099D23:
 end_cutscene_8099D41:
   .align 2, 0
 
-thumb_local_start
+	thumb_local_start
 sub_8099D44:
 	push {r4-r7,lr}
 	ldrb r0, [r5,#4]

@@ -1715,11 +1715,17 @@ unk_2011EA4:: // 0x2011ea4
 unk_2011EA8:: // 0x2011ea8
 	.space 4
 unk_2011EAC:: // 0x2011eac
-  .space 4
+	.space 4
 unk_2011EB0:: // 0x2011eb0
-  .space 4
+	.space 4
 unk_2011EB4:: // 0x2011eb4
-	.space 44
+	.space 4
+unk_2011EB8:: // 0x2011eb8
+	.space 4
+unk_2011EBC:: // 0x2011ebc
+	.space 4
+unk_2011EC0:: // 0x2011ec0
+	.space 32
 eOverworldMapObjects:: // 0x2011ee0
 	overworld_map_object_struct eOverworldMapObject0
 	overworld_map_object_struct eOverworldMapObject1

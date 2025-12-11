@@ -323,6 +323,7 @@ byte_806A70F:
 byte_806A71A:
 	.byte 0x8, 0x25, 0x2, 0x1C, 0x29, 0x53, 0x15, 0x45, 0x53, 0x15
 	.byte 0x3, 0x0, 0x0, 0x0
+npcscript_list_806a728::
 	.word byte_806A734
 	.word byte_806A758
 	.word 0xFF
@@ -341,6 +342,7 @@ byte_806A758:
 	.word byte_83F0516
 	.word 0xF6CC3601
 	.word 0x809
+npcscript_list_806a770::
 	.word byte_806A77C
 	.word byte_806A792
 	.word 0xFF

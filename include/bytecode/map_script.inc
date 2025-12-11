@@ -1,5 +1,7 @@
 //! type: MapScript
 
+// See MapScriptCommandJumptable for command implementation.
+
 	enum_start
 
 	enum ms_end_cmd // 0x00
@@ -333,7 +335,7 @@
 // destination2 - script to jump to
 	.macro ms_jump_if_map_group_equals_last_map_group destination2:req
 	.byte ms_jump_if_map_group_compare_last_map_group_cmd
-	.byte ms_jump_if_map_group_not_equal_last_map_group_subcmd
+  .byte ms_jump_if_map_group_equals_last_map_group_subcmd
 	.word \destination2
 	.endm
 
@@ -505,14 +507,14 @@
 	.endm
 
 	enum ms_call_native_function_cmd // 0x25
-// 0x25 ptr1 ptr5
-// call the native function ptr1 with ptr5 in r0
+// 0x25 ptr1 word5
+// call the native function ptr1 with word5 in r0
 // ptr1 - native function to call
-// ptr5 - parameter to native function
-	.macro ms_call_native_function ptr1:req ptr5:req
+// word5 - parameter to native function
+	.macro ms_call_native_function ptr1:req word5:req
 	.byte ms_call_native_function_cmd
 	.word \ptr1
-	.word \ptr5
+	.word \word5
 	.endm
 
 	enum ms_start_cutscene_cmd // 0x26

@@ -52,8 +52,9 @@
 // 0x05 byte1
 // wait script if the player sprite's current frame doesn't equal byte1
 // byte1 - anim frame to compare
-	.macro cs_wait_if_player_sprite_cur_frame_not_equal_maybe
+	.macro cs_wait_if_player_sprite_cur_frame_not_equal_maybe byte1:req
 	.byte cs_wait_if_player_sprite_cur_frame_not_equal_maybe_cmd
+	.byte \byte1
 	.endm
 
 	enum cs_nop_80377d0_cmd // 0x06

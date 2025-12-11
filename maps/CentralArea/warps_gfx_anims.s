@@ -224,20 +224,15 @@ byte_8071AB0::
 	.word byte_85E0550
 	.byte 0x12, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
 byte_8071B00::
-	.byte 0x80, 0x1A, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x1, 0xFF, 0xFF
-	.word byte_85E05D0
-	.word 0x19
-	.word byte_85E05F0
-	.word 0xE
-	.word byte_85E0610
-	.word 0xD
-	.word byte_85E0630
-	.word 0xC
-	.word byte_85E0650
-	.word 0xB
-	.word byte_85E0630
-	.word 0xD
-	.word byte_85E0610
-	.word 0xC
-	.word byte_85E05F0
-	.byte 0xB, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=unk_3001A80 size=0x00000020 index=0x01
+	gfx_anim_data_ptr ptr=byte_85E05D0 delay=0x00000019
+	gfx_anim_data_ptr ptr=byte_85E05F0 delay=0x0000000E
+	gfx_anim_data_ptr ptr=byte_85E0610 delay=0x0000000D
+	gfx_anim_data_ptr ptr=byte_85E0630 delay=0x0000000C
+	gfx_anim_data_ptr ptr=byte_85E0650 delay=0x0000000B
+	gfx_anim_data_ptr ptr=byte_85E0630 delay=0x0000000D
+	gfx_anim_data_ptr ptr=byte_85E0610 delay=0x0000000C
+	gfx_anim_data_ptr ptr=byte_85E05F0 delay=0x0000000B
+	gfx_anim_loop
+
+

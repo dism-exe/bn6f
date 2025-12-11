@@ -4533,7 +4533,7 @@ byte_8051BA8::
 	ns_set_npc_palette_index byte1=0x00
 	ns_jump_with_link destination1=byte_809F6CC
 
-npc_list_08051BDC:
+npcscript_list_8051bdc:
 	.word byte_8051BE4
 	.word 0x000000FF
 byte_8051BE4::
@@ -4557,7 +4557,7 @@ byte_8051BE4::
 	ns_set_npc_palette_index byte1=0x00
 	ns_jump_with_link destination1=byte_809F6CC
 
-npc_list_08051C18:
+npcscript_list_8051c18:
 	.word byte_8051C20
 	.word 0x000000FF
 byte_8051C20::
@@ -4591,7 +4591,7 @@ byte_8051C20::
 	ns_end
 	ns_end
 
-npc_list_08051C68:
+npcscript_list_8051c68:
 	.word byte_8051C70
 	.word 0x000000FF
 byte_8051C70::
@@ -4620,7 +4620,7 @@ byte_8051C70::
 	ns_end
 	ns_end
 
-npc_list_08051CAC:
+npcscript_list_8051cac:
 	.word byte_8051CB8
 	.word byte_8051D02
 	.word 0x000000FF
@@ -4669,7 +4669,7 @@ byte_8051D02::
 	ns_end
 	ns_end
 
-npc_list_08051D24:
+npcscript_list_8051d24:
 	.word byte_8051D30
 	.word byte_8051D52
 	.word 0x000000FF
@@ -4728,7 +4728,7 @@ npcscript_8051D7F:
 	ns_end_secondary_script
 	ns_end
 
-npc_list_08051DA4:
+npcscript_list_8051da4:
 	.word byte_8051DB8
 	.word byte_8051DEB
 	.word byte_8051E5E

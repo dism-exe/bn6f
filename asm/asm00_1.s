@@ -7427,7 +7427,7 @@ loc_8006D74:
 	b loc_8006D70
 loc_8006D8C:
 	ldr r4, off_8006DDC // =dword_2000060
-	ldr r6, off_8006DE0 // =dword_802412C
+	ldr r6, off_8006DE0 // =0x802412C
 loc_8006D90:
 	bl GetRNG // () -> u32?
 	lsl r0, r0, #0xc
@@ -7438,7 +7438,7 @@ loc_8006D90:
 	str r0, [r4]
 	bl encryption_zenny_8006f54
 	ldr r4, off_8006DE4 // =dword_20018B8
-	ldr r6, off_8006DE8 // =loc_803ED90
+	ldr r6, off_8006DE8 // =0x803ED90
 loc_8006DA8:
 	bl GetRNG // () -> u32?
 	lsl r0, r0, #0xc
@@ -7466,11 +7466,11 @@ dword_8006DD8:
 off_8006DDC:
 	.word dword_2000060
 off_8006DE0:
-	.word dword_802412C
+	.word 0x802412C
 off_8006DE4:
 	.word dword_20018B8
 off_8006DE8:
-	.word loc_803ED90
+	.word 0x803ED90
 	thumb_func_end encryption_initAll_8006d00
 
 	thumb_func_start sub_8006DEC

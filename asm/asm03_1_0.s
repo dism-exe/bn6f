@@ -1752,43 +1752,30 @@ off_8034938:
 	.word dword_803495C
 	.word 0xFFFFFFFF
 dword_8034944:
-	.word 0x8
-	.word iPalette3001B60
-	.word 0xFF0E0F0C
-	.word 0x80004210
-	.word 0x1
-	.word 0x0
+	gfx_anim_manual_pal_transform transform_type=0x00000008 ptr5=iPalette3001B60 index=0x0F num_pals=0x0E
+	gfx_anim_data data=0x80004210 delay=0x00000001
+	gfx_anim_end
+
 dword_803495C:
-	.word 0x8
-	.word iPallete3001750
-	.word 0xFF0C0E0C
-	.word 0x80004210
-	.word 0x1
-	.word 0x0
-	.word dword_803497C
-	.word 0xFFFFFFFF
+	gfx_anim_manual_pal_transform transform_type=0x00000008 ptr5=iPallete3001750 index=0x0E num_pals=0x0C
+	gfx_anim_data data=0x80004210 delay=0x00000001
+	gfx_anim_end
+	gfx_anim_data_ptr ptr=dword_803497C delay=0xFFFFFFFF
+
 dword_803497C:
-	.word 0xC
-	.word iPalette3001B60
-	.word 0xFF010F0C
-	.word 0x80004210
-	.word 0x1
-	.word 0x0
+	.word 0x0000000C, iPalette3001B60, 0xFF010F0C, 0x80004210, 0x00000001, 0x00000000
+
+gfx_anim_script_8034994:
 	.word dword_803499C
 	.word 0xFFFFFFFF
 dword_803499C:
-	.word 0xC
-	.word iPalette3001B60
-	.word 0xFF010F0C
-	.word 0x80001084
-	.word 0x2
-	.word 0x80002108
-	.word 0x2
-	.word 0x8000318C
-	.word 0x2
-	.word 0x80004210
-	.word 0x2
-	.word 0x0
+	gfx_anim_manual_pal_transform transform_type=0x0000000C ptr5=iPalette3001B60 index=0x0F num_pals=0x01
+	gfx_anim_data data=0x80001084 delay=0x00000002
+	gfx_anim_data data=0x80002108 delay=0x00000002
+	gfx_anim_data data=0x8000318C delay=0x00000002
+	gfx_anim_data data=0x80004210 delay=0x00000002
+	gfx_anim_end
+
 byte_80349CC:
 	.byte 0x4, 0x0, 0x0, 0x0, 0x60, 0x1B, 0x0, 0x3, 0xC, 0xC, 0xD, 0xFF
 	.byte 0x80, 0x31, 0x0, 0x80, 0x1E, 0x0, 0x0, 0x0, 0xA0, 0x35, 0x0, 0x80
@@ -3020,13 +3007,14 @@ locret_8035440:
 off_8035444:
 	.word off_8035448
 off_8035448:
-	.word byte_8034AFC
-	.word 0xFFFFFFFF
-	.word 0x4903B5F0
-	.word 0x58080080
-	.word 0xF88AF7CE
-	.word 0xBDF02000
-	.word off_8035464
+	.word byte_8034AFC, 0xFFFFFFFF
+	.byte 0xF0
+
+unk_8035451:
+	.word 0x804903B5, 0xCE580800, 0x00F88AF7, 0x64BDF020
+	.byte 0x54
+	.byte 0x03
+	.byte 0x08
 off_8035464:
 	.word byte_803546C
 	.word byte_80354D4
