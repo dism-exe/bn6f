@@ -1,6 +1,8 @@
 
+unk_812EFD8::
 	.word byte_8129178
 	.byte 0x2, 0x0, 0x2, 0x0, 0x0, 0x0, 0x0, 0x40
+
 	thumb_func_start sub_812EFE4
 sub_812EFE4::
 	push {lr}

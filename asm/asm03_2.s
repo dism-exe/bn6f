@@ -10940,16 +10940,14 @@ sub_804CD20:
 off_804CD30:
 	.word off_804CD34
 off_804CD34:
-	.word sub_804CD5C+1
-	.word sub_804CDCC+1
-	.word 0x4654B5F0
-	.word 0x880868A1
-	.word 0x43904A47
-	.word 0x481F8008
-	.word 0x46548148
-	.word 0x20086A24
-	.word 0xE03C7020
-	.word 0xBDF0
+	.word sub_804CD5C+1, sub_804CDCC+1
+	.byte 0xF0
+
+unk_804CD3D:
+	.word 0xA14654B5, 0x47880868, 0x0843904A, 0x48481F80, 0x24465481, 0x2020086A, 0xF0E03C70
+	.byte 0xBD
+	.byte 0x00
+	.byte 0x00
 	thumb_func_end sub_804CD20
 
 	thumb_local_start

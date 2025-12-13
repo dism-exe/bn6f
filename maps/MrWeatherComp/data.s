@@ -1,14 +1,41 @@
 
 byte_806A204:
-	.byte 0x5, 0x3, 0x0, 0x0, 0x0, 0x0, 0xD6, 0xFF, 0x0, 0x0, 0x4A, 0xFF, 0x0
-	.byte 0x0, 0xF4, 0xFF, 0x1D, 0x0, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0
+	map_object_spawn_data_struct [
+		index: 0x03,
+		x: -0x002A0000,
+		y: -0x00B60000,
+		z: -0x000C0000,
+		object_id: 0x0000001D,
+	]
+	.word 0xFF
+
 byte_806A21C:
-	.byte 0x5, 0x3, 0x0, 0x0, 0x0, 0x0, 0x82, 0x1, 0x0, 0x0, 0xE, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x1E, 0x0, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0
+	map_object_spawn_data_struct [
+		index: 0x03,
+		x: 0x01820000,
+		y: 0x000E0000,
+		z: 0x00000000,
+		object_id: 0x0000001E,
+	]
+	.word 0xFF
+
 byte_806A234:
-	.byte 0x5, 0x3, 0x0, 0x0, 0x0, 0x0, 0xC2, 0x1, 0x0, 0x0, 0xE, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x1F, 0x0, 0x0, 0x0, 0x5, 0x0, 0x0, 0x0, 0x0, 0x0, 0xD4, 0x1, 0x0, 0x0, 0xCE, 0xFF
-	.byte 0x0, 0x0, 0xC0, 0xFF, 0x2E, 0x0, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0
+	map_object_spawn_data_struct [
+		index: 0x03,
+		x: 0x01C20000,
+		y: 0x000E0000,
+		z: 0x00000000,
+		object_id: 0x0000001F,
+	]
+	map_object_spawn_data_struct [
+		index: 0x00,
+		x: 0x01D40000,
+		y: -0x00320000,
+		z: -0x00400000,
+		object_id: 0x0000002E,
+	]
+	.word 0xFF
+
 off_806A260: // [*const MapScript; MR_WEATHER_COMP_NUM_MAPS]
   .word byte_806A2C4
 	.word byte_806A3C4
@@ -37,197 +64,238 @@ byte_806A2B0:
 dword_806A2C0:
 	.word 0xA0A0A
 byte_806A2C4:
-	.byte 0x11, 0x0, 0xD3, 0xA2, 0x6, 0x8, 0x1F, 0xFF, 0xF7, 0x16
-	.byte 0x1, 0xE0, 0xA2, 0x6, 0x8, 0x29
-	.word 0x2011EBC
-	.word byte_8050202
-	.word 0x16F7FF1F
-	.word 0x16F2FF1F
-	.word 0xF07F4002
-	.word 0x10806A2
-	.word byte_806A359
-	.word 0xBE1FF03
-	.word byte_806A33D
-	.word 0x2138012F
-	.word 0x3D0804CD
-	.word 0x804CD
-	.word 0x5000000
-	.word 0x1E0BE0FF
-	.word 0x160806A3
-	.word 0x6A31E00
-	.word 0xFBFF1F08
-	.word 0xA322010B
-	.word 0xFF200806
-	.word 0xC1250BFB
-	.word 0x808FD
-	.word 0x29000000
-	.word 0x2011EA8
-	.word locret_8030102
-	.word 0x16F2FF1F
-	.word 0x6A35901
-	.byte 0x8
+	ms_jump_if_current_navi_not_equal byte1=0x00 destination2=mapscript_806A2D3
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F7
+	ms_jump destination1=mapscript_806A2E0
+
+mapscript_806A2D3:
+	ms_write_word ptr1=unk_2011EBC word5=0x08050202
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F7
+
+mapscript_806A2E0:
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F2
+	ms_jump_if_progress_in_range byte1=0x40 byte2=0x7F destination3=mapscript_806A2F0
+	ms_jump destination1=byte_806A359
+
+mapscript_806A2F0:
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_BE1 destination4=byte_806A33D
+	ms_terminate_gfx_anim byte1=0x01
+	ms_init_eStruct200a6a0 ptr1=sub_804CD20+1 ptr5=unk_804CD3D word9=0x00000000
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_BE0 destination4=mapscript_806A31E
+	ms_jump_if_map_group_not_equal_last_map_group destination2=mapscript_806A31E
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_BFB
+	ms_jump destination1=mapscript_806A322
+
+mapscript_806A31E:
+	ms_clear_event_flag byte1=0xFF event16_2=EVENT_BFB
+
+mapscript_806A322:
+	ms_call_native_function ptr1=sub_808FDC0+1 word5=0x00000000
+	ms_write_word ptr1=unk_2011EA8 word5=0x08030102
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F2
+	ms_jump destination1=byte_806A359
+
 byte_806A33D:
-	.byte 0x16, 0x0, 0x4C, 0xA3, 0x6, 0x8, 0x1F, 0xFF, 0xFB, 0xB, 0x1
-	.word off_806A350
-	.word 0xBFBFF20
+	ms_jump_if_map_group_not_equal_last_map_group destination2=mapscript_806A34C
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_BFB
+	ms_jump destination1=off_806A350
+
+mapscript_806A34C:
+	ms_clear_event_flag byte1=0xFF event16_2=EVENT_BFB
+
 off_806A350:
-	.word 0x8FE3525
-	.word 0x8
-	.byte 0x0
+	ms_call_native_function ptr1=sub_808FE34+1 word5=0x00000000
+
 byte_806A359:
-	.byte 0x0
+	ms_end
+
 byte_806A35A:
-	.byte 0x5, 0xFF, 0xDF, 0xB, 0x73, 0xA3, 0x6, 0x8, 0x29, 0xA8, 0x1E
-	.byte 0x1, 0x2, 0x0, 0x0, 0x0, 0x0, 0x20, 0xFF, 0xF2, 0x16, 0x1F
-	.byte 0xFF, 0xF2, 0x16, 0x2, 0x40, 0x7F, 0x7F, 0xA3, 0x6, 0x8, 0x1
-	.byte 0x88, 0xA3, 0x6, 0x8, 0x25
-	.word sub_808FE74+1
-	.word 0x0
-	.byte 0x2, 0x40, 0x4F, 0x94, 0xA3, 0x6, 0x8, 0x1
-	.word byte_806A3C2
-	.word 0xA0464602
-	.word 0x10806A3
-	.word byte_806A3C2
-	.word 0xA2DFF05
-	.word byte_806A3C2
-	.word 0xA2EFF03
-	.word byte_806A3C2
-	.word 0xA2EFF1F
-	.word 0x8EA8826
-	.word 0x8
-	.word 0xA3C20100
-	.byte 0x6, 0x8
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_BDF destination4=mapscript_806A373
+	ms_write_word ptr1=unk_2011EA8 word5=0x00000000
+	ms_clear_event_flag byte1=0xFF event16_2=EVENT_16F2
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F2
+
+mapscript_806A373:
+	ms_jump_if_progress_in_range byte1=0x40 byte2=0x7F destination3=mapscript_806A37F
+	ms_jump destination1=mapscript_806A388
+
+mapscript_806A37F:
+	ms_call_native_function ptr1=sub_808FE74+1 word5=0x00000000
+
+mapscript_806A388:
+	ms_jump_if_progress_in_range byte1=0x40 byte2=0x4F destination3=mapscript_806A394
+	ms_jump destination1=byte_806A3C2
+
+mapscript_806A394:
+	ms_jump_if_progress_in_range byte1=0x46 byte2=0x46 destination3=mapscript_806A3A0
+	ms_jump destination1=byte_806A3C2
+
+mapscript_806A3A0:
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_A2D destination4=byte_806A3C2
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_A2E destination4=byte_806A3C2
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_A2E
+	ms_start_cutscene ptr1=cutscenescript_808EA88 word5=0x00000000
+	ms_jump destination1=byte_806A3C2
+
 byte_806A3C2:
-	.byte 0x0, 0x0
+	ms_end
+	ms_end
+
 byte_806A3C4:
-	.byte 0x11, 0x0, 0xD3, 0xA3, 0x6, 0x8, 0x1F, 0xFF, 0xF7, 0x16
-	.byte 0x1, 0xE0, 0xA3, 0x6, 0x8, 0x29
-	.word 0x2011EBC
-	.word loc_8030202
-	.word 0x16F7FF1F
-	.word 0xEC7F4002
-	.word 0x10806A3
-	.word byte_806A448
-	.word 0xBE2FF03
-	.word byte_806A42C
-	.word 0x2138012F
-	.word 0x3D0804CD
-	.word 0x804CD
-	.word 0x5000000
-	.word 0x1A0BE0FF
-	.word 0x160806A4
-	.word 0x6A41A00
-	.word 0xFBFF1F08
-	.word 0xA41E010B
-	.word 0xFF200806
-	.word 0xC1250BFB
-	.word 0x808FD
-	.word 0x1000000
-	.word byte_806A448
+	ms_jump_if_current_navi_not_equal byte1=0x00 destination2=mapscript_806A3D3
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F7
+	ms_jump destination1=mapscript_806A3E0
+
+mapscript_806A3D3:
+	ms_write_word ptr1=unk_2011EBC word5=0x08030202
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F7
+
+mapscript_806A3E0:
+	ms_jump_if_progress_in_range byte1=0x40 byte2=0x7F destination3=mapscript_806A3EC
+	ms_jump destination1=byte_806A448
+
+mapscript_806A3EC:
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_BE2 destination4=byte_806A42C
+	ms_terminate_gfx_anim byte1=0x01
+	ms_init_eStruct200a6a0 ptr1=sub_804CD20+1 ptr5=unk_804CD3D word9=0x00000000
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_BE0 destination4=mapscript_806A41A
+	ms_jump_if_map_group_not_equal_last_map_group destination2=mapscript_806A41A
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_BFB
+	ms_jump destination1=mapscript_806A41E
+
+mapscript_806A41A:
+	ms_clear_event_flag byte1=0xFF event16_2=EVENT_BFB
+
+mapscript_806A41E:
+	ms_call_native_function ptr1=sub_808FDC0+1 word5=0x00000000
+	ms_jump destination1=byte_806A448
+
 byte_806A42C:
-	.byte 0x16, 0x0, 0x3B, 0xA4, 0x6, 0x8, 0x1F, 0xFF, 0xFB, 0xB, 0x1
-	.byte 0x3F, 0xA4, 0x6, 0x8, 0x20, 0xFF, 0xFB, 0xB, 0x25
-	.word sub_808FE34+1
-	.word 0x0
+	ms_jump_if_map_group_not_equal_last_map_group destination2=mapscript_806A43B
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_BFB
+	ms_jump destination1=mapscript_806A43F
+
+mapscript_806A43B:
+	ms_clear_event_flag byte1=0xFF event16_2=EVENT_BFB
+
+mapscript_806A43F:
+	ms_call_native_function ptr1=sub_808FE34+1 word5=0x00000000
+
 byte_806A448:
-	.byte 0x0
+	ms_end
+
 byte_806A449:
-	.byte 0x2, 0x40, 0x7F
-	.word byte_806A455
-	.word 0x6A45E01
-	.byte 0x8
+	ms_jump_if_progress_in_range byte1=0x40 byte2=0x7F destination3=byte_806A455
+	ms_jump destination1=mapscript_806A45E
+
 byte_806A455:
-	.byte 0x25, 0x75, 0xFE, 0x8, 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	ms_call_native_function ptr1=sub_808FE74+1 word5=0x00000000
+
+mapscript_806A45E:
+	ms_end
+	ms_end
+
 byte_806A460:
-	.byte 0x11, 0x0, 0x6F, 0xA4, 0x6, 0x8, 0x1F, 0xFF, 0xF6, 0x16
-	.byte 0x1, 0x7C, 0xA4, 0x6, 0x8, 0x29
-	.word 0x2011EB8
-	.word loc_8030202
-	.word 0x16F6FF1F
-	.word 0x887F4002
-	.word 0x10806A4
-	.word 0x806A4E4
-	.word 0xBE3FF03
-	.word byte_806A4C8
-	.word 0x2138012F
-	.word 0x3D0804CD
-	.word 0x804CD
-	.word 0x5000000
-	.word 0xB60BE0FF
-	.word 0x160806A4
-	.word 0x6A4B600
-	.word 0xFBFF1F08
-	.word 0xA4BA010B
-	.word 0xFF200806
-	.word 0xC1250BFB
-	.word 0x808FD
-	.word 0x1000000
-	.word byte_806A4E4
+	ms_jump_if_current_navi_not_equal byte1=0x00 destination2=mapscript_806A46F
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F6
+	ms_jump destination1=mapscript_806A47C
+
+mapscript_806A46F:
+	ms_write_word ptr1=unk_2011EB8 word5=0x08030202
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F6
+
+mapscript_806A47C:
+	ms_jump_if_progress_in_range byte1=0x40 byte2=0x7F destination3=mapscript_806A488
+	ms_jump destination1=byte_806A4E4
+
+mapscript_806A488:
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_BE3 destination4=byte_806A4C8
+	ms_terminate_gfx_anim byte1=0x01
+	ms_init_eStruct200a6a0 ptr1=sub_804CD20+1 ptr5=unk_804CD3D word9=0x00000000
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_BE0 destination4=mapscript_806A4B6
+	ms_jump_if_map_group_not_equal_last_map_group destination2=mapscript_806A4B6
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_BFB
+	ms_jump destination1=mapscript_806A4BA
+
+mapscript_806A4B6:
+	ms_clear_event_flag byte1=0xFF event16_2=EVENT_BFB
+
+mapscript_806A4BA:
+	ms_call_native_function ptr1=sub_808FDC0+1 word5=0x00000000
+	ms_jump destination1=byte_806A4E4
+
 byte_806A4C8:
-	.byte 0x16, 0x0, 0xD7, 0xA4, 0x6, 0x8, 0x1F, 0xFF, 0xFB, 0xB, 0x1
-	.byte 0xDB, 0xA4, 0x6, 0x8, 0x20, 0xFF, 0xFB, 0xB, 0x25
-	.word sub_808FE34+1
-	.word 0x0
+	ms_jump_if_map_group_not_equal_last_map_group destination2=mapscript_806A4D7
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_BFB
+	ms_jump destination1=mapscript_806A4DB
+
+mapscript_806A4D7:
+	ms_clear_event_flag byte1=0xFF event16_2=EVENT_BFB
+
+mapscript_806A4DB:
+	ms_call_native_function ptr1=sub_808FE34+1 word5=0x00000000
+
 byte_806A4E4:
-	.byte 0x2, 0x40, 0x4F, 0xF0, 0xA4, 0x6, 0x8, 0x1
-	.word dword_806A524
-	.word 0xFC464602
-	.word 0x10806A4
-	.word dword_806A524
-	.word 0xA31FF05
-	.word dword_806A524
-	.word 0xA32FF03
-	.word dword_806A524
-	.word 0xA32FF1F
-	.word 0x2BFF0C1E
-	.word 0x60266304
-	.word 0x808EB
-	.word 0x1000000
-	.word dword_806A524
+	ms_jump_if_progress_in_range byte1=0x40 byte2=0x4F destination3=mapscript_806A4F0
+	ms_jump destination1=dword_806A524
+
+mapscript_806A4F0:
+	ms_jump_if_progress_in_range byte1=0x46 byte2=0x46 destination3=mapscript_806A4FC
+	ms_jump destination1=dword_806A524
+
+mapscript_806A4FC:
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_A31 destination4=dword_806A524
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_A32 destination4=dword_806A524
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_A32
+	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
+	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
+	ms_start_cutscene ptr1=cutscenescript_808EB60 word5=0x00000000
+	ms_jump destination1=dword_806A524
+
 dword_806A524:
-	.word 0x11D7FF05
-	.word byte_806A549
-	.word 0x11D8FF03
-	.word byte_806A549
-	.word 0x11D8FF1F
-	.word 0x26FF0C1E
-	.word byte_8099CEC
-	.word 0x3A
-	.word 0x6A54901
-	.byte 0x8
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_11D7 destination4=byte_806A549
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_11D8 destination4=byte_806A549
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_11D8
+	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
+	ms_start_cutscene ptr1=byte_8099CEC word5=0x0000003A
+	ms_jump destination1=byte_806A549
+
 byte_806A549:
-	.byte 0x0
+	ms_end
+
 byte_806A54A:
-	.byte 0x2, 0x40, 0x7F, 0x56, 0xA5, 0x6, 0x8, 0x1, 0x5F, 0xA5, 0x6
-	.byte 0x8, 0x25, 0x75, 0xFE, 0x8, 0x8, 0x0
-	.word 0x2000000
-	.word 0xA56B4F40
-	.word 0xA0010806
-	.word 0x20806A5
-	.word 0xA5774646
-	.word 0xA0010806
-	.word 0xD0806A5
-	.word 0xA5A00010
-	.word 0xFF050806
-	.word 0xA5A00A2F
-	.word 0xFF030806
-	.word 0xA5A00A30
-	.word 0xFF1F0806
-	.word 0xEC260A30
-	.word 0x808EA
-	.word 0x1000000
-	.word dword_806A5A0
+	ms_jump_if_progress_in_range byte1=0x40 byte2=0x7F destination3=mapscript_806A556
+	ms_jump destination1=mapscript_806A55F
+
+mapscript_806A556:
+	ms_call_native_function ptr1=sub_808FE74+1 word5=0x00000000
+
+mapscript_806A55F:
+	ms_jump_if_progress_in_range byte1=0x40 byte2=0x4F destination3=mapscript_806A56B
+	ms_jump destination1=dword_806A5A0
+
+mapscript_806A56B:
+	ms_jump_if_progress_in_range byte1=0x46 byte2=0x46 destination3=mapscript_806A577
+	ms_jump destination1=dword_806A5A0
+
+mapscript_806A577:
+	ms_coordinate_trigger_not_equal_cmd_8035b44 byte1=0x10 signedbyte2=0x00 destination3=dword_806A5A0
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_A2F destination4=dword_806A5A0
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_A30 destination4=dword_806A5A0
+	ms_set_event_flag byte1=0xFF event16_2=EVENT_A30
+	ms_start_cutscene ptr1=cutscenescript_808EAEC word5=0x00000000
+	ms_jump destination1=dword_806A5A0
+
 dword_806A5A0:
-	.word 0x11D8FF03
-	.word byte_806A5BE
-	.word 0x11D7FF05
-	.word byte_806A5BE
-	.word 0x990B826
-	.word 0xFF00F308
-	.word 0xA5BE0101
-	.byte 0x6, 0x8
+	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_11D8 destination4=byte_806A5BE
+	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_11D7 destination4=byte_806A5BE
+	ms_start_cutscene ptr1=byte_80990B8 word5=0x01FF00F3
+	ms_jump destination1=byte_806A5BE
+
 byte_806A5BE:
-	.byte 0x0, 0x0
+	ms_end
+	ms_end
+
 off_806A5C0:
 	.word byte_806A5DC
 	.word byte_806A5F7
@@ -235,55 +303,101 @@ off_806A5C0:
 	.word byte_806A62C
 	.word byte_806A637
 	.word byte_806A642
-	.word 0xFF
+	.word 0x000000FF
 byte_806A5DC:
-	.byte 0x8, 0x17, 0x3C, 0x3B, 0x46, 0x46, 0xE7, 0xA5, 0x6, 0x8
-	.byte 0x3, 0x18, 0x0, 0x14, 0x0, 0x0, 0x74, 0xFF, 0x0, 0x0
-	.byte 0x16, 0x3, 0x36, 0xCC, 0xF6, 0x9, 0x8
+	ns_set_active_and_visible
+	ns_set_sprite byte1=0x3C
+	ns_jump_if_progress_in_range byte1=0x46 byte2=0x46 destination3=npcscript_806A5E7
+	ns_free_and_end
+
+npcscript_806A5E7:
+	ns_set_text_script_index byte1=0x00
+	ns_set_coords hword1=0x0000 hword3=0xFF74 hword5=0x0000
+	ns_set_animation byte1=0x03
+	ns_jump_with_link destination1=byte_809F6CC
+
 byte_806A5F7:
-	.byte 0x8, 0x17, 0x44, 0x4, 0xDB, 0x11, 0x20, 0xA6, 0x6, 0x8, 0x4
-	.byte 0xD2, 0x11
-	.word byte_806A609
-	.byte 0x3
+	ns_set_active_and_visible
+	ns_set_sprite byte1=0x44
+	ns_jump_if_flag_set event16_1=EVENT_11DB destination3=byte_806A620
+	ns_jump_if_flag_set event16_1=EVENT_11D2 destination3=byte_806A609
+	ns_free_and_end
+
 byte_806A609:
-	.byte 0x4, 0x63, 0x1
-	.word byte_806A620
-	.word 0xD0140A4C
-	.word 0xFFE2FF
-	.word 0x36031600
-	.word byte_809F6CC
+	ns_jump_if_flag_set event16_1=EVENT_163 destination3=byte_806A620
+	ns_set_text_script_index_and_ptr_to_decomp_buffer byte1=0x0A
+	ns_set_coords hword1=0xFFD0 hword3=0xFFE2 hword5=0x0000
+	ns_set_animation byte1=0x03
+	ns_jump_with_link destination1=byte_809F6CC
+
 byte_806A620:
-	.byte 0x3
+	ns_free_and_end
+
 byte_806A621:
-	.byte 0x8, 0x25, 0x2, 0x1C, 0x29, 0x40, 0x15, 0x45, 0x40, 0x15
-	.byte 0x3
+	ns_set_active_and_visible
+	ns_set_sprite_with_category byte1=0x02 byte2=0x1C
+	ns_init_mystery_data hword1=0x1540
+	ns_wait_mystery_data_taken hword1=0x1540
+	ns_free_and_end
+
 byte_806A62C:
-	.byte 0x8, 0x25, 0x2, 0x1C, 0x29, 0x41, 0x15, 0x45, 0x41, 0x15
-	.byte 0x3
+	ns_set_active_and_visible
+	ns_set_sprite_with_category byte1=0x02 byte2=0x1C
+	ns_init_mystery_data hword1=0x1541
+	ns_wait_mystery_data_taken hword1=0x1541
+	ns_free_and_end
+
 byte_806A637:
-	.byte 0x8, 0x25, 0x2, 0x1C, 0x29, 0x42, 0x15, 0x45, 0x42, 0x15
-	.byte 0x3
+	ns_set_active_and_visible
+	ns_set_sprite_with_category byte1=0x02 byte2=0x1C
+	ns_init_mystery_data hword1=0x1542
+	ns_wait_mystery_data_taken hword1=0x1542
+	ns_free_and_end
+
 byte_806A642:
-	.byte 0x8, 0x25, 0x2, 0x1C, 0x29, 0x43, 0x15, 0x45, 0x43, 0x15
-	.byte 0x3, 0x0, 0x0, 0x0
+	ns_set_active_and_visible
+	ns_set_sprite_with_category byte1=0x02 byte2=0x1C
+	ns_init_mystery_data hword1=0x1543
+	ns_wait_mystery_data_taken hword1=0x1543
+	ns_free_and_end
+	ns_end
+	ns_end
+	ns_end
+
 off_806A650:
 	.word byte_806A664
 	.word byte_806A66F
 	.word byte_806A67A
 	.word byte_806A685
-	.word 0xFF
+	.word 0x000000FF
 byte_806A664:
-	.byte 0x8, 0x25, 0x2, 0x1C, 0x29, 0x48, 0x15, 0x45, 0x48, 0x15
-	.byte 0x3
+	ns_set_active_and_visible
+	ns_set_sprite_with_category byte1=0x02 byte2=0x1C
+	ns_init_mystery_data hword1=0x1548
+	ns_wait_mystery_data_taken hword1=0x1548
+	ns_free_and_end
+
 byte_806A66F:
-	.byte 0x8, 0x25, 0x2, 0x1C, 0x29, 0x49, 0x15, 0x45, 0x49, 0x15
-	.byte 0x3
+	ns_set_active_and_visible
+	ns_set_sprite_with_category byte1=0x02 byte2=0x1C
+	ns_init_mystery_data hword1=0x1549
+	ns_wait_mystery_data_taken hword1=0x1549
+	ns_free_and_end
+
 byte_806A67A:
-	.byte 0x8, 0x25, 0x2, 0x1C, 0x29, 0x4A, 0x15, 0x45, 0x4A, 0x15
-	.byte 0x3
+	ns_set_active_and_visible
+	ns_set_sprite_with_category byte1=0x02 byte2=0x1C
+	ns_init_mystery_data hword1=0x154A
+	ns_wait_mystery_data_taken hword1=0x154A
+	ns_free_and_end
+
 byte_806A685:
-	.byte 0x8, 0x25, 0x2, 0x1C, 0x29, 0x4B, 0x15, 0x45, 0x4B, 0x15
-	.byte 0x3
+	ns_set_active_and_visible
+	ns_set_sprite_with_category byte1=0x02 byte2=0x1C
+	ns_init_mystery_data hword1=0x154B
+	ns_wait_mystery_data_taken hword1=0x154B
+	ns_free_and_end
+
 off_806A690:
 	.word byte_806A6AC
 	.word byte_806A6D6
@@ -291,68 +405,132 @@ off_806A690:
 	.word byte_806A704
 	.word byte_806A70F
 	.word byte_806A71A
-	.word 0xFF
+	.word 0x000000FF
 byte_806A6AC:
-	.byte 0x8, 0x17, 0x44, 0x4, 0xDC, 0x11, 0xD5, 0xA6, 0x6, 0x8, 0x4
-	.byte 0xDB, 0x11, 0xBE, 0xA6, 0x6, 0x8, 0x3, 0x4, 0x63, 0x1, 0xD5
-	.byte 0xA6, 0x6, 0x8, 0x4C, 0xA, 0x14, 0x94, 0x0, 0xA, 0x0, 0x0
-	.byte 0x0, 0x16, 0x5
-	.word 0x9F6CC36
-	.byte 0x8, 0x3
+	ns_set_active_and_visible
+	ns_set_sprite byte1=0x44
+	ns_jump_if_flag_set event16_1=EVENT_11DC destination3=npcscript_806A6D5
+	ns_jump_if_flag_set event16_1=EVENT_11DB destination3=npcscript_806A6BE
+	ns_free_and_end
+
+npcscript_806A6BE:
+	ns_jump_if_flag_set event16_1=EVENT_163 destination3=npcscript_806A6D5
+	ns_set_text_script_index_and_ptr_to_decomp_buffer byte1=0x0A
+	ns_set_coords hword1=0x0094 hword3=0x000A hword5=0x0000
+	ns_set_animation byte1=0x05
+	ns_jump_with_link destination1=byte_809F6CC
+
+npcscript_806A6D5:
+	ns_free_and_end
+
 byte_806A6D6:
-	.byte 0x8, 0x17, 0x56, 0x3B, 0x46, 0x46
-	.word byte_806A6E1
-	.byte 0x3
+	ns_set_active_and_visible
+	ns_set_sprite byte1=0x56
+	ns_jump_if_progress_in_range byte1=0x46 byte2=0x46 destination3=byte_806A6E1
+	ns_free_and_end
+
 byte_806A6E1:
-	.byte 0x4, 0x32, 0xA
-	.word byte_806A6F8
-	.word 0x18140E13
-	.byte 0x2, 0xC, 0x0, 0x0, 0x0, 0x16, 0x5, 0x36
-	.word byte_809F6CC
+	ns_jump_if_flag_set event16_1=EVENT_A32 destination3=byte_806A6F8
+	ns_do_not_face_player_when_interacted
+	ns_disable_npc_interaction
+	ns_set_coords hword1=0x0218 hword3=0x000C hword5=0x0000
+	ns_set_animation byte1=0x05
+	ns_jump_with_link destination1=byte_809F6CC
+
 byte_806A6F8:
-	.byte 0x3
+	ns_free_and_end
+
 byte_806A6F9:
-	.byte 0x8, 0x25, 0x2, 0x1C, 0x29, 0x50, 0x15, 0x45, 0x50, 0x15
-	.byte 0x3
+	ns_set_active_and_visible
+	ns_set_sprite_with_category byte1=0x02 byte2=0x1C
+	ns_init_mystery_data hword1=0x1550
+	ns_wait_mystery_data_taken hword1=0x1550
+	ns_free_and_end
+
 byte_806A704:
-	.byte 0x8, 0x25, 0x2, 0x1C, 0x29, 0x51, 0x15, 0x45, 0x51, 0x15
-	.byte 0x3
+	ns_set_active_and_visible
+	ns_set_sprite_with_category byte1=0x02 byte2=0x1C
+	ns_init_mystery_data hword1=0x1551
+	ns_wait_mystery_data_taken hword1=0x1551
+	ns_free_and_end
+
 byte_806A70F:
-	.byte 0x8, 0x25, 0x2, 0x1C, 0x29, 0x52, 0x15, 0x45, 0x52, 0x15
-	.byte 0x3
+	ns_set_active_and_visible
+	ns_set_sprite_with_category byte1=0x02 byte2=0x1C
+	ns_init_mystery_data hword1=0x1552
+	ns_wait_mystery_data_taken hword1=0x1552
+	ns_free_and_end
+
 byte_806A71A:
-	.byte 0x8, 0x25, 0x2, 0x1C, 0x29, 0x53, 0x15, 0x45, 0x53, 0x15
-	.byte 0x3, 0x0, 0x0, 0x0
-npcscript_list_806a728::
+	ns_set_active_and_visible
+	ns_set_sprite_with_category byte1=0x02 byte2=0x1C
+	ns_init_mystery_data hword1=0x1553
+	ns_wait_mystery_data_taken hword1=0x1553
+	ns_free_and_end
+	ns_end
+	ns_end
+	ns_end
+
+npcscript_list_806A728::
 	.word byte_806A734
 	.word byte_806A758
-	.word 0xFF
+	.word 0x000000FF
 byte_806A734:
-	.byte 0x8, 0x1F, 0x27, 0x17, 0x37, 0x14, 0xB8, 0x1, 0xC, 0x0, 0x0
-	.byte 0x0
-	.word byte_83F0116
-	.word 0x15111601
-	.word 0x16061001
-	.word 0x2083C29
-	.word 0x3603083F
-	.word byte_809F6CC
+	ns_set_active_and_visible
+	ns_disable_collision
+	ns_disable_collision_alternate
+	ns_set_sprite byte1=0x37
+	ns_set_coords hword1=0x01B8 hword3=0x000C hword5=0x0000
+	ns_set_animation byte1=0x01
+	ns_wait_cutscene_var byte1=0x08 byte2=0x01
+	ns_set_animation byte1=0x11
+	ns_move_in_direction byte1=0x01 byte2=0x10 byte3=0x06
+	ns_set_animation byte1=0x29
+	ns_write_cutscene_var byte1=0x08 byte2=0x02
+	ns_wait_cutscene_var byte1=0x08 byte2=0x03
+	ns_jump_with_link destination1=byte_809F6CC
+
 byte_806A758:
-	.byte 0x8, 0x1F, 0x27, 0x17, 0x56, 0x14, 0x18, 0x2, 0xC, 0x0, 0x0
-	.byte 0x0
-	.word byte_83F0516
-	.word 0xF6CC3601
-	.word 0x809
-npcscript_list_806a770::
+	ns_set_active_and_visible
+	ns_disable_collision
+	ns_disable_collision_alternate
+	ns_set_sprite byte1=0x56
+	ns_set_coords hword1=0x0218 hword3=0x000C hword5=0x0000
+	ns_set_animation byte1=0x05
+	ns_wait_cutscene_var byte1=0x08 byte2=0x01
+	ns_jump_with_link destination1=byte_809F6CC
+	ns_end
+	ns_end
+
+npcscript_list_806A770::
 	.word byte_806A77C
 	.word byte_806A792
-	.word 0xFF
+	.word 0x000000FF
 byte_806A77C:
-	.byte 0x8, 0x1F, 0x27, 0x17, 0x37, 0x14, 0xE8, 0x1, 0xC, 0x0, 0x0
-	.byte 0x0
-	.word 0x83F2916
-	.word 0xF6CC3601
-	.byte 0x9, 0x8
+	ns_set_active_and_visible
+	ns_disable_collision
+	ns_disable_collision_alternate
+	ns_set_sprite byte1=0x37
+	ns_set_coords hword1=0x01E8 hword3=0x000C hword5=0x0000
+	ns_set_animation byte1=0x29
+	ns_wait_cutscene_var byte1=0x08 byte2=0x01
+	ns_jump_with_link destination1=byte_809F6CC
+
 byte_806A792:
-	.byte 0x8, 0x1F, 0x27, 0x17, 0x56, 0x14, 0x18, 0x2, 0xC, 0x0, 0x0
-	.byte 0x0, 0x16, 0x5, 0x3F, 0x8, 0x1, 0x16, 0x19, 0x3C, 0x8, 0x2
-	.byte 0x3F, 0x8, 0x3, 0x3
+	ns_set_active_and_visible
+	ns_disable_collision
+	ns_disable_collision_alternate
+	ns_set_sprite byte1=0x56
+	ns_set_coords hword1=0x0218 hword3=0x000C hword5=0x0000
+	ns_set_animation byte1=0x05
+	ns_wait_cutscene_var byte1=0x08 byte2=0x01
+	ns_set_animation byte1=0x19
+	ns_write_cutscene_var byte1=0x08 byte2=0x02
+	ns_wait_cutscene_var byte1=0x08 byte2=0x03
+	ns_free_and_end
+
+
+
+
+
+

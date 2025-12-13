@@ -9,11 +9,56 @@ sub_8088CA0:
 	thumb_func_end sub_8088CA0
 
 end_func_8088CAC::
-	.word 0x40010000, 0x08000002, 0x0206003F, 0xFF271EFF, 0x3E07080C, CompText87B330C + COMPRESSED_PTR_FLAG, 0x8CAC0054, 0x024A0808
-	.word 0x08059110, 0x1C3F343F, 0x271EFF02, 0x070808FF, 0x088D2F14, 0x1EFF0208, 0x0400FF3A, 0x3CFF0280
-	.word 0x00000014, 0x0CFF2700, 0x00520708, 0xFF2A0160, 0xFF291715, 0x034A0682, 0x403B0154, 0x4701FF04
-	.word 0x4101FF00, 0x4001FF00, 0x00024000, 0x29303F00, 0x02066CFF, 0xFF4E3CFF, 0x08FF27FF, 0x183F0708
-	.word 0x3C00043F, 0xEC154000, 0x0008088C
+	ccs_set_camera_pos hword1=0x0100 hword3=0x0240 hword5=0x0000
+	ccs_end
+
+cutscenescript_8088CB4:
+	cs_lock_player_for_non_npc_dialogue_809e0b0
+	cs_nop_80377d0
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
+	cs_wait_screen_fade
+	cs_decomp_text_archive ptr1=CompText87B330C + COMPRESSED_PTR_FLAG
+	cs_run_cutscene_camera_script ptr1=end_func_8088CAC
+	cs_spawn_ow_npc_objects_from_list ptr2=npcscript_list_8059110
+	cs_make_ow_player_invisible
+	cs_disable_ow_player_wall_collision_809e254
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_set_screen_fade byte1=0xFF byte2=0x08 byte3=0x08
+	cs_wait_screen_fade
+	cs_set_cutscene_skip_script ptr1=cutscenescript_8088D2F
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_run_text_script_not_from_mem byte2=0x00
+	cs_wait_chatbox byte1=0x80
+	cs_pause byte1=0xFF byte2=0x3C
+
+cutscenescript_8088CEC:
+	cs_disable_cutscene_skip_script
+	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
+	cs_wait_screen_fade
+	cs_give_item byte2=0x60 byte3=0x01
+	cs_clear_event_flag byte1=0xFF event16_2=EVENT_EVENT_CUR_DIR_LOCKED
+	cs_set_event_flag byte1=0xFF event16_2=EVENT_682
+	cs_spawn_ow_npc_objects_from_map
+	cs_stop_cutscene_camera_script
+	cs_chatbox_cmd_8037a70
+	cs_ow_player_sprite_special_with_arg byte1=0x04 byte2=0xFF byte3=0x01
+	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x01
+	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=0x0040 signedhword6=0x0240 signedhword8=0x0000
+	cs_make_ow_player_visible
+	cs_set_event_flag byte1=0xFF event16_2=EVENT_66C
+	cs_pause byte1=0xFF byte2=0x3C
+	cs_play_music hword1=0xFFFF
+	cs_set_screen_fade byte1=0xFF byte2=0x08 byte3=0x08
+	cs_wait_screen_fade
+	cs_enable_ow_player_wall_collision_809e248
+	cs_unlock_player_after_non_npc_dialogue_809e122
+	cs_end_for_map_reload_maybe_8037c64
+
+cutscenescript_8088D2F:
+	cs_set_chatbox_flags byte2=0x40
+	cs_jump destination1=cutscenescript_8088CEC
+	cs_end_for_map_reload_maybe_8037c64
 
 ccs_8088D38:
 	ccs_set_camera_pos hword1=0xF9C0 hword3=0xFF40 hword5=0x0000
@@ -257,17 +302,46 @@ cutscenescript_8088FD4:
 unk_8088FDC:
 	.word 0x04000000, 0x00000000, 0x00000000, 0x00000000
 ccs_8088FEC:
-	.word 0x40010000, 0x08000002, 0x3E06003F, CompText87B41AC + COMPRESSED_PTR_FLAG, 0x5401FF02, 0x088FEC00, 0x58024A08, 0x3F080591
-	.word 0x021C3F34, 0xFF271EFF, 0x14070808, dword_8089058, 0x3A1EFF02, 0x800400FF
-byte_8089024: 
-  .byte 0x14, 0x0, 0x0, 0x0, 0x0, 0x29, 0xFF, 0x9, 0x6, 0x2A, 0xFF, 0x82
-	.byte 0x6, 0x29, 0xFF, 0x83, 0x6, 0x2A, 0xFF, 0x1F, 0x1, 0x2A, 0xFF, 0x15
-	.byte 0x17, 0x29, 0xFF, 0xE7, 0x0, 0x6C, 0x14, 0x2, 0x13, 0x0, 0x3, 0x0
-	.byte 0x0, 0x0, 0x2, 0xFF, 0x14, 0x55, 0x3F, 0x0, 0x3F, 0x18, 0x3F, 0x4
-	.byte 0x2, 0xFF, 0x1, 0x0
-dword_8089058: 
-  .word 0x1540003C
-	.word byte_8089024
+	ccs_set_camera_pos hword1=0x0100 hword3=0x0240 hword5=0x0000
+	ccs_end
+
+cutscenescript_8088FF4:
+	cs_lock_player_for_non_npc_dialogue_809e0b0
+	cs_nop_80377d0
+	cs_decomp_text_archive ptr1=CompText87B41AC + COMPRESSED_PTR_FLAG
+	cs_pause byte1=0xFF byte2=0x01
+	cs_run_cutscene_camera_script ptr1=ccs_8088FEC
+	cs_spawn_ow_npc_objects_from_list ptr2=npcscript_list_8059158
+	cs_make_ow_player_invisible
+	cs_disable_ow_player_wall_collision_809e254
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_set_screen_fade byte1=0xFF byte2=0x08 byte3=0x08
+	cs_wait_screen_fade
+	cs_set_cutscene_skip_script ptr1=dword_8089058
+	cs_pause byte1=0xFF byte2=0x1E
+	cs_run_text_script_not_from_mem byte2=0x00
+	cs_wait_chatbox byte1=0x80
+
+byte_8089024:
+	cs_disable_cutscene_skip_script
+	cs_set_event_flag byte1=0xFF event16_2=EVENT_609
+	cs_clear_event_flag byte1=0xFF event16_2=EVENT_682
+	cs_set_event_flag byte1=0xFF event16_2=EVENT_683
+	cs_clear_event_flag byte1=0xFF event16_2=EVENT_11F
+	cs_clear_event_flag byte1=0xFF event16_2=EVENT_EVENT_CUR_DIR_LOCKED
+	cs_set_event_flag byte1=0xFF event16_2=EVENT_E7
+	cs_cmd_8038346 word1=0x00130214 word5=0x00000003
+	cs_pause byte1=0xFF byte2=0x14
+	cs_start_fixed_battle hword1=0x003F
+	cs_enable_ow_player_wall_collision_809e248
+	cs_unlock_player_after_non_npc_dialogue_809e122
+	cs_pause byte1=0xFF byte2=0x01
+	cs_end_for_map_reload_maybe_8037c64
+
+dword_8089058:
+	cs_set_chatbox_flags byte2=0x40
+	cs_jump destination1=byte_8089024
+
 byte_8089060:
 	ccs_set_camera_pos hword1=0x01A0 hword3=0xECA0 hword5=0x0100
 	ccs_end

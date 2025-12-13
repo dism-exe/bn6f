@@ -1,4 +1,17 @@
 
+// - Locations:
+//    - (-0x56,  0xa8, 0x00) is the back of the gray neighbor house down left from lan's house
+//    - (-0x84, -0x18, 0x00) is in front of Asterland
+//    - (-0x8a, -0xbe, 0x00) is right by the expo entrance
+//    - ( 0x8a, -0x3a, 0x00) is by the blue bird statue
+//    - ( 0x8c, -0x12, 0x00) is the tree right of blue bird statue as faced against it
+//    - ( 0x8c, -0x58, 0x00) is the tree left of blue bird statue as faced against it
+// - Object IDs:
+//    - object id 0x65 seems to refer to part of the top part of the CentralTown flying ship platform
+//      It has a cylinder part down and on top all four directions the train can go out of.
+//    - object id 0x7d is a tree
+//    - Don't see anything for 0x73
+//    
 CentralTownObjectSpawns:: // [MapObjectSpawnData; 15]]
 	map_object_spawn_data_struct [
 		index: 0x0,
@@ -12,98 +25,98 @@ CentralTownObjectSpawns:: // [MapObjectSpawnData; 15]]
 		x: 0x4a0000,
 		y: 0xc60000,
 		z: 0x900000,
-		object_id: 0x000065,
+		object_id: OW_MAP_OBJECT_ID_BUS_BUILDING_FOUR_DIRECTIONAL_GATE_CORE_65,
 	]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: 0xca0000,
 		y: 0x460000,
 		z: 0x100000,
-		object_id: 0x00006a,
+		object_id: OW_MAP_OBJECT_ID_BUS_BUILDING_RIGHT_AND_FRONT_BUS_GATES_6A,
 	]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: 0x4a0000,
 		y: 0xc60000,
 		z: 0x900000,
-		object_id: 0x00006f,
+		object_id: OW_MAP_OBJECT_ID_BUS_BUILDING_RIGHT_BUS_GATE_6F,
 	]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: 0x4a0000,
 		y: 0xc60000,
 		z: 0x900000,
-		object_id: 0x000070,
+		object_id: OW_MAP_OBJECT_ID_BUS_BUILDING_FRONT_BUS_GATE_70,
 	]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: -0x8a0000,
 		y: -0xbe0000,
 		z: 0x000000,
-		object_id: 0x000015,
+		object_id: OW_MAP_OBJECT_ID_EXPO_ENTRY_BARRIER_15,
 	]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: 0x8a0000,
 		y: -0x3a0000,
 		z: 0x000000,
-		object_id: 0x000016,
+		object_id: OW_MAP_OBJECT_ID_BLUE_BIRD_STATUE_16,
 	]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: -0x560000,
 		y: 0xa80000,
 		z: 0x000000,
-		object_id: 0x00007e,
+		object_id: OW_MAP_OBJECT_ID_TREE_7E,
 	]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: 0x8c0000,
 		y: -0x120000,
 		z: 0x000000,
-		object_id: 0x00007d,
+		object_id: OW_MAP_OBJECT_ID_TREE_7D,
 	]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: 0x8c0000,
 		y: -0x580000,
 		z: 0x000000,
-		object_id: 0x00007d,
+		object_id: OW_MAP_OBJECT_ID_TREE_7D,
 	]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: 0x0e0000,
 		y: -0x120000,
 		z: 0x000000,
-		object_id: 0x00007d,
+		object_id: OW_MAP_OBJECT_ID_TREE_7D,
 	]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: 0x0e0000,
 		y: -0x340000,
 		z: 0x000000,
-		object_id: 0x00007d,
+		object_id: OW_MAP_OBJECT_ID_TREE_7D,
 	]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: 0x0e0000,
 		y: -0x580000,
 		z: 0x000000,
-		object_id: 0x00007d,
+		object_id: OW_MAP_OBJECT_ID_TREE_7D,
 	]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: -0x140000,
 		y: -0xbc0000,
 		z: 0x000000,
-		object_id: 0x00007d,
+		object_id: OW_MAP_OBJECT_ID_TREE_7D,
 	]
 	map_object_spawn_data_struct [
 		index: 0x0,
 		x: -0x340000,
 		y: -0xbc0000,
 		z: 0x000000,
-		object_id: 0x00007d,
+		object_id: OW_MAP_OBJECT_ID_TREE_7D,
 	]
 	.word 0xFF
 
@@ -4533,7 +4546,7 @@ byte_8051BA8::
 	ns_set_npc_palette_index byte1=0x00
 	ns_jump_with_link destination1=byte_809F6CC
 
-npcscript_list_8051bdc:
+npcscript_list_8051BDC:
 	.word byte_8051BE4
 	.word 0x000000FF
 byte_8051BE4::
@@ -4557,7 +4570,7 @@ byte_8051BE4::
 	ns_set_npc_palette_index byte1=0x00
 	ns_jump_with_link destination1=byte_809F6CC
 
-npcscript_list_8051c18:
+npcscript_list_8051C18:
 	.word byte_8051C20
 	.word 0x000000FF
 byte_8051C20::
@@ -4591,7 +4604,7 @@ byte_8051C20::
 	ns_end
 	ns_end
 
-npcscript_list_8051c68:
+npcscript_list_8051C68:
 	.word byte_8051C70
 	.word 0x000000FF
 byte_8051C70::
@@ -4620,7 +4633,7 @@ byte_8051C70::
 	ns_end
 	ns_end
 
-npcscript_list_8051cac:
+npcscript_list_8051CAC:
 	.word byte_8051CB8
 	.word byte_8051D02
 	.word 0x000000FF
@@ -4669,7 +4682,7 @@ byte_8051D02::
 	ns_end
 	ns_end
 
-npcscript_list_8051d24:
+npcscript_list_8051D24:
 	.word byte_8051D30
 	.word byte_8051D52
 	.word 0x000000FF
@@ -4728,7 +4741,7 @@ npcscript_8051D7F:
 	ns_end_secondary_script
 	ns_end
 
-npcscript_list_8051da4:
+npcscript_list_8051DA4:
 	.word byte_8051DB8
 	.word byte_8051DEB
 	.word byte_8051E5E

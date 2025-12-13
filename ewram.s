@@ -1725,7 +1725,13 @@ unk_2011EB8:: // 0x2011eb8
 unk_2011EBC:: // 0x2011ebc
 	.space 4
 unk_2011EC0:: // 0x2011ec0
-	.space 32
+	.space 4
+unk_2011EC4:: // 0x2011ec4
+	.space 4
+unk_2011EC8:: // 0x2011ec8
+	.space 4
+unk_2011ECC:: // 0x2011ecc
+	.space 20
 eOverworldMapObjects:: // 0x2011ee0
 	overworld_map_object_struct eOverworldMapObject0
 	overworld_map_object_struct eOverworldMapObject1

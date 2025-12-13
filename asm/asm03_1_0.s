@@ -1707,30 +1707,12 @@ InternetSpawnMapObjectJumptable:
 	.word SkyACDCArea_SpawnMapObjectsForMap+1
 	.word Undernet_SpawnMapObjectsForMap+1
 	.word GraveyardImmortalArea_SpawnMapObjectsForMap+1
-InternetLoadBGAnimJumptable: 
-  .word RobotControlComp_LoadBGAnim+1
-	.word AquariumComp_LoadBGAnim+1
-	.word JudgeTreeComp_LoadBGAnim+1
-	.word MrWeatherComp_LoadBGAnim+1
-	.word NULL
-	.word PavilionComp_LoadBGAnim+1
-	.word NULL
-	.word NULL
-	.word HomePages_LoadBGAnim+1 // () -> ()
-	.word NULL
-	.word NULL
-	.word NULL
-	.word Comps1_LoadBGAnim+1
-	.word Comps2_LoadBGAnim+1
-	.word NULL
-	.word NULL
-	.word CentralArea_LoadBGAnim+1
-	.word SeasideArea_LoadBGAnim+1
-	.word GreenArea_LoadBGAnim+1
-	.word Underground_LoadBGAnim+1
-	.word SkyACDCArea_LoadBGAnim+1
-	.word Undernet_LoadBGAnim+1
-	.word GraveyardImmortalArea_LoadBGAnim+1
+InternetLoadBGAnimJumptable:
+	.word RobotControlComp_LoadBGAnim+1, AquariumComp_LoadBGAnim+1, JudgeTreeComp_LoadBGAnim+1, MrWeatherComp_LoadBGAnim+1, 0x00000000, PavilionComp_LoadBGAnim+1, 0x00000000, 0x00000000
+	.word HomePages_LoadBGAnim+1, 0x00000000, 0x00000000, 0x00000000, Comps1_LoadBGAnim+1, Comps2_LoadBGAnim+1, 0x00000000, 0x00000000
+	.word CentralArea_LoadBGAnim+1, SeasideArea_LoadBGAnim+1, GreenArea_LoadBGAnim+1, Underground_LoadBGAnim+1, SkyACDCArea_LoadBGAnim+1, Undernet_LoadBGAnim+1, GraveyardImmortalArea_LoadBGAnim+1
+
+gfx_anim_script_80348F4:
 	.word dword_8034908
 	.word 0xFFFFFFFF
 off_80348FC:
@@ -3142,24 +3124,15 @@ loc_803561A:
 off_8035628:
 	.word word_803562C
 word_803562C:
-	.hword 0x0
-	.hword 0x1
-	.word byte_2030003
-	.word 0x40303
-	.word 0x1050005
-	.word 0xFFFF0006
-	.word 0x4C0AB5F0
-	.word 0x6BFF4657
-	.word 0x42008820
-	.word 0x88B9D00C
-	.word 0xD0014288
-	.word 0xE7F73404
-	.word 0x1C008860
-	.word 0xFD84F7F9
-	.word 0x4808D002
-	.word 0xFE76F7CC
-	.word 0xBDF0
-	.word byte_8035670
+	.word 0x00010000, byte_2030003, 0x00040303, 0x01050005, 0xFFFF0006
+	.byte 0xF0
+
+unk_8035641:
+	.word 0x574C0AB5, 0x206BFF46, 0x0C420088, 0x8888B9D0, 0x04D00142, 0x60E7F734, 0xF91C0088, 0x02FD84F7
+	.word 0xCC4808D0, 0xF0FE76F7, 0x700000BD
+	.byte 0x56
+	.byte 0x03
+	.byte 0x08
 byte_8035670:
 	.byte 0x2, 0x0, 0x8D, 0x4, 0x2, 0x4, 0x90, 0x4, 0x2, 0x5, 0x91, 0x4, 0x2, 0x7
 	.byte 0x92, 0x4, 0x0, 0x0, 0x0, 0x0
