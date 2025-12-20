@@ -2990,13 +2990,19 @@ off_8035444:
 	.word off_8035448
 off_8035448:
 	.word byte_8034AFC, 0xFFFFFFFF
-	.byte 0xF0
 
-unk_8035451:
-	.word 0x804903B5, 0xCE580800, 0x00F88AF7, 0x64BDF020
-	.byte 0x54
-	.byte 0x03
-	.byte 0x08
+	thumb_local_start
+sub_8035450:
+	push {r4-r7, lr}
+	ldr r1, =off_8035464
+	lsl r0, r0, #2
+	ldr r0, [r1, r0]
+	bl SpawnObjectsFromList
+	mov r0, #0
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_8035450
+
 off_8035464:
 	.word byte_803546C
 	.word byte_80354D4
@@ -3125,17 +3131,39 @@ off_8035628:
 	.word word_803562C
 word_803562C:
 	.word 0x00010000, byte_2030003, 0x00040303, 0x01050005, 0xFFFF0006
-	.byte 0xF0
 
-unk_8035641:
-	.word 0x574C0AB5, 0x206BFF46, 0x0C420088, 0x8888B9D0, 0x04D00142, 0x60E7F734, 0xF91C0088, 0x02FD84F7
-	.word 0xCC4808D0, 0xF0FE76F7, 0x700000BD
-	.byte 0x56
-	.byte 0x03
-	.byte 0x08
+	thumb_local_start
+sub_8035640:
+	push {r4-r7, lr}
+	ldr r4, =byte_8035670
+	mov r7, r10
+	ldr r7, [r7, #0x3c]
+loc_8035648:
+	ldrh r0, [r4, #0]
+	tst r0, r0
+	beq loc_8035668
+	ldrh r1, [r7, #4]
+	cmp r0, r1
+	beq loc_8035658
+	add r4, #4
+	b loc_8035648
+loc_8035658:
+	ldrh r0, [r4, #2]
+	mov r0, r0
+	bl TestEventFlag
+	beq loc_8035668
+	ldr r0, off_8035684 // =off_8035688
+	bl LoadGFXAnims
+loc_8035668:
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_8035640
+
+
 byte_8035670:
 	.byte 0x2, 0x0, 0x8D, 0x4, 0x2, 0x4, 0x90, 0x4, 0x2, 0x5, 0x91, 0x4, 0x2, 0x7
 	.byte 0x92, 0x4, 0x0, 0x0, 0x0, 0x0
+off_8035684:
 	.word off_8035688
 off_8035688:
 	.word byte_80525C0

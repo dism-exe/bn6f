@@ -1,3 +1,6 @@
+# NOTE: This utility is not complete. For decompression of assets you can use "tools/gbagfx/gbagfx {filename}.lz {filename}.bin", ensuring that 
+#       the filename to convert from is a *.lz so that gbagfx performs decompression.
+
 # usage: decompress <address> [-i <input_file>] [-s] > output
 import argparse
 

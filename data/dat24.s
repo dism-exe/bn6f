@@ -1821,7 +1821,7 @@ cutscenescript_808E762:
 	cs_jump destination1=cutscenescript_808E71D
 
 cutscenescript_808E76A:
-	cs_call_native_with_return_value ptr1=unk_808E799
+	cs_call_native_with_return_value ptr1=sub_808E798+1
 	cs_pause byte1=0xFF byte2=0x01
 	cs_jump destination1=cutscenescript_808E76A
 
@@ -1839,15 +1839,30 @@ byte_808E786::
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_808E796:
-	.byte 0x00
-	.byte 0x00
-	.byte 0x20
+	.balign 4, 0
 
-unk_808E799:
-	.word 0xA84D07B5, 0x0230017B, 0xA8DC0028, 0xA97B6873, 0xF018407B, 0x68DA0028, 0x20200073, 0xA00000BD
-	.byte 0xA6
-	.byte 0x00
-	.byte 0x02
+	thumb_local_start
+sub_808E798:
+	push {r5, lr}
+	ldr r5, =eStruct200a6a0
+	ldrb r0, [r5, #0xe]
+	add r0, #1
+	cmp r0, #2
+	bgt loc_808E7A6
+	strb r0, [r5, #0xe]
+loc_808E7A6:
+	ldrb r0, [r5, #0xd]
+	ldrb r1, [r5, #0xe]
+	add r0, r0, r1
+	cmp r0, #0xf0
+	bge loc_808E7B2
+	strb r0, [r5, #0xd]
+loc_808E7B2:
+	mov r0, #0
+	pop {r5, pc}
+	.pool
+	thumb_func_end sub_808E798
+
 ccs_808E7BC:
 	ccs_write_camera_field_03_14 ptr1=eOverworldNPCObject1_Coords
 	ccs_end
@@ -3172,12 +3187,12 @@ byte_808F748::
 	cs_decomp_text_archive ptr1=TextScript87E1718
 	cs_call_native_with_return_value ptr1=sub_808FBC0+1
 	cs_pause byte1=0xFF byte2=0x0A
-	cs_call_native_with_return_value ptr1=unk_808FC35
+	cs_call_native_with_return_value ptr1=sub_808FC34+1
 	cs_pause byte1=0xFF byte2=0x1E
 	cs_run_text_script_not_from_mem byte2=0x02
 	cs_wait_chatbox byte1=0x80
 	cs_pause byte1=0xFF byte2=0x0A
-	cs_call_native_with_return_value ptr1=unk_808FC59
+	cs_call_native_with_return_value ptr1=sub_808FC58+1
 	cs_clear_event_flag byte1=0xFF event16_2=EVENT_BEF
 	cs_clear_event_flag byte1=0xFF event16_2=EVENT_PET_DISABLED
 	cs_clear_event_flag byte1=0xFF event16_2=EVENT_1739
@@ -3201,7 +3216,7 @@ byte_808F788::
 	cs_pause byte1=0xFF byte2=0x0A
 	cs_call_native_with_return_value ptr1=sub_808FBEC+1
 	cs_pause byte1=0xFF byte2=0x0A
-	cs_call_native_with_return_value ptr1=unk_808FC7D
+	cs_call_native_with_return_value ptr1=sub_808FC7C+1
 	cs_play_sound hword1=0x017D
 	cs_pause byte1=0xFF byte2=0x1E
 	cs_run_text_script_not_from_mem byte2=0x03
@@ -3218,7 +3233,7 @@ byte_808F788::
 
 cutscenescript_808F7E0:
 	cs_clear_event_flag byte1=0xFF event16_2=EVENT_BE5
-	cs_call_native_with_return_value ptr1=unk_808FCB1
+	cs_call_native_with_return_value ptr1=sub_808FCB0+1
 	cs_call_native_with_return_value ptr1=sub_808FCE4+1
 	cs_clear_event_flag byte1=0xFF event16_2=EVENT_BF0
 	cs_clear_event_flag byte1=0xFF event16_2=EVENT_BEF
@@ -3229,7 +3244,7 @@ cutscenescript_808F7E0:
 	cs_end_for_map_reload_maybe_8037c64
 
 byte_808F800::
-	cs_call_native_with_return_value ptr1=unk_808FC7D
+	cs_call_native_with_return_value ptr1=sub_808FC7C+1
 	cs_run_eStruct200a6a0_callback
 	cs_load_map_gfx_anims_bg_anim
 	cs_set_chatbox_flags byte2=0x40

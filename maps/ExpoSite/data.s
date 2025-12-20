@@ -3493,7 +3493,7 @@ byte_8064FF4::
 	ns_run_secondary_script ptr1=byte_80650B7
 	ns_clear_unk_flags_60_flag_0x200
 	ns_remove_shadow
-	ns_init_native_callback ptr1=undumped_code_80652A0+1
+	ns_init_native_callback ptr1=sub_80652A0+1
 	ns_init_native_callback ptr1=sub_80652B8+1
 	ns_write_cutscene_var byte1=0x08 byte2=0x45
 	ns_free_and_end
@@ -3518,7 +3518,7 @@ byte_8065033::
 	ns_run_secondary_script ptr1=byte_80650B7
 	ns_clear_unk_flags_60_flag_0x200
 	ns_remove_shadow
-	ns_init_native_callback ptr1=undumped_code_80652A0+1
+	ns_init_native_callback ptr1=sub_80652A0+1
 	ns_init_native_callback ptr1=sub_80652B8+1
 	ns_write_cutscene_var byte1=0x08 byte2=0x4A
 	ns_free_and_end
@@ -3547,7 +3547,7 @@ byte_8065070::
 	ns_run_secondary_script ptr1=byte_80650B7
 	ns_clear_unk_flags_60_flag_0x200
 	ns_remove_shadow
-	ns_init_native_callback ptr1=undumped_code_80652A0+1
+	ns_init_native_callback ptr1=sub_80652A0+1
 	ns_init_native_callback ptr1=sub_80652B8+1
 	ns_write_cutscene_var byte1=0x08 byte2=0x49
 	ns_free_and_end
@@ -3771,10 +3771,21 @@ npcscript_8065279:
 	ns_end
 	ns_end
 
-undumped_code_80652A0::
-  .byte 0xF0, 0xB5, 0x57, 0x46, 0x3F, 0x69, 0x4
-	.byte 0x20, 0x0, 0x4, 0x78, 0x67, 0x1, 0x20, 0xC0, 0x3
-	.byte 0xB8, 0x67, 0x3A, 0xF0, 0x27, 0xFB, 0xF0, 0xBD
+	thumb_local_start
+sub_80652A0:
+	push {r4-r7, lr}
+	mov r7, r10
+	ldr r7, [r7, #oToolkit_CutsceneStatePtr]
+	mov r0, #4
+	lsl r0, r0, #0x10
+	str r0, [r7, #0x74]
+	mov r0, #1
+	lsl r0, r0, #0xF
+	str r0, [r7, #0x78]
+	bl sub_809F904
+	pop {r4-r7, pc}
+	thumb_func_end sub_80652A0
+
 // FIXME: this file needs redumping
 	thumb_local_start
 sub_80652B8::

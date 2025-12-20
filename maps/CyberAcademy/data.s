@@ -621,7 +621,7 @@ byte_8052F82::
 	.byte 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB, 0xB
 	.byte 0x0, 0x0, 0x0
 byte_8052F90::
-	ms_call_native_function ptr1=unk_8035641 word5=0x00000000
+	ms_call_native_function ptr1=sub_8035640+1 word5=0x00000000
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F3
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F4
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F5
@@ -1091,7 +1091,7 @@ dword_8053720::
 	ms_end
 
 byte_8053724::
-	ms_call_native_function ptr1=unk_8035641 word5=0x00000000
+	ms_call_native_function ptr1=sub_8035640+1 word5=0x00000000
 	ms_jump_if_progress_in_range byte1=0x00 byte2=0x0F destination3=byte_8053740
 	ms_jump_if_progress_in_range byte1=0x30 byte2=0x3F destination3=mapscript_805378D
 	ms_jump destination1=byte_80537C1
@@ -1133,7 +1133,7 @@ byte_80537C2::
 	ms_end
 
 byte_80537C4::
-	ms_call_native_function ptr1=unk_8035641 word5=0x00000000
+	ms_call_native_function ptr1=sub_8035640+1 word5=0x00000000
 	ms_jump_if_progress_in_range byte1=0x00 byte2=0x0F destination3=byte_80537E0
 	ms_jump_if_progress_in_range byte1=0x30 byte2=0x3F destination3=mapscript_805386E
 	ms_jump destination1=byte_805389F
@@ -1350,7 +1350,7 @@ byte_8053B49::
 	ms_end
 
 byte_8053B4C::
-	ms_call_native_function ptr1=unk_8035641 word5=0x00000000
+	ms_call_native_function ptr1=sub_8035640+1 word5=0x00000000
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_1640
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_16CB
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_16CA

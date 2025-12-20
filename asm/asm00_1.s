@@ -5578,7 +5578,7 @@ sub_8005DBE:
 	thumb_func_end sub_8005DBE
 
 	thumb_local_start
-dead_8005DF0:
+sub_8005DF0:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -5595,10 +5595,10 @@ dead_8005DF0:
 	bl sub_8138294
 	bl reloadCurNaviStatBoosts_813c3ac
 	pop {r4-r7,pc}
-	thumb_func_end dead_8005DF0
+	thumb_func_end sub_8005DF0
 
 	thumb_local_start
-dead_8005E22:
+sub_8005E22:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -5615,7 +5615,7 @@ dead_8005E22:
 	bl sub_8038A9C
 	bl reloadCurNaviStatBoosts_813c3ac
 	pop {r4-r7,pc}
-	thumb_func_end dead_8005E22
+	thumb_func_end sub_8005E22
 
 	thumb_local_start
 dead_8005E54:

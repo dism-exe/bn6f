@@ -712,12 +712,12 @@ dword_80727C4:
 
 mapscript_80727EC:
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_616 destination4=byte_8072802
-	ms_call_native_function ptr1=unk_8035451 word5=0x00000000
+	ms_call_native_function ptr1=sub_8035450+1 word5=0x00000000
 	ms_jump destination1=mapscript_8072813
 
 byte_8072802:
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_61A destination4=mapscript_8072813
-	ms_call_native_function ptr1=unk_8035451 word5=0x00000001
+	ms_call_native_function ptr1=sub_8035450+1 word5=0x00000001
 
 mapscript_8072813:
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_741 destination4=byte_8072891
@@ -1909,7 +1909,7 @@ byte_80735DC::
 	ns_set_animation byte1=0x04
 	ns_wait_cutscene_var byte1=0x08 byte2=0x01
 	ns_give_detatched_shadow
-	ns_init_native_callback ptr1=undumped_code_8073EE4+1
+	ns_init_native_callback ptr1=sub_8073EE4+1
 	ns_init_native_callback ptr1=sub_8073EFC+1
 	ns_pause byte1=0x5A
 	ns_give_detatched_shadow
@@ -2749,7 +2749,7 @@ byte_8073EB4::
 	ns_set_animation byte1=0x04
 	ns_wait_cutscene_var byte1=0x08 byte2=0x01
 	ns_give_detatched_shadow
-	ns_init_native_callback ptr1=undumped_code_8073EE4+1
+	ns_init_native_callback ptr1=sub_8073EE4+1
 	ns_init_native_callback ptr1=sub_8073EFC+1
 	ns_pause byte1=0x5A
 	ns_give_detatched_shadow
@@ -2761,12 +2761,21 @@ byte_8073EB4::
 	ns_end
 	ns_end
 
-undumped_code_8073EE4:
-	.byte 0xF0
-	.word 0x3F4657B5, 0x00200269, 0x01677804, 0xB8034020, 0x05F02B67
-	.byte 0xFD
-	.byte 0xF0
-	.byte 0xBD
+	thumb_local_start
+sub_8073EE4:
+	push {r4-r7, lr}
+	mov r7, r10
+	ldr r7, [r7, #0x10]
+	mov r0, #2
+	lsl r0, r0, #0x10
+	str r0, [r7, #0x74]
+	mov r0, #1
+	lsl r0, r0, #0xd
+	str r0, [r7, #0x78]
+	bl sub_809F904
+	pop {r4-r7, pc}
+	thumb_func_end sub_8073EE4
+
 
 	thumb_local_start
 sub_8073EFC::

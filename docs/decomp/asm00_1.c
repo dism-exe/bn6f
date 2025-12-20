@@ -3585,7 +3585,7 @@ int __noreturn sub_8005DBE()
 
 
 // 0x8005df0
-int __noreturn dead_8005DF0()
+int __noreturn sub_8005DF0()
 {
     int v0; // r10
     int v1; // r0
@@ -3607,7 +3607,7 @@ int __noreturn dead_8005DF0()
 
 
 // 0x8005e22
-int __noreturn dead_8005E22()
+int __noreturn sub_8005E22()
 {
     int v0; // r10
     int v1; // r0

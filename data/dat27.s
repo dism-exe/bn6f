@@ -733,7 +733,7 @@ cutscenescript_8094EBC:
 	cs_wait_camera_script
 	cs_pause byte1=0xFF byte2=0x1E
 	cs_play_sound hword1=0x01B8
-	cs_call_native_with_return_value ptr1=unk_80950C9
+	cs_call_native_with_return_value ptr1=sub_80950C8+1
 	cs_pause byte1=0xFF byte2=0x5A
 	cs_run_text_script_not_from_mem byte2=0x0D
 	cs_wait_chatbox byte1=0x80
@@ -784,8 +784,8 @@ cutscenescript_809506F:
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x07
 	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=0x03C0 signedhword6=-0x0140 signedhword8=0x0600
 	cs_make_ow_player_visible
-	cs_call_native_with_return_value ptr1=unk_80950D5
-	cs_call_native_with_return_value ptr1=unk_80950B9
+	cs_call_native_with_return_value ptr1=sub_80950D4+1
+	cs_call_native_with_return_value ptr1=sub_80950B8+1
 	cs_pause byte1=0xFF byte2=0x0F
 	cs_warp_cmd_8038040_2 byte1=0x81 byte2=0x00 ptr3=NULL
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_E29
@@ -800,19 +800,36 @@ cutscenescript_80950AE:
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_80950B7:
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
 
-unk_80950B9:
-	.word 0xA02019B5, 0x68FA8FF7, 0x00200063, 0x000000BD
-unk_80950C9:
-	.word 0x142002B5, 0x00FF9AF0, 0x00BD0020
+	thumb_local_start
+sub_80950B8:
+	push {lr}
+	mov r0, #0x19
+	bl sub_80355DE
+	str r0, [r5, #0x34]
+	mov r0, #0
+	pop {pc}
+	.balign 4, 0
+	thumb_func_end sub_80950B8
 
-unk_80950D5:
-	.word 0x142000B5, 0x00FF94F0
-	.byte 0x20
-	.byte 0x00
-	.byte 0xBD
+	thumb_local_start
+sub_80950C8:
+	push {lr}
+	mov r0, #2
+	bl sub_80AA004
+	mov r0, #0
+	pop {pc}
+	thumb_func_end sub_80950C8
+
+	thumb_local_start
+sub_80950D4:
+	push {lr}
+	mov r0, #0
+	bl sub_80AA004
+	mov r0, #0
+	pop {pc}
+	thumb_func_end sub_80950D4
 
 cutscenescript_80950E0:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
@@ -890,7 +907,7 @@ cutscenescript_809515C:
 	cs_wait_var_equal byte1=0x08 byte2=0x02
 	cs_pause byte1=0xFF byte2=0x1E
 	cs_play_sound hword1=0x01B8
-	cs_call_native_with_return_value ptr1=unk_8095221
+	cs_call_native_with_return_value ptr1=sub_8095220+1
 	cs_pause byte1=0xFF byte2=0x78
 	cs_run_cutscene_camera_script ptr1=ccs_8095154
 	cs_wait_camera_script
@@ -904,7 +921,7 @@ cutscenescript_80951CE:
 	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
 	cs_wait_screen_fade
 	cs_load_gfx_anim ptr1=byte_8062908
-	cs_call_native_with_return_value ptr1=unk_8095221
+	cs_call_native_with_return_value ptr1=sub_8095220+1
 	cs_spawn_ow_npc_objects_from_map
 	cs_free_all_objects_of_types byte2=0x20
 	cs_spawn_ow_map_objects_from_map
@@ -930,15 +947,17 @@ cutscenescript_8095215:
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_809521E:
-	.byte 0x00
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
 
-unk_8095221:
-	.word 0x142001B5, 0x00FEEEF0
-	.byte 0x20
-	.byte 0x00
-	.byte 0xBD
+	thumb_local_start
+sub_8095220:
+	push {lr}
+	mov r0, #1
+	bl sub_80AA004
+	mov r0, #0
+	pop {pc}
+	thumb_func_end sub_8095220
+
 byte_809522C::
 	ccs_set_camera_pos hword1=0xFB40 hword3=0x0AC0 hword5=0x0200
 	ccs_end
@@ -1394,7 +1413,7 @@ cutscenescript_8095678:
 	cs_spawn_cutscene_process byte1=0x20 ptr2=byte_80958AD
 	cs_play_sound hword1=0x00E3
 	cs_play_sound hword1=0x01B8
-	cs_call_native_with_return_value ptr1=unk_80958CD
+	cs_call_native_with_return_value ptr1=sub_80958CC+1
 	cs_pause byte1=0xFF byte2=0x78
 	cs_kill_cutscene_process byte1=0x20
 	cs_pause byte1=0xFF byte2=0x3C
@@ -1482,8 +1501,8 @@ cutscenescript_8095866:
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x07
 	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=-0x0920 signedhword6=-0x02E0 signedhword8=0x0400
 	cs_make_ow_player_visible
-	cs_call_native_with_return_value ptr1=unk_80958CD
-	cs_call_native_with_return_value ptr1=unk_80958BD
+	cs_call_native_with_return_value ptr1=sub_80958CC+1
+	cs_call_native_with_return_value ptr1=sub_80958BC+1
 	cs_pause byte1=0xFF byte2=0x0F
 	cs_warp_cmd_8038040_2 byte1=0x81 byte2=0x00 ptr3=NULL
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_E37
@@ -1501,15 +1520,26 @@ byte_80958AD::
 	cs_play_sound hword1=0x00E3
 	cs_pause byte1=0xFF byte2=0x20
 	cs_jump destination1=byte_80958AD
-	cs_end_for_map_reload_maybe_8037c64
 
-unk_80958BD:
-	.word 0x9F201BB5, 0x68FE8DF7, 0x00200063, 0x000000BD
-unk_80958CD:
-	.word 0x142002B5, 0x00FC18F0
-	.byte 0x20
-	.byte 0x00
-	.byte 0xBD
+	thumb_local_start
+sub_80958BC:
+	push {lr}
+	mov r0, #0x1b
+	bl sub_80355DE
+	str r0, [r5, #0x34]
+	mov r0, #0
+	pop {pc}
+	.balign 4, 0
+	thumb_func_end sub_80958BC
+
+	thumb_local_start
+sub_80958CC:
+	push {lr}
+	mov r0, #2
+	bl sub_80AA104
+	mov r0, #0
+	pop {pc}
+	thumb_func_end sub_80958CC
 
 ccs_80958D8:
 	ccs_set_camera_pos hword1=0xFA40 hword3=0xE440 hword5=0x0000
@@ -1684,7 +1714,7 @@ cutscenescript_8095A70:
 	cs_wait_camera_script
 	cs_pause byte1=0xFF byte2=0x1E
 	cs_play_sound hword1=0x01BA
-	cs_call_native_with_return_value ptr1=unk_8095B0D
+	cs_call_native_with_return_value ptr1=sub_8095B0C+1
 	cs_pause byte1=0xFF byte2=0x96
 	cs_run_text_script_not_from_mem byte2=0x00
 	cs_wait_chatbox byte1=0x80
@@ -1694,7 +1724,7 @@ byte_8095AC2::
 	cs_disable_cutscene_skip_script
 	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
 	cs_wait_screen_fade
-	cs_call_native_with_return_value ptr1=unk_8095B0D
+	cs_call_native_with_return_value ptr1=sub_8095B0C+1
 	cs_spawn_ow_npc_objects_from_map
 	cs_free_all_objects_of_types byte2=0x20
 	cs_spawn_ow_map_objects_from_map
@@ -1717,13 +1747,15 @@ byte_8095AC2::
 cutscenescript_8095B04:
 	cs_set_chatbox_flags byte2=0x40
 	cs_jump destination1=byte_8095AC2
-	cs_end_for_map_reload_maybe_8037c64
 
-unk_8095B0D:
-	.word 0x142001B5, 0x00FAF8F0
-	.byte 0x20
-	.byte 0x00
-	.byte 0xBD
+	thumb_local_start
+sub_8095B0C:
+	push {lr}
+	mov r0, #1
+	bl sub_80AA104
+	mov r0, #0
+	pop {pc}
+	thumb_func_end sub_8095B0C
 
 ccs_8095B18:
 	ccs_set_camera_pos hword1=0xF820 hword3=0x02A0 hword5=0x0200
@@ -1810,7 +1842,7 @@ cutscenescript_8095C0F:
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x01
 	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=-0x06C0 signedhword6=0x03C0 signedhword8=0x0200
 	cs_make_ow_player_visible
-	cs_call_native_with_return_value ptr1=unk_8095C59
+	cs_call_native_with_return_value ptr1=sub_8095C58+1
 	cs_pause byte1=0xFF byte2=0x0F
 	cs_warp_cmd_8038040_2 byte1=0x81 byte2=0x00 ptr3=NULL
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_E3F
@@ -1826,15 +1858,19 @@ cutscenescript_8095C4D:
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_8095C56:
-	.byte 0x00
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
 
-unk_8095C59:
-	.word 0x9F201CB5, 0x68FCBFF7, 0x00200063
-	.byte 0xBD
-	.byte 0x00
-	.byte 0x00
+	thumb_local_start
+sub_8095C58:
+	push {lr}
+	mov r0, #0x1c
+	bl sub_80355DE
+	str r0, [r5, #0x34]
+	mov r0, #0
+	pop {pc}
+	.balign 4, 0
+	thumb_func_end sub_8095C58
+
 
 ccs_8095C68:
 	ccs_set_camera_pos hword1=0x11C0 hword3=0xE9A0 hword5=0x0000
@@ -2427,7 +2463,7 @@ byte_809634C::
 	cs_make_ow_player_visible
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_E45
 	cs_do_pet_effect byte1=0xFF byte2=0x01
-	cs_call_native_with_return_value ptr1=byte_80963C5
+	cs_call_native_with_return_value ptr1=sub_80963C4+1
 	cs_pause byte1=0xFF byte2=0x3C
 	cs_play_music hword1=0x000E
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_ED4
@@ -2452,13 +2488,26 @@ cutscenescript_80963A8:
 	cs_jump destination1=byte_809634C
 	cs_end_for_map_reload_maybe_8037c64
 	cs_end_for_map_reload_maybe_8037c64
-	cs_end_for_map_reload_maybe_8037c64
 
-byte_80963C5::
-	.word 0xE32001B5, 0xA1F79821, 0xA9F7A9FE, 0x00D007F8, 0x98217A20, 0x00FE9AF7, 0x98217B20, 0x00FEA4F7
-	.byte 0x20
-	.byte 0x00
-	.byte 0xBD
+	thumb_local_start
+sub_80963C4:
+	push {lr}
+	mov r0, #1
+	mov r1, #0xe3
+	bl SetEventFlagFromImmediate
+	bl notZero_eByte200AD04
+	beq loc_80963E4
+	mov r0, #0
+	mov r1, #0x7a
+	bl SetEventFlagFromImmediate
+	mov r0, #0
+	mov r1, #0x7b
+	bl ClearEventFlagFromImmediate
+loc_80963E4:
+	mov r0, #0
+	pop {pc}
+	thumb_func_end sub_80963C4
+
 
 ccs_80963E8:
 	ccs_write_camera_field_03_14 ptr1=eOverworldNPCObject0_Coords
@@ -2828,7 +2877,7 @@ cutscenescript_8096847:
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x04
 	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=0x0000 signedhword6=0x0000 signedhword8=0x0000
 	cs_make_ow_player_visible
-	cs_call_native_with_return_value ptr1=unk_80968B1
+	cs_call_native_with_return_value ptr1=sub_80968B0+1
 	cs_pause byte1=0xFF byte2=0x0F
 	cs_warp_cmd_8038040_2 byte1=0x81 byte2=0x00 ptr3=NULL
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_E47
@@ -2852,13 +2901,17 @@ byte_80968A4::
 	cs_do_camera_shake byte1=0x01 byte2=0x20 byte3=0x00
 	cs_pause byte1=0xFF byte2=0x20
 	cs_jump destination1=byte_80968A4
-	cs_end_for_map_reload_maybe_8037c64
 
-unk_80968B1:
-	.word 0x9E201DB5, 0x68FE93F7, 0x00200063
-	.byte 0xBD
-	.byte 0x00
-	.byte 0x00
+	thumb_local_start
+sub_80968B0:
+	push {lr}
+	mov r0, #0x1d
+	bl sub_80355DE
+	str r0, [r5, #0x34]
+	mov r0, #0
+	pop {pc}
+	.balign 4, 0
+	thumb_func_end sub_80968B0
 
 ccs_80968C0:
 	ccs_write_camera_field_03_14 ptr1=eOWPlayerObject_Coords
@@ -3039,7 +3092,7 @@ cutscenescript_8096ABC:
 	cs_disable_cutscene_skip_script
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_E4B
 	cs_pause byte1=0xFF byte2=0x14
-	cs_call_native_with_return_value ptr1=unk_8096B01
+	cs_call_native_with_return_value ptr1=sub_8096B00+1
 	cs_jump_if_var_equal byte1=0x04 byte2=0x01 destination3=byte_8096ADC
 	cs_start_fixed_battle hword1=0x0084
 	cs_jump destination1=byte_8096ADF
@@ -3065,13 +3118,25 @@ cutscenescript_8096AEF:
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_8096AFF:
-	.byte 0x00
-	.byte 0xF0
-unk_8096B01:
-	.word 0x6A2400B5, 0x03F9EEF7, 0x88400148, 0x01D10042, 0x00712C24, 0xF6BDF020
-	.byte 0x00
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
+
+	thumb_local_start
+sub_8096B00:
+	push {r4-r7, lr}
+	mov r4, #0
+	bl GetTitleScreenIconCount
+	ldr r0, =0xf6
+	and r1, r0
+	cmp r0, r1
+	bne loc_8096B12
+	mov r4, #1
+loc_8096B12:
+	strb r4, [r5, #4]
+	mov r0, #0
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_8096B00
+
 byte_8096B1C::
 	ccs_set_camera_pos hword1=0x06C0 hword3=0xEC40 hword5=0x0180
 	ccs_end
@@ -3914,7 +3979,7 @@ cutscenescript_8097540:
 	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=0x0000 signedhword6=0x0000 signedhword8=0x0000
 	cs_make_ow_player_visible
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_E51
-	cs_call_native_with_return_value ptr1=unk_8097581
+	cs_call_native_with_return_value ptr1=sub_8097580+1
 	cs_chatbox_cmd_8037a70
 	cs_enable_ow_player_wall_collision_809e248
 	cs_unlock_player_after_non_npc_dialogue_809e122
@@ -3924,13 +3989,15 @@ byte_8097577::
 	cs_set_chatbox_flags byte2=0x40
 	cs_jump destination1=cutscenescript_8097540
 	cs_end_for_map_reload_maybe_8037c64
-	cs_end_for_map_reload_maybe_8037c64
 
-unk_8097581:
-	.word 0x35F76EB5, 0x002000FC
-	.byte 0xBD
-	.byte 0x00
-	.byte 0x00
+	thumb_local_start
+sub_8097580:
+	push {lr}
+	bl sub_8005DF0
+	mov r0, #0
+	pop {pc}
+	.balign 4, 0
+	thumb_func_end sub_8097580
 
 ccs_809758C:
 	ccs_set_camera_pos hword1=0x06A0 hword3=0x0260 hword5=0x0000
@@ -3967,7 +4034,7 @@ cutscenescript_8097594:
 	cs_run_text_script_not_from_mem byte2=0x02
 	cs_wait_chatbox byte1=0x80
 	cs_pause byte1=0xFF byte2=0x78
-	cs_call_native_with_return_value ptr1=unk_8097661
+	cs_call_native_with_return_value ptr1=sub_8097660+1
 	cs_pause byte1=0xFF byte2=0xB4
 	cs_run_text_script_not_from_mem byte2=0x03
 	cs_wait_chatbox byte1=0x80
@@ -3983,7 +4050,7 @@ cutscenescript_8097602:
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x04
 	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=0x0000 signedhword6=0x0000 signedhword8=0x0000
 	cs_make_ow_player_visible
-	cs_call_native_with_return_value ptr1=end_cutscenescript_8097655
+	cs_call_native_with_return_value ptr1=sub_8097654+1
 	cs_chatbox_cmd_8037a70
 	cs_enable_ow_player_wall_collision_809e248
 	cs_unlock_player_after_non_npc_dialogue_809e122
@@ -4003,17 +4070,38 @@ cutscenescript_8097639:
 	cs_wait_screen_fade
 	cs_jump destination1=cutscenescript_8097602
 	cs_end_for_map_reload_maybe_8037c64
-	cs_end_for_map_reload_maybe_8037c64
 
-end_cutscenescript_8097655:
-	.word 0xE4F76EB5, 0x002000FB, 0xF00000BD
+	thumb_local_start
+sub_8097654:
+	push {lr}
+	bl sub_8005E22
+	mov r0, #0
+	pop {pc}
+	.balign 4, 0
+	thumb_func_end sub_8097654
 
-unk_8097661:
-	.word 0x08200EB5, 0x69221F21, 0x1FF81BF7, 0xFF490620, 0x52320122, 0xF0F76842, 0xD0201FFF, 0xF8F76821
-	.word 0xF02000FF, 0xFF0000BD
-	.byte 0xFF
-	.byte 0x00
-	.byte 0x00
+	thumb_local_start
+sub_8097660:
+	push {r4-r7, lr}
+	mov r0, #0xe
+	mov r1, #8
+	mov r2, #0x1f
+	bl sound_80006A2
+	mov r0, #0x1f
+	ldr r1, =0xffff
+	mov r2, #0xff
+	add r2, #1
+	neg r2, r2
+	bl sound_800065A
+	mov r0, #0x1f
+	mov r1, #0xd0
+	bl sound_8000672
+	mov r0, #0
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_8097660
+
+
 byte_809768C::
 	ccs_set_camera_pos hword1=0x0020 hword3=0xFEE0 hword5=0x0000
 	ccs_end
@@ -4336,7 +4424,7 @@ byte_8097A48::
 	cs_nop_80377d0
 	cs_pause byte1=0xFF byte2=0x01
 	cs_make_ow_player_invisible
-	cs_call_native_with_return_value ptr1=unk_8083F35
+	cs_call_native_with_return_value ptr1=sub_8083F34+1
 	cs_decomp_text_archive ptr1=TextScript87DC12E
 	cs_jump_if_var_equal byte1=0x04 byte2=0x00 destination3=cutscenescript_8097A74
 	cs_jump_if_var_equal byte1=0x04 byte2=0x01 destination3=cutscenescript_8097A89
@@ -4765,7 +4853,7 @@ cutscenescript_8097F17:
 	cs_disable_cutscene_skip_script
 	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
 	cs_wait_screen_fade
-	cs_call_native_with_return_value ptr1=byte_8098025
+	cs_call_native_with_return_value ptr1=sub_8098024+1
 	cs_give_chips hword2=0x0132 byte4=0x05 byte5=0x01
 	cs_spawn_ow_npc_objects_from_map
 	cs_stop_cutscene_camera_script
@@ -4838,7 +4926,7 @@ cutscenescript_8097FE1:
 	cs_disable_cutscene_skip_script
 	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
 	cs_wait_screen_fade
-	cs_call_native_with_return_value ptr1=byte_8098025
+	cs_call_native_with_return_value ptr1=sub_8098024+1
 	cs_spawn_ow_npc_objects_from_map
 	cs_stop_cutscene_camera_script
 	cs_chatbox_cmd_8037a70
@@ -4860,14 +4948,25 @@ byte_8098019::
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_8098022:
-	.byte 0x00
-	.byte 0x00
-	.byte 0xF0
-byte_8098025::
-	.word 0x46F769B5, 0x052800F8, 0x033801D0, 0x00184049, 0x6DF7971C, 0xF02000F8, 0xB80000BD
-	.byte 0x03
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
+
+	thumb_local_start
+sub_8098024:
+	push {r4-r7, lr}
+	bl GetCurPETNavi
+	cmp r0, #0
+	beq loc_809803A
+	sub r0, #1
+	ldr r1, =0x3b8
+	add r0, r0, r1
+	mov r0, r0
+	bl SetEventFlag
+loc_809803A:
+	mov r0, #0
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_8098024
+
 
 ccs_8098044:
 	ccs_set_camera_pos hword1=0x00C0 hword3=0xE800 hword5=0x0400
@@ -5153,18 +5252,27 @@ byte_8098358::
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731
 	cs_pause byte1=0xFF byte2=0x01
 	cs_offset_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x00
-	cs_call_native_with_return_value ptr1=end_cutscenescript_8098370+1
+	cs_call_native_with_return_value ptr1=sub_8098370+1
 	cs_wait_chatbox byte1=0x80
 	cs_unlock_player_after_non_npc_dialogue_809e122
 	cs_end_for_map_reload_maybe_8037c64
 
-end_cutscenescript_8098370:
-	.word 0x4803B5F0, 0xF7A87929, 0x2000F805, 0x0000BDF0, eTextScript2033404
+	thumb_local_start
+sub_8098370:
+	push {r4-r7, lr}
+	ldr r0, =eTextScript2033404
+	ldrb r1, [r5, #4]
+	bl chatbox_runScript
+	mov r0, #0
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_8098370
+
 byte_8098384::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731
-	cs_call_native_with_return_value ptr1=byte_8098441
+	cs_call_native_with_return_value ptr1=sub_8098440+1
 	cs_jump_if_var_equal byte1=0x04 byte2=0x01 destination3=cutscenescript_809839C
 	cs_decomp_text_archive ptr1=byte_202FA04
 
@@ -5188,24 +5296,44 @@ cutscenescript_80983BF:
 	cs_ow_player_sprite_special_with_arg byte1=0x04 byte2=0x06 byte3=0xFF
 	cs_offset_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x10
 
-byte_80983C7:: 
-  .byte 0x42, 0x7, 0xFF, 0x10, 0x0, 0x21, 0x1, 0x0, 0xC7, 0x83, 0x9
-	.byte 0x8, 0x21, 0x2, 0x0, 0xC7, 0x83, 0x9, 0x8, 0x21, 0x3, 0x0
-	.byte 0xC7, 0x83, 0x9, 0x8, 0x21, 0x4, 0x0
-	.word byte_80983C7
-	.byte 0x21, 0x5, 0x0, 0xC7, 0x83, 0x9, 0x8, 0x21, 0x6, 0x0, 0xC7, 0x83
-	.byte 0x9, 0x8, 0x21, 0x7, 0x0, 0xC7, 0x83, 0x9, 0x8, 0x21, 0x8, 0x0
-	.word byte_80983C7
-	.byte 0x21, 0x9, 0x0, 0xC7, 0x83, 0x9, 0x8, 0x21, 0xA, 0x0, 0xC7, 0x83
-	.byte 0x9, 0x8, 0x21, 0xB, 0x0, 0xC7, 0x83, 0x9, 0x8, 0x21, 0xC, 0x0
-	.word byte_80983C7
-	.byte 0x21, 0xD, 0x0, 0xC7, 0x83, 0x9, 0x8, 0x21, 0xE, 0x0, 0xC7
-	.byte 0x83, 0x9, 0x8, 0x21, 0xF, 0x0, 0xC7, 0x83, 0x9, 0x8, 0x42
-	.byte 0xFF, 0x2, 0x10, 0x0, 0x47, 0x1, 0xFF, 0x0, 0x11, 0x0, 0x0
-byte_8098441::
-	.byte 0xB5, 0xA8, 0x79, 0xFF, 0x28, 0x5, 0xD1, 0x5, 0xF0, 0x36
-	.byte 0xFF, 0x4, 0x30, 0x7, 0x21, 0x8, 0x40, 0xA8, 0x71, 0x0
-	.byte 0x20, 0x0, 0xBD
+byte_80983C7::
+	cs_move_player_in_facing_direction byte1=0x07 byte2=0xFF signedhword3=0x0010
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x01 signedbyte2=0x00 destination3=byte_80983C7
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x02 signedbyte2=0x00 destination3=byte_80983C7
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x03 signedbyte2=0x00 destination3=byte_80983C7
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x04 signedbyte2=0x00 destination3=byte_80983C7
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x05 signedbyte2=0x00 destination3=byte_80983C7
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x06 signedbyte2=0x00 destination3=byte_80983C7
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x07 signedbyte2=0x00 destination3=byte_80983C7
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x08 signedbyte2=0x00 destination3=byte_80983C7
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x09 signedbyte2=0x00 destination3=byte_80983C7
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x0A signedbyte2=0x00 destination3=byte_80983C7
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x0B signedbyte2=0x00 destination3=byte_80983C7
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x0C signedbyte2=0x00 destination3=byte_80983C7
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x0D signedbyte2=0x00 destination3=byte_80983C7
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x0E signedbyte2=0x00 destination3=byte_80983C7
+	cs_coordinate_trigger_equals_cmd_8035afa byte1=0x0F signedbyte2=0x00 destination3=byte_80983C7
+	cs_move_player_in_facing_direction byte1=0xFF byte2=0x02 signedhword3=0x0010
+	cs_offset_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x00
+	cs_cutscene_end
+	cs_end_for_map_reload_maybe_8037c64
+
+	thumb_local_start
+sub_8098440:
+	push {lr}
+	ldrb r0, [r5, #6]
+	cmp r0, #0xff
+	bne loc_8098454
+	bl GetOWPlayerFacingDirection
+	add r0, #4
+	mov r1, #7
+	and r0, r1
+	strb r0, [r5, #6]
+loc_8098454:
+	mov r0, #0
+	pop {pc}
+	thumb_func_end sub_8098440
+
 byte_8098458::
 	gfx_anim_manual_pal_transform transform_type=0x00000004 ptr5=iPalette3001B60 index=0x0E num_pals=0x0D
 	gfx_anim_data data=0x80000842 delay=0x00000002
@@ -5297,7 +5425,7 @@ byte_8098824::
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87385CC + COMPRESSED_PTR_FLAG
 	cs_clear_event_flag byte1=0xFF event16_2=EVENT_171E
-	cs_call_native_with_return_value ptr1=unk_80988CD
+	cs_call_native_with_return_value ptr1=sub_80988CC+1
 	cs_run_text_script_from_mem byte1=0x05
 	cs_pause byte1=0xFF byte2=0x01
 	cs_jump_if_flag_set byte1=0xFF event16_2=EVENT_171E destination4=cutscenescript_8098856
@@ -5345,14 +5473,23 @@ byte_80988C4::
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_80988CB:
-	.byte 0x00
-	.byte 0x29
+	.balign 4, 0
 
-unk_80988CD:
-	.word 0x14480479, 0x80434A22, 0x01636818, 0x0071697C, 0xC846F720
-	.byte 0x84
-	.byte 0x09
-	.byte 0x08
+	thumb_local_start
+sub_80988CC:
+	ldrb r1, [r5, #4]
+	ldr r0, =byte_80984C8
+	mov r2, #0x14
+	mul r2, r1
+	add r0, r0, r2
+	str r0, [r5, #0x34]
+	ldrb r1, [r0, #0x10]
+	strb r1, [r5, #5]
+	mov r0, #0
+	mov pc, lr
+	.pool
+	thumb_func_end sub_80988CC
+
 CutsceneScript_80988E4::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
@@ -5361,7 +5498,7 @@ CutsceneScript_80988E4::
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x04
 	cs_ow_player_sprite_special_with_arg byte1=0x04 byte2=0xFF byte3=0x04
 	cs_clear_event_flag byte1=0xFF event16_2=EVENT_171E
-	cs_call_native_with_return_value ptr1=unk_8098951
+	cs_call_native_with_return_value ptr1=sub_8098950+1
 	cs_run_text_script_from_mem byte1=0x04
 	cs_wait_chatbox byte1=0xA0
 	cs_jump_if_flag_set byte1=0xFF event16_2=EVENT_171E destination4=cutscenescript_8098946
@@ -5379,28 +5516,31 @@ cutscenescript_8098916:
 	cs_pause byte1=0xFF byte2=0x0A
 	cs_set_screen_fade byte1=0xFF byte2=0x04 byte3=0x10
 	cs_wait_screen_fade
-
-end_cutscenescript_8098937:
-	.word 0x4C0FFF02, 0x00000181, 0x4C150000
-	.byte 0x89
-	.byte 0x09
-	.byte 0x08
+	cs_pause byte1=0xFF byte2=0x0F
+	cs_warp_cmd_8038040_2 byte1=0x81 byte2=0x01 ptr3=NULL
+	cs_jump destination1=cutscenescript_809894C
 
 cutscenescript_8098946:
 	cs_clear_event_flag byte1=0xFF event16_2=EVENT_171E
 	cs_wait_chatbox byte1=0x80
+
+cutscenescript_809894C:
 	cs_unlock_player_after_non_npc_dialogue_809e122
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_809894F:
-	.byte 0x00
-	.byte 0x53
+	.balign 4, 0
 
-unk_8098951:
-	.word 0x586BDB46, 0x0071287A
-	.byte 0x20
-	.byte 0xF7
-	.byte 0x46
+	thumb_local_start
+sub_8098950:
+	mov r3, r10
+	ldr r3, [r3, #0x3c]
+	ldrb r0, [r3, #9]
+	strb r0, [r5, #4]
+	mov r0, #0
+	mov pc, lr
+	thumb_func_end sub_8098950
+
 byte_809895C::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
@@ -5519,7 +5659,7 @@ CutsceneScript_8098a78::
 	cs_free_all_ow_map_objects
 	cs_disable_ow_player_wall_collision_809e254
 	cs_clear_ow_player_interaction_locked_809e23c
-	cs_call_native_with_return_value ptr1=unk_8098B8D
+	cs_call_native_with_return_value ptr1=sub_8098B8C+1
 	cs_run_cutscene_camera_script ptr1=ccs_8098A00
 	cs_wait_camera_script
 	cs_stop_cutscene_camera_script
@@ -5616,14 +5756,31 @@ byte_8098B7A::
 end_cutscenescript_8098B8A:
 	.byte 0x00
 	.byte 0x00
-	.byte 0x10
 
-unk_8098B8D:
-	.word 0x644654B5, 0x20200069, 0x61201074, 0x0169647C, 0x64434139, 0xA1686018, 0x0568E268, 0xE0FAEEF0
-	.word 0x7EF00578, 0x102000FB
-	.byte 0xBD
-	.byte 0x00
-	.byte 0x00
+	thumb_local_start
+sub_8098B8C:
+	push {r4, lr}
+	mov r4, r10
+	ldr r4, [r4, #0x14]
+	mov r0, #0
+	strb r0, [r4, #0x10]
+	mov r0, #0x10
+	ldrb r1, [r4, #0x11]
+	ldr r4, [r4, #0x14]
+	sub r1, #1
+	mul r1, r0
+	add r4, r4, r1
+	ldr r0, [r4, #4]
+	ldr r1, [r4, #8]
+	ldr r2, [r4, #0xc]
+	bl owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
+	ldrb r0, [r4, #3]
+	bl SetOWPlayerFacingDirection
+	mov r0, #0
+	pop {r4, pc}
+	.balign 4, 0
+	thumb_func_end sub_8098B8C
+
 byte_8098BB8::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0

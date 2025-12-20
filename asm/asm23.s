@@ -410,20 +410,33 @@ byte_808910F:
 
 unk_8089118:
 	.word 0x04000201, 0x00000000, 0x00000000, 0x00000000
+
 dword_8089128:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
-	cs_call_native_with_return_value ptr1=unk_8089141
+	cs_call_native_with_return_value ptr1=dispatch_8089140+1
 
-byte_8089130:
-	.word 0x0747FF2A, 0x3C00043F, 0x30154000, 0x00080891
-	.byte 0xF0
+cutscenescript_8089130:
+	cs_clear_event_flag byte1=0xFF event16_2=EVENT_747
+	cs_unlock_player_after_non_npc_dialogue_809e122
+	cs_end_for_map_reload_maybe_8037c64
+	cs_set_chatbox_flags byte2=0x40
+	cs_jump destination1=cutscenescript_8089130
+	cs_end_for_map_reload_maybe_8037c64
 
-unk_8089141:
-	.word 0x294803B5, 0xFE584078, 0x00470046, 0x54BDF042
-	.byte 0x91
-	.byte 0x08
-	.byte 0x08
+	thumb_local_start
+dispatch_8089140:
+	push {r4-r7, lr}
+	ldr r0, =off_8089154
+	ldrb r1, [r5, #0]
+	ldr r0, [r0, r1]
+	mov lr, pc
+	bx r0
+	tst r0, r0
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end dispatch_8089140
+
 off_8089154: 
   .word sub_8089160+1
 	.word sub_808917C+1
@@ -642,19 +655,60 @@ byte_80893CC:
 	cs_pause byte1=0xFF byte2=0x1E
 	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
 	cs_wait_screen_fade
-	cs_call_native_with_return_value ptr1=unk_80893F5
+	cs_call_native_with_return_value ptr1=sub_80893F4+1
 
 byte_80893DC:
-	.word 0x273CFF02, 0x070808FF, 0x0746FF2A, 0x3C00043F, 0xE4154000, 0x00080893
-	.byte 0xF0
+	cs_pause byte1=0xFF byte2=0x3C
+	cs_set_screen_fade byte1=0xFF byte2=0x08 byte3=0x08
+	cs_wait_screen_fade
 
-unk_80893F5:
-	.word 0x7A2020B5, 0xABF8D3F7, 0x53FEB6F7, 0x986BDB46, 0x88490F88, 0x98D11342, 0x10282379, 0x162006D1
-	.word 0xA5F7A521, 0x00D103FE, 0x17F7AC20, 0x06E007F8, 0xA5211A20, 0x02FE9CF7, 0xAC2001D1, 0x07F80EF7
-	.word 0xA5214020, 0xB9FE6AF7, 0x00F868F0, 0x90BDF020
-	.byte 0x02
-	.byte 0x00
-	.byte 0x00
+cutscenescript_80893E4:
+	cs_clear_event_flag byte1=0xFF event16_2=EVENT_746
+	cs_unlock_player_after_non_npc_dialogue_809e122
+	cs_end_for_map_reload_maybe_8037c64
+	cs_set_chatbox_flags byte2=0x40
+	cs_jump destination1=cutscenescript_80893E4
+	cs_end_for_map_reload_maybe_8037c64
+
+	thumb_local_start
+sub_80893F4:
+	push {r4-r7, lr}
+	mov r0, #0x20
+	bl FreeAllObjectsOfSpecifiedTypes
+	bl mapObject_spawnMapObjectsForMap
+	mov r3, r10
+	ldr r3, [r3, #0x3c]
+	ldrh r0, [r3, #4]
+	ldr r1, =0x290
+	cmp r0, r1
+	bne loc_8089434
+	ldrb r0, [r3, #6]
+	cmp r0, #0x23
+	bne loc_8089434
+	mov r0, #6
+	mov r1, #0x16
+	bl TestEventFlagFromImmediate
+	bne loc_8089424
+	mov r0, #0
+	bl sub_8035450
+	b loc_8089434
+loc_8089424:
+	mov r0, #6
+	mov r1, #0x1a
+	bl TestEventFlagFromImmediate
+	bne loc_8089434
+	mov r0, #1
+	bl sub_8035450
+loc_8089434:
+	mov r0, #7
+	mov r1, #0x40
+	bl SetEventFlagFromImmediate
+	bl sub_8142510
+	mov r0, #0
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_80893F4
+
 byte_8089448:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0

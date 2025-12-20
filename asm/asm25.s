@@ -512,51 +512,107 @@ loc_808FC08:
 	mov r0, #0
 	pop {r5,pc}
 	.balign 4, 0
+	thumb_func_end sub_808FBEC
 off_808FC20:
 	.word byte_808FC24
 byte_808FC24:
 	.word 0xFF56FFCA, 0x000E0182, 0x000E01C2, 0xFE70FFA4
-	.byte 0x20
 
-unk_808FC35:
-	.word 0x2D4D2AB5, 0x5B7B2B68, 0xC0480300, 0x9F1C005A, 0x00FA66F7, 0x50BD2020
-	.byte 0xFC
-	.byte 0x08
-	.byte 0x08
+	thumb_local_start
+sub_808FC34:
+	push {r5, lr}
+	ldr r5, off_808FCE0 // =off_808F5D4
+	ldr r5, [r5, #0]
+	ldrb r3, [r5, #0xc]
+	lsl r3, r3, #1
+	ldr r0, =byte_808FC50
+	ldrh r0, [r0, r3]
+	mov r0, r0
+	bl SetEventFlag
+	mov r0, #0
+	pop {r5, pc}
+	.pool
+	thumb_func_end sub_808FC34
+
 byte_808FC50:
 	.word 0x0BEA0BE9, 0x00000BEB
-	.byte 0x20
 
-unk_808FC59:
-	.word 0x2D4D21B5, 0x5B7B2B68, 0xC0480300, 0x9F1C005A, 0x00FA62F7, 0x74BD2020
-	.byte 0xFC
-	.byte 0x08
-	.byte 0x08
+	thumb_local_start
+sub_808FC58:
+	push {r5, lr}
+	ldr r5, off_808FCE0 // =off_808F5D4
+	ldr r5, [r5, #0]
+	ldrb r3, [r5, #0xc]
+	lsl r3, r3, #1
+	ldr r0, =byte_808FC74
+	ldrh r0, [r0, r3]
+	mov r0, r0
+	bl ClearEventFlag
+	mov r0, #0
+	pop {r5, pc}
+	.pool
+	thumb_func_end sub_808FC58
+
 byte_808FC74:
 	.word 0x0BED0BEC, 0x00000BEE
-	.byte 0x20
 
-unk_808FC7D:
-	.word 0x2D4D18B5, 0xC0465068, 0x8579016B, 0x03D10129, 0x41E00021, 0x03004979, 0x005A4048, 0x49F79F1C
-	.word 0x202000FA, 0xA80000BD
-	.byte 0xFC
-	.byte 0x08
-	.byte 0x08
+	thumb_local_start
+sub_808FC7C:
+	push {r5, lr}
+	ldr r5, off_808FCE0 // =off_808F5D4
+	ldr r5, [r5, #0]
+	mov r0, r10
+	ldr r0, [r0, #0x3c]
+	ldrb r1, [r0, #4]
+	cmp r1, #0x85
+	bne loc_808FC90
+	mov r1, #3
+	b loc_808FC92
+loc_808FC90:
+	ldrb r1, [r0, #5]
+loc_808FC92:
+	lsl r1, r1, #1
+	ldr r0, =byte_808FCA8
+	ldrh r0, [r0, r1]
+	mov r0, r0
+	bl ClearEventFlag
+	mov r0, #0
+	pop {r5, pc}
+	.pool
+	thumb_func_end sub_808FC7C
+
 byte_808FCA8:
 	.word 0x0BFE0BFD, 0x0FFE0BFF
-	.byte 0xF0
 
-unk_808FCB1:
-	.word 0xC04650B5, 0x8579016B, 0x03D10129, 0x41E00021, 0x03004979, 0x005A4048, 0x23F79F1C, 0xF02000FA
-	.word 0xD80000BD
-	.byte 0xFC
-	.byte 0x08
-	.byte 0x08
+	thumb_local_start
+sub_808FCB0:
+	push {r4-r7, lr}
+	mov r0, r10
+	ldr r0, [r0, #0x3c]
+	ldrb r1, [r0, #4]
+	cmp r1, #0x85
+	bne loc_808FCC0
+	mov r1, #3
+	b loc_808FCC2
+loc_808FCC0:
+	ldrb r1, [r0, #5]
+loc_808FCC2:
+	lsl r1, r1, #1
+	ldr r0, =byte_808FCD8
+	ldrh r0, [r0, r1]
+	mov r0, r0
+	bl SetEventFlag
+	mov r0, #0
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_808FCB0
+
+
 byte_808FCD8:
 	.byte 0xE1, 0xB, 0xE2, 0xB, 0xE3, 0xB, 0xD2, 0xF
+
 off_808FCE0:
 	.word off_808F5D4
-	thumb_func_end sub_808FBEC
 
 	thumb_local_start
 sub_808FCE4:

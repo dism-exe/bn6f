@@ -271,7 +271,7 @@ npcscript_list_8069518::
 dword_8069524:
 	ns_set_active_and_visible
 	ns_set_sprite byte1=0x37
-	ns_init_native_callback ptr1=undumped_code_806957D
+	ns_init_native_callback ptr1=sub_806957C+1
 	ns_set_animation byte1=0x04
 	ns_wait_cutscene_var byte1=0x08 byte2=0x01
 	ns_set_animation byte1=0x2F
@@ -292,7 +292,7 @@ byte_8069555:
 	ns_set_active_and_invisible
 	ns_wait_cutscene_var byte1=0x08 byte2=0x01
 	ns_set_sprite_with_category byte1=0x63 byte2=0x1C
-	ns_init_native_callback ptr1=undumped_code_806957D
+	ns_init_native_callback ptr1=sub_806957C+1
 	ns_set_npc_palette_index byte1=0x01
 	ns_set_active_and_visible
 	ns_play_sound hword1=0x0105
@@ -306,12 +306,20 @@ byte_8069555:
 	ns_free_and_end
 
 end_npcscript_8069579::
-	.byte 0x00, 0x00, 0x00, 0x20
+	.byte 0x00, 0x00, 0x00
 
-undumped_code_806957D:
-	.byte 0xB5, 0x34, 0xF0, 0x16, 0xFE, 0x68, 0x62, 0xA9, 0x62
-	.byte 0xEA, 0x62, 0x36, 0xF0, 0xBC, 0xF9, 0x20, 0xBD, 0x0
-	.byte 0x0
+	thumb_local_start
+sub_806957C:
+	push {r5, lr}
+	bl ReadOWPlayerObjectCoords
+	str r0, [r5, #0x24]
+	str r1, [r5, #0x28]
+	str r2, [r5, #0x2c]
+	bl sub_809F904
+	pop {r5, pc}
+	.balign 4, 0
+	thumb_func_end sub_806957C
+
 off_8069590:
 	.word byte_80695A4
 	.word byte_80695AF
@@ -353,7 +361,7 @@ npcscript_list_80695D0::
 dword_80695DC:
 	ns_set_active_and_visible
 	ns_set_sprite byte1=0x37
-	ns_init_native_callback ptr1=undumped_code_8069635
+	ns_init_native_callback ptr1=sub_8069634+1
 	ns_set_animation byte1=0x04
 	ns_wait_cutscene_var byte1=0x08 byte2=0x01
 	ns_set_animation byte1=0x2F
@@ -374,7 +382,7 @@ byte_806960D:
 	ns_set_active_and_invisible
 	ns_wait_cutscene_var byte1=0x08 byte2=0x01
 	ns_set_sprite_with_category byte1=0x63 byte2=0x1C
-	ns_init_native_callback ptr1=undumped_code_8069635
+	ns_init_native_callback ptr1=sub_8069634+1
 	ns_set_npc_palette_index byte1=0x01
 	ns_set_active_and_visible
 	ns_play_sound hword1=0x0105
@@ -389,12 +397,19 @@ byte_806960D:
 	ns_end
 	ns_end
 	ns_end
-	ns_enable_collision
 
-undumped_code_8069635:
-	.byte 0xB5, 0x34, 0xF0, 0xBA, 0xFD, 0x68, 0x62, 0xA9, 0x62
-	.byte 0xEA, 0x62, 0x36, 0xF0, 0x60, 0xF9, 0x20, 0xBD, 0x0
-	.byte 0x0
+	thumb_local_start
+sub_8069634:
+	push {r5, lr}
+	bl ReadOWPlayerObjectCoords
+	str r0, [r5, #0x24]
+	str r1, [r5, #0x28]
+	str r2, [r5, #0x2c]
+	bl sub_809F904
+	pop {r5, pc}
+	.balign 4, 0
+	thumb_func_end sub_8069634
+
 off_8069648:
 	.word byte_8069660
 	.word byte_806968C
@@ -455,7 +470,7 @@ npcscript_list_80696B8::
 dword_80696C4:
 	ns_set_active_and_visible
 	ns_set_sprite byte1=0x37
-	ns_init_native_callback ptr1=undumped_code_806971D
+	ns_init_native_callback ptr1=sub_806971C+1
 	ns_set_animation byte1=0x04
 	ns_wait_cutscene_var byte1=0x08 byte2=0x01
 	ns_set_animation byte1=0x2F
@@ -476,7 +491,7 @@ byte_80696F5:
 	ns_set_active_and_invisible
 	ns_wait_cutscene_var byte1=0x08 byte2=0x01
 	ns_set_sprite_with_category byte1=0x63 byte2=0x1C
-	ns_init_native_callback ptr1=undumped_code_806971D
+	ns_init_native_callback ptr1=sub_806971C+1
 	ns_set_npc_palette_index byte1=0x01
 	ns_set_active_and_visible
 	ns_play_sound hword1=0x0105
@@ -491,12 +506,19 @@ byte_80696F5:
 	ns_end
 	ns_end
 	ns_end
-	ns_enable_collision
 
-undumped_code_806971D:
-	.byte 0xB5, 0x34, 0xF0, 0x46, 0xFD, 0x68, 0x62, 0xA9, 0x62
-	.byte 0xEA, 0x62, 0x36, 0xF0, 0xEC, 0xF8, 0x20, 0xBD, 0x0
-	.byte 0x0
+	thumb_local_start
+sub_806971C:
+	push {r5, lr}
+	bl ReadOWPlayerObjectCoords
+	str r0, [r5, #0x24]
+	str r1, [r5, #0x28]
+	str r2, [r5, #0x2c]
+	bl sub_809F904
+	pop {r5, pc}
+	.balign 4, 0
+	thumb_func_end sub_806971C
+
 npcscript_list_8069730::
 	.word byte_806974C
 	.word byte_8069781

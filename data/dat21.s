@@ -331,7 +331,7 @@ CutsceneScriptIrisAttackedByRoboDog:
 	cs_run_text_script_not_from_mem byte2=0x02
 	cs_wait_chatbox byte1=0x80
 	cs_disable_cutscene_skip_script
-	cs_call_native_with_return_value ptr1=end_cutscenescript_8081898+1
+	cs_call_native_with_return_value ptr1=sub_8081898+1
 	cs_play_sound hword1=0x0075
 	cs_pause byte1=0xFF byte2=0x14
 	cs_run_text_script_not_from_mem byte2=0x06
@@ -355,7 +355,7 @@ cutscenescript_8081853:
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x04
 	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=0x0000 signedhword6=0x0000 signedhword8=0x0000
 	cs_make_ow_player_visible
-	cs_call_native_with_return_value ptr1=unk_80818C9
+	cs_call_native_with_return_value ptr1=sub_80818C8+1
 	cs_pause byte1=0xFF byte2=0x0F
 	cs_warp_cmd_8038040_2 byte1=0x81 byte2=0x00 ptr3=NULL
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_409
@@ -369,16 +369,44 @@ cutscenescript_8081853:
 	cs_end_for_map_reload_maybe_8037c64
 	cs_end_for_map_reload_maybe_8037c64
 
-end_cutscenescript_8081898:
-	.word 0x2401B5F0, 0xF7C42080, 0xD10EFB4D, 0x68524652, 0x490B8852, 0xD001420A, 0xE0062400, 0x420A4909
-	.word 0x6B28D003, 0xF7BE2107, 0x4224FD61, 0x0000BDF0
-	.byte 0x00
+	thumb_local_start
+sub_8081898:
+	push {r4-r7, lr}
+	mov r4, #1
+	mov r0, #0x80
+	bl chatbox_mask_eFlags2009F38
+	bne loc_80818C2
+	mov r2, r10
+	ldr r2, [r2, #4]
+	ldrh r2, [r2, #2]
+	ldr r1, =0x100
+	tst r2, r1
+	beq loc_80818B4
+	mov r4, #0
+	b loc_80818C2
+loc_80818B4:
+	ldr r1, =0x2FF
+	tst r2, r1
+	beq loc_80818C2
+	ldr r0, [r5, #0x30]
+	mov r1, #7
+	bl chatbox_runScript
+loc_80818C2:
+	tst r4, r4
+	pop {r4-r7, pc}
+	.balign 4, 0
+	thumb_func_end sub_8081898
 
-unk_80818C9:
-	.word 0xB32000B5, 0x68FE87F7, 0x00200063, 0x000000BD, 0xFF000001
-	.byte 0x02
-	.byte 0x00
-	.byte 0x00
+	thumb_local_start
+sub_80818C8:
+	push {lr}
+	mov r0, #0
+	bl sub_80355DE
+	str r0, [r5, #0x34]
+	mov r0, #0
+	pop {pc}
+	.pool
+	thumb_func_end sub_80818C8
 
 ccs_80818E0:
 	ccs_simple_scroll hword1=0x001E hword3=0x0200 hword5=0x0000 hword7=0x0000
@@ -617,8 +645,8 @@ byte_8081B54::
 	ccs_end
 
 end_ccs_8081B5E:
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
+
 CutsceneScriptTutAfterThirdBattle:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
@@ -937,9 +965,8 @@ byte_8081EC7::
 	ccs_end
 
 end_ccs_8081ED1:
-	.byte 0x00
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
+
 cutscenescript_8081ED4:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
@@ -1265,7 +1292,7 @@ cutscenescript_8082273:
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x04
 	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=0x0000 signedhword6=0x0000 signedhword8=0x0000
 	cs_make_ow_player_visible
-	cs_call_native_with_return_value ptr1=end_cutscenescript_80822B9
+	cs_call_native_with_return_value ptr1=sub_80822B8+1
 	cs_pause byte1=0xFF byte2=0x0F
 	cs_warp_cmd_8038040_2 byte1=0x81 byte2=0x00 ptr3=NULL
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_423
@@ -1280,13 +1307,18 @@ cutscenescript_80822AD:
 	cs_end_for_map_reload_maybe_8037c64
 	cs_end_for_map_reload_maybe_8037c64
 	cs_end_for_map_reload_maybe_8037c64
-	cs_end_for_map_reload_maybe_8037c64
 
-end_cutscenescript_80822B9:
-	.word 0xB32002B5, 0x68F98FF7, 0x00200063
-	.byte 0xBD
-	.byte 0x00
-	.byte 0x00
+	thumb_local_start
+sub_80822B8:
+	push {lr}
+	mov r0, #2
+	bl sub_80355DE
+	str r0, [r5, #0x34]
+	mov r0, #0
+	pop {pc}
+	.balign 4, 0
+	thumb_func_end sub_80822B8
+
 ccs_80822C8:
 	ccs_set_camera_pos hword1=0x00C0 hword3=0xF580 hword5=0x0000
 	ccs_end
@@ -1459,7 +1491,7 @@ cutscenescript_8082481:
 	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=-0x00C0 signedhword6=-0x0860 signedhword8=0x0000
 	cs_make_ow_player_visible
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_427
-	cs_call_native_with_return_value ptr1=end_cutscenescript_80824C8+1
+	cs_call_native_with_return_value ptr1=sub_80824C8+1
 	cs_pause byte1=0xFF byte2=0x3C
 	cs_play_music hword1=0xFFFF
 	cs_set_screen_fade byte1=0xFF byte2=0x08 byte3=0x08
@@ -1473,8 +1505,21 @@ cutscenescript_80824BF:
 	cs_jump destination1=cutscenescript_8082481
 	cs_end_for_map_reload_maybe_8037c64
 
-end_cutscenescript_80824C8:
-	.word 0x2000B5F0, 0x22002100, 0x4C022304, 0xFDDDF77E, 0xBDF02000, 0x00000502
+	thumb_local_start
+sub_80824C8:
+	push {r4-r7, lr}
+	mov r0, #0
+	mov r1, #0
+	mov r2, #0
+	mov r3, #4
+	ldr r4, =0x502
+	bl sub_8001092
+	mov r0, #0
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_80824C8
+
+
 byte_80824E0::
 	ccs_set_camera_pos hword1=0x1400 hword3=0xFE20 hword5=0x0000
 	ccs_end
@@ -2186,7 +2231,7 @@ byte_8082CF3::
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x07
 	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=0x00C0 signedhword6=-0x0100 signedhword8=0x0000
 	cs_make_ow_player_visible
-	cs_call_native_with_return_value ptr1=end_cutscenescript_8082D39
+	cs_call_native_with_return_value ptr1=sub_8082D38+1
 	cs_pause byte1=0xFF byte2=0x0F
 	cs_warp_cmd_8038040_2 byte1=0x81 byte2=0x00 ptr3=NULL
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_431
@@ -2198,13 +2243,18 @@ byte_8082CF3::
 cutscenescript_8082D30:
 	cs_set_chatbox_flags byte2=0x40
 	cs_jump destination1=byte_8082CF3
-	cs_end_for_map_reload_maybe_8037c64
 
-end_cutscenescript_8082D39:
-	.word 0xB22003B5, 0x68FC4FF7, 0x00200063
-	.byte 0xBD
-	.byte 0x00
-	.byte 0x00
+	thumb_local_start
+sub_8082D38:
+	push {lr}
+	mov r0, #3
+	bl sub_80355DE
+	str r0, [r5, #0x34]
+	mov r0, #0
+	pop {pc}
+	.balign 4, 0
+	thumb_func_end sub_8082D38
+
 
 cutscenescript_8082D48:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
@@ -2349,8 +2399,7 @@ ccs_8082EF0:
 	ccs_end
 
 end_ccs_8082EF6:
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
 
 cutscenescript_8082EF8:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
@@ -2533,8 +2582,7 @@ ccs_8083104:
 	ccs_end
 
 end_ccs_808310A:
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
 
 cutscenescript_808310C:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
@@ -2589,8 +2637,7 @@ byte_8083191::
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_808319A:
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
 
 ccs_808319C:
 	ccs_set_camera_pos hword1=0x01E0 hword3=0xF5C0 hword5=0x0000
@@ -2640,8 +2687,7 @@ ccs_8083204:
 	ccs_end
 
 end_ccs_808320E:
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
 
 cutscenescript_8083210:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
@@ -2898,13 +2944,17 @@ byte_808349D::
 cutscenescript_80834D4:
 	cs_set_chatbox_flags byte2=0x40
 	cs_jump destination1=byte_808349D
-	cs_end_for_map_reload_maybe_8037c64
 
-end_cutscenescript_80834DD:
-	.word 0x53F782B5, 0x002000FC
-	.byte 0xBD
-	.byte 0x00
-	.byte 0x00
+	thumb_local_start
+sub_80834DC:
+	push {lr}
+	bl sub_8005D88
+	mov r0, #0
+	pop {pc}
+	.balign 4, 0
+	thumb_func_end sub_80834DC
+
+
 byte_80834E8::
 	ccs_write_camera_field_03_14 ptr1=eOverworldNPCObject1_Coords
 	ccs_end
@@ -2915,7 +2965,7 @@ byte_80834EE::
 	ccs_end
 
 end_ccs_80834FB:
-	.byte 0x00
+	.balign 4, 0
 cutscenescript_80834FC:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
@@ -2988,7 +3038,7 @@ cutscenescript_80835B8:
 	cs_disable_cutscene_skip_script
 	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
 	cs_wait_screen_fade
-	cs_call_native_with_return_value ptr1=unk_8083F35
+	cs_call_native_with_return_value ptr1=sub_8083F34+1
 	cs_make_ow_player_invisible
 	cs_decomp_text_archive ptr1=CompText87DA6E0 + COMPRESSED_PTR_FLAG
 	cs_run_cutscene_camera_script ptr1=ccs_80835B0
@@ -3049,8 +3099,7 @@ cutscenescript_8083675:
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_808367E:
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
 
 ccs_8083680:
 	ccs_set_camera_pos hword1=0xEB20 hword3=0xFB00 hword5=0x0000
@@ -3064,7 +3113,7 @@ cutscenescript_8083688:
 	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
 	cs_wait_screen_fade
 	cs_make_ow_player_invisible
-	cs_call_native_with_return_value ptr1=unk_8083F35
+	cs_call_native_with_return_value ptr1=sub_8083F34+1
 	cs_decomp_text_archive ptr1=CompText87DA5D8 + COMPRESSED_PTR_FLAG
 	cs_run_cutscene_camera_script ptr1=ccs_8083680
 	cs_spawn_ow_npc_objects_from_list ptr2=npcscript_list_806707C
@@ -3124,8 +3173,7 @@ cutscenescript_8083745:
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_808374E:
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
 
 ccs_8083750:
 	ccs_set_camera_pos hword1=0x13C0 hword3=0x1280 hword5=0x0000
@@ -3139,7 +3187,7 @@ cutscenescript_8083758:
 	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
 	cs_wait_screen_fade
 	cs_make_ow_player_invisible
-	cs_call_native_with_return_value ptr1=unk_8083F35
+	cs_call_native_with_return_value ptr1=sub_8083F34+1
 	cs_decomp_text_archive ptr1=CompText87DA494 + COMPRESSED_PTR_FLAG
 	cs_run_cutscene_camera_script ptr1=ccs_8083750
 	cs_spawn_ow_npc_objects_from_list ptr2=npcscript_list_8066FC4
@@ -3199,8 +3247,7 @@ cutscenescript_8083815:
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_808381E:
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
 
 ccs_8083820:
 	ccs_set_camera_pos hword1=0xED20 hword3=0x1280 hword5=0x0000
@@ -3214,7 +3261,7 @@ cutscenescript_8083828:
 	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
 	cs_wait_screen_fade
 	cs_make_ow_player_invisible
-	cs_call_native_with_return_value ptr1=unk_8083F35
+	cs_call_native_with_return_value ptr1=sub_8083F34+1
 	cs_decomp_text_archive ptr1=CompText87DA320 + COMPRESSED_PTR_FLAG
 	cs_run_cutscene_camera_script ptr1=ccs_8083820
 	cs_spawn_ow_npc_objects_from_list ptr2=npcscript_list_8066F10
@@ -3287,7 +3334,7 @@ cutscenescript_80838F8:
 	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
 	cs_wait_screen_fade
 	cs_make_ow_player_invisible
-	cs_call_native_with_return_value ptr1=unk_8083F35
+	cs_call_native_with_return_value ptr1=sub_8083F34+1
 	cs_decomp_text_archive ptr1=CompText87DA230 + COMPRESSED_PTR_FLAG
 	cs_run_cutscene_camera_script ptr1=ccs_80838F0
 	cs_spawn_ow_npc_objects_from_list ptr2=npcscript_list_8066D50
@@ -3347,8 +3394,7 @@ cutscenescript_80839B5:
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_80839BE:
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
 
 ccs_80839C0:
 	ccs_set_camera_pos hword1=0x01C0 hword3=0x10A0 hword5=0x0000
@@ -3362,7 +3408,7 @@ cutscenescript_80839C8:
 	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
 	cs_wait_screen_fade
 	cs_make_ow_player_invisible
-	cs_call_native_with_return_value ptr1=unk_8083F35
+	cs_call_native_with_return_value ptr1=sub_8083F34+1
 	cs_decomp_text_archive ptr1=CompText87DA158 + COMPRESSED_PTR_FLAG
 	cs_run_cutscene_camera_script ptr1=ccs_80839C0
 	cs_spawn_ow_npc_objects_from_list ptr2=npcscript_list_8066C74
@@ -3437,7 +3483,7 @@ cutscenescript_8083A98:
 	cs_set_screen_fade byte1=0xFF byte2=0x0C byte3=0x08
 	cs_wait_screen_fade
 	cs_make_ow_player_invisible
-	cs_call_native_with_return_value ptr1=unk_8083F35
+	cs_call_native_with_return_value ptr1=sub_8083F34+1
 	cs_decomp_text_archive ptr1=CompText87DA020 + COMPRESSED_PTR_FLAG
 	cs_run_cutscene_camera_script ptr1=ccs_8083A90
 	cs_spawn_ow_npc_objects_from_list ptr2=npcscript_list_8066B78
@@ -3497,8 +3543,7 @@ cutscenescript_8083B55:
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_8083B5E:
-	.byte 0x00
-	.byte 0x00
+	.balign 4, 0
 
 ccs_8083B60:
 	ccs_set_camera_pos hword1=0x12E0 hword3=0xFAA0 hword5=0x0000
@@ -3541,8 +3586,8 @@ cutscenescript_8083B68:
 	cs_set_var byte1=0x08 byte2=0x06
 	cs_disable_cutscene_skip_script
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_4DF
-	cs_call_native_with_return_value ptr1=unk_8083D7D
-	cs_call_native_with_return_value ptr1=unk_8083DF1
+	cs_call_native_with_return_value ptr1=clear_8083D7C+1
+	cs_call_native_with_return_value ptr1=sub_8083DF0+1
 	cs_pause byte1=0xFF byte2=0x78
 	cs_set_var byte1=0x08 byte2=0x07
 	cs_run_text_script_not_from_mem byte2=0x09
@@ -3574,20 +3619,83 @@ dword_8083C30::
 
 off_8083C38::
 	.word unk_2013960
-	.byte 0x70
 
-unk_8083C3D:
-	.word 0xED4655B5, 0x8579286B, 0x08D10128, 0x0BE00026, 0x20240026, 0x002004B4, 0x00220021, 0xC1F78023
-	.word 0x20716EFD, 0xB43401BC, 0x00DBF342, 0x30BD7020
+	thumb_local_start
+sub_8083C3C:
+	push {r4-r6, lr}
+	mov r5, r10
+	ldr r5, [r5, #0x3c]
+	ldrb r0, [r5, #4]
+	cmp r0, #0x85
+	bne loc_8083C4C
+	mov r6, #8
+	b loc_8083C4E
+loc_8083C4C:
+	mov r6, #0xb
+loc_8083C4E:
+	mov r4, #0
+loc_8083C50:
+	push {r5}
+	mov r0, #4
+	mov r1, #0
+	mov r2, #0
+	mov r3, #0
+	bl SpawnOverworldMapObject
+	strb r6, [r5, #5]
+	pop {r5}
+	add r4, #1
+	cmp r4, r6
+	blt loc_8083C50
+	mov r0, #0
+	pop {r4-r6, pc}
+	thumb_func_end sub_8083C3C
 
-unk_8083C6D:
-	.word 0x2D4D18B5, 0xE9200468, 0x75F7AB21, 0x11D121FA, 0xC046504C, 0x0079406B, 0x0FD00328, 0x0028014C
-	.word 0xBC4C0FD0, 0x00FEA8F0, 0x60D01328, 0x68DB1128, 0x60DC0F28, 0x40712838, 0x0C5A2100, 0xAB1C081C
-	.word 0x06FA5CF7, 0xAB1C20D1, 0x04FA2EF7, 0xAB21E920, 0x30FA28F7, 0xD40000BD, 0xE008083C, 0xF208083C
-	.word 0x3808083C
-	.byte 0x3C
-	.byte 0x08
-	.byte 0x08
+	thumb_local_start
+sub_8083C6C:
+	push {r4-r5, lr}
+	ldr r5, off_8083CD0 // =off_8083C38
+	ldr r5, [r5, #0]
+	movflag EVENT_4E9
+	bl TestEventFlagFromImmediate
+	bne loc_8083CC0
+	ldr r4, =byte_8083CD4
+	mov r0, r10
+	ldr r0, [r0, #0x3c]
+	ldrb r0, [r0, #5]
+	cmp r0, #0
+	beq loc_8083C90
+	ldr r4, =byte_8083CE0
+	cmp r0, #1
+	beq loc_8083C90
+	ldr r4, =byte_8083CF2
+loc_8083C90:
+	bl reqBBS_81409E4
+	cmp r0, #0
+	beq loc_8083CC0
+	cmp r0, #0x60
+	blt loc_8083CC0
+	cmp r0, #0x68
+	bgt loc_8083CC0
+	sub r0, #0x60
+	strb r0, [r5, #4]
+	lsl r0, r0, #1
+	ldrh r1, [r4, r0]
+	add r4, r1, #0
+	add r0, r1, #0
+	bl TestEventFlag
+	bne loc_8083CC0
+	add r0, r4, #0
+	bl SetEventFlag
+	movflag EVENT_4E9
+	bl SetEventFlagFromImmediate
+loc_8083CC0:
+	pop {r4-r5, pc}
+	.pool
+	thumb_func_end sub_8083C6C
+
+off_8083CD0::
+	.word off_8083C38
+
 byte_8083CD4::
 	.byte 0xEC, 0x4, 0xED, 0x4, 0xEE, 0x4, 0xEF, 0x4, 0xF0, 0x4, 0xF1
 	.byte 0x4
@@ -3605,10 +3713,10 @@ cutscenescript_8083D04:
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x32
 	cs_play_sound hword1=0x0146
-	cs_call_native_with_return_value ptr1=unk_8083D35
+	cs_call_native_with_return_value ptr1=sub_8083D34+1
 	cs_call_native_with_return_value ptr1=sub_8083D44+1
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x04
-	cs_call_native_with_return_value ptr1=unk_808429D
+	cs_call_native_with_return_value ptr1=sub_808429C+1
 	cs_pause byte1=0xFF byte2=0x0A
 	cs_clear_event_flag byte1=0xFF event16_2=EVENT_4EA
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_4EB
@@ -3616,14 +3724,20 @@ cutscenescript_8083D04:
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_8083D33:
-	.byte 0x00
-	.byte 0x20
+	.balign 4, 0
 
-unk_8083D35:
-	.word 0x05480FB5, 0xA8205A68, 0x20200071
-	.byte 0xBD
-	.byte 0x00
-	.byte 0x00
+	thumb_local_start
+sub_8083D34:
+	push {r5, lr}
+	ldr r0, off_8083D74 // =off_8083C38
+	ldr r5, [r0, #0]
+	mov r0, #0x5a
+	strb r0, [r5, #6]
+	mov r0, #0
+	pop {r5, pc}
+	.balign 4, 0
+	thumb_func_end sub_8083D34
+
 	thumb_local_start
 sub_8083D44::
 	push {r5,lr}
@@ -3653,56 +3767,336 @@ loc_8083D70::
 	mov r0, #1
 	pop {r5,pc}
 	.balign 4, 0
+	thumb_func_end sub_8083D44
+
 off_8083D74::
 	.word off_8083C38
 off_8083D78::
 	.word 0x0000012C
-	.byte 0xF0
 
-unk_8083D7D:
-	.word 0x00481BB5, 0x7C212068, 0x04FDACF7, 0xAB214520, 0x04F9CEF7, 0xAB214720, 0x04F9CAF7, 0xAB214920
-	.word 0x04F9C6F7, 0xAB214B20, 0x04F9C2F7, 0xAB214D20, 0x04F9BEF7, 0xAB214F20, 0x04F9BAF7, 0xAB215120
-	.word 0x00F9B6F7, 0xF0BDF020
+	thumb_local_start
+clear_8083D7C:
+	push {r4-r7, lr}
+	ldr r0, off_8083DEC // =off_8083C38
+	ldr r0, [r0, #0]
+	mov r1, #0x20
+	bl ZeroFillByWord
+	movflag EVENT_445
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_447
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_449
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_44B
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_44D
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_44F
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_451
+	bl ClearEventFlagFromImmediate
+	mov r0, #0
+	pop {r4-r7, pc}
+	thumb_func_end clear_8083D7C
 
-unk_8083DC5:
-	.word 0xFB2004B5, 0xA1F7AB21, 0x054807F9, 0xA5F00068, 0x13F0BCF9, 0xFE2004FE, 0xC1F7AB21, 0x00D001F9
-	.word 0x00F8E0F0, 0x38BDF020, 0xF008083C
+	thumb_local_start
+sub_8083DC4:
+	push {r4-r7, lr}
+	movflag EVENT_4FB
+	bl SetEventFlagFromImmediate
+	ldr r0, off_8083DEC // =off_8083C38
+	ldr r5, [r0, #0]
+	bl struct_copy_8084120
+	bl reqBBS_setFlag_e17b0f7_8140A00
+	movflag EVENT_4FE
+	bl TestEventFlagFromImmediate
+	beq loc_8083DE8
+	bl sub_8083FA8
+loc_8083DE8:
+	mov r0, #0
+	pop {r4-r7, pc}
+	thumb_func_end sub_8083DC4
 
-unk_8083DF1:
-	.word 0x2D4D4FB5, 0xA3F7B368, 0xB3D105F8, 0x02F8ACF7, 0x2EF01AD1, 0x00D007FB, 0x04F95CF0, 0xAB21FD20
-	.word 0x01F97EF7, 0x04BDF020, 0xAB21FD20, 0x04F986F7, 0xAB21EB20, 0x54F99EF7, 0x00782CD1, 0x00DC072C
-	.word 0x00FA52F0, 0x01F9A4F0, 0xBC702C34, 0x01FDE0F0, 0xA8DC132C, 0x0528008A, 0xA83801D0, 0x06D00282
-	.word 0x95F0001C, 0x018AE8F8, 0x0282E838, 0xAFF000D0, 0x01E061F8, 0x00702C34, 0x0270A820, 0x17DC132C
-	.word 0xAB210720, 0x17F94CF7, 0xAB213920, 0x04F948F7, 0xAB21FF20, 0x5AF944F7, 0x0082A820, 0x00722820
-	.word 0x01F9C0F0, 0x03702C34, 0xA8DC082C, 0xA838018A, 0x00D00482, 0x3EF8ECF0, 0x2C3401E0, 0x092C0470
-	.word 0x682028DC, 0xE8200482, 0x2C340171, 0x68200070, 0x28200270, 0x018A6872, 0x02826838, 0x95F000D0
-	.word 0x00E029F8, 0x02F8C8F0, 0x00722820, 0x6C702C24, 0xEC70AC70, 0x1771EC70, 0xAB210720, 0x17F91EF7
-	.word 0xAB213920, 0x04F91AF7, 0xAB21E920, 0x04F916F7
-byte_8083F01::
-	.byte 0x20, 0xEB
-byte_8083F03::
-	.byte 0x21
-byte_8083F04::
-	.byte 0xAB, 0xF7, 0x12
-byte_8083F07::
-	.word 0x002017F9, 0x0EF7AB21, 0xFB2004F9, 0x0AF7AB21, 0xFF2004F9, 0x06F7AB21, 0x74F0BCF9, 0xF02000FD
-	.word 0xCCF000BD, 0xF02001F8, 0x083C38BD
-	.byte 0x08
-	.byte 0xF0
 
-unk_8083F35:
-	.word 0x2D4D11B5, 0xA3F77E68, 0x93F000FA, 0x282002F8, 0x2C240072, 0xAC706C70, 0xEC70EC70, 0x07201771
-	.word 0xE9F7AB21, 0xE92004F8, 0xE5F7AB21, 0xEB2004F8, 0xE1F7AB21, 0xFB2004F8, 0xDDF7AB21, 0x4BF0BCF8
-	.word 0xF02000FD, 0x380000BD, 0xF008083C, 0x6C1C06B5, 0x072C0078, 0x0B480BDC, 0x7E220049, 0x01FA6AF7
-	.word 0x05706C34, 0x032E01E0, 0x71F77EDC, 0x682000FA, 0xF0BDF070, 0x034803B5, 0x7E220049, 0xF0FA5AF7
-	.word 0x590000BD, 0x750804C0, 0xF00804C0, 0x0078ACB5, 0x00DC032C, 0x01F99EF0, 0x2870AC34, 0x2838017C
-	.word 0xEED11074, 0xBF1C3779, 0xC0481600, 0x9BF77D59, 0xC04815FD, 0x97F77D59, 0xAC2400FD, 0x012E0570
-	.word 0xEE3601DA, 0xF0BDF071, 0x00786CB5, 0x05DC032C, 0x01742820, 0x28706C34, 0x2838017C, 0xEED11074
-	.word 0xBF1C3779, 0xC0480700, 0x7DF77D59, 0xC04806FD, 0x79F77D59, 0x6C2400FD, 0x012E0070, 0xEE3E01D0
-	.word 0x40BDF071, 0x54080840
-	.byte 0x40
-	.byte 0x08
-	.byte 0x08
+off_8083DEC::
+	.word off_8083C38
+
+	thumb_local_start
+sub_8083DF0:
+	push {r4-r7, lr}
+	ldr r5, =off_8083C38
+	ldr r5, [r5, #0]
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F40
+	bne loc_8083E08
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F58
+	bne loc_8083E08
+	bl sub_809E462
+	beq loc_8083E18
+loc_8083E08:
+	bl struct_copy_80840C4
+	movflag EVENT_4FD
+	bl SetEventFlagFromImmediate
+	mov r0, #1
+	pop {r4-r7, pc}
+loc_8083E18:
+	movflag EVENT_4FD
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_4EB
+	bl TestEventFlagFromImmediate
+	bne loc_8083ED4
+	ldrb r4, [r5, #0]
+	cmp r4, #0
+	bgt loc_8083E40
+	bl sub_80842D8
+	bl sub_8084180
+	add r4, #1
+	strb r4, [r5, #0]
+	bl reqBBS_setFlag_e17b0f7_8140A00
+loc_8083E40:
+	cmp r4, #1
+	bgt loc_8083E6C
+	ldrh r0, [r5, #0x14]
+	cmp r0, #0
+	beq loc_8083E56
+	sub r0, #1
+	strh r0, [r5, #0x14]
+	beq loc_8083E56
+	add r6, r0, #0
+	bl sub_8083F80
+loc_8083E56:
+	ldrh r0, [r5, #0x16]
+	sub r0, #1
+	strh r0, [r5, #0x16]
+	beq loc_8083E64
+	bl load_gfx_anim_8083FC0
+	b loc_8083F28
+loc_8083E64:
+	add r4, #1
+	strb r4, [r5, #0]
+	mov r0, #0
+	strb r0, [r5, #2]
+loc_8083E6C:
+	cmp r4, #2
+	bgt loc_8083E98
+	movflag EVENT_PET_DISABLED
+	bl SetEventFlagFromImmediate
+	movflag EVENT_1739
+	bl SetEventFlagFromImmediate
+	movflag EVENT_4FF
+	bl SetEventFlagFromImmediate
+	mov r0, #0x5a
+	strh r0, [r5, #0x14]
+	mov r0, #0
+	strb r0, [r5, #8]
+	bl sub_8084214
+	add r4, #1
+	strb r4, [r5, #0]
+loc_8083E98:
+	cmp r4, #3
+	bgt loc_8083EAE
+	ldrh r0, [r5, #0x14]
+	sub r0, #1
+	strh r0, [r5, #0x14]
+	beq loc_8083EAE
+	bl sub_8084080
+	b loc_8083F28
+	add r4, #1
+	strb r4, [r5, #0]
+loc_8083EAE:
+	cmp r4, #4
+	bgt loc_8083EC6
+	mov r0, #0x28
+	strh r0, [r5, #0x12]
+	mov r0, #4
+	strb r0, [r5, #7]
+	add r4, #1
+	strb r4, [r5, #0]
+	mov r0, #0
+	strb r0, [r5, #1]
+	mov r0, #2
+	strb r0, [r5, #8]
+loc_8083EC6:
+	ldrh r0, [r5, #0x12]
+	sub r0, #1
+	strh r0, [r5, #0x12]
+	beq loc_8083ED4
+	bl load_gfx_anim_8083FFC
+	b loc_8083F28
+loc_8083ED4:
+	bl load_gfx_anim_8084068
+	mov r0, #2
+	strb r0, [r5, #8]
+	mov r4, #0
+	strb r4, [r5, #0]
+	strb r4, [r5, #1]
+	strb r4, [r5, #2]
+	strb r4, [r5, #3]
+	strb r4, [r5, #7]
+	movflag EVENT_PET_DISABLED
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_1739
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_4E9
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_4EB
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_1700
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_4FB
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_4FF
+	bl ClearEventFlagFromImmediate
+	bl reqBBS_clearFlag_8140A0C
+	mov r0, #0
+	pop {r4-r7, pc}
+loc_8083F28:
+	bl struct_copy_80840C4
+	mov r0, #1
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_8083DF0
+
+	thumb_local_start
+sub_8083F34:
+	push {r4-r7, lr}
+	ldr r5, =off_8083C38
+	ldr r5, [r5, #0]
+	bl run_eStruct200a6a0_Callback_8002484
+	bl load_gfx_anim_8084068
+	mov r0, #2
+	strb r0, [r5, #8]
+	mov r4, #0
+	strb r4, [r5, #0]
+	strb r4, [r5, #1]
+	strb r4, [r5, #2]
+	strb r4, [r5, #3]
+	strb r4, [r5, #7]
+	movflag EVENT_PET_DISABLED
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_4E9
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_4EB
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_4FB
+	bl ClearEventFlagFromImmediate
+	bl reqBBS_clearFlag_8140A0C
+	mov r0, #0
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_8083F34
+
+	thumb_local_start
+sub_8083F80:
+	push {r4-r7, lr}
+	add r6, r0, #0
+	ldrb r4, [r5, #1]
+	cmp r4, #0
+	bgt loc_8083F9A
+	ldr r0, off_8083FB8 // =sub_804C058
+	ldr r1, off_8083FBC // =sub_804C074
+	mov r2, #0
+	bl Initialize_eStruct200a6a0
+	add r4, #1
+	strb r4, [r5, #1]
+	b loc_8083FA6
+loc_8083F9A:
+	cmp r6, #1
+	bgt loc_8083FA6
+	bl run_eStruct200a6a0_Callback_8002484
+	mov r0, #0
+	strb r0, [r5, #1]
+loc_8083FA6:
+	pop {r4-r7, pc}
+	thumb_func_end sub_8083F80
+
+	thumb_local_start
+sub_8083FA8:
+	push {r4-r7, lr}
+	ldr r0, off_8083FB8 // =sub_804C058
+	ldr r1, off_8083FBC // =sub_804C074
+	mov r2, #0
+	bl Initialize_eStruct200a6a0
+	pop {r4-r7, pc}
+	.balign 4, 0
+	thumb_func_end sub_8083FA8
+
+off_8083FB8::
+	.word sub_804C058+1
+off_8083FBC::
+	.word sub_804C074+1
+
+	thumb_local_start
+load_gfx_anim_8083FC0:
+	push {r4-r7, lr}
+	ldrb r4, [r5, #2]
+	cmp r4, #0
+	bgt loc_8083FD0
+	bl uses_svc_8084308
+	add r4, #1
+	strb r4, [r5, #2]
+loc_8083FD0:
+	ldrb r0, [r5, #0x10]
+	sub r0, #1
+	strb r0, [r5, #0x10]
+	bne loc_8083FFA
+	ldrb r6, [r5, #7]
+	add r7, r6, #0
+	lsl r7, r7, #2
+	ldr r0, off_8084038 // =off_8084040
+	ldr r0, [r0, r7]
+	bl LoadGFXAnim
+	ldr r0, off_808403C // =off_8084054
+	ldr r0, [r0, r7]
+	bl LoadGFXAnim
+	mov r4, #0
+	strb r4, [r5, #2]
+	cmp r6, #5
+	bge loc_8083FFA
+	add r6, #1
+	strb r6, [r5, #7]
+loc_8083FFA:
+	pop {r4-r7, pc}
+	thumb_func_end load_gfx_anim_8083FC0
+
+	thumb_local_start
+load_gfx_anim_8083FFC:
+	push {r4-r7, lr}
+	ldrb r4, [r5, #1]
+	cmp r4, #0
+	bgt loc_808400C
+	mov r0, #5
+	strb r0, [r5, #0x10]
+	add r4, #1
+	strb r4, [r5, #1]
+loc_808400C:
+	ldrb r0, [r5, #0x10]
+	sub r0, #1
+	strb r0, [r5, #0x10]
+	bne loc_8084036
+	ldrb r6, [r5, #7]
+	add r7, r6, #0
+	lsl r7, r7, #2
+	ldr r0, off_8084038 // =off_8084040
+	ldr r0, [r0, r7]
+	bl LoadGFXAnim
+	ldr r0, off_808403C // =off_8084054
+	ldr r0, [r0, r7]
+	bl LoadGFXAnim
+	mov r4, #0
+	strb r4, [r5, #1]
+	cmp r6, #0
+	beq loc_8084036
+	sub r6, #1
+	strb r6, [r5, #7]
+loc_8084036:
+	pop {r4-r7, pc}
+	thumb_func_end load_gfx_anim_8083FFC
+
+off_8084038::
+	.word off_8084040
+off_808403C::
+	.word off_8084054
+
 off_8084040::
 	.word dword_8140AA4
 	.word dword_8140AD4
@@ -3715,77 +4109,398 @@ off_8084054::
 	.word dword_8140B34
 	.word dword_8140B64
 	.word dword_8140B94
-	.byte 0xF0, 0xB5, 0x3, 0x48, 0x7D, 0xF7, 0x56, 0xFD, 0x2, 0x48
-	.byte 0x7D, 0xF7, 0x53, 0xFD, 0xF0, 0xBD
+
+	thumb_local_start
+load_gfx_anim_8084068:
+	push {r4-r7, lr}
+	ldr r0, off_8084078 // =byte_8140BAC
+	bl LoadGFXAnim
+	ldr r0, off_808407C // =byte_8140BF0
+	bl LoadGFXAnim
+	pop {r4-r7, pc}
+	thumb_func_end load_gfx_anim_8084068
+
+off_8084078::
 	.word byte_8140BAC
+off_808407C::
 	.word byte_8140BF0
-	.byte 0xF0, 0xB5, 0xAC, 0x78, 0x0, 0x2C, 0x5, 0xDC, 0x0, 0xF0
-	.byte 0xB2, 0xF8, 0x3C, 0x20, 0x28, 0x74, 0x1, 0x34, 0xAC, 0x70
-	.byte 0x1, 0x2C, 0xF, 0xDC, 0x28, 0x7C, 0x1, 0x38, 0x28, 0x74
-	.byte 0xB, 0xD1, 0x68, 0x7A, 0x1, 0x30, 0x68, 0x72, 0x1, 0x28
-	.byte 0x4, 0xDB, 0x2, 0x24, 0xAC, 0x70, 0x0, 0x20, 0x68, 0x72
-	.byte 0x1, 0xE0, 0x0, 0x24, 0xAC, 0x70, 0xE8, 0x7B, 0x0, 0x28
-	.byte 0x1, 0xD0, 0x1, 0x38, 0xE8, 0x73, 0xF0, 0xBD, 0x0, 0xB5
-	.byte 0x2D, 0x48, 0x29, 0x78, 0x1, 0x70, 0x69, 0x78, 0x41, 0x70
-	.byte 0xA9, 0x78, 0x81, 0x70, 0xE9, 0x78, 0xC1, 0x70, 0x29, 0x79
-	.byte 0x1, 0x71, 0x69, 0x79, 0x41, 0x71, 0xE9, 0x79, 0xC1, 0x71
-	.byte 0x29, 0x7A, 0x1, 0x72, 0x69, 0x7A, 0x41, 0x72, 0xA9, 0x7A
-	.byte 0x81, 0x72, 0xE9, 0x7A, 0xC1, 0x72, 0x29, 0x7B, 0x1, 0x73
-	.byte 0x69, 0x7B, 0x41, 0x73, 0xA9, 0x7B, 0x81, 0x73, 0xE9, 0x7B
-	.byte 0x81, 0x77, 0x29, 0x7C, 0xC1, 0x77, 0x69, 0x8A, 0x1, 0x84
-	.byte 0xA9, 0x8A, 0x41, 0x84, 0xE9, 0x8A, 0x81, 0x84, 0xA9, 0x69
-	.byte 0x81, 0x62, 0xE9, 0x69, 0xC1, 0x62, 0x0, 0xBD, 0x0, 0x0
-	.byte 0x0, 0xB5, 0x16, 0x48, 0x1, 0x78, 0x29, 0x70, 0x41, 0x78
-	.byte 0x69, 0x70, 0x81, 0x78, 0xA9, 0x70, 0xC1, 0x78, 0xE9, 0x70
-	.byte 0x1, 0x79, 0x29, 0x71, 0x41, 0x79, 0x69, 0x71, 0xC1, 0x79
-	.byte 0xE9, 0x71, 0x1, 0x7A, 0x29, 0x72, 0x41, 0x7A, 0x69, 0x72
-	.byte 0x81, 0x7A, 0xA9, 0x72, 0xC1, 0x7A, 0xE9, 0x72, 0x1, 0x7B
-	.byte 0x29, 0x73, 0x41, 0x7B, 0x69, 0x73, 0x81, 0x7B, 0xA9, 0x73
-	.byte 0x81, 0x7F, 0xE9, 0x73, 0xC1, 0x7F, 0x29, 0x74, 0x1, 0x8C
-	.byte 0x69, 0x82, 0x41, 0x8C, 0xA9, 0x82, 0x81, 0x8C, 0xE9, 0x82
-	.byte 0x81, 0x6A, 0xA9, 0x61, 0xC1, 0x6A, 0xE9, 0x61, 0x0, 0xBD
-	.byte 0x0, 0x0, 0xC0, 0xA, 0x0, 0x2, 0x10, 0xB5, 0x0, 0xF0
-	.byte 0x15, 0xF8, 0x4, 0x1C, 0x4, 0x20, 0xBC, 0xF0, 0x21, 0xFC
-	.byte 0xA0, 0x42, 0x4, 0xD1, 0x3, 0x28, 0x1, 0xD1, 0x0, 0x20
-	.byte 0x0, 0xE0, 0x1, 0x30, 0x68, 0x71, 0x4, 0x20, 0xDF, 0x21
-	.byte 0xAA, 0xF7, 0xDF, 0xFF, 0x1, 0xD0, 0x1, 0x20, 0x68, 0x71
-	.byte 0x10, 0xBD, 0x0, 0x0, 0x0, 0xB5, 0x6, 0x4A, 0x50, 0x46
-	.byte 0xC0, 0x6B, 0x40, 0x79, 0x0, 0x28, 0x3, 0xD0, 0x4, 0x4A
-	.byte 0x1, 0x28, 0x0, 0xD0, 0x3, 0x4A, 0x29, 0x79, 0x50, 0x5C
-	.byte 0x0, 0xBD
+
+	thumb_local_start
+sub_8084080:
+	push {r4-r7, lr}
+	ldrb r4, [r5, #2]
+	cmp r4, #0
+	bgt loc_8084094
+	bl sub_80841F0
+	mov r0, #0x3c
+	strb r0, [r5, #0x10]
+	add r4, #1
+	strb r4, [r5, #2]
+loc_8084094:
+	cmp r4, #1
+	bgt loc_80840B8
+	ldrb r0, [r5, #0x10]
+	sub r0, #1
+	strb r0, [r5, #0x10]
+	bne loc_80840B8
+	ldrb r0, [r5, #9]
+	add r0, #1
+	strb r0, [r5, #9]
+	cmp r0, #1
+	blt loc_80840B4
+	mov r4, #2
+	strb r4, [r5, #2]
+	mov r0, #0
+	strb r0, [r5, #9]
+	b loc_80840B8
+loc_80840B4:
+	mov r4, #0
+	strb r4, [r5, #2]
+loc_80840B8:
+	ldrb r0, [r5, #0xf]
+	cmp r0, #0
+	beq loc_80840C2
+	sub r0, #1
+	strb r0, [r5, #0xf]
+loc_80840C2:
+	pop {r4-r7, pc}
+	thumb_func_end sub_8084080
+
+	thumb_local_start
+struct_copy_80840C4:
+	push {lr}
+	ldr r0, off_808417C // =unk_2000AC0
+	ldrb r1, [r5, #0]
+	strb r1, [r0, #0]
+	ldrb r1, [r5, #1]
+	strb r1, [r0, #1]
+	ldrb r1, [r5, #2]
+	strb r1, [r0, #2]
+	ldrb r1, [r5, #3]
+	strb r1, [r0, #3]
+	ldrb r1, [r5, #4]
+	strb r1, [r0, #4]
+	ldrb r1, [r5, #5]
+	strb r1, [r0, #5]
+	ldrb r1, [r5, #7]
+	strb r1, [r0, #7]
+	ldrb r1, [r5, #8]
+	strb r1, [r0, #8]
+	ldrb r1, [r5, #9]
+	strb r1, [r0, #9]
+	ldrb r1, [r5, #0xa]
+	strb r1, [r0, #0xa]
+	ldrb r1, [r5, #0xb]
+	strb r1, [r0, #0xb]
+	ldrb r1, [r5, #0xc]
+	strb r1, [r0, #0xc]
+	ldrb r1, [r5, #0xd]
+	strb r1, [r0, #0xd]
+	ldrb r1, [r5, #0xe]
+	strb r1, [r0, #0xe]
+	ldrb r1, [r5, #0xf]
+	strb r1, [r0, #0x1e]
+	ldrb r1, [r5, #0x10]
+	strb r1, [r0, #0x1f]
+	ldrh r1, [r5, #0x12]
+	strh r1, [r0, #0x20]
+	ldrh r1, [r5, #0x14]
+	strh r1, [r0, #0x22]
+	ldrh r1, [r5, #0x16]
+	strh r1, [r0, #0x24]
+	ldr r1, [r5, #0x18]
+	str r1, [r0, #0x28]
+	ldr r1, [r5, #0x1c]
+	str r1, [r0, #0x2c]
+	pop {pc}
+	.balign 4, 0
+	thumb_func_end struct_copy_80840C4
+
+	thumb_local_start
+struct_copy_8084120:
+	push {lr}
+	ldr r0, off_808417C // =unk_2000AC0
+	ldrb r1, [r0, #0]
+	strb r1, [r5, #0]
+	ldrb r1, [r0, #1]
+	strb r1, [r5, #1]
+	ldrb r1, [r0, #2]
+	strb r1, [r5, #2]
+	ldrb r1, [r0, #3]
+	strb r1, [r5, #3]
+	ldrb r1, [r0, #4]
+	strb r1, [r5, #4]
+	ldrb r1, [r0, #5]
+	strb r1, [r5, #5]
+	ldrb r1, [r0, #7]
+	strb r1, [r5, #7]
+	ldrb r1, [r0, #8]
+	strb r1, [r5, #8]
+	ldrb r1, [r0, #9]
+	strb r1, [r5, #9]
+	ldrb r1, [r0, #0xa]
+	strb r1, [r5, #0xa]
+	ldrb r1, [r0, #0xb]
+	strb r1, [r5, #0xb]
+	ldrb r1, [r0, #0xc]
+	strb r1, [r5, #0xc]
+	ldrb r1, [r0, #0xd]
+	strb r1, [r5, #0xd]
+	ldrb r1, [r0, #0xe]
+	strb r1, [r5, #0xe]
+	ldrb r1, [r0, #0x1e]
+	strb r1, [r5, #0xf]
+	ldrb r1, [r0, #0x1f]
+	strb r1, [r5, #0x10]
+	ldrh r1, [r0, #0x20]
+	strh r1, [r5, #0x12]
+	ldrh r1, [r0, #0x22]
+	strh r1, [r5, #0x14]
+	ldrh r1, [r0, #0x24]
+	strh r1, [r5, #0x16]
+	ldr r1, [r0, #0x28]
+	str r1, [r5, #0x18]
+	ldr r1, [r0, #0x2c]
+	str r1, [r5, #0x1c]
+	pop {pc}
+	.balign 4, 0
+	thumb_func_end struct_copy_8084120
+
+off_808417C::
+	.word unk_2000AC0
+
+	thumb_local_start
+sub_8084180:
+	push {r4, lr}
+	bl sub_80841B0
+	add r4, r0, #0
+	mov r0, #4
+	bl reqBBS_81409D0
+	cmp r0, r4
+	bne loc_808419C
+	cmp r0, #3
+	bne loc_808419A
+	mov r0, #0
+	b loc_808419C
+loc_808419A:
+	add r0, #1
+loc_808419C:
+	strb r0, [r5, #5]
+	movflag EVENT_4DF
+	bl TestEventFlagFromImmediate
+	beq loc_80841AC
+	mov r0, #1
+	strb r0, [r5, #5]
+loc_80841AC:
+	pop {r4, pc}
+	.balign 4, 0
+	thumb_func_end sub_8084180
+
+	thumb_local_start
+sub_80841B0:
+	push {lr}
+	ldr r2, unk_80841CC // =byte_80841D8
+	mov r0, r10
+	ldr r0, [r0, #0x3c]
+	ldrb r0, [r0, #5]
+	cmp r0, #0
+	beq loc_80841C6
+	ldr r2, byte_80841D0 // =byte_80841DE
+	cmp r0, #1
+	beq loc_80841C6
+	ldr r2, byte_80841D4 // =byte_80841E7
+loc_80841C6:
+	ldrb r1, [r5, #4]
+	ldrb r0, [r2, r1]
+	pop {pc}
+	thumb_func_end sub_80841B0
+
+unk_80841CC::
 	.word byte_80841D8
+byte_80841D0::
 	.word byte_80841DE
+byte_80841D4::
 	.word byte_80841E7
 byte_80841D8::
 	.byte 0x2, 0x1, 0x3, 0x2, 0x3, 0x0
 byte_80841DE::
 	.byte 0x3, 0x3, 0x3, 0x1, 0x2, 0x2, 0x1, 0x0, 0x0
 byte_80841E7::
-	.byte 0x3, 0x1, 0x2, 0x2, 0x1, 0x2, 0x1, 0x1, 0x3, 0x10, 0xB5, 0x0, 0x24, 0x20
-	.byte 0x1C, 0x0, 0xF0, 0x2F, 0xF8, 0xA, 0x1C, 0x1, 0x1C, 0x20, 0xB4, 0x5, 0x20, 0x10
-	.byte 0x23, 0x1B, 0x4, 0x80, 0xF7, 0xEB, 0xFA, 0x20, 0xBC, 0x1, 0x34, 0x5, 0x2C, 0xF0
-	.byte 0xDB, 0x10, 0xBD, 0xF0, 0xB5, 0x19, 0xF0, 0xCA, 0xFF, 0x6C, 0x79, 0x0, 0x2C, 0x5
-	.byte 0xD1, 0xC8, 0x23, 0x1B, 0x4, 0xC0, 0x1A, 0xA8, 0x61, 0xE9, 0x61, 0x14, 0xE0, 0x1
-	.byte 0x2C, 0x5, 0xD1, 0xC8, 0x23, 0x1B, 0x4, 0xC9, 0x1A, 0xA8, 0x61, 0xE9, 0x61, 0xC
-	.byte 0xE0, 0x2, 0x2C, 0x5, 0xD1, 0xC8, 0x23, 0x1B, 0x4, 0xC0, 0x18, 0xA8, 0x61, 0xE9
-	.byte 0x61, 0x4, 0xE0, 0xC8, 0x23, 0x1B, 0x4, 0xC9, 0x18, 0xA8, 0x61, 0xE9, 0x61, 0xF0
-	.byte 0xBD, 0xF0, 0xB5, 0x6, 0x1C, 0x76, 0x0, 0x6C, 0x79, 0x0, 0x2C, 0x1, 0xD0, 0x2
-	.byte 0x2C, 0x6, 0xD1, 0x8, 0x48, 0x80, 0x5F, 0x0, 0x4, 0xE9, 0x69, 0x9, 0x18, 0xA8
-	.byte 0x69, 0x5, 0xE0, 0x5, 0x49, 0x89, 0x5F, 0x9, 0x4, 0xA8, 0x69, 0x40, 0x18, 0xE9
-	.byte 0x69, 0x10, 0x22, 0x12, 0x4, 0x80, 0x1A, 0x89, 0x18, 0xF0, 0xBD
+	.byte 0x3, 0x1, 0x2, 0x2, 0x1, 0x2, 0x1, 0x1, 0x3
+
+	thumb_local_start
+sub_80841F0:
+	push {r4, lr}
+	mov r4, #0
+loc_80841F4:
+	add r0, r4, #0
+	bl sub_8084258
+	add r2, r1, #0
+	add r1, r0, #0
+	push {r5}
+	mov r0, #5
+	mov r3, #0x10
+	lsl r3, r3, #0x10
+	bl SpawnOverworldMapObject
+	pop {r5}
+	add r4, #1
+	cmp r4, #5
+	blt loc_80841F4
+	pop {r4, pc}
+	thumb_func_end sub_80841F0
+
+	thumb_local_start
+sub_8084214:
+	push {r4-r7, lr}
+	bl ReadOWPlayerObjectCoords
+	ldrb r4, [r5, #5]
+	cmp r4, #0
+	bne loc_808422C
+	mov r3, #0xc8
+	lsl r3, r3, #0x10
+	sub r0, r0, r3
+	str r0, [r5, #0x18]
+	str r1, [r5, #0x1c]
+	b loc_8084256
+loc_808422C:
+	cmp r4, #1
+	bne loc_808423C
+	mov r3, #0xc8
+	lsl r3, r3, #0x10
+	sub r1, r1, r3
+	str r0, [r5, #0x18]
+	str r1, [r5, #0x1c]
+	b loc_8084256
+loc_808423C:
+	cmp r4, #2
+	bne loc_808424C
+	mov r3, #0xc8
+	lsl r3, r3, #0x10
+	add r0, r0, r3
+	str r0, [r5, #0x18]
+	str r1, [r5, #0x1c]
+	b loc_8084256
+loc_808424C:
+	mov r3, #0xc8
+	lsl r3, r3, #0x10
+	add r1, r1, r3
+	str r0, [r5, #0x18]
+	str r1, [r5, #0x1c]
+loc_8084256:
+	pop {r4-r7, pc}
+	thumb_func_end sub_8084214
+
+	thumb_local_start
+sub_8084258:
+	push {r4-r7, lr}
+	add r6, r0, #0
+	lsl r6, r6, #1
+	ldrb r4, [r5, #5]
+	cmp r4, #0
+	beq loc_8084268
+	cmp r4, #2
+	bne loc_8084276
+loc_8084268:
+	ldr r0, off_808428C // =byte_8084290
+	ldrsh r0, [r0, r6]
+	lsl r0, r0, #0x10
+	ldr r1, [r5, #0x1c]
+	add r1, r1, r0
+	ldr r0, [r5, #0x18]
+	b loc_8084282
+loc_8084276:
+	ldr r1, off_808428C // =byte_8084290
+	ldrsh r1, [r1, r6]
+	lsl r1, r1, #0x10
+	ldr r0, [r5, #0x18]
+	add r0, r0, r1
+	ldr r1, [r5, #0x1c]
+loc_8084282:
+	mov r2, #0x10
+	lsl r2, r2, #0x10
+	sub r0, r0, r2
+	add r1, r1, r2
+	pop {r4-r7, pc}
+	thumb_func_end sub_8084258
+
+off_808428C::
 	.word byte_8084290
+
 byte_8084290::
 	.word 0xFFCEFF9C, 0x00320000, 0x00000064
-	.byte 0x00
 
-unk_808429D:
-	.word 0x7C206BB5, 0x00F994F7, 0x15F77C20, 0xDB4653FF, 0x85791B6B, 0x0AD0062B, 0x01DC0128, 0x0AE00821
-	.word 0x051A8122, 0x012864E0, 0x012101DC, 0x812264E0, 0x7C20001A, 0x00FF0CF7, 0xF0BD0020, 0x50792CB5
-	.word 0x406BC046, 0x03280079, 0x013406D0, 0x09D00028, 0x08490434, 0x0382A85D, 0xE85D0849, 0xF072E882
-	.word 0x740000BD, 0x8C08140A, 0x0008140A, 0x057AE8B5, 0x28DF0621, 0x00736874
-	.byte 0xBD
-	.byte 0x00
-	.byte 0x00
+	thumb_local_start
+sub_808429C:
+	push {lr}
+	mov r0, #0x6b
+	bl PlaySoundEffect
+	mov r0, #0
+	bl GetMaxAndCurHPForCurPETNavi_80010D4
+	mov r3, r10
+	ldr r3, [r3, #0x3c]
+	ldrb r3, [r3, #4]
+	cmp r3, #0x85
+	beq loc_80842C2
+	cmp r0, #0xa
+	bgt loc_80842BC
+	mov r1, #1
+	b loc_80842CE
+loc_80842BC:
+	mov r2, #0xa
+	sub r1, r0, r2
+	b loc_80842CE
+loc_80842C2:
+	cmp r0, #0x64
+	bgt loc_80842CA
+	mov r1, #1
+	b loc_80842CE
+loc_80842CA:
+	mov r2, #0x64
+	sub r1, r0, r2
+loc_80842CE:
+	mov r0, #0
+	bl sub_80010EC
+	mov r0, #0
+	pop {pc}
+	thumb_func_end sub_808429C
+
+	thumb_local_start
+sub_80842D8:
+	push {r4-r7, lr}
+	ldrb r4, [r5, #4]
+	mov r0, r10
+	ldr r0, [r0, #0x3c]
+	ldrb r0, [r0, #5]
+	cmp r0, #0
+	beq loc_80842EE
+	add r4, #6
+	cmp r0, #1
+	beq loc_80842EE
+	add r4, #9
+loc_80842EE:
+	ldr r1, =byte_8140A74
+	ldrb r0, [r1, r4]
+	strh r0, [r5, #0x14]
+	ldr r1, =byte_8140A8C
+	ldrb r0, [r1, r4]
+	strh r0, [r5, #0x16]
+	strb r0, [r5, #0xb]
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_80842D8
+
+	thumb_local_start
+uses_svc_8084308:
+	push {lr}
+	ldrb r0, [r5, #0xb]
+	mov r1, #5
+	svc 6
+	strb r0, [r5, #0x10]
+	strb r0, [r5, #0xd]
+	pop {pc}
+	.balign 4, 0
+	thumb_func_end uses_svc_8084308
+
 byte_8084318::
 	ccs_set_camera_pos hword1=0xFB80 hword3=0x0100 hword5=0x0000
 	ccs_end
@@ -6041,7 +6756,7 @@ byte_8085B8A::
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x07
 	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=-0x01C0 signedhword6=-0x02C0 signedhword8=0x0000
 	cs_make_ow_player_visible
-	cs_call_native_with_return_value ptr1=end_cutscenescript_8085BCD
+	cs_call_native_with_return_value ptr1=sub_8085BCC+1
 	cs_pause byte1=0xFF byte2=0x0F
 	cs_warp_cmd_8038040_2 byte1=0x81 byte2=0x00 ptr3=NULL
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_52B
@@ -6053,13 +6768,17 @@ byte_8085B8A::
 dword_8085BC4::
 	cs_set_chatbox_flags byte2=0x40
 	cs_jump destination1=byte_8085B8A
-	cs_end_for_map_reload_maybe_8037c64
 
-end_cutscenescript_8085BCD:
-	.word 0xAF2009B5, 0x68FD05F7, 0x00200063
-	.byte 0xBD
-	.byte 0x00
-	.byte 0x00
+	thumb_local_start
+sub_8085BCC:
+	push {lr}
+	mov r0, #9
+	bl sub_80355DE
+	str r0, [r5, #0x34]
+	mov r0, #0
+	pop {pc}
+	.balign 4, 0
+	thumb_func_end sub_8085BCC
 
 cutscenescript_8085BDC:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
@@ -6783,7 +7502,7 @@ byte_80865AC::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731
-	cs_call_native_with_return_value ptr1=byte_8086601
+	cs_call_native_with_return_value ptr1=sub_8086600+1
 	cs_jump_if_var_equal byte1=0x05 byte2=0xFF destination3=cutscenescript_80865C6
 	cs_run_text_script_from_mem byte1=0x05
 	cs_wait_chatbox byte1=0x80
@@ -6810,14 +7529,33 @@ byte_80865FC::
 	cs_end_for_map_reload_maybe_8037c64
 	cs_end_for_map_reload_maybe_8037c64
 
-end_cutscenescript_8086600:
-	.byte 0x29
-byte_8086601::
-	.word 0x14480A79, 0x80434A22, 0xC1636818, 0x0171697C, 0x4171A97C, 0x5271E97C, 0x816BD246, 0x0229FF7C
-	.word 0x107591D0, 0x0075D121, 0x8446F720
-	.byte 0x65
-	.byte 0x08
-	.byte 0x08
+	thumb_local_start
+sub_8086600:
+	ldrb r1, [r5, #4]
+	ldr r0, =byte_8086584
+	mov r2, #0x14
+	mul r2, r1
+	add r0, r0, r2
+	str r0, [r5, #0x34]
+	ldrb r1, [r0, #0x13]
+	strb r1, [r5, #5]
+	ldrb r1, [r0, #0x10]
+	strb r1, [r5, #6]
+	ldrb r1, [r0, #0x11]
+	strb r1, [r5, #7]
+	mov r2, r10
+	ldr r2, [r2, #0x3c]
+	ldrb r1, [r0, #0x12]
+	cmp r1, #0xff
+	beq loc_8086628
+	strb r1, [r2, #0x16]
+	mov r1, #0x10
+	strb r1, [r2, #0x17]
+loc_8086628:
+	mov r0, #0
+	mov pc, lr
+	.pool
+	thumb_func_end sub_8086600
 
 ccs_8086630:
 	ccs_set_camera_pos hword1=0xF980 hword3=0xE980 hword5=0x0000
@@ -6982,7 +7720,7 @@ byte_80867E7::
 	cs_wait_chatbox byte1=0x80
 	cs_pause byte1=0xFF byte2=0x5A
 	cs_run_text_script_not_from_mem byte2=0x17
-	cs_call_native_with_return_value ptr1=unk_8086855
+	cs_call_native_with_return_value ptr1=sub_8086854+1
 	cs_pause byte1=0xFF byte2=0x3C
 
 byte_8086832::
@@ -6999,14 +7737,34 @@ byte_8086832::
 dword_808684C::
 	cs_set_chatbox_flags byte2=0x40
 	cs_jump destination1=byte_8086832
-	cs_end_for_map_reload_maybe_8037c64
 
-unk_8086855:
-	.word 0xBF2080B5, 0x01FB70F7, 0x002000D1, 0xD84B06BD, 0xD8380178, 0xCDD10470, 0xADF77920, 0xD82040FE
-	.word 0x00200170, 0x900000BD, 0x0002011A, 0xE980F980
-	.byte 0x00
-	.byte 0x00
-	.byte 0x08
+	thumb_local_start
+sub_8086854:
+	push {lr}
+	mov r0, #0x80
+	bl chatbox_mask_eFlags2009F38
+	bne loc_8086862
+	mov r0, #0
+	pop {pc}
+loc_8086862:
+	ldr r3, =unk_2011A90
+	ldrb r0, [r3, #3]
+	sub r0, #1
+	strb r0, [r3, #3]
+	bne loc_8086876
+	mov r0, #0xcd
+	bl PlaySoundEffect
+	mov r0, #0x40
+	strb r0, [r3, #3]
+loc_8086876:
+	mov r0, #1
+	pop {pc}
+	.pool
+	thumb_func_end sub_8086854
+
+off_8086880:
+	.word 0x80F98000, 0x080000E9
+
 byte_8086888::
 	.byte 0x0, 0x80, 0xFF, 0x80, 0xE9, 0x0, 0x0, 0x8, 0x0, 0x80, 0x5, 0x80
 	.byte 0xE9, 0x0, 0x0, 0x8, 0x0, 0x0, 0x17, 0x0, 0xF4, 0x0, 0x0, 0x8
@@ -7124,10 +7882,28 @@ byte_8086B49::
 	.byte 0x6D, 0x8, 0x8, 0x4B, 0xF5, 0x6C, 0x8, 0x8, 0x2, 0xFF, 0x3C
 	.byte 0x27, 0xFF, 0x8, 0x8, 0x7, 0x3F, 0x4, 0x0
 byte_8086B72::
-	.byte 0x3C, 0x0, 0x40, 0x15, 0x1, 0x6B, 0x8, 0x8, 0x0, 0x0, 0x0, 0xB5
-	.byte 0x25, 0x4B, 0x19, 0x7B, 0xC9, 0x0, 0x5, 0x4B, 0x5B, 0x18, 0x18, 0x88
-	.byte 0x0, 0x4, 0x59, 0x88, 0x9, 0x4, 0x9A, 0x88, 0x12, 0x4, 0x17, 0xF0
-	.byte 0xF8, 0xFA, 0x0, 0x20, 0x0, 0xBD
+	.byte 0x3C, 0x0, 0x40, 0x15, 0x1, 0x6B, 0x8, 0x8, 0x0, 0x0
+
+	thumb_local_start
+dead_8086B7C:
+	push {lr}
+	ldr r3, off_8086C14 // =unk_2011A90
+	ldrb r1, [r3, #0xc]
+	lsl r1, r1, #3
+	ldr r3, off_8086B9C // =byte_8086BA0
+	add r3, r3, r1
+	ldrh r0, [r3, #0]
+	lsl r0, r0, #0x10
+	ldrh r1, [r3, #2]
+	lsl r1, r1, #0x10
+	ldrh r2, [r3, #4]
+	lsl r2, r2, #0x10
+	bl owPlayer_copyCoordsToNextCoordsWritePlayerCoordsThenIndirectlySetPlayerCoordsMaybe_809e188
+	mov r0, #0
+	pop {pc}
+	thumb_func_end dead_8086B7C
+
+off_8086B9C::
 	.word byte_8086BA0
 byte_8086BA0::
 	.byte 0x7A, 0xFF, 0xC8, 0xFE, 0x10, 0x0, 0x0, 0x0, 0xDC, 0xFF
@@ -7141,42 +7917,102 @@ byte_8086BA0::
 	.byte 0xFE, 0x0, 0x52, 0x0, 0x20, 0x0, 0x0, 0x0, 0xFE, 0x0
 	.byte 0xF2, 0xFF, 0x20, 0x0, 0x0, 0x0, 0xFE, 0x0, 0x92, 0xFF
 	.byte 0x20, 0x0, 0x0, 0x0
-	thumb_func_end sub_8083D44
 
 	thumb_local_start
 sub_8086C08::
 	push {lr}
-	ldr r3, off_8086C14 // =unk_2011A90 
+	ldr r3, off_8086C14 // =unk_2011A90
 	mov r1, #3
 	strb r1, [r3,#0x7] // (byte_2011A97 - 0x2011a90)
 	mov r0, #0
 	pop {pc}
+	.balign 4, 0
+	thumb_func_end sub_8086C08
+
 off_8086C14::
 	.word unk_2011A90
-	.byte 0x0, 0xB5, 0x2A, 0x4B, 0x18, 0x7B, 0x40, 0x0, 0x27, 0x49
-	.byte 0xA, 0x5A, 0x10, 0x1C, 0xA8, 0xF7, 0x75, 0xFA, 0x50, 0x46
-	.byte 0xC0, 0x6B, 0x1, 0x79, 0x85, 0x29, 0x1, 0xD1, 0x3, 0x20
-	.byte 0x0, 0xE0, 0x40, 0x79, 0x1, 0x28, 0x12, 0xD0, 0x2, 0x28
-	.byte 0x1F, 0xD0, 0x3, 0x28, 0x2C, 0xD0, 0x5, 0x20, 0xF5, 0x21
-	.byte 0x3, 0x22, 0xA8, 0xF7, 0xD6, 0xFA, 0x8, 0xD0, 0x5, 0x20
-	.byte 0xEE, 0x21, 0xA8, 0xF7, 0x69, 0xFA, 0x5, 0x20, 0xEA, 0x21
-	.byte 0xA8, 0xF7, 0x57, 0xFA, 0x2B, 0xE0, 0x5, 0x20, 0xF8, 0x21
-	.byte 0x3, 0x22, 0xA8, 0xF7, 0xC7, 0xFA, 0x8, 0xD0, 0x5, 0x20
-	.byte 0xEF, 0x21, 0xA8, 0xF7, 0x5A, 0xFA, 0x5, 0x20, 0xEB, 0x21
-	.byte 0xA8, 0xF7, 0x48, 0xFA, 0x1C, 0xE0, 0x5, 0x20, 0xFB, 0x21
-	.byte 0x4, 0x22, 0xA8, 0xF7, 0xB8, 0xFA, 0x8, 0xD0, 0x5, 0x20
-	.byte 0xF0, 0x21, 0xA8, 0xF7, 0x4B, 0xFA, 0x5, 0x20, 0xEC, 0x21
-	.byte 0xA8, 0xF7, 0x39, 0xFA, 0xD, 0xE0, 0xF, 0x20, 0xC2, 0x21
-	.byte 0x3, 0x22, 0xA8, 0xF7, 0xA9, 0xFA, 0x7, 0xD0, 0xF, 0x20
-	.byte 0xF9, 0x21, 0xA8, 0xF7, 0x3C, 0xFA, 0xF, 0x20, 0xC1, 0x21
-	.byte 0xA8, 0xF7, 0x2A, 0xFA, 0x0, 0x20, 0x0, 0xBD
+
+	thumb_local_start
+dead_8086C18:
+	push {lr}
+	ldr r3, off_8086CC4 // =unk_2011A90
+	ldrb r0, [r3, #0xc]
+	lsl r0, r0, #1
+	ldr r1, off_8086CC0 // =byte_8086CC8
+	ldrh r2, [r1, r0]
+	add r0, r2, #0
+	bl SetEventFlag
+	mov r0, r10
+	ldr r0, [r0, #0x3c]
+	ldrb r1, [r0, #4]
+	cmp r1, #0x85
+	bne loc_8086C38
+	mov r0, #3
+	b loc_8086C3A
+loc_8086C38:
+	ldrb r0, [r0, #5]
+loc_8086C3A:
+	cmp r0, #1
+	beq loc_8086C64
+	cmp r0, #2
+	beq loc_8086C82
+	cmp r0, #3
+	beq loc_8086CA0
+	mov r0, #5
+	mov r1, #0xf5
+	mov r2, #3
+	bl TestEventFlagRangeFromImmediate
+	beq loc_8086C64
+	movflag EVENT_5EE
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_5EA
+	bl SetEventFlagFromImmediate
+	b loc_8086CBC
+loc_8086C64:
+	mov r0, #5
+	mov r1, #0xf8
+	mov r2, #3
+	bl TestEventFlagRangeFromImmediate
+	beq loc_8086C82
+	movflag EVENT_5EF
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_5EB
+	bl SetEventFlagFromImmediate
+	b loc_8086CBC
+loc_8086C82:
+	mov r0, #5
+	mov r1, #0xfb
+	mov r2, #4
+	bl TestEventFlagRangeFromImmediate
+	beq loc_8086CA0
+	movflag EVENT_5F0
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_5EC
+	bl SetEventFlagFromImmediate
+	b loc_8086CBC
+loc_8086CA0:
+	mov r0, #0xf
+	mov r1, #0xc2
+	mov r2, #3
+	bl TestEventFlagRangeFromImmediate
+	beq loc_8086CBC
+	movflag EVENT_FF9
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_FC1
+	bl SetEventFlagFromImmediate
+loc_8086CBC:
+	mov r0, #0
+	pop {pc}
+	thumb_func_end dead_8086C18
+
+off_8086CC0::
 	.word byte_8086CC8
-	.word 0x2011A90
+off_8086CC4::
+	.word unk_2011A90
 byte_8086CC8::
 	.byte 0xF5, 0x5, 0xF6, 0x5, 0xF7, 0x5, 0xF8, 0x5, 0xF9, 0x5, 0xFA
 	.byte 0x5, 0xFB, 0x5, 0xFC, 0x5, 0xFD, 0x5, 0xFE, 0x5, 0xC2, 0xF
 	.byte 0xC3, 0xF, 0xC4, 0xF, 0x0, 0x0
-	thumb_func_end sub_8086C08
 
 	thumb_local_start
 sub_8086CE4::
@@ -7184,25 +8020,44 @@ sub_8086CE4::
 	bl reqBBS_clearFlag_8140A0C
 	mov r0, #0
 	pop {pc}
-	.byte 0x0, 0x0, 0x90, 0x1A, 0x1, 0x2, 0x0, 0xB5, 0x51, 0x46, 0xC9
-	.byte 0x6B, 0x9, 0x79, 0x81, 0x29, 0x4, 0xD0, 0x1F, 0x20, 0x4, 0x49
-	.byte 0x79, 0xF7, 0xB5, 0xFC, 0x2, 0xE0, 0x11, 0x20, 0x79, 0xF7, 0x7D
-	.byte 0xFC, 0x0, 0x20, 0x0, 0xBD, 0x0, 0x1, 0x0, 0x0
-	.balign 4, 0
+	thumb_func_end sub_8086CE4
+
+unk_8086CEE::
+	.byte 0x0, 0x0, 0x90, 0x1A, 0x1, 0x2
+
+	thumb_local_start
+dead_8086CF4:
+	push {lr}
+	mov r1, r10
+	ldr r1, [r1, #0x3c]
+	ldrb r1, [r1, #4]
+	cmp r1, #0x81
+	beq loc_8086D0A
+	mov r0, #0x1f
+	ldr r1, =0x100
+	bl sound_8000672
+	b loc_8086D10
+loc_8086D0A:
+	mov r0, #0x11
+	bl sub_800060A
+loc_8086D10:
+	mov r0, #0
+	pop {pc}
+	.pool
+	thumb_func_end dead_8086CF4
+
 off_8086D18::
 	.word unk_2011A90
 off_8086D1C::
 	.byte 0xC0, 0xE, 0x0, 0x2, 0x3F, 0x0
 	.byte 0x6, 0x29, 0xFF, 0x31, 0x17, 0x4B
 	.word sub_8086D9C+1
+
 byte_8086D2C::
-	.byte 0x3F, 0x4, 0x0, 0x0, 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17
-	.byte 0x3E
-	.word TextScriptWhoAmI
-	.word 0x86DBD4B
-	.byte 0x8, 0x4B, 0xE9, 0x6D, 0x8, 0x8, 0x3A, 0x4, 0x4, 0x80, 0x2A
-	.byte 0xFF, 0xF1, 0x5, 0x2A, 0xFF, 0xF2, 0x5, 0x2A, 0xFF, 0xFF, 0x5
-	.byte 0x3F, 0x4, 0x0, 0x0, 0x0, 0x0
+	.word 0x0000043F, 0x2906003F, 0x3E1731FF, TextScriptWhoAmI, 0x086DBD4B
+	.word 0x6DE94B08, 0x043A0808, 0xFF2A8004, 0xFF2A05F1, 0xFF2A05F2
+	.word 0x043F05FF, 0x00000000
+
 byte_8086D5C::
 	.byte 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17, 0x3E
 	.word TextScriptWhoAmI
@@ -7214,7 +8069,6 @@ byte_8086D74::
 	.byte 0x3A, 0xFF, 0x3E, 0x4, 0x80, 0x3D, 0x93, 0x6D, 0x8, 0x8
 	.byte 0x97, 0x6D, 0x8, 0x8, 0x15, 0x97, 0x6D, 0x8, 0x8, 0x29
 	.byte 0xFF, 0xED, 0x5, 0x3B, 0x3F, 0x4, 0x0, 0x0
-	thumb_func_end sub_8086CE4
 
 	thumb_local_start
 sub_8086D9C::
@@ -7233,14 +8087,46 @@ sub_8086D9C::
 loc_8086DB6::
 	mov r0, #1
 	pop {r5,pc}
-	.byte 0x0, 0x0, 0x20, 0xB5, 0x45, 0x4D, 0x2D, 0x68, 0x68, 0x7A
-	.byte 0x2, 0x28, 0xB, 0xD1, 0x0, 0x20, 0x68, 0x72, 0x51, 0x46
-	.byte 0xC9, 0x6B, 0x9, 0x79, 0x81, 0x29, 0x2, 0xD1, 0x11, 0x20
-	.byte 0x79, 0xF7, 0x17, 0xFC, 0x0, 0x20, 0x20, 0xBD, 0x1, 0x20
-	.byte 0x20, 0xBD, 0x0, 0x1, 0x0, 0x0, 0x20, 0xB5, 0x3, 0x20
-	.byte 0xB9, 0xF0, 0xF0, 0xFD, 0x2F, 0x30, 0x28, 0x71, 0x0, 0x20
-	.byte 0x20, 0xBD
+	.balign 4, 0
 	thumb_func_end sub_8086D9C
+
+	thumb_local_start
+sub_8086DBC:
+	push {r5, lr}
+	ldr r5, off_8086ED4 // =off_8086D18
+	ldr r5, [r5, #0]
+	ldrb r0, [r5, #9]
+	cmp r0, #2
+	bne loc_8086DE0
+	mov r0, #0
+	strb r0, [r5, #9]
+	mov r1, r10
+	ldr r1, [r1, #0x3c]
+	ldrb r1, [r1, #4]
+	cmp r1, #0x81
+	bne loc_8086DDC
+	mov r0, #0x11
+	bl sub_800060A
+loc_8086DDC:
+	mov r0, #0
+	pop {r5, pc}
+loc_8086DE0:
+	mov r0, #1
+	pop {r5, pc}
+	lsl r0, r0, #4
+	.balign 4, 0
+	thumb_func_end sub_8086DBC
+
+	thumb_local_start
+sub_8086DE8:
+	push {r5, lr}
+	mov r0, #3
+	bl reqBBS_81409D0
+	add r0, #0x2f
+	strb r0, [r5, #4]
+	mov r0, #0
+	pop {r5, pc}
+	thumb_func_end sub_8086DE8
 
 	thumb_local_start
 sub_8086DF8::
@@ -7292,18 +8178,49 @@ locret_8086E6A::
 
 unk_8086E6C::
 	.word 0x0000013B
-	.byte 0x00
 
-unk_8086E71:
-	.word 0x004818B5, 0x941C0568, 0x31F77921, 0xF22005FD, 0x53F7A821, 0x412016F9, 0x41F7A821, 0x422016F9
-	.word 0x3DF7A821, 0x432016F9, 0x39F7A821, 0x442016F9, 0x35F7A821, 0xF0BD00F9
+	thumb_local_start
+sub_8086E70:
+	push {lr}
+	ldr r0, off_8086ED4 // =off_8086D18
+	ldr r0, [r0, #0]
+	add r5, r0, #0
+	mov r1, #0x94
+	bl ZeroFillByWord
+	movflag EVENT_5F2
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_1641
+	bl SetEventFlagFromImmediate
+	movflag EVENT_1642
+	bl SetEventFlagFromImmediate
+	movflag EVENT_1643
+	bl SetEventFlagFromImmediate
+	movflag EVENT_1644
+	bl SetEventFlagFromImmediate
+	pop {pc}
+	thumb_func_end sub_8086E70
 
-unk_8086EA9:
-	.word 0x2D4D0AB5, 0x47F00068, 0x012800F9, 0x65F000D0, 0x8DF000F9, 0xED2005F8, 0x4FF7A821, 0x00D001F9
-	.word 0x00F928F0, 0xF0F992F0
-	.byte 0xBD
-	.byte 0x00
-	.byte 0x00
+	thumb_local_start
+sub_8086EA8:
+	push {r4-r7, lr}
+	ldr r5, off_8086ED4 // =off_8086D18
+	ldr r5, [r5, #0]
+	bl sub_8087140
+	cmp r0, #0
+	beq loc_8086EBA
+	bl sub_8087184
+loc_8086EBA:
+	bl sub_8086FD8
+	movflag EVENT_5ED
+	bl TestEventFlagFromImmediate
+	beq loc_8086ECC
+	bl sub_808711C
+loc_8086ECC:
+	bl sub_80871F4
+	pop {r4-r7, pc}
+	.balign 4, 0
+	thumb_func_end sub_8086EA8
+
 off_8086ED4::
 	.word off_8086D18
 

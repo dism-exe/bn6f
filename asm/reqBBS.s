@@ -4474,6 +4474,7 @@ reqBBS_81407D8:
 loc_8140814:
 	mov r0, #0
 	pop {r4-r7,pc}
+	thumb_func_end reqBBS_81407D8
 	.balign 4, 0
 dword_8140818:
 	.word 0xD
@@ -4484,11 +4485,26 @@ dword_8140820:
 off_8140824:
 	.word byte_8140828
 byte_8140828:
-	.byte 0xA, 0x19, 0x23, 0x4B, 0x0, 0x0, 0x0, 0x0, 0xF0, 0xB5, 0x5, 0x49
-	.byte 0x9, 0x69, 0x40, 0x18, 0x0, 0x1C, 0xEE, 0xF6, 0x95, 0xFC, 0x1, 0xD0
-	.byte 0x1, 0x20, 0x0, 0xE0, 0x0, 0x20, 0xF0, 0xBD
-	.word reqBBS_textualPointers
-	thumb_func_end reqBBS_81407D8
+	.byte 0xA, 0x19, 0x23, 0x4B, 0x0, 0x0, 0x0, 0x0
+
+	thumb_local_start
+reqBBS_dead_8140830:
+	push {r4-r7, lr}
+	ldr r1, =reqBBS_textualPointers
+	ldr r1, [r1, #0x10]
+	add r0, r0, r1
+	mov r0, r0
+	bl TestEventFlag
+	beq loc_8140844
+	mov r0, #1
+	b loc_8140846
+loc_8140844:
+	mov r0, #0
+loc_8140846:
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end reqBBS_dead_8140830
+
 
 	thumb_local_start
 reqBBS_814084C:

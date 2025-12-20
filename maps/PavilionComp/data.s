@@ -132,14 +132,14 @@ dword_806AEB0:
 	ms_jump destination1=mapscript_806AECF
 
 byte_806AEC6:
-	ms_call_native_function ptr1=unk_8086E71 word5=0x00000000
+	ms_call_native_function ptr1=sub_8086E70+1 word5=0x00000000
 
 mapscript_806AECF:
 	ms_end
 
 dword_806AED0:
 	ms_jump_if_flag_range_set byte1=0x03 event16_2=EVENT_FC2 destination4=byte_806AEE1
-	ms_call_native_function ptr1=unk_8086EA9 word5=0x00000000
+	ms_call_native_function ptr1=sub_8086EA8+1 word5=0x00000000
 
 byte_806AEE1:
 	ms_jump_if_progress_in_range byte1=0x60 byte2=0x6F destination3=byte_806AEED
@@ -308,7 +308,7 @@ mapscript_806B10B:
 	ms_end
 
 byte_806B10C:
-	ms_call_native_function ptr1=unk_8083C3D word5=0x00000000
+	ms_call_native_function ptr1=sub_8083C3C+1 word5=0x00000000
 	ms_jump_if_progress_in_range byte1=0x60 byte2=0x6F destination3=byte_806B121
 	ms_jump destination1=byte_806B1E2
 
@@ -345,15 +345,15 @@ byte_806B195:
 	ms_jump destination1=byte_806B1AF
 
 mapscript_806B1A6:
-	ms_call_native_function ptr1=unk_8083F35 word5=0x00000000
+	ms_call_native_function ptr1=sub_8083F34+1 word5=0x00000000
 
 byte_806B1AF:
 	ms_load_gfx_anim ptr1=byte_8140BAC
 	ms_load_gfx_anim ptr1=byte_8140BF0
-	ms_call_native_function ptr1=unk_8083D7D word5=0x00000000
+	ms_call_native_function ptr1=clear_8083D7C+1 word5=0x00000000
 	ms_jump_if_map_group_not_equal_last_map_group destination2=dword_806B1DE
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_4E9 destination4=byte_806B1E2
-	ms_call_native_function ptr1=unk_8083DC5 word5=0x00000000
+	ms_call_native_function ptr1=sub_8083DC4+1 word5=0x00000000
 	ms_jump destination1=byte_806B1E2
 
 dword_806B1DE:
@@ -386,11 +386,11 @@ mapscript_806B224:
 
 byte_806B242:
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_4E9 destination4=mapscript_806B258
-	ms_call_native_function ptr1=unk_8083C6D word5=0x00000000
+	ms_call_native_function ptr1=sub_8083C6C+1 word5=0x00000000
 	ms_jump destination1=byte_806B266
 
 mapscript_806B258:
-	ms_call_native_function ptr1=unk_8083DF1 word5=0x00000000
+	ms_call_native_function ptr1=sub_8083DF0+1 word5=0x00000000
 	ms_jump destination1=byte_806B266
 
 byte_806B266:
@@ -1007,7 +1007,7 @@ npcscript_list_806B7C4::
 dword_806B7D0:
 	ns_set_active_and_visible
 	ns_set_sprite byte1=0x37
-	ns_init_native_callback ptr1=undumped_code_806B829
+	ns_init_native_callback ptr1=sub_806B828+1
 	ns_set_animation byte1=0x04
 	ns_wait_cutscene_var byte1=0x08 byte2=0x01
 	ns_set_animation byte1=0x2F
@@ -1028,7 +1028,7 @@ byte_806B801:
 	ns_set_active_and_invisible
 	ns_wait_cutscene_var byte1=0x08 byte2=0x01
 	ns_set_sprite_with_category byte1=0x63 byte2=0x1C
-	ns_init_native_callback ptr1=undumped_code_806B829
+	ns_init_native_callback ptr1=sub_806B828+1
 	ns_set_npc_palette_index byte1=0x01
 	ns_set_active_and_visible
 	ns_play_sound hword1=0x0105
@@ -1043,12 +1043,19 @@ byte_806B801:
 	ns_end
 	ns_end
 	ns_end
-	ns_enable_collision
 
-undumped_code_806B829:
-	.byte 0xB5, 0x32, 0xF0, 0xC0, 0xFC, 0x68, 0x62, 0xA9, 0x62
-	.byte 0xEA, 0x62, 0x34, 0xF0, 0x66, 0xF8, 0x20, 0xBD, 0x0
-	.byte 0x0
+	thumb_local_start
+sub_806B828:
+	push {r5, lr}
+	bl ReadOWPlayerObjectCoords
+	str r0, [r5, #0x24]
+	str r1, [r5, #0x28]
+	str r2, [r5, #0x2c]
+	bl sub_809F904
+	pop {r5, pc}
+	.balign 4, 0
+	thumb_func_end sub_806B828
+
 off_806B83C:
 	.word byte_806B858
 	.word byte_806B87A

@@ -1184,8 +1184,8 @@ byte_80613B5::
 	ns_set_animation byte1=0x1A
 	ns_clear_unk_flags_60_flag_0x200
 	ns_give_detatched_shadow
-	ns_init_native_callback ptr1=end_npcscript_8061408+1
-	ns_init_native_callback ptr1=undumped_code_8061423
+	ns_init_native_callback ptr1=sub_8061408+1
+	ns_init_native_callback ptr1=sub_8061422+1
 	ns_give_attached_shadow
 	ns_play_sound hword1=0x01AE
 	ns_set_animation byte1=0x1B
@@ -1206,18 +1206,46 @@ byte_80613B5::
 	ns_jump_with_link destination1=byte_809F6CC
 	ns_end
 
-end_npcscript_8061408:
-	.word 0x4657B5F0, 0x2004693F, 0x04004240
-	.byte 0x78
-	.byte 0x67
-	.byte 0x1, 0x20, 0xC0, 0x3, 0xB8, 0x67, 0x3E, 0xF0, 0x72, 0xFA
-	.byte 0xF0, 0xBD, 0xF0
-undumped_code_8061423::
-	.byte 0xB5, 0x57, 0x46, 0x3F, 0x69, 0xE8, 0x6A, 0x79, 0x6F
-	.byte 0xBA, 0x6F, 0x89, 0x1A, 0x79, 0x67, 0x40, 0x18, 0xE8
-	.byte 0x62, 0x0, 0x28, 0x0, 0xDD, 0xF0, 0xBD, 0x0, 0x20
-	.byte 0xE8, 0x62, 0x3E, 0xF0, 0x60, 0xFA, 0xF0, 0xBD, 0x0
-	.byte 0x0
+	thumb_local_start
+sub_8061408:
+	push {r4-r7, lr}
+	mov r7, r10
+	ldr r7, [r7, #oToolkit_CutsceneStatePtr]
+	mov r0, #4
+	neg r0, r0
+	lsl r0, r0, #0x10
+	str r0, [r7, #0x74]
+	mov r0, #1
+	lsl r0, r0, #0xF
+	str r0, [r7, #0x78]
+	bl sub_809F904
+	pop {r4-r7, pc}
+	thumb_func_end sub_8061408
+
+	thumb_local_start
+sub_8061422:
+	push {r4-r7, lr}
+	mov r7, r10
+	ldr r7, [r7, #0x10]
+	ldr r0, [r5, #0x2c]
+	ldr r1, [r7, #0x74]
+	ldr r2, [r7, #0x78]
+	sub r1, r1, r2
+	str r1, [r7, #0x74]
+	add r0, r0, r1
+	str r0, [r5, #0x2c]
+	cmp r0, #0
+	ble loc_806143C
+	pop {r4-r7, pc}
+loc_806143C:
+	mov r0, #0
+	str r0, [r5, #0x2c]
+	bl sub_809F904
+	pop {r4-r7, pc}
+	.balign 4, 0
+	thumb_func_end sub_8061422
+
+
 off_8061448::
 	.word byte_8061478
 	.word byte_806149D
@@ -1845,7 +1873,7 @@ byte_8061A5C::
 	ns_play_sound hword1=0x01AD
 	ns_clear_unk_flags_60_flag_0x200
 	ns_remove_shadow
-	ns_init_native_callback ptr1=undumped_code_8061B6C+1
+	ns_init_native_callback ptr1=sub_8061B6C+1
 	ns_init_native_callback ptr1=sub_8061BB6+1
 	ns_play_sound hword1=0x01AF
 	ns_set_animation byte1=0x24
@@ -1858,7 +1886,7 @@ byte_8061A5C::
 	ns_wait_cutscene_var byte1=0x08 byte2=0x0B
 	ns_set_animation byte1=0x26
 	ns_play_sound hword1=0x0105
-	ns_init_native_callback ptr1=undumped_code_8061BE6+1
+	ns_init_native_callback ptr1=sub_8061BE6+1
 	ns_init_native_callback ptr1=sub_8061BFE+1
 	ns_give_attached_shadow
 	ns_set_coords hword1=0xFF20 hword3=0xFF6C hword5=0xFFE0
@@ -1890,8 +1918,8 @@ byte_8061AE8::
 	ns_play_sound hword1=0x01AD
 	ns_clear_unk_flags_60_flag_0x200
 	ns_remove_shadow
-	ns_init_native_callback ptr1=undumped_code_8061B6C+1
-	ns_init_native_callback ptr1=undumped_code_8061B84+1
+	ns_init_native_callback ptr1=sub_8061B6C+1
+	ns_init_native_callback ptr1=sub_8061B84+1
 	ns_give_attached_shadow
 	ns_play_sound hword1=0x01AE
 	ns_set_animation byte1=0x44
@@ -1920,25 +1948,50 @@ byte_8061AE8::
 	ns_end
 	ns_end
 
-undumped_code_8061B6C::
-	.byte 0xF0, 0xB5
-	.byte 0x57, 0x46
-	.byte 0x3F, 0x69
-	.byte 0x5, 0x20
-	.byte 0x0, 0x4
-	.byte 0x78, 0x67
-	.byte 0x1, 0x20
-	.byte 0xC0, 0x3
-	.byte 0xB8, 0x67
-	.byte 0x3D, 0xF0, 0xC1, 0xFE
-	.byte 0xF0, 0xBD
-undumped_code_8061B84::
-  .byte 0xF0, 0xB5, 0x57, 0x46, 0x3F
-	.byte 0x69, 0xE8, 0x6A, 0x79, 0x6F, 0xBA, 0x6F, 0x89, 0x1A, 0x79, 0x67
-	.byte 0x40, 0x18, 0xE8, 0x62, 0x20, 0x21, 0x49, 0x42, 0x9, 0x4, 0x88
-	.byte 0x42, 0x5, 0xDD, 0x68, 0x6A, 0x3, 0x21, 0xC9, 0x3, 0x40, 0x1A
-	.byte 0x68, 0x62, 0xF0, 0xBD, 0xE9, 0x62, 0x3D, 0xF0, 0xA8, 0xFE, 0xF0
-	.byte 0xBD
+	thumb_local_start
+sub_8061B6C::
+	push {r4-r7, lr}
+	mov r7, r10
+	ldr r7, [r7, #oToolkit_CutsceneStatePtr]
+	mov r0, #5
+	lsl r0, r0, #0x10
+	str r0, [r7, #0x74]
+	mov r0, #1
+	lsl r0, r0, #0xF
+	str r0, [r7, #0x78]
+	bl sub_809F904
+	pop {r4-r7, pc}
+	thumb_func_end sub_8061B6C
+
+	thumb_local_start
+sub_8061B84::
+	push {r4-r7, lr}
+	mov r7, r10
+	ldr r7, [r7, #oToolkit_CutsceneStatePtr]
+	ldr r0, [r5, #0x2C]
+	ldr r1, [r7, #0x74]
+	ldr r2, [r7, #0x78]
+	sub r1, r1, r2
+	str r1, [r7, #0x74]
+	add r0, r0, r1
+	str r0, [r5, #0x2C]
+	mov r1, #0x20
+	neg r1, r1
+	lsl r1, r1, #0x10
+	cmp r0, r1
+	ble loc_8061BAE
+	ldr r0, [r5, #0x24]
+	mov r1, #3
+	lsl r1, r1, #0xF
+	sub r0, r0, r1
+	str r0, [r5, #0x24]
+	pop {r4-r7, pc}
+loc_8061BAE:
+	str r1, [r5, #0x2C]
+  bl sub_809F904
+	pop {r4-r7, pc}
+	thumb_func_end sub_8061B84
+
 	thumb_local_start
 sub_8061BB6::
 	push {r4-r7,lr}
@@ -1965,11 +2018,22 @@ loc_8061BDE::
 	str r1, [r5,#0x2c]
 	bl sub_809F904
 	pop {r4-r7,pc}
-undumped_code_8061BE6::
-	.byte 0xF0, 0xB5, 0x57, 0x46, 0x3F, 0x69, 0x0, 0x20, 0x0, 0x4
-	.byte 0x78, 0x67, 0x1, 0x20, 0xC0, 0x3, 0xB8, 0x67, 0x3D, 0xF0
-	.byte 0x84, 0xFE, 0xF0, 0xBD
 	thumb_func_end sub_8061BB6
+
+	thumb_local_start
+sub_8061BE6::
+	push {r4-r7, lr}
+	mov r7, r10
+	ldr r7, [r7, #oToolkit_CutsceneStatePtr]
+	mov r0, #0
+	lsl r0, r0, #0x10
+	str r0, [r7, #0x74]
+	mov r0, #1
+	lsl r0, r0, #0xF
+	str r0, [r7, #0x78]
+	bl sub_809F904
+	pop {r4-r7, pc}
+	thumb_func_end sub_8061BE6
 
 	thumb_local_start
 sub_8061BFE::

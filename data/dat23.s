@@ -77,7 +77,7 @@ byte_8089DF4::
 	cs_pause byte1=0xFF byte2=0x01
 	cs_ow_player_sprite_special_with_arg byte1=0x04 byte2=0xFF byte3=0x04
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x04
-	cs_call_native_with_return_value ptr1=byte_8089E29
+	cs_call_native_with_return_value ptr1=sub_8089E28+1
 	cs_pause byte1=0xFF byte2=0x1E
 	cs_set_screen_fade byte1=0xFF byte2=0x08 byte3=0x08
 	cs_wait_screen_fade
@@ -89,13 +89,21 @@ byte_8089DF4::
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_8089E26:
-	.byte 0x00
-	.byte 0x00
-	.byte 0xF0
-byte_8089E29:: 
-  .byte 0xB5, 0x14, 0xF0, 0x76, 0xFA, 0x14, 0xF0, 0xC0, 0xFA
-	.byte 0xB6, 0xF0, 0xEB, 0xFD, 0x7, 0x20, 0x1, 0x21, 0xA5
-	.byte 0xF7, 0x77, 0xF9, 0x0, 0x20, 0xF0, 0xBD, 0x0, 0x0
+	.balign 4, 0
+
+	thumb_local_start
+sub_8089E28:
+	push {r4-r7, lr}
+	bl sub_809E31A
+	bl sub_809E3B2
+	bl reqBBS_clearFlag_8140A0C
+	movflag EVENT_701
+	bl ClearEventFlagFromImmediate
+	mov r0, #0
+	pop {r4-r7, pc}
+	.balign 4, 0
+	thumb_func_end sub_8089E28
+
 byte_8089E44::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
@@ -103,7 +111,7 @@ byte_8089E44::
 	cs_disable_ow_player_wall_collision_809e254
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731
 	cs_call_native_with_return_value ptr1=sub_81418AA+1
-	cs_call_native_with_return_value ptr1=unk_8089E91
+	cs_call_native_with_return_value ptr1=dispatch_8089E90+1
 	cs_spawn_cutscene_process byte1=0x20 ptr2=cutscenescript_8089E76
 	cs_wait_cutscene_process byte1=0x20
 	cs_pause byte1=0xFF byte2=0x1E
@@ -124,56 +132,151 @@ cutscenescript_8089E76:
 	cs_cutscene_end
 
 end_cutscenescript_8089E8E:
-	.byte 0x00
-	.byte 0x00
-	.byte 0xF0
+	.balign 4, 0
 
-unk_8089E91:
-	.word 0x56686FB5, 0xB66BF646, 0x03782869, 0x08008049, 0x0046FE58, 0xF0420047, 0xB00000BD
-	.byte 0x9E
-	.byte 0x08
-	.byte 0x08
+	thumb_local_start
+dispatch_8089E90:
+	push {r4-r7, lr}
+	ldr r7, [r5, #4]
+	mov r6, r10
+	ldr r6, [r6, #0x3c]
+	ldr r6, [r6, #0x18]
+	ldrb r0, [r5, #0]
+	ldr r1, =off_8089EB0
+	lsl r0, r0, #2
+	ldr r0, [r1, r0]
+	mov lr, pc
+	bx r0
+	tst r0, r0
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end dispatch_8089E90
+
 off_8089EB0:: 
-  .word byte_8089EBD
-	.word byte_8089F41
-	.word byte_8089F5F
-	.byte 0xF0
-byte_8089EBD:: 
-  .byte 0xB5, 0x14, 0xF0, 0x76, 0xF9, 0xFB, 0x68, 0xC0, 0x1A
-	.byte 0x3B, 0x69, 0xC9, 0x1A, 0x3, 0xB4, 0x77, 0xF7, 0x56
-	.byte 0xF9, 0x68, 0x70, 0x3, 0xBC, 0x77, 0xF7, 0xFE, 0xFA
-	.byte 0x40, 0x13, 0x28, 0x83, 0x14, 0xF0, 0x3F, 0xFA, 0xB6
-	.byte 0xF0, 0x8E, 0xFD, 0xB8, 0xF0, 0xCC, 0xF8, 0x8, 0x4B
-	.byte 0x0, 0x1, 0x1B, 0x18, 0x18, 0x68, 0x59, 0x68, 0x9A
-	.byte 0x68, 0xDB, 0x68, 0x14, 0xF0, 0x65, 0xFA, 0x9C, 0x20
-	.byte 0xFF, 0x30, 0x76, 0xF7, 0x65, 0xFB, 0x1, 0x20, 0x28
-	.byte 0x70, 0x1, 0x20, 0xF0, 0xBD, 0x0, 0x0
-	.word byte_8089F10
+  .word sub_8089EBC+1
+	.word sub_8089F40+1
+	.word sub_8089F5E+1
+
+	thumb_local_start
+sub_8089EBC:
+	push {r4-r7, lr}
+	bl ReadOWPlayerObjectCoords
+	ldr r3, [r7, #0xc]
+	sub r0, r0, r3
+	ldr r3, [r7, #0x10]
+	sub r1, r1, r3
+	push {r0-r1}
+	bl calcAngle_800117C
+	strb r0, [r5, #1]
+	pop {r0-r1}
+	bl sub_80014D4
+	asr r0, r0, #0xd
+	strh r0, [r5, #0x18]
+	bl sub_809E35E
+	bl reqBBS_setFlag_e17b0f7_8140A00
+	bl sub_8142080
+	ldr r3, =byte_8089F10
+	lsl r0, r0, #4
+	add r3, r3, r0
+	ldr r0, [r3, #0]
+	ldr r1, [r3, #4]
+	ldr r2, [r3, #8]
+	ldr r3, [r3, #0xc]
+	bl sub_809E3C4
+	mov r0, #0x9c
+	add r0, #0xff
+	bl PlaySoundEffect
+	mov r0, #1
+	strb r0, [r5, #0]
+	mov r0, #1
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_8089EBC
+
 byte_8089F10:: 
   .byte 0x0, 0x0, 0xBC, 0xFD, 0x0, 0x0, 0x84, 0xFE, 0x0, 0x0, 0x54, 0x1
 	.byte 0x0, 0x0, 0xF4, 0x1, 0x0, 0x0, 0xC, 0xFE, 0x0, 0x0, 0x34, 0xFE
 	.byte 0x0, 0x0, 0xB8, 0x1, 0x0, 0x0, 0x8, 0x2, 0x0, 0x0, 0xC, 0xFE
 	.byte 0x0, 0x0, 0xBC, 0xFD, 0x0, 0x0, 0x12, 0x2, 0x0, 0x0, 0x80, 0x2
-	.byte 0xF0
-byte_8089F41:: 
-  .byte 0xB5, 0xB8, 0xF0, 0xB5, 0xF8, 0x4, 0x1C, 0x0, 0xF0, 0x12
-	.byte 0xF8, 0x29, 0x8B, 0x1, 0x31, 0x29, 0x83, 0xA0, 0x42, 0x1
-	.byte 0xD1, 0x2, 0x20, 0x28, 0x70, 0x1, 0x20, 0xF0, 0xBD, 0xF0
-byte_8089F5F:: 
-  .byte 0xB5, 0xF8, 0x68, 0x39, 0x69, 0x7A, 0x69, 0x7B, 0x68
-	.byte 0xB7, 0xF0, 0xD4, 0xFC, 0x0, 0x20, 0xF0, 0xBD, 0xF0
-	.byte 0xB5, 0x14, 0xF0, 0x1C, 0xF9, 0x16, 0x1C, 0x6B, 0x78
-	.byte 0x4, 0x21, 0x58, 0x1A, 0x68, 0x70, 0x5B, 0x0, 0x13
-	.byte 0x4C, 0xE2, 0x5E, 0x28, 0x8B, 0xC0, 0x8, 0x50, 0x43
-	.byte 0x11, 0x4C, 0xE2, 0x5E, 0x29, 0x8B, 0xC9, 0x8, 0x51
-	.byte 0x43, 0x0, 0x2, 0x9, 0x2, 0xFA, 0x68, 0x3B, 0x69
-	.byte 0x80, 0x18, 0xC9, 0x18, 0x7A, 0x69, 0x1, 0x23, 0xDB
-	.byte 0x3, 0xF2, 0x18, 0x16, 0x1C, 0x14, 0xF0, 0xFA, 0xF8
-	.byte 0x68, 0x78, 0x40, 0x9, 0xC0, 0x43, 0x2, 0x38, 0x7
-	.byte 0x21, 0x8, 0x40, 0x4, 0x1C, 0x10, 0x30, 0x14, 0xF0
-	.byte 0xBC, 0xF8, 0x20, 0x1C, 0x14, 0xF0, 0x72, 0xF9, 0x30
-	.byte 0x1C, 0xF0, 0xBD, 0x0, 0x0, 0xE0, 0x65, 0x0, 0x8
-	.byte 0x60, 0x66, 0x0, 0x8
+
+	thumb_local_start
+sub_8089F40:
+	push {r4-r7, lr}
+	bl sub_81420B0
+	add r4, r0, #0
+	bl sub_8089F70
+	ldrh r1, [r5, #0x18]
+	add r1, #1
+	strh r1, [r5, #0x18]
+	cmp r0, r4
+	bne loc_8089F5A
+	mov r0, #2
+	strb r0, [r5, #0]
+loc_8089F5A:
+	mov r0, #1
+	pop {r4-r7, pc}
+	thumb_func_end sub_8089F40
+
+	thumb_local_start
+sub_8089F5E:
+	push {r4-r7, lr}
+	ldr r0, [r7, #0xc]
+	ldr r1, [r7, #0x10]
+	ldr r2, [r7, #0x14]
+	ldr r3, [r7, #4]
+	bl sub_8141914
+	mov r0, #0
+	pop {r4-r7, pc}
+	thumb_func_end sub_8089F5E
+
+	thumb_local_start
+sub_8089F70:
+	push {r4-r7, lr}
+	bl ReadOWPlayerObjectCoords
+	add r6, r2, #0
+	ldrb r3, [r5, #1]
+	mov r1, #4
+	sub r0, r3, r1
+	strb r0, [r5, #1]
+	lsl r3, r3, #1
+	ldr r4, =math_sinTable
+	ldrsh r2, [r4, r3]
+	ldrh r0, [r5, #0x18]
+	lsr r0, r0, #3
+	mul r0, r2
+	ldr r4, =math_cosTable
+	ldrsh r2, [r4, r3]
+	ldrh r1, [r5, #0x18]
+	lsr r1, r1, #3
+	mul r1, r2
+	lsl r0, r0, #8
+	lsl r1, r1, #8
+	ldr r2, [r7, #0xc]
+	ldr r3, [r7, #0x10]
+	add r0, r0, r2
+	add r1, r1, r3
+	ldr r2, [r7, #0x14]
+	mov r3, #1
+	lsl r3, r3, #0xf
+	add r2, r6, r3
+	add r6, r2, #0
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4
+	ldrb r0, [r5, #1]
+	lsr r0, r0, #5
+	mvn r0, r0
+	sub r0, #2
+	mov r1, #7
+	and r0, r1
+	add r4, r0, #0
+	add r0, #0x10
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
+	add r0, r4, #0
+	bl SetOWPlayerFacingDirection
+	add r0, r6, #0
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_8089F70
+
 byte_8089FD8::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
@@ -181,7 +284,7 @@ byte_8089FD8::
 	cs_disable_ow_player_wall_collision_809e254
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731
 	cs_call_native_with_return_value ptr1=sub_81418AA+1
-	cs_call_native_with_return_value ptr1=unk_808A029
+	cs_call_native_with_return_value ptr1=dispatch_808A028+1
 	cs_pause byte1=0xFF byte2=0x1E
 	cs_spawn_cutscene_process byte1=0x20 ptr2=cutscenescript_808A00D
 	cs_wait_cutscene_process byte1=0x20
@@ -203,46 +306,144 @@ cutscenescript_808A00D:
 	cs_cutscene_end
 
 end_cutscenescript_808A025:
-	.word 0xF0000000
+	.balign 4, 0
 
-unk_808A029:
-	.word 0x56686FB5, 0xB66BF646, 0x03782869, 0x08008049, 0x0046FE58, 0xF0420047, 0x480000BD
-	.byte 0xA0
-	.byte 0x08
-	.byte 0x08
+	thumb_local_start
+dispatch_808A028:
+	push {r4-r7, lr}
+	ldr r7, [r5, #4]
+	mov r6, r10
+	ldr r6, [r6, #0x3c]
+	ldr r6, [r6, #0x18]
+	ldrb r0, [r5, #0]
+	ldr r1, =off_808A048
+	lsl r0, r0, #2
+	ldr r0, [r1, r0]
+	mov lr, pc
+	bx r0
+	tst r0, r0
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end dispatch_808A028
+
 off_808A048:: 
-  .word byte_808A055
-	.word byte_808A085
-	.word byte_808A0A7
-	.byte 0xF0
-byte_808A055:: 
-  .byte 0xB5, 0x14, 0xF0, 0xAA, 0xF8, 0xFB, 0x68, 0xC0, 0x1A
-	.byte 0x3B, 0x69, 0xC9, 0x1A, 0x3, 0xB4, 0x77, 0xF7, 0x8A
-	.byte 0xF8, 0x68, 0x70, 0x3, 0xBC, 0x77, 0xF7, 0x32, 0xFA
-	.byte 0x40, 0x13, 0x28, 0x83, 0x9D, 0x20, 0xFF, 0x30, 0x76
-	.byte 0xF7, 0xA8, 0xFA, 0x1, 0x20, 0x28, 0x70, 0x1, 0x20
-	.byte 0xF0, 0xBD, 0xF0
-byte_808A085:: 
-  .byte 0xB5, 0x7C, 0x69, 0x0, 0xF0, 0x19, 0xF8, 0x29, 0x8B
-	.byte 0x1, 0x39, 0x0, 0xDB, 0x29, 0x83, 0xA0, 0x42, 0x4
-	.byte 0xD1, 0x28, 0x8B, 0x0, 0x42, 0x1, 0xD1, 0x2, 0x20
-	.byte 0x28, 0x70, 0x1, 0x20, 0xF0, 0xBD, 0xF0
-byte_808A0A7:: 
-  .byte 0xB5, 0x14, 0xF0, 0x37, 0xF9, 0x14, 0xF0, 0x81, 0xF9
-	.byte 0xB6, 0xF0, 0xAC, 0xFC, 0x38, 0x79, 0x14, 0xF0, 0xFA
-	.byte 0xF8, 0x0, 0x20, 0xF0, 0xBD, 0xF0, 0xB5, 0x14, 0xF0
-	.byte 0x75, 0xF8, 0x16, 0x1C, 0x6B, 0x78, 0x18, 0x1F, 0x68
-	.byte 0x70, 0x5B, 0x0, 0x14, 0x4C, 0xE2, 0x5E, 0x28, 0x8B
-	.byte 0xC0, 0x8, 0x50, 0x43, 0x12, 0x4C, 0xE2, 0x5E, 0x29
-	.byte 0x8B, 0xC9, 0x8, 0x51, 0x43, 0x0, 0x2, 0x9, 0x2
-	.byte 0xFA, 0x68, 0x3B, 0x69, 0x80, 0x18, 0xC9, 0x18, 0x0
-	.byte 0x23, 0x7A, 0x69, 0xB2, 0x42, 0x1, 0xDA, 0x1, 0x23
-	.byte 0xDB, 0x3, 0xF2, 0x1A, 0x16, 0x1C, 0x14, 0xF0, 0x51
-	.byte 0xF8, 0x68, 0x78, 0x40, 0x9, 0xC0, 0x43, 0x2, 0x38
-	.byte 0x7, 0x21, 0x8, 0x40, 0x4, 0x1C, 0x14, 0xF0, 0x14
-	.byte 0xF8, 0x20, 0x1C, 0x14, 0xF0, 0xCA, 0xF8, 0x30, 0x1C
-	.byte 0xF0, 0xBD, 0x0, 0x0, 0xE0, 0x65, 0x0, 0x8, 0x60
-	.byte 0x66, 0x0, 0x8
+  .word sub_808A054+1
+	.word sub_808A084+1
+	.word sub_808A0A6+1
+
+	thumb_local_start
+sub_808A054:
+	push {r4-r7, lr}
+	bl ReadOWPlayerObjectCoords
+	ldr r3, [r7, #0xc]
+	sub r0, r0, r3
+	ldr r3, [r7, #0x10]
+	sub r1, r1, r3
+	push {r0-r1}
+	bl calcAngle_800117C
+	strb r0, [r5, #1]
+	pop {r0-r1}
+	bl sub_80014D4
+	asr r0, r0, #0xd
+	strh r0, [r5, #0x18]
+	mov r0, #0x9d
+	add r0, #0xff
+	bl PlaySoundEffect
+	mov r0, #1
+	strb r0, [r5, #0]
+	mov r0, #1
+	pop {r4-r7, pc}
+	thumb_func_end sub_808A054
+
+	thumb_local_start
+sub_808A084:
+	push {r4-r7, lr}
+	ldr r4, [r7, #0x14]
+	bl sub_808A0BE
+	ldrh r1, [r5, #0x18]
+	sub r1, #1
+	blt loc_808A094
+	strh r1, [r5, #0x18]
+loc_808A094:
+	cmp r0, r4
+	bne loc_808A0A2
+	ldrh r0, [r5, #0x18]
+	tst r0, r0
+	bne loc_808A0A2
+	mov r0, #2
+	strb r0, [r5, #0]
+loc_808A0A2:
+	mov r0, #1
+	pop {r4-r7, pc}
+	thumb_func_end sub_808A084
+
+	thumb_local_start
+sub_808A0A6:
+	push {r4-r7, lr}
+	bl sub_809E31A
+	bl sub_809E3B2
+	bl reqBBS_clearFlag_8140A0C
+	ldrb r0, [r7, #4]
+	bl SetOWPlayerFacingDirection
+	mov r0, #0
+	pop {r4-r7, pc}
+	thumb_func_end sub_808A0A6
+
+	thumb_local_start
+sub_808A0BE:
+	push {r4-r7, lr}
+	bl ReadOWPlayerObjectCoords
+	add r6, r2, #0
+	ldrb r3, [r5, #1]
+	sub r0, r3, #4
+	strb r0, [r5, #1]
+	lsl r3, r3, #1
+	ldr r4, off_808A120 // =math_sinTable
+	ldrsh r2, [r4, r3]
+	ldrh r0, [r5, #0x18]
+	lsr r0, r0, #3
+	mul r0, r2
+	ldr r4, off_808A124 // =math_cosTable
+	ldrsh r2, [r4, r3]
+	ldrh r1, [r5, #0x18]
+	lsr r1, r1, #3
+	mul r1, r2
+	lsl r0, r0, #8
+	lsl r1, r1, #8
+	ldr r2, [r7, #0xc]
+	ldr r3, [r7, #0x10]
+	add r0, r0, r2
+	add r1, r1, r3
+	mov r3, #0
+	ldr r2, [r7, #0x14]
+	cmp r2, r6
+	bge loc_808A0FA
+	mov r3, #1
+	lsl r3, r3, #0xf
+loc_808A0FA:
+	sub r2, r6, r3
+	add r6, r2, #0
+	bl owPlayer_indirectlySetPlayerCoordsMaybe_809e1a4
+	ldrb r0, [r5, #1]
+	lsr r0, r0, #5
+	mvn r0, r0
+	sub r0, #2
+	mov r1, #7
+	and r0, r1
+	add r4, r0, #0
+	bl owPlayer_setS200ace0_fixedAnimationSelect_809e13c
+	add r0, r4, #0
+	bl SetOWPlayerFacingDirection
+	add r0, r6, #0
+	pop {r4-r7, pc}
+	.balign 4, 0
+	thumb_func_end sub_808A0BE
+
+off_808A120:
+	.word math_sinTable
+off_808A124:
+	.word math_cosTable
+
 byte_808A128::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
@@ -255,13 +456,13 @@ byte_808A128::
 	cs_jump_if_var_equal byte1=0x04 byte2=0x05 destination3=byte_808A16F
 	cs_jump_if_var_equal byte1=0x04 byte2=0x06 destination3=byte_808A16F
 	cs_pause byte1=0xFF byte2=0x1E
-	cs_call_native_with_return_value ptr1=unk_808A175
+	cs_call_native_with_return_value ptr1=sub_808A174+1
 	cs_play_sound hword1=0x019D
 	cs_set_screen_fade byte1=0x06 byte2=0xFF byte3=0xFF
 	cs_wait_screen_fade
 	cs_pause byte1=0xFF byte2=0x1E
 	cs_warp_cmd_8038040_2 byte1=0x80 byte2=0x00 ptr3=NULL
-	cs_call_native_with_return_value ptr1=unk_808A19D
+	cs_call_native_with_return_value ptr1=sub_808A19C+1
 	cs_jump destination1=byte_808A16F
 
 byte_808A16F::
@@ -269,21 +470,52 @@ byte_808A16F::
 	cs_end_for_map_reload_maybe_8037c64
 
 end_cutscenescript_808A172:
-	.byte 0x00
-	.byte 0x00
-	.byte 0xF0
-unk_808A175:
-	.word 0x0FF0B7B5, 0x016368FC, 0x4171A97C, 0x5271E97C, 0x816BD246, 0xC175917C, 0x0775D17C, 0xA4210220
-	.word 0x00FFBCF7, 0xF0BDF020
+	.balign 4, 0
 
-unk_808A19D:
-	.word 0xB0F0B7B5, 0x6DF0B7FF, 0x080040FF, 0x005A0849, 0xBFF7A41C, 0x772006FF, 0xB9F7A421, 0x782006FF
-	.word 0xB5F7A421, 0x6AF0B7FF, 0xF02000FB, 0xD00000BD
-	.byte 0xA1
-	.byte 0x08
-	.byte 0x08
+	thumb_local_start
+sub_808A174:
+	push {r4-r7, lr}
+	bl sub_8141998
+	str r0, [r5, #0x34]
+	ldrb r1, [r0, #0x10]
+	strb r1, [r5, #6]
+	ldrb r1, [r0, #0x11]
+	strb r1, [r5, #7]
+	mov r2, r10
+	ldr r2, [r2, #0x3c]
+	ldrb r1, [r0, #0x12]
+	strb r1, [r2, #0x16]
+	ldrb r1, [r0, #0x13]
+	strb r1, [r2, #0x17]
+	movflag EVENT_702
+	bl SetEventFlagFromImmediate
+	mov r0, #0
+	pop {r4-r7, pc}
+	thumb_func_end sub_808A174
+
+	thumb_local_start
+sub_808A19C:
+	push {r4-r7, lr}
+	bl sub_8142102
+	bl sub_8142080
+	lsl r0, r0, #1
+	ldr r1, =byte_808A1D0
+	ldrh r0, [r1, r0]
+	mov r0, r0
+	bl ClearEventFlag
+	movflag EVENT_677
+	bl ClearEventFlagFromImmediate
+	movflag EVENT_678
+	bl ClearEventFlagFromImmediate
+	bl sub_814189A
+	mov r0, #0
+	pop {r4-r7, pc}
+	.pool
+	thumb_func_end sub_808A19C
+
 byte_808A1D0::
 	.byte 0x71, 0x6, 0x73, 0x6, 0x75, 0x6, 0x0, 0x0
+
 byte_808A1D8::
 	ccs_write_camera_field_03_14 ptr1=eOverworldNPCObject0_Coords
 	ccs_end
@@ -2425,7 +2657,7 @@ cutscenescript_808B95D:
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x07
 	cs_ow_player_coord_special byte1=0x00 byte2=0xFF byte3=0x01 signedhword4=0x0200 signedhword6=0x0600 signedhword8=0x0000
 	cs_make_ow_player_visible
-	cs_call_native_with_return_value ptr1=byte_808B9A1
+	cs_call_native_with_return_value ptr1=sub_808B9A0+1
 	cs_pause byte1=0xFF byte2=0x0F
 	cs_warp_cmd_8038040_2 byte1=0x81 byte2=0x00 ptr3=NULL
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_829
@@ -2438,13 +2670,17 @@ cutscenescript_808B997:
 	cs_set_chatbox_flags byte2=0x40
 	cs_jump destination1=cutscenescript_808B95D
 	cs_end_for_map_reload_maybe_8037c64
-	cs_end_for_map_reload_maybe_8037c64
 
-byte_808B9A1::
-	.word 0xA9200DB5, 0x68FE1BF7, 0x00200063
-	.byte 0xBD
-	.byte 0x00
-	.byte 0x00
+	thumb_local_start
+sub_808B9A0:
+	push {lr}
+	mov r0, #0xd
+	bl sub_80355DE
+	str r0, [r5, #0x34]
+	mov r0, #0
+	pop {pc}
+	.balign 4, 0
+	thumb_func_end sub_808B9A0
 
 cutscenescript_808B9B0:
 	cs_lock_player_for_non_npc_dialogue_809e0b0

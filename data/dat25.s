@@ -2444,7 +2444,7 @@ cutscenescript_8091F48:
 	cs_spawn_ow_npc_objects_from_list ptr2=npcscript_list_8079A68
 	cs_make_ow_player_invisible
 	cs_disable_ow_player_wall_collision_809e254
-	cs_call_native_with_return_value ptr1=byte_80922D5
+	cs_call_native_with_return_value ptr1=sub_80922D4+1
 	cs_spawn_cutscene_process byte1=0x20 ptr2=cutscenescript_80922B4
 	cs_pause byte1=0xFF byte2=0x1E
 	cs_set_screen_fade byte1=0xFF byte2=0x08 byte3=0x08
@@ -2748,12 +2748,16 @@ cutscenescript_80922C3:
 
 end_cutscenescript_80922D3:
 	.byte 0x00
-	.byte 0xF0
-byte_80922D5::
-	.word 0xEEF76EB5, 0x007128FE
-	.byte 0x20
-	.byte 0xF0
-	.byte 0xBD
+
+	thumb_local_start
+sub_80922D4:
+	push {r4-r7, lr}
+	bl GetCurPETNavi
+	strb r0, [r5, #4]
+	mov r0, #0
+	pop {r4-r7, pc}
+	thumb_func_end sub_80922D4
+
 
 ccs_80922E0:
 	ccs_set_camera_pos hword1=0x0040 hword3=0xE340 hword5=0x0400
