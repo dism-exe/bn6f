@@ -37,46 +37,42 @@ byte_806C144:
 	.byte 0x0, 0x0, 0x10, 0x4, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x88, 0x0, 0x8, 0x3, 0x0, 0x0, 0x46, 0x0, 0x0, 0x0, 0xBA, 0xFF, 0x0, 0x0, 0x0, 0x0
 off_806C194:
-	.word unk_3001AC0
-	.byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0xFF, 0xFF
-	.word byte_85D270C
-	.word 0x8
-	.word byte_85D272C
-	.word 0x8
-	.word byte_85D274C
-	.word 0x8
-	.word byte_85D276C
-	.word 0x8
-	.word 0x1
+	gfx_anim_pal_copy dest=unk_3001AC0 size=0x00000020 index=0x00
+	gfx_anim_data_ptr ptr=byte_85D270C delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_85D272C delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_85D274C delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_85D276C delay=0x00000008
+	gfx_anim_loop
+
 off_806C1C4:
-	.word unk_3001AC0
-	.word 0x20
-	.word 0xFFFF0000
-	.word byte_85D278C
-	.word 0x8
-	.word 0x0
+	gfx_anim_pal_copy dest=unk_3001AC0 size=0x00000020 index=0x00
+	gfx_anim_data_ptr ptr=byte_85D278C delay=0x00000008
+	gfx_anim_end
+
 off_806C1DC:
-	.word unk_3001AE0
-	.byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x1, 0xFF, 0xFF
-	.word byte_85D27B0
-	.word 0x8
-	.word byte_85D27D0
-	.word 0x8
-	.word byte_85D27F0
-	.word 0x8
-	.word byte_85D2810
-	.word 0x8
-	.word 0x1
+	gfx_anim_pal_copy dest=unk_3001AE0 size=0x00000020 index=0x01
+	gfx_anim_data_ptr ptr=byte_85D27B0 delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_85D27D0 delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_85D27F0 delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_85D2810 delay=0x00000008
+	gfx_anim_loop
+
 off_806C20C:
-	.word palette_3001960
-	.word 0x20
-	.word 0xFFFF0200
-	.word byte_8615B04
-	.word 0xC
-	.word byte_8615B24
-	.word 0xC
-	.word byte_8615B44
-	.word 0xC
-	.word byte_8615B64
-	.word 0xC
-	.word 0x1
+	gfx_anim_pal_copy dest=palette_3001960 size=0x00000020 index=0x02
+	gfx_anim_data_ptr ptr=byte_8615B04 delay=0x0000000C
+	gfx_anim_data_ptr ptr=byte_8615B24 delay=0x0000000C
+	gfx_anim_data_ptr ptr=byte_8615B44 delay=0x0000000C
+	gfx_anim_data_ptr ptr=byte_8615B64 delay=0x0000000C
+	gfx_anim_loop
+
+
+
+
+
+
+
+
+
+
+
+

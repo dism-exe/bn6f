@@ -36,6 +36,7 @@ RobotControlComp_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
+	thumb_func_end RobotControlComp_EnterMapGroup
 off_8066428:
 	.word off_8066020
 off_806642C:
@@ -51,7 +52,6 @@ byte_806643C:
 byte_8066446:
 	.byte 0x1C, 0xB, 0x1C, 0xC, 0x1C, 0x1A, 0x1C, 0xE, 0xFF
 	.byte 0xFF
-	thumb_func_end RobotControlComp_EnterMapGroup
 
 	thumb_func_start RobotControlComp_LoadGFXAnims
 RobotControlComp_LoadGFXAnims:
@@ -62,6 +62,7 @@ RobotControlComp_LoadGFXAnims:
 	bl LoadGFXAnims // (gfx_anim_data_arr: * FFStop32<[GFXAnimScript]>) -> ()
 	pop {pc}
 	.balign 4, 0
+	thumb_func_end RobotControlComp_LoadGFXAnims
 off_8066460:
 	.word off_8066464
 off_8066464:
@@ -81,7 +82,6 @@ off_8066484:
 	.word byte_8066328
 	.word byte_8066368
 	.word 0xFFFFFFFF
-	thumb_func_end RobotControlComp_LoadGFXAnims
 
 	thumb_func_start RobotControlComp_LoadBGAnim
 RobotControlComp_LoadBGAnim:
@@ -107,6 +107,7 @@ RobotControlComp_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
+	thumb_func_end RobotControlComp_LoadBGAnim
 off_80664D0:
 	.word off_80664D4
 off_80664D4:
@@ -137,7 +138,6 @@ off_8066500:
 		palette_dest: palette_3001960,
 		palette_size: 0x20
 	]
-	thumb_func_end RobotControlComp_LoadBGAnim
 
 	thumb_func_start RobotControlComp_UnkFunction_806651c
 RobotControlComp_UnkFunction_806651c: // JP 0x8067f94
@@ -181,9 +181,9 @@ RobotControlComp_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
+	thumb_func_end RobotControlComp_SpawnMapObjectsForMap
 off_8066554:
 	.word off_8066558
 off_8066558:
 	.word byte_8066560
 	.word byte_8066578
-	thumb_func_end RobotControlComp_SpawnMapObjectsForMap

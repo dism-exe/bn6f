@@ -10045,31 +10045,21 @@ sub_804C478:
 dword_804C4AC:
 	.word 0x4800
 dword_804C4B0:
-	.word 0x0
-	.word iPalette3001B60
-	.word 0xFF09080C
-	.word 0x80001084
-	.word 0x4
-	.word 0x800014A5
-	.word 0x4
-	.word 0x800018C6
-	.word 0x4
-	.word 0x800014A5
-	.word 0x4
-	.word 0x1
+	gfx_anim_manual_pal_transform transform_type=0x00000000 ptr5=iPalette3001B60 index=0x08 num_pals=0x09
+	gfx_anim_data data=0x80001084 delay=0x00000004
+	gfx_anim_data data=0x800014A5 delay=0x00000004
+	gfx_anim_data data=0x800018C6 delay=0x00000004
+	gfx_anim_data data=0x800014A5 delay=0x00000004
+	gfx_anim_loop
+
 dword_804C4E0:
-	.word 0x0
-	.word iPallete3001750
-	.word 0xFF09090C
-	.word 0x80001084
-	.word 0x4
-	.word 0x800014A5
-	.word 0x4
-	.word 0x800018C6
-	.word 0x4
-	.word 0x800014A5
-	.word 0x4
-	.word 0x1
+	gfx_anim_manual_pal_transform transform_type=0x00000000 ptr5=iPallete3001750 index=0x09 num_pals=0x09
+	gfx_anim_data data=0x80001084 delay=0x00000004
+	gfx_anim_data data=0x800014A5 delay=0x00000004
+	gfx_anim_data data=0x800018C6 delay=0x00000004
+	gfx_anim_data data=0x800014A5 delay=0x00000004
+	gfx_anim_loop
+
 	thumb_func_end sub_804C478
 
 	thumb_local_start
@@ -10297,7 +10287,7 @@ off_804C6AC:
 	.word dword_804C6B4
 dword_804C6B4:
 	.word 0x40C020E
-	.word byte_808060A
+	.word 0x808060A
 	.word 0xC040A06
 	.word 0x10000E02
 	thumb_func_end sub_804C694
@@ -10482,7 +10472,7 @@ off_804C804:
 	.word dword_804C808
 dword_804C808:
 	.word 0x40C020E
-	.word byte_808060A
+	.word 0x808060A
 	.word 0xC040A06
 	.word 0x10000E02
 	thumb_func_end sub_804C7EC

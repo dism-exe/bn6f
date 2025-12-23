@@ -35,6 +35,7 @@ GraveyardImmortalArea_EnterMapGroup:
 	bl GraveyardImmortalArea_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	thumb_func_end GraveyardImmortalArea_EnterMapGroup
 	.balign 4, 0
 off_807ED28:
 	.word off_807EA6C
@@ -55,7 +56,6 @@ byte_807ED4E:
 byte_807ED60:
 	.byte 0x1C, 0x9C, 0x1C, 0x9A, 0x18, 0x34, 0x18, 0x36, 0x1C
 	.byte 0x99, 0xFF, 0xFF
-	thumb_func_end GraveyardImmortalArea_EnterMapGroup
 
 	thumb_func_start GraveyardImmortalArea_LoadGFXAnims
 GraveyardImmortalArea_LoadGFXAnims:
@@ -66,6 +66,7 @@ GraveyardImmortalArea_LoadGFXAnims:
 	bl LoadGFXAnims // (gfx_anim_data_arr: * FFStop32<[GFXAnimScript]>) -> ()
 	pop {pc}
 	.balign 4, 0
+	thumb_func_end GraveyardImmortalArea_LoadGFXAnims
 off_807ED7C:
 	.word off_807ED80
 off_807ED80:
@@ -93,7 +94,6 @@ off_807EDBC:
 	.word off_807EC58
 	.word off_807ECA8
 	.word 0xFFFFFFFF
-	thumb_func_end GraveyardImmortalArea_LoadGFXAnims
 
 	thumb_func_start GraveyardImmortalArea_LoadBGAnim
 GraveyardImmortalArea_LoadBGAnim:

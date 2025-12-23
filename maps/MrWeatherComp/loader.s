@@ -35,6 +35,7 @@ MrWeatherComp_EnterMapGroup:
 	bl MrWeatherComp_SpawnMapObjectsForMap
 	bl sub_8034FB8
 	pop {r4-r7,pc}
+	thumb_func_end MrWeatherComp_EnterMapGroup
 	.balign 4, 0
 off_806A040:
 	.word off_80698DC
@@ -52,7 +53,6 @@ byte_806A060:
 	.byte 0x1C, 0x6B, 0x1C, 0x6C, 0x1C, 0x20, 0xFF, 0xFF
 byte_806A068:
 	.byte 0x1C, 0x6B, 0x1C, 0x6C, 0x1C, 0x20, 0xFF, 0xFF
-	thumb_func_end MrWeatherComp_EnterMapGroup
 
 	thumb_func_start MrWeatherComp_LoadGFXAnims
 MrWeatherComp_LoadGFXAnims:
@@ -63,6 +63,7 @@ MrWeatherComp_LoadGFXAnims:
 	bl LoadGFXAnims // (gfx_anim_data_arr: * FFStop32<[GFXAnimScript]>) -> ()
 	pop {pc}
 	.balign 4, 0
+	thumb_func_end MrWeatherComp_LoadGFXAnims
 off_806A080:
 	.word off_806A084
 off_806A084:
@@ -108,8 +109,6 @@ off_806A0F0:
 	.word off_8069F80
 	.word off_8069FA0
 	.word 0xFFFFFFFF
-	thumb_func_end MrWeatherComp_LoadGFXAnims
-
 	thumb_func_start MrWeatherComp_LoadBGAnim
 MrWeatherComp_LoadBGAnim:
 	push {r4-r7,lr}
@@ -134,6 +133,8 @@ MrWeatherComp_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
+	thumb_func_end MrWeatherComp_LoadBGAnim
+
 off_806A154:
 	.word off_806A158
 off_806A158:
@@ -163,7 +164,6 @@ off_806A198:
 	.word 0x0
 	.word 0x0
 	.word 0x0
-	thumb_func_end MrWeatherComp_LoadBGAnim
 
 	thumb_func_start MrWeatherComp_UnkFunction_806a1b4
 MrWeatherComp_UnkFunction_806a1b4:
@@ -177,13 +177,13 @@ MrWeatherComp_UnkFunction_806a1b4:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
+	thumb_func_end MrWeatherComp_UnkFunction_806a1b4
 off_806A1C8:
 	.word off_806A1CC
 off_806A1CC:
 	.word nullsub_67+1
 	.word nullsub_68+1
 	.word nullsub_69+1
-	thumb_func_end MrWeatherComp_UnkFunction_806a1b4
 
 	thumb_local_start
 nullsub_67:
@@ -212,10 +212,10 @@ MrWeatherComp_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
+	thumb_func_end MrWeatherComp_SpawnMapObjectsForMap
 off_806A1F4:
 	.word off_806A1F8
 off_806A1F8:
 	.word byte_806A204
 	.word byte_806A21C
 	.word byte_806A234
-	thumb_func_end MrWeatherComp_SpawnMapObjectsForMap

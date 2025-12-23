@@ -619,6 +619,7 @@ loc_3005F9C:
 	bge loc_3005F9C
 locret_3005FAA:
 	pop {r5,pc}
+	thumb_func_end sub_3005F78
 off_3005FAC:
 	.word dword_3005FB0
 dword_3005FB0:
@@ -640,7 +641,6 @@ byte_3005FFB:
 	.byte 0x43, 0x54, 0x43, 0x5D, 0x43, 0x0, 0xC, 0x24, 0xC, 0x2D
 	.byte 0xC, 0x64, 0x1, 0xAD, 0x2, 0x20, 0x43, 0x28, 0x43, 0x45
 	.byte 0x46, 0x28, 0x1A, 0xF7, 0x46
-	thumb_func_end sub_3005F78
 
 	thumb_func_start sub_3006028
 sub_3006028:
@@ -4174,6 +4174,7 @@ _object_updatePanelParameters:
 	lsl r2, r2, #5
 	orr r1, r2
 	ldr r2, [r0,#oPanelData_ReserverObjectPtr]
+call_3007904:
 	tst r2, r2
 	beq loc_300790A
 	mov r2, #0x80
@@ -4272,7 +4273,7 @@ _object_setPanelType:
 	blt loc_30079C6
 	cmp r6, #0xc
 	bgt loc_30079C6
-	ldr r1, byte_30079D0 // =0x8
+	ldr r1, =0x708
 	strh r1, [r0,#oPanelData_Unk_12]
 	b loc_30079C6
 loc_30079C6:
@@ -4281,16 +4282,33 @@ loc_30079C6:
 	bl _object_updatePanelParameters
 locret_30079CE:
 	pop {r4-r6,pc}
-	.balign 4, 0
-byte_30079D0:
-	.word 0x708
-	.byte 0x83, 0x78, 0x1B, 0x42, 0xB, 0xD0, 0x86
-	.byte 0x70, 0x9, 0x2E, 0x4, 0xDB, 0xC, 0x2E, 0x2, 0xDC, 0x3, 0x49
-	.byte 0x41, 0x82, 0xFF, 0xE7, 0x20, 0x1C, 0x29, 0x1C, 0xFF, 0xF7, 0x89
-	.byte 0xFF, 0x70, 0xBD
-	// <endpool> <endfile>
-	.word 0x708
+	.pool
 	thumb_func_end _object_setPanelType
+
+	thumb_local_start
+dead_30079D4:
+	ldrb r3, [r0, #2]
+	tst r3, r3
+	beq loc_30079F2
+	strb r6, [r0, #2]
+	cmp r6, #9
+	blt loc_30079EA
+	cmp r6, #0xc
+	bgt loc_30079EA
+	ldr r1, =0x708
+	strh r1, [r0, #0x12]
+	b loc_30079EA
+loc_30079EA:
+	add r0, r4, #0
+	add r1, r5, #0
+	bl call_3007904
+loc_30079F2:
+	pop {r4-r6, pc}
+	.pool
+	thumb_func_end dead_30079D4
+
+end_func_30079F8::
+	// <endpool> <endfile>
 
 	.byte  0
 	.byte  0
@@ -4556,4 +4574,5 @@ byte_30079D0:
 	.byte 0x82
 	.byte 0x88
 	.byte 0x88
+end_file_3007B00::
 /*For debugging purposes, connect comment at any range!*/

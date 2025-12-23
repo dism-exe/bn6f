@@ -36,6 +36,7 @@ JudgeTreeComp_EnterMapGroup:
 	bl sub_8034FB8
 	pop {r4-r7,pc}
 	.balign 4, 0
+	thumb_func_end JudgeTreeComp_EnterMapGroup
 off_8069090:
 	.word off_8068CCC
 off_8069094:
@@ -53,7 +54,6 @@ byte_80690B0:
 byte_80690B8:
 	.byte 0x1C, 0x56, 0x1C, 0x63, 0x1C, 0x52, 0x18, 0x55, 0xFF
 	.byte 0xFF
-	thumb_func_end JudgeTreeComp_EnterMapGroup
 
 	thumb_func_start JudgeTreeComp_LoadGFXAnims
 JudgeTreeComp_LoadGFXAnims:
@@ -64,6 +64,7 @@ JudgeTreeComp_LoadGFXAnims:
 	bl LoadGFXAnims // (gfx_anim_data_arr: * FFStop32<[GFXAnimScript]>) -> ()
 	pop {pc}
 	.balign 4, 0
+	thumb_func_end JudgeTreeComp_LoadGFXAnims
 off_80690D0:
 	.word off_80690D4
 off_80690D4:
@@ -97,7 +98,6 @@ off_8069120:
 	.word off_8068F30
 	.word byte_8068FA0
 	.word 0xFFFFFFFF
-	thumb_func_end JudgeTreeComp_LoadGFXAnims
 
 	thumb_func_start JudgeTreeComp_LoadBGAnim
 JudgeTreeComp_LoadBGAnim:
@@ -123,6 +123,7 @@ JudgeTreeComp_LoadBGAnim:
 	bl LoadBGAnimData // (bg_anim_data: BGAnimData) -> ()
 	pop {r4-r7,pc}
 	.balign 4, 0
+	thumb_func_end JudgeTreeComp_LoadBGAnim
 off_8069174:
 	.word off_8069178
 off_8069178:
@@ -152,7 +153,6 @@ off_80691B8:
 	.word dword_8612E84
 	.word palette_3001960
 	.word 0x20
-	thumb_func_end JudgeTreeComp_LoadBGAnim
 
 	thumb_func_start JudgeTreeComp_UnkFunction_80691d4
 JudgeTreeComp_UnkFunction_80691d4:
@@ -166,13 +166,13 @@ JudgeTreeComp_UnkFunction_80691d4:
 	mov lr, pc
 	bx r7
 	pop {r4-r7,pc}
+	thumb_func_end JudgeTreeComp_UnkFunction_80691d4
 off_80691E8:
 	.word off_80691EC
 off_80691EC:
 	.word nullsub_31+1
 	.word nullsub_32+1
 	.word nullsub_33+1
-	thumb_func_end JudgeTreeComp_UnkFunction_80691d4
 
 	thumb_local_start
 nullsub_31:
@@ -201,10 +201,10 @@ JudgeTreeComp_SpawnMapObjectsForMap:
 	bl SpawnObjectsFromList // (data: *const MapObjectSpawnData) -> i32
 	pop {pc}
 	.balign 4, 0
+	thumb_func_end JudgeTreeComp_SpawnMapObjectsForMap
 off_8069214:
 	.word off_8069218
 off_8069218:
 	.word byte_8069224
 	.word byte_8069264
 	.word byte_80692A4
-	thumb_func_end JudgeTreeComp_SpawnMapObjectsForMap

@@ -590,7 +590,7 @@ comp_857D43C::
 	.incbin "data/compressed/comp_857D43C.lz77"
 comp_857D63C::
 	.incbin "data/compressed/comp_857D63C.lz77"
-dat38_60::
+dat38_60:
 	.include "data/dat38_60.s"
 compFile_86C23A0::
 	.incbin "data/compressed/compFile_86C23A0.lz77"

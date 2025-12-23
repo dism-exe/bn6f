@@ -32,27 +32,23 @@ byte_807C90C::
 	.byte 0xFE, 0x0, 0x0, 0x62, 0x1, 0x0, 0x0, 0x0, 0x0, 0x96, 0x0, 0x8, 0x7
 	.byte 0x0, 0x0, 0xC8, 0xFF, 0x0, 0x0, 0x58, 0x1, 0x0, 0x0, 0x0, 0x0
 off_807C94C::
-	.word dword_86190F4
-	.byte 0x20, 0x80, 0x0, 0x6, 0x4, 0x0, 0x2, 0xA
-	.word dword_807C96C
-	.word 0x5
-	.word dword_807C970
-	.byte 0x5, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_4bit_tile_copy gfx_src=dword_86190F4 gfx_dest=unk_6008020 index=0x00 num_tiles=0x02 buffer_index=0x0A
+	gfx_anim_data_ptr ptr=dword_807C96C delay=0x00000005
+	gfx_anim_data_ptr ptr=dword_807C970 delay=0x00000005
+	gfx_anim_loop
+
 dword_807C96C::
 	.word 0x10000
 dword_807C970::
 	.word 0x30002
 off_807C974::
-	.word byte_8605FD8
-	.byte 0xC0, 0x5A, 0x0, 0x6, 0x4, 0x1, 0xC, 0xB
-	.word byte_807C9A4
-	.word 0x8
-	.word byte_807C9BC
-	.word 0x8
-	.word byte_807C9D4
-	.word 0x8
-	.word byte_807C9EC
-	.byte 0x8, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_4bit_tile_copy gfx_src=byte_8605FD8 gfx_dest=unk_6005AC0 index=0x01 num_tiles=0x0C buffer_index=0x0B
+	gfx_anim_data_ptr ptr=byte_807C9A4 delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_807C9BC delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_807C9D4 delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_807C9EC delay=0x00000008
+	gfx_anim_loop
+
 byte_807C9A4::
 	.byte 0x0, 0x0, 0x1, 0x0, 0x2, 0x0, 0x0, 0x0, 0x3, 0x0, 0x4, 0x0, 0x5, 0x0, 0x6, 0x0, 0x7
 	.byte 0x0, 0x8, 0x0, 0x9, 0x0, 0xA, 0x0
@@ -66,224 +62,164 @@ byte_807C9EC::
 	.byte 0x0, 0x0, 0x1C, 0x0, 0x1D, 0x0, 0x0, 0x0, 0x1E, 0x0, 0x1F, 0x0, 0x20
 	.byte 0x0, 0x10, 0x0, 0x11, 0x0, 0x21, 0x0, 0x22, 0x0, 0x14, 0x0
 byte_807CA04::
-	.byte 0x80, 0x19, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x2, 0xFF, 0xFF
-	.word byte_8605ACC
-	.word 0x28
-	.word byte_8605AEC
-	.word 0x12
-	.word byte_8605B0C
-	.word 0x12
-	.word byte_8605B2C
-	.word 0x12
-	.word byte_8605B4C
-	.word 0x28
-	.word byte_8605B2C
-	.word 0x12
-	.word byte_8605B0C
-	.word 0x12
-	.word byte_8605AEC
-	.byte 0x12, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=palette_3001980 size=0x00000020 index=0x02
+	gfx_anim_data_ptr ptr=byte_8605ACC delay=0x00000028
+	gfx_anim_data_ptr ptr=byte_8605AEC delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605B0C delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605B2C delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605B4C delay=0x00000028
+	gfx_anim_data_ptr ptr=byte_8605B2C delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605B0C delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605AEC delay=0x00000012
+	gfx_anim_loop
+
 byte_807CA54::
-	.byte 0xA0, 0x19, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x3, 0xFF, 0xFF
-	.word byte_8605CD0
-	.word 0x28
-	.word byte_8605CF0
-	.word 0x12
-	.word byte_8605D10
-	.word 0x12
-	.word byte_8605D30
-	.word 0x12
-	.word byte_8605D50
-	.word 0x28
-	.word byte_8605D30
-	.word 0x12
-	.word byte_8605D10
-	.word 0x12
-	.word byte_8605CF0
-	.byte 0x12, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=unk_30019A0 size=0x00000020 index=0x03
+	gfx_anim_data_ptr ptr=byte_8605CD0 delay=0x00000028
+	gfx_anim_data_ptr ptr=byte_8605CF0 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605D10 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605D30 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605D50 delay=0x00000028
+	gfx_anim_data_ptr ptr=byte_8605D30 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605D10 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605CF0 delay=0x00000012
+	gfx_anim_loop
+
 byte_807CAA4::
-	.byte 0x20, 0x1A, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x4, 0xFF, 0xFF
-	.word byte_8605ED4
-	.word 0x8
-	.word byte_8605EF4
-	.word 0x8
-	.word byte_8605F14
-	.byte 0x8, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=unk_3001A20 size=0x00000020 index=0x04
+	gfx_anim_data_ptr ptr=byte_8605ED4 delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_8605EF4 delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_8605F14 delay=0x00000008
+	gfx_anim_loop
+
 byte_807CACC::
-	.byte 0xC0, 0x1A, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x5, 0xFF, 0xFF
-	.word byte_8605F38
-	.word 0x10
-	.word byte_8605F58
-	.word 0x10
-	.word byte_8605F78
-	.word 0x10
-	.word dword_8605F98
-	.word 0x10
-	.word dword_8605FB8
-	.word 0x10
-	.word dword_8605F98
-	.word 0x10
-	.word byte_8605F78
-	.word 0x10
-	.word byte_8605F58
-	.byte 0x10, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=unk_3001AC0 size=0x00000020 index=0x05
+	gfx_anim_data_ptr ptr=byte_8605F38 delay=0x00000010
+	gfx_anim_data_ptr ptr=byte_8605F58 delay=0x00000010
+	gfx_anim_data_ptr ptr=byte_8605F78 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_8605F98 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_8605FB8 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_8605F98 delay=0x00000010
+	gfx_anim_data_ptr ptr=byte_8605F78 delay=0x00000010
+	gfx_anim_data_ptr ptr=byte_8605F58 delay=0x00000010
+	gfx_anim_loop
+
 byte_807CB1C::
-	.byte 0x80, 0x19, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x2, 0xFF, 0xFF
-	.word byte_8605ACC
-	.word 0x28
-	.word byte_8605AEC
-	.word 0x12
-	.word byte_8605B0C
-	.word 0x12
-	.word byte_8605B2C
-	.word 0x12
-	.word byte_8605B4C
-	.word 0x28
-	.word byte_8605B2C
-	.word 0x12
-	.word byte_8605B0C
-	.word 0x12
-	.word byte_8605AEC
-	.byte 0x12, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=palette_3001980 size=0x00000020 index=0x02
+	gfx_anim_data_ptr ptr=byte_8605ACC delay=0x00000028
+	gfx_anim_data_ptr ptr=byte_8605AEC delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605B0C delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605B2C delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605B4C delay=0x00000028
+	gfx_anim_data_ptr ptr=byte_8605B2C delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605B0C delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605AEC delay=0x00000012
+	gfx_anim_loop
+
 byte_807CB6C::
-	.byte 0xA0, 0x19, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x3, 0xFF, 0xFF
-	.word byte_8605CD0
-	.word 0x28
-	.word byte_8605CF0
-	.word 0x12
-	.word byte_8605D10
-	.word 0x12
-	.word byte_8605D30
-	.word 0x12
-	.word byte_8605D50
-	.word 0x28
-	.word byte_8605D30
-	.word 0x12
-	.word byte_8605D10
-	.word 0x12
-	.word byte_8605CF0
-	.byte 0x12, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=unk_30019A0 size=0x00000020 index=0x03
+	gfx_anim_data_ptr ptr=byte_8605CD0 delay=0x00000028
+	gfx_anim_data_ptr ptr=byte_8605CF0 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605D10 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605D30 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605D50 delay=0x00000028
+	gfx_anim_data_ptr ptr=byte_8605D30 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605D10 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605CF0 delay=0x00000012
+	gfx_anim_loop
+
 byte_807CBBC::
-	.byte 0xC0, 0x19, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x4, 0xFF, 0xFF
-	.word byte_860D228
-	.word 0x28
-	.word byte_860D248
-	.word 0x12
-	.word byte_860D268
-	.word 0x12
-	.word byte_860D288
-	.word 0x12
-	.word byte_860D2A8
-	.word 0x28
-	.word byte_860D288
-	.word 0x12
-	.word byte_860D268
-	.word 0x12
-	.word byte_860D248
-	.byte 0x12, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=unk_30019C0 size=0x00000020 index=0x04
+	gfx_anim_data_ptr ptr=byte_860D228 delay=0x00000028
+	gfx_anim_data_ptr ptr=byte_860D248 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_860D268 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_860D288 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_860D2A8 delay=0x00000028
+	gfx_anim_data_ptr ptr=byte_860D288 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_860D268 delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_860D248 delay=0x00000012
+	gfx_anim_loop
+
 byte_807CC0C::
-	.byte 0x20, 0x1A, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x5, 0xFF, 0xFF
-	.word byte_8605ED4
-	.word 0x8
-	.word byte_8605EF4
-	.word 0x8
-	.word byte_8605F14
-	.byte 0x8, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=unk_3001A20 size=0x00000020 index=0x05
+	gfx_anim_data_ptr ptr=byte_8605ED4 delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_8605EF4 delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_8605F14 delay=0x00000008
+	gfx_anim_loop
+
 byte_807CC34::
-	.byte 0x40, 0x1A, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x6, 0xFF, 0xFF
-	.word byte_860D42C
-	.word 0x8
-	.word byte_860D44C
-	.word 0x8
-	.word byte_860D46C
-	.byte 0x8, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=unk_3001A40 size=0x00000020 index=0x06
+	gfx_anim_data_ptr ptr=byte_860D42C delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_860D44C delay=0x00000008
+	gfx_anim_data_ptr ptr=byte_860D46C delay=0x00000008
+	gfx_anim_loop
+
 byte_807CC5C::
-	.byte 0x60, 0x1A, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x7, 0xFF, 0xFF
-	.word byte_860D490
-	.word 0x10
-	.word dword_860D4B0
-	.word 0x10
-	.word dword_860D4D0
-	.word 0x10
-	.word dword_860D4F0
-	.word 0x10
-	.word dword_860D510
-	.word 0x10
-	.word dword_860D4F0
-	.word 0x10
-	.word dword_860D4D0
-	.word 0x10
-	.word dword_860D4B0
-	.byte 0x10, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=unk_3001A60 size=0x00000020 index=0x07
+	gfx_anim_data_ptr ptr=byte_860D490 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D4B0 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D4D0 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D4F0 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D510 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D4F0 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D4D0 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D4B0 delay=0x00000010
+	gfx_anim_loop
+
 byte_807CCAC::
-	.byte 0x80, 0x1A, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x8, 0xFF, 0xFF
-	.word byte_860D534
-	.word 0x10
-	.word dword_860D554
-	.word 0x10
-	.word dword_860D574
-	.word 0x10
-	.word dword_860D594
-	.word 0x10
-	.word dword_860D5B4
-	.word 0x10
-	.word dword_860D594
-	.word 0x10
-	.word dword_860D574
-	.word 0x10
-	.word dword_860D554
-	.byte 0x10, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=unk_3001A80 size=0x00000020 index=0x08
+	gfx_anim_data_ptr ptr=byte_860D534 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D554 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D574 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D594 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D5B4 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D594 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D574 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D554 delay=0x00000010
+	gfx_anim_loop
+
 byte_807CCFC::
-	.byte 0xC0, 0x1A, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x9, 0xFF, 0xFF
-	.word byte_860D5D8
-	.word 0x10
-	.word dword_860D5F8
-	.word 0x10
-	.word dword_860D618
-	.word 0x10
-	.word dword_860D638
-	.word 0x10
-	.word dword_860D658
-	.word 0x10
-	.word dword_860D638
-	.word 0x10
-	.word dword_860D618
-	.word 0x10
-	.word dword_860D5F8
-	.byte 0x10, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=unk_3001AC0 size=0x00000020 index=0x09
+	gfx_anim_data_ptr ptr=byte_860D5D8 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D5F8 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D618 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D638 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D658 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D638 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D618 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D5F8 delay=0x00000010
+	gfx_anim_loop
+
 byte_807CD4C::
-	.byte 0x80, 0x19, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x2, 0xFF, 0xFF
-	.word byte_8605ACC
-	.word 0x28
-	.word byte_8605AEC
-	.word 0x12
-	.word byte_8605B0C
-	.word 0x12
-	.word byte_8605B2C
-	.word 0x12
-	.word byte_8605B4C
-	.word 0x28
-	.word byte_8605B2C
-	.word 0x12
-	.word byte_8605B0C
-	.word 0x12
-	.word byte_8605AEC
-	.byte 0x12, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=palette_3001980 size=0x00000020 index=0x02
+	gfx_anim_data_ptr ptr=byte_8605ACC delay=0x00000028
+	gfx_anim_data_ptr ptr=byte_8605AEC delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605B0C delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605B2C delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605B4C delay=0x00000028
+	gfx_anim_data_ptr ptr=byte_8605B2C delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605B0C delay=0x00000012
+	gfx_anim_data_ptr ptr=byte_8605AEC delay=0x00000012
+	gfx_anim_loop
+
 byte_807CD9C::
-	.byte 0x80, 0x1A, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0x0, 0x3, 0xFF, 0xFF
-	.word byte_860D534
-	.word 0x10
-	.word dword_860D554
-	.word 0x10
-	.word dword_860D574
-	.word 0x10
-	.word dword_860D594
-	.word 0x10
-	.word dword_860D5B4
-	.word 0x10
-	.word dword_860D594
-	.word 0x10
-	.word dword_860D574
-	.word 0x10
-	.word dword_860D554
-	.byte 0x10, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+	gfx_anim_pal_copy dest=unk_3001A80 size=0x00000020 index=0x03
+	gfx_anim_data_ptr ptr=byte_860D534 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D554 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D574 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D594 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D5B4 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D594 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D574 delay=0x00000010
+	gfx_anim_data_ptr ptr=dword_860D554 delay=0x00000010
+	gfx_anim_loop
+
+
+
+
+
+
+
+
+
+

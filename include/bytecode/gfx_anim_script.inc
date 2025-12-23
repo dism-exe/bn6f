@@ -31,9 +31,9 @@
 	.endm
 
 	enum GFX_ANIM_PLAY_SOUND // 0x10
-	// haven't actually seen an instance of this command, guessing values
+  // encountered in byte_8039350
 	.macro gfx_anim_play_sound index:req
-	gfx_anim_data_common_struct 0xffffffff, 0xffffffff, GFX_ANIM_PLAY_SOUND, \index
+	gfx_anim_data_common_struct 0x000000ff, 0x000000ff, GFX_ANIM_PLAY_SOUND, \index
 	.endm
 
 	enum GFX_ANIM_MODIFY_EVENT_FLAGS // 0x14
@@ -85,9 +85,15 @@
   .word \delay
 	.endm
 
-  // This expects a sound effect index or FFs for command 0x10.
+  // This expects a sound effect index for command 0x10.
 	.macro gfx_anim_data_sound sound_effect8:req, delay:req
   .byte \sound_effect8, 0x0, 0x0, 0x0
+	.word \delay
+	.endm
+
+	// for command 0x10 when sound effect is 0xFF
+	.macro gfx_anim_data_no_sound delay:req
+	.word 0xFFFFFFFF
 	.word \delay
 	.endm
 
