@@ -7534,7 +7534,7 @@ signed int sub_80AA6EC()
                 break;
             if ( v6 == 16 )
             {
-                v7 = sub_80182B4(i[2] + ((i[3] << 8) & 0xFFF));
+                v7 = GetVerActorTyAndAIIdx_80182B4(i[2] + ((i[3] << 8) & 0xFFF));
                 if ( !v7[1] && *v7 >= 4 )
                 {
                     v4 = *v7;

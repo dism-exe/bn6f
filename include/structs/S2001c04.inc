@@ -3,15 +3,26 @@
     // type: struct S2001c04
 	\set_struct_start_address
 	set_struct_label \struct_entry, \label
+
 	struct_org 0x4
 	u8 MapMusic // loc=0x4
+
 	struct_org 0x7
 	u8 Unk_07 // loc=0x7
+
 	struct_org 0x12
 	u16 Unk_12 // loc=0x12
 	u16 Unk_14 // loc=0x14
+
 	struct_org 0x18
 	u32 GameTimeFrames // loc=0x18
+  u32 Unk_1c // loc=0x1c
+
+	struct_org 0x24
+  u32 Unk_24 // loc=0x24
+  u32 Unk_28 // loc=0x28
+  u32 OptCurBattleDataPtr // loc=0x2c
+
 	struct_org 0x6c
 	u8_arr BuildString, 0x14 // loc=0x6c
 	struct_org 0x84

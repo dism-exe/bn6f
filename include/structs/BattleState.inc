@@ -20,7 +20,7 @@
 	u16 Unk_04_05 // loc=0x4
 	endu
 
-	u8 Unk_06 // loc=0x6
+	u8 BattleField // loc=0x6
 	u8 Unk_07 // loc=0x7
 	u8 Unk_08 // loc=0x8
 	struct_org 0xa
@@ -29,9 +29,17 @@
 	struct_org 0xd
 	u8 Unk_0d // loc=0xd
 	u8 Unk_0e // loc=0xe
-	u8 Unk_0f // loc=0xf
+	u8 BattleType // loc=0xf
 	u8 Unk_10 // loc=0x10
-	u8 Unk_11 // loc=0x11
+	flags8 Unk_11 // loc=0x11
+		struct_const BATTLE_STATE_UNK_11_FLAG_UNK_BIT_00, 										0x01
+		struct_const BATTLE_STATE_UNK_11_FLAG_UNK_BIT_01, 										0x02
+		struct_const BATTLE_STATE_UNK_11_FLAG_UNK_BIT_02, 										0x04
+		struct_const BATTLE_STATE_UNK_11_FLAG_UNK_BIT_03, 										0x08
+		struct_const BATTLE_STATE_UNK_11_FLAG_UNK_BIT_04, 										0x10
+		struct_const BATTLE_STATE_UNK_11_FLAG_UNK_BIT_05, 										0x20
+		struct_const BATTLE_STATE_UNK_11_FLAG_UNK_BIT_06, 										0x40
+		struct_const BATTLE_STATE_UNK_11_FLAG_UNK_BIT_07, 										0x80
 
 	union
 	u8 Unk_12 // loc=0x12

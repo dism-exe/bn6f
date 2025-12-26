@@ -912,7 +912,7 @@ off_810E110:
 	.word 0, 0
 	.byte 0, 0, 0, 0
 off_810E120:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_810E37A+1
 	.word sub_80166AE+1
@@ -1699,7 +1699,7 @@ dword_810E7A4:
 byte_810E7A8:
 	.byte 0x10, 0xFF, 0x5, 0x4, 0x0, 0x0, 0x0, 0x0
 off_810E7B0:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_810E8DA+1
 	.word sub_80166AE+1
@@ -2645,7 +2645,7 @@ off_810F004:
 byte_810F008:
 	.byte 0x0, 0xA0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 off_810F010:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_80165C2+1
 	.word sub_80166AE+1
@@ -3023,7 +3023,7 @@ locret_810F39A:
 	pop {pc}
 	.balign 4, 0
 off_810F39C:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_810F402+1
 	.word sub_80166AE+1
@@ -4066,7 +4066,7 @@ off_810FCD8:
 dword_810FCDC:
 	.word 0x800000
 off_810FCE0:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_810FDF0+1
 	.word sub_80166AE+1
@@ -4995,7 +4995,7 @@ dword_81104CC:
 dword_81104D0:
 	.word 0x10011104
 off_81104D4:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_8110518+1
 	.word sub_80166AE+1
@@ -6087,7 +6087,7 @@ dword_8110DAC:
 byte_8110DB0:
 	.byte 0x0, 0x0, 0x80, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 off_8110DC0:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_80165C2+1
 	.word sub_80166AE+1
@@ -6664,7 +6664,7 @@ off_8111324:
 byte_8111328:
 	.byte 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x0, 0x0
 off_8111330:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_80165C2+1
 	.word sub_80166AE+1
@@ -7950,7 +7950,7 @@ off_8111DB0:
 	.word 0, 0
 	.byte 0, 0, 0, 0
 off_8111DC0:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8111DF0+1
 	.word sub_80165C2+1
 	.word sub_80166AE+1
@@ -8403,7 +8403,7 @@ locret_81121EC:
 	pop {r4,r6,pc}
 	.balign 4, 0
 off_81121F0:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_80165C2+1
 	.word sub_80166AE+1
@@ -9290,7 +9290,7 @@ loc_8112984:
 byte_8112998:
 	.byte 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 off_81129A0:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_8112A1E+1
 	.word sub_80166AE+1
@@ -9531,12 +9531,19 @@ off_8112B8C:
 	.word byte_8112B60
 off_8112B90:
 	.word byte_8112B60
-byte_8112B94:
-	.byte 0x4, 0x17, 0x1, 0x0, 0x17, 0x0, 0x0, 0x1
-byte_8112B9C:
-	.byte 0x3C, 0x0, 0x0, 0x8, 0xA, 0x0, 0x8C, 0x0, 0x1, 0x8, 0x14, 0x0, 0xDC
-	.byte 0x0, 0x2, 0x8, 0x28, 0x0, 0xFA, 0x0, 0x3, 0x8, 0x50, 0x0, 0xB4, 0x0
-	.byte 0x4, 0x8, 0x28, 0x0, 0xFA, 0x0, 0x5, 0x8, 0x64, 0x0
+// Gunner
+GunnerEnemyStruct1_8112B94:
+	.hword 0x1704 // sprite_index
+	.byte 0x1, 0x0, 0x17, 0x0, 0x0, 0x1
+GunnerEnemyStruct2_8112B9C:
+	//     Elem_HP Unk_02  Elem_Damage
+	//     (XYYY)          (XYYY)
+	.hword 0x003C, 0x0800, 0x000A
+	.hword 0x008C, 0x0801, 0x0014
+	.hword 0x00DC, 0x0802, 0x0028
+	.hword 0x00FA, 0x0803, 0x0050
+	.hword 0x00B4, 0x0804, 0x0028
+	.hword 0x00FA, 0x0805, 0x0064
 byte_8112BC0:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
@@ -9962,7 +9969,7 @@ off_8112F60:
 	.word sub_8112F70+1
 	.word sub_8112FBA+1
 	.word sub_8113002+1
-	.word sub_8113038+1
+	.word ai_8113038+1
 	thumb_func_end sub_8112F4E
 
 	thumb_local_start
@@ -10077,7 +10084,7 @@ locret_8113036:
 	thumb_func_end sub_8113002
 
 	thumb_local_start
-sub_8113038:
+ai_8113038:
 	push {r4,lr}
 	ldrb r0, [r7,#oAIAttackVars_Unk_01]
 	cmp r0, #0
@@ -10107,22 +10114,37 @@ loc_8113060:
 locret_811306C:
 	pop {r4,pc}
 	.balign 4, 0
+	thumb_func_end ai_8113038
+
 dword_8113070:
 	.word 0x2810
 dword_8113074:
 	.word 0x12810
-off_8113078:
-	.word sub_8016380+1
+ForGunner_8113078:
+	// 0x00 (0x00) (CurAction -> 0x01)
+	.word RunSpawnAnimationMaybe_8016380+1
+	// 0x04 (0x01) (CurAction -> 0x08)
 	.word sub_80165B8+1
+	// 0x08 (0x02)
+	// disabling this causes game to freeze on Gunner being hit a deadly hit (that would cause its HP to go to 0)
 	.word sub_80165C2+1
+	// 0x0C (0x03)
 	.word sub_80166AE+1
+	// 0x10 (0x04)
 	.word sub_81130E4+1
+	// 0x14 (0x05)
 	.word sub_81130F0+1
+	// 0x18 (0x06)
 	.word sub_81130FC+1
+	// 0x1C (0x07)
 	.word sub_8113108+1
+	// 0x20 (0x08)
 	.word sub_8113124+1
+	// 0x24 (0x09)
 	.word genericAI_exitAttackStateAfterDelay_81097BA+1
+	// 0x28 (0x0A)
 	.word sub_8112F4E+1
+	// 0x2C (0x0B)
 	.word sub_8112D9C+1
 byte_81130A8:
 	.byte 0x0, 0x0, 0x3, 0x0, 0x0, 0x50, 0x1, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x50, 0x2
@@ -10138,7 +10160,6 @@ byte_81130D8:
 	.byte 0x3, 0x5, 0x3, 0x7, 0x3, 0x7
 byte_81130DE:
 	.byte 0x0, 0x0, 0x1, 0x1, 0x1, 0x1
-	thumb_func_end sub_8113038
 
 	thumb_local_start
 sub_81130E4:
@@ -10195,7 +10216,7 @@ sub_8113124:
 	ldr r1, dword_8113208 // =0xa000
 	tst r0, r1
 	bne locret_8113142
-	ldr r1, off_8113144 // =loc_8113148
+	ldr r1, off_8113144 // =off_8113148
 	ldrb r0, [r6,#oAIState_Unk_00]
 	ldr r1, [r1,r0]
 	mov lr, pc
@@ -10204,16 +10225,16 @@ locret_8113142:
 	pop {r4,r6,pc}
 	.balign 4, 0
 off_8113144:
-	.word loc_8113148
+	.word off_8113148
 	thumb_func_end sub_8113124
 
-loc_8113148:
-	add r1, #0x55
-	lsr r1, r2, #0x20
-	add r1, #0x63
-	lsr r1, r2, #0x20
-	add r1, #0xa3
-	lsr r1, r2, #0x20
+off_8113148:
+	.word sub_8113154+1
+	.word sub_8113162+1
+	.word sub_81131A2+1
+
+	thumb_local_start
+sub_8113154:
 	ldrb r0, [r4,#0x16]
 	mov r1, #1
 	and r0, r1
@@ -10221,6 +10242,10 @@ loc_8113148:
 	add r0, #4
 	strb r0, [r6]
 	mov pc, lr
+	thumb_func_end sub_8113154
+
+	thumb_local_start
+sub_8113162:
 	push {lr}
 	ldrb r0, [r5,#0x13]
 	bl sub_810971A
@@ -10248,10 +10273,16 @@ loc_8113148:
 	ldr r0, off_8113220 // =byte_81130A8
 	ldr r0, [r0,r1]
 	str r0, [r7,#0x30]
+
 	mov r0, #0xa
 	bl object_setAttack0
+
 locret_81131A0:
 	pop {pc}
+	thumb_func_end sub_8113162
+
+	thumb_local_start
+sub_81131A2:
 	push {lr}
 	ldrb r1, [r4,#0x16]
 	ldr r0, off_8113224 // =byte_81130DE
@@ -10275,9 +10306,13 @@ locret_81131A0:
 	ldr r0, off_8113238 // =byte_81130A8
 	ldr r0, [r0,r1]
 	str r0, [r7,#0x30]
+
 	mov r0, #0xb
 	bl object_setAttack0
+
 	pop {pc}
+	thumb_func_end sub_81131A2
+
 	thumb_local_start
 sub_81131D8:
 	push {r4,r6,lr}
@@ -10286,6 +10321,7 @@ sub_81131D8:
 	bl sub_800ED90
 	tst r3, r3
 	beq loc_8113204
+
 	lsl r4, r0, #0x17
 	lsr r4, r4, #0x17
 	ldrh r0, [r5,#oBattleObject_HP]
@@ -10698,7 +10734,7 @@ dword_81135C4:
 dword_81135C8:
 	.word 0x12810
 off_81135CC:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_811363C+1
 	.word sub_80166AE+1
@@ -11595,7 +11631,7 @@ dword_8113D48:
 dword_8113D4C:
 	.word 0xC0000
 off_8113D50:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_80165C2+1
 	.word sub_80166AE+1
@@ -12753,7 +12789,7 @@ off_8114700:
 	.word 0, 0
 	.byte 0, 0, 0, 0
 snakearmAttackTable_8114710:
-	.word sub_8016380+1 // 0x0
+	.word RunSpawnAnimationMaybe_8016380+1 // 0x0
 	.word snakearmAI_setMovingThenCall_sub_80165B8_8114FAA+1 // 0x1
 	.word sub_80165C2+1 // 0x2
 	.word sub_80166AE+1 // 0x3
@@ -14355,7 +14391,7 @@ dword_81154E4:
 byte_81154E8:
 	.byte 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x0, 0x0
 off_81154F0:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_811555C+1
 	.word sub_80165C2+1
 	.word sub_80166AE+1
@@ -14834,7 +14870,7 @@ dword_8115948:
 off_811594C:
 	.word byte_8115938
 off_8115950:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_81159C4+1
 	.word sub_80166AE+1
@@ -15333,7 +15369,7 @@ sub_8115DA4:
 byte_8115DD0:
 	.byte 0x16, 0x2, 0x6, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 off_8115DE0:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_81162AE+1
 	.word sub_80165C2+1
 	.word sub_80166AE+1
@@ -33792,22 +33828,32 @@ sub_811F728:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_MainJumptableIndexPtr]
+
+  // trigger cbGameState_80050EC via main_
 	mov r1, #4
 	strb r1, [r0]
+
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
+
+  // trigger EnterMap via cbGameState_80050EC
 	mov r1, #0
 	strb r1, [r0,#oGameState_SubsystemIndex]
+
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_RenderInfoPtr]
 	ldr r1, off_811F76C // =0x40
 	strh r1, [r0]
+
 	mov r0, #6
 	bl sub_80015FC
+
 	bl sub_809F68C
 	bl chatbox_8040818
+
 	mov r0, #0x40
 	bl chatbox_clear_eFlags2009F38 // (int a1) ->
+
 	pop {pc}
 	thumb_func_end sub_811F728
 

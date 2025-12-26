@@ -15,10 +15,12 @@ off_800ED8C:
 sub_800ED90:
 	push {r5,r7,lr}
 	mov r5, r0
+
 	ldrh r0, [r5,#oBattleObject_NameID]
 	bl sub_800F29C
 	cmp r0, #2
 	bne loc_800EDC6
+
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl getBattleHandAddr_8010018
 	ldrb r1, [r0]
@@ -632,49 +634,86 @@ off_800F210:
 	.word 0x150
 	thumb_func_end sub_800F1DC
 
+	.equiv enemy_getStruct1_struct_spriteIndex0, 0x00 // u8
+	.equiv enemy_getStruct1_struct_spriteIndex1, 0x01 // u8
+	.equiv enemy_getStruct1_struct_Unk_02, 0x02 // u8
+	.equiv enemy_getStruct1_struct_Unk_03, 0x03 // u8
+	.equiv enemy_getStruct1_struct_Unk_04, 0x04 // u8
+	.equiv enemy_getStruct1_struct_Element, 0x05 // u8
+	.equiv enemy_getStruct1_struct_SecondaryElementWeakness, 0x06 // u8
+	.equiv enemy_getStruct1_struct_HasShadow, 0x07 // bool
+
 	thumb_func_start enemy_getStruct1
 enemy_getStruct1:
 	push {lr}
-	bl sub_80182B4
-	ldrb r2, [r0,#1]
+
+	bl GetVerActorTyAndAIIdx_80182B4 // (enemy_idx: u16) -> *const (version: u8, actor_type: ActorType, ai_index: u8)
+
+	// index by actor_type * 4
+	ldrb r2, [r0,#1] /*+6*/
 	lsl r2, r2, #2
 	ldr r1, off_800F22C // =off_800F230 
 	ldr r1, [r1,r2]
+
+	// index by ai_index * 4
 	ldrb r2, [r0,#2]
 	lsl r2, r2, #2
 	ldr r0, [r1,r2]
+
 	pop {pc}
 	.balign 4, 0
 off_800F22C:
 	.word off_800F230
 off_800F230:
+	// virus
 	.word off_81090D0
+	// navi
 	.word off_80F24D8
+	// player
 	.word off_80EA814
 	thumb_func_end enemy_getStruct1
 
+// struct {elem_hp: u16, unk_02: u16, elem_damage: u16}
+
+	.equiv enemy_getStruct2_struct_ElemHP, 0x00 // u16
+	.equiv enemy_getStruct2_struct_Unk_02, 0x02 // u8
+	.equiv enemy_getStruct2_struct_UnkFlags_03, 0x03 // u8
+	.equiv enemy_getStruct2_struct_ElemDamage, 0x04 // u16
+
+// where for elem_hp and elem_dmg, in a `.hword 0xXYYY` `X` is likely elem and `YYY` is hp/damage.
 	thumb_func_start enemy_getStruct2
 enemy_getStruct2:
 	push {lr}
-	bl sub_80182B4
+
+	bl GetVerActorTyAndAIIdx_80182B4 // (enemy_idx: u16) -> *const (version: u8, actor_type: ActorType, ai_index: u8)
+
+	// Index by actor_type * 4
 	ldrb r2, [r0,#1]
 	lsl r2, r2, #2
 	ldr r1, off_800F25C // =off_800F260 
 	ldr r1, [r1,r2]
+
+	// Index by ai_index * 4
 	ldrb r2, [r0,#2]
 	lsl r2, r2, #2
 	ldr r1, [r1,r2]
-	ldrb r2, [r0]
+
+	// Index by version * size
+	ldrb r2, [r0,#0]
 	mov r3, #6
 	mul r2, r3
 	add r0, r1, r2
+
 	pop {pc}
 	.balign 4, 0
 off_800F25C:
 	.word off_800F260
 off_800F260:
+	// virus
 	.word off_8109150
+	// navi
 	.word off_80F253C
+	// player
 	.word off_80EA8D8
 	thumb_func_end enemy_getStruct2
 
@@ -709,7 +748,7 @@ loc_800F286:
 	thumb_func_start sub_800F29C
 sub_800F29C:
 	push {lr}
-	bl sub_80182B4
+	bl GetVerActorTyAndAIIdx_80182B4 // (enemy_idx: u16) -> *const (version: u8, actor_type: ActorType, ai_index: u8)
 	ldrb r2, [r0]
 	ldrb r1, [r0,#2]
 	ldrb r0, [r0,#1]
@@ -795,8 +834,10 @@ sub_800F318:
 	ldr r1, [r5,#oBattleObject_AIDataPtr]
 	tst r1, r1
 	beq locret_800F320
+
 	str r0, [r1,#oAIData_Unk_78]
-locret_800F320:
+
+locret_800F320: // endif
 	mov pc, lr
 	thumb_func_end sub_800F318
 
@@ -815,16 +856,19 @@ locret_800F332:
 	thumb_func_end sub_800F322
 
 	thumb_local_start
-sub_800F334:
+getBattleObjectPalette_800F334: // (obj: * BattleObject $r5) -> u8
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldrb r1, [r0,#oAIData_ActorType]
 	ldrb r2, [r0,#oAIData_Version_16]
 	ldrb r3, [r0,#oAIData_Unk_03]
-	cmp r1, #0
+
+	cmp r1, #ACTOR_TYPE_VIRUS
 	bne loc_800F346
-	mul r2, r3
+
+	mul r2, r3 // varies palette by version
 	mov r0, r2
 	mov pc, lr
+
 loc_800F346:
 	ldr r0, off_800F350 // =byte_800F354 
 	ldrb r0, [r0,r2]
@@ -835,20 +879,23 @@ off_800F350:
 	.word byte_800F354
 byte_800F354:
 	.byte 0x0, 0x0, 0x0, 0x0, 0x3, 0x1, 0x0, 0x0
-	thumb_func_end sub_800F334
+	thumb_func_end getBattleObjectPalette_800F334
 
 	thumb_local_start
 sub_800F35C:
 	push {lr}
 	ldr r0, off_800F368 // =off_800F36C 
-	bl sub_800F420
+	bl indexByActorTypeAndAIIdxThenDispatch_800F420
 	pop {pc}
 	.balign 4, 0
 off_800F368:
 	.word off_800F36C
 off_800F36C:
+	// virus
 	.word off_8109250
+	// navi
 	.word off_80F2604
+	// player
 	.word off_80EA9A0
 	thumb_func_end sub_800F35C
 
@@ -856,14 +903,17 @@ off_800F36C:
 sub_800F378:
 	push {lr}
 	ldr r0, pool_800F384 // =off_800F388 
-	bl sub_800F420
+	bl indexByActorTypeAndAIIdxThenDispatch_800F420
 	pop {pc}
 	.balign 4, 0
 pool_800F384:
 	.word off_800F388
 off_800F388:
+	// virus
 	.word off_81092D0
+	// navi
 	.word off_80F2668
+	// player
 	.word off_80EAA04
 	thumb_func_end sub_800F378
 
@@ -871,7 +921,7 @@ off_800F388:
 sub_800F394:
 	push {lr}
 	ldr r0, off_800F3A0 // =off_800F3A4 
-	bl sub_800F420
+	bl indexByActorTypeAndAIIdxThenDispatch_800F420
 	pop {pc}
 	.balign 4, 0
 off_800F3A0:
@@ -886,7 +936,7 @@ off_800F3A4:
 sub_800F3B0:
 	push {lr}
 	ldr r0, off_800F3BC // =off_800F3C0 
-	bl sub_800F420
+	bl indexByActorTypeAndAIIdxThenDispatch_800F420
 	pop {pc}
 	.balign 4, 0
 off_800F3BC:
@@ -901,7 +951,7 @@ off_800F3C0:
 sub_800F3CC:
 	push {lr}
 	ldr r0, off_800F3D8 // =off_800F3DC 
-	bl sub_800F420
+	bl indexByActorTypeAndAIIdxThenDispatch_800F420
 	pop {pc}
 	.balign 4, 0
 off_800F3D8:
@@ -916,7 +966,7 @@ off_800F3DC:
 sub_800F3E8:
 	push {lr}
 	ldr r0, off_800F3F4 // =off_800F3F8 
-	bl sub_800F420
+	bl indexByActorTypeAndAIIdxThenDispatch_800F420
 	pop {pc}
 	.balign 4, 0
 off_800F3F4:
@@ -931,7 +981,7 @@ off_800F3F8:
 sub_800F404:
 	push {lr}
 	ldr r0, off_800F410 // =off_800F414 
-	bl sub_800F420
+	bl indexByActorTypeAndAIIdxThenDispatch_800F420
 	pop {pc}
 	.balign 4, 0
 off_800F410:
@@ -943,19 +993,22 @@ off_800F414:
 	thumb_func_end sub_800F404
 
 	thumb_local_start
-sub_800F420:
+indexByActorTypeAndAIIdxThenDispatch_800F420:
 	push {lr}
+
 	ldr r3, [r5,#oBattleObject_AIDataPtr]
 	ldrb r1, [r3,#oAIData_ActorType]
 	lsl r1, r1, #2
 	ldr r2, [r0,r1]
+
 	ldrb r1, [r3,#oAIData_AIIndex]
 	lsl r1, r1, #2
 	ldr r0, [r2,r1]
 	mov lr, pc
 	bx r0
+
 	pop {pc}
-	thumb_func_end sub_800F420
+	thumb_func_end indexByActorTypeAndAIIdxThenDispatch_800F420
 
 	thumb_local_start
 sub_800F436:
@@ -1878,7 +1931,7 @@ sub_800FAE0:
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_BattleStatePtr]
 	ldrb r0, [r4,#oBattleState_Unk_0d]
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	tst r0, r0
 	beq locret_800FAF4
 	ldrh r1, [r0,#oBattleObject_HP]
@@ -2173,7 +2226,7 @@ sub_800FD0A:
 	ldr r1, off_800FEE0 // =byte_80212BB 
 	ldrb r7, [r1,r0]
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	cmp r0, #2
 	bne loc_800FD26
 	mov r0, #4
@@ -2244,7 +2297,7 @@ byte_800FD88:
 dead_800FDA0:
 	push {r5, lr}
 	push {r1}
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	add r5, r0, #0
 	pop {r1}
 	beq loc_800FDB4
@@ -2629,7 +2682,7 @@ getBattleHandAddr_8010018:
 	thumb_local_start
 sub_8010022:
 	push {lr}
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
 	pop {pc}
 	thumb_func_end sub_8010022
@@ -2729,7 +2782,7 @@ locret_801010A:
 sub_801010C:
 	push {lr}
 	ldrb r0, [r5,#0x16]
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldr r0, [r0,#0x58]
 	str r0, [r5,#0x58]
 	pop {pc}
@@ -2982,7 +3035,7 @@ handleCustHPBug_80102AC:
 	tst r6, r6
 	beq locret_80102F0
 	mov r0, r4
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r5, r0
 	beq locret_80102F0
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
@@ -3124,7 +3177,7 @@ loc_80103B8:
 
 	thumb_func_start battle_findPlayer
 // r0 = alliance
-battle_findPlayer:
+battle_findPlayer: // (alliance: bool) -> * BattleObject
 	push {r4-r6,lr}
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_BattleStatePtr]
@@ -3157,7 +3210,7 @@ loc_80103E8:
 sub_80103EC:
 	push {lr}
 	bl sub_800A7E2
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	pop {pc}
 	thumb_func_end sub_80103EC
 
@@ -3363,7 +3416,7 @@ loc_801055A:
 	thumb_func_start sub_801055E
 sub_801055E:
 	push {lr}
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
 	ldrh r0, [r0,#oAIData_TotalDamageTaken]
 	pop {pc}
@@ -3384,7 +3437,7 @@ sub_801056A:
 	ldr r0, off_80108F0 // =0x810 
 	bl ClearAIDataUnk0x48Flag
 	mov r0, #0x40 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	bl sub_800E9FA
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_802CE78
@@ -3449,7 +3502,7 @@ sub_80105F2:
 	ldr r0, off_80108F0 // =0x810 
 	bl ClearAIDataUnk0x48Flag
 	mov r0, #0x40 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	bl sub_800E9FA
 	ldr r0, [sp,#0xc]
 	str r0, [r7,#oAIAttackVars_Damage]
@@ -3574,7 +3627,7 @@ loc_80106F6:
 	mov r0, r6
 	bl SetBattleNaviStatsByte
 	mov r0, r6
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	push {r5}
 	mov r5, r0
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -3636,7 +3689,7 @@ sub_8010740:
 	mov r0, r6
 	bl SetBattleNaviStatsByte
 	mov r0, r6
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	push {r5}
 	mov r5, r0
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -4031,7 +4084,7 @@ loc_8010ACA:
 loc_8010ACE:
 	mov r0, #1
 	eor r0, r4
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldrh r0, [r0,#oBattleObject_HP]
 	mov r1, #0xfa
 	add r1, r1, r1
@@ -4147,7 +4200,7 @@ sub_8010BD0:
 	mov r6, r0
 	mov r7, r1
 	mov r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	tst r0, r0
 	beq locret_8010BEE
 	ldrh r1, [r0,#oBattleObject_HP]
@@ -4165,7 +4218,7 @@ locret_8010BEE:
 sub_8010BF0:
 	push {lr}
 	mov r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	tst r0, r0
 	beq locret_8010C04
 	ldrh r0, [r0,#oBattleObject_HP]
@@ -4206,7 +4259,7 @@ loc_8010C2C:
 loc_8010C36:
 	mov r0, #1
 	eor r0, r4
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	tst r0, r0
 	beq locret_8010C4E
 	ldrh r0, [r0,#oBattleObject_MaxHP]
@@ -4226,7 +4279,7 @@ sub_8010C50:
 	mov r4, r0
 	mov r6, r1
 	mov r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r5, r0
 	tst r5, r5
 	beq locret_8010C74
@@ -4448,7 +4501,7 @@ sub_8010DD0:
 	thumb_local_start
 sub_8010DDA:
 	push {lr}
-	bl sub_80182B4
+	bl GetVerActorTyAndAIIdx_80182B4 // (enemy_idx: u16) -> *const (version: u8, actor_type: ActorType, ai_index: u8)
 	ldrb r1, [r0,#1]
 	lsl r1, r1, #2
 	ldrb r2, [r0,#2]
@@ -4698,7 +4751,7 @@ sub_8011020:
 	thumb_local_start
 sub_801102A:
 	push {lr}
-	bl sub_80182B4
+	bl GetVerActorTyAndAIIdx_80182B4 // (enemy_idx: u16) -> *const (version: u8, actor_type: ActorType, ai_index: u8)
 	ldrb r1, [r0,#1]
 	lsl r1, r1, #2
 	ldrb r2, [r0,#2]
@@ -5937,7 +5990,7 @@ busterBugChargeShotDamageCalcHappensHere_8011A7E:
 	add r0, #1
 	push {r0}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	cmp r0, #5
 	pop {r0}
 	bne loc_8011A98
@@ -7865,7 +7918,7 @@ sub_801265A:
 	add r0, r0, r1
 	push {r0}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	cmp r0, #5
 	bne loc_8012684
 	pop {r0}
@@ -8372,7 +8425,7 @@ sub_8012A38:
 	tst r1, r2
 	beq loc_8012AB4
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	cmp r0, #2
 	bne loc_8012A64
 	mov r6, #1
@@ -10078,7 +10131,7 @@ loc_8013678:
 
 // (int idx) -> void*
 	thumb_func_start GetBattleNaviStatsAddr
-GetBattleNaviStatsAddr:
+GetBattleNaviStatsAddr: // (alliance: bool) -> * NaviStats
 	mov r1, #oNaviStats_Size
 	mul r0, r1
 	ldr r1, =eBattleNaviStats0
@@ -10117,7 +10170,7 @@ SetBattleNaviStatsByte:
 	push {r6,r7,lr}
 	mov r6, r1
 	mov r7, r2
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	strb r7, [r0,r6]
 	pop {r6,r7,pc}
 	thumb_func_end SetBattleNaviStatsByte
@@ -10127,7 +10180,7 @@ SetBattleNaviStatsHword:
 	push {r6,r7,lr}
 	mov r6, r1
 	mov r7, r2
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	strh r7, [r0,r6]
 	pop {r6,r7,pc}
 	thumb_func_end SetBattleNaviStatsHword
@@ -10136,7 +10189,7 @@ SetBattleNaviStatsHword:
 GetBattleNaviStatsByte:
 	push {r6,lr}
 	mov r6, r1
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	ldrb r0, [r0,r6]
 	pop {r6,pc}
 	thumb_func_end GetBattleNaviStatsByte
@@ -10145,7 +10198,7 @@ GetBattleNaviStatsByte:
 GetBattleNaviStatsSignedByte:
 	push {r6,lr}
 	mov r6, r1
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	ldrsb r0, [r0,r6]
 	pop {r6,pc}
 	thumb_func_end GetBattleNaviStatsSignedByte
@@ -10154,7 +10207,7 @@ GetBattleNaviStatsSignedByte:
 GetBattleNaviStatsHword:
 	push {r6,lr}
 	mov r6, r1
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	ldrh r0, [r0,r6]
 	pop {r6,pc}
 	thumb_func_end GetBattleNaviStatsHword
@@ -10244,7 +10297,7 @@ SetBattleNaviStatsByte_AllianceFromBattleObject:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r6, r1
 	mov r7, r2
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	strb r7, [r0,r6]
 	pop {r6,r7,pc}
 	thumb_func_end SetBattleNaviStatsByte_AllianceFromBattleObject
@@ -10255,7 +10308,7 @@ SetBattleNaviStatsHword_AllianceFromBattleObject:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r6, r1
 	mov r7, r2
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	strh r7, [r0,r6]
 	pop {r6,r7,pc}
 	thumb_func_end SetBattleNaviStatsHword_AllianceFromBattleObject
@@ -10265,7 +10318,7 @@ GetBattleNaviStatsByte_AllianceFromBattleObject:
 	push {r6,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r6, r1
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	ldrb r0, [r0,r6]
 	pop {r6,pc}
 	thumb_func_end GetBattleNaviStatsByte_AllianceFromBattleObject
@@ -10275,7 +10328,7 @@ GetBattleNaviStatsByte_AllianceFromBattleObject_8013782:
 	push {r6,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r6, r1
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	ldrb r0, [r0,r6]
 	pop {r6,pc}
 	thumb_func_end GetBattleNaviStatsByte_AllianceFromBattleObject_8013782
@@ -10285,7 +10338,7 @@ GetBattleNaviStatsHword_AllianceFromBattleObject:
 	push {r6,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r6, r1
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	ldrh r0, [r0,r6]
 	pop {r6,pc}
 	thumb_func_end GetBattleNaviStatsHword_AllianceFromBattleObject
@@ -10469,7 +10522,7 @@ GetNaviStats203CCE0Byte:
 sub_8013892:
 	push {r6,r7,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	mov r6, r0
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	mov r0, #0xa
@@ -10526,7 +10579,7 @@ dword_8013908:
 sub_801390C:
 	push {r6,r7,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	mov r6, r0
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 loc_8013918:
@@ -10551,7 +10604,7 @@ loc_8013938:
 sub_801393A:
 	push {r6,r7,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	mov r6, r0
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	mov r1, #0x2c 
@@ -10618,27 +10671,36 @@ locret_80139C2:
 	thumb_func_start sub_80139C4
 sub_80139C4:
 	push {r7,lr}
+
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
+
 	ldrh r0, [r5,#oBattleObject_HP]
 	tst r0, r0
 	beq locret_80139F4
+
 	ldrb r0, [r7,#oAIData_ActorType]
-	cmp r0, #2
+	cmp r0, #ACTOR_TYPE_PLAYER
 	bne locret_80139F4
+
 	ldrb r0, [r7,#oAIData_AIIndex]
 	cmp r0, #0xb
 	bgt locret_80139F4
+
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	cmp r0, #2
 	bne locret_80139F4
-	add r7, #0x5c 
+
+	add r7, #oAIData_Unk_5c
 	ldr r0, [r7]
 	tst r0, r0
 	bne locret_80139F4
+
+	// The parameter this gets don't seem to agree with what we pass it. r2 is mood from above, but here it asks for y.
 	mov r1, #4
 	mov r3, #0x10
-	bl sub_80C4C12
+	bl SpawnCounterPinkRingMaybe_80C4C12 // (x_maybe: u32 , y_maybe: u32 , z_maybe: u32 , params_maybe: u32 , obj: * BattleObject $r5, a7: *u32 $r7) -> * BattleObject
+
 locret_80139F4:
 	pop {r7,pc}
 	thumb_func_end sub_80139C4
@@ -10846,7 +10908,7 @@ loc_8013B56:
 init_8013B64:
 	push {r4,r6,r7,lr}
 	mov r4, r1
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	mov r7, r0
 loc_8013B6E:
 	mov r0, r7
@@ -11443,7 +11505,7 @@ locret_8013FCE:
 	thumb_func_start sub_8013FD0
 sub_8013FD0:
 	push {r5,lr}
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r5, r0
 	beq locret_8013FF6
 	mov r1, #0x54 
@@ -11515,7 +11577,7 @@ CurPETNaviToNaviStatsIndexTable:
 	thumb_func_start sub_8014040
 sub_8014040:
 	push {r4,r5,lr}
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r5, r0
 	bl GetBattleEffects // () -> int
 	mov r1, #8
@@ -11759,7 +11821,7 @@ sub_8014216:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r5, r0
 	beq loc_8014254
 	bl sub_801DC36
@@ -11889,7 +11951,7 @@ sub_8014326:
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	ldrb r0, [r4,#oAIData_AIIndex]
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	cmp r0, #5
 	beq loc_8014394
 	cmp r0, #1
@@ -11944,7 +12006,7 @@ locret_80143A4:
 sub_80143A6:
 	push {lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	mov r1, #0x80
 	strb r1, [r0,#0xe]
 	b loc_80143B6
@@ -12061,7 +12123,7 @@ sub_8014446:
 	thumb_local_start
 sub_801444E:
 	push {lr}
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldr r3, [r0,#0x58]
 	mov r0, #0
 	strh r0, [r3,#0x32]
@@ -12105,7 +12167,7 @@ sub_8014478:
 	thumb_local_start
 sub_8014482:
 	push {lr}
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldr r3, [r0,#0x58]
 	mov r0, #0
 	strh r0, [r3,#0x36]
@@ -12176,7 +12238,7 @@ loc_80144CE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r5, r0
 	beq loc_801450A
 	bl sub_801DC36
@@ -12784,7 +12846,7 @@ loc_8014902:
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
 	ldr r0, dword_8014940 // =0x4000 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_8014912:
@@ -12804,7 +12866,7 @@ loc_8014926:
 loc_8014930:
 	ldr r0, dword_80149EC // =0x20080 
 loc_8014932:
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	mov r0, #4
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -12902,7 +12964,7 @@ loc_80149DA:
 	ldr r1, dword_80149FC // =0x4080 
 loc_80149E0:
 	mov r0, r1
-	bl sub_801DA48
+	bl dispatch_801DA48
 	mov r0, #8
 	str r0, [r5]
 locret_80149EA:
@@ -13473,7 +13535,7 @@ loc_8014EB8:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	bgt locret_8014EFE
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	mov r1, #0
 	cmp r0, #2
 	bne loc_8014ECE
@@ -14641,7 +14703,7 @@ loc_80158C6:
 sub_80158CC:
 	push {lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	mov r1, #0x80
 	strb r1, [r0,#0xe]
 	bl GetBattleMode
@@ -15011,9 +15073,9 @@ off_8015B50:
 	thumb_func_end sub_8015B22
 
 	thumb_func_start callPossiblyGetBattleEmotion_8015B54
-callPossiblyGetBattleEmotion_8015B54:
+callPossiblyGetBattleEmotion_8015B54: // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	push {lr}
-	bl possiblyGetBattleEmotion_8015B64
+	bl possiblyGetBattleEmotion_8015B64 // (alliance: bool) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	pop {pc}
 	thumb_func_end callPossiblyGetBattleEmotion_8015B54
 
@@ -15025,39 +15087,57 @@ sub_8015B5C:
 	thumb_func_end sub_8015B5C
 
 	thumb_local_start
-possiblyGetBattleEmotion_8015B64:
+possiblyGetBattleEmotion_8015B64: // (alliance: bool) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	push {r4-r6,lr}
+
 	mov r4, r0
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
+
 	mov r6, r0
+
 	mov r0, r4
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
+
 	mov r5, r0
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
+
 	mov r1, #oNaviStats_Transformation 
 	ldrb r1, [r6,r1]
 	ldrb r2, [r6,#oNaviStats_Mood]
+
 	mov r0, #5
+
 	ldrh r3, [r4,#oAIData_Unk_36]
 	tst r3, r3
-	bne loc_8015BA2
+	bne loc_8015BA2 /*+20*/
+
 	cmp r2, #0
-	beq loc_8015BA2
+	beq loc_8015BA2 /*+24*/
+
 	mov r0, #3
+
 	ldrh r3, [r4,#oAIData_Anger]
 	tst r3, r3
-	bne loc_8015BA2
+	bne loc_8015BA2 /*+2c*/
+
 	mov r0, #1
+
 	ldrh r3, [r4,#oAIData_Unk_32]
 	tst r3, r3
-	bne loc_8015BA2
+	bne loc_8015BA2 /*+34*/
+
 	mov r0, #2
+
 	cmp r2, #0xff
-	beq loc_8015BA2
+	beq loc_8015BA2 /*+3a*/
+
 	mov r0, #0
+
 loc_8015BA2:
+
 	mov r3, #oNaviStats_BeastOutCounter 
 	ldrb r3, [r6,r3]
+
 	pop {r4-r6,pc}
 	thumb_func_end possiblyGetBattleEmotion_8015B64
 
@@ -15068,7 +15148,7 @@ sub_8015BA8:
 	bl GetBattleNaviStats2034A60Addr
 	mov r6, r0
 	mov r0, r4
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r5, r0
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	mov r1, #0x2c 
@@ -15103,7 +15183,7 @@ sub_8015BEC:
 	push {r4-r6,lr}
 	mov r6, r0
 	mov r4, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	cmp r0, #0
 	beq locret_8015C10
 	mov r5, r0
@@ -15112,7 +15192,7 @@ sub_8015BEC:
 	bl sub_8014490
 	bne locret_8015C10
 	mov r0, r6
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	strb r4, [r0,#0xe]
 locret_8015C10:
 	pop {r4-r6,pc}
@@ -15122,7 +15202,7 @@ locret_8015C10:
 sub_8015C12:
 	push {r4,lr}
 	mov r4, r1
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	ldrb r1, [r0,#oNaviStats_Mood]
 	tst r1, r1
 	beq locret_8015C2A
@@ -15920,20 +16000,24 @@ byte_801636C:
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end sub_801632C
 
-	thumb_func_start sub_8016380
-sub_8016380:
+	thumb_func_start RunSpawnAnimationMaybe_8016380
+RunSpawnAnimationMaybe_8016380:
 	push {lr}
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
+
 	ldrb r0, [r0,#oAIData_Unk_02]
 	cmp r0, #0
 	bne loc_8016390
+
 	bl sub_8016396
 	b locret_8016394
+
 loc_8016390:
+
 	bl sub_80164A0
 locret_8016394:
 	pop {pc}
-	thumb_func_end sub_8016380
+	thumb_func_end RunSpawnAnimationMaybe_8016380
 
 	thumb_local_start
 sub_8016396:
@@ -15994,8 +16078,10 @@ loc_80163E2:
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0
 	bl sprite_setAlpha_8002c7a
+
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurPhase]
+
 	pop {pc}
 loc_8016410:
 	ldrb r0, [r5,#oObjectHeader_Flags]
@@ -16036,8 +16122,10 @@ loc_801644C:
 	bl sprite_clearMosaic
 	mov r0, #0
 	bl sub_800AA40
+
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
+
 locret_801645E:
 	pop {pc}
 	thumb_func_end sub_801641A
@@ -16060,19 +16148,24 @@ sub_8016460:
 loc_801647E:
 	mov r0, #0
 	mov r1, #0
+
 	ldrh r2, [r5,#oBattleObject_NameID]
 	cmp r2, #0x49 
 	blt loc_8016492
+
 	cmp r2, #0x4e 
 	bgt loc_8016492
+
 	mov r0, #0x20 
 	neg r0, r0
 	mov r1, #3
 loc_8016492:
 	bl sub_801DC7C
 loc_8016496:
+
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_CurAction]
+
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_801649E:
@@ -16218,8 +16311,10 @@ loc_801659C:
 	bl object_removePanelReserve
 	mov r0, #1
 	bl object_setCollisionRegion
+
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_CurAction]
+
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {pc}
@@ -16278,7 +16373,7 @@ sub_80165F8:
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sub_801A7F4
 	ldrh r0, [r5,#oBattleObject_NameID]
-	bl sub_80182B4
+	bl GetVerActorTyAndAIIdx_80182B4 // (enemy_idx: u16) -> *const (version: u8, actor_type: ActorType, ai_index: u8)
 	ldrb r1, [r0,#1]
 	cmp r1, #0
 	bne loc_801663A
@@ -16719,7 +16814,7 @@ loc_8016964:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	tst r0, r0
 	beq locret_80169BC
 	push {r5}
@@ -16743,13 +16838,13 @@ loc_8016998:
 	cmp r0, #2
 	bne locret_80169BC
 	mov r0, #5
-	bl sub_801DA48
+	bl dispatch_801DA48
 	bl object_getFlag // () -> int
 	ldr r1, off_8016A34 // =0x2000 
 	tst r0, r1
 	beq locret_80169BC
 	mov r0, #5
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 locret_80169BC:
 	pop {pc}
 	thumb_func_end blindVisualHandledHere_8016934
@@ -16773,7 +16868,7 @@ loc_80169CE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	tst r0, r0
 	beq locret_8016A26
 	push {r5}
@@ -16797,13 +16892,13 @@ loc_8016A02:
 	cmp r0, #2
 	bne locret_8016A26
 	mov r0, #5
-	bl sub_801DA48
+	bl dispatch_801DA48
 	bl object_getFlag // () -> int
 	ldr r1, off_8016A34 // =0x2000 
 	tst r0, r1
 	beq locret_8016A26
 	mov r0, #5
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 locret_8016A26:
 	pop {pc}
 	.balign 4, 0
@@ -17107,7 +17202,7 @@ sub_8016CA4:
 	beq locret_8016CDE
 	mov r1, #1
 	eor r0, r1
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	cmp r0, #2
 	bne locret_8016CDE
 	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
@@ -17442,146 +17537,215 @@ locret_8016F54:
 	thumb_func_start sub_8016F56
 sub_8016F56:
 	push {r4,r6,r7,lr}
+
+	// will dispatch some logic based on the alliance/ai index, but most are nullsubs. 
 	bl sub_800F35C
+
 	ldr r6, [r5,#oBattleObject_AIDataPtr]
+
 	ldrh r0, [r5,#oBattleObject_NameID]
 	bl enemy_getStruct1
 	mov r7, r0
+
 	mov r0, #0x80
-	ldrb r1, [r7]
-	ldrb r2, [r7,#1]
+	ldrb r1, [r7,#enemy_getStruct1_struct_spriteIndex0]
+	ldrb r2, [r7,#enemy_getStruct1_struct_spriteIndex1]
 	bl sprite_load // (int a1, int a2, int a3) ->
-	ldrb r0, [r7,#7]
-	cmp r0, #0
+
+	ldrb r0, [r7,#enemy_getStruct1_struct_HasShadow]
+	cmp r0, #FALSE
 	bne loc_8016F7C
+	// if there is no shadow
+
 	bl sprite_noShadow // () -> void
 	b loc_8016F80
-loc_8016F7C:
+
+loc_8016F7C: // else
+
 	bl sprite_hasShadow
-loc_8016F80:
+
+loc_8016F80: // endif
+
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurAnim]
+
 	mov r1, #0xff
 	strb r1, [r5,#oBattleObject_CurAnimCopy]
+
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_800F334
+
+	bl getBattleObjectPalette_800F334 // (obj: * BattleObject $r5) -> u8
 	bl sprite_setPalette // (int pallete) -> void
+
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	ldrb r0, [r7,#5]
+
+	ldrb r0, [r7,#enemy_getStruct1_struct_Element]
 	ldrb r1, [r5,#oBattleObject_Element]
 	orr r1, r0
 	strb r1, [r5,#oBattleObject_Element]
+
 	bl GetBattleMode
 	cmp r0, #6
-	bne loc_8016FBE
-	ldrb r0, [r7,#4]
+	bne loc_8016FBE /*+2e*/
+
+	ldrb r0, [r7,#enemy_getStruct1_struct_Unk_04]
 	ldr r1, off_80170A0 // =byte_80170A4
 	ldrb r0, [r1,r0]
 	cmp r0, #0
-	bne loc_8016FBE
+	bne loc_8016FBE /*+38*/
+
 	mov r0, #0
 	str r0, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
-loc_8016FBE:
+
+loc_8016FBE: // endif
+
 	bl object_createCollisionData
 	tst r0, r0
 	bne loc_8016FCC
+
 	bl object_freeMemory
 	b locret_8017092
-loc_8016FCC:
+
+loc_8016FCC: // endif
+
 	push {r0}
 	ldrh r0, [r5,#oBattleObject_NameID]
 	bl enemy_getStruct2
-	ldrb r4, [r0,#3]
+	ldrb r4, [r0,#enemy_getStruct2_struct_UnkFlags_03]
 	pop {r0}
+
 	mov r1, #1
 	mov r2, #2
+
 	mov r3, #4
 	tst r4, r3
 	beq loc_8016FE6
+
 	mov r1, #0x10
 	mov r2, #2
-loc_8016FE6:
+
+loc_8016FE6: // endif
+
 	mov r3, #3
 	bl object_setupCollisionData
-	ldrb r0, [r7,#6]
+
+	ldrb r0, [r7,#enemy_getStruct1_struct_SecondaryElementWeakness]
 	bl sub_8019F9E
+
 	mov r3, #0x10
 	tst r4, r3
 	beq loc_8017000
+
 	mov r0, #1
 	lsl r0, r0, #0x1b
 	bl object_setFlag1 // (int a1) -> void
-loc_8017000:
+
+loc_8017000: // endif
+
 	mov r3, #8
 	tst r4, r3
 	beq loc_801700E
+
+	// Sets OBJECT_FLAGS_AFFECTED_BY_ICE
 	mov r0, #1
-	lsl r0, r0, #0x19
+	lsl r0, r0, #25
 	bl object_setFlag1 // (int a1) -> void
-loc_801700E:
+
+loc_801700E: // endif
+
 	mov r3, #4
 	tst r4, r3
 	beq loc_801701A
-	mov r0, #0x20 
+
+	mov r0, #OBJECT_FLAGS_FLOATSHOE
 	bl object_setFlag1 // (int a1) -> void
-loc_801701A:
+
+loc_801701A: // endif
+
 	mov r3, #2
 	tst r4, r3
 	beq loc_8017026
+
 	mov r0, #OBJECT_FLAGS_AIRSHOE
 	bl object_setFlag1 // (int a1) -> void
-loc_8017026:
+
+loc_8017026: // endif
+
 	mov r3, #1
 	tst r4, r3
 	beq loc_8017034
+
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
 	bl object_setFlag1 // (int a1) -> void
-loc_8017034:
+
+loc_8017034: // endif
+
 	bl sub_801DB84
+
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
+
 	bl sub_800F318
+
 	bl GetBattlePanelColumnPattern
+
 	cmp r0, #0x38 
-	beq loc_801705C
+	beq loc_801705C /*+18*/
+
 	cmp r0, #0x30 
-	beq loc_801705C
+	beq loc_801705C /*+1c*/
+
 	cmp r0, #0x3c 
-	beq loc_801705C
+	beq loc_801705C /*+20*/
+
 	bl sub_800F2F0
 	b loc_8017064
-loc_801705C:
+
+loc_801705C: // else
+
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_DirectionFlip]
 	bl sub_800F2C6
-loc_8017064:
+
+loc_8017064: // endif
+
 	bl sub_8010DD0
+
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
 	mov r1, #0x3e 
 	bl GetBattleNaviStatsHword
 	mov r1, #0x64 
-	svc 6
+	svc 6 // div
+
 	cmp r0, #0xa
 	ble loc_8017080
+
 	mov r0, #0xa
 	b loc_8017086
+
 loc_8017080:
 	cmp r0, #0
 	bgt loc_8017086
+
 	mov r0, #1
+
 loc_8017086:
+
 	ldr r1, [r5,#oBattleObject_AIDataPtr]
 	strb r0, [r1,#oAIData_Unk_0c]
+
 	bl sub_800F378
+
 	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
+
 locret_8017092:
 	pop {r4,r6,r7,pc}
 	.word 0, 0
@@ -18491,7 +18655,7 @@ sub_8017888:
 	bl sub_800A8F8
 	beq loc_80178AC
 	ldrh r0, [r5,#oBattleObject_NameID]
-	bl sub_80182B4
+	bl GetVerActorTyAndAIIdx_80182B4 // (enemy_idx: u16) -> *const (version: u8, actor_type: ActorType, ai_index: u8)
 	ldrb r1, [r0,#1]
 	cmp r1, #2
 	bne loc_80178AC
@@ -19706,7 +19870,7 @@ loc_8018206:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	tst r0, r0
 	beq locret_801823A
 	push {r5}
@@ -19791,8 +19955,10 @@ off_80182B0:
 	.word 0x2000
 	thumb_func_end sub_801823C
 
-	thumb_func_start sub_80182B4
-sub_80182B4:
+// If we change the data here, the virus that ends up spawning will be different. In sprite, AI, attack pattern, HP, etc.
+// Only the name of the original virus remains
+	thumb_func_start GetVerActorTyAndAIIdx_80182B4
+GetVerActorTyAndAIIdx_80182B4: // (enemy_idx: u16) -> *const (version: u8, actor_type: ActorType, ai_index: u8)
 	mov r1, #3
 	mul r1, r0
 	ldr r0, off_80182C0 // =byte_80182C4
@@ -19802,459 +19968,473 @@ sub_80182B4:
 off_80182C0:
 	.word byte_80182C4
 byte_80182C4:
-	.byte 0x00, 0x00, 0x00 // 0x0
-	.byte 0x00, 0x00, 0x01 // 0x1
-	.byte 0x01, 0x00, 0x01 // 0x2
-	.byte 0x02, 0x00, 0x01 // 0x3
-	.byte 0x03, 0x00, 0x01 // 0x4
-	.byte 0x04, 0x00, 0x01 // 0x5
-	.byte 0x05, 0x00, 0x01 // 0x6
-	.byte 0x00, 0x00, 0x02 // 0x7
-	.byte 0x01, 0x00, 0x02 // 0x8
-	.byte 0x02, 0x00, 0x02 // 0x9
-	.byte 0x03, 0x00, 0x02 // 0xa
-	.byte 0x04, 0x00, 0x02 // 0xb
-	.byte 0x05, 0x00, 0x02 // 0xc
-	.byte 0x00, 0x00, 0x03 // 0xd
-	.byte 0x01, 0x00, 0x03 // 0xe
-	.byte 0x02, 0x00, 0x03 // 0xf
-	.byte 0x03, 0x00, 0x03 // 0x10
-	.byte 0x04, 0x00, 0x03 // 0x11
-	.byte 0x05, 0x00, 0x03 // 0x12
-	.byte 0x00, 0x00, 0x04 // 0x13
-	.byte 0x01, 0x00, 0x04 // 0x14
-	.byte 0x02, 0x00, 0x04 // 0x15
-	.byte 0x03, 0x00, 0x04 // 0x16
-	.byte 0x04, 0x00, 0x04 // 0x17
-	.byte 0x05, 0x00, 0x04 // 0x18
-	.byte 0x00, 0x00, 0x05 // 0x19
-	.byte 0x01, 0x00, 0x05 // 0x1a
-	.byte 0x02, 0x00, 0x05 // 0x1b
-	.byte 0x03, 0x00, 0x05 // 0x1c
-	.byte 0x04, 0x00, 0x05 // 0x1d
-	.byte 0x05, 0x00, 0x05 // 0x1e
-	.byte 0x00, 0x00, 0x06 // 0x1f
-	.byte 0x01, 0x00, 0x06 // 0x20
-	.byte 0x02, 0x00, 0x06 // 0x21
-	.byte 0x03, 0x00, 0x06 // 0x22
-	.byte 0x04, 0x00, 0x06 // 0x23
-	.byte 0x05, 0x00, 0x06 // 0x24
-	.byte 0x00, 0x00, 0x07 // 0x25
-	.byte 0x01, 0x00, 0x07 // 0x26
-	.byte 0x02, 0x00, 0x07 // 0x27
-	.byte 0x03, 0x00, 0x07 // 0x28
-	.byte 0x04, 0x00, 0x07 // 0x29
-	.byte 0x05, 0x00, 0x07 // 0x2a
-	.byte 0x00, 0x00, 0x08 // 0x2b
-	.byte 0x01, 0x00, 0x08 // 0x2c
-	.byte 0x02, 0x00, 0x08 // 0x2d
-	.byte 0x03, 0x00, 0x08 // 0x2e
-	.byte 0x04, 0x00, 0x08 // 0x2f
-	.byte 0x05, 0x00, 0x08 // 0x30
-	.byte 0x00, 0x00, 0x09 // 0x31
-	.byte 0x01, 0x00, 0x09 // 0x32
-	.byte 0x02, 0x00, 0x09 // 0x33
-	.byte 0x03, 0x00, 0x09 // 0x34
-	.byte 0x04, 0x00, 0x09 // 0x35
-	.byte 0x05, 0x00, 0x09 // 0x36
-	.byte 0x00, 0x00, 0x0a // 0x37
-	.byte 0x01, 0x00, 0x0a // 0x38
-	.byte 0x02, 0x00, 0x0a // 0x39
-	.byte 0x03, 0x00, 0x0a // 0x3a
-	.byte 0x04, 0x00, 0x0a // 0x3b
-	.byte 0x05, 0x00, 0x0a // 0x3c
-	.byte 0x00, 0x00, 0x0b // 0x3d
-	.byte 0x01, 0x00, 0x0b // 0x3e
-	.byte 0x02, 0x00, 0x0b // 0x3f
-	.byte 0x03, 0x00, 0x0b // 0x40
-	.byte 0x04, 0x00, 0x0b // 0x41
-	.byte 0x05, 0x00, 0x0b // 0x42
-	.byte 0x00, 0x00, 0x0c // 0x43
-	.byte 0x01, 0x00, 0x0c // 0x44
-	.byte 0x02, 0x00, 0x0c // 0x45
-	.byte 0x03, 0x00, 0x0c // 0x46
-	.byte 0x04, 0x00, 0x0c // 0x47
-	.byte 0x05, 0x00, 0x0c // 0x48
-	.byte 0x00, 0x00, 0x0d // 0x49
-	.byte 0x01, 0x00, 0x0d // 0x4a
-	.byte 0x02, 0x00, 0x0d // 0x4b
-	.byte 0x03, 0x00, 0x0d // 0x4c
-	.byte 0x04, 0x00, 0x0d // 0x4d
-	.byte 0x05, 0x00, 0x0d // 0x4e
-	.byte 0x00, 0x00, 0x0e // 0x4f
-	.byte 0x01, 0x00, 0x0e // 0x50
-	.byte 0x02, 0x00, 0x0e // 0x51
-	.byte 0x03, 0x00, 0x0e // 0x52
-	.byte 0x04, 0x00, 0x0e // 0x53
-	.byte 0x05, 0x00, 0x0e // 0x54
-	.byte 0x00, 0x00, 0x0f // 0x55
-	.byte 0x01, 0x00, 0x0f // 0x56
-	.byte 0x02, 0x00, 0x0f // 0x57
-	.byte 0x03, 0x00, 0x0f // 0x58
-	.byte 0x04, 0x00, 0x0f // 0x59
-	.byte 0x05, 0x00, 0x0f // 0x5a
-	.byte 0x00, 0x00, 0x10 // 0x5b
-	.byte 0x01, 0x00, 0x10 // 0x5c
-	.byte 0x02, 0x00, 0x10 // 0x5d
-	.byte 0x03, 0x00, 0x10 // 0x5e
-	.byte 0x04, 0x00, 0x10 // 0x5f
-	.byte 0x05, 0x00, 0x10 // 0x60
-	.byte 0x00, 0x00, 0x11 // 0x61
-	.byte 0x01, 0x00, 0x11 // 0x62
-	.byte 0x02, 0x00, 0x11 // 0x63
-	.byte 0x03, 0x00, 0x11 // 0x64
-	.byte 0x04, 0x00, 0x11 // 0x65
-	.byte 0x05, 0x00, 0x11 // 0x66
-	.byte 0x00, 0x00, 0x12 // 0x67
-	.byte 0x01, 0x00, 0x12 // 0x68
-	.byte 0x02, 0x00, 0x12 // 0x69
-	.byte 0x03, 0x00, 0x12 // 0x6a
-	.byte 0x04, 0x00, 0x12 // 0x6b
-	.byte 0x05, 0x00, 0x12 // 0x6c
-	.byte 0x00, 0x00, 0x13 // 0x6d
-	.byte 0x01, 0x00, 0x13 // 0x6e
-	.byte 0x02, 0x00, 0x13 // 0x6f
-	.byte 0x03, 0x00, 0x13 // 0x70
-	.byte 0x04, 0x00, 0x13 // 0x71
-	.byte 0x05, 0x00, 0x13 // 0x72
-	.byte 0x00, 0x00, 0x14 // 0x73
-	.byte 0x01, 0x00, 0x14 // 0x74
-	.byte 0x02, 0x00, 0x14 // 0x75
-	.byte 0x03, 0x00, 0x14 // 0x76
-	.byte 0x04, 0x00, 0x14 // 0x77
-	.byte 0x05, 0x00, 0x14 // 0x78
-	.byte 0x00, 0x00, 0x15 // 0x79
-	.byte 0x01, 0x00, 0x15 // 0x7a
-	.byte 0x02, 0x00, 0x15 // 0x7b
-	.byte 0x03, 0x00, 0x15 // 0x7c
-	.byte 0x04, 0x00, 0x15 // 0x7d
-	.byte 0x05, 0x00, 0x15 // 0x7e
-	.byte 0x00, 0x00, 0x16 // 0x7f
-	.byte 0x01, 0x00, 0x16 // 0x80
-	.byte 0x02, 0x00, 0x16 // 0x81
-	.byte 0x03, 0x00, 0x16 // 0x82
-	.byte 0x04, 0x00, 0x16 // 0x83
-	.byte 0x05, 0x00, 0x16 // 0x84
-	.byte 0x00, 0x00, 0x17 // 0x85
-	.byte 0x01, 0x00, 0x17 // 0x86
-	.byte 0x02, 0x00, 0x17 // 0x87
-	.byte 0x03, 0x00, 0x17 // 0x88
-	.byte 0x04, 0x00, 0x17 // 0x89
-	.byte 0x05, 0x00, 0x17 // 0x8a
-	.byte 0x00, 0x00, 0x18 // 0x8b
-	.byte 0x01, 0x00, 0x18 // 0x8c
-	.byte 0x02, 0x00, 0x18 // 0x8d
-	.byte 0x03, 0x00, 0x18 // 0x8e
-	.byte 0x04, 0x00, 0x18 // 0x8f
-	.byte 0x05, 0x00, 0x18 // 0x90
-	.byte 0x00, 0x00, 0x19 // 0x91
-	.byte 0x01, 0x00, 0x19 // 0x92
-	.byte 0x02, 0x00, 0x19 // 0x93
-	.byte 0x03, 0x00, 0x19 // 0x94
-	.byte 0x04, 0x00, 0x19 // 0x95
-	.byte 0x05, 0x00, 0x19 // 0x96
-	.byte 0x00, 0x00, 0x1a // 0x97
-	.byte 0x01, 0x00, 0x1a // 0x98
-	.byte 0x02, 0x00, 0x1a // 0x99
-	.byte 0x03, 0x00, 0x1a // 0x9a
-	.byte 0x04, 0x00, 0x1a // 0x9b
-	.byte 0x05, 0x00, 0x1a // 0x9c
-	.byte 0x00, 0x00, 0x1b // 0x9d
-	.byte 0x01, 0x00, 0x1b // 0x9e
-	.byte 0x02, 0x00, 0x1b // 0x9f
-	.byte 0x03, 0x00, 0x1b // 0xa0
-	.byte 0x04, 0x00, 0x1b // 0xa1
-	.byte 0x05, 0x00, 0x1b // 0xa2
-	.byte 0x00, 0x00, 0x1c // 0xa3
-	.byte 0x01, 0x00, 0x1c // 0xa4
-	.byte 0x02, 0x00, 0x1c // 0xa5
-	.byte 0x03, 0x00, 0x1c // 0xa6
-	.byte 0x04, 0x00, 0x1c // 0xa7
-	.byte 0x05, 0x00, 0x1c // 0xa8
-	.byte 0x00, 0x00, 0x1d // 0xa9
-	.byte 0x01, 0x00, 0x1d // 0xaa
-	.byte 0x02, 0x00, 0x1d // 0xab
-	.byte 0x03, 0x00, 0x1d // 0xac
-	.byte 0x04, 0x00, 0x1d // 0xad
-	.byte 0x05, 0x00, 0x1d // 0xae
-	.byte 0x00, 0x00, 0x1e // 0xaf
-	.byte 0x01, 0x00, 0x1e // 0xb0
-	.byte 0x02, 0x00, 0x1e // 0xb1
-	.byte 0x03, 0x00, 0x1e // 0xb2
-	.byte 0x04, 0x00, 0x1e // 0xb3
-	.byte 0x05, 0x00, 0x1e // 0xb4
-	.byte 0x00, 0x00, 0x1f // 0xb5
-	.byte 0x01, 0x00, 0x1f // 0xb6
-	.byte 0x02, 0x00, 0x1f // 0xb7
-	.byte 0x03, 0x00, 0x1f // 0xb8
-	.byte 0x04, 0x00, 0x1f // 0xb9
-	.byte 0x05, 0x00, 0x1f // 0xba
-	.byte 0x00, 0x00, 0x01 // 0xbb
-	.byte 0x01, 0x00, 0x01 // 0xbc
-	.byte 0x02, 0x00, 0x01 // 0xbd
-	.byte 0x03, 0x00, 0x01 // 0xbe
-	.byte 0x04, 0x00, 0x01 // 0xbf
-	.byte 0x05, 0x00, 0x01 // 0xc0
-	.byte 0x00, 0x00, 0x01 // 0xc1
-	.byte 0x01, 0x00, 0x01 // 0xc2
-	.byte 0x02, 0x00, 0x01 // 0xc3
-	.byte 0x03, 0x00, 0x01 // 0xc4
-	.byte 0x04, 0x00, 0x01 // 0xc5
-	.byte 0x05, 0x00, 0x01 // 0xc6
-	.byte 0x00, 0x00, 0x01 // 0xc7
-	.byte 0x01, 0x00, 0x01 // 0xc8
-	.byte 0x02, 0x00, 0x01 // 0xc9
-	.byte 0x03, 0x00, 0x01 // 0xca
-	.byte 0x04, 0x00, 0x01 // 0xcb
-	.byte 0x05, 0x00, 0x01 // 0xcc
-	.byte 0x00, 0x00, 0x01 // 0xcd
-	.byte 0x01, 0x00, 0x01 // 0xce
-	.byte 0x02, 0x00, 0x01 // 0xcf
-	.byte 0x03, 0x00, 0x01 // 0xd0
-	.byte 0x04, 0x00, 0x01 // 0xd1
-	.byte 0x05, 0x00, 0x01 // 0xd2
-	.byte 0x00, 0x00, 0x01 // 0xd3
-	.byte 0x01, 0x00, 0x01 // 0xd4
-	.byte 0x02, 0x00, 0x01 // 0xd5
-	.byte 0x03, 0x00, 0x01 // 0xd6
-	.byte 0x04, 0x00, 0x01 // 0xd7
-	.byte 0x05, 0x00, 0x01 // 0xd8
-	.byte 0x00, 0x00, 0x01 // 0xd9
-	.byte 0x01, 0x00, 0x01 // 0xda
-	.byte 0x02, 0x00, 0x01 // 0xdb
-	.byte 0x03, 0x00, 0x01 // 0xdc
-	.byte 0x04, 0x00, 0x01 // 0xdd
-	.byte 0x05, 0x00, 0x01 // 0xde
-	.byte 0x00, 0x00, 0x01 // 0xdf
-	.byte 0x01, 0x00, 0x01 // 0xe0
-	.byte 0x02, 0x00, 0x01 // 0xe1
-	.byte 0x03, 0x00, 0x01 // 0xe2
-	.byte 0x04, 0x00, 0x01 // 0xe3
-	.byte 0x05, 0x00, 0x01 // 0xe4
-	.byte 0x00, 0x00, 0x01 // 0xe5
-	.byte 0x01, 0x00, 0x01 // 0xe6
-	.byte 0x02, 0x00, 0x01 // 0xe7
-	.byte 0x03, 0x00, 0x01 // 0xe8
-	.byte 0x04, 0x00, 0x01 // 0xe9
-	.byte 0x05, 0x00, 0x01 // 0xea
-	.byte 0x00, 0x00, 0x01 // 0xeb
-	.byte 0x01, 0x00, 0x01 // 0xec
-	.byte 0x02, 0x00, 0x01 // 0xed
-	.byte 0x03, 0x00, 0x01 // 0xee
-	.byte 0x04, 0x00, 0x01 // 0xef
-	.byte 0x05, 0x00, 0x01 // 0xf0
-	.byte 0x00, 0x00, 0x01 // 0xf1
-	.byte 0x01, 0x00, 0x01 // 0xf2
-	.byte 0x02, 0x00, 0x01 // 0xf3
-	.byte 0x03, 0x00, 0x01 // 0xf4
-	.byte 0x04, 0x00, 0x01 // 0xf5
-	.byte 0x05, 0x00, 0x01 // 0xf6
-	.byte 0x00, 0x00, 0x01 // 0xf7
-	.byte 0x01, 0x00, 0x01 // 0xf8
-	.byte 0x02, 0x00, 0x01 // 0xf9
-	.byte 0x03, 0x00, 0x01 // 0xfa
-	.byte 0x04, 0x00, 0x01 // 0xfb
-	.byte 0x05, 0x00, 0x01 // 0xfc
-	.byte 0x00, 0x00, 0x01 // 0xfd
-	.byte 0x00, 0x00, 0x01 // 0xfe
-	.byte 0x00, 0x00, 0x01 // 0xff
-	.byte 0x00, 0x01, 0x00 // 0x100
-	.byte 0x00, 0x01, 0x01 // 0x101
-	.byte 0x01, 0x01, 0x01 // 0x102
-	.byte 0x02, 0x01, 0x01 // 0x103
-	.byte 0x03, 0x01, 0x01 // 0x104
-	.byte 0x04, 0x01, 0x01 // 0x105
-	.byte 0x05, 0x01, 0x01 // 0x106
-	.byte 0x00, 0x01, 0x02 // 0x107
-	.byte 0x01, 0x01, 0x02 // 0x108
-	.byte 0x02, 0x01, 0x02 // 0x109
-	.byte 0x03, 0x01, 0x02 // 0x10a
-	.byte 0x04, 0x01, 0x02 // 0x10b
-	.byte 0x05, 0x01, 0x02 // 0x10c
-	.byte 0x00, 0x01, 0x03 // 0x10d
-	.byte 0x01, 0x01, 0x03 // 0x10e
-	.byte 0x02, 0x01, 0x03 // 0x10f
-	.byte 0x03, 0x01, 0x03 // 0x110
-	.byte 0x04, 0x01, 0x03 // 0x111
+	// Version, ActorType,        AIIndex
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x00 // 0x0
+
+	// Mettaur
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0x1
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x01 // 0x2
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x01 // 0x3
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x01 // 0x4
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x01 // 0x5
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x01 // 0x6
+
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x02 // 0x7
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x02 // 0x8
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x02 // 0x9
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x02 // 0xa
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x02 // 0xb
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x02 // 0xc
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x03 // 0xd
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x03 // 0xe
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x03 // 0xf
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x03 // 0x10
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x03 // 0x11
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x03 // 0x12
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x04 // 0x13
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x04 // 0x14
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x04 // 0x15
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x04 // 0x16
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x04 // 0x17
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x04 // 0x18
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x05 // 0x19
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x05 // 0x1a
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x05 // 0x1b
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x05 // 0x1c
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x05 // 0x1d
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x05 // 0x1e
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x06 // 0x1f
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x06 // 0x20
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x06 // 0x21
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x06 // 0x22
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x06 // 0x23
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x06 // 0x24
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x07 // 0x25
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x07 // 0x26
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x07 // 0x27
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x07 // 0x28
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x07 // 0x29
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x07 // 0x2a
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x08 // 0x2b
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x08 // 0x2c
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x08 // 0x2d
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x08 // 0x2e
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x08 // 0x2f
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x08 // 0x30
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x09 // 0x31
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x09 // 0x32
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x09 // 0x33
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x09 // 0x34
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x09 // 0x35
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x09 // 0x36
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x0a // 0x37
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x0a // 0x38
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x0a // 0x39
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x0a // 0x3a
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x0a // 0x3b
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x0a // 0x3c
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x0b // 0x3d
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x0b // 0x3e
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x0b // 0x3f
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x0b // 0x40
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x0b // 0x41
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x0b // 0x42
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x0c // 0x43
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x0c // 0x44
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x0c // 0x45
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x0c // 0x46
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x0c // 0x47
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x0c // 0x48
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x0d // 0x49
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x0d // 0x4a
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x0d // 0x4b
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x0d // 0x4c
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x0d // 0x4d
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x0d // 0x4e
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x0e // 0x4f
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x0e // 0x50
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x0e // 0x51
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x0e // 0x52
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x0e // 0x53
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x0e // 0x54
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x0f // 0x55
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x0f // 0x56
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x0f // 0x57
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x0f // 0x58
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x0f // 0x59
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x0f // 0x5a
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x10 // 0x5b
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x10 // 0x5c
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x10 // 0x5d
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x10 // 0x5e
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x10 // 0x5f
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x10 // 0x60
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x11 // 0x61
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x11 // 0x62
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x11 // 0x63
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x11 // 0x64
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x11 // 0x65
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x11 // 0x66
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x12 // 0x67
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x12 // 0x68
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x12 // 0x69
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x12 // 0x6a
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x12 // 0x6b
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x12 // 0x6c
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x13 // 0x6d
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x13 // 0x6e
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x13 // 0x6f
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x13 // 0x70
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x13 // 0x71
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x13 // 0x72
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x14 // 0x73
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x14 // 0x74
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x14 // 0x75
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x14 // 0x76
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x14 // 0x77
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x14 // 0x78
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x15 // 0x79
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x15 // 0x7a
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x15 // 0x7b
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x15 // 0x7c
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x15 // 0x7d
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x15 // 0x7e
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x16 // 0x7f
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x16 // 0x80
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x16 // 0x81
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x16 // 0x82
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x16 // 0x83
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x16 // 0x84
+
+	// Gunner
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x17 // 0x85
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x17 // 0x86
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x17 // 0x87
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x17 // 0x88
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x17 // 0x89
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x17 // 0x8a
+
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x18 // 0x8b
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x18 // 0x8c
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x18 // 0x8d
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x18 // 0x8e
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x18 // 0x8f
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x18 // 0x90
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x19 // 0x91
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x19 // 0x92
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x19 // 0x93
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x19 // 0x94
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x19 // 0x95
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x19 // 0x96
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x1a // 0x97
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x1a // 0x98
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x1a // 0x99
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x1a // 0x9a
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x1a // 0x9b
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x1a // 0x9c
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x1b // 0x9d
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x1b // 0x9e
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x1b // 0x9f
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x1b // 0xa0
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x1b // 0xa1
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x1b // 0xa2
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x1c // 0xa3
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x1c // 0xa4
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x1c // 0xa5
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x1c // 0xa6
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x1c // 0xa7
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x1c // 0xa8
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x1d // 0xa9
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x1d // 0xaa
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x1d // 0xab
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x1d // 0xac
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x1d // 0xad
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x1d // 0xae
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x1e // 0xaf
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x1e // 0xb0
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x1e // 0xb1
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x1e // 0xb2
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x1e // 0xb3
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x1e // 0xb4
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x1f // 0xb5
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x1f // 0xb6
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x1f // 0xb7
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x1f // 0xb8
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x1f // 0xb9
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x1f // 0xba
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0xbb
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x01 // 0xbc
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x01 // 0xbd
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x01 // 0xbe
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x01 // 0xbf
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x01 // 0xc0
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0xc1
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x01 // 0xc2
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x01 // 0xc3
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x01 // 0xc4
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x01 // 0xc5
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x01 // 0xc6
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0xc7
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x01 // 0xc8
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x01 // 0xc9
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x01 // 0xca
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x01 // 0xcb
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x01 // 0xcc
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0xcd
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x01 // 0xce
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x01 // 0xcf
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x01 // 0xd0
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x01 // 0xd1
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x01 // 0xd2
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0xd3
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x01 // 0xd4
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x01 // 0xd5
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x01 // 0xd6
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x01 // 0xd7
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x01 // 0xd8
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0xd9
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x01 // 0xda
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x01 // 0xdb
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x01 // 0xdc
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x01 // 0xdd
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x01 // 0xde
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0xdf
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x01 // 0xe0
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x01 // 0xe1
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x01 // 0xe2
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x01 // 0xe3
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x01 // 0xe4
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0xe5
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x01 // 0xe6
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x01 // 0xe7
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x01 // 0xe8
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x01 // 0xe9
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x01 // 0xea
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0xeb
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x01 // 0xec
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x01 // 0xed
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x01 // 0xee
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x01 // 0xef
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x01 // 0xf0
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0xf1
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x01 // 0xf2
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x01 // 0xf3
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x01 // 0xf4
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x01 // 0xf5
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x01 // 0xf6
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0xf7
+	.byte 0x01, ACTOR_TYPE_VIRUS, 0x01 // 0xf8
+	.byte 0x02, ACTOR_TYPE_VIRUS, 0x01 // 0xf9
+	.byte 0x03, ACTOR_TYPE_VIRUS, 0x01 // 0xfa
+	.byte 0x04, ACTOR_TYPE_VIRUS, 0x01 // 0xfb
+	.byte 0x05, ACTOR_TYPE_VIRUS, 0x01 // 0xfc
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0xfd
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0xfe
+	.byte 0x00, ACTOR_TYPE_VIRUS, 0x01 // 0xff
+
+	// Navis from here on (except one at 0x112 apparently?)
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x100
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x01 // 0x101
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x01 // 0x102
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x01 // 0x103
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x01 // 0x104
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x01 // 0x105
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x01 // 0x106
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x02 // 0x107
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x02 // 0x108
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x02 // 0x109
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x02 // 0x10a
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x02 // 0x10b
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x02 // 0x10c
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x03 // 0x10d
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x03 // 0x10e
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x03 // 0x10f
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x03 // 0x110
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x03 // 0x111
 	.byte 0x05, 0x00, 0x03 // 0x112
-	.byte 0x00, 0x01, 0x04 // 0x113
-	.byte 0x01, 0x01, 0x04 // 0x114
-	.byte 0x02, 0x01, 0x04 // 0x115
-	.byte 0x03, 0x01, 0x04 // 0x116
-	.byte 0x04, 0x01, 0x04 // 0x117
-	.byte 0x05, 0x01, 0x04 // 0x118
-	.byte 0x00, 0x01, 0x05 // 0x119
-	.byte 0x01, 0x01, 0x05 // 0x11a
-	.byte 0x02, 0x01, 0x05 // 0x11b
-	.byte 0x03, 0x01, 0x05 // 0x11c
-	.byte 0x04, 0x01, 0x05 // 0x11d
-	.byte 0x05, 0x01, 0x05 // 0x11e
-	.byte 0x00, 0x01, 0x06 // 0x11f
-	.byte 0x01, 0x01, 0x06 // 0x120
-	.byte 0x02, 0x01, 0x06 // 0x121
-	.byte 0x03, 0x01, 0x06 // 0x122
-	.byte 0x04, 0x01, 0x06 // 0x123
-	.byte 0x05, 0x01, 0x06 // 0x124
-	.byte 0x00, 0x01, 0x07 // 0x125
-	.byte 0x01, 0x01, 0x07 // 0x126
-	.byte 0x02, 0x01, 0x07 // 0x127
-	.byte 0x03, 0x01, 0x07 // 0x128
-	.byte 0x04, 0x01, 0x07 // 0x129
-	.byte 0x05, 0x01, 0x07 // 0x12a
-	.byte 0x00, 0x01, 0x08 // 0x12b
-	.byte 0x01, 0x01, 0x08 // 0x12c
-	.byte 0x02, 0x01, 0x08 // 0x12d
-	.byte 0x03, 0x01, 0x08 // 0x12e
-	.byte 0x04, 0x01, 0x08 // 0x12f
-	.byte 0x05, 0x01, 0x08 // 0x130
-	.byte 0x00, 0x01, 0x09 // 0x131
-	.byte 0x01, 0x01, 0x09 // 0x132
-	.byte 0x02, 0x01, 0x09 // 0x133
-	.byte 0x03, 0x01, 0x09 // 0x134
-	.byte 0x04, 0x01, 0x09 // 0x135
-	.byte 0x05, 0x01, 0x09 // 0x136
-	.byte 0x00, 0x01, 0x0a // 0x137
-	.byte 0x01, 0x01, 0x0a // 0x138
-	.byte 0x02, 0x01, 0x0a // 0x139
-	.byte 0x03, 0x01, 0x0a // 0x13a
-	.byte 0x04, 0x01, 0x0a // 0x13b
-	.byte 0x05, 0x01, 0x0a // 0x13c
-	.byte 0x00, 0x01, 0x0b // 0x13d
-	.byte 0x01, 0x01, 0x0b // 0x13e
-	.byte 0x02, 0x01, 0x0b // 0x13f
-	.byte 0x03, 0x01, 0x0b // 0x140
-	.byte 0x04, 0x01, 0x0b // 0x141
-	.byte 0x05, 0x01, 0x0b // 0x142
-	.byte 0x00, 0x01, 0x0c // 0x143
-	.byte 0x01, 0x01, 0x0c // 0x144
-	.byte 0x02, 0x01, 0x0c // 0x145
-	.byte 0x03, 0x01, 0x0c // 0x146
-	.byte 0x04, 0x01, 0x0c // 0x147
-	.byte 0x05, 0x01, 0x0c // 0x148
-	.byte 0x00, 0x01, 0x0d // 0x149
-	.byte 0x01, 0x01, 0x0d // 0x14a
-	.byte 0x02, 0x01, 0x0d // 0x14b
-	.byte 0x03, 0x01, 0x0d // 0x14c
-	.byte 0x04, 0x01, 0x0d // 0x14d
-	.byte 0x05, 0x01, 0x0d // 0x14e
-	.byte 0x00, 0x01, 0x0e // 0x14f
-	.byte 0x01, 0x01, 0x0e // 0x150
-	.byte 0x02, 0x01, 0x0e // 0x151
-	.byte 0x03, 0x01, 0x0e // 0x152
-	.byte 0x04, 0x01, 0x0e // 0x153
-	.byte 0x05, 0x01, 0x0e // 0x154
-	.byte 0x00, 0x01, 0x0f // 0x155
-	.byte 0x01, 0x01, 0x0f // 0x156
-	.byte 0x02, 0x01, 0x0f // 0x157
-	.byte 0x03, 0x01, 0x0f // 0x158
-	.byte 0x04, 0x01, 0x0f // 0x159
-	.byte 0x05, 0x01, 0x0f // 0x15a
-	.byte 0x00, 0x01, 0x10 // 0x15b
-	.byte 0x01, 0x01, 0x10 // 0x15c
-	.byte 0x02, 0x01, 0x10 // 0x15d
-	.byte 0x03, 0x01, 0x10 // 0x15e
-	.byte 0x04, 0x01, 0x10 // 0x15f
-	.byte 0x05, 0x01, 0x10 // 0x160
-	.byte 0x00, 0x01, 0x11 // 0x161
-	.byte 0x01, 0x01, 0x11 // 0x162
-	.byte 0x02, 0x01, 0x11 // 0x163
-	.byte 0x03, 0x01, 0x11 // 0x164
-	.byte 0x04, 0x01, 0x11 // 0x165
-	.byte 0x05, 0x01, 0x11 // 0x166
-	.byte 0x00, 0x01, 0x12 // 0x167
-	.byte 0x01, 0x01, 0x12 // 0x168
-	.byte 0x02, 0x01, 0x12 // 0x169
-	.byte 0x03, 0x01, 0x12 // 0x16a
-	.byte 0x04, 0x01, 0x12 // 0x16b
-	.byte 0x05, 0x01, 0x12 // 0x16c
-	.byte 0x00, 0x01, 0x13 // 0x16d
-	.byte 0x01, 0x01, 0x13 // 0x16e
-	.byte 0x02, 0x01, 0x13 // 0x16f
-	.byte 0x03, 0x01, 0x13 // 0x170
-	.byte 0x04, 0x01, 0x13 // 0x171
-	.byte 0x05, 0x01, 0x13 // 0x172
-	.byte 0x00, 0x01, 0x14 // 0x173
-	.byte 0x01, 0x01, 0x14 // 0x174
-	.byte 0x02, 0x01, 0x14 // 0x175
-	.byte 0x03, 0x01, 0x14 // 0x176
-	.byte 0x04, 0x01, 0x14 // 0x177
-	.byte 0x05, 0x01, 0x14 // 0x178
-	.byte 0x00, 0x01, 0x15 // 0x179
-	.byte 0x01, 0x01, 0x15 // 0x17a
-	.byte 0x02, 0x01, 0x15 // 0x17b
-	.byte 0x03, 0x01, 0x15 // 0x17c
-	.byte 0x04, 0x01, 0x15 // 0x17d
-	.byte 0x05, 0x01, 0x15 // 0x17e
-	.byte 0x00, 0x01, 0x16 // 0x17f
-	.byte 0x01, 0x01, 0x16 // 0x180
-	.byte 0x02, 0x01, 0x16 // 0x181
-	.byte 0x03, 0x01, 0x16 // 0x182
-	.byte 0x04, 0x01, 0x16 // 0x183
-	.byte 0x05, 0x01, 0x16 // 0x184
-	.byte 0x00, 0x01, 0x17 // 0x185
-	.byte 0x01, 0x01, 0x17 // 0x186
-	.byte 0x02, 0x01, 0x17 // 0x187
-	.byte 0x03, 0x01, 0x17 // 0x188
-	.byte 0x04, 0x01, 0x17 // 0x189
-	.byte 0x05, 0x01, 0x17 // 0x18a
-	.byte 0x00, 0x01, 0x18 // 0x18b
-	.byte 0x01, 0x01, 0x18 // 0x18c
-	.byte 0x02, 0x01, 0x18 // 0x18d
-	.byte 0x03, 0x01, 0x18 // 0x18e
-	.byte 0x04, 0x01, 0x18 // 0x18f
-	.byte 0x05, 0x01, 0x18 // 0x190
-	.byte 0x00, 0x01, 0x00 // 0x191
-	.byte 0x00, 0x01, 0x00 // 0x192
-	.byte 0x00, 0x01, 0x00 // 0x193
-	.byte 0x00, 0x01, 0x00 // 0x194
-	.byte 0x00, 0x01, 0x00 // 0x195
-	.byte 0x00, 0x01, 0x00 // 0x196
-	.byte 0x00, 0x01, 0x00 // 0x197
-	.byte 0x00, 0x01, 0x00 // 0x198
-	.byte 0x00, 0x01, 0x00 // 0x199
-	.byte 0x00, 0x01, 0x00 // 0x19a
-	.byte 0x00, 0x01, 0x00 // 0x19b
-	.byte 0x00, 0x01, 0x00 // 0x19c
-	.byte 0x00, 0x01, 0x00 // 0x19d
-	.byte 0x00, 0x01, 0x00 // 0x19e
-	.byte 0x00, 0x01, 0x00 // 0x19f
-	.byte 0x00, 0x02, 0x00 // 0x1a0
-	.byte 0x00, 0x02, 0x01 // 0x1a1
-	.byte 0x00, 0x02, 0x02 // 0x1a2
-	.byte 0x00, 0x02, 0x03 // 0x1a3
-	.byte 0x00, 0x02, 0x04 // 0x1a4
-	.byte 0x00, 0x02, 0x05 // 0x1a5
-	.byte 0x00, 0x02, 0x06 // 0x1a6
-	.byte 0x00, 0x02, 0x07 // 0x1a7
-	.byte 0x00, 0x02, 0x08 // 0x1a8
-	.byte 0x00, 0x02, 0x09 // 0x1a9
-	.byte 0x00, 0x02, 0x0a // 0x1aa
-	.byte 0x00, 0x02, 0x0b // 0x1ab
-	.byte 0x00, 0x02, 0x19 // 0x1ac
-	.byte 0x00, 0x02, 0x1a // 0x1ad
-	.byte 0x00, 0x02, 0x1b // 0x1ae
-	.byte 0x00, 0x02, 0x1c // 0x1af
-	.byte 0x00, 0x02, 0x1d // 0x1b0
-	.byte 0x00, 0x02, 0x1e // 0x1b1
-	.byte 0x00, 0x02, 0x1f // 0x1b2
-	.byte 0x00, 0x02, 0x20 // 0x1b3
-	.byte 0x00, 0x02, 0x21 // 0x1b4
-	.byte 0x00, 0x02, 0x22 // 0x1b5
-	.byte 0x00, 0x02, 0x23 // 0x1b6
-	.byte 0x00, 0x02, 0x24 // 0x1b7
-	.byte 0x00, 0x02, 0x25 // 0x1b8
-	.byte 0x00, 0x02, 0x26 // 0x1b9
-	.byte 0x00, 0x02, 0x27 // 0x1ba
-	.byte 0x00, 0x02, 0x28 // 0x1bb
-	.byte 0x00, 0x02, 0x29 // 0x1bc
-	.byte 0x00, 0x02, 0x2a // 0x1bd
-	.byte 0x00, 0x02, 0x2b // 0x1be
-	.byte 0x00, 0x02, 0x2c // 0x1bf
-	.byte 0x00, 0x02, 0x2d // 0x1c0
-	.byte 0x00, 0x02, 0x2e // 0x1c1
-	.byte 0x00, 0x02, 0x2f // 0x1c2
-	.byte 0x00, 0x02, 0x30 // 0x1c3
-	thumb_func_end sub_80182B4
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x04 // 0x113
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x04 // 0x114
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x04 // 0x115
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x04 // 0x116
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x04 // 0x117
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x04 // 0x118
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x05 // 0x119
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x05 // 0x11a
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x05 // 0x11b
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x05 // 0x11c
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x05 // 0x11d
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x05 // 0x11e
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x06 // 0x11f
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x06 // 0x120
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x06 // 0x121
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x06 // 0x122
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x06 // 0x123
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x06 // 0x124
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x07 // 0x125
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x07 // 0x126
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x07 // 0x127
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x07 // 0x128
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x07 // 0x129
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x07 // 0x12a
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x08 // 0x12b
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x08 // 0x12c
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x08 // 0x12d
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x08 // 0x12e
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x08 // 0x12f
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x08 // 0x130
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x09 // 0x131
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x09 // 0x132
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x09 // 0x133
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x09 // 0x134
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x09 // 0x135
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x09 // 0x136
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x0a // 0x137
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x0a // 0x138
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x0a // 0x139
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x0a // 0x13a
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x0a // 0x13b
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x0a // 0x13c
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x0b // 0x13d
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x0b // 0x13e
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x0b // 0x13f
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x0b // 0x140
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x0b // 0x141
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x0b // 0x142
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x0c // 0x143
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x0c // 0x144
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x0c // 0x145
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x0c // 0x146
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x0c // 0x147
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x0c // 0x148
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x0d // 0x149
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x0d // 0x14a
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x0d // 0x14b
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x0d // 0x14c
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x0d // 0x14d
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x0d // 0x14e
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x0e // 0x14f
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x0e // 0x150
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x0e // 0x151
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x0e // 0x152
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x0e // 0x153
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x0e // 0x154
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x0f // 0x155
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x0f // 0x156
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x0f // 0x157
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x0f // 0x158
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x0f // 0x159
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x0f // 0x15a
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x10 // 0x15b
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x10 // 0x15c
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x10 // 0x15d
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x10 // 0x15e
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x10 // 0x15f
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x10 // 0x160
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x11 // 0x161
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x11 // 0x162
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x11 // 0x163
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x11 // 0x164
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x11 // 0x165
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x11 // 0x166
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x12 // 0x167
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x12 // 0x168
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x12 // 0x169
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x12 // 0x16a
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x12 // 0x16b
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x12 // 0x16c
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x13 // 0x16d
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x13 // 0x16e
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x13 // 0x16f
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x13 // 0x170
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x13 // 0x171
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x13 // 0x172
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x14 // 0x173
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x14 // 0x174
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x14 // 0x175
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x14 // 0x176
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x14 // 0x177
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x14 // 0x178
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x15 // 0x179
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x15 // 0x17a
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x15 // 0x17b
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x15 // 0x17c
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x15 // 0x17d
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x15 // 0x17e
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x16 // 0x17f
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x16 // 0x180
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x16 // 0x181
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x16 // 0x182
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x16 // 0x183
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x16 // 0x184
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x17 // 0x185
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x17 // 0x186
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x17 // 0x187
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x17 // 0x188
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x17 // 0x189
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x17 // 0x18a
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x18 // 0x18b
+	.byte 0x01, ACTOR_TYPE_NAVI, 0x18 // 0x18c
+	.byte 0x02, ACTOR_TYPE_NAVI, 0x18 // 0x18d
+	.byte 0x03, ACTOR_TYPE_NAVI, 0x18 // 0x18e
+	.byte 0x04, ACTOR_TYPE_NAVI, 0x18 // 0x18f
+	.byte 0x05, ACTOR_TYPE_NAVI, 0x18 // 0x190
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x191
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x192
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x193
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x194
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x195
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x196
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x197
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x198
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x199
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x19a
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x19b
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x19c
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x19d
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x19e
+	.byte 0x00, ACTOR_TYPE_NAVI, 0x00 // 0x19f
+
+	// Players
+
+  // MegaMan
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x00 // 0x1a0
+
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x01 // 0x1a1
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x02 // 0x1a2
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x03 // 0x1a3
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x04 // 0x1a4
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x05 // 0x1a5
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x06 // 0x1a6
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x07 // 0x1a7
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x08 // 0x1a8
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x09 // 0x1a9
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x0a // 0x1aa
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x0b // 0x1ab
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x19 // 0x1ac
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x1a // 0x1ad
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x1b // 0x1ae
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x1c // 0x1af
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x1d // 0x1b0
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x1e // 0x1b1
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x1f // 0x1b2
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x20 // 0x1b3
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x21 // 0x1b4
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x22 // 0x1b5
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x23 // 0x1b6
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x24 // 0x1b7
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x25 // 0x1b8
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x26 // 0x1b9
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x27 // 0x1ba
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x28 // 0x1bb
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x29 // 0x1bc
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x2a // 0x1bd
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x2b // 0x1be
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x2c // 0x1bf
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x2d // 0x1c0
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x2e // 0x1c1
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x2f // 0x1c2
+	.byte 0x00, ACTOR_TYPE_PLAYER, 0x30 // 0x1c3
+	thumb_func_end GetVerActorTyAndAIIdx_80182B4
 
 	thumb_func_start getBattleArmPositionMaybe_8018810
 // r0 - name id
@@ -23462,7 +23642,7 @@ loc_801B188:
 	bne loc_801B196
 loc_801B18E:
 	ldr r0, [sp]
-	bl RunAIAttack
+	bl RunAIAttack // (extra_ai_attack_jumptable: * [* Fn]) -> ()
 	b loc_801B1A0
 loc_801B196:
 	bl sub_8017AB4
@@ -23490,211 +23670,297 @@ dword_801B1C0:
 	.word 0x80000000
 	thumb_func_end ai_eventuallyRunsAIAttack_801AF44
 
-	thumb_func_start sub_801B1C4
-sub_801B1C4:
+	thumb_func_start battle_801B1C4
+battle_801B1C4:
 	push {r6,r7,lr}
+
+	.equiv stack_801B1C4_JumpTable, 0x00
+
 	sub sp, sp, #4
-	str r0, [sp]
+
+	str r0, [sp, #stack_801B1C4_JumpTable]
+
 	ldr r6, [r5,#oBattleObject_CollisionDataPtr]
+
 	bl battle_isPaused
 	tst r0, r0
-	beq loc_801B21C
+	beq loc_801B21C /*+0e*/
+
 	bl object_getFlag2
-	ldr r1, dword_801B390 // =0x80000 
+	ldr r1, dword_801B390 // =OBJECT_FLAGS_2_DO_UPDATE_COLLISION_PANELS
 	tst r0, r1
 	beq loc_801B1E8
+
 	bl object_updateCollisionPanels
-	ldr r0, dword_801B390 // =0x80000 
+	ldr r0, dword_801B390 // =OBJECT_FLAGS_2_DO_UPDATE_COLLISION_PANELS
 	bl object_clearFlag2
-loc_801B1E8:
+
+loc_801B1E8: // endif
+
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	cmp r0, #0
 	beq loc_801B21C
+
 	bl object_getFlag // () -> int
-	ldr r1, dword_801B384 // =0x40000100 
+	ldr r1, dword_801B384 // =OBJECT_FLAGS_UNK_30 | OBJECT_FLAGS_DEAD
 	tst r0, r1
 	beq loc_801B1FA
+	// if OBJECT_FLAGS_UNK_30 set || OBJECT_FLAGS_DEAD set
+
 	b loc_801B338
-loc_801B1FA:
+
+loc_801B1FA: // endif
+
+	// return if OBJECT_FLAGS_2_UNK_BIT_15 not set
 	bl object_getFlag2
-	ldr r1, dword_801B388 // =0x8000 
+	ldr r1, dword_801B388 // =OBJECT_FLAGS_2_UNK_BIT_15
 	tst r0, r1
 	beq loc_801B21A
+
 	mov r0, r1
 	bl object_clearFlag2
-	ldr r0, dword_801B384 // =0x40000100 
+
+	ldr r0, dword_801B384 // =OBJECT_FLAGS_UNK_30 | OBJECT_FLAGS_DEAD
 	bl object_setFlag1 // (int a1) -> void
+
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
+
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
+
 	b loc_801B338
+
 loc_801B21A:
-	b loc_801B37A
+	b locret_801B37A
+
 loc_801B21C:
+
 	bl sub_801A42E
 	bl sub_801A4A6
 	bl sub_801A45C
 	bl sub_801BADE
-	mov r0, #0x80
+
+	mov r0, #oCollisionData_FinalDamage
 	ldrh r0, [r6,r0]
 	tst r0, r0
 	beq loc_801B24E
+
 	push {r0}
 	bl sprite_forceWhitePalette
-	mov r0, #0x6d 
+	mov r0, #SOUND_HIT_6D
 	bl PlaySoundEffect
 	bl sub_801A67E
 	pop {r0}
+
 	bl object_subtractHP
 	tst r1, r1
 	beq loc_801B260
+
 loc_801B24E:
-	mov r0, #0x8c
+	mov r0, #oCollisionData_PanelDamage6
 	ldrh r0, [r6,r0]
 	bl object_subtractHP
 	bl sub_801B9BC
 	ldrh r0, [r5,#oBattleObject_HP]
 	tst r0, r0
 	bne loc_801B266
-loc_801B260:
+
+loc_801B260: // HP reached zero
 	mov r0, #1
 	bl object_setFlag2
+
 loc_801B266:
 	bl sub_801A200
+
+	// branch if OBJECT_FLAGS_DEAD set
 	bl object_getFlag // () -> int
 	mov r1, #1
 	lsl r1, r1, #8
 	tst r0, r1
 	bne loc_801B338
+
 	bl object_getFlag2
-	mov r1, #1
+	mov r1, #OBJECT_FLAGS_2_UNK_BIT_00
 	tst r0, r1
 	beq loc_801B298
+	// if OBJECT_FLAGS_2_UNK_BIT_00 set
+
 	mov r0, r1
 	bl object_clearFlag2
+
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
 	bl object_setFlag1 // (int a1) -> void
+
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
+
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
+
 	b loc_801B338
-loc_801B298:
+
+loc_801B298: // endif
+
 	bl battle_isTimeStop
 	bne loc_801B338
+
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_PreventAnim]
+
 	bl object_getFlag2
 	mov r1, #1
-	lsl r1, r1, #8
+	lsl r1, r1, #8 // OBJECT_FLAGS_2_UNK_BIT_08
 	tst r0, r1
 	beq loc_801B2D6
+	// if OBJECT_FLAGS_2_UNK_BIT_08 set
+
 	mov r0, r1
 	bl object_clearFlag2
+
 	bl sub_801A29A
 	bl sub_801A2B0
 	bl sub_801BA92
+
 	ldr r0, [r5,#oBattleObject_Unk_5c]
 	tst r0, r0
 	bne loc_801B2CA
+
 	ldr r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	str r0, [r5,#oBattleObject_Unk_5c]
-loc_801B2CA:
+
+loc_801B2CA: // endif
+
 	mov r0, #5
 	strb r0, [r5,#oBattleObject_CurAction]
+
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurPhase]
 	strb r0, [r5,#oBattleObject_Unk_0d]
+
 	b loc_801B338
-loc_801B2D6:
+
+loc_801B2D6: // endif
+
 	bl object_getFlag // () -> int
 	mov r1, #1
-	lsl r1, r1, #0x14
+	lsl r1, r1, #0x14 // OBJECT_FLAGS_IMMOBILIZED
 	tst r0, r1
 	beq loc_801B2E8
+	// if OBJECT_FLAGS_IMMOBILIZED set
+
 	mov r0, #5
 	strb r0, [r5,#oBattleObject_CurAction]
 	b loc_801B338
-loc_801B2E8:
+
+loc_801B2E8: // endif
+
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Unk_0d]
+
 	bl object_getFlag2
-	mov r1, #0x10
+	mov r1, #OBJECT_FLAGS_2_UNK_BIT_04
 	tst r0, r1
 	beq loc_801B302
+	// if OBJECT_FLAGS_2_UNK_BIT_04 set
+
 	mov r0, r1
 	bl object_clearFlag2
+
 	bl sub_80166B6
 	b loc_801B318
-loc_801B302:
+
+loc_801B302: // endif
+
 	bl object_getFlag // () -> int
 	mov r1, #1
-	lsl r1, r1, #0xc
+	lsl r1, r1, #12 // OBJECT_FLAGS_SLIDING
 	tst r0, r1
 	beq loc_801B314
+	// if OBJECT_FLAGS_SLIDING set
+
 	bl sub_80166B6
 	b loc_801B318
-loc_801B314:
+
+loc_801B314: // endif
+
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Unk_1f]
+
 loc_801B318:
+
 	ldrh r0, [r6,#oCollisionData_FlashingInvisTimer]
 	tst r0, r0
 	beq loc_801B324
+
 	sub r0, #1
 	strh r0, [r6,#oCollisionData_FlashingInvisTimer]
 	bgt loc_801B32C
+
 loc_801B324:
-	ldr r0, dword_801B380 // =0x202 
+	ldr r0, dword_801B380 // =OBJECT_FLAGS_FLASHING | OBJECT_FLAGS_INVIS
 	bl object_clearFlag // (int bitfield) -> void
 	b loc_801B334
 loc_801B32C:
 	mov r0, #1
-	lsl r0, r0, #9
+	lsl r0, r0, #9 // OBJECT_FLAGS_FLASHING
 	bl object_setFlag1 // (int a1) -> void
 loc_801B334:
 	bl sub_800E730
+
 loc_801B338:
+
 	bl sprite_zeroColorShader
+
 	mov r0, #1
-	lsl r0, r0, #0xe
+	lsl r0, r0, #14 // OBJECT_FLAGS_2_UNK_BIT_14
 	bl object_clearFlag2
+
 	bl sub_801690A
 	bl sub_8016860
 	bl sub_80168C8
 	bl sub_80168F0
+
 	bl blindVisualHandledHere_8016934
+
 	bl sub_8016CA4
+
 	bl object_getFlag // () -> int
 	mov r1, #1
-	lsl r1, r1, #8
+	lsl r1, r1, #8 // OBJECT_FLAGS_DEAD
 	tst r0, r1
 	bne loc_801B36E
+	// if OBJECT_FLAGS_DEAD clear
+
 	bl battle_isTimeStop
 	bne loc_801B376
-loc_801B36E:
-	ldr r0, [sp]
-	bl RunAIAttack
-	b loc_801B37A
-loc_801B376:
+
+loc_801B36E: // endif
+
+	ldr r0, [sp, #stack_801B1C4_JumpTable]
+	bl RunAIAttack // (extra_ai_attack_jumptable: * [* Fn]) -> ()
+	b locret_801B37A
+
+loc_801B376: // else
+
 	bl sub_8016BFC
-loc_801B37A:
+
+locret_801B37A: // endif
 	add sp, sp, #4
 	pop {r6,r7,pc}
 	.balign 4, 0
 dword_801B380:
-	.word 0x202
+	.word OBJECT_FLAGS_FLASHING | OBJECT_FLAGS_INVIS
 dword_801B384:
-	.word 0x40000100
+	.word OBJECT_FLAGS_UNK_30 | OBJECT_FLAGS_DEAD
 dword_801B388:
-	.word 0x8000
+	.word OBJECT_FLAGS_2_UNK_BIT_15
 off_801B38C:
 	.word 0x1AC
 dword_801B390:
-	.word 0x80000
-	thumb_func_end sub_801B1C4
+	.word OBJECT_FLAGS_2_DO_UPDATE_COLLISION_PANELS
+	thumb_func_end battle_801B1C4
 
 	thumb_func_start sub_801B394
 sub_801B394: // JP: 0x801b904
@@ -24507,24 +24773,30 @@ locret_801B9E4:
 	thumb_func_end sub_801B9BC
 
 	thumb_local_start
-RunAIAttack:
+RunAIAttack: // (extra_ai_attack_jumptable: * [* Fn]) -> ()
 	push {r4,r6,r7,lr}
 	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	mov r6, #oAIData_AIState
 	add r6, r6, r4 // r6 = AI state
 	mov r7, #oAIData_AttackVars
 	add r7, r7, r4 // r7 = current attack variable region
+
 	ldrb r1, [r5,#oBattleObject_CurAction]
 	cmp r1, #0x10
-	blt loc_801BA08
+	blt loc_801BA08 /*+10*/
+
 	sub r1, #0x10
 	ldr r0, off_801BB10 // =AIAttackJumptable
+
 	ldrb r2, [r7,#oAIAttackVars_Unk_1d]
 	cmp r2, #1
-	bne loc_801BA08
+	bne loc_801BA08 /*+1a*/
+
 	bl sub_80EAD9C
 	b locret_801BA10
+
 loc_801BA08:
+	// Index by CurAction * 4 or (CurAction - 0x10) * 4
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 	mov lr, pc
@@ -24867,36 +25139,50 @@ locret_801BC62:
 UpdateBattleObjectSprite:
 	push {lr}
 	ldrb r0, [r5,#oObjectHeader_Flags]
+
 	mov r1, #OBJECT_FLAG_ACTIVE
 	tst r0, r1
 	beq .doNotUpdateSprite
+
 	mov r1, #OBJECT_FLAG_STOP_SPRITE_UPDATE
 	tst r0, r1
 	bne .doNotUpdateSprite
+
 	mov r1, #OBJECT_FLAG_UPDATE_DURING_TIMESTOP
 	tst r0, r1
 	bne .notTimestop
+
 	bl battle_isTimeStop
 	bne .doNotUpdateSprite
+
 .notTimestop
+
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
 	tst r0, r0
 	beq .noCollision
+
 	ldrb r0, [r5,#oBattleObject_PreventAnim]
 	tst r0, r0
 	bne .doNotUpdateSprite
+
 .noCollision
+
 	ldrb r0, [r5,#oBattleObject_CurAnim]
 	ldrb r1, [r5,#oBattleObject_CurAnimCopy]
 	cmp r0, r1
 	beq .animNotChanged
+
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	ldrb r0, [r5,#oBattleObject_CurAnim]
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
+
 .animNotChanged
+
 	bl sprite_update
+
 .doNotUpdateSprite
+
 	pop {pc}
 	thumb_func_end UpdateBattleObjectSprite
 
@@ -26771,7 +27057,7 @@ sub_801CA0C:
 	bl sub_801BED6
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 locret_801CA26:
 	pop {pc}
 	thumb_func_end sub_801CA0C
@@ -27424,7 +27710,7 @@ sub_801CEFA:
 	bl sub_801BED6
 	mov r0, #1
 	lsl r0, r0, #0xf
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	pop {pc}
 	thumb_func_end sub_801CEFA
 
@@ -27815,7 +28101,7 @@ sub_801D1D8:
 	bl sub_801BED6
 	mov r0, #1
 	lsl r0, r0, #0x10
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 locret_801D1F4:
 	pop {pc}
 	thumb_func_end sub_801D1D8
@@ -28228,11 +28514,11 @@ loc_801D526:
 	tst r1, r0
 	beq loc_801D53A
 	ldr r0, dword_801D544 // =0x100000 
-	bl sub_801DA48
+	bl dispatch_801DA48
 	b locret_801D540
 loc_801D53A:
 	ldr r0, dword_801D544 // =0x100000 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 locret_801D540:
 	pop {pc}
 	.balign 4, 0
@@ -28252,7 +28538,7 @@ sub_801D548:
 	bl sub_801BED6
 	mov r0, #1
 	lsl r0, r0, #0x15
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 locret_801D562:
 	pop {pc}
 	thumb_func_end sub_801D548
@@ -28761,8 +29047,8 @@ dword_801DA44:
 	.word 0x1F09
 	thumb_func_end sub_801DA24
 
-	thumb_func_start sub_801DA48
-sub_801DA48:
+	thumb_func_start dispatch_801DA48
+dispatch_801DA48:
 	push {r5-r7,lr}
 	ldr r5, off_801DB50 // =eStruct2035280
 	ldr r6, off_801DA68 // =off_801DA6C 
@@ -28809,60 +29095,90 @@ off_801DA6C:
 	.word sub_801EC38+1
 	.word sub_801EC90+1
 	.word sub_801E07C+1
-	thumb_func_end sub_801DA48
+	thumb_func_end dispatch_801DA48
 
-	thumb_func_start sub_801DACC
-sub_801DACC:
+	thumb_func_start dispatch_801DACC
+dispatch_801DACC: // (a0: flags32) -> ()
 	push {r5-r7,lr}
 	ldr r5, off_801DB50 // =eStruct2035280
 	ldr r6, off_801DAEC // =off_801DAF0 
-	ldr r7, [r5,#0x44] // (dword_20352C4 - 0x2035280)
+
+	ldr r7, [r5,#oStruct2035280_UnkFlags_44]
 	and r7, r0
-loc_801DAD6:
+
+loop_801DAD6:
 	lsr r7, r7, #1
 	bcs loc_801DAE0
 	beq locret_801DAEA
 	add r6, #4
-	b loc_801DAD6
+	b loop_801DAD6
 loc_801DAE0:
+
+	// disabling this causes messed up graphics in the cust menu in battle. Particularly
+	// in the navi icon, and battle start. Chip icons and chip images remain untouched.
 	ldr r0, [r6]
 	mov lr, pc
 	bx r0
+
 	add r6, #4
-	b loc_801DAD6
+	b loop_801DAD6
 locret_801DAEA:
 	pop {r5-r7,pc}
 	.balign 4, 0
 off_801DAEC:
 	.word off_801DAF0
 off_801DAF0:
+	// 0x00 (0x00)
 	.word sub_801DB54+1
+	// 0x04 (0x01)
 	.word sub_801DB6C+1
+	// 0x08 (0x02)
 	.word sub_801DC60+1
+	// 0x0C (0x03)
 	.word sub_801DD60+1
+	// 0x10 (0x04)
 	.word sub_801DDD8+1
+	// 0x14 (0x05)
 	.word sub_801DE1E+1
+	// 0x18 (0x06)
 	.word sub_801DFEA+1
+	// 0x1C (0x07)
 	.word sub_801E022+1
+	// 0x20 (0x08)
 	.word sub_801E1A4+1
+	// 0x24 (0x09)
 	.word sub_801E138+1
+	// 0x28 (0x0A)
 	.word sub_801E0DC+1
+	// 0x2C (0x0B)
 	.word sub_801E35A+1
+	// 0x30 (0x0C)
 	.word sub_801E44C+1
+	// 0x34 (0x0D)
 	.word sub_801E4B0+1
+	// 0x38 (0x0E)
 	.word sub_801E5E0+1
+	// 0x3C (0x0F)
 	.word sub_801E73C+1
+	// 0x40 (0x10)
 	.word sub_801EB00+1
+	// 0x44 (0x11)
 	.word sub_801DE64+1
+	// 0x48 (0x12)
 	.word sub_801EB50+1
+	// 0x4C (0x13)
 	.word sub_801EBD2+1
+	// 0x50 (0x14)
 	.word sub_801E3C4+1
+	// 0x54 (0x15)
 	.word sub_801EC2C+1
+	// 0x58 (0x16)
 	.word sub_801EC84+1
+	// 0x5C (0x17)
 	.word sub_801E060+1
 off_801DB50:
 	.word eStruct2035280
-	thumb_func_end sub_801DACC
+	thumb_func_end dispatch_801DACC
 
 	thumb_local_start
 sub_801DB54:
@@ -29237,7 +29553,7 @@ sub_801DD88:
 	mov r0, #8
 	bl sub_801BECC
 	mov r0, #8
-	bl sub_801DA48
+	bl dispatch_801DA48
 	pop {pc}
 	.balign 4, 0
 off_801DDA0:
@@ -29415,7 +29731,7 @@ sub_801DED0:
 	mov r0, #0x10
 	bl sub_801BECC
 	mov r0, #0x10
-	bl sub_801DA48
+	bl dispatch_801DA48
 	pop {pc}
 	thumb_func_end sub_801DED0
 
@@ -29430,7 +29746,7 @@ sub_801DEEE:
 	mov r0, #0x20 
 	bl sub_801BECC
 	mov r0, #0x20 
-	bl sub_801DA48
+	bl dispatch_801DA48
 	pop {pc}
 	thumb_func_end sub_801DEEE
 
@@ -29446,7 +29762,7 @@ sub_801DF0C:
 	bl sub_801BECC
 	mov r0, #1
 	lsl r0, r0, #0x11
-	bl sub_801DA48
+	bl dispatch_801DA48
 	ldr r1, off_801E0D8 // =eStruct2035280
 	mov r0, #0
 	strb r0, [r1,#0x18] // (byte_2035298 - 0x2035280)
@@ -29470,7 +29786,7 @@ sub_801DF32:
 	bl sub_801BECC
 	mov r0, #1
 	lsl r0, r0, #0x11
-	bl sub_801DA48
+	bl dispatch_801DA48
 	pop {pc}
 	.balign 4, 0
 off_801DF5C:
@@ -29599,7 +29915,7 @@ sub_801E012:
 	mov r0, #0x40 
 	bl sub_801BECC
 	mov r0, #0x40 
-	bl sub_801DA48
+	bl dispatch_801DA48
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_801E012
 
@@ -29695,7 +30011,7 @@ sub_801E0A0:
 	mov r0, #0x80
 	bl sub_801BECC
 	mov r0, #0x80
-	bl sub_801DA48
+	bl dispatch_801DA48
 	pop {pc}
 	thumb_func_end sub_801E0A0
 
@@ -29805,13 +30121,13 @@ sub_801E15C:
 	bl sub_801BED6
 	mov r0, #1
 	lsl r0, r0, #0x10
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	// dataList
 	ldr r0, off_801E184 // =off_801E188 
 	bl QueueGFXTransfersInList // (u32 *dataRefs) -> void
 	mov r0, #1
 	lsl r0, r0, #9
-	bl sub_801DA48
+	bl dispatch_801DA48
 	mov r0, #0x9f
 	bl PlaySoundEffect
 	pop {pc}
@@ -29857,7 +30173,7 @@ loc_801E1B0:
 	bne locret_801E1E2
 	mov r0, #1
 	lsl r0, r0, #0xa
-	bl sub_801DA48
+	bl dispatch_801DA48
 locret_801E1E2:
 	pop {r4-r6,pc}
 	thumb_func_end sub_801E1A4
@@ -29872,7 +30188,7 @@ sub_801E1E4:
 	mov r6, #0
 	mov r0, #1
 	lsl r0, r0, #0xa
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_801E1F8:
 	mov r0, #7
 	lsr r1, r6, #1
@@ -29917,7 +30233,7 @@ loc_801E230:
 	lsl r0, r0, #8
 	tst r1, r0
 	beq loc_801E242
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_801E242:
 	mov r0, #0x3c 
 	strb r0, [r6,#0xb] // (byte_203528B - 0x2035280)
@@ -29937,7 +30253,7 @@ loc_801E242:
 	bl sub_801BECC
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_801DA48
+	bl dispatch_801DA48
 	pop {r4-r7,pc}
 	thumb_func_end sub_801E228
 
@@ -29955,7 +30271,7 @@ sub_801E270:
 	beq locret_801E2B8
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_801E28C:
 	mov r0, #0x3c 
 	strb r0, [r6,#0xb] // (byte_203528B - 0x2035280)
@@ -29975,7 +30291,7 @@ loc_801E28C:
 	bl sub_801BECC
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_801DA48
+	bl dispatch_801DA48
 locret_801E2B8:
 	pop {r4-r7,pc}
 	thumb_func_end sub_801E270
@@ -29995,7 +30311,7 @@ sub_801E2BA:
 	beq loc_801E312
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_801E2D8:
 	mov r0, #0x3c 
 	strb r0, [r6,#0xb] // (byte_203528B - 0x2035280)
@@ -30023,7 +30339,7 @@ loc_801E2F0:
 	bl sub_801BECC
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_801DA48
+	bl dispatch_801DA48
 loc_801E312:
 	pop {r0}
 	pop {r4-r7,pc}
@@ -30036,7 +30352,7 @@ loc_801E312:
 	beq loc_801E32C
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_801E32C:
 	mov r0, #0x3c 
 	strb r0, [r6,#0xb] // (byte_203528B - 0x2035280)
@@ -30056,7 +30372,7 @@ loc_801E32C:
 	bl sub_801BECC
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_801DA48
+	bl dispatch_801DA48
 	pop {r4-r7,pc}
 	thumb_func_end sub_801E2BA
 
@@ -30118,7 +30434,7 @@ sub_801E398:
 	bl sub_801BECC
 	mov r0, #1
 	lsl r0, r0, #0xb
-	bl sub_801DA48
+	bl dispatch_801DA48
 	pop {r4-r7,pc}
 	thumb_func_end sub_801E398
 
@@ -30184,7 +30500,7 @@ sub_801E408:
 	bl sub_801BECC
 	mov r0, #1
 	lsl r0, r0, #0x14
-	bl sub_801DA48
+	bl dispatch_801DA48
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_801E438:
@@ -30242,7 +30558,7 @@ sub_801E474:
 	bl sub_801BECC
 	mov r0, #1
 	lsl r0, r0, #0xc
-	bl sub_801DA48
+	bl dispatch_801DA48
 	pop {pc}
 	.balign 4, 0
 off_801E49C:
@@ -30371,28 +30687,36 @@ loc_801E568:
 	pop {r4-r7,pc}
 	thumb_func_end sub_801E4F4
 
-	thumb_func_start sub_801E574
-sub_801E574:
+// This renders virus name texts in battle
+// Disabling it would just cause the rendered names to disappear.
+	thumb_func_start RetrieveAndRenderEnemyVirusNamesInBattle_801E574
+RetrieveAndRenderEnemyVirusNamesInBattle_801E574: // () -> ()
 	push {r4,r5,r7,lr}
+
 	mov r1, #0xff
 	ldr r0, off_801E77C // =eStruct2035280
-	add r0, #0x28 
-	strh r1, [r0]
-	strh r1, [r0,#0x2] // (word_20352AA - 0x20352a8)
-	strh r1, [r0,#0x4] // (word_20352AC - 0x20352a8)
-	strh r1, [r0,#0x6] // (word_20352AE - 0x20352a8)
+	add r0, #oStruct2035280_VirusNameIdxU16Arr
+	strh r1, [r0, #0x00]
+	strh r1, [r0, #0x02]
+	strh r1, [r0, #0x04]
+	strh r1, [r0, #0x06]
+
 	mov r4, r0
-	bl sub_800A998
+
+	bl LoadVirusNameIDsForUpToFourSlots_800A998 // (name_id_arr: *mut [u16; 4]) -> u8
+
 	push {r0}
 	pop {r0}
+
 	ldr r2, off_801E5C8 // =byte_203EBA0 
 	ldr r3, dword_801E5CC // =0x600bb40 
 	ldr r6, off_801E5D0 // =dword_86B7AE0 
-loc_801E594:
+
+loop_801E594:
 	push {r0,r2-r4,r6}
 	ldrh r0, [r4]
 	push {r2,r3}
-	bl sub_800EC56
+	bl selectVirusOrNaviNamesAndWhich_800EC56 // (a1: u16?) -> (Textscript*, u8?)
 	pop {r2,r3}
 	mov r4, #9
 	mov r5, #1
@@ -30406,10 +30730,12 @@ loc_801E594:
 	strh r7, [r4]
 	add r4, #2
 	sub r0, #1
-	bne loc_801E594
+	bne loop_801E594
+
 	mov r0, #1
 	lsl r0, r0, #0xd
-	bl sub_801DA48
+	bl dispatch_801DA48
+
 	pop {r4,r5,r7,pc}
 	.balign 4, 0
 off_801E5C8:
@@ -30422,7 +30748,7 @@ off_801E5D4:
 	.word 0x240
 word_801E5D8:
 	.hword 0xD1D6, 0x0, 0x1A0, 0x0
-	thumb_func_end sub_801E574
+	thumb_func_end RetrieveAndRenderEnemyVirusNamesInBattle_801E574
 
 	thumb_local_start
 sub_801E5E0:
@@ -30483,7 +30809,7 @@ loc_801E63E:
 	bl sub_801BECC
 	mov r0, #1
 	lsl r0, r0, #0xe
-	bl sub_801DA48
+	bl dispatch_801DA48
 	pop {r4,r5,pc}
 	.balign 4, 0
 dword_801E654:
@@ -30506,7 +30832,7 @@ sub_801E660:
 	ldrb r6, [r2,r4]
 	ldr r0, [r5,#0x48]
 	ldrb r0, [r0,#0x16]
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	cmp r4, #0xb
 	beq loc_801E678
 	cmp r4, #0xc
@@ -30548,7 +30874,7 @@ sub_801E6A8:
 	push {r4,r6,lr}
 	ldr r0, [r5,#0x48]
 	ldrb r0, [r0,#oBattleObject_Alliance]
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 loc_801E6B2:
 	cmp r1, #0
 	bne loc_801E6BE
@@ -30739,13 +31065,13 @@ loc_801E7D8:
 	bl sub_801BECC
 	mov r0, #1
 	lsl r0, r0, #0xf
-	bl sub_801DA48
+	bl dispatch_801DA48
 	ldrb r0, [r5,#0x1] // (byte_2036841 - 0x2036840)
 	cmp r0, #0x24 
 	bne loc_801E816
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_801E816:
 	mov r0, #0
 	add sp, sp, #0xc
@@ -31171,7 +31497,7 @@ sub_801EB18:
 	bl sub_801BECC
 	mov r0, #1
 	lsl r0, r0, #0x10
-	bl sub_801DA48
+	bl dispatch_801DA48
 	pop {r4,r5,pc}
 	.balign 4, 0
 off_801EB48:
@@ -31239,7 +31565,7 @@ sub_801EB9C:
 	bl sub_801BECC
 	mov r0, #1
 	lsl r0, r0, #0x12
-	bl sub_801DA48
+	bl dispatch_801DA48
 	mov r0, #0
 	ldr r1, off_801ECB0 // =eStruct2035280
 	strb r0, [r1,#0x1a] // (byte_203529A - 0x2035280)
@@ -31295,7 +31621,7 @@ off_801EBFC:
 	ldr r0, dword_801EC20 // =0x80000 
 	bl sub_801BECC
 	ldr r0, dword_801EC20 // =0x80000 
-	bl sub_801DA48
+	bl dispatch_801DA48
 	mov r0, #0
 	ldr r1, off_801ECB0 // =eStruct2035280
 	strh r0, [r1,#0x34] // (word_20352B4 - 0x2035280)
@@ -31342,7 +31668,7 @@ sub_801EC44:
 	bl sub_801BECC
 	mov r0, #1
 	lsl r0, r0, #0x15
-	bl sub_801DA48
+	bl dispatch_801DA48
 	ldr r1, off_801ECB0 // =eStruct2035280
 	mov r0, #0x3c 
 	strb r0, [r1,#0x1b] // (byte_203529B - 0x2035280)

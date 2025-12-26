@@ -216,7 +216,7 @@ char *__fastcall sub_800BF5C(int a1)
 
 
 // 0x800bf66
-void __fastcall sub_800BF66(int a1, int a2, int a3, int a4)
+void __fastcall zeroFill_800BF66(int a1, int a2, int a3, int a4)
 {
     ZeroFillByWord(byte_203CF00, 160);
 }
@@ -3734,7 +3734,7 @@ void __fastcall GetAllianceDependentPanelParamArgs2(int a1, int a2, int a3, int 
 
 
 // 0x800ec56
-signed __int64 __fastcall sub_800EC56(signed int a1)
+signed __int64 __fastcall selectVirusOrNaviNamesAndWhich_800EC56(signed int a1)
 {
     int *v1; // r2
 
@@ -3777,7 +3777,7 @@ int __fastcall sub_800EC80(int a1)
     v2 = sub_8014150();
     if ( v2 > v1 )
         v1 = v2;
-    v3 = sub_80182B4(v7);
+    v3 = GetVerActorTyAndAIIdx_80182B4(v7);
     if ( v3[1] == 2 )
         return v7;
     if ( v3[1] )

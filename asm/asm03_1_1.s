@@ -2436,7 +2436,7 @@ loc_8039E7A:
 	thumb_local_start
 sub_8039E80:
 	push {r4-r7,lr}
-	bl sub_803C620
+	bl dispatch_803C620 // () -> (u32?, bool)
 	bl IsScreenFadeActive // () -> zf
 	beq loc_8039EB4
 	bl chatbox_8040818
@@ -2447,7 +2447,7 @@ sub_8039E80:
 	bl RandomizeExtraToolkitPointers // () -> ?
 	mov r0, #0
 	bl getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
-	bl sub_80071D4
+	bl initBattleStructsAndVram_80071D4
 	mov r0, #0x40
 	strb r0, [r5,#1]
 	pop {r4-r7,pc}
@@ -3326,7 +3326,7 @@ off_803A520:
 	thumb_local_start
 sub_803A524:
 	push {r4-r7,lr}
-	bl sub_803C620
+	bl dispatch_803C620 // () -> (u32?, bool)
 	mov r4, r0
 	tst r1, r1
 	bne loc_803A546
@@ -3353,7 +3353,7 @@ dword_803A554:
 	thumb_local_start
 sub_803A558:
 	push {r4-r7,lr}
-	bl sub_803C620
+	bl dispatch_803C620 // () -> (u32?, bool)
 	mov r4, r0
 	tst r1, r1
 	bne loc_803A584
@@ -3380,7 +3380,7 @@ loc_803A584:
 	thumb_local_start
 sub_803A58C:
 	push {r4-r7,lr}
-	bl sub_803C620
+	bl dispatch_803C620 // () -> (u32?, bool)
 	mov r4, r0
 	tst r1, r1
 	bne loc_803A5B6
@@ -3418,7 +3418,7 @@ dword_803A5C4:
 	thumb_local_start
 sub_803A5DC:
 	push {r4-r7,lr}
-	bl sub_803C620
+	bl dispatch_803C620 // () -> (u32?, bool)
 	bl test0x200bc50_0x5_813D60C
 	bne loc_803A5EC
 	mov r0, #1
@@ -7202,58 +7202,82 @@ off_803C61C:
 	.word eS200A290
 	thumb_func_end sub_803C612
 
-	thumb_func_start sub_803C620
-sub_803C620:
+	thumb_func_start dispatch_803C620
+dispatch_803C620: // () -> (u32?, bool)
 	push {r4-r7,lr}
 	mov r0, #2
 	bl sub_803CB0C
 	mov r0, #0x40
 	bl sub_803CB0C
-	ldr r7, off_803C648 // =byte_200BC50
-	ldrb r0, [r7]
-	mov r1, #0
+	ldr r7, off_803C648 // =eS200BC50
+	ldrb r0, [r7, #oS200BC50_Index00]
+	mov r1, #FALSE
 	tst r0, r0
 	beq loc_803C642
+
 	lsl r0, r0, #2
 	ldr r1, off_803C64C // =dword_803C650
 	ldr r0, [r1,r0]
 	mov lr, pc
 	bx r0
+
 loc_803C642:
 	tst r0, r0
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_803C648:
-	.word byte_200BC50
+	.word eS200BC50
 off_803C64C:
 	.word dword_803C650
 dword_803C650:
-	.word 0x0
-	.word sub_803C6A8+1
-	.word sub_803C6C0+1
-	.word sub_803C6D8+1
-	.word sub_803C6F4+1
-	.word sub_803C702+1
-	.word sub_803C76C+1
-	.word sub_803C790+1
-	.word sub_803C83A+1
-	.word sub_803C842+1
-	.word sub_803C84A+1
-	.word sub_803C85C+1
-	.word sub_803C86A+1
-	.word sub_803C94C+1
-	.word sub_803C97C+1
-	.word sub_803C9A4+1
-	.word sub_803C9B6+1
-	.word sub_803C9BE+1
-	.word sub_803CA2C+1
-	.word sub_803C94C+1
-	.word sub_803C94C+1
-	.word sub_803C754+1
-	thumb_func_end sub_803C620
+	// 0x00
+	.word NULL
+	// 0x04
+	.word sub_803C6A8+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x08
+	.word sub_803C6C0+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x0C
+	.word sub_803C6D8+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x10
+	.word sub_803C6F4+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x14
+	.word dispatch_803C702+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x18
+	.word sub_803C76C+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x1C
+	.word sub_803C790+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x20
+	.word sub_803C83A+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x24
+	.word sub_803C842+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x28
+	.word sub_803C84A+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x2C
+	.word sub_803C85C+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x30
+	.word sub_803C86A+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x34
+	.word sub_803C94C+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x38
+	.word sub_803C97C+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x3C
+	.word sub_803C9A4+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x40
+	.word sub_803C9B6+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x44
+	.word sub_803C9BE+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x48
+	.word sub_803CA2C+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x4C
+	.word sub_803C94C+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x50
+	.word sub_803C94C+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	// 0x54
+	.word sub_803C754+1 // (self: * S200BC50 $r7) -> (u32?, bool)
+	thumb_func_end dispatch_803C620
 
 	thumb_local_start
-sub_803C6A8:
+sub_803C6A8: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	ldr r0, off_803C6BC // =0x34
 	bl sub_813D9A0
@@ -7268,7 +7292,7 @@ off_803C6BC:
 	thumb_func_end sub_803C6A8
 
 	thumb_local_start
-sub_803C6C0:
+sub_803C6C0: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	bl sub_813D978
 	mov r0, #8
@@ -7281,7 +7305,7 @@ sub_803C6C0:
 	thumb_func_end sub_803C6C0
 
 	thumb_local_start
-sub_803C6D8:
+sub_803C6D8: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	bl rfu_clearAllSlot
 	bl sub_813D978
@@ -7295,7 +7319,7 @@ sub_803C6D8:
 	thumb_func_end sub_803C6D8
 
 	thumb_local_start
-sub_803C6F4:
+sub_803C6F4: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	ldr r0, byte_803CAB4 // =0x33
 	bl sub_813D9A0
@@ -7305,7 +7329,7 @@ sub_803C6F4:
 	thumb_func_end sub_803C6F4
 
 	thumb_local_start
-sub_803C702:
+dispatch_803C702: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	ldrb r0, [r7,#2]
 	lsl r0, r0, #2
@@ -7320,7 +7344,7 @@ off_803C714:
 off_803C718:
 	.word sub_803C720+1
 	.word sub_803C730+1
-	thumb_func_end sub_803C702
+	thumb_func_end dispatch_803C702
 
 	thumb_local_start
 sub_803C720:
@@ -7358,12 +7382,15 @@ dword_803C750:
 	thumb_func_end sub_803C730
 
 	thumb_func_start sub_803C754
-sub_803C754:
+sub_803C754: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	ldr r0, dword_803C768 // =0x32
 	bl sub_813D9A0
+
+	// trigger stop via dispatch_803C620
 	mov r0, #0
-	strb r0, [r7]
+	strb r0, [r7, #oS200BC50_Index00]
+
 	mov r0, #1
 	mov r1, #0
 	pop {pc}
@@ -7373,7 +7400,7 @@ dword_803C768:
 	thumb_func_end sub_803C754
 
 	thumb_local_start
-sub_803C76C:
+sub_803C76C: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	mov r0, #2
 	bl sub_803CB00
@@ -7392,7 +7419,7 @@ off_803C78C:
 	thumb_func_end sub_803C76C
 
 	thumb_local_start
-sub_803C790:
+sub_803C790: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	ldr r1, off_803C7A8 // =off_803C7AC
 	ldrb r0, [r7,#3]
@@ -7479,7 +7506,7 @@ locret_803C838:
 	thumb_func_end sub_803C7E8
 
 	thumb_local_start
-sub_803C83A:
+sub_803C83A: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	mov r0, #1
 	mov r1, #0
@@ -7487,7 +7514,7 @@ sub_803C83A:
 	thumb_func_end sub_803C83A
 
 	thumb_local_start
-sub_803C842:
+sub_803C842: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	mov r0, #0
 	mov r1, #0
@@ -7495,7 +7522,7 @@ sub_803C842:
 	thumb_func_end sub_803C842
 
 	thumb_local_start
-sub_803C84A:
+sub_803C84A: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	bl sub_81468F4
 	mov r4, r0
@@ -7506,7 +7533,7 @@ sub_803C84A:
 	thumb_func_end sub_803C84A
 
 	thumb_local_start
-sub_803C85C:
+sub_803C85C: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	mov r0, #2
 	bl sub_803CB00
@@ -7516,7 +7543,7 @@ sub_803C85C:
 	thumb_func_end sub_803C85C
 
 	thumb_local_start
-sub_803C86A:
+sub_803C86A: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	ldr r1, off_803C878 // =off_803C87C
 	ldrb r0, [r7,#3]
@@ -7639,7 +7666,7 @@ off_803C948:
 	thumb_func_end sub_803C90C
 
 	thumb_local_start
-sub_803C94C:
+sub_803C94C: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	bl IsCurSubsystemInUse // () -> (bool, !zf)
 	bne loc_803C966
@@ -7663,7 +7690,7 @@ dword_803C978:
 	thumb_func_end sub_803C94C
 
 	thumb_local_start
-sub_803C97C:
+sub_803C97C: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {r4,lr}
 	ldr r0, off_803C9A0 // =byte_200AF80
 	ldrb r0, [r0,#0x4] // (byte_200AF84 - 0x200af80)
@@ -7686,7 +7713,7 @@ off_803C9A0:
 	thumb_func_end sub_803C97C
 
 	thumb_local_start
-sub_803C9A4:
+sub_803C9A4: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	bl sub_813D978
 	mov r0, #0
@@ -7697,7 +7724,7 @@ sub_803C9A4:
 	thumb_func_end sub_803C9A4
 
 	thumb_local_start
-sub_803C9B6:
+sub_803C9B6: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	mov r0, #0
 	mov r1, #0
@@ -7705,7 +7732,7 @@ sub_803C9B6:
 	thumb_func_end sub_803C9B6
 
 	thumb_local_start
-sub_803C9BE:
+sub_803C9BE: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	ldr r1, off_803C9D0 // =off_803C9D4
 	ldrb r0, [r7,#3]
@@ -7771,7 +7798,7 @@ off_803CA28:
 	thumb_func_end sub_803CA10
 
 	thumb_local_start
-sub_803CA2C:
+sub_803CA2C: // (self: * S200BC50 $r7) -> (u32?, bool)
 	push {lr}
 	ldr r0, off_803CA60 // =byte_200AF80
 	ldrb r0, [r0,#0x5] // (byte_200AF85 - 0x200af80)
@@ -7881,7 +7908,7 @@ locret_803CAF4:
 
 	thumb_func_start sub_803CAF8
 sub_803CAF8:
-	ldr r3, off_803CB20 // =byte_200BC50
+	ldr r3, off_803CB20 // =eS200BC50
 	ldr r0, [r3,#0xc] // (dword_200BC5C - 0x200bc50)
 	mov pc, lr
 	.byte 0x0, 0x0
@@ -7889,7 +7916,7 @@ sub_803CAF8:
 
 	thumb_func_start sub_803CB00
 sub_803CB00:
-	ldr r3, off_803CB20 // =byte_200BC50
+	ldr r3, off_803CB20 // =eS200BC50
 	ldr r1, [r3,#0xc] // (dword_200BC5C - 0x200bc50)
 	orr r1, r0
 	str r1, [r3,#0xc] // (dword_200BC5C - 0x200bc50)
@@ -7899,7 +7926,7 @@ sub_803CB00:
 
 	thumb_func_start sub_803CB0C
 sub_803CB0C:
-	ldr r3, off_803CB20 // =byte_200BC50
+	ldr r3, off_803CB20 // =eS200BC50
 	ldr r1, [r3,#0xc] // (dword_200BC5C - 0x200bc50)
 	bic r1, r0
 	str r1, [r3,#0xc] // (dword_200BC5C - 0x200bc50)
@@ -7909,12 +7936,12 @@ sub_803CB0C:
 
 	thumb_func_start sub_803CB18
 sub_803CB18:
-	ldr r3, off_803CB20 // =byte_200BC50
+	ldr r3, off_803CB20 // =eS200BC50
 	ldr r1, [r3,#0xc] // (dword_200BC5C - 0x200bc50)
 	tst r1, r0
 	mov pc, lr
 off_803CB20:
-	.word byte_200BC50
+	.word eS200BC50
 	thumb_func_end sub_803CB18
 
 	thumb_local_start
@@ -7967,7 +7994,7 @@ off_803CB74:
 	thumb_func_start sub_803CB78
 sub_803CB78:
 	push {lr}
-	ldr r1, off_803CB88 // =byte_200BC50
+	ldr r1, off_803CB88 // =eS200BC50
 	ldrb r0, [r1]
 	cmp r0, #7
 	bne locret_803CB86
@@ -7976,7 +8003,7 @@ locret_803CB86:
 	pop {pc}
 	.balign 4, 0
 off_803CB88:
-	.word byte_200BC50
+	.word eS200BC50
 	thumb_func_end sub_803CB78
 
 	thumb_func_start sub_803CB8C
@@ -8932,7 +8959,7 @@ off_803D1E4:
   // 0x10
 	.word logoScreen_finish_803D2A6+1 // (self: *const LogoScreenState $r5) -> ()
 off_803D1F8:
-	.word LogoScreenState
+	.word eLogoScreenState
 	thumb_func_end logoScreen_dispatch_803D1CA
 
 	thumb_local_start
@@ -11449,7 +11476,7 @@ locret_803EB12:
 sub_803EB14:
 	push {r4,lr}
 	mov r4, #0
-	bl sub_803C620
+	bl dispatch_803C620 // () -> (u32?, bool)
 	tst r1, r1
 	bne loc_803EB2E
 	tst r0, r0
@@ -11490,7 +11517,7 @@ locret_803EB5E:
 sub_803EB60:
 	push {r4,lr}
 	mov r4, #0
-	bl sub_803C620
+	bl dispatch_803C620 // () -> (u32?, bool)
 	tst r1, r1
 	bne loc_803EB7A
 	tst r0, r0
@@ -13219,7 +13246,7 @@ sub_803F6B0:
 	ldr r2, off_803F730 // =dword_803F734
 	lsl r4, r4, #2
 	ldr r2, [r2,r4]
-	bl byte_813DBC0
+	bl sub_813DBC0
 	ldr r0, off_803F738 // =eLinkState
 	mov r1, #0x3c
 	strh r1, [r0,#0xc] // Camera.unk_0C
@@ -13248,7 +13275,7 @@ sub_803F6F4:
 	ldr r2, off_803F730 // =dword_803F734
 	lsl r4, r4, #2
 	ldr r2, [r2,r4]
-	bl byte_813DBC0
+	bl sub_813DBC0
 	ldr r0, off_803F738 // =eLinkState
 	mov r1, #0x3c
 	strh r1, [r0,#0xc] // (eCamera.unk_5C - 0x20099d0)

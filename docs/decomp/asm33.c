@@ -8155,7 +8155,7 @@ int sub_812A1D4()
     int result; // r0
     int v4; // r0
 
-    v1 = sub_803C620();
+    v1 = dispatch_803C620();
     if ( v2 || !v1 )
     {
         v4 = eStruct200BC30_getJumpOffset00();
@@ -9994,7 +9994,7 @@ int sub_812B640()
         ClearEventFlagFromImmediate(23, 45);
         ClearEventFlagFromImmediate(23, 47);
         v3 = getBattleSettings_200AF60();
-        sub_80071D4(v3, v4, v5, v6);
+        initBattleStructsAndVram_80071D4(v3, v4, v5, v6);
     }
     return result;
 }

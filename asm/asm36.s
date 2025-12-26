@@ -1120,7 +1120,7 @@ sub_8130864:
 	bl sub_81440D8 // static () -> void
 	b loc_8130878
 loc_8130874:
-	bl sub_803C754
+	bl sub_803C754 // (self: * S200BC50 $r7) -> (u32?, bool)
 loc_8130878:
 	mov r1, #0x1c
 	strb r1, [r5,#2]
@@ -3212,7 +3212,7 @@ sub_81318B0:
 	bl sub_81440D8 // static () -> void
 	b loc_81318C4
 loc_81318C0:
-	bl sub_803C754
+	bl sub_803C754 // (self: * S200BC50 $r7) -> (u32?, bool)
 loc_81318C4:
 	ldrb r0, [r5,#2]
 	strb r0, [r5,#0x16]
@@ -3865,7 +3865,7 @@ sub_813202C:
 	beq loc_8132036
 
 loc_8132036:
-	bl sub_803C620
+	bl dispatch_803C620 // () -> (u32?, bool)
 	mov r4, r0
 	tst r1, r1
 	bne loc_8132058
@@ -4017,7 +4017,7 @@ loc_8132154:
 	bl sub_81469A0
 	bl sub_81469E8
 	pop {r4-r7,pc}
-	.word byte_200BC50
+	.word eS200BC50
 	thumb_func_end sub_8132104
 
 	thumb_local_start

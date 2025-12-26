@@ -4021,8 +4021,8 @@ loc_8048C5C:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8048C24
 
-	thumb_func_start sub_8048C68
-sub_8048C68:
+	thumb_func_start copy_8048C68
+copy_8048C68:
 	push {lr}
 	mov r0, r10
 	// memBlock
@@ -4050,10 +4050,10 @@ loc_8048C90:
 	b loc_8048C7C
 locret_8048C96:
 	pop {pc}
-	thumb_func_end sub_8048C68
+	thumb_func_end copy_8048C68
 
-	thumb_func_start sub_8048C98
-sub_8048C98:
+	thumb_func_start copy_8048C98
+copy_8048C98:
 	push {lr}
 	ldr r0, off_8048CC4 // =byte_8047DA0 
 	mov r1, r10
@@ -4084,7 +4084,7 @@ off_8048CC4:
 	.word byte_8047DA0
 dword_8048CC8:
 	.word 0xE80
-	thumb_func_end sub_8048C98
+	thumb_func_end copy_8048C98
 
 	thumb_local_start
 sub_8048CCC:
@@ -5336,7 +5336,7 @@ loc_8049646:
 	thumb_local_start
 sub_804964C:
 	push {r4-r7,lr}
-	bl sub_803C620
+	bl dispatch_803C620 // () -> (u32?, bool)
 	mov r4, r0
 	tst r1, r1
 	bne loc_804966E
@@ -5363,7 +5363,7 @@ dword_804967C:
 	thumb_local_start
 sub_8049680:
 	push {r4-r7,lr}
-	bl sub_803C620
+	bl dispatch_803C620 // () -> (u32?, bool)
 	mov r4, r0
 	tst r1, r1
 	bne loc_80496AC
@@ -5390,7 +5390,7 @@ loc_80496AC:
 	thumb_local_start
 sub_80496B4:
 	push {r4-r7,lr}
-	bl sub_803C620
+	bl dispatch_803C620 // () -> (u32?, bool)
 	mov r4, r0
 	tst r1, r1
 	bne loc_80496DE
@@ -5428,7 +5428,7 @@ dword_80496EC:
 	thumb_local_start
 sub_8049704:
 	push {r4-r7,lr}
-	bl sub_803C620
+	bl dispatch_803C620 // () -> (u32?, bool)
 	bl test0x200bc50_0x5_813D60C
 	bne loc_8049714
 	mov r0, #1

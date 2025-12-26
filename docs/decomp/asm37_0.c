@@ -2866,7 +2866,7 @@ char *sub_813D750()
 {
     char *result; // r0
 
-    result = &byte_200BC50;
+    result = &eS200BC50;
     word_200BC58 = 11;
     return result;
 }
@@ -2877,7 +2877,7 @@ char *sub_813D760()
 {
     char *result; // r0
 
-    result = &byte_200BC50;
+    result = &eS200BC50;
     byte_200BC55 = 0;
     return result;
 }
@@ -3068,8 +3068,8 @@ int __fastcall sub_813D934(int result)
 {
     int v1; // r2
 
-    v1 = byte_200BC50;
-    byte_200BC50 = result;
+    v1 = eS200BC50;
+    eS200BC50 = result;
     if ( result != v1 )
     {
         result = 0;
@@ -3088,7 +3088,7 @@ signed int __fastcall sub_813D94C(int a1)
     signed int v1; // r2
 
     v1 = 0;
-    if ( byte_200BC50 != a1 )
+    if ( eS200BC50 != a1 )
         v1 = 1;
     return v1;
 }
@@ -3100,7 +3100,7 @@ void __cdecl zeroFill_813D960()
     char v0; // r4
 
     v0 = byte_200BC57;
-    ZeroFillByWord(&byte_200BC50, 16);
+    ZeroFillByWord(&eS200BC50, 16);
     byte_200BC57 = v0;
 }
 

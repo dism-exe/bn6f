@@ -5,6 +5,16 @@ import argparse
 from typing import Dict, List, Optional, Tuple
 import checkpipe as pipe
 
+# import time
+# time_file = open('time.log', 'w')
+
+# def capture_time(start: time.time, time_file, prefix: str):
+#     end = time.time()
+
+#     diff_ms = (end - start) * 1000
+
+#     time_file.write(f"{prefix}: {diff_ms}ms\n")
+
 
 def reg_to_num(reg: str) -> int:
     if reg.startswith("r"):
@@ -151,6 +161,82 @@ def os_system(cmd: str) -> str:
 
     return output
 
+def read_sym_file(sym_file: str) -> List[Tuple[int, str]]:
+    mut_out = []
+
+    with open(sym_file, 'r') as f:
+        for line in f.readlines():
+            tokens = line.split(' ')
+            mut_out.append((int(tokens[0], 16), tokens[3].strip()))
+    
+    return mut_out
+
+def get_ea_to_sym_map(syms: List[Tuple[int, str]]) -> Dict[int, str]:
+    mut_out = {}
+    for (ea, sym) in syms:
+
+        if ea not in mut_out:
+            mut_out[ea] = sym
+    return mut_out
+
+def ea_to_symbol_using_sym_map(ea_to_sym_map: Dict[int, str], ea: int) -> Optional[str]:
+    if ea in ea_to_sym_map:
+        return ea_to_sym_map[ea]
+    else:
+        return None
+
+# Given any ea, gives its distance from the closest smallest identifiable ea
+def get_ea_to_sym_ord_map(syms: List[Tuple[int, str]]) -> Dict[int, Tuple[str, int]]:
+    mut_out = {}
+    mut_prev_ea_sym = None
+
+    mut_prev_nondata_nonloc_name = ''
+
+    for (ea2, sym2) in syms:
+
+        if mut_prev_ea_sym is not None:
+            (ea1, sym1) = mut_prev_ea_sym
+
+            # Heuristic to imbue local labels with function information
+            if sym1.startswith('loc_'):
+                sym1 = mut_prev_nondata_nonloc_name + '.' + sym1
+
+            diff = ea2 - ea1
+
+            if diff >= 2 and diff < 100000:
+                for i in range(1, diff):
+                    mut_out[ea1 + i] = (sym1, i)
+
+        mut_prev_ea_sym = (ea2, sym2)
+        mut_out[ea2] = (sym2, 0)
+
+        label_is_data = (
+            sym2.startswith('off_') or 
+            sym2.startswith('byte_') or 
+            sym2.startswith('unk_') or 
+            sym2.startswith('hword_') or 
+            sym2.startswith('dword_')
+        )
+
+        if not label_is_data and not sym2.startswith('loc_'):
+            mut_prev_nondata_nonloc_name = sym2
+
+    return mut_out
+
+
+
+# Finds the target ea that's just before the given ea
+def ea_to_maximum_ea_before_using_syms(syms: List[Tuple[int, str]], ea: int) -> Optional[int]:
+    mut_out = None
+    for (cur_ea, _) in syms:
+        if cur_ea < ea:
+            if mut_out is None:
+                mut_out = cur_ea
+            else:
+                mut_out = max(cur_ea, mut_out)
+
+    return mut_out
+
 def ea_to_symbol(sym_file: str, ea: int) -> Optional[str]:
     ea_s = f"{ea:08x}"
 
@@ -176,7 +262,7 @@ def symbol_to_ea(sym_file: str, symbol: str) -> Optional[int]:
     entry_lines = entry.splitlines()
 
     if len(entry_lines) != 1:
-        raise Exception(f"Expected 1 entry: {entry_lines}")
+        raise Exception(f"Expected 1 entry for symbol {symbol}: {entry_lines}")
     else:
         # looks like "0809f904 g 00000008 sub_809F904"
         entry_tokens = entry.split(" ")
@@ -658,6 +744,101 @@ def app_encode_movflag_virtual_inst(args: argparse.Namespace):
                 print(f'\tmovflag {event_sym}')
                 mut_skip = 1
 
+def try_parse_hex(s: str) -> Optional[int]:
+    try:
+        return int(s, 16)
+    except Exception:
+        return None
+
+def app_ea_to_sym_filter(args: argparse.Namespace):
+    sym_file = args.sym_file
+    shift = int(args.shift, 10)
+    file = args.file
+    skip_after = args.skip_after
+
+    syms = read_sym_file(sym_file)
+    ea_to_sym_ord_map = get_ea_to_sym_ord_map(syms)
+
+    def get_ea_symbol_or_shifted_or_default(ea_token: str, ea: int) -> str:
+        # Also look for compressed pointers
+        if (ea & 0x80000000) != 0:
+            ea -= 0x80000000
+            is_compressed = True
+        else:
+            is_compressed = False
+
+        if ea not in ea_to_sym_ord_map:
+            return ea_token
+
+        (sym_just_before, diff) = ea_to_sym_ord_map[ea]
+
+        if diff == 0:
+            mut_out = f'{sym_just_before}'
+        else:
+            if diff > 1:
+                mut_out = f'{sym_just_before}+{diff:02X}'
+            else:
+                mut_out = f'{sym_just_before}+{diff}'
+
+        if is_compressed:
+            mut_out = mut_out + ' + COMPRESSED_PTR_FLAG'
+        
+        return mut_out
+
+    # We are interested in replacing ea tokens in the input string
+    def get_ea_tokens_and_parsed(s: str) -> List[Tuple[str, int]]:
+        if skip_after is not None and skip_after in s:
+            s1 = s[:s.index(skip_after)]
+        else:
+            s1 = s
+
+        s2 = s1.replace("\t", " ").replace("\n", " ").replace("=", " ").replace(":", " ").replace(",", " ")
+
+        tokens = s2.split(" ")
+        mut_out = []
+
+        for token in tokens:
+            if token.strip() == "":
+                continue
+
+            opt_token_n = try_parse_hex(token)
+
+            if opt_token_n is not None:
+                token_n_no_comp = opt_token_n & 0x7FFFFFFF
+                if token_n_no_comp >= 0x2000000 and token_n_no_comp < 0x9000000:
+                    mut_out.append((token.strip(), opt_token_n))
+        
+        return mut_out
+
+    def process_line(line: str):
+        ea_tokens_and_parsed = get_ea_tokens_and_parsed(line)
+
+        mut_out = line
+
+        for (ea_token, ea) in ea_tokens_and_parsed:
+            sym = get_ea_symbol_or_shifted_or_default(ea_token, ea + shift)
+
+            if '_' + ea_token in mut_out:
+                mut_out = mut_out.replace('_' + ea_token, '<<<PLACEHOLDER>>>')
+                mut_out = mut_out.replace(ea_token, sym)
+                mut_out = mut_out.replace('<<<PLACEHOLDER>>>', '_' + ea_token)
+            else:
+                mut_out = mut_out.replace(ea_token, sym)
+
+        print(mut_out)
+
+    if file:
+        with open(file, 'r') as f:
+            lines = f.readlines()
+    else: 
+        inp = sys.stdin.read()
+
+        lines = inp.split("\n")
+
+
+    for line in lines:
+        process_line(line.strip())
+
 def main(args: argparse.Namespace):
     if args.subcommand == 'shorten_rlists':
         app_shorten_rlists(args)
@@ -685,6 +866,9 @@ def main(args: argparse.Namespace):
 
     if args.subcommand == 'encode_movflag_virtual_inst':
         app_encode_movflag_virtual_inst(args)
+
+    if args.subcommand == 'ea_to_sym_filter':
+        app_ea_to_sym_filter(args)
 
 
 def parse_cmdline_args() -> argparse.Namespace:
@@ -750,6 +934,18 @@ def parse_cmdline_args() -> argparse.Namespace:
                                help='Some uses of mov can be encoded as movflag')
     sp.add_argument('events_file',
                 help='The file containing all the event constants')
+
+    sp = subparsers.add_parser('ea_to_sym_filter', 
+                               help='Replaces any ea with a symbol. And adds a +N if it is between symbols')
+    sp.add_argument('sym_file',
+                help='The sym file is used to convert an ea to its corresponding symbol')
+    sp.add_argument('--shift',
+                default='0',
+                help='An amount to shift the eas parsed by')
+    sp.add_argument('--file',
+                help='Read from a file instead of directly on stdin')
+    sp.add_argument('--skip-after',
+                help='substring to skip converting values after')
 
     sp = subparsers.add_parser('unittest', 
                     help='run the unit tests instead of main')

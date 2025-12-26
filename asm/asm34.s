@@ -991,7 +991,7 @@ loc_812DA72:
 	bl sub_81440D8 // static () -> void
 	b loc_812DA84
 loc_812DA80:
-	bl sub_803C754
+	bl sub_803C754 // (self: * S200BC50 $r7) -> (u32?, bool)
 loc_812DA84:
 	mov r1, #0x1c
 	strb r1, [r5,#2]

@@ -409,6 +409,7 @@ initUncompSpriteState_80028d4: // (a0: *const ?) -> ()
 
 	// Load the sprite tilesets and palettes according to the map group's
 	// sprite_load_data_struct list (e.g. byte_804E6AC).
+	// Disabling this causes some objects to become white dots. (e.g. Welcome to the NetCafe in Central Area 1. See byte_8071BC0.)
 	thumb_func_start uncompSprite_8002906
 uncompSprite_8002906: // (sprite_load_data: *const SpriteLoadData) -> bool
 	push {r4-r7,lr}
@@ -419,6 +420,7 @@ uncompSprite_8002906: // (sprite_load_data: *const SpriteLoadData) -> bool
 	ldr r5, off_8002BF0 // =byte_200DCA0
 
 	ldr r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
+
 	ldr r4, off_8002BC0 // =SpritePointersList
 	ldr r6, dword_8002BC4 // =0x2040000
 	mov r7, r0
@@ -519,8 +521,8 @@ loc_800299E:
 	pop {r5,pc}
 	thumb_func_end sub_8002986
 
-	thumb_func_start sub_80029A8
-sub_80029A8:
+	thumb_func_start decompSprites_80029A8
+decompSprites_80029A8:
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
@@ -620,7 +622,7 @@ loc_8002A58:
 	mov r9, r2
 	mov r12, r3
 	pop {r4-r7,pc}
-	thumb_func_end sub_80029A8
+	thumb_func_end decompSprites_80029A8
 
 	thumb_func_start sprite_decompress
 sprite_decompress:

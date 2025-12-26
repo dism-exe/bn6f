@@ -1,6 +1,9 @@
 #ifndef CONSTANTS_SECTIONS_0_TO_4_H
 #define CONSTANTS_SECTIONS_0_TO_4_H
 
+// This is the same attempt to get labeling as in constants/enums/sprite_categories.inc
+// It's incomplete.
+
 // typedef struct {
     
 // } Section;

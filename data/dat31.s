@@ -375,7 +375,7 @@ dword_810C6E8::
 dword_810C6EC::
 	.word 0xC000000
 off_810C6F0::
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_810C720+1
 	.word sub_80165C2+1
 	.word sub_80166AE+1
@@ -1121,7 +1121,7 @@ dword_810CD58::
 dword_810CD5C::
 	.word 0xF800000
 off_810CD60::
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_810CDC0+1
 	.word sub_810CDEA+1
 	.word sub_80166AE+1
@@ -1448,7 +1448,7 @@ byte_810D034::
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_810D0F4::
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_810D118+1
 	.word sub_80166AE+1
@@ -1958,7 +1958,7 @@ loc_810D54A::
 off_810D550::
 	.word 0x184
 off_810D554::
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_810D590+1
 	.word sub_80166AE+1
@@ -2360,7 +2360,7 @@ locret_810D90C::
 	pop {pc}
 	.balign 4, 0
 off_810D910::
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_810D970+1
 	.word sub_80166AE+1

@@ -13740,7 +13740,7 @@ sub_812A1C4:
 	thumb_local_start
 sub_812A1D4:
 	push {lr}
-	bl sub_803C620
+	bl dispatch_803C620 // () -> (u32?, bool)
 	tst r1, r1
 	bne loc_812A200
 	tst r0, r0
@@ -13772,7 +13772,7 @@ dword_812A214:
 	.word 0x0
 	.word sub_812A224+1
 	.word sub_812A4DC+1
-	.word byte_200BC50
+	.word eS200BC50
 	thumb_func_end sub_812A1D4
 
 	thumb_local_start
@@ -14318,7 +14318,7 @@ loc_812A666:
 	bl sub_81469E8
 locret_812A676:
 	pop {r4-r7,pc}
-	.word byte_200BC50
+	.word eS200BC50
 	thumb_func_end sub_812A5F8
 
 	thumb_local_start
@@ -15081,7 +15081,7 @@ loc_812AC2A:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_812AC4C
-	bl sub_803C754
+	bl sub_803C754 // (self: * S200BC50 $r7) -> (u32?, bool)
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_812AC7E
@@ -16394,7 +16394,7 @@ loc_812B652:
 	movflag EVENT_172F
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	bl getBattleSettings_200AF60 // () -> BattleSettings*
-	bl sub_80071D4
+	bl initBattleStructsAndVram_80071D4
 locret_812B696:
 	pop {pc}
 	thumb_func_end sub_812B640

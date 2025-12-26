@@ -539,13 +539,13 @@ sub_8026840:
 loc_8026858:
 	bl ClearCustGauge
 	ldr r0, dword_8026994 // =0x30172 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	ldr r0, off_8026998 // =0x400 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	ldr r0, dword_802699C // =0x20130 
 	bl sub_801BED6
 	mov r4, #0
-	ldr r5, off_8026BF0 // =dword_20364C0 
+	ldr r5, off_8026BF0 // =eS20364C0 
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#oBattleState_Unk_0d]
@@ -589,27 +589,27 @@ loc_80268AC:
 	cmp r0, #0xff
 	bne loc_80268AC
 	// memBlock
-	ldr r0, off_8026BF0 // =dword_20364C0 
+	ldr r0, off_8026BF0 // =eS20364C0 
 	// size
 	mov r1, #0x70 
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
-	ldr r5, off_8026BF0 // =dword_20364C0 
+	ldr r5, off_8026BF0 // =eS20364C0 
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#oBattleState_Unk_0d]
 	mov r1, #0x29 
 	bl GetBattleNaviStatsByte
-	strb r0, [r5,#0x10] // (byte_20364D0 - 0x20364c0)
-	strb r0, [r5,#0x11] // (byte_20364D1 - 0x20364c0)
-	strb r0, [r5,#0x15] // (byte_20364D5 - 0x20364c0)
+	strb r0, [r5,#0x10]
+	strb r0, [r5,#0x11]
+	strb r0, [r5,#0x15]
 	mov r0, #0
-	strh r0, [r5,#0x3a] // (word_20364FA - 0x20364c0)
-	strh r0, [r5,#0x38] // (word_20364F8 - 0x20364c0)
-	ldr r5, off_8026BF0 // =dword_20364C0 
+	strh r0, [r5,#0x3a]
+	strh r0, [r5,#0x38]
+	ldr r5, off_8026BF0 // =eS20364C0 
 	mov r1, #1
-	strb r1, [r5,#0x4] // (dword_20364C4 - 0x20364c0)
+	strb r1, [r5,#0x4]
 	mov r0, #0xff
-	strb r0, [r5,#0xc] // (byte_20364CC - 0x20364c0)
+	strb r0, [r5,#0xc]
 	bl sub_8029F70
 	tst r0, r0
 	beq loc_802690E
@@ -617,11 +617,11 @@ loc_80268AC:
 	cmp r0, #5
 	beq loc_802690E
 	bl sub_8029EF8
-	strb r0, [r5,#0x18] // (dword_20364D8 - 0x20364c0)
+	strb r0, [r5,#0x18]
 loc_802690E:
 	bl sub_802811C
 	mov r0, #0x1a
-	strb r0, [r5,#0x9] // (byte_20364C9 - 0x20364c0)
+	strb r0, [r5,#0x9]
 	mov r0, #0
 	sub r0, #1
 	strh r0, [r5,#0x20] // (word_20364E0 - 0x20364c0)
@@ -720,13 +720,13 @@ locret_80269E0:
 sub_80269E2:
 	push {r5,lr}
 	mov r0, #0
-	ldr r5, off_8026BF0 // =dword_20364C0 
+	ldr r5, off_8026BF0 // =eS20364C0 
 	ldrb r1, [r5]
 	cmp r1, #0
 	beq loc_8026A24
 	cmp r1, #8
 	beq loc_8026A24
-	ldrb r1, [r5,#0x1] // (dword_20364C0+1 - 0x20364c0)
+	ldrb r1, [r5,#0x1] // (eS20364C0+1 - 0x20364c0)
 	cmp r1, #0
 	beq loc_8026A24
 	cmp r1, #8
@@ -760,29 +760,31 @@ locret_8026A26:
 	thumb_func_start sub_8026A28
 sub_8026A28:
 	push {r5,lr}
-	ldr r5, off_8026BF0 // =dword_20364C0 
+	ldr r5, off_8026BF0 // =eS20364C0 
 	ldr r1, off_8026A38 // =off_8026A3C 
-	ldrb r0, [r5]
+
+	ldrb r0, [r5, #oS20364C0_JumpOffset00]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
+
 	pop {r5,pc}
 	.balign 4, 0
 off_8026A38:
 	.word off_8026A3C
 off_8026A3C:
-	.word sub_8026A50+1
-	.word custMenuMainMaybe_8026A88+1
-	.word sub_8026A6C+1
+	.word sub_8026A50+1 // (self: * S20364C0 $r5) -> u8
+	.word custMenuMainMaybe_8026A88+1 // (self: * S20364C0 $r5) -> u8
+	.word sub_8026A6C+1 // (self: * S20364C0 $r5) -> u8
 	.word 0x100
 	.word eStruct200F360
 	thumb_func_end sub_8026A28
 
 	thumb_local_start
-sub_8026A50:
+sub_8026A50: // (self: * S20364C0 $r5) -> u8
 	push {lr}
 	bl sub_802FE48
-	strb r0, [r5,#0xe]
+	strb r0, [r5,#oS20364C0_Unk_0e]
 	mov r3, r0
 	mov r1, #0x40 
 	mov r2, #0x40 
@@ -795,7 +797,7 @@ sub_8026A50:
 	thumb_func_end sub_8026A50
 
 	thumb_local_start
-sub_8026A6C:
+sub_8026A6C: // (self: * S20364C0 $r5) -> u8
 	push {lr}
 	bl sub_8027D78
 	ldrb r0, [r5,#0xe]
@@ -808,71 +810,107 @@ sub_8026A6C:
 	thumb_func_end sub_8026A6C
 
 	thumb_local_start
-custMenuMainMaybe_8026A88:
+custMenuMainMaybe_8026A88: // (self: * S20364C0 $r5) -> u8
 	push {r5,lr}
-	ldr r5, off_8026BF0 // =dword_20364C0 
+	ldr r5, off_8026BF0 // =eS20364C0 
 	ldr r1, off_8026AA0 // =off_8026AA4 
-	ldrb r0, [r5,#0x1] // (dword_20364C0+1 - 0x20364c0)
+
+	ldrb r0, [r5,#oS20364C0_JumpOffset01]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_802A2B0
+
+	bl sub_802A2B0 // (self: * S20364C0 $r5) -> ()
+
 	mov r0, #0
 	pop {r5,pc}
 	.balign 4, 0
 off_8026AA0:
 	.word off_8026AA4
 off_8026AA4:
-	.word sub_8026B04+1
-	.word sub_8026CCC+1
-	.word sub_8026BF4+1
-	.word sub_8026D06+1
-	.word sub_8026DB0+1
-	.word sub_8026DC4+1
-	.word sub_8026E4C+1
-	.word sub_8026E98+1
-	.word sub_8026FC0+1
-	.word sub_8027044+1
-	.word sub_80271F8+1
-	.word sub_802728C+1
-	.word sub_80273A4+1
-	.word sub_80273EC+1
-	.word sub_8027406+1
-	.word sub_802753E+1
-	.word sub_8027548+1
-	.word sub_80275EC+1
-	.word sub_802770C+1
-	.word sub_8027834+1
-	.word sub_802790C+1
-	.word sub_802794A+1
-	.word sub_8026E78+1
-	.word sub_8027A58+1
+	// 0x00
+	.word sub_8026B04+1 // (self: * S20364C0 $r5) -> ()
+	// 0x04
+	.word sub_8026CCC+1 // (self: * S20364C0 $r5) -> ()
+	// 0x08
+	.word sub_8026BF4+1 // (self: * S20364C0 $r5) -> ()
+	// 0x0C
+	.word sub_8026D06+1 // (self: * S20364C0 $r5) -> ()
+	// 0x10
+	.word sub_8026DB0+1 // (self: * S20364C0 $r5) -> ()
+	// 0x14
+	.word sub_8026DC4+1 // (self: * S20364C0 $r5) -> ()
+	// 0x18
+	.word sub_8026E4C+1 // (self: * S20364C0 $r5) -> ()
+	// 0x1C
+	.word sub_8026E98+1 // (self: * S20364C0 $r5) -> ()
+	// 0x20
+	.word sub_8026FC0+1 // (self: * S20364C0 $r5) -> ()
+	// 0x24
+	.word sub_8027044+1 // (self: * S20364C0 $r5) -> ()
+	// 0x28
+	.word sub_80271F8+1 // (self: * S20364C0 $r5) -> ()
+	// 0x2C
+	.word sub_802728C+1 // (self: * S20364C0 $r5) -> ()
+	// 0x30
+	.word sub_80273A4+1 // (self: * S20364C0 $r5) -> ()
+	// 0x34
+	.word sub_80273EC+1 // (self: * S20364C0 $r5) -> ()
+	// 0x38
+	.word sub_8027406+1 // (self: * S20364C0 $r5) -> ()
+	// 0x3C
+	.word sub_802753E+1 // (self: * S20364C0 $r5) -> ()
+	// 0x40
+	.word sub_8027548+1 // (self: * S20364C0 $r5) -> ()
+	// 0x44
+	.word sub_80275EC+1 // (self: * S20364C0 $r5) -> ()
+	// 0x48
+	.word sub_802770C+1 // (self: * S20364C0 $r5) -> ()
+	// 0x4C
+	.word sub_8027834+1 // (self: * S20364C0 $r5) -> ()
+	// 0x50
+	.word sub_802790C+1 // (self: * S20364C0 $r5) -> ()
+	// 0x54
+	.word sub_802794A+1 // (self: * S20364C0 $r5) -> ()
+	// 0x58
+	.word sub_8026E78+1 // (self: * S20364C0 $r5) -> ()
+	// 0x5C
+	.word sub_8027A58+1 // (self: * S20364C0 $r5) -> ()
 	thumb_func_end custMenuMainMaybe_8026A88
 
 	thumb_local_start
-sub_8026B04:
+sub_8026B04: // (self: * S20364C0 $r5) -> ()
 	push {lr}
-	ldrb r0, [r5,#2]
+
+	ldrb r0, [r5,#oS20364C0_Unk_02]
 	cmp r0, #0
 	bne loc_8026B38
+
 	mov r0, #SOUND_SELECT_79
 	bl PlaySoundEffect
+
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
+
 	mov r0, #0x78 
 	strh r0, [r1,#0x18]
+
 	mov r0, #0
 	bl sub_801E71C
+
 	mov r0, #0x80
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
+
 	mov r0, #0xf
 	mov r1, #0
 	bl sub_801E0A0
+
 	mov r0, #0xf
 	str r0, [r5,#0x44]
 	mov r0, #0x78 
 	str r0, [r5,#0x40]
-	strb r0, [r5,#2]
+
+	strb r0, [r5,#oS20364C0_Unk_02]
 loc_8026B38:
 	ldr r0, [r5,#0x40]
 	sub r0, #0xc
@@ -905,11 +943,13 @@ loc_8026B5A:
 	sub r6, #1
 	bne loc_8026B46
 	pop {r0,r4,r6,r7}
+
 	push {r0}
 	bl GetBattleMode
 	cmp r0, #1
 	pop {r0}
 	beq loc_8026B8C
+
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_CameraPtr]
 	ldr r1, [r2,#0x34]
@@ -929,12 +969,15 @@ loc_8026B8C:
 	pop {r0}
 	cmp r0, #0
 	bne loc_8026BE8
+
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldrb r0, [r0,#7]
+	ldrb r0, [r0,#oBattleState_Unk_07]
 	cmp r0, #1
 	bne loc_8026BB6
-	bl sub_801E574
+
+	bl RetrieveAndRenderEnemyVirusNamesInBattle_801E574 // () -> ()
+
 	b loc_8026BC2
 loc_8026BB6:
 	mov r0, #0
@@ -942,7 +985,7 @@ loc_8026BB6:
 	mov r0, #1
 	bl sub_8013FD0
 loc_8026BC2:
-	ldrb r0, [r5,#0xc]
+	ldrb r0, [r5,#oS20364C0_Unk_0c]
 	cmp r0, #0xff
 	beq loc_8026BE0
 	cmp r0, #5
@@ -953,41 +996,58 @@ loc_8026BC2:
 	cmp r0, #5
 	bge loc_8026BE0
 loc_8026BD6:
+
+	// 0x00: trigger sub_802728C via custMenuMainMaybe_8026A88
 	mov r0, #0x2c 
-	strb r0, [r5,#1]
+	strb r0, [r5,#oS20364C0_JumpOffset01]
+
 	mov r0, #0
-	strh r0, [r5,#2]
+	strh r0, [r5,#oS20364C0_Unk_02]
+
 	b loc_8026BE8
 loc_8026BE0:
+
+	// 0x00: trigger sub_8026CCC via custMenuMainMaybe_8026A88
 	mov r0, #4
-	strb r0, [r5,#1]
+	strb r0, [r5,#oS20364C0_JumpOffset01]
+
 	mov r0, #0
-	strh r0, [r5,#2]
+	strh r0, [r5,#oS20364C0_Unk_02]
+
 loc_8026BE8:
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8026BF0:
-	.word dword_20364C0
+	.word eS20364C0
 	thumb_func_end sub_8026B04
 
 	thumb_local_start
-sub_8026BF4:
+sub_8026BF4: // (self: * S20364C0 $r5) -> ()
 	push {lr}
-	ldrb r0, [r5,#2]
-	cmp r0, #0
+
+	ldrb r0, [r5,#oS20364C0_Unk_02]
+	cmp r0, #FALSE
 	bne loc_8026C14
-	str r0, [r5,#0x44]
-	str r0, [r5,#0x40]
-	mov r0, #1
-	strb r0, [r5,#2]
+
+	// set to NULL
+	str r0, [r5,#oS20364C0_Extra_Unk_44]
+	str r0, [r5,#oS20364C0_Extra_Unk_40]
+
+	mov r0, #TRUE
+	strb r0, [r5,#oS20364C0_Unk_02]
+
 	ldr r0, off_8026CC4 // =0x2000 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
+
 	bl sub_8029D80
-	mov r0, #4
-	bl sub_800A9D6
-loc_8026C14:
-	ldr r0, [r5,#0x40]
+
+	mov r0, #BATTLE_STATE_UNK_11_FLAG_UNK_BIT_02
+	bl clearBattleStateUnk11Flag_800A9D6 // (flags: flags8) -> ()
+
+loc_8026C14: // endif
+
+	ldr r0, [r5,#oS20364C0_Extra_Unk_40]
 	add r0, #0xc
 	push {r0,r4-r7}
 	mov r7, r5
@@ -997,7 +1057,8 @@ loc_8026C14:
 	mov r0, #1
 	eor r6, r0
 	add r6, #1
-loc_8026C28:
+
+loop_8026C28:
 	ldr r0, [r7,#0x44]
 	add r0, #1
 	str r0, [r7,#0x44]
@@ -1012,25 +1073,32 @@ loc_8026C28:
 	mov r4, #1
 	mov r5, #0x14
 	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
+
 	sub r6, #1
-	bne loc_8026C28
+	bne loop_8026C28
+
 	pop {r0,r4-r7}
+
 	push {r0}
 	bl GetBattleMode
 	cmp r0, #1
 	pop {r0}
 	beq loc_8026C5C
+
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_CameraPtr]
 	ldr r1, [r2,#0x34]
 	ldr r3, dword_8026CC8 // =0x18000 
 	add r1, r1, r3
 	str r1, [r2,#0x34]
-loc_8026C5C:
+
+loc_8026C5C: // endif
+
 	str r0, [r5,#0x40]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	strh r0, [r1,#0x18]
+
 	push {r0}
 	mov r1, r0
 	mov r0, #0x78 
@@ -1039,12 +1107,15 @@ loc_8026C5C:
 	pop {r0}
 	cmp r0, #0x78 
 	bne loc_8026C7E
+
 	ldrb r0, [r5,#0xb]
 	strb r0, [r5,#1]
 	mov r0, #0
 	strb r0, [r5,#2]
-loc_8026C7E:
-	bl sub_8029C08
+
+loc_8026C7E: // endif
+
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8026C84:
@@ -1061,25 +1132,32 @@ dword_8026CC8:
 	thumb_func_end sub_8026BF4
 
 	thumb_local_start
-sub_8026CCC:
+sub_8026CCC: // (self: * S20364C0 $r5) -> ()
 	push {r7,lr}
+
 	bl sub_802A220
 	cmp r0, #0xff
 	beq loc_8026CE6
-	strh r0, [r5,#0x38]
+
+	strh r0, [r5,#oS20364C0_Unk_38]
+
+	// 0x04: trigger sub_8027548 via custMenuMainMaybe_8026A88
 	mov r0, #0x40 
-	strb r0, [r5,#1]
+	strb r0, [r5,#oS20364C0_JumpOffset01]
+
 	mov r0, #0
-	strb r0, [r5,#2]
+	strb r0, [r5,#oS20364C0_Unk_02]
+
 	mov r0, #0
 	str r0, [r5,#0x40]
+
 	b locret_8026D04
 loc_8026CE6:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_JoypadPtr]
-	bl custMenuSomeHandler_8028B74
+	bl custMenuSomeHandler_8028B74 // (self: * S20364C0 $r5) -> ()
 	bl sub_8028820
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	bl sub_802899C
 	bl sub_8029D34
 	ldr r0, [r5,#0x40]
@@ -1090,7 +1168,7 @@ locret_8026D04:
 	thumb_func_end sub_8026CCC
 
 	thumb_local_start
-sub_8026D06:
+sub_8026D06: // (self: * S20364C0 $r5) -> ()
 	push {r4,r5,lr}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_RenderInfoPtr]
@@ -1106,7 +1184,7 @@ sub_8026D06:
 	mov r0, #0
 	bl sub_801E71C
 	ldr r0, off_8026DA8 // =0x2000 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	bl sub_8029D80
 	mov r0, #0
 	mov r1, #0
@@ -1149,7 +1227,7 @@ loc_8026D5C:
 	mov r5, #0x14
 	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
 	pop {r4,r5}
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	mov r0, #SOUND_CUR_MOVE_80
 	bl PlaySoundEffect
 	mov r0, r10
@@ -1158,10 +1236,10 @@ loc_8026D5C:
 	cmp r0, #1
 	bne locret_8026DA6
 	ldr r0, off_8026DA8 // =0x2000 
-	bl sub_801DA48
+	bl dispatch_801DA48
 	b locret_8026DA6
 loc_8026D9A:
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	mov r0, #4
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -1176,7 +1254,7 @@ off_8026DAC:
 	thumb_func_end sub_8026D06
 
 	thumb_local_start
-sub_8026DB0:
+sub_8026DB0: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	bl sub_802B734
 	cmp r0, #0
@@ -1190,7 +1268,7 @@ locret_8026DC2:
 	thumb_func_end sub_8026DB0
 
 	thumb_local_start
-sub_8026DC4:
+sub_8026DC4: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	ldrb r0, [r5,#2]
 	cmp r0, #0
@@ -1220,10 +1298,10 @@ loc_8026DEC:
 	ldr r0, off_8026E48 // =0x1000 
 	bl sub_801BED6
 	ldr r0, off_8026E48 // =0x1000 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_8026E14:
 	mov r0, #2
-	bl sub_801DA48
+	bl dispatch_801DA48
 	mov r0, #2
 	bl sub_801BECC
 	ldrb r0, [r5,#0xc]
@@ -1253,7 +1331,7 @@ off_8026E48:
 	thumb_func_end sub_8026DC4
 
 	thumb_local_start
-sub_8026E4C:
+sub_8026E4C: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
@@ -1271,12 +1349,12 @@ loc_8026E64:
 	mov r0, #0
 	strh r0, [r5,#2]
 loc_8026E72:
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	pop {pc}
 	thumb_func_end sub_8026E4C
 
 	thumb_local_start
-sub_8026E78:
+sub_8026E78: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
@@ -1289,12 +1367,12 @@ sub_8026E78:
 	mov r0, #0
 	strh r0, [r5,#2]
 loc_8026E92:
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	pop {pc}
 	thumb_func_end sub_8026E78
 
 	thumb_local_start
-sub_8026E98:
+sub_8026E98: // (self: * S20364C0 $r5) -> ()
 	push {r4,lr}
 	mov r4, #0
 	bl GetBattleEffects // () -> int
@@ -1308,7 +1386,7 @@ loc_8026EA8:
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	pop {r4,pc}
 	.balign 4, 0
 off_8026EB8:
@@ -1456,7 +1534,7 @@ locret_8026FBE:
 	thumb_func_end sub_8026FAA
 
 	thumb_local_start
-sub_8026FC0:
+sub_8026FC0: // (self: * S20364C0 $r5) -> ()
 	push {r4,lr}
 	mov r4, #0
 	bl GetBattleEffects // () -> int
@@ -1522,14 +1600,14 @@ dword_8027040:
 	thumb_func_end sub_8026FC0
 
 	thumb_local_start
-sub_8027044:
+sub_8027044: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	ldr r1, off_802705C // =off_8027060 
 	ldrb r0, [r5,#2]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	bl sub_802899C
 	pop {pc}
 	.balign 4, 0
@@ -1754,14 +1832,14 @@ off_80271F4:
 	thumb_func_end sub_80271C2
 
 	thumb_local_start
-sub_80271F8:
+sub_80271F8: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	ldr r1, off_8027210 // =off_8027214 
 	ldrb r0, [r5,#2]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	bl sub_802899C
 	pop {pc}
 	.balign 4, 0
@@ -1832,7 +1910,7 @@ locret_802728A:
 	thumb_func_end sub_802723A
 
 	thumb_local_start
-sub_802728C:
+sub_802728C: // (self: * S20364C0 $r5) -> ()
 	push {r4,lr}
 	ldr r4, [r5,#0x40]
 	ldr r1, off_80272A0 // =off_80272A4 
@@ -1840,7 +1918,7 @@ sub_802728C:
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	pop {r4,pc}
 	.balign 4, 0
 off_80272A0:
@@ -1994,7 +2072,7 @@ sub_8027394:
 	thumb_func_end sub_8027394
 
 	thumb_local_start
-sub_80273A4:
+sub_80273A4: // (self: * S20364C0 $r5) -> ()
 	push {r4,lr}
 	ldr r4, [r5,#0x40]
 	ldr r1, off_80273B4 // =off_80273B8 
@@ -2038,7 +2116,7 @@ sub_80273E4:
 	thumb_func_end sub_80273E4
 
 	thumb_local_start
-sub_80273EC:
+sub_80273EC: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	mov r0, #0x80
 	bl chatbox_mask_eFlags2009F38 // (int flag) -> int
@@ -2049,12 +2127,12 @@ sub_80273EC:
 	mov r0, #0
 	strh r0, [r5,#2]
 loc_8027400:
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	pop {pc}
 	thumb_func_end sub_80273EC
 
 	thumb_local_start
-sub_8027406:
+sub_8027406: // (self: * S20364C0 $r5) -> ()
 	push {r4,lr}
 	mov r0, #8
 	bl getLocOfActiveChips_8027E1C // (int a1) -> void*
@@ -2064,7 +2142,7 @@ sub_8027406:
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	bl sub_802899C
 	pop {r4,pc}
 	.balign 4, 0
@@ -2216,7 +2294,7 @@ loc_8027526:
 	thumb_func_end sub_802750C
 
 	thumb_local_start
-sub_802753E:
+sub_802753E: // (self: * S20364C0 $r5) -> ()
 	mov r0, #4
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -2225,14 +2303,14 @@ sub_802753E:
 	thumb_func_end sub_802753E
 
 	thumb_local_start
-sub_8027548:
+sub_8027548: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	ldr r1, off_8027560 // =off_8027564 
 	ldrb r0, [r5,#2]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	bl sub_802899C
 	pop {pc}
 	.balign 4, 0
@@ -2320,14 +2398,14 @@ locret_80275EA:
 	thumb_func_end sub_80275D8
 
 	thumb_local_start
-sub_80275EC:
+sub_80275EC: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	ldr r1, off_8027600 // =off_8027604 
 	ldrb r0, [r5,#2]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8027600:
@@ -2475,14 +2553,14 @@ off_8027708:
 	thumb_func_end sub_80276D6
 
 	thumb_local_start
-sub_802770C:
+sub_802770C: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	ldr r1, off_8027720 // =off_8027724 
 	ldrb r0, [r5,#2]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8027720:
@@ -2630,7 +2708,7 @@ locret_802782E:
 	thumb_func_end sub_8027806
 
 	thumb_local_start
-sub_8027834:
+sub_8027834: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	ldrb r0, [r5,#2]
 	cmp r0, #0
@@ -2714,7 +2792,7 @@ loc_80278C8:
 	strb r0, [r5,#1]
 	mov r0, #0
 	strh r0, [r5,#2]
-	bl sub_802794A
+	bl sub_802794A // (self: * S20364C0 $r5) -> ()
 	b locret_80278DA
 loc_80278D6:
 	bl sub_80279C8
@@ -2741,7 +2819,7 @@ dword_8027908:
 	thumb_func_end sub_8027834
 
 	thumb_local_start
-sub_802790C:
+sub_802790C: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	ldrb r0, [r5,#2]
 	cmp r0, #0
@@ -2766,13 +2844,13 @@ loc_8027922:
 	mov r0, #0
 	strh r0, [r5,#2]
 loc_8027940:
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	bl sub_802899C
 	pop {pc}
 	thumb_func_end sub_802790C
 
 	thumb_local_start
-sub_802794A:
+sub_802794A: // (self: * S20364C0 $r5) -> ()
 	push {r7,lr}
 	ldrb r0, [r5,#2]
 	cmp r0, #0
@@ -2844,7 +2922,7 @@ dword_80279C4:
 	thumb_local_start
 sub_80279C8:
 	push {r4,lr}
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	bl sub_802899C
 	bl sub_8029D34
 	mov r4, #4
@@ -2920,14 +2998,14 @@ dword_8027A54:
 	thumb_func_end sub_80279FC
 
 	thumb_local_start
-sub_8027A58:
+sub_8027A58: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	ldr r1, off_8027A70 // =off_8027A74 
 	ldrb r0, [r5,#2]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_8029C08
+	bl sub_8029C08 // (self: * S20364C0 $r5) -> ()
 	bl sub_802899C
 	pop {pc}
 	.balign 4, 0
@@ -3023,7 +3101,7 @@ locret_8027B1A:
 	.balign 4, 0
 off_8027B1C:
 	.word TextScriptFirstBattleTutorials
-	.word dword_20364C0
+	.word eS20364C0
 off_8027B24:
 	.word unk_2035000
 	.word dword_20349A0
@@ -3244,14 +3322,14 @@ sub_8027D78:
 	strh r0, [r1,#0x18]
 	bl sub_801E71C
 	mov r0, #0x80
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	mov r0, #0
 	mov r1, #0
 	bl sub_801E0A0
 	ldr r0, off_8027E14 // =0x400 
 	bl sub_801BECC
 	ldr r0, off_8027E14 // =0x400 
-	bl sub_801DA48
+	bl dispatch_801DA48
 	bl sub_800A97A
 	tst r0, r0
 	bne locret_8027E10
@@ -3279,7 +3357,7 @@ loc_8027DD4:
 	cmp r0, #0
 	beq loc_8027DEA
 	ldr r0, dword_8027E18 // =0x20000 
-	bl sub_801DA48
+	bl dispatch_801DA48
 	ldr r0, dword_8027E18 // =0x20000 
 	bl sub_801BECC
 	b locret_8027E10
@@ -3289,13 +3367,13 @@ loc_8027DEA:
 	cmp r0, #1
 	bne loc_8027E04
 	mov r0, #0x20 
-	bl sub_801DA48
+	bl dispatch_801DA48
 	mov r0, #0x20 
 	bl sub_801BECC
 	b locret_8027E10
 loc_8027E04:
 	mov r0, #0x10
-	bl sub_801DA48
+	bl dispatch_801DA48
 	mov r0, #0x10
 	bl sub_801BECC
 locret_8027E10:
@@ -3353,7 +3431,7 @@ loc_8027E52:
 	bl sub_8015B5C
 	b loc_8027E74
 loc_8027E70:
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 loc_8027E74:
 	mov r7, r1
 	bl sub_8027F10
@@ -3371,6 +3449,7 @@ sub_8027E90:
 	mov r3, #0xc
 	mov r2, r4
 	ldr r1, off_8027EE4 // =dword_802A7CC 
+
 loc_8027E98:
 	ldr r0, [r1]
 	str r0, [r2]
@@ -3381,6 +3460,7 @@ loc_8027E98:
 	add r2, #0xc
 	sub r3, #1
 	bne loc_8027E98
+
 	bl GetBattleMode
 	cmp r0, #1
 	bne loc_8027EC2
@@ -5077,10 +5157,12 @@ dword_8028B70:
 	thumb_func_end sub_8028A78
 
 	thumb_local_start
-custMenuSomeHandler_8028B74:
+custMenuSomeHandler_8028B74: // (self: * S20364C0 $r5) -> ()
 	push {r4,lr}
-	ldrb r0, [r5,#7]
+  
+	ldrb r0, [r5,#oS20364C0_ChipSelectCursorPos]
 	bl getLocOfActiveChips_8027E1C // (int a1) -> void*
+
 	mov r4, r0
 	ldrh r0, [r7,#4]
 	mov r1, #0xc0
@@ -5091,28 +5173,38 @@ custMenuSomeHandler_8028B74:
 	cmp r0, #1
 	pop {r0}
 	beq loc_8028BBE
-	ldrb r2, [r5,#0x10]
+
+	ldrb r2, [r5,#oS20364C0_Unk_10]
 	cmp r2, #0
 	bne loc_8028BBE
-	ldrb r2, [r5,#0x17]
+
+	ldrb r2, [r5,#oS20364C0_Unk_17]
 	tst r2, r2
 	bne loc_8028BBE
-	ldrb r2, [r5,#0x18]
+
+	ldrb r2, [r5,#oS20364C0_Unk_18]
 	tst r2, r2
 	beq loc_8028BBE
+
 	mov r1, #0x40 
 	tst r0, r1
 	beq loc_8028BBE
-	ldrb r0, [r5,#7]
+
+	ldrb r0, [r5,#oS20364C0_ChipSelectCursorPos]
 	cmp r0, #0xa
 	beq loc_8028BB4
+
 	cmp r0, #4
 	bgt loc_8028BBE
 loc_8028BB4:
+
+	// trigger sub_8027834 via custMenuMainMaybe_8026A88
 	mov r0, #0x4c 
-	strb r0, [r5,#1]
+	strb r0, [r5,#oS20364C0_JumpOffset01]
+
 	mov r0, #0
-	strh r0, [r5,#2]
+	strh r0, [r5,#oS20364C0_Unk_02]
+
 	b locret_8028C96
 loc_8028BBE:
 	ldrb r0, [r4,#1]
@@ -5132,10 +5224,12 @@ loc_8028BD4:
 	cmp r0, #0xff
 	beq locret_8028C96
 loc_8028BD8:
-	ldrb r1, [r5,#7]
+	ldrb r1, [r5,#oS20364C0_ChipSelectCursorPos]
 	cmp r0, r1
 	beq loc_8028BE6
-	strb r0, [r5,#7]
+
+	strb r0, [r5,#oS20364C0_ChipSelectCursorPos]
+
 	mov r0, #SOUND_MENU_CUR_MOVE
 	bl PlaySoundEffect
 loc_8028BE6:
@@ -5149,17 +5243,21 @@ loc_8028BEC:
 	bl custMenu_80298F4
 	cmp r0, #0
 	bne locret_8028C96
+
 	ldrb r0, [r4]
 	lsl r0, r0, #2
 	ldr r1, off_8028C98 // =off_8028C9C 
 	ldr r0, [r1,r0]
 	mov lr, pc
 	bx r0
+
 	cmp r0, #0
 	bne locret_8028C96
-	ldrb r0, [r5,#0xc]
+
+	ldrb r0, [r5,#oS20364C0_Unk_0c]
 	cmp r0, #0xff
 	beq locret_8028C96
+
 	bl sub_8029A56
 	b locret_8028C96
 loc_8028C18:
@@ -5181,17 +5279,23 @@ loc_8028C36:
 	mov r1, #4
 	tst r0, r1
 	beq loc_8028C46
+
+	// trigger sub_8026D06 via custMenuMainMaybe_8026A88
 	mov r0, #0xc
-	strb r0, [r5,#1]
+	strb r0, [r5,#oS20364C0_JumpOffset01]
+
 	mov r0, #0
-	strh r0, [r5,#2]
+	strh r0, [r5,#oS20364C0_Unk_02]
+
 	b locret_8028C96
 loc_8028C46:
 	ldr r1, off_8028CC4 // =0x100 
 	tst r0, r1
 	beq loc_8028C80
-	ldrb r0, [r5,#7]
+
+	ldrb r0, [r5,#oS20364C0_ChipSelectCursorPos]
 	bl getLocOfActiveChips_8027E1C // (int a1) -> void*
+
 	ldrb r1, [r0]
 	cmp r1, #6
 	beq loc_8028C60
@@ -5205,12 +5309,17 @@ loc_8028C60:
 	bl getChipID_802A54E // (int a1) -> int
 	bl chip_getScript_8027D34 // (int chipID) -> void*
 	bl chatbox_runScript // (archive: *const TextScriptArchive, script_idx: u8) -> ()
+
 	mov r0, #0x9c
 	bl PlaySoundEffect
+
+	// trigger sub_8026E4C via custMenuMainMaybe_8026A88
 	mov r0, #0x18
-	strb r0, [r5,#1]
+	strb r0, [r5,#oS20364C0_JumpOffset01]
+
 	mov r0, #0
-	strh r0, [r5,#2]
+	strh r0, [r5,#oS20364C0_Unk_02]
+
 	b locret_8028C96
 loc_8028C80:
 	ldr r1, off_8028CC8 // =0x200 
@@ -5219,10 +5328,14 @@ loc_8028C80:
 	bl GetBattleMode
 	cmp r0, #1
 	beq locret_8028C96
+
+	// trigger sub_8026E98 via custMenuMainMaybe_8026A88
 	mov r0, #0x1c
-	strb r0, [r5,#1]
+	strb r0, [r5,#oS20364C0_JumpOffset01]
+
 	mov r0, #0
-	strh r0, [r5,#2]
+	strh r0, [r5,#oS20364C0_Unk_02]
+
 locret_8028C96:
 	pop {r4,pc}
 	.balign 4, 0
@@ -5303,23 +5416,33 @@ custMenuPressOK_8028D3A:
 	push {lr}
 	bl sub_8029110
 	bl sub_80293F8
-	ldrb r0, [r5,#0x19]
+
+	ldrb r0, [r5,#oS20364C0_Unk_19]
 	tst r0, r0
 	beq loc_8028D50
+
 	bl sub_802937A
 	b loc_8028D5A
 loc_8028D50:
-	ldrh r0, [r5,#0x3a]
+
+	ldrh r0, [r5,#oS20364C0_Unk_3a]
 	tst r0, r0
 	beq loc_8028D5A
+  
 	bl sub_80293B0
-loc_8028D5A:
+
+loc_8028D5A: // endif
+
+	// trigger sub_8026BF4 via custMenuMainMaybe_8026A88
 	mov r0, #8
-	strb r0, [r5,#1]
+	strb r0, [r5,#oS20364C0_JumpOffset01]
+
 	mov r0, #0
-	strh r0, [r5,#2]
+	strh r0, [r5,#oS20364C0_Unk_02]
+
 	mov r0, #SOUND_SELECT_82
 	bl PlaySoundEffect
+
 	mov r0, #0
 	pop {pc}
 	thumb_func_end custMenuPressOK_8028D3A
@@ -5330,13 +5453,16 @@ sub_8028D6C:
 	ldrb r0, [r4,#7]
 	cmp r0, #0
 	bne loc_8028DB2
-	ldrb r0, [r5,#8]
+
+	ldrb r0, [r5,#oS20364C0_NumChipsSelected]
 	cmp r0, #5
 	bge loc_8028DB2
+
 	add r1, r0, #1
-	strb r1, [r5,#8]
+	strb r1, [r5,#oS20364C0_NumChipsSelected]
+
 	add r0, #0x48 
-	ldrb r1, [r5,#7]
+	ldrb r1, [r5,#oS20364C0_ChipSelectCursorPos]
 	strb r1, [r5,r0]
 	ldr r0, [r4,#8]
 	ldrh r0, [r0]
@@ -5351,10 +5477,14 @@ sub_8028D6C:
 	bl sub_8029CD4
 	mov r0, #SOUND_MENU_SELECT
 	bl PlaySoundEffect
+
+	// trigger sub_802770C via custMenuMainMaybe_8026A88
 	mov r0, #0x48 
-	strb r0, [r5,#1]
+	strb r0, [r5,#oS20364C0_JumpOffset01]
+
 	mov r0, #0
-	strh r0, [r5,#2]
+	strh r0, [r5,#oS20364C0_Unk_02]
+
 	mov r0, #0
 	b locret_8028DBA
 loc_8028DB2:
@@ -5390,10 +5520,14 @@ loc_8028DE0:
 	ldrb r0, [r4,#7]
 	cmp r0, #0
 	bne loc_8028DFA
+
+	// trigger sub_80271F8 via custMenuMainMaybe_8026A88
 	mov r0, #0x28 
-	strb r0, [r5,#1]
+	strb r0, [r5,#oS20364C0_JumpOffset01]
+
 	mov r0, #0
-	strh r0, [r5,#2]
+	strh r0, [r5,#oS20364C0_Unk_02]
+  
 	mov r0, #0x83
 	add r0, #0xff
 	bl PlaySoundEffect
@@ -5854,8 +5988,10 @@ dword_802910C:
 	thumb_local_start
 sub_8029110:
 	push {r4,r6,r7,lr}
+
 	mov r0, #0x14
-	strb r0, [r5,#0xb]
+	strb r0, [r5,#oS20364C0_Unk_0b]
+
 	// memBlock
 	ldr r0, off_80293D4 // =dword_2033000 
 	// size
@@ -5874,9 +6010,11 @@ loc_8029128:
 	sub r3, #1
 	bne loc_8029128
 	ldr r4, off_80293D4 // =dword_2033000 
-	ldrb r7, [r5,#8]
+
+	ldrb r7, [r5,#oS20364C0_NumChipsSelected]
 	cmp r7, #0
 	beq loc_80291E6
+
 	mov r6, #0x48 
 	ldr r3, off_80293CC // =byte_20366C0 
 loc_8029140:
@@ -5963,9 +6101,11 @@ loc_80291E6:
 	ldr r6, off_80293CC // =byte_20366C0 
 	ldr r4, off_80293D0 // =byte_20366FE 
 	mov r0, #0
-	ldrb r3, [r5,#8]
+
+	ldrb r3, [r5,#oS20364C0_NumChipsSelected]
 	cmp r3, #0
 	bne loc_80291F6
+
 	mov r0, #0xff
 loc_80291F6:
 	strb r0, [r6]
@@ -6206,11 +6346,13 @@ loc_8029388:
 	mov r0, #1
 	bl sub_802A11C
 	mov r2, r0
-	ldrb r0, [r5,#0x1a]
+
+	ldrb r0, [r5,#oS20364C0_Unk_1a]
 	add r0, r0, r4
 	mov r1, #0
 	bl sub_8015952
-	ldrb r0, [r5,#0x1a]
+
+	ldrb r0, [r5,#oS20364C0_Unk_1a]
 	ldr r1, dword_80293E8 // =0x6 
 	add r0, r0, r1
 	sub r0, #1
@@ -6226,7 +6368,7 @@ loc_8029388:
 	thumb_local_start
 sub_80293B0:
 	push {r0-r4,lr}
-	ldrh r0, [r5,#0x3a]
+	ldrh r0, [r5,#oS20364C0_Unk_3a]
 	sub r0, #1
 	ldr r1, dword_80293F0 // =0xd 
 	add r0, r0, r1
@@ -6266,9 +6408,11 @@ sub_80293F8:
 	push {r4,r6,r7,lr}
 	mov r7, #0
 	sub r7, #1
-	ldrb r4, [r5,#8]
+
+	ldrb r4, [r5,#oS20364C0_NumChipsSelected]
 	cmp r4, #0
 	beq locret_8029458
+
 	mov r6, #0x48 
 loc_8029406:
 	ldrb r0, [r5,r6]
@@ -7510,13 +7654,16 @@ off_8029C04:
 	thumb_func_end sub_8029BE6
 
 	thumb_local_start
-sub_8029C08:
+sub_8029C08: // (self: * S20364C0 $r5) -> ()
 	push {lr}
-	ldrb r0, [r5,#1]
+
+	ldrb r0, [r5,#oS20364C0_JumpOffset01]
 	cmp r0, #0x48 
 	beq loc_8029C14
+
 	cmp r0, #0x44 
 	bne loc_8029C18
+
 loc_8029C14:
 	mov r1, #0
 	b loc_8029C22
@@ -7534,8 +7681,10 @@ loc_8029C22:
 	lsl r0, r0, #0x10
 	ldr r1, dword_8029C9C // =0x800001fc 
 	add r0, r0, r1
-	ldrb r1, [r5,#0xf]
+
+	ldrb r1, [r5,#oS20364C0_Unk_0f]
 	cmp r1, #2
+
 	blt loc_8029C46
 	cmp r1, #6
 	bgt loc_8029C46
@@ -7562,24 +7711,24 @@ loc_8029C54:
 	lsl r1, r1, #0x10
 	sub r0, r0, r1
 loc_8029C62:
-	ldrb r1, [r5,#0xe]
+	ldrb r1, [r5,#oS20364C0_Unk_0e]
 	lsl r1, r1, #0x19
 	orr r0, r1
 	ldr r1, dword_8029CA0 // =0xb782 
 	mov r2, #1
 	mov r3, #0
 	bl sub_8009FF8
-	ldrb r0, [r5,#0xf]
+	ldrb r0, [r5,#oS20364C0_Unk_0f]
 	cmp r0, #0
 	beq locret_8029C9A
 	cmp r0, #0x14
 	blt loc_8029C82
 	mov r0, #0
-	strb r0, [r5,#0xf]
+	strb r0, [r5,#oS20364C0_Unk_0f]
 	b locret_8029C9A
 loc_8029C82:
 	add r1, r0, #1
-	strb r1, [r5,#0xf]
+	strb r1, [r5,#oS20364C0_Unk_0f]
 	sub r0, #1
 	ldr r1, off_8029CA8 // =byte_8029CAC
 	lsl r0, r0, #1
@@ -7587,7 +7736,7 @@ loc_8029C82:
 	ldrb r2, [r1,r2]
 	ldrb r0, [r1,r0]
 	mov r1, r2
-	ldrb r3, [r5,#0xe]
+	ldrb r3, [r5,#oS20364C0_Unk_0e]
 	bl sub_802FE7A
 locret_8029C9A:
 	pop {pc}
@@ -8032,7 +8181,7 @@ sub_802A040:
 	ldrb r1, [r5,#0x16] // (byte_2035296 - 0x2035280)
 	cmp r1, #0
 	bne loc_802A064
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	b loc_802A068
 loc_802A064:
 	bl sub_8015B5C
@@ -8071,7 +8220,7 @@ sub_802A088:
 	ldrb r1, [r5,#0x16] // (byte_2035296 - 0x2035280)
 	cmp r1, #0
 	bne loc_802A0A8
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	b loc_802A0AC
 loc_802A0A8:
 	bl sub_8015B5C
@@ -8134,7 +8283,7 @@ sub_802A0F8:
 	tst r1, r1
 	beq loc_802A10C
 	ldr r0, dword_802A118 // =0x4000 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_802A10C:
 	bl sub_802A0EC
 	pop {pc}
@@ -8280,38 +8429,43 @@ off_802A2AC:
 	thumb_func_end sub_802A220
 
 	thumb_local_start
-sub_802A2B0:
+sub_802A2B0: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	ldr r1, off_802A2D4 // =off_802A2D8 
-	ldrb r0, [r5,#0x12]
+
+	ldrb r0, [r5,#oS20364C0_JumpOffset12]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	ldrb r0, [r5,#0x14]
+
+	ldrb r0, [r5,#oS20364C0_Unk_14]
 	add r0, #1
 	mov r1, #0x3f 
 	and r0, r1
-	strb r0, [r5,#0x14]
+	strb r0, [r5,#oS20364C0_Unk_14]
 	bne locret_802A2D2
-	ldrb r0, [r5,#0x12]
+
+	ldrb r0, [r5,#oS20364C0_JumpOffset12]
 	cmp r0, #0
 	beq locret_802A2D2
+
 	cmp r0, #3
 	beq locret_802A2D2
+
 locret_802A2D2:
 	pop {pc}
 	.balign 4, 0
 off_802A2D4:
 	.word off_802A2D8
 off_802A2D8:
-	.word sub_802A2E8+1
-	.word sub_802A30C+1
-	.word sub_802A33E+1
-	.word sub_802A362+1
+	.word sub_802A2E8+1 // (self: * S20364C0 $r5) -> ()
+	.word sub_802A30C+1 // (self: * S20364C0 $r5) -> ()
+	.word sub_802A33E+1 // (self: * S20364C0 $r5) -> ()
+	.word sub_802A362+1 // (self: * S20364C0 $r5) -> ()
 	thumb_func_end sub_802A2B0
 
 	thumb_local_start
-sub_802A2E8:
+sub_802A2E8: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	bl sub_802A394
 	cmp r0, #0
@@ -8323,17 +8477,19 @@ sub_802A2E8:
 	mov r1, #0xa
 	bl loc_8006274 // (int a1, int a2) -> void
 	mov r0, #0
-	strb r0, [r5,#0x13]
+	strb r0, [r5,#oS20364C0_Unk_13]
+
 	mov r0, #4
-	strb r0, [r5,#0x12]
+	strb r0, [r5,#oS20364C0_JumpOffset12]
+
 locret_802A30A:
 	pop {pc}
 	thumb_func_end sub_802A2E8
 
 	thumb_local_start
-sub_802A30C:
+sub_802A30C: // (self: * S20364C0 $r5) -> ()
 	push {r4,lr}
-	ldrb r4, [r5,#0x13]
+	ldrb r4, [r5,#oS20364C0_Unk_13]
 	ldr r2, off_802A3E8 // =byte_802A3F4 
 	ldrh r2, [r2,r4]
 	ldr r1, dword_802A3F0 // =0xffff 
@@ -8345,19 +8501,21 @@ sub_802A30C:
 	mov r0, #0x16
 	bl sound_8000642
 	add r4, #2
-	strb r4, [r5,#0x13]
+	strb r4, [r5,#oS20364C0_Unk_13]
 	bl IsScreenFadeActive // () -> zf
 	bl isScreenFadeActive_80062FC // () -> zf
 	cmp r0, #0
 	bne locret_802A33C
+
 	mov r0, #8
-	strb r0, [r5,#0x12]
+	strb r0, [r5,#oS20364C0_JumpOffset12]
+
 locret_802A33C:
 	pop {r4,pc}
 	thumb_func_end sub_802A30C
 
 	thumb_local_start
-sub_802A33E:
+sub_802A33E: // (self: * S20364C0 $r5) -> ()
 	push {lr}
 	bl sub_802A394
 	cmp r0, #0
@@ -8369,17 +8527,19 @@ sub_802A33E:
 	mov r1, #0xa
 	bl loc_8006274 // (int a1, int a2) -> void
 	mov r0, #0
-	strb r0, [r5,#0x13]
+	strb r0, [r5,#oS20364C0_Unk_13]
+
 	mov r0, #0xc
-	strb r0, [r5,#0x12]
+	strb r0, [r5,#oS20364C0_JumpOffset12]
+
 locret_802A360:
 	pop {pc}
 	thumb_func_end sub_802A33E
 
 	thumb_local_start
-sub_802A362:
+sub_802A362: // (self: * S20364C0 $r5) -> ()
 	push {r4,lr}
-	ldrb r4, [r5,#0x13]
+	ldrb r4, [r5,#oS20364C0_Unk_13]
 	ldr r2, off_802A3EC // =byte_802A400 
 	ldrh r2, [r2,r4]
 	ldr r1, dword_802A3F0 // =0xffff 
@@ -8391,13 +8551,15 @@ sub_802A362:
 	mov r0, #0x16
 	bl sound_8000642
 	add r4, #2
-	strb r4, [r5,#0x13]
+	strb r4, [r5,#oS20364C0_Unk_13]
 	bl IsScreenFadeActive // () -> zf
 	bl isScreenFadeActive_80062FC // () -> zf
 	cmp r0, #0
 	bne locret_802A392
+
 	mov r0, #0
-	strb r0, [r5,#0x12]
+	strb r0, [r5,#oS20364C0_JumpOffset12]
+
 locret_802A392:
 	pop {r4,pc}
 	thumb_func_end sub_802A362
@@ -8482,7 +8644,7 @@ loc_802A42C:
 	b loc_802A498
 loc_802A430:
 	ldrb r0, [r6,#oBattleState_Unk_0d]
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	mov r4, #1
 	cmp r1, #0xa
 	beq loc_802A442
@@ -8560,7 +8722,7 @@ sub_802A49C:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#oBattleState_Unk_0d]
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	b loc_802A4D8
 loc_802A4CE:
 	mov r0, r10
@@ -8671,7 +8833,7 @@ sub_802A564:
 	ldrb r1, [r5,#0x15]
 	cmp r1, #0
 	bne loc_802A578
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	b locret_802A57C
 loc_802A578:
 	bl sub_8015B5C
@@ -8814,7 +8976,10 @@ sub_802A646:
 locret_802A664:
 	pop {pc}
 	.balign 4, 0x00
-	.word dword_20364C0
+	thumb_func_end sub_802A646
+
+off_802A668::
+	.word eS20364C0
 	.word unk_2035000
 	.word unk_20365C0
 	.word eBattleFolder
@@ -8883,6 +9048,9 @@ off_802A744:
 	.word 0x6017220
 	.word 0x20
 	.word 0x0
+
+/// Seems to feed into the first word of most entries in unk_20365C0
+/// [u32; 12]
 dword_802A7CC:
 	.word 0x10A050A
 	.word 0x200060A
@@ -8891,11 +9059,12 @@ dword_802A7CC:
 	.word 0xA03090A
 	.word 0x60B000A
 	.word 0x705010A
-	.word byte_806020A
+	.word 0x806020A
 	.word 0x907030B
 	.word 0xB08040B
 	.word 0x40B01
 	.word 0x5090A0B
+  
 off_802A7FC:
 	.word EnterMap_RealWorldMapGroupJumptable
 	.word 0xA000102
@@ -8904,7 +9073,7 @@ byte_802A804:
 	.byte 0x6, 0x5, 0xB, 0xA
 byte_802A817:
 	.byte 0x0
-	.word loc_8030200+1
+	.word 0x08030201
 	.byte 0x4, 0x9, 0xA
 byte_802A81F:
 	.byte 0x5, 0x6, 0x7, 0x8, 0x9, 0xB, 0xA, 0x0, 0x0
@@ -8920,7 +9089,6 @@ byte_802A848:
 	.byte 0x72, 0xB3, 0x72, 0xB3, 0x72, 0xB3, 0x0, 0x0
 dword_802A862:
 	.word 0xB374
-	thumb_func_end sub_802A646
 
 	thumb_func_start sub_802A866
 sub_802A866:
@@ -8995,7 +9163,7 @@ sub_802A8A4:
 	mov r0, #4
 	str r0, [r5]
 	ldr r0, dword_802A910 // =0x20000 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	pop {pc}
 	.balign 4, 0
 off_802A90C:
@@ -9034,11 +9202,11 @@ sub_802A934:
 	beq loc_802A966
 	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	ldr r0, dword_802A96C // =0x820080 
-	bl sub_801DA48
+	bl dispatch_801DA48
 	ldr r0, dword_802A96C // =0x820080 
 	bl sub_801BECC
 	ldr r0, dword_802A970 // =0x4 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	mov r0, #0
@@ -10213,10 +10381,10 @@ dword_802B294:
 
 	thumb_local_start
 sub_802B298:
-	ldr r0, off_802B29C // =dword_20364C0 
+	ldr r0, off_802B29C // =eS20364C0 
 	mov pc, lr
 off_802B29C:
-	.word dword_20364C0
+	.word eS20364C0
 	thumb_func_end sub_802B298
 
 	thumb_func_start sub_802B2A0
@@ -11333,26 +11501,26 @@ off_802BCB0:
 	.word byte_802BB86
 	.word byte_802BB8C
 	.word byte_802BB92
-	.word 0x0
+	.word NULL
 	thumb_func_end sub_802BA34
 
 	thumb_func_start sub_802BD60
 sub_802BD60:
 	push {r5,lr}
-	ldr r5, off_802BDAC // =dword_20364C0 
+	ldr r5, off_802BDAC // =eS20364C0 
 	mov r0, #1
-	strb r0, [r5,#0x5] // (dword_20364C4+1 - 0x20364c0)
+	strb r0, [r5,#0x5]
 	bl sub_802C8EA
-	str r0, [r5,#0x18] // (dword_20364D8 - 0x20364c0)
-	ldrb r0, [r5,#0x6] // (dword_20364C4+2 - 0x20364c0)
-	strb r0, [r5,#0x7] // (dword_20364C4+3 - 0x20364c0)
+	str r0, [r5,#0x18]
+	ldrb r0, [r5,#0x6]
+	strb r0, [r5,#0x7]
 	ldr r1, off_802BD9C // =off_802BDA0 
 	ldrb r0, [r5]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
 	push {r5}
-	mov r1, #0x6 // (dword_20364C4+2 - 0x20364c0)
+	mov r1, #0x6
 	// j
 	ldrsb r0, [r5,r1]
 	// i
@@ -11376,7 +11544,7 @@ off_802BDA0:
 	.word sub_802BDC0+1
 	.word sub_802C348+1
 off_802BDAC:
-	.word dword_20364C0
+	.word eS20364C0
 off_802BDB0:
 	.word unk_2034B30
 	thumb_func_end sub_802BD60
@@ -11528,25 +11696,34 @@ off_802BEC8:
 	thumb_local_start
 sub_802BED4:
 	push {lr}
+
 	bl sub_802C8D4
 	tst r0, r0
 	bne loc_802BEE8
+
+	// trigger sub_8026BF4 via custMenuMainMaybe_8026A88
 	mov r0, #8
-	strb r0, [r5,#1]
+	strb r0, [r5,#oS20364C0_JumpOffset01]
+
 	mov r0, #0
-	strh r0, [r5,#2]
+	strh r0, [r5,#oS20364C0_Unk_02]
+
 	b locret_802BEFA
 loc_802BEE8:
-	strh r0, [r5,#0x10]
+
+	strh r0, [r5,#oS20364C0_Unk_10]
+
 	mov r0, #1
-	ldrb r1, [r5,#0xc]
+	ldrb r1, [r5,#oS20364C0_Unk_0c]
+
 	tst r1, r1
 	bne loc_802BEF4
+
 	mov r0, #0x1e
 loc_802BEF4:
-	strb r0, [r5,#0xb]
+	strb r0, [r5,#oS20364C0_Unk_0b]
 	mov r0, #4
-	strb r0, [r5,#3]
+	strb r0, [r5,#oS20364C0_Unk_03]
 locret_802BEFA:
 	pop {pc}
 	thumb_func_end sub_802BED4
@@ -12174,7 +12351,7 @@ sub_802C34E:
 	mul r1, r2
 	add r0, r0, r1
 	mov r4, r0
-	ldr r0, off_802C3F4 // =dword_20364C0 
+	ldr r0, off_802C3F4 // =eS20364C0 
 	mov r7, r0
 	mov r1, #0x20 
 	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
@@ -12238,7 +12415,7 @@ sub_802C34E:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_802C3F4:
-	.word dword_20364C0
+	.word eS20364C0
 off_802C3F8:
 	.word off_802C3FC
 off_802C3FC:
@@ -13069,7 +13246,7 @@ sub_802CA1E:
 	mov r4, #0
 loc_802CA32:
 	ldrh r0, [r5]
-	bl sub_80182B4
+	bl GetVerActorTyAndAIIdx_80182B4 // (enemy_idx: u16) -> *const (version: u8, actor_type: ActorType, ai_index: u8)
 	ldrb r1, [r0,#1]
 	cmp r1, #1
 	bne loc_802CA50
@@ -13613,8 +13790,8 @@ off_802CE50:
 	.word dword_203CFB0
 	thumb_func_end sub_802CE30
 
-	thumb_func_start sub_802CE54
-sub_802CE54:
+	thumb_func_start zeroFill_802CE54
+zeroFill_802CE54:
 	push {lr}
 	// memBlock
 	ldr r0, off_802D020 // =unk_2036720 
@@ -13622,7 +13799,7 @@ sub_802CE54:
 	mov r1, #0x20 
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
-	thumb_func_end sub_802CE54
+	thumb_func_end zeroFill_802CE54
 
 	thumb_func_start sub_802CE60
 sub_802CE60:
@@ -13981,7 +14158,7 @@ sub_802D0C8:
 	bl sub_802D064
 	mov r7, r0
 	bl sub_800A7E2
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r2, r0
 	ldrh r0, [r2,#0x24]
 	mov r1, #0x64 
@@ -14233,7 +14410,7 @@ GetBattleEffects:
 // () -> int
 	thumb_func_start GetBattleEffectsFromBattleSettings
 GetBattleEffectsFromBattleSettings:
-	ldr r0, [r0,#8]
+	ldr r0, [r0,#oBattleSettings_UnkOptSettings]
 	mov pc, lr
 	thumb_func_end GetBattleEffectsFromBattleSettings
 
@@ -14854,10 +15031,10 @@ sub_802D6A0:
 	mov r0, #0
 	str r0, [r5]
 	mov r0, #0
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r5,#0x8] // (dword_203C978 - 0x203c970)
 	mov r0, #1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r5,#0xc] // (dword_203C97C - 0x203c970)
 	mov r0, #1
 	strb r0, [r5,#0x4] // (byte_203C974 - 0x203c970)
@@ -15000,7 +15177,7 @@ sub_802D7A0:
 	mov r1, #0x40 
 	bl SetBattleNaviStatsHword_AllianceFromBattleObject
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	ldrb r1, [r5,#oBattleObject_Alliance]
 	mov r2, #0x64 
 	mul r2, r1
@@ -15020,7 +15197,7 @@ loc_802D7E8:
 	cmp r0, r1
 	bne loc_802D81A
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	mov r1, r0
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r2, #0x64 
@@ -15214,7 +15391,7 @@ sub_802D9B0:
 	push {r4,lr}
 	bl sub_8011020
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	mov r1, r0
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r2, #0x64 
@@ -15416,7 +15593,7 @@ sub_802DB80:
 	push {r4,lr}
 	bl sub_8011020
 	ldrb r0, [r5,#0x16]
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	mov r1, r0
 	ldrb r0, [r5,#0x16]
 	mov r2, #0x64 
@@ -15861,7 +16038,7 @@ sub_802DF34:
 	ldrb r0, [r0,#0xb]
 	bl object_setAttack0
 	mov r0, #0x40 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	ldrb r0, [r5,#0x16]
 	ldrh r1, [r7,#0x14]
 	bl sub_8021D14
@@ -15904,7 +16081,7 @@ sub_802DF8C:
 	ldrb r0, [r0,#0xb]
 	bl object_setAttack0
 	mov r0, #0x40 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	pop {r7,pc}
 	thumb_func_end sub_802DF8C
 
@@ -15939,37 +16116,46 @@ locret_802DFFA:
 	thumb_func_start sub_802DFFC
 sub_802DFFC:
 	push {r4,lr}
+
 	// memBlock
 	ldr r0, off_802E208 // =unk_2036120 
 	mov r1, #0xe8
 	lsl r1, r1, #2
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
 	ldr r0, off_802E20C // =eT1BattleObject0 
 	ldr r1, off_802E210 // =unk_20362F0 
 	str r0, [r1,#0x44] // (dword_2036334 - 0x20362f0)
-	bl sub_802E544
+
+	bl zeroFill_802E544
+
 	pop {r4,pc}
 	thumb_func_end sub_802DFFC
 
-	thumb_func_start sub_802E014
-sub_802E014:
+	thumb_func_start zeroFill_802E014
+zeroFill_802E014:
 	push {r4,lr}
+
 	// memBlock
 	ldr r0, off_802E214 // =unk_2036120 
 	// size
 	mov r1, #0x60 
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
 	// memBlock
 	ldr r0, off_802E218 // =unk_20362F0 
 	// size
 	mov r1, #0x60 
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
 	ldr r0, off_802E21C // =eT1BattleObject0 
 	ldr r1, off_802E220 // =unk_20362F0 
 	str r0, [r1,#0x44] // (dword_2036334 - 0x20362f0)
-	bl sub_802E544
+
+	bl zeroFill_802E544
+
 	pop {r4,pc}
-	thumb_func_end sub_802E014
+	thumb_func_end zeroFill_802E014
 
 	thumb_func_start sub_802E032
 sub_802E032:
@@ -16651,7 +16837,7 @@ dword_802E540:
 	thumb_func_end sub_802E4E4
 
 	thumb_local_start
-sub_802E544:
+zeroFill_802E544:
 	push {lr}
 	ldr r0, off_802E554 // =unk_20000A0 
 	mov r1, #0x71 
@@ -16661,7 +16847,7 @@ sub_802E544:
 	.balign 4, 0
 off_802E554:
 	.word unk_20000A0
-	thumb_func_end sub_802E544
+	thumb_func_end zeroFill_802E544
 
 	thumb_local_start
 sub_802E558:
@@ -16805,7 +16991,7 @@ sub_802E62A:
 	bl encryption_80070bc
 loc_802E65A:
 	ldr r0, [sp]
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r5, r0
 	ldr r0, dword_802E944 // =0x10000 
 	bl SetAIData_Unk_44_Flag
@@ -17992,7 +18178,7 @@ sub_802F006:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r5, r0
 	beq loc_802F05E
 	bl object_getEnemyDirection

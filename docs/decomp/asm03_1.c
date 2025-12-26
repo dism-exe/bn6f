@@ -6912,7 +6912,7 @@ int __fastcall sub_8039E80(int a1)
     int v8; // r2
     int v9; // r3
 
-    sub_803C620();
+    dispatch_803C620();
     IsPaletteFadeActive();
     if ( !v1 )
     {
@@ -6923,7 +6923,7 @@ int __fastcall sub_8039E80(int a1)
         sub_80027C4();
         RandomizeExtraToolkitPointers();
         v6 = getBattleSettingsFromList0(0);
-        sub_80071D4(v6, v7, v8, v9);
+        initBattleStructsAndVram_80071D4(v6, v7, v8, v9);
     }
     return sub_803A104();
 }
@@ -7552,7 +7552,7 @@ signed int __fastcall sub_803A524(int a1)
     int v9; // r2
     signed int result; // r0
 
-    v2 = sub_803C620();
+    v2 = dispatch_803C620();
     v6 = v2;
     if ( v3 || !v2 )
     {
@@ -7581,7 +7581,7 @@ signed int __fastcall sub_803A558(int a1)
     int v5; // r4
     signed int result; // r0
 
-    v2 = sub_803C620();
+    v2 = dispatch_803C620();
     v3 = v2;
     if ( v4 || !v2 )
     {
@@ -7609,7 +7609,7 @@ signed int __fastcall sub_803A58C(int a1)
     int v3; // r1
     char v4; // zf
 
-    v2 = sub_803C620();
+    v2 = dispatch_803C620();
     if ( !v3 )
     {
         if ( v2 == 1 )
@@ -7634,7 +7634,7 @@ signed int __fastcall sub_803A5DC(int a1)
 {
     char v1; // zf
 
-    sub_803C620();
+    dispatch_803C620();
     test0x200bc50_0x5_813D60C();
     if ( v1 )
         return 1;
@@ -10318,15 +10318,15 @@ int sub_803C612()
 
 
 // 0x803c620
-int sub_803C620()
+int dispatch_803C620()
 {
     int result; // r0
 
     sub_803CB0C(2);
     sub_803CB0C(64);
-    result = byte_200BC50;
-    if ( byte_200BC50 )
-        result = (dword_803C650[byte_200BC50])();
+    result = eS200BC50;
+    if ( eS200BC50 )
+        result = (dword_803C650[eS200BC50])();
     return result;
 }
 
@@ -10370,7 +10370,7 @@ signed __int64 sub_803C6F4()
 
 
 // 0x803c702
-int sub_803C702()
+int dispatch_803C702()
 {
     int v0; // r7
 
@@ -10852,8 +10852,8 @@ char *sub_803CB78()
 {
     char *result; // r0
 
-    result = byte_200BC50;
-    if ( byte_200BC50 == 7 )
+    result = eS200BC50;
+    if ( eS200BC50 == 7 )
         result = sub_803CAC4(7);
     return result;
 }
@@ -13340,7 +13340,7 @@ signed int sub_803EB14()
     char v6; // zf
 
     v1 = 0;
-    v2 = sub_803C620();
+    v2 = dispatch_803C620();
     if ( !v3 && v2 )
     {
         if ( v2 != 2 )
@@ -13381,7 +13381,7 @@ signed int sub_803EB60()
     char v6; // zf
 
     v1 = 0;
-    v2 = sub_803C620();
+    v2 = dispatch_803C620();
     if ( !v3 && v2 )
     {
         if ( v2 != 2 )
@@ -14512,7 +14512,7 @@ unsigned int __fastcall sub_803F6F4(int a1, int a2, int a3, int a4)
     ZeroFillByHalfword(&eStruct200F360, 0x20u, a3, a4);
     sub_803DE88(0, v5, v6, v7);
     sub_803DCE8(0x10u, 2, 4u, 4u);
-    (*byte_813DBC0)(0, 0, dword_803F734[v4]);
+    (*sub_813DBC0)(0, 0, dword_803F734[v4]);
     sCamera.unk_5C = 60;
     return SetEventFlagFromImmediate(23, 47);
 }

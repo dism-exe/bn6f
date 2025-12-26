@@ -97,7 +97,7 @@ int eStruct203F7D8_getUnk01()
 
 // 0x801feee
 // (u8 a0) -> void
-int __fastcall sub_801FEEE(int a1)
+int __fastcall dispatch_801FEEE(int a1)
 {
     int v1; // r7
     int v2; // r0
@@ -269,7 +269,7 @@ int __fastcall sub_8020140(int a1)
         if ( result == 12 )
         {
             sub_813D66C();
-            result = sub_803C620();
+            result = dispatch_803C620();
             eStruct2038160_BattleTerminate01 = result;
         }
     }

@@ -4134,7 +4134,7 @@ int __fastcall sub_8148234(unsigned __int16 *a1)
             {
                 byte_2010324 = 0;
                 word_200BC58 = 6;
-                sub_8146854(6, &byte_200BC50, v2, v3);
+                sub_8146854(6, &eS200BC50, v2, v3);
             }
             return v6;
         case 6:

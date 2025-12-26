@@ -10098,142 +10098,194 @@ sub_80AA4B8:
 	thumb_func_end sub_80AA4B8
 
 	thumb_func_start sub_80AA4C0
-sub_80AA4C0:
+sub_80AA4C0: // () -> (* BattleSettings, zf)
 	push {r4,r6,r7,lr}
+
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
+
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_S2001c04_Ptr]
-	mov r0, #0
+
+	mov r0, #NULL
+
 	ldrb r3, [r7,#oGameState_MapGroup]
 	cmp r3, #0x80
 	bpl loc_80AA4D4
-	b loc_80AA5DC
+	b locret_80AA5DC
 loc_80AA4D4:
+
 	sub r3, #0x80
-	ldrh r1, [r6,#0x12]
-	ldrh r2, [r6,#0x14]
+
+	ldrh r1, [r6,#oS2001c04_Unk_12]
+	ldrh r2, [r6,#oS2001c04_Unk_14]
+
 	sub r1, r1, r2
 	cmp r1, #0x40 
-	bmi loc_80AA5DC
+	bmi locret_80AA5DC
+
 	add r1, r1, r2
-	strh r1, [r6,#0x14]
+	strh r1, [r6,#oS2001c04_Unk_14]
+
 	ldrb r2, [r7,#oGameState_MapNumber]
 	lsl r3, r3, #4
 	add r3, r3, r2
+
 	ldr r4, off_80AA874 // =byte_8020CE4
 	ldrb r2, [r4,r3]
+
 	cmp r2, #7
-	beq loc_80AA5DC
+	beq locret_80AA5DC
+
 	push {r0}
 	mov r4, r2
+
 	bl GetCurPETNavi // () -> u8
 	mov r1, #0x28 
 	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	tst r0, r0
 	beq loc_80AA506
+  
 	mov r4, #0
-loc_80AA506:
+
+loc_80AA506: // endif
+
 	mov r2, r4
 	pop {r0}
-	ldrh r3, [r6,#0x12]
+
+	ldrh r3, [r6,#oS2001c04_Unk_12]
 	lsr r3, r3, #6
 	cmp r3, #0x11
 	bmi loc_80AA514
+
 	mov r3, #0x10
-loc_80AA514:
+
+loc_80AA514: // endif
+
+	// rng threshold for < 0x00..0x1F
 	ldr r4, off_80AA878 // =byte_8020C5C
 	lsl r3, r3, #3
 	add r4, r4, r3
 	ldrb r3, [r4,r2]
+
 	push {r0,r3}
+
 	bl GetRNG // () -> u32?
 	mov r2, r0
 	pop {r0,r3}
+
+	// return if rng threshold not met
 	mov r1, #0x1f
 	and r2, r1
 	cmp r2, r3
-	bge loc_80AA5DC
-	ldr r1, [r6,#0x28]
+	bge locret_80AA5DC
+
+	ldr r1, [r6,#oS2001c04_Unk_28]
 	tst r1, r1
 	beq loc_80AA54E
+
 	bl GetPositiveSignedRNG
 	lsr r0, r0, #1
 	bcs loc_80AA54E
-	ldr r0, [r6,#0x2c]
+
+	ldr r0, [r6,#oS2001c04_OptCurBattleDataPtr]
 	tst r0, r0
 	beq loc_80AA54E
+
 	mov r1, r0
 	lsr r1, r1, #0x18
 	cmp r1, #8
 	bne loc_80AA54E
+
 	str r0, [r7,#oGameState_CurBattleDataPtr]
-	b loc_80AA5DC
-loc_80AA54E:
+	b locret_80AA5DC
+
+loc_80AA54E: // endif
+
 	ldr r1, off_80AA87C // =dword_2000B30 
 	ldrh r0, [r1,#0x2] // (dword_2000B30+2 - 0x2000b30)
 	cmp r0, #0
 	bne loc_80AA56E
+
 	ldrh r0, [r1]
 	cmp r0, #8
 	blt loc_80AA56E
+
 	mov r2, #0x40 
-	bl sub_80AA5F4
+	bl sub_80AA5F4 // (a0: ? $r2) -> Nullable<const* BattleSettings>
 	tst r0, r0
 	beq loc_80AA56E
+
 	ldr r1, off_80AA880 // =dword_2000B30 
 	mov r2, #1
 	strh r2, [r1,#0x2] // (dword_2000B30+2 - 0x2000b30)
-	b loc_80AA59E
-loc_80AA56E:
+	b locGotBattleSettings_80AA59E
+
+loc_80AA56E: // endif
+
 	bl GetPositiveSignedRNG
 	mov r1, #0xc
-	svc 6
+	svc 6 // div
 	cmp r1, #6
 	bne loc_80AA584
+
 	mov r2, #0x20 
-	bl sub_80AA5F4
+	bl sub_80AA5F4 // (a0: ? $r2) -> Nullable<const* BattleSettings>
 	tst r0, r0
-	bne loc_80AA59E
-loc_80AA584:
+	bne locGotBattleSettings_80AA59E
+
+loc_80AA584: // endif
+
 	bl GetCurPETNavi // () -> u8
 	mov r1, #0x27 
 	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
+
 	mov r2, r0
-	bl sub_80AA5F4
+	bl sub_80AA5F4 // (a0: ? $r2) -> Nullable<const* BattleSettings>
 	tst r0, r0
-	bne loc_80AA59E
+	bne locGotBattleSettings_80AA59E
+
 	mov r2, #0x1f
-	bl sub_80AA5F4
-loc_80AA59E:
+	bl sub_80AA5F4 // (a0: ? $r2) -> Nullable<const* BattleSettings>
+
+locGotBattleSettings_80AA59E: // success getting battle settings
+
 	str r0, [r7,#oGameState_CurBattleDataPtr]
-	ldr r1, [r6,#0x24]
+	ldr r1, [r6,#oS2001c04_Unk_24]
 	tst r1, r1
 	bne loc_80AA5B8
+
 	push {r0}
 	bl GetCurPETNavi // () -> u8
 	mov r1, #0x1e
 	bl GetCurPETNaviStatsByte // (int a1, int a2) -> u8
 	tst r0, r0
 	pop {r0}
-	beq loc_80AA5DC
-loc_80AA5B8:
+	beq locret_80AA5DC
+
+loc_80AA5B8: // endif
+
 	push {r0}
+
 	bl GetBattleSettingsUnk01FromBattleSettings
 	mov r4, r0
+
 	bl GetCurPETNavi // () -> u8
 	mov r1, #0x3e 
 	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
+
 	add r0, #4
 	mov r1, #5
-	svc 6
+	svc 6 // div
 	cmp r0, r4
 	pop {r0}
-	ble loc_80AA5DC
-	mov r0, #0
-	strh r0, [r6,#0x12]
-	strh r0, [r6,#0x14]
-loc_80AA5DC:
+	ble locret_80AA5DC
+
+	mov r0, #NULL
+	strh r0, [r6,#oS2001c04_Unk_12]
+	strh r0, [r6,#oS2001c04_Unk_14]
+
+locret_80AA5DC:
 	tst r0, r0
 	pop {r4,r6,r7,pc}
 	.word byte_8020CE4
@@ -10245,45 +10297,60 @@ chooseRandomEncounterMaybe_80aa5e4:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	mov r2, #0x1f
-	bl sub_80AA5F4
+	bl sub_80AA5F4 // (a0: ? $r2) -> Nullable<const* BattleSettings>
 	str r0, [r7,#oGameState_CurBattleDataPtr]
 	pop {r7,pc}
 	thumb_func_end chooseRandomEncounterMaybe_80aa5e4
 
 	thumb_func_start sub_80AA5F4
-sub_80AA5F4:
+sub_80AA5F4: // (a0: ? $r2) -> Nullable<const* BattleSettings>
 	push {r4-r7,lr}
 	sub sp, sp, #0xec
 	str r2, [sp,#0xe8]
+
 	movflag EVENT_67F
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA608
+
 	ldr r3, off_80AA698 // =off_8020178 
 	b loc_80AA626
-loc_80AA608:
+
+loc_80AA608: // endif
+
 	movflag EVENT_680
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA616
+
 	ldr r3, off_80AA69C // =off_8020180 
 	b loc_80AA626
-loc_80AA616:
+
+loc_80AA616: // endif
+
 	movflag EVENT_681
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_80AA624
+
 	ldr r3, off_80AA6A0 // =off_8020188 
 	b loc_80AA626
-loc_80AA624:
+
+loc_80AA624: // endif
+
 	ldr r3, off_80AA694 // =off_8020170 
+
 loc_80AA626:
+
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
 	ldrb r0, [r4,#oGameState_MapGroup]
 	ldrb r1, [r4,#oGameState_MapNumber]
+
 	cmp r0, #0x80
 	blt loc_80AA636
+
 	sub r0, #0x80
 	add r3, #4
 loc_80AA636:
+
 	ldr r3, [r3]
 	lsl r0, r0, #2
 	ldr r0, [r3,r0]
@@ -10294,13 +10361,16 @@ loc_80AA636:
 	add r5, sp, #0
 	ldr r6, [sp,#0xe8]
 loc_80AA648:
+
 	ldrb r1, [r7]
 	cmp r1, #0xff
 	beq loc_80AA670
+
 	ldrb r0, [r7,#7]
 	bl sub_80AA6A4
 	tst r0, r0
 	beq loc_80AA66C
+
 	mov r0, r7
 	bl sub_80AA824
 	tst r0, r6
@@ -10322,7 +10392,7 @@ loc_80AA678:
 	ldr r0, off_80AA884 // =iCurrFrame 
 	ldrh r0, [r0]
 	mov r1, r4
-	svc 6
+	svc 6 // div
 	add r5, sp, #0
 loc_80AA682:
 	ldrh r0, [r5]
@@ -10402,7 +10472,7 @@ loc_80AA700:
 	lsl r1, r1, #0x1c
 	lsr r1, r1, #0x14
 	add r0, r0, r1
-	bl sub_80182B4
+	bl GetVerActorTyAndAIIdx_80182B4 // (enemy_idx: u16) -> *const (version: u8, actor_type: ActorType, ai_index: u8)
 	ldrb r1, [r0,#1]
 	cmp r1, #0
 	bne loc_80AA72C
@@ -10634,46 +10704,64 @@ off_80AA888:
 	thumb_func_end sub_80AA86E
 
 	thumb_func_start sub_80AA88C
-sub_80AA88C:
+sub_80AA88C: // () -> ()
 	push {r4-r7,lr}
+
+	.equiv stack_80AA88C_unk_00, 0x00
+	.equiv stack_80AA88C_unk_04, 0x04
+
 	sub sp, sp, #8
+
 	bl GetPositiveSignedRNG
 	mov r7, r0
+
 	mov r0, #0
-	str r0, [sp]
+	str r0, [sp, #stack_80AA88C_unk_00]
+
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_BattleStatePtr]
 	add r4, #0x90
 	mov r6, #0
-loc_80AA8A2:
+
+loop_80AA8A2:
 	ldr r5, [r4]
+
 	tst r5, r5
 	beq loc_80AA8C2
-	ldrh r0, [r5,#0x28]
+
+	ldrh r0, [r5,#oBattleState_Unk_28]
 	bl sub_80AED50
 	lsr r7, r7, #4
 	mov r1, #0x1e
 	and r1, r7
 	lsr r7, r7, #5
+
 	ldrh r0, [r0,r1]
 	ldr r1, dword_80AA8DC // =0xffff 
 	cmp r0, r1
 	beq loc_80AA8C2
-	str r5, [sp]
-	str r0, [sp,#4]
+
+	str r5, [sp,#stack_80AA88C_unk_00]
+	str r0, [sp,#stack_80AA88C_unk_04]
+
 loc_80AA8C2:
+
 	add r4, #4
 	add r6, #1
 	cmp r6, #4
-	blt loc_80AA8A2
-	ldr r0, [sp]
+	blt loop_80AA8A2
+
+	ldr r0, [sp,#stack_80AA88C_unk_00]
 	tst r0, r0
-	beq loc_80AA8D8
-	ldr r1, [sp,#4]
+	beq locret_80AA8D8
+
+	ldr r1, [sp,#stack_80AA88C_unk_04]
 	strh r1, [r0,#0x2a]
+
 	mov r1, #1
 	strb r1, [r0,#0x1a]
-loc_80AA8D8:
+
+locret_80AA8D8:
 	add sp, sp, #8
 	pop {r4-r7,pc}
 	.balign 4, 0

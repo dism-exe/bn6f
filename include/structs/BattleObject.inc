@@ -5,7 +5,7 @@
 	ptr Prev
 	ptr Next
 	.space 8
-	u0 Size
+	u0 Size // 0x10
 	restore_struct_label
 	.endm
 

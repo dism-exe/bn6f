@@ -100,7 +100,7 @@ object_timefreezeBegin:
 	tst r0, r0
 	bne loc_800B928
 	mov r0, #0x40
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_800B928:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_800B8D8
@@ -204,7 +204,7 @@ loc_800B9D4:
 	bl sub_801BED6
 	mov r0, #1
 	lsl r0, r0, #0x10
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	ldrh r0, [r5,#oBattleObject_Unk_30] // idx
 	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
 	mov r1, #0
@@ -312,7 +312,7 @@ loc_800BAB8:
 	ldr r0, dword_800BBA0 // =0x10000
 	bl sub_801BED6
 	ldr r0, dword_800BBA0 // =0x10000
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	// idx
 	ldrh r0, [r5,#oBattleObject_Unk_30]
 	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
@@ -450,7 +450,7 @@ loc_800BBCC:
 	ldr r0, dword_800BF74 // =0x10000
 	bl sub_801BED6
 	ldr r0, dword_800BF74 // =0x10000
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	// idx
 	ldrh r0, [r5,#oBattleObject_Unk_30]
 	bl getChip8021DA8 // (which_chip: i32) -> *const ChipData
@@ -939,8 +939,8 @@ sub_800BF5C:
 	mov pc, lr
 	thumb_func_end sub_800BF5C
 
-	thumb_func_start sub_800BF66
-sub_800BF66:
+	thumb_func_start zeroFill_800BF66
+zeroFill_800BF66:
 	push {lr}
 	// memBlock
 	ldr r0, off_800BF84 // =byte_203CF00 
@@ -959,7 +959,7 @@ off_800BF80:
 	.word byte_203CF00
 off_800BF84:
 	.word byte_203CF00
-	thumb_func_end sub_800BF66
+	thumb_func_end zeroFill_800BF66
 
 	thumb_func_start sub_800BF88
 sub_800BF88:
@@ -3255,7 +3255,7 @@ object_getEnemyPlayerPanelY:
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r1, r0
 	beq loc_800D066
 	ldrb r0, [r1,#0x13]
@@ -3278,7 +3278,7 @@ object_getEnemyPlayerPanels:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	tst r0, r0
 	beq loc_800D080
 	ldrb r1, [r0,#oBattleObject_PanelY]
@@ -5872,7 +5872,7 @@ sub_800EB6C:
 	beq loc_800EB9A
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r5, r0
 	bne loc_800EB8C
 	b loc_800EB9A
@@ -6007,18 +6007,21 @@ GetAllianceDependentPanelParamArgs2:
 	mov pc, lr
 	thumb_func_end GetAllianceDependentPanelParamArgs2
 
-	thumb_func_start sub_800EC56
-sub_800EC56:
+	thumb_func_start selectVirusOrNaviNamesAndWhich_800EC56
+selectVirusOrNaviNamesAndWhich_800EC56: // (a1: u16?) -> (Textscript*, u8?)
 	ldr r2, off_800ECEC // =TextScriptVirusChipNames 
+
 	cmp r0, #0xff
 	ble loc_800EC5E
+
 	ldr r2, off_800ECF0 // =TextScriptNaviChipNames 
 loc_800EC5E:
+
 	mov r1, #0xff
 	and r1, r0
 	mov r0, r2
 	mov pc, lr
-	thumb_func_end sub_800EC56
+	thumb_func_end selectVirusOrNaviNamesAndWhich_800EC56
 
 	thumb_local_start
 sub_800EC66:
@@ -6038,20 +6041,23 @@ locret_800EC7E:
 	pop {pc}
 	thumb_func_end sub_800EC66
 
+// also returns enemy_idx
 	thumb_func_start sub_800EC80
-sub_800EC80:
+sub_800EC80: // (enemy_idx: u16) -> u16
 	push {r4,r5,r7,lr}
 	push {r0}
 	bl sub_8000E30
 	mov r7, r0
+
 	bl sub_8014150
 	cmp r0, r7
-	ble loc_800EC94
+	ble loc_800EC94 /*+10*/
+
 	mov r7, r0
 loc_800EC94:
 	pop {r0}
 	mov r4, r0
-	bl sub_80182B4
+	bl GetVerActorTyAndAIIdx_80182B4 // (enemy_idx: u16) -> *const (version: u8, actor_type: ActorType, ai_index: u8)
 	mov r5, r0
 	ldrb r1, [r0,#1]
 	cmp r1, #2
@@ -6133,49 +6139,72 @@ off_800ED28:
 	thumb_func_end sub_800ED00
 
 	thumb_func_start object_createAIData
-object_createAIData:
+object_createAIData: // () -> Nullable<* AIData>
 	push {r4,r5,lr}
-	// memBlock
+
 	ldr r0, off_800ED78 // =eAIData 
+
+	// Upper u32 byte has slots starting from bit 7 to bit 0.
 	ldr r3, off_800ED7C // =eUsedAIDataBitfield 
 	ldr r2, [r3]
+
+	// let empty_slot_bitmask: u32
 	mov r1, #1
-	lsl r1, r1, #0x1f
+	lsl r1, r1, #31
+
+	// let which_slot: u8
 	mov r4, #0
+
 	mov r5, #oAIData_Size/2
 	add r5, r5, r5
+
 .findEmptyAIDataSlot
 	tst r2, r1
 	beq .gotEmptyAIDataSlot
+
 	add r4, #1
 	cmp r4, #8
 	bge .noAIDataSlotAvailable
+
 	add r0, r0, r5
 	lsr r1, r1, #1
 	bne .findEmptyAIDataSlot
+
 .noAIDataSlotAvailable
-	mov r0, #0
+	mov r0, #NULL
 	pop {r4,r5,pc}
+
 .gotEmptyAIDataSlot
+
+	// update bitfield to indicate new slot is now used
 	orr r2, r1
 	str r2, [r3]
+
+	// let selected_ai_data: * AIData
 	mov r4, r0
-	// size
+
+	// Zero fills for AIData
 	mov r1, #0x7c 
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
+	// Zero fills for AIState
 	mov r0, #0x80
 	// memBlock
 	add r0, r0, r4
 	// size
 	mov r1, #0x20 
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
+	// Zero fills for AIAttackVars
 	mov r0, #0xa0
 	// memBlock
 	add r0, r0, r4
 	// size
 	mov r1, #0x50 
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
+
 	mov r0, r4
+
 	pop {r4,r5,pc}
 	.balign 4, 0
 off_800ED78:

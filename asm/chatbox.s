@@ -5499,7 +5499,7 @@ chatbox_804244C:
 loc_804245C:
 	push {r4,r5}
 	mov r2, #0x1f
-	bl sub_80AA5F4
+	bl sub_80AA5F4 // (a0: ? $r2) -> Nullable<const* BattleSettings>
 	mov r1, #1
 	bl StartBattle // (BattleSettings *r0Bt, bool r1) -> void
 	mov r0, #0x2c

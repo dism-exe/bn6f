@@ -3357,21 +3357,31 @@ off_8035788:
 	thumb_func_start sub_803578C
 sub_803578C:
 	push {r4-r7,lr}
+
+	// trigger startscreen_render_802F544 via main_
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]
 	mov r1, #4
 	strb r1, [r0]
+
 	ldr r0, [r7,#oToolkit_GameStatePtr]
+
 	mov r1, #0
 	strb r1, [r0,#oGameState_MapGroup]
+
 	mov r1, #0
 	strb r1, [r0,#oGameState_MapNumber]
+
+  // trigger EnterMap via cbGameState_80050EC
 	mov r1, #0
 	strb r1, [r0,#oGameState_SubsystemIndex]
+
 	mov r1, #0x65
 	strb r1, [r0,#oGameState_GameProgress]
+
 	mov r1, #0x62
 	strb r1, [r0,#oGameState_Unk_07]
+
 	pop {r4-r7,pc}
 	thumb_func_end sub_803578C
 

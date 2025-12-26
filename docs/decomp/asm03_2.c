@@ -2060,7 +2060,7 @@ signed int __fastcall sub_8048C24(int a1)
 
 
 // 0x8048c68
-void *__fastcall sub_8048C68()
+void *__fastcall copy_8048C68()
 {
     Toolkit *tk; // r10
     void *result; // r0
@@ -2099,7 +2099,7 @@ void *__fastcall sub_8048C68()
 
 
 // 0x8048c98
-char *sub_8048C98()
+char *copy_8048C98()
 {
     int v0; // r10
     char *result; // r0
@@ -3172,7 +3172,7 @@ signed int sub_804964C()
     int v8; // r2
     signed int result; // r0
 
-    v1 = sub_803C620();
+    v1 = dispatch_803C620();
     v5 = v1;
     if ( v2 || !v1 )
     {
@@ -3201,7 +3201,7 @@ signed int sub_8049680()
     int v4; // r4
     signed int result; // r0
 
-    v1 = sub_803C620();
+    v1 = dispatch_803C620();
     v2 = v1;
     if ( v3 || !v1 )
     {
@@ -3229,7 +3229,7 @@ signed int sub_80496B4()
     int v2; // r1
     char v3; // zf
 
-    v1 = sub_803C620();
+    v1 = dispatch_803C620();
     if ( !v2 )
     {
         if ( v1 == 1 )
@@ -3254,7 +3254,7 @@ signed int sub_8049704()
 {
     char v0; // zf
 
-    sub_803C620();
+    dispatch_803C620();
     test0x200bc50_0x5_813D60C();
     if ( v0 )
         return 1;

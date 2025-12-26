@@ -42,6 +42,44 @@
 		struct_const OBJECT_FLAGS_UNK_BIT_22_BIT,         22
 	.endm
 
+	.macro ObjectFlags2 field:req // type: enum ObjectFlags2
+		flags32 \field
+
+		struct_const OBJECT_FLAGS_2_UNK_BIT_00, 										0x00000001
+		struct_const OBJECT_FLAGS_2_UNK_BIT_01, 										0x00000002
+		struct_const OBJECT_FLAGS_2_UNK_BIT_02, 										0x00000004
+		struct_const OBJECT_FLAGS_2_UNK_BIT_03, 										0x00000008
+		struct_const OBJECT_FLAGS_2_UNK_BIT_04, 										0x00000010
+		struct_const OBJECT_FLAGS_2_UNK_BIT_05, 										0x00000020
+		struct_const OBJECT_FLAGS_2_UNK_BIT_06, 										0x00000040
+		struct_const OBJECT_FLAGS_2_UNK_BIT_07, 										0x00000080
+		struct_const OBJECT_FLAGS_2_UNK_BIT_08, 										0x00000100
+		struct_const OBJECT_FLAGS_2_UNK_BIT_09, 										0x00000200
+		struct_const OBJECT_FLAGS_2_UNK_BIT_10, 										0x00000400
+		struct_const OBJECT_FLAGS_2_UNK_BIT_11, 										0x00000800
+		struct_const OBJECT_FLAGS_2_UNK_BIT_12, 										0x00001000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_13, 										0x00002000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_14, 										0x00004000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_15, 										0x00008000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_16, 										0x00010000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_17, 										0x00020000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_18, 										0x00040000
+		struct_const OBJECT_FLAGS_2_DO_UPDATE_COLLISION_PANELS, 		0x00080000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_20, 										0x00100000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_21, 										0x00200000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_22, 										0x00400000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_23, 										0x00800000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_24, 										0x01000000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_25, 										0x02000000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_26, 										0x04000000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_27, 										0x08000000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_28, 										0x10000000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_29, 										0x20000000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_30, 										0x40000000
+		struct_const OBJECT_FLAGS_2_UNK_BIT_31, 										0x80000000
+
+	.endm
+
 	.macro collision_data_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
     // type: struct CollisionData
 	\set_struct_start_address \label
@@ -105,7 +143,7 @@
 	u32 TargetCollisionTypeFlags // loc=0x34
 	u32 ParentObjectPtr // loc=0x38
 	ObjectFlags1 ObjectFlags1 // loc=0x3c
-	flags32 ObjectFlags2 // loc=0x40
+	ObjectFlags2 ObjectFlags2 // loc=0x40
 	u32 CollisionIndexBit // loc=0x44
 	u32 Unk_48 // loc=0x48
 	struct_org 0x54	

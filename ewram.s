@@ -981,40 +981,15 @@ fiveWordArr200B4B0:: // 0x200b4b0
 	.space 1800
 eStruct200BC30:: // 0x200bc30
 	.space 1
-byte_200BC31:: // 0x200bc31
 	.space 1
-byte_200BC32:: // 0x200bc32
 	.space 3
 eStruct200BC30_JumpOffset05:: // 0x200bc35
 	.space 7
-byte_200BC3C:: // 0x200bc3c
 	.space 1
-byte_200BC3D:: // 0x200bc3d
 	.space 1
-byte_200BC3E:: // 0x200bc3e
 	.space 18
-byte_200BC50:: // 0x200bc50
-	.space 1
-byte_200BC51:: // 0x200bc51
-	.space 1
-byte_200BC52:: // 0x200bc52
-	.space 1
-byte_200BC53:: // 0x200bc53
-	.space 1
-byte_200BC54:: // 0x200bc54
-	.space 1
-byte_200BC55:: // 0x200bc55
-	.space 1
-byte_200BC56:: // 0x200bc56
-	.space 1
-byte_200BC57:: // 0x200bc57
-	.space 1
-word_200BC58:: // 0x200bc58
-	.space 2
-word_200BC5A:: // 0x200bc5a
-	.space 2
-dword_200BC5C:: // 0x200bc5c
-	.space 4
+eS200BC50:: // 0x200bc50
+	s_200BC50_struct eS200BC50
 byte_200BC60:: // 0x200bc60
 	.space 1
 byte_200BC61:: // 0x200bc61
@@ -1604,7 +1579,7 @@ word_2010CD6:: // 0x2010cd6
 word_2010CDA:: // 0x2010cda
 	.space 2854
 eLogoScreenState:: // 0x2011800
-  LogoScreenState_struct LogoScreenState
+  LogoScreenState_struct eLogoScreenState
 unused_2011808:: // 0x2011808
 	.space 88
 byte_2011860:: // 0x2011860
@@ -2665,71 +2640,7 @@ byte_203526D:: // 0x203526d
 dword_2035274:: // 0x2035274
 	.space 12
 eStruct2035280:: // 0x2035280
-	.space 1
-byte_2035281:: // 0x2035281
-	.space 1
-byte_2035282:: // 0x2035282
-	.space 9
-byte_203528B:: // 0x203528b
-	.space 1
-byte_203528C:: // 0x203528c
-	.space 6
-byte_2035292:: // 0x2035292
-	.space 1
-byte_2035293:: // 0x2035293
-	.space 2
-byte_2035295:: // 0x2035295
-	.space 1
-byte_2035296:: // 0x2035296
-	.space 1
-eStruct2035280_NaviStatusGfxIdx17:: // 0x2035297
-	.space 1
-byte_2035298:: // 0x2035298
-	.space 1
-byte_2035299:: // 0x2035299
-	.space 1
-byte_203529A:: // 0x203529a
-	.space 1
-byte_203529B:: // 0x203529b
-	.space 1
-byte_203529C:: // 0x203529c
-	.space 2
-byte_203529E:: // 0x203529e
-	.space 1
-byte_203529F:: // 0x203529f
-	.space 1
-word_20352A0:: // 0x20352a0
-	.space 2
-word_20352A2:: // 0x20352a2
-	.space 2
-word_20352A4:: // 0x20352a4
-	.space 2
-word_20352A6:: // 0x20352a6
-	.space 2
-word_20352A8:: // 0x20352a8
-	.space 2
-word_20352AA:: // 0x20352aa
-	.space 2
-word_20352AC:: // 0x20352ac
-	.space 2
-word_20352AE:: // 0x20352ae
-	.space 2
-word_20352B0:: // 0x20352b0
-	.space 2
-word_20352B2:: // 0x20352b2
-	.space 2
-word_20352B4:: // 0x20352b4
-	.space 4
-word_20352B8:: // 0x20352b8
-	.space 8
-dword_20352C0:: // 0x20352c0
-	.space 4
-dword_20352C4:: // 0x20352c4
-	.space 4
-dword_20352C8:: // 0x20352c8
-	.space 4
-byte_20352CC:: // 0x20352cc
-	.space 20
+	s_2035280_struct eStruct2035280
 dword_20352E0:: // 0x20352e0
 	.space 4
 dword_20352E4:: // 0x20352e4
@@ -2762,40 +2673,11 @@ word_203631C:: // 0x203631c
 	.space 24
 dword_2036334:: // 0x2036334
 	.space 396
-dword_20364C0:: // 0x20364c0
-	.space 4
-dword_20364C4:: // 0x20364c4
-	.space 4
-byte_20364C8:: // 0x20364c8
-	.space 1
-byte_20364C9:: // 0x20364c9
-	.space 3
-byte_20364CC:: // 0x20364cc
-	.space 1
-byte_20364CD:: // 0x20364cd
-	.space 3
-byte_20364D0:: // 0x20364d0
-	.space 1
-byte_20364D1:: // 0x20364d1
-	.space 3
-unk_20364D4:: // 0x20364d4
-	.space 1
-byte_20364D5:: // 0x20364d5
-	.space 1
-word_20364D6:: // 0x20364d6
-	.space 2
-dword_20364D8:: // 0x20364d8
-	.space 4
-dword_20364DC:: // 0x20364dc
-	.space 4
-word_20364E0:: // 0x20364e0
-	.space 24
-word_20364F8:: // 0x20364f8
-	.space 2
-word_20364FA:: // 0x20364fa
-	.space 6
+eS20364C0:: // 0x20364c0
+	s_20364C0_struct eS20364C0
 unk_2036500:: // 0x2036500
 	.space 192
+/// Likely 13 slots of a 12-byte struct, totaling 156 bytes.
 unk_20365C0:: // 0x20365c0
 	.space 160
 word_2036660:: // 0x2036660

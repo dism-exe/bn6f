@@ -23,10 +23,12 @@ Valid data types include:
 - For unknowns, use ?. So i8? i32?, etc. If nothing is known, you can use just ?. 
 - Names of structs as found in the filenames in `include/structs/` and `include/rom_structs/`,
 - Names of enums as found in the filenames in `constants/enums/`,
+- `enum8`, `flags8`, `flags32`, may be used for unnamed explicit types for enums of flags.
 - A wrapping generic type for compression: `LZ77Compressed<T>`, and a generic paramter `T`. 
 - `FFStop8<[T; N]>` means that the array ends with a `.byte 0xFF`. `FFStop16<[T; N]>` with `.hword 0xFFFF`, and 
   `FFStop32<[T; N]>` with `.word 0xFFFFFFFF`.
 - Similarly there is `NullStop<[T; N]>` for arrays terminated with `NULL`. 
+- There is also `MagicStop8<N, T>` where `N` is the general last byte to terminate processing and T is the array type.
 - `Either<T, U>` can take either `T` or `U`
 
 A function signature string looks like `(PARAM) -> RET`, and each parameter is specified as:

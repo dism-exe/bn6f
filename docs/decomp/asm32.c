@@ -6830,7 +6830,7 @@ int sub_8113002()
 
 
 // 0x8113038
-void sub_8113038()
+void ai_8113038()
 {
     Battle *v0; // r5
     int v1; // r7

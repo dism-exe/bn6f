@@ -10,3 +10,4 @@
 	.include "include/rom_structs/BGAnimData.inc"
 	.include "include/rom_structs/WarpData.inc"
 	.include "include/rom_structs/ChipData.inc"
+	.include "include/rom_structs/BattleSettings.inc"

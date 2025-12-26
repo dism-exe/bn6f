@@ -75,9 +75,11 @@ sub_801FE6C:
 	ldrb r0, [r4]
 	tst r0, r0
 	beq loc_801FED2
+
 	movflag EVENT_172D
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_801FEB6
+
 	strb r6, [r4,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	ldrb r0, [r4,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	cmp r0, #2
@@ -101,14 +103,17 @@ loc_801FEB0:
 	strb r0, [r4,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	b locret_801FEE6
 loc_801FEB6:
+
 	push {r5}
 	bl GetBattleEffects // () -> int
 	mov r1, #8
 	tst r0, r1
 	pop {r5}
 	bne loc_801FECC
+
 	bl sub_803DEB4
 	strb r0, [r4,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
+
 	b locret_801FEE6
 loc_801FECC:
 	strb r6, [r4,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
@@ -119,10 +124,12 @@ loc_801FED2:
 	ldr r1, off_80200E0 // =unk_20399F0 
 	mov r2, #0x10
 	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
+
 	ldr r0, off_80200E4 // =eStruct2036780
 	ldr r1, off_80200E8 // =unk_2039A00 
 	mov r2, #0x10
 	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
+
 locret_801FEE6:
 	pop {r4,r6,pc}
 	thumb_func_end sub_801FE6C
@@ -134,16 +141,20 @@ eStruct203F7D8_getUnk01:
 	mov pc, lr
 	thumb_func_end eStruct203F7D8_getUnk01
 
-	thumb_func_start sub_801FEEE
-sub_801FEEE:
+	thumb_func_start dispatch_801FEEE
+dispatch_801FEEE:
 	push {r4-r7,lr}
+
 	mov r7, r0
+
 	bl eStruct200BC30_getJumpOffset00
 	ldr r1, off_801FF04 // =off_801FF08 
 	ldr r2, [r1,r0]
+
 	mov r0, r7
 	mov lr, pc
 	bx r2
+
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_801FF04:
@@ -153,14 +164,16 @@ off_801FF08:
 	.word sub_801FFD6+1
 	.word sub_801FFD6+1
 	.word sub_801FF18+1
-	thumb_func_end sub_801FEEE
+	thumb_func_end dispatch_801FEEE
 
 	thumb_local_start
 sub_801FF18:
 	push {r4-r7,lr}
 	sub sp, sp, #4
+
 	cmp r0, #2
 	bne loc_801FFD2
+
 	ldr r4, off_80200F0 // =eStruct203F7D8
 	ldr r5, off_80200F4 // =unk_20399F0 
 	mov r6, r10
@@ -250,6 +263,7 @@ loc_801FF84:
 	ldr r1, off_802010C // =dword_203CBE0 
 	ldr r0, [r0,r1]
 	str r0, [r5,#0x8] // (dword_2036788 - 0x2036780)
+
 	b loc_801FFD2
 loc_801FFC6:
 	ldrb r0, [r4,#0x2] // (eStruct203F7D8+2 - 0x203f7d8)
@@ -474,13 +488,16 @@ sub_8020140:
 	push {r7,lr}
 	bl test0x200bc50_0x5_813D60C
 	beq locret_802015C
+
 	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0xc
 	bne locret_802015C
+
 	ldr r7, off_8020168 // =eStruct2038160
 	bl sub_813D66C
-	bl sub_803C620
+	bl dispatch_803C620 // () -> (u32?, bool)
 	strb r0, [r7,#0x1] // (eStruct2038160_BattleTerminate01 - 0x2038160)
+
 locret_802015C:
 	pop {r7,pc}
 	thumb_func_end sub_8020140
@@ -505,13 +522,15 @@ off_8020170:
 off_8020178:
 	.word off_8020190
 	.word pt_8020240
-off_8020180:
+off_8020180: // [*const [*const [*const FFStop32<[BattleSettings]>; 16]]; 2]
+	// not internet
 	.word off_8020190
+	// internet
 	.word pt_802029C
 off_8020188:
 	.word off_8020190
 	.word off_80202F8
-off_8020190:
+off_8020190: // [*const [*const FFStop32<[BattleSettings]>; 16]; 21]
 	.word off_80B1B7C
 	.word off_80B1B7C
 	.word off_80B1B7C
@@ -533,7 +552,7 @@ off_8020190:
 	.word off_80B1B7C
 	.word off_80B1B7C
 	.word off_80B1B7C
-off_80201E4:
+off_80201E4: // [*const [*const FFStop32<[BattleSettings]>; 16]; INTERNET_NUM_GROUPS]
 	.word off_80B1B7C
 	.word off_80B1ED8
 	.word off_80B23C8
@@ -550,6 +569,7 @@ off_80201E4:
 	.word off_80B41E4
 	.word off_80B1B7C
 	.word off_80B1B7C
+	// in Central Area
 	.word off_80B4AB8
 	.word off_80B5A0C
 	.word off_80B62F8
@@ -581,7 +601,7 @@ pt_8020240:
 	.word off_80B6C20
 	.word off_80B71D4
 	.word off_80B79C0
-pt_802029C:
+pt_802029C: // [*const [*const FFStop32<[BattleSettings]>; 16]; INTERNET_NUM_GROUPS]
 	.word off_80B1B7C
 	.word off_80B1ED8
 	.word off_80B23C8
@@ -628,6 +648,6 @@ off_80202F8:
 	.word off_80B66A8
 	.word off_80B6C20
 	.word off_80B71D4
-	// <endfile>
 	.word off_80B79C0
+	// <endfile>
 /*For debugging purposes, connect comment at any range!*/

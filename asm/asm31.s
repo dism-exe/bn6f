@@ -15,8 +15,11 @@ t1_0x0_80B81EC:
 off_80B8200:
 	.word off_80B8204
 off_80B8204:
-	.word sub_8108F50+1
+  // virus
+	.word battleObject_dispatch_8108F50+1
+  // navi
 	.word sub_80F2330+1
+  // player
 	.word playerObject_main_80EA460+1
 	thumb_func_end t1_0x0_80B81EC
 
@@ -424,7 +427,7 @@ sub_80B84EC:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #1
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B8510
@@ -753,7 +756,7 @@ sub_80B8786:
 	push {lr}
 	push {r2,r5}
 	mov r0, #2
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r2,r5}
 	beq locret_80B87A4
@@ -1066,7 +1069,7 @@ sub_80B89DC:
 	push {lr}
 	push {r3,r5}
 	mov r0, #3
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r3,r5}
 	beq locret_80B8A08
@@ -1301,7 +1304,7 @@ sub_80B8BA0:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #4
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B8BD0
@@ -1520,7 +1523,7 @@ spawn_t1_0x5_tempAttackObject_80B8E30:
 	push {lr}
 	push {r0,r5-r7}
 	mov r0, #5
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1,r5-r7}
 	beq loc_80B8E54
@@ -1807,7 +1810,7 @@ sub_80B9014:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #6
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B9038
@@ -2099,7 +2102,7 @@ sub_80B921A:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #7
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B923E
@@ -2399,7 +2402,7 @@ sub_80B9432:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #8
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B9456
@@ -2832,7 +2835,7 @@ sub_80B9750:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #9
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B9774
@@ -3152,7 +3155,7 @@ sub_80B999A:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0xa
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B99BE
@@ -3414,7 +3417,7 @@ sub_80B9B6E:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0xb
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B9B92
@@ -3884,7 +3887,7 @@ sub_80B9F0E:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0xc
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B9F32
@@ -4264,7 +4267,7 @@ sub_80BA1B0:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0xd
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BA1D4
@@ -4912,7 +4915,7 @@ sub_80BA660:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0xe
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BA684
@@ -5310,7 +5313,7 @@ sub_80BA920:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0xf
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BA944
@@ -6005,7 +6008,7 @@ sub_80BAE16:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x10
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BAE3A
@@ -6426,7 +6429,7 @@ sub_80BB13E:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x13
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BB16E
@@ -6886,7 +6889,7 @@ sub_80BB49C:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x14
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BB4CC
@@ -7360,7 +7363,7 @@ sub_80BB7F6:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x15
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BB81A
@@ -7754,7 +7757,7 @@ sub_80BBAC6:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x16
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BBAEA
@@ -8183,7 +8186,7 @@ sub_80BBDE8:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x17
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BBE0C
@@ -8590,7 +8593,7 @@ sub_80BC0DA:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x18
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BC0FE
@@ -8951,7 +8954,7 @@ sub_80BC38A:
 	push {lr}
 	push {r2,r4,r5}
 	mov r0, #0x19
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r2,r4,r5}
 	beq locret_80BC3AC
@@ -9297,7 +9300,7 @@ sub_80BC610:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x1a
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BC636
@@ -9551,7 +9554,7 @@ sub_80BC844:
 	push {lr}
 	push {r0,r1,r3,r5}
 	mov r0, #0x1b
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BC86E
@@ -9735,7 +9738,7 @@ spawnSnakearmRelatedObject_t1_0x1c_80BC998:
 	mov r1, r0
 	mov r3, #0
 	mov r0, #0x1c
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	tst r0, r0
@@ -9931,7 +9934,7 @@ sub_80BCB12:
 	push {lr}
 	push {r1,r2,r5}
 	mov r0, #0x1d
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80BCB32
@@ -10167,7 +10170,7 @@ sub_80BCCDC:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x1e
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BCD0C
@@ -10876,7 +10879,7 @@ spawnDblHeroObject_80BD20A:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x1f
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BD23E
@@ -11916,7 +11919,7 @@ sub_80BD9A2:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x20 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BD9D2
@@ -13336,7 +13339,7 @@ sub_80BE3E8:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x21 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BE418
@@ -13719,7 +13722,7 @@ spawnSnakearmRelatedObject_t1_0x22_80BE6D8:
 	mov r1, r0
 	mov r3, #0
 	mov r0, #0x22 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r2-r6}
 	tst r0, r0
@@ -15135,7 +15138,7 @@ sub_80BF160:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x23 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BF190
@@ -15896,7 +15899,7 @@ spawnType1Object_0x24_80BF6AE:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x24 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BF6DE
@@ -16761,7 +16764,7 @@ sub_80BFCD0:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x25 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BFD00
@@ -17040,7 +17043,7 @@ sub_80BFF00:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x26 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BFF26
@@ -17266,7 +17269,7 @@ sub_80C0098:
 	push {lr}
 	push {r2,r5}
 	mov r0, #0x27 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r2,r5}
 	beq locret_80C00B6
@@ -17557,7 +17560,7 @@ sub_80C02A6:
 	push {lr}
 	push {r5}
 	mov r0, #0x28 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r5}
 	beq locret_80C02BC
@@ -17805,7 +17808,7 @@ sub_80C0448:
 	push {lr}
 	push {r5}
 	mov r0, #0x29 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r5}
 	beq locret_80C0478
@@ -18088,7 +18091,7 @@ sub_80C063C:
 	push {lr}
 	push {r5}
 	mov r0, #0x2a 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r5}
 	beq locret_80C0652
@@ -18287,7 +18290,7 @@ sub_80C0790:
 	push {lr}
 	push {r5}
 	mov r0, #0x2b 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r5}
 	beq locret_80C07AE
@@ -19195,7 +19198,7 @@ sub_80C0DD8:
 	push {lr}
 	push {r0,r1,r3,r5}
 	mov r0, #0x2c 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C0DFE
@@ -19384,7 +19387,7 @@ sub_80C0F52:
 	push {lr}
 	push {r0,r1,r5}
 	mov r0, #0x2d 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80C0F6A
@@ -19571,7 +19574,7 @@ sub_80C10C8:
 	push {lr}
 	push {r2,r5}
 	mov r0, #0x2e 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r2,r5}
 	beq locret_80C10E6
@@ -20002,7 +20005,7 @@ sub_80C1400:
 	push {lr}
 	push {r2,r3,r5}
 	mov r0, #0x2f 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r2,r3,r5}
 	tst r0, r0
@@ -20570,7 +20573,7 @@ sub_80C17F4:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x32 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C181E
@@ -21463,7 +21466,7 @@ sub_80C1EAC:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x33 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C1ECC
@@ -22249,7 +22252,7 @@ sub_80C24D2:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x34
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C24F2
@@ -22979,7 +22982,7 @@ sub_80C2A4C:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x3c 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C2A70
@@ -23577,7 +23580,7 @@ locret_80C2EAE:
 sub_80C2EB0:
 	push {lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
 	mov r2, #0x2c 
 	ldrh r1, [r0,r2]
@@ -23710,7 +23713,7 @@ sub_80C2F96:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x3d
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C2FBA
@@ -24023,7 +24026,7 @@ sub_80C31F0:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x45 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C3214
@@ -24227,7 +24230,7 @@ sub_80C3368:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	tst r0, r0
 	beq loc_80C33A8
 	ldrb r1, [r0,#oBattleObject_PanelX]
@@ -24290,7 +24293,7 @@ sub_80C33CA:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r5, r0
 	beq loc_80C33F4
 	bl sub_800FC7C
@@ -24361,7 +24364,7 @@ sub_80C3460:
 	push {r4,r6,r7,lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	push {r0}
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r7, r0
 	pop {r4}
 	beq loc_80C348A
@@ -24403,7 +24406,7 @@ sub_80C34B8:
 	push {lr}
 	push {r5}
 	mov r0, #0x4b 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r5}
 	beq locret_80C34DA
@@ -24578,7 +24581,7 @@ sub_80C35CE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r5, r0
 	beq loc_80C3616
 	bl sub_800FC7C
@@ -24687,7 +24690,7 @@ sub_80C36AE:
 	mov r6, r0
 	pop {r0}
 	push {r6}
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r7, r0
 	pop {r6}
 	mov r4, #0x34 
@@ -24737,7 +24740,7 @@ sub_80C3710:
 	push {lr}
 	push {r5}
 	mov r0, #0x4c 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r5}
 	beq locret_80C3732
@@ -24913,7 +24916,7 @@ sub_80C3852:
 	bl object_getEnemyDirection
 	push {r0}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	tst r0, r0
 	pop {r6}
 	beq loc_80C3890
@@ -25019,7 +25022,7 @@ sub_80C3900:
 sub_80C390E:
 	push {lr}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldrh r0, [r0,#oBattleObject_PanelXY]
 	strh r0, [r5,#oBattleObject_PanelXY]
 	bl object_setCoordinatesFromPanels // () -> void
@@ -25050,7 +25053,7 @@ sub_80C3946:
 	push {lr}
 	push {r5}
 	mov r0, #0x4d 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r5}
 	beq locret_80C3968
@@ -25320,7 +25323,7 @@ spawnBassChipObject_80C3B30:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x4f 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C3B52
@@ -25845,7 +25848,7 @@ sub_80C3E98:
 	push {lr}
 	push {r0-r2,r5}
 	mov r0, #0x50 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C3EBA
@@ -26052,7 +26055,7 @@ sub_80C4038:
 	push {r4,lr}
 	push {r0-r3,r5}
 	mov r0, #0x54 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1-r5}
 	beq locret_80C4070
@@ -26274,7 +26277,7 @@ sub_80C41D8:
 	push {lr}
 	push {r5}
 	mov r0, #0x55 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r5}
 	beq locret_80C4202
@@ -26539,7 +26542,7 @@ sub_80C44A8:
 	push {lr}
 	push {r5}
 	mov r0, #0x56 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r5}
 	beq locret_80C44C6
@@ -26813,7 +26816,7 @@ spawn_t1_0x47_probablyGeneric_80C468C:
 	push {lr}
 	push {r2,r3,r5}
 	mov r0, #0x57 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r2,r3,r5}
 	beq locret_80C46AE
@@ -27001,7 +27004,7 @@ sub_80C47EC:
 	push {lr}
 	push {r5}
 	mov r0, #0x58 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r5}
 	beq locret_80C481A
@@ -27402,7 +27405,7 @@ sub_80C4AEC:
 	push {lr}
 	push {r0,r5}
 	mov r0, #0x5d 
-	bl object_spawnType1
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r1,r5}
 	beq locret_80C4B14
@@ -27413,7 +27416,7 @@ sub_80C4AEC:
 	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
 	push {r0}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r1, r0
 	pop {r0}
 	str r1, [r0,#oBattleObject_RelatedObject1Ptr]
@@ -27422,19 +27425,25 @@ locret_80C4B14:
 	.balign 4, 0x00
 	thumb_func_end sub_80C4AEC
 
-	thumb_func_start t1_0x5e_80C4B18
-t1_0x5e_80C4B18:
+	thumb_func_start t1_0x5e_pinkRingOnCounter_80C4B18
+t1_0x5e_pinkRingOnCounter_80C4B18:
 	push {lr}
+
+	// disabling this causes the pink ring not to show up when MegaMan hits counter
 	ldr r1, off_80C4B38 // =off_80C4B3C 
 	ldrb r0, [r5,#oBattleObject_CurState]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
+
 	bl battle_isTimeStop
 	bne locret_80C4B34
+
 	bl battle_isPaused
 	bne locret_80C4B34
+
 	bl UpdateBattleObjectSprite
+
 locret_80C4B34:
 	pop {pc}
 	.balign 4, 0
@@ -27444,15 +27453,17 @@ off_80C4B3C:
 	.word sub_80C4B48+1
 	.word sub_80C4B84+1
 	.word object_freeMemory+1
-	thumb_func_end t1_0x5e_80C4B18
+	thumb_func_end t1_0x5e_pinkRingOnCounter_80C4B18
 
 	thumb_local_start
 sub_80C4B48:
 	push {r4,lr}
+
 	mov r0, #0x80
 	mov r1, #0x14
 	mov r2, #0x16
 	bl sprite_load // (int a1, int a2, int a3) ->
+
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_noShadow // () -> void
 	ldrb r0, [r5,#oObjectHeader_Flags]
@@ -27525,48 +27536,60 @@ loc_80C4BDA:
 	stmia r0!, {r1-r3}
 	ldrb r0, [r4,#oBattleObject_DirectionFlip]
 	strb r0, [r5,#oBattleObject_DirectionFlip]
+
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
+
 	ldr r0, [r5,#oBattleObject_ExtraVars+4]
 	ldr r0, [r0]
 	tst r0, r0
 	beq loc_80C4C0C
+
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl callPossiblyGetBattleEmotion_8015B54
-	cmp r0, #2
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
+	cmp r0, #2 // maybe tracks counter emotion?
 	beq locret_80C4C10
+
 	ldr r0, [r5,#oBattleObject_ExtraVars+4]
 	mov r1, #0
 	str r1, [r0]
+
 loc_80C4C0C:
 	bl object_freeMemory
 locret_80C4C10:
 	pop {pc}
 	thumb_func_end sub_80C4B84
 
-	thumb_func_start sub_80C4C12
-sub_80C4C12:
+	thumb_func_start SpawnCounterPinkRingMaybe_80C4C12
+SpawnCounterPinkRingMaybe_80C4C12: // (x_maybe: u32 , y_maybe: u32 , z_maybe: u32 , params_maybe: u32 , obj: * BattleObject $r5, a7: *u32 $r7) -> * BattleObject
 	push {lr}
 	push {r5}
-	mov r0, #0x5e 
-	bl object_spawnType1
+
+	
+	mov r0, #0x5e // likely the pink ring hovering over MegaMan when we hit counter
+	bl object_spawnType1 // (obj_idx: u8, x: u32, y: u32, z: u32, params: u32) -> * BattleObject $r5
 	mov r0, r5
 	pop {r5}
 	beq locret_80C4C38
+
 	ldrh r1, [r5,#oBattleObject_AllianceAndDirectionFlip]
 	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
 	str r5, [r0,#oBattleObject_RelatedObject1Ptr]
+
 	str r7, [r0,#oBattleObject_ExtraVars+4]
 	str r0, [r7]
+
 	mov r1, #1
 	strb r1, [r0,#oBattleObject_Unk_0c]
+
 	ldrb r1, [r0,#oObjectHeader_Flags]
-	mov r2, #4
+	mov r2, #OBJECT_FLAG_PAUSE_UPDATE
 	orr r1, r2
 	strb r1, [r0,#oObjectHeader_Flags]
+
 locret_80C4C38:
 	pop {pc}
-	thumb_func_end sub_80C4C12
+	thumb_func_end SpawnCounterPinkRingMaybe_80C4C12
 
 	thumb_func_start sub_80C4C3A
 sub_80C4C3A:
@@ -57035,7 +57058,7 @@ sub_80D2E38:
 	ldrb r0, [r5,#0xd]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r6, r0
 	ldr r0, [r6,#0x34]
 	ldr r1, [r6,#0x38]
@@ -60632,7 +60655,7 @@ loc_80D48E2:
 	bl PlaySoundEffect
 loc_80D493C:
 	mov r0, #0x40 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	mov r6, #0xb2
 	lsl r6, r6, #0x10
 	ldr r0, [r5,#oBattleObject_ExtraVars+4]
@@ -60687,7 +60710,7 @@ sub_80D49A0:
 	bl battle_isTimeStop
 	bne locret_80D499E
 	mov r0, #0x40 
-	bl sub_801DA48
+	bl dispatch_801DA48
 	bl clearEntryOfBattleStateBattleObjectList_800F656
 	bl object_clearCollisionRegion // () -> void
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
@@ -61261,7 +61284,7 @@ sub_80D4DF0:
 	beq loc_80D4E40
 	strb r0, [r5,#oBattleObject_Alliance]
 	mov r0, #0x40 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldrb r2, [r5,#oBattleObject_Element]
@@ -64367,7 +64390,7 @@ sub_80D65FC:
 	strh r0, [r5,#oBattleObject_Timer2]
 	blt loc_80D6620
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	tst r0, r0
 	beq loc_80D6624
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
@@ -71863,7 +71886,7 @@ sub_80D9FC2:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	ldrb r1, [r0,#0x18]
 	tst r1, r1
 	bne loc_80D9FE0
@@ -77535,7 +77558,7 @@ sub_80DCA38:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	tst r0, r0
 	beq loc_80DCAAA
 	ldrb r1, [r0,#oBattleObject_PanelX]
@@ -80485,7 +80508,7 @@ loc_80DE098:
 	bl spawn_t1_0x0_EffectObject
 	push {r5}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r5, r0
 	mov r0, #0x96
 	lsl r0, r0, #1
@@ -87005,7 +87028,7 @@ loc_80E13A6:
 	cmp r0, #1
 	beq loc_80E13BA
 	mov r0, #2
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_80E13BA:
 	lsr r6, r6, #1
 	bcs loc_80E13CA
@@ -87084,7 +87107,7 @@ loc_80E1442:
 	cmp r0, #1
 	beq loc_80E1452
 	mov r0, #2
-	bl sub_801DA48
+	bl dispatch_801DA48
 loc_80E1452:
 	ldr r0, [r7,#oBattleObject_AIDataPtr]
 	ldr r0, [r0,#oAIData_Unk_58]
@@ -87134,7 +87157,7 @@ loc_80E1494:
 	strb r2, [r1]
 loc_80E14A4:
 	mov r0, #1
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	pop {r4,pc}
 	thumb_func_end sub_80E146C
 
@@ -87171,7 +87194,7 @@ loc_80E14D4:
 	strb r2, [r1]
 loc_80E14E4:
 	mov r0, #1
-	bl sub_801DA48
+	bl dispatch_801DA48
 	pop {r4,pc}
 	thumb_func_end sub_80E14AC
 
@@ -94851,7 +94874,7 @@ sub_80E4C78:
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r6, r0
 	ldrh r0, [r6,#0x24]
 	tst r0, r0
@@ -98382,7 +98405,7 @@ sub_80E6580:
 	mov r0, #0xff
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	tst r0, r0
 	bne loc_80E65B2
 	ldr r1, [r5,#oBattleObject_RelatedObject1Ptr]
@@ -98533,7 +98556,7 @@ sub_80E667C:
 	cmp r1, r2
 	bne loc_80E6716
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
 	add r0, #0xa0
 	ldrb r0, [r0,#oAIAttackVars_Unk_1b]
@@ -102496,7 +102519,7 @@ sub_80E8378:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r6, r0
 	ldrh r0, [r6,#oBattleObject_HP]
 	tst r0, r0
@@ -103984,12 +104007,12 @@ sub_80E8E34:
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	mov r0, #1
 	lsl r0, r0, #8
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	mov r0, #1
 	lsl r0, r0, #8
 	bl sub_801BED6
 	mov r0, #0x40 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	ldr r1, [r5,#oBattleObject_ExtraVars+4]
 	ldr r2, [r5,#oBattleObject_ExtraVars+8]
@@ -104002,7 +104025,7 @@ loc_80E8E66:
 	cmp r0, #0
 	beq locret_80E8E80
 	mov r0, #0x40 
-	bl sub_801DA48
+	bl dispatch_801DA48
 	mov r0, #0x14
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -105172,14 +105195,14 @@ loc_80E966A:
 	mov r1, #7
 	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	mov r1, #0x3b 
 	strb r1, [r0,#7]
 loc_80E9686:
 	ldr r0, dword_80E97E0 // =0x40030 
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	mov r1, #1
 	strb r1, [r0,#0x1b]
 	strb r1, [r0,#0x1c]
@@ -105231,7 +105254,7 @@ sub_80E96C6:
 	mov r1, #5
 	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	ldrb r1, [r5,#oBattleObject_Param2]
 	strb r1, [r0,#5]
 	bl sub_80E97BE
@@ -105282,7 +105305,7 @@ sub_80E9714:
 	mov r1, #5
 	bl SetBattleNaviStatsByte_AllianceFromBattleObject
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl GetBattleNaviStatsAddr // (int idx) -> void*
+	bl GetBattleNaviStatsAddr // (alliance: bool) -> * NaviStats
 	ldrb r1, [r5,#oBattleObject_Param2]
 	strb r1, [r0,#5]
 	bl sub_80E97BE
@@ -105418,7 +105441,7 @@ sub_80E9810:
 	bl sprite_setUnk0x2c
 loc_80E985C:
 	ldrb r0, [r5,#oBattleObject_Param2]
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldr r1, [r0,#oBattleObject_X]
 	str r1, [r5,#oBattleObject_ExtraVars]
@@ -105896,7 +105919,7 @@ sub_80E9C06:
 	push {lr}
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrh r0, [r0,#oBattleObject_NameID]
-	bl sub_80182B4
+	bl GetVerActorTyAndAIIdx_80182B4 // (enemy_idx: u16) -> *const (version: u8, actor_type: ActorType, ai_index: u8)
 	ldrb r1, [r0,#2]
 	ldrb r0, [r0,#1]
 	lsl r0, r0, #2
@@ -107062,8 +107085,13 @@ playerObject_update_80EA484:
 	mov lr, pc
 	bx r0
 	bl sub_80107D4
+
+	// this creates a battle object 0x5e
+  // Disabling this causes the pink ring around MegaMan to no longer appear when we hit a counter
 	bl sub_80139C4
+
 	bl sub_80100EC
+
 	bl battle_isPaused
 	bne locret_80EA4BE
 	bl object_presentCollisionData
@@ -107098,7 +107126,7 @@ PlayerObjectAIAttackJumptables:
 	.word off_80EA52C
 	.word off_80EA52C
 off_80EA52C:
-	.word sub_8016380+1 // 0x0
+	.word RunSpawnAnimationMaybe_8016380+1 // 0x0
 	.word sub_8017888+1 // battle start function 2? // 0x01
 	.word sub_80173F4+1 // on delete? // 0x02
 	.word sub_80174FE+1 // on flinch // 0x03
@@ -107108,7 +107136,7 @@ off_80EA52C:
 	.word sub_8017768+1 // on bubble // 0x07
 	.word playerAI_update_80EA734+1 // 0x08
 off_80EA550:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80173F4+1
 	.word sub_80174FE+1
@@ -107120,7 +107148,7 @@ off_80EA550:
 	.word sub_80F070E+1
 	.word sub_80F0778+1
 off_80EA57C:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80173F4+1
 	.word sub_80174FE+1
@@ -107132,7 +107160,7 @@ off_80EA57C:
 	.word sub_80F094C+1
 	.word sub_80F09B8+1
 off_80EA5A8:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80173F4+1
 	.word sub_80174FE+1
@@ -107144,7 +107172,7 @@ off_80EA5A8:
 	.word sub_80F0C48+1
 	.word sub_80F0CB0+1
 off_80EA5D4:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80173F4+1
 	.word sub_80174FE+1
@@ -107156,7 +107184,7 @@ off_80EA5D4:
 	.word sub_80F0FB4+1
 	.word sub_80F1056+1
 off_80EA600:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80173F4+1
 	.word sub_80174FE+1
@@ -107168,7 +107196,7 @@ off_80EA600:
 	.word sub_80F1198+1
 	.word sub_80F1334+1
 off_80EA62C:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80173F4+1
 	.word sub_80174FE+1
@@ -107180,7 +107208,7 @@ off_80EA62C:
 	.word sub_80F153C+1
 	.word sub_80F15CE+1
 off_80EA658:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80173F4+1
 	.word sub_80174FE+1
@@ -107192,7 +107220,7 @@ off_80EA658:
 	.word sub_80F17C4+1
 	.word sub_80F18AC+1
 off_80EA684:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80173F4+1
 	.word sub_80174FE+1
@@ -107204,7 +107232,7 @@ off_80EA684:
 	.word sub_80F19D4+1
 	.word sub_80F1A46+1
 off_80EA6B0:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80173F4+1
 	.word sub_80174FE+1
@@ -107216,7 +107244,7 @@ off_80EA6B0:
 	.word sub_80F1BA8+1
 	.word sub_80F1C1C+1
 off_80EA6DC:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80173F4+1
 	.word sub_80174FE+1
@@ -107230,7 +107258,7 @@ off_80EA6DC:
 	.word sub_80F20F8+1
 	.word sub_80F2274+1
 off_80EA710:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80173F4+1
 	.word sub_80174FE+1
@@ -107277,7 +107305,7 @@ loc_80EA778:
 	bl sub_8012EA8
 	bl sub_801A264
 	mov r0, #0x42 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 	bl sub_802DD2A
 	tst r0, r0
 	beq loc_80EA79A
@@ -107330,80 +107358,154 @@ JumpTable80EA7B0:
 	.word playerAI_sub_80F0354+1
 	.word playerAI_sub_80F0354+1
 off_80EA814:
-	.word off_80F02C0
+	// 0x00
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x04
 	.word off_80F093C
+	// 0x08
 	.word off_80F0C38
+	// 0x0C
 	.word off_80F0FA4
+	// 0x10
 	.word off_80F1188
+	// 0x14
 	.word off_80F152C
+	// 0x18
 	.word off_80F17B4
+	// 0x1C
 	.word off_80F19C4
+	// 0x20
 	.word off_80F1B98
+	// 0x24
 	.word off_80F1F08
+	// 0x28
 	.word off_80F2310
+	// 0x2C
 	.word off_80F2320
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
-	.word off_80F02C0
+	// 0x30
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x34
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x38
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x3C
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x40
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x44
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x48
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x4C
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x50
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x54
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x58
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x5C
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x60
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x64
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x68
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x6C
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x70
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x74
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x78
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x7C
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x80
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x84
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x88
+	.word MegaManEnemyStruct1_80F02C0
+	// 0x8C
 	.word byte_80F02F7
+	// 0x90
 	.word byte_80F02FC
+	// 0x94
 	.word byte_80F02C5
+	// 0x98
 	.word byte_80F02CA
+	// 0x9C
 	.word byte_80F02CF
+	// 0xA0
 	.word byte_80F02D4
+	// 0xA4
 	.word byte_80F02D9
+	// 0xA8
 	.word byte_80F02DE
+	// 0xAC
 	.word byte_80F02E3
+	// 0xB0
 	.word byte_80F02E8
+	// 0xB4
 	.word byte_80F02ED
+	// 0xB8
 	.word byte_80F02F2
+	// 0xBC
 	.word byte_80F02F7
+	// 0xC0
 	.word byte_80F02FC
 off_80EA8D8:
+	// 0x00
 	.word byte_80F0304
+	// 0x04
 	.word byte_80F0944
+	// 0x08
 	.word byte_80F0C40
+	// 0x0C
 	.word byte_80F0FAC
+	// 0x10
 	.word byte_80F1190
+	// 0x14
 	.word byte_80F1534
+	// 0x18
 	.word byte_80F17BC
+	// 0x1C
 	.word byte_80F19CC
+	// 0x20
 	.word byte_80F1BA0
+	// 0x24
 	.word byte_80F1F10
+	// 0x28
 	.word byte_80F2318
+	// 0x2C
 	.word byte_80F2328
+	// 0x30
 	.word byte_80F0304
+	// 0x34
 	.word byte_80F0304
+	// 0x38
 	.word byte_80F0304
+	// 0x3C
 	.word byte_80F0304
+	// 0x40
 	.word byte_80F0304
+	// 0x44
 	.word byte_80F0304
+	// 0x48
 	.word byte_80F0304
+	// 0x4C
 	.word byte_80F0304
+	// 0x50
 	.word byte_80F0304
+	// 0x54
 	.word byte_80F0304
+	// 0x58
 	.word byte_80F0304
+	// 0x5C
 	.word byte_80F0304
+	// 0x60
 	.word byte_80F0304
 playerObjectUpdateJumptable_80EA93C:
 	.word sub_80F0608+1, nullsub_104+1, nullsub_104+1, nullsub_104+1
@@ -108613,7 +108715,7 @@ sub_80EB572:
 loc_80EB5C2:
 	push {r0,r1}
 	ldrb r0, [r5,#oBattleObject_Alliance]
-	bl callPossiblyGetBattleEmotion_8015B54
+	bl callPossiblyGetBattleEmotion_8015B54 // (alliance: u8) -> (res0: enum8?, transformation: u8, mood: u8, beast_out_counter: u8)
 	cmp r0, #2
 	pop {r0,r1}
 	bne loc_80EB606
@@ -118720,8 +118822,9 @@ loc_80F02B8:
 	.balign 4, 0
 dword_80F02BC:
 	.word 0x8000
-off_80F02C0:
-	.byte 0x0, 0x0, 0x1, 0x2, 0x0
+MegaManEnemyStruct1_80F02C0:
+	.hword 0x0000
+	.byte 0x1, 0x2, 0x0
 byte_80F02C5:
 	.byte 0x0, 0x1, 0x1, 0x2, 0x0
 byte_80F02CA:
@@ -118769,11 +118872,11 @@ playerAI_sub_80F0354:
 	tst r0, r0
 	beq loc_80F0374
 	mov r0, #0x40 
-	bl sub_801DA48
+	bl dispatch_801DA48
 	b loc_80F037A
 loc_80F0374:
 	mov r0, #0x40 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_80F037A:
 	ldrb r0, [r5,#oBattleObject_CurPhase]
 	tst r0, r0
@@ -118782,7 +118885,7 @@ loc_80F037A:
 	tst r0, r0
 	bne loc_80F03A0
 	mov r0, #2
-	bl sub_801DA48
+	bl dispatch_801DA48
 	mov r0, #0xa
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x10
@@ -118884,7 +118987,7 @@ loc_80F0444:
 	tst r0, r0
 	bne loc_80F0464
 	mov r0, #0x40 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_80F0464:
 	mov r0, #0x16
 	bl object_setAttack1
@@ -118902,7 +119005,7 @@ loc_80F0474:
 	tst r0, r0
 	bne loc_80F048A
 	mov r0, #0x40 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_80F048A:
 	bl calledOnBAtkProbInit_8011764
 	bl object_setAttack1
@@ -118919,7 +119022,7 @@ loc_80F0496:
 	tst r0, r0
 	bne loc_80F04B2
 	mov r0, #0x40 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_80F04B2:
 	bl sub_80117A4
 	ldrb r1, [r6,#oAIData_BPwrAtk]
@@ -118946,7 +119049,7 @@ loc_80F04CE:
 	tst r0, r0
 	bne loc_80F04EE
 	mov r0, #0x40 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_80F04EE:
 	bl sub_8011790
 	bl object_setAttack3
@@ -118964,7 +119067,7 @@ loc_80F04FA:
 	tst r0, r0
 	bne loc_80F051A
 	mov r0, #0x40 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_80F051A:
 	bl sub_801177A
 	bl object_setAttack1
@@ -119067,7 +119170,7 @@ loc_80F05F2:
 	tst r0, r0
 	bne loc_80F0602
 	mov r0, #0x40 
-	bl sub_801DACC
+	bl dispatch_801DACC // (a0: flags32) -> ()
 loc_80F0602:
 	mov r0, #1
 locret_80F0604:
@@ -123252,56 +123355,106 @@ off_80F2474:
 	.word nullsub_106+1
 	.word nullsub_106+1
 off_80F24D8:
+	// 0x00
 	.word byte_80F28C4
+	// 0x04
 	.word byte_80F2A28
+	// 0x08
 	.word byte_80F38E0
+	// 0x0C
 	.word byte_80F47A8
+	// 0x10
 	.word byte_80F580C
+	// 0x14
 	.word byte_80F6368
+	// 0x18
 	.word byte_80F7550
+	// 0x1C
 	.word byte_80F8308
+	// 0x20
 	.word byte_80F8EC0
+	// 0x24
 	.word byte_80F9C54
+	// 0x28
 	.word byte_80FACB0
+	// 0x2C protoman
 	.word byte_80FB8B4
+	// 0x30
 	.word byte_80FD018
+	// 0x34
 	.word byte_80FDCC4
+	// 0x38
 	.word byte_80FE7A4
+	// 0x3C
 	.word byte_80FF7C4
+	// 0x40
 	.word byte_81001BC
+	// 0x44
 	.word byte_80F28C4
+	// 0x48
 	.word byte_810123C
+	// 0x4C
 	.word byte_8101854
+	// 0x50
 	.word byte_8103B88
+	// 0x54
 	.word byte_8105390
+	// 0x58
 	.word byte_80F28C4
+	// 0x5C
 	.word byte_81067FC
+	// 0x60
 	.word byte_8107B24
 off_80F253C:
+	// 0x00
 	.word byte_80F28CC
+	// 0x04
 	.word byte_80F2A30
+	// 0x08
 	.word byte_80F38E8
+	// 0x0C
 	.word byte_80F47B0
+	// 0x10
 	.word byte_80F5814
+	// 0x14
 	.word byte_80F6370
+	// 0x18
 	.word byte_80F7558
+	// 0x1C
 	.word byte_80F8310
+	// 0x20
 	.word byte_80F8EC8
+	// 0x24
 	.word byte_80F9C5C
+	// 0x28
 	.word byte_80FACB8
+	// 0x2C Protoman
 	.word byte_80FB8BC
+	// 0x30
 	.word byte_80FD020
+	// 0x34
 	.word byte_80FDCCC
+	// 0x38
 	.word byte_80FE7AC
+	// 0x3C
 	.word byte_80FF7CC
+	// 0x40
 	.word byte_81001C4
+	// 0x44
 	.word byte_80F28CC
+	// 0x48
 	.word byte_8101244
+	// 0x4C
 	.word byte_810185C
+	// 0x50
 	.word byte_8103B90
+	// 0x54
 	.word byte_8105398
+	// 0x58
 	.word byte_80F28CC
+	// 0x5C
 	.word byte_8106804
+	// 0x60
 	.word byte_8107B2C
 off_80F25A0:
 	.word sub_80F2A1E+1
@@ -123547,7 +123700,7 @@ byte_80F28F0:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80F29B0:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -123641,7 +123794,7 @@ byte_80F2A54:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80F2B14:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -123733,7 +123886,7 @@ loc_80F2BD0:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -123764,7 +123917,7 @@ sub_80F2BEE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -123787,7 +123940,7 @@ loc_80F2C32:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0x6c 
 	add r0, r0, r5
@@ -125528,7 +125681,7 @@ byte_80F390C:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80F39CC:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -125610,7 +125763,7 @@ loc_80F3A5C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -125633,7 +125786,7 @@ loc_80F3A94:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r0, off_80F3D18 // =sub_80F4658+1
 	str r0, [r7,#oAIAttackVars_Unk_28]
@@ -125669,7 +125822,7 @@ loc_80F3AF6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xd
 	bl object_setAttack0
@@ -127355,7 +127508,7 @@ byte_80F47D4:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80F4894:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -127676,7 +127829,7 @@ sub_80F4AC6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -127701,7 +127854,7 @@ sub_80F4AFE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -127730,7 +127883,7 @@ sub_80F4B34:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -129416,7 +129569,7 @@ byte_80F5838:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80F58F8:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -129486,7 +129639,7 @@ sub_80F594C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -129511,7 +129664,7 @@ loc_80F59B4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -129642,7 +129795,7 @@ sub_80F5AA0:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -130839,7 +130992,7 @@ byte_80F6394:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80F6454:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -131025,7 +131178,7 @@ sub_80F65A4:
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#0x2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -131046,7 +131199,7 @@ sub_80F65C4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -131069,7 +131222,7 @@ sub_80F65EE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -133028,7 +133181,7 @@ byte_80F757C:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80F763C:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -133305,7 +133458,7 @@ sub_80F7830:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -133326,7 +133479,7 @@ sub_80F7856:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r0, off_80F79E8 // =sub_80F81C0+1
 	str r0, [r7,#oAIAttackVars_Unk_28]
@@ -133352,7 +133505,7 @@ sub_80F7886:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r0, off_80F79EC // =sub_80F8256+1 
 	str r0, [r7,#oAIAttackVars_Unk_28]
@@ -133382,7 +133535,7 @@ sub_80F78C4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -134768,7 +134921,7 @@ byte_80F8334:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80F83F4:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -134842,7 +134995,7 @@ loc_80F8458:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r0, off_80F86F8 // =sub_80F8DA8+1
 	str r0, [r7,#oAIAttackVars_Unk_28]
@@ -134861,7 +135014,7 @@ loc_80F84AC:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r0, off_80F86FC // =sub_80F8D3E+1 
 	str r0, [r7,#oAIAttackVars_Unk_28]
@@ -134885,7 +135038,7 @@ loc_80F84E0:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r0, off_80F8700 // =sub_80F8DFE+1 
 	str r0, [r7,#oAIAttackVars_Unk_28]
@@ -134924,7 +135077,7 @@ sub_80F8540:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r6, r0
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	lsl r0, r0, #1
@@ -135035,7 +135188,7 @@ sub_80F8610:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldrb r4, [r0,#oBattleObject_PanelX]
 	ldrb r6, [r0,#oBattleObject_PanelY]
 	ldrb r0, [r5,#oBattleObject_Alliance]
@@ -136238,7 +136391,7 @@ byte_80F8EEC:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80F8FAC:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -136493,7 +136646,7 @@ sub_80F9168:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -136535,7 +136688,7 @@ loc_80F91C6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -136556,7 +136709,7 @@ sub_80F91F6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -137897,7 +138050,7 @@ byte_80F9C80:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80F9D40:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -138170,7 +138323,7 @@ sub_80F9F24:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -138193,7 +138346,7 @@ sub_80F9F44:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -138247,7 +138400,7 @@ sub_80F9FA6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -139911,7 +140064,7 @@ byte_80FACDC:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80FAD9C:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -140224,7 +140377,7 @@ sub_80FAFB4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -140249,7 +140402,7 @@ sub_80FAFF2:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -140276,7 +140429,7 @@ sub_80FB028:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -141389,11 +141542,22 @@ loc_80FB8B2:
 	thumb_func_end sub_80FB886
 	.balign 4, 0
 byte_80FB8B4:
-	.byte 0x8, 0xB, 0x1, 0x1, 0xB, 0x0, 0x0, 0x1
+	.hword 0x0B08 // protoman's sprite_index
+	.byte 0x1, 0x1, 0xB, 0x0, 0x0, 0x1
 byte_80FB8BC:
-	.byte 0x8, 0x7, 0x0, 0x0, 0xA, 0x0, 0xD0, 0x7, 0x1, 0x0, 0xA, 0x0, 0xD0, 0x7
-	.byte 0x2, 0x0, 0xA, 0x0, 0xF0, 0xA, 0x3, 0x0, 0xA, 0x0, 0xF0, 0xA, 0x4, 0x0
-	.byte 0xA, 0x0, 0xF0, 0xA, 0x5, 0x0, 0xA, 0x0
+	.hword 0x0708 // HP (.hword XYYY, where YYY is HP, 000-FFF and X corresponds to element of navi)
+	.hword 0x0000
+	.hword 0x000A // (.hword XYYY, where YYY is Damage)
+	.hword 0x07D0 // HP
+	.hword 0x0001, 0x000A
+	.hword 0x07D0 // HP
+	.hword 0x0002, 0x000A
+	.hword 0x0AF0 // HP
+	.hword 0x0003, 0x000A
+	.hword 0x0AF0 // HP
+	.hword 0x0004, 0x000A
+	.hword 0x0AF0 // HP
+	.hword 0x0005, 0x000A
 byte_80FB8E0:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
@@ -141418,7 +141582,7 @@ byte_80FB8E0:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80FB9A0:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80FBC8A+1
 	.word sub_80174FE+1
@@ -142023,7 +142187,7 @@ sub_80FBDF4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldrb r1, [r0,#oBattleObject_PanelX]
 	ldrb r2, [r0,#oBattleObject_PanelY]
 	str r1, [sp]
@@ -142096,7 +142260,7 @@ sub_80FBE60:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -142131,7 +142295,7 @@ sub_80FBE9C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -142159,7 +142323,7 @@ sub_80FBEE8:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -142210,7 +142374,7 @@ sub_80FBF54:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xe
 	bl object_setAttack0
@@ -144401,7 +144565,7 @@ byte_80FD044:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80FD104:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -144475,7 +144639,7 @@ loc_80FD184:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -144496,7 +144660,7 @@ loc_80FD1B8:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -144531,7 +144695,7 @@ loc_80FD216:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -144671,7 +144835,7 @@ sub_80FD31C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldrb r1, [r0,#oBattleObject_PanelX]
 	ldrb r2, [r0,#oBattleObject_PanelY]
 	str r1, [sp]
@@ -145975,7 +146139,7 @@ byte_80FDCF0:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80FDDB0:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -146050,7 +146214,7 @@ loc_80FDE3C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -146084,7 +146248,7 @@ loc_80FDE94:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	ldr r0, [r5,#oBattleObject_ExtraVars+4]
 	str r0, [r7,#oAIAttackVars_Unk_30]
@@ -146106,7 +146270,7 @@ sub_80FDEC4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	mov r2, #2
 	push {r7}
 	mov r7, #0x60 
@@ -147330,7 +147494,7 @@ byte_80FE7D0:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80FE890:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -147661,7 +147825,7 @@ loc_80FEAF4:
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#0x2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -147691,7 +147855,7 @@ sub_80FEB20:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -147718,7 +147882,7 @@ sub_80FEB64:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -147749,7 +147913,7 @@ sub_80FEB9E:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -149235,7 +149399,7 @@ sub_80FF6E0:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldrb r6, [r0,#oBattleObject_PanelY]
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, r6
@@ -149367,7 +149531,7 @@ byte_80FF7F0:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_80FF8B0:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -149467,7 +149631,7 @@ loc_80FF95E:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -149488,7 +149652,7 @@ loc_80FF998:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -149506,7 +149670,7 @@ loc_80FF9CC:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -149522,7 +149686,7 @@ loc_80FF9F6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -150616,7 +150780,7 @@ byte_81001E8:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_81002A8:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -151064,7 +151228,7 @@ sub_81005A6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -151089,7 +151253,7 @@ sub_81005DE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -151115,7 +151279,7 @@ sub_8100614:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xd
 	bl object_setAttack0
@@ -151138,7 +151302,7 @@ sub_810064C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xe
 	bl object_setAttack0
@@ -152810,7 +152974,7 @@ byte_8101268:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_8101328:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -153165,7 +153329,7 @@ sub_8101584:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldrb r1, [r0,#oBattleObject_PanelX]
 	ldrb r2, [r0,#oBattleObject_PanelY]
 	str r1, [sp]
@@ -153220,7 +153384,7 @@ sub_81015E4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	ldrh r4, [r0,#oBattleObject_HP]
 	mov r0, #4
 	bl sub_810179C
@@ -153265,7 +153429,7 @@ sub_810161A:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -153292,7 +153456,7 @@ sub_8101652:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -153319,7 +153483,7 @@ sub_810168C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -153344,7 +153508,7 @@ sub_81016C8:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -153373,7 +153537,7 @@ sub_81016FE:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xd
 	bl object_setAttack0
@@ -153524,7 +153688,7 @@ byte_8101880:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_8101940:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -158196,7 +158360,7 @@ byte_8103BB4:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_8103C74:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80171A6+1
 	.word sub_8103DFA+1
@@ -158575,7 +158739,7 @@ sub_8103F54:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -158600,7 +158764,7 @@ sub_8103F80:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -158625,7 +158789,7 @@ sub_8103FB4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -158649,7 +158813,7 @@ sub_8103FE8:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -158674,7 +158838,7 @@ sub_810401C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xd
 	bl object_setAttack0
@@ -158696,7 +158860,7 @@ sub_8104050:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xe
 	bl object_setAttack0
@@ -161262,7 +161426,7 @@ byte_81053BC:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_810547C:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80171A6+1
 	.word sub_8105618+1
@@ -161669,7 +161833,7 @@ sub_8105784:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -161694,7 +161858,7 @@ sub_81057C0:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xb
 	bl object_setAttack0
@@ -161719,7 +161883,7 @@ sub_81057F4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -161744,7 +161908,7 @@ sub_8105828:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xd
 	bl object_setAttack0
@@ -161768,7 +161932,7 @@ sub_810585C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xe
 	bl object_setAttack0
@@ -163907,7 +164071,7 @@ byte_8106828:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_81068E8:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -164100,7 +164264,7 @@ sub_8106A60:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	push {r5}
 	mov r5, r0
 	bl object_getFlag // () -> int
@@ -164311,7 +164475,7 @@ sub_8106BB8:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -164334,7 +164498,7 @@ sub_8106BB8:
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#0x2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -164376,7 +164540,7 @@ sub_8106C34:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -164405,7 +164569,7 @@ sub_8106C6C:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xd
 	bl object_setAttack0
@@ -164433,7 +164597,7 @@ sub_8106CAC:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xe
 	bl object_setAttack0
@@ -166403,7 +166567,7 @@ byte_8107B50:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 off_8107C10:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_8017888+1
 	.word sub_80170C4+1
 	.word sub_80174FE+1
@@ -166721,7 +166885,7 @@ sub_8107E66:
 	beq loc_8107E74
 	// whoops! lr isn't preserved, so this function call overwrites it.
 	// but because this function that it common branches to performs pop {pc}
-	// and the caller of this function (sub_800F3E8 -> sub_800F420) calls this
+	// and the caller of this function (sub_800F3E8 -> indexByActorTypeAndAIIdxThenDispatch_800F420) calls this
 	// function right before a pop {pc}, this doesn't do anything harmful
 	bl sub_80C46B6
 	b loc_8107E74
@@ -166961,7 +167125,7 @@ sub_8107FF4:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #9
 	bl object_setAttack4
@@ -166984,7 +167148,7 @@ sub_8108014:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xa
 	bl object_setAttack0
@@ -167029,7 +167193,7 @@ sub_810806E:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xc
 	bl object_setAttack0
@@ -167058,7 +167222,7 @@ sub_81080A6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xd
 	bl object_setAttack0
@@ -167086,7 +167250,7 @@ sub_81080E6:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
-	bl battle_findPlayer
+	bl battle_findPlayer // (alliance: bool) -> * BattleObject
 	str r0, [r7,#oAIAttackVars_Unk_2c]
 	mov r0, #0xe
 	bl object_setAttack0
@@ -169015,26 +169179,30 @@ sub_8108F28:
 	thumb_func_end sub_8108F28
 
 	thumb_local_start
-sub_8108F50:
+battleObject_dispatch_8108F50:
 	push {lr}
+
 	ldr r1, off_8108F64 // =off_8108F68 
 	ldrb r0, [r5,#oBattleObject_CurState]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
+
+	// disabling this causes enemy attack animations to cease playing
 	bl sub_8016E64
+
 	pop {pc}
 	.balign 4, 0
 off_8108F64:
 	.word off_8108F68
 off_8108F68:
 	.word sub_8016F56+1
-	.word sub_8108F74+1
+	.word battle_8108F74+1
 	.word sub_8016C4E+1
-	thumb_func_end sub_8108F50
+	thumb_func_end battleObject_dispatch_8108F50
 
 	thumb_local_start
-sub_8108F74:
+battle_8108F74:
 	push {r4,lr}
 	bl sub_81095D0
 	bl sub_801ABB8
@@ -169116,13 +169284,16 @@ loc_8109020:
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldrb r0, [r0,#oAIData_AIIndex]
 	lsl r4, r0, #2
+
 	ldr r1, off_8109048 // =off_8109050 
 	ldr r0, [r1,r4]
-	bl sub_801B1C4
+	bl battle_801B1C4
+
 	ldr r0, off_810904C // =off_81091D0 
 	ldr r0, [r0,r4]
 	mov lr, pc
 	bx r0
+
 	bl object_presentCollisionData
 	ldrb r0, [r5,#oBattleObject_CurAction]
 	cmp r0, #7
@@ -169138,203 +169309,396 @@ off_8109048:
 off_810904C:
 	.word off_81091D0
 off_8109050:
+	// 0x00
 	.word off_8109B74
-	.word off_8109EF4
+	// 0x04 Mettaur
+	.word ForMettaur_8109EF4
+	// 0x08
 	.word off_810A550
+	// 0x0C
 	.word off_810A9EC
+	// 0x10
 	.word off_810B2D0
+	// 0x14
 	.word off_810BB94
+	// 0x18
 	.word off_810C170
+	// 0x1C
 	.word off_810C6F0
+	// 0x20
 	.word off_810CD60
+	// 0x24
 	.word off_810D0F4
+	// 0x28
 	.word off_810D554
+	// 0x2C
 	.word off_810D910
+	// 0x30
 	.word off_810E120
+	// 0x34
 	.word off_810E7B0
+	// 0x38
 	.word off_810F010
+	// 0x3C
 	.word off_810F39C
+	// 0x40
 	.word off_810FCE0
+	// 0x44
 	.word off_81104D4
+	// 0x48
 	.word off_8110DC0
+	// 0x4C
 	.word off_8111330
+	// 0x50
 	.word off_8111DC0
+	// 0x54
 	.word off_81121F0
+	// 0x58
 	.word off_81129A0
-	.word off_8113078
+	// 0x5C Gunner
+	.word ForGunner_8113078
+	// 0x60
 	.word off_81135CC
+	// 0x64
 	.word off_8113D50
+	// 0x68
 	.word snakearmAttackTable_8114710
+	// 0x6C
 	.word off_81154F0
+	// 0x70
 	.word off_8115950
+	// 0x74
 	.word off_8115DE0
+	// 0x78
 	.word off_81163F0
+	// 0x7C
 	.word off_81166B0
 off_81090D0:
+	// 0x00
 	.word byte_8109A78
-	.word byte_8109BD0
+	// 0x04 Mettaur
+	.word MettaurEnemyStruct1_8109BD0
+	// 0x08
 	.word byte_810A2C0
+	// 0x0C
 	.word byte_810A840
+	// 0x10
 	.word byte_810AE44
+	// 0x14
 	.word byte_810B78C
+	// 0x18
 	.word byte_810BECC
+	// 0x1C
 	.word byte_810C35C
+	// 0x20
 	.word byte_810C8CC
+	// 0x24
 	.word byte_810D008
+	// 0x28
 	.word byte_810D16C
+	// 0x2C
 	.word byte_810D6F8
+	// 0x30
 	.word byte_810DD10
+	// 0x34
 	.word byte_810E3E8
+	// 0x38
 	.word byte_810EC80
+	// 0x3C
 	.word byte_810F200
+	// 0x40
 	.word byte_810F4E4
+	// 0x44
 	.word byte_8110290
+	// 0x48
 	.word byte_8110628
+	// 0x4C
 	.word byte_8111130
+	// 0x50
 	.word byte_811190C
+	// 0x54
 	.word byte_8111FF8
+	// 0x58
 	.word byte_81126DC
-	.word byte_8112B94
+	// 0x5C Gunner
+	.word GunnerEnemyStruct1_8112B94
+	// 0x60
 	.word byte_811323C
+	// 0x64
 	.word byte_8113754
+	// 0x68
 	.word byte_81143C8
+	// 0x6C
 	.word byte_81150AC
+	// 0x70
 	.word byte_8115704
+	// 0x74
 	.word byte_8115BEC
+	// 0x78
 	.word byte_81162F8
+	// 0x7C
 	.word byte_81165BC
 off_8109150:
+	// 0x00
 	.word byte_8109A80
-	.word byte_8109BD8
+	// 0x04 Mettaur
+	.word MettaurEnemyStruct2_8109BD8
+	// 0x08
 	.word byte_810A2C8
+	// 0x0C
 	.word byte_810A848
+	// 0x10
 	.word byte_810AE4C
+	// 0x14
 	.word byte_810B794
+	// 0x18
 	.word byte_810BED4
+	// 0x1C
 	.word byte_810C364
+	// 0x20
 	.word byte_810C8D4
+	// 0x24
 	.word byte_810D010
+	// 0x28
 	.word byte_810D174
+	// 0x2C
 	.word byte_810D700
+	// 0x30
 	.word byte_810DD18
+	// 0x34
 	.word byte_810E3F0
+	// 0x38
 	.word byte_810EC88
+	// 0x3C
 	.word byte_810F208
+	// 0x40
 	.word byte_810F4EC
+	// 0x44
 	.word byte_8110298
+	// 0x48
 	.word byte_8110630
+	// 0x4C
 	.word byte_8111138
+	// 0x50
 	.word byte_8111914
+	// 0x54
 	.word byte_8112000
+	// 0x58
 	.word byte_81126E4
-	.word byte_8112B9C
+	// 0x5C Gunner
+	.word GunnerEnemyStruct2_8112B9C
+	// 0x60
 	.word byte_8113244
+	// 0x64
 	.word byte_811375C
+	// 0x68
 	.word byte_81143D0
+	// 0x6C
 	.word byte_81150B4
+	// 0x70
 	.word byte_811570C
+	// 0x74
 	.word byte_8115BF4
+	// 0x78
 	.word byte_8116300
+	// 0x7C
 	.word byte_81165C4
 off_81091D0:
+	// 0x00
 	.word nullsub_13+1
+	// 0x04 Mettaur
 	.word nullsub_13+1
+	// 0x08
 	.word nullsub_13+1
+	// 0x0C
 	.word sub_810ABD0+1
+	// 0x10
 	.word nullsub_13+1
+	// 0x14
 	.word nullsub_13+1
+	// 0x18
 	.word nullsub_13+1
+	// 0x1C
 	.word nullsub_13+1
+	// 0x20
 	.word nullsub_13+1
+	// 0x24
 	.word nullsub_13+1
+	// 0x28
 	.word nullsub_13+1
+	// 0x2C
 	.word nullsub_13+1
+	// 0x30
 	.word sub_810E2A6+1
+	// 0x34
 	.word sub_810E854+1
+	// 0x38
 	.word sub_810F090+1
+	// 0x3C
 	.word nullsub_13+1
+	// 0x40
 	.word sub_81100E2+1
+	// 0x44
 	.word nullsub_13+1
+	// 0x48
 	.word nullsub_13+1
+	// 0x4C
 	.word sub_8111846+1
+	// 0x50
 	.word nullsub_13+1
+	// 0x54
 	.word nullsub_13+1
+	// 0x58
 	.word sub_81129EE+1
+	// 0x5C Gunner
 	.word nullsub_13+1
+	// 0x60
 	.word nullsub_13+1
+	// 0x64
 	.word nullsub_13+1
+	// 0x68
 	.word sub_8115098+1
+	// 0x6C
 	.word nullsub_13+1
+	// 0x70
 	.word sub_81159DC+1
+	// 0x74
 	.word sub_81162AA+1
+	// 0x78
 	.word sub_81165A4+1
+	// 0x7C
 	.word nullsub_13+1
 off_8109250:
+	// 0x00
 	.word nullsub_13+1
+	// 0x04 Mettaur
 	.word nullsub_13+1
+	// 0x08
 	.word nullsub_13+1
+	// 0x0C
 	.word nullsub_13+1
+	// 0x10
 	.word nullsub_13+1
+	// 0x14
 	.word sub_810BE2A+1
+	// 0x18
 	.word nullsub_13+1
+	// 0x1C
 	.word nullsub_13+1
+	// 0x20
 	.word nullsub_13+1
+	// 0x24
 	.word nullsub_13+1
+	// 0x28
 	.word nullsub_13+1
+	// 0x2C
 	.word nullsub_13+1
+	// 0x30
 	.word sub_810E386+1
+	// 0x34
 	.word nullsub_13+1
+	// 0x38
 	.word sub_810F040+1
+	// 0x3C
 	.word sub_810F3F8+1
+	// 0x40
 	.word sub_8110254+1
+	// 0x44
 	.word nullsub_13+1
+	// 0x48
 	.word nullsub_13+1
+	// 0x4C
 	.word sub_8111816+1
+	// 0x50
 	.word nullsub_13+1
+	// 0x54
 	.word nullsub_13+1
+	// 0x58
 	.word nullsub_13+1
+	// 0x5C Gunner
 	.word nullsub_13+1
+	// 0x60
 	.word nullsub_13+1
+	// 0x64
 	.word sub_8114170+1
+	// 0x68
 	.word sub_8114E30+1
+	// 0x6C
 	.word nullsub_13+1
+	// 0x70
 	.word nullsub_13+1
+	// 0x74
 	.word sub_811627A+1
+	// 0x78
 	.word sub_8116414+1
+	// 0x7C
 	.word sub_81166D4+1
 off_81092D0:
+	// 0x00
 	.word nullsub_13+1
+	// 0x04 Mettaur
 	.word nullsub_13+1
+	// 0x08
 	.word nullsub_13+1
+	// 0x0C
 	.word sub_810AB8C+1
+	// 0x10
 	.word sub_810B30C+1
+	// 0x14
 	.word nullsub_13+1
+	// 0x18
 	.word nullsub_13+1
+	// 0x1C
 	.word nullsub_13+1
+	// 0x20
 	.word nullsub_13+1
+	// 0x24
 	.word nullsub_13+1
+	// 0x28
 	.word nullsub_13+1
+	// 0x2C
 	.word sub_810D940+1
+	// 0x30
 	.word nullsub_13+1
+	// 0x34
 	.word sub_810E81E+1
+	// 0x38
 	.word nullsub_13+1
+	// 0x3C
 	.word nullsub_13+1
+	// 0x40
 	.word sub_81100B0+1
+	// 0x44
 	.word nullsub_13+1
+	// 0x48
 	.word sub_8110E76+1
+	// 0x4C
 	.word nullsub_13+1
+	// 0x50
 	.word nullsub_13+1
+	// 0x54
 	.word nullsub_13+1
+	// 0x58
 	.word nullsub_13+1
+	// 0x5C Gunner
 	.word nullsub_13+1
+	// 0x60
 	.word sub_8113626+1
+	// 0x64
 	.word nullsub_13+1
+	// 0x68
 	.word sub_8114DF2+1
+	// 0x6C
 	.word nullsub_13+1
+	// 0x70
 	.word sub_81159B0+1
+	// 0x74
 	.word nullsub_13+1
+	// 0x78
 	.word nullsub_13+1
+	// 0x7C
 	.word nullsub_13+1
+
 off_8109350:
 	.word nullsub_13+1, nullsub_13+1, nullsub_13+1, nullsub_13+1
 	.word nullsub_13+1, nullsub_13+1, nullsub_13+1, nullsub_13+1
@@ -169380,7 +169744,7 @@ off_8109550:
 	.word nullsub_13+1, nullsub_13+1, nullsub_13+1, nullsub_13+1
 	.word nullsub_13+1, nullsub_13+1, nullsub_13+1, nullsub_13+1
 	.word nullsub_13+1, nullsub_13+1, nullsub_13+1, nullsub_13+1
-	thumb_func_end sub_8108F74
+	thumb_func_end battle_8108F74
 
 	thumb_local_start
 sub_81095D0:
@@ -170101,7 +170465,7 @@ locret_8109B72:
 	pop {pc}
 	.balign 4, 0
 off_8109B74:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_80165C2+1
 	.word sub_80166AE+1
@@ -170147,12 +170511,22 @@ sub_8109BC0:
 	bl object_setAttack0
 	pop {pc}
 	.balign 4, 0
-byte_8109BD0:
-	.byte 0x4, 0x1, 0x1, 0x0, 0x1, 0x0, 0x0, 0x1
-byte_8109BD8:
-	.byte 0x28, 0x0, 0x0, 0x8, 0xA, 0x0, 0x50, 0x0, 0x1, 0x8, 0x14, 0x0, 0x78
-	.byte 0x0, 0x2, 0x8, 0x28, 0x0, 0xA0, 0x0, 0x3, 0x8, 0x3C, 0x0, 0x78, 0x0
-	.byte 0x4, 0x8, 0x28, 0x0, 0xB4, 0x0, 0x5, 0x8, 0x50, 0x0
+
+// Mettaur
+MettaurEnemyStruct1_8109BD0:
+	.hword 0x0104 // sprite_index
+	.byte 0x1, 0x0, 0x1, 0x0, 0x0, 0x1
+MettaurEnemyStruct2_8109BD8:
+  //             XX: Flags
+  //             YY: Unk
+	//     Elem_HP XXYY    Elem?_Damage
+	//     (XYYY)          (XYYY)
+	.hword 0x0028, 0x0800, 0x000A
+	.hword 0x0050, 0x0801, 0x0014
+	.hword 0x0078, 0x0802, 0x0028
+	.hword 0x00A0, 0x0803, 0x003C
+	.hword 0x0078, 0x0804, 0x0028
+	.hword 0x00B4, 0x0805, 0x0050
 byte_8109BFC:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
@@ -170495,19 +170869,37 @@ sub_8109EE4:
 locret_8109EF2:
 	pop {pc}
 	.balign 4, 0
-off_8109EF4:
-	.word sub_8016380+1
+// indexed by CurAction * 4
+ForMettaur_8109EF4: 
+	// 0x00 (0x00) (CurAction -> 0x01)
+	.word RunSpawnAnimationMaybe_8016380+1
+	// 0x04 (0x01) (CurAction -> 0x08)
 	.word sub_8109F4C+1
+	// 0x08 (0x02)
+	// disabling this causes game to freeze on mettaur getting hit
 	.word sub_8109F6A+1
+	// 0x0C (0x03)
 	.word sub_80166AE+1
+	// 0x10 (0x04)
 	.word sub_8109F7E+1
+	// 0x14 (0x05)
 	.word sub_8109FC4+1
+	// 0x18 (0x06)
 	.word sub_8109F8A+1
+	// 0x1C (0x07)
 	.word sub_8109F96+1
+	// 0x20 (0x08) (CurAction -via setAttack-> 0x09, 0x0a, 0x0b, 0x0c, )
+	// triggered immediately start of battle following CurAction 0x01
 	.word sub_8109FD6+1
+	// 0x24 (0x09)
 	.word sub_8109CBC+1
+	// 0x28 (0x0A)
+	// setting this to sub_8109FD6+1 (0x08) causes mettaurs not to move up/down to player and always attack taking turns between mettaurs
 	.word sub_8109CE6+1
+	// 0x2C (0x0B)
+	// setting this to sub_8109FD6+1 (0x08) causes mettaurs to track player movement but not attack
 	.word sub_8109DD2+1
+	// 0x30 (0x0C)
 	.word sub_8109E7A+1
 byte_8109F28:
 	.byte 0xA, 0x0, 0xA, 0x0, 0x1E, 0x0, 0xA, 0x0, 0x32, 0x0, 0xA, 0x0, 0x46
@@ -170521,9 +170913,11 @@ byte_8109F46:
 	thumb_local_start
 sub_8109F4C:
 	push {lr}
+
 	ldrb r0, [r5,#oBattleObject_CurPhase]
 	cmp r0, #0
 	bne loc_8109F64
+
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	ldrb r1, [r5,#oBattleObject_DirectionFlip]
 	eor r0, r1
@@ -170539,9 +170933,11 @@ loc_8109F64:
 	thumb_local_start
 sub_8109F6A:
 	push {lr}
+
 	ldrb r0, [r5,#oBattleObject_CurPhase]
 	cmp r0, #0
 	bne loc_8109F78
+
 	ldr r0, [r5,#oBattleObject_ExtraVars+4]
 	bl sub_800AA40
 loc_8109F78:
@@ -170639,8 +171035,10 @@ sub_810A004:
 	ldrb r0, [r4,#oAIData_Version_16]
 	cmp r0, #0
 	beq locret_810A078
+
 	mov r0, #0xc
 	bl object_setAttack0
+
 	b locret_810A078
 loc_810A01E:
 	ldrb r0, [r5,#oBattleObject_Param4]
@@ -170652,8 +171050,10 @@ loc_810A01E:
 	mov r0, #0x60
 	add r0, r0, r5
 	str r0, [r7,#oAIAttackVars_Unk_30]
+
 	mov r0, #9
 	bl object_setAttack0
+
 	b locret_810A078
 loc_810A038:
 	bl object_getFlag // () -> int
@@ -170707,8 +171107,10 @@ sub_810A080:
 	ldr r1, off_810A2AC // =byte_8109F46
 	ldrb r1, [r0,r1]
 	strh r1, [r7,#oAIAttackVars_Unk_18]
+
 	mov r0, #0xa
 	bl object_setAttack0
+
 	mov r0, #4
 	strb r0, [r6,#oAIState_Unk_02]
 	b locret_810A0B8
@@ -170755,8 +171157,10 @@ sub_810A0D4:
 	ldr r1, off_810A2B4 // =byte_8109F46
 	ldrb r1, [r0,r1]
 	strh r1, [r7,#oAIAttackVars_Unk_18]
+
 	mov r0, #0xa
 	bl object_setAttack0
+
 	mov r0, #4
 	strh r0, [r6,#oAIState_Unk_02]
 	pop {pc}
@@ -170805,16 +171209,19 @@ sub_810A126:
 	bl sub_800ED90
 	tst r3, r3
 	beq loc_810A184
+
 	lsl r4, r0, #0x17
 	lsr r4, r4, #0x17
 	cmp r4, #0x9f
 	bne loc_810A162
+
 	mov r0, r5
 	ldrh r1, [r0,#oBattleObject_HP]
 	ldrh r2, [r0,#oBattleObject_MaxHP]
 	lsr r2, r2, #2
 	cmp r1, r2
 	ble loc_810A152
+
 	bl sub_810A1B4
 	cmp r0, #0
 	beq loc_810A184
@@ -170852,8 +171259,10 @@ loc_810A184:
 	mov r0, #0x60
 	add r0, r0, r5
 	str r0, [r7,#oAIAttackVars_Unk_30]
+
 	mov r0, #0xb
 	bl object_setAttack0
+
 	mov r0, #0
 	strb r0, [r6,#oAIState_Unk_00]
 	mov r0, #0
@@ -171274,7 +171683,7 @@ sub_810A534:
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.balign 4, 0
 off_810A550:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_810A5C2+1
 	.word sub_80166AE+1
@@ -171765,7 +172174,7 @@ off_810A9E0:
 byte_810A9E4:
 	.byte 0x0, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0
 off_810A9EC:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_810ABF6+1
 	.word sub_810AA90+1
 	.word sub_80166AE+1
@@ -172870,7 +173279,7 @@ dword_810B2C4:
 byte_810B2C8:
 	.byte 0x80, 0x0, 0x88, 0xF, 0x0, 0x0, 0x0, 0x0
 off_810B2D0:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_810B338+1
 	.word sub_80166AE+1
@@ -173914,7 +174323,7 @@ off_810BB8C:
 off_810BB90:
 	.word byte_810BBE8
 off_810BB94:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_810BE74+1
 	.word sub_80166AE+1
@@ -174594,7 +175003,7 @@ sub_810C14A:
 byte_810C164:
 	.byte 0x83, 0xFF, 0x5, 0x32, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 off_810C170:
-	.word sub_8016380+1
+	.word RunSpawnAnimationMaybe_8016380+1
 	.word sub_80165B8+1
 	.word sub_80165C2+1
 	.word sub_80166AE+1

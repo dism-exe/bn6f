@@ -2,7 +2,7 @@
 	thumb_func_start sub_80AED50
 sub_80AED50:
 	push {lr}
-	bl sub_80182B4
+	bl GetVerActorTyAndAIIdx_80182B4 // (enemy_idx: u16) -> *const (version: u8, actor_type: ActorType, ai_index: u8)
 	ldrb r1, [r0,#1]
 	ldrb r2, [r0,#2]
 	ldrb r3, [r0]

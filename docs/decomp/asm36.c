@@ -2374,7 +2374,7 @@ int __fastcall sub_813202C(int a1)
     int v4; // r0
 
     test0x200bc50_0x5_813D60C();
-    v1 = sub_803C620();
+    v1 = dispatch_803C620();
     if ( !v2 )
     {
         if ( v1 == 1 )

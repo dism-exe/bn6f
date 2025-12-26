@@ -14,7 +14,7 @@
 	.include "structs/Chatbox.inc"
 	.include "structs/StartScreen.inc"
 	.include "structs/ReqBBSGui.inc"
-  .include "structs/ReqBBS2001150.inc"
+	.include "structs/ReqBBS2001150.inc"
 	.include "structs/NaviStats.inc"
 	.include "structs/CutsceneState.inc"
 	.include "structs/ScreenFade.inc"
@@ -33,10 +33,13 @@
 	.include "structs/MapTilesState200be70.inc"
 	.include "structs/PanelData.inc"
 	.include "structs/SubMenu.inc"
-  .include "structs/LogoScreenState.inc"
-  .include "structs/S2011E30.inc"
-  .include "structs/S200F348.inc"
-  .include "structs/S200A290.inc"
+	.include "structs/LogoScreenState.inc"
+	.include "structs/S2011E30.inc"
+	.include "structs/S200F348.inc"
+	.include "structs/S200A290.inc"
+	.include "structs/S20364C0.inc"
+	.include "structs/S200BC50.inc"
+	.include "structs/Struct2035280.inc"
 
 
 /*

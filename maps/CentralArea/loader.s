@@ -46,14 +46,77 @@ off_8071BB4:
 	.word byte_8071BC0
 	.word byte_8071BCA
 	.word byte_8071BD2
+// Disabling this causes the "Welcome to the NetCafe" object in Central Area 1 to be a white dot
+// This sprite is animating, and continues to animate even if we disable the second onward.
 byte_8071BC0:
-	.byte 0x1C, 0x2B, 0x1C, 0xE, 0x1C, 0x7C, 0x1C, 0x82, 0xFF
-	.byte 0xFF
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x2B,
+	]
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x0E,
+	]
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x7C,
+	]
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x82,
+	]
+	.hword 0xFFFF
+
 byte_8071BCA:
-	.byte 0x1C, 0xE, 0x1C, 0x7C, 0x1C, 0x82, 0xFF, 0xFF
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x0E,
+	]
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x7C,
+	]
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x82,
+	]
+	.hword 0xFFFF
+
 byte_8071BD2:
-	.byte 0x1C, 0x27, 0x1C, 0x28, 0x1C, 0x1D, 0x1C, 0x1E, 0x1C
-	.byte 0x1F, 0x1C, 0x20, 0x1C, 0xE, 0x1C, 0x95, 0xFF, 0xFF
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x27,
+	]
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x28,
+	]
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x1D,
+	]
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x1E,
+	]
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x1F,
+	]
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x20,
+	]
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x0E,
+	]
+	sprite_load_data_struct [
+		sprite_type_offset: 0x1C,
+		sprite_index: 0x95,
+	]
+	.hword 0xFFFF
+
 	thumb_func_end CentralArea_EnterMapGroup
 
 	thumb_func_start CentralArea_LoadGFXAnims

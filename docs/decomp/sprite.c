@@ -348,7 +348,7 @@ int __fastcall sub_8002986(int a1)
 
 
 // 0x80029a8
-signed int __fastcall sub_80029A8(_BYTE *a1)
+signed int __fastcall decompSprites_80029A8(_BYTE *a1)
 {
     int v1; // r1
     _BYTE *i; // r7
