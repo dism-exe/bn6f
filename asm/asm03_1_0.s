@@ -428,7 +428,7 @@ sub_8033B0C: // (self: * S2011E30 $r5) -> ()
 	bl sub_8033E0C
 	mov r0, #1
 	bl sub_8033F80
-	bl sub_8033EE8
+	bl RenderMapName_8033EE8
 	pop {pc}
 	thumb_func_end sub_8033B0C
 
@@ -438,7 +438,7 @@ onUpdateInInternet_8033B1E: // (self: * S2011E30 $r5) -> ()
 	bl sub_8033E0C
 	mov r0, #1
 	bl sub_8033F80
-	bl sub_8033EE8
+	bl RenderMapName_8033EE8
 	pop {pc}
 	thumb_func_end onUpdateInInternet_8033B1E
 
@@ -449,7 +449,7 @@ sub_8033B30: // (self: * S2011E30 $r5) -> ()
 	mov r0, #1
 	bl sub_8033F80
 	bl sub_8033D88
-	bl sub_8033EE8
+	bl RenderMapName_8033EE8
 	pop {pc}
 	thumb_func_end sub_8033B30
 
@@ -460,7 +460,7 @@ sub_8033B46: // (self: * S2011E30 $r5) -> ()
 	mov r0, #1
 	bl sub_8033F80
 	bl sub_8033D88
-	bl sub_8033EE8
+	bl RenderMapName_8033EE8
 	pop {pc}
 	thumb_func_end sub_8033B46
 
@@ -470,7 +470,7 @@ sub_8033B5C: // (self: * S2011E30 $r5) -> ()
 	bl sub_8033E0C
 	mov r0, #1
 	bl sub_8033F80
-	bl sub_8033EE8
+	bl RenderMapName_8033EE8
 	pop {pc}
 	thumb_func_end sub_8033B5C
 
@@ -480,7 +480,7 @@ sub_8033B6E: // (self: * S2011E30 $r5) -> ()
 	bl sub_8033E0C
 	mov r0, #1
 	bl sub_8033F80
-	bl sub_8033EE8
+	bl RenderMapName_8033EE8
 	pop {pc}
 	thumb_func_end sub_8033B6E
 
@@ -872,19 +872,25 @@ dword_8033EE4:
 	.word 0x10288000
 	thumb_func_end sub_8033E0C
 
+// Always running on map update
 	thumb_local_start
-sub_8033EE8:
+RenderMapName_8033EE8:
 	push {r4-r7,lr}
+
 	movflag EVENT_1731
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_8033EFC
+
 	bl IsCutsceneScriptNonNull // () -> !zf
 	cmp r0, #1
 	bgt locret_8033F32
+
 loc_8033EFC:
+
 	bl sub_811F290
+
 	mov r1, r0
-	ldr r0, off_8033F34 // =TextScript86CB360
+	ldr r0, off_8033F34 // =TextScriptMapNames
 	ldr r2, off_8033F38 // =unk_2027400
 	ldr r3, dword_8033F3C // =0x600d000
 	mov r4, #0xb
@@ -892,11 +898,13 @@ loc_8033EFC:
 	ldr r6, off_8033F40 // =dword_86B7AE0
 	mov r7, #0
 	bl renderTextGfx_8045F8C
+
 	mov r4, r0
 	ldr r0, off_8033F44 // =dword_86BEAE0
 	ldr r1, off_8033F48 // =unk_3001B20
 	mov r2, #0x20
 	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
+
 	mov r0, #0x1e
 	// j
 	sub r0, r0, r4
@@ -909,11 +917,12 @@ loc_8033EFC:
 	mov r4, #0xc
 	mov r5, #2
 	bl CopyBackgroundTiles // (j: u32, i: u32, which_tile_block_32x32: u32, tile_ids: *const u16, j_size: u32, i_size: u32 ) -> ()
+
 locret_8033F32:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8033F34:
-	.word TextScript86CB360
+	.word TextScriptMapNames
 off_8033F38:
 	.word unk_2027400
 dword_8033F3C:
@@ -933,7 +942,7 @@ byte_8033F50:
 	.byte 0xE2, 0x85, 0xE2, 0x87, 0xE2, 0x89, 0xE2, 0x8B, 0xE2
 	.byte 0x8D, 0xE2, 0x8F, 0xE2, 0x91, 0xE2, 0x93, 0xE2, 0x95
 	.byte 0xE2, 0x97, 0xE2
-	thumb_func_end sub_8033EE8
+	thumb_func_end RenderMapName_8033EE8
 
 	thumb_local_start
 sub_8033F80:

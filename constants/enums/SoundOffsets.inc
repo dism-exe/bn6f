@@ -42,6 +42,7 @@
 	enum_start 0x64 // type: enum SoundEffect
 	enum SOUND_BEEP_64 // 0x64
 	enum SOUND_TYPE // 0x65
+	// triggers when going up or down in menu selection
 	enum SOUND_UNK_66 // 0x66
 	enum SOUND_SELECT_67 // 0x67
 	enum SOUND_UNSELECT_68 // 0x68
@@ -86,6 +87,21 @@
 	enum SOUND_UNK_8F // 0x8F
 	enum SOUND_UNK_90 // 0x90
 	enum SOUND_ERR_SELECT_91 // 0x91
+	enum SOUND_UNK_92 // 0x92
+	enum SOUND_UNK_93 // 0x93
+	enum SOUND_UNK_94 // 0x94
+	enum SOUND_UNK_95 // 0x95
+	enum SOUND_UNK_96 // 0x96
+	enum SOUND_UNK_97 // 0x97
+	enum SOUND_UNK_98 // 0x98
+	enum SOUND_UNK_99 // 0x99
+	enum SOUND_UNK_9A // 0x9A
+	enum SOUND_UNK_9B // 0x9B
+	enum SOUND_UNK_9C // 0x9C
+	// triggers when selecting continue in TitleScreen
+	enum SOUND_UNK_9D // 0x9D
+	enum SOUND_UNK_9E // 0x9E
+	enum SOUND_UNK_9F // 0x9F
 	// goes on to FD
 
 

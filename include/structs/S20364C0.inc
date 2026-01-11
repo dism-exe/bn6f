@@ -47,12 +47,13 @@
 	struct_org 0x40
 	u0 Size // loc=0x40
 
+	restore_struct_label
+	.endm
+	
+	def_struct_offsets s_20364C0_struct, oS20364C0
+
 	// Calling it Extra for now until we understand why the conflicting references
   .equiv oS20364C0_Extra_Unk_40, 0x40 // u32
   .equiv oS20364C0_Extra_Unk_44, 0x44 // flags32
   .equiv oS20364C0_Extra_Size, 0x48
 
-	restore_struct_label
-	.endm
-	
-	def_struct_offsets s_20364C0_struct, oS20364C0

@@ -803,7 +803,7 @@ sub_8026A6C: // (self: * S20364C0 $r5) -> u8
 	ldrb r0, [r5,#0xe]
 	bl sub_802FE6A
 	bl sub_80062EC
-	bl sub_802A3CC
+	bl sub_802A3CC // () -> ()
 	bl sub_802A0F8
 	ldrb r0, [r5,#4]
 	pop {pc}
@@ -5499,13 +5499,19 @@ locret_8028DBA:
 sub_8028DBC:
 	push {lr}
 	bl sub_800A7E2
-	bl sub_802D064
+
+	bl sub_802D064 // (a0: bool) -> * ?
+
 	mov r1, #1
 	strb r1, [r0,#8]
+
 	ldr r0, off_8028F80 // =dword_20349A0 
 	strb r1, [r0,#0x4] // (byte_20349A4 - 0x20349a0)
+
 	bl custMenuPressOK_8028D3A
+
 	mov r0, #0
+
 	pop {pc}
 	thumb_func_end sub_8028DBC
 
@@ -8494,12 +8500,12 @@ sub_802A30C: // (self: * S20364C0 $r5) -> ()
 	ldrh r2, [r2,r4]
 	ldr r1, dword_802A3F0 // =0xffff 
 	mov r0, #0x1f
-	bl sound_8000642
+	bl sound_8000642 // (idx: u8, a1: ?, a2: ?) -> ()
 	ldr r2, off_802A3EC // =byte_802A400 
 	ldrh r2, [r2,r4]
 	ldr r1, dword_802A3F0 // =0xffff 
 	mov r0, #0x16
-	bl sound_8000642
+	bl sound_8000642 // (idx: u8, a1: ?, a2: ?) -> ()
 	add r4, #2
 	strb r4, [r5,#oS20364C0_Unk_13]
 	bl IsScreenFadeActive // () -> zf
@@ -8544,12 +8550,12 @@ sub_802A362: // (self: * S20364C0 $r5) -> ()
 	ldrh r2, [r2,r4]
 	ldr r1, dword_802A3F0 // =0xffff 
 	mov r0, #0x1f
-	bl sound_8000642
+	bl sound_8000642 // (idx: u8, a1: ?, a2: ?) -> ()
 	ldr r2, off_802A3E8 // =byte_802A3F4 
 	ldrh r2, [r2,r4]
 	ldr r1, dword_802A3F0 // =0xffff 
 	mov r0, #0x16
-	bl sound_8000642
+	bl sound_8000642 // (idx: u8, a1: ?, a2: ?) -> ()
 	add r4, #2
 	strb r4, [r5,#oS20364C0_Unk_13]
 	bl IsScreenFadeActive // () -> zf
@@ -8596,18 +8602,20 @@ loc_802A3C8:
 	thumb_func_end sub_802A394
 
 	thumb_local_start
-sub_802A3CC:
+sub_802A3CC: // () -> ()
 	push {lr}
+
 	mov r0, #0x1f
 	ldr r1, dword_802A3F0 // =0xffff 
 	mov r2, #0x80
 	add r2, #0x80
-	bl sound_8000642
+	bl sound_8000642 // (idx: u8, a1: ?, a2: ?) -> ()
+
 	mov r0, #0x16
 	ldr r1, dword_802A3F0 // =0xffff 
 	mov r2, #0x80
 	add r2, #0x80
-	bl sound_8000642
+	bl sound_8000642 // (idx: u8, a1: ?, a2: ?) -> ()
 	pop {pc}
 	.balign 4, 0
 off_802A3E8:
@@ -14086,7 +14094,7 @@ dword_802D060:
 	thumb_func_end sub_802CFF8
 
 	thumb_func_start sub_802D064
-sub_802D064:
+sub_802D064: // (a0: bool) -> * ?
 	mov r1, #0x20 
 	mul r0, r1
 	ldr r1, off_802D214 // =byte_203C4A0 
@@ -14098,7 +14106,7 @@ sub_802D064:
 	thumb_func_start sub_802D070
 sub_802D070:
 	push {lr}
-	bl sub_802D064
+	bl sub_802D064 // (a0: bool) -> * ?
 	push {r0}
 	// size
 	mov r1, #0x20 
@@ -14115,7 +14123,7 @@ sub_802D070:
 	thumb_func_start sub_802D08C
 sub_802D08C:
 	push {lr}
-	bl sub_802D064
+	bl sub_802D064 // (a0: bool) -> * ?
 	mov r1, #0
 	strb r1, [r0,#0x10]
 	mov r1, #0x64 
@@ -14144,7 +14152,7 @@ sub_802D09E:
 	thumb_local_start
 sub_802D0BA:
 	push {lr}
-	bl sub_802D064
+	bl sub_802D064 // (a0: bool) -> * ?
 	mov r1, #0
 	str r1, [r0]
 	str r1, [r0,#4]
@@ -14155,7 +14163,7 @@ sub_802D0BA:
 sub_802D0C8:
 	push {r4,r7,lr}
 	sub sp, sp, #0x10
-	bl sub_802D064
+	bl sub_802D064 // (a0: bool) -> * ?
 	mov r7, r0
 	bl sub_800A7E2
 	bl battle_findPlayer // (alliance: bool) -> * BattleObject
@@ -14194,7 +14202,7 @@ loc_802D112:
 	thumb_local_start
 sub_802D118:
 	push {r6,r7,lr}
-	bl sub_802D064
+	bl sub_802D064 // (a0: bool) -> * ?
 	mov r7, r0
 	bl sub_800A856
 	mov r1, #0
@@ -14218,7 +14226,7 @@ loc_802D138:
 	thumb_local_start
 sub_802D144:
 	push {lr}
-	bl sub_802D064
+	bl sub_802D064 // (a0: bool) -> * ?
 	mov r1, #0
 	strb r1, [r0,#8]
 	pop {pc}
@@ -14302,7 +14310,7 @@ loc_802D1A2:
 	thumb_func_start sub_802D1B4
 sub_802D1B4:
 	push {lr}
-	bl sub_802D064
+	bl sub_802D064 // (a0: bool) -> * ?
 	ldrb r0, [r0,#0xd]
 	pop {pc}
 	thumb_func_end sub_802D1B4
@@ -14310,7 +14318,7 @@ sub_802D1B4:
 	thumb_func_start sub_802D1BE
 sub_802D1BE:
 	push {lr}
-	bl sub_802D064
+	bl sub_802D064 // (a0: bool) -> * ?
 	ldrb r0, [r0,#0xf]
 	pop {pc}
 	thumb_func_end sub_802D1BE
@@ -14342,7 +14350,7 @@ loc_802D1E2:
 sub_802D1EC:
 	push {lr}
 	bl sub_800A7E2
-	bl sub_802D064
+	bl sub_802D064 // (a0: bool) -> * ?
 	ldrb r1, [r0,#0x12]
 	cmp r1, #0
 	bne loc_802D1FE

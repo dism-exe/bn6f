@@ -22,7 +22,7 @@ CompText875E690::
 	.string "BATTLECHIP\n"
 	.string "\""
 	ts_print_chip1 [
-		chip: 0x83,
+		chip: 0x83, // TextScriptChipNames0_unk131
 		buffer: 0x0,
 	]
 	.string "\"..."
@@ -50,7 +50,7 @@ CompText875E690::
 	.string "BATTLECHIP\n"
 	.string "\""
 	ts_print_chip1 [
-		chip: 0x83,
+		chip: 0x83, // TextScriptChipNames0_unk131
 		buffer: 0x0,
 	]
 	.string "\"..."

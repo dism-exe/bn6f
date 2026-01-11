@@ -6808,7 +6808,7 @@ sub_8147228:
 	strb r0, [r5]
 	ldrb r4, [r6,#1]
 	mov r0, #0
-	bl sub_802D064
+	bl sub_802D064 // (a0: bool) -> * ?
 	mov r1, r0
 	mov r0, r4
 	bl sub_813D78C
@@ -8384,7 +8384,7 @@ sub_8147E98:
 	strb r1, [r4,#2]
 	ldrb r4, [r5,#1]
 	mov r0, #0
-	bl sub_802D064
+	bl sub_802D064 // (a0: bool) -> * ?
 	mov r1, r0
 	mov r0, r4
 	bl sub_813D78C
@@ -20340,6 +20340,15 @@ umul3232H32:
 
 	thumb_local_start 2
 SoundMain:
+
+	.equiv stack_80005AC_unk_00, 0x00
+	.equiv stack_80005AC_unk_04, 0x04
+	.equiv stack_80005AC_unk_08, 0x08
+	.equiv stack_80005AC_unk_0c, 0x0c
+	.equiv stack_80005AC_unk_10, 0x10
+	.equiv stack_80005AC_unk_14, 0x14
+	.equiv stack_80005AC_unk_18, 0x18
+
 	ldr r0, off_814DC70 // =byte_3007FF0 
 	ldr r0, [r0]
 	ldr r2, dword_814DC74 // =0x68736d53 
@@ -20348,6 +20357,7 @@ SoundMain:
 	beq loc_814DC12
 	bx lr
 loc_814DC12:
+
 	add r3, #1
 	str r3, [r0]
 	push {r4-r7,lr}
@@ -20368,19 +20378,21 @@ loc_814DC12:
 loc_814DC34:
 	add r1, r1, r2
 loc_814DC36:
-	str r1, [sp,#0x14]
+	str r1, [sp,#stack_80005AC_unk_14]
+
 	ldr r3, [r0,#0x20]
-	cmp r3, #0
+	cmp r3, #NULL
 	beq loc_814DC46
+
 	ldr r0, [r0,#0x24]
 loc_814DC40:
 	bl locret_814E026
-	ldr r0, [sp,#0x18]
+	ldr r0, [sp,#stack_80005AC_unk_18]
 loc_814DC46:
 	ldr r3, [r0,#0x28]
 loc_814DC48:
 	bl locret_814E026
-	ldr r0, [sp,#0x18]
+	ldr r0, [sp,#stack_80005AC_unk_18]
 	ldr r3, [r0,#0x10]
 	mov r8, r3
 	ldr r5, off_814DC80 // =0x350 
@@ -20394,10 +20406,13 @@ loc_814DC48:
 	mul r2, r1
 	add r5, r5, r2
 loc_814DC66:
-	str r5, [sp,#8]
+	str r5, [sp,#stack_80005AC_unk_08]
 	ldr r6, m4a_814DC84 // =0x630 
+
+	// This refers to SoundMainRAM after it is copied over to IWRAM
 	ldr r3, off_814DC78 // =byte_3005700+1 
 	bx r3
+
 	.balign 4, 0
 off_814DC70:
 	.word byte_3007FF0
@@ -21172,11 +21187,13 @@ off_814E25C:
 	thumb_local_start
 sub_814E260:
 	ldr r2, dword_814E4D8 // =0x68736d53 
+
 	ldr r3, [r0,#0x34]
 	cmp r2, r3
 	beq loc_814E26A
 	bx lr
 loc_814E26A:
+
 	add r3, #1
 	str r3, [r0,#0x34]
 	push {r0,lr}
@@ -21516,6 +21533,7 @@ loc_814E4BC:
 	thumb_local_start
 sub_814E4CC:
 	bx r3
+
 	.byte 0, 0
 off_814E4D0:
 	.word byte_81C068C
@@ -21604,19 +21622,32 @@ loc_814E554:
 	thumb_func_end sub_814E528
 
 	thumb_local_start
-ply_note:
+ply_note: // (a0: ?, a1: u32?, a2: * ?) -> ()
+
+	.equiv stack_814E558_unk_00, 0x00 // u32
+	.equiv stack_814E558_unk_04, 0x04 // u32
+	.equiv stack_814E558_unk_08, 0x08 // u32
+	.equiv stack_814E558_unk_0c, 0x0c // u32
+	.equiv stack_814E558_unk_10, 0x10 // u32
+	.equiv stack_814E558_unk_14, 0x14 // u32
+
 	push {r4-r7,lr}
 	mov r4, r8
 	mov r5, r9
 	mov r6, r10
 	mov r7, r11
 	push {r4-r7}
+
 	sub sp, sp, #0x18
-	str r1, [sp]
+
+	str r1, [sp, #stack_814E558_unk_00]
+
 	mov r5, r2
+
 	ldr r1, off_814E750 // =byte_3007FF0 
 	ldr r1, [r1]
-	str r1, [sp,#4]
+	str r1, [sp,#stack_814E558_unk_04]
+
 	ldr r1, off_814E754 // =byte_81C068C 
 	add r0, r0, r1
 	ldrb r0, [r0]
@@ -21643,7 +21674,7 @@ loc_814E59C:
 	str r3, [r5,#0x40]
 loc_814E59E:
 	mov r0, #0
-	str r0, [sp,#0x14]
+	str r0, [sp,#stack_814E558_unk_14]
 	mov r4, r5
 	add r4, #0x24 
 	ldrb r2, [r4]
@@ -21683,7 +21714,7 @@ loc_814E5D8:
 	beq loc_814E5EC
 	sub r1, #0xc0
 	lsl r1, r1, #1
-	str r1, [sp,#0x14]
+	str r1, [sp,#stack_814E558_unk_14]
 loc_814E5EC:
 	ldrb r3, [r6,#1]
 	b loc_814E5F4
@@ -21691,8 +21722,8 @@ loc_814E5F0:
 	mov r9, r4
 	ldrb r3, [r5,#5]
 loc_814E5F4:
-	str r3, [sp,#8]
-	ldr r6, [sp]
+	str r3, [sp,#stack_814E558_unk_08]
+	ldr r6, [sp,#stack_814E558_unk_00]
 	ldrb r1, [r6,#9]
 	ldrb r0, [r5,#0x1d]
 	add r0, r0, r1
@@ -21700,14 +21731,14 @@ loc_814E5F4:
 	bls loc_814E604
 	mov r0, #0xff
 loc_814E604:
-	str r0, [sp,#0x10]
+	str r0, [sp,#stack_814E558_unk_10]
 	mov r6, r9
 	ldrb r0, [r6]
 	mov r6, #7
 	and r6, r0
-	str r6, [sp,#0xc]
+	str r6, [sp,#stack_814E558_unk_0c]
 	beq loc_814E644
-	ldr r0, [sp,#4]
+	ldr r0, [sp,#stack_814E558_unk_04]
 	ldr r4, [r0,#0x1c]
 	cmp r4, #0
 	bne loc_814E61C
@@ -21724,7 +21755,7 @@ loc_814E61C:
 	tst r0, r1
 	bne loc_814E698
 	ldrb r1, [r4,#0x13]
-	ldr r0, [sp,#0x10]
+	ldr r0, [sp,#stack_814E558_unk_10]
 	cmp r1, r0
 	bcc loc_814E698
 	beq loc_814E63C
@@ -21735,11 +21766,11 @@ loc_814E63C:
 	bcs loc_814E698
 	b loc_814E73E
 loc_814E644:
-	ldr r6, [sp,#0x10]
+	ldr r6, [sp,#stack_814E558_unk_10]
 	mov r7, r5
 	mov r2, #0
 	mov r8, r2
-	ldr r4, [sp,#4]
+	ldr r4, [sp,#stack_814E558_unk_04]
 	ldrb r3, [r4,#6]
 	add r4, #0x50 
 loc_814E652:
@@ -21809,11 +21840,11 @@ loc_814E6BE:
 	bl sub_814F2F0
 	ldr r0, [r5,#4]
 	str r0, [r4,#0x10]
-	ldr r0, [sp,#0x10]
+	ldr r0, [sp,#stack_814E558_unk_10]
 	strb r0, [r4,#0x13]
-	ldr r0, [sp,#8]
+	ldr r0, [sp,#stack_814E558_unk_08]
 	strb r0, [r4,#8]
-	ldr r0, [sp,#0x14]
+	ldr r0, [sp,#stack_814E558_unk_14]
 	strb r0, [r4,#0x14]
 	mov r6, r9
 	ldrb r0, [r6]
@@ -21832,7 +21863,7 @@ loc_814E6BE:
 	bpl loc_814E6F8
 	mov r3, #0
 loc_814E6F8:
-	ldr r6, [sp,#0xc]
+	ldr r6, [sp,#stack_814E558_unk_0c]
 	cmp r6, #0
 	beq loc_814E726
 	mov r6, r9
@@ -21851,10 +21882,12 @@ loc_814E714:
 	strb r1, [r4,#0x1f]
 	ldrb r2, [r5,#9]
 	mov r1, r3
-	ldr r0, [sp,#0xc]
-	ldr r3, [sp,#4]
-	ldr r3, [r3,#0x30]
+	ldr r0, [sp,#stack_814E558_unk_0c]
+	ldr r3, [sp,#stack_814E558_unk_04]
+
+	ldr r3, [r3,#0x30] /*+0a*/
 	bl sub_814E4CC
+
 	b loc_814E730
 loc_814E726:
 	ldrb r2, [r5,#9]
@@ -22098,8 +22131,9 @@ sub_814E8A0:
 	neg r1, r1
 	and r0, r1
 	ldr r1, off_814E8F8 // =byte_3005700 
-	ldr r2, off_814E8FC // =Timer0Counter_Reload 
+	ldr r2, off_814E8FC // =0x4000100
 	bl SWI_CpuSet // (src: *const u32, dest: *mut u32, mode: int) -> ()
+
 	ldr r0, off_814E900 // =byte_30045C0 
 	bl sub_814ECC8
 	ldr r0, off_814E904 // =byte_3005600 
@@ -22137,7 +22171,7 @@ off_814E8F4:
 off_814E8F8:
 	.word byte_3005700
 off_814E8FC:
-	.word Timer0Counter_Reload
+	.word 0x4000100
 off_814E900:
 	.word byte_30045C0
 off_814E904:
@@ -22162,22 +22196,24 @@ m4aSoundMain:
 	thumb_func_end m4aSoundMain
 
 	thumb_func_start m4a_SongNumStart
-m4a_SongNumStart:
+m4a_SongNumStart: // (idx: u16) -> ()
 	push {lr}
-	lsl r0, r0, #0x10
+	lsl r0, r0, #16 // erases upper 16-bit
 	ldr r3, off_814E948 // =off_8158278 
 	ldr r1, off_814E94C // =sound_MusicTable 
-	lsr r0, r0, #0xd
+	lsr r0, r0, #13 // a 16-bit * 8
 	add r0, r0, r1
-	ldrh r2, [r0,#4]
+
+	ldrh r2, [r0,#oSound_MusicTable_Tup_Unk_04] /*+0c*/
 	lsl r1, r2, #1
 	add r1, r1, r2
-	lsl r1, r1, #2
-	add r1, r1, r3
-	ldr r2, [r1]
-	ldr r1, [r0]
+	lsl r1, r1, #2 // (unk_04 * 3) * 4
+	add r1, r1, r3 // off_8158278 + unk_04 * 12
+	ldr r2, [r1] /*+16*/
+
+	ldr r1, [r0,#oSound_MusicTable_Tup_Ptr_00]
 	mov r0, r2
-	bl sound_814F104
+	bl sound_814F104 // (a0: *mut ?, a1: *const RomStructLike81B820C) -> ()
 	pop {r0}
 	bx r0
 	.balign 4, 0
@@ -22207,7 +22243,7 @@ sub_814E950:
 	beq loc_814E984
 	mov r0, r1
 	mov r1, r2
-	bl sound_814F104
+	bl sound_814F104 // (a0: *mut ?, a1: *const RomStructLike81B820C) -> ()
 	b loc_814E998
 	.balign 4, 0
 off_814E97C:
@@ -22224,7 +22260,7 @@ loc_814E984:
 loc_814E990:
 	mov r0, r1
 	mov r1, r3
-	bl sound_814F104
+	bl sound_814F104 // (a0: *mut ?, a1: *const RomStructLike81B820C) -> ()
 loc_814E998:
 	pop {r0}
 	bx r0
@@ -22250,7 +22286,7 @@ sub_814E99C:
 	beq loc_814E9D0
 	mov r0, r1
 	mov r1, r2
-	bl sound_814F104
+	bl sound_814F104 // (a0: *mut ?, a1: *const RomStructLike81B820C) -> ()
 	b loc_814E9EC
 	.balign 4, 0
 off_814E9C8:
@@ -22264,7 +22300,7 @@ loc_814E9D0:
 	bne loc_814E9E2
 	mov r0, r1
 	mov r1, r3
-	bl sound_814F104
+	bl sound_814F104 // (a0: *mut ?, a1: *const RomStructLike81B820C) -> ()
 	b loc_814E9EC
 loc_814E9E2:
 	cmp r2, #0
@@ -22813,7 +22849,7 @@ off_814EDA8:
 dword_814EDAC:
 	.word 0x50003EC
 off_814EDB0:
-	.word ply_note+1
+	.word ply_note+1 // (a0: ?, a1: u32?, a2: * ?) -> ()
 off_814EDB4:
 	.word nullsub_23+1
 off_814EDB8:
@@ -23289,100 +23325,132 @@ off_814F100:
 	thumb_func_end sub_814F08C
 
 	thumb_local_start
-sound_814F104:
+sound_814F104: // (a0: *mut ?, a1: *const RomStructLike81B820C) -> ()
 	push {r4-r7,lr}
 	mov r7, r8
 	push {r7}
+
 	mov r5, r0
 	mov r7, r1
+
 	ldr r1, [r5,#0x34]
 	ldr r0, dword_814F1E4 // =0x68736d53 
 	cmp r1, r0
 	bne loc_814F1D8
+
 	add r0, r1, #1
 	str r0, [r5,#0x34]
+
 	ldrb r0, [r5,#0xb]
-	ldrb r2, [r7,#2]
+	ldrb r2, [r7,#oRomStructLike81B820C_Unk_02]
 	cmp r0, #0
 	beq loc_814F14A
+
 	ldr r0, [r5]
 	cmp r0, #0
 	beq loc_814F134
+
 	ldr r0, [r5,#0x2c]
 	ldrb r1, [r0]
 	mov r0, #0x40 
 	and r0, r1
 	cmp r0, #0
 	bne loc_814F140
+
 loc_814F134:
 	ldr r1, [r5,#4]
 	ldrh r0, [r5,#4]
 	cmp r0, #0
 	beq loc_814F14A
+
 	cmp r1, #0
 	blt loc_814F14A
+
 loc_814F140:
-	ldrb r0, [r7,#2]
+	ldrb r0, [r7,#oRomStructLike81B820C_Unk_02]
 	ldrb r1, [r5,#9]
 	mov r2, r0
 	cmp r1, r2
 	bhi loc_814F1D4
+
 loc_814F14A:
+
 	mov r1, #0
 	str r1, [r5,#4]
 	str r7, [r5]
-	ldr r0, [r7,#4]
+
+	ldr r0, [r7,#oRomStructLike81B820C_UnkPtr_04]
 	str r0, [r5,#0x30]
+
 	strb r2, [r5,#9]
 	str r1, [r5,#0xc]
+
 	mov r0, #0x96
 	strh r0, [r5,#0x1c]
 	strh r0, [r5,#0x20]
+
 	add r0, #0x6a 
 	strh r0, [r5,#0x1e]
 	strh r1, [r5,#0x22]
 	strh r1, [r5,#0x24]
+
 	mov r6, #0
+
 	ldr r4, [r5,#0x2c]
+
 	ldrb r0, [r7]
 	cmp r6, r0
-	bge loc_814F1A4
+	bge break_814F1A4
+
 	ldrb r0, [r5,#8]
 	cmp r6, r0
 	bge loc_814F1C4
+
 	mov r8, r6
-loc_814F178:
+loop_814F178:
 	mov r0, r5
 	mov r1, r4
 	bl sub_814E4DC
+
 	mov r0, #0xc0
 	strb r0, [r4]
+
 	mov r0, r8
 	str r0, [r4,#0x20]
+
+	// Indexes into oRomStructLike81B820C_UnkPtrArr_08 and then loads it
 	lsl r1, r6, #2
 	mov r0, r7
 	add r0, #8
 	add r0, r0, r1
 	ldr r0, [r0]
+
 	str r0, [r4,#0x40]
+
 	add r6, #1
 	add r4, #0x50 
-	ldrb r0, [r7]
+
+	ldrb r0, [r7, #oRomStructLike81B820C_NumToProcess]
 	cmp r6, r0
-	bge loc_814F1A4
+	bge break_814F1A4
+
 	ldrb r0, [r5,#8]
 	cmp r6, r0
-	blt loc_814F178
-loc_814F1A4:
+	blt loop_814F178
+
+break_814F1A4:
+
 	ldrb r0, [r5,#8]
 	cmp r6, r0
 	bge loc_814F1C4
+
 	mov r0, #0
 	mov r8, r0
 loc_814F1AE:
 	mov r0, r5
 	mov r1, r4
 	bl sub_814E4DC
+
 	mov r0, r8
 	strb r0, [r4]
 	add r6, #1
@@ -23390,14 +23458,17 @@ loc_814F1AE:
 	ldrb r0, [r5,#8]
 	cmp r6, r0
 	blt loc_814F1AE
+
 loc_814F1C4:
-	ldrb r1, [r7,#3]
+	ldrb r1, [r7,#oRomStructLike81B820C_Unk_03]
 	mov r0, #0x80
 	and r0, r1
 	cmp r0, #0
 	beq loc_814F1D4
-	ldrb r0, [r7,#3]
+
+	ldrb r0, [r7,#oRomStructLike81B820C_Unk_03]
 	bl sub_814EE2C
+
 loc_814F1D4:
 	ldr r0, dword_814F1E4 // =0x68736d53 
 	str r0, [r5,#0x34]

@@ -21394,7 +21394,7 @@ int __noreturn sub_811EFB8()
         *(v1 + 8) = 0;
         *(v1 + 12) = 0;
     }
-    renderTextGfx_8045F8C(TextScript86CB360, 240, &unk_200BEA0, 0);
+    renderTextGfx_8045F8C(TextScriptMapNames, 240, &unk_200BEA0, 0);
     return sub_811F5DC(&unk_200BEA0, byte_200CC20, 100749312, 9);
 }
 
@@ -21405,7 +21405,7 @@ int __noreturn sub_811F014()
     int v0; // r10
 
     *(*(v0 + oToolkit_Unk200a220_Ptr) + 8) = sub_803D06C();
-    renderTextGfx_8045F8C(TextScript86CB360, 241, &unk_200C0E0, 0);
+    renderTextGfx_8045F8C(TextScriptMapNames, 241, &unk_200C0E0, 0);
     return sub_811F5DC(&unk_200C0E0, byte_200CF20, 100749888, 7);
 }
 
@@ -21416,7 +21416,7 @@ int __noreturn sub_811F050()
     int v0; // r10
 
     *(*(v0 + oToolkit_Unk200a220_Ptr) + 8) = sub_803D0F4();
-    renderTextGfx_8045F8C(TextScript86CB360, 242, &unk_200C2A0, 0);
+    renderTextGfx_8045F8C(TextScriptMapNames, 242, &unk_200C2A0, 0);
     return sub_811F5DC(&unk_200C2A0, byte_200D220, 100750336, 6);
 }
 
@@ -21427,7 +21427,7 @@ int __fastcall __noreturn sub_811F08C(int a1)
     int v1; // r0
 
     v1 = sub_811F290();
-    renderTextGfx_8045F8C(TextScript86CB360, v1, byte_200C620, 0);
+    renderTextGfx_8045F8C(TextScriptMapNames, v1, byte_200C620, 0);
     return sub_811F5DC(byte_200C620, byte_200C920, 100751232, 12);
 }
 

@@ -83,7 +83,7 @@ sub_800060A:
 	mov r1, #0xff
 loc_8000616:
 	ldr r3, off_8000868 // =sound_8000822+1
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	pop {r1-r7,pc}
 	thumb_func_end sub_800060A
 
@@ -94,7 +94,7 @@ m4a_800061E:
 	mov r1, r10
 	push {r1}
 	ldr r3, off_800086C // =m4a_SongNumStart+1
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	pop {r1}
 	mov r10, r1
 	pop {pc}
@@ -106,22 +106,24 @@ sound_8000630:
 	mov r1, r10
 	push {r1}
 	ldr r3, off_8000870 // =sub_814EA58+1
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	pop {r1}
 	mov r10, r1
 	pop {pc}
 	thumb_func_end sound_8000630
 
 	thumb_func_start sound_8000642
-sound_8000642:
+sound_8000642: // (idx: u8, a1: ?, a2: ?) -> ()
 	push {r4-r7,lr}
+
 	lsl r0, r0, #2
 	ldr r7, off_8000700 // =off_8000704
 	ldr r0, [r7,r0]
+
 	mov r3, r10
 	push {r3}
 	ldr r3, off_8000874 // =sub_814F9AC+1
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	pop {r3}
 	mov r10, r3
 	pop {r4-r7,pc}
@@ -136,7 +138,7 @@ sound_800065A:
 	mov r3, r10
 	push {r3}
 	ldr r3, off_8000878 // =sub_814FA14+1
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	pop {r3}
 	mov r10, r3
 	pop {r4-r7,pc}
@@ -151,7 +153,7 @@ sound_8000672:
 	mov r3, r10
 	push {r3}
 	ldr r3, off_800087C // =sub_814F988+1
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	pop {r3}
 	mov r10, r3
 	pop {r4-r7,pc}
@@ -166,7 +168,7 @@ sound_800068A:
 	mov r2, r10
 	push {r2}
 	ldr r3, off_8000880 // =sub_814E87C+1
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	pop {r2}
 	mov r10, r2
 	pop {r4-r7,pc}
@@ -175,13 +177,16 @@ sound_800068A:
 	thumb_func_start sound_80006A2
 sound_80006A2:
 	push {r4-r7,lr}
+
 	cmp r0, #0x25
 	bgt loc_80006B0
+
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	strb r0, [r7,#oGameState_BGMusicIndicator]
 	b loc_80006B0
 loc_80006B0:
+
 	mov r4, r12
 	mov r5, r8
 	mov r6, r9
@@ -193,22 +198,22 @@ loc_80006B0:
 	mov r4, r0
 	mov r5, r1
 	ldr r3, off_8000884 // =m4a_SongNumStart+1
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	mov r0, r7
 	ldr r3, off_8000888 // =sub_814EB1C+1
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	mov r0, r7
 	mov r1, #0xff
 	mov r2, #0
 	ldr r3, off_800088C // =sub_814F9AC+1
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	mov r0, r4
 	ldr r3, off_8000890 // =sub_814E9F0+1
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	mov r0, r7
 	mov r1, r5
 	ldr r3, off_8000894 // =sub_814EAF0+1
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	pop {r4-r7}
 	mov r12, r4
 	mov r8, r5
@@ -220,37 +225,69 @@ loc_80006B0:
 off_8000700:
 	.word off_8000704
 off_8000704:
+	// 0x00 (0x00)
 	.word byte_2010690
+	// 0x04 (0x01)
 	.word byte_2010910
+	// 0x08 (0x02)
 	.word byte_2010950
+	// 0x0C (0x03)
 	.word byte_2010C20
+	// 0x10 (0x04)
 	.word byte_2010B50
+	// 0x14 (0x05)
 	.word byte_2010550
+	// 0x18 (0x06)
 	.word byte_2010650
+	// 0x1C (0x07)
 	.word byte_20108D0
+	// 0x20 (0x08)
 	.word byte_2010BE0
+	// 0x24 (0x09)
 	.word byte_2010610
+	// 0x28 (0x0A)
 	.word byte_2010990
+	// 0x2C (0x0B)
 	.word byte_2010C60
+	// 0x30 (0x0C)
 	.word byte_2010AD0
+	// 0x34 (0x0D)
 	.word byte_2010510
+	// 0x38 (0x0E)
 	.word byte_2010810
+	// 0x3C (0x0F)
 	.word byte_2010A90
+	// 0x40 (0x10)
 	.word byte_20105D0
+	// 0x44 (0x11)
 	.word byte_2010B10
+	// 0x48 (0x12)
 	.word byte_20107D0
+	// 0x4C (0x13)
 	.word unk_2010490
+	// 0x50 (0x14)
 	.word byte_2010710
+	// 0x54 (0x15)
 	.word byte_2010790
+	// 0x58 (0x16)
 	.word byte_2010A50
+	// 0x5C (0x17)
 	.word unk_20104D0
+	// 0x60 (0x18)
 	.word byte_2010750
+	// 0x64 (0x19)
 	.word byte_20109D0
+	// 0x68 (0x1A)
 	.word byte_20106D0
+	// 0x6C (0x1B)
 	.word byte_2010BA0
+	// 0x70 (0x1C)
 	.word byte_2010850
+	// 0x74 (0x1D)
 	.word byte_2010A10
+	// 0x78 (0x1E)
 	.word byte_2010590
+	// 0x7C (0x1F)
 	.word off_2010890
 	thumb_func_end sound_80006A2
 
@@ -261,7 +298,7 @@ musicGameState_8000784:
 	mov r1, r10
 	push {r1}
 	ldr r3, off_8000898 // =sub_814EA58+1
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	pop {r1}
 	mov r10, r1
 	mov r7, r10
@@ -278,7 +315,7 @@ sub_80007A0:
 	mov r1, r10
 	push {r1}
 	ldr r3, off_800089C // =sub_814E9F0+1
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	pop {r1}
 	mov r10, r1
 	pop {r1-r7,pc}
@@ -332,7 +369,7 @@ loc_80007F0:
 	cmp r6, #0
 	beq locret_8000800
 	ldmia r6!, {r0-r3}
-	bl sound_8000808 // () -> void
+	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 locret_8000800:
 	pop {r4-r7,pc}
 	.balign 4, 0
@@ -340,9 +377,8 @@ off_8000804:
 	.word loc_80007E8+1
 	thumb_func_end sub_80007BE
 
-// () -> void
 	thumb_local_start
-sound_8000808:
+sound_8000808: // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	push {r4-r7,lr}
 	ldr r5, dword_200A490_p
 	ldr r7, [r5]
@@ -431,7 +467,7 @@ off_8000864:
 off_8000868:
 	.word sound_8000822+1 // (struct ? *a5, unk8 bgMusInd_a0, unk8 a1, unk8 *a2) -> ?
 off_800086C:
-	.word m4a_SongNumStart+1
+	.word m4a_SongNumStart+1 // (idx: u16) -> ()
 off_8000870:
 	.word sub_814EA58+1
 off_8000874:
@@ -443,7 +479,7 @@ off_800087C:
 off_8000880:
 	.word sub_814E87C+1
 off_8000884:
-	.word m4a_SongNumStart+1
+	.word m4a_SongNumStart+1 // (idx: u16) -> ()
 off_8000888:
 	.word sub_814EB1C+1
 off_800088C:
@@ -463,7 +499,7 @@ off_80008A4:
 off_80008A8:
 	.word sub_814EA58+1
 off_80008AC:
-	.word m4a_SongNumStart+1
+	.word m4a_SongNumStart+1 // (idx: u16) -> ()
 off_80008B0:
 	.word loc_800084E+1
 

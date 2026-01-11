@@ -33027,7 +33027,7 @@ loc_811EFCE:
 	bl GetCurPETNaviStatsHword // (which_navi: u8, which_stat: u8) -> u16
 	str r0, [r6,#0xc]
 loc_811EFE6:
-	ldr r0, off_811F0C0 // =TextScript86CB360
+	ldr r0, off_811F0C0 // =TextScriptMapNames
 	mov r1, #0xf0
 	ldr r2, off_811F008 // =unk_200BEA0
 	mov r3, #0
@@ -33058,7 +33058,7 @@ sub_811F014:
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_Unk200a220_Ptr]
 	str r0, [r6,#8]
-	ldr r0, off_811F0C0 // =TextScript86CB360
+	ldr r0, off_811F0C0 // =TextScriptMapNames
 	mov r1, #0xf1
 	ldr r2, off_811F044 // =unk_200C0E0
 	mov r3, #0
@@ -33089,7 +33089,7 @@ sub_811F050:
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_Unk200a220_Ptr]
 	str r0, [r6,#8]
-	ldr r0, off_811F0C0 // =TextScript86CB360
+	ldr r0, off_811F0C0 // =TextScriptMapNames
 	mov r1, #0xf2
 	ldr r2, off_811F080 // =unk_200C2A0
 	mov r3, #0
@@ -33118,7 +33118,7 @@ sub_811F08C:
 	push {r4-r7,lr}
 	bl sub_811F290
 	mov r1, r0
-	ldr r0, off_811F0C0 // =TextScript86CB360
+	ldr r0, off_811F0C0 // =TextScriptMapNames
 	ldr r2, off_811F0B4 // =byte_200C620
 	mov r3, #0
 	mov r4, #0xc
@@ -33140,7 +33140,7 @@ dword_811F0B8:
 off_811F0BC:
 	.word byte_200C920
 off_811F0C0:
-	.word TextScript86CB360
+	.word TextScriptMapNames
 off_811F0C4:
 	.word dword_86A5D60
 	thumb_func_end sub_811F08C

@@ -268,5 +268,8 @@ unk_3005668:: // 0x3005668
 	.space 112
 unk_30056D8:: // 0x30056d8
 	.space 40
+
+// also refers to SoundMainRAM
 byte_3005700:: // 0x3005700
 	.space 1024
+

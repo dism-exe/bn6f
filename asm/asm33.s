@@ -10691,6 +10691,8 @@ loc_8128A18:
 	blt loc_81289FA
 	pop {r4-r7,pc}
 	.balign 4, 0
+	thumb_func_end sub_81289C4
+
 off_8128A24:
 	.word eTextScript201BF00
 dword_8128A28:
@@ -10700,9 +10702,16 @@ off_8128A2C:
 dword_8128A30:
 	.word 0x6F
 byte_8128A34:
-	.byte 0xDE, 0xBF, 0x1, 0x2, 0x0, 0xB5, 0x19, 0x48, 0x20, 0x21
-	.byte 0xD7, 0xF6, 0x4F, 0xFF, 0x0, 0xBD
-	thumb_func_end sub_81289C4
+	.byte 0xDE, 0xBF, 0x1, 0x2
+
+	thumb_local_start
+dead_8128A38:
+	push {lr}
+	ldr r0, dword_8128AA0 // =0x6004020
+	mov r1, #0x20
+	bl ZeroFillByWord
+	pop {pc}
+	thumb_func_end dead_8128A38
 
 	thumb_local_start
 sub_8128A44:

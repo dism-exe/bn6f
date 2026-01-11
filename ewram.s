@@ -3004,6 +3004,7 @@ eT1BattleObjects:: // 0x203a9a0
 	t1_battle_object_struct eT1BattleObject31
 eT1BattleObjectsEnd:: // 0x203c4a0
 
+// array of 2 0x20 sized structs
 byte_203C4A0:: // 0x203c4a0
 	.space 64
 byte_203C4E0:: // 0x203c4e0
