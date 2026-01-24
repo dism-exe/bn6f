@@ -32,8 +32,8 @@ CompText877E620::
 	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0x1, 0xFF
-	ts_flag_set flag=0x1726
-	ts_flag_set flag=0x85E
+	ts_flag_set flag=EVENT_1726
+	ts_flag_set flag=EVENT_85E
 	ts_end
 
 	def_text_script CompText877E620_unk1
@@ -57,16 +57,16 @@ CompText877E620::
 
 	def_text_script CompText877E620_unk10
 	ts_check_flag [
-		flag: 0x1122,
+		flag: EVENT_1122,
 		jumpIfTrue: CompText877E620_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1121,
+		flag: EVENT_1121,
 		jumpIfTrue: CompText877E620_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1121
+	ts_flag_set flag=EVENT_1121
 	ts_mugshot_show mugshot=0x19
 	ts_msg_open
 	.string "Did someone call\n"
@@ -980,7 +980,7 @@ CompText877E620::
 	.string "time!!\n"
 	.string "Hmmmphhh!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1122
+	ts_flag_set flag=EVENT_1122
 	ts_end
 
 	def_text_script CompText877E620_unk13

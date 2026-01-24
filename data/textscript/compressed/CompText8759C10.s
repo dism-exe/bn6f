@@ -101,31 +101,31 @@ CompText8759C10::
 
 	def_text_script CompText8759C10_unk20
 	ts_check_flag [
-		flag: 0x163,
+		flag: EVENT_163,
 		jumpIfTrue: CompText8759C10_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11F,
+		flag: EVENT_11F,
 		jumpIfTrue: CompText8759C10_unk27_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCDC,
+		flag: EVENT_CDC,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8759C10_unk24_id,
 	]
 	ts_check_flag [
-		flag: 0xCDF,
+		flag: EVENT_CDF,
 		jumpIfTrue: CompText8759C10_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xCDF
+	ts_flag_set flag=EVENT_CDF
 	ts_jump target=CompText8759C10_unk22_id
 
 	def_text_script CompText8759C10_unk21
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8759C10_unk25_id,
 	]
@@ -163,7 +163,7 @@ CompText8759C10::
 	ts_end
 
 	def_text_script CompText8759C10_unk22
-	ts_flag_set flag=0xCDE
+	ts_flag_set flag=EVENT_CDE
 	ts_end
 
 	def_text_script CompText8759C10_unk23
@@ -198,12 +198,12 @@ CompText8759C10::
 
 	def_text_script CompText8759C10_unk24
 	ts_check_flag [
-		flag: 0x120,
+		flag: EVENT_120,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8759C10_unk4_id,
 	]
 	ts_check_flag [
-		flag: 0xCDD,
+		flag: EVENT_CDD,
 		jumpIfTrue: CompText8759C10_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

@@ -129,7 +129,7 @@ CompText8775B60::
 
 	def_text_script CompText8775B60_unk16
 	ts_check_flag [
-		flag: 0xE84,
+		flag: EVENT_E84,
 		jumpIfTrue: CompText8775B60_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -138,8 +138,8 @@ CompText8775B60::
 	.string "Hikari...\n"
 	.string "Don't run now..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE83
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E83
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8775B60_unk17

@@ -56,7 +56,7 @@ CompText876B0DC::
 
 	def_text_script CompText876B0DC_unk20
 	ts_check_flag [
-		flag: 0x87B,
+		flag: EVENT_87B,
 		jumpIfTrue: CompText876B0DC_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

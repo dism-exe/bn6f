@@ -339,17 +339,17 @@ CompText8773730::
 
 	def_text_script CompText8773730_unk50
 	ts_check_flag [
-		flag: 0xCC6,
+		flag: EVENT_CC6,
 		jumpIfTrue: CompText8773730_unk53_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCC5,
+		flag: EVENT_CC5,
 		jumpIfTrue: CompText8773730_unk52_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCC4,
+		flag: EVENT_CC4,
 		jumpIfTrue: CompText8773730_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -373,7 +373,7 @@ CompText8773730::
 	.string "are talking about."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_flag_set flag=0xCC4
+	ts_flag_set flag=EVENT_CC4
 	ts_end
 
 	def_text_script CompText8773730_unk51
@@ -388,7 +388,7 @@ CompText8773730::
 	.string "help you..."
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_flag_set flag=0xCC5
+	ts_flag_set flag=EVENT_CC5
 	ts_end
 
 	def_text_script CompText8773730_unk52
@@ -488,8 +488,8 @@ CompText8773730::
 	.string "T-Thanks...\n"
 	.string "Ahahaha..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xCC6
-	ts_flag_set flag=0xCC7
+	ts_flag_set flag=EVENT_CC6
+	ts_flag_set flag=EVENT_CC7
 	ts_end
 
 	def_text_script CompText8773730_unk53

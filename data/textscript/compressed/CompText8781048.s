@@ -20,8 +20,8 @@ CompText8781048::
 	.string "Shall we get started\n"
 	.string "then...?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xA61
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_A61
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8781048_unk1
@@ -79,7 +79,7 @@ CompText8781048::
 
 	def_text_script CompText8781048_unk10
 	ts_check_flag [
-		flag: 0x1729,
+		flag: EVENT_COPYBOT_ACTIVE,
 		jumpIfTrue: CompText8781048_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -136,8 +136,8 @@ CompText8781048::
 	ts_end
 
 	def_text_script CompText8781048_unk12
-	ts_flag_set flag=0x171A
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_171A
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8781048_unk13

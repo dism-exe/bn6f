@@ -21,11 +21,11 @@ CompText87A00D8::
 
 	def_text_script CompText87A00D8_unk5
 	ts_check_flag [
-		flag: 0x85A,
+		flag: EVENT_85A,
 		jumpIfTrue: CompText87A00D8_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x85A
+	ts_flag_set flag=EVENT_85A
 	ts_msg_open
 	ts_mugshot_show mugshot=0x46
 	.string "Well done!"
@@ -144,11 +144,11 @@ CompText87A00D8::
 
 	def_text_script CompText87A00D8_unk7
 	ts_check_flag [
-		flag: 0x85A,
+		flag: EVENT_85A,
 		jumpIfTrue: CompText87A00D8_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x85A
+	ts_flag_set flag=EVENT_85A
 	ts_msg_open
 	ts_mugshot_show mugshot=0x45
 	.string "Well done!"

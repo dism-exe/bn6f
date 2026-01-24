@@ -71,7 +71,7 @@ CompText879A66C::
 
 	def_text_script CompText879A66C_unk30
 	ts_check_flag [
-		flag: 0x620,
+		flag: EVENT_620,
 		jumpIfTrue: CompText879A66C_unk31_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -82,8 +82,8 @@ CompText879A66C::
 	ts_end
 
 	def_text_script CompText879A66C_unk31
-	ts_flag_set flag=0x635
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_635
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText879A66C_unk32

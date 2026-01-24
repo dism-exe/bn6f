@@ -69,7 +69,7 @@ CompText8770D20::
 
 	def_text_script CompText8770D20_unk11
 	ts_check_flag [
-		flag: 0xE7C,
+		flag: EVENT_E7C,
 		jumpIfTrue: CompText8770D20_unk10_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -78,13 +78,13 @@ CompText8770D20::
 	.string "You!! Don't run away\n"
 	.string "from here!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE7B
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E7B
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8770D20_unk12
 	ts_check_flag [
-		flag: 0xE7E,
+		flag: EVENT_E7E,
 		jumpIfTrue: CompText8770D20_unk10_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -92,8 +92,8 @@ CompText8770D20::
 	ts_msg_open
 	.string "I found you Hikari!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE7D
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E7D
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8770D20_unk13

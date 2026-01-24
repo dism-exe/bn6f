@@ -286,7 +286,7 @@ CompText87A54E4::
 	ts_sound_play00 track=0x151
 	.string "*beeep*"
 	ts_wait frames=0x14
-	ts_flag_clear flag=0x10
+	ts_flag_clear flag=EVENT_10
 	ts_sound_play00 track=0x176
 	.string " *click*"
 	ts_wait frames=0x14

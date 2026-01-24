@@ -56,7 +56,7 @@ CompText86DA1B8::
 
 	def_text_script CompText86DA1B8_unk2
 	ts_check_flag [
-		flag: 0x1704,
+		flag: EVENT_1704,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText86DA1B8_unk3_id,
 	]

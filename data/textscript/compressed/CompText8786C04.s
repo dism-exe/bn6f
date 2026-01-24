@@ -23,7 +23,7 @@ CompText8786C04::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE5A,
+		flag: EVENT_E5A,
 		jumpIfTrue: CompText8786C04_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -146,8 +146,8 @@ CompText8786C04::
 	.string "at is about to get\n"
 	.string "DELETED!! Yahhhhh!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xEAD
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_EAD
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8786C04_unk17

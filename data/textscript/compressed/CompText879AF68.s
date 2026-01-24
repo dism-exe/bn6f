@@ -40,20 +40,20 @@ CompText879AF68::
 	def_text_script CompText879AF68_unk14
 
 	def_text_script CompText879AF68_unk15
-	ts_flag_set flag=0x646
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_646
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText879AF68_unk16
 
 	def_text_script CompText879AF68_unk17
 	ts_check_flag [
-		flag: 0x67C,
+		flag: EVENT_67C,
 		jumpIfTrue: CompText879AF68_unk18_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x67C
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_67C
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText879AF68_unk18
@@ -122,11 +122,11 @@ CompText879AF68::
 
 	def_text_script CompText879AF68_unk50
 	ts_check_flag [
-		flag: 0x858,
+		flag: EVENT_858,
 		jumpIfTrue: CompText879AF68_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x858
+	ts_flag_set flag=EVENT_858
 	ts_msg_open
 	ts_mugshot_show mugshot=0x46
 	.string "You're an Operator\n"
@@ -210,11 +210,11 @@ CompText879AF68::
 
 	def_text_script CompText879AF68_unk52
 	ts_check_flag [
-		flag: 0x858,
+		flag: EVENT_858,
 		jumpIfTrue: CompText879AF68_unk53_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x858
+	ts_flag_set flag=EVENT_858
 	ts_msg_open
 	ts_mugshot_show mugshot=0x45
 	.string "You're an Operator\n"

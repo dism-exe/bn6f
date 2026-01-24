@@ -11,31 +11,31 @@ CompText879D158::
 
 	def_text_script CompText879D158_unk0
 	ts_check_flag [
-		flag: 0x1152,
+		flag: EVENT_1152,
 		jumpIfTrue: CompText879D158_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1156,
+		flag: EVENT_1156,
 		jumpIfTrue: CompText879D158_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1154,
+		flag: EVENT_1154,
 		jumpIfTrue: CompText879D158_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1153,
+		flag: EVENT_1153,
 		jumpIfTrue: CompText879D158_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1151,
+		flag: EVENT_1151,
 		jumpIfTrue: CompText879D158_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1151
+	ts_flag_set flag=EVENT_1151
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "...I'm the one who\n"
@@ -194,7 +194,7 @@ CompText879D158::
 	ts_end
 
 	def_text_script CompText879D158_unk2
-	ts_flag_set flag=0x1154
+	ts_flag_set flag=EVENT_1154
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Thanks to you I\n"
@@ -303,7 +303,7 @@ CompText879D158::
 	ts_end
 
 	def_text_script CompText879D158_unk4
-	ts_flag_set flag=0x1152
+	ts_flag_set flag=EVENT_1152
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "...You're still\n"
@@ -417,7 +417,7 @@ CompText879D158::
 
 	def_text_script CompText879D158_unk6
 	ts_check_flag [
-		flag: 0x1156,
+		flag: EVENT_1156,
 		jumpIfTrue: CompText879D158_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -574,7 +574,7 @@ CompText879D158::
 	ts_sound_disable_text_sfx
 	ts_sound_play00 track=0x74
 	ts_sound_enable_text_sfx
-	ts_flag_set flag=0x17F
+	ts_flag_set flag=EVENT_17F
 	ts_clear_msg
 	.string "THAT'S ALL FOR\n"
 	.string "MY WORK HERE..."
@@ -584,7 +584,7 @@ CompText879D158::
 	ts_key_wait any=0x0
 	ts_sound_disable_text_sfx
 	ts_sound_play00 track=0x76
-	ts_flag_set flag=0x1E6
+	ts_flag_set flag=EVENT_1E6
 	ts_end
 
 	

@@ -71,16 +71,16 @@ CompText8791AA8::
 
 	def_text_script CompText8791AA8_unk10
 	ts_check_flag [
-		flag: 0xA67,
+		flag: EVENT_A67,
 		jumpIfTrue: CompText8791AA8_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xA63,
+		flag: EVENT_A63,
 		jumpIfTrue: CompText8791AA8_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xA63
+	ts_flag_set flag=EVENT_A63
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "I am the Level 1\n"
@@ -164,8 +164,8 @@ CompText8791AA8::
 	.string "Here it comes!\n"
 	.string "Battle START!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0xA90
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_A90
 	ts_end
 
 	def_text_script CompText8791AA8_unk13
@@ -179,7 +179,7 @@ CompText8791AA8::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_flag_set flag=0xA67
+	ts_flag_set flag=EVENT_A67
 	ts_item_give [
 		item: 0x10,
 		amount: 0x1,
@@ -248,16 +248,16 @@ CompText8791AA8::
 
 	def_text_script CompText8791AA8_unk16
 	ts_check_flag [
-		flag: 0xA68,
+		flag: EVENT_A68,
 		jumpIfTrue: CompText8791AA8_unk20_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xA64,
+		flag: EVENT_A64,
 		jumpIfTrue: CompText8791AA8_unk17_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xA64
+	ts_flag_set flag=EVENT_A64
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "I am the Level 2\n"
@@ -341,8 +341,8 @@ CompText8791AA8::
 	.string "Ready!?\n"
 	.string "Battle START!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0xA91
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_A91
 	ts_end
 
 	def_text_script CompText8791AA8_unk19
@@ -356,7 +356,7 @@ CompText8791AA8::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_flag_set flag=0xA68
+	ts_flag_set flag=EVENT_A68
 	ts_item_give [
 		item: 0x11,
 		amount: 0x1,
@@ -562,17 +562,17 @@ CompText8791AA8::
 
 	def_text_script CompText8791AA8_unk45
 	ts_check_flag [
-		flag: 0xC20,
+		flag: EVENT_C20,
 		jumpIfTrue: CompText8791AA8_unk60_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC1E,
+		flag: EVENT_C1E,
 		jumpIfTrue: CompText8791AA8_unk55_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC1A,
+		flag: EVENT_C1A,
 		jumpIfTrue: CompText8791AA8_unk50_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

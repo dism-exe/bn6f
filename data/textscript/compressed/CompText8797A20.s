@@ -11,16 +11,16 @@ CompText8797A20::
 
 	def_text_script CompText8797A20_unk0
 	ts_check_flag [
-		flag: 0x5EA,
+		flag: EVENT_5EA,
 		jumpIfTrue: CompText8797A20_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x5E8,
+		flag: EVENT_5E8,
 		jumpIfTrue: CompText8797A20_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x5E8
+	ts_flag_set flag=EVENT_5E8
 	ts_msg_open
 	ts_mugshot_show mugshot=0x3C
 	.string "OWWWW! OWWWW!"

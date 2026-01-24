@@ -23,7 +23,7 @@ CompText877A4A8::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE08,
+		flag: EVENT_E08,
 		jumpIfTrue: CompText877A4A8_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

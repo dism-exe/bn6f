@@ -94,11 +94,11 @@ CompText875EA10::
 
 	def_text_script CompText875EA10_unk6
 	ts_check_flag [
-		flag: 0x482,
+		flag: EVENT_482,
 		jumpIfTrue: CompText875EA10_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x482
+	ts_flag_set flag=EVENT_482
 	ts_jump target=CompText875EA10_unk7_id
 
 	def_text_script CompText875EA10_unk7
@@ -195,7 +195,7 @@ CompText875EA10::
 
 	def_text_script CompText875EA10_unk8
 	ts_check_flag [
-		flag: 0x50A,
+		flag: EVENT_50A,
 		jumpIfTrue: CompText875EA10_unk10_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -245,7 +245,7 @@ CompText875EA10::
 	ts_sound_enable_text_sfx
 	ts_control_unlock
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x3
+	ts_flag_clear flag=EVENT_3
 	ts_sound_play00 track=0x74
 	ts_wait frames=0x28
 	ts_clear_msg
@@ -256,17 +256,17 @@ CompText875EA10::
 
 	def_text_script CompText875EA10_unk12
 	ts_check_flag [
-		flag: 0xC8D,
+		flag: EVENT_C8D,
 		jumpIfTrue: CompText875EA10_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC85,
+		flag: EVENT_C85,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875EA10_unk15_id,
 	]
 	ts_check_flag [
-		flag: 0xC89,
+		flag: EVENT_C89,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875EA10_unk16_id,
 	]
@@ -298,7 +298,7 @@ CompText875EA10::
 	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0xD, 0xFF
-	ts_flag_set flag=0xC97
+	ts_flag_set flag=EVENT_C97
 	ts_end
 
 	def_text_script CompText875EA10_unk13
@@ -377,7 +377,7 @@ CompText875EA10::
 	ts_control_unlock
 	ts_key_wait any=0x0
 	ts_sound_play00 track=0x74
-	ts_flag_clear flag=0x2
+	ts_flag_clear flag=EVENT_2
 	ts_end
 
 	

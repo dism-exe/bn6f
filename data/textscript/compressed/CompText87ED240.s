@@ -944,11 +944,11 @@ CompText87ED240::
 
 	def_text_script CompText87ED240_unk25
 	ts_check_flag [
-		flag: 0xE5A,
+		flag: EVENT_E5A,
 		jumpIfTrue: CompText87ED240_unk47_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xE5A
+	ts_flag_set flag=EVENT_E5A
 	ts_jump target=CompText87ED240_unk47_id
 	ts_end
 

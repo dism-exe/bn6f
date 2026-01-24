@@ -126,11 +126,11 @@ CompText8772974::
 
 	def_text_script CompText8772974_unk7
 	ts_check_flag [
-		flag: 0x544,
+		flag: EVENT_544,
 		jumpIfTrue: CompText8772974_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x544
+	ts_flag_set flag=EVENT_544
 	ts_mugshot_show mugshot=0x14
 	ts_msg_open
 	.string "You're late!!"
@@ -255,11 +255,11 @@ CompText8772974::
 
 	def_text_script CompText8772974_unk10
 	ts_check_flag [
-		flag: 0x546,
+		flag: EVENT_546,
 		jumpIfTrue: CompText8772974_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x546
+	ts_flag_set flag=EVENT_546
 	ts_end
 
 	def_text_script CompText8772974_unk11
@@ -277,7 +277,7 @@ CompText8772974::
 
 	def_text_script CompText8772974_unk15
 	ts_check_flag [
-		flag: 0x1729,
+		flag: EVENT_COPYBOT_ACTIVE,
 		jumpIfTrue: CompText8772974_unk16_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -334,8 +334,8 @@ CompText8772974::
 	ts_end
 
 	def_text_script CompText8772974_unk17
-	ts_flag_set flag=0x171A
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_171A
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8772974_unk18

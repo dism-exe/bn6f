@@ -143,9 +143,9 @@ CompText879F1B8::
 		jumpIfNone: CompText879F1B8_unk12_id,
 		jumpIfSome: CompText879F1B8_unk12_id,
 	]
-	ts_flag_set flag=0x1D8
-	ts_flag_set flag=0x197
-	ts_flag_set flag=0x1AD
+	ts_flag_set flag=EVENT_1D8
+	ts_flag_set flag=EVENT_197
+	ts_flag_set flag=EVENT_1AD
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open
 	.string "Thank...\n"

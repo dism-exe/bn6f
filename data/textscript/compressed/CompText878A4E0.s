@@ -190,8 +190,8 @@ CompText878A4E0::
 	.string "at? I'll make you\n"
 	.string "a mute too!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xEAF
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_EAF
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText878A4E0_unk17
@@ -200,8 +200,8 @@ CompText878A4E0::
 	.string "Time to be\n"
 	.string "deleted!!!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xEB1
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_EB1
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText878A4E0_unk18

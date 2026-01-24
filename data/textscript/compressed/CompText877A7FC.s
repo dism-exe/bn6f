@@ -11,17 +11,17 @@ CompText877A7FC::
 
 	def_text_script CompText877A7FC_unk0
 	ts_check_flag [
-		flag: 0x163,
+		flag: EVENT_163,
 		jumpIfTrue: CompText877A7FC_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x120,
+		flag: EVENT_120,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877A7FC_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x834,
+		flag: EVENT_834,
 		jumpIfTrue: CompText877A7FC_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -32,11 +32,11 @@ CompText877A7FC::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x87E,
+		flag: EVENT_87E,
 		jumpIfTrue: CompText877A7FC_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x87E
+	ts_flag_set flag=EVENT_87E
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Ummm... Ms.Fahran!"
@@ -134,9 +134,9 @@ CompText877A7FC::
 	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0x6, 0xFF
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x833
-	ts_flag_set flag=0x102
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_833
+	ts_flag_set flag=EVENT_102
 	ts_end
 
 	def_text_script CompText877A7FC_unk1
@@ -149,7 +149,7 @@ CompText877A7FC::
 
 	def_text_script CompText877A7FC_unk2
 	ts_check_flag [
-		flag: 0x848,
+		flag: EVENT_848,
 		jumpIfTrue: CompText877A7FC_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -303,8 +303,8 @@ CompText877A7FC::
 	ts_msg_open
 	.string "Let's go!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x875
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_875
 	ts_end
 
 	def_text_script CompText877A7FC_unk6
@@ -387,9 +387,9 @@ CompText877A7FC::
 	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0x6, 0xFF
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x833
-	ts_flag_set flag=0x102
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_833
+	ts_flag_set flag=EVENT_102
 	ts_end
 
 	def_text_script CompText877A7FC_unk8
@@ -421,17 +421,17 @@ CompText877A7FC::
 
 	def_text_script CompText877A7FC_unk10
 	ts_check_flag [
-		flag: 0x163,
+		flag: EVENT_163,
 		jumpIfTrue: CompText877A7FC_unk19_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x120,
+		flag: EVENT_120,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877A7FC_unk19_id,
 	]
 	ts_check_flag [
-		flag: 0x849,
+		flag: EVENT_849,
 		jumpIfTrue: CompText877A7FC_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -442,11 +442,11 @@ CompText877A7FC::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x87F,
+		flag: EVENT_87F,
 		jumpIfTrue: CompText877A7FC_unk17_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x87F
+	ts_flag_set flag=EVENT_87F
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Hey! It's Master\n"
@@ -556,9 +556,9 @@ CompText877A7FC::
 	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0x10, 0xFF
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x849
-	ts_flag_set flag=0x103
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_849
+	ts_flag_set flag=EVENT_103
 	ts_end
 
 	def_text_script CompText877A7FC_unk11
@@ -574,7 +574,7 @@ CompText877A7FC::
 
 	def_text_script CompText877A7FC_unk12
 	ts_check_flag [
-		flag: 0x856,
+		flag: EVENT_856,
 		jumpIfTrue: CompText877A7FC_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -704,8 +704,8 @@ CompText877A7FC::
 	ts_msg_open
 	.string "Let's begin!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x877
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_877
 	ts_end
 
 	def_text_script CompText877A7FC_unk16
@@ -795,9 +795,9 @@ CompText877A7FC::
 	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0x10, 0xFF
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x849
-	ts_flag_set flag=0x103
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_849
+	ts_flag_set flag=EVENT_103
 	ts_end
 
 	def_text_script CompText877A7FC_unk18
@@ -836,9 +836,9 @@ CompText877A7FC::
 	ts_end
 
 	def_text_script CompText877A7FC_unk21
-	ts_flag_set flag=0x872
+	ts_flag_set flag=EVENT_872
 	ts_check_flag [
-		flag: 0x873,
+		flag: EVENT_873,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877A7FC_unk25_id,
 	]
@@ -934,8 +934,8 @@ CompText877A7FC::
 	ts_clear_msg
 	.string "You May Proceed"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x879
-	ts_flag_set flag=0x1726
+	ts_flag_set flag=EVENT_879
+	ts_flag_set flag=EVENT_1726
 	ts_end
 
 	def_text_script CompText877A7FC_unk23
@@ -1000,21 +1000,21 @@ CompText877A7FC::
 
 	def_text_script CompText877A7FC_unk30
 	ts_check_flag [
-		flag: 0x1141,
+		flag: EVENT_1141,
 		jumpIfTrue: CompText877A7FC_unk33_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1143,
+		flag: EVENT_1143,
 		jumpIfTrue: CompText877A7FC_unk32_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1140,
+		flag: EVENT_1140,
 		jumpIfTrue: CompText877A7FC_unk31_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1140
+	ts_flag_set flag=EVENT_1140
 	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "You must be the\n"
@@ -1117,7 +1117,7 @@ CompText877A7FC::
 	ts_end
 
 	def_text_script CompText877A7FC_unk32
-	ts_flag_set flag=0x1141
+	ts_flag_set flag=EVENT_1141
 	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "...How did it go?\n"
@@ -1217,21 +1217,21 @@ CompText877A7FC::
 
 	def_text_script CompText877A7FC_unk35
 	ts_check_flag [
-		flag: 0x1187,
+		flag: EVENT_1187,
 		jumpIfTrue: CompText877A7FC_unk38_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1181,
+		flag: EVENT_1181,
 		jumpIfTrue: CompText877A7FC_unk37_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1180,
+		flag: EVENT_1180,
 		jumpIfTrue: CompText877A7FC_unk36_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1180
+	ts_flag_set flag=EVENT_1180
 	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "Ahh,yes,I'm the\n"
@@ -1313,7 +1313,7 @@ CompText877A7FC::
 	ts_end
 
 	def_text_script CompText877A7FC_unk37
-	ts_flag_set flag=0x1187
+	ts_flag_set flag=EVENT_1187
 	ts_item_take [
 		item: 0x26,
 		amount: 0x1,
@@ -1453,16 +1453,16 @@ CompText877A7FC::
 
 	def_text_script CompText877A7FC_unk50
 	ts_check_flag [
-		flag: 0x120,
+		flag: EVENT_120,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877A7FC_unk70_id,
 	]
 	ts_check_flag [
-		flag: 0x1302,
+		flag: EVENT_1302,
 		jumpIfTrue: CompText877A7FC_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1302
+	ts_flag_set flag=EVENT_1302
 	ts_mugshot_show mugshot=0x22
 	ts_msg_open
 	.string "Ahhh! You're here,\n"
@@ -1594,13 +1594,13 @@ CompText877A7FC::
 	.string "C'mon!!\n"
 	.string "YAAAAAAHHHHH!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1314
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1314
 	ts_end
 
 	def_text_script CompText877A7FC_unk54
 	ts_check_flag [
-		flag: 0x1318,
+		flag: EVENT_1318,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877A7FC_unk53_id,
 	]
@@ -1623,18 +1623,18 @@ CompText877A7FC::
 	.string "C'mon!!\n"
 	.string "YAAAAAAHHHHH!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1315
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1315
 	ts_end
 
 	def_text_script CompText877A7FC_unk55
 	ts_check_flag [
-		flag: 0x30E,
+		flag: EVENT_30E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877A7FC_unk54_id,
 	]
 	ts_check_flag [
-		flag: 0x1318,
+		flag: EVENT_1318,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877A7FC_unk53_id,
 	]
@@ -1656,19 +1656,19 @@ CompText877A7FC::
 	.string "C'mon!!\n"
 	.string "YAAAAAAHHHHH!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1316
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1316
 	ts_end
 
 	def_text_script CompText877A7FC_unk56
 
 	def_text_script CompText877A7FC_unk57
 	ts_check_flag [
-		flag: 0x1318,
+		flag: EVENT_1318,
 		jumpIfTrue: CompText877A7FC_unk58_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1318
+	ts_flag_set flag=EVENT_1318
 	ts_jump target=CompText877A7FC_unk58_id
 
 	def_text_script CompText877A7FC_unk58
@@ -1691,16 +1691,16 @@ CompText877A7FC::
 
 	def_text_script CompText877A7FC_unk60
 	ts_check_flag [
-		flag: 0x120,
+		flag: EVENT_120,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877A7FC_unk71_id,
 	]
 	ts_check_flag [
-		flag: 0x1303,
+		flag: EVENT_1303,
 		jumpIfTrue: CompText877A7FC_unk61_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1303
+	ts_flag_set flag=EVENT_1303
 	ts_mugshot_show mugshot=0x23
 	ts_msg_open
 	.string "Ho,ho,ho,ho...\n"
@@ -1814,13 +1814,13 @@ CompText877A7FC::
 	.string "You will see my\n"
 	.string "full strength now!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1319
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1319
 	ts_end
 
 	def_text_script CompText877A7FC_unk64
 	ts_check_flag [
-		flag: 0x131D,
+		flag: EVENT_131D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877A7FC_unk63_id,
 	]
@@ -1842,18 +1842,18 @@ CompText877A7FC::
 	.string "you can really do,\n"
 	.string "grasshopper!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x131A
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_131A
 	ts_end
 
 	def_text_script CompText877A7FC_unk65
 	ts_check_flag [
-		flag: 0x32C,
+		flag: EVENT_32C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877A7FC_unk64_id,
 	]
 	ts_check_flag [
-		flag: 0x131D,
+		flag: EVENT_131D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877A7FC_unk63_id,
 	]
@@ -1877,19 +1877,19 @@ CompText877A7FC::
 	.string "business as usual\n"
 	.string "for me... FIGHT!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x131B
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_131B
 	ts_end
 
 	def_text_script CompText877A7FC_unk66
 
 	def_text_script CompText877A7FC_unk67
 	ts_check_flag [
-		flag: 0x131D,
+		flag: EVENT_131D,
 		jumpIfTrue: CompText877A7FC_unk68_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x131D
+	ts_flag_set flag=EVENT_131D
 	ts_jump target=CompText877A7FC_unk68_id
 
 	def_text_script CompText877A7FC_unk68
@@ -1930,7 +1930,7 @@ CompText877A7FC::
 
 	def_text_script CompText877A7FC_unk72
 	ts_check_flag [
-		flag: 0xC1F,
+		flag: EVENT_C1F,
 		jumpIfTrue: CompText877A7FC_unk74_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1938,7 +1938,7 @@ CompText877A7FC::
 
 	def_text_script CompText877A7FC_unk73
 	ts_check_flag [
-		flag: 0xC1F,
+		flag: EVENT_C1F,
 		jumpIfTrue: CompText877A7FC_unk75_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -2124,26 +2124,26 @@ CompText877A7FC::
 
 	def_text_script CompText877A7FC_unk110
 	ts_check_flag [
-		flag: 0x115B,
+		flag: EVENT_115B,
 		jumpIfTrue: CompText877A7FC_unk114_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x115C,
+		flag: EVENT_115C,
 		jumpIfTrue: CompText877A7FC_unk113_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x115E,
+		flag: EVENT_115E,
 		jumpIfTrue: CompText877A7FC_unk112_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x115D,
+		flag: EVENT_115D,
 		jumpIfTrue: CompText877A7FC_unk111_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x115D
+	ts_flag_set flag=EVENT_115D
 	ts_mugshot_show mugshot=0xE
 	ts_msg_open
 	.string "How about some\n"
@@ -2221,7 +2221,7 @@ CompText877A7FC::
 	ts_end
 
 	def_text_script CompText877A7FC_unk112
-	ts_flag_set flag=0x115C
+	ts_flag_set flag=EVENT_115C
 	ts_mugshot_show mugshot=0xE
 	ts_msg_open
 	.string "How did it go?\n"
@@ -2321,12 +2321,12 @@ CompText877A7FC::
 
 	def_text_script CompText877A7FC_unk120
 	ts_check_flag [
-		flag: 0x11E,
+		flag: EVENT_11E,
 		jumpIfTrue: CompText877A7FC_unk121_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11E
-	ts_flag_set flag=0x87E
+	ts_flag_set flag=EVENT_11E
+	ts_flag_set flag=EVENT_87E
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Umm... Ms.Fahran..."
@@ -2427,9 +2427,9 @@ CompText877A7FC::
 	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0x6, 0xFF
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x833
-	ts_flag_set flag=0x102
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_833
+	ts_flag_set flag=EVENT_102
 	ts_end
 
 	def_text_script CompText877A7FC_unk121
@@ -2502,19 +2502,19 @@ CompText877A7FC::
 	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0x6, 0xFF
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x833
-	ts_flag_set flag=0x102
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_833
+	ts_flag_set flag=EVENT_102
 	ts_end
 
 	def_text_script CompText877A7FC_unk122
 	ts_check_flag [
-		flag: 0x11E,
+		flag: EVENT_11E,
 		jumpIfTrue: CompText877A7FC_unk123_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x87F
-	ts_flag_set flag=0x11E
+	ts_flag_set flag=EVENT_87F
+	ts_flag_set flag=EVENT_11E
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "Huh? It's Master\n"
@@ -2634,9 +2634,9 @@ CompText877A7FC::
 	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0x10, 0xFF
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x849
-	ts_flag_set flag=0x103
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_849
+	ts_flag_set flag=EVENT_103
 	ts_end
 
 	def_text_script CompText877A7FC_unk123
@@ -2721,9 +2721,9 @@ CompText877A7FC::
 	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0x10, 0xFF
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x849
-	ts_flag_set flag=0x103
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_849
+	ts_flag_set flag=EVENT_103
 	ts_end
 
 	

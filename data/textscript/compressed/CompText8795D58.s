@@ -21,8 +21,8 @@ CompText8795D58::
 	.string "here!?\n"
 	.string "Get lost!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE55
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E55
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8795D58_unk1
@@ -35,8 +35,8 @@ CompText8795D58::
 	.string "Deleting you should\n"
 	.string "help pass the time!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE56
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E56
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8795D58_unk2

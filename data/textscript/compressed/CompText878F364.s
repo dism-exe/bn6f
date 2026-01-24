@@ -159,7 +159,7 @@ CompText878F364::
 
 	def_text_script CompText878F364_unk20
 	ts_check_flag [
-		flag: 0x1124,
+		flag: EVENT_1124,
 		jumpIfTrue: CompText878F364_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -222,7 +222,7 @@ CompText878F364::
 		jumpIfNone: CompText878F364_unk22_id,
 		jumpIfSome: CompText878F364_unk22_id,
 	]
-	ts_flag_set flag=0x1124
+	ts_flag_set flag=EVENT_1124
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Ahh,you'll buy it!?"
@@ -279,7 +279,7 @@ CompText878F364::
 
 	def_text_script CompText878F364_unk25
 	ts_check_flag [
-		flag: 0x123B,
+		flag: EVENT_123B,
 		jumpIfTrue: CompText878F364_unk28_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -343,8 +343,8 @@ CompText878F364::
 	.string "now except introduce\n"
 	.string "you to some viruses!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1239
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_1239
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText878F364_unk27
@@ -417,7 +417,7 @@ CompText878F364::
 	.string "to go home from now\n"
 	.string "on..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x123B
+	ts_flag_set flag=EVENT_123B
 	ts_end
 
 	def_text_script CompText878F364_unk28

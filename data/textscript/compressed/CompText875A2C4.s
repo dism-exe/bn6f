@@ -10,7 +10,7 @@ CompText875A2C4::
 	text_archive_start
 
 	def_text_script CompText875A2C4_unk0
-	ts_flag_set flag=0x54C
+	ts_flag_set flag=EVENT_54C
 	ts_msg_open
 	.string "The clione is a\n"
 	.string "mollusk also known\n"
@@ -23,79 +23,79 @@ CompText875A2C4::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_flag [
-		flag: 0x554,
+		flag: EVENT_554,
 		jumpIfTrue: CompText875A2C4_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x547,
+		flag: EVENT_547,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x548,
+		flag: EVENT_548,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x549,
+		flag: EVENT_549,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54A,
+		flag: EVENT_54A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54B,
+		flag: EVENT_54B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54C,
+		flag: EVENT_54C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54D,
+		flag: EVENT_54D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54E,
+		flag: EVENT_54E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54F,
+		flag: EVENT_54F,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x550,
+		flag: EVENT_550,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x551,
+		flag: EVENT_551,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x552,
+		flag: EVENT_552,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x553,
+		flag: EVENT_553,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_jump target=CompText875A2C4_unk8_id
 
 	def_text_script CompText875A2C4_unk1
-	ts_flag_set flag=0x54D
+	ts_flag_set flag=EVENT_54D
 	ts_msg_open
 	.string "This is a king crab."
 	ts_key_wait any=0x0
@@ -111,79 +111,79 @@ CompText875A2C4::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_flag [
-		flag: 0x554,
+		flag: EVENT_554,
 		jumpIfTrue: CompText875A2C4_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x547,
+		flag: EVENT_547,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x548,
+		flag: EVENT_548,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x549,
+		flag: EVENT_549,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54A,
+		flag: EVENT_54A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54B,
+		flag: EVENT_54B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54C,
+		flag: EVENT_54C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54D,
+		flag: EVENT_54D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54E,
+		flag: EVENT_54E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54F,
+		flag: EVENT_54F,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x550,
+		flag: EVENT_550,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x551,
+		flag: EVENT_551,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x552,
+		flag: EVENT_552,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x553,
+		flag: EVENT_553,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_jump target=CompText875A2C4_unk8_id
 
 	def_text_script CompText875A2C4_unk2
-	ts_flag_set flag=0x54E
+	ts_flag_set flag=EVENT_54E
 	ts_msg_open
 	.string "The nautilus is not\n"
 	.string "a new kid on the\n"
@@ -201,79 +201,79 @@ CompText875A2C4::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_flag [
-		flag: 0x554,
+		flag: EVENT_554,
 		jumpIfTrue: CompText875A2C4_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x547,
+		flag: EVENT_547,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x548,
+		flag: EVENT_548,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x549,
+		flag: EVENT_549,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54A,
+		flag: EVENT_54A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54B,
+		flag: EVENT_54B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54C,
+		flag: EVENT_54C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54D,
+		flag: EVENT_54D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54E,
+		flag: EVENT_54E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54F,
+		flag: EVENT_54F,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x550,
+		flag: EVENT_550,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x551,
+		flag: EVENT_551,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x552,
+		flag: EVENT_552,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x553,
+		flag: EVENT_553,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_jump target=CompText875A2C4_unk8_id
 
 	def_text_script CompText875A2C4_unk3
-	ts_flag_set flag=0x547
+	ts_flag_set flag=EVENT_547
 	ts_msg_open
 	.string "There is a recording\n"
 	.string "playing."
@@ -294,79 +294,79 @@ CompText875A2C4::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_flag [
-		flag: 0x554,
+		flag: EVENT_554,
 		jumpIfTrue: CompText875A2C4_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x547,
+		flag: EVENT_547,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x548,
+		flag: EVENT_548,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x549,
+		flag: EVENT_549,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54A,
+		flag: EVENT_54A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54B,
+		flag: EVENT_54B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54C,
+		flag: EVENT_54C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54D,
+		flag: EVENT_54D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54E,
+		flag: EVENT_54E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54F,
+		flag: EVENT_54F,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x550,
+		flag: EVENT_550,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x551,
+		flag: EVENT_551,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x552,
+		flag: EVENT_552,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x553,
+		flag: EVENT_553,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_jump target=CompText875A2C4_unk8_id
 
 	def_text_script CompText875A2C4_unk4
-	ts_flag_set flag=0x548
+	ts_flag_set flag=EVENT_548
 	ts_msg_open
 	.string "There is a recording\n"
 	.string "playing."
@@ -388,79 +388,79 @@ CompText875A2C4::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_flag [
-		flag: 0x554,
+		flag: EVENT_554,
 		jumpIfTrue: CompText875A2C4_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x547,
+		flag: EVENT_547,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x548,
+		flag: EVENT_548,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x549,
+		flag: EVENT_549,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54A,
+		flag: EVENT_54A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54B,
+		flag: EVENT_54B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54C,
+		flag: EVENT_54C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54D,
+		flag: EVENT_54D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54E,
+		flag: EVENT_54E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54F,
+		flag: EVENT_54F,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x550,
+		flag: EVENT_550,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x551,
+		flag: EVENT_551,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x552,
+		flag: EVENT_552,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x553,
+		flag: EVENT_553,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_jump target=CompText875A2C4_unk8_id
 
 	def_text_script CompText875A2C4_unk5
-	ts_flag_set flag=0x549
+	ts_flag_set flag=EVENT_549
 	ts_msg_open
 	.string "There is a recording\n"
 	.string "playing."
@@ -477,79 +477,79 @@ CompText875A2C4::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_flag [
-		flag: 0x554,
+		flag: EVENT_554,
 		jumpIfTrue: CompText875A2C4_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x547,
+		flag: EVENT_547,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x548,
+		flag: EVENT_548,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x549,
+		flag: EVENT_549,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54A,
+		flag: EVENT_54A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54B,
+		flag: EVENT_54B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54C,
+		flag: EVENT_54C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54D,
+		flag: EVENT_54D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54E,
+		flag: EVENT_54E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54F,
+		flag: EVENT_54F,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x550,
+		flag: EVENT_550,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x551,
+		flag: EVENT_551,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x552,
+		flag: EVENT_552,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x553,
+		flag: EVENT_553,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_jump target=CompText875A2C4_unk8_id
 
 	def_text_script CompText875A2C4_unk6
-	ts_flag_set flag=0x54A
+	ts_flag_set flag=EVENT_54A
 	ts_msg_open
 	.string "There is a recording\n"
 	.string "playing."
@@ -566,79 +566,79 @@ CompText875A2C4::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_flag [
-		flag: 0x554,
+		flag: EVENT_554,
 		jumpIfTrue: CompText875A2C4_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x547,
+		flag: EVENT_547,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x548,
+		flag: EVENT_548,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x549,
+		flag: EVENT_549,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54A,
+		flag: EVENT_54A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54B,
+		flag: EVENT_54B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54C,
+		flag: EVENT_54C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54D,
+		flag: EVENT_54D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54E,
+		flag: EVENT_54E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54F,
+		flag: EVENT_54F,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x550,
+		flag: EVENT_550,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x551,
+		flag: EVENT_551,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x552,
+		flag: EVENT_552,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x553,
+		flag: EVENT_553,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_jump target=CompText875A2C4_unk8_id
 
 	def_text_script CompText875A2C4_unk7
-	ts_flag_set flag=0x54B
+	ts_flag_set flag=EVENT_54B
 	ts_msg_open
 	.string "There is a recording\n"
 	.string "playing."
@@ -660,79 +660,79 @@ CompText875A2C4::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_flag [
-		flag: 0x554,
+		flag: EVENT_554,
 		jumpIfTrue: CompText875A2C4_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x547,
+		flag: EVENT_547,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x548,
+		flag: EVENT_548,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x549,
+		flag: EVENT_549,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54A,
+		flag: EVENT_54A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54B,
+		flag: EVENT_54B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54C,
+		flag: EVENT_54C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54D,
+		flag: EVENT_54D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54E,
+		flag: EVENT_54E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x54F,
+		flag: EVENT_54F,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x550,
+		flag: EVENT_550,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x551,
+		flag: EVENT_551,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x552,
+		flag: EVENT_552,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0x553,
+		flag: EVENT_553,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875A2C4_unk9_id,
 	]
 	ts_jump target=CompText875A2C4_unk8_id
 
 	def_text_script CompText875A2C4_unk8
-	ts_flag_set flag=0x554
+	ts_flag_set flag=EVENT_554
 	ts_msg_open
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -793,12 +793,12 @@ CompText875A2C4::
 	def_text_script CompText875A2C4_unk10
 	ts_msg_open
 	ts_check_flag [
-		flag: 0x532,
+		flag: EVENT_532,
 		jumpIfTrue: CompText875A2C4_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x51A,
+		flag: EVENT_51A,
 		jumpIfTrue: CompText875A2C4_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

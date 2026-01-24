@@ -28,7 +28,7 @@ CompText8761698::
 		jumpIfProtoMan: CompText8761698_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0xCC7,
+		flag: EVENT_CC7,
 		jumpIfTrue: CompText8761698_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -78,7 +78,7 @@ CompText8761698::
 	ts_clear_msg
 	.string "PASSWORD CONFIRMED."
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0xCD8
+	ts_flag_clear flag=EVENT_CD8
 	ts_end
 
 	def_text_script CompText8761698_unk4
@@ -151,7 +151,7 @@ CompText8761698::
 	ts_msg_open
 	.string "... YOU MAY PASS."
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0xCD7
+	ts_flag_clear flag=EVENT_CD7
 	ts_end
 
 	def_text_script CompText8761698_unk7

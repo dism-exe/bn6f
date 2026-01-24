@@ -11,17 +11,17 @@ CompText87712C8::
 
 	def_text_script CompText87712C8_unk0
 	ts_check_flag [
-		flag: 0x657,
+		flag: EVENT_657,
 		jumpIfTrue: CompText87712C8_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x636,
+		flag: EVENT_636,
 		jumpIfTrue: CompText87712C8_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x636
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_636
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87712C8_unk1
@@ -56,16 +56,16 @@ CompText87712C8::
 
 	def_text_script CompText87712C8_unk5
 	ts_check_flag [
-		flag: 0x669,
+		flag: EVENT_669,
 		jumpIfTrue: CompText87712C8_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x652,
+		flag: EVENT_652,
 		jumpIfTrue: CompText87712C8_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x652
+	ts_flag_set flag=EVENT_652
 	ts_mugshot_show mugshot=0x1E
 	ts_msg_open
 	.string "Time for the\n"
@@ -139,8 +139,8 @@ CompText87712C8::
 	ts_clear_msg
 	.string "START!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x643
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_643
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87712C8_unk7
@@ -245,12 +245,12 @@ CompText87712C8::
 
 	def_text_script CompText87712C8_unk15
 	ts_check_flag [
-		flag: 0x645,
+		flag: EVENT_645,
 		jumpIfTrue: CompText87712C8_unk16_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x645
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_645
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87712C8_unk16
@@ -263,11 +263,11 @@ CompText87712C8::
 
 	def_text_script CompText87712C8_unk17
 	ts_check_flag [
-		flag: 0x653,
+		flag: EVENT_653,
 		jumpIfTrue: CompText87712C8_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x653
+	ts_flag_set flag=EVENT_653
 	ts_mugshot_show mugshot=0x1F
 	ts_msg_open
 	.string "Lan,let's start\n"
@@ -393,8 +393,8 @@ CompText87712C8::
 	ts_clear_msg
 	.string "Battle Start!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x650
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_650
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87712C8_unk19

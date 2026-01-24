@@ -32,8 +32,8 @@ CompText877DAB4::
 	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0x1, 0xFF
-	ts_flag_set flag=0x1726
-	ts_flag_set flag=0x85E
+	ts_flag_set flag=EVENT_1726
+	ts_flag_set flag=EVENT_85E
 	ts_end
 
 	def_text_script CompText877DAB4_unk1
@@ -82,11 +82,11 @@ CompText877DAB4::
 
 	def_text_script CompText877DAB4_unk20
 	ts_check_flag [
-		flag: 0x11FC,
+		flag: EVENT_11FC,
 		jumpIfTrue: CompText877DAB4_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11FC
+	ts_flag_set flag=EVENT_11FC
 	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "I'm a lawyer here."
@@ -192,21 +192,21 @@ CompText877DAB4::
 
 	def_text_script CompText877DAB4_unk22
 	ts_check_flag [
-		flag: 0x123C,
+		flag: EVENT_123C,
 		jumpIfTrue: CompText877DAB4_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x123B,
+		flag: EVENT_123B,
 		jumpIfTrue: CompText877DAB4_unk24_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1237,
+		flag: EVENT_1237,
 		jumpIfTrue: CompText877DAB4_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1237
+	ts_flag_set flag=EVENT_1237
 	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "You took my request?"
@@ -327,7 +327,7 @@ CompText877DAB4::
 	.string "I can't thank you\n"
 	.string "enough!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x123C
+	ts_flag_set flag=EVENT_123C
 	ts_clear_msg
 	ts_mugshot_hide
 	.string "Request Point\n"

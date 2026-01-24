@@ -24,7 +24,7 @@ CompText8756AA4::
 
 	def_text_script CompText8756AA4_unk1
 	ts_check_flag [
-		flag: 0x542,
+		flag: EVENT_542,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8756AA4_unk5_id,
 	]

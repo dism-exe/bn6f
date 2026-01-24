@@ -31,7 +31,7 @@ CompText876DE70::
 
 	def_text_script CompText876DE70_unk10
 	ts_check_flag [
-		flag: 0xA10,
+		flag: EVENT_A10,
 		jumpIfTrue: CompText876DE70_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -54,7 +54,7 @@ CompText876DE70::
 
 	def_text_script CompText876DE70_unk11
 	ts_check_flag [
-		flag: 0xA10,
+		flag: EVENT_A10,
 		jumpIfTrue: CompText876DE70_unk16_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -125,7 +125,7 @@ CompText876DE70::
 
 	def_text_script CompText876DE70_unk30
 	ts_check_flag [
-		flag: 0xC0A,
+		flag: EVENT_C0A,
 		jumpIfTrue: CompText876DE70_unk31_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

@@ -106,17 +106,17 @@ CompText87A1144::
 	ts_clear_msg
 	.string "BATTLE... START!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1DD
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1DD
 	ts_end
 
 	def_text_script CompText87A1144_unk12
 	ts_check_flag [
-		flag: 0x1D6,
+		flag: EVENT_1D6,
 		jumpIfTrue: CompText87A1144_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1D6
+	ts_flag_set flag=EVENT_1D6
 	ts_jump target=CompText87A1144_unk14_id
 
 	def_text_script CompText87A1144_unk13
@@ -130,7 +130,7 @@ CompText87A1144::
 
 	def_text_script CompText87A1144_unk14
 	ts_check_flag [
-		flag: 0x1EE,
+		flag: EVENT_1EE,
 		jumpIfTrue: CompText87A1144_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -189,7 +189,7 @@ CompText87A1144::
 	.string "GASCAN OR SOMETHING\n"
 	.string "OR ANOTHER..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1EE
+	ts_flag_set flag=EVENT_1EE
 	ts_end
 
 	def_text_script CompText87A1144_unk15

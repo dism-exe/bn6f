@@ -53,21 +53,21 @@ CompText8798EE4::
 
 	def_text_script CompText8798EE4_unk10
 	ts_check_flag [
-		flag: 0x11DA,
+		flag: EVENT_11DA,
 		jumpIfTrue: CompText8798EE4_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11D5,
+		flag: EVENT_11D5,
 		jumpIfTrue: CompText8798EE4_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11D3,
+		flag: EVENT_11D3,
 		jumpIfTrue: CompText8798EE4_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11D3
+	ts_flag_set flag=EVENT_11D3
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open
 	.string "YOU!!\n"
@@ -155,11 +155,11 @@ CompText8798EE4::
 
 	def_text_script CompText8798EE4_unk11
 	ts_check_flag [
-		flag: 0x11D4,
+		flag: EVENT_11D4,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8798EE4_unk12_id,
 	]
-	ts_flag_set flag=0x11D5
+	ts_flag_set flag=EVENT_11D5
 	ts_item_take [
 		item: 0x29,
 		amount: 0x1,
@@ -292,11 +292,11 @@ CompText8798EE4::
 
 	def_text_script CompText8798EE4_unk13
 	ts_check_flag [
-		flag: 0x11D6,
+		flag: EVENT_11D6,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8798EE4_unk14_id,
 	]
-	ts_flag_set flag=0x11DA
+	ts_flag_set flag=EVENT_11DA
 	ts_item_take [
 		item: 0x2A,
 		amount: 0x1,

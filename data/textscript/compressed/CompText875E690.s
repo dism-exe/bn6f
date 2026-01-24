@@ -74,7 +74,7 @@ CompText875E690::
 	.string "\"\n"
 	.string "CONFIRMED..."
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x46D
+	ts_flag_clear flag=EVENT_46D
 	ts_end
 
 	def_text_script CompText875E690_unk4
@@ -137,7 +137,7 @@ CompText875E690::
 	]
 	.string "\"!!"
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x74
+	ts_flag_clear flag=EVENT_74
 	ts_end
 
 	def_text_script CompText875E690_unk7
@@ -179,7 +179,7 @@ CompText875E690::
 	ts_jump target=CompText875E690_unk10_id
 
 	def_text_script CompText875E690_unk10
-	ts_flag_clear flag=0x73
+	ts_flag_clear flag=EVENT_73
 	ts_end
 
 	def_text_script CompText875E690_unk11

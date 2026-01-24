@@ -10,11 +10,11 @@ CompText8795A44::
 	text_archive_start
 
 	def_text_script CompText8795A44_unk0
-	ts_flag_set flag=0xAB8
+	ts_flag_set flag=EVENT_AB8
 	ts_end
 
 	def_text_script CompText8795A44_unk1
-	ts_flag_set flag=0xAB9
+	ts_flag_set flag=EVENT_AB9
 	ts_end
 
 	def_text_script CompText8795A44_unk2
@@ -55,17 +55,17 @@ CompText8795A44::
 
 	def_text_script CompText8795A44_unk20
 	ts_check_flag [
-		flag: 0xCD8,
+		flag: EVENT_CD8,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8795A44_unk26_id,
 	]
 	ts_check_flag [
-		flag: 0xCC2,
+		flag: EVENT_CC2,
 		jumpIfTrue: CompText8795A44_unk22_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCE4,
+		flag: EVENT_CE4,
 		jumpIfTrue: CompText8795A44_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -111,7 +111,7 @@ CompText8795A44::
 	.string "think...?\n"
 	.string "Hee,hee,hee!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xCC2
+	ts_flag_set flag=EVENT_CC2
 	ts_end
 
 	def_text_script CompText8795A44_unk22
@@ -144,12 +144,12 @@ CompText8795A44::
 
 	def_text_script CompText8795A44_unk23
 	ts_check_flag [
-		flag: 0xCC8,
+		flag: EVENT_CC8,
 		jumpIfTrue: CompText8795A44_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCE4,
+		flag: EVENT_CE4,
 		jumpIfTrue: CompText8795A44_unk24_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -182,7 +182,7 @@ CompText8795A44::
 	.string "Go on,get outta\n"
 	.string "here! Scram!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xCE4
+	ts_flag_set flag=EVENT_CE4
 	ts_end
 
 	def_text_script CompText8795A44_unk24

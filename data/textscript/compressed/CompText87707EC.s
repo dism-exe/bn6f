@@ -10,8 +10,8 @@ CompText87707EC::
 	text_archive_start
 
 	def_text_script CompText87707EC_unk0
-	ts_flag_set flag=0x630
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_630
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87707EC_unk1

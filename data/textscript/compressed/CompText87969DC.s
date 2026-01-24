@@ -19,8 +19,8 @@ CompText87969DC::
 	.string "If that's true...\n"
 	.string "It's your doom!!!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE57
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E57
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87969DC_unk1
@@ -35,8 +35,8 @@ CompText87969DC::
 	.string "here they like owned\n"
 	.string "the place!?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE58
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E58
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87969DC_unk2
@@ -46,8 +46,8 @@ CompText87969DC::
 	.string "other side hanging\n"
 	.string "around... Ewww!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE59
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E59
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87969DC_unk3

@@ -11,7 +11,7 @@ CompText87EE1AC::
 
 	def_text_script CompText87EE1AC_unk0
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87EE1AC_unk11_id,
 	]
@@ -57,7 +57,7 @@ CompText87EE1AC::
 
 	def_text_script CompText87EE1AC_unk1
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87EE1AC_unk12_id,
 	]

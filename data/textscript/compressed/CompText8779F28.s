@@ -311,7 +311,7 @@ CompText8779F28::
 
 	def_text_script CompText8779F28_unk52
 	ts_check_flag [
-		flag: 0xC20,
+		flag: EVENT_C20,
 		jumpIfTrue: CompText8779F28_unk54_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

@@ -82,17 +82,17 @@ CompText875906C::
 	def_text_script CompText875906C_unk5
 	ts_msg_open
 	ts_check_flag [
-		flag: 0x81C,
+		flag: EVENT_81C,
 		jumpIfTrue: CompText875906C_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x81A,
+		flag: EVENT_81A,
 		jumpIfTrue: CompText875906C_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x430,
+		flag: EVENT_430,
 		jumpIfTrue: CompText875906C_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -178,18 +178,18 @@ CompText875906C::
 
 	def_text_script CompText875906C_unk10
 	ts_check_flag [
-		flag: 0x480,
+		flag: EVENT_480,
 		jumpIfTrue: CompText875906C_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_multi_flag [
-		flag: 0x47D,
+		flag: EVENT_47D,
 		count: 0x3,
 		jumpIfAllSet: TS_CONTINUE,
 		jumpIfNotAllSet: CompText875906C_unk11_id,
 	]
-	ts_flag_set flag=0x480
-	ts_flag_set flag=0x437
+	ts_flag_set flag=EVENT_480
+	ts_flag_set flag=EVENT_437
 	ts_end
 
 	def_text_script CompText875906C_unk11

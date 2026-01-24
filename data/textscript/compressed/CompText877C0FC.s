@@ -11,11 +11,11 @@ CompText877C0FC::
 
 	def_text_script CompText877C0FC_unk0
 	ts_check_flag [
-		flag: 0x870,
+		flag: EVENT_870,
 		jumpIfTrue: CompText877C0FC_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x870
+	ts_flag_set flag=EVENT_870
 	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "Court will not be\n"

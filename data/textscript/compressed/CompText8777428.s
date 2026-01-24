@@ -41,7 +41,7 @@ CompText8777428::
 
 	def_text_script CompText8777428_unk1
 	ts_check_flag [
-		flag: 0xE08,
+		flag: EVENT_E08,
 		jumpIfTrue: CompText8777428_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

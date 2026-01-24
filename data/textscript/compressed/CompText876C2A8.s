@@ -11,16 +11,16 @@ CompText876C2A8::
 
 	def_text_script CompText876C2A8_unk0
 	ts_check_flag [
-		flag: 0x1101,
+		flag: EVENT_1101,
 		jumpIfTrue: CompText876C2A8_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1100,
+		flag: EVENT_1100,
 		jumpIfTrue: CompText876C2A8_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1100
+	ts_flag_set flag=EVENT_1100
 	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "You must be the\n"
@@ -78,26 +78,26 @@ CompText876C2A8::
 
 	def_text_script CompText876C2A8_unk2
 	ts_check_flag [
-		flag: 0x1106,
+		flag: EVENT_1106,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText876C2A8_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0x1107,
+		flag: EVENT_1107,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText876C2A8_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0x1108,
+		flag: EVENT_1108,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText876C2A8_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0x1109,
+		flag: EVENT_1109,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText876C2A8_unk1_id,
 	]
-	ts_flag_set flag=0x1101
+	ts_flag_set flag=EVENT_1101
 	ts_mugshot_show mugshot=0xC
 	ts_msg_open
 	.string "You got all the\n"
@@ -168,29 +168,29 @@ CompText876C2A8::
 	ts_clear_msg
 	.string "Penguin Capture!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x11AC
+	ts_flag_set flag=EVENT_11AC
 	ts_check_flag [
-		flag: 0x11AF,
+		flag: EVENT_11AF,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText876C2A8_unk6_id,
 	]
 	ts_check_flag [
-		flag: 0x11AE,
+		flag: EVENT_11AE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText876C2A8_unk6_id,
 	]
 	ts_check_flag [
-		flag: 0x11AD,
+		flag: EVENT_11AD,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText876C2A8_unk6_id,
 	]
 	ts_check_flag [
-		flag: 0x11AC,
+		flag: EVENT_11AC,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText876C2A8_unk6_id,
 	]
 	ts_check_flag [
-		flag: 0x11AB,
+		flag: EVENT_11AB,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText876C2A8_unk6_id,
 	]
@@ -217,11 +217,11 @@ CompText876C2A8::
 
 	def_text_script CompText876C2A8_unk10
 	ts_check_flag [
-		flag: 0x1148,
+		flag: EVENT_1148,
 		jumpIfTrue: CompText876C2A8_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1148
+	ts_flag_set flag=EVENT_1148
 	ts_mugshot_show mugshot=0x8
 	ts_msg_open
 	.string "You got something\n"

@@ -21,11 +21,11 @@ CompText879FB24::
 
 	def_text_script CompText879FB24_unk5
 	ts_check_flag [
-		flag: 0x859,
+		flag: EVENT_859,
 		jumpIfTrue: CompText879FB24_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x859
+	ts_flag_set flag=EVENT_859
 	ts_msg_open
 	ts_mugshot_show mugshot=0x46
 	.string "Seems like you\n"
@@ -108,11 +108,11 @@ CompText879FB24::
 
 	def_text_script CompText879FB24_unk7
 	ts_check_flag [
-		flag: 0x859,
+		flag: EVENT_859,
 		jumpIfTrue: CompText879FB24_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x859
+	ts_flag_set flag=EVENT_859
 	ts_msg_open
 	ts_mugshot_show mugshot=0x45
 	.string "Seems like you\n"

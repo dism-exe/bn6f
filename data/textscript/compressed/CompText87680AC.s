@@ -11,7 +11,7 @@ CompText87680AC::
 
 	def_text_script CompText87680AC_unk0
 	ts_check_flag [
-		flag: 0x463,
+		flag: EVENT_463,
 		jumpIfTrue: CompText87680AC_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -26,7 +26,7 @@ CompText87680AC::
 	.string "don't come home too\n"
 	.string "late!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x463
+	ts_flag_set flag=EVENT_463
 	ts_end
 
 	def_text_script CompText87680AC_unk1
@@ -45,7 +45,7 @@ CompText87680AC::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x462,
+		flag: EVENT_462,
 		jumpIfTrue: CompText87680AC_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -65,7 +65,7 @@ CompText87680AC::
 	.string "Once it is ready,\n"
 	.string "I'll let you know."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x462
+	ts_flag_set flag=EVENT_462
 	ts_end
 
 	def_text_script CompText87680AC_unk3
@@ -79,7 +79,7 @@ CompText87680AC::
 
 	def_text_script CompText87680AC_unk5
 	ts_check_flag [
-		flag: 0x41A,
+		flag: EVENT_41A,
 		jumpIfTrue: CompText87680AC_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -98,12 +98,12 @@ CompText87680AC::
 
 	def_text_script CompText87680AC_unk6
 	ts_check_flag [
-		flag: 0x41A,
+		flag: EVENT_41A,
 		jumpIfTrue: CompText87680AC_unk10_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1CA0,
+		flag: EVENT_1CA0,
 		jumpIfTrue: CompText87680AC_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -111,7 +111,7 @@ CompText87680AC::
 
 	def_text_script CompText87680AC_unk7
 	ts_check_flag [
-		flag: 0x1D20,
+		flag: EVENT_1D20,
 		jumpIfTrue: CompText87680AC_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -208,7 +208,7 @@ CompText87680AC::
 
 	def_text_script CompText87680AC_unk25
 	ts_check_flag [
-		flag: 0x442,
+		flag: EVENT_442,
 		jumpIfTrue: CompText87680AC_unk26_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

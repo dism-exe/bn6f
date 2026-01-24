@@ -23,7 +23,7 @@ CompText877EDD8::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xA60,
+		flag: EVENT_A60,
 		jumpIfTrue: CompText877EDD8_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -74,7 +74,7 @@ CompText877EDD8::
 	ts_mugshot_show mugshot=0x0
 	.string "OK!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xA60
+	ts_flag_set flag=EVENT_A60
 	ts_end
 
 	def_text_script CompText877EDD8_unk1
@@ -119,11 +119,11 @@ CompText877EDD8::
 
 	def_text_script CompText877EDD8_unk4
 	ts_check_flag [
-		flag: 0xABF,
+		flag: EVENT_ABF,
 		jumpIfTrue: CompText877EDD8_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xABF
+	ts_flag_set flag=EVENT_ABF
 	ts_mugshot_show mugshot=0x20
 	ts_msg_open
 	.string "I am Ann Zap."
@@ -152,11 +152,11 @@ CompText877EDD8::
 
 	def_text_script CompText877EDD8_unk5
 	ts_check_flag [
-		flag: 0xAC0,
+		flag: EVENT_AC0,
 		jumpIfTrue: CompText877EDD8_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xAC0
+	ts_flag_set flag=EVENT_AC0
 	ts_mugshot_show mugshot=0x21
 	ts_msg_open
 	.string "Well if it isn't\n"

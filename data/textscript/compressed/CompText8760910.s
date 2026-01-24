@@ -175,7 +175,7 @@ CompText8760910::
 	ts_jump target=CompText8760910_unk10_id
 
 	def_text_script CompText8760910_unk10
-	ts_flag_clear flag=0x179
+	ts_flag_clear flag=EVENT_179
 	ts_end
 
 	def_text_script CompText8760910_unk11
@@ -262,7 +262,7 @@ CompText8760910::
 	ts_jump target=CompText8760910_unk15_id
 
 	def_text_script CompText8760910_unk15
-	ts_flag_clear flag=0x16A
+	ts_flag_clear flag=EVENT_16A
 	ts_end
 
 	def_text_script CompText8760910_unk16

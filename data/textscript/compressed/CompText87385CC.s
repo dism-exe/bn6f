@@ -11,22 +11,22 @@ CompText87385CC::
 
 	def_text_script CompText87385CC_unk0
 	ts_check_flag [
-		flag: 0x67D,
+		flag: EVENT_67D,
 		jumpIfTrue: CompText87385CC_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE68,
+		flag: EVENT_E68,
 		jumpIfTrue: CompText87385CC_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1729,
+		flag: EVENT_COPYBOT_ACTIVE,
 		jumpIfTrue: CompText87385CC_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87385CC_unk1_id,
 	]
@@ -47,7 +47,7 @@ CompText87385CC::
 	ts_jump target=CompText87385CC_unk9_id
 
 	def_text_script CompText87385CC_unk1
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_msg_open
 	.string "MegaMan isn't in\n"
 	.string "the PET..."
@@ -55,7 +55,7 @@ CompText87385CC::
 	ts_end
 
 	def_text_script CompText87385CC_unk2
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "It seems you can't\n"
@@ -65,9 +65,9 @@ CompText87385CC::
 	ts_end
 
 	def_text_script CompText87385CC_unk3
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_check_flag [
-		flag: 0x616,
+		flag: EVENT_616,
 		jumpIfTrue: CompText87385CC_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -93,12 +93,12 @@ CompText87385CC::
 
 	def_text_script CompText87385CC_unk5
 	ts_check_multi_flag [
-		flag: 0xE5B,
+		flag: EVENT_E5B,
 		count: 0x3,
 		jumpIfAllSet: CompText87385CC_unk6_id,
 		jumpIfNotAllSet: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Lan,jack in later!\n"
@@ -108,7 +108,7 @@ CompText87385CC::
 	ts_end
 
 	def_text_script CompText87385CC_unk6
-	ts_flag_clear flag=0xE68
+	ts_flag_clear flag=EVENT_E68
 	ts_jump target=CompText87385CC_unk9_id
 
 	def_text_script CompText87385CC_unk7
@@ -145,19 +145,19 @@ CompText87385CC::
 		jumpIfOutOfRange: CompText87385CC_unk0_id,
 	]
 	ts_check_flag [
-		flag: 0x1CA0,
+		flag: EVENT_1CA0,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87385CC_unk11_id,
 	]
 	ts_check_flag [
-		flag: 0x1D20,
+		flag: EVENT_1D20,
 		jumpIfTrue: CompText87385CC_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_jump target=CompText87385CC_unk0_id
 
 	def_text_script CompText87385CC_unk11
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Lan,let's check out\n"
@@ -167,19 +167,19 @@ CompText87385CC::
 
 	def_text_script CompText87385CC_unk12
 	ts_check_flag [
-		flag: 0x1CA2,
+		flag: EVENT_1CA2,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87385CC_unk13_id,
 	]
 	ts_check_flag [
-		flag: 0x1D22,
+		flag: EVENT_1D22,
 		jumpIfTrue: CompText87385CC_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_jump target=CompText87385CC_unk0_id
 
 	def_text_script CompText87385CC_unk13
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Let's check the\n"
@@ -197,11 +197,11 @@ CompText87385CC::
 		jumpIfOutOfRange: CompText87385CC_unk0_id,
 	]
 	ts_check_flag [
-		flag: 0x61C,
+		flag: EVENT_61C,
 		jumpIfTrue: CompText87385CC_unk0_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Lan,you can't jack\n"
@@ -225,19 +225,19 @@ CompText87385CC::
 		jumpIfOutOfRange: CompText87385CC_unk0_id,
 	]
 	ts_check_flag [
-		flag: 0xA2E,
+		flag: EVENT_A2E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87385CC_unk21_id,
 	]
 	ts_jump target=CompText87385CC_unk0_id
 
 	def_text_script CompText87385CC_unk21
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_jump target=CompText87385CC_unk22_id
 
 	def_text_script CompText87385CC_unk22
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87385CC_unk23_id,
 	]
@@ -266,14 +266,14 @@ CompText87385CC::
 		jumpIfOutOfRange: CompText87385CC_unk0_id,
 	]
 	ts_check_flag [
-		flag: 0xE34,
+		flag: EVENT_E34,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87385CC_unk26_id,
 	]
 	ts_jump target=CompText87385CC_unk0_id
 
 	def_text_script CompText87385CC_unk26
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_jump target=CompText87385CC_unk22_id
 
 	def_text_script CompText87385CC_unk27

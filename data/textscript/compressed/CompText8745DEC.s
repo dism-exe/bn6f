@@ -65,52 +65,52 @@ CompText8745DEC::
 
 	def_text_script CompText8745DEC_unk15
 	ts_check_flag [
-		flag: 0xE44,
+		flag: EVENT_E44,
 		jumpIfTrue: CompText8745DEC_unk29_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE3E,
+		flag: EVENT_E3E,
 		jumpIfTrue: CompText8745DEC_unk28_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE3C,
+		flag: EVENT_E3C,
 		jumpIfTrue: CompText8745DEC_unk27_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE36,
+		flag: EVENT_E36,
 		jumpIfTrue: CompText8745DEC_unk26_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE34,
+		flag: EVENT_E34,
 		jumpIfTrue: CompText8745DEC_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE2E,
+		flag: EVENT_E2E,
 		jumpIfTrue: CompText8745DEC_unk24_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE2C,
+		flag: EVENT_E2C,
 		jumpIfTrue: CompText8745DEC_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE2A,
+		flag: EVENT_E2A,
 		jumpIfTrue: CompText8745DEC_unk22_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE26,
+		flag: EVENT_E26,
 		jumpIfTrue: CompText8745DEC_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE16,
+		flag: EVENT_E16,
 		jumpIfTrue: CompText8745DEC_unk18_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -122,17 +122,17 @@ CompText8745DEC::
 
 	def_text_script CompText8745DEC_unk18
 	ts_check_flag [
-		flag: 0xE65,
+		flag: EVENT_E65,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8745DEC_unk30_id,
 	]
 	ts_check_flag [
-		flag: 0xE64,
+		flag: EVENT_E64,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8745DEC_unk30_id,
 	]
 	ts_check_flag [
-		flag: 0xE63,
+		flag: EVENT_E63,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8745DEC_unk30_id,
 	]

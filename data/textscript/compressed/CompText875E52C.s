@@ -36,12 +36,12 @@ CompText875E52C::
 
 	def_text_script CompText875E52C_unk6
 	ts_check_flag [
-		flag: 0xA22,
+		flag: EVENT_A22,
 		jumpIfTrue: CompText875E52C_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xA21,
+		flag: EVENT_A21,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875E52C_unk5_id,
 	]
@@ -53,7 +53,7 @@ CompText875E52C::
 	ts_clear_msg
 	.string "A v-virus!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xA73
+	ts_flag_set flag=EVENT_A73
 	ts_end
 
 	def_text_script CompText875E52C_unk7

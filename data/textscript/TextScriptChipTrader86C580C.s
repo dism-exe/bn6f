@@ -34,7 +34,7 @@ TextScriptChipTrader86C580C::
 
 	def_text_script TextScriptChipTrader86C580C_unk1
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: TextScriptChipTrader86C580C_unk20_id,
 	]
@@ -62,7 +62,7 @@ TextScriptChipTrader86C580C::
 
 	def_text_script TextScriptChipTrader86C580C_unk2
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: TextScriptChipTrader86C580C_unk30_id,
 	]
@@ -117,7 +117,7 @@ TextScriptChipTrader86C580C::
 	ts_clear_msg
 	ts_player_animate_scene animation=0x18
 	ts_sound_play00 track=0x73
-	ts_flag_set flag=0xF5
+	ts_flag_set flag=EVENT_F5
 	ts_position_text [
 		left: 0x5B,
 		top: 0x6C,
@@ -143,7 +143,7 @@ TextScriptChipTrader86C580C::
 	ts_player_finish
 	ts_player_reset_scene
 	ts_clear_msg
-	ts_flag_clear flag=0xF5
+	ts_flag_clear flag=EVENT_F5
 	ts_wait frames=0x6
 	ts_position_text [
 		left: 0x33,
@@ -180,7 +180,7 @@ TextScriptChipTrader86C580C::
 
 	def_text_script TextScriptChipTrader86C580C_unk4
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: TextScriptChipTrader86C580C_unk21_id,
 	]
@@ -243,7 +243,7 @@ TextScriptChipTrader86C580C::
 
 	def_text_script TextScriptChipTrader86C580C_unk7
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: TextScriptChipTrader86C580C_unk22_id,
 	]
@@ -271,7 +271,7 @@ TextScriptChipTrader86C580C::
 
 	def_text_script TextScriptChipTrader86C580C_unk8
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: TextScriptChipTrader86C580C_unk31_id,
 	]
@@ -327,7 +327,7 @@ TextScriptChipTrader86C580C::
 	ts_clear_msg
 	ts_player_animate_scene animation=0x18
 	ts_sound_play00 track=0x73
-	ts_flag_set flag=0xF5
+	ts_flag_set flag=EVENT_F5
 	ts_position_text [
 		left: 0x5B,
 		top: 0x6C,
@@ -353,7 +353,7 @@ TextScriptChipTrader86C580C::
 	ts_player_finish
 	ts_player_reset_scene
 	ts_clear_msg
-	ts_flag_clear flag=0xF5
+	ts_flag_clear flag=EVENT_F5
 	ts_wait frames=0x6
 	ts_position_text [
 		left: 0x33,
@@ -390,7 +390,7 @@ TextScriptChipTrader86C580C::
 
 	def_text_script TextScriptChipTrader86C580C_unk10
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: TextScriptChipTrader86C580C_unk23_id,
 	]
@@ -454,7 +454,7 @@ TextScriptChipTrader86C580C::
 
 	def_text_script TextScriptChipTrader86C580C_unk13
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: TextScriptChipTrader86C580C_unk24_id,
 	]
@@ -488,7 +488,7 @@ TextScriptChipTrader86C580C::
 	.string "the BugFrags!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_flag_set flag=0xF6
+	ts_flag_set flag=EVENT_F6
 	ts_wait frames=0x3C
 	.string "With a powerful howl\n"
 	.string "the ChipData is\n"
@@ -497,7 +497,7 @@ TextScriptChipTrader86C580C::
 	ts_clear_msg
 	ts_player_animate_scene animation=0x18
 	ts_sound_play00 track=0x73
-	ts_flag_set flag=0xF5
+	ts_flag_set flag=EVENT_F5
 	ts_position_text [
 		left: 0x5B,
 		top: 0x6C,
@@ -524,7 +524,7 @@ TextScriptChipTrader86C580C::
 	ts_player_finish
 	ts_player_reset_scene
 	ts_clear_msg
-	ts_flag_clear flag=0xF5
+	ts_flag_clear flag=EVENT_F5
 	ts_wait frames=0x6
 	ts_position_text [
 		left: 0x33,
@@ -560,7 +560,7 @@ TextScriptChipTrader86C580C::
 
 	def_text_script TextScriptChipTrader86C580C_unk16
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: TextScriptChipTrader86C580C_unk25_id,
 	]
@@ -977,7 +977,7 @@ TextScriptChipTrader86C580C::
 	ts_menu_option_crossover_trader char=0x1
 	.string "0\n"
 	.string "(U/D:Change points)"
-	ts_flag_set flag=0x1725
+	ts_flag_set flag=EVENT_1725
 	ts_menu_select_crossover_trader
 	ts_wait_hold unused=0x0
 
@@ -1038,13 +1038,13 @@ TextScriptChipTrader86C580C::
 
 	def_text_script TextScriptChipTrader86C580C_unk55
 	ts_msg_open_quick
-	ts_flag_set flag=0xF6
+	ts_flag_set flag=EVENT_F6
 	ts_control_lock
 	ts_wait frames=0x3C
 	ts_control_unlock
 	ts_player_animate_scene animation=0x18
 	ts_sound_play00 track=0x73
-	ts_flag_set flag=0xF5
+	ts_flag_set flag=EVENT_F5
 	ts_position_text [
 		left: 0x5B,
 		top: 0x6C,
@@ -1071,7 +1071,7 @@ TextScriptChipTrader86C580C::
 	ts_player_finish
 	ts_player_reset_scene
 	ts_clear_msg
-	ts_flag_clear flag=0xF5
+	ts_flag_clear flag=EVENT_F5
 	ts_wait frames=0x6
 	ts_position_text [
 		left: 0x33,
@@ -1206,13 +1206,13 @@ TextScriptChipTrader86C580C::
 
 	def_text_script TextScriptChipTrader86C580C_unk58
 	ts_msg_open_quick
-	ts_flag_set flag=0xF6
+	ts_flag_set flag=EVENT_F6
 	ts_control_lock
 	ts_wait frames=0x3C
 	ts_control_unlock
 	ts_player_animate_scene animation=0x18
 	ts_sound_play00 track=0x73
-	ts_flag_set flag=0xF5
+	ts_flag_set flag=EVENT_F5
 	ts_position_text [
 		left: 0x5B,
 		top: 0x6C,
@@ -1238,7 +1238,7 @@ TextScriptChipTrader86C580C::
 	ts_player_finish
 	ts_player_reset_scene
 	ts_clear_msg
-	ts_flag_clear flag=0xF5
+	ts_flag_clear flag=EVENT_F5
 	ts_wait frames=0x6
 	ts_position_text [
 		left: 0x33,
@@ -1367,13 +1367,13 @@ TextScriptChipTrader86C580C::
 
 	def_text_script TextScriptChipTrader86C580C_unk61
 	ts_msg_open_quick
-	ts_flag_set flag=0xF6
+	ts_flag_set flag=EVENT_F6
 	ts_control_lock
 	ts_wait frames=0x3C
 	ts_control_unlock
 	ts_player_animate_scene animation=0x18
 	ts_sound_play00 track=0x73
-	ts_flag_set flag=0xF5
+	ts_flag_set flag=EVENT_F5
 	ts_position_text [
 		left: 0x5B,
 		top: 0x6C,
@@ -1399,7 +1399,7 @@ TextScriptChipTrader86C580C::
 	ts_player_finish
 	ts_player_reset_scene
 	ts_clear_msg
-	ts_flag_clear flag=0xF5
+	ts_flag_clear flag=EVENT_F5
 	ts_wait frames=0x6
 	ts_position_text [
 		left: 0x33,

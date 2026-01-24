@@ -11,16 +11,16 @@ CompText879B2B4::
 
 	def_text_script CompText879B2B4_unk0
 	ts_check_flag [
-		flag: 0x1116,
+		flag: EVENT_1116,
 		jumpIfTrue: CompText879B2B4_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1115,
+		flag: EVENT_1115,
 		jumpIfTrue: CompText879B2B4_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1115
+	ts_flag_set flag=EVENT_1115
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Sorry to spring this\n"
@@ -201,7 +201,7 @@ CompText879B2B4::
 	.string "Thanks so much!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_flag_set flag=0x1116
+	ts_flag_set flag=EVENT_1116
 	ts_end
 
 	def_text_script CompText879B2B4_unk3
@@ -269,21 +269,21 @@ CompText879B2B4::
 
 	def_text_script CompText879B2B4_unk10
 	ts_check_flag [
-		flag: 0x11A1,
+		flag: EVENT_11A1,
 		jumpIfTrue: CompText879B2B4_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11A3,
+		flag: EVENT_11A3,
 		jumpIfTrue: CompText879B2B4_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11A0,
+		flag: EVENT_11A0,
 		jumpIfTrue: CompText879B2B4_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11A0
+	ts_flag_set flag=EVENT_11A0
 	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "Ahhh! I've been\n"
@@ -377,7 +377,7 @@ CompText879B2B4::
 	ts_end
 
 	def_text_script CompText879B2B4_unk12
-	ts_flag_set flag=0x11A1
+	ts_flag_set flag=EVENT_11A1
 	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "...Cut! Perfect!\n"
@@ -449,17 +449,17 @@ CompText879B2B4::
 
 	def_text_script CompText879B2B4_unk14
 	ts_check_flag [
-		flag: 0x11A1,
+		flag: EVENT_11A1,
 		jumpIfTrue: CompText879B2B4_unk20_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11A3,
+		flag: EVENT_11A3,
 		jumpIfTrue: CompText879B2B4_unk19_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11A0,
+		flag: EVENT_11A0,
 		jumpIfTrue: CompText879B2B4_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -665,12 +665,12 @@ CompText879B2B4::
 	.string "Not while there is\n"
 	.string "someone to save!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x11A2
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_11A2
 	ts_end
 
 	def_text_script CompText879B2B4_unk16
-	ts_flag_set flag=0x1217
+	ts_flag_set flag=EVENT_1217
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "....Uggghhhh"
@@ -831,7 +831,7 @@ CompText879B2B4::
 	ts_wait frames=0x3C
 	.string "CUT!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x11A3
+	ts_flag_set flag=EVENT_11A3
 	ts_clear_msg
 	.string "Perfect!!\n"
 	.string "Absolutely perfect!!"
@@ -870,7 +870,7 @@ CompText879B2B4::
 	.string "\"Cybo's Disaster\"\n"
 	.string "ACTION!!!!"
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x1217
+	ts_flag_clear flag=EVENT_1217
 	ts_end
 
 	def_text_script CompText879B2B4_unk18
@@ -893,7 +893,7 @@ CompText879B2B4::
 	.string "\"Cybo's Disaster\"\n"
 	.string "ACTION!!!!"
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x1217
+	ts_flag_clear flag=EVENT_1217
 	ts_end
 
 	def_text_script CompText879B2B4_unk19
@@ -916,17 +916,17 @@ CompText879B2B4::
 
 	def_text_script CompText879B2B4_unk21
 	ts_check_flag [
-		flag: 0x11A1,
+		flag: EVENT_11A1,
 		jumpIfTrue: CompText879B2B4_unk24_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11A3,
+		flag: EVENT_11A3,
 		jumpIfTrue: CompText879B2B4_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11A0,
+		flag: EVENT_11A0,
 		jumpIfTrue: CompText879B2B4_unk22_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1105,7 +1105,7 @@ CompText879B2B4::
 	ts_sound_disable_text_sfx
 	ts_sound_play00 track=0x74
 	ts_sound_enable_text_sfx
-	ts_flag_set flag=0x17D
+	ts_flag_set flag=EVENT_17D
 	ts_clear_msg
 	.string "MY WORK HERE IS\n"
 	.string "NOW DONE."
@@ -1115,7 +1115,7 @@ CompText879B2B4::
 	ts_key_wait any=0x0
 	ts_sound_disable_text_sfx
 	ts_sound_play00 track=0x76
-	ts_flag_set flag=0x1E4
+	ts_flag_set flag=EVENT_1E4
 	ts_end
 
 	def_text_script CompText879B2B4_unk42

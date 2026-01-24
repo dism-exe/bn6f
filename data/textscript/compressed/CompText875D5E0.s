@@ -51,11 +51,11 @@ CompText875D5E0::
 
 	def_text_script CompText875D5E0_unk3
 	ts_check_flag [
-		flag: 0xE65,
+		flag: EVENT_E65,
 		jumpIfTrue: CompText875D5E0_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xE65
+	ts_flag_set flag=EVENT_E65
 	ts_msg_open
 	.string "Lan stamped his\n"
 	.string "Stamp Rally Card!!"

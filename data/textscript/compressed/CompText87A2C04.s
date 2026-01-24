@@ -11,16 +11,16 @@ CompText87A2C04::
 
 	def_text_script CompText87A2C04_unk0
 	ts_check_flag [
-		flag: 0x11FF,
+		flag: EVENT_11FF,
 		jumpIfTrue: CompText87A2C04_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11FE,
+		flag: EVENT_11FE,
 		jumpIfTrue: CompText87A2C04_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11FE
+	ts_flag_set flag=EVENT_11FE
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "Ahh,you must be the\n"
@@ -115,34 +115,34 @@ CompText87A2C04::
 
 	def_text_script CompText87A2C04_unk2
 	ts_check_flag [
-		flag: 0x1200,
+		flag: EVENT_1200,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A2C04_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0x1201,
+		flag: EVENT_1201,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A2C04_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0x1202,
+		flag: EVENT_1202,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A2C04_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0x1203,
+		flag: EVENT_1203,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A2C04_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0x1204,
+		flag: EVENT_1204,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A2C04_unk1_id,
 	]
 	ts_jump target=CompText87A2C04_unk3_id
 
 	def_text_script CompText87A2C04_unk3
-	ts_flag_set flag=0x11FF
+	ts_flag_set flag=EVENT_11FF
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "We were able to\n"
@@ -253,12 +253,12 @@ CompText87A2C04::
 
 	def_text_script CompText87A2C04_unk6
 	ts_check_flag [
-		flag: 0x1205,
+		flag: EVENT_1205,
 		jumpIfTrue: CompText87A2C04_unk26_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11FE,
+		flag: EVENT_11FE,
 		jumpIfTrue: CompText87A2C04_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -304,8 +304,8 @@ CompText87A2C04::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1200
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1200
 	ts_end
 
 	def_text_script CompText87A2C04_unk8
@@ -329,12 +329,12 @@ CompText87A2C04::
 
 	def_text_script CompText87A2C04_unk10
 	ts_check_flag [
-		flag: 0x1206,
+		flag: EVENT_1206,
 		jumpIfTrue: CompText87A2C04_unk27_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11FE,
+		flag: EVENT_11FE,
 		jumpIfTrue: CompText87A2C04_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -382,8 +382,8 @@ CompText87A2C04::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1201
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1201
 	ts_end
 
 	def_text_script CompText87A2C04_unk12
@@ -407,12 +407,12 @@ CompText87A2C04::
 
 	def_text_script CompText87A2C04_unk14
 	ts_check_flag [
-		flag: 0x1207,
+		flag: EVENT_1207,
 		jumpIfTrue: CompText87A2C04_unk28_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11FE,
+		flag: EVENT_11FE,
 		jumpIfTrue: CompText87A2C04_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -458,8 +458,8 @@ CompText87A2C04::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1202
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1202
 	ts_end
 
 	def_text_script CompText87A2C04_unk16
@@ -483,12 +483,12 @@ CompText87A2C04::
 
 	def_text_script CompText87A2C04_unk18
 	ts_check_flag [
-		flag: 0x1208,
+		flag: EVENT_1208,
 		jumpIfTrue: CompText87A2C04_unk29_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11FE,
+		flag: EVENT_11FE,
 		jumpIfTrue: CompText87A2C04_unk19_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -534,8 +534,8 @@ CompText87A2C04::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1203
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1203
 	ts_end
 
 	def_text_script CompText87A2C04_unk20
@@ -559,12 +559,12 @@ CompText87A2C04::
 
 	def_text_script CompText87A2C04_unk22
 	ts_check_flag [
-		flag: 0x1209,
+		flag: EVENT_1209,
 		jumpIfTrue: CompText87A2C04_unk30_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11FE,
+		flag: EVENT_11FE,
 		jumpIfTrue: CompText87A2C04_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -610,8 +610,8 @@ CompText87A2C04::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1204
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1204
 	ts_end
 
 	def_text_script CompText87A2C04_unk24

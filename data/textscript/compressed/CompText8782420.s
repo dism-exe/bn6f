@@ -73,7 +73,7 @@ CompText8782420::
 
 	def_text_script CompText8782420_unk11
 	ts_check_flag [
-		flag: 0xEA8,
+		flag: EVENT_EA8,
 		jumpIfTrue: CompText8782420_unk10_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -82,8 +82,8 @@ CompText8782420::
 	.string "Don't like it here!?\n"
 	.string "Too bad!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xEA7
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_EA7
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8782420_unk12

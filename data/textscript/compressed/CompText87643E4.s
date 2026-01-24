@@ -11,7 +11,7 @@ CompText87643E4::
 
 	def_text_script CompText87643E4_unk0
 	ts_check_flag [
-		flag: 0x464,
+		flag: EVENT_464,
 		jumpIfTrue: CompText87643E4_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -34,7 +34,7 @@ CompText87643E4::
 	.string "I'm pretty smart,\n"
 	.string "huh?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x464
+	ts_flag_set flag=EVENT_464
 	ts_end
 
 	def_text_script CompText87643E4_unk1
@@ -48,7 +48,7 @@ CompText87643E4::
 
 	def_text_script CompText87643E4_unk2
 	ts_check_flag [
-		flag: 0x465,
+		flag: EVENT_465,
 		jumpIfTrue: CompText87643E4_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -85,7 +85,7 @@ CompText87643E4::
 	.string "to your Navi.\n"
 	.string "It's a great tool!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x465
+	ts_flag_set flag=EVENT_465
 	ts_end
 
 	def_text_script CompText87643E4_unk3
@@ -99,7 +99,7 @@ CompText87643E4::
 
 	def_text_script CompText87643E4_unk4
 	ts_check_flag [
-		flag: 0x466,
+		flag: EVENT_466,
 		jumpIfTrue: CompText87643E4_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -113,7 +113,7 @@ CompText87643E4::
 	.string "B Button to dash!\n"
 	.string "Try it out!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x466
+	ts_flag_set flag=EVENT_466
 	ts_end
 
 	def_text_script CompText87643E4_unk5
@@ -130,7 +130,7 @@ CompText87643E4::
 
 	def_text_script CompText87643E4_unk6
 	ts_check_flag [
-		flag: 0x467,
+		flag: EVENT_467,
 		jumpIfTrue: CompText87643E4_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -153,7 +153,7 @@ CompText87643E4::
 	.string "R Button! Don't\n"
 	.string "forget it!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x467
+	ts_flag_set flag=EVENT_467
 	ts_end
 
 	def_text_script CompText87643E4_unk7
@@ -171,7 +171,7 @@ CompText87643E4::
 
 	def_text_script CompText87643E4_unk8
 	ts_check_flag [
-		flag: 0x468,
+		flag: EVENT_468,
 		jumpIfTrue: CompText87643E4_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -214,7 +214,7 @@ CompText87643E4::
 	.string "I hope you get used\n"
 	.string "to things here fast!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x468
+	ts_flag_set flag=EVENT_468
 	ts_end
 
 	def_text_script CompText87643E4_unk9
@@ -406,21 +406,21 @@ CompText87643E4::
 
 	def_text_script CompText87643E4_unk50
 	ts_check_flag [
-		flag: 0x504,
+		flag: EVENT_504,
 		jumpIfTrue: CompText87643E4_unk56_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x53F,
+		flag: EVENT_53F,
 		jumpIfTrue: CompText87643E4_unk53_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x53E,
+		flag: EVENT_53E,
 		jumpIfTrue: CompText87643E4_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x53E
+	ts_flag_set flag=EVENT_53E
 	ts_msg_open
 	ts_mugshot_show mugshot=0x19
 	.string "Aggggghhhh...\n"
@@ -516,8 +516,8 @@ CompText87643E4::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x557
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_557
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87643E4_unk51
@@ -567,8 +567,8 @@ CompText87643E4::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x557
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_557
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87643E4_unk52
@@ -626,7 +626,7 @@ CompText87643E4::
 	ts_mugshot_show mugshot=0x0
 	.string "Thanks,mister!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x53F
+	ts_flag_set flag=EVENT_53F
 	ts_end
 
 	def_text_script CompText87643E4_unk53
@@ -732,7 +732,7 @@ CompText87643E4::
 
 	def_text_script CompText87643E4_unk65
 	ts_check_flag [
-		flag: 0x538,
+		flag: EVENT_538,
 		jumpIfTrue: CompText87643E4_unk68_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -754,7 +754,7 @@ CompText87643E4::
 
 	def_text_script CompText87643E4_unk66
 	ts_check_flag [
-		flag: 0x538,
+		flag: EVENT_538,
 		jumpIfTrue: CompText87643E4_unk69_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -776,7 +776,7 @@ CompText87643E4::
 
 	def_text_script CompText87643E4_unk67
 	ts_check_flag [
-		flag: 0x538,
+		flag: EVENT_538,
 		jumpIfTrue: CompText87643E4_unk70_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

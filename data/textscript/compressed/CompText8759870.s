@@ -67,16 +67,16 @@ CompText8759870::
 
 	def_text_script CompText8759870_unk6
 	ts_check_flag [
-		flag: 0x1148,
+		flag: EVENT_1148,
 		jumpIfTrue: CompText8759870_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1188,
+		flag: EVENT_1188,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8759870_unk7_id,
 	]
-	ts_flag_set flag=0x1148
+	ts_flag_set flag=EVENT_1148
 	ts_msg_open
 	.string "... Hmm?"
 	ts_key_wait any=0x0
@@ -115,26 +115,26 @@ CompText8759870::
 
 	def_text_script CompText8759870_unk10
 	ts_check_flag [
-		flag: 0x163,
+		flag: EVENT_163,
 		jumpIfTrue: CompText8759870_unk0_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11F,
+		flag: EVENT_11F,
 		jumpIfTrue: CompText8759870_unk19_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x682,
+		flag: EVENT_682,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8759870_unk14_id,
 	]
 	ts_check_flag [
-		flag: 0x685,
+		flag: EVENT_685,
 		jumpIfTrue: CompText8759870_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x685
+	ts_flag_set flag=EVENT_685
 	ts_check_chapter [
 		lower: 0x24,
 		upper: 0x24,
@@ -151,7 +151,7 @@ CompText8759870::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8759870_unk17_id,
 	]
@@ -189,7 +189,7 @@ CompText8759870::
 	ts_end
 
 	def_text_script CompText8759870_unk12
-	ts_flag_set flag=0x684
+	ts_flag_set flag=EVENT_684
 	ts_end
 
 	def_text_script CompText8759870_unk13
@@ -224,12 +224,12 @@ CompText8759870::
 
 	def_text_script CompText8759870_unk14
 	ts_check_flag [
-		flag: 0x120,
+		flag: EVENT_120,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8759870_unk0_id,
 	]
 	ts_check_flag [
-		flag: 0x683,
+		flag: EVENT_683,
 		jumpIfTrue: CompText8759870_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

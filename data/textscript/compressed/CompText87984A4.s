@@ -31,21 +31,21 @@ CompText87984A4::
 
 	def_text_script CompText87984A4_unk10
 	ts_check_flag [
-		flag: 0x11F7,
+		flag: EVENT_11F7,
 		jumpIfTrue: CompText87984A4_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11F8,
+		flag: EVENT_11F8,
 		jumpIfTrue: CompText87984A4_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11F4,
+		flag: EVENT_11F4,
 		jumpIfTrue: CompText87984A4_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11F4
+	ts_flag_set flag=EVENT_11F4
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "AHHH! I'VE BEEN\n"
@@ -117,7 +117,7 @@ CompText87984A4::
 	ts_mugshot_hide
 	.string "MegaMan updated\n"
 	.string "the UpdtData.\n"
-	ts_flag_set flag=0x11F7
+	ts_flag_set flag=EVENT_11F7
 	ts_key_wait any=0x0
 	ts_end
 

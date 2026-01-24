@@ -112,11 +112,11 @@ CompText87948B8::
 
 	def_text_script CompText87948B8_unk20
 	ts_check_flag [
-		flag: 0xA81,
+		flag: EVENT_A81,
 		jumpIfTrue: CompText87948B8_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xA81
+	ts_flag_set flag=EVENT_A81
 	ts_msg_open
 	.string "You...\n"
 	.string "Shall you take\n"
@@ -224,7 +224,7 @@ CompText87948B8::
 	.string "Now,let the test\n"
 	.string "begin..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xA85
+	ts_flag_set flag=EVENT_A85
 	ts_end
 
 	def_text_script CompText87948B8_unk23
@@ -239,11 +239,11 @@ CompText87948B8::
 
 	def_text_script CompText87948B8_unk25
 	ts_check_flag [
-		flag: 0xA82,
+		flag: EVENT_A82,
 		jumpIfTrue: CompText87948B8_unk26_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xA82
+	ts_flag_set flag=EVENT_A82
 	ts_msg_open
 	.string "You...\n"
 	.string "Shall you take\n"
@@ -351,7 +351,7 @@ CompText87948B8::
 	.string "Now,let the test\n"
 	.string "begin..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xA87
+	ts_flag_set flag=EVENT_A87
 	ts_end
 
 	def_text_script CompText87948B8_unk28

@@ -49,7 +49,7 @@ CompText87558D8::
 
 	def_text_script CompText87558D8_unk3
 	ts_check_flag [
-		flag: 0xC12,
+		flag: EVENT_C12,
 		jumpIfTrue: CompText87558D8_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -92,7 +92,7 @@ CompText87558D8::
 	.string "changed."
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0x18C,
+		flag: EVENT_18C,
 		jumpIfTrue: CompText87558D8_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -118,7 +118,7 @@ CompText87558D8::
 	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_scene
-	ts_flag_set flag=0x18C
+	ts_flag_set flag=EVENT_18C
 	ts_end
 
 	def_text_script CompText87558D8_unk6

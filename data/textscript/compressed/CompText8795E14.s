@@ -43,16 +43,16 @@ CompText8795E14::
 
 	def_text_script CompText8795E14_unk10
 	ts_check_flag [
-		flag: 0xCB4,
+		flag: EVENT_CB4,
 		jumpIfTrue: CompText8795E14_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCAE,
+		flag: EVENT_CAE,
 		jumpIfTrue: CompText8795E14_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xCAE
+	ts_flag_set flag=EVENT_CAE
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open
 	.string "I've got quite a bit\n"
@@ -139,8 +139,8 @@ CompText8795E14::
 	.string "Are you ready?\n"
 	.string "Let's go!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xCB1
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_CB1
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8795E14_unk13
@@ -324,17 +324,17 @@ CompText8795E14::
 
 	def_text_script CompText8795E14_unk50
 	ts_check_flag [
-		flag: 0x118F,
+		flag: EVENT_118F,
 		jumpIfTrue: CompText8795E14_unk54_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x118E,
+		flag: EVENT_118E,
 		jumpIfTrue: CompText8795E14_unk54_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x118D,
+		flag: EVENT_118D,
 		jumpIfTrue: CompText8795E14_unk54_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -399,7 +399,7 @@ CompText8795E14::
 	ts_end
 
 	def_text_script CompText8795E14_unk51
-	ts_flag_set flag=0x118D
+	ts_flag_set flag=EVENT_118D
 	ts_text_speed delay=0x2
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
@@ -431,7 +431,7 @@ CompText8795E14::
 	ts_end
 
 	def_text_script CompText8795E14_unk52
-	ts_flag_set flag=0x118E
+	ts_flag_set flag=EVENT_118E
 	ts_text_speed delay=0x2
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
@@ -463,7 +463,7 @@ CompText8795E14::
 	ts_end
 
 	def_text_script CompText8795E14_unk53
-	ts_flag_set flag=0x118F
+	ts_flag_set flag=EVENT_118F
 	ts_text_speed delay=0x2
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
@@ -513,11 +513,11 @@ CompText8795E14::
 
 	def_text_script CompText8795E14_unk55
 	ts_check_flag [
-		flag: 0x11D4,
+		flag: EVENT_11D4,
 		jumpIfTrue: CompText8795E14_unk56_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11D4
+	ts_flag_set flag=EVENT_11D4
 	ts_item_take [
 		item: 0x27,
 		amount: 0x1,
@@ -605,7 +605,7 @@ CompText8795E14::
 
 	def_text_script CompText8795E14_unk60
 	ts_check_flag [
-		flag: 0xCD7,
+		flag: EVENT_CD7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8795E14_unk61_id,
 	]

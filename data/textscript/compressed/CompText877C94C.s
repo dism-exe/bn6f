@@ -44,7 +44,7 @@ CompText877C94C::
 
 	def_text_script CompText877C94C_unk3
 	ts_check_flag [
-		flag: 0x824,
+		flag: EVENT_824,
 		jumpIfTrue: CompText877C94C_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -60,22 +60,22 @@ CompText877C94C::
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	ts_check_flag [
-		flag: 0x814,
+		flag: EVENT_814,
 		jumpIfTrue: CompText877C94C_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x812,
+		flag: EVENT_812,
 		jumpIfTrue: CompText877C94C_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x80A,
+		flag: EVENT_80A,
 		jumpIfTrue: CompText877C94C_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x867,
+		flag: EVENT_867,
 		jumpIfTrue: CompText877C94C_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -213,16 +213,16 @@ CompText877C94C::
 
 	def_text_script CompText877C94C_unk50
 	ts_check_flag [
-		flag: 0x111C,
+		flag: EVENT_111C,
 		jumpIfTrue: CompText877C94C_unk54_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x111B,
+		flag: EVENT_111B,
 		jumpIfTrue: CompText877C94C_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x111B
+	ts_flag_set flag=EVENT_111B
 	ts_mugshot_show mugshot=0x10
 	ts_msg_open
 	.string "Ummm... Sorry to\n"
@@ -406,7 +406,7 @@ CompText877C94C::
 	.string "will surely speed up\n"
 	.string "my research..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x111C
+	ts_flag_set flag=EVENT_111C
 	ts_end
 
 	def_text_script CompText877C94C_unk53

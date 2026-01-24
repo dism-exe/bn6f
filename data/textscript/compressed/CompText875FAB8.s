@@ -23,12 +23,12 @@ CompText875FAB8::
 
 	def_text_script CompText875FAB8_unk1
 	ts_check_flag [
-		flag: 0x865,
+		flag: EVENT_865,
 		jumpIfTrue: CompText875FAB8_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x864,
+		flag: EVENT_864,
 		jumpIfTrue: CompText875FAB8_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -90,7 +90,7 @@ CompText875FAB8::
 	.string "go look for the\n"
 	.string "answer..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x864
+	ts_flag_set flag=EVENT_864
 	ts_end
 
 	def_text_script CompText875FAB8_unk2
@@ -131,7 +131,7 @@ CompText875FAB8::
 	ts_end
 
 	def_text_script CompText875FAB8_unk3
-	ts_flag_set flag=0x866
+	ts_flag_set flag=EVENT_866
 	ts_msg_open
 	.string "TO PASS THROUGH\n"
 	.string "HERE,"
@@ -184,7 +184,7 @@ CompText875FAB8::
 	ts_mugshot_show mugshot=0x37
 	.string "......"
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x87D
+	ts_flag_clear flag=EVENT_87D
 	ts_end
 
 	def_text_script CompText875FAB8_unk4
@@ -300,7 +300,7 @@ CompText875FAB8::
 	ts_jump target=CompText875FAB8_unk9_id
 
 	def_text_script CompText875FAB8_unk9
-	ts_flag_clear flag=0x169
+	ts_flag_clear flag=EVENT_169
 	ts_end
 
 	def_text_script CompText875FAB8_unk10

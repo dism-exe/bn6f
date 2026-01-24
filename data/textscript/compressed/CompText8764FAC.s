@@ -11,12 +11,12 @@ CompText8764FAC::
 
 	def_text_script CompText8764FAC_unk0
 	ts_check_flag [
-		flag: 0x631,
+		flag: EVENT_631,
 		jumpIfTrue: CompText8764FAC_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x631
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_631
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8764FAC_unk1
@@ -96,7 +96,7 @@ CompText8764FAC::
 
 	def_text_script CompText8764FAC_unk10
 	ts_check_flag [
-		flag: 0x612,
+		flag: EVENT_612,
 		jumpIfTrue: CompText8764FAC_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -136,7 +136,7 @@ CompText8764FAC::
 
 	def_text_script CompText8764FAC_unk12
 	ts_check_flag [
-		flag: 0x612,
+		flag: EVENT_612,
 		jumpIfTrue: CompText8764FAC_unk17_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -154,7 +154,7 @@ CompText8764FAC::
 
 	def_text_script CompText8764FAC_unk13
 	ts_check_flag [
-		flag: 0x612,
+		flag: EVENT_612,
 		jumpIfTrue: CompText8764FAC_unk18_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

@@ -100,7 +100,7 @@ CompText875F424::
 	ts_msg_open
 	.string "BATTLE START!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xFC
+	ts_flag_set flag=EVENT_FC
 	ts_end
 
 	def_text_script CompText875F424_unk6
@@ -108,7 +108,7 @@ CompText875F424::
 	.string "PLEASE,PASS ON\n"
 	.string "THROUGH."
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x32
+	ts_flag_clear flag=EVENT_32
 	ts_end
 
 	def_text_script CompText875F424_unk7
@@ -165,7 +165,7 @@ CompText875F424::
 	.string "THANK YOU FOR\n"
 	.string "YOUR PAYMENT."
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x86
+	ts_flag_clear flag=EVENT_86
 	ts_end
 
 	def_text_script CompText875F424_unk10
@@ -258,7 +258,7 @@ CompText875F424::
 	ts_jump target=CompText875F424_unk15_id
 
 	def_text_script CompText875F424_unk15
-	ts_flag_clear flag=0x173
+	ts_flag_clear flag=EVENT_173
 	ts_end
 
 	def_text_script CompText875F424_unk16

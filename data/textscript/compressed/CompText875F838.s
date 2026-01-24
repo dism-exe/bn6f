@@ -55,11 +55,11 @@ CompText875F838::
 
 	def_text_script CompText875F838_unk5
 	ts_check_flag [
-		flag: 0x634,
+		flag: EVENT_634,
 		jumpIfTrue: CompText875F838_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x634
+	ts_flag_set flag=EVENT_634
 	ts_end
 
 	def_text_script CompText875F838_unk6
@@ -97,17 +97,17 @@ CompText875F838::
 
 	def_text_script CompText875F838_unk8
 	ts_check_flag [
-		flag: 0xC85,
+		flag: EVENT_C85,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875F838_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0xC89,
+		flag: EVENT_C89,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875F838_unk10_id,
 	]
 	ts_check_flag [
-		flag: 0xC8D,
+		flag: EVENT_C8D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875F838_unk11_id,
 	]
@@ -178,7 +178,7 @@ CompText875F838::
 	]
 	.string "\"!!"
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x78
+	ts_flag_clear flag=EVENT_78
 	ts_end
 
 	

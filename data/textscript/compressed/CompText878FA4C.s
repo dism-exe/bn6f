@@ -11,11 +11,11 @@ CompText878FA4C::
 
 	def_text_script CompText878FA4C_unk0
 	ts_check_flag [
-		flag: 0x867,
+		flag: EVENT_867,
 		jumpIfTrue: CompText878FA4C_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x867
+	ts_flag_set flag=EVENT_867
 	ts_msg_open
 	ts_mugshot_show mugshot=0x3E
 	.string "Welcome to the\n"
@@ -97,7 +97,7 @@ CompText878FA4C::
 	.string "Got it!\n"
 	.string "Thank you!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x874
+	ts_flag_set flag=EVENT_874
 	ts_end
 
 	def_text_script CompText878FA4C_unk1

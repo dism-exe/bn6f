@@ -11,7 +11,7 @@ CompText879F6A0::
 
 	def_text_script CompText879F6A0_unk0
 	ts_check_flag [
-		flag: 0xA6C,
+		flag: EVENT_A6C,
 		jumpIfTrue: CompText879F6A0_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -24,7 +24,7 @@ CompText879F6A0::
 	ts_clear_msg
 	.string "... Wah! A virus!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xA6B
+	ts_flag_set flag=EVENT_A6B
 	ts_end
 
 	def_text_script CompText879F6A0_unk1

@@ -11,16 +11,16 @@ CompText879EBA8::
 
 	def_text_script CompText879EBA8_unk0
 	ts_check_flag [
-		flag: 0x1165,
+		flag: EVENT_1165,
 		jumpIfTrue: CompText879EBA8_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1164,
+		flag: EVENT_1164,
 		jumpIfTrue: CompText879EBA8_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1164
+	ts_flag_set flag=EVENT_1164
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Hello!\n"
@@ -75,7 +75,7 @@ CompText879EBA8::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_flag [
-		flag: 0x1F76,
+		flag: EVENT_1F76,
 		jumpIfTrue: CompText879EBA8_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -102,7 +102,7 @@ CompText879EBA8::
 
 	def_text_script CompText879EBA8_unk1
 	ts_check_flag [
-		flag: 0x1F76,
+		flag: EVENT_1F76,
 		jumpIfTrue: CompText879EBA8_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -153,7 +153,7 @@ CompText879EBA8::
 	ts_end
 
 	def_text_script CompText879EBA8_unk2
-	ts_flag_set flag=0x1165
+	ts_flag_set flag=EVENT_1165
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "...HUH!?\n"
@@ -281,7 +281,7 @@ CompText879EBA8::
 	ts_end
 
 	def_text_script CompText879EBA8_unk4
-	ts_flag_set flag=0x1165
+	ts_flag_set flag=EVENT_1165
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "...HUH!?\n"

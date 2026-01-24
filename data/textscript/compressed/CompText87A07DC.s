@@ -11,16 +11,16 @@ CompText87A07DC::
 
 	def_text_script CompText87A07DC_unk0
 	ts_check_flag [
-		flag: 0x111A,
+		flag: EVENT_111A,
 		jumpIfTrue: CompText87A07DC_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1119,
+		flag: EVENT_1119,
 		jumpIfTrue: CompText87A07DC_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1119
+	ts_flag_set flag=EVENT_1119
 	ts_mugshot_show mugshot=0x46
 	ts_msg_open
 	.string "Hey ya...\n"
@@ -209,7 +209,7 @@ CompText87A07DC::
 	.string "\"\n"
 	.string "cool?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x111A
+	ts_flag_set flag=EVENT_111A
 	ts_end
 
 	def_text_script CompText87A07DC_unk3

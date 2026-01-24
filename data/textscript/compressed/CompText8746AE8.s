@@ -25,7 +25,7 @@ CompText8746AE8::
 		jumpIfProtoMan: CompText8746AE8_unk21_id,
 	]
 	ts_check_flag [
-		flag: 0x163,
+		flag: EVENT_163,
 		jumpIfTrue: CompText8746AE8_unk10_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

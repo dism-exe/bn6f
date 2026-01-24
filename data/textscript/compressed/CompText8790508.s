@@ -132,8 +132,8 @@ CompText8790508::
 	.string "lie... I'll\n"
 	.string "finish this here!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xEB3
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_EB3
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8790508_unk16
@@ -141,8 +141,8 @@ CompText8790508::
 	ts_msg_open
 	.string "Arrrrrghhhh!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xEB5
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_EB5
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8790508_unk17

@@ -42,7 +42,7 @@ CompText875CFC4::
 	.string "calms the heart."
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0x18B,
+		flag: EVENT_18B,
 		jumpIfTrue: CompText875CFC4_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -73,7 +73,7 @@ CompText875CFC4::
 	.string "increased by\n"
 	.string "2 MB!!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x18B
+	ts_flag_set flag=EVENT_18B
 	ts_end
 
 	def_text_script CompText875CFC4_unk3
@@ -90,11 +90,11 @@ CompText875CFC4::
 
 	def_text_script CompText875CFC4_unk4
 	ts_check_flag [
-		flag: 0xE63,
+		flag: EVENT_E63,
 		jumpIfTrue: CompText875CFC4_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xE63
+	ts_flag_set flag=EVENT_E63
 	ts_msg_open
 	.string "Lan stamped his\n"
 	.string "Stamp Rally Card!!"

@@ -31,21 +31,21 @@ CompText87982DC::
 
 	def_text_script CompText87982DC_unk10
 	ts_check_flag [
-		flag: 0x11F6,
+		flag: EVENT_11F6,
 		jumpIfTrue: CompText87982DC_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11F8,
+		flag: EVENT_11F8,
 		jumpIfTrue: CompText87982DC_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11F3,
+		flag: EVENT_11F3,
 		jumpIfTrue: CompText87982DC_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11F3
+	ts_flag_set flag=EVENT_11F3
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "YOU'VE GOT SOME\n"
@@ -116,7 +116,7 @@ CompText87982DC::
 	ts_mugshot_hide
 	.string "MegaMan updated\n"
 	.string "the UpdtData!!\n"
-	ts_flag_set flag=0x11F6
+	ts_flag_set flag=EVENT_11F6
 	ts_key_wait any=0x0
 	ts_end
 

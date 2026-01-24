@@ -80,7 +80,7 @@ CompText875C4B8::
 	.string "jacking in."
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0x186,
+		flag: EVENT_186,
 		jumpIfTrue: CompText875C4B8_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -94,7 +94,7 @@ CompText875C4B8::
 	ts_key_wait any=0x0
 	ts_mugshot_hide
 	ts_check_flag [
-		flag: 0x1729,
+		flag: EVENT_COPYBOT_ACTIVE,
 		jumpIfTrue: CompText875C4B8_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -114,7 +114,7 @@ CompText875C4B8::
 	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_scene
-	ts_flag_set flag=0x186
+	ts_flag_set flag=EVENT_186
 	ts_end
 
 	def_text_script CompText875C4B8_unk5
@@ -170,18 +170,18 @@ CompText875C4B8::
 	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_scene
-	ts_flag_set flag=0x186
+	ts_flag_set flag=EVENT_186
 	ts_end
 
 	def_text_script CompText875C4B8_unk9
 
 	def_text_script CompText875C4B8_unk10
 	ts_check_flag [
-		flag: 0xA75,
+		flag: EVENT_A75,
 		jumpIfTrue: CompText875C4B8_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xA75
+	ts_flag_set flag=EVENT_A75
 	ts_end
 
 	def_text_script CompText875C4B8_unk11

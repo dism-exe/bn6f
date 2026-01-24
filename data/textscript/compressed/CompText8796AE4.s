@@ -31,7 +31,7 @@ CompText8796AE4::
 		amount: 0x1,
 	]
 	ts_player_animate_object animation=0x18
-	ts_flag_set flag=0xCC8
+	ts_flag_set flag=EVENT_CC8
 	ts_print_current_navi
 	.string " got:\n"
 	.string "\""
@@ -49,7 +49,7 @@ CompText8796AE4::
 
 	def_text_script CompText8796AE4_unk2
 	ts_check_flag [
-		flag: 0x7E,
+		flag: EVENT_7E,
 		jumpIfTrue: CompText8796AE4_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -124,16 +124,16 @@ CompText8796AE4::
 
 	def_text_script CompText8796AE4_unk10
 	ts_check_flag [
-		flag: 0xCB2,
+		flag: EVENT_CB2,
 		jumpIfTrue: CompText8796AE4_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCAC,
+		flag: EVENT_CAC,
 		jumpIfTrue: CompText8796AE4_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xCAC
+	ts_flag_set flag=EVENT_CAC
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open
 	.string "Ahh,DustMan!\n"
@@ -220,8 +220,8 @@ CompText8796AE4::
 	.string "Alright! Let's get\n"
 	.string "started then!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xCAF
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_CAF
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8796AE4_unk13
@@ -312,16 +312,16 @@ CompText8796AE4::
 
 	def_text_script CompText8796AE4_unk20
 	ts_check_flag [
-		flag: 0xCB3,
+		flag: EVENT_CB3,
 		jumpIfTrue: CompText8796AE4_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCAD,
+		flag: EVENT_CAD,
 		jumpIfTrue: CompText8796AE4_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xCAD
+	ts_flag_set flag=EVENT_CAD
 	ts_mugshot_show mugshot=0x44
 	ts_msg_open
 	.string "Hey DustMan!\n"
@@ -412,8 +412,8 @@ CompText8796AE4::
 	.string "Alright!\n"
 	.string "Let's start,DustMan!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xCB0
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_CB0
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8796AE4_unk23
@@ -528,7 +528,7 @@ CompText8796AE4::
 	ts_player_reset_object
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_flag_set flag=0x1167
+	ts_flag_set flag=EVENT_1167
 	ts_mugshot_show mugshot=0x3E
 	.string "Thank you so much\n"
 	.string "for finding me..."
@@ -540,7 +540,7 @@ CompText8796AE4::
 	ts_clear_msg
 	.string "Thank you..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1168
+	ts_flag_set flag=EVENT_1168
 	ts_end
 
 	def_text_script CompText8796AE4_unk31

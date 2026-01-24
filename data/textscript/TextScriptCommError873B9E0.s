@@ -217,7 +217,7 @@ TextScriptCommError873B9E0::
 
 	def_text_script TextScriptCommError873B9E0_unk24
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: TextScriptCommError873B9E0_unk22_id,
 	]

@@ -76,7 +76,7 @@ CompTextScriptNetworkPlyTmSave86CF618::
 
 	def_text_script CompTextScriptNetworkPlyTmSave86CF618_unk11
 	ts_check_flag [
-		flag: 0x1704,
+		flag: EVENT_1704,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompTextScriptNetworkPlyTmSave86CF618_unk12_id,
 	]

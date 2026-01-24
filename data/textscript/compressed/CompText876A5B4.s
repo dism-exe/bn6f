@@ -11,7 +11,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk0
 	ts_check_flag [
-		flag: 0x472,
+		flag: EVENT_472,
 		jumpIfTrue: CompText876A5B4_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -19,7 +19,7 @@ CompText876A5B4::
 	ts_msg_open
 	.string "...*sigh!*"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x472
+	ts_flag_set flag=EVENT_472
 	ts_end
 
 	def_text_script CompText876A5B4_unk1
@@ -31,7 +31,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk2
 	ts_check_flag [
-		flag: 0x473,
+		flag: EVENT_473,
 		jumpIfTrue: CompText876A5B4_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -39,7 +39,7 @@ CompText876A5B4::
 	ts_msg_open
 	.string "Nice to meet you!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x473
+	ts_flag_set flag=EVENT_473
 	ts_end
 
 	def_text_script CompText876A5B4_unk3
@@ -56,7 +56,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk4
 	ts_check_flag [
-		flag: 0x474,
+		flag: EVENT_474,
 		jumpIfTrue: CompText876A5B4_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -71,7 +71,7 @@ CompText876A5B4::
 	.string "first... Now he's my\n"
 	.string "favorite teacher!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x474
+	ts_flag_set flag=EVENT_474
 	ts_end
 
 	def_text_script CompText876A5B4_unk5
@@ -85,7 +85,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk6
 	ts_check_flag [
-		flag: 0x475,
+		flag: EVENT_475,
 		jumpIfTrue: CompText876A5B4_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -94,7 +94,7 @@ CompText876A5B4::
 	.string "You're Lan,right?\n"
 	.string "Nice to meet ya!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x475
+	ts_flag_set flag=EVENT_475
 	ts_end
 
 	def_text_script CompText876A5B4_unk7
@@ -108,7 +108,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk8
 	ts_check_flag [
-		flag: 0x476,
+		flag: EVENT_476,
 		jumpIfTrue: CompText876A5B4_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -125,7 +125,7 @@ CompText876A5B4::
 	.string "I can tell just by\n"
 	.string "looking at you!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x476
+	ts_flag_set flag=EVENT_476
 	ts_end
 
 	def_text_script CompText876A5B4_unk9
@@ -138,7 +138,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk10
 	ts_check_flag [
-		flag: 0x477,
+		flag: EVENT_477,
 		jumpIfTrue: CompText876A5B4_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -158,7 +158,7 @@ CompText876A5B4::
 	.string "a lot of layers to\n"
 	.string "peel through."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x477
+	ts_flag_set flag=EVENT_477
 	ts_end
 
 	def_text_script CompText876A5B4_unk11
@@ -176,7 +176,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk12
 	ts_check_flag [
-		flag: 0x478,
+		flag: EVENT_478,
 		jumpIfTrue: CompText876A5B4_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -190,7 +190,7 @@ CompText876A5B4::
 	.string "the Net in your\n"
 	.string "hometown,huh?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x478
+	ts_flag_set flag=EVENT_478
 	ts_end
 
 	def_text_script CompText876A5B4_unk13
@@ -204,7 +204,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk14
 	ts_check_flag [
-		flag: 0x479,
+		flag: EVENT_479,
 		jumpIfTrue: CompText876A5B4_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -216,7 +216,7 @@ CompText876A5B4::
 	ts_clear_msg
 	.string "Is your Navi ready?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x479
+	ts_flag_set flag=EVENT_479
 	ts_end
 
 	def_text_script CompText876A5B4_unk15
@@ -237,7 +237,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk20
 	ts_check_flag [
-		flag: 0x47A,
+		flag: EVENT_47A,
 		jumpIfTrue: CompText876A5B4_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -245,7 +245,7 @@ CompText876A5B4::
 	ts_msg_open
 	.string "Ummphh!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x47A
+	ts_flag_set flag=EVENT_47A
 	ts_end
 
 	def_text_script CompText876A5B4_unk21
@@ -258,7 +258,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk22
 	ts_check_flag [
-		flag: 0x484,
+		flag: EVENT_484,
 		jumpIfTrue: CompText876A5B4_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -268,7 +268,7 @@ CompText876A5B4::
 	.string "first time in the\n"
 	.string "real world?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x484
+	ts_flag_set flag=EVENT_484
 	ts_end
 
 	def_text_script CompText876A5B4_unk23
@@ -286,7 +286,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk24
 	ts_check_flag [
-		flag: 0x485,
+		flag: EVENT_485,
 		jumpIfTrue: CompText876A5B4_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -296,7 +296,7 @@ CompText876A5B4::
 	.string "Who did your\n"
 	.string "customizations?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x485
+	ts_flag_set flag=EVENT_485
 	ts_end
 
 	def_text_script CompText876A5B4_unk25
@@ -310,7 +310,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk26
 	ts_check_flag [
-		flag: 0x486,
+		flag: EVENT_486,
 		jumpIfTrue: CompText876A5B4_unk27_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -320,7 +320,7 @@ CompText876A5B4::
 	.string "You kinda look like\n"
 	.string "Lan!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x486
+	ts_flag_set flag=EVENT_486
 	ts_end
 
 	def_text_script CompText876A5B4_unk27
@@ -334,7 +334,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk28
 	ts_check_flag [
-		flag: 0x487,
+		flag: EVENT_487,
 		jumpIfTrue: CompText876A5B4_unk29_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -346,7 +346,7 @@ CompText876A5B4::
 	.string "Looks like you're\n"
 	.string "heavily customized!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x487
+	ts_flag_set flag=EVENT_487
 	ts_end
 
 	def_text_script CompText876A5B4_unk29
@@ -360,7 +360,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk30
 	ts_check_flag [
-		flag: 0x488,
+		flag: EVENT_488,
 		jumpIfTrue: CompText876A5B4_unk31_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -375,7 +375,7 @@ CompText876A5B4::
 	.string "Lan for some\n"
 	.string "customizing tips!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x488
+	ts_flag_set flag=EVENT_488
 	ts_end
 
 	def_text_script CompText876A5B4_unk31
@@ -392,7 +392,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk32
 	ts_check_flag [
-		flag: 0x489,
+		flag: EVENT_489,
 		jumpIfTrue: CompText876A5B4_unk33_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -402,7 +402,7 @@ CompText876A5B4::
 	.string "just now was\n"
 	.string "awesome!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x489
+	ts_flag_set flag=EVENT_489
 	ts_end
 
 	def_text_script CompText876A5B4_unk33
@@ -415,7 +415,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk34
 	ts_check_flag [
-		flag: 0x48A,
+		flag: EVENT_48A,
 		jumpIfTrue: CompText876A5B4_unk35_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -433,7 +433,7 @@ CompText876A5B4::
 	.string "Whew... Thanks for\n"
 	.string "waking me up!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x48A
+	ts_flag_set flag=EVENT_48A
 	ts_end
 
 	def_text_script CompText876A5B4_unk35
@@ -447,7 +447,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk36
 	ts_check_flag [
-		flag: 0x48B,
+		flag: EVENT_48B,
 		jumpIfTrue: CompText876A5B4_unk37_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -456,7 +456,7 @@ CompText876A5B4::
 	.string "Enjoy the real world!\n"
 	.string "Hahahaha!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x48B
+	ts_flag_set flag=EVENT_48B
 	ts_end
 
 	def_text_script CompText876A5B4_unk37
@@ -470,7 +470,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk38
 	ts_check_flag [
-		flag: 0x48C,
+		flag: EVENT_48C,
 		jumpIfTrue: CompText876A5B4_unk39_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -480,7 +480,7 @@ CompText876A5B4::
 	.string "This is like a\n"
 	.string "dream..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x48C
+	ts_flag_set flag=EVENT_48C
 	ts_end
 
 	def_text_script CompText876A5B4_unk39
@@ -494,7 +494,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk40
 	ts_check_flag [
-		flag: 0x42E,
+		flag: EVENT_42E,
 		jumpIfTrue: CompText876A5B4_unk52_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -507,7 +507,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk41
 	ts_check_flag [
-		flag: 0x42E,
+		flag: EVENT_42E,
 		jumpIfTrue: CompText876A5B4_unk53_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -520,7 +520,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk42
 	ts_check_flag [
-		flag: 0x42E,
+		flag: EVENT_42E,
 		jumpIfTrue: CompText876A5B4_unk54_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -532,7 +532,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk43
 	ts_check_flag [
-		flag: 0x42E,
+		flag: EVENT_42E,
 		jumpIfTrue: CompText876A5B4_unk55_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -546,7 +546,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk44
 	ts_check_flag [
-		flag: 0x42E,
+		flag: EVENT_42E,
 		jumpIfTrue: CompText876A5B4_unk56_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -559,7 +559,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk45
 	ts_check_flag [
-		flag: 0x42E,
+		flag: EVENT_42E,
 		jumpIfTrue: CompText876A5B4_unk50_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -574,7 +574,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk47
 	ts_check_flag [
-		flag: 0x1729,
+		flag: EVENT_COPYBOT_ACTIVE,
 		jumpIfTrue: CompText876A5B4_unk48_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -631,13 +631,13 @@ CompText876A5B4::
 	ts_end
 
 	def_text_script CompText876A5B4_unk49
-	ts_flag_set flag=0x171A
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_171A
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText876A5B4_unk50
 	ts_check_flag [
-		flag: 0x47C,
+		flag: EVENT_47C,
 		jumpIfTrue: CompText876A5B4_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -679,7 +679,7 @@ CompText876A5B4::
 	ts_mugshot_show mugshot=0x12
 	.string "Help..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x47C
+	ts_flag_set flag=EVENT_47C
 	ts_end
 
 	def_text_script CompText876A5B4_unk51
@@ -732,7 +732,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk57
 	ts_check_flag [
-		flag: 0x42E,
+		flag: EVENT_42E,
 		jumpIfTrue: CompText876A5B4_unk58_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -865,7 +865,7 @@ CompText876A5B4::
 
 	def_text_script CompText876A5B4_unk74
 	ts_check_flag [
-		flag: 0x50C,
+		flag: EVENT_50C,
 		jumpIfTrue: CompText876A5B4_unk75_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

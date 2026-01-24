@@ -23,8 +23,8 @@ CompText879FDB4::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x114A
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_114A
 	ts_end
 
 	def_text_script CompText879FDB4_unk1
@@ -43,8 +43,8 @@ CompText879FDB4::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x114B
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_114B
 	ts_end
 
 	def_text_script CompText879FDB4_unk2
@@ -64,23 +64,23 @@ CompText879FDB4::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x114C
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_114C
 	ts_end
 
 	def_text_script CompText879FDB4_unk3
 	ts_check_flag [
-		flag: 0x114D,
+		flag: EVENT_114D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879FDB4_unk4_id,
 	]
 	ts_check_flag [
-		flag: 0x114E,
+		flag: EVENT_114E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879FDB4_unk4_id,
 	]
 	ts_check_flag [
-		flag: 0x114F,
+		flag: EVENT_114F,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879FDB4_unk4_id,
 	]

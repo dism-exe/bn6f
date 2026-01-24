@@ -140,8 +140,8 @@ CompText87921F4::
 	.string "I'm gonna pummel you\n"
 	.string "back into the dirt!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xEB7
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_EB7
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87921F4_unk16
@@ -150,8 +150,8 @@ CompText87921F4::
 	.string "I'm going to delete\n"
 	.string "you! Get ready!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xEB9
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_EB9
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87921F4_unk17

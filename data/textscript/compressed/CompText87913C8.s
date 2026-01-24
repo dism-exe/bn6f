@@ -11,12 +11,12 @@ CompText87913C8::
 
 	def_text_script CompText87913C8_unk0
 	ts_check_flag [
-		flag: 0x7F6,
+		flag: EVENT_7F6,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87913C8_unk5_id,
 	]
 	ts_check_flag [
-		flag: 0x68C,
+		flag: EVENT_68C,
 		jumpIfTrue: CompText87913C8_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -60,7 +60,7 @@ CompText87913C8::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_call_reload_soul_weapons unused=0x0
-	ts_flag_set flag=0x68C
+	ts_flag_set flag=EVENT_68C
 	ts_end
 
 	def_text_script CompText87913C8_unk1
@@ -151,7 +151,7 @@ CompText87913C8::
 	ts_mugshot_show mugshot=0x42
 	.string "Do...do your best..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x746
+	ts_flag_set flag=EVENT_746
 	ts_end
 
 	def_text_script CompText87913C8_unk4

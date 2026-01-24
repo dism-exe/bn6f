@@ -11,7 +11,7 @@ CompText8795234::
 
 	def_text_script CompText8795234_unk0
 	ts_check_flag [
-		flag: 0xE5E,
+		flag: EVENT_E5E,
 		jumpIfTrue: CompText8795234_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -46,7 +46,7 @@ CompText8795234::
 	.string "I'm lookin' forward\n"
 	.string "to it!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE5E
+	ts_flag_set flag=EVENT_E5E
 	ts_end
 
 	def_text_script CompText8795234_unk1
@@ -60,7 +60,7 @@ CompText8795234::
 
 	def_text_script CompText8795234_unk2
 	ts_check_flag [
-		flag: 0xE5F,
+		flag: EVENT_E5F,
 		jumpIfTrue: CompText8795234_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -97,7 +97,7 @@ CompText8795234::
 	ts_clear_msg
 	.string "I can't wait!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE5F
+	ts_flag_set flag=EVENT_E5F
 	ts_end
 
 	def_text_script CompText8795234_unk3
@@ -110,7 +110,7 @@ CompText8795234::
 
 	def_text_script CompText8795234_unk4
 	ts_check_flag [
-		flag: 0xE60,
+		flag: EVENT_E60,
 		jumpIfTrue: CompText8795234_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -151,7 +151,7 @@ CompText8795234::
 	.string "latest cutting-edge\n"
 	.string "technology!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE60
+	ts_flag_set flag=EVENT_E60
 	ts_end
 
 	def_text_script CompText8795234_unk5
@@ -165,7 +165,7 @@ CompText8795234::
 
 	def_text_script CompText8795234_unk6
 	ts_check_flag [
-		flag: 0xE61,
+		flag: EVENT_E61,
 		jumpIfTrue: CompText8795234_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -186,7 +186,7 @@ CompText8795234::
 	.string "Sorry,I hope you\n"
 	.string "understand."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE61
+	ts_flag_set flag=EVENT_E61
 	ts_end
 
 	def_text_script CompText8795234_unk7

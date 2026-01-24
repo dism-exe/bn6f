@@ -61,8 +61,8 @@ CompText878205C::
 	ts_mugshot_show mugshot=0x37
 	.string "Let's go Lan!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1726
-	ts_flag_set flag=0xE69
+	ts_flag_set flag=EVENT_1726
+	ts_flag_set flag=EVENT_E69
 	ts_end
 
 	def_text_script CompText878205C_unk1

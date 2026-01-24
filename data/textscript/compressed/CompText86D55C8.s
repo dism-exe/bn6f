@@ -84,7 +84,7 @@ CompText86D55C8::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_flag [
-		flag: 0x1720,
+		flag: EVENT_1720,
 		jumpIfTrue: CompText86D55C8_unk3_id,
 		jumpIfFalse: CompText86D55C8_unk2_id,
 	]

@@ -11,12 +11,12 @@ CompText879A77C::
 
 	def_text_script CompText879A77C_unk0
 	ts_check_flag [
-		flag: 0xCD3,
+		flag: EVENT_CD3,
 		jumpIfTrue: CompText879A77C_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCD0,
+		flag: EVENT_CD0,
 		jumpIfTrue: CompText879A77C_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -73,7 +73,7 @@ CompText879A77C::
 	.string "That would be a big\n"
 	.string "help!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xCD0
+	ts_flag_set flag=EVENT_CD0
 	ts_end
 
 	def_text_script CompText879A77C_unk1
@@ -96,7 +96,7 @@ CompText879A77C::
 
 	def_text_script CompText879A77C_unk2
 	ts_check_flag [
-		flag: 0xCD4,
+		flag: EVENT_CD4,
 		jumpIfTrue: CompText879A77C_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -163,7 +163,7 @@ CompText879A77C::
 	.string "already waiting for\n"
 	.string "us there!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xCD4
+	ts_flag_set flag=EVENT_CD4
 	ts_end
 
 	def_text_script CompText879A77C_unk3

@@ -36,12 +36,12 @@ CompText875E414::
 
 	def_text_script CompText875E414_unk6
 	ts_check_flag [
-		flag: 0xA1E,
+		flag: EVENT_A1E,
 		jumpIfTrue: CompText875E414_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xA1D,
+		flag: EVENT_A1D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875E414_unk5_id,
 	]
@@ -57,7 +57,7 @@ CompText875E414::
 	ts_mugshot_show mugshot=0x0
 	.string "OK!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xA6F
+	ts_flag_set flag=EVENT_A6F
 	ts_end
 
 	def_text_script CompText875E414_unk7

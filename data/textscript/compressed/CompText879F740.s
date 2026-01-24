@@ -11,16 +11,16 @@ CompText879F740::
 
 	def_text_script CompText879F740_unk0
 	ts_check_flag [
-		flag: 0x113C,
+		flag: EVENT_113C,
 		jumpIfTrue: CompText879F740_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x113A,
+		flag: EVENT_113A,
 		jumpIfTrue: CompText879F740_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x113A
+	ts_flag_set flag=EVENT_113A
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Hey! You...\n"
@@ -133,8 +133,8 @@ CompText879F740::
 	ts_clear_msg
 	.string "Hyaaaaaa!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x113B
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_113B
 	ts_end
 
 	def_text_script CompText879F740_unk3

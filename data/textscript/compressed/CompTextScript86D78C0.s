@@ -11,19 +11,19 @@ CompTextScript86D78C0::
 
 	def_text_script CompTextScript86D78C0_unk0
 	ts_check_flag [
-		flag: 0xF2,
+		flag: EVENT_F2,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompTextScript86D78C0_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0xF7,
+		flag: EVENT_F7,
 		jumpIfTrue: CompTextScript86D78C0_unk3_id,
 		jumpIfFalse: CompTextScript86D78C0_unk2_id,
 	]
 
 	def_text_script CompTextScript86D78C0_unk1
 	ts_check_flag [
-		flag: 0xF7,
+		flag: EVENT_F7,
 		jumpIfTrue: CompTextScript86D78C0_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -87,7 +87,7 @@ CompTextScript86D78C0::
 		jumpIfProtoMan: CompTextScript86D78C0_unk4_id,
 	]
 	ts_check_flag [
-		flag: 0x170F,
+		flag: EVENT_170F,
 		jumpIfTrue: CompTextScript86D78C0_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -391,7 +391,7 @@ CompTextScript86D78C0::
 
 	def_text_script CompTextScript86D78C0_unk54
 	ts_check_flag [
-		flag: 0x1704,
+		flag: EVENT_1704,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompTextScript86D78C0_unk55_id,
 	]
@@ -427,7 +427,7 @@ CompTextScript86D78C0::
 	ts_wait_hold unused=0x0
 
 	def_text_script CompTextScript86D78C0_unk55
-	ts_flag_clear flag=0x1713
+	ts_flag_clear flag=EVENT_1713
 	ts_call_save [
 		jumpIfSuccessful: CompTextScript86D78C0_unk56_id,
 		jumpIfFailed: TS_CONTINUE,

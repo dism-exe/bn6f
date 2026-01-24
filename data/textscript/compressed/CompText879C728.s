@@ -64,21 +64,21 @@ CompText879C728::
 
 	def_text_script CompText879C728_unk10
 	ts_check_flag [
-		flag: 0x117B,
+		flag: EVENT_117B,
 		jumpIfTrue: CompText879C728_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x117F,
+		flag: EVENT_117F,
 		jumpIfTrue: CompText879C728_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x117A,
+		flag: EVENT_117A,
 		jumpIfTrue: CompText879C728_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x117A
+	ts_flag_set flag=EVENT_117A
 	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "Thank ya,thank ya!\n"
@@ -179,7 +179,7 @@ CompText879C728::
 	ts_end
 
 	def_text_script CompText879C728_unk12
-	ts_flag_set flag=0x117B
+	ts_flag_set flag=EVENT_117B
 	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "Ahhh! Ya got me\n"
@@ -280,26 +280,26 @@ CompText879C728::
 
 	def_text_script CompText879C728_unk20
 	ts_check_flag [
-		flag: 0x120B,
+		flag: EVENT_120B,
 		jumpIfTrue: CompText879C728_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x120E,
+		flag: EVENT_120E,
 		jumpIfTrue: CompText879C728_unk24_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x120C,
+		flag: EVENT_120C,
 		jumpIfTrue: CompText879C728_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x120A,
+		flag: EVENT_120A,
 		jumpIfTrue: CompText879C728_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x120A
+	ts_flag_set flag=EVENT_120A
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "You're the one who\n"
@@ -423,7 +423,7 @@ CompText879C728::
 	ts_end
 
 	def_text_script CompText879C728_unk22
-	ts_flag_set flag=0x120C
+	ts_flag_set flag=EVENT_120C
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "...Alright,so you\n"
@@ -501,8 +501,8 @@ CompText879C728::
 	ts_end
 
 	def_text_script CompText879C728_unk24
-	ts_flag_set flag=0x120B
-	ts_flag_set flag=0x1215
+	ts_flag_set flag=EVENT_120B
+	ts_flag_set flag=EVENT_1215
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "Ahhh!\n"
@@ -693,7 +693,7 @@ CompText879C728::
 	ts_sound_disable_text_sfx
 	ts_sound_play00 track=0x74
 	ts_sound_enable_text_sfx
-	ts_flag_set flag=0x17E
+	ts_flag_set flag=EVENT_17E
 	ts_clear_msg
 	.string "MY WORK HERE IS\n"
 	.string "DONE."
@@ -703,7 +703,7 @@ CompText879C728::
 	ts_key_wait any=0x0
 	ts_sound_disable_text_sfx
 	ts_sound_play00 track=0x76
-	ts_flag_set flag=0x1E5
+	ts_flag_set flag=EVENT_1E5
 	ts_end
 
 	def_text_script CompText879C728_unk32

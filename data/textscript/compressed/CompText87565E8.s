@@ -186,7 +186,7 @@ CompText87565E8::
 	def_text_script CompText87565E8_unk19
 
 	def_text_script CompText87565E8_unk20
-	ts_flag_set flag=0x171F
+	ts_flag_set flag=EVENT_171F
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "Bedtime already?\n"
@@ -210,7 +210,7 @@ CompText87565E8::
 	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0x15, 0xFF, 0xFF
-	ts_flag_clear flag=0x171F
+	ts_flag_clear flag=EVENT_171F
 	ts_end
 
 	def_text_script CompText87565E8_unk21
@@ -242,7 +242,7 @@ CompText87565E8::
 
 	def_text_script CompText87565E8_unk22
 	ts_check_flag [
-		flag: 0x1704,
+		flag: EVENT_1704,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87565E8_unk23_id,
 	]
@@ -326,7 +326,7 @@ CompText87565E8::
 
 	def_text_script CompText87565E8_unk27
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87565E8_unk28_id,
 	]

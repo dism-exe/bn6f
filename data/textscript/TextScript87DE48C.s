@@ -198,11 +198,11 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk7
 	ts_check_flag [
-		flag: 0x225,
+		flag: EVENT_225,
 		jumpIfTrue: TextScript87DE48C_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x225
+	ts_flag_set flag=EVENT_225
 	ts_check_navi_all [
 		jumpIfMegaMan: TS_CONTINUE,
 		jumpIfHeatMan: TextScript87DE48C_unk27_id,
@@ -267,7 +267,7 @@ TextScript87DE48C::
 		jumpIfProtoMan: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x745,
+		flag: EVENT_745,
 		jumpIfTrue: TextScript87DE48C_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -567,7 +567,7 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk30
 	ts_check_flag [
-		flag: 0x745,
+		flag: EVENT_745,
 		jumpIfTrue: TextScript87DE48C_unk35_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -783,7 +783,7 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk50
 	ts_check_flag [
-		flag: 0x745,
+		flag: EVENT_745,
 		jumpIfTrue: TextScript87DE48C_unk55_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1001,7 +1001,7 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk70
 	ts_check_flag [
-		flag: 0x745,
+		flag: EVENT_745,
 		jumpIfTrue: TextScript87DE48C_unk75_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1220,7 +1220,7 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk90
 	ts_check_flag [
-		flag: 0x745,
+		flag: EVENT_745,
 		jumpIfTrue: TextScript87DE48C_unk95_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1438,7 +1438,7 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk110
 	ts_check_flag [
-		flag: 0x745,
+		flag: EVENT_745,
 		jumpIfTrue: TextScript87DE48C_unk115_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1654,7 +1654,7 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk130
 	ts_check_flag [
-		flag: 0x745,
+		flag: EVENT_745,
 		jumpIfTrue: TextScript87DE48C_unk135_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1872,7 +1872,7 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk150
 	ts_check_flag [
-		flag: 0x745,
+		flag: EVENT_745,
 		jumpIfTrue: TextScript87DE48C_unk155_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -2096,7 +2096,7 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk170
 	ts_check_flag [
-		flag: 0x745,
+		flag: EVENT_745,
 		jumpIfTrue: TextScript87DE48C_unk175_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -2319,7 +2319,7 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk190
 	ts_check_flag [
-		flag: 0x745,
+		flag: EVENT_745,
 		jumpIfTrue: TextScript87DE48C_unk195_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -2543,7 +2543,7 @@ TextScript87DE48C::
 
 	def_text_script TextScript87DE48C_unk210
 	ts_check_flag [
-		flag: 0x745,
+		flag: EVENT_745,
 		jumpIfTrue: TextScript87DE48C_unk215_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

@@ -73,7 +73,7 @@ CompText878DE08::
 
 	def_text_script CompText878DE08_unk10
 	ts_check_flag [
-		flag: 0x117F,
+		flag: EVENT_117F,
 		jumpIfTrue: CompText878DE08_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -120,8 +120,8 @@ CompText878DE08::
 	.string "sorry this time!\n"
 	.string "I'll show you pain!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x117E
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_117E
 	ts_end
 
 	def_text_script CompText878DE08_unk11
@@ -224,16 +224,16 @@ CompText878DE08::
 
 	def_text_script CompText878DE08_unk15
 	ts_check_flag [
-		flag: 0x118B,
+		flag: EVENT_118B,
 		jumpIfTrue: CompText878DE08_unk19_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x118A,
+		flag: EVENT_118A,
 		jumpIfTrue: CompText878DE08_unk16_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x118A
+	ts_flag_set flag=EVENT_118A
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "You came here after\n"
@@ -418,7 +418,7 @@ CompText878DE08::
 		code: 0x0,
 		amount: 0x1,
 	]
-	ts_flag_set flag=0x118B
+	ts_flag_set flag=EVENT_118B
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "Thank you so much!\n"
@@ -511,7 +511,7 @@ CompText878DE08::
 
 	def_text_script CompText878DE08_unk20
 	ts_check_flag [
-		flag: 0x11EB,
+		flag: EVENT_11EB,
 		jumpIfTrue: CompText878DE08_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -537,7 +537,7 @@ CompText878DE08::
 	.string "This isn't a bucket!\n"
 	.string "It's a spring!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x11EB
+	ts_flag_set flag=EVENT_11EB
 	ts_clear_msg
 	ts_mugshot_hide
 	ts_sound_disable_text_sfx

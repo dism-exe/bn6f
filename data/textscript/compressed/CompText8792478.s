@@ -11,11 +11,11 @@ CompText8792478::
 
 	def_text_script CompText8792478_unk0
 	ts_check_flag [
-		flag: 0xABE,
+		flag: EVENT_ABE,
 		jumpIfTrue: CompText8792478_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xABE
+	ts_flag_set flag=EVENT_ABE
 	ts_end
 
 	def_text_script CompText8792478_unk1
@@ -58,7 +58,7 @@ CompText8792478::
 
 	def_text_script CompText8792478_unk6
 	ts_check_flag [
-		flag: 0x18D,
+		flag: EVENT_18D,
 		jumpIfTrue: CompText8792478_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -91,7 +91,7 @@ CompText8792478::
 	ts_player_finish
 	ts_player_reset_object
 	ts_clear_msg
-	ts_flag_set flag=0x18D
+	ts_flag_set flag=EVENT_18D
 	ts_end
 
 	def_text_script CompText8792478_unk7
@@ -109,12 +109,12 @@ CompText8792478::
 
 	def_text_script CompText8792478_unk10
 	ts_check_flag [
-		flag: 0xB06,
+		flag: EVENT_B06,
 		jumpIfTrue: CompText8792478_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xA3A,
+		flag: EVENT_A3A,
 		jumpIfTrue: CompText8792478_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -175,11 +175,11 @@ CompText8792478::
 
 	def_text_script CompText8792478_unk20
 	ts_check_flag [
-		flag: 0xA83,
+		flag: EVENT_A83,
 		jumpIfTrue: CompText8792478_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xA83
+	ts_flag_set flag=EVENT_A83
 	ts_msg_open
 	.string "You...\n"
 	.string "Wilt thou take\n"
@@ -288,7 +288,7 @@ CompText8792478::
 	.string "Now,let the test\n"
 	.string "begin..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xA89
+	ts_flag_set flag=EVENT_A89
 	ts_end
 
 	def_text_script CompText8792478_unk23
@@ -303,11 +303,11 @@ CompText8792478::
 
 	def_text_script CompText8792478_unk25
 	ts_check_flag [
-		flag: 0xA84,
+		flag: EVENT_A84,
 		jumpIfTrue: CompText8792478_unk26_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xA84
+	ts_flag_set flag=EVENT_A84
 	ts_msg_open
 	.string "You...\n"
 	.string "Wilt thou take\n"
@@ -415,7 +415,7 @@ CompText8792478::
 	.string "Now,let the test\n"
 	.string "begin..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xA8B
+	ts_flag_set flag=EVENT_A8B
 	ts_end
 
 	def_text_script CompText8792478_unk28
@@ -460,16 +460,16 @@ CompText8792478::
 
 	def_text_script CompText8792478_unk30
 	ts_check_flag [
-		flag: 0x1193,
+		flag: EVENT_1193,
 		jumpIfTrue: CompText8792478_unk34_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1192,
+		flag: EVENT_1192,
 		jumpIfTrue: CompText8792478_unk31_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1192
+	ts_flag_set flag=EVENT_1192
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "...So you're the\n"
@@ -1004,7 +1004,7 @@ CompText8792478::
 	.string "2 MB!!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_flag_set flag=0x1193
+	ts_flag_set flag=EVENT_1193
 	ts_mugshot_show mugshot=0x41
 	.string "Let's make a song\n"
 	.string "together another\n"
@@ -1069,8 +1069,8 @@ CompText8792478::
 	ts_mugshot_show mugshot=0x37
 	.string "Yep!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x119F
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_119F
 	ts_end
 
 	def_text_script CompText8792478_unk33
@@ -1183,31 +1183,31 @@ CompText8792478::
 
 	def_text_script CompText8792478_unk50
 	ts_check_flag [
-		flag: 0x1190,
+		flag: EVENT_1190,
 		jumpIfTrue: CompText8792478_unk55_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x118F,
+		flag: EVENT_118F,
 		jumpIfTrue: CompText8792478_unk54_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x118E,
+		flag: EVENT_118E,
 		jumpIfTrue: CompText8792478_unk53_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x118D,
+		flag: EVENT_118D,
 		jumpIfTrue: CompText8792478_unk52_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x118C,
+		flag: EVENT_118C,
 		jumpIfTrue: CompText8792478_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x118C
+	ts_flag_set flag=EVENT_118C
 	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "Hey! I'm the one who\n"
@@ -1399,7 +1399,7 @@ CompText8792478::
 	ts_end
 
 	def_text_script CompText8792478_unk52
-	ts_flag_set flag=0x1190
+	ts_flag_set flag=EVENT_1190
 	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "The stock you chose,\n"
@@ -1458,7 +1458,7 @@ CompText8792478::
 	ts_end
 
 	def_text_script CompText8792478_unk53
-	ts_flag_set flag=0x1190
+	ts_flag_set flag=EVENT_1190
 	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "The stock you chose,\n"
@@ -1517,7 +1517,7 @@ CompText8792478::
 	ts_end
 
 	def_text_script CompText8792478_unk54
-	ts_flag_set flag=0x1190
+	ts_flag_set flag=EVENT_1190
 	ts_mugshot_show mugshot=0x45
 	ts_msg_open
 	.string "The stock you chose,\n"
@@ -1609,7 +1609,7 @@ CompText8792478::
 
 	def_text_script CompText8792478_unk60
 	ts_check_flag [
-		flag: 0x1156,
+		flag: EVENT_1156,
 		jumpIfTrue: CompText8792478_unk62_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1671,8 +1671,8 @@ CompText8792478::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1155
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1155
 	ts_end
 
 	def_text_script CompText8792478_unk61
@@ -1705,7 +1705,7 @@ CompText8792478::
 
 	def_text_script CompText8792478_unk63
 	ts_check_flag [
-		flag: 0x1156,
+		flag: EVENT_1156,
 		jumpIfTrue: CompText8792478_unk64_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1948,7 +1948,7 @@ CompText8792478::
 	.string "Do you think the\n"
 	.string "rumor is true?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x11A
+	ts_flag_set flag=EVENT_11A
 	ts_end
 
 	def_text_script CompText8792478_unk85
@@ -1975,7 +1975,7 @@ CompText8792478::
 	.string "\"23722234\" over\n"
 	.string "and over again..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x11B
+	ts_flag_set flag=EVENT_11B
 	ts_end
 
 	def_text_script CompText8792478_unk86
@@ -1999,7 +1999,7 @@ CompText8792478::
 	.string "true... I'm just\n"
 	.string "saying what I heard."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x11C
+	ts_flag_set flag=EVENT_11C
 	ts_end
 
 	def_text_script CompText8792478_unk87
@@ -2040,7 +2040,7 @@ CompText8792478::
 	ts_mugshot_show mugshot=0x42
 	.string "Come again soon!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x11D
+	ts_flag_set flag=EVENT_11D
 	ts_end
 
 	def_text_script CompText8792478_unk88
@@ -2051,7 +2051,7 @@ CompText8792478::
 
 	def_text_script CompText8792478_unk91
 	ts_check_flag [
-		flag: 0x11A,
+		flag: EVENT_11A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8792478_unk84_id,
 	]
@@ -2060,12 +2060,12 @@ CompText8792478::
 
 	def_text_script CompText8792478_unk92
 	ts_check_flag [
-		flag: 0x11A,
+		flag: EVENT_11A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8792478_unk84_id,
 	]
 	ts_check_flag [
-		flag: 0x11B,
+		flag: EVENT_11B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8792478_unk85_id,
 	]
@@ -2074,22 +2074,22 @@ CompText8792478::
 
 	def_text_script CompText8792478_unk93
 	ts_check_flag [
-		flag: 0x11A,
+		flag: EVENT_11A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8792478_unk84_id,
 	]
 	ts_check_flag [
-		flag: 0x11B,
+		flag: EVENT_11B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8792478_unk85_id,
 	]
 	ts_check_flag [
-		flag: 0x11C,
+		flag: EVENT_11C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8792478_unk86_id,
 	]
 	ts_check_flag [
-		flag: 0x11D,
+		flag: EVENT_11D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8792478_unk87_id,
 	]

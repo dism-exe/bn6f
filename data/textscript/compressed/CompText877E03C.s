@@ -51,11 +51,11 @@ CompText877E03C::
 
 	def_text_script CompText877E03C_unk20
 	ts_check_flag [
-		flag: 0xCC3,
+		flag: EVENT_CC3,
 		jumpIfTrue: CompText877E03C_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xCC3
+	ts_flag_set flag=EVENT_CC3
 	ts_mugshot_show mugshot=0xD
 	ts_msg_open
 	.string "... Huh?\n"

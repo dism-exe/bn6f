@@ -11,7 +11,7 @@ CompText8799AE0::
 
 	def_text_script CompText8799AE0_unk0
 	ts_check_flag [
-		flag: 0xE32,
+		flag: EVENT_E32,
 		jumpIfTrue: CompText8799AE0_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

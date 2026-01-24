@@ -39,12 +39,12 @@ CompText875DFF8::
 
 	def_text_script CompText875DFF8_unk6
 	ts_check_flag [
-		flag: 0xA18,
+		flag: EVENT_A18,
 		jumpIfTrue: CompText875DFF8_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xA17,
+		flag: EVENT_A17,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875DFF8_unk5_id,
 	]
@@ -70,7 +70,7 @@ CompText875DFF8::
 	ts_mugshot_show mugshot=0x37
 	.string "Waaaah!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xA6B
+	ts_flag_set flag=EVENT_A6B
 	ts_end
 
 	def_text_script CompText875DFF8_unk7

@@ -58,7 +58,7 @@ CompText8773068::
 
 	def_text_script CompText8773068_unk5
 	ts_check_flag [
-		flag: 0x60C,
+		flag: EVENT_60C,
 		jumpIfTrue: CompText8773068_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

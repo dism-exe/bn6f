@@ -31,7 +31,7 @@ CompText876CBE8::
 
 	def_text_script CompText876CBE8_unk10
 	ts_check_flag [
-		flag: 0xA10,
+		flag: EVENT_A10,
 		jumpIfTrue: CompText876CBE8_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

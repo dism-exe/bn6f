@@ -98,7 +98,7 @@ CompText87388A8::
 	ts_msg_open
 	.string "I can't jack out!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_end
 
 	def_text_script CompText87388A8_unk14
@@ -174,7 +174,7 @@ CompText87388A8::
 	ts_msg_open
 	.string "I can't jack out!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_end
 
 	def_text_script CompText87388A8_unk34
@@ -230,7 +230,7 @@ CompText87388A8::
 	ts_msg_open
 	.string "I can't jack out!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_end
 
 	def_text_script CompText87388A8_unk44
@@ -286,7 +286,7 @@ CompText87388A8::
 	ts_msg_open
 	.string "I can't jack out!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_end
 
 	def_text_script CompText87388A8_unk54
@@ -342,7 +342,7 @@ CompText87388A8::
 	ts_msg_open
 	.string "I can't jack out!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_end
 
 	def_text_script CompText87388A8_unk64
@@ -398,7 +398,7 @@ CompText87388A8::
 	ts_msg_open
 	.string "I can't jack out!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_end
 
 	def_text_script CompText87388A8_unk74
@@ -454,7 +454,7 @@ CompText87388A8::
 	ts_msg_open
 	.string "I can't jack out!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_end
 
 	def_text_script CompText87388A8_unk84
@@ -467,7 +467,7 @@ CompText87388A8::
 	.string "while I'm swimming,\n"
 	.string "drip!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_end
 
 	def_text_script CompText87388A8_unk85
@@ -521,7 +521,7 @@ CompText87388A8::
 	ts_msg_open
 	.string "I can't jack out!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_end
 
 	def_text_script CompText87388A8_unk94
@@ -577,7 +577,7 @@ CompText87388A8::
 	ts_msg_open
 	.string "I cannot jack out!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_end
 
 	def_text_script CompText87388A8_unk104
@@ -633,7 +633,7 @@ CompText87388A8::
 	ts_msg_open
 	.string "I can't jack out!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_end
 
 	def_text_script CompText87388A8_unk114
@@ -689,7 +689,7 @@ CompText87388A8::
 	ts_msg_open
 	.string "I can't jack out!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_end
 
 	def_text_script CompText87388A8_unk124
@@ -745,7 +745,7 @@ CompText87388A8::
 	ts_msg_open
 	.string "I can't jack out!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x171E
+	ts_flag_set flag=EVENT_171E
 	ts_end
 
 	def_text_script CompText87388A8_unk134

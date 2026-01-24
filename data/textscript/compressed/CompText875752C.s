@@ -24,7 +24,7 @@ CompText875752C::
 	.string "... Maybe."
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0x187,
+		flag: EVENT_187,
 		jumpIfTrue: CompText875752C_unk18_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -35,7 +35,7 @@ CompText875752C::
 	ts_key_wait any=0x0
 	ts_mugshot_hide
 	ts_check_flag [
-		flag: 0x1729,
+		flag: EVENT_COPYBOT_ACTIVE,
 		jumpIfTrue: CompText875752C_unk19_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -60,7 +60,7 @@ CompText875752C::
 	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_scene
-	ts_flag_set flag=0x187
+	ts_flag_set flag=EVENT_187
 	ts_end
 
 	def_text_script CompText875752C_unk1
@@ -130,7 +130,7 @@ CompText875752C::
 
 	def_text_script CompText875752C_unk6
 	ts_check_flag [
-		flag: 0x859,
+		flag: EVENT_859,
 		jumpIfTrue: CompText875752C_unk16_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -229,7 +229,7 @@ CompText875752C::
 
 	def_text_script CompText875752C_unk13
 	ts_check_flag [
-		flag: 0x87B,
+		flag: EVENT_87B,
 		jumpIfTrue: CompText875752C_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -247,7 +247,7 @@ CompText875752C::
 
 	def_text_script CompText875752C_unk14
 	ts_check_flag [
-		flag: 0x804,
+		flag: EVENT_804,
 		jumpIfTrue: CompText875752C_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -269,7 +269,7 @@ CompText875752C::
 	.string "in to this security\n"
 	.string "camera!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x86F
+	ts_flag_set flag=EVENT_86F
 	ts_end
 
 	def_text_script CompText875752C_unk15
@@ -286,7 +286,7 @@ CompText875752C::
 
 	def_text_script CompText875752C_unk16
 	ts_check_flag [
-		flag: 0x86F,
+		flag: EVENT_86F,
 		jumpIfTrue: CompText875752C_unk17_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -311,7 +311,7 @@ CompText875752C::
 	ts_clear_msg
 	.string "Always looking...\n"
 	.string "Hmm......"
-	ts_flag_set flag=0x87B
+	ts_flag_set flag=EVENT_87B
 	ts_key_wait any=0x0
 	ts_end
 
@@ -353,7 +353,7 @@ CompText875752C::
 	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_scene
-	ts_flag_set flag=0x187
+	ts_flag_set flag=EVENT_187
 	ts_clear_msg
 	.string "Regular memory\n"
 	.string "increased by\n"
@@ -379,12 +379,12 @@ CompText875752C::
 
 	def_text_script CompText875752C_unk21
 	ts_check_flag [
-		flag: 0x81A,
+		flag: EVENT_81A,
 		jumpIfTrue: CompText875752C_unk20_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x819,
+		flag: EVENT_819,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875752C_unk20_id,
 	]
@@ -392,7 +392,7 @@ CompText875752C::
 	ts_msg_open
 	.string "... Huh?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x85D
+	ts_flag_set flag=EVENT_85D
 	ts_end
 
 	

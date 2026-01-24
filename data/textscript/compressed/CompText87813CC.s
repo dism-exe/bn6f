@@ -23,7 +23,7 @@ CompText87813CC::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE08,
+		flag: EVENT_E08,
 		jumpIfTrue: CompText87813CC_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -107,7 +107,7 @@ CompText87813CC::
 
 	def_text_script CompText87813CC_unk16
 	ts_check_flag [
-		flag: 0xE9A,
+		flag: EVENT_E9A,
 		jumpIfTrue: CompText87813CC_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -117,8 +117,8 @@ CompText87813CC::
 	.string "It's Game Over for\n"
 	.string "you!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE99
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E99
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87813CC_unk17

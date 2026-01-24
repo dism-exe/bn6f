@@ -19,29 +19,29 @@ CompText87693E0::
 	ts_clear_msg
 	.string "PENGUIN CAPTURE..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x11AB
+	ts_flag_set flag=EVENT_11AB
 	ts_check_flag [
-		flag: 0x11AF,
+		flag: EVENT_11AF,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87693E0_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0x11AE,
+		flag: EVENT_11AE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87693E0_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0x11AD,
+		flag: EVENT_11AD,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87693E0_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0x11AC,
+		flag: EVENT_11AC,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87693E0_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0x11AB,
+		flag: EVENT_11AB,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87693E0_unk1_id,
 	]

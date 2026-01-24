@@ -48,7 +48,7 @@ CompText876B5A4::
 
 	def_text_script CompText876B5A4_unk10
 	ts_check_flag [
-		flag: 0xE5B,
+		flag: EVENT_E5B,
 		jumpIfTrue: CompText876B5A4_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -62,7 +62,7 @@ CompText876B5A4::
 	.string "sure I'm going!\n"
 	.string "100% do or die sure!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE5B
+	ts_flag_set flag=EVENT_E5B
 	ts_end
 
 	def_text_script CompText876B5A4_unk11

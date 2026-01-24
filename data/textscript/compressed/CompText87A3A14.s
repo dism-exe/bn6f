@@ -11,7 +11,7 @@ CompText87A3A14::
 
 	def_text_script CompText87A3A14_unk0
 	ts_check_flag [
-		flag: 0x163,
+		flag: EVENT_163,
 		jumpIfTrue: CompText87A3A14_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

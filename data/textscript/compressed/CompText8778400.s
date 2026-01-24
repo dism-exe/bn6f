@@ -11,31 +11,31 @@ CompText8778400::
 
 	def_text_script CompText8778400_unk0
 	ts_check_flag [
-		flag: 0x528,
+		flag: EVENT_528,
 		jumpIfTrue: CompText8778400_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x556,
+		flag: EVENT_556,
 		jumpIfTrue: CompText8778400_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1729,
+		flag: EVENT_COPYBOT_ACTIVE,
 		jumpIfTrue: CompText8778400_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x51E,
+		flag: EVENT_51E,
 		jumpIfTrue: CompText8778400_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x555,
+		flag: EVENT_555,
 		jumpIfTrue: CompText8778400_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x555
+	ts_flag_set flag=EVENT_555
 	ts_msg_open
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
@@ -138,11 +138,11 @@ CompText8778400::
 	ts_player_finish
 	ts_player_reset_object
 	ts_clear_msg
-	ts_flag_set flag=0x556
+	ts_flag_set flag=EVENT_556
 	ts_end
 
 	def_text_script CompText8778400_unk3
-	ts_flag_set flag=0x55A
+	ts_flag_set flag=EVENT_55A
 	ts_end
 
 	def_text_script CompText8778400_unk4

@@ -51,7 +51,7 @@ CompText87709CC::
 
 	def_text_script CompText87709CC_unk10
 	ts_check_flag [
-		flag: 0xA10,
+		flag: EVENT_A10,
 		jumpIfTrue: CompText87709CC_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -69,7 +69,7 @@ CompText87709CC::
 
 	def_text_script CompText87709CC_unk11
 	ts_check_flag [
-		flag: 0xA10,
+		flag: EVENT_A10,
 		jumpIfTrue: CompText87709CC_unk16_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -199,12 +199,12 @@ CompText87709CC::
 
 	def_text_script CompText87709CC_unk45
 	ts_check_flag [
-		flag: 0xC24,
+		flag: EVENT_C24,
 		jumpIfTrue: CompText87709CC_unk47_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC22,
+		flag: EVENT_C22,
 		jumpIfTrue: CompText87709CC_unk46_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

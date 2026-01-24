@@ -23,12 +23,12 @@ CompText87666B4::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE0A,
+		flag: EVENT_E0A,
 		jumpIfTrue: CompText87666B4_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE08,
+		flag: EVENT_E08,
 		jumpIfTrue: CompText87666B4_unk35_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -45,7 +45,7 @@ CompText87666B4::
 
 	def_text_script CompText87666B4_unk1
 	ts_check_flag [
-		flag: 0xE08,
+		flag: EVENT_E08,
 		jumpIfTrue: CompText87666B4_unk36_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -62,7 +62,7 @@ CompText87666B4::
 
 	def_text_script CompText87666B4_unk2
 	ts_check_flag [
-		flag: 0xE08,
+		flag: EVENT_E08,
 		jumpIfTrue: CompText87666B4_unk37_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -79,12 +79,12 @@ CompText87666B4::
 
 	def_text_script CompText87666B4_unk3
 	ts_check_flag [
-		flag: 0xE0A,
+		flag: EVENT_E0A,
 		jumpIfTrue: CompText87666B4_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE08,
+		flag: EVENT_E08,
 		jumpIfTrue: CompText87666B4_unk38_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -282,7 +282,7 @@ CompText87666B4::
 
 	def_text_script CompText87666B4_unk26
 	ts_check_flag [
-		flag: 0xE6C,
+		flag: EVENT_E6C,
 		jumpIfTrue: CompText87666B4_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -291,13 +291,13 @@ CompText87666B4::
 	.string "Lan Hikari...\n"
 	.string "I found you!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE6B
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E6B
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87666B4_unk27
 	ts_check_flag [
-		flag: 0xE6E,
+		flag: EVENT_E6E,
 		jumpIfTrue: CompText87666B4_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -306,13 +306,13 @@ CompText87666B4::
 	.string "The real world is\n"
 	.string "ours!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE6D
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E6D
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87666B4_unk28
 	ts_check_flag [
-		flag: 0xE70,
+		flag: EVENT_E70,
 		jumpIfTrue: CompText87666B4_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -321,13 +321,13 @@ CompText87666B4::
 	.string "You're Lan Hikari!\n"
 	.string "Time for your end!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE6F
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E6F
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87666B4_unk29
 	ts_check_flag [
-		flag: 0xE72,
+		flag: EVENT_E72,
 		jumpIfTrue: CompText87666B4_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -337,13 +337,13 @@ CompText87666B4::
 	.string "A perfect present\n"
 	.string "for Dr.Wily!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE71
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E71
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87666B4_unk30
 	ts_check_flag [
-		flag: 0xE74,
+		flag: EVENT_E74,
 		jumpIfTrue: CompText87666B4_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -352,8 +352,8 @@ CompText87666B4::
 	.string "Lan Hikari!!!!!\n"
 	.string "YAAAAAHHHHHHHH!!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE73
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E73
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87666B4_unk31

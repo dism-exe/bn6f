@@ -17,7 +17,7 @@ CompText87466F8::
 		jumpIfOutOfRange: CompText87466F8_unk14_id,
 	]
 	ts_check_flag [
-		flag: 0x5E8,
+		flag: EVENT_5E8,
 		jumpIfTrue: CompText87466F8_unk11_id,
 		jumpIfFalse: CompText87466F8_unk14_id,
 	]
@@ -109,7 +109,7 @@ CompText87466F8::
 
 	def_text_script CompText87466F8_unk11
 	ts_check_flag [
-		flag: 0x5F2,
+		flag: EVENT_5F2,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87466F8_unk12_id,
 	]
@@ -120,7 +120,7 @@ CompText87466F8::
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	ts_check_flag [
-		flag: 0x5F0,
+		flag: EVENT_5F0,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87466F8_unk88_id,
 	]
@@ -149,7 +149,7 @@ CompText87466F8::
 	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0xD, 0xFF
-	ts_flag_set flag=0x5E6
+	ts_flag_set flag=EVENT_5E6
 	ts_end
 
 	def_text_script CompText87466F8_unk13
@@ -343,7 +343,7 @@ CompText87466F8::
 
 	def_text_script CompText87466F8_unk95
 	ts_check_flag [
-		flag: 0x538,
+		flag: EVENT_538,
 		jumpIfTrue: CompText87466F8_unk96_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

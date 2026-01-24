@@ -139,11 +139,11 @@ CompText876EE64::
 
 	def_text_script CompText876EE64_unk50
 	ts_check_flag [
-		flag: 0x543,
+		flag: EVENT_543,
 		jumpIfTrue: CompText876EE64_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x543
+	ts_flag_set flag=EVENT_543
 	ts_mugshot_show mugshot=0x14
 	ts_msg_open
 	.string "Hey! Hey!\n"

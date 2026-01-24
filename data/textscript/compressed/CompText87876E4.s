@@ -252,11 +252,11 @@ CompText87876E4::
 
 	def_text_script CompText87876E4_unk50
 	ts_check_flag [
-		flag: 0x541,
+		flag: EVENT_541,
 		jumpIfTrue: CompText87876E4_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x541
+	ts_flag_set flag=EVENT_541
 	ts_msg_open
 	ts_mugshot_show mugshot=0x45
 	.string "Ahh,you've got\n"
@@ -313,7 +313,7 @@ CompText87876E4::
 
 	def_text_script CompText87876E4_unk52
 	ts_check_flag [
-		flag: 0x50A,
+		flag: EVENT_50A,
 		jumpIfTrue: CompText87876E4_unk53_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -349,8 +349,8 @@ CompText87876E4::
 	def_text_script CompText87876E4_unk59
 
 	def_text_script CompText87876E4_unk60
-	ts_flag_set flag=0x545
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_545
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87876E4_unk61

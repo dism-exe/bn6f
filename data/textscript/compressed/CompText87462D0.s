@@ -54,17 +54,17 @@ CompText87462D0::
 
 	def_text_script CompText87462D0_unk10
 	ts_check_flag [
-		flag: 0x870,
+		flag: EVENT_870,
 		jumpIfTrue: CompText87462D0_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x81C,
+		flag: EVENT_81C,
 		jumpIfTrue: CompText87462D0_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x81A,
+		flag: EVENT_81A,
 		jumpIfTrue: CompText87462D0_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

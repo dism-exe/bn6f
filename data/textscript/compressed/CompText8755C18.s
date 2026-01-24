@@ -209,12 +209,12 @@ CompText8755C18::
 
 	def_text_script CompText8755C18_unk13
 	ts_check_flag [
-		flag: 0x11D0,
+		flag: EVENT_11D0,
 		jumpIfTrue: CompText8755C18_unk16_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11CF,
+		flag: EVENT_11CF,
 		jumpIfTrue: CompText8755C18_unk17_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

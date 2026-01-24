@@ -220,11 +220,11 @@ CompText8788390::
 
 	def_text_script CompText8788390_unk20
 	ts_check_flag [
-		flag: 0xCCE,
+		flag: EVENT_CCE,
 		jumpIfTrue: CompText8788390_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xCCE
+	ts_flag_set flag=EVENT_CCE
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "... The Navi that\n"
@@ -519,22 +519,22 @@ CompText8788390::
 
 	def_text_script CompText8788390_unk45
 	ts_check_flag [
-		flag: 0xC30,
+		flag: EVENT_C30,
 		jumpIfTrue: CompText8788390_unk65_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC20,
+		flag: EVENT_C20,
 		jumpIfTrue: CompText8788390_unk60_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC1E,
+		flag: EVENT_C1E,
 		jumpIfTrue: CompText8788390_unk55_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC1A,
+		flag: EVENT_C1A,
 		jumpIfTrue: CompText8788390_unk50_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -553,7 +553,7 @@ CompText8788390::
 
 	def_text_script CompText8788390_unk46
 	ts_check_flag [
-		flag: 0xC30,
+		flag: EVENT_C30,
 		jumpIfTrue: CompText8788390_unk66_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -584,7 +584,7 @@ CompText8788390::
 
 	def_text_script CompText8788390_unk47
 	ts_check_flag [
-		flag: 0xC30,
+		flag: EVENT_C30,
 		jumpIfTrue: CompText8788390_unk66_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

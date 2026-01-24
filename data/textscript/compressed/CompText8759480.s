@@ -84,7 +84,7 @@ CompText8759480::
 	.string "to any guest..."
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0x18A,
+		flag: EVENT_18A,
 		jumpIfTrue: CompText8759480_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -110,7 +110,7 @@ CompText8759480::
 	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_scene
-	ts_flag_set flag=0x18A
+	ts_flag_set flag=EVENT_18A
 	ts_clear_msg
 	.string "Regular memory\n"
 	.string "increased by\n"

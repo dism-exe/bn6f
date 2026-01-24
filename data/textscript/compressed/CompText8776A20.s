@@ -75,12 +75,12 @@ CompText8776A20::
 
 	def_text_script CompText8776A20_unk8
 	ts_check_flag [
-		flag: 0x516,
+		flag: EVENT_516,
 		jumpIfTrue: CompText8776A20_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x554,
+		flag: EVENT_554,
 		jumpIfTrue: CompText8776A20_unk10_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

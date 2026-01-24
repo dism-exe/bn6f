@@ -11,7 +11,7 @@ CompText87859C0::
 
 	def_text_script CompText87859C0_unk0
 	ts_check_flag [
-		flag: 0x46E,
+		flag: EVENT_46E,
 		jumpIfTrue: CompText87859C0_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -30,7 +30,7 @@ CompText87859C0::
 	.string "What a pain in the\n"
 	.string "butt!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x46E
+	ts_flag_set flag=EVENT_46E
 	ts_end
 
 	def_text_script CompText87859C0_unk1
@@ -47,7 +47,7 @@ CompText87859C0::
 
 	def_text_script CompText87859C0_unk2
 	ts_check_flag [
-		flag: 0x46F,
+		flag: EVENT_46F,
 		jumpIfTrue: CompText87859C0_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -66,7 +66,7 @@ CompText87859C0::
 	.string "you can't move to\n"
 	.string "the next area!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x46F
+	ts_flag_set flag=EVENT_46F
 	ts_end
 
 	def_text_script CompText87859C0_unk3
@@ -80,7 +80,7 @@ CompText87859C0::
 
 	def_text_script CompText87859C0_unk4
 	ts_check_flag [
-		flag: 0x470,
+		flag: EVENT_470,
 		jumpIfTrue: CompText87859C0_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -98,7 +98,7 @@ CompText87859C0::
 	.string "YOU SHOULD CHECK IT\n"
 	.string "OUT."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x470
+	ts_flag_set flag=EVENT_470
 	ts_end
 
 	def_text_script CompText87859C0_unk5
@@ -120,7 +120,7 @@ CompText87859C0::
 
 	def_text_script CompText87859C0_unk10
 	ts_check_flag [
-		flag: 0x499,
+		flag: EVENT_499,
 		jumpIfTrue: CompText87859C0_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -187,7 +187,7 @@ CompText87859C0::
 	ts_mugshot_show mugshot=0x37
 	.string "OK!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x499
+	ts_flag_set flag=EVENT_499
 	ts_end
 
 	def_text_script CompText87859C0_unk11
@@ -224,7 +224,7 @@ CompText87859C0::
 
 	def_text_script CompText87859C0_unk17
 	ts_check_flag [
-		flag: 0x483,
+		flag: EVENT_483,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87859C0_unk18_id,
 	]

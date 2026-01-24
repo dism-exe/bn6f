@@ -11,12 +11,12 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk0
 	ts_check_flag [
-		flag: 0x1141,
+		flag: EVENT_1141,
 		jumpIfTrue: CompText878A898_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1143,
+		flag: EVENT_1143,
 		jumpIfTrue: CompText878A898_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -44,12 +44,12 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk3
 	ts_check_flag [
-		flag: 0x1141,
+		flag: EVENT_1141,
 		jumpIfTrue: CompText878A898_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1143,
+		flag: EVENT_1143,
 		jumpIfTrue: CompText878A898_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -256,8 +256,8 @@ CompText878A898::
 	.string "That's a real bad\n"
 	.string "guy!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1142
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1142
 	ts_end
 
 	def_text_script CompText878A898_unk7
@@ -361,7 +361,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk11
 	ts_check_flag [
-		flag: 0x1195,
+		flag: EVENT_1195,
 		jumpIfTrue: CompText878A898_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -371,7 +371,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk43_id,
 		jumpIfSome: CompText878A898_unk43_id,
 	]
-	ts_flag_set flag=0x1195
+	ts_flag_set flag=EVENT_1195
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "One Tuna comin'\n"
@@ -416,7 +416,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk13
 	ts_check_flag [
-		flag: 0x119B,
+		flag: EVENT_119B,
 		jumpIfTrue: CompText878A898_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -426,7 +426,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk43_id,
 		jumpIfSome: CompText878A898_unk43_id,
 	]
-	ts_flag_set flag=0x119B
+	ts_flag_set flag=EVENT_119B
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "One Urchin comin'\n"
@@ -471,7 +471,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk15
 	ts_check_flag [
-		flag: 0x119A,
+		flag: EVENT_119A,
 		jumpIfTrue: CompText878A898_unk16_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -481,7 +481,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk43_id,
 		jumpIfSome: CompText878A898_unk43_id,
 	]
-	ts_flag_set flag=0x119A
+	ts_flag_set flag=EVENT_119A
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "One YellowTail\n"
@@ -582,7 +582,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk18
 	ts_check_flag [
-		flag: 0x119C,
+		flag: EVENT_119C,
 		jumpIfTrue: CompText878A898_unk19_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -592,7 +592,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk44_id,
 		jumpIfSome: CompText878A898_unk44_id,
 	]
-	ts_flag_set flag=0x119C
+	ts_flag_set flag=EVENT_119C
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Snapper it is!!\n"
@@ -636,7 +636,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk20
 	ts_check_flag [
-		flag: 0x1198,
+		flag: EVENT_1198,
 		jumpIfTrue: CompText878A898_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -646,7 +646,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk44_id,
 		jumpIfSome: CompText878A898_unk44_id,
 	]
-	ts_flag_set flag=0x1198
+	ts_flag_set flag=EVENT_1198
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Shrimp it is!!\n"
@@ -690,7 +690,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk22
 	ts_check_flag [
-		flag: 0x1199,
+		flag: EVENT_1199,
 		jumpIfTrue: CompText878A898_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -700,7 +700,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk44_id,
 		jumpIfSome: CompText878A898_unk44_id,
 	]
-	ts_flag_set flag=0x1199
+	ts_flag_set flag=EVENT_1199
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Herring it is!!\n"
@@ -803,7 +803,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk25
 	ts_check_flag [
-		flag: 0x119B,
+		flag: EVENT_119B,
 		jumpIfTrue: CompText878A898_unk26_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -813,7 +813,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk45_id,
 		jumpIfSome: CompText878A898_unk45_id,
 	]
-	ts_flag_set flag=0x119B
+	ts_flag_set flag=EVENT_119B
 	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "Urchin it is!!\n"
@@ -858,7 +858,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk27
 	ts_check_flag [
-		flag: 0x1198,
+		flag: EVENT_1198,
 		jumpIfTrue: CompText878A898_unk28_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -868,7 +868,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk45_id,
 		jumpIfSome: CompText878A898_unk45_id,
 	]
-	ts_flag_set flag=0x1198
+	ts_flag_set flag=EVENT_1198
 	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "Shrimp it is!!\n"
@@ -971,7 +971,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk30
 	ts_check_flag [
-		flag: 0x1196,
+		flag: EVENT_1196,
 		jumpIfTrue: CompText878A898_unk31_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -981,7 +981,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk46_id,
 		jumpIfSome: CompText878A898_unk46_id,
 	]
-	ts_flag_set flag=0x1196
+	ts_flag_set flag=EVENT_1196
 	ts_mugshot_show mugshot=0x3F
 	ts_msg_open
 	.string "You got it!\n"
@@ -1024,7 +1024,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk32
 	ts_check_flag [
-		flag: 0x1195,
+		flag: EVENT_1195,
 		jumpIfTrue: CompText878A898_unk33_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1034,7 +1034,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk46_id,
 		jumpIfSome: CompText878A898_unk46_id,
 	]
-	ts_flag_set flag=0x1195
+	ts_flag_set flag=EVENT_1195
 	ts_mugshot_show mugshot=0x3F
 	ts_msg_open
 	.string "You got it!\n"
@@ -1077,7 +1077,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk34
 	ts_check_flag [
-		flag: 0x1197,
+		flag: EVENT_1197,
 		jumpIfTrue: CompText878A898_unk35_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1087,7 +1087,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk46_id,
 		jumpIfSome: CompText878A898_unk46_id,
 	]
-	ts_flag_set flag=0x1197
+	ts_flag_set flag=EVENT_1197
 	ts_mugshot_show mugshot=0x3F
 	ts_msg_open
 	.string "You got it!\n"
@@ -1184,7 +1184,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk37
 	ts_check_flag [
-		flag: 0x1195,
+		flag: EVENT_1195,
 		jumpIfTrue: CompText878A898_unk38_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1194,7 +1194,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk47_id,
 		jumpIfSome: CompText878A898_unk47_id,
 	]
-	ts_flag_set flag=0x1195
+	ts_flag_set flag=EVENT_1195
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Hahaha! Tuna,huh?\n"
@@ -1236,7 +1236,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk39
 	ts_check_flag [
-		flag: 0x1198,
+		flag: EVENT_1198,
 		jumpIfTrue: CompText878A898_unk40_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1246,7 +1246,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk47_id,
 		jumpIfSome: CompText878A898_unk47_id,
 	]
-	ts_flag_set flag=0x1198
+	ts_flag_set flag=EVENT_1198
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Hahaha! Shrimp,huh?\n"
@@ -1288,7 +1288,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk41
 	ts_check_flag [
-		flag: 0x1196,
+		flag: EVENT_1196,
 		jumpIfTrue: CompText878A898_unk42_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1298,7 +1298,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk47_id,
 		jumpIfSome: CompText878A898_unk47_id,
 	]
-	ts_flag_set flag=0x1196
+	ts_flag_set flag=EVENT_1196
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Hahaha! Salmon,huh?\n"
@@ -1384,7 +1384,7 @@ CompText878A898::
 
 	def_text_script CompText878A898_unk48
 	ts_check_flag [
-		flag: 0x119C,
+		flag: EVENT_119C,
 		jumpIfTrue: CompText878A898_unk49_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1394,7 +1394,7 @@ CompText878A898::
 		jumpIfNone: CompText878A898_unk45_id,
 		jumpIfSome: CompText878A898_unk45_id,
 	]
-	ts_flag_set flag=0x119C
+	ts_flag_set flag=EVENT_119C
 	ts_mugshot_show mugshot=0x40
 	ts_msg_open
 	.string "Snapper it is!!\n"

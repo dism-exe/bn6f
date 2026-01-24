@@ -139,17 +139,17 @@ CompText876B978::
 
 	def_text_script CompText876B978_unk50
 	ts_check_flag [
-		flag: 0x53F,
+		flag: EVENT_53F,
 		jumpIfTrue: CompText876B978_unk53_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x53D,
+		flag: EVENT_53D,
 		jumpIfTrue: CompText876B978_unk52_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x53C,
+		flag: EVENT_53C,
 		jumpIfTrue: CompText876B978_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -170,7 +170,7 @@ CompText876B978::
 	ts_end
 
 	def_text_script CompText876B978_unk51
-	ts_flag_set flag=0x53D
+	ts_flag_set flag=EVENT_53D
 	ts_msg_open
 	ts_mugshot_show mugshot=0xB
 	.string "...Huh?"

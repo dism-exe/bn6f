@@ -188,16 +188,16 @@ CompText877185C::
 
 	def_text_script CompText877185C_unk50
 	ts_check_flag [
-		flag: 0x120,
+		flag: EVENT_120,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877185C_unk70_id,
 	]
 	ts_check_flag [
-		flag: 0x1300,
+		flag: EVENT_1300,
 		jumpIfTrue: CompText877185C_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1300
+	ts_flag_set flag=EVENT_1300
 	ts_mugshot_show mugshot=0x1E
 	ts_msg_open
 	.string "Lan Hikari,ya wanna\n"
@@ -324,13 +324,13 @@ CompText877185C::
 	ts_mugshot_show mugshot=0x47
 	.string "Time to burn!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x130A
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_130A
 	ts_end
 
 	def_text_script CompText877185C_unk54
 	ts_check_flag [
-		flag: 0x130E,
+		flag: EVENT_130E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877185C_unk53_id,
 	]
@@ -350,18 +350,18 @@ CompText877185C::
 	.string "Time to see why\n"
 	.string "I'm the firestarter!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x130B
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_130B
 	ts_end
 
 	def_text_script CompText877185C_unk55
 	ts_check_flag [
-		flag: 0x302,
+		flag: EVENT_302,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877185C_unk54_id,
 	]
 	ts_check_flag [
-		flag: 0x130E,
+		flag: EVENT_130E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877185C_unk53_id,
 	]
@@ -386,19 +386,19 @@ CompText877185C::
 	ts_mugshot_show mugshot=0x47
 	.string "Whoooooaaa!! FLAME!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x130C
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_130C
 	ts_end
 
 	def_text_script CompText877185C_unk56
 
 	def_text_script CompText877185C_unk57
 	ts_check_flag [
-		flag: 0x130E,
+		flag: EVENT_130E,
 		jumpIfTrue: CompText877185C_unk58_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x130E
+	ts_flag_set flag=EVENT_130E
 	ts_jump target=CompText877185C_unk58_id
 
 	def_text_script CompText877185C_unk58
@@ -420,16 +420,16 @@ CompText877185C::
 
 	def_text_script CompText877185C_unk60
 	ts_check_flag [
-		flag: 0x120,
+		flag: EVENT_120,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877185C_unk71_id,
 	]
 	ts_check_flag [
-		flag: 0x1301,
+		flag: EVENT_1301,
 		jumpIfTrue: CompText877185C_unk61_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1301
+	ts_flag_set flag=EVENT_1301
 	ts_mugshot_show mugshot=0x1F
 	ts_msg_open
 	.string "Lan,would you\n"
@@ -555,13 +555,13 @@ CompText877185C::
 	ts_mugshot_show mugshot=0x48
 	.string "Let's do it,drip!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x130F
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_130F
 	ts_end
 
 	def_text_script CompText877185C_unk64
 	ts_check_flag [
-		flag: 0x1313,
+		flag: EVENT_1313,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877185C_unk63_id,
 	]
@@ -582,18 +582,18 @@ CompText877185C::
 	ts_print_current_navi
 	.string "!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1310
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1310
 	ts_end
 
 	def_text_script CompText877185C_unk65
 	ts_check_flag [
-		flag: 0x320,
+		flag: EVENT_320,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877185C_unk64_id,
 	]
 	ts_check_flag [
-		flag: 0x1313,
+		flag: EVENT_1313,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText877185C_unk63_id,
 	]
@@ -613,19 +613,19 @@ CompText877185C::
 	.string ",time for a\n"
 	.string "shower!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1311
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1311
 	ts_end
 
 	def_text_script CompText877185C_unk66
 
 	def_text_script CompText877185C_unk67
 	ts_check_flag [
-		flag: 0x1313,
+		flag: EVENT_1313,
 		jumpIfTrue: CompText877185C_unk68_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1313
+	ts_flag_set flag=EVENT_1313
 	ts_jump target=CompText877185C_unk68_id
 
 	def_text_script CompText877185C_unk68
@@ -681,7 +681,7 @@ CompText877185C::
 
 	def_text_script CompText877185C_unk72
 	ts_check_flag [
-		flag: 0xC1F,
+		flag: EVENT_C1F,
 		jumpIfTrue: CompText877185C_unk74_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -689,7 +689,7 @@ CompText877185C::
 
 	def_text_script CompText877185C_unk73
 	ts_check_flag [
-		flag: 0xC1F,
+		flag: EVENT_C1F,
 		jumpIfTrue: CompText877185C_unk75_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

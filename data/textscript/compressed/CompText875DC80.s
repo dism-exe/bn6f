@@ -19,7 +19,7 @@ CompText875DC80::
 
 	def_text_script CompText875DC80_unk1
 	ts_check_flag [
-		flag: 0xE67,
+		flag: EVENT_E67,
 		jumpIfTrue: CompText875DC80_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -28,7 +28,7 @@ CompText875DC80::
 	.string "Lan! Check the\n"
 	.string "control panel!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE67
+	ts_flag_set flag=EVENT_E67
 	ts_end
 
 	def_text_script CompText875DC80_unk2

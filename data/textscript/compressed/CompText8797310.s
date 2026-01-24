@@ -10,25 +10,25 @@ CompText8797310::
 	text_archive_start
 
 	def_text_script CompText8797310_unk0
-	ts_flag_set flag=0x445
+	ts_flag_set flag=EVENT_445
 	ts_end
 
 	def_text_script CompText8797310_unk1
-	ts_flag_set flag=0x447
+	ts_flag_set flag=EVENT_447
 	ts_end
 
 	def_text_script CompText8797310_unk2
-	ts_flag_set flag=0x449
+	ts_flag_set flag=EVENT_449
 	ts_end
 
 	def_text_script CompText8797310_unk3
 	ts_check_flag [
-		flag: 0x43E,
+		flag: EVENT_43E,
 		jumpIfTrue: CompText8797310_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x434,
+		flag: EVENT_434,
 		jumpIfTrue: CompText8797310_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

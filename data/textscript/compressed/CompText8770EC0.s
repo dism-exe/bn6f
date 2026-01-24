@@ -38,21 +38,21 @@ CompText8770EC0::
 
 	def_text_script CompText8770EC0_unk10
 	ts_check_flag [
-		flag: 0x1145,
+		flag: EVENT_1145,
 		jumpIfTrue: CompText8770EC0_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1218,
+		flag: EVENT_1218,
 		jumpIfTrue: CompText8770EC0_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1144,
+		flag: EVENT_1144,
 		jumpIfTrue: CompText8770EC0_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1144
+	ts_flag_set flag=EVENT_1144
 	ts_mugshot_show mugshot=0x10
 	ts_msg_open
 	.string "AHHH! I'm so busy!"
@@ -167,7 +167,7 @@ CompText8770EC0::
 	ts_end
 
 	def_text_script CompText8770EC0_unk12
-	ts_flag_set flag=0x1145
+	ts_flag_set flag=EVENT_1145
 	ts_mugshot_show mugshot=0x10
 	ts_msg_open
 	.string "Did you reserve it?"

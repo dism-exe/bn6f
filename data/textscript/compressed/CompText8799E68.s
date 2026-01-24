@@ -11,21 +11,21 @@ CompText8799E68::
 
 	def_text_script CompText8799E68_unk0
 	ts_check_flag [
-		flag: 0xE3A,
+		flag: EVENT_E3A,
 		jumpIfTrue: CompText8799E68_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xFFE,
+		flag: EVENT_FFE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8799E68_unk3_id,
 	]
 	ts_check_flag [
-		flag: 0xED6,
+		flag: EVENT_ED6,
 		jumpIfTrue: CompText8799E68_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xED6
+	ts_flag_set flag=EVENT_ED6
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "YAHHH!\n"

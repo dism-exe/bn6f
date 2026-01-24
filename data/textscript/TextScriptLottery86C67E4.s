@@ -51,7 +51,7 @@ TextScriptLottery86C67E4::
 
 	def_text_script TextScriptLottery86C67E4_unk15
 	ts_msg_open_quick
-	ts_flag_clear flag=0xF5
+	ts_flag_clear flag=EVENT_F5
 	ts_player_animate_scene animation=0x18
 	ts_sound_play00 track=0x73
 	ts_position_text [
@@ -78,7 +78,7 @@ TextScriptLottery86C67E4::
 	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_scene
-	ts_flag_set flag=0xF5
+	ts_flag_set flag=EVENT_F5
 	ts_end
 
 	def_text_script TextScriptLottery86C67E4_unk16

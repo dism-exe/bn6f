@@ -11,12 +11,12 @@ CompText87692AC::
 
 	def_text_script CompText87692AC_unk0
 	ts_check_flag [
-		flag: 0x508,
+		flag: EVENT_508,
 		jumpIfTrue: CompText87692AC_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x55B,
+		flag: EVENT_55B,
 		jumpIfTrue: CompText87692AC_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -45,7 +45,7 @@ CompText87692AC::
 	.string "Came to fix it?\n"
 	.string "Is that the..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x55B
+	ts_flag_set flag=EVENT_55B
 	ts_end
 
 	def_text_script CompText87692AC_unk1

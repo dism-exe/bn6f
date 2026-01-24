@@ -11,16 +11,16 @@ CompText877CD94::
 
 	def_text_script CompText877CD94_unk0
 	ts_check_flag [
-		flag: 0x80E,
+		flag: EVENT_80E,
 		jumpIfTrue: CompText877CD94_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x868,
+		flag: EVENT_868,
 		jumpIfTrue: CompText877CD94_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x868
+	ts_flag_set flag=EVENT_868
 	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "Ahh,on a field\n"
@@ -97,11 +97,11 @@ CompText877CD94::
 
 	def_text_script CompText877CD94_unk2
 	ts_check_flag [
-		flag: 0x869,
+		flag: EVENT_869,
 		jumpIfTrue: CompText877CD94_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x869
+	ts_flag_set flag=EVENT_869
 	ts_msg_open
 	ts_mugshot_show mugshot=0x10
 	.string "Normal people are\n"
@@ -211,11 +211,11 @@ CompText877CD94::
 
 	def_text_script CompText877CD94_unk4
 	ts_check_flag [
-		flag: 0x86A,
+		flag: EVENT_86A,
 		jumpIfTrue: CompText877CD94_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x86A
+	ts_flag_set flag=EVENT_86A
 	ts_msg_open
 	ts_mugshot_show mugshot=0x16
 	.string "This JudgeTree is\n"
@@ -281,11 +281,11 @@ CompText877CD94::
 
 	def_text_script CompText877CD94_unk6
 	ts_check_flag [
-		flag: 0x86B,
+		flag: EVENT_86B,
 		jumpIfTrue: CompText877CD94_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x86B
+	ts_flag_set flag=EVENT_86B
 	ts_msg_open
 	ts_mugshot_show mugshot=0xD
 	.string "This JudgeTree is\n"
@@ -400,11 +400,11 @@ CompText877CD94::
 
 	def_text_script CompText877CD94_unk20
 	ts_check_flag [
-		flag: 0x86D,
+		flag: EVENT_86D,
 		jumpIfTrue: CompText877CD94_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x86D
+	ts_flag_set flag=EVENT_86D
 	ts_sound_fade_out [
 		slot: 0x1F,
 		length: 0xA,
@@ -464,7 +464,7 @@ CompText877CD94::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_flag_set flag=0x871
+	ts_flag_set flag=EVENT_871
 	ts_item_give [
 		item: 0xC,
 		amount: 0x1,

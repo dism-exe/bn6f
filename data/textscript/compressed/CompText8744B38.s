@@ -63,27 +63,27 @@ CompText8744B38::
 
 	def_text_script CompText8744B38_unk5
 	ts_check_flag [
-		flag: 0xE10,
+		flag: EVENT_E10,
 		jumpIfTrue: CompText8744B38_unk10_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE0E,
+		flag: EVENT_E0E,
 		jumpIfTrue: CompText8744B38_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE0A,
+		flag: EVENT_E0A,
 		jumpIfTrue: CompText8744B38_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE08,
+		flag: EVENT_E08,
 		jumpIfTrue: CompText8744B38_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE5A,
+		flag: EVENT_E5A,
 		jumpIfTrue: CompText8744B38_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -159,72 +159,72 @@ CompText8744B38::
 
 	def_text_script CompText8744B38_unk15
 	ts_check_flag [
-		flag: 0xE44,
+		flag: EVENT_E44,
 		jumpIfTrue: CompText8744B38_unk29_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE3E,
+		flag: EVENT_E3E,
 		jumpIfTrue: CompText8744B38_unk28_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE3C,
+		flag: EVENT_E3C,
 		jumpIfTrue: CompText8744B38_unk27_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE36,
+		flag: EVENT_E36,
 		jumpIfTrue: CompText8744B38_unk26_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE34,
+		flag: EVENT_E34,
 		jumpIfTrue: CompText8744B38_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE2E,
+		flag: EVENT_E2E,
 		jumpIfTrue: CompText8744B38_unk24_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE2C,
+		flag: EVENT_E2C,
 		jumpIfTrue: CompText8744B38_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE2A,
+		flag: EVENT_E2A,
 		jumpIfTrue: CompText8744B38_unk22_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE26,
+		flag: EVENT_E26,
 		jumpIfTrue: CompText8744B38_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE22,
+		flag: EVENT_E22,
 		jumpIfTrue: CompText8744B38_unk20_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE20,
+		flag: EVENT_E20,
 		jumpIfTrue: CompText8744B38_unk19_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE16,
+		flag: EVENT_E16,
 		jumpIfTrue: CompText8744B38_unk18_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE14,
+		flag: EVENT_E14,
 		jumpIfTrue: CompText8744B38_unk17_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE62,
+		flag: EVENT_E62,
 		jumpIfTrue: CompText8744B38_unk16_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -352,22 +352,22 @@ CompText8744B38::
 
 	def_text_script CompText8744B38_unk50
 	ts_check_flag [
-		flag: 0x997,
+		flag: EVENT_997,
 		jumpIfTrue: CompText8744B38_unk54_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x996,
+		flag: EVENT_996,
 		jumpIfTrue: CompText8744B38_unk53_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x995,
+		flag: EVENT_995,
 		jumpIfTrue: CompText8744B38_unk52_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x836,
+		flag: EVENT_836,
 		jumpIfTrue: CompText8744B38_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -417,17 +417,17 @@ CompText8744B38::
 
 	def_text_script CompText8744B38_unk55
 	ts_check_flag [
-		flag: 0x96F,
+		flag: EVENT_96F,
 		jumpIfTrue: CompText8744B38_unk58_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x96E,
+		flag: EVENT_96E,
 		jumpIfTrue: CompText8744B38_unk57_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x84C,
+		flag: EVENT_84C,
 		jumpIfTrue: CompText8744B38_unk56_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

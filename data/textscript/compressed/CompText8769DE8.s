@@ -17,12 +17,12 @@ CompText8769DE8::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1EB,
+		flag: EVENT_1EB,
 		jumpIfTrue: CompText8769DE8_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x802,
+		flag: EVENT_802,
 		jumpIfTrue: CompText8769DE8_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -35,7 +35,7 @@ CompText8769DE8::
 	ts_jump target=CompText8769DE8_unk4_id
 
 	def_text_script CompText8769DE8_unk1
-	ts_flag_set flag=0x1EB
+	ts_flag_set flag=EVENT_1EB
 	ts_mugshot_show mugshot=0x33
 	ts_msg_open
 	.string "Hey Lan!!\n"
@@ -191,29 +191,29 @@ CompText8769DE8::
 	ts_clear_msg
 	.string "Penguin capture!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x11AD
+	ts_flag_set flag=EVENT_11AD
 	ts_check_flag [
-		flag: 0x11AF,
+		flag: EVENT_11AF,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8769DE8_unk11_id,
 	]
 	ts_check_flag [
-		flag: 0x11AE,
+		flag: EVENT_11AE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8769DE8_unk11_id,
 	]
 	ts_check_flag [
-		flag: 0x11AD,
+		flag: EVENT_11AD,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8769DE8_unk11_id,
 	]
 	ts_check_flag [
-		flag: 0x11AC,
+		flag: EVENT_11AC,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8769DE8_unk11_id,
 	]
 	ts_check_flag [
-		flag: 0x11AB,
+		flag: EVENT_11AB,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8769DE8_unk11_id,
 	]

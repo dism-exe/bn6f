@@ -11,16 +11,16 @@ CompText879E65C::
 
 	def_text_script CompText879E65C_unk0
 	ts_check_flag [
-		flag: 0x1160,
+		flag: EVENT_1160,
 		jumpIfTrue: CompText879E65C_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x115F,
+		flag: EVENT_115F,
 		jumpIfTrue: CompText879E65C_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x115F
+	ts_flag_set flag=EVENT_115F
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Lalalala!\n"
@@ -200,7 +200,7 @@ CompText879E65C::
 	ts_end
 
 	def_text_script CompText879E65C_unk2
-	ts_flag_set flag=0x1160
+	ts_flag_set flag=EVENT_1160
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	ts_item_take_chip [
@@ -391,8 +391,8 @@ CompText879E65C::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1102
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1102
 	ts_end
 
 	def_text_script CompText879E65C_unk21
@@ -409,8 +409,8 @@ CompText879E65C::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1103
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1103
 	ts_end
 
 	def_text_script CompText879E65C_unk22
@@ -427,8 +427,8 @@ CompText879E65C::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1104
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1104
 	ts_end
 
 	def_text_script CompText879E65C_unk23
@@ -445,28 +445,28 @@ CompText879E65C::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1105
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1105
 	ts_end
 
 	def_text_script CompText879E65C_unk24
 	ts_check_flag [
-		flag: 0x1106,
+		flag: EVENT_1106,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879E65C_unk25_id,
 	]
 	ts_check_flag [
-		flag: 0x1107,
+		flag: EVENT_1107,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879E65C_unk25_id,
 	]
 	ts_check_flag [
-		flag: 0x1108,
+		flag: EVENT_1108,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879E65C_unk25_id,
 	]
 	ts_check_flag [
-		flag: 0x1109,
+		flag: EVENT_1109,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879E65C_unk25_id,
 	]

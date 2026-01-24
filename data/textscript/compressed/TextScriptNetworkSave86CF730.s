@@ -74,7 +74,7 @@ TextScriptNetworkSave86CF730::
 
 	def_text_script TextScriptNetworkSave86CF730_unk11
 	ts_check_flag [
-		flag: 0x1704,
+		flag: EVENT_1704,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: TextScriptNetworkSave86CF730_unk12_id,
 	]

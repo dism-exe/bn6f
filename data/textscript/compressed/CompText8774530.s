@@ -11,7 +11,7 @@ CompText8774530::
 
 	def_text_script CompText8774530_unk0
 	ts_check_flag [
-		flag: 0x512,
+		flag: EVENT_512,
 		jumpIfTrue: CompText8774530_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -25,7 +25,7 @@ CompText8774530::
 
 	def_text_script CompText8774530_unk1
 	ts_check_flag [
-		flag: 0x510,
+		flag: EVENT_510,
 		jumpIfTrue: CompText8774530_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -39,7 +39,7 @@ CompText8774530::
 
 	def_text_script CompText8774530_unk2
 	ts_check_flag [
-		flag: 0x51A,
+		flag: EVENT_51A,
 		jumpIfTrue: CompText8774530_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -60,12 +60,12 @@ CompText8774530::
 
 	def_text_script CompText8774530_unk4
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8774530_unk7_id,
 	]
 	ts_check_flag [
-		flag: 0x1729,
+		flag: EVENT_COPYBOT_ACTIVE,
 		jumpIfTrue: CompText8774530_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -106,7 +106,7 @@ CompText8774530::
 
 	def_text_script CompText8774530_unk10
 	ts_check_flag [
-		flag: 0xC20,
+		flag: EVENT_C20,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8774530_unk12_id,
 	]
@@ -186,11 +186,11 @@ CompText8774530::
 
 	def_text_script CompText8774530_unk40
 	ts_check_flag [
-		flag: 0x1149,
+		flag: EVENT_1149,
 		jumpIfTrue: CompText8774530_unk42_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1149
+	ts_flag_set flag=EVENT_1149
 	ts_mugshot_show mugshot=0x18
 	ts_msg_open
 	.string "Hey kid,would you\n"
@@ -286,26 +286,26 @@ CompText8774530::
 
 	def_text_script CompText8774530_unk42
 	ts_check_flag [
-		flag: 0x1150,
+		flag: EVENT_1150,
 		jumpIfTrue: CompText8774530_unk43_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x114D,
+		flag: EVENT_114D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8774530_unk41_id,
 	]
 	ts_check_flag [
-		flag: 0x114E,
+		flag: EVENT_114E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8774530_unk41_id,
 	]
 	ts_check_flag [
-		flag: 0x114F,
+		flag: EVENT_114F,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8774530_unk41_id,
 	]
-	ts_flag_set flag=0x1150
+	ts_flag_set flag=EVENT_1150
 	ts_mugshot_show mugshot=0x18
 	ts_msg_open
 	.string "You took care of\n"
@@ -376,29 +376,29 @@ CompText8774530::
 	ts_clear_msg
 	.string "Penguin Capture!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x11AE
+	ts_flag_set flag=EVENT_11AE
 	ts_check_flag [
-		flag: 0x11AF,
+		flag: EVENT_11AF,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8774530_unk46_id,
 	]
 	ts_check_flag [
-		flag: 0x11AE,
+		flag: EVENT_11AE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8774530_unk46_id,
 	]
 	ts_check_flag [
-		flag: 0x11AD,
+		flag: EVENT_11AD,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8774530_unk46_id,
 	]
 	ts_check_flag [
-		flag: 0x11AC,
+		flag: EVENT_11AC,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8774530_unk46_id,
 	]
 	ts_check_flag [
-		flag: 0x11AB,
+		flag: EVENT_11AB,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8774530_unk46_id,
 	]
@@ -494,26 +494,26 @@ CompText8774530::
 
 	def_text_script CompText8774530_unk60
 	ts_check_flag [
-		flag: 0x11B6,
+		flag: EVENT_11B6,
 		jumpIfTrue: CompText8774530_unk64_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11B7,
+		flag: EVENT_11B7,
 		jumpIfTrue: CompText8774530_unk63_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11B4,
+		flag: EVENT_11B4,
 		jumpIfTrue: CompText8774530_unk62_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11B0,
+		flag: EVENT_11B0,
 		jumpIfTrue: CompText8774530_unk61_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11B0
+	ts_flag_set flag=EVENT_11B0
 	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "I'm the one who\n"
@@ -609,7 +609,7 @@ CompText8774530::
 	ts_end
 
 	def_text_script CompText8774530_unk62
-	ts_flag_set flag=0x11B5
+	ts_flag_set flag=EVENT_11B5
 	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "Ahhh... He won't\n"
@@ -661,8 +661,8 @@ CompText8774530::
 	ts_end
 
 	def_text_script CompText8774530_unk64
-	ts_flag_set flag=0x11B7
-	ts_flag_set flag=0x11B8
+	ts_flag_set flag=EVENT_11B7
+	ts_flag_set flag=EVENT_11B8
 	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "DOH!! I took my eyes\n"
@@ -699,22 +699,22 @@ CompText8774530::
 
 	def_text_script CompText8774530_unk66
 	ts_check_flag [
-		flag: 0x11B4,
+		flag: EVENT_11B4,
 		jumpIfTrue: CompText8774530_unk70_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11B3,
+		flag: EVENT_11B3,
 		jumpIfTrue: CompText8774530_unk69_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11B2,
+		flag: EVENT_11B2,
 		jumpIfTrue: CompText8774530_unk68_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11B0,
+		flag: EVENT_11B0,
 		jumpIfTrue: CompText8774530_unk67_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -725,7 +725,7 @@ CompText8774530::
 	ts_end
 
 	def_text_script CompText8774530_unk67
-	ts_flag_set flag=0x11B2
+	ts_flag_set flag=EVENT_11B2
 	ts_mugshot_show mugshot=0xD
 	ts_msg_open
 	.string "......"
@@ -733,7 +733,7 @@ CompText8774530::
 	ts_end
 
 	def_text_script CompText8774530_unk68
-	ts_flag_set flag=0x11B3
+	ts_flag_set flag=EVENT_11B3
 	ts_mugshot_show mugshot=0xD
 	ts_msg_open
 	.string "......Hmmph!"
@@ -741,7 +741,7 @@ CompText8774530::
 	ts_end
 
 	def_text_script CompText8774530_unk69
-	ts_flag_set flag=0x11B4
+	ts_flag_set flag=EVENT_11B4
 	ts_mugshot_show mugshot=0xD
 	ts_msg_open
 	.string "...Quit bugging\n"

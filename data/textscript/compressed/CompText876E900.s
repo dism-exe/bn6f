@@ -45,16 +45,16 @@ CompText876E900::
 
 	def_text_script CompText876E900_unk5
 	ts_check_flag [
-		flag: 0x111E,
+		flag: EVENT_111E,
 		jumpIfTrue: CompText876E900_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x111D,
+		flag: EVENT_111D,
 		jumpIfTrue: CompText876E900_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x111D
+	ts_flag_set flag=EVENT_111D
 	ts_mugshot_show mugshot=0xA
 	ts_msg_open
 	.string "Who called Mr.Quiz!!\n"
@@ -493,7 +493,7 @@ CompText876E900::
 	.string "You should join the\n"
 	.string "Quiz Team!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x111E
+	ts_flag_set flag=EVENT_111E
 	ts_end
 
 	def_text_script CompText876E900_unk8

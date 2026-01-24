@@ -31,22 +31,22 @@ CompText87BF348::
 
 	def_text_script CompText87BF348_unk2
 	ts_check_flag [
-		flag: 0xA1C,
+		flag: EVENT_A1C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87BF348_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0xA1E,
+		flag: EVENT_A1E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87BF348_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0xA20,
+		flag: EVENT_A20,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87BF348_unk1_id,
 	]
 	ts_check_flag [
-		flag: 0xA22,
+		flag: EVENT_A22,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87BF348_unk1_id,
 	]

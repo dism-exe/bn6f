@@ -3,11 +3,11 @@ TextScriptDustManUndernetTut::
 
 	def_text_script TextScriptDustManUndernetTut_unk0
 	ts_check_flag [
-		flag: 0xCEB,
+		flag: EVENT_CEB,
 		jumpIfTrue: TextScriptDustManUndernetTut_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xCEB
+	ts_flag_set flag=EVENT_CEB
 	ts_jump target=TextScriptDustManUndernetTut_unk4_id
 
 	def_text_script TextScriptDustManUndernetTut_unk1

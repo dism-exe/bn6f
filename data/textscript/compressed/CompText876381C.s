@@ -68,7 +68,7 @@ CompText876381C::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xE08,
+		flag: EVENT_E08,
 		jumpIfTrue: CompText876381C_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

@@ -26,7 +26,7 @@ CompText8791A28::
 		code: 0x10,
 		amount: 0x1,
 	]
-	ts_flag_set flag=0x223
+	ts_flag_set flag=EVENT_223
 	ts_player_animate_object animation=0x18
 	ts_print_current_navi_ow
 	.string " got:\n"
@@ -59,7 +59,7 @@ CompText8791A28::
 		code: 0x9,
 		amount: 0x1,
 	]
-	ts_flag_set flag=0x223
+	ts_flag_set flag=EVENT_223
 	ts_player_animate_object animation=0x18
 	ts_print_current_navi_ow
 	.string " got:\n"

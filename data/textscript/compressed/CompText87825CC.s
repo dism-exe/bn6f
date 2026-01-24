@@ -17,7 +17,7 @@ CompText87825CC::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x469,
+		flag: EVENT_469,
 		jumpIfTrue: CompText87825CC_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -68,7 +68,7 @@ CompText87825CC::
 	.string "So did you learn\n"
 	.string "anything today?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x469
+	ts_flag_set flag=EVENT_469
 	ts_end
 
 	def_text_script CompText87825CC_unk1
@@ -88,7 +88,7 @@ CompText87825CC::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x46A,
+		flag: EVENT_46A,
 		jumpIfTrue: CompText87825CC_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -113,7 +113,7 @@ CompText87825CC::
 	.string "learn the Net basics\n"
 	.string "here,huh!?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x46A
+	ts_flag_set flag=EVENT_46A
 	ts_end
 
 	def_text_script CompText87825CC_unk3
@@ -133,7 +133,7 @@ CompText87825CC::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x46B,
+		flag: EVENT_46B,
 		jumpIfTrue: CompText87825CC_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -165,7 +165,7 @@ CompText87825CC::
 	.string "be opened with\n"
 	.string "money."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x46B
+	ts_flag_set flag=EVENT_46B
 	ts_end
 
 	def_text_script CompText87825CC_unk5
@@ -183,7 +183,7 @@ CompText87825CC::
 
 	def_text_script CompText87825CC_unk6
 	ts_check_flag [
-		flag: 0x46C,
+		flag: EVENT_46C,
 		jumpIfTrue: CompText87825CC_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -201,7 +201,7 @@ CompText87825CC::
 	.string "HERE'S SIMPLE,SO YOU\n"
 	.string "SHOULDN'T GET LOST."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x46C
+	ts_flag_set flag=EVENT_46C
 	ts_end
 
 	def_text_script CompText87825CC_unk7
@@ -416,11 +416,11 @@ CompText87825CC::
 
 	def_text_script CompText87825CC_unk50
 	ts_check_flag [
-		flag: 0x540,
+		flag: EVENT_540,
 		jumpIfTrue: CompText87825CC_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x540
+	ts_flag_set flag=EVENT_540
 	ts_msg_open
 	ts_mugshot_show mugshot=0x41
 	.string "Ahhh...\n"
@@ -480,11 +480,11 @@ CompText87825CC::
 
 	def_text_script CompText87825CC_unk52
 	ts_check_flag [
-		flag: 0x542,
+		flag: EVENT_542,
 		jumpIfTrue: CompText87825CC_unk53_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x542
+	ts_flag_set flag=EVENT_542
 	ts_msg_open
 	ts_mugshot_show mugshot=0x41
 	.string "I'm in trouble..."

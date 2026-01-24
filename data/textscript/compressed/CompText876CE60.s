@@ -11,12 +11,12 @@ CompText876CE60::
 
 	def_text_script CompText876CE60_unk0
 	ts_check_flag [
-		flag: 0x1168,
+		flag: EVENT_1168,
 		jumpIfTrue: CompText876CE60_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1166,
+		flag: EVENT_1166,
 		jumpIfTrue: CompText876CE60_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -95,7 +95,7 @@ CompText876CE60::
 	ts_mugshot_show mugshot=0x1A
 	.string "Please help..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1166
+	ts_flag_set flag=EVENT_1166
 	ts_end
 
 	def_text_script CompText876CE60_unk1
@@ -163,7 +163,7 @@ CompText876CE60::
 	ts_player_reset_object
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_flag_set flag=0x1169
+	ts_flag_set flag=EVENT_1169
 	ts_mugshot_hide
 	.string "Request Points\n"
 	ts_call_request_points_buffer

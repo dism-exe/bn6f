@@ -11,7 +11,7 @@ CompText8768D28::
 
 	def_text_script CompText8768D28_unk0
 	ts_check_flag [
-		flag: 0xA06,
+		flag: EVENT_A06,
 		jumpIfTrue: CompText8768D28_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

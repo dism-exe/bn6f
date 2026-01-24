@@ -126,7 +126,7 @@ CompText87892BC::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCDB,
+		flag: EVENT_CDB,
 		jumpIfTrue: CompText87892BC_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -176,8 +176,8 @@ CompText87892BC::
 	ts_clear_msg
 	.string "Move along..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1726
-	ts_flag_set flag=0xCDB
+	ts_flag_set flag=EVENT_1726
+	ts_flag_set flag=EVENT_CDB
 	ts_end
 
 	def_text_script CompText87892BC_unk12
@@ -218,8 +218,8 @@ CompText87892BC::
 	.string "YAAARRGGHHHH!!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x11C0
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_11C0
 	ts_end
 
 	def_text_script CompText87892BC_unk16
@@ -228,29 +228,29 @@ CompText87892BC::
 	.string "Oops...\n"
 	.string "I overdid it..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x11CA
+	ts_flag_set flag=EVENT_11CA
 	ts_check_flag [
-		flag: 0x11CB,
+		flag: EVENT_11CB,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
-		flag: 0x11CA,
+		flag: EVENT_11CA,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
-		flag: 0x11C9,
+		flag: EVENT_11C9,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
-		flag: 0x11C8,
+		flag: EVENT_11C8,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
-		flag: 0x11C7,
+		flag: EVENT_11C7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87892BC_unk21_id,
 	]
@@ -285,8 +285,8 @@ CompText87892BC::
 	.string "You're my virus'\n"
 	.string "next victim!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x11C1
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_11C1
 	ts_end
 
 	def_text_script CompText87892BC_unk19
@@ -295,29 +295,29 @@ CompText87892BC::
 	.string "My virus....\n"
 	.string "Gone..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x11CB
+	ts_flag_set flag=EVENT_11CB
 	ts_check_flag [
-		flag: 0x11CB,
+		flag: EVENT_11CB,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
-		flag: 0x11CA,
+		flag: EVENT_11CA,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
-		flag: 0x11C9,
+		flag: EVENT_11C9,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
-		flag: 0x11C8,
+		flag: EVENT_11C8,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87892BC_unk21_id,
 	]
 	ts_check_flag [
-		flag: 0x11C7,
+		flag: EVENT_11C7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87892BC_unk21_id,
 	]

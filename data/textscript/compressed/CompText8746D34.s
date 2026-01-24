@@ -20,7 +20,7 @@ CompText8746D34::
 
 	def_text_script CompText8746D34_unk1
 	ts_check_flag [
-		flag: 0x82E,
+		flag: EVENT_82E,
 		jumpIfTrue: CompText8746D34_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -45,7 +45,7 @@ CompText8746D34::
 	ts_end
 
 	def_text_script CompText8746D34_unk2
-	ts_flag_set flag=0x9D4
+	ts_flag_set flag=EVENT_9D4
 	ts_end
 
 	def_text_script CompText8746D34_unk3
@@ -86,7 +86,7 @@ CompText8746D34::
 
 	def_text_script CompText8746D34_unk5
 	ts_check_flag [
-		flag: 0x9DA,
+		flag: EVENT_9DA,
 		jumpIfTrue: CompText8746D34_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -95,7 +95,7 @@ CompText8746D34::
 
 	def_text_script CompText8746D34_unk6
 	ts_check_flag [
-		flag: 0x9DB,
+		flag: EVENT_9DB,
 		jumpIfTrue: CompText8746D34_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -104,7 +104,7 @@ CompText8746D34::
 
 	def_text_script CompText8746D34_unk7
 	ts_check_flag [
-		flag: 0x9DC,
+		flag: EVENT_9DC,
 		jumpIfTrue: CompText8746D34_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

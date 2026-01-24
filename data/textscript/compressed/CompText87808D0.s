@@ -85,16 +85,16 @@ CompText87808D0::
 
 	def_text_script CompText87808D0_unk10
 	ts_check_flag [
-		flag: 0x1159,
+		flag: EVENT_1159,
 		jumpIfTrue: CompText87808D0_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1158,
+		flag: EVENT_1158,
 		jumpIfTrue: CompText87808D0_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1158
+	ts_flag_set flag=EVENT_1158
 	ts_mugshot_show mugshot=0x46
 	ts_msg_open
 	.string "Hello! Thanks\n"
@@ -331,7 +331,7 @@ CompText87808D0::
 	ts_end
 
 	def_text_script CompText87808D0_unk12
-	ts_flag_set flag=0x1159
+	ts_flag_set flag=EVENT_1159
 	ts_mugshot_show mugshot=0x46
 	ts_msg_open
 	ts_item_take_chip [
@@ -424,7 +424,7 @@ CompText87808D0::
 	ts_end
 
 	def_text_script CompText87808D0_unk14
-	ts_flag_set flag=0x1159
+	ts_flag_set flag=EVENT_1159
 	ts_mugshot_show mugshot=0x46
 	ts_msg_open
 	ts_item_take_chip [
@@ -559,31 +559,31 @@ CompText87808D0::
 
 	def_text_script CompText87808D0_unk20
 	ts_check_flag [
-		flag: 0x11DC,
+		flag: EVENT_11DC,
 		jumpIfTrue: CompText87808D0_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11D8,
+		flag: EVENT_11D8,
 		jumpIfTrue: CompText87808D0_unk24_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11DB,
+		flag: EVENT_11DB,
 		jumpIfTrue: CompText87808D0_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11D3,
+		flag: EVENT_11D3,
 		jumpIfTrue: CompText87808D0_unk22_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11D2,
+		flag: EVENT_11D2,
 		jumpIfTrue: CompText87808D0_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11D2
+	ts_flag_set flag=EVENT_11D2
 	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "Ahh,you're the\n"
@@ -694,7 +694,7 @@ CompText87808D0::
 	ts_end
 
 	def_text_script CompText87808D0_unk24
-	ts_flag_set flag=0x11DC
+	ts_flag_set flag=EVENT_11DC
 	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "Thank you!!"
@@ -777,7 +777,7 @@ CompText87808D0::
 
 	def_text_script CompText87808D0_unk30
 	ts_check_flag [
-		flag: 0x1729,
+		flag: EVENT_COPYBOT_ACTIVE,
 		jumpIfTrue: CompText87808D0_unk31_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

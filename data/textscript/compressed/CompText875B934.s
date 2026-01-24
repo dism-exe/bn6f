@@ -113,7 +113,7 @@ CompText875B934::
 	.string "nerves."
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0x189,
+		flag: EVENT_189,
 		jumpIfTrue: CompText875B934_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -144,7 +144,7 @@ CompText875B934::
 	.string "increased by\n"
 	.string "2 MB!!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x189
+	ts_flag_set flag=EVENT_189
 	ts_end
 
 	def_text_script CompText875B934_unk7

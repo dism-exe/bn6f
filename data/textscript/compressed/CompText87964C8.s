@@ -24,7 +24,7 @@ CompText87964C8::
 		jumpIfDustMan: CompText87964C8_unk1_id,
 		jumpIfProtoMan: CompText87964C8_unk1_id,
 	]
-	ts_flag_set flag=0x101B
+	ts_flag_set flag=EVENT_101B
 	ts_end
 
 	def_text_script CompText87964C8_unk1

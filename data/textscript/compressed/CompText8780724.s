@@ -87,7 +87,7 @@ CompText8780724::
 
 	def_text_script CompText8780724_unk16
 	ts_check_flag [
-		flag: 0xE94,
+		flag: EVENT_E94,
 		jumpIfTrue: CompText8780724_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -95,13 +95,13 @@ CompText8780724::
 	ts_msg_open
 	.string "There's Lan Hikari!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE93
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E93
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8780724_unk17
 	ts_check_flag [
-		flag: 0xE96,
+		flag: EVENT_E96,
 		jumpIfTrue: CompText8780724_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -110,13 +110,13 @@ CompText8780724::
 	.string "Gwaaahhh...\n"
 	.string "YYYAAAAHHHHH!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE95
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E95
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8780724_unk18
 	ts_check_flag [
-		flag: 0xE98,
+		flag: EVENT_E98,
 		jumpIfTrue: CompText8780724_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -126,8 +126,8 @@ CompText8780724::
 	.string "do wonders for my\n"
 	.string "career... Haha!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE97
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E97
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8780724_unk19

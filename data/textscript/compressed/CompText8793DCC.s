@@ -74,16 +74,16 @@ CompText8793DCC::
 
 	def_text_script CompText8793DCC_unk10
 	ts_check_flag [
-		flag: 0xA69,
+		flag: EVENT_A69,
 		jumpIfTrue: CompText8793DCC_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xA65,
+		flag: EVENT_A65,
 		jumpIfTrue: CompText8793DCC_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xA65
+	ts_flag_set flag=EVENT_A65
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "I am the Level 3\n"
@@ -167,8 +167,8 @@ CompText8793DCC::
 	.string "Good luck...\n"
 	.string "Battle START!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0xA92
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_A92
 	ts_end
 
 	def_text_script CompText8793DCC_unk13
@@ -184,7 +184,7 @@ CompText8793DCC::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_flag_set flag=0xA69
+	ts_flag_set flag=EVENT_A69
 	ts_item_give [
 		item: 0x12,
 		amount: 0x1,
@@ -251,16 +251,16 @@ CompText8793DCC::
 
 	def_text_script CompText8793DCC_unk16
 	ts_check_flag [
-		flag: 0xA6A,
+		flag: EVENT_A6A,
 		jumpIfTrue: CompText8793DCC_unk20_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xA66,
+		flag: EVENT_A66,
 		jumpIfTrue: CompText8793DCC_unk17_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xA66
+	ts_flag_set flag=EVENT_A66
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "I am the Level 4\n"
@@ -349,8 +349,8 @@ CompText8793DCC::
 	.string "Battle STAAAAAAART!!\n"
 	.string "*huff,huff!!*"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0xA93
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_A93
 	ts_end
 
 	def_text_script CompText8793DCC_unk19
@@ -371,7 +371,7 @@ CompText8793DCC::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_mugshot_hide
-	ts_flag_set flag=0xA6A
+	ts_flag_set flag=EVENT_A6A
 	ts_item_give [
 		item: 0x13,
 		amount: 0x1,
@@ -446,27 +446,27 @@ CompText8793DCC::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xA67,
+		flag: EVENT_A67,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8793DCC_unk23_id,
 	]
 	ts_check_flag [
-		flag: 0xA68,
+		flag: EVENT_A68,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8793DCC_unk23_id,
 	]
 	ts_check_flag [
-		flag: 0xA69,
+		flag: EVENT_A69,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8793DCC_unk23_id,
 	]
 	ts_check_flag [
-		flag: 0xA6A,
+		flag: EVENT_A6A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8793DCC_unk23_id,
 	]
-	ts_flag_set flag=0xA98
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_A98
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8793DCC_unk23
@@ -608,17 +608,17 @@ CompText8793DCC::
 
 	def_text_script CompText8793DCC_unk45
 	ts_check_flag [
-		flag: 0xC20,
+		flag: EVENT_C20,
 		jumpIfTrue: CompText8793DCC_unk60_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC1E,
+		flag: EVENT_C1E,
 		jumpIfTrue: CompText8793DCC_unk55_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC1A,
+		flag: EVENT_C1A,
 		jumpIfTrue: CompText8793DCC_unk50_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

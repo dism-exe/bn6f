@@ -63,15 +63,15 @@ CompText876FE2C::
 	.string "*beeep* "
 	ts_wait frames=0x14
 	.string "\n"
-	ts_flag_clear flag=0xF
+	ts_flag_clear flag=EVENT_F
 	ts_sound_play00 track=0x176
 	.string "*click*"
 	ts_wait frames=0x14
 	ts_sound_enable_text_sfx
 	ts_control_unlock
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1726
-	ts_flag_set flag=0x497
+	ts_flag_set flag=EVENT_1726
+	ts_flag_set flag=EVENT_497
 	ts_end
 
 	def_text_script CompText876FE2C_unk2
@@ -141,15 +141,15 @@ CompText876FE2C::
 	ts_sound_play00 track=0x151
 	.string "*beeep* "
 	ts_wait frames=0x14
-	ts_flag_clear flag=0x10
+	ts_flag_clear flag=EVENT_10
 	ts_sound_play00 track=0x176
 	.string "*click*"
 	ts_wait frames=0x14
 	ts_sound_enable_text_sfx
 	ts_control_unlock
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1726
-	ts_flag_set flag=0x498
+	ts_flag_set flag=EVENT_1726
+	ts_flag_set flag=EVENT_498
 	ts_end
 
 	def_text_script CompText876FE2C_unk5
@@ -169,7 +169,7 @@ CompText876FE2C::
 
 	def_text_script CompText876FE2C_unk10
 	ts_check_flag [
-		flag: 0x53C,
+		flag: EVENT_53C,
 		jumpIfTrue: CompText876FE2C_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

@@ -160,8 +160,8 @@ CompText878460C::
 	.string "everything in this\n"
 	.string "world!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xEA9
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_EA9
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText878460C_unk16
@@ -170,8 +170,8 @@ CompText878460C::
 	.string "Hey! Go crawl back\n"
 	.string "into your cave!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xEAB
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_EAB
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText878460C_unk17

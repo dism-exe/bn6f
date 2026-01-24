@@ -47,7 +47,7 @@ CompText8774F48::
 
 	def_text_script CompText8774F48_unk9
 	ts_check_flag [
-		flag: 0x554,
+		flag: EVENT_554,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8774F48_unk11_id,
 	]
@@ -136,7 +136,7 @@ CompText8774F48::
 
 	def_text_script CompText8774F48_unk15
 	ts_check_flag [
-		flag: 0x51C,
+		flag: EVENT_51C,
 		jumpIfTrue: CompText8774F48_unk16_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

@@ -32,7 +32,7 @@ CompText877416C::
 
 	def_text_script CompText877416C_unk1
 	ts_check_flag [
-		flag: 0xE08,
+		flag: EVENT_E08,
 		jumpIfTrue: CompText877416C_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -49,7 +49,7 @@ CompText877416C::
 
 	def_text_script CompText877416C_unk2
 	ts_check_flag [
-		flag: 0xE08,
+		flag: EVENT_E08,
 		jumpIfTrue: CompText877416C_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -198,7 +198,7 @@ CompText877416C::
 
 	def_text_script CompText877416C_unk16
 	ts_check_flag [
-		flag: 0xE80,
+		flag: EVENT_E80,
 		jumpIfTrue: CompText877416C_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -206,13 +206,13 @@ CompText877416C::
 	ts_msg_open
 	.string "Kyyyyyyyaaaaah!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE7F
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E7F
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText877416C_unk17
 	ts_check_flag [
-		flag: 0xE82,
+		flag: EVENT_E82,
 		jumpIfTrue: CompText877416C_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -222,8 +222,8 @@ CompText877416C::
 	.string "this world! Don't\n"
 	.string "get in our way!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE81
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E81
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText877416C_unk18

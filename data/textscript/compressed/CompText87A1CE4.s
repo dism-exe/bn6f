@@ -74,8 +74,8 @@ CompText87A1CE4::
 	ts_clear_msg
 	.string "YYYYYYYAHHHHHHHHH!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x120D
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_120D
 	ts_end
 
 	def_text_script CompText87A1CE4_unk7

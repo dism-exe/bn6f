@@ -37,21 +37,21 @@ CompText876E144::
 
 	def_text_script CompText876E144_unk10
 	ts_check_flag [
-		flag: 0x11FA,
+		flag: EVENT_11FA,
 		jumpIfTrue: CompText876E144_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11FD,
+		flag: EVENT_11FD,
 		jumpIfTrue: CompText876E144_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11F9,
+		flag: EVENT_11F9,
 		jumpIfTrue: CompText876E144_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11F9
+	ts_flag_set flag=EVENT_11F9
 	ts_mugshot_show mugshot=0x8
 	ts_msg_open
 	.string "You took my\n"
@@ -169,7 +169,7 @@ CompText876E144::
 	ts_end
 
 	def_text_script CompText876E144_unk12
-	ts_flag_set flag=0x11FA
+	ts_flag_set flag=EVENT_11FA
 	ts_mugshot_show mugshot=0x8
 	ts_msg_open
 	.string "Ahhh! You're back!"

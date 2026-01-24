@@ -82,7 +82,7 @@ CompText8756C9C::
 
 	def_text_script CompText8756C9C_unk6
 	ts_check_flag [
-		flag: 0x163,
+		flag: EVENT_163,
 		jumpIfTrue: CompText8756C9C_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -255,7 +255,7 @@ CompText8756C9C::
 	.string " OK\n"
 	.string "(UP/DOWN:Number\n"
 	.string " LEFT/RIGHT:Cursor)"
-	ts_flag_set flag=0x1725
+	ts_flag_set flag=EVENT_1725
 	ts_menu_select_number_trader
 	ts_wait_hold unused=0x0
 
@@ -358,7 +358,7 @@ CompText8756C9C::
 
 	def_text_script CompText8756C9C_unk30
 	ts_check_flag [
-		flag: 0x163,
+		flag: EVENT_163,
 		jumpIfTrue: CompText8756C9C_unk36_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

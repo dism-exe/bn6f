@@ -55,18 +55,18 @@ CompText8781564::
 
 	def_text_script CompText8781564_unk5
 	ts_check_flag [
-		flag: 0x112E,
+		flag: EVENT_112E,
 		jumpIfTrue: CompText8781564_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x112D,
+		flag: EVENT_112D,
 		jumpIfTrue: CompText8781564_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x16
 	ts_msg_open
-	ts_flag_set flag=0x112D
+	ts_flag_set flag=EVENT_112D
 	.string "I'm looking for a\n"
 	.string "\""
 	ts_print_chip1 [
@@ -236,7 +236,7 @@ CompText8781564::
 	.string "My friend is going\n"
 	.string "to be very happy!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x112E
+	ts_flag_set flag=EVENT_112E
 	ts_end
 
 	def_text_script CompText8781564_unk8

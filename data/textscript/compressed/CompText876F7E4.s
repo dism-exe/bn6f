@@ -11,7 +11,7 @@ CompText876F7E4::
 
 	def_text_script CompText876F7E4_unk0
 	ts_check_flag [
-		flag: 0xA10,
+		flag: EVENT_A10,
 		jumpIfTrue: CompText876F7E4_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -24,7 +24,7 @@ CompText876F7E4::
 
 	def_text_script CompText876F7E4_unk1
 	ts_check_flag [
-		flag: 0xA10,
+		flag: EVENT_A10,
 		jumpIfTrue: CompText876F7E4_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -44,7 +44,7 @@ CompText876F7E4::
 
 	def_text_script CompText876F7E4_unk2
 	ts_check_flag [
-		flag: 0xA10,
+		flag: EVENT_A10,
 		jumpIfTrue: CompText876F7E4_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -140,12 +140,12 @@ CompText876F7E4::
 
 	def_text_script CompText876F7E4_unk20
 	ts_check_flag [
-		flag: 0xCCF,
+		flag: EVENT_CCF,
 		jumpIfTrue: CompText876F7E4_unk22_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCCE,
+		flag: EVENT_CCE,
 		jumpIfTrue: CompText876F7E4_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -162,7 +162,7 @@ CompText876F7E4::
 
 	def_text_script CompText876F7E4_unk21
 	ts_msg_open
-	ts_flag_set flag=0xCCF
+	ts_flag_set flag=EVENT_CCF
 	.string "THE MAYOR IS IN THE\n"
 	.string "MIDDLE OF VERY\n"
 	.string "IMPORTANT WORK."
@@ -211,8 +211,8 @@ CompText876F7E4::
 	ts_end
 
 	def_text_script CompText876F7E4_unk23
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0xCD6
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_CD6
 	ts_end
 
 	def_text_script CompText876F7E4_unk24
@@ -278,12 +278,12 @@ CompText876F7E4::
 
 	def_text_script CompText876F7E4_unk40
 	ts_check_flag [
-		flag: 0xC24,
+		flag: EVENT_C24,
 		jumpIfTrue: CompText876F7E4_unk42_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC22,
+		flag: EVENT_C22,
 		jumpIfTrue: CompText876F7E4_unk41_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

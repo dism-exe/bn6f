@@ -1205,7 +1205,7 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk100
 	ts_msg_open
-	ts_flag_clear flag=0x1715
+	ts_flag_clear flag=EVENT_EVENT_CUR_DIR_LOCKED
 	.string "Cannot converse.\n"
 	.string "Fix bug."
 	ts_key_wait any=0x0
@@ -1414,28 +1414,28 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk170
 	ts_msg_open
-	ts_flag_set flag=0x17D
+	ts_flag_set flag=EVENT_17D
 	.string "Seaside HP Banner"
 	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk171
 	ts_msg_open
-	ts_flag_set flag=0x17E
+	ts_flag_set flag=EVENT_17E
 	.string "Green HP Banner"
 	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk172
 	ts_msg_open
-	ts_flag_set flag=0x17F
+	ts_flag_set flag=EVENT_17F
 	.string "Sky HP Banner"
 	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk173
 	ts_msg_open
-	ts_flag_set flag=0x180
+	ts_flag_set flag=EVENT_180
 	.string "ACDCTown HP Banner"
 	ts_key_wait any=0x0
 	ts_end
@@ -1522,14 +1522,14 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk180
 	ts_msg_open
-	ts_flag_set flag=0x91
+	ts_flag_set flag=EVENT_91
 	.string "BOKTAI TRADER DISPL"
 	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script CompText873C5A4_unk181
 	ts_msg_open
-	ts_flag_set flag=0xE00
+	ts_flag_set flag=EVENT_E00
 	.string "Green Town ChipTrdr\n"
 	.string "SP Display"
 	ts_key_wait any=0x0
@@ -1537,9 +1537,9 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk182
 	ts_msg_open
-	ts_flag_set flag=0x1E3
-	ts_flag_set flag=0x7A
-	ts_flag_clear flag=0x7B
+	ts_flag_set flag=EVENT_1E3
+	ts_flag_set flag=EVENT_7A
+	ts_flag_clear flag=EVENT_7B
 	.string "Navi Change Box\n"
 	.string "Display"
 	ts_key_wait any=0x0
@@ -1547,7 +1547,7 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk183
 	ts_msg_open
-	ts_flag_set flag=0x84
+	ts_flag_set flag=EVENT_84
 	.string "バグピーストレーダーひょ[A]じ"
 	ts_key_wait any=0x0
 	ts_end
@@ -1603,41 +1603,41 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk194
 	ts_msg_open
-	ts_flag_set flag=0x1C20
-	ts_flag_set flag=0x1C28
-	ts_flag_set flag=0x1C31
-	ts_flag_set flag=0x1C39
-	ts_flag_set flag=0x1C3A
-	ts_flag_set flag=0x1C3B
-	ts_flag_set flag=0x1C21
-	ts_flag_set flag=0x1C2B
-	ts_flag_set flag=0x1C2D
-	ts_flag_set flag=0x1C36
-	ts_flag_set flag=0x1C3C
-	ts_flag_set flag=0x1C22
-	ts_flag_set flag=0x1C29
-	ts_flag_set flag=0x1C32
-	ts_flag_set flag=0x1C35
-	ts_flag_set flag=0x1C3D
-	ts_flag_set flag=0x1C24
-	ts_flag_set flag=0x1C2A
-	ts_flag_set flag=0x1C2F
-	ts_flag_set flag=0x1C3E
-	ts_flag_set flag=0x1C23
-	ts_flag_set flag=0x1C25
-	ts_flag_set flag=0x1C2E
-	ts_flag_set flag=0x1C37
-	ts_flag_set flag=0x1C3F
-	ts_flag_set flag=0x1C26
-	ts_flag_set flag=0x1C27
-	ts_flag_set flag=0x1C2C
-	ts_flag_set flag=0x1C30
-	ts_flag_set flag=0x1C33
-	ts_flag_set flag=0x1C34
-	ts_flag_set flag=0x1C38
-	ts_flag_set flag=0x1C40
-	ts_flag_set flag=0x1C41
-	ts_flag_set flag=0x1C42
+	ts_flag_set flag=EVENT_1C20
+	ts_flag_set flag=EVENT_1C28
+	ts_flag_set flag=EVENT_1C31
+	ts_flag_set flag=EVENT_1C39
+	ts_flag_set flag=EVENT_1C3A
+	ts_flag_set flag=EVENT_1C3B
+	ts_flag_set flag=EVENT_1C21
+	ts_flag_set flag=EVENT_1C2B
+	ts_flag_set flag=EVENT_1C2D
+	ts_flag_set flag=EVENT_1C36
+	ts_flag_set flag=EVENT_1C3C
+	ts_flag_set flag=EVENT_1C22
+	ts_flag_set flag=EVENT_1C29
+	ts_flag_set flag=EVENT_1C32
+	ts_flag_set flag=EVENT_1C35
+	ts_flag_set flag=EVENT_1C3D
+	ts_flag_set flag=EVENT_1C24
+	ts_flag_set flag=EVENT_1C2A
+	ts_flag_set flag=EVENT_1C2F
+	ts_flag_set flag=EVENT_1C3E
+	ts_flag_set flag=EVENT_1C23
+	ts_flag_set flag=EVENT_1C25
+	ts_flag_set flag=EVENT_1C2E
+	ts_flag_set flag=EVENT_1C37
+	ts_flag_set flag=EVENT_1C3F
+	ts_flag_set flag=EVENT_1C26
+	ts_flag_set flag=EVENT_1C27
+	ts_flag_set flag=EVENT_1C2C
+	ts_flag_set flag=EVENT_1C30
+	ts_flag_set flag=EVENT_1C33
+	ts_flag_set flag=EVENT_1C34
+	ts_flag_set flag=EVENT_1C38
+	ts_flag_set flag=EVENT_1C40
+	ts_flag_set flag=EVENT_1C41
+	ts_flag_set flag=EVENT_1C42
 	.string "All Reqsts Cmplete"
 	ts_key_wait any=0x0
 	ts_end
@@ -1648,7 +1648,7 @@ CompText873C5A4::
 		item: 0x2C,
 		amount: 0x9,
 	]
-	ts_flag_set flag=0x224
+	ts_flag_set flag=EVENT_224
 	.string "You got:\n"
 	.string "\""
 	ts_print_item [
@@ -1661,41 +1661,41 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk196
 	ts_msg_open
-	ts_flag_set flag=0x1C60
-	ts_flag_set flag=0x1C68
-	ts_flag_set flag=0x1C71
-	ts_flag_set flag=0x1C79
-	ts_flag_set flag=0x1C7A
-	ts_flag_set flag=0x1C7B
-	ts_flag_set flag=0x1C61
-	ts_flag_set flag=0x1C6B
-	ts_flag_set flag=0x1C6D
-	ts_flag_set flag=0x1C76
-	ts_flag_set flag=0x1C7C
-	ts_flag_set flag=0x1C62
-	ts_flag_set flag=0x1C69
-	ts_flag_set flag=0x1C72
-	ts_flag_set flag=0x1C75
-	ts_flag_set flag=0x1C7D
-	ts_flag_set flag=0x1C64
-	ts_flag_set flag=0x1C6A
-	ts_flag_set flag=0x1C6F
-	ts_flag_set flag=0x1C7E
-	ts_flag_set flag=0x1C63
-	ts_flag_set flag=0x1C65
-	ts_flag_set flag=0x1C6E
-	ts_flag_set flag=0x1C77
-	ts_flag_set flag=0x1C7F
-	ts_flag_set flag=0x1C66
-	ts_flag_set flag=0x1C67
-	ts_flag_set flag=0x1C6C
-	ts_flag_set flag=0x1C70
-	ts_flag_set flag=0x1C73
-	ts_flag_set flag=0x1C74
-	ts_flag_set flag=0x1C78
-	ts_flag_set flag=0x1C80
-	ts_flag_set flag=0x1C81
-	ts_flag_set flag=0x1C82
+	ts_flag_set flag=EVENT_1C60
+	ts_flag_set flag=EVENT_1C68
+	ts_flag_set flag=EVENT_1C71
+	ts_flag_set flag=EVENT_1C79
+	ts_flag_set flag=EVENT_1C7A
+	ts_flag_set flag=EVENT_1C7B
+	ts_flag_set flag=EVENT_1C61
+	ts_flag_set flag=EVENT_1C6B
+	ts_flag_set flag=EVENT_1C6D
+	ts_flag_set flag=EVENT_1C76
+	ts_flag_set flag=EVENT_1C7C
+	ts_flag_set flag=EVENT_1C62
+	ts_flag_set flag=EVENT_1C69
+	ts_flag_set flag=EVENT_1C72
+	ts_flag_set flag=EVENT_1C75
+	ts_flag_set flag=EVENT_1C7D
+	ts_flag_set flag=EVENT_1C64
+	ts_flag_set flag=EVENT_1C6A
+	ts_flag_set flag=EVENT_1C6F
+	ts_flag_set flag=EVENT_1C7E
+	ts_flag_set flag=EVENT_1C63
+	ts_flag_set flag=EVENT_1C65
+	ts_flag_set flag=EVENT_1C6E
+	ts_flag_set flag=EVENT_1C77
+	ts_flag_set flag=EVENT_1C7F
+	ts_flag_set flag=EVENT_1C66
+	ts_flag_set flag=EVENT_1C67
+	ts_flag_set flag=EVENT_1C6C
+	ts_flag_set flag=EVENT_1C70
+	ts_flag_set flag=EVENT_1C73
+	ts_flag_set flag=EVENT_1C74
+	ts_flag_set flag=EVENT_1C78
+	ts_flag_set flag=EVENT_1C80
+	ts_flag_set flag=EVENT_1C81
+	ts_flag_set flag=EVENT_1C82
 	.string "All Request Complete"
 	ts_key_wait any=0x0
 	ts_end
@@ -1708,7 +1708,7 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk200
 	ts_msg_open
-	ts_flag_set flag=0x126
+	ts_flag_set flag=EVENT_126
 	.string "Go to Underground\n"
 	.string "from Set2."
 	ts_key_wait any=0x0
@@ -1716,11 +1716,11 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk201
 	ts_msg_open
-	ts_flag_set flag=0x682
-	ts_flag_set flag=0x85F
-	ts_flag_set flag=0xABA
-	ts_flag_set flag=0xCDC
-	ts_flag_set flag=0xCE0
+	ts_flag_set flag=EVENT_682
+	ts_flag_set flag=EVENT_85F
+	ts_flag_set flag=EVENT_ABA
+	ts_flag_set flag=EVENT_CDC
+	ts_flag_set flag=EVENT_CE0
 	.string "Operate Partner Navi\n"
 	.string "(CHEATER)"
 	ts_key_wait any=0x0
@@ -1728,41 +1728,41 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk202
 	ts_msg_open
-	ts_flag_set flag=0x197
-	ts_flag_set flag=0x198
-	ts_flag_set flag=0x199
-	ts_flag_set flag=0x19A
-	ts_flag_set flag=0x19B
-	ts_flag_set flag=0x19C
-	ts_flag_set flag=0x19D
-	ts_flag_set flag=0x19E
-	ts_flag_set flag=0x19F
-	ts_flag_set flag=0x1A1
-	ts_flag_set flag=0x1A2
-	ts_flag_set flag=0x1A4
-	ts_flag_set flag=0x1A5
-	ts_flag_set flag=0x1A6
-	ts_flag_set flag=0x1A7
-	ts_flag_set flag=0x1A8
-	ts_flag_set flag=0x1A9
-	ts_flag_set flag=0x1AA
-	ts_flag_set flag=0x1AB
-	ts_flag_set flag=0x1AC
-	ts_flag_set flag=0x1AD
-	ts_flag_set flag=0x1AE
-	ts_flag_set flag=0x1AF
-	ts_flag_set flag=0x1B0
-	ts_flag_set flag=0x1B1
-	ts_flag_set flag=0x1B2
-	ts_flag_set flag=0x1B3
-	ts_flag_set flag=0x1B4
-	ts_flag_set flag=0x1B5
-	ts_flag_set flag=0x1B6
-	ts_flag_set flag=0x1D8
-	ts_flag_set flag=0x1D4
-	ts_flag_set flag=0x1D5
-	ts_flag_set flag=0x1D6
-	ts_flag_set flag=0x1D7
+	ts_flag_set flag=EVENT_197
+	ts_flag_set flag=EVENT_198
+	ts_flag_set flag=EVENT_199
+	ts_flag_set flag=EVENT_19A
+	ts_flag_set flag=EVENT_19B
+	ts_flag_set flag=EVENT_19C
+	ts_flag_set flag=EVENT_19D
+	ts_flag_set flag=EVENT_19E
+	ts_flag_set flag=EVENT_19F
+	ts_flag_set flag=EVENT_1A1
+	ts_flag_set flag=EVENT_1A2
+	ts_flag_set flag=EVENT_1A4
+	ts_flag_set flag=EVENT_1A5
+	ts_flag_set flag=EVENT_1A6
+	ts_flag_set flag=EVENT_1A7
+	ts_flag_set flag=EVENT_1A8
+	ts_flag_set flag=EVENT_1A9
+	ts_flag_set flag=EVENT_1AA
+	ts_flag_set flag=EVENT_1AB
+	ts_flag_set flag=EVENT_1AC
+	ts_flag_set flag=EVENT_1AD
+	ts_flag_set flag=EVENT_1AE
+	ts_flag_set flag=EVENT_1AF
+	ts_flag_set flag=EVENT_1B0
+	ts_flag_set flag=EVENT_1B1
+	ts_flag_set flag=EVENT_1B2
+	ts_flag_set flag=EVENT_1B3
+	ts_flag_set flag=EVENT_1B4
+	ts_flag_set flag=EVENT_1B5
+	ts_flag_set flag=EVENT_1B6
+	ts_flag_set flag=EVENT_1D8
+	ts_flag_set flag=EVENT_1D4
+	ts_flag_set flag=EVENT_1D5
+	ts_flag_set flag=EVENT_1D6
+	ts_flag_set flag=EVENT_1D7
 	ts_call_unload_objects unused=0x0
 	ts_call_reload_objects unused=0x0
 	.string "VIRUS BATTLE SET\n"
@@ -1787,7 +1787,7 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk208
 	ts_msg_open
-	ts_flag_toggle flag=0x1740
+	ts_flag_toggle flag=EVENT_1740
 	.string "Recheck Gold Mystery\n"
 	.string "Data."
 	ts_key_wait any=0x0
@@ -1885,7 +1885,7 @@ CompText873C5A4::
 	ts_call_minigame_effect effect=0x0
 	ts_call_reset_fishing_minigame unused=0x0
 	ts_call_change_navi navi=0x6
-	ts_flag_set flag=0x680
+	ts_flag_set flag=EVENT_680
 	ts_msg_open
 	.string "Start Fishng MiniGm"
 	ts_key_wait any=0x0
@@ -1894,14 +1894,14 @@ CompText873C5A4::
 	def_text_script CompText873C5A4_unk221
 	ts_call_scenario_effect effect=0x0
 	ts_call_reset_evil_spirits unused=0x0
-	ts_flag_set flag=0x741
+	ts_flag_set flag=EVENT_741
 	ts_flag_multi_set [
-		flag: 0x7F0,
+		flag: EVENT_7F0,
 		count: 0x8,
 	]
-	ts_flag_set flag=0x618
-	ts_flag_set flag=0xC26
-	ts_flag_set flag=0x126
+	ts_flag_set flag=EVENT_618
+	ts_flag_set flag=EVENT_C26
+	ts_flag_set flag=EVENT_126
 	ts_msg_open
 	.string "Start EvilSprt MiniG"
 	ts_key_wait any=0x0
@@ -1909,8 +1909,8 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk222
 	ts_call_change_navi navi=0x3
-	ts_flag_set flag=0x990
-	ts_flag_set flag=0x991
+	ts_flag_set flag=EVENT_990
+	ts_flag_set flag=EVENT_991
 	ts_msg_open
 	.string "Start Cooking MiniGm"
 	ts_key_wait any=0x0
@@ -1918,8 +1918,8 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk223
 	ts_call_change_navi navi=0x8
-	ts_flag_set flag=0x960
-	ts_flag_set flag=0x961
+	ts_flag_set flag=EVENT_960
+	ts_flag_set flag=EVENT_961
 	ts_msg_open
 	.string "Start Roll MiniGame"
 	ts_key_wait any=0x0
@@ -1927,8 +1927,8 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk224
 	ts_call_change_navi navi=0x2
-	ts_flag_set flag=0xB00
-	ts_flag_set flag=0xB01
+	ts_flag_set flag=EVENT_B00
+	ts_flag_set flag=EVENT_B01
 	ts_msg_open
 	.string "Start Blckout MiniGm"
 	ts_key_wait any=0x0
@@ -1936,8 +1936,8 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk225
 	ts_call_change_navi navi=0x4
-	ts_flag_set flag=0xD00
-	ts_flag_set flag=0xD01
+	ts_flag_set flag=EVENT_D00
+	ts_flag_set flag=EVENT_D01
 	ts_msg_open
 	.string "Start Erasure MiniGm"
 	ts_key_wait any=0x0
@@ -1945,8 +1945,8 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk226
 	ts_call_change_navi navi=0x9
-	ts_flag_set flag=0xD30
-	ts_flag_set flag=0xD31
+	ts_flag_set flag=EVENT_D30
+	ts_flag_set flag=EVENT_D31
 	ts_msg_open
 	.string "Start RockCrshr MnGm"
 	ts_key_wait any=0x0
@@ -1955,7 +1955,7 @@ CompText873C5A4::
 	def_text_script CompText873C5A4_unk227
 
 	def_text_script CompText873C5A4_unk228
-	ts_flag_set flag=0x1729
+	ts_flag_set flag=EVENT_COPYBOT_ACTIVE
 	ts_msg_open
 	.string "Check Real MegaMan"
 	ts_key_wait any=0x0
@@ -2079,17 +2079,17 @@ CompText873C5A4::
 	ts_end
 
 	def_text_script CompText873C5A4_unk241
-	ts_flag_set flag=0xE0
-	ts_flag_set flag=0xE2
-	ts_flag_set flag=0xE3
-	ts_flag_set flag=0xE4
-	ts_flag_set flag=0xE5
-	ts_flag_set flag=0xE6
-	ts_flag_set flag=0xE7
-	ts_flag_set flag=0xE8
-	ts_flag_set flag=0xE9
-	ts_flag_set flag=0xEA
-	ts_flag_set flag=0xEB
+	ts_flag_set flag=EVENT_E0
+	ts_flag_set flag=EVENT_E2
+	ts_flag_set flag=EVENT_E3
+	ts_flag_set flag=EVENT_E4
+	ts_flag_set flag=EVENT_E5
+	ts_flag_set flag=EVENT_E6
+	ts_flag_set flag=EVENT_E7
+	ts_flag_set flag=EVENT_E8
+	ts_flag_set flag=EVENT_E9
+	ts_flag_set flag=EVENT_EA
+	ts_flag_set flag=EVENT_EB
 	ts_msg_open
 	.string "Beast Change OK\n"
 	.string "Cross Change OK"
@@ -2114,7 +2114,7 @@ CompText873C5A4::
 	ts_end
 
 	def_text_script CompText873C5A4_unk244
-	ts_flag_set flag=0x7C
+	ts_flag_set flag=EVENT_7C
 	ts_msg_open
 	.string "Hidden Gate Display"
 	ts_key_wait any=0x0
@@ -2131,35 +2131,35 @@ CompText873C5A4::
 	ts_end
 
 	def_text_script CompText873C5A4_unk246
-	ts_flag_set flag=0x1F60
-	ts_flag_set flag=0x1F61
-	ts_flag_set flag=0x1F62
-	ts_flag_set flag=0x1F63
-	ts_flag_set flag=0x1F64
-	ts_flag_set flag=0x1F65
-	ts_flag_set flag=0x1F66
-	ts_flag_set flag=0x1F67
-	ts_flag_set flag=0x1F68
-	ts_flag_set flag=0x1F69
-	ts_flag_set flag=0x1F6A
-	ts_flag_set flag=0x1F6B
-	ts_flag_set flag=0x1F6C
-	ts_flag_set flag=0x1F6D
-	ts_flag_set flag=0x1F6E
-	ts_flag_set flag=0x1F6F
-	ts_flag_set flag=0x1F70
-	ts_flag_set flag=0x1F71
-	ts_flag_set flag=0x1F72
-	ts_flag_set flag=0x1F73
-	ts_flag_set flag=0x1F74
-	ts_flag_set flag=0x1F75
-	ts_flag_set flag=0x1F76
-	ts_flag_set flag=0x1F77
-	ts_flag_set flag=0x1F78
-	ts_flag_set flag=0x1F79
-	ts_flag_set flag=0x1F7A
-	ts_flag_set flag=0x1F7B
-	ts_flag_set flag=0x1F7C
+	ts_flag_set flag=EVENT_1F60
+	ts_flag_set flag=EVENT_1F61
+	ts_flag_set flag=EVENT_1F62
+	ts_flag_set flag=EVENT_1F63
+	ts_flag_set flag=EVENT_1F64
+	ts_flag_set flag=EVENT_1F65
+	ts_flag_set flag=EVENT_1F66
+	ts_flag_set flag=EVENT_1F67
+	ts_flag_set flag=EVENT_1F68
+	ts_flag_set flag=EVENT_1F69
+	ts_flag_set flag=EVENT_1F6A
+	ts_flag_set flag=EVENT_1F6B
+	ts_flag_set flag=EVENT_1F6C
+	ts_flag_set flag=EVENT_1F6D
+	ts_flag_set flag=EVENT_1F6E
+	ts_flag_set flag=EVENT_1F6F
+	ts_flag_set flag=EVENT_1F70
+	ts_flag_set flag=EVENT_1F71
+	ts_flag_set flag=EVENT_1F72
+	ts_flag_set flag=EVENT_1F73
+	ts_flag_set flag=EVENT_1F74
+	ts_flag_set flag=EVENT_1F75
+	ts_flag_set flag=EVENT_1F76
+	ts_flag_set flag=EVENT_1F77
+	ts_flag_set flag=EVENT_1F78
+	ts_flag_set flag=EVENT_1F79
+	ts_flag_set flag=EVENT_1F7A
+	ts_flag_set flag=EVENT_1F7B
+	ts_flag_set flag=EVENT_1F7C
 	ts_item_give_chip [
 		chip: 0x140,
 		code: 0xFF,
@@ -2312,7 +2312,7 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk247
 	ts_flag_multi_set [
-		flag: 0x33,
+		flag: EVENT_33,
 		count: 0x5,
 	]
 	ts_msg_open
@@ -2322,11 +2322,11 @@ CompText873C5A4::
 
 	def_text_script CompText873C5A4_unk248
 	ts_flag_multi_set [
-		flag: 0x11,
+		flag: EVENT_11,
 		count: 0x14,
 	]
 	ts_flag_multi_set [
-		flag: 0x3E,
+		flag: EVENT_3E,
 		count: 0x2C,
 	]
 	ts_msg_open
@@ -2339,7 +2339,7 @@ CompText873C5A4::
 	ts_jump target=CompText873C5A4_unk250_id
 
 	def_text_script CompText873C5A4_unk250
-	ts_flag_set flag=0xF2
+	ts_flag_set flag=EVENT_F2
 	ts_item_give [
 		item: 0x50,
 		amount: 0x1,

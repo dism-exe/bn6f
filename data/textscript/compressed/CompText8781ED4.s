@@ -72,7 +72,7 @@ CompText8781ED4::
 
 	def_text_script CompText8781ED4_unk26
 	ts_check_flag [
-		flag: 0xE9C,
+		flag: EVENT_E9C,
 		jumpIfTrue: CompText8781ED4_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -82,13 +82,13 @@ CompText8781ED4::
 	.string "...Lan...\n"
 	.string "...Hikari..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE9B
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E9B
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8781ED4_unk27
 	ts_check_flag [
-		flag: 0xE9E,
+		flag: EVENT_E9E,
 		jumpIfTrue: CompText8781ED4_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -99,13 +99,13 @@ CompText8781ED4::
 	ts_clear_msg
 	.string "Fool!!!!!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE9D
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E9D
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8781ED4_unk28
 	ts_check_flag [
-		flag: 0xEA0,
+		flag: EVENT_EA0,
 		jumpIfTrue: CompText8781ED4_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -114,13 +114,13 @@ CompText8781ED4::
 	.string "Finally showed up!?\n"
 	.string "You'll regret that!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE9F
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E9F
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8781ED4_unk29
 	ts_check_flag [
-		flag: 0xEA2,
+		flag: EVENT_EA2,
 		jumpIfTrue: CompText8781ED4_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -129,8 +129,8 @@ CompText8781ED4::
 	.string "Yahhhhh!!\n"
 	.string "I've found you!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xEA1
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_EA1
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8781ED4_unk30

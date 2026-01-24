@@ -117,17 +117,17 @@ CompText87A3180::
 	ts_clear_msg
 	.string "BATTLE... START!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1DF
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1DF
 	ts_end
 
 	def_text_script CompText87A3180_unk12
 	ts_check_flag [
-		flag: 0x1D7,
+		flag: EVENT_1D7,
 		jumpIfTrue: CompText87A3180_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1D7
+	ts_flag_set flag=EVENT_1D7
 	ts_jump target=CompText87A3180_unk14_id
 
 	def_text_script CompText87A3180_unk13
@@ -141,7 +141,7 @@ CompText87A3180::
 
 	def_text_script CompText87A3180_unk14
 	ts_check_flag [
-		flag: 0x1EF,
+		flag: EVENT_1EF,
 		jumpIfTrue: CompText87A3180_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -199,7 +199,7 @@ CompText87A3180::
 	.string "PASS THROUGH\n"
 	.string "REGULARLY..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1EF
+	ts_flag_set flag=EVENT_1EF
 	ts_end
 
 	def_text_script CompText87A3180_unk15

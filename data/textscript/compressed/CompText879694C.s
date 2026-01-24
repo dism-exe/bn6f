@@ -11,7 +11,7 @@ CompText879694C::
 
 	def_text_script CompText879694C_unk0
 	ts_check_flag [
-		flag: 0xCC8,
+		flag: EVENT_CC8,
 		jumpIfTrue: CompText879694C_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -31,7 +31,7 @@ CompText879694C::
 
 	def_text_script CompText879694C_unk2
 	ts_check_flag [
-		flag: 0xCC8,
+		flag: EVENT_CC8,
 		jumpIfTrue: CompText879694C_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

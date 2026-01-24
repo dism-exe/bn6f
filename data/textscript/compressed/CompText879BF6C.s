@@ -11,11 +11,11 @@ CompText879BF6C::
 
 	def_text_script CompText879BF6C_unk0
 	ts_check_flag [
-		flag: 0x863,
+		flag: EVENT_863,
 		jumpIfTrue: CompText879BF6C_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x863
+	ts_flag_set flag=EVENT_863
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "Huh? What are we\n"
@@ -102,7 +102,7 @@ CompText879BF6C::
 
 	def_text_script CompText879BF6C_unk2
 	ts_check_flag [
-		flag: 0x87C,
+		flag: EVENT_87C,
 		jumpIfTrue: CompText879BF6C_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -216,7 +216,7 @@ CompText879BF6C::
 	.string "Someday you'll be\n"
 	.string "a lawyer!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x87C
+	ts_flag_set flag=EVENT_87C
 	ts_end
 
 	def_text_script CompText879BF6C_unk3
@@ -239,11 +239,11 @@ CompText879BF6C::
 
 	def_text_script CompText879BF6C_unk4
 	ts_check_flag [
-		flag: 0x873,
+		flag: EVENT_873,
 		jumpIfTrue: CompText879BF6C_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x873
+	ts_flag_set flag=EVENT_873
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "AHH! You're here!"
@@ -371,17 +371,17 @@ CompText879BF6C::
 
 	def_text_script CompText879BF6C_unk8
 	ts_check_flag [
-		flag: 0x866,
+		flag: EVENT_866,
 		jumpIfTrue: CompText879BF6C_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x87C,
+		flag: EVENT_87C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879BF6C_unk7_id,
 	]
 	ts_check_flag [
-		flag: 0x865,
+		flag: EVENT_865,
 		jumpIfTrue: CompText879BF6C_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -450,7 +450,7 @@ CompText879BF6C::
 	.string "one,the punishment\n"
 	.string "got me so mad!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x865
+	ts_flag_set flag=EVENT_865
 	ts_end
 
 	def_text_script CompText879BF6C_unk9
@@ -482,7 +482,7 @@ CompText879BF6C::
 
 	def_text_script CompText879BF6C_unk10
 	ts_check_flag [
-		flag: 0x87C,
+		flag: EVENT_87C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879BF6C_unk7_id,
 	]

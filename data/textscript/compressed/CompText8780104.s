@@ -247,7 +247,7 @@ CompText8780104::
 
 	def_text_script CompText8780104_unk41
 	ts_check_flag [
-		flag: 0xC0A,
+		flag: EVENT_C0A,
 		jumpIfTrue: CompText8780104_unk42_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -350,7 +350,7 @@ CompText8780104::
 
 	def_text_script CompText8780104_unk52
 	ts_check_flag [
-		flag: 0xC20,
+		flag: EVENT_C20,
 		jumpIfTrue: CompText8780104_unk54_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

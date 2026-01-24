@@ -27,12 +27,12 @@ CompText875D800::
 
 	def_text_script CompText875D800_unk1
 	ts_check_flag [
-		flag: 0x81B,
+		flag: EVENT_81B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875D800_unk2_id,
 	]
 	ts_check_flag [
-		flag: 0x81C,
+		flag: EVENT_81C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875D800_unk3_id,
 	]
@@ -74,7 +74,7 @@ CompText875D800::
 	ts_mugshot_show mugshot=0x37
 	.string "Roger!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x87A
+	ts_flag_set flag=EVENT_87A
 	ts_end
 
 	

@@ -67,32 +67,32 @@ CompText873F908::
 
 	def_text_script CompText873F908_unk5
 	ts_check_flag [
-		flag: 0x41A,
+		flag: EVENT_41A,
 		jumpIfTrue: CompText873F908_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x46D,
+		flag: EVENT_46D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText873F908_unk11_id,
 	]
 	ts_check_flag [
-		flag: 0x1CA0,
+		flag: EVENT_1CA0,
 		jumpIfTrue: CompText873F908_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x418,
+		flag: EVENT_418,
 		jumpIfTrue: CompText873F908_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x462,
+		flag: EVENT_462,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText873F908_unk7_id,
 	]
 	ts_check_flag [
-		flag: 0x463,
+		flag: EVENT_463,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText873F908_unk7_id,
 	]
@@ -137,7 +137,7 @@ CompText873F908::
 
 	def_text_script CompText873F908_unk9
 	ts_check_flag [
-		flag: 0x1D20,
+		flag: EVENT_1D20,
 		jumpIfTrue: CompText873F908_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -220,7 +220,7 @@ CompText873F908::
 
 	def_text_script CompText873F908_unk35
 	ts_check_flag [
-		flag: 0x442,
+		flag: EVENT_442,
 		jumpIfTrue: CompText873F908_unk36_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -291,42 +291,42 @@ CompText873F908::
 
 	def_text_script CompText873F908_unk50
 	ts_check_flag [
-		flag: 0x50A,
+		flag: EVENT_50A,
 		jumpIfTrue: CompText873F908_unk58_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x508,
+		flag: EVENT_508,
 		jumpIfTrue: CompText873F908_unk57_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x542,
+		flag: EVENT_542,
 		jumpIfTrue: CompText873F908_unk56_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x541,
+		flag: EVENT_541,
 		jumpIfTrue: CompText873F908_unk55_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x504,
+		flag: EVENT_504,
 		jumpIfTrue: CompText873F908_unk54_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x53F,
+		flag: EVENT_53F,
 		jumpIfTrue: CompText873F908_unk53_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x53D,
+		flag: EVENT_53D,
 		jumpIfTrue: CompText873F908_unk52_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x53C,
+		flag: EVENT_53C,
 		jumpIfTrue: CompText873F908_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -428,32 +428,32 @@ CompText873F908::
 
 	def_text_script CompText873F908_unk65
 	ts_check_flag [
-		flag: 0x544,
+		flag: EVENT_544,
 		jumpIfTrue: CompText873F908_unk70_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xF4,
+		flag: EVENT_F4,
 		jumpIfTrue: CompText873F908_unk69_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x512,
+		flag: EVENT_512,
 		jumpIfTrue: CompText873F908_unk74_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x510,
+		flag: EVENT_510,
 		jumpIfTrue: CompText873F908_unk68_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x50E,
+		flag: EVENT_50E,
 		jumpIfTrue: CompText873F908_unk67_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x543,
+		flag: EVENT_543,
 		jumpIfTrue: CompText873F908_unk66_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -577,7 +577,7 @@ CompText873F908::
 
 	def_text_script CompText873F908_unk95
 	ts_check_flag [
-		flag: 0x538,
+		flag: EVENT_538,
 		jumpIfTrue: CompText873F908_unk96_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

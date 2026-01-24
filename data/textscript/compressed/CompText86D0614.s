@@ -141,7 +141,7 @@ CompText86D0614::
 	.string "this great gift!"
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0xF3,
+		flag: EVENT_F3,
 		jumpIfTrue: CompText86D0614_unk110_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -197,7 +197,7 @@ CompText86D0614::
 	]
 	.string "\"!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xF3
+	ts_flag_set flag=EVENT_F3
 	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D0614_unk3
@@ -1575,7 +1575,7 @@ CompText86D0614::
 	.string "you..."
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0x1E8,
+		flag: EVENT_1E8,
 		jumpIfTrue: CompText86D0614_unk110_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -1600,7 +1600,7 @@ CompText86D0614::
 	]
 	.string "\"!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1E8
+	ts_flag_set flag=EVENT_1E8
 	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D0614_unk60
@@ -2158,7 +2158,7 @@ CompText86D0614::
 	.string "you..."
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0x1E8,
+		flag: EVENT_1E8,
 		jumpIfTrue: CompText86D0614_unk110_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -2183,7 +2183,7 @@ CompText86D0614::
 	]
 	.string "\"!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1E8
+	ts_flag_set flag=EVENT_1E8
 	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D0614_unk88
@@ -2329,7 +2329,7 @@ CompText86D0614::
 	.string "to you instead..."
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0xFB,
+		flag: EVENT_FB,
 		jumpIfTrue: CompText86D0614_unk110_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -2354,7 +2354,7 @@ CompText86D0614::
 	]
 	.string "\"!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xFB
+	ts_flag_set flag=EVENT_FB
 	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D0614_unk91
@@ -2581,7 +2581,7 @@ CompText86D0614::
 	.string "charm..."
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0x1E9,
+		flag: EVENT_1E9,
 		jumpIfTrue: CompText86D0614_unk110_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -2606,7 +2606,7 @@ CompText86D0614::
 	]
 	.string "\"!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1E9
+	ts_flag_set flag=EVENT_1E9
 	ts_wait_hold unused=0x0
 
 	def_text_script CompText86D0614_unk99

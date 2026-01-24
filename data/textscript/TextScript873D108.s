@@ -22,7 +22,7 @@ TextScript873D108::
 	def_text_script TextScript873D108_unk2
 	ts_jump_buffer_set target=TextScript873D108_unk7_id
 	ts_check_flag [
-		flag: 0x1708,
+		flag: EVENT_1708,
 		jumpIfTrue: TextScript873D108_unk8_id,
 		jumpIfFalse: TextScript873D108_unk5_id,
 	]
@@ -153,7 +153,7 @@ TextScript873D108::
 	def_text_script TextScript873D108_unk12
 	ts_jump_buffer_set target=TextScript873D108_unk17_id
 	ts_check_flag [
-		flag: 0x1708,
+		flag: EVENT_1708,
 		jumpIfTrue: TextScript873D108_unk18_id,
 		jumpIfFalse: TextScript873D108_unk15_id,
 	]
@@ -231,7 +231,7 @@ TextScript873D108::
 	def_text_script TextScript873D108_unk22
 	ts_jump_buffer_set target=TextScript873D108_unk27_id
 	ts_check_flag [
-		flag: 0x1708,
+		flag: EVENT_1708,
 		jumpIfTrue: TextScript873D108_unk28_id,
 		jumpIfFalse: TextScript873D108_unk25_id,
 	]
@@ -299,7 +299,7 @@ TextScript873D108::
 	def_text_script TextScript873D108_unk32
 	ts_jump_buffer_set target=TextScript873D108_unk37_id
 	ts_check_flag [
-		flag: 0x1708,
+		flag: EVENT_1708,
 		jumpIfTrue: TextScript873D108_unk38_id,
 		jumpIfFalse: TextScript873D108_unk35_id,
 	]
@@ -363,7 +363,7 @@ TextScript873D108::
 	def_text_script TextScript873D108_unk42
 	ts_jump_buffer_set target=TextScript873D108_unk47_id
 	ts_check_flag [
-		flag: 0x1708,
+		flag: EVENT_1708,
 		jumpIfTrue: TextScript873D108_unk48_id,
 		jumpIfFalse: TextScript873D108_unk45_id,
 	]
@@ -435,7 +435,7 @@ TextScript873D108::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_flag [
-		flag: 0x1709,
+		flag: EVENT_1709,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: TextScript873D108_unk57_id,
 	]
@@ -501,7 +501,7 @@ TextScript873D108::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_check_flag [
-		flag: 0x1709,
+		flag: EVENT_1709,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: TextScript873D108_unk67_id,
 	]
@@ -562,7 +562,7 @@ TextScript873D108::
 	def_text_script TextScript873D108_unk72
 	ts_jump_buffer_set target=TextScript873D108_unk77_id
 	ts_check_flag [
-		flag: 0x1708,
+		flag: EVENT_1708,
 		jumpIfTrue: TextScript873D108_unk78_id,
 		jumpIfFalse: TextScript873D108_unk75_id,
 	]
@@ -626,7 +626,7 @@ TextScript873D108::
 	def_text_script TextScript873D108_unk82
 	ts_jump_buffer_set target=TextScript873D108_unk87_id
 	ts_check_flag [
-		flag: 0x1708,
+		flag: EVENT_1708,
 		jumpIfTrue: TextScript873D108_unk88_id,
 		jumpIfFalse: TextScript873D108_unk85_id,
 	]
@@ -691,7 +691,7 @@ TextScript873D108::
 	def_text_script TextScript873D108_unk92
 	ts_jump_buffer_set target=TextScript873D108_unk97_id
 	ts_check_flag [
-		flag: 0x1708,
+		flag: EVENT_1708,
 		jumpIfTrue: TextScript873D108_unk98_id,
 		jumpIfFalse: TextScript873D108_unk95_id,
 	]
@@ -766,7 +766,7 @@ TextScript873D108::
 	def_text_script TextScript873D108_unk102
 	ts_jump_buffer_set target=TextScript873D108_unk107_id
 	ts_check_flag [
-		flag: 0x1708,
+		flag: EVENT_1708,
 		jumpIfTrue: TextScript873D108_unk108_id,
 		jumpIfFalse: TextScript873D108_unk105_id,
 	]
@@ -835,7 +835,7 @@ TextScript873D108::
 	def_text_script TextScript873D108_unk112
 	ts_jump_buffer_set target=TextScript873D108_unk117_id
 	ts_check_flag [
-		flag: 0x1708,
+		flag: EVENT_1708,
 		jumpIfTrue: TextScript873D108_unk118_id,
 		jumpIfFalse: TextScript873D108_unk115_id,
 	]

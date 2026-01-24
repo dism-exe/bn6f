@@ -105,7 +105,7 @@ CompText877D8CC::
 
 	def_text_script CompText877D8CC_unk16
 	ts_check_flag [
-		flag: 0xE92,
+		flag: EVENT_E92,
 		jumpIfTrue: CompText877D8CC_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -113,8 +113,8 @@ CompText877D8CC::
 	ts_msg_open
 	.string "Ahhh!! You!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE91
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E91
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText877D8CC_unk17

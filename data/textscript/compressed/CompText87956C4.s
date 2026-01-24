@@ -73,12 +73,12 @@ CompText87956C4::
 
 	def_text_script CompText87956C4_unk6
 	ts_check_flag [
-		flag: 0xCD3,
+		flag: EVENT_CD3,
 		jumpIfTrue: CompText87956C4_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCD1,
+		flag: EVENT_CD1,
 		jumpIfTrue: CompText87956C4_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -189,12 +189,12 @@ CompText87956C4::
 
 	def_text_script CompText87956C4_unk20
 	ts_check_flag [
-		flag: 0xCD4,
+		flag: EVENT_CD4,
 		jumpIfTrue: CompText87956C4_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCD3,
+		flag: EVENT_CD3,
 		jumpIfTrue: CompText87956C4_unk22_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

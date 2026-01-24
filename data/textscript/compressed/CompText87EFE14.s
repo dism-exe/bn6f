@@ -11,7 +11,7 @@ CompText87EFE14::
 
 	def_text_script CompText87EFE14_unk0
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87EFE14_unk20_id,
 	]
@@ -57,7 +57,7 @@ CompText87EFE14::
 
 	def_text_script CompText87EFE14_unk1
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87EFE14_unk21_id,
 	]
@@ -112,7 +112,7 @@ CompText87EFE14::
 
 	def_text_script CompText87EFE14_unk6
 	ts_check_flag [
-		flag: 0x173A,
+		flag: EVENT_173A,
 		jumpIfTrue: CompText87EFE14_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -198,7 +198,7 @@ CompText87EFE14::
 
 	def_text_script CompText87EFE14_unk13
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87EFE14_unk22_id,
 	]
@@ -243,7 +243,7 @@ CompText87EFE14::
 
 	def_text_script CompText87EFE14_unk14
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87EFE14_unk23_id,
 	]
@@ -288,7 +288,7 @@ CompText87EFE14::
 
 	def_text_script CompText87EFE14_unk15
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87EFE14_unk22_id,
 	]
@@ -334,7 +334,7 @@ CompText87EFE14::
 
 	def_text_script CompText87EFE14_unk16
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87EFE14_unk22_id,
 	]

@@ -144,16 +144,16 @@ CompText8763B24::
 
 	def_text_script CompText8763B24_unk10
 	ts_check_flag [
-		flag: 0x113F,
+		flag: EVENT_113F,
 		jumpIfTrue: CompText8763B24_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x113D,
+		flag: EVENT_113D,
 		jumpIfTrue: CompText8763B24_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x113D
+	ts_flag_set flag=EVENT_113D
 	ts_mugshot_show mugshot=0x10
 	ts_msg_open
 	.string "Hehehehe..."
@@ -264,8 +264,8 @@ CompText8763B24::
 	ts_clear_msg
 	.string "Battle Start!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x113E
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_113E
 	ts_end
 
 	def_text_script CompText8763B24_unk13
@@ -330,16 +330,16 @@ CompText8763B24::
 
 	def_text_script CompText8763B24_unk20
 	ts_check_flag [
-		flag: 0x115B,
+		flag: EVENT_115B,
 		jumpIfTrue: CompText8763B24_unk22_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x115E,
+		flag: EVENT_115E,
 		jumpIfTrue: CompText8763B24_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x115E
+	ts_flag_set flag=EVENT_115E
 	ts_mugshot_show mugshot=0x1A
 	ts_msg_open
 	.string "Yes indeedy!"
@@ -492,11 +492,11 @@ CompText8763B24::
 
 	def_text_script CompText8763B24_unk30
 	ts_check_flag [
-		flag: 0x133C,
+		flag: EVENT_133C,
 		jumpIfTrue: CompText8763B24_unk31_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x133C
+	ts_flag_set flag=EVENT_133C
 	ts_mugshot_show mugshot=0x4
 	ts_msg_open
 	.string "Hikari..."
@@ -578,7 +578,7 @@ CompText8763B24::
 
 	def_text_script CompText8763B24_unk32
 	ts_check_flag [
-		flag: 0xE00,
+		flag: EVENT_E00,
 		jumpIfTrue: CompText8763B24_unk33_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -586,122 +586,122 @@ CompText8763B24::
 
 	def_text_script CompText8763B24_unk33
 	ts_check_flag [
-		flag: 0x1340,
+		flag: EVENT_1340,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C3E,
+		flag: EVENT_1C3E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C3D,
+		flag: EVENT_1C3D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C3C,
+		flag: EVENT_1C3C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C3B,
+		flag: EVENT_1C3B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C3A,
+		flag: EVENT_1C3A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C39,
+		flag: EVENT_1C39,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C30,
+		flag: EVENT_1C30,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C2F,
+		flag: EVENT_1C2F,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C2E,
+		flag: EVENT_1C2E,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C2D,
+		flag: EVENT_1C2D,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C2C,
+		flag: EVENT_1C2C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C2B,
+		flag: EVENT_1C2B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C2A,
+		flag: EVENT_1C2A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C29,
+		flag: EVENT_1C29,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C28,
+		flag: EVENT_1C28,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C27,
+		flag: EVENT_1C27,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C26,
+		flag: EVENT_1C26,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C25,
+		flag: EVENT_1C25,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C24,
+		flag: EVENT_1C24,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C23,
+		flag: EVENT_1C23,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C22,
+		flag: EVENT_1C22,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C21,
+		flag: EVENT_1C21,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x1C20,
+		flag: EVENT_1C20,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8763B24_unk34_id,
 	]
@@ -721,8 +721,8 @@ CompText8763B24::
 	ts_mugshot_show mugshot=0x3B
 	.string "Yaaaaahhhh!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x133E
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_133E
 	ts_end
 
 	def_text_script CompText8763B24_unk34
@@ -744,8 +744,8 @@ CompText8763B24::
 	ts_mugshot_show mugshot=0x3B
 	.string "Yaaaaahhhh!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x133D
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_133D
 	ts_end
 
 	def_text_script CompText8763B24_unk35
@@ -754,11 +754,11 @@ CompText8763B24::
 
 	def_text_script CompText8763B24_unk37
 	ts_check_flag [
-		flag: 0x1340,
+		flag: EVENT_1340,
 		jumpIfTrue: CompText8763B24_unk38_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1340
+	ts_flag_set flag=EVENT_1340
 	ts_jump target=CompText8763B24_unk38_id
 
 	def_text_script CompText8763B24_unk38

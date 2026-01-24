@@ -101,8 +101,8 @@ CompText876B7C4::
 	ts_mugshot_show mugshot=0x3B
 	.string "Yaaaaaaaahhhh!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x133F
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_133F
 	ts_end
 
 	def_text_script CompText876B7C4_unk12

@@ -44,7 +44,7 @@ CompText875B30C::
 	.string "water..."
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0x185,
+		flag: EVENT_185,
 		jumpIfTrue: CompText875B30C_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -70,7 +70,7 @@ CompText875B30C::
 	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_scene
-	ts_flag_set flag=0x185
+	ts_flag_set flag=EVENT_185
 	ts_end
 
 	def_text_script CompText875B30C_unk3

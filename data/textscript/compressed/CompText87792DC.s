@@ -11,16 +11,16 @@ CompText87792DC::
 
 	def_text_script CompText87792DC_unk0
 	ts_check_flag [
-		flag: 0x1120,
+		flag: EVENT_1120,
 		jumpIfTrue: CompText87792DC_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x111F,
+		flag: EVENT_111F,
 		jumpIfTrue: CompText87792DC_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x111F
+	ts_flag_set flag=EVENT_111F
 	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "Did someone call\n"
@@ -691,7 +691,7 @@ CompText87792DC::
 	.string "believe it...\n"
 	.string "I lost at trivia!?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1120
+	ts_flag_set flag=EVENT_1120
 	ts_end
 
 	def_text_script CompText87792DC_unk3
@@ -739,16 +739,16 @@ CompText87792DC::
 
 	def_text_script CompText87792DC_unk10
 	ts_check_flag [
-		flag: 0x11BA,
+		flag: EVENT_11BA,
 		jumpIfTrue: CompText87792DC_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11B9,
+		flag: EVENT_11B9,
 		jumpIfTrue: CompText87792DC_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11B9
+	ts_flag_set flag=EVENT_11B9
 	ts_mugshot_show mugshot=0xD
 	ts_msg_open
 	.string "...You!? You're that\n"
@@ -798,11 +798,11 @@ CompText87792DC::
 
 	def_text_script CompText87792DC_unk12
 	ts_check_flag [
-		flag: 0x11B1,
+		flag: EVENT_11B1,
 		jumpIfTrue: CompText87792DC_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11B1
+	ts_flag_set flag=EVENT_11B1
 	ts_mugshot_show mugshot=0xF
 	ts_msg_open
 	.string "You got the ScrtData\n"

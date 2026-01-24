@@ -63,7 +63,7 @@ CompText87618C0::
 	]
 	.string "\"!!"
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x136
+	ts_flag_clear flag=EVENT_136
 	ts_end
 
 	def_text_script CompText87618C0_unk3
@@ -282,7 +282,7 @@ CompText87618C0::
 	ts_jump target=CompText87618C0_unk12_id
 
 	def_text_script CompText87618C0_unk12
-	ts_flag_clear flag=0x166
+	ts_flag_clear flag=EVENT_166
 	ts_end
 
 	def_text_script CompText87618C0_unk13
@@ -369,7 +369,7 @@ CompText87618C0::
 	ts_jump target=CompText87618C0_unk17_id
 
 	def_text_script CompText87618C0_unk17
-	ts_flag_clear flag=0x16B
+	ts_flag_clear flag=EVENT_16B
 	ts_end
 
 	def_text_script CompText87618C0_unk18
@@ -449,7 +449,7 @@ CompText87618C0::
 	ts_jump target=CompText87618C0_unk22_id
 
 	def_text_script CompText87618C0_unk22
-	ts_flag_clear flag=0x17A
+	ts_flag_clear flag=EVENT_17A
 	ts_end
 
 	def_text_script CompText87618C0_unk23
@@ -535,7 +535,7 @@ CompText87618C0::
 	ts_jump target=CompText87618C0_unk27_id
 
 	def_text_script CompText87618C0_unk27
-	ts_flag_clear flag=0x175
+	ts_flag_clear flag=EVENT_175
 	ts_end
 
 	def_text_script CompText87618C0_unk28
@@ -611,7 +611,7 @@ CompText87618C0::
 	ts_jump target=CompText87618C0_unk32_id
 
 	def_text_script CompText87618C0_unk32
-	ts_flag_clear flag=0x170
+	ts_flag_clear flag=EVENT_170
 	ts_end
 
 	def_text_script CompText87618C0_unk33

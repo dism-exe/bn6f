@@ -11,7 +11,7 @@ CompText87A05E0::
 
 	def_text_script CompText87A05E0_unk0
 	ts_check_flag [
-		flag: 0xA6E,
+		flag: EVENT_A6E,
 		jumpIfTrue: CompText87A05E0_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -33,7 +33,7 @@ CompText87A05E0::
 	ts_mugshot_show mugshot=0x37
 	.string "Let's go!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xA6D
+	ts_flag_set flag=EVENT_A6D
 	ts_end
 
 	def_text_script CompText87A05E0_unk1

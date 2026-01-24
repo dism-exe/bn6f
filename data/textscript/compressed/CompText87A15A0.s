@@ -11,18 +11,18 @@ CompText87A15A0::
 
 	def_text_script CompText87A15A0_unk0
 	ts_check_flag [
-		flag: 0x112C,
+		flag: EVENT_112C,
 		jumpIfTrue: CompText87A15A0_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x112B,
+		flag: EVENT_112B,
 		jumpIfTrue: CompText87A15A0_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x3F
 	ts_msg_open
-	ts_flag_set flag=0x112B
+	ts_flag_set flag=EVENT_112B
 	.string "...I've been under\n"
 	.string "so much stress that\n"
 	.string "my skin broke out!!"
@@ -211,7 +211,7 @@ CompText87A15A0::
 	.string "in and wash my\n"
 	.string "stress away!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x112C
+	ts_flag_set flag=EVENT_112C
 	ts_end
 
 	def_text_script CompText87A15A0_unk3
@@ -271,33 +271,33 @@ CompText87A15A0::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x11E0
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_11E0
 	ts_end
 
 	def_text_script CompText87A15A0_unk11
 	ts_check_flag [
-		flag: 0x11E4,
+		flag: EVENT_11E4,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A15A0_unk12_id,
 	]
 	ts_check_flag [
-		flag: 0x11E5,
+		flag: EVENT_11E5,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A15A0_unk12_id,
 	]
 	ts_check_flag [
-		flag: 0x11E6,
+		flag: EVENT_11E6,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A15A0_unk12_id,
 	]
 	ts_check_flag [
-		flag: 0x11E7,
+		flag: EVENT_11E7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A15A0_unk12_id,
 	]
 	ts_check_flag [
-		flag: 0x11E8,
+		flag: EVENT_11E8,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A15A0_unk12_id,
 	]
@@ -481,17 +481,17 @@ CompText87A15A0::
 	ts_clear_msg
 	.string "BATTLE... START!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1DB
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1DB
 	ts_end
 
 	def_text_script CompText87A15A0_unk52
 	ts_check_flag [
-		flag: 0x1D5,
+		flag: EVENT_1D5,
 		jumpIfTrue: CompText87A15A0_unk54_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1D5
+	ts_flag_set flag=EVENT_1D5
 	ts_jump target=CompText87A15A0_unk54_id
 
 	def_text_script CompText87A15A0_unk53
@@ -505,7 +505,7 @@ CompText87A15A0::
 
 	def_text_script CompText87A15A0_unk54
 	ts_check_flag [
-		flag: 0x1ED,
+		flag: EVENT_1ED,
 		jumpIfTrue: CompText87A15A0_unk55_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -562,7 +562,7 @@ CompText87A15A0::
 	.string "TAKEN TO IF YOU DO\n"
 	.string "BAD THINGS!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1ED
+	ts_flag_set flag=EVENT_1ED
 	ts_end
 
 	def_text_script CompText87A15A0_unk55

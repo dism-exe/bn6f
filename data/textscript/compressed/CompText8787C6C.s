@@ -130,11 +130,11 @@ CompText8787C6C::
 
 	def_text_script CompText8787C6C_unk20
 	ts_check_flag [
-		flag: 0x639,
+		flag: EVENT_639,
 		jumpIfTrue: CompText8787C6C_unk22_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x639
+	ts_flag_set flag=EVENT_639
 	ts_mugshot_show mugshot=0x47
 	ts_msg_open
 	.string "There's a Kettle\n"
@@ -176,8 +176,8 @@ CompText8787C6C::
 	ts_msg_open
 	.string "Heat things up!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x63D
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_63D
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8787C6C_unk22
@@ -217,11 +217,11 @@ CompText8787C6C::
 
 	def_text_script CompText8787C6C_unk23
 	ts_check_flag [
-		flag: 0x63A,
+		flag: EVENT_63A,
 		jumpIfTrue: CompText8787C6C_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x63A
+	ts_flag_set flag=EVENT_63A
 	ts_mugshot_show mugshot=0x47
 	ts_msg_open
 	.string "There's a Kettle\n"
@@ -266,8 +266,8 @@ CompText8787C6C::
 	.string "It's gonna get\n"
 	.string "a bit hot in here!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x63E
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_63E
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8787C6C_unk25
@@ -385,12 +385,12 @@ CompText8787C6C::
 
 	def_text_script CompText8787C6C_unk50
 	ts_check_flag [
-		flag: 0x7F2,
+		flag: EVENT_7F2,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8787C6C_unk52_id,
 	]
 	ts_check_flag [
-		flag: 0x688,
+		flag: EVENT_688,
 		jumpIfTrue: CompText8787C6C_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -457,7 +457,7 @@ CompText8787C6C::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_call_reload_soul_weapons unused=0x0
-	ts_flag_set flag=0x688
+	ts_flag_set flag=EVENT_688
 	ts_player_finish
 	ts_player_reset_object
 	ts_clear_msg
@@ -565,7 +565,7 @@ CompText8787C6C::
 	ts_mugshot_show mugshot=0x42
 	.string "Good luck..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x746
+	ts_flag_set flag=EVENT_746
 	ts_end
 
 	def_text_script CompText8787C6C_unk56

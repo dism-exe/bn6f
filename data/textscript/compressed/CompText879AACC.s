@@ -11,18 +11,18 @@ CompText879AACC::
 
 	def_text_script CompText879AACC_unk0
 	ts_check_flag [
-		flag: 0x1130,
+		flag: EVENT_1130,
 		jumpIfTrue: CompText879AACC_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x112F,
+		flag: EVENT_112F,
 		jumpIfTrue: CompText879AACC_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
-	ts_flag_set flag=0x112F
+	ts_flag_set flag=EVENT_112F
 	.string "\""
 	ts_print_chip1 [
 		chip: 0xCA,
@@ -225,7 +225,7 @@ CompText879AACC::
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x41
 	.string "Now I'll be big too!\n"
-	ts_flag_set flag=0x1130
+	ts_flag_set flag=EVENT_1130
 	ts_key_wait any=0x0
 	ts_end
 
@@ -263,7 +263,7 @@ CompText879AACC::
 
 	def_text_script CompText879AACC_unk10
 	ts_check_flag [
-		flag: 0xC1C,
+		flag: EVENT_C1C,
 		jumpIfTrue: CompText879AACC_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -310,7 +310,7 @@ CompText879AACC::
 
 	def_text_script CompText879AACC_unk15
 	ts_check_flag [
-		flag: 0xCD0,
+		flag: EVENT_CD0,
 		jumpIfTrue: CompText879AACC_unk16_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -426,7 +426,7 @@ CompText879AACC::
 	ts_sound_disable_text_sfx
 	ts_sound_play00 track=0x74
 	ts_sound_enable_text_sfx
-	ts_flag_set flag=0x180
+	ts_flag_set flag=EVENT_180
 	ts_clear_msg
 	.string "WELL,MY WORK IS ALL\n"
 	.string "DONE HERE..."
@@ -436,7 +436,7 @@ CompText879AACC::
 	ts_key_wait any=0x0
 	ts_sound_disable_text_sfx
 	ts_sound_play00 track=0x76
-	ts_flag_set flag=0x1E7
+	ts_flag_set flag=EVENT_1E7
 	ts_end
 
 	

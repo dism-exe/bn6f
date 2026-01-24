@@ -11,7 +11,7 @@ CompText8778B40::
 
 	def_text_script CompText8778B40_unk0
 	ts_check_flag [
-		flag: 0x532,
+		flag: EVENT_532,
 		jumpIfTrue: CompText8778B40_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -49,16 +49,16 @@ CompText8778B40::
 
 	def_text_script CompText8778B40_unk10
 	ts_check_flag [
-		flag: 0x1136,
+		flag: EVENT_1136,
 		jumpIfTrue: CompText8778B40_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1134,
+		flag: EVENT_1134,
 		jumpIfTrue: CompText8778B40_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1134
+	ts_flag_set flag=EVENT_1134
 	ts_mugshot_show mugshot=0x15
 	ts_msg_open
 	.string "Would you please\n"
@@ -159,8 +159,8 @@ CompText8778B40::
 	ts_clear_msg
 	.string "Battle start!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1135
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1135
 	ts_end
 
 	def_text_script CompText8778B40_unk13
@@ -229,21 +229,21 @@ CompText8778B40::
 
 	def_text_script CompText8778B40_unk20
 	ts_check_flag [
-		flag: 0x1147,
+		flag: EVENT_1147,
 		jumpIfTrue: CompText8778B40_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1148,
+		flag: EVENT_1148,
 		jumpIfTrue: CompText8778B40_unk22_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1146,
+		flag: EVENT_1146,
 		jumpIfTrue: CompText8778B40_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1146
+	ts_flag_set flag=EVENT_1146
 	ts_mugshot_show mugshot=0x16
 	ts_msg_open
 	.string "Huh? You?\n"
@@ -380,7 +380,7 @@ CompText8778B40::
 	ts_end
 
 	def_text_script CompText8778B40_unk22
-	ts_flag_set flag=0x1147
+	ts_flag_set flag=EVENT_1147
 	ts_mugshot_show mugshot=0x16
 	ts_msg_open
 	.string "You met \"Dolphin\"?\n"
@@ -524,29 +524,29 @@ CompText8778B40::
 	ts_clear_msg
 	.string "Penguin Capture!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x11AF
+	ts_flag_set flag=EVENT_11AF
 	ts_check_flag [
-		flag: 0x11AF,
+		flag: EVENT_11AF,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8778B40_unk26_id,
 	]
 	ts_check_flag [
-		flag: 0x11AE,
+		flag: EVENT_11AE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8778B40_unk26_id,
 	]
 	ts_check_flag [
-		flag: 0x11AD,
+		flag: EVENT_11AD,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8778B40_unk26_id,
 	]
 	ts_check_flag [
-		flag: 0x11AC,
+		flag: EVENT_11AC,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8778B40_unk26_id,
 	]
 	ts_check_flag [
-		flag: 0x11AB,
+		flag: EVENT_11AB,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8778B40_unk26_id,
 	]

@@ -69,7 +69,7 @@ CompText875B064::
 	.string "into this trash can."
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0x188,
+		flag: EVENT_188,
 		jumpIfTrue: CompText875B064_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -80,7 +80,7 @@ CompText875B064::
 	ts_key_wait any=0x0
 	ts_mugshot_hide
 	ts_check_flag [
-		flag: 0x1729,
+		flag: EVENT_COPYBOT_ACTIVE,
 		jumpIfTrue: CompText875B064_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -105,7 +105,7 @@ CompText875B064::
 	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_scene
-	ts_flag_set flag=0x188
+	ts_flag_set flag=EVENT_188
 	ts_end
 
 	def_text_script CompText875B064_unk4
@@ -133,7 +133,7 @@ CompText875B064::
 	.string "increased by\n"
 	.string "1 MB!!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x188
+	ts_flag_set flag=EVENT_188
 	ts_end
 
 	def_text_script CompText875B064_unk6

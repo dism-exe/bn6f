@@ -11,7 +11,7 @@ CompText879DA74::
 
 	def_text_script CompText879DA74_unk0
 	ts_check_flag [
-		flag: 0x11D1,
+		flag: EVENT_11D1,
 		jumpIfTrue: CompText879DA74_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -173,8 +173,8 @@ CompText879DA74::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x11D0
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_11D0
 	ts_end
 
 	def_text_script CompText879DA74_unk1
@@ -270,33 +270,33 @@ CompText879DA74::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x11DF
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_11DF
 	ts_end
 
 	def_text_script CompText879DA74_unk11
 	ts_check_flag [
-		flag: 0x11E4,
+		flag: EVENT_11E4,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879DA74_unk12_id,
 	]
 	ts_check_flag [
-		flag: 0x11E5,
+		flag: EVENT_11E5,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879DA74_unk12_id,
 	]
 	ts_check_flag [
-		flag: 0x11E6,
+		flag: EVENT_11E6,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879DA74_unk12_id,
 	]
 	ts_check_flag [
-		flag: 0x11E7,
+		flag: EVENT_11E7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879DA74_unk12_id,
 	]
 	ts_check_flag [
-		flag: 0x11E8,
+		flag: EVENT_11E8,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879DA74_unk12_id,
 	]
@@ -522,17 +522,17 @@ CompText879DA74::
 	ts_clear_msg
 	.string "BATTLE... START!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1D9
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1D9
 	ts_end
 
 	def_text_script CompText879DA74_unk52
 	ts_check_flag [
-		flag: 0x1D4,
+		flag: EVENT_1D4,
 		jumpIfTrue: CompText879DA74_unk54_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1D4
+	ts_flag_set flag=EVENT_1D4
 	ts_jump target=CompText879DA74_unk54_id
 
 	def_text_script CompText879DA74_unk53
@@ -546,7 +546,7 @@ CompText879DA74::
 
 	def_text_script CompText879DA74_unk54
 	ts_check_flag [
-		flag: 0x1EC,
+		flag: EVENT_1EC,
 		jumpIfTrue: CompText879DA74_unk55_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -605,7 +605,7 @@ CompText879DA74::
 	.string "A COMP RELATED TO\n"
 	.string "WATER..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1EC
+	ts_flag_set flag=EVENT_1EC
 	ts_end
 
 	def_text_script CompText879DA74_unk55

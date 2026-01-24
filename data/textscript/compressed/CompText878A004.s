@@ -219,17 +219,17 @@ CompText878A004::
 
 	def_text_script CompText878A004_unk45
 	ts_check_flag [
-		flag: 0xC20,
+		flag: EVENT_C20,
 		jumpIfTrue: CompText878A004_unk60_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC1E,
+		flag: EVENT_C1E,
 		jumpIfTrue: CompText878A004_unk55_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC1A,
+		flag: EVENT_C1A,
 		jumpIfTrue: CompText878A004_unk50_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

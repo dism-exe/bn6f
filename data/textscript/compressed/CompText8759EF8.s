@@ -36,12 +36,12 @@ CompText8759EF8::
 
 	def_text_script CompText8759EF8_unk2
 	ts_check_flag [
-		flag: 0x859,
+		flag: EVENT_859,
 		jumpIfTrue: CompText8759EF8_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x858,
+		flag: EVENT_858,
 		jumpIfTrue: CompText8759EF8_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -74,12 +74,12 @@ CompText8759EF8::
 
 	def_text_script CompText8759EF8_unk4
 	ts_check_flag [
-		flag: 0x11B6,
+		flag: EVENT_11B6,
 		jumpIfTrue: CompText8759EF8_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11B5,
+		flag: EVENT_11B5,
 		jumpIfTrue: CompText8759EF8_unk10_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -160,7 +160,7 @@ CompText8759EF8::
 
 	def_text_script CompText8759EF8_unk10
 	ts_check_flag [
-		flag: 0x163,
+		flag: EVENT_163,
 		jumpIfTrue: CompText8759EF8_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -206,7 +206,7 @@ CompText8759EF8::
 		item: 0x30,
 		amount: 0x1,
 	]
-	ts_flag_set flag=0x11B6
+	ts_flag_set flag=EVENT_11B6
 	ts_player_animate_scene animation=0x18
 	.string "Lan got:\n"
 	.string "\""

@@ -63,7 +63,7 @@ CompText875C83C::
 
 	def_text_script CompText875C83C_unk10
 	ts_check_flag [
-		flag: 0xA62,
+		flag: EVENT_A62,
 		jumpIfTrue: CompText875C83C_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -149,7 +149,7 @@ CompText875C83C::
 	.string "Alright then,\n"
 	.string "GOOD LUCK!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xA62
+	ts_flag_set flag=EVENT_A62
 	ts_end
 
 	def_text_script CompText875C83C_unk11
@@ -162,7 +162,7 @@ CompText875C83C::
 
 	def_text_script CompText875C83C_unk12
 	ts_check_flag [
-		flag: 0xA2C,
+		flag: EVENT_A2C,
 		jumpIfTrue: CompText875C83C_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

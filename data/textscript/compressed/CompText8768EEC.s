@@ -11,7 +11,7 @@ CompText8768EEC::
 
 	def_text_script CompText8768EEC_unk0
 	ts_check_flag [
-		flag: 0xE62,
+		flag: EVENT_E62,
 		jumpIfTrue: CompText8768EEC_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -25,7 +25,7 @@ CompText8768EEC::
 	.string "Have a good time!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_flag_set flag=0xE62
+	ts_flag_set flag=EVENT_E62
 	ts_end
 
 	def_text_script CompText8768EEC_unk1
@@ -108,11 +108,11 @@ CompText8768EEC::
 
 	def_text_script CompText8768EEC_unk11
 	ts_check_flag [
-		flag: 0x1EA,
+		flag: EVENT_1EA,
 		jumpIfTrue: CompText8768EEC_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1EA
+	ts_flag_set flag=EVENT_1EA
 	ts_mugshot_show mugshot=0x1
 	ts_msg_open
 	.string "Lan,leave this to\n"

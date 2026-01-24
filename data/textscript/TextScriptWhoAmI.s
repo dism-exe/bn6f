@@ -267,7 +267,7 @@ TextScriptWhoAmI::
 	ts_end
 
 	def_text_script TextScriptWhoAmI_unk24
-	ts_flag_set flag=0x5F5
+	ts_flag_set flag=EVENT_5F5
 	ts_msg_open
 	.string "A SUNFISH! YES,\n"
 	.string "THAT'S ME!"
@@ -275,7 +275,7 @@ TextScriptWhoAmI::
 	ts_end
 
 	def_text_script TextScriptWhoAmI_unk25
-	ts_flag_set flag=0x5F6
+	ts_flag_set flag=EVENT_5F6
 	ts_msg_open
 	.string "A TROPICAL FISH!\n"
 	.string "BLOOP,BLOOP!"
@@ -283,7 +283,7 @@ TextScriptWhoAmI::
 	ts_end
 
 	def_text_script TextScriptWhoAmI_unk26
-	ts_flag_set flag=0x5F7
+	ts_flag_set flag=EVENT_5F7
 	ts_msg_open
 	.string "A PIRANHA! MAN,\n"
 	.string "I CAN'T BELIEVE\n"
@@ -292,14 +292,14 @@ TextScriptWhoAmI::
 	ts_end
 
 	def_text_script TextScriptWhoAmI_unk27
-	ts_flag_set flag=0x5F8
+	ts_flag_set flag=EVENT_5F8
 	ts_msg_open
 	.string "A NAUTILUS! OUI,OUI!"
 	ts_key_wait any=0x0
 	ts_end
 
 	def_text_script TextScriptWhoAmI_unk28
-	ts_flag_set flag=0x5F9
+	ts_flag_set flag=EVENT_5F9
 	ts_msg_open
 	.string "A KING CRAB! THANK\n"
 	.string "YOU FOR HELPING,\n"
@@ -308,7 +308,7 @@ TextScriptWhoAmI::
 	ts_end
 
 	def_text_script TextScriptWhoAmI_unk29
-	ts_flag_set flag=0x5FA
+	ts_flag_set flag=EVENT_5FA
 	ts_msg_open
 	.string "A TURTLE! AH,MY\n"
 	.string "MEMORY IS SLOWLY\n"
@@ -317,7 +317,7 @@ TextScriptWhoAmI::
 	ts_end
 
 	def_text_script TextScriptWhoAmI_unk30
-	ts_flag_set flag=0x5FB
+	ts_flag_set flag=EVENT_5FB
 	ts_msg_open
 	.string "OH,SNAP,\n"
 	.string "AN ALLIGATOR!"
@@ -330,7 +330,7 @@ TextScriptWhoAmI::
 	ts_end
 
 	def_text_script TextScriptWhoAmI_unk31
-	ts_flag_set flag=0x5FC
+	ts_flag_set flag=EVENT_5FC
 	ts_msg_open
 	.string "A DOLPHIN!\n"
 	.string "*SQUEEK!*"
@@ -342,7 +342,7 @@ TextScriptWhoAmI::
 	ts_end
 
 	def_text_script TextScriptWhoAmI_unk32
-	ts_flag_set flag=0x5FD
+	ts_flag_set flag=EVENT_5FD
 	ts_msg_open
 	.string "AN ELEPHANT SEAL!\n"
 	.string "AND ELEPHANTS NEVER\n"
@@ -351,7 +351,7 @@ TextScriptWhoAmI::
 	ts_end
 
 	def_text_script TextScriptWhoAmI_unk33
-	ts_flag_set flag=0x5FE
+	ts_flag_set flag=EVENT_5FE
 	ts_msg_open
 	.string "A PENGUIN!\n"
 	.string "A PENGUIN,I SAY!"
@@ -1002,7 +1002,7 @@ TextScriptWhoAmI::
 
 	def_text_script TextScriptWhoAmI_unk59
 	ts_msg_open
-	ts_flag_set flag=0xFC2
+	ts_flag_set flag=EVENT_FC2
 	.string "A CLOWN FISH!\n"
 	.string "I'M A FAVORITE\n"
 	.string "WITH THE KIDS!"
@@ -1020,7 +1020,7 @@ TextScriptWhoAmI::
 
 	def_text_script TextScriptWhoAmI_unk60
 	ts_msg_open
-	ts_flag_set flag=0xFC3
+	ts_flag_set flag=EVENT_FC3
 	.string "A SHARK! MMMM..."
 	ts_key_wait any=0x0
 	ts_clear_msg
@@ -1035,7 +1035,7 @@ TextScriptWhoAmI::
 
 	def_text_script TextScriptWhoAmI_unk61
 	ts_msg_open
-	ts_flag_set flag=0xFC4
+	ts_flag_set flag=EVENT_FC4
 	.string "AN AQUARIUM\n"
 	.string "DIRECTOR!"
 	ts_key_wait any=0x0

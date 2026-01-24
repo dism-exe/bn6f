@@ -145,11 +145,11 @@ CompText8782FEC::
 
 	def_text_script CompText8782FEC_unk20
 	ts_check_flag [
-		flag: 0x637,
+		flag: EVENT_637,
 		jumpIfTrue: CompText8782FEC_unk22_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x637
+	ts_flag_set flag=EVENT_637
 	ts_mugshot_show mugshot=0x47
 	ts_msg_open
 	.string "There's a Kettle\n"
@@ -193,8 +193,8 @@ CompText8782FEC::
 	.string "Let's light this\n"
 	.string "guy up!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x63B
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_63B
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText8782FEC_unk22
@@ -395,12 +395,12 @@ CompText8782FEC::
 
 	def_text_script CompText8782FEC_unk55
 	ts_check_flag [
-		flag: 0x7F0,
+		flag: EVENT_7F0,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8782FEC_unk58_id,
 	]
 	ts_check_flag [
-		flag: 0x686,
+		flag: EVENT_686,
 		jumpIfTrue: CompText8782FEC_unk56_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -526,7 +526,7 @@ CompText8782FEC::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_call_reload_soul_weapons unused=0x0
-	ts_flag_set flag=0x686
+	ts_flag_set flag=EVENT_686
 	ts_player_finish
 	ts_player_reset_object
 	ts_clear_msg
@@ -777,7 +777,7 @@ CompText8782FEC::
 	ts_mugshot_show mugshot=0x42
 	.string "Do...do your best..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x746
+	ts_flag_set flag=EVENT_746
 	ts_end
 
 	def_text_script CompText8782FEC_unk61
@@ -826,11 +826,11 @@ CompText8782FEC::
 
 	def_text_script CompText8782FEC_unk80
 	ts_check_flag [
-		flag: 0x857,
+		flag: EVENT_857,
 		jumpIfTrue: CompText8782FEC_unk81_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x857
+	ts_flag_set flag=EVENT_857
 	ts_msg_open
 	ts_mugshot_show mugshot=0x46
 	.string "Welcome!\n"
@@ -950,7 +950,7 @@ CompText8782FEC::
 
 	def_text_script CompText8782FEC_unk82
 	ts_check_flag [
-		flag: 0x857,
+		flag: EVENT_857,
 		jumpIfTrue: CompText8782FEC_unk83_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

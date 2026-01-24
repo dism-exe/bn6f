@@ -11,7 +11,7 @@ CompText87A37AC::
 
 	def_text_script CompText87A37AC_unk0
 	ts_check_flag [
-		flag: 0x1218,
+		flag: EVENT_1218,
 		jumpIfTrue: CompText87A37AC_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -80,7 +80,7 @@ CompText87A37AC::
 	.string "reservation ticket!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_flag_set flag=0x1218
+	ts_flag_set flag=EVENT_1218
 	ts_mugshot_hide
 	ts_item_give [
 		item: 0x43,

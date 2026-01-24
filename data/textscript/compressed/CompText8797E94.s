@@ -42,16 +42,16 @@ CompText8797E94::
 
 	def_text_script CompText8797E94_unk10
 	ts_check_flag [
-		flag: 0x1139,
+		flag: EVENT_1139,
 		jumpIfTrue: CompText8797E94_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1137,
+		flag: EVENT_1137,
 		jumpIfTrue: CompText8797E94_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1137
+	ts_flag_set flag=EVENT_1137
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "Ahhhh...\n"
@@ -151,8 +151,8 @@ CompText8797E94::
 	ts_clear_msg
 	.string "Voila!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1138
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1138
 	ts_end
 
 	def_text_script CompText8797E94_unk13
@@ -227,21 +227,21 @@ CompText8797E94::
 
 	def_text_script CompText8797E94_unk20
 	ts_check_flag [
-		flag: 0x11F5,
+		flag: EVENT_11F5,
 		jumpIfTrue: CompText8797E94_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11F8,
+		flag: EVENT_11F8,
 		jumpIfTrue: CompText8797E94_unk22_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11F2,
+		flag: EVENT_11F2,
 		jumpIfTrue: CompText8797E94_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11F2
+	ts_flag_set flag=EVENT_11F2
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "HELLO! THIS IS\n"
@@ -323,7 +323,7 @@ CompText8797E94::
 	ts_mugshot_hide
 	.string "MegaMan updated\n"
 	.string "the UpdtData.\n"
-	ts_flag_set flag=0x11F5
+	ts_flag_set flag=EVENT_11F5
 	ts_key_wait any=0x0
 	ts_end
 

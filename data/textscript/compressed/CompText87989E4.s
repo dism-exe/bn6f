@@ -21,11 +21,11 @@ CompText87989E4::
 
 	def_text_script CompText87989E4_unk5
 	ts_check_flag [
-		flag: 0x11DB,
+		flag: EVENT_11DB,
 		jumpIfTrue: CompText87989E4_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11DB
+	ts_flag_set flag=EVENT_11DB
 	ts_mugshot_show mugshot=0x41
 	ts_msg_open
 	.string "Hey!\n"

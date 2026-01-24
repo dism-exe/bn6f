@@ -64,7 +64,7 @@ CompText874713C::
 
 	def_text_script CompText874713C_unk15
 	ts_check_flag [
-		flag: 0xA2E,
+		flag: EVENT_A2E,
 		jumpIfTrue: CompText874713C_unk27_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

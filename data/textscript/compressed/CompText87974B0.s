@@ -11,31 +11,31 @@ CompText87974B0::
 
 	def_text_script CompText87974B0_unk0
 	ts_check_flag [
-		flag: 0x1114,
+		flag: EVENT_1114,
 		jumpIfTrue: CompText87974B0_unk10_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1113,
+		flag: EVENT_1113,
 		jumpIfTrue: CompText87974B0_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1112,
+		flag: EVENT_1112,
 		jumpIfTrue: CompText87974B0_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1111,
+		flag: EVENT_1111,
 		jumpIfTrue: CompText87974B0_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x110F,
+		flag: EVENT_110F,
 		jumpIfTrue: CompText87974B0_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x110F
+	ts_flag_set flag=EVENT_110F
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Pardon me...\n"
@@ -234,7 +234,7 @@ CompText87974B0::
 		jumpIfNone: CompText87974B0_unk11_id,
 		jumpIfSome: CompText87974B0_unk11_id,
 	]
-	ts_flag_set flag=0x1111
+	ts_flag_set flag=EVENT_1111
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Huh,100Z?\n"
@@ -264,7 +264,7 @@ CompText87974B0::
 		jumpIfNone: CompText87974B0_unk11_id,
 		jumpIfSome: CompText87974B0_unk11_id,
 	]
-	ts_flag_set flag=0x1112
+	ts_flag_set flag=EVENT_1112
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "1000Z...\n"
@@ -288,7 +288,7 @@ CompText87974B0::
 		jumpIfNone: CompText87974B0_unk11_id,
 		jumpIfSome: CompText87974B0_unk11_id,
 	]
-	ts_flag_set flag=0x1113
+	ts_flag_set flag=EVENT_1113
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "10000Z!?!?\n"
@@ -325,7 +325,7 @@ CompText87974B0::
 		jumpIfInRange: TS_CONTINUE,
 		jumpIfOutOfRange: CompText87974B0_unk6_id,
 	]
-	ts_flag_set flag=0x1114
+	ts_flag_set flag=EVENT_1114
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Thanks to you,\n"
@@ -367,7 +367,7 @@ CompText87974B0::
 		jumpIfInRange: TS_CONTINUE,
 		jumpIfOutOfRange: CompText87974B0_unk6_id,
 	]
-	ts_flag_set flag=0x1114
+	ts_flag_set flag=EVENT_1114
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Thanks to you,\n"
@@ -409,7 +409,7 @@ CompText87974B0::
 		jumpIfInRange: TS_CONTINUE,
 		jumpIfOutOfRange: CompText87974B0_unk6_id,
 	]
-	ts_flag_set flag=0x1114
+	ts_flag_set flag=EVENT_1114
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Thanks to you,\n"

@@ -53,7 +53,7 @@ CompText878C5C8::
 	ts_msg_open
 	.string "You may proceed..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1640
+	ts_flag_set flag=EVENT_1640
 	ts_end
 
 	def_text_script CompText878C5C8_unk2
@@ -81,21 +81,21 @@ CompText878C5C8::
 
 	def_text_script CompText878C5C8_unk10
 	ts_check_flag [
-		flag: 0x11FD,
+		flag: EVENT_11FD,
 		jumpIfTrue: CompText878C5C8_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11FC,
+		flag: EVENT_11FC,
 		jumpIfTrue: CompText878C5C8_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11FB,
+		flag: EVENT_11FB,
 		jumpIfTrue: CompText878C5C8_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11FB
+	ts_flag_set flag=EVENT_11FB
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Ahhh... How would\n"
@@ -213,7 +213,7 @@ CompText878C5C8::
 	ts_end
 
 	def_text_script CompText878C5C8_unk12
-	ts_flag_set flag=0x11FD
+	ts_flag_set flag=EVENT_11FD
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "...What is with\n"

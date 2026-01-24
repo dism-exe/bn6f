@@ -11,7 +11,7 @@ CompText8769BA8::
 
 	def_text_script CompText8769BA8_unk0
 	ts_check_flag [
-		flag: 0xE5D,
+		flag: EVENT_E5D,
 		jumpIfTrue: CompText8769BA8_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -31,7 +31,7 @@ CompText8769BA8::
 	.string "I will go with you\n"
 	.string "for sure!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE5D
+	ts_flag_set flag=EVENT_E5D
 	ts_end
 
 	def_text_script CompText8769BA8_unk1

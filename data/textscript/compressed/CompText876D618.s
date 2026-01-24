@@ -27,16 +27,16 @@ CompText876D618::
 
 	def_text_script CompText876D618_unk8
 	ts_check_flag [
-		flag: 0x1128,
+		flag: EVENT_1128,
 		jumpIfTrue: CompText876D618_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1127,
+		flag: EVENT_1127,
 		jumpIfTrue: CompText876D618_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1127
+	ts_flag_set flag=EVENT_1127
 	ts_mugshot_show mugshot=0x17
 	ts_msg_open
 	.string "Hey,do you have the\n"
@@ -208,7 +208,7 @@ CompText876D618::
 	.string "to show everyone in\n"
 	.string "class!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1128
+	ts_flag_set flag=EVENT_1128
 	ts_end
 
 	def_text_script CompText876D618_unk11

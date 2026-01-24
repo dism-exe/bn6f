@@ -11,12 +11,12 @@ CompText8762FF0::
 
 	def_text_script CompText8762FF0_unk0
 	ts_check_flag [
-		flag: 0xC16,
+		flag: EVENT_C16,
 		jumpIfTrue: CompText8762FF0_unk10_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCC9,
+		flag: EVENT_CC9,
 		jumpIfTrue: CompText8762FF0_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -39,7 +39,7 @@ CompText8762FF0::
 	.string "you left,it's been\n"
 	.string "kinda lonely..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xCC9
+	ts_flag_set flag=EVENT_CC9
 	ts_end
 
 	def_text_script CompText8762FF0_unk1
@@ -63,12 +63,12 @@ CompText8762FF0::
 
 	def_text_script CompText8762FF0_unk2
 	ts_check_flag [
-		flag: 0xC16,
+		flag: EVENT_C16,
 		jumpIfTrue: CompText8762FF0_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCCA,
+		flag: EVENT_CCA,
 		jumpIfTrue: CompText8762FF0_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -98,7 +98,7 @@ CompText8762FF0::
 	.string "back! I'm really\n"
 	.string "glad to see you!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xCCA
+	ts_flag_set flag=EVENT_CCA
 	ts_end
 
 	def_text_script CompText8762FF0_unk3
@@ -112,12 +112,12 @@ CompText8762FF0::
 
 	def_text_script CompText8762FF0_unk4
 	ts_check_flag [
-		flag: 0xC16,
+		flag: EVENT_C16,
 		jumpIfTrue: CompText8762FF0_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCCB,
+		flag: EVENT_CCB,
 		jumpIfTrue: CompText8762FF0_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -145,7 +145,7 @@ CompText8762FF0::
 	.string "matter where you go!"
 	ts_key_wait any=0x0
 	ts_clear_msg
-	ts_flag_set flag=0xCCB
+	ts_flag_set flag=EVENT_CCB
 	ts_end
 
 	def_text_script CompText8762FF0_unk5
@@ -169,12 +169,12 @@ CompText8762FF0::
 
 	def_text_script CompText8762FF0_unk6
 	ts_check_flag [
-		flag: 0xC16,
+		flag: EVENT_C16,
 		jumpIfTrue: CompText8762FF0_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCCC,
+		flag: EVENT_CCC,
 		jumpIfTrue: CompText8762FF0_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -201,7 +201,7 @@ CompText8762FF0::
 	.string "you and your family\n"
 	.string "not being here..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xCCC
+	ts_flag_set flag=EVENT_CCC
 	ts_end
 
 	def_text_script CompText8762FF0_unk7
@@ -219,12 +219,12 @@ CompText8762FF0::
 
 	def_text_script CompText8762FF0_unk8
 	ts_check_flag [
-		flag: 0xC16,
+		flag: EVENT_C16,
 		jumpIfTrue: CompText8762FF0_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCCD,
+		flag: EVENT_CCD,
 		jumpIfTrue: CompText8762FF0_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -255,7 +255,7 @@ CompText8762FF0::
 	.string "getting a little\n"
 	.string "nostalgic,my boy...?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xCCD
+	ts_flag_set flag=EVENT_CCD
 	ts_end
 
 	def_text_script CompText8762FF0_unk9
@@ -353,22 +353,22 @@ CompText8762FF0::
 
 	def_text_script CompText8762FF0_unk17
 	ts_check_flag [
-		flag: 0xC1C,
+		flag: EVENT_C1C,
 		jumpIfTrue: CompText8762FF0_unk30_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC1A,
+		flag: EVENT_C1A,
 		jumpIfTrue: CompText8762FF0_unk26_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC14,
+		flag: EVENT_C14,
 		jumpIfTrue: CompText8762FF0_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC12,
+		flag: EVENT_C12,
 		jumpIfTrue: CompText8762FF0_unk20_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -382,22 +382,22 @@ CompText8762FF0::
 
 	def_text_script CompText8762FF0_unk18
 	ts_check_flag [
-		flag: 0xC1C,
+		flag: EVENT_C1C,
 		jumpIfTrue: CompText8762FF0_unk31_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC1A,
+		flag: EVENT_C1A,
 		jumpIfTrue: CompText8762FF0_unk27_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC14,
+		flag: EVENT_C14,
 		jumpIfTrue: CompText8762FF0_unk24_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC12,
+		flag: EVENT_C12,
 		jumpIfTrue: CompText8762FF0_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -416,22 +416,22 @@ CompText8762FF0::
 
 	def_text_script CompText8762FF0_unk19
 	ts_check_flag [
-		flag: 0xC1C,
+		flag: EVENT_C1C,
 		jumpIfTrue: CompText8762FF0_unk32_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC1A,
+		flag: EVENT_C1A,
 		jumpIfTrue: CompText8762FF0_unk28_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC14,
+		flag: EVENT_C14,
 		jumpIfTrue: CompText8762FF0_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC12,
+		flag: EVENT_C12,
 		jumpIfTrue: CompText8762FF0_unk22_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

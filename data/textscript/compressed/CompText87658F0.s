@@ -249,7 +249,7 @@ CompText87658F0::
 
 	def_text_script CompText87658F0_unk44
 	ts_check_flag [
-		flag: 0xC0A,
+		flag: EVENT_C0A,
 		jumpIfTrue: CompText87658F0_unk63_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -275,7 +275,7 @@ CompText87658F0::
 
 	def_text_script CompText87658F0_unk45
 	ts_check_flag [
-		flag: 0xC0A,
+		flag: EVENT_C0A,
 		jumpIfTrue: CompText87658F0_unk64_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -318,11 +318,11 @@ CompText87658F0::
 
 	def_text_script CompText87658F0_unk55
 	ts_check_flag [
-		flag: 0xCE7,
+		flag: EVENT_CE7,
 		jumpIfTrue: CompText87658F0_unk56_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xCE7
+	ts_flag_set flag=EVENT_CE7
 	ts_mugshot_show mugshot=0x24
 	ts_msg_open
 	.string "Cheers! I may have\n"
@@ -376,17 +376,17 @@ CompText87658F0::
 	.string "tomorrow!"
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0xCE7,
+		flag: EVENT_CE7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
 	ts_check_flag [
-		flag: 0xCE8,
+		flag: EVENT_CE8,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
 	ts_check_flag [
-		flag: 0xCE9,
+		flag: EVENT_CE9,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
@@ -430,11 +430,11 @@ CompText87658F0::
 
 	def_text_script CompText87658F0_unk57
 	ts_check_flag [
-		flag: 0xCE7,
+		flag: EVENT_CE7,
 		jumpIfTrue: CompText87658F0_unk58_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xCE7
+	ts_flag_set flag=EVENT_CE7
 	ts_mugshot_show mugshot=0x27
 	ts_msg_open
 	.string "...... I don't want\n"
@@ -525,17 +525,17 @@ CompText87658F0::
 	.string "too tired for today."
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0xCE7,
+		flag: EVENT_CE7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
 	ts_check_flag [
-		flag: 0xCE8,
+		flag: EVENT_CE8,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
 	ts_check_flag [
-		flag: 0xCE9,
+		flag: EVENT_CE9,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
@@ -561,11 +561,11 @@ CompText87658F0::
 
 	def_text_script CompText87658F0_unk59
 	ts_check_flag [
-		flag: 0xCE8,
+		flag: EVENT_CE8,
 		jumpIfTrue: CompText87658F0_unk60_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xCE8
+	ts_flag_set flag=EVENT_CE8
 	ts_mugshot_show mugshot=0x25
 	ts_msg_open
 	.string "Congratulations!\n"
@@ -644,17 +644,17 @@ CompText87658F0::
 	.string "hope you'll come by!"
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0xCE7,
+		flag: EVENT_CE7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
 	ts_check_flag [
-		flag: 0xCE8,
+		flag: EVENT_CE8,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
 	ts_check_flag [
-		flag: 0xCE9,
+		flag: EVENT_CE9,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
@@ -690,11 +690,11 @@ CompText87658F0::
 
 	def_text_script CompText87658F0_unk61
 	ts_check_flag [
-		flag: 0xCE8,
+		flag: EVENT_CE8,
 		jumpIfTrue: CompText87658F0_unk62_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xCE8
+	ts_flag_set flag=EVENT_CE8
 	ts_mugshot_show mugshot=0x26
 	ts_msg_open
 	.string "I... lost..."
@@ -767,17 +767,17 @@ CompText87658F0::
 	.string "you onboard!"
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0xCE7,
+		flag: EVENT_CE7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
 	ts_check_flag [
-		flag: 0xCE8,
+		flag: EVENT_CE8,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
 	ts_check_flag [
-		flag: 0xCE9,
+		flag: EVENT_CE9,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
@@ -812,7 +812,7 @@ CompText87658F0::
 	ts_end
 
 	def_text_script CompText87658F0_unk63
-	ts_flag_set flag=0xCE9
+	ts_flag_set flag=EVENT_CE9
 	ts_mugshot_show mugshot=0xD
 	ts_msg_open
 	.string "Congratulations!"
@@ -823,22 +823,22 @@ CompText87658F0::
 	.string "the Expo!"
 	ts_key_wait any=0x0
 	ts_check_flag [
-		flag: 0xCEA,
+		flag: EVENT_CEA,
 		jumpIfTrue: CompText87658F0_unk66_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCE7,
+		flag: EVENT_CE7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
 	ts_check_flag [
-		flag: 0xCE8,
+		flag: EVENT_CE8,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
 	ts_check_flag [
-		flag: 0xCE9,
+		flag: EVENT_CE9,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87658F0_unk66_id,
 	]
@@ -860,7 +860,7 @@ CompText87658F0::
 	ts_end
 
 	def_text_script CompText87658F0_unk65
-	ts_flag_set flag=0xCEA
+	ts_flag_set flag=EVENT_CEA
 	ts_mugshot_show mugshot=0x37
 	ts_msg_open
 	.string "... Lan!"
@@ -887,7 +887,7 @@ CompText87658F0::
 
 	def_text_script CompText87658F0_unk70
 	ts_check_flag [
-		flag: 0xC20,
+		flag: EVENT_C20,
 		jumpIfTrue: CompText87658F0_unk72_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -938,7 +938,7 @@ CompText87658F0::
 
 	def_text_script CompText87658F0_unk73
 	ts_check_flag [
-		flag: 0xC20,
+		flag: EVENT_C20,
 		jumpIfTrue: CompText87658F0_unk75_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

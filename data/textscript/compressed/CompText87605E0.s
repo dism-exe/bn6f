@@ -166,7 +166,7 @@ CompText87605E0::
 	ts_jump target=CompText87605E0_unk9_id
 
 	def_text_script CompText87605E0_unk9
-	ts_flag_clear flag=0x16E
+	ts_flag_clear flag=EVENT_16E
 	ts_end
 
 	def_text_script CompText87605E0_unk10
@@ -185,7 +185,7 @@ CompText87605E0::
 	.string "reacting to the\n"
 	.string "door!!"
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x79
+	ts_flag_clear flag=EVENT_79
 	ts_end
 
 	

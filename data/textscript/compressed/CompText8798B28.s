@@ -11,16 +11,16 @@ CompText8798B28::
 
 	def_text_script CompText8798B28_unk0
 	ts_check_flag [
-		flag: 0xBE1,
+		flag: EVENT_BE1,
 		jumpIfTrue: CompText8798B28_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xBDF,
+		flag: EVENT_BDF,
 		jumpIfTrue: CompText8798B28_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xBDF
+	ts_flag_set flag=EVENT_BDF
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "HEEEEY!!\n"

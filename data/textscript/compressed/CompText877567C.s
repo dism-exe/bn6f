@@ -239,7 +239,7 @@ CompText877567C::
 
 	def_text_script CompText877567C_unk45
 	ts_check_flag [
-		flag: 0xC20,
+		flag: EVENT_C20,
 		jumpIfTrue: CompText877567C_unk47_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -257,7 +257,7 @@ CompText877567C::
 
 	def_text_script CompText877567C_unk46
 	ts_check_flag [
-		flag: 0xC20,
+		flag: EVENT_C20,
 		jumpIfTrue: CompText877567C_unk48_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

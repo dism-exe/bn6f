@@ -25,8 +25,8 @@ CompText879A28C::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xFDF
-	ts_flag_set flag=0xFE0
+	ts_flag_set flag=EVENT_FDF
+	ts_flag_set flag=EVENT_FE0
 	ts_start_fixed_battle battle=0xC0
 	ts_end
 
@@ -46,8 +46,8 @@ CompText879A28C::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xFDF
-	ts_flag_set flag=0xFE1
+	ts_flag_set flag=EVENT_FDF
+	ts_flag_set flag=EVENT_FE1
 	ts_start_fixed_battle battle=0xC1
 	ts_end
 
@@ -67,28 +67,28 @@ CompText879A28C::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xFDF
-	ts_flag_set flag=0xFE2
+	ts_flag_set flag=EVENT_FDF
+	ts_flag_set flag=EVENT_FE2
 	ts_start_fixed_battle battle=0xC2
 	ts_end
 
 	def_text_script CompText879A28C_unk3
 	ts_check_flag [
-		flag: 0xE42,
+		flag: EVENT_E42,
 		jumpIfTrue: CompText879A28C_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xFFF,
+		flag: EVENT_FFF,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText879A28C_unk5_id,
 	]
 	ts_check_flag [
-		flag: 0xED7,
+		flag: EVENT_ED7,
 		jumpIfTrue: CompText879A28C_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xED7
+	ts_flag_set flag=EVENT_ED7
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "WHHHAAAAA..."

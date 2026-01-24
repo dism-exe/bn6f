@@ -11,7 +11,7 @@ CompText8775E00::
 
 	def_text_script CompText8775E00_unk0
 	ts_check_flag [
-		flag: 0x554,
+		flag: EVENT_554,
 		jumpIfTrue: CompText8775E00_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -25,7 +25,7 @@ CompText8775E00::
 
 	def_text_script CompText8775E00_unk1
 	ts_check_flag [
-		flag: 0x51A,
+		flag: EVENT_51A,
 		jumpIfTrue: CompText8775E00_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -53,7 +53,7 @@ CompText8775E00::
 
 	def_text_script CompText8775E00_unk3
 	ts_check_flag [
-		flag: 0x1729,
+		flag: EVENT_COPYBOT_ACTIVE,
 		jumpIfTrue: CompText8775E00_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -101,18 +101,18 @@ CompText8775E00::
 
 	def_text_script CompText8775E00_unk8
 	ts_check_flag [
-		flag: 0x112A,
+		flag: EVENT_112A,
 		jumpIfTrue: CompText8775E00_unk12_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1129,
+		flag: EVENT_1129,
 		jumpIfTrue: CompText8775E00_unk9_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_mugshot_show mugshot=0x9
 	ts_msg_open
-	ts_flag_set flag=0x1129
+	ts_flag_set flag=EVENT_1129
 	.string "For some reason,I\n"
 	.string "seem to have a lot\n"
 	.string "of \""
@@ -305,7 +305,7 @@ CompText8775E00::
 	.string "to have a better\n"
 	.string "variety of chips!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x112A
+	ts_flag_set flag=EVENT_112A
 	ts_end
 
 	def_text_script CompText8775E00_unk11
@@ -331,16 +331,16 @@ CompText8775E00::
 
 	def_text_script CompText8775E00_unk15
 	ts_check_flag [
-		flag: 0x119D,
+		flag: EVENT_119D,
 		jumpIfTrue: CompText8775E00_unk18_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1194,
+		flag: EVENT_1194,
 		jumpIfTrue: CompText8775E00_unk16_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1194
+	ts_flag_set flag=EVENT_1194
 	ts_mugshot_show mugshot=0x8
 	ts_msg_open
 	.string "I'm the one who\n"
@@ -443,46 +443,46 @@ CompText8775E00::
 
 	def_text_script CompText8775E00_unk16
 	ts_check_flag [
-		flag: 0x1195,
+		flag: EVENT_1195,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk17_id,
 	]
 	ts_check_flag [
-		flag: 0x1196,
+		flag: EVENT_1196,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk17_id,
 	]
 	ts_check_flag [
-		flag: 0x1197,
+		flag: EVENT_1197,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk17_id,
 	]
 	ts_check_flag [
-		flag: 0x1198,
+		flag: EVENT_1198,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk17_id,
 	]
 	ts_check_flag [
-		flag: 0x1199,
+		flag: EVENT_1199,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk17_id,
 	]
 	ts_check_flag [
-		flag: 0x119A,
+		flag: EVENT_119A,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk17_id,
 	]
 	ts_check_flag [
-		flag: 0x119B,
+		flag: EVENT_119B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk17_id,
 	]
 	ts_check_flag [
-		flag: 0x119C,
+		flag: EVENT_119C,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk17_id,
 	]
-	ts_flag_set flag=0x119D
+	ts_flag_set flag=EVENT_119D
 	ts_mugshot_show mugshot=0x8
 	ts_msg_open
 	.string "Ahh! How'd it go?\n"
@@ -644,16 +644,16 @@ CompText8775E00::
 
 	def_text_script CompText8775E00_unk25
 	ts_check_flag [
-		flag: 0x11AA,
+		flag: EVENT_11AA,
 		jumpIfTrue: CompText8775E00_unk28_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11A9,
+		flag: EVENT_11A9,
 		jumpIfTrue: CompText8775E00_unk26_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11A9
+	ts_flag_set flag=EVENT_11A9
 	ts_mugshot_show mugshot=0xD
 	ts_msg_open
 	.string "Ahh...\n"
@@ -705,31 +705,31 @@ CompText8775E00::
 
 	def_text_script CompText8775E00_unk26
 	ts_check_flag [
-		flag: 0x11AF,
+		flag: EVENT_11AF,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk27_id,
 	]
 	ts_check_flag [
-		flag: 0x11AE,
+		flag: EVENT_11AE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk27_id,
 	]
 	ts_check_flag [
-		flag: 0x11AD,
+		flag: EVENT_11AD,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk27_id,
 	]
 	ts_check_flag [
-		flag: 0x11AC,
+		flag: EVENT_11AC,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk27_id,
 	]
 	ts_check_flag [
-		flag: 0x11AB,
+		flag: EVENT_11AB,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk27_id,
 	]
-	ts_flag_set flag=0x11AA
+	ts_flag_set flag=EVENT_11AA
 	ts_mugshot_show mugshot=0xD
 	ts_msg_open
 	.string "Thank you so much!\n"
@@ -813,22 +813,22 @@ CompText8775E00::
 
 	def_text_script CompText8775E00_unk30
 	ts_check_flag [
-		flag: 0x11F0,
+		flag: EVENT_11F0,
 		jumpIfTrue: CompText8775E00_unk37_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11F8,
+		flag: EVENT_11F8,
 		jumpIfTrue: CompText8775E00_unk35_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11EF,
+		flag: EVENT_11EF,
 		jumpIfTrue: CompText8775E00_unk32_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11EF
-	ts_flag_set flag=0x11F1
+	ts_flag_set flag=EVENT_11EF
+	ts_flag_set flag=EVENT_11F1
 	ts_mugshot_show mugshot=0x10
 	ts_msg_open
 	.string "Hello... Thank you\n"
@@ -946,24 +946,24 @@ CompText8775E00::
 
 	def_text_script CompText8775E00_unk32
 	ts_check_flag [
-		flag: 0x11F4,
+		flag: EVENT_11F4,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk31_id,
 	]
 	ts_check_flag [
-		flag: 0x11F3,
+		flag: EVENT_11F3,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk31_id,
 	]
 	ts_check_flag [
-		flag: 0x11F2,
+		flag: EVENT_11F2,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk31_id,
 	]
 	ts_jump target=CompText8775E00_unk33_id
 
 	def_text_script CompText8775E00_unk33
-	ts_flag_set flag=0x11F8
+	ts_flag_set flag=EVENT_11F8
 	ts_mugshot_show mugshot=0x10
 	ts_msg_open
 	.string "Ummm...Ummm...\n"
@@ -1050,17 +1050,17 @@ CompText8775E00::
 
 	def_text_script CompText8775E00_unk35
 	ts_check_flag [
-		flag: 0x11F5,
+		flag: EVENT_11F5,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x11F6,
+		flag: EVENT_11F6,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk34_id,
 	]
 	ts_check_flag [
-		flag: 0x11F7,
+		flag: EVENT_11F7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8775E00_unk34_id,
 	]
@@ -1068,11 +1068,11 @@ CompText8775E00::
 
 	def_text_script CompText8775E00_unk36
 	ts_check_flag [
-		flag: 0x11F0,
+		flag: EVENT_11F0,
 		jumpIfTrue: CompText8775E00_unk37_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11F0
+	ts_flag_set flag=EVENT_11F0
 	ts_mugshot_show mugshot=0x10
 	ts_msg_open
 	.string "Oh,thank you!!\n"

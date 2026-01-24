@@ -42,19 +42,19 @@ CompText87B3D0C::
 	.string "here,and let's\n"
 	.string "push forward,drip!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x671
+	ts_flag_set flag=EVENT_671
 	ts_check_flag [
-		flag: 0x671,
+		flag: EVENT_671,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87B3D0C_unk7_id,
 	]
 	ts_check_flag [
-		flag: 0x673,
+		flag: EVENT_673,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87B3D0C_unk7_id,
 	]
 	ts_check_flag [
-		flag: 0x675,
+		flag: EVENT_675,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87B3D0C_unk7_id,
 	]
@@ -88,19 +88,19 @@ CompText87B3D0C::
 	.string "here,and let's\n"
 	.string "push forward,drip!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x673
+	ts_flag_set flag=EVENT_673
 	ts_check_flag [
-		flag: 0x671,
+		flag: EVENT_671,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87B3D0C_unk12_id,
 	]
 	ts_check_flag [
-		flag: 0x673,
+		flag: EVENT_673,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87B3D0C_unk12_id,
 	]
 	ts_check_flag [
-		flag: 0x675,
+		flag: EVENT_675,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87B3D0C_unk12_id,
 	]
@@ -134,19 +134,19 @@ CompText87B3D0C::
 	.string "here,and let's\n"
 	.string "push forward,drip!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x675
+	ts_flag_set flag=EVENT_675
 	ts_check_flag [
-		flag: 0x671,
+		flag: EVENT_671,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87B3D0C_unk17_id,
 	]
 	ts_check_flag [
-		flag: 0x673,
+		flag: EVENT_673,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87B3D0C_unk17_id,
 	]
 	ts_check_flag [
-		flag: 0x675,
+		flag: EVENT_675,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87B3D0C_unk17_id,
 	]
@@ -175,8 +175,8 @@ CompText87B3D0C::
 	ts_msg_open
 	.string "Roger,drip!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x677
-	ts_flag_set flag=0x678
+	ts_flag_set flag=EVENT_677
+	ts_flag_set flag=EVENT_678
 	ts_end
 
 	def_text_script CompText87B3D0C_unk22

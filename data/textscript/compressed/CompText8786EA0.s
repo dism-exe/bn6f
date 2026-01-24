@@ -214,8 +214,8 @@ CompText8786EA0::
 	ts_clear_msg
 	.string "Fwwwwaaaahhhh!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x11BF
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_11BF
 	ts_end
 
 	def_text_script CompText8786EA0_unk46
@@ -223,29 +223,29 @@ CompText8786EA0::
 	ts_msg_open
 	.string "Kwaaahaaaa!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x11C9
+	ts_flag_set flag=EVENT_11C9
 	ts_check_flag [
-		flag: 0x11CB,
+		flag: EVENT_11CB,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8786EA0_unk48_id,
 	]
 	ts_check_flag [
-		flag: 0x11CA,
+		flag: EVENT_11CA,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8786EA0_unk48_id,
 	]
 	ts_check_flag [
-		flag: 0x11C9,
+		flag: EVENT_11C9,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8786EA0_unk48_id,
 	]
 	ts_check_flag [
-		flag: 0x11C8,
+		flag: EVENT_11C8,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8786EA0_unk48_id,
 	]
 	ts_check_flag [
-		flag: 0x11C7,
+		flag: EVENT_11C7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8786EA0_unk48_id,
 	]
@@ -278,16 +278,16 @@ CompText8786EA0::
 
 	def_text_script CompText8786EA0_unk50
 	ts_check_flag [
-		flag: 0x1133,
+		flag: EVENT_1133,
 		jumpIfTrue: CompText8786EA0_unk54_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1131,
+		flag: EVENT_1131,
 		jumpIfTrue: CompText8786EA0_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1131
+	ts_flag_set flag=EVENT_1131
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Hey! You!\n"
@@ -400,8 +400,8 @@ CompText8786EA0::
 	ts_clear_msg
 	.string "Battle... Start!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x1132
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_1132
 	ts_end
 
 	def_text_script CompText8786EA0_unk53
@@ -445,7 +445,7 @@ CompText8786EA0::
 	.string "That was a\n"
 	.string "great battle..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1133
+	ts_flag_set flag=EVENT_1133
 	ts_end
 
 	def_text_script CompText8786EA0_unk54
@@ -474,7 +474,7 @@ CompText8786EA0::
 
 	def_text_script CompText8786EA0_unk60
 	ts_check_flag [
-		flag: 0x117D,
+		flag: EVENT_117D,
 		jumpIfTrue: CompText8786EA0_unk63_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -528,8 +528,8 @@ CompText8786EA0::
 	ts_clear_msg
 	.string "...No turning back!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x117C
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_117C
 	ts_end
 
 	def_text_script CompText8786EA0_unk61
@@ -602,11 +602,11 @@ CompText8786EA0::
 
 	def_text_script CompText8786EA0_unk64
 	ts_check_flag [
-		flag: 0x1189,
+		flag: EVENT_1189,
 		jumpIfTrue: CompText8786EA0_unk65_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1189
+	ts_flag_set flag=EVENT_1189
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "Huh? Where did\n"
@@ -654,7 +654,7 @@ CompText8786EA0::
 
 	def_text_script CompText8786EA0_unk70
 	ts_check_flag [
-		flag: 0x1216,
+		flag: EVENT_1216,
 		jumpIfTrue: CompText8786EA0_unk72_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -677,12 +677,12 @@ CompText8786EA0::
 	.string "Here I come!!\n"
 	.string "YAAAAAAHHHH!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x11BA
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_11BA
 	ts_end
 
 	def_text_script CompText8786EA0_unk71
-	ts_flag_set flag=0x11BB
+	ts_flag_set flag=EVENT_11BB
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Ahhh,gwwaaahhh..."
@@ -723,7 +723,7 @@ CompText8786EA0::
 
 	def_text_script CompText8786EA0_unk73
 	ts_check_flag [
-		flag: 0x11BB,
+		flag: EVENT_11BB,
 		jumpIfTrue: CompText8786EA0_unk74_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

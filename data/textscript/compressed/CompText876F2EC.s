@@ -91,11 +91,11 @@ CompText876F2EC::
 
 	def_text_script CompText876F2EC_unk20
 	ts_check_flag [
-		flag: 0x86E,
+		flag: EVENT_86E,
 		jumpIfTrue: CompText876F2EC_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x86E
+	ts_flag_set flag=EVENT_86E
 	ts_mugshot_show mugshot=0x12
 	ts_msg_open
 	.string "...Umm... What's\n"

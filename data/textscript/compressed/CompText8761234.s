@@ -26,16 +26,16 @@ CompText8761234::
 
 	def_text_script CompText8761234_unk2
 	ts_check_flag [
-		flag: 0xCD2,
+		flag: EVENT_CD2,
 		jumpIfTrue: CompText8761234_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCD1,
+		flag: EVENT_CD1,
 		jumpIfTrue: CompText8761234_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xCD1
+	ts_flag_set flag=EVENT_CD1
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "WAAAH..."
@@ -138,17 +138,17 @@ CompText8761234::
 	]
 	.string "\"!!"
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0xCE6
+	ts_flag_clear flag=EVENT_CE6
 	ts_end
 
 	def_text_script CompText8761234_unk5
 	ts_check_flag [
-		flag: 0xCD2,
+		flag: EVENT_CD2,
 		jumpIfTrue: CompText8761234_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xCD1,
+		flag: EVENT_CD1,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText8761234_unk6_id,
 	]
@@ -180,7 +180,7 @@ CompText8761234::
 	ts_key_wait any=0x0
 	ts_player_finish
 	ts_player_reset_object
-	ts_flag_set flag=0xCD2
+	ts_flag_set flag=EVENT_CD2
 	ts_clear_msg
 	ts_mugshot_show mugshot=0x0
 	.string "If the key's here..."
@@ -248,7 +248,7 @@ CompText8761234::
 	]
 	.string "\"!!"
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x77
+	ts_flag_clear flag=EVENT_77
 	ts_end
 
 	def_text_script CompText8761234_unk11

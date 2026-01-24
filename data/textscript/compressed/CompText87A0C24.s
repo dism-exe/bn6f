@@ -44,11 +44,11 @@ CompText87A0C24::
 
 	def_text_script CompText87A0C24_unk10
 	ts_check_flag [
-		flag: 0x226,
+		flag: EVENT_226,
 		jumpIfTrue: CompText87A0C24_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x226
+	ts_flag_set flag=EVENT_226
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
 	.string "Hahahaha...\n"
@@ -120,7 +120,7 @@ CompText87A0C24::
 	]
 	ts_mugshot_show mugshot=0x43
 	ts_msg_open
-	ts_flag_set flag=0x224
+	ts_flag_set flag=EVENT_224
 	.string "Hehehe... Thanks..."
 	ts_key_wait any=0x0
 	ts_clear_msg

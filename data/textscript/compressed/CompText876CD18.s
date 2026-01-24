@@ -69,7 +69,7 @@ CompText876CD18::
 
 	def_text_script CompText876CD18_unk11
 	ts_check_flag [
-		flag: 0xE78,
+		flag: EVENT_E78,
 		jumpIfTrue: CompText876CD18_unk10_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -78,8 +78,8 @@ CompText876CD18::
 	.string "You're Lan Hikari!!\n"
 	.string "YAAAAAHHHHHHHHHHH!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE77
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E77
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText876CD18_unk12

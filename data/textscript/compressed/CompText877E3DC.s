@@ -28,11 +28,11 @@ CompText877E3DC::
 
 	def_text_script CompText877E3DC_unk5
 	ts_check_flag [
-		flag: 0x1126,
+		flag: EVENT_1126,
 		jumpIfTrue: CompText877E3DC_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1126
+	ts_flag_set flag=EVENT_1126
 	ts_mugshot_show mugshot=0x3C
 	ts_msg_open
 	.string "I'M THE PROGRAM\n"

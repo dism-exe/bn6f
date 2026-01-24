@@ -11,7 +11,7 @@ CompText8768558::
 
 	def_text_script CompText8768558_unk0
 	ts_check_flag [
-		flag: 0x632,
+		flag: EVENT_632,
 		jumpIfTrue: CompText8768558_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -76,7 +76,7 @@ CompText8768558::
 	ts_mugshot_show mugshot=0x0
 	.string "OK..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x632
+	ts_flag_set flag=EVENT_632
 	ts_end
 
 	def_text_script CompText8768558_unk1
@@ -200,7 +200,7 @@ CompText8768558::
 
 	def_text_script CompText8768558_unk20
 	ts_check_flag [
-		flag: 0x616,
+		flag: EVENT_616,
 		jumpIfTrue: CompText8768558_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -214,7 +214,7 @@ CompText8768558::
 
 	def_text_script CompText8768558_unk21
 	ts_check_flag [
-		flag: 0x633,
+		flag: EVENT_633,
 		jumpIfTrue: CompText8768558_unk22_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -301,7 +301,7 @@ CompText8768558::
 	ts_mugshot_show mugshot=0x0
 	.string "......"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x633
+	ts_flag_set flag=EVENT_633
 	ts_end
 
 	def_text_script CompText8768558_unk22
@@ -362,11 +362,11 @@ CompText8768558::
 
 	def_text_script CompText8768558_unk35
 	ts_check_flag [
-		flag: 0x86C,
+		flag: EVENT_86C,
 		jumpIfTrue: CompText8768558_unk36_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x86C
+	ts_flag_set flag=EVENT_86C
 	ts_sound_fade_out [
 		slot: 0x1F,
 		length: 0xA,

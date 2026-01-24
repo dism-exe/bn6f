@@ -11,7 +11,7 @@ CompText876E078::
 
 	def_text_script CompText876E078_unk0
 	ts_check_flag [
-		flag: 0xE08,
+		flag: EVENT_E08,
 		jumpIfTrue: CompText876E078_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

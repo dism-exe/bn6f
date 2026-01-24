@@ -11,16 +11,16 @@ CompText87A2460::
 
 	def_text_script CompText87A2460_unk0
 	ts_check_flag [
-		flag: 0x1162,
+		flag: EVENT_1162,
 		jumpIfTrue: CompText87A2460_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1161,
+		flag: EVENT_1161,
 		jumpIfTrue: CompText87A2460_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x1161
+	ts_flag_set flag=EVENT_1161
 	ts_mugshot_show mugshot=0x3E
 	ts_msg_open
 	.string "You're here!!"
@@ -120,17 +120,17 @@ CompText87A2460::
 
 	def_text_script CompText87A2460_unk3
 	ts_check_flag [
-		flag: 0x1162,
+		flag: EVENT_1162,
 		jumpIfTrue: CompText87A2460_unk10_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1163,
+		flag: EVENT_1163,
 		jumpIfTrue: CompText87A2460_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x1161,
+		flag: EVENT_1161,
 		jumpIfTrue: CompText87A2460_unk4_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -142,7 +142,7 @@ CompText87A2460::
 
 	def_text_script CompText87A2460_unk4
 	ts_msg_open
-	ts_flag_set flag=0x1163
+	ts_flag_set flag=EVENT_1163
 	.string "What a heavy box!\n"
 	.string "It's like a safe..."
 	ts_key_wait any=0x0
@@ -296,7 +296,7 @@ CompText87A2460::
 	.string "the bank deposit\n"
 	.string "on time!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1162
+	ts_flag_set flag=EVENT_1162
 	ts_clear_msg
 	ts_mugshot_hide
 	.string "Request Point\n"
@@ -354,33 +354,33 @@ CompText87A2460::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x11E2
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_11E2
 	ts_end
 
 	def_text_script CompText87A2460_unk12
 	ts_check_flag [
-		flag: 0x11E4,
+		flag: EVENT_11E4,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A2460_unk13_id,
 	]
 	ts_check_flag [
-		flag: 0x11E5,
+		flag: EVENT_11E5,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A2460_unk13_id,
 	]
 	ts_check_flag [
-		flag: 0x11E6,
+		flag: EVENT_11E6,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A2460_unk13_id,
 	]
 	ts_check_flag [
-		flag: 0x11E7,
+		flag: EVENT_11E7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A2460_unk13_id,
 	]
 	ts_check_flag [
-		flag: 0x11E8,
+		flag: EVENT_11E8,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A2460_unk13_id,
 	]

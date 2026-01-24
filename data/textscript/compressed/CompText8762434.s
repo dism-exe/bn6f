@@ -154,12 +154,12 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk7
 	ts_check_flag [
-		flag: 0x1BD,
+		flag: EVENT_1BD,
 		jumpIfTrue: CompText8762434_unk13_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x101C,
+		flag: EVENT_101C,
 		jumpIfTrue: CompText8762434_unk19_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -167,12 +167,12 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk8
 	ts_check_flag [
-		flag: 0x1BF,
+		flag: EVENT_1BF,
 		jumpIfTrue: CompText8762434_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x101C,
+		flag: EVENT_101C,
 		jumpIfTrue: CompText8762434_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -180,12 +180,12 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk9
 	ts_check_flag [
-		flag: 0x1C1,
+		flag: EVENT_1C1,
 		jumpIfTrue: CompText8762434_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x101C,
+		flag: EVENT_101C,
 		jumpIfTrue: CompText8762434_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -193,12 +193,12 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk10
 	ts_check_flag [
-		flag: 0x1C3,
+		flag: EVENT_1C3,
 		jumpIfTrue: CompText8762434_unk16_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x101C,
+		flag: EVENT_101C,
 		jumpIfTrue: CompText8762434_unk25_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -206,12 +206,12 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk11
 	ts_check_flag [
-		flag: 0x1C5,
+		flag: EVENT_1C5,
 		jumpIfTrue: CompText8762434_unk17_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x101C,
+		flag: EVENT_101C,
 		jumpIfTrue: CompText8762434_unk27_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -219,12 +219,12 @@ CompText8762434::
 
 	def_text_script CompText8762434_unk12
 	ts_check_flag [
-		flag: 0x1C7,
+		flag: EVENT_1C7,
 		jumpIfTrue: CompText8762434_unk18_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x101C,
+		flag: EVENT_101C,
 		jumpIfTrue: CompText8762434_unk29_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -290,7 +290,7 @@ CompText8762434::
 	.string "monument bursts into\n"
 	.string "flames!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1BC
+	ts_flag_set flag=EVENT_1BC
 	ts_end
 
 	def_text_script CompText8762434_unk20
@@ -299,9 +299,9 @@ CompText8762434::
 	.string "gone dark and\n"
 	.string "quiet..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1BD
-	ts_flag_clear flag=0x1C8
-	ts_flag_set flag=0x1CE
+	ts_flag_set flag=EVENT_1BD
+	ts_flag_clear flag=EVENT_1C8
+	ts_flag_set flag=EVENT_1CE
 	ts_end
 
 	def_text_script CompText8762434_unk21
@@ -315,7 +315,7 @@ CompText8762434::
 	.string "waterspouts appear\n"
 	.string "from the monument!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1BE
+	ts_flag_set flag=EVENT_1BE
 	ts_end
 
 	def_text_script CompText8762434_unk22
@@ -324,9 +324,9 @@ CompText8762434::
 	.string "gone dark and\n"
 	.string "quiet..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1BF
-	ts_flag_clear flag=0x1C9
-	ts_flag_set flag=0x1CF
+	ts_flag_set flag=EVENT_1BF
+	ts_flag_clear flag=EVENT_1C9
+	ts_flag_set flag=EVENT_1CF
 	ts_end
 
 	def_text_script CompText8762434_unk23
@@ -340,7 +340,7 @@ CompText8762434::
 	.string "creepy laughter\n"
 	.string "fills the air!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1C0
+	ts_flag_set flag=EVENT_1C0
 	ts_end
 
 	def_text_script CompText8762434_unk24
@@ -349,9 +349,9 @@ CompText8762434::
 	.string "gone dark and\n"
 	.string "quiet..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1C1
-	ts_flag_clear flag=0x1CA
-	ts_flag_set flag=0x1D0
+	ts_flag_set flag=EVENT_1C1
+	ts_flag_clear flag=EVENT_1CA
+	ts_flag_set flag=EVENT_1D0
 	ts_end
 
 	def_text_script CompText8762434_unk25
@@ -365,7 +365,7 @@ CompText8762434::
 	.string "punishment shoot out\n"
 	.string "from the monument!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1C2
+	ts_flag_set flag=EVENT_1C2
 	ts_end
 
 	def_text_script CompText8762434_unk26
@@ -374,9 +374,9 @@ CompText8762434::
 	.string "gone dark and\n"
 	.string "quiet..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1C3
-	ts_flag_clear flag=0x1CB
-	ts_flag_set flag=0x1D1
+	ts_flag_set flag=EVENT_1C3
+	ts_flag_clear flag=EVENT_1CB
+	ts_flag_set flag=EVENT_1D1
 	ts_end
 
 	def_text_script CompText8762434_unk27
@@ -393,7 +393,7 @@ CompText8762434::
 	ts_clear_msg
 	.string "from the monument!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1C4
+	ts_flag_set flag=EVENT_1C4
 	ts_end
 
 	def_text_script CompText8762434_unk28
@@ -402,9 +402,9 @@ CompText8762434::
 	.string "gone dark and\n"
 	.string "quiet..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1C5
-	ts_flag_clear flag=0x1CC
-	ts_flag_set flag=0x1D2
+	ts_flag_set flag=EVENT_1C5
+	ts_flag_clear flag=EVENT_1CC
+	ts_flag_set flag=EVENT_1D2
 	ts_end
 
 	def_text_script CompText8762434_unk29
@@ -418,7 +418,7 @@ CompText8762434::
 	.string "sword was pushed out\n"
 	.string "from the monument!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1C6
+	ts_flag_set flag=EVENT_1C6
 	ts_end
 
 	def_text_script CompText8762434_unk30
@@ -427,9 +427,9 @@ CompText8762434::
 	.string "gone dark and\n"
 	.string "quiet..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1C7
-	ts_flag_clear flag=0x1CD
-	ts_flag_set flag=0x1D3
+	ts_flag_set flag=EVENT_1C7
+	ts_flag_clear flag=EVENT_1CD
+	ts_flag_set flag=EVENT_1D3
 	ts_end
 
 	def_text_script CompText8762434_unk31
@@ -595,7 +595,7 @@ CompText8762434::
 	ts_jump target=CompText8762434_unk50_id
 
 	def_text_script CompText8762434_unk50
-	ts_flag_clear flag=0x17C
+	ts_flag_clear flag=EVENT_17C
 	ts_end
 
 	def_text_script CompText8762434_unk51
@@ -682,7 +682,7 @@ CompText8762434::
 	ts_jump target=CompText8762434_unk55_id
 
 	def_text_script CompText8762434_unk55
-	ts_flag_clear flag=0x16D
+	ts_flag_clear flag=EVENT_16D
 	ts_end
 
 	def_text_script CompText8762434_unk56
@@ -778,7 +778,7 @@ CompText8762434::
 	ts_jump target=CompText8762434_unk60_id
 
 	def_text_script CompText8762434_unk60
-	ts_flag_clear flag=0x168
+	ts_flag_clear flag=EVENT_168
 	ts_end
 
 	def_text_script CompText8762434_unk61
@@ -854,7 +854,7 @@ CompText8762434::
 	ts_jump target=CompText8762434_unk65_id
 
 	def_text_script CompText8762434_unk65
-	ts_flag_clear flag=0x172
+	ts_flag_clear flag=EVENT_172
 	ts_end
 
 	def_text_script CompText8762434_unk66
@@ -940,7 +940,7 @@ CompText8762434::
 	ts_jump target=CompText8762434_unk70_id
 
 	def_text_script CompText8762434_unk70
-	ts_flag_clear flag=0x177
+	ts_flag_clear flag=EVENT_177
 	ts_end
 
 	def_text_script CompText8762434_unk71
@@ -1016,7 +1016,7 @@ CompText8762434::
 	.string "Fight bravely,and\n"
 	.string "good luck..."
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x83
+	ts_flag_clear flag=EVENT_83
 	ts_end
 
 	def_text_script CompText8762434_unk78
@@ -1107,7 +1107,7 @@ CompText8762434::
 	.string "reacting to the\n"
 	.string "door!!"
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x85
+	ts_flag_clear flag=EVENT_85
 	ts_end
 
 	

@@ -83,22 +83,22 @@ CompText87461A0::
 
 	def_text_script CompText87461A0_unk25
 	ts_check_flag [
-		flag: 0x43A,
+		flag: EVENT_43A,
 		jumpIfTrue: CompText87461A0_unk32_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x436,
+		flag: EVENT_436,
 		jumpIfTrue: CompText87461A0_unk31_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x434,
+		flag: EVENT_434,
 		jumpIfTrue: CompText87461A0_unk29_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x432,
+		flag: EVENT_432,
 		jumpIfTrue: CompText87461A0_unk29_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

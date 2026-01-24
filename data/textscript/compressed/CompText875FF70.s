@@ -71,7 +71,7 @@ CompText875FF70::
 	]
 	.string "\"!!"
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x76
+	ts_flag_clear flag=EVENT_76
 	ts_end
 
 	def_text_script CompText875FF70_unk6
@@ -129,7 +129,7 @@ CompText875FF70::
 		jumpIfInRange: CompText875FF70_unk9_id,
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
-	ts_flag_clear flag=0x16F4
+	ts_flag_clear flag=EVENT_16F4
 	ts_end
 
 	def_text_script CompText875FF70_unk8

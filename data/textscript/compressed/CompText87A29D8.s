@@ -25,33 +25,33 @@ CompText87A29D8::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x11E3
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_11E3
 	ts_end
 
 	def_text_script CompText87A29D8_unk1
 	ts_check_flag [
-		flag: 0x11E4,
+		flag: EVENT_11E4,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A29D8_unk2_id,
 	]
 	ts_check_flag [
-		flag: 0x11E5,
+		flag: EVENT_11E5,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A29D8_unk2_id,
 	]
 	ts_check_flag [
-		flag: 0x11E6,
+		flag: EVENT_11E6,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A29D8_unk2_id,
 	]
 	ts_check_flag [
-		flag: 0x11E7,
+		flag: EVENT_11E7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A29D8_unk2_id,
 	]
 	ts_check_flag [
-		flag: 0x11E8,
+		flag: EVENT_11E8,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A29D8_unk2_id,
 	]

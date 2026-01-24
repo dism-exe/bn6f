@@ -154,12 +154,12 @@ CompText878D038::
 
 	def_text_script CompText878D038_unk50
 	ts_check_flag [
-		flag: 0x7F5,
+		flag: EVENT_7F5,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText878D038_unk52_id,
 	]
 	ts_check_flag [
-		flag: 0x68B,
+		flag: EVENT_68B,
 		jumpIfTrue: CompText878D038_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -214,7 +214,7 @@ CompText878D038::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_call_reload_soul_weapons unused=0x0
-	ts_flag_set flag=0x68B
+	ts_flag_set flag=EVENT_68B
 	ts_player_finish
 	ts_player_reset_object
 	ts_clear_msg
@@ -280,7 +280,7 @@ CompText878D038::
 	ts_key_wait any=0x0
 	ts_clear_msg
 	ts_call_reload_soul_weapons unused=0x0
-	ts_flag_set flag=0x68B
+	ts_flag_set flag=EVENT_68B
 	ts_player_finish
 	ts_player_reset_object
 	ts_clear_msg
@@ -338,7 +338,7 @@ CompText878D038::
 	ts_mugshot_show mugshot=0x42
 	.string "Good luck..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x746
+	ts_flag_set flag=EVENT_746
 	ts_end
 
 	def_text_script CompText878D038_unk56

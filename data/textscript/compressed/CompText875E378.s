@@ -36,12 +36,12 @@ CompText875E378::
 
 	def_text_script CompText875E378_unk6
 	ts_check_flag [
-		flag: 0xA1C,
+		flag: EVENT_A1C,
 		jumpIfTrue: CompText875E378_unk5_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xA1B,
+		flag: EVENT_A1B,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875E378_unk5_id,
 	]
@@ -53,7 +53,7 @@ CompText875E378::
 	ts_clear_msg
 	.string "Waaah! A virus!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xA6D
+	ts_flag_set flag=EVENT_A6D
 	ts_end
 
 	def_text_script CompText875E378_unk7

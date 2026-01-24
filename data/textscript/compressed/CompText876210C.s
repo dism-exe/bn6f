@@ -30,15 +30,15 @@ CompText876210C::
 		jumpIfOutOfRange: CompText876210C_unk9_id,
 	]
 	ts_check_flag [
-		flag: 0xE00,
+		flag: EVENT_E00,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText876210C_unk9_id,
 	]
 	ts_clear_msg
 	.string "Confirmed..."
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0xCDA
-	ts_flag_set flag=0x84
+	ts_flag_clear flag=EVENT_CDA
+	ts_flag_set flag=EVENT_84
 	ts_end
 
 	def_text_script CompText876210C_unk2
@@ -76,17 +76,17 @@ CompText876210C::
 
 	def_text_script CompText876210C_unk4
 	ts_check_flag [
-		flag: 0xC8D,
+		flag: EVENT_C8D,
 		jumpIfTrue: CompText876210C_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC89,
+		flag: EVENT_C89,
 		jumpIfTrue: CompText876210C_unk7_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xC85,
+		flag: EVENT_C85,
 		jumpIfTrue: CompText876210C_unk8_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -118,7 +118,7 @@ CompText876210C::
 	ts_space count=0x1
 	.string " No"
 	ts_select 0x6, 0x80, 0xFF, 0x5, 0xFF
-	ts_flag_set flag=0xC97
+	ts_flag_set flag=EVENT_C97
 	ts_end
 
 	def_text_script CompText876210C_unk5
@@ -221,7 +221,7 @@ CompText876210C::
 	ts_msg_open
 	.string "... YOU MAY PASS."
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0xCD9
+	ts_flag_clear flag=EVENT_CD9
 	ts_end
 
 	def_text_script CompText876210C_unk12
@@ -262,7 +262,7 @@ CompText876210C::
 
 	def_text_script CompText876210C_unk16
 	ts_check_flag [
-		flag: 0xE08,
+		flag: EVENT_E08,
 		jumpIfTrue: CompText876210C_unk14_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

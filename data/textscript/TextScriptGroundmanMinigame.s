@@ -97,7 +97,7 @@ TextScriptGroundmanMinigame::
 	.string "OKOK,I'LL MOVE...\n"
 	.string "*SIGH*"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xD98
+	ts_flag_set flag=EVENT_D98
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk21
@@ -106,7 +106,7 @@ TextScriptGroundmanMinigame::
 	.string "IN THE WAY?\n"
 	.string "OH,I'M SORRY!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xD99
+	ts_flag_set flag=EVENT_D99
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk22
@@ -116,7 +116,7 @@ TextScriptGroundmanMinigame::
 	.string "IN THE WAY!? WHY\n"
 	.string "DIDN'T YOU SAY SO!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xD9A
+	ts_flag_set flag=EVENT_D9A
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk23
@@ -125,7 +125,7 @@ TextScriptGroundmanMinigame::
 	.string "AM I BLOCKING YOU?\n"
 	.string "OH,TERRIBLY SORRY."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xD9B
+	ts_flag_set flag=EVENT_D9B
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk24
@@ -135,7 +135,7 @@ TextScriptGroundmanMinigame::
 	.string "TO YOUR ROCKS?\n"
 	.string "HEY,THAT RHYMED!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xD9C
+	ts_flag_set flag=EVENT_D9C
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk25
@@ -145,7 +145,7 @@ TextScriptGroundmanMinigame::
 	.string "WHEN SOMEONE'S IN\n"
 	.string "THE WAY? OH,SORRY..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xD9D
+	ts_flag_set flag=EVENT_D9D
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk26
@@ -155,7 +155,7 @@ TextScriptGroundmanMinigame::
 	.string "MAKE ME! ... ON 2ND\n"
 	.string "THOUGHT,YOU WIN..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xD9E
+	ts_flag_set flag=EVENT_D9E
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk27
@@ -165,7 +165,7 @@ TextScriptGroundmanMinigame::
 	.string "SORRY FOR BLOCKING\n"
 	.string "YOUR WAY..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xD9F
+	ts_flag_set flag=EVENT_D9F
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk28
@@ -175,7 +175,7 @@ TextScriptGroundmanMinigame::
 	.string "BY HERE? SHALL I\n"
 	.string "MOVE OUT OF THE WAY?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xDA0
+	ts_flag_set flag=EVENT_DA0
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk29
@@ -185,7 +185,7 @@ TextScriptGroundmanMinigame::
 	.string "TO HELP. I'LL GO\n"
 	.string "NOW... *SNIFFLE*"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xDA1
+	ts_flag_set flag=EVENT_DA1
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk30
@@ -195,7 +195,7 @@ TextScriptGroundmanMinigame::
 	.string "BE A DRILLING PRO\n"
 	.string "SOMEDAY!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xDA2
+	ts_flag_set flag=EVENT_DA2
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk31
@@ -205,7 +205,7 @@ TextScriptGroundmanMinigame::
 	.string "ARE YOU SURE YOU'RE\n"
 	.string "NOT BLOCKING ME?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xDA3
+	ts_flag_set flag=EVENT_DA3
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk32
@@ -215,7 +215,7 @@ TextScriptGroundmanMinigame::
 	.string "GET OUT OF THE WAY!\n"
 	.string "... HEY,PUT ME DOWN!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xDA4
+	ts_flag_set flag=EVENT_DA4
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk33
@@ -225,7 +225,7 @@ TextScriptGroundmanMinigame::
 	.string "RESCUING ME!\n"
 	.string "HEE,HEE!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xDA5
+	ts_flag_set flag=EVENT_DA5
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk34
@@ -235,7 +235,7 @@ TextScriptGroundmanMinigame::
 	.string "ANNOYING? ... NO?\n"
 	.string "WOW,THANKS BUDDY!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xDA6
+	ts_flag_set flag=EVENT_DA6
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk35
@@ -245,7 +245,7 @@ TextScriptGroundmanMinigame::
 	.string "I MOVE? SO BE IT\n"
 	.string "THEN."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xDA7
+	ts_flag_set flag=EVENT_DA7
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk36
@@ -255,7 +255,7 @@ TextScriptGroundmanMinigame::
 	.string "ABOUT SOME ROCKS\n"
 	.string "ANYWAY...?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xDA8
+	ts_flag_set flag=EVENT_DA8
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk37
@@ -265,7 +265,7 @@ TextScriptGroundmanMinigame::
 	.string "...... 'EY,ALRIGHT,\n"
 	.string "I GET IT,I GET IT!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xDA9
+	ts_flag_set flag=EVENT_DA9
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk38
@@ -275,7 +275,7 @@ TextScriptGroundmanMinigame::
 	.string "WAIT,YOU'RE NOT HER!\n"
 	.string "WHERE IS MY JULIET!?"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xDAA
+	ts_flag_set flag=EVENT_DAA
 	ts_end
 
 	def_text_script TextScriptGroundmanMinigame_unk39
@@ -285,7 +285,7 @@ TextScriptGroundmanMinigame::
 	.string "BLOCK: THAT IS THE\n"
 	.string "QUESTION... OR NOT!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xDAB
+	ts_flag_set flag=EVENT_DAB
 	ts_end
 
 	.balign 4, 0

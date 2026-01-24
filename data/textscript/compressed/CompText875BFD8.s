@@ -78,31 +78,31 @@ CompText875BFD8::
 
 	def_text_script CompText875BFD8_unk20
 	ts_check_flag [
-		flag: 0x163,
+		flag: EVENT_163,
 		jumpIfTrue: CompText875BFD8_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11F,
+		flag: EVENT_11F,
 		jumpIfTrue: CompText875BFD8_unk27_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0xABA,
+		flag: EVENT_ABA,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875BFD8_unk24_id,
 	]
 	ts_check_flag [
-		flag: 0xABD,
+		flag: EVENT_ABD,
 		jumpIfTrue: CompText875BFD8_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0xABD
+	ts_flag_set flag=EVENT_ABD
 	ts_jump target=CompText875BFD8_unk22_id
 
 	def_text_script CompText875BFD8_unk21
 	ts_check_flag [
-		flag: 0x171D,
+		flag: EVENT_PET_NAVI_ACTIVE,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875BFD8_unk25_id,
 	]
@@ -140,7 +140,7 @@ CompText875BFD8::
 	ts_end
 
 	def_text_script CompText875BFD8_unk22
-	ts_flag_set flag=0xABC
+	ts_flag_set flag=EVENT_ABC
 	ts_end
 
 	def_text_script CompText875BFD8_unk23
@@ -176,12 +176,12 @@ CompText875BFD8::
 
 	def_text_script CompText875BFD8_unk24
 	ts_check_flag [
-		flag: 0x120,
+		flag: EVENT_120,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText875BFD8_unk3_id,
 	]
 	ts_check_flag [
-		flag: 0xABB,
+		flag: EVENT_ABB,
 		jumpIfTrue: CompText875BFD8_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]

@@ -86,7 +86,7 @@ CompText87789F4::
 
 	def_text_script CompText87789F4_unk16
 	ts_check_flag [
-		flag: 0xE8A,
+		flag: EVENT_E8A,
 		jumpIfTrue: CompText87789F4_unk15_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -95,8 +95,8 @@ CompText87789F4::
 	.string "Hikari...\n"
 	.string "Time for punishment!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE89
-	ts_flag_set flag=0x1715
+	ts_flag_set flag=EVENT_E89
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
 	ts_end
 
 	def_text_script CompText87789F4_unk17

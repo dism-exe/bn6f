@@ -11,7 +11,7 @@ CompText8770084::
 
 	def_text_script CompText8770084_unk0
 	ts_check_flag [
-		flag: 0x471,
+		flag: EVENT_471,
 		jumpIfTrue: CompText8770084_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -75,7 +75,7 @@ CompText8770084::
 	.string "be nervous. You'll\n"
 	.string "be fine!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x471
+	ts_flag_set flag=EVENT_471
 	ts_end
 
 	def_text_script CompText8770084_unk1
@@ -141,7 +141,7 @@ CompText8770084::
 
 	def_text_script CompText8770084_unk15
 	ts_check_flag [
-		flag: 0x434,
+		flag: EVENT_434,
 		jumpIfTrue: CompText8770084_unk16_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -165,7 +165,7 @@ CompText8770084::
 
 	def_text_script CompText8770084_unk19
 	ts_check_flag [
-		flag: 0x47D,
+		flag: EVENT_47D,
 		jumpIfTrue: CompText8770084_unk20_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -184,12 +184,12 @@ CompText8770084::
 	.string "He just went off\n"
 	.string "on his own..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x47D
+	ts_flag_set flag=EVENT_47D
 	ts_end
 
 	def_text_script CompText8770084_unk20
 	ts_check_flag [
-		flag: 0x47E,
+		flag: EVENT_47E,
 		jumpIfTrue: CompText8770084_unk21_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -212,12 +212,12 @@ CompText8770084::
 	ts_mugshot_show mugshot=0x14
 	.string "........."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x47E
+	ts_flag_set flag=EVENT_47E
 	ts_end
 
 	def_text_script CompText8770084_unk21
 	ts_check_flag [
-		flag: 0x47F,
+		flag: EVENT_47F,
 		jumpIfTrue: CompText8770084_unk23_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -248,7 +248,7 @@ CompText8770084::
 	ts_clear_msg
 	.string "Let's go!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x47F
+	ts_flag_set flag=EVENT_47F
 	ts_end
 
 	def_text_script CompText8770084_unk22
@@ -282,7 +282,7 @@ CompText8770084::
 
 	def_text_script CompText8770084_unk25
 	ts_check_flag [
-		flag: 0x43A,
+		flag: EVENT_43A,
 		jumpIfTrue: CompText8770084_unk26_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -373,11 +373,11 @@ CompText8770084::
 
 	def_text_script CompText8770084_unk50
 	ts_check_flag [
-		flag: 0x53C,
+		flag: EVENT_53C,
 		jumpIfTrue: CompText8770084_unk51_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x53C
+	ts_flag_set flag=EVENT_53C
 	ts_mugshot_show mugshot=0x0
 	ts_msg_open
 	.string "I have something\n"

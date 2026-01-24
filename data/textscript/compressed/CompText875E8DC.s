@@ -81,7 +81,7 @@ CompText875E8DC::
 	]
 	.string "\"!!"
 	ts_key_wait any=0x0
-	ts_flag_clear flag=0x483
+	ts_flag_clear flag=EVENT_483
 	ts_end
 
 	

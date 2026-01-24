@@ -11,21 +11,21 @@ CompText87A1F18::
 
 	def_text_script CompText87A1F18_unk0
 	ts_check_flag [
-		flag: 0x11CE,
+		flag: EVENT_11CE,
 		jumpIfTrue: CompText87A1F18_unk3_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11D1,
+		flag: EVENT_11D1,
 		jumpIfTrue: CompText87A1F18_unk2_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x11CD,
+		flag: EVENT_11CD,
 		jumpIfTrue: CompText87A1F18_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
-	ts_flag_set flag=0x11CD
+	ts_flag_set flag=EVENT_11CD
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
 	.string "Ahh! You're here!\n"
@@ -133,7 +133,7 @@ CompText87A1F18::
 	def_text_script CompText87A1F18_unk2
 	ts_mugshot_show mugshot=0x42
 	ts_msg_open
-	ts_flag_set flag=0x11CE
+	ts_flag_set flag=EVENT_11CE
 	.string "Ahh...you're back.\n"
 	.string "Thanks for helping."
 	ts_key_wait any=0x0
@@ -249,33 +249,33 @@ CompText87A1F18::
 	ts_mugshot_show mugshot=0x37
 	.string "Execute!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x1715
-	ts_flag_set flag=0x11E1
+	ts_flag_set flag=EVENT_EVENT_CUR_DIR_LOCKED
+	ts_flag_set flag=EVENT_11E1
 	ts_end
 
 	def_text_script CompText87A1F18_unk11
 	ts_check_flag [
-		flag: 0x11E4,
+		flag: EVENT_11E4,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A1F18_unk12_id,
 	]
 	ts_check_flag [
-		flag: 0x11E5,
+		flag: EVENT_11E5,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A1F18_unk12_id,
 	]
 	ts_check_flag [
-		flag: 0x11E6,
+		flag: EVENT_11E6,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A1F18_unk12_id,
 	]
 	ts_check_flag [
-		flag: 0x11E7,
+		flag: EVENT_11E7,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A1F18_unk12_id,
 	]
 	ts_check_flag [
-		flag: 0x11E8,
+		flag: EVENT_11E8,
 		jumpIfTrue: TS_CONTINUE,
 		jumpIfFalse: CompText87A1F18_unk12_id,
 	]

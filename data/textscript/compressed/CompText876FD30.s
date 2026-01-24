@@ -11,7 +11,7 @@ CompText876FD30::
 
 	def_text_script CompText876FD30_unk0
 	ts_check_flag [
-		flag: 0xE5C,
+		flag: EVENT_E5C,
 		jumpIfTrue: CompText876FD30_unk1_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -42,7 +42,7 @@ CompText876FD30::
 	ts_mugshot_show mugshot=0x11
 	.string "Umm...yeah..."
 	ts_key_wait any=0x0
-	ts_flag_set flag=0xE5C
+	ts_flag_set flag=EVENT_E5C
 	ts_end
 
 	def_text_script CompText876FD30_unk1

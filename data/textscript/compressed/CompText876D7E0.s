@@ -17,7 +17,7 @@ CompText876D7E0::
 		jumpIfOutOfRange: TS_CONTINUE,
 	]
 	ts_check_flag [
-		flag: 0x420,
+		flag: EVENT_420,
 		jumpIfTrue: CompText876D7E0_unk6_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -96,7 +96,7 @@ CompText876D7E0::
 
 	def_text_script CompText876D7E0_unk10
 	ts_check_flag [
-		flag: 0x47B,
+		flag: EVENT_47B,
 		jumpIfTrue: CompText876D7E0_unk11_id,
 		jumpIfFalse: TS_CONTINUE,
 	]
@@ -133,7 +133,7 @@ CompText876D7E0::
 	]
 	.string "\"!!"
 	ts_key_wait any=0x0
-	ts_flag_set flag=0x47B
+	ts_flag_set flag=EVENT_47B
 	ts_player_finish
 	ts_player_reset_object
 	ts_clear_msg
