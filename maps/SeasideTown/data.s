@@ -841,7 +841,7 @@ mapscript_805A1A5:
 byte_805A1CE::
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_C20 destination4=dword_805A234
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_1CA8 destination4=dword_805A234
-	ms_start_cutscene ptr1=byte_8098BB8 word5=0x00080214
+	ms_start_cutscene ptr1=CutsceneScriptNotification_8098BB8 word5=0x00080214
 	ms_jump destination1=dword_805A234
 
 mapscript_805A1EC:

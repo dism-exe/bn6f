@@ -138,7 +138,7 @@ mapscript_804D13B:
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_404
 	ms_set_enter_map_screen_fade byte1=0x1C byte2=0xFF
 	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
-	ms_start_cutscene ptr1=CutsceneScriptNewGameAcdc word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory1NewGameAcdc word5=0x00000000
 	ms_jump destination1=dword_804D23C
 
 mapscript_804D163:
@@ -275,7 +275,7 @@ mapscript_804D353:
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_402
 	ms_set_enter_map_screen_fade byte1=0x1C byte2=0xFF
 	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
-	ms_start_cutscene ptr1=CutsceneScriptNewGame word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory0NewGame word5=0x00000000
 	ms_jump destination1=mapscript_804D3AF
 
 mapscript_804D37B:

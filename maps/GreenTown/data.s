@@ -556,7 +556,7 @@ mapscript_805E83F:
 mapscript_805E870:
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_80E destination4=mapscript_805E8E1
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_1CF2 destination4=mapscript_805E8E1
-	ms_start_cutscene ptr1=byte_8098BB8 word5=0x00520214
+	ms_start_cutscene ptr1=CutsceneScriptNotification_8098BB8 word5=0x00520214
 	ms_jump destination1=mapscript_805E8E1
 
 mapscript_805E88E:

@@ -996,7 +996,7 @@ signed int sub_8034CB6()
                             v12 = *(*(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_64) + v16);
                             if ( v12 != 255 )
                             {
-                                StartCutscene(byte_8098824, v12 | (v16 << 8), v13, v17);
+                                StartCutscene(CutsceneScriptJackIn_8098824, v12 | (v16 << 8), v13, v17);
                                 return 0;
                             }
                         }
@@ -1190,7 +1190,7 @@ LABEL_14:
 LABEL_15:
                     v12 = (*(*v11[v7])[v8])[v9];
                     if ( v12 != 255 )
-                        result = StartCutscene(byte_8098358, v12, v2, v3);
+                        result = StartCutscene(CutsceneScriptObjectInteract_8098358, v12, v2, v3);
                     return result;
                 }
             }
@@ -1224,7 +1224,7 @@ signed int __fastcall sub_8034F68(int a1)
                 v7 = &dword_2011EA0[v5];
                 result = *v7;
                 if ( *v7 )
-                    result = StartCutscene(byte_8098384, *v7, v6, v7);
+                    result = StartCutscene(CutsceneScriptEntranceInteract_8098384, *v7, v6, v7);
             }
         }
     }
@@ -1250,7 +1250,7 @@ unsigned int sub_8034FB8()
         && (TestEventFlagFromImmediate(23, 3), v2)
         && (s_2011C50_ptr_1C_isNull(), v2) )
     {
-        v3 = byte_809895C;
+        v3 = CutsceneScriptOnMapEnterAfterJackIn_809895C;
         TestEventFlagFromImmediate(1, 39);
         if ( !v2 )
             v3 = byte_80989C1;
@@ -1310,7 +1310,7 @@ signed int sub_8035054()
     TestEventFlagFromImmediate(23, 26);
     if ( v1 )
         return 1;
-    StartCutscene(byte_809AE68, v2, v3, v4);
+    StartCutscene(CutsceneScriptNotification_809AE68, v2, v3, v4);
     return 0;
 }
 
@@ -1329,7 +1329,7 @@ signed int sub_8035084()
     v1 = sub_8035756();
     if ( v0 )
         return 1;
-    StartCutscene(byte_8098BB8, v1, v2, v3);
+    StartCutscene(CutsceneScriptNotification_8098BB8, v1, v2, v3);
     return 0;
 }
 

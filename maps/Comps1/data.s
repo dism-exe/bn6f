@@ -383,25 +383,25 @@ byte_806E1E1::
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_40A destination4=mapscript_806E206
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_40A
 	ms_set_enter_map_screen_fade byte1=0x04 byte2=0xFF
-	ms_start_cutscene ptr1=CutsceneScriptTutJackInRoboDog word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory4TutJackInRoboDog word5=0x00000000
 	ms_jump destination1=dword_806E260
 
 mapscript_806E206:
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_40B destination4=mapscript_806E224
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_40C destination4=mapscript_806E224
-	ms_start_cutscene ptr1=CutsceneScriptTutSecondBattle word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory5TutSecondBattle word5=0x00000000
 	ms_jump destination1=dword_806E260
 
 mapscript_806E224:
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_40F destination4=byte_806E242
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_410 destination4=byte_806E242
-	ms_start_cutscene ptr1=CutsceneScriptTutThirdBattle word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory6TutThirdBattle word5=0x00000000
 	ms_jump destination1=dword_806E260
 
 byte_806E242::
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_413 destination4=dword_806E260
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_414 destination4=dword_806E260
-	ms_start_cutscene ptr1=CutsceneScriptTutAfterThirdBattle word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory7TutAfterThirdBattle word5=0x00000000
 	ms_jump destination1=dword_806E260
 
 dword_806E260::
@@ -515,7 +515,7 @@ byte_806E3ED::
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_424 destination4=mapscript_806E412
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_424
 	ms_set_enter_map_screen_fade byte1=0x04 byte2=0xFF
-	ms_start_cutscene ptr1=cutscenescript_80822E4 word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory14VirusBustingClassStart_80822E4 word5=0x00000000
 	ms_jump destination1=mapscript_806E437
 
 mapscript_806E412:
@@ -523,7 +523,7 @@ mapscript_806E412:
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_426 destination4=mapscript_806E437
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_426
 	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
-	ms_start_cutscene ptr1=cutscenescript_80823B0 word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory15AfterDefeatingVirus_80823B0 word5=0x00000000
 	ms_jump destination1=mapscript_806E437
 
 mapscript_806E437:

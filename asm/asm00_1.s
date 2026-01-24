@@ -5121,7 +5121,7 @@ sub_80059B4: // (self: * GameState $r5) -> ()
 
   // Disabling this causes warps like in Lan's HP to no longer interact (but they animate)
   // This reproduces in Lan's HP, but NOT RoboDogComp for example. Might be because it applies to HomePages
-	ldr r0, off_8005A78 // =CutsceneScript_8098a02 // CutsceneScript
+	ldr r0, off_8005A78 // =CutsceneScriptOnMapWarp_8098a02 // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 
@@ -5136,7 +5136,7 @@ sub_80059D0: // (self: * GameState $r5) -> ()
 	movflag EVENT_1738
 	bl SetEventFlagFromImmediate
 
-	ldr r0, off_8005A80 // =CutsceneScript_8098a78 // CutsceneScript
+	ldr r0, off_8005A80 // =CutsceneScriptOnInMapWarp_8098a78 // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 
@@ -5149,7 +5149,7 @@ sub_80059EC: // (self: * GameState $r5) -> ()
 	movflag EVENT_1703
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 
-	ldr r0, off_8005A7C // =CutsceneScript_8098a2e // CutsceneScript
+	ldr r0, off_8005A7C // =CutsceneScriptOnMapEnterAfterJackOut_8098a2e // CutsceneScript
 	mov r1, #0
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 
@@ -5234,11 +5234,11 @@ sub_8005A50: // (self: * GameState $r5) -> ()
 	pop {pc}
 	.balign 4, 0
 off_8005A78:
-	.word CutsceneScript_8098a02 // CutsceneScript
+	.word CutsceneScriptOnMapWarp_8098a02 // CutsceneScript
 off_8005A7C:
-	.word CutsceneScript_8098a2e // CutsceneScript
+	.word CutsceneScriptOnMapEnterAfterJackOut_8098a2e // CutsceneScript
 off_8005A80:
-	.word CutsceneScript_8098a78 // CutsceneScript
+	.word CutsceneScriptOnInMapWarp_8098a78 // CutsceneScript
 off_8005A84:
 	.word CutsceneScript_809b5ad // CutsceneScript
 off_8005A88:

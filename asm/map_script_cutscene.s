@@ -2531,7 +2531,7 @@ cutscene_checkOriginalCutsceneScriptPos_8036F40:
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	mov r2, #TRUE
 	ldr r0, [r0,#oCutsceneState_originalCutsceneScriptPos_40] // s_02011C50.unk_40
-	ldr r1, off_8036F54 // =CutsceneScript_80991F4 // CutsceneScript
+	ldr r1, off_8036F54 // =CutsceneScriptLMessage_80991F4 // CutsceneScript
 	cmp r0, r1
 	beq loc_8036F50
 	mov r2, #FALSE
@@ -2540,7 +2540,7 @@ loc_8036F50:
 	mov pc, lr
 	.balign 4, 0
 off_8036F54:
-	.word CutsceneScript_80991F4 // CutsceneScript
+	.word CutsceneScriptLMessage_80991F4 // CutsceneScript
 	thumb_func_end cutscene_checkOriginalCutsceneScriptPos_8036F40
 
 	thumb_func_start cutscene_checkOriginalCutsceneScriptPos_8036F58
@@ -2549,7 +2549,7 @@ cutscene_checkOriginalCutsceneScriptPos_8036F58:
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	mov r2, #TRUE
 	ldr r0, [r0,#oCutsceneState_originalCutsceneScriptPos_40]
-	ldr r1, off_8036F6C // =CutsceneScript_80988E4 // CutsceneScript
+	ldr r1, off_8036F6C // =CutsceneScriptAskJackOut_80988E4 // CutsceneScript
 	cmp r0, r1
 	beq loc_8036F68
 	mov r2, #FALSE
@@ -2558,7 +2558,7 @@ loc_8036F68:
 	mov pc, lr
 	.balign 4, 0
 off_8036F6C:
-	.word CutsceneScript_80988E4 // CutsceneScript
+	.word CutsceneScriptAskJackOut_80988E4 // CutsceneScript
 	thumb_func_end cutscene_checkOriginalCutsceneScriptPos_8036F58
 
 	thumb_func_start cutscene_checkOriginalCutsceneScriptPos_8036F70

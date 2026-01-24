@@ -755,6 +755,7 @@ def app_ea_to_sym_filter(args: argparse.Namespace):
     shift = int(args.shift, 10)
     file = args.file
     skip_after = args.skip_after
+    comment_original = args.comment_original
 
     syms = read_sym_file(sym_file)
     ea_to_sym_ord_map = get_ea_to_sym_ord_map(syms)
@@ -816,28 +817,29 @@ def app_ea_to_sym_filter(args: argparse.Namespace):
         mut_out = line
 
         for (ea_token, ea) in ea_tokens_and_parsed:
-            sym = get_ea_symbol_or_shifted_or_default(ea_token, ea + shift)
+            mut_sym = get_ea_symbol_or_shifted_or_default(ea_token, ea + shift)
+
+            if comment_original:
+                mut_sym = f'/*{ea_token}*/ {mut_sym}'
 
             if '_' + ea_token in mut_out:
                 mut_out = mut_out.replace('_' + ea_token, '<<<PLACEHOLDER>>>')
-                mut_out = mut_out.replace(ea_token, sym)
+                mut_out = mut_out.replace(ea_token, mut_sym)
                 mut_out = mut_out.replace('<<<PLACEHOLDER>>>', '_' + ea_token)
             else:
-                mut_out = mut_out.replace(ea_token, sym)
+                mut_out = mut_out.replace(ea_token, mut_sym)
 
         print(mut_out)
 
     if file:
         with open(file, 'r') as f:
             lines = f.readlines()
+
+        for line in lines:
+            process_line(line.strip())
     else: 
-        inp = sys.stdin.read()
-
-        lines = inp.split("\n")
-
-
-    for line in lines:
-        process_line(line.strip())
+        for line in sys.stdin:
+            process_line(line.strip())
 
 def main(args: argparse.Namespace):
     if args.subcommand == 'shorten_rlists':
@@ -946,6 +948,9 @@ def parse_cmdline_args() -> argparse.Namespace:
                 help='Read from a file instead of directly on stdin')
     sp.add_argument('--skip-after',
                 help='substring to skip converting values after')
+    sp.add_argument('--comment-original',
+                action='store_true',
+                    help='Keep the original filtered as comment: /*orig*/ new')
 
     sp = subparsers.add_parser('unittest', 
                     help='run the unit tests instead of main')

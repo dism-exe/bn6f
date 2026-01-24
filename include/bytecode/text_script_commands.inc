@@ -3,6 +3,8 @@
 	
 // Legend: When a parameter is specified, its byte offset, bit offset, and size are specified as [byte_offset:bit_offset:size]
 
+// Implementations of the commands are in TextScriptBytecodeJumptable
+
 /* primary (chatbox) interpreter commands */
 
 	// Does nothing.

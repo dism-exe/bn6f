@@ -378,7 +378,7 @@ byte_8072242:
 
 mapscript_807224E:
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_1CA1 destination4=mapscript_807225F
-	ms_start_cutscene ptr1=byte_8098BB8 word5=0x00010214
+	ms_start_cutscene ptr1=CutsceneScriptNotification_8098BB8 word5=0x00010214
 
 mapscript_807225F:
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_540 destination4=byte_8072373
@@ -571,7 +571,7 @@ byte_8072579:
 	ms_jump_if_flag_range_clear byte1=0x03 event16_2=EVENT_46E destination4=byte_807263D
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_41A destination4=byte_807263D
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_41A
-	ms_start_cutscene ptr1=cutscenescript_8081D50 word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory9CentralArea2FirstExplorationCanEnd_8081D50 word5=0x00000000
 	ms_jump destination1=byte_807263D
 
 mapscript_80725A3:

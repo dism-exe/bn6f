@@ -381,7 +381,7 @@ mapscript_806B1FB:
 mapscript_806B224:
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_E42 destination4=byte_806B266
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_4EA destination4=byte_806B242
-	ms_start_cutscene ptr1=cutscenescript_8083D04 word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptNaviAffectedByMapAction_8083D04 word5=0x00000000
 	ms_jump destination1=byte_806B266
 
 byte_806B242:

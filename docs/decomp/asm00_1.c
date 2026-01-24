@@ -3070,7 +3070,7 @@ void *sub_80059B4()
 
     ClearEventFlagFromImmediate(23, 3);
     SetEventFlagFromImmediate(23, 56);
-    return StartCutscene(CutsceneScript_8098a02, 0, v0, v1);
+    return StartCutscene(CutsceneScriptOnMapWarp_8098a02, 0, v0, v1);
 }
 
 
@@ -3082,7 +3082,7 @@ void *sub_80059D0()
 
     SetEventFlagFromImmediate(23, 3);
     SetEventFlagFromImmediate(23, 56);
-    return StartCutscene(CutsceneScript_8098a78, 0, v0, v1);
+    return StartCutscene(CutsceneScriptOnInMapWarp_8098a78, 0, v0, v1);
 }
 
 
@@ -3093,7 +3093,7 @@ void *sub_80059EC()
     int v1; // r3
 
     ClearEventFlagFromImmediate(23, 3);
-    return StartCutscene(CutsceneScript_8098a2e, 0, v0, v1);
+    return StartCutscene(CutsceneScriptOnMapEnterAfterJackOut_8098a2e, 0, v0, v1);
 }
 
 

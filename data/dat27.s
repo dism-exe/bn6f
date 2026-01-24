@@ -457,6 +457,7 @@ unk_8094CB0:
 	.word 0x07000702
 	.byte 0x00
 	.byte 0x00
+
 end_cutscenescript_8094CB6:
 	.word 0x0000001C, 0x00000126
 	.byte 0xF0
@@ -471,6 +472,7 @@ ccs_8094CC6:
 
 end_ccs_8094CC7:
 	.byte 0x00
+
 byte_8094CC8::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
@@ -3403,6 +3405,7 @@ cutscenescript_8096E36:
 
 byte_8096E44::
 	.byte 0x6, 0x5, 0x0, 0x7, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+
 byte_8096E54::
 	ccs_set_camera_pos hword1=0xFDC0 hword3=0xFF20 hword5=0x0100
 	ccs_end
@@ -3620,6 +3623,7 @@ cutscenescript_8097113:
 
 unk_8097120:
 	.word 0x04000100, 0x00000000, 0x00000000, 0x00000000
+
 byte_8097130::
 	ccs_set_camera_pos hword1=0x0240 hword3=0x00C0 hword5=0x0000
 	ccs_end
@@ -3657,6 +3661,7 @@ ccs_8097180:
 end_ccs_809718A:
 	.byte 0x00
 	.byte 0x00
+
 cutscenescript_809718C:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
@@ -3799,6 +3804,7 @@ byte_8097313::
 
 unk_8097330:
 	.word 0x04000000, 0x00000000, 0x00000000, 0x00000000
+
 byte_8097340::
 	ccs_set_camera_pos hword1=0x07C0 hword3=0x04A0 hword5=0x0000
 	ccs_end
@@ -4175,6 +4181,7 @@ cutscenescript_809774E:
 
 unk_809775C:
 	.word 0x04000403, 0x00000000, 0x00000000, 0x00000000
+
 byte_809776C::
 	ccs_set_camera_pos hword1=0xFDA0 hword3=0xFDC0 hword5=0x0000
 	ccs_end
@@ -4248,6 +4255,7 @@ cutscenescript_809782E:
 
 unk_809783C:
 	.word 0x04000204, 0x00000000, 0x00000000, 0x00000000
+
 byte_809784C::
 	ccs_set_camera_pos hword1=0xFEA0 hword3=0x04E0 hword5=0x0000
 	ccs_end
@@ -4323,6 +4331,7 @@ cutscenescript_8097916:
 
 unk_8097924:
 	.word 0x04000305, 0x00000000, 0x00000000, 0x00000000
+
 byte_8097934::
 	ccs_set_camera_pos hword1=0xFCE0 hword3=0xFE40 hword5=0x0000
 	ccs_end
@@ -4402,6 +4411,7 @@ cutscenescript_8097A09:
 
 unk_8097A18:
 	.word 0x04000506, 0x00000000, 0x00000000, 0x00000000
+
 end_cutscenescript_8097A28:
 	ccs_set_camera_pos hword1=0x0F00 hword3=0xE9A0 hword5=0x0000
 	ccs_end
@@ -5246,7 +5256,8 @@ cutscenescript_8098349:
 	cs_end_for_map_reload_maybe_8037c64
 	cs_end_for_map_reload_maybe_8037c64
 
-byte_8098358::
+// parameter (r1 in StartCutscene) indexes which object
+CutsceneScriptObjectInteract_8098358::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731
@@ -5268,7 +5279,10 @@ sub_8098370:
 	.pool
 	thumb_func_end sub_8098370
 
-byte_8098384::
+// Triggers on bus as well as school entrance start of game
+// parameter seems to point to npc scripts?
+// In Story18, this actually triggers when we try to go to the bots throwing fire.
+CutsceneScriptEntranceInteract_8098384::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731
@@ -5420,7 +5434,8 @@ byte_80984C8::
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x8D, 0xF, 0x0, 0x1, 0x0
 	.byte 0x0, 0x10, 0x0, 0x0, 0x0, 0xF2, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0
-byte_8098824::
+
+CutsceneScriptJackIn_8098824::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87385CC + COMPRESSED_PTR_FLAG
@@ -5490,7 +5505,7 @@ sub_80988CC:
 	.pool
 	thumb_func_end sub_80988CC
 
-CutsceneScript_80988E4::
+CutsceneScriptAskJackOut_80988E4::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731
@@ -5541,7 +5556,8 @@ sub_8098950:
 	mov pc, lr
 	thumb_func_end sub_8098950
 
-byte_809895C::
+// This cutscene occurs after jacking in and appearing in internet map
+CutsceneScriptOnMapEnterAfterJackIn_809895C::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731
@@ -5606,7 +5622,7 @@ ccs_8098A00:
 	ccs_auto_scroll_to_player
 	ccs_end
 
-CutsceneScript_8098a02::
+CutsceneScriptOnMapWarp_8098a02::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731
@@ -5622,7 +5638,7 @@ CutsceneScript_8098a02::
 	cs_unlock_player_after_non_npc_dialogue_809e122
 	cs_end_for_map_reload_maybe_8037c64
 
-CutsceneScript_8098a2e::
+CutsceneScriptOnMapEnterAfterJackOut_8098a2e::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731
@@ -5646,7 +5662,9 @@ CutsceneScript_8098a2e::
 off_8098A68:: 
   .word 0x4000000
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-CutsceneScript_8098a78::
+
+// Triggers in Central Area1 in-map warps
+CutsceneScriptOnInMapWarp_8098a78::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731
@@ -5781,7 +5799,8 @@ sub_8098B8C:
 	.balign 4, 0
 	thumb_func_end sub_8098B8C
 
-byte_8098BB8::
+// Notifications like mail trigger this when MegaMan mentions it.
+CutsceneScriptNotification_8098BB8::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731

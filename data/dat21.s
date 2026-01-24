@@ -21,7 +21,7 @@ byte_8081479::
 end_ccs_808148F:
 	.byte 0x00
 
-CutsceneScriptNewGame:
+CutsceneScriptStory0NewGame:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87A3B84 + COMPRESSED_PTR_FLAG
@@ -121,7 +121,7 @@ byte_80815AC::
 	ccs_set_camera_pos hword1=0x0780 hword3=0x0620 hword5=0x0000
 	ccs_end
 
-CutsceneScriptNewGameAcdc:
+CutsceneScriptStory1NewGameAcdc:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87A41C8 + COMPRESSED_PTR_FLAG
@@ -236,7 +236,8 @@ byte_80816FC::
 end_ccs_8081702:
 	.byte 0x00
 	.byte 0x00
-CutsceneScriptNewGameArriveCentralTown:
+
+CutsceneScriptStory2NewGameArriveCentralTown:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87A4980 + COMPRESSED_PTR_FLAG
@@ -303,7 +304,7 @@ ccs_80817B0:
 	ccs_set_camera_pos hword1=0x05E0 hword3=0xFEC0 hword5=0x0000
 	ccs_end
 
-CutsceneScriptIrisAttackedByRoboDog:
+CutsceneScriptStory3IrisAttackedByRoboDog:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_sound_cmd_803810e byte1=0x08 byte2=0x1F
@@ -415,7 +416,8 @@ ccs_80818E0:
 end_ccs_80818EA:
 	.byte 0x00
 	.byte 0x00
-CutsceneScriptTutJackInRoboDog:
+
+CutsceneScriptStory4TutJackInRoboDog:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87A4C68 + COMPRESSED_PTR_FLAG
@@ -490,7 +492,7 @@ ccs_80819B4:
 	ccs_set_camera_pos hword1=0x0640 hword3=0xFF20 hword5=0x0000
 	ccs_end
 
-CutsceneScriptTutSecondBattle:
+CutsceneScriptStory5TutSecondBattle:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x29
@@ -565,7 +567,7 @@ ccs_8081A80:
 	ccs_set_camera_pos hword1=0x0640 hword3=0xFF20 hword5=0x0000
 	ccs_end
 
-CutsceneScriptTutThirdBattle:
+CutsceneScriptStory6TutThirdBattle:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x29
@@ -647,7 +649,7 @@ byte_8081B54::
 end_ccs_8081B5E:
 	.balign 4, 0
 
-CutsceneScriptTutAfterThirdBattle:
+CutsceneScriptStory7TutAfterThirdBattle:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_write_ow_player_fixed_anim_select_8037dac byte2=0xFF byte3=0x29
@@ -744,7 +746,7 @@ end_ccs_8081C82:
 	.byte 0x00
 	.byte 0x00
 
-CutsceneScriptEndTutCheckOnIris::
+CutsceneScriptStory8EndTutCheckOnIris::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87A4FFC + COMPRESSED_PTR_FLAG
@@ -815,7 +817,7 @@ cutscenescript_8081D43:
 	.word 0x1540003C, cutscenescript_8081D0C, 0x00000800
 	.byte 0x00
 
-cutscenescript_8081D50:
+CutsceneScriptStory9CentralArea2FirstExplorationCanEnd_8081D50:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_pause byte1=0xFF byte2=0x1E
@@ -866,7 +868,8 @@ byte_8081DB4::
 end_ccs_8081DBA:
 	.byte 0x00
 	.byte 0x00
-cutscenescript_8081DBC:
+
+CutsceneScriptStory10FirstDayOfSchoolWakeUp_8081DBC:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87A536C + COMPRESSED_PTR_FLAG
@@ -967,7 +970,7 @@ byte_8081EC7::
 end_ccs_8081ED1:
 	.balign 4, 0
 
-cutscenescript_8081ED4:
+CutsceneScriptStory11FirstTimeEnteringSchool_8081ED4:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87A54E4 + COMPRESSED_PTR_FLAG
@@ -1121,7 +1124,7 @@ byte_808207D::
 	ccs_simple_scroll hword1=0x0040 hword3=0xFF00 hword5=0x0000 hword7=0x0000
 	ccs_end
 
-cutscenescript_8082090:
+CutsceneScriptStory12FirstTimeInClass_8082090:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87A5A60 + COMPRESSED_PTR_FLAG
@@ -1235,7 +1238,7 @@ byte_80821D8::
 	ccs_set_camera_pos hword1=0x0240 hword3=0x00C0 hword5=0x0000
 	ccs_end
 
-cutscenescript_80821E0:
+CutsceneScriptStory13AfterTalkingToClassmates_80821E0:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_pause byte1=0xFF byte2=0x1E
@@ -1334,7 +1337,8 @@ ccs_80822DA:
 end_ccs_80822E2:
 	.byte 0x00
 	.byte 0x00
-cutscenescript_80822E4:
+
+CutsceneScriptStory14VirusBustingClassStart_80822E4:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87A61BC + COMPRESSED_PTR_FLAG
@@ -1379,6 +1383,9 @@ cutscenescript_80822E4:
 	cs_run_text_script_not_from_mem byte2=0x0D
 	cs_wait_chatbox byte1=0x80
 
+// If you disable `cs_start_fixed_battle` here and replace it with `cs_enable_ow_player_wall_collision_809e248`,
+// you get jacked out instead of battling. Then if you jack in again, the cutscene continues as if you have won the battle.
+// Setting it `cs_start_fixed_battle` param to 0x0000 seems to start a debug battle with 500 HP, against MegaMan with some preset chips. Cust bar never fills.
 cutscenescript_808236B:
 	cs_disable_cutscene_skip_script
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_425
@@ -1411,7 +1418,7 @@ ccs_80823A6:
 	ccs_simple_scroll hword1=0x0028 hword3=0xFF80 hword5=0x0080 hword7=0x0000
 	ccs_end
 
-cutscenescript_80823B0:
+CutsceneScriptStory15AfterDefeatingVirus_80823B0:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87A65BC + COMPRESSED_PTR_FLAG
@@ -1524,7 +1531,7 @@ byte_80824E0::
 	ccs_set_camera_pos hword1=0x1400 hword3=0xFE20 hword5=0x0000
 	ccs_end
 
-cutscenescript_80824E8:
+CutsceneScriptStory16MickArguesWithNavi_80824E8:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87A6884 + COMPRESSED_PTR_FLAG
@@ -1642,7 +1649,9 @@ byte_808262A::
 end_ccs_8082632:
 	.byte 0x00
 	.byte 0x00
-cutscenescript_8082634:
+
+// Happens right after Story16, no player interaction besides continuing the dialog.
+CutsceneScriptStory17CopyBotClass_8082634:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87A6D68 + COMPRESSED_PTR_FLAG
@@ -1792,7 +1801,7 @@ ccs_80827CC:
 	ccs_set_camera_pos hword1=0xFC80 hword3=0x0280 hword5=0x0000
 	ccs_end
 
-cutscenescript_80827D4:
+CutsceneScriptStory18AfterMegaManExploresClass_80827D4:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_pause byte1=0xFF byte2=0x1E
@@ -1989,7 +1998,7 @@ ccs_8082A16:
 	ccs_simple_scroll hword1=0x0064 hword3=0x0000 hword5=0xFF80 hword7=0x0000
 	ccs_end
 
-cutscenescript_8082A20:
+CutsceneScriptStory19MegaManThrowsWaterOnSecurityBots_8082A20:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_decomp_text_archive ptr1=CompText87A7A18 + COMPRESSED_PTR_FLAG
@@ -2134,7 +2143,8 @@ ccs_8082BC5:
 
 end_ccs_8082BCF:
 	.byte 0x00
-cutscenescript_8082BD0:
+
+CutsceneScriptStory20BotsBlastingFireOnTeachers_8082BD0:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_pause byte1=0xFF byte2=0x1E
@@ -2256,7 +2266,7 @@ sub_8082D38:
 	thumb_func_end sub_8082D38
 
 
-cutscenescript_8082D48:
+CutsceneScriptStory21JackInToRobCtrlComp1_8082D48:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_pause byte1=0xFF byte2=0x1E
@@ -3549,7 +3559,7 @@ ccs_8083B60:
 	ccs_set_camera_pos hword1=0x12E0 hword3=0xFAA0 hword5=0x0000
 	ccs_end
 
-cutscenescript_8083B68:
+CutsceneScriptStory22PanickingProgman_8083B68:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_pause byte1=0xFF byte2=0x1E
@@ -3699,15 +3709,18 @@ off_8083CD0::
 byte_8083CD4::
 	.byte 0xEC, 0x4, 0xED, 0x4, 0xEE, 0x4, 0xEF, 0x4, 0xF0, 0x4, 0xF1
 	.byte 0x4
+
 byte_8083CE0::
 	.byte 0xF2, 0x4, 0xF3, 0x4, 0xF4, 0x4, 0xF5, 0x4, 0xF6, 0x4, 0xF7
 	.byte 0x4, 0xF8, 0x4, 0xF9, 0x4, 0xFA, 0x4
+
 byte_8083CF2::
 	.word 0x0FD40FD3, 0x0FD60FD5, 0x0FD80FD7, 0x0FDA0FD9
 	.byte 0xDB
 	.byte 0x0F
 
-cutscenescript_8083D04:
+// Triggers when MegaMan is hit by flames in RobCtrlComp1 by Blastman after Story22 for example.
+CutsceneScriptNaviAffectedByMapAction_8083D04:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_set_event_flag byte1=0xFF event16_2=EVENT_1731
@@ -4530,6 +4543,7 @@ byte_808434F::
 end_ccs_8084362:
 	.byte 0x00
 	.byte 0x00
+
 cutscenescript_8084364:
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0

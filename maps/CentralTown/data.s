@@ -305,7 +305,7 @@ mapscript_804EAF8:
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_418
 	ms_set_enter_map_screen_fade byte1=0x04 byte2=0xFF
 	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
-	ms_start_cutscene ptr1=CutsceneScriptEndTutCheckOnIris word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory8EndTutCheckOnIris word5=0x00000000
 	ms_jump destination1=byte_804EEF6
 
 byte_804EB2D::
@@ -541,14 +541,14 @@ mapscript_804EF39:
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_407 destination4=dword_804F1D0
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_408 destination4=dword_804F1D0
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_408
-	ms_start_cutscene ptr1=CutsceneScriptIrisAttackedByRoboDog word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory3IrisAttackedByRoboDog word5=0x00000000
 	ms_jump destination1=dword_804F1D0
 
 byte_804EF62::
 	ms_jump_if_flag_range_clear byte1=0x05 event16_2=EVENT_464 destination4=mapscript_804EF84
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_1CA0 destination4=mapscript_804EF84
 	ms_add_mail_range hword1=0x1CED byte3=0x01
-	ms_start_cutscene ptr1=byte_8098BB8 word5=0x00000217
+	ms_start_cutscene ptr1=CutsceneScriptNotification_8098BB8 word5=0x00000217
 	ms_jump destination1=dword_804F1D0
 mapscript_804EF84:
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_1CA0 destination4=dword_804F1D0
@@ -840,7 +840,7 @@ mapscript_804F478:
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_A04 destination4=byte_804F4EE
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_1CA7 destination4=byte_804F4EE
 	ms_add_mail_range hword1=0x1CF3 byte3=0x01
-	ms_start_cutscene ptr1=byte_8098BB8 word5=0x01070214
+	ms_start_cutscene ptr1=CutsceneScriptNotification_8098BB8 word5=0x01070214
 	ms_jump destination1=byte_804F4EE
 
 byte_804F49A::
@@ -851,7 +851,7 @@ mapscript_804F4A6:
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_C0E destination4=byte_804F4EE
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_1CF4 destination4=byte_804F4EE
 	ms_add_mail_range hword1=0x1CF5 byte3=0x01
-	ms_start_cutscene ptr1=byte_8098BB8 word5=0x00540214
+	ms_start_cutscene ptr1=CutsceneScriptNotification_8098BB8 word5=0x00540214
 	ms_jump destination1=byte_804F4EE
 
 mapscript_804F4C8:
@@ -887,7 +887,7 @@ byte_804F52B::
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_406
 	ms_set_enter_map_screen_fade byte1=0x1C byte2=0xFF
 	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
-	ms_start_cutscene ptr1=CutsceneScriptNewGameArriveCentralTown word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory2NewGameArriveCentralTown word5=0x00000000
 	ms_jump destination1=byte_804F743
 
 mapscript_804F553:
@@ -896,14 +896,14 @@ mapscript_804F553:
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_41C
 	ms_set_enter_map_screen_fade byte1=0x1C byte2=0xFF
 	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
-	ms_start_cutscene ptr1=cutscenescript_8081DBC word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory10FirstDayOfSchoolWakeUp_8081DBC word5=0x00000000
 	ms_jump destination1=byte_804F743
 
 mapscript_804F57B:
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_440 destination4=byte_804F743
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_1CDC destination4=byte_804F743
 	ms_add_mail_range hword1=0x1CA4 byte3=0x01
-	ms_start_cutscene ptr1=byte_8098BB8 word5=0x003C0214
+	ms_start_cutscene ptr1=CutsceneScriptNotification_8098BB8 word5=0x003C0214
 	ms_jump destination1=byte_804F743
 
 mapscript_804F59D:
@@ -958,7 +958,7 @@ byte_804F679::
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_61C destination4=mapscript_804F69B
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_1CAC destination4=mapscript_804F69B
 	ms_add_mail_range hword1=0x1CAB byte3=0x01
-	ms_start_cutscene ptr1=byte_8098BB8 word5=0x000C0214
+	ms_start_cutscene ptr1=CutsceneScriptNotification_8098BB8 word5=0x000C0214
 	ms_jump destination1=byte_804F743
 
 mapscript_804F69B:
@@ -1021,13 +1021,13 @@ mapscript_804F786:
 	ms_jump_if_coord_interaction_value_not_equal byte1=0xF0 destination2=byte_804F933
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_41C destination4=byte_804F933
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_41A destination4=byte_804F933
-	ms_start_cutscene ptr1=byte_8098DDC word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptAskBedtime_8098DDC word5=0x00000000
 	ms_jump destination1=byte_804F933
 
 mapscript_804F7AA:
 	ms_jump_if_coord_interaction_value_not_equal byte1=0xF0 destination2=byte_804F933
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_442 destination4=byte_804F933
-	ms_start_cutscene ptr1=byte_8098DDC word5=0x00000001
+	ms_start_cutscene ptr1=CutsceneScriptAskBedtime_8098DDC word5=0x00000001
 	ms_jump destination1=byte_804F933
 
 mapscript_804F7C6:
@@ -1040,14 +1040,14 @@ mapscript_804F7E0:
 	ms_jump_if_coord_interaction_value_not_equal byte1=0xF0 destination2=byte_804F933
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_512 destination4=byte_804F933
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_510 destination4=byte_804F933
-	ms_start_cutscene ptr1=byte_8098DDC word5=0x00000002
+	ms_start_cutscene ptr1=CutsceneScriptAskBedtime_8098DDC word5=0x00000002
 	ms_jump destination1=byte_804F933
 
 dword_804F804::
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_1CA2 destination4=byte_804F827
 	ms_write_word ptr1=unk_2011EA4 word5=0x08070002
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F1
-	ms_start_cutscene ptr1=byte_8098BB8 word5=0x00020214
+	ms_start_cutscene ptr1=CutsceneScriptNotification_8098BB8 word5=0x00020214
 	ms_jump destination1=byte_804F933
 
 byte_804F827::
@@ -1060,7 +1060,7 @@ byte_804F827::
 mapscript_804F84A:
 	ms_jump_if_coord_interaction_value_not_equal byte1=0xF0 destination2=byte_804F933
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_538 destination4=byte_804F933
-	ms_start_cutscene ptr1=byte_8098DDC word5=0x00000003
+	ms_start_cutscene ptr1=CutsceneScriptAskBedtime_8098DDC word5=0x00000003
 	ms_jump destination1=byte_804F933
 
 mapscript_804F866:
@@ -1072,13 +1072,13 @@ mapscript_804F879:
 	ms_jump_if_coord_interaction_value_not_equal byte1=0xF0 destination2=byte_804F933
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_60C destination4=byte_804F933
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_60A destination4=byte_804F933
-	ms_start_cutscene ptr1=byte_8098DDC word5=0x00000004
+	ms_start_cutscene ptr1=CutsceneScriptAskBedtime_8098DDC word5=0x00000004
 	ms_jump destination1=byte_804F933
 
 byte_804F89D::
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_626 destination4=byte_804F933
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_1CEC destination4=byte_804F933
-	ms_start_cutscene ptr1=byte_8098BB8 word5=0x004C0214
+	ms_start_cutscene ptr1=CutsceneScriptNotification_8098BB8 word5=0x004C0214
 	ms_jump destination1=byte_804F933
 
 byte_804F8BB::
@@ -1088,7 +1088,7 @@ byte_804F8BB::
 mapscript_804F8C7:
 	ms_jump_if_coord_interaction_value_not_equal byte1=0xF0 destination2=byte_804F933
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_810 destination4=byte_804F933
-	ms_start_cutscene ptr1=byte_8098DDC word5=0x00000005
+	ms_start_cutscene ptr1=CutsceneScriptAskBedtime_8098DDC word5=0x00000005
 	ms_jump destination1=byte_804F933
 
 mapscript_804F8E3:
@@ -1098,7 +1098,7 @@ mapscript_804F8E3:
 mapscript_804F8EF:
 	ms_jump_if_coord_interaction_value_not_equal byte1=0xF0 destination2=byte_804F933
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_C0A destination4=byte_804F933
-	ms_start_cutscene ptr1=byte_8098DDC word5=0x00000006
+	ms_start_cutscene ptr1=CutsceneScriptAskBedtime_8098DDC word5=0x00000006
 	ms_jump destination1=byte_804F933
 
 mapscript_804F90B:
@@ -1108,7 +1108,7 @@ mapscript_804F90B:
 mapscript_804F917:
 	ms_jump_if_coord_interaction_value_not_equal byte1=0xF0 destination2=byte_804F933
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_E10 destination4=byte_804F933
-	ms_start_cutscene ptr1=byte_8098DDC word5=0x00000007
+	ms_start_cutscene ptr1=CutsceneScriptAskBedtime_8098DDC word5=0x00000007
 	ms_jump destination1=byte_804F933
 
 byte_804F933::

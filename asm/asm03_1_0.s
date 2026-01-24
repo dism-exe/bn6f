@@ -2091,7 +2091,7 @@ loc_8034CF6:
 	beq loc_8034D44
 	lsl r4, r4, #8
 	orr r1, r4
-	ldr r0, off_8034D60 // =byte_8098824 // CutsceneScript
+	ldr r0, off_8034D60 // =CutsceneScriptJackIn_8098824 // CutsceneScript
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -2100,7 +2100,7 @@ loc_8034D44:
 	bl PlaySoundEffect
 	b loc_8034D52
 loc_8034D4C:
-	ldr r0, off_8034D64 // =CutsceneScript_80988E4 // CutsceneScript
+	ldr r0, off_8034D64 // =CutsceneScriptAskJackOut_80988E4 // CutsceneScript
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 loc_8034D52:
 	mov r0, #1
@@ -2111,9 +2111,9 @@ off_8034D58:
 off_8034D5C:
 	.word 0x100
 off_8034D60:
-	.word byte_8098824 // CutsceneScript
+	.word CutsceneScriptJackIn_8098824 // CutsceneScript
 off_8034D64:
-	.word CutsceneScript_80988E4 // CutsceneScript
+	.word CutsceneScriptAskJackOut_80988E4 // CutsceneScript
 off_8034D68:
 	.word dword_8034D6C
 dword_8034D6C:
@@ -2136,7 +2136,7 @@ sub_8034D7C:
 	movflag EVENT_L_MESSAGE_ACTIVE
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	bne loc_8034DA4
-	ldr r0, off_8034DAC // =CutsceneScript_80991F4 // CutsceneScript
+	ldr r0, off_8034DAC // =CutsceneScriptLMessage_80991F4 // CutsceneScript
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -2147,7 +2147,7 @@ loc_8034DA4:
 off_8034DA8:
 	.word 0x200
 off_8034DAC:
-	.word CutsceneScript_80991F4 // CutsceneScript
+	.word CutsceneScriptLMessage_80991F4 // CutsceneScript
 	thumb_func_end sub_8034D7C
 
 	thumb_local_start
@@ -2367,7 +2367,7 @@ HandleCoordinateInteractionCutscene:
 	ldrb r1, [r1,r4]
 	cmp r1, #0xff
 	beq .done
-	ldr r0, off_8034F64 // =byte_8098358 // CutsceneScript
+	ldr r0, off_8034F64 // =CutsceneScriptObjectInteract_8098358 // CutsceneScript
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 .done
 	pop {r4-r7,pc}
@@ -2379,7 +2379,7 @@ off_8034F5C:
 off_8034F60:
 	.word off_8034728
 off_8034F64:
-	.word byte_8098358 // CutsceneScript
+	.word CutsceneScriptObjectInteract_8098358 // CutsceneScript
 	thumb_func_end HandleCoordinateInteractionCutscene
 
 	thumb_local_start
@@ -2409,7 +2409,7 @@ sub_8034F68:
 	ldrb r0, [r3]
 	tst r0, r0
 	beq locret_8034FA8
-	ldr r0, off_8034FB0 // =byte_8098384 // CutsceneScript
+	ldr r0, off_8034FB0 // =CutsceneScriptEntranceInteract_8098384 // CutsceneScript
 	ldr r1, [r3]
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 locret_8034FA8:
@@ -2418,7 +2418,7 @@ locret_8034FA8:
 off_8034FAC:
 	.word EVENT_16F0
 off_8034FB0:
-	.word byte_8098384 // CutsceneScript
+	.word CutsceneScriptEntranceInteract_8098384 // CutsceneScript
 off_8034FB4:
 	.word unk_2011EA0
 	thumb_func_end sub_8034F68
@@ -2442,7 +2442,7 @@ loc_8034FCE:
 	bne loc_8035004
 	bl IsCutsceneScriptNonNull // () -> !zf
 	bne loc_8035004
-	ldr r4, off_8035020 // =byte_809895C // CutsceneScript
+	ldr r4, off_8035020 // =CutsceneScriptOnMapEnterAfterJackIn_809895C // CutsceneScript
 	movflag EVENT_127
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_8034FEC
@@ -2465,7 +2465,7 @@ loc_8035004:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8035020:
-	.word byte_809895C // CutsceneScript
+	.word CutsceneScriptOnMapEnterAfterJackIn_809895C // CutsceneScript
 off_8035024:
 	.word byte_80989C1 // CutsceneScript
 	thumb_func_end sub_8034FB8
@@ -2510,7 +2510,7 @@ sub_8035054:
 	movflag EVENT_171A
 	bl TestEventFlagFromImmediate // (flag: u16) -> !zf
 	beq loc_803507A
-	ldr r0, off_8035080 // =byte_809AE68 // CutsceneScript
+	ldr r0, off_8035080 // =CutsceneScriptNotification_809AE68 // CutsceneScript
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -2519,7 +2519,7 @@ loc_803507A:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_8035080:
-	.word byte_809AE68 // CutsceneScript
+	.word CutsceneScriptNotification_809AE68 // CutsceneScript
 	thumb_func_end sub_8035054
 
 	thumb_local_start
@@ -2530,7 +2530,7 @@ sub_8035084:
 	bl sub_8035756
 	beq loc_803509E
 	mov r1, r0
-	ldr r0, off_80350A4 // =byte_8098BB8 // CutsceneScript
+	ldr r0, off_80350A4 // =CutsceneScriptNotification_8098BB8 // CutsceneScript
 	bl StartCutscene // (script: *const CutsceneScript, param: u32) -> ()
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -2539,7 +2539,7 @@ loc_803509E:
 	pop {r4-r7,pc}
 	.balign 4, 0
 off_80350A4:
-	.word byte_8098BB8 // CutsceneScript
+	.word CutsceneScriptNotification_8098BB8 // CutsceneScript
 	thumb_func_end sub_8035084
 
 	thumb_local_start

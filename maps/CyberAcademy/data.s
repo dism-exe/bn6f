@@ -523,7 +523,7 @@ off_8052DB4:: // [*const MapScript; CYBER_ACADEMY_NUM_MAPS]
 	.word byte_8054041
 	.word byte_80541D3
 NPCScriptsCyberAcademy_8052DE0:: // [*const [*const NPCScript]; CYBER_ACADEMY_NUM_MAPS]
-  .word off_80542A0
+	.word off_80542A0
 	.word off_80568D0
 	.word off_8056AF8
 	.word off_8056C9C
@@ -658,7 +658,7 @@ mapscript_8053028:
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_420
 	ms_set_enter_map_screen_fade byte1=0x1C byte2=0xFF
 	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
-	ms_start_cutscene ptr1=cutscenescript_8082090 word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory12FirstTimeInClass_8082090 word5=0x00000000
 	ms_jump destination1=byte_805333A
 
 dword_8053050::
@@ -670,7 +670,7 @@ dword_8053050::
 	ms_write_word ptr1=unk_2011EA8 word5=0x08070002
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F2
 	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
-	ms_start_cutscene ptr1=cutscenescript_8082634 word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory17CopyBotClass_8082634 word5=0x00000000
 	ms_jump destination1=byte_805333A
 
 mapscript_805308F:
@@ -691,7 +691,7 @@ mapscript_80530D3:
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_42E destination4=byte_805333A
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_42E
 	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
-	ms_start_cutscene ptr1=cutscenescript_8082A20 word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory19MegaManThrowsWaterOnSecurityBots_8082A20 word5=0x00000000
 	ms_jump destination1=byte_805333A
 
 mapscript_8053100:
@@ -860,7 +860,7 @@ mapscript_805339E:
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_421 destination4=mapscript_80533C8
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_422 destination4=mapscript_80533C8
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_422
-	ms_start_cutscene ptr1=cutscenescript_80821E0 word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory13AfterTalkingToClassmates_80821E0 word5=0x00000000
 	ms_jump destination1=byte_8053553
 
 mapscript_80533C8:
@@ -881,7 +881,7 @@ mapscript_80533C8:
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F5
 	ms_write_word ptr1=unk_2011EB8 word5=0x08030102
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F6
-	ms_start_cutscene ptr1=cutscenescript_80827D4 word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory18AfterMegaManExploresClass_80827D4 word5=0x00000000
 	ms_jump destination1=byte_8053553
 
 mapscript_8053448:
@@ -924,13 +924,13 @@ byte_80534E5::
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_85A destination4=byte_8053553
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_804 destination4=byte_8053553
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_1CA6 destination4=byte_8053553
-	ms_start_cutscene ptr1=byte_8098BB8 word5=0x01060215
+	ms_start_cutscene ptr1=CutsceneScriptNotification_8098BB8 word5=0x01060215
 	ms_jump destination1=byte_8053553
 
 mapscript_805350B:
 	ms_jump_if_flag_clear byte1=0xFF event16_2=EVENT_812 destination4=mapscript_8053529
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_1CDD destination4=mapscript_8053529
-	ms_start_cutscene ptr1=byte_8098BB8 word5=0x013D0215
+	ms_start_cutscene ptr1=CutsceneScriptNotification_8098BB8 word5=0x013D0215
 	ms_jump destination1=byte_8053553
 
 mapscript_8053529:
@@ -1157,7 +1157,7 @@ mapscript_8053822:
 	ms_jump_if_flag_set byte1=0xFF event16_2=EVENT_428 destination4=byte_805389F
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_428
 	ms_set_enter_map_screen_fade byte1=0x24 byte2=0xFF
-	ms_start_cutscene ptr1=cutscenescript_80824E8 word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory16MickArguesWithNavi_80824E8 word5=0x00000000
 	ms_jump destination1=byte_805389F
 
 mapscript_8053847:
@@ -1234,7 +1234,7 @@ mapscript_805394C:
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_41E
 	ms_set_enter_map_screen_fade byte1=0x0C byte2=0xFF
 	ms_write_eStruct2001c04_byte byte1=0x04 byte2=0x63
-	ms_start_cutscene ptr1=cutscenescript_8081ED4 word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory11FirstTimeEnteringSchool_8081ED4 word5=0x00000000
 	ms_write_word ptr1=unk_2011EA4 word5=0x08070202
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_16F1
 	ms_jump destination1=byte_8053A48
@@ -1500,7 +1500,7 @@ mapscript_8053D77:
 	ms_set_event_flag byte1=0xFF event16_2=EVENT_430
 	ms_clear_event_flag byte1=0xFF event16_2=EVENT_1640
 	ms_clear_event_flag byte1=0xFF event16_2=EVENT_16D0
-	ms_start_cutscene ptr1=cutscenescript_8082BD0 word5=0x00000000
+	ms_start_cutscene ptr1=CutsceneScriptStory20BotsBlastingFireOnTeachers_8082BD0 word5=0x00000000
 	ms_jump destination1=dword_8053E50
 
 mapscript_8053DA8:
