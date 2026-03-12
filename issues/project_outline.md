@@ -1,0 +1,3 @@
+i want to perform decompilation on a binary. it is a gba game that was written in hand-written assembly. 
+what I want to do is write corresponding c functions that will replace the hand-written c functions by trampolining them to a different area of the code while keeping the existing address space the same. the biggest problem i see is that c functions require a stack. 
+for testing it would be possible to declare a stack in an emulator's area of memory that was not used by the actual game, but are there other problems? 
