@@ -235,3 +235,4 @@ zeroFill_e2009740
 zeroFill_e20097A0
 zeroFill_e200F3A0
 sub_8005F28
+IsNotSlipRunningAndNotInCutscene

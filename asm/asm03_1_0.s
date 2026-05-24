@@ -2049,7 +2049,8 @@ loc_8034C98:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8034C6E
 
-	thumb_local_start
+	.ifndef DECOMP_IsNotSlipRunningAndNotInCutscene
+	thumb_func_start IsNotSlipRunningAndNotInCutscene
 IsNotSlipRunningAndNotInCutscene:
 	push {r4-r7,lr}
 	movflag EVENT_IN_SLIPRUN_STATE
@@ -2063,6 +2064,12 @@ IsNotSlipRunningAndNotInCutscene:
 	mov r0, #FALSE
 	pop {r4-r7,pc}
 	thumb_func_end IsNotSlipRunningAndNotInCutscene
+	.else
+	thumb_func_start IsNotSlipRunningAndNotInCutscene
+IsNotSlipRunningAndNotInCutscene:
+	decomp_trampoline IsNotSlipRunningAndNotInCutscene_c, 18
+	thumb_func_end IsNotSlipRunningAndNotInCutscene
+	.endif
 
 	thumb_local_start
 sub_8034CB6:
