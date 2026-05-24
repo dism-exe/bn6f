@@ -3863,6 +3863,7 @@ byte_8004D34:
 
 /// breaks on reset
 /// breaks on "Continue" via load_game_802F756
+	.ifndef DECOMP_sub_8004D48
 	thumb_func_start sub_8004D48
 sub_8004D48:
 	push {r4-r7,lr}
@@ -3953,6 +3954,12 @@ off_8004DE8:
 off_8004DEC:
 	.word dword_20096D0
 	thumb_func_end sub_8004D48
+	.else
+	thumb_func_start sub_8004D48
+sub_8004D48:
+	decomp_trampoline sub_8004D48_c, 160
+	thumb_func_end sub_8004D48
+	.endif
 
 // Breaking on this pauses right on ^R on game boot
 	thumb_func_start initNewGameData_8004DF0
