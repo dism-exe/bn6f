@@ -672,6 +672,7 @@ CopyByEightWords: // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 // Fill r0 with r2, where r2 is treated as a byte.
 // Size is in r1, in bytes.
 // Does a backwards fill for speed
+	.ifndef DECOMP_BYTE_FILL
 	thumb_func_start ByteFill
 ByteFill:
 	// byteCount
@@ -680,6 +681,17 @@ ByteFill:
 	bne ByteFill
 	mov pc, lr
 	thumb_func_end ByteFill
+	.else
+	// Decompiled trampoline — same 8-byte slot, jumps to src/c/byte_fill.c.
+	// `bx r3` is a tail call: LR untouched, C version's `bx lr` returns
+	// straight to ByteFill's caller. +1 on the literal sets the Thumb bit.
+	thumb_func_start ByteFill
+ByteFill:
+	ldr r3, =ByteFill_c + 1
+	bx  r3
+	.pool
+	thumb_func_end ByteFill
+	.endif
 
 // Fill r0 with r2, where r2 is treated as a halfword.
 // Size is in r1, in bytes.
