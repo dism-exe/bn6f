@@ -52,6 +52,7 @@ off_80026E0:
 /* r0 = 0x80
    r1 = sprite category
    r2 = sprite index*/
+	.ifndef DECOMP_sprite_load
 	thumb_func_start sprite_load
 sprite_load:
 	push {r4,r5,lr}
@@ -91,6 +92,12 @@ off_8002724:
 sprite8002728:
 	.word spriteWhiteDot
 	thumb_func_end sprite_load
+	.else
+	thumb_func_start sprite_load
+sprite_load:
+	decomp_trampoline sprite_load_c, 64
+	thumb_func_end sprite_load
+	.endif
 
 // (void *a1) -> void
 	.ifndef DECOMP_sprite_initialize
