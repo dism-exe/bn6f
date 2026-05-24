@@ -225,3 +225,4 @@ owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 clearSetFlags_80355a8
 sub_8000FAC
 sub_803537C
+sub_809F942

@@ -3457,6 +3457,7 @@ locret_809F940:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_809F922
 
+	.ifndef DECOMP_sub_809F942
 	thumb_func_start sub_809F942
 sub_809F942: // () -> Nullable<* ?>
 	push {r4-r7,lr}
@@ -3541,6 +3542,12 @@ loc_809F9AE:
 locret_809F9BC:
 	pop {r4-r7,pc}
 	thumb_func_end sub_809F942
+	.else
+	thumb_func_start sub_809F942
+sub_809F942:
+	decomp_trampoline sub_809F942_c, 114
+	thumb_func_end sub_809F942
+	.endif
 
 	thumb_func_start sub_809F9BE
 sub_809F9BE:
