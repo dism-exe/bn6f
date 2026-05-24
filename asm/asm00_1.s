@@ -6659,7 +6659,8 @@ off_800632C:
 	.word off_8005FB4
 	thumb_func_end subsystem_triggerTransition_800630A
 
-	thumb_local_start
+	.ifndef DECOMP_sub_8006330
+	thumb_func_start sub_8006330
 sub_8006330:
 	push {r5,lr}
 	ldr r5, off_80063BC // =eScreenFade
@@ -6673,8 +6674,15 @@ sub_8006330:
 	bl Terminate_ePalette20097a0_Transform
 	pop {r5,pc}
 	thumb_func_end sub_8006330
+	.else
+	thumb_func_start sub_8006330
+sub_8006330:
+	decomp_trampoline sub_8006330_c, 20
+	thumb_func_end sub_8006330
+	.endif
 
-	thumb_local_start
+	.ifndef DECOMP_sub_800634C
+	thumb_func_start sub_800634C
 sub_800634C:
 	push {r5,lr}
 	ldr r5, off_80063BC // =eScreenFade
@@ -6690,6 +6698,12 @@ sub_800634C:
 	strb r0, [r5,#0xd]
 	pop {r5,pc}
 	thumb_func_end sub_800634C
+	.else
+	thumb_func_start sub_800634C
+sub_800634C:
+	decomp_trampoline sub_800634C_c, 18
+	thumb_func_end sub_800634C
+	.endif
 
 	thumb_local_start
 sub_8006366:

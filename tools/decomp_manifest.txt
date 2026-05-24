@@ -204,3 +204,5 @@ sound_8000808
 sound_800068A
 musicGameState_8000784
 sprite_load
+sub_800634C
+sub_8006330
