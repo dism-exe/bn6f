@@ -1,7 +1,4 @@
-#include "types.h"
-
-#define eToolkit_CutsceneStatePtr (*(u32 **)0x020093C0u)
-#define eToolkit_S2001c04_Ptr     (*(u8  **)0x020093F0u)
+#include "EWRAM.h"
 
 extern u8 DummyCutsceneScript[];
 extern void ClearEventFlag_c(u32 flag);
@@ -12,8 +9,8 @@ extern void ClearEventFlag_c(u32 flag);
 // EVENT_1731 (= 0x1731).
 void cutscene_8036ED4_c(void)
 {
-    u32 *cs = eToolkit_CutsceneStatePtr;
-    u8  *s;
+    u32 *cs = (u32 *)eToolkit->CutsceneStatePtr;
+    u8  *s  = (u8 *)eToolkit->S2001c04_Ptr;
 
     cs[0x1C / 4] = 0x1u;
     cs[0x20 / 4] = (u32)DummyCutsceneScript;
@@ -21,7 +18,6 @@ void cutscene_8036ED4_c(void)
     cs[0x28 / 4] = (u32)DummyCutsceneScript;
     cs[0x38 / 4] = 0;
 
-    s = eToolkit_S2001c04_Ptr;
     *(u16 *)(s + 0x12) = 0;
     *(u16 *)(s + 0x14) = 0;
 

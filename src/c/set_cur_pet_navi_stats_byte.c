@@ -1,7 +1,4 @@
-#include "types.h"
-
-// eToolkit.NaviStatsPtr at toolkit + 0x74 -> 0x02009424.
-#define eToolkit_NaviStatsPtr (*(u8 **)0x02009424u)
+#include "EWRAM.h"
 
 extern bool8 GetNaviStatsIndexGivenCurPETNavi_c(u32 navi_idx);
 
@@ -14,6 +11,6 @@ void SetCurPETNaviStatsByte_c(u32 navi_idx, u32 offset, u8 value)
     u32 idx;
 
     idx = GetNaviStatsIndexGivenCurPETNavi_c(navi_idx);
-    stats = eToolkit_NaviStatsPtr + idx * 0x64u;
+    stats = (u8 *)eToolkit->NaviStatsPtr + idx * 0x64u;
     stats[offset] = value;
 }

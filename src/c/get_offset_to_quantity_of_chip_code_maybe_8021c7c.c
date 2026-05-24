@@ -1,6 +1,4 @@
-#include "types.h"
-
-#define eToolkit_Unk2002230_Ptr (*(u8 **)0x020093FCu)  // toolkit + 0x4c
+#include "EWRAM.h"
 
 extern const u8 *getChip8021DA8_c(s32 which_chip);
 
@@ -24,7 +22,7 @@ const u8 *getOffsetToQuantityOfChipCodeMaybe_8021c7c_c(
         }
     }
 
-    result = eToolkit_Unk2002230_Ptr + 12 * (u32)chip_idx + found;
+    result = (const u8 *)eToolkit->Unk2002230_Ptr + 12 * (u32)chip_idx + found;
 
     {
         register u32 r3_out asm("r3") = found;

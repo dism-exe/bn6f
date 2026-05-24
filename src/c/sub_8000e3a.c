@@ -1,6 +1,4 @@
-#include "types.h"
-
-#define eToolkit_CurFramePtr (*(u16 **)0x020093D4u)  // toolkit + 0x24
+#include "EWRAM.h"
 
 extern u32 GetRNG_c(void);
 
@@ -20,7 +18,7 @@ u32 sub_8000E3A_c(u8 *arr, u32 count)
     u32 j;
 
     rng = GetRNG_c();
-    frame = *eToolkit_CurFramePtr;
+    frame = *eToolkit->CurFramePtr;
     iters = (s32)(rng >> 30) + (s32)(frame & 3u);
 
     do {

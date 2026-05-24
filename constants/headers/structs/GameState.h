@@ -14,15 +14,12 @@ typedef struct GameState {
     u8       CurPETNavi;    /* 0x01 */
     u8       Unk_02;    /* 0x02 */
     u8       Unk_03;    /* 0x03 */
-    union {    /* 0x04 (size 0x2) */
-        struct {
-            u8       MapGroup;    /* 0x04 */
-            u8       MapNumber;    /* 0x05 */
-        } _u0;
-        struct {
-            u16      MapId;    /* 0x04 */
-        } _u1;
-    } _union_0x4;
+    /* union @ 0x04 (size 0x2): hand-flattened because agbcc 2.95
+       aligns each inner struct to 4 bytes, which inflates the union to
+       4 bytes and shifts every field after it. MapId is the u16 view
+       of these bytes — read as `*(u16 *)&gs->MapGroup` if you need it. */
+    u8       MapGroup;    /* 0x04 */
+    u8       MapNumber;    /* 0x05 */
     u8       GameProgress;    /* 0x06 */
     u8       Unk_07;    /* 0x07 */
     u8       Unk_08;    /* 0x08 */

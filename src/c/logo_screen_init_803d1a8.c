@@ -1,6 +1,4 @@
-#include "types.h"
-
-#define eToolkit_MainJumptableIndexPtr (*(u8 **)0x020093B0u)
+#include "EWRAM.h"
 
 extern u8 eLogoScreenState[];
 extern void ZeroFillByWord_c(u32 *dst, u32 byte_count);
@@ -13,5 +11,5 @@ void logoScreen_init_803D1A8_c(u32 v)
 {
     ZeroFillByWord_c((u32 *)eLogoScreenState, 8);
     eLogoScreenState[5] = (u8)v;
-    eToolkit_MainJumptableIndexPtr[0] = 0x10;
+    eToolkit->MainJumptableIndexPtr[0] = 0x10;
 }

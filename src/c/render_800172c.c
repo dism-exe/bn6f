@@ -1,8 +1,4 @@
-#include "types.h"
-
-#define eToolkit_RenderInfoPtr  (*(u8 **)0x020093B8u)
-#define eToolkit_Unk200f3a0_Ptr (*(u16 **)0x020093CCu)
-#define eToolkit_Unk2009740_Ptr (*(u32 **)0x020093D0u)
+#include "EWRAM.h"
 
 extern void CopyWords_c(const u32 *src, u32 *dst, u32 byte_count);
 extern void CopyHalfwords_c(const u16 *src, u16 *dst, u32 byte_count);
@@ -16,16 +12,16 @@ extern void CopyHalfwords_c(const u16 *src, u16 *dst, u32 byte_count);
 //   RenderInfo+0  -> 0x04000000 (DISPCNT)
 void render_800172C_c(void)
 {
-    u8 *ri = eToolkit_RenderInfoPtr;
+    RenderInfo *ri = eToolkit->RenderInfoPtr;
     u32 *u9740;
 
-    *(u16 *)0x0400004Cu = *(u16 *)(ri + 2);
-    CopyWords_c((u32 *)(ri + 4), (u32 *)0x04000008u, 0x38);
-    CopyHalfwords_c(eToolkit_Unk200f3a0_Ptr, (u16 *)0x04000040u, 0xC);
+    *(u16 *)0x0400004Cu = ri->Unk_02;
+    CopyWords_c((u32 *)((u8 *)ri + 4), (u32 *)0x04000008u, 0x38);
+    CopyHalfwords_c((u16 *)eToolkit->Unk200f3a0_Ptr, (u16 *)0x04000040u, 0xC);
 
-    u9740 = eToolkit_Unk2009740_Ptr;
+    u9740 = eToolkit->Unk2009740_Ptr;
     *(u32 *)0x04000050u = u9740[0];
     *(u16 *)0x04000054u = *(u16 *)((u8 *)u9740 + 4);
 
-    *(u16 *)0x04000000u = *(u16 *)ri;
+    *(u16 *)0x04000000u = ri->Unk_00;
 }

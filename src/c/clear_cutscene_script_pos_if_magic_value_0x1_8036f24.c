@@ -1,14 +1,13 @@
-#include "types.h"
+#include "EWRAM.h"
 
-// Toolkit.CutsceneStatePtr at offset 0x10 -> 0x020093C0.
-// CutsceneState.CutsceneScriptPos at 0x1c, originalCutsceneScriptPos_40 at 0x40.
-#define eToolkit_CutsceneStatePtr (*(u32 **)0x020093C0u)
-
+// CutsceneState fields at byte offsets 0x1C (CutsceneScriptPos) and
+// 0x40 (originalCutsceneScriptPos_40). Use byte arithmetic since the
+// generated CutsceneState.h's field names differ.
 void clearCutsceneScriptPosIfMagicValue0x1_8036F24_c(void)
 {
-    u32 *cs = eToolkit_CutsceneStatePtr;
-    if (cs[0x1C / 4] == 0x1u) {
-        cs[0x1C / 4] = 0;
-        cs[0x40 / 4] = 0;
+    u8 *cs = (u8 *)eToolkit->CutsceneStatePtr;
+    if (*(u32 *)(cs + 0x1C) == 0x1u) {
+        *(u32 *)(cs + 0x1C) = 0;
+        *(u32 *)(cs + 0x40) = 0;
     }
 }

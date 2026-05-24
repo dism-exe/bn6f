@@ -1,6 +1,4 @@
-#include "types.h"
-
-#define eToolkit_Unk2004a8c_Ptr (*(u8 **)0x02009428u)  // toolkit + 0x78
+#include "EWRAM.h"
 
 extern u8 byte_20004E0[];
 
@@ -8,5 +6,5 @@ extern u8 byte_20004E0[];
 // writes to Unk2004a8c (toolkit offset 0x78) instead of Unk2004c20.
 void encryption_8006e3c_c(u32 offset)
 {
-    eToolkit_Unk2004a8c_Ptr[offset] = byte_20004E0[offset] ^ 0x6Fu;
+    eToolkit->Unk2004a8c_Ptr[offset] = byte_20004E0[offset] ^ 0x6Fu;
 }

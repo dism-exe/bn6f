@@ -1,10 +1,9 @@
-#include "types.h"
+#include "EWRAM.h"
 
-// eToolkit_S2001c04_Ptr at toolkit + 0x40 -> 0x020093F0
-#define eToolkit_S2001c04_Ptr (*(u8 **)0x020093F0u)
-
-// Sets S2001c04.byte[6] = 0.
+// Sets S2001c04.byte[6] = 0. S2001c04 has no named field at offset 6
+// in the current header — the ASM just touches the byte directly,
+// and we cast through u8* to keep that direct.
 void sub_811FB78_c(void)
 {
-    eToolkit_S2001c04_Ptr[6] = 0;
+    ((u8 *)eToolkit->S2001c04_Ptr)[6] = 0;
 }

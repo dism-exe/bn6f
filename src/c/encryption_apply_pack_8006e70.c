@@ -1,6 +1,4 @@
-#include "types.h"
-
-#define eToolkit_Unk2004c20_Ptr (*(u8 **)0x0200942Cu)  // toolkit + 0x7c
+#include "EWRAM.h"
 
 extern u8 byte_20008A0[];
 
@@ -8,5 +6,5 @@ extern u8 byte_20008A0[];
 // per-game Unk2004c20 buffer at the same offset.
 void encryption_applyPack_8006e70_c(u32 offset)
 {
-    eToolkit_Unk2004c20_Ptr[offset] = byte_20008A0[offset] ^ 0x81u;
+    eToolkit->Unk2004c20_Ptr[offset] = byte_20008A0[offset] ^ 0x81u;
 }
