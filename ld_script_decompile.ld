@@ -6,7 +6,11 @@ MEMORY
     ewram_region (w!x) : ORIGIN = 0x02000000, LENGTH = 0x40000
     iwram_region (w!x) : ORIGIN = 0x03000000, LENGTH = 0x8000
     vram_region (w!x) : ORIGIN = 0x06000000, LENGTH = 0x18000
-    rom_region (rx) : ORIGIN = 0x08000000, LENGTH = 0x800000
+    /* 8 MB matches the orig ROM; bumped to 16 MB so the .c_code
+     * tail of the decompile build (growing with conversions) has
+     * room. GBA hardware allows up to 32 MB. SHA-matching builds
+     * use ld_script.ld which still keeps the 8 MB layout. */
+    rom_region (rx) : ORIGIN = 0x08000000, LENGTH = 0x1000000
 }
 
 SECTIONS

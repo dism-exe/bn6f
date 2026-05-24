@@ -3131,6 +3131,7 @@ loc_803559C:
 	pop {r4-r7,pc}
 	thumb_func_end testSetClearFlags_803553c
 
+	.ifndef DECOMP_clearSetFlags_80355a8
 	thumb_func_start clearSetFlags_80355a8
 clearSetFlags_80355a8:
 	push {r4-r7,lr}
@@ -3149,6 +3150,12 @@ clearSetFlags_80355a8:
 	mov r0, #0
 	pop {r4-r7,pc}
 	thumb_func_end clearSetFlags_80355a8
+	.else
+	thumb_func_start clearSetFlags_80355a8
+clearSetFlags_80355a8:
+	decomp_trampoline clearSetFlags_80355a8_c, 46
+	thumb_func_end clearSetFlags_80355a8
+	.endif
 
 	thumb_func_start sub_80355DE
 sub_80355DE:

@@ -222,3 +222,4 @@ TestEventFlagFromImmediate
 sub_809F90C
 SetPlayerCanMoveEventFlag
 owPlayer_setS200ace0_fixedAnimationSelect_809e13c
+clearSetFlags_80355a8
