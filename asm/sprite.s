@@ -411,6 +411,7 @@ off_80028D0:
 	thumb_func_end sub_80028C0
 	.endif
 
+	.ifndef DECOMP_initUncompSpriteState_80028d4
 	thumb_func_start initUncompSpriteState_80028d4
 initUncompSpriteState_80028d4: // (a0: *const ?) -> ()
 	push {r5,lr}
@@ -448,6 +449,12 @@ initUncompSpriteState_80028d4: // (a0: *const ?) -> ()
 
 	pop {r5,pc}
 	thumb_func_end initUncompSpriteState_80028d4
+	.else
+	thumb_func_start initUncompSpriteState_80028d4
+initUncompSpriteState_80028d4:
+	decomp_trampoline initUncompSpriteState_80028d4_c, 42
+	thumb_func_end initUncompSpriteState_80028d4
+	.endif
 
 	// Load the sprite tilesets and palettes according to the map group's
 	// sprite_load_data_struct list (e.g. byte_804E6AC).

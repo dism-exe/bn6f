@@ -2604,6 +2604,7 @@ TryCutsceneSkip:
 	pop {r4-r7,pc}
 	thumb_func_end TryCutsceneSkip
 
+	.ifndef DECOMP_SetCutsceneCameraScript
 	thumb_func_start SetCutsceneCameraScript
 SetCutsceneCameraScript:
 	push {lr}
@@ -2615,6 +2616,12 @@ SetCutsceneCameraScript:
 	bl camera_writeUnk03_14_80301b2
 	pop {pc}
 	thumb_func_end SetCutsceneCameraScript
+	.else
+	thumb_func_start SetCutsceneCameraScript
+SetCutsceneCameraScript:
+	decomp_trampoline SetCutsceneCameraScript_c, 10
+	thumb_func_end SetCutsceneCameraScript
+	.endif
 
 	thumb_func_start cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
 cutsceneCamera_focusCameraOnPlayerMaybe_8036faa:

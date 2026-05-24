@@ -3693,7 +3693,7 @@ off_8047D98:
 	.word byte_2019A00
 off_8047D9C:
 	.word byte_2011C10
-byte_8047DA0:
+byte_8047DA0::
 	.byte 0x1
 byte_8047DA1:
 	.byte 0x1
@@ -4035,6 +4035,7 @@ loc_8048C5C:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8048C24
 
+	.ifndef DECOMP_copy_8048C68
 	thumb_func_start copy_8048C68
 copy_8048C68:
 	push {lr}
@@ -4065,7 +4066,14 @@ loc_8048C90:
 locret_8048C96:
 	pop {pc}
 	thumb_func_end copy_8048C68
+	.else
+	thumb_func_start copy_8048C68
+copy_8048C68:
+	decomp_trampoline copy_8048C68_c, 40
+	thumb_func_end copy_8048C68
+	.endif
 
+	.ifndef DECOMP_copy_8048C98
 	thumb_func_start copy_8048C98
 copy_8048C98:
 	push {lr}
@@ -4099,6 +4107,19 @@ off_8048CC4:
 dword_8048CC8:
 	.word 0xE80
 	thumb_func_end copy_8048C98
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start copy_8048C98
+copy_8048C98:
+	decomp_trampoline copy_8048C98_c, 36
+	.balign 4, 0
+off_8048CC4:
+	.word byte_8047DA0
+dword_8048CC8:
+	.word 0xE80
+	thumb_func_end copy_8048C98
+	.endif
 
 	thumb_local_start
 sub_8048CCC:
