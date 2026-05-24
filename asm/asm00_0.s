@@ -3415,6 +3415,7 @@ off_80018DC:
 	.word sub_3005EBA+1
 	thumb_func_end call_sub_3005EBA
 
+	.ifndef DECOMP_sub_80018E0
 	thumb_func_start sub_80018E0
 sub_80018E0:
 	push {r6,r7,lr}
@@ -3460,6 +3461,12 @@ loc_800191A:
 	bgt loc_800191A
 	pop {r6,r7,pc}
 	thumb_func_end sub_80018E0
+	.else
+	thumb_func_start sub_80018E0
+sub_80018E0:
+	decomp_trampoline_r3safe sub_80018E0_c, 64
+	thumb_func_end sub_80018E0
+	.endif
 
 	thumb_func_start sub_8001930
 sub_8001930:
