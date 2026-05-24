@@ -561,6 +561,7 @@ ZeroFillByHalfword:
 /// Fill r0 with zero, using words.
 /// Size is in r1, in bytes.
 /// Source, destination, and size must be word compatible
+	.ifndef DECOMP_ZeroFillByWord
 	thumb_func_start ZeroFillByWord
 ZeroFillByWord: // (mut_mem: *mut (), num_bytes: usize) -> ()
 	push {r0-r3,lr}
@@ -579,6 +580,12 @@ ZeroFillByWord: // (mut_mem: *mut (), num_bytes: usize) -> ()
 .WordFillCpuSetMask_80008FC:
 	.word 0x5000000
 	thumb_func_end ZeroFillByWord
+	.else
+	thumb_func_start ZeroFillByWord
+ZeroFillByWord:
+	decomp_trampoline ZeroFillByWord_c, 24
+	thumb_func_end ZeroFillByWord
+	.endif
 
 // (int a1, int a2) -> void
 // Fill r0 with zero, in blocks of eight words.
@@ -784,6 +791,7 @@ HalfwordFill:
 // Fill r0 with r2, where r2 is treated as a word.
 // Size is in r1, in bytes.
 // Source, destination, and size must be word compatible
+	.ifndef DECOMP_WordFill
 	thumb_func_start WordFill
 WordFill:
 	push {r0-r3,lr}
@@ -802,6 +810,12 @@ WordFill:
 .WordFillCpuSetMask_80009A8:
 	.word 0x5000000
 	thumb_func_end WordFill
+	.else
+	thumb_func_start WordFill
+WordFill:
+	decomp_trampoline WordFill_c, 24
+	thumb_func_end WordFill
+	.endif
 
 // Fill r0 with r2, where r2 is treated as a word.
 // Size is in r1, in bytes.
@@ -3075,6 +3089,7 @@ dword_8001804:
 	.word 0x5000000
 	thumb_func_end main_zeroFill_80017EC
 
+	.ifndef DECOMP_copyPalletesToIWRAM_8001808
 	thumb_func_start copyPalletesToIWRAM_8001808
 copyPalletesToIWRAM_8001808:
 	push {lr}
@@ -3090,6 +3105,12 @@ off_8001818:
 dword_800181C:
 	.word 0x5000000
 	thumb_func_end copyPalletesToIWRAM_8001808
+	.else
+	thumb_func_start copyPalletesToIWRAM_8001808
+copyPalletesToIWRAM_8001808:
+	decomp_trampoline copyPalletesToIWRAM_8001808_c, 16
+	thumb_func_end copyPalletesToIWRAM_8001808
+	.endif
 
 	thumb_func_start zeroFill_e2009740
 zeroFill_e2009740:
@@ -5254,6 +5275,7 @@ off_800264C:
 	.word unk_200F388
 	thumb_func_end copy_800260C
 
+	.ifndef DECOMP_copyPalletesToIWRAM_8002650
 	thumb_func_start copyPalletesToIWRAM_8002650
 copyPalletesToIWRAM_8002650:
 	push {lr}
@@ -5269,6 +5291,12 @@ off_8002660:
 dword_8002664:
 	.word 0x5000200
 	thumb_func_end copyPalletesToIWRAM_8002650
+	.else
+	thumb_func_start copyPalletesToIWRAM_8002650
+copyPalletesToIWRAM_8002650:
+	decomp_trampoline copyPalletesToIWRAM_8002650_c, 16
+	thumb_func_end copyPalletesToIWRAM_8002650
+	.endif
 
 	thumb_func_start copy_8002668
 copy_8002668:

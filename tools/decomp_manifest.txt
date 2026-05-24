@@ -25,4 +25,9 @@ ZeroFillByByte
 ZeroFillByHalfword
 ZeroFillByEightWords
 FillByEightWords
+ZeroFillByWord
+WordFill
+copyPalletesToIWRAM_8001808
+copyPalletesToIWRAM_8002650
+copyObjAttributesToIWRAM_802FE0C
 eStruct200BC30_getJumpOffset00

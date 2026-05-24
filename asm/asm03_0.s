@@ -20034,12 +20034,13 @@ off_802FE08:
 	.word tupleArr_3002590
 	thumb_func_end sub_802FDB0
 
+	.ifndef DECOMP_copyObjAttributesToIWRAM_802FE0C
 	thumb_func_start copyObjAttributesToIWRAM_802FE0C
 copyObjAttributesToIWRAM_802FE0C:
 	push {lr}
 	ldr r0, off_802FE1C // =iObjectAttr3001D70
-	ldr r1, dword_802FE20 // =0x7000000 
-	ldr r2, off_802FE24 // =0x400 
+	ldr r1, dword_802FE20 // =0x7000000
+	ldr r2, off_802FE24 // =0x400
 	bl CopyByEightWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	.balign 4, 0
@@ -20050,6 +20051,12 @@ dword_802FE20:
 off_802FE24:
 	.word 0x400
 	thumb_func_end copyObjAttributesToIWRAM_802FE0C
+	.else
+	thumb_func_start copyObjAttributesToIWRAM_802FE0C
+copyObjAttributesToIWRAM_802FE0C:
+	decomp_trampoline copyObjAttributesToIWRAM_802FE0C_c, 20
+	thumb_func_end copyObjAttributesToIWRAM_802FE0C
+	.endif
 
 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 	thumb_func_start sub_802FE28
