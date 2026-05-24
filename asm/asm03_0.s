@@ -20258,14 +20258,15 @@ loc_802FF26:
 	mov pc, lr
 	thumb_func_end sub_802FF10
 
+	.ifndef DECOMP_cleareMemory_802FF2C
 	thumb_func_start cleareMemory_802FF2C
 cleareMemory_802FF2C:
 	push {lr}
-	ldr r0, off_802FF44 // =dword_2009A2C 
+	ldr r0, off_802FF44 // =dword_2009A2C
 	mov r1, #0
 	str r1, [r0]
-	ldr r0, off_802FF48 // =word_200A6F0 
-	ldr r1, off_802FF40 // =0x180 
+	ldr r0, off_802FF48 // =word_200A6F0
+	ldr r1, off_802FF40 // =0x180
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {pc}
 	.balign 4, 0
@@ -20276,6 +20277,23 @@ off_802FF44:
 off_802FF48:
 	.word word_200A6F0
 	thumb_func_end cleareMemory_802FF2C
+	.else
+	// Pool labels (off_802FF40/44/48) are referenced by sub_802FE48,
+	// sub_802FE6A, sub_802FE7A and must remain at their original
+	// addresses. Trampoline is 8 bytes; pad to 20, then re-emit the
+	// pool at its original offset (20..32 from function start).
+	thumb_func_start cleareMemory_802FF2C
+cleareMemory_802FF2C:
+	decomp_trampoline cleareMemory_802FF2C_c, 12
+	.balign 4, 0
+off_802FF40:
+	.word 0x180
+off_802FF44:
+	.word dword_2009A2C
+off_802FF48:
+	.word word_200A6F0
+	thumb_func_end cleareMemory_802FF2C
+	.endif
 
 // file bounds: Here we enter clearly camera territory
 
