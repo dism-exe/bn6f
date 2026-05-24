@@ -493,11 +493,30 @@ fn smoke_test(rom: &str, frames: u32) {
     }
 }
 
-fn track(rom: &str, frames: u32, symbols_path: &str, output: Option<&str>) {
+fn load_input_file(path: &str) -> Vec<u16> {
+    let bytes = fs::read(path).unwrap_or_else(|e| {
+        eprintln!("read input {path}: {e}");
+        process::exit(1);
+    });
+    if bytes.len() % 2 != 0 {
+        eprintln!("input file {path} has odd byte count {}", bytes.len());
+        process::exit(1);
+    }
+    bytes.chunks_exact(2).map(|c| u16::from_le_bytes([c[0], c[1]])).collect()
+}
+
+fn track(rom: &str, frames: u32, symbols_path: &str, output: Option<&str>, input_path: Option<&str>) {
     eprintln!("=== bn6f-track function tracker ===");
     eprintln!("rom: {rom}");
     eprintln!("frames: {frames}");
     eprintln!("symbols: {symbols_path}");
+    let inputs: Vec<u16> = if let Some(p) = input_path {
+        let v = load_input_file(p);
+        eprintln!("input: {p}  {} frames of joypad masks", v.len());
+        v
+    } else {
+        Vec::new()
+    };
 
     let symbols = read_symbols(symbols_path).unwrap_or_else(|e| {
         eprintln!("read_symbols: {e}");
@@ -543,7 +562,11 @@ fn track(rom: &str, frames: u32, symbols_path: &str, output: Option<&str>) {
     eprintln!("armed {} hooks via O(1) PC dispatcher", armed);
 
     let t0 = Instant::now();
-    core.run_frames_debugged(frames);
+    if inputs.is_empty() {
+        core.run_frames_debugged(frames);
+    } else {
+        core.run_frames_debugged_with_input(frames, &inputs);
+    }
     let elapsed = t0.elapsed();
     let final_frame = core.frame_counter();
     let fps = frames as f64 / elapsed.as_secs_f64();
@@ -649,18 +672,7 @@ fn record(
     eprintln!("rom: {rom}  frames: {frames}");
     eprintln!("session: {session_dir}");
     let inputs: Vec<u16> = if let Some(p) = input_path {
-        let bytes = fs::read(p).unwrap_or_else(|e| {
-            eprintln!("read input {p}: {e}");
-            process::exit(1);
-        });
-        if bytes.len() % 2 != 0 {
-            eprintln!("input file {p} has odd byte count {}", bytes.len());
-            process::exit(1);
-        }
-        let v: Vec<u16> = bytes
-            .chunks_exact(2)
-            .map(|c| u16::from_le_bytes([c[0], c[1]]))
-            .collect();
+        let v = load_input_file(p);
         eprintln!("input: {p}  {} frames of joypad masks", v.len());
         v
     } else {
@@ -1018,10 +1030,27 @@ fn main() {
             smoke_test(rom, frames);
         }
         "track" => {
+            // track <rom> <frames> <symbols> [output] [--input <path>]
             let rom = args.get(2).unwrap_or_else(|| usage(&args[0]));
             let frames: u32 = args.get(3).and_then(|s| s.parse().ok()).unwrap_or(300);
             let symbols = args.get(4).unwrap_or_else(|| usage(&args[0]));
-            track(rom, frames, symbols, args.get(5).map(String::as_str));
+            let mut rest = &args[5..];
+            let mut output: Option<&str> = None;
+            if let Some(a) = rest.first() {
+                if a != "--input" {
+                    output = Some(a.as_str());
+                    rest = &rest[1..];
+                }
+            }
+            let mut input_path: Option<&str> = None;
+            if rest.first().map(String::as_str) == Some("--input") {
+                input_path = rest.get(1).map(String::as_str);
+                if input_path.is_none() {
+                    eprintln!("--input needs a path");
+                    usage(&args[0]);
+                }
+            }
+            track(rom, frames, symbols, output, input_path);
         }
         "record" => {
             // record <rom> <frames> <symbols> <session_dir> [--input <path>] <targets...>
@@ -1057,7 +1086,7 @@ fn main() {
             let rom = &args[1];
             let frames: u32 = args.get(2).and_then(|s| s.parse().ok()).unwrap_or(60);
             match args.get(3) {
-                Some(symbols) => track(rom, frames, symbols, args.get(4).map(String::as_str)),
+                Some(symbols) => track(rom, frames, symbols, args.get(4).map(String::as_str), None),
                 None => smoke_test(rom, frames),
             }
         }
