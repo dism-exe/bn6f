@@ -1184,6 +1184,7 @@ locret_8000B2E:
 
 // For the uncompressed tuple3[0] case, it just copies tuple3[0] into tuple3[1] by tuple3[2] bytes, also routing to copies appropriately.
 // It terminates when it encounters a NULL after processing triplets.
+	.ifndef DECOMP_decompAndCopyData
 	thumb_func_start decompAndCopyData
 decompAndCopyData:
 	push {r4-r7,lr}
@@ -1280,6 +1281,12 @@ continue_advance3Elements_8000B88:
 ret_reachedTerminator_8000B8C:
 	pop {r4-r7,pc}
 	thumb_func_end decompAndCopyData
+	.else
+	thumb_func_start decompAndCopyData
+decompAndCopyData:
+	decomp_trampoline decompAndCopyData_c, 86
+	thumb_func_end decompAndCopyData
+	.endif
 
 // (u32 *dataRefs) -> void
 // [break] open PET

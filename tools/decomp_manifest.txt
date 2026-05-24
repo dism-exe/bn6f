@@ -219,6 +219,12 @@ SetScreenFade
 # the ones whose fall-through target IS in the manifest.)
 SetEventFlagFromImmediate
 TestEventFlagFromImmediate
+
+# BIOS SWI thunk variants — just `svc N; bx lr`, equivalent to the
+# SWI_* names already in the find_decomp_candidates.py BIOS allowlist.
+# Listed here so chain-finding treats them as converted.
+SWI_LZ77UnCompReadNormalWrite8bit
+
 sub_809F90C
 SetPlayerCanMoveEventFlag
 owPlayer_setS200ace0_fixedAnimationSelect_809e13c
@@ -238,3 +244,4 @@ sub_803EBC8
 doPETEffect_8033fc0
 sub_800B110
 sub_8004D48
+decompAndCopyData
