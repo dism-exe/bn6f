@@ -3321,6 +3321,7 @@ locret_8035736:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8035714
 
+	.ifndef DECOMP_sub_8035738
 	thumb_func_start sub_8035738
 sub_8035738:
 	push {r4-r7,lr}
@@ -3342,6 +3343,12 @@ loc_803574C:
 locret_8035754:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8035738
+	.else
+	thumb_func_start sub_8035738
+sub_8035738:
+	decomp_trampoline sub_8035738_c, 22
+	thumb_func_end sub_8035738
+	.endif
 
 	thumb_local_start
 sub_8035756:

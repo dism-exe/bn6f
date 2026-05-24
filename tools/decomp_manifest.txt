@@ -157,3 +157,7 @@ SetCutsceneCameraScript
 copy_8048C68
 copy_8048C98
 initUncompSpriteState_80028d4
+cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
+cutscene_8036EFE
+playCertainMapMusicBasedOnEventByte_8036e44
+sub_8035738

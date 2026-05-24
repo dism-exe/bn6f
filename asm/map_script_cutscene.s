@@ -1494,7 +1494,7 @@ ReadMapScriptWord: // 80360C8
 	thumb_func_end ReadMapScriptWord
 
 	.balign 4, 0
-off_80360E4:
+off_80360E4::
 	.word dword_80362A4
 	.word dword_80362EC
 	.word dword_80362A4
@@ -2374,6 +2374,7 @@ dword_8036D8C:
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
 
+	.ifndef DECOMP_playCertainMapMusicBasedOnEventByte_8036e44
 	thumb_func_start playCertainMapMusicBasedOnEventByte_8036e44
 playCertainMapMusicBasedOnEventByte_8036e44:
 	push {r4-r7,lr}
@@ -2406,6 +2407,12 @@ locret_8036E72:
 	pop {r4-r7,pc}
 	.pool // 8036E74
 	thumb_func_end playCertainMapMusicBasedOnEventByte_8036e44
+	.else
+	thumb_func_start playCertainMapMusicBasedOnEventByte_8036e44
+playCertainMapMusicBasedOnEventByte_8036e44:
+	decomp_trampoline playCertainMapMusicBasedOnEventByte_8036e44_c, 44
+	thumb_func_end playCertainMapMusicBasedOnEventByte_8036e44
+	.endif
 
 	thumb_func_start PlayMapMusic
 PlayMapMusic: // () -> ()
@@ -2487,6 +2494,7 @@ cutscene_8036ED4:
 	thumb_func_end cutscene_8036ED4
 	.endif
 
+	.ifndef DECOMP_cutscene_8036EFE
 	thumb_func_start cutscene_8036EFE
 cutscene_8036EFE:
 	push {r4-r7,lr}
@@ -2507,6 +2515,17 @@ cutscene_8036EFE:
 off_8036F20:
 	.word DummyCutsceneScript
 	thumb_func_end cutscene_8036EFE
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start cutscene_8036EFE
+cutscene_8036EFE:
+	decomp_trampoline cutscene_8036EFE_c, 24
+	.balign 4, 0
+off_8036F20:
+	.word DummyCutsceneScript
+	thumb_func_end cutscene_8036EFE
+	.endif
 
 	.ifndef DECOMP_clearCutsceneScriptPosIfMagicValue0x1_8036F24
 	thumb_func_start clearCutsceneScriptPosIfMagicValue0x1_8036F24
@@ -2623,6 +2642,7 @@ SetCutsceneCameraScript:
 	thumb_func_end SetCutsceneCameraScript
 	.endif
 
+	.ifndef DECOMP_cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
 	thumb_func_start cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
 cutsceneCamera_focusCameraOnPlayerMaybe_8036faa:
 	push {lr}
@@ -2634,6 +2654,12 @@ cutsceneCamera_focusCameraOnPlayerMaybe_8036faa:
 	bl camera_writeUnk03_14_80301b2
 	pop {pc}
 	thumb_func_end cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
+	.else
+	thumb_func_start cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
+cutsceneCamera_focusCameraOnPlayerMaybe_8036faa:
+	decomp_trampoline cutsceneCamera_focusCameraOnPlayerMaybe_8036faa_c, 8
+	thumb_func_end cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
+	.endif
 
 	thumb_local_start
 RunCutsceneCameraCommand:
