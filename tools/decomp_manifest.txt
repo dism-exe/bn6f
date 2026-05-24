@@ -59,6 +59,7 @@ ZeroFillObjectInteractionAreas_800378C
 ZeroFill_byte_3001960
 addChipsToChipPackOffset_8021b5a
 battle_getFlags
+battle_isTimeStop
 camera_writeUnk03_14_80301b2
 chatbox_8040818
 chatbox_clear_eFlags2009F38

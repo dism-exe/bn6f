@@ -15337,6 +15337,7 @@ off_800A094:
 	.word dword_2036820
 	thumb_func_end sub_800A07C
 
+	.ifndef DECOMP_battle_isTimeStop
 	thumb_func_start battle_isTimeStop
 battle_isTimeStop:
 	push {lr}
@@ -15345,6 +15346,12 @@ battle_isTimeStop:
 	and r0, r1
 	pop {pc}
 	thumb_func_end battle_isTimeStop
+	.else
+	thumb_func_start battle_isTimeStop
+battle_isTimeStop:
+	decomp_trampoline battle_isTimeStop_c, 4
+	thumb_func_end battle_isTimeStop
+	.endif
 
 	thumb_func_start battle_isTimeStopPauseOrBattleFlags0x20_800a0a4
 battle_isTimeStopPauseOrBattleFlags0x20_800a0a4:
