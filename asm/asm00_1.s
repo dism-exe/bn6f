@@ -15704,6 +15704,7 @@ battle_clearFlags:
 	mov pc, lr
 	thumb_func_end battle_clearFlags
 
+	.ifndef DECOMP_battle_getFlags
 	thumb_func_start battle_getFlags
 // 0x2 - cust gauge full
 // 0x4 - timestop
@@ -15713,6 +15714,12 @@ battle_getFlags:
 	ldrh r0, [r1,#oBattleState_Unk_32]
 	mov pc, lr
 	thumb_func_end battle_getFlags
+	.else
+	thumb_func_start battle_getFlags
+battle_getFlags:
+	decomp_trampoline battle_getFlags_c, 0
+	thumb_func_end battle_getFlags
+	.endif
 
 	thumb_local_start
 sub_800A2F8: // () -> ()
