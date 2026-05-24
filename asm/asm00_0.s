@@ -3055,6 +3055,7 @@ renderInfo_8001788: // () -> ()
 	mov pc, lr
 	thumb_func_end renderInfo_8001788
 
+	.ifndef DECOMP_renderInfo_80017A0
 	thumb_func_start renderInfo_80017A0
 renderInfo_80017A0: // () -> ()
 	mov r0, r10
@@ -3063,6 +3064,12 @@ renderInfo_80017A0: // () -> ()
 	strh r1, [r0,#oRenderInfo_Unk_02]
 	mov pc, lr
 	thumb_func_end renderInfo_80017A0
+	.else
+	thumb_func_start renderInfo_80017A0
+renderInfo_80017A0:
+	decomp_trampoline renderInfo_80017A0_c, 2
+	thumb_func_end renderInfo_80017A0
+	.endif
 
 	thumb_func_start zeroFillVRAM
 zeroFillVRAM: // () -> ()
@@ -3091,6 +3098,7 @@ dword_80017DC:
 	.word 0x600C000
 	thumb_func_end zeroFillVRAM
 
+	.ifndef DECOMP_ZeroFill_byte_3001960
 	thumb_func_start ZeroFill_byte_3001960
 ZeroFill_byte_3001960:
 	push {lr}
@@ -3099,6 +3107,12 @@ ZeroFill_byte_3001960:
 	bl ZeroFillByHalfword
 	pop {pc}
 	thumb_func_end ZeroFill_byte_3001960
+	.else
+	thumb_func_start ZeroFill_byte_3001960
+ZeroFill_byte_3001960:
+	decomp_trampoline ZeroFill_byte_3001960_c, 4
+	thumb_func_end ZeroFill_byte_3001960
+	.endif
 
 	thumb_func_start main_zeroFill_80017EC
 main_zeroFill_80017EC:
@@ -3140,6 +3154,7 @@ copyPalletesToIWRAM_8001808:
 	thumb_func_end copyPalletesToIWRAM_8001808
 	.endif
 
+	.ifndef DECOMP_zeroFill_e2009740
 	thumb_func_start zeroFill_e2009740
 zeroFill_e2009740:
 	push {lr}
@@ -3151,7 +3166,14 @@ zeroFill_e2009740:
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end zeroFill_e2009740
+	.else
+	thumb_func_start zeroFill_e2009740
+zeroFill_e2009740:
+	decomp_trampoline zeroFill_e2009740_c, 6
+	thumb_func_end zeroFill_e2009740
+	.endif
 
+	.ifndef DECOMP_zeroFill_e200F3A0
 	thumb_func_start zeroFill_e200F3A0
 zeroFill_e200F3A0:
 	push {lr}
@@ -3163,6 +3185,12 @@ zeroFill_e200F3A0:
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end zeroFill_e200F3A0
+	.else
+	thumb_func_start zeroFill_e200F3A0
+zeroFill_e200F3A0:
+	decomp_trampoline zeroFill_e200F3A0_c, 4
+	thumb_func_end zeroFill_e200F3A0
+	.endif
 
 	thumb_func_start ZeroFillGFX30025c0
 ZeroFillGFX30025c0:
@@ -3619,6 +3647,7 @@ off_8001AB8:
 	.word unk_200DF40
 	thumb_func_end nullsub_39
 
+	.ifndef DECOMP_zeroFill_e20094C0
 	thumb_func_start zeroFill_e20094C0
 zeroFill_e20094C0:
 	push {lr}
@@ -3632,6 +3661,12 @@ zeroFill_e20094C0:
 off_8001B08:
 	.word 0x1B0
 	thumb_func_end zeroFill_e20094C0
+	.else
+	thumb_func_start zeroFill_e20094C0
+zeroFill_e20094C0:
+	decomp_trampoline zeroFill_e20094C0_c, 8
+	thumb_func_end zeroFill_e20094C0
+	.endif
 
 	thumb_local_start
 sub_8001B0C:
@@ -5072,6 +5107,7 @@ loc_8002498:
 	pop {r4-r7,pc}
 	thumb_func_end run_eStruct200a6a0_Callback_8002484
 
+	.ifndef DECOMP_zeroFill_80024A2
 	thumb_func_start zeroFill_80024A2
 zeroFill_80024A2:
 	push {r4-r7,lr}
@@ -5082,6 +5118,12 @@ zeroFill_80024A2:
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end zeroFill_80024A2
+	.else
+	thumb_func_start zeroFill_80024A2
+zeroFill_80024A2:
+	decomp_trampoline zeroFill_80024A2_c, 2
+	thumb_func_end zeroFill_80024A2
+	.endif
 
 	thumb_func_start sub_80024AE
 sub_80024AE:

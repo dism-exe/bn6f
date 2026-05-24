@@ -12921,6 +12921,7 @@ off_803F4C4:
 	.word byte_200AC20
 	thumb_func_end sub_803F460
 
+	.ifndef DECOMP_clear_e200AD04
 	thumb_func_start clear_e200AD04
 clear_e200AD04: // () -> ()
 	push {lr}
@@ -12931,6 +12932,12 @@ clear_e200AD04: // () -> ()
 
 	pop {pc}
 	thumb_func_end clear_e200AD04
+	.else
+	thumb_func_start clear_e200AD04
+clear_e200AD04:
+	decomp_trampoline clear_e200AD04_c, 4
+	thumb_func_end clear_e200AD04
+	.endif
 
 	thumb_local_start
 sub_803F4D4:

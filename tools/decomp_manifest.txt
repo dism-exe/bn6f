@@ -42,3 +42,11 @@ ClearEventFlag
 SetRenderInfoLCDControl
 copyToVRAMAndClear_iBGTileIdBlocks_Ptr
 render_800172C
+encryption_applyPack_8006e70
+clear_e200AD04
+ZeroFill_byte_3001960
+zeroFill_80024A2
+zeroFill_e20094C0
+renderInfo_80017A0
+zeroFill_e2009740
+zeroFill_e200F3A0

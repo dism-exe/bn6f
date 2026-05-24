@@ -7786,6 +7786,7 @@ off_8006E6C:
 	thumb_func_end encryption_navicustMaybe_8006e50
 
 // (int idx_20008A0) -> void
+	.ifndef DECOMP_encryption_applyPack_8006e70
 	thumb_func_start encryption_applyPack_8006e70
 encryption_applyPack_8006e70:
 	push {r1-r7,lr}
@@ -7799,6 +7800,12 @@ encryption_applyPack_8006e70:
 	strb r1, [r7,r0]
 	pop {r1-r7,pc}
 	thumb_func_end encryption_applyPack_8006e70
+	.else
+	thumb_func_start encryption_applyPack_8006e70
+encryption_applyPack_8006e70:
+	decomp_trampoline encryption_applyPack_8006e70_c, 12
+	thumb_func_end encryption_applyPack_8006e70
+	.endif
 
 	thumb_func_start encryption_testPack_8006e84
 encryption_testPack_8006e84:

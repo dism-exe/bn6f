@@ -168,7 +168,7 @@ def main():
             continue
         # Demo coverage
         calls, exits = counts.get(sym, (0, 0))
-        if calls < 5 or calls != exits:
+        if calls < 1 or calls != exits:
             continue
         candidates.append((sym, size, calls, len(callers)))
 
