@@ -21090,6 +21090,7 @@ nullsub_60:
 	mov pc, lr
 	thumb_func_end nullsub_60
 
+	.ifndef DECOMP_initMapTilesState_803037c
 	thumb_func_start initMapTilesState_803037c
 // r0 - map group
 // r1 - map number
@@ -21175,6 +21176,12 @@ off_80303E0:
 off_80303E4:
 	.word off_8032F88 // Nullable<[*const [[*const Fn; 3]]>; INTERNET_NUM_GROUPS]
 	thumb_func_end initMapTilesState_803037c
+	.else
+	thumb_func_start initMapTilesState_803037c
+initMapTilesState_803037c:
+	decomp_trampoline initMapTilesState_803037c_c, 100
+	thumb_func_end initMapTilesState_803037c
+	.endif
 
 	thumb_func_start sub_80303E8
 sub_80303E8:
