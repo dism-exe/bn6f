@@ -1008,6 +1008,7 @@ dword_8033FBC:
 	.word 0xC7AC
 	thumb_func_end sub_8033F80
 
+	.ifndef DECOMP_doPETEffect_8033fc0
 	thumb_func_start doPETEffect_8033fc0
 doPETEffect_8033fc0:
 	push {r5,lr}
@@ -1030,6 +1031,12 @@ locret_8033FD4:
 off_8033FD8:
 	.word eS2011E30
 	thumb_func_end doPETEffect_8033fc0
+	.else
+	thumb_func_start doPETEffect_8033fc0
+doPETEffect_8033fc0:
+	decomp_trampoline doPETEffect_8033fc0_c, 20
+	thumb_func_end doPETEffect_8033fc0
+	.endif
 
 	thumb_func_start sub_8033FDC
 sub_8033FDC:
