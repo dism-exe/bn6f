@@ -173,6 +173,25 @@ impl Core {
         }
     }
 
+    /// Drive N frames with per-frame joypad input. `inputs[i]` is the
+    /// "pressed" bitmask for frame i (1 = held, our convention — not
+    /// the GBA hardware's inverted KEYINPUT). If the input log is
+    /// shorter than `n`, the remaining frames run with no buttons.
+    /// Bits: A=0x1 B=0x2 SEL=0x4 START=0x8 R=0x10 L=0x20 U=0x40 D=0x80
+    ///       Rshoulder=0x100 Lshoulder=0x200.
+    fn run_frames_debugged_with_input(&mut self, n: u32, inputs: &[u16]) {
+        let set_keys = unsafe { (*self.raw).setKeys.expect("mCore.setKeys is null") };
+        let raw = self.raw;
+        let dbg = self.debugger.as_mut().expect("attach_debugger() first").as_mut();
+        for i in 0..n {
+            let mask = inputs.get(i as usize).copied().unwrap_or(0) as u32;
+            unsafe {
+                set_keys(raw, mask);
+                mgba_sys::mDebuggerRunFrame(dbg as *mut _);
+            }
+        }
+    }
+
     fn pc(&self) -> u32 {
         let mut out: u32 = 0;
         let reg = CString::new("r15").unwrap();
@@ -611,10 +630,29 @@ fn record(
     symbols_path: &str,
     session_dir: &str,
     target_hex: &[String],
+    input_path: Option<&str>,
 ) {
     eprintln!("=== bn6f-track record ===");
     eprintln!("rom: {rom}  frames: {frames}");
     eprintln!("session: {session_dir}");
+    let inputs: Vec<u16> = if let Some(p) = input_path {
+        let bytes = fs::read(p).unwrap_or_else(|e| {
+            eprintln!("read input {p}: {e}");
+            process::exit(1);
+        });
+        if bytes.len() % 2 != 0 {
+            eprintln!("input file {p} has odd byte count {}", bytes.len());
+            process::exit(1);
+        }
+        let v: Vec<u16> = bytes
+            .chunks_exact(2)
+            .map(|c| u16::from_le_bytes([c[0], c[1]]))
+            .collect();
+        eprintln!("input: {p}  {} frames of joypad masks", v.len());
+        v
+    } else {
+        Vec::new()
+    };
 
     let symbols = read_symbols(symbols_path).unwrap_or_else(|e| {
         eprintln!("read_symbols: {e}");
@@ -681,7 +719,11 @@ fn record(
     core.attach_debugger();
 
     let t0 = Instant::now();
-    core.run_frames_debugged(frames);
+    if inputs.is_empty() {
+        core.run_frames_debugged(frames);
+    } else {
+        core.run_frames_debugged_with_input(frames, &inputs);
+    }
     let elapsed = t0.elapsed();
     eprintln!(
         "emulated {} frames in {:.3}s ({:.1} fps)",
@@ -969,16 +1011,27 @@ fn main() {
             track(rom, frames, symbols, args.get(5).map(String::as_str));
         }
         "record" => {
+            // record <rom> <frames> <symbols> <session_dir> [--input <path>] <targets...>
             let rom = args.get(2).unwrap_or_else(|| usage(&args[0]));
             let frames: u32 =
                 args.get(3).and_then(|s| s.parse().ok()).unwrap_or_else(|| usage(&args[0]));
             let symbols = args.get(4).unwrap_or_else(|| usage(&args[0]));
             let session_dir = args.get(5).unwrap_or_else(|| usage(&args[0]));
-            if args.len() < 7 {
+            let mut rest = &args[6..];
+            let mut input_path: Option<String> = None;
+            if rest.first().map(String::as_str) == Some("--input") {
+                input_path = rest.get(1).cloned();
+                if input_path.is_none() {
+                    eprintln!("--input needs a path");
+                    usage(&args[0]);
+                }
+                rest = &rest[2..];
+            }
+            if rest.is_empty() {
                 usage(&args[0]);
             }
-            let targets: Vec<String> = args[6..].to_vec();
-            record(rom, frames, symbols, session_dir, &targets);
+            let targets: Vec<String> = rest.to_vec();
+            record(rom, frames, symbols, session_dir, &targets, input_path.as_deref());
         }
         "replay" => {
             let rom = args.get(2).unwrap_or_else(|| usage(&args[0]));
