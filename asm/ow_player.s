@@ -1925,6 +1925,7 @@ off_809E060:
 	.word eStruct2000aa0
 	thumb_func_end sub_809E04C
 
+	.ifndef DECOMP_spawnOWPlayerObjectForEnterMap_809e064
 	thumb_func_start spawnOWPlayerObjectForEnterMap_809e064
 spawnOWPlayerObjectForEnterMap_809e064:
 	push {r4,r6,r7,lr}
@@ -1947,6 +1948,12 @@ spawnOWPlayerObjectForEnterMap_809e064:
 locret_809E088:
 	pop {r4,r6,r7,pc}
 	thumb_func_end spawnOWPlayerObjectForEnterMap_809e064
+	.else
+	thumb_func_start spawnOWPlayerObjectForEnterMap_809e064
+spawnOWPlayerObjectForEnterMap_809e064:
+	decomp_trampoline spawnOWPlayerObjectForEnterMap_809e064_c, 30
+	thumb_func_end spawnOWPlayerObjectForEnterMap_809e064
+	.endif
 
 	thumb_local_start
 sub_809E08A:

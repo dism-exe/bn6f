@@ -188,3 +188,5 @@ eStruct200BC30_getJumpOffset00_pushpop
 addChipsToChipPackOffset_8021b5a
 sub_8021B2A
 StartCutscene
+sub_8021AB4
+spawnOWPlayerObjectForEnterMap_809e064

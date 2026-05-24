@@ -10,7 +10,7 @@ extern u8 eOWPlayerObjectEnd[];
 // ZeroFillByWord call. Returns the slot in r5 or 0 on failure.
 #define OWPO_SIZE 0xC8u
 
-static u8 *SpawnOWPlayerObject_impl(u32 idx, u32 x, u32 y, u32 z, u32 r4_arg)
+u8 *SpawnOWPlayerObject_impl(u32 idx, u32 x, u32 y, u32 z, u32 r4_arg)
 {
     u32 active = eActiveOWPlayerObjectBitfield;
     u32 bit = 0x80000000u;

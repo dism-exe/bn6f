@@ -21,6 +21,7 @@ getChip8021DA8:
 	thumb_func_end getChip8021DA8
 	.endif
 
+	.ifndef DECOMP_sub_8021AB4
 	thumb_func_start sub_8021AB4
 sub_8021AB4:
 	push {r4,r6,r7,lr}
@@ -44,6 +45,12 @@ loc_8021ACC:
 	blt loc_8021ACC
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_8021AB4
+	.else
+	thumb_func_start sub_8021AB4
+sub_8021AB4:
+	decomp_trampoline sub_8021AB4_c, 36
+	thumb_func_end sub_8021AB4
+	.endif
 
 /* (r0:u16 bitfield) -> r0:u16 upper9Bits, r1:u16 lower9Bits
    preserves: lr
