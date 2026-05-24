@@ -1416,7 +1416,8 @@ off_8036090:
 	.word eMapScriptState
 	thumb_func_end RunSecondaryContinuousMapScript
 
-	thumb_local_start
+	.ifndef DECOMP_ReadMapScriptByte
+	thumb_func_start ReadMapScriptByte
 /* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:u8 result
 	preserves: r6,r7
 	unused: r0-r3,r5,r8-r12*/
@@ -1426,8 +1427,15 @@ ReadMapScriptByte: // 8036094
 	ldrb r4, [r7]
 	pop {r7,pc}
 	thumb_func_end ReadMapScriptByte
+	.else
+	thumb_func_start ReadMapScriptByte
+ReadMapScriptByte:
+	decomp_trampoline ReadMapScriptByte_c, 0
+	thumb_func_end ReadMapScriptByte
+	.endif
 
-	thumb_local_start
+	.ifndef DECOMP_ReadMapScriptSignedByte
+	thumb_func_start ReadMapScriptSignedByte
 /* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:s8 result
 	preserves: r6,r7
 	unused: r0-r3,r5,r8-r12*/
@@ -1439,8 +1447,15 @@ ReadMapScriptSignedByte: // 803609C
 	asr r4, r4, #0x18
 	pop {r7,pc}
 	thumb_func_end ReadMapScriptSignedByte
+	.else
+	thumb_func_start ReadMapScriptSignedByte
+ReadMapScriptSignedByte:
+	decomp_trampoline ReadMapScriptSignedByte_c, 4
+	thumb_func_end ReadMapScriptSignedByte
+	.endif
 
-	thumb_local_start
+	.ifndef DECOMP_ReadMapScriptHalfword
+	thumb_func_start ReadMapScriptHalfword
 /* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:u16 result
 	spoils: r6
 	preserves: r7
@@ -1454,6 +1469,12 @@ ReadMapScriptHalfword: // 80360A8
 	orr r4, r6
 	pop {r7,pc}
 	thumb_func_end ReadMapScriptHalfword
+	.else
+	thumb_func_start ReadMapScriptHalfword
+ReadMapScriptHalfword:
+	decomp_trampoline ReadMapScriptHalfword_c, 6
+	thumb_func_end ReadMapScriptHalfword
+	.endif
 
 	thumb_local_start
 /* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:s16 result
