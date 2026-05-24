@@ -53,7 +53,7 @@ LDFLAGS = -Map $(BUILD_NAME).map
 LIB =
 CLIB = tools/agbcc/lib/libgcc.a
 
-.PHONY: syms decompile orig validate function-symbols track track-build smoke verify clean-conditional-objs
+.PHONY: syms decompile orig validate function-symbols track track-build smoke verify verify-spam verify-state list-demos clean-conditional-objs
 
 # TODO: INTEGRATE SCAN INCLUDES
 
@@ -261,23 +261,48 @@ verify-spam: track-build $(FN_SYMS)
 		$(abspath $(ROM)) $(abspath $(SPAM_SESSION_DIR))
 
 # Verify against a scene captured as an mGBA savestate (with optional
-# BizHawk-style input replay). Used to extend coverage past boot_idle.
-# Variables (override on the command line):
-#   STATE_NAME   slug used for the fixture directory
-#   STATE_FILE   path to the mGBA savestate (.ss<N> from the GUI menu,
-#                or any libmgba-savestate file)
-#   STATE_INPUT  optional joypad mask file (one u16 mask per frame)
-#   STATE_FRAMES how many frames to run after loading the state
-# Example:
-#   make verify-state STATE_NAME=acdc_idle STATE_FILE=demos/acdc.ss1 STATE_FRAMES=600
-STATE_NAME    ?= scene
+# input replay). Used to extend coverage past boot_idle.
+#
+# Layout under tests/fixtures/demos/:
+#   <category>/<name>.ss         flat, basename-matched (preferred)
+#   <category>/<name>.input      same basename → same test
+#   <category>/<name>.md         freeform notes
+#   <category>/<name>/state.ss   folder graduation — used when a test
+#   <category>/<name>/inputs.*   outgrows the single-file form
+#
+# Usage:
+#   make verify-state STATE_NAME=battle/megaman-vs-virus [STATE_FRAMES=600]
+# Override STATE_FILE / STATE_INPUT explicitly if you need to bypass
+# the auto-resolver (e.g. for one-off ad-hoc demos outside the tree).
+STATE_NAME    ?=
 STATE_FRAMES  ?= 600
+DEMOS_ROOT     = tests/fixtures/demos
 STATE_SESSION  = tests/fixtures/calls/$(STATE_NAME)
-verify-state: track-build $(FN_SYMS)
+
+# Auto-resolve STATE_FILE: folder mode first (test has its own dir),
+# then flat (test is named <category>/<name>.ss alongside its
+# siblings). `wildcard` lets `.ss`, `.ss1`, `.ss2` all match — mGBA's
+# GUI writes `.ss1` by default. Pick the first hit.
 ifndef STATE_FILE
-	$(error STATE_FILE not set — pass e.g. STATE_FILE=tests/fixtures/demos/foo.ss)
+STATE_FILE := $(firstword \
+    $(wildcard $(DEMOS_ROOT)/$(STATE_NAME)/state.ss*) \
+    $(wildcard $(DEMOS_ROOT)/$(STATE_NAME).ss*))
 endif
-	@echo "[verify-state $(STATE_NAME)] building original ROM and recording from $(STATE_FILE)..."
+# Same dance for STATE_INPUT (optional — empty if no match).
+ifndef STATE_INPUT
+STATE_INPUT := $(firstword \
+    $(wildcard $(DEMOS_ROOT)/$(STATE_NAME)/inputs.input) \
+    $(wildcard $(DEMOS_ROOT)/$(STATE_NAME).input))
+endif
+
+verify-state: track-build $(FN_SYMS)
+ifeq ($(strip $(STATE_NAME)),)
+	$(error STATE_NAME not set — e.g. make verify-state STATE_NAME=battle/megaman-vs-virus)
+endif
+ifeq ($(strip $(STATE_FILE)),)
+	$(error no savestate found for "$(STATE_NAME)" — looked for $(DEMOS_ROOT)/$(STATE_NAME)/state.ss* and $(DEMOS_ROOT)/$(STATE_NAME).ss*)
+endif
+	@echo "[verify-state $(STATE_NAME)] state=$(STATE_FILE) input=$(or $(STATE_INPUT),<none>)"
 	@$(MAKE) --no-print-directory all
 	@rm -rf $(STATE_SESSION)
 	@mkdir -p $(STATE_SESSION)
@@ -292,3 +317,9 @@ endif
 	@$(MAKE) --no-print-directory decompile
 	tools/bn6f-track/target/release/bn6f-track replay \
 		$(abspath $(ROM)) $(abspath $(STATE_SESSION))
+
+# Convenience: list every test that's been authored under demos/.
+list-demos:
+	@find $(DEMOS_ROOT) \( -name '*.ss*' -o -name 'state.ss*' \) \
+		| sed -E 's|$(DEMOS_ROOT)/||; s|\.ss[0-9]*$$||; s|/state$$||' \
+		| sort -u
