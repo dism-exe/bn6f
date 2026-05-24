@@ -14232,6 +14232,7 @@ sub_802D144:
 	pop {pc}
 	thumb_func_end sub_802D144
 
+	.ifndef DECOMP_sub_802D150
 	thumb_func_start sub_802D150
 sub_802D150:
 	ldr r1, off_802D21C // =dword_2006740 
@@ -14239,6 +14240,12 @@ sub_802D150:
 	str r0, [r1]
 	mov pc, lr
 	thumb_func_end sub_802D150
+	.else
+	thumb_func_start sub_802D150
+sub_802D150:
+	decomp_trampoline sub_802D150_c, 0
+	thumb_func_end sub_802D150
+	.endif
 
 	thumb_func_start sub_802D158
 sub_802D158:
@@ -14960,6 +14967,7 @@ dword_802D634:
 	.word 0x153
 	thumb_func_end sub_802D5A8
 
+	.ifndef DECOMP_sub_802D638
 	thumb_func_start sub_802D638
 sub_802D638:
 	push {lr}
@@ -14970,6 +14978,12 @@ sub_802D638:
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end sub_802D638
+	.else
+	thumb_func_start sub_802D638
+sub_802D638:
+	decomp_trampoline sub_802D638_c, 4
+	thumb_func_end sub_802D638
+	.endif
 
 	thumb_func_start sub_802D644
 sub_802D644:
@@ -18279,6 +18293,7 @@ dword_802F0A8:
 	.hword 0x384, 0x0
 	thumb_func_end sub_802F084
 
+	.ifndef DECOMP_sub_802F0C4
 	thumb_func_start sub_802F0C4
 sub_802F0C4:
 	push {lr}
@@ -18291,6 +18306,12 @@ sub_802F0C4:
 off_802F0D4:
 	.word 630 * 2
 	thumb_func_end sub_802F0C4
+	.else
+	thumb_func_start sub_802F0C4
+sub_802F0C4:
+	decomp_trampoline sub_802F0C4_c, 12
+	thumb_func_end sub_802F0C4
+	.endif
 
 	thumb_func_start sub_802F0D8
 sub_802F0D8:

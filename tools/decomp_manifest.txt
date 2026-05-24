@@ -67,3 +67,13 @@ init_eStartScreenAnimationControl200B1A0_1
 clearCutsceneScriptPosIfMagicValue0x1_8036F24
 sub_800399A
 sub_8003962
+sub_802D150
+sub_802D638
+sub_80356EC
+sub_803DE5C
+sub_8003AEA
+sub_80023A8
+sub_80015B4
+clearChatboxAndEvent
+sub_802F0C4
+sub_803DE88

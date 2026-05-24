@@ -3250,6 +3250,7 @@ applyLayerEffectToOWObject_8035694:
 	.pool // Struct8034460
 	thumb_func_end applyLayerEffectToOWObject_8035694
 
+	.ifndef DECOMP_sub_80356EC
 	thumb_func_start sub_80356EC
 sub_80356EC:
 	push {r4-r7,lr}
@@ -3260,6 +3261,12 @@ sub_80356EC:
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end sub_80356EC
+	.else
+	thumb_func_start sub_80356EC
+sub_80356EC:
+	decomp_trampoline sub_80356EC_c, 4
+	thumb_func_end sub_80356EC
+	.endif
 
 	thumb_func_start sub_80356F8
 sub_80356F8:

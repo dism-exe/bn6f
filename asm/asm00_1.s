@@ -1617,6 +1617,7 @@ locret_8003AE8:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8003AD4
 
+	.ifndef DECOMP_sub_8003AEA
 	thumb_func_start sub_8003AEA
 sub_8003AEA:
 	push {r4-r7,lr}
@@ -1628,6 +1629,12 @@ sub_8003AEA:
 	strb r0, [r5]
 	pop {r4-r7,pc}
 	thumb_func_end sub_8003AEA
+	.else
+	thumb_func_start sub_8003AEA
+sub_8003AEA:
+	decomp_trampoline sub_8003AEA_c, 6
+	thumb_func_end sub_8003AEA
+	.endif
 
 	thumb_local_start
 sub_8003AFA:

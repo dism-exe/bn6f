@@ -9568,6 +9568,7 @@ off_803DE58:
 	.word eLinkState // eLinkState
 	thumb_func_end sub_803DE24
 
+	.ifndef DECOMP_sub_803DE5C
 	thumb_func_start sub_803DE5C
 sub_803DE5C:
 	push {lr}
@@ -9577,6 +9578,12 @@ sub_803DE5C:
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_803DE5C
+	.else
+	thumb_func_start sub_803DE5C
+sub_803DE5C:
+	decomp_trampoline sub_803DE5C_c, 4
+	thumb_func_end sub_803DE5C
+	.endif
 
 	thumb_local_start
 sub_803DE68:
@@ -9602,6 +9609,7 @@ locret_803DE80:
 	.pool
 	thumb_func_end sub_803DE72
 
+	.ifndef DECOMP_sub_803DE88
 	thumb_func_start sub_803DE88
 sub_803DE88:
 	push {r4-r7,lr}
@@ -9620,6 +9628,12 @@ sub_803DE88:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_803DE88
+	.else
+	thumb_func_start sub_803DE88
+sub_803DE88:
+	decomp_trampoline sub_803DE88_c, 28
+	thumb_func_end sub_803DE88
+	.endif
 
 	thumb_func_start sub_803DEAC
 sub_803DEAC:
@@ -14113,6 +14127,7 @@ byte_803FCE4:
 	.byte 0x0, 0x2A, 0x0, 0x0, 0x0, 0x54, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end copyTileData_803FC64
 
+	.ifndef DECOMP_clearChatboxAndEvent
 	thumb_func_start clearChatboxAndEvent
 clearChatboxAndEvent:
 	push {lr}
@@ -14129,5 +14144,11 @@ clearChatboxAndEvent:
 off_803FD04:
 	.word 0x230
 	thumb_func_end clearChatboxAndEvent
+	.else
+	thumb_func_start clearChatboxAndEvent
+clearChatboxAndEvent:
+	decomp_trampoline clearChatboxAndEvent_c, 16
+	thumb_func_end clearChatboxAndEvent
+	.endif
 
 /*For debugging purposes, connect comment at any range!*/

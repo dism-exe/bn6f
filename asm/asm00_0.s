@@ -2844,6 +2844,7 @@ off_80015B0:
 	.word dword_20018E8
 	thumb_func_end dead_rng_800157C
 
+	.ifndef DECOMP_sub_80015B4
 	thumb_func_start sub_80015B4
 sub_80015B4:
 	push {lr}
@@ -2859,6 +2860,12 @@ dword_80015C8:
 dword_80015CC:
 	.word 0x2000
 	thumb_func_end sub_80015B4
+	.else
+	thumb_func_start sub_80015B4
+sub_80015B4:
+	decomp_trampoline sub_80015B4_c, 20
+	thumb_func_end sub_80015B4
+	.endif
 
 	.ifndef DECOMP_copyToVRAMAndClear_iBGTileIdBlocks_Ptr
 	thumb_func_start copyToVRAMAndClear_iBGTileIdBlocks_Ptr
@@ -4981,6 +4988,7 @@ Terminate_ePalette20097a0_Transform:
 	thumb_func_end Terminate_ePalette20097a0_Transform
 	.endif
 
+	.ifndef DECOMP_sub_80023A8
 	thumb_func_start sub_80023A8
 sub_80023A8:
 	push {lr}
@@ -4994,6 +5002,12 @@ sub_80023A8:
 off_80023B4:
 	.word 0xd8
 	thumb_func_end sub_80023A8
+	.else
+	thumb_func_start sub_80023A8
+sub_80023A8:
+	decomp_trampoline sub_80023A8_c, 8
+	thumb_func_end sub_80023A8
+	.endif
 
 	thumb_local_start
 sub_80023B8:
