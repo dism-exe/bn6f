@@ -10901,6 +10901,7 @@ loc_8013B4A:
 	thumb_func_end sub_8013B20
 
 // (bool a1, int a2) -> void
+	.ifndef DECOMP_init_8013B4E
 	thumb_func_start init_8013B4E
 init_8013B4E:
 	push {r4,r6,r7,lr}
@@ -10916,6 +10917,12 @@ loc_8013B56:
 	add r7, r7, r0
 	b loc_8013B6E
 	thumb_func_end init_8013B4E
+	.else
+	thumb_func_start init_8013B4E
+init_8013B4E:
+	decomp_trampoline init_8013B4E_c, 12
+	thumb_func_end init_8013B4E
+	.endif
 
 // (int idx, int a2) -> void
 	thumb_func_start init_8013B64
