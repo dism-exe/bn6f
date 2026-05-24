@@ -100,6 +100,7 @@ loc_8021B00:
 	pop {r4,pc}
 	thumb_func_end GiveChips
 
+	.ifndef DECOMP_sub_8021B2A
 	thumb_func_start sub_8021B2A
 sub_8021B2A:
 	push {lr}
@@ -125,8 +126,15 @@ loc_8021B3C:
 	mov r0, r3
 	pop {pc}
 	thumb_func_end sub_8021B2A
+	.else
+	thumb_func_start sub_8021B2A
+sub_8021B2A:
+	decomp_trampoline sub_8021B2A_c, 38
+	thumb_func_end sub_8021B2A
+	.endif
 
-	thumb_local_start
+	.ifndef DECOMP_addChipsToChipPackOffset_8021b5a
+	thumb_func_start addChipsToChipPackOffset_8021b5a
 addChipsToChipPackOffset_8021b5a:
 	mov r3, #1
 	ldrb r1, [r0]
@@ -145,6 +153,17 @@ loc_8021B6E:
 off_8021B74:
 	.word 0x1E20
 	thumb_func_end addChipsToChipPackOffset_8021b5a
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start addChipsToChipPackOffset_8021b5a
+addChipsToChipPackOffset_8021b5a:
+	decomp_trampoline addChipsToChipPackOffset_8021b5a_c, 16
+	.balign 4, 0
+off_8021B74:
+	.word 0x1E20
+	thumb_func_end addChipsToChipPackOffset_8021b5a
+	.endif
 
 // (int idx, int searchItem, int off) -> void*
 // [break (E7FE)]
