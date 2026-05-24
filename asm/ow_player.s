@@ -2235,12 +2235,19 @@ locret_809E222:
 	.pool // 809E224
 	thumb_func_end owPlayer_809e218
 
+	.ifndef DECOMP_returnZero_809E228
 	thumb_func_start returnZero_809E228
 returnZero_809E228:
 	mov r0, #0
 	mov pc, lr
 	.word eStruct200ace0
 	thumb_func_end returnZero_809E228
+	.else
+	thumb_func_start returnZero_809E228
+returnZero_809E228:
+	decomp_trampoline returnZero_809E228_c, 0
+	thumb_func_end returnZero_809E228
+	.endif
 
 	thumb_func_start owPlayer_setInteractionLocked_809e230
 owPlayer_setInteractionLocked_809e230:
