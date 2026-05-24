@@ -179,3 +179,4 @@ sub_803C3E0
 startScreen_TstZero
 sub_803F4EC
 sub_800286C
+sub_803E928

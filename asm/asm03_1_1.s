@@ -11198,6 +11198,7 @@ init_eStartScreenAnimationControl200B1A0_2:
 	.balign 4, 0x00
 	thumb_func_end init_eStartScreenAnimationControl200B1A0_2
 
+	.ifndef DECOMP_sub_803E928
 	thumb_func_start sub_803E928
 sub_803E928:
 	ldr r0, off_803E960 // =eStartScreenAnimationControl200B1A0
@@ -11205,6 +11206,12 @@ sub_803E928:
 	cmp r0, #2
 	mov pc, lr
 	thumb_func_end sub_803E928
+	.else
+	thumb_func_start sub_803E928
+sub_803E928:
+	decomp_trampoline sub_803E928_c, 0
+	thumb_func_end sub_803E928
+	.endif
 
 	.ifndef DECOMP_startScreen_TstZero
 	thumb_func_start startScreen_TstZero
