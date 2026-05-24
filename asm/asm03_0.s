@@ -18950,6 +18950,7 @@ off_802F4E0:
 // Start Module StartScreen_
 
 /// Breaks on partial Capcom logo fade from logoScreen_finish_803D2A6
+	.ifndef DECOMP_startScreen_init_802F530
 	thumb_func_start startScreen_init_802F530
 startScreen_init_802F530: // () -> void
 	push {lr}
@@ -18967,6 +18968,12 @@ startScreen_init_802F530: // () -> void
 
 	pop {pc}
 	thumb_func_end startScreen_init_802F530
+	.else
+	thumb_func_start startScreen_init_802F530
+startScreen_init_802F530:
+	decomp_trampoline startScreen_init_802F530_c, 12
+	thumb_func_end startScreen_init_802F530
+	.endif
 
 	thumb_func_start startscreen_render_802F544
 startscreen_render_802F544: // () ->

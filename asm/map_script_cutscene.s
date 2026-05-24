@@ -2501,6 +2501,7 @@ off_8036F20:
 	.word DummyCutsceneScript
 	thumb_func_end cutscene_8036EFE
 
+	.ifndef DECOMP_clearCutsceneScriptPosIfMagicValue0x1_8036F24
 	thumb_func_start clearCutsceneScriptPosIfMagicValue0x1_8036F24
 clearCutsceneScriptPosIfMagicValue0x1_8036F24:
 	mov r1, r10
@@ -2514,6 +2515,12 @@ clearCutsceneScriptPosIfMagicValue0x1_8036F24:
 .doNotClearCutsceneScript
 	mov pc, lr
 	thumb_func_end clearCutsceneScriptPosIfMagicValue0x1_8036F24
+	.else
+	thumb_func_start clearCutsceneScriptPosIfMagicValue0x1_8036F24
+clearCutsceneScriptPosIfMagicValue0x1_8036F24:
+	decomp_trampoline clearCutsceneScriptPosIfMagicValue0x1_8036F24_c, 10
+	thumb_func_end clearCutsceneScriptPosIfMagicValue0x1_8036F24
+	.endif
 
 	thumb_func_start IsCutsceneScriptNonNull
 IsCutsceneScriptNonNull: // () -> !zf

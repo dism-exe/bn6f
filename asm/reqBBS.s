@@ -743,6 +743,7 @@ reqBBS_addBBSMessage_813e5dc:
 	pop {r3,r7,pc}
 	thumb_func_end reqBBS_addBBSMessage_813e5dc
 
+	.ifndef DECOMP_reqBBS_813E616
 	thumb_func_start reqBBS_813E616
 reqBBS_813E616:
 	push {lr}
@@ -765,6 +766,12 @@ reqBBS_813E616:
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end reqBBS_813E616
+	.else
+	thumb_func_start reqBBS_813E616
+reqBBS_813E616:
+	decomp_trampoline reqBBS_813E616_c, 20
+	thumb_func_end reqBBS_813E616
+	.endif
 
 	thumb_local_start
 reqBBS_dead_813E634:
@@ -2682,6 +2689,7 @@ reqBBS_addRequest_813F9A0:
 	pop {r3,r7,pc}
 	thumb_func_end reqBBS_addRequest_813F9A0
 
+	.ifndef DECOMP_reqBBS_initMemory_813F9DA
 	thumb_func_start reqBBS_initMemory_813F9DA
 reqBBS_initMemory_813F9DA:
 	push {lr}
@@ -2704,6 +2712,12 @@ reqBBS_initMemory_813F9DA:
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end reqBBS_initMemory_813F9DA
+	.else
+	thumb_func_start reqBBS_initMemory_813F9DA
+reqBBS_initMemory_813F9DA:
+	decomp_trampoline reqBBS_initMemory_813F9DA_c, 20
+	thumb_func_end reqBBS_initMemory_813F9DA
+	.endif
 
 	thumb_local_start
 reqBBS_dead_initMemory_813F9F8:

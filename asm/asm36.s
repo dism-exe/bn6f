@@ -15131,6 +15131,7 @@ loc_81377E8:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8137790
 
+	.ifndef DECOMP_isFolderSlotInUse_81377EC
 	thumb_func_start isFolderSlotInUse_81377EC
 isFolderSlotInUse_81377EC:
 	push {lr}
@@ -15150,6 +15151,12 @@ loc_8137804:
 	mov r0, r1
 	pop {pc}
 	thumb_func_end isFolderSlotInUse_81377EC
+	.else
+	thumb_func_start isFolderSlotInUse_81377EC
+isFolderSlotInUse_81377EC:
+	decomp_trampoline isFolderSlotInUse_81377EC_c, 20
+	thumb_func_end isFolderSlotInUse_81377EC
+	.endif
 
 	thumb_func_start sub_8137808
 sub_8137808:

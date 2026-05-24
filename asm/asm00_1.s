@@ -1380,6 +1380,7 @@ endScenarioEffectMaybe_8003940:
 	pop {r4-r7,pc}
 	thumb_func_end endScenarioEffectMaybe_8003940
 
+	.ifndef DECOMP_sub_8003962
 	thumb_func_start sub_8003962
 sub_8003962:
 	push {r4-r7,lr}
@@ -1397,6 +1398,12 @@ loc_8003974:
 	strb r0, [r5,#0x3] // (byte_2000783 - 0x2000780)
 	pop {r4-r7,pc}
 	thumb_func_end sub_8003962
+	.else
+	thumb_func_start sub_8003962
+sub_8003962:
+	decomp_trampoline sub_8003962_c, 14
+	thumb_func_end sub_8003962
+	.endif
 
 	thumb_local_start
 sub_800397A:
@@ -1423,6 +1430,7 @@ locret_8003998:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8003984
 
+	.ifndef DECOMP_sub_800399A
 	thumb_func_start sub_800399A
 sub_800399A:
 	push {r4-r7,lr}
@@ -1434,6 +1442,12 @@ sub_800399A:
 	strb r0, [r5]
 	pop {r4-r7,pc}
 	thumb_func_end sub_800399A
+	.else
+	thumb_func_start sub_800399A
+sub_800399A:
+	decomp_trampoline sub_800399A_c, 6
+	thumb_func_end sub_800399A
+	.endif
 
 	thumb_local_start
 sub_80039AA:
@@ -7716,6 +7730,7 @@ loc_8006DFE:
 	thumb_func_end encryption_8006df6
 
 // (u8 *mem, int size) -> void
+	.ifndef DECOMP_encryption_save_memSetFlags_8006E0E
 	thumb_func_start encryption_save_memSetFlags_8006E0E
 encryption_save_memSetFlags_8006E0E:
 	push {r4-r7,lr}
@@ -7733,6 +7748,12 @@ encryption_save_memSetFlags_8006E0E:
 	str r7, [r0,#4]
 	pop {r4-r7,pc}
 	thumb_func_end encryption_save_memSetFlags_8006E0E
+	.else
+	thumb_func_start encryption_save_memSetFlags_8006E0E
+encryption_save_memSetFlags_8006E0E:
+	decomp_trampoline encryption_save_memSetFlags_8006E0E_c, 14
+	thumb_func_end encryption_save_memSetFlags_8006E0E
+	.endif
 
 	thumb_func_start encryption_8006e26
 encryption_8006e26:
@@ -7941,6 +7962,7 @@ loc_8006F50:
 	pop {r1-r7,pc}
 	thumb_func_end sub_8006F1E
 
+	.ifndef DECOMP_encryption_zenny_8006f54
 	thumb_func_start encryption_zenny_8006f54
 encryption_zenny_8006f54:
 	push {r0-r7,lr}
@@ -7963,6 +7985,12 @@ loc_8006F68:
 	str r0, [r1]
 	pop {r0-r7,pc}
 	thumb_func_end encryption_zenny_8006f54
+	.else
+	thumb_func_start encryption_zenny_8006f54
+encryption_zenny_8006f54:
+	decomp_trampoline encryption_zenny_8006f54_c, 28
+	thumb_func_end encryption_zenny_8006f54
+	.endif
 
 	thumb_func_start encryption_zenny_8006f78
 encryption_zenny_8006f78:

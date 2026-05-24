@@ -11124,6 +11124,7 @@ off_803E8FC:
 	.word eLinkState // eLinkState
 	thumb_func_end sub_803E8F8
 
+	.ifndef DECOMP_init_eStartScreenAnimationControl200B1A0_1
 	thumb_func_start init_eStartScreenAnimationControl200B1A0_1
 init_eStartScreenAnimationControl200B1A0_1:
 	push {r4,lr}
@@ -11137,6 +11138,12 @@ init_eStartScreenAnimationControl200B1A0_1:
 	pop {r4,pc}
 	.balign 4, 0x00
 	thumb_func_end init_eStartScreenAnimationControl200B1A0_1
+	.else
+	thumb_func_start init_eStartScreenAnimationControl200B1A0_1
+init_eStartScreenAnimationControl200B1A0_1:
+	decomp_trampoline init_eStartScreenAnimationControl200B1A0_1_c, 12
+	thumb_func_end init_eStartScreenAnimationControl200B1A0_1
+	.endif
 
 	thumb_local_start
 init_eStartScreenAnimationControl200B1A0_2:

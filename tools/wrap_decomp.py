@@ -85,6 +85,45 @@ def already_wrapped(lines, start_idx):
     return False
 
 
+def audit_pool_sharing(path, lines, start_idx, end_idx, symbol):
+    """Find labels defined inside the function's body (literal pool
+    entries) and report any that are referenced from outside the
+    function — those would become dangling when the function body is
+    replaced with a trampoline."""
+    label_re = re.compile(r"^([A-Za-z_.][\w.]*):\s*(//.*)?$")
+    pool_labels = []
+    for i in range(start_idx + 1, end_idx):
+        m = label_re.match(lines[i])
+        if m:
+            name = m.group(1)
+            # Skip the function's own label and any local code-flow labels
+            if name == symbol:
+                continue
+            pool_labels.append(name)
+    if not pool_labels:
+        return []
+    # For each pool label, count refs outside this function's body
+    shared = []
+    for pname in pool_labels:
+        ref_re = re.compile(rf"\b{re.escape(pname)}\b")
+        external_refs = 0
+        for s_file in sorted(ASM_DIR.glob("*.s")):
+            file_lines = s_file.read_text().splitlines()
+            for ln_idx, ln in enumerate(file_lines):
+                if not ref_re.search(ln):
+                    continue
+                # Skip the definition itself
+                if ln.strip().startswith(f"{pname}:"):
+                    continue
+                # Skip references inside the same function
+                if s_file == path and start_idx <= ln_idx <= end_idx:
+                    continue
+                external_refs += 1
+        if external_refs > 0:
+            shared.append((pname, external_refs))
+    return shared
+
+
 def audit_callers(symbol):
     """Grep all `bl <SYMBOL>` sites; report any where the immediately
     next non-empty line is `beq/bne/bcs/bcc/bmi/bpl/bhi/bls`. Those
@@ -134,6 +173,16 @@ def wrap(symbol, pad_override=None, c_func=None):
     path, lines, start, end = find_function_block(symbol)
     if already_wrapped(lines, start):
         die(f"{symbol}: appears already wrapped (.ifndef on a preceding line)")
+
+    # Audit literal pool sharing
+    shared_pool = audit_pool_sharing(path, lines, start, end, symbol)
+    if shared_pool:
+        print(f"ERROR: {symbol}'s literal pool is shared with other functions:", file=sys.stderr)
+        for pname, refs in shared_pool[:5]:
+            print(f"  {pname} (used in {refs} place(s) outside this function)", file=sys.stderr)
+        print(f"  Trampolining would remove the pool and break those callers.", file=sys.stderr)
+        print(f"  Manually move the pool out of the .ifndef block, or skip this function.", file=sys.stderr)
+        sys.exit(3)
 
     # Audit callers for flag-dependence
     flag_callers = audit_callers(symbol)
