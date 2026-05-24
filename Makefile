@@ -53,7 +53,7 @@ LDFLAGS = -Map $(BUILD_NAME).map
 LIB =
 CLIB = tools/agbcc/lib/libgcc.a
 
-.PHONY: syms decompile orig validate function-symbols track track-build smoke clean-conditional-objs
+.PHONY: syms decompile orig validate function-symbols track track-build smoke verify clean-conditional-objs
 
 # TODO: INTEGRATE SCAN INCLUDES
 
@@ -80,11 +80,17 @@ CONDITIONAL_OFILES = rom.o
 clean-conditional-objs:
 	@rm -f $(CONDITIONAL_OFILES)
 
-$(ROM): %.elf
+$(ROM): $(ELF)
 	$(OBJCOPY) -O binary $(ELF) $(ROM)
 
-%.elf: $(OFILES)
-	$(LD) $(LDFLAGS) -o $(ELF) -T ld_script.ld $(OFILES) $(LIB)
+# Explicit ELF rules so each ELF lands at its own path (the old pattern
+# rule `%.elf: $(OFILES)` hard-coded `-o $(ELF)` regardless of target,
+# producing the wrong filename when building bn6f_orig.elf).
+$(ELF): clean-conditional-objs $(OFILES)
+	$(LD) $(LDFLAGS) -o $@ -T ld_script.ld $(OFILES) $(LIB)
+
+bn6f_orig.elf: clean-conditional-objs $(OFILES)
+	$(LD) $(LDFLAGS) -o $@ -T ld_script.ld $(OFILES) $(LIB)
 
 %.o: %.s
 	$(AS) $(ASFLAGS) $< -o $@
@@ -102,8 +108,7 @@ $(CBUILDDIR)/%.s: $(CBUILDDIR)/%.i
 $(CBUILDDIR)/%.o: $(CBUILDDIR)/%.s
 	$(AS) $(ARCH) -g -I$(INC) $< -o $@
 
-orig: $(OFILES)
-	$(LD) $(LDFLAGS) -o bn6f_orig.elf -T ld_script.ld $(OFILES) $(LIB)
+orig: bn6f_orig.elf
 	@echo "Saved bn6f_orig.elf"
 
 validate: bn6f_orig.elf $(ELF)
@@ -173,3 +178,34 @@ track: track-build $(FN_SYMS) $(ROM)
 		$(abspath $(ROM)) $(FRAMES) \
 		$(abspath $(FN_SYMS)) $(abspath $(TRACK_OUTPUT))
 	@head -6 $(TRACK_OUTPUT)
+
+# Verify decompiled functions match the ASM oracle via per-call
+# (entry, exit) state diff. See issues/concerns/10 §"Implementation
+# notes (Rust function tracker)".
+#
+# Workflow:
+#   1. Build original ROM and run a 300-frame demo, capturing entry
+#      snapshots for every DECOMP_FN_ADDR. Compute "expected exits" via
+#      isolated (IRQ-disabled) re-runs on the original.
+#   2. Build decompile ROM and replay each captured entry — also via
+#      isolated runs — capturing the "actual exit". Diff vs expected.
+#   3. Report pass/fail per function; exit nonzero on any mismatch.
+#
+# As more functions are converted, append their entry addresses to
+# DECOMP_FN_ADDRS.
+SESSION_DIR ?= tests/fixtures/calls/boot_idle
+DECOMP_FN_ADDRS ?= 0x08000964
+
+verify: track-build $(FN_SYMS)
+	@echo "[verify] building original ROM and recording fixtures..."
+	@$(MAKE) --no-print-directory all
+	@rm -rf $(SESSION_DIR)
+	@mkdir -p $(SESSION_DIR)
+	@tools/bn6f-track/target/release/bn6f-track record \
+		$(abspath $(ROM)) 300 $(abspath $(FN_SYMS)) \
+		$(abspath $(SESSION_DIR)) $(DECOMP_FN_ADDRS)
+	@echo
+	@echo "[verify] building decompile ROM and replaying..."
+	@$(MAKE) --no-print-directory decompile
+	tools/bn6f-track/target/release/bn6f-track replay \
+		$(abspath $(ROM)) $(abspath $(SESSION_DIR))

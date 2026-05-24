@@ -23,6 +23,8 @@ fn main() {
         .allowlist_function("mLog.*")
         .allowlist_function("mDebugger.*")
         .allowlist_function("ARMDebugger.*")
+        .allowlist_function("VFile.*")
+        .allowlist_type("VFile")
         .allowlist_type("mCore")
         .allowlist_type("mPlatform")
         .allowlist_type("mCoreFeature")

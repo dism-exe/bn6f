@@ -9,6 +9,7 @@ name = "bn6f-track"
 path = "src/main.rs"
 
 [dependencies]
+libc = "0.2"
 
 [build-dependencies]
 bindgen = "0.71"

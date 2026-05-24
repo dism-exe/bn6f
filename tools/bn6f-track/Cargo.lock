@@ -42,6 +42,7 @@ name = "bn6f-track"
 version = "0.1.0"
 dependencies = [
  "bindgen",
+ "libc",
 ]
 
 [[package]]

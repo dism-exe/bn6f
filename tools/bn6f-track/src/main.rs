@@ -2,8 +2,10 @@
 // Links libmgba directly. See issues/concerns/10-emulator-requirements.md.
 //
 // Modes:
-//   bn6f-track ROM [FRAMES]                       — smoke test (PC determinism)
-//   bn6f-track ROM FRAMES SYMBOLS [OUTPUT]        — function tracker
+//   bn6f-track smoke   ROM [FRAMES]
+//   bn6f-track track   ROM FRAMES SYMBOLS [OUTPUT]
+//   bn6f-track record  ROM FRAMES SYMBOLS SESSION_DIR FN_ADDR [FN_ADDR...]
+//   bn6f-track replay  ROM SESSION_DIR
 //
 // SYMBOLS is the file produced by `make function-symbols` —
 // one "0xADDR NAME" per line.
@@ -13,9 +15,11 @@
 #![allow(non_snake_case)]
 #![allow(dead_code)]
 
-mod mgba_sys {
+pub(crate) mod mgba_sys {
     include!(concat!(env!("OUT_DIR"), "/mgba_sys.rs"));
 }
+
+mod snapshot;
 
 use std::cell::RefCell;
 use std::collections::{HashMap, HashSet};
@@ -237,9 +241,25 @@ thread_local! {
     /// Previous true_pc (= last executed instruction address). Used to
     /// detect branches and to classify "called from inside vs outside".
     static LAST_TRUE_PC: RefCell<u32> = const { RefCell::new(0) };
+
+    // ----- record-mode state -----
+    /// Functions we want to record entry snapshots for. Empty in
+    /// `track` mode; populated in `record` mode.
+    static RECORD_TARGETS: RefCell<HashSet<u32>> = RefCell::new(HashSet::new());
+    /// Each entry snapshot captured during a record run. We don't try
+    /// to track natural exits — instead, after the demo we run each
+    /// entry to its captured LR with IRQs disabled, isolating the
+    /// function's effect from IRQ-driven cycle drift.
+    static RECORD_ENTRIES: RefCell<Vec<RecordedEntry>> = RefCell::new(Vec::new());
 }
 
 const PENDING_MAX: usize = 4096;
+
+struct RecordedEntry {
+    fn_addr: u32,
+    captured_lr: u32,
+    entry: snapshot::Snapshot,
+}
 
 unsafe extern "C" fn entered_cb(
     _dbg: *mut mgba_sys::mDebugger,
@@ -305,6 +325,7 @@ unsafe extern "C" fn custom_cb(dbg: *mut mgba_sys::mDebugger) {
             });
         }
 
+
         // 2. ENTRY detection: branch landed on a known function entry.
         let is_entry = ENTRIES.with(|e| e.borrow().contains(&true_pc));
         if is_entry {
@@ -365,6 +386,24 @@ unsafe extern "C" fn custom_cb(dbg: *mut mgba_sys::mDebugger) {
                             p.push((ret_addr, true_pc));
                         }
                     });
+
+                    // Record-mode: snapshot entry state if this fn is
+                    // in the target set. We capture the snapshot AND
+                    // the captured LR; the actual "expected exit" is
+                    // computed later by an isolated (IRQ-disabled)
+                    // re-run of each captured entry.
+                    let is_target =
+                        RECORD_TARGETS.with(|t| t.borrow().contains(&true_pc));
+                    if is_target {
+                        let snap = snapshot::Snapshot::capture(core);
+                        RECORD_ENTRIES.with(|s| {
+                            s.borrow_mut().push(RecordedEntry {
+                                fn_addr: true_pc,
+                                captured_lr: ret_addr,
+                                entry: snap,
+                            });
+                        });
+                    }
                 }
             }
         }
@@ -559,22 +598,385 @@ fn track(rom: &str, frames: u32, symbols_path: &str, output: Option<&str>) {
     }
 }
 
+// ---------------------------------------------------------------------
+// record — run a session and capture (entry, exit) snapshot pairs for
+// a specified set of target functions. Output layout:
+//   <session_dir>/<fn_name>/N.entry.bin
+//   <session_dir>/<fn_name>/N.exit.bin
+// ---------------------------------------------------------------------
+
+fn record(
+    rom: &str,
+    frames: u32,
+    symbols_path: &str,
+    session_dir: &str,
+    target_hex: &[String],
+) {
+    eprintln!("=== bn6f-track record ===");
+    eprintln!("rom: {rom}  frames: {frames}");
+    eprintln!("session: {session_dir}");
+
+    let symbols = read_symbols(symbols_path).unwrap_or_else(|e| {
+        eprintln!("read_symbols: {e}");
+        process::exit(1);
+    });
+    let names: HashMap<u32, String> = symbols.iter().cloned().collect();
+
+    // Parse target addresses (hex strings with optional 0x).
+    let targets: Vec<u32> = target_hex
+        .iter()
+        .map(|s| {
+            let s = s.trim().strip_prefix("0x").unwrap_or(s);
+            u32::from_str_radix(s, 16).unwrap_or_else(|e| {
+                eprintln!("bad target addr {s}: {e}");
+                process::exit(1);
+            })
+        })
+        .collect();
+    eprintln!("targets: {}", targets.len());
+    for t in &targets {
+        let name = names.get(t).map(String::as_str).unwrap_or("<unknown>");
+        eprintln!("  0x{t:08X}  {name}");
+    }
+
+    // Reset tracker state.
+    HITS.with(|h| h.borrow_mut().clear());
+    CALLS.with(|h| h.borrow_mut().clear());
+    EXITS.with(|h| h.borrow_mut().clear());
+    PENDING.with(|p| p.borrow_mut().clear());
+    LAST_TRUE_PC.with(|c| *c.borrow_mut() = 0);
+    RECORD_ENTRIES.with(|s| s.borrow_mut().clear());
+    ENTRIES.with(|e| {
+        let mut e = e.borrow_mut();
+        e.clear();
+        for &(addr, _) in &symbols {
+            e.insert(addr);
+        }
+    });
+    FN_END.with(|m| {
+        let mut m = m.borrow_mut();
+        m.clear();
+        let mut sorted: Vec<u32> = symbols.iter().map(|(a, _)| *a).collect();
+        sorted.sort();
+        sorted.dedup();
+        for window in sorted.windows(2) {
+            m.insert(window[0], window[1]);
+        }
+        if let Some(&last) = sorted.last() {
+            m.insert(last, u32::MAX);
+        }
+    });
+    RECORD_TARGETS.with(|t| {
+        let mut t = t.borrow_mut();
+        t.clear();
+        for &a in &targets {
+            t.insert(a);
+        }
+    });
+
+    let mut core = Core::new(rom).unwrap_or_else(|e| {
+        eprintln!("Core::new failed: {e}");
+        process::exit(1);
+    });
+    core.attach_debugger();
+
+    let t0 = Instant::now();
+    core.run_frames_debugged(frames);
+    let elapsed = t0.elapsed();
+    eprintln!(
+        "emulated {} frames in {:.3}s ({:.1} fps)",
+        core.frame_counter(),
+        elapsed.as_secs_f64(),
+        frames as f64 / elapsed.as_secs_f64()
+    );
+
+    // Phase B: for each captured entry, do an isolated run on this
+    // same ROM (the "oracle") to compute the expected exit state. We
+    // disable IRQs during the run to remove cycle-drift-driven IRQ
+    // interleaving — the C reimpl will execute in the same isolated
+    // mode during replay, so the diff is clean.
+    let entries = RECORD_ENTRIES.with(|s| std::mem::take(&mut *s.borrow_mut()));
+    eprintln!("captured {} target entries; computing expected exits...", entries.len());
+    drop(core); // release the demo core; we'll spin a fresh one per entry
+
+    fs::create_dir_all(session_dir).unwrap();
+    let mut per_fn_counter: HashMap<u32, usize> = HashMap::new();
+    let mut wrote = 0usize;
+    let mut failed = 0usize;
+    for rec in entries {
+        let name = names
+            .get(&rec.fn_addr)
+            .map(String::as_str)
+            .unwrap_or("<unknown>");
+        let seq = *per_fn_counter
+            .entry(rec.fn_addr)
+            .and_modify(|c| *c += 1)
+            .or_insert(0);
+        let fn_dir = format!("{session_dir}/{name}");
+        fs::create_dir_all(&fn_dir).unwrap();
+
+        match isolated_run_to(rom, &rec.entry, rec.captured_lr) {
+            Ok(exit) => {
+                let entry_path = format!("{fn_dir}/{seq:04}.entry.bin");
+                let exit_path = format!("{fn_dir}/{seq:04}.exit.bin");
+                rec.entry
+                    .write_to(std::path::Path::new(&entry_path))
+                    .unwrap();
+                exit.write_to(std::path::Path::new(&exit_path)).unwrap();
+                wrote += 1;
+            }
+            Err(e) => {
+                failed += 1;
+                eprintln!("  {name} #{seq:04} isolated run failed: {e}");
+            }
+        }
+    }
+    eprintln!("wrote {wrote} pairs to {session_dir} ({failed} entries failed isolated run)");
+}
+
+// ---------------------------------------------------------------------
+// isolated_run_to — load an entry snapshot into a fresh core, mask
+// IRQs (CPSR.I = 1), single-step until PC reaches `target`, capture
+// and return the exit snapshot. Used by both record (to compute the
+// expected exit on the oracle ROM) and replay (to compute the actual
+// exit on the candidate ROM).
+//
+// We mask IRQs so the comparison is unaffected by cycle-drift between
+// the ASM and C versions of the function — IRQ handlers would
+// otherwise mutate memory/registers differently between the two.
+// ---------------------------------------------------------------------
+
+fn isolated_run_to(
+    rom: &str,
+    entry: &snapshot::Snapshot,
+    target: u32,
+) -> Result<snapshot::Snapshot, String> {
+    let core = Core::new(rom).map_err(|e| format!("Core::new: {e}"))?;
+    entry.restore(core.raw)?;
+
+    // Mask IRQ at the CPU level (CPSR.I = bit 7) so cycle drift
+    // between ASM and C versions can't show up as different IRQ
+    // interleavings.
+    let cpsr_name = CString::new("cpsr").unwrap();
+    let pc_name = CString::new("r15").unwrap();
+    unsafe {
+        let read = (*core.raw).readRegister.unwrap_unchecked();
+        let write = (*core.raw).writeRegister.unwrap_unchecked();
+        let mut cpsr: u32 = 0;
+        read(core.raw, cpsr_name.as_ptr(), &mut cpsr as *mut u32 as *mut _);
+        cpsr |= 0x80;
+        write(core.raw, cpsr_name.as_ptr(), &cpsr as *const u32 as *const _);
+    }
+
+    const MAX_STEPS: usize = 1_000_000;
+    let mut steps = 0usize;
+    unsafe {
+        let step_fn = (*core.raw).step.expect("core.step is null");
+        let read = (*core.raw).readRegister.expect("readRegister is null");
+        loop {
+            if steps >= MAX_STEPS {
+                return Err(format!(
+                    "didn't reach LR 0x{target:08X} in {MAX_STEPS} steps"
+                ));
+            }
+            step_fn(core.raw);
+            steps += 1;
+            let mut pc: u32 = 0;
+            let mut cpsr: u32 = 0;
+            read(core.raw, pc_name.as_ptr(), &mut pc as *mut u32 as *mut _);
+            read(core.raw, cpsr_name.as_ptr(), &mut cpsr as *mut u32 as *mut _);
+            let instr_len = if (cpsr & (1 << 5)) != 0 { 2 } else { 4 };
+            let true_pc = pc.wrapping_sub(instr_len);
+            if true_pc == target {
+                break;
+            }
+        }
+    }
+    Ok(snapshot::Snapshot::capture(core.raw))
+}
+
+// ---------------------------------------------------------------------
+// replay — for each fixture in the session dir, load the entry
+// snapshot into a freshly-loaded ROM, step until PC reaches the
+// captured LR, snapshot the exit, diff against the recorded exit.
+// ---------------------------------------------------------------------
+
+fn replay(rom: &str, session_dir: &str) {
+    eprintln!("=== bn6f-track replay ===");
+    eprintln!("rom: {rom}  session: {session_dir}");
+
+    // Walk session_dir/<fn_name>/N.{entry,exit}.bin
+    let mut by_fn: HashMap<String, Vec<usize>> = HashMap::new();
+    let session = std::path::Path::new(session_dir);
+    let entries = fs::read_dir(session).unwrap_or_else(|e| {
+        eprintln!("can't read {session_dir}: {e}");
+        process::exit(1);
+    });
+    for entry in entries.flatten() {
+        let path = entry.path();
+        if !path.is_dir() {
+            continue;
+        }
+        let fn_name = path.file_name().unwrap().to_string_lossy().to_string();
+        let mut seqs: Vec<usize> = Vec::new();
+        for sub in fs::read_dir(&path).unwrap().flatten() {
+            let fname = sub.file_name().to_string_lossy().to_string();
+            if let Some(seq_str) = fname.strip_suffix(".entry.bin") {
+                if let Ok(seq) = seq_str.parse::<usize>() {
+                    seqs.push(seq);
+                }
+            }
+        }
+        seqs.sort();
+        by_fn.insert(fn_name, seqs);
+    }
+
+    let mut total_pairs = 0usize;
+    let mut total_pass = 0usize;
+    let mut total_fail = 0usize;
+
+    for (fn_name, seqs) in &by_fn {
+        let mut pass = 0usize;
+        let mut fail = 0usize;
+        let mut first_fail_msg = String::new();
+        for &seq in seqs {
+            total_pairs += 1;
+            let entry_path = session.join(fn_name).join(format!("{seq:04}.entry.bin"));
+            let exit_path = session.join(fn_name).join(format!("{seq:04}.exit.bin"));
+            let expected_entry = snapshot::Snapshot::read_from(&entry_path).unwrap();
+            let expected_exit = snapshot::Snapshot::read_from(&exit_path).unwrap();
+
+            // Run the single pair: load entry, step until LR, snapshot.
+            let result = replay_single(rom, &expected_entry, &expected_exit);
+            match result {
+                Ok(actual_exit) => {
+                    let sp_at_exit = expected_exit.regs[13];
+                    let diff = snapshot::diff(&expected_exit, &actual_exit, sp_at_exit);
+                    if diff.is_clean() {
+                        pass += 1;
+                    } else {
+                        fail += 1;
+                        if first_fail_msg.is_empty() {
+                            first_fail_msg = describe_diff(&diff);
+                        }
+                    }
+                }
+                Err(e) => {
+                    fail += 1;
+                    if first_fail_msg.is_empty() {
+                        first_fail_msg = e;
+                    }
+                }
+            }
+        }
+        total_pass += pass;
+        total_fail += fail;
+        let tag = if fail == 0 { "PASS" } else { "FAIL" };
+        println!("[{tag}] {fn_name}: {pass}/{} pairs", pass + fail);
+        if !first_fail_msg.is_empty() {
+            println!("       first failure: {first_fail_msg}");
+        }
+    }
+    println!(
+        "\nTotal: {total_pass}/{total_pairs} pairs passed ({total_fail} failed)"
+    );
+    if total_fail > 0 {
+        process::exit(1);
+    }
+}
+
+fn replay_single(
+    rom: &str,
+    entry: &snapshot::Snapshot,
+    expected_exit: &snapshot::Snapshot,
+) -> Result<snapshot::Snapshot, String> {
+    let _ = expected_exit;
+    // Captured LR in r14 is the function's return address (Thumb bit
+    // possibly set). The expected exit's r15 = (lr & !1) + instr_len.
+    let target = entry.regs[14] & !1u32;
+    isolated_run_to(rom, entry, target)
+}
+
+fn describe_diff(d: &snapshot::DiffSummary) -> String {
+    if let Some((i, exp, act)) = d.must_match_reg_mismatches().next() {
+        return format!(
+            "{} mismatch: expected 0x{exp:08X}, got 0x{act:08X}",
+            snapshot::REG_NAMES[*i]
+        );
+    }
+    if d.ewram_diff_bytes > 0 {
+        let first = d.ewram_first_diff.unwrap_or(0);
+        return format!(
+            "EWRAM diff: {} bytes (first at 0x0200{:04X})",
+            d.ewram_diff_bytes,
+            first
+        );
+    }
+    if d.iwram_diff_bytes > 0 {
+        let first = d.iwram_first_diff.unwrap_or(0);
+        return format!(
+            "IWRAM diff: {} bytes (first at 0x0300{:04X})",
+            d.iwram_diff_bytes,
+            first
+        );
+    }
+    String::new()
+}
+
+fn usage(prog: &str) -> ! {
+    eprintln!(
+        "usage:\n  {prog} smoke  ROM [FRAMES]\n  {prog} track  ROM FRAMES SYMBOLS [OUTPUT]\n  {prog} record ROM FRAMES SYMBOLS SESSION_DIR FN_ADDR [FN_ADDR...]\n  {prog} replay ROM SESSION_DIR\n\nLegacy positional form (deprecated):\n  {prog} ROM FRAMES SYMBOLS [OUTPUT]   (= track)\n  {prog} ROM [FRAMES]                  (= smoke)"
+    );
+    process::exit(2);
+}
+
 fn main() {
     silence_libmgba_logger();
 
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
-        eprintln!(
-            "usage:\n  {} ROM [FRAMES]                       (smoke test)\n  {} ROM FRAMES SYMBOLS [OUTPUT]        (function tracker)",
-            args[0], args[0]
-        );
-        process::exit(2);
+        usage(&args[0]);
     }
-    let rom = &args[1];
-    let frames: u32 = args.get(2).and_then(|s| s.parse().ok()).unwrap_or(60);
 
-    match args.get(3) {
-        Some(symbols) => track(rom, frames, symbols, args.get(4).map(String::as_str)),
-        None => smoke_test(rom, frames),
+    // Subcommand dispatch with legacy fallback to keep `make track` working.
+    match args[1].as_str() {
+        "smoke" => {
+            let rom = args.get(2).unwrap_or_else(|| usage(&args[0]));
+            let frames: u32 = args.get(3).and_then(|s| s.parse().ok()).unwrap_or(60);
+            smoke_test(rom, frames);
+        }
+        "track" => {
+            let rom = args.get(2).unwrap_or_else(|| usage(&args[0]));
+            let frames: u32 = args.get(3).and_then(|s| s.parse().ok()).unwrap_or(300);
+            let symbols = args.get(4).unwrap_or_else(|| usage(&args[0]));
+            track(rom, frames, symbols, args.get(5).map(String::as_str));
+        }
+        "record" => {
+            let rom = args.get(2).unwrap_or_else(|| usage(&args[0]));
+            let frames: u32 =
+                args.get(3).and_then(|s| s.parse().ok()).unwrap_or_else(|| usage(&args[0]));
+            let symbols = args.get(4).unwrap_or_else(|| usage(&args[0]));
+            let session_dir = args.get(5).unwrap_or_else(|| usage(&args[0]));
+            if args.len() < 7 {
+                usage(&args[0]);
+            }
+            let targets: Vec<String> = args[6..].to_vec();
+            record(rom, frames, symbols, session_dir, &targets);
+        }
+        "replay" => {
+            let rom = args.get(2).unwrap_or_else(|| usage(&args[0]));
+            let session_dir = args.get(3).unwrap_or_else(|| usage(&args[0]));
+            replay(rom, session_dir);
+        }
+        // Legacy positional form: first positional is the ROM. We keep
+        // this so existing Makefile targets and scripts continue to work.
+        _ => {
+            let rom = &args[1];
+            let frames: u32 = args.get(2).and_then(|s| s.parse().ok()).unwrap_or(60);
+            match args.get(3) {
+                Some(symbols) => track(rom, frames, symbols, args.get(4).map(String::as_str)),
+                None => smoke_test(rom, frames),
+            }
+        }
     }
 }

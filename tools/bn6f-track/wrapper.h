@@ -3,4 +3,6 @@
 #include <mgba/core/config.h>
 #include <mgba/core/interface.h>
 #include <mgba/core/log.h>
+#include <mgba/core/serialize.h>
 #include <mgba/debugger/debugger.h>
+#include <mgba-util/vfs.h>
