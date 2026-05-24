@@ -31,6 +31,7 @@ PlayMapMusic
 PlayMusic
 PlaySoundEffect
 QueueEightWordAlignedGFXTransfer
+QueueWordAlignedGFXTransfer
 SWI_LZ77UnCompReadNormalWrite8bit
 SeedRNG
 SetCutsceneCameraScript
