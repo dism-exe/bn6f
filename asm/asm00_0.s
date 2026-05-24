@@ -623,6 +623,7 @@ CopyBytes:
 // Copy r2 bytes from r0 to r1, in units of halfwords.
 // Note that size is specified in bytes, which is then converted to halfword count in function
 // Source, destination, and size must be halfword compatible.
+	.ifndef DECOMP_COPY_HALFWORDS
 	thumb_func_start CopyHalfwords
 CopyHalfwords:
 	push {r0-r3,lr}
@@ -635,6 +636,15 @@ CopyHalfwords:
 .HalfwordCopyCpuSetMask_8000938:
 	.word 0x0
 	thumb_func_end CopyHalfwords
+	.else
+	// CopyHalfwords is at 0x0800092A — 2-byte aligned but NOT 4-aligned,
+	// so .pool emits 2 alignment bytes before the literal (10-byte
+	// trampoline). Pad another 8 bytes to fill the 18-byte slot.
+	thumb_func_start CopyHalfwords
+CopyHalfwords:
+	decomp_trampoline CopyHalfwords_c, 8
+	thumb_func_end CopyHalfwords
+	.endif
 
 /// Copy r2 bytes from r0 to r1, in units of words.
 /// Note r2 represents byte count, which is then converted to word count in function
@@ -2671,6 +2681,7 @@ SeedRNG:
 	.endif
 
 /// tags: "#mod_rng, "
+	.ifndef DECOMP_GET_RNG
 	thumb_func_start GetRNG
 GetRNG: // () -> u32?
 	push {r7,lr}
@@ -2685,6 +2696,12 @@ GetRNG: // () -> u32?
 	str r0, [r7]
 	pop {r7,pc}
 	thumb_func_end GetRNG
+	.else
+	thumb_func_start GetRNG
+GetRNG:
+	decomp_trampoline GetRNG_c, 14
+	thumb_func_end GetRNG
+	.endif
 
 /// tags: "#mod_rng, "
 	thumb_func_start GetPositiveSignedRNG

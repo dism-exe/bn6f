@@ -67,7 +67,9 @@ all: clean-conditional-objs $(ROM)
 decompile: ASFLAGS += --defsym DECOMP_BYTE_FILL=1 --defsym DECOMP_COPY_BYTES=1 \
                        --defsym DECOMP_CLEAR_WORD_E200AC1C=1 --defsym DECOMP_SEED_RNG=1 \
                        --defsym DECOMP_COPY_WORDS=1 --defsym DECOMP_COPY_BY_EIGHT_WORDS=1 \
-                       --defsym DECOMP_HALFWORD_FILL=1
+                       --defsym DECOMP_HALFWORD_FILL=1 --defsym DECOMP_GET_RNG=1 \
+                       --defsym DECOMP_ESTRUCT200BC30_GETJUMPOFFSET00=1 \
+                       --defsym DECOMP_COPY_HALFWORDS=1
 decompile: clean-conditional-objs $(C_OFILES) $(OFILES)
 	$(LD) $(LDFLAGS) -o $(ELF) -T ld_script_decompile.ld $(OFILES) $(C_OFILES) $(CLIB) $(LIB)
 	$(OBJCOPY) -O binary $(ELF) $(ROM)
@@ -198,7 +200,8 @@ track: track-build $(FN_SYMS) $(ROM)
 # DECOMP_FN_ADDRS.
 SESSION_DIR ?= tests/fixtures/calls/boot_idle
 DECOMP_FN_ADDRS ?= 0x08000964 0x08000920 0x08000A3C 0x08001514 \
-                    0x0800093C 0x08000950 0x0800096C
+                    0x0800093C 0x08000950 0x0800096C \
+                    0x0800151C 0x0803EA60 0x0800092A
 
 verify: track-build $(FN_SYMS)
 	@echo "[verify] building original ROM and recording fixtures..."

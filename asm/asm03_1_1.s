@@ -11358,6 +11358,7 @@ sub_803EA58:
 	.byte 0, 0
 	thumb_func_end sub_803EA58
 
+	.ifndef DECOMP_ESTRUCT200BC30_GETJUMPOFFSET00
 	thumb_func_start eStruct200BC30_getJumpOffset00
 eStruct200BC30_getJumpOffset00:
 	ldr r1, off_803EBF8 // =eStruct200BC30
@@ -11365,6 +11366,12 @@ eStruct200BC30_getJumpOffset00:
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end eStruct200BC30_getJumpOffset00
+	.else
+	thumb_func_start eStruct200BC30_getJumpOffset00
+eStruct200BC30_getJumpOffset00:
+	decomp_trampoline eStruct200BC30_getJumpOffset00_c, 0
+	thumb_func_end eStruct200BC30_getJumpOffset00
+	.endif
 
 	thumb_func_start eStruct200BC30_getJumpOffset00_pushpop
 eStruct200BC30_getJumpOffset00_pushpop:
