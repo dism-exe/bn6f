@@ -6048,7 +6048,8 @@ subsystem_launchMail:
 	pop {r4,r5,pc}
 	thumb_func_end subsystem_launchMail
 
-	thumb_local_start
+	.ifndef DECOMP_sub_8005EEC
+	thumb_func_start sub_8005EEC
 sub_8005EEC:
 	push {r4-r7,lr}
 	mov r4, r10
@@ -6061,6 +6062,12 @@ sub_8005EEC:
 	strb r2, [r4,#oWarp2011bb0_MapGroupTransitionType]
 	pop {r4-r7,pc}
 	thumb_func_end sub_8005EEC
+	.else
+	thumb_func_start sub_8005EEC
+sub_8005EEC:
+	decomp_trampoline sub_8005EEC_c, 12
+	thumb_func_end sub_8005EEC
+	.endif
 
 	thumb_func_start warp_setSubsystemIndexTo0x10AndOthers_8005f00
 // just pure warp
