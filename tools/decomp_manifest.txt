@@ -161,3 +161,6 @@ cutsceneCamera_focusCameraOnPlayerMaybe_8036faa
 cutscene_8036EFE
 playCertainMapMusicBasedOnEventByte_8036e44
 sub_8035738
+map_8001708
+reqBBS_addBBSMessage_813e5dc
+sub_813B9E0

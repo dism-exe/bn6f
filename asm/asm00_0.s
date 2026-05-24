@@ -3000,6 +3000,7 @@ byte_8001618::
 	thumb_func_end sub_80015FC
 	.endif
 
+	.ifndef DECOMP_map_8001708
 	thumb_func_start map_8001708
 map_8001708: // (map_group: u8, map_number: u8) -> ()
 	push {lr}
@@ -3031,6 +3032,12 @@ off_8001724:
 off_8001728:
 	.word off_8033878 // [Nullable<*const [u8]>; REAL_WORLD_NUM_GROUPS]
 	thumb_func_end map_8001708
+	.else
+	thumb_func_start map_8001708
+map_8001708:
+	decomp_trampoline map_8001708_c, 28
+	thumb_func_end map_8001708
+	.endif
 
 	.ifndef DECOMP_render_800172C
 	thumb_func_start render_800172C

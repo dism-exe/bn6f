@@ -712,6 +712,7 @@ off_813E5D8:
 	.word unk_2033A00
 	thumb_func_end reqBBS_uncomp_813E5A0
 
+	.ifndef DECOMP_reqBBS_addBBSMessage_813e5dc
 	thumb_func_start reqBBS_addBBSMessage_813e5dc
 reqBBS_addBBSMessage_813e5dc:
 	push {r3,r7,lr}
@@ -742,6 +743,12 @@ reqBBS_addBBSMessage_813e5dc:
 	str r0, [r1,r3]
 	pop {r3,r7,pc}
 	thumb_func_end reqBBS_addBBSMessage_813e5dc
+	.else
+	thumb_func_start reqBBS_addBBSMessage_813e5dc
+reqBBS_addBBSMessage_813e5dc:
+	decomp_trampoline reqBBS_addBBSMessage_813e5dc_c, 50
+	thumb_func_end reqBBS_addBBSMessage_813e5dc
+	.endif
 
 	.ifndef DECOMP_reqBBS_813E616
 	thumb_func_start reqBBS_813E616

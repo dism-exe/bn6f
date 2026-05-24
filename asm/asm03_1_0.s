@@ -81,7 +81,7 @@ dword_8033852: // [u8; UNDERNET_NUM_MAPS]
 byte_8033856: // [u8; GRAVEYARD_NUM_MAPS]
 	.byte 0x4, 0x4, 0x4
 	.balign 4, 0
-off_803385C: // [*const [u8]; REAL_WORLD_NUM_GROUPS]
+off_803385C::
 	.word word_80338D4 // [u8; ACDC_TOWN_NUM_MAPS]
 	.word byte_80338D6 // [u8; CENTRAL_TOWN_NUM_MAPS]
 	.word byte_80338DB // [u8; CYBER_ACADEMY_NUM_MAPS]
@@ -89,7 +89,7 @@ off_803385C: // [*const [u8]; REAL_WORLD_NUM_GROUPS]
 	.word byte_80338EB // [u8; GREEN_TOWN_NUM_MAPS]
 	.word dword_80338F0 // [u8; SKY_TOWN_NUM_MAPS]
 	.word byte_80338F4 // [u8; EXPO_SITE_NUM_MAPS]
-off_8033878: // [Nullable<*const [u8]>; REAL_WORLD_NUM_GROUPS]
+off_8033878::
 	.word word_80338FA // [u8; ROBOT_CONTROL_COMP_NUM_MAPS]
 	.word byte_80338FC // [u8; AQUARIUM_COMP_NUM_MAPS]
 	.word byte_80338FF // [u8; JUDGETREE_COMP_NUM_MAPS]
