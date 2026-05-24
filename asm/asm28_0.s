@@ -4063,7 +4063,7 @@ dword_809C0E8:
   .word 0x1D20
 dword_809C0EC: 
   .word 0x1DA0
-off_809C0F0: 
+off_809C0F0::
   .word dword_809C108
 	.word off_809C140
 off_809C0F8: 
@@ -4136,7 +4136,7 @@ byte_809C2AC:
 	.byte 0x4, 0x80, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x8, 0x4, 0x40, 0x0, 0x0, 0x0, 0x0
 	.byte 0xFF, 0x0, 0x0, 0x8, 0x4, 0x60, 0x0, 0x0, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x8, 0x4, 0x80
 	.byte 0x0, 0x0, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x8
-byte_809C354:
+byte_809C354::
 	cs_disable_cutscene_skip_script
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
@@ -4579,6 +4579,7 @@ sub_809C954:
 	.balign 4, 0x00
 	thumb_func_end sub_809C954
 
+	.ifndef DECOMP_sub_809C968
 	thumb_func_start sub_809C968
 sub_809C968:
 	push {r4-r7,lr}
@@ -4676,6 +4677,12 @@ off_809CA38:
 off_809CA3C:
 	.word byte_809C354 // CutsceneScript
 	thumb_func_end sub_809C968
+	.else
+	thumb_func_start sub_809C968
+sub_809C968:
+	decomp_trampoline sub_809C968_c, 208
+	thumb_func_end sub_809C968
+	.endif
 
 	thumb_func_start sub_809CA40
 sub_809CA40:
