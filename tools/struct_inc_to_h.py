@@ -46,6 +46,12 @@ ARR_MAP = {
 # Maps macro-name → underlying type.
 CUSTOM_FIELD_TYPES = {}
 
+# Phase C of structs_plan.md — Toolkit.h's ptr fields are hand-refined
+# (see constants/headers/structs/Toolkit.h). When extending this list,
+# either re-run the script and re-apply the refinement, or wire up
+# real override support here (currently the generator emits all `ptr`
+# fields as `void *`).
+
 FIELD_RE = re.compile(
     r"^\s*([A-Za-z_]\w*)\s+([A-Za-z_]\w*)\s*(//.*loc\s*=\s*(0x[0-9A-Fa-f]+|\d+).*)?$"
 )
