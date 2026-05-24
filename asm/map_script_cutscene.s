@@ -2414,6 +2414,7 @@ playCertainMapMusicBasedOnEventByte_8036e44:
 	thumb_func_end playCertainMapMusicBasedOnEventByte_8036e44
 	.endif
 
+	.ifndef DECOMP_PlayMapMusic
 	thumb_func_start PlayMapMusic
 PlayMapMusic: // () -> ()
 	push {r4-r7,lr}
@@ -2423,6 +2424,12 @@ PlayMapMusic: // () -> ()
 	bl PlayMusic // (song: u8) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end PlayMapMusic
+	.else
+	thumb_func_start PlayMapMusic
+PlayMapMusic:
+	decomp_trampoline PlayMapMusic_c, 6
+	thumb_func_end PlayMapMusic
+	.endif
 
 	thumb_func_start sub_8036E86
 sub_8036E86:

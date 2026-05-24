@@ -231,3 +231,7 @@ sub_803EF84
 m4a_800061E
 sound_8000630
 PlayMusic
+PlaySoundEffect
+music_80005F2
+PlayMapMusic
+sub_803EBC8

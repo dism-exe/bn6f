@@ -11651,6 +11651,7 @@ sub_803EBB8:
 	pop {pc}
 	thumb_func_end sub_803EBB8
 
+	.ifndef DECOMP_sub_803EBC8
 	thumb_func_start sub_803EBC8
 sub_803EBC8:
 	push {lr}
@@ -11667,6 +11668,12 @@ sub_803EBC8:
 off_803EBE0:
 	.word dword_200B1B0
 	thumb_func_end sub_803EBC8
+	.else
+	thumb_func_start sub_803EBC8
+sub_803EBC8:
+	decomp_trampoline sub_803EBC8_c, 20
+	thumb_func_end sub_803EBC8
+	.endif
 
 	thumb_local_start
 sub_803EBE4:

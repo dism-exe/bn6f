@@ -23,6 +23,7 @@ call_m4a_2_814F00C:
 	pop {pc}
 	thumb_func_end call_m4a_2_814F00C
 
+	.ifndef DECOMP_PlaySoundEffect
 	thumb_func_start PlaySoundEffect
 // (enum SoundEffect idx) -> void
 // this can play any song in the song array but
@@ -32,6 +33,12 @@ PlaySoundEffect:
 	bl m4a_800061E // () -> void
 	pop {r1-r7,pc}
 	thumb_func_end PlaySoundEffect
+	.else
+	thumb_func_start PlaySoundEffect
+PlaySoundEffect:
+	decomp_trampoline PlaySoundEffect_c, 0
+	thumb_func_end PlaySoundEffect
+	.endif
 
 	.ifndef DECOMP_PlayMusic
 	thumb_func_start PlayMusic
@@ -59,6 +66,7 @@ PlayMusic:
 	thumb_func_end PlayMusic
 	.endif
 
+	.ifndef DECOMP_music_80005F2
 	thumb_func_start music_80005F2
 music_80005F2: // (bg_music_indicator: u8) -> ()
 	push {r1-r7,lr}
@@ -79,6 +87,12 @@ loc_8000604:
 locret_8000608:
 	pop {r1-r7,pc}
 	thumb_func_end music_80005F2
+	.else
+	thumb_func_start music_80005F2
+music_80005F2:
+	decomp_trampoline music_80005F2_c, 14
+	thumb_func_end music_80005F2
+	.endif
 
 	thumb_func_start sub_800060A
 sub_800060A:
