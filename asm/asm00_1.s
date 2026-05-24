@@ -2651,6 +2651,7 @@ off_800458C:
 	.word sub_3006440+1
 	thumb_func_end sub_8004510
 
+	.ifndef DECOMP_sub_8004590
 	thumb_func_start sub_8004590
 sub_8004590:
 	push {lr}
@@ -2658,6 +2659,12 @@ sub_8004590:
 	bl sub_80028C0
 	pop {pc}
 	thumb_func_end sub_8004590
+	.else
+	thumb_func_start sub_8004590
+sub_8004590:
+	decomp_trampoline sub_8004590_c, 2
+	thumb_func_end sub_8004590
+	.endif
 
 	thumb_local_start
 dead_800459A:
@@ -16478,6 +16485,7 @@ clearBattleStateUnk11Flag_800A9D6: // (flags: flags8) -> ()
 	mov pc, lr
 	thumb_func_end clearBattleStateUnk11Flag_800A9D6
 
+	.ifndef DECOMP_sub_800A9E2
 	thumb_func_start sub_800A9E2
 sub_800A9E2:
 	mov r3, r10
@@ -16486,6 +16494,12 @@ sub_800A9E2:
 	ldrb r0, [r3,r0]
 	mov pc, lr
 	thumb_func_end sub_800A9E2
+	.else
+	thumb_func_start sub_800A9E2
+sub_800A9E2:
+	decomp_trampoline sub_800A9E2_c, 0
+	thumb_func_end sub_800A9E2
+	.endif
 
 	thumb_func_start battle_networkInvert
 battle_networkInvert:

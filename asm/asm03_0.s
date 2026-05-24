@@ -20790,6 +20790,7 @@ sub_8030194:
 	mov pc, lr
 	thumb_func_end sub_8030194
 
+	.ifndef DECOMP_camera_writeUnk03_14_80301b2
 	thumb_func_start camera_writeUnk03_14_80301b2
 camera_writeUnk03_14_80301b2:
 	mov r2, r10
@@ -20798,6 +20799,12 @@ camera_writeUnk03_14_80301b2:
 	str r1, [r2,#oCamera_Unk_14]
 	mov pc, lr
 	thumb_func_end camera_writeUnk03_14_80301b2
+	.else
+	thumb_func_start camera_writeUnk03_14_80301b2
+camera_writeUnk03_14_80301b2:
+	decomp_trampoline camera_writeUnk03_14_80301b2_c, 0
+	thumb_func_end camera_writeUnk03_14_80301b2
+	.endif
 
 	thumb_func_start sub_80301BC
 sub_80301BC:

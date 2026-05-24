@@ -1176,6 +1176,7 @@ sprite_setAnimationAlt:
 	thumb_func_end sprite_setAnimationAlt
 
 // (u8 a1) -> void
+	.ifndef DECOMP_sprite_setAnimation
 	thumb_func_start sprite_setAnimation
 sprite_setAnimation:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
@@ -1185,6 +1186,12 @@ sprite_setAnimation:
 	strb r0, [r3,#oObjectSprite_Unk_00]
 	mov pc, lr
 	thumb_func_end sprite_setAnimation
+	.else
+	thumb_func_start sprite_setAnimation
+sprite_setAnimation:
+	decomp_trampoline sprite_setAnimation_c, 4
+	thumb_func_end sprite_setAnimation
+	.endif
 
 	thumb_func_start sprite_forceWhitePalette
 sprite_forceWhitePalette:
@@ -1539,6 +1546,7 @@ sprite_getFlip:
 	thumb_func_end sprite_getFlip
 
 // () -> void
+	.ifndef DECOMP_sprite_noShadow
 	thumb_func_start sprite_noShadow
 // shadow moves with sprite's Z
 sprite_noShadow:
@@ -1554,7 +1562,14 @@ sprite_noShadow:
 	strb r0, [r3,#oObjectSprite_Unk_03]
 	mov pc, lr
 	thumb_func_end sprite_noShadow
+	.else
+	thumb_func_start sprite_noShadow
+sprite_noShadow:
+	decomp_trampoline sprite_noShadow_c, 14
+	thumb_func_end sprite_noShadow
+	.endif
 
+	.ifndef DECOMP_sprite_setUnk0x2c
 	thumb_func_start sprite_setUnk0x2c
 sprite_setUnk0x2c:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
@@ -1564,6 +1579,12 @@ sprite_setUnk0x2c:
 	str r0, [r3,#oObjectSprite_Unk_2c]
 	mov pc, lr
 	thumb_func_end sprite_setUnk0x2c
+	.else
+	thumb_func_start sprite_setUnk0x2c
+sprite_setUnk0x2c:
+	decomp_trampoline sprite_setUnk0x2c_c, 2
+	thumb_func_end sprite_setUnk0x2c
+	.endif
 
 	thumb_func_start sprite_getUnk0x2c
 sprite_getUnk0x2c:

@@ -136,3 +136,10 @@ sprite_setPalette
 sub_8002E14
 sprite_setFlip
 sub_8002874
+sprite_setAnimation
+sprite_noShadow
+sprite_setUnk0x2c
+camera_writeUnk03_14_80301b2
+sub_813B9FC
+sub_800A9E2
+sub_8004590

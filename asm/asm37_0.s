@@ -432,6 +432,7 @@ off_813B9F0:
 	.word byte_813B3AE
 	thumb_func_end sub_813B9E0
 
+	.ifndef DECOMP_sub_813B9FC
 	thumb_func_start sub_813B9FC
 sub_813B9FC:
 	mov r1, r10
@@ -441,6 +442,12 @@ sub_813B9FC:
 	add r0, r0, r1
 	mov pc, lr
 	thumb_func_end sub_813B9FC
+	.else
+	thumb_func_start sub_813B9FC
+sub_813B9FC:
+	decomp_trampoline sub_813B9FC_c, 4
+	thumb_func_end sub_813B9FC
+	.endif
 
 	thumb_func_start sub_813BA08
 sub_813BA08:
