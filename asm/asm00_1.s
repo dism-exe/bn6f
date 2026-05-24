@@ -17636,7 +17636,8 @@ dword_800B10C:
 	.word 0x185
 	thumb_func_end someChipHandValidationHappensHere_800B090
 
-	thumb_local_start
+	.ifndef DECOMP_sub_800B110
+	thumb_func_start sub_800B110
 sub_800B110:
 	push {r4,lr}
 	ldr r4, off_800B124 // =word_800B128
@@ -17653,7 +17654,7 @@ locret_800B122:
 	.balign 4, 0
 off_800B124:
 	.word word_800B128
-word_800B128:
+word_800B128::
 	.hword 0x195
 	.hword 0x196
 	.byte 0x97, 0x1, 0x98, 0x1, 0x99, 0x1, 0x9A, 0x1, 0x0, 0x0, 0x0, 0x0
@@ -17664,6 +17665,24 @@ dword_800B13C:
 dword_800B140:
 	.word 0x1555
 	thumb_func_end sub_800B110
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_800B110
+sub_800B110:
+	decomp_trampoline sub_800B110_c, 16
+word_800B128::
+	.hword 0x195
+	.hword 0x196
+	.byte 0x97, 0x1, 0x98, 0x1, 0x99, 0x1, 0x9A, 0x1, 0x0, 0x0, 0x0, 0x0
+off_800B138:
+	.word byte_20349C0
+dword_800B13C:
+	.word 0x4000
+dword_800B140:
+	.word 0x1555
+	thumb_func_end sub_800B110
+	.endif
 
 	thumb_local_start
 sub_800B144:

@@ -236,3 +236,4 @@ music_80005F2
 PlayMapMusic
 sub_803EBC8
 doPETEffect_8033fc0
+sub_800B110
