@@ -568,7 +568,8 @@ loc_800297C:
 	pop {r4-r7,pc}
 	thumb_func_end uncompSprite_8002906
 
-	thumb_local_start
+	.ifndef DECOMP_sub_8002986
+	thumb_func_start sub_8002986
 sub_8002986:
 	push {r5,lr}
 	ldr r5, off_8002BF0 // =byte_200DCA0
@@ -590,6 +591,12 @@ loc_800299E:
 	mov r0, #0
 	pop {r5,pc}
 	thumb_func_end sub_8002986
+	.else
+	thumb_func_start sub_8002986
+sub_8002986:
+	decomp_trampoline sub_8002986_c, 24
+	thumb_func_end sub_8002986
+	.endif
 
 	thumb_func_start decompSprites_80029A8
 decompSprites_80029A8:

@@ -199,3 +199,4 @@ sprite_initialize
 gfxTransfer_8033DA0
 spriteLoadMugshot_800275A
 gfxTransfer_8033978
+sub_8002986
