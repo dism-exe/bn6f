@@ -33,6 +33,7 @@ PlaySoundEffect:
 	pop {r1-r7,pc}
 	thumb_func_end PlaySoundEffect
 
+	.ifndef DECOMP_PlayMusic
 	thumb_func_start PlayMusic
 PlayMusic: // (song: u8) -> ()
 	push {r1-r7,lr}
@@ -51,6 +52,12 @@ loc_80005EC:
 locret_80005F0:
 	pop {r1-r7,pc}
 	thumb_func_end PlayMusic
+	.else
+	thumb_func_start PlayMusic
+PlayMusic:
+	decomp_trampoline PlayMusic_c, 22
+	thumb_func_end PlayMusic
+	.endif
 
 	thumb_func_start music_80005F2
 music_80005F2: // (bg_music_indicator: u8) -> ()
@@ -88,7 +95,8 @@ loc_8000616:
 	thumb_func_end sub_800060A
 
 // () -> void
-	thumb_local_start
+	.ifndef DECOMP_m4a_800061E
+	thumb_func_start m4a_800061E
 m4a_800061E:
 	push {lr}
 	mov r1, r10
@@ -99,8 +107,15 @@ m4a_800061E:
 	mov r10, r1
 	pop {pc}
 	thumb_func_end m4a_800061E
+	.else
+	thumb_func_start m4a_800061E
+m4a_800061E:
+	decomp_trampoline m4a_800061E_c, 8
+	thumb_func_end m4a_800061E
+	.endif
 
-	thumb_local_start
+	.ifndef DECOMP_sound_8000630
+	thumb_func_start sound_8000630
 sound_8000630:
 	push {lr}
 	mov r1, r10
@@ -111,6 +126,12 @@ sound_8000630:
 	mov r10, r1
 	pop {pc}
 	thumb_func_end sound_8000630
+	.else
+	thumb_func_start sound_8000630
+sound_8000630:
+	decomp_trampoline sound_8000630_c, 10
+	thumb_func_end sound_8000630
+	.endif
 
 	thumb_func_start sound_8000642
 sound_8000642: // (idx: u8, a1: ?, a2: ?) -> ()

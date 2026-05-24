@@ -228,3 +228,6 @@ sub_803537C
 sub_809F942
 SetExtraToolkitPointers
 sub_803EF84
+m4a_800061E
+sound_8000630
+PlayMusic
