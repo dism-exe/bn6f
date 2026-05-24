@@ -208,3 +208,4 @@ sub_800634C
 sub_8006330
 returnZero_809E228
 sub_802FE28
+sub_8001158

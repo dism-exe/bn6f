@@ -2199,6 +2199,7 @@ sub_8001154:
 	thumb_func_end sub_8001154
 
 // () -> void
+	.ifndef DECOMP_sub_8001158
 	thumb_func_start sub_8001158
 sub_8001158:
 	push {r4-r7,lr}
@@ -2216,6 +2217,12 @@ loc_800115C:
 locret_8001170:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8001158
+	.else
+	thumb_func_start sub_8001158
+sub_8001158:
+	decomp_trampoline sub_8001158_c, 18
+	thumb_func_end sub_8001158
+	.endif
 
 	.ifndef DECOMP_sub_8001172
 	thumb_func_start sub_8001172
