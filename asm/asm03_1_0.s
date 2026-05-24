@@ -2956,6 +2956,7 @@ off_8035378:
 	.word gameProgressBuffer_20010f0
 	thumb_func_end storeGameProgressToGameProgressBuffer_8035364
 
+	.ifndef DECOMP_sub_803537C
 	thumb_func_start sub_803537C
 sub_803537C:
 	push {r4-r7,lr}
@@ -2986,7 +2987,7 @@ locret_80353B0:
 	.balign 4, 0
 off_80353B4:
 	.word word_80353B8
-word_80353B8:
+word_80353B8::
 	.hword 0x90, 0x29
 	.byte 0x90, 0x1, 0x2A, 0x0
 	.byte 0x90, 0x2, 0x2B, 0x0
@@ -2997,6 +2998,24 @@ word_80353B8:
 	.byte 0x93, 0x1, 0x30, 0x0
 	.byte 0x0, 0x0
 	thumb_func_end sub_803537C
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_803537C
+sub_803537C:
+	decomp_trampoline sub_803537C_c, 52
+word_80353B8::
+	.hword 0x90, 0x29
+	.byte 0x90, 0x1, 0x2A, 0x0
+	.byte 0x90, 0x2, 0x2B, 0x0
+	.byte 0x91, 0x0, 0x2C, 0x0
+	.byte 0x91, 0x1, 0x2D, 0x0
+	.byte 0x91, 0x2, 0x2E, 0x0
+	.byte 0x93, 0x0, 0x2F, 0x0
+	.byte 0x93, 0x1, 0x30, 0x0
+	.byte 0x0, 0x0
+	thumb_func_end sub_803537C
+	.endif
 
 	thumb_local_start
 sub_80353DA:

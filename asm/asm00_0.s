@@ -1924,6 +1924,7 @@ locret_8000FAA:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8000F86
 
+	.ifndef DECOMP_sub_8000FAC
 	thumb_func_start sub_8000FAC
 sub_8000FAC:
 	push {r4-r7,lr}
@@ -1955,6 +1956,12 @@ loc_8000FDC:
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end sub_8000FAC
+	.else
+	thumb_func_start sub_8000FAC
+sub_8000FAC:
+	decomp_trampoline sub_8000FAC_c, 50
+	thumb_func_end sub_8000FAC
+	.endif
 
 	thumb_local_start
 sub_8000FE6:
