@@ -582,7 +582,7 @@ object_freeMemory:
 	thumb_func_end object_freeMemory
 
 	thumb_local_start
-InitializeStructsOfObjectType:
+InitializeStructsOfObjectType::
 	push {r4,r7,lr}
 	ldr r7, .ObjectInitializationTable_p
 	lsl r1, r0, #4
@@ -709,6 +709,7 @@ InitializeOverworldNPCObjectStructs:
 	pop {pc}
 	thumb_func_end InitializeOverworldNPCObjectStructs
 
+	.ifndef DECOMP_InitializeOverworldMapObjectStructs
 	thumb_func_start InitializeOverworldMapObjectStructs
 InitializeOverworldMapObjectStructs:
 	push {lr}
@@ -716,6 +717,12 @@ InitializeOverworldMapObjectStructs:
 	bl InitializeStructsOfObjectType
 	pop {pc}
 	thumb_func_end InitializeOverworldMapObjectStructs
+	.else
+	thumb_func_start InitializeOverworldMapObjectStructs
+InitializeOverworldMapObjectStructs:
+	decomp_trampoline InitializeOverworldMapObjectStructs_c, 0
+	thumb_func_end InitializeOverworldMapObjectStructs
+	.endif
 
 
 	thumb_func_start SpawnObjectsFromList

@@ -26,6 +26,7 @@ GetCurPETNaviStatsHword
 GetRNG
 GetRNGSecondary
 HalfwordFill
+InitializeOverworldMapObjectStructs
 IsButtonPressed
 IsCurSubsystemInUse
 IsCutsceneScriptNonNull
@@ -206,6 +207,7 @@ sub_803537C
 sub_80356EC
 sub_8035738
 sub_803C3E0
+sub_803CED4
 sub_803DCE8
 sub_803DE5C
 sub_803DE88

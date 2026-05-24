@@ -8480,6 +8480,7 @@ SetCurNaviHPToFull:
 	pop {r4-r7,pc}
 	thumb_func_end SetCurNaviHPToFull
 
+	.ifndef DECOMP_sub_803CED4
 	thumb_func_start sub_803CED4
 sub_803CED4:
 	push {r4,r6,r7,lr}
@@ -8498,6 +8499,12 @@ sub_803CED4:
 	bl SetCurPETNaviStatsHword
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_803CED4
+	.else
+	thumb_func_start sub_803CED4
+sub_803CED4:
+	decomp_trampoline sub_803CED4_c, 28
+	thumb_func_end sub_803CED4
+	.endif
 
 	thumb_local_start
 sub_803CEF8:
