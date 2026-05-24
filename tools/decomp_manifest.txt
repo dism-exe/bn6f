@@ -20,4 +20,9 @@ HalfwordFill
 clearWord_e200AC1C
 SeedRNG
 GetRNG
+GetRNGSecondary
+ZeroFillByByte
+ZeroFillByHalfword
+ZeroFillByEightWords
+FillByEightWords
 eStruct200BC30_getJumpOffset00

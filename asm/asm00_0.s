@@ -509,6 +509,7 @@ off_80008B0:
 /// Size is in r1, in bytes.
 /// Does a backwards fill for speed
 /// tags: "#mod_memory, "
+	.ifndef DECOMP_ZeroFillByByte
 	thumb_func_start ZeroFillByByte
 ZeroFillByByte: // (mut_mem: *mut (), num_bytes: usize) -> ()
 	push {r0-r2,lr}
@@ -521,10 +522,17 @@ loc_loop_80008B8:
 
 	pop {r0-r2,pc}
 	thumb_func_end ZeroFillByByte
+	.else
+	thumb_func_start ZeroFillByByte
+ZeroFillByByte:
+	decomp_trampoline ZeroFillByByte_c, 4
+	thumb_func_end ZeroFillByByte
+	.endif
 
 // Fill r0 with zero, using halfwords.
 // Size is in r1, in bytes.
 // Source, destination, and size must be halfword compatible
+	.ifndef DECOMP_ZeroFillByHalfword
 	thumb_func_start ZeroFillByHalfword
 ZeroFillByHalfword:
 	push {r0-r3,lr}
@@ -543,6 +551,12 @@ ZeroFillByHalfword:
 .HalfwordFillCpuSetMask_80008DC:
 	.word 0x1000000
 	thumb_func_end ZeroFillByHalfword
+	.else
+	thumb_func_start ZeroFillByHalfword
+ZeroFillByHalfword:
+	decomp_trampoline ZeroFillByHalfword_c, 24
+	thumb_func_end ZeroFillByHalfword
+	.endif
 
 /// Fill r0 with zero, using words.
 /// Size is in r1, in bytes.
@@ -573,6 +587,7 @@ ZeroFillByWord: // (mut_mem: *mut (), num_bytes: usize) -> ()
 // even though the size specified is converted to a word count
 // Source and destination must be word compatible
 // Size must be a multiple of eight words
+	.ifndef DECOMP_ZeroFillByEightWords
 	thumb_func_start ZeroFillByEightWords
 ZeroFillByEightWords:
 	push {r0-r3,lr}
@@ -591,6 +606,12 @@ ZeroFillByEightWords:
 .FillCpuFastSetMask_800091C:
 	.word 0x1000000
 	thumb_func_end ZeroFillByEightWords
+	.else
+	thumb_func_start ZeroFillByEightWords
+ZeroFillByEightWords:
+	decomp_trampoline ZeroFillByEightWords_c, 24
+	thumb_func_end ZeroFillByEightWords
+	.endif
 
 // (u8 *src, u8 *dest, int byteCount) -> void
 
@@ -788,6 +809,7 @@ WordFill:
 // even though the size specified is converted to a word count
 // Source and destination must be word compatible
 // Size must be a multiple of eight words
+	.ifndef DECOMP_FillByEightWords
 	thumb_func_start FillByEightWords
 FillByEightWords:
 	push {r0-r3,lr}
@@ -806,6 +828,12 @@ FillByEightWords:
 .FillCpuFastSetMask_80009C8:
 	.word 0x1000000
 	thumb_func_end FillByEightWords
+	.else
+	thumb_func_start FillByEightWords
+FillByEightWords:
+	decomp_trampoline FillByEightWords_c, 24
+	thumb_func_end FillByEightWords
+	.endif
 
 	thumb_local_start
 
@@ -2722,6 +2750,7 @@ GetPositiveSignedRNG:
 	thumb_func_end GetPositiveSignedRNG
 
 /// tags: "#mod.rng, "
+	.ifndef DECOMP_GetRNGSecondary
 	thumb_func_start GetRNGSecondary
 GetRNGSecondary: // () -> void
 	push {r7,lr}
@@ -2736,6 +2765,12 @@ GetRNGSecondary: // () -> void
 	str r0, [r7]
 	pop {r7,pc}
 	thumb_func_end GetRNGSecondary
+	.else
+	thumb_func_start GetRNGSecondary
+GetRNGSecondary:
+	decomp_trampoline GetRNGSecondary_c, 14
+	thumb_func_end GetRNGSecondary
+	.endif
 
 /// tags: "#mod.rng, "
 	thumb_func_start GetPositiveSignedRNGSecondary
