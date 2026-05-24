@@ -2457,6 +2457,7 @@ off_8036EC4:
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end StartCutscene
 
+	.ifndef DECOMP_cutscene_8036ED4
 	thumb_func_start cutscene_8036ED4
 cutscene_8036ED4:
 	push {r4-r7,lr}
@@ -2479,6 +2480,12 @@ cutscene_8036ED4:
 	bl ClearEventFlagFromImmediate // (flag: u16) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end cutscene_8036ED4
+	.else
+	thumb_func_start cutscene_8036ED4
+cutscene_8036ED4:
+	decomp_trampoline cutscene_8036ED4_c, 34
+	thumb_func_end cutscene_8036ED4
+	.endif
 
 	thumb_func_start cutscene_8036EFE
 cutscene_8036EFE:
@@ -3715,7 +3722,7 @@ CutsceneCommandJumptable:
 	.word CutsceneCmd_jump_if_req_bbs_master_rank+1
   // 0x200
 	.word CutsceneCmd_if_in_real_world_jump_else_jump+1
-DummyCutsceneScript:
+DummyCutsceneScript::
 	.word 0x11
 byte_8037694::
 	.byte 0x0, 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF

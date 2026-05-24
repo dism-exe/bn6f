@@ -117,3 +117,5 @@ reqBBS_8140984
 reset_flags32_20093A4
 QueueEightWordAlignedGFXTransfer
 sub_8002378
+cutscene_8036ED4
+sub_802FDB0
