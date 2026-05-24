@@ -20239,6 +20239,7 @@ copyObjAttributesToIWRAM_802FE0C:
 	.endif
 
 // (u32 a1, u16 a2, int notUsed, int a4) -> void
+	.ifndef DECOMP_sub_802FE28
 	thumb_func_start sub_802FE28
 sub_802FE28:
 	push {r4,lr}
@@ -20250,6 +20251,12 @@ sub_802FE28:
 off_802FE34:
 	.word sub_30068E8+1
 	thumb_func_end sub_802FE28
+	.else
+	thumb_func_start sub_802FE28
+sub_802FE28:
+	decomp_trampoline sub_802FE28_c, 8
+	thumb_func_end sub_802FE28
+	.endif
 
 	thumb_local_start
 sub_802FE38:
