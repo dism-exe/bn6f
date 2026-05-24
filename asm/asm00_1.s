@@ -1086,6 +1086,7 @@ ZeroFillObjectInteractionAreas_800378C:
 	thumb_func_end ZeroFillObjectInteractionAreas_800378C
 	.endif
 
+	.ifndef DECOMP_createOWObjectInteractionArea_80037ac
 	thumb_func_start createOWObjectInteractionArea_80037ac
 // something to do with interacting with npcs? maybe other objects too
 // r0 - x coordinate
@@ -1139,6 +1140,12 @@ createOWObjectInteractionArea_80037ac:
 	.balign 4, 0
 	.pool // 80037EC
 	thumb_func_end createOWObjectInteractionArea_80037ac
+	.else
+	thumb_func_start createOWObjectInteractionArea_80037ac
+createOWObjectInteractionArea_80037ac:
+	decomp_trampoline_r3safe createOWObjectInteractionArea_80037ac_c, 56
+	thumb_func_end createOWObjectInteractionArea_80037ac
+	.endif
 
 	thumb_func_start checkOWObjectInteractions_80037f4
 // something to do with interacting with npcs? maybe other objects too
