@@ -40,6 +40,7 @@ ReadMapScriptSignedHalfword
 ReadMapScriptWord
 SWI_LZ77UnCompReadNormalWrite8bit
 SeedRNG
+SetCurPETNaviStatsByte
 SetCutsceneCameraScript
 SetEventFlag
 SetEventFlagFromImmediate
@@ -234,6 +235,7 @@ sub_813D8C4
 sub_8144CE0
 test0x200bc50_0x5_813D60C
 uncompSprite_8002906
+warp_setSubsystemIndexTo0x10AndOthers_8005f00
 zeroFillVRAM
 zeroFill_80007B2
 zeroFill_80024A2

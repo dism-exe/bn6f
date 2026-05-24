@@ -10369,6 +10369,7 @@ GetBattleNaviStatsHword_AllianceFromBattleObject:
 	thumb_func_end GetBattleNaviStatsHword_AllianceFromBattleObject
 
 // (int a1, int a2, int a3) -> void
+	.ifndef DECOMP_SetCurPETNaviStatsByte
 	thumb_func_start SetCurPETNaviStatsByte
 SetCurPETNaviStatsByte:
 	push {lr}
@@ -10383,6 +10384,12 @@ SetCurPETNaviStatsByte:
 	strb r2, [r3,r1]
 	pop {pc}
 	thumb_func_end SetCurPETNaviStatsByte
+	.else
+	thumb_func_start SetCurPETNaviStatsByte
+SetCurPETNaviStatsByte:
+	decomp_trampoline SetCurPETNaviStatsByte_c, 14
+	thumb_func_end SetCurPETNaviStatsByte
+	.endif
 
 // (int a1, int a2) -> u8
 	thumb_func_start GetCurPETNaviStatsByte
@@ -11602,7 +11609,7 @@ GetNaviStatsAddrGivenCurPETNavi:
 	// 8014030
 	.pool
 	.balign 4, 0
-CurPETNaviToNaviStatsIndexTable:
+CurPETNaviToNaviStatsIndexTable::
 	.byte 0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1
 	thumb_func_end GetNaviStatsAddrGivenCurPETNavi
 

@@ -6310,6 +6310,7 @@ sub_8005EEC:
 	thumb_func_end sub_8005EEC
 	.endif
 
+	.ifndef DECOMP_warp_setSubsystemIndexTo0x10AndOthers_8005f00
 	thumb_func_start warp_setSubsystemIndexTo0x10AndOthers_8005f00
 // just pure warp
 warp_setSubsystemIndexTo0x10AndOthers_8005f00:
@@ -6325,6 +6326,12 @@ warp_setSubsystemIndexTo0x10AndOthers_8005f00:
 	bl sub_8035738
 	pop {r4-r7,pc}
 	thumb_func_end warp_setSubsystemIndexTo0x10AndOthers_8005f00
+	.else
+	thumb_func_start warp_setSubsystemIndexTo0x10AndOthers_8005f00
+warp_setSubsystemIndexTo0x10AndOthers_8005f00:
+	decomp_trampoline warp_setSubsystemIndexTo0x10AndOthers_8005f00_c, 12
+	thumb_func_end warp_setSubsystemIndexTo0x10AndOthers_8005f00
+	.endif
 
 	thumb_func_start warp_setSubsystemIndexTo0x14AndOthers_8005f14
 // warp with extra effects? e.g. jack in animation
