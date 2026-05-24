@@ -9768,6 +9768,7 @@ off_80133E8:
 	.word byte_8021369
 	thumb_func_end sub_8013396
 
+	.ifndef DECOMP_sub_80133EC
 	thumb_func_start sub_80133EC
 sub_80133EC:
 	push {r5,r6,lr}
@@ -9792,9 +9793,19 @@ off_8013410:
 	.word byte_801341B
 byte_8013414:
 	.byte 0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0xB
-byte_801341B:
+byte_801341B::
 	.byte 0x0, 0x6, 0x7, 0x8, 0x9, 0xA, 0xB
 	thumb_func_end sub_80133EC
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_80133EC
+sub_80133EC:
+	decomp_trampoline sub_80133EC_c, 39
+byte_801341B::
+	.byte 0x0, 0x6, 0x7, 0x8, 0x9, 0xA, 0xB
+	thumb_func_end sub_80133EC
+	.endif
 
 	thumb_func_start sub_8013422
 sub_8013422:

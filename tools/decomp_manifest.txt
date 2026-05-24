@@ -193,3 +193,4 @@ spawnOWPlayerObjectForEnterMap_809e064
 sub_80018E0
 sub_8004298
 init_8013B4E
+sub_80133EC
