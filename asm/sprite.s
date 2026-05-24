@@ -194,6 +194,7 @@ dword_80027C0:
 	.word 0x1
 	thumb_func_end sub_80027B4
 
+	.ifndef DECOMP_sub_80027C4
 	thumb_func_start sub_80027C4
 sub_80027C4:
 	ldr r1, off_8002804 // =byte_20098A8
@@ -205,6 +206,12 @@ sub_80027C4:
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
 	thumb_func_end sub_80027C4
+	.else
+	thumb_func_start sub_80027C4
+sub_80027C4:
+	decomp_trampoline sub_80027C4_c, 8
+	thumb_func_end sub_80027C4
+	.endif
 
 	thumb_func_start sub_80027D4
 sub_80027D4:

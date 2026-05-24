@@ -3039,6 +3039,7 @@ GetRenderInfoLCDControl: // () -> u16
 	mov pc, lr
 	thumb_func_end GetRenderInfoLCDControl
 
+	.ifndef DECOMP_renderInfo_8001788
 	thumb_func_start renderInfo_8001788
 renderInfo_8001788: // () -> ()
 	mov r0, r10
@@ -3054,6 +3055,12 @@ renderInfo_8001788: // () -> ()
 	strh r1, [r0,#oRenderInfo_Unk_18]
 	mov pc, lr
 	thumb_func_end renderInfo_8001788
+	.else
+	thumb_func_start renderInfo_8001788
+renderInfo_8001788:
+	decomp_trampoline renderInfo_8001788_c, 16
+	thumb_func_end renderInfo_8001788
+	.endif
 
 	.ifndef DECOMP_renderInfo_80017A0
 	thumb_func_start renderInfo_80017A0
@@ -3071,6 +3078,7 @@ renderInfo_80017A0:
 	thumb_func_end renderInfo_80017A0
 	.endif
 
+	.ifndef DECOMP_zeroFillVRAM
 	thumb_func_start zeroFillVRAM
 zeroFillVRAM: // () -> ()
 	push {lr}
@@ -3097,6 +3105,12 @@ dword_80017D8:
 dword_80017DC:
 	.word 0x600C000
 	thumb_func_end zeroFillVRAM
+	.else
+	thumb_func_start zeroFillVRAM
+zeroFillVRAM:
+	decomp_trampoline zeroFillVRAM_c, 44
+	thumb_func_end zeroFillVRAM
+	.endif
 
 	.ifndef DECOMP_ZeroFill_byte_3001960
 	thumb_func_start ZeroFill_byte_3001960
@@ -3192,6 +3206,7 @@ zeroFill_e200F3A0:
 	thumb_func_end zeroFill_e200F3A0
 	.endif
 
+	.ifndef DECOMP_ZeroFillGFX30025c0
 	thumb_func_start ZeroFillGFX30025c0
 ZeroFillGFX30025c0:
 	push {lr}
@@ -3204,7 +3219,14 @@ ZeroFillGFX30025c0:
 dword_800184C:
 	.word 0x2000
 	thumb_func_end ZeroFillGFX30025c0
+	.else
+	thumb_func_start ZeroFillGFX30025c0
+ZeroFillGFX30025c0:
+	decomp_trampoline ZeroFillGFX30025c0_c, 12
+	thumb_func_end ZeroFillGFX30025c0
+	.endif
 
+	.ifndef DECOMP_copyMemory_8001850
 	thumb_func_start copyMemory_8001850
 copyMemory_8001850:
 	push {lr}
@@ -3229,6 +3251,12 @@ off_8001874:
 off_8001878:
 	.word unk_3001B40
 	thumb_func_end copyMemory_8001850
+	.else
+	thumb_func_start copyMemory_8001850
+copyMemory_8001850:
+	decomp_trampoline copyMemory_8001850_c, 36
+	thumb_func_end copyMemory_8001850
+	.endif
 
 	thumb_func_start sub_800187C
 sub_800187C:

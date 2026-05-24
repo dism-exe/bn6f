@@ -50,3 +50,10 @@ zeroFill_e20094C0
 renderInfo_80017A0
 zeroFill_e2009740
 zeroFill_e200F3A0
+ZeroFillGFX30025c0
+renderInfo_8001788
+zeroFillVRAM
+copyMemory_8001850
+encryption_8006e3c
+sub_80027C4
+chatbox_clear_eFlags2009F38

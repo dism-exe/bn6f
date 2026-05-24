@@ -7750,6 +7750,7 @@ off_8006E38:
 	.word eUnusedExtraToolkitPtrsOffset
 	thumb_func_end encryption_8006e26
 
+	.ifndef DECOMP_encryption_8006e3c
 	thumb_func_start encryption_8006e3c
 encryption_8006e3c:
 	push {r1-r7,lr}
@@ -7763,6 +7764,12 @@ encryption_8006e3c:
 	strb r1, [r7,r0]
 	pop {r1-r7,pc}
 	thumb_func_end encryption_8006e3c
+	.else
+	thumb_func_start encryption_8006e3c
+encryption_8006e3c:
+	decomp_trampoline encryption_8006e3c_c, 12
+	thumb_func_end encryption_8006e3c
+	.endif
 
 	thumb_func_start encryption_navicustMaybe_8006e50
 encryption_navicustMaybe_8006e50:
