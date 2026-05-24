@@ -384,7 +384,8 @@ off_8000804:
 	.word loc_80007E8+1
 	thumb_func_end sub_80007BE
 
-	thumb_local_start
+	.ifndef DECOMP_sound_8000808
+	thumb_func_start sound_8000808
 sound_8000808: // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	push {r4-r7,lr}
 	ldr r5, dword_200A490_p
@@ -402,6 +403,12 @@ loc_8000814:
 locret_8000820:
 	pop {r4-r7,pc}
 	thumb_func_end sound_8000808
+	.else
+	thumb_func_start sound_8000808
+sound_8000808:
+	decomp_trampoline_r3safe sound_8000808_c, 10
+	thumb_func_end sound_8000808
+	.endif
 
 // (struct ? *a5, unk8 bgMusInd_a0, unk8 a1, unk8 *a2) -> ?
 	thumb_local_start
