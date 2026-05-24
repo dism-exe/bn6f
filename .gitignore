@@ -2,6 +2,7 @@
 *.o
 *.map
 *.elf
+build/
 
 # ROMS and ROM related files
 *.gba
