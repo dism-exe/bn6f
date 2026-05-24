@@ -334,6 +334,7 @@ dword_8002898:
 	.word 0x6010000
 	thumb_func_end sub_8002874
 
+	.ifndef DECOMP_sprite_resetObjVars_800289C
 	thumb_func_start sprite_resetObjVars_800289C
 sprite_resetObjVars_800289C:
 	push {lr}
@@ -354,6 +355,12 @@ off_80028B8:
 off_80028BC:
 	.word 0x388
 	thumb_func_end sprite_resetObjVars_800289C
+	.else
+	thumb_func_start sprite_resetObjVars_800289C
+sprite_resetObjVars_800289C:
+	decomp_trampoline sprite_resetObjVars_800289C_c, 28
+	thumb_func_end sprite_resetObjVars_800289C
+	.endif
 
 	thumb_func_start sub_80028C0
 sub_80028C0:

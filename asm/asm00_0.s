@@ -1595,6 +1595,7 @@ off_8000E0C:
 	.word 0x3C
 	thumb_func_end sub_8000DE0
 
+	.ifndef DECOMP_CapIncrementGameTimeFrames
 	thumb_func_start CapIncrementGameTimeFrames
 CapIncrementGameTimeFrames: // () -> void
 	mov r3, r10
@@ -1614,6 +1615,12 @@ loc_8000E20:
 dword_8000E24:
 	.word 0x14988F0
 	thumb_func_end CapIncrementGameTimeFrames
+	.else
+	thumb_func_start CapIncrementGameTimeFrames
+CapIncrementGameTimeFrames:
+	decomp_trampoline CapIncrementGameTimeFrames_c, 16
+	thumb_func_end CapIncrementGameTimeFrames
+	.endif
 
 	thumb_func_start sub_8000E28
 sub_8000E28:

@@ -18350,6 +18350,7 @@ SetEventFlagFromImmediate:
 /* (r0:u16 flagToSet) -> void
    clobbers: r0,r1,r3
    ignores: r2,r4-r9,r11,r12 */
+	.ifndef DECOMP_SetEventFlag
 	thumb_func_start SetEventFlag
 SetEventFlag:
 	mov r3, r10
@@ -18373,6 +18374,12 @@ SetEventFlag:
 	strb r0, [r3]
 	mov pc, lr
 	thumb_func_end SetEventFlag
+	.else
+	thumb_func_start SetEventFlag
+SetEventFlag:
+	decomp_trampoline SetEventFlag_c, 16
+	thumb_func_end SetEventFlag
+	.endif
 
 /* (r0:u8 flagUpper, r1:u8 flagLower) -> void
    clobbers: r0,r1,r3
@@ -18389,6 +18396,7 @@ ClearEventFlagFromImmediate: // (flag: u16) -> ()
 /* (r0:u16 flagToClear) -> void
    clobbers: r0,r1,r3
    ignores: r2,r4-r9,r11,r12 */
+	.ifndef DECOMP_ClearEventFlag
 	thumb_func_start ClearEventFlag
 ClearEventFlag:
 	mov r3, r10
@@ -18412,6 +18420,12 @@ ClearEventFlag:
 	strb r0, [r3]
 	mov pc, lr
 	thumb_func_end ClearEventFlag
+	.else
+	thumb_func_start ClearEventFlag
+ClearEventFlag:
+	decomp_trampoline ClearEventFlag_c, 16
+	thumb_func_end ClearEventFlag
+	.endif
 	thumb_func_end ClearEventFlagFromImmediate
 
 /* (r0:u8 flagUpper, r1:u8 flagLower) -> void
