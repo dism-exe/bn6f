@@ -201,3 +201,5 @@ spriteLoadMugshot_800275A
 gfxTransfer_8033978
 sub_8002986
 sound_8000808
+sound_800068A
+musicGameState_8000784

@@ -159,6 +159,7 @@ sound_8000672:
 	pop {r4-r7,pc}
 	thumb_func_end sound_8000672
 
+	.ifndef DECOMP_sound_800068A
 	thumb_func_start sound_800068A
 sound_800068A:
 	push {r4-r7,lr}
@@ -173,6 +174,12 @@ sound_800068A:
 	mov r10, r2
 	pop {r4-r7,pc}
 	thumb_func_end sound_800068A
+	.else
+	thumb_func_start sound_800068A
+sound_800068A:
+	decomp_trampoline sound_800068A_c, 14
+	thumb_func_end sound_800068A
+	.endif
 
 	thumb_func_start sound_80006A2
 sound_80006A2:
@@ -224,7 +231,7 @@ loc_80006B0:
 	.balign 4, 0
 off_8000700:
 	.word off_8000704
-off_8000704:
+off_8000704::
 	// 0x00 (0x00)
 	.word byte_2010690
 	// 0x04 (0x01)
@@ -292,6 +299,7 @@ off_8000704:
 	thumb_func_end sound_80006A2
 
 // () -> void
+	.ifndef DECOMP_musicGameState_8000784
 	thumb_func_start musicGameState_8000784
 musicGameState_8000784:
 	push {r7,lr}
@@ -308,6 +316,12 @@ musicGameState_8000784:
 	pop {r7,pc}
 	.byte 0, 0
 	thumb_func_end musicGameState_8000784
+	.else
+	thumb_func_start musicGameState_8000784
+musicGameState_8000784:
+	decomp_trampoline musicGameState_8000784_c, 20
+	thumb_func_end musicGameState_8000784
+	.endif
 
 	thumb_local_start
 sub_80007A0:
