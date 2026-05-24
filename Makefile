@@ -218,3 +218,25 @@ verify: track-build $(FN_SYMS)
 	@$(MAKE) --no-print-directory decompile
 	tools/bn6f-track/target/release/bn6f-track replay \
 		$(abspath $(ROM)) $(abspath $(SESSION_DIR))
+
+# Longer demo with scripted input. Records up to 50 entries per target
+# (cap is in bn6f-track to keep snapshot memory bounded), so cumulative
+# pair count is at most ~5000 here even with 100+ converted functions.
+SPAM_SESSION_DIR ?= tests/fixtures/calls/spam_start10s_b5m
+SPAM_INPUT_FILE  ?= tests/fixtures/input/spam_start10s_b5m.input
+
+verify-spam: track-build $(FN_SYMS)
+	@echo "[verify-spam] building original ROM and recording fixtures with input..."
+	@$(MAKE) --no-print-directory all
+	@rm -rf $(SPAM_SESSION_DIR)
+	@mkdir -p $(SPAM_SESSION_DIR)
+	@tools/bn6f-track/target/release/bn6f-track record \
+		$(abspath $(ROM)) 18600 $(abspath $(FN_SYMS)) \
+		$(abspath $(SPAM_SESSION_DIR)) \
+		--input $(abspath $(SPAM_INPUT_FILE)) \
+		$(DECOMP_FN_ADDRS)
+	@echo
+	@echo "[verify-spam] building decompile ROM and replaying..."
+	@$(MAKE) --no-print-directory decompile
+	tools/bn6f-track/target/release/bn6f-track replay \
+		$(abspath $(ROM)) $(abspath $(SPAM_SESSION_DIR))

@@ -270,6 +270,10 @@ thread_local! {
     /// entry to its captured LR with IRQs disabled, isolating the
     /// function's effect from IRQ-driven cycle drift.
     static RECORD_ENTRIES: RefCell<Vec<RecordedEntry>> = RefCell::new(Vec::new());
+    /// Cap captures per target so a multi-minute input-driven demo
+    /// doesn't OOM (each snapshot is ~288 KB; capping at 50/target
+    /// keeps a 100-target run well under a gigabyte). 0 = uncapped.
+    static RECORD_PER_TARGET_CAP: RefCell<usize> = const { RefCell::new(50) };
 }
 
 const PENDING_MAX: usize = 4096;
@@ -414,14 +418,23 @@ unsafe extern "C" fn custom_cb(dbg: *mut mgba_sys::mDebugger) {
                     let is_target =
                         RECORD_TARGETS.with(|t| t.borrow().contains(&true_pc));
                     if is_target {
-                        let snap = snapshot::Snapshot::capture(core);
-                        RECORD_ENTRIES.with(|s| {
-                            s.borrow_mut().push(RecordedEntry {
-                                fn_addr: true_pc,
-                                captured_lr: ret_addr,
-                                entry: snap,
-                            });
+                        // Cap captures per target. ~288 KB per snapshot
+                        // (EWRAM + IWRAM); with a few hundred targets and
+                        // a multi-minute demo, unbounded retention OOMs.
+                        let cap = RECORD_PER_TARGET_CAP.with(|c| *c.borrow());
+                        let already = RECORD_ENTRIES.with(|s| {
+                            s.borrow().iter().filter(|e| e.fn_addr == true_pc).count()
                         });
+                        if cap == 0 || already < cap {
+                            let snap = snapshot::Snapshot::capture(core);
+                            RECORD_ENTRIES.with(|s| {
+                                s.borrow_mut().push(RecordedEntry {
+                                    fn_addr: true_pc,
+                                    captured_lr: ret_addr,
+                                    entry: snap,
+                                });
+                            });
+                        }
                     }
                 }
             }
