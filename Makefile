@@ -45,7 +45,7 @@ CFLAGS =
 ASFLAGS = $(ARCH) $(WFLAGS) $(COMPLIANCE_FLAGS) --agbasm-colonless-labels --agbasm-colon-defined-global-labels --agbasm-local-labels --agbasm-multiline-macros \
 	--agbasm-charmap --agbasm-no-gba-thumb-after-label-disasm-fix
 CPP = cpp
-CPPFLAGS = -I$(CSRCDIR) -undef -nostdinc -Wall -Wno-trigraphs
+CPPFLAGS = -I$(CSRCDIR) -Iconstants/headers -undef -nostdinc -Wall -Wno-trigraphs
 CCFLAGS = -O2 -mthumb-interwork
 
 ASDEBUGFLAGS = --agbasm-debug $(@:.o=.dump)
