@@ -10219,6 +10219,7 @@ GetBattleNaviStatsHword:
 	pop {r6,pc}
 	thumb_func_end GetBattleNaviStatsHword
 
+	.ifndef DECOMP_SetNaviStatsByte
 	thumb_func_start SetNaviStatsByte
 // (bool structSel, int a2, u8 a3) -> void
 SetNaviStatsByte:
@@ -10236,6 +10237,12 @@ loc_80136F6:
 	strb r2, [r3,r1]
 	mov pc, lr
 	thumb_func_end SetNaviStatsByte
+	.else
+	thumb_func_start SetNaviStatsByte
+SetNaviStatsByte:
+	decomp_trampoline SetNaviStatsByte_c, 12
+	thumb_func_end SetNaviStatsByte
+	.endif
 
 	thumb_func_start GetNaviStatsByte
 GetNaviStatsByte:

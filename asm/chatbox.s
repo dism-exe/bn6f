@@ -1583,6 +1583,7 @@ byte_8040808:
 	.byte 0x4, 0x0, 0x4, 0x0, 0x0
 	thumb_func_end chatbox_selectCompTextByMap_80407C8
 
+	.ifndef DECOMP_chatbox_8040818
 	thumb_func_start chatbox_8040818
 chatbox_8040818:
 	push {r5,lr}
@@ -1595,6 +1596,12 @@ chatbox_8040818:
 	pop {r5,pc}
 	.balign 4, 0x00
 	thumb_func_end chatbox_8040818
+	.else
+	thumb_func_start chatbox_8040818
+chatbox_8040818:
+	decomp_trampoline chatbox_8040818_c, 12
+	thumb_func_end chatbox_8040818
+	.endif
 
 	thumb_local_start
 chatbox_804082C:
@@ -10453,6 +10460,7 @@ sub_8045F0C:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8045F0C
 
+	.ifndef DECOMP_chatbox_set_eFlags2009F38
 	thumb_func_start chatbox_set_eFlags2009F38
 chatbox_set_eFlags2009F38:
 	push {r1,r2}
@@ -10464,6 +10472,12 @@ chatbox_set_eFlags2009F38:
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end chatbox_set_eFlags2009F38
+	.else
+	thumb_func_start chatbox_set_eFlags2009F38
+chatbox_set_eFlags2009F38:
+	decomp_trampoline chatbox_set_eFlags2009F38_c, 8
+	thumb_func_end chatbox_set_eFlags2009F38
+	.endif
 
 // (int a1) ->
 	.ifndef DECOMP_chatbox_clear_eFlags2009F38

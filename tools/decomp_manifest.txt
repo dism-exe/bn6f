@@ -143,3 +143,8 @@ camera_writeUnk03_14_80301b2
 sub_813B9FC
 sub_800A9E2
 sub_8004590
+chatbox_set_eFlags2009F38
+chatbox_8040818
+encryption_navicustMaybe_8006e50
+TerminateGFXAnim
+SetNaviStatsByte

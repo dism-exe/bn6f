@@ -3841,6 +3841,7 @@ off_8001B68:
 	.word off_8001C24
 	thumb_func_end LoadGFXAnim
 
+	.ifndef DECOMP_TerminateGFXAnim
 	thumb_func_start TerminateGFXAnim
 TerminateGFXAnim:
 	push {r4-r7,lr}
@@ -3855,6 +3856,12 @@ TerminateGFXAnim:
 	bl Terminate_ePalette20097a0_Transform
 	pop {r4-r7,pc}
 	thumb_func_end TerminateGFXAnim
+	.else
+	thumb_func_start TerminateGFXAnim
+TerminateGFXAnim:
+	decomp_trampoline TerminateGFXAnim_c, 16
+	thumb_func_end TerminateGFXAnim
+	.endif
 
 	thumb_func_start IsGFXAnimActive
 IsGFXAnimActive:

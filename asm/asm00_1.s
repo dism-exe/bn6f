@@ -7903,6 +7903,7 @@ encryption_8006e3c:
 	thumb_func_end encryption_8006e3c
 	.endif
 
+	.ifndef DECOMP_encryption_navicustMaybe_8006e50
 	thumb_func_start encryption_navicustMaybe_8006e50
 encryption_navicustMaybe_8006e50:
 	push {r1-r7,lr}
@@ -7923,6 +7924,17 @@ locret_8006E68:
 off_8006E6C:
 	.word byte_20004E0
 	thumb_func_end encryption_navicustMaybe_8006e50
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start encryption_navicustMaybe_8006e50
+encryption_navicustMaybe_8006e50:
+	decomp_trampoline encryption_navicustMaybe_8006e50_c, 20
+	.balign 4, 0
+off_8006E6C:
+	.word byte_20004E0
+	thumb_func_end encryption_navicustMaybe_8006e50
+	.endif
 
 // (int idx_20008A0) -> void
 	.ifndef DECOMP_encryption_applyPack_8006e70
