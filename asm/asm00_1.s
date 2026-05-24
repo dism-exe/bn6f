@@ -7674,6 +7674,7 @@ RandomizeExtraToolkitPointers: // () -> ?
 	bx r0
 	thumb_func_end RandomizeExtraToolkitPointers
 
+	.ifndef DECOMP_SetExtraToolkitPointers
 	thumb_func_start SetExtraToolkitPointers
 SetExtraToolkitPointers:
 	push {r4-r7,lr}
@@ -7706,13 +7707,26 @@ ToolkitExtraPtrs_eUnusedExtraToolkitPtrsOffset_p:
 ToolkitExtraPtrs_ToolkitExtraPtrsMemorySize_p:	.word TOOLKIT_EXTRA_PTRS_MEMORY_SIZE
 ToolkitExtraPtrs_copyWords_80014EC_p:			 .word copyWords_80014EC+1
 	thumb_func_end SetExtraToolkitPointers
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start SetExtraToolkitPointers
+SetExtraToolkitPointers:
+	decomp_trampoline SetExtraToolkitPointers_c, 32
+ToolkitExtraPtrs_eToolkitExtraPtrsMemory_p:	   .word eToolkitExtraPtrsMemory
+ToolkitExtraPtrs_eUnusedExtraToolkitPtrsOffset_p:
+	.word eUnusedExtraToolkitPtrsOffset
+ToolkitExtraPtrs_ToolkitExtraPtrsMemorySize_p:	.word TOOLKIT_EXTRA_PTRS_MEMORY_SIZE
+ToolkitExtraPtrs_copyWords_80014EC_p:			 .word copyWords_80014EC+1
+	thumb_func_end SetExtraToolkitPointers
+	.endif
 
 	// unused?
 	.word eToolkit
 
 ToolkitExtraPtrsOffsets_p:
 	.word ToolkitExtraPtrsOffsets
-ToolkitExtraPtrsOffsets:
+ToolkitExtraPtrsOffsets::
 	.word 0x0
 	.word 0x84
 	.word 0x108

@@ -226,3 +226,4 @@ clearSetFlags_80355a8
 sub_8000FAC
 sub_803537C
 sub_809F942
+SetExtraToolkitPointers
