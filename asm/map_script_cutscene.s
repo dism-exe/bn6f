@@ -1476,7 +1476,8 @@ ReadMapScriptHalfword:
 	thumb_func_end ReadMapScriptHalfword
 	.endif
 
-	thumb_local_start
+	.ifndef DECOMP_ReadMapScriptSignedHalfword
+	thumb_func_start ReadMapScriptSignedHalfword
 /* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:s16 result
 	spoils: r6
 	preserves: r7
@@ -1492,8 +1493,15 @@ ReadMapScriptSignedHalfword: // 80360B6
 	asr r4, r4, #0x10
 	pop {r7,pc}
 	thumb_func_end ReadMapScriptSignedHalfword
+	.else
+	thumb_func_start ReadMapScriptSignedHalfword
+ReadMapScriptSignedHalfword:
+	decomp_trampoline ReadMapScriptSignedHalfword_c, 8
+	thumb_func_end ReadMapScriptSignedHalfword
+	.endif
 
-	thumb_local_start
+	.ifndef DECOMP_ReadMapScriptWord
+	thumb_func_start ReadMapScriptWord
 /* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:u32 result
 	spoils: r6
 	preserves: r7
@@ -1513,6 +1521,12 @@ ReadMapScriptWord: // 80360C8
 	orr r4, r6
 	pop {r7,pc}
 	thumb_func_end ReadMapScriptWord
+	.else
+	thumb_func_start ReadMapScriptWord
+ReadMapScriptWord:
+	decomp_trampoline ReadMapScriptWord_c, 18
+	thumb_func_end ReadMapScriptWord
+	.endif
 
 	.balign 4, 0
 off_80360E4::
