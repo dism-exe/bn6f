@@ -148,3 +148,8 @@ chatbox_8040818
 encryption_navicustMaybe_8006e50
 TerminateGFXAnim
 SetNaviStatsByte
+sprite_hasShadow
+sub_8001172
+sub_803F500
+sub_802F0D8
+sub_802F0F4

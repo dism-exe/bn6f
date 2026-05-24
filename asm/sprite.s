@@ -1300,6 +1300,7 @@ sub_8002E2A:
 	mov pc, lr
 	thumb_func_end sub_8002E2A
 
+	.ifndef DECOMP_sprite_hasShadow
 	thumb_func_start sprite_hasShadow
 sprite_hasShadow:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
@@ -1314,6 +1315,12 @@ sprite_hasShadow:
 	strb r0, [r3,#oObjectSprite_Unk_03]
 	mov pc, lr
 	thumb_func_end sprite_hasShadow
+	.else
+	thumb_func_start sprite_hasShadow
+sprite_hasShadow:
+	decomp_trampoline sprite_hasShadow_c, 14
+	thumb_func_end sprite_hasShadow
+	.endif
 
 	thumb_func_start sprite_removeShadow
 sprite_removeShadow:

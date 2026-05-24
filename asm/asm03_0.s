@@ -18320,6 +18320,7 @@ sub_802F0C4:
 	thumb_func_end sub_802F0C4
 	.endif
 
+	.ifndef DECOMP_sub_802F0D8
 	thumb_func_start sub_802F0D8
 sub_802F0D8:
 	push {lr}
@@ -18336,7 +18337,14 @@ dword_802F0EC:
 dword_802F0F0:
 	.word 0x2
 	thumb_func_end sub_802F0D8
+	.else
+	thumb_func_start sub_802F0D8
+sub_802F0D8:
+	decomp_trampoline sub_802F0D8_c, 20
+	thumb_func_end sub_802F0D8
+	.endif
 
+	.ifndef DECOMP_sub_802F0F4
 	thumb_func_start sub_802F0F4
 sub_802F0F4:
 	push {lr}
@@ -18353,6 +18361,12 @@ off_802F108:
 dword_802F10C:
 	.word 0x16
 	thumb_func_end sub_802F0F4
+	.else
+	thumb_func_start sub_802F0F4
+sub_802F0F4:
+	decomp_trampoline sub_802F0F4_c, 20
+	thumb_func_end sub_802F0F4
+	.endif
 
 // The following event flag related functions have an additional way to enter the function
 // where it interprets the event flag as two 8 bit registers

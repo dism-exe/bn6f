@@ -13022,6 +13022,7 @@ sub_803F4F4:
 	.byte 0, 0
 	thumb_func_end sub_803F4F4
 
+	.ifndef DECOMP_sub_803F500
 	thumb_func_start sub_803F500
 sub_803F500:
 	push {lr}
@@ -13031,6 +13032,12 @@ sub_803F500:
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_803F500
+	.else
+	thumb_func_start sub_803F500
+sub_803F500:
+	decomp_trampoline sub_803F500_c, 4
+	thumb_func_end sub_803F500
+	.endif
 
 	thumb_local_start
 sub_803F50C:

@@ -2196,6 +2196,7 @@ locret_8001170:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8001158
 
+	.ifndef DECOMP_sub_8001172
 	thumb_func_start sub_8001172
 sub_8001172:
 	mov r3, r10
@@ -2204,6 +2205,12 @@ sub_8001172:
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end sub_8001172
+	.else
+	thumb_func_start sub_8001172
+sub_8001172:
+	decomp_trampoline sub_8001172_c, 0
+	thumb_func_end sub_8001172
+	.endif
 
 	thumb_func_start calcAngle_800117C
 calcAngle_800117C:
