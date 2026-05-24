@@ -6094,7 +6094,8 @@ warp_setSubsystemIndexTo0x14AndOthers_8005f14:
 	pop {r4-r7,pc}
 	thumb_func_end warp_setSubsystemIndexTo0x14AndOthers_8005f14
 
-	thumb_local_start
+	.ifndef DECOMP_sub_8005F28
+	thumb_func_start sub_8005F28
 sub_8005F28:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Warp2011bb0_Ptr]
@@ -6102,6 +6103,12 @@ sub_8005F28:
 	cmp r1, #0
 	mov pc, lr
 	thumb_func_end sub_8005F28
+	.else
+	thumb_func_start sub_8005F28
+sub_8005F28:
+	decomp_trampoline sub_8005F28_c, 2
+	thumb_func_end sub_8005F28
+	.endif
 
 	thumb_func_start warp_8005f32
 warp_8005f32:
