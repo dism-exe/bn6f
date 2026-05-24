@@ -3149,6 +3149,7 @@ ZeroFill_byte_3001960:
 	thumb_func_end ZeroFill_byte_3001960
 	.endif
 
+	.ifndef DECOMP_main_zeroFill_80017EC
 	thumb_func_start main_zeroFill_80017EC
 main_zeroFill_80017EC:
 	push {lr}
@@ -3165,6 +3166,19 @@ off_8001800:
 dword_8001804:
 	.word 0x5000000
 	thumb_func_end main_zeroFill_80017EC
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start main_zeroFill_80017EC
+main_zeroFill_80017EC:
+	decomp_trampoline main_zeroFill_80017EC_c, 12
+	.balign 4, 0
+off_8001800:
+	.word palette_3001960
+dword_8001804:
+	.word 0x5000000
+	thumb_func_end main_zeroFill_80017EC
+	.endif
 
 	.ifndef DECOMP_copyPalletesToIWRAM_8001808
 	thumb_func_start copyPalletesToIWRAM_8001808

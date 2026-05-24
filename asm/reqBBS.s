@@ -4706,6 +4706,7 @@ dword_8140980:
 	.word 0xF
 	thumb_func_end reqBBS_8140974
 
+	.ifndef DECOMP_reqBBS_8140984
 	thumb_func_start reqBBS_8140984
 reqBBS_8140984:
 	push {r4-r7,lr}
@@ -4748,6 +4749,36 @@ off_81409C8:
 off_81409CC:
 	.word eReqBBSGui
 	thumb_func_end reqBBS_8140984
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start reqBBS_8140984
+reqBBS_8140984:
+	decomp_trampoline reqBBS_8140984_c, 24
+off_81409A4:
+	.word eReqBBSGui
+off_81409A8:
+	.word eReqBBSGui
+off_81409AC:
+	.word eReqBBSGui
+off_81409B0:
+	.word eReqBBSGui
+off_81409B4:
+	.word eReqBBSGui
+off_81409B8:
+	.word eReqBBSGui
+off_81409BC:
+	.word eReqBBSGui
+off_81409C0:
+	.word byte_813F380
+off_81409C4:
+	.word eReqBBSGui
+off_81409C8:
+	.word eReqBBSGui
+off_81409CC:
+	.word eReqBBSGui
+	thumb_func_end reqBBS_8140984
+	.endif
 
 // (int a1) -> int
 	thumb_func_start reqBBS_81409D0

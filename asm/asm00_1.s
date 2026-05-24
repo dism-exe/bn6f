@@ -8383,6 +8383,7 @@ assign_flags32_20093A4: // (flags32 val) -> void
 	mov pc, lr
 	thumb_func_end assign_flags32_20093A4
 
+	.ifndef DECOMP_reset_flags32_20093A4
 	thumb_func_start reset_flags32_20093A4
 reset_flags32_20093A4: // () -> void
 	ldr r1, off_80071D0 // =flags32_20093A4
@@ -8402,6 +8403,26 @@ off_80071CC:
 off_80071D0:
 	.word flags32_20093A4
 	thumb_func_end reset_flags32_20093A4
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start reset_flags32_20093A4
+reset_flags32_20093A4:
+	decomp_trampoline reset_flags32_20093A4_c, 0
+off_80071BC:
+	.word flags32_20093A4
+off_80071C0:
+	.word flags32_20093A4
+off_80071C4:
+	.word flags32_20093A4
+off_80071C8:
+	.word flags32_20093A4
+off_80071CC:
+	.word flags32_20093A4
+off_80071D0:
+	.word flags32_20093A4
+	thumb_func_end reset_flags32_20093A4
+	.endif
 
 	thumb_func_start initBattleStructsAndVram_80071D4
 initBattleStructsAndVram_80071D4:

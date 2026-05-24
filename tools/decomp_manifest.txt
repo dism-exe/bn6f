@@ -111,3 +111,7 @@ sub_80AA004
 sub_80AA104
 sub_8021D36
 sub_8000E3A
+ClearEventFlagFromImmediate
+main_zeroFill_80017EC
+reqBBS_8140984
+reset_flags32_20093A4
