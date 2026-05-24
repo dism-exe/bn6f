@@ -195,3 +195,4 @@ sub_8004298
 init_8013B4E
 sub_80133EC
 initMapTilesState_803037c
+sprite_initialize

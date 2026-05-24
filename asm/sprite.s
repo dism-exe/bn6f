@@ -93,7 +93,8 @@ sprite8002728:
 	thumb_func_end sprite_load
 
 // (void *a1) -> void
-	thumb_local_start
+	.ifndef DECOMP_sprite_initialize
+	thumb_func_start sprite_initialize
 sprite_initialize:
 	add r0, #4
 	str r0, [r5,#oObjectSprite_Unk_18]
@@ -119,6 +120,12 @@ sprite_initialize:
 	strh r0, [r5,#oObjectSprite_Unk_16]
 	mov pc, lr
 	thumb_func_end sprite_initialize
+	.else
+	thumb_func_start sprite_initialize
+sprite_initialize:
+	decomp_trampoline sprite_initialize_c, 38
+	thumb_func_end sprite_initialize
+	.endif
 
 // (int a1) -> void
 	thumb_func_start spriteLoadMugshot_800275A
