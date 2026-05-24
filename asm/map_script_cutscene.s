@@ -2433,6 +2433,7 @@ sub_8036E86:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8036E86
 
+	.ifndef DECOMP_StartCutscene
 	thumb_func_start StartCutscene
 // r0 - cutscene script to run
 // r1 - parameter
@@ -2463,6 +2464,17 @@ off_8036EC4:
 	.word 0x4000000
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end StartCutscene
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start StartCutscene
+StartCutscene:
+	decomp_trampoline StartCutscene_c, 44
+off_8036EC4:
+	.word 0x4000000
+	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	thumb_func_end StartCutscene
+	.endif
 
 	.ifndef DECOMP_cutscene_8036ED4
 	thumb_func_start cutscene_8036ED4

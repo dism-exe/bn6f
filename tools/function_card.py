@@ -187,6 +187,12 @@ def main():
     if pool_labels:
         print(f"  inline labels: {', '.join(pool_labels)}")
 
+    # Optional inline Ghidra decomp (if cache is populated).
+    ghidra_cache = ROOT / "build/ghidra-decomp" / (sym + ".c")
+    if ghidra_cache.exists():
+        print("\n--- ghidra (first-pass aid; always cross-check ASM) ---")
+        print(ghidra_cache.read_text().rstrip())
+
 
 if __name__ == "__main__":
     main()
