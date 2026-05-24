@@ -12205,7 +12205,8 @@ sub_803EF7C:
 	thumb_func_end sub_803EF7C
 	.endif
 
-	thumb_local_start
+	.ifndef DECOMP_sub_803EF84
+	thumb_func_start sub_803EF84
 sub_803EF84:
 	ldr r1, off_803EF8C // =eLinkState
 	str r0, [r1,#0x34] // (eCamera.unk_84 - 0x20099d0)
@@ -12214,6 +12215,17 @@ sub_803EF84:
 off_803EF8C:
 	.word eLinkState // eLinkState
 	thumb_func_end sub_803EF84
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_803EF84
+sub_803EF84:
+	decomp_trampoline sub_803EF84_c, 0
+	.balign 4, 0x00
+off_803EF8C:
+	.word eLinkState // eLinkState
+	thumb_func_end sub_803EF84
+	.endif
 
 	thumb_local_start
 sub_803EF90:

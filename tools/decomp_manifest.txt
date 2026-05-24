@@ -227,3 +227,4 @@ sub_8000FAC
 sub_803537C
 sub_809F942
 SetExtraToolkitPointers
+sub_803EF84
