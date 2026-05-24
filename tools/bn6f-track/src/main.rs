@@ -718,11 +718,14 @@ fn record(
         match isolated_run_to(rom, &rec.entry, rec.captured_lr) {
             Ok(exit) => {
                 let entry_path = format!("{fn_dir}/{seq:04}.entry.bin");
-                let exit_path = format!("{fn_dir}/{seq:04}.exit.bin");
+                let exit_path = format!("{fn_dir}/{seq:04}.exit.delta.bin");
                 rec.entry
                     .write_to(std::path::Path::new(&entry_path))
                     .unwrap();
-                exit.write_to(std::path::Path::new(&exit_path)).unwrap();
+                let delta = snapshot::ExitDelta::from_pair(&rec.entry, &exit);
+                delta
+                    .write_to(std::path::Path::new(&exit_path))
+                    .unwrap();
                 wrote += 1;
             }
             Err(e) => {
@@ -831,40 +834,54 @@ fn replay(rom: &str, session_dir: &str) {
         by_fn.insert(fn_name, seqs);
     }
 
+    use rayon::prelude::*;
+
     let mut total_pairs = 0usize;
     let mut total_pass = 0usize;
     let mut total_fail = 0usize;
 
+    // Each fixture's replay is independent — Core::new spawns its own
+    // libmgba instance, no shared mutable state. Parallelize.
     for (fn_name, seqs) in &by_fn {
+        let results: Vec<(usize, Result<String, String>)> = seqs
+            .par_iter()
+            .map(|&seq| {
+                let entry_path =
+                    session.join(fn_name).join(format!("{seq:04}.entry.bin"));
+                let exit_path =
+                    session.join(fn_name).join(format!("{seq:04}.exit.delta.bin"));
+                let expected_entry =
+                    snapshot::Snapshot::read_from(&entry_path).map_err(|e| e.to_string())?;
+                let expected_delta =
+                    snapshot::ExitDelta::read_from(&exit_path).map_err(|e| e.to_string())?;
+                let actual_exit =
+                    replay_single(rom, &expected_entry, &expected_delta)?;
+                let diff = snapshot::diff_delta(
+                    &expected_delta,
+                    &expected_entry,
+                    &actual_exit,
+                );
+                if diff.is_clean() {
+                    Ok(String::new())
+                } else {
+                    Err(describe_diff(&diff))
+                }
+            })
+            .enumerate()
+            .map(|(i, r)| (seqs[i], r))
+            .collect();
+
         let mut pass = 0usize;
         let mut fail = 0usize;
         let mut first_fail_msg = String::new();
-        for &seq in seqs {
+        for (_, r) in &results {
             total_pairs += 1;
-            let entry_path = session.join(fn_name).join(format!("{seq:04}.entry.bin"));
-            let exit_path = session.join(fn_name).join(format!("{seq:04}.exit.bin"));
-            let expected_entry = snapshot::Snapshot::read_from(&entry_path).unwrap();
-            let expected_exit = snapshot::Snapshot::read_from(&exit_path).unwrap();
-
-            // Run the single pair: load entry, step until LR, snapshot.
-            let result = replay_single(rom, &expected_entry, &expected_exit);
-            match result {
-                Ok(actual_exit) => {
-                    let sp_at_exit = expected_exit.regs[13];
-                    let diff = snapshot::diff(&expected_exit, &actual_exit, sp_at_exit);
-                    if diff.is_clean() {
-                        pass += 1;
-                    } else {
-                        fail += 1;
-                        if first_fail_msg.is_empty() {
-                            first_fail_msg = describe_diff(&diff);
-                        }
-                    }
-                }
+            match r {
+                Ok(_) => pass += 1,
                 Err(e) => {
                     fail += 1;
                     if first_fail_msg.is_empty() {
-                        first_fail_msg = e;
+                        first_fail_msg = e.clone();
                     }
                 }
             }
@@ -888,11 +905,11 @@ fn replay(rom: &str, session_dir: &str) {
 fn replay_single(
     rom: &str,
     entry: &snapshot::Snapshot,
-    expected_exit: &snapshot::Snapshot,
+    expected_delta: &snapshot::ExitDelta,
 ) -> Result<snapshot::Snapshot, String> {
-    let _ = expected_exit;
+    let _ = expected_delta;
     // Captured LR in r14 is the function's return address (Thumb bit
-    // possibly set). The expected exit's r15 = (lr & !1) + instr_len.
+    // possibly set).
     let target = entry.regs[14] & !1u32;
     isolated_run_to(rom, entry, target)
 }

@@ -36,3 +36,23 @@
 	.size \name, . - \name // location counter - function start
 	.type \name, function
 	.endm
+
+	// Trampoline body for in-place decomp swap. Emits an 8-byte
+	// `ldr r3, =target+1; bx r3; .word target+1` (literal in pool),
+	// followed by `pad_bytes` of `nop` so the function occupies the
+	// same slot as the original ASM (downstream addresses unchanged).
+	//
+	// Assumes the enclosing thumb_func_start put us on a 4-byte
+	// boundary — true for all the leaves we're converting so far.
+	// For 2-byte-aligned-only entries the .pool directive will insert
+	// an extra 2 bytes for alignment and pad_bytes needs adjustment.
+	.macro decomp_trampoline target_name:req, pad_bytes=0
+	ldr r3, =\target_name + 1
+	bx  r3
+	.pool
+	.if \pad_bytes > 0
+	.rept \pad_bytes / 2
+	nop
+	.endr
+	.endif
+	.endm

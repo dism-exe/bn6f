@@ -64,7 +64,10 @@ all: clean-conditional-objs $(ROM)
 # Uses ld_script_decompile.ld which adds a .c_code section in the ROM fill area.
 # Per-function decompile flags (-D...) are added per below; they're target-
 # specific so `make all` rebuilds without them and SHA-matches.
-decompile: ASFLAGS += --defsym DECOMP_BYTE_FILL=1
+decompile: ASFLAGS += --defsym DECOMP_BYTE_FILL=1 --defsym DECOMP_COPY_BYTES=1 \
+                       --defsym DECOMP_CLEAR_WORD_E200AC1C=1 --defsym DECOMP_SEED_RNG=1 \
+                       --defsym DECOMP_COPY_WORDS=1 --defsym DECOMP_COPY_BY_EIGHT_WORDS=1 \
+                       --defsym DECOMP_HALFWORD_FILL=1
 decompile: clean-conditional-objs $(C_OFILES) $(OFILES)
 	$(LD) $(LDFLAGS) -o $(ELF) -T ld_script_decompile.ld $(OFILES) $(C_OFILES) $(CLIB) $(LIB)
 	$(OBJCOPY) -O binary $(ELF) $(ROM)
@@ -194,7 +197,8 @@ track: track-build $(FN_SYMS) $(ROM)
 # As more functions are converted, append their entry addresses to
 # DECOMP_FN_ADDRS.
 SESSION_DIR ?= tests/fixtures/calls/boot_idle
-DECOMP_FN_ADDRS ?= 0x08000964
+DECOMP_FN_ADDRS ?= 0x08000964 0x08000920 0x08000A3C 0x08001514 \
+                    0x0800093C 0x08000950 0x0800096C
 
 verify: track-build $(FN_SYMS)
 	@echo "[verify] building original ROM and recording fixtures..."

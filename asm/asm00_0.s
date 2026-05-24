@@ -595,6 +595,7 @@ ZeroFillByEightWords:
 // (u8 *src, u8 *dest, int byteCount) -> void
 
 // Copy r2 bytes from r0 to r1, in units of bytes.
+	.ifndef DECOMP_COPY_BYTES
 	thumb_func_start CopyBytes
 CopyBytes:
 	sub r2, #1
@@ -603,6 +604,19 @@ CopyBytes:
 	bne CopyBytes
 	mov pc, lr
 	thumb_func_end CopyBytes
+	.else
+	// Trampoline — original is 10 bytes (5 Thumb instructions). Same
+	// 10-byte slot: ldr+bx+literal (8 bytes) plus 2 bytes of nop
+	// keep the function size identical so downstream addresses don't
+	// shift.
+	thumb_func_start CopyBytes
+CopyBytes:
+	ldr r3, =CopyBytes_c + 1
+	bx  r3
+	.pool
+	nop
+	thumb_func_end CopyBytes
+	.endif
 
 // (u16 *src, u16 *dest, int halfwordCount) -> void
 
@@ -625,10 +639,11 @@ CopyHalfwords:
 /// Copy r2 bytes from r0 to r1, in units of words.
 /// Note r2 represents byte count, which is then converted to word count in function
 /// Source, destination, and size must be word compatible.
+	.ifndef DECOMP_COPY_WORDS
 	thumb_func_start CopyWords
 CopyWords: // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	push {r0-r3,lr}
-  
+
 	ldr r3, .WordCopyCpuSetMask_800094C
 
   // let num_words: u32 = size / 4;
@@ -643,6 +658,12 @@ CopyWords: // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 .WordCopyCpuSetMask_800094C:
 	.word 0x4000000
 	thumb_func_end CopyWords
+	.else
+	thumb_func_start CopyWords
+CopyWords:
+	decomp_trampoline CopyWords_c, 12
+	thumb_func_end CopyWords
+	.endif
 
 // Copy r2 bytes from r0 to r1, in units of eight words, rounded up.
 // Note r2 represents byte count, which is then converted to word count in function
@@ -650,6 +671,7 @@ CopyWords: // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 // up the word count to a multiple of eight words.
 // Source and destination must be word compatible.
 // Size must be a multiple of eight words
+	.ifndef DECOMP_COPY_BY_EIGHT_WORDS
 	thumb_func_start CopyByEightWords
 CopyByEightWords: // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	push {r0-r3,lr}
@@ -667,6 +689,12 @@ CopyByEightWords: // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 .CopyFastCpuSetMask_8000960:
 	.word 0x0
 	thumb_func_end CopyByEightWords
+	.else
+	thumb_func_start CopyByEightWords
+CopyByEightWords:
+	decomp_trampoline CopyByEightWords_c, 12
+	thumb_func_end CopyByEightWords
+	.endif
 
 // (u8 *mem, int byteCount, u8 byte) -> void
 // Fill r0 with r2, where r2 is treated as a byte.
@@ -696,6 +724,7 @@ ByteFill:
 // Fill r0 with r2, where r2 is treated as a halfword.
 // Size is in r1, in bytes.
 // Source, destination, and size must be halfword compatible
+	.ifndef DECOMP_HALFWORD_FILL
 	thumb_func_start HalfwordFill
 HalfwordFill:
 	push {r0-r3,lr}
@@ -714,6 +743,12 @@ HalfwordFill:
 .HalfwordFillCpuSetMask_8000988:
 	.word 0x1000000
 	thumb_func_end HalfwordFill
+	.else
+	thumb_func_start HalfwordFill
+HalfwordFill:
+	decomp_trampoline HalfwordFill_c, 24
+	thumb_func_end HalfwordFill
+	.endif
 
 // Fill r0 with r2, where r2 is treated as a word.
 // Size is in r1, in bytes.
@@ -831,6 +866,7 @@ dword_8000A38:
 	.word 0x80000000
 	thumb_func_end memory_80009FC
 
+	.ifndef DECOMP_CLEAR_WORD_E200AC1C
 	thumb_func_start clearWord_e200AC1C
 clearWord_e200AC1C:
 	ldr r0, off_8000B10 // =dword_200AC1C
@@ -838,6 +874,14 @@ clearWord_e200AC1C:
 	str r1, [r0]
 	mov pc, lr
 	thumb_func_end clearWord_e200AC1C
+	.else
+	thumb_func_start clearWord_e200AC1C
+clearWord_e200AC1C:
+	ldr r3, =clearWord_e200AC1C_c + 1
+	bx  r3
+	.pool
+	thumb_func_end clearWord_e200AC1C
+	.endif
 
 	thumb_func_start ProcessGFXTransferQueue
 ProcessGFXTransferQueue:
@@ -2609,6 +2653,7 @@ copyWords_80014EC: // 80014EC
 	thumb_func_end copyWords_80014EC
 
 /// tags: "#mod_rng, "
+	.ifndef DECOMP_SEED_RNG
 	thumb_func_start SeedRNG
 SeedRNG: // () -> ()
 	ldr r0, rng_8001594 // =0xa338244f
@@ -2616,6 +2661,14 @@ SeedRNG: // () -> ()
 	str r0, [r1]
 	mov pc, lr
 	thumb_func_end SeedRNG
+	.else
+	thumb_func_start SeedRNG
+SeedRNG:
+	ldr r3, =SeedRNG_c + 1
+	bx  r3
+	.pool
+	thumb_func_end SeedRNG
+	.endif
 
 /// tags: "#mod_rng, "
 	thumb_func_start GetRNG

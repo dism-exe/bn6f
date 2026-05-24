@@ -27,6 +27,15 @@ const EWRAM_SIZE: usize = 0x40000; // 256 KB
 const IWRAM_BASE: u32 = 0x03000000;
 const IWRAM_SIZE: usize = 0x8000; // 32 KB
 
+/// Per-CPU-mode banked stacks live in the top of IWRAM
+/// (SVC at ~0x03007FE0, IRQ at ~0x03007FA0). When a function invokes
+/// `bl SWI_*`, BIOS switches to SVC mode and writes registers to the
+/// SVC stack at ~0x03007FD0. A C reimplementation doing the same work
+/// in user mode never touches that region, producing spurious diffs.
+/// Skip the last 256 bytes of IWRAM unconditionally — by convention
+/// no user-mode code uses it.
+const IWRAM_BANKED_STACK_START: u32 = 0x03007F00;
+
 /// 18 ARM-mode-visible registers we capture and compare.
 pub const REG_NAMES: [&str; 18] = [
     "r0", "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10",
@@ -44,6 +53,184 @@ pub struct Snapshot {
     /// consistent) and keep the structured fields above for diff
     /// (interpretable, version-stable).
     pub savestate: Vec<u8>,
+}
+
+/// ExitDelta — the *changes* a function makes between its entry and
+/// exit, not its full state. Storing exits as deltas keeps fixtures
+/// tractable (a few hundred bytes per call instead of ~600 KB) and
+/// gives a symmetric diff: any write the candidate did that the oracle
+/// didn't (or vice versa) is a mismatch.
+///
+/// Wire format:
+///   magic "BNDL"          (4 bytes)
+///   version u32           (1)
+///   regs[18] u32          (the full exit register file)
+///   ewram_writes u32 + records (4 bytes addr + 1 byte value, packed)
+///   iwram_writes u32 + records (same)
+pub struct ExitDelta {
+    pub regs: [u32; 18],
+    /// (offset_in_ewram, new_byte) pairs. offset = addr - EWRAM_BASE.
+    pub ewram_writes: Vec<(u32, u8)>,
+    /// (offset_in_iwram, new_byte) pairs.
+    pub iwram_writes: Vec<(u32, u8)>,
+}
+
+impl ExitDelta {
+    /// Compute the delta between an entry snapshot and an exit
+    /// snapshot. Only addresses where bytes differ are recorded.
+    pub fn from_pair(entry: &Snapshot, exit: &Snapshot) -> Self {
+        let mut ewram_writes = Vec::new();
+        let mut iwram_writes = Vec::new();
+        for (i, (&a, &b)) in entry.ewram.iter().zip(exit.ewram.iter()).enumerate() {
+            if a != b {
+                ewram_writes.push((i as u32, b));
+            }
+        }
+        for (i, (&a, &b)) in entry.iwram.iter().zip(exit.iwram.iter()).enumerate() {
+            if a != b {
+                iwram_writes.push((i as u32, b));
+            }
+        }
+        ExitDelta { regs: exit.regs, ewram_writes, iwram_writes }
+    }
+
+    pub fn write_to(&self, path: &Path) -> std::io::Result<()> {
+        let mut f = File::create(path)?;
+        f.write_all(b"BNDL")?;
+        f.write_all(&1u32.to_le_bytes())?;
+        for r in &self.regs {
+            f.write_all(&r.to_le_bytes())?;
+        }
+        f.write_all(&(self.ewram_writes.len() as u32).to_le_bytes())?;
+        for (addr, val) in &self.ewram_writes {
+            f.write_all(&addr.to_le_bytes())?;
+            f.write_all(&[*val])?;
+        }
+        f.write_all(&(self.iwram_writes.len() as u32).to_le_bytes())?;
+        for (addr, val) in &self.iwram_writes {
+            f.write_all(&addr.to_le_bytes())?;
+            f.write_all(&[*val])?;
+        }
+        Ok(())
+    }
+
+    pub fn read_from(path: &Path) -> std::io::Result<Self> {
+        let mut f = File::open(path)?;
+        let mut magic = [0u8; 4];
+        f.read_exact(&mut magic)?;
+        if &magic != b"BNDL" {
+            return Err(std::io::Error::new(std::io::ErrorKind::InvalidData, "bad magic"));
+        }
+        let mut buf4 = [0u8; 4];
+        f.read_exact(&mut buf4)?;
+        let _version = u32::from_le_bytes(buf4);
+        let mut regs = [0u32; 18];
+        for r in regs.iter_mut() {
+            f.read_exact(&mut buf4)?;
+            *r = u32::from_le_bytes(buf4);
+        }
+        let mut read_writes = || -> std::io::Result<Vec<(u32, u8)>> {
+            f.read_exact(&mut buf4)?;
+            let n = u32::from_le_bytes(buf4) as usize;
+            let mut v = Vec::with_capacity(n);
+            for _ in 0..n {
+                let mut a = [0u8; 4];
+                let mut b = [0u8; 1];
+                f.read_exact(&mut a)?;
+                f.read_exact(&mut b)?;
+                v.push((u32::from_le_bytes(a), b[0]));
+            }
+            Ok(v)
+        };
+        let ewram_writes = read_writes()?;
+        let iwram_writes = read_writes()?;
+        Ok(ExitDelta { regs, ewram_writes, iwram_writes })
+    }
+}
+
+/// Compare an expected ExitDelta (from the oracle) against the actual
+/// exit state observed during candidate replay. Symmetric — flags
+/// any unexpected writes by the candidate AND any oracle writes the
+/// candidate didn't perform.
+///
+/// `entry` is needed to reconstruct what bytes a no-op call would leave.
+pub fn diff_delta(
+    expected: &ExitDelta,
+    entry: &Snapshot,
+    actual_exit: &Snapshot,
+) -> DiffSummary {
+    let mut reg_diffs = Vec::new();
+    for i in 0..18 {
+        if expected.regs[i] != actual_exit.regs[i] {
+            reg_diffs.push((i, expected.regs[i], actual_exit.regs[i]));
+        }
+    }
+
+    // Re-derive what each region should look like after applying the
+    // expected delta to the entry state. Compare that to the candidate
+    // exit. This catches BOTH directions: missing oracle writes (we
+    // didn't do something the oracle did) AND extra writes (we touched
+    // memory the oracle didn't).
+    let mut expected_ewram = entry.ewram.clone();
+    for &(off, val) in &expected.ewram_writes {
+        if (off as usize) < expected_ewram.len() {
+            expected_ewram[off as usize] = val;
+        }
+    }
+    let mut expected_iwram = entry.iwram.clone();
+    for &(off, val) in &expected.iwram_writes {
+        if (off as usize) < expected_iwram.len() {
+            expected_iwram[off as usize] = val;
+        }
+    }
+
+    let mut ewram_diff_bytes = 0;
+    let mut ewram_first_diff = None;
+    for (i, (a, b)) in expected_ewram
+        .iter()
+        .zip(actual_exit.ewram.iter())
+        .enumerate()
+    {
+        if a != b {
+            ewram_diff_bytes += 1;
+            ewram_first_diff.get_or_insert(i);
+        }
+    }
+    let sp_at_exit = expected.regs[13];
+    let mut iwram_diff_bytes = 0;
+    let mut iwram_first_diff = None;
+    let sp_offset = if (IWRAM_BASE..IWRAM_BASE + IWRAM_SIZE as u32).contains(&sp_at_exit) {
+        (sp_at_exit - IWRAM_BASE) as usize
+    } else {
+        0
+    };
+    let banked_stack_offset = (IWRAM_BANKED_STACK_START - IWRAM_BASE) as usize;
+    for (i, (a, b)) in expected_iwram
+        .iter()
+        .zip(actual_exit.iwram.iter())
+        .enumerate()
+        .skip(sp_offset)
+    {
+        // Skip the per-CPU-mode banked stack region — BIOS SWI handlers
+        // write there in SVC mode; C reimpls don't, so the writes look
+        // like a divergence even when the function's user-visible
+        // effect is identical.
+        if i >= banked_stack_offset {
+            continue;
+        }
+        if a != b {
+            iwram_diff_bytes += 1;
+            iwram_first_diff.get_or_insert(i);
+        }
+    }
+
+    DiffSummary {
+        reg_diffs,
+        ewram_diff_bytes,
+        iwram_diff_bytes,
+        ewram_first_diff,
+        iwram_first_diff,
+    }
 }
 
 impl Snapshot {
