@@ -49,6 +49,8 @@ bn6f.txt
 *.txt
 # but keep tracker baselines (parity-check fixtures for the harness)
 !tests/fixtures/*.txt
+# and the decomp manifest (drives the decompile build)
+!tools/decomp_manifest.txt
 
 # asmdiff.sh
 *.dump

@@ -595,7 +595,7 @@ ZeroFillByEightWords:
 // (u8 *src, u8 *dest, int byteCount) -> void
 
 // Copy r2 bytes from r0 to r1, in units of bytes.
-	.ifndef DECOMP_COPY_BYTES
+	.ifndef DECOMP_CopyBytes
 	thumb_func_start CopyBytes
 CopyBytes:
 	sub r2, #1
@@ -623,7 +623,7 @@ CopyBytes:
 // Copy r2 bytes from r0 to r1, in units of halfwords.
 // Note that size is specified in bytes, which is then converted to halfword count in function
 // Source, destination, and size must be halfword compatible.
-	.ifndef DECOMP_COPY_HALFWORDS
+	.ifndef DECOMP_CopyHalfwords
 	thumb_func_start CopyHalfwords
 CopyHalfwords:
 	push {r0-r3,lr}
@@ -649,7 +649,7 @@ CopyHalfwords:
 /// Copy r2 bytes from r0 to r1, in units of words.
 /// Note r2 represents byte count, which is then converted to word count in function
 /// Source, destination, and size must be word compatible.
-	.ifndef DECOMP_COPY_WORDS
+	.ifndef DECOMP_CopyWords
 	thumb_func_start CopyWords
 CopyWords: // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	push {r0-r3,lr}
@@ -681,7 +681,7 @@ CopyWords:
 // up the word count to a multiple of eight words.
 // Source and destination must be word compatible.
 // Size must be a multiple of eight words
-	.ifndef DECOMP_COPY_BY_EIGHT_WORDS
+	.ifndef DECOMP_CopyByEightWords
 	thumb_func_start CopyByEightWords
 CopyByEightWords: // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	push {r0-r3,lr}
@@ -710,7 +710,7 @@ CopyByEightWords:
 // Fill r0 with r2, where r2 is treated as a byte.
 // Size is in r1, in bytes.
 // Does a backwards fill for speed
-	.ifndef DECOMP_BYTE_FILL
+	.ifndef DECOMP_ByteFill
 	thumb_func_start ByteFill
 ByteFill:
 	// byteCount
@@ -734,7 +734,7 @@ ByteFill:
 // Fill r0 with r2, where r2 is treated as a halfword.
 // Size is in r1, in bytes.
 // Source, destination, and size must be halfword compatible
-	.ifndef DECOMP_HALFWORD_FILL
+	.ifndef DECOMP_HalfwordFill
 	thumb_func_start HalfwordFill
 HalfwordFill:
 	push {r0-r3,lr}
@@ -876,7 +876,7 @@ dword_8000A38:
 	.word 0x80000000
 	thumb_func_end memory_80009FC
 
-	.ifndef DECOMP_CLEAR_WORD_E200AC1C
+	.ifndef DECOMP_clearWord_e200AC1C
 	thumb_func_start clearWord_e200AC1C
 clearWord_e200AC1C:
 	ldr r0, off_8000B10 // =dword_200AC1C
@@ -2663,7 +2663,7 @@ copyWords_80014EC: // 80014EC
 	thumb_func_end copyWords_80014EC
 
 /// tags: "#mod_rng, "
-	.ifndef DECOMP_SEED_RNG
+	.ifndef DECOMP_SeedRNG
 	thumb_func_start SeedRNG
 SeedRNG: // () -> ()
 	ldr r0, rng_8001594 // =0xa338244f
@@ -2681,7 +2681,7 @@ SeedRNG:
 	.endif
 
 /// tags: "#mod_rng, "
-	.ifndef DECOMP_GET_RNG
+	.ifndef DECOMP_GetRNG
 	thumb_func_start GetRNG
 GetRNG: // () -> u32?
 	push {r7,lr}

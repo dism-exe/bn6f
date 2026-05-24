@@ -62,14 +62,15 @@ all: clean-conditional-objs $(ROM)
 
 # Modified ROM with C decompiled functions (does not match original SHA1).
 # Uses ld_script_decompile.ld which adds a .c_code section in the ROM fill area.
-# Per-function decompile flags (-D...) are added per below; they're target-
-# specific so `make all` rebuilds without them and SHA-matches.
-decompile: ASFLAGS += --defsym DECOMP_BYTE_FILL=1 --defsym DECOMP_COPY_BYTES=1 \
-                       --defsym DECOMP_CLEAR_WORD_E200AC1C=1 --defsym DECOMP_SEED_RNG=1 \
-                       --defsym DECOMP_COPY_WORDS=1 --defsym DECOMP_COPY_BY_EIGHT_WORDS=1 \
-                       --defsym DECOMP_HALFWORD_FILL=1 --defsym DECOMP_GET_RNG=1 \
-                       --defsym DECOMP_ESTRUCT200BC30_GETJUMPOFFSET00=1 \
-                       --defsym DECOMP_COPY_HALFWORDS=1
+# Conversion list lives in tools/decomp_manifest.txt — one ASM symbol per
+# line. For each symbol we generate `--defsym DECOMP_<sym>=1`, which gates
+# the `.ifndef DECOMP_<sym>` block in asm/*.s. `make all` builds without
+# these flags, so the original ROM still SHA-matches.
+DECOMP_MANIFEST = tools/decomp_manifest.txt
+DECOMP_SYMS = $(shell awk '!/^[[:space:]]*#/ && NF>0 {print $$1}' $(DECOMP_MANIFEST))
+DECOMP_DEFSYMS = $(foreach s,$(DECOMP_SYMS),--defsym DECOMP_$(s)=1)
+
+decompile: ASFLAGS += $(DECOMP_DEFSYMS)
 decompile: clean-conditional-objs $(C_OFILES) $(OFILES)
 	$(LD) $(LDFLAGS) -o $(ELF) -T ld_script_decompile.ld $(OFILES) $(C_OFILES) $(CLIB) $(LIB)
 	$(OBJCOPY) -O binary $(ELF) $(ROM)
@@ -199,9 +200,10 @@ track: track-build $(FN_SYMS) $(ROM)
 # As more functions are converted, append their entry addresses to
 # DECOMP_FN_ADDRS.
 SESSION_DIR ?= tests/fixtures/calls/boot_idle
-DECOMP_FN_ADDRS ?= 0x08000964 0x08000920 0x08000A3C 0x08001514 \
-                    0x0800093C 0x08000950 0x0800096C \
-                    0x0800151C 0x0803EA60 0x0800092A
+
+# Resolve manifest symbols to addresses via the function symbol table.
+# (function-symbols depends on bn6f_orig.elf, which `verify` builds first.)
+DECOMP_FN_ADDRS = $(shell awk 'NR==FNR { if ($$1 !~ /^[[:space:]]*#/ && NF>0) want[$$1]=1; next } want[$$2] { print $$1 }' $(DECOMP_MANIFEST) $(FN_SYMS) 2>/dev/null)
 
 verify: track-build $(FN_SYMS)
 	@echo "[verify] building original ROM and recording fixtures..."

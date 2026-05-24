@@ -11358,7 +11358,7 @@ sub_803EA58:
 	.byte 0, 0
 	thumb_func_end sub_803EA58
 
-	.ifndef DECOMP_ESTRUCT200BC30_GETJUMPOFFSET00
+	.ifndef DECOMP_eStruct200BC30_getJumpOffset00
 	thumb_func_start eStruct200BC30_getJumpOffset00
 eStruct200BC30_getJumpOffset00:
 	ldr r1, off_803EBF8 // =eStruct200BC30

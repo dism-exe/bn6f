@@ -1,0 +1,23 @@
+# Decompiled functions — single source of truth for the conversion list.
+#
+# Each non-comment line: the ASM symbol name of the converted function.
+# Build wiring is derived:
+#   --defsym DECOMP_<asm_symbol>=1   (gates the .ifndef block in asm/*.s)
+#   <asm_symbol>_c                   (the C function the trampoline branches to)
+#   address                          (looked up in tools/function_symbols.txt)
+#
+# Adding a function: write src/c/<file>.c with a function named <asm_symbol>_c,
+# wrap the original asm with `.ifndef DECOMP_<asm_symbol>` / `.else` /
+# `decomp_trampoline <asm_symbol>_c, <pad>` / `.endif`, and append the symbol
+# below. The Makefile picks it up automatically.
+
+ByteFill
+CopyBytes
+CopyHalfwords
+CopyWords
+CopyByEightWords
+HalfwordFill
+clearWord_e200AC1C
+SeedRNG
+GetRNG
+eStruct200BC30_getJumpOffset00
