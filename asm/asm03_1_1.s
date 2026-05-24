@@ -11434,12 +11434,19 @@ eStruct200BC30_getJumpOffset00:
 	thumb_func_end eStruct200BC30_getJumpOffset00
 	.endif
 
+	.ifndef DECOMP_eStruct200BC30_getJumpOffset00_pushpop
 	thumb_func_start eStruct200BC30_getJumpOffset00_pushpop
 eStruct200BC30_getJumpOffset00_pushpop:
 	push {lr}
 	bl eStruct200BC30_getJumpOffset00
 	pop {pc}
 	thumb_func_end eStruct200BC30_getJumpOffset00_pushpop
+	.else
+	thumb_func_start eStruct200BC30_getJumpOffset00_pushpop
+eStruct200BC30_getJumpOffset00_pushpop:
+	decomp_trampoline eStruct200BC30_getJumpOffset00_pushpop_c, 0
+	thumb_func_end eStruct200BC30_getJumpOffset00_pushpop
+	.endif
 
 	thumb_func_start eStruct200BC30_setJumpOffset00
 eStruct200BC30_setJumpOffset00:

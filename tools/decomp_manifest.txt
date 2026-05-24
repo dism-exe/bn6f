@@ -183,3 +183,5 @@ sub_803E928
 createOWObjectInteractionArea_80037ac
 SpawnOverworldNPCObject
 SpawnOWPlayerObject
+chatbox_maskFlags_3e
+eStruct200BC30_getJumpOffset00_pushpop

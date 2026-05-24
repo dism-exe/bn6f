@@ -1739,6 +1739,7 @@ chatbox_clearFlags_3e:
 
 // (int mask) -> void
 //
+	.ifndef DECOMP_chatbox_maskFlags_3e
 	thumb_func_start chatbox_maskFlags_3e
 chatbox_maskFlags_3e:
 	push {r1}
@@ -1748,6 +1749,12 @@ chatbox_maskFlags_3e:
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end chatbox_maskFlags_3e
+	.else
+	thumb_func_start chatbox_maskFlags_3e
+chatbox_maskFlags_3e:
+	decomp_trampoline chatbox_maskFlags_3e_c, 4
+	thumb_func_end chatbox_maskFlags_3e
+	.endif
 
 	thumb_local_start
 chatbox_ED_select_8040944:
