@@ -402,6 +402,25 @@ fn save_state_bytes(core: *mut mgba_sys::mCore) -> Vec<u8> {
     }
 }
 
+/// Load an mGBA savestate from a file path into a freshly-created
+/// core. Intended for the harness's record-mode demo-start hook —
+/// instead of running the game from reset, start from a user-supplied
+/// scene (e.g. captured via mGBA's Save State menu).
+///
+/// Accepts either:
+///   * a raw libmgba savestate (what mGBA's GUI writes), or
+///   * one of our BNSS-wrapped Snapshot files (`.entry.bin`) — in
+///     which case the inner savestate is unwrapped automatically.
+pub fn load_savestate_file(core: *mut mgba_sys::mCore, path: &std::path::Path) -> Result<(), String> {
+    let bytes = std::fs::read(path).map_err(|e| format!("read {}: {e}", path.display()))?;
+    if bytes.starts_with(b"BNSS") {
+        let snap = Snapshot::read_from(path).map_err(|e| format!("read BNSS {}: {e}", path.display()))?;
+        snap.restore(core)
+    } else {
+        load_state_bytes(core, &bytes)
+    }
+}
+
 fn load_state_bytes(core: *mut mgba_sys::mCore, bytes: &[u8]) -> Result<(), String> {
     unsafe {
         // VFileFromMemory wraps a fixed-size buffer that the file

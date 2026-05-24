@@ -259,3 +259,36 @@ verify-spam: track-build $(FN_SYMS)
 	@$(MAKE) --no-print-directory decompile
 	tools/bn6f-track/target/release/bn6f-track replay \
 		$(abspath $(ROM)) $(abspath $(SPAM_SESSION_DIR))
+
+# Verify against a scene captured as an mGBA savestate (with optional
+# BizHawk-style input replay). Used to extend coverage past boot_idle.
+# Variables (override on the command line):
+#   STATE_NAME   slug used for the fixture directory
+#   STATE_FILE   path to the mGBA savestate (.ss<N> from the GUI menu,
+#                or any libmgba-savestate file)
+#   STATE_INPUT  optional joypad mask file (one u16 mask per frame)
+#   STATE_FRAMES how many frames to run after loading the state
+# Example:
+#   make verify-state STATE_NAME=acdc_idle STATE_FILE=demos/acdc.ss1 STATE_FRAMES=600
+STATE_NAME    ?= scene
+STATE_FRAMES  ?= 600
+STATE_SESSION  = tests/fixtures/calls/$(STATE_NAME)
+verify-state: track-build $(FN_SYMS)
+ifndef STATE_FILE
+	$(error STATE_FILE not set — pass e.g. STATE_FILE=tests/fixtures/demos/foo.ss)
+endif
+	@echo "[verify-state $(STATE_NAME)] building original ROM and recording from $(STATE_FILE)..."
+	@$(MAKE) --no-print-directory all
+	@rm -rf $(STATE_SESSION)
+	@mkdir -p $(STATE_SESSION)
+	@tools/bn6f-track/target/release/bn6f-track record \
+		$(abspath $(ROM)) $(STATE_FRAMES) $(abspath $(FN_SYMS)) \
+		$(abspath $(STATE_SESSION)) \
+		--state $(abspath $(STATE_FILE)) \
+		$(if $(STATE_INPUT),--input $(abspath $(STATE_INPUT)),) \
+		$(DECOMP_FN_ADDRS)
+	@echo
+	@echo "[verify-state $(STATE_NAME)] building decompile ROM and replaying..."
+	@$(MAKE) --no-print-directory decompile
+	tools/bn6f-track/target/release/bn6f-track replay \
+		$(abspath $(ROM)) $(abspath $(STATE_SESSION))

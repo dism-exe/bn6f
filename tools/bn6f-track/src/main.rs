@@ -667,10 +667,14 @@ fn record(
     session_dir: &str,
     target_hex: &[String],
     input_path: Option<&str>,
+    state_path: Option<&str>,
 ) {
     eprintln!("=== bn6f-track record ===");
     eprintln!("rom: {rom}  frames: {frames}");
     eprintln!("session: {session_dir}");
+    if let Some(p) = state_path {
+        eprintln!("start savestate: {p}");
+    }
     let inputs: Vec<u16> = if let Some(p) = input_path {
         let v = load_input_file(p);
         eprintln!("input: {p}  {} frames of joypad masks", v.len());
@@ -741,6 +745,16 @@ fn record(
         eprintln!("Core::new failed: {e}");
         process::exit(1);
     });
+    // Optional: start the demo from a user-supplied mGBA savestate
+    // (e.g. captured via the GUI's Save State menu) instead of from
+    // reset. The harness then records calls during `frames` of
+    // emulation starting from that scene.
+    if let Some(p) = state_path {
+        if let Err(e) = snapshot::load_savestate_file(core.raw, std::path::Path::new(p)) {
+            eprintln!("load savestate {p}: {e}");
+            process::exit(1);
+        }
+    }
     core.attach_debugger();
 
     let t0 = Instant::now();
@@ -1053,7 +1067,8 @@ fn main() {
             track(rom, frames, symbols, output, input_path);
         }
         "record" => {
-            // record <rom> <frames> <symbols> <session_dir> [--input <path>] <targets...>
+            // record <rom> <frames> <symbols> <session_dir>
+            //        [--input <path>] [--state <path>] <targets...>
             let rom = args.get(2).unwrap_or_else(|| usage(&args[0]));
             let frames: u32 =
                 args.get(3).and_then(|s| s.parse().ok()).unwrap_or_else(|| usage(&args[0]));
@@ -1061,19 +1076,35 @@ fn main() {
             let session_dir = args.get(5).unwrap_or_else(|| usage(&args[0]));
             let mut rest = &args[6..];
             let mut input_path: Option<String> = None;
-            if rest.first().map(String::as_str) == Some("--input") {
-                input_path = rest.get(1).cloned();
-                if input_path.is_none() {
-                    eprintln!("--input needs a path");
-                    usage(&args[0]);
+            let mut state_path: Option<String> = None;
+            // Accept --input and --state in any order, both optional.
+            loop {
+                match rest.first().map(String::as_str) {
+                    Some("--input") => {
+                        input_path = rest.get(1).cloned();
+                        if input_path.is_none() {
+                            eprintln!("--input needs a path");
+                            usage(&args[0]);
+                        }
+                        rest = &rest[2..];
+                    }
+                    Some("--state") => {
+                        state_path = rest.get(1).cloned();
+                        if state_path.is_none() {
+                            eprintln!("--state needs a path");
+                            usage(&args[0]);
+                        }
+                        rest = &rest[2..];
+                    }
+                    _ => break,
                 }
-                rest = &rest[2..];
             }
             if rest.is_empty() {
                 usage(&args[0]);
             }
             let targets: Vec<String> = rest.to_vec();
-            record(rom, frames, symbols, session_dir, &targets, input_path.as_deref());
+            record(rom, frames, symbols, session_dir, &targets,
+                   input_path.as_deref(), state_path.as_deref());
         }
         "replay" => {
             let rom = args.get(2).unwrap_or_else(|| usage(&args[0]));
