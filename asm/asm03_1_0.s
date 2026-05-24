@@ -2002,6 +2002,7 @@ cutscene_8034BB8:
 	pop {r4-r7,pc}
 	thumb_func_end cutscene_8034BB8
 
+	.ifndef DECOMP_sub_8034C36
 	thumb_func_start sub_8034C36
 sub_8034C36:
 	push {r4-r7,lr}
@@ -2026,6 +2027,12 @@ loc_8034C6A:
 	mov r0, #0
 	pop {r4-r7,pc}
 	thumb_func_end sub_8034C36
+	.else
+	thumb_func_start sub_8034C36
+sub_8034C36:
+	decomp_trampoline sub_8034C36_c, 46
+	thumb_func_end sub_8034C36
+	.endif
 
 	thumb_local_start
 sub_8034C6E:
