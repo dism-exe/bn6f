@@ -6,57 +6,102 @@ Summary of conversation for continuity.
 
 ## Project goal
 
-- Decompile a GBA game written in hand-written assembly.
-- Replace assembly routines with C by **trampolining**: keep original entry addresses, jump to new C implementations elsewhere.
-- Keep address space the same. Main concern identified: C needs a stack (e.g. in emulator-only RAM for testing).
+Decompile MMBN6F (Mega Man Battle Network 6 - Cybeast Falzar, `mmbn6f.gba`).
+Replace hand-written assembly routines with C by **trampolining**: keep
+original entry addresses, place a trampoline at each that long-calls the
+C implementation elsewhere.
 
 ---
 
-## Concerns directory
+## Current state (2026-05-23)
 
-Created `concerns/` with one ticket-style `.md` per hurdle:
+**Build pipeline ready. Verification harness in progress (Rust + libmgba).**
 
-1. **01-calling-convention-abi.md** — Calling convention / ABI
-2. **02-global-state-reentrancy.md** — Global state and reentrancy
-3. **03-interrupts-timing.md** — Interrupts and timing
-4. **04-rom-vs-ram-placement.md** — Where C code lives (ROM vs RAM)
-5. **05-trampoline-size.md** — Size of trampoline (branch only)
-6. **06-multiple-entry-points.md** — Multiple entry points into same logic
-7. **07-linker-build-patching.md** — Linker and build / patching
-8. **08-stack.md** — Stack for C
+A Phase 1 attempt that trampolined 11 spawn / linked-list functions to C
+helpers was reverted because the resulting ROM did not boot. The C-build
+pipeline itself was kept (the failure was in the trampoline logic or
+unmodeled global state, not in the toolchain). No function will be
+re-ported until the verification harness can confirm equivalence
+mechanically.
 
-Each has Status, Description, Solution (to fill when resolved), and a checklist. **Do not update 01 until we have a workable solution.**
+A BizHawk-based prototype of the verification harness was built and
+worked end-to-end (auto-recorder plugin + function tracker at ~40 fps
+with 13K hooks), but the accumulated friction from BizHawk's GUI-centric
+design — reflection into private APIs, modal dialogs under xvfb,
+managed↔native callback bridge cost — led to the decision to migrate to
+a libmgba-direct Rust binary. See
+`issues/concerns/10-emulator-requirements.md` for the full requirements
+analysis and decision rationale. The BizHawk design is preserved in
+`issues/concerns/09-correctness-verification.md` as historical context.
+
+### What is in place (the build pipeline)
+
+- **Makefile**: build and verification targets.
+  - `make all` (default) — links via `ld_script.ld`, runs SHA1 check.
+    Byte-for-byte original ROM; continuous regression check on the
+    ASM tree.
+  - `make orig` — same `ld_script.ld`, writes `bn6f_orig.elf` for
+    side-by-side comparison against the modified ELF.
+  - `make decompile` — links via `ld_script_decompile.ld` and adds any
+    C objects under `build/c/` via a `.c_code` section. No SHA check.
+  - `make validate` — runs `tools/validate_asm.py` against
+    `bn6f_orig.elf` and the current `bn6f.elf`.
+  - `make function-symbols` — extracts function-entry symbols from
+    `bn6f_orig.elf` into `tools/function_symbols.txt`.
+  - `make track-build` — cargo builds the Rust tracker binary.
+  - `make track` — runs the tracker against `bn6f.gba`.
+  - C pipeline rules: `cpp → agbcc → arm-none-eabi-as` for each
+    `src/c/*.c` (picked up via `$(wildcard)`).
+- **ld_script.ld**: original, unmodified — produces SHA-matching ROM.
+- **ld_script_decompile.ld**: adds `.c_code` section between `.data` and
+  `.fill`, populated by `build/c/*.o(.text)` (wildcard) plus
+  `tools/agbcc/lib/libgcc.a` for agbcc helpers. Wildcard means the
+  section is empty when no C files exist.
+- **src/c/types.h**: GBA type aliases (`u8`, `u16`, `u32`, `s8`, `s16`,
+  `s32`, `bool8`).
+- **tools/function_symbols.txt**: 13554 function-entry addresses
+  extracted from `bn6f_orig.elf`. Consumed by the Rust tracker.
+- **tools/validate_asm.py**: scaffold for ASM/C equivalence validation.
+- **tools/bn6f-track/** (in progress): Rust binary linking `libmgba`
+  for the verification harness. See concern 10 for the design.
+- **bin/mgba-dev.appimage**: mGBA 0.11 dev build, kept around for
+  one-off interactive GUI debugging. Not used by automation.
+
+### Open work
+
+1. **Verification harness Rust port** — replacing the BizHawk prototype
+   with a direct libmgba binding. Concern 10.
+2. **Concerns 01–08** were resolved relative to code that has since
+   been reverted; worth re-reviewing when porting resumes.
+
+### Key technical facts (carried over from prior attempt)
+
+- **agbcc**: bare cc1 (GCC 2.95-based); no preprocessor. Must run
+  `cpp -nostdinc -undef` first, then feed the `.i` file to agbcc.
+- **Long-call pattern** (because C code is ~8 MB from trampolines,
+  beyond BL range): `LDR r3, pool; MOV lr, pc; BX r3` — BX has
+  unlimited range.
+- **EWRAM globals** accessed via linker-resolved `extern`: symbols
+  exported with `::` in `ewram.s`; agbcc emits PC-relative literal
+  pool loads; linker fills in EWRAM addresses.
 
 ---
 
-## Calling convention / ABI (01) — discussion
+## Concerns directory (`issues/concerns/`)
 
-- **AAPCS:** ARM Architecture Procedure Call Standard; standard C ABI (r0–r3 args, r0 return, callee-saved regs, etc.).
-- **IWRAM and Thumb/ARM:** RAM isn’t “Thumb” or “ARM”; the **CPU mode** (T bit) is. Code we put in IWRAM is built as Thumb or ARM; the branch to our code must match.
-- **Hand-written asm:** Likely no C-style convention → use **assembly wrappers** at the boundary; C keeps one consistent ABI.
-- **Save-all-registers approach:** Possible: save all GPRs, call C, then restore. But we must **not** restore the return-value register(s), or copy C’s return (r0/r1) into whatever reg(s) the game expects. Otherwise we clobber the return value.
-- **Identifying return regs:** Still required. Save-all avoids knowing *argument* mapping (we can pass a pointer to saved state) but we still need to know which reg(s) hold the return value. So we’re doing convention analysis either way; knowing the full convention allows a **minimal** wrapper (only move args/return and save/restore callee-saved we clobber).
-
----
-
-## Example: `object_spawnType1` (asm00_1.s)
-
-- **Args (in):** r0–r4 (five words), r5 (sixth input, flag for whether to call `sub_8003400`).
-- **Return:** Void in registers (no return-value reg).
-- **Flow:** Prologue (push r7,lr; sub sp #0x14; mov r7, sp; stmia r7!, {r0-r4}). Call `SpawnBattleObjectCommon(1, sp)`. If r5 != 0, call `sub_8003400`. Epilogue (add sp #0x14; pop {r7,pc}).
-- **r7:** We don’t assume the caller used r7 as a frame pointer. We save r7 and lr so we can restore them; **this function** then uses r7 to hold `sp` (base of its stack frame).
-- **Recovery of r0–r4:** They are not loaded back into regs here. They’re passed by pointer to `SpawnBattleObjectCommon` (r1 = sp); the callee reads them from memory if needed.
-
-**Assembly syntax (push):** `push {r7,lr}` pushes the listed registers onto the **stack** (in order by register number), and updates SP. So “save to stack.”
-
-**Comment fixes applied:** Save “to stack”; “base of active stack frame” (not “block”); r7 comment: “save r7 and lr; we will use r7 to hold sp” (no claim about caller’s use of r7).
+- **01–08**: Resolved during the prior attempt. ABI/register
+  conventions, global state mapping, interrupts, ROM-vs-RAM placement,
+  trampoline sizing, multiple entry points, linker/patching, stack.
+  Relative to reverted code — re-review when porting resumes.
+- **09**: Correctness verification — original design discussion + the
+  BizHawk prototype. Preserved as history; superseded by concern 10
+  for the emulator-choice and harness-implementation parts.
+- **10**: Emulator requirements + decision to migrate the harness to a
+  Rust binary linking libmgba directly. Active direction.
 
 ---
 
-## File touched
-
-- `bn6f/asm/asm00_1.s` — Comments added/updated for `object_spawnType1` (line range ~250–263): per-line comments, block comments for prologue / call / optional call / epilogue, and the clarifications above.
-
----
-
-*Generated as context file from conversation.*
+*Updated 2026-05-23 after the BizHawk prototype reached working state
+but with enough accumulated friction to motivate a libmgba-direct
+rewrite. BizHawk artifacts removed from the repo; concerns 09 and 10
+both kept as historical and active documentation respectively.*

@@ -1,0 +1,18 @@
+[package]
+name = "bn6f-track"
+version = "0.1.0"
+edition = "2024"
+description = "MMBN6F decomp verification harness — links libmgba directly"
+
+[[bin]]
+name = "bn6f-track"
+path = "src/main.rs"
+
+[dependencies]
+
+[build-dependencies]
+bindgen = "0.71"
+
+[profile.release]
+opt-level = 3
+lto = "thin"

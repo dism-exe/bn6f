@@ -47,6 +47,8 @@ tags
 baserom.txt
 bn6f.txt
 *.txt
+# but keep tracker baselines (parity-check fixtures for the harness)
+!tests/fixtures/*.txt
 
 # asmdiff.sh
 *.dump
@@ -55,6 +57,9 @@ bn6f.txt
 *.exe
 tools/agbcc/
 tools/binutils/
+
+# Rust build artifacts under tools/bn6f-track
+tools/bn6f-track/target/
 *.pickle
 temp/
 *.cfg
