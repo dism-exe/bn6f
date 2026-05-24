@@ -37,11 +37,37 @@ def die(msg):
     sys.exit(1)
 
 
+_objdump_cache = None
+
+def _objdump_lines():
+    """Return cached objdump -t output (as lines). Keyed by elf mtime
+    in build/objdump_t.txt so cross-invocation calls don't re-shell out."""
+    global _objdump_cache
+    if _objdump_cache is not None:
+        return _objdump_cache
+    import json
+    cache = ROOT / "build/objdump_t.txt"
+    mtime_cache = ROOT / "build/objdump_t.mtime"
+    elf_mtime = ORIG_ELF.stat().st_mtime if ORIG_ELF.exists() else 0
+    if cache.exists() and mtime_cache.exists():
+        try:
+            if float(mtime_cache.read_text()) == elf_mtime:
+                _objdump_cache = cache.read_text().splitlines()
+                return _objdump_cache
+        except ValueError:
+            pass
+    out = subprocess.check_output([str(OBJDUMP), "-t", str(ORIG_ELF)], text=True)
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    cache.write_text(out)
+    mtime_cache.write_text(str(elf_mtime))
+    _objdump_cache = out.splitlines()
+    return _objdump_cache
+
+
 def get_size_and_addr(symbol):
     if not ORIG_ELF.exists():
         die(f"missing {ORIG_ELF.relative_to(ROOT)} — run `make orig` first")
-    out = subprocess.check_output([str(OBJDUMP), "-t", str(ORIG_ELF)], text=True)
-    for line in out.splitlines():
+    for line in _objdump_lines():
         # Format: ADDR FLAGS SECTION SIZE NAME
         parts = line.split()
         if len(parts) >= 6 and parts[-1] == symbol and " F .text" in line:
@@ -172,8 +198,7 @@ def find_pool_start(lines, start_idx, end_idx, pool_label_lines):
 
 def lookup_symbol_addr(name):
     """Look up any symbol's address (global or local) in the .text section."""
-    out = subprocess.check_output([str(OBJDUMP), "-t", str(ORIG_ELF)], text=True)
-    for line in out.splitlines():
+    for line in _objdump_lines():
         parts = line.split()
         if len(parts) >= 2 and parts[-1] == name and ".text" in line:
             return int(parts[0], 16)
@@ -183,10 +208,9 @@ def lookup_symbol_addr(name):
 def pool_offset_from_function_start(symbol, pool_label):
     """Look up the pool label's address in bn6f_orig.elf and return the
     offset from the function's address. Matches local symbols too."""
-    out = subprocess.check_output([str(OBJDUMP), "-t", str(ORIG_ELF)], text=True)
     fn_addr = None
     pool_addr = None
-    for line in out.splitlines():
+    for line in _objdump_lines():
         parts = line.split()
         if len(parts) < 2:
             continue

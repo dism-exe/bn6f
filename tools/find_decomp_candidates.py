@@ -39,7 +39,21 @@ def load_manifest():
 
 
 def load_symbols():
-    """Return dict: symbol -> size_bytes for public .text functions."""
+    """Return dict: symbol -> size_bytes for public .text functions.
+
+    objdump on the 4MB elf is ~150ms; cache by elf mtime so re-runs are
+    instant. Cache invalidates automatically when the elf is rebuilt.
+    """
+    import json, os
+    cache = ROOT / "build/objdump_syms.json"
+    elf_mtime = ORIG_ELF.stat().st_mtime if ORIG_ELF.exists() else 0
+    if cache.exists():
+        try:
+            data = json.loads(cache.read_text())
+            if data.get("mtime") == elf_mtime:
+                return data["syms"]
+        except (json.JSONDecodeError, KeyError):
+            pass
     out = subprocess.check_output([str(OBJDUMP), "-t", str(ORIG_ELF)], text=True)
     syms = {}
     for line in out.splitlines():
@@ -51,6 +65,8 @@ def load_symbols():
         size = int(parts[-2], 16)
         name = parts[-1]
         syms[name] = size
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    cache.write_text(json.dumps({"mtime": elf_mtime, "syms": syms}))
     return syms
 
 

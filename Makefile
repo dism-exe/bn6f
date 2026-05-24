@@ -70,9 +70,28 @@ DECOMP_MANIFEST = tools/decomp_manifest.txt
 DECOMP_SYMS = $(shell awk '!/^[[:space:]]*#/ && NF>0 {print $$1}' $(DECOMP_MANIFEST))
 DECOMP_DEFSYMS = $(foreach s,$(DECOMP_SYMS),--defsym DECOMP_$(s)=1)
 
-decompile: ASFLAGS += $(DECOMP_DEFSYMS)
-decompile: clean-conditional-objs $(C_OFILES) $(OFILES)
-	$(LD) $(LDFLAGS) -o $(ELF) -T ld_script_decompile.ld $(OFILES) $(C_OFILES) $(CLIB) $(LIB)
+# Sink the long --defsym chain into a response file. `arm-none-eabi-as`
+# accepts `@FILE` and reads whitespace-separated args from it, so the
+# (growing-with-manifest) flag list never appears on the command line.
+# Cuts ~5KB per assembler invocation out of `make` output.
+DECOMP_FLAGS_FILE = build/decomp_flags.txt
+
+$(DECOMP_FLAGS_FILE): $(DECOMP_MANIFEST) | build
+	@printf '%s\n' $(DECOMP_DEFSYMS) > $@
+
+build:
+	@mkdir -p $@
+
+# Same trick for the linker side — C_OFILES is a similarly long list
+# that bloats `make decompile` output. ld also accepts @FILE.
+C_OFILES_LIST = build/c_ofiles.txt
+
+$(C_OFILES_LIST): $(C_OFILES) | build
+	@printf '%s\n' $(C_OFILES) > $@
+
+decompile: ASFLAGS += @$(DECOMP_FLAGS_FILE)
+decompile: clean-conditional-objs $(DECOMP_FLAGS_FILE) $(C_OFILES) $(C_OFILES_LIST) $(OFILES)
+	$(LD) $(LDFLAGS) -o $(ELF) -T ld_script_decompile.ld $(OFILES) @$(C_OFILES_LIST) $(CLIB) $(LIB)
 	$(OBJCOPY) -O binary $(ELF) $(ROM)
 
 # Top-level .o files that pull in (via `.include`) any asm/*.s sub-file
