@@ -2860,6 +2860,7 @@ dword_80015CC:
 	.word 0x2000
 	thumb_func_end sub_80015B4
 
+	.ifndef DECOMP_copyToVRAMAndClear_iBGTileIdBlocks_Ptr
 	thumb_func_start copyToVRAMAndClear_iBGTileIdBlocks_Ptr
 copyToVRAMAndClear_iBGTileIdBlocks_Ptr:
 	push {lr}
@@ -2885,6 +2886,12 @@ dword_80015F4:
 fill:
 	.word 0x2FF02FF
 	thumb_func_end copyToVRAMAndClear_iBGTileIdBlocks_Ptr
+	.else
+	thumb_func_start copyToVRAMAndClear_iBGTileIdBlocks_Ptr
+copyToVRAMAndClear_iBGTileIdBlocks_Ptr:
+	decomp_trampoline copyToVRAMAndClear_iBGTileIdBlocks_Ptr_c, 36
+	thumb_func_end copyToVRAMAndClear_iBGTileIdBlocks_Ptr
+	.endif
 
 /// Disabling this causes a lot of glitchy overlayed graphics from logo screen and throughout.
 /// Game remains functional. In the net the background is very glitchy and animating you can't see MegaMan
@@ -2958,6 +2965,7 @@ off_8001728:
 	.word off_8033878 // [Nullable<*const [u8]>; REAL_WORLD_NUM_GROUPS]
 	thumb_func_end map_8001708
 
+	.ifndef DECOMP_render_800172C
 	thumb_func_start render_800172C
 render_800172C:
 	push {r4-r7,lr}
@@ -3001,7 +3009,14 @@ off_8001770:
 off_8001774:
 	.word ColorSpecialEffectsSelection
 	thumb_func_end render_800172C
+	.else
+	thumb_func_start render_800172C
+render_800172C:
+	decomp_trampoline render_800172C_c, 68
+	thumb_func_end render_800172C
+	.endif
 
+	.ifndef DECOMP_SetRenderInfoLCDControl
 	thumb_func_start SetRenderInfoLCDControl
 SetRenderInfoLCDControl: // (a_00: u16) -> ()
 	mov r1, r10
@@ -3009,6 +3024,12 @@ SetRenderInfoLCDControl: // (a_00: u16) -> ()
 	strh r0, [r1,#oRenderInfo_Unk_00]
 	mov pc, lr
 	thumb_func_end SetRenderInfoLCDControl
+	.else
+	thumb_func_start SetRenderInfoLCDControl
+SetRenderInfoLCDControl:
+	decomp_trampoline SetRenderInfoLCDControl_c, 0
+	thumb_func_end SetRenderInfoLCDControl
+	.endif
 
 	thumb_func_start GetRenderInfoLCDControl
 GetRenderInfoLCDControl: // () -> u16

@@ -39,3 +39,6 @@ sprite_resetObjVars_800289C
 CapIncrementGameTimeFrames
 SetEventFlag
 ClearEventFlag
+SetRenderInfoLCDControl
+copyToVRAMAndClear_iBGTileIdBlocks_Ptr
+render_800172C
