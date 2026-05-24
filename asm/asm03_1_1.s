@@ -12136,6 +12136,7 @@ sub_803EF74:
 	.balign 4, 0x00
 	thumb_func_end sub_803EF74
 
+	.ifndef DECOMP_sub_803EF7C
 	thumb_func_start sub_803EF7C
 sub_803EF7C:
 	ldr r0, off_803EF8C // =eLinkState
@@ -12143,6 +12144,12 @@ sub_803EF7C:
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end sub_803EF7C
+	.else
+	thumb_func_start sub_803EF7C
+sub_803EF7C:
+	decomp_trampoline sub_803EF7C_c, 0
+	thumb_func_end sub_803EF7C
+	.endif
 
 	thumb_local_start
 sub_803EF84:

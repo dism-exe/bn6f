@@ -8031,6 +8031,7 @@ off_8006FA8:
 	.word dword_2000060
 	thumb_func_end encryption_zenny_8006f78
 
+	.ifndef DECOMP_encryption_bugfrags_8006fac
 	thumb_func_start encryption_bugfrags_8006fac
 encryption_bugfrags_8006fac:
 	push {r0-r7,lr}
@@ -8053,6 +8054,12 @@ loc_8006FC0:
 	str r0, [r1]
 	pop {r0-r7,pc}
 	thumb_func_end encryption_bugfrags_8006fac
+	.else
+	thumb_func_start encryption_bugfrags_8006fac
+encryption_bugfrags_8006fac:
+	decomp_trampoline encryption_bugfrags_8006fac_c, 28
+	thumb_func_end encryption_bugfrags_8006fac
+	.endif
 
 	thumb_func_start encryption_bugfrags_8006fd0
 encryption_bugfrags_8006fd0:

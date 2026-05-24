@@ -77,3 +77,8 @@ sub_80015B4
 clearChatboxAndEvent
 sub_802F0C4
 sub_803DE88
+sub_803EF7C
+sub_80467D8
+sub_804657C
+sub_8049CF8
+encryption_bugfrags_8006fac

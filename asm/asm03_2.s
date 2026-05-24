@@ -693,6 +693,7 @@ off_804646C:
 	thumb_func_end sub_8046450
 
 // () -> void
+	.ifndef DECOMP_sub_804657C
 	thumb_func_start sub_804657C
 sub_804657C:
 	push {r4-r7,lr}
@@ -716,6 +717,12 @@ loc_804658A:
 off_804659C:
 	.word 0x528
 	thumb_func_end sub_804657C
+	.else
+	thumb_func_start sub_804657C
+sub_804657C:
+	decomp_trampoline sub_804657C_c, 28
+	thumb_func_end sub_804657C
+	.endif
 
 // (void *a1) -> void
 	thumb_func_start sub_80465A0
@@ -1043,6 +1050,7 @@ off_804679C:
 	.word sub_811E9A0+1
 	thumb_func_end sub_80466D8
 
+	.ifndef DECOMP_sub_80467D8
 	thumb_func_start sub_80467D8
 sub_80467D8:
 	push {r4-r7,lr}
@@ -1066,6 +1074,12 @@ loc_80467E6:
 off_80467F8:
 	.word 0x1B8
 	thumb_func_end sub_80467D8
+	.else
+	thumb_func_start sub_80467D8
+sub_80467D8:
+	decomp_trampoline sub_80467D8_c, 28
+	thumb_func_end sub_80467D8
+	.endif
 
 	thumb_func_start sub_80467FC
 sub_80467FC:
@@ -6114,6 +6128,7 @@ off_8049CF4:
 	.word word_2001800
 	thumb_func_end sub_8049CBC
 
+	.ifndef DECOMP_sub_8049CF8
 	thumb_func_start sub_8049CF8
 sub_8049CF8:
 	push {r4-r7,lr}
@@ -6149,6 +6164,12 @@ sub_8049CF8:
 	strb r1, [r0,#0x14] // (byte_200183C - 0x2001828)
 	pop {r4-r7,pc}
 	thumb_func_end sub_8049CF8
+	.else
+	thumb_func_start sub_8049CF8
+sub_8049CF8:
+	decomp_trampoline sub_8049CF8_c, 58
+	thumb_func_end sub_8049CF8
+	.endif
 
 	thumb_local_start
 sub_8049D3A:
