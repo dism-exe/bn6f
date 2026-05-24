@@ -181,3 +181,5 @@ sub_803F4EC
 sub_800286C
 sub_803E928
 createOWObjectInteractionArea_80037ac
+SpawnOverworldNPCObject
+SpawnOWPlayerObject

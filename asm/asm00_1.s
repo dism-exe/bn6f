@@ -1712,6 +1712,7 @@ off_8003B48:
 	.word owPlayer_main+1
 	thumb_func_end sub_8003B24
 
+	.ifndef DECOMP_SpawnOWPlayerObject
 	thumb_func_start SpawnOWPlayerObject
 SpawnOWPlayerObject:
 	push {r0-r4,lr}
@@ -1747,6 +1748,12 @@ loc_8003B82:
 	mov r5, #0
 	pop {r0-r4,pc}
 	thumb_func_end SpawnOWPlayerObject
+	.else
+	thumb_func_start SpawnOWPlayerObject
+SpawnOWPlayerObject:
+	decomp_trampoline_r3safe SpawnOWPlayerObject_c, 42
+	thumb_func_end SpawnOWPlayerObject
+	.endif
 
 	thumb_func_start FreeOWPlayerObject
 FreeOWPlayerObject:
@@ -2698,6 +2705,7 @@ off_80045BC:
 	.word npc_dispatch_809E570+1 // (self: * OverworldNPCObject $r5) -> ()
 	thumb_func_end dead_800459A
 
+	.ifndef DECOMP_SpawnOverworldNPCObject
 	thumb_func_start SpawnOverworldNPCObject
 SpawnOverworldNPCObject:
 	push {r0-r4,lr}
@@ -2737,6 +2745,12 @@ loc_80045FE:
 	mov r5, #0
 	pop {r0-r4,pc}
 	thumb_func_end SpawnOverworldNPCObject
+	.else
+	thumb_func_start SpawnOverworldNPCObject
+SpawnOverworldNPCObject:
+	decomp_trampoline_r3safe SpawnOverworldNPCObject_c, 50
+	thumb_func_end SpawnOverworldNPCObject
+	.endif
 
 	thumb_func_start FreeOverworldNPCObject
 FreeOverworldNPCObject:
