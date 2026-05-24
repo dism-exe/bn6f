@@ -28,6 +28,7 @@ IsButtonPressed
 IsCurSubsystemInUse
 IsCutsceneScriptNonNull
 IsNotSlipRunningAndNotInCutscene
+IsScreenFadeActive
 PlayMapMusic
 PlayMusic
 PlaySoundEffect

@@ -6897,13 +6897,26 @@ IsScreenFadeActive:
 	thumb_func_start isScreenFadeActive_80062FC
 isScreenFadeActive_80062FC:
 	mov r3, #oScreenFade_Size
+	.ifndef DECOMP_IsScreenFadeActive
 IsScreenFadeActive_common:
-	ldr r0, off_80063BC // =eScreenFade 
+	ldr r0, off_80063BC // =eScreenFade
 	add r0, r0, r3
 	ldrb r0, [r0,#oScreenFade_Unk_03] // (byte_200A443 - 0x200a440)
 	mov r1, #1
 	cmp r0, r1
 	mov pc, lr
+	.else
+	// Custom 12-byte inline trampoline: standard `decomp_trampoline` would
+	// clobber r3 (which the prelude just set), so park r3 in r12 first.
+	// r12 is APCS scratch and not in the harness's must-match set.
+	// IsScreenFadeActive_c reads it back and applies the `cmp r0, #1`
+	// flag-set that callers' `beq`/`bne` depend on.
+IsScreenFadeActive_common:
+	mov r12, r3
+	ldr r3, =IsScreenFadeActive_c + 1
+	bx r3
+	.pool
+	.endif
 	thumb_func_end IsScreenFadeActive
 	thumb_func_end isScreenFadeActive_80062FC
 
