@@ -315,6 +315,7 @@ off_8002868:
 	.word byte_3001550
 	thumb_func_end sub_8002818
 
+	.ifndef DECOMP_sub_800286C
 	thumb_func_start sub_800286C
 sub_800286C:
 	ldr r0, off_80028CC // =dword_200F340
@@ -322,6 +323,12 @@ sub_800286C:
 	str r1, [r0]
 	mov pc, lr
 	thumb_func_end sub_800286C
+	.else
+	thumb_func_start sub_800286C
+sub_800286C:
+	decomp_trampoline sub_800286C_c, 0
+	thumb_func_end sub_800286C
+	.endif
 
 	.ifndef DECOMP_sub_8002874
 	thumb_func_start sub_8002874

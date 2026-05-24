@@ -32523,6 +32523,7 @@ byte_811EBDA:
 	.byte 0x4, 0x4, 0x4, 0x4, 0x4, 0x0
 	thumb_func_end sub_811EA28
 
+	.ifndef DECOMP_TestPETMenuDataFlag
 	thumb_func_start TestPETMenuDataFlag
 TestPETMenuDataFlag:
 	ldr r2, off_811EC4C // =ePETMenuData
@@ -32530,6 +32531,12 @@ TestPETMenuDataFlag:
 	tst r1, r0
 	mov pc, lr
 	thumb_func_end TestPETMenuDataFlag
+	.else
+	thumb_func_start TestPETMenuDataFlag
+TestPETMenuDataFlag:
+	decomp_trampoline TestPETMenuDataFlag_c, 0
+	thumb_func_end TestPETMenuDataFlag
+	.endif
 
 	thumb_local_start
 SetPETMenuDataFlag:

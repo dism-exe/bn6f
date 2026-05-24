@@ -6845,6 +6845,7 @@ sub_803C3D8:
 	mov pc, lr
 	thumb_func_end sub_803C3D8
 
+	.ifndef DECOMP_sub_803C3E0
 	thumb_func_start sub_803C3E0
 sub_803C3E0:
 	ldr r0, off_803C430 // =word_2006770
@@ -6852,6 +6853,12 @@ sub_803C3E0:
 	tst r0, r0
 	mov pc, lr
 	thumb_func_end sub_803C3E0
+	.else
+	thumb_func_start sub_803C3E0
+sub_803C3E0:
+	decomp_trampoline sub_803C3E0_c, 0
+	thumb_func_end sub_803C3E0
+	.endif
 
 	thumb_local_start
 sub_803C3E8:
@@ -11199,6 +11206,7 @@ sub_803E928:
 	mov pc, lr
 	thumb_func_end sub_803E928
 
+	.ifndef DECOMP_startScreen_TstZero
 	thumb_func_start startScreen_TstZero
 startScreen_TstZero: // () -> !zf
 	mov r0, #0
@@ -11206,6 +11214,12 @@ startScreen_TstZero: // () -> !zf
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end startScreen_TstZero
+	.else
+	thumb_func_start startScreen_TstZero
+startScreen_TstZero:
+	decomp_trampoline startScreen_TstZero_c, 0
+	thumb_func_end startScreen_TstZero
+	.endif
 
 /// Disabling this causes "Press Start" to disappear
 	thumb_func_start startScreen_AnimatePressStart_803E938
@@ -13011,6 +13025,7 @@ loc_803F4E8:
 	pop {pc}
 	thumb_func_end sub_803F4D4
 
+	.ifndef DECOMP_sub_803F4EC
 	thumb_func_start sub_803F4EC
 sub_803F4EC:
 	push {lr}
@@ -13018,6 +13033,12 @@ sub_803F4EC:
 	strb r0, [r1]
 	pop {pc}
 	thumb_func_end sub_803F4EC
+	.else
+	thumb_func_start sub_803F4EC
+sub_803F4EC:
+	decomp_trampoline sub_803F4EC_c, 0
+	thumb_func_end sub_803F4EC
+	.endif
 
 	thumb_local_start
 sub_803F4F4:

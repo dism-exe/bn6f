@@ -174,3 +174,8 @@ sub_813B9B4
 isSameSubsystem_800A732
 CheckKeyItem
 test0x200bc50_0x5_813D60C
+TestPETMenuDataFlag
+sub_803C3E0
+startScreen_TstZero
+sub_803F4EC
+sub_800286C
