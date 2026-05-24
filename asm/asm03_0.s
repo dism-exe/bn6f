@@ -18863,6 +18863,7 @@ off_802F2C4:
 	.word 0x1CA0
 	thumb_func_end sub_802F270
 
+	.ifndef DECOMP_sub_802F2C8
 	thumb_func_start sub_802F2C8
 sub_802F2C8:
 	push {lr}
@@ -18974,6 +18975,110 @@ off_802F4E0:
 	gfx_anim_loop
 
 	thumb_func_end sub_802F2C8
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_802F2C8
+sub_802F2C8:
+	decomp_trampoline sub_802F2C8_c, 12
+	.balign 4, 0
+off_802F2DC:
+	.word byte_2006530
+off_802F2E0:
+	.word dword_2001140
+byte_802F2E4:
+	gfx_anim_manual_pal_transform transform_type=0x00000004 ptr5=iPalette3001B60 index=0x00 num_pals=0x0E
+	gfx_anim_data data=0x80000842 delay=0x00000001
+
+byte_802F2F8:
+	gfx_anim_data data=0x80001084 delay=0x00000001
+	gfx_anim_data data=0x800018C6 delay=0x00000001
+	gfx_anim_data data=0x80002108 delay=0x00000001
+	gfx_anim_data data=0x8000294A delay=0x00000001
+	gfx_anim_data data=0x8000318C delay=0x00000001
+	gfx_anim_data data=0x800039CE delay=0x00000001
+	gfx_anim_data data=0x80004210 delay=0x00000001
+	gfx_anim_end
+
+dword_802F334:
+	gfx_anim_manual_pal_transform transform_type=0x00000004 ptr5=iPallete3001750 index=0x01 num_pals=0x01
+	gfx_anim_data data=0x80000842 delay=0x00000001
+	gfx_anim_jump dest=byte_802F2F8
+
+off_802F350:
+	gfx_anim_pal_copy dest=unk_3001A40 size=0x00000020 index=0x04
+	gfx_anim_data_ptr ptr=byte_87F93B4 delay=0x00000024
+	gfx_anim_data_ptr ptr=byte_87F93D4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F93F4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9414 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9434 delay=0x00000024
+	gfx_anim_data_ptr ptr=byte_87F9414 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F93F4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F93D4 delay=0x00000007
+	gfx_anim_loop
+
+off_802F3A0:
+	gfx_anim_pal_copy dest=unk_3001A60 size=0x00000020 index=0x05
+	gfx_anim_data_ptr ptr=byte_87F9454 delay=0x00000024
+	gfx_anim_data_ptr ptr=byte_87F9474 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9494 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F94B4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F94D4 delay=0x00000024
+	gfx_anim_data_ptr ptr=byte_87F94B4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9494 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9474 delay=0x00000007
+	gfx_anim_loop
+
+off_802F3F0:
+	gfx_anim_pal_copy dest=unk_3001A80 size=0x00000020 index=0x06
+	gfx_anim_data_ptr ptr=byte_87F94F4 delay=0x00000024
+	gfx_anim_data_ptr ptr=byte_87F9514 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9534 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9554 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9574 delay=0x00000024
+	gfx_anim_data_ptr ptr=byte_87F9554 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9534 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9514 delay=0x00000007
+	gfx_anim_loop
+
+off_802F440:
+	gfx_anim_pal_copy dest=unk_3001AA0 size=0x00000020 index=0x07
+	gfx_anim_data_ptr ptr=byte_87F9594 delay=0x00000024
+	gfx_anim_data_ptr ptr=byte_87F95B4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F95D4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F95F4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9614 delay=0x00000024
+	gfx_anim_data_ptr ptr=byte_87F95F4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F95D4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F95B4 delay=0x00000007
+	gfx_anim_loop
+
+off_802F490:
+	gfx_anim_pal_copy dest=byte_3001B00 size=0x00000020 index=0x08
+	gfx_anim_data_ptr ptr=byte_87F96D4 delay=0x00000024
+	gfx_anim_data_ptr ptr=byte_87F96F4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9714 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9734 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9754 delay=0x00000024
+	gfx_anim_data_ptr ptr=byte_87F9734 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9714 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F96F4 delay=0x00000007
+	gfx_anim_loop
+
+off_802F4E0:
+	gfx_anim_pal_copy dest=unk_3001B20 size=0x00000020 index=0x09
+	gfx_anim_data_ptr ptr=byte_87F9774 delay=0x00000024
+	gfx_anim_data_ptr ptr=byte_87F9794 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F97B4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F97D4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F97F4 delay=0x00000024
+	gfx_anim_data_ptr ptr=byte_87F97D4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F97B4 delay=0x00000007
+	gfx_anim_data_ptr ptr=byte_87F9794 delay=0x00000007
+	gfx_anim_loop
+
+	thumb_func_end sub_802F2C8
+	.endif
 
 // Start Module StartScreen_
 
