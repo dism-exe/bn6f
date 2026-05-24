@@ -33967,6 +33967,7 @@ JumpTable811F7A0:
 	.word NULL
 	thumb_func_end SubMenuControl
 
+	.ifndef DECOMP_IsButtonPressed
 	thumb_func_start IsButtonPressed
 // (joypad_enum_t key) -> !zf
 IsButtonPressed:
@@ -33977,6 +33978,12 @@ IsButtonPressed:
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end IsButtonPressed
+	.else
+	thumb_func_start IsButtonPressed
+IsButtonPressed:
+	decomp_trampoline IsButtonPressed_c, 4
+	thumb_func_end IsButtonPressed
+	.endif
 
 	thumb_func_start sub_811F7F8
 sub_811F7F8:

@@ -2648,6 +2648,7 @@ MakeOWPlayerInvisible:
 	mov pc, lr
 	thumb_func_end MakeOWPlayerInvisible
 
+	.ifndef DECOMP_sub_809E462
 	thumb_func_start sub_809E462
 sub_809E462:
 	push {lr}
@@ -2657,6 +2658,12 @@ sub_809E462:
 	tst r0, r0
 	pop {pc}
 	thumb_func_end sub_809E462
+	.else
+	thumb_func_start sub_809E462
+sub_809E462:
+	decomp_trampoline sub_809E462_c, 2
+	thumb_func_end sub_809E462
+	.endif
 
 	thumb_local_start
 sub_809E46E:

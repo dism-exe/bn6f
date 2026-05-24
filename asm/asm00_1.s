@@ -16031,6 +16031,7 @@ getBattleSettingsFromList1: // (int battleSettingsIdx) -> BattleSettings*
 	mov pc, lr
 	thumb_func_end getBattleSettingsFromList1
 
+	.ifndef DECOMP_isSameSubsystem_800A732
 	thumb_func_start isSameSubsystem_800A732
 isSameSubsystem_800A732: // () -> !zf
 	push {r4,lr}
@@ -16051,6 +16052,12 @@ loc_800A748:
 off_800A750:
 	.word eStruct203F7D8
 	thumb_func_end isSameSubsystem_800A732
+	.else
+	thumb_func_start isSameSubsystem_800A732
+isSameSubsystem_800A732:
+	decomp_trampoline isSameSubsystem_800A732_c, 24
+	thumb_func_end isSameSubsystem_800A732
+	.endif
 
 	thumb_local_start
 sub_800A754:

@@ -10500,6 +10500,7 @@ chatbox_clear_eFlags2009F38:
 	.endif
 
 
+	.ifndef DECOMP_chatbox_mask_eFlags2009F38
 	thumb_func_start chatbox_mask_eFlags2009F38
 chatbox_mask_eFlags2009F38: // (int flag) -> int
 	push {r1}
@@ -10511,6 +10512,16 @@ chatbox_mask_eFlags2009F38: // (int flag) -> int
 off_8045F48:
 	.word eFlags2009F38
 	thumb_func_end chatbox_mask_eFlags2009F38
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start chatbox_mask_eFlags2009F38
+chatbox_mask_eFlags2009F38:
+	decomp_trampoline chatbox_mask_eFlags2009F38_c, 4
+off_8045F48:
+	.word eFlags2009F38
+	thumb_func_end chatbox_mask_eFlags2009F38
+	.endif
 
 
 	thumb_func_start chatbox_8045F4C

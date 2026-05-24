@@ -18527,6 +18527,7 @@ TestEventFlagFromImmediate: // (flag: u16) -> !zf
 /* (r0:u16 flagToTest) -> !zf
    clobbers: r0,r1,r3
    ignores: r2,r4-r9,r11,r12 */
+	.ifndef DECOMP_TestEventFlag
 	thumb_func_start TestEventFlag
 TestEventFlag: // (flag: u16) -> !zf
 	mov r3, r10
@@ -18549,6 +18550,12 @@ TestEventFlag: // (flag: u16) -> !zf
 	tst r0, r1
 	mov pc, lr
 	thumb_func_end TestEventFlag
+	.else
+	thumb_func_start TestEventFlag
+TestEventFlag:
+	decomp_trampoline TestEventFlag_c, 14
+	thumb_func_end TestEventFlag
+	.endif
 
 /* (r0:u8 flagUpper, r1:u8 flagLower, r2:uint numEntries) -> void
    preserves: r4,r5,lr

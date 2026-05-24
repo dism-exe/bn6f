@@ -8382,6 +8382,7 @@ loc_803CE20:
 	.balign 4, 0x00
 	thumb_func_end TakeItem
 
+	.ifndef DECOMP_CheckKeyItem
 	thumb_func_start CheckKeyItem
 CheckKeyItem:
 	push {lr}
@@ -8399,6 +8400,12 @@ loc_803CE3E:
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end CheckKeyItem
+	.else
+	thumb_func_start CheckKeyItem
+CheckKeyItem:
+	decomp_trampoline CheckKeyItem_c, 20
+	thumb_func_end CheckKeyItem
+	.endif
 
 	thumb_func_start sub_803CE44
 sub_803CE44:
@@ -13058,6 +13065,7 @@ off_803F520:
 	.word 0x78
 	thumb_func_end sub_803F50C
 
+	.ifndef DECOMP_notZero_eByte200AD04
 	thumb_func_start notZero_eByte200AD04
 notZero_eByte200AD04:
 	push {lr}
@@ -13067,6 +13075,12 @@ notZero_eByte200AD04:
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end notZero_eByte200AD04
+	.else
+	thumb_func_start notZero_eByte200AD04
+notZero_eByte200AD04:
+	decomp_trampoline notZero_eByte200AD04_c, 4
+	thumb_func_end notZero_eByte200AD04
+	.endif
 
 	thumb_func_start sub_803F530
 sub_803F530:

@@ -2548,6 +2548,7 @@ clearCutsceneScriptPosIfMagicValue0x1_8036F24:
 	thumb_func_end clearCutsceneScriptPosIfMagicValue0x1_8036F24
 	.endif
 
+	.ifndef DECOMP_IsCutsceneScriptNonNull
 	thumb_func_start IsCutsceneScriptNonNull
 IsCutsceneScriptNonNull: // () -> !zf
 	mov r0, r10
@@ -2556,6 +2557,12 @@ IsCutsceneScriptNonNull: // () -> !zf
 	tst r0, r0
 	mov pc, lr
 	thumb_func_end IsCutsceneScriptNonNull
+	.else
+	thumb_func_start IsCutsceneScriptNonNull
+IsCutsceneScriptNonNull:
+	decomp_trampoline IsCutsceneScriptNonNull_c, 0
+	thumb_func_end IsCutsceneScriptNonNull
+	.endif
 
 // () -> zf
 	thumb_func_start cutscene_checkOriginalCutsceneScriptPos_8036F40

@@ -164,3 +164,13 @@ sub_8035738
 map_8001708
 reqBBS_addBBSMessage_813e5dc
 sub_813B9E0
+IsCutsceneScriptNonNull
+chatbox_mask_eFlags2009F38
+sub_809E462
+notZero_eByte200AD04
+IsButtonPressed
+TestEventFlag
+sub_813B9B4
+isSameSubsystem_800A732
+CheckKeyItem
+test0x200bc50_0x5_813D60C

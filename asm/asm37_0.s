@@ -384,6 +384,7 @@ loc_813B9A0:
 	.balign 4, 0x00
 	thumb_func_end sub_813B950
 
+	.ifndef DECOMP_sub_813B9B4
 	thumb_func_start sub_813B9B4
 sub_813B9B4:
 	mov r3, r10
@@ -395,6 +396,12 @@ sub_813B9B4:
 	tst r0, r0
 	mov pc, lr
 	thumb_func_end sub_813B9B4
+	.else
+	thumb_func_start sub_813B9B4
+sub_813B9B4:
+	decomp_trampoline sub_813B9B4_c, 8
+	thumb_func_end sub_813B9B4
+	.endif
 
 	thumb_func_start sub_813B9C4
 sub_813B9C4:
@@ -3820,6 +3827,7 @@ dead_813D600::
 off_813D608:
 	.word byte_200AF80
 
+	.ifndef DECOMP_test0x200bc50_0x5_813D60C
 	thumb_func_start test0x200bc50_0x5_813D60C
 test0x200bc50_0x5_813D60C:
 	push {lr}
@@ -3831,6 +3839,12 @@ test0x200bc50_0x5_813D60C:
 off_813D618:
 	.word eS200BC50
 	thumb_func_end test0x200bc50_0x5_813D60C
+	.else
+	thumb_func_start test0x200bc50_0x5_813D60C
+test0x200bc50_0x5_813D60C:
+	decomp_trampoline test0x200bc50_0x5_813D60C_c, 8
+	thumb_func_end test0x200bc50_0x5_813D60C
+	.endif
 
 	push {lr}
 	ldr r1, off_813D628 // =eS200BC50 
