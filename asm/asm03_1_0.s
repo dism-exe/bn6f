@@ -713,7 +713,8 @@ locret_8033D9E:
 	pop {pc}
 	thumb_func_end sub_8033D88
 
-	thumb_local_start
+	.ifndef DECOMP_gfxTransfer_8033DA0
+	thumb_func_start gfxTransfer_8033DA0
 gfxTransfer_8033DA0: // (a0: u32?) -> ()
 	push {r4-r7,lr}
 	mov r6, r0
@@ -743,7 +744,7 @@ loc_8033DBC:
 	.balign 4, 0
 off_8033DD0:
 	.word off_8033DD4
-off_8033DD4:
+off_8033DD4::
 	.word byte_86C18A0
 	.word byte_86C18E0
 	.word byte_86C1920
@@ -760,6 +761,30 @@ off_8033DD4:
 off_8033E08:
 	.word byte_30016D0
 	thumb_func_end gfxTransfer_8033DA0
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start gfxTransfer_8033DA0
+gfxTransfer_8033DA0:
+	decomp_trampoline gfxTransfer_8033DA0_c, 44
+off_8033DD4::
+	.word byte_86C18A0
+	.word byte_86C18E0
+	.word byte_86C1920
+	.word byte_86C1960
+	.word byte_86C19A0
+	.word byte_86C19E0
+	.word byte_86C18E0
+	.word byte_86C1920
+	.word byte_86C1960
+	.word byte_86C19A0
+	.word byte_86C19E0
+	.word byte_86C1A60
+	.word byte_86C1A20
+off_8033E08:
+	.word byte_30016D0
+	thumb_func_end gfxTransfer_8033DA0
+	.endif
 
 	thumb_local_start
 sub_8033E0C:

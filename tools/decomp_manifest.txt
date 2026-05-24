@@ -196,3 +196,4 @@ init_8013B4E
 sub_80133EC
 initMapTilesState_803037c
 sprite_initialize
+gfxTransfer_8033DA0
