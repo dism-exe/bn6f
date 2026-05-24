@@ -123,3 +123,7 @@ copy_8002668
 sub_802E240
 owPlayer_setS2000aa0_param0x0to0x2_809e2c8
 owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2
+sub_8005F6C
+sub_80015FC
+sub_8004702
+sub_803DCE8

@@ -2905,6 +2905,7 @@ sub_80046F8:
 	pop {pc}
 	thumb_func_end sub_80046F8
 
+	.ifndef DECOMP_sub_8004702
 	thumb_func_start sub_8004702
 sub_8004702:
 	mov r0, #0
@@ -2975,6 +2976,69 @@ off_8004724:
 	.word sub_80AA2D8+1
 	.word sub_80AA374+1
 	thumb_func_end sub_8004702
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_8004702
+sub_8004702:
+	decomp_trampoline sub_8004702_c, 12
+	.balign 4, 0
+off_8004718:
+	.word eActiveOverworldNPCObjectsBitfield
+off_800471C:
+	.word eOverworldNPCObjects
+off_8004720:
+	.word byte_2006530
+off_8004724:
+	.word ho_80A4984+1
+	.word sub_80A4A98+1
+	.word sub_80A4BDC+1
+	.word sub_80A51C4+1
+	.word sub_80A5428+1
+	.word sub_80A54F0+1
+	.word sub_80A57AC+1
+	.word sub_80A5AD4+1
+	.word sub_80A6A16+1
+	.word sub_80A6E98+1
+	.word sub_80A72B4+1
+	.word sub_80A77A8+1
+	.word sub_80A781C+1
+	.word sub_80A78B8+1
+	.word sub_80A7C84+1
+	.word sub_80A7D90+1
+	.word sub_80A8208+1
+	.word sub_80A8394+1
+	.word sub_80A8654+1
+	.word sub_80A8728+1
+	.word sub_80A87F0+1
+	.word 0x0
+	.word sub_80A8870+1
+	.word sub_80A89DC+1
+	.word sub_80A8AB4+1
+	.word 0x0
+	.word sub_80A8E74+1
+	.word sub_80A92B8+1
+	.word sub_80A9430+1
+	.word sub_80A9658+1
+	.word sub_80A9824+1
+	.word sub_80A98D4+1
+	.word sub_80A9A0C+1
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word sub_80A9B70+1
+	.word 0x0
+	.word sub_80A9D10+1
+	.word sub_80A9ECC+1
+	.word sub_80A9F58+1
+	.word sub_80AA058+1
+	.word sub_80AA140+1
+	.word sub_80AA1E0+1
+	.word sub_80AA2D8+1
+	.word sub_80AA374+1
+	thumb_func_end sub_8004702
+	.endif
 
 	thumb_func_start SpawnOverworldMapObject
 SpawnOverworldMapObject:
@@ -6017,6 +6081,7 @@ sub_8005F40:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8005F40
 
+	.ifndef DECOMP_sub_8005F6C
 	thumb_func_start sub_8005F6C
 sub_8005F6C:
 	push {r4-r7,lr}
@@ -6024,6 +6089,12 @@ sub_8005F6C:
 	bl cleareMemory_802FF2C
 	pop {r4-r7,pc}
 	thumb_func_end sub_8005F6C
+	.else
+	thumb_func_start sub_8005F6C
+sub_8005F6C:
+	decomp_trampoline sub_8005F6C_c, 4
+	thumb_func_end sub_8005F6C
+	.endif
 
 	thumb_local_start
 sub_8005F78:

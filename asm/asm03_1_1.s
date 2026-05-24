@@ -9311,7 +9311,7 @@ off_803D330:
 	.byte 0x0, 0x7, 0x0, 0x8, 0x0, 0x9, 0x0, 0xA, 0x0, 0xB, 0x0, 0xC, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-off_803DC78:
+off_803DC78::
 	.word eStruct2036780
 	.word unk_20399F0
 	.word unk_2039A00
@@ -9344,6 +9344,7 @@ off_803DCE4:
 	.word eLinkState // eLinkState
 	thumb_func_end sub_803DCD8
 
+	.ifndef DECOMP_sub_803DCE8
 	thumb_func_start sub_803DCE8
 sub_803DCE8:
 	push {r4-r7,lr}
@@ -9381,6 +9382,12 @@ sub_803DCE8:
 	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {r4-r7,pc}
 	thumb_func_end sub_803DCE8
+	.else
+	thumb_func_start sub_803DCE8
+sub_803DCE8:
+	decomp_trampoline_r3safe sub_803DCE8_c, 56
+	thumb_func_end sub_803DCE8
+	.endif
 
 	thumb_func_start sub_803DD30
 sub_803DD30:
