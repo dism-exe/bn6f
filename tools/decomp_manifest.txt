@@ -98,3 +98,16 @@ zeroFill_e2002230
 zeroFill_e2004348
 zeroFill_e20097A0
 cleareMemory_802FF2C
+IsCurSubsystemInUse
+sub_8137700
+sub_8006910
+zeroFill_813D960
+logoScreen_init_803D1A8
+split9BitsFromBitfield_8021AE0
+sub_811EC00
+getOffsetToQuantityOfChipCodeMaybe_8021c7c
+initGameProgressBuffer_803532c
+sub_80AA004
+sub_80AA104
+sub_8021D36
+sub_8000E3A

@@ -8903,6 +8903,7 @@ logoScreen_init_803D1A8: // () -> ()
 call_803D1AC:
 	mov r0, #0
 
+	.ifndef DECOMP_logoScreen_init_803D1A8
 loc_803D1AE:
 	push {r4-r7,lr}
 
@@ -8927,6 +8928,10 @@ loc_803D1AE:
 	strb r0, [r1]
 
 	pop {r4-r7,pc}
+	.else
+loc_803D1AE:
+	decomp_trampoline logoScreen_init_803D1A8_c, 18
+	.endif
 	thumb_func_end logoScreen_init_803D1A8
 
 	thumb_func_start logoScreen_dispatch_803D1CA

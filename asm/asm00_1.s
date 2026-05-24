@@ -7021,6 +7021,7 @@ off_800690C:
 	.word 0x500
 	thumb_func_end sub_80068EC
 
+	.ifndef DECOMP_sub_8006910
 	thumb_func_start sub_8006910
 sub_8006910:
 	push {lr}
@@ -7032,6 +7033,17 @@ sub_8006910:
 off_800691C:
 	.word byte_20081B0
 	thumb_func_end sub_8006910
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_8006910
+sub_8006910:
+	decomp_trampoline sub_8006910_c, 4
+	.balign 4, 0x00
+off_800691C:
+	.word byte_20081B0
+	thumb_func_end sub_8006910
+	.endif
 
 	thumb_func_start sub_8006920
 sub_8006920:
@@ -16008,6 +16020,7 @@ loc_800A7C4:
 	.byte 0, 0
 	thumb_func_end sub_800A7A6
 
+	.ifndef DECOMP_IsCurSubsystemInUse
 	thumb_func_start IsCurSubsystemInUse
 IsCurSubsystemInUse: // () -> (bool, !zf)
 	mov r0, #FALSE
@@ -16022,6 +16035,12 @@ loc_800A7DE:
 	tst r0, r0
 	mov pc, lr
 	thumb_func_end IsCurSubsystemInUse
+	.else
+	thumb_func_start IsCurSubsystemInUse
+IsCurSubsystemInUse:
+	decomp_trampoline IsCurSubsystemInUse_c, 10
+	thumb_func_end IsCurSubsystemInUse
+	.endif
 
 	thumb_func_start sub_800A7E2
 sub_800A7E2:

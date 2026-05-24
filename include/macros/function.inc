@@ -56,3 +56,10 @@
 	.endr
 	.endif
 	.endm
+
+	// For ASM functions whose callers branch on the flag state right
+	// after `bl <fn>`, the regular 8-byte trampoline still works —
+	// it just `bx`'s to the C side. The flag-preserving logic lives
+	// inside the C target (a naked wrapper in src/c/*_flag.c that
+	// does `bl impl; tst r0, r0; bx lr`). See src/c/types.h's
+	// DECOMP_FLAG_WRAPPER macro.

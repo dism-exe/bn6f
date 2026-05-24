@@ -2864,6 +2864,7 @@ off_8035328:
 	.word byte_80990B8 // CutsceneScript
 	thumb_func_end ghostNaviCheck_8035274
 
+	.ifndef DECOMP_initGameProgressBuffer_803532c
 	thumb_func_start initGameProgressBuffer_803532c
 initGameProgressBuffer_803532c:
 	push {r4-r7,lr}
@@ -2888,6 +2889,12 @@ loc_8035334:
 off_8035350:
 	.word byte_8037694
 	thumb_func_end initGameProgressBuffer_803532c
+	.else
+	thumb_func_start initGameProgressBuffer_803532c
+initGameProgressBuffer_803532c:
+	decomp_trampoline initGameProgressBuffer_803532c_c, 32
+	thumb_func_end initGameProgressBuffer_803532c
+	.endif
 
 	thumb_func_start loadGameProgressFromGameProgressBuffer_8035354
 loadGameProgressFromGameProgressBuffer_8035354:

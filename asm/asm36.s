@@ -15012,6 +15012,7 @@ sub_81376E8:
 	thumb_func_end sub_81376E8
 	.endif
 
+	.ifndef DECOMP_sub_8137700
 	thumb_func_start sub_8137700
 sub_8137700:
 	ldr r1, off_8137710 // =byte_20065B4 
@@ -15027,6 +15028,18 @@ off_8137710:
 off_8137714:
 	.word 0x140
 	thumb_func_end sub_8137700
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_8137700
+sub_8137700:
+	decomp_trampoline sub_8137700_c, 8
+off_8137710:
+	.word byte_20065B4
+off_8137714:
+	.word 0x140
+	thumb_func_end sub_8137700
+	.endif
 
 	thumb_func_start GiveFolder
 // r0 0X: folder to give

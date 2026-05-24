@@ -4321,6 +4321,7 @@ loc_813D95A:
 	.byte 0, 0
 	thumb_func_end sub_813D94C
 
+	.ifndef DECOMP_zeroFill_813D960
 	thumb_func_start zeroFill_813D960
 zeroFill_813D960:
 	push {r4,r7,lr}
@@ -4339,6 +4340,17 @@ zeroFill_813D960:
 off_813D974:
 	.word eS200BC50
 	thumb_func_end zeroFill_813D960
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start zeroFill_813D960
+zeroFill_813D960:
+	decomp_trampoline zeroFill_813D960_c, 12
+	.balign 4, 0x00
+off_813D974:
+	.word eS200BC50
+	thumb_func_end zeroFill_813D960
+	.endif
 
 	thumb_func_start sub_813D978
 sub_813D978:

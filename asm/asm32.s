@@ -32551,6 +32551,7 @@ ClearPETMenuDataFlag:
 	.byte 0, 0
 	thumb_func_end ClearPETMenuDataFlag
 
+	.ifndef DECOMP_sub_811EC00
 	thumb_func_start sub_811EC00
 sub_811EC00:
 	push {lr}
@@ -32563,6 +32564,12 @@ sub_811EC00:
 	pop {pc}
 	.balign 4, 0
 	thumb_func_end sub_811EC00
+	.else
+	thumb_func_start sub_811EC00
+sub_811EC00:
+	decomp_trampoline sub_811EC00_c, 8
+	thumb_func_end sub_811EC00
+	.endif
 
 	thumb_func_start sub_811EC10
 sub_811EC10:

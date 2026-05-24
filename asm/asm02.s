@@ -49,6 +49,7 @@ loc_8021ACC:
    preserves: lr
    clobbers: r2
    ignores: r3-r12*/
+	.ifndef DECOMP_split9BitsFromBitfield_8021AE0
 	thumb_func_start split9BitsFromBitfield_8021AE0
 split9BitsFromBitfield_8021AE0: // 8021AE0
 	// splits bitfield into lower and upper 9 bits, and returns those in r0, r1
@@ -61,6 +62,12 @@ split9BitsFromBitfield_8021AE0: // 8021AE0
 .Mask9Bits:
 	.hword 0x01FF
 	thumb_func_end split9BitsFromBitfield_8021AE0
+	.else
+	thumb_func_start split9BitsFromBitfield_8021AE0
+split9BitsFromBitfield_8021AE0:
+	decomp_trampoline split9BitsFromBitfield_8021AE0_c, 6
+	thumb_func_end split9BitsFromBitfield_8021AE0
+	.endif
 
 	thumb_func_start GiveChips
 GiveChips:
@@ -312,6 +319,7 @@ zeroFill_e2002230:
 	.endif
 
 // (int chip_idx, int searchItem, int off) -> void*
+	.ifndef DECOMP_getOffsetToQuantityOfChipCodeMaybe_8021c7c
 	thumb_func_start getOffsetToQuantityOfChipCodeMaybe_8021c7c
 // returns:
 // r0 - offset to chip code quantity
@@ -345,6 +353,12 @@ loc_8021C9A:
 	// return Toolkit.unk_4C + (12*r2_off) + r3_itemIdx
 	pop {r4,r7,pc}
 	thumb_func_end getOffsetToQuantityOfChipCodeMaybe_8021c7c
+	.else
+	thumb_func_start getOffsetToQuantityOfChipCodeMaybe_8021c7c
+getOffsetToQuantityOfChipCodeMaybe_8021c7c:
+	decomp_trampoline getOffsetToQuantityOfChipCodeMaybe_8021c7c_c, 36
+	thumb_func_end getOffsetToQuantityOfChipCodeMaybe_8021c7c
+	.endif
 
 	thumb_func_start sub_8021CA8
 sub_8021CA8:
@@ -436,6 +450,7 @@ sub_8021D2A:
 	mov pc, lr
 	thumb_func_end sub_8021D2A
 
+	.ifndef DECOMP_sub_8021D36
 	thumb_func_start sub_8021D36
 sub_8021D36:
 	push {lr}
@@ -461,6 +476,12 @@ sub_8021D36:
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_8021D36
+	.else
+	thumb_func_start sub_8021D36
+sub_8021D36:
+	decomp_trampoline sub_8021D36_c, 44
+	thumb_func_end sub_8021D36
+	.endif
 
 off_8021D6C:
 	.word unk_2000AF0

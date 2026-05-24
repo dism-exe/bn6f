@@ -1646,6 +1646,7 @@ sub_8000E30:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8000E30
 
+	.ifndef DECOMP_sub_8000E3A
 	thumb_func_start sub_8000E3A
 sub_8000E3A:
 	push {r4-r7,lr}
@@ -1694,6 +1695,12 @@ loc_8000E8C:
 	mov r0, r2
 	pop {r4-r7,pc}
 	thumb_func_end sub_8000E3A
+	.else
+	thumb_func_start sub_8000E3A
+sub_8000E3A:
+	decomp_trampoline sub_8000E3A_c, 76
+	thumb_func_end sub_8000E3A
+	.endif
 
 	thumb_local_start
 unused_8000E90:

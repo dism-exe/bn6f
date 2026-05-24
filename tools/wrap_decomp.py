@@ -58,9 +58,11 @@ def trampoline_bytes_for(addr):
     return 10 if (addr & 2) else 8
 
 
-def find_function_block(symbol):
-    """Return (path, start_idx, end_idx) for the `thumb_func_start <sym>`
-    .. `thumb_func_end <sym>` block. Indices are 0-based line numbers."""
+def find_function_block(symbol, from_label=None):
+    """Return (path, lines, start_idx, end_idx) for the function block.
+    If from_label is given, start_idx points to that interior label
+    rather than the `thumb_func_start` line — used for multi-entry
+    functions where only the shared tail should be replaced."""
     start_re = re.compile(rf"^\s*thumb_func_start\s+{re.escape(symbol)}\s*$")
     end_re = re.compile(rf"^\s*thumb_func_end\s+{re.escape(symbol)}\s*$")
     for s_file in sorted(ASM_DIR.glob("*.s")):
@@ -69,7 +71,15 @@ def find_function_block(symbol):
             if start_re.match(line):
                 for j in range(i + 1, len(lines)):
                     if end_re.match(lines[j]):
-                        return s_file, lines, i, j
+                        # Standard case: wrap the whole block.
+                        if from_label is None:
+                            return s_file, lines, i, j
+                        # Multi-entry: search for the label between [i,j].
+                        label_re = re.compile(rf"^\s*{re.escape(from_label)}\s*:\s*$")
+                        for k in range(i + 1, j):
+                            if label_re.match(lines[k]):
+                                return s_file, lines, k, j
+                        die(f"{s_file.name}: label `{from_label}` not found inside {symbol}")
                 die(f"{s_file.name}: `thumb_func_start {symbol}` has no `thumb_func_end`")
     die(f"no `thumb_func_start {symbol}` in asm/*.s (is the symbol public? `thumb_local_start` isn't supported)")
 
@@ -88,23 +98,23 @@ def already_wrapped(lines, start_idx):
 def audit_pool_sharing(path, lines, start_idx, end_idx, symbol):
     """Find labels defined inside the function's body (literal pool
     entries) and report any that are referenced from outside the
-    function — those would become dangling when the function body is
-    replaced with a trampoline."""
-    label_re = re.compile(r"^([A-Za-z_.][\w.]*):\s*(//.*)?$")
+    function (either by another asm function or by a C file under
+    src/c/). Returns list of (label_name, external_ref_count, line_idx)."""
+    label_re = re.compile(r"^([A-Za-z_.][\w.]*):{1,2}\s*(//.*)?$")
     pool_labels = []
     for i in range(start_idx + 1, end_idx):
         m = label_re.match(lines[i])
         if m:
             name = m.group(1)
-            # Skip the function's own label and any local code-flow labels
             if name == symbol:
                 continue
-            pool_labels.append(name)
+            pool_labels.append((name, i))
     if not pool_labels:
         return []
-    # For each pool label, count refs outside this function's body
     shared = []
-    for pname in pool_labels:
+    csrc_dir = ROOT / "src/c"
+    csrc_files = sorted(csrc_dir.glob("*.c")) if csrc_dir.exists() else []
+    for pname, pline in pool_labels:
         ref_re = re.compile(rf"\b{re.escape(pname)}\b")
         external_refs = 0
         for s_file in sorted(ASM_DIR.glob("*.s")):
@@ -112,16 +122,79 @@ def audit_pool_sharing(path, lines, start_idx, end_idx, symbol):
             for ln_idx, ln in enumerate(file_lines):
                 if not ref_re.search(ln):
                     continue
-                # Skip the definition itself
-                if ln.strip().startswith(f"{pname}:"):
+                # Skip the definition itself (`pname:` or `pname::`).
+                stripped = ln.strip()
+                if stripped.startswith(f"{pname}:") or stripped.startswith(f"{pname}::"):
                     continue
-                # Skip references inside the same function
                 if s_file == path and start_idx <= ln_idx <= end_idx:
                     continue
                 external_refs += 1
+        # Also check C files — when a converted function's C version
+        # references a label defined inside the function's pool, the
+        # .else trampoline branch would elide it.
+        for c_file in csrc_files:
+            if ref_re.search(c_file.read_text()):
+                external_refs += 1
         if external_refs > 0:
-            shared.append((pname, external_refs))
+            shared.append((pname, external_refs, pline))
     return shared
+
+
+def find_pool_start(lines, start_idx, end_idx, pool_label_lines):
+    """Return the line index where the function's literal pool starts.
+    Pool start is the earliest of:
+      - the first pool label (e.g. `off_X:`),
+      - the `.balign` directive immediately preceding it.
+    """
+    if not pool_label_lines:
+        return None
+    first_label_line = min(pool_label_lines)
+    # Walk back to absorb any preceding .balign / .align directives
+    k = first_label_line - 1
+    while k > start_idx:
+        s = lines[k].strip()
+        if s.startswith(".balign") or s.startswith(".align"):
+            first_label_line = k
+            k -= 1
+            continue
+        if not s or s.startswith("//") or s.startswith("/*"):
+            k -= 1
+            continue
+        break
+    return first_label_line
+
+
+def lookup_symbol_addr(name):
+    """Look up any symbol's address (global or local) in the .text section."""
+    out = subprocess.check_output([str(OBJDUMP), "-t", str(ORIG_ELF)], text=True)
+    for line in out.splitlines():
+        parts = line.split()
+        if len(parts) >= 2 and parts[-1] == name and ".text" in line:
+            return int(parts[0], 16)
+    return None
+
+
+def pool_offset_from_function_start(symbol, pool_label):
+    """Look up the pool label's address in bn6f_orig.elf and return the
+    offset from the function's address. Matches local symbols too."""
+    out = subprocess.check_output([str(OBJDUMP), "-t", str(ORIG_ELF)], text=True)
+    fn_addr = None
+    pool_addr = None
+    for line in out.splitlines():
+        parts = line.split()
+        if len(parts) < 2:
+            continue
+        # Last token is the symbol name; first is the address.
+        name = parts[-1]
+        if name == symbol and ".text" in line:
+            fn_addr = int(parts[0], 16)
+        elif name == pool_label and ".text" in line:
+            pool_addr = int(parts[0], 16)
+        if fn_addr is not None and pool_addr is not None:
+            break
+    if fn_addr is None or pool_addr is None:
+        die(f"could not resolve {symbol} or {pool_label} in {ORIG_ELF.name} (fn={fn_addr}, pool={pool_addr})")
+    return pool_addr - fn_addr
 
 
 def audit_callers(symbol):
@@ -161,8 +234,20 @@ def append_manifest(symbol):
     return True
 
 
-def wrap(symbol, pad_override=None, c_func=None):
+def wrap(symbol, pad_override=None, c_func=None, from_label=None):
     size, addr = get_size_and_addr(symbol)
+
+    # When wrapping from an interior label (multi-entry prelude case),
+    # adjust the "effective function" to start at the label.
+    if from_label is not None:
+        label_addr = lookup_symbol_addr(from_label)
+        if label_addr is None:
+            die(f"{from_label}: address not found in {ORIG_ELF.name}")
+        effective_size = (addr + size) - label_addr
+        effective_addr = label_addr
+        addr = effective_addr
+        size = effective_size
+
     tramp = trampoline_bytes_for(addr)
     pad = pad_override if pad_override is not None else size - tramp
     if pad < 0:
@@ -170,19 +255,28 @@ def wrap(symbol, pad_override=None, c_func=None):
 
     target = c_func if c_func else f"{symbol}_c"
 
-    path, lines, start, end = find_function_block(symbol)
+    path, lines, start, end = find_function_block(symbol, from_label=from_label)
     if already_wrapped(lines, start):
         die(f"{symbol}: appears already wrapped (.ifndef on a preceding line)")
 
-    # Audit literal pool sharing
+    # Audit literal pool sharing — if shared, emit a "keep the pool in
+    # both branches" rewrite so the pool stays addressable from the
+    # functions that depend on it.
     shared_pool = audit_pool_sharing(path, lines, start, end, symbol)
+    pool_lines = None
+    pool_offset = 0
     if shared_pool:
-        print(f"ERROR: {symbol}'s literal pool is shared with other functions:", file=sys.stderr)
-        for pname, refs in shared_pool[:5]:
-            print(f"  {pname} (used in {refs} place(s) outside this function)", file=sys.stderr)
-        print(f"  Trampolining would remove the pool and break those callers.", file=sys.stderr)
-        print(f"  Manually move the pool out of the .ifndef block, or skip this function.", file=sys.stderr)
-        sys.exit(3)
+        first_pool_label = min(shared_pool, key=lambda t: t[2])[0]
+        pool_offset = pool_offset_from_function_start(symbol, first_pool_label)
+        pool_start_line = find_pool_start(lines, start, end, [pl[2] for pl in shared_pool])
+        # Capture pool content: from pool_start_line up to (but not
+        # including) the `thumb_func_end` line.
+        pool_lines = lines[pool_start_line:end]
+        # Recompute pad: from trampoline-end to pool-start should match
+        # the original offset of the pool.
+        pad = pool_offset - tramp
+        if pad < 0:
+            die(f"{symbol}: pool starts at offset {pool_offset} but trampoline is {tramp} bytes")
 
     # Audit callers for flag-dependence
     flag_callers = audit_callers(symbol)
@@ -197,22 +291,62 @@ def wrap(symbol, pad_override=None, c_func=None):
             sys.exit(2)
 
     indent = "\t"
-    before = [f"{indent}.ifndef DECOMP_{symbol}"]
-    after = [
-        f"{indent}.else",
-        f"{indent}thumb_func_start {symbol}",
-        f"{symbol}:",
-        f"{indent}decomp_trampoline {target}, {pad}",
-        f"{indent}thumb_func_end {symbol}",
-        f"{indent}.endif",
-    ]
-
-    new_lines = lines[:start] + before + lines[start:end + 1] + after + lines[end + 1:]
+    if from_label is not None:
+        # Multi-entry: only the shared tail is wrapped. The
+        # thumb_func_start, preludes, and thumb_func_end stay outside
+        # the .ifndef. The .else branch emits just the trampoline (and
+        # optionally the pool), no thumb_func_start/end.
+        before = [f"{indent}.ifndef DECOMP_{symbol}"]
+        if pool_lines is not None:
+            after = [
+                f"{indent}.else",
+                f"{indent}// Literal pool kept in both branches (shared with other fns).",
+                f"{from_label}:",
+                f"{indent}decomp_trampoline {target}, {pad}",
+            ]
+            after.extend(pool_lines)
+            after.append(f"{indent}.endif")
+        else:
+            after = [
+                f"{indent}.else",
+                f"{from_label}:",
+                f"{indent}decomp_trampoline {target}, {pad}",
+                f"{indent}.endif",
+            ]
+        new_lines = lines[:start] + before + lines[start:end] + after + lines[end:]
+    elif pool_lines is not None:
+        before = [f"{indent}.ifndef DECOMP_{symbol}"]
+        after = [
+            f"{indent}.else",
+            f"{indent}// Literal pool is shared with other functions — keep it",
+            f"{indent}// in both branches so its labels stay at the same address.",
+            f"{indent}thumb_func_start {symbol}",
+            f"{symbol}:",
+            f"{indent}decomp_trampoline {target}, {pad}",
+        ]
+        after.extend(pool_lines)
+        after.extend([
+            f"{indent}thumb_func_end {symbol}",
+            f"{indent}.endif",
+        ])
+        new_lines = lines[:start] + before + lines[start:end + 1] + after + lines[end + 1:]
+    else:
+        before = [f"{indent}.ifndef DECOMP_{symbol}"]
+        after = [
+            f"{indent}.else",
+            f"{indent}thumb_func_start {symbol}",
+            f"{symbol}:",
+            f"{indent}decomp_trampoline {target}, {pad}",
+            f"{indent}thumb_func_end {symbol}",
+            f"{indent}.endif",
+        ]
+        new_lines = lines[:start] + before + lines[start:end + 1] + after + lines[end + 1:]
     path.write_text("\n".join(new_lines) + "\n")
 
     added = append_manifest(symbol)
     suffix = " (added to manifest)" if added else " (already in manifest)"
-    print(f"wrapped {symbol} in {path.name}: addr={addr:#010x} size={size:#x} tramp={tramp} pad={pad} -> {target}{suffix}")
+    pool_note = f" pool-shared (kept in both branches)" if pool_lines is not None else ""
+    print(f"wrapped {symbol} in {path.name}: addr={addr:#010x} size={size:#x} tramp={tramp} pad={pad} -> {target}{suffix}{pool_note}")
 
 
 def main():
@@ -224,8 +358,12 @@ def main():
                     help="C trampoline target (default: <symbol>_c)")
     ap.add_argument("--force-flagdep", action="store_true",
                     help="proceed despite flag-dependent callers")
+    ap.add_argument("--from-label", default=None,
+                    help="for multi-entry functions: wrap from this interior "
+                         "label instead of from thumb_func_start (the prelude "
+                         "before the label stays unchanged)")
     args = ap.parse_args()
-    wrap(args.symbol, args.pad, args.c_func)
+    wrap(args.symbol, args.pad, args.c_func, from_label=args.from_label)
 
 
 if __name__ == "__main__":
