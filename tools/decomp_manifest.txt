@@ -245,3 +245,4 @@ doPETEffect_8033fc0
 sub_800B110
 sub_8004D48
 decompAndCopyData
+uncompSprite_8002906
