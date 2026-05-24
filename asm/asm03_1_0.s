@@ -198,6 +198,7 @@ triggerSomeUpdateForInternetOrRealWorld_8033948:
 	pop {r4-r7,pc}
 	thumb_func_end triggerSomeUpdateForInternetOrRealWorld_8033948
 
+	.ifndef DECOMP_gfxTransfer_8033978
 	thumb_func_start gfxTransfer_8033978
 gfxTransfer_8033978: // () -> ()
 	push {r4-r7,lr}
@@ -249,6 +250,12 @@ off_80339C4:
 off_80339C8:
 	.word byte_86C1F20
 	thumb_func_end gfxTransfer_8033978
+	.else
+	thumb_func_start gfxTransfer_8033978
+gfxTransfer_8033978:
+	decomp_trampoline gfxTransfer_8033978_c, 76
+	thumb_func_end gfxTransfer_8033978
+	.endif
 
 	thumb_func_start dispatch_80339CC
 dispatch_80339CC: // () -> ()

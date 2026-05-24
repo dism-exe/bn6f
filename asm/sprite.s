@@ -128,6 +128,7 @@ sprite_initialize:
 	.endif
 
 // (int a1) -> void
+	.ifndef DECOMP_spriteLoadMugshot_800275A
 	thumb_func_start spriteLoadMugshot_800275A
 spriteLoadMugshot_800275A:
 	push {lr}
@@ -142,6 +143,12 @@ spriteLoadMugshot_800275A:
 off_800276C:
 	.word mugshotSpritePtrs
 	thumb_func_end spriteLoadMugshot_800275A
+	.else
+	thumb_func_start spriteLoadMugshot_800275A
+spriteLoadMugshot_800275A:
+	decomp_trampoline spriteLoadMugshot_800275A_c, 12
+	thumb_func_end spriteLoadMugshot_800275A
+	.endif
 
 // (int a1, int a2) -> void
 	thumb_func_start initGuiSprite_8002770
