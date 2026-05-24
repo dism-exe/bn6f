@@ -49,12 +49,18 @@ def get_size_and_addr(symbol):
     die(f"symbol `{symbol}` not found in {ORIG_ELF.name} as a .text function")
 
 
-def trampoline_bytes_for(addr):
-    """The trampoline expands to `ldr r3, =X+1; bx r3; .pool`. The .pool
-    directive enforces 4-byte alignment before emitting the literal —
-    for a 2-aligned (not 4-aligned) function start, that means 2 extra
-    bytes of pad before the literal, so the trampoline is 10 bytes
-    rather than 8."""
+def trampoline_bytes_for(addr, r3safe=False):
+    """Trampoline size in bytes.
+    Standard `ldr r3, =X+1; bx r3; .pool`:
+      - 4-aligned start: 8 bytes
+      - 2-aligned start: 10 bytes (.pool inserts a 2-byte balign pad)
+    r3-safe variant `push r0; ldr r0; mov r12, r0; pop r0; bx r12; .pool`:
+      - 2-aligned start: 14 bytes
+      - 4-aligned start: 16 bytes (10 code bytes leave us 2-aligned,
+        so .pool inserts a 2-byte balign pad)
+    """
+    if r3safe:
+        return 16 if (addr & 2) == 0 else 14
     return 10 if (addr & 2) else 8
 
 
@@ -75,7 +81,7 @@ def find_function_block(symbol, from_label=None):
                         if from_label is None:
                             return s_file, lines, i, j
                         # Multi-entry: search for the label between [i,j].
-                        label_re = re.compile(rf"^\s*{re.escape(from_label)}\s*:\s*$")
+                        label_re = re.compile(rf"^\s*{re.escape(from_label)}\s*:\s*(//.*)?$")
                         for k in range(i + 1, j):
                             if label_re.match(lines[k]):
                                 return s_file, lines, k, j
@@ -234,7 +240,7 @@ def append_manifest(symbol):
     return True
 
 
-def wrap(symbol, pad_override=None, c_func=None, from_label=None):
+def wrap(symbol, pad_override=None, c_func=None, from_label=None, r3safe=False):
     size, addr = get_size_and_addr(symbol)
 
     # When wrapping from an interior label (multi-entry prelude case),
@@ -248,12 +254,13 @@ def wrap(symbol, pad_override=None, c_func=None, from_label=None):
         addr = effective_addr
         size = effective_size
 
-    tramp = trampoline_bytes_for(addr)
+    tramp = trampoline_bytes_for(addr, r3safe=r3safe)
     pad = pad_override if pad_override is not None else size - tramp
     if pad < 0:
         die(f"{symbol}: size {size:#x} < {tramp} bytes — too small for an {tramp}-byte trampoline (addr {addr:#010x})")
 
     target = c_func if c_func else f"{symbol}_c"
+    macro_name = "decomp_trampoline_r3safe" if r3safe else "decomp_trampoline"
 
     path, lines, start, end = find_function_block(symbol, from_label=from_label)
     if already_wrapped(lines, start):
@@ -267,7 +274,13 @@ def wrap(symbol, pad_override=None, c_func=None, from_label=None):
     pool_offset = 0
     if shared_pool:
         first_pool_label = min(shared_pool, key=lambda t: t[2])[0]
-        pool_offset = pool_offset_from_function_start(symbol, first_pool_label)
+        first_pool_addr = lookup_symbol_addr(first_pool_label)
+        if first_pool_addr is None:
+            die(f"could not resolve pool label {first_pool_label}")
+        # Compute pool offset relative to the *wrap start* (which is
+        # `addr`, already reassigned to from_label's address when
+        # --from-label was used).
+        pool_offset = first_pool_addr - addr
         pool_start_line = find_pool_start(lines, start, end, [pl[2] for pl in shared_pool])
         # Capture pool content: from pool_start_line up to (but not
         # including) the `thumb_func_end` line.
@@ -302,7 +315,7 @@ def wrap(symbol, pad_override=None, c_func=None, from_label=None):
                 f"{indent}.else",
                 f"{indent}// Literal pool kept in both branches (shared with other fns).",
                 f"{from_label}:",
-                f"{indent}decomp_trampoline {target}, {pad}",
+                f"{indent}{macro_name} {target}, {pad}",
             ]
             after.extend(pool_lines)
             after.append(f"{indent}.endif")
@@ -310,7 +323,7 @@ def wrap(symbol, pad_override=None, c_func=None, from_label=None):
             after = [
                 f"{indent}.else",
                 f"{from_label}:",
-                f"{indent}decomp_trampoline {target}, {pad}",
+                f"{indent}{macro_name} {target}, {pad}",
                 f"{indent}.endif",
             ]
         new_lines = lines[:start] + before + lines[start:end] + after + lines[end:]
@@ -322,7 +335,7 @@ def wrap(symbol, pad_override=None, c_func=None, from_label=None):
             f"{indent}// in both branches so its labels stay at the same address.",
             f"{indent}thumb_func_start {symbol}",
             f"{symbol}:",
-            f"{indent}decomp_trampoline {target}, {pad}",
+            f"{indent}{macro_name} {target}, {pad}",
         ]
         after.extend(pool_lines)
         after.extend([
@@ -336,7 +349,7 @@ def wrap(symbol, pad_override=None, c_func=None, from_label=None):
             f"{indent}.else",
             f"{indent}thumb_func_start {symbol}",
             f"{symbol}:",
-            f"{indent}decomp_trampoline {target}, {pad}",
+            f"{indent}{macro_name} {target}, {pad}",
             f"{indent}thumb_func_end {symbol}",
             f"{indent}.endif",
         ]
@@ -362,8 +375,11 @@ def main():
                     help="for multi-entry functions: wrap from this interior "
                          "label instead of from thumb_func_start (the prelude "
                          "before the label stays unchanged)")
+    ap.add_argument("--r3safe", action="store_true",
+                    help="use the r3-preserving trampoline (14-16 bytes vs 8-10) "
+                         "for functions that take 4 args (r0..r3 all in use)")
     args = ap.parse_args()
-    wrap(args.symbol, args.pad, args.c_func, from_label=args.from_label)
+    wrap(args.symbol, args.pad, args.c_func, from_label=args.from_label, r3safe=args.r3safe)
 
 
 if __name__ == "__main__":

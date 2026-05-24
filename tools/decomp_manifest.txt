@@ -115,3 +115,5 @@ ClearEventFlagFromImmediate
 main_zeroFill_80017EC
 reqBBS_8140984
 reset_flags32_20093A4
+QueueEightWordAlignedGFXTransfer
+sub_8002378

@@ -57,6 +57,34 @@
 	.endif
 	.endm
 
+	// r3-preserving variant for ASM functions that take 4 args
+	// (r0..r3 all in use). The standard trampoline above clobbers r3
+	// to hold the C target address; this one saves r0 to stack while
+	// it computes the target via r0, parks it in r12 (scratch / not in
+	// is_must_match), restores r0, and bx's r12.
+	//
+	// Layout (14 bytes at 2-aligned start, 16 at 4-aligned due to
+	// .pool alignment):
+	//   push {r0}                ; preserve r0 (input arg)
+	//   ldr  r0, =\target + 1    ; load target via low reg
+	//   mov  r12, r0             ; park in scratch hi reg
+	//   pop  {r0}                ; restore r0
+	//   bx   r12                 ; jump to C; r0..r3 intact
+	//   .pool                    ; literal lives here
+	.macro decomp_trampoline_r3safe target_name:req, pad_bytes=0
+	push {r0}
+	ldr  r0, =\target_name + 1
+	mov  r12, r0
+	pop  {r0}
+	bx   r12
+	.pool
+	.if \pad_bytes > 0
+	.rept \pad_bytes / 2
+	nop
+	.endr
+	.endif
+	.endm
+
 	// For ASM functions whose callers branch on the flag state right
 	// after `bl <fn>`, the regular 8-byte trampoline still works —
 	// it just `bx`'s to the C side. The flag-preserving logic lives

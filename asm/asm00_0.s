@@ -1031,6 +1031,7 @@ QueueEightWordAlignedGFXTransfer: // (queued_src: *const (), mut_queued_dest: *m
 // r2 - queued size
 // r3 - copy type (preset)
 // preserves r0-r2
+	.ifndef DECOMP_QueueEightWordAlignedGFXTransfer
 loc_8000ACA: // (queued_src: *const (), mut_queued_dest: *mut (), queued_size: u32, copy_type: int) -> ()
 	push {r4-r7}
 	mov r7, r3
@@ -1076,6 +1077,19 @@ off_8000B14:
 	thumb_func_end QueueByteAlignedGFXTransfer
 	thumb_func_end QueueHwordAlignedGFXTransfer
 	thumb_func_end QueueWordAlignedGFXTransfer
+	.else
+	// Literal pool kept in both branches (shared with other fns).
+loc_8000ACA:
+	decomp_trampoline_r3safe QueueEightWordAlignedGFXTransfer_c, 56
+off_8000B10:
+	.word dword_200AC1C
+off_8000B14:
+	.word fiveWordArr200B4B0
+	thumb_func_end QueueUnk00GFXTransfer
+	thumb_func_end QueueByteAlignedGFXTransfer
+	thumb_func_end QueueHwordAlignedGFXTransfer
+	thumb_func_end QueueWordAlignedGFXTransfer
+	.endif
 	thumb_func_end QueueEightWordAlignedGFXTransfer
 
 
@@ -4983,6 +4997,7 @@ zeroFill_e20097A0:
 	thumb_func_end zeroFill_e20097A0
 	.endif
 
+	.ifndef DECOMP_sub_8002378
 	thumb_func_start sub_8002378
 sub_8002378:
 	push {r5-r7,lr}
@@ -5004,6 +5019,12 @@ loc_8002396:
 	strb r3, [r7,#oPalette20097a0_Unk_00]
 	pop {r5-r7,pc}
 	thumb_func_end sub_8002378
+	.else
+	thumb_func_start sub_8002378
+sub_8002378:
+	decomp_trampoline_r3safe sub_8002378_c, 18
+	thumb_func_end sub_8002378
+	.endif
 
 	.ifndef DECOMP_Terminate_ePalette20097a0_Transform
 	thumb_func_start Terminate_ePalette20097a0_Transform
