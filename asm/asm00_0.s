@@ -4872,6 +4872,7 @@ loc_8002396:
 	pop {r5-r7,pc}
 	thumb_func_end sub_8002378
 
+	.ifndef DECOMP_Terminate_ePalette20097a0_Transform
 	thumb_func_start Terminate_ePalette20097a0_Transform
 Terminate_ePalette20097a0_Transform:
 	ldr r2, off_8002464 // =ePalette20097a0
@@ -4882,6 +4883,12 @@ Terminate_ePalette20097a0_Transform:
 	strb r0, [r2,#oPalette20097a0_Unk_00]
 	mov pc, lr
 	thumb_func_end Terminate_ePalette20097a0_Transform
+	.else
+	thumb_func_start Terminate_ePalette20097a0_Transform
+Terminate_ePalette20097a0_Transform:
+	decomp_trampoline Terminate_ePalette20097a0_Transform_c, 4
+	thumb_func_end Terminate_ePalette20097a0_Transform
+	.endif
 
 	thumb_func_start sub_80023A8
 sub_80023A8:

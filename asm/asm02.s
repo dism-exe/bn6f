@@ -1,5 +1,6 @@
 
 // (int chip_idx) -> ChipData*
+	.ifndef DECOMP_getChip8021DA8
 	thumb_func_start getChip8021DA8
 // exe6g: 8021eb8	
 getChip8021DA8: // (which_chip: i32) -> *const ChipData
@@ -13,6 +14,12 @@ getChip8021DA8: // (which_chip: i32) -> *const ChipData
 off_8021AB0: 
   .word ChipDataArr_8021DA8 // [*const ChipData; 206]
 	thumb_func_end getChip8021DA8
+	.else
+	thumb_func_start getChip8021DA8
+getChip8021DA8:
+	decomp_trampoline getChip8021DA8_c, 8
+	thumb_func_end getChip8021DA8
+	.endif
 
 	thumb_func_start sub_8021AB4
 sub_8021AB4:

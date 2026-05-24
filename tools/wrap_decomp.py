@@ -37,7 +37,7 @@ def die(msg):
     sys.exit(1)
 
 
-def get_size(symbol):
+def get_size_and_addr(symbol):
     if not ORIG_ELF.exists():
         die(f"missing {ORIG_ELF.relative_to(ROOT)} — run `make orig` first")
     out = subprocess.check_output([str(OBJDUMP), "-t", str(ORIG_ELF)], text=True)
@@ -45,8 +45,17 @@ def get_size(symbol):
         # Format: ADDR FLAGS SECTION SIZE NAME
         parts = line.split()
         if len(parts) >= 6 and parts[-1] == symbol and " F .text" in line:
-            return int(parts[-2], 16)
+            return int(parts[-2], 16), int(parts[0], 16)
     die(f"symbol `{symbol}` not found in {ORIG_ELF.name} as a .text function")
+
+
+def trampoline_bytes_for(addr):
+    """The trampoline expands to `ldr r3, =X+1; bx r3; .pool`. The .pool
+    directive enforces 4-byte alignment before emitting the literal —
+    for a 2-aligned (not 4-aligned) function start, that means 2 extra
+    bytes of pad before the literal, so the trampoline is 10 bytes
+    rather than 8."""
+    return 10 if (addr & 2) else 8
 
 
 def find_function_block(symbol):
@@ -114,10 +123,11 @@ def append_manifest(symbol):
 
 
 def wrap(symbol, pad_override=None, c_func=None):
-    size = get_size(symbol)
-    pad = pad_override if pad_override is not None else size - 8
+    size, addr = get_size_and_addr(symbol)
+    tramp = trampoline_bytes_for(addr)
+    pad = pad_override if pad_override is not None else size - tramp
     if pad < 0:
-        die(f"{symbol}: size {size:#x} < 8 bytes — too small for an 8-byte trampoline")
+        die(f"{symbol}: size {size:#x} < {tramp} bytes — too small for an {tramp}-byte trampoline (addr {addr:#010x})")
 
     target = c_func if c_func else f"{symbol}_c"
 
@@ -153,7 +163,7 @@ def wrap(symbol, pad_override=None, c_func=None):
 
     added = append_manifest(symbol)
     suffix = " (added to manifest)" if added else " (already in manifest)"
-    print(f"wrapped {symbol} in {path.name}: size={size:#x} pad={pad} -> {target}{suffix}")
+    print(f"wrapped {symbol} in {path.name}: addr={addr:#010x} size={size:#x} tramp={tramp} pad={pad} -> {target}{suffix}")
 
 
 def main():

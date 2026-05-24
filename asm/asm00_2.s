@@ -9811,6 +9811,7 @@ off_8013434:
 	thumb_func_end sub_8013422
 
 // (void *struct) -> void
+	.ifndef DECOMP_initNaviStats_WithDefaultStatsMaybe_8013438
 	thumb_func_start initNaviStats_WithDefaultStatsMaybe_8013438
 initNaviStats_WithDefaultStatsMaybe_8013438:
 	push {r4,lr}
@@ -9889,6 +9890,12 @@ loc_80134B8:
 	strb r0, [r4,r1]
 	pop {r4,pc}
 	thumb_func_end initNaviStats_WithDefaultStatsMaybe_8013438
+	.else
+	thumb_func_start initNaviStats_WithDefaultStatsMaybe_8013438
+initNaviStats_WithDefaultStatsMaybe_8013438:
+	decomp_trampoline initNaviStats_WithDefaultStatsMaybe_8013438_c, 136
+	thumb_func_end initNaviStats_WithDefaultStatsMaybe_8013438
+	.endif
 
 	thumb_func_start sub_80134C8
 sub_80134C8:

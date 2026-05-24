@@ -31,3 +31,7 @@ copyPalletesToIWRAM_8001808
 copyPalletesToIWRAM_8002650
 copyObjAttributesToIWRAM_802FE0C
 eStruct200BC30_getJumpOffset00
+sub_8144CE0
+getChip8021DA8
+Terminate_ePalette20097a0_Transform
+initNaviStats_WithDefaultStatsMaybe_8013438

@@ -1677,6 +1677,7 @@ loc_8144CA4:
 	.byte 0x95, 0x9, 0x0, 0x0, 0x94, 0x9, 0x0, 0x0, 0xFF, 0xEF, 0x0, 0x0
 	thumb_func_end sub_8144C90
 
+	.ifndef DECOMP_sub_8144CE0
 	thumb_func_start sub_8144CE0
 sub_8144CE0:
 	ldr r0, off_8144CE8 // =eTimerEnable200F460 
@@ -1686,6 +1687,12 @@ sub_8144CE0:
 off_8144CE8:
 	.word eTimerEnable200F460
 	thumb_func_end sub_8144CE0
+	.else
+	thumb_func_start sub_8144CE0
+sub_8144CE0:
+	decomp_trampoline sub_8144CE0_c, 4
+	thumb_func_end sub_8144CE0
+	.endif
 
 	thumb_local_start
 sub_8144CEC:
