@@ -2102,6 +2102,7 @@ off_8003E94:
 	.word sub_3006440+1
 	thumb_func_end sub_8003E18
 
+	.ifndef DECOMP_sub_8003E98
 	thumb_func_start sub_8003E98
 sub_8003E98:
 	push {lr}
@@ -2343,6 +2344,246 @@ T3BattleObjectJumptable:
 	.word t3_0xd3_80DFE40+1 // 0xd3
 	.word t3_0xd4_80DFFB8+1 // 0xd4
 	thumb_func_end sub_8003E98
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_8003E98
+sub_8003E98:
+	decomp_trampoline sub_8003E98_c, 6
+loc_8003EA6:
+	mov r1, r3
+	add r1, #oT1BattleObject_SpriteData
+	mov r2, #0
+	str r2, [r1,#0x24]
+	add r3, #oT1BattleObject_Size
+	add r0, #1
+	cmp r0, #0x20
+	blt loc_8003EA6
+	mov pc, lr
+	.balign 4, 0
+off_8003EB8:
+	.word eT1BattleObject0
+off_8003EBC:
+	.word byte_2036778
+off_8003EC0:
+	.word dword_2039A10
+// JP: 0x8003ea8
+T3BattleObjectJumptable:
+	.word t3_0x0_80C4E58+1 // 0x0
+	.word t3_0x1_80C50B8+1 // 0x1
+	.word t3_0x2_80C51AC+1 // 0x2
+	.word battle_t3id3_main_80c52b0+1 // 0x3
+	.word t3_0x4_80C53C0+1 // 0x4
+	.word t3_0x5_80C55B0+1 // 0x5
+	.word t3_0x6_80C57C0+1 // 0x6
+	.word t3_0x7_80C5A34+1 // 0x7
+	.word t3_0x8_80C5BB0+1 // 0x8
+	.word t3_0x9_80C5DDC+1 // 0x9
+	.word t3_0xa_80C5F60+1 // 0xa
+	.word t3_0xb_80C60A8+1 // 0xb
+	.word t3_0x0_80C4E58+1 // 0xc
+	.word t3_0x0_80C4E58+1 // 0xd
+	.word t3_0xe_80C6280+1 // 0xe
+	.word t3_0xf_80C6414+1 // 0xf
+	.word cornfiestaRelatedObject_80C6580+1 // 0x10
+	.word t3_0x11_80C67F8+1 // 0x11
+	.word t3_0x12_80C6946+1 // 0x12
+	.word t3_0x0_80C4E58+1 // 0x13
+	.word t3_0x0_80C4E58+1 // 0x14
+	.word t3_0x0_80C4E58+1 // 0x15
+	.word t3_0x16_80C6B40+1 // 0x16
+	.word t3_0x17_80C6DCC+1 // 0x17
+	.word t3_0x18_80C7074+1 // 0x18
+	.word t3_0x19_80C71A4+1 // 0x19
+	.word t3_0x1a_80C740C+1 // 0x1a
+	.word t3_0x1b_80C793C+1 // 0x1b
+	.word t3_0x1c_80C7C18+1 // 0x1c
+	.word t3_0x1d_80C7D78+1 // 0x1d
+	.word t3_0x1e_80C7F40+1 // 0x1e
+	.word t3_0x1f_80C8098+1 // 0x1f
+	.word t3_0x20_80C81CC+1 // 0x20
+	.word t3_0x21_80C8388+1 // 0x21
+	.word t3_0x22_80C853C+1 // 0x22
+	.word t3_0x23_80C86D8+1 // 0x23
+	.word t3_0x24_80C882C+1 // 0x24
+	.word t3_0x25_80C8AA4+1 // 0x25
+	.word t3_0x26_80C8C74+1 // 0x26
+	.word t3_0x27_80C8E08+1 // 0x27
+	.word t3_0x28_80C8FFC+1 // 0x28
+	.word t3_0x29_80C91A0+1 // 0x29
+	.word battle_BDT_main_80c93cc+1 // 0x2a
+	.word t3_0x2b_80C96A0+1 // 0x2b
+	.word nullsub_101+1 // 0x2c
+	.word nullsub_94+1 // 0x2d
+	.word t3_0x2e_80C9824+1 // 0x2e
+	.word t3_0x2f_80C9BC4+1 // 0x2f
+	.word t3_0x30_80C9D00+1 // 0x30
+	.word t3_0x31_80C9F78+1 // 0x31
+	.word t3_0x32_80CA2A8+1 // 0x32
+	.word t3_0x33_80CA544+1 // 0x33
+	.word t3_0x34_80CA6B8+1 // 0x34
+	.word t3_0x35_80CA938+1 // 0x35
+	.word t3_0x36_80CAB68+1 // 0x36
+	.word t3_0x37_80CAD28+1 // 0x37
+	.word t3_0x38_80CAEF0+1 // 0x38
+	.word t3_0x39_80CB0DC+1 // 0x39
+	.word t3_0x3a_80CB284+1 // 0x3a
+	.word t3_0x3b_80CB49C+1 // 0x3b
+	.word t3_0x3c_80CB6F8+1 // 0x3c
+	.word t3_0x3d_80CB900+1 // 0x3d
+	.word t3_0x3e_80CBB44+1 // 0x3e
+	.word t3_0x3f_80CC044+1 // 0x3f
+	.word t3_0x40_80CC0E8+1 // 0x40
+	.word t3_0x41_80CC4C4+1 // 0x41
+	.word t3_0x42_80CC5A8+1 // 0x42
+	.word t3_0x43_80CC76C+1 // 0x43
+	.word t3_0x44_80CC944+1 // 0x44
+	.word t3_0x45_80CCA40+1 // 0x45
+	.word t3_0x46_80CCC48+1 // 0x46
+	.word t3_0x47_80CCD70+1 // 0x47
+	.word t3_0x48_80CCFDC+1 // 0x48
+	.word t3_0x49_80CD2EC+1 // 0x49
+	.word t3_0x4a_80CD4EC+1 // 0x4a
+	.word t3_0x4b_80CD8EC+1 // 0x4b
+	.word t3_0x4c_80CDD44+1 // 0x4c
+	.word t3_0x4d_80CDF84+1 // 0x4d
+	.word t3_0x4e_80CE118+1 // 0x4e
+	.word t3_0x4f_80CE24C+1 // 0x4f
+	.word t3_0x50_80CE530+1 // 0x50
+	.word t3_0x51_80CE70C+1 // 0x51
+	.word t3_0x52_80CE81C+1 // 0x52
+	.word t3_0x53_80CEB00+1 // 0x53
+	.word t3_0x54_80CEE78+1 // 0x54
+	.word t3_0x55_80CF0D0+1 // 0x55
+	.word t3_0x56_80CF3BE+1 // 0x56
+	.word t3_0x57_80CF5C8+1 // 0x57
+	.word t3_0x58_80CF7F0+1 // 0x58
+	.word t3_0x59_80CF954+1 // 0x59
+	.word t3_0x5a_80CFC08+1 // 0x5a
+	.word t3_0x5b_80CFCF8+1 // 0x5b
+	.word t3_0x5c_80CFEC4+1 // 0x5c
+	.word t3_0x5d_80D00A0+1 // 0x5d
+	.word t3_0x5e_80D0268+1 // 0x5e
+	.word t3_0x5f_80D0394+1 // 0x5f
+	.word t3_0x60_80D0500+1 // 0x60
+	.word t3_0x61_80D0610+1 // 0x61
+	.word t3_0x62_80D07CC+1 // 0x62
+	.word t3_0x63_80D0AA8+1 // 0x63
+	.word t3_0x64_80D0D7C+1 // 0x64
+	.word t3_0x65_80D0F8C+1 // 0x65
+	.word t3_0x66_80D1218+1 // 0x66
+	.word t3_0x67_80D1514+1 // 0x67
+	.word t3_0x68_80D17A4+1 // 0x68
+	.word t3_0x69_80D18D8+1 // 0x69
+	.word t3_0x6a_80D1A08+1 // 0x6a
+	.word t3_0x6b_80D1B48+1 // 0x6b
+	.word t3_0x6c_80D1C20+1 // 0x6c
+	.word t3_0x6d_80D2034+1 // 0x6d
+	.word t3_0x6e_80D2290+1 // 0x6e
+	.word t3_0x6f_80D2460+1 // 0x6f
+	.word t3_0x70_80D25D4+1 // 0x70
+	.word t3_0x71_80D2A94+1 // 0x71
+	.word t3_0x72_80D2BDC+1 // 0x72
+	.word t3_0x73_80D2EBC+1 // 0x73
+	.word riskyHoneyObject_80D30D0+1 // 0x74
+	.word t3_0x75_80D34CC+1 // 0x75
+	.word t3_0x76_80D385C+1 // 0x76
+	.word t3_0x77_80D39BC+1 // 0x77
+	.word t3_0x78_80D4088+1 // 0x78
+	.word t3_0x79_80D4440+1 // 0x79
+	.word t3_0x7a_80D46B8+1 // 0x7a
+	.word t3_0x7b_80D4A28+1 // 0x7b
+	.word t3_0x7c_80D4B68+1 // 0x7c
+	.word t3_0x7d_80D4C84+1 // 0x7d
+	.word t3_0x7e_80D5028+1 // 0x7e
+	.word t3_0x7f_80D5138+1 // 0x7f
+	.word t3_0x80_80D535C+1 // 0x80
+	.word t3_0x81_80D5580+1 // 0x81
+	.word dollThunderObject_80D5740+1 // 0x82
+	.word t3_0x83_80D58B4+1 // 0x83
+	.word t3_0x84_80D5ABC+1 // 0x84
+	.word t3_0x85_80D5C48+1 // 0x85
+	.word t3_0x86_80D5D54+1 // 0x86
+	.word t3_0x87_80D5F08+1 // 0x87
+	.word t3_0x88_80D622C+1 // 0x88
+	.word t3_0x89_80D655C+1 // 0x89
+	.word t3_0x8a_80D67EC+1 // 0x8a
+	.word t3_0x8b_80D6924+1 // 0x8b
+	.word t3_0x8c_80D6A20+1 // 0x8c
+	.word t3_0x8d_80D6BD4+1 // 0x8d
+	.word t3_0x8e_80D6D80+1 // 0x8e
+	.word t3_0x8f_80D6EE0+1 // 0x8f
+	.word t3_0x90_80D7068+1 // 0x90
+	.word t3_0x91_80D7278+1 // 0x91
+	.word t3_0x92_80D7400+1 // 0x92
+	.word t3_0x93_80D75FC+1 // 0x93
+	.word t3_0x94_80D7ACC+1 // 0x94
+	.word t3_0x95_80D7DE4+1 // 0x95
+	.word t3_0x96_80D807C+1 // 0x96
+	.word t3_0x97_80D825C+1 // 0x97
+	.word t3_0x98_80D8444+1 // 0x98
+	.word t3_0x99_80D8620+1 // 0x99
+	.word t3_0x9a_80D879C+1 // 0x9a
+	.word airspinObject_80D88E0+1 // 0x9b
+	.word t3_0x9c_80D8C5C+1 // 0x9c
+	.word eraseBeamObject_80D8E10+1 // 0x9d
+	.word t3_0x9e_80D8FC4+1 // 0x9e
+	.word t3_0x9f_80D9154+1 // 0x9f
+	.word t3_0xa0_80D9350+1 // 0xa0
+	.word t3_0xa1_80D96A4+1 // 0xa1
+	.word t3_0xa2_80D954C+1 // 0xa2
+	.word t3_0xa3_80D984C+1 // 0xa3
+	.word t3_0xa4_80D9A50+1 // 0xa4
+	.word t3_0xa5_80D9D4C+1 // 0xa5
+	.word t3_0xa6_80DA050+1 // 0xa6
+	.word t3_0xa7_80DA470+1 // 0xa7
+	.word t3_0xa8_80DA5FC+1 // 0xa8
+	.word t3_0xa9_80DA80C+1 // 0xa9
+	.word t3_0xaa_80DAA28+1 // 0xaa
+	.word t3_0xab_80DACE4+1 // 0xab
+	.word t3_0xac_80DAE94+1 // 0xac
+	.word t3_0xad_80DB0E4+1 // 0xad
+	.word t3_0xae_80DB304+1 // 0xae
+	.word t3_0xaf_80DB570+1 // 0xaf
+	.word t3_0xb0_80DB6A4+1 // 0xb0
+	.word t3_0xb1_80DB8CC+1 // 0xb1
+	.word t3_0xb2_80DB994+1 // 0xb2
+	.word t3_0xb3_80DBB40+1 // 0xb3
+	.word t3_0xb4_80DBCEC+1 // 0xb4
+	.word t3_0xb5_80DBEE6+1 // 0xb5
+	.word t3_0xb6_80DC0E8+1 // 0xb6
+	.word t3_0xb7_80DC260+1 // 0xb7
+	.word t3_0xb8_80DC3F8+1 // 0xb8
+	.word t3_0xb9_80DC4FC+1 // 0xb9
+	.word t3_0xba_80DC5F8+1 // 0xba
+	.word t3_0xbb_80DC70C+1 // 0xbb
+	.word t3_0xbc_80DCB1C+1 // 0xbc
+	.word t3_0xbd_80DCCD4+1 // 0xbd
+	.word t3_0xbe_80DCE38+1 // 0xbe
+	.word t3_0xbf_80DCEF4+1 // 0xbf
+	.word t3_0xc0_80DD0AC+1 // 0xc0
+	.word t3_0xc1_80DD34C+1 // 0xc1
+	.word t3_0xc2_80DD764+1 // 0xc2
+	.word t3_0xc3_80DD940+1 // 0xc3
+	.word t3_0xc4_80DDA84+1 // 0xc4
+	.word t3_0xc5_80DDC10+1 // 0xc5
+	.word t3_0xc6_80DDDF0+1 // 0xc6
+	.word t3_0xc7_80DE000+1 // 0xc7
+	.word t3_0xc8_80DE13C+1 // 0xc8
+	.word t3_0xc9_80DE404+1 // 0xc9
+	.word t3_0xca_80DE7F4+1 // 0xca
+	.word sandwormObject_80DEA7C+1 // 0xcb
+	.word t3_0xcc_80DEE60+1 // 0xcc
+	.word t3_0xcd_80DF0A4+1 // 0xcd
+	.word t3_0xce_80DF188+1 // 0xce
+	.word t3_0xcf_80DF328+1 // 0xcf
+	.word t3_0xd0_80DF4FC+1 // 0xd0
+	.word t3_0xd1_80DF90C+1 // 0xd1
+	.word t3_0xd2_80DFC38+1 // 0xd2
+	.word t3_0xd3_80DFE40+1 // 0xd3
+	.word t3_0xd4_80DFFB8+1 // 0xd4
+	thumb_func_end sub_8003E98
+	.endif
 
 	thumb_local_start
 sub_8004218:
@@ -15110,6 +15351,7 @@ off_800A094:
 	.word dword_2036820
 	thumb_func_end sub_800A07C
 
+	.ifndef DECOMP_battle_isTimeStop
 	thumb_func_start battle_isTimeStop
 battle_isTimeStop:
 	push {lr}
@@ -15118,6 +15360,12 @@ battle_isTimeStop:
 	and r0, r1
 	pop {pc}
 	thumb_func_end battle_isTimeStop
+	.else
+	thumb_func_start battle_isTimeStop
+battle_isTimeStop:
+	decomp_trampoline battle_isTimeStop_c, 4
+	thumb_func_end battle_isTimeStop
+	.endif
 
 	thumb_func_start battle_isTimeStopPauseOrBattleFlags0x20_800a0a4
 battle_isTimeStopPauseOrBattleFlags0x20_800a0a4:
@@ -15477,6 +15725,7 @@ battle_clearFlags:
 	mov pc, lr
 	thumb_func_end battle_clearFlags
 
+	.ifndef DECOMP_battle_getFlags
 	thumb_func_start battle_getFlags
 // 0x2 - cust gauge full
 // 0x4 - timestop
@@ -15486,6 +15735,12 @@ battle_getFlags:
 	ldrh r0, [r1,#oBattleState_Unk_32]
 	mov pc, lr
 	thumb_func_end battle_getFlags
+	.else
+	thumb_func_start battle_getFlags
+battle_getFlags:
+	decomp_trampoline battle_getFlags_c, 0
+	thumb_func_end battle_getFlags
+	.endif
 
 	thumb_local_start
 sub_800A2F8: // () -> ()
