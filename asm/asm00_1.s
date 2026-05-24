@@ -1574,6 +1574,7 @@ endMinigameEffectMaybe_8003a90:
 	pop {r4-r7,pc}
 	thumb_func_end endMinigameEffectMaybe_8003a90
 
+	.ifndef DECOMP_zeroFill_8003AB2
 	thumb_func_start zeroFill_8003AB2
 zeroFill_8003AB2:
 	push {r4-r7,lr}
@@ -1591,6 +1592,12 @@ loc_8003AC4:
 	strb r0, [r5,#0x3] // (byte_2001013 - 0x2001010)
 	pop {r4-r7,pc}
 	thumb_func_end zeroFill_8003AB2
+	.else
+	thumb_func_start zeroFill_8003AB2
+zeroFill_8003AB2:
+	decomp_trampoline zeroFill_8003AB2_c, 14
+	thumb_func_end zeroFill_8003AB2
+	.endif
 
 	thumb_local_start
 sub_8003ACA:

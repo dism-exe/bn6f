@@ -1,4 +1,5 @@
 
+	.ifndef DECOMP_sub_813B768
 	thumb_func_start sub_813B768
 sub_813B768:
 	push {lr}
@@ -13,6 +14,12 @@ sub_813B768:
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end sub_813B768
+	.else
+	thumb_func_start sub_813B768
+sub_813B768:
+	decomp_trampoline sub_813B768_c, 16
+	thumb_func_end sub_813B768
+	.endif
 
 	thumb_func_start sub_813B780
 sub_813B780:
@@ -292,6 +299,7 @@ off_813B930:
 	.word byte_20096D8
 	thumb_func_end sub_813B928
 
+	.ifndef DECOMP_zeroFill_813B934
 	thumb_func_start zeroFill_813B934
 zeroFill_813B934:
 	push {lr}
@@ -312,6 +320,12 @@ zeroFill_813B934:
 off_813B94C:
 	.word 0x188
 	thumb_func_end zeroFill_813B934
+	.else
+	thumb_func_start zeroFill_813B934
+zeroFill_813B934:
+	decomp_trampoline zeroFill_813B934_c, 20
+	thumb_func_end zeroFill_813B934
+	.endif
 
 	thumb_func_start sub_813B950
 sub_813B950:
@@ -1637,6 +1651,7 @@ byte_813C308:
 	.byte 0x3
 	thumb_func_end sub_813C1C0
 
+	.ifndef DECOMP_sub_813C324
 	thumb_func_start sub_813C324
 sub_813C324:
 	push {lr}
@@ -1648,6 +1663,12 @@ sub_813C324:
 off_813C330:
 	.word unk_2000090
 	thumb_func_end sub_813C324
+	.else
+	thumb_func_start sub_813C324
+sub_813C324:
+	decomp_trampoline sub_813C324_c, 8
+	thumb_func_end sub_813C324
+	.endif
 
 	thumb_func_start sub_813C334
 sub_813C334:
@@ -4184,6 +4205,7 @@ off_813D8C0:
 	.word 0x200
 	thumb_func_end sub_813D8AC
 
+	.ifndef DECOMP_sub_813D8C4
 	thumb_func_start sub_813D8C4
 sub_813D8C4:
 	ldr r0, off_813D8CC // =eLinkState 
@@ -4193,6 +4215,12 @@ sub_813D8C4:
 off_813D8CC:
 	.word eLinkState // eLinkState
 	thumb_func_end sub_813D8C4
+	.else
+	thumb_func_start sub_813D8C4
+sub_813D8C4:
+	decomp_trampoline sub_813D8C4_c, 4
+	thumb_func_end sub_813D8C4
+	.endif
 
 	thumb_func_start sub_813D8D0
 sub_813D8D0:

@@ -321,6 +321,7 @@ sub_80007A0:
 	pop {r1-r7,pc}
 	thumb_func_end sub_80007A0
 
+	.ifndef DECOMP_zeroFill_80007B2
 	thumb_func_start zeroFill_80007B2
 zeroFill_80007B2:
 	push {lr}
@@ -331,6 +332,12 @@ zeroFill_80007B2:
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end zeroFill_80007B2
+	.else
+	thumb_func_start zeroFill_80007B2
+zeroFill_80007B2:
+	decomp_trampoline zeroFill_80007B2_c, 2
+	thumb_func_end zeroFill_80007B2
+	.endif
 
 	thumb_func_start sub_80007BE
 sub_80007BE:
@@ -4934,6 +4941,7 @@ LoadGFXAnims: // (gfx_anim_data_arr: * FFStop32<[GFXAnimScript]>) -> ()
 	pop {r5,pc}
 	thumb_func_end LoadGFXAnims
 
+	.ifndef DECOMP_zeroFill_e20097A0
 	thumb_func_start zeroFill_e20097A0
 zeroFill_e20097A0:
 	push {lr}
@@ -4947,6 +4955,12 @@ zeroFill_e20097A0:
 off_8002374:
 	.word 0x108
 	thumb_func_end zeroFill_e20097A0
+	.else
+	thumb_func_start zeroFill_e20097A0
+zeroFill_e20097A0:
+	decomp_trampoline zeroFill_e20097A0_c, 8
+	thumb_func_end zeroFill_e20097A0
+	.endif
 
 	thumb_func_start sub_8002378
 sub_8002378:

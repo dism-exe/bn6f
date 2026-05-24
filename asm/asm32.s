@@ -34471,6 +34471,7 @@ sub_811FB64:
 	pop {pc}
 	thumb_func_end sub_811FB64
 
+	.ifndef DECOMP_sub_811FB78
 	thumb_func_start sub_811FB78
 sub_811FB78:
 	mov r1, r10
@@ -34480,6 +34481,12 @@ sub_811FB78:
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end sub_811FB78
+	.else
+	thumb_func_start sub_811FB78
+sub_811FB78:
+	decomp_trampoline sub_811FB78_c, 4
+	thumb_func_end sub_811FB78
+	.endif
 
 	thumb_func_start sub_811FB84
 sub_811FB84: // (a0: u32?, a1: usize) -> u32?
@@ -37363,6 +37370,7 @@ off_8121128:
 	.byte 0x0
 	thumb_func_end sub_8121108
 
+	.ifndef DECOMP_sub_8121144
 	thumb_func_start sub_8121144
 sub_8121144:
 	push {r4-r7,lr}
@@ -37374,6 +37382,12 @@ sub_8121144:
 off_8121150:
 	.word word_200DCF0
 	thumb_func_end sub_8121144
+	.else
+	thumb_func_start sub_8121144
+sub_8121144:
+	decomp_trampoline sub_8121144_c, 8
+	thumb_func_end sub_8121144
+	.endif
 
 	thumb_func_start sub_8121154
 sub_8121154:

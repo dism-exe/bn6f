@@ -289,6 +289,7 @@ dword_8021C64:
 	.word 0x1FF
 	thumb_func_end sub_8021C02
 
+	.ifndef DECOMP_zeroFill_e2002230
 	thumb_func_start zeroFill_e2002230
 zeroFill_e2002230:
 	push {lr}
@@ -303,6 +304,12 @@ zeroFill_e2002230:
 dword_8021C78:
 	.word 0xF00
 	thumb_func_end zeroFill_e2002230
+	.else
+	thumb_func_start zeroFill_e2002230
+zeroFill_e2002230:
+	decomp_trampoline zeroFill_e2002230_c, 12
+	thumb_func_end zeroFill_e2002230
+	.endif
 
 // (int chip_idx, int searchItem, int off) -> void*
 	thumb_func_start getOffsetToQuantityOfChipCodeMaybe_8021c7c

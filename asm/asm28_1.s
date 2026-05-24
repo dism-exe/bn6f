@@ -1,4 +1,5 @@
 
+	.ifndef DECOMP_zeroFill_e2004348
 	thumb_func_start zeroFill_e2004348
 zeroFill_e2004348:
 	push {r4-r7,lr}
@@ -11,6 +12,12 @@ zeroFill_e2004348:
 dword_809F9D8:
 	.word 0x480
 	thumb_func_end zeroFill_e2004348
+	.else
+	thumb_func_start zeroFill_e2004348
+zeroFill_e2004348:
+	decomp_trampoline zeroFill_e2004348_c, 12
+	thumb_func_end zeroFill_e2004348
+	.endif
 
 	thumb_func_start sub_809F9DC
 sub_809F9DC:

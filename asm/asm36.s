@@ -14988,6 +14988,7 @@ sub_81376CC:
 	mov r2, #0
 	strh r2, [r0,#4]
 	mov pc, lr
+	.ifndef DECOMP_sub_81376E8
 	thumb_func_start sub_81376E8
 sub_81376E8:
 	mov r1, r10
@@ -15004,6 +15005,12 @@ loc_81376F0:
 	bgt loc_81376F0
 	mov pc, lr
 	thumb_func_end sub_81376E8
+	.else
+	thumb_func_start sub_81376E8
+sub_81376E8:
+	decomp_trampoline sub_81376E8_c, 16
+	thumb_func_end sub_81376E8
+	.endif
 
 	thumb_func_start sub_8137700
 sub_8137700:

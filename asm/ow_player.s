@@ -2519,6 +2519,7 @@ sub_809E3AA:
 	mov pc, lr
 	thumb_func_end sub_809E3AA
 
+	.ifndef DECOMP_sub_809E3B2
 	thumb_func_start sub_809E3B2
 sub_809E3B2:
 	push {r4-r7,lr}
@@ -2531,6 +2532,12 @@ sub_809E3B2:
 	strh r0, [r4,#0x18] // (dword_2000AB8 - 0x2000aa0)
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E3B2
+	.else
+	thumb_func_start sub_809E3B2
+sub_809E3B2:
+	decomp_trampoline sub_809E3B2_c, 8
+	thumb_func_end sub_809E3B2
+	.endif
 
 	thumb_func_start sub_809E3C4
 sub_809E3C4:

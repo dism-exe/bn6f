@@ -10193,6 +10193,7 @@ off_81284A0:
 	.word unk_2028590
 	thumb_func_end sub_812848C
 
+	.ifndef DECOMP_sub_81284A4
 	thumb_func_start sub_81284A4
 sub_81284A4:
 	ldr r0, off_81284B0 // =byte_2000FE0 
@@ -10204,6 +10205,12 @@ sub_81284A4:
 off_81284B0:
 	.word byte_2000FE0
 	thumb_func_end sub_81284A4
+	.else
+	thumb_func_start sub_81284A4
+sub_81284A4:
+	decomp_trampoline sub_81284A4_c, 8
+	thumb_func_end sub_81284A4
+	.endif
 
 	thumb_local_start
 sub_81284B4:

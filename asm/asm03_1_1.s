@@ -12116,6 +12116,7 @@ off_803EF5C:
 	.word eStruct200BC30
 	thumb_func_end sub_803EF54
 
+	.ifndef DECOMP_sub_803EF60
 	thumb_func_start sub_803EF60
 sub_803EF60:
 	push {lr}
@@ -12127,6 +12128,12 @@ sub_803EF60:
 off_803EF70:
 	.word 0x100
 	thumb_func_end sub_803EF60
+	.else
+	thumb_func_start sub_803EF60
+sub_803EF60:
+	decomp_trampoline sub_803EF60_c, 12
+	thumb_func_end sub_803EF60
+	.endif
 
 	thumb_func_start sub_803EF74
 sub_803EF74:
