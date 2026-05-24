@@ -3417,6 +3417,7 @@ sub_809F904:
 	pop {pc}
 	thumb_func_end sub_809F904
 
+	.ifndef DECOMP_sub_809F90C
 	thumb_func_start sub_809F90C
 sub_809F90C:
 	push {lr}
@@ -3430,6 +3431,12 @@ sub_809F90C:
 locret_809F920:
 	pop {pc}
 	thumb_func_end sub_809F90C
+	.else
+	thumb_func_start sub_809F90C
+sub_809F90C:
+	decomp_trampoline sub_809F90C_c, 14
+	thumb_func_end sub_809F90C
+	.endif
 
 	thumb_local_start
 sub_809F922:

@@ -1965,6 +1965,7 @@ sub_809E08A:
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E08A
 
+	.ifndef DECOMP_SetPlayerCanMoveEventFlag
 	thumb_func_start SetPlayerCanMoveEventFlag
 SetPlayerCanMoveEventFlag:
 	push {lr}
@@ -1973,6 +1974,12 @@ SetPlayerCanMoveEventFlag:
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end SetPlayerCanMoveEventFlag
+	.else
+	thumb_func_start SetPlayerCanMoveEventFlag
+SetPlayerCanMoveEventFlag:
+	decomp_trampoline SetPlayerCanMoveEventFlag_c, 4
+	thumb_func_end SetPlayerCanMoveEventFlag
+	.endif
 
 // () -> void
 	thumb_local_start
@@ -2076,6 +2083,7 @@ off_809E138:
 	.word eStruct200ace0
 	thumb_func_end owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
 
+	.ifndef DECOMP_owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	thumb_func_start owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 owPlayer_setS200ace0_fixedAnimationSelect_809e13c:
 	push {lr}
@@ -2085,6 +2093,12 @@ owPlayer_setS200ace0_fixedAnimationSelect_809e13c:
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end owPlayer_setS200ace0_fixedAnimationSelect_809e13c
+	.else
+	thumb_func_start owPlayer_setS200ace0_fixedAnimationSelect_809e13c
+owPlayer_setS200ace0_fixedAnimationSelect_809e13c:
+	decomp_trampoline owPlayer_setS200ace0_fixedAnimationSelect_809e13c_c, 8
+	thumb_func_end owPlayer_setS200ace0_fixedAnimationSelect_809e13c
+	.endif
 
 	thumb_func_start sub_809E14C
 sub_809E14C:

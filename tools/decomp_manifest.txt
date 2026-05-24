@@ -210,3 +210,15 @@ returnZero_809E228
 sub_802FE28
 sub_8001158
 SetScreenFade
+
+# Logical-only entries — these are 4-byte preludes that fall through
+# into already-wrapped bodies (TestEventFlag / SetEventFlag), so they
+# need no wrap themselves but should be treated as "converted" for
+# chain-candidate-finding. New C conversions that call them should
+# instead call the underlying body's _c with the merged flag. (Only
+# the ones whose fall-through target IS in the manifest.)
+SetEventFlagFromImmediate
+TestEventFlagFromImmediate
+sub_809F90C
+SetPlayerCanMoveEventFlag
+owPlayer_setS200ace0_fixedAnimationSelect_809e13c
