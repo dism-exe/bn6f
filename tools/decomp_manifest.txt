@@ -191,3 +191,4 @@ StartCutscene
 sub_8021AB4
 spawnOWPlayerObjectForEnterMap_809e064
 sub_80018E0
+sub_8004298

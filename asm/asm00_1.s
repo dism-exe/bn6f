@@ -2415,6 +2415,7 @@ off_8004294:
 	.word sub_3006440+1
 	thumb_func_end sub_8004218
 
+	.ifndef DECOMP_sub_8004298
 	thumb_func_start sub_8004298
 sub_8004298:
 	push {lr}
@@ -2424,6 +2425,12 @@ sub_8004298:
 	mov r0, #0x30
 	ldr r3, off_80042BC // =eT3BattleObject0_LinkedList
 	thumb_func_end sub_8004298
+	.else
+	thumb_func_start sub_8004298
+sub_8004298:
+	decomp_trampoline sub_8004298_c, 6
+	thumb_func_end sub_8004298
+	.endif
 
 	thumb_local_start
 sub_80042A6:
