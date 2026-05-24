@@ -6206,7 +6206,7 @@ off_8005FB4:
 	.word sub_800647C+1
 	thumb_func_end sub_8005F84
 
-off_8006040:
+off_8006040::
 	fade_params_struct [
 		unk_00_ptr: iPalette3001B60,
 		unk_04_ptr: iPallete3001750,
@@ -6530,6 +6530,7 @@ SetScreenFade:
 	b loc_8006276
 loc_8006274:
 	mov r3, #0x20
+	.ifndef DECOMP_SetScreenFade
 loc_8006276:
 	push {r5,lr}
 	cmp r0, #0xff
@@ -6573,6 +6574,10 @@ locret_80062C0:
 	.balign 4, 0x00
 off_80062C4:
 	.word off_8006040
+	.else
+loc_8006276:
+	decomp_trampoline_r3safe SetScreenFade_c, 68
+	.endif
 	thumb_func_end SetScreenFade
 
 	thumb_func_start screenFade_80062C8
