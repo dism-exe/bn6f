@@ -5399,7 +5399,7 @@ byte_80025C9:
 	.byte 0x16
 byte_80025CA:
 	.byte 0x2, 0xFF
-byte_80025CC:
+byte_80025CC::
 	.byte 0x0, 0x0, 0xFF, 0x7F, 0xFF, 0x7F, 0xFF, 0x7F, 0xFF, 0x7F
 	.byte 0xFF, 0x7F, 0xFF, 0x7F, 0xFF, 0x7F, 0xFF, 0x7F, 0xFF, 0x7F
 	.byte 0xFF, 0x7F, 0xFF, 0x7F, 0xFF, 0x7F, 0xFF, 0x7F, 0xFF, 0x7F
@@ -5488,6 +5488,7 @@ copy_8002668:
 call_8002676:
 	push {lr}
 
+	.ifndef DECOMP_copy_8002668
 loc_8002678:
 	ldr r0, off_8002684 // =byte_80025CC
 	ldr r1, off_8002688 // =byte_3001730
@@ -5504,6 +5505,15 @@ off_800268C:
 	.word dword_86A5500
 off_8002690:
 	.word byte_3001710
+	.else
+	// Literal pool kept in both branches (shared with other fns).
+loc_8002678:
+	decomp_trampoline copy_8002668_c, 12
+off_800268C:
+	.word dword_86A5500
+off_8002690:
+	.word byte_3001710
+	.endif
 	thumb_func_end copy_8002668
 
 	thumb_func_start sub_8002694

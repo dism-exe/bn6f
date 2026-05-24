@@ -16460,6 +16460,7 @@ dword_802E23C:
 	.word 0x1F00000
 	thumb_func_end sub_802E1EC
 
+	.ifndef DECOMP_sub_802E240
 	thumb_func_start sub_802E240
 sub_802E240:
 	push {lr}
@@ -16474,6 +16475,12 @@ sub_802E240:
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	pop {pc}
 	thumb_func_end sub_802E240
+	.else
+	thumb_func_start sub_802E240
+sub_802E240:
+	decomp_trampoline sub_802E240_c, 10
+	thumb_func_end sub_802E240
+	.endif
 
 	thumb_local_start
 sub_802E252:
@@ -16484,7 +16491,7 @@ sub_802E252:
 	.balign 4, 0x00
 off_802E25C:
 	.word off_802E260
-off_802E260:
+off_802E260::
 	.word byte_802167C
 	.word byte_8021820
 	.word byte_802185C

@@ -2360,6 +2360,7 @@ owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2:
 	mov r1, #DEFAULT_OW_PLAYER_NAVI_VERTICAL_COMPRESS
 	mov r2, #DEFAULT_OW_PLAYER_NAVI_ROTATION
 
+	.ifndef DECOMP_owPlayer_setS2000aa0_param0x0to0x2_809e2c8
 	thumb_func_start owPlayer_setS2000aa0_param0x0to0x2_809e2c8
 owPlayer_setS2000aa0_param0x0to0x2_809e2c8:
 	ldr r3, off_809E430 // =eStruct2000aa0 
@@ -2368,6 +2369,12 @@ owPlayer_setS2000aa0_param0x0to0x2_809e2c8:
 	strb r2, [r3,#oS2000aa0_OWPlayerNaviRotation] // (byte_2000AA2 - 0x2000aa0)
 	mov pc, lr
 	thumb_func_end owPlayer_setS2000aa0_param0x0to0x2_809e2c8
+	.else
+	thumb_func_start owPlayer_setS2000aa0_param0x0to0x2_809e2c8
+owPlayer_setS2000aa0_param0x0to0x2_809e2c8:
+	decomp_trampoline owPlayer_setS2000aa0_param0x0to0x2_809e2c8_c, 2
+	thumb_func_end owPlayer_setS2000aa0_param0x0to0x2_809e2c8
+	.endif
 	thumb_func_end owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2
 
 	thumb_local_start
