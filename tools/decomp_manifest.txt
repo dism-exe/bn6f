@@ -128,3 +128,11 @@ sub_80015FC
 sub_8004702
 sub_803DCE8
 sub_802F2C8
+sub_80028C0
+sub_80027B4
+ZeroFillObjectInteractionAreas_800378C
+sprite_zeroColorShader
+sprite_setPalette
+sub_8002E14
+sprite_setFlip
+sub_8002874

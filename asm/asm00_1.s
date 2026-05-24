@@ -1056,6 +1056,7 @@ off_8003788:
 	.word byte_2036830
 	thumb_func_end object_800372A
 
+	.ifndef DECOMP_ZeroFillObjectInteractionAreas_800378C
 	thumb_func_start ZeroFillObjectInteractionAreas_800378C
 ZeroFillObjectInteractionAreas_800378C: // () -> ()
 	push {lr}
@@ -1078,6 +1079,12 @@ off_80037A4:
 off_80037A8:
 	.word eNumOWObjectInteractionAreas
 	thumb_func_end ZeroFillObjectInteractionAreas_800378C
+	.else
+	thumb_func_start ZeroFillObjectInteractionAreas_800378C
+ZeroFillObjectInteractionAreas_800378C:
+	decomp_trampoline ZeroFillObjectInteractionAreas_800378C_c, 24
+	thumb_func_end ZeroFillObjectInteractionAreas_800378C
+	.endif
 
 	thumb_func_start createOWObjectInteractionArea_80037ac
 // something to do with interacting with npcs? maybe other objects too

@@ -181,6 +181,7 @@ off_80027B0:
 	.word mugshotSpritePtrs
 	thumb_func_end sub_800279C
 
+	.ifndef DECOMP_sub_80027B4
 	thumb_func_start sub_80027B4
 sub_80027B4:
 	ldr r0, off_80027BC // =dword_200F350
@@ -193,6 +194,12 @@ off_80027BC:
 dword_80027C0:
 	.word 0x1
 	thumb_func_end sub_80027B4
+	.else
+	thumb_func_start sub_80027B4
+sub_80027B4:
+	decomp_trampoline sub_80027B4_c, 8
+	thumb_func_end sub_80027B4
+	.endif
 
 	.ifndef DECOMP_sub_80027C4
 	thumb_func_start sub_80027C4
@@ -316,6 +323,7 @@ sub_800286C:
 	mov pc, lr
 	thumb_func_end sub_800286C
 
+	.ifndef DECOMP_sub_8002874
 	thumb_func_start sub_8002874
 sub_8002874:
 	push {r5,lr}
@@ -340,6 +348,12 @@ locret_8002896:
 dword_8002898:
 	.word 0x6010000
 	thumb_func_end sub_8002874
+	.else
+	thumb_func_start sub_8002874
+sub_8002874:
+	decomp_trampoline sub_8002874_c, 32
+	thumb_func_end sub_8002874
+	.endif
 
 	.ifndef DECOMP_sprite_resetObjVars_800289C
 	thumb_func_start sprite_resetObjVars_800289C
@@ -369,6 +383,7 @@ sprite_resetObjVars_800289C:
 	thumb_func_end sprite_resetObjVars_800289C
 	.endif
 
+	.ifndef DECOMP_sub_80028C0
 	thumb_func_start sub_80028C0
 sub_80028C0:
 	ldr r1, off_80028CC // =dword_200F340
@@ -382,6 +397,19 @@ off_80028CC:
 off_80028D0:
 	.word byte_200F389
 	thumb_func_end sub_80028C0
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_80028C0
+sub_80028C0:
+	decomp_trampoline sub_80028C0_c, 4
+	.balign 4, 0
+off_80028CC:
+	.word dword_200F340
+off_80028D0:
+	.word byte_200F389
+	thumb_func_end sub_80028C0
+	.endif
 
 	thumb_func_start initUncompSpriteState_80028d4
 initUncompSpriteState_80028d4: // (a0: *const ?) -> ()
@@ -1110,6 +1138,7 @@ locret_8002D7E:
 	thumb_func_end sprite_makeUnscalable
 
 // (int pallete) -> void
+	.ifndef DECOMP_sprite_setPalette
 	thumb_func_start sprite_setPalette
 sprite_setPalette:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
@@ -1119,6 +1148,12 @@ sprite_setPalette:
 	strb r0, [r3,#oObjectSprite_Unk_04]
 	mov pc, lr
 	thumb_func_end sprite_setPalette
+	.else
+	thumb_func_start sprite_setPalette
+sprite_setPalette:
+	decomp_trampoline sprite_setPalette_c, 4
+	thumb_func_end sprite_setPalette
+	.endif
 
 	thumb_func_start sprite_getPalette
 sprite_getPalette:
@@ -1223,6 +1258,7 @@ sub_8002E04:
 	mov pc, lr
 	thumb_func_end sub_8002E04
 
+	.ifndef DECOMP_sub_8002E14
 	thumb_func_start sub_8002E14
 sub_8002E14:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
@@ -1237,6 +1273,12 @@ sub_8002E14:
 	strb r1, [r3,#oObjectSprite_Unk_15]
 	mov pc, lr
 	thumb_func_end sub_8002E14
+	.else
+	thumb_func_start sub_8002E14
+sub_8002E14:
+	decomp_trampoline sub_8002E14_c, 14
+	thumb_func_end sub_8002E14
+	.endif
 
 	thumb_local_start
 sub_8002E2A:
@@ -1370,6 +1412,7 @@ sprite_getColorShader:
 	mov pc, lr
 	thumb_func_end sprite_getColorShader
 
+	.ifndef DECOMP_sprite_zeroColorShader
 	thumb_func_start sprite_zeroColorShader
 sprite_zeroColorShader:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
@@ -1380,6 +1423,12 @@ sprite_zeroColorShader:
 	strh r0, [r3,#oObjectSprite_Unk_06]
 	mov pc, lr
 	thumb_func_end sprite_zeroColorShader
+	.else
+	thumb_func_start sprite_zeroColorShader
+sprite_zeroColorShader:
+	decomp_trampoline sprite_zeroColorShader_c, 6
+	thumb_func_end sprite_zeroColorShader
+	.endif
 
 	thumb_func_start sprite_setMosaicSize
 // r0 - mosaic width
@@ -1448,6 +1497,7 @@ sub_8002F3E:
 	.hword 0x2000
 	thumb_func_end sub_8002F3E
 
+	.ifndef DECOMP_sprite_setFlip
 	thumb_func_start sprite_setFlip
 sprite_setFlip:
 	ldrb r3, [r5,#oObjectHeader_SpriteOffset]
@@ -1468,6 +1518,12 @@ sprite_setFlip:
 	strb r1, [r3,#oObjectSprite_Unk_16]
 	mov pc, lr
 	thumb_func_end sprite_setFlip
+	.else
+	thumb_func_start sprite_setFlip
+sprite_setFlip:
+	decomp_trampoline sprite_setFlip_c, 26
+	thumb_func_end sprite_setFlip
+	.endif
 
 	thumb_func_start sprite_getFlip
 sprite_getFlip:
