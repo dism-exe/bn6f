@@ -52,6 +52,8 @@ bn6f.txt
 !tests/fixtures/*.txt
 # and the decomp manifest (drives the decompile build)
 !tools/decomp_manifest.txt
+# and hand-curated demo scenes (savestates + input replays, NOTES.md)
+!tests/fixtures/demos/**
 
 # asmdiff.sh
 *.dump
