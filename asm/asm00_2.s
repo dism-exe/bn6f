@@ -10392,6 +10392,7 @@ SetCurPETNaviStatsByte:
 	.endif
 
 // (int a1, int a2) -> u8
+	.ifndef DECOMP_GetCurPETNaviStatsByte
 	thumb_func_start GetCurPETNaviStatsByte
 GetCurPETNaviStatsByte:
 	push {lr}
@@ -10406,6 +10407,12 @@ GetCurPETNaviStatsByte:
 	ldrb r0, [r3,r1]
 	pop {pc}
 	thumb_func_end GetCurPETNaviStatsByte
+	.else
+	thumb_func_start GetCurPETNaviStatsByte
+GetCurPETNaviStatsByte:
+	decomp_trampoline GetCurPETNaviStatsByte_c, 14
+	thumb_func_end GetCurPETNaviStatsByte
+	.endif
 
 	thumb_local_start
 GetCurPetNaviStatsSignedByte:
@@ -10422,6 +10429,7 @@ GetCurPetNaviStatsSignedByte:
 	pop {pc}
 	thumb_func_end GetCurPetNaviStatsSignedByte
 
+	.ifndef DECOMP_SetCurPETNaviStatsHword
 	thumb_func_start SetCurPETNaviStatsHword
 // (int structSelectIdx, int structOffset, u16 val) -> void
 SetCurPETNaviStatsHword:
@@ -10438,7 +10446,14 @@ SetCurPETNaviStatsHword:
 	strh r2, [r3,r1]
 	pop {pc}
 	thumb_func_end SetCurPETNaviStatsHword
+	.else
+	thumb_func_start SetCurPETNaviStatsHword
+SetCurPETNaviStatsHword:
+	decomp_trampoline SetCurPETNaviStatsHword_c, 14
+	thumb_func_end SetCurPETNaviStatsHword
+	.endif
 
+	.ifndef DECOMP_GetCurPETNaviStatsHword
 	thumb_func_start GetCurPETNaviStatsHword
 GetCurPETNaviStatsHword: // (which_navi: u8, which_stat: u8) -> u16
 	push {lr}
@@ -10460,6 +10475,12 @@ GetCurPETNaviStatsHword: // (which_navi: u8, which_stat: u8) -> u16
 
 	pop {pc}
 	thumb_func_end GetCurPETNaviStatsHword
+	.else
+	thumb_func_start GetCurPETNaviStatsHword
+GetCurPETNaviStatsHword:
+	decomp_trampoline GetCurPETNaviStatsHword_c, 14
+	thumb_func_end GetCurPETNaviStatsHword
+	.endif
 
 	thumb_func_start GetBattleNaviStats203CB10Byte
 GetBattleNaviStats203CB10Byte:

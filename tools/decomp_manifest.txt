@@ -21,6 +21,8 @@ CopyBytes
 CopyHalfwords
 CopyWords
 FillByEightWords
+GetCurPETNaviStatsByte
+GetCurPETNaviStatsHword
 GetRNG
 GetRNGSecondary
 HalfwordFill
@@ -42,6 +44,7 @@ ReadMapScriptWord
 SWI_LZ77UnCompReadNormalWrite8bit
 SeedRNG
 SetCurPETNaviStatsByte
+SetCurPETNaviStatsHword
 SetCutsceneCameraScript
 SetEventFlag
 SetEventFlagFromImmediate
@@ -198,6 +201,7 @@ sub_802F0F4
 sub_802F2C8
 sub_802FDB0
 sub_802FE28
+sub_8034C36
 sub_803537C
 sub_80356EC
 sub_8035738
@@ -249,4 +253,3 @@ zeroFill_e20094C0
 zeroFill_e2009740
 zeroFill_e20097A0
 zeroFill_e200F3A0
-sub_8034C36
