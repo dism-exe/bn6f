@@ -328,15 +328,20 @@ list-demos:
 # pre-extracted .ss + .input pair (run tools/bk2_extract.py to refresh
 # from the .bk2), and `verify-state` already auto-resolves them via
 # STATE_NAME=bk2/<stem>.  This convenience target loops over every
-# bk2/*.bk2 in the demos tree at whatever frame budget BK2_FRAMES
-# specifies (default 600 — the intro fully exercises 4567 pairs at
-# this length, the tutorial 3387 at 1200).
-BK2_FRAMES ?= 600
+# bk2/*.bk2 and plays it through to the END of the recording — the
+# frame count is read from the .input file size (one u16 packed as
+# 4 bytes per frame).
 verify-bk2: track-build $(FN_SYMS)
 	@set -e; \
 	for bk2 in $(DEMOS_ROOT)/bk2/*.bk2; do \
 		stem=$$(basename $$bk2 .bk2); \
-		echo; echo "=== verify-bk2 bk2/$$stem ==="; \
+		input=$(DEMOS_ROOT)/bk2/$$stem.input; \
+		if [ ! -f $$input ]; then \
+			echo "verify-bk2: missing $$input (run tools/bk2_extract.py first)" >&2; \
+			exit 1; \
+		fi; \
+		frames=$$(( $$(stat -c %s $$input) / 4 )); \
+		echo; echo "=== verify-bk2 bk2/$$stem  ($$frames frames) ==="; \
 		$(MAKE) --no-print-directory verify-state \
-			STATE_NAME=bk2/$$stem STATE_FRAMES=$(BK2_FRAMES); \
+			STATE_NAME=bk2/$$stem STATE_FRAMES=$$frames; \
 	done

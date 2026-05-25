@@ -62,18 +62,18 @@ auto-resolves `STATE_NAME=bk2/<stem>` to the `.ss` + `.input` siblings
 in this directory):
 
 ```sh
-make verify-state STATE_NAME=bk2/intro STATE_FRAMES=600
-make verify-state STATE_NAME=bk2/intro_to_end_tutorial STATE_FRAMES=1200
+make verify-state STATE_NAME=bk2/intro                   STATE_FRAMES=6239
+make verify-state STATE_NAME=bk2/intro_to_end_tutorial   STATE_FRAMES=16441
 ```
 
-Or, run every bk2 in this directory in one go (default `BK2_FRAMES=600`):
+Or, run every bk2 in this directory through to the END of the
+recording in one go (frame count is auto-derived from each .input):
 
 ```sh
-make verify-bk2 [BK2_FRAMES=600]
+make verify-bk2
 ```
 
-At 600 frames `intro` exercises 4567 pairs and `intro_to_end_tutorial`
-3387 pairs against the current converted function set (every pair
-passing).  The frame budget caps how much of the recording is
-verified; raising it costs proportional wall-clock but covers more
-of the converted-function surface area.
+`bk2/intro` is ~104 seconds of game time, `bk2/intro_to_end_tutorial`
+is ~4½ minutes — the harness emulates each end-to-end, so wall-clock
+is proportional to recorded length × the harness's per-frame cost
+(roughly 5× faster than realtime in practice).
