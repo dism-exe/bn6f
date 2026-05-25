@@ -5770,6 +5770,7 @@ locret_800EA8E:
 	pop {pc}
 	thumb_func_end sub_800EA4E
 
+	.ifndef DECOMP_sub_800EA90
 	thumb_func_start sub_800EA90
 sub_800EA90:
 	push {r4,lr}
@@ -5796,6 +5797,12 @@ loc_800EA9C:
 locret_800EAB8:
 	pop {r4,pc}
 	thumb_func_end sub_800EA90
+	.else
+	thumb_func_start sub_800EA90
+sub_800EA90:
+	decomp_trampoline sub_800EA90_c, 34
+	thumb_func_end sub_800EA90
+	.endif
 
 	thumb_func_start sub_800EABA
 sub_800EABA:
