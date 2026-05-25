@@ -6290,6 +6290,7 @@ sub_8049D98:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8049D98
 
+	.ifndef DECOMP_sub_8049DA0
 	thumb_func_start sub_8049DA0
 sub_8049DA0:
 	push {r4-r7,lr}
@@ -6309,6 +6310,12 @@ off_8049DBC:
 off_8049DC0:
 	.word unk_2001828
 	thumb_func_end sub_8049DA0
+	.else
+	thumb_func_start sub_8049DA0
+sub_8049DA0:
+	decomp_trampoline sub_8049DA0_c, 28
+	thumb_func_end sub_8049DA0
+	.endif
 
 	thumb_func_start sub_8049DC4
 sub_8049DC4:
