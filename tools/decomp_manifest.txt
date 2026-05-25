@@ -80,6 +80,7 @@ TestEventFlag
 TestEventFlagFromImmediate
 TestPETMenuDataFlag
 WordFill
+ZeroAllNaviStatsMood
 ZeroFillByByte
 ZeroFillByEightWords
 ZeroFillByHalfword
@@ -125,6 +126,8 @@ eStruct200BC30_getJumpOffset00
 eStruct200BC30_getJumpOffset00_pushpop
 eStruct200FE00_setUnk04To15h
 eStruct2038160_clearStruct
+encryption_8006df6
+encryption_8006e26
 encryption_8006e3c
 encryption_applyPack_8006e70
 encryption_bugfrags_8006fac
@@ -154,6 +157,7 @@ notZero_eByte200AD04
 object_isValidPanel
 object_setPanelAllianceTimerLong
 object_setPanelAllianceTimerShort
+owPlayer_809E0FC
 owPlayer_809E114
 owPlayer_809e218
 owPlayer_setS2000aa0_param0x0to0x2_809e2c8
@@ -166,6 +170,7 @@ render_800172C
 reqBBS_813E616
 reqBBS_81407D8
 reqBBS_814084C
+reqBBS_81408B4
 reqBBS_8140974
 reqBBS_8140984
 reqBBS_addBBSMessage_813e5dc
@@ -237,17 +242,23 @@ sub_800A8F8
 sub_800A9E2
 sub_800AB2E
 sub_800AB3A
+sub_800AB46
 sub_800B110
 sub_800B460
+sub_800B46C
 sub_800ED80
+sub_800F486
 sub_80133EC
+sub_8013422
 sub_801482C
 sub_8015952
+sub_801DFB8
 sub_801E0D0
 sub_801E780
 sub_8021AB4
 sub_8021B2A
 sub_8021D08
+sub_8021D14
 sub_8021D36
 sub_802CDFE
 sub_802D064
@@ -299,6 +310,7 @@ sub_8080D90
 sub_809C940
 sub_809C968
 sub_809CF2C
+sub_809E04C
 sub_809E3B2
 sub_809E3C4
 sub_809E462
@@ -338,6 +350,7 @@ sub_813D760
 sub_813D8C4
 sub_813D8D0
 sub_813D924
+sub_813D934
 sub_813D94C
 sub_813D9A0
 sub_813DA84
@@ -350,7 +363,9 @@ sub_81466E4
 sub_8146714
 sub_8146728
 sub_81468BC
+sub_81468C8
 sub_81468E0
+sub_81468F4
 sub_814690C
 sub_8146918
 sub_81469DC

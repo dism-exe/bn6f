@@ -1066,6 +1066,7 @@ loc_800F482:
 	pop {pc}
 	thumb_func_end sub_800F46C
 
+	.ifndef DECOMP_sub_800F486
 	thumb_func_start sub_800F486
 sub_800F486:
 	cmp r0, #0xd3
@@ -1082,6 +1083,12 @@ loc_800F49A:
 	mov r0, #0
 	mov pc, lr
 	thumb_func_end sub_800F486
+	.else
+	thumb_func_start sub_800F486
+sub_800F486:
+	decomp_trampoline sub_800F486_c, 14
+	thumb_func_end sub_800F486
+	.endif
 
 	thumb_func_start sub_800F49E
 sub_800F49E:
@@ -9814,6 +9821,7 @@ byte_801341B::
 	thumb_func_end sub_80133EC
 	.endif
 
+	.ifndef DECOMP_sub_8013422
 	thumb_func_start sub_8013422
 sub_8013422:
 	push {lr}
@@ -9827,6 +9835,12 @@ sub_8013422:
 off_8013434:
 	.word eBattleNaviStats0
 	thumb_func_end sub_8013422
+	.else
+	thumb_func_start sub_8013422
+sub_8013422:
+	decomp_trampoline sub_8013422_c, 12
+	thumb_func_end sub_8013422
+	.endif
 
 // (void *struct) -> void
 	.ifndef DECOMP_initNaviStats_WithDefaultStatsMaybe_8013438
@@ -15353,6 +15367,7 @@ sub_8015C2C:
 	pop {pc}
 	thumb_func_end sub_8015C2C
 
+	.ifndef DECOMP_ZeroAllNaviStatsMood
 	thumb_func_start ZeroAllNaviStatsMood
 ZeroAllNaviStatsMood:
 	push {r4,lr}
@@ -15367,6 +15382,12 @@ ZeroAllNaviStatsMood:
 	blt .setNaviMoodLoop
 	pop {r4,pc}
 	thumb_func_end ZeroAllNaviStatsMood
+	.else
+	thumb_func_start ZeroAllNaviStatsMood
+ZeroAllNaviStatsMood:
+	decomp_trampoline ZeroAllNaviStatsMood_c, 12
+	thumb_func_end ZeroAllNaviStatsMood
+	.endif
 
 	thumb_func_start sub_8015C48
 sub_8015C48:
@@ -29989,6 +30010,7 @@ SetCustGauge:
 	thumb_func_end SetCustGauge
 	.endif
 
+	.ifndef DECOMP_sub_801DFB8
 	thumb_func_start sub_801DFB8
 sub_801DFB8:
 	push {lr}
@@ -30006,6 +30028,12 @@ loc_801DFC8:
 dword_801DFCC:
 	.word 0x4000
 	thumb_func_end sub_801DFB8
+	.else
+	thumb_func_start sub_801DFB8
+sub_801DFB8:
+	decomp_trampoline sub_801DFB8_c, 16
+	thumb_func_end sub_801DFB8
+	.endif
 
 	thumb_local_start
 sub_801DFD0:

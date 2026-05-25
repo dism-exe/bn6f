@@ -8173,6 +8173,7 @@ sub_8006DEC:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8006DEC
 
+	.ifndef DECOMP_encryption_8006df6
 	thumb_func_start encryption_8006df6
 encryption_8006df6:
 	push {r4-r7,lr}
@@ -8189,6 +8190,12 @@ loc_8006DFE:
 	str r7, [r0,#0x4] // (dword_2001064 - 0x2001060)
 	pop {r4-r7,pc}
 	thumb_func_end encryption_8006df6
+	.else
+	thumb_func_start encryption_8006df6
+encryption_8006df6:
+	decomp_trampoline encryption_8006df6_c, 14
+	thumb_func_end encryption_8006df6
+	.endif
 
 // (u8 *mem, int size) -> void
 	.ifndef DECOMP_encryption_save_memSetFlags_8006E0E
@@ -8216,6 +8223,7 @@ encryption_save_memSetFlags_8006E0E:
 	thumb_func_end encryption_save_memSetFlags_8006E0E
 	.endif
 
+	.ifndef DECOMP_encryption_8006e26
 	thumb_func_start encryption_8006e26
 encryption_8006e26:
 	push {r4-r7,lr}
@@ -8231,6 +8239,17 @@ loc_8006E2A:
 off_8006E38:
 	.word eUnusedExtraToolkitPtrsOffset
 	thumb_func_end encryption_8006e26
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start encryption_8006e26
+encryption_8006e26:
+	decomp_trampoline encryption_8006e26_c, 8
+	.balign 4, 0
+off_8006E38:
+	.word eUnusedExtraToolkitPtrsOffset
+	thumb_func_end encryption_8006e26
+	.endif
 
 	.ifndef DECOMP_encryption_8006e3c
 	thumb_func_start encryption_8006e3c
@@ -17155,6 +17174,7 @@ sub_800AB3A:
 	thumb_func_end sub_800AB3A
 	.endif
 
+	.ifndef DECOMP_sub_800AB46
 	thumb_func_start sub_800AB46
 sub_800AB46:
 	mov r3, #0x10
@@ -17170,6 +17190,12 @@ loc_800AB58:
 	strb r0, [r3,r1]
 	mov pc, lr
 	thumb_func_end sub_800AB46
+	.else
+	thumb_func_start sub_800AB46
+sub_800AB46:
+	decomp_trampoline sub_800AB46_c, 12
+	thumb_func_end sub_800AB46
+	.endif
 
 	thumb_local_start
 sub_800AB5C:
@@ -18422,6 +18448,7 @@ sub_800B460:
 	thumb_func_end sub_800B460
 	.endif
 
+	.ifndef DECOMP_sub_800B46C
 	thumb_func_start sub_800B46C
 sub_800B46C:
 	mov r3, r0
@@ -18438,6 +18465,12 @@ sub_800B46C:
 locret_800B482:
 	mov pc, lr
 	thumb_func_end sub_800B46C
+	.else
+	thumb_func_start sub_800B46C
+sub_800B46C:
+	decomp_trampoline sub_800B46C_c, 16
+	thumb_func_end sub_800B46C
+	.endif
 
 	thumb_local_start
 sub_800B484:

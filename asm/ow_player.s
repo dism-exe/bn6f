@@ -1909,6 +1909,7 @@ dword_809E048:
 	.word 0xD80
 	thumb_func_end sub_809E01C
 
+	.ifndef DECOMP_sub_809E04C
 	thumb_func_start sub_809E04C
 sub_809E04C:
 	push {r0,r1,lr}
@@ -1924,6 +1925,16 @@ off_809E05C:
 off_809E060:
 	.word eStruct2000aa0
 	thumb_func_end sub_809E04C
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_809E04C
+sub_809E04C:
+	decomp_trampoline sub_809E04C_c, 12
+off_809E060:
+	.word eStruct2000aa0
+	thumb_func_end sub_809E04C
+	.endif
 
 	.ifndef DECOMP_spawnOWPlayerObjectForEnterMap_809e064
 	thumb_func_start spawnOWPlayerObjectForEnterMap_809e064
@@ -2040,6 +2051,7 @@ locret_809E0FA:
 	pop {pc}
 	thumb_func_end owPlayer_809E0C8
 
+	.ifndef DECOMP_owPlayer_809E0FC
 	thumb_func_start owPlayer_809E0FC
 owPlayer_809E0FC:
 	ldr r3, off_809E138 // =eStruct200ace0 
@@ -2055,6 +2067,12 @@ owPlayer_809E0FC:
 off_809E110:
 	.word byte_809CF5C
 	thumb_func_end owPlayer_809E0FC
+	.else
+	thumb_func_start owPlayer_809E0FC
+owPlayer_809E0FC:
+	decomp_trampoline owPlayer_809E0FC_c, 16
+	thumb_func_end owPlayer_809E0FC
+	.endif
 
 	.ifndef DECOMP_owPlayer_809E114
 	thumb_func_start owPlayer_809E114

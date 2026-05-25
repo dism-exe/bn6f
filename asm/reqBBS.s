@@ -4621,6 +4621,7 @@ off_81408B0:
 	.word reqBBS_textualPointers
 	thumb_func_end reqBBS_81408A0
 
+	.ifndef DECOMP_reqBBS_81408B4
 	thumb_func_start reqBBS_81408B4
 reqBBS_81408B4:
 	push {r4-r7,lr}
@@ -4634,6 +4635,12 @@ reqBBS_81408B4:
 off_81408C4:
 	.word reqBBS_textualPointers
 	thumb_func_end reqBBS_81408B4
+	.else
+	thumb_func_start reqBBS_81408B4
+reqBBS_81408B4:
+	decomp_trampoline reqBBS_81408B4_c, 12
+	thumb_func_end reqBBS_81408B4
+	.endif
 
 	thumb_local_start
 reqBBS_81408C8:

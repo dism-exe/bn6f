@@ -5606,6 +5606,7 @@ sub_81468BC:
 	thumb_func_end sub_81468BC
 	.endif
 
+	.ifndef DECOMP_sub_81468C8
 	thumb_func_start sub_81468C8
 sub_81468C8:
 	mov r1, r0
@@ -5621,6 +5622,12 @@ sub_81468C8:
 off_81468DC:
 	.word unk_2010294
 	thumb_func_end sub_81468C8
+	.else
+	thumb_func_start sub_81468C8
+sub_81468C8:
+	decomp_trampoline sub_81468C8_c, 16
+	thumb_func_end sub_81468C8
+	.endif
 
 	.ifndef DECOMP_sub_81468E0
 	thumb_func_start sub_81468E0
@@ -5643,6 +5650,7 @@ sub_81468E0:
 	thumb_func_end sub_81468E0
 	.endif
 
+	.ifndef DECOMP_sub_81468F4
 	thumb_func_start sub_81468F4
 sub_81468F4:
 	ldr r1, off_8146904 // =eStruct200FE00 
@@ -5659,6 +5667,12 @@ off_8146904:
 off_8146908:
 	.word byte_20103E0
 	thumb_func_end sub_81468F4
+	.else
+	thumb_func_start sub_81468F4
+sub_81468F4:
+	decomp_trampoline sub_81468F4_c, 16
+	thumb_func_end sub_81468F4
+	.endif
 
 	.ifndef DECOMP_sub_814690C
 	thumb_func_start sub_814690C

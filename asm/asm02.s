@@ -457,6 +457,7 @@ sub_8021D08:
 	thumb_func_end sub_8021D08
 	.endif
 
+	.ifndef DECOMP_sub_8021D14
 	thumb_func_start sub_8021D14
 sub_8021D14:
 	push {lr}
@@ -472,6 +473,12 @@ sub_8021D14:
 locret_8021D28:
 	pop {pc}
 	thumb_func_end sub_8021D14
+	.else
+	thumb_func_start sub_8021D14
+sub_8021D14:
+	decomp_trampoline sub_8021D14_c, 14
+	thumb_func_end sub_8021D14
+	.endif
 
 	thumb_local_start
 sub_8021D2A:

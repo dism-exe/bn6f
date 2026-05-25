@@ -4388,6 +4388,7 @@ sub_813D924:
 	thumb_func_end sub_813D924
 	.endif
 
+	.ifndef DECOMP_sub_813D934
 	thumb_func_start sub_813D934
 sub_813D934:
 	push {lr}
@@ -4404,6 +4405,12 @@ sub_813D934:
 locret_813D94A:
 	pop {pc}
 	thumb_func_end sub_813D934
+	.else
+	thumb_func_start sub_813D934
+sub_813D934:
+	decomp_trampoline sub_813D934_c, 16
+	thumb_func_end sub_813D934
+	.endif
 
 	.ifndef DECOMP_sub_813D94C
 	thumb_func_start sub_813D94C
