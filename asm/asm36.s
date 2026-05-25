@@ -4468,6 +4468,7 @@ sub_8132430:
 	thumb_func_end sub_8132430
 	.endif
 
+	.ifndef DECOMP_sub_81324A8
 	thumb_func_start sub_81324A8
 sub_81324A8:
 	push {r4-r7,lr}
@@ -4550,7 +4551,14 @@ loc_8132532:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_81324A8
+	.else
+	thumb_func_start sub_81324A8
+sub_81324A8:
+	decomp_trampoline sub_81324A8_c, 136
+	thumb_func_end sub_81324A8
+	.endif
 
+	.ifndef DECOMP_sub_8132538
 	thumb_func_start sub_8132538
 sub_8132538:
 	push {r4-r7,lr}
@@ -4633,6 +4641,12 @@ loc_81325BC:
 	mov r0, r7
 	pop {r4-r7,pc}
 	thumb_func_end sub_8132538
+	.else
+	thumb_func_start sub_8132538
+sub_8132538:
+	decomp_trampoline sub_8132538_c, 128
+	thumb_func_end sub_8132538
+	.endif
 
 	thumb_func_start sub_81325C0
 sub_81325C0:
