@@ -550,6 +550,7 @@ sub_8003440:
 	.word eBattleObjectsLinkedListStart
 	thumb_func_end sub_8003440
 
+	.ifndef DECOMP_object_freeMemory
 	thumb_func_start object_freeMemory
 object_freeMemory:
 	push {r5,lr}
@@ -580,6 +581,12 @@ object_freeMemory:
 .ActiveObjectBitfieldPointers_p:
 	.word ActiveObjectBitfieldPointers
 	thumb_func_end object_freeMemory
+	.else
+	thumb_func_start object_freeMemory
+object_freeMemory:
+	decomp_trampoline object_freeMemory_c, 48
+	thumb_func_end object_freeMemory
+	.endif
 
 	thumb_local_start
 InitializeStructsOfObjectType::
