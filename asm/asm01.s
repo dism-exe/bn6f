@@ -472,6 +472,7 @@ off_8020130:
 	.word eStruct203F7D8
 	thumb_func_end sub_80200A4
 
+	.ifndef DECOMP_eStruct2038160_clearStruct
 	thumb_func_start eStruct2038160_clearStruct
 eStruct2038160_clearStruct:
 	push {lr}
@@ -482,6 +483,12 @@ eStruct2038160_clearStruct:
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end eStruct2038160_clearStruct
+	.else
+	thumb_func_start eStruct2038160_clearStruct
+eStruct2038160_clearStruct:
+	decomp_trampoline eStruct2038160_clearStruct_c, 4
+	thumb_func_end eStruct2038160_clearStruct
+	.endif
 
 	thumb_func_start sub_8020140
 sub_8020140:

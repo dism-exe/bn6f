@@ -4279,6 +4279,7 @@ sub_813D8C4:
 	thumb_func_end sub_813D8C4
 	.endif
 
+	.ifndef DECOMP_sub_813D8D0
 	thumb_func_start sub_813D8D0
 sub_813D8D0:
 	push {lr}
@@ -4287,6 +4288,12 @@ sub_813D8D0:
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813D8D0
+	.else
+	thumb_func_start sub_813D8D0
+sub_813D8D0:
+	decomp_trampoline sub_813D8D0_c, 4
+	thumb_func_end sub_813D8D0
+	.endif
 
 	push {lr}
 	bl GetRNG // () -> u32?

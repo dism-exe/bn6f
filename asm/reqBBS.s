@@ -4836,6 +4836,7 @@ reqBBS_81409F4:
 	.byte 0, 0
 	thumb_func_end reqBBS_81409F4
 
+	.ifndef DECOMP_reqBBS_setFlag_e17b0f7_8140A00
 	thumb_func_start reqBBS_setFlag_e17b0f7_8140A00
 reqBBS_setFlag_e17b0f7_8140A00:
 	// entry 17, byte 0, flag 7
@@ -4845,6 +4846,12 @@ reqBBS_setFlag_e17b0f7_8140A00:
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end reqBBS_setFlag_e17b0f7_8140A00
+	.else
+	thumb_func_start reqBBS_setFlag_e17b0f7_8140A00
+reqBBS_setFlag_e17b0f7_8140A00:
+	decomp_trampoline reqBBS_setFlag_e17b0f7_8140A00_c, 4
+	thumb_func_end reqBBS_setFlag_e17b0f7_8140A00
+	.endif
 
 	thumb_func_start reqBBS_clearFlag_8140A0C
 reqBBS_clearFlag_8140A0C:

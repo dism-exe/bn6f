@@ -2056,6 +2056,7 @@ off_809E110:
 	.word byte_809CF5C
 	thumb_func_end owPlayer_809E0FC
 
+	.ifndef DECOMP_owPlayer_809E114
 	thumb_func_start owPlayer_809E114
 owPlayer_809E114:
 	ldr r3, off_809E138 // =eStruct200ace0 
@@ -2066,6 +2067,12 @@ owPlayer_809E114:
 	str r0, [r3,#oS200ace0_Unk_20] // (dword_200AD00 - 0x200ace0)
 	mov pc, lr
 	thumb_func_end owPlayer_809E114
+	.else
+	thumb_func_start owPlayer_809E114
+owPlayer_809E114:
+	decomp_trampoline owPlayer_809E114_c, 6
+	thumb_func_end owPlayer_809E114
+	.endif
 
 	thumb_func_start owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
 owPlayer_unlockPlayerAfterNonNPCDialogue_809E122:

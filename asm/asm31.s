@@ -27598,6 +27598,7 @@ locret_80C4C38:
 	pop {pc}
 	thumb_func_end SpawnCounterPinkRingMaybe_80C4C12
 
+	.ifndef DECOMP_sub_80C4C3A
 	thumb_func_start sub_80C4C3A
 sub_80C4C3A:
 	mov r1, #8
@@ -27607,6 +27608,12 @@ sub_80C4C3A:
 	str r1, [r2]
 	mov pc, lr
 	thumb_func_end sub_80C4C3A
+	.else
+	thumb_func_start sub_80C4C3A
+sub_80C4C3A:
+	decomp_trampoline sub_80C4C3A_c, 2
+	thumb_func_end sub_80C4C3A
+	.endif
 
 	thumb_local_start
 sub_80C4C46:

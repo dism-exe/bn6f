@@ -1189,6 +1189,7 @@ loc_8034140:
 	pop {r4-r7,pc}
 	thumb_func_end navi_80340F6
 
+	.ifndef DECOMP_sub_80341AA
 	thumb_func_start sub_80341AA
 sub_80341AA:
 	push {lr}
@@ -1199,6 +1200,12 @@ sub_80341AA:
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end sub_80341AA
+	.else
+	thumb_func_start sub_80341AA
+sub_80341AA:
+	decomp_trampoline sub_80341AA_c, 2
+	thumb_func_end sub_80341AA
+	.endif
 
 	thumb_func_start ho_jackIn_80341B6
 ho_jackIn_80341B6:
@@ -3197,6 +3204,7 @@ clearSetFlags_80355a8:
 	thumb_func_end clearSetFlags_80355a8
 	.endif
 
+	.ifndef DECOMP_sub_80355DE
 	thumb_func_start sub_80355DE
 sub_80355DE:
 	ldr r1, off_80355E8 // =byte_80984C8
@@ -3207,6 +3215,12 @@ sub_80355DE:
 off_80355E8:
 	.word byte_80984C8
 	thumb_func_end sub_80355DE
+	.else
+	thumb_func_start sub_80355DE
+sub_80355DE:
+	decomp_trampoline sub_80355DE_c, 4
+	thumb_func_end sub_80355DE
+	.endif
 
 	thumb_func_start sub_80355EC
 sub_80355EC:

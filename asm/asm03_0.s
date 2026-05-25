@@ -13798,6 +13798,7 @@ off_802CE50:
 	.word dword_203CFB0
 	thumb_func_end sub_802CE30
 
+	.ifndef DECOMP_zeroFill_802CE54
 	thumb_func_start zeroFill_802CE54
 zeroFill_802CE54:
 	push {lr}
@@ -13808,6 +13809,12 @@ zeroFill_802CE54:
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end zeroFill_802CE54
+	.else
+	thumb_func_start zeroFill_802CE54
+zeroFill_802CE54:
+	decomp_trampoline zeroFill_802CE54_c, 4
+	thumb_func_end zeroFill_802CE54
+	.endif
 
 	thumb_func_start sub_802CE60
 sub_802CE60:
@@ -14476,6 +14483,7 @@ getBattleSettings_200AF60:
 	thumb_func_end getBattleSettings_200AF60
 
 // (BattleSettings *src) -> void
+	.ifndef DECOMP_copyBattleSettingsTo_200AF60
 	thumb_func_start copyBattleSettingsTo_200AF60
 copyBattleSettingsTo_200AF60:
 	push {lr}
@@ -14484,6 +14492,12 @@ copyBattleSettingsTo_200AF60:
 	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 	pop {pc}
 	thumb_func_end copyBattleSettingsTo_200AF60
+	.else
+	thumb_func_start copyBattleSettingsTo_200AF60
+copyBattleSettingsTo_200AF60:
+	decomp_trampoline copyBattleSettingsTo_200AF60_c, 4
+	thumb_func_end copyBattleSettingsTo_200AF60
+	.endif
 
 // (int mask) -> void
 	thumb_func_start battleSettings_setFlags_unkSettings
@@ -14992,6 +15006,7 @@ sub_802D638:
 	thumb_func_end sub_802D638
 	.endif
 
+	.ifndef DECOMP_sub_802D644
 	thumb_func_start sub_802D644
 sub_802D644:
 	ldr r1, off_802D690 // =byte_2000070
@@ -15003,6 +15018,12 @@ sub_802D644:
 locret_802D650:
 	mov pc, lr
 	thumb_func_end sub_802D644
+	.else
+	thumb_func_start sub_802D644
+sub_802D644:
+	decomp_trampoline sub_802D644_c, 6
+	thumb_func_end sub_802D644
+	.endif
 
 	thumb_func_start sub_802D652
 sub_802D652:

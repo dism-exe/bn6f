@@ -96,6 +96,7 @@ clearSetFlags_80355a8
 clearWord_e200AC1C
 clear_e200AD04
 cleareMemory_802FF2C
+copyBattleSettingsTo_200AF60
 copyMemory_8001850
 copyObjAttributesToIWRAM_802FE0C
 copyPalletesToIWRAM_8001808
@@ -113,6 +114,7 @@ doPETEffect_8033fc0
 eStruct200BC30_getJumpOffset00
 eStruct200BC30_getJumpOffset00_pushpop
 eStruct200FE00_setUnk04To15h
+eStruct2038160_clearStruct
 encryption_8006e3c
 encryption_applyPack_8006e70
 encryption_bugfrags_8006fac
@@ -140,6 +142,7 @@ music_80005F2
 notZero_eByte200AD04
 object_setPanelAllianceTimerLong
 object_setPanelAllianceTimerShort
+owPlayer_809E114
 owPlayer_setS2000aa0_param0x0to0x2_809e2c8
 owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2
 owPlayer_setS200ace0_fixedAnimationSelect_809e13c
@@ -153,6 +156,7 @@ reqBBS_814084C
 reqBBS_8140984
 reqBBS_addBBSMessage_813e5dc
 reqBBS_initMemory_813F9DA
+reqBBS_setFlag_e17b0f7_8140A00
 reset_flags32_20093A4
 returnZero_809E228
 sound_8000630
@@ -222,6 +226,7 @@ sub_8021D36
 sub_802D064
 sub_802D150
 sub_802D638
+sub_802D644
 sub_802E070
 sub_802E240
 sub_802F0C4
@@ -230,8 +235,10 @@ sub_802F0F4
 sub_802F2C8
 sub_802FDB0
 sub_802FE28
+sub_80341AA
 sub_8034C36
 sub_803537C
+sub_80355DE
 sub_80356EC
 sub_8035738
 sub_803C3E0
@@ -262,10 +269,14 @@ sub_809F942
 sub_80AA004
 sub_80AA104
 sub_80C4090
+sub_80C4C3A
 sub_811EC00
 sub_811FB78
 sub_8121144
 sub_81284A4
+sub_812AF78
+sub_812AF98
+sub_812AFA4
 sub_81376E8
 sub_8137700
 sub_8137884
@@ -277,6 +288,7 @@ sub_813B9FC
 sub_813C324
 sub_813D5D0
 sub_813D8C4
+sub_813D8D0
 sub_813D9A0
 sub_8144CE0
 sub_8144D18
@@ -292,6 +304,7 @@ zeroFillVRAM
 zeroFill_80007B2
 zeroFill_80024A2
 zeroFill_8003AB2
+zeroFill_802CE54
 zeroFill_813B934
 zeroFill_813D960
 zeroFill_e2002230
