@@ -6200,6 +6200,7 @@ sub_800ED00:
 	thumb_func_end sub_800ED00
 	.endif
 
+	.ifndef DECOMP_object_createAIData
 	thumb_func_start object_createAIData
 object_createAIData: // () -> Nullable<* AIData>
 	push {r4,r5,lr}
@@ -6274,5 +6275,11 @@ off_800ED78:
 off_800ED7C:
 	.word eUsedAIDataBitfield
 	thumb_func_end object_createAIData
+	.else
+	thumb_func_start object_createAIData
+object_createAIData:
+	decomp_trampoline object_createAIData_c, 76
+	thumb_func_end object_createAIData
+	.endif
 
 /*For debugging purposes, connect comment at any range!*/
