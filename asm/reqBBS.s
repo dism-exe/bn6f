@@ -4371,6 +4371,7 @@ dword_81406E4:
 	.word 0x1010101, 0x2020101, 0x2020202, 0xFF
 	thumb_func_end reqBBS_animateCursor
 
+	.ifndef DECOMP_reqBBS_81406FC
 	thumb_func_start reqBBS_81406FC
 reqBBS_81406FC:
 	push {r5,lr}
@@ -4462,6 +4463,12 @@ dword_8140790:
 off_8140794:
 	.word eStructArr2008450
 	thumb_func_end reqBBS_81406FC
+	.else
+	thumb_func_start reqBBS_81406FC
+reqBBS_81406FC:
+	decomp_trampoline reqBBS_81406FC_c, 148
+	thumb_func_end reqBBS_81406FC
+	.endif
 
 // () -> u8
 	.ifndef DECOMP_reqBBS_getRequestBBSRank
