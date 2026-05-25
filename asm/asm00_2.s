@@ -31120,6 +31120,7 @@ off_801E77C:
 	.word eStruct2035280
 	thumb_func_end sub_801E754
 
+	.ifndef DECOMP_sub_801E780
 	thumb_func_start sub_801E780
 sub_801E780:
 	ldr r2, off_801E924 // =byte_2036840 
@@ -31134,6 +31135,12 @@ loc_801E78C:
 locret_801E790:
 	mov pc, lr
 	thumb_func_end sub_801E780
+	.else
+	thumb_func_start sub_801E780
+sub_801E780:
+	decomp_trampoline sub_801E780_c, 10
+	thumb_func_end sub_801E780
+	.endif
 
 	thumb_func_start sub_801E792
 sub_801E792:

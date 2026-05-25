@@ -10538,6 +10538,7 @@ off_8045F48:
 	.endif
 
 
+	.ifndef DECOMP_chatbox_8045F4C
 	thumb_func_start chatbox_8045F4C
 chatbox_8045F4C:
 	push {r1}
@@ -10551,6 +10552,12 @@ chatbox_8045F4C:
 off_8045F5C:
 	.word eFlags2009F38
 	thumb_func_end chatbox_8045F4C
+	.else
+	thumb_func_start chatbox_8045F4C
+chatbox_8045F4C:
+	decomp_trampoline chatbox_8045F4C_c, 12
+	thumb_func_end chatbox_8045F4C
+	.endif
 
 	thumb_local_start
 chatbox_8045F60:

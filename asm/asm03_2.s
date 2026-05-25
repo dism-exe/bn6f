@@ -908,6 +908,7 @@ loc_80466BA:
 	pop {r4-r7,pc}
 	thumb_func_end sub_80466AA
 
+	.ifndef DECOMP_getStructFrom2008450
 	thumb_func_start getStructFrom2008450
 getStructFrom2008450:
 	ldr r1, off_80466D4 // =eStructArr2008450 
@@ -921,6 +922,17 @@ getStructFrom2008450:
 off_80466D4:
 	.word eStructArr2008450
 	thumb_func_end getStructFrom2008450
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start getStructFrom2008450
+getStructFrom2008450:
+	decomp_trampoline getStructFrom2008450_c, 8
+	.balign 4, 0x00
+off_80466D4:
+	.word eStructArr2008450
+	thumb_func_end getStructFrom2008450
+	.endif
 
 	thumb_local_start
 sub_80466D8:
@@ -1257,6 +1269,7 @@ loc_8046910:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8046900
 
+	.ifndef DECOMP_sub_804691A
 	thumb_func_start sub_804691A
 sub_804691A:
 	ldr r1, off_8046928 // =byte_2011860 
@@ -1269,6 +1282,16 @@ sub_804691A:
 off_8046928:
 	.word byte_2011860
 	thumb_func_end sub_804691A
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_804691A
+sub_804691A:
+	decomp_trampoline sub_804691A_c, 4
+off_8046928:
+	.word byte_2011860
+	thumb_func_end sub_804691A
+	.endif
 
 	thumb_local_start
 sub_804692C:

@@ -2588,6 +2588,7 @@ sub_809E3B2:
 	thumb_func_end sub_809E3B2
 	.endif
 
+	.ifndef DECOMP_sub_809E3C4
 	thumb_func_start sub_809E3C4
 sub_809E3C4:
 	push {r4-r7,lr}
@@ -2600,6 +2601,12 @@ sub_809E3C4:
 	strb r0, [r4,#0xb] // (byte_2000AAB - 0x2000aa0)
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E3C4
+	.else
+	thumb_func_start sub_809E3C4
+sub_809E3C4:
+	decomp_trampoline sub_809E3C4_c, 10
+	thumb_func_end sub_809E3C4
+	.endif
 
 	thumb_local_start
 sub_809E3D6:

@@ -13738,6 +13738,7 @@ locret_802CDFC:
 	mov pc, lr
 	thumb_func_end sub_802CDE6
 
+	.ifndef DECOMP_sub_802CDFE
 	thumb_func_start sub_802CDFE
 sub_802CDFE:
 	ldr r0, off_802CE50 // =dword_203CFB0 
@@ -13750,6 +13751,12 @@ sub_802CDFE:
 	str r1, [r0]
 	mov pc, lr
 	thumb_func_end sub_802CDFE
+	.else
+	thumb_func_start sub_802CDFE
+sub_802CDFE:
+	decomp_trampoline sub_802CDFE_c, 8
+	thumb_func_end sub_802CDFE
+	.endif
 
 	thumb_func_start sub_802CE10
 sub_802CE10:
@@ -14134,6 +14141,7 @@ sub_802D070:
 	pop {pc}
 	thumb_func_end sub_802D070
 
+	.ifndef DECOMP_sub_802D08C
 	thumb_func_start sub_802D08C
 sub_802D08C:
 	push {lr}
@@ -14145,6 +14153,12 @@ sub_802D08C:
 	strb r1, [r0,#0xf]
 	pop {pc}
 	thumb_func_end sub_802D08C
+	.else
+	thumb_func_start sub_802D08C
+sub_802D08C:
+	decomp_trampoline sub_802D08C_c, 10
+	thumb_func_end sub_802D08C
+	.endif
 
 	thumb_local_start
 sub_802D09E:

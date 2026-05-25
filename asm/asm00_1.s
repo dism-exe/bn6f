@@ -16722,6 +16722,7 @@ byte_800A8EC:
 	.byte 0xAC, 0xB0, 0xB4, 0xB8
 	thumb_func_end sub_800A8D4
 
+	.ifndef DECOMP_sub_800A8F8
 	thumb_func_start sub_800A8F8
 sub_800A8F8:
 	push {r4,lr}
@@ -16733,6 +16734,12 @@ loc_800A904:
 	mov r0, r4
 	pop {r4,pc}
 	thumb_func_end sub_800A8F8
+	.else
+	thumb_func_start sub_800A8F8
+sub_800A8F8:
+	decomp_trampoline sub_800A8F8_c, 8
+	thumb_func_end sub_800A8F8
+	.endif
 
 	thumb_func_start sub_800A908
 sub_800A908:

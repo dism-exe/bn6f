@@ -11698,6 +11698,7 @@ sub_803EBAC:
 	thumb_func_end sub_803EBAC
 	.endif
 
+	.ifndef DECOMP_sub_803EBB8
 	thumb_func_start sub_803EBB8
 sub_803EBB8:
 	push {lr}
@@ -11708,6 +11709,12 @@ sub_803EBB8:
 	bl ZeroFillByByte // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end sub_803EBB8
+	.else
+	thumb_func_start sub_803EBB8
+sub_803EBB8:
+	decomp_trampoline sub_803EBB8_c, 8
+	thumb_func_end sub_803EBB8
+	.endif
 
 	.ifndef DECOMP_sub_803EBC8
 	thumb_func_start sub_803EBC8

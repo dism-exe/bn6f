@@ -92,6 +92,7 @@ battle_setFlags
 camera_writeUnk03_14_80301b2
 chatbox_8040818
 chatbox_8045ED0
+chatbox_8045F4C
 chatbox_clear_eFlags2009F38
 chatbox_maskFlags_3e
 chatbox_mask_eFlags2009F38
@@ -129,6 +130,7 @@ encryption_save_memSetFlags_8006E0E
 encryption_zenny_8006f54
 getChip8021DA8
 getOffsetToQuantityOfChipCodeMaybe_8021c7c
+getStructFrom2008450
 gfxTransfer_8033978
 gfxTransfer_8033DA0
 initGameProgressBuffer_803532c
@@ -223,6 +225,7 @@ sub_8005F6C
 sub_8006330
 sub_800634C
 sub_8006910
+sub_800A8F8
 sub_800A9E2
 sub_800AB2E
 sub_800AB3A
@@ -232,11 +235,14 @@ sub_80133EC
 sub_801482C
 sub_8015952
 sub_801E0D0
+sub_801E780
 sub_8021AB4
 sub_8021B2A
 sub_8021D08
 sub_8021D36
+sub_802CDFE
 sub_802D064
+sub_802D08C
 sub_802D150
 sub_802D638
 sub_802D644
@@ -267,6 +273,7 @@ sub_803DE5C
 sub_803DE88
 sub_803E928
 sub_803EBAC
+sub_803EBB8
 sub_803EBC8
 sub_803EF60
 sub_803EF7C
@@ -275,10 +282,13 @@ sub_803F4EC
 sub_803F500
 sub_804657C
 sub_80467D8
+sub_804691A
 sub_8049CF8
+sub_8080D90
 sub_809C968
 sub_809CF2C
 sub_809E3B2
+sub_809E3C4
 sub_809E462
 sub_809F90C
 sub_809F942
@@ -314,6 +324,7 @@ sub_813D8C4
 sub_813D8D0
 sub_813D924
 sub_813D9A0
+sub_813DA84
 sub_8144CE0
 sub_8144D18
 sub_8144D24

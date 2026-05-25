@@ -4618,6 +4618,7 @@ off_813DA7C:
 	.word eLinkState // eLinkState
 off_813DA80:
 	.word eS200BC50
+	.ifndef DECOMP_sub_813DA84
 	thumb_func_start sub_813DA84
 sub_813DA84:
 	push {lr}
@@ -4631,6 +4632,12 @@ sub_813DA84:
 off_813DA90:
 	.word byte_2010290
 	thumb_func_end sub_813DA84
+	.else
+	thumb_func_start sub_813DA84
+sub_813DA84:
+	decomp_trampoline sub_813DA84_c, 8
+	thumb_func_end sub_813DA84
+	.endif
 
 	thumb_func_start sub_813DA94
 sub_813DA94:

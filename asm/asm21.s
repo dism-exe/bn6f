@@ -1,4 +1,5 @@
 
+	.ifndef DECOMP_sub_8080D90
 	thumb_func_start sub_8080D90
 sub_8080D90:
 	push {lr}
@@ -10,6 +11,12 @@ sub_8080D90:
 off_8080D9C:
 	.word eBGScrollCBCounters
 	thumb_func_end sub_8080D90
+	.else
+	thumb_func_start sub_8080D90
+sub_8080D90:
+	decomp_trampoline sub_8080D90_c, 8
+	thumb_func_end sub_8080D90
+	.endif
 
 	thumb_func_start sub_8080DA0
 sub_8080DA0:
