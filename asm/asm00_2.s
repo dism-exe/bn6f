@@ -4402,6 +4402,7 @@ sub_8010D18:
 	mov pc, lr
 	thumb_func_end sub_8010D18
 
+	.ifndef DECOMP_sub_8010D20
 	thumb_func_start sub_8010D20
 sub_8010D20:
 	push {r4,lr}
@@ -4433,6 +4434,38 @@ off_8010D50:
 off_8010D54:
 	.word dword_203CDF0
 	thumb_func_end sub_8010D20
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_8010D20
+sub_8010D20:
+	decomp_trampoline sub_8010D20_c, 0
+off_8010D28:
+	.word 0x3E9
+off_8010D2C:
+	.word byte_203EB00
+off_8010D30:
+	.word byte_8020E54
+off_8010D34:
+	.word 0x1500
+off_8010D38:
+	.word 0x1F4
+dword_8010D3C:
+	.word 0x3E7
+dword_8010D40:
+	.word 0x3FF
+off_8010D44:
+	.word unk_20018C0
+off_8010D48:
+	.word byte_8020E54
+off_8010D4C:
+	.word byte_8020E54
+off_8010D50:
+	.word byte_80212D4
+off_8010D54:
+	.word dword_203CDF0
+	thumb_func_end sub_8010D20
+	.endif
 
 	thumb_local_start
 sub_8010D58:

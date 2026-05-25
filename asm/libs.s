@@ -5088,6 +5088,7 @@ loc_8146582:
 	.balign 4, 0x00
 	thumb_func_end sub_814656C
 
+	.ifndef DECOMP_sub_8146588
 	thumb_func_start sub_8146588
 sub_8146588:
 	ldr r1, off_81465A8 // =byte_200FE80 
@@ -5117,6 +5118,12 @@ off_81465B4:
 off_81465B8:
 	.word word_200FE50
 	thumb_func_end sub_8146588
+	.else
+	thumb_func_start sub_8146588
+sub_8146588:
+	decomp_trampoline sub_8146588_c, 44
+	thumb_func_end sub_8146588
+	.endif
 
 	thumb_func_start sub_81465BC
 sub_81465BC:

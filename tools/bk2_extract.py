@@ -144,34 +144,26 @@ def extract(bk2_path: Path, out_prefix: Path, skip_state: bool) -> None:
 
     out_prefix.parent.mkdir(parents=True, exist_ok=True)
 
-    state_note = ""
     if core_zst is not None:
         core = decompress_zst(core_zst)
         state_path.write_bytes(core)
-        # Sniff the savestate version: standard libmgba savestate starts
-        # with a u32 little-endian "version magic" (0x01000007 for the
-        # libmgba 0.10 that bn6f-track currently links against). BizHawk's
-        # mGBAHawk emits its own format with an extra 4-byte prefix and
-        # bumped version (0x01000009 in 2.11.x). Flag the mismatch so the
-        # user knows the .ss won't load directly.
-        if len(core) >= 4:
+        # Heads-up if we wrote a BizHawk-wrapped state: the bn6f-track
+        # snapshot loader sniffs and strips the 4-byte prefix
+        # automatically (libmgba 0.11 reads vanilla v9), so this is a
+        # diagnostic rather than a warning.
+        looks_like_bizhawk = False
+        if len(core) >= 8:
             v_at_0 = struct.unpack("<I", core[:4])[0]
-            v_at_4 = struct.unpack("<I", core[4:8])[0] if len(core) >= 8 else 0
-            # libmgba's GBASavestate starts with magic 0x010000XX where
-            # XX is the format version (libmgba 0.10 emits 7).  BizHawk's
-            # mGBAHawk prepends a 4-byte header so the magic shifts to
-            # offset 4 and the version is bumped (9 in 2.11.x).
+            v_at_4 = struct.unpack("<I", core[4:8])[0]
+            # libmgba's GBASavestate magic is 0x010000XX where XX is
+            # the format version.  BizHawk prepends a 4-byte header so
+            # the magic ends up at offset 4 instead of 0.
             looks_like_bizhawk = (
                 (v_at_0 & 0xFFFFFF00) != 0x01000000
                 and (v_at_4 & 0xFFFFFF00) == 0x01000000
             )
-            if looks_like_bizhawk:
-                state_note = (
-                    "  NOTE: looks like a BizHawk-format mGBA state — our "
-                    "libmgba 0.10 won't load it directly.  Use the .input "
-                    "file with a fresh boot instead (omit --state)."
-                )
-        print(f"ok: wrote {state_path}  ({len(core)} bytes){state_note}")
+        kind = "BizHawk-wrapped" if looks_like_bizhawk else "raw"
+        print(f"ok: wrote {state_path}  ({len(core)} bytes, {kind})")
     else:
         print(f"-- skipped {state_path} (--no-state)")
 
@@ -181,23 +173,17 @@ def extract(bk2_path: Path, out_prefix: Path, skip_state: bool) -> None:
         f"- Frames: {len(frames)}\n"
         f"- Source: BK2 (BizHawk)\n"
         f"- Savestate: "
-        + ("written (may need format conversion)" if core_zst else "skipped")
+        + ("extracted" if core_zst else "skipped (--no-state)")
         + "\n\n"
         f"## Header\n\n```\n{header.strip()}\n```\n\n"
         "## Usage\n\n"
-        "If you have a compatible savestate run:\n\n"
+        "The savestate loader in bn6f-track sniffs BizHawk-wrapped\n"
+        "states and strips the 4-byte header transparently, so you can\n"
+        "use the extracted `.ss` directly:\n\n"
         "```\n"
         f"bn6f-track record bn6f.gba <frames> tools/function_symbols.txt \\\n"
         f"    <out_dir> --input {input_path.name} --state {state_path.name} \\\n"
         "    <addresses…>\n"
-        "```\n\n"
-        "Without the savestate (fresh boot), the input log is applied from\n"
-        "frame 0 of game execution — the input timing won't be cycle-\n"
-        "identical to the original BK2 run but most BK2 inputs are valid\n"
-        "from boot too:\n\n"
-        "```\n"
-        f"bn6f-track record bn6f.gba <frames> tools/function_symbols.txt \\\n"
-        f"    <out_dir> --input {input_path.name} <addresses…>\n"
         "```\n"
     )
     print(f"ok: wrote {input_path}  ({len(frames)} frames)")

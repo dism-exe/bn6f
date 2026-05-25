@@ -2,7 +2,7 @@
 
 - Frames: 6239
 - Source: BK2 (BizHawk)
-- Savestate: written (may need format conversion)
+- Savestate: extracted
 
 ## Header
 
@@ -21,20 +21,12 @@ GBA_Firmware_Bios 300C20DF6731A33952DED8C436F7F186D25D3492
 
 ## Usage
 
-If you have a compatible savestate run:
+The savestate loader in bn6f-track sniffs BizHawk-wrapped
+states and strips the 4-byte header transparently, so you can
+use the extracted `.ss` directly:
 
 ```
 bn6f-track record bn6f.gba <frames> tools/function_symbols.txt \
     <out_dir> --input intro.input --state intro.ss \
     <addresses…>
-```
-
-Without the savestate (fresh boot), the input log is applied from
-frame 0 of game execution — the input timing won't be cycle-
-identical to the original BK2 run but most BK2 inputs are valid
-from boot too:
-
-```
-bn6f-track record bn6f.gba <frames> tools/function_symbols.txt \
-    <out_dir> --input intro.input <addresses…>
 ```

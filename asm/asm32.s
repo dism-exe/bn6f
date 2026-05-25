@@ -36284,6 +36284,7 @@ off_81207BC:
 	.word unk_20343E0
 	thumb_func_end sub_8120740
 
+	.ifndef DECOMP_sub_81207C4
 	thumb_func_start sub_81207C4
 sub_81207C4:
 	push {r4-r7,lr}
@@ -36315,6 +36316,12 @@ loc_81207EA:
 	add sp, sp, #4
 	pop {r4-r7,pc}
 	thumb_func_end sub_81207C4
+	.else
+	thumb_func_start sub_81207C4
+sub_81207C4:
+	decomp_trampoline sub_81207C4_c, 44
+	thumb_func_end sub_81207C4
+	.endif
 
 	thumb_func_start sub_81207F8
 sub_81207F8:

@@ -238,13 +238,15 @@ impl Snapshot {
         let mut regs = [0u32; 18];
         for (i, name) in REG_NAMES.iter().enumerate() {
             let c = std::ffi::CString::new(*name).unwrap();
+            // libmgba 0.11 changed readRegister to take a `*mut i32`
+            // (signed) instead of an opaque void*.  The bits we want
+            // are still 32-wide and we treat them as unsigned, so a
+            // single reinterpret-cast is fine.
             unsafe {
                 let read = (*core).readRegister.unwrap_unchecked();
-                let _ = read(
-                    core,
-                    c.as_ptr(),
-                    &mut regs[i] as *mut u32 as *mut std::ffi::c_void,
-                );
+                let mut v: i32 = 0;
+                let _ = read(core, c.as_ptr(), &mut v);
+                regs[i] = v as u32;
             }
         }
         let ewram = read_block(core, EWRAM_BASE, EWRAM_SIZE);
@@ -279,17 +281,19 @@ impl Snapshot {
         let pc_for_branch = if thumb { (target & !1) | 1 } else { target & !3 };
 
         unsafe {
+            // libmgba 0.11 changed writeRegister to take the value by
+            // i32 (signed) directly rather than a `*const void`.  Bit
+            // pattern unchanged.
             let write = (*core).writeRegister.unwrap_unchecked();
             let cs = std::ffi::CString::new("cpsr").unwrap();
-            write(core, cs.as_ptr(), &cpsr as *const u32 as *const _);
+            write(core, cs.as_ptr(), cpsr as i32);
 
             // Restore GPRs r0..r14 explicitly so mGBA's internal copies
             // (caches, named-register tables) are coherent regardless
             // of whether the savestate restored them.
             for i in 0..15 {
                 let c = std::ffi::CString::new(REG_NAMES[i]).unwrap();
-                let v = self.regs[i];
-                write(core, c.as_ptr(), &v as *const u32 as *const _);
+                write(core, c.as_ptr(), self.regs[i] as i32);
             }
 
             // Memory regions.
@@ -300,7 +304,7 @@ impl Snapshot {
             // forces mGBA to flush its prefetch buffer and refetch the
             // next two instructions from whatever ROM is loaded.
             let ps = std::ffi::CString::new("r15").unwrap();
-            write(core, ps.as_ptr(), &pc_for_branch as *const u32 as *const _);
+            write(core, ps.as_ptr(), pc_for_branch as i32);
         }
         Ok(())
     }
@@ -407,17 +411,37 @@ fn save_state_bytes(core: *mut mgba_sys::mCore) -> Vec<u8> {
 /// instead of running the game from reset, start from a user-supplied
 /// scene (e.g. captured via mGBA's Save State menu).
 ///
-/// Accepts either:
+/// Accepts:
 ///   * a raw libmgba savestate (what mGBA's GUI writes), or
 ///   * one of our BNSS-wrapped Snapshot files (`.entry.bin`) — in
-///     which case the inner savestate is unwrapped automatically.
+///     which case the inner savestate is unwrapped automatically, or
+///   * a BizHawk Core.bin from a .bk2 movie: 4-byte BizHawk header
+///     followed by a vanilla mGBA savestate.  We sniff the header
+///     and skip it before handing the rest to libmgba.
 pub fn load_savestate_file(core: *mut mgba_sys::mCore, path: &std::path::Path) -> Result<(), String> {
     let bytes = std::fs::read(path).map_err(|e| format!("read {}: {e}", path.display()))?;
     if bytes.starts_with(b"BNSS") {
         let snap = Snapshot::read_from(path).map_err(|e| format!("read BNSS {}: {e}", path.display()))?;
-        snap.restore(core)
+        return snap.restore(core);
+    }
+    let payload = strip_bizhawk_prefix(&bytes);
+    load_state_bytes(core, payload)
+}
+
+/// libmgba's GBA savestate magic is `0x010000XX` where XX is the
+/// format version (libmgba 0.7 wrote 7; mainline 0.11 emits 11; the
+/// loader accepts older).  BizHawk's mGBAHawk core wraps the state
+/// with a 4-byte prefix so the magic shows up at offset 4 instead of
+/// offset 0.  If we see that pattern, return the slice starting at
+/// offset 4 so the rest is a clean mGBA savestate.
+fn strip_bizhawk_prefix(bytes: &[u8]) -> &[u8] {
+    let looks_like_mgba_magic = |b: &[u8]| -> bool {
+        b.len() >= 4 && b[1] == 0 && b[2] == 0 && b[3] == 0x01
+    };
+    if !looks_like_mgba_magic(&bytes[..]) && looks_like_mgba_magic(&bytes[4..]) {
+        &bytes[4..]
     } else {
-        load_state_bytes(core, &bytes)
+        bytes
     }
 }
 

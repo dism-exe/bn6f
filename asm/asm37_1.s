@@ -708,6 +708,7 @@ dword_81420C4:
 	.word 0x404080
 	thumb_func_end sub_81420B0
 
+	.ifndef DECOMP_sub_81420C8
 	thumb_func_start sub_81420C8
 sub_81420C8:
 	push {r4-r7,lr}
@@ -733,6 +734,12 @@ loc_81420EC:
 	mov r0, r6
 	pop {r4-r7,pc}
 	thumb_func_end sub_81420C8
+	.else
+	thumb_func_start sub_81420C8
+sub_81420C8:
+	decomp_trampoline sub_81420C8_c, 32
+	thumb_func_end sub_81420C8
+	.endif
 
 	thumb_func_start sub_81420F0
 sub_81420F0:

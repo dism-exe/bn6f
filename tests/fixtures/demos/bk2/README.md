@@ -25,34 +25,30 @@ tools/bk2_extract.py path/to/movie.bk2 [--out-prefix tests/fixtures/demos/<cat>/
 Writes three siblings next to `--out-prefix` (or alongside the .bk2 if
 omitted):
 
-- `<name>.input` — packed u16 LE per frame (the format bn6f-track's
-  `--input` already understands)
-- `<name>.ss`    — raw decompressed `Core.bin` bytes
-- `<name>.md`    — provenance + usage notes derived from the bk2's
-  `Header.txt`
+- `<name>.input` — packed u16 LE per frame (matches `--input` parser)
+- `<name>.ss`    — raw decompressed `Core.bin` bytes (BizHawk-wrapped,
+  prefix is auto-stripped by bn6f-track's snapshot loader)
+- `<name>.md`    — provenance + per-file usage notes
 
 Pass `--no-state` to skip the savestate when you only want the input.
 
-## Savestate compatibility caveat
+## Savestate loading (vendored libmgba 0.11)
 
-BizHawk 2.11+ ships an mGBA fork whose savestate format is one version
-ahead of the libmgba 0.10 we link against — so `mCoreLoadStateNamed`
-rejects the `.ss` we extract.  `bk2_extract.py` sniffs the header and
-prints a `NOTE:` when this is the case.
-
-Workaround: pretend the bk2 is "from boot" by skipping `--state` —
-the input log is still meaningful from frame 0 because the BK2's
-SkipBios setup just hops past the BIOS animation, and most input
-streams stay valid against a fresh boot too.  Concretely:
+bn6f-track links against the libmgba 0.11 we vendor under
+`tools/libmgba/`.  Its savestate loader can read every mGBA savestate
+version from 0.7 through 0.11 inclusive.  BizHawk's mGBAHawk wraps
+the standard mGBA state with a 4-byte prefix; the loader sniffs the
+header and strips it transparently, so the extracted `.ss` works
+straight through `--state` with no manual conversion.
 
 ```
 bn6f-track record bn6f.gba <frames> tools/function_symbols.txt \
-    <session_dir> --input <name>.input <addresses…>
+    <session_dir> --input <name>.input --state <name>.ss \
+    <addresses…>
 ```
 
-verified against the .ss-less path with the included `intro.bk2`:
-145/145 ZeroFillByWord / ZeroFillByEightWords / IsScreenFadeActive
-pairs over the first 600 frames.
+Smoke-tested with `intro.bk2` over 60 frames of `ZeroFillByWord`:
+50 / 50 pairs pass.
 
 ## Files
 

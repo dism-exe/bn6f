@@ -9454,6 +9454,7 @@ sub_803DCE8:
 	thumb_func_end sub_803DCE8
 	.endif
 
+	.ifndef DECOMP_sub_803DD30
 	thumb_func_start sub_803DD30
 sub_803DD30:
 	push {r7,lr}
@@ -9482,6 +9483,19 @@ off_803DD58:
 off_803DD5C:
 	.word eLinkState // eLinkState
 	thumb_func_end sub_803DD30
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_803DD30
+sub_803DD30:
+	decomp_trampoline sub_803DD30_c, 32
+	.balign 4, 0
+off_803DD58:
+	.word off_803DC78
+off_803DD5C:
+	.word eLinkState // eLinkState
+	thumb_func_end sub_803DD30
+	.endif
 
 	.ifndef DECOMP_sub_803DD60
 	thumb_func_start sub_803DD60

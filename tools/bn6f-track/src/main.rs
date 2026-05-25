@@ -67,6 +67,11 @@ struct Core {
     /// Boxed mDebugger so it has a stable address — libmgba stores a
     /// raw pointer to it. None until attach_debugger() is called.
     debugger: Option<Box<mgba_sys::mDebugger>>,
+    /// libmgba 0.11 split the per-instance callbacks (`custom`,
+    /// `entered`, …) off the orchestrator and onto a separate
+    /// mDebuggerModule.  We hold the single CUSTOM module here so
+    /// it outlives the attach.
+    dbg_module: Option<Box<mgba_sys::mDebuggerModule>>,
 }
 
 impl Core {
@@ -106,7 +111,7 @@ impl Core {
             reset(raw);
         }
 
-        Ok(Core { raw, _video_buf: video_buf, debugger: None })
+        Ok(Core { raw, _video_buf: video_buf, debugger: None, dbg_module: None })
     }
 
     /// Attach a custom debugger module in CALLBACK mode. The `custom`
@@ -115,6 +120,11 @@ impl Core {
     /// linear scan (which saturates the bloom filter at ~5K hooks and
     /// degrades to 0.4 fps at 13K hooks).
     ///
+    /// libmgba 0.11 split mDebugger into an orchestrator + a list of
+    /// mDebuggerModules carrying the per-module callbacks.  We
+    /// initialise the orchestrator, attach it to the core, then
+    /// attach our single CUSTOM module that holds the callbacks.
+    ///
     /// We deliberately do NOT register breakpoints via libmgba —
     /// `checkBreakpoints` is still called per step but with an empty
     /// list it's a no-op.
@@ -122,18 +132,28 @@ impl Core {
         let mut dbg: Box<mgba_sys::mDebugger> = unsafe {
             Box::new(MaybeUninit::zeroed().assume_init())
         };
-        dbg.type_ = mgba_sys::mDebuggerType_DEBUGGER_CUSTOM;
-        dbg.custom = Some(custom_cb);
+        let mut module: Box<mgba_sys::mDebuggerModule> = unsafe {
+            Box::new(MaybeUninit::zeroed().assume_init())
+        };
+        module.type_ = mgba_sys::mDebuggerType_DEBUGGER_CUSTOM;
+        module.custom = Some(custom_cb);
+        // libmgba 0.11 only invokes `custom` when `needsCallback` is
+        // set on the module — the orchestrator's CALLBACK-state loop
+        // gates on the flag (see mDebuggerRunTimeout).
+        module.needsCallback = true;
         // `entered` is unused (no breakpoints fire), but keep a handler
         // installed so libmgba doesn't crash if it ever does dispatch.
-        dbg.entered = Some(entered_cb);
+        module.entered = Some(entered_cb);
 
         unsafe {
+            mgba_sys::mDebuggerInit(&mut *dbg as *mut _);
             mgba_sys::mDebuggerAttach(&mut *dbg as *mut _, self.raw);
+            mgba_sys::mDebuggerAttachModule(&mut *dbg as *mut _, &mut *module as *mut _);
             // DEBUGGER_CALLBACK = step + check + custom per instruction.
             (*dbg).state = mgba_sys::mDebuggerState_DEBUGGER_CALLBACK;
         }
         self.debugger = Some(dbg);
+        self.dbg_module = Some(module);
     }
 
     /// Register a breakpoint at `address`. Returns the bp id (or -1 on
@@ -141,18 +161,24 @@ impl Core {
     /// address that fires (info->address) inside the entered callback.
     fn set_breakpoint(&mut self, address: u32) -> isize {
         let dbg = self.debugger.as_mut().expect("attach_debugger() first");
+        let module = self.dbg_module.as_mut().expect("attach_debugger() first");
         let bp = mgba_sys::mBreakpoint {
             id: 0,
             address,
             segment: -1,
             type_: mgba_sys::mBreakpointType_BREAKPOINT_HARDWARE,
             condition: ptr::null_mut(),
+            disabled: false,
+            isTemporary: false,
         };
         unsafe {
             let set = (*dbg.platform)
                 .setBreakpoint
                 .expect("platform.setBreakpoint is null");
-            set(dbg.platform, &bp)
+            // libmgba 0.11 added the module pointer as the 2nd arg
+            // (so the platform knows which module gets `entered`
+            // when the bp fires).
+            set(dbg.platform, &mut **module as *mut _, &bp)
         }
     }
 
@@ -193,13 +219,13 @@ impl Core {
     }
 
     fn pc(&self) -> u32 {
-        let mut out: u32 = 0;
+        let mut out: i32 = 0;
         let reg = CString::new("r15").unwrap();
         unsafe {
             let read_reg = (*self.raw).readRegister.expect("mCore.readRegister is null");
-            read_reg(self.raw, reg.as_ptr(), &mut out as *mut u32 as *mut _);
+            read_reg(self.raw, reg.as_ptr(), &mut out);
         }
-        out
+        out as u32
     }
 
     fn frame_counter(&self) -> u32 {
@@ -285,7 +311,7 @@ struct RecordedEntry {
 }
 
 unsafe extern "C" fn entered_cb(
-    _dbg: *mut mgba_sys::mDebugger,
+    _module: *mut mgba_sys::mDebuggerModule,
     _reason: mgba_sys::mDebuggerEntryReason,
     _info: *mut mgba_sys::mDebuggerEntryInfo,
 ) {
@@ -306,18 +332,25 @@ unsafe extern "C" fn entered_cb(
 /// immediate predecessor by instruction-length). This avoids counting
 /// every iteration of an internal loop whose body happens to sit one
 /// instruction past the entry.
-unsafe extern "C" fn custom_cb(dbg: *mut mgba_sys::mDebugger) {
+unsafe extern "C" fn custom_cb(module: *mut mgba_sys::mDebuggerModule) {
+    // libmgba 0.11 passes the module pointer (not the orchestrator);
+    // follow `module->p->core` back to the core.
+    let dbg = unsafe { (*module).p };
     let core = unsafe { (*dbg).core };
     let read = unsafe { (*core).readRegister.unwrap_unchecked() };
 
-    let mut pc: u32 = 0;
-    let mut cpsr: u32 = 0;
+    // The signed-i32 register reads get reinterpreted as unsigned —
+    // 32-bit ARM regs are width-equivalent.
+    let mut pc_i: i32 = 0;
+    let mut cpsr_i: i32 = 0;
     PC_REG.with(|name| {
-        let _ = unsafe { read(core, name.as_ptr(), &mut pc as *mut u32 as *mut _) };
+        let _ = unsafe { read(core, name.as_ptr(), &mut pc_i) };
     });
     CPSR_REG.with(|name| {
-        let _ = unsafe { read(core, name.as_ptr(), &mut cpsr as *mut u32 as *mut _) };
+        let _ = unsafe { read(core, name.as_ptr(), &mut cpsr_i) };
     });
+    let pc = pc_i as u32;
+    let cpsr = cpsr_i as u32;
 
     // libmgba's own checkBreakpoints uses: pc_to_match = gprs[15] - instructionLength.
     // Use the same convention so our hits align with libmgba's bp-fire
@@ -396,13 +429,13 @@ unsafe extern "C" fn custom_cb(dbg: *mut mgba_sys::mDebugger) {
                 };
 
                 if bl_call {
-                    let mut lr: u32 = 0;
+                    let mut lr_i: i32 = 0;
                     LR_REG.with(|name| {
                         let _ = unsafe {
-                            read(core, name.as_ptr(), &mut lr as *mut u32 as *mut _)
+                            read(core, name.as_ptr(), &mut lr_i)
                         };
                     });
-                    let ret_addr = lr & !1u32;
+                    let ret_addr = (lr_i as u32) & !1u32;
                     PENDING.with(|p| {
                         let mut p = p.borrow_mut();
                         if p.len() < PENDING_MAX {
@@ -846,10 +879,10 @@ fn isolated_run_to(
     unsafe {
         let read = (*core.raw).readRegister.unwrap_unchecked();
         let write = (*core.raw).writeRegister.unwrap_unchecked();
-        let mut cpsr: u32 = 0;
-        read(core.raw, cpsr_name.as_ptr(), &mut cpsr as *mut u32 as *mut _);
-        cpsr |= 0x80;
-        write(core.raw, cpsr_name.as_ptr(), &cpsr as *const u32 as *const _);
+        let mut cpsr_i: i32 = 0;
+        read(core.raw, cpsr_name.as_ptr(), &mut cpsr_i);
+        let cpsr = (cpsr_i as u32) | 0x80;
+        write(core.raw, cpsr_name.as_ptr(), cpsr as i32);
     }
 
     const MAX_STEPS: usize = 1_000_000;
@@ -865,12 +898,13 @@ fn isolated_run_to(
             }
             step_fn(core.raw);
             steps += 1;
-            let mut pc: u32 = 0;
-            let mut cpsr: u32 = 0;
-            read(core.raw, pc_name.as_ptr(), &mut pc as *mut u32 as *mut _);
-            read(core.raw, cpsr_name.as_ptr(), &mut cpsr as *mut u32 as *mut _);
+            let mut pc_i: i32 = 0;
+            let mut cpsr_i: i32 = 0;
+            read(core.raw, pc_name.as_ptr(), &mut pc_i);
+            read(core.raw, cpsr_name.as_ptr(), &mut cpsr_i);
+            let cpsr = cpsr_i as u32;
             let instr_len = if (cpsr & (1 << 5)) != 0 { 2 } else { 4 };
-            let true_pc = pc.wrapping_sub(instr_len);
+            let true_pc = (pc_i as u32).wrapping_sub(instr_len);
             if true_pc == target {
                 break;
             }
