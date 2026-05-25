@@ -472,3 +472,4 @@ TakeChips
 sub_811980C
 sub_8119C74
 sub_811B48C
+sub_801A4DC

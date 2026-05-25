@@ -22360,6 +22360,7 @@ sub_801A4D0:
 	mov pc, lr
 	thumb_func_end sub_801A4D0
 
+	.ifndef DECOMP_sub_801A4DC
 	thumb_func_start sub_801A4DC
 sub_801A4DC:
 	push {r4,r5,lr}
@@ -22387,6 +22388,12 @@ loc_801A502:
 	mov r0, r3
 	pop {r4,r5,pc}
 	thumb_func_end sub_801A4DC
+	.else
+	thumb_func_start sub_801A4DC
+sub_801A4DC:
+	decomp_trampoline sub_801A4DC_c, 34
+	thumb_func_end sub_801A4DC
+	.endif
 
 	thumb_local_start
 sub_801A506:
