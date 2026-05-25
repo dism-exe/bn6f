@@ -23877,6 +23877,7 @@ sub_811A1EC:
 	pop {pc}
 	thumb_func_end sub_811A1EC
 
+	.ifndef DECOMP_sub_811A1F4
 	thumb_func_start sub_811A1F4
 sub_811A1F4:
 	push {r4,lr}
@@ -23903,6 +23904,12 @@ loc_811A216:
 	add sp, sp, #0x10
 	pop {r4,pc}
 	thumb_func_end sub_811A1F4
+	.else
+	thumb_func_start sub_811A1F4
+sub_811A1F4:
+	decomp_trampoline sub_811A1F4_c, 36
+	thumb_func_end sub_811A1F4
+	.endif
 
 	thumb_func_start sub_811A220
 sub_811A220:
