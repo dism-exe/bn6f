@@ -76,6 +76,7 @@ split9BitsFromBitfield_8021AE0:
 	thumb_func_end split9BitsFromBitfield_8021AE0
 	.endif
 
+	.ifndef DECOMP_GiveChips
 	thumb_func_start GiveChips
 GiveChips:
 	push {r4,lr}
@@ -106,6 +107,12 @@ loc_8021B00:
 	mov r0, r3
 	pop {r4,pc}
 	thumb_func_end GiveChips
+	.else
+	thumb_func_start GiveChips
+GiveChips:
+	decomp_trampoline GiveChips_c, 50
+	thumb_func_end GiveChips
+	.endif
 
 	.ifndef DECOMP_sub_8021B2A
 	thumb_func_start sub_8021B2A
