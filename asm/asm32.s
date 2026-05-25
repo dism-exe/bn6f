@@ -22624,6 +22624,7 @@ sub_8119804:
 	pop {pc}
 	thumb_func_end sub_8119804
 
+	.ifndef DECOMP_sub_811980C
 	thumb_func_start sub_811980C
 sub_811980C:
 	push {r4-r7,lr}
@@ -22652,6 +22653,12 @@ loc_8119830:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_811980C
+	.else
+	thumb_func_start sub_811980C
+sub_811980C:
+	decomp_trampoline sub_811980C_c, 40
+	thumb_func_end sub_811980C
+	.endif
 
 	thumb_func_start sub_811983C
 sub_811983C:
