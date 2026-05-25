@@ -5399,6 +5399,7 @@ sub_80024AE:
 	thumb_func_end sub_80024AE
 	.endif
 
+	.ifndef DECOMP_Is_eStruct200a6a0_Initialized
 	thumb_func_start Is_eStruct200a6a0_Initialized
 Is_eStruct200a6a0_Initialized:
 	ldr r1, off_80024C8 // =eStruct200a6a0
@@ -5408,6 +5409,16 @@ Is_eStruct200a6a0_Initialized:
 off_80024C8:
 	.word eStruct200a6a0
 	thumb_func_end Is_eStruct200a6a0_Initialized
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start Is_eStruct200a6a0_Initialized
+Is_eStruct200a6a0_Initialized:
+	decomp_trampoline Is_eStruct200a6a0_Initialized_c, 0
+off_80024C8:
+	.word eStruct200a6a0
+	thumb_func_end Is_eStruct200a6a0_Initialized
+	.endif
 
 	thumb_local_start
 sub_80024CC:

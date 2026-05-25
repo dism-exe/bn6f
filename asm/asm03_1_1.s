@@ -11661,6 +11661,7 @@ locret_803EBAA:
 	pop {r4,pc}
 	thumb_func_end sub_803EB60
 
+	.ifndef DECOMP_sub_803EBAC
 	thumb_func_start sub_803EBAC
 sub_803EBAC:
 	push {lr}
@@ -11671,6 +11672,12 @@ sub_803EBAC:
 	bl ZeroFillByWord // (mut_mem: *mut (), num_bytes: usize) -> ()
 	pop {pc}
 	thumb_func_end sub_803EBAC
+	.else
+	thumb_func_start sub_803EBAC
+sub_803EBAC:
+	decomp_trampoline sub_803EBAC_c, 4
+	thumb_func_end sub_803EBAC
+	.endif
 
 	thumb_func_start sub_803EBB8
 sub_803EBB8:

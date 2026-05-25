@@ -15242,6 +15242,7 @@ off_8137880:
 	.word unk_20018EC
 	thumb_func_end takeChipsWhenGivingFolderIfFolderSlotInUseMaybe_813781C
 
+	.ifndef DECOMP_sub_8137884
 	thumb_func_start sub_8137884
 sub_8137884:
 	ldr r1, off_813788C // =unk_20018EC 
@@ -15251,6 +15252,12 @@ sub_8137884:
 off_813788C:
 	.word unk_20018EC
 	thumb_func_end sub_8137884
+	.else
+	thumb_func_start sub_8137884
+sub_8137884:
+	decomp_trampoline sub_8137884_c, 4
+	thumb_func_end sub_8137884
+	.endif
 
 	thumb_func_start sub_8137890
 sub_8137890:

@@ -26113,6 +26113,7 @@ locret_80C408E:
 	mov pc, lr
 	thumb_func_end sub_80C4086
 
+	.ifndef DECOMP_sub_80C4090
 	thumb_func_start sub_80C4090
 sub_80C4090:
 	tst r0, r0
@@ -26123,6 +26124,12 @@ locret_80C4098:
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end sub_80C4090
+	.else
+	thumb_func_start sub_80C4090
+sub_80C4090:
+	decomp_trampoline sub_80C4090_c, 4
+	thumb_func_end sub_80C4090
+	.endif
 
 	thumb_local_start
 sub_80C409C:

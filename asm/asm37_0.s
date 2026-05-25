@@ -289,6 +289,7 @@ sub_813B920:
 	.balign 4, 0x00
 	thumb_func_end sub_813B920
 
+	.ifndef DECOMP_sub_813B928
 	thumb_func_start sub_813B928
 sub_813B928:
 	ldr r1, off_813B930 // =byte_20096D8 
@@ -298,6 +299,16 @@ sub_813B928:
 off_813B930:
 	.word byte_20096D8
 	thumb_func_end sub_813B928
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_813B928
+sub_813B928:
+	decomp_trampoline sub_813B928_c, 0
+off_813B930:
+	.word byte_20096D8
+	thumb_func_end sub_813B928
+	.endif
 
 	.ifndef DECOMP_zeroFill_813B934
 	thumb_func_start zeroFill_813B934

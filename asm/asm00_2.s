@@ -14831,6 +14831,7 @@ sub_8015940:
 	pop {r5,pc}
 	thumb_func_end sub_8015940
 
+	.ifndef DECOMP_sub_8015952
 	thumb_func_start sub_8015952
 sub_8015952:
 	push {r4,lr}
@@ -14840,6 +14841,12 @@ sub_8015952:
 	strb r2, [r4,#0x3] // (byte_203CED3 - 0x203ced0)
 	pop {r4,pc}
 	thumb_func_end sub_8015952
+	.else
+	thumb_func_start sub_8015952
+sub_8015952:
+	decomp_trampoline sub_8015952_c, 2
+	thumb_func_end sub_8015952
+	.endif
 
 	thumb_local_start
 sub_801595E:

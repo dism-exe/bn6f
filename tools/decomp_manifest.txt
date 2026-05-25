@@ -35,6 +35,7 @@ IsCurSubsystemInUse
 IsCutsceneScriptNonNull
 IsNotSlipRunningAndNotInCutscene
 IsScreenFadeActive
+Is_eStruct200a6a0_Initialized
 PlayMapMusic
 PlayMusic
 PlaySoundEffect
@@ -201,6 +202,7 @@ sub_8006910
 sub_800A9E2
 sub_800B110
 sub_80133EC
+sub_8015952
 sub_801E0D0
 sub_8021AB4
 sub_8021B2A
@@ -228,6 +230,7 @@ sub_803DCE8
 sub_803DE5C
 sub_803DE88
 sub_803E928
+sub_803EBAC
 sub_803EBC8
 sub_803EF60
 sub_803EF7C
@@ -245,13 +248,16 @@ sub_809F90C
 sub_809F942
 sub_80AA004
 sub_80AA104
+sub_80C4090
 sub_811EC00
 sub_811FB78
 sub_8121144
 sub_81284A4
 sub_81376E8
 sub_8137700
+sub_8137884
 sub_813B768
+sub_813B928
 sub_813B9B4
 sub_813B9E0
 sub_813B9FC
