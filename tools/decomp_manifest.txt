@@ -12,6 +12,8 @@
 # below. The Makefile picks it up automatically.
 
 ByteFill
+CallBGScrollCallback0
+CallBGScrollCallback1
 CapIncrementGameTimeFrames
 CheckKeyItem
 ClearEventFlag

@@ -12,6 +12,7 @@
 
 #include "structs/Toolkit.h"
 #include "structs/GameState.h"
+#include "structs/BGScrollCallbacks.h"
 #include "structs/Camera.h"
 #include "structs/Chatbox.h"
 #include "structs/CutsceneState.h"
@@ -50,6 +51,7 @@
 #define iCurrFrame                  ((u16 *)            0x0200A210)
 #define eJoypad                     ((Joypad *)         0x0200A270)
 #define i_joGameSubsysSel           ((u8 *)             0x0200A480)
+#define eBGScrollCallbacks          ((BGScrollCallbacks *) 0x0200A880)
 #define eStartScreen                ((StartScreen *)    0x0200AD10)
 
 #define reqBBS_tile_data            ((u8 *)             0x02018204)

@@ -3618,6 +3618,7 @@ dword_8001990:
 	.word nullsub_38+1
 	thumb_func_end SetDummyBGScrollCallbacks
 
+	.ifndef DECOMP_CallBGScrollCallback0
 	thumb_func_start CallBGScrollCallback0
 CallBGScrollCallback0:
 	push {lr}
@@ -3627,7 +3628,14 @@ CallBGScrollCallback0:
 	bx r0
 	pop {pc}
 	thumb_func_end CallBGScrollCallback0
+	.else
+	thumb_func_start CallBGScrollCallback0
+CallBGScrollCallback0:
+	decomp_trampoline CallBGScrollCallback0_c, 4
+	thumb_func_end CallBGScrollCallback0
+	.endif
 
+	.ifndef DECOMP_CallBGScrollCallback1
 	thumb_func_start CallBGScrollCallback1
 CallBGScrollCallback1:
 	push {lr}
@@ -3639,6 +3647,16 @@ CallBGScrollCallback1:
 off_80019AC:
 	.word eBGScrollCallbacks
 	thumb_func_end CallBGScrollCallback1
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start CallBGScrollCallback1
+CallBGScrollCallback1:
+	decomp_trampoline CallBGScrollCallback1_c, 4
+off_80019AC:
+	.word eBGScrollCallbacks
+	thumb_func_end CallBGScrollCallback1
+	.endif
 
 	thumb_func_start nullsub_35
 nullsub_35:
