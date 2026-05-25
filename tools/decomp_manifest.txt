@@ -470,3 +470,4 @@ sub_81171F4
 sub_811A1F4
 TakeChips
 sub_811980C
+sub_8119C74

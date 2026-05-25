@@ -23232,6 +23232,7 @@ locret_8119C70:
 	.balign 4, 0x00
 	thumb_func_end sub_8119C58
 
+	.ifndef DECOMP_sub_8119C74
 	thumb_func_start sub_8119C74
 sub_8119C74:
 	push {r4-r7,lr}
@@ -23252,6 +23253,12 @@ loc_8119C8E:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_8119C74
+	.else
+	thumb_func_start sub_8119C74
+sub_8119C74:
+	decomp_trampoline sub_8119C74_c, 24
+	thumb_func_end sub_8119C74
+	.endif
 
 	thumb_func_start sub_8119C94
 sub_8119C94:
