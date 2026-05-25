@@ -2,17 +2,17 @@
 
 Run the following commands (first, see [this](#macos) if you are on **macOS** or [this](#old-windows) if you are on **old Windows**):
 
-	git clone https://github.com/dism-exe/bn6f
-	git clone https://github.com/luckytyphlosion/agbcc -b new_layout_with_libs
+	git clone --recurse-submodules https://github.com/dism-exe/bn6f
+	cd bn6f
 
-	cd agbcc
-	make
-	make install prefix=../bn6f
+	# One-time. Builds agbcc (pinned via submodule at tools/agbcc-src),
+	# installs the GBA toolchain into tools/binutils and tools/agbcc,
+	# and builds tools/gbagfx. Idempotent.
+	make setup-toolchain
 
-	cd ../bn6f
-
-	cd tools/gbagfx
-	make
+If you already cloned without `--recurse-submodules`, run
+`git submodule update --init --recursive` first — or just run
+`make setup-toolchain`, which will fetch the submodule on demand.
 
 Build bn6f assets initially (and after each `make clean`):
 

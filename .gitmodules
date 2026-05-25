@@ -1,0 +1,4 @@
+[submodule "tools/agbcc-src"]
+	path = tools/agbcc-src
+	url = https://github.com/luckytyphlosion/agbcc
+	branch = new_layout_with_libs

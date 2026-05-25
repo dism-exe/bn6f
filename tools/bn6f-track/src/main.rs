@@ -101,8 +101,23 @@ impl Core {
         }
 
         let port_name = CString::new("bn6f-track").unwrap();
+        let frameskip: i32 = std::env::var("BN6F_TRACK_FRAMESKIP")
+            .ok()
+            .and_then(|s| s.parse().ok())
+            .unwrap_or(9);
         unsafe {
             mgba_sys::mCoreConfigInit(&mut (*raw).config, port_name.as_ptr());
+            // Frameskip: render 1 of every (N+1) frames. We never read
+            // the video buffer (no display, no screenshot capture); this
+            // disables ~N/(N+1) of the PPU work (per-scanline BG layer
+            // compositing + sprite + blending). Game timing is unaffected
+            // — frameskip gates only drawScanline/finishFrame in libmgba's
+            // video.c, not VBlank IRQ, vcount, or game-side frame callbacks.
+            //
+            // Must be set BEFORE mCoreLoadConfig: _GBACoreLoadConfig in
+            // libmgba propagates `core->opts.frameskip → gba->video.frameskip`
+            // only at that call site (not on reset).
+            (*raw).opts.frameskip = frameskip;
             mgba_sys::mCoreLoadConfig(raw);
         }
 
@@ -192,10 +207,14 @@ impl Core {
     }
 
     /// Drive N frames through the debugger run loop, so breakpoints fire.
-    fn run_frames_debugged(&mut self, n: u32) {
+    /// `progress_every` > 0 prints `i/n frames` every N frames to stderr.
+    fn run_frames_debugged(&mut self, n: u32, progress_every: u32) {
         let dbg = self.debugger.as_mut().expect("attach_debugger() first").as_mut();
-        for _ in 0..n {
+        for i in 0..n {
             unsafe { mgba_sys::mDebuggerRunFrame(dbg as *mut _); }
+            if progress_every > 0 && (i + 1) % progress_every == 0 {
+                eprintln!("  [progress] {}/{} frames", i + 1, n);
+            }
         }
     }
 
@@ -205,7 +224,13 @@ impl Core {
     /// shorter than `n`, the remaining frames run with no buttons.
     /// Bits: A=0x1 B=0x2 SEL=0x4 START=0x8 R=0x10 L=0x20 U=0x40 D=0x80
     ///       Rshoulder=0x100 Lshoulder=0x200.
-    fn run_frames_debugged_with_input(&mut self, n: u32, inputs: &[u16]) {
+    /// `progress_every` > 0 prints `i/n frames` every N frames to stderr.
+    fn run_frames_debugged_with_input(
+        &mut self,
+        n: u32,
+        inputs: &[u16],
+        progress_every: u32,
+    ) {
         let set_keys = unsafe { (*self.raw).setKeys.expect("mCore.setKeys is null") };
         let raw = self.raw;
         let dbg = self.debugger.as_mut().expect("attach_debugger() first").as_mut();
@@ -214,6 +239,9 @@ impl Core {
             unsafe {
                 set_keys(raw, mask);
                 mgba_sys::mDebuggerRunFrame(dbg as *mut _);
+            }
+            if progress_every > 0 && (i + 1) % progress_every == 0 {
+                eprintln!("  [progress] {}/{} frames", i + 1, n);
             }
         }
     }
@@ -300,6 +328,32 @@ thread_local! {
     /// doesn't OOM (each snapshot is ~288 KB; capping at 50/target
     /// keeps a 100-target run well under a gigabyte). 0 = uncapped.
     static RECORD_PER_TARGET_CAP: RefCell<usize> = const { RefCell::new(50) };
+    /// Dedup identical entry snapshots per target — if a function is
+    /// called repeatedly with the same (regs, EWRAM, IWRAM), only the
+    /// first call is kept. Massively shrinks input-driven sessions
+    /// (e.g. verify-spam) where the same per-frame poll hits with no
+    /// state change. Savestate bytes are intentionally NOT in the hash
+    /// — they include timers/scheduler/prefetch which advance every
+    /// frame and would defeat the dedup.
+    static RECORD_DEDUP_ENABLED: RefCell<bool> = const { RefCell::new(true) };
+    /// Per-target set of snapshot hashes already captured.
+    static RECORD_SEEN_HASHES: RefCell<HashMap<u32, HashSet<u64>>>
+        = RefCell::new(HashMap::new());
+    /// Count of entries skipped due to dedup, reported at end of record.
+    static RECORD_DEDUP_SKIPPED: RefCell<usize> = const { RefCell::new(0) };
+    /// Per-fn count of unique entries captured. Replaces the
+    /// previous O(N) linear-scan over RECORD_ENTRIES for the cap
+    /// check, and is the source of truth for "captured N entries"
+    /// reporting under opt 11 (which pipelines entries off-thread).
+    static RECORD_PER_FN_COUNT: RefCell<HashMap<u32, usize>>
+        = RefCell::new(HashMap::new());
+    /// Channel sender installed by `record()`. When Some, captured
+    /// entries are dispatched to a worker pool that runs phase 2
+    /// concurrently with phase 1. When None (e.g. `track` mode),
+    /// captures fall through to RECORD_ENTRIES.
+    static RECORD_SENDER:
+        RefCell<Option<std::sync::mpsc::SyncSender<RecordedEntry>>>
+        = const { RefCell::new(None) };
 }
 
 const PENDING_MAX: usize = 4096;
@@ -454,25 +508,85 @@ unsafe extern "C" fn custom_cb(module: *mut mgba_sys::mDebuggerModule) {
                         // Cap captures per target. ~288 KB per snapshot
                         // (EWRAM + IWRAM); with a few hundred targets and
                         // a multi-minute demo, unbounded retention OOMs.
+                        // When dedup is on, the cap counts uniques.
                         let cap = RECORD_PER_TARGET_CAP.with(|c| *c.borrow());
-                        let already = RECORD_ENTRIES.with(|s| {
-                            s.borrow().iter().filter(|e| e.fn_addr == true_pc).count()
-                        });
+                        let already = RECORD_PER_FN_COUNT.with(
+                            |m| *m.borrow().get(&true_pc).unwrap_or(&0)
+                        );
                         if cap == 0 || already < cap {
                             let snap = snapshot::Snapshot::capture(core);
-                            RECORD_ENTRIES.with(|s| {
-                                s.borrow_mut().push(RecordedEntry {
+                            let dedup_on =
+                                RECORD_DEDUP_ENABLED.with(|c| *c.borrow());
+                            let is_new = if dedup_on {
+                                let h = snapshot_dedup_hash(&snap);
+                                RECORD_SEEN_HASHES.with(|m| {
+                                    m.borrow_mut()
+                                        .entry(true_pc)
+                                        .or_default()
+                                        .insert(h)
+                                })
+                            } else {
+                                true
+                            };
+                            if is_new {
+                                RECORD_PER_FN_COUNT.with(|m| {
+                                    *m.borrow_mut().entry(true_pc).or_insert(0) += 1;
+                                });
+                                let rec = RecordedEntry {
                                     fn_addr: true_pc,
                                     captured_lr: ret_addr,
                                     entry: snap,
+                                };
+                                // If record() has installed a worker
+                                // channel (opt 11), pipeline the entry
+                                // off-thread for immediate phase 2
+                                // processing. Otherwise fall through to
+                                // RECORD_ENTRIES (still used by code
+                                // paths that don't install a sender).
+                                let sent = RECORD_SENDER.with(|s| -> Option<RecordedEntry> {
+                                    let borrowed = s.borrow();
+                                    match borrowed.as_ref() {
+                                        Some(tx) => {
+                                            // SyncSender::send blocks on
+                                            // a full bounded channel —
+                                            // natural backpressure on the
+                                            // emulator thread if workers
+                                            // can't keep up.
+                                            tx.send(rec).ok();
+                                            None
+                                        }
+                                        None => Some(rec),
+                                    }
                                 });
-                            });
+                                if let Some(rec) = sent {
+                                    RECORD_ENTRIES.with(|s| {
+                                        s.borrow_mut().push(rec);
+                                    });
+                                }
+                            } else {
+                                RECORD_DEDUP_SKIPPED
+                                    .with(|c| *c.borrow_mut() += 1);
+                            }
                         }
                     }
                 }
             }
         }
     }
+}
+
+/// Hash an entry snapshot for dedup. Covers what the function "sees"
+/// at entry: regs + EWRAM + IWRAM. Excludes the libmgba savestate
+/// blob, which carries timer/scheduler state that drifts every frame
+/// and would prevent any meaningful dedup.
+fn snapshot_dedup_hash(s: &snapshot::Snapshot) -> u64 {
+    use std::collections::hash_map::DefaultHasher;
+    use std::hash::{Hash, Hasher};
+    let mut h = DefaultHasher::new();
+    s.regs.hash(&mut h);
+    s.ewram.hash(&mut h);
+    s.iwram.hash(&mut h);
+    h.finish()
 }
 
 // ---------------------------------------------------------------------
@@ -596,9 +710,9 @@ fn track(rom: &str, frames: u32, symbols_path: &str, output: Option<&str>, input
 
     let t0 = Instant::now();
     if inputs.is_empty() {
-        core.run_frames_debugged(frames);
+        core.run_frames_debugged(frames, 0);
     } else {
-        core.run_frames_debugged_with_input(frames, &inputs);
+        core.run_frames_debugged_with_input(frames, &inputs, 0);
     }
     let elapsed = t0.elapsed();
     let final_frame = core.frame_counter();
@@ -701,10 +815,17 @@ fn record(
     target_hex: &[String],
     input_path: Option<&str>,
     state_path: Option<&str>,
+    dedup: bool,
+    progress_every: u32,
+    verbose: bool,
 ) {
     eprintln!("=== bn6f-track record ===");
     eprintln!("rom: {rom}  frames: {frames}");
     eprintln!("session: {session_dir}");
+    eprintln!("dedup: {}", if dedup { "on" } else { "off" });
+    if progress_every > 0 {
+        eprintln!("progress: every {progress_every} frames");
+    }
     if let Some(p) = state_path {
         eprintln!("start savestate: {p}");
     }
@@ -734,9 +855,11 @@ fn record(
         })
         .collect();
     eprintln!("targets: {}", targets.len());
-    for t in &targets {
-        let name = names.get(t).map(String::as_str).unwrap_or("<unknown>");
-        eprintln!("  0x{t:08X}  {name}");
+    if verbose {
+        for t in &targets {
+            let name = names.get(t).map(String::as_str).unwrap_or("<unknown>");
+            eprintln!("  0x{t:08X}  {name}");
+        }
     }
 
     // Reset tracker state.
@@ -746,6 +869,10 @@ fn record(
     PENDING.with(|p| p.borrow_mut().clear());
     LAST_TRUE_PC.with(|c| *c.borrow_mut() = 0);
     RECORD_ENTRIES.with(|s| s.borrow_mut().clear());
+    RECORD_DEDUP_ENABLED.with(|c| *c.borrow_mut() = dedup);
+    RECORD_SEEN_HASHES.with(|m| m.borrow_mut().clear());
+    RECORD_DEDUP_SKIPPED.with(|c| *c.borrow_mut() = 0);
+    RECORD_PER_FN_COUNT.with(|m| m.borrow_mut().clear());
     ENTRIES.with(|e| {
         let mut e = e.borrow_mut();
         e.clear();
@@ -774,6 +901,89 @@ fn record(
         }
     });
 
+    // Set up the pipelined phase 2 worker (opt 11). Captured entries
+    // from the per-instruction callback are shipped through a bounded
+    // channel to a rayon-driven worker pool that runs isolated_run_to
+    // and writes pairs to disk concurrently with phase 1's emulation.
+    fs::create_dir_all(session_dir).unwrap();
+    use std::sync::atomic::{AtomicUsize, Ordering};
+    let (tx, rx) = std::sync::mpsc::sync_channel::<RecordedEntry>(64);
+    let names_arc = std::sync::Arc::new(names);
+    let rom_arc = std::sync::Arc::new(rom.to_string());
+    let session_dir_arc = std::sync::Arc::new(session_dir.to_string());
+    let wrote = std::sync::Arc::new(AtomicUsize::new(0));
+    let failed = std::sync::Arc::new(AtomicUsize::new(0));
+    let seq_map = std::sync::Arc::new(
+        std::sync::Mutex::new(HashMap::<u32, usize>::new())
+    );
+    let dir_done = std::sync::Arc::new(
+        std::sync::Mutex::new(HashSet::<u32>::new())
+    );
+
+    let pump = {
+        let names = names_arc.clone();
+        let rom = rom_arc.clone();
+        let session_dir = session_dir_arc.clone();
+        let wrote = wrote.clone();
+        let failed = failed.clone();
+        let seq_map = seq_map.clone();
+        let dir_done = dir_done.clone();
+        std::thread::spawn(move || {
+            use rayon::prelude::*;
+            rx.into_iter().par_bridge().for_each(|rec: RecordedEntry| {
+                let name = names
+                    .get(&rec.fn_addr)
+                    .map(String::as_str)
+                    .unwrap_or("<unknown>")
+                    .to_string();
+                // Per-fn sequence number — assigned at worker time via
+                // a shared map. Workers race; the resulting seq order
+                // is non-deterministic across runs, but unique per
+                // (fn_addr, seq) within a run, which is all replay needs.
+                let seq = {
+                    let mut m = seq_map.lock().unwrap();
+                    let entry = m.entry(rec.fn_addr).or_insert(0);
+                    let s = *entry;
+                    *entry = s + 1;
+                    s
+                };
+                let fn_dir = format!("{}/{}", session_dir, name);
+                {
+                    let mut d = dir_done.lock().unwrap();
+                    if d.insert(rec.fn_addr) {
+                        fs::create_dir_all(&fn_dir).unwrap();
+                    }
+                }
+                match isolated_run_to(&rom, &rec.entry, rec.captured_lr) {
+                    Ok(exit) => {
+                        let entry_path =
+                            format!("{fn_dir}/{seq:04}.entry.bin");
+                        let exit_path =
+                            format!("{fn_dir}/{seq:04}.exit.delta.bin");
+                        rec.entry
+                            .write_to(std::path::Path::new(&entry_path))
+                            .unwrap();
+                        let delta =
+                            snapshot::ExitDelta::from_pair(&rec.entry, &exit);
+                        delta
+                            .write_to(std::path::Path::new(&exit_path))
+                            .unwrap();
+                        wrote.fetch_add(1, Ordering::Relaxed);
+                    }
+                    Err(e) => {
+                        failed.fetch_add(1, Ordering::Relaxed);
+                        eprintln!(
+                            "  {name} #{seq:04} isolated run failed: {e}"
+                        );
+                    }
+                }
+            });
+        })
+    };
+
+    // Install sender so custom_cb pipelines captures into the pump.
+    RECORD_SENDER.with(|s| *s.borrow_mut() = Some(tx));
+
     let mut core = Core::new(rom).unwrap_or_else(|e| {
         eprintln!("Core::new failed: {e}");
         process::exit(1);
@@ -792,9 +1002,9 @@ fn record(
 
     let t0 = Instant::now();
     if inputs.is_empty() {
-        core.run_frames_debugged(frames);
+        core.run_frames_debugged(frames, progress_every);
     } else {
-        core.run_frames_debugged_with_input(frames, &inputs);
+        core.run_frames_debugged_with_input(frames, &inputs, progress_every);
     }
     let elapsed = t0.elapsed();
     eprintln!(
@@ -803,52 +1013,33 @@ fn record(
         elapsed.as_secs_f64(),
         frames as f64 / elapsed.as_secs_f64()
     );
+    drop(core); // release the demo core
 
-    // Phase B: for each captured entry, do an isolated run on this
-    // same ROM (the "oracle") to compute the expected exit state. We
-    // disable IRQs during the run to remove cycle-drift-driven IRQ
-    // interleaving — the C reimpl will execute in the same isolated
-    // mode during replay, so the diff is clean.
-    let entries = RECORD_ENTRIES.with(|s| std::mem::take(&mut *s.borrow_mut()));
-    eprintln!("captured {} target entries; computing expected exits...", entries.len());
-    drop(core); // release the demo core; we'll spin a fresh one per entry
+    // Close the channel: drop the sender. Workers drain any remaining
+    // queued entries, then par_bridge returns and the pump thread exits.
+    RECORD_SENDER.with(|s| s.borrow_mut().take());
 
-    fs::create_dir_all(session_dir).unwrap();
-    let mut per_fn_counter: HashMap<u32, usize> = HashMap::new();
-    let mut wrote = 0usize;
-    let mut failed = 0usize;
-    for rec in entries {
-        let name = names
-            .get(&rec.fn_addr)
-            .map(String::as_str)
-            .unwrap_or("<unknown>");
-        let seq = *per_fn_counter
-            .entry(rec.fn_addr)
-            .and_modify(|c| *c += 1)
-            .or_insert(0);
-        let fn_dir = format!("{session_dir}/{name}");
-        fs::create_dir_all(&fn_dir).unwrap();
-
-        match isolated_run_to(rom, &rec.entry, rec.captured_lr) {
-            Ok(exit) => {
-                let entry_path = format!("{fn_dir}/{seq:04}.entry.bin");
-                let exit_path = format!("{fn_dir}/{seq:04}.exit.delta.bin");
-                rec.entry
-                    .write_to(std::path::Path::new(&entry_path))
-                    .unwrap();
-                let delta = snapshot::ExitDelta::from_pair(&rec.entry, &exit);
-                delta
-                    .write_to(std::path::Path::new(&exit_path))
-                    .unwrap();
-                wrote += 1;
-            }
-            Err(e) => {
-                failed += 1;
-                eprintln!("  {name} #{seq:04} isolated run failed: {e}");
-            }
-        }
+    let captured = RECORD_PER_FN_COUNT
+        .with(|m| m.borrow().values().sum::<usize>());
+    let dedup_skipped = RECORD_DEDUP_SKIPPED.with(|c| *c.borrow());
+    if dedup && dedup_skipped > 0 {
+        eprintln!(
+            "captured {captured} target entries ({dedup_skipped} dropped by dedup); waiting for phase 2 to drain..."
+        );
+    } else {
+        eprintln!(
+            "captured {captured} target entries; waiting for phase 2 to drain..."
+        );
     }
-    eprintln!("wrote {wrote} pairs to {session_dir} ({failed} entries failed isolated run)");
+
+    pump.join().expect("phase 2 pump thread panicked");
+
+    eprintln!(
+        "wrote {} pairs to {} ({} entries failed isolated run)",
+        wrote.load(Ordering::Relaxed),
+        &*session_dir_arc,
+        failed.load(Ordering::Relaxed)
+    );
 }
 
 // ---------------------------------------------------------------------
@@ -863,54 +1054,75 @@ fn record(
 // otherwise mutate memory/registers differently between the two.
 // ---------------------------------------------------------------------
 
+thread_local! {
+    /// Per-thread Core pool keyed by ROM path. Each rayon worker
+    /// builds a Core once on first use and reuses it across
+    /// `isolated_run_to` calls. Phase 2 (oracle) and phase 3
+    /// (decompile) use different ROM paths within the same process,
+    /// so the cache must be keyed — a worker thread will see both.
+    ///
+    /// Cores are leaked at thread exit (libmgba deinit is not invoked).
+    /// Bounded leak: one Core per rayon worker × number of distinct
+    /// ROM paths (≤ 2 in practice).
+    static CORE_POOL: RefCell<HashMap<String, Core>> = RefCell::new(HashMap::new());
+}
+
 fn isolated_run_to(
     rom: &str,
     entry: &snapshot::Snapshot,
     target: u32,
 ) -> Result<snapshot::Snapshot, String> {
-    let core = Core::new(rom).map_err(|e| format!("Core::new: {e}"))?;
-    entry.restore(core.raw)?;
+    CORE_POOL.with(|pool| -> Result<snapshot::Snapshot, String> {
+        let mut pool = pool.borrow_mut();
+        if !pool.contains_key(rom) {
+            let c = Core::new(rom).map_err(|e| format!("Core::new: {e}"))?;
+            pool.insert(rom.to_string(), c);
+        }
+        let core = pool.get_mut(rom).expect("just inserted");
+        let raw = core.raw;
+        entry.restore(raw)?;
 
-    // Mask IRQ at the CPU level (CPSR.I = bit 7) so cycle drift
-    // between ASM and C versions can't show up as different IRQ
-    // interleavings.
-    let cpsr_name = CString::new("cpsr").unwrap();
-    let pc_name = CString::new("r15").unwrap();
-    unsafe {
-        let read = (*core.raw).readRegister.unwrap_unchecked();
-        let write = (*core.raw).writeRegister.unwrap_unchecked();
-        let mut cpsr_i: i32 = 0;
-        read(core.raw, cpsr_name.as_ptr(), &mut cpsr_i);
-        let cpsr = (cpsr_i as u32) | 0x80;
-        write(core.raw, cpsr_name.as_ptr(), cpsr as i32);
-    }
-
-    const MAX_STEPS: usize = 1_000_000;
-    let mut steps = 0usize;
-    unsafe {
-        let step_fn = (*core.raw).step.expect("core.step is null");
-        let read = (*core.raw).readRegister.expect("readRegister is null");
-        loop {
-            if steps >= MAX_STEPS {
-                return Err(format!(
-                    "didn't reach LR 0x{target:08X} in {MAX_STEPS} steps"
-                ));
-            }
-            step_fn(core.raw);
-            steps += 1;
-            let mut pc_i: i32 = 0;
+        // Mask IRQ at the CPU level (CPSR.I = bit 7) so cycle drift
+        // between ASM and C versions can't show up as different IRQ
+        // interleavings.
+        let cpsr_name = CString::new("cpsr").unwrap();
+        let pc_name = CString::new("r15").unwrap();
+        unsafe {
+            let read = (*raw).readRegister.unwrap_unchecked();
+            let write = (*raw).writeRegister.unwrap_unchecked();
             let mut cpsr_i: i32 = 0;
-            read(core.raw, pc_name.as_ptr(), &mut pc_i);
-            read(core.raw, cpsr_name.as_ptr(), &mut cpsr_i);
-            let cpsr = cpsr_i as u32;
-            let instr_len = if (cpsr & (1 << 5)) != 0 { 2 } else { 4 };
-            let true_pc = (pc_i as u32).wrapping_sub(instr_len);
-            if true_pc == target {
-                break;
+            read(raw, cpsr_name.as_ptr(), &mut cpsr_i);
+            let cpsr = (cpsr_i as u32) | 0x80;
+            write(raw, cpsr_name.as_ptr(), cpsr as i32);
+        }
+
+        const MAX_STEPS: usize = 1_000_000;
+        let mut steps = 0usize;
+        unsafe {
+            let step_fn = (*raw).step.expect("core.step is null");
+            let read = (*raw).readRegister.expect("readRegister is null");
+            loop {
+                if steps >= MAX_STEPS {
+                    return Err(format!(
+                        "didn't reach LR 0x{target:08X} in {MAX_STEPS} steps"
+                    ));
+                }
+                step_fn(raw);
+                steps += 1;
+                let mut pc_i: i32 = 0;
+                let mut cpsr_i: i32 = 0;
+                read(raw, pc_name.as_ptr(), &mut pc_i);
+                read(raw, cpsr_name.as_ptr(), &mut cpsr_i);
+                let cpsr = cpsr_i as u32;
+                let instr_len = if (cpsr & (1 << 5)) != 0 { 2 } else { 4 };
+                let true_pc = (pc_i as u32).wrapping_sub(instr_len);
+                if true_pc == target {
+                    break;
+                }
             }
         }
-    }
-    Ok(snapshot::Snapshot::capture(core.raw))
+        Ok(snapshot::Snapshot::capture(raw))
+    })
 }
 
 // ---------------------------------------------------------------------
@@ -919,9 +1131,12 @@ fn isolated_run_to(
 // captured LR, snapshot the exit, diff against the recorded exit.
 // ---------------------------------------------------------------------
 
-fn replay(rom: &str, session_dir: &str) {
+fn replay(rom: &str, session_dir: &str, verbose: bool) {
     eprintln!("=== bn6f-track replay ===");
     eprintln!("rom: {rom}  session: {session_dir}");
+    if !verbose {
+        eprintln!("(quiet mode — only printing failures; pass --verbose for full output)");
+    }
 
     // Walk session_dir/<fn_name>/N.{entry,exit}.bin
     let mut by_fn: HashMap<String, Vec<usize>> = HashMap::new();
@@ -1004,7 +1219,9 @@ fn replay(rom: &str, session_dir: &str) {
         total_pass += pass;
         total_fail += fail;
         let tag = if fail == 0 { "PASS" } else { "FAIL" };
-        println!("[{tag}] {fn_name}: {pass}/{} pairs", pass + fail);
+        if verbose || fail > 0 {
+            println!("[{tag}] {fn_name}: {pass}/{} pairs", pass + fail);
+        }
         if !first_fail_msg.is_empty() {
             println!("       first failure: {first_fail_msg}");
         }
@@ -1057,7 +1274,7 @@ fn describe_diff(d: &snapshot::DiffSummary) -> String {
 
 fn usage(prog: &str) -> ! {
     eprintln!(
-        "usage:\n  {prog} smoke  ROM [FRAMES]\n  {prog} track  ROM FRAMES SYMBOLS [OUTPUT]\n  {prog} record ROM FRAMES SYMBOLS SESSION_DIR FN_ADDR [FN_ADDR...]\n  {prog} replay ROM SESSION_DIR\n\nLegacy positional form (deprecated):\n  {prog} ROM FRAMES SYMBOLS [OUTPUT]   (= track)\n  {prog} ROM [FRAMES]                  (= smoke)"
+        "usage:\n  {prog} smoke  ROM [FRAMES]\n  {prog} track  ROM FRAMES SYMBOLS [OUTPUT]\n  {prog} record ROM FRAMES SYMBOLS SESSION_DIR [--input P] [--state P] [--no-dedup] [--progress N] [--verbose|-v] FN_ADDR [FN_ADDR...]\n  {prog} replay ROM SESSION_DIR [--verbose|-v]\n\nLegacy positional form (deprecated):\n  {prog} ROM FRAMES SYMBOLS [OUTPUT]   (= track)\n  {prog} ROM [FRAMES]                  (= smoke)"
     );
     process::exit(2);
 }
@@ -1111,7 +1328,11 @@ fn main() {
             let mut rest = &args[6..];
             let mut input_path: Option<String> = None;
             let mut state_path: Option<String> = None;
-            // Accept --input and --state in any order, both optional.
+            let mut dedup = true;
+            let mut progress_every: u32 = 0;
+            let mut verbose = false;
+            // Accept --input, --state, --no-dedup, --progress, --verbose
+            // in any order; all optional.
             loop {
                 match rest.first().map(String::as_str) {
                     Some("--input") => {
@@ -1130,6 +1351,22 @@ fn main() {
                         }
                         rest = &rest[2..];
                     }
+                    Some("--no-dedup") => {
+                        dedup = false;
+                        rest = &rest[1..];
+                    }
+                    Some("--progress") => {
+                        progress_every = rest.get(1).and_then(|s| s.parse().ok())
+                            .unwrap_or_else(|| {
+                                eprintln!("--progress needs a non-negative integer");
+                                usage(&args[0]);
+                            });
+                        rest = &rest[2..];
+                    }
+                    Some("--verbose") | Some("-v") => {
+                        verbose = true;
+                        rest = &rest[1..];
+                    }
                     _ => break,
                 }
             }
@@ -1138,12 +1375,14 @@ fn main() {
             }
             let targets: Vec<String> = rest.to_vec();
             record(rom, frames, symbols, session_dir, &targets,
-                   input_path.as_deref(), state_path.as_deref());
+                   input_path.as_deref(), state_path.as_deref(), dedup,
+                   progress_every, verbose);
         }
         "replay" => {
             let rom = args.get(2).unwrap_or_else(|| usage(&args[0]));
             let session_dir = args.get(3).unwrap_or_else(|| usage(&args[0]));
-            replay(rom, session_dir);
+            let verbose = args[4..].iter().any(|a| a == "--verbose" || a == "-v");
+            replay(rom, session_dir, verbose);
         }
         // Legacy positional form: first positional is the ROM. We keep
         // this so existing Makefile targets and scripts continue to work.
