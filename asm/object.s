@@ -2663,6 +2663,7 @@ object_isCurrentPanelValid:
 	pop {pc}
 	thumb_func_end object_isCurrentPanelValid
 
+	.ifndef DECOMP_object_isValidPanel
 	thumb_func_start object_isValidPanel
 object_isValidPanel:
 	sub r0, #1
@@ -2677,6 +2678,12 @@ loc_800CC82:
 	mov r0, #0
 	mov pc, lr
 	thumb_func_end object_isValidPanel
+	.else
+	thumb_func_start object_isValidPanel
+object_isValidPanel:
+	decomp_trampoline object_isValidPanel_c, 10
+	thumb_func_end object_isValidPanel
+	.endif
 
 	thumb_func_start object_checkPanelParameters
 // r0 = panelx

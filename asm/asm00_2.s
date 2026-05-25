@@ -1,4 +1,5 @@
 
+	.ifndef DECOMP_sub_800ED80
 	thumb_func_start sub_800ED80
 sub_800ED80:
 	ldr r1, [r0,#oAIData_Unk_7c]
@@ -10,6 +11,12 @@ sub_800ED80:
 off_800ED8C:
 	.word eUsedAIDataBitfield
 	thumb_func_end sub_800ED80
+	.else
+	thumb_func_start sub_800ED80
+sub_800ED80:
+	decomp_trampoline sub_800ED80_c, 8
+	thumb_func_end sub_800ED80
+	.endif
 
 	thumb_func_start sub_800ED90
 sub_800ED90:
@@ -10574,6 +10581,7 @@ GetNaviStats203CCE0Addr:
 	thumb_func_end GetNaviStats203CCE0Addr
 	.endif
 
+	.ifndef DECOMP_SetNaviStats203CCE0Byte
 	thumb_func_start SetNaviStats203CCE0Byte
 SetNaviStats203CCE0Byte:
 	push {r6,r7,lr}
@@ -10584,7 +10592,14 @@ SetNaviStats203CCE0Byte:
 	strb r7, [r0,r6]
 	pop {r6,r7,pc}
 	thumb_func_end SetNaviStats203CCE0Byte
+	.else
+	thumb_func_start SetNaviStats203CCE0Byte
+SetNaviStats203CCE0Byte:
+	decomp_trampoline SetNaviStats203CCE0Byte_c, 8
+	thumb_func_end SetNaviStats203CCE0Byte
+	.endif
 
+	.ifndef DECOMP_SetNaviStats203CCE0Hword
 	thumb_func_start SetNaviStats203CCE0Hword
 SetNaviStats203CCE0Hword:
 	push {r6,r7,lr}
@@ -10595,6 +10610,12 @@ SetNaviStats203CCE0Hword:
 	strh r7, [r0,r6]
 	pop {r6,r7,pc}
 	thumb_func_end SetNaviStats203CCE0Hword
+	.else
+	thumb_func_start SetNaviStats203CCE0Hword
+SetNaviStats203CCE0Hword:
+	decomp_trampoline SetNaviStats203CCE0Hword_c, 8
+	thumb_func_end SetNaviStats203CCE0Hword
+	.endif
 
 	thumb_func_start GetNaviStats203CCE0Byte
 GetNaviStats203CCE0Byte:
@@ -29945,6 +29966,7 @@ ClearCustGauge:
 	thumb_func_end ClearCustGauge
 	.endif
 
+	.ifndef DECOMP_SetCustGauge
 	thumb_func_start SetCustGauge
 SetCustGauge:
 	push {r1,lr}
@@ -29960,6 +29982,12 @@ loc_801DFAC:
 dword_801DFB4:
 	.word 0x4000
 	thumb_func_end SetCustGauge
+	.else
+	thumb_func_start SetCustGauge
+SetCustGauge:
+	decomp_trampoline SetCustGauge_c, 12
+	thumb_func_end SetCustGauge
+	.endif
 
 	thumb_func_start sub_801DFB8
 sub_801DFB8:

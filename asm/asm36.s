@@ -14963,6 +14963,7 @@ off_81376B4:
 	.word TextScriptNaviCustDialog
 	thumb_func_end RunTextScriptNaviCustDialog
 
+	.ifndef DECOMP_setUnkFieldOfChipCodeInChipPack_81376b8
 	thumb_func_start setUnkFieldOfChipCodeInChipPack_81376b8
 setUnkFieldOfChipCodeInChipPack_81376b8:
 	ldr r2, off_8137710 // =byte_20065B4 
@@ -14976,6 +14977,12 @@ setUnkFieldOfChipCodeInChipPack_81376b8:
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end setUnkFieldOfChipCodeInChipPack_81376b8
+	.else
+	thumb_func_start setUnkFieldOfChipCodeInChipPack_81376b8
+setUnkFieldOfChipCodeInChipPack_81376b8:
+	decomp_trampoline setUnkFieldOfChipCodeInChipPack_81376b8_c, 12
+	thumb_func_end setUnkFieldOfChipCodeInChipPack_81376b8
+	.endif
 
 	.ifndef DECOMP_sub_81376CC
 	thumb_func_start sub_81376CC

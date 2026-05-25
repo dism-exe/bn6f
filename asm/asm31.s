@@ -9760,6 +9760,7 @@ locret_80BC9BC:
 	pop {pc}
 	thumb_func_end spawnSnakearmRelatedObject_t1_0x1c_80BC998
 
+	.ifndef DECOMP_snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE
 	thumb_func_start snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE
 snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE:
 	tst r0, r0 // null object check
@@ -9774,6 +9775,12 @@ snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE:
 .done
 	mov pc, lr
 	thumb_func_end snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE
+	.else
+	thumb_func_start snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE
+snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE:
+	decomp_trampoline snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE_c, 10
+	thumb_func_end snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE
+	.endif
 
 	thumb_local_start
 UpdateBattleObjectSpriteIfStatusPermits:

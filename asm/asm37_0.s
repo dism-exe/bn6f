@@ -4405,6 +4405,7 @@ locret_813D94A:
 	pop {pc}
 	thumb_func_end sub_813D934
 
+	.ifndef DECOMP_sub_813D94C
 	thumb_func_start sub_813D94C
 sub_813D94C:
 	push {lr}
@@ -4419,6 +4420,12 @@ loc_813D95A:
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end sub_813D94C
+	.else
+	thumb_func_start sub_813D94C
+sub_813D94C:
+	decomp_trampoline sub_813D94C_c, 12
+	thumb_func_end sub_813D94C
+	.endif
 
 	.ifndef DECOMP_zeroFill_813D960
 	thumb_func_start zeroFill_813D960

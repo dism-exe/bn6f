@@ -1714,6 +1714,7 @@ off_8144D00:
 	.word byte_200F454
 	thumb_func_end sub_8144CF8
 
+	.ifndef DECOMP_sub_8144D04
 	thumb_func_start sub_8144D04
 sub_8144D04:
 	lsl r0, r0, #0x18
@@ -1727,6 +1728,12 @@ sub_8144D04:
 off_8144D14:
 	.word eTimerEnable200F460
 	thumb_func_end sub_8144D04
+	.else
+	thumb_func_start sub_8144D04
+sub_8144D04:
+	decomp_trampoline sub_8144D04_c, 12
+	thumb_func_end sub_8144D04
+	.endif
 
 	.ifndef DECOMP_sub_8144D18
 	thumb_func_start sub_8144D18
@@ -5615,6 +5622,7 @@ off_81468DC:
 	.word unk_2010294
 	thumb_func_end sub_81468C8
 
+	.ifndef DECOMP_sub_81468E0
 	thumb_func_start sub_81468E0
 sub_81468E0:
 	lsl r0, r0, #0x18
@@ -5628,6 +5636,12 @@ sub_81468E0:
 off_81468F0:
 	.word unk_20102E0
 	thumb_func_end sub_81468E0
+	.else
+	thumb_func_start sub_81468E0
+sub_81468E0:
+	decomp_trampoline sub_81468E0_c, 12
+	thumb_func_end sub_81468E0
+	.endif
 
 	thumb_func_start sub_81468F4
 sub_81468F4:
@@ -5663,6 +5677,7 @@ sub_814690C:
 	thumb_func_end sub_814690C
 	.endif
 
+	.ifndef DECOMP_sub_8146918
 	thumb_func_start sub_8146918
 sub_8146918:
 	lsl r0, r0, #0x18
@@ -5676,6 +5691,12 @@ sub_8146918:
 off_8146928:
 	.word eStruct200FE00
 	thumb_func_end sub_8146918
+	.else
+	thumb_func_start sub_8146918
+sub_8146918:
+	decomp_trampoline sub_8146918_c, 12
+	thumb_func_end sub_8146918
+	.endif
 
 	thumb_func_start sub_814692C
 sub_814692C:

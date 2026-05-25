@@ -58,10 +58,13 @@ SeedRNG
 SetCameraXYZ
 SetCurPETNaviStatsByte
 SetCurPETNaviStatsHword
+SetCustGauge
 SetCutsceneCameraScript
 SetEventFlag
 SetEventFlagFromImmediate
 SetExtraToolkitPointers
+SetNaviStats203CCE0Byte
+SetNaviStats203CCE0Hword
 SetNaviStatsByte
 SetPETMenuDataFlag
 SetPlayerCanMoveEventFlag
@@ -148,6 +151,7 @@ map_8001708
 musicGameState_8000784
 music_80005F2
 notZero_eByte200AD04
+object_isValidPanel
 object_setPanelAllianceTimerLong
 object_setPanelAllianceTimerShort
 owPlayer_809E114
@@ -162,6 +166,7 @@ render_800172C
 reqBBS_813E616
 reqBBS_81407D8
 reqBBS_814084C
+reqBBS_8140974
 reqBBS_8140984
 reqBBS_addBBSMessage_813e5dc
 reqBBS_getRequestBBSRank
@@ -169,6 +174,8 @@ reqBBS_initMemory_813F9DA
 reqBBS_setFlag_e17b0f7_8140A00
 reset_flags32_20093A4
 returnZero_809E228
+setUnkFieldOfChipCodeInChipPack_81376b8
+snakearmRelated_setAnim2CurAction8IfCurActionNot8_80BC9BE
 sound_8000630
 sound_800068A
 sound_8000808
@@ -231,6 +238,7 @@ sub_800AB2E
 sub_800AB3A
 sub_800B110
 sub_800B460
+sub_800ED80
 sub_80133EC
 sub_801482C
 sub_8015952
@@ -323,9 +331,11 @@ sub_813D760
 sub_813D8C4
 sub_813D8D0
 sub_813D924
+sub_813D94C
 sub_813D9A0
 sub_813DA84
 sub_8144CE0
+sub_8144D04
 sub_8144D18
 sub_8144D24
 sub_8144D30
@@ -333,7 +343,9 @@ sub_81466E4
 sub_8146714
 sub_8146728
 sub_81468BC
+sub_81468E0
 sub_814690C
+sub_8146918
 sub_81469DC
 test0x200bc50_0x5_813D60C
 uncompSprite_8002906

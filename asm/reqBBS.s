@@ -4722,6 +4722,7 @@ off_8140970:
 	.word 0x110
 	thumb_func_end reqBBS_81408F0
 
+	.ifndef DECOMP_reqBBS_8140974
 	thumb_func_start reqBBS_8140974
 reqBBS_8140974:
 	push {r4-r7,lr}
@@ -4733,6 +4734,12 @@ reqBBS_8140974:
 dword_8140980:
 	.word 0xF
 	thumb_func_end reqBBS_8140974
+	.else
+	thumb_func_start reqBBS_8140974
+reqBBS_8140974:
+	decomp_trampoline reqBBS_8140974_c, 8
+	thumb_func_end reqBBS_8140974
+	.endif
 
 	.ifndef DECOMP_reqBBS_8140984
 	thumb_func_start reqBBS_8140984
