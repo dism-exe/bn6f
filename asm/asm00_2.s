@@ -11093,6 +11093,7 @@ init_8013B4E:
 	.endif
 
 // (int idx, int a2) -> void
+	.ifndef DECOMP_init_8013B64
 	thumb_func_start init_8013B64
 init_8013B64:
 	push {r4,r6,r7,lr}
@@ -11154,6 +11155,68 @@ loc_8013B6E:
 	strb r0, [r7,r1]
 	pop {r4,r6,r7,pc}
 	thumb_func_end init_8013B64
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start init_8013B64
+init_8013B64:
+	decomp_trampoline init_8013B64_c, 2
+loc_8013B6E:
+	mov r0, r7
+	bl initNaviStats_WithDefaultStatsMaybe_8013438 // (void *struct) -> void
+	mov r0, #0x10
+	mul r0, r4
+	ldr r6, off_8013CB4 // =byte_80210DD 
+	add r6, r6, r0
+	mov r1, #oNaviStats_NaviIndex 
+	strb r4, [r7,r1]
+	ldrb r0, [r6]
+	add r0, r0, r0
+	mov r1, #oNaviStats_CurHP 
+	strh r0, [r7,r1]
+	mov r1, #oNaviStats_MaxHP 
+	strh r0, [r7,r1]
+	mov r1, #oNaviStats_MaxBaseHP 
+	strh r0, [r7,r1]
+	ldrb r0, [r6,#1]
+	mov r1, #oNaviStats_SuperArmor 
+	strb r0, [r7,r1]
+	ldrb r0, [r6,#2]
+	strb r0, [r7,#oNaviStats_FloatShoes]
+	ldrb r0, [r6,#3]
+	strb r0, [r7,#oNaviStats_AirShoes]
+	ldrb r0, [r6,#4]
+	mov r1, #oNaviStats_UnderShirt
+	strb r0, [r7,r1]
+	ldrb r0, [r6,#5]
+	strb r0, [r7,#oNaviStats_FstBarr]
+	ldrb r0, [r6,#6]
+	strb r0, [r7,#oNaviStats_MegaLevel]
+	ldrb r0, [r6,#7]
+	strb r0, [r7,#oNaviStats_GigaLevel]
+	ldrb r0, [r6,#8]
+	strb r0, [r7,#oNaviStats_BButton]
+	ldrb r0, [r6,#9]
+	strb r0, [r7,#oNaviStats_BPwrAtk]
+	ldrb r0, [r6,#0xa]
+	strb r0, [r7,#oNaviStats_BLeftAbility]
+	ldrb r0, [r6,#0xb]
+	mov r1, #0x46 
+	strh r0, [r7,r1]
+	ldrb r0, [r6,#0xc]
+	mov r1, #0x4a 
+	strh r0, [r7,r1]
+	ldrb r0, [r6,#0xd]
+	mov r1, #0x48 
+	strh r0, [r7,r1]
+	ldrb r0, [r6,#0xe]
+	strb r0, [r7]
+	ldrb r0, [r6,#0xf]
+	mov r1, #0x39 
+	strb r0, [r7,r1]
+	pop {r4,r6,r7,pc}
+	thumb_func_end init_8013B64
+	.endif
 
 	thumb_local_start
 sub_8013BDA:

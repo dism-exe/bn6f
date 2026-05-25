@@ -149,6 +149,7 @@ initMapTilesState_803037c
 initNaviStats_WithDefaultStatsMaybe_8013438
 initUncompSpriteState_80028d4
 init_8013B4E
+init_8013B64
 init_eStartScreenAnimationControl200B1A0_1
 isFolderSlotInUse_81377EC
 isSameSubsystem_800A732
