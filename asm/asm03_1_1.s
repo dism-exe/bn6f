@@ -7921,6 +7921,7 @@ sub_803CAF8:
 	.byte 0x0, 0x0
 	thumb_func_end sub_803CAF8
 
+	.ifndef DECOMP_sub_803CB00
 	thumb_func_start sub_803CB00
 sub_803CB00:
 	ldr r3, off_803CB20 // =eS200BC50
@@ -7930,7 +7931,14 @@ sub_803CB00:
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end sub_803CB00
+	.else
+	thumb_func_start sub_803CB00
+sub_803CB00:
+	decomp_trampoline sub_803CB00_c, 4
+	thumb_func_end sub_803CB00
+	.endif
 
+	.ifndef DECOMP_sub_803CB0C
 	thumb_func_start sub_803CB0C
 sub_803CB0C:
 	ldr r3, off_803CB20 // =eS200BC50
@@ -7940,7 +7948,14 @@ sub_803CB0C:
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end sub_803CB0C
+	.else
+	thumb_func_start sub_803CB0C
+sub_803CB0C:
+	decomp_trampoline sub_803CB0C_c, 4
+	thumb_func_end sub_803CB0C
+	.endif
 
+	.ifndef DECOMP_sub_803CB18
 	thumb_func_start sub_803CB18
 sub_803CB18:
 	ldr r3, off_803CB20 // =eS200BC50
@@ -7950,6 +7965,16 @@ sub_803CB18:
 off_803CB20:
 	.word eS200BC50
 	thumb_func_end sub_803CB18
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_803CB18
+sub_803CB18:
+	decomp_trampoline sub_803CB18_c, 0
+off_803CB20:
+	.word eS200BC50
+	thumb_func_end sub_803CB18
+	.endif
 
 	thumb_local_start
 sub_803CB24:

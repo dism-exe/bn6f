@@ -2583,6 +2583,7 @@ math_getThrowSpeeds:
 	pop {r4-r6,pc}
 	thumb_func_end math_getThrowSpeeds
 
+	.ifndef DECOMP_sub_8001382
 	thumb_func_start sub_8001382
 sub_8001382:
 	mov r1, r10
@@ -2592,6 +2593,12 @@ sub_8001382:
 	str r2, [r1,#oBattleState_Unk_5c]
 	mov pc, lr
 	thumb_func_end sub_8001382
+	.else
+	thumb_func_start sub_8001382
+sub_8001382:
+	decomp_trampoline sub_8001382_c, 2
+	thumb_func_end sub_8001382
+	.endif
 
 	thumb_local_start
 sub_800138E:

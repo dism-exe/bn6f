@@ -441,6 +441,7 @@ off_8021D04:
 	.word 0x140
 	thumb_func_end sub_8021CA8
 
+	.ifndef DECOMP_sub_8021D08
 	thumb_func_start sub_8021D08
 sub_8021D08:
 	push {lr}
@@ -449,6 +450,12 @@ sub_8021D08:
 	bl ZeroFillByHalfword
 	pop {pc}
 	thumb_func_end sub_8021D08
+	.else
+	thumb_func_start sub_8021D08
+sub_8021D08:
+	decomp_trampoline sub_8021D08_c, 4
+	thumb_func_end sub_8021D08
+	.endif
 
 	thumb_func_start sub_8021D14
 sub_8021D14:

@@ -30093,6 +30093,7 @@ sub_801E0C8:
 	pop {r5,pc}
 	thumb_func_end sub_801E0C8
 
+	.ifndef DECOMP_sub_801E0D0
 	thumb_func_start sub_801E0D0
 sub_801E0D0:
 	push {lr}
@@ -30102,6 +30103,16 @@ sub_801E0D0:
 off_801E0D8:
 	.word eStruct2035280
 	thumb_func_end sub_801E0D0
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_801E0D0
+sub_801E0D0:
+	decomp_trampoline sub_801E0D0_c, 0
+off_801E0D8:
+	.word eStruct2035280
+	thumb_func_end sub_801E0D0
+	.endif
 
 	thumb_local_start
 sub_801E0DC:
