@@ -2665,6 +2665,7 @@ off_813F99C:
 	.word unk_2033A00
 	thumb_func_end reqBBS_copyTextDataToRAM
 
+	.ifndef DECOMP_reqBBS_addRequest_813F9A0
 	thumb_func_start reqBBS_addRequest_813F9A0
 reqBBS_addRequest_813F9A0:
 	push {r3,r7,lr}
@@ -2695,6 +2696,12 @@ reqBBS_addRequest_813F9A0:
 	str r0, [r1,r3]
 	pop {r3,r7,pc}
 	thumb_func_end reqBBS_addRequest_813F9A0
+	.else
+	thumb_func_start reqBBS_addRequest_813F9A0
+reqBBS_addRequest_813F9A0:
+	decomp_trampoline reqBBS_addRequest_813F9A0_c, 50
+	thumb_func_end reqBBS_addRequest_813F9A0
+	.endif
 
 	.ifndef DECOMP_reqBBS_initMemory_813F9DA
 	thumb_func_start reqBBS_initMemory_813F9DA

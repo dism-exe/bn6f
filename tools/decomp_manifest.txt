@@ -182,6 +182,7 @@ reqBBS_81408B4
 reqBBS_8140974
 reqBBS_8140984
 reqBBS_addBBSMessage_813e5dc
+reqBBS_addRequest_813F9A0
 reqBBS_getRequestBBSRank
 reqBBS_initMemory_813F9DA
 reqBBS_setFlag_e17b0f7_8140A00
