@@ -1863,6 +1863,7 @@ sub_8003060:
 	thumb_func_end sub_8003060
 	.endif
 
+	.ifndef DECOMP_sub_800306C
 	thumb_func_start sub_800306C
 sub_800306C:
 	ldrb r3, [r5,#2]
@@ -1874,6 +1875,12 @@ sub_800306C:
 	str r0, [r3,#0x24]
 	mov pc, lr
 	thumb_func_end sub_800306C
+	.else
+	thumb_func_start sub_800306C
+sub_800306C:
+	decomp_trampoline sub_800306C_c, 8
+	thumb_func_end sub_800306C
+	.endif
 
 	thumb_func_start sprite_setCoordinates
 sprite_setCoordinates:
