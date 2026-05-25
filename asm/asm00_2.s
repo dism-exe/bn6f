@@ -29731,6 +29731,7 @@ locret_801DCCA:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_801DC7C
 
+	.ifndef DECOMP_sub_801DCCC
 	thumb_func_start sub_801DCCC
 sub_801DCCC:
 	sub sp, sp, #8
@@ -29761,6 +29762,12 @@ loc_801DCF8:
 	add sp, sp, #8
 	mov pc, lr
 	thumb_func_end sub_801DCCC
+	.else
+	thumb_func_start sub_801DCCC
+sub_801DCCC:
+	decomp_trampoline sub_801DCCC_c, 40
+	thumb_func_end sub_801DCCC
+	.endif
 
 	thumb_local_start
 sub_801DCFC:
