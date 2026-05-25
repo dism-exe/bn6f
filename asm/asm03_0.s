@@ -10402,6 +10402,7 @@ off_802B29C:
 	.word eS20364C0
 	thumb_func_end sub_802B298
 
+	.ifndef DECOMP_sub_802B2A0
 	thumb_func_start sub_802B2A0
 sub_802B2A0:
 	push {r4-r7,lr}
@@ -10453,6 +10454,18 @@ dword_802B350:
 dword_802B354:
 	.word 0x197
 	thumb_func_end sub_802B2A0
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_802B2A0
+sub_802B2A0:
+	decomp_trampoline sub_802B2A0_c, 168
+dword_802B350:
+	.word 0x1B
+dword_802B354:
+	.word 0x197
+	thumb_func_end sub_802B2A0
+	.endif
 
 	thumb_func_start sub_802B358
 sub_802B358:
