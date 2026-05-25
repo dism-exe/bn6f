@@ -1190,6 +1190,7 @@ loc_8002D4E:
 	pop {r5,pc}
 	thumb_func_end sub_8002D20
 
+	.ifndef DECOMP_sprite_makeUnscalable
 	thumb_func_start sprite_makeUnscalable
 sprite_makeUnscalable:
 	push {r5,lr}
@@ -1217,6 +1218,12 @@ loc_8002D60:
 locret_8002D7E:
 	pop {r5,pc}
 	thumb_func_end sprite_makeUnscalable
+	.else
+	thumb_func_start sprite_makeUnscalable
+sprite_makeUnscalable:
+	decomp_trampoline sprite_makeUnscalable_c, 36
+	thumb_func_end sprite_makeUnscalable
+	.endif
 
 // (int pallete) -> void
 	.ifndef DECOMP_sprite_setPalette
