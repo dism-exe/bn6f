@@ -9981,6 +9981,7 @@ initNaviStats_WithDefaultStatsMaybe_8013438:
 	thumb_func_end initNaviStats_WithDefaultStatsMaybe_8013438
 	.endif
 
+	.ifndef DECOMP_sub_80134C8
 	thumb_func_start sub_80134C8
 sub_80134C8:
 	push {r4,lr}
@@ -10056,6 +10057,12 @@ sub_80134C8:
 off_8013550:
 	.word 0x1F4
 	thumb_func_end sub_80134C8
+	.else
+	thumb_func_start sub_80134C8
+sub_80134C8:
+	decomp_trampoline sub_80134C8_c, 132
+	thumb_func_end sub_80134C8
+	.endif
 
 	thumb_func_start sub_8013554
 sub_8013554:
