@@ -4663,6 +4663,7 @@ sub_81325E4:
 	thumb_func_end sub_81325E4
 	.endif
 
+	.ifndef DECOMP_sub_81325F4
 	thumb_func_start sub_81325F4
 sub_81325F4:
 	ldr r1, off_81325FC // =byte_8132600
@@ -4678,6 +4679,12 @@ byte_8132600:
 dword_8132610:
 	.word 0x1C1814
 	thumb_func_end sub_81325F4
+	.else
+	thumb_func_start sub_81325F4
+sub_81325F4:
+	decomp_trampoline sub_81325F4_c, 24
+	thumb_func_end sub_81325F4
+	.endif
 
 	thumb_func_start sub_8132614
 sub_8132614:

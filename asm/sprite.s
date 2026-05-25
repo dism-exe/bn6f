@@ -279,6 +279,7 @@ sub_80027E4:
 	thumb_func_end sub_80027E4
 	.endif
 
+	.ifndef DECOMP_sub_80027F4
 	thumb_func_start sub_80027F4
 sub_80027F4:
 	ldr r1, off_8002804 // =byte_20098A8
@@ -299,6 +300,23 @@ dword_800280C:
 byte_8002810:
 	.byte 0xFF, 0x2, 0x0, 0x0, 0xFF, 0x2, 0x0, 0x0
 	thumb_func_end sub_80027F4
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_80027F4
+sub_80027F4:
+	decomp_trampoline sub_80027F4_c, 8
+	.balign 4, 0
+off_8002804:
+	.word byte_20098A8
+dword_8002808:
+	.word 0x32F
+dword_800280C:
+	.word 0x2FF
+byte_8002810:
+	.byte 0xFF, 0x2, 0x0, 0x0, 0xFF, 0x2, 0x0, 0x0
+	thumb_func_end sub_80027F4
+	.endif
 
 	thumb_func_start sub_8002818
 sub_8002818:

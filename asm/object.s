@@ -939,6 +939,7 @@ sub_800BF5C:
 	mov pc, lr
 	thumb_func_end sub_800BF5C
 
+	.ifndef DECOMP_zeroFill_800BF66
 	thumb_func_start zeroFill_800BF66
 zeroFill_800BF66:
 	push {lr}
@@ -960,6 +961,25 @@ off_800BF80:
 off_800BF84:
 	.word byte_203CF00
 	thumb_func_end zeroFill_800BF66
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start zeroFill_800BF66
+zeroFill_800BF66:
+	decomp_trampoline zeroFill_800BF66_c, 4
+	.balign 4, 0
+dword_800BF74:
+	.word 0x10000
+off_800BF78:
+	.word 0x171
+off_800BF7C:
+	.word 0x100
+off_800BF80:
+	.word byte_203CF00
+off_800BF84:
+	.word byte_203CF00
+	thumb_func_end zeroFill_800BF66
+	.endif
 
 	thumb_func_start sub_800BF88
 sub_800BF88:

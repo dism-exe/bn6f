@@ -4465,6 +4465,7 @@ off_813D974:
 	thumb_func_end zeroFill_813D960
 	.endif
 
+	.ifndef DECOMP_sub_813D978
 	thumb_func_start sub_813D978
 sub_813D978:
 	push {lr}
@@ -4478,6 +4479,12 @@ sub_813D978:
 off_813D988:
 	.word eS200BC50
 	thumb_func_end sub_813D978
+	.else
+	thumb_func_start sub_813D978
+sub_813D978:
+	decomp_trampoline sub_813D978_c, 12
+	thumb_func_end sub_813D978
+	.endif
 
 	thumb_func_start sub_813D98C
 sub_813D98C:

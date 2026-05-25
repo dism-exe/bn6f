@@ -13870,6 +13870,7 @@ sub_802CE8A:
 	pop {r4-r6,pc}
 	thumb_func_end sub_802CE8A
 
+	.ifndef DECOMP_sub_802CEA6
 	thumb_func_start sub_802CEA6
 sub_802CEA6:
 	mov r1, #0x10
@@ -13891,6 +13892,12 @@ sub_802CEA6:
 locret_802CEC6:
 	mov pc, lr
 	thumb_func_end sub_802CEA6
+	.else
+	thumb_func_start sub_802CEA6
+sub_802CEA6:
+	decomp_trampoline sub_802CEA6_c, 24
+	thumb_func_end sub_802CEA6
+	.endif
 
 	thumb_func_start sub_802CEC8
 sub_802CEC8:
@@ -20347,6 +20354,7 @@ off_802FE44:
 	.word sub_3006920+1
 	thumb_func_end sub_802FE38
 
+	.ifndef DECOMP_sub_802FE48
 	thumb_func_start sub_802FE48
 sub_802FE48:
 	ldr r3, off_802FF44 // =dword_2009A2C 
@@ -20370,6 +20378,12 @@ loc_802FE66:
 	mov r0, #0xff
 	mov pc, lr
 	thumb_func_end sub_802FE48
+	.else
+	thumb_func_start sub_802FE48
+sub_802FE48:
+	decomp_trampoline sub_802FE48_c, 26
+	thumb_func_end sub_802FE48
+	.endif
 
 	.ifndef DECOMP_sub_802FE6A
 	thumb_func_start sub_802FE6A
