@@ -94,6 +94,7 @@ music_80005F2:
 	thumb_func_end music_80005F2
 	.endif
 
+	.ifndef DECOMP_sub_800060A
 	thumb_func_start sub_800060A
 sub_800060A:
 	push {r1-r7,lr}
@@ -107,6 +108,12 @@ loc_8000616:
 	bl sound_8000808 // (a0: * ?, a1: ?, a2: ?, a3: * Fn) -> ()
 	pop {r1-r7,pc}
 	thumb_func_end sub_800060A
+	.else
+	thumb_func_start sub_800060A
+sub_800060A:
+	decomp_trampoline sub_800060A_c, 10
+	thumb_func_end sub_800060A
+	.endif
 
 // () -> void
 	.ifndef DECOMP_m4a_800061E

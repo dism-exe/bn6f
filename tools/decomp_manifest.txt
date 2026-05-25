@@ -160,6 +160,7 @@ object_setPanelAllianceTimerShort
 owPlayer_809E0FC
 owPlayer_809E114
 owPlayer_809e218
+owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc
 owPlayer_setS2000aa0_param0x0to0x2_809e2c8
 owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2
 owPlayer_setS200ace0_fixedAnimationSelect_809e13c
@@ -203,6 +204,7 @@ sprite_setUnk0x2c
 sprite_zeroColorShader
 startScreen_TstZero
 startScreen_init_802F530
+sub_800060A
 sub_8000C5C
 sub_8000E3A
 sub_8000FAC
@@ -266,6 +268,7 @@ sub_802D08C
 sub_802D150
 sub_802D638
 sub_802D644
+sub_802E04E
 sub_802E070
 sub_802E240
 sub_802F0C4

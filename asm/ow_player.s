@@ -2446,6 +2446,7 @@ sub_809E2D2:
 	mov pc, lr
 	thumb_func_end sub_809E2D2
 
+	.ifndef DECOMP_owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc
 	thumb_func_start owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc
 owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc:
 	push {r4,lr}
@@ -2461,6 +2462,12 @@ owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc:
 	strb r4, [r3,#oS2000aa0_OWPlayerNaviRotation] // (byte_2000AA2 - 0x2000aa0)
 	pop {r4,pc}
 	thumb_func_end owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc
+	.else
+	thumb_func_start owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc
+owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc:
+	decomp_trampoline owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc_c, 16
+	thumb_func_end owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc
+	.endif
 
 	thumb_func_start SetDefaultOWPlayerNaviColorShader
 SetDefaultOWPlayerNaviColorShader:

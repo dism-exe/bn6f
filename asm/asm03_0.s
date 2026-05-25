@@ -16239,6 +16239,7 @@ loc_802E04A:
 	pop {pc}
 	thumb_func_end sub_802E032
 
+	.ifndef DECOMP_sub_802E04E
 	thumb_func_start sub_802E04E
 sub_802E04E:
 	push {lr}
@@ -16254,6 +16255,12 @@ loc_802E062:
 	strh r0, [r2,#0x28]
 	pop {pc}
 	thumb_func_end sub_802E04E
+	.else
+	thumb_func_start sub_802E04E
+sub_802E04E:
+	decomp_trampoline sub_802E04E_c, 14
+	thumb_func_end sub_802E04E
+	.endif
 
 	thumb_func_start sub_802E066
 sub_802E066:
