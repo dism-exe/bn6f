@@ -26332,6 +26332,7 @@ loc_811B486:
 	.balign 4, 0x00
 	thumb_func_end sub_811B46C
 
+	.ifndef DECOMP_sub_811B48C
 	thumb_func_start sub_811B48C
 sub_811B48C:
 	push {r4-r7,lr}
@@ -26352,6 +26353,12 @@ loc_811B4A6:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_811B48C
+	.else
+	thumb_func_start sub_811B48C
+sub_811B48C:
+	decomp_trampoline sub_811B48C_c, 24
+	thumb_func_end sub_811B48C
+	.endif
 
 	thumb_func_start sub_811B4AC
 sub_811B4AC:
