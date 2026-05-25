@@ -9483,6 +9483,7 @@ off_803DD5C:
 	.word eLinkState // eLinkState
 	thumb_func_end sub_803DD30
 
+	.ifndef DECOMP_sub_803DD60
 	thumb_func_start sub_803DD60
 sub_803DD60:
 	push {r7,lr}
@@ -9511,6 +9512,12 @@ locret_803DD86:
 off_803DD88:
 	.word eLinkState // eLinkState
 	thumb_func_end sub_803DD60
+	.else
+	thumb_func_start sub_803DD60
+sub_803DD60:
+	decomp_trampoline sub_803DD60_c, 36
+	thumb_func_end sub_803DD60
+	.endif
 
 	thumb_local_start
 sub_803DD8C:

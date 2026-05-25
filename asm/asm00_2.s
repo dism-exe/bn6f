@@ -31162,6 +31162,7 @@ sub_801E748:
 	pop {pc}
 	thumb_func_end sub_801E748
 
+	.ifndef DECOMP_sub_801E754
 	thumb_func_start sub_801E754
 sub_801E754:
 	push {r1,r2,lr}
@@ -31189,6 +31190,17 @@ locret_801E778:
 off_801E77C:
 	.word eStruct2035280
 	thumb_func_end sub_801E754
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_801E754
+sub_801E754:
+	decomp_trampoline sub_801E754_c, 32
+	.balign 4, 0
+off_801E77C:
+	.word eStruct2035280
+	thumb_func_end sub_801E754
+	.endif
 
 	.ifndef DECOMP_sub_801E780
 	thumb_func_start sub_801E780

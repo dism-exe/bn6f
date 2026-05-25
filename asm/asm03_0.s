@@ -13906,6 +13906,7 @@ sub_802CEA6:
 	thumb_func_end sub_802CEA6
 	.endif
 
+	.ifndef DECOMP_sub_802CEC8
 	thumb_func_start sub_802CEC8
 sub_802CEC8:
 	push {lr}
@@ -13931,6 +13932,12 @@ loc_802CEDE:
 locret_802CEF2:
 	pop {pc}
 	thumb_func_end sub_802CEC8
+	.else
+	thumb_func_start sub_802CEC8
+sub_802CEC8:
+	decomp_trampoline sub_802CEC8_c, 36
+	thumb_func_end sub_802CEC8
+	.endif
 
 	thumb_func_start hiveBlockHappensHere_802CEF4
 hiveBlockHappensHere_802CEF4:

@@ -6166,6 +6166,7 @@ off_800ECF0:
 	.word 0x0
 	thumb_func_end sub_800EC80
 
+	.ifndef DECOMP_sub_800ED00
 	thumb_func_start sub_800ED00
 sub_800ED00:
 	ldr r0, off_800ED20 // =eAIData 
@@ -6192,6 +6193,12 @@ dword_800ED24:
 off_800ED28:
 	.word eUsedAIDataBitfield
 	thumb_func_end sub_800ED00
+	.else
+	thumb_func_start sub_800ED00
+sub_800ED00:
+	decomp_trampoline sub_800ED00_c, 36
+	thumb_func_end sub_800ED00
+	.endif
 
 	thumb_func_start object_createAIData
 object_createAIData: // () -> Nullable<* AIData>
