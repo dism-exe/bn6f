@@ -2829,6 +2829,7 @@ sub_80014D4:
 /* (r0:uint * src, r1:uint * dest, r2:int size) -> void
    preserves: r0-r7,lr
    ignores: r4-r12*/
+	.ifndef DECOMP_copyWords_80014EC
 	thumb_func_start copyWords_80014EC
 copyWords_80014EC: // 80014EC
 	push {r0-r7,lr}
@@ -2857,6 +2858,12 @@ copyWords_80014EC: // 80014EC
 	bge .reverseCopyLoop
 	pop {r0-r7,pc}
 	thumb_func_end copyWords_80014EC
+	.else
+	thumb_func_start copyWords_80014EC
+copyWords_80014EC:
+	decomp_trampoline copyWords_80014EC_c, 32
+	thumb_func_end copyWords_80014EC
+	.endif
 
 /// tags: "#mod_rng, "
 	.ifndef DECOMP_SeedRNG

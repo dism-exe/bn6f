@@ -5279,6 +5279,7 @@ IsR2BetweenR0AndR1:
 	thumb_func_end IsR2BetweenR0AndR1
 	.endif
 
+	.ifndef DECOMP_sub_800E708
 	thumb_func_start sub_800E708
 sub_800E708:
 	mov r3, #0
@@ -5305,6 +5306,12 @@ loc_800E72C:
 	mov r0, r3
 	mov pc, lr
 	thumb_func_end sub_800E708
+	.else
+	thumb_func_start sub_800E708
+sub_800E708:
+	decomp_trampoline sub_800E708_c, 32
+	thumb_func_end sub_800E708
+	.endif
 
 	thumb_func_start sub_800E730
 sub_800E730:

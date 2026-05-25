@@ -15286,6 +15286,7 @@ off_8009FF4:
 	.word byte_3000EA8
 	thumb_func_end sub_8009FCC
 
+	.ifndef DECOMP_sub_8009FF8
 	thumb_func_start sub_8009FF8
 sub_8009FF8:
 	push {r4,r6,r7,lr}
@@ -15308,6 +15309,12 @@ off_800A014:
 off_800A018:
 	.word byte_3000EA8
 	thumb_func_end sub_8009FF8
+	.else
+	thumb_func_start sub_8009FF8
+sub_8009FF8:
+	decomp_trampoline sub_8009FF8_c, 28
+	thumb_func_end sub_8009FF8
+	.endif
 
 	thumb_local_start
 sub_800A01C:
@@ -18903,6 +18910,7 @@ locret_800B732:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_800B6F2
 
+	.ifndef DECOMP_sub_800B734
 	thumb_func_start sub_800B734
 sub_800B734:
 	ldr r0, off_800B86C // =word_2000FA0
@@ -18927,6 +18935,12 @@ loc_800B73A:
 locret_800B758:
 	mov pc, lr
 	thumb_func_end sub_800B734
+	.else
+	thumb_func_start sub_800B734
+sub_800B734:
+	decomp_trampoline sub_800B734_c, 30
+	thumb_func_end sub_800B734
+	.endif
 
 	thumb_local_start
 sub_800B75A:

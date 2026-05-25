@@ -3244,6 +3244,7 @@ off_8027D0C:
 	.word unk_2035000
 	thumb_func_end sub_8027CCC
 
+	.ifndef DECOMP_sub_8027D10
 	thumb_func_start sub_8027D10
 sub_8027D10:
 	mov r1, r0
@@ -3266,6 +3267,12 @@ off_8027D2C:
 off_8027D30:
 	.word TextScriptChipNames1
 	thumb_func_end sub_8027D10
+	.else
+	thumb_func_start sub_8027D10
+sub_8027D10:
+	decomp_trampoline sub_8027D10_c, 28
+	thumb_func_end sub_8027D10
+	.endif
 
 // (int chipID) -> void*
 	thumb_local_start

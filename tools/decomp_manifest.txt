@@ -116,6 +116,7 @@ copyObjAttributesToIWRAM_802FE0C
 copyPalletesToIWRAM_8001808
 copyPalletesToIWRAM_8002650
 copyToVRAMAndClear_iBGTileIdBlocks_Ptr
+copyWords_80014EC
 copy_8002668
 copy_8048C68
 copy_8048C98
@@ -248,6 +249,7 @@ sub_8005F6C
 sub_8006330
 sub_800634C
 sub_8006910
+sub_8009FF8
 sub_800A0D6
 sub_800A8F8
 sub_800A9E2
@@ -257,12 +259,16 @@ sub_800AB46
 sub_800B110
 sub_800B460
 sub_800B46C
+sub_800B734
+sub_800E708
 sub_800ED80
 sub_800F486
+sub_8010CE0
 sub_80133EC
 sub_8013422
 sub_801482C
 sub_8015952
+sub_801BE04
 sub_801DFB8
 sub_801E0D0
 sub_801E780
@@ -272,6 +278,7 @@ sub_8021B78
 sub_8021D08
 sub_8021D14
 sub_8021D36
+sub_8027D10
 sub_802CDFE
 sub_802CEA6
 sub_802D064

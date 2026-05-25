@@ -4352,6 +4352,7 @@ byte_8010CB8:
 	.byte 0x0, 0x24, 0x0, 0x0, 0x0, 0x26, 0x0, 0x0, 0x0, 0x28, 0x0, 0x0
 	thumb_func_end sub_8010C76
 
+	.ifndef DECOMP_sub_8010CE0
 	thumb_func_start sub_8010CE0
 sub_8010CE0:
 	push {r4,lr}
@@ -4373,6 +4374,12 @@ loc_8010D00:
 	mov r0, r1
 	pop {r4,pc}
 	thumb_func_end sub_8010CE0
+	.else
+	thumb_func_start sub_8010CE0
+sub_8010CE0:
+	decomp_trampoline sub_8010CE0_c, 28
+	thumb_func_end sub_8010CE0
+	.endif
 
 	thumb_local_start
 sub_8010D04:
@@ -25535,6 +25542,7 @@ AddRandomVarianceToTwoCoords:
 	pop {r4,r6,r7,pc}
 	thumb_func_end AddRandomVarianceToTwoCoords
 
+	.ifndef DECOMP_sub_801BE04
 	thumb_func_start sub_801BE04
 sub_801BE04:
 	sub r0, r0, r2
@@ -25562,6 +25570,12 @@ loc_801BE24:
 	orr r0, r1
 	mov pc, lr
 	thumb_func_end sub_801BE04
+	.else
+	thumb_func_start sub_801BE04
+sub_801BE04:
+	decomp_trampoline sub_801BE04_c, 28
+	thumb_func_end sub_801BE04
+	.endif
 
 	thumb_func_start nullsub_10
 nullsub_10:
