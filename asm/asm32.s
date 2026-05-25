@@ -7294,6 +7294,7 @@ loc_8111812:
 	pop {r4-r7,pc}
 	thumb_func_end sub_81117DA
 
+	.ifndef DECOMP_sub_8111816
 	thumb_func_start sub_8111816
 sub_8111816:
 	push {r4,lr}
@@ -7320,6 +7321,12 @@ sub_8111816:
 	strb r0, [r5,r1]
 	pop {r4,pc}
 	thumb_func_end sub_8111816
+	.else
+	thumb_func_start sub_8111816
+sub_8111816:
+	decomp_trampoline sub_8111816_c, 38
+	thumb_func_end sub_8111816
+	.endif
 
 	thumb_func_start sub_8111846
 sub_8111846:
