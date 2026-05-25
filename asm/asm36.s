@@ -10761,6 +10761,7 @@ off_81355D4:
 	.word 0x3C0
 	thumb_func_end sub_8135500
 
+	.ifndef DECOMP_sub_81355D8
 	thumb_func_start sub_81355D8
 sub_81355D8:
 	mov r1, #0
@@ -10778,6 +10779,12 @@ loc_81355E4:
 off_81355E8:
 	.word sSubmenu
 	thumb_func_end sub_81355D8
+	.else
+	thumb_func_start sub_81355D8
+sub_81355D8:
+	decomp_trampoline sub_81355D8_c, 12
+	thumb_func_end sub_81355D8
+	.endif
 
 	thumb_local_start
 sub_81355EC:

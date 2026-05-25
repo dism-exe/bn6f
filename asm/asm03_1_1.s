@@ -11422,6 +11422,7 @@ locret_803EA28:
 	.balign 4, 0x00
 	thumb_func_end sub_803EA1C
 
+	.ifndef DECOMP_sub_803EA2C
 	thumb_func_start sub_803EA2C
 sub_803EA2C:
 	push {lr}
@@ -11437,6 +11438,12 @@ locret_803EA3A:
 off_803EA3C:
 	.word eLinkState // eLinkState
 	thumb_func_end sub_803EA2C
+	.else
+	thumb_func_start sub_803EA2C
+sub_803EA2C:
+	decomp_trampoline sub_803EA2C_c, 12
+	thumb_func_end sub_803EA2C
+	.endif
 
 	thumb_local_start
 sub_803EA40:
@@ -13325,6 +13332,7 @@ byte_803F5FC:
 	.byte 0x32, 0x1, 0x33, 0x1, 0x0, 0x0
 	thumb_func_end sub_803F5B0
 
+	.ifndef DECOMP_sub_803F618
 	thumb_func_start sub_803F618
 sub_803F618:
 	push {r0-r7,lr}
@@ -13338,6 +13346,12 @@ sub_803F618:
 	pop {r0-r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_803F618
+	.else
+	thumb_func_start sub_803F618
+sub_803F618:
+	decomp_trampoline sub_803F618_c, 12
+	thumb_func_end sub_803F618
+	.endif
 
 	thumb_local_start
 sub_803F62C:

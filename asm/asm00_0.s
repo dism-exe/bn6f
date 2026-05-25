@@ -1410,6 +1410,7 @@ dword_8000C58:
 	.word 0x99999999
 	thumb_func_end memory_bcdConvert
 
+	.ifndef DECOMP_sub_8000C5C
 	thumb_func_start sub_8000C5C
 // get num bcd digits?
 sub_8000C5C:
@@ -1440,6 +1441,12 @@ loc_8000C6E:
 	mov r0, r1
 	mov pc, lr
 	thumb_func_end sub_8000C5C
+	.else
+	thumb_func_start sub_8000C5C
+sub_8000C5C:
+	decomp_trampoline sub_8000C5C_c, 14
+	thumb_func_end sub_8000C5C
+	.endif
 
 // FILE segment shifts to RNG here
 

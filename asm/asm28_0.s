@@ -4552,6 +4552,7 @@ off_809C93C:
 	.word eCutsceneState
 	thumb_func_end sub_809C890
 
+	.ifndef DECOMP_sub_809C940
 	thumb_func_start sub_809C940
 sub_809C940:
 	push {r4-r7,lr}
@@ -4565,6 +4566,12 @@ sub_809C940:
 off_809C950:
 	.word eCutsceneState
 	thumb_func_end sub_809C940
+	.else
+	thumb_func_start sub_809C940
+sub_809C940:
+	decomp_trampoline sub_809C940_c, 12
+	thumb_func_end sub_809C940
+	.endif
 
 	thumb_local_start
 sub_809C954:

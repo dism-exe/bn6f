@@ -34872,6 +34872,7 @@ loc_811FE2A:
 	.balign 4, 0x00
 	thumb_func_end sub_811FDB8
 
+	.ifndef DECOMP_sub_811FE34
 	thumb_func_start sub_811FE34
 sub_811FE34:
 	push {lr}
@@ -34884,6 +34885,16 @@ off_811FE40:
 off_811FE44:
 	.word 0x3C
 	thumb_func_end sub_811FE34
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_811FE34
+sub_811FE34:
+	decomp_trampoline sub_811FE34_c, 8
+off_811FE44:
+	.word 0x3C
+	thumb_func_end sub_811FE34
+	.endif
 
 	thumb_local_start
 sub_811FE48:
@@ -35043,6 +35054,7 @@ byte_811FF60:
 	.byte 0x0, 0x1, 0x2, 0x3, 0x8, 0x4, 0x6, 0x7, 0x5, 0x9, 0xA, 0x0
 	thumb_func_end sub_811FF54
 
+	.ifndef DECOMP_sub_811FF6C
 	thumb_func_start sub_811FF6C
 sub_811FF6C:
 	push {lr}
@@ -35053,6 +35065,12 @@ sub_811FF6C:
 byte_811FF78:
 	.byte 0x0, 0xA0, 0x0, 0x0, 0x3A, 0x1, 0x0, 0x0
 	thumb_func_end sub_811FF6C
+	.else
+	thumb_func_start sub_811FF6C
+sub_811FF6C:
+	decomp_trampoline sub_811FF6C_c, 12
+	thumb_func_end sub_811FF6C
+	.endif
 
 	thumb_local_start
 sub_811FF80:

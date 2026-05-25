@@ -25295,6 +25295,7 @@ dword_814FDCC:
 	.word 0xFFFFFF
 	thumb_func_end sub_814FD88
 
+	.ifndef DECOMP_sub_814FDD0
 	thumb_func_start sub_814FDD0
 sub_814FDD0:
 	ldr r0, [r1,#0x40]
@@ -25308,7 +25309,14 @@ sub_814FDD0:
 	bx lr
 	.balign 4, 0x00
 	thumb_func_end sub_814FDD0
+	.else
+	thumb_func_start sub_814FDD0
+sub_814FDD0:
+	decomp_trampoline sub_814FDD0_c, 12
+	thumb_func_end sub_814FDD0
+	.endif
 
+	.ifndef DECOMP_sub_814FDE4
 	thumb_func_start sub_814FDE4
 sub_814FDE4:
 	ldr r0, [r1,#0x40]
@@ -25322,7 +25330,14 @@ sub_814FDE4:
 	bx lr
 	.balign 4, 0x00
 	thumb_func_end sub_814FDE4
+	.else
+	thumb_func_start sub_814FDE4
+sub_814FDE4:
+	decomp_trampoline sub_814FDE4_c, 12
+	thumb_func_end sub_814FDE4
+	.endif
 
+	.ifndef DECOMP_sub_814FDF8
 	thumb_func_start sub_814FDF8
 sub_814FDF8:
 	ldr r0, [r1,#0x40]
@@ -25336,7 +25351,14 @@ sub_814FDF8:
 	bx lr
 	.balign 4, 0x00
 	thumb_func_end sub_814FDF8
+	.else
+	thumb_func_start sub_814FDF8
+sub_814FDF8:
+	decomp_trampoline sub_814FDF8_c, 12
+	thumb_func_end sub_814FDF8
+	.endif
 
+	.ifndef DECOMP_sub_814FE0C
 	thumb_func_start sub_814FE0C
 sub_814FE0C:
 	ldr r0, [r1,#0x40]
@@ -25350,7 +25372,14 @@ sub_814FE0C:
 	bx lr
 	.hword 0x0
 	thumb_func_end sub_814FE0C
+	.else
+	thumb_func_start sub_814FE0C
+sub_814FE0C:
+	decomp_trampoline sub_814FE0C_c, 12
+	thumb_func_end sub_814FE0C
+	.endif
 
+	.ifndef DECOMP_sub_814FE20
 	thumb_func_start sub_814FE20
 sub_814FE20:
 	ldr r0, [r1,#0x40]
@@ -25364,7 +25393,14 @@ sub_814FE20:
 	bx lr
 	.balign 4, 0x00
 	thumb_func_end sub_814FE20
+	.else
+	thumb_func_start sub_814FE20
+sub_814FE20:
+	decomp_trampoline sub_814FE20_c, 12
+	thumb_func_end sub_814FE20
+	.endif
 
+	.ifndef DECOMP_sub_814FE34
 	thumb_func_start sub_814FE34
 sub_814FE34:
 	ldr r0, [r1,#0x40]
@@ -25374,7 +25410,14 @@ sub_814FE34:
 	str r0, [r1,#0x40]
 	bx lr
 	thumb_func_end sub_814FE34
+	.else
+	thumb_func_start sub_814FE34
+sub_814FE34:
+	decomp_trampoline sub_814FE34_c, 4
+	thumb_func_end sub_814FE34
+	.endif
 
+	.ifndef DECOMP_sub_814FE40
 	thumb_func_start sub_814FE40
 sub_814FE40:
 	ldr r0, [r1,#0x40]
@@ -25384,7 +25427,14 @@ sub_814FE40:
 	str r0, [r1,#0x40]
 	bx lr
 	thumb_func_end sub_814FE40
+	.else
+	thumb_func_start sub_814FE40
+sub_814FE40:
+	decomp_trampoline sub_814FE40_c, 4
+	thumb_func_end sub_814FE40
+	.endif
 
+	.ifndef DECOMP_sub_814FE4C
 	thumb_func_start sub_814FE4C
 sub_814FE4C:
 	ldr r0, [r1,#0x40]
@@ -25398,7 +25448,14 @@ sub_814FE4C:
 	bx lr
 	.byte 0, 0
 	thumb_func_end sub_814FE4C
+	.else
+	thumb_func_start sub_814FE4C
+sub_814FE4C:
+	decomp_trampoline sub_814FE4C_c, 12
+	thumb_func_end sub_814FE4C
+	.endif
 
+	.ifndef DECOMP_sub_814FE60
 	thumb_func_start sub_814FE60
 sub_814FE60:
 	ldr r0, [r1,#0x40]
@@ -25412,6 +25469,12 @@ sub_814FE60:
 	bx lr
 	.balign 4, 0x00
 	thumb_func_end sub_814FE60
+	.else
+	thumb_func_start sub_814FE60
+sub_814FE60:
+	decomp_trampoline sub_814FE60_c, 12
+	thumb_func_end sub_814FE60
+	.endif
 
 	thumb_local_start
 nullsub_23:
