@@ -16249,6 +16249,7 @@ sub_802E07C:
 	pop {pc}
 	thumb_func_end sub_802E07C
 
+	.ifndef DECOMP_TestBattleFlag_0x40
 	thumb_func_start TestBattleFlag_0x40
 TestBattleFlag_0x40:
 	push {lr}
@@ -16257,6 +16258,12 @@ TestBattleFlag_0x40:
 	and r0, r1
 	pop {pc}
 	thumb_func_end TestBattleFlag_0x40
+	.else
+	thumb_func_start TestBattleFlag_0x40
+TestBattleFlag_0x40:
+	decomp_trampoline TestBattleFlag_0x40_c, 2
+	thumb_func_end TestBattleFlag_0x40
+	.endif
 
 	thumb_local_start
 sub_802E0A6:

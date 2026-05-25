@@ -2004,6 +2004,7 @@ off_8144EE8:
 	.word eStruct200FE00
 	thumb_func_end sub_8144EA4
 
+	.ifndef DECOMP_eStruct200FE00_setUnk04To15h
 	thumb_func_start eStruct200FE00_setUnk04To15h
 eStruct200FE00_setUnk04To15h:
 	ldr r1, off_8144EF4 // =eStruct200FE00 
@@ -2013,6 +2014,12 @@ eStruct200FE00_setUnk04To15h:
 off_8144EF4:
 	.word eStruct200FE00
 	thumb_func_end eStruct200FE00_setUnk04To15h
+	.else
+	thumb_func_start eStruct200FE00_setUnk04To15h
+eStruct200FE00_setUnk04To15h:
+	decomp_trampoline eStruct200FE00_setUnk04To15h_c, 4
+	thumb_func_end eStruct200FE00_setUnk04To15h
+	.endif
 
 	thumb_local_start
 sub_8144EF8:

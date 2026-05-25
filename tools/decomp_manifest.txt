@@ -24,6 +24,7 @@ CopyBytes
 CopyHalfwords
 CopyWords
 FillByEightWords
+GetBattleNaviStatsAddr
 GetCurPETNaviStatsByte
 GetCurPETNaviStatsHword
 GetRNG
@@ -65,6 +66,7 @@ SpawnOverworldNPCObject
 StartCutscene
 TerminateGFXAnim
 Terminate_ePalette20097a0_Transform
+TestBattleFlag_0x40
 TestEventFlag
 TestEventFlagFromImmediate
 TestPETMenuDataFlag
@@ -83,6 +85,7 @@ battle_isTimeStop
 battle_setFlags
 camera_writeUnk03_14_80301b2
 chatbox_8040818
+chatbox_8045ED0
 chatbox_clear_eFlags2009F38
 chatbox_maskFlags_3e
 chatbox_mask_eFlags2009F38
@@ -109,6 +112,7 @@ decompAndCopyData
 doPETEffect_8033fc0
 eStruct200BC30_getJumpOffset00
 eStruct200BC30_getJumpOffset00_pushpop
+eStruct200FE00_setUnk04To15h
 encryption_8006e3c
 encryption_applyPack_8006e70
 encryption_bugfrags_8006fac
@@ -134,6 +138,8 @@ map_8001708
 musicGameState_8000784
 music_80005F2
 notZero_eByte200AD04
+object_setPanelAllianceTimerLong
+object_setPanelAllianceTimerShort
 owPlayer_setS2000aa0_param0x0to0x2_809e2c8
 owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2
 owPlayer_setS200ace0_fixedAnimationSelect_809e13c
@@ -155,6 +161,8 @@ sound_8000808
 spawnOWPlayerObjectForEnterMap_809e064
 split9BitsFromBitfield_8021AE0
 spriteLoadMugshot_800275A
+sprite_getColorShader
+sprite_getPalette
 sprite_hasShadow
 sprite_initialize
 sprite_load

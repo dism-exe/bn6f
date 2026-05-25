@@ -10148,6 +10148,7 @@ loc_8013678:
 	thumb_func_end sub_80135E8
 
 // (int idx) -> void*
+	.ifndef DECOMP_GetBattleNaviStatsAddr
 	thumb_func_start GetBattleNaviStatsAddr
 GetBattleNaviStatsAddr: // (alliance: bool) -> * NaviStats
 	mov r1, #oNaviStats_Size
@@ -10158,6 +10159,12 @@ GetBattleNaviStatsAddr: // (alliance: bool) -> * NaviStats
 // 801368C
 	.pool
 	thumb_func_end GetBattleNaviStatsAddr
+	.else
+	thumb_func_start GetBattleNaviStatsAddr
+GetBattleNaviStatsAddr:
+	decomp_trampoline GetBattleNaviStatsAddr_c, 4
+	thumb_func_end GetBattleNaviStatsAddr
+	.endif
 
 	thumb_local_start
 GetBattleNaviStats203CB10Addr:

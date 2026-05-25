@@ -10409,6 +10409,7 @@ byte_8045EB0:
 	.word 0x20
 	thumb_func_end chatbox_8043A5C
 
+	.ifndef DECOMP_chatbox_8045ED0
 	thumb_func_start chatbox_8045ED0
 chatbox_8045ED0:
 	push {r1,lr}
@@ -10418,6 +10419,12 @@ chatbox_8045ED0:
 off_8045ED8:
 	.word byte_8043CA4
 	thumb_func_end chatbox_8045ED0
+	.else
+	thumb_func_start chatbox_8045ED0
+chatbox_8045ED0:
+	decomp_trampoline chatbox_8045ED0_c, 4
+	thumb_func_end chatbox_8045ED0
+	.endif
 
 	thumb_func_start chatbox_8045EDC
 chatbox_8045EDC:

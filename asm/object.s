@@ -2605,6 +2605,7 @@ locret_800CC34:
 	pop {r4-r6,pc}
 	thumb_func_end object_setPanelAlliance
 
+	.ifndef DECOMP_object_setPanelAllianceTimerLong
 	thumb_func_start object_setPanelAllianceTimerLong
 object_setPanelAllianceTimerLong:
 	mov r1, #8
@@ -2615,7 +2616,14 @@ object_setPanelAllianceTimerLong:
 	strh r2, [r1,#6]
 	mov pc, lr
 	thumb_func_end object_setPanelAllianceTimerLong
+	.else
+	thumb_func_start object_setPanelAllianceTimerLong
+object_setPanelAllianceTimerLong:
+	decomp_trampoline object_setPanelAllianceTimerLong_c, 4
+	thumb_func_end object_setPanelAllianceTimerLong
+	.endif
 
+	.ifndef DECOMP_object_setPanelAllianceTimerShort
 	thumb_func_start object_setPanelAllianceTimerShort
 object_setPanelAllianceTimerShort:
 	mov r1, #8
@@ -2626,6 +2634,12 @@ object_setPanelAllianceTimerShort:
 	strh r2, [r1,#6]
 	mov pc, lr
 	thumb_func_end object_setPanelAllianceTimerShort
+	.else
+	thumb_func_start object_setPanelAllianceTimerShort
+object_setPanelAllianceTimerShort:
+	decomp_trampoline object_setPanelAllianceTimerShort_c, 6
+	thumb_func_end object_setPanelAllianceTimerShort
+	.endif
 
 	thumb_func_start object_setPanelTypeBlink
 object_setPanelTypeBlink:

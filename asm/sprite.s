@@ -1204,6 +1204,7 @@ sprite_setPalette:
 	thumb_func_end sprite_setPalette
 	.endif
 
+	.ifndef DECOMP_sprite_getPalette
 	thumb_func_start sprite_getPalette
 sprite_getPalette:
 	ldrb r3, [r0,#oObjectHeader_TypeAndSpriteOffset]
@@ -1213,6 +1214,12 @@ sprite_getPalette:
 	ldrb r0, [r3,#oObjectSprite_Unk_04]
 	mov pc, lr
 	thumb_func_end sprite_getPalette
+	.else
+	thumb_func_start sprite_getPalette
+sprite_getPalette:
+	decomp_trampoline sprite_getPalette_c, 4
+	thumb_func_end sprite_getPalette
+	.endif
 
 	thumb_local_start
 sprite_setAnimationAlt:
@@ -1465,6 +1472,7 @@ sprite_setColorShader:
 	mov pc, lr
 	thumb_func_end sprite_setColorShader
 
+	.ifndef DECOMP_sprite_getColorShader
 	thumb_func_start sprite_getColorShader
 sprite_getColorShader:
 	ldrb r3, [r0,#oObjectHeader_TypeAndSpriteOffset]
@@ -1474,6 +1482,12 @@ sprite_getColorShader:
 	ldrh r0, [r3,#oObjectSprite_Unk_06]
 	mov pc, lr
 	thumb_func_end sprite_getColorShader
+	.else
+	thumb_func_start sprite_getColorShader
+sprite_getColorShader:
+	decomp_trampoline sprite_getColorShader_c, 4
+	thumb_func_end sprite_getColorShader
+	.endif
 
 	.ifndef DECOMP_sprite_zeroColorShader
 	thumb_func_start sprite_zeroColorShader
