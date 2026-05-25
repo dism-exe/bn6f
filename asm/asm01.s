@@ -403,6 +403,7 @@ loc_80200A0:
 	pop {r4-r7,pc}
 	thumb_func_end sub_801FFD6
 
+	.ifndef DECOMP_sub_80200A4
 	thumb_func_start sub_80200A4
 sub_80200A4:
 	ldr r3, off_8020130 // =eStruct203F7D8
@@ -478,6 +479,79 @@ off_802012C:
 off_8020130:
 	.word eStruct203F7D8
 	thumb_func_end sub_80200A4
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_80200A4
+sub_80200A4:
+	decomp_trampoline sub_80200A4_c, 8
+	.balign 4, 0x00
+off_80200B4:
+	.word eStruct203F7D8
+off_80200B8:
+	.word eStruct2036780
+off_80200BC:
+	.word dword_203F4A0
+off_80200C0:
+	.word 0x200
+off_80200C4:
+	.word dword_203CBE0
+off_80200C8:
+	.word 0x100
+off_80200CC:
+	.word eStruct203F7D8
+off_80200D0:
+	.word eStruct203F7D8
+off_80200D4:
+	.word eStruct203F7D8
+off_80200D8:
+	.word eStruct203F7D8
+off_80200DC:
+	.word eStruct2036780
+off_80200E0:
+	.word unk_20399F0
+off_80200E4:
+	.word eStruct2036780
+off_80200E8:
+	.word unk_2039A00
+off_80200EC:
+	.word eStruct203F7D8
+off_80200F0:
+	.word eStruct203F7D8
+off_80200F4:
+	.word unk_20399F0
+off_80200F8:
+	.word dword_203F4A0
+off_80200FC:
+	.word unk_2036120
+off_8020100:
+	.word dword_203F5A0
+off_8020104:
+	.word unk_20362F0
+off_8020108:
+	.word eStruct2036780
+off_802010C:
+	.word dword_203CBE0
+off_8020110:
+	.word eStruct203F7D8
+off_8020114:
+	.word unk_20399F0
+off_8020118:
+	.word dword_203F4A0
+off_802011C:
+	.word unk_2036120
+off_8020120:
+	.word dword_203F5A0
+off_8020124:
+	.word unk_20362F0
+off_8020128:
+	.word eStruct2036780
+off_802012C:
+	.word dword_203CBE0
+off_8020130:
+	.word eStruct203F7D8
+	thumb_func_end sub_80200A4
+	.endif
 
 	.ifndef DECOMP_eStruct2038160_clearStruct
 	thumb_func_start eStruct2038160_clearStruct

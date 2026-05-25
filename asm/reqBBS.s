@@ -810,6 +810,7 @@ reqBBS_dead_813E634:
 	pop {r4,pc}
 	thumb_func_end reqBBS_dead_813E634
 
+	.ifndef DECOMP_reqBBS_813E660
 	thumb_func_start reqBBS_813E660
 reqBBS_813E660:
 	push {r4,r5,lr}
@@ -862,6 +863,40 @@ off_813E6C8:
 off_813E6CC:
 	.word unk_2000FF0
 	thumb_func_end reqBBS_813E660
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start reqBBS_813E660
+reqBBS_813E660:
+	decomp_trampoline reqBBS_813E660_c, 36
+byte_813E68C:
+	.byte 0xA0, 0x17, 0x0, 0x0, 0xE0, 0x17, 0x0, 0x0, 0x20, 0x18, 0x0
+	.byte 0x0, 0x60, 0x18, 0x0, 0x0, 0xA0, 0x18, 0x0, 0x0, 0xE0, 0x18
+	.byte 0x0, 0x0
+off_813E6A4:
+	.word 0x17A0
+off_813E6A8:
+	.word 0x19A0
+off_813E6AC:
+	.word byte_2001400
+off_813E6B0:
+	.word unk_2000FC0
+off_813E6B4:
+	.word byte_2001400
+byteCount:
+	.word 0x200
+off_813E6BC:
+	.word unk_2000FC0
+off_813E6C0:
+	.word unk_2000FF0
+off_813E6C4:
+	.word byte_2001400
+off_813E6C8:
+	.word unk_2000FC0
+off_813E6CC:
+	.word unk_2000FF0
+	thumb_func_end reqBBS_813E660
+	.endif
 
 	thumb_local_start
 reqBBS_vram_813E6D0:
