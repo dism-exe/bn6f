@@ -13778,6 +13778,7 @@ sub_802CDFE:
 	thumb_func_end sub_802CDFE
 	.endif
 
+	.ifndef DECOMP_sub_802CE10
 	thumb_func_start sub_802CE10
 sub_802CE10:
 	ldr r1, off_802CE50 // =dword_203CFB0 
@@ -13800,6 +13801,12 @@ loc_802CE26:
 locret_802CE2E:
 	mov pc, lr
 	thumb_func_end sub_802CE10
+	.else
+	thumb_func_start sub_802CE10
+sub_802CE10:
+	decomp_trampoline sub_802CE10_c, 24
+	thumb_func_end sub_802CE10
+	.endif
 
 	thumb_func_start sub_802CE30
 sub_802CE30:
