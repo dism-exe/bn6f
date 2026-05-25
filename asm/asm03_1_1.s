@@ -6718,6 +6718,7 @@ sub_803C316:
 	pop {pc}
 	thumb_func_end sub_803C316
 
+	.ifndef DECOMP_sub_803C320
 	thumb_func_start sub_803C320
 sub_803C320:
 	ldr r2, off_803C32C // =eS200A290
@@ -6729,6 +6730,17 @@ sub_803C320:
 off_803C32C:
 	.word eS200A290
 	thumb_func_end sub_803C320
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_803C320
+sub_803C320:
+	decomp_trampoline sub_803C320_c, 4
+	.balign 4, 0x00
+off_803C32C:
+	.word eS200A290
+	thumb_func_end sub_803C320
+	.endif
 
 	thumb_func_start sub_803C330
 sub_803C330:
@@ -9378,6 +9390,7 @@ off_803DC78::
 	.word 0x0
 	thumb_func_end logoScreen_loadLogoTiles_803D2B8
 
+	.ifndef DECOMP_sub_803DCD8
 	thumb_func_start sub_803DCD8
 sub_803DCD8:
 	push {r4-r7,lr}
@@ -9389,6 +9402,12 @@ sub_803DCD8:
 off_803DCE4:
 	.word eLinkState // eLinkState
 	thumb_func_end sub_803DCD8
+	.else
+	thumb_func_start sub_803DCD8
+sub_803DCD8:
+	decomp_trampoline sub_803DCD8_c, 8
+	thumb_func_end sub_803DCD8
+	.endif
 
 	.ifndef DECOMP_sub_803DCE8
 	thumb_func_start sub_803DCE8

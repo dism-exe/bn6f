@@ -4644,6 +4644,7 @@ sub_81325CC:
 	pop {r4,pc}
 	thumb_func_end sub_81325CC
 
+	.ifndef DECOMP_sub_81325E4
 	thumb_func_start sub_81325E4
 sub_81325E4:
 	ldr r1, off_81325EC // =dword_81325F0
@@ -4655,6 +4656,12 @@ off_81325EC:
 dword_81325F0:
 	.word 0x100C08
 	thumb_func_end sub_81325E4
+	.else
+	thumb_func_start sub_81325E4
+sub_81325E4:
+	decomp_trampoline sub_81325E4_c, 8
+	thumb_func_end sub_81325E4
+	.endif
 
 	thumb_func_start sub_81325F4
 sub_81325F4:
@@ -14970,6 +14977,7 @@ setUnkFieldOfChipCodeInChipPack_81376b8:
 	.balign 4, 0x00
 	thumb_func_end setUnkFieldOfChipCodeInChipPack_81376b8
 
+	.ifndef DECOMP_sub_81376CC
 	thumb_func_start sub_81376CC
 sub_81376CC:
 	ldr r2, off_8137710 // =byte_20065B4 
@@ -14981,6 +14989,12 @@ sub_81376CC:
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end sub_81376CC
+	.else
+	thumb_func_start sub_81376CC
+sub_81376CC:
+	decomp_trampoline sub_81376CC_c, 8
+	thumb_func_end sub_81376CC
+	.endif
 
 	sub r0, r0, r1
 	lsl r1, r1, #1

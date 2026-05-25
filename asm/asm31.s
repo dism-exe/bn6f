@@ -815,6 +815,7 @@ locret_80B87EE:
 	pop {r5,pc}
 	thumb_func_end sub_80B87AC
 
+	.ifndef DECOMP_sub_80B87F0
 	thumb_func_start sub_80B87F0
 sub_80B87F0:
 	ldrb r2, [r0,#9]
@@ -827,6 +828,12 @@ sub_80B87F0:
 locret_80B87FE:
 	mov pc, lr
 	thumb_func_end sub_80B87F0
+	.else
+	thumb_func_start sub_80B87F0
+sub_80B87F0:
+	decomp_trampoline sub_80B87F0_c, 8
+	thumb_func_end sub_80B87F0
+	.endif
 
 	thumb_local_start
 sub_80B8800:

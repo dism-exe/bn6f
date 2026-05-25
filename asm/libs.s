@@ -5277,6 +5277,7 @@ off_81466E0:
 	.word unk_2010330
 	thumb_func_end sub_81466C4
 
+	.ifndef DECOMP_sub_81466E4
 	thumb_func_start sub_81466E4
 sub_81466E4:
 	lsl r0, r0, #0x18
@@ -5288,6 +5289,12 @@ sub_81466E4:
 off_81466F0:
 	.word unk_2009750
 	thumb_func_end sub_81466E4
+	.else
+	thumb_func_start sub_81466E4
+sub_81466E4:
+	decomp_trampoline sub_81466E4_c, 8
+	thumb_func_end sub_81466E4
+	.endif
 
 	thumb_local_start
 sub_81466F4:
@@ -5310,6 +5317,7 @@ off_8146710:
 	.word unk_2010330
 	thumb_func_end sub_81466F4
 
+	.ifndef DECOMP_sub_8146714
 	thumb_func_start sub_8146714
 sub_8146714:
 	lsl r0, r0, #0x18
@@ -5321,6 +5329,12 @@ sub_8146714:
 off_8146720:
 	.word unk_20098B0
 	thumb_func_end sub_8146714
+	.else
+	thumb_func_start sub_8146714
+sub_8146714:
+	decomp_trampoline sub_8146714_c, 8
+	thumb_func_end sub_8146714
+	.endif
 
 	thumb_func_start sub_8146724
 sub_8146724:
@@ -5328,6 +5342,7 @@ sub_8146724:
 	bx lr
 	thumb_func_end sub_8146724
 
+	.ifndef DECOMP_sub_8146728
 	thumb_func_start sub_8146728
 sub_8146728:
 	add r0, #0xb
@@ -5339,6 +5354,12 @@ sub_8146728:
 	bx lr
 	.balign 4, 0x00
 	thumb_func_end sub_8146728
+	.else
+	thumb_func_start sub_8146728
+sub_8146728:
+	decomp_trampoline sub_8146728_c, 8
+	thumb_func_end sub_8146728
+	.endif
 
 	thumb_func_start sub_8146738
 sub_8146738:

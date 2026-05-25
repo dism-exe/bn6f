@@ -12815,6 +12815,7 @@ off_8014828:
 	.word unk_203A990
 	thumb_func_end sub_80147E4
 
+	.ifndef DECOMP_sub_801482C
 	thumb_func_start sub_801482C
 sub_801482C:
 	ldr r1, off_8014838 // =dword_20367F0 
@@ -12826,6 +12827,12 @@ sub_801482C:
 off_8014838:
 	.word dword_20367F0
 	thumb_func_end sub_801482C
+	.else
+	thumb_func_start sub_801482C
+sub_801482C:
+	decomp_trampoline sub_801482C_c, 8
+	thumb_func_end sub_801482C
+	.endif
 
 	thumb_func_start sub_801483C
 sub_801483C:

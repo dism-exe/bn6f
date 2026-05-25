@@ -21,6 +21,7 @@ sub_813B768:
 	thumb_func_end sub_813B768
 	.endif
 
+	.ifndef DECOMP_sub_813B780
 	thumb_func_start sub_813B780
 sub_813B780:
 	ldr r1, off_813B78C // =StructArr_813944C
@@ -32,6 +33,12 @@ sub_813B780:
 off_813B78C:
 	.word StructArr_813944C
 	thumb_func_end sub_813B780
+	.else
+	thumb_func_start sub_813B780
+sub_813B780:
+	decomp_trampoline sub_813B780_c, 8
+	thumb_func_end sub_813B780
+	.endif
 
 	thumb_local_start
 sub_813B790:
@@ -3887,6 +3894,7 @@ off_813D634:
 	.word eS200BC50
 	thumb_func_end sub_813D62C
 
+	.ifndef DECOMP_sub_813D638
 	thumb_func_start sub_813D638
 sub_813D638:
 	push {lr}
@@ -3898,6 +3906,12 @@ sub_813D638:
 off_813D644:
 	.word byte_2009470
 	thumb_func_end sub_813D638
+	.else
+	thumb_func_start sub_813D638
+sub_813D638:
+	decomp_trampoline sub_813D638_c, 8
+	thumb_func_end sub_813D638
+	.endif
 
 	thumb_func_start sub_813D648
 sub_813D648:
@@ -4046,6 +4060,7 @@ sub_813D714:
 	mov r0, #0x80
 	and r0, r1
 	pop {pc}
+	.ifndef DECOMP_sub_813D750
 	thumb_func_start sub_813D750
 sub_813D750:
 	push {lr}
@@ -4057,7 +4072,14 @@ sub_813D750:
 off_813D75C:
 	.word eS200BC50
 	thumb_func_end sub_813D750
+	.else
+	thumb_func_start sub_813D750
+sub_813D750:
+	decomp_trampoline sub_813D750_c, 8
+	thumb_func_end sub_813D750
+	.endif
 
+	.ifndef DECOMP_sub_813D760
 	thumb_func_start sub_813D760
 sub_813D760:
 	push {lr}
@@ -4069,6 +4091,12 @@ sub_813D760:
 off_813D76C:
 	.word eS200BC50
 	thumb_func_end sub_813D760
+	.else
+	thumb_func_start sub_813D760
+sub_813D760:
+	decomp_trampoline sub_813D760_c, 8
+	thumb_func_end sub_813D760
+	.endif
 
 	push {r4,lr}
 	mov r0, #1
@@ -4340,6 +4368,7 @@ sub_813D91C:
 	.balign 4, 0x00
 	thumb_func_end sub_813D91C
 
+	.ifndef DECOMP_sub_813D924
 	thumb_func_start sub_813D924
 sub_813D924:
 	ldr r0, off_813DB08 // =0x214 
@@ -4352,6 +4381,12 @@ locret_813D930:
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end sub_813D924
+	.else
+	thumb_func_start sub_813D924
+sub_813D924:
+	decomp_trampoline sub_813D924_c, 8
+	thumb_func_end sub_813D924
+	.endif
 
 	thumb_func_start sub_813D934
 sub_813D934:
