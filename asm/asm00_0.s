@@ -5371,6 +5371,7 @@ zeroFill_80024A2:
 	thumb_func_end zeroFill_80024A2
 	.endif
 
+	.ifndef DECOMP_sub_80024AE
 	thumb_func_start sub_80024AE
 sub_80024AE:
 	push {r4-r7,lr}
@@ -5384,6 +5385,12 @@ sub_80024AE:
 locret_80024BE:
 	pop {r4-r7,pc}
 	thumb_func_end sub_80024AE
+	.else
+	thumb_func_start sub_80024AE
+sub_80024AE:
+	decomp_trampoline sub_80024AE_c, 8
+	thumb_func_end sub_80024AE
+	.endif
 
 	thumb_func_start Is_eStruct200a6a0_Initialized
 Is_eStruct200a6a0_Initialized:
