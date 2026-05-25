@@ -6519,6 +6519,7 @@ sub_803C1A8:
 	pop {r4-r7,pc}
 	thumb_func_end sub_803C1A8
 
+	.ifndef DECOMP_sub_803C1BC
 	thumb_func_start sub_803C1BC
 sub_803C1BC:
 	push {r4-r7,lr}
@@ -6580,6 +6581,29 @@ byte_803C238:
 	.byte 0x0, 0x8, 0x4, 0xC, 0x8, 0x0, 0x10, 0x18, 0x14, 0x1C, 0x18, 0x10
 	.byte 0xFF, 0x0, 0x0, 0x0
 	thumb_func_end sub_803C1BC
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_803C1BC
+sub_803C1BC:
+	decomp_trampoline sub_803C1BC_c, 68
+off_803C208:
+	.word unk_2024A00
+	.word unk_2025200
+	.word unk_2025A00
+	.word unk_2026200
+	.word unk_2024E00
+	.word unk_2025600
+	.word unk_2025E00
+	.word unk_2026600
+byte_803C228:
+	.byte 0x0, 0x4, 0x4, 0x0, 0x8, 0x4, 0x10, 0x14, 0x14, 0x10, 0x18, 0x14
+	.byte 0xFF, 0x0, 0x0, 0x0
+byte_803C238:
+	.byte 0x0, 0x8, 0x4, 0xC, 0x8, 0x0, 0x10, 0x18, 0x14, 0x1C, 0x18, 0x10
+	.byte 0xFF, 0x0, 0x0, 0x0
+	thumb_func_end sub_803C1BC
+	.endif
 
 	thumb_local_start
 sub_803C248:
