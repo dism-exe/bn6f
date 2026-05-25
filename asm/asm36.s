@@ -4390,6 +4390,7 @@ off_813242C:
 	.word unk_2033800
 	thumb_func_end sub_81323B0
 
+	.ifndef DECOMP_sub_8132430
 	thumb_func_start sub_8132430
 sub_8132430:
 	push {r4-r7,lr}
@@ -4460,6 +4461,12 @@ loc_81324A4:
 	mov r0, r7
 	pop {r4-r7,pc}
 	thumb_func_end sub_8132430
+	.else
+	thumb_func_start sub_8132430
+sub_8132430:
+	decomp_trampoline sub_8132430_c, 112
+	thumb_func_end sub_8132430
+	.endif
 
 	thumb_func_start sub_81324A8
 sub_81324A8:
