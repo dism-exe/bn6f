@@ -4415,6 +4415,7 @@ off_8140794:
 	thumb_func_end reqBBS_81406FC
 
 // () -> u8
+	.ifndef DECOMP_reqBBS_getRequestBBSRank
 	thumb_func_start reqBBS_getRequestBBSRank
 reqBBS_getRequestBBSRank:
 	push {r4-r7,lr}
@@ -4426,6 +4427,12 @@ reqBBS_getRequestBBSRank:
 dword_81407A4:
 	.word 0xE
 	thumb_func_end reqBBS_getRequestBBSRank
+	.else
+	thumb_func_start reqBBS_getRequestBBSRank
+reqBBS_getRequestBBSRank:
+	decomp_trampoline reqBBS_getRequestBBSRank_c, 8
+	thumb_func_end reqBBS_getRequestBBSRank
+	.endif
 
 	thumb_local_start
 reqBBS_81407A8:

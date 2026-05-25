@@ -16,6 +16,7 @@ CallBGScrollCallback0
 CallBGScrollCallback1
 CapIncrementGameTimeFrames
 CheckKeyItem
+ClearCustGauge
 ClearEventFlag
 ClearEventFlagFromImmediate
 ClearPETMenuDataFlag
@@ -25,8 +26,12 @@ CopyHalfwords
 CopyWords
 FillByEightWords
 GetBattleNaviStatsAddr
+GetBattleNaviStatsByte
+GetBattleNaviStatsHword
+GetBattleNaviStatsSignedByte
 GetCurPETNaviStatsByte
 GetCurPETNaviStatsHword
+GetNaviStats203CCE0Addr
 GetRNG
 GetRNGSecondary
 HalfwordFill
@@ -34,6 +39,7 @@ InitializeOverworldMapObjectStructs
 IsButtonPressed
 IsCurSubsystemInUse
 IsCutsceneScriptNonNull
+IsGFXAnimActive
 IsNotSlipRunningAndNotInCutscene
 IsScreenFadeActive
 Is_eStruct200a6a0_Initialized
@@ -143,6 +149,7 @@ notZero_eByte200AD04
 object_setPanelAllianceTimerLong
 object_setPanelAllianceTimerShort
 owPlayer_809E114
+owPlayer_809e218
 owPlayer_setS2000aa0_param0x0to0x2_809e2c8
 owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2
 owPlayer_setS200ace0_fixedAnimationSelect_809e13c
@@ -155,6 +162,7 @@ reqBBS_81407D8
 reqBBS_814084C
 reqBBS_8140984
 reqBBS_addBBSMessage_813e5dc
+reqBBS_getRequestBBSRank
 reqBBS_initMemory_813F9DA
 reqBBS_setFlag_e17b0f7_8140A00
 reset_flags32_20093A4
@@ -166,6 +174,8 @@ spawnOWPlayerObjectForEnterMap_809e064
 split9BitsFromBitfield_8021AE0
 spriteLoadMugshot_800275A
 sprite_getColorShader
+sprite_getFinalPalette
+sprite_getFlip
 sprite_getPalette
 sprite_hasShadow
 sprite_initialize
@@ -235,6 +245,7 @@ sub_802F0F4
 sub_802F2C8
 sub_802FDB0
 sub_802FE28
+sub_802FE6A
 sub_80341AA
 sub_8034C36
 sub_803537C

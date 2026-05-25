@@ -2244,6 +2244,7 @@ off_809E214:
 	.word eStruct200ace0
 	thumb_func_end owPlayer_offsetS200ace0Coords_809e1fa
 
+	.ifndef DECOMP_owPlayer_809e218
 	thumb_func_start owPlayer_809e218
 owPlayer_809e218:
 	ldr r3, =eStruct200ace0 
@@ -2255,6 +2256,12 @@ locret_809E222:
 	mov pc, lr
 	.pool // 809E224
 	thumb_func_end owPlayer_809e218
+	.else
+	thumb_func_start owPlayer_809e218
+owPlayer_809e218:
+	decomp_trampoline owPlayer_809e218_c, 8
+	thumb_func_end owPlayer_809e218
+	.endif
 
 	.ifndef DECOMP_returnZero_809E228
 	thumb_func_start returnZero_809E228

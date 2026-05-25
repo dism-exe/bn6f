@@ -10210,6 +10210,7 @@ SetBattleNaviStatsHword:
 	pop {r6,r7,pc}
 	thumb_func_end SetBattleNaviStatsHword
 
+	.ifndef DECOMP_GetBattleNaviStatsByte
 	thumb_func_start GetBattleNaviStatsByte
 GetBattleNaviStatsByte:
 	push {r6,lr}
@@ -10218,7 +10219,14 @@ GetBattleNaviStatsByte:
 	ldrb r0, [r0,r6]
 	pop {r6,pc}
 	thumb_func_end GetBattleNaviStatsByte
+	.else
+	thumb_func_start GetBattleNaviStatsByte
+GetBattleNaviStatsByte:
+	decomp_trampoline GetBattleNaviStatsByte_c, 4
+	thumb_func_end GetBattleNaviStatsByte
+	.endif
 
+	.ifndef DECOMP_GetBattleNaviStatsSignedByte
 	thumb_func_start GetBattleNaviStatsSignedByte
 GetBattleNaviStatsSignedByte:
 	push {r6,lr}
@@ -10227,7 +10235,14 @@ GetBattleNaviStatsSignedByte:
 	ldrsb r0, [r0,r6]
 	pop {r6,pc}
 	thumb_func_end GetBattleNaviStatsSignedByte
+	.else
+	thumb_func_start GetBattleNaviStatsSignedByte
+GetBattleNaviStatsSignedByte:
+	decomp_trampoline GetBattleNaviStatsSignedByte_c, 4
+	thumb_func_end GetBattleNaviStatsSignedByte
+	.endif
 
+	.ifndef DECOMP_GetBattleNaviStatsHword
 	thumb_func_start GetBattleNaviStatsHword
 GetBattleNaviStatsHword:
 	push {r6,lr}
@@ -10236,6 +10251,12 @@ GetBattleNaviStatsHword:
 	ldrh r0, [r0,r6]
 	pop {r6,pc}
 	thumb_func_end GetBattleNaviStatsHword
+	.else
+	thumb_func_start GetBattleNaviStatsHword
+GetBattleNaviStatsHword:
+	decomp_trampoline GetBattleNaviStatsHword_c, 4
+	thumb_func_end GetBattleNaviStatsHword
+	.endif
 
 	.ifndef DECOMP_SetNaviStatsByte
 	thumb_func_start SetNaviStatsByte
@@ -10534,6 +10555,7 @@ initNaviStats203CCE0_8013846:
 	pop {r4,pc}
 	thumb_func_end initNaviStats203CCE0_8013846
 
+	.ifndef DECOMP_GetNaviStats203CCE0Addr
 	thumb_func_start GetNaviStats203CCE0Addr
 GetNaviStats203CCE0Addr:
 	mov r1, #oNaviStats_Size
@@ -10545,6 +10567,12 @@ GetNaviStats203CCE0Addr:
 off_8013860:
 	.word eNaviStats203CCE0
 	thumb_func_end GetNaviStats203CCE0Addr
+	.else
+	thumb_func_start GetNaviStats203CCE0Addr
+GetNaviStats203CCE0Addr:
+	decomp_trampoline GetNaviStats203CCE0Addr_c, 8
+	thumb_func_end GetNaviStats203CCE0Addr
+	.endif
 
 	thumb_func_start SetNaviStats203CCE0Byte
 SetNaviStats203CCE0Byte:
@@ -29892,6 +29920,7 @@ sub_801DF8C:
 	mov pc, lr
 	thumb_func_end sub_801DF8C
 
+	.ifndef DECOMP_ClearCustGauge
 	thumb_func_start ClearCustGauge
 ClearCustGauge:
 	push {lr}
@@ -29902,6 +29931,12 @@ ClearCustGauge:
 	bl battle_clearFlags
 	pop {pc}
 	thumb_func_end ClearCustGauge
+	.else
+	thumb_func_start ClearCustGauge
+ClearCustGauge:
+	decomp_trampoline ClearCustGauge_c, 6
+	thumb_func_end ClearCustGauge
+	.endif
 
 	thumb_func_start SetCustGauge
 SetCustGauge:

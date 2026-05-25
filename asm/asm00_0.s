@@ -3986,6 +3986,7 @@ TerminateGFXAnim:
 	thumb_func_end TerminateGFXAnim
 	.endif
 
+	.ifndef DECOMP_IsGFXAnimActive
 	thumb_func_start IsGFXAnimActive
 IsGFXAnimActive:
 	push {r4-r7,lr}
@@ -3997,6 +3998,12 @@ IsGFXAnimActive:
 	tst r0, r0
 	pop {r4-r7,pc}
 	thumb_func_end IsGFXAnimActive
+	.else
+	thumb_func_start IsGFXAnimActive
+IsGFXAnimActive:
+	decomp_trampoline IsGFXAnimActive_c, 8
+	thumb_func_end IsGFXAnimActive
+	.endif
 
 	thumb_func_start ProcessGFXAnims
 ProcessGFXAnims:

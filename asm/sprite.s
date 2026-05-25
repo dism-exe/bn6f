@@ -1266,6 +1266,7 @@ sprite_setFinalPalette:
 	mov pc, lr
 	thumb_func_end sprite_forceWhitePalette
 
+	.ifndef DECOMP_sprite_getFinalPalette
 	thumb_func_start sprite_getFinalPalette
 sprite_getFinalPalette:
 	ldrb r3, [r0,#oObjectHeader_TypeAndSpriteOffset]
@@ -1277,6 +1278,12 @@ sprite_getFinalPalette:
 	and r1, r0
 	mov pc, lr
 	thumb_func_end sprite_getFinalPalette
+	.else
+	thumb_func_start sprite_getFinalPalette
+sprite_getFinalPalette:
+	decomp_trampoline sprite_getFinalPalette_c, 8
+	thumb_func_end sprite_getFinalPalette
+	.endif
 
 	thumb_func_start sprite_clearFinalPalette
 sprite_clearFinalPalette:
@@ -1602,6 +1609,7 @@ sprite_setFlip:
 	thumb_func_end sprite_setFlip
 	.endif
 
+	.ifndef DECOMP_sprite_getFlip
 	thumb_func_start sprite_getFlip
 sprite_getFlip:
 	ldrb r3, [r0,#oObjectHeader_SpriteOffset]
@@ -1614,6 +1622,12 @@ sprite_getFlip:
 	lsr r0, r0, #4
 	mov pc, lr
 	thumb_func_end sprite_getFlip
+	.else
+	thumb_func_start sprite_getFlip
+sprite_getFlip:
+	decomp_trampoline sprite_getFlip_c, 8
+	thumb_func_end sprite_getFlip
+	.endif
 
 // () -> void
 	.ifndef DECOMP_sprite_noShadow

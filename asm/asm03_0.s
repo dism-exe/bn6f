@@ -20336,6 +20336,7 @@ loc_802FE66:
 	mov pc, lr
 	thumb_func_end sub_802FE48
 
+	.ifndef DECOMP_sub_802FE6A
 	thumb_func_start sub_802FE6A
 sub_802FE6A:
 	ldr r3, off_802FF44 // =dword_2009A2C 
@@ -20347,6 +20348,12 @@ sub_802FE6A:
 	str r1, [r3]
 	mov pc, lr
 	thumb_func_end sub_802FE6A
+	.else
+	thumb_func_start sub_802FE6A
+sub_802FE6A:
+	decomp_trampoline sub_802FE6A_c, 6
+	thumb_func_end sub_802FE6A
+	.endif
 
 	thumb_func_start sub_802FE7A
 sub_802FE7A:
