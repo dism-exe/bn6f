@@ -6635,6 +6635,7 @@ sub_803C2A0:
 	pop {r4-r7,pc}
 	thumb_func_end sub_803C2A0
 
+	.ifndef DECOMP_sub_803C2AA
 	thumb_func_start sub_803C2AA
 sub_803C2AA:
 	push {r4-r7,lr}
@@ -6667,6 +6668,12 @@ off_803C2E4:
 off_803C2E8:
 	.word unk_200A3B0
 	thumb_func_end sub_803C2AA
+	.else
+	thumb_func_start sub_803C2AA
+sub_803C2AA:
+	decomp_trampoline sub_803C2AA_c, 56
+	thumb_func_end sub_803C2AA
+	.endif
 
 	thumb_local_start
 sub_803C2EC:

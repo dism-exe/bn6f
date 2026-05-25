@@ -2812,6 +2812,7 @@ word_80351EC:
 	.hword 0
 	thumb_func_end enableGhostNavi_80351C8
 
+	.ifndef DECOMP_sub_803522E
 	thumb_func_start sub_803522E
 sub_803522E:
 	push {r4-r7,lr}
@@ -2854,6 +2855,12 @@ word_8035250:
 	.hword 0xff
 	.hword 0xff
 	thumb_func_end sub_803522E
+	.else
+	thumb_func_start sub_803522E
+sub_803522E:
+	decomp_trampoline sub_803522E_c, 60
+	thumb_func_end sub_803522E
+	.endif
 
 	thumb_local_start
 ghostNaviCheck_8035274:
