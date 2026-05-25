@@ -9321,6 +9321,7 @@ byte_81129E8:
 	.byte 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E
 	thumb_func_end sub_8112968
 
+	.ifndef DECOMP_sub_81129EE
 	thumb_func_start sub_81129EE
 sub_81129EE:
 	push {lr}
@@ -9349,6 +9350,12 @@ sub_81129EE:
 locret_8112A1C:
 	pop {pc}
 	thumb_func_end sub_81129EE
+	.else
+	thumb_func_start sub_81129EE
+sub_81129EE:
+	decomp_trampoline sub_81129EE_c, 38
+	thumb_func_end sub_81129EE
+	.endif
 
 	thumb_local_start
 sub_8112A1E:
