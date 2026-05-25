@@ -484,3 +484,4 @@ GiveChips
 object_setAttack2
 sub_800302A
 sub_802CE10
+sub_800304A

@@ -1824,6 +1824,7 @@ sub_800302A:
 	thumb_func_end sub_800302A
 	.endif
 
+	.ifndef DECOMP_sub_800304A
 	thumb_func_start sub_800304A
 sub_800304A:
 	ldrb r3, [r5,#2]
@@ -1838,6 +1839,12 @@ sub_800304A:
 	strb r1, [r3,#0x15]
 	mov pc, lr
 	thumb_func_end sub_800304A
+	.else
+	thumb_func_start sub_800304A
+sub_800304A:
+	decomp_trampoline sub_800304A_c, 12
+	thumb_func_end sub_800304A
+	.endif
 
 	thumb_func_start sub_8003060
 sub_8003060:
