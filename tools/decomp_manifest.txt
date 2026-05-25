@@ -481,3 +481,4 @@ reqBBS_813EE58
 sub_801E724
 sub_8049DC4
 GiveChips
+object_setAttack2

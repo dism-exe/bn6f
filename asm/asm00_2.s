@@ -5639,6 +5639,7 @@ object_setAttack5:
 	mov r2, #5
 	b loc_8011698
 
+	.ifndef DECOMP_object_setAttack2
 loc_8011698:
 	push {lr}
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -5650,6 +5651,10 @@ loc_8011698:
 	strb r2, [r1,#oAIAttackVars_Unk_1c]
 	bl sub_801011A
 	pop {pc}
+	.else
+loc_8011698:
+	decomp_trampoline object_setAttack_common_c, 14
+	.endif
 	thumb_func_end object_setAttack2
 	thumb_func_end object_setAttack3
 	thumb_func_end object_setAttack4
