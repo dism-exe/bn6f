@@ -8107,6 +8107,7 @@ word_8012790:
 	.hword 0x601
 	thumb_func_end sub_801273E
 
+	.ifndef DECOMP_sub_8012792
 	thumb_func_start sub_8012792
 sub_8012792:
 	push {r4,r6,r7,lr}
@@ -8136,6 +8137,12 @@ loc_80127BC:
 	mov r0, #0xff
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_8012792
+	.else
+	thumb_func_start sub_8012792
+sub_8012792:
+	decomp_trampoline sub_8012792_c, 36
+	thumb_func_end sub_8012792
+	.endif
 
 	thumb_local_start
 useChipRelated_80127C0: // called when you use a chip
