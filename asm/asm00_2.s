@@ -31263,6 +31263,7 @@ sub_801E71C:
 	pop {r1,pc}
 	thumb_func_end sub_801E71C
 
+	.ifndef DECOMP_sub_801E724
 	thumb_func_start sub_801E724
 sub_801E724:
 	push {r5,lr}
@@ -31279,6 +31280,12 @@ loc_801E730:
 	strb r0, [r5,#0x13] // (byte_2035293 - 0x2035280)
 	pop {r5,pc}
 	thumb_func_end sub_801E724
+	.else
+	thumb_func_start sub_801E724
+sub_801E724:
+	decomp_trampoline sub_801E724_c, 16
+	thumb_func_end sub_801E724
+	.endif
 
 	thumb_local_start
 sub_801E73C:
