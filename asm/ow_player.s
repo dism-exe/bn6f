@@ -2243,6 +2243,7 @@ owPlayer_copyCoordsToNextCoordsAddOffsetToCoordsThenOffsetS200ace0Coords_809e1d8
 	pop {r7}
 	thumb_func_end owPlayer_copyCoordsToNextCoordsAddOffsetToCoordsThenOffsetS200ace0Coords_809e1d8
 
+	.ifndef DECOMP_owPlayer_offsetS200ace0Coords_809e1fa
 	thumb_func_start owPlayer_offsetS200ace0Coords_809e1fa
 owPlayer_offsetS200ace0Coords_809e1fa:
 	push {r7,lr}
@@ -2261,6 +2262,17 @@ owPlayer_offsetS200ace0Coords_809e1fa:
 off_809E214:
 	.word eStruct200ace0
 	thumb_func_end owPlayer_offsetS200ace0Coords_809e1fa
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start owPlayer_offsetS200ace0Coords_809e1fa
+owPlayer_offsetS200ace0Coords_809e1fa:
+	decomp_trampoline owPlayer_offsetS200ace0Coords_809e1fa_c, 16
+	.balign 4, 0x00
+off_809E214:
+	.word eStruct200ace0
+	thumb_func_end owPlayer_offsetS200ace0Coords_809e1fa
+	.endif
 
 	.ifndef DECOMP_owPlayer_809e218
 	thumb_func_start owPlayer_809e218

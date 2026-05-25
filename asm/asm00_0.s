@@ -2886,6 +2886,7 @@ GetRNG:
 	.endif
 
 /// tags: "#mod_rng, "
+	.ifndef DECOMP_GetPositiveSignedRNG
 	thumb_func_start GetPositiveSignedRNG
 GetPositiveSignedRNG:
 	push {r7,lr}
@@ -2902,6 +2903,12 @@ GetPositiveSignedRNG:
 	lsr r0, r0, #1
 	pop {r7,pc}
 	thumb_func_end GetPositiveSignedRNG
+	.else
+	thumb_func_start GetPositiveSignedRNG
+GetPositiveSignedRNG:
+	decomp_trampoline GetPositiveSignedRNG_c, 16
+	thumb_func_end GetPositiveSignedRNG
+	.endif
 
 /// tags: "#mod.rng, "
 	.ifndef DECOMP_GetRNGSecondary
@@ -2927,6 +2934,7 @@ GetRNGSecondary:
 	.endif
 
 /// tags: "#mod.rng, "
+	.ifndef DECOMP_GetPositiveSignedRNGSecondary
 	thumb_func_start GetPositiveSignedRNGSecondary
 GetPositiveSignedRNGSecondary:
 	push {r7,lr}
@@ -2943,6 +2951,12 @@ GetPositiveSignedRNGSecondary:
 	lsr r0, r0, #1
 	pop {r7,pc}
 	thumb_func_end GetPositiveSignedRNGSecondary
+	.else
+	thumb_func_start GetPositiveSignedRNGSecondary
+GetPositiveSignedRNGSecondary:
+	decomp_trampoline GetPositiveSignedRNGSecondary_c, 16
+	thumb_func_end GetPositiveSignedRNGSecondary
+	.endif
 
 /// tags: "#mod.rng, #dead, "
 	thumb_local_start

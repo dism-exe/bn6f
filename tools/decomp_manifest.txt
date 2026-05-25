@@ -32,6 +32,8 @@ GetBattleNaviStatsSignedByte
 GetCurPETNaviStatsByte
 GetCurPETNaviStatsHword
 GetNaviStats203CCE0Addr
+GetPositiveSignedRNG
+GetPositiveSignedRNGSecondary
 GetRNG
 GetRNGSecondary
 HalfwordFill
@@ -41,6 +43,7 @@ IsCurSubsystemInUse
 IsCutsceneScriptNonNull
 IsGFXAnimActive
 IsNotSlipRunningAndNotInCutscene
+IsR2BetweenR0AndR1
 IsScreenFadeActive
 Is_eStruct200a6a0_Initialized
 PlayMapMusic
@@ -161,6 +164,7 @@ owPlayer_809E0FC
 owPlayer_809E114
 owPlayer_809e218
 owPlayer_offsetS2000aa0_param0x0to0x2_809e2dc
+owPlayer_offsetS200ace0Coords_809e1fa
 owPlayer_setS2000aa0_param0x0to0x2_809e2c8
 owPlayer_setS2000aa0_param0x0to0x2_with0x40_0x40_0x0_respectively_809e2c2
 owPlayer_setS200ace0_fixedAnimationSelect_809e13c
@@ -240,6 +244,7 @@ sub_8005F6C
 sub_8006330
 sub_800634C
 sub_8006910
+sub_800A0D6
 sub_800A8F8
 sub_800A9E2
 sub_800AB2E
@@ -324,6 +329,7 @@ sub_80AA104
 sub_80B87F0
 sub_80C4090
 sub_80C4C3A
+sub_8116878
 sub_811EC00
 sub_811FB78
 sub_811FE34

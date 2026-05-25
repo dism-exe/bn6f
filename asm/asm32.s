@@ -16455,6 +16455,7 @@ loc_8116874:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_8116834
 
+	.ifndef DECOMP_sub_8116878
 	thumb_func_start sub_8116878
 sub_8116878:
 	push {lr}
@@ -16473,6 +16474,21 @@ dword_811688C:
 dword_8116890:
 	.word 0xF880080
 	thumb_func_end sub_8116878
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_8116878
+sub_8116878:
+	decomp_trampoline sub_8116878_c, 8
+	.balign 4, 0x00
+dword_8116888:
+	.word 0x4000
+dword_811688C:
+	.word 0x10000
+dword_8116890:
+	.word 0xF880080
+	thumb_func_end sub_8116878
+	.endif
 
 	thumb_func_start sub_8116894
 sub_8116894:

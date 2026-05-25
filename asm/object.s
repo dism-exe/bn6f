@@ -5224,6 +5224,7 @@ byte_800E6C8:
 	.byte 0x0, 0x0, 0x80, 0xB
 	thumb_func_end sub_800E680
 
+	.ifndef DECOMP_IsR2BetweenR0AndR1
 	thumb_func_start IsR2BetweenR0AndR1
 // return (r0 <= r1 && r2 > r0 && r2 <= r1) || (r0 > r1 && r2 > r1 && r2 <= r0)
 // if (r0 <= r1) {
@@ -5251,6 +5252,12 @@ IsR2BetweenR0AndR1:
 	mov r0, r3
 	mov pc, lr
 	thumb_func_end IsR2BetweenR0AndR1
+	.else
+	thumb_func_start IsR2BetweenR0AndR1
+IsR2BetweenR0AndR1:
+	decomp_trampoline IsR2BetweenR0AndR1_c, 24
+	thumb_func_end IsR2BetweenR0AndR1
+	.endif
 
 	thumb_func_start sub_800E708
 sub_800E708:

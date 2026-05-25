@@ -15444,6 +15444,7 @@ sub_800A0C6:
 	mov pc, lr
 	thumb_func_end sub_800A0C6
 
+	.ifndef DECOMP_sub_800A0D6
 	thumb_func_start sub_800A0D6
 sub_800A0D6:
 	lsl r0, r0, #3
@@ -15462,6 +15463,16 @@ sub_800A0D6:
 off_800A0F0:
 	.word dword_2036820
 	thumb_func_end sub_800A0D6
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_800A0D6
+sub_800A0D6:
+	decomp_trampoline sub_800A0D6_c, 16
+off_800A0F0:
+	.word dword_2036820
+	thumb_func_end sub_800A0D6
+	.endif
 
 	thumb_local_start
 sub_800A0F4:
