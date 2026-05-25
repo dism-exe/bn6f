@@ -1797,6 +1797,7 @@ sub_8003018:
 	mov pc, lr
 	thumb_func_end sub_8003018
 
+	.ifndef DECOMP_sub_800302A
 	thumb_func_start sub_800302A
 sub_800302A:
 	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
@@ -1816,6 +1817,12 @@ sub_800302A:
 	strb r0, [r3,#oObjectSprite_Unk_03]
 	mov pc, lr
 	thumb_func_end sub_800302A
+	.else
+	thumb_func_start sub_800302A
+sub_800302A:
+	decomp_trampoline sub_800302A_c, 22
+	thumb_func_end sub_800302A
+	.endif
 
 	thumb_func_start sub_800304A
 sub_800304A:
