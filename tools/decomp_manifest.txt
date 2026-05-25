@@ -477,3 +477,4 @@ sprite_makeUnscalable
 object_freeMemory
 object_createAIData
 reqBBS_81406FC
+reqBBS_813EE58

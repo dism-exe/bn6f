@@ -1696,6 +1696,7 @@ dword_813EE40:
 	.word 0x1010101, 0x2020101, 0x2020202, 0xFF
 	thumb_func_end reqBBS_813EDE4
 
+	.ifndef DECOMP_reqBBS_813EE58
 	thumb_func_start reqBBS_813EE58
 reqBBS_813EE58:
 	push {r5,lr}
@@ -1787,6 +1788,12 @@ dword_813EEEC:
 off_813EEF0:
 	.word eStructArr2008450
 	thumb_func_end reqBBS_813EE58
+	.else
+	thumb_func_start reqBBS_813EE58
+reqBBS_813EE58:
+	decomp_trampoline reqBBS_813EE58_c, 148
+	thumb_func_end reqBBS_813EE58
+	.endif
 
 	thumb_local_start
 reqBBS_813EEF4:
