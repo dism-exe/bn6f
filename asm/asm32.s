@@ -27252,6 +27252,7 @@ loc_811BBEC:
 	.word word_2023FA0
 	thumb_func_end sub_811BBB8
 
+	.ifndef DECOMP_sub_811BC00
 	thumb_func_start sub_811BC00
 sub_811BC00:
 	push {r4-r7,lr}
@@ -27273,6 +27274,12 @@ loc_811BC20:
 	add sp, sp, #0x10
 	pop {r4-r7,pc}
 	thumb_func_end sub_811BC00
+	.else
+	thumb_func_start sub_811BC00
+sub_811BC00:
+	decomp_trampoline sub_811BC00_c, 28
+	thumb_func_end sub_811BC00
+	.endif
 
 	thumb_func_start sub_811BC24
 sub_811BC24:
