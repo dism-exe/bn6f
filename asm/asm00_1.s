@@ -15732,6 +15732,7 @@ sub_800A2D0:
 	mov pc, lr
 	thumb_func_end sub_800A2D0
 
+	.ifndef DECOMP_battle_setFlags
 	thumb_func_start battle_setFlags
 battle_setFlags:
 	mov r1, r10
@@ -15741,7 +15742,14 @@ battle_setFlags:
 	strh r2, [r1,#oBattleState_Unk_32]
 	mov pc, lr
 	thumb_func_end battle_setFlags
+	.else
+	thumb_func_start battle_setFlags
+battle_setFlags:
+	decomp_trampoline battle_setFlags_c, 4
+	thumb_func_end battle_setFlags
+	.endif
 
+	.ifndef DECOMP_battle_clearFlags
 	thumb_func_start battle_clearFlags
 battle_clearFlags:
 	mov r1, r10
@@ -15751,6 +15759,12 @@ battle_clearFlags:
 	strh r2, [r1,#oBattleState_Unk_32]
 	mov pc, lr
 	thumb_func_end battle_clearFlags
+	.else
+	thumb_func_start battle_clearFlags
+battle_clearFlags:
+	decomp_trampoline battle_clearFlags_c, 4
+	thumb_func_end battle_clearFlags
+	.endif
 
 	.ifndef DECOMP_battle_getFlags
 	thumb_func_start battle_getFlags

@@ -20858,6 +20858,7 @@ GetCameraXYZ:
 	mov pc, lr
 	thumb_func_end GetCameraXYZ
 
+	.ifndef DECOMP_SetCameraXYZ
 	thumb_func_start SetCameraXYZ
 SetCameraXYZ:
 	mov r3, r10
@@ -20867,6 +20868,12 @@ SetCameraXYZ:
 	str r2, [r3,#0x38]
 	mov pc, lr
 	thumb_func_end SetCameraXYZ
+	.else
+	thumb_func_start SetCameraXYZ
+SetCameraXYZ:
+	decomp_trampoline SetCameraXYZ_c, 4
+	thumb_func_end SetCameraXYZ
+	.endif
 
 	thumb_local_start
 camera_doShakeEffect_80301e8:

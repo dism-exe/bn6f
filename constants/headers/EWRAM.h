@@ -11,6 +11,7 @@
 #include "types.h"
 
 #include "structs/Toolkit.h"
+#include "structs/BattleState.h"
 #include "structs/GameState.h"
 #include "structs/BGScrollCallbacks.h"
 #include "structs/Camera.h"

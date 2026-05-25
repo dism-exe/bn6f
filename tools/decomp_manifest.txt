@@ -18,6 +18,7 @@ CapIncrementGameTimeFrames
 CheckKeyItem
 ClearEventFlag
 ClearEventFlagFromImmediate
+ClearPETMenuDataFlag
 CopyByEightWords
 CopyBytes
 CopyHalfwords
@@ -46,6 +47,7 @@ ReadMapScriptSignedHalfword
 ReadMapScriptWord
 SWI_LZ77UnCompReadNormalWrite8bit
 SeedRNG
+SetCameraXYZ
 SetCurPETNaviStatsByte
 SetCurPETNaviStatsHword
 SetCutsceneCameraScript
@@ -53,6 +55,7 @@ SetEventFlag
 SetEventFlagFromImmediate
 SetExtraToolkitPointers
 SetNaviStatsByte
+SetPETMenuDataFlag
 SetPlayerCanMoveEventFlag
 SetRenderInfoLCDControl
 SetScreenFade
@@ -73,8 +76,10 @@ ZeroFillGFX30025c0
 ZeroFillObjectInteractionAreas_800378C
 ZeroFill_byte_3001960
 addChipsToChipPackOffset_8021b5a
+battle_clearFlags
 battle_getFlags
 battle_isTimeStop
+battle_setFlags
 camera_writeUnk03_14_80301b2
 chatbox_8040818
 chatbox_clear_eFlags2009F38

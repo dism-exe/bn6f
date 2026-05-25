@@ -32538,7 +32538,8 @@ TestPETMenuDataFlag:
 	thumb_func_end TestPETMenuDataFlag
 	.endif
 
-	thumb_local_start
+	.ifndef DECOMP_SetPETMenuDataFlag
+	thumb_func_start SetPETMenuDataFlag
 SetPETMenuDataFlag:
 	ldr r2, off_811EC4C // =ePETMenuData
 	ldrb r1, [r2,#0x5] // (eFlags200DF25 - 0x200df20)
@@ -32547,7 +32548,14 @@ SetPETMenuDataFlag:
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end SetPETMenuDataFlag
+	.else
+	thumb_func_start SetPETMenuDataFlag
+SetPETMenuDataFlag:
+	decomp_trampoline SetPETMenuDataFlag_c, 4
+	thumb_func_end SetPETMenuDataFlag
+	.endif
 
+	.ifndef DECOMP_ClearPETMenuDataFlag
 	thumb_func_start ClearPETMenuDataFlag
 ClearPETMenuDataFlag:
 	ldr r2, off_811EC4C // =ePETMenuData
@@ -32557,6 +32565,12 @@ ClearPETMenuDataFlag:
 	mov pc, lr
 	.byte 0, 0
 	thumb_func_end ClearPETMenuDataFlag
+	.else
+	thumb_func_start ClearPETMenuDataFlag
+ClearPETMenuDataFlag:
+	decomp_trampoline ClearPETMenuDataFlag_c, 4
+	thumb_func_end ClearPETMenuDataFlag
+	.endif
 
 	.ifndef DECOMP_sub_811EC00
 	thumb_func_start sub_811EC00
