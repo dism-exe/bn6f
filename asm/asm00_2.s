@@ -25662,6 +25662,7 @@ off_801BE6C:
 	.word byte_8019C34
 	thumb_func_end sub_801BE2A
 
+	.ifndef DECOMP_sub_801BE70
 	thumb_func_start sub_801BE70
 sub_801BE70:
 	push {lr}
@@ -25704,6 +25705,12 @@ off_801BEB0:
 off_801BEB4:
 	.word dword_20367E0
 	thumb_func_end sub_801BE70
+	.else
+	thumb_func_start sub_801BE70
+sub_801BE70:
+	decomp_trampoline sub_801BE70_c, 64
+	thumb_func_end sub_801BE70
+	.endif
 
 	thumb_func_start sub_801BEB8
 sub_801BEB8:
