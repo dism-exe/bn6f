@@ -73272,6 +73272,7 @@ locret_80DA9FC:
 	pop {pc}
 	thumb_func_end sub_80DA9DC
 
+	.ifndef DECOMP_sub_80DA9FE
 	thumb_func_start sub_80DA9FE
 sub_80DA9FE:
 	push {r4,lr}
@@ -73296,6 +73297,22 @@ dword_80DAA20:
 dword_80DAA24:
 	.word 0x3F800000
 	thumb_func_end sub_80DA9FE
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_80DA9FE
+sub_80DA9FE:
+	decomp_trampoline sub_80DA9FE_c, 16
+dword_80DAA18:
+	.word 0x100100C
+dword_80DAA1C:
+	.word 0xE0F0300
+dword_80DAA20:
+	.word 0xFF80000
+dword_80DAA24:
+	.word 0x3F800000
+	thumb_func_end sub_80DA9FE
+	.endif
 
 	thumb_func_start t3_0xaa_80DAA28
 t3_0xaa_80DAA28:

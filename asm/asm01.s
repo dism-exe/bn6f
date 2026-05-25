@@ -1,4 +1,5 @@
 
+	.ifndef DECOMP_sub_801FE00
 	thumb_func_start sub_801FE00
 sub_801FE00:
 	push {lr}
@@ -18,6 +19,12 @@ sub_801FE00:
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {pc}
 	thumb_func_end sub_801FE00
+	.else
+	thumb_func_start sub_801FE00
+sub_801FE00:
+	decomp_trampoline sub_801FE00_c, 28
+	thumb_func_end sub_801FE00
+	.endif
 
 	thumb_func_start sub_801FE24
 sub_801FE24:

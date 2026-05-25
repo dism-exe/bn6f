@@ -1226,6 +1226,7 @@ locret_813BF18:
 	.balign 4, 0x00
 	thumb_func_end sub_813BF0C
 
+	.ifndef DECOMP_sub_813BF1C
 	thumb_func_start sub_813BF1C
 sub_813BF1C:
 	push {r4-r7,lr}
@@ -1245,6 +1246,12 @@ loc_813BF38:
 	pop {r4-r7,pc}
 	.byte 0, 0
 	thumb_func_end sub_813BF1C
+	.else
+	thumb_func_start sub_813BF1C
+sub_813BF1C:
+	decomp_trampoline sub_813BF1C_c, 28
+	thumb_func_end sub_813BF1C
+	.endif
 
 	mov r3, r10
 	ldr r3, [r3,#0x60]
