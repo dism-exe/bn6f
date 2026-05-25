@@ -2200,6 +2200,7 @@ GetMaxAndCurHPForCurPETNavi_80010D4: // (which_navi: u8) -> (u16, u16)
 	pop {r4-r7,pc}
 	thumb_func_end GetMaxAndCurHPForCurPETNavi_80010D4
 
+	.ifndef DECOMP_sub_80010EC
 	thumb_func_start sub_80010EC
 sub_80010EC:
 	push {r4-r7,lr}
@@ -2217,6 +2218,12 @@ loc_80010FE:
 	bl SetCurPETNaviStatsHword
 	pop {r4-r7,pc}
 	thumb_func_end sub_80010EC
+	.else
+	thumb_func_start sub_80010EC
+sub_80010EC:
+	decomp_trampoline sub_80010EC_c, 22
+	thumb_func_end sub_80010EC
+	.endif
 
 	thumb_local_start
 sub_800110A:
@@ -2364,6 +2371,7 @@ loc_80011D0:
 	pop {pc}
 	thumb_func_end sub_80011C0
 
+	.ifndef DECOMP_sub_80011D6
 	thumb_func_start sub_80011D6
 sub_80011D6:
 	sub r0, r0, r2
@@ -2381,6 +2389,12 @@ loc_80011EC:
 	mov r0, #0
 	mov pc, lr
 	thumb_func_end sub_80011D6
+	.else
+	thumb_func_start sub_80011D6
+sub_80011D6:
+	decomp_trampoline sub_80011D6_c, 16
+	thumb_func_end sub_80011D6
+	.endif
 
 	thumb_local_start
 sub_80011F0:

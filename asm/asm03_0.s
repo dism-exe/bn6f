@@ -14124,6 +14124,7 @@ sub_802D064:
 	thumb_func_end sub_802D064
 	.endif
 
+	.ifndef DECOMP_sub_802D070
 	thumb_func_start sub_802D070
 sub_802D070:
 	push {lr}
@@ -14140,6 +14141,12 @@ sub_802D070:
 	strb r0, [r3,#0xf]
 	pop {pc}
 	thumb_func_end sub_802D070
+	.else
+	thumb_func_start sub_802D070
+sub_802D070:
+	decomp_trampoline sub_802D070_c, 20
+	thumb_func_end sub_802D070
+	.endif
 
 	.ifndef DECOMP_sub_802D08C
 	thumb_func_start sub_802D08C
@@ -16221,6 +16228,7 @@ zeroFill_802E014:
 	pop {r4,pc}
 	thumb_func_end zeroFill_802E014
 
+	.ifndef DECOMP_sub_802E032
 	thumb_func_start sub_802E032
 sub_802E032:
 	push {lr}
@@ -16238,6 +16246,12 @@ loc_802E04A:
 	strh r0, [r2,#0x28]
 	pop {pc}
 	thumb_func_end sub_802E032
+	.else
+	thumb_func_start sub_802E032
+sub_802E032:
+	decomp_trampoline sub_802E032_c, 18
+	thumb_func_end sub_802E032
+	.endif
 
 	.ifndef DECOMP_sub_802E04E
 	thumb_func_start sub_802E04E

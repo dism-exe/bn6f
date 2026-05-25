@@ -2083,6 +2083,7 @@ sub_8142C90:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8142C90
 
+	.ifndef DECOMP_sub_8142C94
 	thumb_func_start sub_8142C94
 sub_8142C94:
 	push {lr}
@@ -2099,6 +2100,12 @@ dword_8142CA8:
 off_8142CAC:
 	.word 0x420
 	thumb_func_end sub_8142C94
+	.else
+	thumb_func_start sub_8142C94
+sub_8142C94:
+	decomp_trampoline sub_8142C94_c, 20
+	thumb_func_end sub_8142C94
+	.endif
 
 	thumb_func_start sub_8142CB0
 sub_8142CB0:

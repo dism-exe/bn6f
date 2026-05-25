@@ -2092,6 +2092,7 @@ owPlayer_809E114:
 	thumb_func_end owPlayer_809E114
 	.endif
 
+	.ifndef DECOMP_owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
 	thumb_func_start owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
 owPlayer_unlockPlayerAfterNonNPCDialogue_809E122:
 	push {lr}
@@ -2107,6 +2108,17 @@ owPlayer_unlockPlayerAfterNonNPCDialogue_809E122:
 off_809E138:
 	.word eStruct200ace0
 	thumb_func_end owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
+owPlayer_unlockPlayerAfterNonNPCDialogue_809E122:
+	decomp_trampoline owPlayer_unlockPlayerAfterNonNPCDialogue_809E122_c, 12
+	.balign 4, 0
+off_809E138:
+	.word eStruct200ace0
+	thumb_func_end owPlayer_unlockPlayerAfterNonNPCDialogue_809E122
+	.endif
 
 	.ifndef DECOMP_owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	thumb_func_start owPlayer_setS200ace0_fixedAnimationSelect_809e13c
@@ -2125,6 +2137,7 @@ owPlayer_setS200ace0_fixedAnimationSelect_809e13c:
 	thumb_func_end owPlayer_setS200ace0_fixedAnimationSelect_809e13c
 	.endif
 
+	.ifndef DECOMP_sub_809E14C
 	thumb_func_start sub_809E14C
 sub_809E14C:
 	push {r4-r7,lr}
@@ -2140,6 +2153,12 @@ loc_809E164:
 	strb r4, [r7,#oS200ace0_Unk_1c] // (byte_200ACFC - 0x200ace0)
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E14C
+	.else
+	thumb_func_start sub_809E14C
+sub_809E14C:
+	decomp_trampoline sub_809E14C_c, 20
+	thumb_func_end sub_809E14C
+	.endif
 
 	thumb_local_start
 sub_809E168:

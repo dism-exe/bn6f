@@ -9528,6 +9528,7 @@ off_803DDA0:
 	.word eLinkState // eLinkState
 	thumb_func_end sub_803DD8C
 
+	.ifndef DECOMP_sub_803DDA4
 	thumb_func_start sub_803DDA4
 sub_803DDA4:
 	push {r7,lr}
@@ -9545,6 +9546,12 @@ sub_803DDA4:
 off_803DDBC:
 	.word eLinkState // eLinkState
 	thumb_func_end sub_803DDA4
+	.else
+	thumb_func_start sub_803DDA4
+sub_803DDA4:
+	decomp_trampoline sub_803DDA4_c, 20
+	thumb_func_end sub_803DDA4
+	.endif
 
 	thumb_local_start
 sub_803DDC0:

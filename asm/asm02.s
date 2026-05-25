@@ -175,6 +175,7 @@ off_8021B74:
 // (int idx, int searchItem, int off) -> void*
 // [break (E7FE)]
 //   When getting an item; like from mayl, or when loading shops
+	.ifndef DECOMP_sub_8021B78
 	thumb_func_start sub_8021B78
 sub_8021B78:
 	push {lr}
@@ -191,6 +192,12 @@ loc_8021B84:
 	// return itemRef
 	pop {pc}
 	thumb_func_end sub_8021B78
+	.else
+	thumb_func_start sub_8021B78
+sub_8021B78:
+	decomp_trampoline sub_8021B78_c, 18
+	thumb_func_end sub_8021B78
+	.endif
 
 // (int idx, int searchItem, int off) -> void*
 	thumb_func_start TakeChips
