@@ -468,3 +468,4 @@ sub_8012792
 sub_811BC00
 sub_81171F4
 sub_811A1F4
+TakeChips

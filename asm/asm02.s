@@ -200,6 +200,7 @@ sub_8021B78:
 	.endif
 
 // (int idx, int searchItem, int off) -> void*
+	.ifndef DECOMP_TakeChips
 	thumb_func_start TakeChips
 // returns in r0
 // - 0 if taking chips was successful
@@ -231,6 +232,12 @@ loc_8021BBC:
 	mov r0, r3
 	pop {r4,pc}
 	thumb_func_end TakeChips
+	.else
+	thumb_func_start TakeChips
+TakeChips:
+	decomp_trampoline TakeChips_c, 36
+	thumb_func_end TakeChips
+	.endif
 
 	thumb_func_start GetChipCountOfCode
 GetChipCountOfCode:
