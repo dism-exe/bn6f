@@ -2705,6 +2705,7 @@ off_810F088:
 	.word 0x90
 	thumb_func_end sub_810F040
 
+	.ifndef DECOMP_sub_810F090
 	thumb_func_start sub_810F090
 sub_810F090:
 	push {r4,lr}
@@ -2733,6 +2734,12 @@ sub_810F090:
 locret_810F0BE:
 	pop {r4,pc}
 	thumb_func_end sub_810F090
+	.else
+	thumb_func_start sub_810F090
+sub_810F090:
+	decomp_trampoline sub_810F090_c, 40
+	thumb_func_end sub_810F090
+	.endif
 
 	thumb_local_start
 sub_810F0C0:
