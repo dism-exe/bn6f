@@ -16778,6 +16778,7 @@ sub_800A8F8:
 	thumb_func_end sub_800A8F8
 	.endif
 
+	.ifndef DECOMP_sub_800A908
 	thumb_func_start sub_800A908
 sub_800A908:
 	mov r0, #0
@@ -16819,6 +16820,48 @@ off_800A94C:
 off_800A950:
 	.word dword_2000B30
 	thumb_func_end sub_800A908
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_800A908
+sub_800A908:
+	decomp_trampoline sub_800A908_c, 0
+off_800A910:
+	.word dword_2033000
+off_800A914:
+	.word word_2033040
+off_800A918:
+	.word dword_2033000
+dword_800A91C:
+	.word dword_2033000+2
+off_800A920:
+	.word word_2033040
+off_800A924:
+	.word dword_2033000
+off_800A928:
+	.word word_2033040
+off_800A92C:
+	.word dword_2033000
+off_800A930:
+	.word word_2033040
+off_800A934:
+	.word dword_2033000
+off_800A938:
+	.word dword_2033000
+dword_800A93C:
+	.word 0x8C9F
+off_800A940:
+	.word battleSettingsList0
+off_800A944:
+	.word BattleSettingsList1
+off_800A948:
+	.word flags32_20093A4
+off_800A94C:
+	.word 0x100
+off_800A950:
+	.word dword_2000B30
+	thumb_func_end sub_800A908
+	.endif
 
 	thumb_local_start
 sub_800A954:

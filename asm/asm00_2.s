@@ -8341,6 +8341,7 @@ loc_8012952:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80128FC
 
+	.ifndef DECOMP_sub_8012956
 	thumb_func_start sub_8012956
 sub_8012956:
 	ldrb r3, [r0]
@@ -8382,6 +8383,17 @@ loc_8012998:
 	mov r0, #0
 	mov pc, lr
 	thumb_func_end sub_8012956
+	.else
+	// Literal pool is shared with other functions — keep it
+	// in both branches so its labels stay at the same address.
+	thumb_func_start sub_8012956
+sub_8012956:
+	decomp_trampoline sub_8012956_c, 56
+loc_8012998:
+	mov r0, #0
+	mov pc, lr
+	thumb_func_end sub_8012956
+	.endif
 
 	thumb_func_start sub_801299C
 sub_801299C:

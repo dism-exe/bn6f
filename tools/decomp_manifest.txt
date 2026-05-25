@@ -156,6 +156,7 @@ logoScreen_init_803D1A8
 m4a_800061E
 main_zeroFill_80017EC
 map_8001708
+memory_bcdConvert
 musicGameState_8000784
 music_80005F2
 notZero_eByte200AD04
@@ -254,6 +255,7 @@ sub_8006910
 sub_8009FF8
 sub_800A0D6
 sub_800A8F8
+sub_800A908
 sub_800A9E2
 sub_800AB2E
 sub_800AB3A
@@ -268,6 +270,7 @@ sub_800ED80
 sub_800F486
 sub_8010CE0
 sub_8010D20
+sub_8012956
 sub_80133EC
 sub_8013422
 sub_801482C
@@ -396,6 +399,7 @@ sub_813D94C
 sub_813D978
 sub_813D9A0
 sub_813DA84
+sub_813FA24
 sub_81420C8
 sub_8142C94
 sub_8143E68

@@ -2763,6 +2763,7 @@ reqBBS_dead_initMemory_813F9F8:
 	pop {r4,pc}
 	thumb_func_end reqBBS_dead_initMemory_813F9F8
 
+	.ifndef DECOMP_sub_813FA24
 	thumb_func_start sub_813FA24
 sub_813FA24:
 	push {r4,r5,lr}
@@ -2791,6 +2792,12 @@ off_813FA4C:
 dword_813FA50:
 	.word 0x1B60
 	thumb_func_end sub_813FA24
+	.else
+	thumb_func_start sub_813FA24
+sub_813FA24:
+	decomp_trampoline sub_813FA24_c, 40
+	thumb_func_end sub_813FA24
+	.endif
 
 	thumb_local_start
 reqBBS_813FA54:

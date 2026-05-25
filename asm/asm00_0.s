@@ -1369,6 +1369,7 @@ off_8000BFC:
 	thumb_func_end unused_8000BEC
 
 // converts a number to BCD for printing?
+	.ifndef DECOMP_memory_bcdConvert
 	thumb_func_start memory_bcdConvert
 memory_bcdConvert: 
 	push {r4,r7,lr}
@@ -1416,6 +1417,12 @@ dword_8000C54:
 dword_8000C58:
 	.word 0x99999999
 	thumb_func_end memory_bcdConvert
+	.else
+	thumb_func_start memory_bcdConvert
+memory_bcdConvert:
+	decomp_trampoline memory_bcdConvert_c, 84
+	thumb_func_end memory_bcdConvert
+	.endif
 
 	.ifndef DECOMP_sub_8000C5C
 	thumb_func_start sub_8000C5C
