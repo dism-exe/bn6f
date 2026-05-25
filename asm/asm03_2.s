@@ -6317,6 +6317,7 @@ sub_8049DA0:
 	thumb_func_end sub_8049DA0
 	.endif
 
+	.ifndef DECOMP_sub_8049DC4
 	thumb_func_start sub_8049DC4
 sub_8049DC4:
 	push {r4-r7,lr}
@@ -6330,6 +6331,12 @@ sub_8049DC4:
 	bl sub_803C168
 	pop {r4-r7,pc}
 	thumb_func_end sub_8049DC4
+	.else
+	thumb_func_start sub_8049DC4
+sub_8049DC4:
+	decomp_trampoline sub_8049DC4_c, 16
+	thumb_func_end sub_8049DC4
+	.endif
 
 	thumb_func_start sub_8049DDC
 sub_8049DDC:
