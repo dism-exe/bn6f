@@ -53,7 +53,7 @@ LDFLAGS = -Map $(BUILD_NAME).map
 LIB =
 CLIB = tools/agbcc/lib/libgcc.a
 
-.PHONY: syms decompile orig validate function-symbols track track-build smoke verify verify-spam verify-state list-demos clean-conditional-objs
+.PHONY: syms decompile orig validate function-symbols track track-build smoke verify verify-spam verify-state verify-bk2 list-demos clean-conditional-objs
 
 # TODO: INTEGRATE SCAN INCLUDES
 
@@ -323,3 +323,20 @@ list-demos:
 	@find $(DEMOS_ROOT) \( -name '*.ss*' -o -name 'state.ss*' \) \
 		| sed -E 's|$(DEMOS_ROOT)/||; s|\.ss[0-9]*$$||; s|/state$$||' \
 		| sort -u
+
+# BK2 demos under tests/fixtures/demos/bk2/.  Each .bk2 ships with a
+# pre-extracted .ss + .input pair (run tools/bk2_extract.py to refresh
+# from the .bk2), and `verify-state` already auto-resolves them via
+# STATE_NAME=bk2/<stem>.  This convenience target loops over every
+# bk2/*.bk2 in the demos tree at whatever frame budget BK2_FRAMES
+# specifies (default 600 — the intro fully exercises 4567 pairs at
+# this length, the tutorial 3387 at 1200).
+BK2_FRAMES ?= 600
+verify-bk2: track-build $(FN_SYMS)
+	@set -e; \
+	for bk2 in $(DEMOS_ROOT)/bk2/*.bk2; do \
+		stem=$$(basename $$bk2 .bk2); \
+		echo; echo "=== verify-bk2 bk2/$$stem ==="; \
+		$(MAKE) --no-print-directory verify-state \
+			STATE_NAME=bk2/$$stem STATE_FRAMES=$(BK2_FRAMES); \
+	done

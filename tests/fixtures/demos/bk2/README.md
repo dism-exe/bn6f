@@ -54,3 +54,26 @@ Smoke-tested with `intro.bk2` over 60 frames of `ZeroFillByWord`:
 
 - `intro.bk2`                   — short opening sequence (~6.2k frames)
 - `intro_to_end_tutorial.bk2`   — full tutorial playthrough (~16.4k frames)
+
+## Running
+
+Both demos are wired into the harness via `verify-state` (which
+auto-resolves `STATE_NAME=bk2/<stem>` to the `.ss` + `.input` siblings
+in this directory):
+
+```sh
+make verify-state STATE_NAME=bk2/intro STATE_FRAMES=600
+make verify-state STATE_NAME=bk2/intro_to_end_tutorial STATE_FRAMES=1200
+```
+
+Or, run every bk2 in this directory in one go (default `BK2_FRAMES=600`):
+
+```sh
+make verify-bk2 [BK2_FRAMES=600]
+```
+
+At 600 frames `intro` exercises 4567 pairs and `intro_to_end_tutorial`
+3387 pairs against the current converted function set (every pair
+passing).  The frame budget caps how much of the recording is
+verified; raising it costs proportional wall-clock but covers more
+of the converted-function surface area.
