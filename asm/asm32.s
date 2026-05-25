@@ -17729,6 +17729,7 @@ loc_81171EE:
 	.balign 4, 0x00
 	thumb_func_end sub_81171D4
 
+	.ifndef DECOMP_sub_81171F4
 	thumb_func_start sub_81171F4
 sub_81171F4:
 	push {r4-r7,lr}
@@ -17752,6 +17753,12 @@ loc_8117214:
 	add sp, sp, #8
 	pop {r4-r7,pc}
 	thumb_func_end sub_81171F4
+	.else
+	thumb_func_start sub_81171F4
+sub_81171F4:
+	decomp_trampoline sub_81171F4_c, 28
+	thumb_func_end sub_81171F4
+	.endif
 
 	thumb_func_start sub_8117218
 sub_8117218:
