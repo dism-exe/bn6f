@@ -2025,6 +2025,7 @@ loc_8142C16:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8142BFA
 
+	.ifndef DECOMP_sub_8142C20
 	thumb_func_start sub_8142C20
 sub_8142C20:
 	push {r4-r7,lr}
@@ -2049,6 +2050,12 @@ loc_8142C38:
 	tst r0, r0
 	pop {r4-r7,pc}
 	thumb_func_end sub_8142C20
+	.else
+	thumb_func_start sub_8142C20
+sub_8142C20:
+	decomp_trampoline sub_8142C20_c, 30
+	thumb_func_end sub_8142C20
+	.endif
 
 	thumb_func_start sub_8142C46
 sub_8142C46:
