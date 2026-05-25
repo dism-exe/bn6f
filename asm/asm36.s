@@ -262,6 +262,7 @@ off_813024C:
 	.word dword_86B7AE0
 	thumb_func_end sub_8130208
 
+	.ifndef DECOMP_sub_8130250
 	thumb_func_start sub_8130250
 sub_8130250:
 	push {r4-r7,lr}
@@ -297,6 +298,12 @@ off_8130288:
 dword_813028C:
 	.word 0xB860
 	thumb_func_end sub_8130250
+	.else
+	thumb_func_start sub_8130250
+sub_8130250:
+	decomp_trampoline sub_8130250_c, 56
+	thumb_func_end sub_8130250
+	.endif
 
 	thumb_local_start
 sub_8130290:

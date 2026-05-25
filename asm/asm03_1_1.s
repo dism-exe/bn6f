@@ -6463,6 +6463,7 @@ sub_803C150:
 	pop {r4-r7,pc}
 	thumb_func_end sub_803C150
 
+	.ifndef DECOMP_sub_803C168
 	thumb_func_start sub_803C168
 sub_803C168:
 	push {r4-r7,lr}
@@ -6499,6 +6500,12 @@ locret_803C1A0:
 off_803C1A4:
 	.word unk_2026A00
 	thumb_func_end sub_803C168
+	.else
+	thumb_func_start sub_803C168
+sub_803C168:
+	decomp_trampoline sub_803C168_c, 56
+	thumb_func_end sub_803C168
+	.endif
 
 	thumb_func_start sub_803C1A8
 sub_803C1A8:

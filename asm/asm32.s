@@ -36963,6 +36963,7 @@ word_8120C8E:
 word_8120C90:
 	.hword 0x2220
 	.balign 4, 0x00
+	.ifndef DECOMP_sub_8120C94
 	thumb_func_start sub_8120C94
 sub_8120C94:
 	push {r4-r7,lr}
@@ -36993,6 +36994,12 @@ loc_8120CAE:
 	blt loc_8120CAA
 	pop {r4-r7,pc}
 	thumb_func_end sub_8120C94
+	.else
+	thumb_func_start sub_8120C94
+sub_8120C94:
+	decomp_trampoline sub_8120C94_c, 44
+	thumb_func_end sub_8120C94
+	.endif
 
 	thumb_func_start sub_8120CC8
 sub_8120CC8:
