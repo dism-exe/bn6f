@@ -1882,7 +1882,7 @@ byte_813F32C:
 	.byte 0x61, 0xEA, 0x61, 0xEC, 0x61, 0xEE, 0x61, 0xE1, 0x61
 	.byte 0xE3, 0x61, 0xE5, 0x61, 0xE7, 0x61, 0xE9, 0x61, 0xEB
 	.byte 0x61, 0xED, 0x61, 0xEF, 0x61
-reqBBS_textualPointers:
+reqBBS_textualPointers::
 	.word reqBBS_requestNames_textualData
 	.word reqBBS_requestInfo_textOffsets
 byte_813F354:
@@ -4463,6 +4463,7 @@ dword_81407D4:
 	.word 0xD
 	thumb_func_end reqBBS_81407C8
 
+	.ifndef DECOMP_reqBBS_81407D8
 	thumb_func_start reqBBS_81407D8
 reqBBS_81407D8:
 	push {r4-r7,lr}
@@ -4496,6 +4497,12 @@ loc_8140814:
 	mov r0, #0
 	pop {r4-r7,pc}
 	thumb_func_end reqBBS_81407D8
+	.else
+	thumb_func_start reqBBS_81407D8
+reqBBS_81407D8:
+	decomp_trampoline reqBBS_81407D8_c, 56
+	thumb_func_end reqBBS_81407D8
+	.endif
 	.balign 4, 0
 dword_8140818:
 	.word 0xD
@@ -4505,7 +4512,7 @@ dword_8140820:
 	.word 0xF
 off_8140824:
 	.word byte_8140828
-byte_8140828:
+byte_8140828::
 	.byte 0xA, 0x19, 0x23, 0x4B, 0x0, 0x0, 0x0, 0x0
 
 	thumb_local_start
@@ -4527,7 +4534,8 @@ loc_8140846:
 	thumb_func_end reqBBS_dead_8140830
 
 
-	thumb_local_start
+	.ifndef DECOMP_reqBBS_814084C
+	thumb_func_start reqBBS_814084C
 reqBBS_814084C:
 	push {r4-r7,lr}
 	ldr r1, off_8140864 // =reqBBS_textualPointers 
@@ -4546,6 +4554,12 @@ locret_8140862:
 off_8140864:
 	.word reqBBS_textualPointers
 	thumb_func_end reqBBS_814084C
+	.else
+	thumb_func_start reqBBS_814084C
+reqBBS_814084C:
+	decomp_trampoline reqBBS_814084C_c, 20
+	thumb_func_end reqBBS_814084C
+	.endif
 
 	thumb_local_start
 reqBBS_8140868:

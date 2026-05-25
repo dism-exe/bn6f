@@ -5214,7 +5214,7 @@ byte_809CE84:
 	.byte 0x0
 byte_809CEAC:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x4, 0x34, 0x3, 0x2
-byte_809CEB4:
+byte_809CEB4::
 	cs_lock_player_for_non_npc_dialogue_809e0b0
 	cs_nop_80377d0
 	cs_pause byte1=0xFF byte2=0x10
@@ -5261,6 +5261,7 @@ cutscenescript_809CF28:
 
 	thumb_func_end sub_809CE40
 
+	.ifndef DECOMP_sub_809CF2C
 	thumb_func_start sub_809CF2C
 sub_809CF2C:
 	push {r4-r7,lr}
@@ -5287,5 +5288,11 @@ dword_809CF54:
 off_809CF58:
 	.word eReqBBSGui
 	thumb_func_end sub_809CF2C
+	.else
+	thumb_func_start sub_809CF2C
+sub_809CF2C:
+	decomp_trampoline sub_809CF2C_c, 40
+	thumb_func_end sub_809CF2C
+	.endif
 
 /*For debugging purposes, connect comment at any range!*/

@@ -134,6 +134,8 @@ renderInfo_8001788
 renderInfo_80017A0
 render_800172C
 reqBBS_813E616
+reqBBS_81407D8
+reqBBS_814084C
 reqBBS_8140984
 reqBBS_addBBSMessage_813e5dc
 reqBBS_initMemory_813F9DA
@@ -222,6 +224,7 @@ sub_804657C
 sub_80467D8
 sub_8049CF8
 sub_809C968
+sub_809CF2C
 sub_809E3B2
 sub_809E462
 sub_809F90C
