@@ -17114,6 +17114,7 @@ sub_800AB22:
 	pop {pc}
 	thumb_func_end sub_800AB22
 
+	.ifndef DECOMP_sub_800AB2E
 	thumb_func_start sub_800AB2E
 sub_800AB2E:
 	mov r3, #0x10
@@ -17123,7 +17124,14 @@ sub_800AB2E:
 	strb r2, [r3,r1]
 	mov pc, lr
 	thumb_func_end sub_800AB2E
+	.else
+	thumb_func_start sub_800AB2E
+sub_800AB2E:
+	decomp_trampoline sub_800AB2E_c, 2
+	thumb_func_end sub_800AB2E
+	.endif
 
+	.ifndef DECOMP_sub_800AB3A
 	thumb_func_start sub_800AB3A
 sub_800AB3A:
 	mov r3, #0x10
@@ -17133,6 +17141,12 @@ sub_800AB3A:
 	ldrb r0, [r3,r1]
 	mov pc, lr
 	thumb_func_end sub_800AB3A
+	.else
+	thumb_func_start sub_800AB3A
+sub_800AB3A:
+	decomp_trampoline sub_800AB3A_c, 2
+	thumb_func_end sub_800AB3A
+	.endif
 
 	thumb_func_start sub_800AB46
 sub_800AB46:
@@ -18384,6 +18398,7 @@ sub_800B444:
 	pop {pc}
 	thumb_func_end sub_800B444
 
+	.ifndef DECOMP_sub_800B460
 	thumb_func_start sub_800B460
 sub_800B460:
 	mov r0, #0
@@ -18393,6 +18408,12 @@ sub_800B460:
 	str r0, [r1]
 	mov pc, lr
 	thumb_func_end sub_800B460
+	.else
+	thumb_func_start sub_800B460
+sub_800B460:
+	decomp_trampoline sub_800B460_c, 4
+	thumb_func_end sub_800B460
+	.endif
 
 	thumb_func_start sub_800B46C
 sub_800B46C:

@@ -1728,6 +1728,7 @@ off_8144D14:
 	.word eTimerEnable200F460
 	thumb_func_end sub_8144D04
 
+	.ifndef DECOMP_sub_8144D18
 	thumb_func_start sub_8144D18
 sub_8144D18:
 	ldr r0, off_8144D20 // =byte_200F440 
@@ -1737,7 +1738,14 @@ sub_8144D18:
 off_8144D20:
 	.word byte_200F440
 	thumb_func_end sub_8144D18
+	.else
+	thumb_func_start sub_8144D18
+sub_8144D18:
+	decomp_trampoline sub_8144D18_c, 4
+	thumb_func_end sub_8144D18
+	.endif
 
+	.ifndef DECOMP_sub_8144D24
 	thumb_func_start sub_8144D24
 sub_8144D24:
 	ldr r0, off_8144D2C // =byte_200F448 
@@ -1747,7 +1755,14 @@ sub_8144D24:
 off_8144D2C:
 	.word byte_200F448
 	thumb_func_end sub_8144D24
+	.else
+	thumb_func_start sub_8144D24
+sub_8144D24:
+	decomp_trampoline sub_8144D24_c, 4
+	thumb_func_end sub_8144D24
+	.endif
 
+	.ifndef DECOMP_sub_8144D30
 	thumb_func_start sub_8144D30
 sub_8144D30:
 	ldr r1, off_8144D38 // =eTimerEnable200F460 
@@ -1757,6 +1772,12 @@ sub_8144D30:
 off_8144D38:
 	.word eTimerEnable200F460
 	thumb_func_end sub_8144D30
+	.else
+	thumb_func_start sub_8144D30
+sub_8144D30:
+	decomp_trampoline sub_8144D30_c, 4
+	thumb_func_end sub_8144D30
+	.endif
 
 	thumb_local_start
 sub_8144D3C:
@@ -5540,6 +5561,7 @@ off_81468B8:
 	.word byte_20103E4
 	thumb_func_end sub_8146888
 
+	.ifndef DECOMP_sub_81468BC
 	thumb_func_start sub_81468BC
 sub_81468BC:
 	ldr r0, off_81468C4 // =byte_2010290 
@@ -5549,6 +5571,12 @@ sub_81468BC:
 off_81468C4:
 	.word byte_2010290
 	thumb_func_end sub_81468BC
+	.else
+	thumb_func_start sub_81468BC
+sub_81468BC:
+	decomp_trampoline sub_81468BC_c, 4
+	thumb_func_end sub_81468BC
+	.endif
 
 	thumb_func_start sub_81468C8
 sub_81468C8:
@@ -5597,6 +5625,7 @@ off_8146908:
 	.word byte_20103E0
 	thumb_func_end sub_81468F4
 
+	.ifndef DECOMP_sub_814690C
 	thumb_func_start sub_814690C
 sub_814690C:
 	ldr r0, off_8146914 // =eStruct200FE00 
@@ -5606,6 +5635,12 @@ sub_814690C:
 off_8146914:
 	.word eStruct200FE00
 	thumb_func_end sub_814690C
+	.else
+	thumb_func_start sub_814690C
+sub_814690C:
+	decomp_trampoline sub_814690C_c, 4
+	thumb_func_end sub_814690C
+	.endif
 
 	thumb_func_start sub_8146918
 sub_8146918:
@@ -5735,6 +5770,7 @@ off_81469D8:
 	.word unk_2010150
 	thumb_func_end sub_81469BC
 
+	.ifndef DECOMP_sub_81469DC
 	thumb_func_start sub_81469DC
 sub_81469DC:
 	ldr r1, off_81469E4 // =byte_201015A 
@@ -5744,6 +5780,12 @@ sub_81469DC:
 off_81469E4:
 	.word byte_201015A
 	thumb_func_end sub_81469DC
+	.else
+	thumb_func_start sub_81469DC
+sub_81469DC:
+	decomp_trampoline sub_81469DC_c, 4
+	thumb_func_end sub_81469DC
+	.endif
 
 	thumb_func_start sub_81469E8
 sub_81469E8:

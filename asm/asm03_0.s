@@ -14093,6 +14093,7 @@ dword_802D060:
 	.word 0x301BE
 	thumb_func_end sub_802CFF8
 
+	.ifndef DECOMP_sub_802D064
 	thumb_func_start sub_802D064
 sub_802D064: // (a0: bool) -> * ?
 	mov r1, #0x20 
@@ -14102,6 +14103,12 @@ sub_802D064: // (a0: bool) -> * ?
 	mov pc, lr
 	.byte 0, 0
 	thumb_func_end sub_802D064
+	.else
+	thumb_func_start sub_802D064
+sub_802D064:
+	decomp_trampoline sub_802D064_c, 4
+	thumb_func_end sub_802D064
+	.endif
 
 	thumb_func_start sub_802D070
 sub_802D070:
@@ -16221,6 +16228,7 @@ sub_802E066:
 	pop {pc}
 	thumb_func_end sub_802E066
 
+	.ifndef DECOMP_sub_802E070
 	thumb_func_start sub_802E070
 sub_802E070:
 	mov r1, #0xe8
@@ -16230,6 +16238,12 @@ sub_802E070:
 	add r0, r0, r1
 	mov pc, lr
 	thumb_func_end sub_802E070
+	.else
+	thumb_func_start sub_802E070
+sub_802E070:
+	decomp_trampoline sub_802E070_c, 4
+	thumb_func_end sub_802E070
+	.endif
 
 	thumb_local_start
 sub_802E07C:
