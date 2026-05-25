@@ -436,6 +436,7 @@ sub_814FE40
 sub_814FE4C
 sub_814FE60
 test0x200bc50_0x5_813D60C
+testSetClearFlags_803553c
 uncompSprite_8002906
 warp_setSubsystemIndexTo0x10AndOthers_8005f00
 zeroFillVRAM

@@ -3145,6 +3145,7 @@ byte_80354D4:
 	.byte 0x0, 0x0
 	thumb_func_end sub_8035424
 
+	.ifndef DECOMP_testSetClearFlags_803553c
 	thumb_func_start testSetClearFlags_803553c
 testSetClearFlags_803553c:
 	push {r4-r7,lr}
@@ -3184,6 +3185,12 @@ loc_803559C:
 	mov r0, #0
 	pop {r4-r7,pc}
 	thumb_func_end testSetClearFlags_803553c
+	.else
+	thumb_func_start testSetClearFlags_803553c
+testSetClearFlags_803553c:
+	decomp_trampoline testSetClearFlags_803553c_c, 100
+	thumb_func_end testSetClearFlags_803553c
+	.endif
 
 	.ifndef DECOMP_clearSetFlags_80355a8
 	thumb_func_start clearSetFlags_80355a8
