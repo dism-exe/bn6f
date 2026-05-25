@@ -18900,6 +18900,7 @@ TestEventFlagRange:
 // file boundary?
 	.balign 4, 0x00
 
+	.ifndef DECOMP_addMail_802f238
 	thumb_func_start addMail_802f238
 addMail_802f238:
 	push {r4,r6,r7,lr}
@@ -18931,6 +18932,12 @@ loc_802F268:
 	str r4, [r6]
 	pop {r4,r6,r7,pc}
 	thumb_func_end addMail_802f238
+	.else
+	thumb_func_start addMail_802f238
+addMail_802f238:
+	decomp_trampoline addMail_802f238_c, 48
+	thumb_func_end addMail_802f238
+	.endif
 
 	thumb_local_start
 sub_802F270:

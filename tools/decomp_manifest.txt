@@ -92,6 +92,7 @@ ZeroFillGFX30025c0
 ZeroFillObjectInteractionAreas_800378C
 ZeroFill_byte_3001960
 addChipsToChipPackOffset_8021b5a
+addMail_802f238
 battle_clearFlags
 battle_getFlags
 battle_isTimeStop
@@ -396,6 +397,7 @@ sub_813D9A0
 sub_813DA84
 sub_81420C8
 sub_8142C94
+sub_8143E68
 sub_8144CE0
 sub_8144D04
 sub_8144D18

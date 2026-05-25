@@ -3950,6 +3950,7 @@ loc_8143E62:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8143DEA
 
+	.ifndef DECOMP_sub_8143E68
 	thumb_func_start sub_8143E68
 sub_8143E68:
 	push {r4-r7,lr}
@@ -3977,6 +3978,12 @@ off_8143E90:
 byte_8143E94:
 	.byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0, 0x0, 0xFF
 	thumb_func_end sub_8143E68
+	.else
+	thumb_func_start sub_8143E68
+sub_8143E68:
+	decomp_trampoline sub_8143E68_c, 52
+	thumb_func_end sub_8143E68
+	.endif
 
 	thumb_func_start sub_8143EA4
 sub_8143EA4:
