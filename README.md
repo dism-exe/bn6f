@@ -9,8 +9,6 @@ It builds the following rom:
 To set up the repository, see [INSTALL.md](INSTALL.md).
 To contribute, see [CONTRIBUTE.md](CONTRIBUTE.md).
 
-
-
 ## See also
 - Discord: [**pret**][Discord]
 - [gh LanHikari22/bn6f-modding](https://github.com/LanHikari22/bn6f-modding)

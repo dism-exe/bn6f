@@ -281,12 +281,12 @@ locret_80004A2:
 	thumb_local_start
 main_initToolkitAndOtherSubsystems: // () -> ()
 
-  // let v0: ?;
+  // let v0: ?; (r0_0)
 	mov r0, #1
 
 	b loc_80004AA
 
-  // seems ununused
+  // seems unused
 	mov r0, #0
 
 loc_80004AA:
@@ -297,20 +297,26 @@ loc_80004AA:
 
 	bl RandomizeExtraToolkitPointers // () -> ?
 
-	pop {r1}
+	pop {r1} // r1_0 := r0_0 <-> r1_0 := 1
 
-  // let v0: u32?
+  // let r0_1: u32?
 	ldr r0, off_8000564 // =0x40
 
-  // v1
+  // test 1, beq never triggers
 	tst r1, r1
 	beq loc_80004C0
 
+  // (r0_1)
 	ldr r0, off_8000568 // =0xc0
 
+
 loc_80004C0:
+
+  // (r0_1 = 0xc0)
 	bl SetRenderInfoLCDControl // (a_00: u16) -> ()
+
 	bl main_zeroFill_80017EC
+  // -- cloning --
 	bl render_800172C
 	bl copyMemory_8001850
 	bl main_static_8000570

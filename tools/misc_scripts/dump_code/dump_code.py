@@ -2,8 +2,11 @@ import sys
 import os
 import re
 import argparse
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, TypeVar
 import checkpipe as pipe
+
+T = TypeVar('T')
+U = TypeVar('U')
 
 # import time
 # time_file = open('time.log', 'w')
@@ -15,14 +18,37 @@ import checkpipe as pipe
 
 #     time_file.write(f"{prefix}: {diff_ms}ms\n")
 
+def file_debug_log(s):
+    path = 'debug.log'
+
+    if file_debug_log._first:
+        file_debug_log._first = False
+
+        with open(path, 'w') as f:
+            f.write(s + '\n')
+    else:
+        with open(path, 'a') as f:
+            f.write(s + '\n')
+
+file_debug_log._first = True
+
+
+def try_find_first_in_vec_tup_2(vec: List[Tuple[T, U]], match: T) -> Optional[Tuple[T, U]]:
+    for elem in vec:
+        t = elem[0]
+        u = elem[1]
+
+        if t == match:
+            return (t, u)
+    return None
 
 def reg_to_num(reg: str) -> int:
     if reg.startswith("r"):
         n = int(reg[1:])
 
         if n > 12:
-            raise Exception(f"register value above 12: {n}")
-        
+            raise Exception(f"register value starting with r must not be above 12: {n}")
+
         return n
     elif reg == "sp":
         return 13
@@ -45,6 +71,7 @@ def num_to_reg(n: int) -> str:
         return "pc"
     else:
         raise Exception(f"invalid reg num: {n}")
+
 
 def app_shorten_rlists(_args: argparse.Namespace):
     inp = sys.stdin.read()
@@ -79,10 +106,10 @@ def app_shorten_rlists(_args: argparse.Namespace):
                         else:
                             mut_rlist_compressed.append(mut_opt_last_tup)
                             mut_opt_last_tup = (n, n)
-                
+
                 if mut_opt_last_tup != None:
                     mut_rlist_compressed.append(mut_opt_last_tup)
-                
+
                 return mut_rlist_compressed
 
             rlist_compressed = get_rlist_compressed(rlist)
@@ -95,12 +122,12 @@ def app_shorten_rlists(_args: argparse.Namespace):
                         mut_output += num_to_reg(n) + ", "
                     else:
                         mut_output += num_to_reg(n) + "-" + num_to_reg(m) + ", "
-                
+
                 if mut_output.endswith(", "):
                     mut_output = mut_output[:-2]
-                
+
                 return mut_output
-            
+
             new_rlist_s = rlist_compressed_to_str(rlist_compressed)
 
             new_line = line.replace(rlist_s, new_rlist_s)
@@ -128,7 +155,6 @@ def app_hexify_imm_gt_9(_args: argparse.Namespace):
                 print(new_line)
             else:
                 print(line)
-
 
 
 # Not necessary, the repository uses small imm
@@ -161,15 +187,30 @@ def os_system(cmd: str) -> str:
 
     return output
 
+
+def filter_out_thumb_flag(ea: int) -> int:
+    if ea % 2 == 1:
+        return ea - 1
+    else:
+        return ea
+
+
 def read_sym_file(sym_file: str) -> List[Tuple[int, str]]:
     mut_out = []
 
     with open(sym_file, 'r') as f:
         for line in f.readlines():
             tokens = line.split(' ')
-            mut_out.append((int(tokens[0], 16), tokens[3].strip()))
-    
+            ea = int(tokens[0], 16)
+            sym = tokens[-1].strip()
+
+            if sym == '':
+                raise Exception('Expected to be able to get a symbol for (ea {ea:08x})');
+
+            mut_out.append((filter_out_thumb_flag(ea), sym))
+
     return mut_out
+
 
 def get_ea_to_sym_map(syms: List[Tuple[int, str]]) -> Dict[int, str]:
     mut_out = {}
@@ -179,11 +220,13 @@ def get_ea_to_sym_map(syms: List[Tuple[int, str]]) -> Dict[int, str]:
             mut_out[ea] = sym
     return mut_out
 
+
 def ea_to_symbol_using_sym_map(ea_to_sym_map: Dict[int, str], ea: int) -> Optional[str]:
     if ea in ea_to_sym_map:
         return ea_to_sym_map[ea]
     else:
         return None
+
 
 # Given any ea, gives its distance from the closest smallest identifiable ea
 def get_ea_to_sym_ord_map(syms: List[Tuple[int, str]]) -> Dict[int, Tuple[str, int]]:
@@ -193,6 +236,8 @@ def get_ea_to_sym_ord_map(syms: List[Tuple[int, str]]) -> Dict[int, Tuple[str, i
     mut_prev_nondata_nonloc_name = ''
 
     for (ea2, sym2) in syms:
+        if sym2 == '':
+            sym2 = 'ERR_EMPTY_STR' # Do not silently propagate an empty string as a symbol
 
         if mut_prev_ea_sym is not None:
             (ea1, sym1) = mut_prev_ea_sym
@@ -211,10 +256,10 @@ def get_ea_to_sym_ord_map(syms: List[Tuple[int, str]]) -> Dict[int, Tuple[str, i
         mut_out[ea2] = (sym2, 0)
 
         label_is_data = (
-            sym2.startswith('off_') or 
-            sym2.startswith('byte_') or 
-            sym2.startswith('unk_') or 
-            sym2.startswith('hword_') or 
+            sym2.startswith('off_') or
+            sym2.startswith('byte_') or
+            sym2.startswith('unk_') or
+            sym2.startswith('hword_') or
             sym2.startswith('dword_')
         )
 
@@ -222,7 +267,6 @@ def get_ea_to_sym_ord_map(syms: List[Tuple[int, str]]) -> Dict[int, Tuple[str, i
             mut_prev_nondata_nonloc_name = sym2
 
     return mut_out
-
 
 
 # Finds the target ea that's just before the given ea
@@ -237,6 +281,20 @@ def ea_to_maximum_ea_before_using_syms(syms: List[Tuple[int, str]], ea: int) -> 
 
     return mut_out
 
+
+def split_space_ignore_extra(s: str) -> List[str]:
+    mut_out = []
+
+    tokens = s.replace('\t', ' ').split(' ')
+
+    for token in tokens:
+        if token.strip() == '':
+            continue
+        mut_out.append(token)
+
+    return mut_out
+
+
 def ea_to_symbol(sym_file: str, ea: int) -> Optional[str]:
     ea_s = f"{ea:08x}"
 
@@ -247,46 +305,97 @@ def ea_to_symbol(sym_file: str, ea: int) -> Optional[str]:
     if len(entry_lines) != 1:
         return None
     else:
-        # looks like "0809f904 g 00000008 sub_809F904"
-        entry_tokens = entry.split(" ")
+        # can look like "0809f904 g 00000008 sub_809F904"
+        # can also look like "080022ec l       rom_1b70       00000000 DecompressLZ16_ROM_End"
+
+        entry_tokens = split_space_ignore_extra(entry);
+
+        if len(entry_tokens) < 4:
+            raise Exception("Sym file should contain 4 entries at a minimum")
 
         # this case would mean we didn't get a grep result on the first token
-        if int(entry_tokens[2], 16) == ea:
+        if int(entry_tokens[-2], 16) == ea:
             return None
 
-        return entry_tokens[3].strip()
+        return entry_tokens[-1].strip()
+
 
 def symbol_to_ea(sym_file: str, symbol: str) -> Optional[int]:
     entry = os_system(f"cat {sym_file} | grep {symbol}")
 
-    entry_lines = entry.splitlines()
+    def filtered_sym_entries_by_exact_match(lines: List[str], symbol: str) -> List[str]:
+        mut_out = []
+
+        for line in lines:
+            tokens = line.split(" ")
+            if len(tokens) == 0:
+                continue
+
+            sym = tokens[-1]
+
+            if symbol == sym:
+                mut_out.append(line)
+
+        return mut_out
+
+    entry_lines = filtered_sym_entries_by_exact_match(entry.splitlines(), symbol)
 
     if len(entry_lines) != 1:
         raise Exception(f"Expected 1 entry for symbol {symbol}: {entry_lines}")
     else:
         # looks like "0809f904 g 00000008 sub_809F904"
-        entry_tokens = entry.split(" ")
+        entry_tokens = entry_lines[0].split(" ")
 
-        return int(entry_tokens[0].strip(), 16)
+        ea = int(entry_tokens[0].strip(), 16)
+
+        return ea
 
 
 def symbol_to_end_ea(sym_file: str, symbol: str) -> Optional[int]:
     entry = os_system(f"cat {sym_file} | grep {symbol} -A1")
 
-    entry_lines = entry.splitlines()
+    def filtered_sym_entries_by_exact_match(lines: List[str], symbol: str) -> List[Tuple[str, str]]:
+        mut_out = []
 
-    if len(entry_lines) != 2:
-        return None
+        # Remove seperator lines
+        filtered_lines = list(filter(lambda l: l != "--", lines))
+
+        # Take into account that every other line must be included
+        for i in range(len(filtered_lines)):
+            if i == len(filtered_lines) - 1:
+                break
+
+            line = filtered_lines[i]
+            next_line = filtered_lines[i + 1]
+
+            tokens = line.split(" ")
+            if len(tokens) == 0:
+                continue
+
+            sym = tokens[-1]
+
+            if symbol == sym:
+                mut_out.append((line, next_line))
+
+        return mut_out
+
+    entry_lines = filtered_sym_entries_by_exact_match(entry.splitlines(), symbol)
+
+    if len(entry_lines) != 1:
+        raise Exception(f"Expected 1 entry for symbol {symbol}: {entry_lines}")
     else:
         # looks like
         # ```
         # 080963c4 g 00000000 some_code_80963C4
         # 080963e8 l 00000000 ccs_80963E8
         # ```
-        entry_tokens = entry_lines[1].split(" ")
+
+        line = entry_lines[0][0]
+        next_line = entry_lines[0][1]
+
+        entry_tokens = next_line.split(" ")
 
         return int(entry_tokens[0].strip(), 16)
-
 
 
 def app_compute_bl_targets(args: argparse.Namespace):
@@ -312,7 +421,8 @@ def app_compute_bl_targets(args: argparse.Namespace):
             symbol = ea_to_symbol(sym_file, target_ea)
 
             if symbol == None:
-                raise Exception(f"no symbol found for ea 0x{target_ea:X}")
+                # It is possible the binary did not globally expose the symbol for this call
+                symbol = f'localfn_{target_ea:07x}'
 
             new_line = line.replace(target_s, symbol)
             print(new_line)
@@ -327,6 +437,7 @@ def get_line_inst_idx(line: str) -> int:
 
     return val
 
+
 # Format is similar to
 # "  16:   dd00            ble     0x1a"
 def get_last_line_inst_idx(inp: str) -> Optional[int]:
@@ -335,13 +446,14 @@ def get_last_line_inst_idx(inp: str) -> Optional[int]:
     for line in inp.splitlines():
         if ':' in line:
             mut_last_line_val = get_line_inst_idx(line)
-    
+
     return mut_last_line_val
+
 
 def app_compute_branch_without_link_labels(args: argparse.Namespace):
     inp = sys.stdin.read()
 
-    dump_ea: int = int(args.dump_ea, 16)
+    dump_ea = int(args.dump_ea, 16)
     sym_file = args.sym_file
 
     # We're concerned with lines of the form
@@ -369,7 +481,7 @@ def app_compute_branch_without_link_labels(args: argparse.Namespace):
         return int(line.replace("\t", " ").split(" ")[-1], 16)
 
     def get_local_annotated_labeled_lines(inp: str, last_line_val: int) -> List[Tuple[int, bool]]:
-        mut_labeled_lines = []
+        mut_out = []
 
         for line in inp.splitlines():
             if is_branch_without_link(line):
@@ -380,11 +492,11 @@ def app_compute_branch_without_link_labels(args: argparse.Namespace):
                     n = n - 2**32
 
                 if abs(n) > last_line_val:
-                    mut_labeled_lines.append((n, False))
+                    mut_out.append((n, False))
                 else:
-                    mut_labeled_lines.append((n, True))
+                    mut_out.append((n, True))
 
-        return mut_labeled_lines
+        return mut_out
 
     local_annotated_label_lines = get_local_annotated_labeled_lines(inp, last_line_val)
 
@@ -395,46 +507,41 @@ def app_compute_branch_without_link_labels(args: argparse.Namespace):
             if (cur_line_val, True) in local_annotated_label_lines:
                 label_ea = dump_ea + cur_line_val
 
-                print(f"loc_{label_ea:07X}:")
-            
+                print(f"loc_{filter_out_thumb_flag(label_ea):07x}:")
+
             if is_branch_without_link(line):
                 n = get_branch_target(line)
                 n_as_label_ea = dump_ea + n
 
                 if (n, True) in local_annotated_label_lines:
-                    n_as_label = f"loc_{n_as_label_ea:07X}"
+                    n_as_label = f"loc_{filter_out_thumb_flag(n_as_label_ea):07x}"
                 elif (n, False) in local_annotated_label_lines:
                     n_as_label = ea_to_symbol(sym_file, n_as_label_ea)
 
                     if n_as_label is None:
-                        raise Exception(f"No symbol found for 0x{n_as_label:X}")
+                        n_as_label_1 = ea_to_symbol(sym_file, filter_out_thumb_flag(n_as_label_ea))
+
+                        if n_as_label_1 is None:
+                            # It should still be a local label
+                            n_as_label = f"loc_{filter_out_thumb_flag(n_as_label_ea):07x}"
+                        else:
+                            n_as_label = n_as_label_1
+
                 else:
-                    raise Exception(f"Did not encounter target {n:X}h")
+                    raise Exception(f"Did not encounter target {n:x}h")
 
                 new_line = line.replace(hex(n), n_as_label)
 
                 print(new_line)
-                    
+
             else:
                 print(line)
         else:
             print(line)
 
-def app_compute_pool_usage(args: argparse.Namespace):
-    inp = sys.stdin.read()
 
-    sym_file = args.sym_file
-    rom_file = args.rom_file
-    dump_ea: int = int(args.dump_ea, 16)
-
-    # We're concerned with lines of the form
-    # "   2:   4803            ldr     r0, [pc, #12]   ; (0x10)"
-
-    last_line_inst_idx = get_last_line_inst_idx(inp)
-
-    if last_line_inst_idx is None:
-        raise Exception("Failed to get last line inst idx")
-
+class AppComputePoolUsage:
+    @staticmethod
     def try_get_pool_ldr_offset_and_islocal(line, last_line_inst_idx: int) -> Optional[Tuple[int, bool]]:
         if 'ldr' in line and '[pc, #' in line and ']' in line and '; (' in line and ')' in line:
             lparen_idx = line.index('(')
@@ -452,44 +559,54 @@ def app_compute_pool_usage(args: argparse.Namespace):
         else:
             return None
 
-    def get_line_to_pool32_loc_and_islocal_map(inp: str) -> Dict[str, Tuple[int, bool]]:
+    @staticmethod
+    def get_line_to_pool32_loc_and_islocal_map(inp: str, last_line_inst_idx: int) -> Dict[str, Tuple[int, bool]]:
+        cls = AppComputePoolUsage
         mut_out = {}
 
         for line in inp.splitlines():
-            opt_val = try_get_pool_ldr_offset_and_islocal(line, last_line_inst_idx)
+            opt_val = cls.try_get_pool_ldr_offset_and_islocal(line, last_line_inst_idx)
 
             if opt_val is not None:
                 mut_out[line] = opt_val
-        
+
         return mut_out
 
-    line_to_pool32_loc_and_islocal_map = get_line_to_pool32_loc_and_islocal_map(inp)
-
-    if len(line_to_pool32_loc_and_islocal_map.keys()) == 0:
-        print(inp)
-        return
-
+    @staticmethod
     def try_get_u32_data_for_line(line: str) -> Optional[int]:
         try:
-            line1 = line.split(":")[1].strip().replace("\t", " ")
-            token1 = line1.split(" ")[0]
-            token2 = line1.replace(token1, "").strip().split(" ")[0]
+            # Expects lines similar to:
+            # "  00:  abcd ef01       myop   ..."
+            #    ^inst_idx ^ data_u16_2
+            #         ^ data_u16_1
 
-            if len(token2) != 4:
+            line1 = line.split(":")[1].strip().replace("\t", " ")
+
+            data_u16_1 = line1.split(" ")[0]
+
+            data_u16_2 = line1.replace(data_u16_1, "", 1).strip().split(" ")[0]
+
+            if len(data_u16_2) != 4:
                 return None
 
-            n1 = int(token1, 16)
-            n2 = int(token2, 16)
+            n1 = int(data_u16_1, 16)
+            n2 = int(data_u16_2, 16)
 
             return (n2 << 16) + n1
         except Exception:
             return None
 
+    @staticmethod
     def get_u16_data_for_line(line: str) -> int:
         token = line.split(":")[1].strip().replace("\t", " ").split(" ")[0]
 
-        return int(token, 16)
+        try:
+            return int(token, 16)
+        except Exception as e:
+            # Caller must uphold that this works
+            raise
 
+    @staticmethod
     def read_aligned_u32_in_rom(ea: int, rom_file: str) -> int:
         ea1 = ea & (~0x8000000)
 
@@ -504,8 +621,14 @@ def app_compute_pool_usage(args: argparse.Namespace):
 
             return val
 
+    @staticmethod
     def calc_pool32_ea(dump_ea: int, loc: int) -> int:
         # This value will need to be read from ROM
+
+        # Handle thumb odd ea:
+        if dump_ea % 2 == 1:
+            dump_ea = dump_ea - 1
+
         if dump_ea % 4 == 0:
             pool32_ea = dump_ea + loc
         elif dump_ea % 2 == 0:
@@ -515,98 +638,173 @@ def app_compute_pool_usage(args: argparse.Namespace):
 
         return pool32_ea
 
-
+    @staticmethod
     def get_loc_to_pool32_val_map(inp: str, loc_and_islocal_vec: List[Tuple[int, bool]], dump_ea: int, rom_file: str) -> Dict[int, int]:
+        cls = AppComputePoolUsage
         mut_opt_lower = None
         mut_out = {}
 
         for line in inp.splitlines():
             cur_line_inst_idx = get_line_inst_idx(line)
 
-            opt_data32 = try_get_u32_data_for_line(line)
+            # If the line we're at is already interpreted as a u32 op, we can retrieve the data in one go
+            opt_data32 = cls.try_get_u32_data_for_line(line)
 
-            if opt_data32 is None:
-                if (cur_line_inst_idx, True) in loc_and_islocal_vec:
-                    data = get_u16_data_for_line(line)
+            if opt_data32 is not None:
+                # See if the location has been referred to as a pool_loc
+                opt_find_tup = try_find_first_in_vec_tup_2(loc_and_islocal_vec, cur_line_inst_idx)
 
-                    mut_opt_lower = data
-                elif (cur_line_inst_idx - 2, True) in loc_and_islocal_vec:
-                    data = get_u16_data_for_line(line)
+                if opt_find_tup is not None:
+                    islocal = opt_find_tup[1]
 
-                    if mut_opt_lower is None:
-                        raise Exception("Expected to have found lower u16 already")
-
-                    mut_out[cur_line_inst_idx - 2] = mut_opt_lower | (data << 16)
-                    mut_opt_lower = None
+                    if islocal:
+                        mut_out[cur_line_inst_idx] = opt_data32
+                    else:
+                        # non-local handled later
+                        pass
+                else:
+                    # Not a pool location
+                    pass
             else:
-                if (cur_line_inst_idx, True) in loc_and_islocal_vec:
-                    mut_out[cur_line_inst_idx] = opt_data32
-            
+                # We will need to retreive the data from two lines of u16 data
+                # We will put the lower half in `mut_opt_lower` for next iteration.
+
+                # See if the location has been referred to as a pool_loc
+                opt_find_tup = try_find_first_in_vec_tup_2(loc_and_islocal_vec, cur_line_inst_idx)
+
+                if opt_find_tup is not None:
+                    islocal = opt_find_tup[1]
+
+                    if islocal:
+                        data = cls.get_u16_data_for_line(line)
+
+                        mut_opt_lower = data
+                    else:
+                        # non-local handled later
+                        pass
+                else:
+
+                    # On the `cur_line_inst_idx - 2`,
+                    # This is done because we are loading two u16s to make a u32 pool data. These are expected to be two u16-sized lines.
+                    # Since the pool offset is at the lower u16 (`pool_loc + 0`), then the upper u16 should be 2 bytes later:
+                    # `pool_loc + 2`, but because we're at the line of `pool_loc + 2`, we would've registered a request for a u32 pool 2 bytes back,
+                    # at `pool_loc`, hence `cur_line_inst_idx - 2`.
+                    opt_find_tup = try_find_first_in_vec_tup_2(loc_and_islocal_vec, cur_line_inst_idx - 2)
+
+                    if opt_find_tup is not None:
+                        islocal = opt_find_tup[1]
+
+                        if islocal:
+                            data = cls.get_u16_data_for_line(line)
+                            if mut_opt_lower is None:
+                                raise Exception("Expected to have found lower u16 already")
+
+                            mut_out[cur_line_inst_idx - 2] = mut_opt_lower | (data << 16)
+                            mut_opt_lower = None
+                        else:
+                            # non-local handled later
+                            pass
+                    else:
+                        # unrelated line: not requested addr to get pool u32 data from
+                        pass
+
         for (loc, is_local) in loc_and_islocal_vec:
             if not is_local:
-                pool32_ea = calc_pool32_ea(dump_ea, loc)
+                pool32_ea = cls.calc_pool32_ea(dump_ea, loc)
 
-                val = read_aligned_u32_in_rom(pool32_ea, rom_file)
+                val = cls.read_aligned_u32_in_rom(pool32_ea, rom_file)
                 mut_out[loc] = val
-        
+
         return mut_out
 
-    loc_to_pool32_val_map = get_loc_to_pool32_val_map(inp, line_to_pool32_loc_and_islocal_map.values(), dump_ea, rom_file)
+    @staticmethod
+    def app_compute_pool_usage(args: argparse.Namespace):
+        cls = AppComputePoolUsage
+        inp = sys.stdin.read()
 
-    (least_pool_location, least_pool_location_is_local) = sorted(line_to_pool32_loc_and_islocal_map.values())[0]
-    (most_pool_location, most_pool_location_is_local) = sorted(line_to_pool32_loc_and_islocal_map.values())[-1]
+        sym_file = args.sym_file
+        rom_file = args.rom_file
+        dump_ea: int = int(args.dump_ea, 16)
 
-    for line in inp.splitlines():
-        if ':' in line:
-            cur_line_inst_idx = get_line_inst_idx(line)
-            data = get_u16_data_for_line(line)
+        # We're concerned with lines similar to
+        # "   2:   4803            ldr     r0, [pc, #12]   ; (0x10)"
+        #     ^inst_idx            ^op                        ^pool_loc
+        #          ^data_u16_1
 
-            if line in line_to_pool32_loc_and_islocal_map.keys():
-                # "   2:   4803            ldr     r0, [pc, #12]   ; (0x10)"
-                (loc, is_local) = line_to_pool32_loc_and_islocal_map[line]
-                val = loc_to_pool32_val_map[loc]
-                opt_symbol = ea_to_symbol(sym_file, val)
-                opt_sub_symbol = ea_to_symbol(sym_file, val - 1)
+        last_line_inst_idx = get_last_line_inst_idx(inp)
 
-                lbrac_index = line.index("[")
+        if last_line_inst_idx is None:
+            raise Exception("Failed to get last line inst idx")
 
-                if opt_symbol is not None:
-                    eq_s = f"={opt_symbol}"
-                elif opt_sub_symbol is not None:
-                    eq_s = f"={opt_sub_symbol}"
+        # Gets the `pool_loc` from each processed line.
+        # We also trace whether the pool_loc is local or not. If it's > last_line_inst_idx (which is the "N:" at the beginning of the last line)
+        # then it's non-local: ie. it's outside the dump range.
+        line_to_pool32_loc_and_islocal_map = cls.get_line_to_pool32_loc_and_islocal_map(inp, last_line_inst_idx)
+
+        if len(line_to_pool32_loc_and_islocal_map.keys()) == 0:
+            # Nothing to do. Pass input as is.
+            print(inp)
+            return
+
+        # Retrieve the actual data for each pool_loc.
+        loc_to_pool32_val_map = cls.get_loc_to_pool32_val_map(inp, line_to_pool32_loc_and_islocal_map.values(), dump_ea, rom_file)
+
+        (least_pool_location, least_pool_location_is_local) = sorted(line_to_pool32_loc_and_islocal_map.values())[0]
+        (most_pool_location, most_pool_location_is_local) = sorted(line_to_pool32_loc_and_islocal_map.values())[-1]
+
+        for line in inp.splitlines():
+            if ':' in line:
+                cur_line_inst_idx = get_line_inst_idx(line)
+                data = cls.get_u16_data_for_line(line)
+
+                if line in line_to_pool32_loc_and_islocal_map.keys():
+                    # "   2:   4803            ldr     r0, [pc, #12]   ; (0x10)"
+                    (loc, is_local) = line_to_pool32_loc_and_islocal_map[line]
+                    val = loc_to_pool32_val_map[loc]
+                    opt_symbol = ea_to_symbol(sym_file, val)
+                    opt_sub_symbol = ea_to_symbol(sym_file, val - 1) # strips out thumb flag
+
+                    lbrac_index = line.index("[")
+
+                    if opt_symbol is not None:
+                        eq_s = f"={opt_symbol}"
+                    elif opt_sub_symbol is not None:
+                        eq_s = f"={opt_sub_symbol}"
+                    else:
+                        eq_s = f"=0x{val:x}"
+
+                    if is_local:
+                        new_line = line[:lbrac_index] + eq_s
+                    else:
+                        # For a global pool use, make explicit use of the label
+                        loc_ea = cls.calc_pool32_ea(dump_ea, loc)
+                        opt_loc_symbol = ea_to_symbol(sym_file, loc_ea)
+
+                        if opt_loc_symbol is None:
+                            # We couldn't find the label for the pool location. It might not be globally exposed by the source code.
+                            new_line = line[:lbrac_index] + f'pool_{loc_ea:07x}' +  " // " + eq_s
+                        else:
+                            new_line = line[:lbrac_index] + opt_loc_symbol +  " // " + eq_s
+
+
+                    print(new_line)
                 else:
-                    eq_s = f"=0x{val:x}"
-
-                if is_local:
-                    new_line = line[:lbrac_index] + eq_s
-                else:
-                    # For a global pool use, make explicit use of the label
-                    loc_ea = calc_pool32_ea(dump_ea, loc)
-                    opt_loc_symbol = ea_to_symbol(sym_file, loc_ea)
-
-                    if opt_loc_symbol is None:
-                        raise Exception(f"Can't find label for pool at shift 0x{loc:X} or ea 0x{loc_ea:X}")
-
-                    new_line = line[:lbrac_index] + opt_loc_symbol +  " // " + eq_s
-                    
-
-                print(new_line)
+                    if least_pool_location_is_local and cur_line_inst_idx == (least_pool_location - 2) and data == 0:
+                        # This is just padding.
+                        continue
+                    elif cur_line_inst_idx == least_pool_location:
+                        print("\t.pool")
+                    elif cur_line_inst_idx > most_pool_location + 2:
+                        # This can happen with functions that have pool in the middle of their body.
+                        print(line)
+                        #raise Exception(f"unused values from shift (cur_line_inst_idx 0x{cur_line_inst_idx:x}) > (most_pool_location 0x{most_pool_location + 2:x}), (ea 0x{dump_ea + cur_line_inst_idx:x}) > (exp_max_ea 0x{dump_ea + most_pool_location + 2:x})")
+                    elif cur_line_inst_idx > least_pool_location:
+                        # pool values do not need to be printed
+                        continue
+                    else:
+                        print(line)
             else:
-                if least_pool_location_is_local and cur_line_inst_idx == (least_pool_location - 2) and data == 0:
-                    # This is just padding.
-                    continue
-                elif cur_line_inst_idx == least_pool_location:
-                    print("\t.pool")
-                elif cur_line_inst_idx > most_pool_location + 2:
-                    # Likely not pool and is unprocessed data, alert
-                    raise Exception(f"unused values from shift 0x{cur_line_inst_idx:X} and ea 0x{dump_ea + cur_line_inst_idx:X}")
-                elif cur_line_inst_idx > least_pool_location:
-                    # pool values do not need to be printed
-                    continue
-                else:
-                    print(line)
-        else:
-            print(line)
+                print(line)
 
 
 def app_get_symbol_boundary(args: argparse.Namespace):
@@ -623,7 +821,8 @@ def app_get_symbol_boundary(args: argparse.Namespace):
         print("Error: failed to get ea")
         exit(1)
     else:
-        print(f"0x{opt_ea:07X}")
+        print(f"0x{opt_ea:08x}")
+
 
 def app_last_zeros_to_balign(_args: argparse.Namespace):
     inp = sys.stdin.read()
@@ -638,6 +837,7 @@ def app_last_zeros_to_balign(_args: argparse.Namespace):
                 print(line)
         else:
             print(line)
+
 
 def read_events_file(events_file: str) -> Dict[int, str]:
     mut_i = 0
@@ -656,11 +856,17 @@ def read_events_file(events_file: str) -> Dict[int, str]:
 def app_encode_movflag_virtual_inst(args: argparse.Namespace):
     inp = sys.stdin.read()
 
+    lines = inp.splitlines()
+
     events_file = args.events_file
 
-    events = read_events_file(events_file)
+    # Nothing to process
+    if events_file == "" or events_file == "None":
+        for line in lines:
+            print(line)
+        return
 
-    lines = inp.splitlines()
+    events = read_events_file(events_file)
 
     mut_skip = 0
 
@@ -686,7 +892,6 @@ def app_encode_movflag_virtual_inst(args: argparse.Namespace):
 
         return (n1 << 8) + n2
 
-
     def try_get_movflag_inst_val(i: int, lines: List[str]) -> Optional[int]:
         if i + 3 >= len(lines):
             return None
@@ -696,15 +901,13 @@ def app_encode_movflag_virtual_inst(args: argparse.Namespace):
         line3 = lines[i+2].strip()
 
         if line3.startswith('bl '):
-            # Make sure that 
-
             mut_has_relevant_inst = False
 
             for inst in ['ClearEventFlagFromImmediate', 'TestEventFlagFromImmediate', 'SetEventFlagFromImmediate', 'ToggleEventFlagFromImmediate']:
                 if inst in line3:
                     mut_has_relevant_inst = True
                     break
-            
+
             if not mut_has_relevant_inst:
                 return None
 
@@ -722,7 +925,7 @@ def app_encode_movflag_virtual_inst(args: argparse.Namespace):
                     if inst in line3:
                         mut_has_relevant_inst = True
                         break
-                
+
                 if not mut_has_relevant_inst:
                     return None
 
@@ -744,23 +947,24 @@ def app_encode_movflag_virtual_inst(args: argparse.Namespace):
                 print(f'\tmovflag {event_sym}')
                 mut_skip = 1
 
+
 def try_parse_hex(s: str) -> Optional[int]:
     try:
         return int(s, 16)
     except Exception:
         return None
 
-def app_ea_to_sym_filter(args: argparse.Namespace):
-    sym_file = args.sym_file
-    shift = int(args.shift, 10)
-    file = args.file
-    skip_after = args.skip_after
-    comment_original = args.comment_original
 
-    syms = read_sym_file(sym_file)
-    ea_to_sym_ord_map = get_ea_to_sym_ord_map(syms)
+class AppEaToSymFilter:
+    class Context:
+        def __init__(self, skip_after: bool, shift: int, ea_to_sym_ord_map: Dict[int, Tuple[str, int]], comment_original: bool):
+            self.skip_after = skip_after
+            self.shift = shift
+            self.ea_to_sym_ord_map = ea_to_sym_ord_map
+            self.comment_original = comment_original
 
-    def get_ea_symbol_or_shifted_or_default(ea_token: str, ea: int) -> str:
+    @staticmethod
+    def get_ea_symbol_or_shifted_or_default(ea_token: str, ea: int, ctx: 'AppEaToSymFilter.Context') -> str:
         # Also look for compressed pointers
         if (ea & 0x80000000) != 0:
             ea -= 0x80000000
@@ -768,10 +972,10 @@ def app_ea_to_sym_filter(args: argparse.Namespace):
         else:
             is_compressed = False
 
-        if ea not in ea_to_sym_ord_map:
-            return ea_token
+        if ea not in ctx.ea_to_sym_ord_map:
+            return 'ERR_NOT_FOUND:' + ea_token
 
-        (sym_just_before, diff) = ea_to_sym_ord_map[ea]
+        (sym_just_before, diff) = ctx.ea_to_sym_ord_map[ea]
 
         if diff == 0:
             mut_out = f'{sym_just_before}'
@@ -783,11 +987,12 @@ def app_ea_to_sym_filter(args: argparse.Namespace):
 
         if is_compressed:
             mut_out = mut_out + ' + COMPRESSED_PTR_FLAG'
-        
+
         return mut_out
 
+    @staticmethod
     # We are interested in replacing ea tokens in the input string
-    def get_ea_tokens_and_parsed(s: str) -> List[Tuple[str, int]]:
+    def get_ea_tokens_and_parsed(s: str, skip_after: bool) -> List[Tuple[str, int]]:
         if skip_after is not None and skip_after in s:
             s1 = s[:s.index(skip_after)]
         else:
@@ -808,38 +1013,67 @@ def app_ea_to_sym_filter(args: argparse.Namespace):
                 token_n_no_comp = opt_token_n & 0x7FFFFFFF
                 if token_n_no_comp >= 0x2000000 and token_n_no_comp < 0x9000000:
                     mut_out.append((token.strip(), opt_token_n))
-        
+
         return mut_out
 
-    def process_line(line: str):
-        ea_tokens_and_parsed = get_ea_tokens_and_parsed(line)
+    @staticmethod
+    def process_line(line: str, ctx: 'AppEaToSymFilter.Context'):
+        cls = AppEaToSymFilter
+
+        ea_tokens_and_parsed = cls.get_ea_tokens_and_parsed(line, ctx.skip_after)
 
         mut_out = line
+        mut_replaced_tokens: List[str] = []
 
         for (ea_token, ea) in ea_tokens_and_parsed:
-            mut_sym = get_ea_symbol_or_shifted_or_default(ea_token, ea + shift)
+            mut_sym = cls.get_ea_symbol_or_shifted_or_default(ea_token, ea + ctx.shift, ctx)
 
-            if comment_original:
+            if ctx.comment_original:
                 mut_sym = f'/*{ea_token}*/ {mut_sym}'
 
-            if '_' + ea_token in mut_out:
-                mut_out = mut_out.replace('_' + ea_token, '<<<PLACEHOLDER>>>')
-                mut_out = mut_out.replace(ea_token, mut_sym)
-                mut_out = mut_out.replace('<<<PLACEHOLDER>>>', '_' + ea_token)
-            else:
-                mut_out = mut_out.replace(ea_token, mut_sym)
+            if ea_token not in mut_replaced_tokens:
+                mut_replaced_tokens.append(ea_token)
+
+                if '_' + ea_token in mut_out:
+                    mut_out = mut_out.replace('_' + ea_token, '<<<PLACEHOLDER>>>')
+                    mut_out = mut_out.replace(ea_token, mut_sym)
+                    mut_out = mut_out.replace('<<<PLACEHOLDER>>>', '_' + ea_token)
+                else:
+                    mut_out = mut_out.replace(ea_token, mut_sym, 1)
 
         print(mut_out)
 
-    if file:
-        with open(file, 'r') as f:
-            lines = f.readlines()
+    @staticmethod
+    def app_ea_to_sym_filter(args: argparse.Namespace):
+        cls = AppEaToSymFilter
 
-        for line in lines:
-            process_line(line.strip())
-    else: 
-        for line in sys.stdin:
-            process_line(line.strip())
+        sym_file = args.sym_file
+        shift = int(args.shift, 10)
+        file = args.file
+        skip_after = args.skip_after
+        comment_original = args.comment_original
+
+        syms = read_sym_file(sym_file)
+        ea_to_sym_ord_map = get_ea_to_sym_ord_map(syms)
+
+        ctx = cls.Context(skip_after, shift, ea_to_sym_ord_map, comment_original)
+
+        if file:
+            with open(file, 'r') as f:
+                lines = f.readlines()
+
+            for line in lines:
+                cls.process_line(line.strip(), ctx)
+        else:
+            for line in sys.stdin:
+                cls.process_line(line.strip(), ctx)
+
+
+def app_filter_out_thumb_flag(args: argparse.Namespace):
+    ea = int(args.ea, 16)
+
+    print(f'0x{filter_out_thumb_flag(ea):08x}')
+
 
 def main(args: argparse.Namespace):
     if args.subcommand == 'shorten_rlists':
@@ -858,7 +1092,7 @@ def main(args: argparse.Namespace):
         app_compute_branch_without_link_labels(args)
 
     if args.subcommand == 'compute_pool_usage':
-        app_compute_pool_usage(args)
+        AppComputePoolUsage.app_compute_pool_usage(args)
 
     if args.subcommand == 'get_symbol_boundary':
         app_get_symbol_boundary(args)
@@ -870,7 +1104,10 @@ def main(args: argparse.Namespace):
         app_encode_movflag_virtual_inst(args)
 
     if args.subcommand == 'ea_to_sym_filter':
-        app_ea_to_sym_filter(args)
+        AppEaToSymFilter.app_ea_to_sym_filter(args)
+
+    if args.subcommand == 'filter_out_thumb_flag':
+        app_filter_out_thumb_flag(args)
 
 
 def parse_cmdline_args() -> argparse.Namespace:
@@ -880,38 +1117,38 @@ def parse_cmdline_args() -> argparse.Namespace:
 
     p = argparse.ArgumentParser(prog='dump_code', description=desc,
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    
+
     p.add_argument('-v', '--verbose', action='count', default=0,
                    help='Increase verbosity level (use -v, -vv, or -vvv)')
-                   
+
     subparsers = p.add_subparsers(dest='subcommand')
     subparsers.required = True
 
-    sp = subparsers.add_parser('shorten_rlists', 
+    sp = subparsers.add_parser('shorten_rlists',
                                help='Shorten rlists by using dash ranges instead of listing each register')
 
-    sp = subparsers.add_parser('hexify_imm_gt_9', 
+    sp = subparsers.add_parser('hexify_imm_gt_9',
                                help='All immediates greated than 9 become hexadecimal')
 
-    sp = subparsers.add_parser('upper_hex_imm', 
+    sp = subparsers.add_parser('upper_hex_imm',
                                help='make hexademical immediates use A-F instead of a-f')
 
-    sp = subparsers.add_parser('compute_bl_targets', 
+    sp = subparsers.add_parser('compute_bl_targets',
                                help='Computes the symbol associated with a bl instruction')
     sp.add_argument('dump_ea',
                 help='ea of the start of the code that we are dumping from')
     sp.add_argument('sym_file',
                 help='The sym file is used to convert an ea to its corresponding symbol')
 
-    sp = subparsers.add_parser('compute_branch_without_link_labels', 
+    sp = subparsers.add_parser('compute_branch_without_link_labels',
                                help='Adds local labels and changes branches to refer to them and annotates global labels via syms')
     sp.add_argument('dump_ea',
                 help='ea of the start of the code that we are dumping from')
     sp.add_argument('sym_file',
                 help='The sym file is used to convert an ea to its corresponding symbol')
 
-    sp = subparsers.add_parser('compute_pool_usage', 
-                               help='Computes the symbol associated with a bl instruction')
+    sp = subparsers.add_parser('compute_pool_usage',
+                               help='Computes the values associated with pool usage like ldr rN, =someVal')
     sp.add_argument('sym_file',
                 help='The sym file is used to convert an ea to its corresponding symbol')
     sp.add_argument('rom_file',
@@ -919,7 +1156,7 @@ def parse_cmdline_args() -> argparse.Namespace:
     sp.add_argument('dump_ea',
                 help='ea of the start of the code that we are dumping from')
 
-    sp = subparsers.add_parser('get_symbol_boundary', 
+    sp = subparsers.add_parser('get_symbol_boundary',
                                help='Computes the ea for a symbol or its end boundary from the syms file')
     sp.add_argument('sym_file',
                 help='The sym file is used to convert an ea to its corresponding symbol')
@@ -929,15 +1166,15 @@ def parse_cmdline_args() -> argparse.Namespace:
                 action='store_true',
                 help='retrieve the end boundary ea')
 
-    sp = subparsers.add_parser('last_zeros_to_balign', 
+    sp = subparsers.add_parser('last_zeros_to_balign',
                                help='If the code ends with mov r0, r0, it is likely a .balign 4, 0')
 
-    sp = subparsers.add_parser('encode_movflag_virtual_inst', 
+    sp = subparsers.add_parser('encode_movflag_virtual_inst',
                                help='Some uses of mov can be encoded as movflag')
     sp.add_argument('events_file',
                 help='The file containing all the event constants')
 
-    sp = subparsers.add_parser('ea_to_sym_filter', 
+    sp = subparsers.add_parser('ea_to_sym_filter',
                                help='Replaces any ea with a symbol. And adds a +N if it is between symbols')
     sp.add_argument('sym_file',
                 help='The sym file is used to convert an ea to its corresponding symbol')
@@ -952,10 +1189,16 @@ def parse_cmdline_args() -> argparse.Namespace:
                 action='store_true',
                     help='Keep the original filtered as comment: /*orig*/ new')
 
-    sp = subparsers.add_parser('unittest', 
+    sp = subparsers.add_parser('filter_out_thumb_flag',
+                               help='For a thumb ea, removes the odd bit. Keeps the ea the same otherwise.')
+    sp.add_argument('ea',
+                help='possibly thumb ea to strip the odd bit from')
+
+    sp = subparsers.add_parser('unittest',
                     help='run the unit tests instead of main')
 
     return(p.parse_args())
+
 
 def _main():
     if sys.version_info<(3,5,0):
