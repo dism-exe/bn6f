@@ -7445,49 +7445,47 @@ RandomizeExtraToolkitPointers: // () -> ?
 	mov r1, #0 // (r1_0)
 	and r0, r1 // (r0_1)
 
-  // let unused_zero: u32; (r4_0)
+    // let unused_zero: u32; (r4_0)
 	mov r4, r0
 
 	ldr r5, ToolkitExtraPtrs_eUnusedExtraToolkitPtrsOffset_p // =eUnusedExtraToolkitPtrsOffset
 
-  // read old offset value (r3_0)
+    // read old offset value (r3_0)
 	ldr r3, [r5]
 
-  // let unused_zero_old: u32; (r0_2, r3_1)
+    // let unused_zero_old: u32; (r0_2, r3_1)
 	mov r0, #0
 	and r3, r0
 
 	str r4, [r5]
 
-  // let src: *const u32; (r0_3)
+    // let src: *const u32; (r0_3)
 	ldr r0, ToolkitExtraPtrs_eToolkitExtraPtrsMemory_p
 	add r0, r0, r3 // src
 
-  // let mut_dest: *mut u32; (r1_1, r2_0)
+    // let mut_dest: *mut u32; (r1_1, r2_0)
 	ldr r1, ToolkitExtraPtrs_eToolkitExtraPtrsMemory_p
 	add r1, r1, r4
 	ldr r2, ToolkitExtraPtrs_ToolkitExtraPtrsMemorySize_p // =0x35bc
   
-  // let size: u32; (r3_2)
+    // let size: u32; (r3_2)
 	ldr r3, ToolkitExtraPtrs_copyWords_80014EC_p // =copyWords_80014EC+1
 
 	mov lr, pc
 	// copyWords_80014EC(&sGameState, &sGameState, 0x35BC);
 	bx r3
 
-  // -- cloning --
-
 	mov r0, r10
 	mov r1, #(ToolkitPointersEnd - ToolkitPointers)
 	add r0, r0, r1 // (r0_4)
 
-  // (r1_2_i, r2_1, r3_3)
+    // (r1_2_i, r2_1, r3_3)
 	mov r1, #0
 	ldr r2, ToolkitExtraPtrs_eToolkitExtraPtrsMemory_p
 	ldr r3, [r5]
 	add r2, r2, r3
 
-  // (r3_4)
+    // (r3_4)
 	ldr r3, ToolkitExtraPtrsOffsets_p
 
 .readjustToolkitExtraPtrsLoop

@@ -2824,25 +2824,23 @@ off_8001728:
 render_800172C:
 	push {r4-r7,lr}
 
-  // -- cloning --
-
-  // (r5_0_pRenderInfo : *mut RenderInfo, r7_0_tk : *mut ToolKit)
+	// (r5_0_pRenderInfo : *mut RenderInfo, r7_0_tk : *mut ToolKit)
 	mov r7, r10
 	ldr r5, [r7,#oToolkit_RenderInfoPtr]
 
-  // (r5_0_pRenderInfo) -> (r1_0_ioMosaicSize : ?, r2_0 : u16)
+	// (r5_0_pRenderInfo) -> (r1_0_ioMosaicSize : ?, r2_0 : u16)
 	ldr r1, off_8001768 // =MosaicSize
 	ldrh r2, [r5,#oRenderInfo_Unk_02]
 	strh r2, [r1]
 
-  // (r5_0_pRenderInfo) -> (r0_0 : ?, r1_1_io : ?, r2_1 : usize)
+	// (r5_0_pRenderInfo) -> (r0_0 : ?, r1_1_io : ?, r2_1 : usize)
 	mov r0, r5
 	add r0, #4
 	ldr r1, off_800176C // =BG0Control
 	mov r2, #0x38
 	bl CopyWords // (src: *const u32, mut_dest: *mut u32, size: u32) -> ()
 
-  // (r7_0_tk) -> (r0_1 : Unk200f3a0, r1_2_io : ?, r2_2 : usize)
+	// (r7_0_tk) -> (r0_1 : Unk200f3a0, r1_2_io : ?, r2_2 : usize)
 	// src
 	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	// dest
@@ -2851,8 +2849,8 @@ render_800172C:
 	mov r2, #0xc
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 
-  // (r7_0_tk) -> (r1_3_io : ?, r2_3 : u32?, r5_1_unk : Unk2009740,
-  //                            r2_4 : u16?)
+	// (r7_0_tk) -> (r1_3_io : ?, r2_3 : u32?, r5_1_unk : Unk2009740,
+	//                            r2_4 : u16?)
 	ldr r5, [r7,#oToolkit_Unk2009740_Ptr]
 	ldr r1, off_8001774 // =ColorSpecialEffectsSelection
 	ldr r2, [r5]
