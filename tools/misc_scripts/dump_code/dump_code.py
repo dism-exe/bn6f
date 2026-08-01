@@ -320,23 +320,24 @@ def ea_to_symbol(sym_file: str, ea: int) -> Optional[str]:
         return entry_tokens[-1].strip()
 
 
+def filtered_sym_entries_by_exact_match(lines: List[str], symbol: str) -> List[str]:
+    mut_out = []
+
+    for line in lines:
+        tokens = line.split(" ")
+        if len(tokens) == 0:
+            continue
+
+        sym = tokens[-1]
+
+        if symbol == sym:
+            mut_out.append(line)
+
+    return mut_out
+
+
 def symbol_to_ea(sym_file: str, symbol: str) -> Optional[int]:
     entry = os_system(f"cat {sym_file} | grep {symbol}")
-
-    def filtered_sym_entries_by_exact_match(lines: List[str], symbol: str) -> List[str]:
-        mut_out = []
-
-        for line in lines:
-            tokens = line.split(" ")
-            if len(tokens) == 0:
-                continue
-
-            sym = tokens[-1]
-
-            if symbol == sym:
-                mut_out.append(line)
-
-        return mut_out
 
     entry_lines = filtered_sym_entries_by_exact_match(entry.splitlines(), symbol)
 
@@ -351,35 +352,37 @@ def symbol_to_ea(sym_file: str, symbol: str) -> Optional[int]:
         return ea
 
 
+def filtered_sym_entries_by_exact_match_for_grep_a1(lines: List[str], symbol: str) -> List[Tuple[str, str]]:
+    mut_out = []
+
+    # Remove seperator lines
+    filtered_lines = list(filter(lambda l: l != "--", lines))
+
+    # Take into account that every other line must be included
+    for i in range(len(filtered_lines)):
+        if i == len(filtered_lines) - 1:
+            break
+
+        line = filtered_lines[i]
+        next_line = filtered_lines[i + 1]
+
+        tokens = line.split(" ")
+        if len(tokens) == 0:
+            continue
+
+        sym = tokens[-1]
+
+        if symbol == sym:
+            mut_out.append((line, next_line))
+
+    return mut_out
+
+
+# FIXME Some cases in the sym file like main_ and main have the exact same ea and it is not useful to just give the next one in that case.
 def symbol_to_end_ea(sym_file: str, symbol: str) -> Optional[int]:
     entry = os_system(f"cat {sym_file} | grep {symbol} -A1")
 
-    def filtered_sym_entries_by_exact_match(lines: List[str], symbol: str) -> List[Tuple[str, str]]:
-        mut_out = []
-
-        # Remove seperator lines
-        filtered_lines = list(filter(lambda l: l != "--", lines))
-
-        # Take into account that every other line must be included
-        for i in range(len(filtered_lines)):
-            if i == len(filtered_lines) - 1:
-                break
-
-            line = filtered_lines[i]
-            next_line = filtered_lines[i + 1]
-
-            tokens = line.split(" ")
-            if len(tokens) == 0:
-                continue
-
-            sym = tokens[-1]
-
-            if symbol == sym:
-                mut_out.append((line, next_line))
-
-        return mut_out
-
-    entry_lines = filtered_sym_entries_by_exact_match(entry.splitlines(), symbol)
+    entry_lines = filtered_sym_entries_by_exact_match_for_grep_a1(entry.splitlines(), symbol)
 
     if len(entry_lines) != 1:
         raise Exception(f"Expected 1 entry for symbol {symbol}: {entry_lines}")
@@ -432,6 +435,8 @@ def app_compute_bl_targets(args: argparse.Namespace):
 
 # Format is similar to
 # "  16:   dd00            ble     0x1a"
+#     ^inst_idx            ^op
+#          ^data_u16_1
 def get_line_inst_idx(line: str) -> int:
     val = int(line.strip().replace("\t", " ").split(" ")[0].replace(":", ""), 16)
 
@@ -440,6 +445,8 @@ def get_line_inst_idx(line: str) -> int:
 
 # Format is similar to
 # "  16:   dd00            ble     0x1a"
+#     ^inst_idx            ^op
+#          ^data_u16_1
 def get_last_line_inst_idx(inp: str) -> Optional[int]:
     mut_last_line_val = None
 
@@ -718,6 +725,29 @@ class AppComputePoolUsage:
         return mut_out
 
     @staticmethod
+    def get_pool32_locs_contiguous_groups(pool32_locs: List[int]) -> List[List[int]]:
+        mut_out = [[]]
+
+        for pool32_loc in pool32_locs:
+            last_group = mut_out[-1]
+
+            if len(last_group) == 0:
+                last_group.append(pool32_loc)
+            else:
+                last_val = last_group[-1]
+
+                if pool32_loc == last_val + 4:
+                    last_group.append(last_val)
+                else:
+                    mut_out.append([])
+                    mut_out[-1].append(pool32_loc)
+
+        for (i, grp) in enumerate(mut_out):
+            mut_out[i] = sorted(grp)
+
+        return mut_out
+
+    @staticmethod
     def app_compute_pool_usage(args: argparse.Namespace):
         cls = AppComputePoolUsage
         inp = sys.stdin.read()
@@ -741,6 +771,23 @@ class AppComputePoolUsage:
         # then it's non-local: ie. it's outside the dump range.
         line_to_pool32_loc_and_islocal_map = cls.get_line_to_pool32_loc_and_islocal_map(inp, last_line_inst_idx)
 
+        pool32_locs = (
+            line_to_pool32_loc_and_islocal_map
+                .values()
+                .__iter__()
+                | pipe.OfIter[Tuple[int, bool]].map(lambda loc_and_islocal: loc_and_islocal[0])
+                | pipe.OfIter[int].to_list()
+        )
+
+        grouped_pool32_locs = cls.get_pool32_locs_contiguous_groups(pool32_locs)
+
+        grouped_pool32_least_locs = (
+            grouped_pool32_locs
+                .__iter__()
+                | pipe.OfIter[List[int]].map(lambda l: l[0])
+                | pipe.OfIter[int].to_list()
+        )
+
         if len(line_to_pool32_loc_and_islocal_map.keys()) == 0:
             # Nothing to do. Pass input as is.
             print(inp)
@@ -749,62 +796,89 @@ class AppComputePoolUsage:
         # Retrieve the actual data for each pool_loc.
         loc_to_pool32_val_map = cls.get_loc_to_pool32_val_map(inp, line_to_pool32_loc_and_islocal_map.values(), dump_ea, rom_file)
 
-        (least_pool_location, least_pool_location_is_local) = sorted(line_to_pool32_loc_and_islocal_map.values())[0]
-        (most_pool_location, most_pool_location_is_local) = sorted(line_to_pool32_loc_and_islocal_map.values())[-1]
-
         for line in inp.splitlines():
-            if ':' in line:
-                cur_line_inst_idx = get_line_inst_idx(line)
-                data = cls.get_u16_data_for_line(line)
-
-                if line in line_to_pool32_loc_and_islocal_map.keys():
-                    # "   2:   4803            ldr     r0, [pc, #12]   ; (0x10)"
-                    (loc, is_local) = line_to_pool32_loc_and_islocal_map[line]
-                    val = loc_to_pool32_val_map[loc]
-                    opt_symbol = ea_to_symbol(sym_file, val)
-                    opt_sub_symbol = ea_to_symbol(sym_file, val - 1) # strips out thumb flag
-
-                    lbrac_index = line.index("[")
-
-                    if opt_symbol is not None:
-                        eq_s = f"={opt_symbol}"
-                    elif opt_sub_symbol is not None:
-                        eq_s = f"={opt_sub_symbol}"
-                    else:
-                        eq_s = f"=0x{val:x}"
-
-                    if is_local:
-                        new_line = line[:lbrac_index] + eq_s
-                    else:
-                        # For a global pool use, make explicit use of the label
-                        loc_ea = cls.calc_pool32_ea(dump_ea, loc)
-                        opt_loc_symbol = ea_to_symbol(sym_file, loc_ea)
-
-                        if opt_loc_symbol is None:
-                            # We couldn't find the label for the pool location. It might not be globally exposed by the source code.
-                            new_line = line[:lbrac_index] + f'pool_{loc_ea:07x}' +  " // " + eq_s
-                        else:
-                            new_line = line[:lbrac_index] + opt_loc_symbol +  " // " + eq_s
-
-
-                    print(new_line)
-                else:
-                    if least_pool_location_is_local and cur_line_inst_idx == (least_pool_location - 2) and data == 0:
-                        # This is just padding.
-                        continue
-                    elif cur_line_inst_idx == least_pool_location:
-                        print("\t.pool")
-                    elif cur_line_inst_idx > most_pool_location + 2:
-                        # This can happen with functions that have pool in the middle of their body.
-                        print(line)
-                        #raise Exception(f"unused values from shift (cur_line_inst_idx 0x{cur_line_inst_idx:x}) > (most_pool_location 0x{most_pool_location + 2:x}), (ea 0x{dump_ea + cur_line_inst_idx:x}) > (exp_max_ea 0x{dump_ea + most_pool_location + 2:x})")
-                    elif cur_line_inst_idx > least_pool_location:
-                        # pool values do not need to be printed
-                        continue
-                    else:
-                        print(line)
-            else:
+            if ':' not in line:
                 print(line)
+                continue
+
+            cur_line_inst_idx = get_line_inst_idx(line)
+            data = cls.get_u16_data_for_line(line)
+
+            if line not in line_to_pool32_loc_and_islocal_map.keys():
+                is_padding_line_checks = (
+                    grouped_pool32_least_locs
+                        .__iter__()
+                        | pipe.OfIter[int].map(lambda loc: (cur_line_inst_idx == loc - 2) and data == 0)
+                        | pipe.OfIter[bool].to_list()
+                )
+
+                is_pool_start_checks = (
+                    grouped_pool32_least_locs
+                        .__iter__()
+                        | pipe.OfIter[int].map(lambda loc: cur_line_inst_idx == loc)
+                        | pipe.OfIter[bool].to_list()
+                )
+
+                exceeds_pool_region_checks = (
+                    grouped_pool32_locs
+                        .__iter__()
+                        | pipe.OfIter[List[int]].map(lambda locs: cur_line_inst_idx > locs[-1] + 3) # pool is 4 bytes, so > pool+3 is beyond the pool region
+                        | pipe.OfIter[bool].to_list()
+                )
+
+                within_pool_region_checks = (
+                    grouped_pool32_locs
+                        .__iter__()
+                        | pipe.OfIter[List[int]].map(lambda locs: cur_line_inst_idx >= locs[0] and cur_line_inst_idx < locs[-1] + 4)
+                        | pipe.OfIter[bool].to_list()
+                )
+
+                if any(is_padding_line_checks):
+                    # skip padding
+                    continue
+                elif any(is_pool_start_checks):
+                    print("\t.pool")
+                elif all(exceeds_pool_region_checks):
+                    # This is content outside all pool regions, so just keep it
+                    print(line)
+                elif any(within_pool_region_checks):
+                    # pool values should not be printed; they are accounted for by `.pool`.
+                    continue
+                else:
+                    # keep unrelated line
+                    print(line)
+
+                continue
+
+            # "   2:   4803            ldr     r0, [pc, #12]   ; (0x10)"
+            (loc, is_local) = line_to_pool32_loc_and_islocal_map[line]
+            val = loc_to_pool32_val_map[loc]
+            opt_symbol = ea_to_symbol(sym_file, val)
+            opt_sub_symbol = ea_to_symbol(sym_file, val - 1) # strips out thumb flag
+
+            lbrac_index = line.index("[")
+
+            if opt_symbol is not None:
+                eq_s = f"={opt_symbol}"
+            elif opt_sub_symbol is not None:
+                eq_s = f"={opt_sub_symbol}"
+            else:
+                eq_s = f"=0x{val:x}"
+
+            if is_local:
+                new_line = line[:lbrac_index] + eq_s
+            else:
+                # For a global pool use, make explicit use of the label
+                loc_ea = cls.calc_pool32_ea(dump_ea, loc)
+                opt_loc_symbol = ea_to_symbol(sym_file, loc_ea)
+
+                if opt_loc_symbol is None:
+                    # We couldn't find the label for the pool location. It might not be globally exposed by the source code.
+                    new_line = line[:lbrac_index] + f'pool_{loc_ea:07x}' +  " // " + eq_s
+                else:
+                    new_line = line[:lbrac_index] + opt_loc_symbol +  " // " + eq_s
+
+            print(new_line)
 
 
 def app_get_symbol_boundary(args: argparse.Namespace):
