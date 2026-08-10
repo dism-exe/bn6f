@@ -7466,13 +7466,15 @@ RandomizeExtraToolkitPointers: // () -> ?
     // let mut_dest: *mut u32; (r1_1, r2_0)
 	ldr r1, ToolkitExtraPtrs_eToolkitExtraPtrsMemory_p
 	add r1, r1, r4
+
+    // let size: u32; (r3_2)
 	ldr r2, ToolkitExtraPtrs_ToolkitExtraPtrsMemorySize_p // =0x35bc
   
-    // let size: u32; (r3_2)
 	ldr r3, ToolkitExtraPtrs_copyWords_80014EC_p // =copyWords_80014EC+1
 
 	mov lr, pc
 	// copyWords_80014EC(&sGameState, &sGameState, 0x35BC);
+    // From gdb, r0 and r1 point to eGameState
 	bx r3
 
 	mov r0, r10
