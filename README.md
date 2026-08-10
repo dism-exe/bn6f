@@ -11,6 +11,11 @@ To contribute, see [CONTRIBUTE.md](CONTRIBUTE.md).
 
 ## See also
 - Discord: [**pret**][Discord]
-- [gh LanHikari22/bn6f-modding](https://github.com/LanHikari22/bn6f-modding)
+- [Project notes][ProjectNotes]
+- Explore [modding][Modding] the game with the disassembly.
+- [bn-repo-editor] is used for some repository-wide transformations
 
 [Discord]: https://discord.gg/vdTW48Q
+[ProjectNotes]: https://github.com/dism-exe/dism-exe-notes
+[Modding]: https://codeberg.org/lan22h/bn6f-modding
+[BnRepoEditor]: https://codeberg.org/lan22h/bn-repo-editor
