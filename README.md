@@ -13,7 +13,7 @@ To contribute, see [CONTRIBUTE.md](CONTRIBUTE.md).
 - Discord: [**pret**][Discord]
 - [Project notes][ProjectNotes]
 - Explore [modding][Modding] the game with the disassembly.
-- [bn-repo-editor] is used for some repository-wide transformations
+- [bn-repo-editor][BnRepoEditor] is used for some repository-wide transformations
 
 [Discord]: https://discord.gg/vdTW48Q
 [ProjectNotes]: https://github.com/dism-exe/dism-exe-notes
